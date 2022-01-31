@@ -1,49 +1,48 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import java.util.concurrent.ConcurrentHashMap;
 
 class xsq
-  extends RecyclerView.AdapterDataObserver
 {
-  xsq(xsp paramxsp) {}
+  public static ConcurrentHashMap<xso, Boolean> a;
+  private static volatile xsq a;
   
-  public void onChanged()
+  static
   {
-    this.a.notifyDataSetChanged();
-    if (xsp.a(this.a) != null) {
-      xsp.a(this.a).a(xsp.a(this.a));
-    }
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public static xsq a()
   {
-    this.a.notifyItemRangeChanged(xsp.a(this.a).size() + paramInt1, paramInt2);
-    if (xsp.a(this.a) != null) {
-      xsp.a(this.a).a(xsp.a(this.a));
+    if (jdField_a_of_type_Xsq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Xsq == null) {
+        jdField_a_of_type_Xsq = new xsq();
+      }
+      return jdField_a_of_type_Xsq;
     }
+    finally {}
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public static void a(URLDrawable paramURLDrawable, String paramString)
   {
-    this.a.notifyItemRangeInserted(xsp.a(this.a).size() + paramInt1, paramInt2);
-    if (xsp.a(this.a) != null) {
-      xsp.a(this.a).a(xsp.a(this.a));
-    }
+    paramString = new xso(a(), paramURLDrawable, paramString);
+    paramURLDrawable.setDownloadListener(paramString);
+    paramURLDrawable.setURLDrawableListener(paramString);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
   }
   
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull xso paramxso)
   {
-    this.a.notifyItemMoved(xsp.a(this.a).size() + paramInt1, xsp.a(this.a).size() + paramInt2);
-    if (xsp.a(this.a) != null) {
-      xsp.a(this.a).a(xsp.a(this.a));
+    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramxso);
+    wxe.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
+    if (!bool) {
+      azpo.a(xsh.a(alud.a(2131716261), null), "Story.UIUtils.monitor " + paramxso.toString());
     }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(xsp.a(this.a).size() + paramInt1, paramInt2);
-    if (xsp.a(this.a) != null) {
-      xsp.a(this.a).a(xsp.a(this.a));
-    }
+    paramxso.a.setDownloadListener(null);
+    paramxso.a.setURLDrawableListener(null);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramxso);
   }
 }
 

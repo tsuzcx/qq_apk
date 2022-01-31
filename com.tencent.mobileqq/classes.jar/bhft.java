@@ -1,8 +1,23 @@
-public abstract interface bhft
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
+
+class bhft
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  public abstract void onValCancel();
+  bhft(bhfp parambhfp) {}
   
-  public abstract void onValConfirm(int paramInt);
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  {
+    if ((paramInt == 0) && (paramBaselibContent != null))
+    {
+      paramString = paramBaselibContent.waWebviewJsStr;
+      bhfp.a(this.a).a(paramString);
+      this.a.appendEvent(Integer.valueOf(6));
+      paramString = paramBaselibContent.waRemoteDebugStr;
+      bhfp.b(this.a).a(paramString);
+      this.a.appendEvent(Integer.valueOf(7));
+    }
+  }
 }
 
 

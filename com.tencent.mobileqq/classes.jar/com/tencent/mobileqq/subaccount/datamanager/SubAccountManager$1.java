@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import azyu;
+import badd;
 import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class SubAccountManager$1
   implements Runnable
 {
-  public SubAccountManager$1(azyu paramazyu, SubAccountInfo paramSubAccountInfo) {}
+  public SubAccountManager$1(badd parambadd, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {

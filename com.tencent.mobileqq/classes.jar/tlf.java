@@ -75,18 +75,18 @@ public class tlf
     tlo.b("WSFeedUtils", "feed create time: " + paramInt + ", corresponding date: " + new Date(paramInt * 1000));
     long l = System.currentTimeMillis() / 1000L - paramInt;
     if ((l >= 0L) && (l < 60L)) {
-      return b(2131693797);
+      return b(2131693799);
     }
     if ((l >= 60L) && (l < 3600L)) {
-      return String.format(b(2131693798), new Object[] { Long.valueOf(l / 60L) });
+      return String.format(b(2131693800), new Object[] { Long.valueOf(l / 60L) });
     }
     if ((l >= 3600L) && (l < 86400L)) {
-      return a(2131693796, new Object[] { Long.valueOf(l / 3600L) });
+      return a(2131693798, new Object[] { Long.valueOf(l / 3600L) });
     }
     if ((l >= 86400L) && (l < 2592000L)) {
-      return a(2131693792, new Object[] { Long.valueOf(l / 86400L) });
+      return a(2131693794, new Object[] { Long.valueOf(l / 86400L) });
     }
-    return a(2131693792, new Object[] { Integer.valueOf(30) });
+    return a(2131693794, new Object[] { Integer.valueOf(30) });
   }
   
   public static String a(int paramInt, Object... paramVarArgs)
@@ -98,7 +98,7 @@ public class tlf
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = b(2131693799);
+      str = b(2131693801);
     }
     return str;
   }
@@ -163,7 +163,7 @@ public class tlf
       return;
     }
     WSDownloadParams localWSDownloadParams = a(paramString1, paramInt1);
-    if (xoo.a(paramActivity))
+    if (xsx.a(paramActivity))
     {
       tky.a(paramActivity, new tlj(paramActivity, paramString1, localWSDownloadParams, paramString2, paramInt2));
       return;
@@ -171,13 +171,13 @@ public class tlf
     tfa.a(paramActivity, localWSDownloadParams, true);
   }
   
-  public static void a(Context paramContext, bhqd parambhqd, bhqf parambhqf)
+  public static void a(Context paramContext, bhuk parambhuk, bhum parambhum)
   {
-    paramContext = bhpy.a(paramContext);
+    paramContext = bhuf.a(paramContext);
     paramContext.a("取消关注", 3);
     paramContext.d("取消");
-    paramContext.a(new tlg(parambhqd, paramContext));
-    paramContext.a(new tlh(parambhqf));
+    paramContext.a(new tlg(parambhuk, paramContext));
+    paramContext.a(new tlh(parambhum));
     paramContext.show();
   }
   
@@ -209,16 +209,16 @@ public class tlf
     case 1: 
     case 2: 
     case 4: 
-      paramTextView.setBackgroundResource(2130850149);
+      paramTextView.setBackgroundResource(2130850222);
       return;
     case 3: 
-      paramTextView.setBackgroundResource(2130850147);
+      paramTextView.setBackgroundResource(2130850220);
       return;
     case 5: 
-      paramTextView.setBackgroundResource(2130850148);
+      paramTextView.setBackgroundResource(2130850221);
       return;
     }
-    paramTextView.setBackgroundResource(2130850150);
+    paramTextView.setBackgroundResource(2130850223);
   }
   
   public static boolean a(int paramInt)

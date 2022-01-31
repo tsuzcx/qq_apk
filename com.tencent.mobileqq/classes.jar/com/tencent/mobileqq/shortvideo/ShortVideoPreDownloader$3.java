@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayyu;
-import ayyx;
-import ayzf;
-import ayzo;
+import azdd;
+import azdg;
+import azdo;
+import azdx;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ShortVideoPreDownloader$3
   implements Runnable
 {
-  public ShortVideoPreDownloader$3(ayzf paramayzf, ayyx paramayyx, MessageForShortVideo paramMessageForShortVideo, ayzo paramayzo) {}
+  public ShortVideoPreDownloader$3(azdo paramazdo, azdg paramazdg, MessageForShortVideo paramMessageForShortVideo, azdx paramazdx) {}
   
   public void run()
   {
-    ayzf.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Ayyx.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    ayyu.a(this.jdField_a_of_type_Ayzo, this.this$0.a);
+    azdo.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Azdg.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    azdd.a(this.jdField_a_of_type_Azdx, this.this$0.a);
   }
 }
 

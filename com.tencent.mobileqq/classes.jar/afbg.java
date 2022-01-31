@@ -1,28 +1,113 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
 public class afbg
-  implements View.OnClickListener
+  implements afax
 {
-  afbg(afbe paramafbe) {}
+  public static final afay<afbg> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private float b;
   
-  public void onClick(View paramView)
+  static
   {
-    try
+    jdField_a_of_type_Afay = new afbh();
+  }
+  
+  public afbg(afav paramafav)
+  {
+    paramafav.a();
+    this.jdField_a_of_type_Float = paramafav.a();
+    this.jdField_a_of_type_Long = paramafav.a();
+    this.jdField_a_of_type_Int = paramafav.a();
+    this.b = paramafav.a();
+  }
+  
+  public afbg(Path paramPath)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Path a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPath;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(afav paramafav, int paramInt)
+  {
+    paramafav.a(1);
+    paramafav.a(this.jdField_a_of_type_Float);
+    paramafav.a(this.jdField_a_of_type_Long);
+    paramafav.a(this.jdField_a_of_type_Int);
+    paramafav.a(this.b);
+  }
+  
+  public void a(afbg paramafbg)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
     {
-      azmj.b(afbe.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
-      afbe.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
-      this.a.a();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramafbg.jdField_a_of_type_AndroidGraphicsPath);
+      this.b += paramafbg.b;
+    }
+  }
+  
+  public void a(Path paramPath)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public void c(float paramFloat)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       return;
     }
-    catch (Throwable paramView)
-    {
-      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + paramView);
-    }
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(paramFloat, paramFloat);
+    Path localPath = new Path();
+    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
   }
 }
 

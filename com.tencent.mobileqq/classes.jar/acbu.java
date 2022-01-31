@@ -1,45 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acbu
-  implements bhqd
+class acbu
+  implements DialogInterface.OnClickListener
 {
-  public acbu(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
+  acbu(acbt paramacbt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if ((AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
-      {
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
-      }
-      return;
-      if (!bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131692397), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
-        }
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
-        if (apwu.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
-          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
-        }
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

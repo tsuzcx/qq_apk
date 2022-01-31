@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import java.util.List;
 
-class bmcb
-  implements View.OnClickListener
+public abstract interface bmcb
 {
-  bmcb(bmbz parambmbz) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.a.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStatus(true);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleX(1.0F);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleY(1.0F);
-    this.a.a.j();
-    athi.b();
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void b(long paramLong);
 }
 
 

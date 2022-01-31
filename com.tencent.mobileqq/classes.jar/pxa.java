@@ -21,10 +21,10 @@ public class pxa
   {
     String str = "";
     if (TextUtils.equals(paramString, "native_article")) {
-      str = bjxj.a("native_proteus_offline_bid");
+      str = bkbq.a("native_proteus_offline_bid");
     }
     if (TextUtils.equals(paramString, "default_feeds")) {
-      str = bjxj.a("default_feeds_proteus_offline_bid");
+      str = bkbq.a("default_feeds_proteus_offline_bid");
     }
     return str;
   }

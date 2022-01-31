@@ -1,18 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class afcx
-  extends aekx
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  afcx(afcw paramafcw, BaseActivity paramBaseActivity) {}
   
-  afcx(afcv paramafcv) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    afcw.a(null);
+    if (afcw.a(this.jdField_a_of_type_Afcw) != null) {
+      afcw.a(this.jdField_a_of_type_Afcw).b();
+    }
+  }
 }
 
 

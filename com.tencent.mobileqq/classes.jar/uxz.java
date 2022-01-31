@@ -1,24 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.HashSet;
 
-class uxz
-  extends SimpleJob<Object>
+public class uxz
 {
-  uxz(uxx paramuxx, String paramString)
+  final int jdField_a_of_type_Int;
+  public final Bundle a;
+  String jdField_a_of_type_JavaLangString = "";
+  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = true;
+  
+  public uxz(int paramInt)
   {
-    super(paramString);
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static uxz a()
   {
-    if (this.a.jdField_a_of_type_Uya == null) {
-      this.a.jdField_a_of_type_Uya = new uya(this.a, this.a.d);
+    return new uxz(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    {
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a();
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Uya.jdField_a_of_type_JavaLangString;
-    uxx.a(this.a);
-    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

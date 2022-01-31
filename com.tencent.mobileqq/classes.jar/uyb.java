@@ -1,29 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
-
-public class uyb
-  extends uxs
+class uyb
+  implements uml
 {
-  public int a;
-  public String a;
-  public List<VideoCollectionItem> a;
-  public String b;
-  public boolean e = true;
+  uyb(uya paramuya, uyc paramuyc) {}
   
-  public uyb(String paramString, ErrorMessage paramErrorMessage)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    uya.a(this.jdField_a_of_type_Uya, new uye[] { new uye(this.jdField_a_of_type_Uyc, paramLong1, paramLong2) });
   }
   
-  public String toString()
-  {
-    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
-  }
+  public void a(String paramString1, String paramString2) {}
 }
 
 

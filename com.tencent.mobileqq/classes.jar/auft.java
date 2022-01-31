@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
 
 class auft
-  implements DialogInterface.OnClickListener
+  implements aufz<Pair<String, String>, Emoticon>
 {
-  auft(aufi paramaufi) {}
+  auft(aufn paramaufn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Emoticon a(Pair<String, String> paramPair)
   {
-    if (this.a.g()) {
-      aufi.a(this.a).a(false, null, false);
-    }
-    azmj.b(this.a.a, "CliOper", "", "", aufi.b, aufi.b, 1, 0, "", "", "", "");
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
   }
 }
 

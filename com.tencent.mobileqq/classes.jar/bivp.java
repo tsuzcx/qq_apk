@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import cooperation.qqreader.helper.LoadingAnimationManager.1;
-import cooperation.qqreader.helper.LoadingAnimationManager.2;
-import cooperation.qqreader.helper.LoadingAnimationManager.3;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bivp
+public class bivp
 {
   private static bivp jdField_a_of_type_Bivp;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean;
+  private ArrayList<bivq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
   
   public static bivp a()
   {
@@ -32,74 +26,79 @@ public final class bivp
     finally {}
   }
   
-  private void a(long paramLong)
+  public bivq a(long paramLong)
   {
-    if (paramLong > 0L)
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
-      localMessage.what = 30002;
-      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
-      return;
-    }
-    b();
-  }
-  
-  private void b()
-  {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView == null) {
-      return;
-    }
-    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    localImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
-  }
-  
-  @UiThread
-  public void a()
-  {
-    ThreadManager.getUIHandler().removeMessages(30002);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
-      localImageView.setVisibility(8);
-    }
-    this.jdField_a_of_type_JavaLangRunnable = null;
-  }
-  
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
-  {
-    a(paramContext, paramImageView, 0L);
-  }
-  
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
-  {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localImageView != paramImageView) && (localImageView != null)) {
-      a();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
-    {
-      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      try
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
       {
-        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
+        }
+        return null;
       }
-      catch (Exception paramContext)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        bixe.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
-        return;
+        bivq localbivq = (bivq)localIterator.next();
+        if (localbivq.jdField_a_of_type_Long == paramLong)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localbivq);
+          if (QLog.isColorLevel()) {
+            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          return localbivq;
+        }
       }
     }
-    a(paramLong);
+    return null;
+  }
+  
+  public List<Bundle> a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramArrayOfByte.getParcelableArrayList("pendingData");
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      return bool;
+    }
+  }
+  
+  public byte[] a()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        localArrayList1.add(((bivq)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+      }
+    }
+    if (localArrayList2.isEmpty()) {
+      return null;
+    }
+    ??? = new Bundle();
+    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
+    Parcel localParcel = Parcel.obtain();
+    ((Bundle)???).writeToParcel(localParcel, 0);
+    ??? = localParcel.marshall();
+    localParcel.recycle();
+    return ???;
   }
 }
 

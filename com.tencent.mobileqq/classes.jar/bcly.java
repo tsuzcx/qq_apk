@@ -1,25 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class bcly
-  extends RecyclerView.OnScrollListener
+public abstract class bcly
+  extends nac
 {
-  public bcly(AddedRobotView paramAddedRobotView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bcly()
   {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      AddedRobotView.a(this.a).c();
-    }
-    while (!AddedRobotView.a(this.a).a()) {
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
       return;
     }
-    AddedRobotView.a(this.a).b();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
   }
+  
+  protected abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,31 +1,21 @@
-import android.content.Intent;
-import com.tencent.biz.troop.TroopMemberApiService;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class ymt
-  extends WtloginListener
+class ymt
+  implements vwf
 {
-  public ymt(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  ymt(ymq paramymq, afkf paramafkf, CleanVideoPlayerView paramCleanVideoPlayerView) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void a(vwa paramvwa)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
+    if ((localLong != null) && (localLong.longValue() > 0L))
     {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
+      paramvwa.a(localLong.longValue());
+      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
   }
 }
 

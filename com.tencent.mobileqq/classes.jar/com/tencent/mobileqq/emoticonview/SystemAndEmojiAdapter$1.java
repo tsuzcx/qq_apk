@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apup;
+import apyy;
 
 public class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(apup paramapup, int paramInt) {}
+  public SystemAndEmojiAdapter$1(apyy paramapyy, int paramInt) {}
   
   public void run()
   {

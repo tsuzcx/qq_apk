@@ -1,12 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastOneShow;
 
-final class bjlt
-  implements FileFilter
+public final class bjlt
+  implements Parcelable.Creator<BroadcastOneShow>
 {
-  public boolean accept(File paramFile)
+  public BroadcastOneShow a(Parcel paramParcel)
   {
-    return paramFile.getName().endsWith(".cfg");
+    return new BroadcastOneShow(paramParcel);
+  }
+  
+  public BroadcastOneShow[] a(int paramInt)
+  {
+    return new BroadcastOneShow[paramInt];
   }
 }
 

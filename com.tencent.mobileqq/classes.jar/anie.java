@@ -1,54 +1,17 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ar.view.ViewfinderView;
 
 public class anie
-  implements anip
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anie(ArkAiDictUpdateMgr.1 param1, aoim paramaoim, anir paramanir, aoia paramaoia) {}
+  public anie(ViewfinderView paramViewfinderView, Rect paramRect) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { anid.a(this.jdField_a_of_type_Aoim) }));
-      this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_Anir)
-      {
-        anir localanir2 = this.jdField_a_of_type_Anir;
-        int i = localanir2.jdField_a_of_type_Int - 1;
-        localanir2.jdField_a_of_type_Int = i;
-        if (i != 0) {
-          return;
-        }
-        if (this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean)
-        {
-          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
-          anid.a(this.jdField_a_of_type_Aoia);
-          anid.b(this.jdField_a_of_type_Aoia);
-          ania.b((AppInterface)anid.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
-          try
-          {
-            anid.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-            if (anid.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
-            {
-              anid.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
-              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
-            }
-            return;
-          }
-          finally {}
-        }
-      }
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
-    }
+    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
   }
 }
 

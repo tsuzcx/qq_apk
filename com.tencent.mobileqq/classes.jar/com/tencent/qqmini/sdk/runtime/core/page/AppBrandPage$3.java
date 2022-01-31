@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bgid;
+import bgmk;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 
 class AppBrandPage$3
   implements Runnable
 {
-  AppBrandPage$3(AppBrandPage paramAppBrandPage, boolean paramBoolean, bgid parambgid) {}
+  AppBrandPage$3(AppBrandPage paramAppBrandPage, boolean paramBoolean, bgmk parambgmk) {}
   
   public void run()
   {
     if (AppBrandPage.a(this.this$0) != null) {
       AppBrandPage.a(this.this$0).b(this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_Bgid.a();
+    this.jdField_a_of_type_Bgmk.a();
   }
 }
 

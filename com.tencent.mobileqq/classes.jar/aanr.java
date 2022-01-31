@@ -1,16 +1,10 @@
-import android.content.Context;
-import com.tencent.ad.tangram.net.AdNet;
-
 public class aanr
 {
-  public static int a(Context paramContext)
-  {
-    return AdNet.getType(paramContext);
-  }
+  private aans a;
   
-  public static boolean a(Context paramContext)
+  public void a(aans paramaans)
   {
-    return bdee.d(paramContext);
+    this.a = paramaans;
   }
 }
 

@@ -1,16 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class awqx
-  implements View.OnClickListener
+class awqx
+  extends BroadcastReceiver
 {
-  public awqx(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  awqx(awqw paramawqw) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    awne.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    int k = 0;
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    {
+      if (paramIntent.getIntExtra("faceType", -1) != 1) {
+        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
+      }
+    }
+    else {
+      return;
+    }
+    if (TextUtils.isEmpty(awqw.a(this.a)))
+    {
+      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
+      return;
+    }
+    paramContext = paramIntent.getStringArrayListExtra("uinList");
+    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+    int j = k;
+    int i;
+    if (paramContext != null)
+    {
+      j = k;
+      if (paramIntent != null)
+      {
+        j = k;
+        if (paramContext.size() == paramIntent.size()) {
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      j = k;
+      if (i < paramContext.size())
+      {
+        if (((String)paramContext.get(i)).equals(awqw.a(this.a)))
+        {
+          awqw.a(this.a, (String)paramIntent.get(i));
+          j = 1;
+        }
+      }
+      else
+      {
+        if ((j == 0) || (!awqw.a(this.a))) {
+          break;
+        }
+        awqw.a(this.a, awqw.b(this.a));
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

@@ -1,42 +1,40 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class acbo
-  extends avqt
+  implements View.OnFocusChangeListener
 {
-  public acbo(AuthDevActivity paramAuthDevActivity) {}
+  public acbo(AddAccountActivity paramAddAccountActivity) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody)
-  {
-    super.a(paramRspBody);
-    AuthDevActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131692353);
-      localFormSimpleItem.setRightText(paramRspBody);
-      if (i != 1) {
-        break label111;
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
       }
     }
-    label111:
-    for (paramRspBody = "1";; paramRspBody = "0")
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
     {
-      azmj.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
-      paramRspBody = this.a.getString(2131692360);
-      break;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
   }
 }
 

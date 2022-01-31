@@ -1,15 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bksl
-  implements View.OnClickListener
+public abstract interface bksl
 {
-  bksl(bksk parambksk) {}
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public void onClick(View paramView)
-  {
-    bksk.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

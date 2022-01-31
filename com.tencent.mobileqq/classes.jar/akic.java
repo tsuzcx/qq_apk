@@ -1,21 +1,8 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class akic
-  extends akia
+public abstract interface akic
 {
-  public Button a;
-  public TextView a;
-  public StringBuilder a;
-  public ImageView b;
-  public SingleLineTextView c;
-  
-  akic()
-  {
-    this.a = 11;
-  }
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
 }
 
 

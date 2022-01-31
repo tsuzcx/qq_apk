@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bfei;
-import bfju;
-import bfjy;
-import bfka;
-import bizf;
+import bfir;
+import bfod;
+import bfoh;
+import bfoj;
+import bjdm;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -43,7 +43,7 @@ public class InternalJSPlugin
   private static final Set<String> S_EVENT_MAP = new InternalJSPlugin.1();
   public static final String TAG = "InternalJSPlugin";
   public Set<String> eventMap;
-  private bfka mDownloadListener = new InternalJSPlugin.8(this);
+  private bfoj mDownloadListener = new InternalJSPlugin.8(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
@@ -59,15 +59,15 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfjy.b, paramString1);
-    localBundle.putString(bfjy.j, paramString4);
-    localBundle.putString(bfjy.f, paramString2);
-    localBundle.putInt(bfjy.k, 2);
-    localBundle.putString(bfjy.i, "MiniApp");
-    localBundle.putString(bfjy.l, paramString3);
-    localBundle.putInt(bfjy.H, 1);
-    bfju.a(this.mDownloadListener);
-    bfju.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    localBundle.putString(bfoh.b, paramString1);
+    localBundle.putString(bfoh.j, paramString4);
+    localBundle.putString(bfoh.f, paramString2);
+    localBundle.putInt(bfoh.k, 2);
+    localBundle.putString(bfoh.i, "MiniApp");
+    localBundle.putString(bfoh.l, paramString3);
+    localBundle.putInt(bfoh.H, 1);
+    bfod.a(this.mDownloadListener);
+    bfod.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
     QQToast.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
   }
@@ -132,13 +132,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bfei.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bfir.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bfei.b((Activity)paramContext, localBundle);
+      bfir.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -227,7 +227,7 @@ public class InternalJSPlugin
             break label262;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772292, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772293, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -297,7 +297,7 @@ public class InternalJSPlugin
             break label846;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             break;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772292, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772293, 0);
             break;
             break label296;
             label803:
@@ -413,7 +413,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bizf.a());
+          ((JSONObject)localObject1).put("qua", bjdm.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }

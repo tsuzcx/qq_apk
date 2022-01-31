@@ -1,47 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
 
 public class alvs
-  extends DefaultHandler
+  implements Comparator<aozs>
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public alvs(QQAppInterface paramQQAppInterface) {}
-  
-  public HashMap<String, String> a()
+  private boolean a(aozs paramaozs)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return (paramaozs != null) && (paramaozs.a != null);
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public int a(aozs paramaozs1, aozs paramaozs2)
   {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
+    if ((a(paramaozs1)) && (a(paramaozs2))) {
+      if (paramaozs1.a.sPriority <= paramaozs2.a.sPriority) {}
     }
-  }
-  
-  public void endDocument()
-  {
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    do
+    {
+      return 1;
+      if (paramaozs1.a.sPriority < paramaozs2.a.sPriority) {
+        return -1;
+      }
+      return 0;
+      if (a(paramaozs1)) {
+        return -1;
+      }
+    } while (a(paramaozs2));
+    return 0;
   }
 }
 

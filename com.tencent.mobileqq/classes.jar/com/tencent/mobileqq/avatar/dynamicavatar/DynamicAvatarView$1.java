@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import bcwi;
+import bdar;
 
 class DynamicAvatarView$1
   implements Runnable

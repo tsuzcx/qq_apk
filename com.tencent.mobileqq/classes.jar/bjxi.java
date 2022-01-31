@@ -1,39 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class bjxi
+final class bjxi
+  implements bjsb
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
-    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
-    paramQQAppInterface.commit();
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).getInt("hot_shortvideo_multi_video_support_799", 0) != 0) {
-      bool = true;
+    if ((!TextUtils.isEmpty(bjxh.jdField_a_of_type_JavaLangString)) && (bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
+      bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bjxh.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
     }
-    return bool;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+    for (;;)
+    {
+      bjxh.jdField_a_of_type_JavaLangString = null;
+      bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
+      bjsa.a().b(this);
+      return;
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        ybk.a(1, 2131720031);
+        break;
+      case 0: 
+        ybk.a(2, 2131720050);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjxi
  * JD-Core Version:    0.7.0.1
  */

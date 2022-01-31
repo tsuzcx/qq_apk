@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import anrq;
+import anvz;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -51,7 +51,7 @@ public final class Achilles$1
         {
           localObject2 = (AchillesParams)((Iterator)localObject1).next();
           localObject3 = Achilles.a((AchillesParams)localObject2);
-          anrq.a((RockDownloadInfo)localObject3, new suy(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
+          anvz.a((RockDownloadInfo)localObject3, new suy(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
         }
       }
     }

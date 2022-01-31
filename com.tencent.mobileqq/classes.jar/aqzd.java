@@ -1,203 +1,159 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableStringBuilder;
-import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqzd
-  extends aqyy
+class aqzd
+  extends aqyt
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CharSequence b;
-  
-  public aqzd(String paramString, int paramInt)
+  public aqzd(aqyp paramaqyp)
   {
-    super(paramString, paramInt);
+    super(paramaqyp);
   }
   
-  private String a(FileInfo paramFileInfo)
+  protected String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(aroy.b(paramFileInfo.b()));
-    localStringBuilder.append("  ");
-    localStringBuilder.append(arof.a(paramFileInfo.a()));
-    return localStringBuilder.toString();
+    return "StateExcepInvalidWhenPause";
   }
   
-  public CharSequence a()
+  protected void a()
   {
-    return ayrd.a(((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)).d().toLowerCase(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<ayjl> a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    paramQQAppInterface = new ArrayList();
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramContext.hasNext())
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      FileInfo localFileInfo = (FileInfo)paramContext.next();
-      aqzd localaqzd = new aqzd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      localaqzd.a(this.jdField_a_of_type_AndroidOsBundle);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(localFileInfo);
-      localaqzd.a(localArrayList);
-      paramQQAppInterface.add(localaqzd);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public void a(List<FileInfo> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  protected void b(View paramView)
-  {
-    Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    paramView = (BaseActivity)paramView.getContext();
-    localObject = arni.a((FileInfo)localObject);
-    paramView = new arhj(paramView, new arhh(paramView.app, paramView, (FileManagerEntity)localObject, 10000));
-    paramView.a(8);
-    paramView.a();
-  }
-  
-  public boolean b()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return aqxj.a(localFileInfo);
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label61;
-      }
-      localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject).append(d());
-    }
-    label61:
-    for (this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);; this.jdField_a_of_type_JavaLangCharSequence = d()) {
-      return this.jdField_a_of_type_JavaLangCharSequence;
-    }
-  }
-  
-  public String c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null)
-    {
-      int i = arni.a(localFileInfo.c());
-      if ((i == 0) || (i == 2) || (i == 5)) {
-        return localFileInfo.c();
-      }
-    }
-    return "";
-  }
-  
-  protected void c(View paramView)
-  {
-    paramView = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (aqxj.a(paramView)) {
-      aqxj.b(paramView);
-    }
-    for (;;)
-    {
-      if (!arof.b(paramView.c()))
-      {
-        armz.a(arni.d(paramView.d()) + alpo.a(2131710006));
-        aqxj.b(paramView);
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      aqxj.a(paramView);
-      azmj.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 2, 0, "0", "0", "", "");
     }
+    aqyp.b(this.jdField_a_of_type_Aqyp, 9, 12);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 9, 12);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateExcepInvalidWhenRecv)");
+    this.jdField_a_of_type_Aqyt = new aqze(this.jdField_a_of_type_Aqyp);
   }
   
-  public int d()
+  protected void a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public CharSequence d()
-  {
-    if (this.b != null) {
-      return this.b;
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 1)
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      localSpannableStringBuilder = new SpannableStringBuilder(i + alpo.a(2131704891) + "\"");
-      localSpannableStringBuilder.append(ayrd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      localSpannableStringBuilder.append("\"").append(alpo.a(2131692539));
-      this.b = localSpannableStringBuilder;
-      return this.b;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
+      return;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(ayrd.a(a((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)), this.jdField_a_of_type_JavaLangString));
-    if (this.b == null) {
-      this.b = localSpannableStringBuilder;
+    if (5 != paramInt)
+    {
+      this.jdField_a_of_type_Aqyp.d();
+      switch (paramInt)
+      {
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
+      }
     }
-    return this.b;
+    while (paramInt != 0)
+    {
+      this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
+      return;
+      this.jdField_a_of_type_Aqyp.b();
+      break label63;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 5);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateAcceptByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqyr(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 6);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateRefuseByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzk(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 8);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSenderCancelSendWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzr(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 7);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSaveToWeiYunByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzo(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.a(this.jdField_a_of_type_Aqyp);
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 11);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzu(this.jdField_a_of_type_Aqyp);
+      paramInt = 0;
+    }
   }
   
-  public String d()
+  protected void a(int paramInt1, int paramInt2)
   {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return localFileInfo.d();
-    }
-    return "";
+    b(paramInt1, paramInt2);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 10, 11);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 10, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenPause)");
+    this.jdField_a_of_type_Aqyt = new aqzu(this.jdField_a_of_type_Aqyp);
   }
   
-  protected void d(View paramView)
+  protected void a(int paramInt, String paramString)
   {
-    paramView = (BaseActivity)paramView.getContext();
-    FileSelectorSearchGroupFragment.a(this);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
-    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzd(this.jdField_a_of_type_Aqyp);
   }
   
-  public int e()
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return arni.a(localFileInfo.c());
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    return 11;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((arrr.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Aqyp.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 1, 3);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 1, 3);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateGotoOffFileProcess)");
+    this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Aqyt = new aqzf(this.jdField_a_of_type_Aqyp);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 9, true);
+    a("StateCancelUploadWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqyv(this.jdField_a_of_type_Aqyp);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. onSenderReplayComeOnRecv entity is null");
+      return;
+    }
+    aqyp.a(this.jdField_a_of_type_Aqyp);
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 11, true);
+    a("StateLocalFailedWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzh(this.jdField_a_of_type_Aqyp);
   }
 }
 

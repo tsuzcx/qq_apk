@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-
 class anki
-  implements ArkAppCacheMgr.OnGetAppIcon
+  implements ymm
 {
-  anki(ankh paramankh, ankl paramankl) {}
+  anki(anke paramanke, long paramLong) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (paramBitmap != null)
+    anke localanke = this.jdField_a_of_type_Anke;
+    long l = this.jdField_a_of_type_Long;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_Ankl.b.setVisibility(0);
-      this.jdField_a_of_type_Ankl.a.setVisibility(0);
-      this.jdField_a_of_type_Ankl.a.setImageBitmap(paramBitmap);
+      localanke.a(l, paramBoolean1, paramString, i);
       return;
     }
-    this.jdField_a_of_type_Ankl.a.setVisibility(8);
   }
 }
 

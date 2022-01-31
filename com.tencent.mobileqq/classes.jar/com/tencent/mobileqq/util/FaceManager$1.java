@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.util;
 
-import bcxe;
-import bcxf;
-import bcxj;
-import bcxl;
+import bdbn;
+import bdbo;
+import bdbs;
+import bdbu;
 
 public class FaceManager$1
   implements Runnable
 {
-  public FaceManager$1(bcxl parambcxl, Object paramObject, int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public FaceManager$1(bdbu parambdbu, Object paramObject, int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof bcxf)) {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof bdbo)) {
       switch (this.jdField_a_of_type_Int)
       {
       }
@@ -20,33 +20,33 @@ public class FaceManager$1
     do
     {
       return;
-      ((bcxf)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+      ((bdbo)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
       return;
-      ((bcxf)this.jdField_a_of_type_JavaLangObject).b(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+      ((bdbo)this.jdField_a_of_type_JavaLangObject).b(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
       return;
-      ((bcxf)this.jdField_a_of_type_JavaLangObject).c(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+      ((bdbo)this.jdField_a_of_type_JavaLangObject).c(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
       return;
-      ((bcxf)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue(), ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).booleanValue());
+      ((bdbo)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue(), ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).booleanValue());
       return;
-      ((bcxf)this.jdField_a_of_type_JavaLangObject).b(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue(), ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).booleanValue());
+      ((bdbo)this.jdField_a_of_type_JavaLangObject).b(this.jdField_a_of_type_Boolean, (String)this.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue(), ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).booleanValue());
       return;
-      if ((this.jdField_a_of_type_JavaLangObject instanceof bcxe))
+      if ((this.jdField_a_of_type_JavaLangObject instanceof bdbn))
       {
         switch (this.jdField_a_of_type_Int)
         {
         default: 
           return;
         }
-        ((bcxe)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[0]).booleanValue(), (String)this.jdField_a_of_type_ArrayOfJavaLangObject[1]);
+        ((bdbn)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[0]).booleanValue(), (String)this.jdField_a_of_type_ArrayOfJavaLangObject[1]);
         return;
       }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof bcxj));
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof bdbs));
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     }
-    ((bcxj)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[0]).booleanValue(), (String)this.jdField_a_of_type_ArrayOfJavaLangObject[1]);
+    ((bdbs)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Boolean, ((Boolean)this.jdField_a_of_type_ArrayOfJavaLangObject[0]).booleanValue(), (String)this.jdField_a_of_type_ArrayOfJavaLangObject[1]);
   }
 }
 

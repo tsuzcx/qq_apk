@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.soso;
 
-import amle;
+import ampt;
 
 final class SosoInterface$5
   implements Runnable
 {
-  SosoInterface$5(amle paramamle, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  SosoInterface$5(ampt paramampt, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amle.onLocationFinish(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    this.jdField_a_of_type_Ampt.onLocationFinish(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 

@@ -1,27 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 public class bcvp
-  implements DownloadParams.DecodeHandler
+  implements View.OnClickListener
 {
-  private final int a = 10;
-  private final int b = 20;
+  public bcvp(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    try
+    this.a.a.this$0.b();
+    paramView = this.a.a.this$0;
+    paramView.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
-      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
-      bdjc.a(paramDownloadParams, 10);
-      return paramDownloadParams;
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    catch (OutOfMemoryError paramDownloadParams)
-    {
-      return paramBitmap;
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
     }
-    catch (Exception paramDownloadParams) {}
-    return paramBitmap;
+    azqs.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
   }
 }
 

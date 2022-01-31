@@ -1,53 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class aycf
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aycf(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aycf(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
-    }
-    if (paramMessage.what == 1001) {
-      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
-    }
-    for (;;)
-    {
-      return;
-      if (paramMessage.what == 1002)
-      {
-        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
-        return;
-      }
-      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (aycj)localIterator.next();
-        if (localObject != null)
-        {
-          View localView = ((aycj)localObject).a();
-          localObject = ((aycj)localObject).a();
-          if ((localView != null) && (localObject != null)) {
-            ((ayck)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
-          } else {
-            localIterator.remove();
-          }
-        }
-      }
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new RichStatus(null);
+    paramDialogInterface.copyFrom(this.a.a);
+    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
   }
 }
 

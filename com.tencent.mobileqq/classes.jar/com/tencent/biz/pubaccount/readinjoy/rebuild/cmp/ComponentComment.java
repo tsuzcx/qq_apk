@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bdbt;
+import bdgc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -63,10 +63,10 @@ public class ComponentComment
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559896, this, true);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364549);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364590));
-    this.b = ((TextView)paramContext.findViewById(2131364588));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559895, this, true);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364551);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364592));
+    this.b = ((TextView)paramContext.findViewById(2131364590));
   }
   
   public void a(Object paramObject)
@@ -95,14 +95,14 @@ public class ComponentComment
         if (!ors.a()) {
           break label319;
         }
-        paramObject = bdbt.j((QQAppInterface)ors.a(), String.valueOf(l));
+        paramObject = bdgc.j((QQAppInterface)ors.a(), String.valueOf(l));
         label134:
         String str3 = ors.d(paramObject);
         if (str3 == null) {
           break label339;
         }
         paramObject = new SpannableString(str3 + ":  " + str2);
-        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131167138)), 0, str3.length(), 33);
+        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131167140)), 0, str3.length(), 33);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str3 + ":  ");
       }

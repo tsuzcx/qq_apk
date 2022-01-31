@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.theme.diy;
 
-import bakq;
+import baoz;
 
 class ThemeDIYActivity$DataLoading$1
-  implements bakq
+  implements baoz
 {
   ThemeDIYActivity$DataLoading$1(ThemeDIYActivity.DataLoading paramDataLoading) {}
   

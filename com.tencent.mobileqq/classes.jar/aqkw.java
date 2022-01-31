@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-
-public class aqkw
-  implements azjq
+public abstract class aqkw
 {
-  public aqkw(FileAssistantActivity paramFileAssistantActivity) {}
+  public int a = 1;
+  public String e;
   
-  public void a()
+  public aqkw(int paramInt, String paramString)
   {
-    FileAssistantActivity.c(this.a);
+    this.a = paramInt;
+    this.e = paramString;
   }
   
-  public void b()
+  public boolean equals(Object paramObject)
   {
-    FileAssistantActivity.c(this.a);
+    if ((paramObject instanceof aqkw))
+    {
+      paramObject = (aqkw)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 

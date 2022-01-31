@@ -1,49 +1,60 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class yzp
+class yzp
+  extends bead
 {
-  public yzp(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  yzp(yzo paramyzo, Downloader.DownloadListener paramDownloadListener, String paramString1, yzq paramyzq, String paramString2, String paramString3) {}
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public void onCancel(beae parambeae)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      bdfq.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131707809));
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-    }
+    yzq.a(this.jdField_a_of_type_Yzq, 3);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
   }
   
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
+  public void onDone(beae parambeae)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
+    if (parambeae.a == 0)
     {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
+      boolean bool;
+      if (new File(yzo.jdField_a_of_type_JavaLangString).exists())
+      {
+        bool = bjtz.b(new File(this.jdField_a_of_type_JavaLangString), new File(yzo.jdField_a_of_type_JavaLangString + "/" + this.b));
+        if (!bool) {
+          break label158;
+        }
+        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+        }
+        new File(this.jdField_a_of_type_JavaLangString).delete();
+        yzq.a(this.jdField_a_of_type_Yzq, 0);
+      }
+      for (;;)
+      {
+        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
+        return;
+        label158:
+        yzq.a(this.jdField_a_of_type_Yzq, 2);
+      }
     }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
     }
+    yzq.a(this.jdField_a_of_type_Yzq, 2);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
+  }
+  
+  public void onProgress(beae parambeae)
+  {
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+    }
+    yzq.a(this.jdField_a_of_type_Yzq, 1);
   }
 }
 

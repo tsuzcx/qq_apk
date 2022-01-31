@@ -1,10 +1,17 @@
-public abstract interface blrw
+class blrw
+  implements bnha
 {
-  public abstract void b();
+  blrw(blru paramblru) {}
   
-  public abstract void ba_();
-  
-  public abstract void c();
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.a(4);
+  }
 }
 
 

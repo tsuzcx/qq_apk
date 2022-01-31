@@ -1,6 +1,8 @@
 public abstract interface ukr
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a(uiz paramuiz);
+  
+  public abstract void b(uiz paramuiz);
 }
 
 

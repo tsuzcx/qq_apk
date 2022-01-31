@@ -1,32 +1,15 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileFilter;
 
-public class xhy
+class xhy
+  implements FileFilter
 {
-  TroopInfo a;
-  public boolean a;
+  xhy(xhx paramxhx) {}
   
-  public xhy(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-  }
-  
-  public static ArrayList<xhy> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      xhy localxhy = new xhy(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localxhy.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localxhy);
-      i += 1;
-    }
-    return localArrayList;
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
   }
 }
 

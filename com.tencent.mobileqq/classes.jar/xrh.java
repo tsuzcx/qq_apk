@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
 
 public class xrh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public xrh(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
+  public xrh(FileUtils.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

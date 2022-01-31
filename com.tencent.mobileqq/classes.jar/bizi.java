@@ -1,45 +1,16 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public class bizi
-  extends bizh
+class bizi
+  extends alzr
 {
-  newest_feeds_req a = new newest_feeds_req();
+  bizi(bizh parambizh, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public bizi(long paramLong, Map<Long, Long> paramMap)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.cmd = 4;
-    this.a.login_uin = paramLong;
-    this.a.strQua = bizf.a();
-    this.a.mapUinTimes = new HashMap();
-    this.a.mapUinTimes.putAll(paramMap);
-  }
-  
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getMsgNewestFeeds";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
-  }
-  
-  public String uniKey()
-  {
-    return "getMsgNewestFeeds";
+    paramString = new Bundle();
+    paramString.putBoolean("isSuccess", paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
   }
 }
 

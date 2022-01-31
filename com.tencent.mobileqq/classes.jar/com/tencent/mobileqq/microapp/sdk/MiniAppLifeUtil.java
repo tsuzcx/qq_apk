@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.sdk;
 
 import Wallet.ApkgConfig;
-import aizx;
+import ajem;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -27,7 +27,7 @@ public class MiniAppLifeUtil
     }
     return;
     label31:
-    aizx.a(paramInt, paramMiniAppConfig);
+    ajem.a(paramInt, paramMiniAppConfig);
   }
   
   private static void onBack(QQAppInterface paramQQAppInterface, MiniAppConfig paramMiniAppConfig)

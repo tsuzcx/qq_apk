@@ -14,8 +14,8 @@ public class ConfigHandler$10
     //   8: invokespecial 23	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_1
     //   12: aload_0
-    //   13: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lallq;
-    //   16: getfield 31	allq:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   13: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lalqf;
+    //   16: getfield 31	alqf:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   19: new 33	java/net/URL
     //   22: dup
     //   23: aload_0
@@ -25,31 +25,31 @@ public class ConfigHandler$10
     //   31: invokestatic 41	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/net/URL;Ljava/io/File;)Z
     //   34: ifeq +16 -> 50
     //   37: aload_0
-    //   38: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lallq;
+    //   38: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lalqf;
     //   41: iconst_3
     //   42: iconst_1
     //   43: aload_0
     //   44: getfield 19	com/tencent/mobileqq/app/ConfigHandler$10:a	Ljava/lang/String;
-    //   47: invokevirtual 45	allq:notifyUI	(IZLjava/lang/Object;)V
+    //   47: invokevirtual 45	alqf:notifyUI	(IZLjava/lang/Object;)V
     //   50: aload_0
-    //   51: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lallq;
+    //   51: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lalqf;
     //   54: aload_0
     //   55: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   58: invokestatic 48	allq:a	(Lallq;Ljava/lang/String;)V
+    //   58: invokestatic 48	alqf:a	(Lalqf;Ljava/lang/String;)V
     //   61: return
     //   62: astore_1
     //   63: aload_0
-    //   64: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lallq;
+    //   64: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lalqf;
     //   67: aload_0
     //   68: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   71: invokestatic 48	allq:a	(Lallq;Ljava/lang/String;)V
+    //   71: invokestatic 48	alqf:a	(Lalqf;Ljava/lang/String;)V
     //   74: return
     //   75: astore_1
     //   76: aload_0
-    //   77: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lallq;
+    //   77: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lalqf;
     //   80: aload_0
     //   81: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   84: invokestatic 48	allq:a	(Lallq;Ljava/lang/String;)V
+    //   84: invokestatic 48	alqf:a	(Lalqf;Ljava/lang/String;)V
     //   87: aload_1
     //   88: athrow
     // Local variable table:

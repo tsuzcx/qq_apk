@@ -5,12 +5,12 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.StateSet;
 import android.widget.ImageView;
-import bhsu;
+import bhxb;
 
 public class FadeIconImageView
   extends ImageView
 {
-  private bhsu a;
+  private bhxb a;
   
   public FadeIconImageView(Context paramContext)
   {
@@ -47,9 +47,9 @@ public class FadeIconImageView
     }
   }
   
-  public void setVisibilityHandler(bhsu parambhsu)
+  public void setVisibilityHandler(bhxb parambhxb)
   {
-    this.a = parambhsu;
+    this.a = parambhxb;
   }
 }
 

@@ -1,32 +1,23 @@
-import android.graphics.Point;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-abstract interface bkrn
+class bkrn
+  implements DialogInterface.OnClickListener
 {
-  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
+  bkrn(bkrk parambkrk) {}
   
-  public abstract int a(int paramInt);
-  
-  public abstract int a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, yub paramyub);
-  
-  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
-  
-  public abstract void a(bkpe parambkpe, int paramInt, Point paramPoint);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(bkrd parambkrd);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract int b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((bkqs)this.a.a.get()).b != null) {
+      ((bkqs)this.a.a.get()).b.setClickable(true);
+    }
+  }
 }
 
 

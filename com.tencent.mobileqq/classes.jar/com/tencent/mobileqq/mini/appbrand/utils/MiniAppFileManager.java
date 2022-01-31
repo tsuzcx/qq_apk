@@ -3,9 +3,9 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 import android.app.Activity;
 import android.os.Environment;
 import android.text.TextUtils;
-import bdcs;
-import bduw;
-import bfhi;
+import bdhb;
+import bdzf;
+import bflr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mm.vfs.VFSFileOp;
@@ -77,7 +77,7 @@ public class MiniAppFileManager
   {
     paramString = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString);
     if (new File(paramString).exists()) {
-      bdcs.a(paramString, false);
+      bdhb.a(paramString, false);
     }
     hasCheckUsrDir = false;
   }
@@ -168,7 +168,7 @@ public class MiniAppFileManager
       QLog.e("MiniAppFileManager", 1, "getCurAppSdcardDir error. uin : " + str + "; curMiniAppId : " + this.curMiniAppId);
       return MINI_FILE_SAVE_PATH;
     }
-    return MINI_FILE_SAVE_PATH + bfhi.d(this.curMiniAppId) + "/" + bfhi.d(str);
+    return MINI_FILE_SAVE_PATH + bflr.d(this.curMiniAppId) + "/" + bflr.d(str);
   }
   
   private static String getCurAppSdcardDir(String paramString)
@@ -179,7 +179,7 @@ public class MiniAppFileManager
       QLog.e("MiniAppFileManager", 1, "getCurAppSdcardDir error. uin : " + str + "; curMiniAppId : " + paramString);
       return MINI_FILE_SAVE_PATH;
     }
-    return MINI_FILE_SAVE_PATH + bfhi.d(paramString) + "/" + bfhi.d(str);
+    return MINI_FILE_SAVE_PATH + bflr.d(paramString) + "/" + bflr.d(str);
   }
   
   private String getFileName(String paramString)
@@ -288,7 +288,7 @@ public class MiniAppFileManager
     paramString2 = new VFSFile(str1, paramString3);
     try
     {
-      if (bduw.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1)))
+      if (bdzf.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1)))
       {
         paramString1 = paramString2.getAbsolutePath();
         return paramString1;
@@ -623,7 +623,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_TMP, "");
         paramString = new VFSFile(getMiniFolderPath(0), paramString);
-        if ((!paramString.exists()) || (!bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((!paramString.exists()) || (!bdzf.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           break label479;
         }
         return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
@@ -637,7 +637,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_STORE, "");
         paramString = new VFSFile(getMiniFolderPath(1), paramString);
-        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bdzf.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
@@ -645,7 +645,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_USR, "");
         paramString = new VFSFile(getMiniFolderPath(2), paramString);
-        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bdzf.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
@@ -653,14 +653,14 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_PRE_CACHE, "");
         paramString = new VFSFile(getMiniFolderPath(4), paramString);
-        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bdzf.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
       else
       {
         paramString = new VFSFile(this.apkgInfo.getFilePath(str1));
-        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(bduw.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()))))
+        if ((paramString.exists()) && (bdzf.b(paramString.getPath()).startsWith(bdzf.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()))))
         {
           paramString = VFSFileOp.exportExternalPath(this.apkgInfo.getFilePath(str1), true);
           return paramString;
@@ -690,7 +690,7 @@ public class MiniAppFileManager
     VFSFile localVFSFile = new VFSFile(getMiniFolderPath(1));
     try
     {
-      if (bduw.b(localVFSFile.getPath()).startsWith(getCurAppSdcardDir())) {
+      if (bdzf.b(localVFSFile.getPath()).startsWith(getCurAppSdcardDir())) {
         arrayOfVFSFile = localVFSFile.listFiles();
       }
       return arrayOfVFSFile;
@@ -725,7 +725,7 @@ public class MiniAppFileManager
       paramString2 = new VFSFile(getMiniFolderPath(0, paramString1), paramString2);
       try
       {
-        if (!bduw.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1))) {
+        if (!bdzf.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1))) {
           break;
         }
         paramString1 = VFSFileOp.exportExternalPath(paramString2.getAbsolutePath(), true);
@@ -773,7 +773,7 @@ public class MiniAppFileManager
     }
     try
     {
-      if (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir())) {
+      if (bdzf.b(paramString.getPath()).startsWith(getCurAppSdcardDir())) {
         localObject1 = paramString.getAbsolutePath();
       }
       return localObject1;
@@ -947,7 +947,7 @@ public class MiniAppFileManager
       boolean bool1 = bool2;
       if (paramString.exists())
       {
-        boolean bool3 = bduw.b(paramString.getPath()).startsWith(bduw.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()));
+        boolean bool3 = bdzf.b(paramString.getPath()).startsWith(bdzf.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()));
         bool1 = bool2;
         if (bool3) {
           bool1 = true;

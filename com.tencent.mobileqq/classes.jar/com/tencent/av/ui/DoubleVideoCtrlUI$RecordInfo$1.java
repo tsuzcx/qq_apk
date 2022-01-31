@@ -12,7 +12,7 @@ public class DoubleVideoCtrlUI$RecordInfo$1
   
   public void run()
   {
-    int i = 2130841843;
+    int i = 2130841856;
     if ((mfj.a(this.this$0) == null) || (mfj.a(this.this$0) == null) || (mfj.a(this.this$0).a == null)) {}
     while (mfj.a(this.this$0) != 1) {
       return;
@@ -22,7 +22,7 @@ public class DoubleVideoCtrlUI$RecordInfo$1
     {
       localObject = this.this$0;
       if (mfj.c(this.this$0) == 1) {
-        i = 2130841844;
+        i = 2130841857;
       }
       mfj.a((mfj)localObject, i);
       mfj.a(this.this$0).a.f(-1025L, 65535);
@@ -30,9 +30,9 @@ public class DoubleVideoCtrlUI$RecordInfo$1
       return;
     }
     mfj.b(this.this$0, 2);
-    mfj.a(this.this$0, 2130841843);
+    mfj.a(this.this$0, 2130841856);
     mfj.a(this.this$0).a.f(-1026L, 65535);
-    Object localObject = (QavRecordButtonView)mfj.a(this.this$0).findViewById(2131375458);
+    Object localObject = (QavRecordButtonView)mfj.a(this.this$0).findViewById(2131375509);
     if (localObject != null) {
       ((QavRecordButtonView)localObject).callOnClick();
     }

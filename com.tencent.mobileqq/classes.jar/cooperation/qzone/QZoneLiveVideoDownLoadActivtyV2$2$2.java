@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import bjac;
+import bjej;
 
 public class QZoneLiveVideoDownLoadActivtyV2$2$2
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$2(bjac parambjac) {}
+  public QZoneLiveVideoDownLoadActivtyV2$2$2(bjej parambjej) {}
   
   public void run()
   {

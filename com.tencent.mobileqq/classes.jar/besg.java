@@ -1,8 +1,21 @@
-public abstract interface besg
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+
+class besg
+  implements View.OnKeyListener
 {
-  public abstract void a(int paramInt);
+  besg(besf parambesf) {}
   
-  public abstract void b(int paramInt);
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      besf.a(this.a);
+      return true;
+    }
+    return false;
+  }
 }
 
 

@@ -9,14 +9,14 @@ import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bdkf;
+import bdoo;
 
 public class TriangleView
   extends View
 {
-  public static final int a = bdkf.a(7.0F);
-  public static final int b = bdkf.a(2.0F);
-  public static final int c = bdkf.a(2.0F);
+  public static final int a = bdoo.a(7.0F);
+  public static final int b = bdoo.a(2.0F);
+  public static final int c = bdoo.a(2.0F);
   private int d = 1;
   private int e = Color.parseColor("#00CAFC");
   

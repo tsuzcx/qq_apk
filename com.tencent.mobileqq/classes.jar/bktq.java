@@ -1,20 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public class bktq
-  implements Animation.AnimationListener
+class bktq
+  implements Animator.AnimatorListener
 {
-  public bktq(AEProviderContainerView paramAEProviderContainerView) {}
+  bktq(bktp parambktp) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
+    }
+    if (bktp.a(this.a) != null)
+    {
+      bktp.a(this.a).setAlpha(1.0F);
+      bktp.a(this.a).setVisibility(4);
+      bktp.a(this.a).b().a(Boolean.valueOf(false));
+    }
+    bktp.c(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

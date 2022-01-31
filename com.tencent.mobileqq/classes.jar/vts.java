@@ -1,18 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import java.util.LinkedList;
 
 public class vts
-  implements vtp
 {
-  public vts(MediaPlayer paramMediaPlayer) {}
+  private final SparseArray<LinkedList<Object>> a = new SparseArray();
   
-  public void a(vtn paramvtn)
+  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Vtl.b() < 2000000L) && (!this.a.jdField_a_of_type_Vtl.b()))
+    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
+    if (paramClass != null)
     {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Vtt.sendMessage(this.a.jdField_a_of_type_Vtt.obtainMessage(200, 701, 0));
+      paramClass = paramClass.poll();
+      if (paramClass != null) {}
+      return paramClass;
     }
+    return null;
+  }
+  
+  public void a(@NonNull Object paramObject)
+  {
+    int i = paramObject.getClass().hashCode();
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(i, localLinkedList1);
+    }
+    localLinkedList1.offer(paramObject);
   }
 }
 

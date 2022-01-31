@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -10,7 +10,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 class RewardedVideoAdPlugin$1
   implements Runnable
 {
-  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, bgkd parambgkd, String paramString3, Bundle paramBundle) {}
+  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, bgok parambgok, String paramString3, Bundle paramBundle) {}
   
   public void run()
   {

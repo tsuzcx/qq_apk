@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-public class amug
-  implements avwy
+public final class amug
+  implements Parcelable.Creator<ARRecognition>
 {
-  public amug(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
-  
-  public void a()
+  public ARRecognition a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    }
-    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    azmj.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+    return new ARRecognition(paramParcel);
   }
   
-  public void b()
+  public ARRecognition[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
+    return new ARRecognition[paramInt];
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark.API;
 
-import aano;
-import aaoo;
-import aaop;
-import aaoq;
+import aasd;
+import aatd;
+import aate;
+import aatf;
 import android.content.Context;
 import android.text.TextUtils;
-import angm;
+import ankv;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(angm paramangm, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$4(ankv paramankv, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -41,16 +41,16 @@ public class ArkAppNotifyCenter$GdtNotify$4
         for (;;)
         {
           Object localObject1;
-          aaop localaaop;
+          aate localaate;
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = aano.a(localObject2.a);
+        localObject2 = aasd.a(localObject2.a);
       }
-      localaaop = new aaop();
-      localaaop.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = aaoo.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localaaop);
-      if ((localObject1 == null) || (((aaoq)localObject1).a == null))
+      localaate = new aate();
+      localaate.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = aatd.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localaate);
+      if ((localObject1 == null) || (((aatf)localObject1).a == null))
       {
         QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", null);
         return;

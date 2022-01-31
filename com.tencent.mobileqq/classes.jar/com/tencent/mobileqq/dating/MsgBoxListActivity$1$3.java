@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dating;
 
-import apdy;
+import apih;
 
 public class MsgBoxListActivity$1$3
   implements Runnable
 {
-  public MsgBoxListActivity$1$3(apdy paramapdy) {}
+  public MsgBoxListActivity$1$3(apih paramapih) {}
   
   public void run()
   {

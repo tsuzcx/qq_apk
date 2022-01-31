@@ -1,22 +1,35 @@
-final class bkfb
-  implements bkgy
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.3;
+
+public class bkfb
+  implements ModuleDownloadListener
 {
-  public void a(String paramString) {}
+  public bkfb(VipARUtils.3 param3) {}
   
-  public void a(String paramString, long paramLong, bkgj parambkgj, boolean paramBoolean)
+  public void onDownloadCanceled(String paramString)
   {
-    if (paramBoolean)
-    {
-      if (parambkgj.a != 5) {
-        break label25;
-      }
-      bkid.a(paramString, "actFileWyDown", parambkgj, false, paramLong);
-    }
-    label25:
-    while (parambkgj.a != 4) {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
       return;
     }
-    bkid.a(paramString, "actFileWyDown", parambkgj, true, paramLong);
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkey.a(), " onDownloadSucceed = ", bkey.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkey.b());
   }
 }
 

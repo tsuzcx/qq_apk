@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.util.Pair;
 import android.util.SparseArray;
-import areh;
+import ariq;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xwb;
+import yak;
 
 class QFileUtils$7$1
   implements Runnable
@@ -25,7 +25,7 @@ class QFileUtils$7$1
     Object localObject1;
     Object localObject2;
     String str;
-    if (xwb.a(this.jdField_a_of_type_Int))
+    if (yak.a(this.jdField_a_of_type_Int))
     {
       localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject1 instanceof Pair)) {
@@ -55,7 +55,7 @@ class QFileUtils$7$1
               localObject2 = ShareActionSheetBuilder.ActionSheetItem.build(55);
               ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = ((String)localObject1);
               localArrayList.add(localObject2);
-              if (xwb.b(this.jdField_a_of_type_Int))
+              if (yak.b(this.jdField_a_of_type_Int))
               {
                 localObject2 = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 localObject1 = localObject4;
@@ -91,10 +91,10 @@ class QFileUtils$7$1
             localObject2 = ShareActionSheetBuilder.ActionSheetItem.build(56);
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = ((String)localObject1);
             localArrayList.add(localObject2);
-            if ((localArrayList == null) || (this.this$0.jdField_a_of_type_Areh == null)) {
+            if ((localArrayList == null) || (this.this$0.jdField_a_of_type_Ariq == null)) {
               break;
             }
-            this.this$0.jdField_a_of_type_Areh.a(this.this$0.jdField_a_of_type_JavaLangString, localArrayList);
+            this.this$0.jdField_a_of_type_Ariq.a(this.this$0.jdField_a_of_type_JavaLangString, localArrayList);
             return;
           }
           catch (JSONException localJSONException3) {}

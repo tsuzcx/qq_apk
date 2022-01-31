@@ -1,26 +1,18 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import blin;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import bllj;
+import blmy;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class AEEditorImageEditFragment$7$1
   implements Runnable
 {
-  public AEEditorImageEditFragment$7$1(blin paramblin, Collection paramCollection) {}
+  public AEEditorImageEditFragment$7$1(blmy paramblmy, bllj parambllj) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Blin.a.b();
-    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilCollection);
-    if (((List)localObject).size() > 0) {}
-    for (localObject = (String)((List)localObject).get(0);; localObject = "unknown")
-    {
-      QQToast.a(this.jdField_a_of_type_Blin.a.getActivity(), "导出失败: error code = " + (String)localObject, 0).a();
-      return;
-    }
+    this.jdField_a_of_type_Blmy.a.a(this.jdField_a_of_type_Bllj);
+    this.jdField_a_of_type_Blmy.a.a.setShowResult(true);
   }
 }
 

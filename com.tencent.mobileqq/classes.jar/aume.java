@@ -1,36 +1,6 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-
-class aume
-  implements ayzm
+public abstract interface aume
 {
-  aume(ault paramault, aulo paramaulo, String paramString) {}
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aulo.a != null) && (this.jdField_a_of_type_Aulo.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Aulo.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    this.jdField_a_of_type_Ault.a(this.jdField_a_of_type_Aulo, paramInt, 0, "");
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aulo.a != null) && (this.jdField_a_of_type_Aulo.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Aulo.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (this.jdField_a_of_type_Aulo.a != null)
-    {
-      String str = this.jdField_a_of_type_Ault.a(this.jdField_a_of_type_Aulo.a.jdField_a_of_type_Ayyx);
-      aulp localaulp = this.jdField_a_of_type_Ault.a(str);
-      if ((localaulp != null) && (!localaulp.a))
-      {
-        localaulp.c = paramInt;
-        this.jdField_a_of_type_Ault.a(str, localaulp);
-        ault.a(this.jdField_a_of_type_Ault, localaulp, localaulp.c);
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class aesj
-  implements azzg
+  implements bfah
 {
-  aesj(aesi paramaesi) {}
+  aesj(aesh paramaesh) {}
   
-  public void a()
+  public void a(BaseResp paramBaseResp)
   {
-    azzm localazzm = new azzm(3000, 360, 0);
-    localazzm.a = true;
-    this.a.a.d.a(new azzf[] { localazzm });
+    if (paramBaseResp.errCode != 0) {
+      aesh.a(this.a, 1, 2131693757);
+    }
   }
 }
 

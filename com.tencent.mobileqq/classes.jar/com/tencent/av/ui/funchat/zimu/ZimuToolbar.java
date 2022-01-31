@@ -1,6 +1,6 @@
 package com.tencent.av.ui.funchat.zimu;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
@@ -86,9 +86,9 @@ public class ZimuToolbar
       if (j == 1) {
         break;
       }
-      i = 2131695944;
+      i = 2131695946;
       continue;
-      i = 2131695943;
+      i = 2131695945;
     }
   }
   
@@ -233,9 +233,9 @@ public class ZimuToolbar
     {
       this.mUIInfo = new mej();
       this.mUIInfo.d = 6;
-      this.mUIInfo.f = 2131559639;
-      this.mUIInfo.e = 2130841933;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696388);
+      this.mUIInfo.f = 2131559638;
+      this.mUIInfo.e = 2130841946;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696390);
     }
     return this.mUIInfo;
   }
@@ -243,7 +243,7 @@ public class ZimuToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695934);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695936);
     }
     return "";
   }
@@ -255,8 +255,8 @@ public class ZimuToolbar
     paramArrayList.add(0, localmkj);
     localmkj = new mkj();
     localmkj.jdField_a_of_type_JavaLangString = "0";
-    localmkj.b = String.valueOf(2130841837);
-    localmkj.d = alpo.a(2131717419);
+    localmkj.b = String.valueOf(2130841850);
+    localmkj.d = alud.a(2131717431);
     paramArrayList.add(1, localmkj);
     return paramArrayList;
   }
@@ -280,7 +280,7 @@ public class ZimuToolbar
   public void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     this.mSupportManager = ((llc)this.mApp.a(5));
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367793));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367803));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mZimuManager = ((lls)this.mApp.a(0));
     ArrayList localArrayList2 = convertItemInfo(this.mZimuManager.a(null));

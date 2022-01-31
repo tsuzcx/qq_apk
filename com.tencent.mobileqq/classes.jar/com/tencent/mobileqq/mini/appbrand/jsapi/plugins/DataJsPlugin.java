@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aano;
-import absf;
-import absi;
-import absn;
+import aasd;
+import abwu;
+import abwx;
+import abxc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -37,7 +37,7 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import wsv;
+import wxe;
 
 public class DataJsPlugin
   extends BaseJsPlugin
@@ -93,9 +93,9 @@ public class DataJsPlugin
   public static final int UNDEFINED = -1;
   private static final int WHAT_GET_SHARE_INFO_TIMEOUT = 1;
   private static final String fakeCheckNavigateRightRsp = "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}";
-  private absi apiManager;
+  private abwx apiManager;
   private Long lastNotRspReqTime = Long.valueOf(0L);
-  private List<absf> loginCallBacks = new LinkedList();
+  private List<abwu> loginCallBacks = new LinkedList();
   protected GdtAppReceiver mGgtAppReceiver;
   private ArrayList<String> openUrlDomainWhiteList;
   private String privateOpenUrlDomainWhiteList;
@@ -108,7 +108,7 @@ public class DataJsPlugin
       if (paramString.getStatus() != 1) {
         break label44;
       }
-      wsv.b("[mini] DataJsPlugin", "URLDrawable's status is SUCCESSED.");
+      wxe.b("[mini] DataJsPlugin", "URLDrawable's status is SUCCESSED.");
       paramURLDrawableListener.onLoadSuccessed(paramString);
     }
     for (;;)
@@ -117,7 +117,7 @@ public class DataJsPlugin
       paramString.downloadImediatly();
       return;
       label44:
-      wsv.b("[mini] DataJsPlugin", "start load URLDrawable.");
+      wxe.b("[mini] DataJsPlugin", "start load URLDrawable.");
     }
   }
   
@@ -131,7 +131,7 @@ public class DataJsPlugin
       if (i == 0)
       {
         localObject = ((JSONObject)localObject).getJSONArray("ads_info").getJSONObject(0);
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
         return localObject;
       }
     }
@@ -190,8 +190,8 @@ public class DataJsPlugin
   
   private void initApiManager(int paramInt, String paramString)
   {
-    absn.a();
-    this.apiManager = absn.a(this.jsPluginEngine.getActivityContext(), paramInt, paramString);
+    abxc.a();
+    this.apiManager = abxc.a(this.jsPluginEngine.getActivityContext(), paramInt, paramString);
   }
   
   private void operateGetShareInfo(String paramString1, int paramInt1, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
@@ -419,7 +419,7 @@ public class DataJsPlugin
     //   290: d2i
     //   291: istore 10
     //   293: ldc_w 705
-    //   296: invokestatic 709	bdkf:b	(F)I
+    //   296: invokestatic 709	bdoo:b	(F)I
     //   299: i2d
     //   300: dload 5
     //   302: ddiv
@@ -428,7 +428,7 @@ public class DataJsPlugin
     //   307: d2i
     //   308: istore 11
     //   310: ldc_w 712
-    //   313: invokestatic 709	bdkf:b	(F)I
+    //   313: invokestatic 709	bdoo:b	(F)I
     //   316: i2d
     //   317: dload 5
     //   319: ddiv
@@ -616,7 +616,7 @@ public class DataJsPlugin
     //   758: pop
     //   759: aload 20
     //   761: ldc_w 836
-    //   764: invokestatic 841	bdcb:c	()Ljava/lang/String;
+    //   764: invokestatic 841	bdgk:c	()Ljava/lang/String;
     //   767: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   770: pop
     //   771: aload 20
@@ -1128,7 +1128,7 @@ public class DataJsPlugin
     //   1899: aload_1
     //   1900: iload 4
     //   1902: invokespecial 1045	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$4:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   1905: invokestatic 1050	aiqs:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
+    //   1905: invokestatic 1050	aivh:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
     //   1908: goto -543 -> 1365
     //   1911: ldc_w 1052
     //   1914: aload 21
@@ -1394,7 +1394,7 @@ public class DataJsPlugin
     //   2526: dup
     //   2527: invokespecial 307	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:<init>	()V
     //   2530: aload_2
-    //   2531: invokestatic 313	aano:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
+    //   2531: invokestatic 313	aasd:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
     //   2534: invokevirtual 319	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
     //   2537: checkcast 306	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
     //   2540: astore 20
@@ -2409,7 +2409,7 @@ public class DataJsPlugin
     //   4703: invokevirtual 1356	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
     //   4706: astore_1
     //   4707: aload_1
-    //   4708: invokestatic 1360	bdje:a	(Ljava/lang/String;)Z
+    //   4708: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
     //   4711: ifne +33 -> 4744
     //   4714: aload_0
     //   4715: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
@@ -2540,7 +2540,7 @@ public class DataJsPlugin
     //   5004: iconst_1
     //   5005: istore 17
     //   5007: aload 27
-    //   5009: invokestatic 1360	bdje:a	(Ljava/lang/String;)Z
+    //   5009: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
     //   5012: ifne +13 -> 5025
     //   5015: iload 16
     //   5017: ifne +197 -> 5214
@@ -2880,7 +2880,7 @@ public class DataJsPlugin
     //   5752: putfield 1348	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareCallbackId	I
     //   5755: goto -250 -> 5505
     //   5758: aload_2
-    //   5759: invokestatic 1360	bdje:a	(Ljava/lang/String;)Z
+    //   5759: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
     //   5762: ifne +13 -> 5775
     //   5765: iload 4
     //   5767: ifne +114 -> 5881
@@ -3375,7 +3375,7 @@ public class DataJsPlugin
     //   6816: aload_1
     //   6817: iload 4
     //   6819: invokespecial 1516	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$14:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   6822: invokestatic 1050	aiqs:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
+    //   6822: invokestatic 1050	aivh:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
     //   6825: goto -5460 -> 1365
     //   6828: astore_1
     //   6829: aload_1
@@ -3498,7 +3498,7 @@ public class DataJsPlugin
     //   7077: ldc_w 1557
     //   7080: aconst_null
     //   7081: ldc_w 1558
-    //   7084: invokestatic 1562	alpo:a	(I)Ljava/lang/String;
+    //   7084: invokestatic 1562	alud:a	(I)Ljava/lang/String;
     //   7087: iload 4
     //   7089: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
     //   7092: goto -5727 -> 1365
@@ -4168,7 +4168,7 @@ public class DataJsPlugin
     //   8526: aload 20
     //   8528: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   8531: ldc_w 1748
-    //   8534: invokestatic 841	bdcb:c	()Ljava/lang/String;
+    //   8534: invokestatic 841	bdgk:c	()Ljava/lang/String;
     //   8537: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   8540: ldc_w 1750
     //   8543: ldc_w 1752
@@ -4179,7 +4179,7 @@ public class DataJsPlugin
     //   8558: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   8561: ldc_w 1756
     //   8564: invokestatic 1760	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   8567: invokestatic 1765	bdee:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   8567: invokestatic 1765	bdin:a	(Landroid/content/Context;)Ljava/lang/String;
     //   8570: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   8573: ldc_w 1767
     //   8576: aload_2
@@ -4234,7 +4234,7 @@ public class DataJsPlugin
     //   8693: aload 20
     //   8695: ldc_w 1783
     //   8698: ldc_w 1784
-    //   8701: invokestatic 1562	alpo:a	(I)Ljava/lang/String;
+    //   8701: invokestatic 1562	alud:a	(I)Ljava/lang/String;
     //   8704: invokevirtual 523	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   8707: pop
     //   8708: aload 20
@@ -5263,12 +5263,12 @@ public class DataJsPlugin
     //   10113	10165	10168	java/lang/Throwable
   }
   
-  public void login(absf paramabsf)
+  public void login(abwu paramabwu)
   {
-    if (paramabsf == null) {
+    if (paramabwu == null) {
       return;
     }
-    ThreadManager.excute(new DataJsPlugin.26(this, paramabsf), 16, null, false);
+    ThreadManager.excute(new DataJsPlugin.26(this, paramabwu), 16, null, false);
   }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)

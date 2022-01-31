@@ -1,48 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
 public class auso
 {
-  public static String a(String paramString)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  
+  public auso()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "*S1*" + bcvy.a(paramString.getBytes(), 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
-    }
-    return str;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static boolean a(String paramString)
+  public boolean a()
   {
-    if (paramString == null) {
-      throw new NullPointerException("isBase64 src should not be null");
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.contains("icon");
     }
-    return paramString.startsWith("*S1*");
+    return false;
   }
   
-  public static String b(String paramString)
+  @NonNull
+  public String toString()
   {
-    if (paramString == null) {
-      throw new NullPointerException("decode src should not be null");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
-    }
-    String str = paramString;
-    if (a(paramString))
-    {
-      paramString = new String(bcvy.a(paramString.substring("*S1*".length()), 11));
-      str = paramString;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
-        str = paramString;
-      }
-    }
-    return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GrayTipHighlightItemInfo{");
+    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
+    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
+    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

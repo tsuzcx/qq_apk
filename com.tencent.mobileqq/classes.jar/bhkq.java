@@ -1,71 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.media.MiniAppLivePlayer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhkq
-  extends bhkv
+public class bhkq
+  implements bhlb
 {
-  private boolean b;
+  public bhkq(MiniAppLivePlayer paramMiniAppLivePlayer, bgok parambgok) {}
   
-  bhkq(bhkn parambhkn)
+  public void a(int paramInt)
   {
-    super(parambhkn, null);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      bhkn.a(this.jdField_a_of_type_Bhkn).a();
-    }
-    if (this.b) {
-      bhkn.d(this.jdField_a_of_type_Bhkn);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    QMLog.d("MiniAppLivePlayer", "onAudioVolumeEvaluationNotify code:" + paramInt);
+    try
     {
-      return;
-      if ((paramInt4 == 1) || (paramInt4 == 2)) {
-        break;
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("livePlayerId", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Long);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("volume", paramInt);
+      localJSONObject1.put("info", localJSONObject2);
+      this.jdField_a_of_type_Bgok.a.a("onLivePlayerAudioVolumeNotify", localJSONObject1.toString(), this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetMediaMiniAppLivePlayer.jdField_a_of_type_Int);
+      if (QMLog.isColorLevel()) {
+        QMLog.e("MiniAppLivePlayer", "onAudioVolumeEvaluationNotify resultObj.toString() = " + localJSONObject1.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQProtect.QSec", 2, String.format("Invalid mode: %d", new Object[] { Integer.valueOf(paramInt4) }));
-    return;
-    bhkg localbhkg = bhkn.a(this.jdField_a_of_type_Bhkn).a(paramInt1);
-    if (localbhkg != null) {
-      bhkn.a(this.jdField_a_of_type_Bhkn).a(localbhkg.jdField_a_of_type_Int, false);
+      return;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      localbhkg.jdField_a_of_type_Int = paramInt1;
-      localbhkg.jdField_b_of_type_Int = paramInt2;
-      localbhkg.c = paramInt3;
-      localbhkg.jdField_b_of_type_JavaLangString = paramString1;
-      localbhkg.jdField_a_of_type_JavaLangString = paramString2;
-      bhkn.a(this.jdField_a_of_type_Bhkn).a(localbhkg, false);
-      this.jdField_a_of_type_Boolean = true;
-      if ((paramInt4 != 1) || (bhkn.a(this.jdField_a_of_type_Bhkn).a(paramInt1) != 1)) {
-        break;
-      }
-      this.b = true;
-      bhks localbhks = (bhks)bhkn.a(this.jdField_a_of_type_Bhkn).get(Integer.valueOf(paramInt1));
-      if (localbhks == null) {
-        break label236;
-      }
-      bhkn.a(this.jdField_a_of_type_Bhkn, localbhks, paramString2, paramString1);
-      if (localbhks.d == 0) {
-        break;
-      }
-      bhkn.a(this.jdField_a_of_type_Bhkn).remove(Integer.valueOf(localbhks.jdField_a_of_type_Int));
-      return;
-      localbhkg = new bhkg();
+      localJSONException.printStackTrace();
     }
-    label236:
-    paramString1 = bhkn.a(this.jdField_a_of_type_Bhkn, localbhkg);
-    bhkn.a(this.jdField_a_of_type_Bhkn, paramString1);
   }
 }
 

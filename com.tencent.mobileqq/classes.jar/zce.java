@@ -1,17 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 
 class zce
-  implements View.OnClickListener
+  implements zac<CLIENT.StSmartMatchMusicRsp>
 {
-  zce(zcc paramzcc, DialogInterface.OnClickListener paramOnClickListener) {}
+  zce(zby paramzby) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcc, 1);
-    }
+    long l = System.currentTimeMillis() - zby.a(this.a);
+    zaj.a("edit_smart_music", zaj.a(paramLong, l, "", 0L));
+    this.a.a(alud.a(2131704294) + l + "ms");
+    zby.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
   }
 }
 

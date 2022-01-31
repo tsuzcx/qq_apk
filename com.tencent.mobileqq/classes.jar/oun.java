@@ -20,7 +20,7 @@ import tencent.im.oidb.cmd0xe13.oidb_cmd0xe13.RspBody;
 
 public class oun
   extends pgp
-  implements azml
+  implements azqu
 {
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(new Random().nextInt(10000));

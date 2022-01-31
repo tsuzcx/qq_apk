@@ -1,47 +1,22 @@
-import com.tencent.biz.troop.VideoCombineHelper.3;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
 
 public class yno
-  extends yol
+  implements View.OnClickListener
 {
-  public yno(VideoCombineHelper.3 param3)
-  {
-    super(param3.this$0);
-  }
+  public yno(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(yok paramyok)
+  public void onClick(View paramView)
   {
-    do
+    if (yxv.a("mLLSkipBackWrapper", 500L))
     {
-      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramyok.c);
-        if ((paramyok instanceof yof))
-        {
-          this.a.jdField_a_of_type_Ynu.a("", false, "download failed! msg = " + paramyok.d);
-          return;
-        }
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
+      if (VideoPlayerView.a(this.a) != null) {
+        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
       }
-      if ((paramyok instanceof ynx))
-      {
-        this.a.jdField_a_of_type_Ynu.a("", false, "combine failed! msg = " + paramyok.d);
-        return;
-      }
-    } while (!(paramyok instanceof yoi));
-    this.a.jdField_a_of_type_Ynu.a("", false, "sending failed! msg = " + paramyok.d);
-  }
-  
-  public void b(yok paramyok)
-  {
-    ynw localynw = paramyok.a();
-    if (((paramyok instanceof ynx)) || (localynw.b)) {}
-    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramyok.c);
-      this.a.jdField_a_of_type_Ynu.a(localynw.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-      return;
     }
   }
 }

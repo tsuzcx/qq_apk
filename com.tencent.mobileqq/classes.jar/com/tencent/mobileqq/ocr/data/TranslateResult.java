@@ -8,7 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import avtp;
+import avxy;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageRecord;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,7 +24,7 @@ import java.util.List;
 public class TranslateResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<TranslateResult> CREATOR = new avtp();
+  public static final Parcelable.Creator<TranslateResult> CREATOR = new avxy();
   public int a;
   public String a;
   public List<TranslateResult.Record> a;

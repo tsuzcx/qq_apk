@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
-import benb;
+import berk;
 
 public class OvalProgress
   extends RelativeLayout
@@ -19,7 +19,7 @@ public class OvalProgress
   private int jdField_a_of_type_Int = -3355444;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private benb jdField_a_of_type_Benb;
+  private berk jdField_a_of_type_Berk;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int = -16745985;
@@ -57,8 +57,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 90;
-    if (this.jdField_a_of_type_Benb.jdField_a_of_type_Double > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Benb.jdField_a_of_type_Double);; i = 0)
+    if (this.jdField_a_of_type_Berk.jdField_a_of_type_Double > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Berk.jdField_a_of_type_Double);; i = 0)
     {
       if (i > 90) {
         i = j;
@@ -66,7 +66,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.g, 180.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Benb.jdField_a_of_type_Double;
+        return paramDouble - this.jdField_a_of_type_Berk.jdField_a_of_type_Double;
       }
     }
   }
@@ -170,16 +170,16 @@ public class OvalProgress
       this.jdField_b_of_type_Float = ((float)(f2 + d1));
       this.jdField_c_of_type_Float = ((float)(f3 - d1));
     }
-    if (this.jdField_a_of_type_Benb == null)
+    if (this.jdField_a_of_type_Berk == null)
     {
       d1 = (j - 2) * 3.141592653589793D;
       double d2 = 2.0F * f1 + d1;
-      this.jdField_a_of_type_Benb = new benb(this);
-      this.jdField_a_of_type_Benb.jdField_a_of_type_Double = (0.25D * d1 / d2);
-      this.jdField_a_of_type_Benb.b = (f1 * 1.0D / d2);
-      this.jdField_a_of_type_Benb.c = (0.5D * d1 / d2);
-      this.jdField_a_of_type_Benb.d = (f1 * 1.0D / d2);
-      this.jdField_a_of_type_Benb.e = (d1 * 0.25D / d2);
+      this.jdField_a_of_type_Berk = new berk(this);
+      this.jdField_a_of_type_Berk.jdField_a_of_type_Double = (0.25D * d1 / d2);
+      this.jdField_a_of_type_Berk.b = (f1 * 1.0D / d2);
+      this.jdField_a_of_type_Berk.c = (0.5D * d1 / d2);
+      this.jdField_a_of_type_Berk.d = (f1 * 1.0D / d2);
+      this.jdField_a_of_type_Berk.e = (d1 * 0.25D / d2);
     }
     return true;
   }
@@ -191,8 +191,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Benb.b > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Benb.b;
+    if (this.jdField_a_of_type_Berk.b > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Berk.b;
     }
     if (d1 > 1.0D) {
       d1 = d2;
@@ -201,7 +201,7 @@ public class OvalProgress
     {
       float f1 = (float)(d1 * (this.jdField_e_of_type_AndroidGraphicsRectF.right - this.jdField_e_of_type_AndroidGraphicsRectF.left));
       paramCanvas.drawRect(this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.top, this.jdField_e_of_type_AndroidGraphicsRectF.left + f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-      return paramDouble - this.jdField_a_of_type_Benb.b;
+      return paramDouble - this.jdField_a_of_type_Berk.b;
     }
   }
   
@@ -211,8 +211,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 180;
-    if (this.jdField_a_of_type_Benb.c > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Benb.c);; i = 0)
+    if (this.jdField_a_of_type_Berk.c > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Berk.c);; i = 0)
     {
       if (i > 180) {
         i = j;
@@ -220,7 +220,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.h, 270.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Benb.c;
+        return paramDouble - this.jdField_a_of_type_Berk.c;
       }
     }
   }
@@ -231,8 +231,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Benb.d > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Benb.d;
+    if (this.jdField_a_of_type_Berk.d > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Berk.d;
     }
     double d2 = d1;
     if (d1 > 1.0D) {
@@ -240,7 +240,7 @@ public class OvalProgress
     }
     float f1 = (float)((1.0D - d2) * (this.f.right - this.f.left));
     paramCanvas.drawRect(this.f.left + f1, this.f.top, this.f.right, this.f.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_Benb.d;
+    return paramDouble - this.jdField_a_of_type_Berk.d;
   }
   
   private double e(Canvas paramCanvas, double paramDouble)
@@ -250,8 +250,8 @@ public class OvalProgress
     }
     int j = 90;
     int i;
-    if (this.jdField_a_of_type_Benb.e > 0.0D) {
-      if (paramDouble > this.jdField_a_of_type_Benb.e * 0.99D) {
+    if (this.jdField_a_of_type_Berk.e > 0.0D) {
+      if (paramDouble > this.jdField_a_of_type_Berk.e * 0.99D) {
         i = 90;
       }
     }
@@ -263,8 +263,8 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.g, 90.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Benb.e;
-        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Benb.e);
+        return paramDouble - this.jdField_a_of_type_Berk.e;
+        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Berk.e);
         break;
       }
       i = 0;

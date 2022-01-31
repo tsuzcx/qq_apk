@@ -1,97 +1,67 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wnn
-  implements woq
+  extends xvp
 {
-  protected uxt a;
-  private wmu jdField_a_of_type_Wmu;
-  private wnp jdField_a_of_type_Wnp;
-  protected wnt a;
-  protected wor a;
-  protected wos a;
+  public static final String KEY = "MemoriesVideoListEmptySegment";
   
-  public wnn(wnp paramwnp)
+  public wnn(Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Wnp = paramwnp;
-    this.jdField_a_of_type_Wmu = new wmu();
+    super(paramContext);
   }
   
-  public Object a()
+  private void f()
   {
-    return null;
+    xvp localxvp = a().a("MemoriesVideoListSegment");
+    if ((localxvp != null) && (localxvp.a() == 0))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void W_()
+  {
+    f();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  {
+    paramInt = xsm.d(this.jdField_a_of_type_AndroidContentContext);
+    int i = xsm.e(this.jdField_a_of_type_AndroidContentContext);
+    int j = xsm.a(this.jdField_a_of_type_AndroidContentContext, 225.0F);
+    int k = xsm.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    paramwtq.a().getLayoutParams().height = (paramInt - i - j - k);
+    return paramwtq.a();
   }
   
   public String a()
   {
-    return getClass().getSimpleName();
+    return "MemoriesVideoListEmptySegment";
   }
   
-  public void a()
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
   {
-    wsv.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    if (this.jdField_a_of_type_Wnt == null)
-    {
-      if (this.jdField_a_of_type_Wos != null)
-      {
-        this.jdField_a_of_type_Wos.a(a());
-        return;
-      }
-      wsv.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Wnt.a);
-    this.jdField_a_of_type_Uxt = uxt.a(localArrayList);
-    this.jdField_a_of_type_Uxt.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_Uxt.a(new wno(this, localArrayList));
-    this.jdField_a_of_type_Uxt.b();
+    return new wtq(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561502, paramViewGroup, false));
   }
   
-  public void a(Object paramObject)
+  protected void c()
   {
-    boolean bool2 = true;
-    if ((paramObject instanceof wnt))
-    {
-      this.jdField_a_of_type_Wnt = ((wnt)paramObject);
-      return;
-    }
-    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_Wnt == null)
-    {
-      bool1 = true;
-      wsv.e("GetMyStoryDesFromVidListStep", bool1);
-      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-      if (this.jdField_a_of_type_Wnt != null) {
-        break label96;
-      }
-    }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      xmh.a(bool1, new Object[0]);
-      return;
-      bool1 = false;
-      break;
-    }
+    f();
   }
-  
-  public void a(wor paramwor)
-  {
-    this.jdField_a_of_type_Wor = paramwor;
-  }
-  
-  public void a(wos paramwos)
-  {
-    this.jdField_a_of_type_Wos = paramwos;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

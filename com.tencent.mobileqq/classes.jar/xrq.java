@@ -1,182 +1,165 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnLayoutChangeListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBFixed32Field;
+import com.tencent.mobileqq.pb.PBFixed64Field;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBPrimitiveField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBSFixed32Field;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBSInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class xrq
-  implements View.OnAttachStateChangeListener, View.OnLayoutChangeListener
+public class xrq
 {
-  protected float a;
-  protected int a;
-  protected View a;
-  protected ViewGroup a;
-  protected boolean a;
-  protected float b;
-  protected int b;
-  protected View b;
-  protected float c;
-  protected float d;
-  protected float e;
-  protected float f;
-  protected float g;
-  protected float h;
-  
-  static
+  public static <PB extends MessageMicro<PB>> String a(PB paramPB)
   {
-    if (!xrq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_b_of_type_Boolean = bool;
-      return;
+    if (paramPB == null) {
+      return String.valueOf(paramPB);
     }
+    return a(paramPB).toString();
   }
   
-  public xrq(Context paramContext, int paramInt)
+  private static <PB extends PBPrimitiveField<PB>> String a(PB paramPB)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(paramInt, null, false);
-    this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(this);
-    this.jdField_a_of_type_AndroidViewView.addOnAttachStateChangeListener(this);
-    this.jdField_b_of_type_AndroidViewView = b();
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public Bitmap a()
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight(), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    this.jdField_a_of_type_AndroidViewView.draw(localCanvas);
-    return localBitmap;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public final void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      b();
-    } while (this.jdField_b_of_type_AndroidViewView == null);
-    c();
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    wsv.b("InteractPasterWidget", "setPositionInfo:[screenWidth=%s, screenHeight=%s, targetWidth=%s, targetHeight=%s, srcPollWidth=%s, srcPollHeight=%s, srcPollX=%s, srcPollY=%s, rotation=%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) });
-    this.jdField_a_of_type_Boolean = true;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    if (paramInt2 * 1.0F / paramInt1 > paramInt4 * 1.0F / paramInt3)
-    {
-      this.jdField_a_of_type_Float = (paramInt3 * 1.0F / paramInt1);
-      this.d = (-(paramInt2 * this.jdField_a_of_type_Float - paramInt4) / 2.0F);
+    if ((paramPB instanceof PBBytesField)) {
+      return ((PBBytesField)paramPB).get().toStringUtf8();
     }
+    if ((paramPB instanceof PBStringField)) {
+      return ((PBStringField)paramPB).get();
+    }
+    if ((paramPB instanceof PBBoolField)) {
+      return String.valueOf(((PBBoolField)paramPB).get());
+    }
+    if ((paramPB instanceof PBFixed32Field)) {
+      return String.valueOf(((PBFixed32Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBFixed64Field)) {
+      return String.valueOf(((PBFixed64Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBFloatField)) {
+      return String.valueOf(((PBFloatField)paramPB).get());
+    }
+    if ((paramPB instanceof PBInt32Field)) {
+      return String.valueOf(((PBInt32Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBInt64Field)) {
+      return String.valueOf(((PBInt64Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBSFixed32Field)) {
+      return String.valueOf(((PBSFixed32Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBSInt32Field)) {
+      return String.valueOf(((PBSInt32Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBSInt64Field)) {
+      return String.valueOf(((PBSInt64Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBUInt32Field)) {
+      return String.valueOf(((PBUInt32Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBUInt64Field)) {
+      return String.valueOf(((PBUInt64Field)paramPB).get());
+    }
+    if ((paramPB instanceof PBEnumField)) {
+      return String.valueOf(((PBEnumField)paramPB).get());
+    }
+    return "(null)";
+  }
+  
+  public static <PB extends MessageMicro<PB>> JSONObject a(PB paramPB)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    a(paramPB, localJSONObject);
+    return localJSONObject;
+  }
+  
+  private static <PB extends MessageMicro<PB>> void a(PB paramPB, JSONObject paramJSONObject)
+  {
+    Field[] arrayOfField = paramPB.getClass().getDeclaredFields();
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt5;
-      this.jdField_b_of_type_Int = paramInt6;
-      this.e = paramFloat1;
-      this.f = paramFloat2;
-      this.jdField_b_of_type_Float = paramFloat3;
-      return;
-      this.jdField_a_of_type_Float = (paramInt4 * 1.0F / paramInt2);
-      this.c = (-(paramInt1 * this.jdField_a_of_type_Float - paramInt3) / 2.0F);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_b_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      Object localObject1;
+      String str;
+      try
+      {
+        int j = arrayOfField.length;
+        i = 0;
+        if (i < j)
+        {
+          localObject1 = arrayOfField[i];
+          str = ((Field)localObject1).getName();
+          if (!Modifier.isPublic(((Field)localObject1).getModifiers())) {
+            break label343;
+          }
+          localObject1 = ((Field)localObject1).get(paramPB);
+          if ((!(localObject1 instanceof MessageMicro)) || (!((MessageMicro)localObject1).has())) {
+            break label98;
+          }
+          paramJSONObject.put(str, a((MessageMicro)localObject1));
+        }
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public abstract void a(String[] paramArrayOfString);
-  
-  public Rect[] a()
-  {
-    return null;
-  }
-  
-  protected View b()
-  {
-    return null;
-  }
-  
-  protected void b()
-  {
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    this.g = (this.jdField_a_of_type_Float * this.jdField_a_of_type_Int / i);
-    this.h = (this.jdField_a_of_type_Float * this.jdField_b_of_type_Int / j);
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    float f1 = this.e * this.jdField_a_of_type_Float + this.c;
-    float f2 = this.f * this.jdField_a_of_type_Float + this.d;
-    this.jdField_a_of_type_AndroidViewView.setX(f1 - i * 1.0F / 2.0F);
-    this.jdField_a_of_type_AndroidViewView.setY(f2 - j * 1.0F / 2.0F);
-    this.jdField_a_of_type_AndroidViewView.setRotation(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidViewView.setScaleX(this.g);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(this.h);
-    wsv.b("InteractPasterWidget", "relayoutWidgetView view center (%.2f, %.2f) rotation(%.2f) scale(%.2f, %.2f) widgets(%d, %d)", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.g), Float.valueOf(this.h), Integer.valueOf(i), Integer.valueOf(j) });
-    wsv.a("InteractPasterWidget", "relayoutPollView offset(%.2f, %.2f)", Float.valueOf(this.c), Float.valueOf(this.d));
-  }
-  
-  protected void c() {}
-  
-  public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (paramView == this.jdField_b_of_type_AndroidViewView)
-    {
-      wsv.b("InteractPasterWidget", "attendWidget onLayoutChange (%d, %d, %d, %d) -> (%d, %d, %d, %d)", new Object[] { Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      c();
-      return;
-    }
-    wsv.b("InteractPasterWidget", "onLayoutChange (%d, %d, %d, %d) -> (%d, %d, %d, %d)", new Object[] { Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    a();
-  }
-  
-  public void onViewAttachedToWindow(View paramView)
-  {
-    paramView = paramView.getParent();
-    if ((!jdField_b_of_type_Boolean) && ((paramView == null) || (!(paramView instanceof ViewGroup)))) {
-      throw new AssertionError();
-    }
-    paramView = (ViewGroup)paramView;
-    if (paramView.getId() == 2131372156)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidViewView);
+      catch (Exception paramPB)
+      {
+        paramPB.printStackTrace();
       }
-      this.jdField_a_of_type_AndroidViewViewGroup = paramView;
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
-      this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(this);
+      return;
+      label98:
+      if (((localObject1 instanceof PBPrimitiveField)) && (((PBPrimitiveField)localObject1).has()))
+      {
+        paramJSONObject.put(str, a((PBPrimitiveField)localObject1));
+      }
+      else
+      {
+        Object localObject2;
+        if ((localObject1 instanceof PBRepeatField))
+        {
+          localObject2 = ((PBRepeatField)localObject1).get();
+          localObject1 = new JSONArray();
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            Object localObject3 = ((Iterator)localObject2).next();
+            if ((localObject3 instanceof PBPrimitiveField)) {
+              ((JSONArray)localObject1).put(a((PBPrimitiveField)localObject3));
+            } else if ((localObject3 instanceof ByteStringMicro)) {
+              ((JSONArray)localObject1).put(((ByteStringMicro)localObject3).toStringUtf8());
+            } else {
+              ((JSONArray)localObject1).put(String.valueOf(localObject3));
+            }
+          }
+          paramJSONObject.put(str, localObject1);
+        }
+        else if ((localObject1 instanceof PBRepeatMessageField))
+        {
+          localObject2 = ((PBRepeatMessageField)localObject1).get();
+          localObject1 = new JSONArray();
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            ((JSONArray)localObject1).put(a((MessageMicro)((Iterator)localObject2).next()));
+          }
+          paramJSONObject.put(str, localObject1);
+        }
+      }
+      label343:
+      i += 1;
     }
   }
-  
-  public void onViewDetachedFromWindow(View paramView) {}
 }
 
 

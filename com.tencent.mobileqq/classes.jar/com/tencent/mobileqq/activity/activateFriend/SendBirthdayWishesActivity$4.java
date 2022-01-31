@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import alpo;
+import alud;
 import android.widget.ImageButton;
 
 class SendBirthdayWishesActivity$4
@@ -12,12 +12,12 @@ class SendBirthdayWishesActivity$4
   {
     if (this.a == 2)
     {
-      this.this$0.a.setImageResource(2130837978);
-      this.this$0.a.setContentDescription(alpo.a(2131714163));
+      this.this$0.a.setImageResource(2130837979);
+      this.this$0.a.setContentDescription(alud.a(2131714175));
       return;
     }
-    this.this$0.a.setImageResource(2130847355);
-    this.this$0.a.setContentDescription(alpo.a(2131714164));
+    this.this$0.a.setImageResource(2130847428);
+    this.this$0.a.setContentDescription(alud.a(2131714176));
   }
 }
 

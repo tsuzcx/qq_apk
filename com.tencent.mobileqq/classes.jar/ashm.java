@@ -1,18 +1,24 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
-public abstract class ashm
-  extends RecyclerView.ViewHolder
+public class ashm
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ashm(Context paramContext, View paramView, ViewGroup paramViewGroup)
-  {
-    super(paramView);
-  }
+  public ashm(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public abstract void a(FeedsItemData paramFeedsItemData);
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
+    default: 
+      return;
+    case 2131380210: 
+      azmk.a(0);
+      return;
+    }
+    azmk.a(1);
+  }
 }
 
 

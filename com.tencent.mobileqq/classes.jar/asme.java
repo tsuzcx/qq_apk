@@ -1,17 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 
 public class asme
+  implements View.OnLayoutChangeListener
 {
-  public List<asmd> a;
-  public Set<String> a;
+  public asme(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
   
-  public asme()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    {
+      QQGamePadFaceFragment.a(this.a, true);
+      QQGamePadFaceFragment.a(this.a);
+    }
   }
 }
 

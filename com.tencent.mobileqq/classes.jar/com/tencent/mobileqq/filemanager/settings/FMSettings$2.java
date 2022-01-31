@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import armo;
-import armu;
+import arqx;
+import arrd;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,11 +15,11 @@ public class FMSettings$2
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.this$0.a.keySet().iterator();
     Object localObject;
-    for (long l = 0L; localIterator.hasNext(); l = armo.a(this.this$0, (String)localObject, localArrayList) + l)
+    for (long l = 0L; localIterator.hasNext(); l = arqx.a(this.this$0, (String)localObject, localArrayList) + l)
     {
       localObject = (String)localIterator.next();
-      localObject = (armu)this.this$0.a.get(localObject);
-      localObject = armo.c(this.this$0, ((armu)localObject).b + ((armu)localObject).c);
+      localObject = (arrd)this.this$0.a.get(localObject);
+      localObject = arqx.c(this.this$0, ((arrd)localObject).b + ((arrd)localObject).c);
     }
   }
 }

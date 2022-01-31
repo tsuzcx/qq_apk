@@ -1,28 +1,10 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
 
-class avix
-  implements View.OnClickListener
+public final class avix
 {
-  avix(avhw paramavhw, String paramString) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Avhw.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Avhw.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avhw.a.j)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Avhw.a.startActivity(localIntent);
-      azmj.b(this.jdField_a_of_type_Avhw.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      return;
-    }
-  }
+  private avix(TopicLabelListView paramTopicLabelListView) {}
 }
 
 

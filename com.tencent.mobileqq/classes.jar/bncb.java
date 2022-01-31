@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class bncb
-  implements View.OnClickListener
+public abstract interface bncb
 {
-  bncb(bnbz parambnbz) {}
+  public abstract void a(int paramInt, bnck parambnck);
   
-  public void onClick(View paramView)
-  {
-    wta.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!bnbz.a(this.a).q)
-    {
-      bnbz.b(this.a);
-      return;
-    }
-    bnbz.a(this.a).q = false;
-    bnbz.b(this.a).setSelected(false);
-    bnbz.a(this.a).d(3003);
-  }
+  public abstract void a(List<bnck> paramList);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

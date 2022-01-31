@@ -1,28 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.view.PagerAdapter;
 
-public class vvp
-  extends QQUIEventReceiver<vvc, uzc>
+public abstract interface vvp
 {
-  public vvp(@NonNull vvc paramvvc)
-  {
-    super(paramvvc);
-  }
-  
-  public void a(@NonNull vvc paramvvc, @NonNull uzc paramuzc)
-  {
-    if (paramuzc.a.isSuccess())
-    {
-      wsv.a(paramvvc.b, "receive user info event. %s.", paramuzc.toString());
-      paramvvc.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
-  }
+  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 

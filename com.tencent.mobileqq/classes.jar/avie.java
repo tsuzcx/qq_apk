@@ -4,15 +4,11 @@ import android.view.View.OnClickListener;
 class avie
   implements View.OnClickListener
 {
-  avie(avhw paramavhw) {}
+  avie(avhf paramavhf) {}
   
   public void onClick(View paramView)
   {
-    paramView = bhpy.a(this.a.a);
-    paramView.a(2131718435, 1);
-    paramView.c(2131690648);
-    paramView.a(new avif(this, paramView));
-    paramView.show();
+    this.a.e(paramView);
   }
 }
 

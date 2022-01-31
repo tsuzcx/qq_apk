@@ -1,58 +1,88 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.lang.ref.WeakReference;
 
 public class bmwt
+  implements URLDrawableDownListener
 {
-  private static boolean[] a;
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<ProgressBar> b;
   
-  static
-  {
-    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
-  }
-  
-  public bmwt(String paramString)
+  public bmwt(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.b = new WeakReference(paramProgressBar);
   }
   
-  public static void a(int[] paramArrayOfInt)
+  private boolean a(ImageView paramImageView)
   {
-    int i = 0;
-    while (i < 5) {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
-      {
-        jdField_a_of_type_ArrayOfBoolean[i] = false;
-        i += 1;
-      }
-      else
-      {
-        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
-        int k = arrayOfBoolean[i];
-        if (paramArrayOfInt[i] > 0) {}
-        for (int j = 1;; j = 0)
-        {
-          arrayOfBoolean[i] = (j | k);
-          break;
-        }
-      }
-    }
+    paramImageView = (String)paramImageView.getTag(2131377450);
+    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
   }
   
-  public static boolean a(int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((paramInt < 0) || (paramInt > 4)) {
-      return true;
+    wxe.b("InformationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131377419, Boolean.valueOf(false));
+      return;
     }
-    return jdField_a_of_type_ArrayOfBoolean[paramInt];
+    wxe.b("InformationFaceAdapter", "onLoadCanceled error.");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    wxe.b("InformationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131377419, Boolean.valueOf(false));
+      return;
+    }
+    wxe.b("InformationFaceAdapter", "onLoadFialed error.");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    wxe.b("InformationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131377419, Boolean.valueOf(false));
+      return;
+    }
+    wxe.b("InformationFaceAdapter", "onLoadProgressed error.");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    wxe.b("InformationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131377419, Boolean.valueOf(true));
+      return;
+    }
+    wxe.b("InformationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

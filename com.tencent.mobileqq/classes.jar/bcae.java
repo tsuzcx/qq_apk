@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
 public class bcae
-  implements bemn
+  implements bckx
 {
-  public bcae(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
+  public bcae(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a(String paramString)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.a.setVisibility(8);
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0) {
+        this.a.j();
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131697873, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131697933, 0).a();
   }
 }
 

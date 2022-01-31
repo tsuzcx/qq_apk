@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import avyo;
-import azyl;
+import awcx;
+import bacu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -9,12 +9,12 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 public class AccountPanel$9
   implements Runnable
 {
-  public AccountPanel$9(avyo paramavyo, QQAppInterface paramQQAppInterface, SimpleAccount paramSimpleAccount) {}
+  public AccountPanel$9(awcx paramawcx, QQAppInterface paramQQAppInterface, SimpleAccount paramSimpleAccount) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), 7000);
-    azyl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    bacu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
   }
 }
 

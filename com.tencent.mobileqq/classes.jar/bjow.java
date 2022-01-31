@@ -1,13 +1,28 @@
-public abstract class bjow
+import android.content.Context;
+
+class bjow
+  extends bjol
 {
-  public static bjow a = new bjox();
+  bjow(bjov parambjov, bjof parambjof, Context paramContext, bjog parambjog) {}
   
-  public int a()
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    return 1;
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Bjof.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjog);
+      return;
+    }
+    this.jdField_a_of_type_Bjof.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjog);
   }
   
-  public abstract boolean a();
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Bjof.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjog);
+  }
 }
 
 

@@ -1,22 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afrk
-  extends aekx
+  extends afuf
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
+  afrk(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  afrk(afrh paramafrh) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afwn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

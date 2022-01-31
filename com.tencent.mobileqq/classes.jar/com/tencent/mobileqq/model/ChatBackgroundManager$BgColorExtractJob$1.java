@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aubb;
+import aufk;
 import java.util.Vector;
 
 class ChatBackgroundManager$BgColorExtractJob$1

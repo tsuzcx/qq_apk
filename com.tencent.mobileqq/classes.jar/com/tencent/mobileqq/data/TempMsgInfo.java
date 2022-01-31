@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class TempMsgInfo
-  extends awbv
+  extends awge
   implements Serializable
 {
   public long timeStamp;
-  @awdj
+  @awhs
   public String typeWithUin;
   
   public TempMsgInfo() {}

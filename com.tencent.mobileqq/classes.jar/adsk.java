@@ -1,9 +1,17 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
+
 public class adsk
+  extends avva
 {
-  public volatile long a;
-  public String a;
+  public adsk(QQSettingMe paramQQSettingMe) {}
   
-  protected adsk(adsd paramadsd) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.a.c) {
+      this.a.i();
+    }
+  }
 }
 
 

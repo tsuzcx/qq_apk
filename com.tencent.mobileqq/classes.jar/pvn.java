@@ -11,10 +11,10 @@ public class pvn
   {
     if (paramInt == 0)
     {
-      abqw.a().a("list_kandian_daily_new", false);
+      abvl.a().a("list_kandian_daily_new", false);
       return;
     }
-    abqw.a().a("list_kandian_daily_new");
+    abvl.a().a("list_kandian_daily_new");
   }
 }
 

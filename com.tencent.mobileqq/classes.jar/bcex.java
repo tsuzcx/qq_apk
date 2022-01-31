@@ -1,15 +1,14 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-public class bcex
-  implements bcml
+public abstract class bcex<D extends bcdy>
+  extends RecyclerView.ViewHolder
 {
-  public bcex(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public D a;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public bcex(View paramView)
   {
-    paramView.setVisibility(8);
+    super(paramView);
   }
 }
 

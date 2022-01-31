@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
 import android.view.ViewGroup;
-import bdkf;
+import bdoo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import rna;
@@ -17,8 +17,8 @@ public class MultiVideoNormalItemHolder$1
     if (this.this$0.b != null)
     {
       int i = rna.a(this.this$0.a.p).length();
-      int j = bdkf.a(12.0F);
-      rnm.a(this.this$0).setMaxWidth(rnm.a(this.this$0).getWidth() - rnm.a(this.this$0).getPaddingLeft() - rnm.a(this.this$0).getPaddingRight() - i * j - bdkf.a(30.0F));
+      int j = bdoo.a(12.0F);
+      rnm.a(this.this$0).setMaxWidth(rnm.a(this.this$0).getWidth() - rnm.a(this.this$0).getPaddingLeft() - rnm.a(this.this$0).getPaddingRight() - i * j - bdoo.a(30.0F));
     }
   }
 }

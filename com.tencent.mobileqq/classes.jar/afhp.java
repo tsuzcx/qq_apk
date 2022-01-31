@@ -1,18 +1,15 @@
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public class afhp
-  extends aelt
+class afhp
+  extends aepm
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public afhp(afhh paramafhh) {}
+  afhp(afhn paramafhn) {}
 }
 
 

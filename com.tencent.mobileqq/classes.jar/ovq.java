@@ -34,7 +34,7 @@ public class ovq
     }
     if ((localInteger.intValue() < b) || (localInteger.intValue() >= this.d))
     {
-      aekt.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(alpo.a(2131703953)));
+      aepi.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(alud.a(2131703965)));
       return b;
     }
     return localInteger.intValue();
@@ -91,10 +91,10 @@ public class ovq
   
   public void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2)
   {
-    bhxr.a("bindData");
+    biby.a("bindData");
     if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
     {
-      bhxr.a();
+      biby.a();
       if (QLog.isColorLevel()) {
         QLog.d("DynamicItemViewHelperCompat", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramBaseArticleInfo });
       }
@@ -123,7 +123,7 @@ public class ovq
           localObject = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean2);
           if (localObject != null)
           {
-            ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+            ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
             paramProteusItemView.d();
             paramProteusItemView.a((Container)localObject);
           }
@@ -138,7 +138,7 @@ public class ovq
       opy.a(paramBaseArticleInfo, (TemplateBean)localObject, localTemplateBean2);
     }
     opy.a(paramBaseArticleInfo, paramVafContext, localTemplateBean2);
-    bhxr.a();
+    biby.a();
   }
   
   public void a(VafContext paramVafContext, int paramInt)

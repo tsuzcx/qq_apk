@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import java.util.List;
 
 class agnr
-  implements View.OnClickListener
+  extends alrs
 {
-  agnr(agnp paramagnp) {}
+  agnr(agnn paramagnn) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    aekt.n = true;
-    aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    if (agnp.a(this.a) != null)
+    if (paramBoolean)
     {
-      if (agnp.a(this.a).tagID == 1) {
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
+      this.a.b = aqau.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
       }
     }
-    else {
-      return;
-    }
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", agnp.a(this.a).tagName, "");
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -108,7 +108,7 @@ public class nlx
         l1 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
         paramAppInterface = paramnlo.a(paramInt);
         long l2 = NetConnInfoCenter.getServerTimeMillis();
-        String str = bfhi.d(l1 + paramnlo.c + paramInt + l2);
+        String str = bflr.d(l1 + paramnlo.c + paramInt + l2);
         oidb_cmd0x886.ReqBody localReqBody = new oidb_cmd0x886.ReqBody();
         localReqBody.uint64_uin.set(l1);
         localReqBody.msg_phone_info.set(localPhoneInfo);
@@ -153,9 +153,9 @@ public class nlx
               if (QLog.isColorLevel()) {
                 QLog.d("AdvertisementRecentUserManager", 2, "deleteItem uin:" + paramRecentUser.uin);
               }
-              ajeu.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
-              ((amjk)localObject1).b(paramRecentUser);
-              ajgm.b(paramQQAppInterface, localnlo.jdField_a_of_type_JavaLangString, 1008);
+              ajjj.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
+              ((amnz)localObject1).b(paramRecentUser);
+              ajlb.b(paramQQAppInterface, localnlo.jdField_a_of_type_JavaLangString, 1008);
               paramQQAppInterface.a().c(localnlo.jdField_a_of_type_JavaLangString, 1008);
             }
             ThreadManager.executeOnFileThread(new AdvertisementRecentUserManager.1(this, localnlo));

@@ -1,26 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public final class akxg
-  implements EIPCResultCallback
+class akxg
+  implements QQPermissionCallback
 {
-  public akxg(String paramString1, String paramString2, akxl paramakxl) {}
+  akxg(akxb paramakxb, AppActivity paramAppActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("selfUinStatus");
-    int j = paramEIPCResult.getInt("friendUinStatus");
-    akxe.a(this.jdField_a_of_type_JavaLangString, i);
-    akxe.a(this.b, j);
-    if (this.jdField_a_of_type_Akxl != null) {
-      this.jdField_a_of_type_Akxl.a(true);
-    }
-    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
+    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Akxb.grant();
   }
 }
 

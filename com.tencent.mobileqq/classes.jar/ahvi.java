@@ -1,52 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-
-public class ahvi
-  implements View.OnClickListener
+public abstract interface ahvi
 {
-  public ahvi(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    Object localObject1 = (ChatMessage)((ahvg)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Ahze.a(localObject1);
-      this.a.jdField_a_of_type_Ahvc.notifyDataSetChanged();
-    }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-    {
-      this.a.jdField_a_of_type_Ahvc.notifyDataSetChanged();
-      return;
-    }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
-    {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      azrg localazrg = new azrg(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localazrg);
-    }
-    for (;;)
-    {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
-      {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

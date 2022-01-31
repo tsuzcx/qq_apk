@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwc;
-import arpg;
+import aral;
+import artp;
 
 public class UniformDownloadMgr$16$1
   implements Runnable
 {
-  public UniformDownloadMgr$16$1(aqwc paramaqwc, String paramString) {}
+  public UniformDownloadMgr$16$1(aral paramaral, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      arpg.a(this.jdField_a_of_type_Aqwc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqwc.b);
+      artp.a(this.jdField_a_of_type_Aral.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aral.b);
       return;
     }
-    arpg.b(this.jdField_a_of_type_Aqwc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqwc.b);
+    artp.b(this.jdField_a_of_type_Aral.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aral.b);
   }
 }
 

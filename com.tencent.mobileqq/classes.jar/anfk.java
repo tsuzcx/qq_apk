@@ -1,7 +1,19 @@
-public abstract interface anfk
-  extends anfm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
+
+public final class anfk
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
+  public ARRelationShip a(Parcel paramParcel)
+  {
+    return new ARRelationShip(paramParcel);
+  }
+  
+  public ARRelationShip[] a(int paramInt)
+  {
+    return new ARRelationShip[paramInt];
+  }
 }
 
 

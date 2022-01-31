@@ -25,7 +25,7 @@ public class lkb
     {
       paramVideoAppInterface = new JSONObject(paramString3);
       if (paramVideoAppInterface.has("multiresult")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)bcyj.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)bdcs.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
       }
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason == null) {
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = new MagicfaceDataMultiResultJason();

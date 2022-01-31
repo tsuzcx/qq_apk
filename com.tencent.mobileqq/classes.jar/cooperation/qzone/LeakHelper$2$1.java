@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import abqn;
-import biyy;
-import biyz;
+import abvc;
+import bjdf;
+import bjdg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -13,16 +13,16 @@ import org.json.JSONObject;
 public class LeakHelper$2$1
   implements Runnable
 {
-  public LeakHelper$2$1(biyz parambiyz) {}
+  public LeakHelper$2$1(bjdg parambjdg) {}
   
   public void run()
   {
-    Object localObject1 = abqn.a("mobileqzone_leak");
+    Object localObject1 = abvc.a("mobileqzone_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      biyy.a((String)localObject2);
+      bjdf.a((String)localObject2);
     }
     try
     {

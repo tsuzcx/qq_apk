@@ -1,33 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vaq<REQ extends MessageMicro>
-  extends unk<vco>
+public final class vaq
+  extends QQUIEventReceiver<vai, uyf>
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
-  
-  public vaq(String paramString, REQ paramREQ, Bundle paramBundle)
+  public vaq(@NonNull vai paramvai)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    super(paramvai);
   }
   
-  public String a()
+  public void a(@NonNull vai paramvai, @NonNull uyf paramuyf)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    paramvai.a.a(paramuyf.a);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    return new vco(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    return uyf.class;
   }
 }
 

@@ -1,24 +1,113 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+import tencent.aio.video.aio_video.ErrInfo;
+import tencent.aio.video.aio_video.RspGetUinByOpenId;
 
 class beeu
-  implements TbsDownloader.TbsDownloaderCallback
+  extends nac
 {
-  beeu(beet parambeet) {}
+  beeu(beer parambeer, beex parambeex) {}
   
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("urlSecMgr", 2, "receive getUinWithOpenID code=" + paramInt);
+    }
+    Object localObject = "";
+    j = -1;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs need download");
+      i = j;
+      paramBundle = (Bundle)localObject;
+      if (paramArrayOfByte != null) {
+        paramBundle = (Bundle)localObject;
       }
-      this.a.a.a.a(false);
+    }
+    try
+    {
+      aio_video.RspGetUinByOpenId localRspGetUinByOpenId = new aio_video.RspGetUinByOpenId();
+      paramBundle = (Bundle)localObject;
+      localRspGetUinByOpenId.mergeFrom(paramArrayOfByte);
+      paramBundle = (Bundle)localObject;
+      localObject = localRspGetUinByOpenId.err_info.err_msg.get().toStringUtf8();
+      paramBundle = (Bundle)localObject;
+      i = localRspGetUinByOpenId.err_info.err_code.get();
+      paramBundle = (Bundle)localObject;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        label340:
+        i = j;
+        continue;
+        paramArrayOfByte = "";
+        paramInt = 0;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("getUinWithOpenID error code=").append(paramInt);
+      if (paramArrayOfByte == null)
+      {
+        paramArrayOfByte = ", data=null";
+        QLog.i("urlSecMgr", 2, paramArrayOfByte);
+        paramArrayOfByte = "";
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Beex != null)
+        {
+          localObject = new Bundle();
+          if (paramInt != 0) {
+            i = 0;
+          }
+          ((Bundle)localObject).putInt("result", i);
+          ((Bundle)localObject).putString("errMsg", paramBundle);
+          ((Bundle)localObject).putString("retUin", paramArrayOfByte);
+          this.jdField_a_of_type_Beex.a((Bundle)localObject);
+        }
+        return;
+        paramArrayOfByte = ", msg=" + paramBundle + ", errCode=" + i;
+        break;
+        paramBundle = new aio_video.RspGetUinByOpenId();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          long l = paramBundle.uin.get();
+          paramArrayOfByte = String.valueOf(l);
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("urlSecMgr", 2, new Object[] { "getUinWithOpenID uin:", Long.valueOf(paramBundle.uin.get()) });
+            }
+            paramInt = 1;
+            i = j;
+            paramBundle = (Bundle)localObject;
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            break label340;
+          }
+          paramBundle = paramBundle;
+          paramArrayOfByte = "";
+          if (QLog.isColorLevel()) {
+            QLog.i("urlSecMgr", 2, "parse error", paramBundle);
+          }
+          paramInt = 0;
+          i = j;
+          paramBundle = (Bundle)localObject;
+        }
+      }
     }
   }
 }

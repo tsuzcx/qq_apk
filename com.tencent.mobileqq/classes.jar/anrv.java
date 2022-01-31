@@ -1,162 +1,82 @@
-import android.support.v4.util.ArraySet;
-import android.text.TextUtils;
-import android.util.Base64;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import org.json.JSONObject;
 
-public class anrv
+class anrv
+  implements anrt
 {
-  public int a;
-  public ArraySet<String> a;
-  public boolean a;
-  public int b;
-  private ArraySet<String> b;
-  private ArraySet<String> c = new ArraySet();
+  anrv(anru paramanru) {}
   
-  public anrv()
+  public void a(boolean paramBoolean, JSONObject paramJSONObject, Object arg3)
   {
-    this.jdField_a_of_type_Int = 10000;
-    this.jdField_b_of_type_Int = 5000;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
-    this.jdField_b_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
-  }
-  
-  private void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TeleScreenConfig", 2, "telescreen config: " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString))
+    QQAppInterface localQQAppInterface = (QQAppInterface)anru.a(this.a).get();
+    if ((localQQAppInterface == null) || (??? == null) || (!(??? instanceof Bundle)))
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
-      this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback invalid param app=", localQQAppInterface, ",userData=", ??? });
       return;
     }
-    for (;;)
+    Object localObject1 = (Bundle)???;
+    long l = ((Bundle)localObject1).getLong("key_process_message_uniseq");
+    Object localObject2 = ((Bundle)localObject1).getString("key_process_message_friend_uin");
+    int i = ((Bundle)localObject1).getInt("key_process_message_uin_type");
+    synchronized (anru.a(this.a))
     {
-      int i;
-      try
+      if ((Bundle)anru.a(this.a).get(Long.valueOf(l)) != null)
       {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((int)(paramString.optDouble("download_timeout") * 1000.0D));
-        if (this.jdField_a_of_type_Int <= 0)
-        {
-          i = 10000;
-          this.jdField_a_of_type_Int = i;
-          this.jdField_b_of_type_Int = ((int)(paramString.optDouble("jump_timeout") * 1000.0D));
-          if (this.jdField_b_of_type_Int <= 0)
-          {
-            i = 5000;
-            this.jdField_b_of_type_Int = i;
-            if (paramString.optInt("use_block_mode", 1) != 0) {
-              break label385;
-            }
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-            localJSONArray = paramString.optJSONArray("check_white_list");
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
-            if (localJSONArray == null) {
-              continue;
-            }
-            i = localJSONArray.length() - 1;
-            if (i < 0) {
-              continue;
-            }
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label378;
-            }
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label378;
-          }
+        anru.a(this.a).remove(Long.valueOf(l));
+        anru.a(this.a).removeMessages(1, localObject1);
+        ??? = localQQAppInterface.a().b((String)localObject2, i, l);
+        if ((??? == null) || (!(??? instanceof MessageForArkApp))) {
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.sArkMsgPrepCallback find ArkMsg failed!");
         }
-        else
-        {
-          i = this.jdField_a_of_type_Int;
-          continue;
-        }
-        i = this.jdField_b_of_type_Int;
-        continue;
-        JSONArray localJSONArray = paramString.optJSONArray("scheme_white_list");
-        this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
-        if (localJSONArray != null)
-        {
-          i = localJSONArray.length() - 1;
-          if (i >= 0)
-          {
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label390;
-            }
-            this.jdField_b_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label390;
-          }
-        }
-        paramString = paramString.optJSONArray("md5");
-        this.c.clear();
-        if (paramString == null) {
-          break;
-        }
-        i = paramString.length() - 1;
-        if (i < 0) {
-          break;
-        }
-        if (!TextUtils.isEmpty(paramString.getString(i))) {
-          this.c.add(new String(Base64.decode(paramString.getString(i), 0)));
-        }
-        i -= 1;
-        continue;
-        i -= 1;
       }
-      catch (JSONException paramString)
+      else
       {
-        QLog.e("TeleScreenConfig", 1, paramString, new Object[0]);
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback.failed for msg callback timeout uniseq=", Long.valueOf(l) });
         return;
       }
-      label378:
-      continue;
-      label385:
-      boolean bool = false;
-      continue;
-      label390:
-      i -= 1;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    localObject1 = (MessageForArkApp)???;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.sArkMsgPrepCallback  uniseq=", Long.valueOf(l), ", processState=", Integer.valueOf(((MessageForArkApp)localObject1).getProcessState()), ", success=", Boolean.valueOf(paramBoolean), String.format(" ,msg=%h", new Object[] { localObject1 }), ", this=", ((MessageForArkApp)localObject1).getBaseInfoString(), ", msgJson=", paramJSONObject });
     }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.startsWith((String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(paramString1)) {
-      return true;
-    }
-    if (paramString2 != null)
+    if (((MessageForArkApp)localObject1).ark_app_message != null)
     {
-      paramString1 = this.jdField_b_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (paramString1.hasNext()) {
-        if (paramString2.startsWith((String)paramString1.next())) {
-          return true;
-        }
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("appid", ((MessageForArkApp)localObject1).ark_app_message.appName);
+      if (!paramBoolean) {
+        break label441;
       }
     }
-    return false;
+    label441:
+    for (??? = "1";; ??? = "2")
+    {
+      ((HashMap)localObject2).put("result", ???);
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "actAsyncShareCallback", true, 0L, 0L, (HashMap)localObject2, null);
+      if (!paramBoolean) {
+        break;
+      }
+      ((MessageForArkApp)localObject1).updateArkAppMetaData(paramJSONObject);
+      ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1002);
+      ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
+      ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
+      localQQAppInterface.a().b((MessageRecord)localObject1, null);
+      return;
+    }
+    ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1003);
+    ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
+    ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
+    localQQAppInterface.a().a(((MessageForArkApp)localObject1).frienduin, ((MessageForArkApp)localObject1).istroop, ((MessageForArkApp)localObject1).uniseq);
+    anru.a(this.a, localQQAppInterface, (MessageForArkApp)localObject1);
   }
 }
 

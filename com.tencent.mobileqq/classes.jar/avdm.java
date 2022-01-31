@@ -1,11 +1,15 @@
+import android.os.Bundle;
+
 class avdm
-  implements bhqf
+  extends nab
 {
-  avdm(avcw paramavcw) {}
+  avdm(avdj paramavdj, avdq paramavdq) {}
   
-  public void onDismiss()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.b = false;
+    if (this.jdField_a_of_type_Avdq != null) {
+      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

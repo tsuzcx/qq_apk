@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
-import bame;
+import baqn;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class ImageManager$1
   public void run()
   {
     pdz.a(3, this.jdField_a_of_type_Sfg);
-    if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (bame.a(this.jdField_a_of_type_Sfg.a.toString()) == null))
+    if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (baqn.a(this.jdField_a_of_type_Sfg.a.toString()) == null))
     {
       this.this$0.b.put(this.jdField_a_of_type_Sfg, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob);
       if (QLog.isColorLevel()) {

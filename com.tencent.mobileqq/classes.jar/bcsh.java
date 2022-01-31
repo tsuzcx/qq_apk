@@ -1,13 +1,10 @@
-import java.util.List;
+import com.tencent.image.URLImageView;
 
-public class bcsh
+class bcsh
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<bcsi> a;
-  public int b;
-  public long b;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  
+  bcsh(bcsg parambcsg) {}
 }
 
 

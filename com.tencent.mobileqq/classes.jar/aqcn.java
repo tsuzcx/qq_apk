@@ -1,27 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class aqcn
+public final class aqcn
+  implements Parcelable.Creator<MiniAppRecommInfo>
 {
-  public static void a(View paramView, Drawable paramDrawable)
+  public MiniAppRecommInfo a(Parcel paramParcel)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aqco.a(paramView, paramDrawable);
-      return;
-    }
-    paramView.setBackgroundDrawable(paramDrawable);
+    return new MiniAppRecommInfo(paramParcel);
   }
   
-  public static void a(View paramView, Runnable paramRunnable)
+  public MiniAppRecommInfo[] a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aqco.a(paramView, paramRunnable);
-      return;
-    }
-    paramView.postDelayed(paramRunnable, 16L);
+    return new MiniAppRecommInfo[paramInt];
   }
 }
 

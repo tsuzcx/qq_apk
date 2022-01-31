@@ -1,67 +1,135 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.wx.voice.vad.WXVadSeg;
+import java.io.OutputStream;
 
 public class bayk
 {
   public int a;
   public long a;
+  public awiq a;
+  public awkh a;
+  public bayr a;
+  public URLDrawableHandler a;
+  public PhotoSendParams a;
+  public MessageRecord a;
+  public WXVadSeg a;
+  public OutputStream a;
+  public Object a;
   public String a;
   public boolean a;
+  public byte[] a;
   public int b;
+  public long b;
+  public Object b;
   public String b;
+  public boolean b;
+  public byte[] b;
   public int c;
+  public long c;
   public String c;
-  private int d;
+  public boolean c;
+  public int d;
+  public long d;
   public String d;
+  public boolean d;
+  public int e;
+  public long e;
   public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public boolean f;
+  public int g;
+  public String g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public boolean j;
+  public int k;
+  public String k;
+  public boolean k;
+  public int l;
+  public String l;
+  public boolean l;
+  public int m;
+  public String m;
+  public boolean m;
+  public int n;
+  public String n;
+  public boolean n;
+  public int o;
+  public String o;
+  public boolean o;
+  public int p;
+  private String p;
+  public boolean p;
+  public int q;
+  public boolean q;
+  public boolean r;
   
   public bayk()
   {
-    this.jdField_d_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 5;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_f_of_type_Int = 1;
+    this.jdField_f_of_type_Boolean = true;
   }
   
-  public JSONObject a()
+  public String a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("text", this.e);
-      localJSONObject.put("duration", this.jdField_a_of_type_Int);
-      localJSONObject.put("size", this.jdField_a_of_type_Long);
-      localJSONObject.put("width", this.jdField_b_of_type_Int);
-      localJSONObject.put("height", this.jdField_c_of_type_Int);
-      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoInfo", 2, "VideoInfo: " + QLog.getStackTraceString(localJSONException));
-    }
-    return localJSONObject;
+    return this.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Long;
   }
   
-  public void a(int paramInt)
+  public String b()
   {
-    switch (paramInt)
+    if (this.p == null)
     {
-    default: 
-      this.jdField_d_of_type_Int = -1;
-      return;
-    case 1: 
-      this.jdField_d_of_type_Int = 2;
-      return;
-    case 0: 
-      this.jdField_d_of_type_Int = 1;
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      return localStringBuilder.toString();
     }
-    this.jdField_d_of_type_Int = 3;
+    return this.p;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("TransferRequest\n");
+    localStringBuilder.append("mUniseq=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mMd5=" + this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(",mIsIp=" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mUinType=" + this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mFileType=" + this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSelfUin=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",mPeerUin=" + this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",mSecondId=" + this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(",mServerPath=" + this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(",mLocalPath=" + this.i);
+    localStringBuilder.append(",mBusiType=" + this.jdField_e_of_type_Int);
+    localStringBuilder.append(",mGroupFileID=" + this.jdField_c_of_type_Long);
+    localStringBuilder.append(",mExtraObj={" + this.jdField_a_of_type_JavaLangObject + "}");
+    localStringBuilder.append(",mPrioty=" + this.jdField_f_of_type_Int);
+    localStringBuilder.append(",mLogicCallBack=" + this.jdField_a_of_type_Awkh);
+    localStringBuilder.append(",bEnableEnc=" + this.m);
+    localStringBuilder.append(",isQzonePic=" + this.q);
+    localStringBuilder.append(",pcmForVadPath=" + this.o);
+    return localStringBuilder.toString();
   }
 }
 

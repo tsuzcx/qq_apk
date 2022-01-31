@@ -1,73 +1,22 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract class agtp
-  implements agtk
+class agtp
+  implements Animation.AnimationListener
 {
-  public URLDrawable.URLDrawableOptions a()
+  agtp(agti paramagti) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
+    this.a.W = false;
+    this.a.af = false;
+    this.a.d(this.a.o);
+    this.a.s = 1;
   }
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
-    }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public URL a()
-  {
-    try
-    {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((agua)this).f());
-      if (localURL1 == null)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
-      }
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return "z-";
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

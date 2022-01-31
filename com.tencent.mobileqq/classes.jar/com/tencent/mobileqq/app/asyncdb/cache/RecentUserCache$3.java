@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import aljq;
+import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,11 +21,11 @@ class RecentUserCache$3
     try
     {
       SQLiteDatabase localSQLiteDatabase = RecentUserCache.c(this.this$0).a();
-      String str = RecentUserCache.a(this.this$0, aljq.D, 4000);
+      String str = RecentUserCache.a(this.this$0, alof.D, 4000);
       if (RecentUserCache.e(this.this$0).containsKey(str)) {
         RecentUserCache.f(this.this$0).remove(str);
       }
-      int i = localSQLiteDatabase.a("recent", "uin=?", new String[] { aljq.D });
+      int i = localSQLiteDatabase.a("recent", "uin=?", new String[] { alof.D });
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | RecentUser delCount = " + i);
       }

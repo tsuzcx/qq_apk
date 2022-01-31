@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import aogj;
-import aohb;
-import azqe;
+import aoks;
+import aolk;
+import azun;
 
 public class AIOVideoPlayController$1
   implements Runnable
 {
-  public AIOVideoPlayController$1(azqe paramazqe) {}
+  public AIOVideoPlayController$1(azun paramazun) {}
   
   public void run()
   {
-    azqe.a(this.this$0, (aohb)aogj.a().a(537));
+    azun.a(this.this$0, (aolk)aoks.a().a(537));
   }
 }
 

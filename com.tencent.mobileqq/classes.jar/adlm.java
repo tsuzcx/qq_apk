@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
-class adlm
-  implements DialogInterface.OnClickListener
+public class adlm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adlm(adll paramadll) {}
+  public adlm(NotifyPushSettingActivity paramNotifyPushSettingActivity, alpk paramalpk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, alpo.a(2131710743));
-    this.a.a.finish();
+    if ((bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
+    {
+      this.jdField_a_of_type_Alpk.e(paramBoolean);
+      return;
+    }
+    NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131695131), 0).b(5);
+      return;
+    }
   }
 }
 

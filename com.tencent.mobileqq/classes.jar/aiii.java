@@ -1,88 +1,57 @@
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiii
-  extends benu
+class aiii
+  implements View.OnClickListener
 {
-  private aiii(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  aiii(aiie paramaiie) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 2131562554;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
     }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bdet localbdet = (bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
+    switch (i)
     {
-      if (paramView != null) {
-        break label115;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
-    }
-    label115:
-    for (;;)
-    {
-      ((TextView)paramView).setText(localbdet.jdField_a_of_type_JavaLangString);
-      for (;;)
+    default: 
+    case 2131364912: 
+    case 2131366760: 
+      do
       {
-        paramView.setVisibility(0);
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
+        do
         {
-          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        this.a.a(localView, localbdet);
-        paramView = localView;
-      }
+          return;
+        } while (this.a.jdField_a_of_type_Aihj == null);
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Aihj.a.msg);
+        return;
+      } while (this.a.jdField_a_of_type_Aihj == null);
+      paramView = new Bundle();
+      paramView.putInt("forward_type", -1);
+      paramView.putString("forward_text", this.a.jdField_a_of_type_Aihj.a.msg);
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+      localIntent.putExtras(paramView);
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+      return;
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+    }
+    this.a.c = false;
+    aiie.a(this.a).setVisibility(8);
+    aiie.a(this.a, 0, null);
+    this.a.jdField_a_of_type_Aieh.a(aiie.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Aieh.notifyDataSetChanged();
+    this.a.b = 1;
   }
 }
 

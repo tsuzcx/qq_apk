@@ -1,9 +1,15 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface beiv
+class beiv
+  implements DialogInterface.OnClickListener
 {
-  public abstract Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2);
+  beiv(beir parambeir, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    beir.a(this.jdField_a_of_type_Beir, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

@@ -1,34 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class adkb
-  implements View.OnClickListener
+public class adkb
+  implements DialogInterface.OnClickListener
 {
-  adkb(adka paramadka) {}
+  public adkb(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof adjz))
-    {
-      paramView = (adjz)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        adka.a(this.a, paramView);
-        azmj.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
-    }
+    azqs.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkb
  * JD-Core Version:    0.7.0.1
  */

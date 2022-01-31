@@ -1,71 +1,294 @@
-import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.PointF;
-import android.opengl.GLES20;
-import android.opengl.GLES30;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.filter.BaseFilter;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView;
 
 public class bmre
+  extends bmri
 {
-  public static double a(PointF paramPointF1, PointF paramPointF2)
+  public static int a;
+  public static int b;
+  public static int c;
+  public static int d;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private bmrf jdField_a_of_type_Bmrf;
+  public bmrg a;
+  private bmyi jdField_a_of_type_Bmyi;
+  public boolean a;
+  private Paint b;
+  protected int e = 1;
+  public int f;
+  
+  public bmre(DoodleView paramDoodleView)
   {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    super(paramDoodleView);
+    g();
+    paramDoodleView.getResources().getDisplayMetrics();
   }
   
-  public static void a()
+  private void a(bmrg parambmrg)
   {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-  }
-  
-  @TargetApi(18)
-  public static void a(int paramInt)
-  {
-    switch (paramInt)
+    if (parambmrg == null) {
+      return;
+    }
+    boolean bool1 = this.jdField_a_of_type_Bmyi.a(parambmrg, StoryGuideLineView.a, true);
+    boolean bool2 = this.jdField_a_of_type_Bmyi.a(parambmrg, StoryGuideLineView.b, false);
+    boolean bool3 = this.jdField_a_of_type_Bmyi.b(parambmrg, StoryGuideLineView.d, false);
+    if ((!bool1) && (!bool2) && (!bool3))
     {
-    default: 
-      return;
-    case 0: 
-      GLES20.glDisable(3042);
-      return;
-    case 1: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(1, 771);
-      GLES20.glBlendEquation(32774);
-      return;
-    case 2: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      GLES30.glBlendEquation(32776);
-      return;
+      parambmrg.e = parambmrg.w;
+      parambmrg.jdField_a_of_type_AndroidGraphicsPointF = parambmrg.jdField_b_of_type_AndroidGraphicsPointF;
+      parambmrg.jdField_a_of_type_Float = parambmrg.q;
+      parambmrg.jdField_b_of_type_Float = parambmrg.r;
+      parambmrg.c = parambmrg.s;
+      parambmrg.d = parambmrg.t;
     }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    GLES20.glBlendEquation(32774);
+    for (;;)
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(parambmrg.l, parambmrg.r, parambmrg.s, parambmrg.t, parambmrg.jdField_b_of_type_AndroidGraphicsPointF, parambmrg.m, 0);
+      if (this.jdField_a_of_type_Bmrf == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bmrf.a(bool1, bool2, false, bool3, parambmrg.l);
+      return;
+      parambmrg.w = parambmrg.e;
+      if (parambmrg.jdField_a_of_type_AndroidGraphicsPointF != null) {
+        parambmrg.jdField_b_of_type_AndroidGraphicsPointF = parambmrg.jdField_a_of_type_AndroidGraphicsPointF;
+      }
+      parambmrg.q = parambmrg.jdField_a_of_type_Float;
+      parambmrg.r = parambmrg.jdField_b_of_type_Float;
+      if (bool3)
+      {
+        parambmrg.t = parambmrg.d;
+        if ((!bool1) && (!bool2)) {
+          parambmrg.c = parambmrg.s;
+        }
+      }
+      if ((bool1) || (bool2))
+      {
+        parambmrg.s = parambmrg.c;
+        if (!bool3) {
+          parambmrg.d = parambmrg.t;
+        }
+      }
+    }
   }
   
-  public static void a(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  private void g()
   {
-    paramFrame.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    if (paramBoolean) {
-      a();
+    this.jdField_a_of_type_Bmyi = new bmyi();
+    this.jdField_a_of_type_Bmyi.a(true);
+    this.jdField_a_of_type_Bmyi.a(18.0F);
+    this.jdField_a_of_type_Bmyi.b(0.5F);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.b = new Paint();
+    this.b.setAntiAlias(true);
+    this.b.setColor(Color.parseColor("#3DB8FF"));
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(2.0F);
+    this.b.setPathEffect(new DashPathEffect(new float[] { 6.0F, 7.0F }, 1.0F));
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = super.a();
+    if (this.jdField_a_of_type_Bmrg != null) {
+      localBundle.putParcelable("vote_paster", new InteractPasterParcelData(this.jdField_a_of_type_Bmrg));
+    }
+    return localBundle;
+  }
+  
+  @Nullable
+  public bmrg a()
+  {
+    return this.jdField_a_of_type_Bmrg;
+  }
+  
+  public String a()
+  {
+    return "VoteLayer";
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(@NonNull Bitmap paramBitmap, @NonNull Rect[] paramArrayOfRect, String[] paramArrayOfString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    if (this.jdField_a_of_type_Bmrg == null)
+    {
+      this.jdField_a_of_type_Bmrg = new bmrg(this, paramArrayOfString, paramBitmap, new PointF(xsm.a(this.jdField_a_of_type_AndroidContentContext) / 2, xsm.d(this.jdField_a_of_type_AndroidContentContext) / 2), paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramBitmap.getWidth(), paramBitmap.getHeight(), true);
+      this.jdField_a_of_type_Bmrg.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
+    }
+    for (this.jdField_a_of_type_Bmrg.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;; this.jdField_a_of_type_Bmrg.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString)
+    {
+      this.e = 1;
+      super.k();
+      return;
+      if (!this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+        this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_a_of_type_Bmrg.u = paramBitmap.getWidth();
+      this.jdField_a_of_type_Bmrg.v = paramBitmap.getHeight();
+      this.jdField_a_of_type_Bmrg.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
+      this.jdField_a_of_type_Bmrg.q = paramFloat1;
+      this.jdField_a_of_type_Bmrg.r = paramFloat2;
+      this.jdField_a_of_type_Bmrg.s = paramFloat3;
+      this.jdField_a_of_type_Bmrg.t = paramFloat4;
     }
   }
   
-  public static void a(BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(Canvas paramCanvas)
   {
-    Frame localFrame = new Frame(paramFrame1.getFBO(), paramFrame1.getTextureId(), paramInt2, paramInt3);
-    GlUtil.setBlendMode(true);
-    GLES20.glBlendEquation(32774);
-    GLES20.glBindFramebuffer(36160, paramFrame1.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    paramFrame2.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    paramBaseFilter.RenderProcess(paramFrame2.getTextureId(), paramInt2, paramInt3, paramFrame1.getTextureId(), 1.0D, localFrame);
-    GlUtil.setBlendMode(false);
+    if (this.e == 1)
+    {
+      paramCanvas.save();
+      if (this.jdField_a_of_type_Bmrg != null) {
+        this.jdField_a_of_type_Bmrg.a(paramCanvas);
+      }
+      paramCanvas.restore();
+    }
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    super.a(paramBundle);
+    paramBundle = (InteractPasterParcelData)paramBundle.getParcelable("vote_paster");
+  }
+  
+  public void a(bmrf parambmrf)
+  {
+    this.jdField_a_of_type_Bmrf = parambmrf;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bmrg == null;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = (int)paramMotionEvent.getY();
+    int j = Math.abs(i - this.f);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bmyi.a(paramMotionEvent, false);
+      if ((this.jdField_a_of_type_Bmrg != null) && (this.jdField_a_of_type_Bmyi.a() != null)) {
+        break;
+      }
+      h();
+      return true;
+      this.f = i;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmrg);
+      continue;
+      if (j > 5)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        if (!this.jdField_a_of_type_Boolean) {
+          d();
+        }
+        this.jdField_a_of_type_Bmyi.a();
+        a(this, false);
+        n();
+      }
+    }
+    a(this.jdField_a_of_type_Bmrg);
+    return true;
+  }
+  
+  public void b(Canvas paramCanvas)
+  {
+    a(paramCanvas, this.jdField_a_of_type_Float);
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    if (this.e != 1) {}
+    do
+    {
+      return false;
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      if (this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmrg, f1, f2, false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoteLayer", 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+        }
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VoteLayer", 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+    return false;
+  }
+  
+  public void c()
+  {
+    this.e = 1;
+    if (this.jdField_a_of_type_Bmrg != null)
+    {
+      if (!this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+        this.jdField_a_of_type_Bmrg.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_Bmrg = null;
+    }
+    if (this.jdField_a_of_type_Bmrf != null) {
+      this.jdField_a_of_type_Bmrf.a();
+    }
+    k();
+  }
+  
+  public void d()
+  {
+    if ((this.jdField_a_of_type_Bmrf != null) && (this.jdField_a_of_type_Bmrg != null) && (this.jdField_a_of_type_Bmrf.a(this.jdField_a_of_type_Bmrg))) {
+      this.jdField_a_of_type_Bmrg = null;
+    }
+  }
+  
+  public void e()
+  {
+    this.e = 2;
+    k();
+  }
+  
+  public void f()
+  {
+    this.e = 1;
+    k();
   }
 }
 

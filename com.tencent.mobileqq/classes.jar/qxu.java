@@ -15,8 +15,8 @@ public class qxu
 {
   private Context jdField_a_of_type_AndroidContentContext;
   public Bundle a;
-  baua jdField_a_of_type_Baua = new qxv(this);
-  baub jdField_a_of_type_Baub;
+  bayj jdField_a_of_type_Bayj = new qxv(this);
+  bayk jdField_a_of_type_Bayk;
   private WeakReference<qog> jdField_a_of_type_JavaLangRefWeakReference;
   private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
   private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
@@ -74,12 +74,12 @@ public class qxu
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     long l2 = this.jdField_a_of_type_Long;
-    azmz localazmz = azmz.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
+    azri localazri = azri.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
     String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
       return;
     }
   }
@@ -115,7 +115,7 @@ public class qxu
     this.f = "";
     CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
     localCompressInfo.f = 0;
-    if (!awga.a(localCompressInfo)) {
+    if (!awkj.a(localCompressInfo)) {
       c(1001);
     }
     QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic compressPath=" + localCompressInfo.jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + localCompressInfo.d + ", outHeight=" + localCompressInfo.jdField_e_of_type_Int);
@@ -124,17 +124,17 @@ public class qxu
     {
       this.d = paramString;
       paramString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
-      paramString.a(this.jdField_a_of_type_Baua);
-      this.jdField_a_of_type_Baub = new baub();
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Baub.jdField_c_of_type_Int = 10;
-      this.jdField_a_of_type_Baub.i = this.d;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString = "0";
-      this.jdField_a_of_type_Baub.b = 24;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-      paramString.a(this.jdField_a_of_type_Baub);
+      this.jdField_a_of_type_Bayj.addFilter(new Class[] { baqy.class });
+      paramString.a(this.jdField_a_of_type_Bayj);
+      this.jdField_a_of_type_Bayk = new bayk();
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bayk.jdField_c_of_type_Int = 10;
+      this.jdField_a_of_type_Bayk.i = this.d;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString = "0";
+      this.jdField_a_of_type_Bayk.b = 24;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+      paramString.a(this.jdField_a_of_type_Bayk);
       return;
       paramString = localCompressInfo.jdField_e_of_type_JavaLangString;
     }
@@ -147,7 +147,7 @@ public class qxu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,18 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
 
-public class ajbj
-  implements bhqd
+class ajbj
+  implements ajal
 {
-  public ajbj(AppletsFolderManager.2 param2) {}
+  ajbj(ajaz paramajaz, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (ajbg.a(this.a.this$0)) {
-      return;
-    }
-    ajbg.a(this.a.this$0, true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ajbg.a(this.a.this$0).dismiss();
-      return;
-      paramView = new ArrayList();
-      amno localamno = new amno();
-      localamno.a(Integer.valueOf(this.a.a).intValue());
-      localamno.a(Integer.valueOf(this.a.b).intValue());
-      localamno.b(0);
-      paramView.add(localamno.a());
-      ajbg.a(this.a.this$0).a(paramView);
-      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131700988), 0).a();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

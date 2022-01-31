@@ -1,14 +1,19 @@
-class avbs
-  implements avcd
+public class avbs
+  implements alpg
 {
-  avbs(avbo paramavbo) {}
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  public boolean a(avbz paramavbz, int paramInt, Object paramObject)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 21) {
-      auzy.f();
+    switch (paramInt)
+    {
     }
-    return false;
+    do
+    {
+      return;
+    } while (!paramBoolean);
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 

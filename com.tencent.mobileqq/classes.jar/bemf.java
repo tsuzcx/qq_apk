@@ -1,15 +1,35 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class bemf
-  implements ValueAnimator.AnimatorUpdateListener
+  extends nac
 {
-  bemf(beme parambeme) {}
+  bemf(bema parambema, bemh parambemh) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    beme.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidateSelf();
+    if (this.jdField_a_of_type_Bemh != null)
+    {
+      paramBundle = new oidb_0x8ed.RspBody();
+      if (paramArrayOfByte == null) {}
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bemh.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+        }
+      }
+    }
   }
 }
 

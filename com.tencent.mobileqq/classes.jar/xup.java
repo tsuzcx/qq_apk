@@ -1,25 +1,30 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.view.PagerIndicator;
+import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
 
 public class xup
-  implements bevy
+  extends DataSetObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public xup(QRDisplayActivity paramQRDisplayActivity) {}
+  private xup(PagerIndicator paramPagerIndicator) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onChanged()
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      xxb.a(1, 2131720019);
-      return;
-    }
-    xxb.a(2, 2131720038);
+    Log.d("PagerIndicator", "onChanged");
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
 }
 

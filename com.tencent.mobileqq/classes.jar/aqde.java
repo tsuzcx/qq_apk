@@ -1,23 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
 
-final class aqde
-  implements DialogInterface.OnClickListener
+public class aqde
+  implements bhuk
 {
-  aqde(BaseActivity paramBaseActivity, boolean paramBoolean, awnc paramawnc) {}
+  public aqde(ExtendFriendBaseFragment paramExtendFriendBaseFragment, aqcx paramaqcx, boolean paramBoolean1, boolean paramBoolean2, RecyclerView.ViewHolder paramViewHolder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = aqcz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    if (this.jdField_a_of_type_Boolean) {
-      aqcq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awnc.jdField_a_of_type_Int, this.jdField_a_of_type_Awnc.b, this.jdField_a_of_type_Awnc.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0)
+    {
+      zdv.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Aqcx.mUin, zdv.b(this.jdField_a_of_type_Aqcx.mUin, zdv.b(2)), null, null, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 20005, null, null);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009C8F", "0X8009C8F", 0, 0, "", "", "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Aqbe != null) {
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Aqbe.a(this.jdField_a_of_type_Aqcx.mUin);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf.dismiss();
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf = null;
+      }
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
+      if (paramInt == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      }
     }
     for (;;)
     {
-      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf.cancel();
       return;
-      aqcq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str);
+      if ((!this.jdField_a_of_type_Boolean) && (this.b))
+      {
+        if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        }
+      }
+      else if ((this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        } else if (paramInt == 2) {
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        }
+      }
+      else if ((!this.jdField_a_of_type_Boolean) && (!this.b) && (paramInt == 1)) {
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      }
     }
   }
 }

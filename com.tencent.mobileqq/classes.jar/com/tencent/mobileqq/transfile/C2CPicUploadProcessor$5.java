@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bang;
+import barp;
 
 public class C2CPicUploadProcessor$5
   implements Runnable
 {
-  public C2CPicUploadProcessor$5(bang parambang) {}
+  public C2CPicUploadProcessor$5(barp parambarp) {}
   
   public void run()
   {

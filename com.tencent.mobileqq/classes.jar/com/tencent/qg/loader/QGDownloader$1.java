@@ -1,19 +1,19 @@
 package com.tencent.qg.loader;
 
 import android.os.Handler;
-import bfsx;
-import bfsz;
+import bfxe;
+import bfxg;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
 public class QGDownloader$1
   implements Runnable
 {
-  public QGDownloader$1(bfsx parambfsx, String paramString) {}
+  public QGDownloader$1(bfxe parambfxe, String paramString) {}
   
   public void run()
   {
-    boolean bool = bfsz.a("QGDownloader.onSuccess");
+    boolean bool = bfxg.a("QGDownloader.onSuccess");
     if (!bool)
     {
       if (QLog.isColorLevel()) {

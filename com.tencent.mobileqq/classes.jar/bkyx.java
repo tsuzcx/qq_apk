@@ -1,22 +1,42 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
+import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
+import java.util.Random;
 
-class bkyx
-  extends RecyclerView.ItemDecoration
+public class bkyx
+  implements LogicDataManager.OnGetQQNumberEventListener
 {
-  bkyx(bkyt parambkyt) {}
+  bkyx(bkyw parambkyw) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public int onGetQQNumber()
   {
-    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
-    int j = (int)(DeviceUtils.getScreenWidth(bkyt.a(this.a)) * 0.04F);
-    paramRect.left = (j - i * j / 2);
-    paramRect.right = ((i + 1) * j / 2);
-    paramRect.bottom = j;
+    long l = System.currentTimeMillis();
+    if (l - bkyw.a(this.a) > 60000L)
+    {
+      bkyw.a(this.a, l);
+      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
+      if (l - bkyw.b(this.a) <= 1000L) {
+        break label168;
+      }
+      bkyw.b(this.a, l);
+    }
+    for (;;)
+    {
+      synchronized (bkyw.a(this.a))
+      {
+        if (bkyw.a(this.a) != 0) {
+          bkyw.a(this.a, bkyw.a(this.a) - 1000 + new Random().nextInt(2000));
+        }
+        return bkyw.a(this.a);
+        if (l - bkyw.a(this.a) >= 0L) {
+          break;
+        }
+        bkyw.a(this.a, l);
+      }
+      label168:
+      if (l - bkyw.b(this.a) < 0L) {
+        bkyw.b(this.a, l);
+      }
+    }
   }
 }
 

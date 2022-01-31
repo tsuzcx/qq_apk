@@ -1,13 +1,19 @@
-import com.tencent.qqmini.sdk.core.widget.CanvasView;
+import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgmp
+class bgmp
+  implements bgnz
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
+  bgmp(bgmo parambgmo, MiniAppInfo paramMiniAppInfo) {}
   
-  public bgmp(CanvasView paramCanvasView) {}
+  public void a() {}
+  
+  public void b()
+  {
+    MiniSDK.init(MiniAppEnv.g().getContext());
+    MiniSDK.startMiniApp(null, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+  }
 }
 
 

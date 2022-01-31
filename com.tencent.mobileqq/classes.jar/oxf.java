@@ -15,23 +15,23 @@ import org.json.JSONObject;
 
 public class oxf
 {
-  private static final amky jdField_a_of_type_Amky = new oxg("readinjoy_anti_cheating", false);
+  private static final ampn jdField_a_of_type_Ampn = new oxg("readinjoy_anti_cheating", false);
   private static boolean jdField_a_of_type_Boolean;
   
   private static int a()
   {
     String str1 = a();
-    String str2 = (String)bjxj.a("readinjoy_sp_key_last_request_lbs_date", "");
+    String str2 = (String)bkbq.a("readinjoy_sp_key_last_request_lbs_date", "");
     QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
     if (str1.equals(str2)) {
-      return ((Integer)bjxj.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
+      return ((Integer)bkbq.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
     }
     return 0;
   }
   
   private static SosoInterface.SosoLocation a()
   {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = amkv.a("readinjoy_anti_cheating");
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("readinjoy_anti_cheating");
     if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
       return localSosoLbsInfo.a;
     }
@@ -47,7 +47,7 @@ public class oxf
   {
     long l = System.currentTimeMillis();
     QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "init, app launch time = ", Long.valueOf(l) });
-    bjxj.a("readinjoy_sp_key_app_launch_time", Long.valueOf(l));
+    bkbq.a("readinjoy_sp_key_app_launch_time", Long.valueOf(l));
   }
   
   public static void a(JSONObject paramJSONObject)
@@ -113,7 +113,7 @@ public class oxf
         return false;
       }
       i = ((AladdinConfig)localObject).getIntegerFromString("lbs_request_interval", 2);
-      long l1 = ((Long)bjxj.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+      long l1 = ((Long)bkbq.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
       long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
       QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "from app launch interval = ", Long.valueOf(l2), ", lbsRequestInterval = ", Integer.valueOf(i), ", appLaunchTime = ", Long.valueOf(l1) });
       if (l2 <= i)
@@ -138,7 +138,7 @@ public class oxf
   {
     if (a())
     {
-      amkv.a(jdField_a_of_type_Amky);
+      ampk.a(jdField_a_of_type_Ampn);
       jdField_a_of_type_Boolean = true;
       c();
     }
@@ -147,20 +147,20 @@ public class oxf
   private static void c()
   {
     String str = a();
-    Object localObject = (String)bjxj.a("readinjoy_sp_key_last_request_lbs_date", "");
+    Object localObject = (String)bkbq.a("readinjoy_sp_key_last_request_lbs_date", "");
     QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, today = ", str, ", lastRequestLbsDate = ", localObject });
     if (str.equals(localObject))
     {
-      localObject = (Integer)bjxj.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
+      localObject = (Integer)bkbq.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
       QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, todayTime = ", localObject });
-      bjxj.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
+      bkbq.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
     }
     for (;;)
     {
-      bjxj.a("readinjoy_sp_key_last_request_lbs_date", str);
+      bkbq.a("readinjoy_sp_key_last_request_lbs_date", str);
       return;
       QLog.d("ReadInJoySpEventReportUtil", 1, "updateToadyRequestLbsTime, first time today.");
-      bjxj.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(1));
+      bkbq.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(1));
     }
   }
 }

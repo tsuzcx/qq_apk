@@ -1,32 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class bkqx
-  implements Animation.AnimationListener
+public abstract interface bkqx
 {
-  bkqx(bkqr parambkqr) {}
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((bkqr.a(this.a) != null) && (!bkqr.a(this.a)))
-    {
-      bkqr.a(this.a).setAlpha(1.0F);
-      bkqr.a(this.a).setVisibility(4);
-    }
-    if (bkqr.e(this.a) != null)
-    {
-      bkqr.f(this.a).a(327684, new Object[0]);
-      bkqr.g(this.a).a(196612, new Object[0]);
-    }
-  }
+  public abstract String a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList);
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bkqr.a(this.a).a().a(true, 150);
-  }
+  public abstract List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt);
+  
+  public abstract void a(int paramInt);
 }
 
 

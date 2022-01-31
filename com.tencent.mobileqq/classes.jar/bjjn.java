@@ -1,27 +1,21 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
-
 public class bjjn
-  implements bjit
 {
-  public bjjn(PanoramaView paramPanoramaView) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a()
+  public bjjn() {}
+  
+  public bjjn(int paramInt)
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).onPanoramaClick();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
   }
   
-  public void a(float paramFloat)
+  public String toString()
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).a(paramFloat);
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
+    return "[id=" + this.jdField_a_of_type_Int + ",fTypePath=" + this.jdField_a_of_type_JavaLangString + ", tTYpePath=" + this.b + "]";
   }
 }
 

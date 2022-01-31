@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import audv;
-import auff;
+import auie;
+import aujo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
@@ -22,7 +22,7 @@ public class MsgBackupMigrateFragment
   {
     super.b();
     setTitle(getActivity().getString(2131690414));
-    this.vg.setOnItemSelectListener(new audv(this));
+    this.vg.setOnItemSelectListener(new auie(this));
   }
   
   protected void c()
@@ -77,7 +77,7 @@ public class MsgBackupMigrateFragment
       label141:
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166901));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166903));
         this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690412));
       }
       if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
@@ -97,7 +97,7 @@ public class MsgBackupMigrateFragment
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
     }
-    auff.a("0X800A230");
+    aujo.a("0X800A230");
   }
   
   public void onDestroyView()

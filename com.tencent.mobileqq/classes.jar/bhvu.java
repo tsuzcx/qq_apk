@@ -1,6 +1,6 @@
 public abstract interface bhvu
 {
-  public abstract void a(bhvt parambhvt);
+  public abstract void a();
 }
 
 

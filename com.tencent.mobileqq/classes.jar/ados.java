@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class ados
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public ados(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  public ados(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a.dismiss();
   }
 }
 

@@ -9,30 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bemu;
-import beqy;
-import beqz;
-import bera;
-import bhpo;
+import berd;
+import bevh;
+import bevi;
+import bevj;
+import bhtv;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements bemu
+  implements berd
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private bera jdField_a_of_type_Bera;
-  private bhpo jdField_a_of_type_Bhpo;
+  private bevj jdField_a_of_type_Bevj;
+  private bhtv jdField_a_of_type_Bhtv;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private bhpo b;
+  private bhtv b;
   public boolean b;
   public int c;
   public boolean c;
@@ -51,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new beqy(this);
-    super.setOnScrollListener(new beqz(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bevh(this);
+    super.setOnScrollListener(new bevi(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -163,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bera != null) {
-          this.jdField_a_of_type_Bera.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bevj != null) {
+          this.jdField_a_of_type_Bevj.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -176,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376497);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376551);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -266,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bera != null) {
-            this.jdField_a_of_type_Bera.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bevj != null) {
+            this.jdField_a_of_type_Bevj.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -325,21 +325,21 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(bhpo parambhpo)
+  public void setOnScrollGroupFloatingListener(bhtv parambhtv)
   {
-    this.jdField_b_of_type_Bhpo = parambhpo;
+    this.jdField_b_of_type_Bhtv = parambhtv;
   }
   
-  public void setOnScrollListener(bhpo parambhpo) {}
+  public void setOnScrollListener(bhtv parambhtv) {}
   
-  public void setOnScrollToTopListener(bhpo parambhpo)
+  public void setOnScrollToTopListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
   
-  public void setOnSlideListener(bera parambera)
+  public void setOnSlideListener(bevj parambevj)
   {
-    this.jdField_a_of_type_Bera = parambera;
+    this.jdField_a_of_type_Bevj = parambevj;
   }
 }
 

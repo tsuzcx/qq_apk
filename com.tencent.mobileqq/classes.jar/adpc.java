@@ -1,34 +1,16 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpc
-  implements akfn
+  implements View.OnClickListener
 {
-  public adpc(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public adpc(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    this.a.a.cancel();
   }
 }
 

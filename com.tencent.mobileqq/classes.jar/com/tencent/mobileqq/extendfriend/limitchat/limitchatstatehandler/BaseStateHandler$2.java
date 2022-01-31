@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
-import amfi;
+import amjx;
 import android.text.TextUtils;
-import apyc;
-import aqbx;
-import athk;
+import aqcl;
+import aqgg;
+import atlt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class BaseStateHandler$2
   implements Runnable
 {
-  public BaseStateHandler$2(aqbx paramaqbx, apyc paramapyc) {}
+  public BaseStateHandler$2(aqgg paramaqgg, aqcl paramaqcl) {}
   
   public void run()
   {
     boolean bool = true;
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    athk.b((QQAppInterface)localObject, this.a.jdField_b_of_type_JavaLangString);
-    athk.a((QQAppInterface)localObject, this.a, this.a.a, 1);
+    atlt.b((QQAppInterface)localObject, this.a.jdField_b_of_type_JavaLangString);
+    atlt.a((QQAppInterface)localObject, this.a, this.a.a, 1);
     String str1 = this.a.jdField_b_of_type_JavaLangString;
     int i = this.a.jdField_b_of_type_Int;
     String str2 = this.a.f;
     if (!TextUtils.isEmpty(this.a.c)) {}
     for (;;)
     {
-      athk.a((QQAppInterface)localObject, str1, i, str2, bool);
+      atlt.a((QQAppInterface)localObject, str1, i, str2, bool);
       if (this.a.jdField_b_of_type_Int >= 2)
       {
-        localObject = (amfi)((QQAppInterface)localObject).getManager(285);
-        ((amfi)localObject).b(this.a.jdField_b_of_type_JavaLangString);
-        ((amfi)localObject).d();
+        localObject = (amjx)((QQAppInterface)localObject).getManager(285);
+        ((amjx)localObject).b(this.a.jdField_b_of_type_JavaLangString);
+        ((amjx)localObject).d();
       }
       return;
       bool = false;

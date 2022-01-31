@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class adpt
-  implements DialogInterface.OnClickListener
+class adpt
+  implements View.OnClickListener
 {
-  public adpt(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  adpt(adpq paramadpq, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, true);
-    RegisterChooseLoginActivity.a(this.a, true);
-    azmj.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    azmj.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
-    azmj.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Adpq.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

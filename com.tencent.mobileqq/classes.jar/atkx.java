@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.6;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class atkx
-  implements View.OnClickListener
 {
-  public atkx(BaseListenTogetherPanel.6 param6) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a.dismiss();
-  }
+  public int a;
+  public long a;
+  public Context a;
+  public QQAppInterface a;
+  public RedTouch a;
+  public String a;
 }
 
 

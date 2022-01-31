@@ -1,13 +1,23 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class tzh
-  implements yvn<FeedCloudRead.StGetFeedListRsp>
+public class tzh
+  extends yka
 {
-  tzh(tzf paramtzf, boolean paramBoolean) {}
+  private String a = "QCircleFuelInfoPreLoaderTask";
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a() {}
+  
+  public void a(ykg paramykg)
   {
-    this.jdField_a_of_type_Tzf.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    if (tyz.a().a())
+    {
+      paramykg = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      paramykg.setEnableCache(true);
+      VSNetworkHelper.a().a(paramykg, new tzi(this));
+    }
   }
 }
 

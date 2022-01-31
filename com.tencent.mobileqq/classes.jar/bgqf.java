@@ -1,21 +1,8 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
-
-public class bgqf
-  implements Animation.AnimationListener
+public abstract interface bgqf<T>
 {
-  public bgqf(AppUIProxy.LoadingUI paramLoadingUI) {}
+  public abstract void a(bgqe<T> parambgqe);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    AppUIProxy.LoadingUI.a(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b(bgqe<T> parambgqe);
 }
 
 

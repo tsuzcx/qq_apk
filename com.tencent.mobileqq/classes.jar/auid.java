@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+
 public abstract interface auid
 {
-  public abstract void a(int paramInt);
+  public abstract void a(boolean paramBoolean, RecentBaseData paramRecentBaseData);
 }
 
 

@@ -49,7 +49,7 @@ class lla
     //   99: iconst_1
     //   100: istore 4
     //   102: invokestatic 65	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   105: invokestatic 76	allq:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   105: invokestatic 76	alqf:a	(Landroid/content/Context;)Ljava/lang/String;
     //   108: astore 9
     //   110: iload 4
     //   112: istore_3

@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhzz;
+import bieg;
 import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
@@ -203,7 +203,7 @@ public class WSFollowFragment
     return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   }
   
-  protected bhzz a()
+  protected bieg a()
   {
     this.jdField_a_of_type_Tbb = new tbb(this);
     return this.jdField_a_of_type_Tbb;
@@ -212,16 +212,6 @@ public class WSFollowFragment
   public XRecyclerView a()
   {
     return this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView;
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(LikeRspEvent.class);
-    localArrayList.add(WSVideoPlayEvent.class);
-    localArrayList.add(WSItemExposeEvent.class);
-    localArrayList.add(FollowEvent.class);
-    return localArrayList;
   }
   
   public tbb a()
@@ -289,7 +279,7 @@ public class WSFollowFragment
     tcq.a().b(new tbc(this));
     f();
     e();
-    paramView = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368481);
+    paramView = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368492);
     if (this.jdField_a_of_type_Tdn == null)
     {
       this.jdField_a_of_type_Tdn = new tdn(this, 0);
@@ -365,7 +355,7 @@ public class WSFollowFragment
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean2) {
-      this.jdField_a_of_type_Tbb.a(View.inflate(getActivity(), 2131560222, null));
+      this.jdField_a_of_type_Tbb.a(View.inflate(getActivity(), 2131560221, null));
     }
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(paramBoolean1, paramBoolean2);
   }
@@ -406,6 +396,16 @@ public class WSFollowFragment
   public void c()
   {
     ((tih)b()).a(true, false);
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LikeRspEvent.class);
+    localArrayList.add(WSVideoPlayEvent.class);
+    localArrayList.add(WSItemExposeEvent.class);
+    localArrayList.add(FollowEvent.class);
+    return localArrayList;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

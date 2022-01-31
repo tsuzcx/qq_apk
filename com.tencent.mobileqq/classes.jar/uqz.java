@@ -1,8 +1,6 @@
-public abstract interface uqz
+public class uqz
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public static int[][] a = { { -1, 243 }, { -1, 248 } };
 }
 
 

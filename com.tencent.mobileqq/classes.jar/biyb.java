@@ -1,31 +1,28 @@
-import android.os.Bundle;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
 
-public abstract class biyb
+public class biyb
+  implements ServiceConnection
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  biyb(biya parambiya) {}
   
-  public void a(Bundle paramBundle)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
-    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
-    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
-    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
-    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
+    this.a.jdField_a_of_type_Bixq = bixr.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Bixq != null)
+    {
+      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
+    }
   }
   
-  public String toString()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("&sv=" + this.b);
-    localStringBuilder.append("&at=" + this.c);
-    localStringBuilder.append("&an=" + this.d);
-    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.a.jdField_a_of_type_Bixq = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
 public class aqii
-  implements ypq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aqii(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
+  public aqii(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public void a(List<arjn> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.stopTitleProgress();
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy = new ypy(paramList, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.e = (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.e + "/");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_Long;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.c = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.c;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.d = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.d;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.f, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Short);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.jdField_a_of_type_Ypy);
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
     }
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    int i = (int)(-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView) * f);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
   }
 }
 

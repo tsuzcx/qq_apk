@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfo
-  implements DialogInterface.OnClickListener
+  extends alpq
 {
-  public adfo(NotificationActivity paramNotificationActivity) {}
+  public adfo(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    {
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfo
  * JD-Core Version:    0.7.0.1
  */

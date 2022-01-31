@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.minigame.debug;
 
-import alpo;
+import alud;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import bdkf;
-import bguy;
+import bdoo;
+import bgzf;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
@@ -30,15 +30,15 @@ public class QQDebugWebSocket
   extends DebugWebSocket
   implements IInspectorAgent
 {
-  private static final String DISCONNECT_TIPS = alpo.a(2131710588);
-  private static final String DISCONNECT_TIPS_NOT_RECOVERY = alpo.a(2131710587);
+  private static final String DISCONNECT_TIPS = alud.a(2131710600);
+  private static final String DISCONNECT_TIPS_NOT_RECOVERY = alud.a(2131710599);
   public static final int NETWORKTYPE_2G = 2;
   public static final int NETWORKTYPE_3G = 3;
   public static final int NETWORKTYPE_4G = 4;
   public static final int NETWORKTYPE_OFFLINE = 0;
   public static final int NETWORKTYPE_OTHER = 1;
   public static final int NETWORKTYPE_WIFI = 6;
-  private static final String RECONNECT_TIPS = alpo.a(2131710589);
+  private static final String RECONNECT_TIPS = alud.a(2131710601);
   private AtomicInteger count = new AtomicInteger();
   private MiniGameInfo gameInfo;
   Runnable heartbeatRunnable = new QQDebugWebSocket.4(this);
@@ -49,12 +49,12 @@ public class QQDebugWebSocket
   private DebugWebSocket.DebugSocketListener qqSocketListener = new QQDebugWebSocket.1(this);
   private String sessionId;
   
-  public QQDebugWebSocket(MiniGameInfo paramMiniGameInfo, bguy parambguy)
+  public QQDebugWebSocket(MiniGameInfo paramMiniGameInfo, bgzf parambgzf)
   {
     this.gameInfo = paramMiniGameInfo;
     this.TAG = "[debugger].QQDebugWebSocket";
     this.jsPlugin = new QQDebugWebSocket.ProfileJsPlugin(this);
-    parambguy.a(this);
+    parambgzf.a(this);
   }
   
   private String covertProfileToIdeData(String paramString)
@@ -204,9 +204,9 @@ public class QQDebugWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.3.3");
+      localJSONObject.put("qq_version", "8.3.5");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bdkf.a());
+      localJSONObject.put("screen_width", bdoo.a());
       localJSONObject.put("user_agent", "MiniGame");
       return localJSONObject;
     }

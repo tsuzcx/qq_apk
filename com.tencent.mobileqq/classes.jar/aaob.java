@@ -1,16 +1,29 @@
 import android.text.TextUtils;
-import com.tencent.gdtad.statistics.GdtCgiReportRunnable;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
-public class aaob
+final class aaob
+  implements View.OnClickListener
 {
-  public static void a(String paramString)
+  aaob(aany paramaany, aanx paramaanx) {}
+  
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    aany localaany = this.jdField_a_of_type_Aany;
+    paramView = aany.a.onClick(paramView);
+    if (!TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
+      aase.d("GdtBannerViewBuilder", "onclick:" + this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
     }
-    ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
-    aanp.b("GDT_CGI_REPORT", paramString);
+    if (this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
+      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+    }
+    GdtHandler.a(this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
   }
 }
 

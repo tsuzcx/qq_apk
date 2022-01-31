@@ -91,7 +91,7 @@ public class sex
     Bitmap localBitmap3;
     try
     {
-      localBitmap3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844479);
+      localBitmap3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844551);
       if (localBitmap3 == null)
       {
         QLog.e(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon: mask is null");
@@ -109,7 +109,7 @@ public class sex
     }
     for (Bitmap localBitmap1 = this.d;; localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap)
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = bcyy.a(localBitmap2, localBitmap3, 0.0F, 1.0F);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = bddh.a(localBitmap2, localBitmap3, 0.0F, 1.0F);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
       this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int * 0.75F, this.jdField_a_of_type_Int * 0.75F);
       this.c = localBitmap1;
@@ -135,11 +135,11 @@ public class sex
         localURLDrawableOptions.mRequestHeight = Math.round(f1);
         this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
         this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(bcuq.a);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(bcyz.a);
         this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
         if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
         {
-          this.d = bdda.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+          this.d = bdhj.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
           a();
         }
         return;
@@ -226,7 +226,7 @@ public class sex
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadSuccessed");
-    this.d = bdda.a(paramURLDrawable.getCurrDrawable());
+    this.d = bdhj.a(paramURLDrawable.getCurrDrawable());
     a();
     invalidateSelf();
   }

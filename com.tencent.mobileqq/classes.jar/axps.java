@@ -1,36 +1,31 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-
-public class axps
-  implements GLSurfaceView.EGLContextFactory
+class axps
+  implements ajsj
 {
-  private static int jdField_a_of_type_Int = 12440;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  axps(axpr paramaxpr, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
-  public EGLContext a()
+  public void a()
   {
-    wsv.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-  {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    wsv.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-      wsv.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
+    {
+      azqs.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
+      this.jdField_a_of_type_Axpr.a.dismiss();
+      this.jdField_a_of_type_Axpr.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
     }
-    wsv.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+  }
+  
+  public void b()
+  {
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
+    {
+      azqs.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
+      this.jdField_a_of_type_Axpr.a.dismiss();
+      return;
+    }
   }
 }
 

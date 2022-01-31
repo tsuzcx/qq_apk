@@ -1,45 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import android.os.Bundle;
 import org.json.JSONObject;
 
-public class aarm
-  extends aark
+class aarm
+  implements yrb
 {
-  public aarm(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
+  aarm(aarl paramaarl, aarb paramaarb, String paramString, String[] paramArrayOfString, yqz paramyqz) {}
   
-  public String a()
+  public void callback(Bundle paramBundle)
   {
-    String str = super.a();
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
     try
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      aase.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Aarb + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Aarb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Yqz.b();
+      return;
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
+      for (;;)
+      {
+        aase.d("GdtGetUserInfoHandler", localException.toString());
+      }
     }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarm
  * JD-Core Version:    0.7.0.1
  */

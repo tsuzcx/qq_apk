@@ -20,16 +20,16 @@ class rhx
     do
     {
       return;
-      QQToast.a(rhf.a(this.a), 2131720097, 0).a();
+      QQToast.a(rhf.a(this.a), 2131720109, 0).a();
       return;
-      String str = rhf.a(this.a).getString(2131720098);
+      String str = rhf.a(this.a).getString(2131720110);
       paramMessage = (String)paramMessage.obj;
       QQToast.a(rhf.a(this.a), 2, str + paramMessage, 0).a();
-      bdda.a(rhf.a(this.a), paramMessage);
+      bdhj.a(rhf.a(this.a), paramMessage);
       return;
     } while ((rhf.a(this.a) == null) || (rhf.a(this.a).jdField_a_of_type_Int != 0));
     paramMessage = ShortVideoUtils.a(rhf.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    bdcd.a(rhf.a(this.a), 232, rhf.a(this.a).getResources().getString(2131720130), rhf.a(this.a).getResources().getString(2131720129), 2131720112, 2131719197, new rhy(this, paramMessage), new rhz(this)).show();
+    bdgm.a(rhf.a(this.a), 232, rhf.a(this.a).getResources().getString(2131720142), rhf.a(this.a).getResources().getString(2131720141), 2131720124, 2131719209, new rhy(this, paramMessage), new rhz(this)).show();
   }
 }
 

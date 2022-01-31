@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.activity;
 
-import auah;
+import aueq;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 
 class LoadingFragment$2
-  implements auah
+  implements aueq
 {
   LoadingFragment$2(LoadingFragment paramLoadingFragment) {}
   

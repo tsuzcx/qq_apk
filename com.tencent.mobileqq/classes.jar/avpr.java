@@ -1,43 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-final class avpr
-  implements QQPermissionCallback
+public class avpr
+  extends auua
 {
-  avpr(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
+  public avpr(NearbyProfileFragment paramNearbyProfileFragment, long paramLong) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
-    }
-    bdcd.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
-    }
-    try
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L))
     {
-      avpq.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
-      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+      NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).tinyId = paramLong2;
+      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a;
+      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.j)) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.jdField_a_of_type_Long = paramLong2;
       }
-      return;
-    }
-    catch (Exception paramArrayOfString)
-    {
-      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a(paramLong2);
     }
   }
 }

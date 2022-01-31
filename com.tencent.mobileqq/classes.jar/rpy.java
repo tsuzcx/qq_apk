@@ -16,8 +16,8 @@ public class rpy
     {
     default: 
       return;
-    case 2131365080: 
-    case 2131365095: 
+    case 2131365082: 
+    case 2131365097: 
       this.a.jdField_a_of_type_Rpz.a(this.a.jdField_a_of_type_AndroidOsBundle);
       return;
     }

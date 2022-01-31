@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgho;
-import bghy;
-import bghz;
-import bgij;
+import bglv;
+import bgmf;
+import bgmg;
+import bgmq;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import com.tencent.qqmini.sdk.launcher.model.WindowInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -40,21 +40,21 @@ class MiniAppVideoPlayer$15
     MiniAppVideoPlayer.j(this.this$0);
     MiniAppVideoPlayer.e(this.this$0).setVisibility(8);
     MiniAppVideoPlayer.d(this.this$0).setVisibility(8);
-    bgho localbgho;
+    bglv localbglv;
     String str;
     int i;
     if (this.this$0.jdField_b_of_type_JavaLangRefWeakReference != null)
     {
-      localbgho = (bgho)this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localbgho != null)
+      localbglv = (bglv)this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (localbglv != null)
       {
-        bgij.a(localbgho).b(MiniAppVideoPlayer.i(this.this$0));
-        bgij.a(localbgho).a(MiniAppVideoPlayer.j(this.this$0));
+        bgmq.a(localbglv).b(MiniAppVideoPlayer.i(this.this$0));
+        bgmq.a(localbglv).a(MiniAppVideoPlayer.j(this.this$0));
       }
       localActivity.getWindow().clearFlags(1024);
-      if (localbgho != null)
+      if (localbglv != null)
       {
-        str = bghz.a(localbgho).a();
+        str = bgmg.a(localbglv).a();
         if (!WindowInfo.ORIENTATION_AUTO.equals(str)) {
           break label356;
         }
@@ -68,12 +68,12 @@ class MiniAppVideoPlayer$15
       if (Build.VERSION.SDK_INT >= 16) {
         localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
       }
-      if (localbgho != null) {}
+      if (localbglv != null) {}
       for (;;)
       {
         try
         {
-          i = bghy.a(localbgho).c();
+          i = bgmf.a(localbglv).c();
           if (i != -1) {
             continue;
           }
@@ -91,7 +91,7 @@ class MiniAppVideoPlayer$15
         MiniAppVideoPlayer.a(this.this$0).postDelayed(new MiniAppVideoPlayer.15.1(this), 200L);
         MiniAppVideoPlayer.g(this.this$0);
         return;
-        localbgho = null;
+        localbglv = null;
         break;
         if (!WindowInfo.ORIENTATION_LANDSCAPE.equals(str)) {
           continue;

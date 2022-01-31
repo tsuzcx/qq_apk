@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aukx;
-import axis;
+import aupg;
+import axnb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -19,7 +19,7 @@ class MiniMultiForwardFragment$1
     ArrayList localArrayList = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
-      ChatMessage localChatMessage = ((axis)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
+      ChatMessage localChatMessage = ((axnb)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
       if (localChatMessage == null) {
         break label161;
       }
@@ -41,7 +41,7 @@ class MiniMultiForwardFragment$1
       }
       else if (MiniMultiForwardFragment.a(this.this$0) == 1)
       {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, aukx.a().a);
+        localArrayList = MiniMultiForwardFragment.a(this.this$0, aupg.a().a);
       }
       else
       {

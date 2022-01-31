@@ -1,77 +1,90 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class auld
 {
-  public int a;
-  public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
+  public String a;
+  public List<String> a;
   public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
   
-  public int a()
+  public auld()
   {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static auld a(String paramString)
+  {
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      auld localauld = new auld();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("mainswitch", 0) == 1) {}
+      for (;;)
+      {
+        localauld.jdField_a_of_type_Boolean = bool;
+        localauld.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
+        paramString = a(paramString.optJSONArray("black"));
+        localauld.jdField_a_of_type_JavaUtilList.addAll(paramString);
+        return localauld;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
+    }
+  }
+  
+  private static List<String> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            localArrayList.add(paramJSONArray.getString(i).trim());
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
+            }
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
   
   public String a()
   {
-    return String.valueOf(hashCode());
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt)
+  public List<String> a()
   {
-    synchronized (this.a)
-    {
-      this.h ^= paramInt;
-      return;
-    }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean a()
   {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      if (paramInt1 == 0) {
-        paramInt2 = 0;
-      }
-      this.i = (j + paramInt2);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      return j;
-    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

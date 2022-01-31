@@ -113,7 +113,7 @@ public class pov
           localJSONObject.put("idfa", "");
           localJSONObject.put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
           localJSONObject.put("comment", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaLangString);
-          if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+          if (bkbq.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
             continue;
           }
           i = j;
@@ -153,7 +153,7 @@ public class pov
       localBundle.putString("channel_id", "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
       localIntent.putParcelableArrayListExtra("friends_biu_list", paramViewBase);
       localIntent.putExtras(localBundle);
-      adky.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, ReadInjoyFriendsBiuComponentFragment.class);
+      adpn.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, ReadInjoyFriendsBiuComponentFragment.class);
     }
     a();
     if (QLog.isColorLevel()) {

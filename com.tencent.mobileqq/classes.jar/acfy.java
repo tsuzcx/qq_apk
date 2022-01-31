@@ -1,18 +1,33 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
-public final class acfy
-  implements DialogInterface.OnClickListener
+public class acfy
+  implements bhuk
 {
-  public acfy(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, acgy paramacgy, Bundle paramBundle) {}
+  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acfy(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_AndroidOsBundle);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+  }
+  
+  public void a(SimpleAccount paramSimpleAccount)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
   }
 }
 

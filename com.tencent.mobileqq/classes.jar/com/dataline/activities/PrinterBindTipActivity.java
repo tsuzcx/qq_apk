@@ -1,7 +1,7 @@
 package com.dataline.activities;
 
-import aabm;
-import alpo;
+import aagb;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,9 +24,9 @@ public class PrinterBindTipActivity
   {
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131165395);
-    super.setContentView(2131559451);
-    super.setTitle(alpo.a(2131708803));
-    super.setLeftViewName(2131691667);
+    super.setContentView(2131559450);
+    super.setTitle(alud.a(2131708815));
+    super.setLeftViewName(2131691668);
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363266));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
@@ -37,8 +37,8 @@ public class PrinterBindTipActivity
   
   public void onClick(View paramView)
   {
-    aabm.a();
-    aabm.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
+    aagb.a();
+    aagb.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       paramView = new Intent(this, QQBrowserActivity.class);

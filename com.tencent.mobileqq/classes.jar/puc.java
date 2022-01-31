@@ -2,11 +2,11 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
 
 class puc
-  implements biaq
+  implements biex
 {
   puc(ptw paramptw) {}
   
-  public void S_() {}
+  public void a() {}
   
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {

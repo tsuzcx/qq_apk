@@ -1,18 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class afob
-  extends afpq
+  implements arsg
 {
-  afob(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afob(afnq paramafnq) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
   }
 }
 

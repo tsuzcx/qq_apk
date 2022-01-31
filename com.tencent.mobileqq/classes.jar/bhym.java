@@ -1,18 +1,31 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.os.IBinder;
+import android.widget.Button;
 
 public class bhym
-  implements View.OnFocusChangeListener
+  extends bhyh
 {
-  public bhym(XPanelContainer paramXPanelContainer) {}
+  public boolean b = true;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public bhym(Activity paramActivity)
   {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131706328));
+    }
+    b();
+  }
+  
+  protected void a(IBinder paramIBinder)
+  {
+    if (this.b) {
+      super.a(paramIBinder);
     }
   }
 }

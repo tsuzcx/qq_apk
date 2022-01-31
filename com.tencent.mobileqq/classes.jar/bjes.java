@@ -1,45 +1,55 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bjes
-  implements BusinessObserver
+  extends QzoneExternalRequest
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public JceStruct a;
   
-  protected boolean a(boolean paramBoolean, Bundle paramBundle)
+  public bjes(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
   {
-    return false;
+    super.setRefer(paramString);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    paramString = new AIONewestFeedReq();
+    paramString.uOpUin = paramLong1;
+    paramString.uHostUin = paramArrayList;
+    paramString.uLastTime = paramLong2;
+    paramString.src = paramInt;
+    this.a = paramString;
   }
   
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
   {
-    if (!a(paramBoolean, paramBundle)) {}
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
     do
     {
-      return;
-      if (paramInt == 0)
-      {
-        b(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1)
-      {
-        c(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 2)
-      {
-        a(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 100);
-    d(paramBoolean, paramBundle);
+      return paramArrayOfByte;
+      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
+      paramArrayOfByte = paramQQAppInterface;
+    } while (paramQQAppInterface != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getAIONewestFeed";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getAIONewestFeed";
   }
 }
 

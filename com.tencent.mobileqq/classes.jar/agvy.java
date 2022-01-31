@@ -1,11 +1,19 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public abstract interface agvy
-  extends agwc
+public class agvy
+  extends bbmn
 {
-  public abstract int a();
+  public agvy(TroopChatPie paramTroopChatPie) {}
   
-  public abstract View a(Object... paramVarArgs);
+  protected void a(long paramLong)
+  {
+    if (!String.valueOf(paramLong).equals(this.a.c())) {}
+    while (TroopChatPie.l(this.a) == null) {
+      return;
+    }
+    TroopChatPie.m(this.a).a();
+  }
 }
 
 

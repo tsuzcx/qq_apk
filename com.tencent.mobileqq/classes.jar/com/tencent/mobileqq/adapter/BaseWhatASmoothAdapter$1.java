@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import akdb;
-import akdc;
+import akhq;
+import akhr;
 import android.view.View;
 
 public class BaseWhatASmoothAdapter$1
   implements Runnable
 {
-  public BaseWhatASmoothAdapter$1(akdb paramakdb, View paramView, Object paramObject1, Object paramObject2, int paramInt, akdc paramakdc) {}
+  public BaseWhatASmoothAdapter$1(akhq paramakhq, View paramView, Object paramObject1, Object paramObject2, int paramInt, akhr paramakhr) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseWhatASmoothAdapter$1
       this.this$0.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
       this.jdField_a_of_type_AndroidViewView.setTag(this.this$0.a + this.jdField_a_of_type_Int);
     }
-    akdc.a(this.jdField_a_of_type_Akdc, null);
+    akhr.a(this.jdField_a_of_type_Akhr, null);
   }
 }
 

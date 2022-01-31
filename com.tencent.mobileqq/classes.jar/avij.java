@@ -1,13 +1,8 @@
 class avij
-  implements aurq
 {
-  avij(avhw paramavhw) {}
+  public int a;
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.c(paramBoolean);
-    this.a.u = paramBoolean;
-  }
+  private avij(avhf paramavhf) {}
 }
 
 

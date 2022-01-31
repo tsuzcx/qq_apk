@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import awbv;
+import awge;
 import java.util.List;
 import tencent.im.oidb.cmd0x935.oidb_0x935.Label;
 
 public class NewRecommendTroopItem
-  extends awbv
+  extends awge
 {
   public int group_flag;
   public int group_flag_ext;

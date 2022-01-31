@@ -1,21 +1,21 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aall;
-import akwa;
+import aaqa;
+import alap;
 import android.media.AudioManager;
 
 public class GdtMvViewController$8
   implements Runnable
 {
-  public GdtMvViewController$8(aall paramaall) {}
+  public GdtMvViewController$8(aaqa paramaaqa) {}
   
   public void run()
   {
-    int i = aall.a(this.this$0).getStreamVolume(3);
-    aall localaall;
-    if (aall.a(this.this$0) != null)
+    int i = aaqa.a(this.this$0).getStreamVolume(3);
+    aaqa localaaqa;
+    if (aaqa.a(this.this$0) != null)
     {
-      localaall = this.this$0;
+      localaaqa = this.this$0;
       if (i > 0) {
         break label74;
       }
@@ -23,9 +23,9 @@ public class GdtMvViewController$8
     label74:
     for (boolean bool = true;; bool = false)
     {
-      localaall.a = bool;
-      aall.a(this.this$0).a(this.this$0.a);
-      aall.a(this.this$0, i, aall.b(this.this$0), true);
+      localaaqa.a = bool;
+      aaqa.a(this.this$0).a(this.this$0.a);
+      aaqa.a(this.this$0, i, aaqa.b(this.this$0), true);
       return;
     }
   }

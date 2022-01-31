@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajbi
-  implements bhqf
+class ajbi
+  implements ajal
 {
-  public ajbi(AppletsFolderManager.2 param2) {}
+  ajbi(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
   
-  public void onDismiss()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    ajbg.a(this.a.this$0, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

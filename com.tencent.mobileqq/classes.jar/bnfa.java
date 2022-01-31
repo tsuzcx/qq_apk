@@ -1,18 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
-class bnfa
-  implements DialogInterface.OnClickListener
+public class bnfa
 {
-  bnfa(bnez parambnez) {}
+  public static final int[] a;
+  public static final int[] b;
+  public int a;
+  public Drawable a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    jdField_a_of_type_ArrayOfInt = new int[] { -1, -2148308, -1009097, -8136876, -13338378 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130846327, 2130846330, 2130846328, 2130846333, 2130846332 };
+  }
+  
+  public bnfa(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (paramInt1 == 0) {
+      this.jdField_b_of_type_JavaLangString = ColorPicker.a(paramInt2);
+    }
+  }
+  
+  public bnfa(Drawable paramDrawable, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = Color.parseColor(paramString);
   }
 }
 

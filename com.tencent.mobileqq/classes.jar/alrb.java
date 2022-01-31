@@ -1,13 +1,6 @@
-public class alrb
+public abstract interface alrb
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public String toString()
-  {
-    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

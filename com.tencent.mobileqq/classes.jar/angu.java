@@ -1,8 +1,26 @@
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public abstract interface angu
+public class angu
+  implements View.OnTouchListener
 {
-  public abstract boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3);
+  public angu(ARScanEntryView paramARScanEntryView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

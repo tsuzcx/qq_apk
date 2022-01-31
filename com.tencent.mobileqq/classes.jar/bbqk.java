@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import java.util.UUID;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
 
-class bbqk
-  implements amji
+public final class bbqk
+  implements Parcelable.Creator<TroopBarMyBar>
 {
-  bbqk(bbqi parambbqi, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
-  
-  public void a(String paramString)
+  public TroopBarMyBar a(Parcel paramParcel)
   {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[add]. table:" + paramString);
+    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
   }
   
-  public void a(String paramString, int paramInt)
+  public TroopBarMyBar[] a(int paramInt)
   {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish. table:" + paramString);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[del]. table:" + paramString);
+    return null;
   }
 }
 

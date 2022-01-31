@@ -1,38 +1,44 @@
-import android.view.View;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class aeve
-  implements URLDrawableDownListener
+class aeve
+  extends Animation
 {
-  public aeve(DoodleMsgLayout paramDoodleMsgLayout) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  aeve(aeva paramaeva) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (paramView == DoodleMsgLayout.a(this.a))
-    {
-      DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
+    float f2 = 1.5F;
+    float f1 = 0.0F;
+    if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) {
+      paramFloat = f2;
     }
-    do
+    for (;;)
     {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
       return;
-      if (paramView == DoodleMsgLayout.b(this.a))
+      if (paramFloat < 13.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float)
       {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
+        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 8.0F) * 0.5F;
+        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 8.0F) * 0.5F;
       }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+      else
+      {
+        paramFloat = 2.0F;
+      }
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 

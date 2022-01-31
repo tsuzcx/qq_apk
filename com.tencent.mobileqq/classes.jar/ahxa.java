@@ -1,19 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxa
-  implements ahzi
+class ahxa
+  implements DialogInterface.OnClickListener
 {
-  public ahxa(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxa(ahww paramahww) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
+    try
+    {
+      paramDialogInterface.dismiss();
+      ahww.a(this.a, ahww.a(this.a), Long.valueOf(ahww.a(this.a)).longValue());
+      ahww.a(this.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import uha;
+import awge;
+import ulj;
 
 public class TagEntry
-  extends awbv
-  implements uha
+  extends awge
+  implements ulj
 {
   public String desc;
   public String feedId;

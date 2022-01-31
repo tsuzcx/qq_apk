@@ -1,6 +1,16 @@
-public abstract interface axmi
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class axmi
 {
-  public abstract void H_();
+  public RegisterNewBaseActivity a;
+  public QQAppInterface a;
+  
+  protected axmi(RegisterNewBaseActivity paramRegisterNewBaseActivity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
+  }
 }
 
 

@@ -1,38 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class aqne
-  implements View.OnClickListener
+public class aqne
+  implements arrh
 {
-  aqne(aqnd paramaqnd) {}
+  public aqne(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    aelt localaelt = (aelt)aekt.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localaelt != null)
-    {
-      i = -1;
-      localChatMessage = arni.a(localaelt.a);
-      if (!this.a.b(localChatMessage)) {
-        break label76;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localaelt, localChatMessage, i);
-      if (this.a.a != null) {
-        this.a.a.g(localaelt.a);
-      }
-      return;
-      label76:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
-      }
-    }
+    UniformDownloadActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

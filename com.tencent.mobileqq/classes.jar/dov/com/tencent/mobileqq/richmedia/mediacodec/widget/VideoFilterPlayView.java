@@ -8,18 +8,18 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Pair;
-import axld;
-import axqk;
-import azgk;
-import azgq;
-import bkka;
-import bnjk;
-import bnjp;
-import bnjv;
-import bnjx;
-import bnjy;
-import bnjz;
-import bnkj;
+import axpm;
+import axut;
+import azkt;
+import azkz;
+import bkoh;
+import bnnw;
+import bnob;
+import bnoh;
+import bnoj;
+import bnok;
+import bnol;
+import bnov;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
@@ -37,17 +37,17 @@ import java.util.LinkedList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import mqq.os.MqqHandler;
-import xom;
+import xsv;
 
 public class VideoFilterPlayView
   extends HWVideoPlayView
 {
   public static int k;
-  private bnjv jdField_a_of_type_Bnjv;
-  bnjx jdField_a_of_type_Bnjx;
-  private bnjy jdField_a_of_type_Bnjy;
-  private bnjz jdField_a_of_type_Bnjz;
-  private bnkj jdField_a_of_type_Bnkj;
+  private bnoh jdField_a_of_type_Bnoh;
+  bnoj jdField_a_of_type_Bnoj;
+  private bnok jdField_a_of_type_Bnok;
+  private bnol jdField_a_of_type_Bnol;
+  private bnov jdField_a_of_type_Bnov;
   private FollowCaptureParam jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam;
   private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
   PKFilter jdField_a_of_type_ComTencentMobileqqShortvideoPkvideoPKFilter;
@@ -104,8 +104,8 @@ public class VideoFilterPlayView
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = bkka.a();
-    bkka.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = bkoh.a();
+    bkoh.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager);
   }
   
   protected void a()
@@ -127,31 +127,31 @@ public class VideoFilterPlayView
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = null;
     }
-    if (this.jdField_a_of_type_Bnjy != null) {
-      this.jdField_a_of_type_Bnjy.a();
+    if (this.jdField_a_of_type_Bnok != null) {
+      this.jdField_a_of_type_Bnok.a();
     }
     if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null)
     {
       this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
       this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = null;
     }
-    if (this.jdField_a_of_type_Bnjv != null)
+    if (this.jdField_a_of_type_Bnoh != null)
     {
-      this.jdField_a_of_type_Bnjv.destroy();
-      this.jdField_a_of_type_Bnjv = null;
+      this.jdField_a_of_type_Bnoh.destroy();
+      this.jdField_a_of_type_Bnoh = null;
     }
-    if (this.jdField_a_of_type_Bnjx != null) {
-      this.jdField_a_of_type_Bnjx.onSurfaceDestroy();
+    if (this.jdField_a_of_type_Bnoj != null) {
+      this.jdField_a_of_type_Bnoj.onSurfaceDestroy();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
       this.jdField_f_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = bkka.a();
-      bkka.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = bkoh.a();
+      bkoh.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager);
     }
-    if (this.jdField_a_of_type_Bnjz != null) {
-      this.jdField_a_of_type_Bnjz.a();
+    if (this.jdField_a_of_type_Bnol != null) {
+      this.jdField_a_of_type_Bnol.a();
     }
   }
   
@@ -161,7 +161,7 @@ public class VideoFilterPlayView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bnjy = new bnjy(paramInt);
+    this.jdField_a_of_type_Bnok = new bnok(paramInt);
   }
   
   public void a(RenderBuffer paramRenderBuffer, int paramInt1, int paramInt2)
@@ -219,10 +219,10 @@ public class VideoFilterPlayView
   public void a(String paramString, int paramInt)
   {
     this.i = true;
-    Pair localPair = xom.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, azgq.jdField_a_of_type_Int, azgq.jdField_b_of_type_Int);
+    Pair localPair = xsv.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, azkz.jdField_a_of_type_Int, azkz.jdField_b_of_type_Int);
     this.jdField_c_of_type_Int = ((Integer)localPair.first).intValue();
     this.jdField_d_of_type_Int = ((Integer)localPair.second).intValue();
-    this.jdField_a_of_type_Bnjz = new bnjz(getContext(), paramString, paramInt);
+    this.jdField_a_of_type_Bnol = new bnol(getContext(), paramString, paramInt);
   }
   
   protected void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -259,20 +259,20 @@ public class VideoFilterPlayView
       if (this.h)
       {
         paramArrayOfFloat1.unbind();
-        this.jdField_a_of_type_Bnjx.setInputTextureID(n);
-        this.jdField_a_of_type_Bnjx.onDrawFrame();
-        m = this.jdField_a_of_type_Bnjx.getOutputTextureID();
+        this.jdField_a_of_type_Bnoj.setInputTextureID(n);
+        this.jdField_a_of_type_Bnoj.onDrawFrame();
+        m = this.jdField_a_of_type_Bnoj.getOutputTextureID();
         paramArrayOfFloat1.bind();
       }
       n = m;
       if (this.i) {
-        n = this.jdField_a_of_type_Bnjz.a(m);
+        n = this.jdField_a_of_type_Bnol.a(m);
       }
       m = n;
-      if (this.jdField_a_of_type_Bnjy != null)
+      if (this.jdField_a_of_type_Bnok != null)
       {
         paramArrayOfFloat1.bind();
-        m = this.jdField_a_of_type_Bnjy.a(n);
+        m = this.jdField_a_of_type_Bnok.a(n);
         paramArrayOfFloat1.unbind();
       }
       n = m;
@@ -295,8 +295,8 @@ public class VideoFilterPlayView
         this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(n, null, null);
         m = paramArrayOfFloat1.getTexId();
         paramArrayOfFloat1.unbind();
-        this.jdField_a_of_type_Bnjv.a();
-        if (!this.jdField_a_of_type_Bnjv.a()) {
+        this.jdField_a_of_type_Bnoh.a();
+        if (!this.jdField_a_of_type_Bnoh.a()) {
           break label508;
         }
         if (paramArrayOfFloat1 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer) {
@@ -305,7 +305,7 @@ public class VideoFilterPlayView
         paramArrayOfFloat1 = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
         label376:
         paramArrayOfFloat1.bind();
-        this.jdField_a_of_type_Bnjv.drawTexture(m, null, null);
+        this.jdField_a_of_type_Bnoh.drawTexture(m, null, null);
         m = paramArrayOfFloat1.getTexId();
         paramArrayOfFloat1.unbind();
       }
@@ -370,16 +370,16 @@ public class VideoFilterPlayView
       super.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 33984);
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 33984);
-      if ((this.h) && (this.jdField_a_of_type_Bnjx != null))
+      if ((this.h) && (this.jdField_a_of_type_Bnoj != null))
       {
-        paramGL10 = xom.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, paramInt1, paramInt2);
-        this.jdField_a_of_type_Bnjx.onSurfaceChange(((Integer)paramGL10.first).intValue(), ((Integer)paramGL10.second).intValue());
+        paramGL10 = xsv.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, paramInt1, paramInt2);
+        this.jdField_a_of_type_Bnoj.onSurfaceChange(((Integer)paramGL10.first).intValue(), ((Integer)paramGL10.second).intValue());
       }
-      if (this.jdField_a_of_type_Bnjv != null) {
-        this.jdField_a_of_type_Bnjv.onOutputSizeChanged(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      if (this.jdField_a_of_type_Bnoh != null) {
+        this.jdField_a_of_type_Bnoh.onOutputSizeChanged(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       }
-      if (this.jdField_a_of_type_Bnjy != null) {
-        this.jdField_a_of_type_Bnjy.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      if (this.jdField_a_of_type_Bnok != null) {
+        this.jdField_a_of_type_Bnok.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       }
       if (this.i)
       {
@@ -391,7 +391,7 @@ public class VideoFilterPlayView
             break label375;
           }
           paramInt2 = this.jdField_d_of_type_Int;
-          this.jdField_a_of_type_Bnjz.a(paramInt1, paramInt2);
+          this.jdField_a_of_type_Bnol.a(paramInt1, paramInt2);
         }
       }
       else
@@ -416,7 +416,7 @@ public class VideoFilterPlayView
         paramInt1 = 720;
         break label243;
         label375:
-        paramInt2 = axld.a((int)(720.0F / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int));
+        paramInt2 = axpm.a((int)(720.0F / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int));
       }
       catch (OutOfMemoryError paramGL10)
       {
@@ -436,7 +436,7 @@ public class VideoFilterPlayView
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
     super.onSurfaceCreated(paramGL10, paramEGLConfig);
-    azgk.a();
+    azkt.a();
     if (VideoEnvironment.a("AVCodec", BaseApplication.getContext()) != 0)
     {
       ThreadManager.getUIHandler().post(new VideoFilterPlayView.2(this));
@@ -447,7 +447,7 @@ public class VideoFilterPlayView
     {
       return;
       this.jdField_b_of_type_Boolean = false;
-      paramGL10 = bnjk.a(101);
+      paramGL10 = bnnw.a(101);
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = paramGL10;
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = paramGL10;
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
@@ -456,10 +456,10 @@ public class VideoFilterPlayView
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.initForce();
       }
-      this.jdField_a_of_type_Bnjv = new bnjv();
-      this.jdField_a_of_type_Bnjv.init();
-      if (this.jdField_a_of_type_Bnjy != null) {
-        this.jdField_a_of_type_Bnjy.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_Bnoh = new bnoh();
+      this.jdField_a_of_type_Bnoh.init();
+      if (this.jdField_a_of_type_Bnok != null) {
+        this.jdField_a_of_type_Bnok.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
       {
@@ -474,26 +474,26 @@ public class VideoFilterPlayView
       }
       if (this.h)
       {
-        this.jdField_a_of_type_Bnjx = new bnjx();
-        this.jdField_a_of_type_Bnjx.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam);
-        this.jdField_a_of_type_Bnjx.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-        this.jdField_a_of_type_Bnjx.onSurfaceCreate();
+        this.jdField_a_of_type_Bnoj = new bnoj();
+        this.jdField_a_of_type_Bnoj.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam);
+        this.jdField_a_of_type_Bnoj.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+        this.jdField_a_of_type_Bnoj.onSurfaceCreate();
       }
     } while (!this.i);
-    this.jdField_a_of_type_Bnjz.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    this.jdField_a_of_type_Bnol.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
   }
   
   public void setColorFilterType(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bnjv == null) || ((!this.jdField_a_of_type_Bnjv.a()) && (paramInt == 0))) {
+    if ((this.jdField_a_of_type_Bnoh == null) || ((!this.jdField_a_of_type_Bnoh.a()) && (paramInt == 0))) {
       return;
     }
-    this.jdField_a_of_type_Bnjv.a(paramInt, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Bnoh.a(paramInt, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
   
   public void setColorFilterType(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
   {
-    this.jdField_a_of_type_Bnjv.a(paramInt1, paramInt2, paramFloat, paramInt3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Bnoh.a(paramInt1, paramInt2, paramFloat, paramInt3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
   
   public void setFilePath(String paramString1, String paramString2)
@@ -509,7 +509,7 @@ public class VideoFilterPlayView
         this.jdField_a_of_type_ComTencentMobileqqShortvideoPkvideoPKFilter.config(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long, false);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoPkvideoPKFilter.prepare();
       }
-      setProlong(axqk.a(this.jdField_a_of_type_JavaLangString));
+      setProlong(axut.a(this.jdField_a_of_type_JavaLangString));
     }
   }
   
@@ -521,7 +521,7 @@ public class VideoFilterPlayView
     setFilePath(paramString1, paramString2);
     if ((this.jdField_c_of_type_Boolean) && (this.jdField_e_of_type_Boolean))
     {
-      paramString1 = xom.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, azgq.jdField_a_of_type_Int, azgq.jdField_b_of_type_Int);
+      paramString1 = xsv.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, azkz.jdField_a_of_type_Int, azkz.jdField_b_of_type_Int);
       this.jdField_c_of_type_Int = ((Integer)paramString1.first).intValue();
       this.jdField_d_of_type_Int = ((Integer)paramString1.second).intValue();
     }
@@ -548,10 +548,10 @@ public class VideoFilterPlayView
     }
     if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter == null)
     {
-      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = bnjk.a(106);
+      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = bnnw.a(106);
       a(new VideoFilterPlayView.1(this));
     }
-    ((bnjp)this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter).a(paramBitmap);
+    ((bnob)this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter).a(paramBitmap);
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
   }
   
@@ -568,9 +568,9 @@ public class VideoFilterPlayView
     this.jdField_c_of_type_JavaLangString = paramString3;
   }
   
-  public void setTrackerCallback(bnkj parambnkj)
+  public void setTrackerCallback(bnov parambnov)
   {
-    this.jdField_a_of_type_Bnkj = parambnkj;
+    this.jdField_a_of_type_Bnov = parambnov;
   }
   
   public void setTransferData(TransferData paramTransferData)

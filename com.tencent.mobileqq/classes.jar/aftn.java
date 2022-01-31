@@ -1,22 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aftn
-  extends aftl
+class aftn
+  extends afuf
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public int e;
-  
-  public aftn(aftm paramaftm)
+  aftn(afpy paramafpy)
   {
-    super(paramaftm);
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afjg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
 
 public class aevy
-  implements aewa
+  extends View
 {
-  public aevy(DoodleView paramDoodleView) {}
-  
-  public void a()
+  aevy(aevw paramaevw, Context paramContext)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
+    super(paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
     }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
+    }
+    return true;
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import android.content.res.Resources;
-import bepp;
+import bety;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
@@ -12,7 +12,7 @@ class QZoneShareActivity$20
   public void run()
   {
     if (QZoneShareActivity.a(this.this$0) == null) {
-      QZoneShareActivity.a(this.this$0, new bepp(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298914)));
+      QZoneShareActivity.a(this.this$0, new bety(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298914)));
     }
     QZoneShareActivity.a(this.this$0).c(this.a);
     try

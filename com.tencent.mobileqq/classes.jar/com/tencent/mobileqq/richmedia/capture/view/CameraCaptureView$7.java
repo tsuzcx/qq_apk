@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import axmk;
+import axqt;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.Map;
 
@@ -11,8 +11,8 @@ class CameraCaptureView$7
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(axmk.c)) {
-      this.this$0.a.put(axmk.c, new RenderBuffer(this.this$0.n, this.this$0.o, 33984));
+    if (!this.this$0.a.containsKey(axqt.c)) {
+      this.this$0.a.put(axqt.c, new RenderBuffer(this.this$0.n, this.this$0.o, 33984));
     }
     this.this$0.a(false);
   }

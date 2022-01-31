@@ -1,19 +1,19 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import java.util.HashMap;
+import java.util.Map;
 
-class bjuy
-  implements QQPermissionCallback
+public final class bjuy
 {
-  bjuy(bjux parambjux, String[] paramArrayOfString, Activity paramActivity) {}
+  public int a;
+  public Map<String, String> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bjuy()
   {
-    bdcd.b(bjux.a(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String toString()
   {
-    bjux.a(this.jdField_a_of_type_Bjux, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

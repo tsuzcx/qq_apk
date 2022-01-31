@@ -1,7 +1,6 @@
-public class ahao
+public abstract interface ahao
 {
-  public String a;
-  public String b;
+  public static final int[] a = { 4, 5, 6 };
 }
 
 

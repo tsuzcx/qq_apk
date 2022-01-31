@@ -1,63 +1,84 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
 import java.util.List;
 
 public class bfej
+  extends bfhp
 {
-  protected static volatile bfej a;
-  protected List<bfek> a;
-  protected boolean a;
+  protected List<Friend> a;
   
-  public bfej()
+  public bfej(List<Friend> paramList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public static bfej a()
+  public int getCount()
   {
-    if (jdField_a_of_type_Bfej == null) {
-      jdField_a_of_type_Bfej = new bfej();
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return jdField_a_of_type_Bfej;
+    return null;
   }
   
-  public void a(boolean paramBoolean)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    try
+    if (paramView == null)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      b(paramBoolean);
-      return;
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562633, paramViewGroup, false);
+      paramViewGroup = new bfem();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368796));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131379008));
+      paramView.setTag(paramViewGroup);
     }
-    finally
+    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      localObject = finally;
-      throw localObject;
+      return paramView;
+      paramViewGroup = (bfem)paramView.getTag();
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject;
+    if ((localFriend.c == null) || ("".equals(localFriend.c)))
     {
-      bfek[] arrayOfbfek = new bfek[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbfek);
-      if (arrayOfbfek != null)
-      {
-        int j = arrayOfbfek.length;
-        int i = 0;
-        if (i < j)
-        {
-          arrayOfbfek[i].a(paramBoolean);
-          i += 1;
-        }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.b);
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bfhy.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
       }
+      localObject = bfhv.a().a(localFriend.d);
+      if (localObject != null) {
+        break label290;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840085);
+      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      bfhv.a().a(localFriend.d, new bfek(this, (ImageView)localObject));
     }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
+        break label302;
+      }
+      paramViewGroup.b.setText(2131691901);
+      return paramView;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
+      break;
+      label290:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+    }
+    label302:
+    paramViewGroup.b.setText("");
+    return paramView;
   }
 }
 

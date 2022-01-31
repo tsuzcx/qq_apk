@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class nuq
-  extends alsi
+  extends alwx
 {
   nuq(nup paramnup) {}
   

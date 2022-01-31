@@ -1,14 +1,14 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class akjb
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+  implements View.OnClickListener
 {
-  akjb(akiy paramakiy) {}
+  akjb(akja paramakja) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    akja.a(this.a).a(paramView);
   }
 }
 

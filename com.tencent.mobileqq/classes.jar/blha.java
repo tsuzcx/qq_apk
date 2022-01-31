@@ -1,15 +1,16 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
 public class blha
+  implements DialogInterface.OnCancelListener
 {
-  public String a;
-  public List<YoutuResultItem> a;
+  public blha(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public blha(String paramString, List<YoutuResultItem> paramList)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    AEVideoShelfEditFragment.a(this.a).cancelSave();
   }
 }
 

@@ -1,12 +1,12 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
 
 public class rva
-  implements azzu
+  implements baed
 {
   public rva(ReadInJoySkinGuideView.1 param1) {}
   
   /* Error */
-  public void a(azzb paramazzb, azzc paramazzc, java.lang.String paramString)
+  public void a(badk parambadk, badl parambadl, java.lang.String paramString)
   {
     // Byte code:
     //   0: aload_3
@@ -73,7 +73,7 @@ public class rva
     //   145: getfield 47	com/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   148: invokevirtual 97	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   151: iconst_1
-    //   152: invokestatic 103	bdiv:m	(Landroid/content/Context;Ljava/lang/String;Z)V
+    //   152: invokestatic 103	bdne:m	(Landroid/content/Context;Ljava/lang/String;Z)V
     //   155: aload_0
     //   156: getfield 12	rva:a	Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1;
     //   159: getfield 47	com/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -114,14 +114,14 @@ public class rva
     //   239: ifeq +319 -> 558
     //   242: aload_1
     //   243: ldc 108
-    //   245: invokestatic 113	alpo:a	(I)Ljava/lang/String;
+    //   245: invokestatic 113	alud:a	(I)Ljava/lang/String;
     //   248: invokeinterface 118 2 0
     //   253: astore_1
     //   254: aload_1
     //   255: ifnull +8 -> 263
     //   258: aload_1
     //   259: fconst_0
-    //   260: invokevirtual 124	azyx:c	(F)V
+    //   260: invokevirtual 124	badg:c	(F)V
     //   263: aload_0
     //   264: getfield 12	rva:a	Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1;
     //   267: getfield 38	com/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1:this$0	Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView;
@@ -273,8 +273,8 @@ public class rva
     //   599: aload_1
     //   600: ldc 197
     //   602: aload_2
-    //   603: checkcast 120	azyx
-    //   606: invokevirtual 200	azyx:g_	()I
+    //   603: checkcast 120	badg
+    //   606: invokevirtual 200	badg:g_	()I
     //   609: invokevirtual 163	orz:a	(Ljava/lang/String;I)Lorz;
     //   612: pop
     //   613: aload_1
@@ -291,12 +291,12 @@ public class rva
     //   635: getfield 12	rva:a	Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1;
     //   638: getfield 92	com/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   641: aload_3
-    //   642: invokestatic 205	bdds:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Ljava/lang/String;)Lbddb;
+    //   642: invokestatic 205	bdib:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Ljava/lang/String;)Lbdhk;
     //   645: astore_2
     //   646: aload_2
     //   647: ifnull +115 -> 762
     //   650: aload_2
-    //   651: invokevirtual 209	bddb:c	()Z
+    //   651: invokevirtual 209	bdhk:c	()Z
     //   654: pop
     //   655: aload_0
     //   656: getfield 12	rva:a	Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoySkinGuideView$1;
@@ -415,8 +415,8 @@ public class rva
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	915	0	this	rva
-    //   0	915	1	paramazzb	azzb
-    //   0	915	2	paramazzc	azzc
+    //   0	915	1	parambadk	badk
+    //   0	915	2	parambadl	badl
     //   0	915	3	paramString	java.lang.String
     // Exception table:
     //   from	to	target	type

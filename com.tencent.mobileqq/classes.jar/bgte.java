@@ -1,89 +1,43 @@
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCompletionListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.2;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgte
+  implements VideoPlayerProxy.OnCompletionListener
 {
-  private static volatile bgte jdField_a_of_type_Bgte;
-  private MiniAppProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+  public bgte(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public static bgte a()
+  public void onCompletion(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    if (jdField_a_of_type_Bgte == null) {}
-    try
+    if (this.a.c) {
+      ThreadManager.c().post(new MiniAppVideoPlayer.8.1(this));
+    }
+    if (!this.a.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "ended");
+    }
+    for (;;)
     {
-      if (jdField_a_of_type_Bgte == null) {
-        jdField_a_of_type_Bgte = new bgte();
+      ThreadManager.c().post(new MiniAppVideoPlayer.8.2(this));
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Bglu.a("onVideoEnded", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoEnded = " + paramVideoPlayerProxy.toString());
       }
-      return jdField_a_of_type_Bgte;
+      catch (Exception paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginType() == -1) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getLoginType();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginType();
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAccount() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getAccount();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAccount();
-  }
-  
-  public byte[] a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginSig() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getLoginSig();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginSig();
-  }
-  
-  public String b()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getNickName() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getNickName();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getNickName();
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenId() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getPayOpenId();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenId();
-  }
-  
-  public String d()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenKey() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getPayOpenKey();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenKey();
-  }
-  
-  public String e()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPlatformId() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getPlatformId();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPlatformId();
-  }
-  
-  public String f()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAppId() == null) && (AppLoaderFactory.g().getMiniAppEnv().getLoginInfo() != null)) {
-      return AppLoaderFactory.g().getMiniAppEnv().getLoginInfo().getAppId();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAppId();
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.location.net;
 
-import atlh;
-import atln;
+import atpq;
+import atpw;
 
 public class LocationHandler$7
   implements Runnable
 {
-  public LocationHandler$7(atln paramatln, atlh paramatlh, boolean paramBoolean) {}
+  public LocationHandler$7(atpw paramatpw, atpq paramatpq, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Atlh, this.jdField_a_of_type_Boolean);
+    this.this$0.a(this.jdField_a_of_type_Atpq, this.jdField_a_of_type_Boolean);
   }
 }
 

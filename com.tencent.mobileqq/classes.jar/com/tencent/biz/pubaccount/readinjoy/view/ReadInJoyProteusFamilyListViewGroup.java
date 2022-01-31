@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
-import alox;
+import aepi;
+import altm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcws;
-import bhpo;
-import bhqp;
-import bhqq;
-import bhyj;
-import bjxj;
+import bdbb;
+import bhtv;
+import bhuw;
+import bhux;
+import bicq;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -71,18 +71,18 @@ import szp;
 
 public class ReadInJoyProteusFamilyListViewGroup
   extends ReadInJoyBaseListViewGroup
-  implements View.OnClickListener, bhqp, bhqq, rkw, rrl, rrm, rrn, rro, rru
+  implements View.OnClickListener, bhuw, bhux, rkw, rrl, rrm, rrn, rro, rru
 {
   private long jdField_a_of_type_Long = -1L;
-  private alox jdField_a_of_type_Alox = new ruo(this);
+  private altm jdField_a_of_type_Altm = new ruo(this);
   private SparseArray<pdc> jdField_a_of_type_AndroidUtilSparseArray;
   private View jdField_a_of_type_AndroidViewView;
   private ViewStub jdField_a_of_type_AndroidViewViewStub;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bcws a;
-  private bhpo jdField_a_of_type_Bhpo = new ruk(this);
-  private bhyj jdField_a_of_type_Bhyj = new rur(this);
+  protected bdbb a;
+  private bhtv jdField_a_of_type_Bhtv = new ruk(this);
+  private bicq jdField_a_of_type_Bicq = new rur(this);
   private SlideActiveAnimController jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController;
   private owq jdField_a_of_type_Owq = new run(this);
   private oxe jdField_a_of_type_Oxe;
@@ -106,11 +106,11 @@ public class ReadInJoyProteusFamilyListViewGroup
     this.jdField_c_of_type_Int = paramInt2;
     this.jdField_b_of_type_Long = paramInt3;
     this.jdField_c_of_type_Boolean = rdm.b();
-    setId(2131375275);
+    setId(2131375326);
     this.jdField_a_of_type_AndroidUtilSparseArray = pdh.a(this);
     n();
     r();
-    this.jdField_a_of_type_Ore.jdField_c_of_type_Long = bjxj.a((QQAppInterface)ors.a());
+    this.jdField_a_of_type_Ore.jdField_c_of_type_Long = bkbq.a((QQAppInterface)ors.a());
   }
   
   private int b()
@@ -123,8 +123,8 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131377224));
-    this.jdField_a_of_type_Bcws = new bcws(a(), ((BaseActivity)a()).app);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131377278));
+    this.jdField_a_of_type_Bdbb = new bdbb(a(), ((BaseActivity)a()).app);
     this.jdField_a_of_type_Ruh = new ruh(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getLayoutInflater(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, this.jdField_a_of_type_AndroidUtilSparseArray, a());
     a(new rup(this, "onListViewGroupInit"));
     t();
@@ -135,7 +135,7 @@ public class ReadInJoyProteusFamilyListViewGroup
     o();
     q();
     s();
-    ((BaseActivity)a()).app.addObserver(this.jdField_a_of_type_Alox);
+    ((BaseActivity)a()).app.addObserver(this.jdField_a_of_type_Altm);
     ((KandianMergeManager)ors.a().getManager(162)).a(this.jdField_a_of_type_Owq);
     this.jdField_a_of_type_Oxe = new ruq(this);
   }
@@ -154,8 +154,8 @@ public class ReadInJoyProteusFamilyListViewGroup
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setOverScrollTouchMode(1);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setOverScrollFlingMode(1);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setDrawFinishedListener(this.jdField_a_of_type_Bhyj);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_a_of_type_Bhpo);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setDrawFinishedListener(this.jdField_a_of_type_Bicq);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.a(this.jdField_a_of_type_Bhtv);
   }
   
   private void p()
@@ -169,10 +169,10 @@ public class ReadInJoyProteusFamilyListViewGroup
         break label189;
       }
       localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131361944);
-      localView1 = localActivity.findViewById(2131376969);
-      localView2 = findViewById(2131366722);
+      localView1 = localActivity.findViewById(2131377023);
+      localView2 = findViewById(2131366732);
       i = getResources().getDimensionPixelOffset(2131298612);
-      i = aekt.a(50.0F, getResources()) + ImmersiveUtils.getStatusBarHeight(getContext()) + i;
+      i = aepi.a(50.0F, getResources()) + ImmersiveUtils.getStatusBarHeight(getContext()) + i;
       localView2.setPadding(0, i, 0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setPadding(0, i, 0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.initPaddingManual();
@@ -186,8 +186,8 @@ public class ReadInJoyProteusFamilyListViewGroup
       return;
     }
     ReadInjoySlideAnimLayout localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131361945);
-    View localView1 = localActivity.findViewById(2131377910);
-    int i = aekt.a(50.0F, getResources());
+    View localView1 = localActivity.findViewById(2131377964);
+    int i = aepi.a(50.0F, getResources());
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i += ImmersiveUtils.getStatusBarHeight(getContext());
     }
@@ -198,7 +198,7 @@ public class ReadInJoyProteusFamilyListViewGroup
       if (QLog.isColorLevel()) {
         QLog.d("ReadinJoyProteusFamilyListViewGroup", 2, "initUI 消息看点 mListView.setPadding heightDef=" + i);
       }
-      localView2 = findViewById(2131366722);
+      localView2 = findViewById(2131366732);
       localView2.setPadding(0, i, 0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = new SlideActiveAnimController(this.jdField_a_of_type_Int, localActivity, localReadInjoySlideAnimLayout, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, localView1, null, new ReadInJoyProteusFamilyListViewGroup.5(this, localView1, i, localView2));
       return;
@@ -227,20 +227,20 @@ public class ReadInJoyProteusFamilyListViewGroup
     if (this.jdField_b_of_type_AndroidViewView != null) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    View localView = findViewById(2131372951);
+    View localView = findViewById(2131372977);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setEmptyView(localView);
     localView.setOnClickListener(null);
   }
   
   private void t()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372955));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372981));
     if (otf.c(this.jdField_a_of_type_Int))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372954));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372980));
       return;
     }
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131372953));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131372979));
   }
   
   public ruh a()
@@ -350,7 +350,7 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void g()
   {
-    ((BaseActivity)a()).app.removeObserver(this.jdField_a_of_type_Alox);
+    ((BaseActivity)a()).app.removeObserver(this.jdField_a_of_type_Altm);
   }
   
   public void j()

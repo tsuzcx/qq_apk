@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
 
-public class bisy
+class bisy
   implements DialogInterface.OnClickListener
 {
-  public bisy(QfavJumpActivity paramQfavJumpActivity) {}
+  bisy(bisq parambisq, yas paramyas) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Yas.a();
+    paramDialogInterface.dismiss();
   }
 }
 

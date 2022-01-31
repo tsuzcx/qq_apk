@@ -1,11 +1,22 @@
 public class bawr
-  extends bawz
+  extends bawn
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public int c;
+  private int a = 360000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 10000;
+  private int e = 20000;
+  private int f = 3000;
+  
+  public int a()
+  {
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
+  }
 }
 
 

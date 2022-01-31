@@ -1,12 +1,17 @@
-public abstract interface aeop
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+class aeop
+  implements BusinessObserver
 {
-  public abstract void l();
+  aeop(aeom paramaeom, aeor paramaeor) {}
   
-  public abstract void m();
-  
-  public abstract void n();
-  
-  public abstract void o();
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramInt == 2003) && (this.jdField_a_of_type_Aeor != null)) {
+      this.jdField_a_of_type_Aeor.a(paramBoolean, paramBundle);
+    }
+  }
 }
 
 

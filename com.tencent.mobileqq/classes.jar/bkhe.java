@@ -1,52 +1,70 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+import java.lang.ref.WeakReference;
 
 public class bkhe
-  implements Handler.Callback
 {
-  private bkgz jdField_a_of_type_Bkgz;
-  private final bkhg jdField_a_of_type_Bkhg;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static int jdField_b_of_type_Int;
+  private static bkhe jdField_b_of_type_Bkhe;
+  public int a;
+  private bkhe jdField_a_of_type_Bkhe;
+  public String a;
+  public WeakReference<bkhf> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public bkhe(bkhg parambkhg, bkgz parambkgz, ReleaseLooperHandler paramReleaseLooperHandler)
+  public bkhe(String paramString1, int paramInt, String paramString2, WeakReference<bkhf> paramWeakReference)
   {
-    this.jdField_a_of_type_Bkhg = parambkhg;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-    this.jdField_a_of_type_Bkgz = parambkgz;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + " " + paramString2);
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  private void b(bkgi parambkgi, int paramInt)
+  public static bkhe a(String paramString1, int paramInt, String paramString2, WeakReference<bkhf> paramWeakReference)
   {
-    if (parambkgi == null) {}
-    long l;
-    String str;
-    do
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      return;
-      l = parambkgi.a();
-      str = parambkgi.a().a;
-    } while (parambkgi.d());
-    this.jdField_a_of_type_Bkgz.a(parambkgi.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bkhf(this, str, l, parambkgi, paramInt));
+      if (jdField_b_of_type_Bkhe != null)
+      {
+        bkhe localbkhe = jdField_b_of_type_Bkhe;
+        jdField_b_of_type_Bkhe = localbkhe.jdField_a_of_type_Bkhe;
+        localbkhe.jdField_a_of_type_Bkhe = null;
+        localbkhe.jdField_b_of_type_JavaLangString = paramString1;
+        localbkhe.d = paramString2;
+        localbkhe.jdField_a_of_type_Int = paramInt;
+        localbkhe.jdField_a_of_type_JavaLangString = (paramString1 + " " + paramString2);
+        localbkhe.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+        jdField_b_of_type_Int -= 1;
+        return localbkhe;
+      }
+      return new bkhe(paramString1, paramInt, paramString2, paramWeakReference);
+    }
   }
   
-  public void a(bkgi parambkgi, int paramInt)
+  private void b()
   {
-    if (parambkgi == null) {
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
+    this.d = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a()
+  {
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Int < 100)
+      {
+        this.jdField_a_of_type_Bkhe = jdField_b_of_type_Bkhe;
+        jdField_b_of_type_Bkhe = this;
+        jdField_b_of_type_Int += 1;
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, parambkgi));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 21)
-    {
-      b((bkgi)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    return false;
   }
 }
 

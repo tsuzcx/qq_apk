@@ -1,39 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class abxq
-  extends ndm
+class abxq
+  extends JobSegment<auef, auef>
 {
-  public abxq(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  protected void a(JobContext paramJobContext, auef paramauef)
   {
-    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
-        {
-          AddFriendLogicActivity.a(this.a, true);
-          this.a.a();
-          return;
-        }
-        AddFriendLogicActivity.a(this.a);
-        return;
-      }
-      AddFriendLogicActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
+    paramJobContext = abxj.a();
+    if (!paramJobContext.a) {
+      paramJobContext.a();
+    }
+    notifyResult(paramauef);
   }
 }
 

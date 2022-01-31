@@ -1,15 +1,15 @@
 package com.tencent.qidian.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="puin")
 public class PubAccountNavigationMenu
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public long puin;
   public int version;
   public String xml = "";

@@ -1,6 +1,24 @@
-public abstract interface anjr
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+
+class anjr
+  implements SensorEventListener
 {
-  public abstract void a(int paramInt, String paramString, Object paramObject);
+  anjr(anjo paramanjo) {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1) {
+      anjo.a(this.a, paramSensorEvent);
+    }
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    anjo.b(this.a, paramSensorEvent);
+  }
 }
 
 

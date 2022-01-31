@@ -1,25 +1,18 @@
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class aihg
-  implements aihz
+class aihg
+  implements View.OnTouchListener
 {
-  public aihg(BindVerifyActivity paramBindVerifyActivity) {}
+  aihg(aiha paramaiha) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean) {}
-    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("bind_mobile", this.a.a());
-      localIntent.putExtra("check_permission_result", paramContext);
-      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      return;
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

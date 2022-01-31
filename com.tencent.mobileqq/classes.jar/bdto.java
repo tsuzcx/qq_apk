@@ -1,28 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
 
-public class bdto
-  extends Handler
+public abstract interface bdto
 {
-  public bdto(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public abstract boolean canUpdate(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin success");
-      return;
-    case 1: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
-      return;
-    }
-    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
-  }
+  public abstract boolean deleteFiles(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  
+  public abstract VasQuickUpdateEngine.TagItemInfo getItemInfo(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  
+  public abstract boolean isFileExists(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
 }
 
 

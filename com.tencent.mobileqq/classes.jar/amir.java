@@ -1,51 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-class amir
-  implements View.OnClickListener
+public class amir
+  extends AccountObserver
 {
-  amir(amip paramamip) {}
+  private amir(RegisterPush paramRegisterPush) {}
   
-  public void onClick(View paramView)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    try
-    {
-      azmj.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
-      if (amij.a != null) {
-        amip.a(this.a).startActivity(amij.a);
-      }
-      for (;;)
-      {
-        this.a.dismiss();
-        return;
-        if (amip.a(this.a) == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(amip.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
-        }
-        amij.a(amip.a(this.a));
-        amip.a(this.a).startActivity(amij.a);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onOnlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean3 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean4);
     }
-    catch (Exception paramView)
+    if (paramBoolean1)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(amip.a(), 2, "Start Activity Failed");
-          amip.a(this.a).startActivity(bddv.c(amip.a(this.a)));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d(amip.a(), 2, "mAppInterface=null, use default intent");
-          }
-          amip.a(this.a).startActivity(bddv.a(amip.a(this.a)));
-        }
-      }
+      this.a.a(7);
+      return;
     }
+    this.a.a(6);
   }
 }
 

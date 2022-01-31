@@ -1,10 +1,17 @@
-public abstract interface amgs
+public class amgs
 {
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
+  public int a;
+  amgx a;
+  public awge a;
+  public int b;
   
-  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
-  
-  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
+  public amgs(awge paramawge, int paramInt1, int paramInt2, amgx paramamgx)
+  {
+    this.jdField_a_of_type_Awge = paramawge;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Amgx = paramamgx;
+  }
 }
 
 

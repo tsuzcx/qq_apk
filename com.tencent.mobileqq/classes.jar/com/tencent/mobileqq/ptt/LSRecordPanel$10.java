@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import alpo;
+import alud;
 
 class LSRecordPanel$10
   implements Runnable
@@ -9,7 +9,7 @@ class LSRecordPanel$10
   
   public void run()
   {
-    LSRecordPanel.a(this.this$0, alpo.a(2131706784));
+    LSRecordPanel.a(this.this$0, alud.a(2131706796));
     LSRecordPanel.b(this.this$0, false);
   }
 }

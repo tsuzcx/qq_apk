@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bepp;
+import bety;
 import com.tencent.qqmini.sdk.core.model.InnerShareData;
 
 class ShareProxyImpl$5$1
   implements Runnable
 {
-  ShareProxyImpl$5$1(ShareProxyImpl.5 param5, bepp parambepp) {}
+  ShareProxyImpl$5$1(ShareProxyImpl.5 param5, bety parambety) {}
   
   public void run()
   {

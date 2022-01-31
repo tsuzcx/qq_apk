@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.search.rich;
 
-import ayon;
+import aysw;
 
 public class RichNodeController$1
   implements Runnable
 {
-  public RichNodeController$1(ayon paramayon) {}
+  public RichNodeController$1(aysw paramaysw) {}
   
   public void run()
   {
-    if (ayon.a(this.this$0) == 0) {
-      ayon.a(this.this$0, false);
+    if (aysw.a(this.this$0) == 0) {
+      aysw.a(this.this$0, false);
     }
   }
 }

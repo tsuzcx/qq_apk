@@ -11,8 +11,8 @@ import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
-import azcv;
-import azcw;
+import azhe;
+import azhf;
 import com.tencent.mobileqq.mini.zxing.BarcodeFormat;
 import com.tencent.mobileqq.mini.zxing.DecodeHintType;
 import com.tencent.mobileqq.mini.zxing.MultiFormatReader;
@@ -90,7 +90,7 @@ public class GlCameraHolderSurfaceView
   
   private boolean canFocus()
   {
-    return !azcw.d(azcw.a);
+    return !azhf.d(azhf.a);
   }
   
   private void getCameraInfo()
@@ -143,7 +143,7 @@ public class GlCameraHolderSurfaceView
           continue;
         }
         String str = localParameters.getFocusMode();
-        if (((str != null) && (str.equals(paramString))) || (!azcv.a().a(paramString))) {
+        if (((str != null) && (str.equals(paramString))) || (!azhe.a().a(paramString))) {
           continue;
         }
         localParameters.setFocusMode(paramString);
@@ -345,7 +345,7 @@ public class GlCameraHolderSurfaceView
       this.isBackCameraNow = bool;
       this.camera = Camera.open(paramInt);
       paramInt = 90;
-      if (azcw.d(azcw.g)) {
+      if (azhf.d(azhf.g)) {
         paramInt = 270;
       }
       this.camera.setDisplayOrientation(paramInt);

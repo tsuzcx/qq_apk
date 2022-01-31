@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import bdvv;
-import bdvx;
+import beae;
+import beag;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,15 +10,15 @@ public class QvipSpecialSoundManager$SyncDownloadRunnable
   implements Runnable
 {
   public int a;
-  private bdvv jdField_a_of_type_Bdvv;
+  private beae jdField_a_of_type_Beae;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private File jdField_a_of_type_JavaIoFile;
   private String jdField_a_of_type_JavaLangString;
   
-  public QvipSpecialSoundManager$SyncDownloadRunnable(QvipSpecialSoundManager paramQvipSpecialSoundManager, bdvv parambdvv, AppInterface paramAppInterface, File paramFile, String paramString)
+  public QvipSpecialSoundManager$SyncDownloadRunnable(QvipSpecialSoundManager paramQvipSpecialSoundManager, beae parambeae, AppInterface paramAppInterface, File paramFile, String paramString)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bdvv = parambdvv;
+    this.jdField_a_of_type_Beae = parambeae;
     this.jdField_a_of_type_JavaIoFile = paramFile;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = -1;
@@ -26,7 +26,7 @@ public class QvipSpecialSoundManager$SyncDownloadRunnable
   
   public void run()
   {
-    this.jdField_a_of_type_Int = bdvx.a(this.jdField_a_of_type_Bdvv, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    this.jdField_a_of_type_Int = beag.a(this.jdField_a_of_type_Beae, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("QvipSpecialSoundManager", 2, "[SyncDownloadRunnable]:resultCode=" + this.jdField_a_of_type_Int);
     }

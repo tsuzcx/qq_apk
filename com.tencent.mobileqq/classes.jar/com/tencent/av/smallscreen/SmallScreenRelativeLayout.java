@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import azmj;
-import bdiv;
+import azqs;
+import bdne;
 import com.tencent.qphone.base.util.QLog;
 import lek;
 import mbo;
@@ -173,7 +173,7 @@ public class SmallScreenRelativeLayout
       }
       else
       {
-        SharedPreferences localSharedPreferences = bdiv.a(getContext());
+        SharedPreferences localSharedPreferences = bdne.a(getContext());
         localEditor = localSharedPreferences.edit();
         if (i1 == 0) {
           break label99;
@@ -614,7 +614,7 @@ public class SmallScreenRelativeLayout
           this.jdField_d_of_type_Boolean = false;
           this.s = this.o;
           if (paramAnimator != null) {
-            azmj.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
           }
         }
         break;

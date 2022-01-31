@@ -1,10 +1,15 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-public class bkcg
+class bkcg
+  implements DialogInterface.OnShowListener
 {
-  public int a;
-  public HashMap<String, String> a;
-  public int b;
+  bkcg(bkce parambkce, bety parambety) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_Bety.hide();
+  }
 }
 
 

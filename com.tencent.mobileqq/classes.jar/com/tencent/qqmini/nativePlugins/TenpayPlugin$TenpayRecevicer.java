@@ -3,7 +3,7 @@ package com.tencent.qqmini.nativePlugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgkd;
+import bgok;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,12 +11,12 @@ import org.json.JSONObject;
 final class TenpayPlugin$TenpayRecevicer
   extends ResultReceiver
 {
-  private bgkd req;
+  private bgok req;
   
-  TenpayPlugin$TenpayRecevicer(TenpayPlugin paramTenpayPlugin, bgkd parambgkd, Handler paramHandler)
+  TenpayPlugin$TenpayRecevicer(TenpayPlugin paramTenpayPlugin, bgok parambgok, Handler paramHandler)
   {
     super(paramHandler);
-    this.req = parambgkd;
+    this.req = parambgok;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)

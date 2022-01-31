@@ -1,38 +1,49 @@
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import java.util.List;
 
-class aviw
-  implements avll
+public class aviw
+  extends BaseAdapter
 {
-  aviw(avhw paramavhw, String paramString) {}
+  public aviw(TopicLabelListView paramTopicLabelListView) {}
   
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  public int getCount()
   {
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
-    {
-      paramView = new Intent(this.jdField_a_of_type_Avhw.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Avhw.a.startActivity(paramView);
-      paramInterestTagInfo = this.jdField_a_of_type_Avhw.a.app;
-      if (this.jdField_a_of_type_Avhw.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azmj.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
-        return;
-      }
+    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
-    paramView = new Intent(this.jdField_a_of_type_Avhw.a, QQBrowserActivity.class);
-    paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
-    this.jdField_a_of_type_Avhw.a.startActivity(paramView);
-    paramInterestTagInfo = this.jdField_a_of_type_Avhw.a.app;
-    if (this.jdField_a_of_type_Avhw.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
+    return TopicLabelListView.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      azmj.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_tribe", 0, 0, paramView, "", "", "");
-      return;
+      paramViewGroup = new avix(this.a, null);
+      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+      ((LabelViewItem)paramView).setText(paramViewGroup.a);
+      return paramView;
+      paramViewGroup = (avix)paramView.getTag();
     }
   }
 }

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import apll;
+import appu;
 
 public class EmojiIPCAlarmer
 {
   private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  apll jdField_a_of_type_Apll;
+  appu jdField_a_of_type_Appu;
   
-  public EmojiIPCAlarmer(apll paramapll)
+  public EmojiIPCAlarmer(appu paramappu)
   {
-    this.jdField_a_of_type_Apll = paramapll;
+    this.jdField_a_of_type_Appu = paramappu;
   }
   
   public Runnable a(int paramInt, long paramLong)

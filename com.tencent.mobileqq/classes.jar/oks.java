@@ -5,7 +5,7 @@ import com.tencent.mobileqq.hotpic.HotPicData;
 import mqq.os.MqqHandler;
 
 public class oks
-  implements asry
+  implements aswh
 {
   public oks(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   

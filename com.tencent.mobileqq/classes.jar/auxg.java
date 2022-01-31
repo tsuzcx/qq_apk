@@ -1,25 +1,6 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-
 public class auxg
 {
-  public boolean a;
-  
-  protected void a() {}
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 4124: 
-      a();
-      return;
-    }
-    a((BusinessInfoCheckUpdate.AppInfo)paramVarArgs[0]);
-  }
-  
-  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public static boolean a;
 }
 
 

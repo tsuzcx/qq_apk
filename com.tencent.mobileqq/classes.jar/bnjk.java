@@ -1,43 +1,54 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bnjk
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public static GPUBaseFilter a(int paramInt)
+  public bnjk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new bnjm();
-    case 7: 
-      return new bnjo();
-    case 5: 
-      return new bnjq();
-    case 6: 
-      return new bnjr();
-    case 4: 
-      return new bnjn();
-    case 106: 
-      return new bnjp();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
     }
-    return new GPUOESMovieFilter();
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.g += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+    }
+    this.a.b(paramInt * this.a.b / 10000L);
   }
   
-  public static boolean a(int paramInt)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
     }
-    return true;
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    paramSeekBar = this.a;
+    paramSeekBar.h += 1;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 

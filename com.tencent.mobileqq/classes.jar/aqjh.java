@@ -1,8 +1,18 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqjh
+public class aqjh
+  implements DialogInterface.OnClickListener
 {
-  View[] a = new View[12];
+  public aqjh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    azqs.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+  }
 }
 
 

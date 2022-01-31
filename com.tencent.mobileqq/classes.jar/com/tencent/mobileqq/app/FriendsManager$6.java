@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import aljo;
-import aloz;
+import alod;
+import alto;
 
 public class FriendsManager$6
   implements Runnable
 {
-  public FriendsManager$6(aloz paramaloz) {}
+  public FriendsManager$6(alto paramalto) {}
   
   public void run()
   {
-    if (!aloz.a(this.this$0).a) {
-      aloz.a(this.this$0).a(aloz.a(this.this$0));
+    if (!alto.a(this.this$0).a) {
+      alto.a(this.this$0).a(alto.a(this.this$0));
     }
   }
 }

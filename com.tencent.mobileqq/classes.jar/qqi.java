@@ -33,7 +33,7 @@ public class qqi
         if (k <= 0) {
           break label125;
         }
-        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839355);
+        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839356);
       }
     }
     for (;;)

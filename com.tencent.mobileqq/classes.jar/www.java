@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-
 public abstract interface www
 {
-  public abstract void a();
+  public abstract void T_();
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public abstract void a(xof paramxof);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 

@@ -1,29 +1,69 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-final class bhio
-  extends nac
+@bglp(a="V8ServiceInitTask")
+public class bhio
+  extends bhil
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bhio(Context paramContext, bgun parambgun)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
+    super(paramContext, parambgun);
+  }
+  
+  public void a()
+  {
+    bhbs.a(208, "", a().getMiniAppInfoForReport());
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      Object localObject = (bhih)a().getTask(bhih.class);
+      long l1;
+      label67:
+      bhhk localbhhk;
+      if (localObject != null)
+      {
+        localObject = ((bhih)localObject).a();
+        this.a = ((bhey)localObject);
+        l1 = System.currentTimeMillis();
+        if (this.a == null) {
+          break label167;
+        }
+        localObject = this.a.a();
+        bhck.a((MiniAppInfo)localObject, 100, "0");
+        localbhhk = new bhhk(this.a);
+        if (this.a == null) {
+          break label173;
+        }
+      }
+      label167:
+      label173:
+      for (localObject = this.a.a();; localObject = null)
+      {
+        bhck.a((MiniAppInfo)localObject, 101, "0");
+        long l2 = System.currentTimeMillis();
+        if (this.a != null) {
+          localbhhk.a(this.a.a());
+        }
+        localbhhk.addStateChangeListener(new bhip(this, localbhhk, l2 - l1));
+        localbhhk.b();
+        return;
+        localObject = null;
+        break;
+        localObject = null;
+        break label67;
       }
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      paramArrayOfByte.printStackTrace();
+      QMLog.e("minisdk-start", "ServiceInitTask execute exception!", localThrowable);
     }
+  }
+  
+  public void c()
+  {
+    super.c();
+    bhbs.a(209, "", a().getMiniAppInfoForReport());
   }
 }
 

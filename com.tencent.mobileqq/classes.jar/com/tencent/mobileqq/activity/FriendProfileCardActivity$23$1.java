@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acuu;
-import azmj;
+import aczj;
+import azqs;
 
 public class FriendProfileCardActivity$23$1
   implements Runnable
 {
-  public FriendProfileCardActivity$23$1(acuu paramacuu) {}
+  public FriendProfileCardActivity$23$1(aczj paramaczj) {}
   
   public void run()
   {
-    azmj.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
+    azqs.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
   }
 }
 

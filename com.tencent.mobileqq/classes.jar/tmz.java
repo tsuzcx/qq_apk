@@ -43,10 +43,10 @@ public class tmz
       for (;;)
       {
         if (paramBoolean2) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842319);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842332);
         }
         return;
-        this.c.setImageResource(2130842787);
+        this.c.setImageResource(2130842800);
       }
     }
     this.c.setVisibility(8);
@@ -62,7 +62,7 @@ public class tmz
   private void f()
   {
     a(true, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842319);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842332);
   }
   
   protected void a()
@@ -77,7 +77,7 @@ public class tmz
   
   protected int b()
   {
-    return 2131559872;
+    return 2131559871;
   }
   
   protected void b()
@@ -112,17 +112,17 @@ public class tmz
   
   protected void e()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131379520);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379506));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379519));
-    this.c = ((KandianUrlImageView)a(2131379522));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379521));
+    this.jdField_b_of_type_AndroidViewView = a(2131379578);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379564));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379577));
+    this.c = ((KandianUrlImageView)a(2131379580));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379579));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379520) {
+    if (paramView.getId() == 2131379578) {
       tmo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, a(), c());
     }
   }

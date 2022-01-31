@@ -1,75 +1,23 @@
-import android.support.annotation.Nullable;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-public class atlf
+class atlf
+  extends atlg
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public atlf(String paramString, LatLng paramLatLng, double paramDouble)
+  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LatLng a()
-  {
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(LatLng paramLatLng, Double paramDouble)
-  {
-    if (paramLatLng != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    paramQQAppInterface = ((axlx)paramQQAppInterface.getManager(36)).a(0, paramString);
+    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5)) {
+      RedTouch.d(paramQQAppInterface);
     }
-    if (paramDouble != null) {
-      this.jdField_a_of_type_Double = paramDouble.doubleValue();
-    }
+    return paramQQAppInterface;
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    if ((paramObject instanceof atlf))
-    {
-      paramObject = (atlf)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
-    }
-    return super.equals(paramObject);
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
+    paramRedTouch.b(paramAppInfo);
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqxs;
+import arcb;
 import java.util.ArrayList;
 
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new aqxs();
+  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new arcb();
   public int a;
   private long jdField_a_of_type_Long;
   private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;

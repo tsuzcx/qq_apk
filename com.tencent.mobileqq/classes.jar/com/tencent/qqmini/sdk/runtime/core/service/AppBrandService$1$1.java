@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.runtime.core.service;
 
-import bhcw;
-import bhcx;
+import bhhd;
+import bhhe;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandService$1$1
   implements Runnable
 {
-  public AppBrandService$1$1(bhcx parambhcx) {}
+  public AppBrandService$1$1(bhhe parambhhe) {}
   
   public void run()
   {
     try
     {
-      this.a.jdField_a_of_type_Bhcw.a(this.a.jdField_a_of_type_AndroidContentContext);
+      this.a.jdField_a_of_type_Bhhd.a(this.a.jdField_a_of_type_AndroidContentContext);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("AppBrandService", "onCoreInitFinished exception in thread --> " + this.a.jdField_a_of_type_Bhcw.a, localThrowable);
-      this.a.jdField_a_of_type_Bhcw.setCurrState(this.a.jdField_a_of_type_Bhcw.c);
+      QMLog.e("AppBrandService", "onCoreInitFinished exception in thread --> " + this.a.jdField_a_of_type_Bhhd.a, localThrowable);
+      this.a.jdField_a_of_type_Bhhd.setCurrState(this.a.jdField_a_of_type_Bhhd.c);
     }
   }
 }

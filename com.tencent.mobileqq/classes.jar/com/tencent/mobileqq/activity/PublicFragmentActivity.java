@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import bjdh;
+import bjho;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -27,7 +27,7 @@ public class PublicFragmentActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adky.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    adpn.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
@@ -37,7 +37,7 @@ public class PublicFragmentActivity
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adky.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    adpn.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)
@@ -95,7 +95,7 @@ public class PublicFragmentActivity
   
   public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adky.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    adpn.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   private PublicBaseFragment b()
@@ -161,7 +161,7 @@ public class PublicFragmentActivity
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131366780, this.a);
+    paramBundle.replace(2131366790, this.a);
     paramBundle.commit();
     return true;
   }
@@ -228,7 +228,7 @@ public class PublicFragmentActivity
   {
     if ("com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView".equals(paramString))
     {
-      View localView = bjdh.a(paramContext, paramAttributeSet);
+      View localView = bjho.a(paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }

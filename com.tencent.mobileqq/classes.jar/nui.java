@@ -36,7 +36,7 @@ class nui
       }
       return;
       paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
-      if (!bdje.a(paramView))
+      if (!bdnn.a(paramView))
       {
         Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
         localIntent.putExtra("url", paramView);
@@ -56,7 +56,7 @@ class nui
           }
         }
         ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692457), 1).a();
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
         continue;
         ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
         if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
@@ -71,7 +71,7 @@ class nui
           }
         }
         ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692457), 1).a();
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
       }
     }
   }

@@ -1,10 +1,24 @@
-public abstract interface vdx
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public class vdx
+  extends uli
 {
-  public abstract void a(vge paramvge);
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public abstract void b(vge paramvge);
+  public vdx(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
   
-  public abstract void c(vge paramvge);
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
+  }
 }
 
 

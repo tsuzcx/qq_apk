@@ -1,10 +1,12 @@
-import java.util.ArrayList;
+import java.util.List;
 
-public class vov
-  extends ugz
+public abstract interface vov
 {
-  public ArrayList<String> a;
-  public boolean a = true;
+  public abstract List<String> a();
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

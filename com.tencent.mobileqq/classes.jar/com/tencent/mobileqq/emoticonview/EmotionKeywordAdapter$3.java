@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import apnf;
-import aprw;
-import aube;
+import apro;
+import apwf;
+import aufn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
@@ -26,25 +26,25 @@ import mqq.os.MqqHandler;
 public class EmotionKeywordAdapter$3
   implements Runnable
 {
-  public EmotionKeywordAdapter$3(aprw paramaprw, EmoticonResp paramEmoticonResp, String paramString) {}
+  public EmotionKeywordAdapter$3(apwf paramapwf, EmoticonResp paramEmoticonResp, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.resetKeywordExpose) {
-      aprw.a(this.this$0).c(aprw.a(this.this$0));
+      apwf.a(this.this$0).c(apwf.a(this.this$0));
     }
     Object localObject1 = new EmoticonKeywords();
-    ((EmoticonKeywords)localObject1).keyword = aprw.a(this.this$0);
+    ((EmoticonKeywords)localObject1).keyword = apwf.a(this.this$0);
     ((EmoticonKeywords)localObject1).lastReqTime = System.currentTimeMillis();
-    aprw.a(this.this$0).a((EmoticonKeywords)localObject1);
+    apwf.a(this.this$0).a((EmoticonKeywords)localObject1);
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.data;
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + aprw.a(this.this$0) + ",resp size = " + ((List)localObject1).size());
+      QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + apwf.a(this.this$0) + ",resp size = " + ((List)localObject1).size());
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("handleCloudEmotionForKeywordResp : eId = ");
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(aprw.a(this.this$0));
+    localArrayList.addAll(apwf.a(this.this$0));
     Object localObject3 = ((List)localObject1).iterator();
     EmosmPb.BqAssocInfo localBqAssocInfo;
     Emoticon localEmoticon;
@@ -59,7 +59,7 @@ public class EmotionKeywordAdapter$3
       localEmoticon.ipsiteUrl = localBqAssocInfo.str_ipsite_url.get();
       localEmoticon.ipsiteName = localBqAssocInfo.str_ipsite_name.get();
       if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + aprw.a(this.this$0) + "id = " + localEmoticon.epId + " ipSiteName = " + localEmoticon.ipsiteName + " ipsiteUrl = " + localEmoticon.ipsiteUrl);
+        QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + apwf.a(this.this$0) + "id = " + localEmoticon.epId + " ipSiteName = " + localEmoticon.ipsiteName + " ipsiteUrl = " + localEmoticon.ipsiteUrl);
       }
       if ((!TextUtils.isEmpty(localEmoticon.epId)) && (!TextUtils.isEmpty(localEmoticon.eId)) && (!TextUtils.isEmpty(localEmoticon.encryptKey)))
       {
@@ -73,8 +73,8 @@ public class EmotionKeywordAdapter$3
     label926:
     for (;;)
     {
-      if (aprw.a(this.this$0).a(localEmoticon.epId) == null) {
-        ((apnf)aprw.a(this.this$0).getManager(43)).a(localEmoticon.epId, apnf.c);
+      if (apwf.a(this.this$0).a(localEmoticon.epId) == null) {
+        ((apro)apwf.a(this.this$0).getManager(43)).a(localEmoticon.epId, apro.c);
       }
       label472:
       int i;
@@ -106,14 +106,14 @@ public class EmotionKeywordAdapter$3
         if (!localBqAssocInfo.rpt_apng_support_size.has()) {
           break label757;
         }
-        aprw.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_apng_support_size.get());
+        apwf.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_apng_support_size.get());
         label600:
         localObject1 = new EmotionKeyword();
-        ((EmotionKeyword)localObject1).keyword = aprw.a(this.this$0).toLowerCase();
+        ((EmotionKeyword)localObject1).keyword = apwf.a(this.this$0).toLowerCase();
         ((EmotionKeyword)localObject1).epId = localEmoticon.epId;
         ((EmotionKeyword)localObject1).eId = localEmoticon.eId;
-        aprw.a(this.this$0).a((EmotionKeyword)localObject1);
-        aprw.a(this.this$0).a(localEmoticon);
+        apwf.a(this.this$0).a((EmotionKeyword)localObject1);
+        apwf.a(this.this$0).a(localEmoticon);
         i = 0;
       }
       for (;;)
@@ -143,7 +143,7 @@ public class EmotionKeywordAdapter$3
           if (!localBqAssocInfo.rpt_support_size.has()) {
             break label600;
           }
-          aprw.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_support_size.get());
+          apwf.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_support_size.get());
           break label600;
         }
         i += 1;

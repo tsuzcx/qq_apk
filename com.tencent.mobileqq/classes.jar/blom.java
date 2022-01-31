@@ -1,46 +1,19 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
 
-public class blom
-  extends bmmw
+public final class blom
+  implements zac<CLIENT.StBatchGetMusicInfoRsp>
 {
-  public blom(DoodleView paramDoodleView)
+  public blom(zac paramzac, long paramLong) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "PickLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    bljn.b("AEEditorMusicHelper", "[requestDetailedMusicInfo], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_Zac != null) {
+      this.jdField_a_of_type_Zac.a(paramBoolean, paramLong, paramString, paramStBatchGetMusicInfoRsp);
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    bliu.a().a((int)paramLong, l1 - l2 + "", "AEEditorMusicInfo", 0);
   }
 }
 

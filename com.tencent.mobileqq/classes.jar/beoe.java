@@ -1,25 +1,61 @@
-import android.support.annotation.NonNull;
-import android.text.style.ClickableSpan;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class beoe
-  extends ClickableSpan
+  extends ExploreByTouchHelper
 {
-  public beoe(ProfileCardExtendFriendView paramProfileCardExtendFriendView, Card paramCard) {}
-  
-  public void onClick(@NonNull View paramView)
+  public beoe(ConfigClearableEditText paramConfigClearableEditText, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 1L) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView.getContext(), 0, 2131699257, 1).a();
+    super(paramView);
+  }
+  
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  {
+    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
+      return 0;
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 0L) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 3L)) {
-      return;
+    return -1;
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    if (ConfigClearableEditText.a(this.a)) {
+      paramList.add(Integer.valueOf(0));
     }
-    aqcq.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView), this.jdField_a_of_type_ComTencentMobileqqDataCard.idx, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolName, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolId);
+  }
+  
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    }
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription(alud.a(2131702808));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(alud.a(2131702809));
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramInt = ConfigClearableEditText.a(this.a);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
+    }
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import bejh;
+import benq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
 import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
@@ -13,7 +13,7 @@ public class CircleVideoDrawableView
   extends CircleBubbleImageView
   implements VideoDrawable.OnAudioPlayOnceListener
 {
-  bejh a;
+  benq a;
   public URLDrawable a;
   public String a;
   
@@ -27,8 +27,8 @@ public class CircleVideoDrawableView
     if (QLog.isColorLevel()) {
       QLog.d("BlessPTVActivity", 2, " onFinish ");
     }
-    if (this.jdField_a_of_type_Bejh != null) {
-      this.jdField_a_of_type_Bejh.b();
+    if (this.jdField_a_of_type_Benq != null) {
+      this.jdField_a_of_type_Benq.b();
     }
   }
   
@@ -56,8 +56,8 @@ public class CircleVideoDrawableView
       paramURLDrawable.resetAndPlayAudioOnce();
       paramURLDrawable.setOnAudioPlayOnceListener(this);
     }
-    if (this.jdField_a_of_type_Bejh != null) {
-      this.jdField_a_of_type_Bejh.a();
+    if (this.jdField_a_of_type_Benq != null) {
+      this.jdField_a_of_type_Benq.a();
     }
   }
   
@@ -91,9 +91,9 @@ public class CircleVideoDrawableView
     }
   }
   
-  public void setVideoListener(bejh parambejh)
+  public void setVideoListener(benq parambenq)
   {
-    this.jdField_a_of_type_Bejh = parambejh;
+    this.jdField_a_of_type_Benq = parambenq;
   }
   
   public void setVideoPath(String paramString)

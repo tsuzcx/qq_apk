@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajfx;
-import ajgm;
-import aluw;
-import bdel;
+import ajkm;
+import ajlb;
+import alzl;
+import bdiu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -13,7 +13,7 @@ import nrc;
 public class RecentPubAccHelper$4
   implements Runnable
 {
-  public RecentPubAccHelper$4(ajfx paramajfx, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
+  public RecentPubAccHelper$4(ajkm paramajkm, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
@@ -21,19 +21,19 @@ public class RecentPubAccHelper$4
       QLog.d("RecentPubAccHelper", 2, "updateUnfollowInfo");
     }
     nrc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    Object localObject = (aluw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+    Object localObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
     if (localObject != null)
     {
-      ((aluw)localObject).c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-      ((aluw)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-      localObject = ((aluw)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+      ((alzl)localObject).c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+      ((alzl)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+      localObject = ((alzl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
       if (localObject != null) {
-        ajfx.a(this.this$0, (AccountDetail)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ajkm.a(this.this$0, (AccountDetail)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), 1008);
-    ajgm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), 1008);
-    bdel.a(" pubAcc_follow_cancel", null, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+    ajlb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), 1008);
+    bdiu.a(" pubAcc_follow_cancel", null, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
   }
 }
 

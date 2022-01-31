@@ -4,6 +4,6 @@
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/exm" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="使用系统WebView组件" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvn" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="使用旧版下拉入口" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/miq" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="强制使用sdk打开小游戏" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mj_" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="强制使用sdk打开小游戏" />
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

@@ -1,47 +1,78 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class bktz
-  extends bkpd
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public bktz(ViewStub paramViewStub)
+  public static String a(long paramLong, int paramInt)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365924);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365923));
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692710);
-  }
-  
-  public void c()
-  {
-    if (a())
+    Object localObject = bfbm.a().f();
+    long l = bfbm.a().a();
+    localObject = "https://tu.qq.com/wspeed.qq.com/w.cgi?appid=1000322&commandid=pitu.qqsdk.AutoAIScene&releaseversion=" + (String)localObject + "&touin=" + l + "&frequency=1&resultcode=" + paramInt + "&timecost=" + paramLong;
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = (HttpURLConnection)new URL((String)localObject).openConnection();
+      ((HttpURLConnection)localObject).setConnectTimeout(5000);
+      ((HttpURLConnection)localObject).setRequestMethod("GET");
+      if (((HttpURLConnection)localObject).getResponseCode() == 200)
+      {
+        localObject = ((HttpURLConnection)localObject).getInputStream().toString();
+        return localObject;
+      }
+      return null;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
   
-  public void d()
+  public static JSONObject a(String paramString1, String paramString2)
   {
-    if (!a()) {
-      return;
+    System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
+    System.setProperty("sun.net.client.defaultReadTimeout", "30000");
+    HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString1).openConnection();
+    localHttpURLConnection.setRequestMethod("POST");
+    localHttpURLConnection.setRequestProperty("accept", "*/*");
+    localHttpURLConnection.setRequestProperty("content-type", "application/json");
+    localHttpURLConnection.setConnectTimeout(5000);
+    localHttpURLConnection.setReadTimeout(5000);
+    localHttpURLConnection.setDoOutput(true);
+    localHttpURLConnection.setDoInput(true);
+    localHttpURLConnection.setUseCaches(false);
+    localHttpURLConnection.setInstanceFollowRedirects(true);
+    localHttpURLConnection.connect();
+    paramString1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
+    paramString1.write(paramString2.getBytes("utf-8"));
+    paramString1.flush();
+    paramString1.close();
+    if (200 == localHttpURLConnection.getResponseCode())
+    {
+      paramString1 = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
+      paramString2 = new StringBuilder();
+      for (;;)
+      {
+        String str = paramString1.readLine();
+        if (str == null) {
+          break;
+        }
+        paramString2.append(new String(str.getBytes(), "utf-8"));
+      }
+      paramString1.close();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    for (paramString1 = paramString2.toString();; paramString1 = null)
+    {
+      localHttpURLConnection.disconnect();
+      if (paramString1 != null) {
+        break;
+      }
+      return null;
+    }
+    return new JSONObject(paramString1);
   }
 }
 

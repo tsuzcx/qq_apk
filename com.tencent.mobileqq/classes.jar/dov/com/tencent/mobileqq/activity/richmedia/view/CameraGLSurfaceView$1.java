@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bnec;
+import bnio;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, bnec parambnec) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, bnio parambnio) {}
   
   public void run()
   {

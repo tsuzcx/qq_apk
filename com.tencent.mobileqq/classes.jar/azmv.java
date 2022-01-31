@@ -1,65 +1,37 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import java.util.List;
 
-public class azmv
-  extends RecyclablePool.Recyclable
+class azmv
+  implements azmw
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
+  azmv(azmu paramazmu, int paramInt, azms paramazms, azmw paramazmw) {}
   
-  public azmv()
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void recycle()
-  {
-    super.recycle();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.e = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.f = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.j = 0L;
-    this.i = 0L;
-    this.h = 0L;
-    this.g = 0L;
-    this.m = 0L;
-    this.l = 0L;
-    this.k = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.p = 0L;
-    this.o = 0L;
-    this.n = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
+    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, azmu.a(this.jdField_a_of_type_Azmu));
+    azmu.a(this.jdField_a_of_type_Azmu, paramLoadExtResult);
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Azms.a.size() - 1) {
+        if (this.jdField_a_of_type_Azmw != null) {
+          this.jdField_a_of_type_Azmw.a(paramInt, paramLoadExtResult);
+        }
+      }
+    }
+    do
+    {
+      return;
+      azmu.a(this.jdField_a_of_type_Azmu, this.jdField_a_of_type_Azms, this.jdField_a_of_type_Azmw, this.jdField_a_of_type_Int + 1);
+      return;
+      if (paramLoadExtResult != null) {
+        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
+      }
+    } while (this.jdField_a_of_type_Azmw == null);
+    this.jdField_a_of_type_Azmw.a(paramInt, paramLoadExtResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azmv
  * JD-Core Version:    0.7.0.1
  */

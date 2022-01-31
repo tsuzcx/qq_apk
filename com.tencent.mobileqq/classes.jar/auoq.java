@@ -1,26 +1,12 @@
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 class auoq
-  implements bapw
+  extends RecyclerView.ViewHolder
 {
-  auoq(auoo paramauoo) {}
-  
-  public void a(baqv parambaqv, baqw parambaqw)
+  public auoq(auok paramauok, View paramView)
   {
-    if ((parambaqv != null) && (parambaqw != null) && ((parambaqv instanceof baps)))
-    {
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
-      {
-        parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        parambaqv.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + parambaqv.jdField_a_of_type_Long);
-      }
-    }
+    super(paramView);
   }
 }
 

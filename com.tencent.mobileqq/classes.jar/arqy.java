@@ -1,34 +1,50 @@
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.widget.TabBarView2;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
 
 public class arqy
-  implements berl
+  implements arqw
 {
-  public arqy(QfileTabBarView paramQfileTabBarView) {}
+  public arqy(FMSettings.4 param4) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a()
   {
-    if (this.a.a(paramInt2) == null) {}
-    do
+    synchronized (this.a.this$0)
     {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setSelected(true);
-      this.a.b(paramInt2);
-    } while (!this.a.jdField_a_of_type_Boolean);
-    try
-    {
-      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
-      localEditor.commit();
+      arqx localarqx2 = this.a.this$0;
+      localarqx2.jdField_a_of_type_Int += 1;
+      arqx.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        arqx.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Arqw.a();
+      }
       return;
     }
-    catch (Exception localException) {}
   }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.this$0)
+    {
+      arqx localarqx2 = this.a.this$0;
+      localarqx2.jdField_a_of_type_Int += 1;
+      arqx.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        arqx.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Arqw.a(16);
+      }
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    arqx localarqx = this.a.this$0;
+    localarqx.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_Arqw.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

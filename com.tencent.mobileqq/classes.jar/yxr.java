@@ -1,12 +1,6 @@
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-
 public abstract interface yxr
 {
-  public abstract void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo);
-  
-  public abstract void a(int paramInt, yxv paramyxv);
-  
-  public abstract void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean);
+  public abstract void a();
 }
 
 

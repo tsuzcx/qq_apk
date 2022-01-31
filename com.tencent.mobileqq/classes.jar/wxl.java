@@ -1,25 +1,29 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class wxl
-  implements bhpo
+public class wxl
+  implements DialogInterface.OnKeyListener
 {
-  int jdField_a_of_type_Int = 0;
+  public wxl(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  wxl(wxj paramwxj) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).a().size()) && (!wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).a()))
-    {
-      paramAbsListView = wxj.a(this.jdField_a_of_type_Wxj);
-      wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).b(paramAbsListView);
+    if (paramInt == 84) {
+      return true;
     }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

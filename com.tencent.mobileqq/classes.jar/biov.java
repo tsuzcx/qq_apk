@@ -1,284 +1,103 @@
-import android.content.Intent;
-import android.net.wifi.WifiManager;
-import android.os.Bundle;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qlink.QlinkPluginProxyActivity;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URLDecoder;
+import android.content.Context;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class biov
 {
-  public static Intent a()
+  static biov jdField_a_of_type_Biov;
+  private static String b = "GMEAVEngineWalper";
+  int jdField_a_of_type_Int = 0;
+  public Context a;
+  public bgkw a;
+  private bipg jdField_a_of_type_Bipg = new bipb(this);
+  bipi jdField_a_of_type_Bipi;
+  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new bipa(this);
+  String jdField_a_of_type_JavaLangString = "";
+  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static biov a()
   {
-    Intent localIntent = new Intent();
-    QlinkPluginProxyActivity.a(localIntent, "com.tencent.qlink.activity.QlinkProxyActivity");
-    return localIntent;
+    if (jdField_a_of_type_Biov == null) {
+      jdField_a_of_type_Biov = new biov();
+    }
+    return jdField_a_of_type_Biov;
   }
   
-  public static biow a(String paramString)
+  private void a()
   {
-    int i = 0;
-    if (paramString == null) {}
-    biow localbiow;
-    Object localObject;
-    int j;
-    String str2;
-    for (;;)
-    {
-      return null;
-      localbiow = new biow();
-      try
-      {
-        if (paramString.startsWith("qqf2f://qf/?"))
-        {
-          localObject = paramString.substring("qqf2f://qf/?".length(), paramString.length()).split("&");
-          paramString = new Bundle();
-          j = localObject.length;
-        }
-      }
-      catch (Exception paramString)
-      {
-        int k;
-        String str1;
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    k = str2.indexOf("=");
-    if (-1 != k)
-    {
-      str1 = str2.substring(0, k + 1);
-      str2 = str2.substring(k + 1, str2.length());
-      if ((str1 != null) && (str2 != null)) {
-        paramString.putString(str1, str2);
-      }
-    }
-    label293:
-    for (;;)
-    {
-      localbiow.a = paramString.getString("k=");
-      localbiow.b = d(paramString.getString("u="));
-      localObject = b(paramString.getString("n="));
-      if (localObject != null)
-      {
-        localbiow.c = URLDecoder.decode((String)localObject, "UTF-8");
-        if (localbiow.c != null) {}
-      }
-      for (localbiow.c = localbiow.b;; localbiow.c = localbiow.b)
-      {
-        localbiow.d = paramString.getString("o=");
-        localbiow.e = paramString.getString("p=");
-        localbiow.f = paramString.getString("d=");
-        if ((localbiow.a == null) || (localbiow.b == null) || (localbiow.d == null)) {
-          break;
-        }
-        return localbiow;
-      }
-      for (;;)
-      {
-        if (i >= j) {
-          break label293;
-        }
-        str2 = localObject[i];
-        if (str2 != null) {
-          break;
-        }
-        i += 1;
-      }
-    }
+    bipj.a().a(this.jdField_a_of_type_Bipi, new biow(this));
   }
   
-  public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      Class localClass1 = Class.forName("com.tencent.qlink.app.QlinkAppInterface");
-      if (localClass1 == null) {
-        return null;
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass2;
-      try
-      {
-        ClassLoader localClassLoader = QlinkPluginProxyActivity.a(paramBaseApplicationImpl);
-        localClass2 = localClassLoader.loadClass("com.tencent.qlink.app.QlinkAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (ClassNotFoundException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Bipi = new bipi(paramInt, paramString1, paramString2);
   }
   
-  public static String a(String paramString)
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    int j = 0;
-    if (paramString == null) {
-      return null;
-    }
-    Object localObject = paramString.getBytes();
-    paramString = new byte[localObject.length];
-    int i = 0;
-    while (i < localObject.length)
-    {
-      paramString[i] = ((byte)((byte)((byte)(localObject[i] ^ 0xFFFFFFA2) ^ 0x68) ^ 0x1B));
-      i += 1;
-    }
-    localObject = new StringBuilder(paramString.length * 2);
-    i = j;
-    while (i < paramString.length)
-    {
-      ((StringBuilder)localObject).append(Integer.toHexString((paramString[i] & 0xF0) >> 4));
-      ((StringBuilder)localObject).append(Integer.toHexString(paramString[i] & 0xF));
-      i += 1;
-    }
-    return ((StringBuilder)localObject).toString();
+    QLog.e("Begin:TMGProformanceHelper", 1, biph.a());
+    QLog.e("AVEngineWalper", 1, "InitSDKEngine() strAppid=" + paramString2 + ", strUin=" + paramString1 + ", strAccountType=" + paramString3);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bipg);
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_AndroidContentContext);
+    paramContext = new bipe();
+    paramContext.jdField_a_of_type_JavaLangString = paramString2;
+    paramContext.b = paramString3;
+    paramContext.d = paramString4;
+    paramContext.c = paramString1;
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(paramContext);
+    a();
   }
   
-  public static boolean a()
+  public void a(bgkw parambgkw)
   {
-    try
+    this.jdField_a_of_type_Bgkw = parambgkw;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "ExitRoom!!!, strRoomID" + paramString);
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new biox(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (bipc.a(this.jdField_a_of_type_AndroidContentContext).a() == paramBoolean)
     {
-      WifiManager localWifiManager = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
-      Method localMethod = localWifiManager.getClass().getMethod("isWifiApEnabled", new Class[0]);
-      localMethod.setAccessible(true);
-      boolean bool = ((Boolean)localMethod.invoke(localWifiManager, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-      return false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
+      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
+      if (this.jdField_a_of_type_Bgkw != null) {
+        this.jdField_a_of_type_Bgkw.a(paramBoolean, 0);
       }
+      return;
     }
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new bioy(this));
   }
   
-  public static String b(String paramString)
+  public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 0;
-    if (paramString == null) {
-      return null;
-    }
-    int k = paramString.length() / 2;
-    byte[] arrayOfByte = new byte[k];
-    int i = 0;
-    while (i < k) {
-      try
-      {
-        arrayOfByte[i] = Integer.valueOf(paramString.substring(i * 2, i * 2 + 2), 16).byteValue();
-        i += 1;
+    a(paramString, paramBoolean1, paramBoolean2);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (bipc.a(this.jdField_a_of_type_AndroidContentContext).b() == paramBoolean)
+    {
+      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
+      if (this.jdField_a_of_type_Bgkw != null) {
+        this.jdField_a_of_type_Bgkw.b(paramBoolean, 0);
       }
-      catch (NumberFormatException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
+      return;
     }
-    paramString = new byte[k];
-    i = j;
-    while (i < arrayOfByte.length)
-    {
-      paramString[i] = ((byte)((byte)((byte)(arrayOfByte[i] ^ 0x1B) ^ 0x68) ^ 0xFFFFFFA2));
-      i += 1;
-    }
-    try
-    {
-      paramString = new String(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String c(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return String.valueOf(l ^ 0x3702D1C2 ^ 0x5891625D ^ 0xCF267E29);
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  public static String d(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return String.valueOf(l ^ 0xCF267E29 ^ 0x5891625D ^ 0x3702D1C2);
-    }
-    catch (Exception paramString) {}
-    return null;
+    bipc.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new bioz(this));
   }
 }
 

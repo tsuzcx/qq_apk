@@ -1,41 +1,31 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahok
 {
-  public static ContactsBaseFragment a(int paramInt)
-  {
-    Object localObject;
-    switch (paramInt)
-    {
-    default: 
-      localObject = new FriendFragment();
-    }
-    for (;;)
-    {
-      ((ContactsBaseFragment)localObject).d(paramInt);
-      return localObject;
-      localObject = new RecommendFriendFragment();
-      continue;
-      localObject = new FriendFragment();
-      continue;
-      localObject = new TroopFragment();
-      continue;
-      localObject = new PublicAccountFragment();
-      continue;
-      localObject = new DeviceFragment();
-      continue;
-      localObject = new PhoneContactFragment();
-      continue;
-      localObject = new AlphabetFriendFragment();
-    }
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public String c = "";
+  public TextView d;
 }
 
 

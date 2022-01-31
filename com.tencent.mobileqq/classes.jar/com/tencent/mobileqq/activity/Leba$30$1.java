@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import adbn;
-import atgm;
+import adgc;
+import atkv;
 import java.util.List;
 
 public class Leba$30$1
   implements Runnable
 {
-  public Leba$30$1(adbn paramadbn, List paramList) {}
+  public Leba$30$1(adgc paramadgc, List paramList) {}
   
   public void run()
   {
-    if (Leba.a(this.jdField_a_of_type_Adbn.a) != null)
+    if (Leba.a(this.jdField_a_of_type_Adgc.a) != null)
     {
-      Leba.a(this.jdField_a_of_type_Adbn.a).clear();
-      Leba.a(this.jdField_a_of_type_Adbn.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (Leba.a(this.jdField_a_of_type_Adbn.a) != null) {
-        Leba.a(this.jdField_a_of_type_Adbn.a).b();
+      Leba.a(this.jdField_a_of_type_Adgc.a).clear();
+      Leba.a(this.jdField_a_of_type_Adgc.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (Leba.a(this.jdField_a_of_type_Adgc.a) != null) {
+        Leba.a(this.jdField_a_of_type_Adgc.a).b();
       }
-      Leba.c(this.jdField_a_of_type_Adbn.a);
+      Leba.c(this.jdField_a_of_type_Adgc.a);
     }
   }
 }

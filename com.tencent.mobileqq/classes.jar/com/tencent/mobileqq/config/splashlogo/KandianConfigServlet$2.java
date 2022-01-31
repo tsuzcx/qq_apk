@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import nrt;
 import org.json.JSONObject;
@@ -15,7 +15,7 @@ public final class KandianConfigServlet$2
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bjxj.a(localJSONObject);
+      bkbq.a(localJSONObject);
       nrt.a(null, null, this.a, this.a, 0, 0, this.b, this.c, null, localJSONObject.toString(), false);
       QLog.d("KandianConfigServlet", 1, "reportID:" + this.a + " reportKDConfigFailed  isAll:" + this.b + "  errorCode:" + this.c);
       return;

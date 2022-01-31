@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
 import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudWrite.StDoReplyRsp;
+import java.util.Map;
 
 class tuq
-  implements DialogInterface.OnShowListener
+  implements zac<FeedCloudWrite.StDoReplyRsp>
 {
-  tuq(tuk paramtuk, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
+  tuq(tuk paramtuk, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    if (tuk.a(this.jdField_a_of_type_Tuk) != null) {
-      tuk.a(this.jdField_a_of_type_Tuk).a(paramDialogInterface);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoReplyRsp == null))
+    {
+      QLog.e(tuk.a(), 1, "addCommentReply error:" + paramLong + "  errorMsg:" + paramString);
+      return;
     }
-    paramDialogInterface = tyx.a().a(tuk.a(this.jdField_a_of_type_Tuk), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-    tuk.a(this.jdField_a_of_type_Tuk).a(paramDialogInterface);
+    QLog.d(tuk.a(), 1, "addCommentReply Success");
+    String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.set(paramStDoReplyRsp.reply.id.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.createTime.set(paramStDoReplyRsp.reply.createTime.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.set(paramStDoReplyRsp.reply.likeInfo.get());
+    paramStDoReplyRsp.reply.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    tuk.a(this.jdField_a_of_type_Tuk).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) + 1));
+    QCircleCommentUpdateEvent localQCircleCommentUpdateEvent = new QCircleCommentUpdateEvent(3, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()));
+    localQCircleCommentUpdateEvent.mFakeReplyId = str;
+    yiw.a().a(localQCircleCommentUpdateEvent);
+    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, str, Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
   }
 }
 

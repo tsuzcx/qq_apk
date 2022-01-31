@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.data;
 
-import apaq;
-import azmj;
+import apez;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$4
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$4(apaq paramapaq, QQAppInterface paramQQAppInterface) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$4(apez paramapez, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
     }
-    azmj.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, apaq.a(this.this$0).frienduin, "", "", "");
+    azqs.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, apez.a(this.this$0).frienduin, "", "", "");
     QQAppInterface localQQAppInterface;
-    if ((apaq.a(this.this$0).AioType == 1) || (apaq.a(this.this$0).AioType == 3))
+    if ((apez.a(this.this$0).AioType == 1) || (apez.a(this.this$0).AioType == 3))
     {
       localQQAppInterface = this.a;
-      if (apaq.a(this.this$0).AioType != 0) {
+      if (apez.a(this.this$0).AioType != 0) {
         break label122;
       }
     }
     label122:
     for (String str = "0";; str = "1")
     {
-      azmj.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
+      azqs.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
       return;
     }
   }

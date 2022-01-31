@@ -1,35 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class anyg
+public class anyg<T>
 {
-  private int a = 1;
+  final AbstractCollection<T> a;
   
-  public static anyg a(String paramString)
+  public anyg(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      return null;
-      try
-      {
-        anyg localanyg = new anyg();
-        localanyg.a = new JSONObject(paramString).getInt("ifrecent");
-        return localanyg;
+      this.a = new ArrayDeque();
+      return;
+    }
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public T a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
     return null;
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.a == 1;
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 

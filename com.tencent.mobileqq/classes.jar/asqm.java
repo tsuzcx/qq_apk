@@ -1,6 +1,8 @@
-public abstract interface asqm
+public class asqm
 {
-  public abstract void a(int paramInt);
+  public String a;
+  public String b;
+  public String c;
 }
 
 

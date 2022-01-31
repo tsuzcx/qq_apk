@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.share;
 
-import bepp;
+import bety;
 
 class MiniProgramOpenSdkUtil$TimeOutInfo
 {
   boolean isTimeout;
-  bepp progressDialog;
+  bety progressDialog;
 }
 
 

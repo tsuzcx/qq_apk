@@ -1,13 +1,13 @@
 package com.tencent.imcore.message;
 
-import abow;
+import abtl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OnLinePushMessageProcessor$2
   implements Runnable
 {
-  public OnLinePushMessageProcessor$2(abow paramabow, int paramInt) {}
+  public OnLinePushMessageProcessor$2(abtl paramabtl, int paramInt) {}
   
   public void run()
   {

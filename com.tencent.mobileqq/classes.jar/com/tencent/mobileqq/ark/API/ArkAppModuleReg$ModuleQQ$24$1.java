@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import anfv;
-import angb;
+import anke;
+import ankk;
 import com.tencent.ark.ark.VariantWrapper;
 import java.util.HashMap;
 import java.util.Locale;
@@ -10,14 +10,14 @@ import oicq.wlogin_sdk.tools.util;
 public class ArkAppModuleReg$ModuleQQ$24$1
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$24$1(angb paramangb, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$24$1(ankk paramankk, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, String paramString) {}
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Angb.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Ankk.jdField_a_of_type_Long);
     if (localVariantWrapper1 == null)
     {
-      anfv.a(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv, null);
+      anke.a(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke, null);
       return;
     }
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
@@ -27,10 +27,10 @@ public class ArkAppModuleReg$ModuleQQ$24$1
       localObject = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
       String str1 = util.buf_to_string(this.b);
       localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"openid\":\"%s\",\"token\":\"%s\"}", new Object[] { localObject, str1 }));
-      String str2 = this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
-      anfv.a(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv).put(str2, localObject);
-      anfv.b(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv).put(str2, str1);
-      anfv.c(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv).put(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
+      String str2 = this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
+      anke.a(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke).put(str2, localObject);
+      anke.b(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke).put(str2, str1);
+      anke.c(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke).put(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
     }
     for (;;)
     {
@@ -39,7 +39,7 @@ public class ArkAppModuleReg$ModuleQQ$24$1
       ((ark.VariantWrapper)localObject).Reset();
       localVariantWrapper2.Reset();
       localVariantWrapper1.Reset();
-      anfv.a(this.jdField_a_of_type_Angb.jdField_a_of_type_Anfv, null);
+      anke.a(this.jdField_a_of_type_Ankk.jdField_a_of_type_Anke, null);
       return;
       localVariantWrapper2.SetNull();
     }

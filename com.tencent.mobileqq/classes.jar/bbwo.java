@@ -1,104 +1,88 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.Window;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class bbwo
+class bbwo
+  extends yui
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private aoed jdField_a_of_type_Aoed;
-  private bbwr jdField_a_of_type_Bbwr;
-  private bbws jdField_a_of_type_Bbws;
-  private bbwt jdField_a_of_type_Bbwt;
-  private bhpy jdField_a_of_type_Bhpy;
-  private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  private int jdField_b_of_type_Int;
-  private bbwt jdField_b_of_type_Bbwt;
-  private int c;
+  bbwo(bbwn parambbwn) {}
   
-  public bbwo(Context paramContext, aoed paramaoed)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aoed = paramaoed;
-  }
-  
-  public aoed a()
-  {
-    return this.jdField_a_of_type_Aoed;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bhpy == null)
+    if (!paramBundle.getBoolean("isPreview", false)) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560987, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_Aoed);
-      this.jdField_a_of_type_Bhpy = bhpy.c(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Bhpy.d(true);
-      this.jdField_a_of_type_Bhpy.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bhpy.findViewById(2131361924);
-      ((DispatchActionMoveScrollView)localObject).a = true;
-      ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
-      if (Build.VERSION.SDK_INT >= 11)
+      do
       {
-        localObject = this.jdField_a_of_type_Bhpy.getWindow();
-        if (localObject != null) {
-          ((Window)localObject).setFlags(16777216, 16777216);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new bbwp(this));
-      this.jdField_a_of_type_Bhpy.a(new bbwq(this));
-    }
-    if (!this.jdField_a_of_type_Bhpy.isShowing())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
-    }
+        return;
+      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    bcnp localbcnp = new bcnp();
+    localbcnp.jdField_a_of_type_Int = -1;
     try
     {
-      this.jdField_a_of_type_Bhpy.show();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(paramInt1, paramInt2);
+      localbcnp.e = this.a.a().toString();
+      localQQAppInterface = bbvj.a();
+      if (localQQAppInterface == null)
+      {
+        bbvl.a("TroopFilePreviewWorker", bbvl.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
+        return;
       }
-      return;
-      this.jdField_a_of_type_Int = paramInt2;
-      continue;
-      this.jdField_b_of_type_Int = paramInt2;
-      continue;
-      this.c = paramInt2;
     }
-  }
-  
-  public void a(bbwr parambbwr)
-  {
-    this.jdField_a_of_type_Bbwr = parambbwr;
-  }
-  
-  public void a(bbws parambbws)
-  {
-    this.jdField_a_of_type_Bbws = parambbws;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    catch (NullPointerException paramBundle)
+    {
+      QQAppInterface localQQAppInterface;
+      for (;;)
+      {
+        localbcnp.e = null;
+      }
+      aloz localaloz = (aloz)localQQAppInterface.a(22);
+      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
+      {
+        bbvl.a("TroopFilePreviewWorker", bbvl.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
+        bcmp.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        localbcnp.jdField_a_of_type_Boolean = false;
+        localaloz.c(localbcnp);
+        return;
+      }
+      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+      localbcnp.jdField_a_of_type_Int = paramInt;
+      localbcnp.jdField_a_of_type_Boolean = false;
+      String str = paramDownloadFileRspBody.str_download_ip.get();
+      paramBundle = "";
+      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
+        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
+      }
+      localbcnp.jdField_a_of_type_JavaLangString = str;
+      if ((TextUtils.isEmpty(localbcnp.jdField_a_of_type_JavaLangString)) || (localbcnp.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
+        localbcnp.jdField_a_of_type_JavaLangString = paramBundle;
+      }
+      localbcnp.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+      localbcnp.c = paramDownloadFileRspBody.str_ret_msg.get();
+      localbcnp.d = bdhe.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+      localbcnp.f = paramBundle;
+      if (paramInt < 0)
+      {
+        bbvl.a("TroopFilePreviewWorker", bbvl.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localbcnp.c);
+        bcmp.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        if (TextUtils.isEmpty(localbcnp.c)) {
+          localbcnp.c = alud.a(2131715741);
+        }
+        localbcnp.jdField_a_of_type_Boolean = false;
+        localaloz.c(localbcnp);
+        return;
+      }
+      bbvl.c("TroopFilePreviewWorker", bbvl.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localbcnp.b + " downloadKey:" + localbcnp.d + " retMsg:" + localbcnp.c + " httpsDomain:" + localbcnp.f);
+      localbcnp.jdField_a_of_type_Boolean = true;
+      localaloz.c(localbcnp);
     }
   }
 }

@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-class bdgw
-  implements View.OnClickListener
+final class bdgw
+  implements DialogInterface.OnClickListener
 {
-  bdgw(bdgv parambdgv, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt) {}
+  bdgw(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
-    this.jdField_a_of_type_Bdgv.hideSoftInputFromWindow();
-    paramView = new arxj(this.jdField_a_of_type_Bdgv);
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bdgv.addPreviewView(paramView.b());
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
+    }
   }
 }
 

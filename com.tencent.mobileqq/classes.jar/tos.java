@@ -17,7 +17,7 @@ public class tos
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131695712), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 0, this.a.getString(2131695714), 0).b(this.a.getTitleBarHeight());
     }
   }
   

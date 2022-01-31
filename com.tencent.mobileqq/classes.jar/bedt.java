@@ -1,92 +1,69 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 import java.io.File;
 
-class bedt
-  implements bhqe
+public class bedt
 {
-  bedt(beds parambeds) {}
+  public static final int a = ListenChangeVoicePanel.a.length;
   
-  public void a(View paramView, int paramInt, String paramString)
+  public static String a(String paramString)
   {
-    if (paramString != null)
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      if (this.a.jdField_a_of_type_Bepp == null)
-      {
-        this.a.jdField_a_of_type_Bepp = new bepp(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Bepp.c(2131694217);
-      }
-      this.a.jdField_a_of_type_Bepp.show();
-      if (!paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690614))) {
-        break label165;
-      }
-      if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-        break label115;
-      }
-      this.a.jdField_b_of_type_Int = 0;
+      new File(a(paramString1, i)).delete();
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
     {
-      this.a.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      label115:
-      if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-        this.a.jdField_a_of_type_Bepp.dismiss();
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
       }
-      this.a.b(this.a.jdField_b_of_type_JavaLangString);
-      continue;
-      label165:
-      if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690613)))
+      for (;;)
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-          this.a.jdField_b_of_type_Int = 1;
-        } else {
-          this.a.a(this.a.jdField_b_of_type_JavaLangString);
-        }
+        i += 1;
+        break;
+        new File(str).delete();
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693493)))
-      {
-        if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-          this.a.jdField_a_of_type_Bepp.dismiss();
-        }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 1);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693492)))
-      {
-        if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-          this.a.jdField_a_of_type_Bepp.dismiss();
-        }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 2);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690616)))
-      {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-        {
-          this.a.jdField_b_of_type_Int = 2;
-        }
-        else
-        {
-          if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-            this.a.jdField_a_of_type_Bepp.dismiss();
-          }
-          this.a.c(this.a.jdField_b_of_type_JavaLangString);
-        }
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693483)))
-      {
-        if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-          this.a.jdField_a_of_type_Bepp.dismiss();
-        }
-        if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-        {
-          paramView = new File(this.a.jdField_b_of_type_JavaLangString);
-          paramString = ((TeamWorkDocEditBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).a.getCurrentAccountUin();
-          biqt.b(paramView.getAbsolutePath()).a(this.a.jdField_a_of_type_AndroidAppActivity, paramString);
-        }
-      }
+    }
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
     }
   }
 }

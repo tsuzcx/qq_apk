@@ -43,15 +43,15 @@ import sse;
 import ssf;
 import ssh;
 import ssi;
-import xxd;
-import xxl;
-import yej;
-import yel;
-import yvu;
+import ybm;
+import ybu;
+import yiw;
+import yiy;
+import zaj;
 
 public class ServiceAccountFolderActivityNew
   extends FragmentActivity
-  implements yel
+  implements yiy
 {
   public static boolean a;
   private int jdField_a_of_type_Int;
@@ -115,24 +115,24 @@ public class ServiceAccountFolderActivityNew
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376399);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131375933);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131375712));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375175));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375176));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131380046));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376453);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131375986);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131375763));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375226));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375227));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131380104));
     this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter = new ServiceAccountFolderActivityNew.FolderTabFragmentAdapter(this, getSupportFragmentManager());
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368855));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368870));
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-16777216);
       this.jdField_a_of_type_AndroidWidgetRadioButton.setTextColor(getResources().getColor(2131165368));
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838851));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838852));
       this.jdField_b_of_type_AndroidWidgetRadioButton.setTextColor(getResources().getColor(2131165368));
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838851));
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838769));
+      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838852));
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838770));
       this.jdField_c_of_type_AndroidWidgetImageView.setColorFilter(1308622848);
     }
     d();
@@ -141,10 +141,10 @@ public class ServiceAccountFolderActivityNew
   
   private void c()
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user != null) && (xxl.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.attr.get())))
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user != null) && (ybu.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.attr.get())))
     {
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      yvu.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
+      zaj.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new ssd(this));
       return;
     }
@@ -153,15 +153,15 @@ public class ServiceAccountFolderActivityNew
   
   private void d()
   {
-    this.d = ((ImageView)findViewById(2131378114));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368806));
+    this.d = ((ImageView)findViewById(2131378168));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368821));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new sse(this));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369877));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131369878));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369896));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131369897));
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130841282));
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838711));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130841283));
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838712));
       this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(1711276032);
     }
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -214,24 +214,10 @@ public class ServiceAccountFolderActivityNew
     return this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(UserStateUpdateEvent.class);
-    return localArrayList;
-  }
-  
   public void a(int paramInt)
   {
     if (((paramInt == 0) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem() != 0)) || (paramInt == 8)) {
       this.d.setVisibility(paramInt);
-    }
-  }
-  
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((paramSimpleBaseEvent instanceof UserStateUpdateEvent)) {
-      e();
     }
   }
   
@@ -254,8 +240,8 @@ public class ServiceAccountFolderActivityNew
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559508);
-    this.jdField_b_of_type_Boolean = xxl.a();
+    setContentView(2131559507);
+    this.jdField_b_of_type_Boolean = ybu.a();
     a();
     b();
     if (ImmersiveUtils.isSupporImmersive() == 1)
@@ -263,15 +249,15 @@ public class ServiceAccountFolderActivityNew
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidViewView.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    yej.a().a(this);
+    yiw.a().a(this);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    yej.a().b(this);
-    xxd.a();
+    yiw.a().b(this);
+    ybm.a();
     long l1;
     long l2;
     if (this.jdField_a_of_type_Long > 0L)
@@ -285,7 +271,7 @@ public class ServiceAccountFolderActivityNew
     label85:
     for (String str = "auth_follow";; str = "auth_discover")
     {
-      yvu.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      zaj.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
       this.jdField_a_of_type_Long = 0L;
       VSNetworkHelper.a().a(BaseApplicationImpl.getContext());
       return;
@@ -295,6 +281,20 @@ public class ServiceAccountFolderActivityNew
   public void doOnResume()
   {
     super.doOnResume();
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(UserStateUpdateEvent.class);
+    return localArrayList;
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof UserStateUpdateEvent)) {
+      e();
+    }
   }
 }
 

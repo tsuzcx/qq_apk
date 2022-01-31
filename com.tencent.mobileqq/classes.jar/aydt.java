@@ -1,20 +1,10 @@
-import java.util.Comparator;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-final class aydt
-  implements Comparator<aydj>
+public class aydt
 {
-  public int a(aydj paramaydj1, aydj paramaydj2)
-  {
-    long l1 = paramaydj1.c();
-    long l2 = paramaydj2.c();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
-  }
+  public ProgressBar a;
+  public TextView a;
 }
 
 

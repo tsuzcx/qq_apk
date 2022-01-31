@@ -1,48 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class bmpx
-  implements bmmz
+  implements Animation.AnimationListener
 {
-  ArrayList<bmmw> a = null;
+  public bmpx(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public bmpx(bmmw... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
     }
-    this.a = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      bmmw localbmmw = paramVarArgs[i];
-      if (localbmmw != null) {
-        this.a.add(localbmmw);
-      }
-      i += 1;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
     }
   }
   
-  public bmmw a(String paramString)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (((bmmw)this.a.get(i)).a().equals(paramString)) {
-        return (bmmw)this.a.get(i);
-      }
-      i += 1;
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(List<bmmw> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(this.a);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

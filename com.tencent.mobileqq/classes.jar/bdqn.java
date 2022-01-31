@@ -1,33 +1,11 @@
-import android.graphics.Color;
-import android.util.SparseArray;
+import java.util.Comparator;
 
-public class bdqn
+final class bdqn
+  implements Comparator<bdqo>
 {
-  public byte a;
-  public int a;
-  public long a;
-  public SparseArray<bdqn> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
-  
-  public static bdqn a()
+  public int a(bdqo parambdqo1, bdqo parambdqo2)
   {
-    return new bdqn();
-  }
-  
-  public static bdqn a(int paramInt, byte paramByte)
-  {
-    bdqn localbdqn = new bdqn();
-    localbdqn.jdField_b_of_type_Int = paramInt;
-    localbdqn.jdField_a_of_type_Byte = paramByte;
-    return localbdqn;
-  }
-  
-  public int a()
-  {
-    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
+    return parambdqo2.a() - parambdqo1.a();
   }
 }
 

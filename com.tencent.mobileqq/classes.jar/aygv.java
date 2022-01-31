@@ -1,70 +1,53 @@
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aygv<M extends ayji, V extends ayrs>
-  extends ayff<M, V>
+public abstract class aygv<T extends View>
 {
-  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private List<aygz> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private int c;
-  private int d;
+  protected int a;
+  public long a;
   
-  public aygv(ListView paramListView, bcws parambcws, List<FTSEntity> paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  public aygv(int paramInt)
   {
-    super(paramListView, parambcws);
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = paramFTSEntitySearchDetailActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramInt;
   }
   
-  private void b()
+  public static aygv a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = bdli.a(this.jdField_a_of_type_JavaLangString);
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if (j + 50 < this.jdField_b_of_type_JavaUtilList.size()) {
-      i = j + 50;
-    }
-    while (j < i)
+    switch (paramInt1)
     {
-      aygz localaygz = ayhb.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localArrayList, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(j));
-      if (localaygz != null) {
-        this.jdField_a_of_type_JavaUtilList.add(localaygz);
+    case 2: 
+    case 4: 
+    case 5: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSearchEntryModel", 2, "createSearchEntryModel, modelType = " + paramInt1 + ", tabType = " + paramInt2);
       }
-      j += 1;
-      continue;
-      i = this.jdField_b_of_type_JavaUtilList.size();
+      return null;
+    case 0: 
+      return new ayhe(paramInt2);
+    case 1: 
+      return new ayhk(paramInt2, paramBoolean);
+    case 3: 
+      return new aygw(paramInt2, paramBoolean);
     }
-    a(this.jdField_a_of_type_JavaUtilList);
+    return new ayii(paramInt2);
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
+  public abstract T a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
-  }
+  public void a() {}
+  
+  public void a(aypb paramaypb) {}
+  
+  public void b() {}
+  
+  public void b(aypb paramaypb) {}
+  
+  public void c() {}
 }
 
 

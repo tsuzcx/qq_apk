@@ -1,46 +1,73 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class awjy
-  extends alxo
+  extends Handler
 {
-  public awjy(CoverDetailFragment paramCoverDetailFragment) {}
+  private final WeakReference<PresendPicMgr> a;
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public awjy(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {}
-    do
+    super(paramLooper);
+    this.a = new WeakReference(paramPresendPicMgr);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
+    if (localPresendPicMgr != null)
     {
-      do
+      switch (paramMessage.what)
       {
+      default: 
+        super.handleMessage(paramMessage);
         return;
-        if (!paramBoolean) {
-          break;
+      case 1: 
+        awiw.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
+        localPresendPicMgr.a = paramMessage.replyTo;
+        paramMessage = Message.obtain(null, 2);
+        ArrayList localArrayList = new ArrayList();
+        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localArrayList.add(((awjz)((Iterator)localObject).next()).a);
         }
-      } while (!(paramObject instanceof setUserProfileRsp));
-      int i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
+        localObject = new Bundle();
+        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
+        paramMessage.setData((Bundle)localObject);
+        try
+        {
+          localPresendPicMgr.a.send(paramMessage);
+          localPresendPicMgr.a = null;
+          PresendPicMgr.a(localPresendPicMgr);
+          localPresendPicMgr.b();
+          return;
+        }
+        catch (RemoteException paramMessage)
+        {
+          for (;;)
+          {
+            localPresendPicMgr.a = null;
+            if (QLog.isColorLevel()) {
+              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
+            }
+            paramMessage.printStackTrace();
+          }
+        }
       }
-      if (i == 0)
-      {
-        paramObject = new Intent();
-        paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
-        localFragmentActivity.setResult(-1, paramObject);
-        localFragmentActivity.finish();
-        return;
-      }
-      CoverDetailFragment.a(this.a, localFragmentActivity);
+      awiw.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
+      localPresendPicMgr.a = null;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
-      }
-    } while (!"profilelogic.setUserProfile".equals(paramObject));
-    CoverDetailFragment.a(this.a, localFragmentActivity);
+    }
+    awiw.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
   }
 }
 

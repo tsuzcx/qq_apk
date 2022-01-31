@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atix
-  implements DialogInterface.OnClickListener
+  implements yrb
 {
-  public atix(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atjn paramatjn) {}
+  public atix(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(true);
-    this.jdField_a_of_type_Atjn.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    paramBundle = paramBundle.getString("sayhiinfo");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      if (TextUtils.isEmpty(paramBundle)) {
+        localJSONObject.put("result", "fail");
+      }
+      for (;;)
+      {
+        paramBundle = localJSONObject.toString();
+        QLog.i("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback result = " + paramBundle);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+        return;
+        localJSONObject.put("result", "success");
+        localJSONObject.put("data", new JSONObject(paramBundle));
+      }
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.e("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback Exception:", paramBundle);
     }
   }
 }

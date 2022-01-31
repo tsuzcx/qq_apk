@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import bcjl;
+import bcnu;
 
 public class TroopGagActivity$1
   implements Runnable
 {
-  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bcjl parambcjl) {}
+  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bcnu parambcnu) {}
   
   public void run()
   {

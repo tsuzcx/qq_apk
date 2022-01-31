@@ -1,19 +1,17 @@
-import org.json.JSONObject;
+import android.content.Context;
 
-public class bguu
+class bguu
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b = null;
-  public String c = null;
-  public String d = null;
+  bgus a;
   
-  bguu(bgut parambgut)
+  public bguu(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 1001;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    this.jdField_a_of_type_JavaLangString = null;
+    this.a = new bgus(paramContext, null);
+  }
+  
+  public bgus a()
+  {
+    return this.a;
   }
 }
 

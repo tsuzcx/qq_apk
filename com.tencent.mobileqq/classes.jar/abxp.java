@@ -1,36 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class abxp
-  implements DialogInterface.OnClickListener
+class abxp
+  extends auei<JobSegment>
 {
-  public abxp(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  abxp(abxo paramabxo, JobSegment paramJobSegment)
   {
-    if (paramInt == 1)
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, auef paramauef)
+  {
+    if (paramBoolean)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
-      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.jdField_a_of_type_Bdfq.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
-    }
-    while (paramInt != 0) {
+      abxo.a(this.a, paramauef);
       return;
     }
-    this.a.setResult(0);
-    this.a.finish();
+    abxo.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

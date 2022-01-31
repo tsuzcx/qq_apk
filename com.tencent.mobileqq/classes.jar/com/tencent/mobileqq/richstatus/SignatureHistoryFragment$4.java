@@ -49,7 +49,7 @@ class SignatureHistoryFragment$4
     //   85: invokestatic 85	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Ljava/lang/String;
     //   88: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   91: ifeq +165 -> 256
-    //   94: invokestatic 96	bcyw:b	()Ljava/lang/String;
+    //   94: invokestatic 96	bddf:b	()Ljava/lang/String;
     //   97: astore_3
     //   98: new 98	java/io/File
     //   101: dup
@@ -69,14 +69,14 @@ class SignatureHistoryFragment$4
     //   130: aload 6
     //   132: iload_1
     //   133: iload_1
-    //   134: invokestatic 114	bdda:a	(Ljava/io/InputStream;II)D
+    //   134: invokestatic 114	bdhj:a	(Ljava/io/InputStream;II)D
     //   137: d2i
     //   138: putfield 118	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   141: aload 6
     //   143: invokevirtual 123	java/io/InputStream:close	()V
     //   146: aload_3
     //   147: aload 4
-    //   149: invokestatic 128	bcwc:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   149: invokestatic 128	bdal:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   152: astore_3
     //   153: aload_3
     //   154: astore_2

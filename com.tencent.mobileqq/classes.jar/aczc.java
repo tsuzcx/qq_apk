@@ -1,25 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.16.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aczc
-  extends BroadcastReceiver
+  extends avva
 {
-  public aczc(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aczc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
-    }
+    ThreadManager.post(new FriendProfileCardActivity.16.1(this), 5, null, false);
   }
 }
 

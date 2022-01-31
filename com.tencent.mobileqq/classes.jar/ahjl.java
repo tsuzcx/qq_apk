@@ -1,17 +1,47 @@
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahjl
-  extends akee
+public class ahjl
+  extends Handler
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public ahjl(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 5)
+    {
+      Face2FaceAddContactFragment.a(this.a).setText(2131692372);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+    }
+    do
+    {
+      return;
+      if (paramMessage.what == 301)
+      {
+        Face2FaceAddContactFragment.a(this.a);
+        return;
+      }
+      if (paramMessage.what == 500)
+      {
+        Face2FaceAddContactFragment.b(this.a);
+        return;
+      }
+      if (paramMessage.what == 401)
+      {
+        removeMessages(301);
+        this.a.d();
+        return;
+      }
+    } while (paramMessage.what != 6);
+    Face2FaceAddContactFragment.c(this.a);
+    QQToast.a(this.a.getActivity(), this.a.getString(2131691072), 0).a();
+  }
 }
 
 

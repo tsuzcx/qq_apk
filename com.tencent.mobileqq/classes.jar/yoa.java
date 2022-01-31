@@ -1,29 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
 
-class yoa
-  implements ynu
+public class yoa
+  implements View.OnClickListener
 {
-  yoa(ynz paramynz, long paramLong) {}
+  public yoa(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynw.e = paramString1;
-      this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx.a.b(this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx);
-      this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx.b();
-      return;
-    }
-    this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx.d = paramString2;
-    this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx.a.a(this.jdField_a_of_type_Ynz.a.jdField_a_of_type_Ynx);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -28,7 +28,7 @@ public class ofh
       String str;
       int i;
       return;
-      if (arof.a(str))
+      if (arso.a(str))
       {
         this.a = new ofi(paramActivity, paramListView, str);
         this.a.a(i);

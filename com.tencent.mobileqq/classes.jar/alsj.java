@@ -1,11 +1,6 @@
-public class alsj
+class alsj
 {
-  public int a;
-  public long a = 9223372036854775807L;
-  public String a;
-  public int b = 1000;
-  public int c;
-  public int d = -1;
+  private static final alsg a = new alsg(null);
 }
 
 

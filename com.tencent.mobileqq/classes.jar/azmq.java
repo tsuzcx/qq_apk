@@ -1,141 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager.ISpLogCallback;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-public final class azmq
-  implements SharedPreferencesProxyManager.ISpLogCallback
+public class azmq
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public static final boolean a;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, String[]> b = new ConcurrentHashMap();
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  private static int a(String paramString1, String paramString2, String paramString3)
-  {
-    return (paramString1 + paramString2 + paramString3).hashCode();
-  }
-  
-  public static azmq a()
-  {
-    return azms.a;
-  }
-  
-  private static azmt a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = paramString.split("\\|");
-    } while (paramString.length != 3);
-    return new azmt(paramString[0], paramString[1], paramString[2]);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.contains("com.oppo.embryo")) || (!paramString.contains("."))) {
-      return true;
+    if (azmx.a()) {
+      return this.jdField_b_of_type_JavaLangString;
     }
-    return false;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onIllegalModify(String paramString1, String paramString2, Object paramObject)
+  public boolean a(azmq paramazmq)
   {
-    String str = null;
-    int i = 1;
-    if ((!jdField_a_of_type_Boolean) || (BaseApplicationImpl.sProcessId != 1)) {}
-    label388:
-    label392:
-    for (;;)
-    {
-      return;
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getPackageName();
-      }
-      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && ((paramObject instanceof String)) && (!TextUtils.isEmpty((String)paramObject)))
-      {
-        boolean bool = jdField_a_of_type_JavaLangString.equals(paramString2);
-        paramObject = (String)paramObject;
-        if (bool)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, new String[] { paramString2, null });
-          label111:
-          if (!bool) {
-            break label353;
-          }
-          paramString2 = (String[])this.b.get(paramString1);
-          if (paramString2 == null) {
-            break label345;
-          }
-          paramObject = paramString2[0];
-          paramString2 = paramString2[1];
-          label142:
-          if (TextUtils.isEmpty(paramObject)) {
-            break label388;
-          }
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            break label392;
-          }
-          Object localObject = a(paramString2);
-          if (localObject == null) {
-            break;
-          }
-          paramString2 = ((azmt)localObject).c;
-          str = ((azmt)localObject).jdField_a_of_type_JavaLangString;
-          localObject = ((azmt)localObject).b;
-          if ((a(str)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty((CharSequence)localObject)) || (this.jdField_a_of_type_JavaUtilList.contains(paramString2))) {
-            break;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(paramString2);
-          SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("sp_dm_report", 0).edit();
-          localEditor.putString(String.valueOf(a(str, (String)localObject, paramObject)), paramString1 + '|' + str + '|' + paramObject + '|' + paramString2);
-          localEditor.commit();
-          return;
-          this.b.put(paramString1, new String[] { paramString2, paramObject });
-          break label111;
-          label345:
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          label353:
-          if ((String[])this.jdField_a_of_type_JavaUtilMap.get(paramString1) != null)
-          {
-            str = paramString2;
-            paramString2 = paramObject;
-            paramObject = str;
-            break label142;
-          }
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          i = 0;
-        }
-      }
+    if (paramazmq == null) {}
+    while ((this.jdField_b_of_type_Boolean != paramazmq.jdField_b_of_type_Boolean) || (!ajeu.c(this.jdField_a_of_type_JavaLangString, paramazmq.jdField_a_of_type_JavaLangString)) || (!ajeu.c(this.jdField_b_of_type_JavaLangString, paramazmq.jdField_b_of_type_JavaLangString))) {
+      return false;
     }
+    return true;
   }
   
-  public void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException) {}
+  public String toString()
+  {
+    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azmq
  * JD-Core Version:    0.7.0.1
  */

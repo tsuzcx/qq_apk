@@ -1,58 +1,58 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 
 public class xqi
-  extends Drawable
+  extends bibi
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private int b;
+  public View a;
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public URLImageView b;
   
-  public xqi(int paramInt1, int paramInt2)
+  public xqi(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this(null, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362973));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377847));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131379841));
   }
   
-  public xqi(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
   {
-    wsv.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    setBounds(0, 0, paramInt1, paramInt2);
-    if (paramBitmap == null) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(xqz.d(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846447);
+    try
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(bcyz.b(xsm.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), xsm.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), xsm.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(bcyz.i);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new xqj(this, paramInt));
       return;
     }
+    catch (Exception paramTroopStoryItemInfo)
+    {
+      for (;;)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+      }
+    }
   }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    wsv.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-    wsv.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

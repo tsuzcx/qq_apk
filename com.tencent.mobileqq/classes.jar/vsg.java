@@ -1,18 +1,23 @@
-import android.util.SparseArray;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-final class vsg
-  extends SparseArray<String>
+public class vsg
+  extends vsi
 {
-  vsg()
+  private ElasticImageView a;
+  
+  public vsg(@NonNull ViewGroup paramViewGroup)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, alpo.a(2131714930));
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, alpo.a(2131714934));
-    put(23, "PLAYER_INFO_START_RENDERING");
-    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364343));
+    this.a.setOnClickListener(new vsh(this));
+    return this.a;
   }
 }
 

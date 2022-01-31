@@ -124,7 +124,7 @@ public class hh
     try
     {
       List localList = paramParameters.getSupportedFocusModes();
-      if ((localList.contains("continuous-video")) && (amuc.a().b)) {
+      if ((localList.contains("continuous-video")) && (amyr.a().b)) {
         str = "continuous-video";
       }
       for (;;)

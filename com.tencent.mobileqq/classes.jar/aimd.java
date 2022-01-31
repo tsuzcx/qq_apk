@@ -1,51 +1,69 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aimd
-  extends AlbumListAdapter
+  extends awhw
 {
-  long jdField_a_of_type_Long;
-  private QQAlbumInfo jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo;
+  private aimd(ContactListView paramContactListView) {}
   
-  public aimd(AlbumListFragment paramAlbumListFragment)
+  protected void a(boolean paramBoolean)
   {
-    super(paramAlbumListFragment);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
-    localQQAlbumInfo._id = "qzone_album";
-    localQQAlbumInfo.name = "空间相册";
-    localQQAlbumInfo.mMediaFileCount = ((int)this.jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
-      QLog.d("AlbumListAdapter", 1, "setQzoneAlbumNum " + paramLong);
+      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo = localQQAlbumInfo;
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
+      this.a.j();
+    }
   }
   
-  public List<QQAlbumInfo> getDefaultAlbums()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    List localList = super.getDefaultAlbums();
-    if ((localList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo != null)) {
-      localList.add(0, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    if ((!paramBoolean) || (!bdin.d(this.a.getContext())))
+    {
+      this.a.i();
+      this.a.g();
     }
-    return localList;
   }
   
-  public void setData()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.setData();
-    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
+    if (!paramBoolean1)
+    {
+      this.a.i();
+      this.a.g();
+      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Aryv instanceof aseb))) && (this.a.b == 0)) {
+        this.a.a(2131719233, 3000L);
+      }
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e());
+    this.a.a(2131719785, 0L, false);
+  }
+  
+  protected void d(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      this.a.i();
+      ContactListView.a(this.a, true);
+      if ((paramInt & 0x1) == 0) {
+        this.a.g();
+      }
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Int == 6) {
+        this.a.f();
+      }
+      return;
+      this.a.g();
+    }
   }
 }
 

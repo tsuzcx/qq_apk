@@ -1,22 +1,23 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
 public class bhuu
-  extends bhwt
+  implements ContextMenu.ContextMenuInfo
 {
   public int a;
+  public long a;
+  public View a;
   
-  public void a(SpannableString paramSpannableString)
+  public bhuu(View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
-    }
-    paramSpannableString.setSpan(new bhut(this.a), this.b, this.c, 17);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhuu
  * JD-Core Version:    0.7.0.1
  */

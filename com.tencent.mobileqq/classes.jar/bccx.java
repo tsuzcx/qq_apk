@@ -1,15 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class bccx
-  extends amab
+  implements View.OnClickListener
 {
-  bccx(bccu parambccu) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
+  protected bccx(bccv parambccv) {}
+  
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
+    if (this.jdField_a_of_type_Bccv.a != null) {
+      this.jdField_a_of_type_Bccv.a.a(paramView, this.jdField_a_of_type_Int);
+    }
   }
 }
 

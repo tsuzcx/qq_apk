@@ -1,20 +1,34 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class ayxo
-  extends ContentObserver
+  extends ayxs
 {
-  ayxo(ayxn paramayxn, Handler paramHandler)
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  
+  public ayxo() {}
+  
+  public ayxo(ViewGroup paramViewGroup)
   {
-    super(paramHandler);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562597, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370742);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369091));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367921));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365129));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131369606));
   }
   
-  public void onChange(boolean paramBoolean)
+  public LinearLayout a()
   {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
+    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
   }
 }
 

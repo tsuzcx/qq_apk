@@ -1,40 +1,21 @@
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.content.Intent;
+import android.net.Uri;
 
-class bdgo
-  implements View.OnClickListener
+final class bdgo
+  implements DialogInterface.OnClickListener
 {
-  bdgo(bdgl parambdgl, DialogInterface.OnClickListener paramOnClickListener) {}
+  bdgo(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdgl.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdgl, 1);
-      if (this.jdField_a_of_type_Bdgl.c)
-      {
-        if (!this.jdField_a_of_type_Bdgl.jdField_a_of_type_Boolean) {
-          break label93;
-        }
-        this.jdField_a_of_type_Bdgl.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdgl.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bdgl.c = false;
-      label93:
-      try
-      {
-        if (this.jdField_a_of_type_Bdgl.isShowing()) {
-          this.jdField_a_of_type_Bdgl.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      this.jdField_a_of_type_Bdgl.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdgl.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }

@@ -23,7 +23,7 @@ public class nkr
       QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean));
     }
     if (!paramBoolean) {
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
     for (;;)
     {
@@ -42,7 +42,7 @@ public class nkr
         localArrayList.add("find.mp.qq.com");
         localArrayList.add("post.mp.qq.com");
         localArrayList.add("article.mp.qq.com");
-        atda.a("unfollow", (JSONObject)localObject, localArrayList, null);
+        athj.a("unfollow", (JSONObject)localObject, localArrayList, null);
         if (!paramBoolean) {
           break label350;
         }
@@ -65,7 +65,7 @@ public class nkr
             if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
               continue;
             }
-            ((bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            ((bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
           }
         }
         catch (Exception paramBundle) {}
@@ -76,11 +76,11 @@ public class nkr
         {
           localJSONException.printStackTrace();
         }
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
       continue;
       label350:
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
   }
 }

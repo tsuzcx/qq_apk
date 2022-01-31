@@ -1,20 +1,8 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
 
-public class atao
-  implements BusinessObserver
+public abstract interface atao
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

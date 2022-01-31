@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aemn;
-import ajaf;
+import aerc;
+import ajeu;
 import com.tencent.qphone.base.util.QLog;
 
 class CustomizeStrategyFactory$3
@@ -13,7 +13,7 @@ class CustomizeStrategyFactory$3
   {
     try
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = ajaf.a(this.a.jdField_a_of_type_Aemn.a);
+      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = ajeu.a(this.a.jdField_a_of_type_Aerc.a);
       this.a.c = true;
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");

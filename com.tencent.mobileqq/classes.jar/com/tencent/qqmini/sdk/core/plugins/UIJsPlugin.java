@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgid;
-import bgkd;
-import bgkk;
+import bglv;
+import bgmk;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,27 +18,27 @@ public class UIJsPlugin
   public static final String EVENT_UPDATE_TEXTAREA = "updateTextArea";
   private static final String TAG = "UIJsPlugin";
   
-  public String doInterceptJsEvent(bgkd parambgkd)
+  public String doInterceptJsEvent(bgok parambgok)
   {
-    return (String)this.mMiniAppContext.a(bgid.a(parambgkd, 2));
+    return (String)this.mMiniAppContext.a(bgmk.a(parambgok, 2));
   }
   
-  public void showModal(bgkd parambgkd)
+  public void showModal(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str1 = localJSONObject.optString("title", "");
       String str2 = localJSONObject.optString("content", "");
       boolean bool = localJSONObject.optBoolean("showCancel", true);
       String str3 = localJSONObject.optString("cancelText", "取消");
       String str4 = localJSONObject.optString("cancelColor", "#000000");
-      bgkk.a(new UIJsPlugin.1(this, str1, str2, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), parambgkd, bool, str3, str4));
+      bgor.a(new UIJsPlugin.1(this, str1, str2, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), parambgok, bool, str3, str4));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("UIJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("UIJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
 }

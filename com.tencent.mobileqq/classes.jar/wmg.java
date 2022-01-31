@@ -1,212 +1,77 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.ConcurrentModificationException;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
 
-public abstract class wmg<T extends VideoListFeedItem>
-  extends wjz<T>
+class wmg
+  extends SimpleJob<Object>
 {
-  public static wmi a;
-  private boolean a;
-  protected HashSet<String> c;
-  protected List<StoryVideoItem> c;
-  public boolean c;
-  public List<xjw> d = new ArrayList();
-  
-  static
+  wmg(wmf paramwmf, String paramString)
   {
-    jdField_a_of_type_Wmi = new wmi(null);
+    super(paramString);
   }
   
-  public wmg(@NonNull T paramT)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super(paramT);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_c_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  private boolean a(String paramString)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    paramString = xod.a(paramString);
-    return (localCalendar.get(1) + 0 <= paramString[0]) && (localCalendar.get(2) + 1 <= paramString[1]) && (localCalendar.get(5) + 0 <= paramString[2]);
-  }
-  
-  public T a()
-  {
-    return (VideoListFeedItem)super.a();
-  }
-  
-  public List<StoryVideoItem> a()
-  {
-    return Collections.unmodifiableList(this.jdField_c_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    c(((uro)urr.a(5)).a(((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, 0, a(), true), true);
-    ((wkv)urr.a(12)).a(0, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoSeq, a(), ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoNextCookie, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mIsVideoEnd, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoPullType, true);
-  }
-  
-  public void a(int paramInt, StoryVideoItem paramStoryVideoItem)
-  {
-    this.jdField_c_of_type_JavaUtilList.remove(paramInt);
-    this.jdField_c_of_type_JavaUtilList.add(paramInt, paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
-    paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList.iterator();
-    paramInt = 0;
-    if (paramStoryVideoItem.hasNext())
+    long l = System.currentTimeMillis();
+    paramJobContext = (uvn)uwa.a(19);
+    paramVarArgs = paramJobContext.a(vcg.a(this.a.jdField_b_of_type_JavaLangString));
+    boolean bool;
+    vck localvck;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
     {
-      if (!StoryVideoItem.isFakeVid(((StoryVideoItem)paramStoryVideoItem.next()).mVid)) {
-        break label131;
+      bool = true;
+      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
+      localvck = new vck(this.a.c, new ErrorMessage());
+      localvck.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
+      localvck.jdField_b_of_type_Boolean = true;
+      localvck.c = true;
+      localvck.e = true;
+      localvck.jdField_a_of_type_Boolean = false;
+      localvck.jdField_a_of_type_JavaUtilList = localList;
+      if (localList.size() <= 0) {
+        break label246;
       }
-      paramInt += 1;
+      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
+      label156:
+      if (paramJobContext != null) {
+        break label251;
+      }
+      localvck.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Boolean = true;
+      label174:
+      umc.a().dispatch(localvck);
+      this.a.a(localList, false);
+      if (!localvck.jdField_a_of_type_Boolean) {
+        break label294;
+      }
     }
-    label131:
-    for (;;)
+    label294:
+    for (paramJobContext = "true";; paramJobContext = "false")
     {
+      wxe.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
+      this.a.d();
+      return null;
+      bool = false;
       break;
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false)
+      label246:
+      paramJobContext = null;
+      break label156;
+      label251:
+      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
       {
-        this.jdField_a_of_type_Boolean = bool;
-        wsv.d("Q.qqstory.home.data.VideoListHomeFeed", "feed id %s, fake video count:%d", new Object[] { ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, Integer.valueOf(paramInt) });
-        xmh.a();
-        return;
+        localvck.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_b_of_type_Boolean = true;
+        break label174;
       }
+      localvck.jdField_a_of_type_Boolean = false;
+      break label174;
     }
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.remove(paramStoryVideoItem.mVid);
-    xmh.a();
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    boolean bool1 = true;
-    if (this.jdField_c_of_type_JavaUtilHashSet.contains(paramStoryVideoItem.mVid)) {
-      this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
-    }
-    this.jdField_c_of_type_JavaUtilList.add(0, paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool2;
-    if (paramBoolean)
-    {
-      bool2 = a(a().date);
-      wsv.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
-      paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList;
-      if (bool2) {
-        break label129;
-      }
-    }
-    label129:
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      Collections.sort(paramStoryVideoItem, new wmj(paramBoolean));
-      wsv.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        boolean bool = ((StoryVideoItem)localIterator.next()).isUploadSuc();
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
-    }
-    catch (ConcurrentModificationException localConcurrentModificationException)
-    {
-      wsv.d("Q.qqstory.home.data.VideoListHomeFeed", "video item size:%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    super.b();
-    c(((uro)urr.a(5)).a(((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId), true);
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (StoryVideoItem.isFakeVid(((StoryVideoItem)localIterator.next()).mVid)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void c(List<StoryVideoItem> paramList, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_c_of_type_JavaUtilList.clear();
-      this.jdField_c_of_type_JavaUtilHashSet.clear();
-    }
-    paramList = paramList.iterator();
-    if (paramList.hasNext())
-    {
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
-      if (this.jdField_c_of_type_JavaUtilHashSet.contains(localStoryVideoItem.mVid)) {
-        this.jdField_c_of_type_JavaUtilList.remove(localStoryVideoItem);
-      }
-      for (;;)
-      {
-        this.jdField_c_of_type_JavaUtilList.add(localStoryVideoItem);
-        if (!StoryVideoItem.isFakeVid(localStoryVideoItem.mVid)) {
-          break;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        break;
-        this.jdField_c_of_type_JavaUtilHashSet.add(localStoryVideoItem.mVid);
-      }
-    }
-    paramBoolean = a(a().date);
-    if ((!(a() instanceof TagFeedItem)) && (a().assignType() != 7))
-    {
-      paramList = this.jdField_c_of_type_JavaUtilList;
-      if (paramBoolean) {
-        break label173;
-      }
-    }
-    label173:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      Collections.sort(paramList, new wmj(paramBoolean));
-      return;
-    }
-  }
-  
-  public List<StoryVideoItem> d()
-  {
-    return Collections.unmodifiableList(this.jdField_c_of_type_JavaUtilList);
-  }
-  
-  public String toString()
-  {
-    return "hasFakeVideo=" + this.jdField_a_of_type_Boolean + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem + String.format("video=%d,like=%d,comment=%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(this.b.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
   }
 }
 

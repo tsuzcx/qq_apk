@@ -1,6 +1,9 @@
+import android.annotation.SuppressLint;
+
 class agxp
 {
-  private static agxm a = new agxm(null);
+  @SuppressLint({"StaticFieldLeak"})
+  private static agxl a = new agxl(null);
 }
 
 

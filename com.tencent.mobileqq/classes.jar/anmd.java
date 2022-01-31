@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
-class anmd
-  implements DialogInterface.OnDismissListener
+public class anmd
+  implements View.OnClickListener
 {
-  anmd(anmb paramanmb) {}
+  anmd(anma paramanma) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    anmb.a(this.a, false);
-    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
+    if ((anma.a(this.a) == null) || (anma.a(this.a).size() <= 0) || (anma.a(this.a) >= anma.a(this.a).size()) || (anma.a(this.a).get(anma.a(this.a)) == null)) {
+      return;
+    }
+    paramView = ((afih)anma.a(this.a).get(anma.a(this.a))).getAppName();
+    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
   }
 }
 

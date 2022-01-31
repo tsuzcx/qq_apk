@@ -1,122 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 public class uyc
-  implements uni<vas, vcq>
 {
-  public void a(String paramString)
+  public final String a;
+  public final String b;
+  public final String c;
+  
+  public uyc(String paramString1, String paramString2, String paramString3)
   {
-    paramString = new vas(paramString);
-    ung.a().a(paramString, this);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void a(@NonNull vas paramvas, @Nullable vcq paramvcq, @NonNull ErrorMessage paramErrorMessage)
+  public boolean equals(Object paramObject)
   {
-    wsv.c("Q.qqstory.player:DeleteStoryVideoHandler", "delete story video return:" + paramErrorMessage);
-    paramvcq = (uro)urr.a(5);
-    uqw localuqw = new uqw(paramErrorMessage, paramvas.a, false);
-    StoryVideoItem localStoryVideoItem = paramvcq.a(paramvas.a);
-    if (localStoryVideoItem != null)
-    {
-      localuqw.b = localStoryVideoItem.mOwnerUid;
-      localuqw.a = localStoryVideoItem.mVideoIndex;
-      if (localuqw.a == 0L) {
-        localuqw.a = localStoryVideoItem.mCreateTime;
-      }
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    if (paramErrorMessage.isFail())
+    do
     {
-      uht.a().dispatch(localuqw);
-      return;
-    }
-    b(paramvas.a);
-    paramvcq.a(paramvas.a);
-    uht.a().dispatch(localuqw);
-  }
-  
-  protected void b(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    uye localuye = new uye(0);
-    ure localure = (ure)urr.a(19);
-    Object localObject = ((uro)urr.a(5)).a(paramString);
-    if (localObject == null) {
-      return;
-    }
-    localObject = localure.a(((StoryVideoItem)localObject).mOwnerUid, null, 2147483647L);
-    if ((localObject == null) || (((List)localObject).size() == 0))
-    {
-      uht.a().dispatch(localuye);
-      return;
-    }
-    Collections.sort((List)localObject, new wit());
-    Iterator localIterator = ((List)localObject).iterator();
-    localObject = null;
-    VideoCollectionItem localVideoCollectionItem;
-    for (;;)
-    {
-      if (localIterator.hasNext())
+      do
       {
-        localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
-        if (localVideoCollectionItem.collectionType == 0) {
-          localObject = localVideoCollectionItem;
-        } else {
-          if (!localVideoCollectionItem.videoVidList.contains(paramString)) {
-            break;
-          }
-        }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        uht.a().dispatch(localuye);
-        return;
-      }
-      if (localObject != null)
-      {
-        ((VideoCollectionItem)localObject).collectionCount -= 1;
-        if (((VideoCollectionItem)localObject).collectionCount <= 0)
+        do
         {
-          localure.a((VideoCollectionItem)localObject);
-          localuye.a.add(new uyd(1, (VideoCollectionItem)localObject));
-        }
-      }
-      else
-      {
-        localVideoCollectionItem.collectionCount -= 1;
-        localVideoCollectionItem.videoVidList.remove(paramString);
-        localVideoCollectionItem.collectionVideoUIItemList.remove(new wiu(paramString, null));
-        if (localVideoCollectionItem.collectionCount > 0) {
-          break label373;
-        }
-        localure.a(localVideoCollectionItem);
-        localuye.a.add(new uyd(1, localVideoCollectionItem));
-      }
-      for (;;)
-      {
-        wsv.d("Q.qqstory.player:DeleteStoryVideoHandler", String.format("Spend time = %d , %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localuye }));
-        uht.a().dispatch(localuye);
-        return;
-        localure.a((VideoCollectionItem)localObject);
-        localuye.a.add(new uyd(2, (VideoCollectionItem)localObject));
-        break;
-        label373:
-        localure.a(localVideoCollectionItem);
-        localuye.a.add(new uyd(2, localVideoCollectionItem));
-      }
-      break;
-      localVideoCollectionItem = null;
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (uyc)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
     }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
+      }
+    }
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 

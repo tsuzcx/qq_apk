@@ -1,42 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-
-class agmc
-  implements View.OnTouchListener
+public abstract interface agmc
 {
-  agmc(agmb paramagmb) {}
+  public static final String a = alud.a(2131706118);
+  public static final String b = alud.a(2131706115);
+  public static final String c = alud.a(2131706116);
+  public static final String d = alud.a(2131706117);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Beih.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.l.setText(alpo.a(2131705472));
-        this.a.l.setPressed(true);
-        this.a.jdField_a_of_type_Autg.b();
-        paramView.a(true);
-      }
-    }
-    do
-    {
-      return true;
-      this.a.t(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.l.setText(alpo.a(2131705468));
-      this.a.l.setPressed(false);
-      this.a.jdField_a_of_type_Autg.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

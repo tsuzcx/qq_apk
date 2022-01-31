@@ -1,29 +1,18 @@
-import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-public class blss
-  extends blsh
+public final class blss
+  implements Parcelable.Creator<LockedCategory>
 {
-  private float a;
-  private float b;
-  
-  public blss(float paramFloat1, float paramFloat2)
+  public LockedCategory a(Parcel paramParcel)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    return new LockedCategory(paramParcel);
   }
   
-  void a(int paramInt, blsi paramblsi)
+  public LockedCategory[] a(int paramInt)
   {
-    float f3 = paramblsi.a.right;
-    float f4 = paramblsi.a.left;
-    float f1 = paramblsi.a.bottom;
-    float f2 = paramblsi.a.top;
-    f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
-    f1 = Math.abs(f1 - f2 - this.b) / 2.0F;
-    RectF localRectF = paramblsi.a;
-    localRectF.left += f3;
-    paramblsi = paramblsi.a;
-    paramblsi.right = (f3 + paramblsi.right);
+    return new LockedCategory[paramInt];
   }
 }
 

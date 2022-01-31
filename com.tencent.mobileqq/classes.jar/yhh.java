@@ -1,39 +1,14 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
 
 class yhh
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements View.OnClickListener
 {
-  yhh(yhg paramyhg, Rect paramRect) {}
+  yhh(yhg paramyhg, int paramInt) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    int i;
-    int j;
-    do
-    {
-      while (!paramMotionEvent.hasNext())
-      {
-        do
-        {
-          return true;
-          i = (int)(paramMotionEvent.getX() + 0.5F);
-          j = (int)(paramMotionEvent.getY() + 0.5F);
-        } while (yhg.a(this.jdField_a_of_type_Yhg) == null);
-        paramMotionEvent = yhg.a(this.jdField_a_of_type_Yhg).iterator();
-      }
-      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
-    return false;
+    this.jdField_a_of_type_Yhg.a.a(this.jdField_a_of_type_Int, yhg.a(this.jdField_a_of_type_Yhg));
   }
 }
 

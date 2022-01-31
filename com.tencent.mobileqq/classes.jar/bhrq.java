@@ -1,12 +1,25 @@
-public abstract interface bhrq
+import android.graphics.Point;
+import java.util.ArrayList;
+
+public final class bhrq
 {
-  public abstract void F();
+  ArrayList<Point> a;
   
-  public abstract void G();
+  public int a()
+  {
+    return this.a.size();
+  }
   
-  public abstract void H();
-  
-  public abstract void a(float paramFloat);
+  public int a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
+      return 0;
+    }
+    if (paramInt2 == 0) {
+      return ((Point)this.a.get(paramInt1)).x;
+    }
+    return ((Point)this.a.get(paramInt1)).y;
+  }
 }
 
 

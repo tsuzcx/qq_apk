@@ -1,45 +1,29 @@
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 class txl
-  implements RecyclerView.OnItemTouchListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  txl(txj paramtxj, int paramInt) {}
   
-  txl(txk paramtxk) {}
-  
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public boolean onPreDraw()
   {
-    if (txk.a(this.jdField_a_of_type_Txk)) {}
-    int j;
-    int i;
-    do
+    txj.a(this.jdField_a_of_type_Txj).getViewTreeObserver().removeOnPreDrawListener(this);
+    txj.a(this.jdField_a_of_type_Txj).scrollToPosition(this.jdField_a_of_type_Int);
+    if ((txj.a(this.jdField_a_of_type_Txj) != null) && (txj.a(this.jdField_a_of_type_Txj) != null))
     {
-      return false;
-      switch (paramMotionEvent.getAction())
-      {
-      case 1: 
-      default: 
-        return false;
-      case 0: 
-        this.b = ((int)(paramMotionEvent.getX() + 0.5F));
-        this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
-        return false;
-      }
-      j = (int)(paramMotionEvent.getX() + 0.5F);
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      j -= this.b;
-      i = (int)((i - this.jdField_a_of_type_Int) * 0.6F);
-    } while ((Math.abs(j) <= txk.a(this.jdField_a_of_type_Txk)) || (Math.abs(j) < Math.abs(i)) || (txk.a(this.jdField_a_of_type_Txk) == null));
-    txk.a(this.jdField_a_of_type_Txk).requestDisallowInterceptTouchEvent(true);
-    return false;
+      txj.a(this.jdField_a_of_type_Txj).setCurPicPos(this.jdField_a_of_type_Int, txj.a(this.jdField_a_of_type_Txj).images.size());
+      QCircleContentOperationView.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    }
+    QLog.d("QCircleContentHorizontalAdapter", 1, "adjustEnterImageShowPos:" + this.jdField_a_of_type_Int);
+    txj.a(this.jdField_a_of_type_Txj, false);
+    return true;
   }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

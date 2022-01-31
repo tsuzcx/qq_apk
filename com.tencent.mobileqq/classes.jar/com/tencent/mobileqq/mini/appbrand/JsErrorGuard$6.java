@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import alpo;
+import alud;
 
 class JsErrorGuard$6
   implements Runnable
@@ -10,7 +10,7 @@ class JsErrorGuard$6
   public void run()
   {
     if ((JsErrorGuard.access$1300(this.this$0) != null) && (JsErrorGuard.access$1300(this.this$0).isShowing())) {
-      JsErrorGuard.access$1300(this.this$0).setTitle(alpo.a(2131706265) + this.val$progress + "%");
+      JsErrorGuard.access$1300(this.this$0).setTitle(alud.a(2131706277) + this.val$progress + "%");
     }
   }
 }

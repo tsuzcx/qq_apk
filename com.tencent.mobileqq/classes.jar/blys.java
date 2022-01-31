@@ -1,35 +1,44 @@
-import android.support.annotation.RestrictTo;
+import android.text.Spanned;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class blys
-  implements blyw
+class blys
+  extends bmsw
 {
-  private final blyv[] a;
-  
-  blys(blyv[] paramArrayOfblyv)
+  blys(blyr paramblyr, int paramInt)
   {
-    this.a = paramArrayOfblyv;
+    super(paramInt);
   }
   
-  public void a(blzb paramblzb, blyy paramblyy)
+  public int a(CharSequence paramCharSequence)
+  {
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     int j = 0;
-    blzd localblzd = new blzd();
-    blyv[] arrayOfblyv = this.a;
-    int k = arrayOfblyv.length;
-    int i = 0;
-    while (i < k)
+    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
+    int i;
+    if (paramInt2 - paramInt1 != str.length())
     {
-      arrayOfblyv[i].a(paramblzb, paramblyy, false, localblzd);
-      i += 1;
+      i = 1;
+      if (i == 0) {
+        break label92;
+      }
+      paramInt2 = str.length();
+      paramInt1 = j;
+      paramCharSequence = str;
     }
-    arrayOfblyv = this.a;
-    k = arrayOfblyv.length;
-    i = j;
-    while (i < k)
+    label92:
+    for (;;)
     {
-      arrayOfblyv[i].a(paramblzb, paramblyy, true, localblzd);
-      i += 1;
+      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      if ((paramSpanned == null) && (i != 0))
+      {
+        return paramCharSequence;
+        i = 0;
+        break;
+      }
+      return paramSpanned;
     }
   }
 }

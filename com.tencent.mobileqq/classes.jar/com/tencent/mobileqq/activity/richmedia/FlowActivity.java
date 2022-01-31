@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajll;
+import ajqa;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected ajll a()
+  protected ajqa a()
   {
     return null;
   }
@@ -69,13 +69,13 @@ public abstract class FlowActivity
     }
     a(paramBundle);
     setContentView(2131558444);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366598));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366604));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)$(2131366578));
+      paramBundle.a((ViewGroup)$(2131366584));
     }
   }
   

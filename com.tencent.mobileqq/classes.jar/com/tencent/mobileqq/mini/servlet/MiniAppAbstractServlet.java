@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.text.TextUtils;
-import aokd;
-import bdku;
+import aoom;
+import bdpd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -137,7 +137,7 @@ public class MiniAppAbstractServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -179,7 +179,7 @@ public class MiniAppAbstractServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
-    paramPacket.setTimeout(aokd.a("MiniAppMsfTimeoutValue", 10000));
+    paramPacket.setTimeout(aoom.a("MiniAppMsfTimeoutValue", 10000));
     if (paramPacket != null) {}
     for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {

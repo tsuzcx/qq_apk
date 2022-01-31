@@ -19,7 +19,7 @@ import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.ModuleInfo;
 import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.TextCardInfo;
 
 public class oxe
-  implements alkr
+  implements alpg
 {
   public void a(float paramFloat, int paramInt) {}
   
@@ -107,7 +107,7 @@ public class oxe
   
   public void a_(List<sut> paramList) {}
   
-  public void ax_() {}
+  public void au_() {}
   
   public void b(int paramInt) {}
   

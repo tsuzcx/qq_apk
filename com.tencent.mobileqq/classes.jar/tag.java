@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
 
 public class tag
-  implements azjq
+  implements aznz
 {
   public tag(ShareImageUtils.2 param2) {}
   

@@ -1,17 +1,20 @@
 package com.tencent.tavcut.session;
 
 import android.util.SparseArray;
-import com.tencent.weseevideo.editor.sticker.StickerController;
-import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.tavcut.bean.CropConfig;
+import com.tencent.weseevideo.composition.VideoRenderChainManager;
+import com.tencent.weseevideo.model.MediaModel;
+import java.util.List;
 
 class TAVCutImageSession$14
   implements Runnable
 {
-  TAVCutImageSession$14(TAVCutImageSession paramTAVCutImageSession, int paramInt, StickerModel paramStickerModel) {}
+  TAVCutImageSession$14(TAVCutImageSession paramTAVCutImageSession, int paramInt, CropConfig paramCropConfig) {}
   
   public void run()
   {
-    this.this$0.addSticker((StickerController)this.this$0.stickerControllers.get(this.val$index), this.val$stickerModel);
+    this.this$0.setCrop((MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$cropConfig);
+    this.this$0.render(this.val$index);
   }
 }
 

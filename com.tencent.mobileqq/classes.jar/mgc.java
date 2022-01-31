@@ -18,7 +18,7 @@ class mgc
     if (mgb.a(this.a) == null) {
       return;
     }
-    azmj.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
     if (QLog.isColorLevel()) {
       QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(paramView.jdField_a_of_type_Long));
     }

@@ -1,14 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import io.flutter.plugin.common.MethodChannel.Result;
 
 class arxe
-  implements View.OnClickListener
+  extends arxf
 {
   arxe(arxd paramarxd) {}
   
-  public void onClick(View paramView)
+  protected void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
-    this.a.b();
+    arxd.a(this.a, paramRequestPacket, paramResult);
   }
 }
 

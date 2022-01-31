@@ -1,23 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class atpf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class atpf
+  implements atmu
 {
-  public atpf(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  atpf(atpc paramatpc, int paramInt, String paramString) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
-      return;
-    }
-    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+    ListenTogetherManager.a(this.jdField_a_of_type_Atpc.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Atpc.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
+    azqs.b(null, "dc00899", this.jdField_a_of_type_Atpc.jdField_a_of_type_Atph.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Atpc.jdField_a_of_type_Atph.b, "", this.jdField_a_of_type_Atpc.jdField_a_of_type_Atph.jdField_a_of_type_Int + "", "");
   }
+  
+  public void b() {}
 }
 
 

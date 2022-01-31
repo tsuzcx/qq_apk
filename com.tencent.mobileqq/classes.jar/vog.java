@@ -1,68 +1,35 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-public class vog
-  extends AbsVideoInfoWidget
+final class vog
+  implements vmd
 {
-  private voi a = new voi(this);
-  private boolean e;
+  vog(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public vog(ViewGroup paramViewGroup)
+  public void a(int paramInt)
   {
-    super(paramViewGroup);
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
+    {
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label58;
+      }
+    }
+    label58:
+    for (paramInt = i;; paramInt = 2)
+    {
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      vod.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
   }
-  
-  public String a()
-  {
-    return "LoadingMoreWidget";
-  }
-  
-  public voi a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new voh(this), "");
-  }
-  
-  public void a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return this.e;
-  }
-  
-  public int b()
-  {
-    return 2131561602;
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    i();
-    wsv.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
-  }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    wsv.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

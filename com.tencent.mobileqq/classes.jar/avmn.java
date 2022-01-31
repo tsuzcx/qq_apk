@@ -1,31 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class avmn
-  implements URLDrawable.URLDrawableListener
+class avmn
+  implements View.OnClickListener
 {
-  public avmn(NearbyMomentFragment paramNearbyMomentFragment) {}
+  avmn(avmf paramavmf) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
-    {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-    }
+    paramView = bhuf.a(this.a.a);
+    paramView.a(2131718447, 1);
+    paramView.c(2131690648);
+    paramView.a(new avmo(this, paramView));
+    paramView.show();
   }
 }
 

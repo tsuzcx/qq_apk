@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import ahzs;
-import aicu;
+import aieh;
+import aihj;
 import android.os.Message;
-import bhoe;
+import bhsl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ public class TroopAllMessageResultAdapter$3
   public void run()
   {
     int j = 0;
-    Object localObject = ahzs.h(this.this$0).a().a(ahzs.f(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = aieh.h(this.this$0).a().a(aieh.f(this.this$0), this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -29,9 +29,9 @@ public class TroopAllMessageResultAdapter$3
       while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (ahzs.c(this.this$0, localMessageRecord))
+        if (aieh.c(this.this$0, localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new aicu(ahzs.i(this.this$0), localMessageRecord));
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(aieh.i(this.this$0), localMessageRecord));
           this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
@@ -39,16 +39,16 @@ public class TroopAllMessageResultAdapter$3
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = ahzs.j(this.this$0).a().a(ahzs.g(this.this$0).jdField_a_of_type_JavaLangString, ahzs.h(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = aieh.j(this.this$0).a().a(aieh.g(this.this$0).jdField_a_of_type_JavaLangString, aieh.h(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
         while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (ahzs.d(this.this$0, localMessageRecord))
+          if (aieh.d(this.this$0, localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new aicu(ahzs.k(this.this$0), localMessageRecord));
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(aieh.k(this.this$0), localMessageRecord));
             this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
@@ -61,7 +61,7 @@ public class TroopAllMessageResultAdapter$3
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ahzs.d(this.this$0).obtainMessage(8, localObject).sendToTarget();
+    aieh.d(this.this$0).obtainMessage(8, localObject).sendToTarget();
   }
 }
 

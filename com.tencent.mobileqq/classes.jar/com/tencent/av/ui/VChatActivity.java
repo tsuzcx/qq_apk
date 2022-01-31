@@ -4,7 +4,7 @@ import SharpSvrPack.SharpVideoMsg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import azmz;
+import azri;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -103,7 +103,7 @@ public class VChatActivity
         HashMap localHashMap = new HashMap();
         localHashMap.put("avuin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
         localHashMap.put("msfuin", String.valueOf(paramString));
-        azmz.a(super.getApplicationContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, localHashMap, "", true);
+        azri.a(super.getApplicationContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, localHashMap, "", true);
       } while (paramString.equals("0"));
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(paramString);
     }

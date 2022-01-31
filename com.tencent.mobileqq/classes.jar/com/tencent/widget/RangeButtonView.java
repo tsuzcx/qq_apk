@@ -16,13 +16,13 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhwb;
-import bhwc;
-import bhwd;
-import bhwe;
-import bhwf;
-import bhwg;
-import bhwh;
+import biai;
+import biaj;
+import biak;
+import bial;
+import biam;
+import bian;
+import biao;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import java.util.ArrayList;
@@ -35,13 +35,13 @@ public class RangeButtonView
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private bhwb jdField_a_of_type_Bhwb;
-  public bhwc a;
-  private bhwd jdField_a_of_type_Bhwd;
-  private bhwe jdField_a_of_type_Bhwe;
-  private bhwg jdField_a_of_type_Bhwg;
-  private bhwh jdField_a_of_type_Bhwh;
-  private List<bhwf> jdField_a_of_type_JavaUtilList;
+  private biai jdField_a_of_type_Biai;
+  public biaj a;
+  private biak jdField_a_of_type_Biak;
+  private bial jdField_a_of_type_Bial;
+  private bian jdField_a_of_type_Bian;
+  private biao jdField_a_of_type_Biao;
+  private List<biam> jdField_a_of_type_JavaUtilList;
   private List<String> b;
   
   public RangeButtonView(Context paramContext)
@@ -57,25 +57,25 @@ public class RangeButtonView
   public RangeButtonView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Bhwc = new bhwc(this);
+    this.jdField_a_of_type_Biaj = new biaj(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RangeButtonView, 0, 0);
-    this.jdField_a_of_type_Bhwc.jdField_a_of_type_Float = paramContext.getDimension(0, a(26.0F));
-    this.jdField_a_of_type_Bhwc.jdField_b_of_type_Float = paramContext.getDimension(1, a(26.0F));
-    this.jdField_a_of_type_Bhwc.f = paramContext.getDimension(8, a(8.0F));
-    this.jdField_a_of_type_Bhwc.jdField_a_of_type_Int = paramContext.getColor(7, 17170446);
-    this.jdField_a_of_type_Bhwc.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
-    this.jdField_a_of_type_Bhwc.jdField_b_of_type_Int = paramContext.getColor(2, 17170446);
-    this.jdField_a_of_type_Bhwc.jdField_d_of_type_Float = paramContext.getDimension(3, a(8.0F));
-    this.jdField_a_of_type_Bhwc.e = paramContext.getDimension(5, a(1.0F));
-    this.jdField_a_of_type_Bhwc.jdField_d_of_type_Int = paramContext.getResourceId(6, 2130844731);
+    this.jdField_a_of_type_Biaj.jdField_a_of_type_Float = paramContext.getDimension(0, a(26.0F));
+    this.jdField_a_of_type_Biaj.jdField_b_of_type_Float = paramContext.getDimension(1, a(26.0F));
+    this.jdField_a_of_type_Biaj.f = paramContext.getDimension(8, a(8.0F));
+    this.jdField_a_of_type_Biaj.jdField_a_of_type_Int = paramContext.getColor(7, 17170446);
+    this.jdField_a_of_type_Biaj.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
+    this.jdField_a_of_type_Biaj.jdField_b_of_type_Int = paramContext.getColor(2, 17170446);
+    this.jdField_a_of_type_Biaj.jdField_d_of_type_Float = paramContext.getDimension(3, a(8.0F));
+    this.jdField_a_of_type_Biaj.e = paramContext.getDimension(5, a(1.0F));
+    this.jdField_a_of_type_Biaj.jdField_d_of_type_Int = paramContext.getResourceId(6, 2130844803);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Bhwc.jdField_d_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Biaj.jdField_d_of_type_Int);
     if (AppSetting.c)
     {
-      this.jdField_a_of_type_Bhwd = new bhwd(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bhwd);
+      this.jdField_a_of_type_Biak = new biak(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Biak);
       ViewCompat.setImportantForAccessibility(this, 1);
     }
   }
@@ -90,7 +90,7 @@ public class RangeButtonView
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       if (localIterator.hasNext())
       {
-        localTextPaint.setTextSize(((bhwf)localIterator.next()).jdField_a_of_type_Float);
+        localTextPaint.setTextSize(((biam)localIterator.next()).jdField_a_of_type_Float);
         Paint.FontMetrics localFontMetrics = localTextPaint.getFontMetrics();
         if (i - Math.abs(localFontMetrics.top) >= 0.0F) {
           break label97;
@@ -121,7 +121,7 @@ public class RangeButtonView
   
   private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_Bhwh.a();
+    ArrayList localArrayList = this.jdField_a_of_type_Biao.a();
     int i = 0;
     while (i < localArrayList.size())
     {
@@ -141,7 +141,7 @@ public class RangeButtonView
         }
         paramInt1 = i;
       } while (!paramBoolean);
-      this.jdField_a_of_type_Bhwe.a(localPoint.x, localPoint.y);
+      this.jdField_a_of_type_Bial.a(localPoint.x, localPoint.y);
       return i;
       i += 1;
     }
@@ -151,8 +151,8 @@ public class RangeButtonView
   private float b()
   {
     float f2 = a();
-    float f3 = this.jdField_a_of_type_Bhwc.jdField_c_of_type_Float;
-    float f4 = this.jdField_a_of_type_Bhwc.jdField_d_of_type_Float;
+    float f3 = this.jdField_a_of_type_Biaj.jdField_c_of_type_Float;
+    float f4 = this.jdField_a_of_type_Biaj.jdField_d_of_type_Float;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
     for (float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();; f1 = 0.0F) {
       return Math.max(f4, f1) + (f3 + f2);
@@ -162,7 +162,7 @@ public class RangeButtonView
   @TargetApi(14)
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.c) && (this.jdField_a_of_type_Bhwd.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.c) && (this.jdField_a_of_type_Biak.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -171,25 +171,25 @@ public class RangeButtonView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bhwg == null)
+    if (this.jdField_a_of_type_Bian == null)
     {
-      this.jdField_a_of_type_Bhwc.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_Bhwh = new bhwh((int)(getPaddingLeft() + this.jdField_a_of_type_Bhwc.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Bhwc.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Bhwc.f + this.jdField_a_of_type_Bhwc.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Bhwc.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Bhwh.a(this.jdField_a_of_type_Bhwc.jdField_d_of_type_Float);
-      Object localObject2 = this.jdField_a_of_type_Bhwh.a();
+      this.jdField_a_of_type_Biaj.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_Biao = new biao((int)(getPaddingLeft() + this.jdField_a_of_type_Biaj.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Biaj.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Biaj.f + this.jdField_a_of_type_Biaj.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Biaj.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Biao.a(this.jdField_a_of_type_Biaj.jdField_d_of_type_Float);
+      Object localObject2 = this.jdField_a_of_type_Biao.a();
       Object localObject1 = new ArrayList(((ArrayList)localObject2).size());
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((ArrayList)localObject1).add(Integer.valueOf(((Point)((Iterator)localObject2).next()).x));
       }
-      this.jdField_a_of_type_Bhwg = new bhwg(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Bhwg.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Bhwc.f + a()));
-      localObject1 = (Point)this.jdField_a_of_type_Bhwh.a().get(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bhwe = new bhwe(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Bian = new bian(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Bian.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Biaj.f + a()));
+      localObject1 = (Point)this.jdField_a_of_type_Biao.a().get(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bial = new bial(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    this.jdField_a_of_type_Bhwg.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_Bhwh.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Bhwc);
-    this.jdField_a_of_type_Bhwe.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bian.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Biao.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Biaj);
+    this.jdField_a_of_type_Bial.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -219,7 +219,7 @@ public class RangeButtonView
       break;
       label76:
       if (k != 1073741824) {
-        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Bhwc.f);
+        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Biaj.f);
       }
     }
   }
@@ -235,13 +235,13 @@ public class RangeButtonView
     do
     {
       return true;
-      if ((this.jdField_a_of_type_Bhwh == null) || (this.jdField_a_of_type_Bhwe == null)) {
+      if ((this.jdField_a_of_type_Biao == null) || (this.jdField_a_of_type_Bial == null)) {
         return false;
       }
-      i = a((int)f1, (int)f2, this.jdField_a_of_type_Bhwh.a() / 2, this.jdField_a_of_type_Bhwe.a() / 2, true);
+      i = a((int)f1, (int)f2, this.jdField_a_of_type_Biao.a() / 2, this.jdField_a_of_type_Bial.a() / 2, true);
     } while ((i == this.jdField_a_of_type_Int) || (i == -1));
-    if (this.jdField_a_of_type_Bhwb != null) {
-      this.jdField_a_of_type_Bhwb.a(this.jdField_a_of_type_Int, i);
+    if (this.jdField_a_of_type_Biai != null) {
+      this.jdField_a_of_type_Biai.a(this.jdField_a_of_type_Int, i);
     }
     this.jdField_a_of_type_Int = i;
     invalidate();
@@ -253,23 +253,23 @@ public class RangeButtonView
     this.b = paramList;
   }
   
-  public void setOnChangerListener(bhwb parambhwb)
+  public void setOnChangerListener(biai parambiai)
   {
-    this.jdField_a_of_type_Bhwb = parambhwb;
+    this.jdField_a_of_type_Biai = parambiai;
   }
   
   public void setThumbPosition(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Bhwh == null) {
+    if (this.jdField_a_of_type_Biao == null) {
       return;
     }
-    Point localPoint = (Point)this.jdField_a_of_type_Bhwh.a().get(paramInt);
-    this.jdField_a_of_type_Bhwe.a(localPoint.x, localPoint.y);
+    Point localPoint = (Point)this.jdField_a_of_type_Biao.a().get(paramInt);
+    this.jdField_a_of_type_Bial.a(localPoint.x, localPoint.y);
     invalidate();
   }
   
-  public void setTitleData(List<bhwf> paramList)
+  public void setTitleData(List<biam> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }

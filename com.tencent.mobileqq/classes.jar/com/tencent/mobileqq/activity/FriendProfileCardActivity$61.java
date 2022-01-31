@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import avod;
-import awmk;
-import azmj;
-import bcyw;
+import avsm;
+import awqt;
+import azqs;
+import bddf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Locale;
 
@@ -14,12 +14,12 @@ class FriendProfileCardActivity$61
   
   public void run()
   {
-    avod localavod;
+    avsm localavsm;
     Object localObject1;
     if (this.this$0.a.a.a == 0)
     {
-      localavod = (avod)this.this$0.app.getManager(160);
-      i = localavod.a();
+      localavsm = (avsm)this.this$0.app.getManager(160);
+      i = localavsm.a();
       localObject1 = null;
     }
     Object localObject2;
@@ -29,11 +29,11 @@ class FriendProfileCardActivity$61
       localObject2 = null;
       if (localObject1 != null)
       {
-        azmj.b(this.this$0.app, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
-        azmj.b(this.this$0.app, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+        azqs.b(this.this$0.app, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        azqs.b(this.this$0.app, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
       }
-      localavod.a(true);
-      if (bcyw.b())
+      localavsm.a(true);
+      if (bddf.b())
       {
         localObject2 = Locale.getDefault().getCountry();
         localObject1 = localObject2;
@@ -50,7 +50,7 @@ class FriendProfileCardActivity$61
     label235:
     for (int i = 1;; i = 2)
     {
-      azmj.b((QQAppInterface)localObject2, "dc00898", "", "", "0X8008CA2", "0X8008CA2", i, 0, "", "", (String)localObject1, "");
+      azqs.b((QQAppInterface)localObject2, "dc00898", "", "", "0X8008CA2", "0X8008CA2", i, 0, "", "", (String)localObject1, "");
       return;
       localObject1 = "0X8007394";
       localObject2 = "0X8007393";

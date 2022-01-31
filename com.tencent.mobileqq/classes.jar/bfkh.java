@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadManager.5.1;
-import com.tencent.open.downloadnew.DownloadManager.5.2;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.applist.QZoneAppListActivity.1.1;
 
 public class bfkh
-  implements ITMAssistantDownloadClientListener
+  extends OnPluginInstallListener.Stub
 {
-  bfkh(bfkb parambfkb) {}
+  public bfkh(QZoneAppListActivity paramQZoneAppListActivity) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
+    this.a.a(paramInt1 / paramInt2 * 100);
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onInstallError(String paramString, int paramInt)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
+    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public void onInstallFinish(String paramString)
   {
-    bfhg.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
+    QZoneAppListActivity.a(this.a);
   }
 }
 

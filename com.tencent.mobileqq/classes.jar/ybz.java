@@ -1,36 +1,50 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerModel.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ybz
-  implements AbsListView.OnScrollListener
+public class ybz
+  implements zac<CertifiedAccountRead.StGetRecommendUserListRsp>
 {
-  boolean jdField_a_of_type_Boolean = false;
+  ybz(yby paramyby) {}
   
-  ybz(ybx paramybx) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!ybx.a(this.jdField_a_of_type_Ybx)) && (!ybx.b(this.jdField_a_of_type_Ybx)))
-    {
-      QLog.i(ybx.a(), 1, "onLastItemVisible");
-      ybx.a(this.jdField_a_of_type_Ybx, ybx.a(this.jdField_a_of_type_Ybx).a(ybx.a(this.jdField_a_of_type_Ybx)));
-      if (ybx.a(this.jdField_a_of_type_Ybx) != null)
+      wxe.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList success");
+      if (paramStGetRecommendUserListRsp != null)
       {
-        ybx.a(this.jdField_a_of_type_Ybx).a(ybx.a(this.jdField_a_of_type_Ybx), true);
-        ybx.a(this.jdField_a_of_type_Ybx, true);
+        paramString = new ArrayList();
+        if (paramStGetRecommendUserListRsp.vecUser.get() != null)
+        {
+          Iterator localIterator = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+          while (localIterator.hasNext()) {
+            paramString.add(new ydn((CertifiedAccountMeta.StUser)localIterator.next()));
+          }
+        }
+        yby.a(this.a, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
+        if (paramStGetRecommendUserListRsp.isFinish.get() != 1) {
+          break label161;
+        }
+      }
+      label161:
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        ThreadManager.getUIHandler().post(new FollowedRecommendBannerModel.1.1(this, paramString, paramBoolean));
+        zaj.a("subscribe_personal_detail_page_request", zaj.a(0L, System.currentTimeMillis() - yby.a(this.a)));
+        return;
       }
     }
+    wxe.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList error");
+    zaj.a("subscribe_personal_detail_page_request", zaj.a(paramLong, System.currentTimeMillis() - yby.a(this.a)));
   }
 }
 

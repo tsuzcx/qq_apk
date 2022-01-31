@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import apgd;
+import apkm;
 
 public class ComboUIManager$1
   implements Runnable
 {
-  public ComboUIManager$1(apgd paramapgd) {}
+  public ComboUIManager$1(apkm paramapkm) {}
   
   public void run()
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import anxw;
-import anyc;
+import aocf;
+import aocl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$23
-  implements anxw
+  implements aocf
 {
   GameActivity$23(GameActivity paramGameActivity) {}
   
@@ -21,7 +21,7 @@ class GameActivity$23
       return null;
     }
     byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(this.this$0.mGameAppConfig.config);
-    return new anyc().a(16842752).a(this.this$0.mGameAppConfig.config.appId).b(this.this$0.mGameAppConfig.config.name).c(this.this$0.mGameAppConfig.config.desc).d(this.this$0.mGameAppConfig.config.iconUrl).a(arrayOfByte).a();
+    return new aocl().a(16842752).a(this.this$0.mGameAppConfig.config.appId).b(this.this$0.mGameAppConfig.config.name).c(this.this$0.mGameAppConfig.config.desc).d(this.this$0.mGameAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
 }
 

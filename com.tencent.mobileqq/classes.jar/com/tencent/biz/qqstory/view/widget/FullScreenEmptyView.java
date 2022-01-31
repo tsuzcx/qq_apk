@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import aekt;
+import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import xod;
+import xsm;
 
 @TargetApi(14)
 public class FullScreenEmptyView
@@ -22,7 +22,7 @@ public class FullScreenEmptyView
   
   public int a()
   {
-    return xod.d(super.getContext()) - aekt.a(55.0F, super.getResources()) - xod.e(super.getContext());
+    return xsm.d(super.getContext()) - aepi.a(55.0F, super.getResources()) - xsm.e(super.getContext());
   }
 }
 

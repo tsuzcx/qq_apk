@@ -1,31 +1,29 @@
-import Wallet.GetPasswordReq;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class aiqr
+class aiqr
+  extends avvd
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
-    {
-      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
-      localGetPasswordReq.MQOS = "Android";
-      ((alwj)paramQQAppInterface.a(42)).a(localGetPasswordReq);
-    }
-  }
+  aiqr(aiqq paramaiqq) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
-      return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
+    {
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      this.a.mPhotoCommonData.jdField_a_of_type_Long = l;
+      paramBundle = this.a.a();
+      if (paramBundle != null)
+      {
+        paramBundle.a(this.a.mPhotoCommonData.jdField_a_of_type_Long);
+        paramBundle.postData();
+      }
     }
-    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
-    localIntent.putExtra("sendUin", paramLong);
-    localIntent.putExtra("tokenId", paramString);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a.mPhotoCommonData.jdField_a_of_type_Boolean = false;
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
   }
 }
 

@@ -67,15 +67,15 @@ public class npq
           if (paramView == null)
           {
             localnpr = new npr(this);
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559441, null);
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559440, null);
             paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
-            localnpr.a = ((URLImageView)paramView.findViewById(2131371900));
+            localnpr.a = ((URLImageView)paramView.findViewById(2131371920));
             paramView.setTag(localnpr);
-            localnpr.a.setTag(new awki(25, Integer.valueOf(paramInt)));
+            localnpr.a.setTag(new awor(25, Integer.valueOf(paramInt)));
             if (!TextUtils.isEmpty(paramViewGroup)) {
               continue;
             }
-            localnpr.a.setImageResource(2130839371);
+            localnpr.a.setImageResource(2130839372);
             return paramView;
           }
         }

@@ -1,8 +1,19 @@
-public abstract interface blvn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.PasterParcelData;
+
+public final class blvn
+  implements Parcelable.Creator<PasterParcelData>
 {
-  public abstract void a();
+  public PasterParcelData a(Parcel paramParcel)
+  {
+    return new PasterParcelData(paramParcel);
+  }
   
-  public abstract void b();
+  public PasterParcelData[] a(int paramInt)
+  {
+    return new PasterParcelData[paramInt];
+  }
 }
 
 

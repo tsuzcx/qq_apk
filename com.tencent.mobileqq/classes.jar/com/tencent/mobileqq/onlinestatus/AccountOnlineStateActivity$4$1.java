@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import avyl;
-import avzg;
+import awcu;
+import awdp;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
 public class AccountOnlineStateActivity$4$1
   implements Runnable
 {
-  public AccountOnlineStateActivity$4$1(avyl paramavyl, boolean paramBoolean, List paramList) {}
+  public AccountOnlineStateActivity$4$1(awcu paramawcu, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Avyl.a) != null) {
-        AccountOnlineStateActivity.a(this.jdField_a_of_type_Avyl.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Awcu.a) != null) {
+        AccountOnlineStateActivity.a(this.jdField_a_of_type_Awcu.a).a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Avyl.a) == null) {
+    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Awcu.a) == null) {
       return;
     }
-    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Avyl.a), 1, 2131690358, 1).a();
+    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Awcu.a), 1, 2131690358, 1).a();
   }
 }
 

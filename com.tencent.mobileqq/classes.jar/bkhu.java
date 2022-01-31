@@ -1,55 +1,57 @@
-public class bkhu
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.ArrayList;
+
+class bkhu
+  implements AdapterView.OnItemClickListener
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  bkhu(bkht parambkht, bkhk parambkhk) {}
   
-  public static int a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a();
-    return a;
-  }
-  
-  private static void a()
-  {
-    String[] arrayOfString;
-    if (c == 0)
+    if (this.jdField_a_of_type_Bkhk != null)
     {
-      arrayOfString = basj.a().split("\\.");
-      if (arrayOfString.length >= 4) {}
+      this.jdField_a_of_type_Bkhk.dismiss();
+      if ((this.jdField_a_of_type_Bkhk.a != null) && (paramInt < this.jdField_a_of_type_Bkhk.a.size()))
+      {
+        paramAdapterView = (bkhq)this.jdField_a_of_type_Bkhk.a.get(paramInt);
+        if (paramAdapterView.a != 1) {
+          break label130;
+        }
+        if ((!TextUtils.isEmpty(paramAdapterView.c)) && (bkhs.a(this.jdField_a_of_type_Bkht.a) != null))
+        {
+          paramView = new Intent(bkhs.a(this.jdField_a_of_type_Bkht.a), QQBrowserActivity.class);
+          paramView.putExtra("url", paramAdapterView.c);
+          bkhs.a(this.jdField_a_of_type_Bkht.a).startActivity(paramView);
+        }
+      }
     }
-    else
+    label130:
+    do
     {
-      return;
-    }
-    try
-    {
-      a = Integer.valueOf(arrayOfString[0]).intValue();
-      b = Integer.valueOf(arrayOfString[1]).intValue();
-      d = Integer.valueOf(arrayOfString[2]).intValue();
-      c = Integer.valueOf(arrayOfString[3]).intValue();
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException) {}
-  }
-  
-  public static int b()
-  {
-    a();
-    return b;
-  }
-  
-  public static int c()
-  {
-    a();
-    return c;
-  }
-  
-  public static int d()
-  {
-    a();
-    return d;
+      do
+      {
+        return;
+      } while (paramAdapterView.a != 2);
+      if (bkhs.a(this.jdField_a_of_type_Bkht.a) != null)
+      {
+        if (!TextUtils.isEmpty(bkhs.a(this.jdField_a_of_type_Bkht.a).f))
+        {
+          paramAdapterView = bkhs.a(this.jdField_a_of_type_Bkht.a).f.replace("__ACT_TYPE__", "2001");
+          this.jdField_a_of_type_Bkht.a.a(paramAdapterView);
+        }
+        if (bkhs.a(this.jdField_a_of_type_Bkht.a) != null) {
+          this.jdField_a_of_type_Bkht.a.a(3, bkhs.a(this.jdField_a_of_type_Bkht.a).a, bkhs.a(this.jdField_a_of_type_Bkht.a) + 1);
+        }
+      }
+    } while (this.jdField_a_of_type_Bkht.a.a == null);
+    this.jdField_a_of_type_Bkht.a.a.a();
   }
 }
 

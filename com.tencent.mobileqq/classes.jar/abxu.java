@@ -1,19 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.app.Activity;
 
 public class abxu
-  implements View.OnTouchListener
+  extends abxe
 {
-  public abxu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public abxu(Activity paramActivity, int paramInt, String paramString)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
-    return false;
+    super(paramActivity, paramInt, paramString);
   }
 }
 

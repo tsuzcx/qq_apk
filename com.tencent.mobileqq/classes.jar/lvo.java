@@ -33,8 +33,8 @@ public class lvo
       }
       this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
       this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
-      this.c = bdcv.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
-      this.d = bdcv.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
+      this.c = bdhe.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
+      this.d = bdhe.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
       this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
       if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
         break label164;
@@ -50,8 +50,8 @@ public class lvo
     while (this.jdField_b_of_type_Int != 1)
     {
       return;
-      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), bdcv.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
-      this.jdField_a_of_type_ArrayOfByte = bdcv.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), bdhe.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
+      this.jdField_a_of_type_ArrayOfByte = bdhe.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
       return;
     }
     this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);

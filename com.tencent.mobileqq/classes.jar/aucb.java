@@ -1,16 +1,19 @@
-public abstract interface aucb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+
+public final class aucb
+  implements Parcelable.Creator<MediaFocusStackItem>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public MediaFocusStackItem a(Parcel paramParcel)
+  {
+    return new MediaFocusStackItem(paramParcel);
+  }
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public MediaFocusStackItem[] a(int paramInt)
+  {
+    return new MediaFocusStackItem[paramInt];
+  }
 }
 
 

@@ -1,26 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 
-final class asoa
-  implements asnq
+class asoa
+  extends bdul
 {
-  public String a()
-  {
-    return asnp.b;
-  }
+  asoa(asnz paramasnz) {}
   
-  public void a(int paramInt)
+  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
-      localObject = ((asnx)((AppRuntime)localObject).getManager(219)).a(paramInt);
-      ((asnw)localObject).b = true;
-      ((asnw)localObject).c = 0;
+    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
+    if (paramObject == null) {
+      return;
     }
+    asnz.a(this.a, (ArrayList)paramObject);
+    asnz.a(this.a).a(asnz.a(this.a));
+    asnz.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -1,62 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.qphone.base.util.QLog;
 
-class vmw
-  extends uhw<vmu, wdq>
+public class vmw
+  extends ulw
 {
-  vmw(vmu paramvmu)
-  {
-    super(paramvmu);
-  }
+  public vmw(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(@NonNull vmu paramvmu, @NonNull wdq paramwdq)
+  public void a(boolean paramBoolean, ulr paramulr)
   {
-    if ((!paramwdq.jdField_a_of_type_JavaLangString.equals(vmu.a(paramvmu))) || (paramwdq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (vmu.a(paramvmu) == null)) {
-      wsv.b("Q.qqstory.player.CommentFloatDialogController", "ignore this comment list event. %s.", paramwdq.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramulr);
     }
-    vnd localvnd;
-    do
+    if (paramBoolean)
     {
-      boolean bool2;
-      boolean bool1;
-      do
-      {
-        return;
-        wsv.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramwdq.toString());
-        bool2 = paramvmu.a();
-        bool1 = true;
-        if (paramwdq.jdField_a_of_type_Int == 0) {
-          bool1 = false;
-        }
-        vmu.a(paramvmu).a(bool1);
-        vmu.a(paramvmu).a(bool1, paramwdq.b);
-        vmu.a(paramvmu).a(bool1, paramwdq.jdField_a_of_type_Boolean);
-        vmu.a(paramvmu).a(paramwdq.jdField_a_of_type_JavaUtilList, paramwdq.c, bool1);
-      } while (bool2 != bool1);
-      localvnd = paramvmu.a();
-    } while (localvnd == null);
-    localvnd.a(vmu.a(paramvmu), paramwdq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wdq.class;
-  }
-  
-  public void b(@NonNull vmu paramvmu, @NonNull wdq paramwdq)
-  {
-    boolean bool2 = paramvmu.a();
-    boolean bool1 = true;
-    if (paramwdq.jdField_a_of_type_Int == 0) {
-      bool1 = false;
-    }
-    if (bool2 == bool1)
-    {
-      paramwdq = paramvmu.a();
-      if (paramwdq != null) {
-        paramwdq.a(vmu.a(paramvmu), false);
+      if (paramulr != null) {
+        this.a.a(paramulr.a);
       }
+      return;
     }
+    this.a.e();
   }
 }
 

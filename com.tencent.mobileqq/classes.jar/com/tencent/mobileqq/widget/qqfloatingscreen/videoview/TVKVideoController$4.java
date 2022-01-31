@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
-import aijm;
-import betz;
-import beuc;
+import aiob;
+import beyi;
+import beyl;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class TVKVideoController$4
   implements Runnable
 {
-  public TVKVideoController$4(betz parambetz) {}
+  public TVKVideoController$4(beyi parambeyi) {}
   
   public void run()
   {
-    if (betz.a(this.this$0) != null)
+    if (beyi.a(this.this$0) != null)
     {
-      long l = betz.a(this.this$0).b();
-      if (betz.a(this.this$0) != null) {
-        betz.a(this.this$0).onVideoProgressUpdate((int)l);
+      long l = beyi.a(this.this$0).b();
+      if (beyi.a(this.this$0) != null) {
+        beyi.a(this.this$0).onVideoProgressUpdate((int)l);
       }
     }
-    betz.a(this.this$0).postDelayed(this.this$0.a, 100L);
+    beyi.a(this.this$0).postDelayed(this.this$0.a, 100L);
   }
 }
 

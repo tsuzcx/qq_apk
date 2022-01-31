@@ -1,79 +1,60 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.startup.step.InitMemoryCache;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.OldApplication;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.mobileqq.startup.step.StartService;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Update;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class azkw
-  implements azkx
+public final class azkw
+  implements baug
 {
-  private static azkx a;
+  public azkw(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
   
-  public static void a()
+  public void onResp(bavf parambavf)
   {
-    a = (azkx)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+    if (parambavf.jdField_a_of_type_Int == 0)
+    {
+      parambavf = parambavf.jdField_a_of_type_Bave;
+      if (new File(parambavf.c).exists())
+      {
+        str = RecentDanceConfigMgr.a(parambavf.c);
+        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
+        {
+          bdhb.d(parambavf.c);
+          bdhb.d(this.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+          }
+        }
+      }
+      while (!QLog.isColorLevel())
+      {
+        String str;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
+        }
+        bdhb.c(parambavf.c, this.jdField_a_of_type_JavaLangString);
+        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + parambavf.c);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + parambavf.jdField_a_of_type_Int);
+    }
+    bdhb.d(parambavf.jdField_a_of_type_Bave.c);
   }
   
-  public static Step b(int paramInt, azjg paramazjg, int[] paramArrayOfInt)
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 10: 
-    case 11: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    default: 
-      if (a != null) {
-        localObject = a.a(paramInt, paramazjg, paramArrayOfInt);
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
     }
-    for (;;)
-    {
-      ((Step)localObject).mId = paramInt;
-      ((Step)localObject).mDirector = paramazjg;
-      if (paramInt == 0) {
-        Step.access$002((Step)localObject, paramArrayOfInt);
-      }
-      return localObject;
-      localObject = new LoadDex();
-      continue;
-      localObject = new InitMemoryCache();
-      continue;
-      localObject = new OldApplication();
-      continue;
-      localObject = new SetSplash();
-      continue;
-      localObject = new CheckPermission();
-      continue;
-      localObject = new Update();
-      continue;
-      localObject = new StartService();
-      continue;
-      localObject = new Step();
-    }
-  }
-  
-  public Step a(int paramInt, azjg paramazjg, int[] paramArrayOfInt)
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkw
  * JD-Core Version:    0.7.0.1
  */

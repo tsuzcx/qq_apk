@@ -1,18 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class betb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aybr
 {
-  public betb(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
+  final WeakReference<ProfileCardMoreInfoView> a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public betb(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a = new WeakReference(paramProfileCardMoreInfoView);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCardMoreInfoView", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
+    }
+    if (paramBitmap == null) {
+      QLog.e("ProfileCardMoreInfoView", 1, "onGetIcon decode icon fail.");
+    }
+    do
+    {
+      return;
+      paramBitmap = (ProfileCardMoreInfoView)this.a.get();
+    } while ((paramBitmap == null) || (paramBitmap.a == null) || (paramBitmap.a.a == null) || (paramBitmap.a.a.actionId != paramInt1));
+    paramBitmap.a(paramBitmap.a, true, new String[] { "map_key_sig" });
   }
 }
 

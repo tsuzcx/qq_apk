@@ -1,25 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-
-public class anlq
-  implements View.OnClickListener
+abstract interface anlq
 {
-  public anlq(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (bhpy)bhql.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131690265));
-    paramView.a(2131690264, 3);
-    paramView.c(2131690266);
-    paramView.setOnDismissListener(new anlr(this, paramView));
-    paramView.a(new anls(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

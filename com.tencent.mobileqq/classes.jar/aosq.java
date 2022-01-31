@@ -1,71 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aosq
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public static aosq a(aogf[] paramArrayOfaogf)
+  public int a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
-    }
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
-    {
-      paramArrayOfaogf = null;
-      return paramArrayOfaogf;
-    }
-    aosq localaosq = new aosq();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-        paramArrayOfaogf = localaosq;
-        if (!localJSONObject.has("tencentDocAioSendEntry")) {
-          break;
-        }
-        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
-        if (localJSONObject.has("aioSendDocSwitch"))
-        {
-          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
-            localaosq.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          paramArrayOfaogf = localaosq;
-          if (!localJSONObject.has("webDocSelectorUrl")) {
-            break;
-          }
-          localaosq.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
-          return localaosq;
-        }
-      }
-      catch (JSONException paramArrayOfaogf)
-      {
-        paramArrayOfaogf.printStackTrace();
-        return localaosq;
-      }
-      bool = false;
-    }
+    return this.jdField_a_of_type_Int;
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

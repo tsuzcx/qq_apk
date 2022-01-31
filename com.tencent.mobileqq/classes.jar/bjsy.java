@@ -1,38 +1,10 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.statistic.access.concept.Collector;
 
-class bjsy
-  implements bjnu
+public abstract class bjsy
 {
-  bjsy(bjsx parambjsx) {}
+  public static bjsy a = new bjsz();
   
-  public void a(BaseResp paramBaseResp)
-  {
-    int i = 1;
-    int j = paramBaseResp.errCode;
-    if (j == 0)
-    {
-      i = 0;
-      paramBaseResp = alpo.a(2131712728);
-      bjsx.d(this.a, paramBaseResp);
-    }
-    for (;;)
-    {
-      bjsx.a(this.a, bjsx.a(this.a), i, paramBaseResp);
-      return;
-      if (j == -2)
-      {
-        paramBaseResp = alpo.a(2131712719);
-        bjsx.d(this.a, paramBaseResp);
-      }
-      else
-      {
-        paramBaseResp = alpo.a(2131712716);
-        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
-        i = j;
-      }
-    }
-  }
+  public abstract boolean a(Collector paramCollector);
 }
 
 

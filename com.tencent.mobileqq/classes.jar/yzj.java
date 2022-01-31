@@ -1,51 +1,120 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.component.media.image.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
 
 public class yzj
-  extends BroadcastReceiver
 {
-  public yzj(NewerGuidePlugin paramNewerGuidePlugin) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private ImageView b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private Drawable a(String paramString, View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive action=%s", new Object[] { paramContext }));
-    }
-    if ("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT".equals(paramContext))
+    return ImageLoader.getInstance().loadImage(paramString, new yzk(this, paramView));
+  }
+  
+  private AnimationSet a()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(280L);
+    localScaleAnimation.setAnimationListener(new yzl(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
+  }
+  
+  private AnimationSet b()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(2240L);
+    localScaleAnimation.setFillAfter(true);
+    localScaleAnimation.setAnimationListener(new yzm(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
+  }
+  
+  private AnimationSet c()
+  {
+    if (this.b != null)
     {
-      paramContext = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      boolean bool = paramIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
-      paramIntent = paramIntent.getStringExtra("PhotoConst.SOURCE_FROM");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive path=%s syncQZone=%s sourceFrom=%s", new Object[] { paramContext, Boolean.valueOf(bool), paramIntent }));
-        }
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key_action", "setAvatar");
-        localBundle.putString("path", paramContext);
-        localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
-        localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
-        paramContext = apic.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
-        apmy.a().a(paramContext);
-        if (NewerGuidePlugin.a(this.a) == null)
-        {
-          paramContext = this.a.mRuntime.a();
-          int i = paramContext.getResources().getDimensionPixelSize(2131298914);
-          NewerGuidePlugin.a(this.a, new bepp(paramContext, i));
-          NewerGuidePlugin.a(this.a).a(alpo.a(2131707814));
-        }
-        NewerGuidePlugin.a(this.a).show();
-      }
+      AnimationSet localAnimationSet = new AnimationSet(false);
+      localAnimationSet.setFillAfter(true);
+      ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setInterpolator(new OvershootInterpolator());
+      localScaleAnimation.setDuration(440L);
+      localScaleAnimation.setStartOffset(400L);
+      localScaleAnimation.setAnimationListener(new yzn(this));
+      localAnimationSet.addAnimation(localScaleAnimation);
+      localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setDuration(320L);
+      localScaleAnimation.setStartOffset(2400L);
+      localAnimationSet.addAnimation(localScaleAnimation);
+      return localAnimationSet;
     }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
+      this.b.clearAnimation();
+      this.b.startAnimation(c());
+    }
+    for (;;)
+    {
+      QLog.d("Q.videostory.config.VSEntranceWidget", 1, "playWidgetAnimationset resourceReady:" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+  }
+  
+  public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramFrameLayout = yzr.a().a(paramString);
+    if ((paramFrameLayout == null) || (!paramFrameLayout.a()))
+    {
+      QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363901));
+    paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131380214));
+    paramFrameLayout = a(paramFrameLayout.f, this.b);
+    if (paramFrameLayout != null) {
+      this.b.setImageDrawable(paramFrameLayout);
+    }
+    this.b.setVisibility(4);
   }
 }
 

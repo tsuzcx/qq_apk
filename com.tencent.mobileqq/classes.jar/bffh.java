@@ -1,29 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
 
 public class bffh
-  extends Handler
+  implements View.OnClickListener
 {
-  public void handleMessage(Message paramMessage)
+  public bffh(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (System.currentTimeMillis() - OpenAuthorityFragment.a(this.a) > 1000L)
     {
+      this.a.a.a.setClickable(false);
+      paramView = new Intent();
+      paramView.putExtra("appid", OpenAuthorityFragment.a(this.a));
+      paramView.putExtra("public_fragment_window_feature", 1);
+      adpn.a(this.a.getActivity(), paramView, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+      this.a.a.a.setClickable(true);
     }
-    do
-    {
-      return;
-      paramMessage = (bffg)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
-    try
-    {
-      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    OpenAuthorityFragment.a(this.a, System.currentTimeMillis());
   }
 }
 

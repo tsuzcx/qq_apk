@@ -1,20 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class ajew
-  extends ajfh
+final class ajew
+  extends ClickableSpan
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public ThemeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  ajew(ajez paramajez, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ajez.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

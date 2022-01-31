@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import bdij;
+import bdms;
+import com.tencent.biz.qqcircle.activity.QCircleFragmentActivity;
 import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
@@ -20,15 +23,15 @@ import tqb;
 import tql;
 import tqt;
 import tra;
-import tvt;
-import tvy;
-import xxl;
-import yuh;
+import twe;
+import twn;
+import ybu;
+import yyw;
 
 public abstract class QCircleBaseFragment
   extends ComponentBaseFragment
 {
-  public static final String b = QCircleBaseFragment.class.getSimpleName();
+  protected TopGestureLayout a;
   
   private void b()
   {
@@ -36,7 +39,7 @@ public abstract class QCircleBaseFragment
     {
       long l = getActivity().getIntent().getLongExtra("key_bundle_open_page_time", 0L);
       if (l != 0L) {
-        QLog.i(b, 1, "openPageTime = " + (System.currentTimeMillis() - l));
+        QLog.i("QCircleBaseFragment", 1, "openPageTime = " + (System.currentTimeMillis() - l));
       }
     }
   }
@@ -51,26 +54,54 @@ public abstract class QCircleBaseFragment
   
   private void d()
   {
-    File localFile = new File(tqb.g);
-    if ((localFile.exists()) || (bdij.a() == null))
+    File localFile = new File(tqb.i);
+    if ((localFile.exists()) || (bdms.a() == null))
     {
-      QLog.i(b, 1, "DownLoadZipFile Save file is exist");
+      QLog.i("QCircleBaseFragment", 1, "DownLoadZipFile Save file is exist");
       return;
     }
-    xxl.a(localFile, (String)yuh.a().a("KEY_QCIRCLE_BASE_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/qcircle/base/qcircle_download_pics.zip"), tqb.d);
+    ybu.a(localFile, (String)yyw.a().a("KEY_QCIRCLE_BASE_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/qcircle/base/qcircle_download_pics.zip"), tqb.f);
   }
   
   private void e()
   {
-    tvt localtvt = tvt.a();
-    tvy localtvy = new tvy(this);
-    localtvt.a(new String[] { "https://down.qq.com/video_story/qcircle/animation/rockey1.zip", "https://down.qq.com/video_story/qcircle/animation/rockey2.zip", "https://down.qq.com/video_story/qcircle/animation/rockey3.zip", "https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip", "https://down.qq.com/video_story/qcircle/animation/rockey_single_click.zip" }, localtvy);
+    twe localtwe = twe.a();
+    twn localtwn = new twn(this);
+    localtwe.a(new String[] { "https://down.qq.com/video_story/qcircle/animation/rockey1.zip", "https://down.qq.com/video_story/qcircle/animation/rockey2.zip", "https://down.qq.com/video_story/qcircle/animation/rockey3.zip", "https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip", "https://down.qq.com/video_story/qcircle/animation/rockey_single_click.zip" }, localtwn);
   }
   
-  public void a() {}
+  protected TopGestureLayout a()
+  {
+    if (this.a == null)
+    {
+      ViewGroup localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
+      View localView = localViewGroup.getChildAt(0);
+      Object localObject = localViewGroup;
+      if (localView != null)
+      {
+        localObject = localViewGroup;
+        if ((localView instanceof DragFrameLayout)) {
+          localObject = (ViewGroup)localView;
+        }
+      }
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if ((localObject instanceof TopGestureLayout)) {
+        this.a = ((TopGestureLayout)localObject);
+      }
+    }
+    return this.a;
+  }
+  
+  public abstract String a();
+  
+  public void a()
+  {
+    QLog.d(a(), 1, a() + "->onBackPressed");
+  }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
+    QLog.d(a(), 1, a() + "->doOnCreateView");
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
     d();
     e();
@@ -87,17 +118,33 @@ public abstract class QCircleBaseFragment
     {
       b();
       return;
-      if (((getActivity() instanceof PublicFragmentActivity)) && (ImmersiveUtils.isSupporImmersive() == 1))
+      if (((getActivity() instanceof QCircleFragmentActivity)) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
+        tra.a(getActivity(), b());
         ImmersiveUtils.a(true, getActivity().getWindow());
-        tra.a(getActivity());
       }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TopGestureLayout localTopGestureLayout = a();
+    if (localTopGestureLayout != null) {
+      localTopGestureLayout.setInterceptTouchFlag(paramBoolean);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleBaseFragment", 2, "enableFlingRight->enable:" + paramBoolean);
     }
   }
   
   protected boolean a()
   {
     return false;
+  }
+  
+  protected int b()
+  {
+    return tra.a();
   }
   
   protected boolean b()
@@ -108,16 +155,35 @@ public abstract class QCircleBaseFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if ((xxl.a()) && (b())) {
+    if ((ybu.a()) && (b())) {
       c();
     }
   }
   
+  public void onAttach(Activity paramActivity)
+  {
+    QLog.d(a(), 1, a() + "->onAttach");
+    super.onAttach(paramActivity);
+  }
+  
   public void onDestroy()
   {
+    QLog.d(a(), 1, a() + "->onDestroy");
     super.onDestroy();
     tqt.a().a();
     tql.a();
+  }
+  
+  public void onDetach()
+  {
+    QLog.d(a(), 1, a() + "->onDetach");
+    super.onDetach();
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    QLog.d(a(), 1, a() + "->setUserVisibleHint:" + paramBoolean);
+    super.setUserVisibleHint(paramBoolean);
   }
 }
 

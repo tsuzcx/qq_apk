@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aljq;
-import aluw;
+import alof;
+import alzl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import syb;
@@ -9,12 +9,12 @@ import syb;
 public class PublicAccountDataManager$2
   implements Runnable
 {
-  public PublicAccountDataManager$2(aluw paramaluw) {}
+  public PublicAccountDataManager$2(alzl paramalzl) {}
   
   public void run()
   {
     QLog.d("Q.contacttab.pub", 2, "preGetKandianSubscribe account info!");
-    syb.a(this.this$0.a, BaseApplication.getContext(), null, aljq.aR);
+    syb.a(this.this$0.a, BaseApplication.getContext(), null, alof.aR);
   }
 }
 

@@ -1,25 +1,12 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class badn
-  implements View.OnClickListener
+public class badn
 {
-  badn(badl parambadl, DialogInterface.OnClickListener paramOnClickListener) {}
+  public float a;
+  public float b;
   
-  public void onClick(View paramView)
+  public badn(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Badl, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Badl.isShowing()) {
-        this.jdField_a_of_type_Badl.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
 }
 

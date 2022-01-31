@@ -1,14 +1,35 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ahrw
+  implements bhuk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ahrw(ahrs paramahrs, boolean paramBoolean, TroopInfo paramTroopInfo, bhuf parambhuf) {}
   
-  private ahrw(ahrt paramahrt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (!bdin.g(this.jdField_a_of_type_Ahrs.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.jdField_a_of_type_Ahrs.jdField_a_of_type_AndroidContentContext, 1, 2131692398, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      paramView = (aloz)this.jdField_a_of_type_Ahrs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
+        azqs.b(this.jdField_a_of_type_Ahrs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
+        azqs.b(this.jdField_a_of_type_Ahrs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
+      }
+    }
+  }
 }
 
 

@@ -1,14 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class vgm
-  implements DialogInterface.OnCancelListener
+public class vgm
+  extends urt<vhx>
 {
-  vgm(vgj paramvgj) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public String a()
   {
-    this.a.f();
+    return uqn.a("StorySvc.video_apply_authkey");
+  }
+  
+  public vhx a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
+    {
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new vhx(localRspAuthKey);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new byte[0];
   }
 }
 

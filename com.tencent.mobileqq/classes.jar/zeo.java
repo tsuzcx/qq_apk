@@ -1,72 +1,55 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import java.util.HashMap;
 
-public abstract class zeo
+class zeo
+  implements View.OnClickListener
 {
-  public Rect a;
-  public int c = 2;
-  public boolean c;
+  zeo(zej paramzej) {}
   
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
+    paramView = this.a.mRuntime.a();
+    if (paramView == null) {}
+    swb localswb;
     do
     {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
+      do
+      {
+        do
+        {
+          return;
+        } while ((zej.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(zej.a(this.a))));
+        localswb = (swb)zej.jdField_a_of_type_JavaUtilHashMap.get(zej.a(this.a));
+      } while (localswb == null);
+      if (localswb.b() == 3)
+      {
+        localswb.a();
+        this.a.b();
+        localswb.a(4);
+        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        }
+        zej.jdField_a_of_type_JavaUtilHashMap.remove(zej.a(this.a));
+        return;
       }
-    } while (f1 <= 1.0F);
-    return 2;
-  }
-  
-  public abstract int a();
-  
-  public Rect a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public Rect b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public abstract Drawable c();
-  
-  public int d()
-  {
-    return 0;
+    } while (localswb.b() != 0);
+    nbv.a(paramView.getApplicationContext(), zej.a(this.a), localswb.f, localswb.a, localswb);
+    localswb.a(1);
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zeo
  * JD-Core Version:    0.7.0.1
  */

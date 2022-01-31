@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bcxb;
-import bdda;
+import bdbk;
+import bdhj;
 import java.util.List;
 
 class ChatSettingForTroop$21
@@ -33,9 +33,9 @@ class ChatSettingForTroop$21
         long l = Long.valueOf((String)localObject).longValue();
         if (l == this.a)
         {
-          localObject = bdda.a();
-          localObject = bcxb.a(this.this$0.app, 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
-          this.this$0.runOnUiThread(new ChatSettingForTroop.21.1(this, localImageView, (bcxb)localObject));
+          localObject = bdhj.a();
+          localObject = bdbk.a(this.this$0.app, 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
+          this.this$0.runOnUiThread(new ChatSettingForTroop.21.1(this, localImageView, (bdbk)localObject));
           return;
         }
       }

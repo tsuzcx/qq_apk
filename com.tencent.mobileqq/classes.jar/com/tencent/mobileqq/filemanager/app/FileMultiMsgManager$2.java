@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import amgm;
-import aqnw;
-import aqos;
-import arni;
-import aukq;
+import amlb;
+import aqsf;
+import aqtb;
+import arrr;
+import auoz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -18,34 +18,34 @@ import java.util.Set;
 public class FileMultiMsgManager$2
   implements Runnable
 {
-  public FileMultiMsgManager$2(aqnw paramaqnw, long paramLong) {}
+  public FileMultiMsgManager$2(aqsf paramaqsf, long paramLong) {}
   
   public void run()
   {
-    if (aqnw.a(this.this$0).containsKey(Long.valueOf(this.a))) {}
-    for (aqos localaqos = (aqos)aqnw.a(this.this$0).remove(Long.valueOf(this.a));; localaqos = null)
+    if (aqsf.a(this.this$0).containsKey(Long.valueOf(this.a))) {}
+    for (aqtb localaqtb = (aqtb)aqsf.a(this.this$0).remove(Long.valueOf(this.a));; localaqtb = null)
     {
-      if ((localaqos != null) && (localaqos.jdField_a_of_type_Aukq != null))
+      if ((localaqtb != null) && (localaqtb.jdField_a_of_type_Auoz != null))
       {
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = localaqos.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        Iterator localIterator = localaqtb.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
         if (localIterator.hasNext())
         {
           Object localObject = (String)localIterator.next();
-          localObject = (ArrayList)localaqos.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+          localObject = (ArrayList)localaqtb.jdField_a_of_type_JavaUtilHashMap.get(localObject);
           int i = 0;
           label112:
           MessageRecord localMessageRecord;
           if (i < ((ArrayList)localObject).size())
           {
             localMessageRecord = (MessageRecord)((ArrayList)localObject).get(i);
-            if (arni.a(localMessageRecord))
+            if (arrr.a(localMessageRecord))
             {
               if (!String.valueOf(2).equalsIgnoreCase(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileStatus"))) {
                 break label211;
               }
               String str = localMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
-              localMessageRecord = aqnw.a(this.this$0).a().a().a(localMessageRecord, str, true);
+              localMessageRecord = aqsf.a(this.this$0).a().a().a(localMessageRecord, str, true);
               ((ArrayList)localObject).remove(i);
               ((ArrayList)localObject).add(i, localMessageRecord);
             }
@@ -59,13 +59,13 @@ public class FileMultiMsgManager$2
             localArrayList.add(localMessageRecord);
           }
         }
-        aqnw.a(this.this$0).a().a().a(localArrayList, null);
-        if (localaqos.d.size() > 0)
+        aqsf.a(this.this$0).a().a().a(localArrayList, null);
+        if (localaqtb.d.size() > 0)
         {
           if (QLog.isColorLevel()) {
             QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeMultiRequest : remove upload request uinseq = [" + this.a + "] resultCode[1]");
           }
-          localaqos.jdField_a_of_type_Aukq.a(1, 2, localaqos.jdField_a_of_type_Auld);
+          localaqtb.jdField_a_of_type_Auoz.a(1, 2, localaqtb.jdField_a_of_type_Aupm);
         }
       }
       else
@@ -75,7 +75,7 @@ public class FileMultiMsgManager$2
       if (QLog.isColorLevel()) {
         QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeMultiRequest : remove upload request uinseq = [" + this.a + "] resultCode[0]");
       }
-      localaqos.jdField_a_of_type_Aukq.a(0, 2, localaqos.jdField_a_of_type_Auld);
+      localaqtb.jdField_a_of_type_Auoz.a(0, 2, localaqtb.jdField_a_of_type_Aupm);
       return;
     }
   }

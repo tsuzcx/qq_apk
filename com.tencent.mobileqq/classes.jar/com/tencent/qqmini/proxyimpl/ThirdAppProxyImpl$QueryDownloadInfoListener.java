@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.content.Intent;
-import bket;
+import bkja;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 class ThirdAppProxyImpl$QueryDownloadInfoListener
-  implements bket
+  implements bkja
 {
   private String mAppid;
   private AsyncResult mCallback;

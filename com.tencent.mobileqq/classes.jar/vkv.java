@@ -1,24 +1,14 @@
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class vkv
+class vkv
+  implements DialogInterface.OnCancelListener
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  vkv(vks paramvks) {}
   
-  public static void a(String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    uzd.a(Collections.singletonList(paramString));
+    this.a.f();
   }
 }
 

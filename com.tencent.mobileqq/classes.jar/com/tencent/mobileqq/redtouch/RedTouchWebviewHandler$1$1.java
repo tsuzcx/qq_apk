@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
-import aphy;
-import apic;
+import apmh;
+import apml;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ class RedTouchWebviewHandler$1$1
     localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
     localBundle.putString("serial", this.c);
     localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = apic.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.mOnRemoteResp.key, localBundle);
+    localObject = apml.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.mOnRemoteResp.key, localBundle);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }

@@ -1,14 +1,31 @@
-import android.view.View;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public abstract class xno
-  extends xnr
+public class xno
+  extends xnq
 {
-  public xno(xnt paramxnt, View paramView)
-  {
-    super(paramxnt, paramView);
-  }
+  public int a;
+  public long a;
+  public SlideItemInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  private boolean e;
   
-  public abstract int a();
+  public xno() {}
+  
+  public xno(long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, xnp paramxnp, boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
+    this.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
+    this.jdField_a_of_type_Xnp = paramxnp;
+    this.e = paramBoolean;
+  }
 }
 
 

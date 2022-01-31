@@ -1,35 +1,20 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import java.util.Set;
 
-public final class bgto
-  implements bgqh<GameRuntimeLoader>
+public class bgto
+  extends bgtp
 {
-  public GameRuntimeLoader a(Context paramContext, Bundle paramBundle)
+  public bgto(BarrageView paramBarrageView, View paramView)
   {
-    paramContext = new GameRuntimeLoader(paramContext, null);
-    if (paramBundle != null)
-    {
-      paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
-      if (paramBundle != null) {
-        paramContext.setEngineChannel(paramBundle);
-      }
-    }
-    return paramContext;
+    super(paramBarrageView, paramView, null);
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
-  }
-  
-  public boolean a(MiniAppInfo paramMiniAppInfo)
-  {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniGame());
+    super.onAnimationEnd(paramAnimation);
+    BarrageView.a(this.a).remove(paramAnimation);
   }
 }
 

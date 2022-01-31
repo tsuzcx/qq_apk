@@ -1,32 +1,16 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public class bmud
-  extends bmtz
+class bmud
+  implements bmum
 {
-  public String c;
+  bmud(bmuc parambmuc, boolean paramBoolean) {}
   
-  public bmud(int paramInt1, String paramString, int paramInt2)
+  public void a()
   {
-    super(paramInt1, paramString, paramInt2);
-  }
-  
-  @NonNull
-  public bmua a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new bmuf(this, paramContext, paramViewGroup, null);
-  }
-  
-  @NonNull
-  public Class<? extends bmua> a()
-  {
-    return bmuf.class;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (DoodleLayout.a(this.jdField_a_of_type_Bmuc.a) != null) {
+      DoodleLayout.a(this.jdField_a_of_type_Bmuc.a).c(true);
+    }
+    this.jdField_a_of_type_Bmuc.a.a().b(this.jdField_a_of_type_Boolean);
   }
 }
 

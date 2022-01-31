@@ -50,14 +50,14 @@ public class mnv
         if (!str2.equals(str1)) {
           break;
         }
-        return localResources.getString(2131694672) + localResources.getString(2131696032);
+        return localResources.getString(2131694674) + localResources.getString(2131696034);
         if (j == 1) {
           i = 1000;
         } else if (j == 0) {
           i = 0;
         }
       }
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str2, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g)) + localResources.getString(2131696032);
+      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str2, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g)) + localResources.getString(2131696034);
     }
     label214:
     return "";

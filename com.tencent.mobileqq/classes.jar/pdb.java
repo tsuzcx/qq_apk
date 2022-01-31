@@ -66,7 +66,7 @@ public class pdb
           return false;
         }
       } while ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str5)));
-      if (!bjxj.i())
+      if (!bkbq.i())
       {
         ors.a(paramContext, str5);
         QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open article directly.");

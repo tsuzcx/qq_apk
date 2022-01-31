@@ -1,53 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsh
-  extends BaseAdapter
+  extends BroadcastReceiver
 {
-  public acsh(FontSettingActivity paramFontSettingActivity) {}
+  public acsh(Conversation paramConversation) {}
   
-  public int getCount()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.jdField_a_of_type_Acsj.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    paramViewGroup = (afys)paramView.getTag();
-    paramViewGroup.d.setOnClickListener(null);
-    if ((paramViewGroup.d instanceof AnimationTextView)) {
-      ((AnimationTextView)paramViewGroup.d).onDoubleClick = null;
-    }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    if ("login".equals(paramIntent.getStringExtra("status")))
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
+      this.a.a.a(27, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
+      return;
     }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new FontSettingActivity.AioListAdapter.1(this), 100L);
-    }
-    return paramView;
+    this.a.a.k();
   }
 }
 

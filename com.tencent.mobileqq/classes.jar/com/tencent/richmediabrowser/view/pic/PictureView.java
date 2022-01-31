@@ -77,7 +77,7 @@ public class PictureView
       paramViewGroup.mPlayGifImage = true;
       paramViewGroup.mUseExifOrientation = false;
       paramViewGroup.mDecodeFileStrategy = 2;
-      paramViewGroup = this.mContext.getResources().getDrawable(2130850063);
+      paramViewGroup = this.mContext.getResources().getDrawable(2130850136);
       paramView.setTag(Integer.valueOf(1));
       paramView.setIgnoreLayout(false);
       paramView.setImageDrawable(paramViewGroup);
@@ -88,7 +88,7 @@ public class PictureView
       this.galleryView = new RelativeLayout(this.mContext);
       this.galleryView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       paramView = new GalleryUrlImageView(this.mContext);
-      paramView.setId(2131367910);
+      paramView.setId(2131367921);
       paramView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       paramViewGroup = new RelativeLayout.LayoutParams(-1, -1);
       this.galleryView.addView(paramView, paramViewGroup);

@@ -1,175 +1,76 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import com.tencent.ad.tangram.canvas.resource.AdResourceAdapter;
 
 public class aamm
-  extends VasWebviewJsPlugin
+  implements AdResourceAdapter
 {
-  private GdtAppReceiver a;
-  
-  public aamm()
+  public int getAppDescViewId()
   {
-    this.mPluginNameSpace = "qq_gdt_ad";
-    if (a() != null) {}
-    for (Object localObject = a();; localObject = BaseApplicationImpl.getApplication())
-    {
-      aaos.a().a((Context)localObject, new aaot());
-      return;
-    }
+    return 2131362693;
   }
   
-  private void a()
+  public int getAppDownloadButtonViewId()
   {
-    if ((this.a != null) || (this.mRuntime == null)) {
-      return;
-    }
-    aanp.b("GdtAdWebPlugin", "registerReceiverForApp");
-    this.a = new GdtAppReceiver();
-    this.a.register(a());
+    return 2131365430;
   }
   
-  private void b()
+  public int getAppLogoViewId()
   {
-    if ((this.a == null) || (this.mRuntime == null)) {
-      return;
-    }
-    aanp.b("GdtAdWebPlugin", "unregisterReceiverForApp");
-    this.a.unregister(a());
-    this.a = null;
+    return 2131362706;
   }
   
-  public Activity a()
+  public int getAppNameViewId()
   {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
-    {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
-    }
+    return 2131362707;
   }
   
-  public GdtAppReceiver a()
+  public int getAppSizeViewId()
   {
-    return this.a;
+    return 2131362712;
   }
   
-  public String a()
+  public int getArkWindowLayoutId()
   {
-    Activity localActivity = a();
-    if (localActivity == null) {}
-    while (!(localActivity instanceof QQBrowserActivity)) {
-      return null;
-    }
-    return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
+    return 2131559143;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public int getBottomFixedButtonId()
   {
-    paramJsBridgeListener = null;
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-      if ("loadAdDemo".equals(paramString3))
-      {
-        paramJsBridgeListener = aaml.a().a(5);
-        if (paramJsBridgeListener != null) {
-          paramJsBridgeListener.a(this, paramString1, paramVarArgs);
-        }
-        return true;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        aanp.d("GdtAdWebPlugin", "GdtAdWebPlugin handleJsCallRequest error ", paramString1);
-        paramString1 = null;
-        continue;
-        if ("getLocation".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(4);
-        }
-        else if ("getDeviceId".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(7);
-        }
-        else if ("getMacAddress".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(8);
-        }
-        else if ("getCarrier".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(9);
-        }
-        else if ("getNetType".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(10);
-        }
-        else if ("getOSVersion".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(11);
-        }
-        else if ("handleClick".equals(paramString3))
-        {
-          a();
-          paramJsBridgeListener = aaml.a().a(12);
-        }
-        else if ("showBanner".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(13);
-        }
-        else if ("showInterstitial".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(19);
-        }
-        else if ("showInterstitialForJS".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(20);
-        }
-        else if ("getDeviceInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(14);
-        }
-        else if ("c2sReport".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(15);
-        }
-        else if ("openMotiveVideoAd".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(16);
-        }
-        else if ("getUserInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(17);
-        }
-        else if ("preLoadAfterAdLoaded".equals(paramString3))
-        {
-          paramJsBridgeListener = aaml.a().a(18);
-        }
-      }
-    }
+    return 2131367087;
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public int getCanvasContentId()
   {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    aanp.b("GdtAdWebPlugin", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt) }));
+    return 2131363932;
   }
   
-  public void onDestroy()
+  public int getCanvasFixedButtonLayoutId()
   {
-    super.onDestroy();
-    b();
+    return 2131559144;
+  }
+  
+  public int getCanvasLayoutId()
+  {
+    return 2131559145;
+  }
+  
+  public int getCloseViewId()
+  {
+    return 2131364327;
+  }
+  
+  public int getCommonFixedButtonContainerId()
+  {
+    return 2131367086;
+  }
+  
+  public int getFloatingProgressBarId()
+  {
+    return 2131366497;
+  }
+  
+  public int getTopFixedButtonId()
+  {
+    return 2131367100;
   }
 }
 

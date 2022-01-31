@@ -1,75 +1,37 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adjq
-  extends alxx
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public adjq(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public adjq(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bdal.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
-      return;
-    }
+    this.a = new WeakReference(paramVerifyDevLockObserver);
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
   {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    if (this.a.get() == null)
     {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bdal.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
       return;
     }
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a.get() == null)
+    {
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
+      return;
+    }
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
   }
 }
 

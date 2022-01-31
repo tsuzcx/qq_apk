@@ -1,175 +1,117 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
+import android.annotation.TargetApi;
+import android.opengl.EGLContext;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.videostory.video.SimpleGLThread.1;
+import com.tencent.biz.videostory.video.SimpleGLThread.3;
+import com.tencent.ttpic.baseutils.gles.EglCore;
+import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 
-class zav
-  extends InputStream
+@TargetApi(18)
+public class zav
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
-  BufferedInputStream b;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private EglCore jdField_a_of_type_ComTencentTtpicBaseutilsGlesEglCore;
+  private OffscreenSurface jdField_a_of_type_ComTencentTtpicBaseutilsGlesOffscreenSurface;
   
-  public zav(zau paramzau, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
+  public zav(EGLContext paramEGLContext, String paramString)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
-    this.b = paramBufferedInputStream2;
-    if (paramByteArrayOutputStream != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
-      return;
-      paramByteArrayOutputStream = new ByteArrayOutputStream();
+    paramString = new HandlerThread(paramString, 9);
+    paramString.start();
+    while (!paramString.isAlive()) {}
+    QLog.i("SimpleGLThread", 2, "create SimpleGLThread");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new SimpleGLThread.1(this, paramEGLContext));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new SimpleGLThread.3(this));
     }
   }
   
-  public void close()
+  public void a(Runnable paramRunnable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now close memory stream and socket stream!");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
-      }
-      if (this.b != null)
-      {
-        this.b.close();
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      }
-      this.jdField_a_of_type_Zau.a = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
   }
   
-  public int read()
+  /* Error */
+  public void b(Runnable paramRunnable)
   {
-    int j;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      j = -1;
-      return j;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
-    {
-      j = i;
-      if (i != -1) {
-        break;
-      }
-      j = i;
-      if (this.b == null) {
-        break;
-      }
-      return this.b.read();
-    }
-  }
-  
-  public int read(byte[] paramArrayOfByte)
-  {
-    int i;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      i = -1;
-      return i;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-    {
-      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
-      j = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
-      }
-    }
-    for (int j = i;; j = -1)
-    {
-      i = j;
-      if (j != -1) {
-        break;
-      }
-      i = j;
-      if (this.b == null) {
-        break;
-      }
-      j = this.b.read(paramArrayOfByte);
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
-      return j;
-    }
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
-      return -1;
-    }
-    int i = paramArrayOfByte.length;
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
-      }
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    int j = 0;
-    label65:
-    if (j < paramInt2) {}
-    for (;;)
-    {
-      int k;
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
-          break label162;
-        }
-        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
-        k = i;
-        if (i == -1)
-        {
-          k = i;
-          if (this.b != null) {
-            k = this.b.read();
-          }
-        }
-        if (k == -1)
-        {
-          if (j == 0) {
-            break;
-          }
-          return j;
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        if (j != 0) {
-          return j;
-        }
-        throw paramArrayOfByte;
-      }
-      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
-      j += 1;
-      break label65;
-      return paramInt2;
-      label162:
-      i = -1;
-    }
+    // Byte code:
+    //   0: new 4	java/lang/Object
+    //   3: dup
+    //   4: invokespecial 16	java/lang/Object:<init>	()V
+    //   7: astore_2
+    //   8: ldc 30
+    //   10: iconst_3
+    //   11: new 79	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 82
+    //   20: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: aload_2
+    //   24: invokevirtual 90	java/lang/Object:hashCode	()I
+    //   27: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 100	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: aload_2
+    //   37: monitorenter
+    //   38: aload_0
+    //   39: aload_1
+    //   40: invokevirtual 102	zav:a	(Ljava/lang/Runnable;)V
+    //   43: aload_0
+    //   44: new 104	com/tencent/biz/videostory/video/SimpleGLThread$2
+    //   47: dup
+    //   48: aload_0
+    //   49: aload_2
+    //   50: invokespecial 107	com/tencent/biz/videostory/video/SimpleGLThread$2:<init>	(Lzav;Ljava/lang/Object;)V
+    //   53: invokevirtual 102	zav:a	(Ljava/lang/Runnable;)V
+    //   56: aload_2
+    //   57: invokevirtual 110	java/lang/Object:wait	()V
+    //   60: ldc 30
+    //   62: iconst_3
+    //   63: new 79	java/lang/StringBuilder
+    //   66: dup
+    //   67: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   70: ldc 112
+    //   72: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: aload_2
+    //   76: invokevirtual 90	java/lang/Object:hashCode	()I
+    //   79: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 100	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: aload_2
+    //   89: monitorexit
+    //   90: return
+    //   91: astore_1
+    //   92: ldc 30
+    //   94: iconst_0
+    //   95: ldc 114
+    //   97: invokestatic 117	com/tencent/TMG/utils/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: goto -12 -> 88
+    //   103: astore_1
+    //   104: aload_2
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	zav
+    //   0	108	1	paramRunnable	Runnable
+    //   7	98	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   56	88	91	java/lang/InterruptedException
+    //   38	56	103	finally
+    //   56	88	103	finally
+    //   88	90	103	finally
+    //   92	100	103	finally
+    //   104	106	103	finally
   }
 }
 

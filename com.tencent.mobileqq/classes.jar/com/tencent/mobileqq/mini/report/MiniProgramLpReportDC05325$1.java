@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.report;
 
 import NS_COMM.COMM.Entry;
 import android.text.TextUtils;
-import bdcb;
-import bexd;
-import bize;
-import bizf;
+import bdgk;
+import bfbm;
+import bjdl;
+import bjdm;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -41,11 +41,11 @@ final class MiniProgramLpReportDC05325$1
         }
         MiniProgramLpReportDC05325.access$000().put(Long.valueOf(this.val$downloadResult.getProcess().startTimestamp), Boolean.valueOf(true));
         Object localObject1 = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-        localObject3 = MiniProgramReportHelper.newEntry("uid", String.valueOf(bexd.a().a()));
+        localObject3 = MiniProgramReportHelper.newEntry("uid", String.valueOf(bfbm.a().a()));
         Object localObject4 = MiniProgramReportHelper.newEntry("launchid", (String)localObject1);
         Object localObject5 = MiniProgramReportHelper.newEntry("timestamp", "" + this.val$downloadResult.getProcess().startTimestamp);
-        localObject6 = MiniProgramReportHelper.newEntry("qua", bizf.a());
-        Object localObject7 = MiniProgramReportHelper.newEntry("deviceinfo", bize.a().c());
+        localObject6 = MiniProgramReportHelper.newEntry("qua", bjdm.a());
+        Object localObject7 = MiniProgramReportHelper.newEntry("deviceinfo", bjdl.a().c());
         COMM.Entry localEntry1 = MiniProgramReportHelper.newEntry("network_type", MiniProgramLpReportDC05325.getNetworkType());
         COMM.Entry localEntry2 = MiniProgramReportHelper.newEntry("userip", this.val$downloadResult.getContent().clientip);
         if (this.val$miniAppConfig != null)
@@ -101,7 +101,7 @@ final class MiniProgramLpReportDC05325$1
             break label1592;
           }
           localObject1 = "" + this.val$downloadResult.getReport().t_recvdata;
-          localObject3 = new ArrayList(Arrays.asList(new COMM.Entry[] { localObject3, localObject4, localObject5, localObject6, localObject7, localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, localEntry6, localEntry7, localEntry8, localEntry9, localEntry10, localEntry11, localEntry12, localEntry13, localEntry14, localEntry15, localEntry16, localEntry17, localEntry18, localEntry19, localEntry20, MiniProgramReportHelper.newEntry("time_cost_data", (String)localObject1), MiniProgramReportHelper.newEntry("download_mode", String.valueOf(this.val$downloadResult.getReport().downloadMode)), MiniProgramReportHelper.newEntry("time_cost_range_receive", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeReceivePhase)), MiniProgramReportHelper.newEntry("time_cost_range_merge", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeMergePhase)), MiniProgramReportHelper.newEntry("protocol", this.val$downloadResult.getReport().protocol), MiniProgramReportHelper.newEntry("perf_level", String.valueOf(bdcb.f())), MiniProgramReportHelper.newEntry("range_number", String.valueOf(this.val$downloadResult.getReport().rangeNumber)), MiniProgramReportHelper.newEntry("range_type", "0"), MiniProgramReportHelper.newEntry("download_id", String.valueOf(bexd.a().a()) + this.val$downloadResult.getProcess().startTimestamp), MiniProgramReportHelper.newEntry("range_id", "0") }));
+          localObject3 = new ArrayList(Arrays.asList(new COMM.Entry[] { localObject3, localObject4, localObject5, localObject6, localObject7, localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, localEntry6, localEntry7, localEntry8, localEntry9, localEntry10, localEntry11, localEntry12, localEntry13, localEntry14, localEntry15, localEntry16, localEntry17, localEntry18, localEntry19, localEntry20, MiniProgramReportHelper.newEntry("time_cost_data", (String)localObject1), MiniProgramReportHelper.newEntry("download_mode", String.valueOf(this.val$downloadResult.getReport().downloadMode)), MiniProgramReportHelper.newEntry("time_cost_range_receive", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeReceivePhase)), MiniProgramReportHelper.newEntry("time_cost_range_merge", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeMergePhase)), MiniProgramReportHelper.newEntry("protocol", this.val$downloadResult.getReport().protocol), MiniProgramReportHelper.newEntry("perf_level", String.valueOf(bdgk.f())), MiniProgramReportHelper.newEntry("range_number", String.valueOf(this.val$downloadResult.getReport().rangeNumber)), MiniProgramReportHelper.newEntry("range_type", "0"), MiniProgramReportHelper.newEntry("download_id", String.valueOf(bfbm.a().a()) + this.val$downloadResult.getProcess().startTimestamp), MiniProgramReportHelper.newEntry("range_id", "0") }));
           localObject1 = new ArrayList();
           ((List)localObject1).add(localObject3);
           if ((this.val$downloadResult.getReport().downloadMode != Downloader.DownloadMode.RangeMode.ordinal()) || (this.val$downloadResult.getReport().rangeDownloadReports == null)) {

@@ -1,8 +1,9 @@
 package com.tencent.biz.qqcircle.adapter;
 
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import com.tencent.biz.subscribe.widget.StatusView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +14,13 @@ class QCircleFakeAdapter$4
   
   public void run()
   {
-    if ((this.this$0.a() != null) && ((this.this$0.a() instanceof ComponentPageView)) && (((ComponentPageView)this.this$0.a()).a() != null) && (((ComponentPageView)this.this$0.a()).a().getVisibility() == 0)) {
-      ((ComponentPageView)this.this$0.a()).a().setVisibility(8);
+    if ((this.this$0.getComponentPageView() != null) && ((this.this$0.getComponentPageView() instanceof QCircleComponentPageView)) && (this.this$0.getComponentPageView().a() != null) && (this.this$0.getComponentPageView().a().getVisibility() == 0)) {
+      this.this$0.getComponentPageView().a().setVisibility(8);
     }
-    if (this.this$0.b() != null)
+    if ((this.this$0.getDataList() != null) && (this.this$0.a(this.a.mSingleFakeFeed)))
     {
       QCircleFakeAdapter.a(this.this$0).add(this.a.mSingleFakeFeed);
-      this.this$0.b().add(0, this.a.mSingleFakeFeed);
+      this.this$0.getDataList().add(0, this.a.mSingleFakeFeed);
       this.this$0.notifyDataSetChanged();
     }
   }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import aaoo;
-import aaop;
-import aaoq;
+import aatd;
+import aate;
+import aatf;
 import android.content.Intent;
-import bizm;
+import bjdt;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,8 +13,8 @@ import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import java.util.Arrays;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import xxk;
-import yej;
+import ybt;
+import yiw;
 
 public class QQPublicAccountNativePlugin
   implements NativePlugin
@@ -33,7 +33,7 @@ public class QQPublicAccountNativePlugin
   {
     boolean bool = true;
     if (paramJSContext != null) {
-      yej.a().a(paramJSContext);
+      yiw.a().a(paramJSContext);
     }
     for (;;)
     {
@@ -58,7 +58,7 @@ public class QQPublicAccountNativePlugin
           }
           ((Intent)localObject).putExtra("has_shop", bool);
           ((Intent)localObject).addFlags(268435456);
-          bizm.a(paramJSContext.getActivity(), (Intent)localObject, 0);
+          bjdt.a(paramJSContext.getActivity(), (Intent)localObject, 0);
           paramJSContext.evaluateCallback(true, null, "");
           return;
         }
@@ -72,8 +72,8 @@ public class QQPublicAccountNativePlugin
           i = paramJSONObject.optInt("type");
           String str = paramJSONObject.optString("feedid");
           long l = paramJSONObject.optLong("createtime");
-          paramJSONObject = xxk.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
-          xxk.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          paramJSONObject = ybt.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
+          ybt.a(paramJSContext.getActivity(), paramJSONObject, 9001);
           return;
         }
       }
@@ -89,14 +89,14 @@ public class QQPublicAccountNativePlugin
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("uin");
-          xxk.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          ybt.a(paramJSContext.getActivity(), paramJSONObject, 9001);
         }
       }
       else if ("qsubscribe_getdeviceinfo".equals(localObject))
       {
-        paramJSONObject = new aaop();
+        paramJSONObject = new aate();
         paramJSONObject.a = "1b0ad2";
-        paramJSONObject = aaoo.a(BaseApplication.getContext(), paramJSONObject);
+        paramJSONObject = aatd.a(BaseApplication.getContext(), paramJSONObject);
         if ((paramJSONObject != null) && (paramJSONObject.a != null))
         {
           localObject = new vac_adv_get.VacFeedsAdvMetaReq();

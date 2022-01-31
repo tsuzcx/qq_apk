@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class RelationTroopEntity
-  extends awbv
+  extends awge
 {
   public TroopInfo troopInfo;
 }

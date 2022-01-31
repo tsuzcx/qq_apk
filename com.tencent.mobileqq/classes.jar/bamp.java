@@ -1,692 +1,1505 @@
-import android.graphics.BitmapFactory.Options;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.ContactsContract.Contacts;
+import android.text.GetChars;
+import android.text.Layout.Alignment;
+import android.text.SpanWatcher;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.SparseIntArray;
+import android.view.View;
+import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.ConfigManager;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.highway.utils.EndPoint;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.ExpRoamExtendInfo;
 
 public class bamp
-  extends banb
+  implements GetChars, Spannable, CharSequence, Cloneable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.a;
-  private Bdh_extinfo.UploadPicExtInfo jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$UploadPicExtInfo = new Bdh_extinfo.UploadPicExtInfo();
-  Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-  private String jdField_a_of_type_JavaLangString;
-  private cmd0x388.ExpRoamExtendInfo jdField_a_of_type_TencentImCsCmd0x388Cmd0x388$ExpRoamExtendInfo = new cmd0x388.ExpRoamExtendInfo();
-  private String b;
-  private byte[] d;
+  public static Spannable.Factory a;
+  private static String jdField_a_of_type_JavaLangString;
+  public static final boolean a;
+  private static String jdField_b_of_type_JavaLangString;
+  public static final boolean b;
+  static final Object[] jdField_b_of_type_ArrayOfJavaLangObject;
+  public static String c;
+  public int a;
+  private ayin jdField_a_of_type_Ayin;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  public Object[] a;
+  public int b;
+  private int c;
+  private int d;
+  public String d;
+  protected String e;
+  private String f;
   
-  public bamp(batw parambatw, baub parambaub)
+  static
   {
-    super(parambatw, parambaub);
-    this.jdField_a_of_type_Int = parambaub.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Baoj.jdField_c_of_type_Int = parambaub.jdField_c_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = parambaub.jdField_a_of_type_JavaLangString;
-    this.jdField_d_of_type_ArrayOfByte = parambaub.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public static List<ExcitingTransferHostInfo> a(boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (BaseApplicationImpl.sProcessId == 1)
+    jdField_c_of_type_JavaLangString = alud.a(2131711535);
+    jdField_b_of_type_ArrayOfJavaLangObject = new Object[0];
+    jdField_a_of_type_AndroidTextSpannable$Factory = new bamq();
+    try
     {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject2 = ConfigManager.getInstance(BaseApplication.getContext(), ((QQAppInterface)localObject1).getHwEngine());
-      if (localObject2 != null)
+      StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
+      bool = true;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      for (;;)
       {
-        localObject2 = ((ConfigManager)localObject2).getOtherTypeIp(((QQAppInterface)localObject1).getApp().getBaseContext(), 21, paramBoolean);
-        if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
-          localObject1 = ((List)localObject2).iterator();
-        }
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (EndPoint)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((EndPoint)localObject2).host)))
-          {
-            localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject2).host, ((EndPoint)localObject2).port, true));
-            continue;
-            HwServlet.getConfig((AppRuntime)localObject1, ((QQAppInterface)localObject1).c());
-          }
-        }
+        boolean bool = false;
+        continue;
+        jdField_b_of_type_Boolean = false;
       }
     }
-    return localArrayList;
-  }
-  
-  public static byte[] b()
-  {
-    return SessionInfo.getInstance(BaseApplicationImpl.getApplication().getRuntime().getAccount()).getSessionKey();
-  }
-  
-  public static byte[] c()
-  {
-    return SessionInfo.getInstance(BaseApplicationImpl.getApplication().getRuntime().getAccount()).getHttpconn_sig_session();
-  }
-  
-  private final void f()
-  {
-    this.jdField_a_of_type_Bamy.a();
-    bawo localbawo = a();
-    if (!e())
+    if ((Build.MANUFACTURER.equals("motorola")) && (Build.VERSION.SDK_INT < 14))
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
-      d();
-    }
-    do
-    {
+      jdField_b_of_type_Boolean = true;
+      jdField_a_of_type_Boolean = bool;
       return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localbawo.toString());
-      }
-    } while ((!f()) || (localbawo == null));
-    this.jdField_a_of_type_Bawo = localbawo;
-    QLog.i("BDHCommonUploadProcessor", 1, "BDHCommonUploadProcessor commonId: " + this.jdField_a_of_type_Int);
-    baxu.a(localbawo);
-  }
-  
-  public final int a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().cancelTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    }
-    return 0;
-  }
-  
-  protected final long a(long paramLong)
-  {
-    paramLong = this.jdField_q_of_type_Long - paramLong;
-    if (!this.jdField_d_of_type_Boolean) {}
-    for (paramLong = Math.min(paramLong, this.jdField_a_of_type_Bica.a(BaseApplication.getContext(), this.jdField_q_of_type_Long, this.s, -1));; paramLong = Math.min(paramLong, 14600L)) {
-      return Math.min(paramLong, 131072L);
     }
   }
   
-  protected bawo a()
+  public bamp(CharSequence paramCharSequence, int paramInt)
   {
-    bawo localbawo = new bawo();
-    bawx localbawx = new bawx();
-    localbawx.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    localbawx.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-    localbawx.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localbawx.jdField_c_of_type_Int = this.p;
-    localbawx.jdField_d_of_type_Int = this.jdField_q_of_type_Int;
-    localbawx.b = this.jdField_l_of_type_Boolean;
-    localbawx.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localbawx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Baub.jdField_k_of_type_Boolean;
-    localbawx.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
-    localbawo.jdField_a_of_type_Baxv = this;
-    localbawo.jdField_a_of_type_JavaLangString = "bdh_common_up";
-    localbawo.jdField_a_of_type_JavaUtilList.add(localbawx);
-    localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    localbawo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbawo.jdField_a_of_type_ArrayOfByte = this.jdField_d_of_type_ArrayOfByte;
-    return localbawo;
+    this(paramCharSequence, paramInt, 32);
   }
   
-  protected final void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  public bamp(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if (paramLong1 != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.countFlow(true, 1, this.jdField_a_of_type_Baub.jdField_b_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.countFlow(true, 1, this.jdField_a_of_type_Baub.jdField_b_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.countFlow(true, 0, this.jdField_a_of_type_Baub.jdField_b_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.countFlow(true, 0, this.jdField_a_of_type_Baub.jdField_b_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, paramLong4);
-    }
+    this(paramCharSequence, 0, paramCharSequence.length(), paramInt1, paramInt2, -1);
   }
   
-  public final void a(bawo parambawo, baxd parambaxd)
+  public bamp(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  protected bamp(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (parambaxd != null)
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 32;
+    this.jdField_d_of_type_Int = paramInt4;
+    long l = SystemClock.uptimeMillis();
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject1 != null) {
+      jdField_a_of_type_JavaLangString = ((AppRuntime)localObject1).getAccount();
+    }
+    if (jdField_a_of_type_JavaLangString == null) {
+      localObject1 = "";
+    }
+    for (;;)
     {
-      int i = 0;
-      if (i < parambaxd.jdField_a_of_type_JavaUtilList.size())
+      jdField_a_of_type_JavaLangString = (String)localObject1;
+      this.jdField_c_of_type_Int = paramInt5;
+      paramInt5 = a(3);
+      try
       {
-        parambawo = (baxe)parambaxd.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", parambawo.toString());
-        }
-        a(this.jdField_a_of_type_Bamy, parambawo);
-        if (QLog.isColorLevel()) {
-          QLog.d("BDHCommonUploadProcessor", 2, "onBusiProtoResp()------response.result = " + parambawo.jdField_c_of_type_Int);
-        }
-        if (parambawo.jdField_c_of_type_Int == 0)
+        this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[paramInt5];
+        this.jdField_a_of_type_ArrayOfInt = new int[paramInt5 * 3];
+        paramInt4 = (int)(paramInt4 * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+        if (paramCharSequence == null)
         {
-          this.jdField_a_of_type_JavaLangString = parambawo.jdField_a_of_type_JavaLangString;
-          this.s = this.jdField_q_of_type_Long;
-          if (QLog.isColorLevel()) {
-            QLog.d("BDHCommonUploadProcessor", 2, "onBusiProtoResp()---- sessionKey: " + this.jdField_a_of_type_JavaLangString);
-          }
-          this.jdField_a_of_type_Baoj.jdField_l_of_type_JavaLangString = parambawo.jdField_b_of_type_JavaLangString;
-          this.jdField_a_of_type_Baoj.jdField_m_of_type_JavaLangString = parambawo.e;
-          this.jdField_a_of_type_Baoj.n = parambawo.jdField_c_of_type_JavaLangString;
-          this.jdField_a_of_type_Baoj.o = parambawo.jdField_d_of_type_JavaLangString;
-          this.jdField_a_of_type_Baoj.i = ("http://" + parambawo.jdField_b_of_type_JavaLangString + parambawo.e);
-          this.jdField_a_of_type_Baoj.jdField_j_of_type_JavaLangString = ("http://" + parambawo.jdField_b_of_type_JavaLangString + parambawo.jdField_c_of_type_JavaLangString);
-          this.jdField_a_of_type_Baoj.k = ("http://" + parambawo.jdField_b_of_type_JavaLangString + parambawo.jdField_d_of_type_JavaLangString);
-          this.jdField_a_of_type_Baoj.g = parambawo.f;
-          if (parambawo.jdField_a_of_type_Boolean)
+          this.e = "";
+          this.jdField_d_of_type_JavaLangString = "";
+          return;
+          localObject1 = jdField_a_of_type_JavaLangString;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        for (;;)
+        {
+          localOutOfMemoryError.printStackTrace();
+        }
+        this.jdField_d_of_type_JavaLangString = paramCharSequence.toString();
+        this.e = this.jdField_d_of_type_JavaLangString;
+        this.jdField_a_of_type_Int = paramInt3;
+        if ((paramInt3 & 0x1) == 1) {
+          break label190;
+        }
+      }
+    }
+    label190:
+    Object localObject2;
+    if ((paramInt3 & 0x6) > 0)
+    {
+      localObject2 = new StringBuilder(this.jdField_d_of_type_JavaLangString);
+      paramInt4 = a(0, ((StringBuilder)localObject2).length(), paramInt3, paramInt4, (StringBuilder)localObject2);
+      this.e = ((StringBuilder)localObject2).toString();
+      if (!jdField_a_of_type_Boolean) {
+        this.jdField_d_of_type_JavaLangString = this.e;
+      }
+      if (paramInt4 < 10) {}
+    }
+    for (paramInt4 = 1;; paramInt4 = 0)
+    {
+      Object localObject3;
+      if (paramInt4 != 0)
+      {
+        localObject2 = (bamw[])getSpans(paramInt1, paramInt2, bamw.class);
+        if (localObject2 != null)
+        {
+          paramInt5 = localObject2.length;
+          paramInt4 = 0;
+          if (paramInt4 < paramInt5)
           {
-            this.jdField_a_of_type_Baoj.a();
-            e();
-            if (QLog.isColorLevel()) {
-              QLog.d("BDHCommonUploadProcessor", 2, "onBusiProtoResp()---- file is Exsit! " + this.jdField_a_of_type_Baub.i);
+            localObject3 = localObject2[paramInt4];
+            if (((bamw)localObject3).jdField_c_of_type_Int == 1) {
+              ((bamw)localObject3).jdField_a_of_type_Int &= 0x7FFFFFFF;
             }
-            label374:
-            this.jdField_a_of_type_Long = parambawo.jdField_a_of_type_Long;
-            this.jdField_a_of_type_Baoj.d = this.jdField_a_of_type_Long;
-            if (QLog.isColorLevel()) {
-              QLog.d("BDHCommonUploadProcessor", 2, "mFileID->" + this.jdField_a_of_type_Long + " groupUin->" + this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
+            for (;;)
+            {
+              paramInt4 += 1;
+              break;
+              if (((bamw)localObject3).jdField_c_of_type_Int == 2) {
+                ((bamy)localObject3).jdField_b_of_type_Boolean = false;
+              }
             }
           }
+        }
+      }
+      if (((paramInt3 & 0x8) == 8) && (this.e != null)) {
+        if ((jdField_a_of_type_JavaLangString.length() > 3) && (jdField_a_of_type_JavaLangString.charAt(jdField_a_of_type_JavaLangString.length() - 3) == '0') && (jdField_a_of_type_JavaLangString.charAt(jdField_a_of_type_JavaLangString.length() - 2) == '1'))
+        {
+          localObject2 = new HashMap();
+          ((HashMap)localObject2).put("length", this.e.length() + "");
+          localObject3 = azri.a(BaseApplication.getContext());
+          if (this.e.length() >= 1000) {
+            break label647;
+          }
+        }
+      }
+      label647:
+      for (boolean bool = true;; bool = false)
+      {
+        ((azri)localObject3).a(null, "qq_url_length_report", bool, 0L, 0L, (HashMap)localObject2, null);
+        if (this.e.length() < 1000) {
+          a();
+        }
+        if (!(paramCharSequence instanceof Spanned)) {
+          break;
+        }
+        localObject2 = (Spanned)paramCharSequence;
+        localObject3 = ((Spanned)localObject2).getSpans(paramInt1, paramInt2, Object.class);
+        paramInt3 = 0;
+        while (paramInt3 < localObject3.length)
+        {
+          paramInt5 = ((Spanned)localObject2).getSpanStart(localObject3[paramInt3]);
+          int i = ((Spanned)localObject2).getSpanEnd(localObject3[paramInt3]);
+          int j = ((Spanned)localObject2).getSpanFlags(localObject3[paramInt3]);
+          paramInt4 = paramInt5;
+          if (paramInt5 < paramInt1) {
+            paramInt4 = paramInt1;
+          }
+          paramInt5 = i;
+          if (i > paramInt2) {
+            paramInt5 = paramInt2;
+          }
+          setSpan(localObject3[paramInt3], paramInt4 - paramInt1, paramInt5 - paramInt1, j);
+          paramInt3 += 1;
+        }
+      }
+      if (SystemClock.uptimeMillis() - l <= 400L) {
+        break;
+      }
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("time", SystemClock.uptimeMillis() - l + "");
+      if (QLog.isColorLevel()) {
+        QLog.i("QQText", 2, SystemClock.uptimeMillis() - l + ", " + paramCharSequence.length() + ", " + this.jdField_b_of_type_Int);
+      }
+      ((HashMap)localObject2).put("length", paramCharSequence.length() + "");
+      ((HashMap)localObject2).put("emoji", this.jdField_b_of_type_Int + "");
+      azri.a(BaseApplication.getContext()).a(null, "qqTextData", false, 0L, 0L, (HashMap)localObject2, null);
+      return;
+    }
+  }
+  
+  public bamp(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord)
+  {
+    this(paramCharSequence, 0, paramCharSequence.length(), paramInt1, paramInt2, -1);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+  }
+  
+  private static int a(int paramInt)
+  {
+    int j = paramInt * 4;
+    paramInt = 4;
+    for (;;)
+    {
+      int i = j;
+      if (paramInt < 32)
+      {
+        if (j <= (1 << paramInt) - 12) {
+          i = (1 << paramInt) - 12;
+        }
+      }
+      else {
+        return i / 4;
+      }
+      paramInt += 1;
+    }
+  }
+  
+  private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, StringBuilder paramStringBuilder)
+  {
+    int i5 = paramStringBuilder.length();
+    int j = 0;
+    int i = 0;
+    float f1 = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
+    int i2 = (int)(22.0F * f1 + 0.5F);
+    int i6 = (int)(f1 * 32.0F + 0.5F);
+    int k = paramInt1;
+    paramInt1 = i;
+    int i7;
+    boolean bool1;
+    label82:
+    int m;
+    if (k < paramInt2)
+    {
+      i7 = paramStringBuilder.codePointAt(k);
+      if ((paramInt3 & 0x4) == 4)
+      {
+        bool1 = true;
+        if (((paramInt3 & 0x6) <= 0) || (i7 != 20) || (k >= i5 - 1)) {
+          break label620;
+        }
+        m = paramStringBuilder.charAt(k + 1);
+        if (!apsp.c(m)) {
+          break label252;
+        }
+        if (!jdField_a_of_type_Boolean) {
+          break label230;
+        }
+        paramStringBuilder.replace(k, k + 2, "##");
+        label145:
+        i = m;
+        if (bool1) {
+          i = m | 0x80000000;
+        }
+        a(new bamw(i, paramInt4, 1), k, k + 2, 33);
+        i = k + 1;
+        k = j + 1;
+        paramInt1 += 1;
+        j = i;
+        i = k;
+        label210:
+        if (i <= 512) {
+          break label1104;
+        }
+      }
+    }
+    label424:
+    label473:
+    label1117:
+    for (;;)
+    {
+      if (paramInt1 > 0) {}
+      return paramInt1;
+      bool1 = false;
+      break label82;
+      label230:
+      if (m != 10) {
+        break label145;
+      }
+      paramStringBuilder.setCharAt(k + 1, 'ú');
+      break label145;
+      label252:
+      if ((m >= 255) && (k + 4 < i5))
+      {
+        char[] arrayOfChar = new char[4];
+        arrayOfChar[0] = paramStringBuilder.charAt(k + 4);
+        arrayOfChar[1] = paramStringBuilder.charAt(k + 3);
+        arrayOfChar[2] = paramStringBuilder.charAt(k + 2);
+        arrayOfChar[3] = paramStringBuilder.charAt(k + 1);
+        i = 0;
+        if (i < 3)
+        {
+          if (arrayOfChar[i] == 'ú') {
+            arrayOfChar[i] = '\n';
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            if (arrayOfChar[i] == 'þ') {
+              arrayOfChar[i] = '\r';
+            }
+          }
+        }
+        boolean bool2;
+        if (m == 511)
+        {
+          bool2 = true;
+          a(new bamy(arrayOfChar, paramInt4, bool1, bool2), k, k + 5, 33);
+          i = 2;
+          if (i >= 5) {
+            break label504;
+          }
+          if (paramStringBuilder.charAt(k + i) != '\n') {
+            break label473;
+          }
+          paramStringBuilder.setCharAt(k + i, 'ú');
         }
         for (;;)
         {
           i += 1;
+          break label424;
+          bool2 = false;
           break;
-          if ((this.jdField_a_of_type_Int == 9) && (parambawo.f != null)) {
-            this.jdField_a_of_type_TencentImCsCmd0x388Cmd0x388$ExpRoamExtendInfo.bytes_resid.set(ByteStringMicro.copyFrom(parambawo.f.getBytes()));
+          if (paramStringBuilder.charAt(k + i) == '\r') {
+            paramStringBuilder.setCharAt(k + i, 'þ');
           }
-          if ((this.jdField_a_of_type_Int == 20) && (parambawo.f != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$UploadPicExtInfo.bytes_file_resid.set(ByteStringMicro.copyFrom(parambawo.f.getBytes()));
-          }
-          this.jdField_m_of_type_JavaLangString = parambawo.jdField_a_of_type_JavaLangString;
-          this.s = parambawo.jdField_b_of_type_Int;
-          this.r = parambawo.jdField_b_of_type_Long;
-          aQ_();
-          break label374;
-          d();
         }
+        k += 4;
+        i = j + 1;
+        paramInt1 += 1;
+        j = k;
+        break label210;
+      }
+      label504:
+      int i3;
+      label620:
+      int n;
+      if (m == 250)
+      {
+        if (jdField_a_of_type_Boolean) {
+          paramStringBuilder.replace(k, k + 2, "##");
+        }
+        if (bool1) {}
+        for (i = -2147483638;; i = 10)
+        {
+          a(new bamw(i, paramInt4, 1), k, k + 2, 33);
+          k += 1;
+          i = j + 1;
+          paramInt1 += 1;
+          j = k;
+          break;
+        }
+        if ((paramInt3 & 0x1) == 1)
+        {
+          m = bamd.a(i7);
+          i = -1;
+          i1 = 0;
+          i3 = 0;
+          if (i7 > 65535)
+          {
+            n = i3;
+            if (i5 > k + 2)
+            {
+              i = paramStringBuilder.codePointAt(k + 2);
+              n = i3;
+            }
+            if (bamd.a(i)) {
+              i1 = 1;
+            }
+            if ((m != -1) && (i1 == 0)) {
+              break label1131;
+            }
+            i1 = bamd.a(i7, i);
+            if (i1 != -1) {
+              break label960;
+            }
+          }
+        }
+      }
+      label994:
+      label1131:
+      for (int i1 = 1;; i1 = 0)
+      {
+        if (m != -1)
+        {
+          if (i1 != 0) {
+            if ((i7 > 65535) && (i5 >= k + 2))
+            {
+              if (jdField_a_of_type_Boolean) {
+                paramStringBuilder.replace(k, k + 2, "##");
+              }
+              i1 = 2;
+              if ((i <= 65535) || (i5 < k + 2)) {
+                break label994;
+              }
+              if (jdField_a_of_type_Boolean) {
+                paramStringBuilder.replace(k + 2, k + 4, "##");
+              }
+              i = i1 + 2;
+              if (n == 0) {
+                break label1117;
+              }
+              i += 1;
+            }
+          }
+          for (;;)
+          {
+            if (paramInt4 == i6) {}
+            for (n = i2;; n = paramInt4)
+            {
+              a(new bamw(m, n, 0), k, k + i, 33);
+              k += i - 1;
+              i = j + 1;
+              j = k;
+              break;
+              n = i3;
+              if (i5 <= k + 1) {
+                break label679;
+              }
+              int i4 = paramStringBuilder.codePointAt(k + 1);
+              n = i3;
+              i = i4;
+              if (i4 != 65039) {
+                break label679;
+              }
+              n = i3;
+              i = i4;
+              if (i5 <= k + 2) {
+                break label679;
+              }
+              i = paramStringBuilder.codePointAt(k + 2);
+              n = 1;
+              break label679;
+              m = i1;
+              break label716;
+              if (jdField_a_of_type_Boolean) {
+                paramStringBuilder.replace(k, k + 1, "#");
+              }
+              i1 = 1;
+              break label771;
+              if (jdField_a_of_type_Boolean) {
+                paramStringBuilder.replace(k + 2, k + 3, "#");
+              }
+              i = i1 + 1;
+              break label817;
+              if ((i7 > 65535) && (i5 >= k + 2))
+              {
+                if (jdField_a_of_type_Boolean) {
+                  paramStringBuilder.replace(k, k + 2, "##");
+                }
+                i = 2;
+                break label828;
+              }
+              if (jdField_a_of_type_Boolean) {
+                paramStringBuilder.replace(k, k + 1, "#");
+              }
+              i = 1;
+              break label828;
+            }
+            k = j + 1;
+            j = i;
+            break;
+          }
+        }
+        i = j;
+        j = k;
+        break label210;
       }
     }
   }
   
-  protected final void a(HashMap<String, String> paramHashMap)
+  private static String a(int paramInt1, int paramInt2)
   {
-    long l2 = 0L;
-    long l3 = 0L;
-    long l4 = 0L;
-    long l5 = 0L;
+    return "(" + paramInt1 + " ... " + paramInt2 + ")";
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString }));
+    localbhuf.a(2131691371, 1);
+    localbhuf.a(2131689693, 1);
+    localbhuf.c(2131690648);
+    localbhuf.a(new bamv(bhsx.a(new bamu(paramContext, paramString, localbhuf)).a(1000L)));
+    localbhuf.show();
+  }
+  
+  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
+  {
+    bhuf localbhuf = bhuf.a(paramContext);
+    if (paramInt == 0)
+    {
+      localbhuf.a(String.format(paramContext.getString(2131694910), new Object[] { paramString1 }));
+      localbhuf.a(2131691700, 1);
+      localbhuf.a(2131691361, 1);
+      localbhuf.a(2131689686, 1);
+      localbhuf.a(2131689648, 1);
+      localbhuf.a(2131693813, 1);
+    }
+    for (;;)
+    {
+      localbhuf.c(2131690648);
+      localbhuf.a(new bamr(paramInt, paramString1, paramContext, paramString2, localbhuf));
+      localbhuf.show();
+      return;
+      if (paramInt == 1)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString1 }));
+        localbhuf.a(2131691700, 1);
+        localbhuf.a(2131691361, 1);
+        localbhuf.a(2131689686, 1);
+      }
+      else if (paramInt == 2)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694186), new Object[] { paramString1 }));
+        localbhuf.a(2131719764, 1);
+        localbhuf.a(2131691361, 1);
+      }
+      else if (paramInt == 3)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString1 }));
+        localbhuf.a(2131691700, 1);
+        localbhuf.a(2131691361, 1);
+        localbhuf.a(2131689686, 1);
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      a(paramContext, paramString, i, null);
+      return;
+    }
+  }
+  
+  private void a(Object paramObject, int paramInt1, int paramInt2)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanAdded(this, paramObject, paramInt1, paramInt2);
+      i += 1;
+    }
+  }
+  
+  private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(Math.min(paramInt1, paramInt3), Math.max(paramInt2, paramInt4), SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanChanged(this, paramObject, paramInt1, paramInt2, paramInt3, paramInt4);
+      i += 1;
+    }
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < paramInt1) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " has end before start");
+    }
+    int i = length();
+    if ((paramInt1 > i) || (paramInt2 > i)) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " ends beyond length " + i);
+    }
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " starts before 0");
+    }
+  }
+  
+  public static final boolean a()
+  {
+    StackTraceElement localStackTraceElement = new Exception().getStackTrace()[2];
+    return (("android.text.StaticLayout".equals(localStackTraceElement.getClassName())) && ("generate2".equals(localStackTraceElement.getMethodName()))) || (("android.text.Layout".equals(localStackTraceElement.getClassName())) && ("expandTab".equals(localStackTraceElement.getMethodName())));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < paramString.length())
+      {
+        j = paramString.codePointAt(i);
+        if (bamd.a.get(j, -1) < 0) {
+          break label43;
+        }
+      }
+      label43:
+      for (int j = 1; j != 0; j = 0)
+      {
+        bool1 = true;
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private void b(Object paramObject, int paramInt1, int paramInt2)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanRemoved(this, paramObject, paramInt1, paramInt2);
+      i += 1;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < paramString.length())
+      {
+        if (20 == paramString.codePointAt(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private static void c(String paramString1, String paramString2)
+  {
     try
     {
-      l1 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+      azqs.b((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(jdField_a_of_type_JavaLangString), "dc00898", "", "", paramString1, paramString2, 0, 0, "", "", "", "");
+      return;
     }
-    catch (Exception localException3)
+    catch (AccountNotMatchException paramString1)
+    {
+      paramString1.printStackTrace();
+      return;
+    }
+    catch (ClassCastException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  private static void d(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent("android.intent.action.INSERT_OR_EDIT");
+    localIntent.setType("vnd.android.cursor.item/person");
+    localIntent.setType("vnd.android.cursor.item/contact");
+    localIntent.setType("vnd.android.cursor.item/raw_contact");
+    localIntent.putExtra("phone", paramString);
+    paramContext.startActivity(localIntent);
+    c("0X800A00C", "0X800A00C");
+  }
+  
+  private static void d(String paramString1, String paramString2)
+  {
+    if (jdField_b_of_type_JavaLangString == null) {
+      return;
+    }
+    try
+    {
+      QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(jdField_a_of_type_JavaLangString);
+      if (paramString2 != null)
+      {
+        azqs.b(localQQAppInterface1, "P_CliOper", "Grp_join", "", "send", "Clk_url", 0, 0, jdField_b_of_type_JavaLangString, "" + paramString1, "" + paramString2, "");
+        return;
+      }
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      QQAppInterface localQQAppInterface2;
+      for (;;)
+      {
+        localClassCastException.printStackTrace();
+        localQQAppInterface2 = null;
+      }
+      azqs.b(localQQAppInterface2, "P_CliOper", "Grp_join", "", "send", "Clk_item", 0, 0, jdField_b_of_type_JavaLangString, "" + paramString1, "" + paramString1, "");
+      return;
+    }
+    catch (AccountNotMatchException paramString1) {}
+  }
+  
+  private static void e(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent("android.intent.action.INSERT", ContactsContract.Contacts.CONTENT_URI);
+    localIntent.putExtra("phone", paramString);
+    paramContext.startActivity(localIntent);
+    c("0X800A00B", "0X800A00B");
+  }
+  
+  SpannableString a()
+  {
+    SpannableString localSpannableString = new SpannableString(this.e);
+    TextUtils.copySpansFrom(this, 0, length(), Object.class, localSpannableString, 0);
+    return localSpannableString;
+  }
+  
+  public bamp a(String paramString, boolean paramBoolean, int... paramVarArgs)
+  {
+    bamp localbamp = new bamp("", 0);
+    localbamp.jdField_d_of_type_Int = this.jdField_d_of_type_Int;
+    localbamp.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+    localbamp.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    localbamp.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbamp.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_ArrayOfInt.length];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, localbamp.jdField_a_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
+    localbamp.jdField_a_of_type_ArrayOfJavaLangObject = new Object[this.jdField_a_of_type_ArrayOfJavaLangObject.length];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, localbamp.jdField_a_of_type_ArrayOfJavaLangObject, 0, this.jdField_a_of_type_ArrayOfJavaLangObject.length);
+    int i = 0;
+    int j = 0;
+    if (paramVarArgs.length >= 2)
+    {
+      i = paramVarArgs[0];
+      j = (int)(paramVarArgs[1] * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    }
+    StringBuilder localStringBuilder;
+    if (paramBoolean)
+    {
+      localStringBuilder = new StringBuilder().append(paramString).append(this.e);
+      int m = paramString.length();
+      int k = 0;
+      while (k < localbamp.jdField_a_of_type_ArrayOfJavaLangObject.length)
+      {
+        this.jdField_a_of_type_ArrayOfInt[(k * 3 + 0)] += m;
+        this.jdField_a_of_type_ArrayOfInt[(k * 3 + 1)] += m;
+        k += 1;
+      }
+      if (i != 0) {
+        localbamp.a(0, paramString.length(), i, j, localStringBuilder);
+      }
+      localbamp.jdField_d_of_type_JavaLangString = (paramString + this.jdField_d_of_type_JavaLangString);
+      localbamp.e = localStringBuilder.toString();
+      if (paramVarArgs.length >= 3) {
+        if (paramVarArgs[2] != 1) {
+          break label442;
+        }
+      }
+    }
+    label442:
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {
+        localbamp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      }
+      return localbamp;
+      localStringBuilder = new StringBuilder().append(paramString).append(this.e);
+      if (i != 0) {
+        localbamp.a(this.e.length(), this.e.length() + paramString.length(), i, j, localStringBuilder);
+      }
+      this.jdField_d_of_type_JavaLangString += paramString;
+      localbamp.e = localStringBuilder.toString();
+      break;
+    }
+  }
+  
+  public String a()
+  {
+    return a(true);
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    StringBuffer localStringBuffer = new StringBuffer(this.e);
+    int m = "[emoji]".length();
+    int j = 0;
+    int k = 0;
+    if (j < this.jdField_b_of_type_Int)
+    {
+      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[j];
+      int i = k;
+      int n;
+      int i1;
+      if ((localObject instanceof bamw))
+      {
+        n = this.jdField_a_of_type_ArrayOfInt[(j * 3 + 0)];
+        i1 = this.jdField_a_of_type_ArrayOfInt[(j * 3 + 1)];
+        localObject = (bamw)localObject;
+        switch (((bamw)localObject).jdField_c_of_type_Int)
+        {
+        default: 
+          i = k;
+        }
+      }
+      for (;;)
+      {
+        j += 1;
+        k = i;
+        break;
+        i = k;
+        if (paramBoolean)
+        {
+          localStringBuffer.replace(n + k, i1 + k, "[emoji]");
+          i = k + (m - (i1 - n));
+          continue;
+          localObject = ((bamw)localObject).a();
+          localStringBuffer.replace(n + k, i1 + k, (String)localObject);
+          i = k + (((String)localObject).length() - (i1 - n));
+          continue;
+          localObject = apsp.a(((bamw)localObject).jdField_a_of_type_Int & 0x7FFFFFFF);
+          localStringBuffer.replace(n + k, i1 + k, (String)localObject);
+          i = k + (((String)localObject).length() - (i1 - n));
+        }
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  protected void a()
+  {
+    Object localObject = band.a(this.e);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bame localbame = (bame)((Iterator)localObject).next();
+        a(new bamx(this, localbame.jdField_a_of_type_JavaLangString), localbame.jdField_a_of_type_Int, localbame.jdField_b_of_type_Int, 33);
+      }
+    }
+  }
+  
+  public void a(Context paramContext, String paramString, int paramInt, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQText", 2, "msg is null, show old action sheet");
+      }
+      a(paramContext, paramString, paramInt, this.f);
+      return;
+    }
+    Object localObject1 = null;
+    if ((paramContext instanceof BaseActivity)) {
+      localObject1 = ((BaseActivity)paramContext).app;
+    }
+    if (localObject1 == null) {}
+    for (;;)
     {
       try
       {
-        l2 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+        Object localObject2 = paramMessageRecord.selfuin;
+        localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime((String)localObject2);
+        localObject1 = localObject2;
+        if (localObject1 != null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQText", 2, "app is null, show old action sheet");
+        }
+        a(paramContext, paramString, paramInt, this.f);
+        return;
       }
-      catch (Exception localException3)
+      catch (AccountNotMatchException localAccountNotMatchException)
       {
-        try
-        {
-          l3 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-        }
-        catch (Exception localException3)
-        {
-          try
-          {
-            for (;;)
-            {
-              l4 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-              String str1 = (String)paramHashMap.get("tc_p:");
-              String str2 = (String)paramHashMap.get("rep_bdhTrans");
-              String str3 = (String)paramHashMap.get("segspercnt");
-              String str4 = (String)paramHashMap.get("param_conf_segSize");
-              String str5 = (String)paramHashMap.get("param_conf_segNum");
-              String str6 = (String)paramHashMap.get("param_conf_connNum");
-              paramHashMap = (String)paramHashMap.get("param_fin_lost");
-              if (str1 != null) {
-                this.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-              }
-              if (paramHashMap != null) {
-                this.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", paramHashMap);
-              }
-              this.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-              this.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-              this.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-              this.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-              this.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str6);
-              a(l1, l2, l3, l4);
-              return;
-              localException1 = localException1;
-              long l1 = l2;
-              if (QLog.isColorLevel())
-              {
-                QLog.w("BDHCommonUploadProcessor", 2, "upFlow_Wifi : number format exception !");
-                l1 = l2;
-                continue;
-                localException2 = localException2;
-                l2 = l3;
-                if (QLog.isColorLevel())
-                {
-                  QLog.w("BDHCommonUploadProcessor", 2, "dwFlow_Wifi : number format exception !");
-                  l2 = l3;
-                  continue;
-                  localException3 = localException3;
-                  l3 = l4;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.w("BDHCommonUploadProcessor", 2, "upFlow_Xg : number format exception !");
-                    l3 = l4;
-                  }
-                }
-              }
-            }
-          }
-          catch (Exception localException4)
-          {
-            for (;;)
-            {
-              l4 = l5;
-              if (QLog.isColorLevel())
-              {
-                QLog.w("BDHCommonUploadProcessor", 2, "dwFlow_Xg : number format exception !");
-                l4 = l5;
-              }
-            }
-          }
-        }
+        QLog.e("QQText", 1, localAccountNotMatchException, new Object[0]);
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (basb.b(this.jdField_j_of_type_Int))) {}
-    while ((this.h) || ((paramBoolean) && ((this.jdField_m_of_type_Int & 0x2) > 0)) || ((!paramBoolean) && ((this.jdField_m_of_type_Int & 0x1) > 0))) {
-      return;
-    }
-    int j = this.jdField_m_of_type_Int;
     int i;
-    long l;
-    String str;
-    if (paramBoolean)
+    bhuf localbhuf;
+    Object localObject3;
+    if (paramInt == 2)
     {
-      i = 2;
-      this.jdField_m_of_type_Int = (i | j);
-      this.jdField_l_of_type_Long = System.currentTimeMillis();
-      l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label158;
+      i = 5;
+      localbhuf = bhuf.a(paramContext);
+      localObject3 = (alto)((QQAppInterface)localObject1).getManager(51);
+      if (paramInt != 0) {
+        break label367;
       }
-      str = "null";
-      label105:
-      localHashMap.put("param_sessionKey", str);
-      if (!paramBoolean) {
-        break label167;
+      if (bdin.a()) {
+        break label328;
       }
-      azmz.a(BaseApplication.getContext()).a(null, this.jdField_b_of_type_JavaLangString, true, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+      localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString }));
+      localbhuf.a(2131691361, 1);
+      localbhuf.a(2131692401, 1);
+      localbhuf.a(2131691700, 1);
+      localbhuf.a(2131689686, 1);
+      azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", ayin.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
     }
     for (;;)
     {
-      l();
+      localbhuf.c(2131690648);
+      localbhuf.a(new bams(this, paramContext, paramString, (QQAppInterface)localObject1, i, paramMessageRecord, paramInt, localbhuf));
+      localbhuf.a(new bamt(this, (QQAppInterface)localObject1, i));
+      localbhuf.show();
       return;
-      i = 1;
+      i = 4;
       break;
-      label158:
-      str = this.jdField_a_of_type_JavaLangString;
-      break label105;
-      label167:
-      if (this.jdField_j_of_type_Int != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
+      label328:
+      if (this.jdField_a_of_type_Ayin == null) {
+        this.jdField_a_of_type_Ayin = new ayin(this.f);
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_q_of_type_Long));
-      azmz.a(BaseApplication.getContext()).a(null, this.jdField_b_of_type_JavaLangString, false, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+      this.jdField_a_of_type_Ayin.a((QQAppInterface)localObject1, paramContext, paramString, (ChatMessage)paramMessageRecord);
+      return;
+      label367:
+      if (paramInt == 1)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString }));
+        localbhuf.a(2131691361, 1);
+        localbhuf.a(2131692401, 1);
+        localbhuf.a(2131691700, 1);
+        localbhuf.a(2131689686, 1);
+        if ((!paramMessageRecord.isSend()) && (((alto)localObject3).b(paramMessageRecord.senderuin)))
+        {
+          localObject3 = (alpk)((QQAppInterface)localObject1).a(2);
+          if (localObject3 != null) {
+            ((alpk)localObject3).a(jdField_a_of_type_JavaLangString, paramMessageRecord.senderuin, 1, 0L, (byte)1, 0L, 0L, null, "", 0L, 10004, null, (byte)0);
+          }
+          localbhuf.a(2131689696, 1);
+        }
+        azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", ayin.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+      }
+      else if (paramInt == 2)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694186), new Object[] { paramString }));
+        localbhuf.a(2131691361, 1);
+        localbhuf.a(2131692401, 1);
+        localbhuf.a(2131719764, 1);
+        azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A924", "0X800A924", ayin.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+      }
+      else if (paramInt == 3)
+      {
+        localbhuf.a(String.format(paramContext.getString(2131694911), new Object[] { paramString }));
+        localbhuf.a(2131691361, 1);
+        localbhuf.a(2131692401, 1);
+        localbhuf.a(2131691700, 1);
+        localbhuf.a(2131689686, 1);
+        azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", ayin.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+      }
     }
   }
   
-  byte[] a()
+  protected void a(View paramView, String paramString)
   {
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(500);
-    localReqBody.uint32_business_id.set(3);
-    localReqBody.uint32_client_type.set(104);
-    cmd0x346.ApplyUploadReq localApplyUploadReq = new cmd0x346.ApplyUploadReq();
-    localApplyUploadReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    int i;
     try
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      localObject = str;
-      if (str.startsWith("+")) {
-        localObject = str.substring(1);
+      Object localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(jdField_a_of_type_JavaLangString);
+      if ((localObject1 instanceof QQAppInterface)) {
+        afcq.a(paramView.getContext(), (QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 5, paramString);
       }
-      long l = Long.valueOf((String)localObject).longValue();
-      localApplyUploadReq.uint64_recver_uin.set(l);
+      localObject2 = null;
+      i = paramString.lastIndexOf("#");
+      if (i > 0) {
+        localObject2 = paramString.substring(i);
+      }
+      String str2 = URLUtil.guessUrl(paramString);
+      localObject1 = str2;
+      if (localObject2 != null) {
+        localObject1 = str2 + (String)localObject2;
+      }
+      if (baic.a((String)localObject1))
+      {
+        localObject2 = paramView.getContext();
+        if (bdin.d(BaseApplication.getContext()))
+        {
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("url", (String)localObject1);
+          ((Bundle)localObject2).putString("tdsourcetag", "s_qq_aiomsg");
+          TeamWorkDocEditBrowserActivity.a(paramView.getContext(), (Bundle)localObject2, false);
+          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
+            break label271;
+          }
+          azqs.b(null, "CliOper", "", "", "0X80061B1", "0X80061B1", 0, 0, "", "", "", "");
+          return;
+        }
+      }
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
       for (;;)
       {
-        Object localObject;
-        int i;
-        localException.printStackTrace();
+        Object localObject2;
+        QLog.e("QQText", 1, localThrowable, new Object[0]);
+        continue;
+        QQToast.a((Context)localObject2, ((Context)localObject2).getResources().getString(2131692398), 0).b(((Context)localObject2).getResources().getDimensionPixelSize(2131298914));
+        continue;
+        auke.a(paramView.getContext(), localThrowable, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.f);
       }
-    }
-    localApplyUploadReq.uint32_file_type.set(2);
-    localApplyUploadReq.str_file_name.set(this.jdField_d_of_type_JavaLangString);
-    localApplyUploadReq.uint64_file_size.set(this.jdField_q_of_type_Long);
-    localApplyUploadReq.bytes_10m_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
-    localReqBody.msg_apply_upload_req.set(localApplyUploadReq);
-    localObject = new cmd0x346.ExtensionReq();
-    ((cmd0x346.ExtensionReq)localObject).uint64_id.set(3L);
-    ((cmd0x346.ExtensionReq)localObject).uint32_ptt_format.set(0);
-    ((cmd0x346.ExtensionReq)localObject).uint32_ptt_time.set(this.jdField_a_of_type_Baub.jdField_j_of_type_Int);
-    i = bawa.a();
-    ((cmd0x346.ExtensionReq)localObject).uint32_net_type.set(i);
-    ((cmd0x346.ExtensionReq)localObject).uint32_voice_type.set(2);
-    ((cmd0x346.ExtensionReq)localObject).uint64_type.set(0);
-    localReqBody.msg_extension_req.set((MessageMicro)localObject);
-    return localReqBody.toByteArray();
-  }
-  
-  public final void aQ_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "BDHNormalUploadProcessor.sendFile()");
-    }
-    this.jdField_b_of_type_Bamy.a();
-    bamq localbamq = new bamq(this, SystemClock.uptimeMillis());
-    if (this.jdField_a_of_type_Int == 9) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, bdlr.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localbamq, this.jdField_a_of_type_TencentImCsCmd0x388Cmd0x388$ExpRoamExtendInfo.toByteArray());
     }
     for (;;)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-      if (QLog.isColorLevel()) {
-        QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Baub.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.jdField_l_of_type_JavaLangString + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 3);
-      }
-      if (i != 0)
+      try
       {
-        a(i, "SubmitError.", "", this.jdField_b_of_type_Bamy);
-        d();
+        label271:
+        paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        String str1 = paramView.frienduin;
+        if (paramView.istroop == 1)
+        {
+          i = 2;
+          if ((paramString == null) || (paramString.length() <= 150)) {
+            break label405;
+          }
+          paramView = paramString.substring(0, 150);
+          paramString = new URL(paramString).getHost();
+          azqs.b(null, "CliOper", "", str1, "0X80061B1", "0X80061B1", i, 0, "", "", paramView, paramString);
+          if (!QLog.isDebugVersion()) {
+            break;
+          }
+          QLog.d("QQText", 4, String.format("the report params:%s,%s,%s,%s", new Object[] { "", "", paramView, paramString }));
+          return;
+        }
       }
-      return;
-      if (this.jdField_a_of_type_Int == 20) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, bdlr.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localbamq, this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$UploadPicExtInfo.toByteArray());
-      } else if (this.jdField_a_of_type_Int == 36) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localbamq, a(), false);
-      } else if (this.jdField_a_of_type_Int == 40) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localbamq, this.jdField_a_of_type_Baub.jdField_a_of_type_ArrayOfByte, true);
-      } else if (this.jdField_a_of_type_Int == 54) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localbamq, this.jdField_a_of_type_Baub.jdField_a_of_type_ArrayOfByte, false);
-      } else if ((this.jdField_a_of_type_Int == 51) || (this.jdField_a_of_type_Int == 58) || (this.jdField_a_of_type_Int == 62) || (this.jdField_a_of_type_Int == 65) || (this.jdField_a_of_type_Int == 70) || (this.jdField_a_of_type_Int == 76)) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localbamq, this.jdField_a_of_type_Baub.jdField_a_of_type_ArrayOfByte, false);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.i, (int)this.r, bdlr.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localbamq);
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
       }
+      i = 1;
+      continue;
+      label405:
+      paramView = paramString;
     }
   }
   
-  public final void aS_()
+  protected void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.aS_();
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "BDHCommonUploadProcessor.start()");
-    }
-    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!h()))
+    if (this.jdField_b_of_type_Int + 1 >= this.jdField_a_of_type_ArrayOfJavaLangObject.length)
     {
-      d();
-      return;
+      int i = a(this.jdField_b_of_type_Int + 1);
+      Object[] arrayOfObject = new Object[i];
+      int[] arrayOfInt = new int[i * 3];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, arrayOfObject, 0, this.jdField_b_of_type_Int);
+      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_b_of_type_Int * 3);
+      this.jdField_a_of_type_ArrayOfJavaLangObject = arrayOfObject;
+      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
     }
-    if (36 == this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_b_of_type_Int] = paramObject;
+    this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 0)] = paramInt1;
+    this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 1)] = paramInt2;
+    this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 2)] = paramInt3;
+    this.jdField_b_of_type_Int += 1;
+  }
+  
+  public void a(String paramString)
+  {
+    this.f = paramString;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public String b()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(this.e);
+    int j = 0;
+    int k = 0;
+    if (j < this.jdField_b_of_type_Int)
     {
-      this.jdField_a_of_type_JavaLangString = "null";
-      this.jdField_a_of_type_Baoj.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.i;
-      aQ_();
+      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[j];
+      int i = k;
+      int m;
+      if ((localObject instanceof bamw))
+      {
+        i = this.jdField_a_of_type_ArrayOfInt[(j * 3 + 0)];
+        m = this.jdField_a_of_type_ArrayOfInt[(j * 3 + 1)];
+        localObject = (bamw)localObject;
+        switch (((bamw)localObject).jdField_c_of_type_Int)
+        {
+        default: 
+          i = k;
+        }
+      }
+      for (;;)
+      {
+        j += 1;
+        k = i;
+        break;
+        localStringBuffer.replace(i + k, m + k, "");
+        i = k + (0 - (m - i));
+        continue;
+        localObject = ((bamw)localObject).a();
+        localStringBuffer.replace(i + k, m + k, (String)localObject);
+        i = k + (((String)localObject).length() - (m - i));
+        continue;
+        localStringBuffer.replace(i + k, m + k, "");
+        i = k + (0 - (m - i));
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public String c()
+  {
+    char[] arrayOfChar = this.jdField_d_of_type_JavaLangString.toCharArray();
+    int k = this.jdField_d_of_type_JavaLangString.length() - 1;
+    int i = 0;
+    while ((i <= k) && (arrayOfChar[i] <= ' ') && (arrayOfChar[i] != '\024')) {
+      i += 1;
     }
     for (;;)
     {
-      d(1001);
-      return;
-      if (18 == this.jdField_a_of_type_Int)
+      int j;
+      if ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024')))
       {
-        this.jdField_a_of_type_JavaLangString = "null";
-        aQ_();
-      }
-      else if (40 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
-      }
-      else if (54 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
-      }
-      else if ((51 == this.jdField_a_of_type_Int) || (62 == this.jdField_a_of_type_Int))
-      {
-        aQ_();
-      }
-      else if (58 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
-      }
-      else if (65 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
-      }
-      else if (70 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
-      }
-      else if (76 == this.jdField_a_of_type_Int)
-      {
-        aQ_();
+        j -= 1;
       }
       else
       {
-        f();
+        if ((i == 0) && (j == k)) {
+          return this.jdField_d_of_type_JavaLangString;
+        }
+        return this.jdField_d_of_type_JavaLangString.substring(i, j + 1);
+        j = k;
       }
     }
   }
   
-  public final int b()
+  public final char charAt(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "BDHCommonUploadProcessor.resume()");
+    if ((paramInt < 0) || (paramInt > length())) {
+      return '\000';
     }
-    if (this.jdField_a_of_type_Int == 54)
-    {
-      if (this.jdField_k_of_type_Boolean)
-      {
-        this.jdField_k_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          b("resume", "");
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().resumeTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-        }
-      }
-      return super.b();
-    }
-    a();
-    f();
-    return 0;
+    return this.e.charAt(paramInt);
   }
   
-  public final int c()
+  protected Object clone()
   {
-    b("uiParam", this.jdField_a_of_type_Baub.toString());
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Baub.i))
+    bamp localbamp = (bamp)super.clone();
+    localbamp.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_ArrayOfInt.length];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, localbamp.jdField_a_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
+    localbamp.jdField_a_of_type_ArrayOfJavaLangObject = new Object[this.jdField_a_of_type_ArrayOfJavaLangObject.length];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, localbamp.jdField_a_of_type_ArrayOfJavaLangObject, 0, this.jdField_a_of_type_ArrayOfJavaLangObject.length);
+    return localbamp;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof bamp)) {
+      return this.jdField_d_of_type_JavaLangString.equals(((bamp)paramObject).jdField_d_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public final void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
+  {
+    int i = paramInt1;
+    if (paramInt1 < 0) {
+      i = 0;
+    }
+    int j = length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > j) {
+      paramInt1 = j;
+    }
+    this.e.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
+  }
+  
+  public int getSpanEnd(Object paramObject)
+  {
+    int i = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    i -= 1;
+    while (i >= 0)
     {
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      bdda.a(this.jdField_a_of_type_Baub.i, (BitmapFactory.Options)localObject);
-      this.jdField_q_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
-      this.p = ((BitmapFactory.Options)localObject).outWidth;
+      if (arrayOfObject[i] == paramObject) {
+        return arrayOfInt[(i * 3 + 1)];
+      }
+      i -= 1;
     }
-    Object localObject = this.jdField_a_of_type_Baub.i;
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    return -1;
+  }
+  
+  public int getSpanFlags(Object paramObject)
+  {
+    int i = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    i -= 1;
+    while (i >= 0)
     {
-      b(9302, a(new Exception("filePath null")));
-      d();
-      return -1;
-    }
-    File localFile = new File((String)localObject);
-    if (!localFile.exists())
-    {
-      b(9042, a(new Exception("sendFile not exist " + (String)localObject)));
-      d();
-      return -1;
-    }
-    if (!localFile.canRead())
-    {
-      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Baoj.jdField_c_of_type_JavaLangString)));
-      d();
-      return -1;
-    }
-    long l = localFile.length();
-    this.jdField_a_of_type_Baoj.jdField_a_of_type_Long = l;
-    this.jdField_q_of_type_Long = l;
-    if (l <= 0L)
-    {
-      b(9071, a(new Exception("file size 0 " + (String)localObject)));
-      d();
-      return -1;
-    }
-    localObject = bdcs.b((String)localObject);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      this.e = ((String)localObject);
-    }
-    if ((this.jdField_a_of_type_Int != 54) && (l >= bavd.a()))
-    {
-      a(9063, (String)localObject, d((String)localObject), null);
-      d();
-      return -1;
-    }
-    if ((this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject instanceof bauf))) {
-      this.jdField_l_of_type_Boolean = ((bauf)this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Boolean;
+      if (arrayOfObject[i] == paramObject) {
+        return arrayOfInt[(i * 3 + 2)];
+      }
+      i -= 1;
     }
     return 0;
   }
   
-  public void c()
+  public int getSpanStart(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "BDHCommonUploadProcessor.pause()");
-    }
-    if (this.jdField_a_of_type_Int == 54)
+    int i = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    i -= 1;
+    while (i >= 0)
     {
-      if (!this.jdField_k_of_type_Boolean)
-      {
-        this.jdField_k_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          b("pause", "");
-        }
-        d(1006);
-        if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().stopTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-        }
+      if (arrayOfObject[i] == paramObject) {
+        return arrayOfInt[(i * 3 + 0)];
       }
-      return;
+      i -= 1;
     }
-    super.c();
+    return -1;
   }
   
-  final void d()
+  public <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "uploadCustomEmoticon resultError");
+    int m = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject2 = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = null;
+    if (paramClass == null) {
+      return null;
     }
-    d(1005);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "uploadCustomEmoticon resultError ---- errCode: " + this.jdField_j_of_type_Int + ", errDesc:" + this.jdField_j_of_type_JavaLangString);
-    }
-    awfz localawfz;
-    String str;
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null)
+    int j = 0;
+    Object[] arrayOfObject1 = null;
+    int i = 0;
+    if (j < m)
     {
-      localawfz = new awfz();
-      localawfz.jdField_a_of_type_Int = -1;
-      localawfz.jdField_b_of_type_Int = this.jdField_j_of_type_Int;
-      localawfz.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
-      if ((this.jdField_a_of_type_Int == 20) && (bamw.a(120509L).equals(this.jdField_a_of_type_JavaUtilHashMap.get("param_reason")))) {
-        localawfz.jdField_b_of_type_Int = 120509;
-      }
-      if (this.jdField_a_of_type_Int == 9)
+      if (!paramClass.isInstance(arrayOfObject2[j])) {}
+      for (;;)
       {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("param_reason");
-        if (!bamw.a(400010L).equals(str)) {
-          break label208;
+        j += 1;
+        break;
+        int k = arrayOfInt[(j * 3 + 0)];
+        int n = arrayOfInt[(j * 3 + 1)];
+        if ((k <= paramInt2) && (n >= paramInt1) && ((k == n) || (paramInt1 == paramInt2) || ((k != paramInt2) && (n != paramInt1)))) {
+          if (i == 0)
+          {
+            localObject = arrayOfObject2[j];
+            i += 1;
+          }
+          else
+          {
+            if (i == 1)
+            {
+              arrayOfObject1 = (Object[])Array.newInstance(paramClass, m - j + 1);
+              arrayOfObject1[0] = localObject;
+            }
+            n = 0xFF0000 & arrayOfInt[(j * 3 + 2)];
+            if (n != 0)
+            {
+              k = 0;
+              for (;;)
+              {
+                if ((k >= i) || (n > (getSpanFlags(arrayOfObject1[k]) & 0xFF0000)))
+                {
+                  System.arraycopy(arrayOfObject1, k, arrayOfObject1, k + 1, i - k);
+                  arrayOfObject1[k] = arrayOfObject2[j];
+                  i += 1;
+                  break;
+                }
+                k += 1;
+              }
+            }
+            arrayOfObject1[i] = arrayOfObject2[j];
+            i += 1;
+          }
         }
-        localawfz.jdField_b_of_type_Int = 400010;
       }
     }
+    if (i == 0) {
+      return (Object[])Array.newInstance(paramClass, 0);
+    }
+    if (i == 1)
+    {
+      arrayOfObject1 = (Object[])Array.newInstance(paramClass, 1);
+      if (arrayOfObject1 == null) {
+        return (Object[])Array.newInstance(paramClass, 0);
+      }
+      arrayOfObject1[0] = localObject;
+      return (Object[])arrayOfObject1;
+    }
+    if (i == arrayOfObject1.length) {
+      return (Object[])arrayOfObject1;
+    }
+    paramClass = (Object[])Array.newInstance(paramClass, i);
+    System.arraycopy(arrayOfObject1, 0, paramClass, 0, i);
+    return (Object[])paramClass;
+  }
+  
+  public final int length()
+  {
+    return this.e.length();
+  }
+  
+  public int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
+  {
+    int m = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = paramClass;
+    if (paramClass == null) {
+      localObject = Object.class;
+    }
+    int i = 0;
+    int j;
+    if (i < m)
+    {
+      int k = arrayOfInt[(i * 3 + 0)];
+      j = arrayOfInt[(i * 3 + 1)];
+      if ((k <= paramInt1) || (k >= paramInt2) || (!((Class)localObject).isInstance(arrayOfObject[i]))) {
+        break label131;
+      }
+      paramInt2 = k;
+    }
+    label131:
     for (;;)
     {
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.b(localawfz);
-      return;
-      label208:
-      if (bamw.a(400011L).equals(str)) {
-        localawfz.jdField_b_of_type_Int = 400011;
+      if ((j > paramInt1) && (j < paramInt2) && (((Class)localObject).isInstance(arrayOfObject[i]))) {
+        paramInt2 = j;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        return paramInt2;
       }
     }
   }
   
-  final void e()
+  public void removeSpan(Object paramObject)
   {
-    super.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "uploadCustomEmoticon resultOk");
-    }
-    d(1003);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "onSuccess().");
-    }
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null)
+    int j = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int i = j - 1;
+    for (;;)
     {
-      awfz localawfz = new awfz();
-      localawfz.jdField_a_of_type_Int = 0;
-      if (this.jdField_a_of_type_Int == 20) {
-        localawfz.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baoj.g;
+      if (i >= 0)
+      {
+        if (arrayOfObject[i] == paramObject)
+        {
+          int k = arrayOfInt[(i * 3 + 0)];
+          int m = arrayOfInt[(i * 3 + 1)];
+          j -= i + 1;
+          System.arraycopy(arrayOfObject, i + 1, arrayOfObject, i, j);
+          System.arraycopy(arrayOfInt, (i + 1) * 3, arrayOfInt, i * 3, j * 3);
+          this.jdField_b_of_type_Int -= 1;
+          b(paramObject, k, m);
+        }
       }
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.b(localawfz);
-    }
-    if ((this.jdField_a_of_type_Int == 9) || (this.jdField_a_of_type_Int == 76)) {
-      d(1008);
+      else {
+        return;
+      }
+      i -= 1;
     }
   }
   
-  public final void onResp(baqw parambaqw)
+  public void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onResp(parambaqw);
+    a("setSpan", paramInt1, paramInt2);
+    if ((paramInt3 & 0x33) == 51)
+    {
+      char c1;
+      if ((paramInt1 != 0) && (paramInt1 != length()))
+      {
+        c1 = charAt(paramInt1 - 1);
+        if (c1 != '\n') {
+          throw new RuntimeException("PARAGRAPH span must start at paragraph boundary (" + paramInt1 + " follows " + c1 + ")");
+        }
+      }
+      if ((paramInt2 != 0) && (paramInt2 != length()))
+      {
+        c1 = charAt(paramInt2 - 1);
+        if (c1 != '\n') {
+          throw new RuntimeException("PARAGRAPH span must end at paragraph boundary (" + paramInt2 + " follows " + c1 + ")");
+        }
+      }
+    }
+    int j = this.jdField_b_of_type_Int;
+    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int i = 0;
+    if (i < j) {
+      if (arrayOfObject[i] == paramObject)
+      {
+        j = arrayOfInt[(i * 3 + 0)];
+        int k = arrayOfInt[(i * 3 + 1)];
+        arrayOfInt[(i * 3 + 0)] = paramInt1;
+        arrayOfInt[(i * 3 + 1)] = paramInt2;
+        arrayOfInt[(i * 3 + 2)] = paramInt3;
+        a(paramObject, j, k, paramInt1, paramInt2);
+      }
+    }
+    do
+    {
+      return;
+      i += 1;
+      break;
+      if (this.jdField_b_of_type_Int + 1 >= this.jdField_a_of_type_ArrayOfJavaLangObject.length)
+      {
+        i = a(this.jdField_b_of_type_Int + 1);
+        arrayOfObject = new Object[i];
+        arrayOfInt = new int[i * 3];
+        System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, arrayOfObject, 0, this.jdField_b_of_type_Int);
+        System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_b_of_type_Int * 3);
+        this.jdField_a_of_type_ArrayOfJavaLangObject = arrayOfObject;
+        this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      }
+      this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_b_of_type_Int] = paramObject;
+      this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 0)] = paramInt1;
+      this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 1)] = paramInt2;
+      this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int * 3 + 2)] = paramInt3;
+      this.jdField_b_of_type_Int += 1;
+    } while (!(this instanceof Spannable));
+    a(paramObject, paramInt1, paramInt2);
+  }
+  
+  public CharSequence subSequence(int paramInt1, int paramInt2)
+  {
+    label18:
+    Object localObject;
+    if (paramInt1 < 0)
+    {
+      paramInt1 = 0;
+      int i = length();
+      if (paramInt2 <= i) {
+        break label47;
+      }
+      paramInt2 = i;
+      if ((!jdField_a_of_type_Boolean) || (!a())) {
+        break label50;
+      }
+      localObject = this.e.subSequence(paramInt1, paramInt2);
+    }
+    label47:
+    label50:
+    do
+    {
+      return localObject;
+      break;
+      break label18;
+      if ((Build.VERSION.SDK_INT < 26) || (paramInt1 != 0)) {
+        break label73;
+      }
+      localObject = this;
+    } while (paramInt2 == length());
+    label73:
+    return new bamp(this.e, paramInt1, paramInt2, this.jdField_a_of_type_Int, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
+  }
+  
+  public String toString()
+  {
+    if ((jdField_a_of_type_Boolean) && (a())) {
+      return this.e;
+    }
+    return this.jdField_d_of_type_JavaLangString;
   }
 }
 

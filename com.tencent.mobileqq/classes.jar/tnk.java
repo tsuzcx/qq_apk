@@ -46,26 +46,26 @@ public class tnk
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = ((WSVerticalVideoRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379805));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = ((WSVerticalVideoRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379863));
   }
   
   private void f()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379812);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379870);
     this.jdField_a_of_type_Tck = new tna(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
     this.jdField_a_of_type_Tck.a(localViewStub);
   }
   
   private void g()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379803);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379861);
     this.d = new tmx(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Tnj);
     this.d.a(localViewStub);
   }
   
   private void h()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379804);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379862);
     this.e = new tmy(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Tnj);
     tlo.a("comment", "WSVerticalVideoItemView initVerticalItemBottomOperationController--------------------------！");
     this.e.a(localViewStub);
@@ -73,21 +73,21 @@ public class tnk
   
   private void i()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379813);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379871);
     this.b = new tnc(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
     this.b.a(localViewStub);
   }
   
   private void j()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379808);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379866);
     this.c = new tne(this.jdField_a_of_type_AndroidContentContext, this);
     this.c.a(localViewStub);
   }
   
   private void k()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379814);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131379872);
     this.f = new tnh(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Tnj);
     this.f.a(localViewStub);
   }

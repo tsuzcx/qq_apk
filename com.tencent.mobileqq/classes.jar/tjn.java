@@ -6,7 +6,7 @@ import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 import java.util.List;
 
 public class tjn
-  extends bhzz<stSimpleMetaPerson, biac<stSimpleMetaPerson>>
+  extends bieg<stSimpleMetaPerson, biej<stSimpleMetaPerson>>
   implements tjq
 {
   private stFeed jdField_a_of_type_UserGrowthStFeed;
@@ -23,7 +23,7 @@ public class tjn
     return 0;
   }
   
-  public biac<stSimpleMetaPerson> a(ViewGroup paramViewGroup, int paramInt)
+  public biej<stSimpleMetaPerson> a(ViewGroup paramViewGroup, int paramInt)
   {
     return tjo.a(paramViewGroup, this);
   }
@@ -41,25 +41,25 @@ public class tjn
     if ((paramstSimpleMetaPerson == null) || (paramstSimpleMetaPerson.size() == 0)) {
       this.jdField_a_of_type_Tbb.a(this.jdField_a_of_type_UserGrowthStFeed);
     }
-    bfhq.a().a(2131721469);
+    bflz.a().a(2131721482);
   }
   
-  public void a(biac<stSimpleMetaPerson> parambiac)
+  public void a(biej<stSimpleMetaPerson> parambiej)
   {
-    super.onViewAttachedToWindow(parambiac);
-    if (((parambiac instanceof tjo)) && (this.jdField_a_of_type_Tbb != null) && (this.jdField_a_of_type_Tbb.a().getUserVisibleHint())) {
-      ((tjo)parambiac).b();
+    super.onViewAttachedToWindow(parambiej);
+    if (((parambiej instanceof tjo)) && (this.jdField_a_of_type_Tbb != null) && (this.jdField_a_of_type_Tbb.a().getUserVisibleHint())) {
+      ((tjo)parambiej).b();
     }
   }
   
-  public void a(biac<stSimpleMetaPerson> parambiac, int paramInt)
+  public void a(biej<stSimpleMetaPerson> parambiej, int paramInt)
   {
     stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)a(paramInt);
     if (localstSimpleMetaPerson == null) {}
-    while (!(parambiac instanceof tjo)) {
+    while (!(parambiej instanceof tjo)) {
       return;
     }
-    ((tjo)parambiac).a(localstSimpleMetaPerson, paramInt);
+    ((tjo)parambiej).a(localstSimpleMetaPerson, paramInt);
   }
   
   public void b(stSimpleMetaPerson paramstSimpleMetaPerson)

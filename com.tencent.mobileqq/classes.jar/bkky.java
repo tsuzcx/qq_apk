@@ -1,11 +1,16 @@
-import java.io.File;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
 
-public class bkky
+class bkky
+  implements ThreadPool.Job<Void>
 {
-  public static final String a = bklb.b + File.separator + "playshow";
-  public static final String b = a + File.separator + "crazyface_tmp";
-  public static final String c = a + File.separator + "qudong_tmp";
-  public static final String d = a + File.separator + "web_tmp";
+  bkky(bkks parambkks, baub parambaub) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    bkks.a(this.jdField_a_of_type_Bkks).a(this.jdField_a_of_type_Baub);
+    return null;
+  }
 }
 
 

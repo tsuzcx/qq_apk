@@ -7,9 +7,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bgkv;
-import bgrt;
-import bgtc;
+import bgpc;
+import bgwa;
+import bgxj;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -17,7 +17,7 @@ import com.tencent.qqmini.sdk.log.QMLog;
 public class InstalledEngine
   implements Parcelable, Comparable<InstalledEngine>
 {
-  public static final Parcelable.Creator<InstalledEngine> CREATOR = new bgtc();
+  public static final Parcelable.Creator<InstalledEngine> CREATOR = new bgxj();
   public int a;
   public EngineVersion a;
   public String a;
@@ -41,8 +41,8 @@ public class InstalledEngine
   {
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      bgkv.a(this.jdField_b_of_type_JavaLangString, false);
-      bgrt.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
+      bgpc.a(this.jdField_b_of_type_JavaLangString, false);
+      bgwa.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
     }
     QMLog.i("InstalledEngine", "[MiniEng] delete engine " + this + ", pName=" + AppLoaderFactory.g().getMiniAppEnv().getContext().getPackageName());
   }

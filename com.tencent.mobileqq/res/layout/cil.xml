@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/loc" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/e_o" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/ms8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:text="@string/wg0" android:layout_toRightOf="@id/loc" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/mhf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ms8" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/mr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:text="@string/wh2" android:drawableRight="@drawable/e_p" android:drawablePadding="2.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <View android:background="#b2d8d8d8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="18.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="x" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="28.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+</merge>

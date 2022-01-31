@@ -1,18 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.PeakAppInterface;
 
-public class blgo
-  implements ValueAnimator.AnimatorUpdateListener
+class blgo
+  implements View.OnClickListener
 {
-  public blgo(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blgo(blgj paramblgj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    AEEditorAILoadingView.b(this.a).setPadding(0, i, 0, 0);
-    AEEditorAILoadingView.c(this.a).setPadding(0, i, 0, 0);
+    blgj.e(this.a);
+    blgj.b(this.a).setVisibility(8);
+    bljc.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    PeakAppInterface.a.a(1010);
   }
 }
 

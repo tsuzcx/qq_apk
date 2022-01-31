@@ -15,8 +15,8 @@ public class qxw
 {
   private Context jdField_a_of_type_AndroidContentContext;
   public Bundle a;
-  ayzw jdField_a_of_type_Ayzw = new qya(this);
-  ayzy jdField_a_of_type_Ayzy = new qxz(this);
+  azef jdField_a_of_type_Azef = new qya(this);
+  azeh jdField_a_of_type_Azeh = new qxz(this);
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   private qxk jdField_a_of_type_Qxk;
   private qxq jdField_a_of_type_Qxq;
@@ -139,7 +139,7 @@ public class qxw
     this.jdField_f_of_type_Boolean = VideoEnvironment.e(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     if (!this.jdField_e_of_type_Boolean)
     {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707995), null);
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708007), null);
       return;
     }
     if (this.jdField_f_of_type_Boolean)
@@ -148,13 +148,13 @@ public class qxw
       return;
     }
     VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件not ready", null);
-    if (bdee.g(null))
+    if (bdin.g(null))
     {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707990), null);
-      ShortVideoResourceManager.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ayzy);
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708002), null);
+      ShortVideoResourceManager.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azeh);
       return;
     }
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707988), null);
+    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708000), null);
   }
   
   private void d(int paramInt)
@@ -163,12 +163,12 @@ public class qxw
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     long l2 = this.jdField_i_of_type_Long;
-    azmz localazmz = azmz.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    azri localazri = azri.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
       return;
     }
   }
@@ -224,7 +224,7 @@ public class qxw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qxw
  * JD-Core Version:    0.7.0.1
  */

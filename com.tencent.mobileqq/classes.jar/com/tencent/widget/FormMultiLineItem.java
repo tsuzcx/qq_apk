@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -54,15 +54,15 @@ public class FormMultiLineItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130839253);
+      return paramResources.getDrawable(2130839254);
     case 0: 
-      return paramResources.getDrawable(2130839253);
+      return paramResources.getDrawable(2130839254);
     case 1: 
-      return paramResources.getDrawable(2130839269);
+      return paramResources.getDrawable(2130839270);
     case 2: 
-      return paramResources.getDrawable(2130839263);
+      return paramResources.getDrawable(2130839264);
     }
-    return paramResources.getDrawable(2130839260);
+    return paramResources.getDrawable(2130839261);
   }
   
   private void a()
@@ -84,22 +84,22 @@ public class FormMultiLineItem
       setMinimumHeight(this.d);
       setPadding(this.g, 0, this.h, 0);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131366735);
+      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131366745);
       this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       addView(this.jdField_a_of_type_AndroidWidgetImageView);
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       localMultiImageTextView = new MultiImageTextView(getContext());
-      localMultiImageTextView.setId(2131366733);
+      localMultiImageTextView.setId(2131366743);
       localMultiImageTextView.setTextSize(0, n);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131166962));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131166964));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(alpo.a(2131705104));
+      localMultiImageTextView.setText(alud.a(2131705116));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, 2131366735);
+      localLayoutParams.addRule(1, 2131366745);
       localLayoutParams.bottomMargin = j;
       localLayoutParams.leftMargin = this.i;
       this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
@@ -111,18 +111,18 @@ public class FormMultiLineItem
       }
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setTextSize(0, k);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131166981));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131166983));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(alpo.a(2131705106));
+      localMultiImageTextView.setText(alud.a(2131705118));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = this.i;
-      localLayoutParams.addRule(1, 2131366735);
+      localLayoutParams.addRule(1, 2131366745);
       if (j != 1) {
         break label483;
       }
-      localMultiImageTextView.setId(2131366739);
+      localMultiImageTextView.setId(2131366749);
     }
     for (;;)
     {
@@ -137,7 +137,7 @@ public class FormMultiLineItem
       break;
       label483:
       if (j == 2) {
-        localMultiImageTextView.setId(2131366740);
+        localMultiImageTextView.setId(2131366750);
       }
     }
   }
@@ -332,14 +332,14 @@ public class FormMultiLineItem
         {
           MultiImageTextView localMultiImageTextView = new MultiImageTextView(getContext());
           localMultiImageTextView.setTextSize(0, k);
-          localMultiImageTextView.setTextColor(getResources().getColor(2131166981));
+          localMultiImageTextView.setTextColor(getResources().getColor(2131166983));
           localMultiImageTextView.setSingleLine(true);
           localMultiImageTextView.setDuplicateParentStateEnabled(true);
           localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-          localMultiImageTextView.setText(alpo.a(2131705105));
+          localMultiImageTextView.setText(alud.a(2131705117));
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.leftMargin = this.i;
-          localLayoutParams.addRule(1, 2131366735);
+          localLayoutParams.addRule(1, 2131366745);
           this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
           addView(localMultiImageTextView, localLayoutParams);
           j += 1;

@@ -1,18 +1,17 @@
-import android.widget.TextView;
-import com.tencent.richmediabrowser.view.GalleryUrlImageView;
-import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-class axvl
-  extends IBrowserViewHolder
+public class axvl
 {
-  public TextView a;
-  public GalleryUrlImageView a;
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
   
-  axvl(axvg paramaxvg) {}
+  public axvl(axvk paramaxvk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvl
  * JD-Core Version:    0.7.0.1
  */

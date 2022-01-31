@@ -1,20 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.lang.ref.WeakReference;
 
 class amjy
-  implements View.OnClickListener
+  extends altm
 {
-  amjy(amjw paramamjw, ArrayList paramArrayList, QIMNotifyAddFriend.VideoInfo paramVideoInfo) {}
+  amjy(amjx paramamjx) {}
   
-  public void onClick(View paramView)
+  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
   {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend$VideoInfo.videoVid), 120);
-    paramView.a();
-    vju.a(this.jdField_a_of_type_Amjw.a, paramView.a(), null);
+    int j = 1;
+    alto localalto;
+    int i;
+    Object localObject;
+    if (paramBoolean)
+    {
+      localalto = (alto)this.a.a.getManager(51);
+      ExtensionInfo localExtensionInfo = localalto.a(paramString2, true);
+      i = 0;
+      localObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        localObject = new ExtensionInfo();
+        ((ExtensionInfo)localObject).uin = paramString2;
+        i = 1;
+      }
+      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
+        break label152;
+      }
+      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
+      i = j;
+    }
+    label152:
+    for (;;)
+    {
+      if (i != 0) {
+        localalto.a((ExtensionInfo)localObject);
+      }
+      if (amjx.a(this.a) == null) {}
+      for (localObject = null;; localObject = (amkb)amjx.a(this.a).get())
+      {
+        if (localObject != null) {
+          ((amkb)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
+        }
+        return;
+      }
+    }
   }
 }
 

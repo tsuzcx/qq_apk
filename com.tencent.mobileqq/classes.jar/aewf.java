@@ -1,8 +1,15 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface aewf
+class aewf
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  aewf(aewe paramaewe) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

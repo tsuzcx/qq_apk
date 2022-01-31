@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
-
-public class awkt
-  implements Comparator<PersonalityLabelInfo>
+class awkt
 {
-  public awkt(PersonalityLabel paramPersonalityLabel) {}
+  int a;
+  int b;
   
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
+  public String toString()
   {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
   }
 }
 

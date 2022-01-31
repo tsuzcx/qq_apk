@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import ajhf;
+import ajlu;
 import android.database.Cursor;
-import awdc;
-import awdd;
-import awde;
-import awdg;
+import awhl;
+import awhm;
+import awhn;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -19,28 +19,28 @@ public class RecentUser
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
   public String displayName;
-  @awdg
+  @awhp
   public Object extraInfo;
-  @awdc(a=0)
+  @awhl(a=0)
   public int isHiddenChat;
-  @awdg
+  @awhp
   public int jumpTabMode;
-  @awdd
+  @awhm
   public long lFlag;
-  @awdd
+  @awhm
   public long lastmsgdrafttime;
   public long lastmsgtime;
-  @awdg
+  @awhp
   public Object msg;
   public byte[] msgData;
   public int msgType;
-  @awdd
+  @awhm
   public long opTime;
   public byte[] parceledRecentBaseData;
-  @awdd
+  @awhm
   public long showUpTime;
   public String troopUin;
-  @awde
+  @awhn
   private int type;
   public String uin;
   
@@ -68,7 +68,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = ajhf.a(this.msgType, this.msgData);
+    this.msg = ajlu.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -124,7 +124,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = ajhf.a(this.msgType, this.msg);
+    this.msgData = ajlu.a(this.msgType, this.msg);
     super.prewrite();
   }
   

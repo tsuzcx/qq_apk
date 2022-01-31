@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdbi;
-import bdee;
+import bdfr;
+import bdin;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -41,7 +41,7 @@ import qdc;
 import qlt;
 import rqj;
 import shx;
-import xee;
+import xin;
 
 public class ComponentContentRecommendFollowGroup
   extends RelativeLayout
@@ -81,7 +81,7 @@ public class ComponentContentRecommendFollowGroup
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559954, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559953, this, true);
   }
   
   public void a()
@@ -101,14 +101,14 @@ public class ComponentContentRecommendFollowGroup
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)paramView.findViewById(2131375429));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375438));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369221);
-    this.b = paramView.findViewById(2131375432);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)paramView.findViewById(2131375480));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375489));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369239);
+    this.b = paramView.findViewById(2131375483);
     BezierSideBarView localBezierSideBarView = (BezierSideBarView)paramView.findViewById(2131363178);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setSideBarView(localBezierSideBarView);
     this.jdField_a_of_type_Qdc = new qdc(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(xee.b(paramView.getContext(), 5.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(xin.b(paramView.getContext(), 5.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setAdapter(this.jdField_a_of_type_Qdc);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnOverScrollListener(this);
     this.b.setOnClickListener(new qcz(this));
@@ -116,8 +116,8 @@ public class ComponentContentRecommendFollowGroup
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    if (!bdee.g(getContext())) {
-      QQToast.a(getContext(), 1, 2131718949, 0).a();
+    if (!bdin.g(getContext())) {
+      QQToast.a(getContext(), 1, 2131718961, 0).a();
     }
     do
     {
@@ -126,7 +126,7 @@ public class ComponentContentRecommendFollowGroup
         QLog.d("ComponentContentRecommendFollowGroup", 1, "jumpToProfile, info = " + paramRecommendFollowInfo);
       }
     } while (paramRecommendFollowInfo == null);
-    String str = oqu.k + bdbi.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
+    String str = oqu.k + bdfr.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
     Intent localIntent = new Intent(getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", str);
     localIntent.putExtra("hide_operation_bar", true);

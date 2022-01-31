@@ -1,67 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 
-public class ajgu
-  extends ajff
+class ajgu
+  implements View.OnClickListener
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  ajgu(ajgb paramajgb) {}
   
-  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
+  public void onClick(View paramView)
   {
+    paramView = QQPlayerService.a();
     int i;
-    if (paramView == null)
+    if (paramView != null)
     {
-      paramajfa = null;
-      if (!"TroopAssistantEmptyItemBuilder".equals(paramajfa))
-      {
-        paramView = View.inflate(paramContext, 2131562729, null);
-        paramView.setTag("TroopAssistantEmptyItemBuilder");
-        paramajfa = paramContext.getResources();
-        this.b = paramajfa.getDimensionPixelSize(2131298633);
-        this.a = paramajfa.getDimensionPixelSize(2131298638);
-        this.c = paramajfa.getDimensionPixelSize(2131298640);
-        i = paramajfa.getDimensionPixelSize(2131298942);
-        this.d = (paramajfa.getDimensionPixelSize(2131298943) + i);
+      ajgb.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
+        break label125;
       }
-      i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
-      if (i <= this.c) {
-        break label210;
-      }
-      label124:
-      paramajfa = new AbsListView.LayoutParams(-1, -1);
-      paramajfa.width = -1;
-      paramajfa.height = i;
-      paramView.setLayoutParams(paramajfa);
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        paramajfa = (TextView)paramView.findViewById(2131378288);
-        if (paramObject.intValue() != 4) {
-          break label219;
-        }
-        paramajfa.setText(2131720964);
-      }
+      i = 0;
     }
     for (;;)
     {
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      paramajfa = paramView.getTag();
-      break;
-      label210:
-      i = this.c;
-      break label124;
-      label219:
-      paramajfa.setText(2131695287);
+      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      return;
+      label125:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
     }
   }
 }

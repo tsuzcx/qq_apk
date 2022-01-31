@@ -1,93 +1,14 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.location.window.CanBackFrameLayout;
-import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class atpy
+class atpy
+  extends altm
 {
-  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558926, null);
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
-  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365220);
-  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365255);
-  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
-  private final TextView b;
-  private final TextView c;
+  atpy(atpw paramatpw) {}
   
-  public atpy()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new atpz(this));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365226));
-    this.b.setOnClickListener(new atqa(this));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365235));
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
-  }
-  
-  public void a()
-  {
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
-    {
-      localLayoutParams.format = -3;
-      localLayoutParams.height = bdkf.b();
-      localLayoutParams.width = bdkf.a();
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
-      return;
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Long))) {
+      atso.a(this.a.app, 0, String.valueOf(paramObject));
     }
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new atqb(this, paramOnClickListener));
-  }
-  
-  public void a(String paramString)
-  {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365231)).setText(paramString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.b.setOnClickListener(new atqc(this, paramOnClickListener));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void c(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new atqd(this, paramOnClickListener));
-  }
-  
-  public void c(String paramString)
-  {
-    this.b.setText(paramString);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

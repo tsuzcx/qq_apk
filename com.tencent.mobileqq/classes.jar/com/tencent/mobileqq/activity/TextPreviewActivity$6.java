@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import ansd;
+import anwm;
 
 class TextPreviewActivity$6
   implements Runnable
 {
-  TextPreviewActivity$6(TextPreviewActivity paramTextPreviewActivity, ansd paramansd, String paramString) {}
+  TextPreviewActivity$6(TextPreviewActivity paramTextPreviewActivity, anwm paramanwm, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ansd.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Anwm.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

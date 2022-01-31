@@ -48,7 +48,7 @@ public class ota
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
       if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
-        bjxj.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
+        bkbq.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
     return true;
@@ -56,7 +56,7 @@ public class ota
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
+    bkbq.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
   }
 }
 

@@ -72,7 +72,7 @@ public class NavigationBar
   private void changeNavIcon()
   {
     if (this.mBarTextStyle == -1) {
-      this.mBackIcon.setImageResource(2130840977);
+      this.mBackIcon.setImageResource(2130840978);
     }
     for (;;)
     {
@@ -80,7 +80,7 @@ public class NavigationBar
         this.mCapsuleButton.changeNavIcon(this.mBarTextStyle);
       }
       return;
-      this.mBackIcon.setImageResource(2130840976);
+      this.mBackIcon.setImageResource(2130840977);
     }
   }
   
@@ -91,7 +91,7 @@ public class NavigationBar
       this.mContainer = getContainerView();
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364766);
+      this.mCapsuleButton.setId(2131364767);
       localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       localLayoutParams.addRule(11, -1);
       localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
@@ -107,15 +107,15 @@ public class NavigationBar
       this.mBackIconContainer = ((RelativeLayout)findViewById(2131362641));
       this.mBackIcon = ((ImageView)findViewById(2131362640));
       this.mTitleView = ((TextView)findViewById(2131362638));
-      this.mBackTextView = ((TextView)findViewById(2131370976));
-      this.mLoadingProgressBar = ((ProgressBar)findViewById(2131370979));
+      this.mBackTextView = ((TextView)findViewById(2131370995));
+      this.mLoadingProgressBar = ((ProgressBar)findViewById(2131370998));
       this.mBackIcon.setOnClickListener(this);
       if (this.mBackIconContainer != null) {
         this.mBackIconContainer.setOnClickListener(this);
       }
-      this.mProgressBar = ((WebViewProgressBar)findViewById(2131370977));
-      this.mLoadingMask = findViewById(2131370978);
-      this.mLoadingDrawable = getResources().getDrawable(2130839221);
+      this.mProgressBar = ((WebViewProgressBar)findViewById(2131370996));
+      this.mLoadingMask = findViewById(2131370997);
+      this.mLoadingDrawable = getResources().getDrawable(2130839222);
     }
     while (!QLog.isColorLevel())
     {
@@ -217,7 +217,7 @@ public class NavigationBar
     localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
     localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject1).setId(2131369765);
+    ((RelativeLayout)localObject1).setId(2131369784);
     Object localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 30.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = DisplayUtil.dip2px(getContext(), 7.0F);
@@ -234,7 +234,7 @@ public class NavigationBar
     ((ImageView)localObject3).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     ((RelativeLayout)localObject2).addView((View)localObject3, localLayoutParams);
     localObject2 = new TextView(getContext());
-    ((TextView)localObject2).setId(2131370976);
+    ((TextView)localObject2).setId(2131370995);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131362641);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
@@ -255,24 +255,24 @@ public class NavigationBar
     ((TextView)localObject2).setTextSize(1, 17.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject2 = new ProgressBar(getContext());
-    ((ProgressBar)localObject2).setId(2131370979);
+    ((ProgressBar)localObject2).setId(2131370998);
     localObject3 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 19.0F), DisplayUtil.dip2px(getContext(), 19.0F));
     ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131362638);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((RelativeLayout.LayoutParams)localObject3).leftMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131370978);
+    ((View)localObject1).setId(2131370997);
     localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369765);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369784);
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 5.0F);
-    ((View)localObject1).setBackgroundColor(getContext().getResources().getColor(2131167138));
+    ((View)localObject1).setBackgroundColor(getContext().getResources().getColor(2131167140));
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new WebViewProgressBar(getContext());
-    ((WebViewProgressBar)localObject1).setId(2131370977);
+    ((WebViewProgressBar)localObject1).setId(2131370996);
     localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 2.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), -2.0F);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369765);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369784);
     ((WebViewProgressBar)localObject1).setBackgroundColor(getContext().getResources().getColor(2131165384));
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     return localRelativeLayout;

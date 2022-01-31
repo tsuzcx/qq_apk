@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
-class vxj
-  implements DialogInterface.OnDismissListener
+public class vxj
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  vxj(vxh paramvxh) {}
+  vxj(vxe paramvxe) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (vxh.a(this.a) != null) {
-      vxh.a(this.a).c(false);
-    }
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
   }
 }
 

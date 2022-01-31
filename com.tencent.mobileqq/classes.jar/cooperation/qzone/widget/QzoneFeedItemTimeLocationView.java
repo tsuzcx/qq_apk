@@ -39,9 +39,9 @@ public class QzoneFeedItemTimeLocationView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558792, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366180));
-    this.b = ((TextView)findViewById(2131366250));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558791, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366182));
+    this.b = ((TextView)findViewById(2131366252));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

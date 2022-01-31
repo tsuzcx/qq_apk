@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahmt;
+import ahri;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,15 +10,15 @@ import mqq.os.MqqHandler;
 public class AlphabetFriendAdapter$1
   implements Runnable
 {
-  public AlphabetFriendAdapter$1(ahmt paramahmt) {}
+  public AlphabetFriendAdapter$1(ahri paramahri) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     try
     {
-      localArrayList.addAll(ahmt.a(this.this$0));
-      Object[] arrayOfObject = ahmt.a(this.this$0, localArrayList, ahmt.a(this.this$0));
+      localArrayList.addAll(ahri.a(this.this$0));
+      Object[] arrayOfObject = ahri.a(this.this$0, localArrayList, ahri.a(this.this$0));
       ThreadManager.getUIHandler().post(new AlphabetFriendAdapter.1.1(this, localArrayList));
       if ((arrayOfObject == null) || (arrayOfObject.length < 3))
       {

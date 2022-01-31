@@ -1,25 +1,10 @@
-import java.util.Comparator;
-
-public final class alpi
-  implements Comparator<String>
+public class alpi
 {
-  public int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
-    }
-    catch (Exception paramString1) {}
-    return 0;
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

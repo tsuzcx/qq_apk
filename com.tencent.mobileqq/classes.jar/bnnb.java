@@ -1,83 +1,17 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager.2;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class bnnb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private bnmz jdField_a_of_type_Bnmz;
-  private bnna jdField_a_of_type_Bnna = new bnnc(this);
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MusicWaveformManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public bnnb(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
   
-  public static boolean a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return ("Meizu".equals(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT <= 22);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Bnmz = new bnmz();
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.postImmediately(this.jdField_a_of_type_JavaLangRunnable, null, true);
-  }
-  
-  public float a(int paramInt)
-  {
-    if ((this.b) && (this.c)) {
-      return 0.5F;
-    }
-    if ((this.b) && (this.jdField_a_of_type_Bnmz != null) && (this.jdField_a_of_type_Bnmz.jdField_a_of_type_Boolean) && (paramInt >= this.jdField_a_of_type_Int)) {
-      return this.jdField_a_of_type_Bnmz.a(paramInt - this.jdField_a_of_type_Int);
-    }
-    return -1.0F;
-  }
-  
-  public void a()
-  {
-    if (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bnmz != null) {
-      this.jdField_a_of_type_Bnmz = null;
-    }
-    this.b = false;
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo, int paramInt)
-  {
-    if (paramMusicItemInfo == null) {
-      a();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!this.b) {
-          break;
-        }
-      } while ((paramMusicItemInfo.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo)) && (this.jdField_a_of_type_Int <= paramInt) && (paramMusicItemInfo.musicStart == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart) && (paramMusicItemInfo.musicEnd == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd));
-      a();
-      this.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo.copy();
-      this.jdField_a_of_type_Bnmz = null;
-      this.jdField_a_of_type_Int = paramInt;
-      if (!a()) {
-        break;
-      }
-      this.c = true;
-    } while (!QLog.isColorLevel());
-    QLog.e("MusicWaveformManager", 2, "musicSoundFile create give up, is rubbish Meizu");
-    return;
-    b();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

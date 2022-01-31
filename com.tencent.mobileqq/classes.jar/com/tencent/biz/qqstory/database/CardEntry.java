@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class CardEntry
-  extends awbv
+  extends awge
 {
   public static final int CARD_LIST_TYPE_DISCOVER = 0;
   public static final int CARD_LIST_TYPE_NEARBY = 1;

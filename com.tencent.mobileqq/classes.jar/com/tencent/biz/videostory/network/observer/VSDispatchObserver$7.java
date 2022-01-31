@@ -4,19 +4,19 @@ import com.tencent.biz.videostory.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
-import yvm;
-import yvn;
+import zab;
+import zac;
 
 public class VSDispatchObserver$7
   implements Runnable
 {
-  public VSDispatchObserver$7(yvm paramyvm, VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro) {}
+  public VSDispatchObserver$7(zab paramzab, VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro) {}
   
   public void run()
   {
     try
     {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)yvm.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getContextHashCode()));
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)zab.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getContextHashCode()));
       int i = this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCurrentSeq();
       if (localConcurrentHashMap != null)
       {
@@ -25,7 +25,7 @@ public class VSDispatchObserver$7
           QLog.d("VSNetworkHelper| Protocol Cache", 1, String.format("VSDispatchObserver: onReceive: CmdName:%s Seq:%d CallBack is Null or has Removed", new Object[] { this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCmdName(), Integer.valueOf(this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCurrentSeq()) }));
           return;
         }
-        ((yvn)localConcurrentHashMap.get(Integer.valueOf(i))).a(true, 0L, "_VSNetworkHelperCache", this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro);
+        ((zac)localConcurrentHashMap.get(Integer.valueOf(i))).a(true, 0L, "_VSNetworkHelperCache", this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro);
         return;
       }
     }

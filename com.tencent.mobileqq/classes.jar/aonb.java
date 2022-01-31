@@ -1,15 +1,18 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aonb
-  extends aofy<aonc>
+  extends aokh<aonc>
 {
   public int a()
   {
-    return 538;
+    return 567;
   }
   
   @NonNull
@@ -19,44 +22,38 @@ public class aonb
   }
   
   @Nullable
-  public aonc a(aogf[] paramArrayOfaogf)
+  public aonc a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
+      QLog.d("BroadcastConfProcessor", 2, "onParsed");
     }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramArrayOfaogf = paramArrayOfaogf[0].a;
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
       if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaogf);
+        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
       }
-      return aonc.a(paramArrayOfaogf);
+      aonc localaonc = aonc.a(paramArrayOfaoko);
+      if (!TextUtils.isEmpty(paramArrayOfaoko))
+      {
+        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfaoko).apply();
+        MobileQQ.addBroadcastWhitList(localaonc.a);
+      }
     }
     return new aonc();
   }
   
-  public Class a()
+  public Class<aonc> a()
   {
     return aonc.class;
   }
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
-    }
-  }
+  public void a(int paramInt) {}
   
   public void a(aonc paramaonc)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface != null)
-    {
-      localQQAppInterface.a().a = paramaonc;
-      localQQAppInterface.getHwEngine().ipv6Switch = paramaonc.a;
+      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
     }
   }
   

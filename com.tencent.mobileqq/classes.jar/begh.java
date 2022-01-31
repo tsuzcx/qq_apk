@@ -1,39 +1,60 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebView;
 
-public class begh
+public abstract interface begh
 {
-  public int a;
-  public long a;
-  public Handler a;
-  public begd a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public volatile String d;
-  public String e;
-  public String f = "";
+  public abstract Object a(String paramString, Bundle paramBundle);
   
-  public begh()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public abstract String a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
-    if (TextUtils.isEmpty(this.d)) {}
-    for (int i = 0;; i = this.d.length()) {
-      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
+  
+  public abstract void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, int paramInt);
+  
+  public abstract void a(WebView paramWebView, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, SslError paramSslError);
+  
+  public abstract void a(WebView paramWebView, String paramString);
+  
+  public abstract void a(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
+  
+  public abstract boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
+  
+  public abstract boolean a(WebView paramWebView, String paramString);
+  
+  public abstract boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
+  
+  public abstract View b();
+  
+  public abstract void b(WebView paramWebView, String paramString);
+  
+  public abstract void b(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract boolean b(WebView paramWebView, String paramString);
+  
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract boolean c(WebView paramWebView, String paramString);
+  
+  public abstract void v();
 }
 
 

@@ -1,34 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class bjrh
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      a("toInt convert error:" + paramString);
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      a("toInt convert error:" + paramString.getMessage());
-    }
-    return 0;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  private static final void a(String paramString)
+  public bjrh()
   {
-    try
-    {
-      QLog.e("SafeUtil", 1, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

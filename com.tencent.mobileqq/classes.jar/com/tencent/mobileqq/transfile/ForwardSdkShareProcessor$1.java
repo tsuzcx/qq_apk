@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import baoo;
+import basx;
 
 public class ForwardSdkShareProcessor$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$1(baoo parambaoo) {}
+  public ForwardSdkShareProcessor$1(basx parambasx) {}
   
   public void run()
   {
-    this.this$0.aS_();
+    this.this$0.aP_();
   }
 }
 

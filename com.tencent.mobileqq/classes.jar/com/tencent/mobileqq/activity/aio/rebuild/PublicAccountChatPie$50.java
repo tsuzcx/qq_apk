@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
-import agqe;
+import agti;
+import agut;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.webprocess.WebProcessManager;
 public class PublicAccountChatPie$50
   implements Runnable
 {
-  public PublicAccountChatPie$50(agot paramagot) {}
+  public PublicAccountChatPie$50(agti paramagti) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class PublicAccountChatPie$50
     {
       localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
       if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new agqe(this));
+        ((WebProcessManager)localObject).a(-1, new agut(this));
       }
     }
   }

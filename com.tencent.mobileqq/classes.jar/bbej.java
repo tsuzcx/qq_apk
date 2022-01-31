@@ -1,99 +1,180 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.text.Spannable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bbej
-  extends bbcb
+  extends bbeg
 {
-  Context a;
-  protected boolean c;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h = "0";
-  protected String i;
+  public int a;
+  public Spannable a;
+  public ArrayList<bbeh> a;
+  public JSONObject a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m;
+  public int n;
   
-  public bbej(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public bbej(JSONObject paramJSONObject)
   {
-    super(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = paramBaseActivity.getApplicationContext();
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.d = this.jdField_a_of_type_OrgJsonJSONObject.optString("bid");
-    this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("pid");
-    this.f = this.jdField_a_of_type_OrgJsonJSONObject.optString("cid");
-    this.g = this.jdField_a_of_type_OrgJsonJSONObject.optString("rid");
-    if ("detail".equals(this.jdField_a_of_type_OrgJsonJSONObject.optString("from"))) {}
-    for (paramBundle = "0";; paramBundle = "1")
-    {
-      this.h = paramBundle;
-      this.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("extparam");
-      this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().getAccount() + "-" + this.d + "-" + this.e + "-" + this.f + "-" + this.g);
-      bcht.a("two_comment", "exp", this.d, this.h, "", "");
-      return;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("del");
+    this.jdField_e_of_type_Int = paramJSONObject.optInt("views_num");
+    this.jdField_f_of_type_Int = paramJSONObject.optInt("hot_score");
+    this.m = paramJSONObject.optInt("commentnum_v2");
+    this.jdField_c_of_type_Long = paramJSONObject.optLong("uin");
+    this.jdField_l_of_type_Int = paramJSONObject.optInt("likes");
+    this.jdField_g_of_type_Int = paramJSONObject.optInt("readnum");
+    this.jdField_h_of_type_Int = paramJSONObject.optInt("theme_id");
+    this.jdField_k_of_type_Int = paramJSONObject.optInt("alreadyzan");
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("pid");
+    this.jdField_b_of_type_Long = paramJSONObject.optLong("bid");
+    if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (this.jdField_b_of_type_Long == 0L)) {
+      throw new IllegalArgumentException("pid = " + this.jdField_d_of_type_JavaLangString + ", bid = " + this.jdField_b_of_type_Long);
     }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    JSONObject localJSONObject = new JSONObject();
-    try
+    label251:
+    Object localObject;
+    if (paramJSONObject.optInt("relation") == 1)
     {
-      localJSONObject.put("pid", this.e);
-      localJSONObject.put("cid", this.f);
-      localJSONObject.put("bid", Long.parseLong(this.d));
-      localJSONObject.put("target_rid", this.g);
-      localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "8.3.3.4515");
-      localJSONObject.put("extparam", this.i);
-      paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, mzx.class);
-      paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localWebSsoRequestBody.type.set(0);
-      localWebSsoRequestBody.data.set(localJSONObject.toString());
-      paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      paramString.setObserver(new bbek(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().startServlet(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131696744, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_AndroidWidgetEditText.length() > 0)) {}
-    for (String str = "0";; str = "1")
-    {
-      bcht.a("two_comment", "un", this.d, str, "", "");
-      if (!this.jdField_a_of_type_Boolean) {
-        a(this.jdField_c_of_type_JavaLangString, null, false);
+      bool1 = true;
+      this.jdField_c_of_type_Boolean = bool1;
+      this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("detail_page_url").replace("${bid}", String.valueOf(this.jdField_b_of_type_Long)).replace("${pid}", this.jdField_d_of_type_JavaLangString);
+      if (paramJSONObject.optInt("star") != 1) {
+        break label684;
       }
-      return;
+      bool1 = true;
+      this.jdField_d_of_type_Boolean = bool1;
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("gbar_home_url_android");
+      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("report");
+      localObject = paramJSONObject.optJSONObject("user_info");
+      if (localObject != null)
+      {
+        this.n = ((JSONObject)localObject).optInt("sex");
+        this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).optString("nickname");
+        this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).optString("headimgurl");
+      }
+      localObject = paramJSONObject.optJSONObject("theme_info");
+      if (localObject != null)
+      {
+        this.jdField_d_of_type_Long = ((JSONObject)localObject).optLong("creator_uin");
+        this.jdField_i_of_type_Int = ((JSONObject)localObject).optInt("censor_status");
+        this.jdField_j_of_type_Int = ((JSONObject)localObject).optInt("recommend_status");
+        this.jdField_h_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_intro");
+        this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name");
+      }
+      localObject = paramJSONObject.optJSONObject("post");
+      this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).optString("content");
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("cs_source");
+      localObject = ((JSONObject)localObject).optJSONArray("ugc_video_list").optJSONObject(0);
+      this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("duration");
+      this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("height");
+      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("width");
+      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isLocalVideo");
+      this.jdField_e_of_type_Long = ((JSONObject)localObject).optLong("size");
+      this.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("text");
+      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("url");
+      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("vid");
+      this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("video_thumbe_url");
+      if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int <= 0.75F) {
+        break label689;
+      }
     }
+    label684:
+    label689:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_a_of_type_Boolean = bool1;
+      paramJSONObject = paramJSONObject.optJSONArray("gbar_info_list");
+      if (paramJSONObject == null) {
+        return;
+      }
+      while (i1 < paramJSONObject.length())
+      {
+        localObject = paramJSONObject.optJSONObject(i1);
+        long l1 = ((JSONObject)localObject).optLong("bid");
+        if (((JSONObject)localObject).optInt("bar_class") != 101)
+        {
+          localObject = new bbeh(l1, ((JSONObject)localObject).optString("name") + alud.a(2131715493), this.jdField_e_of_type_JavaLangString.replace("${bid}", String.valueOf(l1)));
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        }
+        i1 += 1;
+      }
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label251;
+    }
+  }
+  
+  public static ArrayList<bbej> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList(paramJSONArray.length());
+    int i1 = 0;
+    for (;;)
+    {
+      if (i1 < paramJSONArray.length()) {
+        try
+        {
+          bbej localbbej = new bbej(paramJSONArray.optJSONObject(i1));
+          if (localbbej != null) {
+            localArrayList.add(new bbej(paramJSONArray.optJSONObject(i1)));
+          }
+          i1 += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("TribeVideoItem", 2, QLog.getStackTraceString(localException));
+            }
+            Object localObject = null;
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bbej)paramObject;
+    } while ((this.jdField_d_of_type_JavaLangString.equals(paramObject.jdField_d_of_type_JavaLangString)) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long));
+    return false;
   }
 }
 

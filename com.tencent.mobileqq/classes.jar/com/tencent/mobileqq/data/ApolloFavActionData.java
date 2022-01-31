@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ApolloFavActionData
-  extends awbv
+  extends awge
 {
   public int acitonId;
   public int audioId;
   public float audioStartTime;
-  @awdj
+  @awhs
   public long favId;
   public int playOriginalAudio;
   public String text;

@@ -1,18 +1,26 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
 import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
-class tzj
-  implements yvn<FeedCloudRead.StGetBusiInfoRsp>
+public class tzj
+  extends yka
 {
-  tzj(tzi paramtzi, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
+  private String a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public tzj(String paramString)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Tzi.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
+    this.a = paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(ykg paramykg)
+  {
+    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
+    paramykg = new tzk(this, localQCircleGetMainPageRequest, paramykg);
+    localQCircleGetMainPageRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramykg);
+    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetMainPageRequest.getCmdName() + "| TraceId:" + localQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + localQCircleGetMainPageRequest.getCurrentSeq());
   }
 }
 

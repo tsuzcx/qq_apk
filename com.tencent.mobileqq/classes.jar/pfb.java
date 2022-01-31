@@ -20,9 +20,9 @@ public class pfb
   private HashMap<Long, ArticleReadInfo> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public pfb(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfb(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private void a(List<ArticleReadInfo> paramList)

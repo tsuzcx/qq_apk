@@ -1,29 +1,38 @@
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class athw
-  implements atka
+  implements QQPermissionCallback
 {
-  public athw(ListenTogetherManager paramListenTogetherManager) {}
+  public athw(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
   
-  public void a(ISong paramISong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramISong != null)
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    try
     {
-      ListenTogetherManager.a(this.a, paramISong);
-      this.a.a(paramISong.a());
-      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
-      if (!TextUtils.isEmpty(str)) {
-        ListenTogetherManager.a(this.a, paramISong.a(), str);
-      }
-    }
-    else
-    {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
       return;
     }
-    ListenTogetherManager.a(this.a, paramISong.a());
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
+    }
   }
 }
 

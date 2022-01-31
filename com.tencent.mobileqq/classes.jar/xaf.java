@@ -1,36 +1,26 @@
-public class xaf
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+
+class xaf
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private xab jdField_a_of_type_Xab = new xaa();
-  private int b;
+  xaf(xae paramxae) {}
   
-  public xad a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new xad(this, null);
-  }
-  
-  public xaf a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return this;
-  }
-  
-  public xaf a(xab paramxab)
-  {
-    if (paramxab != null) {
-      this.jdField_a_of_type_Xab = paramxab;
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
-    return this;
-  }
-  
-  public xaf b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
   }
 }
 

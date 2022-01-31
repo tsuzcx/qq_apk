@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahnd;
-import almv;
-import amjk;
+import ahrs;
+import alrk;
+import amnz;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,12 +17,12 @@ import mqq.os.MqqHandler;
 public class ContactsTroopAdapter$6
   implements Runnable
 {
-  public ContactsTroopAdapter$6(ahnd paramahnd, TroopManager paramTroopManager, amjk paramamjk) {}
+  public ContactsTroopAdapter$6(ahrs paramahrs, TroopManager paramTroopManager, amnz paramamnz) {}
   
   public void run()
   {
     ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((almv)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
+    ArrayList localArrayList2 = ((alrk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
     ArrayList localArrayList3 = new ArrayList();
     Iterator localIterator = localArrayList2.iterator();
     int i = 0;
@@ -50,7 +50,7 @@ public class ContactsTroopAdapter$6
         {
           localArrayList3.add(localDiscussionInfo);
         }
-        else if (this.this$0.jdField_a_of_type_Almv.a(localDiscussionInfo.uin) > 0)
+        else if (this.this$0.jdField_a_of_type_Alrk.a(localDiscussionInfo.uin) > 0)
         {
           localArrayList3.add(localDiscussionInfo);
           i += 1;

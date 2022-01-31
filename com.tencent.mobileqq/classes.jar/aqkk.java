@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.view.animation.Interpolator;
 
-public class aqkk
-  implements View.OnClickListener
+class aqkk
+  implements Interpolator
 {
-  public aqkk(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  aqkk(aqke paramaqke) {}
   
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    QfileCloudFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 

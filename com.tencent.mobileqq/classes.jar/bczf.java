@@ -1,43 +1,54 @@
-import android.view.View;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 final class bczf
-  implements URLDrawable.URLDrawableListener
+  implements DownloadParams.DecodeHandler
 {
-  bczf(View paramView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if ((paramBitmap == null) || (paramDownloadParams == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
+      }
+      return null;
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
+    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
+    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
+    {
+      j = 130;
+      i = 102;
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    f1 = j / k;
+    float f2 = i / m;
+    paramDownloadParams = new Matrix();
+    paramDownloadParams.postScale(f1, f2);
+    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, xod.a(BaseApplicationImpl.getContext(), 47.0F), xod.a(BaseApplicationImpl.getContext(), 14.0F));
+    j = paramDownloadParams.getWidth() / 8;
+    i = j;
+    if (j == 0) {
+      i = 16;
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    paramDownloadParams = bcyz.a(paramDownloadParams, i);
+    paramBitmap.recycle();
+    return paramDownloadParams;
   }
 }
 

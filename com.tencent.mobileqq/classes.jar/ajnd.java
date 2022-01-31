@@ -1,24 +1,64 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements OnCompositionLoadedListener
 {
-  public ajnd(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  public ajnd(LoginAnimBtnView.2 param2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).getLayoutParams();
-    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
-    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
-    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
-    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).setLayoutParams(paramValueAnimator);
+    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
+    {
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+      return;
+    }
+    int i = aepi.a(70.0F, this.a.this$0.getResources());
+    int j = aepi.a(70.0F, this.a.this$0.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
+    }
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new ajne(this.a.this$0.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    }
+    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
+    if (LoginAnimBtnView.a(this.a.this$0))
+    {
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      LoginAnimBtnView.a(this.a.this$0, null);
+    }
+    for (;;)
+    {
+      synchronized (LoginAnimBtnView.a(this.a.this$0))
+      {
+        LoginAnimBtnView.a(this.a.this$0, null);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        return;
+      }
+      if (this.a.this$0.isEnabled())
+      {
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
+      }
+    }
   }
 }
 

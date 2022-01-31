@@ -1,45 +1,31 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-class bmbf
-  implements GestureDetector.OnGestureListener
+public class bmbf
+  implements Animation.AnimationListener
 {
-  private bmbf(bmba parambmba) {}
+  public bmbf(QIMProviderContainerView paramQIMProviderContainerView, boolean paramBoolean) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    paramMotionEvent2.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent2.getX();
-    paramFloat1 = paramMotionEvent2.getY();
-    float f = paramMotionEvent1.getY();
-    paramMotionEvent1.getY();
-    paramMotionEvent2.getY();
-    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
-      this.a.l();
+    if (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)
+    {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setVisibility(8);
     }
-    return true;
+    if ((!this.jdField_a_of_type_Boolean) && (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)) {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).a(false, 150);
+    }
+    if (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null) {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).U();
+    }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

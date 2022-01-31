@@ -1,12 +1,21 @@
-class bgsk
-  implements bgtb
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.actionsheet.ActionSheet.3;
+
+public class bgsk
+  implements Animation.AnimationListener
 {
-  bgsk(bgsi parambgsi) {}
+  public bgsk(ActionSheet.3 param3) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.b();
+    this.a.this$0.a();
+    bgsi.a(this.a.this$0, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

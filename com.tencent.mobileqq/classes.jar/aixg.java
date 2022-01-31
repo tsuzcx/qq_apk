@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public final class aixg
-  implements Parcelable.Creator<RedPacketInfoBase>
+public class aixg
+  implements PopupWindow.OnDismissListener
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  public aixg(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
+  public void onDismiss()
   {
-    return new RedPacketInfoBase[paramInt];
+    RedPacketManager.getInstance().onActiveAccount();
+    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (aixj.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    {
+      aixj.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
+      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+    }
+    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
+      ajeu.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    }
   }
 }
 

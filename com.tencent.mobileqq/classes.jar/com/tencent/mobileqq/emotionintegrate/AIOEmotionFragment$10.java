@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import apvv;
-import apvw;
+import aqae;
+import aqaf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class AIOEmotionFragment$10
   implements Runnable
 {
-  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment, List paramList, apvv paramapvv) {}
+  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment, List paramList, aqae paramaqae) {}
   
   public void run()
   {
     boolean bool = false;
-    this.this$0.jdField_a_of_type_Apvw.a(this.jdField_a_of_type_JavaUtilList);
-    this.this$0.jdField_a_of_type_Apvw.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Apvv != null) {}
-    for (int i = this.this$0.jdField_a_of_type_Apvw.a(this.jdField_a_of_type_Apvv);; i = 0)
+    this.this$0.jdField_a_of_type_Aqaf.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_Aqaf.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Aqae != null) {}
+    for (int i = this.this$0.jdField_a_of_type_Aqaf.a(this.jdField_a_of_type_Aqae);; i = 0)
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
       if (QLog.isColorLevel())
       {
-        if (this.jdField_a_of_type_Apvv == null) {
+        if (this.jdField_a_of_type_Aqae == null) {
           bool = true;
         }
         QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });

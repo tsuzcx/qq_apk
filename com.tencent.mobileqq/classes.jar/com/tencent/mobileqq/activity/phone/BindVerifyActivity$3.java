@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.content.Intent;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class BindVerifyActivity$3
@@ -18,12 +18,12 @@ class BindVerifyActivity$3
     this.this$0.setResult(-1, localIntent);
     this.this$0.finish();
     if (BindVerifyActivity.a(this.this$0) == 15) {
-      azmj.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
+      azqs.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
     }
     while (BindVerifyActivity.a(this.this$0) != 17) {
       return;
     }
-    azmj.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+    azqs.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
   }
 }
 

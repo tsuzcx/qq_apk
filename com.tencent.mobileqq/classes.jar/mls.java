@@ -21,7 +21,7 @@ import java.util.Timer;
 @RequiresApi(api=21)
 public class mls
 {
-  static final int[][] jdField_a_of_type_Array2dOfInt = { { 720, 1280 }, { 1080, 1920 }, { 1080, 1920 } };
+  static final int[][] jdField_a_of_type_Array2dOfInt;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private VirtualDisplay jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay;
@@ -36,6 +36,13 @@ public class mls
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   private int c;
+  
+  static
+  {
+    int[] arrayOfInt1 = { 1080, 1920 };
+    int[] arrayOfInt2 = { 1080, 1920 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { { 720, 1280 }, arrayOfInt1, arrayOfInt2 };
+  }
   
   private void a(boolean paramBoolean)
   {

@@ -1,38 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.media.MediaRecorder;
+import android.media.MediaRecorder.OnInfoListener;
+import android.util.Log;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
 
 public class bhkj
-  extends Handler
+  implements MediaRecorder.OnInfoListener
 {
-  public bhkj(QSecFramework paramQSecFramework, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bhkj(MiniAppCamera paramMiniAppCamera, bgok parambgok) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    try
-    {
-      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
-      {
-        long l = Long.parseLong((String)paramMessage.obj);
-        if (l != 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
-          }
-          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
-        }
-      }
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
+    Log.i("MiniAppCamera", "onInfo: " + paramInt1);
+    QMLog.i("MiniAppCamera", "setOnInfoListener|reson: " + paramInt1);
+    if (paramInt1 == 800) {
+      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.b(this.jdField_a_of_type_Bgok);
     }
   }
 }

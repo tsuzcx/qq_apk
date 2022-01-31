@@ -1,32 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import mqq.app.AppRuntime;
 
 public class apan
-  implements DialogInterface.OnClickListener
 {
-  public apan(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    if (bdee.d(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramAppRuntime != null)
     {
-      paramDialogInterface.dismiss();
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
-      return;
+      localObject1 = localObject2;
+      if ((paramAppRuntime instanceof QQAppInterface))
+      {
+        paramAppRuntime = (QQAppInterface)paramAppRuntime;
+        if (!paramBoolean) {
+          break label41;
+        }
+        localObject1 = paramAppRuntime.b(paramString);
+      }
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131691542, 0).a();
+    return localObject1;
+    label41:
+    return paramAppRuntime.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apan
  * JD-Core Version:    0.7.0.1
  */

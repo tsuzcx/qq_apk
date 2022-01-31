@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview;
 
-import beat;
+import befc;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class WebViewAioShareMusicHelper$2
   implements Runnable
 {
-  public WebViewAioShareMusicHelper$2(beat parambeat) {}
+  public WebViewAioShareMusicHelper$2(befc parambefc) {}
   
   public void run()
   {
-    beat.a(this.this$0).f();
+    befc.a(this.this$0).f();
   }
 }
 

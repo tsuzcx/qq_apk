@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import alrh;
+import alvw;
 import android.app.Dialog;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -10,13 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import asbg;
-import asbh;
-import asbi;
-import asbj;
-import azmj;
-import bcwg;
-import bhpy;
+import asfp;
+import asfq;
+import asfr;
+import asfs;
+import azqs;
+import bdap;
+import bhuf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -29,7 +29,7 @@ public class LangSettingFragment
   private static final List<Integer> jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(2052), Integer.valueOf(1033) });
   private int jdField_a_of_type_Int;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private bhpy jdField_a_of_type_Bhpy;
+  private bhuf jdField_a_of_type_Bhuf;
   
   private String a(int paramInt, boolean paramBoolean)
   {
@@ -42,12 +42,12 @@ public class LangSettingFragment
         i = ((Integer)jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
       }
     }
-    return alrh.a(i);
+    return alvw.a(i);
   }
   
   private void a()
   {
-    int j = alrh.a();
+    int j = alvw.a();
     if (j == 0) {
       this.jdField_a_of_type_Int = 0;
     }
@@ -69,14 +69,14 @@ public class LangSettingFragment
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpy == null) {
-      this.jdField_a_of_type_Bhpy = bhpy.a(getActivity());
+    if (this.jdField_a_of_type_Bhuf == null) {
+      this.jdField_a_of_type_Bhuf = bhuf.a(getActivity());
     }
-    this.jdField_a_of_type_Bhpy.a(String.format(getResources().getString(2131693833), new Object[] { a(paramInt, true) }));
-    this.jdField_a_of_type_Bhpy.c(String.format(getResources().getString(2131693832), new Object[] { a(paramInt, true) }));
-    this.jdField_a_of_type_Bhpy.d(getResources().getString(2131693831));
-    this.jdField_a_of_type_Bhpy.a(new asbg(this, paramInt));
-    this.jdField_a_of_type_Bhpy.show();
+    this.jdField_a_of_type_Bhuf.a(String.format(getResources().getString(2131693835), new Object[] { a(paramInt, true) }));
+    this.jdField_a_of_type_Bhuf.c(String.format(getResources().getString(2131693834), new Object[] { a(paramInt, true) }));
+    this.jdField_a_of_type_Bhuf.d(getResources().getString(2131693833));
+    this.jdField_a_of_type_Bhuf.a(new asfp(this, paramInt));
+    this.jdField_a_of_type_Bhuf.show();
   }
   
   private void b(int paramInt)
@@ -86,7 +86,7 @@ public class LangSettingFragment
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
       this.jdField_a_of_type_AndroidAppDialog = null;
     }
-    this.jdField_a_of_type_AndroidAppDialog = bcwg.a(getActivity(), 2131692816, 2131692814, 2131692813, 2131692815, new asbh(this), new asbi(this, paramInt));
+    this.jdField_a_of_type_AndroidAppDialog = bdap.a(getActivity(), 2131692818, 2131692816, 2131692815, 2131692817, new asfq(this), new asfr(this, paramInt));
     if ((!getActivity().isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog != null)) {
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -101,17 +101,17 @@ public class LangSettingFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
-    setTitle(getResources().getString(2131719814));
-    ((ListView)this.mContentView.findViewById(2131369114)).setAdapter(new asbj(this));
+    setTitle(getResources().getString(2131719826));
+    ((ListView)this.mContentView.findViewById(2131369132)).setAdapter(new asfs(this));
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramLayoutInflater != null) {
-      azmj.b(paramLayoutInflater, "dc00898", "", "", "0X800A611", "0X800A5A7", 0, 0, "", "", "", "");
+      azqs.b(paramLayoutInflater, "dc00898", "", "", "0X800A611", "0X800A5A7", 0, 0, "", "", "", "");
     }
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561266;
+    return 2131561284;
   }
 }
 

@@ -1,34 +1,30 @@
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bdkg
-  implements DialogInterface.OnClickListener
+class bdkg
+  implements View.OnClickListener
 {
-  public bdkg(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  bdkg(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", String.format(aguq.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
-      paramDialogInterface.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdjz, 1);
     }
-    for (;;)
+    try
     {
-      azmj.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+      if (this.jdField_a_of_type_Bdjz.isShowing()) {
+        this.jdField_a_of_type_Bdjz.dismiss();
+      }
       return;
-      alzw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
     }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkg
  * JD-Core Version:    0.7.0.1
  */

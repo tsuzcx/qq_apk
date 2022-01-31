@@ -1,20 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class atqs
-  extends BroadcastReceiver
+final class atqs
+  implements DialogInterface.OnClickListener
 {
-  atqs(atqr paramatqr) {}
+  atqs(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (atqr.a(this.a) == null)) {
-      return;
-    }
-    atqr.a(this.a).a();
+    attk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    azqs.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
   }
 }
 

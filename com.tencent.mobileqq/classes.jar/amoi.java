@@ -1,23 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
-
-class amoi
-  implements MediaPlayer.OnErrorListener
+public abstract interface amoi
 {
-  amoi(amof paramamof) {}
+  public abstract void a();
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
-    }
-    return false;
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amoi
  * JD-Core Version:    0.7.0.1
  */

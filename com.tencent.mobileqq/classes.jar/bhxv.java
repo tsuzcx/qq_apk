@@ -1,11 +1,20 @@
-class bhxv
+import com.tencent.widget.HorizontalListView;
+
+public class bhxv
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  private int a;
   
-  bhxv(bhxu parambhxu) {}
+  private bhxv(HorizontalListView paramHorizontalListView) {}
+  
+  public void a()
+  {
+    this.a = HorizontalListView.access$900(this.this$0);
+  }
+  
+  public boolean a()
+  {
+    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
+  }
 }
 
 

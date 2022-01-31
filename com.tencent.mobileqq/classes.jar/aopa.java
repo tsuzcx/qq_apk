@@ -1,110 +1,64 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aopa
-  extends aofy<aooz>
 {
-  public int a()
-  {
-    return 396;
-  }
+  private boolean a;
   
-  @NonNull
-  public aooz a(int paramInt)
+  public static aopa a(aoko[] paramArrayOfaoko)
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new aooz();
-  }
-  
-  @Nullable
-  public aooz a(aogf[] paramArrayOfaogf)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaogf != null) {
+    aopa localaopa = new aopa();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
+    {
       try
       {
-        if (paramArrayOfaogf.length > 0)
+        int j = paramArrayOfaoko.length;
+        int i = 0;
+        if (i < j)
         {
-          paramArrayOfaogf = (aooz)aogt.a(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString, aooz.class);
-          return paramArrayOfaogf;
+          String str = paramArrayOfaoko[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_d55"))
+          {
+            if (localJSONObject.optInt("enable_d55", 0) == 1)
+            {
+              bool = true;
+              localaopa.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
+          return localaopa;
         }
       }
-      catch (QStorageInstantiateException paramArrayOfaogf) {}
-    }
-    return null;
-  }
-  
-  public Class<aooz> a()
-  {
-    return aooz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aooz paramaooz)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
-    {
-      if (localObject1 != null)
+      catch (JSONException paramArrayOfaoko)
       {
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_up", paramaooz.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_down", paramaooz.b);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2czip_down", paramaooz.c);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_thumb", paramaooz.d);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_up", paramaooz.e);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_down", paramaooz.f);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disczip_down", paramaooz.g);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_thumb", paramaooz.h);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_up", paramaooz.i);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_down", paramaooz.j);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troopzip_down", paramaooz.k);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_thumb", paramaooz.l);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew", paramaooz.m);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_svip", paramaooz.n);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramaooz.o);
-        ((SharedPreferences.Editor)localObject2).apply();
-        QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramaooz.jdField_a_of_type_JavaLangString);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("troop_video_preivew", paramaooz.m);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_svip", paramaooz.n);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramaooz.o);
-        paramaooz = (aqpu)((QQAppInterface)localObject1).getManager(317);
-        if (paramaooz != null) {
-          paramaooz.a((Bundle)localObject2);
-        }
+        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaoko);
+        return null;
       }
-      return;
+      boolean bool = false;
     }
   }
   
-  public int b()
+  public boolean a()
   {
-    return 0;
+    return this.a;
   }
   
-  public boolean b()
+  public String toString()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    new StringBuilder().append("isSwitchOpen:").append(this.a);
+    return super.toString();
   }
 }
 

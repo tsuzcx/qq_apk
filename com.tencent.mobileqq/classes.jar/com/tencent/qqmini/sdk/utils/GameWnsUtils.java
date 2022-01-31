@@ -3,19 +3,19 @@ package com.tencent.qqmini.sdk.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bglq;
-import bgte;
+import bgpx;
+import bgxl;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class GameWnsUtils
 {
   private static final int MINI_GAME_SHOW_RESTART_BTN = 1;
   private static final String TAG = "GameWnsUtils";
-  private static final boolean sLogEnable = bglq.a("qqtriton", "MiniGameLogEnable", true);
+  private static final boolean sLogEnable = bgpx.a("qqtriton", "MiniGameLogEnable", true);
   
   private static boolean buildModelEnable()
   {
-    String str1 = bglq.a("QZoneSetting", "MiniGameBlackList", "[GT-I9502]");
+    String str1 = bgpx.a("QZoneSetting", "MiniGameBlackList", "[GT-I9502]");
     try
     {
       String str2 = Build.MODEL;
@@ -44,37 +44,37 @@ public class GameWnsUtils
   
   public static boolean enableHotReload()
   {
-    return bglq.a("qqtriton", "MiniEnableHotReload", 1) > 0;
+    return bgpx.a("qqtriton", "MiniEnableHotReload", 1) > 0;
   }
   
   public static boolean enableOpengles3()
   {
-    return bglq.a("qqtriton", "enableOpengles3", 1) > 0;
+    return bgpx.a("qqtriton", "enableOpengles3", 1) > 0;
   }
   
   public static boolean enablePersistentDebugVersion()
   {
-    return bglq.a("qqtriton", "MiniGamePersistentDebugVersionEnable", 1) > 0;
+    return bgpx.a("qqtriton", "MiniGamePersistentDebugVersionEnable", 1) > 0;
   }
   
   public static boolean enablePreloadGameBaseLib()
   {
-    return bglq.a("qqtriton", "MiniGamePreloadBaseLibEnable", 1) > 0;
+    return bgpx.a("qqtriton", "MiniGamePreloadBaseLibEnable", 1) > 0;
   }
   
   public static boolean enableStorageExceedDialog()
   {
-    return bglq.a("qqtriton", "MiniGameStorageExceedDialogEnable", 1) > 0;
+    return bgpx.a("qqtriton", "MiniGameStorageExceedDialogEnable", 1) > 0;
   }
   
   public static int enableStorageExceedLimit()
   {
-    return bglq.a("qqtriton", "MiniGameStorageExceedLimit", 3);
+    return bgpx.a("qqtriton", "MiniGameStorageExceedLimit", 3);
   }
   
   public static String gameDisableHint()
   {
-    return bglq.a("QZoneTextSetting", "MiniGameDisableHint", "该小游戏正在升级中，先去玩玩其他小游戏吧");
+    return bgpx.a("QZoneTextSetting", "MiniGameDisableHint", "该小游戏正在升级中，先去玩玩其他小游戏吧");
   }
   
   public static boolean gameEnable()
@@ -84,7 +84,7 @@ public class GameWnsUtils
   
   public static boolean gameEnableDexLoader()
   {
-    return bglq.a("qqtriton", "MiniGameDexEnable", true);
+    return bgpx.a("qqtriton", "MiniGameDexEnable", true);
   }
   
   public static boolean gameEnableLog()
@@ -94,48 +94,48 @@ public class GameWnsUtils
   
   private static boolean gameSysVersionAllowed()
   {
-    int i = bglq.a("QZoneSetting", "MiniGameMinSysVersion", 18);
+    int i = bgpx.a("QZoneSetting", "MiniGameMinSysVersion", 18);
     return Build.VERSION.SDK_INT >= i;
   }
   
   public static String getBackPressHint()
   {
-    return bglq.a("qqtriton", "MiniGameBackPressHint", "再按一次返回键退出该程序");
+    return bgpx.a("qqtriton", "MiniGameBackPressHint", "再按一次返回键退出该程序");
   }
   
   public static String getCacheFreeContent()
   {
-    return bglq.a("qqtriton", "MiniGameCacheFreeDialogContent", "游戏存储异常,是否清缓存后重启游戏？");
+    return bgpx.a("qqtriton", "MiniGameCacheFreeDialogContent", "游戏存储异常,是否清缓存后重启游戏？");
   }
   
   public static int getCloseConfirmShowTimes()
   {
-    return bglq.a("qqminiapp", "mini_game_exit_confirm_animation_expoure_times_threshold", 3);
+    return bgpx.a("qqminiapp", "mini_game_exit_confirm_animation_expoure_times_threshold", 3);
   }
   
   public static String getFakeFristFrameUrl()
   {
-    return bglq.a("qqtriton", "MiniGameFakeFirstFrameUrl", "");
+    return bgpx.a("qqtriton", "MiniGameFakeFirstFrameUrl", "");
   }
   
   public static int getFrameNoChangeLimit()
   {
-    return bglq.a("qqtriton", "MiniGameFrameNoChangeLimit", 5);
+    return bgpx.a("qqtriton", "MiniGameFrameNoChangeLimit", 5);
   }
   
   public static int getGameErrorBlackDetectInterval()
   {
-    return bglq.a("qqtriton", "MiniGameBlackDetectInterval", 3000);
+    return bgpx.a("qqtriton", "MiniGameBlackDetectInterval", 3000);
   }
   
   public static String getGameErrorDialogContent()
   {
-    return bglq.a("qqtriton", "MiniGameErrorDialogContent", "游戏异常停止, 是否需要重启游戏?");
+    return bgpx.a("qqtriton", "MiniGameErrorDialogContent", "游戏异常停止, 是否需要重启游戏?");
   }
   
   public static boolean getGameErrorDialogEnable()
   {
-    return bglq.a("qqtriton", "MiniGameErrorDialogEnable", 1) > 0;
+    return bgpx.a("qqtriton", "MiniGameErrorDialogEnable", 1) > 0;
   }
   
   public static boolean getGameErrorDialogIsBlack()
@@ -145,7 +145,7 @@ public class GameWnsUtils
       return true;
     }
     str1 = str1.toLowerCase();
-    String str2 = bglq.a("qqtriton", "MiniGameErrorDialogBlack", "");
+    String str2 = bgpx.a("qqtriton", "MiniGameErrorDialogBlack", "");
     if (TextUtils.isEmpty(str2)) {
       return false;
     }
@@ -154,68 +154,68 @@ public class GameWnsUtils
   
   public static int getGameJsErrorDetectInterval()
   {
-    return bglq.a("qqtriton", "MiniGameJsErrorDetectInterval", 5000);
+    return bgpx.a("qqtriton", "MiniGameJsErrorDetectInterval", 5000);
   }
   
   public static String getGameLaunchFailContent()
   {
-    return bglq.a("qqtriton", "MiniGameLaunchFailDialogContent", "游戏加载异常，是否清缓存后重启游戏？");
+    return bgpx.a("qqtriton", "MiniGameLaunchFailDialogContent", "游戏加载异常，是否清缓存后重启游戏？");
   }
   
   public static long getGameOnShowReportInterval()
   {
-    return bglq.a("qqtriton", "MiniGameOnShowReportInterval", 2000L);
+    return bgpx.a("qqtriton", "MiniGameOnShowReportInterval", 2000L);
   }
   
   public static int getGamePresentDetectInterval()
   {
-    return bglq.a("qqtriton", "MiniGamePresentDetectInterval", 1000);
+    return bgpx.a("qqtriton", "MiniGamePresentDetectInterval", 1000);
   }
   
   public static int getNoPresentDurationLimit()
   {
-    return bglq.a("qqtriton", "MiniGameNoPresentDurationLimit", 5000);
+    return bgpx.a("qqtriton", "MiniGameNoPresentDurationLimit", 5000);
   }
   
   public static int getNoPresentTouchLimit()
   {
-    return bglq.a("qqtriton", "MiniGameNoPresentTouchLimit", 3);
+    return bgpx.a("qqtriton", "MiniGameNoPresentTouchLimit", 3);
   }
   
   public static String getQQUpdateUrl()
   {
-    return bglq.a("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
+    return bgpx.a("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
   }
   
   public static long getRecordDurationInterval()
   {
-    return bglq.a("qqtriton", "MiniRecordDurationInterval", 5000L);
+    return bgpx.a("qqtriton", "MiniRecordDurationInterval", 5000L);
   }
   
   public static long getReportDelayCheckDB()
   {
-    return bglq.a("qqtriton", "MiniReportDelayCheckDB", 1000L);
+    return bgpx.a("qqtriton", "MiniReportDelayCheckDB", 1000L);
   }
   
   public static long getReportDelayWaiting()
   {
-    return bglq.a("qqtriton", "MiniReportDelayWaiting", 2000L);
+    return bgpx.a("qqtriton", "MiniReportDelayWaiting", 2000L);
   }
   
   public static long getShowTimeout()
   {
-    return bglq.a("qqtriton", "MiniShowTimeout", 45000L);
+    return bgpx.a("qqtriton", "MiniShowTimeout", 45000L);
   }
   
   public static boolean killAllGamesWhenDestroy()
   {
-    return bglq.a("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
+    return bgpx.a("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
   }
   
   public static boolean killAllGamesWhenReuse()
   {
     boolean bool = false;
-    if (bglq.a("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
+    if (bgpx.a("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
       bool = true;
     }
     return bool;
@@ -224,7 +224,7 @@ public class GameWnsUtils
   public static boolean needBackPressHint(String paramString)
   {
     boolean bool2 = false;
-    Object localObject = bglq.a("qqtriton", "MiniGameBackPressHintList", "1108292102");
+    Object localObject = bgpx.a("qqtriton", "MiniGameBackPressHintList", "1108292102");
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
@@ -263,12 +263,12 @@ public class GameWnsUtils
   
   public static boolean showRestartButton()
   {
-    return bglq.a("qqminiapp", "mini_game_capsule_show_restart_btn", 1) == 1;
+    return bgpx.a("qqminiapp", "mini_game_capsule_show_restart_btn", 1) == 1;
   }
   
   private static boolean suffixEnable()
   {
-    Object localObject = bglq.a("QZoneSetting", "MiniGameGaryRange", "0-100");
+    Object localObject = bgpx.a("QZoneSetting", "MiniGameGaryRange", "0-100");
     int[] arrayOfInt = new int[2];
     try
     {
@@ -293,7 +293,7 @@ public class GameWnsUtils
     l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(bgte.a().a());
+      long l2 = Long.parseLong(bgxl.a().a());
       l1 = l2;
     }
     catch (Exception localException)

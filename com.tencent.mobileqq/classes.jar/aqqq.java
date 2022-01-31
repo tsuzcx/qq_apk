@@ -1,36 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aqqq
-  implements aqqr
+public class aqqq
+  implements View.OnClickListener
 {
-  aqqq(aqqp paramaqqp, aqpv paramaqpv, MessageRecord paramMessageRecord) {}
+  public aqqq(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aqqp.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
-    }
-    this.jdField_a_of_type_Aqqp.b = 2;
-    aqpv.a(this.jdField_a_of_type_Aqqp.jdField_a_of_type_Aqpv, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
-    aqpv.b(this.jdField_a_of_type_Aqqp.jdField_a_of_type_Aqpv, this.jdField_a_of_type_Aqqp.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aqqp.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
-    }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Aqqp.b = 4;; this.jdField_a_of_type_Aqqp.b = 3)
+    Object localObject1 = paramView.getTag();
+    Object localObject2;
+    FileManagerEntity localFileManagerEntity;
+    int i;
+    if ((localObject1 instanceof aqqz))
     {
-      aqpv.b(this.jdField_a_of_type_Aqqp.jdField_a_of_type_Aqpv, this.jdField_a_of_type_Aqqp.jdField_a_of_type_JavaLangString);
-      return;
-      String str = alpo.a(2131710075) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+      localObject2 = (aqqz)paramView.getTag();
+      localObject1 = ((aqqz)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+      localFileManagerEntity = (FileManagerEntity)((aqqz)localObject2).jdField_a_of_type_JavaLangObject;
+      i = ((aqqz)localObject2).b;
+      i = ((aqqz)localObject2).c;
+    }
+    for (;;)
+    {
+      if ((paramView.getId() == 2131366301) && (QfileBaseRecentFileTabView.b(this.a))) {
+        azqs.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      if (localFileManagerEntity != null)
+      {
+        localObject2 = this.a;
+        if (paramView.getId() != 2131366301) {
+          break label183;
+        }
+      }
+      label183:
+      for (boolean bool = true;; bool = false)
+      {
+        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
+        return;
+        if (!(localObject1 instanceof aqnh)) {
+          break label188;
+        }
+        localObject2 = (aqnh)paramView.getTag();
+        localObject1 = ((aqnh)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+        localFileManagerEntity = (FileManagerEntity)((aqnh)localObject2).jdField_a_of_type_JavaLangObject;
+        i = ((aqnh)localObject2).b;
+        i = ((aqnh)localObject2).jdField_a_of_type_Int;
+        break;
+      }
+      label188:
+      localObject1 = null;
+      localFileManagerEntity = null;
     }
   }
 }

@@ -1,1022 +1,1021 @@
+import QQService.EVIPSPEC;
+import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.VasUtils.1;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.os.MqqHandler;
 
-public class bdom
+public final class bdom
 {
-  long jdField_a_of_type_Long;
-  alqr jdField_a_of_type_Alqr;
-  public bdoo a;
-  public bdor a;
-  public QQLruCache<String, bdos> a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new bdon(this);
-  public String a;
-  ArrayList<bdoq> jdField_a_of_type_JavaUtilArrayList;
-  public Map<String, List<String>> a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public bdoo b;
-  public String b;
-  public AtomicBoolean b;
-  public boolean b;
-  public String c;
+  private static int a;
+  public static String a;
   
-  public bdom(QQAppInterface paramQQAppInterface, alqr paramalqr)
+  static
   {
-    this.jdField_a_of_type_Bdoo = new bdoo();
-    this.jdField_b_of_type_Bdoo = new bdoo();
-    this.jdField_a_of_type_Bdor = new bdor();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_Bdoo.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Alqr = paramalqr;
-    this.jdField_b_of_type_Boolean = paramalqr.b().getBoolean("mall_entrance_switch", false);
-    this.jdField_a_of_type_Boolean = paramalqr.b().getBoolean("redpacket_is_show_switch", false);
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(1009, 100, 300);
-    this.jdField_a_of_type_Bdor.f = 8;
-    this.jdField_b_of_type_Bdoo.f = 26;
-    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    jdField_a_of_type_JavaLangString = "VasUtils";
+    jdField_a_of_type_Int = 1000;
   }
   
-  public static boolean a(bdor parambdor)
+  public static int a()
   {
-    if ((parambdor == null) || (parambdor.f == 0)) {}
+    if (ajeq.a()) {
+      return 1;
+    }
+    if (ajeq.c()) {
+      return 2;
+    }
+    if (ajeq.e()) {
+      return 5;
+    }
+    if (!TextUtils.isEmpty(bdep.a("ro.build.version.opporom"))) {
+      return 3;
+    }
+    if (!TextUtils.isEmpty(bdep.a("ro.vivo.os.version"))) {
+      return 4;
+    }
+    return 0;
+  }
+  
+  public static int a(Context paramContext)
+  {
+    int i = 0;
+    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (j > 0) {
+      i = paramContext.getResources().getDimensionPixelSize(j);
+    }
+    return i;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).e(paramString);
+    if (paramQQAppInterface != null)
+    {
+      boolean bool = paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
+      if (paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
+      {
+        if (paramQQAppInterface.getServiceType(EVIPSPEC.E_SP_SUPERVIP) == 1) {
+          return 22;
+        }
+        return 5;
+      }
+      if (bool)
+      {
+        if (paramQQAppInterface.getServiceType(EVIPSPEC.E_SP_QQVIP) == 1) {
+          return 21;
+        }
+        return 4;
+      }
+    }
+    return 1;
+  }
+  
+  /* Error */
+  public static int a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: ldc 2
+    //   4: monitorenter
+    //   5: new 102	java/io/File
+    //   8: dup
+    //   9: new 104	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   16: aload_0
+    //   17: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: getstatic 114	java/io/File:separator	Ljava/lang/String;
+    //   23: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: aload_1
+    //   27: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokespecial 121	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: astore 4
+    //   38: aload 4
+    //   40: invokevirtual 124	java/io/File:exists	()Z
+    //   43: istore_3
+    //   44: iload_3
+    //   45: ifne +8 -> 53
+    //   48: ldc 2
+    //   50: monitorexit
+    //   51: iload_2
+    //   52: ireturn
+    //   53: new 104	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   60: aload_0
+    //   61: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: getstatic 114	java/io/File:separator	Ljava/lang/String;
+    //   67: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: aload_1
+    //   71: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokestatic 129	java/lang/System:load	(Ljava/lang/String;)V
+    //   80: iconst_0
+    //   81: istore_2
+    //   82: goto -34 -> 48
+    //   85: astore_0
+    //   86: ldc 131
+    //   88: iconst_1
+    //   89: new 104	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   96: ldc 133
+    //   98: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: aload_0
+    //   102: invokevirtual 136	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   105: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: aload 4
+    //   116: invokevirtual 144	java/io/File:delete	()Z
+    //   119: pop
+    //   120: iconst_2
+    //   121: istore_2
+    //   122: goto -74 -> 48
+    //   125: astore_0
+    //   126: ldc 2
+    //   128: monitorexit
+    //   129: aload_0
+    //   130: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	131	0	paramString1	String
+    //   0	131	1	paramString2	String
+    //   1	121	2	i	int
+    //   43	2	3	bool	boolean
+    //   36	79	4	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   53	80	85	java/lang/Throwable
+    //   5	44	125	finally
+    //   53	80	125	finally
+    //   86	120	125	finally
+  }
+  
+  public static Drawable a(String paramString, URLDrawable.URLDrawableListener paramURLDrawableListener, Drawable paramDrawable)
+  {
+    return a(paramString, false, false, paramURLDrawableListener, paramDrawable);
+  }
+  
+  public static Drawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2, URLDrawable.URLDrawableListener paramURLDrawableListener, Drawable paramDrawable)
+  {
+    Object localObject5 = null;
+    Object localObject4 = null;
+    Object localObject1 = paramDrawable;
+    Object localObject2;
+    Object localObject3;
+    if (paramDrawable == null)
+    {
+      localObject2 = localObject5;
+      localObject3 = paramDrawable;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new ColorDrawable(-1513240);
+        localObject2 = localObject5;
+        localObject3 = localObject1;
+        paramDrawable = URLDrawable.URLDrawableOptions.obtain();
+        localObject2 = localObject5;
+        localObject3 = localObject1;
+        paramDrawable.mFailedDrawable = ((Drawable)localObject1);
+        localObject2 = localObject5;
+        localObject3 = localObject1;
+        paramDrawable.mLoadingDrawable = ((Drawable)localObject1);
+        if (!paramBoolean1) {
+          continue;
+        }
+      }
+      catch (Exception paramURLDrawableListener)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "getIPSiteDrawable error url = " + paramString + "error msg = " + paramURLDrawableListener);
+        localObject1 = localObject3;
+        paramDrawable = (Drawable)localObject2;
+        continue;
+        if (!paramBoolean2) {
+          continue;
+        }
+        try
+        {
+          paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IPSITE_GAME_IMAGE", paramString), paramDrawable);
+        }
+        catch (Exception paramDrawable)
+        {
+          localObject2 = localObject5;
+          localObject3 = localObject1;
+          QLog.e(jdField_a_of_type_JavaLangString, 1, "getIPSiteDrawable error = " + paramDrawable);
+          paramDrawable = localObject4;
+        }
+        continue;
+        localObject2 = localObject5;
+        localObject3 = localObject1;
+        paramDrawable = URLDrawable.getDrawable(paramString, paramDrawable);
+        continue;
+        return paramDrawable;
+        if (paramDrawable != null) {
+          continue;
+        }
+      }
+      try
+      {
+        paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IP_SITE_ROUND_IMAGE", paramString), paramDrawable);
+        if (paramDrawable != null)
+        {
+          localObject2 = paramDrawable;
+          localObject3 = localObject1;
+          if (paramDrawable.getTag() == null)
+          {
+            localObject2 = paramDrawable;
+            localObject3 = localObject1;
+            paramDrawable.setTag(Integer.valueOf(0));
+          }
+          localObject2 = paramDrawable;
+          localObject3 = localObject1;
+          paramDrawable.setURLDrawableListener(paramURLDrawableListener);
+          localObject2 = paramDrawable;
+          localObject3 = localObject1;
+          paramDrawable.setAutoDownload(true);
+        }
+      }
+      catch (Exception paramDrawable)
+      {
+        localObject2 = localObject5;
+        localObject3 = localObject1;
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "getIPSiteDrawable error = " + paramDrawable);
+        paramDrawable = localObject4;
+      }
+    }
+    return localObject1;
+  }
+  
+  /* Error */
+  public static SpannableString a(QQAppInterface paramQQAppInterface, com.tencent.imcore.message.QQMessageFacade.Message paramMessage, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 8
+    //   3: aload 8
+    //   5: astore 6
+    //   7: aload_1
+    //   8: getfield 231	com/tencent/imcore/message/QQMessageFacade$Message:mExJsonObject	Lorg/json/JSONObject;
+    //   11: ifnull +183 -> 194
+    //   14: new 233	org/json/JSONObject
+    //   17: dup
+    //   18: new 233	org/json/JSONObject
+    //   21: dup
+    //   22: aload_1
+    //   23: getfield 231	com/tencent/imcore/message/QQMessageFacade$Message:mExJsonObject	Lorg/json/JSONObject;
+    //   26: ldc 235
+    //   28: ldc 237
+    //   30: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   33: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   36: ldc 244
+    //   38: ldc 237
+    //   40: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   43: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   46: astore 6
+    //   48: aload 6
+    //   50: ldc 246
+    //   52: aconst_null
+    //   53: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   56: astore_1
+    //   57: aload 6
+    //   59: ldc 248
+    //   61: ldc 250
+    //   63: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   66: astore 6
+    //   68: aload_1
+    //   69: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   72: istore 5
+    //   74: iload 5
+    //   76: ifeq +5 -> 81
+    //   79: aconst_null
+    //   80: astore_1
+    //   81: aload_1
+    //   82: astore 7
+    //   84: aload 6
+    //   86: astore_1
+    //   87: aload_0
+    //   88: invokestatic 253	bdom:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
+    //   91: astore_0
+    //   92: aload 8
+    //   94: astore 6
+    //   96: aload 7
+    //   98: ifnull +96 -> 194
+    //   101: aload 7
+    //   103: ldc 255
+    //   105: invokevirtual 261	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   108: istore_3
+    //   109: aload_0
+    //   110: invokevirtual 264	java/lang/String:length	()I
+    //   113: iload_3
+    //   114: iadd
+    //   115: istore 4
+    //   117: aload 7
+    //   119: ldc 255
+    //   121: aload_0
+    //   122: invokevirtual 268	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   125: astore_0
+    //   126: iload_3
+    //   127: iconst_m1
+    //   128: if_icmple +95 -> 223
+    //   131: new 270	android/text/SpannableString
+    //   134: dup
+    //   135: aload_0
+    //   136: invokespecial 273	android/text/SpannableString:<init>	(Ljava/lang/CharSequence;)V
+    //   139: astore_0
+    //   140: aload_0
+    //   141: astore 6
+    //   143: aload_1
+    //   144: ifnull +50 -> 194
+    //   147: aload_0
+    //   148: astore 6
+    //   150: iload_2
+    //   151: ifeq +43 -> 194
+    //   154: aload_0
+    //   155: new 275	android/text/style/StyleSpan
+    //   158: dup
+    //   159: iconst_1
+    //   160: invokespecial 276	android/text/style/StyleSpan:<init>	(I)V
+    //   163: iload_3
+    //   164: iload 4
+    //   166: bipush 18
+    //   168: invokevirtual 280	android/text/SpannableString:setSpan	(Ljava/lang/Object;III)V
+    //   171: aload_0
+    //   172: new 282	android/text/style/ForegroundColorSpan
+    //   175: dup
+    //   176: aload_1
+    //   177: invokestatic 287	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   180: invokespecial 288	android/text/style/ForegroundColorSpan:<init>	(I)V
+    //   183: iload_3
+    //   184: iload 4
+    //   186: bipush 18
+    //   188: invokevirtual 280	android/text/SpannableString:setSpan	(Ljava/lang/Object;III)V
+    //   191: aload_0
+    //   192: astore 6
+    //   194: aload 6
+    //   196: areturn
+    //   197: astore 7
+    //   199: aconst_null
+    //   200: astore 6
+    //   202: aconst_null
+    //   203: astore_1
+    //   204: aload 7
+    //   206: invokevirtual 291	org/json/JSONException:printStackTrace	()V
+    //   209: aload 6
+    //   211: astore 7
+    //   213: goto -126 -> 87
+    //   216: astore_1
+    //   217: aload_1
+    //   218: invokevirtual 292	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   221: aload_0
+    //   222: areturn
+    //   223: new 270	android/text/SpannableString
+    //   226: dup
+    //   227: aload_0
+    //   228: invokespecial 273	android/text/SpannableString:<init>	(Ljava/lang/CharSequence;)V
+    //   231: areturn
+    //   232: astore 7
+    //   234: aload_1
+    //   235: astore 6
+    //   237: aconst_null
+    //   238: astore_1
+    //   239: goto -35 -> 204
+    //   242: astore 9
+    //   244: aload_1
+    //   245: astore 7
+    //   247: aload 6
+    //   249: astore_1
+    //   250: aload 7
+    //   252: astore 6
+    //   254: aload 9
+    //   256: astore 7
+    //   258: goto -54 -> 204
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	261	0	paramQQAppInterface	QQAppInterface
+    //   0	261	1	paramMessage	com.tencent.imcore.message.QQMessageFacade.Message
+    //   0	261	2	paramBoolean	boolean
+    //   108	76	3	i	int
+    //   115	70	4	j	int
+    //   72	3	5	bool	boolean
+    //   5	248	6	localObject1	Object
+    //   82	36	7	localMessage	com.tencent.imcore.message.QQMessageFacade.Message
+    //   197	8	7	localJSONException1	org.json.JSONException
+    //   211	1	7	localObject2	Object
+    //   232	1	7	localJSONException2	org.json.JSONException
+    //   245	12	7	localObject3	Object
+    //   1	92	8	localObject4	Object
+    //   242	13	9	localJSONException3	org.json.JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   14	57	197	org/json/JSONException
+    //   154	191	216	java/lang/IllegalArgumentException
+    //   57	68	232	org/json/JSONException
+    //   68	74	242	org/json/JSONException
+  }
+  
+  public static SpannableString a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String[] arrayOfString = paramString.split(" ");
+      paramString = new SpannableString(paramString);
+      int i = 0;
+      while (i < arrayOfString.length)
+      {
+        String str = arrayOfString[i];
+        if (a(str))
+        {
+          int k = i - 1;
+          int j = 0;
+          while (k >= 0)
+          {
+            j = j + arrayOfString[k].length() + 1;
+            k -= 1;
+          }
+          k = str.length();
+          paramString.setSpan(new ForegroundColorSpan(-15550475), j, k + j, 33);
+        }
+        i += 1;
+      }
+      return paramString;
+    }
+    return new SpannableString("");
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "vas_so" + File.separator;
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      String str = paramQQAppInterface.getCurrentNickname();
+      paramQQAppInterface = str;
+      if (TextUtils.isEmpty(str)) {
+        paramQQAppInterface = "亲爱的用户";
+      }
+      return paramQQAppInterface;
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    asry.a().d();
+    ETTextView.clearCache();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    {
+      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      assg localassg = (assg)((QQAppInterface)localObject).getManager(219);
+      if (localassg != null) {
+        localassg.d();
+      }
+      localObject = (fx)((QQAppInterface)localObject).getManager(42);
+      if (localObject != null) {
+        ((fx)localObject).b();
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt, String paramString)
+  {
+    a(paramActivity, paramAppInterface, paramInt, paramString, -1, -1, -1, null);
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramActivity, paramAppInterface, paramInt1, paramString, paramInt2, -1, -1, null);
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  {
+    String str2 = "signature_1";
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("fragmentStyle", 3);
+    Object localObject1 = "";
+    Object localObject2;
+    String str1;
+    if (paramInt1 == 0)
+    {
+      localObject2 = localObject1;
+      if (paramBundle != null) {
+        localObject2 = paramBundle.getString("signUrl");
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = localObject2;
+        str1 = str2;
+        if (((String)localObject2).contains(".qq.com")) {}
+      }
+      else
+      {
+        localObject1 = bdtg.a("signatureEntrance");
+        str1 = str2;
+      }
+      localObject2 = new StringBuilder((String)localObject1);
+      if (!((String)localObject1).contains("?")) {
+        break label344;
+      }
+      ((StringBuilder)localObject2).append("&signatureEdit=1");
+      label125:
+      if (paramInt3 > -1)
+      {
+        ((StringBuilder)localObject2).append("&templateId=");
+        ((StringBuilder)localObject2).append(paramInt3);
+      }
+      if (paramInt4 > -1)
+      {
+        ((StringBuilder)localObject2).append("&fontId=");
+        ((StringBuilder)localObject2).append(paramInt4);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "openSignatureEdit: url= " + ((StringBuilder)localObject2).toString());
+      }
+      localIntent.putExtra("url", ((StringBuilder)localObject2).toString());
+      localIntent.putExtra("isTransparentTitle", true);
+      localIntent.putExtra("via", paramString);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      if (paramBundle != null) {
+        localIntent.putExtra("sign_extra", paramBundle);
+      }
+      if (paramInt2 != -1) {
+        break label356;
+      }
+      paramActivity.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      if (paramAppInterface != null) {
+        VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature", str1, paramString, 1, 0, 0, "", "", "");
+      }
+      return;
+      str1 = str2;
+      if (paramInt1 != 1) {
+        break;
+      }
+      localObject1 = bdtg.a("signatureDIYEntrance");
+      localIntent.putExtra("open_diy", true);
+      str1 = "signature_5";
+      break;
+      label344:
+      ((StringBuilder)localObject2).append("?signatureEdit=1");
+      break label125;
+      label356:
+      paramActivity.startActivityForResult(localIntent, paramInt2);
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    ((BaseActivity)paramContext).runOnUiThread(new VasUtils.1(paramContext, paramString));
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    MqqHandler localMqqHandler = paramAppInterface.getHandler(ChatActivity.class);
+    if (localMqqHandler != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "refreshAIO");
+      }
+      localMqqHandler.removeMessages(16711697);
+      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), jdField_a_of_type_Int);
+    }
+    localMqqHandler = paramAppInterface.getHandler(ChatHistoryBubbleListForTroopFragment.class);
+    if (localMqqHandler != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "refresh troop history");
+      }
+      localMqqHandler.removeMessages(16711697);
+      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), jdField_a_of_type_Int);
+    }
+    paramAppInterface = paramAppInterface.getHandler(MiniChatActivity.class);
+    if (paramAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "refresh miniAIO");
+      }
+      paramAppInterface.removeMessages(8);
+      paramAppInterface.sendMessageDelayed(paramAppInterface.obtainMessage(8), jdField_a_of_type_Int);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    int i3 = 1;
+    azbi localazbi = (azbi)paramQQAppInterface.getManager(12);
+    int i;
+    int j;
+    label51:
+    int k;
+    label65:
+    int m;
+    label80:
+    int n;
+    label95:
+    int i1;
+    label110:
+    int i2;
+    label125:
+    boolean bool;
+    if (localazbi != null)
+    {
+      if (localazbi.a("100005.100001") == -1) {
+        break label263;
+      }
+      i = 1;
+      if (i != 0)
+      {
+        if (localazbi.a("100005.100003") == -1) {
+          break label268;
+        }
+        j = 1;
+        if (localazbi.a("100005.100002") == -1) {
+          break label273;
+        }
+        k = 1;
+        if (localazbi.a("100005.100006") == -1) {
+          break label278;
+        }
+        m = 1;
+        if (localazbi.a("100005.100018") == -1) {
+          break label284;
+        }
+        n = 1;
+        if (localazbi.a("100005.100020") == -1) {
+          break label290;
+        }
+        i1 = 1;
+        if (localazbi.a("100005.100021") == -1) {
+          break label296;
+        }
+        i2 = 1;
+        bool = ((fx)paramQQAppInterface.getManager(42)).a;
+        if (!bool) {
+          break label312;
+        }
+        if (localazbi.a("100005.100011") == -1) {
+          break label302;
+        }
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      label158:
+      if (((bool) && (j == 0) && (k == 0) && (m == 0) && (i == 0) && (n == 0) && (i1 == 0) && (i2 == 0)) || ((!bool) && (j == 0) && (k == 0) && (m == 0) && (n == 0) && (i1 == 0) && (i2 == 0))) {
+        if (localazbi.a("100005") == -1) {
+          break label307;
+        }
+      }
+      label263:
+      label268:
+      label273:
+      label278:
+      label284:
+      label290:
+      label296:
+      label302:
+      label307:
+      for (i = i3;; i = 0)
+      {
+        if (i != 0) {
+          ((axlx)paramQQAppInterface.getManager(36)).b("100005");
+        }
+        return;
+        i = 0;
+        break;
+        j = 0;
+        break label51;
+        k = 0;
+        break label65;
+        m = 0;
+        break label80;
+        n = 0;
+        break label95;
+        i1 = 0;
+        break label110;
+        i2 = 0;
+        break label125;
+        i = 0;
+        break label158;
+      }
+      label312:
+      i = 0;
+    }
+  }
+  
+  public static boolean a()
+  {
+    long l = bdgk.d();
+    if (l < 1073741824L)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "isLowDevice: totalMemory below 1G: " + l / 1024L / 1024L + "M");
+      return true;
+    }
+    Runtime localRuntime = Runtime.getRuntime();
+    float f1 = (float)localRuntime.maxMemory();
+    float f2 = (float)(localRuntime.totalMemory() - localRuntime.freeMemory());
+    float f3 = f2 / f1 * 100.0F;
+    if (f3 > 85.0F)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "isLowDevice: used: " + f2 + " max: " + f1 + " percent: " + f3);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, XListView paramXListView)
+  {
+    if (paramQQAppInterface != null) {}
+    for (BubbleManager localBubbleManager = (BubbleManager)paramQQAppInterface.getManager(44);; localBubbleManager = null)
+    {
+      if ((paramXListView != null) && (localBubbleManager != null))
+      {
+        int i = paramXListView.getChildCount() - 1;
+        while (i >= 0)
+        {
+          Object localObject = paramXListView.getChildAt(i);
+          if ((localObject instanceof BaseChatItemLayout))
+          {
+            aeqi localaeqi = (aeqi)aepi.a((View)localObject);
+            localObject = aepi.a((View)localObject);
+            if ((localObject != null) && (((ChatMessage)localObject).needVipBubble()) && (localaeqi != null) && (localaeqi.a != null) && (localaeqi.a.jdField_a_of_type_Int == anxo.a.jdField_a_of_type_Int) && (localBubbleManager.a(amca.a(((ChatMessage)localObject).vipBubbleID)))) {
+              return true;
+            }
+            if ((localObject != null) && (((fx)paramQQAppInterface.getManager(42)).a(localaeqi, (ChatMessage)localObject))) {
+              return true;
+            }
+          }
+          else if ((localObject != null) && ((aepi.a((View)localObject) instanceof afzv)))
+          {
+            return true;
+          }
+          i -= 1;
+        }
+      }
+      return false;
+    }
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return Pattern.compile("^[-\\+]?[\\d]*$").matcher(paramString).matches();
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "unCompressSo fail zipPath = " + paramString1 + " dstPath = " + paramString2);
+    }
     for (;;)
     {
       return false;
-      parambdor = alqr.a(parambdor.jdField_d_of_type_JavaLangString, parambdor.c, parambdor.f, parambdor.jdField_d_of_type_Int, 0);
-      if (TextUtils.isEmpty(parambdor)) {}
-      for (parambdor = null; (parambdor != null) && (parambdor.exists()) && (parambdor.isFile()); parambdor = new File(parambdor)) {
-        return true;
+      if (!new File(paramString1).exists())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "unCompressSo fail src file not exists");
+        return false;
       }
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool3 = false;
-    File localFile1 = new File(paramString1);
-    if ((localFile1 != null) && (localFile1.exists()) && (localFile1.isFile())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividualRedPacketResDownloader", 2, "uncompressZip zipFile.exists(), zipFile.length()=" + localFile1.length());
-      }
-    }
-    for (;;)
-    {
+      String str = paramString2 + File.separator + "unzip_temp/";
       try
       {
-        bdcs.a(paramString1, paramString2, false);
-        File localFile2 = new File(paramString2);
-        if (localFile2.exists())
+        bdhb.a(paramString1, str, false);
+        paramString1 = new File(str + paramString3);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "unCompressSo tempfile = " + paramString1.getAbsolutePath());
+        }
+        if (!paramString1.exists())
         {
-          i = ThemeUtil.getFileNumInFile(localFile2);
-          if (i > 0)
-          {
-            i = 1;
-            if (i == 0)
-            {
-              paramString2 = new File(paramString2);
-              QLog.d("IndividualRedPacketResDownloader", 1, "uncompressZip DownloaderFactory.unzipResource, themeZipPath:" + paramString1);
-              bool1 = bdvx.a(localFile1, paramString2, false);
-              bool2 = bool1;
-              j = i;
-              if (i == 0)
-              {
-                bool2 = bool1;
-                j = i;
-                if (!bool1)
-                {
-                  bdcs.d(paramString1);
-                  QLog.e("IndividualRedPacketResDownloader", 1, "uncompressZip result false");
-                  j = i;
-                  bool2 = bool1;
-                }
-              }
-              if (j == 0)
-              {
-                bool1 = bool3;
-                if (!bool2) {}
-              }
-              else
-              {
-                bool1 = true;
-              }
-              return bool1;
-            }
-          }
-          else
-          {
-            QLog.e("IndividualRedPacketResDownloader", 1, "uncompressZip fileNum == 0");
-            i = 0;
-            continue;
-          }
+          QLog.e(jdField_a_of_type_JavaLangString, 1, "unCompressSo fail so file not exists");
+          return false;
         }
       }
-      catch (IOException localIOException)
+      catch (IOException paramString1)
       {
-        QLog.e("IndividualRedPacketResDownloader", 1, "uncompressZip FileUtils.uncompressZip IOException:" + localIOException.getMessage());
-        int i = 0;
-        continue;
-        boolean bool1 = false;
-        continue;
-        i = 0;
-        continue;
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "unCompressSo IOException: ", paramString1);
+        return false;
       }
-      boolean bool2 = false;
-      int j = 0;
-    }
-  }
-  
-  public bdos a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = new File(alqr.a(paramString, null, 0, 0, 0));
-    } while (!paramString.exists());
-    try
-    {
-      bdos localbdos = a(new JSONObject(bdcs.a(paramString)), true);
-      if (localbdos != null) {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localbdos.jdField_a_of_type_JavaLangString, localbdos);
-      }
-      return localbdos;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("IndividualRedPacketResDownloader", 2, "loadPacketJson ,filePath:" + paramString.getAbsolutePath(), localThrowable);
-    }
-    return null;
-  }
-  
-  public bdos a(String paramString, boolean paramBoolean)
-  {
-    bdos localbdos = (bdos)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
-    if (!paramBoolean) {}
-    while ((localbdos != null) && (localbdos.jdField_a_of_type_Bdop != null) && (localbdos.jdField_b_of_type_Bdop != null) && (localbdos.jdField_c_of_type_Bdop != null)) {
-      return localbdos;
-    }
-    return a(paramString);
-  }
-  
-  bdos a(JSONObject paramJSONObject, boolean paramBoolean)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    label1042:
-    for (;;)
-    {
-      Object localObject1;
-      bdos localbdos;
-      Object localObject2;
-      try
+      paramString2 = paramString2 + File.separator + paramString3;
+      paramString3 = new File(paramString2);
+      boolean bool;
+      if (paramString3.exists())
       {
-        localObject1 = paramJSONObject.optString("id");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break;
-        }
-        localbdos = new bdos();
-        localbdos.jdField_a_of_type_Bdop = new bdop();
-        localbdos.jdField_a_of_type_Bdop.f = 2;
-        localbdos.jdField_b_of_type_Bdop = new bdop();
-        localbdos.jdField_b_of_type_Bdop.f = 3;
-        localbdos.jdField_c_of_type_Bdop = new bdop();
-        localbdos.jdField_c_of_type_Bdop.f = 14;
-        localbdos.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        localbdos.jdField_a_of_type_Bdop.jdField_d_of_type_JavaLangString = ((String)localObject1);
-        localbdos.jdField_b_of_type_Bdop.jdField_d_of_type_JavaLangString = ((String)localObject1);
-        localbdos.jdField_c_of_type_Bdop.jdField_d_of_type_JavaLangString = ((String)localObject1);
-        localbdos.jdField_a_of_type_Bdop.c = paramJSONObject.optString("name");
-        localbdos.jdField_b_of_type_Bdop.c = localbdos.jdField_a_of_type_Bdop.c;
-        localbdos.jdField_c_of_type_Bdop.c = localbdos.jdField_a_of_type_Bdop.c;
-        localbdos.jdField_a_of_type_Int = paramJSONObject.optInt("customWord", bdos.jdField_c_of_type_Int);
-        localbdos.e = paramJSONObject.optInt("fontTypeId", 1);
-        localbdos.jdField_d_of_type_Int = paramJSONObject.optInt("version", 0);
-        localbdos.jdField_a_of_type_Bdop.jdField_d_of_type_Int = localbdos.jdField_d_of_type_Int;
-        localbdos.jdField_b_of_type_Bdop.jdField_d_of_type_Int = localbdos.jdField_d_of_type_Int;
-        localbdos.jdField_c_of_type_Bdop.jdField_d_of_type_Int = localbdos.jdField_d_of_type_Int;
-        if (localbdos.jdField_a_of_type_Int != bdos.jdField_b_of_type_Int) {
-          break label875;
-        }
-        localObject1 = paramJSONObject.optJSONArray("aioChar");
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() >= 4))
-        {
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_AndroidGraphicsRect = new Rect(((JSONArray)localObject1).optInt(0), ((JSONArray)localObject1).optInt(1), ((JSONArray)localObject1).optInt(0) + ((JSONArray)localObject1).optInt(2), ((JSONArray)localObject1).optInt(1) + ((JSONArray)localObject1).optInt(3));
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_Int = ((JSONArray)localObject1).optInt(2);
-          localObject1 = paramJSONObject.optJSONArray("packetChar");
-          if ((localObject1 != null) && (((JSONArray)localObject1).length() >= 4))
-          {
-            localbdos.jdField_b_of_type_Bdop.jdField_a_of_type_AndroidGraphicsRect = new Rect(((JSONArray)localObject1).optInt(0), ((JSONArray)localObject1).optInt(1), ((JSONArray)localObject1).optInt(0) + ((JSONArray)localObject1).optInt(2), ((JSONArray)localObject1).optInt(1) + ((JSONArray)localObject1).optInt(3));
-            localbdos.jdField_b_of_type_Bdop.jdField_a_of_type_Int = ((JSONArray)localObject1).optInt(2);
-            localObject1 = paramJSONObject.optJSONArray("sendChar");
-            if ((localObject1 == null) || (((JSONArray)localObject1).length() < 4)) {
-              break label809;
-            }
-            localbdos.jdField_c_of_type_Bdop.jdField_a_of_type_AndroidGraphicsRect = new Rect(((JSONArray)localObject1).optInt(0), ((JSONArray)localObject1).optInt(1), ((JSONArray)localObject1).optInt(0) + ((JSONArray)localObject1).optInt(2), ((JSONArray)localObject1).optInt(1) + ((JSONArray)localObject1).optInt(3));
-            localbdos.jdField_c_of_type_Bdop.jdField_a_of_type_Int = ((JSONArray)localObject1).optInt(2);
-            localObject2 = localbdos.jdField_a_of_type_Bdop;
-            if (localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_Aemn != null) {
-              break label1042;
-            }
-            localObject1 = paramJSONObject.optString("aioImgUrl", "");
-            ((bdop)localObject2).e = ((String)localObject1);
-            localbdos.jdField_b_of_type_Bdop.e = paramJSONObject.optString("redEnvelopeImgUrl", "");
-            localbdos.jdField_c_of_type_Bdop.e = paramJSONObject.optString("sendImgUrl", "");
-            return localbdos;
-          }
-        }
-        else
-        {
-          QLog.e("IndividualRedPacketResDownloader", 2, "getTemplateByJson aioChar error,name:" + localbdos.jdField_a_of_type_Bdop.c + ", id:" + localbdos.jdField_a_of_type_JavaLangString + ", isV710:" + paramBoolean);
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_AndroidGraphicsRect = new Rect(1, 1, 1, 1);
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_Int = 1;
-          localbdos.jdField_a_of_type_Int = bdos.jdField_c_of_type_Int;
-          continue;
-        }
-        QLog.e("IndividualRedPacketResDownloader", 2, "getTemplateByJson packetChar error,name:" + localbdos.jdField_a_of_type_Bdop.c + ", id:" + localbdos.jdField_a_of_type_JavaLangString + ", isV710:" + paramBoolean);
+        bool = paramString3.delete();
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "unCompressSo so already exists, delete old so result = " + bool);
       }
-      catch (Throwable paramJSONObject)
+      while (bool)
       {
-        QLog.e("IndividualRedPacketResDownloader", 2, "getTemplateByJson Err:" + paramJSONObject.toString() + ", isV710:" + paramBoolean);
-        return null;
-      }
-      localbdos.jdField_b_of_type_Bdop.jdField_a_of_type_AndroidGraphicsRect = new Rect(1, 1, 1, 1);
-      localbdos.jdField_b_of_type_Bdop.jdField_a_of_type_Int = 1;
-      localbdos.jdField_a_of_type_Int = bdos.jdField_c_of_type_Int;
-      continue;
-      label809:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("IndividualRedPacketResDownloader", 2, "getTemplateByJson sendChar error,name:" + localbdos.jdField_a_of_type_Bdop.c + ", id:" + localbdos.jdField_a_of_type_JavaLangString + ", isV710:" + paramBoolean);
-        continue;
-        label875:
-        localObject1 = paramJSONObject.optString("aioPngZip", null);
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).indexOf("http") >= 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("IndividualRedPacketResDownloader", 2, "getTemplateByJson aioPngZip ,name=" + localbdos.jdField_a_of_type_Bdop.c + ", id:" + localbdos.jdField_a_of_type_JavaLangString + ", url:" + (String)localObject1 + ", isV710:" + paramBoolean);
-          }
-          localObject2 = new aemn();
-          ((aemn)localObject2).jdField_b_of_type_Int = paramJSONObject.optInt("interval", 100);
-          ((aemn)localObject2).jdField_a_of_type_Int = paramJSONObject.optInt("flameCount", 0);
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_Aemn = ((aemn)localObject2);
-          localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          localbdos.jdField_a_of_type_Bdop.f = 19;
-          continue;
-          localObject1 = localbdos.jdField_a_of_type_Bdop.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-  }
-  
-  void a()
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Alqr != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
-        {
-          int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-          if (i > 0) {}
-        }
-        else
-        {
-          return;
-        }
-        try
-        {
-          bdoq localbdoq = (bdoq)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-          if (localbdoq != null) {
-            break label99;
-          }
-          a();
-        }
-        catch (Exception localException)
-        {
-          QLog.d("IndividualRedPacketResDownloader", 2, "preDownload, err=" + localException.getMessage());
-        }
-        continue;
-        if (!new File(localObject.jdField_b_of_type_JavaLangString).exists()) {
-          break label123;
-        }
-      }
-      finally {}
-      label99:
-      a();
-      continue;
-      label123:
-      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
-      localVasQuickUpdateManager.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-      localVasQuickUpdateManager.downloadItem(localObject.jdField_a_of_type_Long, localObject.jdField_a_of_type_JavaLangString, "silent_download.redbag");
-    }
-  }
-  
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (0L == paramLong) || (TextUtils.isEmpty(paramString1)))
-        {
-          QLog.e("IndividualRedPacketResDownloader", 1, "downloadResIfNotExsit err filePath, bid=" + paramLong + ",id:" + paramString1);
-          return;
-        }
-        if ("iRedPacket_v3.specialChar.zip".equals(paramString1))
-        {
-          paramString2 = alqr.a(null, null, 11, 0, 0);
-          VasQuickUpdateManager.getFileFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramString1, paramString2, true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-          continue;
-        }
-        paramString2 = new File(alqr.a(paramString1, null, 24, 0, 0));
-      }
-      finally {}
-      boolean bool = paramString2.exists();
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividualRedPacketResDownloader", 1, "downloadResIfNotExsit, id: " + paramString1 + " exists: " + bool);
-      }
-      if (bool) {
-        VasQuickUpdateEngine.safeDeleteFile(paramString2);
-      }
-      paramString2 = alqr.a(paramString1, null, 0, 0, 0);
-      paramString1 = "luckyMoney.item." + paramString1;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    Object localObject7;
-    label230:
-    Object localObject8;
-    label428:
-    label484:
-    Object localObject9;
-    label527:
-    label557:
-    label635:
-    int j;
-    int i;
-    int m;
-    int n;
-    label694:
-    int i1;
-    label778:
-    label807:
-    String str1;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          localObject1 = this.jdField_a_of_type_Alqr;
-          if (localObject1 != null) {
-            continue;
-          }
-        }
-      }
-      finally
-      {
-        try
-        {
-          Object localObject1 = new JSONObject(bdcs.a((File)localObject7));
-          if (localObject1 != null) {
-            break label230;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("IndividualRedPacketResDownloader", 2, "initAllConfigJson null == resJson,isAfterDownload:" + paramBoolean1 + ", isInit" + paramBoolean2);
-        }
-        catch (Throwable localThrowable)
-        {
-          boolean bool;
-          QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID ,filePath:" + ((File)localObject7).getAbsolutePath(), localThrowable);
-        }
-        localObject2 = finally;
-      }
-      return;
-      localObject1 = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata/vas/redpacket/" + "iRedPacket_v3.json";
-      localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (!paramBoolean1)
-      {
+        bool = paramString1.renameTo(paramString3);
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "unCompressSo rename temp so to real path result = " + bool + "realpath = " + paramString2);
+        return bool;
         bool = true;
-        localObject7 = VasQuickUpdateManager.getFileFromLocal((AppRuntime)localObject7, 16L, "iRedPacket_v3.json", (String)localObject1, bool, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-        if (localObject7 != null)
-        {
-          bool = ((File)localObject7).exists();
-          if (!bool) {}
-        }
-      }
-      else
-      {
-        bool = false;
-        continue;
-      }
-      Object localObject3 = null;
-      continue;
-      try
-      {
-        long l = localObject3.optLong("timestamp", 1L);
-        if (QLog.isColorLevel()) {
-          QLog.d("IndividualRedPacketResDownloader", 2, "initAllConfigJson timestamp=" + l + ", mJsonTimestamp:" + this.jdField_a_of_type_Long);
-        }
-        if (l > this.jdField_a_of_type_Long)
-        {
-          this.jdField_a_of_type_Long = l;
-          localObject7 = localObject3.optJSONObject("data");
-          if (localObject7 == null) {
-            QLog.e("IndividualRedPacketResDownloader", 2, "initAllConfigJson, null == data, timestamp=" + l + ", mJsonTimestamp:" + this.jdField_a_of_type_Long);
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config JSONException: ", localJSONException);
-        bdqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", localJSONException.getMessage(), null, 0.0F);
-        continue;
-        Object localObject4 = ((JSONObject)localObject7).optJSONArray("activityInfo");
-        if ((localObject4 == null) || (((JSONArray)localObject4).length() <= 0)) {
-          break label1700;
-        }
-        localObject4 = ((JSONArray)localObject4).optJSONObject(0);
-        paramBoolean1 = false;
-        if (localObject4 != null)
-        {
-          localObject8 = ((JSONObject)localObject4).optString("time");
-          if (!TextUtils.isEmpty((CharSequence)localObject8))
-          {
-            if (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject8).getTime() - NetConnInfoCenter.getServerTimeMillis() >= 172800000L) {
-              break label1706;
-            }
-            paramBoolean1 = true;
-          }
-          localObject8 = this.jdField_a_of_type_Alqr.b();
-          localObject9 = ((SharedPreferences)localObject8).edit();
-          if (((JSONObject)localObject4).has("androidShowSwitch"))
-          {
-            if (((JSONObject)localObject4).getInt("androidShowSwitch") != 1) {
-              break label1711;
-            }
-            paramBoolean2 = true;
-            this.jdField_a_of_type_Boolean = paramBoolean2;
-          }
-          if (((JSONObject)localObject4).has("androidEntrySwitch"))
-          {
-            if (((JSONObject)localObject4).getInt("androidEntrySwitch") != 1) {
-              break label1716;
-            }
-            paramBoolean2 = true;
-            this.jdField_b_of_type_Boolean = paramBoolean2;
-          }
-          if ((this.jdField_a_of_type_Boolean == ((SharedPreferences)localObject8).getBoolean("redpacket_is_show_switch", false)) && (this.jdField_b_of_type_Boolean == ((SharedPreferences)localObject8).getBoolean("mall_entrance_switch", false))) {
-            break label1688;
-          }
-          ((SharedPreferences.Editor)localObject9).putBoolean("redpacket_is_show_switch", this.jdField_a_of_type_Boolean);
-          ((SharedPreferences.Editor)localObject9).putBoolean("mall_entrance_switch", this.jdField_b_of_type_Boolean);
-          ((SharedPreferences.Editor)localObject9).commit();
-          break label1688;
-          localObject4 = ((JSONObject)localObject7).optJSONArray("isPreload");
-          j = 0;
-          i = 0;
-          if ((localObject4 == null) || (((JSONArray)localObject4).length() <= 0)) {
-            break label1678;
-          }
-          localObject4 = ((JSONArray)localObject4).optJSONObject(0);
-          m = ((JSONObject)localObject4).optInt("isPreload", 5);
-          n = ((JSONObject)localObject4).optInt("preloadTotal", 50);
-          localObject8 = ((JSONObject)localObject7).optJSONArray("templateIdList");
-          if (QLog.isColorLevel())
-          {
-            localObject9 = new StringBuilder().append("checkAndDownloadBeforeUse ,emergencyDownload:").append(paramBoolean1).append(", templateIdList:");
-            if (localObject8 != null) {
-              break label841;
-            }
-          }
-        }
-        for (localObject4 = "null";; localObject4 = Integer.valueOf(((JSONArray)localObject8).length()))
-        {
-          QLog.d("IndividualRedPacketResDownloader", 2, localObject4);
-          localObject9 = new ArrayList();
-          if (localObject8 == null) {
-            break label1326;
-          }
-          i1 = 0;
-          j = i;
-          if (i1 >= ((JSONArray)localObject8).length()) {
-            break label1326;
-          }
-          if ((i1 >= n) || (i >= m)) {
-            break label1721;
-          }
-          j = 1;
-          str1 = ((JSONArray)localObject8).optString(i1);
-          if (!TextUtils.isEmpty(str1)) {
-            break label854;
-          }
-          break label1691;
-          QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse ,activityInfoObj0 == null");
-          paramBoolean1 = false;
-          break;
-        }
-        localObject4 = (bdos)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(str1);
-        synchronized (this.jdField_a_of_type_JavaUtilMap)
-        {
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str1)) {
-            break label1672;
-          }
-          if ((localObject4 != null) && (!a(((bdos)localObject4).jdField_a_of_type_Bdop)) && (!a(((bdos)localObject4).jdField_b_of_type_Bdop)) && (!a(((bdos)localObject4).jdField_c_of_type_Bdop))) {
-            break label1669;
-          }
-          localObject4 = a(str1);
-          label937:
-          if ((localObject4 == null) || (!a(((bdos)localObject4).jdField_a_of_type_Bdop)) || (!a(((bdos)localObject4).jdField_b_of_type_Bdop)) || (!a(((bdos)localObject4).jdField_c_of_type_Bdop))) {
-            break label1282;
-          }
-          List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str1);
-          k = 0;
-          if (k >= localList.size()) {
-            break;
-          }
-          String str2 = (String)localList.get(k);
-          if (TextUtils.isEmpty(str2)) {
-            break label1727;
-          }
-          this.jdField_a_of_type_Alqr.a(str2, ((bdos)localObject4).jdField_a_of_type_Bdop.f);
-          this.jdField_a_of_type_Alqr.a(str2 + "_tp", ((bdos)localObject4).jdField_b_of_type_Bdop.f);
-          this.jdField_a_of_type_Alqr.a(str2 + "_send", ((bdos)localObject4).jdField_c_of_type_Bdop.f);
-        }
-      }
-      catch (Exception localException)
-      {
-        label841:
-        label854:
-        label994:
-        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config error: ", localException);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove(str1);
-    int k = 0;
-    label1162:
-    label1200:
-    Object localObject6;
-    if ((j != 0) && (k == 0))
-    {
-      if (new File(alqr.a(str1, null, 0, 0, 0)).exists()) {
-        j = 0;
-      }
-      for (;;)
-      {
-        if ((j != 0) && (k == 0))
-        {
-          i += 1;
-          localObject6 = new bdoq();
-          ((bdoq)localObject6).jdField_a_of_type_Long = 16L;
-          ((bdoq)localObject6).jdField_a_of_type_JavaLangString = ("luckyMoney.item." + str1);
-          ((bdoq)localObject6).jdField_b_of_type_JavaLangString = alqr.a(str1, null, 0, 0, 0);
-          ((ArrayList)localObject9).add(localObject6);
-          break label1691;
-          label1282:
-          a(16L, str1, null);
-          k = 1;
-          break;
-          if (new File(alqr.a(str1, null, 3, 0, 0)).exists()) {
-            break label1736;
-          }
-          j = 1;
-          continue;
-          label1326:
-          if (QLog.isColorLevel()) {
-            QLog.d("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse finish! size = " + this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.size() + ", preloadSize=" + j + ", totalCanPreload=" + m);
-          }
-          localObject6 = ((JSONObject)localObject7).optJSONArray("vipRedPacketURL");
-          if (localObject6 != null) {
-            i = 0;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i < ((JSONArray)localObject6).length())
-      {
-        localObject8 = ((JSONArray)localObject6).optJSONObject(i);
-        localObject7 = ((JSONObject)localObject8).optString("name");
-        localObject8 = ((JSONObject)localObject8).optString("url", null);
-        if ("aioTail".equals(localObject7)) {
-          this.jdField_b_of_type_JavaLangString = ((String)localObject8);
-        } else if ("personalityMall".equals(localObject7)) {
-          this.jdField_a_of_type_JavaLangString = ((String)localObject8);
-        } else if ("tencentPay".equals(localObject7)) {
-          this.c = ((String)localObject8);
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse mAioTailURL:" + this.jdField_b_of_type_JavaLangString + ", mTencentPayURL:" + this.c + ", mPersonalityMallURL:" + this.jdField_a_of_type_JavaLangString);
-        }
-        label1562:
-        i = bdee.a(null);
-        if (this.jdField_a_of_type_JavaUtilArrayList == null)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject9);
-          label1580:
-          if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || ((1 != i) && (!paramBoolean1)) || (!this.jdField_a_of_type_Alqr.b())) {
-            break label1655;
-          }
-          a();
-        }
-        for (;;)
-        {
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          break;
-          if (!QLog.isColorLevel()) {
-            break label1562;
-          }
-          QLog.d("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse urllist == null");
-          break label1562;
-          this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject9);
-          break label1580;
-          label1655:
-          this.jdField_a_of_type_JavaUtilArrayList = null;
-        }
-        break label1691;
-        break label1200;
-        label1669:
-        break label937;
-        label1672:
-        k = 0;
-        break label1162;
-        label1678:
-        m = 5;
-        n = 50;
-        break label694;
-        label1688:
-        break label635;
-        label1691:
-        i1 += 1;
-        break label778;
-        label1700:
-        localObject6 = null;
-        break label428;
-        label1706:
-        paramBoolean1 = false;
-        break label484;
-        label1711:
-        paramBoolean2 = false;
-        break label527;
-        label1716:
-        paramBoolean2 = false;
-        break label557;
-        label1721:
-        j = 0;
-        break label807;
-        label1727:
-        k += 1;
-        break label994;
-        label1736:
-        j = 0;
-        break label1200;
-      }
-      i += 1;
-    }
-  }
-  
-  void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, File paramFile)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Alqr == null)) {
-      return;
-    }
-    if ((paramFile != null) && (paramFile.exists())) {}
-    File localFile;
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = new JSONObject(bdcs.a(paramFile));
-        if (localObject1 != null) {
-          break label172;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        localObject1 = new StringBuilder().append("initJsonBySCID null == resJson, scid=").append(paramString).append(", isAfterDownload:").append(paramBoolean1).append(", isInit").append(paramBoolean2).append(", file=");
-        if (paramFile == null) {
-          break label165;
-        }
-        paramString = paramFile.getAbsolutePath();
-        QLog.e("IndividualRedPacketResDownloader", 2, paramString);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID ,filePath:" + paramFile.getAbsolutePath(), localThrowable);
-      }
-      localFile = null;
-      continue;
-      label165:
-      paramString = "null";
-    }
-    for (;;)
-    {
-      try
-      {
-        label172:
-        Object localObject2;
-        if ("iRedPacket_v3.char300.json".equals(paramString))
-        {
-          localObject2 = localFile.optJSONArray("data");
-          if (localObject2 != null)
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            int i = 0;
-            if (i < ((JSONArray)localObject2).length())
-            {
-              localStringBuilder.append(((JSONArray)localObject2).getString(i));
-              i += 1;
-              continue;
-            }
-            this.jdField_a_of_type_Bdoo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-            this.jdField_a_of_type_Bdoo.e = 2;
-          }
-        }
-        if ("iRedPacket_v3.font.zip".equals(paramString))
-        {
-          this.jdField_a_of_type_Bdor.jdField_d_of_type_JavaLangString = localFile.optString("id", "");
-          this.jdField_a_of_type_Bdor.c = localFile.optString("name", "");
-          this.jdField_a_of_type_Bdor.jdField_d_of_type_Int = localFile.optInt("version");
-          this.jdField_a_of_type_Bdor.e = 2;
-          this.jdField_a_of_type_Alqr.a(this.jdField_a_of_type_Bdor.jdField_d_of_type_JavaLangString);
-        }
-        if ("iRedPacket_v3.specialChar.zip".equals(paramString))
-        {
-          this.jdField_b_of_type_Bdoo.jdField_d_of_type_JavaLangString = localFile.optString("id", "0");
-          this.jdField_b_of_type_Bdoo.jdField_d_of_type_Int = localFile.optInt("version");
-          this.jdField_b_of_type_Bdoo.e = 2;
-          this.jdField_b_of_type_Bdoo.jdField_b_of_type_JavaLangString = localFile.optString("char", "");
-          this.jdField_b_of_type_Bdoo.jdField_a_of_type_JavaLangString = ("" + this.jdField_b_of_type_Bdoo.jdField_b_of_type_JavaLangString);
-          paramString = this.jdField_b_of_type_Bdoo.jdField_d_of_type_JavaLangString + this.jdField_b_of_type_Bdoo.jdField_d_of_type_Int;
-          if ((!TextUtils.isEmpty(this.jdField_b_of_type_Bdoo.jdField_b_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_Alqr.b().getString("special_unzip_version_key", ""))))
-          {
-            localFile = new File(alqr.a(null, null, 26, 0, 0));
-            localObject2 = alqr.a(2) + "images";
-            if (!a(localFile.getAbsolutePath(), (String)localObject2)) {
-              break label681;
-            }
-            this.jdField_a_of_type_Alqr.b().edit().putString("special_unzip_version_key", paramString).commit();
-          }
-        }
-        if ((this.jdField_a_of_type_Bdoo.e != 2) || (this.jdField_a_of_type_Bdor.e != 2) || (!this.jdField_a_of_type_Alqr.b())) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse goto preCreatePersonalFontImg");
-        }
-        this.jdField_a_of_type_Alqr.a(this.jdField_a_of_type_Bdoo);
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID parse Json config JSONException: ", paramString);
-        bdqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", paramString.getMessage(), null, 0.0F);
-        return;
-      }
-      label681:
-      if ((!localFile.exists()) && (paramFile != null)) {
-        paramFile.delete();
       }
     }
   }
   
-  public void b()
+  /* Error */
+  public static byte[] a(byte[] paramArrayOfByte, tencent.im.msg.im_msg_body.GeneralFlags paramGeneralFlags, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184)).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
-    this.jdField_a_of_type_Alqr = null;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    a(false, true);
-    String str = alqr.a(null, null, 8, 0, 0);
-    if (VasQuickUpdateManager.getFileFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.font.zip", str, true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker) != null) {
-      a(false, true, "iRedPacket_v3.font.zip", new File(alqr.a(null, null, 21, 0, 0)));
-    }
-    str = alqr.a(null, null, 25, 0, 0);
-    a(false, true, "iRedPacket_v3.specialChar.zip", VasQuickUpdateManager.getFileFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.specialChar.zip", str, true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker));
-    str = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata/vas/redpacket/" + "iRedPacket_v3.char300.json";
-    a(false, true, "iRedPacket_v3.char300.json", VasQuickUpdateManager.getFileFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", str, true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker));
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Alqr == null)) {}
-    File localFile1;
-    File localFile2;
-    File localFile3;
-    int j;
-    int i;
-    for (;;)
-    {
-      return;
-      if (!this.jdField_a_of_type_Alqr.c.get()) {
-        try
-        {
-          if (!this.jdField_a_of_type_Alqr.b().getBoolean("res_version_has_updated", false))
-          {
-            Object localObject1 = new File(alqr.a(3) + "10029_0");
-            localObject3 = new File(alqr.a(null, null, 8, 0, 0));
-            if ((((File)localObject1).exists()) && (!((File)localObject3).exists())) {
-              ((File)localObject1).renameTo((File)localObject3);
-            }
-            localFile1 = new File(bduw.a(aljq.aX + "RedPacket/templateAIO"));
-            localFile2 = new File(bduw.a(aljq.aX + "RedPacket/templateTENPAY"));
-            localFile3 = new File(bduw.a(aljq.aX + "RedPacket/templateSEND"));
-            j = 0;
-            i = j;
-            if (localFile1.exists())
-            {
-              i = j;
-              if (localFile1.isDirectory())
-              {
-                i = j;
-                if (localFile2.exists())
-                {
-                  i = j;
-                  if (localFile2.isDirectory())
-                  {
-                    i = j;
-                    if (localFile3.exists())
-                    {
-                      i = j;
-                      if (localFile3.isDirectory())
-                      {
-                        localObject1 = localFile1.list();
-                        localObject3 = localFile2.list();
-                        localObject4 = localFile3.list();
-                        i = j;
-                        if (localObject1.length > 0)
-                        {
-                          i = j;
-                          if (localObject3.length > 0)
-                          {
-                            i = j;
-                            if (localObject4.length > 0) {
-                              i = 1;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            if (i == 0)
-            {
-              this.jdField_a_of_type_Alqr.b().edit().putBoolean("res_version_has_updated", true).commit();
-              return;
-            }
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion TODO v7.10 updateErr:" + localThrowable.toString());
-          return;
-        }
-      }
-    }
-    Object localObject3 = bdmy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bdmy.g, false);
-    Object localObject2 = localObject3;
-    if (localObject3 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividualRedPacketResDownloader", 2, "updateResVersion null == resJson waiting download");
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-      localObject4 = bdmy.g.jdField_a_of_type_JavaLangString;
-      localObject2 = new File(((Context)localObject2).getFilesDir(), (String)localObject4);
-      localObject2 = new bdvv(bdmy.g.jdField_b_of_type_JavaLangString, (File)localObject2);
-      ((bdvv)localObject2).n = true;
-      if (bdvx.a((bdvv)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
-        break label516;
-      }
-    }
-    for (localObject2 = bdmy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bdmy.g, false); localObject2 == null; localObject2 = localObject3)
-    {
-      QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion fail Err, return");
-      return;
-      label516:
-      QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion download Err : " + bdmy.g.jdField_b_of_type_JavaLangString);
-    }
-    localObject2 = ((JSONObject)localObject2).optJSONObject("data");
-    if (localObject2 == null)
-    {
-      QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion data fail Err, return");
-      return;
-    }
-    Object localObject4 = ((JSONObject)localObject2).optJSONArray("templateList");
-    Object localObject6;
-    if (localObject4 == null)
-    {
-      QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion templateList fail Err, return");
-      return;
-      if (i < ((JSONArray)localObject4).length())
-      {
-        Object localObject5 = a(((JSONArray)localObject4).optJSONObject(i), false);
-        if ((localObject5 == null) || (((bdos)localObject5).jdField_a_of_type_Bdop == null) || (((bdos)localObject5).jdField_b_of_type_Bdop == null) || (((bdos)localObject5).jdField_c_of_type_Bdop == null) || (new File(alqr.a(((bdos)localObject5).jdField_a_of_type_JavaLangString, null, 0, 0, 0)).exists())) {
-          break label1104;
-        }
-        localObject6 = ((bdos)localObject5).jdField_a_of_type_JavaLangString + "_" + ((bdos)localObject5).jdField_d_of_type_Int;
-        localObject3 = localFile1.getAbsolutePath() + File.separator + (String)localObject6;
-        bdop localbdop = ((bdos)localObject5).jdField_a_of_type_Bdop;
-        localObject2 = localObject3;
-        if (localbdop.f == 19) {
-          localObject2 = (String)localObject3 + "_zip";
-        }
-        if (!new File((String)localObject2).exists()) {
-          break label1104;
-        }
-        localObject3 = new String[3];
-        localObject3[0] = localObject2;
-        localObject3[1] = (localFile2.getAbsolutePath() + File.separator + (String)localObject6);
-        localObject3[2] = (localFile3.getAbsolutePath() + File.separator + (String)localObject6);
-        localObject2 = ((bdos)localObject5).jdField_b_of_type_Bdop;
-        localObject5 = ((bdos)localObject5).jdField_c_of_type_Bdop;
-        localObject6 = new String[3];
-        localObject6[0] = alqr.a(localbdop.jdField_d_of_type_JavaLangString, localbdop.c, localbdop.f, localbdop.jdField_d_of_type_Int, 0);
-        localObject6[1] = alqr.a(((bdop)localObject2).jdField_d_of_type_JavaLangString, ((bdop)localObject2).c, ((bdop)localObject2).f, ((bdop)localObject2).jdField_d_of_type_Int, 0);
-        localObject6[2] = alqr.a(((bdop)localObject5).jdField_d_of_type_JavaLangString, ((bdop)localObject5).c, ((bdop)localObject5).f, ((bdop)localObject5).jdField_d_of_type_Int, 0);
-        j = 0;
-      }
-    }
-    for (;;)
-    {
-      if (j < localObject3.length)
-      {
-        if (bdcs.d(localObject3[j], localObject6[j])) {
-          break label1111;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion copyFile aio file Err:" + localObject3[j] + ", newPath:" + localObject6[j]);
-          break label1104;
-          localObject2 = this.jdField_a_of_type_Alqr.b().edit();
-          ((SharedPreferences.Editor)localObject2).putBoolean("res_version_has_updated", true);
-          ((SharedPreferences.Editor)localObject2).commit();
-          VasQuickUpdateEngine.safeDeleteFile(localFile1);
-          VasQuickUpdateEngine.safeDeleteFile(localFile2);
-          VasQuickUpdateEngine.safeDeleteFile(localFile3);
-          return;
-          i = 0;
-          break;
-        }
-      }
-      label1104:
-      i += 1;
-      break;
-      label1111:
-      j += 1;
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aload_1
+    //   4: ifnull +294 -> 298
+    //   7: aload_1
+    //   8: getfield 692	tencent/im/msg/im_msg_body$GeneralFlags:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   11: invokevirtual 697	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   14: ifeq +284 -> 298
+    //   17: new 699	tencent/im/msg/hummer/resv/generalflags$ResvAttr
+    //   20: dup
+    //   21: invokespecial 700	tencent/im/msg/hummer/resv/generalflags$ResvAttr:<init>	()V
+    //   24: astore 4
+    //   26: aload 4
+    //   28: aload_1
+    //   29: getfield 692	tencent/im/msg/im_msg_body$GeneralFlags:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   32: invokevirtual 704	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   35: invokevirtual 710	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   38: invokevirtual 714	tencent/im/msg/hummer/resv/generalflags$ResvAttr:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   41: pop
+    //   42: aload 4
+    //   44: getfield 717	tencent/im/msg/hummer/resv/generalflags$ResvAttr:bytes_oac_msg_extend	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   47: invokevirtual 697	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   50: ifeq +243 -> 293
+    //   53: new 233	org/json/JSONObject
+    //   56: dup
+    //   57: new 233	org/json/JSONObject
+    //   60: dup
+    //   61: aload 4
+    //   63: getfield 717	tencent/im/msg/hummer/resv/generalflags$ResvAttr:bytes_oac_msg_extend	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   66: invokevirtual 704	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   69: invokevirtual 720	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   72: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   75: ldc 244
+    //   77: ldc 237
+    //   79: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   82: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ldc_w 722
+    //   90: aload_1
+    //   91: ldc 246
+    //   93: aconst_null
+    //   94: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   97: invokevirtual 241	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   100: astore_1
+    //   101: aload_1
+    //   102: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   105: istore_3
+    //   106: iload_3
+    //   107: ifeq +5 -> 112
+    //   110: aconst_null
+    //   111: astore_1
+    //   112: aload 5
+    //   114: astore 4
+    //   116: aload_1
+    //   117: ifnull +138 -> 255
+    //   120: aload 5
+    //   122: astore 4
+    //   124: aload_0
+    //   125: arraylength
+    //   126: ifle +129 -> 255
+    //   129: invokestatic 309	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   132: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   135: astore 4
+    //   137: aload 4
+    //   139: instanceof 69
+    //   142: ifeq +148 -> 290
+    //   145: aload_1
+    //   146: ldc 255
+    //   148: aload 4
+    //   150: checkcast 69	com/tencent/mobileqq/app/QQAppInterface
+    //   153: invokestatic 253	bdom:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
+    //   156: invokevirtual 268	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   159: astore_1
+    //   160: new 257	java/lang/String
+    //   163: dup
+    //   164: aload_0
+    //   165: iload_2
+    //   166: invokestatic 727	azwm:a	([BI)[B
+    //   169: ldc_w 729
+    //   172: invokespecial 732	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   175: astore_0
+    //   176: aload 5
+    //   178: astore 4
+    //   180: aload_0
+    //   181: ldc_w 734
+    //   184: invokevirtual 380	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   187: ifeq +68 -> 255
+    //   190: getstatic 13	bdom:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   193: iconst_1
+    //   194: new 104	java/lang/StringBuilder
+    //   197: dup
+    //   198: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   201: ldc_w 736
+    //   204: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: aload_1
+    //   208: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   214: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   217: aload_0
+    //   218: ldc_w 741
+    //   221: new 104	java/lang/StringBuilder
+    //   224: dup
+    //   225: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   228: ldc_w 734
+    //   231: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: aload_1
+    //   235: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: ldc_w 743
+    //   241: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokevirtual 746	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   250: invokevirtual 749	java/lang/String:getBytes	()[B
+    //   253: astore 4
+    //   255: aload 4
+    //   257: areturn
+    //   258: astore 4
+    //   260: aconst_null
+    //   261: astore_1
+    //   262: getstatic 13	bdom:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   265: iconst_1
+    //   266: aload 4
+    //   268: iconst_0
+    //   269: anewarray 4	java/lang/Object
+    //   272: invokestatic 752	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   275: goto -163 -> 112
+    //   278: astore_0
+    //   279: aload_0
+    //   280: invokevirtual 753	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   283: aconst_null
+    //   284: areturn
+    //   285: astore 4
+    //   287: goto -25 -> 262
+    //   290: goto -130 -> 160
+    //   293: aconst_null
+    //   294: astore_1
+    //   295: goto -183 -> 112
+    //   298: aconst_null
+    //   299: astore_1
+    //   300: goto -188 -> 112
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	303	0	paramArrayOfByte	byte[]
+    //   0	303	1	paramGeneralFlags	tencent.im.msg.im_msg_body.GeneralFlags
+    //   0	303	2	paramInt	int
+    //   105	2	3	bool	boolean
+    //   24	232	4	localObject1	Object
+    //   258	9	4	localException1	Exception
+    //   285	1	4	localException2	Exception
+    //   1	176	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   26	101	258	java/lang/Exception
+    //   160	176	278	java/io/UnsupportedEncodingException
+    //   180	255	278	java/io/UnsupportedEncodingException
+    //   101	106	285	java/lang/Exception
   }
 }
 

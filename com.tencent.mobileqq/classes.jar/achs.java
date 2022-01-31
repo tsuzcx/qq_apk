@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achs
-  extends amjj
+  implements bicz
 {
-  public achs(ChatHistory paramChatHistory) {}
+  public achs(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.a.a(11, false);
+    if (paramBoolean)
+    {
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
+    }
   }
 }
 

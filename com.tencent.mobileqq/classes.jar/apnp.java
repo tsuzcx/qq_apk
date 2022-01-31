@@ -1,8 +1,14 @@
-import android.view.View;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
-public abstract interface apnp
+class apnp
+  extends alpj
 {
-  public abstract void a(View paramView);
+  apnp(apno paramapno) {}
+  
+  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  {
+    this.a.a(paramInt, paramCameraEmotionData);
+  }
 }
 
 

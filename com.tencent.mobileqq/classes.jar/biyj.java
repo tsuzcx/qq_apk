@@ -1,36 +1,31 @@
-import QzoneCombine.ClientOnlineNotfiyReq;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class biyj
-  extends QzoneExternalRequest
+  implements EIPCResultCallback
 {
-  ClientOnlineNotfiyReq a;
+  public biyj(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
   
-  public biyj(long paramLong, byte[] paramArrayOfByte)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.needCompress = false;
-    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + uniKey();
-  }
-  
-  public byte[] getEncodedUniParameter()
-  {
-    return bihk.a(this.a);
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "MqqOnlineNtf";
+    if (QLog.isColorLevel()) {
+      QLog.i(biyg.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    }
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data.getParcelable(biyg.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.this$0.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+      }
+    }
   }
 }
 

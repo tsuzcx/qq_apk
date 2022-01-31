@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aknq;
+import aksf;
 import com.tencent.mobileqq.apollo.data.CmGamePushItem;
 
 public class CmGamePushManager$3
   implements Runnable
 {
-  public CmGamePushManager$3(aknq paramaknq, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
+  public CmGamePushManager$3(aksf paramaksf, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
   
   public void run()
   {
-    aknq.a(this.this$0, this.a, this.b);
+    aksf.a(this.this$0, this.a, this.b);
   }
 }
 

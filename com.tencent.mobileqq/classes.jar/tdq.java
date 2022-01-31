@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 class tdq
-  implements ybf
+  implements yfo
 {
   tdq(tdn paramtdn, stMetaComment paramstMetaComment, stMetaReply paramstMetaReply) {}
   
@@ -26,12 +26,12 @@ class tdq
     String str = tdn.a(this.jdField_a_of_type_Tdn).a();
     if (TextUtils.isEmpty(str.trim()))
     {
-      QQToast.a(tdn.a(this.jdField_a_of_type_Tdn), tdn.a(this.jdField_a_of_type_Tdn).getString(2131692456), 0).a();
+      QQToast.a(tdn.a(this.jdField_a_of_type_Tdn), tdn.a(this.jdField_a_of_type_Tdn).getString(2131692457), 0).a();
       return;
     }
     if (!NetworkUtils.isNetworkAvailable(tdn.a(this.jdField_a_of_type_Tdn)))
     {
-      QQToast.a(tdn.a(this.jdField_a_of_type_Tdn), 1, tdn.a(this.jdField_a_of_type_Tdn).getString(2131694777), 0).a();
+      QQToast.a(tdn.a(this.jdField_a_of_type_Tdn), 1, tdn.a(this.jdField_a_of_type_Tdn).getString(2131694779), 0).a();
       return;
     }
     if (tdn.a(this.jdField_a_of_type_Tdn) == null)

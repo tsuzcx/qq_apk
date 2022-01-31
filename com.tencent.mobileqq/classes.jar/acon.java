@@ -1,60 +1,86 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class acon
-  implements DialogInterface.OnClickListener
+public class acon
+  extends amcm
 {
-  acon(acom paramacom) {}
+  public acon(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    switch (paramInt)
+    if (!ChatSettingActivity.c(this.a))
     {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
+      }
+      return;
     }
-    for (;;)
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131720087;; i = 2131720075)
     {
-      try
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      paramList = (auac)this.a.app.getManager(16);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
+      }
+      ChatSettingActivity.b(this.a);
+      if (ChatSettingActivity.a(this.a))
       {
-        paramDialogInterface.dismiss();
-        this.a.a.jdField_a_of_type_AndroidAppDialog = null;
-        return;
+        this.a.jdField_a_of_type_Boolean = false;
+        ChatSettingActivity.a(this.a);
       }
-      catch (Exception paramDialogInterface) {}
-      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      this.a.a.a(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      if (acom.a(this.a).startsWith("http")) {}
-      for (;;)
-      {
-        try
-        {
-          Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
-          localIntent.putExtra("url", acom.a(this.a));
-          this.a.a.a().startActivity(localIntent);
-          azmj.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          localException.printStackTrace();
-          continue;
-        }
-        if (acom.a(this.a).startsWith("mqqapi:")) {
-          bdds.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a(), acom.a(this.a)).c();
-        }
-      }
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
+      return;
     }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131720074;; i = 2131720073)
+    {
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      paramList = (auac)this.a.app.getManager(16);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131720073, 1);
   }
 }
 

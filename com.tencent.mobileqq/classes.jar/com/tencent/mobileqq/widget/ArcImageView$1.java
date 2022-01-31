@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import bdiv;
+import bdne;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -11,8 +11,8 @@ class ArcImageView$1
   public void run()
   {
     MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    int i = bdiv.e(localMobileQQ);
-    boolean bool = bdiv.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
+    int i = bdne.e(localMobileQQ);
+    boolean bool = bdne.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " show redDot: " + bool);
     }

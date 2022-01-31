@@ -27,18 +27,18 @@ public class ody
   
   public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener, SpannableStringBuilder paramSpannableStringBuilder, String paramString1, String paramString2, String paramString3)
   {
-    bdfq localbdfq = new bdfq(paramContext, 2131755801);
-    localbdfq.setContentView(2131558920);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localbdfq.getMessageTextView().getLayoutParams();
-    localLayoutParams.leftMargin = aekt.a(30.0F, paramContext.getResources());
-    localLayoutParams.rightMargin = aekt.a(30.0F, paramContext.getResources());
+    bdjz localbdjz = new bdjz(paramContext, 2131755801);
+    localbdjz.setContentView(2131558919);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localbdjz.getMessageTextView().getLayoutParams();
+    localLayoutParams.leftMargin = aepi.a(30.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = aepi.a(30.0F, paramContext.getResources());
     localLayoutParams.width = -1;
-    localbdfq.getMessageTextView().setLayoutParams(localLayoutParams);
-    localbdfq.setMessage(paramSpannableStringBuilder);
-    localbdfq.setTitle(paramString1);
-    localbdfq.setPositiveButton(paramString2, new oea(paramOnClickListener));
-    localbdfq.setNegativeButton(paramString3, new oeb());
-    localbdfq.show();
+    localbdjz.getMessageTextView().setLayoutParams(localLayoutParams);
+    localbdjz.setMessage(paramSpannableStringBuilder);
+    localbdjz.setTitle(paramString1);
+    localbdjz.setPositiveButton(paramString2, new oea(paramOnClickListener));
+    localbdjz.setNegativeButton(paramString3, new oeb());
+    localbdjz.show();
   }
   
   public static void a(Context paramContext, AdData paramAdData, DialogInterface.OnClickListener paramOnClickListener)
@@ -46,14 +46,14 @@ public class ody
     if ((paramAdData == null) || (paramAdData.a == null)) {
       return;
     }
-    bdfq localbdfq = new bdfq(paramContext, 2131755801);
-    localbdfq.setContentView(2131558920);
-    paramContext = alpo.a(2131713235);
+    bdjz localbdjz = new bdjz(paramContext, 2131755801);
+    localbdjz.setContentView(2131558919);
+    paramContext = alud.a(2131713247);
     if (!TextUtils.isEmpty(paramAdData.a.t)) {
       paramContext = paramAdData.a.t;
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramContext);
-    String str3 = alpo.a(2131713231);
+    String str3 = alud.a(2131713243);
     String str4 = "#E06F00";
     String str2 = str4;
     String str1 = str3;
@@ -73,14 +73,14 @@ public class ody
       int j = str1.length();
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str2)), i, j + i, 33);
     }
-    localbdfq.setMessage(localSpannableStringBuilder);
-    paramContext = alpo.a(2131713309);
+    localbdjz.setMessage(localSpannableStringBuilder);
+    paramContext = alud.a(2131713321);
     if (!TextUtils.isEmpty(paramAdData.a.w)) {
       paramContext = paramAdData.a.w;
     }
-    localbdfq.setTitle(paramContext);
-    localbdfq.setPositiveButton(alpo.a(2131713450), new odz(paramOnClickListener));
-    localbdfq.show();
+    localbdjz.setTitle(paramContext);
+    localbdjz.setPositiveButton(alud.a(2131713462), new odz(paramOnClickListener));
+    localbdjz.show();
   }
   
   public static void a(Context paramContext, AdData paramAdData, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnClickListener paramOnClickListener)
@@ -93,9 +93,9 @@ public class ody
     String str2;
     if (!paramBoolean1)
     {
-      str1 = alpo.a(2131713325);
+      str1 = alud.a(2131713337);
       if (!a(paramAdData.a.q).equals("0")) {
-        str1 = String.format(alpo.a(2131713194), new Object[] { a(paramAdData.a.q) });
+        str1 = String.format(alud.a(2131713206), new Object[] { a(paramAdData.a.q) });
       }
       if (!TextUtils.isEmpty(paramAdData.a.s)) {
         str1 = paramAdData.a.s;
@@ -103,7 +103,7 @@ public class ody
       localSpannableStringBuilder = new SpannableStringBuilder(str1);
       if (!paramBoolean2)
       {
-        String str4 = alpo.a(2131713452);
+        String str4 = alud.a(2131713464);
         String str5 = "#E06F00";
         String str3 = str5;
         str2 = str4;
@@ -124,9 +124,9 @@ public class ody
           localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str3)), i, j + i, 33);
         }
       }
-      str1 = alpo.a(2131713449);
+      str1 = alud.a(2131713461);
       if (paramBoolean2) {
-        str1 = alpo.a(2131713420);
+        str1 = alud.a(2131713432);
       }
       if (TextUtils.isEmpty(paramAdData.a.w)) {
         break label363;
@@ -136,16 +136,16 @@ public class ody
     label363:
     for (;;)
     {
-      str2 = alpo.a(2131713111);
-      if (bdem.a(BaseApplicationImpl.getContext(), paramAdData.a.b)) {
-        str2 = alpo.a(2131713256);
+      str2 = alud.a(2131713123);
+      if (bdiv.a(BaseApplicationImpl.getContext(), paramAdData.a.b)) {
+        str2 = alud.a(2131713268);
       }
       if (paramBoolean2) {}
-      for (paramAdData = alpo.a(2131713380);; paramAdData = alpo.a(2131713085))
+      for (paramAdData = alud.a(2131713392);; paramAdData = alud.a(2131713097))
       {
         a(paramContext, paramOnClickListener, localSpannableStringBuilder, str1, str2, paramAdData);
         return;
-        str1 = alpo.a(2131713303);
+        str1 = alud.a(2131713315);
         if (TextUtils.isEmpty(paramAdData.a.t)) {
           break;
         }
@@ -157,24 +157,24 @@ public class ody
   
   public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(alpo.a(2131713195));
-    String str2 = alpo.a(2131713353);
-    String str1 = alpo.a(2131713110);
-    if (bdem.a(BaseApplicationImpl.getContext(), paramString)) {
-      str1 = alpo.a(2131713389);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(alud.a(2131713207));
+    String str2 = alud.a(2131713365);
+    String str1 = alud.a(2131713122);
+    if (bdiv.a(BaseApplicationImpl.getContext(), paramString)) {
+      str1 = alud.a(2131713401);
     }
-    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str2, str1, alpo.a(2131713503));
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str2, str1, alud.a(2131713515));
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(String.format(alpo.a(2131713367), new Object[] { a(paramString1) }));
-    String str = alpo.a(2131713272);
-    paramString1 = alpo.a(2131713516);
-    if (bdem.a(BaseApplicationImpl.getContext(), paramString2)) {
-      paramString1 = alpo.a(2131713484);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(String.format(alud.a(2131713379), new Object[] { a(paramString1) }));
+    String str = alud.a(2131713284);
+    paramString1 = alud.a(2131713528);
+    if (bdiv.a(BaseApplicationImpl.getContext(), paramString2)) {
+      paramString1 = alud.a(2131713496);
     }
-    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str, paramString1, alpo.a(2131713242));
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str, paramString1, alud.a(2131713254));
   }
 }
 

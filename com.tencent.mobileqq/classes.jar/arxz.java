@@ -1,41 +1,40 @@
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class arxz
-  extends arxw
 {
-  private String h;
-  private String i;
+  private static final String a = alof.aW + File.separator + "qflutter";
+  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter-so" + File.separator;
   
-  public arxz(Intent paramIntent)
+  public static void a()
   {
-    super(paramIntent);
-    this.h = paramIntent.getStringExtra("uin");
-    this.i = paramIntent.getStringExtra("uinname");
+    if (arso.a(a))
+    {
+      int i = bdhb.a(a, b, false, true, true);
+      if (i == 0)
+      {
+        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
+        File[] arrayOfFile = new File(b).listFiles();
+        int j = arrayOfFile.length;
+        i = 0;
+        while (i < j)
+        {
+          File localFile = arrayOfFile[i];
+          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
+          i += 1;
+        }
+        aryd.a().a(true, b, true, true);
+        return;
+      }
+    }
+    aryd.a().a(false, b, true, true);
   }
   
-  private View a(String paramString, Drawable paramDrawable)
+  public static boolean a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558942, null);
-    TextView localTextView = (TextView)localView.findViewById(2131379140);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368169);
-    localTextView.setText(paramString);
-    localImageView.setImageDrawable(paramDrawable);
-    return localView;
-  }
-  
-  protected View a()
-  {
-    return a(String.format("[%s]%s", new Object[] { alpo.a(2131705161), this.i }), bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
-  }
-  
-  protected boolean h()
-  {
-    return true;
+    return false;
   }
 }
 

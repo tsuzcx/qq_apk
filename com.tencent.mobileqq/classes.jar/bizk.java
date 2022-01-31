@@ -1,52 +1,17 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_req;
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.app.Activity;
+import android.content.Intent;
 
-public class bizk
-  extends QzoneExternalRequest
+class bizk
+  implements arrh
 {
-  public JceStruct a;
+  bizk(bizj parambizj, Activity paramActivity, Intent paramIntent) {}
   
-  public bizk(long paramLong, String paramString)
+  public void a()
   {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    paramString = new get_albumlist_num_req();
-    paramString.uin = paramLong;
-    this.a = paramString;
+    aryv.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
   
-  public static get_albumlist_num_rsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    get_albumlist_num_rsp localget_albumlist_num_rsp;
-    do
-    {
-      return paramArrayOfByte;
-      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
-      paramArrayOfByte = localget_albumlist_num_rsp;
-    } while (localget_albumlist_num_rsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getAlbumListNum";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAlbumListNum";
-  }
+  public void b() {}
 }
 
 

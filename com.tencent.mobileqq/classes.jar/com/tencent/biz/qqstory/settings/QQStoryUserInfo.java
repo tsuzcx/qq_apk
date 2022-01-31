@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.settings;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.utils.ChnToSpell;
 
 public class QQStoryUserInfo
-  extends awbv
+  extends awge
   implements Comparable<QQStoryUserInfo>
 {
   public int isAllowed;
   public int isInterested;
   public String mPinying;
   public String nick;
-  @awdj
+  @awhs
   public String uin;
   
   public int compareTo(QQStoryUserInfo paramQQStoryUserInfo)

@@ -1,139 +1,233 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.KeyCharacterMap;
+import android.view.ViewConfiguration;
+import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-final class auku
-  implements aweh
+public class auku
 {
-  auku(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2) {}
+  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static boolean jdField_a_of_type_Boolean = true;
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(awei paramawei)
+  static
   {
+    jdField_a_of_type_JavaUtilList.clear();
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1004));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1022));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1001));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10002));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1006));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1005));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10008));
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOHelper", 2, "cropAIOFromDecorView() called with: input = [" + paramBitmap + "], contentHeight = [" + paramInt + "], activity = [" + paramActivity + "]");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    int j = paramBitmap.getWidth();
+    int i = paramBitmap.getHeight();
+    a(paramActivity);
+    if ((paramInt > 0) && (paramInt < i)) {}
     for (;;)
     {
+      i = ImmersiveUtils.getStatusBarHeight(paramActivity);
+      paramInt -= i;
       try
       {
-        if ((paramawei.jdField_a_of_type_Int != 0) || (paramawei.jdField_a_of_type_ArrayOfByte == null)) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiAIOHelper", 2, "cropAIOFromDecorView() statusBarHeight = " + i + ", width =" + j + ", finalHeight = " + paramInt);
         }
-        Object localObject1 = new HashMap();
-        localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg mr:" + localMessageRecord.toString());
-          }
-          Object localObject4 = new bbku();
-          ((bbku)localObject4).jdField_a_of_type_Int = localMessageRecord.istroop;
-          ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramawei.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, null, (bbku)localObject4);
-          if ((localArrayList1 == null) || (localArrayList1.size() != 1) || ((((MessageRecord)localArrayList1.get(0)).msgtype != -1000) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1051) && (((MessageRecord)localArrayList1.get(0)).msgtype != -1035))) {
-            continue;
-          }
-          localObject1 = null;
-          if (((MessageRecord)localArrayList1.get(0)).msgtype == -1035)
-          {
-            localObject1 = (MessageRecord)localArrayList1.get(0);
-            MessageRecord.copyMessageRecordStatusField((MessageRecord)localObject1, localMessageRecord);
-            ((MessageRecord)localObject1).selfuin = localMessageRecord.selfuin;
-            ((MessageRecord)localObject1).frienduin = localMessageRecord.frienduin;
-            ((MessageRecord)localObject1).senderuin = localMessageRecord.senderuin;
-            ((MessageRecord)localObject1).istroop = localMessageRecord.istroop;
-            ((MessageRecord)localObject1).msgId = localMessageRecord.msgId;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
-            ((auat)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(true, this.jdField_a_of_type_Int);
-            if (((((MessageRecord)localArrayList1.get(0)).istroop == 1) && (localMessageRecord.istroop == 1)) || ((((MessageRecord)localArrayList1.get(0)).istroop == 3000) && (localMessageRecord.istroop == 3000) && (localObject4 != null)))
-            {
-              if (((bbku)localObject4).f.jdField_a_of_type_Long != -1L) {
-                ((bbku)localObject4).f.b = this.jdField_a_of_type_Long;
-              }
-              if (((bbku)localObject4).jdField_a_of_type_Bbkv.jdField_a_of_type_Long != -1L) {
-                ((bbku)localObject4).jdField_a_of_type_Bbkv.b = this.jdField_a_of_type_Long;
-              }
-              String str = localMessageRecord.frienduin;
-              long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, localMessageRecord.istroop);
-              if (QLog.isColorLevel()) {
-                QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg update MessageInfo-- groupUin:" + str + "lastSeq:" + l + ",shMsgSeq:" + localMessageRecord.shmsgseq + ",msgInfo.hasFlag:" + ((bbku)localObject4).a());
-              }
-              if ((localMessageRecord.shmsgseq > l) && (((bbku)localObject4).a()))
-              {
-                localMessageRecord.mMessageInfo = ((bbku)localObject4);
-                localObject4 = (abnw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1);
-                ArrayList localArrayList2 = new ArrayList();
-                localArrayList2.add(localMessageRecord);
-                ((abnw)localObject4).a(str, localArrayList2);
-              }
-            }
-            if ((((MessageRecord)localArrayList1.get(0)).msgtype != -1035) || (localObject1 == null)) {
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(1000, true, this.jdField_a_of_type_JavaLangString);
-            if (QLog.isColorLevel()) {
-              QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload success end! cost:" + (System.currentTimeMillis() - this.b));
-            }
-            ((MessageForLongTextMsg)localMessageRecord).loading = false;
-            ((aukr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, paramawei.jdField_a_of_type_Int, 1);
-            return;
-          }
-          localMessageRecord.msg = ((MessageRecord)localArrayList1.get(0)).msg;
-          localMessageRecord.saveExtInfoToExtStr("long_text_recv_state", "1");
-          localMessageRecord.removeExtInfoToExtStr("long_text_msg_resid");
-          continue;
-          if (localObject2 == null) {
-            continue;
-          }
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = localMessageRecord;
-        }
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, i, j, paramInt);
+        return paramBitmap;
       }
-      catch (Exception localException2)
+      catch (Throwable paramBitmap)
       {
-        MessageRecord localMessageRecord;
-        Object localObject2;
-        Object localObject3 = null;
-        continue;
+        QLog.e("MultiAIOHelper", 1, "cropAIOFromDecorView: ", paramBitmap);
+        aulh.a();
+        return null;
       }
-      if ((localObject2 instanceof MessageForLongTextMsg))
-      {
-        ((MessageForLongTextMsg)localObject2).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
+      paramInt = i;
+    }
+  }
+  
+  public static List<RecentBaseData> a(FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ProxyManager localProxyManager = paramQQAppInterface.a();
+    if (localProxyManager == null) {
+      return localArrayList;
+    }
+    try
+    {
+      if (localProxyManager.a().a(false).size() > 0) {
+        localArrayList.addAll(ajjj.a().jdField_a_of_type_JavaUtilList);
       }
-      if (QLog.isColorLevel())
+      return a(paramFragmentActivity, paramQQAppInterface, localArrayList, paramString1, paramInt, paramString2, paramString3);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload exception! resultCode:" + paramawei.jdField_a_of_type_Int + ",errCode: " + paramawei.b + ",errStr:" + paramawei.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, localMessageRecord.msg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        ((MessageForLongTextMsg)localMessageRecord).loading = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-        continue;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        try
-        {
-          if ((localObject2 instanceof MessageForLongTextMsg))
-          {
-            ((MessageForLongTextMsg)localObject2).loading = false;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, this.jdField_a_of_type_JavaLangString);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg onDownload failed! resultCode:" + paramawei.jdField_a_of_type_Int + ",errCode: " + paramawei.b + ",errStr:" + paramawei.jdField_a_of_type_JavaLangString + ",cost:" + (System.currentTimeMillis() - this.b));
-          }
-        }
-        catch (Exception localException3) {}
+        QLog.e("MultiAIOHelper", 1, "getRecentUser error.", localException);
       }
     }
+  }
+  
+  private static List<RecentBaseData> a(FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, List<RecentBaseData> paramList, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    if (TextUtils.equals(paramString1, "conversation_tab_bottom")) {
+      while (localIterator.hasNext())
+      {
+        paramFragmentActivity = (RecentBaseData)localIterator.next();
+        if ((a(paramFragmentActivity)) && (!b(paramFragmentActivity))) {
+          localArrayList.add(paramFragmentActivity);
+        }
+      }
+    }
+    int i = 0;
+    int j = -1;
+    if (i < paramList.size())
+    {
+      paramString1 = (RecentBaseData)paramList.get(i);
+      int k = j;
+      if (a(paramString1))
+      {
+        if ((paramString1.a() != paramInt) || (!TextUtils.equals(paramString2, paramString1.a()))) {
+          break label151;
+        }
+        k = i;
+      }
+      for (;;)
+      {
+        i += 1;
+        j = k;
+        break;
+        label151:
+        k = j;
+        if (!b(paramString1))
+        {
+          localArrayList.add(paramString1);
+          k = j;
+        }
+      }
+    }
+    if (j == -1)
+    {
+      paramFragmentActivity = ajie.a(new RecentUser(paramString2, paramInt), paramQQAppInterface, paramFragmentActivity);
+      if (paramFragmentActivity != null) {
+        if (paramString3 == null) {
+          break label228;
+        }
+      }
+      for (;;)
+      {
+        paramFragmentActivity.mTitleName = paramString3;
+        localArrayList.add(0, paramFragmentActivity);
+        return localArrayList;
+        label228:
+        paramString3 = paramFragmentActivity.b();
+      }
+    }
+    localArrayList.add(0, paramList.get(j));
+    return localArrayList;
+  }
+  
+  public static void a() {}
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOHelper", 2, "updateMultiAIOSwitchStatusLocal() called switch is " + paramBoolean);
+      }
+      localObject = (QQAppInterface)localObject;
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("multiaio_switch_sp" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("key_multiaio_switch", paramBoolean);
+      ((SharedPreferences.Editor)localObject).apply();
+    }
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOHelper", 2, "getMultiAioSwitchStatusLocal() called load from sp");
+      }
+      localObject = (QQAppInterface)localObject;
+      jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("multiaio_switch_sp" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).getBoolean("key_multiaio_switch", true);
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
+      Point localPoint1 = new Point();
+      Point localPoint2 = new Point();
+      paramActivity.getSize(localPoint1);
+      paramActivity.getRealSize(localPoint2);
+      if (localPoint2.y == localPoint1.y) {}
+    }
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return true;
+      return false;
+      bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
+      bool2 = KeyCharacterMap.deviceHasKey(4);
+    } while ((!bool1) && (!bool2));
+    return false;
+  }
+  
+  private static boolean a(RecentBaseData paramRecentBaseData)
+  {
+    return a(paramRecentBaseData.a());
+  }
+  
+  private static boolean b(RecentBaseData paramRecentBaseData)
+  {
+    return paramRecentBaseData.mUnreadFlag == 3;
   }
 }
 

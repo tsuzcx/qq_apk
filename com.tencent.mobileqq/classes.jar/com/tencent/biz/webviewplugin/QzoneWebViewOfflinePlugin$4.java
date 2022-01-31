@@ -1,15 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import zay;
+import zfn;
 
 public class QzoneWebViewOfflinePlugin$4
   implements Runnable
 {
-  public QzoneWebViewOfflinePlugin$4(zay paramzay, String paramString, long paramLong) {}
+  public QzoneWebViewOfflinePlugin$4(zfn paramzfn, String paramString, long paramLong) {}
   
   public void run()
   {
-    zay.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
+    zfn.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
   }
 }
 

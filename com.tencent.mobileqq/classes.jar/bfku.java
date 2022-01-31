@@ -1,17 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bfku
-  extends BroadcastReceiver
+public class bfku
+  implements DialogInterface.OnClickListener
 {
-  bfku(bfko parambfko) {}
+  public bfku(DownloadManagerV2.19 param19) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bfhg.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
     }
   }
 }

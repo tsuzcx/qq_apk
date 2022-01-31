@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import arps;
+import arub;
 
 public class UniformDownloaderAppBabySdk$3
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$3(arps paramarps, String paramString) {}
+  public UniformDownloaderAppBabySdk$3(arub paramarub, String paramString) {}
   
   public void run()
   {
-    arps.a(this.this$0, this.a, 3);
-    arps.a(this.this$0);
+    arub.a(this.this$0, this.a, 3);
+    arub.a(this.this$0);
   }
 }
 

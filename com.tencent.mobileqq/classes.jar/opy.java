@@ -138,13 +138,13 @@ public class opy
   
   private static double a(TemplateBean paramTemplateBean)
   {
-    bhxr.a("getProteusSeparatorMarginLeftPx");
+    biby.a("getProteusSeparatorMarginLeftPx");
     if ((jdField_a_of_type_Double > 0.0D) && (paramTemplateBean != null))
     {
       sfq localsfq = sfq.a("default_feeds", false);
       if ((localsfq != null) && (!localsfq.a(paramTemplateBean)))
       {
-        bhxr.a();
+        biby.a();
         return jdField_a_of_type_Double;
       }
     }
@@ -167,19 +167,19 @@ public class opy
     if (QLog.isColorLevel()) {
       QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorMarginLeft = ", Double.valueOf(jdField_a_of_type_Double) });
     }
-    bhxr.a();
+    biby.a();
     return jdField_a_of_type_Double;
   }
   
   private static int a(TemplateBean paramTemplateBean)
   {
-    bhxr.a("getProteusSeparatorHeightPx");
+    biby.a("getProteusSeparatorHeightPx");
     if ((jdField_a_of_type_Int > 0) && (paramTemplateBean != null))
     {
       localsfq = sfq.a("default_feeds", false);
       if ((localsfq != null) && (!localsfq.a(paramTemplateBean)))
       {
-        bhxr.a();
+        biby.a();
         pqa.a("ProteusSupportUtil", "[getProteusSeparatorHeightPx] SeparatorHeight : " + jdField_a_of_type_Int);
         return jdField_a_of_type_Int;
       }
@@ -213,7 +213,7 @@ public class opy
       if (QLog.isColorLevel()) {
         QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorHeight = ", Integer.valueOf(jdField_a_of_type_Int) });
       }
-      bhxr.a();
+      biby.a();
       return jdField_a_of_type_Int;
       jdField_a_of_type_Int = Utils.dp2px(0.5D);
     }
@@ -225,11 +225,11 @@ public class opy
       pqb.a("ProteusSupportUtil", "[getView] " + paramBaseArticleInfo + " adapterViewType: " + paramInt);
     }
     long l1 = System.currentTimeMillis();
-    bhxr.a("ProteusSupportUtil.getView");
+    biby.a("ProteusSupportUtil.getView");
     Object localObject1 = null;
-    bhxr.a("ProteusSupportUtil#getView#getTemplateBean");
+    biby.a("ProteusSupportUtil#getView#getTemplateBean");
     TemplateBean localTemplateBean = a(paramVafContext, paramInt, paramBaseArticleInfo);
-    bhxr.a();
+    biby.a();
     Object localObject2 = "";
     label210:
     label226:
@@ -239,14 +239,14 @@ public class opy
       localObject2 = "[" + localTemplateBean.getStyleName() + "]";
       paramBaseArticleInfo = localObject1;
       localObject1 = localObject2;
-      bhxr.a(localObject1 + "#inflate");
+      biby.a(localObject1 + "#inflate");
       localObject2 = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
       pqa.a("ProteusSupportUtil", "[getView] inflate");
-      bhxr.a();
+      biby.a();
       if (localObject2 != null)
       {
-        bhxr.a(localObject1 + "#setBackgroundDrawable");
-        if ((!ors.p()) || (!bjxj.k())) {
+        biby.a(localObject1 + "#setBackgroundDrawable");
+        if ((!ors.p()) || (!bkbq.k())) {
           break label400;
         }
         paramInt = 1;
@@ -254,11 +254,11 @@ public class opy
         if (paramInt == 0) {
           break label405;
         }
-        paramInt = 2130841379;
+        paramInt = 2130841380;
         ((Container)localObject2).setBackgroundDrawable(paramBaseArticleInfo.getDrawable(paramInt));
         paramBaseArticleInfo = new ProteusItemView(paramVafContext.getContext());
         paramBaseArticleInfo.a((Container)localObject2);
-        bhxr.a();
+        biby.a();
         pqa.a("ProteusSupportUtil", "[getView]  add Container ");
       }
       if (QLog.isColorLevel()) {
@@ -275,7 +275,7 @@ public class opy
     for (paramVafContext = localTemplateBean.getStyleName();; paramVafContext = "templateBean is null")
     {
       srq.a("ProteusSupportUtil", paramVafContext, "ProteusSupportUtil.getView", l2 - l1);
-      bhxr.a();
+      biby.a();
       return paramBaseArticleInfo;
       pqa.a("ProteusSupportUtil", "[getView]  new proteusItemView ");
       ProteusItemView localProteusItemView = new ProteusItemView(paramVafContext.getContext());
@@ -286,7 +286,7 @@ public class opy
       break;
       paramInt = 0;
       break label210;
-      paramInt = 2130841380;
+      paramInt = 2130841381;
       break label226;
     }
   }
@@ -580,17 +580,17 @@ public class opy
     jdField_a_of_type_Int = 0;
   }
   
-  public static void a(int paramInt, Container paramContainer, VafContext paramVafContext, bcws parambcws, rqj paramrqj, pgd parampgd, BaseArticleInfo paramBaseArticleInfo)
+  public static void a(int paramInt, Container paramContainer, VafContext paramVafContext, bdbb parambdbb, rqj paramrqj, pgd parampgd, BaseArticleInfo paramBaseArticleInfo)
   {
-    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new oqd(paramInt, paramContainer, parampgd, paramVafContext, parambcws, paramrqj, paramBaseArticleInfo));
+    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new oqd(paramInt, paramContainer, parampgd, paramVafContext, parambdbb, paramrqj, paramBaseArticleInfo));
   }
   
   private static void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
   {
-    bhxr.a("ProteusSupportUtil.bindView");
+    biby.a("ProteusSupportUtil.bindView");
     if (paramContainer == null)
     {
-      bhxr.a();
+      biby.a();
       return;
     }
     pqa.a("ProteusSupportUtil", "[bindView]");
@@ -598,11 +598,11 @@ public class opy
     if (localObject != null)
     {
       ((poa)localObject).a(paramInt1, paramContainer, parampgd, paramInt2);
-      bhxr.a();
+      biby.a();
     }
     for (;;)
     {
-      bhxr.a();
+      biby.a();
       return;
       paramContainer = paramContainer.getVirtualView();
       switch (paramInt1)
@@ -660,7 +660,7 @@ public class opy
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), parampoa);
   }
   
-  public static void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, bcws parambcws, rqj paramrqj, pgd parampgd, int paramInt2, String paramString)
+  public static void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, bdbb parambdbb, rqj paramrqj, pgd parampgd, int paramInt2, String paramString)
   {
     if (pqb.a())
     {
@@ -671,11 +671,11 @@ public class opy
       pqb.a("ProteusSupportUtil", "[bindData] " + paramBaseArticleInfo);
     }
     pqa.a("ProteusSupportUtil", "[bindData] adapterViewType: " + paramInt1);
-    bhxr.a("ProteusSupportUtil.bindData");
+    biby.a("ProteusSupportUtil.bindData");
     long l1 = System.currentTimeMillis();
     if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
     {
-      bhxr.a();
+      biby.a();
       return;
     }
     b(paramVafContext, paramString);
@@ -720,7 +720,7 @@ public class opy
       paramString = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
       if (paramString != null)
       {
-        paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+        paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
         paramProteusItemView.d();
         paramProteusItemView.a(paramString);
         pqb.a(paramString.getVirtualView(), "ProteusSupportUtil");
@@ -733,20 +733,20 @@ public class opy
     localObject = paramProteusItemView.a();
     paramProteusItemView.setTemplateBean(localTemplateBean);
     paramProteusItemView.setModel(parampgd, paramrqj.a());
-    bhxr.a("ProteusSupportUtil.bindDataImpl");
+    biby.a("ProteusSupportUtil.bindDataImpl");
     label521:
     long l2;
     if (localTemplateBean != null)
     {
       QLog.i("ProteusSupportUtil", 1, "[bindData] bind data for " + localTemplateBean.getStyleName());
       a((Container)localObject, paramString, localTemplateBean);
-      bhxr.a();
+      biby.a();
       a(paramInt1, (Container)localObject, parampgd, paramInt2);
-      a(paramInt1, (Container)localObject, paramVafContext, parambcws, paramrqj, parampgd, paramBaseArticleInfo);
-      bhxr.a("ProteusSupportUtil.configDivider");
+      a(paramInt1, (Container)localObject, paramVafContext, parambdbb, paramrqj, parampgd, paramBaseArticleInfo);
+      biby.a("ProteusSupportUtil.configDivider");
       a(parampgd, paramVafContext);
       a((Container)localObject, parampgd, localTemplateBean);
-      bhxr.a();
+      biby.a();
       l2 = System.currentTimeMillis();
       if (localTemplateBean == null) {
         break label631;
@@ -758,7 +758,7 @@ public class opy
     for (paramProteusItemView = localTemplateBean.getStyleName();; paramProteusItemView = "")
     {
       srq.a("ProteusSupportUtil", paramProteusItemView, " ProteusSupportUtil.bindData", l2 - l1);
-      bhxr.a();
+      biby.a();
       return;
       i = -1;
       break;
@@ -791,7 +791,7 @@ public class opy
     }
     swt.a((ArticleInfo)paramBaseArticleInfo, str, str, (int)paramBaseArticleInfo.mChannelID, localHashMap);
     swt.a(paramTemplateBean);
-    bjxj.a(paramBaseArticleInfo);
+    bkbq.a(paramBaseArticleInfo);
   }
   
   public static void a(BaseArticleInfo paramBaseArticleInfo, ViewBase paramViewBase, TemplateBean paramTemplateBean)
@@ -845,7 +845,7 @@ public class opy
   
   public static void a(Container paramContainer, TemplateBean paramTemplateBean1, TemplateBean paramTemplateBean2)
   {
-    bhxr.a("ProteusSupportUtil.bindDynamicValueWithoutRecursion");
+    biby.a("ProteusSupportUtil.bindDynamicValueWithoutRecursion");
     long l1 = System.currentTimeMillis();
     Map localMap1 = paramContainer.getViewIdMapping();
     Map localMap2 = paramTemplateBean2.getViewDataBinding();
@@ -871,7 +871,7 @@ public class opy
         if ("[ " + paramTemplateBean2 != null)
         {
           paramTemplateBean1 = paramTemplateBean2.getStyleName();
-          bhxr.a(paramTemplateBean1);
+          biby.a(paramTemplateBean1);
           l2 = System.currentTimeMillis();
           localViewBean = (ViewBean)localMap2.get(str);
           if (paramContainer == null) {
@@ -885,13 +885,13 @@ public class opy
             break label480;
           }
           paramTemplateBean1 = (ViewBase)localMap1.get(str);
-          bhxr.a("bindDynamicValueWithoutRecursion.bindDynamicVal.check");
+          biby.a("bindDynamicValueWithoutRecursion.bindDynamicVal.check");
           if ((str == null) || (paramTemplateBean1 == null) || (localViewBean == null) || ((localObject != null) && (localViewBean.valueBean.dynamicValue.equals(((ViewBean)localObject).valueBean.dynamicValue)))) {
             break label485;
           }
           i = 1;
           label262:
-          bhxr.a();
+          biby.a();
           if (i == 0) {
             break label498;
           }
@@ -900,11 +900,11 @@ public class opy
           }
           localObject = paramTemplateBean2.getStyleName();
           label298:
-          bhxr.a((String)localObject);
+          biby.a((String)localObject);
           localViewBean.setVisible(true);
           paramTemplateBean1.bindDynamicValue(localViewBean);
           QLog.d("ProteusSupportUtil", 1, "bindDynamicValueWithoutRecursion | [ viewId = " + str + " value changed ] newValue: " + localViewBean.valueBean.dynamicValue + "; cost " + (System.currentTimeMillis() - l2) + "ms");
-          bhxr.a();
+          biby.a();
           if (QLog.isColorLevel()) {
             QLog.i("ProteusSupportUtil", 2, "[bindDynamicValueWithoutRecursion] bind dynamicValue: " + localViewBean.valueBean.dynamicValue + " viewId = " + str);
           }
@@ -914,7 +914,7 @@ public class opy
           if (paramTemplateBean1 != null) {
             paramTemplateBean1.setVisibility(0);
           }
-          bhxr.a();
+          biby.a();
           break;
           paramTemplateBean1 = "]" + str;
           break label138;
@@ -958,7 +958,7 @@ public class opy
       for (paramContainer = paramTemplateBean2.getStyleName();; paramContainer = " cost " + (System.currentTimeMillis() - l1) + "ms")
       {
         QLog.d("ProteusSupportUtil", 2, paramContainer);
-        bhxr.a();
+        biby.a();
         return;
         paramContainer = "";
         break;
@@ -992,12 +992,12 @@ public class opy
     int k = parampgd.b();
     if (localArticleInfo.mChannelID == 70L)
     {
-      bhxr.a("configDivider.FollowFeeds");
+      biby.a("configDivider.FollowFeeds");
       localParams.mLayoutMarginLeft = 0;
       localParams.mLayoutMarginRight = 0;
       localParams.mLayoutWidth = -1;
       i = Utils.dp2px(5.0D);
-      bhxr.a();
+      biby.a();
     }
     for (;;)
     {
@@ -1012,7 +1012,7 @@ public class opy
       return;
       if (otf.c((int)localArticleInfo.mChannelID))
       {
-        bhxr.a("configDivider.DailyFeeds");
+        biby.a("configDivider.DailyFeeds");
         parampgd = parampgd.b();
         j = 0;
         k = 0;
@@ -1048,7 +1048,7 @@ public class opy
         }
         for (;;)
         {
-          bhxr.a();
+          biby.a();
           break;
           label344:
           i = 0;
@@ -1084,18 +1084,18 @@ public class opy
       }
       else if (a(i, k))
       {
-        bhxr.a("configDivider.normal");
-        bhxr.a("configDivider.normal.getProteusSeparatorHeightPx");
+        biby.a("configDivider.normal");
+        biby.a("configDivider.normal.getProteusSeparatorHeightPx");
         i = a(paramTemplateBean);
-        bhxr.a();
-        bhxr.a("configDivider.normal.getProteusSeparatorMarginLeftPx");
+        biby.a();
+        biby.a("configDivider.normal.getProteusSeparatorMarginLeftPx");
         d = a(paramTemplateBean);
-        bhxr.a();
+        biby.a();
         j = Utils.dp2px(d);
         localParams.mLayoutMarginRight = j;
         localParams.mLayoutMarginLeft = j;
         localParams.mLayoutWidth = -1;
-        bhxr.a();
+        biby.a();
       }
       else
       {
@@ -1256,11 +1256,11 @@ public class opy
   
   public static boolean a(int paramInt1, int paramInt2)
   {
-    bhxr.a("configDivider.isDividerNormal");
+    biby.a("configDivider.isDividerNormal");
     if ((b(paramInt1)) && (b(paramInt2))) {}
     for (boolean bool = true;; bool = false)
     {
-      bhxr.a();
+      biby.a();
       return bool;
     }
   }
@@ -1270,7 +1270,7 @@ public class opy
   {
     // Byte code:
     //   0: ldc_w 1245
-    //   3: invokestatic 134	bhxr:a	(Ljava/lang/String;)V
+    //   3: invokestatic 134	biby:a	(Ljava/lang/String;)V
     //   6: aload_0
     //   7: ifnull +154 -> 161
     //   10: aload_0
@@ -1281,7 +1281,7 @@ public class opy
     //   21: getfield 1251	com/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo:mFeedType	I
     //   24: bipush 29
     //   26: if_icmpeq +8 -> 34
-    //   29: invokestatic 148	bhxr:a	()V
+    //   29: invokestatic 148	biby:a	()V
     //   32: iconst_0
     //   33: ireturn
     //   34: new 438	org/json/JSONObject
@@ -1321,7 +1321,7 @@ public class opy
     //   102: aload 4
     //   104: aastore
     //   105: invokestatic 207	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   108: invokestatic 148	bhxr:a	()V
+    //   108: invokestatic 148	biby:a	()V
     //   111: ldc_w 1266
     //   114: aload 4
     //   116: invokestatic 1269	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
@@ -1347,7 +1347,7 @@ public class opy
     //   154: ldc_w 1273
     //   157: aload_0
     //   158: invokestatic 1275	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   161: invokestatic 148	bhxr:a	()V
+    //   161: invokestatic 148	biby:a	()V
     //   164: iconst_0
     //   165: ireturn
     //   166: astore_0

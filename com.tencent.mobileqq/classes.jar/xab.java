@@ -1,9 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-public abstract interface xab
+public class xab
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(List<wzy> paramList, DoodleView paramDoodleView);
+  public xab(EditVideoGuide paramEditVideoGuide) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+    this.a.b = 2;
+    this.a.jdField_a_of_type_Xan.a(5);
+  }
 }
 
 

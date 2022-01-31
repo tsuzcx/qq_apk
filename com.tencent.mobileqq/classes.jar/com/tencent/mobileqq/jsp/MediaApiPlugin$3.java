@@ -19,7 +19,7 @@ class MediaApiPlugin$3
     //   11: astore_2
     //   12: aload_0
     //   13: getfield 18	com/tencent/mobileqq/jsp/MediaApiPlugin$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   16: invokestatic 49	bdcs:a	(Ljava/lang/String;)[B
+    //   16: invokestatic 49	bdhb:a	(Ljava/lang/String;)[B
     //   19: astore_3
     //   20: aload_0
     //   21: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$3:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;

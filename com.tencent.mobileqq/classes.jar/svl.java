@@ -44,8 +44,8 @@ public class svl
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private bepp jdField_a_of_type_Bepp;
-  private bhpy jdField_a_of_type_Bhpy;
+  private bety jdField_a_of_type_Bety;
+  private bhuf jdField_a_of_type_Bhuf;
   private KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicKandianFavoriteBroadcastReceiver;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -129,7 +129,7 @@ public class svl
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString4)))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131720019), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131720031), 0).a();
       if (QLog.isColorLevel()) {
         QLog.d("GalleryShareHelper", 2, "shareToFriendparams is Empty");
       }
@@ -146,15 +146,15 @@ public class svl
       paramString1.add(paramString4);
       localBundle.putStringArrayList("image_url", paramString1);
       localBundle.putLong("req_share_id", 0L);
-    } while (bjao.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localBundle, null));
-    xxb.a(1, 2131689512);
+    } while (bjev.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localBundle, null));
+    ybk.a(1, 2131689512);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString5)))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131720019), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131720031), 0).a();
       if (QLog.isColorLevel()) {
         QLog.d("GalleryShareHelper", 2, "shareToFriendparams is Empty");
       }
@@ -179,7 +179,7 @@ public class svl
     paramString5.putExtra("forward_type", 1001);
     paramString5.putExtra("pkg_name", "com.tencent.mobileqq");
     paramString5.putExtra("image_url_remote", paramString4);
-    paramString5.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696873, new Object[] { paramString1 }));
+    paramString5.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696875, new Object[] { paramString1 }));
     paramString5.putExtra("req_type", 1);
     paramString5.putExtra("k_back", true);
     paramString5.putExtra("new_share_service_id", "83");
@@ -199,7 +199,7 @@ public class svl
     {
       paramString5.putExtra("struct_share_key_source_url", paramString1);
       paramString5.putExtra("readinjoy_gallery", str);
-      paramString5.putExtra("stuctmsg_bytes", azqu.a(paramString5.getExtras()).getBytes());
+      paramString5.putExtra("stuctmsg_bytes", azvd.a(paramString5.getExtras()).getBytes());
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramString5, 1001);
       return;
     }
@@ -240,26 +240,26 @@ public class svl
     }
     Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
     paramString2 = "#QQ看点#【" + paramString1 + "】" + paramString2;
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, localActivity.getResources().getDimensionPixelSize(2131298914));
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, localActivity.getResources().getDimensionPixelSize(2131298914));
     }
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("GalleryShareHelper", 2, "shareMsgToSina empty title or share_url");
       }
-      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-        this.jdField_a_of_type_Bepp.dismiss();
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.dismiss();
       }
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720019, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720031, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
     }
     do
     {
       return;
-      if (!this.jdField_a_of_type_Bepp.isShowing())
+      if (!this.jdField_a_of_type_Bety.isShowing())
       {
-        this.jdField_a_of_type_Bepp.c(2131694217);
-        this.jdField_a_of_type_Bepp.show();
+        this.jdField_a_of_type_Bety.c(2131694219);
+        this.jdField_a_of_type_Bety.show();
       }
       if (QLog.isColorLevel()) {
         QLog.d("GalleryShareHelper", 2, "shareMsgToSina installSinaWeibo:false");
@@ -290,19 +290,19 @@ public class svl
       {
         for (;;)
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720019, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720031, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
           paramString1.printStackTrace();
-          if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-            this.jdField_a_of_type_Bepp.dismiss();
+          if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+            this.jdField_a_of_type_Bety.dismiss();
           }
         }
       }
       finally
       {
-        if ((this.jdField_a_of_type_Bepp == null) || (!this.jdField_a_of_type_Bepp.isShowing())) {
+        if ((this.jdField_a_of_type_Bety == null) || (!this.jdField_a_of_type_Bety.isShowing())) {
           break;
         }
-        this.jdField_a_of_type_Bepp.dismiss();
+        this.jdField_a_of_type_Bety.dismiss();
       }
     } while (!QLog.isColorLevel());
     QLog.d("GalleryShareHelper", 2, "shareMsgToSina end!");
@@ -316,7 +316,7 @@ public class svl
     this.jdField_c_of_type_JavaLangString = paramArticleInfo.mTitle;
     this.jdField_a_of_type_JavaUtilArrayList = paramArticleInfo.mDislikeInfos;
     this.jdField_a_of_type_Long = paramArticleInfo.mArticleID;
-    this.jdField_b_of_type_JavaLangString = alpo.a(2131705378);
+    this.jdField_b_of_type_JavaLangString = alud.a(2131705390);
     this.jdField_a_of_type_Int = 3;
     this.jdField_b_of_type_Long = paramArticleInfo.mStrategyId;
     if ((paramArticleInfo.mGalleryFeedsInfo != null) && (paramArticleInfo.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1))
@@ -345,7 +345,7 @@ public class svl
       this.jdField_a_of_type_Syq.a.setActionSheetTitle("biu出去让更多好友看到");
       this.jdField_a_of_type_Syq.a.setCancelListener(new svm(this));
       return this.jdField_a_of_type_Syq.a(a());
-      this.f = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131699703);
+      this.f = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131699715);
       this.g = "mqqapi://readinjoy/open?src_type=internal&version=1&target=1";
       this.h = "http://post.mp.qq.com/kan/video/201197226-1955dc60def689ah-j0032zp3bhx.html?_wv=2281701505&sig=2556997e505f84ff05decf79e0d001af&time=1573267470&iid=MzczOTc1NDQ5OQ==&sourcefrom=0";
       break;
@@ -372,8 +372,8 @@ public class svl
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
     if (this.jdField_a_of_type_Syq != null) {
       this.jdField_a_of_type_Syq.b();
@@ -409,12 +409,12 @@ public class svl
       {
         int m;
         if (!WXShareHelper.a().a()) {
-          m = 2131721478;
+          m = 2131721491;
         }
         for (;;)
         {
           if (m != -1) {
-            xxb.a(0, m);
+            ybk.a(0, m);
           }
           String str;
           for (;;)
@@ -426,7 +426,7 @@ public class svl
             if (WXShareHelper.a().b()) {
               break label266;
             }
-            m = 2131721479;
+            m = 2131721492;
             break;
             str = String.valueOf(System.currentTimeMillis());
             paramsyx = new svn(this, str, paramsyx);
@@ -437,7 +437,7 @@ public class svl
             WxShareHelperFromReadInjoy.a().a(str, paramString1, paramBitmap, paramString2, paramString3, this.i);
           }
           label182:
-          if (bjxj.t(ors.a()) == 1)
+          if (bkbq.t(ors.a()) == 1)
           {
             paramsyx = WXShareHelper.a();
             if (paramBoolean) {}

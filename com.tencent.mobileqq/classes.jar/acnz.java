@@ -1,68 +1,36 @@
-import android.annotation.TargetApi;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-public class acnz
-  implements ajds
+class acnz
+  implements arrh
 {
-  public acnz(Conversation paramConversation) {}
+  acnz(acnx paramacnx, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Ajee != null) {
-      this.a.jdField_a_of_type_Ajee.e();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Acnx.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
-    }
-    if (this.a.jdField_a_of_type_Uwn != null) {
-      this.a.jdField_a_of_type_Uwn.f();
-    }
-  }
-  
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.jdField_a_of_type_Awhw.i();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    alqo localalqo;
+    ArrayList localArrayList;
+    do
     {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        annx localannx = (annx)localIterator.next();
-        if (localannx != null) {
-          localannx.h();
-        }
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.F();
-    }
-    if (this.a.jdField_a_of_type_Uwn != null) {
-      this.a.jdField_a_of_type_Uwn.g();
-    }
+      localalqo = (alqo)this.jdField_a_of_type_Acnx.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localalqo.a(localArrayList));
+    arri.a(2131692746);
+    return;
+    this.jdField_a_of_type_Acnx.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Conversation.j(this.a);
-    this.a.jdField_a_of_type_Awhw.j();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.E();
-    }
-    if (this.a.jdField_a_of_type_Uwn != null) {
-      this.a.jdField_a_of_type_Uwn.k();
-    }
-    if (this.a.jdField_a_of_type_Ajih != null) {
-      this.a.jdField_a_of_type_Ajih.f();
-    }
-  }
+  public void b() {}
 }
 
 

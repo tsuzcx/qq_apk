@@ -1,24 +1,25 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.widget.ListView;
 import java.util.List;
 
 public class aylf
-  extends ayle
+  extends ayle<ayli, ayxt>
 {
-  ayjk a(ahea paramahea, List<ayjl> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public aylf(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, bdbb parambdbb, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    ayrc.a(70);
-    return new ayim(paramahea, paramList, paramString1);
+    super(paramListView, parambdbb, paramList, paramString, paramFTSEntitySearchDetailActivity);
   }
   
-  ayjl a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  protected ayqp a(int paramInt)
   {
-    return null;
+    return new ayqm(FTSEntitySearchDetailFragment.a(this.a));
   }
   
-  ayjl a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new ayin(paramrecord, paramString, paramCharSequence);
+    return new ayvz(paramViewGroup, 2131562606);
   }
 }
 

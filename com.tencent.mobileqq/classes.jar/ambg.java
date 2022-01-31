@@ -1,19 +1,89 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
 
 public class ambg
-  implements BusinessObserver
+  implements Manager
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  private QQAppInterface a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ambg(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
     }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+    this.a = paramQQAppInterface;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
+    {
+      bool1 = bool2;
+      if (this.a.e())
+      {
+        amnz localamnz = this.a.a().a();
+        paramString = localamnz.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          localamnz.b(paramString);
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
+    {
+      bool1 = bool2;
+      if (this.a.e())
+      {
+        amnz localamnz = this.a.a().a();
+        paramString = localamnz.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          paramString.lastmsgtime = paramLong;
+          localamnz.a(paramString);
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.e()))
+    {
+      amnz localamnz = this.a.a().a();
+      RecentUser localRecentUser = localamnz.a(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localamnz.a(localRecentUser);
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

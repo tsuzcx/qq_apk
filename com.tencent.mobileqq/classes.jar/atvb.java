@@ -1,11 +1,20 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+
 class atvb
-  implements atuo
+  extends BroadcastReceiver
 {
-  atvb(atva paramatva, atuj paramatuj) {}
+  atvb(atva paramatva) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Atuj.h();
+    if (paramIntent == null) {}
+    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (atva.a(this.a) == null)) {
+      return;
+    }
+    atva.a(this.a).a();
   }
 }
 

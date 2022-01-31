@@ -19,7 +19,7 @@ class rpn
     if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
       QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
-      i = bjxj.e();
+      i = bkbq.e();
       localBundle = new Bundle();
       if ((paramView instanceof ReadInJoyColorBandEntranceButton))
       {

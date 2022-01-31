@@ -1,37 +1,26 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
+
 public class anpw
-  implements alkr
+  implements anrs
 {
-  protected void a(boolean paramBoolean1, anpr paramanpr, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean needProcess(JSONObject paramJSONObject)
   {
-    boolean bool = false;
-    int j = -1;
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
     }
-    Object[] arrayOfObject = (Object[])paramObject;
-    paramObject = null;
-    long l = -1L;
-    int i;
-    if ((arrayOfObject != null) && (arrayOfObject.length == 6))
-    {
-      paramObject = (anpr)arrayOfObject[0];
-      l = ((Long)arrayOfObject[1]).longValue();
-      paramInt = ((Integer)arrayOfObject[2]).intValue();
-      i = ((Integer)arrayOfObject[3]).intValue();
-      j = ((Integer)arrayOfObject[4]).intValue();
-      bool = ((Boolean)arrayOfObject[5]).booleanValue();
+    return true;
+  }
+  
+  public void process(JSONObject paramJSONObject, anrt paramanrt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
     }
-    for (;;)
-    {
-      a(paramBoolean, paramObject, Long.valueOf(l), paramInt, i, j, bool);
-      return;
-      i = -1;
-      paramInt = -1;
-    }
+    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramanrt, paramObject), 20000L);
   }
 }
 

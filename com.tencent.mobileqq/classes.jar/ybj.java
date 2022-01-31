@@ -1,17 +1,13 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
 
-class ybj
-  implements yvn<CertifiedAccountWrite.StDoCommentRsp>
+public class ybj
 {
-  ybj(ybg paramybg, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
-  {
-    uht.a().dispatch(this.jdField_a_of_type_Ybg.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Ybg.hashCode()) }));
-  }
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 

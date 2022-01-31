@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgib;
-import bgjw;
-import bgkc;
+import bgmi;
+import bgod;
+import bgoj;
 import com.tencent.qqmini.sdk.core.model.InnerShareData;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class ShareJsPlugin$2
-  implements bgib
+  implements bgmi
 {
-  ShareJsPlugin$2(ShareJsPlugin paramShareJsPlugin, bgkc parambgkc) {}
+  ShareJsPlugin$2(ShareJsPlugin paramShareJsPlugin, bgoj parambgoj) {}
   
   public void onGetScreenshot(String paramString)
   {

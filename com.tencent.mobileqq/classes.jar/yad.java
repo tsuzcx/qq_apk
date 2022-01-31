@@ -1,9 +1,13 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-public abstract interface yad
+public class yad
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
+  public yad(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,46 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView.MovingImg;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class ubr
-  implements Animator.AnimatorListener
+class ubr
+  implements zac<FeedCloudRead.StGetMainPageRsp>
 {
-  public ubr(QCirclePolymorphicAniView paramQCirclePolymorphicAniView, ytt paramytt, View paramView, QCirclePolymorphicAniView.MovingImg paramMovingImg, ubx paramubx) {}
+  ubr(ubq paramubq, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (this.jdField_a_of_type_Ytt != null) {
-      this.jdField_a_of_type_Ytt.a();
-    }
-    if ((this.jdField_a_of_type_AndroidViewView instanceof URLImageView))
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView$MovingImg.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramAnimator = URLDrawable.URLDrawableOptions.obtain();
-      paramAnimator.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843565);
-      paramAnimator.mRequestWidth = this.jdField_a_of_type_AndroidViewView.getWidth();
-      paramAnimator.mRequestHeight = this.jdField_a_of_type_AndroidViewView.getHeight();
-      tql.a(this.jdField_a_of_type_Ubx.a().polyIconUrl.get(), (URLImageView)this.jdField_a_of_type_AndroidViewView, paramAnimator, false);
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.removeAllViews();
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.setVisibility(8);
-    QLog.d("QCirclePolymorphicAniView", 1, "poly ani end");
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Ubq.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
-import bkus;
+import bkyz;
 
 class WatermarkEditView$2
   implements Runnable

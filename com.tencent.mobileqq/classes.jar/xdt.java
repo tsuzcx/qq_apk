@@ -1,53 +1,28 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public abstract class xdt
-  implements xds
+class xdt
+  extends AnimatorListenerAdapter
 {
-  private List<xdq> a = new ArrayList();
+  xdt(xdr paramxdr) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((xdq)localIterator.next()).a();
-    }
+    wxe.b("FaceLayer", "scaleAnimator cancel!");
   }
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((xdq)localIterator.next()).a(paramInt);
-    }
+    wxe.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
   }
   
-  public void a(xdq paramxdq)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramxdq == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(paramxdq)) {
-      throw new IllegalStateException("Observer " + paramxdq + " is already registered.");
-    }
-    this.a.add(paramxdq);
-  }
-  
-  public void b(xdq paramxdq)
-  {
-    if (paramxdq == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    int i;
-    synchronized (this.a)
-    {
-      i = this.a.indexOf(paramxdq);
-      if (i == -1) {
-        throw new IllegalStateException("Observer " + paramxdq + " was not registered.");
-      }
-    }
-    this.a.remove(i);
+    wxe.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

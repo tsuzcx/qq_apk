@@ -1,94 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import com.tencent.mobileqq.profile.view.VipScaledViewPager;
 
 public class awuz
-  implements Manager
+  implements ViewPager.OnPageChangeListener
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<awuv> jdField_a_of_type_JavaUtilList = null;
-  List<String> b = null;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public awuz(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
-  }
+  public awuz(PhotoViewForShopping paramPhotoViewForShopping) {}
   
-  public awuv a(String paramString)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (bdje.a(paramString)) {}
-    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    awuv localawuv;
-    do
+    if (paramInt == 1)
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localawuv = (awuv)localIterator.next();
-    } while ((localawuv.f == null) || (!localawuv.f.equalsIgnoreCase(paramString)));
-    for (paramString = localawuv;; paramString = null) {
-      return paramString;
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
+      this.jdField_a_of_type_Boolean = true;
     }
-  }
-  
-  public void a()
-  {
-    String str = awux.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    QLog.i("QAssistantManager", 2, "loadConfigFromLoacl config is " + str);
-    a(str);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bdje.a(paramString)) {
-      return;
+    if (paramInt == 2) {
+      this.b = true;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      label26:
-      if (this.b != null) {
-        break label81;
+      if (this.b)
+      {
+        this.b = false;
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
       }
-      this.b = new ArrayList();
-    }
-    for (;;)
-    {
-      paramString = awux.a(paramString, this.b);
-      if (paramString == null) {
-        break;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+        this.jdField_a_of_type_Boolean = false;
       }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramString);
-      return;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      break label26;
-      label81:
-      this.b.clear();
     }
   }
   
-  public boolean a(String paramString)
-  {
-    if ((bdje.a(paramString)) || (this.b == null)) {
-      return false;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (((String)localIterator.next()).equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void onDestroy() {}
+  public void onPageSelected(int paramInt) {}
 }
 
 

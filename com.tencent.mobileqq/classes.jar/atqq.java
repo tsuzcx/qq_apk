@@ -1,8 +1,34 @@
-public abstract class atqq
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class atqq
+  implements bhuk
 {
-  public abstract void a();
+  atqq(atqp paramatqp, bhuf parambhuf) {}
   
-  public abstract void a(atlh paramatlh);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      atqp.a(this.jdField_a_of_type_Atqp).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = atqp.a(this.jdField_a_of_type_Atqp).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      atpw.a(paramView).a.a(3, paramInt, str);
+      localObject = new atpq(paramInt, str);
+      atpw.a(paramView).a((atpq)localObject, false);
+      azqs.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+    }
+  }
 }
 
 

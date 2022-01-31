@@ -1,60 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.agent.OpenAuthorityFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bfff
-  extends atcl
+  implements bffx
 {
-  public long b;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
+  public bfff(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfff(WebView paramWebView, long paramLong, String paramString)
+  public void a(long paramLong)
   {
-    super(paramWebView, paramLong, paramString);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localWebView == null) || (paramObject == null)) {
-      return;
-    }
-    String str = "'undefined'";
-    if ((paramObject instanceof String))
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
+    if (!bdin.g(BaseApplicationImpl.getApplication()))
     {
-      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
-      str = "'" + paramObject + "'";
-    }
-    for (;;)
-    {
-      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
-      return;
-      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
-        str = paramObject.toString();
-      } else if ((paramObject instanceof Boolean)) {
-        str = paramObject.toString();
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
-    }
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
+    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bfrs);
   }
 }
 

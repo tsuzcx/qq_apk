@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class bldj
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  bldj(bldg parambldg) {}
+  bldj(blda paramblda) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    bldg.a(this.a).setText(null);
-    this.a.dismiss();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
+    if (paramEIPCResult.code == 0)
+    {
+      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
+      return;
+    }
+    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
   }
 }
 

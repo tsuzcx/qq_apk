@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import armz;
+import arri;
 
 class QQSettingCleanActivity$ShowTask
   implements Runnable
@@ -24,24 +24,24 @@ class QQSettingCleanActivity$ShowTask
     default: 
       return;
     case 0: 
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.getString(2131720250) + "(" + QQSettingCleanActivity.a(this.this$0, this.this$0.jdField_a_of_type_Long) + ")");
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.getString(2131720262) + "(" + QQSettingCleanActivity.a(this.this$0, this.this$0.jdField_a_of_type_Long) + ")");
       return;
     case 1: 
-      this.this$0.jdField_f_of_type_AndroidWidgetTextView.setText(this.this$0.getString(2131720254) + QQSettingCleanActivity.a(this.this$0, this.this$0.jdField_c_of_type_Long - this.this$0.jdField_f_of_type_Long));
+      this.this$0.jdField_f_of_type_AndroidWidgetTextView.setText(this.this$0.getString(2131720266) + QQSettingCleanActivity.a(this.this$0, this.this$0.jdField_c_of_type_Long - this.this$0.jdField_f_of_type_Long));
       this.this$0.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     case 2: 
       this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
-      this.this$0.jdField_b_of_type_AndroidWidgetButton.setText(this.this$0.getString(2131720245));
+      this.this$0.jdField_b_of_type_AndroidWidgetButton.setText(this.this$0.getString(2131720257));
       return;
     case 3: 
-      armz.a(2131694829);
+      arri.a(2131694831);
       return;
     case 4: 
       this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.jdField_b_of_type_AndroidWidgetButton.setText(this.this$0.getString(2131720244));
+      this.this$0.jdField_b_of_type_AndroidWidgetButton.setText(this.this$0.getString(2131720256));
       return;
     }
     TextView localTextView = this.this$0.jdField_b_of_type_AndroidWidgetTextView;
@@ -63,8 +63,8 @@ class QQSettingCleanActivity$ShowTask
       this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839107);
-      this.this$0.jdField_b_of_type_AndroidWidgetButton.setTextColor(this.this$0.getResources().getColor(2131166932));
+      this.this$0.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839108);
+      this.this$0.jdField_b_of_type_AndroidWidgetButton.setTextColor(this.this$0.getResources().getColor(2131166934));
       return;
       str = QQSettingCleanActivity.a(this.this$0, this.this$0.jdField_c_of_type_Long);
       break;

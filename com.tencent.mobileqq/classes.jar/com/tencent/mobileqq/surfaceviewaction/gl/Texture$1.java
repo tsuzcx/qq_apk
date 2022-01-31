@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import baam;
+import baev;
 import com.tencent.qphone.base.util.QLog;
 
 public class Texture$1
   implements Runnable
 {
-  public Texture$1(baam parambaam) {}
+  public Texture$1(baev parambaev) {}
   
   public void run()
   {

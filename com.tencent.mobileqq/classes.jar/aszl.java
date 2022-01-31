@@ -1,19 +1,6 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
-import com.tencent.qphone.base.util.QLog;
-
-class aszl
-  implements CustomizedLog
+public abstract interface aszl
 {
-  aszl(asyy paramasyy) {}
-  
-  public void onFlushLogs() {}
-  
-  public void onLog(int paramInt, String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void onUploadLogs() {}
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
 }
 
 

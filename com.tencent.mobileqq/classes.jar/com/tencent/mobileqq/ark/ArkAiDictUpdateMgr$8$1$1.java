@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.ark;
 
-import anim;
-import anio;
-import aniq;
-import bavr;
+import anmv;
+import anmx;
+import anmz;
+import bbaa;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8$1$1(anim paramanim, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public ArkAiDictUpdateMgr$8$1$1(anmv paramanmv, byte[] paramArrayOfByte, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Anim.a.jdField_a_of_type_Aniq.jdField_a_of_type_JavaLangRefWeakReference == null)
+    if (this.jdField_a_of_type_Anmv.a.jdField_a_of_type_Anmz.jdField_a_of_type_JavaLangRefWeakReference == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
       return;
     }
-    bavr localbavr = (bavr)this.jdField_a_of_type_Anim.a.jdField_a_of_type_Aniq.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbavr == null)
+    bbaa localbbaa = (bbaa)this.jdField_a_of_type_Anmv.a.jdField_a_of_type_Anmz.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbbaa == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
       return;
     }
     byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
     long l;
-    if (this.jdField_a_of_type_Anim.a.jdField_a_of_type_Aniq.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Anmv.a.jdField_a_of_type_Anmz.jdField_a_of_type_Boolean) {
       if (this.jdField_a_of_type_Boolean)
       {
-        String str = this.jdField_a_of_type_Anim.a.jdField_a_of_type_JavaLangString;
+        String str = this.jdField_a_of_type_Anmv.a.jdField_a_of_type_JavaLangString;
         if (arrayOfByte == null)
         {
           l = 0L;
-          localbavr.a(str, l);
+          localbbaa.a(str, l);
         }
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Anim.a.jdField_a_of_type_Anio.a(arrayOfByte);
+      this.jdField_a_of_type_Anmv.a.jdField_a_of_type_Anmx.a(arrayOfByte);
       return;
       l = arrayOfByte.length;
       break;
-      localbavr.a(this.jdField_a_of_type_Anim.a.jdField_a_of_type_JavaLangString, -1L);
+      localbbaa.a(this.jdField_a_of_type_Anmv.a.jdField_a_of_type_JavaLangString, -1L);
       arrayOfByte = null;
     }
   }

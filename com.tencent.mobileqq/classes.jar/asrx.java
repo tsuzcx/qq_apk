@@ -1,34 +1,68 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import QC.FontInfo;
+import QC.FontRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asrx
-  implements TVK_SDKMgr.InstallListener
+  implements asru<FontRecommendRsp>
 {
-  asrx(asrp paramasrp) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public int a()
   {
-    asrp.a = false;
-    this.a.a(alpo.a(2131708782));
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
+    return 3;
   }
   
-  public void onInstalledSuccessed()
+  public String a(Context paramContext)
   {
-    asrp.a = false;
-    if (!this.a.c)
+    return bdtg.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bdtg.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
+  {
+    int j = ((amca)paramQQAppInterface.a(13)).b();
+    paramQQAppInterface = new ArrayList();
+    if (paramFontRecommendRsp.vItems != null)
     {
-      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
+      if (paramFontRecommendRsp.hasNext())
+      {
+        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = localFontInfo.item.itemId;
+        if (localFontInfo.linkBubbleID > 0) {}
+        for (int i = localFontInfo.linkBubbleID;; i = j)
+        {
+          localFontBubble.bubbleId = i;
+          localFontBubble.name = localFontInfo.name;
+          localFontBubble.engine = localFontInfo.engine;
+          localFontBubble.feeType = localFontInfo.feeType;
+          localFontBubble.payUrl = localFontInfo.payUrl;
+          localFontBubble.title = localFontInfo.title;
+          localFontBubble.msg = localFontInfo.msg;
+          localFontBubble.btn = localFontInfo.btn;
+          localFontBubble.picUrl = localFontInfo.strPicUrl;
+          localFontBubble.panelType = 3;
+          paramQQAppInterface.add(localFontBubble);
+          break;
+        }
+      }
     }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    return paramQQAppInterface;
+  }
+  
+  public void a(amca paramamca)
+  {
+    paramamca.d();
   }
 }
 

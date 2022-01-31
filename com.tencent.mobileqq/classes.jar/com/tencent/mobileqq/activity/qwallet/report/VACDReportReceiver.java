@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
-import aizt;
-import ajaf;
+import ajei;
+import ajeu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class VACDReportReceiver
     Object localObject1;
     if ((paramReportItem != null) && (!TextUtils.isEmpty(paramReportItem.failReason)) && (paramReportItem.step != null) && (paramReportItem.step.equals("crash")) && ((paramReportItem.result == 668814) || (paramReportItem.result == 668815)))
     {
-      localObject1 = ajaf.a();
+      localObject1 = ajeu.a();
       if (localObject1 != null) {
         break label60;
       }
@@ -89,14 +89,14 @@ public class VACDReportReceiver
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (aizt)((QQAppInterface)localObject).getManager(148);
+      localObject = (ajei)((QQAppInterface)localObject).getManager(148);
       if (localObject == null) {
         return;
       }
       if (!"vacdReport_step:start".equals(str)) {
         break label157;
       }
-      ((aizt)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+      ((ajei)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
     }
     for (;;)
     {
@@ -104,11 +104,11 @@ public class VACDReportReceiver
       return;
       label157:
       if ("vacdReport_step:add".equals(str)) {
-        ((aizt)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
+        ((ajei)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
       } else if ("vacdReport_step:end".equals(str)) {
-        ((aizt)localObject).a(l, localReportItem);
+        ((ajei)localObject).a(l, localReportItem);
       } else if ("vacdReport_step:single".equals(str)) {
-        ((aizt)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+        ((ajei)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
       }
     }
   }
@@ -122,7 +122,7 @@ public class VACDReportReceiver
       do
       {
         return;
-      } while (ajaf.a() == null);
+      } while (ajeu.a() == null);
       bool = paramBundle.getBoolean("isRealName", false);
     } while (!QLog.isColorLevel());
     QLog.i("VACDReport", 2, "onRealName isRealName:" + bool);

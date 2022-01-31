@@ -13,7 +13,7 @@ class MultiVideoCtrlLayerUIBase$RefreshDisplayNameRunnable
   public void run()
   {
     Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.this$0.d, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
-    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695840);
+    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695842);
     if (this.this$0.e == 2) {
       this.this$0.jdField_b_of_type_JavaLangString = this.this$0.a((String)localObject, this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.e, String.valueOf(this.this$0.jdField_a_of_type_Long)), this.this$0.jdField_a_of_type_AndroidWidgetTextView);
     }

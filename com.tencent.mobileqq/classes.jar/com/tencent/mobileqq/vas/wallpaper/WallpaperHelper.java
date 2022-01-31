@@ -9,18 +9,18 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.view.SurfaceHolder;
-import aorj;
-import aork;
-import bdpr;
-import bdrw;
-import bdss;
-import bdst;
-import bdsv;
-import bdsx;
-import bdsy;
-import bdta;
-import bdtd;
-import bdte;
+import aovs;
+import aovt;
+import bdua;
+import bdwf;
+import bdxb;
+import bdxc;
+import bdxe;
+import bdxg;
+import bdxh;
+import bdxj;
+import bdxm;
+import bdxn;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -30,28 +30,28 @@ import java.io.File;
 
 public final class WallpaperHelper
 {
-  private bdss jdField_a_of_type_Bdss;
-  private bdsx jdField_a_of_type_Bdsx;
-  private bdta jdField_a_of_type_Bdta;
+  private bdxb jdField_a_of_type_Bdxb;
+  private bdxg jdField_a_of_type_Bdxg;
+  private bdxj jdField_a_of_type_Bdxj;
   private WallpaperHelper.ReTryRunnable jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable = new WallpaperHelper.ReTryRunnable(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  private bdsv a(bdsx parambdsx, bdss parambdss)
+  private bdxe a(bdxg parambdxg, bdxb parambdxb)
   {
-    Object localObject2 = new File(parambdss.b);
-    QLog.i("VipWallpaper", 1, "use " + parambdss.toString() + " imgFile exists = " + ((File)localObject2).exists());
+    Object localObject2 = new File(parambdxb.b);
+    QLog.i("VipWallpaper", 1, "use " + parambdxb.toString() + " imgFile exists = " + ((File)localObject2).exists());
     Object localObject1;
-    bdpr localbdpr;
-    if (!parambdss.a.equals("0")) {
-      if ((aork.c().a()) && (parambdsx.a()))
+    bdua localbdua;
+    if (!parambdxb.a.equals("0")) {
+      if ((aovt.c().a()) && (parambdxg.a()))
       {
-        localObject1 = bdrw.a().a(parambdss.c);
+        localObject1 = bdwf.a().a(parambdxb.c);
         if ((localObject1 == null) && (ChatBackgroundManager.b((File)localObject2))) {
           if (!this.b)
           {
-            localbdpr = bdpr.a();
-            if (localbdpr.isLoaded()) {
+            localbdua = bdua.a();
+            if (localbdua.isLoaded()) {
               this.b = true;
             }
           }
@@ -82,11 +82,11 @@ public final class WallpaperHelper
             if (localObject1 == null)
             {
               localObject2 = localObject1;
-              if (aork.c().b())
+              if (aovt.c().b())
               {
                 localObject2 = localObject1;
-                if (parambdsx.a()) {
-                  localObject2 = bdrw.a().a(parambdss.b, new Handler(ThreadManagerV2.getFileThreadLooper()), false);
+                if (parambdxg.a()) {
+                  localObject2 = bdwf.a().a(parambdxb.b, new Handler(ThreadManagerV2.getFileThreadLooper()), false);
                 }
               }
             }
@@ -99,26 +99,26 @@ public final class WallpaperHelper
             localObject1 = localObject2;
             continue;
             continue;
-            parambdsx = (bdsx)localObject2;
+            parambdxg = (bdxg)localObject2;
             continue;
           }
           try
           {
-            parambdsx = BitmapFactory.decodeFile(parambdss.b);
-            if (parambdsx != null)
+            parambdxg = BitmapFactory.decodeFile(parambdxb.b);
+            if (parambdxg != null)
             {
-              parambdsx = new BitmapDrawable(parambdsx);
-              if (parambdsx == null)
+              parambdxg = new BitmapDrawable(parambdxg);
+              if (parambdxg == null)
               {
-                parambdsx = VipWallpaperService.a();
-                if (parambdsx != null)
+                parambdxg = VipWallpaperService.a();
+                if (parambdxg != null)
                 {
-                  QLog.i("VipWallpaper", 1, "use " + parambdsx.getClass().getName());
-                  return new bdsy(parambdsx);
-                  if (!localbdpr.a()) {
+                  QLog.i("VipWallpaper", 1, "use " + parambdxg.getClass().getName());
+                  return new bdxh(parambdxg);
+                  if (!localbdua.a()) {
                     break;
                   }
-                  this.b = localbdpr.b();
+                  this.b = localbdua.b();
                   break;
                   localThrowable1 = localThrowable1;
                   localThrowable1.printStackTrace();
@@ -126,10 +126,10 @@ public final class WallpaperHelper
               }
             }
           }
-          catch (Throwable parambdsx)
+          catch (Throwable parambdxg)
           {
-            parambdsx.printStackTrace();
-            parambdsx = null;
+            parambdxg.printStackTrace();
+            parambdxg = null;
             continue;
             QLog.i("VipWallpaper", 1, "drawable error");
             return null;
@@ -140,19 +140,19 @@ public final class WallpaperHelper
       continue;
       localObject1 = null;
       break;
-      parambdsx = null;
+      parambdxg = null;
     }
   }
   
-  private bdsx a(SurfaceHolder paramSurfaceHolder)
+  private bdxg a(SurfaceHolder paramSurfaceHolder)
   {
     if (Build.VERSION.SDK_INT >= 26) {
-      return new bdte(paramSurfaceHolder);
+      return new bdxn(paramSurfaceHolder);
     }
-    return new bdtd(paramSurfaceHolder);
+    return new bdxm(paramSurfaceHolder);
   }
   
-  private void a(bdss parambdss, boolean paramBoolean)
+  private void a(bdxb parambdxb, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {}
     do
@@ -161,20 +161,20 @@ public final class WallpaperHelper
       {
         return;
         if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.jdField_a_of_type_Bdss = null;
+          this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.jdField_a_of_type_Bdxb = null;
         }
-      } while (parambdss.equals(this.jdField_a_of_type_Bdss));
+      } while (parambdxb.equals(this.jdField_a_of_type_Bdxb));
       b();
-      bdsv localbdsv = a(this.jdField_a_of_type_Bdsx, parambdss);
-      if (localbdsv != null)
+      bdxe localbdxe = a(this.jdField_a_of_type_Bdxg, parambdxb);
+      if (localbdxe != null)
       {
-        this.jdField_a_of_type_Bdta = new bdta(localbdsv, this.jdField_a_of_type_Bdsx);
-        this.jdField_a_of_type_Bdta.a();
-        this.jdField_a_of_type_Bdss = parambdss;
+        this.jdField_a_of_type_Bdxj = new bdxj(localbdxe, this.jdField_a_of_type_Bdxg);
+        this.jdField_a_of_type_Bdxj.a();
+        this.jdField_a_of_type_Bdxb = parambdxb;
         return;
       }
-      this.jdField_a_of_type_Bdss = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.a(parambdss);
+      this.jdField_a_of_type_Bdxb = null;
+      this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.a(parambdxb);
     } while (!paramBoolean);
     ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
     ThreadManagerV2.getUIHandlerV2().postDelayed(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable, 3000L);
@@ -182,10 +182,10 @@ public final class WallpaperHelper
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bdta != null)
+    if (this.jdField_a_of_type_Bdxj != null)
     {
-      this.jdField_a_of_type_Bdta.d();
-      this.jdField_a_of_type_Bdta = null;
+      this.jdField_a_of_type_Bdxj.d();
+      this.jdField_a_of_type_Bdxj = null;
     }
   }
   
@@ -209,22 +209,22 @@ public final class WallpaperHelper
   public void a(Context paramContext, SurfaceHolder paramSurfaceHolder)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bdsx = a(paramSurfaceHolder);
+    this.jdField_a_of_type_Bdxg = a(paramSurfaceHolder);
     paramContext = VipWallpaperService.a(paramContext);
-    paramContext.registerOnSharedPreferenceChangeListener(new bdst(this));
+    paramContext.registerOnSharedPreferenceChangeListener(new bdxc(this));
     a(VipWallpaperService.a(paramContext), true);
   }
   
   public void a(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Bdta != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Bdta.a(paramInt2, paramInt3);
+    if ((this.jdField_a_of_type_Bdxj != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Bdxj.a(paramInt2, paramInt3);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bdta == null)
+    if (this.jdField_a_of_type_Bdxj == null)
     {
       if (paramBoolean)
       {
@@ -235,10 +235,10 @@ public final class WallpaperHelper
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bdta.b();
+      this.jdField_a_of_type_Bdxj.b();
       return;
     }
-    this.jdField_a_of_type_Bdta.c();
+    this.jdField_a_of_type_Bdxj.c();
   }
 }
 

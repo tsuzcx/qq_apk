@@ -53,7 +53,7 @@ public class sqo
     this.jdField_a_of_type_AndroidViewView = new View(paramFragmentActivity);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, -1, -1);
     this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramFragmentActivity);
-    this.jdField_a_of_type_AndroidViewViewGroup.setId(2131364586);
+    this.jdField_a_of_type_AndroidViewViewGroup.setId(2131364588);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewViewGroup, -2, -2);
     ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams()).gravity = 80;
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
@@ -171,9 +171,9 @@ public class sqo
     try
     {
       int i;
-      if (azgq.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext()))
+      if (azkz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext()))
       {
-        i = azgq.d(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext());
+        i = azkz.d(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext());
         this.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, i);
       }
       if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) {
@@ -184,7 +184,7 @@ public class sqo
         if (this.jdField_b_of_type_Int == 0) {
           return;
         }
-        i = azgq.d(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext());
+        i = azkz.d(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext());
         this.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, i + this.jdField_b_of_type_Int);
         return;
       }
@@ -250,7 +250,7 @@ public class sqo
       } while ((this.jdField_a_of_type_Boolean) || (paramArticleInfo == null));
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment == null)
       {
-        Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentById(2131364586);
+        Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentById(2131364588);
         if ((localFragment instanceof ReadInJoyCommentListFragment)) {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = ((ReadInJoyCommentListFragment)localFragment);
         }
@@ -318,7 +318,7 @@ public class sqo
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new sqr(this), this.jdField_a_of_type_AndroidViewViewGroup);
       localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-      ((FragmentTransaction)localObject).add(2131364586, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+      ((FragmentTransaction)localObject).add(2131364588, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
       ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }

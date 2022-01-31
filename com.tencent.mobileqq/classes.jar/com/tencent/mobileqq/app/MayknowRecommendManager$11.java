@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import alro;
-import awbw;
+import alwd;
+import awgf;
 import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
 
 public class MayknowRecommendManager$11
   implements Runnable
 {
-  public MayknowRecommendManager$11(alro paramalro, String paramString) {}
+  public MayknowRecommendManager$11(alwd paramalwd, String paramString) {}
   
   public void run()
   {
-    alro.a(this.this$0).a(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
+    alwd.a(this.this$0).a(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
   }
 }
 

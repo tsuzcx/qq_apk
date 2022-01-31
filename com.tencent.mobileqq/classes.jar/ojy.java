@@ -3,7 +3,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 class ojy
-  implements bhrf
+  implements bhvm
 {
   ojy(ojx paramojx) {}
   

@@ -1,38 +1,91 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class bfbh
-  extends Handler
 {
-  public bfbh(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static String a = "ctnet";
+  public static String b = "ctwap";
+  public static String c = "cmnet";
+  public static String d = "cmwap";
+  public static String e = "uninet";
+  public static String f = "uniwap";
+  public static String g = "3gnet";
+  public static String h = "3gwap";
   
-  public void handleMessage(Message paramMessage)
+  public static int a(Context paramContext)
   {
-    switch (paramMessage.what)
+    int i = 0;
+    switch (AppNetConnInfo.getConnInfo())
     {
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
+        QLog.i("NetUtil", 2, "getNetType " + i);
       }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      return i;
+      switch (AppNetConnInfo.getMobileInfo())
+      {
+      default: 
+        break;
+      case 1: 
+        i = 2;
+        break;
+      case 2: 
+        i = 3;
+        break;
+      case 3: 
+        i = 4;
+        continue;
+        i = 1;
+      }
     }
+  }
+  
+  public static String a(Context paramContext)
+  {
+    String str1 = "nomatch";
+    String str2 = AppNetConnInfo.getCurrentAPN();
+    paramContext = str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (!str2.startsWith(a)) {
+        break label32;
+      }
+      paramContext = a;
+    }
+    label32:
+    do
+    {
+      return paramContext;
+      if (str2.startsWith(b)) {
+        return b;
+      }
+      if (str2.startsWith(c)) {
+        return c;
+      }
+      if (str2.startsWith(d)) {
+        return d;
+      }
+      if (str2.startsWith(e)) {
+        return e;
+      }
+      if (str2.startsWith(f)) {
+        return f;
+      }
+      if (str2.startsWith(g)) {
+        return g;
+      }
+      paramContext = str1;
+    } while (!str2.startsWith(h));
+    return h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfbh
  * JD-Core Version:    0.7.0.1
  */

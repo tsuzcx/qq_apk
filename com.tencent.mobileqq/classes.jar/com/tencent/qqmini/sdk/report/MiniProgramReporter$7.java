@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgya;
+import bhch;
 
 public class MiniProgramReporter$7
   implements Runnable
 {
-  public MiniProgramReporter$7(bgya parambgya) {}
+  public MiniProgramReporter$7(bhch parambhch) {}
   
   public void run()
   {
-    bgya.b(this.this$0);
-    bgya.c(this.this$0);
+    bhch.b(this.this$0);
+    bhch.c(this.this$0);
   }
 }
 

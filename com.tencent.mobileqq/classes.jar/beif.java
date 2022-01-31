@@ -1,29 +1,15 @@
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class beif
-  implements alkr
+class beif
+  implements View.OnTouchListener
 {
-  public void a(int paramInt) {}
+  beif(beie parambeie) {}
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
-  
-  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a((submsgtype0xdd.MsgBody)paramObject);
-      return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-    }
-    a(((Integer)paramObject).intValue());
+    return true;
   }
 }
 

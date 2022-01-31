@@ -1,22 +1,18 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.database.DataSetObserver;
 
 class bhzj
-  implements bhzg
+  extends DataSetObserver
 {
-  private final GestureDetector a;
+  bhzj(bhzi parambhzi) {}
   
-  public bhzj(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public void onChanged()
   {
-    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
+    this.a.notifyDataSetChanged();
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onInvalidated()
   {
-    return this.a.onTouchEvent(paramMotionEvent);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

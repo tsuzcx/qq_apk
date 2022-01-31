@@ -3,24 +3,24 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import beds;
-import bepp;
+import beib;
+import bety;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class SwiftBrowserLongClickHandler$5
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$5(beds parambeds, String paramString) {}
+  public SwiftBrowserLongClickHandler$5(beib parambeib, String paramString) {}
   
   public void run()
   {
     Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
     localIntent.setData(Uri.parse("file://" + this.a));
     this.this$0.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
-    if ((this.this$0.jdField_a_of_type_Bepp != null) && (this.this$0.jdField_a_of_type_Bepp.isShowing())) {
-      this.this$0.jdField_a_of_type_Bepp.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bety != null) && (this.this$0.jdField_a_of_type_Bety.isShowing())) {
+      this.this$0.jdField_a_of_type_Bety.dismiss();
     }
-    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131717619, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
+    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131717631, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
   }
 }
 

@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class bcno
-  implements bclf
 {
-  public bcno(TroopAIORobotLayout paramTroopAIORobotLayout, bcnh parambcnh) {}
+  public int a;
+  public String a;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public bcno(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 

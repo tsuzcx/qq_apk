@@ -9,9 +9,9 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Environment;
 import android.text.TextUtils;
-import bizu;
-import bjea;
-import bjps;
+import bjeb;
+import bjih;
+import bjtz;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.DataUtils;
 import java.io.File;
@@ -160,7 +160,7 @@ public class Native
     boolean bool;
     if (a())
     {
-      localObject = new File(bjea.o);
+      localObject = new File(bjih.o);
       localFile = new File((File)localObject, "wns_network_lib.zip");
       if (localFile.exists()) {
         localFile.delete();
@@ -169,7 +169,7 @@ public class Native
         ((File)localObject).mkdirs();
       }
       QLog.w("LibraryLoader", 1, "Prepare to Download Native Libs From Network ... Url = http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip");
-      bool = bizu.a(bizu.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
+      bool = bjeb.a(bjeb.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
       QLog.w("LibraryLoader", 1, "Download Native Libs => " + bool);
       if (bool) {
         break label113;
@@ -187,7 +187,7 @@ public class Native
       if (!TextUtils.isEmpty(paramString)) {
         ((Set)localObject).add(paramString);
       }
-      localObject = bjps.a(localFile, a(), (Set)localObject);
+      localObject = bjtz.a(localFile, a(), (Set)localObject);
       QLog.w("LibraryLoader", 1, "Install Native Libs => " + bool);
       paramString = (String)localObject;
     } while (!localFile.exists());

@@ -1,22 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.widget.TextView;
 
-public class aqkv
-  implements View.OnTouchListener
+class aqkv
+  extends akit
 {
-  public aqkv(FileAssistantActivity paramFileAssistantActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
-  }
+  TextView a;
 }
 
 

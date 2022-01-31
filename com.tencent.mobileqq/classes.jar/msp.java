@@ -52,7 +52,7 @@ public class msp
       localOptions.inTargetDensity = paramInt2;
     }
     localOptions.inScaled = true;
-    Bitmap localBitmap = bcwc.a(paramString, localOptions);
+    Bitmap localBitmap = bdal.a(paramString, localOptions);
     if (localBitmap == null) {
       QLog.w("AVRedBag", 1, "decodeFileWithxhdpi, 加载失败, path[" + paramString + "]");
     }
@@ -180,10 +180,10 @@ public class msp
         QLog.w("AVRedBag", 1, "writeGrayMsg_in_QQ, peerUin[" + (String)localObject + "], wording[" + paramBundle + "]");
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramBundle = new aslp((String)localObject, paramQQAppInterface.getCurrentAccountUin(), paramBundle, i, -5040, 65560, 0L);
+          paramBundle = new aspy((String)localObject, paramQQAppInterface.getCurrentAccountUin(), paramBundle, i, -5040, 65560, 0L);
           localObject = new MessageForUniteGrayTip();
           ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramBundle);
-          aslq.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+          aspz.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
           return;
         }
       }

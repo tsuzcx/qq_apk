@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import arrj;
+import arvs;
 
 public class SendBottomBar$6
   implements Runnable
@@ -9,7 +9,7 @@ public class SendBottomBar$6
   
   public void run()
   {
-    new arrj(this).execute(new Object[0]);
+    new arvs(this).execute(new Object[0]);
   }
 }
 

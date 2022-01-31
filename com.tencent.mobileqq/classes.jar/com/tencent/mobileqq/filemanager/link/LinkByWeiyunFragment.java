@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.link;
 
-import adky;
+import adpn;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -16,18 +16,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aqsc;
-import arkl;
-import arkm;
-import arkn;
-import arko;
-import arks;
-import arkt;
-import arni;
-import arof;
-import arvo;
-import bdfq;
-import bevy;
+import aqwl;
+import arou;
+import arov;
+import arow;
+import arox;
+import arpb;
+import arpc;
+import arrr;
+import arso;
+import arzx;
+import bdjz;
+import bfah;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -50,14 +50,14 @@ import java.util.List;
 
 public class LinkByWeiyunFragment
   extends IphoneTitleBarFragment
-  implements DialogInterface.OnClickListener, View.OnClickListener, arkl, bevy, ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnClickListener, View.OnClickListener, arou, bfah, ShareActionSheet.OnItemClickListener
 {
   private static final int jdField_a_of_type_Int = Color.parseColor("#00000000");
   private View jdField_a_of_type_AndroidViewView;
-  private arko jdField_a_of_type_Arko;
-  private arks jdField_a_of_type_Arks;
-  private arkt jdField_a_of_type_Arkt;
-  private bdfq jdField_a_of_type_Bdfq;
+  private arox jdField_a_of_type_Arox;
+  private arpb jdField_a_of_type_Arpb;
+  private arpc jdField_a_of_type_Arpc;
+  private bdjz jdField_a_of_type_Bdjz;
   private FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
   private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
@@ -72,17 +72,17 @@ public class LinkByWeiyunFragment
     }
     Intent localIntent = new Intent();
     if (paramFileManagerEntity != null) {
-      localIntent.putExtra("fileinfo", arvo.a(paramFileManagerEntity));
+      localIntent.putExtra("fileinfo", arzx.a(paramFileManagerEntity));
     }
     if (!TextUtils.isEmpty(paramString)) {
       localIntent.putExtra("key_local_file_path", paramString);
     }
     localIntent.putExtra("key_by_qr_code", paramBoolean);
-    adky.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
+    adpn.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
     if (paramBoolean) {}
     for (paramContext = "0X800A9D5";; paramContext = "0X800A9D4")
     {
-      arkn.a(paramContext, arkn.a(paramFileManagerEntity, paramString), null);
+      arow.a(paramContext, arow.a(paramFileManagerEntity, paramString), null);
       return;
     }
   }
@@ -107,7 +107,7 @@ public class LinkByWeiyunFragment
       if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() > 0L))
       {
         bool = true;
-        return arkn.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
+        return arow.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
       }
     }
     catch (Throwable localThrowable)
@@ -131,17 +131,17 @@ public class LinkByWeiyunFragment
     String str;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2131698518;
+      i = 2131698530;
       setTitle(getString(i));
       if (!ThemeUtil.isNowThemeIsNight(null, false, null)) {
         break label191;
       }
       i = 2131165323;
-      this.mContentView.findViewById(2131372273).setBackgroundResource(i);
-      this.mContentView.findViewById(2131369483).setBackgroundResource(i);
-      localObject = (TextView)this.mContentView.findViewById(2131376469);
-      localTextView = (TextView)this.mContentView.findViewById(2131376467);
-      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131376468);
+      this.mContentView.findViewById(2131372293).setBackgroundResource(i);
+      this.mContentView.findViewById(2131369501).setBackgroundResource(i);
+      localObject = (TextView)this.mContentView.findViewById(2131376523);
+      localTextView = (TextView)this.mContentView.findViewById(2131376521);
+      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131376522);
       str = a();
       if (((TextView)localObject).getMeasuredWidth() > 0) {
         break label198;
@@ -150,13 +150,13 @@ public class LinkByWeiyunFragment
     }
     for (;;)
     {
-      localTextView.setText(arof.a(a()));
-      localAsyncImageView.setImageResource(arni.b(str));
+      localTextView.setText(arso.a(a()));
+      localAsyncImageView.setImageResource(arrr.b(str));
       i = a();
       if ((i == 5) || (i == 0))
       {
         localObject = b();
-        if (arof.b((String)localObject))
+        if (arso.b((String)localObject))
         {
           if (i != 5) {
             break label220;
@@ -165,13 +165,13 @@ public class LinkByWeiyunFragment
         }
       }
       return;
-      i = 2131698530;
+      i = 2131698542;
       break;
       label191:
-      i = 2131167206;
+      i = 2131167208;
       break label31;
       label198:
-      ((TextView)localObject).setText(arni.a(str, false, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
+      ((TextView)localObject).setText(arrr.a(str, false, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
     }
     label220:
     localAsyncImageView.setAsyncImage((String)localObject);
@@ -179,34 +179,34 @@ public class LinkByWeiyunFragment
   
   private void d()
   {
-    this.jdField_a_of_type_Arkt = new arkt(this, this.mContentView.findViewById(2131376462), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Arko = new arko(this, this.mContentView.findViewById(2131372278), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Arks = new arks(this, (ViewGroup)this.mContentView.findViewById(2131375981));
+    this.jdField_a_of_type_Arpc = new arpc(this, this.mContentView.findViewById(2131376516), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Arox = new arox(this, this.mContentView.findViewById(2131372298), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Arpb = new arpb(this, (ViewGroup)this.mContentView.findViewById(2131376034));
   }
   
   private void e()
   {
-    bdfq localbdfq;
-    if (this.jdField_a_of_type_Bdfq == null)
+    bdjz localbdjz;
+    if (this.jdField_a_of_type_Bdjz == null)
     {
-      this.jdField_a_of_type_Bdfq = new bdfq(getActivity(), 2131755801);
-      this.jdField_a_of_type_Bdfq.setContentView(2131558943);
-      localbdfq = this.jdField_a_of_type_Bdfq;
+      this.jdField_a_of_type_Bdjz = new bdjz(getActivity(), 2131755801);
+      this.jdField_a_of_type_Bdjz.setContentView(2131558942);
+      localbdjz = this.jdField_a_of_type_Bdjz;
       if (!this.jdField_a_of_type_Boolean) {
         break label123;
       }
     }
     label123:
-    for (int i = 2131698509;; i = 2131698510)
+    for (int i = 2131698521;; i = 2131698522)
     {
-      localbdfq.setTitle(i);
-      this.jdField_a_of_type_Bdfq.setMessage(null);
-      this.jdField_a_of_type_Bdfq.setNegativeButton(2131690648, this);
-      this.jdField_a_of_type_Bdfq.setPositiveButton(2131693165, this);
-      this.jdField_a_of_type_Bdfq.setCancelable(true);
-      this.jdField_a_of_type_Bdfq.setCanceledOnTouchOutside(false);
-      if (!this.jdField_a_of_type_Bdfq.isShowing()) {
-        this.jdField_a_of_type_Bdfq.show();
+      localbdjz.setTitle(i);
+      this.jdField_a_of_type_Bdjz.setMessage(null);
+      this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, this);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131693167, this);
+      this.jdField_a_of_type_Bdjz.setCancelable(true);
+      this.jdField_a_of_type_Bdjz.setCanceledOnTouchOutside(false);
+      if (!this.jdField_a_of_type_Bdjz.isShowing()) {
+        this.jdField_a_of_type_Bdjz.show();
       }
       return;
     }
@@ -225,7 +225,7 @@ public class LinkByWeiyunFragment
         break;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() == 5);
-    return arni.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
+    return arrr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
     return -1;
   }
   
@@ -240,12 +240,12 @@ public class LinkByWeiyunFragment
     return 0L;
   }
   
-  public arkm a()
+  public arov a()
   {
-    if (this.jdField_a_of_type_Arkt == null) {
-      return new arkm();
+    if (this.jdField_a_of_type_Arpc == null) {
+      return new arov();
     }
-    return this.jdField_a_of_type_Arkt.a();
+    return this.jdField_a_of_type_Arpc.a();
   }
   
   public BaseActivity a()
@@ -271,14 +271,14 @@ public class LinkByWeiyunFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Arko != null) {
-      this.jdField_a_of_type_Arko.a();
+    if (this.jdField_a_of_type_Arox != null) {
+      this.jdField_a_of_type_Arox.a();
     }
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_Arko == null) || (this.jdField_a_of_type_Arks == null)) {
+    if ((this.jdField_a_of_type_Arox == null) || (this.jdField_a_of_type_Arpb == null)) {
       return;
     }
     Object localObject = a();
@@ -311,7 +311,7 @@ public class LinkByWeiyunFragment
       if (!this.jdField_a_of_type_Boolean) {
         break label225;
       }
-      paramBitmap = this.jdField_a_of_type_Arks.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Arpb.a((Context)localObject);
       label157:
       if (!this.jdField_a_of_type_Boolean) {
         break label237;
@@ -321,7 +321,7 @@ public class LinkByWeiyunFragment
     label219:
     label225:
     label237:
-    for (localObject = this.jdField_a_of_type_Arks.b((Context)localObject);; localObject = this.jdField_a_of_type_Arko.b((Context)localObject))
+    for (localObject = this.jdField_a_of_type_Arpb.b((Context)localObject);; localObject = this.jdField_a_of_type_Arox.b((Context)localObject))
     {
       localShareActionSheet.setActionSheetItems(paramBitmap, (List)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(this);
@@ -334,7 +334,7 @@ public class LinkByWeiyunFragment
       break label84;
       i = 8;
       break label126;
-      paramBitmap = this.jdField_a_of_type_Arko.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Arox.a((Context)localObject);
       break label157;
     }
   }
@@ -349,10 +349,10 @@ public class LinkByWeiyunFragment
     case -2: 
     case -1: 
     default: 
-      arkn.a(1, 2131720019, true);
+      arow.a(1, 2131720031, true);
       return;
     }
-    arkn.a(2, 2131720038, true);
+    arow.a(2, 2131720050, true);
   }
   
   public boolean a()
@@ -363,7 +363,7 @@ public class LinkByWeiyunFragment
   public boolean a(Bitmap paramBitmap, int paramInt, String paramString)
   {
     if ((!isAdded()) || (isDetached()) || (isRemoving())) {}
-    while ((this.jdField_a_of_type_Arks == null) || (!this.jdField_a_of_type_Arks.a(paramBitmap, paramInt, paramString))) {
+    while ((this.jdField_a_of_type_Arpb == null) || (!this.jdField_a_of_type_Arpb.a(paramBitmap, paramInt, paramString))) {
       return false;
     }
     return true;
@@ -382,18 +382,18 @@ public class LinkByWeiyunFragment
   
   public void b()
   {
-    arkt localarkt;
-    if (this.jdField_a_of_type_Arkt != null)
+    arpc localarpc;
+    if (this.jdField_a_of_type_Arpc != null)
     {
-      localarkt = this.jdField_a_of_type_Arkt;
-      if ((this.jdField_a_of_type_Arko != null) && (this.jdField_a_of_type_Arko.a())) {
+      localarpc = this.jdField_a_of_type_Arpc;
+      if ((this.jdField_a_of_type_Arox != null) && (this.jdField_a_of_type_Arox.a())) {
         break label37;
       }
     }
     label37:
     for (boolean bool = true;; bool = false)
     {
-      localarkt.a(bool);
+      localarpc.a(bool);
       return;
     }
   }
@@ -414,12 +414,12 @@ public class LinkByWeiyunFragment
   
   public int getContentLayoutId()
   {
-    return 2131560657;
+    return 2131560675;
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Arko != null) && (this.jdField_a_of_type_Arko.b()))
+    if ((this.jdField_a_of_type_Arox != null) && (this.jdField_a_of_type_Arox.b()))
     {
       e();
       return true;
@@ -429,15 +429,15 @@ public class LinkByWeiyunFragment
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_Bdfq)) {}
+    if (paramDialogInterface.equals(this.jdField_a_of_type_Bdjz)) {}
     switch (paramInt)
     {
     case 0: 
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Arko != null) {
-      this.jdField_a_of_type_Arko.b();
+    if (this.jdField_a_of_type_Arox != null) {
+      this.jdField_a_of_type_Arox.b();
     }
     a();
   }
@@ -472,25 +472,25 @@ public class LinkByWeiyunFragment
     }
     this.jdField_a_of_type_JavaLangString = null;
     WXShareHelper.a().b(this);
-    if (this.jdField_a_of_type_Arkt != null)
+    if (this.jdField_a_of_type_Arpc != null)
     {
-      this.jdField_a_of_type_Arkt.a();
-      this.jdField_a_of_type_Arkt = null;
+      this.jdField_a_of_type_Arpc.a();
+      this.jdField_a_of_type_Arpc = null;
     }
-    if (this.jdField_a_of_type_Arko != null)
+    if (this.jdField_a_of_type_Arox != null)
     {
-      this.jdField_a_of_type_Arko.c();
-      this.jdField_a_of_type_Arko = null;
+      this.jdField_a_of_type_Arox.c();
+      this.jdField_a_of_type_Arox = null;
     }
-    if (this.jdField_a_of_type_Arks != null)
+    if (this.jdField_a_of_type_Arpb != null)
     {
-      this.jdField_a_of_type_Arks.a();
-      this.jdField_a_of_type_Arks = null;
+      this.jdField_a_of_type_Arpb.a();
+      this.jdField_a_of_type_Arpb = null;
     }
-    if (this.jdField_a_of_type_Bdfq != null)
+    if (this.jdField_a_of_type_Bdjz != null)
     {
-      this.jdField_a_of_type_Bdfq.dismiss();
-      this.jdField_a_of_type_Bdfq = null;
+      this.jdField_a_of_type_Bdjz.dismiss();
+      this.jdField_a_of_type_Bdjz = null;
     }
     super.onDestroy();
   }
@@ -504,13 +504,13 @@ public class LinkByWeiyunFragment
     int i;
     if ((j == 9) || (j == 10)) {
       if (!WXShareHelper.a().a()) {
-        i = 2131721478;
+        i = 2131721491;
       }
     }
     for (;;)
     {
       if (i != -1) {
-        arkn.a(0, i, false);
+        arow.a(0, i, false);
       }
       do
       {
@@ -518,15 +518,15 @@ public class LinkByWeiyunFragment
         if (WXShareHelper.a().b()) {
           break label186;
         }
-        i = 2131721479;
+        i = 2131721492;
         break;
         if (QLog.isColorLevel()) {
           QLog.i("LinkByWeiyunFragment<FileAssistant>", 2, "onItemClick.chooseChannel: " + j);
         }
-      } while ((this.jdField_a_of_type_Arko == null) || (this.jdField_a_of_type_Arks == null));
+      } while ((this.jdField_a_of_type_Arox == null) || (this.jdField_a_of_type_Arpb == null));
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Arks.a(paramActionSheetItem);
+        this.jdField_a_of_type_Arpb.a(paramActionSheetItem);
         if (!this.jdField_a_of_type_Boolean) {
           break label179;
         }
@@ -534,9 +534,9 @@ public class LinkByWeiyunFragment
       label179:
       for (paramActionSheetItem = "0X800A9DB";; paramActionSheetItem = "0X800A9DA")
       {
-        arkn.a(paramActionSheetItem, arkn.c(j), null);
+        arow.a(paramActionSheetItem, arow.c(j), null);
         return;
-        this.jdField_a_of_type_Arko.a(paramActionSheetItem);
+        this.jdField_a_of_type_Arox.a(paramActionSheetItem);
         break;
       }
       label186:

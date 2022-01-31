@@ -11,7 +11,7 @@ class ShareProxyImpl$2
   
   public void run()
   {
-    QQToast.a(this.val$activity, 0, 2131721478, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.val$activity, 0, 2131721491, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298914));
   }
 }
 

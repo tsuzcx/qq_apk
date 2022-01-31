@@ -1,29 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afhs
-  implements bhqd
+  implements bhuk
 {
-  afhs(afhq paramafhq, MessageForFile paramMessageForFile, bhpy parambhpy, BaseChatItemLayout paramBaseChatItemLayout, afhx paramafhx) {}
+  afhs(afhq paramafhq, afiv paramafiv, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null)
+    switch (paramInt)
     {
-      if (paramView.status == 16)
-      {
-        armz.a(2131692939);
-        this.jdField_a_of_type_Bhpy.cancel();
-        return;
-      }
-      arni.a(this.jdField_a_of_type_Afhq.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
-    this.jdField_a_of_type_Afhq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afhx, paramView, false);
-    this.jdField_a_of_type_Bhpy.cancel();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.cancel();
+      return;
+      acjm.c(this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afhq.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afiv.a.uniseq);
+    }
   }
 }
 

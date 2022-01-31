@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import amfh;
-import amfi;
+import amjw;
+import amjx;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class IceBreakingMng$2
   implements Runnable
 {
-  public IceBreakingMng$2(amfi paramamfi, List paramList) {}
+  public IceBreakingMng$2(amjx paramamjx, List paramList) {}
   
   public void run()
   {
-    if ((amfi.b(this.this$0) != null) && (amfi.b(this.this$0).get() != null)) {
-      ((amfh)amfi.b(this.this$0).get()).a(true, this.a);
+    if ((amjx.b(this.this$0) != null) && (amjx.b(this.this$0).get() != null)) {
+      ((amjw)amjx.b(this.this$0).get()).a(true, this.a);
     }
   }
 }

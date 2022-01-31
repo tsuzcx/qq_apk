@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 
-public class berj
-  implements View.OnClickListener
+public abstract interface berj
 {
-  public berj(TabBarView paramTabBarView, int paramInt) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
-  }
+  public abstract void a(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp);
+  
+  public abstract boolean a();
 }
 
 

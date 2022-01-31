@@ -1,16 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
 class avww
-  extends AnimatorListenerAdapter
+  extends OrientationEventListener
 {
-  avww(avwn paramavwn, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  avww(avwv paramavwv, Context paramContext)
   {
-    avwn.a(this.jdField_a_of_type_Avwn).removeView(this.jdField_a_of_type_AndroidViewView);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.a.b = 0;
+    }
+    do
+    {
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 

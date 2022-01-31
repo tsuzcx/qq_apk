@@ -1,8 +1,17 @@
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface aguj
+class aguj
+  extends altm
 {
-  public abstract void a(List<agtk> paramList, String paramString1, String paramString2);
+  aguj(agti paramagti, ImageView paramImageView) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Agti.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdbk.a(this.jdField_a_of_type_Agti.a, paramString, (byte)3));
+    }
+  }
 }
 
 

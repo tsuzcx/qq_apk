@@ -1,49 +1,30 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
 class wqz
-  extends wna
+  extends LruCache<wrb, Drawable>
 {
-  wqz(wqx paramwqx) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
+  wqz(wqy paramwqy, int paramInt)
   {
-    if ((paramView == paramwph.a(2131373743)) || (paramView == paramwph.a(2131373744)) || (paramView == paramwph.a(2131373747))) {
-      if (wqx.a(this.a)) {
-        wsv.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
-      }
-    }
-    while (paramView != paramwph.a(2131373742))
+    super(paramInt);
+  }
+  
+  protected int a(wrb paramwrb, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      return;
-      wqx.a(this.a, true);
-      paramObject = new Bundle();
-      paramObject.putInt("capture_intent_mode", 3);
-      if (wqx.a(this.a) == 1) {
-        paramObject.putString("story_capture_album_id", "default_id");
-      }
-      for (;;)
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
       {
-        xlb.a().a((Activity)wqx.a(this.a), paramObject, 20000);
-        wta.a("home_page", "clk_smartalbum", 0, 0, new String[] { wqx.a(this.a, wqx.a(this.a)) });
-        return;
-        if (wqx.a(this.a) == 2)
-        {
-          if (wqx.a(this.a) != null) {}
-          for (paramView = String.valueOf(wqx.a(this.a).a());; paramView = "default_id")
-          {
-            paramObject.putString("story_capture_album_id", paramView);
-            break;
-          }
-        }
-        if (wqx.a(this.a) != 3) {}
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        wrk.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwrb, " size=", Integer.valueOf(i) });
+        return i;
       }
     }
-    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    this.a.a(null, 4);
-    wta.a("home_page", "close_smartalbum", 0, 0, new String[] { wqx.a(this.a, wqx.a(this.a)) });
+    return 524288;
   }
 }
 

@@ -1,20 +1,20 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+
 public class xos
-  implements xpb
+  implements xot
 {
-  public long b;
-  
-  public void onFailure(String paramString) {}
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public void a(@NonNull ArrayList<xou> paramArrayList, @NonNull Context paramContext)
   {
-    this.b = System.currentTimeMillis();
+    int i = 0;
+    while (i < xou.a.length)
+    {
+      paramArrayList.add(new xou(paramContext.getResources().getDrawable(xou.b[i]), 0, xou.a[i]));
+      i += 1;
+    }
   }
-  
-  public void onSuccess(String paramString) {}
 }
 
 

@@ -1,21 +1,99 @@
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class atgh
+  extends WebViewPlugin
 {
-  public static HashMap<Long, String> a = new HashMap();
-  
-  static
+  public atgh()
   {
-    a.put(Long.valueOf(1047L), "biz_src_qqmusic");
-    a.put(Long.valueOf(5362L), "biz_src_zz_dianjing");
-    a.put(Long.valueOf(1113L), "biz_src_zz_bodong");
-    a.put(Long.valueOf(3053L), "biz_src_zf_dongtai_qianbao");
-    a.put(Long.valueOf(763L), "biz_src_zf_dongtai_qianbao");
-    a.put(Long.valueOf(883L), "biz_src_zf_dongtai_qianbao");
-    a.put(Long.valueOf(4559L), "biz_src_zf_sport");
-    a.put(Long.valueOf(826L), "biz_src_feeds_buluo");
-    a.put(Long.valueOf(489L), "biz_src_zf_games");
-    a.put(Long.valueOf(879L), "biz_src_hdsp_dtzbj");
+    this.mPluginNameSpace = "emojiEggSetting";
+  }
+  
+  private void a(int paramInt, String... paramVarArgs)
+  {
+    try
+    {
+      Activity localActivity = this.mRuntime.a();
+      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("frd_uin");
+      if (!TextUtils.isEmpty(paramVarArgs))
+      {
+        Intent localIntent = aepi.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+        localIntent.putExtra("uin", paramVarArgs);
+        if (paramInt == 1) {
+          localIntent.putExtra("KEY_SHOULD_SHOW_KEYBOARD", true);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("uintype", 0);
+          localActivity.startActivity(localIntent);
+          return;
+          if (paramInt == 2) {
+            localIntent.putExtra("KEY_SHOULD_SHOW_PLUS_PANEL", true);
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramVarArgs)
+    {
+      QLog.e("IntimatePlugin", 1, "gotoC2C exception e = ", paramVarArgs);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimatePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if ("emojiEggSetting".equals(paramString2))
+    {
+      if (!"showVC".equals(paramString3)) {}
+    }
+    else
+    {
+      do
+      {
+        try
+        {
+          paramJsBridgeListener = this.mRuntime.a();
+          int i = new JSONObject(paramVarArgs[0]).optInt("entry");
+          paramString1 = new Intent(paramJsBridgeListener, ShowReactiveActivity.class);
+          paramString1.putExtra("entry", i);
+          paramJsBridgeListener.startActivity(paramString1);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          QLog.e("IntimatePlugin", 1, "openConfessAIO exception e = ", paramJsBridgeListener);
+          return false;
+        }
+        if (!"interactionScore".equals(paramString2)) {
+          break;
+        }
+        if ("gotoChat".equals(paramString3))
+        {
+          a(1, paramVarArgs);
+          return true;
+        }
+      } while (!"gotoCall".equals(paramString3));
+      a(2, paramVarArgs);
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
 }
 

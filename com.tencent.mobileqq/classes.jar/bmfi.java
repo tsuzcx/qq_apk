@@ -1,49 +1,89 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LWMotionEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bmfi
-  implements View.OnTouchListener
+public class bmfi
 {
-  bmfi(bmfh parambmfh) {}
+  private static ArrayList<bmgy> a = new ArrayList();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static bmhi a(String paramString, bmhh parambmhh, bmhg parambmhg)
   {
-    if (bmfh.a(this.a) == null)
+    if (paramString.equals(bmfm.class.getName())) {
+      return new bmfm(parambmhh, parambmhg);
+    }
+    return null;
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent size: " + a.size());
+    }
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext())
     {
-      if (this.a.jdField_a_of_type_Bmix.a == null) {
-        return false;
-      }
-      bmfh.a(this.a, this.a.jdField_a_of_type_Bmix.a.a());
-    }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.setTipsGone();
-    }
-    if (bmfh.a(this.a).c()) {
-      switch (paramMotionEvent.getAction() & 0xFF)
+      bmgy localbmgy = (bmgy)localIterator.next();
+      if (localbmgy != null)
       {
-      }
-    }
-    while ((this.a.jdField_a_of_type_Boolean) || (bmfh.a(this.a).getVisibility() == 8))
-    {
-      return false;
-      this.a.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.a.b = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.a.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.a.b) < 10.0F))
-      {
-        paramView = (bmee)this.a.a(bmee.class);
-        if (paramView != null) {
-          paramView.h_();
+        if (QLog.isColorLevel()) {
+          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent newCode= " + localbmgy.hashCode());
         }
+        localbmgy.u();
       }
     }
-    return bmfh.a(this.a).a(paramMotionEvent);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    if (paramString.equals(bmfm.class.getName()))
+    {
+      if (!paramBoolean) {
+        paramActivity.getWindow().setBackgroundDrawableResource(2130844186);
+      }
+    }
+    else {
+      return;
+    }
+    paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(-1));
+  }
+  
+  public static void a(bmgy parambmgy)
+  {
+    a.remove(parambmgy);
+    if (QLog.isColorLevel()) {
+      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "removeIPCEvent: " + a.size() + " newCode=" + parambmgy.hashCode());
+    }
+  }
+  
+  public static void a(LWMotionEvent paramLWMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent size: " + a.size());
+    }
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext())
+    {
+      bmgy localbmgy = (bmgy)localIterator.next();
+      if (localbmgy != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent newCode= " + localbmgy.hashCode());
+        }
+        localbmgy.a(paramLWMotionEvent);
+      }
+    }
+  }
+  
+  public static void b(bmgy parambmgy)
+  {
+    a.add(parambmgy);
+    if (QLog.isColorLevel()) {
+      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "addIPCEventHook: " + a.size() + " newCode=" + parambmgy.hashCode());
+    }
   }
 }
 

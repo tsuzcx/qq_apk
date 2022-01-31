@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bizf;
+import bjdm;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class LpReportInfo_dc04021
   public long idleCallback;
   public long intimeCallback;
   public long noCallback;
-  private String qua = bizf.a();
+  private String qua = bjdm.a();
   public long totalDuration;
   public long touchScrollCallback;
   

@@ -1,150 +1,78 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.DisplayMetrics;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoyt
+public final class aoyt
+  extends aokh<aoys>
 {
-  private final int jdField_a_of_type_Int;
-  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private int b;
-  private int c;
-  private int d;
-  
-  public aoyt()
+  public static aoys a()
   {
-    DisplayMetrics localDisplayMetrics = aowq.a().a().a().getDisplayMetrics();
-    int i = localDisplayMetrics.widthPixels;
-    this.jdField_a_of_type_Int = (localDisplayMetrics.heightPixels * i * 8);
+    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
+    return (aoys)aoks.a().a(559);
   }
   
-  private void b(Bitmap paramBitmap)
+  public static boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
-    if (paramBitmap != null)
-    {
-      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      if ((!paramBitmap.isRecycled()) && (!aowq.a().a().c())) {
-        paramBitmap.recycle();
-      }
-    }
+    aoys localaoys = a();
+    return (localaoys != null) && (localaoys.a()) && (localaoys.a(paramString));
   }
   
   public int a()
   {
-    return this.b;
+    return 559;
   }
   
-  public Bitmap a(int paramInt1, int paramInt2)
+  @NonNull
+  public aoys a(int paramInt)
   {
-    this.c += 1;
-    Object localObject1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    Object localObject2;
-    if (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
-        if (localObject1 == null) {
-          localObject2 = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localBitmap;
-        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
-          localObject2 = localObject1;
-        }
-      }
-    }
-    if (localObject1 != null)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
-      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
-      return localObject1;
-    }
-    try
-    {
-      this.d += 1;
-      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
-      return localObject2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      aozj.a("BitmapCacheManager", "create bitmap out of memory", localOutOfMemoryError);
-    }
-    return localObject1;
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new aoys();
   }
   
-  public void a()
+  @Nullable
+  public aoys a(aoko[] paramArrayOfaoko)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (!aowq.a().a().c())) {
-        localBitmap.recycle();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
+    return aoys.a(paramArrayOfaoko);
   }
   
-  public void a(Bitmap paramBitmap)
+  public Class<aoys> a()
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    for (;;)
-    {
-      return;
-      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
-      while (this.b > this.jdField_a_of_type_Int)
-      {
-        paramBitmap = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
-        {
-          Bitmap localBitmap2 = (Bitmap)localIterator.next();
-          Bitmap localBitmap1;
-          if (paramBitmap == null) {
-            localBitmap1 = localBitmap2;
-          }
-          for (;;)
-          {
-            paramBitmap = localBitmap1;
-            break;
-            localBitmap1 = localBitmap2;
-            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
-              localBitmap1 = paramBitmap;
-            }
-          }
-        }
-        if (paramBitmap != null) {
-          b(paramBitmap);
-        }
-      }
-    }
+    return aoys.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public void a(aoys paramaoys)
+  {
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
   
   public int b()
   {
-    return this.c;
+    return 0;
   }
   
-  public int c()
+  public boolean b()
   {
-    return this.d;
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyt
  * JD-Core Version:    0.7.0.1
  */

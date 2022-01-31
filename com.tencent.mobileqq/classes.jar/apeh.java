@@ -1,73 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
-import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
-public abstract class apeh
-  extends nac
+public final class apeh
+  implements Parcelable.Creator
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject = null;
-    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
-    boolean bool1;
-    if (paramInt == 0)
-    {
-      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
-      bool1 = bool4;
-    }
-    for (;;)
-    {
-      try
-      {
-        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-        bool1 = bool4;
-        if (localRspBatchGetAnchorStatus.uint32_result.has())
-        {
-          paramArrayOfByte = localObject;
-          bool2 = bool3;
-          bool1 = bool4;
-          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
-          {
-            bool1 = true;
-            bool2 = true;
-            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("Q.msg_box.protocol", 2, localException.toString());
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        continue;
-      }
-      a(bool2, paramArrayOfByte, paramBundle);
-      return;
-      paramArrayOfByte = localObject;
-      boolean bool2 = bool3;
-      if (QLog.isColorLevel())
-      {
-        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-      }
-    }
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
   }
   
-  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
+  public IPSiteModel.Video[] a(int paramInt)
+  {
+    return new IPSiteModel.Video[paramInt];
+  }
 }
 
 

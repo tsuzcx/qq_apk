@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.register;
 
-import axhw;
-import axhx;
+import axmf;
+import axmg;
 import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class QueryAccount$2$2
   implements Runnable
 {
-  public QueryAccount$2$2(axhx paramaxhx) {}
+  public QueryAccount$2$2(axmg paramaxmg) {}
   
   public void run()
   {
-    this.a.a.a.a(2131717515, 0);
+    this.a.a.a.a(2131717527, 0);
   }
 }
 

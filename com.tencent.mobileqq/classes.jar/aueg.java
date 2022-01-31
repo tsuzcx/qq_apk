@@ -1,35 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aueg
-  implements best
 {
-  public aueg(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  Map<String, auef> a = new ConcurrentHashMap();
   
-  public void a(View paramView, int paramInt)
+  auef a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int i = 2;
-    if (paramInt == 1)
-    {
-      aufh.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(aucf.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      auff.a("0X800A242", paramInt);
+    auef localauef = (auef)this.a.get(paramString);
+    if ((localauef != null) && (paramBoolean)) {
+      if (!a(localauef, paramInt1, paramInt2)) {}
     }
-    for (;;)
+    while (!QLog.isColorLevel())
     {
-      this.a.onBackEvent();
-      return;
-      label79:
-      if ((aucf.c) && (aubu.a().a() == 1)) {
-        auff.a("0X800A266", 5);
+      return localauef;
+      return null;
+    }
+    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
+    return localauef;
+  }
+  
+  void a(auef paramauef, int paramInt, auei paramauei)
+  {
+    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramauei, paramauef, paramInt), 128, null, true);
+  }
+  
+  boolean a(auef paramauef)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramauef.jdField_c_of_type_Int) });
+    }
+    return (paramauef != null) && (paramauef.jdField_c_of_type_Int == 1);
+  }
+  
+  boolean a(auef paramauef, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramauef.h });
+    }
+    if (paramInt2 == 1)
+    {
+      if (paramauef.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
+    }
+    else {
+      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramauef.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramauef.b > NetConnInfoCenter.getServerTimeMillis())))) {
+        return true;
       }
     }
+    return false;
+  }
+  
+  boolean b(auef paramauef)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramauef.f });
+    }
+    return !TextUtils.isEmpty(paramauef.f);
   }
 }
 

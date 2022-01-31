@@ -1,11 +1,23 @@
-import android.view.animation.Animation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class awic
-  extends bhnr
+  implements DialogInterface.OnClickListener
 {
-  awic(awhw paramawhw) {}
+  awic(awia paramawia) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
+  }
 }
 
 

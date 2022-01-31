@@ -1,13 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
+import java.util.List;
 
 public class adya
-  implements DialogInterface.OnClickListener
+  extends amct
 {
-  public adya(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public adya(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    List localList;
+    if (this.a.isResume())
+    {
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
+      }
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
+      }
+    }
+    label113:
+    do
+    {
+      return;
+      this.a.a.a(paramObject, paramBoolean);
+      break;
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
+      }
+      for (;;)
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
+      }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
+  }
 }
 
 

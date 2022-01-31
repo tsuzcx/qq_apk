@@ -1,10 +1,23 @@
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+
 public class amyj
+  implements awbh
 {
-  public long b = 0L;
+  public amyj(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public String toString()
+  public void a()
   {
-    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

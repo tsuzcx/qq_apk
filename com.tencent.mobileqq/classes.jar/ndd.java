@@ -163,11 +163,11 @@ public class ndd
     //   84: iload 5
     //   86: istore_3
     //   87: aload 7
-    //   89: new 114	bdls
+    //   89: new 114	bdqb
     //   92: dup
     //   93: ldc 116
     //   95: aload_0
-    //   96: invokespecial 119	bdls:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
+    //   96: invokespecial 119	bdqb:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
     //   99: invokevirtual 123	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   102: iload 5
     //   104: istore_3
@@ -796,9 +796,9 @@ public class ndd
       }
       catch (IOException localIOException)
       {
-        while (str2.equals(xxb.c))
+        while (str2.equals(ybk.c))
         {
-          str1 = xxb.a(paramContext, str2);
+          str1 = ybk.a(paramContext, str2);
           if (str1 == null) {
             break label186;
           }
@@ -844,10 +844,10 @@ public class ndd
         }
         catch (IOException paramString3)
         {
-          if (!str.equals(xxb.c)) {
+          if (!str.equals(ybk.c)) {
             continue;
           }
-          paramString3 = xxb.a(paramContext, str);
+          paramString3 = ybk.a(paramContext, str);
           if (paramString3 == null) {
             break label265;
           }
@@ -966,7 +966,7 @@ public class ndd
       HttpsURLConnection localHttpsURLConnection = (HttpsURLConnection)new URL(paramString1).openConnection();
       ndg localndg = new ndg(paramString2);
       if (!paramBoolean) {
-        localHttpsURLConnection.setSSLSocketFactory(new bdls(paramString2, localndg));
+        localHttpsURLConnection.setSSLSocketFactory(new bdqb(paramString2, localndg));
       }
       localHttpsURLConnection.setHostnameVerifier(localndg);
       localHttpsURLConnection.setRequestProperty("Host", paramString2);
@@ -1297,19 +1297,19 @@ public class ndd
     //   582: aload 4
     //   584: invokeinterface 595 1 0
     //   589: invokeinterface 477 1 0
-    //   594: astore 4
+    //   594: astore 6
     //   596: aload_0
     //   597: astore 10
     //   599: aload_0
     //   600: astore 9
-    //   602: aload 4
+    //   602: aload 6
     //   604: invokeinterface 482 1 0
     //   609: ifeq +202 -> 811
     //   612: aload_0
     //   613: astore 10
     //   615: aload_0
     //   616: astore 9
-    //   618: aload 4
+    //   618: aload 6
     //   620: invokeinterface 486 1 0
     //   625: checkcast 597	java/util/Map$Entry
     //   628: astore 11
@@ -1320,7 +1320,7 @@ public class ndd
     //   636: aload 11
     //   638: invokeinterface 600 1 0
     //   643: checkcast 314	java/lang/String
-    //   646: astore 6
+    //   646: astore 4
     //   648: aload_0
     //   649: astore 10
     //   651: aload_0
@@ -1355,7 +1355,7 @@ public class ndd
     //   714: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   717: ldc_w 632
     //   720: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   723: aload 6
+    //   723: aload 4
     //   725: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   728: ldc_w 634
     //   731: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2229,7 +2229,7 @@ public class ndd
     if (localObject == null) {
       return null;
     }
-    if (bdee.a((NetworkInfo)localObject))
+    if (bdin.a((NetworkInfo)localObject))
     {
       localObject = a(paramContext);
       int i = a(paramContext);
@@ -2255,7 +2255,7 @@ public class ndd
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      xxb.a(paramContext, xxb.c);
+      ybk.a(paramContext, ybk.c);
     }
     if (paramContext == null) {
       return null;
@@ -2532,9 +2532,9 @@ public class ndd
       }
       catch (IOException localIOException)
       {
-        while (str2.equals(xxb.c))
+        while (str2.equals(ybk.c))
         {
-          str1 = xxb.a(paramContext, str2);
+          str1 = ybk.a(paramContext, str2);
           if (str1 == null) {
             break label198;
           }
@@ -2583,10 +2583,10 @@ public class ndd
         }
         catch (IOException paramString3)
         {
-          if (!str.equals(xxb.c)) {
+          if (!str.equals(ybk.c)) {
             continue;
           }
-          paramString3 = xxb.a(paramContext, str);
+          paramString3 = ybk.a(paramContext, str);
           if (paramString3 == null) {
             break label241;
           }

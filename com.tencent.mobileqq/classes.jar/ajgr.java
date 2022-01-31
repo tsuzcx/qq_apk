@@ -1,24 +1,18 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ajgr
-  extends ajfh
+class ajgr
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  ajgr(ajgb paramajgb) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
+    }
+    this.a.c();
+  }
 }
 
 

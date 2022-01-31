@@ -1,6 +1,21 @@
-public abstract interface aljc
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
+
+class aljc
+  implements Comparator<ApolloActionData>
 {
-  public abstract void a();
+  aljc(aliw paramaliw) {}
+  
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

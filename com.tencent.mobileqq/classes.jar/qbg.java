@@ -12,9 +12,9 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 public class qbg
   extends qbk
 {
-  public qbg(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbg(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

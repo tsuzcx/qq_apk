@@ -1,31 +1,69 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 class ahgz
-  extends bhxd
+  implements View.OnClickListener
 {
-  ahgz(ahgy paramahgy, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  ahgz(ahgy paramahgy) {}
   
-  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
+  public void onClick(View paramView)
   {
-    paramInt = 1;
-    if ((paramArrayOfbhxc == null) || (paramArrayOfbhxc.length <= 0)) {}
-    for (;;)
+    nry localnry = (nry)paramView.getTag();
+    paramView = (alzl)this.a.a.a.getManager(56);
+    if ((paramView != null) && (paramView.c(localnry.jdField_a_of_type_JavaLangString) != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfbhxc.length < 0) && ((i & 0xF) == 1))
+      if (bool)
       {
-        paramArrayOfbhxc[0].b = 0;
-        paramArrayOfbhxc[0].a = 0;
+        paramView = new Intent(this.a.a.a(), ChatActivity.class);
+        if (localnry.jdField_a_of_type_Boolean)
+        {
+          paramView.putExtra("uintype", 1008);
+          paramView.putExtra("uin", localnry.jdField_a_of_type_JavaLangString);
+          paramView.putExtra("uinname", localnry.b);
+          paramView.putExtra("start_time", System.currentTimeMillis());
+          this.a.a.a().startActivity(paramView);
+          if (!ahgy.a(this.a)) {
+            break label360;
+          }
+        }
       }
-      while (paramInt < paramArrayOfbhxc.length)
+      label360:
+      for (paramView = "houtai";; paramView = "duan")
       {
-        paramArrayOfbhxc[paramInt].b = -1;
-        paramArrayOfbhxc[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
+        nrt.a(this.a.a.a, localnry.jdField_a_of_type_JavaLangString, "0X8007404", "0X8007404", 0, 0, "", "", paramView, "");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder("clickRecommendAccount->");
+          localStringBuilder.append("source:").append(paramView);
+          localStringBuilder.append(", puin:").append(localnry.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(", isFollow:").append(bool);
+          QLog.d("ClassificationSearchFragment", 2, localStringBuilder.toString());
+        }
+        return;
+        paramView.putExtra("uintype", 1024);
+        break;
+        if (localnry.jdField_a_of_type_Boolean)
+        {
+          paramView = new Intent(this.a.a.a(), AccountDetailActivity.class);
+          paramView.putExtra("uintype", 1008);
+          paramView.putExtra("source", 118);
+        }
+        for (;;)
+        {
+          paramView.putExtra("uin", localnry.jdField_a_of_type_JavaLangString);
+          paramView.addFlags(67108864);
+          this.a.a.a().startActivity(paramView);
+          break;
+          paramView = ndv.a(this.a.a.a(), null, "", false, -1, false, -1);
+        }
       }
     }
   }

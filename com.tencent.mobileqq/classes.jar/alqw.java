@@ -1,15 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class alqw
-  implements View.OnClickListener
+  extends MSFServlet
 {
-  public alqw(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.onBackEvent();
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onReceive called");
+    }
+    if (paramIntent == null)
+    {
+      QLog.e("DataLineServlet", 1, "onReceive : req is null");
+      return;
+    }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    ((alqo)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onSend called");
+    }
+    if (paramIntent == null) {
+      QLog.e("DataLineServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
   }
 }
 

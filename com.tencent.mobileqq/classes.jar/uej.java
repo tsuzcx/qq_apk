@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class uej
-  extends ugz
+public abstract interface uej
 {
-  public List<ueq> a = new ArrayList();
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

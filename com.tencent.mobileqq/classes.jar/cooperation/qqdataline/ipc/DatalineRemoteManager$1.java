@@ -1,15 +1,15 @@
 package cooperation.qqdataline.ipc;
 
-import biqi;
+import biup;
 
 public class DatalineRemoteManager$1
   implements Runnable
 {
-  public DatalineRemoteManager$1(biqi parambiqi) {}
+  public DatalineRemoteManager$1(biup parambiup) {}
   
   public void run()
   {
-    biqi.a(this.this$0);
+    biup.a(this.this$0);
   }
 }
 

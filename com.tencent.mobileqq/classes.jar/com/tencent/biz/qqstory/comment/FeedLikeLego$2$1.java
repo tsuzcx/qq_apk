@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.comment;
 
-import uoq;
-import upc;
+import usz;
+import utl;
 
 class FeedLikeLego$2$1
   implements Runnable
@@ -11,7 +11,7 @@ class FeedLikeLego$2$1
   public void run()
   {
     this.a.this$0.a(this.a.this$0.a);
-    ((uoq)this.a.this$0.a()).d();
+    ((usz)this.a.this$0.a()).d();
   }
 }
 

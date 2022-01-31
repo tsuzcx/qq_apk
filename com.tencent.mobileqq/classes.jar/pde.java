@@ -34,18 +34,18 @@ public class pde
     do
     {
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366277));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366279));
     } while (!(a() instanceof ReadInJoyListViewGroup));
     nxa.a().a(b(), (pde)((ReadInJoyListViewGroup)a()).a());
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368700));
-    if ((b() == 0) && (bjxj.k()))
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368712));
+    if ((b() == 0) && (bkbq.k()))
     {
       paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, bdkf.a(34.0F), bdkf.a(184.0F));
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, bdoo.a(34.0F), bdoo.a(184.0F));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramView);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pdf(this));

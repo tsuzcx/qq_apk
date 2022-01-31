@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bfhg;
-import bfkb;
-import bflh;
+import bflp;
+import bfok;
+import bfpq;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManager$15
   implements Runnable
 {
-  public DownloadManager$15(bfkb parambfkb, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$15(bfok parambfok, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class DownloadManager$15
       if (localTMAssistantDownloadTaskInfo != null)
       {
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        bflh.a().a(this.a);
+        bfpq.a().a(this.a);
       }
       return;
     }
     catch (Exception localException)
     {
-      bfhg.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bflp.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

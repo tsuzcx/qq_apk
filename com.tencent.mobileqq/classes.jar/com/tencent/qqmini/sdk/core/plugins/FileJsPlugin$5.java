@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgjm;
-import bgkd;
+import bgnt;
+import bgok;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.utils.MiniLog;
 import java.io.IOException;
@@ -10,17 +10,17 @@ import java.io.IOException;
 class FileJsPlugin$5
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, bgkd parambgkd, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, bgok parambgok, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
   public String run()
   {
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (bgjm.a().a(this.val$filePath) != 2) {
+    if (bgnt.a().a(this.val$filePath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
-    String str = bgjm.a().c(this.val$filePath);
+    String str = bgnt.a().c(this.val$filePath);
     if (!TextUtils.isEmpty(str))
     {
       if (str.contains("miniprogramLog"))

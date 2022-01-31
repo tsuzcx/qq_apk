@@ -10,7 +10,7 @@ public class lvb
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (RandomController.a(this.a) == 1) {
-      azmj.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -18,7 +18,7 @@ public class lvb
       RandomController.d(this.a, false);
       return;
       if (RandomController.a(this.a) == 2) {
-        azmj.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
       }
     }
   }

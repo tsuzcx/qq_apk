@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.util;
 
-import aanv;
+import aask;
 import android.app.Activity;
 import android.text.TextUtils;
-import bdiv;
-import bjxj;
+import bdne;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -40,7 +40,7 @@ public final class ReadinjoyReportUtils$3
     label589:
     label609:
     label631:
-    for (boolean bool1 = bdiv.v(this.jdField_a_of_type_AndroidAppActivity, ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentAccountUin());; bool1 = false)
+    for (boolean bool1 = bdne.v(this.jdField_a_of_type_AndroidAppActivity, ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentAccountUin());; bool1 = false)
     {
       if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
       for (Object localObject1 = ((qja)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).app.getManager(261)).a();; localObject1 = "0")
@@ -90,7 +90,7 @@ public final class ReadinjoyReportUtils$3
               long l = ((RefreshData)localObject2).adId.longValue();
               ((qq_ad_get.QQAdGetRsp.AdInfo)localObject3).report_info.trace_info.aid.set(l);
               ((qq_ad_get.QQAdGetRsp.AdInfo)localObject3).report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(((RefreshData)localObject2).getUrls(((RefreshData)localObject2).adExposureReports));
-              aanv.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject3);
+              aask.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject3);
               m = this.jdField_a_of_type_Int;
               boolean bool2 = this.jdField_a_of_type_Boolean;
               if (bool1)
@@ -119,11 +119,11 @@ public final class ReadinjoyReportUtils$3
                   k = 0;
                 }
               }
-              nrt.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ((orz)localObject3).a(), false);
+              nrt.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ((orz)localObject3).a(), false);
               nrt.a("0X80066F8", "", "", "", "", ors.b(this.jdField_a_of_type_Int));
               if (this.jdField_a_of_type_Int == 70)
               {
-                localObject2 = bjxj.a("default_feeds_proteus_offline_bid");
+                localObject2 = bkbq.a("default_feeds_proteus_offline_bid");
                 m = this.jdField_a_of_type_Int;
                 bool2 = this.jdField_a_of_type_Boolean;
                 if (bool1)

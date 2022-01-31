@@ -11,8 +11,8 @@ public class ptc
   
   public void onFileDownloadFailed(int paramInt)
   {
-    ysi localysi = new ysi(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842359));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localysi, 0, 1, 17);
+    ywx localywx = new ywx(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842372));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localywx, 0, 1, 17);
     NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   

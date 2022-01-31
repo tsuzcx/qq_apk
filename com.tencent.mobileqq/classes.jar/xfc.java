@@ -1,6 +1,23 @@
-public abstract interface xfc<ERROR_TYPE, DATA_TYPE>
+import android.support.annotation.NonNull;
+
+public class xfc
+  extends uli
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  public final int a;
+  public final long a;
+  @NonNull
+  public final xes a;
+  public final boolean a;
+  public final long b;
+  
+  public xfc(@NonNull xes paramxes, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Xes = paramxes;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
 }
 
 

@@ -1,11 +1,16 @@
-public class ayjx
-  implements ayjj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+
+class ayjx
+  implements View.OnClickListener
 {
-  public static final String a = ayjx.class.getSimpleName();
+  ayjx(ayjv paramayjv) {}
   
-  public static boolean a(int paramInt)
+  public void onClick(View paramView)
   {
-    return (paramInt > 0) && (paramInt < 3);
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
   }
 }
 

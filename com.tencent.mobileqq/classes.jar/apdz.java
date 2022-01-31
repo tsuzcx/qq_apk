@@ -1,27 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-public class apdz
-  extends apeh
+public abstract interface apdz
 {
-  public apdz(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  public abstract boolean getHasPulledSourceMsg();
   
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
-      }
-    }
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 

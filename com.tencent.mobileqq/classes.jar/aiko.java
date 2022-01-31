@@ -1,27 +1,17 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 
-class aiko
-  extends nac
+public class aiko
+  implements DialogInterface.OnClickListener
 {
-  aiko(aikl paramaikl) {}
+  public aiko(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((aikl.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.d();
-    if (aikl.a(this.a) != null) {
-      aikl.a(this.a).removeCallbacks(aikl.b(this.a));
-    }
-    if (paramInt == 16)
-    {
-      this.a.e();
-      return;
-    }
-    aikl.a(this.a, aikl.a(this.a));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
   }
 }
 

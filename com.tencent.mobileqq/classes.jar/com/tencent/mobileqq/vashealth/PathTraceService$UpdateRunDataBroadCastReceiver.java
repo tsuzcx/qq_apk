@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import alpo;
+import alud;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,11 +23,11 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131371265, alpo.a(2131708284));
+      PathTraceService.a(this.a).setTextViewText(2131371284, alud.a(2131708296));
     }
-    PathTraceService.a(this.a).setChronometer(2131371266, SystemClock.elapsedRealtime() - l * 1000L, null, false);
+    PathTraceService.a(this.a).setChronometer(2131371285, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");
-    PathTraceService.a(this.a).setTextViewText(2131371264, paramContext.format(d / 1000.0D) + "km");
+    PathTraceService.a(this.a).setTextViewText(2131371283, paramContext.format(d / 1000.0D) + "km");
     try
     {
       PathTraceService.a(this.a, PathTraceService.a(this.a).build());

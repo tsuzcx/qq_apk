@@ -1,33 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpq
-  implements bhqd
+  implements DialogInterface.OnClickListener
 {
-  public acpq(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhpy parambhpy) {}
+  public acpq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
-      {
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131692289));
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694829));
-      }
-    }
+    ChatSettingForTroop.i(this.a);
   }
 }
 

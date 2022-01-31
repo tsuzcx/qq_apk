@@ -1,34 +1,51 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
-class apok
-  extends apnt
+public class apok
+  extends QIPCModule
 {
-  apok(apoj paramapoj) {}
+  private static apok a;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  private apok(String paramString)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    super(paramString);
+  }
+  
+  public static apok a()
+  {
+    if (a == null) {}
+    try
     {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(apoj.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(apoj.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_Apoo.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
+      if (a == null) {
+        a = new apok("EmoticonIPCModule");
       }
+      return a;
     }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
+      }
+      return null;
+    }
+    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bduj)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
+    return null;
   }
 }
 

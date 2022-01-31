@@ -73,7 +73,7 @@ public class pcy
       if (!paramBoolean) {
         break label301;
       }
-      paramBoolean = bjxj.B();
+      paramBoolean = bkbq.B();
       if ((!paramBoolean) || (!b(i))) {
         break label362;
       }
@@ -122,7 +122,7 @@ public class pcy
   public static boolean a(String paramString, int paramInt)
   {
     boolean bool1 = TextUtils.equals(paramString, "1");
-    boolean bool2 = bjxj.i();
+    boolean bool2 = bkbq.i();
     boolean bool3 = a(paramInt);
     QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[shouldPushNewPage, isPushBoolean = " + bool1 + ", KDTab = " + bool2 + ", isInMyChannel = " + bool3 + ", channelID = " + paramInt);
     return (bool1) || (!bool2) || (!bool3);

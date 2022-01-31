@@ -1,49 +1,64 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Set;
 
 public class ayry
-  implements ayrt
+  extends ayqe
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<ayru> jdField_a_of_type_JavaUtilList;
+  private Set<String> b;
   
-  public ayry(ViewGroup paramViewGroup, int paramInt)
+  public ayry(bdbb parambdbb, ayqi paramayqi, Set<String> paramSet1, Set<String> paramSet2)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369588));
+    super(parambdbb, paramayqi, paramSet1);
+    this.b = paramSet2;
   }
   
-  public View a()
+  public void b(aynu paramaynu, aywd paramaywd)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    super.b(paramaynu, paramaywd);
+    if (paramaywd.c() != null)
+    {
+      localObject = paramaynu.b();
+      if ((this.b != null) && (this.b.contains(localObject))) {
+        paramaywd.c().setText(alud.a(2131714123));
+      }
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool = bclg.b((QQAppInterface)localObject, paramaynu.b());
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (!(paramaywd instanceof ayvx)) {
+        break label165;
+      }
+      ((ayvx)paramaywd).a(bool);
+    }
+    for (;;)
+    {
+      if (paramaywd.a() != null)
+      {
+        if ((!(paramaynu instanceof aymp)) && (!(paramaynu instanceof aymc)) && (!(paramaynu instanceof aymk))) {
+          break;
+        }
+        if (paramaywd.c() != null) {
+          paramaywd.c().setVisibility(8);
+        }
+        paramaywd.a().setVisibility(0);
+      }
+      return;
+      label165:
+      if ((paramaywd instanceof ayxw)) {
+        ((ayxw)paramaywd).a(bool);
+      }
+    }
+    if (paramaywd.c() != null) {
+      paramaywd.c().setVisibility(0);
+    }
+    paramaywd.a().setVisibility(8);
   }
   
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return a();
-  }
-  
-  public List<ayru> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
+  public void d(aynu paramaynu, aywd paramaywd) {}
 }
 
 

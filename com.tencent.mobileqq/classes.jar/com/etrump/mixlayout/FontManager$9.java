@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bdkd;
+import bdom;
 import fw;
 import fx;
 
@@ -12,7 +12,7 @@ public class FontManager$9
   public void run()
   {
     if (fx.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Fw, this.jdField_a_of_type_Int)) {
-      bdkd.a(this.this$0.a);
+      bdom.a(this.this$0.a);
     }
   }
 }

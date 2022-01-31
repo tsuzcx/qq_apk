@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bbtf;
+import bbxo;
 import java.util.HashSet;
 
 public class TroopFileUploadMgr$9
   implements Runnable
 {
-  public TroopFileUploadMgr$9(bbtf parambbtf) {}
+  public TroopFileUploadMgr$9(bbxo parambbxo) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    bbtf.a(this.this$0, 1, new Object[] { localHashSet });
+    bbxo.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

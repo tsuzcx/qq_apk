@@ -1,13 +1,17 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbje
-  extends akee
+  implements DialogInterface.OnClickListener
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public bbje(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.setResult(-1, null);
+    this.a.finish();
+  }
 }
 
 

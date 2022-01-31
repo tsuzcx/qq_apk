@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class acxm
-  implements DialogInterface.OnDismissListener
+  extends ameq
 {
-  public acxm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxm(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
+    if (paramBoolean1) {
+      ForwardRecentActivity.f(this.a);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.f(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxm
  * JD-Core Version:    0.7.0.1
  */

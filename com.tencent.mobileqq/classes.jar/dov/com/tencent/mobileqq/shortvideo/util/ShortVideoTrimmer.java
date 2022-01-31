@@ -3,8 +3,8 @@ package dov.com.tencent.mobileqq.shortvideo.util;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import bnod;
-import bnoe;
+import bnsp;
+import bnsq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -32,7 +32,7 @@ public class ShortVideoTrimmer
     if (jdField_a_of_type_Int == 0) {}
     try
     {
-      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new bnod());
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new bnsp());
       if (arrayOfFile == null) {
         return 1;
       }
@@ -55,10 +55,10 @@ public class ShortVideoTrimmer
     //   0: invokestatic 55	java/lang/System:currentTimeMillis	()J
     //   3: lstore 7
     //   5: aload_1
-    //   6: invokestatic 58	dov/com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Lbnoe;
+    //   6: invokestatic 58	dov/com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Lbnsq;
     //   9: astore 9
     //   11: aload 9
-    //   13: getfield 62	bnoe:jdField_a_of_type_Boolean	Z
+    //   13: getfield 62	bnsq:jdField_a_of_type_Boolean	Z
     //   16: ifne +10 -> 26
     //   19: ldc 64
     //   21: invokestatic 66	dov/com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
@@ -67,7 +67,7 @@ public class ShortVideoTrimmer
     //   26: aload_1
     //   27: aload_2
     //   28: aload 9
-    //   30: invokestatic 69	dov/com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Lbnoe;)[Ljava/lang/String;
+    //   30: invokestatic 69	dov/com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Lbnsq;)[Ljava/lang/String;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnonnull +11 -> 46
@@ -792,7 +792,7 @@ public class ShortVideoTrimmer
     //   849	852	1210	java/io/IOException
   }
   
-  public static bnoe a(String paramString)
+  public static bnsq a(String paramString)
   {
     Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
     if ((localObject != null) && (((String)localObject).length() > 0))
@@ -811,18 +811,18 @@ public class ShortVideoTrimmer
         if (i <= 0) {
           j = 640;
         }
-        localObject = new bnoe();
+        localObject = new bnsq();
         localFile = new File(paramString);
         if (!localFile.exists())
         {
-          ((bnoe)localObject).jdField_a_of_type_Boolean = false;
+          ((bnsq)localObject).jdField_a_of_type_Boolean = false;
           a("[@] getCompressConfig : [!file.exists]");
         }
         paramString = a(paramString);
         if ((paramString != null) && (paramString.length == 5) && (paramString[0] == 0)) {
           break;
         }
-        ((bnoe)localObject).jdField_a_of_type_Boolean = false;
+        ((bnsq)localObject).jdField_a_of_type_Boolean = false;
         a("[@] getCompressConfig : values=" + paramString);
         if (paramString != null) {
           a("[@] getCompressConfig : values.length=" + paramString.length + " err=" + paramString[0]);
@@ -1222,15 +1222,15 @@ public class ShortVideoTrimmer
     //   62	105	225	java/lang/Exception
   }
   
-  private static String[] a(String paramString1, String paramString2, bnoe parambnoe)
+  private static String[] a(String paramString1, String paramString2, bnsq parambnsq)
   {
     String str1 = "1";
     if (a() >= 2) {
       str1 = "2";
     }
-    String str2 = parambnoe.c + "x" + String.valueOf(parambnoe.d);
+    String str2 = parambnsq.c + "x" + String.valueOf(parambnsq.d);
     a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + parambnoe.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(parambnoe.e), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + parambnsq.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(parambnsq.e), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
   }
   
   /* Error */

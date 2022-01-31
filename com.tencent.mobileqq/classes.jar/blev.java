@@ -1,144 +1,34 @@
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.config.AppSetting;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
-public class blev
+class blev
+  implements bley
 {
-  private static final List<Pair<String, Integer>> a = new LinkedList();
+  blev(bleu parambleu, bler parambler, String[] paramArrayOfString, Semaphore paramSemaphore) {}
   
-  static
+  public void a(String paramString)
   {
-    a.add(new Pair("AEKIT_CAMERA_FIRST_LAUNCH", Integer.valueOf(0)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetPlayShowCatMatTree", Integer.valueOf(4)));
-  }
-  
-  private blev()
-  {
-    Object localObject = bley.a("key_app_version", "");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
+    QLog.d(bleu.a(), 4, "create pngs for material index = " + this.jdField_a_of_type_Bler.a + " end, pngDir = " + paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
+    String[] arrayOfString = new File(paramString).list();
+    String str = paramString + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      bkok.a(paramString + File.separator + arrayOfString[0], 320, 320, str);
+    }
+    bleu.a(this.jdField_a_of_type_Bleu).c.add(str);
+    bleu.a(this.jdField_a_of_type_Bleu).a.add(paramString);
+    if ((this.jdField_a_of_type_Bler.c != null) && (!this.jdField_a_of_type_Bler.c.equals(""))) {
+      bleu.a(this.jdField_a_of_type_Bleu).b.add(this.jdField_a_of_type_Bler.c);
+    }
+    for (;;)
     {
-      localObject = a.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Pair localPair = (Pair)((Iterator)localObject).next();
-        if (4 == ((Integer)localPair.second).intValue()) {
-          bley.a((String)localPair.first);
-        } else {
-          blex.a((String)localPair.first);
-        }
-      }
-      bley.a("key_app_version", AppSetting.a());
-    }
-  }
-  
-  public static blev a()
-  {
-    return blez.a();
-  }
-  
-  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2) {
-      return bley.a(paramString, paramInt1);
-    }
-    return blex.a(paramString, paramInt1);
-  }
-  
-  public long a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bley.a(paramString, paramLong);
-    }
-    return blex.a(paramString, paramLong);
-  }
-  
-  @NonNull
-  public SharedPreferences a()
-  {
-    return blex.a();
-  }
-  
-  @Nullable
-  public String a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bley.a(paramString1, paramString2);
-    }
-    return blex.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bley.a(paramString);
+      bleu.a(this.jdField_a_of_type_Bleu).d.add(Integer.valueOf(this.jdField_a_of_type_Bler.a));
+      this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
       return;
+      bleu.a(this.jdField_a_of_type_Bleu).b.add(this.jdField_a_of_type_Bler.b);
     }
-    blex.a(paramString);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2)
-    {
-      bley.a(paramString, paramInt1);
-      return;
-    }
-    blex.a(paramString, paramInt1);
-  }
-  
-  public void a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bley.a(paramString, paramLong);
-      return;
-    }
-    blex.a(paramString, paramLong);
-  }
-  
-  public void a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bley.a(paramString1, paramString2);
-      return;
-    }
-    blex.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bley.a(paramString, paramBoolean);
-      return;
-    }
-    blex.a(paramString, paramBoolean);
-  }
-  
-  public boolean a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bley.a(paramString);
-    }
-    return blex.a(paramString);
-  }
-  
-  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bley.a(paramString, paramBoolean);
-    }
-    return blex.a(paramString, paramBoolean);
   }
 }
 

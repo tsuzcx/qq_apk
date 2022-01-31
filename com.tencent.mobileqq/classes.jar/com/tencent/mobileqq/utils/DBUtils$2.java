@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import alxj;
-import bdbx;
+import amby;
+import bdgg;
 import java.util.List;
 
 public class DBUtils$2
   implements Runnable
 {
-  public DBUtils$2(bdbx parambdbx, alxj paramalxj, List paramList) {}
+  public DBUtils$2(bdgg parambdgg, amby paramamby, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alxj.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Amby.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

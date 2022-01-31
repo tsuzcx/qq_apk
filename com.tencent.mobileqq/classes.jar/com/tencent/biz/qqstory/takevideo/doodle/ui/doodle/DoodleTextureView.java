@@ -8,17 +8,17 @@ import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import xby;
-import xcu;
-import xdd;
+import xgh;
+import xhd;
+import xhm;
 
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, xby
+  implements GLSurfaceView.Renderer, xgh
 {
   int jdField_a_of_type_Int = 320;
-  xcu jdField_a_of_type_Xcu;
+  xhd jdField_a_of_type_Xhd;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -38,8 +38,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.c(paramInt);
+    if (this.jdField_a_of_type_Xhd != null) {
+      this.jdField_a_of_type_Xhd.c(paramInt);
     }
   }
   
@@ -63,8 +63,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.e();
+    if (this.jdField_a_of_type_Xhd != null) {
+      this.jdField_a_of_type_Xhd.e();
     }
   }
   
@@ -73,9 +73,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Xcu != null)
+    if (this.jdField_a_of_type_Xhd != null)
     {
-      paramGL10 = (xdd)this.jdField_a_of_type_Xcu.a(102);
+      paramGL10 = (xhm)this.jdField_a_of_type_Xhd.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -84,8 +84,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.d();
+    if (this.jdField_a_of_type_Xhd != null) {
+      this.jdField_a_of_type_Xhd.d();
     }
   }
   
@@ -95,10 +95,10 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(xcu paramxcu)
+  public void setOpController(xhd paramxhd)
   {
-    this.jdField_a_of_type_Xcu = paramxcu;
-    this.jdField_a_of_type_Xcu.a(this);
+    this.jdField_a_of_type_Xhd = paramxhd;
+    this.jdField_a_of_type_Xhd.a(this);
     super.queueEvent(new DoodleTextureView.1(this));
   }
 }

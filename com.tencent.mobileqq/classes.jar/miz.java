@@ -1,7 +1,7 @@
 import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class miz
-  implements acgx
+  implements aclm
 {
   public miz(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   

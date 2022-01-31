@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticon;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ final class EmojiStickerManager$2
     localObject = str + "emojiStickerGuideZip_v2" + ".zip";
     try
     {
-      bdcs.a((String)localObject, str, false);
+      bdhb.a((String)localObject, str, false);
       return;
     }
     catch (IOException localIOException)

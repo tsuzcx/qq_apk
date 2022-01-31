@@ -1,104 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-
 public class awjf
+  extends awjg
+  implements awjs
 {
   public int a;
-  public String a;
+  public awjd a;
+  public awju a;
   public boolean a;
-  public int b = 3;
-  public int c = 1000;
-  public int d = 3600;
-  public int e = 1;
-  public int f = 5;
+  public boolean b = true;
   
   public awjf()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Awju = new awju();
+    this.jdField_a_of_type_Awjd = new awjd();
   }
   
-  private static int a(String paramString, int paramInt)
+  public String a()
   {
-    int i;
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicFowardInfo");
+    if (this.jdField_a_of_type_Awju != null) {}
+    for (String str = this.jdField_a_of_type_Awju.a();; str = "\n |-upInfo=null")
     {
-      i = Integer.parseInt(paramString);
-      if (i < 0) {
-        return paramInt;
-      }
+      localStringBuilder.append(str);
+      localStringBuilder.append(this.jdField_a_of_type_Awjd);
+      return localStringBuilder.toString();
     }
-    catch (Throwable paramString)
-    {
-      return paramInt;
-    }
-    return i;
   }
   
-  public static awjf a()
+  public boolean a()
   {
-    awjf localawjf3 = new awjf();
-    str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.precover.name());
-    localawjf3.jdField_a_of_type_JavaLangString = str;
-    localawjf3.jdField_a_of_type_Boolean = true;
-    awjf localawjf1 = localawjf3;
-    try
+    if (this.jdField_a_of_type_Awju == null)
     {
-      if (!TextUtils.isEmpty(str))
+      a("PicFowardInfo.check", "upInfo == null");
+      return false;
+    }
+    if (((this.jdField_a_of_type_Awju.b == 1000) || (this.jdField_a_of_type_Awju.b == 1020) || (this.jdField_a_of_type_Awju.b == 1004)) && (this.jdField_a_of_type_Awju.d == null))
+    {
+      a("PicFowardInfo.check", "secondId invalid,uinType:" + this.jdField_a_of_type_Awju.b + ",secondId:" + this.jdField_a_of_type_Awju.d);
+      return false;
+    }
+    if (this.jdField_a_of_type_Awju.jdField_g_of_type_Int == -1)
+    {
+      a("PicFowardInfo.check", "protocolType invalid,protocolType:" + this.jdField_a_of_type_Awju.jdField_g_of_type_Int);
+      return false;
+    }
+    if (!bdhb.b(this.jdField_a_of_type_Awju.jdField_g_of_type_JavaLangString))
+    {
+      if (this.jdField_a_of_type_Awjd == null)
       {
-        String[] arrayOfString = str.split("\\|");
-        localawjf1 = localawjf3;
-        if (arrayOfString.length >= 6)
-        {
-          localawjf3.jdField_a_of_type_Boolean = false;
-          localawjf3.jdField_a_of_type_Int = a(arrayOfString[0], 0);
-          localawjf3.b = a(arrayOfString[1], 3);
-          localawjf3.c = a(arrayOfString[2], 1000);
-          localawjf3.d = a(arrayOfString[3], 3600);
-          localawjf3.e = a(arrayOfString[4], 1);
-          localawjf3.f = a(arrayOfString[5], 5);
-          if ((localawjf3.jdField_a_of_type_Int != 0) && (localawjf3.jdField_a_of_type_Int != 1) && (localawjf3.jdField_a_of_type_Int != 2)) {
-            localawjf3.jdField_a_of_type_Int = 0;
-          }
-          localawjf1 = localawjf3;
-          if (localawjf3.e != 0)
-          {
-            localawjf1 = localawjf3;
-            if (localawjf3.e != 1)
-            {
-              localawjf3.e = 1;
-              localawjf1 = localawjf3;
-            }
-          }
-        }
+        a("PicFowardInfo.check", "downInfo == null");
+        return false;
+      }
+      if (!this.jdField_a_of_type_Awjd.a())
+      {
+        this.jdField_a_of_type_Awjh = this.jdField_a_of_type_Awjd.jdField_a_of_type_Awjh;
+        return false;
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("PrecoverControl", 1, "create Exception:" + localException.toString());
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-        awjf localawjf2 = new awjf();
-        localawjf2.jdField_a_of_type_JavaLangString = str;
-        localawjf2.jdField_a_of_type_Boolean = true;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverControl", 2, "PrecoverControl.create, control=" + localawjf1);
-    }
-    return localawjf1;
+    return true;
+  }
+  
+  public awjd getPicDownloadInfo()
+  {
+    return this.jdField_a_of_type_Awjd;
+  }
+  
+  public awju getPicUploadInfo()
+  {
+    return this.jdField_a_of_type_Awju;
+  }
+  
+  public boolean isSendFromLocal()
+  {
+    return this.b;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("PrecoverControl:isUsingDefaultValue=").append(this.jdField_a_of_type_Boolean).append(", network=").append(this.jdField_a_of_type_Int).append(", itemRetry=").append(this.b).append(", totalRetry=").append(this.c).append(", lbsExpire=").append(this.d).append(", open=").append(this.e);
-    return localStringBuilder.toString();
+    return a();
   }
 }
 

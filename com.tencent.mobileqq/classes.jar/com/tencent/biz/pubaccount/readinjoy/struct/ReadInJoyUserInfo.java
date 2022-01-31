@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 
 public class ReadInJoyUserInfo
-  extends awbv
+  extends awge
 {
-  @awdg
+  @awhp
   private static final String TAG = "ReadInJoyUserInfo";
   public int accountLevel;
   public int accountType;
   public int faceFlag;
   public int faceType;
   public String faceUrl;
-  @awdg
+  @awhp
   public int isApproved = -1;
   public String largeIconUrl;
   public String nick;
-  @awdg
+  @awhp
   public boolean requestFlag;
   public String smallIconUrl;
   public int systemID;

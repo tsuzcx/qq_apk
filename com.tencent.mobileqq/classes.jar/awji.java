@@ -1,259 +1,334 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverConfig;
-import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class awji
 {
-  private awjh a;
+  private static SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+  public static final String[] a;
+  public static final String[] b = { "XG预下载配额余量", "XG当前消耗流量", "XG流量总消耗", "XG预下载总数", "XG预下载命中数", "XG预下载未命中数", "XG手动看图数", "XG消耗量余量", "WIFI预下载总数", "WIFI预下载命中数", "WIFI预下载未命中数", "WIFI手动看图数", "XG是否超过上限", alud.a(2131708549) };
+  static String[] c = { "1031637263", "81118728", "354653668", "87587790", "745798311", "362675669", "27801478", "991636135", "249484612", "279242625", "517152365", "349808804", "1053134469", "303137720", "9948938", "165326859", "584781501", "864600712", "410363461", "306392284", "878898475", "34242313", "842714741", "26080655", "1003187685" };
   
-  public awji(awjh paramawjh)
+  static
   {
-    this.a = paramawjh;
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor = jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "xgFlowPre", "xgFlowWaste", "accFlowPreTotal", "xgPreDownCount", "xgHitCount", "xgMissCount", "xgManulClickCount", "xgFlowWasteBalance", "wifiPreDownCout", "wifiHitCount", "wifiMissCount", "wifiManulClickCount" };
   }
   
-  public void a()
+  public static int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverReporter", 2, "reportResourceCover");
+    int j = 3;
+    int k = bdin.a(BaseApplication.getContext());
+    int i;
+    if (k == 1) {
+      i = 0;
     }
-    if (this.a == null) {}
-    Object localObject3;
     do
     {
-      return;
-      localObject3 = this.a.a();
-    } while ((localObject3 == null) || (((HashMap)localObject3).size() == 0));
-    Object localObject2 = new HashSet();
-    Object localObject4 = (String[])((HashMap)localObject3).keySet().toArray(new String[((HashMap)localObject3).keySet().size()]);
-    int i = 0;
-    Object localObject5;
-    label120:
-    Object localObject6;
-    boolean bool1;
-    if (i < localObject4.length)
-    {
-      localObject1 = localObject4[i];
-      localObject5 = (List)((HashMap)localObject3).get(localObject1);
-      if (localObject5 == null) {
-        ((HashSet)localObject2).add(localObject1);
+      do
+      {
+        return i;
+        i = j;
+      } while (k == 2);
+      if (k == 3) {
+        return 2;
       }
+      i = j;
+    } while (k != 4);
+    return 1;
+  }
+  
+  static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return paramInt1 * 8 + paramInt2 * 2 + paramInt3;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    int i;
+    if (paramInt == 1)
+    {
+      i = 1;
+      if ((i == 0) || (paramQQAppInterface == null)) {
+        break label63;
+      }
+    }
+    label63:
+    label69:
+    label75:
+    label80:
+    do
+    {
+      int j;
       for (;;)
       {
-        i += 1;
-        break;
-        localObject5 = ((List)localObject5).iterator();
-        if (((Iterator)localObject5).hasNext())
+        try
         {
-          localObject6 = (PrecoverResource)((Iterator)localObject5).next();
-          bool1 = awjn.a(((PrecoverResource)localObject6).businessId, ((PrecoverResource)localObject6).md5);
-          if (QLog.isColorLevel()) {
-            QLog.d("PrecoverReporter", 2, new Object[] { "reportResourceCover: exist=", Boolean.valueOf(bool1), ", res=", localObject6 });
+          bool = auam.a().a(paramQQAppInterface, paramString);
+          if (paramInt != 3000) {
+            break label69;
           }
-          if (bool1) {
-            break label120;
+          j = 1;
+          if (paramInt != 0) {
+            break label75;
           }
-          ((HashSet)localObject2).add(localObject1);
+          paramInt = 1;
+          if (!bool) {
+            break label80;
+          }
+          return 1;
         }
+        catch (Throwable paramQQAppInterface)
+        {
+          QLog.e(".troop", 1, "PicPreDownloadUtils.calcUinType Error", paramQQAppInterface);
+        }
+        i = 0;
+        break;
+        boolean bool = false;
+        continue;
+        j = 0;
+        continue;
+        paramInt = 0;
       }
+      if (i != 0) {
+        return 0;
+      }
+      if (j != 0) {
+        return 2;
+      }
+    } while (paramInt == 0);
+    return 3;
+  }
+  
+  /* Error */
+  public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: lload_2
+    //   5: lreturn
+    //   6: aload_0
+    //   7: getstatic 186	mqq/manager/ServerConfigManager$ConfigType:common	Lmqq/manager/ServerConfigManager$ConfigType;
+    //   10: aload_1
+    //   11: invokevirtual 191	com/tencent/mobileqq/app/QQAppInterface:a	(Lmqq/manager/ServerConfigManager$ConfigType;Ljava/lang/String;)Ljava/lang/String;
+    //   14: astore_0
+    //   15: aload_0
+    //   16: ifnull +70 -> 86
+    //   19: aload_0
+    //   20: invokestatic 197	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   23: astore_0
+    //   24: aload_0
+    //   25: invokevirtual 201	java/lang/Long:longValue	()J
+    //   28: lstore 4
+    //   30: aload_1
+    //   31: aload_0
+    //   32: invokevirtual 201	java/lang/Long:longValue	()J
+    //   35: invokestatic 204	awji:a	(Ljava/lang/String;J)V
+    //   38: ldc 206
+    //   40: ldc 208
+    //   42: new 210	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 213	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 215
+    //   51: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_1
+    //   55: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 221
+    //   60: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: lload 4
+    //   65: invokevirtual 224	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   68: ldc 226
+    //   70: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: lload_2
+    //   74: invokevirtual 224	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 235	awiw:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   83: lload 4
+    //   85: lreturn
+    //   86: aload_1
+    //   87: lload_2
+    //   88: invokestatic 204	awji:a	(Ljava/lang/String;J)V
+    //   91: lload_2
+    //   92: lstore 4
+    //   94: goto -56 -> 38
+    //   97: astore_0
+    //   98: lload_2
+    //   99: lstore 4
+    //   101: goto -63 -> 38
+    //   104: astore_0
+    //   105: goto -67 -> 38
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	paramQQAppInterface	QQAppInterface
+    //   0	108	1	paramString	String
+    //   0	108	2	paramLong	long
+    //   28	72	4	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   6	15	97	java/lang/Exception
+    //   19	30	97	java/lang/Exception
+    //   86	91	97	java/lang/Exception
+    //   30	38	104	java/lang/Exception
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    return jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, paramLong);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, bayk parambayk)
+  {
+    if (parambayk == null) {}
+    while ((!(parambayk.a instanceof MessageForPic)) || (parambayk.b == 65537)) {
+      return;
     }
-    int j;
-    if (((HashSet)localObject2).size() == 0)
-    {
-      bool1 = true;
-      j = awjn.a(this.a.a().getApp(), this.a.a().getCurrentAccountUin());
-      localObject5 = new HashMap();
-      ((HashMap)localObject5).put("config_version", String.valueOf(j));
-      if (!bool1) {
-        break label372;
-      }
-      localObject1 = "1";
-      label289:
-      ((HashMap)localObject5).put("id_all", localObject1);
-      i = 0;
-      label301:
-      if (i >= localObject4.length) {
-        break label386;
-      }
-      localObject1 = localObject4[i];
-      localObject6 = "id_" + (String)localObject1;
-      if (!((HashSet)localObject2).contains(localObject1)) {
-        break label379;
-      }
-    }
-    label372:
-    label379:
-    for (Object localObject1 = "0";; localObject1 = "1")
-    {
-      ((HashMap)localObject5).put(localObject6, localObject1);
-      i += 1;
-      break label301;
-      bool1 = false;
-      break;
-      localObject1 = "0";
-      break label289;
-    }
-    label386:
-    azmz.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_res_cover", bool1, 0L, 0L, (HashMap)localObject5, "", false);
-    localObject4 = this.a.a();
-    if (bool1)
-    {
-      localObject1 = "1";
-      azmj.b((QQAppInterface)localObject4, "CliOper", "", "", "0X8007134", "0X8007134", 0, 0, String.valueOf(j), (String)localObject1, "id_all", "");
-      localObject3 = ((HashMap)localObject3).keySet().iterator();
-      label471:
-      if (!((Iterator)localObject3).hasNext()) {
-        break label578;
-      }
-      localObject4 = (String)((Iterator)localObject3).next();
-      localObject5 = this.a.a();
-      if (!((HashSet)localObject2).contains(localObject4)) {
-        break label571;
-      }
-    }
-    label571:
-    for (localObject1 = "0";; localObject1 = "1")
-    {
-      azmj.b((QQAppInterface)localObject5, "CliOper", "", "", "0X8007134", "0X8007134", 0, 0, String.valueOf(j), (String)localObject1, "id_" + (String)localObject4, "");
-      break label471;
-      localObject1 = "0";
-      break;
+    MessageForPic localMessageForPic = (MessageForPic)parambayk.a;
+    awiw.a("PIC_TAG_PRELOAD", "updateDownState", "Before update, networkType:" + localMessageForPic.preDownNetworkType + ",state:" + localMessageForPic.preDownState + ",uniseq:" + localMessageForPic.uniseq);
+    if (parambayk.g == 1) {
+      localMessageForPic.preDownState = 1;
     }
     for (;;)
     {
-      try
+      awiw.a("PIC_TAG_PRELOAD", "updateDownState", "After update, networkType:" + localMessageForPic.preDownNetworkType + ",state:" + localMessageForPic.preDownState + ",uniseq:" + localMessageForPic.uniseq);
+      a(paramQQAppInterface, localMessageForPic);
+      return;
+      if (parambayk.g == 3) {
+        localMessageForPic.preDownState = 4;
+      } else if ((localMessageForPic.preDownState != 1) && (localMessageForPic.preDownState != 4)) {
+        localMessageForPic.preDownState = 0;
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    Object localObject;
+    label193:
+    do
+    {
+      do
       {
-        label578:
-        localObject1 = (apgj)this.a.a().getManager(77);
-        if (localObject1 == null) {
-          break;
-        }
-        localObject1 = (aphd)((apgj)localObject1).a("qq.android.early.precover");
-        if (localObject1 == null) {
-          break;
-        }
-        bool1 = ((aphd)localObject1).i();
-        boolean bool2 = ((aphd)localObject1).j();
-        localObject2 = new HashMap();
-        if (!bool1) {
-          break label762;
-        }
-        localObject1 = "1";
-        ((HashMap)localObject2).put("storage_exist", localObject1);
-        if (!bool2) {
-          break label781;
-        }
-        localObject1 = "1";
-        ((HashMap)localObject2).put("backup_exist", localObject1);
-        if ((!bool1) || (!bool2)) {
-          break label769;
-        }
-        localObject1 = "1";
-        ((HashMap)localObject2).put("all_exist", localObject1);
-        localObject1 = azmz.a(BaseApplicationImpl.getContext());
-        localObject3 = this.a.a().getCurrentAccountUin();
-        if ((!bool1) || (!bool2)) {
-          break label776;
-        }
-        bool1 = true;
-        ((azmz)localObject1).a((String)localObject3, "precover_handler", bool1, 0L, 0L, (HashMap)localObject2, "", false);
+        azwy localazwy;
+        do
+        {
+          do
+          {
+            return;
+            awiw.a("PIC_TAG_PRELOAD", "updateMsg", "uniseq:" + paramMessageForPic.uniseq + ",network:" + paramMessageForPic.preDownNetworkType + "state:" + paramMessageForPic.preDownState);
+            paramMessageForPic.serial();
+            localObject = paramQQAppInterface.a().b(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq);
+            if (paramMessageForPic.subMsgId != MessageForPic.defaultSuMsgId) {
+              break label193;
+            }
+            if (!(localObject instanceof MessageForStructing)) {
+              break;
+            }
+            localObject = (MessageForStructing)localObject;
+          } while (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare));
+          localazwy = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
+        } while (localazwy == null);
+        localazwy.a = paramMessageForPic;
+        paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, ((MessageForStructing)localObject).structingMsg.getBytes());
         return;
-      }
-      catch (Throwable localThrowable) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      localThrowable.printStackTrace();
-      return;
-      label762:
-      String str = "0";
-      continue;
-      label769:
-      str = "0";
-      continue;
-      label776:
-      bool1 = false;
-      continue;
-      label781:
-      str = "0";
-    }
+        paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, paramMessageForPic.msgData);
+        return;
+      } while (!(localObject instanceof MessageForMixedMsg));
+      localObject = ((MessageForMixedMsg)localObject).upateMessageForPic(paramMessageForPic);
+    } while (localObject == null);
+    paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, (byte[])localObject);
   }
   
-  public void a(PrecoverResource paramPrecoverResource, int paramInt, String paramString1, String paramString2, long paramLong)
+  public static void a(String paramString) {}
+  
+  @TargetApi(9)
+  public static void a(String paramString, long paramLong)
   {
-    if (paramPrecoverResource == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverReporter", 2, "reportDownloadResult, res == null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverReporter", 2, new Object[] { "reportDownloadResult, res=", paramPrecoverResource, ", errCode=", Integer.valueOf(paramInt), ", errDesc=", paramString1, ", keyReason=", paramString2, ", size=", Long.valueOf(paramLong) });
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put("url", awjn.b(paramPrecoverResource.url));
-    localHashMap.put("md5", paramPrecoverResource.md5);
-    localHashMap.put("err_desc", paramString1);
-    localHashMap.put("business_id", "id_" + paramPrecoverResource.businessId);
-    localHashMap.put("netresp_param_reason", paramString2);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        localHashMap.put("file_size", String.format("%.3f", new Object[] { Float.valueOf((float)paramLong * 1.0F / 1048576.0F) }));
-      }
-      azmz.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_download_result", bool, 0L, paramLong, localHashMap, "", false);
-      return;
-    }
+    a(paramString, paramLong, true);
   }
   
-  public void a(boolean paramBoolean)
+  @TargetApi(9)
+  public static void a(String paramString, long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverReporter", 2, "reportConfigCover");
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramString, paramLong);
+    if (paramBoolean)
+    {
+      if (Build.VERSION.SDK_INT >= 9) {
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      }
     }
-    if (this.a == null) {}
+    else {
+      return;
+    }
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.a(ServerConfigManager.ConfigType.common, "enablePeakFlow");
+    if (paramQQAppInterface == null) {
+      return paramBoolean;
+    }
+    return paramQQAppInterface.equals("1");
+  }
+  
+  public static long[] a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a(ServerConfigManager.ConfigType.common, "PeakFlowTimePeriod");
+    if (paramQQAppInterface == null)
+    {
+      paramQQAppInterface = new long[0];
+      return paramQQAppInterface;
+    }
+    String[] arrayOfString = paramQQAppInterface.split(";");
+    if (arrayOfString == null) {
+      return new long[0];
+    }
+    long[] arrayOfLong = new long[arrayOfString.length * 2];
+    int k = arrayOfString.length;
+    int i = 0;
+    int j = 0;
     for (;;)
     {
-      return;
-      int i = awjn.a(this.a.a().getApp(), this.a.a().getCurrentAccountUin());
-      Object localObject2 = this.a.a(null, null, PrecoverConfig.class);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("config_version", String.valueOf(i));
-      if ((localObject2 != null) && (((List)localObject2).size() > 0)) {}
-      for (Object localObject1 = "1";; localObject1 = "0")
-      {
-        localHashMap.put("id_all", localObject1);
-        if (localObject2 == null) {
-          break;
-        }
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          PrecoverConfig localPrecoverConfig = (PrecoverConfig)((Iterator)localObject1).next();
-          localHashMap.put("id_" + localPrecoverConfig.businessId, "1");
-        }
+      paramQQAppInterface = arrayOfLong;
+      if (i >= k) {
+        break;
       }
-      azmz.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_config_cover", paramBoolean, 0L, 0L, localHashMap, "", false);
-      azmj.b(this.a.a(), "CliOper", "", "", "0X8007133 ", "0X8007133 ", 0, 0, String.valueOf(i), "", "id_all", "");
-      if (localObject2 != null)
-      {
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (PrecoverConfig)((Iterator)localObject1).next();
-          azmj.b(this.a.a(), "CliOper", "", "", "0X8007133 ", "0X8007133 ", 0, 0, String.valueOf(i), "", "id_" + ((PrecoverConfig)localObject2).businessId, "");
-        }
+      paramQQAppInterface = arrayOfString[i].split("-");
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.length != 2)) {
+        return new long[0];
       }
+      arrayOfLong[j] = Long.valueOf(paramQQAppInterface[0]).longValue();
+      arrayOfLong[(j + 1)] = Long.valueOf(paramQQAppInterface[1]).longValue();
+      j += 2;
+      i += 1;
     }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    while (paramMessageForPic.preDownState != 0) {
+      return;
+    }
+    paramMessageForPic.preDownState = 1;
+    paramMessageForPic.preDownNetworkType = a();
+    awiw.a("PIC_TAG_PRELOAD", "updateDownState4SD", "networkType:" + paramMessageForPic.preDownNetworkType + ",state:" + paramMessageForPic.preDownState + ",uniseq:" + paramMessageForPic.uniseq);
+    a(paramQQAppInterface, paramMessageForPic);
   }
 }
 

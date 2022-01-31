@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.director;
 
-import azjg;
+import aznp;
 import mqq.app.AppActivity;
 
 public class StartupDirector$5
   implements Runnable
 {
-  public StartupDirector$5(azjg paramazjg, AppActivity paramAppActivity) {}
+  public StartupDirector$5(aznp paramaznp, AppActivity paramAppActivity) {}
   
   public void run()
   {

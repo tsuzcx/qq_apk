@@ -55,12 +55,12 @@ public class mjc
   
   public void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131372762));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372597));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372596));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372627));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372620));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131372625));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131372788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372623));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372622));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372653));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372646));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131372651));
   }
 }
 

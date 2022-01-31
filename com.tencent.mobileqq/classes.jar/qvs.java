@@ -11,7 +11,7 @@ class qvs
   public void onClick(View paramView)
   {
     GroupManagerActivity.a((Activity)this.a.a);
-    azmj.b(qvp.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    azqs.b(qvp.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 

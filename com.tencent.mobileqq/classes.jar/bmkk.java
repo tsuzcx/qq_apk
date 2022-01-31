@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-class bmkk
-  implements DialogInterface.OnClickListener
+public final class bmkk
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  bmkk(bmki parambmki) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new EditTakeGifSource(paramParcel);
+  }
+  
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
   }
 }
 

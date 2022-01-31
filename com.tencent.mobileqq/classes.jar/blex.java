@@ -1,72 +1,83 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.graphics.PointF;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.PngsCreator.1;
+import dov.com.qq.im.ae.gif.video.PngsCreator.2;
+import dov.com.qq.im.ae.gif.video.PngsCreator.3;
+import dov.com.qq.im.ae.gif.video.PngsCreator.4;
+import dov.com.qq.im.ae.gif.video.PngsCreator.5;
+import java.io.File;
+import java.util.List;
 
-class blex
+public class blex
 {
-  private static final SharedPreferences a = ;
+  private static String jdField_a_of_type_JavaLangString = blex.class.getSimpleName();
+  private double jdField_a_of_type_Double = 1.0D;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private blbx jdField_a_of_type_Blbx = new blbx();
+  private bley jdField_a_of_type_Bley;
+  private blfc jdField_a_of_type_Blfc;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private List<List<List<PointF>>> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private List<List<float[]>> jdField_b_of_type_JavaUtilList;
   
-  static int a(@NonNull String paramString, int paramInt)
+  public blex(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble)
   {
-    return a.getInt(paramString, paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_b_of_type_JavaUtilList = paramList1;
+    this.jdField_a_of_type_Double = paramDouble;
+    paramList = new HandlerThread("PngCreatorHT");
+    paramList.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
   }
   
-  static long a(@NonNull String paramString, long paramLong)
+  public void a()
   {
-    return a.getLong(paramString, paramLong);
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
   }
   
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
+  public void a(bley parambley)
   {
-    return a.getString(paramString1, paramString2);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = (bkpc.jdField_b_of_type_JavaLangString + File.separator + System.currentTimeMillis());
+    try
+    {
+      new File(this.jdField_b_of_type_JavaLangString).mkdirs();
+      QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.jdField_b_of_type_JavaLangString });
+      this.jdField_a_of_type_Bley = parambley;
+      this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  static void a(@NonNull String paramString)
+  public void a(String paramString)
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
   }
   
-  static void a(@NonNull String paramString, int paramInt)
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
 }
 

@@ -1,27 +1,10 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
+import android.os.IInterface;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class bisc
-  implements ServiceConnection
+public abstract interface bisc
+  extends IInterface
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    this.a.jdField_a_of_type_Biry = birz.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Biry != null)
-    {
-      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_Biry = null;
-    this.a.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
-import astc;
+import asxl;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class IdentificationActivityHelper$2
   implements Runnable
 {
-  public IdentificationActivityHelper$2(astc paramastc) {}
+  public IdentificationActivityHelper$2(asxl paramasxl) {}
   
   public void run()
   {
     QLog.d("qq_Identification.Helper", 1, "download res fail");
-    astc.a(this.this$0).a(false, 214);
+    asxl.a(this.this$0).a(false, 214);
   }
 }
 

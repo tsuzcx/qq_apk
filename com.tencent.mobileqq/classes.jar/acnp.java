@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class acnp
-  extends uhn
+  implements arrh
 {
-  public acnp(Conversation paramConversation) {}
+  public acnp(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqsb paramaqsb) {}
   
-  public void d(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
+    arri.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692914));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      wsv.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
-      this.a.a(1055, 0L, false);
-      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bdhb.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
     }
-    Conversation.a(this.a, false);
   }
+  
+  public void b() {}
 }
 
 

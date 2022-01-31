@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-
-public class augi
-  implements auif
+public abstract interface augi
 {
-  public augi(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract void a(int paramInt, augu paramaugu, Object paramObject);
   
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a, true);
-  }
+  public abstract void a(augu paramaugu, Object paramObject);
 }
 
 

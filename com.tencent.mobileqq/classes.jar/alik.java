@@ -1,30 +1,57 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
 
 public class alik
-  implements alit
 {
-  public alik(ApolloPanel paramApolloPanel) {}
+  public int a;
+  public long a;
+  public alij a;
+  public Map<Integer, Long> a;
+  public BlockingQueue<alih> a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  public alik(int paramInt)
   {
-    ApolloPanel.e(this.a);
-    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
-    {
-      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
-      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690163), 5);
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
+  public String toString()
   {
-    ApolloPanel.e(this.a);
-    paramApolloPanelGuideView = (bdpx)this.a.a.a.a(71);
-    paramApolloPanelGuideView.a(new alil(this, paramApolloPanelGuideView));
-    paramApolloPanelGuideView.c("guide_page", 1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Alij);
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      localStringBuilder.append(",extra:[");
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel()) {
+          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
+        } else {
+          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
+        }
+      }
+      localStringBuilder.append("]");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    {
+      localStringBuilder.append(",anno:[");
+      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((alih)localIterator.next()).toString());
+      }
+      localStringBuilder.append("]");
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,10 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegq
-  extends Handler
+  implements View.OnClickListener
 {
-  public aegq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public aegq(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

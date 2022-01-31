@@ -137,13 +137,13 @@ public class rwj
         localObject2 = paramKandianMsgBoxRedPntInfo.mCardSummary;
         Object localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694553);
+          localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694555);
         }
-        localJSONObject.put("msgbox_redpoint_content", new baig(ayvy.b((String)localObject1), 7, 17));
+        localJSONObject.put("msgbox_redpoint_content", new bamp(azah.b((String)localObject1), 7, 17));
         if (!TextUtils.isEmpty(paramKandianMsgBoxRedPntInfo.mArticlePicUrl)) {
           localJSONObject.put("msgbox_redpoint_image", paramKandianMsgBoxRedPntInfo.mArticlePicUrl);
         }
-        localJSONObject.put("msgbox_redpoint_count", String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694554), new Object[] { bjxj.b(paramKandianMsgBoxRedPntInfo.mMsgCnt) }));
+        localJSONObject.put("msgbox_redpoint_count", String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694556), new Object[] { bkbq.b(paramKandianMsgBoxRedPntInfo.mMsgCnt) }));
         localJSONObject.put("style_ID", "ReadInjoy_msgbox_cell");
         localJSONObject.put("message_type", paramKandianMsgBoxRedPntInfo.messageType);
         localJSONObject.put("feedsid", paramKandianMsgBoxRedPntInfo.feedsID);

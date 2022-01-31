@@ -1,17 +1,26 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
-class ahtd
-  implements View.OnClickListener
+public class ahtd
+  extends zto
 {
-  ahtd(ahta paramahta, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ahtd(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahta, 2);
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_Ahsy != null) {
+        this.a.jdField_a_of_type_Ahsy.a(this.a.b(), true, null);
+      }
     }
+    if (this.a.jdField_a_of_type_Ahrp == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Ahrp.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_Ahrp.notifyDataSetChanged();
   }
 }
 

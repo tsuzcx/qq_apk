@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abol;
-import aljq;
-import alpo;
+import abta;
+import alof;
+import alud;
 import android.content.Context;
 import android.text.TextUtils;
-import aoev;
-import bdbt;
-import bdec;
+import aoje;
+import bdgc;
+import bdil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -52,10 +52,10 @@ public class RecentItemConfessMsg
     do
     {
       return;
-      if ((this.mType == 1032) && (TextUtils.equals(this.mUin, aljq.aO)))
+      if ((this.mType == 1032) && (TextUtils.equals(this.mUin, alof.aO)))
       {
         localObject2 = a();
-        str = bdbt.b(paramQQAppInterface, this.mMsg.senderuin, true);
+        str = bdgc.b(paramQQAppInterface, this.mMsg.senderuin, true);
         localObject1 = str;
         if (TextUtils.equals(str, this.mMsg.senderuin))
         {
@@ -64,8 +64,8 @@ public class RecentItemConfessMsg
             localObject1 = this.mMsg.msg2;
           }
         }
-        ((MsgSummary)localObject2).strContent = String.format(alpo.a(2131713552), new Object[] { localObject1, this.mMsg.msg });
-        this.mTitleName = alpo.a(2131713546);
+        ((MsgSummary)localObject2).strContent = String.format(alud.a(2131713564), new Object[] { localObject1, this.mMsg.msg });
+        this.mTitleName = alud.a(2131713558);
         this.mDisplayTime = this.mMsg.time;
         this.mUnreadNum = this.mMsg.longMsgCount;
         this.mUnreadFlag = 3;
@@ -78,7 +78,7 @@ public class RecentItemConfessMsg
     String str = "";
     if (this.mType == 1033)
     {
-      localObject2 = bdbt.b(paramQQAppInterface, this.mUin, true);
+      localObject2 = bdgc.b(paramQQAppInterface, this.mUin, true);
       if (TextUtils.isEmpty(this.mConfessInfo.topic))
       {
         this.mTitleName = ((String)localObject2);
@@ -92,7 +92,7 @@ public class RecentItemConfessMsg
       this.mDisplayTime = this.msg.time;
       this.mMenuFlag = 1;
       this.mStatus = 0;
-      bdec.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
+      bdil.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
       localMsgSummary.bShowDraft = false;
       a(paramQQAppInterface, paramContext, localMsgSummary);
       d();
@@ -102,7 +102,7 @@ public class RecentItemConfessMsg
       {
         localObject1 = localObject2;
         if (((String)localObject2).length() > 7) {
-          localObject1 = aoev.a((String)localObject2, 7.0F);
+          localObject1 = aoje.a((String)localObject2, 7.0F);
         }
       }
       this.mTitleName = String.format(Locale.getDefault(), "%s—%s", new Object[] { localObject1, this.mConfessInfo.topic });
@@ -117,13 +117,13 @@ public class RecentItemConfessMsg
           str = paramQQAppInterface.getCurrentNickname();
           localObject1 = str;
           if (str.length() > 7) {
-            localObject1 = aoev.a(str, 7.0F);
+            localObject1 = aoje.a(str, 7.0F);
           }
         }
       }
       else
       {
-        this.mTitleName = bdbt.b(paramQQAppInterface, this.mUin, true);
+        this.mTitleName = bdgc.b(paramQQAppInterface, this.mUin, true);
         localObject1 = str;
       }
     }
@@ -139,9 +139,9 @@ public class RecentItemConfessMsg
       this.mType = 0;
       return;
     }
-    if ((this.mMsg.istroop == 1032) && (TextUtils.equals(this.mMsg.frienduin, aljq.aO)))
+    if ((this.mMsg.istroop == 1032) && (TextUtils.equals(this.mMsg.frienduin, alof.aO)))
     {
-      this.mUin = aljq.aO;
+      this.mUin = alof.aO;
       this.mType = 1032;
       return;
     }

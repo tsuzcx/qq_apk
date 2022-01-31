@@ -1,67 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aooe
-  extends aofy<aood>
 {
-  public int a()
+  public String a = "";
+  
+  public aooe() {}
+  
+  public aooe(String paramString)
   {
-    return 361;
+    this.a = paramString;
   }
   
-  @NonNull
-  public aood a(int paramInt)
+  public static aooe a(String paramString)
   {
-    return new aood();
-  }
-  
-  @Nullable
-  public aood a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    try
     {
-      aood localaood = aood.a(paramArrayOfaogf[0].a);
+      paramString = new JSONObject(paramString).optString("ShowLocaleEntrance");
       if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+        QLog.e("LocaleConfProcessor", 2, "manager parse, showEntrance: " + paramString);
       }
-      return localaood;
+      paramString = new aooe(paramString.trim());
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
-  }
-  
-  public Class<aood> a()
-  {
-    return aood.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aood paramaood)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaood.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

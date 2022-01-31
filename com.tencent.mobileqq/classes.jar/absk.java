@@ -1,34 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import java.util.LinkedHashSet;
 
-public class absk
+class absk
 {
-  public static absj a(Class<? extends absj> paramClass, absi paramabsi)
-  {
-    if (paramClass == abtj.class) {
-      paramClass = new abtj();
-    }
-    for (;;)
-    {
-      if (paramClass != null) {
-        paramClass.a(paramabsi);
-      }
-      return paramClass;
-      if (paramClass == abtp.class) {
-        paramClass = new abtp();
-      } else {
-        try
-        {
-          absj localabsj = (absj)paramClass.newInstance();
-          paramClass = localabsj;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
-          paramClass = null;
-        }
-      }
-    }
-  }
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 9223372036854775807L;
+  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
+  boolean jdField_a_of_type_Boolean = false;
+  long jdField_b_of_type_Long = 0L;
+  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  boolean jdField_b_of_type_Boolean = true;
 }
 
 

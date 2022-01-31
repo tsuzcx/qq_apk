@@ -10,7 +10,7 @@ public class rpb
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718992);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719004);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(0);
     int i = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
     CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
@@ -25,13 +25,13 @@ public class rpb
     if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
       CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718868);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718880);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719034);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719046);
   }
   
   public void c()

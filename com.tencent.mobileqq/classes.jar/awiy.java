@@ -1,41 +1,34 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class awiy
+final class awiy
+  implements bbce
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public int c;
-  public Bitmap c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
+  awiy(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
   
-  public awiy() {}
-  
-  public awiy(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
+  public void a(bbax parambbax, bbbm parambbbm)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_e_of_type_JavaLangString = paramString1;
-    this.jdField_f_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_f_of_type_Int = paramInt5;
+    int j = 0;
+    if (j < parambbbm.a.size())
+    {
+      parambbax = (bbbz)parambbbm.a.get(j);
+      int i = -1;
+      if ((parambbax instanceof bbbr)) {
+        i = ((bbbr)parambbax).c;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + parambbax.toString());
+        }
+        j += 1;
+        break;
+        if ((parambbax instanceof bbbo)) {
+          i = ((bbbo)parambbax).c;
+        }
+      }
+    }
   }
 }
 

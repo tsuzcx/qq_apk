@@ -1,51 +1,58 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
+import java.util.List;
 
-class avip
-  extends Handler
+public class avip
+  extends BaseAdapter
 {
-  avip(avhw paramavhw) {}
+  public avip(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    switch (paramMessage.what)
-    {
+    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
-    do
+    return StartLiveTopicLabelListView.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699676);
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
-        return;
-      } while ((this.a.jdField_a_of_type_Avlm == null) || (avhw.a(this.a) == null));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699239);
+      paramViewGroup = new avis(this.a, null);
+      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
+      if (!alud.a(2131714741).equals(paramViewGroup.a)) {
+        break label133;
       }
-      this.a.jdField_a_of_type_Avlm.a(avhw.a(this.a).uRoomid);
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, avhw.a(this.a).uin, "", "yes", "android");
-      return;
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131699673, 0).a();
-      return;
-    } while (this.a.jdField_a_of_type_Avlm == null);
-    this.a.jdField_a_of_type_Avlm.a();
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new aviq(this));
+      ((TopicViewItem)paramView).setText(paramViewGroup.a);
+      return paramView;
+      paramViewGroup = (avis)paramView.getTag();
+      break;
+      label133:
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
+    }
   }
 }
 

@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.text.Spannable;
+import java.util.Comparator;
 
-public class bcir
+final class bcir
+  implements Comparator<bciq>
 {
-  public int a;
-  public long a;
-  public ByteStringMicro a;
-  public List<bbnr> a;
-  public Map<String, bbnr> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d = 0;
+  bcir(Spannable paramSpannable) {}
   
-  public bcir(bcil parambcil, long paramLong)
+  public int a(bciq parambciq1, bciq parambciq2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    if (paramLong == 0L) {
-      this.c = 0;
+    int i = 0;
+    int j = this.a.getSpanStart(parambciq1);
+    int k = this.a.getSpanStart(parambciq2);
+    if (j < k) {
+      i = -1;
     }
-    for (;;)
-    {
-      this.c = i;
-      return;
-      i = 3;
+    while (j <= k) {
+      return i;
     }
+    return 1;
   }
 }
 

@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.Comparator;
 
-class aidk
-  implements View.OnTouchListener
+public class aidk
+  implements Comparator<aidf>
 {
-  aidk(aidj paramaidj) {}
+  public aidk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(aidf paramaidf1, aidf paramaidf2)
   {
-    aidj.a(this.a, paramView);
-    return false;
+    return paramaidf1.f.compareToIgnoreCase(paramaidf2.f);
   }
 }
 

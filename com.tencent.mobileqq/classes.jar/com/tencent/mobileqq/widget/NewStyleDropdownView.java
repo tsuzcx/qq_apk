@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -24,10 +24,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bemv;
-import bemw;
-import bemx;
-import bemy;
+import bere;
+import berf;
+import berg;
+import berh;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AlphaClickableImageView;
@@ -44,8 +44,8 @@ public class NewStyleDropdownView
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private final RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-  public bemx a;
-  public bemy a;
+  public berg a;
+  public berh a;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public boolean a;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -56,7 +56,7 @@ public class NewStyleDropdownView
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bemx = new bemx(this, paramContext);
+    this.jdField_a_of_type_Berg = new berg(this, paramContext);
     a(paramContext);
   }
   
@@ -64,7 +64,7 @@ public class NewStyleDropdownView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bemx = new bemx(this, paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Berg = new berg(this, paramContext, paramAttributeSet);
     a(paramContext);
   }
   
@@ -73,7 +73,7 @@ public class NewStyleDropdownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bemx = new bemx(this, paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Berg = new berg(this, paramContext, paramAttributeSet, paramInt);
     a(paramContext);
   }
   
@@ -82,65 +82,65 @@ public class NewStyleDropdownView
     if (Build.VERSION.SDK_INT >= 26) {}
     try
     {
-      View.class.getMethod("setImportantForAutofill", new Class[] { Integer.TYPE }).invoke(this.jdField_a_of_type_Bemx, new Object[] { Integer.valueOf(8) });
-      this.jdField_a_of_type_Bemx.setHintTextColor(getResources().getColor(2131165738));
-      this.jdField_a_of_type_Bemx.setHighlightColor(Color.parseColor("#8000CAFC"));
+      View.class.getMethod("setImportantForAutofill", new Class[] { Integer.TYPE }).invoke(this.jdField_a_of_type_Berg, new Object[] { Integer.valueOf(8) });
+      this.jdField_a_of_type_Berg.setHintTextColor(getResources().getColor(2131165738));
+      this.jdField_a_of_type_Berg.setHighlightColor(Color.parseColor("#8000CAFC"));
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)paramContext.getSystemService("input_method"));
       this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
       setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       setPadding(0, 0, 0, 0);
       Object localObject = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      addView(this.jdField_a_of_type_Bemx, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_Bemx.setDropDownVerticalOffset(aekt.a(12.0F, getResources()));
-      this.jdField_a_of_type_Bemx.setDropDownHeight(aekt.a(251.5F, getResources()));
-      this.jdField_a_of_type_Bemx.setPadding(aekt.a(63.0F, getResources()), 0, aekt.a(63.0F, getResources()), 0);
-      this.jdField_a_of_type_Bemx.setGravity(17);
-      this.jdField_a_of_type_Bemx.setDropDownBackgroundResource(2130844905);
-      localObject = new SpannableString(alpo.a(2131707945));
+      addView(this.jdField_a_of_type_Berg, (ViewGroup.LayoutParams)localObject);
+      this.jdField_a_of_type_Berg.setDropDownVerticalOffset(aepi.a(12.0F, getResources()));
+      this.jdField_a_of_type_Berg.setDropDownHeight(aepi.a(251.5F, getResources()));
+      this.jdField_a_of_type_Berg.setPadding(aepi.a(63.0F, getResources()), 0, aepi.a(63.0F, getResources()), 0);
+      this.jdField_a_of_type_Berg.setGravity(17);
+      this.jdField_a_of_type_Berg.setDropDownBackgroundResource(2130844977);
+      localObject = new SpannableString(alud.a(2131707957));
       ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(17, true), 0, ((SpannableString)localObject).length(), 33);
-      this.jdField_a_of_type_Bemx.setHint((CharSequence)localObject);
+      this.jdField_a_of_type_Berg.setHint((CharSequence)localObject);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(aekt.a(10.0F, getResources()), 0, 0, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(aepi.a(10.0F, getResources()), 0, 0, 0);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject);
       this.c = new ImageView(paramContext);
-      int i = aekt.a(40.0F, getResources()) + 4;
+      int i = aepi.a(40.0F, getResources()) + 4;
       localObject = new FrameLayout.LayoutParams(i, i);
       this.c.setScaleType(ImageView.ScaleType.FIT_CENTER);
       ((FrameLayout.LayoutParams)localObject).gravity = 17;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new bemv(this));
+      this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new bere(this));
       localObject = new FrameLayout.LayoutParams(i - 4, i - 4);
       this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       ((FrameLayout.LayoutParams)localObject).gravity = 17;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844231);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844303);
       this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131707946));
+      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131707958));
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, aekt.a(40.0F, getResources()), 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, aepi.a(40.0F, getResources()), 0);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView = new AlphaClickableImageView(paramContext);
       this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131707944));
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840394);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840395);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131707956));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840395);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840396);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
       paramContext = new RelativeLayout.LayoutParams(-2, -2);
-      paramContext.setMargins(0, 0, aekt.a(15.0F, getResources()), 0);
+      paramContext.setMargins(0, 0, aepi.a(15.0F, getResources()), 0);
       paramContext.addRule(15);
       paramContext.addRule(11, -1);
       addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bemw(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new berf(this));
     }
     catch (Exception localException)
     {
@@ -148,9 +148,9 @@ public class NewStyleDropdownView
       {
         try
         {
-          paramContext = this.jdField_a_of_type_Bemx.getClass().getSuperclass().getDeclaredField("mPopup");
+          paramContext = this.jdField_a_of_type_Berg.getClass().getSuperclass().getDeclaredField("mPopup");
           paramContext.setAccessible(true);
-          paramContext = paramContext.get(this.jdField_a_of_type_Bemx);
+          paramContext = paramContext.get(this.jdField_a_of_type_Berg);
           paramContext.getClass().getMethod("setOnDismissListener", new Class[] { PopupWindow.OnDismissListener.class }).invoke(paramContext, new Object[] { this });
           return;
         }
@@ -163,7 +163,7 @@ public class NewStyleDropdownView
   
   public AutoCompleteTextView a()
   {
-    return this.jdField_a_of_type_Bemx;
+    return this.jdField_a_of_type_Berg;
   }
   
   public ImageView a()
@@ -173,8 +173,8 @@ public class NewStyleDropdownView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bemx != null) {
-      this.jdField_a_of_type_Bemx.showDropDown();
+    if (this.jdField_a_of_type_Berg != null) {
+      this.jdField_a_of_type_Berg.showDropDown();
     }
   }
   
@@ -195,7 +195,7 @@ public class NewStyleDropdownView
         this.c.setVisibility(4);
         return;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840391);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840392);
       this.c.setVisibility(0);
       return;
     }
@@ -213,8 +213,8 @@ public class NewStyleDropdownView
       QLog.d("NewStyleDropdownView", 2, "onDismiss set icon down");
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Bemy != null) {
-      this.jdField_a_of_type_Bemy.c();
+    if (this.jdField_a_of_type_Berh != null) {
+      this.jdField_a_of_type_Berh.c();
     }
     this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new NewStyleDropdownView.3(this), 500L);
   }

@@ -1,11 +1,18 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public abstract interface ajre
+public class ajre
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  public ajre(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    wxj.a("video_shoot", "down_now", 0, 0, new String[0]);
+    atdh.b(null);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

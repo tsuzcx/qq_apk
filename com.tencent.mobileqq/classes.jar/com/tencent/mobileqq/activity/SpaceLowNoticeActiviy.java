@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aduo;
-import adup;
-import aduq;
+import adzd;
+import adze;
+import adzf;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +10,8 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ import mqq.manager.ServerConfigManager.ConfigType;
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private bdfq a;
+  private bdjz a;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -63,15 +63,15 @@ public class SpaceLowNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559399);
+    super.setContentView(2131559398);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bdcd.a(this, 230);
-    this.a.setContentView(2131558920);
-    this.a.setTitle(getString(2131699233)).setMessage(getString(2131699234)).setPositiveButton(2131699765, new adup(this)).setNegativeButton(2131690648, new aduo(this));
-    this.a.setOnKeyListener(new aduq(this));
+    this.a = bdgm.a(this, 230);
+    this.a.setContentView(2131558919);
+    this.a.setTitle(getString(2131699245)).setMessage(getString(2131699246)).setPositiveButton(2131699777, new adze(this)).setNegativeButton(2131690648, new adzd(this));
+    this.a.setOnKeyListener(new adzf(this));
     this.a.show();
     return false;
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.director;
 
-import alus;
+import alzh;
 import com.tencent.qphone.base.util.QLog;
 
 public final class StartupDirector$4
@@ -8,7 +8,7 @@ public final class StartupDirector$4
 {
   public void run()
   {
-    long l2 = alus.a("-1");
+    long l2 = alzh.a("-1");
     long l4 = System.currentTimeMillis();
     long l1 = l2;
     try
@@ -16,7 +16,7 @@ public final class StartupDirector$4
       for (;;)
       {
         Thread.sleep(2000L);
-        long l3 = alus.a("-1");
+        long l3 = alzh.a("-1");
         QLog.d("Perf", 1, new Object[] { "ProcCpu,proc;", Long.valueOf(System.currentTimeMillis() - l4), ";cost cpu;", Long.valueOf(l3 - l2), ";", Long.valueOf(l3 - l1) });
         l1 = l3;
       }

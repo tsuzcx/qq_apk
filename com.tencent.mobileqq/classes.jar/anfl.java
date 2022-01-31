@@ -1,7 +1,51 @@
-public abstract interface anfl
-  extends anfm
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+
+public abstract class anfl
+  implements anfw
 {
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
+  
+  public anfl()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
+  }
 }
 
 

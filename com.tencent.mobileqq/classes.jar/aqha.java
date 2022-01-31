@@ -1,35 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
 
-public class aqha
+final class aqha
   implements View.OnClickListener
 {
-  public aqha(FMLocalFileActivity paramFMLocalFileActivity) {}
+  aqha(DialogFromBottom paramDialogFromBottom) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
-      }
-    }
-    do
+    if (this.a.isShowing())
     {
-      return;
-      this.a.e();
-      paramView = (aqxm)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-    paramView.putBoolean("last_select_All", true);
-    paramView.commit();
-    FMLocalFileActivity.a(this.a, i);
+      this.a.dismiss();
+      azqs.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 2, 0, "", "", "", "");
+    }
   }
 }
 

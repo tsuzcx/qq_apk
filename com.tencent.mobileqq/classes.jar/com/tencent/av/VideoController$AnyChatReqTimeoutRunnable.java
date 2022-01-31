@@ -23,7 +23,7 @@ public class VideoController$AnyChatReqTimeoutRunnable
           QLog.e(VideoController.a, 2, "AnyChatReqTimeoutRunnable show dialog!");
         }
         Context localContext = this.this$0.a();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131721290), 0, 2131721323, new lfs(this), null);
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131721303), 0, 2131721336, new lfs(this), null);
       }
       return;
     }

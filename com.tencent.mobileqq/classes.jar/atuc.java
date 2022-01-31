@@ -1,8 +1,15 @@
-public abstract interface atuc
+import android.view.View;
+import android.widget.ImageView;
+
+class atuc
 {
-  public abstract void a();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
   
-  public abstract void b();
+  public atuc(View paramView)
+  {
+    this.a = ((ImageView)atua.a(paramView, 2131369819));
+  }
 }
 
 

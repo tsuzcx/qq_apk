@@ -1,106 +1,111 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class axlg
+  extends RecyclerView.Adapter<axlj>
+  implements bdbc
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[256];
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c = 125;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new axlh(this);
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bdbb jdField_a_of_type_Bdbb;
+  private List<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilList;
+  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap;
   
-  public void a()
+  private axlg(Context paramContext, bdbb parambdbb, RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeChecker", 2, "refreshTimer ");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bdbb = parambdbb;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
+    this.jdField_a_of_type_Bdbb.a(this);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    paramRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+  }
+  
+  private Bitmap a(String paramString)
+  {
+    return a(paramString, 1, (byte)0);
+  }
+  
+  private Bitmap a(String paramString, int paramInt, byte paramByte)
+  {
+    Bitmap localBitmap = this.jdField_a_of_type_Bdbb.a(paramInt, paramString);
+    if (localBitmap != null) {
+      return localBitmap;
+    }
+    if (!this.jdField_a_of_type_Bdbb.a()) {
+      this.jdField_a_of_type_Bdbb.a(paramString, paramInt, true, paramByte);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void a()
+  {
+    int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
+      localObject = (axlj)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get(axlj.a((axlj)localObject));
+      if (localBitmap != null) {
+        axlj.a((axlj)localObject).setImageBitmap(localBitmap);
+      }
+      i += 1;
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, axlh paramaxlh)
+  public axlj a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((paramaxlh == null) || (paramArrayOfByte == null)) {}
-    int[] arrayOfInt;
-    do
-    {
-      do
-      {
-        return;
-        arrayOfInt = ShortVideoUtils.a();
-      } while (arrayOfInt[0] != 1);
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int % 8 != 0);
-    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
-    this.c = arrayOfInt[2];
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    int i = 1;
-    while (i < paramInt2)
-    {
-      int j = 1;
-      while (j < paramInt1)
-      {
-        if (i * paramInt1 + j < paramArrayOfByte.length)
-        {
-          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
-          arrayOfInt[k] += 64;
-        }
-        j += 8;
-      }
-      i += 8;
+    return new axlj(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562536, paramViewGroup, false), null);
+  }
+  
+  public void a(axlj paramaxlj, int paramInt)
+  {
+    ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    axlj.a(paramaxlj, localMemberInfo.a);
+    axlj.a(paramaxlj).setText(localMemberInfo.b);
+    axlj.a(paramaxlj).setImageBitmap(a(localMemberInfo.a));
+  }
+  
+  public void a(List<ReceiptMessageReadMemberListFragment.MemberInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    i = 0;
-    paramInt2 = 255;
-    paramInt1 = 255;
-    label172:
-    if (paramInt1 >= 51)
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramBitmap);
+    if (paramInt1 <= 0)
     {
-      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
-      if (i < this.jdField_b_of_type_Int) {}
-    }
-    for (;;)
-    {
-      if (paramInt1 <= this.c)
-      {
-        QLog.w("DarkModeChecker", 1, "darkmode = true!");
-        this.jdField_b_of_type_Long = 0L;
-        if (this.jdField_a_of_type_Long == 0L)
-        {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          return;
-          paramInt2 = paramInt1;
-          paramInt1 -= 1;
-          break label172;
-        }
-        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
-          break;
-        }
-        this.jdField_a_of_type_Long = -1L;
-        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
-        this.jdField_b_of_type_Long = 0L;
-        paramaxlh.a(true);
-        return;
+      if (this.jdField_a_of_type_Int == 0) {
+        a();
       }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      if (this.jdField_b_of_type_Long == 0L)
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        return;
-      }
-      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
-        break;
-      }
-      this.jdField_b_of_type_Long = -1L;
-      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
-      this.jdField_a_of_type_Long = 0L;
-      paramaxlh.a(false);
-      return;
-      paramInt1 = paramInt2;
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
   }
 }

@@ -1,34 +1,58 @@
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class amyn
+class amyn
+  extends amzk
 {
-  public int a;
-  public RectF a;
-  public String a;
-  amym[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  amyn(amyk paramamyk) {}
   
-  public amyn()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_c_of_type_Int = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    }
+    if (amyk.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    amyk.a(this.a).sendMessage(localMessage);
   }
   
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
-    int i = 0;
-    while ((this.jdField_a_of_type_ArrayOfAmym != null) && (i < this.jdField_a_of_type_ArrayOfAmym.length))
-    {
-      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAmym[i].toString()).append("}\n");
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
     }
-    return localStringBuilder.toString();
+    if (amyk.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amyk.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    }
+    if (amyk.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amyk.a(this.a).sendMessage(localMessage);
   }
 }
 

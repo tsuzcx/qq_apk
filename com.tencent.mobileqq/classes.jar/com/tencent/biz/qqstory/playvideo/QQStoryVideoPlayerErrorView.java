@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ume;
-import wsv;
+import uqn;
+import wxe;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
@@ -37,8 +37,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(ume.a(2131700081));
-      setTipsIcon(2130845888);
+      setTipsText(uqn.a(2131700093));
+      setTipsIcon(2130845961);
       setTipsTextSize(16.0F);
     }
     do
@@ -47,8 +47,8 @@ public class QQStoryVideoPlayerErrorView
       if (paramInt == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText(alpo.a(2131711473));
-        setTipsIcon(2130846046);
+        setTipsText(alud.a(2131711485));
+        setTipsIcon(2130846119);
         setTipsTextSize(14.0F);
         return;
       }
@@ -58,9 +58,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561620, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377844));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368728));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561638, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377898));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368742));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
@@ -94,7 +94,7 @@ public class QQStoryVideoPlayerErrorView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      wsv.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+      wxe.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
     }
   }
   

@@ -1,39 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
 public class wyn
-  extends bavo
+  implements ThreadExcutor.IThreadListener
 {
-  public wyn(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  wyn(wym paramwym) {}
   
-  protected void realCancel()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
+    int i = 1;
+    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    if (azhg.a().a == 1) {}
+    for (;;)
+    {
+      axpl.h(i);
+      return;
+      i = 2;
     }
   }
   
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
-    }
-    bdwa localbdwa = ((bdvx)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
-    bdvv localbdvv = new bdvv(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localbdvv.n = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("md5", this.c);
-    localBundle.putString("path", this.b);
-    localbdwa.a(localbdvv, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
-  }
+  public void onPreRun() {}
 }
 
 

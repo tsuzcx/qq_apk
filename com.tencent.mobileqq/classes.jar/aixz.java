@@ -1,12 +1,14 @@
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+
 public class aixz
+  extends aiym
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  public aixz(ExclusiveHbFragment paramExclusiveHbFragment) {}
   
-  public aixz(String paramString, float paramFloat)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    ExclusiveHbFragment.a(this.a);
   }
 }
 

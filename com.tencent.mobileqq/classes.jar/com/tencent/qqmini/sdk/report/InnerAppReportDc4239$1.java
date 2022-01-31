@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgyg;
+import bhcn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class InnerAppReportDc4239$1
@@ -10,7 +10,7 @@ public final class InnerAppReportDc4239$1
   
   public void run()
   {
-    bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), this.jdField_a_of_type_JavaLangString, "inner_app", "from_api", this.b, this.c, this.d, null, null, null);
+    bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), this.jdField_a_of_type_JavaLangString, "inner_app", "from_api", this.b, this.c, this.d, null, null, null);
   }
 }
 

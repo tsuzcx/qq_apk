@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avhw;
-import awbw;
-import awbx;
+import avmf;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProfileDisplayTribePanel$20
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$20(avhw paramavhw) {}
+  public NearbyProfileDisplayTribePanel$20(avmf paramavmf) {}
   
   public void run()
   {
-    awbw localawbw = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localawbw != null)
+    awgf localawgf = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
+    if (localawgf != null)
     {
-      localawbw.a(avhw.a(this.this$0));
-      localawbw.a();
+      localawgf.a(avmf.a(this.this$0));
+      localawgf.a();
     }
   }
 }

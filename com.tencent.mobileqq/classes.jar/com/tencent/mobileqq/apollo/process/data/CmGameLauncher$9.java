@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aktn;
-import aktr;
+import akyc;
+import akyg;
 
 public class CmGameLauncher$9
   implements Runnable
 {
-  public CmGameLauncher$9(aktr paramaktr, String paramString, boolean paramBoolean) {}
+  public CmGameLauncher$9(akyg paramakyg, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    aktr.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, aktr.a(this.this$0), this.jdField_a_of_type_Boolean);
-    aktr.b(this.this$0, false);
+    akyg.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, akyg.a(this.this$0), this.jdField_a_of_type_Boolean);
+    akyg.b(this.this$0, false);
   }
 }
 

@@ -1,34 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForVIPDonate;
-import com.tencent.mobileqq.data.VIPDonateMsg;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 import com.tencent.qphone.base.util.QLog;
 
-class agbs
-  implements View.OnClickListener
+public class agbs
+  extends AnimatorListenerAdapter
 {
-  agbs(agbr paramagbr) {}
+  public agbs(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a()) {
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
       return;
     }
-    paramView = (MessageForVIPDonate)((agbt)aekt.a(paramView)).a;
-    Object localObject = paramView.donateMsg;
-    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
     {
-      paramView = paramView.donateMsg.jumpUrl;
-      localObject = new Intent(agbr.a(this.a), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      agbr.a(this.a).startActivity((Intent)localObject);
       return;
-    }
-    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

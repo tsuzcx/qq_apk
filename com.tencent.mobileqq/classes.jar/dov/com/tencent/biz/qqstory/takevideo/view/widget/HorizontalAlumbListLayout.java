@@ -10,27 +10,27 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bmkf;
-import bnaa;
-import bnab;
-import bnac;
+import bmor;
+import bnem;
+import bnen;
+import bneo;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import xir;
-import xix;
+import xna;
+import xng;
 
 public class HorizontalAlumbListLayout
   extends RelativeLayout
-  implements View.OnClickListener, xix
+  implements View.OnClickListener, xng
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bmkf a;
-  private bnac jdField_a_of_type_Bnac;
+  public bmor a;
+  private bneo jdField_a_of_type_Bneo;
   
   public HorizontalAlumbListLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,14 +47,14 @@ public class HorizontalAlumbListLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561512, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373806));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561530, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373857));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bnac = new bnac(this, getContext(), this, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bnac);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bnaa(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373805));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bnab(this));
+    this.jdField_a_of_type_Bneo = new bneo(this, getContext(), this, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bneo);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bnem(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373856));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bnen(this));
   }
   
   public void a() {}
@@ -68,26 +68,26 @@ public class HorizontalAlumbListLayout
     if (QLog.isColorLevel()) {
       QLog.d("HorizontalAlumbListLayout", 2, "updateData size=" + paramList.size());
     }
-    if ((this.jdField_a_of_type_Bnac != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_Bnac.a(paramList);
+    if ((this.jdField_a_of_type_Bneo != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_Bneo.a(paramList);
     }
   }
   
-  public void c_(String paramString) {}
+  public void b(String paramString) {}
   
   public void onClick(View paramView) {}
   
-  public void setEditVideoUI(bmkf parambmkf)
+  public void setEditVideoUI(bmor parambmor)
   {
-    this.jdField_a_of_type_Bmkf = parambmkf;
+    this.jdField_a_of_type_Bmor = parambmor;
   }
   
   public void setTipsContent(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    if (xir.a().a() == 13)
+    if (xna.a().a() == 13)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131692017), new Object[] { xir.a().a().size() + "" }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131692018), new Object[] { xna.a().a().size() + "" }));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }

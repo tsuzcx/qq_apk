@@ -1,13 +1,25 @@
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class blhj
-  implements blls
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public blhj(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
+  public blhj(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    AEEditorImageClipFragment.c(this.a, paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
+      return;
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

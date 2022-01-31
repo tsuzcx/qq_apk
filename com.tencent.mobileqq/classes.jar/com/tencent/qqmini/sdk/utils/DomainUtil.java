@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.utils;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
-import bglq;
+import bgpx;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -35,7 +35,7 @@ public class DomainUtil
     {
       if (sDominWhiteList == null)
       {
-        String str1 = bglq.a("qqminiapp", "defaultAllowedHostList", ".qq.com;.qlogo.cn;.tcb.qcloud.la");
+        String str1 = bgpx.a("qqminiapp", "defaultAllowedHostList", ".qq.com;.qlogo.cn;.tcb.qcloud.la");
         if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
         {
           QMLog.i("[mini] http.domainValid", "Default white domain:" + str1);
@@ -114,7 +114,7 @@ public class DomainUtil
       QMLog.d("[mini] http.domainValid", "debug opened and not online version, skip:" + paramString);
       return true;
     }
-    if (((QUAUtil.isRdmBuild()) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())) && (paramString.startsWith(bglq.a("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))))
+    if (((QUAUtil.isRdmBuild()) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())) && (paramString.startsWith(bgpx.a("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))))
     {
       QMLog.d("[mini] http.domainValid", "rdm mode, https://www.urlshare.cn/ is valid, current Url is: " + paramString);
       return true;

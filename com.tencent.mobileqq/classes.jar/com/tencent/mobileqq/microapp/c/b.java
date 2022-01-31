@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.c;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdje;
+import bdnn;
 
 final class b
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bdje.a(paramIntent.getAction())) {}
+    if (bdnn.a(paramIntent.getAction())) {}
     while (a.a(this.a) == null) {
       return;
     }

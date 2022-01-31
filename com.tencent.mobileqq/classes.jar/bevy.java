@@ -1,8 +1,22 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
-public abstract interface bevy
+public final class bevy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(BaseResp paramBaseResp);
+  private final TabDragAnimationView a;
+  
+  public bevy(TabDragAnimationView paramTabDragAnimationView)
+  {
+    this.a = paramTabDragAnimationView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f, 0.0F, true);
+  }
 }
 
 

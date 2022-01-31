@@ -1,27 +1,21 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bkxk
-  implements bkvx
+  extends RecyclerView.ViewHolder
 {
-  bkxk(bkxi parambkxi) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
-  public void a(MetaMaterial paramMetaMaterial)
+  public bkxk(View paramView)
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
-  }
-  
-  public void a(MetaMaterial paramMetaMaterial, int paramInt)
-  {
-    bkxi.a(this.a).a(new bkwc(paramMetaMaterial, 1, paramInt));
-  }
-  
-  public void b(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+    this.b = ((ImageView)paramView.findViewById(2131368206));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366358));
   }
 }
 

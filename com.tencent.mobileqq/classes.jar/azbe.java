@@ -1,40 +1,49 @@
-import android.os.Handler;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class azbe
-  extends SCameraCaptureProcessor.CaptureCallback
+  extends MSFServlet
 {
-  public azbe(Camera2Control paramCamera2Control, long paramLong) {}
-  
-  public void onError(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    azbl.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
-  }
-  
-  public void onPictureAvailable(ByteBuffer paramByteBuffer)
-  {
-    azbl.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
-    azbk.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
+    if (paramIntent != null)
     {
-      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-      paramByteBuffer.get(arrayOfByte);
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
-    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
+    for (;;)
+    {
+      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
   }
   
-  public void onShutter()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    azbl.a(1, "[Camera2]samsungCapture onShutter!");
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
+      }
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

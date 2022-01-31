@@ -1,6 +1,6 @@
 package com.tencent.gamecenter.common.util;
 
-import aadi;
+import aahx;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -11,24 +11,24 @@ import com.tencent.smtt.sdk.WebView;
 public class ScreenshotManager$3
   implements Runnable
 {
-  public ScreenshotManager$3(aadi paramaadi, WebView paramWebView) {}
+  public ScreenshotManager$3(aahx paramaahx, WebView paramWebView) {}
   
   public void run()
   {
-    QLog.i("ScreenshotManager", 1, "addMaskAsync mRemoveCall=" + aadi.a(this.this$0));
-    if ((aadi.a(this.this$0) != null) && (!aadi.a(this.this$0))) {}
+    QLog.i("ScreenshotManager", 1, "addMaskAsync mRemoveCall=" + aahx.a(this.this$0));
+    if ((aahx.a(this.this$0) != null) && (!aahx.a(this.this$0))) {}
     try
     {
-      if (aadi.a(this.this$0) == null)
+      if (aahx.a(this.this$0) == null)
       {
-        aadi.a(this.this$0, new ImageView(this.a.getContext()));
-        aadi.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
+        aahx.a(this.this$0, new ImageView(this.a.getContext()));
+        aahx.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
       }
-      aadi.a(this.this$0).setImageBitmap(aadi.a(this.this$0));
+      aahx.a(this.this$0).setImageBitmap(aahx.a(this.this$0));
       this.this$0.a();
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      ((ViewGroup)this.a.getParent()).addView(aadi.a(this.this$0), localLayoutParams);
-      aadi.a(this.this$0).setVisibility(0);
+      ((ViewGroup)this.a.getParent()).addView(aahx.a(this.this$0), localLayoutParams);
+      aahx.a(this.this$0).setVisibility(0);
       return;
     }
     catch (Throwable localThrowable)

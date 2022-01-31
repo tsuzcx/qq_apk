@@ -1,93 +1,45 @@
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import mqq.os.MqqHandler;
 
 public class bmsv
-  implements TypeEvaluator<ArrayList<Integer>>
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private long jdField_a_of_type_Long;
-  private ArrayList<bmsw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<Integer> b = new ArrayList();
-  private ArrayList<Integer> c = new ArrayList();
-  private ArrayList<Integer> d = new ArrayList();
-  private ArrayList<TimeInterpolator> e = new ArrayList();
+  private bmsv(bmsi parambmsi) {}
   
-  public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
+  public void onGlobalLayout()
   {
-    int i = this.c.size();
-    paramString = new bmsw(paramLong1, paramLong2, i);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.c.add(Integer.valueOf(paramInt1));
-    this.d.add(Integer.valueOf(paramInt2));
-    this.e.add(paramTimeInterpolator);
-    if (paramLong1 + paramLong2 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = (paramLong1 + paramLong2);
+    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
+    if (QLog.isColorLevel()) {
+      QLog.i("EditTextDialog", 2, "onGlobalLayout third bottom:" + i + " last:" + this.a.b);
     }
-    return i;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ArrayList<Integer> a()
-  {
-    return this.d;
-  }
-  
-  public ArrayList<Integer> a(float paramFloat, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
-  {
-    if ((paramArrayList1.isEmpty()) || (paramArrayList2.isEmpty())) {
-      return null;
-    }
-    if (paramArrayList1.size() != paramArrayList2.size()) {
-      return null;
-    }
-    int j = paramArrayList1.size();
-    if (this.b == null) {
-      this.b = new ArrayList();
-    }
-    this.b.clear();
-    int i = 0;
-    if (i < j)
+    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout != null)
     {
-      int k = ((Integer)paramArrayList1.get(i)).intValue();
-      int m = ((Integer)paramArrayList2.get(i)).intValue();
-      long l1 = ((bmsw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-      long l2 = ((bmsw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
-      int n = (int)((float)this.jdField_a_of_type_Long * paramFloat);
-      if (n < l1) {
-        this.b.add(Integer.valueOf(0));
+      int[] arrayOfInt = new int[2];
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getLocationOnScreen(arrayOfInt);
+      int j = arrayOfInt[1];
+      int k = j - aepi.a(62.0F, BaseApplicationImpl.getContext().getResources());
+      if (k < bmsi.b(this.a)) {
+        bmsi.b(this.a, k);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (n > l1 + l2)
-        {
-          this.b.add(Integer.valueOf(m));
-        }
-        else
-        {
-          float f1 = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(n - l1) / (float)l2);
-          ArrayList localArrayList = this.b;
-          float f2 = k;
-          localArrayList.add(Integer.valueOf((int)(f1 * (m - k) + f2)));
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditTextDialog", 2, "max height" + k + "preViewTextMaxHeight" + bmsi.b(this.a) + "y" + j);
       }
     }
-    return this.b;
-  }
-  
-  public ArrayList<Integer> a(long paramLong)
-  {
-    return a((float)paramLong / (float)this.jdField_a_of_type_Long, this.c, this.d);
-  }
-  
-  public ArrayList<Integer> b()
-  {
-    return this.c;
+    if (i - this.a.b > this.a.jdField_a_of_type_Int)
+    {
+      this.a.a(false);
+      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
+        this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.d = false;
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.LayoutChangeListener.1(this));
   }
 }
 

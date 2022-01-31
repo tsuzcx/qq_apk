@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aqkr
-  implements Comparator<Long>
+  implements Animation.AnimationListener
 {
-  public aqkr(QfileLocalFileDelPicTabView.1 param1) {}
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public int a(Long paramLong1, Long paramLong2)
+  public aqkr(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

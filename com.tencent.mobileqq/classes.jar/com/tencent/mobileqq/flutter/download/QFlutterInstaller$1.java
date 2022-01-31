@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.flutter.download;
 
-import arth;
+import arxq;
 
 public final class QFlutterInstaller$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Arth.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Arxq.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.inputstatus;
 
-import asuh;
-import asul;
+import asyq;
+import asyu;
 
 public class InputStatusPushManager$1
   implements Runnable
 {
-  public InputStatusPushManager$1(asul paramasul) {}
+  public InputStatusPushManager$1(asyu paramasyu) {}
   
   public void run()
   {
-    if (asul.a(this.this$0) != null) {
-      asul.a(this.this$0).a(false, "");
+    if (asyu.a(this.this$0) != null) {
+      asyu.a(this.this$0).a(false, "");
     }
   }
 }

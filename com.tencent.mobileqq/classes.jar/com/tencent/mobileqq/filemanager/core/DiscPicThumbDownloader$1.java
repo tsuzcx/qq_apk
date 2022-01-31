@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqrw;
-import aroa;
+import aqwf;
+import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class DiscPicThumbDownloader$1
   implements Runnable
 {
-  public DiscPicThumbDownloader$1(aqrw paramaqrw, FileManagerEntity paramFileManagerEntity) {}
+  public DiscPicThumbDownloader$1(aqwf paramaqwf, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    aroa.b(this.a);
+    arsj.b(this.a);
   }
 }
 

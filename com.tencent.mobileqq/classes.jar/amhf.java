@@ -1,22 +1,8 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import com.tencent.mobileqq.app.automator.AsyncStep;
 
-class amhf
-  implements abnz
+public abstract interface amhf
 {
-  amhf(amha paramamha, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
-  
-  public ToServiceMsg a()
-  {
-    ToServiceMsg localToServiceMsg = amha.a(this.jdField_a_of_type_Amha).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
-  }
+  public abstract void a(AsyncStep paramAsyncStep, int paramInt);
 }
 
 

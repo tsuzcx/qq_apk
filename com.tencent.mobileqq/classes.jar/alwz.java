@@ -1,7 +1,10 @@
-public class alwz
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+
+public abstract interface alwz
 {
-  public int a;
-  public long a;
+  public static final String a = apmq.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 

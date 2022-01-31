@@ -1,15 +1,34 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-final class baiw
-  extends Editable.Factory
+public class baiw
+  implements bhuk
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public baiw(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramCharSequence instanceof baiv)) {
-      return (Editable)paramCharSequence;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    {
+      paramInt = -1;
+      switch (paramInt)
+      {
+      }
     }
-    return new baiv(paramCharSequence, 3, 20);
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bhuf.isShowing()) {
+        this.jdField_a_of_type_Bhuf.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      break;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
+    }
   }
 }
 

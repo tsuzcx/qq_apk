@@ -1,35 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aidb
-  implements bhpo
+public class aidb
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public aidb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  aidb(aicw paramaicw) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aicw.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Aicw.jdField_a_of_type_Aidg) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(aicw.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(aicw.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-    }
-    aicw.a(this.jdField_a_of_type_Aicw);
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
   }
 }
 

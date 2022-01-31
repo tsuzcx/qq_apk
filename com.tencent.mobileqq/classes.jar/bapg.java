@@ -1,14 +1,7 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-
-class bapg
-  implements ITransCallbackForReport
+public final class bapg
 {
-  bapg(bape parambape) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, this.a.c, this.a.l, null);
-  }
+  public static final String a = alud.a(2131715396);
+  public static final String b = alud.a(2131715410);
 }
 
 

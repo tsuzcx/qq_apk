@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
 class agnq
-  implements Comparator<MessageRecord>
+  implements View.OnClickListener
 {
-  agnq(agnp paramagnp) {}
+  agnq(agnn paramagnn) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onClick(View paramView)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    aepi.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
   }
 }
 

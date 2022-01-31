@@ -1,288 +1,196 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryPic;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pttcenterservice.PttShortVideo.ExtensionReq;
-import pttcenterservice.PttShortVideo.PttShortVideoAddr;
-import pttcenterservice.PttShortVideo.PttShortVideoDownloadReq;
-import pttcenterservice.PttShortVideo.PttShortVideoDownloadResp;
-import pttcenterservice.PttShortVideo.ReqBody;
-import pttcenterservice.PttShortVideo.RspBody;
+import java.util.HashMap;
 
-public class baxy
-  extends bawa
+class baxy
+  implements ITransactionCallback
 {
-  public void a(bari parambari, barh parambarh)
+  baxy(baxx parambaxx, long paramLong) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    Object localObject = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bawo localbawo = (bawo)parambarh.jdField_a_of_type_JavaLangObject;
-    baxd localbaxd = localbawo.jdField_a_of_type_Baxd;
-    alsj localalsj = parambari.jdField_a_of_type_Alsj;
-    int i;
-    if (((FromServiceMsg)localObject).getResultCode() != 1000)
-    {
-      i = ((FromServiceMsg)localObject).getResultCode();
-      if ((i == 1002) || (i == 1013)) {
-        a(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    label770:
-    label783:
-    label911:
-    for (;;)
-    {
-      baxu.a(localbawo, localbaxd);
-      return;
-      a(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
-      continue;
-      baxr localbaxr;
-      PttShortVideo.PttShortVideoAddr localPttShortVideoAddr;
-      try
-      {
-        parambari = new PttShortVideo.RspBody();
-        parambari.mergeFrom(arrayOfByte);
-        parambarh = (PttShortVideo.PttShortVideoDownloadResp)parambari.msg_PttShortVideoDownload_Resp.get();
-        localbaxr = (baxr)localbaxd.jdField_a_of_type_JavaUtilList.get(0);
-        i = parambarh.int32_ret_code.get();
-        if (i != 0) {
-          break label800;
-        }
-        localbaxr.jdField_a_of_type_JavaLangString = HexUtil.bytes2HexStr(parambarh.bytes_downloadkey.get().toByteArray());
-        localbaxr.jdField_a_of_type_ArrayOfByte = parambarh.bytes_file_md5.get().toByteArray();
-        if (parambarh.bytes_encrypt_key.has()) {
-          localbaxr.jdField_b_of_type_ArrayOfByte = parambarh.bytes_encrypt_key.get().toByteArray();
-        }
-        localPttShortVideoAddr = (PttShortVideo.PttShortVideoAddr)parambarh.msg_download_addr.get();
-        if (localPttShortVideoAddr == null) {
-          break label783;
-        }
-        localbaxr.jdField_a_of_type_Int = localPttShortVideoAddr.uint32_host_type.get();
-        if (localbaxr.jdField_a_of_type_Int != 0) {
-          break label770;
-        }
-        localObject = localPttShortVideoAddr.rpt_str_host.get();
-        basp localbasp;
-        if (localObject != null)
-        {
-          i = 0;
-          while (i < ((List)localObject).size())
-          {
-            localbasp = new basp();
-            parambarh = (String)((List)localObject).get(i);
-            parambari = parambarh;
-            if (parambarh.startsWith("http://")) {
-              parambari = parambarh.substring("http://".length());
-            }
-            parambarh = parambari;
-            if (parambari.endsWith("/")) {
-              parambarh = parambari.substring(0, parambari.length() - 1);
-            }
-            parambari = parambarh.split(":");
-            localbasp.jdField_a_of_type_JavaLangString = parambari[0];
-            if (parambari.length == 2) {
-              localbasp.jdField_a_of_type_Int = Integer.valueOf(parambari[1]).intValue();
-            }
-            localbaxr.jdField_a_of_type_JavaUtilArrayList.add(i, localbasp);
-            i += 1;
-          }
-        }
-        localObject = localPttShortVideoAddr.rpt_str_host_ipv6.get();
-        if (localObject != null)
-        {
-          i = 0;
-          if (i < ((List)localObject).size())
-          {
-            localbasp = new basp();
-            parambarh = (String)((List)localObject).get(i);
-            parambari = parambarh;
-            if (parambarh.startsWith("http://")) {
-              parambari = parambarh.substring("http://".length());
-            }
-            parambarh = parambari;
-            if (parambari.endsWith("/")) {
-              parambarh = parambari.substring(0, parambari.length() - 1);
-            }
-            if (parambarh.lastIndexOf(':') > parambarh.lastIndexOf(']'))
-            {
-              localbasp.jdField_a_of_type_JavaLangString = parambarh.substring(0, parambarh.lastIndexOf(']') + 1);
-              localbasp.jdField_a_of_type_Int = Integer.valueOf(parambarh.substring(parambarh.lastIndexOf(':') + 1)).intValue();
-            }
-            for (;;)
-            {
-              localbasp.jdField_a_of_type_Boolean = true;
-              localbaxr.jdField_b_of_type_JavaUtilArrayList.add(i, localbasp);
-              i += 1;
-              break;
-              localbasp.jdField_a_of_type_JavaLangString = parambarh;
-            }
-          }
-        }
-      }
-      catch (Exception parambari)
-      {
-        a(-1, -9527, bamw.a("P", -9529L), parambari.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
-      }
-      parambarh = "";
-      parambari = parambarh;
-      if (localPttShortVideoAddr.rpt_str_domain.has())
-      {
-        parambari = parambarh;
-        if (localPttShortVideoAddr.rpt_str_domain.size() > 0) {
-          parambari = (String)localPttShortVideoAddr.rpt_str_domain.get(0);
-        }
-      }
-      localObject = parambari;
-      if (parambari != null)
-      {
-        localObject = parambari;
-        if (parambari.length() > 0)
-        {
-          parambarh = parambari;
-          if (parambari.startsWith("http://")) {
-            parambarh = parambari.substring("http://".length());
-          }
-          localObject = parambarh;
-          if (parambarh.endsWith("/")) {
-            localObject = parambarh.substring(0, parambarh.length() - 1);
-          }
-        }
-      }
-      localbaxr.jdField_b_of_type_JavaLangString = ((String)localObject);
-      localbaxr.jdField_c_of_type_JavaLangString = localPttShortVideoAddr.str_url_args.get();
-      a(0, 0, "", "", localalsj, localbaxr);
-      continue;
-      label800:
-      if (i == -5100026) {
-        a(-1, -5100026, bamw.a(i), "", localalsj, localbaxr);
-      }
-      for (;;)
-      {
-        if (parambari.uint32_allow_retry.get() != 1) {
-          break label911;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.BaseHandler", 2, "onProtoResp : shortVideo server not allow retry");
-        }
-        localbaxr.e = false;
-        break;
-        if (i == -5100528) {
-          a(-1, -5100528, bamw.a(i), "", localalsj, localbaxr);
-        } else {
-          a(-1, -9527, bamw.a(i), "", localalsj, localbaxr);
-        }
-      }
-    }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = xrp.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
+    long l3 = xrp.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
+    long l4 = xrp.a((String)paramHashMap.get("upFlow_Xg"), -1L);
+    long l5 = xrp.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    wxe.c(baxx.jdField_a_of_type_JavaLangString, "Transaction End : Failed. take time:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Baxx.a(l2, l3, l4, l5);
+    this.jdField_a_of_type_Baxx.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Baxx.jdField_b_of_type_Barh);
+    this.jdField_a_of_type_Baxx.d();
   }
   
-  public void a(bawo parambawo)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    barh localbarh;
-    bawz localbawz;
-    if ((parambawo != null) && (parambawo.jdField_a_of_type_JavaUtilList != null) && (parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      localbarh = new barh();
-      if (parambawo.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label134;
-      }
-      localbawz = (bawz)parambawo.jdField_a_of_type_JavaUtilList.get(0);
-      if (localbawz.f != 0) {
-        break label96;
-      }
-      localbarh.jdField_a_of_type_JavaLangString = "PttCenterSvr.ShortVideoDownReq";
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    String str1 = (String)paramHashMap.get("tc_p:");
+    String str2 = (String)paramHashMap.get("rep_bdhTrans");
+    String str3 = (String)paramHashMap.get("segspercnt");
+    String str4 = (String)paramHashMap.get("param_conf_segSize");
+    String str5 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    wxe.c(baxx.jdField_a_of_type_JavaLangString, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.jdField_a_of_type_Long + " transInfo:" + str2);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
+    this.jdField_a_of_type_Baxx.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Baxx.jdField_b_of_type_Barh.b();
+    this.jdField_a_of_type_Baxx.jdField_b_of_type_Barh.a = 1;
+    this.jdField_a_of_type_Baxx.s = this.jdField_a_of_type_Baxx.q;
+    wxe.c(baxx.jdField_a_of_type_JavaLangString, "ITransactionCallback.onSuccess()");
+    if (paramArrayOfByte == null) {
+      this.jdField_a_of_type_Baxx.d();
     }
     for (;;)
     {
-      localbarh.jdField_a_of_type_ArrayOfByte = a(parambawo.jdField_a_of_type_JavaUtilList);
-      localbarh.jdField_a_of_type_JavaLangObject = parambawo;
-      localbarh.jdField_a_of_type_Barg = this;
-      a(parambawo, localbarh);
+      this.jdField_a_of_type_Baxx.a(l2, l3, l4, l5);
+      this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.a();
       return;
-      label96:
-      if ((1 == localbawz.f) || (3000 == localbawz.f)) {
-        localbarh.jdField_a_of_type_JavaLangString = "PttCenterSvr.GroupShortVideoDownReq";
-      } else {
-        localbarh.jdField_a_of_type_JavaLangString = "PttCenterSvr.ShortVideoDownReq";
+      int i;
+      if (this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.b == 196610)
+      {
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryPic();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label567;
+          }
+          this.jdField_a_of_type_Baxx.jdField_b_of_type_JavaLangString = paramHashMap.url.get().toStringUtf8();
+          wxe.a(baxx.jdField_a_of_type_JavaLangString, "upload file %s return url %s", this.jdField_a_of_type_Baxx.d, this.jdField_a_of_type_Baxx.jdField_b_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_Baxx.jdField_b_of_type_JavaLangString)) {
+            break label557;
+          }
+          this.jdField_a_of_type_Baxx.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Baxx.jdField_j_of_type_JavaLangString = String.format("return illegal arg url:%s", new Object[] { this.jdField_a_of_type_Baxx.jdField_b_of_type_JavaLangString });
+          this.jdField_a_of_type_Baxx.d();
+          paramHashMap = bdhe.a(paramArrayOfByte);
+          str1 = baxx.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          wxe.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          wxe.d(baxx.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Baxx.d();
+        }
+        continue;
+        label557:
+        this.jdField_a_of_type_Baxx.e();
+        continue;
+        label567:
+        this.jdField_a_of_type_Baxx.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Baxx.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Baxx.d();
+      }
+      else if ((this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.b == 196609) || (this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.b == 327681))
+      {
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryVideo();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label872;
+          }
+          this.jdField_a_of_type_Baxx.jdField_o_of_type_JavaLangString = paramHashMap.cdn_url.get().toStringUtf8();
+          if (this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.b == 196609) {
+            this.jdField_a_of_type_Baxx.jdField_o_of_type_JavaLangString = xsm.a(this.jdField_a_of_type_Baxx.jdField_o_of_type_JavaLangString, "authkey");
+          }
+          this.jdField_a_of_type_Baxx.n = paramHashMap.file_key.get().toStringUtf8();
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_Baxx.jdField_o_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Baxx.n))) {
+            break label862;
+          }
+          this.jdField_a_of_type_Baxx.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Baxx.jdField_j_of_type_JavaLangString = String.format("return illegal arg vid:%s, url:%s", new Object[] { this.jdField_a_of_type_Baxx.n, this.jdField_a_of_type_Baxx.jdField_o_of_type_JavaLangString });
+          this.jdField_a_of_type_Baxx.d();
+          paramHashMap = bdhe.a(paramArrayOfByte);
+          str1 = baxx.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          wxe.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          wxe.d(baxx.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Baxx.d();
+        }
+        continue;
+        label862:
+        this.jdField_a_of_type_Baxx.e();
+        continue;
+        label872:
+        this.jdField_a_of_type_Baxx.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Baxx.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Baxx.d();
+      }
+      else
+      {
+        this.jdField_a_of_type_Baxx.d(1005);
+        this.jdField_a_of_type_Baxx.d();
       }
     }
-    label134:
-    throw new RuntimeException("only support one request");
   }
   
-  byte[] a(List<bawz> paramList)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    PttShortVideo.ReqBody localReqBody = new PttShortVideo.ReqBody();
-    localReqBody.setHasFlag(true);
-    if (paramList.size() == 1)
+    wxe.a(baxx.jdField_a_of_type_JavaLangString, "onTransStart %s", this.jdField_a_of_type_Baxx.jdField_a_of_type_Bayk.i);
+    long l1 = System.currentTimeMillis();
+    long l2 = baxx.a(this.jdField_a_of_type_Baxx);
+    String str2 = wxj.a(BaseApplication.getContext());
+    if (this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass.b == 196610) {}
+    for (String str1 = "pic";; str1 = "video")
     {
-      paramList = (baxa)paramList.get(0);
-      PttShortVideo.PttShortVideoDownloadReq localPttShortVideoDownloadReq = new PttShortVideo.PttShortVideoDownloadReq();
-      localPttShortVideoDownloadReq.uint64_touin.set(Long.parseLong(paramList.jdField_c_of_type_JavaLangString));
-      localPttShortVideoDownloadReq.uint32_chat_type.set(paramList.jdField_a_of_type_Int);
-      if (paramList.jdField_a_of_type_Int == 0)
-      {
-        localPttShortVideoDownloadReq.uint64_fromuin.set(Long.parseLong(paramList.jdField_d_of_type_JavaLangString));
-        localPttShortVideoDownloadReq.uint32_client_type.set(paramList.jdField_b_of_type_Int);
-        localPttShortVideoDownloadReq.str_fileid.set(paramList.jdField_a_of_type_JavaLangString);
-        if (paramList.jdField_b_of_type_JavaLangString == null) {
-          break label386;
-        }
-        localPttShortVideoDownloadReq.uint64_group_code.set(Long.parseLong(paramList.jdField_b_of_type_JavaLangString));
-      }
-      for (;;)
-      {
-        localPttShortVideoDownloadReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramList.jdField_a_of_type_ArrayOfByte));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.ShortVideoDownHandler", 2, "download md5 = " + paramList.jdField_a_of_type_ArrayOfByte);
-        }
-        localPttShortVideoDownloadReq.uint32_agent_type.set(paramList.jdField_d_of_type_Int);
-        localPttShortVideoDownloadReq.uint32_business_type.set(paramList.jdField_e_of_type_Int);
-        localPttShortVideoDownloadReq.uint32_flag_support_large_size.set(1);
-        localPttShortVideoDownloadReq.uint32_file_type.set(paramList.g);
-        localPttShortVideoDownloadReq.uint32_down_type.set(paramList.h);
-        localPttShortVideoDownloadReq.uint32_scene_type.set(paramList.i);
-        localPttShortVideoDownloadReq.uint32_need_inner_addr.set(0);
-        localPttShortVideoDownloadReq.uint32_req_transfer_type.set(0);
-        localPttShortVideoDownloadReq.uint32_req_host_type.set(11);
-        PttShortVideo.ExtensionReq localExtensionReq = new PttShortVideo.ExtensionReq();
-        localExtensionReq.uint32_sub_busi_type.set(paramList.j);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.ShortVideoDownHandler", 2, "constructReqBody ShortVideoDownReq = " + paramList.toString());
-        }
-        localReqBody.uint32_cmd.set(400);
-        localReqBody.uint32_seq.set(paramList.jdField_c_of_type_Int);
-        localReqBody.msg_PttShortVideoDownload_Req.set(localPttShortVideoDownloadReq);
-        localReqBody.rpt_msg_extension_req.add(localExtensionReq);
-        return localReqBody.toByteArray();
-        localPttShortVideoDownloadReq.uint64_fromuin.set(Long.parseLong(paramList.jdField_e_of_type_JavaLangString));
-        break;
-        label386:
-        localPttShortVideoDownloadReq.uint64_group_code.set(0L);
-      }
+      wxj.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
+      this.jdField_a_of_type_Baxx.jdField_b_of_type_Barh.a();
+      baxx.a(this.jdField_a_of_type_Baxx, System.currentTimeMillis());
+      return;
     }
-    throw new RuntimeException("only support one request");
   }
   
-  void b(bawo parambawo)
+  public void onUpdateProgress(int paramInt)
   {
-    baxd localbaxd = parambawo.jdField_a_of_type_Baxd;
-    localbaxd.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < parambawo.jdField_a_of_type_JavaUtilList.size())
-    {
-      baxr localbaxr = new baxr();
-      localbaxd.jdField_a_of_type_JavaUtilList.add(i, localbaxr);
-      i += 1;
+    baxx localbaxx = this.jdField_a_of_type_Baxx;
+    bass localbass = this.jdField_a_of_type_Baxx.jdField_a_of_type_Bass;
+    long l = paramInt;
+    localbass.e = l;
+    localbaxx.s = l;
+    if ((paramInt <= this.jdField_a_of_type_Baxx.q) && (!this.jdField_a_of_type_Baxx.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Baxx.k)) {
+      this.jdField_a_of_type_Baxx.i();
     }
   }
 }

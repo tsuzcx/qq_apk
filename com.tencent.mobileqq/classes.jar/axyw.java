@@ -1,43 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.BasePresenter;
 
-public class axyw
-  implements bhqd
+class axyw
+  implements IGalleryImageListener
 {
-  public axyw(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, bhpy parambhpy) {}
+  axyw(axyv paramaxyv, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Axyv.a.b.setVisibility(8);
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
+      this.jdField_a_of_type_Axyv.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      BasePresenter.updateRotation(this.jdField_a_of_type_Axyv.a.galleryView, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
-      if (!bdee.d(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity()))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 2131693415, 0).a();
-      }
-      else
-      {
-        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
-        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null) {
-            SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new bepp(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().getTitleBarHeight()));
-          }
-          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
-          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
-          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
-        }
-      }
     }
+    QQToast.a(this.jdField_a_of_type_Axyv.a.mContext, this.jdField_a_of_type_Axyv.a.mContext.getString(2131695501), 0).a();
   }
 }
 

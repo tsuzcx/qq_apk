@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.redtouch;
 
-import axho;
+import axlx;
 
 public class RedTouchManager$2
   implements Runnable
 {
-  public RedTouchManager$2(axho paramaxho) {}
+  public RedTouchManager$2(axlx paramaxlx) {}
   
   public void run()
   {
-    axho.a(this.this$0);
+    axlx.a(this.this$0);
   }
 }
 

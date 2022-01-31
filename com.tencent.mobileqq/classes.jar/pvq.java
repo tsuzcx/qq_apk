@@ -148,7 +148,7 @@ public class pvq
     if (paramArticleInfo != null) {
       paramView.setLayoutParams(new AbsListView.LayoutParams(paramArticleInfo));
     }
-    paramView.setTag(2131369009, this.jdField_a_of_type_Rqj.a());
+    paramView.setTag(2131369027, this.jdField_a_of_type_Rqj.a());
     return paramView;
   }
   

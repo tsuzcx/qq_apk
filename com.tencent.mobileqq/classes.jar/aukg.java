@@ -1,17 +1,20 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class aukg
+  implements View.OnClickListener
 {
-  public Button a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public aukg(MultiAIOFragment paramMultiAIOFragment) {}
   
-  aukg(aukf paramaukf) {}
+  public void onClick(View paramView)
+  {
+    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379081);
+    auli.a += 1;
+    paramView.setText(alud.a(2131707384) + auli.a);
+    MultiAIOFragment.c(this.a);
+  }
 }
 
 

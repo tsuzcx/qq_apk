@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayyu;
-import ayyx;
-import ayzf;
-import ayzo;
+import azdd;
+import azdg;
+import azdo;
+import azdx;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class ShortVideoPreDownloader$5
   implements Runnable
 {
-  public ShortVideoPreDownloader$5(ayzf paramayzf) {}
+  public ShortVideoPreDownloader$5(azdo paramazdo) {}
   
   public void run()
   {
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     while (localIterator.hasNext())
     {
-      ayzo localayzo = (ayzo)localIterator.next();
-      ayyu.a(localayzo, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localayzo.a != null) {
-        ayzf.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localayzo.a.a);
+      azdx localazdx = (azdx)localIterator.next();
+      azdd.a(localazdx, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localazdx.a != null) {
+        azdo.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localazdx.a.a);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();

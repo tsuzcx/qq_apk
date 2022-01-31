@@ -1,31 +1,16 @@
 import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class avey
-  extends zep
+  implements View.OnClickListener
 {
-  public avey(PicBrowserActivity paramPicBrowserActivity) {}
+  public avey(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public zdw a(Activity paramActivity, zec paramzec)
+  public void onClick(View paramView)
   {
-    return super.a(paramActivity, paramzec);
-  }
-  
-  public zdy a(Activity paramActivity, zec paramzec)
-  {
-    return new avfa((PicBrowserActivity)paramActivity, paramzec);
-  }
-  
-  public zec a(Activity paramActivity)
-  {
-    paramActivity = new avfg(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public zed a(Activity paramActivity, zec paramzec)
-  {
-    return null;
+    ((Activity)this.a.getContext()).finish();
   }
 }
 

@@ -1,10 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aind
+public class aind
+  extends awhw
 {
-  public abstract void a_(SlideItemInfo paramSlideItemInfo);
+  public aind(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public abstract void ay_();
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
+    }
+  }
 }
 
 

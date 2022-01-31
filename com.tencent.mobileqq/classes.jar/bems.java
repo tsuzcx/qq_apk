@@ -1,138 +1,412 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.os.SystemClock;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bems
 {
-  private static boolean b;
-  private int jdField_a_of_type_Int = 10;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
+  public static String a = "com.qq.hotact";
   
-  public bems(int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    long l = SystemClock.uptimeMillis();
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth() / this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight() / this.jdField_a_of_type_Int;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != i) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != j))
-    {
+    int i = 1;
+    if (!bemt.a(paramQQAppInterface)) {
       if (QLog.isColorLevel()) {
-        QLog.i("MosaicEffect", 2, "draw: try to alloc bitmap w x h=[" + i + "x" + j + "]");
+        QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint, check wholePeopleEntryIsOpen return false, not show redtouch");
       }
-      if (i > 0) {
-        break label406;
-      }
-      QLog.e("MosaicEffect", 1, "draw: mosaicWidth <= 0");
-      i = 1;
     }
-    label406:
+    do
+    {
+      return 0;
+      if ((paramQQAppInterface.a().a != null) && (paramQQAppInterface.a().a.b)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint, check wholePeopleEntryIsOpen return false, not show redtouch");
+    return 0;
+    paramQQAppInterface = (avsm)paramQQAppInterface.getManager(160);
+    RedTouchItem localRedTouchItem1 = paramQQAppInterface.a(10013);
+    RedTouchItem localRedTouchItem2 = paramQQAppInterface.a(10014);
+    int j;
+    if ((paramQQAppInterface.a(localRedTouchItem1, false)) && (localRedTouchItem1.passThroughLevel >= 1)) {
+      if (localRedTouchItem1.redtouchType == 2)
+      {
+        j = localRedTouchItem1.count + 0;
+        i = 0;
+      }
+    }
     for (;;)
     {
-      if (j <= 0)
+      int k = i;
+      int m = j;
+      if (paramQQAppInterface.a(localRedTouchItem2, false))
       {
-        QLog.e("MosaicEffect", 1, "draw: mosaicHeight <= 0");
-        j = 1;
+        k = i;
+        m = j;
+        if (localRedTouchItem2.passThroughLevel >= 2)
+        {
+          if (localRedTouchItem2.redtouchType != 2) {
+            break label247;
+          }
+          m = j + localRedTouchItem2.count;
+          k = i;
+        }
+      }
+      label183:
+      if (QLog.isColorLevel()) {
+        QLog.d("WholePeopleConstant", 2, "getLebaRednumOrPoint redNum=" + m + ", redPoint=" + k + ", unreadMsg=" + localRedTouchItem2);
+      }
+      if (paramBoolean) {}
+      for (;;)
+      {
+        return m;
+        j = 0;
+        break;
+        label247:
+        k = i + 1;
+        m = j;
+        break label183;
+        m = k;
+      }
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, int paramInt2)
+  {
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeopleConstant", 2, "getMsgRedTouch redNum:" + paramInt1 + " redPoint:" + paramInt2);
+    }
+    if ((paramInt1 <= 0) && (paramInt2 <= 0)) {
+      return localAppInfo;
+    }
+    if (paramInt1 > 0)
+    {
+      localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      if (paramInt1 > 99) {
+        localRedTypeInfo.red_content.set("99+");
       }
       for (;;)
       {
+        localRedTypeInfo.red_type.set(5);
+        localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
+        localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
+        localAppInfo.iNewFlag.set(1);
+        return localAppInfo;
+        localRedTypeInfo.red_content.set(String.valueOf(paramInt1));
+      }
+    }
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    localRedTypeInfo.red_type.set(0);
+    localRedTypeInfo.red_desc.set("");
+    localRedTypeInfo.red_content.set("");
+    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
+    localAppInfo.iNewFlag.set(1);
+    return localAppInfo;
+  }
+  
+  public static EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeopleConstant", 2, "clearMsgRedPoint");
+    }
+    paramString = null;
+    Bundle localBundle = new Bundle();
+    paramBundle = new EIPCResult();
+    paramBundle.data = localBundle;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WholePeopleConstant", 2, "clearMsgRedPoint, app is null");
+      }
+      paramBundle.code = -1;
+      return paramBundle;
+    }
+    ((avsm)paramString.getManager(160)).a(10014);
+    paramBundle.code = 0;
+    return paramBundle;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch)
+  {
+    Object localObject1;
+    Object localObject2;
+    int j;
+    boolean bool2;
+    int i;
+    boolean bool1;
+    if (paramQQAppInterface != null)
+    {
+      localObject1 = (avsm)paramQQAppInterface.getManager(160);
+      paramQQAppInterface = ((avsm)localObject1).a(10013);
+      localObject2 = ((avsm)localObject1).a(10014);
+      if (!((avsm)localObject1).a(paramQQAppInterface, false)) {
+        break label1102;
+      }
+      if (paramQQAppInterface.redtouchType != 2) {
+        break label205;
+      }
+      j = paramQQAppInterface.count;
+      bool2 = false;
+      i = 0;
+      j += 0;
+      bool1 = true;
+    }
+    for (;;)
+    {
+      int k = i;
+      int m = j;
+      if (((avsm)localObject1).a((RedTouchItem)localObject2, false))
+      {
+        k = i;
+        m = j;
+        if (((RedTouchItem)localObject2).passThroughLevel >= 1)
+        {
+          if (((RedTouchItem)localObject2).redtouchType != 2) {
+            break label269;
+          }
+          m = j + ((RedTouchItem)localObject2).count;
+          k = i;
+        }
+      }
+      label123:
+      if (QLog.isColorLevel()) {
+        QLog.i("WholePeopleConstant", 2, "updateEntryRedTouch redNum:" + m + " redPoint:" + k + " hasUnnormal:" + bool2 + " isText:" + bool1);
+      }
+      if ((m <= 0) && (k <= 0) && (!bool2)) {
+        paramRedTouch.d();
+      }
+      label205:
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramQQAppInterface.redtouchType == 1)
+          {
+            bool1 = true;
+            bool2 = false;
+            i = 1;
+            j = 0;
+            break;
+          }
+          if ((paramQQAppInterface.redtouchType != 3) && (paramQQAppInterface.redtouchType != 4)) {
+            break label1102;
+          }
+          if (paramQQAppInterface.redtouchType == 4) {}
+          for (bool1 = true;; bool1 = false)
+          {
+            bool2 = true;
+            i = 0;
+            j = 0;
+            break;
+          }
+          k = i + 1;
+          m = j;
+          break label123;
+          if (m > 0)
+          {
+            paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
+            localObject1 = new BusinessInfoCheckUpdate.AppInfo();
+            if (m > 99) {
+              paramQQAppInterface.red_content.set("99+");
+            }
+            for (;;)
+            {
+              paramQQAppInterface.red_type.set(5);
+              paramQQAppInterface.red_desc.set("{'cn':'#FF0000'}");
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
+              paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+              return;
+              paramQQAppInterface.red_content.set(String.valueOf(m));
+            }
+          }
+          if ((bool2) && (bool1))
+          {
+            localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
+            localObject2 = new BusinessInfoCheckUpdate.AppInfo();
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_content.set(paramQQAppInterface.tips);
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(5);
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_desc.set("{'cn':'#FF0000'}");
+            ((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info.add((MessageMicro)localObject1);
+            ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.set(1);
+            paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject2);
+            return;
+          }
+          if ((!bool2) || (bool1)) {
+            break label1031;
+          }
+          localObject1 = new BusinessInfoCheckUpdate.AppInfo();
+          if (!TextUtils.isEmpty(paramQQAppInterface.icon))
+          {
+            if (!TextUtils.isEmpty(paramQQAppInterface.tips))
+            {
+              localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.tips);
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(4);
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("{'cn':'#00000000','cr':'#888888'}");
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
+              localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(bdaq.a(BaseApplicationImpl.sApplication.getApplicationContext(), 3.0F) + "");
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(9);
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
+            }
+            localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.icon);
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(3);
+            paramQQAppInterface = new JSONObject();
+            try
+            {
+              paramQQAppInterface.put("dot", 1);
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set(paramQQAppInterface.toString());
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
+              ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
+              paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+              try
+              {
+                paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
+                localObject1 = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
+                ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
+                ((LinearLayout.LayoutParams)localObject1).width = 0;
+                paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
+                paramQQAppInterface.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                paramQQAppInterface = paramRedTouch.findViewById(100);
+                paramQQAppInterface.setPadding(aepi.a(160.0F, paramQQAppInterface.getResources()), paramQQAppInterface.getPaddingTop(), paramQQAppInterface.getPaddingRight(), paramQQAppInterface.getPaddingBottom());
+                return;
+              }
+              catch (Exception paramQQAppInterface) {}
+              if (QLog.isColorLevel())
+              {
+                QLog.i("WholePeopleConstant", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+                return;
+              }
+            }
+            catch (JSONException localJSONException)
+            {
+              for (;;)
+              {
+                localJSONException.printStackTrace();
+              }
+            }
+          }
+        }
+        localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set(paramQQAppInterface.tips);
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(4);
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("{'cn':'#00000000','cr':'#888888'}");
+        ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add((MessageMicro)localObject2);
+        paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
+        paramQQAppInterface.red_type.set(0);
+        paramQQAppInterface.red_desc.set("");
+        paramQQAppInterface.red_content.set("");
+        ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
+        ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
+        paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
         try
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-          {
-            QLog.e("MosaicEffect", 1, "draw: Bitmap is NULL");
-            return;
-          }
+          paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
+          localObject1 = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
+          ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
+          ((LinearLayout.LayoutParams)localObject1).width = 0;
+          paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
+          paramQQAppInterface.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          paramQQAppInterface = paramRedTouch.findViewById(100);
+          paramQQAppInterface.setPadding(aepi.a(160.0F, paramQQAppInterface.getResources()), paramQQAppInterface.getPaddingTop(), paramQQAppInterface.getPaddingRight(), paramQQAppInterface.getPaddingBottom());
+          return;
         }
-        catch (Exception localException1)
-        {
-          QLog.e("MosaicEffect", 1, "draw: createBitmap failed ", localException1);
-          try
-          {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
-          }
-          catch (Exception localException2)
-          {
-            QLog.e("MosaicEffect", 1, "draw: alloc memory failed, do nothing", localException2);
-          }
-          continue;
-          this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_AndroidViewView.computeScroll();
-          i = this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-          float f = 1.0F / this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_AndroidGraphicsCanvas.scale(f, f);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-this.jdField_a_of_type_AndroidViewView.getScrollX(), -this.jdField_a_of_type_AndroidViewView.getScrollY());
-          this.jdField_a_of_type_Boolean = false;
-          if ((this.jdField_a_of_type_AndroidViewView instanceof bemt)) {
-            ((bemt)this.jdField_a_of_type_AndroidViewView).a(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          }
-          this.jdField_a_of_type_AndroidGraphicsCanvas.restoreToCount(i);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-          this.jdField_a_of_type_Boolean = true;
-          if ((this.jdField_a_of_type_AndroidViewView instanceof bemt)) {
-            ((bemt)this.jdField_a_of_type_AndroidViewView).a(paramCanvas);
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MosaicEffect", 2, "draw: " + (SystemClock.uptimeMillis() - l) + " ms");
-            return;
-          }
-        }
-      }
+        catch (Exception paramQQAppInterface) {}
+      } while (!QLog.isColorLevel());
+      label269:
+      QLog.i("WholePeopleConstant", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+      return;
+      label1031:
+      paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localObject1 = new BusinessInfoCheckUpdate.AppInfo();
+      paramQQAppInterface.red_type.set(0);
+      paramQQAppInterface.red_desc.set("");
+      paramQQAppInterface.red_content.set("");
+      ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.add(paramQQAppInterface);
+      ((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.set(1);
+      paramRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+      return;
+      label1102:
+      bool1 = true;
+      bool2 = false;
+      i = 0;
+      j = 0;
     }
   }
   
-  public void a(View paramView)
+  public static EIPCResult b(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeopleConstant", 2, "getMsgRedPoint");
+    }
+    paramString = null;
+    paramBundle = new Bundle();
+    EIPCResult localEIPCResult = new EIPCResult();
+    localEIPCResult.data = paramBundle;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      if (QLog.isColorLevel()) {
+        QLog.d("WholePeopleConstant", 2, "getMsgRedPoint, app is null");
+      }
+      localEIPCResult.code = -1;
+      return localEIPCResult;
+    }
+    paramString = (avsm)paramString.getManager(160);
+    RedTouchItem localRedTouchItem = paramString.a(10014);
+    int i;
+    if (paramString.a(localRedTouchItem, false)) {
+      if (localRedTouchItem.redtouchType == 2)
       {
-        if (!paramCanvas.getClipBounds(this.jdField_a_of_type_AndroidGraphicsRect)) {
-          break label159;
-        }
-        if ((!paramCanvas.isHardwareAccelerated()) && (this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getWidth() < this.jdField_a_of_type_AndroidGraphicsRect.width()) || (this.jdField_a_of_type_AndroidViewView.getHeight() < this.jdField_a_of_type_AndroidGraphicsRect.height()))) {
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight());
-        }
-        if (b)
-        {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-          paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i = localRedTouchItem.count + 0;
+        paramInt = 0;
       }
     }
-    label159:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof bemt))
+    for (;;)
     {
-      return;
-      QLog.e("MosaicEffect", 1, "onDraw: clipBound is empty " + this.jdField_a_of_type_AndroidGraphicsRect);
-      return;
+      paramBundle.putInt("redPointCount", paramInt);
+      paramBundle.putInt("redNumCount", i);
+      if (QLog.isColorLevel()) {
+        QLog.i("WholePeopleConstant", 2, "getMsgRedPoint redPointCount:" + paramInt + " redNumCount:" + i);
+      }
+      localEIPCResult.code = 0;
+      return localEIPCResult;
+      paramInt = 1;
+      i = 0;
+      continue;
+      paramInt = 0;
+      i = 0;
     }
-    ((bemt)this.jdField_a_of_type_AndroidViewView).b(this.jdField_a_of_type_AndroidGraphicsCanvas);
   }
 }
 

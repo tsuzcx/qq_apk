@@ -1,30 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-final class aljw
-  implements Animation.AnimationListener
+public final class aljw
+  implements BusinessObserver
 {
-  aljw(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
+    }
+    if (paramBoolean)
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772224);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
+      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljw
  * JD-Core Version:    0.7.0.1
  */

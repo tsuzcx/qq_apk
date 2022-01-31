@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
 import java.util.List;
 
 public class ocw
-  implements alkr
+  implements alpg
 {
   public void a(boolean paramBoolean, String paramString) {}
   

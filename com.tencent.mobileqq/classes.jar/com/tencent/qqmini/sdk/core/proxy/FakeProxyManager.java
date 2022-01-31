@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
-import bghr;
+import bgly;
 
 public class FakeProxyManager
-  implements bghr
+  implements bgly
 {
   public <T> T get(Class paramClass)
   {

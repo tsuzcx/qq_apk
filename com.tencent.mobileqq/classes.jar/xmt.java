@@ -1,22 +1,17 @@
-public class xmt
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+
+class xmt
+  implements View.OnClickListener
 {
-  public static String a(String paramString, int paramInt)
+  xmt(xms paramxms, xmv paramxmv) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramString.getBytes().length <= paramInt) {
-      return paramString;
-    }
-    int k = paramString.length();
-    int j = 0;
-    for (int i = 0;; i = j) {
-      if (j < k)
-      {
-        j += Character.charCount(paramString.codePointAt(j));
-        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
-      }
-      else
-      {
-        return paramString.substring(0, i);
-      }
+    if (xms.a(this.jdField_a_of_type_Xms) != null) {
+      xms.a(this.jdField_a_of_type_Xms).a((SlideItemInfo)this.jdField_a_of_type_Xmv.a.getTag());
     }
   }
 }

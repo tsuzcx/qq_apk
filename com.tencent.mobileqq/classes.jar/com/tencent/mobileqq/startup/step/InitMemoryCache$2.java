@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import amfn;
+import amkc;
 
 class InitMemoryCache$2
   implements Runnable
@@ -9,7 +9,7 @@ class InitMemoryCache$2
   
   public void run()
   {
-    amfn.a().c();
+    amkc.a().c();
   }
 }
 

@@ -1,21 +1,13 @@
-class bdfm
-  implements afdw
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+final class bdfm
+  implements MediaPlayer.OnCompletionListener
 {
-  bdfm(bdfl parambdfl) {}
-  
-  public boolean a(afdt paramafdt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(afdt paramafdt, String paramString1, String paramString2)
-  {
-    return false;
+    paramMediaPlayer.release();
+    bdfi.a = null;
   }
 }
 

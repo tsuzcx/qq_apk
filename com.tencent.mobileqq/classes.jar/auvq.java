@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class auvq
-  extends amle
+final class auvq
+  implements View.OnClickListener
 {
-  public auvq(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  auvq(Dialog paramDialog, String paramString) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      auvn.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.a.b * 1000000.0D));
-      auvn.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.a.a * 1000000.0D));
-      auvn.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

@@ -1,26 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import android.app.Activity;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.qphone.base.util.QLog;
 
-class bljp
-  implements View.OnClickListener
+public class bljp
 {
-  bljp(bljo parambljo, AEEditorFilterBean paramAEEditorFilterBean, int paramInt) {}
+  private static final String jdField_a_of_type_JavaLangString = bljp.class.getSimpleName();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bdjz jdField_a_of_type_Bdjz;
   
-  public void onClick(View paramView)
+  public bljp(Activity paramActivity)
   {
-    paramView = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean;
-    boolean bool = true;
-    if (bljo.a(this.jdField_a_of_type_Bljo) != null) {
-      bool = bljo.a(this.jdField_a_of_type_Bljo).a(this.jdField_a_of_type_Int, paramView);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private void b(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Bdjz != null) {
+      return;
     }
-    if (bool)
+    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131699726);
+    this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131694207), new bljq(this, paramRunnable));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bdjz != null) {
+      this.jdField_a_of_type_Bdjz.hide();
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    try
     {
-      bljo.a(this.jdField_a_of_type_Bljo, this.jdField_a_of_type_Int);
-      int i = bljo.a(this.jdField_a_of_type_Bljo);
-      bljo.a(this.jdField_a_of_type_Bljo, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bljo.notifyItemChanged(i);
-      this.jdField_a_of_type_Bljo.notifyItemChanged(bljo.a(this.jdField_a_of_type_Bljo));
+      b(paramRunnable);
+      if (!this.jdField_a_of_type_Bdjz.isShowing())
+      {
+        this.jdField_a_of_type_Bdjz.setCancelable(false);
+        this.jdField_a_of_type_Bdjz.show();
+      }
+      return;
+    }
+    catch (WindowManager.BadTokenException paramRunnable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "", paramRunnable);
     }
   }
 }

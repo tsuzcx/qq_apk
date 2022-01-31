@@ -73,7 +73,7 @@ public abstract class BaseGaInvite
       float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297253);
       str = mww.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
     }
-    paramTextView = paramVideoAppInterface.getApp().getString(2131695981);
+    paramTextView = paramVideoAppInterface.getApp().getString(2131695983);
     int i = paramVideoAppInterface.a(paramInt, paramString2);
     paramInt = i;
     if (i == 0) {
@@ -103,7 +103,7 @@ public abstract class BaseGaInvite
     label161:
     for (i = 1; i != 0; i = 0)
     {
-      localObject2 = localContext.getString(2131696117);
+      localObject2 = localContext.getString(2131696119);
       localObject1 = paramString;
       paramString = (String)localObject2;
       if (QLog.isColorLevel()) {
@@ -125,7 +125,7 @@ public abstract class BaseGaInvite
       }
       localObject2 = localContext.getResources();
       if (paramBoolean1) {}
-      for (i = 2131696135;; i = 2131696137)
+      for (i = 2131696137;; i = 2131696139)
       {
         paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
         break;
@@ -139,7 +139,7 @@ public abstract class BaseGaInvite
     paramString = mww.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
     Object localObject2 = localContext.getResources();
     if (paramBoolean1) {}
-    for (i = 2131696135;; i = 2131696137)
+    for (i = 2131696137;; i = 2131696139)
     {
       paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
       break;
@@ -196,7 +196,7 @@ public abstract class BaseGaInvite
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         break label123;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839162);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839163);
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label160;
       }

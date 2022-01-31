@@ -1,26 +1,16 @@
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.os.Looper;
 
-public class bgqb
-  implements bgqi
+public final class bgqb
 {
-  public bgqb(AppRuntimeLoaderManager paramAppRuntimeLoaderManager, bgqi parambgqi) {}
+  public static final bgqc a;
   
-  public void a(int paramInt, String paramString, bgqg parambgqg)
+  static
   {
-    try
+    if (Looper.getMainLooper() != null) {}
+    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
     {
-      if (this.jdField_a_of_type_Bgqi != null) {
-        this.jdField_a_of_type_Bgqi.a(paramInt, paramString, parambgqg);
-      }
-      if (paramInt != 0) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppRuntimeLoaderManager.removeRuntimeLoader(parambgqg);
-      }
+      a = new bgqc(localLooper);
       return;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
     }
   }
 }

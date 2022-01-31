@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
 import android.os.Bundle;
-import bguw;
+import bgzd;
 
 public class GameReportManager$1
   implements Runnable
 {
-  public GameReportManager$1(bguw parambguw) {}
+  public GameReportManager$1(bgzd parambgzd) {}
   
   public void run()
   {
-    if (!bguw.a(this.this$0)) {
-      new Bundle().putParcelable("app_config", bguw.a(this.this$0));
+    if (!bgzd.a(this.this$0)) {
+      new Bundle().putParcelable("app_config", bgzd.a(this.this$0));
     }
   }
 }

@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ayfg;
-import aygn;
-import bcws;
+import ayjp;
+import aykw;
+import bdbb;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.widget.ListView;
 import java.util.List;
@@ -19,8 +19,8 @@ public class MessageSearchDetailFragment
 {
   private static FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ayfg jdField_a_of_type_Ayfg;
-  private bcws jdField_a_of_type_Bcws;
+  private ayjp jdField_a_of_type_Ayjp;
+  private bdbb jdField_a_of_type_Bdbb;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private FullMessageSearchResult.SearchResultItem b;
@@ -45,17 +45,17 @@ public class MessageSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559254, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367555));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369501));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559253, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367565));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369519));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bcws != null) {
-      this.jdField_a_of_type_Bcws.d();
+    if (this.jdField_a_of_type_Bdbb != null) {
+      this.jdField_a_of_type_Bdbb.d();
     }
   }
   
@@ -65,11 +65,11 @@ public class MessageSearchDetailFragment
     if ((this.b == null) || (this.b.secondPageMessageUniseq == null)) {}
     for (int i = 0;; i = this.b.secondPageMessageUniseq.size())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719569, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Bcws = new bcws(getActivity(), getActivity().app);
-      this.jdField_a_of_type_Ayfg = new aygn(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayfg);
-      this.jdField_a_of_type_Ayfg.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719581, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Bdbb = new bdbb(getActivity(), getActivity().app);
+      this.jdField_a_of_type_Ayjp = new aykw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayjp);
+      this.jdField_a_of_type_Ayjp.a();
       return;
     }
   }

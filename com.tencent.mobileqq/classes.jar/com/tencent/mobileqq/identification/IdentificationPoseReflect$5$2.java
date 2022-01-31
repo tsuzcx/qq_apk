@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
-import asti;
-import astk;
-import astn;
+import asxr;
+import asxt;
+import asxw;
 
 public class IdentificationPoseReflect$5$2
   implements Runnable
 {
-  public IdentificationPoseReflect$5$2(astk paramastk) {}
+  public IdentificationPoseReflect$5$2(asxt paramasxt) {}
   
   public void run()
   {

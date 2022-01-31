@@ -1,177 +1,22 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.structmsg.AIOVideoPlayController.1;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.util.Comparator;
 
 public class azqe
+  implements Comparator<File>
 {
-  private static azqe jdField_a_of_type_Azqe;
-  private aohb jdField_a_of_type_Aohb;
-  public boolean a;
-  @Deprecated
-  public boolean b;
-  private boolean c;
+  public azqe(LocalCrashCollector paramLocalCrashCollector) {}
   
-  private azqe()
+  public int a(File paramFile1, File paramFile2)
   {
-    ThreadManager.executeOnSubThread(new AIOVideoPlayController.1(this));
-  }
-  
-  public static azqe a()
-  {
-    if (jdField_a_of_type_Azqe == null) {}
-    try
-    {
-      if (jdField_a_of_type_Azqe == null) {
-        jdField_a_of_type_Azqe = new azqe();
-      }
-      return jdField_a_of_type_Azqe;
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
-    finally {}
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_Aohb != null) {
-      return this.jdField_a_of_type_Aohb.jdField_a_of_type_Boolean;
+    if (l < 0L) {
+      return 1;
     }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    if (this.jdField_a_of_type_Aohb != null) {
-      return this.jdField_a_of_type_Aohb.b;
-    }
-    return false;
-  }
-  
-  private boolean d()
-  {
-    if (this.jdField_a_of_type_Aohb != null) {
-      return this.jdField_a_of_type_Aohb.c;
-    }
-    return false;
-  }
-  
-  private boolean e()
-  {
-    if (this.jdField_a_of_type_Aohb != null) {
-      return this.jdField_a_of_type_Aohb.d;
-    }
-    return false;
-  }
-  
-  public void a(View paramView, StructMsgForGeneralShare paramStructMsgForGeneralShare)
-  {
-    paramView = (PAVideoView)paramView.findViewById(2131377079);
-    if (paramView != null) {
-      paramView.c();
-    }
-  }
-  
-  public void a(aohb paramaohb)
-  {
-    this.jdField_a_of_type_Aohb = paramaohb;
-  }
-  
-  public boolean a()
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 8) {}
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (Integer.parseInt(localObject[7]) != 0) {
-          continue;
-        }
-        this.c = false;
-        if (Integer.parseInt(localObject[9]) != 0) {
-          continue;
-        }
-        this.b = false;
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        continue;
-        this.b = true;
-        continue;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): mDPCAllow =" + this.c + ", mEnbleAutoPlayInNotPAAIO = " + this.b);
-      }
-      return this.c;
-      this.c = true;
-    }
-  }
-  
-  public boolean a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    boolean bool;
-    if (a())
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null) {
-        return false;
-      }
-      if (paramInt1 == 3)
-      {
-        if ((!NetworkUtils.isWifiConnected(paramContext)) || (!bjxj.f(localQQAppInterface))) {
-          break label169;
-        }
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "allowAutoPlay(): playType=" + paramInt1 + ", uinType = " + paramInt2 + ", result = " + bool + ", mDPCAllow = " + this.c);
-      }
-      return bool;
-      if (paramInt1 == 1)
-      {
-        if (paramInt2 == 1) {
-          bool = b();
-        } else {
-          bool = c();
-        }
-      }
-      else if (paramInt1 == 2)
-      {
-        if (paramInt2 == 1) {
-          bool = d();
-        } else {
-          bool = e();
-        }
-      }
-      else {
-        label169:
-        bool = false;
-      }
-    }
+    return 0;
   }
 }
 

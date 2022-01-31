@@ -1,78 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class wgc
-  extends uhw<wfn, ukn>
+  implements DialogInterface.OnClickListener
 {
-  public wgc(wfn paramwfn)
-  {
-    super(paramwfn);
-  }
+  public wgc(StoryPickerFragment paramStoryPickerFragment) {}
   
-  private void c(@NonNull wfn paramwfn, @NonNull ukn paramukn)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((wfn.a(paramwfn) == null) || (!wfn.a(paramwfn).a.date.equals(paramukn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
+    switch (paramInt)
     {
-      wsv.b(this.TAG, "ignore this upload status event. %s.", paramukn.toString());
+    case 0: 
+    default: 
       return;
     }
-    wsv.a(this.TAG, "receive upload status change event. %s.", paramukn.toString());
-    int i = 0;
-    for (;;)
-    {
-      StoryVideoItem localStoryVideoItem;
-      if (i < wfn.a(paramwfn).a().size())
-      {
-        localStoryVideoItem = (StoryVideoItem)wfn.a(paramwfn).a().get(i);
-        if (!localStoryVideoItem.equals(paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
-          break label159;
-        }
-        if (paramukn.b != null) {
-          break label135;
-        }
-        localStoryVideoItem.copy(paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      }
-      for (;;)
-      {
-        paramwfn.a();
-        wsv.d(this.TAG, "can't find the video whose state has been changed.");
-        return;
-        label135:
-        wfn.a(paramwfn).a(localStoryVideoItem);
-        wfn.a(paramwfn).a(paramukn.b, i);
-      }
-      label159:
-      i += 1;
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
   }
-  
-  public void a(@NonNull wfn paramwfn, @NonNull ukn paramukn)
-  {
-    if (paramukn.a()) {
-      wsv.b(this.TAG, "ignore this upload status event, because it's a troop video.");
-    }
-    do
-    {
-      return;
-      if (paramukn.c())
-      {
-        wsv.a(this.TAG, "receive share group video upload status change event. %s.", paramukn.toString());
-        return;
-      }
-    } while (!paramukn.b());
-    wsv.a(this.TAG, "receive personal video upload status change event. %s.", paramukn.toString());
-    c(paramwfn, paramukn);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ukn.class;
-  }
-  
-  public void b(@NonNull wfn paramwfn, @NonNull ukn paramukn) {}
 }
 
 

@@ -1,36 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
 
-class avii
+public class avii
   implements View.OnClickListener
 {
-  avii(avhw paramavhw, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  avii(avhf paramavhf) {}
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      avhw.a(this.jdField_a_of_type_Avhw, 1);
-      new azmo(this.jdField_a_of_type_Avhw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Avhw.a.a.a).a();
-    }
-    for (;;)
-    {
-      avhw.b(this.jdField_a_of_type_Avhw);
-      return;
-      if (paramView == this.b)
-      {
-        avhw.a(this.jdField_a_of_type_Avhw, 2);
-        new azmo(this.jdField_a_of_type_Avhw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Avhw.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        avhw.a(this.jdField_a_of_type_Avhw, 3);
-        new azmo(this.jdField_a_of_type_Avhw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Avhw.a.a.a).a();
-      }
-    }
+    this.a.c(paramView);
+    new aveg().h("video").i("playpage_like_click").b().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (auul)this.a.a.getManager(106)), 16, null, false);
   }
 }
 

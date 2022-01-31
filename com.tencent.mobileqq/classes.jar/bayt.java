@@ -1,33 +1,67 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.CustomFace;
 
 public class bayt
-  extends ClickableSpan
+  extends batj
 {
-  public bayt(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bbaa parambbaa) {}
+  public im_msg_body.CustomFace a;
   
-  public void onClick(View paramView)
+  public bayt(bayf parambayf, bayk parambayk)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", String.format("https://buluo.qq.com/mobile/topic_video_group.html?themeid=%d&_bid=128&_wwv=1024&_wv=1027&webview=1", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bbaa.h) }));
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
-    if (this.jdField_a_of_type_Bbaa.c == 31) {}
-    for (paramView = "1";; paramView = "2")
+    super(parambayf, parambayk);
+  }
+  
+  void t()
+  {
+    if (this.jdField_a_of_type_Bayk.a != null)
     {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_theme", 0, 0, this.jdField_a_of_type_Bbaa.d, this.jdField_a_of_type_Bbaa.b + "", "", paramView);
-      return;
+      x();
+      awki localawki = new awki();
+      localawki.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+      localawki.d = this.c;
+      localawki.c = this.d;
+      localawki.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bayk.i;
+      localawki.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      localawki.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace;
+      this.jdField_a_of_type_Bayk.a.b(localawki);
+      a(true);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void x()
   {
-    paramTextPaint.setColor(-18432);
-    paramTextPaint.setUnderlineText(false);
+    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
+    localCustomFace.uint32_file_id.set((int)this.jdField_a_of_type_Long);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      localObject = (bawy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localCustomFace.uint32_server_ip.set(a(((bawy)localObject).jdField_a_of_type_JavaLangString));
+      localCustomFace.uint32_server_port.set(((bawy)localObject).jdField_a_of_type_Int);
+    }
+    localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
+    localCustomFace.uint32_useful.set(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
+    }
+    localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+    localCustomFace.str_file_path.set(this.d);
+    Object localObject = localCustomFace.uint32_origin;
+    if (this.l) {}
+    for (int i = 1;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      localCustomFace.uint32_width.set(this.p);
+      localCustomFace.uint32_height.set(this.jdField_q_of_type_Int);
+      localCustomFace.uint32_size.set((int)this.jdField_q_of_type_Long);
+      localCustomFace.uint32_source.set(200);
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace = localCustomFace;
+      return;
+    }
   }
 }
 

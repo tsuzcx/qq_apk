@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amoo;
-import amot;
-import amqu;
-import amrb;
-import amrd;
+import amtd;
+import amti;
+import amvj;
+import amvq;
+import amvs;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,19 +16,19 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$17
   implements Runnable
 {
-  public ARTransferPromotionRenderable$17(amrb paramamrb, View paramView) {}
+  public ARTransferPromotionRenderable$17(amvq paramamvq, View paramView) {}
   
   public void run()
   {
-    float f = amrb.a(this.this$0).getRotateDegree();
-    boolean bool = amrb.a(this.this$0).a.isEmpty();
-    amrb.d(this.this$0);
+    float f = amvq.a(this.this$0).getRotateDegree();
+    boolean bool = amvq.a(this.this$0).a.isEmpty();
+    amvq.d(this.this$0);
     if (this.this$0.b != 4)
     {
       QLog.d("ARTransferPromotionRenderable", 1, "not under nativeGameStatus:GameStatus_INSIDE_WORLD_360 mNativeGameStatus:" + this.this$0.b);
-      amrb.d(this.this$0, false);
+      amvq.d(this.this$0, false);
     }
-    amot localamot;
+    amti localamti;
     do
     {
       do
@@ -38,24 +38,24 @@ public class ARTransferPromotionRenderable$17
         if (!bool) {
           break;
         }
-      } while (amrb.a(this.this$0) == null);
-      amrb.a(this.this$0).b(2, 0);
+      } while (amvq.a(this.this$0) == null);
+      amvq.a(this.this$0).b(2, 0);
       return;
-      localamot = amrb.a(this.this$0).a((int)f);
-      if ((localamot == null) || (TextUtils.isEmpty(localamot.c))) {
+      localamti = amvq.a(this.this$0).a((int)f);
+      if ((localamti == null) || (TextUtils.isEmpty(localamti.c))) {
         break;
       }
-    } while (amrb.a(this.this$0) != 6);
-    if (amrb.a(this.this$0).a()) {
-      amrb.a(this.this$0).c();
+    } while (amvq.a(this.this$0) != 6);
+    if (amvq.a(this.this$0).a()) {
+      amvq.a(this.this$0).b();
     }
-    amrb.a(this.this$0, localamot);
-    amrb.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
-    amrb.a(this.this$0);
+    amvq.a(this.this$0, localamti);
+    amvq.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
+    amvq.a(this.this$0);
     ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.17.3(this));
     QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER fit current degree:" + f);
     return;
-    amrb.d(this.this$0, false);
+    amvq.d(this.this$0, false);
     QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER not fit degree " + f);
   }
 }

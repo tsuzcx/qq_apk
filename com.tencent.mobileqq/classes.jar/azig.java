@@ -1,14 +1,48 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.maxvideo.mediadevice.AVCodec;
 
-public abstract interface azig
+public class azig
 {
-  public abstract LoadExtResult a(azij paramazij);
+  public static azig a;
+  public static String a;
+  private azgb a;
   
-  public abstract void a(azij paramazij, azin paramazin);
+  static
+  {
+    jdField_a_of_type_Azig = new azig();
+  }
   
-  public abstract void a(String paramString);
+  private azig()
+  {
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
   
-  public abstract boolean a(String paramString);
+  public static azig a()
+  {
+    return jdField_a_of_type_Azig;
+  }
+  
+  public azgb a()
+  {
+    if (this.jdField_a_of_type_Azgb == null) {
+      this.jdField_a_of_type_Azgb = new azgb(40, azib.c);
+    }
+    return this.jdField_a_of_type_Azgb;
+  }
+  
+  public azge a()
+  {
+    return azge.a();
+  }
+  
+  public AVCodec a()
+  {
+    return AVCodec.get();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Azgb = null;
+  }
 }
 
 

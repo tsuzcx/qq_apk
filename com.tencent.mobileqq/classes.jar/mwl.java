@@ -8,9 +8,9 @@ import com.tencent.sharp.jni.TraeAudioSession;
 import com.tencent.widget.AdapterView;
 
 class mwl
-  implements bhqp
+  implements bhuw
 {
-  mwl(mwk parammwk, Button paramButton, long paramLong, bhpy parambhpy) {}
+  mwl(mwk parammwk, Button paramButton, long paramLong, bhuf parambhuf) {}
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
@@ -29,7 +29,7 @@ class mwl
         if (QLog.isColorLevel()) {
           QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
         }
-        azmj.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
       }
     }
     for (;;)
@@ -37,7 +37,7 @@ class mwl
       mwk.a(this.jdField_a_of_type_Mwk, true);
       this.jdField_a_of_type_Mwk.a.a(mvh.a());
       this.jdField_a_of_type_Mwk.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       label199:
       if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
@@ -45,21 +45,21 @@ class mwl
         if (QLog.isColorLevel()) {
           QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
         }
-        azmj.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
       }
       else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
         }
-        azmj.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
       }
       else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
         }
-        azmj.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
       }
     }
   }

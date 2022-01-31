@@ -1,32 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class aguh
-  implements aguj
+  implements DialogInterface.OnClickListener
 {
-  aguh(agug paramagug) {}
+  aguh(agti paramagti, PublicAccountInfo paramPublicAccountInfo, alzl paramalzl) {}
   
-  public void a(List<agtk> paramList, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
-      if (paramList == null) {}
-      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
-      {
-        QLog.i("StickerRecManager", 2, paramList);
-        return;
-      }
-    }
-    paramList = bjbk.a(paramList);
-    if (paramList == null)
-    {
-      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
-      return;
-    }
-    bjbk.a().a(paramString1, paramList.toString(), paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Alzl.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Agti.a(2, null);
   }
 }
 

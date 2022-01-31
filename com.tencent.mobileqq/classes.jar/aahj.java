@@ -1,41 +1,56 @@
-import android.app.Activity;
 import android.content.Context;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import java.lang.ref.WeakReference;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.UUID;
 
-public final class aahj
-  implements AdCanvasAdapter
+public class aahj
+  extends bfiu
 {
-  public int getQueueLength(WeakReference<Context> paramWeakReference)
+  private static final String b = ;
+  
+  public static String a()
   {
-    return AdSettingsUtil.getQueueLength(paramWeakReference);
+    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
   }
   
-  public AdError show(AdCanvasAdapter.Params paramParams)
+  public static String a(Context paramContext)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
+    String str = "" + ((TelephonyManager)localObject).getDeviceId();
+    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
+    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
+    long l2 = str.hashCode();
+    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+  }
+  
+  public static String b()
+  {
+    try
     {
-      aanp.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+      InetAddress localInetAddress;
+      do
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while (localInetAddress.isLoopbackAddress());
+      Object localObject = localInetAddress.getHostAddress().toString();
+      return localObject;
     }
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    localObject = AdCanvasDataBuilderV2.build(((Activity)paramParams.activity.get()).getApplicationContext(), (Ad)localObject, paramParams.autoDownload);
-    if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
-    {
-      aanp.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, (AdCanvasData)localObject, paramParams.extrasForIntent);
-    return new AdError(0);
+    catch (SocketException localSocketException) {}
+    return null;
   }
 }
 

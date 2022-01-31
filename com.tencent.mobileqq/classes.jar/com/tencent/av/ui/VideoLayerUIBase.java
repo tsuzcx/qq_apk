@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import azmj;
+import azqs;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
@@ -870,31 +870,31 @@ public class VideoLayerUIBase
   {
     if (paramlid.jdField_i_of_type_Int == 3000) {
       if (k()) {
-        azmj.b(null, "CliOper", "", "", "0X80041B3", "0X80041B3", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80041B3", "0X80041B3", 0, 0, "", "", "", "");
       }
     }
     while (paramlid.jdField_i_of_type_Int != 1)
     {
       return;
-      azmj.b(null, "CliOper", "", "", "0X80041B2", "0X80041B2", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80041B2", "0X80041B2", 0, 0, "", "", "", "");
       return;
     }
     if (k())
     {
       if (paramlid.C == 10)
       {
-        azmj.b(null, "CliOper", "", "", "0X8005939", "0X8005939", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005939", "0X8005939", 0, 0, "", "", "", "");
         return;
       }
-      azmj.b(null, "CliOper", "", "", "0X80046E0", "0X80046E0", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80046E0", "0X80046E0", 0, 0, "", "", "", "");
       return;
     }
     if (paramlid.C == 10)
     {
-      azmj.b(null, "CliOper", "", "", "0X8005938", "0X8005938", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8005938", "0X8005938", 0, 0, "", "", "", "");
       return;
     }
-    azmj.b(null, "CliOper", "", "", "0X80046DF", "0X80046DF", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X80046DF", "0X80046DF", 0, 0, "", "", "", "");
   }
   
   public boolean b(String paramString, int paramInt)
@@ -1272,7 +1272,7 @@ public class VideoLayerUIBase
   protected void n()
   {
     this.jdField_a_of_type_ArrayOfMgp = new mgp[MultiVideoCtrlLayerUIBase.b];
-    int i = aekt.a(115.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = aepi.a(115.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     if (ImmersiveUtils.isSupporImmersive() != 1) {
       i -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
     }
@@ -1285,7 +1285,7 @@ public class VideoLayerUIBase
         this.jdField_a_of_type_ArrayOfMgp[j].a(this.jdField_a_of_type_AndroidContentContext);
         this.jdField_a_of_type_ArrayOfMgp[j].a(1);
         this.jdField_a_of_type_ArrayOfMgp[j].h(-1);
-        this.jdField_a_of_type_ArrayOfMgp[j].a(2130841796, 2130841795);
+        this.jdField_a_of_type_ArrayOfMgp[j].a(2130841809, 2130841808);
         this.jdField_a_of_type_ArrayOfMgp[j].d(this.jdField_a_of_type_Mll.b());
         if (j == 0) {
           this.jdField_a_of_type_ArrayOfMgp[j].c(j * 2);
@@ -1365,7 +1365,7 @@ public class VideoLayerUIBase
     for (;;)
     {
       return;
-      int i = aekt.a(paramInt, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = aepi.a(paramInt, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramInt = i;
       if (ImmersiveUtils.isSupporImmersive() != 1) {
         paramInt = i - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);

@@ -1,6 +1,21 @@
-public abstract interface vuc
+import android.view.View;
+import android.view.ViewGroup;
+
+public class vuc
+  extends vua
 {
-  public abstract boolean a(vtz paramvtz, int paramInt1, int paramInt2);
+  public final View b;
+  
+  public vuc(View paramView)
+  {
+    super((ViewGroup)paramView.getParent());
+    this.b = paramView;
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return this.b;
+  }
 }
 
 

@@ -1,74 +1,29 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
 public class adcs
-  extends alox
+  implements View.OnClickListener
 {
-  public adcs(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcs(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.d(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
-      }
-      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-      }
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+    default: 
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
-    }
-    for (;;)
-    {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692210), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
-  }
-  
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
-    }
-    LoginInfoActivity.d(this.a);
-    if (paramBoolean)
-    {
-      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
-      {
-        LoginInfoActivity.a(this.a).remove(paramInt2);
-        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      }
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694646), 0).b(this.a.getTitleBarHeight());
+    ((axlx)this.a.app.getManager(36)).b("100190.100194");
+    paramView = new Intent();
+    paramView.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingMsgClearFragment.class);
+    azqs.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
+    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
   }
 }
 

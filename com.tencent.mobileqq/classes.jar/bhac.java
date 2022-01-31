@@ -1,23 +1,18 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bhac
-  implements bghv<bgms>
+public final class bhac
+  implements View.OnClickListener
 {
-  public static bgms a(bgho parambgho)
-  {
-    return (bgms)parambgho.a(new bhac());
-  }
+  public bhac(Dialog paramDialog, TianShuAccess.AdItem paramAdItem, String paramString) {}
   
-  public bgms a(bghl parambghl)
+  public void onClick(View paramView)
   {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer))
-    {
-      QMLog.w("Action", "Excepted AppBrandPageContainer, but is " + parambghl);
-      return null;
-    }
-    return ((AppBrandPageContainer)parambghl).a();
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.jdField_a_of_type_JavaLangString, 122);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import aekt;
+import aepi;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -38,7 +38,7 @@ public final class PublicAccountUtil$20
     catch (Exception localException)
     {
       QLog.e("PublicAccountUtil", 1, "reportPushEffectEvent", localException);
-      aekt.a("PublicAccountUtil", localException.toString(), localException);
+      aepi.a("PublicAccountUtil", localException.toString(), localException);
     }
   }
 }

@@ -1,25 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.BindGroupFragment;
 
-public final class bfdh
-  implements Parcelable.Creator<Friend>
+public class bfdh
+  implements View.OnClickListener
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
+  public bfdh(BindGroupFragment paramBindGroupFragment) {}
   
-  public Friend[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new Friend[paramInt];
+    BindGroupFragment.a(this.a).finish();
   }
 }
 

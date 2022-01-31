@@ -1,96 +1,165 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
 
-class azys
-  extends alyr
+public class azys
+  extends azut
 {
-  azys(azyr paramazyr) {}
+  protected boolean a;
   
-  protected void a(boolean paramBoolean, azyv paramazyv)
+  protected int b()
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    return 2;
+  }
+  
+  @TargetApi(16)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
+    Resources localResources = paramContext.getResources();
+    AbsShareMsg localAbsShareMsg = (AbsShareMsg)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    int i = aepi.a(10.0F, localResources);
+    if (paramView == null)
     {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (paramazyv == null)
+      paramBundle = new LinearLayout(paramContext);
+      paramBundle.setOrientation(1);
+      azyu localazyu = new azyu(null);
+      paramBundle.setTag(2131374089, localazyu);
+      paramView = paramBundle.getLayoutParams();
+      if (paramView == null)
       {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
-      }
-    }
-    else
-    {
-      if (!azyr.a(this.a).l) {
-        break label73;
+        paramView = new LinearLayout.LayoutParams(-1, -2);
+        paramBundle.setLayoutParams(paramView);
+        paramView = new TextView(paramContext);
+        paramView.setSingleLine(true);
+        paramView.setCompoundDrawablePadding(i);
+        paramView.setGravity(16);
+        paramView.setEllipsize(TextUtils.TruncateAt.END);
+        paramView.setTextColor(-16777216);
+        paramView.setTextSize(2, 16.0F);
+        paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        paramView.setPadding(i, i, i, i);
+        paramBundle.addView(paramView);
+        TextView localTextView = new TextView(paramContext);
+        localTextView.setTextColor(-16777216);
+        localTextView.setMaxLines(2);
+        localTextView.setEllipsize(TextUtils.TruncateAt.END);
+        localTextView.setTextSize(2, 12.0F);
+        localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        localTextView.setPadding(i, 0, i, i);
+        paramBundle.addView(localTextView);
+        ImageView localImageView = new ImageView(paramContext);
+        Object localObject = new LinearLayout.LayoutParams(BaseChatItemLayout.A, (int)(BaseChatItemLayout.e * 0.468D));
+        ((LinearLayout.LayoutParams)localObject).gravity = 1;
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramBundle.addView(localImageView);
+        paramContext = new TextView(paramContext);
+        paramContext.setTextColor(-7829368);
+        paramContext.setTextSize(2, 12.0F);
+        paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        paramContext.setCompoundDrawablePadding(aepi.a(5.0F, localResources));
+        localObject = localResources.getDrawable(2130846865);
+        ((Drawable)localObject).setBounds(0, 0, aepi.a(18.0F, localResources), aepi.a(10.0F, localResources));
+        paramContext.setCompoundDrawables((Drawable)localObject, null, null, null);
+        paramContext.setPadding(i, i, i, i);
+        paramBundle.addView(paramContext);
+        localazyu.jdField_a_of_type_AndroidWidgetTextView = paramView;
+        localazyu.b = localTextView;
+        localazyu.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localazyu.c = paramContext;
+        localazyu.jdField_a_of_type_AndroidWidgetLinearLayout = paramBundle;
+        paramView = localazyu;
+        paramContext = paramBundle;
+        label443:
+        if (!this.jdField_a_of_type_Boolean) {
+          break label517;
+        }
+        paramContext.setPadding(i, i, i, i);
+        label462:
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+          break label528;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsgItemLayoutMicro", 2, "getView but parentMsg or message is null");
+        }
       }
     }
     for (;;)
     {
-      return;
-      ??? = paramazyv.c;
+      return paramContext;
+      paramView.width = -1;
+      paramView.height = -2;
       break;
-      label73:
-      if ((!azyr.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(azyr.a(this.a), 100L);
-      }
-      if (paramazyv != null)
+      paramContext = (LinearLayout)paramView;
+      paramView = (azyu)paramContext.getTag(2131374089);
+      break label443;
+      label517:
+      paramContext.setPadding(0, 0, 0, 0);
+      break label462;
+      label528:
+      i = aepi.a(24.0F, localResources);
+      try
       {
-        if (paramazyv.a()) {
-          azyl.a(azyr.a(this.a), paramazyv.a(), 2);
-        }
-        if (paramazyv.b())
+        paramBundle = URLDrawable.URLDrawableOptions.obtain();
+        paramBundle.mRequestWidth = i;
+        paramBundle.mRequestHeight = i;
+        paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mContentCover, paramBundle);
+        paramBundle.setDecodeHandler(bcyz.a);
+        paramBundle.setBounds(0, 0, i, i);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBundle, null, null, null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localAbsShareMsg.mContentTitle);
+        paramView.b.setText(localAbsShareMsg.mContentSummary);
+        paramView.c.setText(alud.a(2131715005));
+        if (!TextUtils.isEmpty(localAbsShareMsg.mMsg_I_ActionData))
         {
-          ??? = paramazyv.b();
-          if (??? != null)
+          try
           {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              azyl.c(azyr.a(this.a), (String)localObject2);
-            }
+            paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mMsg_I_ActionData, null);
+            paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+            return paramContext;
+          }
+          catch (IllegalArgumentException paramView) {}
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("StructMsgItemLayoutMicro", 2, "getView fail");
+          return paramContext;
+        }
+      }
+      catch (Throwable paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsgItemLayoutMicro", 2, "getTitleView fail e=" + paramBundle.getMessage());
           }
         }
-        paramazyv.a();
-      }
-      synchronized (azyr.c())
-      {
-        azyr.c(this.a, false);
-        azyr.d(this.a, true);
-        if ((paramazyv == null) || (!paramazyv.b)) {
-          continue;
-        }
-        azyl.a(azyr.a(this.a), paramazyv.c, false);
-        ??? = (aonj)aogj.a().a(607);
-        if ((??? == null) || (((aonj)???).a)) {
-          continue;
-        }
-        azyt.a(azyr.a(this.a), paramazyv.c);
-        return;
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
       }
     }
+    return paramContext;
   }
   
-  protected void b(boolean paramBoolean, azyv arg2)
+  public String b()
   {
-    synchronized ()
-    {
-      azyr.a(this.a, false);
-      return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, azyv arg2)
-  {
-    synchronized ()
-    {
-      azyr.b(this.a, false);
-      return;
-    }
+    return "layoutMicro";
   }
 }
 

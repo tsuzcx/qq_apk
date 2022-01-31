@@ -1,12 +1,9 @@
-public class wsw
+public abstract class wsw
+  extends wss
+  implements wta, wtb
 {
-  public static void a(int paramInt, String paramString)
-  {
-    wsy localwsy = new wsy();
-    localwsy.a(paramInt, 1);
-    localwsy.a = paramString;
-    ung.a().a(localwsy, new wsx());
-  }
+  public wsx a;
+  protected wsy a;
 }
 
 

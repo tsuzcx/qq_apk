@@ -13,10 +13,10 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityManager;
-import azmz;
-import bedq;
-import befr;
-import befu;
+import azri;
+import behz;
+import beka;
+import bekd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -62,7 +62,7 @@ public class CustomWebView
   public static String sLastContextLog;
   protected boolean attachedToWindow;
   String cookieUrl = "";
-  bedq cookiesCallback = null;
+  behz cookiesCallback = null;
   protected boolean isDestroyed;
   protected boolean isFirstLoad = true;
   public boolean isPaused = true;
@@ -126,7 +126,7 @@ public class CustomWebView
     if (QLog.isDevelopLevel()) {
       QLog.i("webviewLoad", 4, "cost:" + (System.currentTimeMillis() - l) + " " + paramString);
     }
-    azmz.a(null).a("webviewLoad", paramString);
+    azri.a(null).a("webviewLoad", paramString);
   }
   
   private Intent getIntent()
@@ -165,7 +165,7 @@ public class CustomWebView
       do
       {
         return false;
-        localObject = befr.b(paramnnk.jdField_a_of_type_JavaLangString);
+        localObject = beka.b(paramnnk.jdField_a_of_type_JavaLangString);
       } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
       this.cookiesCallback = new nnj(this, paramnnk);
       localObject = SwiftBrowserCookieMonster.a(paramnnk.jdField_a_of_type_JavaLangString);
@@ -678,10 +678,10 @@ public class CustomWebView
           QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl222: " + bool1 + ", loadUrl url:" + ndq.b(paramString, new String[0]));
           com.tencent.mobileqq.log.VipWebViewReportLog.d = paramString;
         }
-        if (befu.jdField_a_of_type_Boolean)
+        if (bekd.jdField_a_of_type_Boolean)
         {
-          befr.a(this, befu.jdField_a_of_type_JavaLangString);
-          befu.jdField_a_of_type_Boolean = false;
+          beka.a(this, bekd.jdField_a_of_type_JavaLangString);
+          bekd.jdField_a_of_type_Boolean = false;
         }
         if (!bool1) {
           break;
@@ -860,7 +860,7 @@ public class CustomWebView
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
-      localView = ((Activity)localObject).findViewById(2131371150);
+      localView = ((Activity)localObject).findViewById(2131371169);
     }
     for (;;)
     {
@@ -874,7 +874,7 @@ public class CustomWebView
           {
             localView = new View(getContext());
             localView.setBackgroundColor(1711276032);
-            localView.setId(2131371150);
+            localView.setId(2131371169);
             ((Activity)localObject).addContentView(localView, new ViewGroup.LayoutParams(-1, -1));
             return;
           }

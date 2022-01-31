@@ -1,20 +1,18 @@
-import android.os.Handler;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.support.annotation.NonNull;
 
 class blxy
-  implements ulb
+  implements blxl
 {
   blxy(blxx paramblxx) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.a.b();
-    if (paramInt == 0)
-    {
-      this.a.a.a.sendEmptyMessage(3);
-      return;
+    String str = paramString;
+    if (paramInt == 0) {
+      str = bcnt.b(paramString);
     }
-    this.a.a.a.sendEmptyMessage(5);
+    return str;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.location.ui;
 
-import atoc;
-import atod;
-import atoe;
+import atsl;
+import atsm;
+import atsn;
 
 public class LocationPoiDataHelper$1$1
   implements Runnable
 {
-  public LocationPoiDataHelper$1$1(atod paramatod) {}
+  public LocationPoiDataHelper$1$1(atsm paramatsm) {}
   
   public void run()
   {
-    atoc.a(this.a.a).a(atoc.a(this.a.a));
+    atsl.a(this.a.a).a(atsl.a(this.a.a));
   }
 }
 

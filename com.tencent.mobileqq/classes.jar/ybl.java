@@ -1,22 +1,45 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class ybl
-  implements yvn<CertifiedAccountWrite.StDoReplyRsp>
+final class ybl
+  implements BusinessObserver
 {
-  ybl(ybg paramybg, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  ybl(xyj paramxyj) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    uht.a().dispatch(this.jdField_a_of_type_Ybg.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Ybg.hashCode()) }));
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ybl
  * JD-Core Version:    0.7.0.1
  */

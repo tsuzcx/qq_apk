@@ -1,40 +1,37 @@
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import java.util.Iterator;
+import java.util.List;
 
-public class blbj
-  extends bmag
+class blbj
+  implements bmeo<blaj>
 {
-  public final bmab<blbb> a;
-  private boolean a;
-  public final bmab<AECaptureMode[]> b = new bmab();
+  blbj(blbe paramblbe) {}
   
-  public blbj()
+  public void a(@Nullable blaj paramblaj)
   {
-    this.jdField_a_of_type_Bmab = new bmab();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bmab.a() != null) && (((blbb)this.jdField_a_of_type_Bmab.a()).a == AECaptureMode.GIF);
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Bmab.a() != null) && (((blbb)this.jdField_a_of_type_Bmab.a()).a == AECaptureMode.NORMAL);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Bmab.a() != null) && (((blbb)this.jdField_a_of_type_Bmab.a()).a == AECaptureMode.PLAY);
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
+    if (paramblaj == null) {
+      return;
+    }
+    blag localblag;
+    do
+    {
+      Iterator localIterator;
+      do
+      {
+        localIterator = blbe.a(this.a).iterator();
+      } while (!localIterator.hasNext());
+      localblag = (blag)localIterator.next();
+      if (!localblag.jdField_a_of_type_JavaLangString.equals(paramblaj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
+        break;
+      }
+      if (localblag.jdField_a_of_type_Int != paramblaj.jdField_a_of_type_Int)
+      {
+        localblag.jdField_a_of_type_Int = paramblaj.jdField_a_of_type_Int;
+        blbe.a(this.a).notifyItemChanged(blbe.a(this.a).indexOf(localblag) + 1);
+      }
+    } while ((localblag.jdField_a_of_type_Int != 2) || (!localblag.jdField_a_of_type_JavaLangString.equals(blbe.a(this.a))));
+    blbe.a(this.a).b(localblag);
   }
 }
 

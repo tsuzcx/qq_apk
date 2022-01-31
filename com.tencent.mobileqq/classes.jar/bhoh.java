@@ -1,137 +1,87 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.ProfilePerformanceReport.1;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhoh
+  implements bhof
 {
-  public static bhoh a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "param_click2create", "param_first_draw", "param_first_show", "param_open", "param_run_delay", "param_init_data", "param_fetch_data", "param_prepare_res", "param_refresh_from_cache", "param_refresh_from_net" };
-  public static bhoh b;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private final long[] jdField_a_of_type_ArrayOfLong;
-  private final long[] b;
+  private bhog jdField_a_of_type_Bhog;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a() {}
-  
-  public static void b() {}
-  
-  public void a(int paramInt)
+  public bhoh(bhog parambhog)
   {
-    if ((paramInt < 0) || (paramInt > 9)) {}
+    this.jdField_a_of_type_Bhog = parambhog;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ArrayOfLong[paramInt] != 0L);
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = SystemClock.elapsedRealtime();
-      if (paramInt == 0)
-      {
-        this.jdField_a_of_type_Int = 2;
-        this.jdField_a_of_type_ArrayOfLong[3] = this.jdField_a_of_type_ArrayOfLong[paramInt];
-      }
-    } while (!QLog.isDevelopLevel());
-    this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-    this.jdField_a_of_type_JavaLangStringBuilder.append("markStart, [").append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]).append(",").append(this.jdField_a_of_type_ArrayOfLong[paramInt]).append(",").append(this.jdField_a_of_type_Int).append("]");
-    QLog.i("ProfilePerformanceReport", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      return;
+      this.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Bhog == null);
+    this.jdField_a_of_type_Bhog.a(a(), null);
   }
   
-  public void a(String paramString)
+  private void c()
   {
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    long l2 = 0L;
-    long l1 = 0L;
-    if (i <= 9)
-    {
-      label58:
-      String str;
-      if ((this.b[i] != 0L) && (this.jdField_a_of_type_ArrayOfLong[i] != 0L))
-      {
-        l1 = this.b[i] - this.jdField_a_of_type_ArrayOfLong[i];
-        if (i == 3) {
-          l2 = l1;
-        }
-        str = jdField_a_of_type_ArrayOfJavaLangString[i];
-        if (l1 <= 0L) {
-          break label107;
-        }
-      }
-      label107:
-      for (long l3 = l1;; l3 = 0L)
-      {
-        localHashMap.put(str, String.valueOf(l3));
-        i += 1;
-        break;
-        l1 = 0L;
-        break label58;
-      }
+    Object localObject = BaseApplication.getContext().getPackageManager();
+    if (localObject != null) {
+      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
     }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Int = 1;
-    if (QLog.isDevelopLevel())
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      this.jdField_a_of_type_JavaLangStringBuilder.append("reportPerformance, [").append(l1).append(",").append(localHashMap.toString()).append("]");
-      QLog.i("ProfilePerformanceReport", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-    ThreadManager.getSubThreadHandler().post(new ProfilePerformanceReport.1(this, paramString, l2, localHashMap));
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 9)) {}
-    while ((this.jdField_a_of_type_ArrayOfLong[paramInt] == 0L) || (this.b[paramInt] == 0L)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Int < 3) {}
-    while ((this.jdField_a_of_type_Int != 4) && (!paramBoolean)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 9)) {}
     for (;;)
     {
-      return;
-      if ((this.jdField_a_of_type_ArrayOfLong[paramInt] != 0L) && (this.b[paramInt] == 0L))
+      PackageInfo localPackageInfo;
+      if (((Iterator)localObject).hasNext())
       {
-        this.b[paramInt] = SystemClock.elapsedRealtime();
-        if (paramInt == 1)
-        {
-          this.b[3] = this.b[paramInt];
-          this.jdField_a_of_type_Int = 3;
-        }
-        while (QLog.isDevelopLevel())
-        {
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          this.jdField_a_of_type_JavaLangStringBuilder.append("markEnd, [").append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]).append(",").append(this.b[paramInt]).append(",").append(this.b[paramInt] - this.jdField_a_of_type_ArrayOfLong[paramInt]).append(",").append(this.jdField_a_of_type_Int).append("]");
-          QLog.i("ProfilePerformanceReport", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-          return;
-          if (paramInt == 9) {
-            this.jdField_a_of_type_Int = 4;
-          }
-        }
+        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+        if (this.jdField_a_of_type_Boolean) {}
       }
+      else
+      {
+        return;
+      }
+      if (this.jdField_a_of_type_Bhog != null) {
+        this.jdField_a_of_type_Bhog.b(a(), localPackageInfo);
+      }
+    }
+  }
+  
+  private void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (this.jdField_a_of_type_Bhog == null);
+    this.jdField_a_of_type_Bhog.c(a(), null);
+  }
+  
+  public String a()
+  {
+    return "App";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      b();
+      c();
+      label16:
+      d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label16;
     }
   }
 }

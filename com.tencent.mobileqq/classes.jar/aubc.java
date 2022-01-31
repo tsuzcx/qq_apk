@@ -1,46 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class aubc
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aubc() {}
+  public aubc(MedalGuideView paramMedalGuideView) {}
   
-  public aubc(Looper paramLooper)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
-    {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, azmz.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
-      }
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    MedalGuideView.a(this.a, f);
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
-    else {
-      return;
-    }
-    ChatBackgroundManager.c = 0;
   }
 }
 

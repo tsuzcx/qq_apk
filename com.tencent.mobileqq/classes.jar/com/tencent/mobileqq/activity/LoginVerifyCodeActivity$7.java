@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.Editable;
 import android.widget.EditText;
-import bdal;
+import bdeu;
 
 class LoginVerifyCodeActivity$7
   implements Runnable
@@ -12,7 +12,7 @@ class LoginVerifyCodeActivity$7
   public void run()
   {
     int k = 0;
-    String str = bdal.b(this.a, this.b);
+    String str = bdeu.b(this.a, this.b);
     if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.this$0) != null) && (!str.equals(LoginVerifyCodeActivity.b(this.this$0))))
     {
       LoginVerifyCodeActivity.a(this.this$0, str);

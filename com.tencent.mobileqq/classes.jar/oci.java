@@ -49,7 +49,7 @@ class oci
         localViewBase = localViewBase.findViewBaseByName("id_game_small_img");
         if ((localViewBase != null) && ((localViewBase instanceof psj)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).J)))
         {
-          int i = aekt.a(40.0F, paramContainer.getContext().getResources());
+          int i = aepi.a(40.0F, paramContainer.getContext().getResources());
           odv.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).J, 10, i, i);
         }
       }

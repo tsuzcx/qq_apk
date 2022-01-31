@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ReportedBanner
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public long cid;
   public long endtime;
   public String md5;

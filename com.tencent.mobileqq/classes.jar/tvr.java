@@ -1,11 +1,12 @@
-public class tvr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class tvr
+  implements DialogInterface.OnClickListener
 {
-  public String a;
+  tvr(tvl paramtvl) {}
   
-  public tvr(String paramString)
-  {
-    this.a = paramString;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,22 +1,13 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bfet
 {
-  public static ArrayList<String> a;
-  public static HashMap<String, Class<?>> a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
   
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
-    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
-    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
-    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
-    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
-    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
-  }
+  protected bfet(bfer parambfer) {}
 }
 
 

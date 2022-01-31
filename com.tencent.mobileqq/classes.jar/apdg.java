@@ -1,24 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
+import android.support.v4.util.LruCache;
 
 class apdg
-  extends BroadcastReceiver
+  extends LruCache<String, T>
 {
-  apdg(apde paramapde) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  apdg(apdf paramapdf, int paramInt)
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (apdh)apde.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
-    {
-      this.a.a();
-      apde.a(this.a).a(paramContext);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, T paramT)
+  {
+    int i;
+    if (paramT == null) {
+      i = 0;
     }
+    int j;
+    do
+    {
+      return i;
+      j = apdf.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 

@@ -1,14 +1,12 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.Intent;
+import java.util.HashSet;
+import org.json.JSONObject;
 
-public class bkja
-  implements bnhw
+public abstract interface bkja
 {
-  public bkja(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public abstract HashSet<String> getFilterCmds();
   
-  public void a()
-  {
-    QIMEffectCameraCaptureUnit.d(this.a);
-  }
+  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
 }
 
 

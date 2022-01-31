@@ -1,48 +1,23 @@
-import VIP.GetQzoneMusicInfoRsp;
-import VIP.MusicInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
-class awoo
-  implements alkr
+public class awoo
+  extends RecyclerView.ViewHolder
 {
-  awoo(awon paramawon) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public awoo(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
-    {
-      paramObject = (GetQzoneMusicInfoRsp)paramObject;
-      if ((awon.a(this.a)) || (!paramObject.mMusicList.containsKey(awon.a(this.a).g))) {
-        break label101;
-      }
-      awon.a(this.a).b = ((MusicInfo)paramObject.mMusicList.get(awon.a(this.a).g)).sSongUrl;
-      this.a.a(BaseApplicationImpl.getContext(), awon.a(this.a));
-    }
-    for (;;)
-    {
-      return;
-      label101:
-      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
-      if (arrayOfSongInfo != null)
-      {
-        paramInt = 0;
-        while (paramInt < arrayOfSongInfo.length)
-        {
-          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].g))
-          {
-            arrayOfSongInfo[paramInt].b = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].g)).sSongUrl;
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].g + " url:" + arrayOfSongInfo[paramInt].b);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-    }
+    super(paramView);
+    this.itemView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366728));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366718));
+    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167194));
   }
 }
 

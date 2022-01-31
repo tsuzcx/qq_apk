@@ -22,7 +22,7 @@ import tencent.im.sso.offlinpkg.OfflinePkg.ReqBody;
 import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
 public class nce
-  implements aywc
+  implements azal
 {
   public nce(QQAppInterface paramQQAppInterface)
   {
@@ -63,9 +63,9 @@ public class nce
       localReqBody.uint32_cmd.set(2);
       localReqBody.uint32_platform.set(ncc.jdField_a_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.d(ncc.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "8.3.3.4515" }));
+        QLog.d(ncc.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "8.3.5.4555" }));
       }
-      localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.3.3.4515".getBytes()));
+      localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.3.5.4555".getBytes()));
       localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
       paramInt = ndk.a(((QQAppInterface)localObject).getApp());
       localReqBody.int32_network.set(paramInt);
@@ -145,7 +145,7 @@ public class nce
       localReqBody.st_bid_pkg.add(localBidPkg);
     }
     label426:
-    localReqItem.vecParam = bdku.a(localReqBody.toByteArray());
+    localReqItem.vecParam = bdpd.a(localReqBody.toByteArray());
     return localReqItem;
   }
   
@@ -163,7 +163,7 @@ public class nce
       }
       if (paramRespItem.eServiceID == 127)
       {
-        paramRespItem = bdku.b(paramRespItem.vecUpdate);
+        paramRespItem = bdpd.b(paramRespItem.vecUpdate);
         if (paramRespItem != null) {
           localRspBody = new OfflinePkg.RspBody();
         }

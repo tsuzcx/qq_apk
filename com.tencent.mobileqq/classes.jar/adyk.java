@@ -1,14 +1,17 @@
-import android.widget.Button;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 class adyk
-  extends akee
+  implements banr
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  adyk(adyj paramadyj) {}
   
-  private adyk(adyj paramadyj) {}
+  public void onCancel() {}
+  
+  public void onConfirm()
+  {
+    adyd.a(this.a.jdField_a_of_type_Adyg.a).b();
+    adyg.a(this.a.jdField_a_of_type_Adyg, this.a.jdField_a_of_type_Int);
+  }
 }
 
 

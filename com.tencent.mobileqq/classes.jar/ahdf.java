@@ -1,19 +1,20 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class ahdf
   implements View.OnClickListener
 {
-  public ahdf(SearchBaseActivity paramSearchBaseActivity) {}
+  public ahdf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.h != 1) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
   }
 }

@@ -1,19 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-class agax
-  implements agaz
+public class agax
+  extends Handler
 {
-  agax(agau paramagau, String paramString, agba paramagba) {}
-  
-  public void a(int paramInt)
+  public agax(Looper paramLooper)
   {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Agba.a.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Agba.f.setVisibility(8);
     }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
+      return;
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 

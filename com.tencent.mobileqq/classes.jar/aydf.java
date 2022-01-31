@@ -1,40 +1,43 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener2;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class aydf
-  implements URLDrawable.URLDrawableListener2
+public class aydf
+  implements bhuk
 {
-  aydf(SoftReference paramSoftReference, URLDrawable paramURLDrawable, aydh paramaydh) {}
+  public aydf(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, bhuf parambhuf) {}
   
-  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
-    do
+    switch (paramInt)
     {
-      do
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity()))
       {
-        return;
-        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
-      localAbstractGifImage.reset();
-      localAbstractGifImage.setStrongGIFPlayOnceListener(new aydg(this, localAbstractGifImage));
-      paramURLDrawable.setVisibility(0);
-      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    } while (this.jdField_a_of_type_Aydh == null);
-    this.jdField_a_of_type_Aydh.a();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 2131693417, 0).a();
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
+        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        {
+          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null) {
+            SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new bety(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().getTitleBarHeight()));
+          }
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
+        }
+      }
+    }
   }
 }
 

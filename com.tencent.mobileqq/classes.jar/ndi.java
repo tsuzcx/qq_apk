@@ -349,7 +349,7 @@ public class ndi
     //   29: areturn
     //   30: new 183	java/io/File
     //   33: dup
-    //   34: getstatic 188	aljq:bo	Ljava/lang/String;
+    //   34: getstatic 188	alof:bo	Ljava/lang/String;
     //   37: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
     //   40: astore 4
     //   42: aload 4
@@ -369,10 +369,10 @@ public class ndi
     //   73: new 199	java/lang/StringBuilder
     //   76: dup
     //   77: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   80: getstatic 188	aljq:bo	Ljava/lang/String;
+    //   80: getstatic 188	alof:bo	Ljava/lang/String;
     //   83: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_1
-    //   87: invokestatic 210	bame:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   87: invokestatic 210	baqn:c	(Ljava/lang/String;)Ljava/lang/String;
     //   90: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: invokevirtual 214	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   96: astore 4
@@ -407,7 +407,7 @@ public class ndi
     //   155: iload_3
     //   156: invokevirtual 239	java/lang/String:substring	(I)Ljava/lang/String;
     //   159: iconst_0
-    //   160: invokestatic 245	bdbi:decode	(Ljava/lang/String;I)[B
+    //   160: invokestatic 245	bdfr:decode	(Ljava/lang/String;I)[B
     //   163: astore_0
     //   164: aload_0
     //   165: astore_1

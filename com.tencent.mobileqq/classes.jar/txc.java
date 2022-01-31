@@ -1,33 +1,43 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
 public class txc
-  implements uah
+  extends trw
 {
-  public txc(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
+  public txc(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public void a(boolean paramBoolean)
+  public QCirclePolymorphicAniView a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-    int i;
-    QCircleContentOperationView localQCircleContentOperationView;
-    if (paramBoolean)
-    {
-      i = 2130843599;
-      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
-      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-      if (!paramBoolean) {
-        break label52;
-      }
+    if (QCirclePersonalDetailFragment.a(this.a) != null) {
+      return (QCirclePolymorphicAniView)QCirclePersonalDetailFragment.b(this.a).findViewById(2131373208);
     }
-    label52:
-    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
+    return null;
+  }
+  
+  public tuz a()
+  {
+    if ((QCirclePersonalDetailFragment.a(this.a) == null) && (QCirclePersonalDetailFragment.c(this.a) != null))
     {
-      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
-      return;
-      i = 0;
-      break;
+      ViewStub localViewStub = (ViewStub)QCirclePersonalDetailFragment.d(this.a).findViewById(2131373151);
+      QCirclePersonalDetailFragment.a(this.a, new tuz(this.a.getActivity()));
+      QCirclePersonalDetailFragment.a(this.a).a(this.a.getActivity(), localViewStub);
+    }
+    return QCirclePersonalDetailFragment.a(this.a);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a.a != null) {
+      this.a.a.a("share_action_show_share_sheet", paramObject);
+    }
+  }
+  
+  public void a(ttf paramttf)
+  {
+    if (QCirclePersonalDetailFragment.a(this.a) != null) {
+      QCirclePersonalDetailFragment.a(this.a).a("poly_zan_list_show", paramttf);
     }
   }
 }

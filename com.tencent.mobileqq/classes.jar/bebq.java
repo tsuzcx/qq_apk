@@ -1,38 +1,43 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bebq
-  implements RadioGroup.OnCheckedChangeListener
+public class bebq
+  implements DownloadParams.DecodeHandler
 {
-  bebq(bebk parambebk) {}
+  private int a;
+  private int b;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public bebq(int paramInt1, int paramInt2)
   {
-    if ((this.a.jdField_a_of_type_Befy != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Befy.a))) {
-      this.a.jdField_a_of_type_Befy.a(paramInt);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
     }
-    TouchWebView localTouchWebView;
-    do
-    {
-      do
-      {
-        return;
-        localTouchWebView = this.a.jdField_a_of_type_Beey.a();
-      } while (localTouchWebView == null);
-      String str = localTouchWebView.getUrl();
-      paramRadioGroup = str;
-      if (TextUtils.isEmpty(str))
-      {
-        paramRadioGroup = str;
-        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-        }
-      }
-    } while (TextUtils.isEmpty(paramRadioGroup));
-    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setAntiAlias(true);
+    Canvas localCanvas = new Canvas(paramDownloadParams);
+    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
+    return paramDownloadParams;
+  }
+  
+  public String toString()
+  {
+    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 

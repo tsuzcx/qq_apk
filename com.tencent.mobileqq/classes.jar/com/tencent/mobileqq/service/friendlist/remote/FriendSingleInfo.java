@@ -3,12 +3,12 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ayuo;
+import ayyx;
 
 public class FriendSingleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FriendSingleInfo> CREATOR = new ayuo();
+  public static final Parcelable.Creator<FriendSingleInfo> CREATOR = new ayyx();
   public byte a;
   public int a;
   public String a;

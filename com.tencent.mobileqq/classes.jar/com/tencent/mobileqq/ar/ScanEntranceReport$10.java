@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public class ScanEntranceReport$10
     HashMap localHashMap = new HashMap();
     localHashMap.put("device_name", this.jdField_a_of_type_JavaLangString);
     localHashMap.put("memory_size", String.valueOf(this.jdField_a_of_type_Int));
-    azmz.a(BaseApplication.getContext()).a("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
   }
 }
 

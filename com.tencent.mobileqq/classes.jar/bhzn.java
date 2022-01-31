@@ -1,31 +1,11 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bhzn
-  implements RecyclerView.ChildDrawingOrderCallback
+public abstract interface bhzn
 {
-  bhzn(bhzk parambhzk) {}
+  public abstract void a();
   
-  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
-  {
-    if (this.a.mOverdrawChild == null) {}
-    int i;
-    do
-    {
-      return paramInt2;
-      int j = this.a.mOverdrawChildPosition;
-      i = j;
-      if (j == -1)
-      {
-        i = this.a.mRecyclerView.indexOfChild(this.a.mOverdrawChild);
-        this.a.mOverdrawChildPosition = i;
-      }
-      if (paramInt2 == paramInt1 - 1) {
-        return i;
-      }
-    } while (paramInt2 < i);
-    return paramInt2 + 1;
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

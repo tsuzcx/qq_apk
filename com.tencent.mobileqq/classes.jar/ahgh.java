@@ -1,19 +1,19 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-class ahgh
-  implements View.OnLongClickListener
+public class ahgh
+  implements bibb
 {
-  ahgh(ahge paramahge, ahgk paramahgk) {}
+  public ahgh(AddContactsView paramAddContactsView) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(View paramView)
   {
-    if (this.jdField_a_of_type_Ahge.a != null)
-    {
-      int i = this.jdField_a_of_type_Ahgk.getAdapterPosition();
-      return this.jdField_a_of_type_Ahge.a.a(paramView, this.jdField_a_of_type_Ahgk, i);
-    }
-    return false;
+    AddContactsView.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.a(this.a, true);
   }
 }
 

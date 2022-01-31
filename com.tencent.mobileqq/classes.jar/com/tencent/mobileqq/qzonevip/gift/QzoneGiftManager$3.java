@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.qzonevip.gift;
 
-import aogj;
-import aonw;
-import axfj;
-import bkax;
+import aoks;
+import aosf;
+import axjs;
+import bkfe;
 
 public class QzoneGiftManager$3
   implements Runnable
 {
-  public QzoneGiftManager$3(axfj paramaxfj, String paramString1, String paramString2) {}
+  public QzoneGiftManager$3(axjs paramaxjs, String paramString1, String paramString2) {}
   
   public void run()
   {
-    aonw localaonw = (aonw)aogj.a().a(499);
-    axfj.a(this.this$0, localaonw, this.a, this.b);
-    bkax.a().b(localaonw);
+    aosf localaosf = (aosf)aoks.a().a(499);
+    axjs.a(this.this$0, localaosf, this.a, this.b);
+    bkfe.a().b(localaosf);
   }
 }
 

@@ -1,16 +1,25 @@
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import java.lang.ref.WeakReference;
 
-class assl
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+public class assl
+  extends alwx
 {
-  assl(assd paramassd) {}
+  private WeakReference<Context> a;
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public assl(Context paramContext)
+  {
+    this.a = new WeakReference(paramContext);
+  }
+  
+  protected void a(int paramInt, byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+      QLog.d("HiBoomFont.HiBoomManager", 2, "onHiBoomAuthResult errorCode = " + paramInt);
+    }
+    Context localContext = (Context)this.a.get();
+    if ((paramInt != 0) && (localContext != null)) {
+      assg.a(localContext, paramArrayOfByte, 0);
     }
   }
 }

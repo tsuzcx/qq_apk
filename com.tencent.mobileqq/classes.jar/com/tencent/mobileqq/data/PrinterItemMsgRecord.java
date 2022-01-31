@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Timer;
@@ -18,7 +18,7 @@ public class PrinterItemMsgRecord
   public static final int status_running = 2;
   public static final int status_transfer_fail = 12;
   public String filename;
-  @awdg
+  @awhp
   public Timer mTimer_for_Print;
   public double progress;
   public int status = 1;
@@ -54,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  public Class<? extends awbv> getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }

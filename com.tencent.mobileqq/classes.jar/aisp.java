@@ -1,20 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class aisp
-  extends RecyclerView.OnScrollListener
+  extends aira
 {
-  public aisp(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  protected aisp(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      agib.a(bool);
-      return;
-    }
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 

@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-final class bcat
+public class bcat
   implements DialogInterface.OnClickListener
 {
-  bcat(XMediaEditor paramXMediaEditor, List paramList) {}
+  public bcat(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    SubmitHomeWorkFragment.a(this.a);
   }
 }
 

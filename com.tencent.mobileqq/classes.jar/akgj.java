@@ -1,20 +1,18 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class akgj
-  extends amab
+public class akgj
+  implements ansr
 {
-  akgj(akge paramakge) {}
+  public akgj(SessionClearFragment paramSessionClearFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(akge.a(this.a))))
-    {
-      akge.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + akge.a(this.a));
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

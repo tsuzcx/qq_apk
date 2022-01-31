@@ -1,60 +1,19 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class bbeo
-  implements bbal
+final class bbeo
+  implements QQPermissionCallback
 {
-  public bbeo(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bbeo(AppActivity paramAppActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int k = 1;
-    if (this.a.b.getText().length() <= 0) {}
-    for (;;)
-    {
-      return;
-      if (paramInt1 < 0)
-      {
-        if (paramInt2 > this.a.G.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt2);
-          return;
-          paramInt2 = this.a.G.length() + 1;
-        }
-      }
-      if (paramInt2 < 0)
-      {
-        if (paramInt1 > this.a.G.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt1);
-          return;
-          paramInt1 = this.a.G.length() + 1;
-        }
-      }
-      if (!TextUtils.isEmpty(this.a.G))
-      {
-        int i = 0;
-        int j = paramInt1;
-        if (paramInt1 < this.a.G.length() + 1)
-        {
-          j = this.a.G.length() + 1;
-          i = 1;
-        }
-        if (paramInt2 < this.a.G.length() + 1) {
-          paramInt2 = this.a.G.length() + 1;
-        }
-        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
-        {
-          this.a.b.setSelection(j, paramInt2);
-          return;
-        }
-      }
+    if (!this.a.isFinishing()) {
+      bdgm.b(this.a);
     }
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

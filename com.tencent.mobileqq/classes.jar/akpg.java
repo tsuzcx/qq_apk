@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import org.json.JSONObject;
 
-public class akpg
-  extends akuz
+public final class akpg
+  implements abwu
 {
-  public akpg(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  public akpg(View paramView, abwx paramabwx, long paramLong, int paramInt, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    try
-    {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

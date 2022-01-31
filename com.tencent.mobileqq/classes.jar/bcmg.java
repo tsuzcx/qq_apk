@@ -1,42 +1,11 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import java.lang.reflect.Field;
+import java.util.Comparator;
 
-public class bcmg
-  extends Scroller
+public final class bcmg
+  implements Comparator<bcmh>
 {
-  public bcmg(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
+  public int a(bcmh parambcmh1, bcmh parambcmh2)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
+    return Long.signum(parambcmh2.a - parambcmh1.a);
   }
 }
 

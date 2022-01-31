@@ -30,20 +30,20 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.mobileqq.R.styleable;
 import java.util.Arrays;
-import xtf;
-import xtg;
-import xth;
-import xti;
-import xtj;
-import xtk;
-import xtl;
-import xtm;
+import xxo;
+import xxp;
+import xxq;
+import xxr;
+import xxs;
+import xxt;
+import xxu;
+import xxv;
 
 public class RotateCircleImageView
   extends ImageView
 {
   private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private static final SparseArray<RotateCircleImageView.BorderStyle> jdField_a_of_type_AndroidUtilSparseArray = new xtf(2);
+  private static final SparseArray<RotateCircleImageView.BorderStyle> jdField_a_of_type_AndroidUtilSparseArray = new xxo(2);
   private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
   private static final int jdField_e_of_type_Int;
   private static final int f;
@@ -303,7 +303,7 @@ public class RotateCircleImageView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xtg(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xxp(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.h);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
@@ -314,8 +314,8 @@ public class RotateCircleImageView
       this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 216.0F });
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xth(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new xti(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xxq(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new xxr(this));
     }
     if (this.jdField_c_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -323,7 +323,7 @@ public class RotateCircleImageView
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xtj(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xxs(this));
     }
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     if (this.jdField_d_of_type_AndroidAnimationValueAnimator == null)
@@ -332,8 +332,8 @@ public class RotateCircleImageView
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xtk(this));
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.addListener(new xtl(this));
+      this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xxt(this));
+      this.jdField_d_of_type_AndroidAnimationValueAnimator.addListener(new xxu(this));
     }
     if (this.jdField_e_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -342,7 +342,7 @@ public class RotateCircleImageView
       this.jdField_e_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
       this.jdField_e_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_e_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xtm(this));
+      this.jdField_e_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xxv(this));
     }
     this.jdField_d_of_type_AndroidAnimationValueAnimator.start();
   }
@@ -392,7 +392,7 @@ public class RotateCircleImageView
         paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
     } while (this.jdField_a_of_type_Int <= 0);
-    switch (xtn.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle.ordinal()])
+    switch (xxw.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle.ordinal()])
     {
     default: 
       return;

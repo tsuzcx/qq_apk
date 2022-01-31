@@ -1,22 +1,11 @@
-public abstract interface arek
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+
+class arek
 {
-  public abstract long a();
+  int jdField_a_of_type_Int = 201;
+  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
   
-  public abstract String a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(aqtd paramaqtd);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract String c();
+  arek(arej paramarej) {}
 }
 
 

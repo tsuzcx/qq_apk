@@ -9,12 +9,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xnb;
-import xnc;
+import xrk;
+import xrl;
 
 public class JsonORM
 {
-  private static final Map<Class, xnc[]> a = new IdentityHashMap();
+  private static final Map<Class, xrl[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +48,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (xnc[])a.get(paramClass);
+    Object localObject2 = (xrl[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (xnc[])a.get(localClass);
+    Object localObject2 = (xrl[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,20 +264,20 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<xnc> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<xrl> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      xnb localxnb = (xnb)localField.getAnnotation(xnb.class);
-      if (localxnb == null) {}
+      xrk localxrk = (xrk)localField.getAnnotation(xrk.class);
+      if (localxrk == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new xnc(localxnb.a(), a(localField.getType()), localField));
+        paramArrayList.add(new xrl(localxrk.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -310,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static xnc[] a(Class<?> paramClass)
+  private static xrl[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,7 +318,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new xnc[localArrayList.size()];
+    paramClass = new xrl[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

@@ -1,23 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class ajmu
-  implements Animation.AnimationListener
 {
-  public ajmu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static ajms a(Object paramObject)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    if ((paramObject instanceof RecentBaseData)) {
+      return new ajmv();
     }
+    return new ajmt();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

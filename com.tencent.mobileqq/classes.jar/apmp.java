@@ -1,20 +1,18 @@
-class apmp
-  extends bdvu
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public final class apmp
 {
-  apmp(aply paramaply) {}
-  
-  public void onCancel(bdvv parambdvv) {}
-  
-  public void onDone(bdvv parambdvv)
+  public static apma a(QQAppInterface paramQQAppInterface, apmt paramapmt, int paramInt)
   {
-    super.onDone(parambdvv);
+    switch (paramInt)
+    {
+    default: 
+      return new apnd(paramQQAppInterface, paramapmt);
+    case 0: 
+      return new apnd(paramQQAppInterface, paramapmt);
+    }
+    return new apmb(paramQQAppInterface, paramapmt);
   }
-  
-  public void onDoneFile(bdvv parambdvv) {}
-  
-  public void onPause(bdvv parambdvv) {}
-  
-  public void onProgress(bdvv parambdvv) {}
 }
 
 

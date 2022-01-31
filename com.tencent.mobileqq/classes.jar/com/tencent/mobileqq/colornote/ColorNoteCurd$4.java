@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.colornote;
 
-import anxo;
+import aobx;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class ColorNoteCurd$4
   implements Runnable
 {
-  public ColorNoteCurd$4(anxo paramanxo, ColorNote paramColorNote) {}
+  public ColorNoteCurd$4(aobx paramaobx, ColorNote paramColorNote) {}
   
   public void run()
   {

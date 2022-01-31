@@ -1,16 +1,37 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class vim
-  implements Comparator<QQUserUIItem>
+  extends vkh
 {
-  public vim(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  StoryVideoItem a;
+  public web a;
   
-  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
+  public vim(StoryVideoItem paramStoryVideoItem)
   {
-    return allu.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      wxe.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    uxk localuxk = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localuxk != null)
+    {
+      this.jdField_a_of_type_Web = new wdy();
+      this.jdField_a_of_type_Web.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new vin(this, localuxk));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

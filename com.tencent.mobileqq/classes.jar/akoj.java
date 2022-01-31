@@ -1,18 +1,6 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-
-public class akoj
-  implements AdapterView.OnItemClickListener
+public abstract interface akoj
 {
-  public akoj(CmGameDebugView paramCmGameDebugView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

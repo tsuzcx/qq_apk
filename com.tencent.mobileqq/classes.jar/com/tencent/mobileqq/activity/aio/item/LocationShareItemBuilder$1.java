@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqf;
-import atpu;
+import afuu;
+import atud;
 import com.tencent.mobileqq.data.MessageForLocationShare;
 
 public class LocationShareItemBuilder$1
   implements Runnable
 {
-  public LocationShareItemBuilder$1(afqf paramafqf, MessageForLocationShare paramMessageForLocationShare) {}
+  public LocationShareItemBuilder$1(afuu paramafuu, MessageForLocationShare paramMessageForLocationShare) {}
   
   public void run()
   {
-    atpu.a(this.this$0.a, this.a, false);
+    atud.a(this.this$0.a, this.a, false);
   }
 }
 

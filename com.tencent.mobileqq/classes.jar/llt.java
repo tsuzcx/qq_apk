@@ -29,9 +29,9 @@ public class llt
           jdField_a_of_type_Boolean = true;
           l1 /= 1000L;
           a(jdField_a_of_type_JavaLangString, l1);
-          azmj.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          azqs.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
           if (llr.a(jdField_a_of_type_JavaLangString)) {
-            azmj.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+            azqs.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
           }
         }
         lek.c("EffectZimuManager", "DataReport zimu 33:" + l1);
@@ -75,13 +75,13 @@ public class llt
   public static void a(String paramString1, String paramString2)
   {
     lek.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
-    azmj.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    azqs.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
   
   public static void a(String paramString1, String paramString2, String paramString3)
   {
     lek.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    azmj.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
+    azqs.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
   }
 }
 

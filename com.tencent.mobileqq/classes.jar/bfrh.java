@@ -1,25 +1,21 @@
-import android.util.Log;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class bfrh
 {
-  public void a(String paramString1, String paramString2)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    Log.d(paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    Log.d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Log.w(paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
   }
 }
 

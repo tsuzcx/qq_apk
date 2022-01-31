@@ -1,12 +1,20 @@
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
 class wjg
-  extends xrw
+  implements TextView.OnEditorActionListener
 {
   wjg(wjf paramwjf) {}
   
-  public boolean a(boolean paramBoolean)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.b();
-    return true;
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
   }
 }
 

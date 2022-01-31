@@ -1,125 +1,106 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-public class alsg
-  extends Handler
+public final class alsg
 {
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<Message> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<alsi> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public alsg(MessageHandler paramMessageHandler, Looper paramLooper)
+  public static alsg a()
   {
-    super(paramLooper);
+    return alsj.a();
   }
   
-  public void a()
+  public List<alsi> a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label69;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        sendMessage((Message)localIterator.next());
-      }
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      return localList;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    label69:
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    yiw.a().a(new ForeBackgroundEvent(true));
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    tld.a().a();
+    atuf.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((alsi)localIterator.next()).b();
     }
   }
   
-  public void a(Message paramMessage)
+  public void a(alsi paramalsi)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    try
     {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        this.jdField_a_of_type_JavaUtilHashSet.add(abot.a(str, i) + "&" + l);
-      }
+      this.jdField_a_of_type_JavaUtilList.add(paramalsi);
       return;
     }
-  }
-  
-  void a(String paramString, int paramInt, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    finally
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet.contains(abot.a(paramString, paramInt) + "&" + paramLong)) {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(abot.a(paramString, paramInt) + "&" + paramLong);
-      }
-      return;
+      paramalsi = finally;
+      throw paramalsi;
     }
   }
   
-  public boolean a(Message paramMessage)
+  public final void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        boolean bool = this.jdField_a_of_type_JavaUtilHashSet.contains(abot.a(str, i) + "&" + l);
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void b(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return;
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-      String str = paramMessage.getString("update_unread_uin");
-      int i = paramMessage.getInt("update_unread_type", 0);
-      long l = paramMessage.getLong("update_unread_time");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "msg update_c2c_unread-->uin:" + str + ", uinType:" + i + ", lastReadTime:" + l);
-      }
-      a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(2002, true, null);
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker C2CWorkerTimeout");
+      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
     }
-    a();
+    if (zhx.b <= 0L)
+    {
+      zhx.b = System.currentTimeMillis();
+      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(zhx.b) });
+    }
+    atuf.a();
+    if ((TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("mini")))) {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
+      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext()) {
+        ((alsi)paramString.next()).a();
+      }
+      paramString = new ForeBackgroundEvent(false);
+      yiw.a().a(paramString);
+      continue;
+      paramString = new ForeBackgroundEvent(false);
+      yiw.a().a(paramString);
+    }
+  }
+  
+  public void b(alsi paramalsi)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramalsi);
+      return;
+    }
+    finally
+    {
+      paramalsi = finally;
+      throw paramalsi;
+    }
   }
 }
 

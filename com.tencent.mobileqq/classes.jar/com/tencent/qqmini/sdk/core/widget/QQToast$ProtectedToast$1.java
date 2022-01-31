@@ -2,17 +2,17 @@ package com.tencent.qqmini.sdk.core.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bgnh;
+import bgro;
 
 public class QQToast$ProtectedToast$1
   implements Runnable
 {
-  public QQToast$ProtectedToast$1(bgnh parambgnh) {}
+  public QQToast$ProtectedToast$1(bgro parambgro) {}
   
   public void run()
   {
     this.this$0.cancel();
-    this.this$0.getView().findViewById(2131378052);
+    this.this$0.getView().findViewById(2131378106);
     AnimationUtils.loadAnimation(this.this$0.getView().getContext(), 2130772089);
   }
 }

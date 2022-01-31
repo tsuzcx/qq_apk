@@ -1,120 +1,168 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
+import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aysk
-  extends aysb
+  extends ayta
+  implements aysg
 {
-  public View a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ArrayList<aysl> a;
-  public LinearLayout b;
-  public TextView b;
-  public URLImageView b;
-  public TextView c;
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+  private WeakReference<aysn> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public aysk(ViewGroup paramViewGroup, int paramInt)
+  public aysk(ayso paramayso, Context paramContext)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramayso, paramContext);
   }
   
-  protected void a()
+  public View a(Context paramContext)
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365798));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367910));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377884));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377143));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365127));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131375761));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368322);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131377140));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561257, null, false);
+    this.jdField_a_of_type_AndroidViewView = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362811));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a(ayke paramayke)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if ((paramayke.a == null) || (paramayke.a.size() == 0))
+    this.b = false;
+    a(1);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    aysn localaysn;
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
+      localaysn = (aysn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaysn == null);
+    localaysn.a(paramInt);
+  }
+  
+  public void a(aysi paramaysi)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView == null) || (paramaysi == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    int i = 0;
-    label92:
-    aysl localaysl;
-    if (i < paramayke.a.size())
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a(paramaysi, this);
+  }
+  
+  public void a(aysn paramaysn)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaysn);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    this.b = true;
+    a(1);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
+    TextView localTextView;
+    label124:
+    do
     {
-      ayjr localayjr = (ayjr)paramayke.a.get(i);
-      localaysl = new aysl(this, localContext);
-      if (TextUtils.isEmpty(localayjr.a)) {
-        break label350;
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
+        }
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        a(false);
+        return;
       }
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bcwh.a(localContext, 18.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bcwh.a(localContext, 18.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "leftIcon";
-      localObject = URLDrawable.getDrawable(localayjr.a, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.a);
-      localaysl.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
-        ((URLDrawable)localObject).restartDownload();
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (!paramBoolean) {
+        break;
       }
-      localaysl.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      label251:
-      if (TextUtils.isEmpty(localayjr.b)) {
-        break label363;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aysl(this));
+      localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375592);
+      if (localTextView != null)
+      {
+        if (paramString != null) {
+          break label169;
+        }
+        localTextView.setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690293));
       }
-      localaysl.jdField_a_of_type_AndroidWidgetTextView.setText(localayjr.b);
-      localaysl.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      label284:
-      if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        break label376;
-      }
-      localaysl.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#112037"));
-    }
-    for (;;)
+      paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375585);
+    } while (paramString == null);
+    if (paramBoolean) {}
+    for (paramInt = 2130838561;; paramInt = 2130838560)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localaysl.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaysl);
-      i += 1;
-      break label92;
+      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
       break;
-      label350:
-      localaysl.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      break label251;
-      label363:
-      localaysl.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label284;
-      label376:
-      localaysl.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#E6E6E6"));
+      label169:
+      localTextView.setText(paramString);
+      break label124;
     }
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
+    if (paramBoolean)
+    {
+      bool = paramBoolean;
+      if (this.b)
+      {
+        bool = paramBoolean;
+        if (this.jdField_a_of_type_Boolean) {
+          bool = false;
+        }
+      }
+    }
+    super.a(bool);
+  }
+  
+  public View b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    }
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a();
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    super.d();
+  }
+  
+  public void e() {}
 }
 
 

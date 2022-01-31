@@ -1,38 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
+import java.util.List;
 
-public final class auym
-  implements Parcelable.Creator<LocalMediaInfo>
+public class auym
+  implements auzu
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
-    localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
-    return localLocalMediaInfo;
-  }
+  auym(auyl paramauyl) {}
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void a(List<auzv> paramList, boolean paramBoolean)
   {
-    return new LocalMediaInfo[0];
+    this.a.a.b = paramList;
+    this.a.a.g = paramBoolean;
+    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
   }
 }
 

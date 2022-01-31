@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aega
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public aega(UpgradeActivity paramUpgradeActivity) {}
+  public aega(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    if (this.a.d == 11) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
-    return false;
+    this.a.b.cancel();
   }
 }
 

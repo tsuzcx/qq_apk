@@ -50,7 +50,7 @@ public class mhx
     }
     if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      if (bdfe.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(String.valueOf(this.a.b)))) {
+      if (bdjn.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(String.valueOf(this.a.b)))) {
         paramString = this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), String.valueOf(this.a.b), this.a.jdField_e_of_type_Int);
       }
       this.a.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable.a(paramInt, paramString);
@@ -69,7 +69,7 @@ public class mhx
     if (this.a.jdField_e_of_type_Boolean)
     {
       i = 2;
-      azmb.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
+      azqk.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
       if (!this.a.jdField_e_of_type_Boolean) {
         break label245;
       }
@@ -100,7 +100,7 @@ public class mhx
       String str = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramString, String.valueOf(this.a.b), this.a.jdField_e_of_type_Int);
       QLog.d(this.a.jdField_d_of_type_JavaLangString, 2, "onOtherMemberInvited --> l= " + String.valueOf(l) + "inviterName=" + str);
     }
-    if (bdfe.b(l))
+    if (bdjn.b(l))
     {
       this.a.b(paramString, paramArrayOfString);
       return;
@@ -142,7 +142,7 @@ public class mhx
     label268:
     for (int i = 2;; i = 1)
     {
-      azmb.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
+      azqk.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
       this.a.x();
       this.a.q(paramLong1);
       this.a.jdField_a_of_type_Mvw.c(true);

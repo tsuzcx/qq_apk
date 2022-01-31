@@ -1,28 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bmch
-  implements DialogInterface.OnClickListener
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public bmch(LightWeightSoDownloadUnit.4 param4) {}
+  public bmch(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramDialogInterface = bmcg.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
-    }
-    paramDialogInterface.finish();
+    float f = paramScaleGestureDetector.getScaleFactor();
+    CropVideoActivity.a(this.a).b(f, f, 1.0F);
+    return true;
   }
 }
 

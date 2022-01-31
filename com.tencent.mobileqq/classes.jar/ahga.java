@@ -1,31 +1,25 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public abstract class ahga<T>
-  extends ahge<T>
+public class ahga
+  extends Handler
 {
-  protected int a;
-  protected Context a;
-  protected LayoutInflater a;
+  public ahga(AddContactsActivity paramAddContactsActivity) {}
   
-  public ahga(Context paramContext, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    a(new ahgb(this, paramInt));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Ahhc.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    swe.a().a(300);
   }
-  
-  public ahgk a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return b(paramContext, paramViewGroup, paramInt);
-  }
-  
-  protected abstract void a(ahgk paramahgk, T paramT, int paramInt);
-  
-  protected abstract ahgk b(Context paramContext, ViewGroup paramViewGroup, int paramInt);
 }
 
 

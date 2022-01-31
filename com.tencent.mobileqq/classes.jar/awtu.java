@@ -1,12 +1,34 @@
-public abstract interface awtu
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.qphone.base.util.QLog;
+
+public class awtu
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a();
+  public awtu(StickyNoteShopLayout paramStickyNoteShopLayout) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(awtt paramawtt, int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
+      int i = 0;
+      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
+      {
+        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
+        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
+        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
+      }
+      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
+      {
+        this.a.a(true);
+        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
+      }
+    }
+  }
 }
 
 

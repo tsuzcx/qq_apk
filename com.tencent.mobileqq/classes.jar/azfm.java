@@ -1,103 +1,29 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
 public class azfm
+  extends CameraCaptureSession.CaptureCallback
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public azfm(Camera2Control paramCamera2Control) {}
   
-  public azfm(String paramString)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
-    paramString = new File(this.jdField_a_of_type_JavaLangString);
-    boolean bool1 = paramString.mkdirs();
-    boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2)) {
-      throw new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
-    }
+    azfu.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
   }
   
-  private static void a(String paramString, Throwable paramThrowable)
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
-  }
-  
-  public String a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
-    try
-    {
-      paramRMVideoStateMgr.g();
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-    }
-    catch (IOException paramRMVideoStateMgr)
-    {
-      label74:
-      break label74;
-    }
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.b = null;
-    return str;
-  }
-  
-  public void a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-    a(paramRMVideoStateMgr);
-    this.b = azhd.a();
-    paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-    File localFile = new File(paramRMVideoStateMgr);
-    if (localFile.exists()) {
-      throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
-    }
-    catch (FileNotFoundException paramRMVideoStateMgr)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      }
-    }
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
-    }
-    return false;
+    azfu.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

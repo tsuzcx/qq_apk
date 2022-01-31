@@ -13,13 +13,13 @@ class six
     {
       if (siw.a(this.a) != null)
       {
-        paramString = (Animation)siw.a(this.a).getTag(2131369009);
+        paramString = (Animation)siw.a(this.a).getTag(2131369027);
         paramString.setAnimationListener(new siy(this));
         siw.a(this.a).startAnimation(paramString);
       }
       return;
     }
-    QQToast.a(this.a.a, 1, 2131718882, 0).a();
+    QQToast.a(this.a.a, 1, 2131718894, 0).a();
   }
   
   public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
@@ -29,7 +29,7 @@ class six
       siw.a(this.a).a(siw.a(this.a), siw.a(this.a, paramInt), this.a.a, "", "", paramString2);
       return;
     }
-    QQToast.a(this.a.a, 1, 2131718886, 0).a();
+    QQToast.a(this.a.a, 1, 2131718898, 0).a();
   }
   
   public void b(boolean paramBoolean, String paramString)
@@ -38,13 +38,13 @@ class six
     {
       if (siw.a(this.a) != null)
       {
-        paramString = (Animation)siw.a(this.a).getTag(2131369009);
+        paramString = (Animation)siw.a(this.a).getTag(2131369027);
         paramString.setAnimationListener(new siz(this));
         siw.a(this.a).startAnimation(paramString);
       }
       return;
     }
-    QQToast.a(this.a.a, 1, 2131718889, 0).a();
+    QQToast.a(this.a.a, 1, 2131718901, 0).a();
   }
 }
 

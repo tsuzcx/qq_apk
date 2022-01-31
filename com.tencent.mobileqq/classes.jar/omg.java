@@ -27,7 +27,7 @@ public abstract class omg
   extends BaseAdapter
   implements ooe, opg
 {
-  protected bhpo a;
+  protected bhtv a;
   protected ReadInJoyCommentListView a;
   protected CommonCommentData a;
   protected ArticleInfo a;
@@ -47,7 +47,7 @@ public abstract class omg
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhpo = new omh(this);
+    this.jdField_a_of_type_Bhtv = new omh(this);
   }
   
   private int a(int paramInt)
@@ -110,7 +110,7 @@ public abstract class omg
   
   abstract omz a();
   
-  public void a(Activity paramActivity, View paramView, omt paramomt, bhrf parambhrf)
+  public void a(Activity paramActivity, View paramView, omt paramomt, bhvm parambhvm)
   {
     if ((paramActivity == null) || (paramView == null) || (paramomt == null) || (paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {
       return;
@@ -118,8 +118,8 @@ public abstract class omg
     boolean bool1 = paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isMyself();
     boolean bool2 = paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isDisliked();
     BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559933, null);
-    Object localObject = (TextView)localView.findViewById(2131378625);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559932, null);
+    Object localObject = (TextView)localView.findViewById(2131378679);
     if ((localObject != null) && (paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList != null) && (paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList.size() > 0))
     {
       if (((oms)paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.mediaDataList.get(0)).e <= 0) {
@@ -148,32 +148,32 @@ public abstract class omg
           continue;
           String str = "举报";
           continue;
-          str = alpo.a(2131713437);
+          str = alud.a(2131713449);
         }
       }
-      localTextView1 = (TextView)localView.findViewById(2131378916);
+      localTextView1 = (TextView)localView.findViewById(2131378974);
       if (!bool1) {
         break;
       }
       localObject = "删除";
       localTextView1.setText((CharSequence)localObject);
-      localTextView2 = (TextView)localView.findViewById(2131378696);
+      localTextView2 = (TextView)localView.findViewById(2131378750);
       if (!bool2) {
         break label368;
       }
-      localObject = alpo.a(2131713315);
+      localObject = alud.a(2131713327);
       localTextView2.setText((CharSequence)localObject);
       localBubblePopupWindow.a(localView);
       localBubblePopupWindow.c(true);
       localBubblePopupWindow.b(paramView);
       localBubblePopupWindow.a(true);
-      localBubblePopupWindow.a(parambhrf);
+      localBubblePopupWindow.a(parambhvm);
       if ((paramActivity instanceof FastWebActivity)) {
         ((FastWebActivity)paramActivity).a(localBubblePopupWindow);
       }
       paramActivity = new omj(this, paramomt, localTextView2, bool2, bool1, paramActivity, localBubblePopupWindow);
-      localView.findViewById(2131378670).setOnClickListener(paramActivity);
-      localView.findViewById(2131378625).setOnClickListener(paramActivity);
+      localView.findViewById(2131378724).setOnClickListener(paramActivity);
+      localView.findViewById(2131378679).setOnClickListener(paramActivity);
       localTextView1.setOnClickListener(paramActivity);
       localTextView2.setOnClickListener(paramActivity);
       return;
@@ -187,31 +187,31 @@ public abstract class omg
     if (paramContext == null) {
       return;
     }
-    bhpy localbhpy = bhpy.a(paramContext);
-    localbhpy.a(2131718787);
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(2131718799);
     int[] arrayOfInt = new int[5];
     int[] tmp26_24 = arrayOfInt;
-    tmp26_24[0] = 2131718781;
+    tmp26_24[0] = 2131718793;
     int[] tmp32_26 = tmp26_24;
-    tmp32_26[1] = 2131718782;
+    tmp32_26[1] = 2131718794;
     int[] tmp38_32 = tmp32_26;
-    tmp38_32[2] = 2131718783;
+    tmp38_32[2] = 2131718795;
     int[] tmp44_38 = tmp38_32;
-    tmp44_38[3] = 2131718784;
+    tmp44_38[3] = 2131718796;
     int[] tmp50_44 = tmp44_38;
-    tmp50_44[4] = 2131718785;
+    tmp50_44[4] = 2131718797;
     tmp50_44;
     int i = 0;
     while (i < arrayOfInt.length)
     {
-      localbhpy.b(arrayOfInt[i]);
+      localbhuf.b(arrayOfInt[i]);
       i += 1;
     }
-    localbhpy.c(2131690648);
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
+    localbhuf.c(2131690648);
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    localbhpy.a(new oml(this, localbhpy, arrayOfInt, paramContext, paramolz));
+    localbhuf.a(new oml(this, localbhuf, arrayOfInt, paramContext, paramolz));
   }
   
   public void a(CommonCommentData paramCommonCommentData)
@@ -273,7 +273,7 @@ public abstract class omg
     label215:
     for (paramomt = "";; paramomt = localBaseCommentData.nickName)
     {
-      paramomt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718778) + paramomt;
+      paramomt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718790) + paramomt;
       olt.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, localBaseCommentData, i, paramomt, null, false, a(), -1, this.jdField_a_of_type_Boolean);
       return;
       label111:
@@ -329,14 +329,14 @@ public abstract class omg
   
   public void c(omt paramomt)
   {
-    bhpy localbhpy = bhpy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    localbhpy.a(2131718809);
-    localbhpy.a(2131718808, 3);
-    localbhpy.c(2131690648);
-    if (!localbhpy.isShowing()) {
-      localbhpy.show();
+    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    localbhuf.a(2131718821);
+    localbhuf.a(2131718820, 3);
+    localbhuf.c(2131690648);
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    localbhpy.a(new omi(this, paramomt, localbhpy));
+    localbhuf.a(new omi(this, paramomt, localbhuf));
     if (this.jdField_a_of_type_Olq != null) {
       this.jdField_a_of_type_Olq.a(paramomt);
     }
@@ -404,7 +404,7 @@ public abstract class omg
       if (!localBaseCommentData.isDisliked()) {
         break;
       }
-      localObject = alpo.a(2131713223);
+      localObject = alud.a(2131713235);
       QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, (CharSequence)localObject, 0).a();
       localObject = a();
       String str = localBaseCommentData.commentId;
@@ -420,7 +420,7 @@ public abstract class omg
     {
       ((olq)localObject).b(i, paramomt);
       return;
-      localObject = alpo.a(2131713326);
+      localObject = alud.a(2131713338);
       break;
       label116:
       i = 1;

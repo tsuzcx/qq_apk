@@ -1,7 +1,4 @@
-public abstract interface asjg
-{
-  public abstract void d();
-}
+public abstract class asjg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

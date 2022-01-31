@@ -4,20 +4,20 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import baul;
-import bdxb;
-import bdxc;
+import bayu;
+import bebk;
+import bebl;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.widget.ProfileNameView;
-import xod;
+import xsm;
 
 public class ProfileTemplateNickNameContainer
   extends ViewGroup
 {
   private int jdField_a_of_type_Int;
-  private bdxc jdField_a_of_type_Bdxc = new bdxc();
+  private bebl jdField_a_of_type_Bebl = new bebl();
   private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -34,8 +34,8 @@ public class ProfileTemplateNickNameContainer
   protected URLDrawable a(@NonNull String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = baul.a;
-    localURLDrawableOptions.mFailedDrawable = baul.a;
+    localURLDrawableOptions.mLoadingDrawable = bayu.a;
+    localURLDrawableOptions.mFailedDrawable = bayu.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
@@ -68,9 +68,9 @@ public class ProfileTemplateNickNameContainer
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break;
       }
-      this.jdField_a_of_type_Bdxc.a(i - j, paramInt4 - paramInt2);
-      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdxc);
-      bdxb.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_Bebl.a(i - j, paramInt4 - paramInt2);
+      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bebl);
+      bebk.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(localURLDrawable);
       return;
       i = m;
@@ -96,7 +96,7 @@ public class ProfileTemplateNickNameContainer
     this.jdField_a_of_type_JavaLangString = paramString;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      int i = xod.b(getContext());
+      int i = xsm.b(getContext());
       this.b = ((int)(i * 0.005D));
       this.c = ((int)(i * 0.03D));
     }

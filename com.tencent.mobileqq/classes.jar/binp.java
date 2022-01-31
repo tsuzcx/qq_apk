@@ -1,10 +1,16 @@
-import cooperation.plugin.PluginInfo;
+import android.text.TextUtils;
 
-public abstract interface binp
+class binp
+  implements binn
 {
-  public abstract void a(boolean paramBoolean);
+  binp(bino parambino) {}
   
-  public abstract boolean a(PluginInfo paramPluginInfo);
+  public void a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      bino.a(this.a, paramString1, new String[] { paramString2 });
+    }
+  }
 }
 
 

@@ -1,112 +1,96 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qqreader.js.JsCallParams;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
 
 public class biwa
+  extends ayrm
 {
-  private static long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new biwc(this, Looper.getMainLooper());
-  private biuw jdField_a_of_type_Biuw = new biwb(this);
-  private bivx jdField_a_of_type_Bivx;
-  private List<biwd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  biwa(bivx parambivx)
+  public biwa(bdbb parambdbb)
   {
-    this.jdField_a_of_type_Bivx = parambivx;
+    super(parambdbb);
   }
   
-  private boolean a(String paramString1, String paramString2)
+  public void a(aynu paramaynu, aywd paramaywd)
   {
-    return (("JSbookshelf".equals(paramString1)) && ("kvStorageGet".equals(paramString2)) && (!this.jdField_a_of_type_Bivx.a())) || (("JSbookshelf".equals(paramString1)) && ("reportParams".equals(paramString2)));
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100001);
-    d();
-  }
-  
-  private void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramaywd.a().setMaxWidth(800);
+    bivz localbivz = (bivz)paramaynu;
+    ImageView localImageView = paramaywd.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
     {
-      biwd localbiwd = (biwd)localIterator.next();
-      if (!localbiwd.a()) {
-        this.jdField_a_of_type_Bivx.a(localbiwd.a.a(), localbiwd.a.b(), localbiwd.a.c(), localbiwd.a.a());
+      localImageView.setImageResource(2130843795);
+      if (localbivz.jdField_d_of_type_JavaLangString == null) {
+        break label186;
       }
+      paramaynu = URLDrawable.URLDrawableOptions.obtain();
+      paramaynu.mRequestHeight = paramaywd.b().getHeight();
+      paramaynu.mRequestWidth = paramaywd.b().getWidth();
+      if ((5 != localbivz.f) && (!localbivz.jdField_a_of_type_Boolean)) {
+        break label136;
+      }
+      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localbivz.jdField_d_of_type_JavaLangString, paramaynu));
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  private void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    label136:
+    do
     {
-      biwd localbiwd = (biwd)localIterator.next();
-      if (localbiwd.a())
+      return;
+      localImageView.setImageDrawable(null);
+      localImageView.setBackgroundDrawable(null);
+      break;
+      try
       {
-        if (!a(localbiwd.a.b(), localbiwd.a.c())) {
-          f();
-        }
-        localIterator.remove();
+        localImageView.setImageDrawable(URLDrawable.getDrawable(localbivz.jdField_d_of_type_JavaLangString, paramaynu));
+        return;
       }
-    }
-  }
-  
-  private void f()
-  {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long > 5000L)
+      catch (Exception paramaynu) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramaynu.toString());
+    return;
+    label186:
+    if (localbivz.jdField_d_of_type_Int != 0)
     {
-      jdField_a_of_type_Long = l;
-      QQToast.a(BaseApplicationImpl.getApplication(), "插件正在加载中，请稍候...", 0).a();
-    }
-  }
-  
-  private void g()
-  {
-    if (!biuv.a().a()) {
-      biuv.a().a(this.jdField_a_of_type_Biuw);
-    }
-  }
-  
-  void a() {}
-  
-  void a(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramString1 = new biwd(paramString1, paramString2, paramString3, 3000L, paramVarArgs);
-    paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramString2.hasNext())
-    {
-      paramString3 = (biwd)paramString2.next();
-      if (paramString3.a(paramString1)) {
-        paramString3.a();
+      if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
+      {
+        localImageView.setBackgroundResource(localbivz.jdField_d_of_type_Int);
+        return;
       }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_JavaUtilList.add(paramString1);
-      }
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(100001)) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100001, 3000L);
-      }
-      g();
+      localImageView.setImageResource(localbivz.jdField_d_of_type_Int);
       return;
     }
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100001);
+    if (localbivz.jdField_a_of_type_ArrayOfByte != null)
+    {
+      this.a.inJustDecodeBounds = true;
+      BitmapFactory.decodeByteArray(localbivz.jdField_a_of_type_ArrayOfByte, 0, localbivz.jdField_a_of_type_ArrayOfByte.length, this.a);
+      this.a.inJustDecodeBounds = false;
+      this.a.inSampleSize = (this.a.outWidth / paramaywd.b().getMeasuredWidth());
+      try
+      {
+        paramaynu = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localbivz.jdField_a_of_type_ArrayOfByte, 0, localbivz.jdField_a_of_type_ArrayOfByte.length, this.a));
+        if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
+        {
+          localImageView.setBackgroundDrawable(paramaynu);
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramaynu)
+      {
+        for (;;)
+        {
+          paramaynu = null;
+        }
+        localImageView.setImageDrawable(paramaynu);
+        return;
+      }
+    }
+    super.a(paramaynu, paramaywd);
   }
 }
 

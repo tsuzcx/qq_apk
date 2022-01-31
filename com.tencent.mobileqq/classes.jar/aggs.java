@@ -1,6 +1,25 @@
-public abstract interface aggs
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+
+class aggs
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  aggs(aggq paramaggq) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).setVisibility(8);
+    }
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).c();
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

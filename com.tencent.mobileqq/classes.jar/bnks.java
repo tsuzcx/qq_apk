@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bnks
-  implements DialogInterface.OnClickListener
+class bnks
 {
-  bnks(String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    blfg.b("PtuTemplateManager", "【Camera is in Prepareing】toast show: choose sure");
-    bnko.a(this.a);
-  }
+  private static final bnkr a = new bnkr(null);
 }
 
 

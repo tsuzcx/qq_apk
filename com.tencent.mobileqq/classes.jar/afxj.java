@@ -1,6 +1,12 @@
-public abstract interface afxj
+class afxj
 {
-  public abstract void a(afiv paramafiv);
+  public int a;
+  public long a;
+  
+  afxj(afxh paramafxh)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

@@ -1,30 +1,9 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public final class anjm
-  implements ArkEnvironmentManager.Log
+abstract interface anjm
 {
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

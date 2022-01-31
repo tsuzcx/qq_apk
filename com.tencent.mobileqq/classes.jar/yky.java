@@ -1,27 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public class yky
-  implements View.OnClickListener
+class yky
+  implements TypeEvaluator<Matrix>
 {
-  public yky(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  public static TypeEvaluator<Matrix> a;
+  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
+  float[] b = new float[9];
   
-  public void onClick(View paramView)
+  static
   {
-    if (!ytg.a("subscribe_draft_click"))
+    jdField_a_of_type_AndroidAnimationTypeEvaluator = new ykz();
+  }
+  
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
+  {
+    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
+    paramMatrix2.getValues(this.b);
+    int i = 0;
+    while (i < 9)
     {
-      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
-      paramView = new Intent();
-      paramView.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
-      paramView.putExtra("has_shop", bool);
-      paramView.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
-      bizm.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), paramView, 0);
-      yvu.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
+      float f1 = this.b[i];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
+      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
+      i += 1;
     }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
+    return this.jdField_a_of_type_AndroidGraphicsMatrix;
   }
 }
 

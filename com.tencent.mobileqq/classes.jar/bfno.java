@@ -1,23 +1,17 @@
+import android.content.Context;
+
 public class bfno
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  protected static bfnw a;
   
-  public bfno(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static bfnw a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.d = paramString3;
-    this.c = paramString4;
-    this.e = paramString5;
+    return a;
   }
   
-  public String toString()
+  public static void a(Context paramContext)
   {
-    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
+    a = bfnw.a(paramContext);
   }
 }
 

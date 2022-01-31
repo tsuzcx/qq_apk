@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import ucs;
+import ufo;
 
 public class QCircleRockeyPopupView$1$1
   implements Runnable
 {
-  public QCircleRockeyPopupView$1$1(ucs paramucs) {}
+  public QCircleRockeyPopupView$1$1(ufo paramufo) {}
   
   public void run()
   {

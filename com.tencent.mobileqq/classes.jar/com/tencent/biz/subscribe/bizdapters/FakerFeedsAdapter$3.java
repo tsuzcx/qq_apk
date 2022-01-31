@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import xzw;
+import yef;
 
 public class FakerFeedsAdapter$3
   implements Runnable
 {
-  public FakerFeedsAdapter$3(xzw paramxzw, int paramInt) {}
+  public FakerFeedsAdapter$3(yef paramyef, int paramInt) {}
   
   public void run()
   {
     this.this$0.a(this.a);
-    this.this$0.b();
+    this.this$0.a();
   }
 }
 

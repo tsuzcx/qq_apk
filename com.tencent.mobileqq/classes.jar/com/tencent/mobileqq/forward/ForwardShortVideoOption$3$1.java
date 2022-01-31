@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import arzx;
+import aseg;
 import com.tencent.image.URLDrawable;
 
 class ForwardShortVideoOption$3$1

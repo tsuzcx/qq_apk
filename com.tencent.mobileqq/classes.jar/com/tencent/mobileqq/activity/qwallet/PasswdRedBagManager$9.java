@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aipu;
-import aipv;
-import aipw;
+import aiuj;
+import aiuk;
+import aiul;
 import java.util.Iterator;
 import java.util.List;
 
 public class PasswdRedBagManager$9
   implements Runnable
 {
-  public PasswdRedBagManager$9(aipw paramaipw) {}
+  public PasswdRedBagManager$9(aiul paramaiul) {}
   
   public void run()
   {
-    Iterator localIterator = aipw.a(this.this$0).a().iterator();
+    Iterator localIterator = aiul.a(this.this$0).a().iterator();
     while (localIterator.hasNext())
     {
-      aipv localaipv = (aipv)localIterator.next();
-      aipw.a(this.this$0, localaipv);
-      this.this$0.a(false, localaipv.a, localaipv.b);
+      aiuk localaiuk = (aiuk)localIterator.next();
+      aiul.a(this.this$0, localaiuk);
+      this.this$0.a(false, localaiuk.a, localaiuk.b);
     }
   }
 }

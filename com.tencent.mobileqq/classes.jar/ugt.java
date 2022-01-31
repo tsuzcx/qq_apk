@@ -1,8 +1,18 @@
-public abstract interface ugt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
+
+class ugt
+  implements View.OnClickListener
 {
-  public abstract void a();
+  ugt(ugs paramugs) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_Ugr.a.a(16);
+    tqs.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
+  }
 }
 
 

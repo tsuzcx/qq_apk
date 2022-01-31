@@ -1,27 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzb
-  extends nac
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adzb(TroopInfoActivity paramTroopInfoActivity) {}
+  public adzb(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    int i = 1;
+    if (paramBoolean)
     {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
-      return;
+      this.a.app.c(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      return;
+      this.a.app.c(0);
+      break;
+      label68:
+      i = 0;
     }
   }
 }

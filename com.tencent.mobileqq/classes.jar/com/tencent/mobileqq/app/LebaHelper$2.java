@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import alra;
-import atgf;
+import alvp;
+import atko;
 
 public class LebaHelper$2
   implements Runnable
 {
-  public LebaHelper$2(alra paramalra) {}
+  public LebaHelper$2(alvp paramalvp) {}
   
   public void run()
   {
-    ((atgf)this.this$0.a.a(128)).a();
+    ((atko)this.this$0.a.a(128)).a();
   }
 }
 

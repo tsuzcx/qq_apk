@@ -1,36 +1,34 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class acfe
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public acfe(AssistantSettingActivity paramAssistantSettingActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (AppSetting.c) {
+      this.a.f.setContentDescription(alud.a(2131701161));
+    }
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695444), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.turnOnShake();
+      return;
+    }
+    this.a.turnOffShake();
+  }
 }
 
 

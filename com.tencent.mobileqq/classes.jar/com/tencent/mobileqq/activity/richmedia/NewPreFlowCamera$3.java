@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import azbx;
+import azgg;
 
 class NewPreFlowCamera$3
   implements Runnable
@@ -9,7 +9,7 @@ class NewPreFlowCamera$3
   
   public void run()
   {
-    azbx.a().b();
+    azgg.a().b();
   }
 }
 

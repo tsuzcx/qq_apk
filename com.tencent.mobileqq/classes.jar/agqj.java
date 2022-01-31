@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
 class agqj
-  implements View.OnClickListener
+  extends avve
 {
-  agqj(agot paramagot) {}
+  agqj(agps paramagps) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mQidianClickListener ... mQidianKefu = " + this.a.ap);
+    if ((paramInt == 0) && (paramBoolean == true))
+    {
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.e(65536);
+      agps.a(this.a, Long.valueOf(l).longValue());
     }
-    this.a.A(2131695778);
-    this.a.jdField_a_of_type_Nrc.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.k, this.a.l, this.a.m, new agqk(this));
   }
 }
 

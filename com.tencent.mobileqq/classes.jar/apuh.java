@@ -1,11 +1,8 @@
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-
-public class apuh
-  extends apow
+public abstract interface apuh
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

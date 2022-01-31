@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajpz;
-import ajqj;
-import baqv;
-import baqw;
+import ajuo;
+import ajuy;
+import bave;
+import bavf;
 
 public class RDBaseDataManager$3
   implements Runnable
 {
-  public RDBaseDataManager$3(ajqj paramajqj, ajpz paramajpz, int paramInt, baqw parambaqw) {}
+  public RDBaseDataManager$3(ajuy paramajuy, ajuo paramajuo, int paramInt, bavf parambavf) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Ajpz.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Baqw.a.c, this.jdField_a_of_type_Ajpz.b);
+    this.this$0.a(this.jdField_a_of_type_Ajuo.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bavf.a.c, this.jdField_a_of_type_Ajuo.b);
   }
 }
 

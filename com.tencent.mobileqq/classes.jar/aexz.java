@@ -1,53 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
 public class aexz
-  extends aofy<aeya>
+  implements QQPermissionCallback
 {
-  public int a()
+  public aexz(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 592;
+    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  @NonNull
-  public aeya a(int paramInt)
-  {
-    return new aeya();
-  }
-  
-  @Nullable
-  public aeya a(aogf[] paramArrayOfaogf)
-  {
-    aeya localaeya = new aeya();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      aeya.a(localaeya, paramArrayOfaogf[0].a);
-    }
-    return localaeya;
-  }
-  
-  public Class<aeya> a()
-  {
-    return aeya.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aeya paramaeya) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

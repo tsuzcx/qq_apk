@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.view;
 
-import amwl;
+import anau;
 import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
 class ARScanEntryView$30
   implements Runnable
 {
-  ARScanEntryView$30(ARScanEntryView paramARScanEntryView, amwl paramamwl, ArLBSActivity paramArLBSActivity) {}
+  ARScanEntryView$30(ARScanEntryView paramARScanEntryView, anau paramanau, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    ARScanEntryView.a(this.this$0, this.jdField_a_of_type_Amwl, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    ARScanEntryView.a(this.this$0, this.jdField_a_of_type_Anau, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

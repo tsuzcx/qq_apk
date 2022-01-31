@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aekt;
-import ajnp;
-import ajns;
+import aepi;
+import ajse;
+import ajsh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bcuq;
+import bcyz;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -31,8 +31,8 @@ public class PtvTemplateItemView
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int;
-  ajnp jdField_a_of_type_Ajnp;
-  ajns jdField_a_of_type_Ajns;
+  ajse jdField_a_of_type_Ajse;
+  ajsh jdField_a_of_type_Ajsh;
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -63,13 +63,13 @@ public class PtvTemplateItemView
   {
     setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
     setOrientation(0);
-    int k = aekt.a(64.0F, getResources());
-    int m = aekt.a(60.0F, getResources());
-    int j = aekt.a(70.0F, getResources());
-    int n = aekt.a(20.0F, getResources());
-    int i1 = getResources().getColor(2131166901);
+    int k = aepi.a(64.0F, getResources());
+    int m = aepi.a(60.0F, getResources());
+    int j = aepi.a(70.0F, getResources());
+    int n = aepi.a(20.0F, getResources());
+    int i1 = getResources().getColor(2131166903);
     int i2 = getResources().getColor(2131165332);
-    int i3 = aekt.a(18.0F, getResources());
+    int i3 = aepi.a(18.0F, getResources());
     int i = paramInt2;
     if (paramInt2 <= 0) {
       i = j;
@@ -92,12 +92,12 @@ public class PtvTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845529);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845601);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = aekt.a(5.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = aekt.a(2.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = aepi.a(5.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = aepi.a(2.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress = new CircleProgress(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(3.0F);
@@ -126,7 +126,7 @@ public class PtvTemplateItemView
     }
   }
   
-  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, ajnp paramajnp)
+  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, ajse paramajse)
   {
     if (paramPtvTemplateInfo == null) {}
     do
@@ -134,7 +134,7 @@ public class PtvTemplateItemView
       return;
       setTag(paramPtvTemplateInfo);
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Ajnp = paramajnp;
+      this.jdField_a_of_type_Ajse = paramajse;
       if (!TextUtils.isEmpty(paramPtvTemplateInfo.id)) {
         break;
       }
@@ -146,20 +146,20 @@ public class PtvTemplateItemView
     }
     if (!TextUtils.isEmpty(paramPtvTemplateInfo.iconurl))
     {
-      paramajnp = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = aekt.a(60.0F, getResources());
+      paramajse = URLDrawable.URLDrawableOptions.obtain();
+      paramInt = aepi.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(getResources().getColor(2131165804));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      paramajnp.mRequestWidth = paramInt;
-      paramajnp.mRequestHeight = paramInt;
-      paramajnp.mFailedDrawable = localGradientDrawable;
-      paramajnp.mLoadingDrawable = localGradientDrawable;
-      paramajnp = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramajnp);
-      paramajnp.setTag(bcuq.a(paramInt, paramInt));
-      paramajnp.setDecodeHandler(bcuq.a);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramajnp);
+      paramajse.mRequestWidth = paramInt;
+      paramajse.mRequestHeight = paramInt;
+      paramajse.mFailedDrawable = localGradientDrawable;
+      paramajse.mLoadingDrawable = localGradientDrawable;
+      paramajse = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramajse);
+      paramajse.setTag(bcyz.a(paramInt, paramInt));
+      paramajse.setDecodeHandler(bcyz.a);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramajse);
       if ((!paramPtvTemplateInfo.usable) && (!paramPtvTemplateInfo.id.equals("0"))) {
         break label256;
       }
@@ -173,7 +173,7 @@ public class PtvTemplateItemView
       if (!"0".equals(paramPtvTemplateInfo.id)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130849999);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850072);
       break;
       label256:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -207,11 +207,11 @@ public class PtvTemplateItemView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ajnp != null) {
-      this.jdField_a_of_type_Ajnp.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ajse != null) {
+      this.jdField_a_of_type_Ajse.a(this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Ajns != null) {
-      this.jdField_a_of_type_Ajns.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ajsh != null) {
+      this.jdField_a_of_type_Ajsh.a(this.jdField_a_of_type_Int);
     }
   }
   

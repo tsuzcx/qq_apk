@@ -1,21 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class anha
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public anha(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdfq parambdfq) {}
+  public anha(ARScanEntryView paramARScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_Bdfq.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

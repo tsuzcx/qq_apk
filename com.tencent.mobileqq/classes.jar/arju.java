@@ -1,150 +1,50 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public abstract class arju
+class arju
+  implements arir
 {
-  public Activity a;
-  protected Bundle a;
-  public View a;
-  protected ViewGroup a;
-  protected ProgressBar a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected arjv a;
-  protected View b;
-  protected TextView b;
-  protected TextView c;
+  arju(arjq paramarjq) {}
   
-  public arju(Activity paramActivity)
+  public void a(arkl paramarkl)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Rect a()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
-    }
-    return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    arhz localarhz = ((ariu)paramarkl).a();
+    if (localarhz != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378215));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131378183));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378192));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365861));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378182);
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(arjv paramarjv)
-  {
-    this.jdField_a_of_type_Arjv = paramarjv;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (this.c == null) {
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371376));
-    }
-    if (this.c != null)
-    {
-      this.c.setText(paramString);
-      this.c.setOnClickListener(paramOnClickListener);
-      this.c.setVisibility(0);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TextView localTextView;
-    if (this.c != null)
-    {
-      localTextView = this.c;
-      if (!paramBoolean) {
-        break label24;
+      if (1 != localarhz.c()) {
+        break label147;
+      }
+      if (!localarhz.a().isZipInnerFile) {
+        break label91;
+      }
+      paramarkl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localarhz.a());
+      if ((paramarkl != null) && (this.a.jdField_a_of_type_Arkn != null)) {
+        this.a.jdField_a_of_type_Arkn.a(String.valueOf(localarhz.a()), paramarkl);
       }
     }
-    label24:
-    for (int i = 0;; i = 4)
+    label91:
+    while (2 != localarhz.c())
     {
-      localTextView.setVisibility(i);
+      do
+      {
+        return;
+        paramarkl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localarhz.a(), 7);
+      } while ((paramarkl == null) || (this.a.jdField_a_of_type_Arkn == null));
+      this.a.jdField_a_of_type_Arkn.a(localarhz.c(), paramarkl);
       return;
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    label147:
+    aqsb localaqsb = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    String str = localarhz.e();
+    if (localarhz.a() == null) {}
+    for (paramarkl = null;; paramarkl = localarhz.a().e)
     {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
+      paramarkl = localaqsb.a(str, paramarkl, 7, localarhz);
+      if ((paramarkl == null) || (this.a.jdField_a_of_type_Arkn == null)) {
+        break;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
+      this.a.jdField_a_of_type_Arkn.a(localarhz.e(), paramarkl);
       return;
     }
   }

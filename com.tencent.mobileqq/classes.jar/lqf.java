@@ -16,7 +16,7 @@ public class lqf
     }
     for (;;)
     {
-      azmj.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
       return;
       this.a.d();
     }

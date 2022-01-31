@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import vpa;
-import vpb;
+import vtj;
+import vtk;
 
 public class StoryPlayerGlobalHolder$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$1(vpa paramvpa) {}
+  public StoryPlayerGlobalHolder$1(vtj paramvtj) {}
   
   public void run()
   {
-    vpa.a(this.this$0).a(this.this$0.a.c());
+    vtj.a(this.this$0).a(this.this$0.a.c());
   }
 }
 

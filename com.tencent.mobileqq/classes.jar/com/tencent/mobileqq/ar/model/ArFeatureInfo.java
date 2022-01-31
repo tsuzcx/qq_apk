@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfo;
 
 public class ArFeatureInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new anbf();
+  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new anfo();
   public long a;
   public String a;
   public String b;

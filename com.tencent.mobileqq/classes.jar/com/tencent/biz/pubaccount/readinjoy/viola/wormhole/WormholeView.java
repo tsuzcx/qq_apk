@@ -64,9 +64,9 @@ public class WormholeView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380231));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380233);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380232));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380289));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131380291);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380290));
   }
   
   public void b()

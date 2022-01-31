@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ntk
-  implements aoga<String>
+  implements aokj<String>
 {
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString = "";
@@ -36,7 +36,7 @@ public class ntk
   {
     try
     {
-      ntk localntk = (ntk)aogt.a(paramString, ntk.class);
+      ntk localntk = (ntk)aolc.a(paramString, ntk.class);
       return localntk;
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
@@ -46,13 +46,13 @@ public class ntk
     return null;
   }
   
-  public static ntk a(aogf[] paramArrayOfaogf)
+  public static ntk a(aoko[] paramArrayOfaoko)
   {
     ntk localntk = null;
     int i = 0;
-    while (i < paramArrayOfaogf.length)
+    while (i < paramArrayOfaoko.length)
     {
-      localntk = a(paramArrayOfaogf[i].jdField_a_of_type_JavaLangString);
+      localntk = a(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
       i += 1;
     }
     return localntk;

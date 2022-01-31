@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bgqr;
+import bguy;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -20,7 +20,7 @@ public class MiniSDK
   public static final int STATE_CREATE = 0;
   public static final int STATE_SHOW = 1;
   public static final String TAG = "minisdk-start_MiniSDK";
-  private static bgqr sMiniSDKImpl = new bgqr();
+  private static bguy sMiniSDKImpl = new bguy();
   
   public static void init(Context paramContext)
   {
@@ -72,11 +72,11 @@ public class MiniSDK
   public static void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
     QMLog.i("minisdk-start_MiniSDK", "startMiniApp miniappInfo:" + paramMiniAppInfo);
-    bgqr localbgqr = sMiniSDKImpl;
+    bguy localbguy = sMiniSDKImpl;
     if (paramActivity != null) {}
     for (Context localContext = paramActivity.getApplicationContext();; localContext = null)
     {
-      localbgqr.a(localContext);
+      localbguy.a(localContext);
       sMiniSDKImpl.a(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
       return;
     }
@@ -100,11 +100,11 @@ public class MiniSDK
   public static void startMiniApp(Activity paramActivity, String paramString, int paramInt1, int paramInt2, ResultReceiver paramResultReceiver)
   {
     QMLog.i("minisdk-start_MiniSDK", "startMiniApp link: " + paramString + ", linkType: " + paramInt1);
-    bgqr localbgqr = sMiniSDKImpl;
+    bguy localbguy = sMiniSDKImpl;
     if (paramActivity != null) {}
     for (Object localObject = paramActivity.getApplicationContext();; localObject = null)
     {
-      localbgqr.a((Context)localObject);
+      localbguy.a((Context)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtra("mini_link", paramString);
       ((Intent)localObject).putExtra("mini_link_type", paramInt1);
@@ -132,11 +132,11 @@ public class MiniSDK
   public static void startMiniApp(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, LaunchParam paramLaunchParam, ResultReceiver paramResultReceiver)
   {
     QMLog.i("minisdk-start_MiniSDK", "startMiniApp appId:" + paramString1);
-    bgqr localbgqr = sMiniSDKImpl;
+    bguy localbguy = sMiniSDKImpl;
     if (paramActivity != null) {}
     for (Object localObject = paramActivity.getApplicationContext();; localObject = null)
     {
-      localbgqr.a((Context)localObject);
+      localbguy.a((Context)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtra("mini_appid", paramString1);
       paramLaunchParam.scene = paramInt;

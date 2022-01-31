@@ -1,23 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import java.util.ArrayList;
 
-public class blws
-  implements Animator.AnimatorListener
+public abstract class blws
 {
-  public blws(QIMProviderContainerView paramQIMProviderContainerView) {}
+  protected Paint a = new Paint();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public blws()
   {
-    this.a.c.setVisibility(8);
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
   }
+  
+  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
+  
+  public abstract void a(Canvas paramCanvas, ArrayList<blyk> paramArrayList, int paramInt1, int paramInt2);
 }
 
 

@@ -1,40 +1,22 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 
-public class blnr
-  implements BusinessObserver
+public abstract interface blnr
 {
-  public void a() {}
+  public abstract void a(int paramInt, float paramFloat);
   
-  public void a(Bundle paramBundle) {}
+  public abstract void a(int paramInt, String paramString, float paramFloat, AEEditorFilterBean paramAEEditorFilterBean);
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract boolean e();
   
-  public void b() {}
+  public abstract boolean f();
   
-  public void c() {}
+  public abstract void m();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b();
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      c();
-      return;
-    case 970: 
-      a(paramBundle);
-      return;
-    }
-    a();
-  }
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
 }
 
 

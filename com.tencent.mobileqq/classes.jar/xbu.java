@@ -1,12 +1,26 @@
-import android.graphics.Bitmap;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-public abstract interface xbu
+class xbu
+  implements bhtv
 {
-  public abstract void a(int paramInt);
+  int jdField_a_of_type_Int = 0;
   
-  public abstract void a(Bitmap paramBitmap);
+  xbu(xbs paramxbs) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a().size()) && (!xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a()))
+    {
+      paramAbsListView = xbs.a(this.jdField_a_of_type_Xbs);
+      xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).b(paramAbsListView);
+    }
+  }
 }
 
 

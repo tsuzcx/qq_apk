@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class rzm
-  implements aobg
+  implements aofp
 {
   public rzm(FastWebActivity paramFastWebActivity) {}
   

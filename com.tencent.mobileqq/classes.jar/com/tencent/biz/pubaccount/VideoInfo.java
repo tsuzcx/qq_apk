@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import aekt;
-import aloz;
+import aepi;
+import alto;
 import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdkf;
-import bjxj;
-import bngs;
+import bdoo;
+import bkbq;
+import bnle;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
@@ -477,7 +477,7 @@ public class VideoInfo
       if (this.jdField_j_of_type_JavaLangString.equals(paramQQAppInterface.c())) {
         return true;
       }
-      if (((aloz)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
+      if (((alto)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
         return true;
       }
     }
@@ -488,7 +488,7 @@ public class VideoInfo
   {
     int i2 = -1;
     int i1 = c(paramActivity);
-    int i3 = bdkf.a(50.0F);
+    int i3 = bdoo.a(50.0F);
     switch (i1)
     {
     case 1: 
@@ -498,12 +498,12 @@ public class VideoInfo
     for (;;)
     {
       return new int[] { i1, i2 };
-      int i4 = aekt.a(10.0F, paramActivity.getResources());
+      int i4 = aepi.a(10.0F, paramActivity.getResources());
       i2 = i4;
       i1 = i3;
-      if (bngs.b())
+      if (bnle.b())
       {
-        i1 = i3 + bngs.b(paramActivity);
+        i1 = i3 + bnle.b(paramActivity);
         i2 = i4;
         continue;
         if (!paramBoolean)
@@ -513,7 +513,7 @@ public class VideoInfo
           if (i6 < i5) {
             break;
           }
-          i4 = aekt.a(10.0F, paramActivity.getResources());
+          i4 = aepi.a(10.0F, paramActivity.getResources());
           if (b(paramActivity))
           {
             i2 = i4;
@@ -521,11 +521,11 @@ public class VideoInfo
             if ((i6 - i5) / 2 <= i3) {
               continue;
             }
-            i1 = (i6 - i5) / 2 + aekt.a(32.0F, paramActivity.getResources());
+            i1 = (i6 - i5) / 2 + aepi.a(32.0F, paramActivity.getResources());
             i2 = i4;
             continue;
           }
-          i1 = (i6 - i5) / 2 + aekt.a(10.0F, paramActivity.getResources());
+          i1 = (i6 - i5) / 2 + aepi.a(10.0F, paramActivity.getResources());
           i2 = i4;
           continue;
         }
@@ -541,9 +541,9 @@ public class VideoInfo
     float f1 = b() / c();
     i2 = (int)(i2 * f1);
     if (i2 <= i1) {}
-    for (i2 = (i1 - i2) / 2 + aekt.a(16.0F, paramActivity.getResources());; i2 = aekt.a(16.0F, paramActivity.getResources()))
+    for (i2 = (i1 - i2) / 2 + aepi.a(16.0F, paramActivity.getResources());; i2 = aepi.a(16.0F, paramActivity.getResources()))
     {
-      i1 = aekt.a(16.0F, paramActivity.getResources());
+      i1 = aepi.a(16.0F, paramActivity.getResources());
       break;
     }
   }
@@ -767,7 +767,7 @@ public class VideoInfo
   
   public boolean e()
   {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo.jdField_e_of_type_Int == 0) && (bjxj.e());
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo.jdField_e_of_type_Int == 0) && (bkbq.e());
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bdfq;
+import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -15,11 +15,11 @@ class UIJsPlugin$12
   
   public void run()
   {
-    bdfq localbdfq;
+    bdjz localbdjz;
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing()))
     {
-      localbdfq = new bdfq(this.this$0.jsPluginEngine.getActivityContext(), 2131755801);
-      localbdfq.setContentView(2131559295);
+      localbdjz = new bdjz(this.this$0.jsPluginEngine.getActivityContext(), 2131755801);
+      localbdjz.setContentView(2131559294);
       if (!TextUtils.isEmpty(this.val$title)) {
         break label216;
       }
@@ -27,14 +27,14 @@ class UIJsPlugin$12
     label216:
     for (String str = null;; str = this.val$title)
     {
-      localbdfq.setTitle(str).setMessage(this.val$content);
-      localbdfq.setOwnerActivity(this.this$0.jsPluginEngine.getActivityContext());
-      localbdfq.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
+      localbdjz.setTitle(str).setMessage(this.val$content);
+      localbdjz.setOwnerActivity(this.this$0.jsPluginEngine.getActivityContext());
+      localbdjz.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
       if (this.val$showCancel) {
-        localbdfq.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
+        localbdjz.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
       }
-      localbdfq.setCanceledOnTouchOutside(false);
-      localbdfq.show();
+      localbdjz.setCanceledOnTouchOutside(false);
+      localbdjz.show();
       if ((this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
         ((GameActivity)this.this$0.jsPluginEngine.getActivityContext().getActivity()).hideKeyBoard();
       }

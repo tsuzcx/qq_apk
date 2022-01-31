@@ -1,18 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
-public class ardg
-  implements MediaPlayer.OnPreparedListener
+class ardg
+  implements ardn
 {
-  public ardg(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
+  ardg(ardf paramardf) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
   }
 }
 

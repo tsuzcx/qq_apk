@@ -1,19 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
 
 public class arra
-  implements View.OnClickListener
+  implements arqw
 {
-  public arra(SendBottomBar paramSendBottomBar) {}
+  arra(arqz paramarqz) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a.isShowing()) {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
+    arqx.a(this.a.a.this$0);
+    arrp.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.this$0.b = false;
       return;
     }
-    this.a.a.show();
   }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
+    arqx.a(this.a.a.this$0);
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.this$0.b = false;
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

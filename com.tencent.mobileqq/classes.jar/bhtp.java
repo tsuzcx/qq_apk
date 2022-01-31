@@ -1,6 +1,6 @@
 public abstract interface bhtp
 {
-  public abstract void a(long paramLong);
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

@@ -1,35 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeco
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aeco(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeco(TroopDisbandActivity paramTroopDisbandActivity, bdjz parambdjz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131719756), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131719743), 0).b(this.a.getTitleBarHeight());
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beub == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beub = new beub(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.o.setText(paramMessage + "");
-    this.a.o.setContentDescription(paramMessage + "");
-    this.a.o.setVisibility(0);
+    if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    {
+      paramDialogInterface = (amdu)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
+      if (paramDialogInterface != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
+        {
+          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
+          localTroopDisbandActivity.b |= 0x1;
+          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beub.b(0, 2131692293, 1000);
+      }
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.cancel();
+      }
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beub.b(2, 2131692289, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beub.b(2, 2131694831, 1500);
+    }
   }
 }
 

@@ -1,8 +1,10 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.util.ArrayList;
 
 public abstract interface bncv
 {
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract boolean a(ArrayList<String> paramArrayList, bncw parambncw);
 }
 
 

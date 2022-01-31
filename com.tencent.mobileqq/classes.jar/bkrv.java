@@ -1,13 +1,31 @@
-class bkrv
-  implements ytt
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+
+public class bkrv
+  implements Animator.AnimatorListener
 {
-  bkrv(bkrq parambkrq, Runnable paramRunnable) {}
+  public bkrv(AECropperImageView paramAECropperImageView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    AECropperImageView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    AECropperImageView.c(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
   }
 }
 

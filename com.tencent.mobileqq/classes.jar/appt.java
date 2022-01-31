@@ -1,22 +1,23 @@
-import android.graphics.drawable.Drawable;
-
-public abstract interface appt
+public class appt
+  implements alpg
 {
-  public abstract void a(appw paramappw);
+  public void a(Object paramObject) {}
   
-  public abstract void a(appw paramappw1, appw paramappw2, Drawable paramDrawable);
+  public void b(Object paramObject) {}
   
-  public abstract boolean a(appw paramappw);
-  
-  public abstract void b();
-  
-  public abstract void b(appw paramappw);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void setting();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    }
+    b(paramObject);
+  }
 }
 
 

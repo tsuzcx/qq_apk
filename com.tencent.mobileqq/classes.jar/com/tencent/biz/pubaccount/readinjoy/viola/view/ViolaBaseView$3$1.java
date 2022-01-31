@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bdcs;
+import bdhb;
 import ors;
 import srb;
 
@@ -11,14 +11,14 @@ public class ViolaBaseView$3$1
   
   public void run()
   {
-    Object localObject = bdcs.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a());
+    Object localObject = bdhb.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a());
     if (localObject == null) {
-      bdcs.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a(), ViolaBaseView.a(this.a.a));
+      bdhb.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a(), ViolaBaseView.a(this.a.a));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.a(this.a.a).equals(localObject))) {
       return;
     }
-    bdcs.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a(), ViolaBaseView.a(this.a.a));
+    bdhb.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a(), ViolaBaseView.a(this.a.a));
   }
 }
 

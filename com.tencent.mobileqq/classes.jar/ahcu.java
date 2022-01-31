@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahcu
-  extends alvc
+  extends amco
 {
-  public ahcu(PublicView paramPublicView) {}
+  public ahcu(BlessResultActivity paramBlessResultActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (true == paramBoolean)
-    {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
     }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131720325);
-    PublicView.a(this.a);
+    if ((paramBoolean) && (paramInt == azjh.a)) {
+      bdgm.a(this.a.getActivity(), 0, null, this.a.getString(2131720135), 2131720137, 2131720136, new ahcv(this), new ahcw(this)).show();
+    }
   }
 }
 

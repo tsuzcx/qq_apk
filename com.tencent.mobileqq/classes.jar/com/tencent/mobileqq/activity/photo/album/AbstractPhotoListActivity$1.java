@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import bhte;
+import bhxl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GestureSelectGridView;
 import java.util.HashSet;
 
 class AbstractPhotoListActivity$1
-  implements bhte
+  implements bhxl
 {
   boolean mIsSelected;
   int mMaxIndex;

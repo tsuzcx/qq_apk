@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbh
-  implements View.OnFocusChangeListener
+  implements Animation.AnimationListener
 {
-  public adbh(Leba paramLeba) {}
+  public adbh(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      aynt.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      azmj.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import alpo;
+import alud;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -63,7 +63,7 @@ public class ReadInJoyUgcSearchTopicFragment
   private String jdField_b_of_type_JavaLangString;
   private List<TopicInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
   private oxe jdField_b_of_type_Oxe = new qqa(this);
-  private final String c = alpo.a(2131713356);
+  private final String c = alud.a(2131713368);
   
   private static List<Map<String, CharSequence>> a(List<TopicInfo> paramList)
   {
@@ -131,7 +131,7 @@ public class ReadInJoyUgcSearchTopicFragment
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (bjxj.l())
+    if (bkbq.l())
     {
       this.jdField_b_of_type_JavaUtilList.add(TopicInfo.a().a(true).b(this.jdField_a_of_type_Long).c("https://sqimg.qq.com/qq_product_operations/kan/images/topic-cover-default.jpg").d("https://sqimg.qq.com/qq_product_operations/kan/images/topic-head-default.jpg").b(this.c).a(this.jdField_b_of_type_JavaLangString).a());
       this.jdField_a_of_type_JavaUtilList.add(a());
@@ -147,20 +147,20 @@ public class ReadInJoyUgcSearchTopicFragment
   
   private void b(View paramView)
   {
-    paramView.findViewById(2131363808).setOnClickListener(new qqd(this));
+    paramView.findViewById(2131363810).setOnClickListener(new qqd(this));
   }
   
   private void c(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131369561));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131369579));
     this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams().height = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369543);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365759);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369561);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365761);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
     this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new qqe(this));
     this.jdField_a_of_type_Qsn = new qsn(getActivity(), this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_Qsn.setViewBinder(new qqf(this));
-    paramView = LayoutInflater.from(getActivity()).inflate(2131560135, this.jdField_a_of_type_AndroidWidgetListView, false);
+    paramView = LayoutInflater.from(getActivity()).inflate(2131560134, this.jdField_a_of_type_AndroidWidgetListView, false);
     this.jdField_a_of_type_AndroidWidgetListView.addFooterView(paramView, null, false);
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Qsn);
@@ -169,8 +169,8 @@ public class ReadInJoyUgcSearchTopicFragment
   @SuppressLint({"ClickableViewAccessibility"})
   private void d(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131377389));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131719003);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131377443));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131719015);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new qqg(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
@@ -199,7 +199,7 @@ public class ReadInJoyUgcSearchTopicFragment
     this.jdField_a_of_type_Long = ors.a();
     oxb.a().a(this.jdField_a_of_type_Oxe);
     oxb.a().a(this.jdField_b_of_type_Oxe);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560138, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560137, paramViewGroup, false);
     d(paramLayoutInflater);
     c(paramLayoutInflater);
     b(paramLayoutInflater);

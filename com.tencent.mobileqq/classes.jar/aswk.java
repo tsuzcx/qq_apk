@@ -1,38 +1,53 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.PluginProcessService;
-import com.tencent.shadow.dynamic.host.PpsController;
-import java.util.concurrent.CountDownLatch;
+import android.os.SystemClock;
 
-class aswk
-  implements ServiceConnection
+public class aswk
 {
-  aswk(aswi paramaswi, CountDownLatch paramCountDownLatch) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  aswl jdField_a_of_type_Aswl;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  int c = 100;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public aswk(int paramInt, aswl paramaswl)
   {
-    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
-    aswi.a(this.jdField_a_of_type_Aswi).unbindService(this);
-    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Aswl = paramaswl;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
-      paramComponentName.exit();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
       return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
+      this.b += paramInt;
+      if (this.jdField_a_of_type_Long == 0L)
       {
-        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        return;
       }
+    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
+    aswl localaswl = this.jdField_a_of_type_Aswl;
+    if (this.b > this.jdField_a_of_type_Int) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaswl.a(bool);
+      this.jdField_a_of_type_Long = 0L;
+      this.b = 0;
+      return;
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
 }
 
 

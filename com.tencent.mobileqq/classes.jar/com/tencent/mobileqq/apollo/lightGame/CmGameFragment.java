@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import apic;
-import apmy;
-import bhow;
+import apml;
+import aprh;
+import bhtd;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,7 +15,7 @@ public class CmGameFragment
   implements Handler.Callback
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  private bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -30,8 +30,8 @@ public class CmGameFragment
     this.jdField_a_of_type_AndroidOsBundle.clear();
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("isAlive", paramBoolean1);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("wakeup", paramBoolean2);
-    Bundle localBundle = apic.a("ipc_cm_game_match_page_report_status", "", 0, this.jdField_a_of_type_AndroidOsBundle);
-    apmy.a().b(localBundle);
+    Bundle localBundle = apml.a("ipc_cm_game_match_page_report_status", "", 0, this.jdField_a_of_type_AndroidOsBundle);
+    aprh.a().b(localBundle);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -48,22 +48,22 @@ public class CmGameFragment
           QLog.d("CmGameConn_CmGameFragment", 2, new Object[] { "[handleMessage] check service, mIsDestroy=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
         }
       } while (this.jdField_a_of_type_Boolean);
-      if (!apmy.a().a())
+      if (!aprh.a().a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("CmGameConn_CmGameFragment", 2, "[handleMessage] service not binded");
         }
-        this.jdField_a_of_type_Bhow.sendEmptyMessageDelayed(16, 100L);
+        this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(16, 100L);
         return false;
       }
       if (QLog.isColorLevel()) {
         QLog.d("CmGameConn_CmGameFragment", 2, "[handleMessage] service binded");
       }
-      this.jdField_a_of_type_Bhow.removeMessages(32);
-      localMessage = this.jdField_a_of_type_Bhow.obtainMessage(32);
+      this.jdField_a_of_type_Bhtd.removeMessages(32);
+      localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(32);
       localMessage.obj = Boolean.valueOf(true);
       paramMessage.arg1 = 1;
-      this.jdField_a_of_type_Bhow.sendMessage(localMessage);
+      this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -77,11 +77,11 @@ public class CmGameFragment
       if (!bool2) {
         break;
       }
-      this.jdField_a_of_type_Bhow.removeMessages(32);
-      localMessage = this.jdField_a_of_type_Bhow.obtainMessage(32);
+      this.jdField_a_of_type_Bhtd.removeMessages(32);
+      localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(32);
       localMessage.obj = Boolean.valueOf(true);
       paramMessage.arg1 = 0;
-      this.jdField_a_of_type_Bhow.sendMessageDelayed(localMessage, 120000L);
+      this.jdField_a_of_type_Bhtd.sendMessageDelayed(localMessage, 120000L);
       return false;
     }
   }
@@ -102,13 +102,13 @@ public class CmGameFragment
       QLog.d("CmGameConn_CmGameFragment", 2, "[onDestroy]");
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhow.removeMessages(16);
+    this.jdField_a_of_type_Bhtd.removeMessages(16);
     if (this.b)
     {
-      this.jdField_a_of_type_Bhow.removeMessages(32);
-      Message localMessage = this.jdField_a_of_type_Bhow.obtainMessage(32);
+      this.jdField_a_of_type_Bhtd.removeMessages(32);
+      Message localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(32);
       localMessage.obj = Boolean.valueOf(false);
-      this.jdField_a_of_type_Bhow.sendMessage(localMessage);
+      this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
     }
   }
   
@@ -128,18 +128,18 @@ public class CmGameFragment
     }
     try
     {
-      if (!apmy.a().a())
+      if (!aprh.a().a())
       {
         QLog.w("CmGameConn_CmGameFragment", 1, "[onResume] ipc not binded");
-        this.jdField_a_of_type_Bhow.sendEmptyMessage(16);
+        this.jdField_a_of_type_Bhtd.sendEmptyMessage(16);
         return;
       }
       QLog.d("CmGameConn_CmGameFragment", 2, "[onResume] ipc binded");
-      this.jdField_a_of_type_Bhow.removeMessages(32);
-      Message localMessage = this.jdField_a_of_type_Bhow.obtainMessage(32);
+      this.jdField_a_of_type_Bhtd.removeMessages(32);
+      Message localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(32);
       localMessage.obj = Boolean.valueOf(true);
       localMessage.arg1 = 1;
-      this.jdField_a_of_type_Bhow.sendMessage(localMessage);
+      this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
       return;
     }
     catch (Exception localException)

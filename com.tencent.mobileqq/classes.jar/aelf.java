@@ -1,6 +1,10 @@
-public abstract interface aelf
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+
+public class aelf
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  public aelf(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

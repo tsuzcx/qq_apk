@@ -1,39 +1,12 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.ui.MainPageFragment;
-import com.tencent.qqmini.sdk.utils.GameWnsUtils;
+import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
 
 public class bhhx
-  implements View.OnLongClickListener
+  implements bgrt
 {
-  public bhhx(MainPageFragment paramMainPageFragment) {}
+  public bhhx(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean a(bgrq parambgrq, int paramInt1, int paramInt2)
   {
-    if ((paramView.getId() == 2131370612) && (GameWnsUtils.enablePersistentDebugVersion()) && (MainPageFragment.a(this.a) != null))
-    {
-      paramView = MiniAppEnv.g().getContext().getApplicationContext().getSharedPreferences("persistent_debug_version_" + this.a.a(), 4);
-      if (paramView.getBoolean("persistent", false))
-      {
-        paramView.edit().remove("persistent").apply();
-        QMLog.e("MainPageFragment", "close persistent debug version");
-        Toast.makeText(this.a.getActivity(), this.a.getResources().getString(2131694333), 1).show();
-      }
-    }
-    else
-    {
-      return false;
-    }
-    paramView.edit().putBoolean("persistent", true).apply();
-    QMLog.e("MainPageFragment", "open persistent debug version");
-    Toast.makeText(this.a.getActivity(), this.a.getResources().getString(2131694337), 1).show();
     return false;
   }
 }

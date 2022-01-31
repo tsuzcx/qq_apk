@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class awup
-  implements DialogInterface.OnClickListener
+public class awup
+  implements Animation.AnimationListener
 {
-  awup(awul paramawul, String paramString) {}
+  public awup(BreatheEffectView paramBreatheEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    new awuq(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_AndroidContentContext, awul.a(this.jdField_a_of_type_Awul).a()).a(this.jdField_a_of_type_JavaLangString).a(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(awul.a(this.jdField_a_of_type_Awul)).a();
-    azmj.b(awul.a(this.jdField_a_of_type_Awul).a(), "dc00898", "", "", "0X800A4BD", "0X800A4BD", 0, 0, "", "", "", "");
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

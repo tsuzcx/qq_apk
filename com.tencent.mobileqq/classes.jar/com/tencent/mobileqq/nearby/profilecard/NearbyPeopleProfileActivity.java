@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import allj;
-import alln;
-import alox;
-import aloz;
-import alpo;
-import alqf;
+import alpy;
+import alqc;
+import altm;
+import alto;
+import alud;
+import aluu;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -29,58 +29,58 @@ import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import anpo;
-import anpq;
-import anpx;
-import asar;
-import atda;
-import aupy;
-import auqc;
-import auri;
-import auru;
-import aush;
-import ausy;
-import autc;
-import avfr;
-import avfs;
-import avft;
-import avfu;
-import avfv;
-import avfx;
-import avfy;
-import avfz;
-import avga;
-import avgb;
-import avgc;
-import avgd;
-import avge;
-import avgf;
-import avgg;
-import avgh;
-import avgj;
-import avgk;
-import avhw;
-import avjb;
-import avjc;
+import antx;
+import antz;
+import anug;
+import asfa;
+import athj;
+import auuh;
+import auul;
+import auvr;
+import auwd;
+import auwq;
+import auxh;
+import auxl;
+import avka;
+import avkb;
+import avkc;
+import avkd;
+import avke;
 import avkg;
-import avpc;
-import avpi;
-import avpq;
-import axzt;
-import azmj;
-import aznr;
-import azns;
-import baqs;
-import batw;
-import bdal;
-import bdar;
-import bdcd;
-import bepp;
-import bhoc;
-import bhoh;
-import bhpy;
-import bizm;
-import bizt;
+import avkh;
+import avki;
+import avkj;
+import avkk;
+import avkl;
+import avkm;
+import avkn;
+import avko;
+import avkp;
+import avkq;
+import avks;
+import avkt;
+import avmf;
+import avnk;
+import avnl;
+import avop;
+import avtl;
+import avtr;
+import avtz;
+import ayec;
+import azqs;
+import azsa;
+import azsb;
+import bavb;
+import bayf;
+import bdeu;
+import bdfa;
+import bdgm;
+import bety;
+import bhsj;
+import bhso;
+import bhuf;
+import bjdt;
+import bjea;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
@@ -106,7 +106,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xod;
+import xsm;
 
 public class NearbyPeopleProfileActivity
   extends FragmentActivity
@@ -118,25 +118,25 @@ public class NearbyPeopleProfileActivity
   public static int m;
   public float a;
   public long a;
-  public allj a;
-  public alln a;
-  protected alox a;
-  alqf jdField_a_of_type_Alqf = new avfu(this);
+  public alpy a;
+  public alqc a;
+  protected altm a;
+  aluu jdField_a_of_type_Aluu = new avkd(this);
   public Dialog a;
   public Intent a;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private anpo jdField_a_of_type_Anpo;
-  protected anpq a;
-  private anpx jdField_a_of_type_Anpx;
-  asar jdField_a_of_type_Asar = new avgc(this);
-  public ausy a;
-  public autc a;
-  private avgj jdField_a_of_type_Avgj;
-  private avjb jdField_a_of_type_Avjb;
-  public axzt a;
-  bepp jdField_a_of_type_Bepp;
+  private antx jdField_a_of_type_Antx;
+  protected antz a;
+  private anug jdField_a_of_type_Anug;
+  asfa jdField_a_of_type_Asfa = new avkl(this);
+  public auxh a;
+  public auxl a;
+  private avks jdField_a_of_type_Avks;
+  private avnk jdField_a_of_type_Avnk;
+  public ayec a;
+  bety jdField_a_of_type_Bety;
   public URLDrawable a;
   public ProfileActivity.AllInOne a;
   public TopGestureLayout a;
@@ -148,7 +148,7 @@ public class NearbyPeopleProfileActivity
   public ArrayList<PicInfo> a;
   public boolean a;
   private long jdField_b_of_type_Long;
-  protected alln b;
+  protected alqc b;
   public Dialog b;
   private View jdField_b_of_type_AndroidViewView;
   public String b;
@@ -219,15 +219,15 @@ public class NearbyPeopleProfileActivity
     this.jdField_l_of_type_Int = -1;
     this.jdField_n_of_type_Int = 18;
     this.jdField_q_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new avgd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avkm(this);
     this.jdField_a_of_type_AndroidAppDialog = null;
     this.jdField_b_of_type_AndroidAppDialog = null;
-    this.jdField_a_of_type_Alox = new avft(this);
-    this.jdField_a_of_type_Autc = new avfv(this);
-    this.jdField_a_of_type_Anpq = new avfy(this);
+    this.jdField_a_of_type_Altm = new avkc(this);
+    this.jdField_a_of_type_Auxl = new avke(this);
+    this.jdField_a_of_type_Antz = new avkh(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(13);
-    this.jdField_a_of_type_Alln = new avfz(this);
-    this.jdField_b_of_type_Alln = new avga(this);
+    this.jdField_a_of_type_Alqc = new avki(this);
+    this.jdField_b_of_type_Alqc = new avkj(this);
   }
   
   public static void a(Context paramContext, ProfileActivity.AllInOne paramAllInOne, Bundle paramBundle)
@@ -269,7 +269,7 @@ public class NearbyPeopleProfileActivity
   
   private void j()
   {
-    azmj.b(this.app, "dc00899", "grp_lbs", "", "data_card", "up_pho", 0, 0, "", "", "", "");
+    azqs.b(this.app, "dc00899", "grp_lbs", "", "data_card", "up_pho", 0, 0, "", "", "", "");
   }
   
   protected int a(int paramInt)
@@ -298,32 +298,32 @@ public class NearbyPeopleProfileActivity
     return 14;
   }
   
-  public avgj a(int paramInt)
+  public avks a(int paramInt)
   {
     if (a(paramInt)) {
-      return new avhw(this);
+      return new avmf(this);
     }
-    return new avgk(this);
+    return new avkt(this);
   }
   
-  public avjb a(int paramInt)
+  public avnk a(int paramInt)
   {
     if (a(paramInt)) {
-      return new avkg(this);
+      return new avop(this);
     }
-    return new avjc(this);
+    return new avnl(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()) && (!isFinishing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 0, getString(paramInt), 2131699498, 2131699497, new avge(this), new avgf(this));
+    this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, getString(paramInt), 2131699510, 2131699509, new avkn(this), new avko(this));
     if ((this.jdField_a_of_type_AndroidAppDialog != null) && (!isFinishing())) {
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -396,21 +396,21 @@ public class NearbyPeopleProfileActivity
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setInterpolator(new AccelerateInterpolator());
     localAlphaAnimation.setDuration(paramLong);
-    localAlphaAnimation.setAnimationListener(new avfr(this));
+    localAlphaAnimation.setAnimationListener(new avka(this));
     if (this.jdField_a_of_type_AndroidViewView != null) {}
     try
     {
       this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
       label65:
-      if (this.jdField_a_of_type_Avjb != null) {
-        this.jdField_a_of_type_Avjb.a();
+      if (this.jdField_a_of_type_Avnk != null) {
+        this.jdField_a_of_type_Avnk.a();
       }
       this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_a_of_type_Avjb = null;
-      this.jdField_a_of_type_Avjb = a(this.jdField_j_of_type_Int);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Avjb.a();
+      this.jdField_a_of_type_Avnk = null;
+      this.jdField_a_of_type_Avnk = a(this.jdField_j_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Avnk.a();
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-1, -1));
-      BounceScrollView localBounceScrollView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365597);
+      BounceScrollView localBounceScrollView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365599);
       localBounceScrollView.post(new NearbyPeopleProfileActivity.11(this, localBounceScrollView, this.jdField_b_of_type_AndroidViewView.findViewById(2131363439).getScrollY()));
       this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
       f();
@@ -432,9 +432,9 @@ public class NearbyPeopleProfileActivity
       return;
     }
     paramImageView.setImageDrawable(paramDrawable);
-    paramDrawable = (auri)this.app.getManager(207);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xod.a(this, 150.0F));
-    new avpi(this).a(paramImageView, localLayoutParams).a(alpo.a(2131707619)).b(paramDrawable.a()).a(new avpc(alpo.a(2131707614), new avfx(this))).show();
+    paramDrawable = (auvr)this.app.getManager(207);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xsm.a(this, 150.0F));
+    new avtr(this).a(paramImageView, localLayoutParams).a(alud.a(2131707631)).b(paramDrawable.a()).a(new avtl(alud.a(2131707626), new avkg(this))).show();
     this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     paramDrawable.a();
   }
@@ -443,7 +443,7 @@ public class NearbyPeopleProfileActivity
   {
     if ((paramBoolean2) && (this.jdField_e_of_type_Int != 1))
     {
-      this.jdField_a_of_type_Avgj.b(paramNearbyPeopleCard);
+      this.jdField_a_of_type_Avks.b(paramNearbyPeopleCard);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
@@ -469,7 +469,7 @@ public class NearbyPeopleProfileActivity
       if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender == 0) {
-          azmj.b(this.app, "CliOper", "", "", "0X8005286", "0X8005286", 0, 0, "", "", "", "");
+          azqs.b(this.app, "CliOper", "", "", "0X8005286", "0X8005286", 0, 0, "", "", "", "");
         }
       }
       else
@@ -483,7 +483,7 @@ public class NearbyPeopleProfileActivity
         this.jdField_h_of_type_Boolean = true;
         if (this.jdField_e_of_type_Int == 3)
         {
-          if (!bdal.a(this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+          if (!bdeu.a(this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
             break label462;
           }
           this.jdField_a_of_type_AndroidContentIntent.putExtra("param_mode", 2);
@@ -492,7 +492,7 @@ public class NearbyPeopleProfileActivity
         if (this.jdField_e_of_type_Int != 1) {
           break label510;
         }
-        this.jdField_a_of_type_Avjb.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+        this.jdField_a_of_type_Avnk.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
         if ((this.s) || (this.jdField_e_of_type_Int == 1) || (this.jdField_g_of_type_Boolean)) {
           break;
         }
@@ -506,14 +506,14 @@ public class NearbyPeopleProfileActivity
       try
       {
         l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin);
-        this.jdField_a_of_type_Ausy.a(l1, 0L, i1);
+        this.jdField_a_of_type_Auxh.a(l1, 0L, i1);
         return;
         jdField_c_of_type_Int = jdField_b_of_type_Int;
         continue;
         if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender != 1) {
           break label174;
         }
-        azmj.b(this.app, "CliOper", "", "", "0X8005287", "0X8005287", 0, 0, "", "", "", "");
+        azqs.b(this.app, "CliOper", "", "", "0X8005287", "0X8005287", 0, 0, "", "", "", "");
         break label174;
         label430:
         if (1 == this.jdField_e_of_type_Int) {
@@ -528,14 +528,14 @@ public class NearbyPeopleProfileActivity
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
           break label282;
         }
-        paramNearbyPeopleCard = (aloz)this.app.getManager(51);
+        paramNearbyPeopleCard = (alto)this.app.getManager(51);
         if (paramNearbyPeopleCard == null) {
           break label282;
         }
         this.jdField_g_of_type_Boolean = paramNearbyPeopleCard.b(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin);
         break label282;
         label510:
-        this.jdField_a_of_type_Avgj.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+        this.jdField_a_of_type_Avks.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
         break label301;
         label524:
         i1 = 509;
@@ -573,12 +573,12 @@ public class NearbyPeopleProfileActivity
     do
     {
       return;
-      if (this.jdField_a_of_type_Bepp == null) {
-        this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_Bety == null) {
+        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bepp.a(paramString);
+      this.jdField_a_of_type_Bety.a(paramString);
     } while (isFinishing());
-    this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety.show();
   }
   
   public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean)
@@ -624,11 +624,11 @@ public class NearbyPeopleProfileActivity
     if ((paramBoolean1) && (paramNearbyPeopleCard != null))
     {
       this.jdField_c_of_type_Boolean = false;
-      a(2, alpo.a(2131707618));
+      a(2, alud.a(2131707630));
       if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.college, paramNearbyPeopleCard.college))
       {
-        aush.a(this.app.getCurrentAccountUin(), "school_name", paramNearbyPeopleCard.college);
-        aush.a(this.app.getCurrentAccountUin(), "school_valid_state", Integer.valueOf(this.o));
+        auwq.a(this.app.getCurrentAccountUin(), "school_name", paramNearbyPeopleCard.college);
+        auwq.a(this.app.getCurrentAccountUin(), "school_valid_state", Integer.valueOf(this.o));
       }
       this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
       if (this.jdField_d_of_type_Boolean)
@@ -644,7 +644,7 @@ public class NearbyPeopleProfileActivity
       }
       this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo = this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.videoInfo;
       if (paramBoolean2) {
-        auqc.a(this.app);
+        auul.a(this.app);
       }
       if (this.jdField_i_of_type_Int != 1) {
         e();
@@ -654,8 +654,8 @@ public class NearbyPeopleProfileActivity
         this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
         this.jdField_b_of_type_JavaUtilArrayList.clear();
       }
-      if (this.jdField_a_of_type_Avgj != null) {
-        this.jdField_a_of_type_Avgj.j();
+      if (this.jdField_a_of_type_Avks != null) {
+        this.jdField_a_of_type_Avks.j();
       }
       this.jdField_a_of_type_AndroidContentIntent.putExtra("param_mode", 2);
       d();
@@ -671,8 +671,8 @@ public class NearbyPeopleProfileActivity
       paramNearbyPeopleCard.putExtra("param_god_flag", this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag);
       int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
       paramNearbyPeopleCard.putExtra("param_photo_count", i1);
-      int i2 = ((Integer)aush.a(this.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-      azmj.b(this.app, "dc00899", "grp_lbs", "", "data_card", "upload_suc", 0, 0, i1 + "", i2 + "", "", "");
+      int i2 = ((Integer)auwq.a(this.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+      azqs.b(this.app, "dc00899", "grp_lbs", "", "data_card", "upload_suc", 0, 0, i1 + "", i2 + "", "", "");
       setResult(-1, paramNearbyPeopleCard);
       if (this.jdField_a_of_type_Boolean)
       {
@@ -682,7 +682,7 @@ public class NearbyPeopleProfileActivity
       return;
     }
     if (TextUtils.isEmpty(paramString)) {
-      a(1, alpo.a(2131707615));
+      a(1, alud.a(2131707627));
     }
     for (;;)
     {
@@ -703,7 +703,7 @@ public class NearbyPeopleProfileActivity
   
   public void b()
   {
-    this.jdField_b_of_type_AndroidAppDialog = bdcd.a(this, 2131699505, getString(2131699504), 2131690648, 2131699503, new avgg(this), new avgh(this));
+    this.jdField_b_of_type_AndroidAppDialog = bdgm.a(this, 2131699517, getString(2131699516), 2131690648, 2131699515, new avkp(this), new avkq(this));
     if ((this.jdField_b_of_type_AndroidAppDialog != null) && (!isFinishing())) {
       this.jdField_b_of_type_AndroidAppDialog.show();
     }
@@ -726,7 +726,7 @@ public class NearbyPeopleProfileActivity
         localJSONObject.put("isSuccess", paramBoolean);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add("*.qq.com");
-        atda.a("nearbyUserSummaryInfoChange", localJSONObject, localArrayList, null);
+        athj.a("nearbyUserSummaryInfoChange", localJSONObject, localArrayList, null);
         return;
       }
       catch (JSONException localJSONException) {}
@@ -736,22 +736,22 @@ public class NearbyPeopleProfileActivity
   
   public void c()
   {
-    bhoc.a(this);
+    bhsj.a(this);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
     this.jdField_b_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Avgj != null) {
-      this.jdField_a_of_type_Avgj.j();
+    if (this.jdField_a_of_type_Avks != null) {
+      this.jdField_a_of_type_Avks.j();
     }
     if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_e_of_type_Boolean = false;
-      this.jdField_a_of_type_Ausy.a(new ArrayList());
+      this.jdField_a_of_type_Auxh.a(new ArrayList());
     }
     int i1 = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_mode", 0);
     if (i1 == 1)
     {
-      azmj.b(this.app, "CliOper", "", "", "0X8004A1B", "0X8004A1B", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0X8004A1B", "0X8004A1B", 0, 0, "", "", "", "");
       if (this.jdField_n_of_type_Boolean)
       {
         if (this.m)
@@ -789,9 +789,9 @@ public class NearbyPeopleProfileActivity
     if (paramBoolean) {
       e();
     }
-    azmj.b(this.app, "CliOper", "", "", "0X8004A1C", "0X8004A1C", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "0X8004A1C", "0X8004A1C", 0, 0, "", "", "", "");
     if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("param_no_miss", false)) {
-      azmj.b(this.app, "CliOper", "", "", "0X8004A1D", "0X8004A1D", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0X8004A1D", "0X8004A1D", 0, 0, "", "", "", "");
     }
   }
   
@@ -799,19 +799,19 @@ public class NearbyPeopleProfileActivity
   {
     if (this.jdField_e_of_type_Int == 2)
     {
-      if (this.jdField_a_of_type_Avgj != null) {
-        this.jdField_a_of_type_Avgj.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+      if (this.jdField_a_of_type_Avks != null) {
+        this.jdField_a_of_type_Avks.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
       }
       return;
     }
     this.jdField_e_of_type_Int = 2;
-    if (this.jdField_a_of_type_Avjb != null) {
-      this.jdField_a_of_type_Avjb.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Avnk != null) {
+      this.jdField_a_of_type_Avnk.jdField_a_of_type_Boolean = false;
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(300L);
     localAlphaAnimation.setInterpolator(new AccelerateInterpolator());
-    localAlphaAnimation.setAnimationListener(new avfs(this));
+    localAlphaAnimation.setAnimationListener(new avkb(this));
     this.jdField_a_of_type_AndroidViewView.clearAnimation();
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -820,15 +820,15 @@ public class NearbyPeopleProfileActivity
   {
     if (paramInt1 == 14)
     {
-      this.jdField_a_of_type_Avjb.a(paramInt1, paramInt2, paramIntent);
+      this.jdField_a_of_type_Avnk.a(paramInt1, paramInt2, paramIntent);
       return;
     }
     if (this.jdField_e_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Avjb.a(paramInt1, paramInt2, paramIntent);
+      this.jdField_a_of_type_Avnk.a(paramInt1, paramInt2, paramIntent);
       return;
     }
-    this.jdField_a_of_type_Avgj.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Avks.a(paramInt1, paramInt2, paramIntent);
   }
   
   /* Error */
@@ -853,19 +853,19 @@ public class NearbyPeopleProfileActivity
     //   35: ldc_w 963
     //   38: invokevirtual 799	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   41: pop
-    //   42: getstatic 968	bhoh:b	Lbhoh;
+    //   42: getstatic 968	bhso:b	Lbhso;
     //   45: astore_3
     //   46: aload_3
     //   47: ifnull +20 -> 67
     //   50: aload_3
-    //   51: invokevirtual 970	bhoh:a	()Z
+    //   51: invokevirtual 970	bhso:a	()Z
     //   54: ifeq +13 -> 67
     //   57: aload_3
     //   58: iconst_0
-    //   59: invokevirtual 972	bhoh:b	(I)V
+    //   59: invokevirtual 972	bhso:b	(I)V
     //   62: aload_3
     //   63: iconst_1
-    //   64: invokevirtual 974	bhoh:a	(I)V
+    //   64: invokevirtual 974	bhso:a	(I)V
     //   67: aload_0
     //   68: iconst_0
     //   69: putfield 977	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:mActNeedImmersive	Z
@@ -885,8 +885,8 @@ public class NearbyPeopleProfileActivity
     //   95: aload_0
     //   96: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   99: aload_0
-    //   100: getfield 142	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Autc	Lautc;
-    //   103: invokevirtual 994	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lalkr;)V
+    //   100: getfield 142	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Auxl	Lauxl;
+    //   103: invokevirtual 994	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lalpg;)V
     //   106: aload_0
     //   107: aload_0
     //   108: invokevirtual 953	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:getIntent	()Landroid/content/Intent;
@@ -937,59 +937,59 @@ public class NearbyPeopleProfileActivity
     //   205: aload_0
     //   206: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   209: bipush 60
-    //   211: invokevirtual 1031	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
-    //   214: checkcast 652	ausy
-    //   217: putfield 650	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Ausy	Lausy;
+    //   211: invokevirtual 1031	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalpd;
+    //   214: checkcast 652	auxh
+    //   217: putfield 650	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Auxh	Lauxh;
     //   220: aload_0
     //   221: aload_0
     //   222: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   225: bipush 15
     //   227: invokevirtual 515	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   230: checkcast 1033	axzt
-    //   233: putfield 1035	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Axzt	Laxzt;
+    //   230: checkcast 1033	ayec
+    //   233: putfield 1035	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Ayec	Layec;
     //   236: aload_0
     //   237: aload_0
     //   238: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   241: bipush 59
     //   243: invokevirtual 515	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   246: checkcast 1037	allj
-    //   249: putfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Allj	Lallj;
+    //   246: checkcast 1037	alpy
+    //   249: putfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Alpy	Lalpy;
     //   252: aload_0
-    //   253: getfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Allj	Lallj;
+    //   253: getfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Alpy	Lalpy;
     //   256: aload_0
-    //   257: invokevirtual 1042	allj:a	(Ljava/lang/Object;)V
+    //   257: invokevirtual 1042	alpy:a	(Ljava/lang/Object;)V
     //   260: aload_0
-    //   261: getfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Allj	Lallj;
+    //   261: getfield 1039	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Alpy	Lalpy;
     //   264: aload_0
-    //   265: getfield 166	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_b_of_type_Alln	Lalln;
-    //   268: invokevirtual 1044	allj:c	(Ljava/lang/Object;)V
+    //   265: getfield 166	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_b_of_type_Alqc	Lalqc;
+    //   268: invokevirtual 1044	alpy:c	(Ljava/lang/Object;)V
     //   271: aload_0
     //   272: aload_0
     //   273: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   276: sipush 180
     //   279: invokevirtual 515	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   282: checkcast 1046	anpx
-    //   285: putfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpx	Lanpx;
+    //   282: checkcast 1046	anug
+    //   285: putfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anug	Lanug;
     //   288: aload_0
     //   289: aload_0
-    //   290: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpx	Lanpx;
-    //   293: invokevirtual 1051	anpx:a	()Lanpo;
-    //   296: putfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpo	Lanpo;
+    //   290: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anug	Lanug;
+    //   293: invokevirtual 1051	anug:a	()Lantx;
+    //   296: putfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Antx	Lantx;
     //   299: aload_0
     //   300: aload_0
-    //   301: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpx	Lanpx;
+    //   301: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anug	Lanug;
     //   304: iconst_4
-    //   305: invokevirtual 1052	anpx:a	(I)Z
+    //   305: invokevirtual 1052	anug:a	(I)Z
     //   308: putfield 1054	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_p_of_type_Boolean	Z
     //   311: aload_0
-    //   312: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpx	Lanpx;
-    //   315: invokevirtual 1057	anpx:a	()Lanpn;
+    //   312: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anug	Lanug;
+    //   315: invokevirtual 1057	anug:a	()Lantw;
     //   318: ifnull +39 -> 357
     //   321: aload_0
     //   322: aload_0
-    //   323: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpx	Lanpx;
-    //   326: invokevirtual 1057	anpx:a	()Lanpn;
-    //   329: getfield 1061	anpn:jdField_d_of_type_Int	I
+    //   323: getfield 1048	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anug	Lanug;
+    //   326: invokevirtual 1057	anug:a	()Lantw;
+    //   329: getfield 1061	antw:jdField_d_of_type_Int	I
     //   332: putfield 110	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_n_of_type_Int	I
     //   335: aload_0
     //   336: getfield 110	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_n_of_type_Int	I
@@ -1056,7 +1056,7 @@ public class NearbyPeopleProfileActivity
     //   472: aload_0
     //   473: iconst_0
     //   474: iconst_1
-    //   475: invokestatic 1078	bdar:anim	(Landroid/app/Activity;ZZ)V
+    //   475: invokestatic 1078	bdfa:anim	(Landroid/app/Activity;ZZ)V
     //   478: aload_0
     //   479: getfield 104	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_j_of_type_Int	I
     //   482: invokestatic 285	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(I)Z
@@ -1136,12 +1136,12 @@ public class NearbyPeopleProfileActivity
     //   641: aload_0
     //   642: aload_0
     //   643: getfield 104	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_j_of_type_Int	I
-    //   646: invokevirtual 460	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(I)Lavjb;
-    //   649: putfield 196	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avjb	Lavjb;
+    //   646: invokevirtual 460	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(I)Lavnk;
+    //   649: putfield 196	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avnk	Lavnk;
     //   652: aload_0
     //   653: aload_0
-    //   654: getfield 196	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avjb	Lavjb;
-    //   657: invokevirtual 463	avjb:a	()Landroid/view/View;
+    //   654: getfield 196	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avnk	Lavnk;
+    //   657: invokevirtual 463	avnk:a	()Landroid/view/View;
     //   660: putfield 182	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
     //   663: aload_0
     //   664: getfield 186	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_AndroidViewViewGroup	Landroid/view/ViewGroup;
@@ -1163,16 +1163,16 @@ public class NearbyPeopleProfileActivity
     //   694: iconst_1
     //   695: putfield 844	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Boolean	Z
     //   698: aload_0
-    //   699: getfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpo	Lanpo;
+    //   699: getfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Antx	Lantx;
     //   702: ifnull +14 -> 716
     //   705: aload_0
-    //   706: getfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpo	Lanpo;
+    //   706: getfield 189	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Antx	Lantx;
     //   709: aload_0
-    //   710: getfield 147	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Anpq	Lanpq;
-    //   713: invokevirtual 1103	anpo:a	(Lanpq;)V
+    //   710: getfield 147	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Antz	Lantz;
+    //   713: invokevirtual 1103	antx:a	(Lantz;)V
     //   716: aload_0
     //   717: ldc_w 1104
-    //   720: invokestatic 539	alpo:a	(I)Ljava/lang/String;
+    //   720: invokestatic 539	alud:a	(I)Ljava/lang/String;
     //   723: invokevirtual 1105	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(Ljava/lang/String;)V
     //   726: new 1107	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity$1
     //   729: dup
@@ -1185,16 +1185,16 @@ public class NearbyPeopleProfileActivity
     //   740: aload_3
     //   741: ifnull +15 -> 756
     //   744: aload_3
-    //   745: invokevirtual 970	bhoh:a	()Z
+    //   745: invokevirtual 970	bhso:a	()Z
     //   748: ifeq +8 -> 756
     //   751: aload_3
     //   752: iconst_4
-    //   753: invokevirtual 974	bhoh:a	(I)V
+    //   753: invokevirtual 974	bhso:a	(I)V
     //   756: new 1110	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity$2
     //   759: dup
     //   760: aload_0
     //   761: aload_3
-    //   762: invokespecial 1113	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity$2:<init>	(Lcom/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity;Lbhoh;)V
+    //   762: invokespecial 1113	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity$2:<init>	(Lcom/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity;Lbhso;)V
     //   765: bipush 8
     //   767: aconst_null
     //   768: iconst_0
@@ -1203,15 +1203,15 @@ public class NearbyPeopleProfileActivity
     //   773: getfield 266	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   776: bipush 71
     //   778: invokevirtual 515	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   781: checkcast 1115	apdq
+    //   781: checkcast 1115	aphz
     //   784: astore_1
     //   785: aload_1
-    //   786: invokevirtual 1118	apdq:a	()Lapet;
-    //   789: invokevirtual 1122	apet:a	()I
+    //   786: invokevirtual 1118	aphz:a	()Lapjc;
+    //   789: invokevirtual 1122	apjc:a	()I
     //   792: ifle +10 -> 802
     //   795: aload_1
-    //   796: invokevirtual 1118	apdq:a	()Lapet;
-    //   799: invokevirtual 1123	apet:a	()V
+    //   796: invokevirtual 1118	aphz:a	()Lapjc;
+    //   799: invokevirtual 1123	apjc:a	()V
     //   802: aload_0
     //   803: getfield 571	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
     //   806: ifnull +16 -> 822
@@ -1233,7 +1233,7 @@ public class NearbyPeopleProfileActivity
     //   841: aload_0
     //   842: getfield 1092	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Long	J
     //   845: invokestatic 1139	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   848: invokestatic 1144	aznr:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/Class;ILjava/lang/String;ILjava/lang/String;)V
+    //   848: invokestatic 1144	azsa:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/Class;ILjava/lang/String;ILjava/lang/String;)V
     //   851: iconst_1
     //   852: ireturn
     //   853: aload_0
@@ -1273,16 +1273,16 @@ public class NearbyPeopleProfileActivity
     //   927: aload_0
     //   928: aload_0
     //   929: getfield 104	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_j_of_type_Int	I
-    //   932: invokevirtual 1158	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(I)Lavgj;
-    //   935: putfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avgj	Lavgj;
+    //   932: invokevirtual 1158	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:a	(I)Lavks;
+    //   935: putfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avks	Lavks;
     //   938: aload_0
     //   939: aload_0
-    //   940: getfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avgj	Lavgj;
-    //   943: invokevirtual 1159	avgj:a	()Landroid/view/View;
+    //   940: getfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avks	Lavks;
+    //   943: invokevirtual 1159	avks:a	()Landroid/view/View;
     //   946: putfield 262	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   949: aload_0
-    //   950: getfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avgj	Lavgj;
-    //   953: invokevirtual 1160	avgj:a	()V
+    //   950: getfield 192	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Avks	Lavks;
+    //   953: invokevirtual 1160	avks:a	()V
     //   956: aload_0
     //   957: getfield 262	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   960: instanceof 1162
@@ -1291,8 +1291,8 @@ public class NearbyPeopleProfileActivity
     //   967: getfield 262	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   970: checkcast 1162	com/tencent/mobileqq/widget/PerfRelativeLayout
     //   973: aload_0
-    //   974: getfield 173	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Asar	Lasar;
-    //   977: invokevirtual 1166	com/tencent/mobileqq/widget/PerfRelativeLayout:setOnDrawCompleteListener	(Lasar;)V
+    //   974: getfield 173	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_Asfa	Lasfa;
+    //   977: invokevirtual 1166	com/tencent/mobileqq/widget/PerfRelativeLayout:setOnDrawCompleteListener	(Lasfa;)V
     //   980: aload_0
     //   981: getfield 186	com/tencent/mobileqq/nearby/profilecard/NearbyPeopleProfileActivity:jdField_a_of_type_AndroidViewViewGroup	Landroid/view/ViewGroup;
     //   984: aload_0
@@ -1314,7 +1314,7 @@ public class NearbyPeopleProfileActivity
     //   0	1014	0	this	NearbyPeopleProfileActivity
     //   0	1014	1	paramBundle	Bundle
     //   505	506	2	i1	int
-    //   45	717	3	localbhoh	bhoh
+    //   45	717	3	localbhso	bhso
     // Exception table:
     //   from	to	target	type
     //   137	144	402	java/lang/OutOfMemoryError
@@ -1324,53 +1324,53 @@ public class NearbyPeopleProfileActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Autc);
+    this.app.removeObserver(this.jdField_a_of_type_Auxl);
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    if (this.jdField_a_of_type_Allj != null)
+    if (this.jdField_a_of_type_Alpy != null)
     {
-      this.jdField_a_of_type_Allj.d(this.jdField_b_of_type_Alln);
-      this.jdField_a_of_type_Allj.d(this.jdField_a_of_type_Alln);
-      this.jdField_a_of_type_Allj.b(this);
+      this.jdField_a_of_type_Alpy.d(this.jdField_b_of_type_Alqc);
+      this.jdField_a_of_type_Alpy.d(this.jdField_a_of_type_Alqc);
+      this.jdField_a_of_type_Alpy.b(this);
     }
-    if (this.jdField_a_of_type_Avjb != null) {
-      this.jdField_a_of_type_Avjb.a();
+    if (this.jdField_a_of_type_Avnk != null) {
+      this.jdField_a_of_type_Avnk.a();
     }
     if (this.app.a().jdField_a_of_type_JavaUtilArrayList != null) {}
     for (int i1 = this.app.a().jdField_a_of_type_JavaUtilArrayList.size();; i1 = 0)
     {
       int i2;
-      if (this.jdField_a_of_type_Avgj != null)
+      if (this.jdField_a_of_type_Avks != null)
       {
-        i2 = this.jdField_a_of_type_Avgj.b();
-        this.jdField_a_of_type_Avgj.g();
+        i2 = this.jdField_a_of_type_Avks.b();
+        this.jdField_a_of_type_Avks.g();
       }
       for (;;)
       {
-        Object localObject = (baqs)this.app.a().a(null, 0L);
+        Object localObject = (bavb)this.app.a().a(null, 0L);
         if (localObject != null) {
-          ((baqs)localObject).f();
+          ((bavb)localObject).f();
         }
         try
         {
           if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("frome_where", 0) == -2)
           {
             if (this.jdField_q_of_type_Int > 0) {
-              azmj.b(this.app, "CliOper", "", "", "0X80059BB", "0X80059BB", 0, 0, "", "", "", "");
+              azqs.b(this.app, "CliOper", "", "", "0X80059BB", "0X80059BB", 0, 0, "", "", "", "");
             }
           }
           else
           {
-            if (this.jdField_a_of_type_Avgj != null) {
-              this.jdField_a_of_type_Avgj.b();
+            if (this.jdField_a_of_type_Avks != null) {
+              this.jdField_a_of_type_Avks.b();
             }
-            localObject = aznr.a(getClass(), hashCode());
+            localObject = azsa.a(getClass(), hashCode());
             if (localObject != null)
             {
-              azmj.b(this.app, "CliOper", "", "", ((azns)localObject).jdField_a_of_type_JavaLangString, ((azns)localObject).jdField_a_of_type_JavaLangString, ((azns)localObject).jdField_a_of_type_Int, 0, String.valueOf(this.jdField_a_of_type_Long), Long.toString(SystemClock.elapsedRealtime() - ((azns)localObject).jdField_b_of_type_Long), "", "");
-              int i3 = (int)(SystemClock.elapsedRealtime() - ((azns)localObject).jdField_b_of_type_Long) / 1000;
-              if (auru.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int, this.jdField_e_of_type_Int)) {
+              azqs.b(this.app, "CliOper", "", "", ((azsb)localObject).jdField_a_of_type_JavaLangString, ((azsb)localObject).jdField_a_of_type_JavaLangString, ((azsb)localObject).jdField_a_of_type_Int, 0, String.valueOf(this.jdField_a_of_type_Long), Long.toString(SystemClock.elapsedRealtime() - ((azsb)localObject).jdField_b_of_type_Long), "", "");
+              int i3 = (int)(SystemClock.elapsedRealtime() - ((azsb)localObject).jdField_b_of_type_Long) / 1000;
+              if (auwd.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int, this.jdField_e_of_type_Int)) {
                 this.app.a().a(this.jdField_a_of_type_Long, i3, i1, i2);
               }
             }
@@ -1395,7 +1395,7 @@ public class NearbyPeopleProfileActivity
               localObject[i1] = null;
               i1 += 1;
               continue;
-              azmj.b(this.app, "CliOper", "", "", "0X80059BC", "0X80059BC", 0, 0, "", "", "", "");
+              azqs.b(this.app, "CliOper", "", "", "0X80059BC", "0X80059BC", 0, 0, "", "", "", "");
             }
             catch (Throwable localThrowable)
             {
@@ -1437,7 +1437,7 @@ public class NearbyPeopleProfileActivity
           {
             localObject = new PicInfo();
             ((PicInfo)localObject).jdField_c_of_type_JavaLangString = ((String)paramIntent.get(i1));
-            if (this.jdField_a_of_type_Avjb.a((PicInfo)localObject)) {
+            if (this.jdField_a_of_type_Avnk.a((PicInfo)localObject)) {
               this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 1000L);
             }
           }
@@ -1445,19 +1445,19 @@ public class NearbyPeopleProfileActivity
         }
       }
     } while (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString));
-    paramIntent = bizt.a();
+    paramIntent = bjea.a();
     paramIntent.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
     paramIntent.jdField_b_of_type_JavaLangString = this.app.getCurrentNickname();
     Object localObject = new Bundle();
-    ((Bundle)localObject).putString("key_title", getString(2131718419));
+    ((Bundle)localObject).putString("key_title", getString(2131718431));
     ((Bundle)localObject).putInt("key_personal_album_enter_model", 2);
     ((Bundle)localObject).putBoolean("show_album", false);
     ((Bundle)localObject).putString("key_jump_album_id", this.jdField_c_of_type_JavaLangString);
     ((Bundle)localObject).putBoolean("key_need_change_to_jpg", true);
-    bizm.a(this, paramIntent, (Bundle)localObject, 5);
+    bjdt.a(this, paramIntent, (Bundle)localObject, 5);
     return;
     label233:
-    avpq.a(this, 1000, -1, paramIntent);
+    avtz.a(this, 1000, -1, paramIntent);
   }
   
   public void doOnPause()
@@ -1465,24 +1465,24 @@ public class NearbyPeopleProfileActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(true);
     }
-    bhoc.a(this);
-    this.app.removeObserver(this.jdField_a_of_type_Alox);
-    this.app.removeObserver(this.jdField_a_of_type_Alqf);
+    bhsj.a(this);
+    this.app.removeObserver(this.jdField_a_of_type_Altm);
+    this.app.removeObserver(this.jdField_a_of_type_Aluu);
     ApngImage.pauseAll();
     AbstractVideoImage.pauseAll();
-    if (this.jdField_a_of_type_Avgj != null) {
-      this.jdField_a_of_type_Avgj.e();
+    if (this.jdField_a_of_type_Avks != null) {
+      this.jdField_a_of_type_Avks.e();
     }
     super.doOnPause();
   }
   
   public void doOnResume()
   {
-    if (this.jdField_a_of_type_Avgj != null) {
-      this.jdField_a_of_type_Avgj.d();
+    if (this.jdField_a_of_type_Avks != null) {
+      this.jdField_a_of_type_Avks.d();
     }
-    this.app.addObserver(this.jdField_a_of_type_Alox);
-    this.app.addObserver(this.jdField_a_of_type_Alqf);
+    this.app.addObserver(this.jdField_a_of_type_Altm);
+    this.app.addObserver(this.jdField_a_of_type_Aluu);
     ApngImage.playByTag(15);
     AbstractVideoImage.resumeAll();
     if (getApplication() == null) {
@@ -1492,13 +1492,13 @@ public class NearbyPeopleProfileActivity
     {
       return;
       super.doOnResume();
-      auqc localauqc = (auqc)this.app.getManager(106);
-      if ((this.jdField_a_of_type_Avgj != null) && (this.jdField_a_of_type_Avgj.jdField_a_of_type_Boolean))
+      auul localauul = (auul)this.app.getManager(106);
+      if ((this.jdField_a_of_type_Avks != null) && (this.jdField_a_of_type_Avks.jdField_a_of_type_Boolean))
       {
-        localauqc.d.put(this.app.getCurrentAccountUin(), Integer.valueOf(1));
-        this.jdField_a_of_type_Avgj.jdField_a_of_type_Boolean = false;
+        localauul.d.put(this.app.getCurrentAccountUin(), Integer.valueOf(1));
+        this.jdField_a_of_type_Avks.jdField_a_of_type_Boolean = false;
       }
-      this.jdField_k_of_type_Boolean = localauqc.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+      this.jdField_k_of_type_Boolean = localauul.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
       if (QLog.isColorLevel()) {
         QLog.d("Q.nearby_people_card.", 2, "doOnResume, isNeedUpdateProfile=" + this.jdField_k_of_type_Boolean + ", isForceUpdateOnResume=" + this.jdField_l_of_type_Boolean);
       }
@@ -1520,8 +1520,8 @@ public class NearbyPeopleProfileActivity
   public void doOnStart()
   {
     super.doOnStart();
-    if (this.jdField_a_of_type_Avgj != null) {
-      this.jdField_a_of_type_Avgj.c();
+    if (this.jdField_a_of_type_Avks != null) {
+      this.jdField_a_of_type_Avks.c();
     }
   }
   
@@ -1529,19 +1529,19 @@ public class NearbyPeopleProfileActivity
   {
     super.doOnStop();
     this.v = true;
-    if ((this.jdField_e_of_type_Int == 2) && (this.jdField_a_of_type_Avgj != null) && (this.jdField_a_of_type_Avgj.a()))
+    if ((this.jdField_e_of_type_Int == 2) && (this.jdField_a_of_type_Avks != null) && (this.jdField_a_of_type_Avks.a()))
     {
-      this.jdField_a_of_type_Avgj.h();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uRoomid != 0L) && (this.jdField_a_of_type_Avgj != null)) {
-        this.jdField_a_of_type_Avgj.i();
+      this.jdField_a_of_type_Avks.h();
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uRoomid != 0L) && (this.jdField_a_of_type_Avks != null)) {
+        this.jdField_a_of_type_Avks.i();
       }
     }
-    bhoh localbhoh = bhoh.b;
-    if ((localbhoh != null) && (localbhoh.a(true))) {
-      localbhoh.a(this.app.getCurrentAccountUin());
+    bhso localbhso = bhso.b;
+    if ((localbhso != null) && (localbhso.a(true))) {
+      localbhso.a(this.app.getCurrentAccountUin());
     }
-    if (this.jdField_a_of_type_Avgj != null) {
-      this.jdField_a_of_type_Avgj.f();
+    if (this.jdField_a_of_type_Avks != null) {
+      this.jdField_a_of_type_Avks.f();
     }
   }
   
@@ -1560,7 +1560,7 @@ public class NearbyPeopleProfileActivity
         if (str2 == null) {
           str1 = "";
         }
-        azmj.b(this.app, "CliOper", "", "", "0X800524A", "0X800524A", 0, 0, "", "", str1, "");
+        azqs.b(this.app, "CliOper", "", "", "0X800524A", "0X800524A", 0, 0, "", "", str1, "");
       }
       this.x = true;
     }
@@ -1568,9 +1568,9 @@ public class NearbyPeopleProfileActivity
   
   protected void e()
   {
-    aupy localaupy = new aupy();
-    localaupy.jdField_a_of_type_Int = -1;
-    aupy.a(this.app.getCurrentAccountUin(), localaupy);
+    auuh localauuh = new auuh();
+    localauuh.jdField_a_of_type_Int = -1;
+    auuh.a(this.app.getCurrentAccountUin(), localauuh);
     this.jdField_i_of_type_Int = 1;
     this.app.getPreferences().edit().putInt("nearby_people_profile_ok_new", 1).commit();
   }
@@ -1597,29 +1597,29 @@ public class NearbyPeopleProfileActivity
     String[] arrayOfString = getResources().getStringArray(2130968634);
     if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.isAddPicBtnDownloadAppOpen()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.addPicBtnDownloadAppTips)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.tribeAppDownloadPageUrl)))
     {
-      auqc.a(this, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.addPicBtnDownloadAppTips, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.tribeAppDownloadPageUrl, 2);
+      auul.a(this, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.addPicBtnDownloadAppTips, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.tribeAppDownloadPageUrl, 2);
       return;
     }
-    bhpy localbhpy = bhpy.a(this);
-    localbhpy.c(arrayOfString[28]);
-    localbhpy.c(arrayOfString[29]);
-    localbhpy.d(arrayOfString[16]);
-    localbhpy.a(new avgb(this, localbhpy));
-    localbhpy.show();
+    bhuf localbhuf = bhuf.a(this);
+    localbhuf.c(arrayOfString[28]);
+    localbhuf.c(arrayOfString[29]);
+    localbhuf.d(arrayOfString[16]);
+    localbhuf.a(new avkk(this, localbhuf));
+    localbhuf.show();
   }
   
   public void h()
   {
-    bizt localbizt = bizt.a();
-    localbizt.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
-    localbizt.jdField_b_of_type_JavaLangString = this.app.getCurrentNickname();
+    bjea localbjea = bjea.a();
+    localbjea.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
+    localbjea.jdField_b_of_type_JavaLangString = this.app.getCurrentNickname();
     Bundle localBundle = new Bundle();
-    localBundle.putString("key_title", getString(2131718419));
+    localBundle.putString("key_title", getString(2131718431));
     localBundle.putInt("key_personal_album_enter_model", 2);
     localBundle.putBoolean("show_album", false);
     localBundle.putBoolean("key_need_change_to_jpg", true);
-    bizm.a(this, localbizt, localBundle, 5);
-    azmj.b(this.app, "CliOper", "", "", "0X800481F", "0X800481F", 2, 0, "", "", "", "");
+    bjdt.a(this, localbjea, localBundle, 5);
+    azqs.b(this.app, "CliOper", "", "", "0X800481F", "0X800481F", 2, 0, "", "", "", "");
   }
   
   public void i()
@@ -1649,19 +1649,19 @@ public class NearbyPeopleProfileActivity
     int i1 = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_mode", 0);
     if (i1 == 1)
     {
-      a(2131699509);
+      a(2131699521);
       return true;
     }
     if ((i1 == 2) && (this.jdField_e_of_type_Int == 1))
     {
       if (this.jdField_i_of_type_Int == 0)
       {
-        a(2131699509);
+        a(2131699521);
         return true;
       }
-      if (this.jdField_a_of_type_Avjb.a())
+      if (this.jdField_a_of_type_Avnk.a())
       {
-        a(2131699499);
+        a(2131699511);
         return true;
       }
       c();
@@ -1729,7 +1729,7 @@ public class NearbyPeopleProfileActivity
           break label471;
         }
         finish();
-        bdar.anim(this, false, false);
+        bdfa.anim(this, false, false);
         return true;
         bool = false;
         break;

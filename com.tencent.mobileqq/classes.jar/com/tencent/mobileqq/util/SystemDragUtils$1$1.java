@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.util;
 
 import android.view.DragEvent;
-import bdaa;
-import bdab;
+import bdej;
+import bdek;
 
 public class SystemDragUtils$1$1
   implements Runnable
 {
-  public SystemDragUtils$1$1(bdab parambdab, DragEvent paramDragEvent) {}
+  public SystemDragUtils$1$1(bdek parambdek, DragEvent paramDragEvent) {}
   
   public void run()
   {
-    bdaa.a(this.a, this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.this$0.jdField_a_of_type_AndroidViewViewGroup, this.this$0.b, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    bdej.a(this.a, this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.this$0.jdField_a_of_type_AndroidViewViewGroup, this.this$0.b, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

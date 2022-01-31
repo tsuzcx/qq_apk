@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aloz;
+import alto;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,10 +22,10 @@ class FrameHelperActivity$2
         localObject = ((FragmentActivity)localObject).app;
         if (localObject != null)
         {
-          aloz localaloz = (aloz)((QQAppInterface)localObject).getManager(51);
-          if (localaloz != null)
+          alto localalto = (alto)((QQAppInterface)localObject).getManager(51);
+          if (localalto != null)
           {
-            FrameHelperActivity.a(this.this$0, localaloz.b(((QQAppInterface)localObject).getCurrentAccountUin()));
+            FrameHelperActivity.a(this.this$0, localalto.b(((QQAppInterface)localObject).getCurrentAccountUin()));
             return;
           }
         }

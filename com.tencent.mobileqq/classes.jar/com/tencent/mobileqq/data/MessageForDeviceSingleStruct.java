@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ammq;
-import ayvc;
+import amrf;
+import ayzl;
 
 public class MessageForDeviceSingleStruct
   extends ChatMessage
@@ -12,7 +12,7 @@ public class MessageForDeviceSingleStruct
   public long entityID;
   public String ext = "";
   public String faceRect = "";
-  public long nAppearTime = ayvc.a();
+  public long nAppearTime = ayzl.a();
   public int nCoverChannelType = 0;
   public long nCoverSessionID = 0L;
   public int nDataType = 1;
@@ -38,7 +38,7 @@ public class MessageForDeviceSingleStruct
   {
     try
     {
-      MessageForDeviceSingleStruct.SingleStructMsgSerial localSingleStructMsgSerial = (MessageForDeviceSingleStruct.SingleStructMsgSerial)ammq.a(this.msgData);
+      MessageForDeviceSingleStruct.SingleStructMsgSerial localSingleStructMsgSerial = (MessageForDeviceSingleStruct.SingleStructMsgSerial)amrf.a(this.msgData);
       if (localSingleStructMsgSerial != null)
       {
         this.nDataType = localSingleStructMsgSerial.nDataType;
@@ -90,14 +90,14 @@ public class MessageForDeviceSingleStruct
     //   9: aload_0
     //   10: aload_1
     //   11: ldc 155
-    //   13: invokestatic 55	ayvc:a	()J
+    //   13: invokestatic 55	ayzl:a	()J
     //   16: invokevirtual 159	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
     //   19: putfield 162	com/tencent/mobileqq/data/MessageForDeviceSingleStruct:time	J
     //   22: aload_0
     //   23: aload_1
     //   24: ldc 164
     //   26: ldc 165
-    //   28: invokestatic 170	alpo:a	(I)Ljava/lang/String;
+    //   28: invokestatic 170	alud:a	(I)Ljava/lang/String;
     //   31: invokevirtual 174	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   34: putfield 49	com/tencent/mobileqq/data/MessageForDeviceSingleStruct:strTitle	Ljava/lang/String;
     //   37: aload_1
@@ -118,7 +118,7 @@ public class MessageForDeviceSingleStruct
     //   65: aload_0
     //   66: aload_1
     //   67: ldc 186
-    //   69: invokestatic 55	ayvc:a	()J
+    //   69: invokestatic 55	ayzl:a	()J
     //   72: invokevirtual 159	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
     //   75: putfield 57	com/tencent/mobileqq/data/MessageForDeviceSingleStruct:nAppearTime	J
     //   78: aload_0
@@ -388,7 +388,7 @@ public class MessageForDeviceSingleStruct
     localSingleStructMsgSerial.ext = this.ext;
     try
     {
-      this.msgData = ammq.a(localSingleStructMsgSerial);
+      this.msgData = amrf.a(localSingleStructMsgSerial);
       return;
     }
     catch (Exception localException)
@@ -399,7 +399,7 @@ public class MessageForDeviceSingleStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeviceSingleStruct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,8 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.view.View;
 
-final class bchu
-  implements Comparator<Object>
+public abstract interface bchu
 {
-  bchu(Spanned paramSpanned) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public abstract void a(View paramView);
 }
 
 

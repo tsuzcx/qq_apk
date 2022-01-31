@@ -1,144 +1,182 @@
+import android.annotation.TargetApi;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.NewIntent;
 
 public class ajqe
 {
-  protected double a;
-  protected int a;
-  protected short a;
-  private boolean a;
-  protected double b;
-  protected int b;
-  private boolean b;
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
+  private static ajqe jdField_a_of_type_Ajqe;
+  private ajqg jdField_a_of_type_Ajqg = new ajqg(this, null);
+  private ajqi jdField_a_of_type_Ajqi;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ajqf(this));
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public ajqe()
+  private ajqe(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Ajqg);
+    }
   }
   
-  public void a(int paramInt)
+  public static ajqe a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Int = (paramInt / 50);
-    if (this.jdField_b_of_type_Boolean)
+    if (jdField_a_of_type_Ajqe == null) {
+      jdField_a_of_type_Ajqe = new ajqe(paramAppInterface);
+    }
+    return jdField_a_of_type_Ajqe;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_Ajqe != null)
     {
-      this.jdField_b_of_type_Double = 2.25D;
-      this.jdField_a_of_type_Double = 2.0D;
-      this.jdField_b_of_type_Int = 20;
+      jdField_a_of_type_Ajqe.b();
+      jdField_a_of_type_Ajqe = null;
+    }
+  }
+  
+  private void a(double paramDouble1, double paramDouble2, int paramInt)
+  {
+    int i = 4;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       return;
     }
-    this.jdField_b_of_type_Double = (62500 * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Double = (0.0500000007450581D * this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    int i = 0;
-    while (i < paramInt2)
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), hq.class);
+    localNewIntent.putExtra("key_latitude", paramDouble1);
+    localNewIntent.putExtra("key_longitude", paramDouble2);
+    localNewIntent.putExtra("k_cmd", 4);
+    localNewIntent.putExtra("key_lbs_template_cookie", paramInt);
+    switch (bdin.a(BaseApplicationImpl.getApplication().getBaseContext()))
     {
-      this.c += 1;
-      if (((paramArrayOfShort[(i + paramInt1)] >= 0) && (this.jdField_a_of_type_Short < 0)) || ((paramArrayOfShort[(i + paramInt1)] < 0) && (this.jdField_a_of_type_Short >= 0))) {
-        this.d += 1;
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      localNewIntent.putExtra("key_lbs_template_network_type", i);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      this.jdField_a_of_type_Short = paramArrayOfShort[(i + paramInt1)];
-      this.f += paramArrayOfShort[i] * paramArrayOfShort[i];
-      if (this.c >= this.jdField_a_of_type_Int)
+      QLog.d("LBSDetetor", 2, "getLBSTemplateIds. req:" + paramInt + " netType:" + i + " latitude:" + paramDouble1 + " longitude:" + paramDouble2);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+    }
+  }
+  
+  private void a(boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "callback. isSuccess: " + paramBoolean + " cookie: " + paramInt);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    if (this.jdField_a_of_type_Ajqi != null)
+    {
+      Object localObject = paramArrayList;
+      if (paramArrayList == null) {
+        localObject = new ArrayList(1);
+      }
+      this.jdField_a_of_type_Ajqi.a(paramInt, paramBoolean, (ArrayList)localObject);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "destroy");
+      }
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Ajqg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    }
+    this.jdField_a_of_type_Ajqi = null;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  @TargetApi(19)
+  public void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
       {
-        this.c = 0;
-        if (this.jdField_b_of_type_Int >= 0)
+        if (Build.VERSION.SDK_INT < 19) {
+          continue;
+        }
+        Object localObject = BaseApplicationImpl.getApplication().getBaseContext();
+        AppOpsManager localAppOpsManager = (AppOpsManager)((Context)localObject).getSystemService("appops");
+        localObject = ((Context)localObject).getApplicationInfo();
+        int i = localAppOpsManager.checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        int j = localAppOpsManager.checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        if ((i == 0) && (j == 0))
         {
-          if (this.jdField_b_of_type_Int == 0)
-          {
-            this.jdField_a_of_type_Double = (this.d * this.jdField_a_of_type_Double / 20.0D);
-            this.jdField_b_of_type_Double = (this.f * this.jdField_b_of_type_Double / 20.0D);
-            if (this.jdField_a_of_type_Double > 100.0D)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("NoiseDetector", 2, "large zero threshold, reset:" + this.jdField_a_of_type_Double);
-              }
-              this.jdField_a_of_type_Double = 100.0D;
-            }
-            if (this.jdField_b_of_type_Double > 85000000.0D)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("NoiseDetector", 2, "large power threshold, reset:" + this.jdField_b_of_type_Double);
-              }
-              this.jdField_b_of_type_Double = 85000000.0D;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("NoiseDetector", 2, "calc new threshold:" + this.jdField_a_of_type_Double + " - " + this.jdField_b_of_type_Double);
-            }
-            this.d = 0;
-            this.f = 0;
-            this.e = 0;
-            this.g = 0;
-          }
-          this.jdField_b_of_type_Int -= 1;
+          bool1 = true;
+          bool2 = bool1;
         }
       }
-      else
+      catch (Exception localException1)
       {
-        i += 1;
+        boolean bool1 = true;
+        boolean bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("LBSDetetor", 2, "something wrong:" + localException1.toString());
+        bool2 = bool1;
+        continue;
+        bool2 = true;
         continue;
       }
-      int j = 0;
-      int k = 0;
-      if (this.d >= this.jdField_a_of_type_Double)
+      try
       {
-        this.e += 1;
-        label382:
-        if (this.e >= 1)
+        if (QLog.isColorLevel())
         {
-          this.e = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("NoiseDetector", 2, "reach Zero cross :" + this.d + "-" + this.jdField_a_of_type_Double);
-          }
-          j = 1;
-        }
-        this.d = 0;
-        if (this.f < this.jdField_b_of_type_Double) {
-          break label573;
-        }
-      }
-      label573:
-      for (this.g += 1;; this.g = 0)
-      {
-        if (this.g >= 1)
-        {
-          this.g = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("NoiseDetector", 2, "reach Power:" + this.f + "-" + this.jdField_b_of_type_Double);
-          }
-          k = 1;
-        }
-        this.f = 0;
-        if ((j == 0) || (k == 0)) {
-          break;
+          QLog.d("LBSDetetor", 2, "check permission by AppOpsManager:" + bool1);
+          bool2 = bool1;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("NoiseDetector", 2, "DETECT VOICE..:");
+          QLog.d("LBSDetetor", 2, "startCheckPermissionAndDetetLocation. hasPermission:" + bool2);
         }
-        return true;
-        this.e = 0;
-        break label382;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+        if (bool2)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
+          SosoInterface.a(new ajqh(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+        }
+        if (this.jdField_a_of_type_Ajqi != null) {
+          this.jdField_a_of_type_Ajqi.a(paramInt, bool2);
+        }
+        return;
       }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      bool1 = false;
     }
-    return false;
+  }
+  
+  public void a(ajqi paramajqi)
+  {
+    this.jdField_a_of_type_Ajqi = paramajqi;
   }
 }
 

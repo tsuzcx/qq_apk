@@ -1,23 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.31.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgd
-  extends BroadcastReceiver
+  extends amph
 {
-  public adgd(NotificationActivity paramNotificationActivity) {}
+  public adgd(Leba paramLeba) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.31.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgd
  * JD-Core Version:    0.7.0.1
  */

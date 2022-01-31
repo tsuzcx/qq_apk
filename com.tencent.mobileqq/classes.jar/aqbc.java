@@ -1,21 +1,37 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
 class aqbc
-  extends apxc
+  extends WtloginObserver
 {
-  aqbc(aqbb paramaqbb) {}
+  aqbc(aqba paramaqba) {}
   
-  protected void a(boolean paramBoolean, int paramInt, apyc paramapyc, String paramString)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a.a().a(paramBoolean, paramInt, paramapyc, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, apyc paramapyc)
-  {
-    this.a.a().a(paramBoolean, paramapyc);
-  }
-  
-  protected void e(boolean paramBoolean)
-  {
-    this.a.a().a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      aqba.c(this.a, true);
+      if (aqba.a(this.a) != null)
+      {
+        paramWUserSigInfo = (QQAppInterface)aqba.a(this.a).get();
+        if ((paramWUserSigInfo != null) && (aqbd.a().a(paramWUserSigInfo))) {}
+      }
+      else
+      {
+        aqba.a(this.a, false);
+        aqba.b(this.a, false);
+      }
+      return;
+    }
+    aqba.a(this.a, false);
+    aqba.c(this.a, false);
   }
 }
 

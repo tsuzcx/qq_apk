@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
-import bglg;
+import bgpn;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.reflect.Field;
@@ -44,7 +44,7 @@ public class ProxyServiceEngine
     {
       try
       {
-        paramString = bglg.a(str);
+        paramString = bgpn.a(str);
         if (paramString == null)
         {
           QMLog.e("ProxyServiceEngine", "Failed to create the service object of " + str);

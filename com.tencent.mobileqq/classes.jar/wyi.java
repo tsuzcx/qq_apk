@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-final class wyi
-  implements Animation.AnimationListener
+public class wyi
 {
-  wyi(View paramView) {}
+  public static String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static boolean a(long paramLong, Context paramContext)
   {
-    this.a.setAnimation(null);
+    a = alsd.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

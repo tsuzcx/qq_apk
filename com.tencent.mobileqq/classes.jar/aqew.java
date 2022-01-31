@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
-class aqew
-  implements DialogInterface.OnClickListener
+public class aqew
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aqew(aqev paramaqev) {}
+  public aqew(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    Object localObject = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
+    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
+    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
   }
 }
 

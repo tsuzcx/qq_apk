@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class afnz
-  extends afpq
+  implements arsg
 {
-  afnz(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afnz(afnq paramafnq) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afxo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramView = new Bundle();
+    paramView.putString(bdun.e, "QQ会员");
+    paramView.putString(bdun.f, "LTMCLUB");
+    paramView.putString(bdun.d, "1450000515");
+    paramView.putInt(bdun.b, 3);
+    paramView.putString(bdun.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putString(bdun.i, bdzx.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    bdun.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
   }
 }
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class oaw
   extends BaseAdapter
-  implements bhqp
+  implements bhuw
 {
   private List<oaz> jdField_a_of_type_JavaUtilList;
   
@@ -53,7 +53,7 @@ public class oaw
       if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
         break label256;
       }
-      oba.c(paramoba).setBackgroundResource(2131166790);
+      oba.c(paramoba).setBackgroundResource(2131166792);
     }
     for (;;)
     {
@@ -68,7 +68,7 @@ public class oaw
       oba.b(paramoba).setVisibility(0);
       break label163;
       label256:
-      oba.c(paramoba).setBackgroundResource(2130841380);
+      oba.c(paramoba).setBackgroundResource(2130841381);
     }
   }
   
@@ -108,13 +108,13 @@ public class oaw
     if (paramView == null)
     {
       paramView = new oba(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, null);
-      localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2131560128, paramViewGroup, false);
-      oba.a(paramView, localView.findViewById(2131364735));
-      oba.b(paramView, localView.findViewById(2131365063));
-      oba.a(paramView, (ImageView)localView.findViewById(2131377173));
-      oba.a(paramView, (TextView)localView.findViewById(2131377179));
-      oba.a(paramView, (Button)localView.findViewById(2131379231));
-      oba.c(paramView, localView.findViewById(2131365353));
+      localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2131560127, paramViewGroup, false);
+      oba.a(paramView, localView.findViewById(2131364736));
+      oba.b(paramView, localView.findViewById(2131365065));
+      oba.a(paramView, (ImageView)localView.findViewById(2131377227));
+      oba.a(paramView, (TextView)localView.findViewById(2131377233));
+      oba.a(paramView, (Button)localView.findViewById(2131379289));
+      oba.c(paramView, localView.findViewById(2131365355));
       localView.setTag(paramView);
       localView.setTag(-3, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131298610)));
       paramViewGroup = paramView;

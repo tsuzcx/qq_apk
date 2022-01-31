@@ -1,67 +1,70 @@
-import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
 
-class bdzf
-  extends bdvu
+public class bdzf
 {
-  bdzf(bdze parambdze) {}
+  private static volatile boolean a;
+  private static boolean b;
   
-  public void onDone(bdvv parambdvv)
+  public static String a(String paramString)
   {
-    if (parambdvv == null)
+    if (!a) {}
+    String str3;
+    try
     {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      b = "mounted".equals(Environment.getExternalStorageState());
+      a = true;
+      String str1 = paramString;
+      if (!TextUtils.isEmpty(paramString))
       {
-        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        str1 = paramString;
+        if (b)
         {
-          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
-          onDone(null);
+          str3 = bdzg.a().a();
+          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
+            break label149;
+          }
+          str1 = paramString;
+          if (str3 != null)
+          {
+            str1 = paramString;
+            if (!paramString.startsWith(str3))
+            {
+              str1 = paramString;
+              if (paramString.startsWith(bdzg.a().b()))
+              {
+                String[] arrayOfString = paramString.split(bdzg.a().b());
+                str1 = paramString;
+                if (arrayOfString.length >= 2) {
+                  str1 = str3 + arrayOfString[1];
+                }
+              }
+            }
+          }
         }
       }
-      else
-      {
-        while (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
-        return;
-      }
-      File localFile = new File(bdze.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
-      if ((localFile.isFile()) && (localFile.exists()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
-        }
-        onDone(null);
-        return;
-      }
-      parambdvv = new Bundle();
-      Object localObject = new bdvv((String)localObject, localFile);
-      ((bdvv)localObject).n = true;
-      ((bdvx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1).a((bdvv)localObject, this.a.jdField_a_of_type_Bdvu, parambdvv);
-      return;
+      return str1;
     }
-    super.onDone(parambdvv);
-    parambdvv.a();
-    if ((parambdvv.a() == 3) && (parambdvv.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambdvv.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      onDone(null);
-      return;
-      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambdvv.jdField_a_of_type_JavaLangString);
+      label149:
+      do
+      {
+        for (;;)
+        {
+          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
+        }
+        String str2 = paramString;
+      } while (str3 == null);
     }
+    return str3 + File.separator + paramString;
+  }
+  
+  public static String b(String paramString)
+  {
+    return new File(paramString).getCanonicalPath();
   }
 }
 

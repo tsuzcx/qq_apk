@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
-import wjm;
+import wnv;
 
 public class StoryMessageListActivity$3$2
   implements Runnable
 {
-  public StoryMessageListActivity$3$2(wjm paramwjm) {}
+  public StoryMessageListActivity$3$2(wnv paramwnv) {}
   
   public void run()
   {

@@ -1,112 +1,232 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import ConfigPush.FileStoragePushFSSvcList;
+import ConfigPush.FileStorageServerListInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 
 class basn
-  implements ITransactionCallback
 {
-  basn(basm parambasm, long paramLong) {}
+  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+  private int[][] jdField_a_of_type_Array2dOfInt;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  basn(basl parambasl) {}
+  
+  private int a(int[] paramArrayOfInt)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+    if (paramArrayOfInt != null)
+    {
+      int j = 5;
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      if (i < paramArrayOfInt.length)
+      {
+        int k;
+        if (paramArrayOfInt[i] < j)
+        {
+          k = paramArrayOfInt[i];
+          localArrayList.clear();
+          localArrayList.add(Integer.valueOf(i));
+        }
+        for (;;)
+        {
+          i += 1;
+          j = k;
+          break;
+          k = j;
+          if (paramArrayOfInt[i] == j)
+          {
+            localArrayList.add(Integer.valueOf(i));
+            k = j;
+          }
+        }
+      }
+      if (localArrayList.size() > 0) {
+        return ((Integer)localArrayList.get(Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt()) % localArrayList.size())).intValue();
+      }
     }
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Basm.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Basm.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Basm.b);
-    this.jdField_a_of_type_Basm.d();
+    return -1;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  private int b(int[] paramArrayOfInt)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    String str1 = (String)paramHashMap.get("tc_p:");
-    String str2 = (String)paramHashMap.get("rep_bdhTrans");
-    String str3 = (String)paramHashMap.get("segspercnt");
-    String str4 = (String)paramHashMap.get("param_conf_segSize");
-    String str5 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Basm.jdField_a_of_type_Baoj.jdField_a_of_type_Long + " transInfo:" + str2);
+    if (!basl.a(this.jdField_a_of_type_Basl).a()) {}
+    for (int i = 2;; i = 5)
+    {
+      if (paramArrayOfInt != null)
+      {
+        int j = 0;
+        while (j < paramArrayOfInt.length)
+        {
+          if (paramArrayOfInt[j] < i) {
+            return j;
+          }
+          j += 1;
+        }
+      }
+      return -1;
     }
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-    this.jdField_a_of_type_Basm.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Basm.b.b();
-    this.jdField_a_of_type_Basm.b.a = 1;
-    this.jdField_a_of_type_Basm.s = this.jdField_a_of_type_Basm.q;
-    paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
+  }
+  
+  FileStorageServerListInfo a()
+  {
+    Object localObject2 = null;
+    ArrayList localArrayList = basl.c(this.jdField_a_of_type_Basl, 16);
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
+    {
+      localObject1 = localObject2;
+      if (localArrayList.size() > 0)
+      {
+        int i = b(basl.a(this.jdField_a_of_type_Basl).a(basl.a(this.jdField_a_of_type_Basl).b()));
+        localObject1 = localObject2;
+        if (i > -1)
+        {
+          localObject1 = localObject2;
+          if (i < localArrayList.size()) {
+            localObject1 = (FileStorageServerListInfo)localArrayList.get(i);
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
+    }
+    return localObject1;
+  }
+  
+  FileStorageServerListInfo a(int paramInt)
+  {
+    Object localObject2 = null;
+    ArrayList localArrayList = basl.c(this.jdField_a_of_type_Basl, paramInt);
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
+    {
+      localObject1 = localObject2;
+      if (localArrayList.size() > 0)
+      {
+        paramInt = a(a(paramInt));
+        localObject1 = localObject2;
+        if (paramInt > -1)
+        {
+          localObject1 = localObject2;
+          if (paramInt < localArrayList.size()) {
+            localObject1 = (FileStorageServerListInfo)localArrayList.get(paramInt);
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
+    }
+    return localObject1;
+  }
+  
+  void a() {}
+  
+  void a(int paramInt, String paramString)
+  {
     try
     {
-      paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-      basm.a(this.jdField_a_of_type_Basm, paramHashMap.bytes_download_url.get().toStringUtf8());
-      if (basm.a(this.jdField_a_of_type_Basm) == null)
+      ArrayList localArrayList = basl.c(this.jdField_a_of_type_Basl, paramInt);
+      int[] arrayOfInt = a(paramInt);
+      if ((localArrayList != null) && (localArrayList.size() > 0) && (arrayOfInt != null) && (arrayOfInt.length > 0))
       {
-        this.jdField_a_of_type_Basm.a(-1, "URL IS NULL", "", this.jdField_a_of_type_Basm.b);
-        this.jdField_a_of_type_Basm.d();
-        this.jdField_a_of_type_Basm.a(l2, l3, l4, l5);
-        this.jdField_a_of_type_Basm.jdField_a_of_type_Baoj.a();
-        return;
+        paramString = new URL(paramString).getHost();
+        if ((paramString != null) && (paramString.length() > 0)) {
+          paramInt = 0;
+        }
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        basm.a(this.jdField_a_of_type_Basm);
+        if (paramInt < localArrayList.size())
+        {
+          String str = ((FileStorageServerListInfo)localArrayList.get(paramInt)).sIP;
+          if ((str == null) || (!str.equalsIgnoreCase(paramString))) {
+            break label116;
+          }
+          if (arrayOfInt.length > paramInt) {
+            arrayOfInt[paramInt] += 1;
+          }
+        }
+        return;
+        label116:
+        paramInt += 1;
       }
+      return;
     }
+    catch (MalformedURLException paramString) {}
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
   {
-    this.jdField_a_of_type_Basm.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Basm.b.a();
+    int k = 0;
+    if (paramFileStoragePushFSSvcList != null)
+    {
+      this.jdField_a_of_type_Array2dOfInt = new int[18][];
+      if ((paramFileStoragePushFSSvcList.vUrlEncodeServiceList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[4] = new int[paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vGPicDownLoadList != null) && (paramFileStoragePushFSSvcList.vGPicDownLoadList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[2] = new int[paramFileStoragePushFSSvcList.vGPicDownLoadList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vPicDownLoadList != null) && (paramFileStoragePushFSSvcList.vPicDownLoadList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[1] = new int[paramFileStoragePushFSSvcList.vPicDownLoadList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vQzoneProxyServiceList != null) && (paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[3] = new int[paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vUpLoadList != null) && (paramFileStoragePushFSSvcList.vUpLoadList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[0] = new int[paramFileStoragePushFSSvcList.vUpLoadList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vVipEmotionList != null) && (paramFileStoragePushFSSvcList.vVipEmotionList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[5] = new int[paramFileStoragePushFSSvcList.vVipEmotionList.size()];
+      }
+      if ((paramFileStoragePushFSSvcList.vC2CPicDownList != null) && (paramFileStoragePushFSSvcList.vC2CPicDownList.size() > 0)) {
+        this.jdField_a_of_type_Array2dOfInt[11] = new int[paramFileStoragePushFSSvcList.vC2CPicDownList.size()];
+      }
+      int i = 6;
+      int j;
+      if (i <= 10)
+      {
+        paramFileStoragePushFSSvcList = basl.a(this.jdField_a_of_type_Basl, basl.a(this.jdField_a_of_type_Basl, i));
+        if (paramFileStoragePushFSSvcList != null) {}
+        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
+        {
+          this.jdField_a_of_type_Array2dOfInt[i] = new int[j];
+          i += 1;
+          break;
+        }
+      }
+      i = 12;
+      if (i <= 15)
+      {
+        paramFileStoragePushFSSvcList = basl.b(this.jdField_a_of_type_Basl, basl.b(this.jdField_a_of_type_Basl, i));
+        if (paramFileStoragePushFSSvcList != null) {}
+        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
+        {
+          this.jdField_a_of_type_Array2dOfInt[i] = new int[j];
+          i += 1;
+          break;
+        }
+      }
+      paramFileStoragePushFSSvcList = basl.b(this.jdField_a_of_type_Basl, basl.b(this.jdField_a_of_type_Basl, 17));
+      i = k;
+      if (paramFileStoragePushFSSvcList != null) {
+        i = paramFileStoragePushFSSvcList.size();
+      }
+      this.jdField_a_of_type_Array2dOfInt[17] = new int[i];
+    }
+    basl.a(this.jdField_a_of_type_Basl).a();
   }
   
-  public void onUpdateProgress(int paramInt)
+  int[] a(int paramInt)
   {
-    basm localbasm = this.jdField_a_of_type_Basm;
-    baoj localbaoj = this.jdField_a_of_type_Basm.jdField_a_of_type_Baoj;
-    long l = paramInt;
-    localbaoj.e = l;
-    localbasm.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Basm.q) && (!this.jdField_a_of_type_Basm.o) && (!this.jdField_a_of_type_Basm.k)) {
-      this.jdField_a_of_type_Basm.i();
+    if (this.jdField_a_of_type_Array2dOfInt == null) {
+      return null;
     }
+    return this.jdField_a_of_type_Array2dOfInt[paramInt];
   }
 }
 

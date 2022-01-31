@@ -1,44 +1,12 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.support.annotation.UiThread;
 
-class vpo
-  implements AbsListView.OnScrollListener
+public abstract interface vpo
 {
-  vpo(vpm paramvpm) {}
+  @UiThread
+  public abstract void a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (SystemClock.uptimeMillis() - vpm.a(this.a) < 500L) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        vpm.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Vld instanceof vlr));
-      i = paramInt1 + paramInt2;
-      ((vlr)this.a.jdField_a_of_type_Vld).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Voa.a();
-    wsv.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Vld.toString());
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0) {
-      vpm.a(this.a, false);
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (vpm.a(this.a))) {
-        this.a.d();
-      }
-      return;
-      vpm.a(this.a, true);
-    }
-  }
+  @UiThread
+  public abstract void a(vpm paramvpm, String paramString, boolean paramBoolean);
 }
 
 

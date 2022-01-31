@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aear
-  implements View.OnClickListener
+  implements ansr
 {
-  public aear(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aear(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    TroopMemberListActivity.b(this.a);
-    new azmo(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("WebLog_WebViewFragment", 4, "onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(paramBitmap));
+    }
   }
 }
 

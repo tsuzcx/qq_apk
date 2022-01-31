@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class vhm
-  implements DialogInterface.OnClickListener
+public class vhm
+  extends uro
 {
-  vhm(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  public List<ShareGroupItem> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vhm(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
   {
-    wsv.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    ukd.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    super(paramRspGetShareGroupInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspGetShareGroupInfo.share_group_info_list.has())
+    {
+      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
+      while (paramRspGetShareGroupInfo.hasNext())
+      {
+        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
+        ShareGroupItem localShareGroupItem = new ShareGroupItem();
+        localShareGroupItem.convertFrom(localShareGroupInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

@@ -1,24 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class vqn
+  extends Subscriber.SingleEventSubscriberNoRefect<uow>
 {
-  ujq jdField_a_of_type_Ujq;
+  vqi a;
   
-  private vqn(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public ujq a()
+  public vqn(@NonNull vqi paramvqi)
   {
-    if (this.jdField_a_of_type_Ujq == null) {
-      this.jdField_a_of_type_Ujq = new ujq();
-    }
-    return this.jdField_a_of_type_Ujq;
+    this.a = paramvqi;
   }
   
-  public void a()
+  protected void a(@NonNull uow paramuow)
   {
-    if (this.jdField_a_of_type_Ujq != null) {
-      this.jdField_a_of_type_Ujq.a();
+    if ((paramuow.b != null) && (paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      vqi.a(this.a, paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramuow.b.mVid, paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
   }
 }
 

@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import blfr;
+import bljy;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.widget.immersive.SystemBarCompact;
 import dov.com.qq.im.aeeditor.view.ProgressView;
@@ -18,7 +18,7 @@ public abstract class AEEditorBaseFragment
   private static final String b = AEEditorBaseFragment.class.getSimpleName();
   protected Dialog a;
   protected Handler a;
-  private blfr a;
+  private bljy a;
   protected ProgressView a;
   public String a;
   
@@ -28,12 +28,12 @@ public abstract class AEEditorBaseFragment
   }
   
   @NonNull
-  public blfr a()
+  public bljy a()
   {
-    if (this.jdField_a_of_type_Blfr == null) {
+    if (this.jdField_a_of_type_Bljy == null) {
       throw new RuntimeException("moduleManager not set");
     }
-    return this.jdField_a_of_type_Blfr;
+    return this.jdField_a_of_type_Bljy;
   }
   
   public abstract String a();
@@ -47,9 +47,9 @@ public abstract class AEEditorBaseFragment
     }
   }
   
-  public void a(blfr paramblfr)
+  public void a(bljy parambljy)
   {
-    this.jdField_a_of_type_Blfr = paramblfr;
+    this.jdField_a_of_type_Bljy = parambljy;
   }
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)

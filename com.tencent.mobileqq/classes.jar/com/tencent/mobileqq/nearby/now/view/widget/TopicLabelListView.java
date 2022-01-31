@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import aven;
+import aviw;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
 import mww;
@@ -13,7 +13,7 @@ public class TopicLabelListView
   extends LinearLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aven(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aviw(this);
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List<String> jdField_a_of_type_JavaUtilList;

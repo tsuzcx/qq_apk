@@ -1,73 +1,102 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
 
 public class bben
-  extends Handler
 {
-  public bben(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public static String a = "tribe_publish_TribePublishLauncher";
   
-  public void handleMessage(Message paramMessage)
+  public static JSONObject a(Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a.q)) {
-      localBundle.putString("bid", this.a.q);
-    }
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
-    int i;
-    for (String str = "interestcircle";; str = "qqbuluo")
+    if (paramBundle != null)
     {
-      localBundle.putString("from", str);
-      localBundle.putString("uin", this.a.app.getCurrentAccountUin());
-      localBundle.putString("title", bcht.a(this.a.a).trim());
-      localBundle.putString("content", bcht.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText).trim());
-      switch (paramMessage.what)
+      paramBundle = paramBundle.getString("options");
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
+      }
+      try
       {
-      case 3: 
-      default: 
-        i = 3;
-        TroopBarPublishUtils.a(this.a, 1, i, localBundle);
-        return;
+        paramBundle = new JSONObject(paramBundle);
+        return paramBundle;
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
+        }
       }
     }
-    localBundle.putString("clicktype", "music");
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    return null;
+  }
+  
+  public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
+  {
+    if ((paramActivity instanceof AppActivity))
     {
-      i = 2;
-      label210:
-      if (!TextUtils.isEmpty(this.a.q)) {
-        break label259;
+      AppActivity localAppActivity = (AppActivity)paramActivity;
+      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
+        localAppActivity.requestPermissions(new bbeo(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
       }
     }
-    label259:
-    for (paramMessage = "0";; paramMessage = this.a.q)
-    {
-      azmj.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_music", i, 0, paramMessage, "", "", "");
-      i = 4;
-      break;
-      i = 1;
-      break label210;
-    }
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
-    {
-      i = 2;
-      if (!TextUtils.isEmpty(this.a.q)) {
-        break label340;
-      }
-    }
-    label340:
-    for (paramMessage = "0";; paramMessage = this.a.q)
-    {
-      azmj.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_record", i, 0, paramMessage, "", "", "");
+    while ((lmm.b(paramActivity)) || (a(paramActivity))) {
       return;
-      i = 1;
+    }
+    boolean bool = bnsn.b(paramAppInterface);
+    if ((!bool) && (!bdin.g(paramActivity)))
+    {
+      QQToast.a(paramActivity, 2131719278, 0).a();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
+    }
+    paramUiApiPlugin.g();
+    paramAppInterface = new Bundle();
+    paramAppInterface.putBoolean("flow_camera_video_mode", true);
+    paramAppInterface.putBoolean("flow_camera_capture_mode", false);
+    paramAppInterface.putString("options", paramString1);
+    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
+    paramAppInterface.putInt("edit_video_type", 10012);
+    if (bool)
+    {
+      paramUiApiPlugin.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramAppInterface), paramByte);
+      if (!"barindex".equals(paramString2)) {
+        break label287;
+      }
+    }
+    label287:
+    for (int i = 1;; i = 2)
+    {
+      azqs.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
+      return;
+      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
+      paramActivity.putExtras(paramAppInterface);
+      paramActivity.putExtra("pendingIntentClass", bkod.class.getName());
+      paramActivity.putExtra("pendingIntentRequest", paramByte);
+      paramActivity.putExtra("pendingIntentAllWait", true);
+      paramUiApiPlugin.startActivityForResult(paramActivity, paramByte);
       break;
     }
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    boolean bool = false;
+    if (!axpm.a())
+    {
+      bdgm.a(paramContext, 230).setMessage(alud.a(2131715484)).setPositiveButton(2131694953, new bbep()).show();
+      bool = true;
+    }
+    return bool;
   }
 }
 

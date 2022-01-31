@@ -4,9 +4,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImage
 public class qab
   extends pzz
 {
-  public qab(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qab(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

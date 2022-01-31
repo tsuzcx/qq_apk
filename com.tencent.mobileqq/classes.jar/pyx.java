@@ -6,9 +6,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pyx
   extends pxl
 {
-  public pyx(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pyx(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vashealth;
 
-import alpo;
-import bepp;
+import alud;
+import bety;
 
 class VideoCallBack$2
   implements Runnable
 {
-  VideoCallBack$2(VideoCallBack paramVideoCallBack, bepp parambepp) {}
+  VideoCallBack$2(VideoCallBack paramVideoCallBack, bety parambety) {}
   
   public void run()
   {
     this.a.setCancelable(false);
-    this.a.a(alpo.a(2131716495));
+    this.a.a(alud.a(2131716507));
     this.a.show();
   }
 }

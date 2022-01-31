@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adim
-  implements DialogInterface.OnCancelListener
+public class adim
+  implements View.OnClickListener
 {
-  adim(adii paramadii) {}
+  public adim(MainFragment paramMainFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    this.a.g();
   }
 }
 

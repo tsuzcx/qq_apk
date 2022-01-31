@@ -1,13 +1,23 @@
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
 
-public class blde
-  implements bepg
+class blde
+  extends RecyclerView.ItemDecoration
 {
-  public blde(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  blde(blda paramblda) {}
   
-  public void a(bepe parambepe) {}
-  
-  public void a(bepe parambepe, int paramInt1, int paramInt2) {}
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
+    int j = (int)(DeviceUtils.getScreenWidth(blda.a(this.a)) * 0.04F);
+    paramRect.left = (j - i * j / 2);
+    paramRect.right = ((i + 1) * j / 2);
+    paramRect.bottom = j;
+  }
 }
 
 

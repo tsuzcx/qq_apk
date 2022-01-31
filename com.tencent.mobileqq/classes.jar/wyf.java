@@ -1,6 +1,19 @@
-public abstract interface wyf
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+
+public final class wyf
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public abstract void a();
+  public EditLocalVideoSource a(Parcel paramParcel)
+  {
+    return new EditLocalVideoSource(paramParcel);
+  }
+  
+  public EditLocalVideoSource[] a(int paramInt)
+  {
+    return new EditLocalVideoSource[paramInt];
+  }
 }
 
 

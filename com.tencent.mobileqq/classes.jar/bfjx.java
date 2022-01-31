@@ -1,35 +1,18 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
 
-final class bfjx
-  implements ITMAssistantExchangeURLListenner
+public class bfjx
+  implements DialogInterface.OnClickListener
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public bfjx(DownloadJSApi.2 param2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bfhg.b(bfju.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bfju.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bfju.jdField_a_of_type_JavaLangObject)
-    {
-      bfju.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfoh.r, false);
+    bfjw.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 

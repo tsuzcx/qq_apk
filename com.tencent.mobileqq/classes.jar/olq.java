@@ -217,7 +217,7 @@ public class olq
           ((JSONObject)localObject).put("sub_comment_num", localCommentData.subCommentNum);
           ((JSONObject)localObject).put("shown_page", 1);
           ((JSONObject)localObject).put("comment_type", ((omt)localPair.second).jdField_b_of_type_Int);
-          ((JSONObject)localObject).put("show_sub_comment_id", bjxj.a(localArrayList));
+          ((JSONObject)localObject).put("show_sub_comment_id", bkbq.a(localArrayList));
           ((JSONObject)localObject).put("come_in_action", paramInt);
           ((JSONObject)localObject).put("proxy_bytes", localCommentData.passthrough);
           ((JSONObject)localObject).put("stream_type", a());
@@ -444,7 +444,7 @@ public class olq
       localJSONObject.put("website", 0);
       localJSONObject.put("read_comment_num", this.jdField_b_of_type_Int);
       localJSONObject.put("read_time", paramLong);
-      localJSONObject.put("leave_comment_id_list", bjxj.a(this.jdField_c_of_type_JavaUtilList));
+      localJSONObject.put("leave_comment_id_list", bkbq.a(this.jdField_c_of_type_JavaUtilList));
       localJSONObject.put("shown_page", 1);
       localJSONObject.put("stream_type", a());
       a(localJSONObject.toString(), "0X8009991");
@@ -521,7 +521,7 @@ public class olq
       localJSONObject.put("comment_platform", 3);
       localJSONObject.put("website", 0);
       localJSONObject.put("read_time", paramLong);
-      localJSONObject.put("leave_comment_id_list", bjxj.a(this.jdField_c_of_type_JavaUtilList));
+      localJSONObject.put("leave_comment_id_list", bkbq.a(this.jdField_c_of_type_JavaUtilList));
       localJSONObject.put("shown_page", 2);
       localJSONObject.put("comment_id", ((omd)this.jdField_a_of_type_Omg).a());
       a(localJSONObject.toString(), "0X8009991");

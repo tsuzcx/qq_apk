@@ -30,7 +30,7 @@ public class paa
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131562494, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131562512, paramViewGroup, false);
       paramView.setOnClickListener(new pab(this));
     }
     for (;;)

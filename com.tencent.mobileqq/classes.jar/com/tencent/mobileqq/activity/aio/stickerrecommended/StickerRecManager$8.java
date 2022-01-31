@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agug;
-import awbw;
+import agyv;
+import awgf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class StickerRecManager$8
   implements Runnable
 {
-  public StickerRecManager$8(agug paramagug, List paramList) {}
+  public StickerRecManager$8(agyv paramagyv, List paramList) {}
   
   public void run()
   {
@@ -17,21 +17,21 @@ public class StickerRecManager$8
     while (localIterator.hasNext())
     {
       StickerRecCacheEntity localStickerRecCacheEntity1 = (StickerRecCacheEntity)localIterator.next();
-      StickerRecCacheEntity localStickerRecCacheEntity2 = (StickerRecCacheEntity)agug.a(this.this$0).a(StickerRecCacheEntity.class, "md5=?", new String[] { localStickerRecCacheEntity1.md5 });
+      StickerRecCacheEntity localStickerRecCacheEntity2 = (StickerRecCacheEntity)agyv.a(this.this$0).a(StickerRecCacheEntity.class, "md5=?", new String[] { localStickerRecCacheEntity1.md5 });
       if (localStickerRecCacheEntity2 != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("StickerRecManager", 2, "old exist: fileName=" + localStickerRecCacheEntity2.md5 + " lastTime=" + localStickerRecCacheEntity2.lastTime);
         }
         localStickerRecCacheEntity2.lastTime = localStickerRecCacheEntity1.lastTime;
-        agug.a(this.this$0).a(localStickerRecCacheEntity2);
+        agyv.a(this.this$0).a(localStickerRecCacheEntity2);
       }
       else
       {
         if (QLog.isColorLevel()) {
           QLog.d("StickerRecManager", 2, "old not exist: fileName=" + localStickerRecCacheEntity1.md5 + " lastTime=" + localStickerRecCacheEntity1.lastTime);
         }
-        agug.a(this.this$0).b(localStickerRecCacheEntity1);
+        agyv.a(this.this$0).b(localStickerRecCacheEntity1);
       }
     }
   }

@@ -1,29 +1,18 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
-public final class apeu
+public class apeu
+  implements DialogInterface.OnClickListener
 {
-  public static apev a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new apev();
-    aoti localaoti = aotj.a();
-    paramQQAppInterface.jdField_a_of_type_Boolean = localaoti.a();
-    paramQQAppInterface.jdField_a_of_type_JavaLangString = localaoti.a();
-    paramQQAppInterface.b = localaoti.b();
-    paramQQAppInterface.jdField_a_of_type_Int = localaoti.a();
-    paramQQAppInterface.c = localaoti.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
-    }
-    return paramQQAppInterface;
-  }
+  public apeu(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, agos paramagos) {}
   
-  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAppInterface = aost.a();
-    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
+    ((aoir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
+    this.jdField_a_of_type_Agos.a(0, aoiq.h, 0);
   }
 }
 

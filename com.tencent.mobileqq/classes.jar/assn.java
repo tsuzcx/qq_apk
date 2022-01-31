@@ -1,14 +1,6 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-
 public abstract interface assn
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt2, int paramInt3, int paramInt4, String paramString, Object paramObject);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void j();
+  public abstract void a(boolean paramBoolean);
 }
 
 

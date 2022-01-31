@@ -11,12 +11,12 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import bcvq;
-import bejt;
-import beju;
-import bejv;
-import bejw;
-import bejx;
+import bczz;
+import beoc;
+import beod;
+import beoe;
+import beof;
+import beog;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -28,9 +28,9 @@ public class ConfigClearableEditText
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   public Drawable a;
-  bejv jdField_a_of_type_Bejv;
-  private bejw jdField_a_of_type_Bejw;
-  public bejx a;
+  beoe jdField_a_of_type_Beoe;
+  private beof jdField_a_of_type_Beof;
+  public beog a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -60,8 +60,8 @@ public class ConfigClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Bejv = new bejv(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bejv);
+      this.jdField_a_of_type_Beoe = new beoe(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Beoe);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -76,8 +76,8 @@ public class ConfigClearableEditText
   
   private int a()
   {
-    if (this.jdField_a_of_type_Bejw != null) {
-      return getWidth() - this.jdField_a_of_type_Bejw.a();
+    if (this.jdField_a_of_type_Beof != null) {
+      return getWidth() - this.jdField_a_of_type_Beof.a();
     }
     return getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
   }
@@ -100,7 +100,7 @@ public class ConfigClearableEditText
       this.j = paramContext.getBoolean(4, false);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839355);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839356);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -112,8 +112,8 @@ public class ConfigClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new bejt(this));
-      addTextChangedListener(new beju(this));
+      setOnTouchListener(new beoc(this));
+      addTextChangedListener(new beod(this));
       return;
     }
     finally
@@ -164,7 +164,7 @@ public class ConfigClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > a())) {
-      return this.jdField_a_of_type_Bejv.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Beoe.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
@@ -236,16 +236,16 @@ public class ConfigClearableEditText
     if (paramBoolean)
     {
       localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_a_of_type_Bejw == null) {
+      if (this.jdField_a_of_type_Beof == null) {
         break label97;
       }
-      this.jdField_a_of_type_Bejw.a(paramBoolean);
+      this.jdField_a_of_type_Beof.a(paramBoolean);
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        bcvq.a(this);
+        bczz.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -274,14 +274,14 @@ public class ConfigClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setCustomClearButtonCallback(bejw parambejw)
+  public void setCustomClearButtonCallback(beof parambeof)
   {
-    this.jdField_a_of_type_Bejw = parambejw;
+    this.jdField_a_of_type_Beof = parambeof;
   }
   
-  public void setTextClearedListener(bejx parambejx)
+  public void setTextClearedListener(beog parambeog)
   {
-    this.jdField_a_of_type_Bejx = parambejx;
+    this.jdField_a_of_type_Beog = parambeog;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ammv;
+import amrk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -45,26 +45,26 @@ public class AlbumPermissionView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131559836, this, true);
+    LayoutInflater.from(paramContext).inflate(2131559835, this, true);
     setOrientation(1);
     setGravity(17);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378714);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378982));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378769);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379040));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public boolean a()
   {
     if (Build.VERSION.SDK_INT > 23) {
-      return ammv.a(BaseApplication.getContext());
+      return amrk.a(BaseApplication.getContext());
     }
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378714) {
-      ammv.a((AppActivity)this.jdField_a_of_type_AndroidContentContext, 10000, this.jdField_a_of_type_MqqAppQQPermissionCallback);
+    if (paramView.getId() == 2131378769) {
+      amrk.a((AppActivity)this.jdField_a_of_type_AndroidContentContext, 10000, this.jdField_a_of_type_MqqAppQQPermissionCallback);
     }
   }
   
@@ -77,7 +77,7 @@ public class AlbumPermissionView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167199));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167201));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165318));

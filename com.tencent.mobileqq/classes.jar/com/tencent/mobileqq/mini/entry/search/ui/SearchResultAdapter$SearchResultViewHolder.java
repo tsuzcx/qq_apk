@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdkf;
+import bdoo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -64,10 +64,10 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           ImageView localImageView = new ImageView(paramView.getContext());
           localImageView.setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject));
-          int j = bdkf.b(12.0F);
+          int j = bdoo.b(12.0F);
           localObject = new LinearLayout.LayoutParams(j, j);
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject).leftMargin = (-bdkf.b(2.0F));
+            ((LinearLayout.LayoutParams)localObject).leftMargin = (-bdoo.b(2.0F));
           }
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
           this.avatarContainer.addView(localImageView);

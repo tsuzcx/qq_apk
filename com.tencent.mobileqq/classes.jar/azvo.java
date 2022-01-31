@@ -1,21 +1,33 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class azvo
-  implements DialogInterface.OnClickListener
+public class azvo
+  implements View.OnClickListener
 {
-  azvo(azvn paramazvn, Context paramContext, View paramView) {}
+  public azvo(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    azvm.a(this.jdField_a_of_type_Azvn.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      azmj.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
-    paramDialogInterface.dismiss();
   }
 }
 

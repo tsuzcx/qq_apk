@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
+import aepi;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Adapter;
-import bhqo;
+import bhuv;
 import com.tencent.widget.AdapterView;
 import rsp;
 
@@ -18,9 +18,9 @@ public class ReadInJoyFlowLayout
   extends AdapterView
 {
   private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = aekt.a(8.0F, getResources());
+  private final int jdField_a_of_type_Int = aepi.a(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private bhqo jdField_a_of_type_Bhqo = new rsp(this);
+  private bhuv jdField_a_of_type_Bhuv = new rsp(this);
   private float b;
   
   public ReadInJoyFlowLayout(Context paramContext)
@@ -363,14 +363,14 @@ public class ReadInJoyFlowLayout
   
   public void setAdapter(Adapter paramAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bhqo != null)) {
-      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bhqo);
+    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bhuv != null)) {
+      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bhuv);
     }
     this.jdField_a_of_type_AndroidWidgetAdapter = paramAdapter;
     if (this.jdField_a_of_type_AndroidWidgetAdapter != null)
     {
       this.mItemCount = this.jdField_a_of_type_AndroidWidgetAdapter.getCount();
-      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bhqo);
+      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bhuv);
       a();
     }
   }

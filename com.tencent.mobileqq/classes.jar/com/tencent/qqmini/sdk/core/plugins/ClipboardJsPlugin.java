@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
-import bgkk;
+import bgok;
+import bgor;
 
 public class ClipboardJsPlugin
   extends BaseJsPlugin
 {
-  public String getClipboardData(bgkd parambgkd)
+  public String getClipboardData(bgok parambgok)
   {
-    bgkk.a(new ClipboardJsPlugin.1(this, parambgkd));
+    bgor.a(new ClipboardJsPlugin.1(this, parambgok));
     return "";
   }
   
-  public String setClipboardData(bgkd parambgkd)
+  public String setClipboardData(bgok parambgok)
   {
-    bgkk.a(new ClipboardJsPlugin.2(this, parambgkd));
+    bgor.a(new ClipboardJsPlugin.2(this, parambgok));
     return "";
   }
 }

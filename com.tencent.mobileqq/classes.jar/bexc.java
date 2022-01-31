@@ -1,64 +1,8 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import android.view.View;
 
-public class bexc
-  extends QIPCModule
+public abstract interface bexc
 {
-  private static volatile bexc a;
-  
-  private bexc(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public static bexc a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bexc("open_sdk_qipc_module");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_get_accountInfo".equals(paramString))
-    {
-      paramString = new Bundle();
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
-      paramBundle = paramBundle.getString("key_uin");
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
-        paramString.putString("key_nickname", bdbt.i((QQAppInterface)localAppRuntime, paramBundle));
-      }
-      callbackResult(paramInt, localEIPCResult);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_ptlogin_cancel".equals(paramString))
-      {
-        paramString = BaseActivity.sTopActivity;
-        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
-        if ((paramString instanceof SplashActivity)) {
-          paramString.doOnBackPressed();
-        }
-      }
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

@@ -1,96 +1,63 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class azcc
+  extends MSFServlet
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  ArrayList<azby> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  azcc()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = azce.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-  }
-  
-  void a(boolean paramBoolean, azby paramazby)
-  {
-    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramBoolean) {}
-    for (;;)
+    int i;
+    if (paramFromServiceMsg != null)
     {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramazby);
-        return;
+      i = paramFromServiceMsg.getResultCode();
+      if (i != 1000) {
+        break label83;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramazby);
-    }
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = azce.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new azcd(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_Int == 1) && (azce.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  boolean d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = azce.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(1, null, 0);
-    }
-    for (boolean bool = true;; bool = false)
-    {
+      paramIntent = bjql.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent == null) {
+        break label68;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
       }
-      return bool;
     }
+    label68:
+    label83:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        i = -1;
+        break;
+      } while (!QLog.isColorLevel());
+      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
+      return;
+    }
+    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    int j = paramIntent.getIntExtra("taskId", 0);
+    Object localObject = paramIntent.getStringExtra("message");
+    bjql localbjql = new bjql(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
+    localObject = localbjql.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbjql.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjql.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

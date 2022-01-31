@@ -1,13 +1,21 @@
-import java.util.List;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import java.util.Comparator;
 
 class aptz
-  implements aubp<List<apsj>>
+  implements Comparator<EmosmPb.SmallYellowItem>
 {
-  aptz(aptw paramaptw) {}
+  aptz(apty paramapty) {}
   
-  public void a(List<apsj> paramList)
+  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
   {
-    this.a.a(paramList);
+    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
+      return 1;
+    }
+    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
+      return 0;
+    }
+    return -1;
   }
 }
 

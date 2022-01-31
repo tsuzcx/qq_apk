@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgja;
-import bgkd;
+import bgnh;
+import bgok;
 
 class StorageJsPlugin$1$1
-  implements bgja
+  implements bgnh
 {
   StorageJsPlugin$1$1(StorageJsPlugin.1 param1) {}
   

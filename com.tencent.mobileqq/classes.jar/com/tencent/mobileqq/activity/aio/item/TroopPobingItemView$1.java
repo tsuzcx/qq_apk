@@ -7,11 +7,11 @@ final class TroopPobingItemView$1
 {
   TroopPobingItemView$1()
   {
-    put(Integer.valueOf(2131372105), "addgroup_background.png");
-    put(Integer.valueOf(2131372104), "addgroup_bottom.png");
-    put(Integer.valueOf(2131372106), "addgroup_corner.png");
-    put(Integer.valueOf(2131372107), "addgroup_head.png");
-    put(Integer.valueOf(2131372113), "addgroup_welcome_press.png");
+    put(Integer.valueOf(2131372125), "addgroup_background.png");
+    put(Integer.valueOf(2131372124), "addgroup_bottom.png");
+    put(Integer.valueOf(2131372126), "addgroup_corner.png");
+    put(Integer.valueOf(2131372127), "addgroup_head.png");
+    put(Integer.valueOf(2131372133), "addgroup_welcome_press.png");
   }
 }
 

@@ -1,517 +1,257 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.DefaultConfigInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.TreeMap;
+import mqq.manager.Manager;
 
 public class amtv
-  implements Handler.Callback
+  implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  public amtl a;
-  public amtm a;
-  private amtn jdField_a_of_type_Amtn;
-  public amto a;
-  public amur a;
-  public amuu a;
-  public amva a;
-  public amvd a;
-  private amvg jdField_a_of_type_Amvg = new amua(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ServiceConnection a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RemoteArConfigManager");
-  public ARCommonConfigInfo a;
-  public ArConfigInfo a;
-  public ArEffectConfig a;
-  public boolean a;
-  volatile boolean b = false;
-  boolean c = false;
+  amtp jdField_a_of_type_Amtp = null;
+  amtz jdField_a_of_type_Amtz = null;
+  private amud jdField_a_of_type_Amud;
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  final String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public amtv()
+  public amtv(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new amtw(this);
-    this.jdField_a_of_type_Amvd = new amtx(this);
-    this.jdField_a_of_type_Amuu = new amty(this);
-    this.jdField_a_of_type_Amva = new amtz(this);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    long l = AudioHelper.b();
+    this.jdField_a_of_type_JavaLangString = ("ARPromotion_" + l);
+    this.b = paramAppInterface.getAccount();
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "PromotionMgr, mUin[" + this.b + "]");
+    this.jdField_a_of_type_Amtz = new amtz(l);
   }
   
-  public ARCommonConfigInfo a()
+  public PromotionConfigInfo a()
   {
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo == null) && (AudioHelper.d()))
+    {
+      QLog.w(amuc.jdField_a_of_type_JavaLangString, 1, "getConfigInfo, AR配置还未初始化", new Throwable("打印调用栈"));
+      throw new IllegalArgumentException("AR配置还未初始化");
     }
-    Object localObject2;
+    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  }
+  
+  public void a(amub paramamub)
+  {
+    if (this.jdField_a_of_type_Amtz != null) {
+      this.jdField_a_of_type_Amtz.a(paramamub);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    if (a("doOnReconnect", paramAppInterface, null)) {
+      return;
+    }
+    b(paramAppInterface);
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_Amtz != null) {
+      if (a())
+      {
+        PromotionConfigInfo localPromotionConfigInfo = a();
+        this.jdField_a_of_type_Amtz.a(localPromotionConfigInfo);
+        this.jdField_a_of_type_Amtz.a(paramAppInterface, false, paramString, 0);
+      }
+    }
     do
     {
-      do
-      {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = null;
-      } while (this.jdField_a_of_type_Amur == null);
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Amur.a();
-        localObject2 = localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
-        }
-      }
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject2 }));
-    return localObject2;
+      return;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 配置还未初始化");
+      return;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 下载器为空");
+    } while (!AudioHelper.d());
+    throw new IllegalArgumentException(alud.a(2131708908));
   }
   
-  public ArConfigInfo a()
+  public void a(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetEntryConfig, from server, configInfo[");
+    if (paramPromotionConfigInfo != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w(str, 1, bool + "]");
+      if (paramPromotionConfigInfo != null)
+      {
+        a(paramPromotionConfigInfo);
+        if (this.jdField_a_of_type_Amud != null)
+        {
+          this.jdField_a_of_type_Amud.clean();
+          this.jdField_a_of_type_Amud = null;
+        }
+      }
+      if (!a("onGetConfig", paramQQAppInterface, null)) {
+        break;
+      }
+      return;
     }
+    a(paramString);
+    b(paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
+  {
+    if (!a()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365还没加载");
+    }
+    int i;
+    do
+    {
+      return;
+      paramDefaultConfigInfo = a();
+      if (paramDefaultConfigInfo == null)
+      {
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365为null");
+        return;
+      }
+      i = bdpg.a(this.b);
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365已经加载了, [" + paramDefaultConfigInfo.config364Version + "], ver[" + i + "]");
+      if (TextUtils.equals(paramString, "test")) {
+        i = -1;
+      }
+    } while (i == paramDefaultConfigInfo.config364Version);
+    a(null);
+    a(paramQQAppInterface, null, null);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    if (paramPromotionConfigInfo == null) {}
     for (;;)
     {
-      return localObject2;
-      localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_Amur != null) {}
       try
       {
-        localObject1 = this.jdField_a_of_type_Amur.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
+        if (AudioHelper.d())
         {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject2;
-          }
+          localThrowable = new Throwable("打印调用栈");
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setConfigInfo, old[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "], new[" + paramPromotionConfigInfo + "]", localThrowable);
+          this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+          this.jdField_a_of_type_Amud = null;
+          return;
         }
       }
+      finally {}
+      Throwable localThrowable = null;
     }
   }
   
-  public ArEffectConfig a()
+  void a(String paramString)
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+    if (this.jdField_a_of_type_Amtz != null) {
+      this.jdField_a_of_type_Amtz.b();
     }
-    for (;;)
-    {
-      return localObject2;
-      Object localObject3 = null;
-      localObject2 = null;
-      if (this.jdField_a_of_type_Amur == null) {
-        continue;
-      }
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Amur.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
-        {
-          Object localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject3;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      b();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if ((!this.b) || (this.jdField_a_of_type_AndroidContentContext != null)) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.b = false;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_Amtl = null;
-      this.jdField_a_of_type_Amtm = null;
-      this.jdField_a_of_type_Amtn = null;
-      this.jdField_a_of_type_Amto = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Amur != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources type " + paramInt);
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Amur.a(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public void a(Context paramContext, amtl paramamtl, amto paramamto)
-  {
-    a(paramContext, false, paramamtl, null, null, paramamto);
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean, amtl paramamtl, amtm paramamtm, amtn paramamtn, amto paramamto)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramBoolean;
-    paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, ArConfigService.class);
-    this.jdField_a_of_type_AndroidContentContext.bindService(paramContext, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    this.b = true;
-    if (paramamtl != null) {
-      this.jdField_a_of_type_Amtl = paramamtl;
-    }
-    if (paramamtm != null) {
-      this.jdField_a_of_type_Amtm = paramamtm;
-    }
-    this.jdField_a_of_type_Amtn = paramamtn;
-    this.jdField_a_of_type_Amto = paramamto;
+    BusinessCommonConfig.sendConfigUpdateNotify(2, paramString);
   }
   
   public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Amur != null) {}
-    try
+    for (;;)
     {
-      bool1 = this.jdField_a_of_type_Amur.a();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady " + bool1);
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
-        }
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Amur != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Amur.b();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onToolScannerActivityStateChanged state:" + paramInt + "  mConfigManager:" + this.jdField_a_of_type_Amur);
-    }
-    if (this.jdField_a_of_type_Amur != null) {
       try
       {
-        this.jdField_a_of_type_Amur.c(paramInt);
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        localRemoteException.printStackTrace();
-        return;
-      }
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Amur != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Amur.c();
-      return bool1;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Amur != null) {}
-    try
-    {
-      this.jdField_a_of_type_Amur.c();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_Amur != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource type " + paramInt);
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Amur.b(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Amur != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Amur.b();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady " + bool1);
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
+        if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo != null)
         {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
+          bool = true;
+          return bool;
         }
       }
+      finally {}
+      boolean bool = false;
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  boolean a(String paramString, AppInterface paramAppInterface, amtx paramamtx)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            for (;;)
-                            {
-                              return false;
-                              if (this.jdField_a_of_type_Amtl != null)
-                              {
-                                this.jdField_a_of_type_Amtl.a();
-                                return false;
-                                if (this.jdField_a_of_type_Amtl != null)
-                                {
-                                  paramMessage = paramMessage.obj;
-                                  if ((paramMessage instanceof ArConfigInfo))
-                                  {
-                                    this.jdField_a_of_type_Amtl.a((ArConfigInfo)paramMessage);
-                                    return false;
-                                    if (this.jdField_a_of_type_Amtl != null)
-                                    {
-                                      paramMessage = paramMessage.obj;
-                                      if ((paramMessage instanceof ArEffectConfig))
-                                      {
-                                        this.jdField_a_of_type_Amtl.a((ArEffectConfig)paramMessage);
-                                        return false;
-                                        if (this.jdField_a_of_type_Amtl != null) {
-                                          try
-                                          {
-                                            if ((paramMessage.obj instanceof ARCommonConfigInfo))
-                                            {
-                                              this.jdField_a_of_type_Amtl.a((ARCommonConfigInfo)paramMessage.obj);
-                                              return false;
-                                            }
-                                          }
-                                          catch (Exception paramMessage)
-                                          {
-                                            QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
-                                            return false;
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          } while (this.jdField_a_of_type_Amtl == null);
-                          this.jdField_a_of_type_Amtl.b();
-                          this.jdField_a_of_type_Boolean = false;
-                          return false;
-                        } while (this.jdField_a_of_type_Amtl == null);
-                        i = paramMessage.arg1;
-                        j = paramMessage.arg2;
-                        this.jdField_a_of_type_Amtl.a(i, j);
-                        return false;
-                      } while ((this.jdField_a_of_type_Amtl == null) || (!(paramMessage.obj instanceof Integer)));
-                      this.jdField_a_of_type_Amtl.a(((Integer)paramMessage.obj).intValue());
-                      this.jdField_a_of_type_Boolean = false;
-                      return false;
-                    } while (this.jdField_a_of_type_Amtm == null);
-                    i = paramMessage.arg1;
-                    this.jdField_a_of_type_Amtm.k_(i);
-                    return false;
-                  } while (this.jdField_a_of_type_Amtm == null);
-                  i = paramMessage.arg1;
-                  j = paramMessage.arg2;
-                  this.jdField_a_of_type_Amtm.a(i, j);
-                  return false;
-                } while (this.jdField_a_of_type_Amtm == null);
-                i = paramMessage.arg1;
-                j = paramMessage.arg2;
-                this.jdField_a_of_type_Amtm.b(i, j);
-                return false;
-              } while (this.jdField_a_of_type_Amtn == null);
-              this.jdField_a_of_type_Amtn.c();
-              return false;
-            } while (this.jdField_a_of_type_Amtn == null);
-            this.jdField_a_of_type_Amtn.d();
-            return false;
-          } while (this.jdField_a_of_type_Amtn == null);
-          this.jdField_a_of_type_Amtn.b(paramMessage.arg1);
-          return false;
-        } while (this.jdField_a_of_type_Amto == null);
-        i = paramMessage.arg1;
-        this.jdField_a_of_type_Amto.a(i);
-        return false;
-      } while (this.jdField_a_of_type_Amto == null);
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      this.jdField_a_of_type_Amto.a(i, j);
+    if ((a()) && (amtu.a != -1)) {
       return false;
-    } while (this.jdField_a_of_type_Amto == null);
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    this.jdField_a_of_type_Amto.b(i, j);
-    return false;
+    }
+    Object localObject2 = this.jdField_a_of_type_Amud;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      if ((TextUtils.isEmpty(this.b)) && (paramAppInterface != null)) {
+        this.b = paramAppInterface.getCurrentAccountUin();
+      }
+      localObject1 = new amud(this.jdField_a_of_type_JavaLangString, this.b, paramAppInterface);
+      this.jdField_a_of_type_Amud = ((amud)localObject1);
+    }
+    if (((amud)localObject1).isNeedRunTask())
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "]");
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(localObject1);
+      bdno.requestSyncTask(null, (ArrayList)localObject2, new amtw(this, paramAppInterface, paramString, paramamtx));
+    }
+    for (;;)
+    {
+      return true;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "], 已经在加载中");
+    }
+  }
+  
+  public void b(amub paramamub)
+  {
+    if (this.jdField_a_of_type_Amtz != null) {
+      this.jdField_a_of_type_Amtz.b(paramamub);
+    }
+  }
+  
+  void b(AppInterface paramAppInterface)
+  {
+    PromotionConfigInfo localPromotionConfigInfo1 = a();
+    if (AudioHelper.e()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, PromotionConfigInfo[" + localPromotionConfigInfo1 + "], isDevicesSupport[" + amtu.a() + "]");
+    }
+    if (!amtu.a()) {}
+    while ((localPromotionConfigInfo1 == null) || (!localPromotionConfigInfo1.mainswitch) || (localPromotionConfigInfo1.operationInfos.size() == 0)) {
+      return;
+    }
+    c(paramAppInterface);
+    PromotionConfigInfo localPromotionConfigInfo2 = a();
+    this.jdField_a_of_type_Amtz.a(localPromotionConfigInfo2);
+    this.jdField_a_of_type_Amtz.a(paramAppInterface, true, localPromotionConfigInfo1.activityid, 0);
+  }
+  
+  void c(AppInterface paramAppInterface)
+  {
+    aziv.b();
+    if (this.jdField_a_of_type_Amtp == null) {
+      this.jdField_a_of_type_Amtp = new amtp();
+    }
+    this.jdField_a_of_type_Amtp.a(paramAppInterface);
+  }
+  
+  public void onDestroy()
+  {
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
+    if (this.jdField_a_of_type_Amud != null)
+    {
+      this.jdField_a_of_type_Amud.clean();
+      this.jdField_a_of_type_Amud = null;
+    }
+    if (this.jdField_a_of_type_Amtz != null)
+    {
+      this.jdField_a_of_type_Amtz.a();
+      this.jdField_a_of_type_Amtz = null;
+    }
+    if (this.jdField_a_of_type_Amtp != null)
+    {
+      this.jdField_a_of_type_Amtp.a();
+      this.jdField_a_of_type_Amtp = null;
+    }
+    a(null);
   }
 }
 

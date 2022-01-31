@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiml;
+import aira;
 import android.os.Handler;
 import android.os.Message;
-import bdar;
+import bdfa;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.Map;
 
 public class PhotoListLogicDefault$7
   implements Runnable
 {
-  public PhotoListLogicDefault$7(aiml paramaiml, String paramString) {}
+  public PhotoListLogicDefault$7(aira paramaira, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class PhotoListLogicDefault$7
     String str = ((NewPhotoListActivity)this.this$0.mActivity).a(this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    bdar.a(localLocalMediaInfo, str);
+    bdfa.a(localLocalMediaInfo, str);
     PhotoListBaseData.newCaptureMediaInfo.put(str, localLocalMediaInfo);
     ((NewPhotoListActivity)this.this$0.mActivity).a.sendMessage(localMessage);
   }

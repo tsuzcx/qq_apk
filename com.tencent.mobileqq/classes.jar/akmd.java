@@ -1,14 +1,14 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.widget.TextView;
 
-public abstract interface akmd
+public class akmd
 {
-  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
+  public TextView a;
+  
+  protected akmd(akmb paramakmb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmd
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class pih
   public Bundle a;
   private String jdField_a_of_type_JavaLangString;
   szc jdField_a_of_type_Szc;
-  ymk jdField_a_of_type_Ymk = null;
+  yqz jdField_a_of_type_Yqz = null;
   
   public pih()
   {
@@ -80,24 +80,24 @@ public class pih
     }
     this.jdField_a_of_type_AndroidOsBundle.putLong("feeds_id", -1L);
     this.jdField_a_of_type_AndroidOsBundle.putLong("feeds_type", 1L);
-    a(apic.a("ipc_kandian_socialfeeds_update", "", 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
+    a(apml.a("ipc_kandian_socialfeeds_update", "", 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
   }
   
   protected void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!apmy.a().a())
+    if (!aprh.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), alpo.a(2131713199), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), alud.a(2131713211), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      apmy.a().b(paramBundle);
+      aprh.a().b(paramBundle);
       return;
     }
-    apmy.a().a(paramBundle);
+    aprh.a().a(paramBundle);
   }
   
   public void callJs(String paramString, String... paramVarArgs)
@@ -116,7 +116,7 @@ public class pih
     if ("showShareReadInJoyMenu".equals(paramString3))
     {
       if (this.jdField_a_of_type_Szc == null) {
-        this.jdField_a_of_type_Szc = new szc(this, this.jdField_a_of_type_Ymk);
+        this.jdField_a_of_type_Szc = new szc(this, this.jdField_a_of_type_Yqz);
       }
       if (paramVarArgs == null) {
         return false;
@@ -178,7 +178,7 @@ public class pih
               paramJsBridgeListener = paramString1;
               this.jdField_a_of_type_AndroidOsBundle.putInt("feeds_type", Integer.valueOf(i).intValue());
               paramJsBridgeListener = paramString1;
-              a(apic.a("ipc_kandian_socialfeeds_update", paramString1, 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
+              a(apml.a("ipc_kandian_socialfeeds_update", paramString1, 0, this.jdField_a_of_type_AndroidOsBundle), false, false);
             }
             else
             {
@@ -210,7 +210,7 @@ public class pih
         {
           paramString1 = paramVarArgs.getString("callback");
           paramJsBridgeListener = paramString1;
-          this.jdField_a_of_type_Ymk.i(new pii(this, paramString1));
+          this.jdField_a_of_type_Yqz.i(new pii(this, paramString1));
         }
         catch (JSONException paramString1)
         {
@@ -233,7 +233,7 @@ public class pih
           l1 = paramVarArgs.getLong("seq");
           l2 = paramVarArgs.getLong("startTime");
           l3 = paramVarArgs.getLong("endTime");
-          this.jdField_a_of_type_Ymk.a(paramJsBridgeListener, l1, paramString2, paramString3, l2, l3, new pij(this, paramString1));
+          this.jdField_a_of_type_Yqz.a(paramJsBridgeListener, l1, paramString2, paramString3, l2, l3, new pij(this, paramString1));
           QLog.d("ReadInJoyWebviewPlugin", 4, "send notifyLoadSkin cmd to service");
         }
         catch (JSONException paramJsBridgeListener) {}
@@ -267,7 +267,7 @@ public class pih
             paramString1 = paramVarArgs.optString("skinUrl");
           }
           paramJsBridgeListener = paramString2;
-          this.jdField_a_of_type_Ymk.e(paramString3, paramString1, new pik(this, paramString2));
+          this.jdField_a_of_type_Yqz.e(paramString3, paramString1, new pik(this, paramString2));
           paramJsBridgeListener = paramString2;
           QLog.d("ReadInJoyWebviewPlugin", 4, "send cancelLoadSkin cmd to service");
         }
@@ -311,7 +311,7 @@ public class pih
           if (paramVarArgs.has("volumeIsOn")) {
             i = paramVarArgs.optInt("volumeIsOn");
           }
-          this.jdField_a_of_type_Ymk.a(paramString3, l1, paramJsBridgeListener, paramString1, l2, l3, i, new pil(this, paramString2));
+          this.jdField_a_of_type_Yqz.a(paramString3, l1, paramJsBridgeListener, paramString1, l2, l3, i, new pil(this, paramString2));
           QLog.d("ReadInJoyWebviewPlugin", 4, "send set skin cmd to service");
         }
         catch (Exception paramJsBridgeListener)
@@ -350,15 +350,15 @@ public class pih
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Ymk = ymk.a();
-    this.jdField_a_of_type_Ymk.a();
+    this.jdField_a_of_type_Yqz = yqz.a();
+    this.jdField_a_of_type_Yqz.a();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     a();
-    this.jdField_a_of_type_Ymk.b();
+    this.jdField_a_of_type_Yqz.b();
     if (this.jdField_a_of_type_Szc != null) {
       this.jdField_a_of_type_Szc.a();
     }

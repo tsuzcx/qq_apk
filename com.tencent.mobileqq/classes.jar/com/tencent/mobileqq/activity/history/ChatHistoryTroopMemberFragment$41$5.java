@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahyg;
-import ahys;
+import aicv;
+import aidh;
 import android.support.v4.app.FragmentActivity;
 import java.util.List;
 
 public class ChatHistoryTroopMemberFragment$41$5
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$5(ahyg paramahyg, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$5(aicv paramaicv, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ahyg.a.getActivity().isFinishing()) {}
-    while (this.jdField_a_of_type_Ahyg.a.a == null) {
+    if (this.jdField_a_of_type_Aicv.a.getActivity().isFinishing()) {}
+    while (this.jdField_a_of_type_Aicv.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Ahyg.a.a.c = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Ahyg.a.a.a();
+    this.jdField_a_of_type_Aicv.a.a.c = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Aicv.a.a.a();
   }
 }
 

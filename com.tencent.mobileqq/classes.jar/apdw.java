@@ -1,21 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.Comparator;
 
-class apdw
-  implements View.OnClickListener
+public class apdw
+  implements Comparator<CardProfile>
 {
-  apdw(apdv paramapdv) {}
-  
-  public void onClick(View paramView)
+  public int a(CardProfile paramCardProfile1, CardProfile paramCardProfile2)
   {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
-    {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
-      HotChatFlashPicActivity.a(this.a.a, null);
-      this.a.a.finish();
-    }
+    return paramCardProfile2.lTime - paramCardProfile1.lTime;
   }
 }
 

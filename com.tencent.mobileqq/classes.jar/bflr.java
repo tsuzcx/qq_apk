@@ -1,211 +1,586 @@
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import java.util.List;
 
 public class bflr
 {
-  public static String a;
-  public static ArrayList<String> a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
+  protected static Comparator a;
+  protected static List<String> a;
+  static final byte[] jdField_a_of_type_ArrayOfByte = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  protected static Comparator<File> b;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[4];
+  private byte[] jdField_b_of_type_ArrayOfByte = new byte[64];
+  private long[] jdField_b_of_type_ArrayOfLong = new long[2];
+  private byte[] c = new byte[16];
   
   static
   {
-    jdField_a_of_type_JavaLangString = "com.tencent.open.download.start";
-    b = "com.tencent.open.download.pause";
-    c = "com.tencent.open.download.restart";
-    d = "com.tencent.open.download.complete";
-    e = "com.tencent.open.download.open";
-    f = "com.tencent.open.download.yyb";
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(d);
-    jdField_a_of_type_JavaUtilArrayList.add(e);
-    jdField_a_of_type_JavaUtilArrayList.add(b);
-    jdField_a_of_type_JavaUtilArrayList.add(f);
-    jdField_a_of_type_JavaUtilArrayList.add(c);
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_JavaLangString);
+    jdField_a_of_type_JavaUtilComparator = new bflt();
+    jdField_b_of_type_JavaUtilComparator = new bfls();
+    jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static PendingIntent a(int paramInt, NoticeParam paramNoticeParam)
+  public bflr()
   {
-    Intent localIntent = new Intent();
-    if (paramNoticeParam != null)
-    {
-      localIntent.putExtra("noticeParam", paramNoticeParam);
-      localIntent.putExtra("param_notifyid", bfln.a().a(paramNoticeParam.f, paramNoticeParam.b, paramNoticeParam.jdField_a_of_type_JavaLangString));
-    }
-    paramNoticeParam = bfel.r();
-    if (!TextUtils.isEmpty(paramNoticeParam)) {
-      localIntent.putExtra("processName", paramNoticeParam);
-    }
-    paramNoticeParam = paramNoticeParam.replace(":", ".");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      localIntent.setPackage(MobileQQ.getContext().getPackageName());
-      return PendingIntent.getBroadcast(bexd.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
-      localIntent.setAction(b + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(jdField_a_of_type_JavaLangString + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(d + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(f + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(e + "." + paramNoticeParam);
-    }
+    a();
   }
   
-  public static Intent a(Bundle paramBundle)
+  public static long a(byte paramByte)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("adapter_action", "action_push_app_detail");
-    localIntent.setClassName("com.tencent.plugin.qappcenter", "com.tencent.open.appcenter.QZoneAppWebViewActivity");
-    localIntent.putExtras(paramBundle);
-    Object localObject1 = new StringBuffer("sd://qapp_center_detail.htm?");
-    Object localObject2 = paramBundle.keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      str1 = (String)((Iterator)localObject2).next();
-      String str2 = paramBundle.getString(str1);
-      ((StringBuffer)localObject1).append(str1).append("=").append(str2).append("&");
+    if (paramByte < 0) {
+      return paramByte & 0xFF;
     }
-    localObject2 = bfel.a(((StringBuffer)localObject1).toString());
-    localObject1 = localObject2[0];
-    localObject2 = "" + localObject2[1];
-    String str1 = paramBundle.getString("from");
-    localIntent.putExtra("uinRestore", bexd.a().a());
-    localIntent.putExtra("APP_URL_NOTICE", (String)localObject1);
-    if (a(str1)) {}
-    for (localObject1 = a(paramBundle);; localObject1 = localObject2)
+    return paramByte;
+  }
+  
+  private long a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return paramLong1 & paramLong2 | (0xFFFFFFFF ^ paramLong1) & paramLong3;
+  }
+  
+  private long a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    paramLong1 = a(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+  }
+  
+  public static String a(String paramString)
+  {
+    return bdhe.a(a(paramString));
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    return bdhe.a(a(paramArrayOfByte));
+  }
+  
+  private void a()
+  {
+    this.jdField_b_of_type_ArrayOfLong[0] = 0L;
+    this.jdField_b_of_type_ArrayOfLong[1] = 0L;
+    this.jdField_a_of_type_ArrayOfLong[0] = 1732584193L;
+    this.jdField_a_of_type_ArrayOfLong[1] = 4023233417L;
+    this.jdField_a_of_type_ArrayOfLong[2] = 2562383102L;
+    this.jdField_a_of_type_ArrayOfLong[3] = 271733878L;
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    long l2 = this.jdField_a_of_type_ArrayOfLong[0];
+    long l1 = this.jdField_a_of_type_ArrayOfLong[1];
+    long l4 = this.jdField_a_of_type_ArrayOfLong[2];
+    long l3 = this.jdField_a_of_type_ArrayOfLong[3];
+    long[] arrayOfLong = new long[16];
+    a(arrayOfLong, paramArrayOfByte, 64);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[0], 7L, 3614090360L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[1], 12L, 3905402710L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[2], 17L, 606105819L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[3], 22L, 3250441966L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[4], 7L, 4118548399L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[5], 12L, 1200080426L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[6], 17L, 2821735955L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[7], 22L, 4249261313L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[8], 7L, 1770035416L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[9], 12L, 2336552879L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[10], 17L, 4294925233L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[11], 22L, 2304563134L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[12], 7L, 1804603682L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[13], 12L, 4254626195L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[14], 17L, 2792965006L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[15], 22L, 1236535329L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[1], 5L, 4129170786L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[6], 9L, 3225465664L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[11], 14L, 643717713L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[0], 20L, 3921069994L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[5], 5L, 3593408605L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[10], 9L, 38016083L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[15], 14L, 3634488961L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[4], 20L, 3889429448L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[9], 5L, 568446438L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[14], 9L, 3275163606L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[3], 14L, 4107603335L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[8], 20L, 1163531501L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[13], 5L, 2850285829L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[2], 9L, 4243563512L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[7], 14L, 1735328473L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[12], 20L, 2368359562L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[5], 4L, 4294588738L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[8], 11L, 2272392833L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[11], 16L, 1839030562L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[14], 23L, 4259657740L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[1], 4L, 2763975236L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[4], 11L, 1272893353L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[7], 16L, 4139469664L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[10], 23L, 3200236656L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[13], 4L, 681279174L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[0], 11L, 3936430074L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[3], 16L, 3572445317L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[6], 23L, 76029189L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[9], 4L, 3654602809L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[12], 11L, 3873151461L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[15], 16L, 530742520L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[2], 23L, 3299628645L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[0], 6L, 4096336452L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[7], 10L, 1126891415L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[14], 15L, 2878612391L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[5], 21L, 4237533241L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[12], 6L, 1700485571L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[3], 10L, 2399980690L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[10], 15L, 4293915773L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[1], 21L, 2240044497L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[8], 6L, 1873313359L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[15], 10L, 4264355552L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[6], 15L, 2734768916L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[13], 21L, 1309151649L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[4], 6L, 4149444226L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[11], 10L, 3174756917L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[2], 15L, 718787259L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[9], 21L, 3951481745L);
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte[0] += l2;
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte[1] = (l1 + paramArrayOfByte[1]);
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte[2] += l4;
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte[3] += l3;
+  }
+  
+  private void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int j = 0;
+    byte[] arrayOfByte = new byte[64];
+    int k = (int)(this.jdField_b_of_type_ArrayOfLong[0] >>> 3) & 0x3F;
+    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    long l = arrayOfLong[0] + (paramInt << 3);
+    arrayOfLong[0] = l;
+    if (l < paramInt << 3)
     {
-      localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
-      bfhg.b("IntentFactory", "params=" + (String)localObject2 + "\n pushParams=" + a(paramBundle));
-      if (paramBundle.containsKey("friendUin"))
+      arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+      arrayOfLong[1] += 1L;
+    }
+    arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    arrayOfLong[1] += (paramInt >>> 29);
+    int m = 64 - k;
+    int i = k;
+    if (paramInt >= m)
+    {
+      a(this.jdField_b_of_type_ArrayOfByte, paramArrayOfByte, k, 0, m);
+      a(this.jdField_b_of_type_ArrayOfByte);
+      i = m;
+      while (i + 63 < paramInt)
       {
-        localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
-        localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
+        a(arrayOfByte, paramArrayOfByte, 0, i, 64);
+        a(arrayOfByte);
+        i += 64;
       }
-      localIntent.addFlags(603979776);
-      return localIntent;
+      k = 0;
+      j = i;
+      i = k;
+    }
+    a(this.jdField_b_of_type_ArrayOfByte, paramArrayOfByte, i, j, paramInt - j);
+  }
+  
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = 0;
+    while (i < paramInt3)
+    {
+      paramArrayOfByte1[(paramInt1 + i)] = paramArrayOfByte2[(paramInt2 + i)];
+      i += 1;
     }
   }
   
-  public static Intent a(String paramString1, String paramString2, int paramInt)
+  private void a(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {
-      return null;
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
+    {
+      paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
+      paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
+      paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
+      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
+      j += 1;
+      i += 4;
     }
-    Object localObject = bfel.a(paramString1);
-    paramString1 = (String)((HashMap)localObject).get("appid");
-    String str1 = (String)((HashMap)localObject).get("sendtime");
-    String str2 = (String)((HashMap)localObject).get("packname");
-    String str3 = (String)((HashMap)localObject).get("packetversion");
-    String str4 = (String)((HashMap)localObject).get("msgtype");
-    String str5 = (String)((HashMap)localObject).get("type");
-    String str6 = (String)((HashMap)localObject).get("downurl");
-    localObject = (String)((HashMap)localObject).get("via");
-    String str7 = bfei.a((String)localObject);
-    bfhg.b("IntentFactory", "appid=" + paramString1 + "&sendtime=" + str1 + "&packname=" + str2 + "&packetversion=" + str3 + "&msgtype=" + str4 + "&type=" + str5 + "&downUrl=" + str6 + "&via=" + (String)localObject);
-    int i = bfij.a(str2);
-    int j = bfij.b(bfkb.a().a(paramString1));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putString("from", "2458");
-    localBundle.putString("downloadUrl", str6);
-    localBundle.putString("packageName", str2);
-    localBundle.putString("installedVersion", String.valueOf(i));
-    localBundle.putString("localVersion", String.valueOf(j));
-    localBundle.putString("serverApkVersion", str3);
-    localBundle.putString("typeid", str5);
-    localBundle.putString("msgType", str4);
-    localBundle.putString("sendTime", str1);
-    localBundle.putString("via", (String)localObject);
-    localBundle.putString("splitvia", str7);
-    localBundle.putString("friendUin", paramString2);
-    localBundle.putInt("isTroop", paramInt);
-    return a(localBundle);
   }
   
-  protected static String a(Bundle paramBundle)
+  private void a(long[] paramArrayOfLong, byte[] paramArrayOfByte, int paramInt)
   {
-    Object localObject1;
-    if (paramBundle == null)
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
     {
-      localObject1 = "";
-      return localObject1;
+      paramArrayOfLong[j] = (a(paramArrayOfByte[i]) | a(paramArrayOfByte[(i + 1)]) << 8 | a(paramArrayOfByte[(i + 2)]) << 16 | a(paramArrayOfByte[(i + 3)]) << 24);
+      j += 1;
+      i += 4;
     }
-    String str3 = paramBundle.getString("id");
-    bfhg.b("IntentFactory", "appId=" + str3);
-    String str5;
-    if (!TextUtils.isEmpty(str3))
+  }
+  
+  private boolean a(InputStream paramInputStream, long paramLong)
+  {
+    byte[] arrayOfByte = new byte[64];
+    int j = (int)(this.jdField_b_of_type_ArrayOfLong[0] >>> 3) & 0x3F;
+    Object localObject = this.jdField_b_of_type_ArrayOfLong;
+    long l = localObject[0] + (paramLong << 3);
+    localObject[0] = l;
+    if (l < paramLong << 3)
     {
-      Object localObject2 = paramBundle.getString("downloadUrl");
-      String str4 = paramBundle.getString("packageName");
-      String str1 = paramBundle.getString("serverApkVersion");
-      localObject1 = str1;
-      if (str1 == null) {
-        localObject1 = "0";
+      localObject = this.jdField_b_of_type_ArrayOfLong;
+      localObject[1] += 1L;
+    }
+    localObject = this.jdField_b_of_type_ArrayOfLong;
+    localObject[1] += (paramLong >>> 29);
+    int i = 64 - j;
+    if (paramLong >= i)
+    {
+      localObject = new byte[i];
+      try
+      {
+        paramInputStream.read((byte[])localObject, 0, i);
+        a(this.jdField_b_of_type_ArrayOfByte, (byte[])localObject, j, 0, i);
+        a(this.jdField_b_of_type_ArrayOfByte);
       }
-      str5 = paramBundle.getString("via");
-      String str2 = paramBundle.getString("splitvia");
-      int j = bfij.a(str4);
-      int k = bfij.b(bfkb.a().a(str3));
-      if (bfhb.c(bexd.a().a())) {}
-      for (int i = 1;; i = 0)
+      catch (Exception paramInputStream)
       {
         try
         {
-          str1 = URLEncoder.encode((String)localObject2, "utf-8");
-          localObject2 = str1;
+          paramInputStream.read(arrayOfByte);
+          a(arrayOfByte);
+          i += 64;
         }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        catch (Exception paramInputStream)
         {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            continue;
-            paramBundle = paramBundle + "&via=" + str5;
-          }
+          paramInputStream.printStackTrace();
+          return false;
         }
-        paramBundle = "&from=-10&id=" + str3 + "&channelId=" + paramBundle.getString("from") + "&installedVersion=" + String.valueOf(j) + "&localVersion=" + k + "&serverApkVersion=" + (String)localObject1 + "&typeId=" + "0" + "&msgType=" + "56" + "&sendTime=" + str3 + "&downloadUrl=" + (String)localObject2 + "&packageName=" + str4 + "&nt=" + i;
-        if (!TextUtils.isEmpty(str5)) {
-          break label357;
-        }
-        localObject1 = paramBundle;
-        if (TextUtils.isEmpty(str2)) {
-          break;
-        }
-        return paramBundle + "&splitvia=" + str2;
+        paramInputStream = paramInputStream;
+        paramInputStream.printStackTrace();
+        return false;
       }
+      if (i + 63 < paramLong) {}
+      j = 0;
     }
-    label357:
-    return "";
+    for (;;)
+    {
+      arrayOfByte = new byte[(int)(paramLong - i)];
+      try
+      {
+        paramInputStream.read(arrayOfByte);
+        a(this.jdField_b_of_type_ArrayOfByte, arrayOfByte, j, 0, arrayOfByte.length);
+        return true;
+      }
+      catch (Exception paramInputStream)
+      {
+        paramInputStream.printStackTrace();
+      }
+      i = 0;
+    }
+    return false;
   }
   
-  protected static boolean a(String paramString)
+  /* Error */
+  protected static byte[] a(String paramString)
   {
-    return ("2457".equals(paramString)) || ("2458".equals(paramString));
+    // Byte code:
+    //   0: ldc_w 303
+    //   3: invokestatic 309	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   6: astore_3
+    //   7: new 311	java/io/File
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 314	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: astore_0
+    //   16: aload_0
+    //   17: invokevirtual 318	java/io/File:exists	()Z
+    //   20: ifne +5 -> 25
+    //   23: aconst_null
+    //   24: areturn
+    //   25: new 320	java/io/BufferedInputStream
+    //   28: dup
+    //   29: new 322	java/io/FileInputStream
+    //   32: dup
+    //   33: aload_0
+    //   34: invokespecial 325	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   37: invokespecial 328	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   40: astore_2
+    //   41: sipush 4096
+    //   44: newarray byte
+    //   46: astore_0
+    //   47: aload_2
+    //   48: aload_0
+    //   49: invokevirtual 329	java/io/BufferedInputStream:read	([B)I
+    //   52: istore_1
+    //   53: iload_1
+    //   54: iconst_m1
+    //   55: if_icmpeq +26 -> 81
+    //   58: aload_3
+    //   59: aload_0
+    //   60: iconst_0
+    //   61: iload_1
+    //   62: invokevirtual 333	java/security/MessageDigest:update	([BII)V
+    //   65: goto -18 -> 47
+    //   68: astore_0
+    //   69: aload_0
+    //   70: invokevirtual 334	java/io/IOException:printStackTrace	()V
+    //   73: aload_2
+    //   74: invokevirtual 337	java/io/BufferedInputStream:close	()V
+    //   77: aconst_null
+    //   78: astore_0
+    //   79: aload_0
+    //   80: areturn
+    //   81: aload_3
+    //   82: invokevirtual 341	java/security/MessageDigest:digest	()[B
+    //   85: astore_0
+    //   86: aload_2
+    //   87: invokevirtual 337	java/io/BufferedInputStream:close	()V
+    //   90: goto -11 -> 79
+    //   93: astore_2
+    //   94: aload_2
+    //   95: invokevirtual 334	java/io/IOException:printStackTrace	()V
+    //   98: goto -19 -> 79
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 342	java/io/FileNotFoundException:printStackTrace	()V
+    //   106: aconst_null
+    //   107: areturn
+    //   108: astore_0
+    //   109: aload_0
+    //   110: invokevirtual 334	java/io/IOException:printStackTrace	()V
+    //   113: aconst_null
+    //   114: astore_0
+    //   115: goto -36 -> 79
+    //   118: astore_0
+    //   119: aload_2
+    //   120: invokevirtual 337	java/io/BufferedInputStream:close	()V
+    //   123: aload_0
+    //   124: athrow
+    //   125: astore_0
+    //   126: aload_0
+    //   127: invokevirtual 343	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   130: aconst_null
+    //   131: areturn
+    //   132: astore_2
+    //   133: aload_2
+    //   134: invokevirtual 334	java/io/IOException:printStackTrace	()V
+    //   137: goto -14 -> 123
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	140	0	paramString	String
+    //   52	10	1	i	int
+    //   40	47	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   93	27	2	localIOException1	java.io.IOException
+    //   132	2	2	localIOException2	java.io.IOException
+    //   6	76	3	localMessageDigest	MessageDigest
+    // Exception table:
+    //   from	to	target	type
+    //   47	53	68	java/io/IOException
+    //   58	65	68	java/io/IOException
+    //   81	86	68	java/io/IOException
+    //   86	90	93	java/io/IOException
+    //   0	23	101	java/io/FileNotFoundException
+    //   25	47	101	java/io/FileNotFoundException
+    //   73	77	101	java/io/FileNotFoundException
+    //   86	90	101	java/io/FileNotFoundException
+    //   94	98	101	java/io/FileNotFoundException
+    //   109	113	101	java/io/FileNotFoundException
+    //   119	123	101	java/io/FileNotFoundException
+    //   123	125	101	java/io/FileNotFoundException
+    //   133	137	101	java/io/FileNotFoundException
+    //   73	77	108	java/io/IOException
+    //   47	53	118	finally
+    //   58	65	118	finally
+    //   69	73	118	finally
+    //   81	86	118	finally
+    //   0	23	125	java/security/NoSuchAlgorithmException
+    //   25	47	125	java/security/NoSuchAlgorithmException
+    //   73	77	125	java/security/NoSuchAlgorithmException
+    //   86	90	125	java/security/NoSuchAlgorithmException
+    //   94	98	125	java/security/NoSuchAlgorithmException
+    //   109	113	125	java/security/NoSuchAlgorithmException
+    //   119	123	125	java/security/NoSuchAlgorithmException
+    //   123	125	125	java/security/NoSuchAlgorithmException
+    //   133	137	125	java/security/NoSuchAlgorithmException
+    //   119	123	132	java/io/IOException
+  }
+  
+  protected static byte[] a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramArrayOfByte);
+      paramArrayOfByte = localMessageDigest.digest();
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+  }
+  
+  private long b(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return paramLong1 & paramLong3 | (0xFFFFFFFF ^ paramLong3) & paramLong2;
+  }
+  
+  private long b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    paramLong1 = b(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+  }
+  
+  public static String b(String paramString)
+  {
+    try
+    {
+      paramString = bdhe.a(a(paramString.getBytes("UTF-8")));
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    byte[] arrayOfByte = new byte[8];
+    a(arrayOfByte, this.jdField_b_of_type_ArrayOfLong, 8);
+    int i = (int)(this.jdField_b_of_type_ArrayOfLong[0] >>> 3) & 0x3F;
+    if (i < 56) {}
+    for (i = 56 - i;; i = 120 - i)
+    {
+      a(jdField_a_of_type_ArrayOfByte, i);
+      a(arrayOfByte, 8);
+      a(this.c, this.jdField_a_of_type_ArrayOfLong, 16);
+      return;
+    }
+  }
+  
+  private long c(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return paramLong1 ^ paramLong2 ^ paramLong3;
+  }
+  
+  private long c(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    paramLong1 = c(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+  }
+  
+  public static String c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = new File(paramString).listFiles();
+    if (paramString == null) {
+      return "";
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Arrays.sort(paramString, jdField_b_of_type_JavaUtilComparator);
+        int j = paramString.length;
+        i = 0;
+        if (i < j)
+        {
+          localIterator = paramString[i];
+          if (localIterator.isFile()) {
+            jdField_a_of_type_JavaUtilList.add(a(localIterator.getAbsolutePath()));
+          } else {
+            c(localIterator.getAbsolutePath());
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        return "";
+      }
+      Collections.sort(jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
+      paramString = new StringBuilder();
+      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        paramString.append((String)localIterator.next());
+      }
+      jdField_a_of_type_JavaUtilList.clear();
+      paramString = b(paramString.toString());
+      return paramString;
+      i += 1;
+    }
+  }
+  
+  private long d(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return (0xFFFFFFFF ^ paramLong3 | paramLong1) ^ paramLong2;
+  }
+  
+  private long d(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    paramLong1 = d(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+  }
+  
+  public static String d(String paramString)
+  {
+    try
+    {
+      localObject = paramString.getBytes("ISO8859_1");
+      paramString = (String)localObject;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        int i;
+        paramString = paramString.getBytes();
+      }
+      return localUnsupportedEncodingException.toString();
+    }
+    paramString = new bflr().b(paramString);
+    localObject = new StringBuilder(32);
+    i = 0;
+    while (i < 16)
+    {
+      ((StringBuilder)localObject).append(jdField_a_of_type_ArrayOfChar[(paramString[i] >>> 4 & 0xF)]);
+      ((StringBuilder)localObject).append(jdField_a_of_type_ArrayOfChar[(paramString[i] & 0xF)]);
+      i += 1;
+    }
+  }
+  
+  public byte[] b(byte[] paramArrayOfByte)
+  {
+    a();
+    a(new ByteArrayInputStream(paramArrayOfByte), paramArrayOfByte.length);
+    b();
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bflr
  * JD-Core Version:    0.7.0.1
  */

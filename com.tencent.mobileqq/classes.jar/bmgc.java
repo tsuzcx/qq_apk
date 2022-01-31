@@ -1,85 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bmgc
-  extends bmiv
-  implements IEventReceiver
+  extends AnimatorListenerAdapter
 {
-  private bmgd a;
+  public bmgc(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public bmgc(@NonNull bmix parambmix)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(parambmix);
-    this.jdField_a_of_type_Bmgd = new bmgd(this.jdField_a_of_type_Bmix);
-  }
-  
-  public void a()
-  {
-    bmfg localbmfg = (bmfg)a(bmfg.class);
-    if (localbmfg != null) {
-      localbmfg.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
     }
   }
   
-  protected boolean a(Message paramMessage)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      int i;
-      DynamicTextConfigManager localDynamicTextConfigManager;
-      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "handle message MESSAGE_DOODLE_LAYOUT_LOADED");
-        }
-        Object localObject = (EditVideoParams)this.jdField_a_of_type_Bmkf.getActivity().getIntent().getParcelableExtra(EditVideoParams.class.getName());
-        i = ((EditVideoParams)localObject).a("extra_slide_sticker_id", -1);
-        localObject = ((EditVideoParams)localObject).a("extra_slide_sticker_str");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (i == -1)) {
-          continue;
-        }
-        localDynamicTextConfigManager = (DynamicTextConfigManager)blmf.a(7);
-        if (!localDynamicTextConfigManager.a()) {
-          localDynamicTextConfigManager.c();
-        }
-        localDynamicTextConfigBean = localDynamicTextConfigManager.a(i + "");
-        if (localDynamicTextConfigBean == null) {
-          continue;
-        }
-        if (!localDynamicTextConfigManager.a(localDynamicTextConfigBean)) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "isDynamicTextUsable, addSticker : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bmix.a(i, (String)localObject);
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("EditVideoAblumList", 2, bhop.a(localException));
-        continue;
-        label226:
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "configBean has not downloaded, start download : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bmgd.a(i);
-        this.jdField_a_of_type_Bmgd.a(localException);
-        localDynamicTextConfigManager.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bmgd);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
     }
   }
 }

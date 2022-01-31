@@ -1,19 +1,50 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public class yfd
-  implements View.OnClickListener
+class yfd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public yfd(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yem paramyem) {}
+  private yfd(yew paramyew) {}
   
-  public void onClick(View paramView)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    xxk.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Yem.a.poster.id.get()));
-    yvu.b(this.jdField_a_of_type_Yem.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
+    float f1 = paramMotionEvent2.getY() - yew.a(this.a);
+    if (yew.b(this.a) < yew.c(this.a)) {
+      return false;
+    }
+    if ((f1 > 0.0F) && (yew.d(this.a) < yew.e(this.a)))
+    {
+      f2 = yew.d(this.a);
+      f1 = Math.abs(f1) + f2;
+      localyew = this.a;
+      if (f1 > yew.e(this.a))
+      {
+        i = yew.e(this.a);
+        yew.b(localyew, i);
+      }
+    }
+    while ((f1 >= 0.0F) || (yew.d(this.a) <= yew.f(this.a))) {
+      for (;;)
+      {
+        float f2;
+        if (yew.a(this.a) != null)
+        {
+          yew.a(this.a).getLayoutParams().height = yew.d(this.a);
+          yew.a(this.a).requestLayout();
+        }
+        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        i = (int)f1;
+      }
+    }
+    f1 = yew.d(this.a) - Math.abs(f1);
+    yew localyew = this.a;
+    if (f1 < yew.f(this.a)) {}
+    for (int i = yew.f(this.a);; i = (int)f1)
+    {
+      yew.b(localyew, i);
+      break;
+    }
   }
 }
 

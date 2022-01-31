@@ -1,20 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.search.rich.ArkAppView;
 
 class aysl
+  implements View.OnClickListener
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
+  aysl(aysk paramaysk) {}
   
-  public aysl(aysk paramaysk, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559671, paramaysk.b, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367910));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365102));
+    paramView = null;
+    if (aysk.a(this.a) != null) {
+      paramView = aysk.a(this.a).mViewImpl.getViewModel();
+    }
+    if (paramView == null) {
+      return;
+    }
+    paramView.reinitArkContainer();
   }
 }
 

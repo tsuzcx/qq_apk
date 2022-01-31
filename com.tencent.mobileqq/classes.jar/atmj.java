@@ -1,17 +1,38 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.qphone.base.util.QLog;
 
-final class atmj
-  implements DialogInterface.OnClickListener
+public class atmj
+  implements Handler.Callback
 {
-  atmj(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
+  public atmj(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    atpb.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    azmj.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    paramMessage = this.a.a();
+    if (paramMessage != null)
+    {
+      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
+      paramMessage.c = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, atlw.a().a);
+      return true;
+      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+    }
   }
 }
 

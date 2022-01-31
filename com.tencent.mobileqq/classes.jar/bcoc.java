@@ -1,16 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
 public abstract class bcoc
 {
-  public bcoc(bcnw parambcnw) {}
+  public void a(int paramInt) {}
   
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
+  public void a(int paramInt1, int paramInt2, String paramString, List<bcon> paramList) {}
   
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
-  {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(SparseArray<bcop> paramSparseArray) {}
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(List<bcoo> paramList, yvm paramyvm) {}
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c(int paramInt) {}
 }
 
 

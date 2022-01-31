@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 class PermisionPrivacyActivity$6$1
@@ -15,7 +15,7 @@ class PermisionPrivacyActivity$6$1
       PermisionPrivacyActivity.a(this.a.this$0).setRightText("");
       return;
     }
-    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + alpo.a(2131708298));
+    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + alud.a(2131708310));
   }
 }
 

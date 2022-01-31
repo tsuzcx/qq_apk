@@ -1,151 +1,190 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import mqq.app.AppRuntime;
 
-public final class bixh
+public class bixh
+  extends bdjz
+  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, View.OnClickListener, bdpc
 {
-  public static String a = "VIP_QQREADER";
-  @Deprecated
-  public static String b = "qqreader_1.0." + "8.3.3".replace(".", "") + ".0001_android_qqplugin";
-  private static String c = "0x0";
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  protected bdpb a;
+  protected bixi a;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  private static String a(Context paramContext)
+  public bixh(Context paramContext, AppRuntime paramAppRuntime, int paramInt, bixi parambixi)
   {
-    if (("0x0".equals(c)) && ((paramContext instanceof Activity))) {
-      c = bixj.a((Activity)paramContext);
-    }
-    return c;
+    super(paramContext, 2131755801);
+    this.jdField_a_of_type_Bixi = parambixi;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    super.setContentView(2131558955);
+    super.setNegativeButton(2131690648, this);
+    super.setPositiveButton(2131692401, this);
+    super.setTitle(2131689694);
+    ((TextView)super.findViewById(2131365237)).setGravity(3);
+    paramInt = bdoo.a(6.0F);
+    int i = bdoo.a(16.0F);
+    int j = bdoo.a(40.0F);
+    int k = bdoo.a(50.0F);
+    paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramContext.setOrientation(0);
+    paramContext.setGravity(16);
+    paramAppRuntime = new LinearLayout.LayoutParams(j, j);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramContext.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppRuntime);
+    this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131372398);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843779);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772213));
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetButton.setHeight(k);
+    paramContext.addView(this.jdField_a_of_type_AndroidWidgetButton);
+    super.findViewById(2131365233).setVisibility(8);
+    paramAppRuntime = (RelativeLayout)super.findViewById(2131365229);
+    parambixi = new RelativeLayout.LayoutParams(0, -2);
+    parambixi.addRule(3, 2131365237);
+    parambixi.addRule(5, 2131365237);
+    parambixi.addRule(7, 2131365237);
+    parambixi.bottomMargin = i;
+    parambixi.topMargin = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131368343));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131692407);
+    Object localObject = new InputFilter.LengthFilter(60);
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localObject });
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams();
+    paramContext.setId(2131364781);
+    ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364781);
+    paramAppRuntime.addView(paramContext, parambixi);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    super.setOnDismissListener(this);
   }
   
-  public static String a(String paramString)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public boolean a(String paramString, int paramInt, Bitmap paramBitmap, Drawable paramDrawable)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
     {
-      localJSONObject.put("message", paramString);
-      paramString = localJSONObject.toString();
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      Log.e("ReportUtils", "[wrapperException] json error", paramString);
-    }
-    return "";
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    a(paramContext, paramInt, paramString, null);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.3.4515", "", "", bdcb.a(paramContext).a, "ReaderShadowPlugin_5", a(paramContext), "2", "/plugin/ReaderHost", String.valueOf(paramInt), paramString1, "", "0", a(paramString2) });
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.3.4515", "", "", bdcb.a(paramContext).a, "5", a(paramContext), "11", "", "", "", "", "", "", paramString, "", "", "", "", "", "", "", "", "", "" });
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.3.4515", "", "", bdcb.a(paramContext).a, "5", a(paramContext), "10", "", "", "", "", paramString1, "", "", "", "", "", "", "", "", "", "", "", paramString2 });
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, String... paramVarArgs)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramVarArgs != null)
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      for (;;)
+      bool1 = bool2;
+      if (arso.a(paramString))
       {
-        str1 = str2;
-        if (i >= j) {
-          break;
+        bool1 = bool2;
+        if (paramInt > 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetButton.setText(afxr.a(paramInt));
+          this.jdField_a_of_type_AndroidWidgetButton.setPadding(bdoo.a(20.0F), 0, Math.min(afxr.a(this.jdField_a_of_type_AndroidContentContext, paramInt, null, null, 0), bdoo.a(200.0F)), 0);
+          if (paramDrawable == null) {
+            break label107;
+          }
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
         }
-        str1 = paramVarArgs[i];
-        str2 = str2 + str1 + "|";
-        i += 1;
       }
     }
-    paramVarArgs = str1;
-    if (str1.length() > 0) {
-      paramVarArgs = str1.substring(0, str1.length() - 1);
-    }
-    Log.d("ReportUtils", "dcId=" + paramString + ";detail=" + paramVarArgs);
-    azlj.a(paramQQAppInterface, paramString, paramVarArgs, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, int paramInt3, String paramString4)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.3.4515", "", "", paramString1, b, bixj.b(), paramString2, paramString3, String.valueOf(paramInt1), String.valueOf(paramFloat), String.valueOf(paramInt2), String.valueOf(paramLong), paramString4, "", "", "", "", "", "", "", "", "", "", String.valueOf(paramInt3) });
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, String paramString4)
-  {
-    a(paramString1, paramString2, paramString3, paramInt1, paramFloat, paramInt2, paramLong, 0, paramString4);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    a(paramString1, paramString2, "52", paramString3, paramString4, paramString5, "", paramString6, "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    a(paramString1, paramString2, "66", paramString3, paramString4, paramString5, "", paramString6, paramString7);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    a("109", Build.VERSION.RELEASE, "mobile qq", "8.3.3", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, "", "", "", paramString8, paramString9, "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    a("109", Build.VERSION.RELEASE, "mobile qq", "8.3.3", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, paramString8, paramString9, paramString10, "", "", "", "");
-  }
-  
-  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22, String paramString23, String paramString24, String paramString25, String paramString26)
-  {
-    String str1;
-    if ("1".equals(paramString18))
+    for (;;)
     {
-      str1 = "1";
-      if (!bivo.a()) {
-        break label254;
-      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = paramInt;
+      bool1 = true;
+      return bool1;
+      label107:
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-    label254:
-    for (String str2 = "1";; str2 = "0")
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
     {
-      a(null, "dc00547", new String[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, str1, paramString18, "0", paramString19, paramString20, paramString21, paramString22, paramString23, paramString24, paramString26, "", "", "", "", "", str2, paramString25 });
+    }
+    for (;;)
+    {
+      super.cancel();
       return;
-      if ("2".equals(paramString18))
-      {
-        str1 = "2";
-        break;
+      if (this.jdField_a_of_type_Bixi != null) {
+        this.jdField_a_of_type_Bixi.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       }
-      str1 = "3";
-      break;
     }
   }
   
-  public static void b(Context paramContext, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.3.3.4515", "", "", bdcb.a(paramContext).a, "", a(paramContext), "2", "/h5/BlankScreen", String.valueOf(paramInt), paramString, "", "0", "" });
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if ((this.jdField_a_of_type_Bdpb != null) && (this.jdField_a_of_type_Bdpb.a() == 2))
+    {
+      this.jdField_a_of_type_Bdpb.e();
+      this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+      return;
+    }
+    if (this.jdField_a_of_type_Bdpb != null) {
+      this.jdField_a_of_type_Bdpb.f();
+    }
+    this.jdField_a_of_type_Bdpb = new bdpb(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bdpb.a(super.getContext());
+    this.jdField_a_of_type_Bdpb.b();
+    this.jdField_a_of_type_Bdpb.a(this);
+    this.jdField_a_of_type_Bdpb.c();
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null, null);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+    if (this.jdField_a_of_type_Bdpb != null) {
+      this.jdField_a_of_type_Bdpb.f();
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      super.dismiss();
+    }
   }
 }
 

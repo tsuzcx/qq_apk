@@ -11,8 +11,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdes;
-import bhoi;
+import bdjb;
+import bhsp;
 import com.tencent.av.VideoConstants;
 import com.tencent.av.app.QuaReportInfo;
 import com.tencent.av.business.handler.NetAddr;
@@ -164,7 +164,7 @@ public class VcControllerImpl
   lnx mEventHandler = null;
   public lns mEventListener;
   lrb mGlStringParser = null;
-  private String mMcc = bdes.a();
+  private String mMcc = bdjb.a();
   private String mMnc = "";
   public lnp mNetChannel;
   lnz mSysInfo;
@@ -208,7 +208,7 @@ public class VcControllerImpl
     this.mSysInfo = new lnz();
     lnz.a();
     mCameraParameters = BaseApplicationImpl.getContext().getSharedPreferences(SPNAME, 0).getString(SPKEY, SPDEFVALUE);
-    paramContext = bhoi.b("62ad83");
+    paramContext = bhsp.b("62ad83");
     if ((!TextUtils.isEmpty(paramContext)) && (paramContext.length() >= 5)) {
       this.mMnc = paramContext.substring(3, 5);
     }

@@ -8,20 +8,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import aphw;
-import aphx;
-import aplm;
-import apmy;
+import apmf;
+import apmg;
+import appv;
+import aprh;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements aplm
+  implements appv
 {
   public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new aphw(this);
+  private ServiceConnection mConnection = new apmf(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new aphx(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new apmg(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    apmy.a().b();
+    aprh.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    apmy.a().d(paramBundle);
+    aprh.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      apmy.a().c(paramBundle);
+      aprh.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

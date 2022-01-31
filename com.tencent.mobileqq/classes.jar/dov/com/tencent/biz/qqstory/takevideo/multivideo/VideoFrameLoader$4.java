@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bmvv;
-import bmvw;
+import bnah;
+import bnai;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,21 +10,21 @@ import java.util.List;
 public class VideoFrameLoader$4
   implements Runnable
 {
-  public VideoFrameLoader$4(bmvv parambmvv) {}
+  public VideoFrameLoader$4(bnah parambnah) {}
   
   public void run()
   {
-    if (bmvv.b(this.this$0) != bmvv.a(this.this$0).size())
+    if (bnah.b(this.this$0) != bnah.a(this.this$0).size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onDecodeError , framecount error!" + bmvv.b(this.this$0) + "-" + bmvv.a(this.this$0).size());
+        QLog.d("VideoFrameLoader", 2, "onDecodeError , framecount error!" + bnah.b(this.this$0) + "-" + bnah.a(this.this$0).size());
       }
-      if ((!bmvv.c(this.this$0)) && (bmvv.a(this.this$0).size() == 0))
+      if ((!bnah.c(this.this$0)) && (bnah.a(this.this$0).size() == 0))
       {
-        bmvv.a(this.this$0, true);
+        bnah.a(this.this$0, true);
         this.this$0.b();
-        bmvv.a(this.this$0, new RetrieverDecodeRunnable(bmvv.a(this.this$0), bmvv.c(this.this$0), bmvv.d(this.this$0), bmvv.b(this.this$0), bmvv.a(this.this$0), bmvv.a(this.this$0), bmvv.b(this.this$0), this.this$0));
-        ThreadManager.post(bmvv.a(this.this$0), 10, null, true);
+        bnah.a(this.this$0, new RetrieverDecodeRunnable(bnah.a(this.this$0), bnah.c(this.this$0), bnah.d(this.this$0), bnah.b(this.this$0), bnah.a(this.this$0), bnah.a(this.this$0), bnah.b(this.this$0), this.this$0));
+        ThreadManager.post(bnah.a(this.this$0), 10, null, true);
         if (QLog.isColorLevel()) {
           QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
         }
@@ -33,10 +33,10 @@ public class VideoFrameLoader$4
     for (;;)
     {
       return;
-      if (bmvv.a(this.this$0) != null) {}
-      for (bmvw localbmvw = (bmvw)bmvv.a(this.this$0).get(); localbmvw != null; localbmvw = null)
+      if (bnah.a(this.this$0) != null) {}
+      for (bnai localbnai = (bnai)bnah.a(this.this$0).get(); localbnai != null; localbnai = null)
       {
-        localbmvw.c();
+        localbnai.c();
         return;
       }
     }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiiy;
-import ailh;
-import bchs;
+import ainn;
+import aipw;
+import bcmb;
 import com.tencent.mobileqq.data.TroopInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,24 +11,24 @@ import java.util.List;
 public class TroopPhotoController$3
   implements Runnable
 {
-  public TroopPhotoController$3(ailh paramailh, aiiy paramaiiy, String paramString) {}
+  public TroopPhotoController$3(aipw paramaipw, ainn paramainn, String paramString) {}
   
   public void run()
   {
     if (!this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin)) {
-      this.this$0.jdField_a_of_type_Bchs.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+      this.this$0.jdField_a_of_type_Bcmb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
     }
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
       TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-      if (localTroopClipPic.ts == this.jdField_a_of_type_Aiiy.a) {
+      if (localTroopClipPic.ts == this.jdField_a_of_type_Ainn.a) {
         this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(localTroopClipPic);
       }
     }
-    this.this$0.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Aiiy);
-    this.this$0.b(this.jdField_a_of_type_Aiiy);
-    ailh.a(this.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Ainn);
+    this.this$0.b(this.jdField_a_of_type_Ainn);
+    aipw.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

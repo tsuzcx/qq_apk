@@ -27,7 +27,7 @@ public class ngm
       QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "follow isSuccess:" + String.valueOf(paramBoolean));
     }
     if (!paramBoolean) {
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
     for (;;)
     {
@@ -50,7 +50,7 @@ public class ngm
         localArrayList.add("find.mp.qq.com");
         localArrayList.add("post.mp.qq.com");
         localArrayList.add("article.mp.qq.com");
-        atda.a("follow", (JSONObject)localObject, localArrayList, null);
+        athj.a("follow", (JSONObject)localObject, localArrayList, null);
         if (!paramBoolean) {
           break label555;
         }
@@ -74,7 +74,7 @@ public class ngm
             if ((TextUtils.isEmpty(this.a.b)) || (TextUtils.isEmpty(this.a.c))) {
               continue;
             }
-            azmj.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
+            azqs.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
             if (!QLog.isColorLevel()) {
               continue;
             }
@@ -91,24 +91,24 @@ public class ngm
         }
         if (paramInt == 58)
         {
-          this.a.d(2131695724);
+          this.a.d(2131695726);
           continue;
         }
         if (paramInt == 65)
         {
-          this.a.d(2131695697);
+          this.a.d(2131695699);
           continue;
         }
         if (paramInt == 20)
         {
-          this.a.d(2131695698);
+          this.a.d(2131695700);
           continue;
         }
-        this.a.d(2131695727);
+        this.a.d(2131695729);
       }
       continue;
       label555:
-      this.a.d(2131695727);
+      this.a.d(2131695729);
     }
   }
 }

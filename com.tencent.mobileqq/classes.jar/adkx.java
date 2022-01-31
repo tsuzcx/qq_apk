@@ -1,89 +1,55 @@
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class adkx
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Activity paramActivity)
-  {
-    b(paramActivity);
-  }
+  public adkx(NotificationActivity paramNotificationActivity) {}
   
-  public static void a(Activity paramActivity, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if ((paramActivity instanceof BaseActivity)) {
-      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
-    }
-    if (bect.a.containsKey("PublicAccountJs")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-    }
-    localIntent.putExtra("fromLocalUrl", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hideRightButton", true);
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131695682));
-    localIntent.putExtra("assignBackText", paramActivity.getString(2131695682));
-    if (TextUtils.isEmpty(paramString)) {
-      localIntent.putExtra("url", swy.b);
-    }
-    for (;;)
+    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    localBundle.putBoolean("is_from_account_another_login_exit", true);
+    if (!awia.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
     {
-      paramActivity.startActivity(localIntent);
-      return;
-      localIntent.putExtra("url", "http://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
+      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
+      this.a.app.getApplication().refreAccountList();
     }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
-  {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if (TextUtils.isEmpty(paramString2)) {
-      if ((paramActivity instanceof BaseActivity)) {
-        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
-      }
-    }
-    for (;;)
+    paramDialogInterface = (badd)this.a.app.getManager(61);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
     {
-      if (!TextUtils.isEmpty(paramString1))
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
       {
-        localIntent.putExtra("leftViewText", paramString1);
-        localIntent.putExtra("assignBackText", paramString1);
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
+        {
+          String str = (String)paramDialogInterface.next();
+          if (!awia.a().a(this.a.app, str))
+          {
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
+          }
+        }
       }
-      if (bect.a.containsKey("PublicAccountJs")) {
-        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-      }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = "http://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
-      }
-      localIntent.putExtra("fromLocalUrl", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("hideRightButton", true);
-      paramActivity.startActivity(localIntent);
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
       return;
-      localIntent.putExtra("uin", paramString2);
     }
-  }
-  
-  private static void b(Activity paramActivity)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", "");
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
-    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkx
  * JD-Core Version:    0.7.0.1
  */

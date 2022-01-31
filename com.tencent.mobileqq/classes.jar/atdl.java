@@ -1,72 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.QQKandianInterface;
 
-public class atdl
-  extends WebViewPlugin
+class atdl
+  implements QQKandianInterface
 {
-  public atdl()
-  {
-    this.mPluginNameSpace = "login";
-  }
+  atdl(atdh paramatdh) {}
   
-  private Activity a()
+  public void jumpToKandianBiu(Bundle paramBundle)
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
-    for (;;)
-    {
-      try
-      {
-        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = paramJsBridgeListener.optString("countryCode");
-        paramString2 = paramJsBridgeListener.optString("uin");
-        paramString3 = paramJsBridgeListener.optString("phone");
-        int j = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
-        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) == 1)
-        {
-          i = 1;
-          if (i != 0)
-          {
-            paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
-            paramJsBridgeListener.putExtra("phone_num", paramString3);
-            paramJsBridgeListener.putExtra("country_code", paramString1);
-            paramJsBridgeListener.putExtra("mobile_type", 0);
-            paramJsBridgeListener.putExtra("from_login", true);
-            paramJsBridgeListener.putExtra("uin", paramString2);
-            paramJsBridgeListener.putExtra("seq", j);
-            startActivityForResult(paramJsBridgeListener, (byte)12);
-            azmj.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, "", "", "", "");
-            return true;
-          }
-          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
-          continue;
-          return false;
-        }
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
-      }
-      int i = 0;
-    }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
+    ateg.a().d(paramBundle);
   }
 }
 

@@ -1,43 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import mqq.util.WeakReference;
 
-class aglk
-  extends ased
+public class aglk
+  extends RecyclerView.ViewHolder
 {
-  aglk(agld paramagld) {}
+  aglf jdField_a_of_type_Aglf;
+  public View a;
+  public FrameLayout a;
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public SquareRelativeLayout a;
+  public NumberCheckBox a;
+  public ImageView b;
   
-  protected void a(boolean paramBoolean, String paramString)
+  public aglk(agli paramagli, View paramView)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBandIntimateRelationship");
-      }
-      this.a.F();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131366599));
+    if (PhotoListPanel.g() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateIntimateRelationship");
-      }
-      this.a.F();
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368520));
+    this.jdField_a_of_type_Aglf = ((PhotoListPanel)paramagli.a.get()).a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131368480));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371847);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368481));
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.jdField_a_of_type_Aglf);
     }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDisbandIntimateRelationship");
-      }
-      this.a.F();
+    if ((((PhotoListPanel)paramagli.a.get()).m) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368589));
+    this.b = ((ImageView)paramView.findViewById(2131368521));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368588));
   }
 }
 

@@ -1,19 +1,40 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.TroopRobotFragment;
+import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ashv
-  implements View.OnLayoutChangeListener
+  extends ameq
 {
-  public ashv(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public ashv(TroopRobotFragment paramTroopRobotFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
     {
-      QQGamePadFaceFragment.a(this.a, true);
-      QQGamePadFaceFragment.a(this.a);
+      TroopRobotFragment.a(this.a, paramLong1);
+      return;
     }
+    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, bcpe parambcpe)
+  {
+    String str = String.valueOf(paramLong);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    {
+      if ((paramBoolean) && (parambcpe != null) && (this.a.getActivity() != null))
+      {
+        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
+        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambcpe));
+        return;
+      }
+      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
+      TroopRobotFragment.a(this.a, paramLong);
+      return;
+    }
+    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
   }
 }
 

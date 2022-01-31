@@ -1,36 +1,50 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
 
 public class xux
-  extends bfvh
+  extends Dialog
 {
-  public xux(QRDisplayActivity paramQRDisplayActivity) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public xux(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.isFinishing())) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      this.a.g();
-      return;
-    }
-    String str = (String)paramHashMap.get("uin");
-    paramHashMap = (String)paramHashMap.get("url");
-    this.a.a(str, 2, paramHashMap);
-    paramHashMap = xxb.a(paramHashMap, -1);
-    if (paramHashMap != null)
-    {
-      this.a.a = paramHashMap;
-      this.a.f();
-      return;
-    }
-    this.a.g();
+    super(paramContext, 2131755015);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561516, null);
+    localView.setOnTouchListener(new xuy(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362574));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367422));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(xsm.a(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new xuz(this, paramContext));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 

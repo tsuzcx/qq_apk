@@ -1,8 +1,52 @@
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
+import java.lang.reflect.Field;
 
-public abstract interface benv
+public class benv
+  extends LinkMovementMethod
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
+  private static Field jdField_a_of_type_JavaLangReflectField;
+  
+  public static MovementMethod a()
+  {
+    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
+      jdField_a_of_type_AndroidTextMethodMovementMethod = new benv();
+    }
+    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getActionMasked() == 1) {}
+    try
+    {
+      if (jdField_a_of_type_JavaLangReflectField == null) {
+        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+      }
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+      if (bool) {
+        return true;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    }
+  }
 }
 
 

@@ -1,52 +1,16 @@
-import android.os.Handler;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaqc
-  implements INetInfoHandler
+class aaqc
+  implements DialogInterface.OnClickListener
 {
-  public aaqc(GdtVideoCommonView paramGdtVideoCommonView) {}
+  aaqc(aaqa paramaaqa) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2None()");
-    GdtVideoCommonView.a(this.a, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
-    GdtVideoCommonView.a(this.a, 2);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    GdtVideoCommonView.a(this.a, 2);
-    if ((this.a.a) && (this.a.a()))
-    {
-      GdtVideoCommonView.d(this.a);
-      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2None()");
-    GdtVideoCommonView.b(this.a, true);
-    GdtVideoCommonView.a(this.a, 0);
+    aase.b("GdtMvViewController", " DialogInterface onClick confirm");
+    aaqa.a(this.a, false);
+    aaqa.b(this.a);
   }
 }
 

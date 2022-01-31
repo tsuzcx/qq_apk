@@ -1,8 +1,18 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.CardContainer;
+
 public class bfdp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a(String paramString1, String paramString2)
+  public bfdp(CardContainer paramCardContainer, ImageView paramImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return String.format("http://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

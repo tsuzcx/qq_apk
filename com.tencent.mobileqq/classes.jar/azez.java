@@ -1,42 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 class azez
-  extends BroadcastReceiver
+  implements azfb
 {
   azez(azey paramazey) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
   {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      paramContext = paramIntent.getStringExtra("event");
-      if (paramContext != null)
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
-          try
-          {
-            paramContext = new JSONObject(paramIntent);
-            paramIntent = paramContext.optString("shortVideoId");
-            boolean bool = paramContext.optBoolean("isPaid");
-            if ((azey.a(this.a) != null) && (azey.a(this.a).h != 1) && (bool) && (azey.a(this.a).c.equals(paramIntent)))
-            {
-              new azfh(this.a).execute(new String[0]);
-              return;
-            }
-          }
-          catch (JSONException paramContext) {}
-        }
-      }
+    if (azey.a(this.a) != null) {
+      azey.a(this.a).a(this.a.a, paramFloat);
     }
   }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
+    if (azey.a(this.a) != null)
+    {
+      azey.a(this.a).a(this.a.a, 1.0F);
+      azey.a(this.a).a(this.a.a, 3);
+    }
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

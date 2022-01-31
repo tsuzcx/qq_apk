@@ -1,9 +1,8 @@
 package com.tencent.biz.qqcircle.activity;
 
-import abqm;
+import abvb;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -17,10 +16,9 @@ import tqc;
 import tqg;
 import tql;
 import tra;
-import trb;
-import tym;
-import typ;
-import xxl;
+import trc;
+import tzy;
+import uab;
 
 public class QCircleFolderActivity
   extends FragmentActivity
@@ -33,50 +31,48 @@ public class QCircleFolderActivity
     if (300001 == paramInt1)
     {
       QLog.d("QCircleFolderActivity", 1, "doOnActivityResult，return from qzone publish page");
-      tym.a().a(36);
+      tzy.a().a(36);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnCreate");
     if (paramBundle != null) {
       paramBundle.remove("android:support:fragments");
     }
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    paramBundle = getResources();
-    if (xxl.a()) {}
-    for (int i = 2131166179;; i = 2131166178)
-    {
-      tra.a(this, paramBundle.getColor(i));
-      getWindow().setSoftInputMode(32);
-      setContentView(2131560546);
-      QCircleBaseTabFragment.b();
-      this.a = new QCircleFolderActivityFragment();
-      getSupportFragmentManager().beginTransaction().add(2131373154, this.a).commit();
-      this.mFlingHandler = new trb(this);
-      if (tym.a().b(0)) {
-        tym.a().a(getActivity().getIntent());
-      }
-      return true;
+    tra.a(this);
+    getWindow().setSoftInputMode(32);
+    setContentView(2131560548);
+    QCircleBaseTabFragment.b();
+    this.a = new QCircleFolderActivityFragment();
+    getSupportFragmentManager().beginTransaction().add(2131373183, this.a).commit();
+    this.mFlingHandler = new trc(this);
+    if (tzy.a().b(0)) {
+      tzy.a().a(getActivity().getIntent());
     }
+    return true;
   }
   
   public void doOnDestroy()
   {
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnDestroy");
     super.doOnDestroy();
-    tym.a().a(0);
+    tzy.a().a(0);
     tql.a();
-    typ.a().a();
-    abqm.a(this);
+    uab.a().a();
+    abvb.a(this);
     VSNetworkHelper.a().a(this);
     tqc.e();
-    tqg.a();
+    tqg.b();
   }
   
   public void doOnNewIntent(Intent paramIntent)
   {
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnNewIntent");
     super.doOnNewIntent(paramIntent);
     if (this.a != null) {
       this.a.onNewIntent(paramIntent);
@@ -85,11 +81,13 @@ public class QCircleFolderActivity
   
   public void doOnResume()
   {
+    boolean bool1 = true;
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnResume");
     super.doOnResume();
     boolean bool2 = getIntent().getBooleanExtra("key_is_publish", false);
     StringBuilder localStringBuilder = new StringBuilder().append("doOnResume isWrite?").append(bool2).append(", mQCircleFragment?");
     if (this.a != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    for (;;)
     {
       QLog.d("QCircleFolderActivity", 4, bool1);
       if ((bool2) && (this.a != null))
@@ -98,11 +96,13 @@ public class QCircleFolderActivity
         getIntent().putExtra("key_is_publish", false);
       }
       return;
+      bool1 = false;
     }
   }
   
   public boolean onBackEvent()
   {
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->onBackEvent");
     if ((this.a != null) && (this.a.onBackEvent())) {
       return true;
     }

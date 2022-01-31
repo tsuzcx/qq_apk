@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ajog;
-import ayyr;
-import azab;
-import azac;
-import bdcs;
+import ajsv;
+import azda;
+import azek;
+import azel;
+import bdhb;
 import java.io.File;
 
 public final class ShortVideoArtResourceMgr$1
@@ -12,8 +12,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = ayyr.b();
-    String str2 = ayyr.a();
+    String str1 = azda.b();
+    String str2 = azda.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,8 +37,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = azab.a((String)localObject2);
-            m = ((azac)localObject3).a();
+            localObject3 = azek.a((String)localObject2);
+            m = ((azel)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -50,7 +50,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((azac)localObject3).b();
+        localObject3 = ((azel)localObject3).b();
       }
     }
     label419:
@@ -81,8 +81,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(ajog.c).exists()) {
-        bdcs.a(ajog.c);
+      if (new File(ajsv.c).exists()) {
+        bdhb.a(ajsv.c);
       }
       return;
     }

@@ -1,18 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
 class aflv
-  extends afpq
+  extends aepm
 {
-  aflv(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  List<ImageView> jdField_a_of_type_JavaUtilList;
+  TextView b;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new affo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  aflv(aflu paramaflu) {}
 }
 
 

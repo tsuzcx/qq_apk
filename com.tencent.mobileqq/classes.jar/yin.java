@@ -1,19 +1,17 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.subscribe.component.base.RefreshHeaderView;
 
 public class yin
-  implements betm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yin(VideoPlayerView paramVideoPlayerView) {}
+  public yin(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
-    {
-      VideoPlayerView.d(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.setState(0);
     }
   }
 }

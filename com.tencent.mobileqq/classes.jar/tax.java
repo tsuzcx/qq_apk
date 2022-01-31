@@ -20,7 +20,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.ArrayList;
 
 public class tax
-  extends ydh
+  extends yhq
   implements View.OnClickListener
 {
   public final int a;
@@ -177,17 +177,17 @@ public class tax
   private void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562400, null, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562418, null, false);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375109));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375160));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375113));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375110));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375112));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375111));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375107));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375106));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375114));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375164));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375161));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375163));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375162));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375158));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375157));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375165));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -269,8 +269,8 @@ public class tax
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url))
     {
-      paramContext = getContext().getResources().getDrawable(2130841377);
-      a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, paramContext, paramContext, alpo.a(2131713827));
+      paramContext = getContext().getResources().getDrawable(2130841378);
+      a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, paramContext, paramContext, alud.a(2131713839));
       return;
     }
     d();
@@ -323,14 +323,14 @@ public class tax
       return;
       switch (paramView.getId())
       {
-      case 2131375108: 
+      case 2131375159: 
       default: 
         return;
-      case 2131375106: 
+      case 2131375157: 
         tlo.a("weishi-813", "点击了红包 提现");
         a(1);
         return;
-      case 2131375107: 
+      case 2131375158: 
         d();
       }
     } while (this.jdField_a_of_type_UserGrowthStPopWindowsConfig == null);

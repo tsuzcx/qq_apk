@@ -1,28 +1,46 @@
-import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
 public class awat
+  extends ayyb
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
+  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public awat()
+  public awat(OlympicToolAppInterface paramOlympicToolAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("OlympicToolService", 2, "new OlympicToolService");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  @NonNull
-  public String toString()
+  public AppInterface a()
   {
-    return "MusicStatus[needConvert:" + this.jdField_a_of_type_Boolean + ", , songId:" + this.jdField_a_of_type_JavaLangString + ", songName:" + this.jdField_b_of_type_JavaLangString + ", songType:" + this.jdField_a_of_type_Int + ", singerName:" + this.jdField_c_of_type_JavaLangString + ", remainTime:" + this.jdField_b_of_type_Int + ", sourceType:" + this.jdField_c_of_type_Int + ", pauseFlag:" + this.jdField_b_of_type_Boolean + ", duration:" + this.d;
+    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, awau.class);
   }
 }
 

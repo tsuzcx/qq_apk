@@ -160,7 +160,7 @@ public class qok
   
   public static String a(Context paramContext)
   {
-    return Aladdin.getConfig(277).getString("ugc_topic_create_text", paramContext.getResources().getString(2131718797));
+    return Aladdin.getConfig(277).getString("ugc_topic_create_text", paramContext.getResources().getString(2131718809));
   }
   
   @NotNull
@@ -179,7 +179,7 @@ public class qok
       }
       paramContext = str;
     } while (!str.isEmpty());
-    return a(paramInt, bjxj.k(paramQQAppInterface));
+    return a(paramInt, bkbq.k(paramQQAppInterface));
   }
   
   @NotNull
@@ -325,7 +325,7 @@ public class qok
   
   public static void a(@NotNull Context paramContext, long paramLong, @NotNull qoo paramqoo, @Nullable DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    paramContext = bdcd.a(paramContext, 230).setMessage(paramContext.getResources().getString(2131719062, new Object[] { a(paramLong) })).setNegativeButton(paramContext.getResources().getString(2131718793), new qom(paramqoo)).setPositiveButton(paramContext.getResources().getString(2131718956), new qol(paramqoo));
+    paramContext = bdgm.a(paramContext, 230).setMessage(paramContext.getResources().getString(2131719074, new Object[] { a(paramLong) })).setNegativeButton(paramContext.getResources().getString(2131718805), new qom(paramqoo)).setPositiveButton(paramContext.getResources().getString(2131718968), new qol(paramqoo));
     if (paramOnDismissListener != null) {
       paramContext.setOnDismissListener(new qon(paramOnDismissListener));
     }
@@ -360,7 +360,7 @@ public class qok
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return (bjxj.s(paramQQAppInterface) != 0) || (a()) || (b());
+    return (bkbq.s(paramQQAppInterface) != 0) || (a()) || (b());
   }
   
   public static int b()
@@ -391,7 +391,7 @@ public class qok
   
   public static String b(Context paramContext)
   {
-    return Aladdin.getConfig(277).getString("ugc_video_create_text", paramContext.getResources().getString(2131718968));
+    return Aladdin.getConfig(277).getString("ugc_video_create_text", paramContext.getResources().getString(2131718980));
   }
   
   public static boolean b()

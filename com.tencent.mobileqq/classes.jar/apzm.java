@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
 
 public class apzm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public apzm(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public apzm(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.getActivity().finish();
   }
 }
 

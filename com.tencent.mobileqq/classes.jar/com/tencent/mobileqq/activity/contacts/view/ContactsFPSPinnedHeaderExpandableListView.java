@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import akdd;
+import akhs;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,8 +37,8 @@ public class ContactsFPSPinnedHeaderExpandableListView
   public void setChildViewCanAction(boolean paramBoolean)
   {
     ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof akdd)) {
-      ((akdd)localExpandableListAdapter).b(paramBoolean);
+    if ((localExpandableListAdapter instanceof akhs)) {
+      ((akhs)localExpandableListAdapter).b(paramBoolean);
     }
     this.a = paramBoolean;
   }

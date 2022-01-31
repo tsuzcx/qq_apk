@@ -3,7 +3,7 @@ import com.tencent.av.camera.CameraUtils;
 import com.tencent.av.ui.AVActivity;
 
 public class mdn
-  implements bhqd
+  implements bhuk
 {
   public mdn(AVActivity paramAVActivity) {}
   

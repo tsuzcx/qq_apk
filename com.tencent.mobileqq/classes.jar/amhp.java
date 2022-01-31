@@ -1,29 +1,15 @@
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
 import java.util.Comparator;
 
 public class amhp
-  implements Comparator<amhq>
+  implements Comparator<File>
 {
-  private int a;
+  public amhp(CleanCache.1 param1) {}
   
-  public amhp(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a = paramInt;
-  }
-  
-  public int a(amhq paramamhq1, amhq paramamhq2)
-  {
-    if (this.a == 2) {
-      if (paramamhq1.b <= paramamhq2.b) {}
-    }
-    while (paramamhq1.a > paramamhq2.a)
-    {
-      return -1;
-      if (paramamhq1.b < paramamhq2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramamhq1.a < paramamhq2.a) {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
       return 1;
     }
     return 0;

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afij;
-import afil;
+import afmy;
+import afna;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GivingHeartItemBuilder$10
   implements Runnable
 {
-  public GivingHeartItemBuilder$10(afij paramafij, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public GivingHeartItemBuilder$10(afmy paramafmy, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -25,9 +25,9 @@ public class GivingHeartItemBuilder$10
       QLog.d("GivingHeart", 2, "start to shake");
     }
     if (this.jdField_a_of_type_Boolean) {}
-    for (AnimationSet localAnimationSet = afij.a(this.this$0, this.b);; localAnimationSet = afij.a(this.this$0.a, this.b))
+    for (AnimationSet localAnimationSet = afmy.a(this.this$0, this.b);; localAnimationSet = afmy.a(this.this$0.a, this.b))
     {
-      localAnimationSet.setAnimationListener(new afil(this));
+      localAnimationSet.setAnimationListener(new afna(this));
       if (localView == null) {
         break;
       }

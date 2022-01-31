@@ -1,34 +1,22 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
+
 public class bllb
-  extends bllc
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
+  public bllb(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
   
-  public bllb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt;
-    this.f = paramString6;
+    this.a.a();
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public String a()
-  {
-    return this.b;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

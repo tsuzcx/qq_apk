@@ -1,82 +1,145 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-public class aomd
-  extends aofy<blus>
+class aomd
 {
-  public int a()
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<aomf> jdField_a_of_type_JavaUtilArrayList;
+  
+  public aomd(String paramString)
   {
-    return 307;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramString);
   }
   
-  @NonNull
-  public blus a(int paramInt)
+  public Object a(Map<String, Object> paramMap)
   {
-    return new blus();
-  }
-  
-  @Nullable
-  public blus a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
+    Object localObject;
+    if (paramMap == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
       return null;
     }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onParsed, content:" + paramArrayOfaogf);
-    }
-    return new blup().a(paramArrayOfaogf, bnkz.a.getAbsolutePath(), "temp_faceu_zip", new aome(this));
-  }
-  
-  public Class<blus> a()
-  {
-    return blus.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onReqFailed");
-    }
-  }
-  
-  public void a(blus paramblus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!bnkz.a()) {
-      return 0;
-    }
-    return bdiv.E(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!bnkz.a())
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
     {
-      QLog.i("QIMTemplateConfigProcessor", 1, "config file not exist");
-      aogj.a().a(307, 0);
-      return 0;
+      localObject = paramMap;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramMap = ((aomf)localIterator.next()).a(paramMap);
     }
-    return super.b(paramInt);
   }
   
-  public boolean b()
+  public ArrayList<aomf> a(String paramString)
   {
-    return false;
+    ArrayList localArrayList = b(paramString);
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    if (!((String)localArrayList.get(0)).equals("$")) {
+      return null;
+    }
+    paramString = new ArrayList();
+    int i = 1;
+    for (;;)
+    {
+      try
+      {
+        if (i < localArrayList.size())
+        {
+          str1 = (String)localArrayList.get(i);
+          if (TextUtils.isEmpty(str1)) {
+            return null;
+          }
+          if (str1.charAt(0) == '.')
+          {
+            paramString.add(new aomg(str1.substring(1)));
+          }
+          else
+          {
+            String str2 = aomh.a().b(str1);
+            if (!TextUtils.isEmpty(str2)) {
+              paramString.add(new aomg(str2));
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "parsePattern error:" + localException.getMessage());
+      }
+      return paramString;
+      String str1 = aomh.a().a(str1);
+      if (!TextUtils.isEmpty(str1)) {
+        paramString.add(new aome(Integer.parseInt(str1)));
+      } else {
+        return null;
+      }
+      i += 1;
+    }
   }
   
-  public boolean c()
+  public ArrayList<String> b(String paramString)
   {
-    return true;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new StringBuilder();
+    int i = 0;
+    int j = 0;
+    if (j < paramString.length())
+    {
+      char c = paramString.charAt(j);
+      Object localObject2;
+      if (i == 0) {
+        if (c != '.')
+        {
+          localObject2 = localObject1;
+          if (c != '[') {}
+        }
+        else
+        {
+          if (((StringBuilder)localObject1).length() == 0) {
+            return null;
+          }
+          localArrayList.add(((StringBuilder)localObject1).toString());
+          localObject2 = new StringBuilder();
+          if (c != '[') {
+            break label126;
+          }
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        ((StringBuilder)localObject2).append(c);
+        j += 1;
+        localObject1 = localObject2;
+        break;
+        label126:
+        i = 0;
+        continue;
+        localObject2 = localObject1;
+        if (c == ']')
+        {
+          i = 0;
+          localObject2 = localObject1;
+        }
+      }
+    }
+    if (((StringBuilder)localObject1).length() == 0) {
+      return null;
+    }
+    localArrayList.add(((StringBuilder)localObject1).toString());
+    return localArrayList;
   }
 }
 

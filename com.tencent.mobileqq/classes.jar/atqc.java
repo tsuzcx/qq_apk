@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class atqc
-  implements View.OnClickListener
+public abstract interface atqc
 {
-  atqc(atpy paramatpy, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-    this.jdField_a_of_type_Atpy.b();
-  }
+  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
 }
 
 

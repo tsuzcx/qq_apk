@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bdee;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -38,7 +38,7 @@ public class NetworkJsPlugin
   {
     if (this.jsPluginEngine.getServiceRuntime() != null)
     {
-      switch (bdee.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
+      switch (bdin.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
       {
       default: 
         return "unknown";

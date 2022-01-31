@@ -1,9 +1,33 @@
-import com.tencent.mobileqq.app.utils.NumberWheelView;
-import com.tencent.widget.VerticalGallery;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+import java.util.List;
 
-public abstract interface ammu
+public class ammu
+  implements Comparator<String>
 {
-  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
+  private ammu(MsgLruCache paramMsgLruCache) {}
+  
+  public int a(String paramString1, String paramString2)
+  {
+    paramString1 = this.a.getOriginal(paramString1);
+    paramString2 = this.a.getOriginal(paramString2);
+    if ((paramString1 == null) || (paramString1.isEmpty())) {
+      return 1;
+    }
+    if ((paramString2 == null) || (paramString2.isEmpty())) {
+      return -1;
+    }
+    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
+    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
+    if (l1 > l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
+  }
 }
 
 

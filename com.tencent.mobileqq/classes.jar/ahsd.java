@@ -1,17 +1,46 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahsd
-  extends RecyclerView.ViewHolder
+public abstract class ahsd
+  implements ahsq
 {
-  TextView a;
+  protected Activity a;
   
-  ahsd(View paramView)
+  public ahsd(Activity paramActivity)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131379104));
+    this.a = paramActivity;
   }
+  
+  public Activity a()
+  {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      FrameHelperActivity.c(paramBoolean);
+      return;
+    }
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

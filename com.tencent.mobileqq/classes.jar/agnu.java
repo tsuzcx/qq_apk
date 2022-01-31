@@ -1,53 +1,34 @@
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.qidian.data.BmqqAccountType;
 
 class agnu
-  implements Observer
+  extends alpq
 {
-  agnu(agnp paramagnp) {}
+  agnu(agnn paramagnn) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
   {
-    if ((paramObject instanceof avpz))
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    agnn.a(this.a);
+    this.a.br();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bfyh.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!agnn.a(this.a)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
-      }
-      paramObservable = ((avpz)paramObject).a.getSystemMsg();
-      if (paramObservable != null) {
-        break label42;
-      }
+      agnn.a(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
     }
-    label42:
-    do
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
+      agnn.b(this.a);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObservable.msg.sub_type.get() != 9);
-        paramObservable = String.valueOf(paramObservable.req_uin.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + agnp.a(this.a));
-        }
-      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-      if (!agnp.a(this.a))
-      {
-        agnp.a(this.a, true);
-        athk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ndv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    }
   }
 }
 

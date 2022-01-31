@@ -1,11 +1,23 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class afrr
-  extends aekx
+final class afrr
+  implements afug
 {
-  TextView b;
-  
-  afrr(afrq paramafrq) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (((MessageForPic)paramChatMessage).isMixed) {
+      return 24;
+    }
+    if (alul.a(paramChatMessage)) {
+      return 42;
+    }
+    if (alse.a(paramChatMessage)) {
+      return 66;
+    }
+    return 1;
+  }
 }
 
 

@@ -1,44 +1,18 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
+
 public final class blyy
+  implements Parcelable.Creator<TextParcelData>
 {
-  public static final blyy a;
-  public static final blyy b = new blyy(1);
-  public static final blyy c = new blyy(2);
-  public static final blyy d = new blyy(3);
-  public static final blyy e = new blyy(4);
-  public static final blyy f = new blyy(5);
-  public static final blyy g = new blyy(6);
-  public final int a;
-  
-  static
+  public TextParcelData a(Parcel paramParcel)
   {
-    jdField_a_of_type_Blyy = new blyy(0);
+    return new TextParcelData(paramParcel);
   }
   
-  public blyy(int paramInt)
+  public TextParcelData[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static blyy a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return g;
-    case 0: 
-      return jdField_a_of_type_Blyy;
-    case 1: 
-      return b;
-    case 2: 
-      return c;
-    case 3: 
-      return d;
-    case 4: 
-      return e;
-    case 5: 
-      return f;
-    }
-    return g;
+    return new TextParcelData[paramInt];
   }
 }
 

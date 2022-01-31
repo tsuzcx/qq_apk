@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import atpv;
+import atue;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class LocationShareController$4
@@ -10,7 +10,7 @@ public final class LocationShareController$4
   
   public void run()
   {
-    atpv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    atue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

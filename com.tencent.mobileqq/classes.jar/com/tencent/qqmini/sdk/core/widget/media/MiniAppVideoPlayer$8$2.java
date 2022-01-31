@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.widget.media;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
-import bgox;
+import bgte;
 
 public class MiniAppVideoPlayer$8$2
   implements Runnable
 {
-  public MiniAppVideoPlayer$8$2(bgox parambgox) {}
+  public MiniAppVideoPlayer$8$2(bgte parambgte) {}
   
   public void run()
   {

@@ -1,151 +1,21 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-class ayut
-  implements BusinessObserver
+public final class ayut
+  implements Comparator<ayoy>
 {
-  ayut(ayup paramayup, long paramLong, String paramString, Context paramContext, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a(ayoy paramayoy1, ayoy paramayoy2)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AppLaucherHelper", 2, "t=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 2, "onReceive");
+    int j = Long.signum(paramayoy2.b() - paramayoy1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramayoy2.a() - paramayoy1.a());
     }
-    new Bundle();
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    if (paramBoolean)
-    {
-      Object localObject2 = paramBundle.getByteArray("data");
-      try
-      {
-        paramBundle = new FastAuthorize.AuthorizeResponse();
-        paramBundle.mergeFrom((byte[])localObject2);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 2, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
-        }
-        this.jdField_a_of_type_Ayup.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-        this.jdField_a_of_type_Ayup.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
-        if ((!paramBundle.ret.get().equals("0")) || (!paramBundle.apk_name.has())) {
-          break label1163;
-        }
-        if (paramBundle.access_token.has())
-        {
-          localObject2 = paramBundle.access_token.get();
-          this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.pay_token.has())
-        {
-          localObject2 = paramBundle.pay_token.get();
-          this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.openid.has())
-        {
-          localObject2 = paramBundle.openid.get();
-          this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject2);
-        }
-        for (;;)
-        {
-          if (paramBundle.pfkey.has())
-          {
-            localObject2 = paramBundle.pfkey.get();
-            this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject2);
-          }
-          if (paramBundle.encrykey.has())
-          {
-            localObject2 = paramBundle.encrykey.get();
-            this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 2, "mParams=" + this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString);
-          }
-          paramBundle = paramBundle.apk_name.get();
-          if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.contains(this.jdField_a_of_type_JavaLangString))) {
-            break;
-          }
-          ayup.jdField_a_of_type_Boolean = false;
-          QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
-          return;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 1, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
-        }
-        localObject1 = paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-      {
-        paramBundle = (Bundle)localObject1;
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException1.getMessage());
-          localObject1 = paramBundle;
-        }
-        for (;;)
-        {
-          paramBundle = ayup.a(this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-          }
-          bfij.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
-          ayup.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent == null) {
-            return;
-          }
-          this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-          this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent = null;
-          return;
-          try
-          {
-            QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 4, "pkg=" + paramBundle);
-            localObject1 = paramBundle;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
-        }
-      }
-      label1163:
-      QLog.d(this.jdField_a_of_type_Ayup.getClass().getSimpleName(), 4, "start without login state");
+    j = i;
+    if (i == 0) {
+      j = PublicAccountSearchEngine.a(paramayoy1, paramayoy2);
     }
-    for (;;)
-    {
-      break;
-      QLog.e("AppLaucherHelper", 1, "FastAuthorize.AuthorizeRequest failed");
-    }
+    return j;
   }
 }
 

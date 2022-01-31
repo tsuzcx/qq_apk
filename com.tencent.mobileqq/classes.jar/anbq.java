@@ -1,39 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class anbq
-  extends Handler
+public class anbq
 {
-  public anbq(anbp paramanbp, Looper paramLooper)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public anbq()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      anbp.a(this.a);
-      return;
-      if (anbp.a(this.a))
-      {
-        anbp.a(this.a, false);
-        anak.a();
-      }
-      try
-      {
-        anbp.b(this.a);
-        return;
-      }
-      catch (Throwable paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
+    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

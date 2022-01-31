@@ -1,33 +1,75 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.support.annotation.Nullable;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import org.jetbrains.annotations.NotNull;
 
 public class atpo
-  implements Animator.AnimatorListener
 {
-  public atpo(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public atpo(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    PoiSlideBottomPanel.c(this.a, false);
-    if (PoiSlideBottomPanel.e(this.a) != null) {
-      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LatLng a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    if (paramLatLng != null) {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    }
+    if (paramDouble != null) {
+      this.jdField_a_of_type_Double = paramDouble.doubleValue();
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean equals(@Nullable Object paramObject)
   {
-    PoiSlideBottomPanel.b(this.a, false);
-    if (PoiSlideBottomPanel.c(this.a) != null) {
-      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
+    if ((paramObject instanceof atpo))
+    {
+      paramObject = (atpo)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
     }
+    return super.equals(paramObject);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  @NotNull
+  public String toString()
   {
-    PoiSlideBottomPanel.a(this.a, true);
+    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 

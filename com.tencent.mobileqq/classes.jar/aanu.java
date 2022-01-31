@@ -1,21 +1,30 @@
 import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
 public class aanu
+  implements View.OnClickListener
 {
-  public Ad a;
-  public landing_page_collect_data.LandingPageCollectData a;
+  public aanu(GdtBannerAd paramGdtBannerAd, aany paramaany) {}
   
-  public aanu()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentAdTangramAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getTraceId())) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData != null) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.has());
+    aase.b("GdtBannerAd", "onClick");
+    aany localaany = this.jdField_a_of_type_Aany;
+    paramView = aany.a.onClick(paramView);
+    if (!TextUtils.isEmpty(paramView))
+    {
+      GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
+      aase.b("GdtBannerAd", "onclick:" + GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
+    }
+    GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+    GdtHandler.a(GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+    GdtBannerAd.access$100(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
   }
 }
 

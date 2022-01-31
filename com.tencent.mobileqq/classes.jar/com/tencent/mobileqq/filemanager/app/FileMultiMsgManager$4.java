@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqnw;
-import aqos;
+import aqsf;
+import aqtb;
 import java.util.HashMap;
 
 public class FileMultiMsgManager$4
@@ -9,14 +9,14 @@ public class FileMultiMsgManager$4
 {
   public void run()
   {
-    aqos localaqos = null;
-    if (aqnw.a(this.this$0).containsKey(Long.valueOf(this.a))) {
-      localaqos = (aqos)aqnw.a(this.this$0).get(Long.valueOf(this.a));
+    aqtb localaqtb = null;
+    if (aqsf.a(this.this$0).containsKey(Long.valueOf(this.a))) {
+      localaqtb = (aqtb)aqsf.a(this.this$0).get(Long.valueOf(this.a));
     }
-    if (localaqos != null)
+    if (localaqtb != null)
     {
-      localaqos.b();
-      localaqos.d();
+      localaqtb.b();
+      localaqtb.d();
     }
   }
 }

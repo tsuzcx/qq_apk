@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bang;
+import barp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(bang parambang) {}
+  public C2CPicUploadProcessor$1(barp parambarp) {}
   
   public void run()
   {

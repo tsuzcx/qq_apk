@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
-class adlc
-  implements View.OnLongClickListener
+public class adlc
+  implements DialogInterface.OnClickListener
 {
-  adlc(adlb paramadlb, long paramLong) {}
+  public adlc(NotifyPCActiveActivity paramNotifyPCActiveActivity, alpk paramalpk) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdcd.a(this.jdField_a_of_type_Adlb.a, 230).setTitle(this.jdField_a_of_type_Adlb.a.getString(2131720519)).setItems(2130968611, new adld(this)).show();
-    return true;
+    this.jdField_a_of_type_Alpk.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 

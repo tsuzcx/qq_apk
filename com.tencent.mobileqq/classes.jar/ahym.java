@@ -1,17 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class ahym
-  implements View.OnClickListener
+  implements ahyj
 {
-  public ahym(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ahym(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void onClick(View paramView)
+  public boolean a(TencentDocItem paramTencentDocItem)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
+    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
   }
 }
 

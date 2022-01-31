@@ -1,20 +1,8 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
-
 public class atph
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public atph(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
-  
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bdkf;
+import bdoo;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
@@ -66,9 +66,9 @@ public abstract class BaseToolbar
     localButton.setSingleLine();
     localButton.setContentDescription(parammej.jdField_a_of_type_JavaLangString);
     localButton.setBackgroundDrawable(null);
-    localButton.setCompoundDrawablePadding(aekt.a(5.0F, localResources));
+    localButton.setCompoundDrawablePadding(aepi.a(5.0F, localResources));
     localButton.setText(parammej.jdField_a_of_type_JavaLangString);
-    localButton.setTextSize(bdkf.e(aekt.a(12.0F, localResources)));
+    localButton.setTextSize(bdoo.e(aepi.a(12.0F, localResources)));
     paramLinearLayout.addView(localButton);
     return localButton;
   }
@@ -263,9 +263,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131377361, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131377415, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131377361, null);
+      this.mEffectBtn.setTag(2131377415, null);
     }
   }
   

@@ -1,371 +1,117 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
+@Deprecated
 public class atgt
-  implements atgl
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private atgx jdField_a_of_type_Atgx = new atgw(null);
-  private athc jdField_a_of_type_Athc;
-  private athd jdField_a_of_type_Athd;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FPSXListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
-  private List<aovj> jdField_a_of_type_JavaUtilList;
-  private float b;
+  HashMap<String, atgv> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  myl jdField_a_of_type_Myl;
   
-  private void a(View paramView)
+  public void a(atgv paramatgv, String paramString)
   {
-    Object localObject1 = ThemeUtil.getCurrentThemeId();
-    int i;
-    Object localObject2;
-    if (("1000".equals(localObject1)) || ("2105".equals(localObject1)) || ("2101".equals(localObject1)) || ("1103".equals(localObject1)) || ("2920".equals(localObject1)) || (azib.a((String)localObject1)))
-    {
-      i = 1;
-      if (i == 0) {
-        break label177;
-      }
-      localObject1 = paramView.findViewById(2131369312);
-      bdkf.a((View)localObject1, null);
-      localObject2 = (LebaRoundLayout)((View)localObject1).findViewById(2131376018);
-      ((LebaRoundLayout)localObject2).jdField_a_of_type_Int = bdkf.b(16.0F);
-      ((LebaRoundLayout)localObject2).setVisibility(0);
-      localObject2 = ((View)localObject1).findViewById(2131376019);
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label167;
-      }
-      ((View)localObject2).setBackgroundResource(2130849567);
-      label128:
-      bdkf.a(((View)localObject1).findViewById(2131365849), null);
-    }
-    for (;;)
-    {
-      paramView.findViewById(2131377345).setVisibility(0);
-      ((FrameLayout)paramView.findViewById(2131366419)).setVisibility(0);
-      return;
-      i = 0;
-      break;
-      label167:
-      ((View)localObject2).setBackgroundResource(2130849573);
-      break label128;
-      label177:
-      localObject1 = paramView.findViewById(2131369312);
-      ((View)localObject1).setBackgroundResource(2130849660);
-      localObject2 = (LebaRoundLayout)((View)localObject1).findViewById(2131376018);
-      ((LebaRoundLayout)localObject2).jdField_a_of_type_Int = bdkf.b(16.0F);
-      ((LebaRoundLayout)localObject2).setVisibility(8);
-      ((View)localObject1).findViewById(2131365849).setBackgroundResource(2130849671);
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramatgv);
   }
   
-  private void b(View paramView)
+  public void a(String paramString)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131374583);
-    bdkf.a(paramView, null);
-    paramView.setPadding(0, 0, 0, 0);
-    Object localObject = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = bdkf.a(16.0F);
-    ((LinearLayout.LayoutParams)localObject).rightMargin = bdkf.a(16.0F);
-    if (this.jdField_a_of_type_Int == 1)
+    if (paramString == null)
     {
-      ((LinearLayout.LayoutParams)localObject).height = bdkf.a(72.0F);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (LebaRoundLayout)paramView.findViewById(2131376016);
-      ((LebaRoundLayout)localObject).jdField_a_of_type_Int = bdkf.b(16.0F);
-      ((LebaRoundLayout)localObject).setVisibility(0);
-      localObject = paramView.findViewById(2131376011);
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label289;
-      }
-      ((View)localObject).setBackgroundResource(2130840283);
-    }
-    for (;;)
-    {
-      localObject = (ImageView)paramView.findViewById(2131369376);
-      ((ImageView)localObject).setImageResource(2130844862);
-      localObject = (RelativeLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).width = bdkf.b(32.0F);
-      ((RelativeLayout.LayoutParams)localObject).height = bdkf.b(32.0F);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = bdkf.a(12.0F);
-      localObject = (RelativeLayout)paramView.findViewById(2131375829);
-      ((RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams()).width = bdkf.a(19.0F);
-      localObject = (RelativeLayout.LayoutParams)((ImageView)((RelativeLayout)localObject).findViewById(2131362824)).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).width = bdkf.a(9.0F);
-      ((RelativeLayout.LayoutParams)localObject).height = bdkf.a(15.0F);
-      ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131369377)).getLayoutParams()).leftMargin = bdkf.a(8.0F);
-      ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131374789)).getLayoutParams()).leftMargin = bdkf.a(4.0F);
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
       return;
-      ((LinearLayout.LayoutParams)localObject).height = bdkf.a(56.0F);
-      break;
-      label289:
-      ((View)localObject).setBackgroundResource(2130839216);
     }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
   }
   
-  private void c(View paramView)
+  public void a(String paramString1, String paramString2, List<String> paramList, atgu paramatgu)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131373588);
-    bdkf.a(paramView, null);
-    paramView.setPadding(0, 0, 0, 0);
-    Object localObject = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = bdkf.a(16.0F);
-    ((LinearLayout.LayoutParams)localObject).rightMargin = bdkf.a(16.0F);
-    ((LinearLayout.LayoutParams)localObject).topMargin = bdkf.a(12.0F);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ((LinearLayout.LayoutParams)localObject).height = bdkf.a(72.0F);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (LebaRoundLayout)paramView.findViewById(2131376016);
-      ((LebaRoundLayout)localObject).jdField_a_of_type_Int = bdkf.b(16.0F);
-      ((LebaRoundLayout)localObject).setVisibility(0);
-      localObject = paramView.findViewById(2131376011);
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label298;
-      }
-      ((View)localObject).setBackgroundResource(2130840283);
-    }
+    int j = paramList.size();
+    int i = 0;
     for (;;)
     {
-      localObject = (ImageView)paramView.findViewById(2131369376);
-      ((ImageView)localObject).setImageResource(2130844852);
-      localObject = (RelativeLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).width = bdkf.b(32.0F);
-      ((RelativeLayout.LayoutParams)localObject).height = bdkf.b(32.0F);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = bdkf.a(12.0F);
-      localObject = (RelativeLayout)paramView.findViewById(2131375829);
-      ((RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams()).width = bdkf.a(19.0F);
-      localObject = (RelativeLayout.LayoutParams)((ImageView)((RelativeLayout)localObject).findViewById(2131362824)).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).width = bdkf.a(9.0F);
-      ((RelativeLayout.LayoutParams)localObject).height = bdkf.a(15.0F);
-      ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131373594)).getLayoutParams()).leftMargin = bdkf.a(8.0F);
-      ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131373596)).getLayoutParams()).leftMargin = bdkf.a(4.0F);
-      return;
-      ((LinearLayout.LayoutParams)localObject).height = bdkf.a(56.0F);
-      break;
-      label298:
-      ((View)localObject).setBackgroundResource(2130839216);
-    }
-  }
-  
-  private void e()
-  {
-    for (;;)
-    {
-      try
-      {
-        aojq localaojq = (aojq)aogj.a().a(614);
-        if (localaojq == null)
+      if (i < j) {
+        try
         {
-          QLog.i("Q.lebatab.LebaTabletController", 1, "configBean == null");
-          return;
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
         }
-        if (localaojq.jdField_a_of_type_Int == 1)
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
-          i = 1;
-          QLog.i("Q.lebatab.LebaTabletController", 1, "loadQzoneStyle " + i);
-          if (i == this.jdField_a_of_type_Int) {
-            break;
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
+            }
           }
-          this.jdField_a_of_type_Int = i;
-          if (this.jdField_a_of_type_AndroidViewView == null) {
-            break;
-          }
-          b(this.jdField_a_of_type_AndroidViewView);
-          c(this.jdField_a_of_type_AndroidViewView);
-          return;
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "loadQzoneStyle", localException);
-        return;
-      }
-      int i = 0;
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Atgx != null) {
-      return this.jdField_a_of_type_Atgx.a();
-    }
-    return -1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Athc != null) {
-      this.jdField_a_of_type_Athc.c();
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_Float = (-this.jdField_a_of_type_AndroidViewView.getY());
-      this.b = this.jdField_a_of_type_Float;
-    }
-    e();
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Athd != null) {
-      this.jdField_a_of_type_Athd.a(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, this.jdField_a_of_type_AndroidViewView, paramInt1, this.jdField_a_of_type_Int, paramBoolean, paramInt2);
-    }
-    if (this.jdField_a_of_type_Athc != null) {
-      this.jdField_a_of_type_Athc.b();
-    }
-    if (this.jdField_a_of_type_Atgx != null) {
-      this.jdField_a_of_type_Atgx.a();
-    }
-  }
-  
-  public void a(atgn paramatgn)
-  {
-    QLog.i("Q.lebatab.LebaTabletController", 1, "init table");
-    List localList = paramatgn.jdField_a_of_type_JavaUtilList;
-    FPSXListView localFPSXListView = paramatgn.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
-    View localView = paramatgn.jdField_a_of_type_AndroidViewView;
-    atgp localatgp = paramatgn.jdField_a_of_type_Atgp;
-    Context localContext = paramatgn.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramatgn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = localList;
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView = localFPSXListView;
-    this.jdField_a_of_type_AndroidViewView = localView;
-    if (localFPSXListView == null)
-    {
-      QLog.i("Q.lebatab.LebaTabletController", 1, "initView lebaSV == null ");
-      return;
-    }
-    try
-    {
-      if (localFPSXListView.getOverscrollHeader() != null) {
-        localFPSXListView.setOverscrollHeader(null);
-      }
-      e();
-      if (localView != null) {}
-      try
-      {
-        if (localFPSXListView.getHeaderViewsCount() <= 0) {
-          localFPSXListView.addHeaderView(localView);
-        }
-        a(localView);
-        b(localView);
-        c(localView);
-      }
-      catch (Exception paramatgn)
-      {
-        for (;;)
+        catch (Exception localException)
         {
-          label157:
-          QLog.i("Q.lebatab.LebaTabletController", 1, "addHeaderView", paramatgn);
+          for (;;)
+          {
+            localException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
+            }
+          }
         }
       }
-      try
-      {
-        paramatgn = localFPSXListView.getAdapter();
-        if ((paramatgn == null) || (!(paramatgn instanceof atgv))) {
-          localFPSXListView.setAdapter(new atgv());
-        }
-      }
-      catch (Exception paramatgn)
-      {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "setAdapter", paramatgn);
-        break label157;
-      }
-      if (this.jdField_a_of_type_Athd == null) {
-        this.jdField_a_of_type_Athd = new athd(localContext);
-      }
-      if ((this.jdField_a_of_type_Athd.jdField_a_of_type_AndroidWidgetLinearLayout == null) && (localView != null)) {
-        this.jdField_a_of_type_Athd.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131377345));
-      }
-      this.jdField_a_of_type_Athd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      this.jdField_a_of_type_Athd.jdField_a_of_type_Atgx = this.jdField_a_of_type_Atgx;
-      this.jdField_a_of_type_Athd.jdField_a_of_type_Atgp = localatgp;
-      this.jdField_a_of_type_Athd.a(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Athc == null) {
-        this.jdField_a_of_type_Athc = new athc(localContext);
-      }
-      if ((this.jdField_a_of_type_Athc.a == null) && (localView != null)) {
-        this.jdField_a_of_type_Athc.a = ((FrameLayout)localView.findViewById(2131366419));
-      }
-      this.jdField_a_of_type_Athc.c();
+    }
+    paramString1 = (atgv)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramatgu);
+    }
+    while (paramatgu == null) {
       return;
     }
-    catch (Exception paramatgn)
+    paramatgu.a();
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (!paramString.startsWith("jsbridge://")) {
+      return false;
+    }
+    List localList = Arrays.asList((paramString + "/#").split("/"));
+    if (localList.size() < 6) {
+      return false;
+    }
+    String str1 = (String)localList.get(2);
+    String str2 = (String)localList.get(3);
+    String str3 = (String)localList.get(4);
+    for (;;)
     {
-      for (;;)
+      try
       {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "setOverscrollHeader", paramatgn);
+        long l = Long.parseLong(str3);
+        localList = localList.subList(5, localList.size() - 1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("JB", 4, "calling " + str1 + "." + str2);
+        }
+        paramString = new atgu(paramWebView, l, paramString);
+        paramWebView = paramWebView.getUrl();
+        if (this.jdField_a_of_type_Myl == null) {
+          this.jdField_a_of_type_Myl = myl.a();
+        }
+        if (this.jdField_a_of_type_Myl.a(paramWebView, str1 + "." + str2))
+        {
+          a(str1, str2, localList, paramString);
+          return true;
+        }
       }
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      float f = -this.jdField_a_of_type_AndroidViewView.getY();
-      if (f > this.b) {
-        this.b = f;
+      catch (Exception paramWebView)
+      {
+        return false;
       }
-      if (f < this.jdField_a_of_type_Float) {
-        this.jdField_a_of_type_Float = f;
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      a(this.jdField_a_of_type_AndroidViewView);
-      b(this.jdField_a_of_type_AndroidViewView);
-      c(this.jdField_a_of_type_AndroidViewView);
-    }
-    c();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Athc != null) {
-      this.jdField_a_of_type_Athc.c();
-    }
-    if (this.jdField_a_of_type_Athd != null) {
-      this.jdField_a_of_type_Athd.a(this.jdField_a_of_type_JavaUtilList);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Athc != null)
-    {
-      this.jdField_a_of_type_Athc.a();
-      this.jdField_a_of_type_Athc.a = null;
-    }
-    if (this.jdField_a_of_type_Athd != null)
-    {
-      this.jdField_a_of_type_Athd.a();
-      this.jdField_a_of_type_Athd.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+      QLog.e("JsBridge", 1, "JS API no auth url = " + ndq.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
+      paramString.b();
     }
   }
 }

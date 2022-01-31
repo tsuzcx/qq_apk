@@ -1,30 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
 public class bipt
-  implements DialogInterface.OnClickListener
+  extends FlingGestureHandler
 {
-  public bipt(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  boolean a = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bipt(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b) {
-        arni.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
-      return;
-      arni.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
-      continue;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
-      paramDialogInterface.putExtra("from", "qlink");
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
     }
   }
 }

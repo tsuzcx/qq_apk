@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bgkk;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -16,62 +16,62 @@ public class LivePusherJsPlugin
   private static final String EVENT_UPDATE_LIVE_PUSHER = "updateLivePusher";
   public static final String TAG = "LivePusherJsPlugin";
   
-  public void insertLivePusher(bgkd parambgkd)
+  public void insertLivePusher(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgok.b);
       int i = localJSONObject1.optInt("livePusherId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("containerId", i);
-      bgkk.a(new LivePusherJsPlugin.1(this, localJSONObject1, i, parambgkd, localJSONObject2));
+      bgor.a(new LivePusherJsPlugin.1(this, localJSONObject1, i, parambgok, localJSONObject2));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePusherJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void operateLivePusher(bgkd parambgkd)
+  public void operateLivePusher(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("type");
-      bgkk.a(new LivePusherJsPlugin.4(this, localJSONObject.optInt("livePusherId"), str, parambgkd, localJSONObject));
+      bgor.a(new LivePusherJsPlugin.4(this, localJSONObject.optInt("livePusherId"), str, parambgok, localJSONObject));
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
   
-  public void removeLivePusher(bgkd parambgkd)
+  public void removeLivePusher(bgok parambgok)
   {
     try
     {
-      bgkk.a(new LivePusherJsPlugin.3(this, new JSONObject(parambgkd.b).optInt("livePusherId"), parambgkd));
+      bgor.a(new LivePusherJsPlugin.3(this, new JSONObject(parambgok.b).optInt("livePusherId"), parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePusherJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void updateLivePusher(bgkd parambgkd)
+  public void updateLivePusher(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      bgkk.a(new LivePusherJsPlugin.2(this, localJSONObject.optInt("livePusherId"), localJSONObject, parambgkd));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      bgor.a(new LivePusherJsPlugin.2(this, localJSONObject.optInt("livePusherId"), localJSONObject, parambgok));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("LivePusherJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("LivePusherJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
 }

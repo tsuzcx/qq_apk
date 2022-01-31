@@ -1,29 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-public final class agfp
-  implements Parcelable.Creator<AIORichMediaData>
+public class agfp
+  extends agfg
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
-  
-  public AIORichMediaData[] a(int paramInt)
-  {
-    return new AIORichMediaData[paramInt];
-  }
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 

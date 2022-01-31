@@ -1,16 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.qphone.base.util.QLog;
 
-final class bipa
-  implements View.OnClickListener
+class bipa
+  implements AVCallback
 {
-  bipa(Dialog paramDialog, String paramString) {}
+  bipa(biov parambiov) {}
   
-  public void onClick(View paramView)
+  public void onComplete(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramInt == 0)
+    {
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      biov.a(this.a, true);
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
+      }
+      return;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

@@ -1,39 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class vxq
-  extends BroadcastReceiver
+class vxq
+  implements vym
 {
-  public vxq(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
+  vxq(vxn paramvxn, vwe paramvwe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    wsv.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
     {
-      paramContext = paramIntent.getStringExtra("event");
-      wsv.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
-      if (!"closeMeEvent".equals(paramContext)) {
-        break label70;
+      return this.jdField_a_of_type_Vwe.a(this.jdField_a_of_type_Vxn, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
       }
-      if (this.a.a != null) {
-        this.a.a.a();
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
       }
     }
-    label70:
-    do
-    {
-      return;
-      if (!"readyEvent".equals(paramContext)) {
-        break;
-      }
-    } while (this.a.a == null);
-    this.a.a.b();
-    return;
-    QQToast.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
   }
 }
 

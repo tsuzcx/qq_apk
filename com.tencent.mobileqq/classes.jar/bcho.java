@@ -1,40 +1,14 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class bcho
+final class bcho
+  implements Comparator
 {
-  public static bcho[] a;
-  public String a;
+  bcho(Editable paramEditable) {}
   
-  static
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    jdField_a_of_type_ArrayOfBcho = new bcho[] { new bcho("BulkChatMessageConfig") };
-  }
-  
-  public bcho(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  final JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = new JSONObject();
-      }
-    }
-  }
-  
-  JSONObject a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject;
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

@@ -61,7 +61,7 @@ public class sfd
   
   public void a(sfg paramsfg)
   {
-    bhxr.a("DrawableController.setImageRequest");
+    biby.a("DrawableController.setImageRequest");
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a()) {
       paramsfg.c = 1;
     }
@@ -75,7 +75,7 @@ public class sfd
     }
     for (;;)
     {
-      bhxr.a();
+      biby.a();
       return;
       b += 1;
       pdz.b(1, paramsfg);

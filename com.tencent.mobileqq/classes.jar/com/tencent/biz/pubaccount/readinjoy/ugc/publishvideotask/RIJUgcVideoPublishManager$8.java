@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import android.os.Handler;
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;

@@ -1,112 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-
-public class xta
-  implements xsy
+class xta
 {
-  protected int a = 1;
+  final String jdField_a_of_type_JavaLangString;
+  final boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void a(int paramInt)
+  xta(boolean paramBoolean, String paramString)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(View paramView, float paramFloat)
+  static xta a()
   {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
+    return new xta(false, "");
   }
   
-  public void a(View paramView, float paramFloat, MotionEvent paramMotionEvent)
+  static xta a(Process paramProcess)
   {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      paramMotionEvent.offsetLocation(0.0F, paramFloat - paramMotionEvent.getY(0));
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-    paramMotionEvent.offsetLocation(paramFloat - paramMotionEvent.getX(0), 0.0F);
-  }
-  
-  public void a(View paramView, xsv paramxsv)
-  {
-    if (this.a == 1)
-    {
-      paramxsv.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_Y;
-      paramxsv.jdField_a_of_type_Float = paramView.getTranslationY();
-      paramxsv.b = paramView.getHeight();
-      return;
-    }
-    paramxsv.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_X;
-    paramxsv.jdField_a_of_type_Float = paramView.getTranslationX();
-    paramxsv.b = paramView.getWidth();
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(-1)) {}
-    }
-    while (!paramView.canScrollHorizontally(-1))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean a(View paramView, xtb paramxtb, MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramMotionEvent.getHistorySize() == 0) {}
-    float f1;
-    float f2;
-    do
-    {
-      return false;
-      f1 = paramMotionEvent.getY(0) - paramMotionEvent.getHistoricalY(0, 0);
-      f2 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
-      if (this.a != 1) {
-        break;
-      }
-    } while (Math.abs(f1) < Math.abs(f2));
-    paramxtb.jdField_a_of_type_Float = paramView.getTranslationY();
-    paramxtb.b = f1;
-    if (paramxtb.b > 0.0F) {
-      bool1 = true;
-    }
-    for (paramxtb.jdField_a_of_type_Boolean = bool1;; paramxtb.jdField_a_of_type_Boolean = bool1)
-    {
-      return true;
-      if (Math.abs(f2) < Math.abs(f1)) {
-        break;
-      }
-      paramxtb.jdField_a_of_type_Float = paramView.getTranslationX();
-      paramxtb.b = f2;
-      bool1 = bool2;
-      if (paramxtb.b > 0.0F) {
-        bool1 = true;
-      }
+    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
+    for (String str = xub.a(paramProcess.getInputStream());; str = xub.a(paramProcess.getErrorStream())) {
+      return new xta(a(Integer.valueOf(paramProcess.exitValue())), str);
     }
   }
   
-  public boolean b(View paramView)
+  static boolean a(Integer paramInteger)
   {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(1)) {}
-    }
-    while (!paramView.canScrollHorizontally(1))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return (paramInteger != null) && (paramInteger.intValue() == 0);
   }
 }
 

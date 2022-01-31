@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
 import android.content.Context;
-import bjxj;
+import bkbq;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bjxj.p()) {
+    if (!bkbq.p()) {
       clear();
     }
   }

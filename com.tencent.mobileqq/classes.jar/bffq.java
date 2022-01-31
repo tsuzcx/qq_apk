@@ -1,60 +1,32 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class bffq
+  extends Handler
 {
-  protected static bffq a;
-  protected ArrayList<bfil> a;
-  
-  public static bffq a()
+  public bffq(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Bffq == null)
-      {
-        jdField_a_of_type_Bffq = new bffq();
-        jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bffq localbffq = jdField_a_of_type_Bffq;
-      return localbffq;
     }
-    finally {}
-  }
-  
-  public ArrayList<bfil> a()
-  {
-    return jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bfil parambfil)
-  {
-    int j = jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bfil)jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.add(parambfil);
-  }
-  
-  public void b(bfil parambfil)
-  {
-    int j = jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
     for (;;)
     {
-      if (i < j)
-      {
-        if ((bfil)jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
-          jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
       }
-      else {
-        return;
-      }
-      i += 1;
+      OpenCardContainer.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
 }

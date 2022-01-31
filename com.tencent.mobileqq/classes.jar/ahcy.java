@@ -1,12 +1,8 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
-
 public class ahcy
-  extends akee
+  implements Cloneable
 {
-  public TextView a;
-  public PublicRecommendAccountInfo a;
-  public TextView b;
+  public String a;
+  public String b;
 }
 
 

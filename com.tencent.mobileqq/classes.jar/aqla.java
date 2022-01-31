@@ -1,14 +1,16 @@
-public abstract interface aqla
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+
+public class aqla
+  implements View.OnClickListener
 {
-  public abstract void d();
+  public aqla(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public abstract void e();
-  
-  public abstract void n();
-  
-  public abstract void p();
-  
-  public abstract void q();
+  public void onClick(View paramView)
+  {
+    this.a.i();
+  }
 }
 
 

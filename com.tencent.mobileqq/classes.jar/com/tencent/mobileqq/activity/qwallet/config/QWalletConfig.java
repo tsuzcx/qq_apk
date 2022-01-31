@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
 import Wallet.RspWalletConfig;
-import aitb;
-import aitc;
-import aitd;
-import aitg;
-import aith;
-import ajal;
+import aixq;
+import aixr;
+import aixs;
+import aixv;
+import aixw;
+import ajfa;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -45,7 +45,7 @@ public class QWalletConfig
   private static final long serialVersionUID = 1L;
   private transient int jdField_a_of_type_Int;
   private transient String jdField_a_of_type_JavaLangString;
-  private transient Map<String, List<aith>> jdField_a_of_type_JavaUtilMap;
+  private transient Map<String, List<aixw>> jdField_a_of_type_JavaUtilMap;
   private transient byte[] jdField_a_of_type_ArrayOfByte;
   private int action;
   private transient String jdField_b_of_type_JavaLangString;
@@ -67,7 +67,7 @@ public class QWalletConfig
     if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramAppRuntime.getAccount()))) {
       return null;
     }
-    paramAppRuntime = new StringBuilder(ajal.c).append(paramAppRuntime.getAccount()).append("/.config/");
+    paramAppRuntime = new StringBuilder(ajfa.c).append(paramAppRuntime.getAccount()).append("/.config/");
     paramAppRuntime.append(".config");
     return paramAppRuntime.toString();
   }
@@ -304,7 +304,7 @@ public class QWalletConfig
       while (localIterator.hasNext())
       {
         localEntry = (Map.Entry)localIterator.next();
-        aitc.a(this.jdField_b_of_type_JavaLangString, (String)localEntry.getKey(), (String)localEntry.getValue());
+        aixr.a(this.jdField_b_of_type_JavaLangString, (String)localEntry.getKey(), (String)localEntry.getValue());
       }
       if (!paramBoolean) {
         break label89;
@@ -348,7 +348,7 @@ public class QWalletConfig
     //   27: aload 5
     //   29: monitorenter
     //   30: aload 4
-    //   32: invokestatic 258	ajaf:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   32: invokestatic 258	ajeu:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   35: checkcast 2	com/tencent/mobileqq/activity/qwallet/config/QWalletConfig
     //   38: astore_1
     //   39: aload 5
@@ -419,11 +419,11 @@ public class QWalletConfig
     //   39	42	115	finally
   }
   
-  public void addUpdateListener(String paramString, aith paramaith)
+  public void addUpdateListener(String paramString, aixw paramaixw)
   {
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (paramaith != null))
+      if ((!TextUtils.isEmpty(paramString)) && (paramaixw != null))
       {
         List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
         Object localObject = localList;
@@ -432,8 +432,8 @@ public class QWalletConfig
           localObject = new LinkedList();
           this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
         }
-        if (!((List)localObject).contains(paramaith)) {
-          ((List)localObject).add(paramaith);
+        if (!((List)localObject).contains(paramaixw)) {
+          ((List)localObject).add(paramaixw);
         }
       }
       return;
@@ -449,21 +449,21 @@ public class QWalletConfig
     }
   }
   
-  public aitb getConfigInfo(String paramString)
+  public aixq getConfigInfo(String paramString)
   {
-    aitb localaitb = new aitb();
-    localaitb.jdField_a_of_type_JavaLangString = paramString;
+    aixq localaixq = new aixq();
+    localaixq.jdField_a_of_type_JavaLangString = paramString;
     for (;;)
     {
       synchronized (this.jdField_b_of_type_ArrayOfByte)
       {
-        localaitb.jdField_b_of_type_JavaLangString = getConfig(paramString);
+        localaixq.jdField_b_of_type_JavaLangString = getConfig(paramString);
         paramString = (Long)this.localVersions.get(paramString);
         if (paramString != null)
         {
           l = paramString.longValue();
-          localaitb.jdField_a_of_type_Long = l;
-          return localaitb;
+          localaixq.jdField_a_of_type_Long = l;
+          return localaixq;
         }
       }
       long l = 0L;
@@ -542,7 +542,7 @@ public class QWalletConfig
     return 1024;
   }
   
-  public void handleRsp(RspWalletConfig paramRspWalletConfig, long paramLong, aitg paramaitg, aitd paramaitd)
+  public void handleRsp(RspWalletConfig paramRspWalletConfig, long paramLong, aixv paramaixv, aixs paramaixs)
   {
     if ((paramRspWalletConfig == null) || (paramRspWalletConfig.result != RspWalletConfig.RET_SUCC)) {
       return;
@@ -607,17 +607,17 @@ public class QWalletConfig
         this.refreshTime = paramRspWalletConfig.refreshTime;
         this.commonMsg = paramRspWalletConfig.commonMsg;
         a(paramRspWalletConfig.mConfig, false, l);
-        if ((paramaitd == null) || (i != 0) || (this.jdField_a_of_type_Int >= 100)) {
+        if ((paramaixs == null) || (i != 0) || (this.jdField_a_of_type_Int >= 100)) {
           break;
         }
-        paramaitd.a();
+        paramaixs.a();
         this.jdField_a_of_type_Int += 1;
         break;
       }
       label351:
       a(l, paramLong, paramRspWalletConfig);
       a(paramRspWalletConfig.mConfig, false, l);
-      notifyListener(paramaitg);
+      notifyListener(paramaixv);
     }
   }
   
@@ -674,13 +674,13 @@ public class QWalletConfig
     return this.lastAppId != AppSetting.a();
   }
   
-  public void notifyListener(aitg paramaitg)
+  public void notifyListener(aixv paramaixv)
   {
-    if (paramaitg != null) {}
+    if (paramaixv != null) {}
     synchronized (this.jdField_b_of_type_ArrayOfByte)
     {
       HashMap localHashMap = new HashMap(this.configs);
-      paramaitg.a(this.jdField_b_of_type_JavaLangString, localHashMap);
+      paramaixv.a(this.jdField_b_of_type_JavaLangString, localHashMap);
       return;
     }
   }
@@ -715,10 +715,10 @@ public class QWalletConfig
         Object localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          aith localaith = (aith)((Iterator)localObject2).next();
+          aixw localaixw = (aixw)((Iterator)localObject2).next();
           try
           {
-            localaith.a(str, (String)localObject1, new aitb(str, (String)localObject1, paramLong));
+            localaixw.a(str, (String)localObject1, new aixq(str, (String)localObject1, paramLong));
           }
           catch (Throwable localThrowable) {}
         }
@@ -737,15 +737,15 @@ public class QWalletConfig
     }
   }
   
-  public void removeUpdateListener(String paramString, aith paramaith)
+  public void removeUpdateListener(String paramString, aixw paramaixw)
   {
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (paramaith != null))
+      if ((!TextUtils.isEmpty(paramString)) && (paramaixw != null))
       {
         paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
         if (paramString != null) {
-          paramString.remove(paramaith);
+          paramString.remove(paramaixw);
         }
       }
       return;

@@ -1,6 +1,7 @@
-public abstract interface ahpo
+public class ahpo
 {
-  public abstract void a();
+  public int a;
+  public long a;
 }
 
 

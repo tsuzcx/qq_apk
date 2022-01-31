@@ -1,58 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import java.util.List;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
 
 public class ahvy
-  implements aulr
 {
-  public ahvy(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aulk paramaulk, ault paramault, List paramList) {}
-  
-  public void a()
+  public static boolean a(View paramView)
   {
-    this.jdField_a_of_type_Aulk.a(new ahvz(this));
-    this.jdField_a_of_type_Aulk.show();
-  }
-  
-  public void a(aulp paramaulp)
-  {
-    if ((paramaulp != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
-      switch (paramaulp.a)
-      {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramView instanceof HeaderScrollView)) {
+      if (!((HeaderScrollView)paramView).b()) {
+        bool1 = true;
       }
     }
-    for (;;)
+    do
     {
-      if (this.jdField_a_of_type_Aulk.isShowing()) {
-        this.jdField_a_of_type_Aulk.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-      this.jdField_a_of_type_Ault.b();
-      return;
-      aulq.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aulq.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aulq.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-    }
-  }
-  
-  public void a(aulp paramaulp, int paramInt)
-  {
-    this.jdField_a_of_type_Aulk.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aulk.isShowing()) {
-      this.jdField_a_of_type_Aulk.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-    this.jdField_a_of_type_Ault.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Ault.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+      do
+      {
+        View localView;
+        do
+        {
+          for (;;)
+          {
+            return bool1;
+            bool1 = false;
+          }
+          if (!(paramView instanceof ViewGroup)) {
+            break;
+          }
+          localView = ((ViewGroup)paramView).getChildAt(1);
+          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
+            break label116;
+          }
+          bool1 = bool2;
+        } while (!((HeaderScrollView)localView).b());
+        return false;
+        if (!(paramView instanceof AbsListView)) {
+          break label116;
+        }
+        paramView = (AbsListView)paramView;
+        if (paramView.getChildCount() <= 0) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramView.getFirstVisiblePosition() > 0);
+      bool1 = bool2;
+    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
+    return false;
+    label116:
+    return ViewCompat.canScrollVertically(paramView, -1);
   }
 }
 

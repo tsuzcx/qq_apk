@@ -1,15 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Bitmap;
 
 class bmmq
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bmpw
 {
-  bmmq(bmmn parambmmn) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bmmq(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public bmmq(bmpw parambmpw, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(parambmpw.jdField_c_of_type_Int, parambmpw.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

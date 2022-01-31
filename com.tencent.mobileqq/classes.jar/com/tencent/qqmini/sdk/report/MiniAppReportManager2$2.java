@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgxl;
-import bgxm;
+import bhbs;
+import bhbt;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,25 +18,25 @@ public final class MiniAppReportManager2$2
     {
       try
       {
-        bgxl.a(false);
+        bhbs.a(false);
         long l = System.currentTimeMillis();
-        Iterator localIterator = bgxl.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = bhbs.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
         if (localIterator.hasNext())
         {
           Object localObject = (Map.Entry)localIterator.next();
           String str = (String)((Map.Entry)localObject).getKey();
-          localObject = (bgxm)((Map.Entry)localObject).getValue();
-          if ((((bgxm)localObject).jdField_d_of_type_Int == 0) && (l - ((bgxm)localObject).jdField_d_of_type_Long > bgxl.jdField_a_of_type_Long)) {
-            bgxl.a((bgxm)localObject);
+          localObject = (bhbt)((Map.Entry)localObject).getValue();
+          if ((((bhbt)localObject).jdField_d_of_type_Int == 0) && (l - ((bhbt)localObject).jdField_d_of_type_Long > bhbs.jdField_a_of_type_Long)) {
+            bhbs.a((bhbt)localObject);
           }
-          if (((bgxm)localObject).jdField_d_of_type_Int == 0) {
+          if (((bhbt)localObject).jdField_d_of_type_Int == 0) {
             i = 1;
           }
         }
         else
         {
           if (i != 0) {
-            bgxl.b();
+            bhbs.b();
           }
           return;
         }

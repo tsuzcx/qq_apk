@@ -23,11 +23,11 @@ public class qvi
   {
     if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qvz.b()))
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719014, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
+      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
       QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719008), 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719020), 0).a();
   }
   
   protected void a(qvx paramqvx, Friends paramFriends)
@@ -35,7 +35,7 @@ public class qvi
     if ((paramFriends == null) || (this.jdField_a_of_type_Qvz == null) || (this.jdField_a_of_type_Qvz.a() == null) || (this.jdField_a_of_type_Qvz.a().isEmpty())) {
       return;
     }
-    paramqvx.a.setBackgroundResource(2130848829);
+    paramqvx.a.setBackgroundResource(2130848902);
     if (this.jdField_a_of_type_Qvz.a().contains(paramFriends.uin))
     {
       paramqvx.a.setEnabled(false);

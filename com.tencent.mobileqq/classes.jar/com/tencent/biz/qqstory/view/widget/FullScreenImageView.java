@@ -7,8 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import wsv;
-import xod;
+import wxe;
+import xsm;
 
 public class FullScreenImageView
   extends ImageView
@@ -28,7 +28,7 @@ public class FullScreenImageView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof BitmapDrawable)) && (((BitmapDrawable)localDrawable).getBitmap().isRecycled()))
     {
-      wsv.e("", "can not draw a bitmap which is recycled " + this);
+      wxe.e("", "can not draw a bitmap which is recycled " + this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -36,7 +36,7 @@ public class FullScreenImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(xod.a(super.getContext()), xod.d(super.getContext()));
+    setMeasuredDimension(xsm.a(super.getContext()), xsm.d(super.getContext()));
   }
 }
 

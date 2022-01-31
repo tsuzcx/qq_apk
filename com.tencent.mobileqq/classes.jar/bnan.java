@@ -1,10 +1,8 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
-public abstract interface bnan
+class bnan
 {
-  public abstract void a(@NonNull ArrayList<bnao> paramArrayList, @NonNull Context paramContext);
+  int jdField_a_of_type_Int;
+  bnal jdField_a_of_type_Bnal;
+  bnam jdField_a_of_type_Bnam;
 }
 
 

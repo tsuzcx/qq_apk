@@ -1,62 +1,31 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
-public abstract class bkdx
-  extends Binder
-  implements bkdw
+public class bkdx
 {
-  public bkdx()
+  public static void a(int paramInt)
   {
-    attachInterface(this, "cooperation.wadl.ipc.IWadlService");
+    a("WidgetReport", 302, 7, paramInt, false, false);
   }
   
-  public static bkdw a(IBinder paramIBinder)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlService");
-    if ((localIInterface != null) && ((localIInterface instanceof bkdw))) {
-      return (bkdw)localIInterface;
-    }
-    return new bkdy(paramIBinder);
+    a("MsgActiveFeed", 133, paramInt1, paramInt2, false, false);
   }
   
-  public IBinder asBinder()
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this;
+    if (QZLog.isColorLevel()) {
+      QZLog.i(paramString, 2, "reportToPf00064 actiontype = " + paramInt1 + " subactionType = " + paramInt2 + " reserves = " + paramInt3 + " isNeedSample = " + paramBoolean1 + " isReportNow = " + paramBoolean2);
+    }
+    paramString = new LpReportInfo_pf00064(paramInt1, paramInt2, paramInt3);
+    LpReportManager.getInstance().reportToPF00064(paramString, paramBoolean1, paramBoolean2);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public static void b(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.wadl.ipc.IWadlService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
-      paramParcel2 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel2, paramParcel1);
-        return true;
-      }
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
-      a(bkea.a(paramParcel1.readStrongBinder()));
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
-    b(bkea.a(paramParcel1.readStrongBinder()));
-    return true;
+    a("VipSignature", paramInt1, paramInt2, 0, false, false);
   }
 }
 

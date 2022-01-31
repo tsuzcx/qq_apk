@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ocr;
 
-import avqz;
+import avvi;
 
 public class OCRManager$1
   implements Runnable
 {
-  public OCRManager$1(avqz paramavqz) {}
+  public OCRManager$1(avvi paramavvi) {}
   
   public void run()
   {

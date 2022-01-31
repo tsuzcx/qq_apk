@@ -1,6 +1,8 @@
-public class bmnq
-  extends ugz
-{}
+public abstract interface bmnq
+  extends bmni
+{
+  public abstract int a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

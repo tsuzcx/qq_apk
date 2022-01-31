@@ -1,22 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.image.URLDrawable;
 
-public final class uwh
-  extends QQUIEventReceiver<uvz, utw>
+public class uwh
+  implements uvj
 {
-  public uwh(@NonNull uvz paramuvz)
+  public void a(int paramInt)
   {
-    super(paramuvz);
-  }
-  
-  public void a(@NonNull uvz paramuvz, @NonNull utw paramutw)
-  {
-    paramuvz.a.a(paramutw.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return utw.class;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    URLDrawable.clearMemoryCache();
   }
 }
 

@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import android.os.IInterface;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class avbm
-  implements View.OnClickListener
+public abstract interface avbm
+  extends IInterface
 {
-  public avbm(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public abstract Message a(Message paramMessage);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
-  }
+  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
 }
 
 

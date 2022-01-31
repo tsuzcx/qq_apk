@@ -1,279 +1,76 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajtz
-  extends akdk
 {
-  private LinkedHashMap<String, List<PhoneContact>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  
-  public ajtz(ContactsInnerFrame paramContactsInnerFrame, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, boolean paramBoolean)
+  public static int a(int paramInt)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, paramBoolean);
-  }
-  
-  @SuppressLint({"DefaultLocale"})
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList.iterator();
-      label77:
-      int i;
-      if (((Iterator)localObject2).hasNext())
-      {
-        PhoneContact localPhoneContact = (PhoneContact)((Iterator)localObject2).next();
-        if ((localPhoneContact.pinyinFirst == null) || (localPhoneContact.pinyinFirst.length() == 0))
-        {
-          localObject1 = "#";
-          i = ((String)localObject1).charAt(0);
-          if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-            break label182;
-          }
-        }
-        label182:
-        for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-        {
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-            this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-          }
-          ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localPhoneContact);
-          break;
-          localObject1 = localPhoneContact.pinyinFirst.substring(0, 1);
-          break label77;
-        }
-      }
-      Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-      for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-        if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
-        }
-      }
-      if (((LinkedHashMap)localObject1).get("#") != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
-      }
-      ((LinkedHashMap)localObject1).clear();
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      if (this.jdField_a_of_type_ArrayOfInt.length != 0)
-      {
-        this.jdField_a_of_type_ArrayOfInt[0] = 0;
-        i = 1;
-        while (i < this.jdField_a_of_type_ArrayOfInt.length)
-        {
-          localObject2 = this.jdField_a_of_type_ArrayOfInt;
-          int j = localObject2[i];
-          int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-          localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-          i += 1;
-        }
-        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        i = 0;
-        while (((Iterator)localObject1).hasNext())
-        {
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-          i += 1;
-        }
-      }
+    if (paramInt == 1) {
+      return 1;
     }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
-      return 2131559237;
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
     }
     return 0;
   }
   
-  public int a(String paramString)
+  public static ajuh a(int paramInt)
   {
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
+    switch (paramInt)
     {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
+    default: 
+      return null;
+    case 1: 
+      return new ajue();
+    case 2: 
+      return new ajuu();
     }
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        return this.jdField_a_of_type_ArrayOfInt[i];
-        i += 1;
-        break;
-      }
-      return -1;
-      return -1;
-      label53:
-      i = -1;
-    }
+    return new ajur();
   }
   
-  public void a()
+  public static ajuh a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
   {
-    b();
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (paramInt < 0) {
-      paramInt = -(paramInt + 1);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  protected boolean a(akee paramakee)
-  {
-    boolean bool2 = super.a(paramakee);
-    boolean bool1 = bool2;
-    if ((paramakee instanceof ajvj))
-    {
-      paramakee = (ajvj)paramakee;
-      if ((bool2) && (!paramakee.jdField_a_of_type_Boolean)) {
-        bool1 = true;
-      }
-    }
-    else
-    {
-      return bool1;
-    }
-    return false;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    i = -(i + 1) - 1;
-    return (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = null;
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    View localView = paramView;
-    if (paramView == null) {
-      localView = ajvj.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_AndroidViewLayoutInflater, 2131562611);
-    }
-    ajvj localajvj = (ajvj)localView.getTag();
-    if (i < 0)
+    try
     {
-      i = -(i + 1) - 1;
-      paramViewGroup = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
-      PhoneContact localPhoneContact = (PhoneContact)paramViewGroup.get(paramInt);
-      ajvj.a(this, localajvj, localPhoneContact);
-      if (paramInt - 1 < 0)
-      {
-        paramView = null;
-        if (paramInt + 1 <= paramViewGroup.size() - 1) {
-          break label365;
-        }
-        paramViewGroup = localObject;
-        label134:
-        if (((paramView == null) || (paramView.contactID != localPhoneContact.contactID)) && ((paramViewGroup == null) || (paramViewGroup.contactID != localPhoneContact.contactID))) {
-          break label381;
-        }
-        localajvj.d.setVisibility(0);
-        localajvj.d.setText(localPhoneContact.mobileNo);
-        label188:
-        localajvj.b.setText(localPhoneContact.name);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(localajvj.jdField_a_of_type_JavaLangString)) {
-          break label394;
-        }
-        localajvj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-        label228:
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(localPhoneContact.uin))) {
-          break label406;
-        }
-        localajvj.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-        label271:
-        if ((AppSetting.c) && (localajvj.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
-        {
-          if (!localajvj.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label418;
-          }
-          localView.setContentDescription(localPhoneContact.name + alpo.a(2131702937));
-        }
-      }
-      for (;;)
-      {
-        localajvj.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = localPhoneContact;
-        localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame);
-        return localView;
-        paramView = (PhoneContact)paramViewGroup.get(paramInt - 1);
-        break;
-        label365:
-        paramViewGroup = (PhoneContact)paramViewGroup.get(paramInt + 1);
-        break label134;
-        label381:
-        localajvj.d.setVisibility(8);
-        break label188;
-        label394:
-        localajvj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-        break label228;
-        label406:
-        localajvj.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        break label271;
-        label418:
-        localView.setContentDescription(localPhoneContact.name + alpo.a(2131702909));
-      }
+      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
+      return paramString;
     }
-    localajvj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    localajvj.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramView = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    localajvj.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-    localajvj.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131691953), new Object[] { paramView.toLowerCase() }));
-    return localView;
+    catch (Exception paramString)
+    {
+      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public static ajuh a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
+      localObject = null;
+    }
+    ajuh localajuh;
+    do
+    {
+      return localObject;
+      localajuh = a(aezw.a(paramArrayOfByte, 0));
+      localObject = localajuh;
+    } while (localajuh == null);
+    localajuh.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
+    return localajuh;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 4);
   }
 }
 

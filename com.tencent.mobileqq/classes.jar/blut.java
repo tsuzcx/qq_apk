@@ -1,77 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 
 public class blut
+  extends blts
 {
-  private static blut jdField_a_of_type_Blut;
-  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<DoodleLayout> b;
+  public blut(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
   
-  public static blut a()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Blut == null) {
-      jdField_a_of_type_Blut = new blut();
-    }
-    return jdField_a_of_type_Blut;
+    bflz.a().a(alud.a(2131701467) + this.a.a);
   }
   
-  public DoodleLayout a(int paramInt)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramInt == 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-          localObject1 = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        }
-      }
+    if ((paramBoolean) && (this.a.a.getLocalPath().equals(paramString))) {
+      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
     }
-    for (;;)
-    {
-      if ((localObject1 == null) && (QLog.isColorLevel())) {
-        QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
-      }
-      return localObject1;
-      localObject1 = localObject2;
-      if (this.b != null)
-      {
-        localObject1 = localObject2;
-        if (this.b.get() != null) {
-          localObject1 = (DoodleLayout)this.b.get();
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "unbind " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.b = null;
-  }
-  
-  public void a(int paramInt, DoodleLayout paramDoodleLayout)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "bind " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
-      return;
-    }
-    this.b = new WeakReference(paramDoodleLayout);
   }
 }
 

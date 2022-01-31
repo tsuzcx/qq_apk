@@ -1,73 +1,21 @@
 import android.content.Intent;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class aiol
-  extends aiml
+  implements View.OnClickListener
 {
-  protected aiol(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public aiol(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    int i2 = PhotoUtils.b(this.a.a);
-    paramIntent = new HashMap();
-    int i1 = 0;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
-    {
-      paramArrayList = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
-      int m;
-      if (ImageManager.isNetworkUrl(paramArrayList))
-      {
-        m = k;
-        k = i;
-        i = m;
-        i1 += 1;
-        m = k;
-        k = i;
-        i = m;
-      }
-      else
-      {
-        int n;
-        if (((NewPhotoListActivity)this.mActivity).a(paramArrayList) == 1)
-        {
-          paramArrayList = ((NewPhotoListActivity)this.mActivity).a(paramArrayList);
-          n = j;
-          m = i;
-          if (paramArrayList != null)
-          {
-            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
-            localSendVideoInfo.fileSize = paramArrayList.fileSize;
-            localSendVideoInfo.duration = paramArrayList.mDuration;
-            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
-            m = i + 1;
-            n = j;
-          }
-        }
-        for (;;)
-        {
-          i = k + 1;
-          j = n;
-          k = m;
-          break;
-          n = j + 1;
-          m = i;
-        }
-      }
-    }
-    azmj.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
-    c();
+    paramView = this.a.getIntent();
+    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bddf.a());
+    azqs.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
   }
 }
 

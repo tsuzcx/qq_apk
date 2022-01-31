@@ -1,27 +1,49 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vfk
-  extends ved
+public class vfk
+  extends urt<vfm>
 {
-  vfk(vez paramvez, StoryVideoItem paramStoryVideoItem, vgh paramvgh)
+  public List<String> a = new ArrayList();
+  
+  public String a()
   {
-    super(paramStoryVideoItem);
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public boolean b()
+  public uro a(byte[] paramArrayOfByte)
   {
-    String str = (String)a("result");
-    xmh.a(str);
-    xmh.a(this.jdField_a_of_type_Vgh.d);
-    if (this.jdField_a_of_type_Vgh.d == null)
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
     {
-      this.jdField_a_of_type_Vgh.d = "";
-      wsv.c(this.b, "imageLocalPath is null", new Throwable());
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new vfm(localRspStoryFeedTagInfo);
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vgh.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vgh.a));
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

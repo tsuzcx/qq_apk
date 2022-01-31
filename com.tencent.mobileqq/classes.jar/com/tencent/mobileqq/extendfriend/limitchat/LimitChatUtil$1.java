@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.limitchat;
 
-import aqbv;
-import azmj;
+import aqge;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,7 +13,7 @@ public final class LimitChatUtil$1
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", aqbv.a(localQQAppInterface, this.a), "");
+    azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", aqge.a(localQQAppInterface, this.a), "");
   }
 }
 

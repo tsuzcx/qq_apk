@@ -1,62 +1,55 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class apor
+class apor
+  extends apsb
 {
-  private float jdField_a_of_type_Float;
-  private final bdvv jdField_a_of_type_Bdvv;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  apor(apoo paramapoo) {}
   
-  public apor(String paramString, bdvv parambdvv)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bdvv = parambdvv;
-  }
-  
-  public float a()
-  {
-    if (this.jdField_a_of_type_Bdvv != null) {
-      return this.jdField_a_of_type_Bdvv.jdField_a_of_type_Float;
-    }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Bundle a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Bdvv != null) {
-      return this.jdField_a_of_type_Bdvv.a();
-    }
-    return (Bundle)((bdqa)paramQQAppInterface.getManager(235)).a.a.get(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Bdvv != null) {
-      this.jdField_a_of_type_Bdvv.a(true);
-    }
-    String str;
+    super.a(paramEmoticonPackage, paramInt);
+    aprn.a().b(this.a.a);
+    Object localObject = (apon)apoo.i(this.a).getManager(149);
+    aufn localaufn = (aufn)apoo.j(this.a).getManager(14);
+    List localList = ((apon)localObject).c(paramEmoticonPackage.epId);
+    if ((localList == null) || (localList.size() <= 0)) {}
     do
     {
       return;
-      str = "bqmall.android.h5magic." + this.jdField_a_of_type_JavaLangString + ".zip";
-      paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.cancelDwonloadItem(1004L, str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      paramEmoticonPackage = new ArrayList();
+      int i = 0;
+      if (i < localList.size())
+      {
+        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
+        if (localaufn.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
+        {
+          localCustomEmotionData.RomaingType = "needDel";
+          ((apon)localObject).b(localCustomEmotionData);
+          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
+            paramEmoticonPackage.add(localCustomEmotionData.resid);
+          }
+        }
+        apoo localapoo = this.a;
+        if (paramInt == 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localapoo.a(localCustomEmotionData, bool);
+          i += 1;
+          break;
+        }
+      }
+      localObject = (alsb)apoo.k(this.a).a(72);
+    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
+    if (QLog.isColorLevel()) {
+      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
+    }
+    ((alsb)localObject).a(paramEmoticonPackage, false);
   }
 }
 

@@ -1,14 +1,24 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
 
-class bcuc
-  implements FilenameFilter
+public class bcuc
+  extends ahkp<bcty>
 {
-  bcuc(bcua parambcua, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public bcuc(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, Context paramContext, int paramInt)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    super(paramContext, paramInt);
+  }
+  
+  protected void a(ahkz paramahkz, bcty parambcty, int paramInt)
+  {
+    TroopRecommendFriendFragment.a(this.a, paramahkz, parambcty, paramInt);
+  }
+  
+  protected ahkz b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bctx(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
   }
 }
 

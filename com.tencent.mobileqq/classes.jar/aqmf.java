@@ -1,27 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
-class aqmf
-  implements bhqd
+public class aqmf
+  implements DialogInterface.OnCancelListener
 {
-  aqmf(aqme paramaqme, FileManagerEntity paramFileManagerEntity, bhpy parambhpy) {}
+  public aqmf(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Aqme.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
-    this.jdField_a_of_type_Aqme.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Aqme.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Aqme.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_Aqme.a.a.g();
-    if (this.jdField_a_of_type_Bhpy.isShowing()) {
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

@@ -1,45 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class alyc
-  implements Handler.Callback
+  extends BroadcastReceiver
 {
-  public alyc(SignatureManager paramSignatureManager) {}
+  public alyc(PeakAppInterface paramPeakAppInterface) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (2 == paramMessage.what)
+    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
     {
-      SignatureManager.jdField_a_of_type_ArrayOfBdpl = (bdpl[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl info...");
-        }
-      }
-    }
-    for (;;)
-    {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl animation ...");
-        }
-      }
+      int i = paramIntent.getIntExtra("rsptype", 0);
+      paramContext = paramIntent.getByteArrayExtra("rspbody");
+      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      ((axxr)this.a.a(0)).a(i, paramContext);
     }
   }
 }

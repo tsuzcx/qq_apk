@@ -1,31 +1,52 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-class auuk
-  implements behy<oidb_0x8e4.RspBody>
+public class auuk
+  implements INetInfoHandler
 {
-  auuk(auuj paramauuj) {}
+  private auuk(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onNetMobile2None()
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    if (NearbyAppInterface.i(this.a) != null) {
+      NearbyAppInterface.j(this.a).onNetMobile2None();
     }
-    do
-    {
-      return;
-      this.a.a.a(paramInt, paramRspBody, alpo.a(2131705445));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.g(this.a) != null) {
+      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.a(this.a) != null) {
+      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.e(this.a) != null) {
+      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.c(this.a) != null) {
+      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (NearbyAppInterface.k(this.a) != null) {
+      NearbyAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

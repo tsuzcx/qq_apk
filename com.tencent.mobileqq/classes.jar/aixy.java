@@ -1,16 +1,14 @@
-import java.util.Comparator;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
 
-class aixy
-  implements Comparator<aixz>
+public class aixy
+  extends aiym
 {
-  aixy(aixx paramaixx) {}
+  public aixy(BaseHbUIFragment paramBaseHbUIFragment) {}
   
-  public int a(aixz paramaixz1, aixz paramaixz2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramaixz2.a - paramaixz1.a > 0.0F) {
-      return 1;
-    }
-    return -1;
+    this.a.a();
   }
 }
 

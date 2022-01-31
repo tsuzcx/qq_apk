@@ -1,76 +1,61 @@
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
 
-class apmn
-  extends alvc
+public class apmn
 {
-  apmn(aply paramaply, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
   
-  public void a(boolean paramBoolean, String paramString)
+  public apmn(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    int i = 1;
-    super.a(paramBoolean, paramString);
-    try
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static apmn a(Bundle paramBundle)
+  {
+    int j = 0;
+    int n = -1;
+    String str = "";
+    int i;
+    int k;
+    int m;
+    if (paramBundle != null)
     {
-      Object localObject = new Bundle();
-      if (paramBoolean) {}
-      for (;;)
-      {
-        ((Bundle)localObject).putInt("retCode", i);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-        }
-        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-        ((Intent)localObject).putExtra("action", "follow");
-        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-        ((Intent)localObject).putExtra("uin", paramString);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-        yej.a().a(new FollowUpdateEvent(1, paramString));
-        return;
-        i = 0;
-      }
-      return;
+      i = paramBundle.getInt("result", -1);
+      j = paramBundle.getInt("realSaveNum", 0);
+      k = paramBundle.getInt("payChannel", -1);
+      m = paramBundle.getInt("payState", -1);
+      n = paramBundle.getInt("provideState", -1);
     }
-    catch (Throwable paramString)
+    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
     {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+      return new apmn(i, j, k, m, n, paramBundle);
+      m = -1;
+      k = -1;
+      i = -1;
     }
   }
   
-  public void b(boolean paramBoolean, String paramString)
+  public Bundle a()
   {
-    int i = 0;
-    super.b(paramBoolean, paramString);
-    try
-    {
-      Object localObject = new Bundle();
-      if (paramBoolean) {
-        i = 1;
-      }
-      ((Bundle)localObject).putInt("retCode", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-      }
-      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-      ((Intent)localObject).putExtra("action", "unFollow");
-      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-      ((Intent)localObject).putExtra("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-      yej.a().a(new FollowUpdateEvent(0, paramString));
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", this.jdField_a_of_type_Int);
+    localBundle.putInt("realSaveNum", this.b);
+    localBundle.putInt("payChannel", this.c);
+    localBundle.putInt("payState", this.d);
+    localBundle.putInt("provideState", this.e);
+    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
+    return localBundle;
   }
 }
 

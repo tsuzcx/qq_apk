@@ -1,30 +1,33 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import android.graphics.Bitmap;
 
-public class vip
-  extends GestureDetector.SimpleOnGestureListener
+class vip
+  implements wec
 {
-  public vip(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  vip(vio paramvio, String paramString) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    return true;
+    if (vio.a(this.jdField_a_of_type_Vio))
+    {
+      paramString = bdhj.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        vio.a(this.jdField_a_of_type_Vio, false);
+        return;
+      }
+      bool = xqw.a(paramString, vio.a(this.jdField_a_of_type_Vio));
+      paramString.recycle();
+      vio.b(this.jdField_a_of_type_Vio, bool);
+      return;
+    }
+    boolean bool = xqw.a(paramBitmap, vio.a(this.jdField_a_of_type_Vio));
+    vio.c(this.jdField_a_of_type_Vio, bool);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
-        this.a.a.dismiss();
-      }
-    }
-    return false;
+    wxe.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    vio.d(this.jdField_a_of_type_Vio, false);
   }
 }
 

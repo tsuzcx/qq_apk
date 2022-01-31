@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-public final class anvq
-  implements Parcelable.Creator<CardOCRInfo>
+public class anvq
+  implements DialogInterface.OnClickListener
 {
-  public CardOCRInfo a(Parcel paramParcel)
-  {
-    return new CardOCRInfo(paramParcel);
-  }
+  public anvq(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public CardOCRInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new CardOCRInfo[paramInt];
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (JumpConfirmFragment.b(this.a) == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
+    {
+      azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
+    }
   }
 }
 

@@ -1,31 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class acxl
-  implements aoec
+  extends altm
 {
-  public acxl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxl(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
+    if (paramBoolean) {
+      ForwardRecentActivity.f(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxl
  * JD-Core Version:    0.7.0.1
  */

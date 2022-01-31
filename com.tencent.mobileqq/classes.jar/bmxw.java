@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-class bmxw
-  implements anoi
+public abstract interface bmxw
 {
-  bmxw(bmxs parambmxs) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (bmxs.a(this.a) != null) {
-      bmxs.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
-    }
-  }
+  public abstract void a();
 }
 
 

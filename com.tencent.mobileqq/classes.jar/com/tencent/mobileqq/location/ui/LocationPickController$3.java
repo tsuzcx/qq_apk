@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.location.ui;
 
-import atnb;
-import atnf;
+import atrk;
+import atro;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LocationPickController$3
   implements Runnable
 {
-  public LocationPickController$3(atnf paramatnf) {}
+  public LocationPickController$3(atro paramatro) {}
   
   public void run()
   {
-    if (atnf.a(this.this$0).getCount() <= 0) {
-      atnf.a(this.this$0);
+    if (atro.a(this.this$0).getCount() <= 0) {
+      atro.a(this.this$0);
     }
-    QQToast.a(atnf.a(this.this$0), 1, 2131694118, 0).a();
+    QQToast.a(atro.a(this.this$0), 1, 2131694120, 0).a();
   }
 }
 

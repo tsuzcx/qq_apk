@@ -1,38 +1,13 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlFragment;
 
 public class bfct
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public bfct(SocialFriendChooser paramSocialFriendChooser) {}
+  public bfct(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", bexd.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = bfmz.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      bfbw.a().a(str, paramMessage, new bfcu(this));
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Bfib != null) && (!this.a.jdField_a_of_type_Bfib.isCancelled())) {
-      this.a.jdField_a_of_type_Bfib.cancel(true);
-    }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", bfik.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

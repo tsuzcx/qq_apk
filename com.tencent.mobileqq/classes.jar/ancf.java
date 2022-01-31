@@ -1,14 +1,23 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class ancf
-  extends ancd
 {
+  public float a;
+  public int a;
+  public FaceStatus a;
   public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public String toString()
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

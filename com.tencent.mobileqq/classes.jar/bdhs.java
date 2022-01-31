@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class bdhs
-  extends Handler
+  extends auua
 {
-  bdhs(bdhq parambdhq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bdhs(bdhk parambdhk, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong1, long paramLong2)
   {
-    synchronized (this.a)
-    {
-      if (bdhq.a(this.a) != null) {
-        bdhq.a(this.a).a(bdhq.a(this.a));
-      }
-      while (!QLog.isDevelopLevel())
-      {
-        super.handleMessage(paramMessage);
-        return;
-      }
-      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
+      bddf.a((BaseActivity)this.jdField_a_of_type_Bdhk.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhs
  * JD-Core Version:    0.7.0.1
  */

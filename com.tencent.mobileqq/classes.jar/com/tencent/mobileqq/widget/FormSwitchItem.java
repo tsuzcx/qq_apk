@@ -19,8 +19,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcvq;
-import beln;
+import bczz;
+import bepw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -29,7 +29,7 @@ import com.tencent.widget.Switch;
 
 public class FormSwitchItem
   extends RelativeLayout
-  implements beln
+  implements bepw
 {
   private int jdField_a_of_type_Int;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -82,33 +82,33 @@ public class FormSwitchItem
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return paramResources.getDrawable(2130849679);
+      return paramResources.getDrawable(2130849752);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130849679);
+      return paramResources.getDrawable(2130849752);
     case 0: 
-      return paramResources.getDrawable(2130849679);
+      return paramResources.getDrawable(2130849752);
     case 1: 
-      return paramResources.getDrawable(2130849699);
+      return paramResources.getDrawable(2130849772);
     case 2: 
-      return paramResources.getDrawable(2130849693);
+      return paramResources.getDrawable(2130849766);
     }
-    return paramResources.getDrawable(2130849684);
+    return paramResources.getDrawable(2130849757);
   }
   
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366747);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366757);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     int m = getContext().getResources().getDimensionPixelSize(2131296653);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.i, this.j);
@@ -122,13 +122,13 @@ public class FormSwitchItem
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      bcvq.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      bcvq.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      bczz.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      bczz.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366746);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366756);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.h;
     localLayoutParams.addRule(11);
@@ -381,7 +381,7 @@ public class FormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
       }
     }
     else {

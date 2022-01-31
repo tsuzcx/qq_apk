@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.graphics.drawable.Drawable;
 
-class bani
-  implements ITransCallbackForReport
+public abstract interface bani
 {
-  bani(bang parambang) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(false, paramInt, paramString1, paramString2);
-  }
+  public abstract void a(Drawable paramDrawable);
 }
 
 

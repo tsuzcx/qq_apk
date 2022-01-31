@@ -1,116 +1,58 @@
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.gamecenter.activities.SingleTaskQQBrowser;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class bedy
-  extends bedh
 {
-  final bedi b;
+  private static bedy jdField_a_of_type_Bedy;
+  private ArrayList<bedw> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private LinkedList<bedv> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  public bedy(bedi parambedi)
+  private bedw a(int paramInt1, int paramInt2)
   {
-    this.b = parambedi;
+    return new bedw(paramInt1, paramInt2);
   }
   
-  private boolean a(String paramString)
+  public static bedy a()
   {
-    boolean bool2 = false;
-    paramString = Uri.parse(paramString);
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getQueryParameter("_wwv");
-        bool1 = bool2;
-        if (paramString == null) {}
-      }
-    }
+    if (jdField_a_of_type_Bedy == null) {}
     try
     {
-      long l = Long.parseLong(paramString.trim());
-      bool1 = bool2;
-      if (0L != (0x800 & l)) {
-        bool1 = true;
+      if (jdField_a_of_type_Bedy == null) {
+        jdField_a_of_type_Bedy = new bedy();
       }
+      return jdField_a_of_type_Bedy;
     }
-    catch (NumberFormatException paramString)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QQBrowser", 4, "sorry, i can not get rules from QQBrowser url, maybe have more than one '_wv' in the url");
-    }
-    return bool1;
-    return false;
+    finally {}
   }
   
-  public boolean a(Intent paramIntent)
+  public bedw a(bedv parambedv, int paramInt1, int paramInt2)
   {
-    Activity localActivity = this.b.a();
-    String str = paramIntent.getStringExtra("url");
-    if ((!TextUtils.isEmpty(str)) && (syb.c(str)) && (!(localActivity instanceof PublicAccountBrowser)) && (!(localActivity instanceof ReadInJoyArticleDetailActivity)) && (!(localActivity instanceof PublicAccountAdvertisementActivity)))
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 5)
     {
-      paramIntent = new Intent(paramIntent);
-      paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
-      localActivity.startActivity(paramIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserNavigator", 1, "shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
-      }
+      this.jdField_a_of_type_JavaUtilLinkedList.add(parambedv);
+      return null;
     }
-    do
-    {
-      do
-      {
-        return false;
-        if ((!syb.e(str)) || ((localActivity instanceof PublicAccountBrowser)) || ((localActivity instanceof ReadInJoyArticleDetailActivity)) || ((localActivity instanceof PublicAccountAdvertisementActivity))) {
-          break;
-        }
-        paramIntent = new Intent(paramIntent);
-        paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
-        localActivity.startActivity(paramIntent);
-      } while (!QLog.isColorLevel());
-      QLog.d("SwiftBrowserNavigator", 1, "shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
-      return false;
-      if ((TextUtils.isEmpty(str)) || (!syb.f(str)) || ((localActivity instanceof PublicAccountBrowser)) || ((localActivity instanceof ReadInJoyArticleDetailActivity)) || ((localActivity instanceof PublicAccountAdvertisementActivity))) {
-        break;
-      }
-      paramIntent = new Intent(paramIntent);
-      paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
-      localActivity.startActivity(paramIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserNavigator", 1, "KanDian URL shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
-    return false;
-    if ((!TextUtils.isEmpty(str)) && (localActivity.getClass() != SingleTaskQQBrowser.class) && (a(str)))
-    {
-      if (myl.a().j(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserNavigator", 1, "WebViewSwitchAio canSwitchAIO  url " + str);
-        }
-        paramIntent = new Intent(paramIntent);
-        paramIntent.setComponent(new ComponentName(localActivity, SingleTaskQQBrowser.class));
-        paramIntent.setFlags(402653184);
-        localActivity.startActivity(paramIntent);
-        return false;
-      }
-      QLog.e("SwiftBrowserNavigator", 1, "WebViewSwitchAio want to switchToAIO, but don't have command right. url : " + str);
-    }
-    return true;
+    bedw localbedw = a(paramInt1, paramInt2);
+    localbedw.a(parambedv);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localbedw);
+    return localbedw;
   }
   
-  public boolean b(Intent paramIntent)
+  public void a(bedw parambedw)
   {
-    return true;
+    if (parambedw != null)
+    {
+      parambedw.c();
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambedw);
+      if ((this.jdField_a_of_type_JavaUtilArrayList.size() < 5) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()))
+      {
+        parambedw = (bedv)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+        bedw localbedw = a(parambedw.getRenderWidth(), parambedw.getRenderHeight());
+        localbedw.a(parambedw);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localbedw);
+        parambedw.onSetRenderer(localbedw);
+      }
+    }
   }
 }
 

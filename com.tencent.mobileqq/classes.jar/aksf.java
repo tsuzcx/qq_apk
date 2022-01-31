@@ -1,291 +1,263 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.media.SoundPool;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.mobileqq.apollo.cmgame.CmGamePushManager.1;
+import com.tencent.mobileqq.apollo.cmgame.CmGamePushManager.3;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.util.Collections;
-import java.util.Map;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class aksf
-  implements aksi
 {
-  private int jdField_a_of_type_Int = 1;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(20));
-  private int b;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Comparator<CmGamePushItem> jdField_a_of_type_JavaUtilComparator = new aksg(this);
+  private List<CmGamePushItem> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public aksf(int paramInt)
+  private void a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    QLog.i("cmgame_process.CmGameSoudPoolPlayer", 1, "[CmGameSoudPoolPlayer]");
-    this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(20, 3, 0);
-    this.b = paramInt;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = akro.a();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    d();
-  }
-  
-  private void a(akni paramakni, int paramInt, long paramLong)
-  {
-    ApolloCmdChannel localApolloCmdChannel = akro.a();
-    if (localApolloCmdChannel != null) {
-      localApolloCmdChannel.playMusicInner(paramakni, paramInt, paramLong);
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {}
-    while (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("apollo_game_music_switch" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_" + this.b, 1);
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public int a(akni paramakni, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
-  {
-    if ((this.b > 0) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!akro.d()) || (paramakni == null)))
+    if (paramCmGamePushItem1 == null) {}
+    awgf localawgf;
+    do
     {
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "[playMusic], DO NOT play. switch:" + this.jdField_a_of_type_Int);
-      return -1;
-    }
-    label283:
-    label330:
-    for (Object localObject = null;; localObject = null)
+      do
+      {
+        return;
+        localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localObject == null);
+      localawgf = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localawgf == null);
+    localObject = localawgf.a();
+    ((awgh)localObject).a();
+    if (paramCmGamePushItem2 != null) {}
+    for (;;)
     {
       try
       {
-        if ((paramakni instanceof ApolloSurfaceView)) {
-          localObject = ((ApolloSurfaceView)paramakni).getRender();
+        localawgf.b(paramCmGamePushItem2);
+        localawgf.a(paramCmGamePushItem1);
+        ((awgh)localObject).c();
+        return;
+      }
+      catch (Exception paramCmGamePushItem1)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        for (;;)
-        {
-          if (localObject == null) {
-            break label330;
-          }
-          localObject = ((ApolloRender)localObject).getRscPath(paramString, "mp3");
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "audioPath is null.");
-          return -1;
-          if ((paramakni instanceof ApolloTextureView)) {
-            localObject = ((ApolloTextureView)paramakni).getRender();
-          }
-        }
-        if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
+        QLog.d("CmGamePushManager", 2, "updatePushItem exception: ", paramCmGamePushItem1);
+        return;
+      }
+      finally
+      {
+        ((awgh)localObject).b();
+      }
+      localawgf.a(paramCmGamePushItem1);
+    }
+  }
+  
+  /* Error */
+  private void a(List<CmGamePushItem> paramList)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnull +12 -> 13
+    //   4: aload_1
+    //   5: invokeinterface 104 1 0
+    //   10: ifne +4 -> 14
+    //   13: return
+    //   14: aload_0
+    //   15: getfield 18	aksf:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   18: astore_2
+    //   19: aload_2
+    //   20: monitorenter
+    //   21: aload_0
+    //   22: getfield 23	aksf:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   25: aload_1
+    //   26: invokeinterface 108 2 0
+    //   31: pop
+    //   32: aload_2
+    //   33: monitorexit
+    //   34: aload_0
+    //   35: getfield 43	aksf:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   38: invokevirtual 49	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   41: checkcast 51	com/tencent/mobileqq/app/QQAppInterface
+    //   44: astore_2
+    //   45: aload_2
+    //   46: ifnull -33 -> 13
+    //   49: aload_2
+    //   50: invokevirtual 55	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawgg;
+    //   53: invokevirtual 61	awgg:createEntityManager	()Lawgf;
+    //   56: astore_3
+    //   57: aload_3
+    //   58: ifnull -45 -> 13
+    //   61: aload_3
+    //   62: invokevirtual 66	awgf:a	()Lawgh;
+    //   65: astore_2
+    //   66: aload_2
+    //   67: invokevirtual 70	awgh:a	()V
+    //   70: aload_1
+    //   71: invokeinterface 112 1 0
+    //   76: astore_1
+    //   77: aload_1
+    //   78: invokeinterface 117 1 0
+    //   83: ifeq +46 -> 129
+    //   86: aload_3
+    //   87: aload_1
+    //   88: invokeinterface 120 1 0
+    //   93: checkcast 122	com/tencent/mobileqq/apollo/data/CmGamePushItem
+    //   96: invokevirtual 74	awgf:b	(Lawge;)Z
+    //   99: pop
+    //   100: goto -23 -> 77
+    //   103: astore_1
+    //   104: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   107: ifeq +12 -> 119
+    //   110: ldc 92
+    //   112: iconst_2
+    //   113: ldc 124
+    //   115: aload_1
+    //   116: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   119: aload_2
+    //   120: invokevirtual 82	awgh:b	()V
+    //   123: return
+    //   124: astore_1
+    //   125: aload_2
+    //   126: monitorexit
+    //   127: aload_1
+    //   128: athrow
+    //   129: aload_2
+    //   130: invokevirtual 80	awgh:c	()V
+    //   133: aload_2
+    //   134: invokevirtual 82	awgh:b	()V
+    //   137: return
+    //   138: astore_1
+    //   139: aload_2
+    //   140: invokevirtual 82	awgh:b	()V
+    //   143: aload_1
+    //   144: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	this	aksf
+    //   0	145	1	paramList	List<CmGamePushItem>
+    //   18	122	2	localObject	Object
+    //   56	31	3	localawgf	awgf
+    // Exception table:
+    //   from	to	target	type
+    //   70	77	103	java/lang/Exception
+    //   77	100	103	java/lang/Exception
+    //   129	133	103	java/lang/Exception
+    //   21	34	124	finally
+    //   125	127	124	finally
+    //   70	77	138	finally
+    //   77	100	138	finally
+    //   104	119	138	finally
+    //   129	133	138	finally
+  }
+  
+  private CmGamePushItem b()
+  {
+    Object localObject1 = null;
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        return null;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        CmGamePushItem localCmGamePushItem2 = (CmGamePushItem)localIterator.next();
+        if ((localCmGamePushItem2.msg_type != 1) || (localCmGamePushItem2.start_ts >= l) || (localCmGamePushItem2.end_ts <= l)) {
           break label283;
         }
+        if (j == 0)
+        {
+          if (!localCmGamePushItem2.isShow) {
+            i = 1;
+          }
+          localCmGamePushItem2.isShow = true;
+          localStringBuilder.append(",current show item:").append(localCmGamePushItem2.toString());
+          j = 1;
+          localObject1 = localCmGamePushItem2;
+          break label280;
+        }
+        if (!localCmGamePushItem2.isShow) {
+          break label283;
+        }
+        localArrayList.add(localCmGamePushItem2);
+        localStringBuilder.append("\n,remove item:").append(localCmGamePushItem2.toString());
+        break label283;
       }
-      catch (Throwable paramakni)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramakni, new Object[0]);
-        return -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("CmGamePushManager", 2, new Object[] { "getCmGamePromotionPush:", localStringBuilder.toString() });
       }
-      if (this.jdField_a_of_type_JavaUtilMap != null)
+      if ((localArrayList.size() > 0) || (i != 0))
       {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aksh(this, paramFloat, paramInt2, paramString, paramakni, paramLong));
-        paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (paramString != null) {
-          if (-1.0F == paramFloat)
+        ThreadManager.excute(new CmGamePushManager.1(this, localObject1, localArrayList), 32, null, true);
+        return localObject1;
+      }
+    }
+    return localCmGamePushItem1;
+    label280:
+    label283:
+    for (;;)
+    {
+      break;
+    }
+  }
+  
+  public CmGamePushItem a()
+  {
+    return b();
+  }
+  
+  public void a(CmGamePushItem paramCmGamePushItem)
+  {
+    if (paramCmGamePushItem == null) {
+      return;
+    }
+    Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject1 != null) && (paramCmGamePushItem.msg_type == 1)) {
+      ((axlx)((QQAppInterface)localObject1).getManager(36)).c(String.valueOf("103100.103200.103240.103248"));
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    localObject1 = null;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          if ((!TextUtils.isEmpty(((CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i)).msg_id)) && (!TextUtils.isEmpty(paramCmGamePushItem.msg_id)) && (((CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i)).msg_id.equals(paramCmGamePushItem.msg_id)))
           {
-            paramFloat = 1.0F;
-            paramInt1 = this.jdField_a_of_type_AndroidMediaSoundPool.play(paramString.intValue(), paramFloat, paramFloat, 0, paramInt2, 1.0F);
-            if (paramInt1 != 0) {
-              a(paramakni, paramInt1, paramLong);
+            CmGamePushItem localCmGamePushItem = (CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i);
+            this.jdField_a_of_type_JavaUtilList.remove(i);
+            this.jdField_a_of_type_JavaUtilList.add(i, paramCmGamePushItem);
+            localObject1 = localCmGamePushItem;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("CmGamePushManager", 2, new Object[] { "clearPushRedDots update after new item is:", paramCmGamePushItem.toString() });
+              localObject1 = localCmGamePushItem;
             }
           }
         }
-        for (;;)
+        else
         {
-          return 0;
-          break;
-          paramInt1 = this.jdField_a_of_type_AndroidMediaSoundPool.load((String)localObject, 1);
-          this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(paramInt1));
+          ThreadManager.excute(new CmGamePushManager.3(this, paramCmGamePushItem, (CmGamePushItem)localObject1), 32, null, true);
+          return;
         }
       }
-      paramakni = new StringBuilder().append("pool or cache is null ");
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, bool);
-        break;
-      }
-    }
-  }
-  
-  public int a(AppInterface paramAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameSoudPoolPlayer", 2, new Object[] { "[getMusicSwitch], gameId:", Integer.valueOf(this.b) });
-    }
-    d();
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public JSONObject a(aksy paramaksy, JSONObject paramJSONObject)
-  {
-    if ((this.b > 0) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!akro.d())))
-    {
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "[playMusic], DO NOT play. switch:" + this.jdField_a_of_type_Int);
-      return paramJSONObject;
-    }
-    JSONObject localJSONObject;
-    int i;
-    String str2;
-    float f;
-    String str1;
-    if (paramJSONObject != null) {
-      try
-      {
-        localJSONObject = new JSONObject(paramJSONObject.toString());
-        paramJSONObject.optInt("type");
-        i = paramJSONObject.optInt("loop");
-        str2 = paramJSONObject.optString("src");
-        f = (float)paramJSONObject.optDouble("volume");
-        str1 = akpq.a(str2, this.b, "", false);
-        if (!TextUtils.isEmpty(str1)) {
-          break label151;
-        }
-        QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "audioPath is null.");
-        return paramJSONObject;
-      }
-      catch (Throwable paramaksy)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramaksy, new Object[0]);
-      }
-    } else {
-      return null;
-    }
-    label151:
-    if ((this.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_JavaUtilMap != null))
-    {
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aksg(this, f, i, str2, paramaksy, localJSONObject));
-      paramJSONObject = (Integer)this.jdField_a_of_type_JavaUtilMap.get(str1);
-      if (paramJSONObject != null)
-      {
-        if (-1.0F != f) {
-          break label357;
-        }
-        f = 1.0F;
-      }
-    }
-    label357:
-    for (;;)
-    {
-      for (;;)
-      {
-        i = this.jdField_a_of_type_AndroidMediaSoundPool.play(paramJSONObject.intValue(), f, f, 0, i, 1.0F);
-        if ((i == 0) || (paramaksy == null)) {
-          break;
-        }
-        try
-        {
-          localJSONObject.put("id", i);
-          paramaksy.a(localJSONObject);
-        }
-        catch (Throwable paramaksy)
-        {
-          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramaksy, new Object[0]);
-        }
-      }
-      break;
-      i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str1, 1);
-      this.jdField_a_of_type_JavaUtilMap.put(str1, Integer.valueOf(i));
-      break;
-      paramaksy = new StringBuilder().append("pool or cache is null ");
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, bool);
-        break;
-      }
-    }
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaSoundPool != null) && (paramJSONObject != null) && (paramJSONObject.has("id"))) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.unload(paramJSONObject.optInt("id"));
-    }
-    return paramJSONObject;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.autoPause();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, AppInterface paramAppInterface)
-  {
-    if ((this.jdField_a_of_type_AndroidContentSharedPreferences == null) || (paramAppInterface == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("apollo_game_music_switch" + paramAppInterface.getCurrentAccountUin() + "_" + this.b, paramInt).commit();
-    if (paramInt == 0) {
-      a();
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.pause(paramInt);
-    }
-  }
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.autoResume();
-    }
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.resume(paramInt);
-    }
-  }
-  
-  public void c()
-  {
-    QLog.i("cmgame_process.CmGameSoudPoolPlayer", 1, "[onDestroy]");
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
-    {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-    }
-  }
-  
-  public void c(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.stop(paramInt);
+      finally {}
+      i += 1;
     }
   }
 }

@@ -1,14 +1,22 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aitk
-  extends aitx
+class aitk
+  implements DialogInterface.OnClickListener
 {
-  public aitk(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  aitk(aitg paramaitg) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ExclusiveHbFragment.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

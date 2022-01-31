@@ -1,12 +1,14 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-public final class bduq
-  implements FilenameFilter
+class bduq<E>
 {
-  public boolean accept(File paramFile, String paramString)
+  public bdup<E> a;
+  public Object a;
+  public String a;
+  
+  public bduq(bdup<E> parambdup, Object paramObject, String paramString)
   {
-    return (paramString.endsWith(".hy")) || (paramString.endsWith(".fz")) || (paramString.endsWith(".hy3")) || (paramString.endsWith(".fz4"));
+    this.jdField_a_of_type_Bdup = parambdup;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

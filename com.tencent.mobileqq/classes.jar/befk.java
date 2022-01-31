@@ -1,13 +1,9 @@
-public abstract class befk
+import android.view.View;
+
+public class befk
 {
-  public final int a;
-  
-  public befk(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public abstract int a();
+  public View a;
+  public View b;
 }
 
 

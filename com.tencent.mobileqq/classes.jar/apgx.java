@@ -1,73 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class apgx
-  extends apgu
+  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
 {
-  public apgx(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.hotfriend.res", paramQQAppInterface);
-  }
+  public apgp a;
   
-  public int a()
-  {
-    return 10042;
-  }
+  protected apgx(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public Class<? extends XmlData> a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return HotFriendResData.class;
-  }
-  
-  public String a()
-  {
-    return "HotFriendResHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    if (!new File(paramString).exists())
+    if (this.jdField_a_of_type_Apgp != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
+      this.jdField_a_of_type_Apgp.a = paramBoolean;
+      aphn.a().e();
     }
-    try
-    {
-      String str = aupg.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
-      }
-      if (!TextUtils.isEmpty(str)) {
-        bdcs.a(paramString, str, false);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    super.a(paramString);
   }
   
-  public boolean a()
+  public boolean onLongClick(View paramView)
   {
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, alud.a(2131703166), new apgy(this), new apgz(this)).show();
     return true;
-  }
-  
-  public String b()
-  {
-    return null;
   }
 }
 

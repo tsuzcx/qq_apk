@@ -1,42 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class acyt
-  implements DialogInterface.OnDismissListener
+  extends awqa
 {
-  WeakReference<GeneralSettingActivity> a;
-  WeakReference<CompoundButton> b;
+  public acyt(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public acyt(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    this.a = new WeakReference(paramGeneralSettingActivity);
-    this.b = new WeakReference(paramCompoundButton);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    CompoundButton localCompoundButton = null;
-    if (this.a == null)
-    {
-      paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
-      }
-    }
-    for (;;)
-    {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
+    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
+    while (paramInt != 0) {
       return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
-      break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
     }
+    this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+    this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Awqt, true, new String[] { "map_key_personality_label_board" });
   }
 }
 

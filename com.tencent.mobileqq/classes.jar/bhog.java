@@ -1,27 +1,14 @@
-public class bhog
+public abstract interface bhog
 {
-  public static int a(String paramString)
-  {
-    return a(paramString, 0);
-  }
+  public abstract void a(String paramString, Object paramObject);
   
-  public static int a(String paramString, int paramInt)
-  {
-    try
-    {
-      int i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return paramInt;
-  }
+  public abstract void b(String paramString, Object paramObject);
+  
+  public abstract void c(String paramString, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhog
  * JD-Core Version:    0.7.0.1
  */

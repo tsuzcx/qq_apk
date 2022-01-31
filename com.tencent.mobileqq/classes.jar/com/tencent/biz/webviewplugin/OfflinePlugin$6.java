@@ -17,12 +17,12 @@ import java.util.List;
 import java.util.Set;
 import nbv;
 import ndq;
-import yzu;
+import zej;
 
 public class OfflinePlugin$6
   implements Runnable
 {
-  public OfflinePlugin$6(yzu paramyzu, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
+  public OfflinePlugin$6(zej paramzej, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class OfflinePlugin$6
       str1 = nbv.d(this.jdField_a_of_type_JavaLangString);
       str2 = str1 + "_register_time";
       l1 = ((SharedPreferences)localObject2).getLong(str2, -1L);
-      if ((!"0".equals(this.b)) && (yzu.a())) {
+      if ((!"0".equals(this.b)) && (zej.a())) {
         break;
       }
     } while (l1 == -1L);

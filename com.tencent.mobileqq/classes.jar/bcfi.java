@@ -1,178 +1,21 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
 
 class bcfi
-  implements bcgo
+  implements View.OnKeyListener
 {
-  bcfi(bcfc parambcfc) {}
+  bcfi(bcfg parambcfg, bcfm parambcfm) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bcfm.a.getSelectionStart() == 0))
     {
+      this.jdField_a_of_type_Bcfg.a.b(this.jdField_a_of_type_Bcfm);
+      return true;
     }
-    label295:
-    label820:
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null)
-        {
-          try
-          {
-            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-            paramJSONObject = (JSONObject)paramJSONObject.get("result");
-            if ((paramInt != 0) || (paramJSONObject == null)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("basics");
-            Object localObject2;
-            String str;
-            int i;
-            Object localObject1;
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (!QLog.isColorLevel()) {
-                    break label1008;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-                  break label1008;
-                }
-              }
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (("add_group".equals(localObject1)) && (i != 1)) {
-                    bcfc.a(this.a).b();
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break label1015;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-                  break label1015;
-                }
-              }
-            }
-            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-            }
-            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-              paramBundle = (String)((JSONObject)localObject1).get("name");
-              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-              str = (String)((JSONObject)localObject1).get("api");
-              localObject1 = (String)((JSONObject)localObject1).get("msg");
-              if (QLog.isColorLevel()) {
-                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-              }
-              paramInt += 1;
-            }
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-          }
-          catch (Exception paramJSONObject) {}
-          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
-          return;
-          if ((bcfc.a(this.a) != null) && (paramJSONObject != null)) {
-            try
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("data");
-              if (paramJSONObject != null)
-              {
-                paramJSONObject = (JSONObject)paramJSONObject.get("key");
-                if (paramJSONObject != null)
-                {
-                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                  paramBundle = (String)paramJSONObject.get("retMsg");
-                  if (paramInt != 0) {
-                    break label921;
-                  }
-                  if (bcfc.a(this.a) != null) {
-                    bcfc.a(this.a).a(true);
-                  }
-                  bcfj.a(9, new Object());
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                    return;
-                  }
-                }
-              }
-            }
-            catch (Exception paramJSONObject)
-            {
-              bcfc.a(this.a).d(bcfc.a(this.a).getString(2131721020));
-            }
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
-    return;
-    label921:
-    paramJSONObject = bcfc.a(this.a).getString(2131721020);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      bcfc.a(this.a).d(paramJSONObject);
-      break label820;
-      paramJSONObject = bcfc.a(this.a).getString(2131721015);
-      continue;
-      paramJSONObject = bcfc.a(this.a).getString(2131721021);
-      continue;
-      label1008:
-      paramInt += 1;
-      break;
-      label1015:
-      paramInt += 1;
-      break label295;
-    }
+    return false;
   }
 }
 

@@ -1,112 +1,49 @@
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-class bdgz
-  extends BaseAdapter
+public class bdgz
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
-  
-  public bdgz(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
+  public static float a(Context paramContext, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    Object localObject;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
+    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
   }
   
-  private int a(int paramInt)
+  @SuppressLint({"NewApi"})
+  public static int a(Context paramContext)
   {
-    if (paramInt == 4) {}
-    do
-    {
-      return 11;
-      if (paramInt == 1) {
-        return 4;
-      }
-      if (paramInt == 3000) {
-        return 101;
-      }
-    } while (paramInt == 1006);
-    return 1;
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 11) {
+      i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
+    }
+    int j = (int)paramContext.getResources().getDimension(17104896);
+    if (QLog.isColorLevel()) {
+      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
+    }
+    return Math.max(i, j);
   }
   
-  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
+  public static int a(TextView paramTextView, int paramInt)
   {
-    if (aljq.z.equals(paramResultRecord.a))
+    if ((paramTextView != null) && (paramTextView.getText() != null) && (paramInt > 0))
     {
-      paramImageView.setImageResource(2130843762);
-      return;
+      TextPaint localTextPaint = paramTextView.getPaint();
+      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
     }
-    if (aljq.A.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843760);
-      return;
-    }
-    if (aljq.B.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843765);
-      return;
-    }
-    if (aljq.y.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130839384);
-      return;
-    }
-    int i = a(paramResultRecord.a());
-    paramImageView.setImageDrawable(bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
-  }
-  
-  public ResultRecord a(int paramInt)
-  {
-    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bdgv.i, this.jdField_a_of_type_Bdgv.i));
-    }
-    for (;;)
-    {
-      a(paramView, a(paramInt));
-      paramView.setTag(a(paramInt));
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setFocusable(false);
-      return paramView;
-      paramView = (ImageView)paramView;
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdgz
  * JD-Core Version:    0.7.0.1
  */

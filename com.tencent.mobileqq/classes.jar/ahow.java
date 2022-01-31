@@ -1,15 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class ahow
+class ahow
   implements View.OnClickListener
 {
-  public ahow(PublicAccountFragment paramPublicAccountFragment) {}
+  ahow(ahot paramahot) {}
   
   public void onClick(View paramView)
   {
-    adkx.a(this.a.a, null);
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bcpx.a(ahot.a(this.a), paramView, 17, 10029);
+    bdes.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
   }
 }
 

@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aclp
-  implements DialogInterface.OnClickListener
+public class aclp
+  implements Animation.AnimationListener
 {
-  aclp(aclo paramaclo, boolean paramBoolean) {}
+  public aclp(ChatFragment paramChatFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
+    this.a.b(1);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
   }
 }
 

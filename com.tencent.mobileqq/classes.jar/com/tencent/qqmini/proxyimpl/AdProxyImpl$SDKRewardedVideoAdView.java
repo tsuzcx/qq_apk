@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bgqg;
+import bgun;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;

@@ -1,21 +1,21 @@
+import android.content.Context;
+import java.lang.ref.WeakReference;
+
 public class bfmc
 {
-  public static final bfmc a;
-  public static final bfmc b;
-  public static final bfmc c = new bfmc("ANDROID.QQ.NEWYYBAPK", "7001");
   public String a;
+  public WeakReference<Context> a;
   public String b;
+  public WeakReference<bfmn> b;
+  public String c;
   
-  static
+  public bfmc(bfmb parambfmb, Context paramContext, String paramString1, String paramString2, String paramString3, bfmn parambfmn)
   {
-    jdField_a_of_type_Bfmc = new bfmc("ANDROID.QQ.WLISTAPK", "7003");
-    jdField_b_of_type_Bfmc = new bfmc("ANDROID.QQ.YYBAPK", "7002");
-  }
-  
-  bfmc(String paramString1, String paramString2)
-  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambfmn);
   }
 }
 

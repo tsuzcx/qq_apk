@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agvj;
-import agvk;
+import agzy;
+import agzz;
 
 public class LightalkBlueTipsBar$1
   implements Runnable
 {
-  public LightalkBlueTipsBar$1(agvj paramagvj) {}
+  public LightalkBlueTipsBar$1(agzy paramagzy) {}
   
   public void run()
   {
-    agvk localagvk = agvk.a();
-    if (localagvk != null)
+    agzz localagzz = agzz.a();
+    if (localagzz != null)
     {
-      this.this$0.a = localagvk.d;
-      this.this$0.b = localagvk.e;
+      this.this$0.a = localagzz.d;
+      this.this$0.b = localagzz.e;
     }
   }
 }

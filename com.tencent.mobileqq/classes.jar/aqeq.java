@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqeq
-  implements View.OnClickListener
+  extends aqbl
 {
-  public aqeq(HorseRaceLampVew.1 param1) {}
+  public aqeq(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aqcx> paramList, aqck paramaqck)
   {
-    if (!this.a.this$0.b) {
-      QLog.e("HorseRaceLampVew + horserace", 2, "CLICK WITH TOUCH SCROLL THROW IT");
-    }
-    do
-    {
+    if (this.a.b != paramLong) {
       return;
-      paramView = paramView.getTag();
-    } while ((paramView == null) || (!(paramView instanceof aqet)) || (HorseRaceLampVew.a(this.a.this$0) == null));
-    paramView = (aqet)paramView;
-    HorseRaceLampVew.a(this.a.this$0).a(paramView.a);
+    }
+    try
+    {
+      ExtendFriendSearchFragment.a(this.a, 1);
+      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaqck);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
+    }
   }
 }
 

@@ -1,59 +1,52 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.module.aifilter.SingleImageAIFilterProxy.1;
+import java.util.ArrayList;
+import java.util.List;
+
 public class blln
+  extends blle
 {
-  public static String a(long paramLong)
+  private static final String a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private List<blki> c;
+  
+  static
   {
-    int m = 0;
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    String str4 = "";
-    int j = Math.round((float)(l % 3600000L % 60000L) / 1000.0F);
-    int i = (int)(l % 3600000L) / 60000;
-    int k = (int)(l / 3600000L);
-    if (j == 60)
+    jdField_a_of_type_JavaLangString = blln.class.getSimpleName();
+  }
+  
+  public blln(String paramString, List<blki> paramList, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramList;
+  }
+  
+  public bllj a(List<blli> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (paramList = null;; paramList = (blli)paramList.get(0))
     {
-      i += 1;
-      j = 0;
-    }
-    for (;;)
-    {
-      if (i == 60)
-      {
-        k += 1;
-        i = m;
-      }
-      for (;;)
-      {
-        String str1;
-        String str2;
-        if (j < 10)
-        {
-          str1 = "0" + j;
-          if (i >= 10) {
-            break label249;
-          }
-          str2 = "0" + i;
-          label138:
-          if (k >= 10) {
-            break label273;
-          }
-        }
-        label273:
-        for (String str3 = "0" + k;; str3 = "" + k)
-        {
-          if (k > 0) {
-            str4 = str3 + ":";
-          }
-          return str4 + str2 + ":" + str1;
-          str1 = "" + j;
-          break;
-          label249:
-          str2 = "" + i;
-          break label138;
-        }
+      return a(paramList);
+      if (paramList.size() > 1) {
+        bljn.d(jdField_a_of_type_JavaLangString, "single image but responseList != 1");
       }
     }
+  }
+  
+  protected void a(Context paramContext, bllh parambllh)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = 1;
+    ThreadManager.excute(new SingleImageAIFilterProxy.1(this, localArrayList, paramContext, parambllh), 128, null, false);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

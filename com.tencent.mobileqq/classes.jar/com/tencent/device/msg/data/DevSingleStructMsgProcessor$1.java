@@ -1,16 +1,16 @@
 package com.tencent.device.msg.data;
 
-import armz;
-import zte;
+import arri;
+import zxt;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(zte paramzte) {}
+  public DevSingleStructMsgProcessor$1(zxt paramzxt) {}
   
   public void run()
   {
-    armz.a(2131694061);
+    arri.a(2131694063);
   }
 }
 

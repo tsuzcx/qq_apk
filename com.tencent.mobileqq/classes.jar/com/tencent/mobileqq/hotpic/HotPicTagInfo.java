@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.hotpic;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class HotPicTagInfo
-  extends awbv
+  extends awge
   implements Comparable<HotPicTagInfo>
 {
   public int position;
-  @awdj
+  @awhs
   public int tagId;
   public String tagName;
   public int tagType;

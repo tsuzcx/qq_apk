@@ -1,220 +1,79 @@
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
+import com.tencent.qqmini.sdk.minigame.webaudio.WebAudioManager.5;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bhax<T, E>
+public class bhax
+  implements bhav
 {
-  private static final String TAG = "StateMachine";
-  private bhax<T, E>.bhaz<T> mCurrState;
-  private List<E> mEvents = new ArrayList();
-  private List<bhay> mStateListeners = new ArrayList();
-  private Map<bhaz, List<bhba>> mStateTransferMap = new HashMap();
+  public bhax(WebAudioManager.5 param5, bhat parambhat) {}
   
-  private void autoConsumeCacheEvents()
+  public void a(byte[] paramArrayOfByte, MediaFormat paramMediaFormat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = new ArrayList(this.mEvents);
-    if (((List)localObject1).size() <= 0) {
-      label21:
-      return;
-    } else {
-      localObject1 = ((List)localObject1).iterator();
-    }
-    label182:
-    for (;;)
+    bhay localbhay;
+    synchronized ()
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break label21;
+      if (bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0) == null) {
+        return;
       }
-      Object localObject2 = ((Iterator)localObject1).next();
-      if (localObject2 == null) {
-        break;
+      if (!bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int))) {
+        bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int), new bhay(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0));
       }
-      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
-      for (;;)
+      localbhay = (bhay)bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int));
+      ArrayList localArrayList = (ArrayList)bhaw.b(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int));
+      paramMediaFormat = localArrayList;
+      if (localArrayList == null) {
+        paramMediaFormat = new ArrayList();
+      }
+      if (paramBoolean2)
       {
-        if (!localIterator.hasNext()) {
-          break label182;
-        }
-        Object localObject3 = (Map.Entry)localIterator.next();
-        Object localObject4 = (bhaz)((Map.Entry)localObject3).getKey();
-        if (this.mCurrState == localObject4)
-        {
-          localObject3 = ((List)((Map.Entry)localObject3).getValue()).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (bhba)((Iterator)localObject3).next();
-            if ((localObject4 == null) || (!localObject2.equals(bhba.a((bhba)localObject4)))) {
-              break;
-            }
-            setCurrState(bhba.b((bhba)localObject4));
-            this.mEvents.remove(localObject2);
-          }
-        }
-      }
-    }
-  }
-  
-  public void addStateChangeListener(bhay parambhay)
-  {
-    try
-    {
-      if (!this.mStateListeners.contains(parambhay)) {
-        this.mStateListeners.add(parambhay);
-      }
-      return;
-    }
-    finally
-    {
-      parambhay = finally;
-      throw parambhay;
-    }
-  }
-  
-  public void addStateTransfer(bhax<T, E>.bhba<E> parambhax)
-  {
-    if ((parambhax == null) || (bhba.a(parambhax) == null)) {
-      return;
-    }
-    List localList = (List)this.mStateTransferMap.get(parambhax.a());
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.mStateTransferMap.put(bhba.a(parambhax), localObject);
-    }
-    ((List)localObject).add(parambhax);
-  }
-  
-  public void appendEvent(E paramE)
-  {
-    if ((paramE == null) || (this.mCurrState == null)) {}
-    label156:
-    label157:
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (bhaz)((Map.Entry)localObject1).getKey();
-        if (this.mCurrState != localObject2) {
-          break label156;
-        }
-        localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (bhba)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (paramE.equals(bhba.a((bhba)localObject2))))
-          {
-            setCurrState(bhba.b((bhba)localObject2));
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        break;
-        if (i != 0) {
-          break label157;
-        }
-        this.mEvents.add(paramE);
+        bhay.a(localbhay, 3);
         return;
       }
     }
-  }
-  
-  public bhaz getCurrState()
-  {
-    return this.mCurrState;
-  }
-  
-  protected void notifyStateChange(bhaz parambhaz1, bhaz parambhaz2)
-  {
-    try
+    int i = bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).loadRawData(paramArrayOfByte, this.jdField_a_of_type_Bhat.a(), this.jdField_a_of_type_Bhat.b(), this.jdField_a_of_type_Bhat.c());
+    paramMediaFormat.add(Integer.valueOf(i));
+    bhaw.b(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int), paramMediaFormat);
+    switch (bhay.a(localbhay))
     {
-      parambhaz1 = this.mStateListeners.iterator();
-      while (parambhaz1.hasNext())
-      {
-        parambhaz2 = (bhay)parambhaz1.next();
-        if (parambhaz2 != null) {
-          parambhaz2.onStateChanged();
-        }
-      }
     }
-    finally {}
-  }
-  
-  public boolean removeStateChangeListener(bhay parambhay)
-  {
-    try
-    {
-      boolean bool = this.mStateListeners.remove(parambhay);
-      return bool;
-    }
-    finally
-    {
-      parambhay = finally;
-      throw parambhay;
-    }
-  }
-  
-  public void sendEvent(E paramE)
-  {
-    if ((paramE == null) || (this.mCurrState == null)) {}
-    label128:
     for (;;)
     {
-      return;
-      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
-      for (;;)
+      if (paramBoolean1) {
+        paramArrayOfByte = new JSONObject();
+      }
+      try
       {
-        if (!localIterator.hasNext()) {
-          break label128;
+        paramArrayOfByte.put("decodeId", this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int);
+        paramArrayOfByte.put("status", "ok");
+        if (this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Bgok != null) {
+          this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Bgok.a.a("onDecodeWebAudioDataDone", paramArrayOfByte.toString(), 0);
         }
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (bhaz)((Map.Entry)localObject1).getKey();
-        if (this.mCurrState == localObject2)
+        return;
+        bhay.a(localbhay, 1);
+        continue;
+        paramArrayOfByte = bhay.a(localbhay);
+        if ((paramArrayOfByte != null) && (!paramArrayOfByte.isEmpty()))
         {
-          localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
-          if (((Iterator)localObject1).hasNext())
+          paramArrayOfByte = paramArrayOfByte.iterator();
+          while (paramArrayOfByte.hasNext())
           {
-            localObject2 = (bhba)((Iterator)localObject1).next();
-            if ((localObject2 == null) || (!paramE.equals(bhba.a((bhba)localObject2)))) {
-              break;
-            }
-            setCurrState(bhba.b((bhba)localObject2));
+            int j = ((Integer)paramArrayOfByte.next()).intValue();
+            bhaw.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).setQueueBuffer(j, i);
           }
         }
       }
-    }
-  }
-  
-  public void setCurrState(bhaz parambhaz)
-  {
-    bhaz localbhaz = getCurrState();
-    if ((parambhaz == null) || (parambhaz == this.mCurrState)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append(" change state from ");
-    if (this.mCurrState != null) {}
-    for (Object localObject = this.mCurrState.a;; localObject = "N/A")
-    {
-      QMLog.i("StateMachine", localObject + " to " + parambhaz.a);
-      this.mCurrState = parambhaz;
-      this.mCurrState.a();
-      autoConsumeCacheEvents();
-      if (parambhaz == localbhaz) {
-        break;
+      catch (JSONException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
       }
-      notifyStateChange(localbhaz, parambhaz);
-      return;
     }
   }
 }

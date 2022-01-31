@@ -3,16 +3,16 @@ package com.tencent.mobileqq.mini.entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserAppListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import alkr;
-import amnf;
+import alpg;
+import amru;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aokd;
-import awbv;
-import awbw;
-import awbx;
-import awby;
+import aoom;
+import awge;
+import awgf;
+import awgg;
+import awgh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -49,7 +49,7 @@ public class MiniAppUserAppInfoListManager
   private LinkedList<MiniAppInfo> mTopAppList = new LinkedList();
   private COMM.StCommonExt mTopExtInfo;
   private LinkedList<MiniAppInfo> mUsedAppList = new LinkedList();
-  private alkr redDotObserver = new MiniAppUserAppInfoListManager.1(this);
+  private alpg redDotObserver = new MiniAppUserAppInfoListManager.1(this);
   
   public MiniAppUserAppInfoListManager(QQAppInterface paramQQAppInterface)
   {
@@ -147,19 +147,19 @@ public class MiniAppUserAppInfoListManager
     if (paramAppInterface == null) {
       QLog.e("MiniAppUserAppInfoListManager", 1, "clear DB, app is null.");
     }
-    awbw localawbw;
+    awgf localawgf;
     do
     {
       return;
-      localawbw = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    } while (localawbw == null);
-    paramAppInterface = localawbw.a();
+      localawgf = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    } while (localawgf == null);
+    paramAppInterface = localawgf.a();
     try
     {
       paramAppInterface.a();
-      localawbw.b(" DELETE FROM MiniAppEntity ");
-      localawbw.b("delete from sqlite_sequence where name='MiniAppEntity'");
-      localawbw.b("update sqlite_sequence SET seq = 0 where name = 'MiniAppEntity'");
+      localawgf.b(" DELETE FROM MiniAppEntity ");
+      localawgf.b("delete from sqlite_sequence where name='MiniAppEntity'");
+      localawgf.b("update sqlite_sequence SET seq = 0 where name = 'MiniAppEntity'");
       paramAppInterface.c();
     }
     catch (Exception localException)
@@ -324,9 +324,9 @@ public class MiniAppUserAppInfoListManager
     ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.11(this, paramBoolean, paramList), 32, null, true);
   }
   
-  private void saveToDB(awbv paramawbv)
+  private void saveToDB(awge paramawge)
   {
-    ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.9(this, paramawbv), 32, null, true);
+    ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.9(this, paramawge), 32, null, true);
   }
   
   /* Error */
@@ -430,31 +430,31 @@ public class MiniAppUserAppInfoListManager
     //   159	162	158	finally
   }
   
-  private boolean updateEntity(awbw paramawbw, awbv paramawbv)
+  private boolean updateEntity(awgf paramawgf, awge paramawge)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawbw.a()) {
-      if (paramawbv.getStatus() == 1000)
+    if (paramawgf.a()) {
+      if (paramawge.getStatus() == 1000)
       {
-        paramawbw.b(paramawbv);
-        if (paramawbv.getStatus() == 1001) {
+        paramawgf.b(paramawge);
+        if (paramawge.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawbw.a();
+        paramawgf.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramawbv.getStatus() != 1001) && (paramawbv.getStatus() != 1002)) {
+      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawbw.a(paramawbv);
+      bool1 = paramawgf.a(paramawge);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawbv.getTableName());
+    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
     return false;
   }
   
@@ -524,31 +524,31 @@ public class MiniAppUserAppInfoListManager
     ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.13(this, paramMiniAppRedDotEntity), 32, null, true);
   }
   
-  private boolean updateRedDotData(awbw paramawbw, awbv paramawbv)
+  private boolean updateRedDotData(awgf paramawgf, awge paramawge)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawbw.a()) {
-      if (paramawbv.getStatus() == 1000)
+    if (paramawgf.a()) {
+      if (paramawge.getStatus() == 1000)
       {
-        paramawbw.b(paramawbv);
-        if (paramawbv.getStatus() == 1001) {
+        paramawgf.b(paramawge);
+        if (paramawge.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawbw.a();
+        paramawgf.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramawbv.getStatus() != 1001) && (paramawbv.getStatus() != 1002)) {
+      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawbw.a(paramawbv);
+      bool1 = paramawgf.a(paramawge);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawbv.getTableName());
+    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
     return false;
   }
   
@@ -695,7 +695,7 @@ public class MiniAppUserAppInfoListManager
       return null;
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    return ((awbw)localObject).a(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    return ((awgf)localObject).a(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
   }
   
   public COMM.StCommonExt getPullDownEntryExtInfo()
@@ -716,7 +716,7 @@ public class MiniAppUserAppInfoListManager
       }
     }
     finally {}
-    boolean bool = aokd.i();
+    boolean bool = aoom.i();
     localObject = ((List)localObject).iterator();
     MiniAppInfo localMiniAppInfo;
     Integer localInteger1;
@@ -829,10 +829,10 @@ public class MiniAppUserAppInfoListManager
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (amnf)((AppInterface)localObject).getBusinessHandler(148);
+        localObject = (amru)((AppInterface)localObject).getBusinessHandler(148);
         if (localObject != null)
         {
-          ((amnf)localObject).a();
+          ((amru)localObject).a();
           localSharedPreferences.edit().putLong(str, paramLong2).commit();
         }
       }

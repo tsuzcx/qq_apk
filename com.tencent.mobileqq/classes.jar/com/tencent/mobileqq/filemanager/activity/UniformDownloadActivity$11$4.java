@@ -2,17 +2,17 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqio;
+import aqmx;
 
 public class UniformDownloadActivity$11$4
   implements Runnable
 {
-  public UniformDownloadActivity$11$4(aqio paramaqio, int paramInt) {}
+  public UniformDownloadActivity$11$4(aqmx paramaqmx, int paramInt) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aqio.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aqio.a).setText(this.jdField_a_of_type_Aqio.a.getString(2131691993, new Object[] { this.jdField_a_of_type_Int + "%" }));
+    UniformDownloadActivity.b(this.jdField_a_of_type_Aqmx.a).setVisibility(0);
+    UniformDownloadActivity.b(this.jdField_a_of_type_Aqmx.a).setText(this.jdField_a_of_type_Aqmx.a.getString(2131691994, new Object[] { this.jdField_a_of_type_Int + "%" }));
   }
 }
 

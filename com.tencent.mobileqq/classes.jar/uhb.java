@@ -1,94 +1,96 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StNotice;
 
-public class uhb<KEY, VALUE extends uha>
+public class uhb
+  extends ugz
 {
-  public int a;
-  public LruCache<KEY, VALUE> a;
-  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private View c;
   
   public uhb(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new uhc(this, paramInt);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    super(paramInt);
   }
   
-  private void b()
+  private QCircleInitBean a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      Object localObject = localIterator.next();
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      if ((localWeakReference != null) && (localWeakReference.get() == null))
+      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed.get() != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
-        wsv.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
+        Object localObject = new tqo();
+        ubd.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed, 3);
+        ((tqo)localObject).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed);
+        ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
+        localExtraTypeInfo.sourceType = 1002;
+        ((tqo)localObject).a(localExtraTypeInfo);
+        a((tqo)localObject);
+        localObject = ((tqo)localObject).a();
+        ((QCircleInitBean)localObject).isSingleFeed = true;
+        return localObject;
       }
     }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleDefaultMessagePresenter", 1, "jumpDetailPageError:" + localException.getMessage());
+      localException.printStackTrace();
+    }
+    return null;
   }
   
-  public VALUE a(KEY paramKEY)
+  private void a(FeedCloudMeta.StNotice paramStNotice)
   {
-    uha localuha2 = (uha)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
-    uha localuha1 = localuha2;
-    if (localuha2 == null)
+    ImageView localImageView;
+    if (!TextUtils.isEmpty(paramStNotice.feed.cover.picUrl.get()))
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
-      localuha1 = localuha2;
-      if (localWeakReference != null)
+      if ((this.c == null) && (this.jdField_a_of_type_AndroidViewViewStub != null)) {
+        this.c = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      }
+      if (this.c != null)
       {
-        localuha2 = (uha)localWeakReference.get();
-        localuha1 = localuha2;
-        if (localuha2 != null)
-        {
-          wsv.b("OneObjectCacheList", String.format("revert key %s from second cache", new Object[] { paramKEY }));
-          a(paramKEY, localuha2);
-          localuha1 = localuha2;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.c.findViewById(2131368778));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.c.findViewById(2131368782));
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(20);
+        tql.a(paramStNotice.feed.cover.picUrl.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+        localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+        if (!tra.b(paramStNotice.feed)) {
+          break label158;
         }
       }
     }
-    return localuha1;
-  }
-  
-  public VALUE a(KEY paramKEY, VALUE paramVALUE)
-  {
-    uha localuha = a(paramKEY);
-    if (localuha == null)
+    label158:
+    for (int i = 0;; i = 8)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
-      return paramVALUE;
-    }
-    localuha.copy(paramVALUE);
-    return localuha;
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-    if (i - this.jdField_a_of_type_Int > 50)
-    {
-      b();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-      wsv.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+      localImageView.setVisibility(i);
+      this.c.setOnClickListener(new uhc(this));
+      return;
     }
   }
   
-  public void a(int paramInt)
+  protected void a(tqo paramtqo) {}
+  
+  public void b(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373250));
   }
   
-  public void a(KEY paramKEY)
+  public void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
   {
-    uha localuha = (uha)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
-    if (localuha != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localuha));
-    }
+    a(paramStNotice);
   }
 }
 

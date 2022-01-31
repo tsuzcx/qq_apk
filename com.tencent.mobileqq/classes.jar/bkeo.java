@@ -1,32 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 
 class bkeo
-  implements EIPCOnGetConnectionListener
+  implements View.OnTouchListener
 {
-  bkeo(bken parambken) {}
+  private float jdField_a_of_type_Float;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b;
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bken.a(this.a, paramEIPCConnection.procName);
-    }
-    bken.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
-    }
-  }
+  bkeo(bkel parambkel) {}
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramEIPCConnection != null) {
-      bken.a(this.a, paramEIPCConnection.procName);
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (paramMotionEvent.getActionMasked() == 6) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    bken.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
+    boolean bool = bkel.a(this.jdField_a_of_type_Bkel).onTouchEvent(paramMotionEvent);
+    switch (paramMotionEvent.getAction())
+    {
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool;
+            this.jdField_a_of_type_Float = paramMotionEvent.getX();
+            this.b = paramMotionEvent.getY();
+          } while (bkel.a(this.jdField_a_of_type_Bkel) == null);
+          bkel.a(this.jdField_a_of_type_Bkel).a("onActionDown", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+          return bool;
+        } while ((bkel.a(this.jdField_a_of_type_Bkel).isInProgress()) || (paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_Boolean) || (bkel.a(this.jdField_a_of_type_Bkel) == null));
+        bkel.a(this.jdField_a_of_type_Bkel).a("onActionMove", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+        return bool;
+        if ((Math.abs(this.jdField_a_of_type_Float - f1) > ViewConfiguration.getTouchSlop()) || (Math.abs(this.b - f2) > ViewConfiguration.getTouchSlop())) {
+          break;
+        }
+        paramView = bkel.a(this.jdField_a_of_type_Bkel, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (bkel.a(this.jdField_a_of_type_Bkel) != null) {
+          bkel.a(this.jdField_a_of_type_Bkel).a(paramView[0], paramView[1]);
+        }
+      } while (!bkel.d(this.jdField_a_of_type_Bkel));
+      bkey.a("ar_activity_click", "1");
+      bkel.c(this.jdField_a_of_type_Bkel, false);
+      return bool;
+      this.jdField_a_of_type_Boolean = false;
+    } while (bkel.a(this.jdField_a_of_type_Bkel) == null);
+    bkel.a(this.jdField_a_of_type_Bkel).a("onActionUp", new float[] { 0.0F, 0.0F });
+    return bool;
   }
 }
 

@@ -1,285 +1,123 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
+import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
-public class baiq
-  extends SpannableStringBuilder
+final class baiq
+  extends ProxyWebViewClientExtension
 {
-  public static Editable.Factory a;
-  public static Editable.Factory b;
-  private int a;
-  private int b;
+  ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  begh jdField_a_of_type_Begh;
+  final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
-  static
+  public baiq(baim parambaim, TouchWebView paramTouchWebView, begh parambegh)
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new bair();
-    jdField_b_of_type_AndroidTextEditable$Factory = new bais();
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.jdField_a_of_type_Begh = parambegh;
   }
   
-  public baiq(CharSequence paramCharSequence, int paramInt)
+  void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    this(paramCharSequence, paramInt, 32);
-  }
-  
-  public baiq(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(a(paramCharSequence, paramInt1, paramInt2));
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-  }
-  
-  public static Editable.Factory a(int paramInt)
-  {
-    return new bait(paramInt);
-  }
-  
-  private static final CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    if ((paramCharSequence instanceof baig)) {
-      return ((baig)paramCharSequence).a();
-    }
-    return new baig(paramCharSequence, paramInt1, paramInt2).a();
-  }
-  
-  public String a()
-  {
-    int j = 0;
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((char[])localObject1);
-    int k = "[emoji]".length();
-    localObject1 = (bain[])getSpans(0, i, bain.class);
-    i = 0;
-    if (j < localObject1.length)
+    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+    if (localWebViewPluginEngine != null)
     {
-      Object localObject2 = localObject1[j];
-      int m = getSpanStart(localObject2);
-      int n = getSpanEnd(localObject2);
-      switch (((bain)localObject2).c)
-      {
+      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
       }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localStringBuffer.replace(m + i, n + i, "[emoji]");
-        i += k - (n - m);
-        continue;
-        localObject2 = ((bain)localObject2).a();
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-        continue;
-        localObject2 = apog.a(((bain)localObject2).jdField_a_of_type_Int & 0x7FFFFFFF);
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
     }
-    return localStringBuffer.toString();
-  }
-  
-  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
-  {
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    try
-    {
-      super.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (IndexOutOfBoundsException paramArrayOfChar)
-    {
-      QLog.e("QQTextBuilder", 1, "text:" + a());
+    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
+  }
+  
+  public void computeScroll(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  {
+    QLog.d("WebLog_WebViewWrapper", 1, "onMiscCallBack for one args: " + paramString);
+    if (this.jdField_a_of_type_Begh != null) {
+      return this.jdField_a_of_type_Begh.a(paramString, paramBundle);
+    }
+    return null;
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
+      a(paramObject1, paramObject2, paramObject3, paramObject4);
+    }
+    return null;
+  }
+  
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+  }
+  
+  public void onPrefetchResourceHit(boolean paramBoolean)
+  {
+    QLog.i("WebLog_WebViewWrapper", 1, "now prefetchResource is hit: " + paramBoolean);
+  }
+  
+  public void onPreloadCallback(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Begh != null) {
+      this.jdField_a_of_type_Begh.a(paramInt, paramString);
     }
   }
   
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
+  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
   {
-    if (paramInt1 < 0) {
-      j = 0;
-    }
-    for (;;)
-    {
-      try
-      {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        int k;
-        Object localObject;
-        QLog.e("QQText", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
-      }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label259;
-        }
-        i = paramInt1;
-        QLog.w("QQTextBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label256;
-      }
-      i = paramInt2;
-      localObject = new baig(paramCharSequence, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
+    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public void onUrlChange(String paramString1, String paramString2)
+  {
+    
+    if (this.jdField_a_of_type_Begh != null) {
+      this.jdField_a_of_type_Begh.b(paramString1, paramString2);
     }
   }
   
-  public CharSequence subSequence(int paramInt1, int paramInt2)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
-    if (!baig.a) {
-      localObject1 = super.subSequence(paramInt1, paramInt2);
-    }
-    do
-    {
-      return localObject1;
-      if (paramInt1 != 0) {
-        break;
-      }
-      localObject1 = this;
-    } while (paramInt2 == length());
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    Object localObject2 = new char[paramInt1 - i];
-    getChars(i, paramInt1, (char[])localObject2, 0);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append((char[])localObject2);
-    localObject2 = (bain[])getSpans(i, paramInt1, bain.class);
-    if (paramInt1 - i > 0)
-    {
-      paramInt2 = 0;
-      if (paramInt2 < localObject2.length)
-      {
-        Object localObject3 = localObject2[paramInt2];
-        int k = getSpanStart(localObject3);
-        int m = getSpanEnd(localObject3);
-        j = k;
-        if (k < i) {
-          j = i;
-        }
-        k = m;
-        if (m > paramInt1) {
-          k = paramInt1;
-        }
-        switch (localObject3.c)
-        {
-        }
-        for (;;)
-        {
-          paramInt2 += 1;
-          break;
-          try
-          {
-            ((StringBuilder)localObject1).replace(j - i, k - i, baiy.a(localObject3.jdField_a_of_type_Int));
-          }
-          catch (Exception localException)
-          {
-            QLog.e("QQTextBuilder", 1, localException.getStackTrace());
-          }
-          continue;
-          Object localObject4 = (baip)localException;
-          localObject4 = apih.a(((baip)localObject4).e, ((baip)localObject4).f);
-          ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
-          continue;
-          ((StringBuilder)localObject1).replace(j - i, k - i, baiy.c(((bain)localObject4).jdField_a_of_type_Int));
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public String toString()
-  {
-    if (!baig.a) {
-      return super.toString();
-    }
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((char[])localObject1);
-    int j = localStringBuilder.length();
-    localObject1 = (bain[])getSpans(0, i, bain.class);
-    i = 0;
-    if (i < localObject1.length)
-    {
-      Object localObject2 = localObject1[i];
-      int k = getSpanStart(localObject2);
-      int m = getSpanEnd(localObject2);
-      if ((k < j) && (m <= j)) {
-        switch (((bain)localObject2).c)
-        {
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.replace(k, m, baiy.a(((bain)localObject2).jdField_a_of_type_Int));
-        continue;
-        localObject2 = (baip)localObject2;
-        localObject2 = apih.a(((baip)localObject2).e, ((baip)localObject2).f);
-        localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQTextBuilder", 2, "start:" + k + ",end:" + m);
-          continue;
-          localStringBuilder.replace(k, m, baiy.c(((bain)localObject2).jdField_a_of_type_Int));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("QQText", 2, "error emo pos. start:" + k + " end: " + m + " length: " + j);
-          }
-        }
-      }
-    }
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 

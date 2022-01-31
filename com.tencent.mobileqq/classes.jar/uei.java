@@ -1,17 +1,33 @@
-import java.util.Comparator;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
+import java.util.List;
 
-final class uei
-  implements Comparator<uer>
+public class uei
+  extends FragmentPagerAdapter
 {
-  public int a(uer paramuer1, uer paramuer2)
+  public uei(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    if ((paramuer1 == paramuer2) || (paramuer1.b == paramuer2.b)) {
-      return 0;
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return QCirclePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
+      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
     }
-    if (paramuer1.b < paramuer2.b) {
-      return -1;
-    }
-    return 1;
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 

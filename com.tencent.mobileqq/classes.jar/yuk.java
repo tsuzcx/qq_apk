@@ -1,51 +1,39 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class yuk
+public abstract class yuk
+  extends nac
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private String b = "";
-  
-  public static yuk a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramString == null) {
-      return null;
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
+      return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
     try
     {
-      yuk localyuk = new yuk();
-      paramString = new JSONObject(paramString);
-      localyuk.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
-      localyuk.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
-      localyuk.b = paramString.optString("md5", "");
-      return localyuk;
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.ResendRspBody)localRspBody.resend_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
     }
-    catch (Exception paramString)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramString.printStackTrace();
+      a(false, -1, null, paramBundle);
+      return;
     }
-    return null;
+    a(false, -1, null, paramBundle);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle);
 }
 
 

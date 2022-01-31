@@ -1,30 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-public class vvv
-  extends uhw<vvu, uyq>
+public final class vvv
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  public vvv(vvu paramvvu)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    super(paramvvu);
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
   }
   
-  public void a(@NonNull vvu paramvvu, @NonNull uyq paramuyq)
+  public XViewPager.SavedState[] a(int paramInt)
   {
-    if ((vvu.a(paramvvu) != null) && (paramuyq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuyq.jdField_a_of_type_JavaUtilList.contains(vvu.a(paramvvu).a)))
-    {
-      wsv.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramuyq.b.toString());
-      paramvvu.a.i();
-    }
+    return new XViewPager.SavedState[paramInt];
   }
-  
-  public Class acceptEventClass()
-  {
-    return uyq.class;
-  }
-  
-  public void b(@NonNull vvu paramvvu, @NonNull uyq paramuyq) {}
 }
 
 

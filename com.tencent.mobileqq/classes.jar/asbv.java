@@ -1,83 +1,23 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class asbv
-  implements AdapterView.OnItemClickListener
+class asbv
+  extends RecyclerView.OnScrollListener
 {
-  public asbv(NearbyHybridFragment paramNearbyHybridFragment) {}
+  asbv(asbs paramasbs) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    boolean bool = true;
-    paramAdapterView = (auqq)this.a.jdField_a_of_type_Auqn.a(paramInt);
-    if (paramAdapterView.jdField_a_of_type_Int == 1)
-    {
-      this.a.a(this.a.jdField_a_of_type_Auqn.a());
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
+    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      asbs.a(this.a).c();
     }
-    switch (paramAdapterView.jdField_a_of_type_Int)
-    {
-    default: 
-      label96:
-      ausq.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "click_op_button", paramAdapterView.jdField_a_of_type_Int);
+    while (!asbs.a(this.a).a()) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.NearbyHybridFragment", 2, "onItemClick:" + paramAdapterView.jdField_c_of_type_JavaLangString + ", " + paramAdapterView.jdField_a_of_type_JavaLangString);
-      }
-      if ((paramAdapterView.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(paramAdapterView.e)) && (this.a.getActivity() != null) && (bdem.a(this.a.getActivity(), paramAdapterView.e)) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-        if (TextUtils.isEmpty(paramAdapterView.d)) {
-          break;
-        }
-      }
-      break;
     }
-    for (;;)
-    {
-      try
-      {
-        paramView = new Intent("android.intent.action.VIEW", Uri.parse(paramAdapterView.d));
-        paramView.setFlags(268435456);
-        BaseApplicationImpl.getContext().startActivity(paramView);
-        if (bool) {
-          break;
-        }
-        this.a.a(paramAdapterView);
-      }
-      catch (Exception paramView)
-      {
-        QLog.d("nearby.NearbyHybridFragment", 2, "jump to app with scheme Excepyion e = " + paramView.getMessage());
-        bool = false;
-        continue;
-      }
-      bool = bdem.a(this.a.getActivity(), paramAdapterView.e, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
-      continue;
-      paramView.a(39);
-      break label96;
-      paramView.a(25);
-      break label96;
-      paramView.a(23);
-      paramView.a(26);
-      break label96;
-      paramView.a(40);
-      break label96;
-      if (this.a.jdField_a_of_type_Auqn == null) {
-        break label96;
-      }
-      this.a.jdField_a_of_type_Auqn.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-      break label96;
-      paramView.a(41);
-      break label96;
-      bool = false;
-    }
+    asbs.a(this.a).b();
+    asbs.a(this.a).notifyDataSetChanged();
   }
 }
 

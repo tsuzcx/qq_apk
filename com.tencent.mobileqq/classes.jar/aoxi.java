@@ -1,10 +1,13 @@
-public abstract interface aoxi
+public class aoxi
 {
-  public abstract void a(aoxh paramaoxh);
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoxi
  * JD-Core Version:    0.7.0.1
  */

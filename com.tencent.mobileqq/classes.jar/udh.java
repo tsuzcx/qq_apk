@@ -1,19 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class udh
-  implements ubq
+  implements DialogInterface.OnClickListener
 {
-  udh(udf paramudf) {}
+  udh(udb paramudb) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 35;; i = 37)
-    {
-      tyg.a(i, 2, this.a.a);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

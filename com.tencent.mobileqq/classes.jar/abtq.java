@@ -1,18 +1,27 @@
-import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class abtq
-  extends absm
+public class abtq
+  implements arbr
 {
-  abtq(abtp paramabtp, absf paramabsf) {}
+  public abtq(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (paramBundle != null)
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == -6101) || (paramInt == -7003))
     {
-      abvm.a(this.jdField_a_of_type_Absf, absh.a(paramBundle));
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    abvm.a(this.jdField_a_of_type_Absf, 1, "get user info error, try again");
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, ammb.h, 0);
   }
 }
 

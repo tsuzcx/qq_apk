@@ -1,79 +1,61 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AccountNotMatchException;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Ability;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
-class awfs
-  implements awfv
+public class awfs
+  extends awgq
 {
-  awfs(awfr paramawfr, awfc paramawfc, awfl paramawfl) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, awfd paramawfd) {}
-  
-  public void a(int paramInt, ArrayList<awfd> paramArrayList) {}
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, awfd paramawfd) {}
-  
-  public void c(int paramInt, awfd arg2)
+  public awfs()
   {
-    awfz localawfz = (awfz)???.a;
-    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.g).append(",uuid:").append(this.jdField_a_of_type_Awfc.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
-    if (paramInt == 0)
+    this.a = 2;
+  }
+  
+  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  {
+    paramawge = (Ability)paramawge;
+    if (paramawgp == null)
     {
-      ??? = "ResultOk";
-      awen.a("PresendPicMgrService", "onSend ", ???);
-      awen.a("PresendPicMgrService", "onSend", " SendResult = " + localawfz);
+      paramawge.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramawge.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
+      return paramawge;
+    }
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1) {
+      paramawgp.a(new NoColumnError("uin", String.class));
     }
     for (;;)
     {
-      synchronized (awfr.a(this.jdField_a_of_type_Awfr))
-      {
-        if (!this.jdField_a_of_type_Awfl.f)
-        {
-          if (paramInt == 0)
-          {
-            this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.c = 1;
-            awen.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Awfc);
-            awfr.a(this.jdField_a_of_type_Awfr).add(this.jdField_a_of_type_Awfc);
-            return;
-            ??? = "ResultFail";
-            break;
-          }
-          this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.c = 2;
-        }
+      i = paramCursor.getColumnIndex("flags");
+      if (i != -1) {
+        break;
       }
-      if (paramInt == 0)
-      {
-        try
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(awfr.a(this.jdField_a_of_type_Awfr));
-          localObject2 = (MessageRecord)this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.a;
-          ((axso)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
-          awen.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Awfc);
-        }
-        catch (AccountNotMatchException localAccountNotMatchException) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("PresendPicMgrService", 2, "no appRuntime");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
-      }
+      paramawgp.a(new NoColumnError("flags", Integer.TYPE));
+      return paramawge;
+      paramawge.uin = paramCursor.getString(i);
     }
+    paramawge.flags = paramCursor.getInt(i);
+    return paramawge;
   }
   
-  public void d(int paramInt, awfd paramawfd) {}
+  public String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,flags INTEGER)");
+    return localStringBuilder.toString();
+  }
+  
+  public void a(awge paramawge, ContentValues paramContentValues)
+  {
+    paramawge = (Ability)paramawge;
+    paramContentValues.put("uin", paramawge.uin);
+    paramContentValues.put("flags", Integer.valueOf(paramawge.flags));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awfs
  * JD-Core Version:    0.7.0.1
  */

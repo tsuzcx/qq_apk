@@ -1,24 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class ansl
-  extends AnimatorListenerAdapter
+  implements Animator.AnimatorListener
 {
-  ansl(ansh paramansh, anso paramanso, ObjectAnimator paramObjectAnimator) {}
+  ansl(ansg paramansg, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Ansg.l();
+  }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    this.jdField_a_of_type_Ansg.l();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Anso != null) {
-      this.jdField_a_of_type_Anso.a.setVisibility(0);
+    if (this.jdField_a_of_type_Ansg.e) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

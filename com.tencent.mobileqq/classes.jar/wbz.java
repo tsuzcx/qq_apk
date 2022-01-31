@@ -1,59 +1,39 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wbz
+  extends BroadcastReceiver
 {
-  public ImageView a;
-  public StoryCoverView a;
+  public wbz(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
   
-  public wbz(wby paramwby, View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364047));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131379783));
-  }
-  
-  void a(wiu paramwiu, int paramInt)
-  {
-    if (paramwiu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    wxe.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable(this.jdField_a_of_type_Wby.a.getResources().getDrawable(2130846089));
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(null, -1, null);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(null, -1, -1L, -1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(paramInt));
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (!paramwiu.jdField_a_of_type_Boolean) {
-        break label186;
+      paramContext = paramIntent.getStringExtra("event");
+      wxe.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
+      if (!"closeMeEvent".equals(paramContext)) {
+        break label70;
       }
-      paramInt = 2130840305;
-      label78:
-      localImageView.setImageResource(paramInt);
-      if (!paramwiu.b) {
-        break label192;
+      if (this.a.a != null) {
+        this.a.a.a();
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(1.0F);
     }
-    for (;;)
+    label70:
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wca(this));
       return;
-      if (TextUtils.isEmpty(paramwiu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl)) {
+      if (!"readyEvent".equals(paramContext)) {
         break;
       }
-      wby.a(this.jdField_a_of_type_Wby, this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.jdField_a_of_type_AndroidWidgetImageView, paramwiu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(paramwiu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(paramwiu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
-      break;
-      label186:
-      paramInt = 2130840301;
-      break label78;
-      label192:
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(0.6F);
-    }
+    } while (this.a.a == null);
+    this.a.a.b();
+    return;
+    QQToast.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
   }
 }
 

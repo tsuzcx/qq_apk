@@ -1,29 +1,44 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class aded
-  implements bhqd
+  implements appo
 {
-  public aded(MainFragment paramMainFragment, List paramList, bhpy parambhpy) {}
+  public aded(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
+    }
+    paramInt -= 1;
+    byte b;
+    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    {
+      Object localObject = (Groups)this.a.a.get(paramInt);
+      b = (byte)((Groups)localObject).group_id;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      }
+      if (b == 0)
+      {
+        localObject = new QQToast(this.a);
+        ((QQToast)localObject).d(2000);
+        ((QQToast)localObject).c(2131720889);
+        ((QQToast)localObject).a();
+      }
+    }
+    else
+    {
       return;
     }
-    try
-    {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (adek)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
+    GroupManagerActivity.a(this.a, b);
+    azqs.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

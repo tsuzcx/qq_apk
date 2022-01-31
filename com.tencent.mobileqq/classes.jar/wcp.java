@@ -1,27 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class wcp
-  implements URLDrawable.URLDrawableListener
+public class wcp
 {
-  public wcp(ImageView paramImageView, Drawable paramDrawable) {}
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
     }
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

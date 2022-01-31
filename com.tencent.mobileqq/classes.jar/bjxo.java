@@ -1,124 +1,159 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjxo
-  extends RemoteCommand
+  extends bjxz
 {
-  private QQAppInterface a;
+  private String a;
   
-  public void a()
+  public bjxo()
   {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if ((localPluginCommunicationHandler != null) && (localPluginCommunicationHandler.containsCmd("com.tencent.qqreadinjoy.readinjoyremotecommand"))) {
-      localPluginCommunicationHandler.unregister("com.tencent.qqreadinjoy.readinjoyremotecommand");
+    this.jdField_a_of_type_JavaLangString = bjxo.class.getSimpleName();
+  }
+  
+  private JSONObject a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+        paramString = null;
+      }
     }
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
-    int i = paramBundle.getInt("param_data_type", 0);
-    paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
+    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null)) {
+      paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    }
+    while (paramJsBridgeListener != null)
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
+      paramString1 = paramJsBridgeListener.getTag(2131367869);
+      if ((paramString1 != null) && ((paramString1 instanceof bjxp)))
       {
-        do
-        {
-          Object localObject;
-          do
-          {
-            SharedPreferences localSharedPreferences;
-            do
-            {
-              do
-              {
-                return paramOnInvokeFinishLinstener;
-                localObject = paramBundle.getString("param_sp_key");
-                paramBundle = paramBundle.getString("param_sp_value_type");
-                localSharedPreferences = bjxj.a(this.a, 1);
-              } while (localSharedPreferences == null);
-              try
-              {
-                if (paramBundle.equals("long"))
-                {
-                  paramOnInvokeFinishLinstener.putString("result_key", Long.toString(localSharedPreferences.getLong((String)localObject, 0L)));
-                  return paramOnInvokeFinishLinstener;
-                }
-              }
-              catch (ClassCastException paramBundle)
-              {
-                paramBundle.printStackTrace();
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("boolean"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(localSharedPreferences.getBoolean((String)localObject, false)));
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("int"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Integer.toString(localSharedPreferences.getInt((String)localObject, 0)));
-                return paramOnInvokeFinishLinstener;
-              }
-            } while (!paramBundle.equals("String"));
-            paramOnInvokeFinishLinstener.putString("result_key", localSharedPreferences.getString((String)localObject, null));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            bdbt.h(this.a, paramBundle);
-            paramOnInvokeFinishLinstener.putString("result_key", bdbt.j(this.a, paramBundle));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            paramOnInvokeFinishLinstener.putParcelable("result_key", this.a.a(paramBundle, true));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            localObject = (aloz)this.a.getManager(51);
-          } while ((localObject == null) || (TextUtils.isEmpty(paramBundle)));
-          paramBundle = ((aloz)localObject).b(paramBundle);
-        } while (paramBundle == null);
-        paramOnInvokeFinishLinstener.putString("result_key", Short.toString(paramBundle.shGender));
-        return paramOnInvokeFinishLinstener;
-        paramBundle = paramBundle.getString("param_uin");
-      } while (TextUtils.isEmpty(paramBundle));
-      paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(owy.a().a(paramBundle)));
-      return paramOnInvokeFinishLinstener;
-    case 6: 
-      paramBundle = bjxj.a(this.a);
-      if ((paramBundle != null) && (paramBundle.a == 0)) {}
+        paramString1 = (bjxp)paramString1;
+        if ((!"setBannerHeight".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
+          break label344;
+        }
+        paramJsBridgeListener = a(paramVarArgs[0]);
+        if (paramJsBridgeListener != null) {
+          break label176;
+        }
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误！！！！");
+        return false;
+        paramJsBridgeListener = null;
+      }
+      else
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "webViewBannerInterface error o=" + paramString1);
+        return false;
+      }
+    }
+    QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handleJsRequest webView==null");
+    return false;
+    label176:
+    double d = paramJsBridgeListener.optDouble("height");
+    if (d <= 0.0D) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误 height<=0 ！！！！  )");
+    }
+    int i;
+    for (;;)
+    {
+      return true;
+      i = paramJsBridgeListener.optInt("unit");
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight height:" + d + ",unit:" + i);
+      if (i == 1) {
+        paramString1.setBannerHeight((int)d);
+      } else if (i == 2) {
+        paramString1.setBannerHeight((int)bdoo.a((float)d));
+      } else if (i == 3) {
+        paramString1.setBannerHeight((int)(d * bdoo.a()));
+      } else {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "setBannerHeight 方法参数错误 :unit= " + i);
+      }
+    }
+    label344:
+    if ("closeBanner".equals(paramString3))
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "closeBanner:");
+      paramString1.j();
+      return true;
+    }
+    if (("enableGesture".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramJsBridgeListener = a(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "enableGesture 方法参数错误！！！！");
+      }
       for (;;)
       {
-        paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(bool));
-        return paramOnInvokeFinishLinstener;
-        bool = false;
+        return true;
+        boolean bool = paramJsBridgeListener.optBoolean("enable");
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "enableGesture enable:" + bool);
+        paramString1.d(bool);
       }
-    case 7: 
-      paramOnInvokeFinishLinstener.putString("result_key", ors.b());
-      return paramOnInvokeFinishLinstener;
     }
-    paramBundle = paramBundle.getString("param_uin");
-    new nsb(this.a, paramBundle, this.a.getApp().getApplicationContext()).a();
-    QLog.e("ReadInJoyRemoteCommand", 2, "handle remote unfollow public account request ! puin : " + paramBundle);
-    paramOnInvokeFinishLinstener.putBoolean("result_key", true);
-    return paramOnInvokeFinishLinstener;
+    if (("getBannerData".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramString2 = a(paramVarArgs[0]);
+      if (paramString2 == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "getBannerData 方法参数错误！！！！");
+      }
+      for (;;)
+      {
+        return true;
+        paramString2 = paramString2.optString("callback");
+        if (TextUtils.isEmpty(paramString2)) {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "getBannerData 方法参数错误！！！！");
+        }
+        paramString1 = paramString1.a();
+        paramJsBridgeListener.callJs(paramString2, new String[] { paramString1 });
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getBannerData " + paramString1);
+      }
+    }
+    if (("qbossReport".equals(paramString3)) && (paramVarArgs.length >= 1))
+    {
+      paramString2 = a(paramVarArgs[0]);
+      if (paramString2 == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "qbossReport 方法参数错误！！！！");
+      }
+      for (;;)
+      {
+        return true;
+        paramJsBridgeListener = paramString2.optString("sQBosstrace");
+        if (TextUtils.isEmpty(paramJsBridgeListener)) {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "qbossReport 方法参数错误！！！！");
+        }
+        i = paramString2.optInt("type");
+        paramString2 = paramString2.optString("reportInfo");
+        paramString1.a(i, paramJsBridgeListener, paramString2);
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "qbossReport type:" + i + ",qBosstrace:" + paramJsBridgeListener + " ,reportInfo:" + paramString2);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjxo
  * JD-Core Version:    0.7.0.1
  */

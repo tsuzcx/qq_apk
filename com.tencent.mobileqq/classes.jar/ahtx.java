@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import java.util.Map;
 
 public class ahtx
-  implements ahtu
+  extends altm
 {
-  public ahtx(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  public ahtx(TroopFragment paramTroopFragment) {}
   
-  public boolean a(TencentDocItem paramTencentDocItem)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
+    if (paramBoolean1) {
+      this.a.h();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.h();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
 }
 

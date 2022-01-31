@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import java.util.ArrayList;
 
 public class bbby
-  implements DialogInterface.OnClickListener
+  extends bbbz
 {
-  public bbby(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
-  }
+  public int a;
+  public String a;
+  public ArrayList<bawy> a = new ArrayList();
+  public String b;
+  public ArrayList<bawy> b = new ArrayList();
 }
 
 

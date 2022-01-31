@@ -1,26 +1,20 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alze
-  extends RecyclablePool.Recyclable
+final class alze
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  ConcurrentHashMap<String, Long> a;
-  long b;
+  alze(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public alze()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  }
-  
-  public void recycle()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    super.recycle();
+    alzc.a("1");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 

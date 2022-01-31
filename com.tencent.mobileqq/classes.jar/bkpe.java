@@ -1,16 +1,9 @@
-public abstract class bkpe
+import java.io.File;
+
+public class bkpe
 {
-  public static bkpe a(int paramInt)
-  {
-    if (paramInt > 0) {
-      return new bkpf();
-    }
-    return new bkpg();
-  }
-  
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(int paramInt);
+  public static final String a = bkpg.c + File.separator + "camera_play_show_default_template.json";
+  public static final String b = bkpg.c + File.separator + "camera_play_show_updated_template.json";
 }
 
 

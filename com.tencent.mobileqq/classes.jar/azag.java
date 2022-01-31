@@ -1,56 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class azag
+  extends zhu
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b = true;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "MessageSvc", "TransService", "StreamSvr", "ADMsgSvc", "VideoSvc", "VideoCCSvc", "OnlinePush", "KQQGroupPic", "AccostSvc", "SecretFileSvc", "MultiVideo" };
+  private ayzu jdField_a_of_type_Ayzu = new ayzu();
+  private ayzy jdField_a_of_type_Ayzy = new ayzy();
   
-  static
+  public azag(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = 18;
+    this.jdField_a_of_type_Ayzy.a(paramQQAppInterface);
   }
   
-  public static void a()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if ((localObject != null) && (localObject.length >= 2))
-        {
-          if (!TextUtils.isEmpty(localObject[0])) {
-            b = localObject[0].equals("1");
-          }
-          if (TextUtils.isEmpty(localObject[1])) {}
-        }
-      }
-    }
-    try
-    {
-      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
-      jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        jdField_a_of_type_Int = 18;
-      }
-    }
+    return this.jdField_a_of_type_Ayzu.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ayzy = null;
+    this.jdField_a_of_type_Ayzu = null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return this.jdField_a_of_type_Ayzy.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

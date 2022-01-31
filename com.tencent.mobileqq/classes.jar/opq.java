@@ -45,7 +45,7 @@ public class opq
     {
       try
       {
-        bjxj.f();
+        bkbq.f();
         Object localObject2 = Achilles.a();
         if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
         {
@@ -70,7 +70,7 @@ public class opq
             QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] param not found for com.tencent.reading");
             return "";
           }
-          localObject2 = bflq.a().a("com.tencent.reading");
+          localObject2 = bfpz.a().a("com.tencent.reading");
           boolean bool;
           if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).l)))
           {
@@ -207,7 +207,7 @@ public class opq
     {
       a(ors.a(), "sp_key_current_app_version_name", paramContext.versionName);
       QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] versionName: " + paramContext.versionName);
-      paramContext = bfhi.a(paramString);
+      paramContext = bflr.a(paramString);
       if (paramContext == null) {
         break label129;
       }
@@ -238,7 +238,7 @@ public class opq
     localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
     localDownloadInfo.jdField_d_of_type_Boolean = false;
     localDownloadInfo.m = "biz_src_feeds_kandian";
-    bflq.a().a(localDownloadInfo);
+    bfpz.a().a(localDownloadInfo);
   }
   
   private static void b(boolean paramBoolean, long paramLong, int paramInt)
@@ -246,7 +246,7 @@ public class opq
     String str = ors.a();
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    azmz.a(ors.a().getApplication()).a(str, "actKBPreDownload", paramBoolean, paramLong, 0L, localHashMap, null, false);
+    azri.a(ors.a().getApplication()).a(str, "actKBPreDownload", paramBoolean, paramLong, 0L, localHashMap, null, false);
   }
   
   private static boolean b(Context paramContext)
@@ -289,11 +289,11 @@ public class opq
     {
       String str = b(ors.a(), "sp_key_local_apk_path");
       if (str != null) {
-        bdcs.d(str);
+        bdhb.d(str);
       }
       for (;;)
       {
-        bflq.a().a("101480433");
+        bfpz.a().a("101480433");
         return;
         QLog.i("KBPreDownloadUtils", 1, "[clearDownloadInfo] won't delete since apkPath is null");
       }

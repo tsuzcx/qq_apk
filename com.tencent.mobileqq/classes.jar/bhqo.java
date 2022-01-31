@@ -1,59 +1,40 @@
-import android.database.DataSetObserver;
-import android.os.Parcelable;
-import android.widget.Adapter;
-import com.tencent.widget.AdapterView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 public class bhqo
-  extends DataSetObserver
+  extends bhqq
 {
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
-  
-  public bhqo(AdapterView paramAdapterView) {}
-  
-  public void a()
+  public bhqo(TraeAudioManager paramTraeAudioManager)
   {
-    this.jdField_a_of_type_AndroidOsParcelable = null;
+    super(paramTraeAudioManager);
   }
   
-  public void onChanged()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
-    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
-    {
-      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
-      this.jdField_a_of_type_AndroidOsParcelable = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
-    }
+    return "BluetoohHeadsetCheckFake";
   }
   
-  public void onInvalidated()
+  public void a() {}
+  
+  void a(Context paramContext, Intent paramIntent) {}
+  
+  void a(IntentFilter paramIntentFilter) {}
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
-      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
-    }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
+    return false;
+  }
+  
+  public boolean a(Context paramContext, bhqr parambhqr)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqo
  * JD-Core Version:    0.7.0.1
  */

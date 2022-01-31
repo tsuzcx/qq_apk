@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -28,9 +28,9 @@ public class VideoFeedsLazyLoadDelegate
   extends VideoFeedsLoadDelegate
   implements View.OnClickListener
 {
-  private static final String c = alpo.a(2131716537);
-  private static final String d = alpo.a(2131716561);
-  private static final String e = alpo.a(2131716581);
+  private static final String c = alud.a(2131716549);
+  private static final String d = alud.a(2131716573);
+  private static final String e = alud.a(2131716593);
   protected FrameLayout a;
   protected ImageView a;
   protected TextView a;
@@ -52,11 +52,11 @@ public class VideoFeedsLazyLoadDelegate
   
   protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560153, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramLayoutInflater.findViewById(2131379626));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131379633));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379648));
-    paramLayoutInflater.findViewById(2131379624).setOnClickListener(this);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560152, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramLayoutInflater.findViewById(2131379684));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131379691));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379706));
+    paramLayoutInflater.findViewById(2131379682).setOnClickListener(this);
     b();
     a(0);
     return paramLayoutInflater;
@@ -106,7 +106,7 @@ public class VideoFeedsLazyLoadDelegate
     {
     default: 
       str = e;
-      paramInt = 2130842753;
+      paramInt = 2130842766;
     }
     for (;;)
     {
@@ -114,10 +114,10 @@ public class VideoFeedsLazyLoadDelegate
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
       return;
       str = c;
-      paramInt = 2130842675;
+      paramInt = 2130842688;
       continue;
       str = d;
-      paramInt = 2130842713;
+      paramInt = 2130842726;
     }
   }
   
@@ -221,7 +221,7 @@ public class VideoFeedsLazyLoadDelegate
     {
       d();
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842675);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842688);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(c);
     }
   }

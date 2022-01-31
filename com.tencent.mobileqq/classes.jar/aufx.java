@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import mqq.manager.Manager;
 
-public class aufx
-  implements View.OnClickListener
+public abstract interface aufx
+  extends Manager
 {
-  public aufx(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379023);
-    augz.a += 1;
-    paramView.setText(alpo.a(2131707372) + augz.a);
-    MultiAIOFragment.c(this.a);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

@@ -1,31 +1,64 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-class ukj
-  extends SimpleJob<Object>
+public class ukj
+  extends ukk<uja>
 {
-  ukj(ukd paramukd, String paramString)
+  private int a = 200;
+  
+  protected double a()
   {
-    super(paramString);
+    return 0.3D;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected int a()
   {
-    paramVarArgs = ((uro)urr.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new ulw((StoryVideoItem)paramVarArgs.next()));
+    return this.a;
+  }
+  
+  protected long a(uja paramuja1, uja paramuja2)
+  {
+    if ((paramuja1 != paramuja2) && (paramuja1.b == paramuja2.b)) {
+      return 1L;
     }
-    this.a.a(paramJobContext);
-    wsv.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+    return Math.abs(paramuja1.b - paramuja2.b);
+  }
+  
+  protected uja a(List<uja> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
+    {
+      l += ((uja)paramList.get(i)).b;
+      i += 1;
+    }
+    uja localuja = new uja();
+    localuja.b = (l / paramList.size());
+    return localuja;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
+    }
+    while (paramLong < 200L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  protected boolean a(uja paramuja1, uja paramuja2)
+  {
+    return paramuja1.b == paramuja2.b;
   }
 }
 

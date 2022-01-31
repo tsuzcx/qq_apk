@@ -1,27 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import mqq.app.AppRuntime;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1;
+import com.tencent.widget.AbsListView;
 
 public class apzc
-  implements View.OnClickListener
+  implements bhtv
 {
-  public apzc(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  public apzc(SystemAndEmojiUniversalPanel.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!aqcz.b(ExtendFriendCampusFragment.a(this.a)))
+    SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, paramAbsListView);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) || (paramInt == 2))
     {
-      paramView = new Intent("com.tencent.mobileqq.action.publishmood");
-      bizt localbizt = bizt.a();
-      localbizt.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      paramView.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
-      paramView.putExtra("uin", localbizt.a);
-      paramView.putExtra("key_from_kuolie", true);
-      bizm.b(ExtendFriendCampusFragment.a(this.a), localbizt, paramView, 0);
+      URLDrawable.resume();
+      SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, this.a.jdField_a_of_type_JavaUtilList, SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0));
+      return;
     }
+    URLDrawable.pause();
   }
 }
 

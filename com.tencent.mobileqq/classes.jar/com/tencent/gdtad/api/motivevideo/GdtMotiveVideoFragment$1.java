@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aakp;
-import aanp;
+import aape;
+import aase;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -14,14 +14,14 @@ final class GdtMotiveVideoFragment$1
   {
     try
     {
-      aakp localaakp = new aakp(this.jdField_a_of_type_AndroidAppActivity);
-      localaakp.a(this.jdField_a_of_type_AndroidContentIntent);
-      localaakp.show();
+      aape localaape = new aape(this.jdField_a_of_type_AndroidAppActivity);
+      localaape.a(this.jdField_a_of_type_AndroidContentIntent);
+      localaape.show();
       return;
     }
     catch (Exception localException)
     {
-      aanp.b("GdtMotiveVideoFragment", "dialog.show() err");
+      aase.b("GdtMotiveVideoFragment", "dialog.show() err");
     }
   }
 }

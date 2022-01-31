@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgkf;
+import bgom;
 
 public class SongInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SongInfo> CREATOR = new bgkf();
+  public static final Parcelable.Creator<SongInfo> CREATOR = new bgom();
   public int a;
   public long a;
   public String a;

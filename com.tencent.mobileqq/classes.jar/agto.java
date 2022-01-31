@@ -1,15 +1,24 @@
-import java.util.Comparator;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.14.1;
 
-final class agto
-  implements Comparator<agtj>
+public class agto
+  implements Animation.AnimationListener
 {
-  public int a(agtj paramagtj1, agtj paramagtj2)
+  agto(agti paramagti) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramagtj1 == null) || (paramagtj2 == null)) {
-      return 0;
-    }
-    return Float.compare(paramagtj1.a(), paramagtj2.a());
+    this.a.t = 5;
+    agti.e(this.a).post(new PublicAccountChatPie.14.1(this));
+    this.a.a.sendEmptyMessage(1);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

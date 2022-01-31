@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class yfk
   implements View.OnClickListener
 {
-  public yfk(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public yfk(CommentBottomBar paramCommentBottomBar) {}
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
+    if (CommentBottomBar.a(this.a) != null)
+    {
+      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
+      CommentBottomBar.a(this.a);
+    }
   }
 }
 

@@ -5,26 +5,26 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bgml;
+import bgqs;
 
 public class ActionSheetDialog$1
   implements Runnable
 {
-  public ActionSheetDialog$1(bgml parambgml) {}
+  public ActionSheetDialog$1(bgqs parambgqs) {}
   
   public void run()
   {
-    bgml.a(this.this$0).setVisibility(0);
-    bgml.a(this.this$0).setVisibility(0);
-    bgml.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, bgml.a(this.this$0).getHeight(), 0.0F));
-    bgml.a(this.this$0).setFillEnabled(true);
-    bgml.a(this.this$0).setInterpolator(AnimationUtils.loadInterpolator(bgml.a(this.this$0), 17432582));
-    bgml.a(this.this$0).setDuration(400L);
-    bgml.a(this.this$0).startAnimation(bgml.a(this.this$0));
+    bgqs.a(this.this$0).setVisibility(0);
+    bgqs.a(this.this$0).setVisibility(0);
+    bgqs.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, bgqs.a(this.this$0).getHeight(), 0.0F));
+    bgqs.a(this.this$0).setFillEnabled(true);
+    bgqs.a(this.this$0).setInterpolator(AnimationUtils.loadInterpolator(bgqs.a(this.this$0), 17432582));
+    bgqs.a(this.this$0).setDuration(400L);
+    bgqs.a(this.this$0).startAnimation(bgqs.a(this.this$0));
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setFillEnabled(true);
     localAlphaAnimation.setDuration(200L);
-    bgml.a(this.this$0).startAnimation(localAlphaAnimation);
+    bgqs.a(this.this$0).startAnimation(localAlphaAnimation);
   }
 }
 

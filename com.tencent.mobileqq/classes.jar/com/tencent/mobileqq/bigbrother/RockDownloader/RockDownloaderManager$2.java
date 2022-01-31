@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import anrp;
-import anrq;
+import anvy;
+import anvz;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 
 public class RockDownloaderManager$2
@@ -9,7 +9,7 @@ public class RockDownloaderManager$2
 {
   public void run()
   {
-    anrq.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new anrp(this));
+    anvz.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new anvy(this));
   }
 }
 

@@ -1,78 +1,93 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class aopw<T>
-  extends aofy<T>
+public class aopw
+  extends aokh<aopv>
 {
-  @NonNull
-  public abstract T a();
+  public static int a(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  public int a()
+  {
+    return 439;
+  }
   
   @NonNull
-  public T a(int paramInt)
+  public aopv a(int paramInt)
   {
-    Object localObject1 = null;
-    if (paramInt == 1) {
-      localObject1 = a();
-    }
-    for (;;)
+    return new aopv(0);
+  }
+  
+  @Nullable
+  public aopv a(aoko[] paramArrayOfaoko)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfaoko != null)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        xmh.a(getClass().getName() + ".migrateOldOrDefaultContent return null!! type=" + paramInt, new Object[0]);
-        localObject2 = b();
-      }
-      return localObject2;
-      if (paramInt == 0) {
-        localObject1 = b();
-      } else {
-        xmh.a(getClass().getName() + ".migrateOldOrDefaultContent illegal type: " + paramInt, new Object[0]);
+      i = j;
+      if (paramArrayOfaoko.length > 0) {
+        paramArrayOfaoko = paramArrayOfaoko[0].a;
       }
     }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaoko);
+      }
+      i = new JSONObject(paramArrayOfaoko).getInt("isPushSwitchShow");
+    }
+    catch (Exception paramArrayOfaoko)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaoko);
+          i = j;
+        }
+      }
+    }
+    return new aopv(i);
   }
   
-  @NonNull
-  public abstract T a(@NonNull aogf[] paramArrayOfaogf);
-  
-  public void a(int paramInt)
+  public Class a()
   {
-    wsv.e("QVipConfigProcessor", getClass().getName() + ".onReqFailed: " + paramInt);
+    return aopv.class;
   }
   
-  public void a(T paramT)
-  {
-    wsv.d("QVipConfigProcessor", getClass().getName() + ".onUpdate: " + paramT);
-  }
+  public void a(int paramInt) {}
   
-  public boolean a()
+  public void a(aopv paramaopv)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramaopv.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramaopv.a);
   }
   
   public int b()
   {
     return 0;
-  }
-  
-  @NonNull
-  public abstract T b();
-  
-  @Nullable
-  public T b(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
-    {
-      wsv.e("QVipConfigProcessor", getClass().getName() + ".onParsed error: confFiles is empty");
-      paramArrayOfaogf = b();
-      if (paramArrayOfaogf != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        xmh.a(bool, getClass().getName() + ".onParsed error: confFiles is empty");
-        return paramArrayOfaogf;
-      }
-    }
-    wsv.d("QVipConfigProcessor", getClass().getName() + ".parsed content count=" + paramArrayOfaogf.length);
-    return a(paramArrayOfaogf);
   }
   
   public boolean b()

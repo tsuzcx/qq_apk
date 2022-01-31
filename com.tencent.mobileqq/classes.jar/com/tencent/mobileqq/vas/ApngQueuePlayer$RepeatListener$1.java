@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas;
 
-import bdmq;
-import bdmu;
+import bdqz;
+import bdrd;
 
 public class ApngQueuePlayer$RepeatListener$1
   implements Runnable
 {
-  public ApngQueuePlayer$RepeatListener$1(bdmu parambdmu) {}
+  public ApngQueuePlayer$RepeatListener$1(bdrd parambdrd) {}
   
   public void run()
   {
-    bdmq.a(this.a.a);
+    bdqz.a(this.a.a);
   }
 }
 

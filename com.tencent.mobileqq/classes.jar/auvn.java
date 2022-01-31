@@ -1,120 +1,59 @@
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.provider.Settings;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class auvn
 {
-  public static long a;
-  private static final String jdField_a_of_type_JavaLangString = auvn.class.getName() + "Q.nearby.video_chat.gift";
-  public static long[] a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TroopGiftPanel jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
+  private static void b(String paramString)
   {
-    jdField_a_of_type_ArrayOfLong = new long[2];
-  }
-  
-  public auvn(AppInterface paramAppInterface, Context paramContext, SessionInfo paramSessionInfo, TroopGiftPanel paramTroopGiftPanel, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = paramTroopGiftPanel;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 3;
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(true);
-    yqv localyqv = yqv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-    if (localyqv != null)
+    int j = 1;
+    int i = j;
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(localyqv, true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mTroopGiftPanel") != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(false);
-    }
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    long l = System.currentTimeMillis();
-    bcfr localbcfr = (bcfr)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(223);
-    bcju localbcju = (bcju)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(113);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 3)
-    {
-      localbcju.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new auvo(this, localbcju, l, localbcfr, paramInt1));
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setIsShow(true);
-      Object localObject;
-      if (paramBoolean1)
+      localObject = BaseApplicationImpl.getApplication();
+      i = j;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(TroopGiftPanel.e);
-        localObject = yqv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-        if (localObject == null) {
-          break label172;
+        i = j;
+        if (!Settings.canDrawOverlays((Context)localObject))
+        {
+          i = 0;
+          ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
         }
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData((yqv)localObject, true);
-        a(0, paramBoolean2, paramInt);
-      }
-      if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mTroopGiftPanel") == null)
-      {
-        localObject = new RelativeLayout.LayoutParams(-2, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(8);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12);
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, (ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setTag("mTroopGiftPanel");
       }
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt == 0) {
-        SosoInterface.a(new auvq(3, true, true, 60000L, true, false, "NearbyTroopsView"));
-      }
+    if (i == 0) {
       return;
-      label172:
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d();
-      break;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+    Object localObject = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
+    ((Dialog)localObject).getWindow().setType(2003);
+    ((Dialog)localObject).setContentView(2131558919);
+    TextView localTextView = (TextView)((Dialog)localObject).findViewById(2131365237);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
+    }
+    localTextView = (TextView)((Dialog)localObject).findViewById(2131365233);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)((Dialog)localObject).findViewById(2131365222);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131690648);
+      localTextView.setOnClickListener(new auvp((Dialog)localObject));
+    }
+    localTextView = (TextView)((Dialog)localObject).findViewById(2131365228);
+    if (localTextView != null)
+    {
+      localTextView.setText(alud.a(2131707588));
+      localTextView.setOnClickListener(new auvq((Dialog)localObject, paramString));
+    }
+    ((Dialog)localObject).show();
   }
 }
 

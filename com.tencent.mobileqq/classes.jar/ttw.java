@@ -1,15 +1,14 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
 class ttw
-  implements yfu<Object>
+  implements ykh<Object>
 {
-  ttw(ttv paramttv, FeedCloudMeta.StFeed paramStFeed) {}
+  ttw(ttr paramttr) {}
   
   public void a(Object... paramVarArgs)
   {
     if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      ttv.a(this.jdField_a_of_type_Ttv, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
+      ttr.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
     }
   }
 }

@@ -1,30 +1,11 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bdfw
-  implements View.OnClickListener
+public class bdfw
 {
-  bdfw(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bdfq.isShowing()) {
-        this.jdField_a_of_type_Bdfq.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public int a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfw
  * JD-Core Version:    0.7.0.1
  */

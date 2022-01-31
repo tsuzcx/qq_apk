@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bdcb;
+import bdgk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import nrt;
@@ -52,8 +52,8 @@ public class VideoFeedsCPUMonitor$1$1
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", bdcb.d());
-        localJSONObject.put("manufactureInfo", bdcb.h());
+        localJSONObject.put("deviceModel", bdgk.d());
+        localJSONObject.put("manufactureInfo", bdgk.h());
         localJSONObject.put("uin", ors.a());
         nrt.a(null, null, "0X8009576", "0X8009576", 0, 0, ors.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {

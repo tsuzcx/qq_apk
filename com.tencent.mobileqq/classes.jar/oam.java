@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class oam
-  implements bcgo
+  implements bckx
 {
   public oam(ReadInJoyUploadAvatarActivity.3 param3) {}
   

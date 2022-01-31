@@ -1,20 +1,19 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import android.util.Log;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer.6;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class bhgc
-  implements MediaRecorder.OnInfoListener
+  implements ValueCallback<String>
 {
-  public bhgc(MiniAppCamera paramMiniAppCamera, bgkd parambgkd) {}
+  public bhgc(PageWebviewContainer.6 param6) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    Log.i("MiniAppCamera", "onInfo: " + paramInt1);
-    QMLog.i("MiniAppCamera", "setOnInfoListener|reson: " + paramInt1);
-    if (paramInt1 == 800) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.b(this.jdField_a_of_type_Bgkd);
+    QMLog.d("PageWebviewContainer", "openFileReader callback  : " + paramString);
+    if ((paramString != null) && (paramString.startsWith("http"))) {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).downloadQQBrowser("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
     }
   }
 }

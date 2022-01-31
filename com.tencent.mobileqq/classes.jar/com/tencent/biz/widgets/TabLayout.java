@@ -10,15 +10,15 @@ import android.view.ViewParent;
 import com.tencent.widget.HorizontalListView;
 import java.util.HashMap;
 import java.util.Map;
-import zcw;
-import zcx;
-import zcy;
+import zhl;
+import zhm;
+import zhn;
 
 public class TabLayout
   extends HorizontalListView
 {
   private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private zcy jdField_a_of_type_Zcy;
+  private zhn jdField_a_of_type_Zhn;
   private boolean jdField_a_of_type_Boolean;
   private Map<Integer, Integer> b = new HashMap();
   
@@ -65,8 +65,8 @@ public class TabLayout
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Zcy != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Zcy.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Zhn != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Zhn.notifyDataSetChanged();
     }
   }
   
@@ -99,8 +99,8 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new zcw(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new zcx(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new zhl(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new zhm(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -123,11 +123,11 @@ public class TabLayout
     }
   }
   
-  public void setAdapter(zcy paramzcy)
+  public void setAdapter(zhn paramzhn)
   {
-    super.setAdapter(paramzcy);
-    this.jdField_a_of_type_Zcy = paramzcy;
-    this.jdField_a_of_type_Zcy.a(this);
+    super.setAdapter(paramzhn);
+    this.jdField_a_of_type_Zhn = paramzhn;
+    this.jdField_a_of_type_Zhn.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)

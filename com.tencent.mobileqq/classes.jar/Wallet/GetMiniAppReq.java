@@ -1,6 +1,6 @@
 package Wallet;
 
-import bdcb;
+import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -31,8 +31,8 @@ public final class GetMiniAppReq
     this.mini_appid = paramString1;
     this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     this.mini_version = paramInt1;
-    this.platform = ("Android|" + bdcb.e() + "|" + bdcb.i());
-    this.qq_version = bdcb.c();
+    this.platform = ("Android|" + bdgk.e() + "|" + bdgk.i());
+    this.qq_version = bdgk.c();
     this.action = paramInt2;
     this.extra_keys = paramString2;
   }

@@ -1,13 +1,24 @@
-import android.os.Handler;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-class wrq
-  implements wnp
+public class wrq
 {
-  wrq(wrp paramwrp) {}
+  private static final String jdField_a_of_type_JavaLangString = alof.aW + "/Tencent/com/tencent/mobileqq/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  public void a(wmu paramwmu)
+  public static void a(wrt<Integer> paramwrt)
   {
-    wrh.a(this.a.a).sendMessage(wrh.a(this.a.a).obtainMessage(0, paramwmu));
+    paramwrt = new WeakReference(paramwrt);
+    wsl localwsl = new wsl(null);
+    localwsl.a(new wrr(paramwrt));
+    localwsl.a(new wrs(paramwrt));
+    localwsl.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 

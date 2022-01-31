@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-final class bcau
-  implements DialogInterface.OnClickListener
+public class bcau
+  implements View.OnTouchListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcau(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

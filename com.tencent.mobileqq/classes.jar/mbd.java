@@ -6,7 +6,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class mbd
-  implements bevy
+  implements bfah
 {
   mbd(mbc parammbc, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
   
@@ -24,7 +24,7 @@ class mbd
     {
     case -1: 
     default: 
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131720019), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131720031), 0).a();
     case -2: 
       WXShareHelper.a().b(this);
       localmbc = this.jdField_a_of_type_Mbc;
@@ -38,7 +38,7 @@ class mbd
     {
       localmbc.a(j, k, i);
       return;
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131720038), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131720050), 0).a();
       break;
       i = 3;
     }

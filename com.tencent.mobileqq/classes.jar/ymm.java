@@ -1,8 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface ymm
 {
-  public abstract void callback(Bundle paramBundle);
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

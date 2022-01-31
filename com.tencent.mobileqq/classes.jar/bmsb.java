@@ -1,52 +1,24 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
 
-public abstract class bmsb
-  implements bmsa
+public class bmsb
+  extends uli
 {
-  private List<bmrw> a = new ArrayList();
+  public final int a;
+  public final long a;
+  @NonNull
+  public final DoodleEmojiItem a;
+  public final boolean a;
+  public final long b;
+  public boolean b;
   
-  public void a()
+  public bmsb(@NonNull DoodleEmojiItem paramDoodleEmojiItem, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmrw)localIterator.next()).h();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmrw)localIterator.next()).b(paramInt);
-    }
-  }
-  
-  public void a(bmrw parambmrw)
-  {
-    if (parambmrw == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(parambmrw)) {
-      throw new IllegalStateException("Observer " + parambmrw + " is already registered.");
-    }
-    this.a.add(parambmrw);
-  }
-  
-  public void b(bmrw parambmrw)
-  {
-    if (parambmrw == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    synchronized (this.a)
-    {
-      int i = this.a.indexOf(parambmrw);
-      if (i != -1) {
-        this.a.remove(i);
-      }
-      return;
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

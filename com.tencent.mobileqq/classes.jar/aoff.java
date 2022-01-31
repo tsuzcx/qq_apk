@@ -1,40 +1,42 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.graphics.Point;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aoff
-  implements Comparator<aofg>
+public class aoff
+  implements Animator.AnimatorListener
 {
-  aoff(aofb paramaofb, boolean paramBoolean, ArrayList paramArrayList) {}
+  public aoff(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public int a(aofg paramaofg1, aofg paramaofg2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = -1;
-    if (paramaofg1.jdField_a_of_type_Int > paramaofg2.jdField_a_of_type_Int) {}
-    do
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
+    if (!this.a.a())
     {
-      return 1;
-      if (paramaofg1.jdField_a_of_type_Int < paramaofg2.jdField_a_of_type_Int) {
-        return -1;
-      }
-      if ((paramaofg1.jdField_a_of_type_Boolean) && (!paramaofg2.jdField_a_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
-      }
-      if ((paramaofg1.jdField_a_of_type_Boolean) || (!paramaofg2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaofg1.jdField_a_of_type_Float - paramaofg2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramaofg1.jdField_a_of_type_Float, paramaofg2.jdField_a_of_type_Float);
+      paramAnimator.leftMargin = bdaq.a(this.a.getContext(), 14.5F);
+      paramAnimator.rightMargin = 0;
     }
-    return 0;
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bdaq.a(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    paramAnimator = this.a;
+    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
+    for (int i = 0;; i = 1)
+    {
+      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
+      return;
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

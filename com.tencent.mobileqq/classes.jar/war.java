@@ -1,24 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class war
-  extends SimpleJob<Object>
+public class war
+  extends QQUIEventReceiver<wah, vdl>
 {
-  war(waq paramwaq, String paramString)
+  public war(@NonNull wah paramwah)
   {
-    super(paramString);
+    super(paramwah);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull wah paramwah, @NonNull vdl paramvdl)
   {
-    if (this.a.a == null) {
-      this.a.a = new wat(this.a, this.a.c);
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(paramwah.b, "receive user info event. %s.", paramvdl.toString());
+      paramwah.i();
     }
-    this.a.d = "";
-    waq.a(this.a);
-    return null;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

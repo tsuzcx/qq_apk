@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import asiv;
-import awbv;
-import awdj;
+import asne;
+import awge;
+import awhs;
 import com.tencent.TMG.utils.QLog;
 
 public class GameUserInfo
-  extends awbv
+  extends awge
 {
-  public static final String TAG = asiv.a + "GameUserInfo";
+  public static final String TAG = asne.a + "GameUserInfo";
   public String mAppId;
   public String mFaceUrl;
   public String mLevelPic;
@@ -17,7 +17,7 @@ public class GameUserInfo
   public String mOnLineDesc;
   public int mOnlineType;
   public String mPartitioName;
-  @awdj
+  @awhs
   public String mRoleId;
   public long mSaveTs;
   public int mSex;

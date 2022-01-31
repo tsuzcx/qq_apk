@@ -2,33 +2,33 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.async.JobContext;
-import wds;
-import wdt;
-import wdu;
-import wdv;
-import weh;
-import wsv;
+import wib;
+import wic;
+import wid;
+import wie;
+import wiq;
+import wxe;
 
 public class DetailFeedAllInfoPullSegment$Observer$1
   implements Runnable
 {
-  public DetailFeedAllInfoPullSegment$Observer$1(wdv paramwdv, boolean paramBoolean) {}
+  public DetailFeedAllInfoPullSegment$Observer$1(wie paramwie, boolean paramBoolean) {}
   
   public void run()
   {
     int i1 = 0;
-    if (wds.a(this.jdField_a_of_type_Wdv.a).isJobCancelled())
+    if (wib.a(this.jdField_a_of_type_Wie.a).isJobCancelled())
     {
-      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Wdv.getFunctionResult(0);
+      Object localObject = (Integer)this.jdField_a_of_type_Wie.getFunctionResult(0);
       if (localObject != null) {
-        wds.a(this.jdField_a_of_type_Wdv.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        wib.a(this.jdField_a_of_type_Wie.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (wds.a(this.jdField_a_of_type_Wdv.a).a()) {}
+      if (wib.a(this.jdField_a_of_type_Wie.a).a()) {}
       int m;
       int n;
       for (int j = 2;; j = 1)
@@ -42,12 +42,12 @@ public class DetailFeedAllInfoPullSegment$Observer$1
           if (k >= j) {
             break;
           }
-          localObject = (wdu)this.jdField_a_of_type_Wdv.getFunctionResult(i);
+          localObject = (wid)this.jdField_a_of_type_Wie.getFunctionResult(i);
           if (localObject != null)
           {
-            wds.a(this.jdField_a_of_type_Wdv.a).b(((wdu)localObject).jdField_a_of_type_JavaUtilList, true, ((wdu)localObject).jdField_a_of_type_Boolean);
-            wds.a(this.jdField_a_of_type_Wdv.a).b(((wdu)localObject).jdField_a_of_type_Boolean, ((wdu)localObject).jdField_a_of_type_Int);
-            wds.a(this.jdField_a_of_type_Wdv.a).a.mHadLike = ((wdu)localObject).b;
+            wib.a(this.jdField_a_of_type_Wie.a).b(((wid)localObject).jdField_a_of_type_JavaUtilList, true, ((wid)localObject).jdField_a_of_type_Boolean);
+            wib.a(this.jdField_a_of_type_Wie.a).b(((wid)localObject).jdField_a_of_type_Boolean, ((wid)localObject).jdField_a_of_type_Int);
+            wib.a(this.jdField_a_of_type_Wie.a).a.mHadLike = ((wid)localObject).b;
           }
           k += 1;
           i += 1;
@@ -55,21 +55,21 @@ public class DetailFeedAllInfoPullSegment$Observer$1
       }
       while (n < j)
       {
-        localObject = (wdt)this.jdField_a_of_type_Wdv.getFunctionResult(m);
+        localObject = (wic)this.jdField_a_of_type_Wie.getFunctionResult(m);
         if (localObject != null)
         {
-          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_JavaUtilList, true, ((wdt)localObject).jdField_a_of_type_Boolean);
-          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).jdField_a_of_type_Int);
-          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).b);
-          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).jdField_a_of_type_JavaLangString);
+          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_JavaUtilList, true, ((wic)localObject).jdField_a_of_type_Boolean);
+          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).jdField_a_of_type_Int);
+          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).b);
+          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).jdField_a_of_type_JavaLangString);
         }
         n += 1;
         m += 1;
       }
-      wds.a(this.jdField_a_of_type_Wdv.a, wds.a(this.jdField_a_of_type_Wdv.a));
+      wib.a(this.jdField_a_of_type_Wie.a, wib.a(this.jdField_a_of_type_Wie.a));
       return;
     }
-    wds.a(this.jdField_a_of_type_Wdv.a, new ErrorMessage(-1, "get feed interact data error."));
+    wib.a(this.jdField_a_of_type_Wie.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

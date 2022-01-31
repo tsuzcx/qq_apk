@@ -1,85 +1,34 @@
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.graphics.Paint;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adre
-  implements mxt
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adre(ScoreQAVFragment paramScoreQAVFragment) {}
+  public adre(QQMapActivity paramQQMapActivity) {}
   
-  public void a(Object paramObject, int paramInt)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
-    }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    if (i > 0)
     {
-      try
+      int j = bdaq.a(this.a, 10.0F);
+      Object localObject = new Paint();
+      ((Paint)localObject).setTextSize(bdaq.a(this.a, 14.0F));
+      ((Paint)localObject).setAntiAlias(true);
+      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      ((Paint)localObject).setTextSize(bdaq.a(this.a, 20.0F));
+      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
       {
-        if (mum.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131696308);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
-        }
+        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      catch (OutOfMemoryError paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
-      }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (mum.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131696308);
-        }
-        catch (OutOfMemoryError paramObject)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
-          }
-        }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      }
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.model.SongInfo;
 import com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -34,7 +34,7 @@ class AudioJsPlugin$BgMusicManager
     return 0;
   }
   
-  private void getMusicPlayerState(bgkd parambgkd)
+  private void getMusicPlayerState(bgok parambgok)
   {
     try
     {
@@ -45,22 +45,22 @@ class AudioJsPlugin$BgMusicManager
         localJSONObject.put("duration", AudioJsPlugin.access$3100(this.this$0, AudioJsPlugin.access$3200(this.this$0)));
         localJSONObject.put("status", convertState(AudioJsPlugin.access$3300(this.this$0)));
         localJSONObject.put("dataUrl", AudioJsPlugin.access$2900(this.this$0).jdField_b_of_type_JavaLangString);
-        parambgkd.a(localJSONObject);
+        parambgok.a(localJSONObject);
         return;
       }
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  private void pauseQQMusic(bgkd parambgkd)
+  private void pauseQQMusic(bgok parambgok)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    AudioJsPlugin.access$3402(this.this$0, parambgkd);
+    AudioJsPlugin.access$3402(this.this$0, parambgok);
     try
     {
       localMusicPlayerProxy.pause();
@@ -68,7 +68,7 @@ class AudioJsPlugin$BgMusicManager
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
@@ -90,16 +90,16 @@ class AudioJsPlugin$BgMusicManager
     localMusicPlayerProxy.startPlay(new SongInfo[] { localSongInfo }, 0);
   }
   
-  private void playQQMusic(JSONObject paramJSONObject, bgkd parambgkd)
+  private void playQQMusic(JSONObject paramJSONObject, bgok parambgok)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
     if ((!localMusicPlayerProxy.isInit()) || (paramJSONObject == null)) {
-      parambgkd.b();
+      parambgok.b();
     }
     do
     {
       return;
-      AudioJsPlugin.access$3402(this.this$0, parambgkd);
+      AudioJsPlugin.access$3402(this.this$0, parambgok);
       try
       {
         SongInfo localSongInfo = localMusicPlayerProxy.getCurrentSong();
@@ -115,7 +115,7 @@ class AudioJsPlugin$BgMusicManager
       }
       catch (Exception paramJSONObject)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
     } while ((AudioJsPlugin.access$3300(this.this$0) != 4) && (AudioJsPlugin.access$3300(this.this$0) != 0) && (AudioJsPlugin.access$3300(this.this$0) != 8));
@@ -124,7 +124,7 @@ class AudioJsPlugin$BgMusicManager
     playNew(paramJSONObject);
   }
   
-  private void seekMusic(JSONObject paramJSONObject, bgkd parambgkd)
+  private void seekMusic(JSONObject paramJSONObject, bgok parambgok)
   {
     float f2 = 0.0F;
     if ((this.musicPlayerProxy != null) && (paramJSONObject != null)) {
@@ -149,7 +149,7 @@ class AudioJsPlugin$BgMusicManager
           AudioJsPlugin.access$2800(this.this$0, "waiting");
           AudioJsPlugin.access$2800(this.this$0, "seeking");
           this.musicPlayerProxy.seekTo(i);
-          parambgkd.a();
+          parambgok.a();
           AudioJsPlugin.access$2800(this.this$0, "seeked");
           AudioJsPlugin.access$2800(this.this$0, "play");
           return;
@@ -159,22 +159,22 @@ class AudioJsPlugin$BgMusicManager
           f2 = Float.valueOf(paramJSONObject).floatValue();
         }
         label140:
-        parambgkd.b();
+        parambgok.b();
         return;
       }
       catch (Exception paramJSONObject)
       {
         paramJSONObject.printStackTrace();
         QMLog.e("AudioJsPlugin", "seekMusic error. " + paramJSONObject);
-        parambgkd.b();
+        parambgok.b();
       }
     }
   }
   
-  private void stopQQmMusic(bgkd parambgkd)
+  private void stopQQmMusic(bgok parambgok)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    AudioJsPlugin.access$3402(this.this$0, parambgkd);
+    AudioJsPlugin.access$3402(this.this$0, parambgok);
     try
     {
       localMusicPlayerProxy.stop();
@@ -182,38 +182,38 @@ class AudioJsPlugin$BgMusicManager
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  public void handleMessage(int paramInt, bgkd parambgkd)
+  public void handleMessage(int paramInt, bgok parambgok)
   {
-    handleMessage(paramInt, parambgkd, null);
+    handleMessage(paramInt, parambgok, null);
   }
   
-  public void handleMessage(int paramInt, bgkd parambgkd, JSONObject paramJSONObject)
+  public void handleMessage(int paramInt, bgok parambgok, JSONObject paramJSONObject)
   {
     switch (paramInt)
     {
     default: 
       return;
     case 1: 
-      playQQMusic(paramJSONObject, parambgkd);
-      AudioJsPlugin.access$2602(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, parambgkd, null));
+      playQQMusic(paramJSONObject, parambgok);
+      AudioJsPlugin.access$2602(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, parambgok, null));
       return;
     case 2: 
-      pauseQQMusic(parambgkd);
+      pauseQQMusic(parambgok);
       AudioJsPlugin.access$2602(this.this$0, null);
       return;
     case 3: 
-      stopQQmMusic(parambgkd);
+      stopQQmMusic(parambgok);
       AudioJsPlugin.access$2602(this.this$0, null);
       return;
     case 4: 
-      seekMusic(paramJSONObject, parambgkd);
+      seekMusic(paramJSONObject, parambgok);
       return;
     }
-    getMusicPlayerState(parambgkd);
+    getMusicPlayerState(parambgok);
   }
 }
 

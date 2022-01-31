@@ -1,22 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class avbc
-  implements View.OnTouchListener
+public final class avbc
+  implements Parcelable.Creator<BasicTypeDataParcel>
 {
-  public avbc(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public BasicTypeDataParcel a(Parcel paramParcel)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
-    }
-    return false;
+    return new BasicTypeDataParcel(paramParcel);
+  }
+  
+  public BasicTypeDataParcel[] a(int paramInt)
+  {
+    return new BasicTypeDataParcel[paramInt];
   }
 }
 

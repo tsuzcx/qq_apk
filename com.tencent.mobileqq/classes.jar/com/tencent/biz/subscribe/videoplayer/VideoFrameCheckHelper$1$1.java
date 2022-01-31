@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.videoplayer;
 
 import mqq.util.WeakReference;
-import yij;
+import ymw;
 
 class VideoFrameCheckHelper$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class VideoFrameCheckHelper$1$1
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get() != null) {
-      ((yij)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
+      ((ymw)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
     }
   }
 }

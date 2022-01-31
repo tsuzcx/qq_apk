@@ -1,43 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.widget.AbsListView;
 
 public class ahej
-  implements ahrg
+  implements bhtv
 {
-  public ahej(TroopView paramTroopView) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void a()
+  public ahej(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (azwu.a())
-    {
-      localMessage = TroopView.a(this.a).obtainMessage(15);
-      TroopView.a(this.a).sendMessage(localMessage);
-    }
-    do
-    {
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Aheo.getCount();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
+    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
       return;
-      if (!bdee.g(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
     }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
   }
 }
 

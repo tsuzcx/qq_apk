@@ -1,7 +1,17 @@
-public class ataf
-  implements alkr
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
+
+class ataf
+  implements Callable<aszg>
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  ataf(atad paramatad) {}
+  
+  public aszg a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return aszp.b(atad.a(this.a).getApplication(), "GVideo", localQQAppInterface.c());
+  }
 }
 
 

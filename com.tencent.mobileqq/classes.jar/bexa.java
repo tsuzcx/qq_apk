@@ -1,28 +1,47 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 public class bexa
+  extends Handler
 {
-  private static bexa a;
+  WeakReference<KSongView> a;
   
-  public static bexa a()
+  public bexa(KSongView paramKSongView)
   {
-    try
+    this.a = new WeakReference(paramKSongView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0)
     {
-      if (a == null) {
-        a = new bexa();
+      paramMessage = (KSongView)this.a.get();
+      if ((paramMessage != null) && (1 == paramMessage.a())) {
+        break label31;
       }
-      bexa localbexa = a;
-      return localbexa;
     }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    bfjq.a(paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    bfjq.b(paramString);
+    label31:
+    do
+    {
+      return;
+      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
+      beww localbeww = paramMessage.a();
+      paramMessage.a(l);
+      if (l >= localbeww.d) {
+        KSongView.a(paramMessage, l);
+      }
+      QLog.i("KSongView", 2, "real_duration = " + l);
+      if (l < localbeww.e)
+      {
+        sendEmptyMessageDelayed(0, 50L);
+        return;
+      }
+      KSongView.a(paramMessage, 3);
+    } while (KSongView.a(paramMessage) == null);
+    KSongView.a(paramMessage).a();
   }
 }
 

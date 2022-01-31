@@ -1,98 +1,23 @@
-import android.graphics.Bitmap;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
 public class baad
-  extends baaj
-  implements azza, baai
+  extends Handler
 {
-  private baae a;
-  private azze jdField_b_of_type_Azze = new azze(0.0F, 0.0F);
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private WeakReference<azzv> a;
   
-  public baad(SpriteGLView paramSpriteGLView, Bitmap paramBitmap, boolean paramBoolean)
+  public baad(azzv paramazzv)
   {
-    super(paramSpriteGLView, paramBitmap);
-    this.c = paramBoolean;
+    this.a = new WeakReference(paramazzv);
   }
   
-  public baad(SpriteGLView paramSpriteGLView, boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramSpriteGLView);
-    this.c = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(baae parambaae)
-  {
-    this.jdField_a_of_type_Baae = parambaae;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Baam == null) || (this.jdField_a_of_type_Baam.a == null)) {
-      return false;
+    if ((azzv)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130845018);
     }
-    paramInt1 = paramMotionEvent.getAction();
-    float f3 = paramMotionEvent.getX();
-    float f4 = paramMotionEvent.getY();
-    a(this.jdField_b_of_type_Azze);
-    float f1 = b();
-    float f5 = (this.jdField_b_of_type_Azze.a - this.jdField_a_of_type_Baam.a.getWidth() * this.e / 2.0F) * f1;
-    float f6 = (this.jdField_b_of_type_Azze.a + this.jdField_a_of_type_Baam.a.getWidth() * this.e / 2.0F) * f1;
-    float f2;
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_b_of_type_Boolean)
-    {
-      f2 = paramInt2 - (this.jdField_b_of_type_Azze.b + this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F) * f1;
-      f1 = paramInt2 - f1 * (this.jdField_b_of_type_Azze.b - this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F);
-      if (paramInt1 != 0) {
-        break label337;
-      }
-      if ((f3 <= f5) || (f3 >= f6) || (f4 <= f2) || (f4 >= f1)) {
-        break label315;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (this.c) {
-        this.jdField_a_of_type_Int = 128;
-      }
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_Boolean;
-      f2 = (this.jdField_b_of_type_Azze.b - this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F) * f1;
-      f1 *= (this.jdField_b_of_type_Azze.b + this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F);
-      break;
-      label315:
-      this.jdField_b_of_type_Boolean = false;
-      if (this.c) {
-        this.jdField_a_of_type_Int = 255;
-      }
-    }
-    label337:
-    if ((paramInt1 == 1) || (paramInt1 == 3))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      if (this.c) {
-        this.jdField_a_of_type_Int = 255;
-      }
-      if ((f3 > f5) && (f3 < f6) && (f4 > f2) && (f4 < f1))
-      {
-        if (this.jdField_a_of_type_Baae != null)
-        {
-          this.jdField_a_of_type_Baae.a(this);
-          return true;
-        }
-        return true;
-      }
-    }
-    return false;
   }
 }
 

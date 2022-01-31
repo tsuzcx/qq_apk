@@ -1,21 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class vwz
-  extends Job<Object, Object, Object>
+public class vwz
+  implements vyj
 {
-  vwz(vwy paramvwy, String paramString, uqw paramuqw)
-  {
-    super(paramString);
-  }
+  public vwz(TextureVideoView paramTextureVideoView) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(vyi paramvyi, int paramInt)
   {
-    uht.a().dispatch(this.jdField_a_of_type_Uqw);
-    return null;
+    this.a.f = paramInt;
   }
 }
 

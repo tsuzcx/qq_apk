@@ -1,36 +1,15 @@
-class vdu
-  implements vea
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+
+public class vdu
+  implements urr<vgn, vhy>
 {
-  vdu(vdt paramvdt) {}
-  
-  public void a(vge paramvge)
+  public void a(@NonNull vgn paramvgn, @Nullable vhy paramvhy, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).a(paramvge.a);
-    }
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).a();
-    }
-  }
-  
-  public void b(vge paramvge)
-  {
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).c(paramvge.a);
-    }
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).a();
-    }
-  }
-  
-  public void c(vge paramvge)
-  {
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).d(paramvge.a);
-    }
-    if (vdt.a(this.a) != null) {
-      vdt.a(this.a).a();
-    }
+    paramvgn = new vdv(this, paramErrorMessage, paramvgn.b, paramvgn.jdField_c_of_type_JavaLangString, paramvgn.jdField_c_of_type_Int);
+    umc.a().dispatch(paramvgn);
   }
 }
 

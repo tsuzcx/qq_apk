@@ -1,15 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tgpa.vendorpd.GameCallback;
+import org.json.JSONObject;
 
-class aahg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class aahg
+  implements GameCallback
 {
-  aahg(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
+  public aahg(JSONObject paramJSONObject) {}
   
-  public void onGlobalLayout()
+  public int getPreDownloadVersionInfo(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onGlobalLayout(aahe.a(this.jdField_a_of_type_Aahe));
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("ret") == 0)
+      {
+        paramString = paramString.optJSONObject("data");
+        bkjb.a().a(paramString, this.a);
+      }
+      return 0;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
+      }
     }
   }
 }

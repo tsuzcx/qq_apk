@@ -1,6 +1,15 @@
-public abstract interface aszq
+import android.content.Context;
+import java.util.concurrent.Callable;
+
+final class aszq
+  implements Callable<aszg>
 {
-  public abstract void a(int paramInt, String paramString);
+  aszq(Context paramContext, String paramString) {}
+  
+  public aszg a()
+  {
+    return aszp.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

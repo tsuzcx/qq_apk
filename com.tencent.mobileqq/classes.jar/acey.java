@@ -1,44 +1,27 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
 
-final class acey
-  implements awfy
+public class acey
+  implements DialogInterface.OnClickListener
 {
-  acey(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  public acey(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public void a(awfz paramawfz) {}
-  
-  public void b(awfz paramawfz)
-  {
-    try
-    {
-      if (paramawfz.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramawfz.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramawfz.b + ",result.errStr=" + paramawfz.jdField_a_of_type_JavaLangString);
-      }
-      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      return;
+    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
+    paramDialogInterface = aous.c();
+    if (TextUtils.isEmpty(paramDialogInterface.a)) {
+      bdmj.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
     }
-    catch (Exception paramawfz)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramawfz);
-      }
-      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      this.a.b();
+      return;
+      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
+      bdmj.a(this.a, paramDialogInterface);
     }
   }
 }

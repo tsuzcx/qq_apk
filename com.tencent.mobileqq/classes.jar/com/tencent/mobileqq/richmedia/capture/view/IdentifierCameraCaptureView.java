@@ -5,13 +5,13 @@ import android.hardware.Camera;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import axnm;
+import axrv;
 import javax.microedition.khronos.opengles.GL10;
 
 public class IdentifierCameraCaptureView
   extends CameraCaptureView
 {
-  public axnm a;
+  public axrv a;
   
   public IdentifierCameraCaptureView(@NonNull Context paramContext)
   {
@@ -36,9 +36,9 @@ public class IdentifierCameraCaptureView
     super.onDrawFrame(paramGL10);
   }
   
-  public void setPreviewCallback(axnm paramaxnm)
+  public void setPreviewCallback(axrv paramaxrv)
   {
-    this.a = paramaxnm;
+    this.a = paramaxrv;
   }
 }
 

@@ -1,70 +1,77 @@
-import android.graphics.Matrix;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Path.Direction;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmrg
-  extends bmqf
+  extends bmyj
 {
-  public Path a;
-  ArrayList<bmrf> a;
-  public int b;
-  public int c;
+  public float a;
+  public int a;
+  @NonNull
+  public Bitmap a;
+  public PointF a;
+  public bmqv a;
+  public bnfb a;
+  public boolean a;
+  public Rect[] a;
+  public String[] a;
+  public float b;
+  public boolean b;
+  public float c;
+  public float d;
+  public float e = 1.0F;
   
-  public bmrg(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public bmrg(bmre parambmre, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Bnfb = new bnfb();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public bmrg(bmqf parambmqf, float paramFloat)
+  public void a(Canvas paramCanvas)
   {
-    super(parambmqf.jdField_a_of_type_Int);
-    if ((parambmqf instanceof bmrg))
-    {
-      parambmqf = (bmrg)parambmqf;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(parambmqf.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = parambmqf.jdField_a_of_type_Int;
-      this.b = parambmqf.b;
-      this.jdField_c_of_type_Int = ((int)(parambmqf.jdField_c_of_type_Int * paramFloat));
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoteLayer", 2, "draw bitmap is null");
+      }
     }
-  }
-  
-  public JSONObject a()
-  {
-    try
+    do
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      localJSONObject.put("lineWidth", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      return;
+      paramCanvas.save();
+      paramCanvas.concat(bmre.a(this.jdField_a_of_type_Bmre).a(this));
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, -this.u / 2.0F, -this.v / 2.0F, bmre.a(this.jdField_a_of_type_Bmre));
+      if ((this.k) && (this.jdField_a_of_type_Boolean))
       {
-        bmrf localbmrf = (bmrf)localIterator.next();
-        localJSONArray.put(localbmrf.jdField_d_of_type_Int);
-        localJSONArray.put(localbmrf.a);
-        localJSONArray.put(localbmrf.b);
-        if (localbmrf.jdField_d_of_type_Int == bmrf.jdField_c_of_type_Int)
+        paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+        Path localPath = new Path();
+        Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+        int j = arrayOfRect.length;
+        i = 0;
+        while (i < j)
         {
-          localJSONArray.put(localbmrf.jdField_c_of_type_Float);
-          localJSONArray.put(localbmrf.jdField_d_of_type_Float);
+          Rect localRect = arrayOfRect[i];
+          localPath.reset();
+          localPath.addRoundRect(new RectF(localRect.left + 10, localRect.top + 5, localRect.right - 10, localRect.bottom - 5), 4.0F, 4.0F, Path.Direction.CCW);
+          paramCanvas.drawPath(localPath, bmre.b(this.jdField_a_of_type_Bmre));
+          i += 1;
         }
       }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
+      paramCanvas.restore();
+    } while (!this.k);
+    int i = -1;
+    if (this.b) {
+      i = 2130839424;
     }
-    catch (Exception localException) {}
-    return null;
+    bmyg.a(paramCanvas, bmre.a(this.jdField_a_of_type_Bmre), this, i, 2130844230, 2130844237);
   }
 }
 

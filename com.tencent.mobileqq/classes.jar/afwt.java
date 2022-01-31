@@ -1,40 +1,18 @@
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class afwt
-  extends aelt
+class afwt
+  extends aepm
 {
-  public ImageView a;
-  public TextView a;
-  public CropBubbleVideoView a;
-  public MessageProgressView a;
-  public ImageView b;
-  public int e;
-  public int f;
+  public long a;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public afwt(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bdan.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
-    }
-  }
+  afwt(afwr paramafwr) {}
 }
 
 

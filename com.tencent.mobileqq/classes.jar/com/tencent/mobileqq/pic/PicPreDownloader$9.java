@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import awfu;
+import awkd;
 import com.tencent.mobileqq.data.MessageForStructing;
 
 class PicPreDownloader$9
@@ -10,7 +10,7 @@ class PicPreDownloader$9
   
   public void run()
   {
-    awfu.a(this.a, this.this$0.a);
+    awkd.a(this.a, this.this$0.a);
   }
 }
 

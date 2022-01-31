@@ -1,20 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class awqg
-  implements Animation.AnimationListener
+class awqg
+  implements DialogInterface.OnDismissListener
 {
-  public awqg(BreatheEffectView paramBreatheEffectView) {}
+  awqg(awqe paramawqe, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

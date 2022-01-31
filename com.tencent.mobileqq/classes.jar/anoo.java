@@ -1,31 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-final class anoo
-  implements bapw
+public class anoo
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  java.lang.ref.WeakReference<QQAppInterface> a;
+  
+  public anoo(QQAppInterface paramQQAppInterface)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    do
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, alpg paramalpg)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
     {
-      do
-      {
-        return;
-      } while (!(parambaqv instanceof baps));
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
-      {
-        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambaqw);
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
+    }
+    return ((anoh)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramalpg);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, alpg paramalpg)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((anoh)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramalpg);
   }
 }
 

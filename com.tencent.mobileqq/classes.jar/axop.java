@@ -1,102 +1,49 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class axop
-  extends axpb
+  implements baug
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "receiver";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String d;
+  axop(axom paramaxom) {}
   
-  public axop(int paramInt, String paramString) {}
-  
-  private void a()
+  public void onResp(bavf parambavf)
   {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Int += 1;
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      if (this.jdField_b_of_type_Int > 1) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 0;
+    Object localObject = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
+    if (parambavf.jdField_a_of_type_Int != 0) {
+      lek.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
+    for (;;)
     {
-      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
-      this.jdField_a_of_type_Int = 1;
-    }
-  }
-  
-  public HashMap<String, String> a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (this.jdField_b_of_type_Int <= 0)
-    {
-      localObject1 = localObject2;
-      if (QLog.isDevelopLevel())
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
       {
-        QLog.i(axpc.jdField_a_of_type_JavaLangString, 4, "View count is 0!");
-        localObject1 = localObject2;
+        lek.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        return;
       }
-    }
-    do
-    {
-      do
+      lek.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
       {
-        do
+        localObject = axom.b;
+        bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        if ((axom.a(this.a).decrementAndGet() == 0) && (axom.a(this.a) != null))
         {
-          return localObject1;
-          if (!"Pic.AioPreview".equals(paramString)) {
-            break;
-          }
-          paramString = new HashMap();
-          paramString.put("stay_seconds", String.valueOf(this.jdField_a_of_type_Long));
-          paramString.put("gesture_double_click", String.valueOf(this.jdField_a_of_type_Int));
-          paramString.put("view_count", String.valueOf(this.jdField_b_of_type_Int));
-          paramString.put("send_type", this.jdField_a_of_type_JavaLangString);
-          if (this.jdField_a_of_type_Boolean) {
-            paramString.put("view_again", "1");
-          }
-          if (this.jdField_b_of_type_JavaLangString != null) {
-            paramString.put("size_type", this.jdField_b_of_type_JavaLangString);
-          }
-          localObject1 = paramString;
-        } while (this.jdField_c_of_type_JavaLangString == null);
-        paramString.put("format_type", this.jdField_c_of_type_JavaLangString);
-        return paramString;
-        localObject1 = localObject2;
-      } while (!"Pic.AioPreview.Preload".equals(paramString));
-      localObject1 = localObject2;
-    } while (this.d == null);
-    paramString = new HashMap();
-    paramString.put("preload_status", String.valueOf(this.jdField_c_of_type_Boolean));
-    paramString.put("preload_fail_filetype", this.d);
-    return paramString;
+          axom.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambavf)
+      {
+        parambavf.printStackTrace();
+        lek.c("CaptureVideoFilterManager", "unzip file failed.");
+      }
+    }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

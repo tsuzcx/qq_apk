@@ -1,106 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.28.1;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.28.2;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class aebf
-  implements bhqd
+  implements PopupWindow.OnDismissListener
 {
-  public aebf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebf(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    if ((!TroopMemberListActivity.c(this.a)) && (paramInt >= 5)) {}
-    for (int i = paramInt + 1;; i = paramInt)
+    this.a.b = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
     {
-      if (this.a.e) {
-        if (paramInt == 0) {
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.1(this), 320L);
-        }
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
-      for (;;)
-      {
-        if ((this.a.jdField_a_of_type_Bhpy != null) && (this.a.jdField_a_of_type_Bhpy.isShowing())) {
-          this.a.jdField_a_of_type_Bhpy.dismiss();
-        }
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.jdField_b_of_type_JavaLangString);
-          continue;
-          if (this.a.jdField_d_of_type_Int == 9) {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.c = true;
-              this.a.t = "";
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              if (this.a.jdField_a_of_type_Aecg != null) {
-                this.a.jdField_a_of_type_Aecg.a();
-              }
-              azmj.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.n, "", "");
-              break;
-            }
-          } else {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.l();
-              break;
-            case 1: 
-              if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-              {
-                paramView = new Intent(this.a, SelectMemberActivity.class);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("group_uin", this.a.jdField_b_of_type_JavaLangString);
-                paramView.putExtra("param_groupcode", this.a.jdField_a_of_type_JavaLangString);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("param_subtype", 4);
-                paramView.putExtra("param_entrance", 30);
-                paramView.putExtra("param_max", 30);
-                paramView.putExtra("param_exit_animation", 3);
-                this.a.startActivity(paramView);
-                this.a.overridePendingTransition(2130771997, 0);
-                azmj.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-              }
-              break;
-            case 2: 
-              this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.2(this), 320L);
-              break;
-            case 3: 
-              this.a.jdField_d_of_type_Boolean = true;
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              TroopMemberListActivity.a(this.a);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368615));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(alpo.a(2131715996));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aebg(this));
-              if (this.a.jdField_a_of_type_Aecg != null) {
-                this.a.jdField_a_of_type_Aecg.a();
-              }
-              paramView = this.a.n;
-              this.a.a("Clk_del", paramView, "");
-            }
-          }
-        }
-      }
+    }
+    label76:
+    for (int i = 2130845229;; i = 2130845740)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
     }
   }
 }

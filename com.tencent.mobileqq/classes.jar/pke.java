@@ -14,7 +14,7 @@ public class pke
     localJSONObject1.put("id_article_wrapper", new JSONObject());
     localJSONObject1.put("id_multi_image", new JSONObject());
     JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", alpo.a(2131713418));
+    localJSONObject2.put("summary_text", alud.a(2131713430));
     localJSONObject1.put("id_summary", localJSONObject2);
     localJSONObject2 = new JSONObject();
     localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");

@@ -1,54 +1,54 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class agsr
-  implements Sizeable
+class agsr
+  extends aqru
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  private int b;
+  agsr(agso paramagso) {}
   
-  public agsr(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
+  protected void a(arcg paramarcg)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
+    if (paramarcg == null) {}
+    do
+    {
+      FileManagerEntity localFileManagerEntity;
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramarcg.a instanceof FileManagerEntity));
+        localFileManagerEntity = (FileManagerEntity)paramarcg.a;
+      } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramarcg.b;
+      this.a.a.a().c(localFileManagerEntity);
+    } while (agso.a(this.a) == null);
+    agso.a(this.a).notifyDataSetChanged();
   }
   
-  private void a()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    int i = 0;
-    this.b = 0;
-    BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-    int j = arrayOfBitmapDrawable.length;
-    while (i < j)
-    {
-      BitmapDrawable localBitmapDrawable = arrayOfBitmapDrawable[i];
-      if ((localBitmapDrawable != null) && (localBitmapDrawable.getBitmap() != null))
-      {
-        int k = this.b;
-        this.b = (localBitmapDrawable.getBitmap().getByteCount() + k);
-      }
-      i += 1;
+    if (agso.a(this.a) != null) {
+      agso.a(this.a).notifyDataSetChanged();
     }
   }
   
-  public int a()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    if (agso.a(this.a) != null) {
+      agso.a(this.a).notifyDataSetChanged();
+    }
   }
   
-  public BitmapDrawable[] a()
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  }
-  
-  public int getByteSize()
-  {
-    return this.b;
+    if (agso.a(this.a) != null) {
+      agso.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

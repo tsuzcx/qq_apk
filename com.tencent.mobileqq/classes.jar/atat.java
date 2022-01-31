@@ -1,15 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginProcessService;
+import com.tencent.shadow.dynamic.host.PpsController;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface atat
+class atat
+  implements ServiceConnection
 {
-  public abstract ataw a();
+  atat(atar paramatar, CountDownLatch paramCountDownLatch) {}
   
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
+    atar.a(this.jdField_a_of_type_Atar).unbindService(this);
+    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
+    try
+    {
+      paramComponentName.exit();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
+      }
+    }
+  }
   
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, atav paramatav);
-  
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, atav paramatav);
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 

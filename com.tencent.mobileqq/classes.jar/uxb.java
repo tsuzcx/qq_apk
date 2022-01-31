@@ -1,105 +1,43 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tribe.async.dispatch.Dispatcher;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class uxb
-  extends uxf
+  extends urt<uxc>
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
+  @NonNull
+  public final String a;
+  public final int c;
   
-  static
+  public uxb(@NonNull String paramString)
   {
-    jdField_a_of_type_JavaLangString = ume.a(2131700054);
+    this(paramString, 20);
   }
   
-  public uxb(ViewGroup paramViewGroup)
+  public uxb(@NonNull String paramString, int paramInt)
   {
-    super(paramViewGroup, 2131561491);
+    this.a = paramString;
+    this.c = paramInt;
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  public String a()
   {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return null;
-    }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
+    return uqn.a("StorySvc.video_filter_list");
   }
   
-  protected void a(String paramString)
+  public uro a(byte[] paramArrayOfByte)
   {
-    b(xoa.b(paramString));
+    return new uxc(paramArrayOfByte);
   }
   
-  protected void a(String paramString, boolean paramBoolean, utx paramutx)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(utx paramutx)
-  {
-    super.a(paramutx);
-    wsv.a("FollowNodeViewHolder", "bindData %s", paramutx);
-    this.itemView.setTag(paramutx.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((usd)urr.a(2)).a(paramutx.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (uwn.h)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
-      {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = alpo.a(2131705052);
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramutx.c)) {
-          localObject1 = paramutx.c;
-        }
-        wsv.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramutx.jdField_a_of_type_JavaLangString);
-        uht.a().dispatch(new utw(paramutx.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
-      }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramutx);
-      a(paramutx.g);
-      return;
-      bool = false;
-      break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
-        }
-      }
-    }
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 

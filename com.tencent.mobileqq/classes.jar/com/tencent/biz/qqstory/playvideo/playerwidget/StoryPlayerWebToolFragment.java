@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import vxr;
-import wsv;
+import wca;
+import wxe;
 
 public class StoryPlayerWebToolFragment
   extends PublicBaseFragment
-  implements vxr
+  implements wca
 {
   private View jdField_a_of_type_AndroidViewView;
   private StoryPlayerWebFragment jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment;
@@ -51,17 +51,17 @@ public class StoryPlayerWebToolFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561524, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561542, null);
     paramViewGroup = getChildFragmentManager();
     paramLayoutInflater = getArguments().getString("url");
     paramViewGroup = paramViewGroup.beginTransaction();
     paramBundle = new Intent();
     paramBundle.putExtra("url", paramLayoutInflater);
     paramBundle.putExtra("isFullScreen", true);
-    wsv.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
+    wxe.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment = StoryPlayerWebFragment.a(paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment.a(this);
-    paramViewGroup.replace(2131380100, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
+    paramViewGroup.replace(2131380158, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
     return this.jdField_a_of_type_AndroidViewView;
   }
 }

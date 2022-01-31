@@ -1,27 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-final class amzk
-  implements bapw
+public abstract class amzk
+  extends Binder
+  implements amzj
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  public amzk()
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    while (!(parambaqv instanceof baps)) {
-      return;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+  }
+  
+  public static amzj a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    baps localbaps = (baps)parambaqv;
-    localbaps.jdField_a_of_type_Long += parambaqw.c;
-    parambaqw.c = 0L;
-    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
-    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-    parambaqw = localbaps.jdField_a_of_type_JavaLangString;
-    if (parambaqw.contains("range="))
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amzj))) {
+      return (amzj)localIInterface;
+    }
+    return new amzl(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-      localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
     }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

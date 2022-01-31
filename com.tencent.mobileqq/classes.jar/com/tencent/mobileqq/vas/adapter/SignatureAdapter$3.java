@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bdpk;
-import bdqu;
-import bdrj;
-import bdvx;
+import bdtt;
+import bdvd;
+import bdvs;
+import beag;
 import java.io.File;
 
 public class SignatureAdapter$3
   implements Runnable
 {
-  public SignatureAdapter$3(bdrj parambdrj, Bundle paramBundle) {}
+  public SignatureAdapter$3(bdvs parambdvs, Bundle paramBundle) {}
   
   public void run()
   {
@@ -27,12 +27,12 @@ public class SignatureAdapter$3
       if (localObject != null)
       {
         localObject = new File((String)localObject);
-        if (bdvx.a(new File(bdpk.a(str1, str2)), (File)localObject, true)) {
-          bdrj.a(this.this$0).a().sendEmptyMessage(10003);
+        if (beag.a(new File(bdtt.a(str1, str2)), (File)localObject, true)) {
+          bdvs.a(this.this$0).a().sendEmptyMessage(10003);
         }
       }
       return;
-      localObject = bdpk.a(str1, "dynamic_aio");
+      localObject = bdtt.a(str1, "dynamic_aio");
     }
   }
 }

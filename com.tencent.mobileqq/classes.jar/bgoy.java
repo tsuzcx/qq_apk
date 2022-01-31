@@ -1,37 +1,12 @@
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class bgoy
-  implements VideoPlayerProxy.OnErrorListener
+final class bgoy
+  extends AnimatorListenerAdapter
 {
-  public bgoy(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QMLog.e("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
-    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "error");
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Bghn.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
+    super.onAnimationEnd(paramAnimator);
   }
 }
 

@@ -1,57 +1,18 @@
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class apdh
-  extends apcg
 {
-  public apdi a;
-  public String b;
-  public boolean b;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public static apdh a(JSONObject paramJSONObject)
+  public String toString()
   {
-    apdh localapdh = new apdh();
-    localapdh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localapdh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localapdh.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localapdh.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localapdh;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Apdi == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Apdi.jdField_a_of_type_Boolean;
+    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdh
  * JD-Core Version:    0.7.0.1
  */

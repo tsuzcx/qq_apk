@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import amjk;
+import amnz;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import aojk;
-import aojl;
-import asil;
+import aont;
+import aonu;
+import asmu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,46 +16,46 @@ import com.tencent.qphone.base.util.QLog;
 public class GameMsgManager$2
   implements Runnable
 {
-  public GameMsgManager$2(asil paramasil) {}
+  public GameMsgManager$2(asmu paramasmu) {}
   
   public void run()
   {
-    QLog.i(asil.c(), 1, "init task starts.");
-    Object localObject1 = aojl.a();
+    QLog.i(asmu.c(), 1, "init task starts.");
+    Object localObject1 = aonu.a();
     if (localObject1 != null)
     {
-      if (asil.a(this.this$0) == null) {
-        asil.a(this.this$0, new aojk());
+      if (asmu.a(this.this$0) == null) {
+        asmu.a(this.this$0, new aont());
       }
-      asil.a(this.this$0).jdField_a_of_type_Int = ((aojk)localObject1).jdField_a_of_type_Int;
-      if (!TextUtils.isEmpty(((aojk)localObject1).jdField_a_of_type_JavaLangString)) {
-        asil.a(this.this$0).jdField_a_of_type_JavaLangString = ((aojk)localObject1).jdField_a_of_type_JavaLangString;
+      asmu.a(this.this$0).jdField_a_of_type_Int = ((aont)localObject1).jdField_a_of_type_Int;
+      if (!TextUtils.isEmpty(((aont)localObject1).jdField_a_of_type_JavaLangString)) {
+        asmu.a(this.this$0).jdField_a_of_type_JavaLangString = ((aont)localObject1).jdField_a_of_type_JavaLangString;
       }
-      if (!TextUtils.isEmpty(((aojk)localObject1).b)) {
-        asil.a(this.this$0).b = ((aojk)localObject1).b;
+      if (!TextUtils.isEmpty(((aont)localObject1).b)) {
+        asmu.a(this.this$0).b = ((aont)localObject1).b;
       }
-      QLog.i(asil.c(), 1, "graySwitch:" + asil.a(this.this$0).jdField_a_of_type_Int);
+      QLog.i(asmu.c(), 1, "graySwitch:" + asmu.a(this.this$0).jdField_a_of_type_Int);
     }
-    asil.a(this.this$0);
-    asil.b(this.this$0);
-    asil.c(this.this$0);
-    asil.a(this.this$0).addObserver(asil.a(this.this$0));
+    asmu.a(this.this$0);
+    asmu.b(this.this$0);
+    asmu.c(this.this$0);
+    asmu.a(this.this$0).addObserver(asmu.a(this.this$0));
     this.this$0.a();
     localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("game_center_sp", 0);
-    Object localObject2 = "sp_enter_pub" + asil.a(this.this$0).getCurrentAccountUin();
-    asil.a(this.this$0, ((SharedPreferences)localObject1).getInt((String)localObject2, 0));
-    asil.a(this.this$0).a().addObserver(this.this$0);
-    asil.a(true);
-    if (asil.a(this.this$0) > 0)
+    Object localObject2 = "sp_enter_pub" + asmu.a(this.this$0).getCurrentAccountUin();
+    asmu.a(this.this$0, ((SharedPreferences)localObject1).getInt((String)localObject2, 0));
+    asmu.a(this.this$0).a().addObserver(this.this$0);
+    asmu.a(true);
+    if (asmu.a(this.this$0) > 0)
     {
-      localObject1 = asil.a(this.this$0).a().a();
-      localObject2 = ((amjk)localObject1).a("2747277822", 1008);
+      localObject1 = asmu.a(this.this$0).a().a();
+      localObject2 = ((amnz)localObject1).a("2747277822", 1008);
       if ((localObject2 != null) && (this.this$0.b())) {
-        ((amjk)localObject1).a((RecentUser)localObject2);
+        ((amnz)localObject1).a((RecentUser)localObject2);
       }
     }
     this.this$0.c();
-    QLog.i(asil.c(), 1, "init task ends. unreadCnt = " + asil.a(this.this$0));
+    QLog.i(asmu.c(), 1, "init task ends. unreadCnt = " + asmu.a(this.this$0));
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bfra;
-import bfrg;
+import bfvj;
+import bfvp;
 
 class VoIPProxyImpl$1
-  implements bfra
+  implements bfvj
 {
   VoIPProxyImpl$1(VoIPProxyImpl paramVoIPProxyImpl) {}
   
@@ -13,7 +13,7 @@ class VoIPProxyImpl$1
     if (paramInt - 32 == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      bfrg.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      bfvp.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
       return bool;
     }
   }

@@ -10,7 +10,7 @@ class pxy
   
   public void onClick(View paramView)
   {
-    bjxj.f(ors.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
+    bkbq.f(ors.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
     paramView = this.jdField_a_of_type_Pxx.jdField_a_of_type_Rqj.a();
     if (paramView != null) {
       paramView.a(null, ((pgd)this.jdField_a_of_type_Pxx.jdField_a_of_type_JavaLangObject).a(), 2);

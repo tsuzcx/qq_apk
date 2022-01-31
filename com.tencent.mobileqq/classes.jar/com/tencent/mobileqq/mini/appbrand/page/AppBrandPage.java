@@ -13,9 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anxw;
-import bdkf;
-import bgnf;
+import aocf;
+import bdoo;
+import bgrm;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -81,7 +81,7 @@ public class AppBrandPage
   private NavigationBar navBar;
   private ViewGroup rootView;
   private TabBarView tabView;
-  private bgnf toast;
+  private bgrm toast;
   private ToastView toastView;
   private Map<String, WebviewContainer> webViewMap = new HashMap();
   
@@ -92,12 +92,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bdkf.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return bdoo.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bdkf.b(54.0F);
+    return bdoo.b(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -249,14 +249,14 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131364780);
+    this.centerLayout.setId(2131364781);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131377304);
+    this.tabView.setId(2131377358);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
-    this.navBar.setId(2131370980);
+    this.navBar.setId(2131370999);
     return localRelativeLayout;
   }
   
@@ -514,7 +514,7 @@ public class AppBrandPage
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getAppUIProxy();
-          setServiceInfo((anxw)localObject2);
+          setServiceInfo((aocf)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }
@@ -757,17 +757,17 @@ public class AppBrandPage
     }
     for (;;)
     {
-      bgnf localbgnf;
+      bgrm localbgrm;
       try
       {
-        localbgnf = new bgnf(getContext());
+        localbgrm = new bgrm(getContext());
         if (!TextUtils.isEmpty(paramString2))
         {
-          localbgnf.a(new BitmapDrawable(paramString2));
-          localbgnf.a(paramCharSequence);
-          localbgnf.c(paramInt2);
-          localbgnf.a();
-          this.toast = localbgnf;
+          localbgrm.a(new BitmapDrawable(paramString2));
+          localbgrm.a(paramCharSequence);
+          localbgrm.c(paramInt2);
+          localbgrm.a();
+          this.toast = localbgrm;
           return;
         }
       }
@@ -777,9 +777,9 @@ public class AppBrandPage
         return;
       }
       if ("none".equals(paramString1)) {
-        localbgnf.b(-1);
+        localbgrm.b(-1);
       } else {
-        localbgnf.a(ToastView.getIconRes(paramString1));
+        localbgrm.a(ToastView.getIconRes(paramString1));
       }
     }
   }

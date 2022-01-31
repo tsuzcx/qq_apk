@@ -1,24 +1,6 @@
-import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
-
-public class ucw
-  implements ubd
+public abstract interface ucw
 {
-  public ucw(QCircleTagPageHeaderView paramQCircleTagPageHeaderView) {}
-  
-  public void a()
-  {
-    tyj.a("", 6, 2L, 3L);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 0) {}
-    for (long l = 2L;; l = 1L)
-    {
-      tyj.a("", 6, 2L, l);
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

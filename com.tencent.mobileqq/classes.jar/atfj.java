@@ -1,29 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface.OnClickListener;
 
-public class atfj
-  extends BroadcastReceiver
+class atfj
 {
-  public atfj(UiApiPlugin paramUiApiPlugin) {}
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public atfj(atfg paramatfg, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.a(paramContext, paramIntent);
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 

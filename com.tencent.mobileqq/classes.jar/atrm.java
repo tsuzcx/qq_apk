@@ -1,19 +1,13 @@
-public class atrm
+import android.view.View;
+import android.widget.TextView;
+
+class atrm
 {
-  public int a;
-  public String a;
-  
-  public atrm()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  View a;
+  public TextView a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public View c;
 }
 
 

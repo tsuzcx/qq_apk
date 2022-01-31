@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import asor;
-import bdcb;
-import bizm;
+import asta;
+import bdgk;
+import bjdt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -10,7 +10,7 @@ import common.config.service.QzoneConfig;
 public final class QZoneHelper$8
   implements Runnable
 {
-  public QZoneHelper$8(QQAppInterface paramQQAppInterface, asor paramasor) {}
+  public QZoneHelper$8(QQAppInterface paramQQAppInterface, asta paramasta) {}
   
   public void run()
   {
@@ -20,13 +20,13 @@ public final class QZoneHelper$8
     }
     if (i == 1)
     {
-      long l = bdcb.d() / 1048576L;
+      long l = bdgk.d() / 1048576L;
       i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
       if (QLog.isColorLevel()) {
         QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
       }
       if (l >= i) {
-        bizm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_Asor, false);
+        bjdt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_Asta, false);
       }
     }
   }

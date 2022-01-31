@@ -19,7 +19,7 @@ public class poz
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = bjxj.a("kd_topic_recommend_card_jump_url");
+    paramViewBase = bkbq.a("kd_topic_recommend_card_jump_url");
     if ((paramViewBase instanceof String)) {}
     for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
     {

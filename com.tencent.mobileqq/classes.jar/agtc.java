@@ -1,41 +1,25 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.XEditTextEx;
 
-public class agtc
-  implements agtd
+class agtc
+  extends auwn
 {
-  public agtc(StickerBubbleListView paramStickerBubbleListView) {}
+  agtc(agsy paramagsy) {}
   
-  public void a(View paramView)
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
-    {
-      ((StickerBubbleImageView)paramView).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
-      }
-      paramView = (View)paramView.getParent();
-      View localView = (View)paramView.getParent();
-      if (StickerBubbleListView.a(this.a) == null) {
-        StickerBubbleListView.a(this.a, new Rect());
-      }
-      Rect localRect = StickerBubbleListView.a(this.a);
-      int i = localView.getLeft();
-      int j = paramView.getLeft();
-      int k = localView.getTop();
-      int m = paramView.getTop();
-      int n = localView.getLeft();
-      int i1 = paramView.getRight();
-      int i2 = localView.getTop();
-      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
     }
+    if (!"tag_nearby_chat".equals(paramString1)) {}
+    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
+      return;
+    }
+    this.a.aE();
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
+    this.a.g = paramString2;
   }
 }
 

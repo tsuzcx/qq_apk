@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.ArrayList;
@@ -41,9 +41,9 @@ public class ComponentCenterTopicTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559982, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364668));
-    this.b = ((TextView)findViewById(2131365102));
+    LayoutInflater.from(paramContext).inflate(2131559981, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364669));
+    this.b = ((TextView)findViewById(2131365104));
   }
   
   public void a(Object paramObject)
@@ -61,7 +61,7 @@ public class ComponentCenterTopicTitle
         if (paramObject.b <= 0) {
           break label176;
         }
-        paramObject = String.format("- %s人正在参与 -", new Object[] { bjxj.a(paramObject.b) });
+        paramObject = String.format("- %s人正在参与 -", new Object[] { bkbq.a(paramObject.b) });
         this.b.setText(paramObject);
         this.b.setVisibility(0);
       }

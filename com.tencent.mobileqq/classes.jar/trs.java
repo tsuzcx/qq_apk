@@ -1,25 +1,48 @@
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class trs
+  extends yiu
 {
-  public FeedCloudMeta.StComment a;
-  public FeedCloudMeta.StFeed a;
-  public FeedCloudMeta.StReply a;
+  private QCircleTagPageHeaderView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView;
+  private yif jdField_a_of_type_Yif;
   
-  public trs(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
+  public trs(Bundle paramBundle)
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+    super(paramBundle);
   }
   
-  public trs(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView = new QCircleTagPageHeaderView(paramViewGroup.getContext());
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView;
   }
+  
+  public void handleShareDataChange(String paramString, yif paramyif)
+  {
+    super.handleShareDataChange(paramString, paramyif);
+    if ("share_key_tag_page_header_data".equals(paramString))
+    {
+      this.jdField_a_of_type_Yif = paramyif;
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView != null) {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView.setData(this.jdField_a_of_type_Yif);
+      }
+    }
+  }
+  
+  public void loadData(yii paramyii) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView.setData(this.jdField_a_of_type_Yif);
+    }
+  }
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

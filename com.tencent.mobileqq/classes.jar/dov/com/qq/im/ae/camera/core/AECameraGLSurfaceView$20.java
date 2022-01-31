@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.graphics.PointF;
-import bkov;
+import bktc;
 
 class AECameraGLSurfaceView$20
   implements Runnable
 {
-  AECameraGLSurfaceView$20(AECameraGLSurfaceView paramAECameraGLSurfaceView, bkov parambkov, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$20(AECameraGLSurfaceView paramAECameraGLSurfaceView, bktc parambktc, float paramFloat1, float paramFloat2, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bkov.a(new PointF(this.jdField_a_of_type_Float, this.b), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bktc.a(new PointF(this.jdField_a_of_type_Float, this.b), this.jdField_a_of_type_Int);
   }
 }
 

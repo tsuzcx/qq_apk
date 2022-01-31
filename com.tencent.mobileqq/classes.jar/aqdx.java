@@ -1,22 +1,26 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class aqdx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public aqdx(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  public aqdx(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
+    String str = "";
+    paramDialogInterface = str;
+    if (ExtendFriendEditFragment.a(this.a) != null)
+    {
+      paramDialogInterface = str;
+      if (ExtendFriendEditFragment.a(this.a).app != null) {
+        paramDialogInterface = ((aqbg)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
+      }
     }
-    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    aqgz.b(this.a.getActivity(), paramDialogInterface);
   }
 }
 

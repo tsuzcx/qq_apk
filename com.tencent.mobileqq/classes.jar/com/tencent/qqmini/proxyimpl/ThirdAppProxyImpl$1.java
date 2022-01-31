@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.text.TextUtils;
-import bfnq;
-import bfnv;
-import bfob;
-import bked;
+import bfrz;
+import bfse;
+import bfsk;
+import bkik;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy.AppDownloadListener;
@@ -19,7 +19,7 @@ import java.util.Set;
 import org.json.JSONObject;
 
 class ThirdAppProxyImpl$1
-  implements bked
+  implements bkik
 {
   ThirdAppProxyImpl$1(ThirdAppProxyImpl paramThirdAppProxyImpl) {}
   
@@ -100,7 +100,7 @@ class ThirdAppProxyImpl$1
   public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
     if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams == null)) {
-      bfnq.a("ThirdAppProxyImpl", "onWadlTaskStatusChanged error wadlResult is null");
+      bfrz.a("ThirdAppProxyImpl", "onWadlTaskStatusChanged error wadlResult is null");
     }
     String str;
     int i;
@@ -116,8 +116,8 @@ class ThirdAppProxyImpl$1
             return;
             WadlParams localWadlParams = paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams;
             str = localWadlParams.a;
-            i = bfob.a(paramWadlResult.jdField_b_of_type_Int);
-            bfnv.b(localWadlParams.a);
+            i = bfsk.a(paramWadlResult.jdField_b_of_type_Int);
+            bfse.b(localWadlParams.a);
             QLog.i("ThirdAppProxyImpl", 1, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
             switch (i)
             {
@@ -141,8 +141,8 @@ class ThirdAppProxyImpl$1
         } while (paramWadlResult == null);
         paramWadlResult.onReceiveResult(true, null);
         return;
-        i = bfob.b(paramWadlResult.c);
-        bfob.a(i);
+        i = bfsk.b(paramWadlResult.c);
+        bfsk.a(i);
         ThirdAppProxyImpl.access$000(this.this$0).remove(str);
         if ((ThirdAppProxyImpl.access$100(this.this$0) != null) && (ThirdAppProxyImpl.access$100(this.this$0).containsKey(str)) && (ThirdAppProxyImpl.access$100(this.this$0).get(str) != null)) {
           ((ThirdAppProxy.AppDownloadListener)ThirdAppProxyImpl.access$100(this.this$0).get(str)).onDownloadFailed(i, i, "failed");

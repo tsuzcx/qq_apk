@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RecentInviteUser
-  extends awbv
+  extends awge
   implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @awdj
+  @awhs
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)

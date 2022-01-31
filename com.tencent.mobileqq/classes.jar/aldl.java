@@ -1,332 +1,303 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.RectF;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.ReportTrace.ExtParam;
-import com.tencent.pb.ReportTrace.ReportAnnoReq;
-import com.tencent.pb.ReportTrace.ReportHead;
-import com.tencent.pb.ReportTrace.ReportTraceReq;
-import com.tencent.pb.ReportTrace.ReportTraceRsp;
-import com.tencent.pb.ReportTrace.SpanAnnoEntry;
-import com.tencent.pb.ReportTrace.SpanEntry;
-import com.tencent.pb.ReportTrace.TraceAnnoEntry;
-import com.tencent.pb.ReportTrace.TraceEntry;
-import com.tencent.pb.ReportTrace.reportStat;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.BlockingQueue;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class aldl
-  implements aldo, BusinessObserver
+  implements algr
 {
-  private WeakReference<aldp> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private aled jdField_a_of_type_Aled = new aldn(this);
+  private alep jdField_a_of_type_Alep;
+  private Context jdField_a_of_type_AndroidContentContext;
+  bdul jdField_a_of_type_Bdul = new aldm(this);
+  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  private ReportTrace.ReportHead a(aldb paramaldb, String paramString)
+  public aldl(alep paramalep, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, ApolloTextureView paramApolloTextureView)
   {
-    ReportTrace.ReportHead localReportHead = new ReportTrace.ReportHead();
-    localReportHead.appid.set(paramaldb.a());
-    localReportHead.platform.set(109);
-    paramaldb = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramaldb = "8.3.3";
-    }
-    localReportHead.ver.set(paramaldb);
-    paramaldb = bdcb.e();
-    if (!TextUtils.isEmpty(paramaldb)) {
-      localReportHead.os_ver.set(paramaldb);
-    }
-    paramaldb = bdcb.i();
-    if (!TextUtils.isEmpty(paramaldb)) {
-      localReportHead.model.set(paramaldb);
-    }
-    paramaldb = bdcb.a();
-    if (!TextUtils.isEmpty(paramaldb)) {
-      localReportHead.udid.set(paramaldb);
-    }
-    return localReportHead;
+    this.jdField_a_of_type_Alep = paramalep;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramApolloTextureView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bdul);
   }
   
-  private ReportTrace.SpanEntry a(aldv paramaldv)
+  private int a(int paramInt1, int paramInt2)
   {
-    ReportTrace.SpanEntry localSpanEntry = new ReportTrace.SpanEntry();
-    localSpanEntry.span_id.set(paramaldv.jdField_a_of_type_Int);
-    localSpanEntry.time_stamp.set(paramaldv.jdField_a_of_type_Long);
-    if (paramaldv.jdField_a_of_type_Aldu != null) {
-      localSpanEntry.result.set(a(paramaldv.jdField_a_of_type_Aldu));
+    if (paramInt1 == 1) {
+      return 1;
     }
-    if ((paramaldv.jdField_a_of_type_JavaUtilMap != null) && (paramaldv.jdField_a_of_type_JavaUtilMap.size() > 0))
+    if (paramInt2 == 9) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public List<alen> a(aksm paramaksm)
+  {
+    Object localObject1 = null;
+    if (paramaksm == null) {
+      return localObject1;
+    }
+    label784:
+    for (;;)
     {
-      paramaldv = paramaldv.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (paramaldv.hasNext())
+      ArrayList localArrayList;
+      alen localalen;
+      int i;
+      aksn localaksn;
+      JSONObject localJSONObject;
+      try
       {
-        Map.Entry localEntry = (Map.Entry)paramaldv.next();
-        ReportTrace.ExtParam localExtParam = new ReportTrace.ExtParam();
-        localExtParam.param_id.set(((Integer)localEntry.getKey()).intValue());
-        localExtParam.value.set(((Long)localEntry.getValue()).longValue());
-        localSpanEntry.param_list.add(localExtParam);
-      }
-    }
-    return localSpanEntry;
-  }
-  
-  private ReportTrace.TraceEntry a(TraceData paramTraceData, aldb paramaldb)
-  {
-    ReportTrace.TraceEntry localTraceEntry = new ReportTrace.TraceEntry();
-    localTraceEntry.feature_id.set(paramTraceData.featureId);
-    localTraceEntry.trace_id.set(paramTraceData.traceId);
-    localTraceEntry.from_uid.set(paramaldb.a());
-    if (!TextUtils.isEmpty(paramTraceData.tUid)) {
-      localTraceEntry.to_uid.set(paramTraceData.tUid);
-    }
-    localTraceEntry.time_stamp.set(paramTraceData.timestamp);
-    localTraceEntry.server_timestamp.set(paramTraceData.serverTime);
-    if (paramTraceData.result != null) {
-      localTraceEntry.result.set(a(paramTraceData.result));
-    }
-    if (paramTraceData.mSpanQueue != null)
-    {
-      paramaldb = paramTraceData.mSpanQueue.iterator();
-      while (paramaldb.hasNext())
-      {
-        aldv localaldv = (aldv)paramaldb.next();
-        localTraceEntry.span_list.add(a(localaldv));
-      }
-    }
-    localTraceEntry.extra1.set(paramTraceData.extra1);
-    localTraceEntry.extra2.set(paramTraceData.extra2);
-    localTraceEntry.extra3.set(paramTraceData.extra3);
-    return localTraceEntry;
-  }
-  
-  private ReportTrace.reportStat a(aldu paramaldu)
-  {
-    ReportTrace.reportStat localreportStat = new ReportTrace.reportStat();
-    localreportStat.ret.set(paramaldu.jdField_a_of_type_Int);
-    localreportStat.cost.set(paramaldu.b);
-    localreportStat.net_type.set(paramaldu.e);
-    localreportStat.cpu.set(paramaldu.d);
-    localreportStat.memory.set(paramaldu.c);
-    localreportStat.java_heap.set(paramaldu.f);
-    localreportStat.native_heap.set(paramaldu.g);
-    return localreportStat;
-  }
-  
-  private List<ReportTrace.SpanAnnoEntry> a(BlockingQueue<aldv> paramBlockingQueue)
-  {
-    if ((paramBlockingQueue == null) || (paramBlockingQueue.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramBlockingQueue = paramBlockingQueue.iterator();
-    while (paramBlockingQueue.hasNext())
-    {
-      aldv localaldv = (aldv)paramBlockingQueue.next();
-      if ((localaldv.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (localaldv.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
-      {
-        Iterator localIterator = localaldv.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
-        while (localIterator.hasNext())
-        {
-          alds localalds = (alds)localIterator.next();
-          ReportTrace.SpanAnnoEntry localSpanAnnoEntry = new ReportTrace.SpanAnnoEntry();
-          localSpanAnnoEntry.span_id.set(localaldv.jdField_a_of_type_Int);
-          if (!TextUtils.isEmpty(localalds.jdField_a_of_type_JavaLangString)) {
-            localSpanAnnoEntry.anno_msg.set(localalds.jdField_a_of_type_JavaLangString);
-          }
-          if (localaldv.jdField_a_of_type_Aldu != null) {
-            localSpanAnnoEntry.errCode.set(localaldv.jdField_a_of_type_Aldu.jdField_a_of_type_Int);
-          }
-          localSpanAnnoEntry.time_stamp.set(localalds.jdField_a_of_type_Long);
-          localArrayList.add(localSpanAnnoEntry);
+        Object localObject3 = paramaksm.jdField_a_of_type_JavaUtilHashMap;
+        if (localObject3 == null) {
+          break;
+        }
+        localArrayList = new ArrayList();
+        localObject3 = ((HashMap)localObject3).entrySet().iterator();
+        if (!((Iterator)localObject3).hasNext()) {
+          break label638;
+        }
+        localalen = new alen();
+        localObject1 = (Map.Entry)((Iterator)localObject3).next();
+        if (localObject1 == null) {
+          continue;
+        }
+        i = ((Integer)((Map.Entry)localObject1).getKey()).intValue();
+        localalen.jdField_a_of_type_Int = i;
+        localaksn = (aksn)((Map.Entry)localObject1).getValue();
+        if ((localaksn == null) || (localaksn.a == null) || (localaksn.a.size() <= 0)) {
+          continue;
+        }
+        localalen.g = a(localaksn.c, localaksn.b);
+        localObject1 = new File(aliu.f + i + "/config.json");
+        if (((File)localObject1).exists()) {
+          localObject1 = bdhb.a((File)localObject1);
         }
       }
-    }
-    return localArrayList;
-  }
-  
-  private void a(AppRuntime paramAppRuntime, aldb paramaldb, String paramString, List<ReportTrace.TraceEntry> paramList)
-  {
-    if ((paramAppRuntime == null) || (paramaldb == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ReportTrace.ReportTraceReq localReportTraceReq = new ReportTrace.ReportTraceReq();
-    localReportTraceReq.head.set(a(paramaldb, paramString));
-    localReportTraceReq.trace_list.set(paramList);
-    paramaldb = new NewIntent(paramAppRuntime.getApplication(), aldr.class);
-    paramaldb.putExtra("cmd", "apollo_monitor.report_trace");
-    paramaldb.putExtra("data", localReportTraceReq.toByteArray());
-    paramaldb.putExtra("timeout", 30000);
-    paramaldb.setObserver(this);
-    paramAppRuntime.startServlet(paramaldb);
-  }
-  
-  private void b(AppRuntime paramAppRuntime, aldb paramaldb, String paramString, List<ReportTrace.TraceAnnoEntry> paramList)
-  {
-    if ((paramAppRuntime == null) || (paramaldb == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ReportTrace.ReportAnnoReq localReportAnnoReq = new ReportTrace.ReportAnnoReq();
-    localReportAnnoReq.head.set(a(paramaldb, paramString));
-    localReportAnnoReq.anno_list.set(paramList);
-    paramaldb = new NewIntent(paramAppRuntime.getApplication(), aldr.class);
-    paramaldb.putExtra("cmd", "apollo_monitor.report_anno");
-    paramaldb.putExtra("data", localReportAnnoReq.toByteArray());
-    paramaldb.putExtra("timeout", 30000);
-    paramaldb.setObserver(this);
-    paramAppRuntime.startServlet(paramaldb);
-  }
-  
-  public void a(aldp paramaldp)
-  {
-    this.a = new WeakReference(paramaldp);
-  }
-  
-  public void a(List<TraceData> paramList)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-    aldb localaldb = alde.a().a();
-    if ((localAppRuntime != null) && (paramList != null) && (localaldb != null) && (!TextUtils.isEmpty(localaldb.a())))
-    {
-      ArrayList localArrayList1 = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      finally {}
+      try
       {
-        TraceData localTraceData = (TraceData)paramList.next();
-        ReportTrace.TraceEntry localTraceEntry = a(localTraceData, localaldb);
-        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.3.3")))
-        {
-          ArrayList localArrayList2 = new ArrayList();
-          localArrayList2.add(localTraceEntry);
-          a(localAppRuntime, localaldb, localTraceData.version, localArrayList2);
+        localJSONObject = new JSONObject(new String((byte[])localObject1, "UTF-8"));
+        if ((localJSONObject.has("isShowInCard")) && (localJSONObject.getInt("isShowInCard") == 0)) {
+          continue;
         }
-        else
-        {
-          localArrayList1.add(a(localTraceData, localaldb));
+        localObject1 = localJSONObject.optString("name");
+        if (!localJSONObject.has("showName")) {
+          break label784;
+        }
+        if (!TextUtils.isEmpty(localJSONObject.getString("showName"))) {
+          break label581;
         }
       }
-      a(localAppRuntime, localaldb, null, localArrayList1);
-    }
-  }
-  
-  public void b(List<TraceData> paramList)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-    aldb localaldb = alde.a().a();
-    if ((localAppRuntime != null) && (paramList != null) && (localaldb != null) && (!TextUtils.isEmpty(localaldb.a())))
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      int i = 0;
-      while (paramList.hasNext())
+      catch (Exception localException)
       {
-        TraceData localTraceData = (TraceData)paramList.next();
-        ReportTrace.TraceAnnoEntry localTraceAnnoEntry = new ReportTrace.TraceAnnoEntry();
-        localTraceAnnoEntry.uid.set(localaldb.a());
-        localTraceAnnoEntry.trace_id.set(localTraceData.traceId);
-        localTraceAnnoEntry.feature_id.set(localTraceData.featureId);
-        localTraceAnnoEntry.server_timestamp.set(localTraceData.serverTime);
-        int j = i;
-        if (localTraceData.result != null)
+        label581:
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ApolloGuestsPresenter", 2, "initTag e=" + localException.toString());
+        continue;
+      }
+      localalen.h = ((Integer)aksm.jdField_a_of_type_JavaUtilMap.get(localaksn.a.get(0))).intValue();
+      if ((localObject1 != null) && (((String)localObject1).length() > 5))
+      {
+        localObject1 = ((String)localObject1).substring(0, 4);
+        localalen.jdField_a_of_type_JavaLangString = (aksm.jdField_a_of_type_ArrayOfJavaLangString[localalen.h] + (String)localObject1);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.onGetDressRect((String)localaksn.a.get(0));
+        if ((localObject1 != null) && ((((RectF)localObject1).bottom != ((RectF)localObject1).top) || (((RectF)localObject1).left != ((RectF)localObject1).right)))
         {
-          j = i;
-          if (localTraceData.result.jdField_a_of_type_Int != 0)
+          localalen.d = (((int)((RectF)localObject1).top + (int)((RectF)localObject1).bottom) / 2);
+          localalen.f = ((int)((RectF)localObject1).left);
+          localalen.e = ((int)((RectF)localObject1).right);
+          localalen.i = paramaksm.e;
+          localalen.j = paramaksm.f;
+          localArrayList.add(localalen);
+          if (QLog.isColorLevel())
           {
-            localTraceAnnoEntry.ret.set(localTraceData.result.jdField_a_of_type_Int);
-            Object localObject = a(localTraceData.mSpanQueue);
-            if (localObject != null) {
-              localTraceAnnoEntry.span_anno_list.addAll((Collection)localObject);
-            }
-            if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.3.3")))
-            {
-              localObject = new ArrayList();
-              ((List)localObject).add(localTraceAnnoEntry);
-              b(localAppRuntime, localaldb, localTraceData.version, (List)localObject);
-              continue;
-            }
-            j = 1;
-            localArrayList.add(localTraceAnnoEntry);
+            QLog.d("ApolloGuestsPresenter", 2, "item.name =" + localalen.jdField_a_of_type_JavaLangString + " item.y = " + localalen.d + " item.left = " + localalen.f + " item.right = " + localalen.e);
+            continue;
+            localObject1 = null;
+            continue;
+            localObject1 = localJSONObject.getString("showName");
           }
         }
-        i = j;
       }
-      if (i != 0) {
-        b(localAppRuntime, localaldb, null, localArrayList);
+      else
+      {
+        continue;
+        label638:
+        if (localArrayList.size() > 4)
+        {
+          Collections.sort(localArrayList, new aldo(this));
+          i = localArrayList.size() - 1;
+          while (i >= 4)
+          {
+            localArrayList.remove(i);
+            i -= 1;
+          }
+        }
+        Collections.sort(localArrayList);
+        int j = 0;
+        i = 0;
+        label702:
+        if (j < localArrayList.size())
+        {
+          ((alen)localArrayList.get(j)).b = i;
+          ((alen)localArrayList.get(j)).c = ((int)(123.0F * this.jdField_a_of_type_Float));
+          if (i == 0) {
+            i = 1;
+          }
+        }
+        for (;;)
+        {
+          j += 1;
+          break label702;
+          if (i == 1)
+          {
+            i = 0;
+            continue;
+            Object localObject2 = localArrayList;
+            break;
+          }
+        }
       }
     }
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    String str = paramBundle.getString("cmd");
-    if (("apollo_monitor.report_trace".equals(str)) || ("apollo_monitor.report_anno".equals(str)))
-    {
-      if (paramBoolean) {
-        break label318;
-      }
-      paramInt = paramBundle.getInt("retryTime");
-      QLog.w("TraceReport", 1, "cmd:" + str + ",retryTime:" + paramInt);
+    int i = 99999;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    int j = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("cmshow_zan", 0).getInt("apollo_zan_count" + this.jdField_a_of_type_JavaLangString, 0);
+    String str = String.valueOf(j);
+    if (j >= 99999) {
+      str = 99999 + "+";
     }
     for (;;)
     {
-      Object localObject1;
-      if (("apollo_monitor.report_trace".equals(str)) && (paramBoolean) && (this.a != null)) {
-        localObject1 = new ReportTrace.ReportTraceRsp();
-      }
-      for (;;)
+      this.jdField_a_of_type_Alep.a(str, i, i);
+      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_JavaLangString, 256, "myApollo");
+      return;
+      i = j;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_JavaLangString, "myApollo");
+    }
+  }
+  
+  public void c()
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    Object localObject1 = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_JavaLangString);
+    int i;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((ApolloBaseInfo)localObject1).getApolloDress();
+      if (localObject1 != null)
       {
-        try
+        i = ((aksm)localObject1).jdField_a_of_type_Int;
+        localObject2 = ((aksm)localObject1).a();
+        localObject1 = localObject2;
+        if (i > 0)
         {
-          localObject2 = (aldp)this.a.get();
+          localObject1 = localObject2;
           if (localObject2 != null)
           {
-            ((ReportTrace.ReportTraceRsp)localObject1).mergeFrom(paramBundle.getByteArray("data"));
-            int i = ((ReportTrace.ReportTraceRsp)localObject1).report_interval.get();
-            int j = ((ReportTrace.ReportTraceRsp)localObject1).report_num.get();
-            if (((ReportTrace.ReportTraceRsp)localObject1).report_fail.get() != 1) {
-              continue;
+            localObject1 = localObject2;
+            if (localObject2.length > 0)
+            {
+              localObject1 = localObject2;
+              if (!algj.a(this.jdField_a_of_type_JavaLangString, i, (int[])localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aled)) {
+                localObject1 = aldv.a(i);
+              }
             }
-            bool = true;
-            ((aldp)localObject2).a(i, j, bool);
           }
         }
-        catch (Exception localException)
-        {
-          Object localObject2;
-          boolean bool;
-          QLog.e("TraceReport", 1, localException, new Object[0]);
-          continue;
+        if (i >= 0) {
+          break label206;
         }
-        localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
-        if ((!paramBoolean) && (paramInt < 1) && (localObject1 != null))
-        {
-          localObject2 = new NewIntent(((AppRuntime)localObject1).getApplication(), aldr.class);
-          ((NewIntent)localObject2).putExtra("retryTime", paramInt + 1);
-          ((NewIntent)localObject2).putExtra("cmd", str);
-          ((NewIntent)localObject2).putExtra("data", paramBundle.getByteArray("request_data"));
-          ((NewIntent)localObject2).putExtra("timeout", 30000);
-          ((NewIntent)localObject2).setObserver(this);
-          ((AppRuntime)localObject1).startServlet((NewIntent)localObject2);
-        }
-        return;
-        bool = false;
+        i = j;
       }
-      label318:
-      paramInt = 0;
     }
+    label206:
+    for (;;)
+    {
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        if (localObject1.length > 0) {}
+      }
+      else
+      {
+        localObject2 = aldv.a(i);
+      }
+      if (this.jdField_a_of_type_Alep != null) {
+        this.jdField_a_of_type_Alep.a((int[])localObject2, i);
+      }
+      this.jdField_a_of_type_Int = i;
+      return;
+      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).b(this.jdField_a_of_type_JavaLangString);
+      for (;;)
+      {
+        localObject2 = null;
+        i = 0;
+        break;
+        ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).b(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      localObject = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_JavaLangString);
+    } while ((localObject == null) || (this.jdField_a_of_type_Alep == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null));
+    Object localObject = a(((ApolloBaseInfo)localObject).getApolloDress());
+    this.jdField_a_of_type_Alep.b((List)localObject);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bdul);
+    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

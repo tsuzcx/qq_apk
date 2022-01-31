@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqjv
-  implements army
+public class aqjv
+  implements Animation.AnimationListener
 {
-  aqjv(aqjt paramaqjt, FileManagerEntity paramFileManagerEntity) {}
+  public aqjv(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Aqjt.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

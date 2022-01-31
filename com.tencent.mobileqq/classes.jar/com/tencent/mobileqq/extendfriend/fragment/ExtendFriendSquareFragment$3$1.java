@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aqas;
-import aqay;
+import aqfb;
+import aqfh;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendFriendSquareFragment$3$1
   implements Runnable
 {
-  public ExtendFriendSquareFragment$3$1(aqas paramaqas) {}
+  public ExtendFriendSquareFragment$3$1(aqfb paramaqfb) {}
   
   public void run()
   {

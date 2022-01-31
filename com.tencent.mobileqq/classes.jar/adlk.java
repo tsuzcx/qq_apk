@@ -1,56 +1,69 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.QQBrowserSwipeLayout;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 public class adlk
-  extends GestureDetector.SimpleOnGestureListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private float jdField_a_of_type_Float;
+  public adlk(NotifyPushSettingActivity paramNotifyPushSettingActivity, alpk paramalpk) {}
   
-  public adlk(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).setContentDescription("PC离线时自动启动QQ手机版");
     }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    boolean bool = false;
-    if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
-      bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
-    }
-    if ((!QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) || (paramFloat1 < 200.0F)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool))
+    QQAppInterface localQQAppInterface;
+    int i;
+    if (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))
     {
-      if (!(QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity)) {
-        break label175;
-      }
-      QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
-      if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
-      {
-        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).H();
-        QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      if (paramBoolean) {
+        azqs.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 1, "", "", "", "");
       }
     }
-    for (;;)
+    else
     {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label175:
-      if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
-      {
-        QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).H();
-        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      if ((!bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) || (!NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))) {
+        break label182;
       }
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app;
+      if (!paramBoolean) {
+        break label171;
+      }
+      i = 1;
+      label94:
+      if (!paramBoolean) {
+        break label176;
+      }
+    }
+    label171:
+    label176:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "PC_active", 0, i, paramCompoundButton, "", "", "");
+      if (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)) {
+        this.jdField_a_of_type_Alpk.b(paramBoolean);
+      }
+      return;
+      azqs.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 0, "", "", "", "");
+      break;
+      i = 0;
+      break label94;
+    }
+    label182:
+    NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131695131), 0).b(5);
+      return;
     }
   }
 }

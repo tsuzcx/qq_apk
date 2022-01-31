@@ -18,7 +18,7 @@ public class lqj
       paramContext = paramIntent.getStringExtra("reason");
       if ((paramContext != null) && (paramContext.equals("homekey")))
       {
-        azmj.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
         this.a.c(-1038L);
       }
     }
@@ -31,7 +31,7 @@ public class lqj
       } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
       bool = VideoController.a(this.a);
       if (bool) {
-        azmj.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
       }
     } while (!QLog.isColorLevel());
     QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");

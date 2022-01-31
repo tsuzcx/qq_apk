@@ -1,38 +1,24 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
-class wfi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class wfi
+  implements xwe
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public wfi(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  wfi(wfh paramwfh) {}
-  
-  public void onGlobalLayout()
+  public void a()
   {
-    wfh.a(this.jdField_a_of_type_Wfh).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = wfh.a(this.jdField_a_of_type_Wfh).getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label79;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      wfh.a(this.jdField_a_of_type_Wfh);
+    if ((this.a.jdField_a_of_type_Wfj != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Wfj.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label79:
-      if (this.jdField_a_of_type_Boolean) {
-        wfh.b(this.jdField_a_of_type_Wfh);
-      }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Wfj != null) {
+      return this.a.jdField_a_of_type_Wfj.a(this.a.jdField_a_of_type_JavaLangString);
     }
+    return false;
   }
 }
 

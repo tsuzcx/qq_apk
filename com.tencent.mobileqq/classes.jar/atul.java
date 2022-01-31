@@ -1,7 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class atul
-  extends alxv
+  implements View.OnClickListener
 {
-  atul(atuj paramatuj) {}
+  atul(atuh paramatuh, View.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    this.jdField_a_of_type_Atuh.b();
+  }
 }
 
 

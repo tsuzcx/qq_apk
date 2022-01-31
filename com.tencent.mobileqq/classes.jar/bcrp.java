@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.view.View;
+import android.widget.TextView;
 
-class bcrp
-  implements baaa
+public class bcrp
+  extends afcd
 {
-  bcrp(bcro parambcro) {}
-  
-  public void a()
-  {
-    this.a.a.a.this$0.a();
-    if (this.a.a.a.jdField_a_of_type_Baaa != null) {
-      this.a.a.a.jdField_a_of_type_Baaa.a();
-    }
-    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
-  }
+  public View a;
+  public TextView a;
 }
 
 

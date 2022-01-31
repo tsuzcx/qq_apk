@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import alkv;
-import allj;
-import aloz;
+import alpk;
+import alpy;
+import alto;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -46,8 +46,8 @@ class ConditionSearchManager$4$1
           }
           localCard.strHometownDesc = ((String)localObject);
         }
-        ((aloz)allj.a(this.a.this$0).getManager(51)).a(localCard);
-        ((alkv)allj.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
+        ((alto)alpy.a(this.a.this$0).getManager(51)).a(localCard);
+        ((alpk)alpy.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
       }
       this.a.this$0.d = false;
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;

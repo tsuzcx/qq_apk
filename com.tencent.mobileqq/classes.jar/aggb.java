@@ -1,90 +1,23 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class aggb
-  implements agfz
+public class aggb
+  implements afkw
 {
-  private IBinder a;
+  public aggb(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  aggb(IBinder paramIBinder)
+  public void a()
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
       }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
     }
   }
 }

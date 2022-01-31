@@ -1,36 +1,27 @@
-class wtu
-  implements xfc<Boolean, xfh>
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+
+public class wtu
+  implements xvl
 {
-  wtu(wts paramwts, long paramLong, int paramInt) {}
-  
-  public Void a(Boolean paramBoolean, xfh paramxfh)
+  public void a(SegmentList paramSegmentList)
   {
-    if ((!paramBoolean.booleanValue()) || (paramxfh == null) || (paramxfh.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
-    wsv.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramxfh.jdField_a_of_type_Int));
-    if (paramxfh.jdField_a_of_type_Int >= this.jdField_a_of_type_Wts.a.length)
-    {
-      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramxfh.jdField_a_of_type_Int) });
-      return null;
-    }
-    wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramxfh.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int] = wtv.a(this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int], paramxfh.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramxfh.jdField_a_of_type_JavaLangString;
-    if (paramxfh.jdField_a_of_type_Long > 0L)
-    {
-      this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramxfh.jdField_a_of_type_Long / 1000);
-      wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Wts.a.length == 1))
-      {
-        this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
-      }
-    }
-    this.jdField_a_of_type_Wts.i();
-    return null;
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Wtr;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(uqn.a(localActivity, 5));
+    paramSegmentList.a(new wvq(localActivity, (wtr)localObject));
+    paramSegmentList.a(new wvp(localActivity));
+    paramSegmentList.a(new wvg(localActivity));
+    localObject = new wub(localActivity, localActivity, 10, (wtr)localObject, bool);
+    paramSegmentList.a((xvp)localObject);
+    paramSegmentList.a(new wwj(localActivity, "FeedSegment", alud.a(2131707448) + ulg.a + "\n拍摄一段视频，分享眼前的世界", 2130846156, 2130846157));
+    ((wub)localObject).e_(true);
   }
 }
 

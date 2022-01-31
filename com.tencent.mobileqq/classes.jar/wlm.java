@@ -1,58 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class wlm
-  extends uhw<wli, wdq>
 {
-  public wlm(wli paramwli)
+  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  
+  public wlm(qqstory_struct.OperationCardInfo paramOperationCardInfo)
   {
-    super(paramwli);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
   }
   
-  public void a(@NonNull wli paramwli, @NonNull wdq paramwdq)
+  public wlm(byte[] paramArrayOfByte)
   {
-    int i = 1;
-    if (paramwdq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
+    try
     {
-      localObject = paramwli.a(paramwdq.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramwdq.jdField_a_of_type_JavaLangString });
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
       }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
     }
-    else
-    {
-      return;
-    }
-    if (!(localObject instanceof wjz))
-    {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramwdq.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = (wjz)localObject;
-    ((wjz)localObject).a(paramwdq.jdField_a_of_type_JavaUtilList, paramwdq.c);
-    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((wjz)localObject).a;
-    if (paramwdq.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localCommentLikeFeedItem.mCommentIsEnd = i;
-      ((CommentLikeFeedItem)((wjz)localObject).a).mCommentLastCookie = paramwdq.jdField_b_of_type_JavaLangString;
-      ((CommentLikeFeedItem)((wjz)localObject).a).mCommentCount = paramwdq.jdField_b_of_type_Int;
-      ((wkp)urr.a(11)).a(((wjz)localObject).a);
-      wli.a(paramwli).b(paramwdq.jdField_a_of_type_JavaLangString);
-      wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramwdq.jdField_a_of_type_JavaLangString, Integer.valueOf(((wjz)localObject).b().size()), Boolean.valueOf(paramwdq.jdField_a_of_type_Boolean), paramwdq.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
-    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
-  
-  public Class acceptEventClass()
-  {
-    return wdq.class;
-  }
-  
-  public void b(@NonNull wli paramwli, @NonNull wdq paramwdq) {}
 }
 
 

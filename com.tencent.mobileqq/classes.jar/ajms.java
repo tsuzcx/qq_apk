@@ -1,29 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.os.Parcel;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
-public class ajms
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class ajms
 {
-  public ajms(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
+  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.b * f));
-    paramValueAnimator.height = ((int)(f * this.b));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
+    a(paramObject, paramArrayList, paramParcel);
+    if (b(paramObject, paramArrayList, paramParcel)) {
+      b(paramObject, paramArrayList, paramParcel);
+    }
+    return false;
   }
+  
+  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

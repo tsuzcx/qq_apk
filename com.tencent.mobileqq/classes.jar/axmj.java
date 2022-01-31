@@ -1,20 +1,65 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.WtloginObserver;
 
-public abstract interface axmj
+public class axmj
+  extends axmi
 {
-  public abstract void a();
+  protected static final String a;
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new axmk(this);
+  private boolean jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_from_send_sms", false);
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
+  private String c = "";
+  private String d = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getStringExtra("key_register_fail_paid_lh");
   
-  public abstract void a(int paramInt);
+  static
+  {
+    jdField_a_of_type_JavaLangString = axmj.class.getSimpleName();
+  }
   
-  public abstract void a(axmn paramaxmn);
+  public axmj(RegisterNewBaseActivity paramRegisterNewBaseActivity)
+  {
+    super(paramRegisterNewBaseActivity);
+    if (this.c == null) {
+      this.c = "";
+    }
+  }
   
-  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
+  public void a() {}
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public void a(Intent paramIntent)
+  {
+    this.c = paramIntent.getStringExtra("key_register_smscode");
+    if (this.c == null) {
+      this.c = "";
+    }
+    this.d = paramIntent.getStringExtra("key_register_from_fail_pay_lh");
+    a(paramIntent.getStringExtra("key_register_nick"));
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(String paramString)
+  {
+    try
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "doAction nick: %s, unBindUin: %s, smsCode: %s", new Object[] { paramString, this.d, this.c }));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b(2131717464);
+      if (awia.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app, this.c.getBytes(), paramString.getBytes(), this.d, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717527, 1);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
 }
 
 

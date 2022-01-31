@@ -1,42 +1,52 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import dov.com.qq.im.aeeditor.view.ClipThumbnailImageView;
+import java.util.ArrayList;
 
-class bllz
-  implements bmpb
+public class bllz
+  extends RecyclerView.Adapter<blmb>
 {
-  bllz(blly paramblly) {}
+  public bllz(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
   
-  public void a()
+  @NonNull
+  public blmb a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int != 14)
+    return new blmb(this.a, LayoutInflater.from(this.a.getActivity()).inflate(2131558525, paramViewGroup, false));
+  }
+  
+  public void a(@NonNull blmb paramblmb, int paramInt)
+  {
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = blpy.a(this.a.getActivity(), 50.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = blpy.a(this.a.getActivity(), 50.0F);
+    localObject = URLDrawable.getDrawable("file://" + (String)AEEditorImageClipFragment.a(this.a).get(paramInt), (URLDrawable.URLDrawableOptions)localObject);
+    paramblmb.a.setImageDrawable((Drawable)localObject);
+    if ((paramInt == 0) && (AEEditorImageClipFragment.c(this.a)))
     {
-      this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(0);
-      blly.a(this.a).setVisibility(0);
-      blly.a(this.a).setVisibility(0);
-      blly.a(this.a).a();
-      if ((!this.a.f()) && (!blly.a(this.a)))
-      {
-        blly.a(this.a).setVisibility(0);
-        if (this.a.c()) {
-          blly.a(this.a).setVisibility(0);
-        }
-      }
+      paramblmb.a.setIsSelected(true);
+      AEEditorImageClipFragment.c(this.a, false);
+      paramblmb.a(AEEditorImageClipFragment.a(this.a)[paramInt]);
+      paramblmb.a.setOnClickListener(new blma(this, paramInt));
+      return;
+    }
+    localObject = paramblmb.a;
+    if (paramInt == AEEditorImageClipFragment.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((ClipThumbnailImageView)localObject).setIsSelected(bool);
+      break;
     }
   }
   
-  public void a(bmtx parambmtx)
+  public int getItemCount()
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(8);
-    blly.a(this.a).setVisibility(8);
-    blly.a(this.a).setVisibility(8);
-    if (this.a.c()) {
-      blly.a(this.a).setVisibility(8);
-    }
-    blly.a(this.a).a(103, new Object[] { parambmtx });
+    return AEEditorImageClipFragment.a(this.a).size();
   }
 }
 

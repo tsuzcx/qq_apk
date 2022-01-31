@@ -1,23 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public class bkla
+class bkla
+  implements ThreadPool.Job<Void>
 {
-  protected static final String a = BaseApplicationImpl.getContext().getCacheDir().getPath();
-  protected static final String b;
-  protected static final String c = BaseApplicationImpl.getContext().getFilesDir().getParent();
+  bkla(bkks parambkks, List paramList) {}
   
-  static
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    if ((BaseApplicationImpl.getContext().getExternalFilesDir(null) != null) && (BaseApplicationImpl.getContext().getExternalCacheDir() != null)) {}
-    for (int i = 1; i != 0; i = 0)
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
     {
-      b = BaseApplicationImpl.getContext().getExternalFilesDir(null).getPath();
-      a = BaseApplicationImpl.getContext().getExternalCacheDir().getPath();
-      return;
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Bkks.a(l, true, false, false);
     }
-    b = BaseApplicationImpl.getContext().getFilesDir().getPath();
+    return null;
   }
 }
 

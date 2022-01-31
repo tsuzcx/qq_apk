@@ -1,44 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class blpd
-  extends blpg
+  implements View.OnClickListener
 {
-  blpd(blpc paramblpc) {}
+  blpd(blpb paramblpb) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String arg1, int paramInt)
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      this.a.a.mProgress = paramInt;
-      return;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
-    }
-    paramString = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.a.a.mProgress = 100;
-        this.a.b();
-        return;
-      }
-      finally {}
-      this.a.a.mProgress = -1;
-      this.a.a(4);
-    }
+    this.a.dismiss();
   }
 }
 

@@ -119,7 +119,7 @@ public class raj
   
   private static boolean a()
   {
-    String str1 = (String)bjxj.a("kandian_video_extract_frame", "");
+    String str1 = (String)bkbq.a("kandian_video_extract_frame", "");
     if (QLog.isColorLevel()) {
       QLog.d("VideoExtractFrame", 2, "serverConfig = " + str1);
     }
@@ -143,14 +143,14 @@ public class raj
     {
       return false;
     }
-    if (bdee.a(null) != 1)
+    if (bdin.a(null) != 1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoExtractFrame", 2, "当前网络环境非WIFI，不进行检测逻辑");
       }
       return false;
     }
-    String str2 = (String)bjxj.a("kandian_video_extract_frame_local_result", "");
+    String str2 = (String)bkbq.a("kandian_video_extract_frame_local_result", "");
     if (QLog.isColorLevel()) {
       QLog.d("VideoExtractFrame", 2, "localResult = " + str2);
     }
@@ -176,7 +176,7 @@ public class raj
           jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", localException1);
           jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
           jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-          bjxj.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
+          bkbq.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
         }
         jdField_a_of_type_JavaUtilArrayList = a();
         if (jdField_a_of_type_JavaUtilArrayList != null) {
@@ -194,7 +194,7 @@ public class raj
         jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", localException2);
         jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
         jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-        bjxj.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
+        bkbq.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
       }
       catch (Exception localException3)
       {
@@ -229,8 +229,8 @@ public class raj
     int j;
     try
     {
-      localJSONObject.put("version", "8.3.3.4515");
-      localJSONObject.put("subversion", "8.3.3");
+      localJSONObject.put("version", "8.3.5.4555");
+      localJSONObject.put("subversion", "8.3.5");
       if (jdField_a_of_type_OrgJsonJSONObject == null) {
         break label632;
       }
@@ -314,7 +314,7 @@ public class raj
       }
       paramram = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       if (paramram != null) {
-        azmz.a(paramContext).a(paramram.c(), "actKandianVideoExtractFrame", true, -1L, 0L, localHashMap, null);
+        azri.a(paramContext).a(paramram.c(), "actKandianVideoExtractFrame", true, -1L, 0L, localHashMap, null);
       }
       return;
       localJSONObject.put("detail_list", paramram);
@@ -382,7 +382,7 @@ public class raj
     {
       int i = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
       jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", i + 1);
-      bjxj.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
+      bkbq.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
       float f = rae.a();
       Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject).hasNext()) {

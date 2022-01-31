@@ -1,19 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.widget.AlphaLoadingView;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class yjg
-  extends Handler
+  extends aobz
 {
-  public yjg(AlphaLoadingView paramAlphaLoadingView) {}
+  public yjg(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    if (!AlphaLoadingView.a(this.a))
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (this.a.getActivity() != null)
     {
-      this.a.invalidate();
-      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

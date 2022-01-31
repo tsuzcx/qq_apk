@@ -1,6 +1,12 @@
 public abstract interface biyn
 {
-  public abstract void a(String paramString, Throwable paramThrowable);
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

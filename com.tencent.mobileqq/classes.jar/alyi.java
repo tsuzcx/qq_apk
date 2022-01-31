@@ -1,48 +1,34 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class alyi
-  extends Handler
+public class alyi
+  implements Comparator<PhoneContact>
 {
-  alyi(alyh paramalyh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alyi(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), mzx.class);
-        ((NewIntent)localObject).putExtra("data", ((alym)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Alym = null;
-        return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((alym)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
-      }
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    }
+    return j;
   }
 }
 

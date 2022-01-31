@@ -1,29 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import java.util.UUID;
 
 class aiql
-  implements ThreadExcutor.IThreadListener
+  implements aiqj
 {
-  aiql(aiqi paramaiqi, List paramList, Map paramMap, Bundle paramBundle) {}
+  aiql(aiqk paramaiqk) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void a(long paramLong, float paramFloat, String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      bdvv localbdvv = new bdvv(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
-      localbdvv.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (this.jdField_a_of_type_Aiqi.a != null) {
-        this.jdField_a_of_type_Aiqi.a.a(localbdvv, aiqi.a(this.jdField_a_of_type_Aiqi), null);
-      }
-    }
+    aiqk.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    aiqk.a(this.a).a(paramLong, paramFloat, paramString);
   }
   
-  public void onPreRun() {}
+  public void b(long paramLong)
+  {
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    aiqk.a(this.a).b(paramLong);
+  }
 }
 
 

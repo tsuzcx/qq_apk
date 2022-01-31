@@ -24,7 +24,7 @@ public class oud
         String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)paramString.get(str1);
         if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
-          bjxj.k(Integer.parseInt(str2));
+          bkbq.k(Integer.parseInt(str2));
         }
       }
       return true;
@@ -38,7 +38,7 @@ public class oud
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.k(6);
+    bkbq.k(6);
   }
 }
 

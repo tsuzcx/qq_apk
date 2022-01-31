@@ -84,10 +84,10 @@ public class rcp
   
   private rcp()
   {
-    jdField_a_of_type_Int = bdkf.a(100.0F);
-    jdField_b_of_type_Int = bdkf.a(128.0F);
-    this.jdField_c_of_type_Int = bdkf.a(54.0F);
-    this.jdField_d_of_type_Int = bdkf.a(6.0F);
+    jdField_a_of_type_Int = bdoo.a(100.0F);
+    jdField_b_of_type_Int = bdoo.a(128.0F);
+    this.jdField_c_of_type_Int = bdoo.a(54.0F);
+    this.jdField_d_of_type_Int = bdoo.a(6.0F);
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -105,16 +105,16 @@ public class rcp
     this.jdField_a_of_type_AndroidWidgetImageView.setId(21);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842706);
-    int j = bcwh.a(paramContext, 24.0F);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842719);
+    int j = bdaq.a(paramContext, 24.0F);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(j, j);
     localLayoutParams.gravity = 5;
-    j = bcwh.a(paramContext, 3.0F);
+    j = bdaq.a(paramContext, 3.0F);
     localLayoutParams.topMargin = j;
     localLayoutParams.rightMargin = j;
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130842535);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130842548);
     }
     this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(0);
@@ -465,7 +465,7 @@ public class rcp
     if (paramBundle != null) {
       this.i = paramBundle.getInt("VIDEO_FROM_TYPE");
     }
-    this.f = bjxj.a();
+    this.f = bkbq.a();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager = new VideoFeedsPlayManager(BaseApplicationImpl.getContext(), ors.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.d(true);
@@ -615,8 +615,8 @@ public class rcp
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(-16777216);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     o();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = ((int)bdcb.i());
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = ((int)bdcb.j());
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = ((int)bdgk.i());
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = ((int)bdgk.j());
     this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
     n();
   }
@@ -776,7 +776,7 @@ public class rcp
     if ((this.f == 0) && (b())) {
       this.jdField_a_of_type_Ntb.a(this.jdField_a_of_type_Ntc, this.i, (VideoInfo)this.jdField_a_of_type_JavaUtilList.get(0), this.jdField_a_of_type_JavaLangString, this.h);
     }
-    if ((this.g + 1 < this.jdField_a_of_type_JavaUtilList.size()) && (bdee.h(BaseApplicationImpl.getContext())) && (bjxj.u(BaseApplicationImpl.getApplication().getRuntime()))) {
+    if ((this.g + 1 < this.jdField_a_of_type_JavaUtilList.size()) && (bdin.h(BaseApplicationImpl.getContext())) && (bkbq.u(BaseApplicationImpl.getApplication().getRuntime()))) {
       a((VideoInfo)this.jdField_a_of_type_JavaUtilList.get(this.g + 1));
     }
     p();

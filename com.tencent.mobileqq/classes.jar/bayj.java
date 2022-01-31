@@ -1,35 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
+import android.os.Handler;
+import android.os.Looper;
+import java.util.ArrayList;
 
-class bayj
-  implements Animator.AnimatorListener
+public class bayj
+  extends Handler
 {
-  bayj(bayf parambayf) {}
+  private ArrayList<Class<?>> filterList = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bayj()
   {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), -bayf.a(this.a), 0, 0);
-    bayf.a(this.a).setVisibility(8);
-    bayf.a(this.a, false);
-    bayf.b(this.a, false);
+    this.filterList.clear();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bayj(Looper paramLooper)
   {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), -bayf.a(this.a), 0, 0);
-    bayf.a(this.a).setVisibility(8);
-    bayf.a(this.a, false);
-    bayf.b(this.a, false);
+    super(paramLooper);
+    this.filterList.clear();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void addFilter(Class<?>... paramVarArgs)
   {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    bayf.a(this.a, true);
-    bayf.b(this.a, true);
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      this.filterList.add(paramVarArgs[i]);
+      i += 1;
+    }
+  }
+  
+  public ArrayList<Class<?>> getFilter()
+  {
+    return this.filterList;
   }
 }
 

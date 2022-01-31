@@ -1,27 +1,26 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.util.WeakHashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
-class aesy
-  implements OnCompositionLoadedListener
+public class aesy
+  implements Animator.AnimatorListener
 {
-  aesy(aesv paramaesv) {}
+  public aesy(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramLottieComposition != null)
-    {
-      aesv.a(this.a).setComposition(paramLottieComposition);
-      aesv.a(this.a).loop(false);
-      aesv.a(this.a).setVisibility(0);
-      aesv.a(this.a).playAnimation();
-      return;
-    }
-    aesv.a(this.a).clear();
-    this.a.a();
+    onAnimationEnd(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c.setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

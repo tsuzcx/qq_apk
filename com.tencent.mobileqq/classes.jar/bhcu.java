@@ -1,58 +1,88 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
-import org.json.JSONException;
+import NS_MINI_REPORT.REPORT.StDcReportRsp;
+import NS_MINI_REPORT.REPORT.StGameDcReportRsp;
+import NS_MINI_REPORT.REPORT.StThirdDcReportRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class bhcu
-  implements bgln
+  extends bhdw
 {
-  public bhcu(bhcq parambhcq) {}
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
   
-  public void onSoftKeyboardClosed()
+  public bhcu(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    if (bhcq.c(this.a) != 0)
-    {
-      bgkq.a(bhcq.a(this.a).a(), bhcq.c(this.a), 0.0F, 1.0F, 1.0F);
-      bhcq.b(this.a, 0);
-    }
-    InputMethodManager localInputMethodManager = (InputMethodManager)bhcq.a(this.a).getContext().getSystemService("input_method");
-    if (localInputMethodManager == null) {
-      return;
-    }
-    localInputMethodManager.hideSoftInputFromWindow(bhcq.a(this.a).getWindowToken(), 0);
-    this.a.a(true);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  protected String a()
   {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return "mini_app_dcreport";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
     try
     {
-      bhcq.a(this.a, paramInt);
-      if ((bhcq.a(this.a) != null) && (bhcq.a(this.a).a() != null)) {}
-      for (Object localObject = bhcq.a(this.a).a().a();; localObject = null)
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      int i;
+      if ("ThirdDcReport".equals(this.b))
       {
-        if ((localObject != null) && (DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject))) {
-          bhcq.a(this.a, bhcq.b(this.a) + DisplayUtil.getNavigationBarHeight(bhcq.a(this.a).a().a()));
-        }
-        bhcq.a(this.a);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("inputId", bhcq.a(this.a));
-        ((JSONObject)localObject).put("height", paramInt);
-        if ((bhcq.a(this.a) != null) && (bhcq.a(this.a).a() != null)) {
-          bhcq.a(this.a).a().b("onKeyboardShow", ((JSONObject)localObject).toString());
-        }
-        return;
+        paramArrayOfByte = new REPORT.StThirdDcReportRsp();
+        paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+        i = paramArrayOfByte.ret.get();
       }
-      return;
+      while (i == 0)
+      {
+        return new JSONObject();
+        if ("GameDcReport".equals(this.b))
+        {
+          paramArrayOfByte = new REPORT.StGameDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
+        }
+        else
+        {
+          paramArrayOfByte = new REPORT.StDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
+        }
+      }
+      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
+      return null;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramArrayOfByte)
     {
-      localJSONException.printStackTrace();
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  protected String b()
+  {
+    if (this.b != null) {
+      return this.b;
+    }
+    return "DcReport";
   }
 }
 

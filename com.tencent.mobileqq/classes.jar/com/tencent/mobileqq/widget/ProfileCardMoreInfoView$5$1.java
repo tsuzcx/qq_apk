@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
-import beoo;
+import besx;
 
 public class ProfileCardMoreInfoView$5$1
   implements Runnable
 {
-  public ProfileCardMoreInfoView$5$1(beoo parambeoo) {}
+  public ProfileCardMoreInfoView$5$1(besx parambesx) {}
   
   public void run()
   {

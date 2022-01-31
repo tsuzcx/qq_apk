@@ -1,34 +1,33 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class auov
+  implements alpg
 {
-  public static HashMap<String, Integer> a = new HashMap();
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
   
-  static
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    a.put("skin_icon_small_ship_svip", Integer.valueOf(2130849562));
-    a.put("skin_icon_big_ship_svip", Integer.valueOf(2130849521));
-    a.put("skin_icon_small_ship_unionvip", Integer.valueOf(2130849563));
-    a.put("skin_icon_big_ship_unionvip", Integer.valueOf(2130849522));
-    a.put("skin_icon_small_fire_svip", Integer.valueOf(2130849558));
-    a.put("skin_icon_big_fire_svip", Integer.valueOf(2130849517));
-    a.put("skin_icon_small_fire_unionvip", Integer.valueOf(2130849559));
-    a.put("skin_icon_big_fire_unionvip", Integer.valueOf(2130849518));
-    a.put("skin_icon_intimate_lover_vip_1", Integer.valueOf(2130849542));
-    a.put("skin_icon_intimate_lover_vip_2", Integer.valueOf(2130849543));
-    a.put("skin_icon_intimate_lover_vip_3", Integer.valueOf(2130849544));
-    a.put("hot_reactive_gray_intimate_guimi_svip_1_icon", Integer.valueOf(2130840116));
-    a.put("hot_reactive_gray_intimate_guimi_svip_2_icon", Integer.valueOf(2130840117));
-    a.put("hot_reactive_gray_intimate_guimi_svip_3_icon", Integer.valueOf(2130840118));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_1_icon", Integer.valueOf(2130840119));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_2_icon", Integer.valueOf(2130840120));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_3_icon", Integer.valueOf(2130840121));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_1_icon", Integer.valueOf(2130840122));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_2_icon", Integer.valueOf(2130840123));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_3_icon", Integer.valueOf(2130840124));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_1_icon", Integer.valueOf(2130840125));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_2_icon", Integer.valueOf(2130840126));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_3_icon", Integer.valueOf(2130840127));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    }
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      }
+      break;
+    }
+    do
+    {
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    Map localMap = (Map)paramObject[0];
+    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
 }
 

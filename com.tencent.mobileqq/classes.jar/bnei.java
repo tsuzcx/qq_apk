@@ -1,33 +1,31 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
+import java.util.List;
 
 public class bnei
+  extends urs<vge, vhr>
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
+  bnei(bneg parambneg) {}
+  
+  public void a(@NonNull vge paramvge, @Nullable vhr paramvhr, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    wxe.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvhr != null))
     {
-      if (bneh.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        bneh.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          bneh.b = false;
-        }
-        return localByteBuffer2;
-      }
+      wxe.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramvhr.toString());
+      bneg.a(this.a).addAll(paramvhr.jdField_a_of_type_JavaUtilList);
+      bneg.a(this.a, paramvhr.jdField_a_of_type_JavaLangString);
+      bneg.a(this.a, paramvhr.b);
+      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    for (;;)
     {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
+      bneg.a(this.a).b(paramErrorMessage.errorCode, bneg.a(this.a), this.a.a());
+      return;
+      wxe.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
-import awbv;
+import awge;
 
 public class FTSTroopTime
-  extends awbv
+  extends awge
 {
   public long mTimeStamp;
   public String mTroopUin;

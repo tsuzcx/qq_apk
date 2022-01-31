@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import befr;
+import beka;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebAccelerator;
@@ -18,7 +18,7 @@ class WebAccelerateHelper$1
     if (this.val$fisX5PreFetch)
     {
       localHashMap = new HashMap();
-      localHashMap.put("User-Agent", befr.a(befr.c("x5prefetch_1.0"), "", false));
+      localHashMap.put("User-Agent", beka.a(beka.c("x5prefetch_1.0"), "", false));
       WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.val$fUrl, localHashMap, true);
       QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + ndq.c(this.val$fUrl, new String[0]));
     }

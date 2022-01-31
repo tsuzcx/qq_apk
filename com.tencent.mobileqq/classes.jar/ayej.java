@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
 public class ayej
-  implements View.OnClickListener
 {
-  public ayej(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public long a;
+  public ayek a;
   
-  public void onClick(View paramView)
+  public ayej()
   {
-    this.a.a.setText("");
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public ayej(long paramLong, ayek paramayek)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Ayek = paramayek;
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import blnu;
+import blsg;
 
 public class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(blnu paramblnu) {}
+  public CaptureTemplateManager$1(blsg paramblsg) {}
   
   public void run()
   {

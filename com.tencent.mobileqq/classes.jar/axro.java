@@ -1,15 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class axro
-  implements axsk
+public final class axro
+  extends BroadcastReceiver
 {
-  axro(axrn paramaxrn) {}
+  private axro(FilterProviderView paramFilterProviderView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    axrn.a(this.a, true);
-    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      axom.a().b();
+      FilterProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
+      }
     }
   }
 }

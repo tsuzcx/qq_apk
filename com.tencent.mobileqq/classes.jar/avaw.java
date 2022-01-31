@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class avaw
-  implements DialogInterface.OnClickListener
+public final class avaw
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public avaw(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public InterestTagInfo a(Parcel paramParcel)
   {
-    ShortVideoCommentsView.c(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    return new InterestTagInfo(paramParcel);
+  }
+  
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
   }
 }
 

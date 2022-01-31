@@ -1,6 +1,26 @@
-public abstract interface ahgo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class ahgo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ahjv paramahjv, int paramInt);
+  public ahgo(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      return;
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

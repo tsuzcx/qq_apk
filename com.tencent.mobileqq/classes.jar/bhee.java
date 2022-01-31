@@ -1,121 +1,75 @@
-import android.content.Context;
-import android.util.Log;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.MtaReportSt;
-import java.util.Properties;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StCurrChannelInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq;
+import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-@bghi(a="ServiceInitTask")
 public class bhee
-  extends bhhm
+  extends bhdw
 {
-  bhar jdField_a_of_type_Bhar;
-  private bhcv jdField_a_of_type_Bhcv;
+  private INTERFACE.StUseUserAppReq a = new INTERFACE.StUseUserAppReq();
   
-  public bhee(Context paramContext, bgqg parambgqg)
+  public bhee(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    super(paramContext, parambgqg);
-  }
-  
-  public bhcv a()
-  {
-    return this.jdField_a_of_type_Bhcv;
-  }
-  
-  public void a()
-  {
-    Object localObject;
-    label45:
-    bhec localbhec;
-    if (this.jdField_a_of_type_Bhar != null)
-    {
-      localObject = this.jdField_a_of_type_Bhar.a();
-      bgyd.a((MiniAppInfo)localObject, 14, "0");
-      localObject = (bhea)a().getTask(bhea.class);
-      if (localObject == null) {
-        break label132;
-      }
-      localObject = ((bhea)localObject).a();
-      this.jdField_a_of_type_Bhar = ((bhar)localObject);
-      localbhec = (bhec)a().getTask(bhec.class);
-      if (localbhec == null) {
-        break label137;
-      }
-      localObject = localbhec.a();
-      label75:
-      if (localbhec == null) {
-        break label142;
-      }
+    this.a.appId.set(paramString1);
+    this.a.verType.set(paramInt1);
+    this.a.source.set(paramInt2);
+    paramString1 = new INTERFACE.StCurrChannelInfo();
+    paramString1.refer.set(paramString2);
+    paramString1.via.set(paramString3);
+    this.a.channelInfo.set(paramString1);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    label132:
-    label137:
-    label142:
-    for (long l = localbhec.a();; l = 0L)
-    {
-      if (localObject == null) {
-        break label147;
-      }
-      if (this.jdField_a_of_type_Bhar != null) {
-        ((bhcv)localObject).a(this.jdField_a_of_type_Bhar.a());
-      }
-      ((bhcv)localObject).addStateChangeListener(new bhef(this, (bhcv)localObject, l));
-      ((bhcv)localObject).b();
-      return;
-      localObject = null;
-      break;
-      localObject = null;
-      break label45;
-      localObject = null;
-      break label75;
-    }
-    label147:
-    e();
   }
   
-  protected void a(bhcv parambhcv, long paramLong1, long paramLong2)
+  protected String a()
   {
-    for (;;)
+    return "mini_app_userapp";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
+    try
     {
-      try
+      localStUseUserAppRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStUseUserAppRsp != null)
       {
-        Properties localProperties;
-        if ((this.jdField_a_of_type_Bhcv == null) && (parambhcv != null))
+        if (localStUseUserAppRsp.extInfo != null)
         {
-          this.jdField_a_of_type_Bhcv = parambhcv;
-          c();
-          localProperties = new Properties();
-          if ((parambhcv instanceof bhdd))
-          {
-            localProperties.put("service_type", "v8");
-            localProperties.put("service_init_timecost", Long.valueOf(paramLong1));
-            localProperties.put("service_exec_timecost", Long.valueOf(paramLong2));
-            localProperties.put("reserved", "1");
-            Log.d("ServiceInitTask", parambhcv + ",serviceInit:" + paramLong1 + ",serviceExec:" + paramLong2);
-            this.jdField_a_of_type_Bhar.a(bghw.a(50, new MtaReportSt("miniapp_service_init", localProperties)));
-          }
+          paramArrayOfByte = new JSONObject();
+          paramArrayOfByte.put("ext", localStUseUserAppRsp.extInfo.get());
+          return paramArrayOfByte;
         }
-        else
-        {
-          return;
-        }
-        if ((parambhcv instanceof bhcw)) {
-          localProperties.put("service_type", "x5");
-        } else {
-          localProperties.put("service_type", "unexpected");
-        }
+        QMLog.d("UseUserAppRequest", "onResponse fail.extInfo = null");
+        return null;
       }
-      finally {}
     }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("UseUserAppRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
+    }
+    QMLog.d("UseUserAppRequest", "onResponse fail.rsp = null");
+    return null;
   }
   
-  public void c()
+  public byte[] a()
   {
-    super.c();
-    if (this.jdField_a_of_type_Bhar != null) {}
-    for (MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_Bhar.a();; localMiniAppInfo = null)
-    {
-      bgyd.a(localMiniAppInfo, 15, "0");
-      return;
-    }
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "UseUserApp";
   }
 }
 

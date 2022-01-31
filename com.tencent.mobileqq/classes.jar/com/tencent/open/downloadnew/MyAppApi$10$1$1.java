@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import bfkb;
+import bfok;
 
 class MyAppApi$10$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class MyAppApi$10$1$1
   
   public void run()
   {
-    bfkb.a().e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bfok.a().e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 

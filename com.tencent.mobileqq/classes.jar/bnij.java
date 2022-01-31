@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
-
-public class bnij
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bnij
 {
-  public bnij(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

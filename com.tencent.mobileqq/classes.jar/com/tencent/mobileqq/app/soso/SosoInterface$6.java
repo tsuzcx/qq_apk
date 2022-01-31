@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
-import amle;
+import ampt;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 final class SosoInterface$6
   implements Runnable
 {
-  SosoInterface$6(amle paramamle) {}
+  SosoInterface$6(ampt paramampt) {}
   
   public void run()
   {
@@ -78,7 +78,7 @@ final class SosoInterface$6
         SosoInterface.c(0);
         SosoInterface.a(SystemClock.elapsedRealtime());
         SosoInterface.d(0);
-        amle.access$1602(this.a, true);
+        ampt.access$1602(this.a, true);
         if (SosoInterface.a() == null) {
           SosoInterface.a(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
         }

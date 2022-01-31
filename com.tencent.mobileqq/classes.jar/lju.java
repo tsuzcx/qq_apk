@@ -87,7 +87,7 @@ public class lju
       localObject = new File((String)localObject + "config.json");
       if (((File)localObject).exists())
       {
-        localObject = bdcs.a((File)localObject);
+        localObject = bdhb.a((File)localObject);
         if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().e) {
           bool = true;
         }
@@ -740,7 +740,7 @@ public class lju
     {
       localObject = c(paramFaceItem);
       ((FaceItem)this.jdField_a_of_type_Ljo).setDesc((String)localObject);
-      azmj.b(null, "CliOper", "", "", "0X800A74C", "0X800A74C", 0, 0, "", "", paramFaceItem.getId(), "");
+      azqs.b(null, "CliOper", "", "", "0X800A74C", "0X800A74C", 0, 0, "", "", paramFaceItem.getId(), "");
       j = b();
       if (this.jdField_a_of_type_Llc.a(3, "creative") != 1) {
         break label282;
@@ -753,7 +753,7 @@ public class lju
       if (j != 2) {
         break label288;
       }
-      i = 2131695908;
+      i = 2131695910;
     }
     for (;;)
     {
@@ -783,11 +783,11 @@ public class lju
       bool1 = false;
       break;
       label288:
-      i = 2131695907;
+      i = 2131695909;
       continue;
       label296:
       if (!bool1) {
-        i = 2131695907;
+        i = 2131695909;
       }
     }
   }

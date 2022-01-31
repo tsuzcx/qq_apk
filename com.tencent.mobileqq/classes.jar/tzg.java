@@ -1,18 +1,18 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
 class tzg
-  implements yvn<FeedCloudRead.StGetMainPageRsp>
+  implements zac<FeedCloudRead.StGetBusiInfoRsp>
 {
-  tzg(tzf paramtzf, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
+  tzg(tzf paramtzf, QCircleGetTabListRequest paramQCircleGetTabListRequest, ykg paramykg) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d(tzf.a(), 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    this.jdField_a_of_type_Tzf.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    QLog.d("QCircleFolderPreLoaderTask", 1, "QCircleFolderPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if (this.jdField_a_of_type_Ykg != null) {
+      this.jdField_a_of_type_Ykg.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
+    }
   }
 }
 

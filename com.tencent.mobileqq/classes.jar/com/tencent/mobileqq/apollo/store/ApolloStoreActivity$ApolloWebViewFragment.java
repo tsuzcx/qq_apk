@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akzs;
+import aleh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bebk;
-import bhoe;
+import beft;
+import bhsl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
 {
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
   private long b;
   
   public void a(WebView paramWebView, String paramString)
@@ -76,9 +76,9 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   public int f(Bundle paramBundle)
   {
     int i = super.f(paramBundle);
-    this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
-    this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
-    this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
+    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
+    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     if (getActivity() != null) {
       ImmersiveUtils.a(getActivity().getWindow(), true);
     }
@@ -104,7 +104,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView) && ((getActivity() instanceof ApolloStoreActivity)))
+    if ((paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView) && ((getActivity() instanceof ApolloStoreActivity)))
     {
       ((ApolloStoreActivity)getActivity()).a();
       return;

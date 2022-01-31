@@ -1,39 +1,21 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uop
-  extends QQUIEventReceiver<uok, uyz>
+final class uop
+  extends SimpleJob<Void>
 {
-  public uop(@NonNull uok paramuok)
+  uop(String paramString1, String paramString2)
   {
-    super(paramuok);
+    super(paramString1);
   }
   
-  public void a(@NonNull uok paramuok, @NonNull uyz paramuyz)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramuyz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    CommentEntry localCommentEntry;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = paramuok.a.iterator();
-      }
-      localCommentEntry = (CommentEntry)localIterator.next();
-    } while ((paramuyz.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramuyz.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
-    paramuok.f();
-    wsv.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uyz.class;
+    int i = uom.a();
+    wxe.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

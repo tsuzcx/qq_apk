@@ -1,30 +1,22 @@
 import android.os.Bundle;
 
-public class arpv
+class arpv
+  implements arpw
 {
-  public long a;
-  public long b;
+  arpv(arpu paramarpu) {}
   
-  public arpv(long paramLong1, long paramLong2)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public static arpv a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
     }
-    return new arpv(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
   }
   
-  public Bundle a()
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
-    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
-    return localBundle;
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
   }
 }
 

@@ -1,17 +1,29 @@
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class aqnc
-  implements bhqd
+public class aqnc
+  implements View.OnClickListener
 {
-  aqnc(aqnb paramaqnb, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  public aqnc(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    azmj.b(this.jdField_a_of_type_Aqnb.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    this.jdField_a_of_type_Aqnb.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_Aqnb.a();
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      bfnj.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
+      bfnj.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
   }
 }
 

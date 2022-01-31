@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aenv;
-import afcf;
-import afch;
+import aesk;
+import afgu;
+import afgw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,7 +18,7 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private afcf a;
+  private afgu a;
   
   public void a()
   {
@@ -54,12 +54,12 @@ public class IntimateInfoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = afch.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
+    this.a = afgw.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
     if ((this.a == null) || (this.a.a() == null)) {
       return null;
     }
-    if ((this.a instanceof aenv)) {
-      ((aenv)this.a).a(2);
+    if ((this.a instanceof aesk)) {
+      ((aesk)this.a).a(2);
     }
     return this.a.a();
   }
@@ -73,8 +73,8 @@ public class IntimateInfoFragment
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof aenv)) {
-      ((aenv)this.a).h();
+    if ((this.a instanceof aesk)) {
+      ((aesk)this.a).h();
     }
   }
   
@@ -84,8 +84,8 @@ public class IntimateInfoFragment
     this.a.b(true);
     this.a.d();
     this.a.p();
-    if ((this.a instanceof aenv)) {
-      ((aenv)this.a).i();
+    if ((this.a instanceof aesk)) {
+      ((aesk)this.a).i();
     }
   }
   

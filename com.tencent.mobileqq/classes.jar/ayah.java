@@ -1,18 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ayah
-  extends ayad
+class ayah
+  implements EIPCResultCallback
 {
-  public ayah(CommentsView paramCommentsView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  ayah(ayag paramayag) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
+    if (-102 == paramEIPCResult.code) {
+      this.a.a.mContext.finish();
     }
   }
 }

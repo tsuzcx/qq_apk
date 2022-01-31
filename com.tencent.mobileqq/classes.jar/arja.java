@@ -1,50 +1,21 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class arja
-  implements View.OnClickListener
+public class arja
+  extends arix
 {
-  arja(aris paramaris) {}
+  private final String a;
   
-  public void onClick(View paramView)
+  public arja(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    switch (paramView.getId())
-    {
-    }
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
-      if (aris.a(this.a))
-      {
-        aris.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        arng.a("0X8004BE5");
-        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(aris.a(this.a));
-        aris.a(this.a);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Arke.d(aris.a(this.a));
-        return;
-        aris.b(this.a);
-      }
-      paramView = this.a.jdField_a_of_type_Arfz.b();
-      aris.a(this.a, paramView);
-      String str = this.a.a() + "(" + arof.a(this.a.jdField_a_of_type_Arfz.c()) + ")";
-      this.a.a(paramView, str);
-      return;
-      this.a.n();
-      return;
-      i = this.a.jdField_a_of_type_Arfz.i();
-      j = this.a.jdField_a_of_type_Arfz.h();
-    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_Arfz.a() == null));
-    this.a.jdField_a_of_type_Arfz.a().a();
+    super(paramQQAppInterface, paramFileManagerEntity);
+    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
+  }
+  
+  public void a(aqxm paramaqxm)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new arjb(this, paramaqxm));
   }
 }
 

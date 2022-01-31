@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface agve
-  extends agwc
+class agve
+  implements View.OnClickListener
 {
-  public abstract MessageRecord a(Object... paramVarArgs);
+  agve(agvc paramagvc) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.N) {
+      bclg.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
+  }
 }
 
 

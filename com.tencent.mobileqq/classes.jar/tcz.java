@@ -13,7 +13,7 @@ class tcz
     {
       stPostCommentReplyRsp localstPostCommentReplyRsp = (stPostCommentReplyRsp)paramthe.jdField_a_of_type_JavaLangObject;
       paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentReplyRsp, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()) });
-      uht.a().dispatch(paramthe);
+      umc.a().dispatch(paramthe);
       return;
     }
     tlo.d(tcu.a(), "添加回复失败new！");

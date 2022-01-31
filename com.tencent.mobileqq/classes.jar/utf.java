@@ -1,21 +1,32 @@
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+
 public class utf
+  extends uli
 {
-  @xnb(a="pkIconUrl")
-  public String a;
-  @xnb(a="pkWording")
-  public String b;
-  @xnb(a="pkAction")
-  public String c;
-  @xnb(a="pkIconUrlSelf")
-  public String d;
-  @xnb(a="pkWordingSelf")
-  public String e;
-  @xnb(a="pkActionSelf")
-  public String f;
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
+  
+  public utf(int paramInt1, String paramString, int paramInt2)
+  {
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public utf(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
   
   public String toString()
   {
-    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 

@@ -39,7 +39,7 @@ public class orm
   
   public static void a()
   {
-    int i = bdiv.N(BaseApplicationImpl.getApplication(), ors.a());
+    int i = bdne.N(BaseApplicationImpl.getApplication(), ors.a());
     int j = a();
     QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] remoteVersion=" + i + ", localVersion=" + j);
     if (i != j) {
@@ -92,15 +92,15 @@ public class orm
   public static void b()
   {
     QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
-    bdiv.p(BaseApplicationImpl.getApplication(), 0, ors.a());
+    bdne.p(BaseApplicationImpl.getApplication(), 0, ors.a());
     QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
-    bdiv.o(BaseApplicationImpl.getApplication(), 0, ors.a());
+    bdne.o(BaseApplicationImpl.getApplication(), 0, ors.a());
     QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
-    bdiv.s(BaseApplicationImpl.getApplication(), ors.a(), 0);
+    bdne.s(BaseApplicationImpl.getApplication(), ors.a(), 0);
     QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
-    bdiv.o(BaseApplicationImpl.getApplication(), 0);
+    bdne.o(BaseApplicationImpl.getApplication(), 0);
     QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
-    bdiv.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", ors.a(), 0);
+    bdne.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", ors.a(), 0);
   }
   
   public static void c()
@@ -116,7 +116,7 @@ public class orm
   public static void d()
   {
     QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] ");
-    Object localObject = bjxj.a(ors.a(), true, true);
+    Object localObject = bkbq.a(ors.a(), true, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -124,7 +124,7 @@ public class orm
       if (((SharedPreferences.Editor)localObject).commit())
       {
         QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account related sp success");
-        localObject = bjxj.a(ors.a(), false, true);
+        localObject = bkbq.a(ors.a(), false, true);
         if (localObject == null) {
           break label138;
         }
@@ -158,9 +158,9 @@ public class orm
     QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase");
     try
     {
-      awbx localawbx = owy.a().a();
-      if ((localawbx instanceof ReadInJoyEntityManagerFactory)) {
-        ((ReadInJoyEntityManagerFactory)localawbx).a();
+      awgg localawgg = owy.a().a();
+      if ((localawgg instanceof ReadInJoyEntityManagerFactory)) {
+        ((ReadInJoyEntityManagerFactory)localawgg).a();
       }
       return;
     }
@@ -188,7 +188,7 @@ public class orm
   private static void h()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearSkinRes");
-    Object localObject = new File(bfel.e());
+    Object localObject = new File(bfiu.e());
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
       localObject = ((File)localObject).listFiles();
@@ -206,7 +206,7 @@ public class orm
               if (str.getName().toLowerCase().contains("readinjoy"))
               {
                 str = str.getAbsolutePath();
-                bdcs.a(str, false);
+                bdhb.a(str, false);
                 QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] deleted " + str);
               }
               i += 1;
@@ -252,23 +252,23 @@ public class orm
     try
     {
       Object localObject = ((QQAppInterface)ors.a()).a();
-      ((QQMessageFacade)localObject).a(aljq.aA, 7220);
+      ((QQMessageFacade)localObject).a(alof.aA, 7220);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_MERGE_UIN cleared");
-      ((QQMessageFacade)localObject).a(aljq.aR, 1008);
+      ((QQMessageFacade)localObject).a(alof.aR, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_SUBSCRIBE_UIN cleared");
-      ((QQMessageFacade)localObject).a(aljq.az, 1008);
+      ((QQMessageFacade)localObject).a(alof.az, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(aljq.az, 0);
+      ((QQMessageFacade)localObject).a(alof.az, 0);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(aljq.ay, 1008);
+      ((QQMessageFacade)localObject).a(alof.ay, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: OLD_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(aljq.ay, 0);
+      ((QQMessageFacade)localObject).a(alof.ay, 0);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(aljq.aQ, 1008);
+      ((QQMessageFacade)localObject).a(alof.aQ, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: WEISHI_UIN cleared");
-      ((QQMessageFacade)localObject).a(aljq.aS, 1008);
+      ((QQMessageFacade)localObject).a(alof.aS, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_DAILY cleared");
-      localObject = bjxj.a((QQAppInterface)ors.a(), 1);
+      localObject = bkbq.a((QQAppInterface)ors.a(), 1);
       if (localObject != null)
       {
         if (((SharedPreferences)localObject).edit().clear().commit())

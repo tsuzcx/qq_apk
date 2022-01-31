@@ -1,18 +1,11 @@
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.view.animation.Interpolator;
 
 public class bepl
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Interpolator
 {
-  public bepl(QQBlurView paramQQBlurView) {}
-  
-  public boolean onPreDraw()
+  public float getInterpolation(float paramFloat)
   {
-    if (!QQBlurView.a(this.a)) {}
-    while (!QQBlurView.a(this.a).a()) {
-      return true;
-    }
-    return QQBlurView.a(this.a).b();
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 

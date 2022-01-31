@@ -1,12 +1,15 @@
-public abstract interface aciq
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.Emoticon;
+
+class aciq
+  implements aufy<Emoticon>
 {
-  public abstract void a();
+  aciq(acip paramacip, int paramInt1, int paramInt2, String paramString) {}
   
-  public abstract void a(apwd paramapwd);
-  
-  public abstract boolean a();
-  
-  public abstract void b(apwd paramapwd);
+  public void a(Emoticon paramEmoticon)
+  {
+    afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Acip.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acip.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acip.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+  }
 }
 
 

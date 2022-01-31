@@ -2,10 +2,10 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
 import java.util.List;
-import wsv;
-import wuq;
-import wwe;
-import wxw;
+import wxe;
+import wyz;
+import xan;
+import xcf;
 
 class HWEditLocalVideoPlayer$2$1
   implements Runnable
@@ -16,16 +16,16 @@ class HWEditLocalVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      wxw localwxw = (wxw)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.this$0, localwxw);
+      xcf localxcf = (xcf)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.this$0, localxcf);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Wwe.a(Message.obtain(null, 8));
+      this.a.this$0.jdField_a_of_type_Xan.a(Message.obtain(null, 8));
       HWEditLocalVideoPlayer.a(this.a.this$0, this.a.this$0.jdField_a_of_type_Int);
-      this.a.this$0.jdField_a_of_type_Wwe.a.a(true);
+      this.a.this$0.jdField_a_of_type_Xan.a.a(true);
       return;
-      wsv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      wxe.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

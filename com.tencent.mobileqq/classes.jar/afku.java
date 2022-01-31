@@ -1,16 +1,34 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
 
-public class afku
-  implements View.OnTouchListener
+class afku
+  implements View.OnClickListener
 {
-  public afku(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  afku(afkt paramafkt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    Object localObject;
+    if ((paramView instanceof ConfessNewsBgView))
+    {
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
+      {
+        localObject = (MessageForConfessNews)localObject;
+        if (((MessageForConfessNews)localObject).istroop != 1) {
+          break label73;
+        }
+      }
+    }
+    label73:
+    for (int i = 1; i != 0; i = 0)
+    {
+      aojt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
+      return;
+    }
+    aoiy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
   }
 }
 

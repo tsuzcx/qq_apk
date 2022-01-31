@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import ayvy;
-import baig;
+import azah;
+import bamp;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -225,7 +225,7 @@ public class SocializeFeedsInfo
       break label178;
     }
     label448:
-    paramArticleInfo = new SpannableStringBuilder(new baig(localStringBuilder, 3, 16));
+    paramArticleInfo = new SpannableStringBuilder(new bamp(localStringBuilder, 3, 16));
     paramString = localArrayList.iterator();
     while (paramString.hasNext())
     {
@@ -248,7 +248,7 @@ public class SocializeFeedsInfo
     {
       String str = new String(paramBiuOneLevelItem.bytes_biu_comments.get().toByteArray(), "utf-8");
       localBiuCommentInfo.jdField_b_of_type_JavaLangString = str;
-      localBiuCommentInfo.jdField_a_of_type_JavaLangString = ayvy.b(str);
+      localBiuCommentInfo.jdField_a_of_type_JavaLangString = azah.b(str);
       if ((paramBiuOneLevelItem.msg_jump_info.has()) && (paramBiuOneLevelItem.msg_jump_info.get() != null))
       {
         paramBiuOneLevelItem = (articlesummary.JumpInfo)paramBiuOneLevelItem.msg_jump_info.get();
@@ -368,7 +368,7 @@ public class SocializeFeedsInfo
     {
       localObject1 = new String(paramSocializeFeedsInfo.bytes_comments.get().toByteArray(), "utf-8");
       localSocializeFeedsInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      localSocializeFeedsInfo.jdField_a_of_type_JavaLangString = ayvy.b((String)localObject1);
+      localSocializeFeedsInfo.jdField_a_of_type_JavaLangString = azah.b((String)localObject1);
       if ((!paramSocializeFeedsInfo.bytes_recommend_reason.has()) || (paramSocializeFeedsInfo.bytes_recommend_reason.get() == null)) {}
     }
     catch (Exception localException1)

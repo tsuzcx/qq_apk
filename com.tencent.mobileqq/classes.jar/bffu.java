@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bffu
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bffu(DownloadNativeApi.1 param1) {}
+  public bffu(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      bffs.a(this.a.this$0).onDownloadCancel(this.a.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

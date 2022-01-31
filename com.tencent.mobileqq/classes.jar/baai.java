@@ -1,8 +1,8 @@
-import android.view.MotionEvent;
-
 public abstract interface baai
 {
-  public abstract boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
 }
 
 

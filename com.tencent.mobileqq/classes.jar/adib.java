@@ -1,44 +1,43 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adib
-  implements URLDrawable.URLDrawableListener
+  extends WtloginObserver
 {
-  public adib(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adib(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    this.a.c();
+    if (this.a.isFinishing()) {
+      return;
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (paramInt3 == 0)
+    {
+      this.a.a();
+      return;
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, xod.a(this.a.app.getApp(), 47.0F), xod.a(this.a.app.getApp(), 14.0F));
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(null, paramString1);
+      return;
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    this.a.b();
   }
 }
 

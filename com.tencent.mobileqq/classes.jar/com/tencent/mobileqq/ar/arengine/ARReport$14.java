@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amzf;
-import azmz;
+import ando;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$14
   implements Runnable
 {
-  public ARReport$14(amzf paramamzf, long paramLong) {}
+  public ARReport$14(ando paramando, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("alltime", String.valueOf(this.a));
-    azmz.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
   }
 }
 

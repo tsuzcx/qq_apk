@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
-public abstract interface avae
+public class avae
+  extends auxl
 {
-  public abstract void a();
+  public avae(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public abstract void a(Comments.Comment paramComment);
+  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
+  }
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
-  
-  public abstract void a(Comments paramComments);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
+  }
 }
 
 

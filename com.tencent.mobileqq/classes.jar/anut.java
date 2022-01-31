@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class anut
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public anut(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public anut(SelectCoverActivity paramSelectCoverActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a(i);
+    this.a.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = null;
   }
 }
 

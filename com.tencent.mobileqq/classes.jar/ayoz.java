@@ -1,20 +1,19 @@
-import java.util.Comparator;
+import android.text.TextUtils;
 
-final class ayoz
-  implements Comparator<ayjh>
+public class ayoz
 {
-  public int a(ayjh paramayjh1, ayjh paramayjh2)
+  public String a;
+  public String b;
+  
+  public ayoz(String paramString1, String paramString2)
   {
-    int j = Long.signum(paramayjh2.b() - paramayjh1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramayjh2.a() - paramayjh1.a());
-    }
-    j = i;
-    if (i == 0) {
-      j = ayox.a(paramayjh1, paramayjh2);
-    }
-    return j;
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
   }
 }
 

@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class adip
-  implements DialogInterface.OnCancelListener
+  extends adix
 {
-  public adip(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public adip(MainFragment paramMainFragment)
   {
-    this.a.finish();
+    super(null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    alsn localalsn = this.a.b();
+    if ((localalsn instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localalsn).l();
+    }
+    owy.a().l();
+    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
+    super.onClick(paramView);
   }
 }
 

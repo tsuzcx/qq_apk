@@ -1,17 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class ayeu
   implements View.OnClickListener
 {
-  public ayeu(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public ayeu(LikesView paramLikesView) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a(3);
-    this.a.f();
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import ayvy;
-import baig;
-import bdbt;
+import azah;
+import bamp;
+import bdgc;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -55,7 +55,7 @@ public class NativeSummaryView
   private void a(ArticleInfo paramArticleInfo)
   {
     if (!paramArticleInfo.isPGCShortContent()) {
-      setSpanText(alpo.a(2131707459));
+      setSpanText(alud.a(2131707471));
     }
     setMaxLines(a(paramArticleInfo));
     setMoreSpan(new ptr(this, paramArticleInfo, -3355444));
@@ -114,12 +114,12 @@ public class NativeSummaryView
           l1 = Long.valueOf(parampgr).longValue();
           localSpannableStringBuilder.setSpan(new shh(l1, "2", parampgd.a()), 0, localSpannableStringBuilder.length(), 33);
           localSpannableStringBuilder.append(": ");
-          paramSpannableStringBuilder.append(new SpannableStringBuilder(new baig(localSpannableStringBuilder, 3, 16)));
+          paramSpannableStringBuilder.append(new SpannableStringBuilder(new bamp(localSpannableStringBuilder, 3, 16)));
           return;
           parampgr = String.valueOf(parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
           if (ors.a())
           {
-            localObject = bdbt.b((QQAppInterface)ors.a(), parampgr, true);
+            localObject = bdgc.b((QQAppInterface)ors.a(), parampgr, true);
             continue;
           }
           localObject = parampgd.a().b(parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
@@ -273,7 +273,7 @@ public class NativeSummaryView
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           if (parampgd.a() == 33) {
-            parampgr = alpo.a(2131707460);
+            parampgr = alud.a(2131707472);
           }
         }
         else
@@ -304,20 +304,20 @@ public class NativeSummaryView
           break;
           if ((qbs.e(parampgd)) || (qbs.g(parampgd)) || (qbs.h(parampgd)))
           {
-            parampgr = alpo.a(2131707458);
+            parampgr = alud.a(2131707470);
             break label618;
           }
           if ((qbs.f(parampgd)) || (qbs.i(parampgd)))
           {
-            parampgr = alpo.a(2131707456);
+            parampgr = alud.a(2131707468);
             break label618;
           }
           if (qbs.a(parampgd))
           {
-            parampgr = alpo.a(2131707457);
+            parampgr = alud.a(2131707469);
             break label618;
           }
-          parampgr = alpo.a(2131707455);
+          parampgr = alud.a(2131707467);
           break label618;
           parampgd = parampgr.c;
           break label684;
@@ -342,7 +342,7 @@ public class NativeSummaryView
           {
             parampgd = ((qmy)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.b.get(0)).e;
             if ((!TextUtils.isEmpty(parampgd)) && (TextUtils.equals(orc.a(parampgd), parampgd))) {
-              ayvy.b(parampgd);
+              azah.b(parampgd);
             }
             i = 5;
           }
@@ -351,7 +351,7 @@ public class NativeSummaryView
             i = k;
             if (!TextUtils.isEmpty(parampgd))
             {
-              paramSpannableStringBuilder.append(new baig(ayvy.b(parampgd), 3, 16));
+              paramSpannableStringBuilder.append(new bamp(azah.b(parampgd), 3, 16));
               i = 6;
             }
           }

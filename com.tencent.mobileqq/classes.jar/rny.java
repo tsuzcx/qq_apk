@@ -82,7 +82,7 @@ public class rny
     if (paramrjn != null)
     {
       paramrjn.setKeepScreenOn(true);
-      paramrjn.setId(2131375243);
+      paramrjn.setId(2131375294);
       this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
       this.jdField_a_of_type_AndroidViewViewGroup.addView(paramrjn, -1, -1);
       localrjn.a((IVideoViewBase)paramrjn);

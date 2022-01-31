@@ -1,35 +1,50 @@
-import android.text.InputFilter.LengthFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.RestrictTo;
+import java.util.concurrent.Executor;
 
-class bmdv
-  extends InputFilter.LengthFilter
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+public class bmdv
+  extends bmea
 {
-  boolean jdField_a_of_type_Boolean = true;
+  private static volatile bmdv jdField_a_of_type_Bmdv;
+  @NonNull
+  private static final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new bmdw();
+  @NonNull
+  private static final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new bmdx();
+  @NonNull
+  private bmea jdField_a_of_type_Bmea = this.jdField_b_of_type_Bmea;
+  @NonNull
+  private bmea jdField_b_of_type_Bmea = new bmdy();
   
-  bmdv(bmdu parambmdu, int paramInt1, int paramInt2)
+  @NonNull
+  public static bmdv a()
   {
-    super(paramInt1);
+    if (jdField_a_of_type_Bmdv != null) {
+      return jdField_a_of_type_Bmdv;
+    }
+    try
+    {
+      if (jdField_a_of_type_Bmdv == null) {
+        jdField_a_of_type_Bmdv = new bmdv();
+      }
+      return jdField_a_of_type_Bmdv;
+    }
+    finally {}
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3)) <= 0)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        wta.a("textEdit", "overLimit", bmdi.b(this.jdField_a_of_type_Bmdu.a), 0, new String[0]);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      if (bmdi.a(this.jdField_a_of_type_Bmdu.a) != null) {
-        QQToast.a(this.jdField_a_of_type_Bmdu.getContext(), alpo.a(2131714809) + bmdi.a(this.jdField_a_of_type_Bmdu.a).c + alpo.a(2131714795), 0).a();
-      }
-    }
-    for (;;)
-    {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_Bmea.a(paramRunnable);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bmea.a();
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_Bmea.b(paramRunnable);
   }
 }
 

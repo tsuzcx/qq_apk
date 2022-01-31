@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aekt;
+import aepi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,8 +16,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
-import bhou;
+import bdaq;
+import bhtb;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 import java.util.ArrayList;
@@ -106,16 +106,16 @@ public class VideoFeedsTopicViewGroup
       localTextView.setGravity(17);
       localTextView.setTextColor(Color.parseColor("#FFFFFF"));
       localTextView.setTextSize(2, 13.0F);
-      localTextView.setId(2131375239);
-      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842613);
-      ((Drawable)localObject2).setBounds(0, 0, aekt.a(18.0F, getResources()), aekt.a(18.0F, getResources()));
+      localTextView.setId(2131375290);
+      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842626);
+      ((Drawable)localObject2).setBounds(0, 0, aepi.a(18.0F, getResources()), aepi.a(18.0F, getResources()));
       localTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);
-      int m = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+      int m = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
       localTextView.setCompoundDrawablePadding(m);
-      if (bhou.g()) {
-        localTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842364));
+      if (bhtb.g()) {
+        localTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842377));
       }
-      localTextView.setPadding(aekt.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localTextView.setPadding(aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       TextPaint localTextPaint = localTextView.getPaint();
       localObject2 = new Rect();
       try
@@ -145,7 +145,7 @@ public class VideoFeedsTopicViewGroup
           localTextView.setOnClickListener(new ris(this, localChannelInfo));
           addView(localTextView, (ViewGroup.LayoutParams)localObject1);
           break;
-          k = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+          k = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
           break label411;
           label497:
           if (getChildCount() == 0) {
@@ -156,7 +156,7 @@ public class VideoFeedsTopicViewGroup
           this.jdField_a_of_type_Boolean = true;
           return;
           label533:
-          ((LinearLayout.LayoutParams)localObject1).setMargins(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0, 0, 0);
+          ((LinearLayout.LayoutParams)localObject1).setMargins(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0, 0, 0);
         }
       }
       catch (Exception localException)

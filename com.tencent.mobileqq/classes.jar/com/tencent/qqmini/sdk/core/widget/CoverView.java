@@ -8,7 +8,7 @@ import android.graphics.Path.FillType;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import bgms;
+import bgqz;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import org.json.JSONArray;
@@ -20,7 +20,7 @@ public class CoverView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private bgms jdField_a_of_type_Bgms;
+  private bgqz jdField_a_of_type_Bgqz;
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   private float jdField_b_of_type_Float;
@@ -87,10 +87,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject1);
-        if (this.jdField_a_of_type_Bgms == null) {
+        if (this.jdField_a_of_type_Bgqz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgqz.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException1)
       {
@@ -111,10 +111,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject2);
-        if (this.jdField_a_of_type_Bgms == null) {
+        if (this.jdField_a_of_type_Bgqz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgqz.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException2)
       {
@@ -139,10 +139,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray1);
-        if (this.jdField_a_of_type_Bgms == null) {
+        if (this.jdField_a_of_type_Bgqz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgms.a("onTouchMove", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgqz.a("onTouchMove", localJSONObject5.toString());
       }
       catch (JSONException localJSONException3)
       {
@@ -161,10 +161,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject3);
-        if (this.jdField_a_of_type_Bgms == null) {
+        if (this.jdField_a_of_type_Bgqz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgqz.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (JSONException localJSONException4)
       {
@@ -184,10 +184,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject4);
-        if (this.jdField_a_of_type_Bgms == null) {
+        if (this.jdField_a_of_type_Bgqz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgqz.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (Exception localException)
       {
@@ -208,8 +208,8 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray2);
-        if (this.jdField_a_of_type_Bgms != null) {
-          this.jdField_a_of_type_Bgms.a("onTouchCancel", localJSONObject5.toString());
+        if (this.jdField_a_of_type_Bgqz != null) {
+          this.jdField_a_of_type_Bgqz.a("onTouchCancel", localJSONObject5.toString());
         }
       }
       catch (JSONException localJSONException5)
@@ -225,11 +225,11 @@ public class CoverView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setData(String paramString, boolean paramBoolean, bgms parambgms)
+  public void setData(String paramString, boolean paramBoolean, bgqz parambgqz)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Bgms = parambgms;
+    this.jdField_a_of_type_Bgqz = parambgqz;
   }
   
   public void setFixed(boolean paramBoolean)

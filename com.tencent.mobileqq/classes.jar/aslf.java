@@ -1,14 +1,22 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
-public abstract interface aslf
+class aslf
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  aslf(askz paramaskz) {}
   
-  public abstract void a(List<asle> paramList);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.c();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+  }
   
-  public abstract void b();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void b(List<asle> paramList);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

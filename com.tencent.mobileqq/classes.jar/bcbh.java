@@ -1,49 +1,49 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Map;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
-class bcbh
-  extends SimpleObserver<bcaa>
+public class bcbh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bcbh(bcbf parambcbf, bcaa parambcaa) {}
+  private bcbh(InputMethodGuard paramInputMethodGuard) {}
   
-  public void a(bcaa parambcaa)
+  private int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(parambcaa.c), ", old status=", Integer.valueOf(parambcaa.g) });
+    if (azkz.b > 0) {
+      return azkz.b;
     }
-    this.jdField_a_of_type_Bcbf.b.remove(parambcaa);
-    this.jdField_a_of_type_Bcbf.a(1, false);
+    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.jdField_a_of_type_Bcaa.c), ", old status=", Integer.valueOf(this.jdField_a_of_type_Bcaa.g) });
-    }
-    this.jdField_a_of_type_Bcaa.g = 2;
-    this.jdField_a_of_type_Bcbf.b.remove(this.jdField_a_of_type_Bcaa);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
-    paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_Bcbf.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    boolean bool = InputMethodGuard.a(this.a);
+    Rect localRect = new Rect();
+    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = a();
+    int j = i - localRect.bottom;
+    if (Math.abs(j) > i / 5)
     {
-      Object localObject = this.jdField_a_of_type_Bcbf.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bcaa.c);
-      if ((localObject instanceof bcbi))
-      {
-        localObject = (bcbi)localObject;
-        if (this.jdField_a_of_type_Bcaa.d.equals(((bcbi)localObject).a.getTag())) {
-          ((bcbf)((bbzl)this.jdField_a_of_type_Bcbf.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bcav)localObject, this.jdField_a_of_type_Bcaa, 0);
-        }
+      InputMethodGuard.a(this.a, true);
+      InputMethodGuard.a(this.a, j);
+    }
+    for (;;)
+    {
+      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
+        InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
       }
-    }
-    if (!paramError.startsWith("c_")) {
-      bcli.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bcaa.a), "");
-    }
-    if (this.jdField_a_of_type_Bcaa.d.equals(this.jdField_a_of_type_Bcbf.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bcbf.a(1, false);
+      if (InputMethodGuard.b(this.a)) {
+        InputMethodGuard.b(this.a, false);
+      }
+      return;
+      InputMethodGuard.a(this.a, false);
+      InputMethodGuard.a(this.a, 0);
     }
   }
 }

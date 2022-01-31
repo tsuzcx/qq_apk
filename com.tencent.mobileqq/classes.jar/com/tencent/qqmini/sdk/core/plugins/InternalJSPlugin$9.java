@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import bgiy;
-import bgte;
+import bgnf;
+import bgxl;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 final class InternalJSPlugin$9
@@ -16,10 +16,10 @@ final class InternalJSPlugin$9
     Object localObject1 = null;
     try
     {
-      bgiy localbgiy = bgiy.a(this.val$context, String.valueOf(bgte.a().a()), this.val$appId);
-      localObject1 = localbgiy;
-      localObject3 = localbgiy;
-      localbgiy.a(this.val$key, "Object", this.val$data);
+      bgnf localbgnf = bgnf.a(this.val$context, String.valueOf(bgxl.a().a()), this.val$appId);
+      localObject1 = localbgnf;
+      localObject3 = localbgnf;
+      localbgnf.a(this.val$key, "Object", this.val$data);
       return;
     }
     catch (Exception localException)

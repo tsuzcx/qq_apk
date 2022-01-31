@@ -1,6 +1,19 @@
-public abstract interface apdx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.DynamicAvatar;
+
+public final class apdx
+  implements Parcelable.Creator<DynamicAvatar>
 {
-  public abstract void a(boolean paramBoolean);
+  public DynamicAvatar a(Parcel paramParcel)
+  {
+    return new DynamicAvatar(paramParcel);
+  }
+  
+  public DynamicAvatar[] a(int paramInt)
+  {
+    return new DynamicAvatar[paramInt];
+  }
 }
 
 

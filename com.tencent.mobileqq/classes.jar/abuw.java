@@ -1,54 +1,105 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb6f.Identity;
-import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
-import tencent.im.oidb.oidb_0xb6f.RspBody;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
-class abuw
-  extends nac
+public class abuw
 {
-  abuw(abuv paramabuv, String paramString1, String paramString2, int paramInt) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
+  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public abuw(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "req error");
-      }
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
     {
-      for (;;)
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      abui.a("KingKongUtils", "Initial FileChannel exception : " + paramString);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.b) {
+      return;
+    }
+    abui.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel == null) {}
+    }
+    catch (IOException localIOException1)
+    {
+      try
       {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        this.b = false;
         return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        localIOException1 = localIOException1;
+        abui.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException1);
+        localIOException1.printStackTrace();
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    abuv.a(this.jdField_a_of_type_Abuv, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          abui.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException2);
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
+      return false;
+    }
+    abui.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileChannel = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw").getChannel();
+      this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaNioChannelsFileChannel.lock();
+      this.b = true;
+      abui.a("KingKongUtils", "Do Inter-Process Lock OK " + this.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      abui.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localException);
+      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      label166:
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        label180:
+        abui.a("KingKongUtils", "Do Inter-Process Lock failed " + this.jdField_a_of_type_JavaLangString);
+        return false;
+      }
+      catch (IOException localIOException1)
+      {
+        break label180;
+      }
+    }
+    catch (IOException localIOException2)
+    {
+      break label166;
+    }
   }
 }
 

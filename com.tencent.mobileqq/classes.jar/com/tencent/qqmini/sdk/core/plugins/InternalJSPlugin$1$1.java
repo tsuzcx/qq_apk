@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;

@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.widget.comment.component.richtext.element;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import yjy;
+import yol;
 
 public class ContentElement
   extends RichTextElement
 {
-  public static final Parcelable.Creator<ContentElement> CREATOR = new yjy();
+  public static final Parcelable.Creator<ContentElement> CREATOR = new yol();
   public String a;
   
   public ContentElement()

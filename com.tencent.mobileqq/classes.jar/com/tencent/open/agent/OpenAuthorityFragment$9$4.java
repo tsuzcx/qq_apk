@@ -2,30 +2,30 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import arzy;
-import bfbd;
+import aseh;
+import bffm;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import cooperation.qqfav.util.HandlerPlus;
-import zbo;
+import zgd;
 
 public class OpenAuthorityFragment$9$4
   implements Runnable
 {
-  public OpenAuthorityFragment$9$4(bfbd parambfbd, zbo paramzbo) {}
+  public OpenAuthorityFragment$9$4(bffm parambffm, zgd paramzgd) {}
   
   public void run()
   {
-    arzy.a("KEY_GET_APP_ICON");
-    Bitmap localBitmap = OpenAuthorityFragment.a(this.jdField_a_of_type_Zbo.a.get());
-    arzy.a("KEY_GET_APP_ICON", this.jdField_a_of_type_Bfbd.a.jdField_a_of_type_Bfmm);
-    this.jdField_a_of_type_Bfbd.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(OpenAuthorityFragment.a(this.jdField_a_of_type_Bfbd.a), localBitmap);
+    aseh.a("KEY_GET_APP_ICON");
+    Bitmap localBitmap = OpenAuthorityFragment.a(this.jdField_a_of_type_Zgd.a.get());
+    aseh.a("KEY_GET_APP_ICON", this.jdField_a_of_type_Bffm.a.jdField_a_of_type_Bfqv);
+    this.jdField_a_of_type_Bffm.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(OpenAuthorityFragment.a(this.jdField_a_of_type_Bffm.a), localBitmap);
     if (localBitmap != null)
     {
       Message localMessage = new Message();
       localMessage.obj = localBitmap;
       localMessage.what = 4;
-      this.jdField_a_of_type_Bfbd.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+      this.jdField_a_of_type_Bffm.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
     }
   }
 }

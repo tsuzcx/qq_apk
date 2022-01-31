@@ -2,9 +2,9 @@ package dov.com.qq.im.ae.album.logic;
 
 import android.os.Handler;
 import android.os.Message;
-import bdar;
-import bkml;
-import bknd;
+import bdfa;
+import bkqs;
+import bkrk;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
 import java.util.Map;
@@ -17,12 +17,12 @@ public class AEPhotoListLogicDefault$7
   {
     Message localMessage = Message.obtain();
     localMessage.what = 3;
-    String str = ((bkml)this.this$0.a.get()).a(this.a);
+    String str = ((bkqs)this.this$0.a.get()).a(this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    bdar.a(localLocalMediaInfo, str);
+    bdfa.a(localLocalMediaInfo, str);
     PhotoListBaseData.newCaptureMediaInfo.put(str, localLocalMediaInfo);
-    ((bkml)this.this$0.a.get()).a.sendMessage(localMessage);
+    ((bkqs)this.this$0.a.get()).a.sendMessage(localMessage);
   }
 }
 

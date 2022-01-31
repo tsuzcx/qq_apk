@@ -1,56 +1,64 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class asfn
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public asfn(HotChatFragment paramHotChatFragment) {}
   
-  public String a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
-  }
-  
-  public void a()
-  {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.f = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.d = "";
-    this.e = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bdcs.b(this.jdField_c_of_type_JavaLangString));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    {
+      paramContext = paramIntent.getStringExtra("content");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label31;
+      }
+    }
+    label31:
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+          if (paramContext != null)
+          {
+            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+            int j = paramContext.length();
+            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < j)
+            {
+              paramIntent = paramContext.getJSONObject(i);
+              Rect localRect = new Rect();
+              localRect.top = ((int)(paramIntent.getInt("top") * f));
+              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+              i += 1;
+            }
+            this.a.d = true;
+            return;
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

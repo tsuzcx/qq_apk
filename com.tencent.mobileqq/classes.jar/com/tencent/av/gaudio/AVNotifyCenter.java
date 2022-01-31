@@ -10,11 +10,11 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import aubm;
-import awwo;
-import ayya;
-import azmj;
-import bdiv;
+import aufv;
+import axax;
+import azcj;
+import azqs;
+import bdne;
 import com.tencent.av.VideoConstants;
 import com.tencent.av.app.QuaReportInfo;
 import com.tencent.av.service.QQServiceForAV;
@@ -1230,7 +1230,7 @@ public class AVNotifyCenter
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     boolean bool = false;
-    bdiv.b(paramQQAppInterface.getApplication(), paramInt, paramQQAppInterface.getAccount());
+    bdne.b(paramQQAppInterface.getApplication(), paramInt, paramQQAppInterface.getAccount());
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit();
     localEditor.putString("group_video_push_cfg_txt." + paramQQAppInterface.getAccount(), paramString).commit();
     try
@@ -1380,7 +1380,7 @@ public class AVNotifyCenter
   
   void a(ArrayList<Long> paramArrayList)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ayya.class);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), azcj.class);
     localNewIntent.putExtra("reqType", 15);
     localNewIntent.putExtra("tinyid_list", paramArrayList);
     try
@@ -1599,8 +1599,8 @@ public class AVNotifyCenter
         }
         paramInt = 4;
         label210:
-        azmj.b(paramString, "CliOper", "", "", "0X800AB81", "0X800AB81", paramInt, 0, "", "", "", "");
-        paramInt = 2131696352;
+        azqs.b(paramString, "CliOper", "", "", "0X800AB81", "0X800AB81", paramInt, 0, "", "", "", "");
+        paramInt = 2131696354;
       }
     }
     for (;;)
@@ -1619,12 +1619,12 @@ public class AVNotifyCenter
         if (paramBoolean) {}
         for (paramInt = 4;; paramInt = 3)
         {
-          azmj.b(paramString, "CliOper", "", "", "0X800AB83", "0X800AB83", paramInt, 0, "", "", "", "");
-          paramInt = 2131696354;
+          azqs.b(paramString, "CliOper", "", "", "0X800AB83", "0X800AB83", paramInt, 0, "", "", "", "");
+          paramInt = 2131696356;
           break;
         }
       }
-      paramInt = 2131696352;
+      paramInt = 2131696354;
     }
   }
   
@@ -1636,7 +1636,7 @@ public class AVNotifyCenter
     int i = -1;
     long l = 0L;
     if (!TextUtils.isEmpty(paramString)) {
-      l = awwo.b(paramString);
+      l = axax.b(paramString);
     }
     if ((d()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
       i = 1;
@@ -1659,8 +1659,8 @@ public class AVNotifyCenter
     {
       if (i == 1)
       {
-        QQToast.a(paramContext, 2131696351, 1).b(paramContext.getResources().getDimensionPixelSize(2131298914));
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB80", "0X800AB80", 0, 0, "", "", "", "");
+        QQToast.a(paramContext, 2131696353, 1).b(paramContext.getResources().getDimensionPixelSize(2131298914));
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB80", "0X800AB80", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -1679,8 +1679,8 @@ public class AVNotifyCenter
         break;
         if (i == 2)
         {
-          QQToast.a(paramContext, 2131696353, 1).b(paramContext.getResources().getDimensionPixelSize(2131298914));
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB82", "0X800AB82", 0, 0, "", "", "", "");
+          QQToast.a(paramContext, 2131696355, 1).b(paramContext.getResources().getDimensionPixelSize(2131298914));
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB82", "0X800AB82", 0, 0, "", "", "", "");
         }
       }
       return false;
@@ -2013,15 +2013,15 @@ public class AVNotifyCenter
   
   String c(String paramString)
   {
-    aubm localaubm = (aubm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (localaubm == null)
+    aufv localaufv = (aufv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+    if (localaufv == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("AVNotifyCenter", 2, "getPhoneNameByPhoneNum --> can not get PhoneContactManager");
       }
       return null;
     }
-    paramString = localaubm.b(paramString);
+    paramString = localaufv.b(paramString);
     if ((paramString == null) || (paramString.name == null))
     {
       if (QLog.isColorLevel()) {

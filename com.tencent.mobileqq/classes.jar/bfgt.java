@@ -1,58 +1,72 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 import org.json.JSONObject;
 
 public class bfgt
-  implements bfki
+  extends WtloginObserver
 {
-  public bfgt(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
+  public bfgt(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void OnException(String paramString, int paramInt)
   {
-    bfhg.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    super.OnException(paramString, paramInt);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    bfhg.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
+    if (paramInt == 0)
     {
-      if (i < j)
+      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+        paramInt = 0;
+      }
+      while (paramInt < paramArrayList.size())
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
         try
         {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
+          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
+          int i = util.buf_to_int16(paramString, 0);
+          int j = util.buf_to_int16(paramString, 2);
+          if (i == 54)
+          {
+            paramArrayOfByte1 = new byte[j];
+            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
+            paramString = new String(paramArrayOfByte1);
+            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
+            paramString = new JSONObject(paramString);
+            paramLong = paramString.optLong("open_appid");
+            paramString = paramString.optString("comefrom");
+            this.a.a(paramLong, paramString);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              paramArrayOfByte1 = Message.obtain();
+              paramArrayOfByte1.what = 1004;
+              paramArrayOfByte1.obj = paramString;
+              this.a.b.sendMessage(paramArrayOfByte1);
+            }
+          }
         }
-        catch (JSONException localJSONException)
+        catch (Throwable paramString)
         {
           for (;;)
           {
-            localJSONException.printStackTrace();
+            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
           }
         }
+        paramInt += 1;
+        continue;
+        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bfhg.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
-    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 

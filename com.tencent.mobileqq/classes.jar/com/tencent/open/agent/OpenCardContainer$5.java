@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import baqe;
+import baun;
 import com.tencent.image.URLDrawable;
 
 class OpenCardContainer$5
@@ -13,7 +13,7 @@ class OpenCardContainer$5
   public void run()
   {
     Object localObject = this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(baqe.a((String)localObject));
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(baun.a((String)localObject));
     if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
     }

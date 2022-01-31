@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.1;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.2;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.6.3;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 
 public class bkqo
-  implements bkwg
+  implements View.OnClickListener
 {
-  bkqo(bkqk parambkqk) {}
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   
-  public void a(bkvu parambkvu, int paramInt)
+  public bkqo(bkql parambkql) {}
+  
+  public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.3(this, parambkvu, paramInt));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(bkvu parambkvu, boolean paramBoolean)
+  public void a(CheckBox paramCheckBox)
   {
-    if ((!paramBoolean) || (bkqk.a(this.a) == null))
-    {
-      ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.1(this, parambkvu));
-      if (!paramBoolean) {
-        break label126;
-      }
-    }
-    label126:
-    for (int i = 0;; i = 1)
-    {
-      yvu.a("record_decoration_download", yvu.a(i, System.currentTimeMillis() - parambkvu.jdField_a_of_type_Long, parambkvu.d, parambkvu.b, parambkvu.jdField_a_of_type_JavaLangString));
-      return;
-      if (this.a.a(bkqk.a(this.a).a()) == bkqk.a(this.a)) {
-        bkqk.a(this.a, bkqk.a(this.a));
-      }
-      ThreadManager.getUIHandler().post(new AEBottomListAdapter.6.2(this, parambkvu));
-      break;
+    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bkql.a.a != null) {
+      this.jdField_a_of_type_Bkql.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
     }
   }
 }

@@ -1,33 +1,132 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.OcrItem;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrDetail;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrRsp;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class avxs
-  implements ampm
+public class avxs
 {
-  avxs(avxp paramavxp, AppInterface paramAppInterface) {}
+  public avxt a;
   
-  public void a() {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public static avxt a(YoutuOcr.YoutuOcrRsp paramYoutuOcrRsp)
   {
-    ampd localampd = this.jdField_a_of_type_Avxp.a();
-    if ((localampd == null) || (!TextUtils.equals(paramString, localampd.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (paramInt1 < this.jdField_a_of_type_Avxp.jdField_a_of_type_ArrayOfInt.length) {
-      this.jdField_a_of_type_Avxp.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
-    }
-    if ((paramInt2 >= 0) && (paramInt2 <= 99))
+    avxt localavxt = new avxt();
+    int i;
+    Object localObject;
+    if (paramYoutuOcrRsp.youtu_ocr_errorcode.has())
     {
-      avxp.a(this.jdField_a_of_type_Avxp, "onDownloadProgress", true);
-      return;
+      i = paramYoutuOcrRsp.youtu_ocr_errorcode.get();
+      localavxt.jdField_a_of_type_Int = i;
+      if (!paramYoutuOcrRsp.youtu_ocr_errormsg.has()) {
+        break label215;
+      }
+      localObject = paramYoutuOcrRsp.youtu_ocr_errormsg.get();
+      label49:
+      localavxt.jdField_a_of_type_JavaLangString = ((String)localObject);
+      if (paramYoutuOcrRsp.youtu_orc_detail.has())
+      {
+        localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).errorcode.has()) {
+          break label221;
+        }
+        i = ((YoutuOcr.YoutuOcrDetail)localObject).errorcode.get();
+        label93:
+        localavxt.jdField_b_of_type_Int = i;
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
+          break label226;
+        }
+        paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();
+        label116:
+        localavxt.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
+        if (((YoutuOcr.YoutuOcrDetail)localObject).language.has()) {
+          localavxt.e = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
+        }
+        if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.has())
+        {
+          localavxt.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          localavxt.jdField_a_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
+        }
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {
+          break label232;
+        }
+      }
     }
-    QLog.w(avxp.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[" + paramInt1 + "], progress[" + paramInt2 + "]");
-    if ((paramInt2 == 100) && (paramInt1 == 0)) {
-      avxp.a(this.jdField_a_of_type_Avxp, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    label215:
+    label221:
+    label226:
+    label232:
+    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();; paramYoutuOcrRsp = null)
+    {
+      if (paramYoutuOcrRsp != null) {
+        localavxt.d = a(paramYoutuOcrRsp);
+      }
+      return localavxt;
+      i = 0;
+      break;
+      localObject = "";
+      break label49;
+      i = -1;
+      break label93;
+      paramYoutuOcrRsp = "";
+      break label116;
     }
-    avxp.a(this.jdField_a_of_type_Avxp, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+  }
+  
+  private static String a(List<YoutuOcr.OcrItem> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      QLog.d("Q.ocr", 1, "typeSetting regoc items is null");
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = ((YoutuOcr.OcrItem)paramList.next()).itemstring.get();
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str).append("\n");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public OcrRecogResult a()
+  {
+    Object localObject;
+    if ((this.a == null) || (TextUtils.isEmpty(this.a.d))) {
+      localObject = null;
+    }
+    OcrRecogResult localOcrRecogResult;
+    do
+    {
+      return localObject;
+      localOcrRecogResult = new OcrRecogResult();
+      if (this.a != null)
+      {
+        localOcrRecogResult.language = this.a.e;
+        localOcrRecogResult.ocrContent = this.a.d;
+        localOcrRecogResult.ocr_languages = this.a.jdField_a_of_type_JavaUtilArrayList;
+      }
+      localObject = localOcrRecogResult;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.ocr", 2, "getUIData " + localOcrRecogResult);
+    return localOcrRecogResult;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mOcrResult:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

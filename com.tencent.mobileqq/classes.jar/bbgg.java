@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class bbgg
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public bbgg(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public bbgg(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.f();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

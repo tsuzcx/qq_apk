@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.data.ChatMessage;
 
 class fz
-  implements aubp<Void>
+  implements aufy<Void>
 {
   fz(fx paramfx, ChatMessage paramChatMessage) {}
   
   public void a(Void paramVoid)
   {
     if (this.jdField_a_of_type_Fx.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      bdkd.a(this.jdField_a_of_type_Fx.a);
+      bdom.a(this.jdField_a_of_type_Fx.a);
     }
   }
 }

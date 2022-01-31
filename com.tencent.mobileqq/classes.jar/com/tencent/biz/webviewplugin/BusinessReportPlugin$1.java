@@ -1,13 +1,13 @@
 package com.tencent.biz.webviewplugin;
 
-import becq;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
-import yyp;
+import zde;
 
 public class BusinessReportPlugin$1
   implements Runnable
 {
-  public BusinessReportPlugin$1(yyp paramyyp, String paramString) {}
+  public BusinessReportPlugin$1(zde paramzde, String paramString) {}
   
   public void run()
   {

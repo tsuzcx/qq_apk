@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import java.util.Comparator;
 
-public class avyd
-  implements ValueAnimator.AnimatorUpdateListener
+class avyd
+  implements Comparator<String>
 {
-  public avyd(ScanIconAnimateView paramScanIconAnimateView) {}
+  avyd(avyc paramavyc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * aekt.a(1.5F, this.a.getResources()));
-    this.a.invalidate();
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
   }
 }
 

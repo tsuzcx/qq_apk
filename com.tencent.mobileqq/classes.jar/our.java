@@ -41,7 +41,7 @@ public class our
   public void a(DownloadInfo paramDownloadInfo)
   {
     QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
-    bflq.a().a(paramDownloadInfo);
+    bfpz.a().a(paramDownloadInfo);
     a(new ous(paramDownloadInfo, null));
   }
   

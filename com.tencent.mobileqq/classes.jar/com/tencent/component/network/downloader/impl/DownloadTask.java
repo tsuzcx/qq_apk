@@ -1292,7 +1292,7 @@ public abstract class DownloadTask
     //   418: goto -249 -> 169
     //   421: aload_0
     //   422: getfield 828	com/tencent/component/network/downloader/impl/DownloadTask:mNeedMd5	Z
-    //   425: ifeq +1283 -> 1708
+    //   425: ifeq +1279 -> 1704
     //   428: aload_1
     //   429: ldc_w 830
     //   432: invokeinterface 533 2 0
@@ -1300,7 +1300,7 @@ public abstract class DownloadTask
     //   440: aload_2
     //   441: ldc_w 830
     //   444: invokevirtual 550	okhttp3/Response:headers	(Ljava/lang/String;)Ljava/util/List;
-    //   447: ifnonnull +1261 -> 1708
+    //   447: ifnonnull +1257 -> 1704
     //   450: ldc_w 832
     //   453: invokestatic 838	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   456: astore 4
@@ -1450,7 +1450,7 @@ public abstract class DownloadTask
     //   775: ifle +45 -> 820
     //   778: aload_1
     //   779: instanceof 848
-    //   782: ifeq +919 -> 1701
+    //   782: ifeq +915 -> 1697
     //   785: aload_1
     //   786: checkcast 848	com/tencent/component/network/downloader/impl/strategy/ExGZIPInputStream
     //   789: invokevirtual 900	com/tencent/component/network/downloader/impl/strategy/ExGZIPInputStream:getRealReadLen	()J
@@ -1580,7 +1580,7 @@ public abstract class DownloadTask
     //   1049: iload 5
     //   1051: i2l
     //   1052: ladd
-    //   1053: lstore 9
+    //   1053: lstore 13
     //   1055: aload 4
     //   1057: ifnull +16 -> 1073
     //   1060: aload 4
@@ -1589,7 +1589,7 @@ public abstract class DownloadTask
     //   1067: iconst_0
     //   1068: iload 5
     //   1070: invokevirtual 885	java/security/MessageDigest:update	([BII)V
-    //   1073: lload 9
+    //   1073: lload 13
     //   1075: lstore 15
     //   1077: lload 21
     //   1079: lconst_0
@@ -1699,19 +1699,19 @@ public abstract class DownloadTask
     //   1319: ifnull +91 -> 1410
     //   1322: aload 4
     //   1324: invokevirtual 936	java/security/MessageDigest:digest	()[B
-    //   1327: astore_2
+    //   1327: astore_1
     //   1328: new 344	java/lang/StringBuilder
     //   1331: dup
     //   1332: invokespecial 345	java/lang/StringBuilder:<init>	()V
-    //   1335: astore_1
+    //   1335: astore_2
     //   1336: iconst_0
     //   1337: istore 5
     //   1339: iload 5
-    //   1341: aload_2
+    //   1341: aload_1
     //   1342: arraylength
     //   1343: if_icmpge +56 -> 1399
-    //   1346: aload_1
-    //   1347: aload_2
+    //   1346: aload_2
+    //   1347: aload_1
     //   1348: iload 5
     //   1350: baload
     //   1351: sipush 255
@@ -1738,7 +1738,7 @@ public abstract class DownloadTask
     //   1396: goto -114 -> 1282
     //   1399: aload_3
     //   1400: invokevirtual 632	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1403: aload_1
+    //   1403: aload_2
     //   1404: invokevirtual 354	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1407: putfield 942	com/tencent/component/network/downloader/DownloadResult$Content:md5	Ljava/lang/String;
     //   1410: ldc_w 342
@@ -1872,40 +1872,38 @@ public abstract class DownloadTask
     //   1668: lstore 7
     //   1670: goto -210 -> 1460
     //   1673: astore_3
-    //   1674: aload_1
-    //   1675: astore 4
-    //   1677: aload_2
-    //   1678: astore_1
-    //   1679: lload 9
-    //   1681: lstore 13
+    //   1674: lload 11
+    //   1676: lstore 9
+    //   1678: aload_1
+    //   1679: astore 4
+    //   1681: aload_2
+    //   1682: astore_1
     //   1683: aload 4
     //   1685: astore_2
-    //   1686: lload 11
-    //   1688: lstore 9
-    //   1690: lload 7
-    //   1692: lstore 11
-    //   1694: lload 13
-    //   1696: lstore 7
-    //   1698: goto -238 -> 1460
-    //   1701: lload 11
-    //   1703: lstore 13
-    //   1705: goto -911 -> 794
-    //   1708: aconst_null
-    //   1709: astore 4
-    //   1711: goto -1253 -> 458
+    //   1686: lload 7
+    //   1688: lstore 11
+    //   1690: lload 13
+    //   1692: lstore 7
+    //   1694: goto -234 -> 1460
+    //   1697: lload 11
+    //   1699: lstore 13
+    //   1701: goto -907 -> 794
+    //   1704: aconst_null
+    //   1705: astore 4
+    //   1707: goto -1249 -> 458
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1714	0	this	DownloadTask
-    //   0	1714	1	paramHttpResponse	HttpResponse
-    //   0	1714	2	paramResponse	Response
-    //   0	1714	3	paramDownloadResult	DownloadResult
-    //   0	1714	4	paramJobContext	ThreadPool.JobContext
-    //   0	1714	5	paramInt	int
+    //   0	1710	0	this	DownloadTask
+    //   0	1710	1	paramHttpResponse	HttpResponse
+    //   0	1710	2	paramResponse	Response
+    //   0	1710	3	paramDownloadResult	DownloadResult
+    //   0	1710	4	paramJobContext	ThreadPool.JobContext
+    //   0	1710	5	paramInt	int
     //   612	342	6	i	int
-    //   585	1112	7	l1	long
-    //   85	1604	9	l2	long
-    //   96	1606	11	l3	long
-    //   578	1126	13	l4	long
+    //   585	1108	7	l1	long
+    //   85	1592	9	l2	long
+    //   96	1602	11	l3	long
+    //   578	1122	13	l4	long
     //   951	489	15	l5	long
     //   17	1448	17	l6	long
     //   572	524	19	l7	long

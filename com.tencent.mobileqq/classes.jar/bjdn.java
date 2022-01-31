@@ -1,93 +1,155 @@
-import GIFT_MALL_PROTOCOL.DouFuInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
-import cooperation.vip.manager.MonitorManager;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import cooperation.qzone.util.NetworkState;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class bjdn
 {
-  private static bjdo a = new bjdo();
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private boolean jdField_a_of_type_Boolean;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "0";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "2";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
   
-  private static JSONObject a(DouFuInfo paramDouFuInfo)
+  public bjdn()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = NetworkState.getNetworkType();
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public bjdn(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, ArrayList<String> paramArrayList)
+  {
+    this();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_c_of_type_JavaLangString = paramString4;
+    this.d = paramString5;
+    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramString6;
+    this.g = paramString2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public bjdn(long paramLong, String paramString, Map<String, String> paramMap)
+  {
+    this();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
+    if (paramMap != null)
     {
-      localJSONObject.put("friendUin", paramDouFuInfo.uin);
-      localJSONObject.put("background", paramDouFuInfo.background);
-      localJSONObject.put("time", paramDouFuInfo.birthday);
-      localJSONObject.put("blessing", paramDouFuInfo.blessing);
-      localJSONObject.put("link", paramDouFuInfo.doufu_link);
-      localJSONObject.put("icon", paramDouFuInfo.icon);
-      return localJSONObject;
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
     }
-    catch (Exception paramDouFuInfo)
+  }
+  
+  public bjdn(String paramString)
+  {
+    this();
+    this.f = paramString;
+    this.jdField_c_of_type_JavaLangString = "12";
+  }
+  
+  public JSONObject a()
+  {
+    if (!TextUtils.isEmpty(this.h)) {}
+    Object localObject;
+    for (JSONObject localJSONObject = new JSONObject(this.h);; localJSONObject = new JSONObject())
     {
-      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
-      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
+      localJSONObject.put("touin", this.jdField_a_of_type_Long);
+      localJSONObject.put("network_type", String.valueOf(this.jdField_a_of_type_Int));
+      localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_JavaUtilMap.isEmpty())) {
+        break label366;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
     }
+    if (!localJSONObject.has("refer")) {
+      localJSONObject.put("refer", this.jdField_b_of_type_JavaLangString);
+    }
+    localJSONObject.put("actiontype", this.jdField_c_of_type_JavaLangString);
+    localJSONObject.put("subactiontype", this.d);
+    localJSONObject.put("tabletype", this.jdField_b_of_type_Int);
+    localJSONObject.put("domain_type", this.j);
+    localJSONObject.put("reserves", this.e);
+    localJSONObject.put("source_type", this.l);
+    localJSONObject.put("source_from", this.m);
+    localJSONObject.put("source_to", this.n);
+    localJSONObject.put("mergenum", this.jdField_c_of_type_Int);
+    localJSONObject.put("reserves10", this.i);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localJSONObject.put("reserves" + (i1 + 2), localObject);
+        }
+        i1 += 1;
+      }
+    }
+    label366:
+    localJSONObject.put("read_source", this.f);
+    localJSONObject.put("time", String.valueOf(this.jdField_b_of_type_Long));
+    localJSONObject.put("info", this.g);
+    localJSONObject.put("pushstatkey", this.k);
     return localJSONObject;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public void a(long paramLong)
   {
-    String str = paramSessionInfo.a;
-    Set localSet = paramQQAppInterface.a().a();
-    long l1;
-    long l3;
-    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
-    {
-      l1 = paramQQAppInterface.a().b();
-      l3 = System.currentTimeMillis() / 1000L;
-      if (l3 - l1 >= 86400L)
-      {
-        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
-        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), ayww.class);
-        l1 = 0L;
-      }
-    }
-    try
-    {
-      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
-      }
-    }
-    paramSessionInfo.putExtra("selfuin", l1);
-    a.a = new WeakReference(paramQQAppInterface);
-    paramQQAppInterface.registObserver(a);
-    paramQQAppInterface.startServlet(paramSessionInfo);
-    paramQQAppInterface.a().c(l3);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public void a(String paramString)
   {
-    if (auoa.a(paramQQAppInterface, paramString, 5L, false) != null) {}
-    while ((auoa.a(paramQQAppInterface, paramString, 12L, false) != null) || (auoa.a(paramQQAppInterface, paramString, false) != null)) {
-      return true;
-    }
-    return false;
+    this.jdField_c_of_type_JavaLangString = paramString;
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  public void b(String paramString)
   {
-    JSONObject localJSONObject = a(paramDouFuInfo);
-    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
-    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
+    this.d = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.e = paramString;
   }
 }
 

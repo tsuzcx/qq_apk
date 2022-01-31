@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import axoa;
+import axsj;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareActionSheet$2
   implements Runnable
 {
-  public ShareActionSheet$2(axoa paramaxoa) {}
+  public ShareActionSheet$2(axsj paramaxsj) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_a_of_type_Int) {
       this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    while (this.this$0.b.getWidth() < axoa.a(this.this$0))
+    while (this.this$0.b.getWidth() < axsj.a(this.this$0))
     {
       this.this$0.b.setMove(true);
       return;

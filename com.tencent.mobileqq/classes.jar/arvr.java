@@ -1,51 +1,17 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 class arvr
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  arvr(arvo paramarvo) {}
+  arvr(arvp paramarvp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = arvo.a(this.a);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramMotionEvent = paramView.findViewById(2131366755);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
+    if (this.a.a.a.isShowing()) {
+      this.a.a.a.dismiss();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131366761);
-          } while (paramView == null);
-          paramView.setImageResource(2130839711);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131366755);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131366761);
-    } while (paramView == null);
-    paramView.setImageResource(2130839710);
-    return false;
   }
 }
 

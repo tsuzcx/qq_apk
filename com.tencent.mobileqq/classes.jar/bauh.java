@@ -1,17 +1,6 @@
-public class bauh
+public abstract interface bauh
 {
-  public int a;
-  public long a;
-  public bauc a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public abstract void a(bavf parambavf);
 }
 
 

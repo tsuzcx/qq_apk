@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.widget.XListView;
 
-public class ajiu
-  implements DialogInterface.OnDismissListener
+class ajiu
+  implements vdr
 {
-  public ajiu(LoginView paramLoginView) {}
+  ajiu(ajit paramajit) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    LoginView.g(this.a, false);
-    LoginView.h(this.a, false);
-    azmj.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
+    this.a.a.invalidateViews();
   }
 }
 

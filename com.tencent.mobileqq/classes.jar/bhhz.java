@@ -1,24 +1,24 @@
+import android.content.Context;
+import android.view.Surface;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.ui.MiniAppDialog.1.1;
+import com.qflutter.video.QflutterVideoViewSource.Provider;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.flutter.FlutterVideoViewContainer;
+import java.util.Map;
 
 public class bhhz
-  implements Animation.AnimationListener
+  implements QflutterVideoViewSource.Provider
 {
-  bhhz(bhhy parambhhy) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public View getView(Context paramContext, int paramInt, Surface paramSurface, Map<String, Object> paramMap)
   {
-    bhhy.a(this.a, false);
-    bhhy.a(this.a).post(new MiniAppDialog.1.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bhhy.a(this.a, true);
+    if ("getView" + paramMap != null) {}
+    for (paramSurface = paramMap.toString();; paramSurface = "")
+    {
+      QMLog.e("QFVideoView", paramSurface);
+      paramMap.get("videoPlayerId");
+      paramMap.put("autoplay", Boolean.valueOf(true));
+      return new FlutterVideoViewContainer(paramContext, paramMap);
+    }
   }
 }
 

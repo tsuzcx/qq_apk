@@ -1,25 +1,25 @@
 package com.tencent.qg.qq;
 
-import bfti;
+import bfxp;
 
 public class QGameApp$3
   implements Runnable
 {
-  public QGameApp$3(bfti parambfti, boolean paramBoolean, String paramString) {}
+  public QGameApp$3(bfxp parambfxp, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (!bfti.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
+    if (!bfxp.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
     {
-      bfti.a(this.this$0, 1001);
+      bfxp.a(this.this$0, 1001);
       return;
     }
-    if (bfti.a(this.this$0))
+    if (bfxp.a(this.this$0))
     {
-      bfti.a(this.this$0);
+      bfxp.a(this.this$0);
       return;
     }
-    bfti.a(this.this$0, 1003);
+    bfxp.a(this.this$0, 1003);
   }
 }
 

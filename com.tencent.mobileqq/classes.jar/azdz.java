@@ -1,47 +1,42 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(14)
-public class azdz
-  extends PreviewContext
-  implements TextureView.SurfaceTextureListener, azdm
+class azdz
+  implements azeh
 {
-  public azdz(azdf paramazdf, int paramInt1, int paramInt2)
-  {
-    super(paramazdf, paramInt1, paramInt2);
-  }
+  azdz(azdy paramazdy) {}
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public void a(int paramInt1, int paramInt2)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    this.mCamera.a();
-    this.mCamera.a(0, paramInt1, paramInt2);
-    this.mCamera.a(paramSurfaceTexture, null, this, true);
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.mCamera != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
+    VideoEnvironment.a(azdy.a(this.a), ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
+        azdy.a(this.a);
+        return;
       }
+      localObject = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(azdy.a(this.a), (List)localObject);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
+        azdy.a(this.a).a();
+        asxn.a().a();
+        return;
+      }
+      VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
+      azdy.a(this.a);
+      return;
     }
-    return true;
+    VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    azdy.a(this.a);
   }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

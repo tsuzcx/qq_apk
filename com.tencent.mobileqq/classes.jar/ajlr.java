@@ -1,20 +1,21 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class ajlr
-  extends hp
+public abstract class ajlr
+  implements ajlt
 {
-  private ajlr(ajlp paramajlp) {}
+  public int a;
+  public long a;
+  public bbpe a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public ajlr()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((ajlp.a(this.a) != null) && (ajlp.a(this.a).hasMessages(paramInt))) {
-      ajlp.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Bbpe = new bbpe();
   }
 }
 

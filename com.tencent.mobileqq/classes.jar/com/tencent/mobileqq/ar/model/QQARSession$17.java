@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import amxp;
-import anbo;
+import anby;
+import anfx;
 
 public class QQARSession$17
   implements Runnable
 {
-  public QQARSession$17(anbo paramanbo) {}
+  public QQARSession$17(anfx paramanfx) {}
   
   public void run()
   {
-    if ((anbo.b(this.this$0)) && (this.this$0.a == 2) && (anbo.a(this.this$0) != null)) {
-      anbo.a(this.this$0).a(0, 4);
+    if ((anfx.b(this.this$0)) && (this.this$0.a == 2) && (anfx.a(this.this$0) != null)) {
+      anfx.a(this.this$0).a(0, 4);
     }
   }
 }

@@ -12,7 +12,7 @@ class tdd
     {
       stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramthe.jdField_a_of_type_JavaLangObject;
       tlo.d(tcu.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
-      uht.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+      umc.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
       return;
     }
     tlo.d(tcu.a(), "回复点赞失败new！");

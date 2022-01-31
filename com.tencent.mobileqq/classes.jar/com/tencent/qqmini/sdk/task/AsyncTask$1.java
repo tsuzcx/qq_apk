@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhhm;
+import bhlt;
 
 public class AsyncTask$1
   implements Runnable
 {
-  public AsyncTask$1(bhhm parambhhm) {}
+  public AsyncTask$1(bhlt parambhlt) {}
   
   public void run()
   {

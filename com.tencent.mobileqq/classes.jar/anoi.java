@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
-
-public abstract interface anoi
+public class anoi
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap);
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  
+  public anoi() {}
+  
+  public anoi(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

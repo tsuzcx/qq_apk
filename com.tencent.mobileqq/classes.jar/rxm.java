@@ -3,7 +3,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
 public class rxm
-  extends biau<RecyclerView.Adapter>
+  extends bifb<RecyclerView.Adapter>
 {
   public rxm(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
   {

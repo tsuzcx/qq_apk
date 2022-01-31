@@ -1,19 +1,48 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.widget.GridView;
+import java.util.Collection;
+import java.util.Map;
 
 public class avmc
-  extends avma
+  extends AvatarWallPagerAdapter<GridView>
 {
-  public View e;
-  public ImageView e;
-  public View f;
-  public ImageView f;
-  public TextView g;
+  protected LinearLayout.LayoutParams a;
   
-  public avmc(avmb paramavmb)
+  public avmc(avkt paramavkt, AvatarWallViewPager paramAvatarWallViewPager)
   {
-    super(paramavmb);
+    super(paramAvatarWallViewPager);
+  }
+  
+  public View a(int paramInt, GridView paramGridView)
+  {
+    return avkt.a(this.jdField_a_of_type_Avkt, avkt.a(this.jdField_a_of_type_Avkt), paramInt);
+  }
+  
+  public View a(boolean paramBoolean, int paramInt)
+  {
+    View localView = new View(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 30.0F), xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 1.5F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 2.0F);
+    }
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (paramBoolean)
+    {
+      localView.setBackgroundColor(-1);
+      return localView;
+    }
+    localView.setBackgroundColor(1728053247);
+    return localView;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Avkt.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
   }
 }
 

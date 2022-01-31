@@ -5,7 +5,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.AppRuntime;
 
 class rre
-  extends alxv
+  extends amck
 {
   rre(rqj paramrqj) {}
   
@@ -17,7 +17,7 @@ class rre
       this.a.a.c(6);
       return;
     }
-    QQToast.a(this.a.a(), 0, this.a.a().getString(2131719054), 0).a();
+    QQToast.a(this.a.a(), 0, this.a.a().getString(2131719066), 0).a();
   }
 }
 

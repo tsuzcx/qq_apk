@@ -1,83 +1,59 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
-public class atds
-  extends WebViewPlugin
+class atds
+  implements abwu
 {
-  String jdField_a_of_type_JavaLangString;
-  nbg jdField_a_of_type_Nbg = new atdt(this);
-  ymk jdField_a_of_type_Ymk;
+  atds(atdh paramatdh, WeakReference paramWeakReference, Bundle paramBundle) {}
   
-  public atds()
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.mPluginNameSpace = "push";
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131703968), 0).a();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onPermission(int paramInt)
   {
-    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
-    for (;;)
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131703969), 0).a();
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    try
     {
-      int i;
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("appid");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        this.jdField_a_of_type_Ymk.a().a(i, this.jdField_a_of_type_Nbg);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-        }
-        return false;
-      }
-      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_Ymk.a().a(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-          }
-        }
-      }
+      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
+      this.jdField_a_of_type_Atdh.b = paramJSONObject.optString("access_token");
+      this.jdField_a_of_type_Atdh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
+      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Atdh.b);
+      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Atdh.jdField_a_of_type_JavaLangString);
+      atdh.a(this.jdField_a_of_type_Atdh);
+      this.jdField_a_of_type_Atdh.jdField_a_of_type_Ateb.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (this.jdField_a_of_type_Ymk == null)
+    catch (Throwable paramJSONObject)
     {
-      this.jdField_a_of_type_Ymk = ymk.a();
-      this.jdField_a_of_type_Ymk.a();
+      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
     }
   }
   
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Ymk != null) {
-      this.jdField_a_of_type_Ymk.b();
-    }
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -1,455 +1,645 @@
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowDataReporter.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import org.json.JSONObject;
+import java.nio.ByteBuffer;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyReq;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.ReqBody;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class asyp
+  extends alpd
 {
-  public static long a;
-  protected int a;
-  String jdField_a_of_type_JavaLangString;
-  HashMap<Long, JSONObject> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  protected boolean a;
-  protected int b;
-  String b;
-  protected boolean b;
-  protected int c;
-  String c;
-  protected int d;
-  protected String d;
-  protected int e;
-  protected String e;
-  protected int f;
-  protected String f;
-  protected String g = "";
-  protected String h = "";
-  protected String i = "";
-  protected String j = "";
-  protected String k = "";
-  protected String l;
-  protected String m = Build.VERSION.RELEASE;
-  protected String n = Build.MODEL;
-  protected String o;
-  String p;
+  private static final String a = asyp.class.getSimpleName();
   
   public asyp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = 2;
-    a("now_plugin");
+    super(paramQQAppInterface);
   }
   
-  private void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean2)
+  private void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramLong == 0L) {
+    cmd0xcd4.RspBody localRspBody = new cmd0xcd4.RspBody();
+    parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+    paramFromServiceMsg = (cmd0xcd4.InputNotifyRsp)localRspBody.input_notify.get();
+    if (paramFromServiceMsg.sint32_result.get() == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      notifyUI(1, bool, paramFromServiceMsg);
       return;
     }
-    JSONObject localJSONObject;
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+  }
+  
+  /* Error */
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 9
+    //   3: iconst_1
+    //   4: istore 11
+    //   6: iconst_1
+    //   7: istore 8
+    //   9: iconst_0
+    //   10: istore 10
+    //   12: aload_2
+    //   13: invokevirtual 62	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   16: ifeq +379 -> 395
+    //   19: aload_3
+    //   20: ifnull +375 -> 395
+    //   23: iconst_1
+    //   24: istore 4
+    //   26: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   29: ifeq +30 -> 59
+    //   32: getstatic 16	asyp:a	Ljava/lang/String;
+    //   35: iconst_2
+    //   36: new 69	java/lang/StringBuilder
+    //   39: dup
+    //   40: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   43: ldc 72
+    //   45: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: iload 4
+    //   50: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: iload 4
+    //   61: istore 7
+    //   63: iload 4
+    //   65: ifeq +586 -> 651
+    //   68: iload 4
+    //   70: istore 5
+    //   72: iload 4
+    //   74: istore 6
+    //   76: new 88	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   79: dup
+    //   80: invokespecial 89	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   83: aload_3
+    //   84: checkcast 91	[B
+    //   87: checkcast 91	[B
+    //   90: invokevirtual 95	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   93: checkcast 88	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   96: astore_2
+    //   97: iload 4
+    //   99: istore 5
+    //   101: iload 4
+    //   103: istore 6
+    //   105: aload_2
+    //   106: getfield 99	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   109: invokevirtual 102	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   112: ifne +289 -> 401
+    //   115: iconst_1
+    //   116: istore 4
+    //   118: iload 4
+    //   120: istore 5
+    //   122: iload 4
+    //   124: istore 6
+    //   126: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   129: ifeq +38 -> 167
+    //   132: iload 4
+    //   134: istore 5
+    //   136: iload 4
+    //   138: istore 6
+    //   140: getstatic 16	asyp:a	Ljava/lang/String;
+    //   143: iconst_2
+    //   144: new 69	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   151: ldc 104
+    //   153: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: iload 4
+    //   158: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: iload 4
+    //   169: istore 7
+    //   171: iload 4
+    //   173: ifeq +478 -> 651
+    //   176: iload 4
+    //   178: istore 5
+    //   180: iload 4
+    //   182: istore 6
+    //   184: iload 4
+    //   186: istore 7
+    //   188: aload_2
+    //   189: getfield 108	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   192: invokevirtual 113	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   195: ifeq +456 -> 651
+    //   198: iload 4
+    //   200: istore 5
+    //   202: iload 4
+    //   204: istore 6
+    //   206: iload 4
+    //   208: istore 7
+    //   210: aload_2
+    //   211: getfield 108	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   214: invokevirtual 116	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   217: ifnull +434 -> 651
+    //   220: iload 4
+    //   222: istore 5
+    //   224: iload 4
+    //   226: istore 6
+    //   228: aload_2
+    //   229: getfield 108	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   232: invokevirtual 116	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   235: invokevirtual 122	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   238: invokestatic 128	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   241: invokevirtual 131	java/nio/ByteBuffer:getInt	()I
+    //   244: invokestatic 136	bdeu:a	(I)J
+    //   247: lstore 12
+    //   249: iload 4
+    //   251: istore 5
+    //   253: iload 4
+    //   255: istore 6
+    //   257: aload_0
+    //   258: getfield 140	asyp:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   261: invokevirtual 145	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   264: lload 12
+    //   266: invokestatic 151	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   269: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   272: ifeq +135 -> 407
+    //   275: iload 4
+    //   277: istore 5
+    //   279: iload 4
+    //   281: istore 6
+    //   283: aload_1
+    //   284: getfield 161	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   287: ldc 163
+    //   289: invokevirtual 169	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   292: istore 4
+    //   294: iload 11
+    //   296: istore 5
+    //   298: aload_0
+    //   299: getfield 140	asyp:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   302: iload 4
+    //   304: iconst_0
+    //   305: invokevirtual 172	com/tencent/mobileqq/app/QQAppInterface:d	(ZZ)V
+    //   308: iload 4
+    //   310: istore 6
+    //   312: iload 8
+    //   314: istore 4
+    //   316: iload 4
+    //   318: istore 5
+    //   320: iload 6
+    //   322: istore 7
+    //   324: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: ifeq +55 -> 382
+    //   330: getstatic 16	asyp:a	Ljava/lang/String;
+    //   333: iconst_2
+    //   334: new 69	java/lang/StringBuilder
+    //   337: dup
+    //   338: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   341: ldc 104
+    //   343: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   346: iload 4
+    //   348: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   351: ldc 174
+    //   353: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   356: aload_1
+    //   357: getfield 161	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   360: ldc 163
+    //   362: invokevirtual 169	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   365: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   368: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   371: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   374: iload 6
+    //   376: istore 7
+    //   378: iload 4
+    //   380: istore 5
+    //   382: aload_0
+    //   383: iconst_3
+    //   384: iload 5
+    //   386: iload 7
+    //   388: invokestatic 179	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   391: invokevirtual 53	asyp:notifyUI	(IZLjava/lang/Object;)V
+    //   394: return
+    //   395: iconst_0
+    //   396: istore 4
+    //   398: goto -372 -> 26
+    //   401: iconst_0
+    //   402: istore 4
+    //   404: goto -286 -> 118
+    //   407: iload 4
+    //   409: istore 5
+    //   411: iload 4
+    //   413: istore 6
+    //   415: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   418: ifeq +53 -> 471
+    //   421: iload 4
+    //   423: istore 5
+    //   425: iload 4
+    //   427: istore 6
+    //   429: getstatic 16	asyp:a	Ljava/lang/String;
+    //   432: iconst_2
+    //   433: new 69	java/lang/StringBuilder
+    //   436: dup
+    //   437: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   440: ldc 181
+    //   442: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: aload_0
+    //   446: getfield 140	asyp:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   449: invokevirtual 145	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   452: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   455: ldc 183
+    //   457: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: lload 12
+    //   462: invokevirtual 186	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   465: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   468: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   471: iconst_0
+    //   472: istore 4
+    //   474: iload 10
+    //   476: istore 6
+    //   478: goto -162 -> 316
+    //   481: astore_2
+    //   482: iconst_0
+    //   483: istore 4
+    //   485: iload 5
+    //   487: istore 6
+    //   489: iload 6
+    //   491: istore 5
+    //   493: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   496: ifeq +17 -> 513
+    //   499: iload 6
+    //   501: istore 5
+    //   503: getstatic 16	asyp:a	Ljava/lang/String;
+    //   506: iconst_1
+    //   507: ldc 188
+    //   509: aload_2
+    //   510: invokestatic 191	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   513: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   516: ifeq +125 -> 641
+    //   519: getstatic 16	asyp:a	Ljava/lang/String;
+    //   522: iconst_2
+    //   523: new 69	java/lang/StringBuilder
+    //   526: dup
+    //   527: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   530: ldc 104
+    //   532: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   535: iconst_0
+    //   536: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   539: ldc 174
+    //   541: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   544: aload_1
+    //   545: getfield 161	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   548: ldc 163
+    //   550: invokevirtual 169	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   553: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   556: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   559: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   562: iconst_0
+    //   563: istore 5
+    //   565: iload 4
+    //   567: istore 7
+    //   569: goto -187 -> 382
+    //   572: astore_2
+    //   573: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   576: ifeq +47 -> 623
+    //   579: getstatic 16	asyp:a	Ljava/lang/String;
+    //   582: iconst_2
+    //   583: new 69	java/lang/StringBuilder
+    //   586: dup
+    //   587: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   590: ldc 104
+    //   592: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   595: iload 6
+    //   597: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   600: ldc 174
+    //   602: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   605: aload_1
+    //   606: getfield 161	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   609: ldc 163
+    //   611: invokevirtual 169	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   614: invokevirtual 79	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   617: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   620: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   623: aload_2
+    //   624: athrow
+    //   625: astore_2
+    //   626: iload 5
+    //   628: istore 6
+    //   630: goto -57 -> 573
+    //   633: astore_2
+    //   634: iload 9
+    //   636: istore 6
+    //   638: goto -149 -> 489
+    //   641: iconst_0
+    //   642: istore 5
+    //   644: iload 4
+    //   646: istore 7
+    //   648: goto -266 -> 382
+    //   651: iload 7
+    //   653: istore 4
+    //   655: iload 10
+    //   657: istore 6
+    //   659: goto -343 -> 316
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	662	0	this	asyp
+    //   0	662	1	paramToServiceMsg	ToServiceMsg
+    //   0	662	2	paramFromServiceMsg	FromServiceMsg
+    //   0	662	3	paramObject	Object
+    //   24	630	4	bool1	boolean
+    //   70	573	5	bool2	boolean
+    //   74	584	6	bool3	boolean
+    //   61	591	7	bool4	boolean
+    //   7	306	8	bool5	boolean
+    //   1	634	9	bool6	boolean
+    //   10	646	10	bool7	boolean
+    //   4	291	11	bool8	boolean
+    //   247	214	12	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   76	97	481	java/lang/Exception
+    //   105	115	481	java/lang/Exception
+    //   126	132	481	java/lang/Exception
+    //   140	167	481	java/lang/Exception
+    //   188	198	481	java/lang/Exception
+    //   210	220	481	java/lang/Exception
+    //   228	249	481	java/lang/Exception
+    //   257	275	481	java/lang/Exception
+    //   283	294	481	java/lang/Exception
+    //   415	421	481	java/lang/Exception
+    //   429	471	481	java/lang/Exception
+    //   76	97	572	finally
+    //   105	115	572	finally
+    //   126	132	572	finally
+    //   140	167	572	finally
+    //   188	198	572	finally
+    //   210	220	572	finally
+    //   228	249	572	finally
+    //   257	275	572	finally
+    //   283	294	572	finally
+    //   415	421	572	finally
+    //   429	471	572	finally
+    //   298	308	625	finally
+    //   493	499	625	finally
+    //   503	513	625	finally
+    //   298	308	633	java/lang/Exception
+  }
+  
+  private void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool8 = false;
+    boolean bool9 = false;
+    boolean bool10 = false;
+    boolean bool5 = false;
+    boolean bool2;
+    boolean bool3;
+    boolean bool6;
+    boolean bool1;
+    boolean bool7;
+    boolean bool4;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      localJSONObject = new JSONObject();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
+      bool2 = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "handleGetShowInputStatusToFriendResp success=" + bool2);
+      }
+      bool3 = bool2;
+      bool6 = bool8;
+      if (bool2)
+      {
+        bool1 = bool2;
+        bool7 = bool9;
+        bool4 = bool2;
+      }
     }
     for (;;)
     {
       try
       {
-        if (localJSONObject.optBoolean("noneedadd")) {
-          break label223;
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        bool1 = bool2;
+        bool7 = bool9;
+        bool4 = bool2;
+        if (paramFromServiceMsg.uint32_result.get() != 0) {
+          continue;
         }
-        localJSONObject.put("opname", paramString4);
-        localJSONObject.put("roomid", paramString2);
-        localJSONObject.put("roomtype", paramString3);
-        localJSONObject.put("source", paramString1);
-        localJSONObject.put("d1", paramString5);
-        localJSONObject.put("d2", paramString6);
-        localJSONObject.put("d3", paramString7);
-        localJSONObject.put("d4", paramString8);
-        localJSONObject.put("op_in", paramInt1);
-        localJSONObject.put("op_result", paramInt2);
-        localJSONObject.put("noneedadd", paramBoolean1);
-        localJSONObject.put("timelong", paramString9);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
-        if (!paramBoolean2) {
-          break;
+        bool2 = true;
+        bool1 = bool2;
+        bool7 = bool9;
+        bool4 = bool2;
+        if (QLog.isColorLevel())
+        {
+          bool1 = bool2;
+          bool7 = bool9;
+          bool4 = bool2;
+          QLog.d(a, 2, "handleGetShowInputStatusToFriendResp result=" + bool2);
         }
-        a(paramLong);
-        return;
+        bool3 = bool2;
+        bool6 = bool8;
+        if (bool2)
+        {
+          bool3 = bool2;
+          bool6 = bool8;
+          bool1 = bool2;
+          bool7 = bool9;
+          bool4 = bool2;
+          if (paramFromServiceMsg.bytes_bodybuffer.has())
+          {
+            bool3 = bool2;
+            bool6 = bool8;
+            bool1 = bool2;
+            bool7 = bool9;
+            bool4 = bool2;
+            if (paramFromServiceMsg.bytes_bodybuffer.get() != null)
+            {
+              bool1 = bool2;
+              bool7 = bool9;
+              bool4 = bool2;
+              paramObject = new oidb_0x5eb.RspBody();
+              bool1 = bool2;
+              bool7 = bool9;
+              bool4 = bool2;
+              paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+              bool1 = bool2;
+              bool7 = bool9;
+              bool4 = bool2;
+              if (paramObject.rpt_msg_uin_data.size() <= 0) {
+                continue;
+              }
+              bool1 = bool2;
+              bool7 = bool9;
+              bool4 = bool2;
+              int i = ((oidb_0x5eb.UdcUinData)paramObject.rpt_msg_uin_data.get(0)).uint32_input_status_flag.get();
+              if (i == 1) {
+                break label625;
+              }
+              bool5 = bool10;
+              if (i != 0) {
+                break label628;
+              }
+              break label625;
+              bool3 = bool2;
+              bool6 = bool5;
+              bool1 = bool2;
+              bool7 = bool5;
+              bool4 = bool2;
+              if (this.app != null)
+              {
+                bool1 = bool2;
+                bool7 = bool5;
+                bool4 = bool2;
+                this.app.d(bool5, false);
+                bool6 = bool5;
+                bool3 = bool2;
+              }
+            }
+          }
+        }
+        bool2 = bool3;
+        bool4 = bool6;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(a, 2, "handleGetShowInputStatusToFriendResp result=" + bool3);
+          bool4 = bool6;
+          bool2 = bool3;
+        }
       }
-      catch (Exception paramString1)
+      catch (Exception paramFromServiceMsg)
       {
-        paramString1.printStackTrace();
-        return;
+        bool4 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        bool4 = bool1;
+        QLog.d(a, 2, "handleGetShowInputStatusToFriendResp ex", paramFromServiceMsg);
+        bool2 = bool1;
+        bool4 = bool7;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(a, 2, "handleGetShowInputStatusToFriendResp result=" + bool1);
+        bool2 = bool1;
+        bool4 = bool7;
+        continue;
       }
-      localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      finally
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(a, 2, "handleGetShowInputStatusToFriendResp result=" + bool4);
+      }
+      notifyUI(2, bool2, Boolean.valueOf(bool4));
+      return;
+      bool2 = false;
+      break;
+      bool2 = false;
       continue;
-      label223:
-      QLog.i("NowDataReporter", 1, "本次opname不影响上报");
+      bool2 = false;
+      continue;
+      label625:
+      bool5 = true;
+      label628:
+      bool2 = true;
     }
-  }
-  
-  private void c()
-  {
-    jdField_a_of_type_Long = 0L;
-    this.jdField_f_of_type_JavaLangString = "";
-    this.g = "";
-    this.h = "";
-    this.i = "";
-    this.j = "";
-    this.k = "";
-    this.jdField_a_of_type_Int = 11;
-    this.jdField_d_of_type_Int = 0;
-    this.l = "";
-    this.jdField_f_of_type_Int = 0;
-  }
-  
-  public asyp a(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-    return this;
   }
   
   public void a()
   {
-    for (;;)
-    {
-      try
-      {
-        asyp localasyp = b("show_loading");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        str = "1";
-        localasyp.c(str).b();
-      }
-      catch (Exception localException)
-      {
-        String str;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("NowDataReporter", 2, "reportJumpPlugin Exception");
-        continue;
-      }
-      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "show_loading", false, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", false);
-      return;
-      str = "0";
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
-  {
+    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
     try
     {
-      b("get_record_res").c(String.valueOf(paramInt1)).d(paramString).e(String.valueOf(paramInt2)).i(String.valueOf(paramLong)).b();
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
+      localReqBody.rpt_uint64_uins.add(Long.valueOf(l));
+      localReqBody.uint32_input_status_flag.set(1);
+      sendPbReq(makeOIDBPkg("OidbSvc.0x5eb_42261", 1515, 22, localReqBody.toByteArray()));
       return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NowDataReporter", 2, "reportRecordCgi Exception");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    JSONObject localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if ((localJSONObject != null) && (localJSONObject.has("opname")))
-    {
-      a("last_op_name", localJSONObject);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_f_of_type_JavaLangString = paramBundle.getString("op_name");
-        if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-          break;
-        }
-        bool2 = false;
-        int i2 = 1;
-        bool4 = false;
-        this.jdField_f_of_type_Int = paramBundle.getInt("op_in");
-        this.jdField_d_of_type_Int = paramBundle.getInt("op_result");
-        this.l = paramBundle.getString("timeconsume");
-        String str = paramBundle.getString("sdkversion");
-        if ((!TextUtils.isEmpty(str)) && (!str.equals("0"))) {
-          this.p = paramBundle.getString("sdkversion");
-        }
-        this.h = paramBundle.getString("d1");
-        this.i = paramBundle.getString("d2");
-        this.j = paramBundle.getString("d3");
-        this.k = paramBundle.getString("d4");
-        if (this.jdField_f_of_type_JavaLangString.equals("enter_shadow"))
-        {
-          this.jdField_b_of_type_Int = Integer.parseInt(paramBundle.getString("status1", "0"));
-          this.jdField_a_of_type_Int = paramBundle.getInt("frameVersion");
-        }
-        b();
-        if ((this.jdField_f_of_type_JavaLangString.equals("check_version_complete")) && (this.j.equals("1")))
-        {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Int = 0;
-        }
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(jdField_a_of_type_Long))) {
-          break;
-        }
-        if ((this.jdField_f_of_type_JavaLangString.equals("cancel_run")) || (this.jdField_f_of_type_JavaLangString.equals("cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("download_fail")) || (this.jdField_f_of_type_JavaLangString.equals("boot_fail")) || (this.jdField_f_of_type_JavaLangString.equals("login_fail")) || (this.jdField_f_of_type_JavaLangString.equals("enter_fail")) || (this.jdField_f_of_type_JavaLangString.equals("user_cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("enter_room")) || (this.jdField_f_of_type_JavaLangString.equals("jump_h5")) || (this.jdField_f_of_type_JavaLangString.equals("jump_app"))) {
-          break label715;
-        }
-        boolean bool3 = bool2;
-        boolean bool1 = bool4;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_biz_plugin"))
-        {
-          bool3 = bool2;
-          bool1 = bool4;
-          if (this.h.equals("fail"))
-          {
-            bool3 = true;
-            bool1 = true;
-          }
-        }
-        bool4 = bool3;
-        bool2 = bool1;
-        if (this.jdField_f_of_type_JavaLangString.equals("unzip_biz_plugin"))
-        {
-          bool4 = bool3;
-          bool2 = bool1;
-          if (this.h.equals("fail"))
-          {
-            bool4 = true;
-            bool2 = true;
-          }
-        }
-        int i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_start"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_complete"))
-        {
-          i2 = i1;
-          if (this.h.equals("2")) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_fail"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_start"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_complete"))
-        {
-          i1 = i2;
-          if (this.jdField_f_of_type_Int != 1) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_fail"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        if (i2 == 0) {
-          break;
-        }
-        a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, bool4, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, this.l, bool2);
-        return;
-      }
-      catch (Exception paramBundle) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NowDataReporter", 2, "onReportFromXProxy Exception");
-      return;
-      label715:
-      boolean bool2 = true;
-      boolean bool4 = true;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      h(paramString1).f(paramString2).b("jump_h5").c(paramString3).d(paramString4).b();
-      a(jdField_a_of_type_Long, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", true);
-      return;
-    }
-    catch (Exception paramString3)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowDataReporter", 2, "reportJumpH5 Exception");
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    String str1 = paramJSONObject.optString("opname");
-    int i1 = paramJSONObject.optInt("op_in");
-    int i2 = paramJSONObject.optInt("op_result");
-    String str2 = paramJSONObject.optString("d1");
-    String str3 = paramJSONObject.optString("d2");
-    String str4 = paramJSONObject.optString("d3");
-    String str5 = paramJSONObject.optString("d4");
-    String str6 = paramJSONObject.optString("source");
-    String str7 = paramJSONObject.optString("roomid");
-    paramJSONObject = paramJSONObject.optString("roomtype");
-    String str8 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    String str9 = String.valueOf(aowf.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (ndd.a() + "");
-    QLog.i("NowDataReporter", 2, "nowDatareportlastop: source = " + str6 + " roomid = " + str7 + " roomType = " + paramJSONObject + " op_name = " + paramString + " op_in = " + i1 + " d1= " + str2 + " d2=" + str3 + " d3=" + str4 + " d4=" + str5 + " timelong=" + this.l + " op_result = " + i2 + " qq_version = " + str9 + "  optime = " + str8 + " lastOpName = " + str1 + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + " useShadow =" + this.jdField_b_of_type_Boolean);
-    azmj.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, paramString, i1, 1, i2, str2, str3, str4, str5 + "|" + this.l + "|" + str7 + "|" + paramJSONObject + "|" + str6 + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str9 + "|" + str8 + "|" + str1 + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
-  }
-  
-  public void a(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    c();
-    long l1 = System.currentTimeMillis();
-    jdField_a_of_type_Long = l1;
-    this.jdField_b_of_type_Boolean = paramBoolean4;
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Int = 11;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    try
-    {
-      localasyp = h(paramString1).f(paramString2).g(paramString3).b("nowentry");
-      if (!paramBoolean1) {
-        break label175;
-      }
-      str1 = "1";
-      localasyp = localasyp.c(str1);
-      if (!paramBoolean2) {
-        break label209;
-      }
-      str1 = "1";
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        asyp localasyp;
-        String str1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NowDataReporter", 2, "reportNowEntry Exception");
-          continue;
-          String str2 = "0";
-        }
+        localException.printStackTrace();
       }
     }
-    localasyp = localasyp.d(str1);
-    if (paramBoolean3) {}
-    for (str1 = "1";; str1 = "0")
+  }
+  
+  void a(int paramInt, long paramLong)
+  {
+    cmd0xcd4.InputNotifyReq localInputNotifyReq = new cmd0xcd4.InputNotifyReq();
+    localInputNotifyReq.uint32_event_type.set(paramInt);
+    localInputNotifyReq.uint32_ime.set(0);
+    localInputNotifyReq.uint64_to_uin.set(paramLong);
+    cmd0xcd4.ReqBody localReqBody = new cmd0xcd4.ReqBody();
+    localReqBody.input_notify.set(localInputNotifyReq);
+    sendPbReq(makeOIDBPkg("OidbSvc.0xcd4", 3284, 1, localReqBody.toByteArray()));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    short s = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "setVisibilityForInputStatus OPEN=" + paramBoolean);
+    }
+    try
     {
-      localasyp.e(str1).b();
-      a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "now_entry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new NowDataReporter.1(this, l1), 90000L);
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+      localOIDBSSOPkg.uint32_command.set(1279);
+      localOIDBSSOPkg.uint32_service_type.set(9);
+      Object localObject = ByteBuffer.allocate(13);
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
+      if (paramBoolean) {
+        s = 1;
+      }
+      ((ByteBuffer)localObject).putInt(bdeu.a(l)).put((byte)0).putShort((short)1).putShort((short)-23275).putShort((short)2).putShort(s);
+      localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+      localObject = createToServiceMsg("OidbSvc.0x4ff_42261");
+      ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+      ((ToServiceMsg)localObject).setTimeout(30000L);
+      ((ToServiceMsg)localObject).extraData.putBoolean("switch", paramBoolean);
+      ((ToServiceMsg)localObject).extraData.putBoolean("uint32_input_status_flag", true);
+      ((ToServiceMsg)localObject).extraData.putBoolean("reqFromInputStatusHandler", true);
+      sendPbReq((ToServiceMsg)localObject);
       return;
-      label175:
-      str1 = "0";
-      break;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(a, 1, "setMedalSwitch ex", localException);
     }
   }
   
-  public asyp b(String paramString)
+  protected Class<? extends alpg> observerClass()
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
-    return this;
+    return asyt.class;
   }
   
-  public void b()
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    String str2 = String.valueOf(aowf.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (ndd.a() + "");
-    QLog.i("NowDataReporter", 1, "nowDatareport: source = " + this.jdField_a_of_type_JavaLangString + " roomid = " + this.jdField_b_of_type_JavaLangString + " roomType = " + this.jdField_c_of_type_JavaLangString + " op_name = " + this.jdField_f_of_type_JavaLangString + " op_in = " + this.jdField_f_of_type_Int + " d1= " + this.h + " d2=" + this.i + " d3=" + this.j + " d4=" + this.k + " timelong=" + this.l + " op_result = " + this.jdField_d_of_type_Int + " qq_version = " + str2 + "  optime = " + str1 + " lastOpName = " + this.o + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + "useShadow =" + this.jdField_b_of_type_Boolean);
-    azmj.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, this.jdField_f_of_type_Int, 1, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k + "|" + this.l + "|" + this.jdField_b_of_type_JavaLangString + "|" + this.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_JavaLangString + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str2 + "|" + str1 + "|" + this.o + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
-  }
-  
-  public asyp c(String paramString)
-  {
-    this.h = paramString;
-    return this;
-  }
-  
-  public asyp d(String paramString)
-  {
-    this.i = paramString;
-    return this;
-  }
-  
-  public asyp e(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
-  
-  public asyp f(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public asyp g(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public asyp h(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public asyp i(String paramString)
-  {
-    this.l = paramString;
-    return this;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      if (!TextUtils.equals("OidbSvc.0xcd4", paramFromServiceMsg.getServiceCmd())) {
+        break label27;
+      }
+      a(paramFromServiceMsg, paramObject);
+    }
+    label27:
+    do
+    {
+      return;
+      if (TextUtils.equals("OidbSvc.0x5eb_42261", paramFromServiceMsg.getServiceCmd()))
+      {
+        b(paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!TextUtils.equals("OidbSvc.0x4ff_42261", paramFromServiceMsg.getServiceCmd()));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

@@ -1,16 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class acwz
-  implements bhqq
 {
-  public acwz(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public acwz(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    FriendProfileImageActivity.a(this.a);
-    return true;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

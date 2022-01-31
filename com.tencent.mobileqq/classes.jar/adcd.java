@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adcd
-  extends alww
+  extends anyt
 {
-  public adcd(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public adcd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    if (paramBoolean)
+    {
+      anys localanys = (anys)this.a.app.getManager(112);
+      this.a.a = localanys.a(paramString);
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = aiab.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

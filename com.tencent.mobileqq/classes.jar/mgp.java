@@ -130,8 +130,8 @@ public class mgp
     QLog.w(this.jdField_c_of_type_JavaLangString, 1, "create GLVideoView");
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
     this.jdField_a_of_type_Lsz = new lsz();
-    this.t = aekt.a(6.0F, paramContext.getResources());
-    this.u = aekt.a(10.0F, paramContext.getResources());
+    this.t = aepi.a(6.0F, paramContext.getResources());
+    this.u = aepi.a(10.0F, paramContext.getResources());
     if (paramBoolean)
     {
       this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture = new luh(this.jdField_a_of_type_AndroidContentContext, this, paramString, paramLong);
@@ -346,7 +346,7 @@ public class mgp
         try
         {
           localStringBuilder.append(paramInt).append(';');
-          paramInt = bdee.b(BaseApplicationImpl.getApplication());
+          paramInt = bdin.b(BaseApplicationImpl.getApplication());
           if (paramInt == 1)
           {
             paramInt = 1;
@@ -525,7 +525,7 @@ public class mgp
     //   52: invokevirtual 491	android/graphics/Canvas:drawColor	(ILandroid/graphics/PorterDuff$Mode;)V
     //   55: aload_2
     //   56: bipush 20
-    //   58: invokestatic 496	bdjc:a	(Landroid/graphics/Bitmap;I)V
+    //   58: invokestatic 496	bdnl:a	(Landroid/graphics/Bitmap;I)V
     //   61: aload_2
     //   62: aload_1
     //   63: invokevirtual 459	android/graphics/Bitmap:getWidth	()I
@@ -1644,7 +1644,7 @@ public class mgp
       }
       else
       {
-        i1 = aekt.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i1 = aepi.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         i2 = this.y;
       }
     }
@@ -1773,7 +1773,7 @@ public class mgp
       localltz = this.jdField_b_of_type_Ltz;
       break;
       label185:
-      i1 = aekt.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + this.jdField_a_of_type_Lud.c() + this.u;
+      i1 = aepi.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + this.jdField_a_of_type_Lud.c() + this.u;
     }
   }
   
@@ -1819,7 +1819,7 @@ public class mgp
         break label108;
       }
       if (this.jdField_c_of_type_Lty == null) {
-        this.jdField_c_of_type_Lty = new luc(this.jdField_a_of_type_AndroidContentContext, 2130841942);
+        this.jdField_c_of_type_Lty = new luc(this.jdField_a_of_type_AndroidContentContext, 2130841955);
       }
       localGLRootView = a();
       if (localGLRootView != null) {

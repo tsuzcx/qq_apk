@@ -1,68 +1,92 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdpi
-  implements IBinder.DeathRecipient, bdpj
 {
-  private long jdField_a_of_type_Long;
-  private bajj jdField_a_of_type_Bajj;
-  private String jdField_a_of_type_JavaLangString;
+  String a;
+  public List<bdpk> a;
   
-  private bdpi(long paramLong, String paramString, bajj parambajj)
+  public bdpi()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public bdpi a()
+  {
+    bdpi localbdpi = new bdpi();
+    localbdpi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbdpi.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localbdpi;
+  }
+  
+  public bdpk a(int paramInt)
+  {
+    return (bdpk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  @Deprecated
+  public void a(int paramInt, String paramString)
+  {
+    bdpk localbdpk = new bdpk();
+    localbdpk.jdField_a_of_type_Int = paramInt;
+    localbdpk.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList.add(localbdpk);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    bdpk localbdpk = new bdpk();
+    localbdpk.jdField_a_of_type_Int = paramInt1;
+    localbdpk.jdField_a_of_type_JavaLangString = paramString;
+    localbdpk.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilList.add(localbdpk);
+  }
+  
+  public void a(bdpk parambdpk)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parambdpk);
+  }
+  
+  public void a(String paramString)
+  {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bajj = parambajj;
-    try
-    {
-      parambajj.asBinder().linkToDeath(this, 0);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
-    }
   }
   
-  public void binderDied()
+  public bdpk[] a()
   {
-    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
-    bdsj.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
-    try
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Bajj.onComplete(paramString1, paramInt1);
-      return;
+      bdpk[] arrayOfbdpk = new bdpk[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbdpk);
+      return arrayOfbdpk;
     }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    try
-    {
-      this.jdField_a_of_type_Bajj.onProgress(paramString1, paramLong2, paramLong3);
-      return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
-    }
+    return null;
   }
   
   public String toString()
   {
-    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bdpk localbdpk = (bdpk)localIterator.next();
+        localStringBuilder.append(" " + localbdpk.jdField_a_of_type_JavaLangString + "\n");
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 

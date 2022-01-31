@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Bundle;
 
 class amgh
-  implements Comparator<MessageRecord>
+  extends altm
 {
-  amgh(amgg paramamgg) {}
+  amgh(amgf paramamgf) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    amgf.a(this.a, paramBoolean2, paramBundle);
   }
 }
 

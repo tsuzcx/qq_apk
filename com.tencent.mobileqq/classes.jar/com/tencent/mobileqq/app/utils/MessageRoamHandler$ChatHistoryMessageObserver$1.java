@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.utils;
 
-import alsl;
-import ammr;
-import amms;
+import alxa;
+import amrg;
+import amrh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
@@ -10,7 +10,7 @@ import java.util.Calendar;
 public class MessageRoamHandler$ChatHistoryMessageObserver$1
   implements Runnable
 {
-  public MessageRoamHandler$ChatHistoryMessageObserver$1(amms paramamms, long paramLong, int paramInt, String paramString, boolean paramBoolean) {}
+  public MessageRoamHandler$ChatHistoryMessageObserver$1(amrh paramamrh, long paramLong, int paramInt, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class MessageRoamHandler$ChatHistoryMessageObserver$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage begin fetchNum: " + this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Amms.a.a(this.jdField_a_of_type_JavaLangString, (Calendar)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int)) {
+    if (this.jdField_a_of_type_Amrh.a.a(this.jdField_a_of_type_JavaLangString, (Calendar)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int)) {
       return;
     }
-    localObject = (alsl)this.jdField_a_of_type_Amms.a.app.getManager(92);
+    localObject = (alxa)this.jdField_a_of_type_Amrh.a.app.getManager(92);
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      ((alsl)localObject).a(0, i, Long.valueOf(this.jdField_a_of_type_Long));
+      ((alxa)localObject).a(0, i, Long.valueOf(this.jdField_a_of_type_Long));
       return;
     }
   }

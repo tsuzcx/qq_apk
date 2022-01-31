@@ -1,25 +1,108 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoCommentRsp;
-import java.util.Map;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-class tua
-  implements yvn<FeedCloudWrite.StDoCommentRsp>
+public class tua
+  extends tvw
+  implements yiy
 {
-  tua(ttv paramttv, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed) {}
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private trt jdField_a_of_type_Trt;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
+  public String a()
   {
-    if (paramStDoCommentRsp != null) {
-      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
+    return "QCircleTaskCenterPart";
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    {
+      tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 8, 1L);
+      if (this.jdField_a_of_type_Trt != null) {
+        this.jdField_a_of_type_Trt.onRefreshData();
+      }
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(a().getRootView(), 81, 0, 0);
     }
-    ttv.a(this.jdField_a_of_type_Ttv).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Ttv.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1 - this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size()));
-    yej.a().a(new QCircleCommentUpdateEvent(2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Ttv.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())));
-    uht.a().dispatch(this.jdField_a_of_type_Ttv.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Ttv.hashCode()) }));
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_Trt = new trt(null);
+    a().add(this.jdField_a_of_type_Trt);
+    super.a(paramView);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(), -1, -1);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755523);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(a());
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+    a().a().setBackgroundResource(2130843738);
+    a().setBackgroundResource(2131165319);
+    a().setOnClickListener(new tub(this));
+    a().setPadding(0, (int)(xin.b(a()) * 0.6D), 0, 0);
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    {
+      b();
+      return true;
+    }
+    return super.a();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleTaskCenterEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    b();
+    super.onActivityDestroyed(paramActivity);
+  }
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    super.onActivityStarted(paramActivity);
+    yiw.a().a(this);
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    super.onActivityStopped(paramActivity);
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((!(paramSimpleBaseEvent instanceof QCircleTaskCenterEvent)) || (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mPopContextHashCode != a().hashCode())) {
+      return;
+    }
+    if (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mIsShowTaskPanel)
+    {
+      a();
+      return;
+    }
+    b();
   }
 }
 

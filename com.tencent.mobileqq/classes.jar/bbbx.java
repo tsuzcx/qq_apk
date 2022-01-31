@@ -1,13 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-
 public class bbbx
-  implements DialogInterface.OnClickListener
+  extends bbbz
 {
-  public bbbx(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public byte[] a;
 }
 
 

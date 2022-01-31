@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class meo
-  extends almw
+  extends alrl
 {
   public meo(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity) {}
   
@@ -29,7 +29,7 @@ public class meo
       }
       return;
     }
-    this.a.jdField_a_of_type_Almt.c(paramLong2);
+    this.a.jdField_a_of_type_Alri.c(paramLong2);
     this.a.a(1, paramInt);
   }
   
@@ -40,7 +40,7 @@ public class meo
     {
       this.a.h = String.valueOf(paramLong);
       if (!TextUtils.isEmpty(this.a.h)) {
-        ((almt)this.a.app.a(6)).a(paramLong);
+        ((alri)this.a.app.a(6)).a(paramLong);
       }
       return;
     }
@@ -85,8 +85,8 @@ public class meo
       if (TextUtils.equals(String.valueOf(l), this.a.h))
       {
         this.a.c();
-        AudioHelper.b(alpo.a(2131702754));
-        ((almt)this.a.app.a(6)).a(l);
+        AudioHelper.b(alud.a(2131702766));
+        ((alri)this.a.app.a(6)).a(l);
         return;
       }
       this.a.finish();

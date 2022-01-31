@@ -1,25 +1,23 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class yjp
-  implements bevy
+public class yjp
+  implements View.OnClickListener
 {
-  yjp(yjk paramyjk) {}
+  public yjp(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yiz paramyiz) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((yjk.c(this.a) == null) || (!yjk.c(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Yiz.a.poster.registerCertifiedAccountUrl.get()))
     {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(yjk.a(this.a), 1, "分享失败", 0).a();
-      return;
+      ybt.a(this.jdField_a_of_type_Yiz.a.poster.registerCertifiedAccountUrl.get());
+      zaj.b(this.jdField_a_of_type_Yiz.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
     }
-    QQToast.a(yjk.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class EditWebDanceMachineVideoActivity$1
@@ -10,7 +10,7 @@ class EditWebDanceMachineVideoActivity$1
   
   public void run()
   {
-    QQToast.a(this.this$0, 1, alpo.a(2131704320), 0).a();
+    QQToast.a(this.this$0, 1, alud.a(2131704332), 0).a();
   }
 }
 

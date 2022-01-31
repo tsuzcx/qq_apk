@@ -1,61 +1,16 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class ahsv
-  implements absf
+public class ahsv
+  implements aybr
 {
-  ahsv(ahsh paramahsh, String paramString) {}
+  private ahsv(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onComplete()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((ahsh.a(this.jdField_a_of_type_Ahsh).isFinishing()) || (this.jdField_a_of_type_Ahsh.b))
-    {
-      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
-      return;
+    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
     }
-    this.jdField_a_of_type_Ahsh.c();
-    if (ahsh.a(this.jdField_a_of_type_Ahsh) != null) {
-      ahsh.a(this.jdField_a_of_type_Ahsh).removeCallbacks(ahsh.a(this.jdField_a_of_type_Ahsh));
-    }
-    this.jdField_a_of_type_Ahsh.a(alpo.a(2131713982), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if ((ahsh.a(this.jdField_a_of_type_Ahsh).isFinishing()) || (this.jdField_a_of_type_Ahsh.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Ahsh.c();
-    if (ahsh.a(this.jdField_a_of_type_Ahsh) != null) {
-      ahsh.a(this.jdField_a_of_type_Ahsh).removeCallbacks(ahsh.a(this.jdField_a_of_type_Ahsh));
-    }
-    this.jdField_a_of_type_Ahsh.a(alpo.a(2131713983), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if ((ahsh.a(this.jdField_a_of_type_Ahsh).isFinishing()) || (this.jdField_a_of_type_Ahsh.b)) {
-      return;
-    }
-    if (ahsh.a(this.jdField_a_of_type_Ahsh) != null) {
-      ahsh.a(this.jdField_a_of_type_Ahsh).removeCallbacks(ahsh.a(this.jdField_a_of_type_Ahsh));
-    }
-    ahsh.b(this.jdField_a_of_type_Ahsh);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
   }
 }
 

@@ -1,19 +1,14 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-public class apfw
+public final class apfw
+  implements ExternalProvider
 {
-  public String a;
-  public ArrayList<String> a;
-  public String b;
-  public ArrayList<String> b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public apfw(apfv paramapfv) {}
+  public void onSoLoad(String paramString1, String paramString2)
+  {
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
+  }
 }
 
 

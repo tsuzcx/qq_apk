@@ -1,18 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
 
 public class aduo
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public aduo(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public aduo(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    azmj.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    if (paramEditable == null) {}
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(paramEditable.toString())) {
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+      }
+      while (RegisterPersonalInfoActivity.a(this.a) != null)
+      {
+        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
+        return;
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+      }
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

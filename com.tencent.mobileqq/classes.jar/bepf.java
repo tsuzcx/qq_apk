@@ -1,45 +1,55 @@
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Point;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
-class bepf
-  extends Handler
+public class bepf
+  extends BaseAdapter
 {
-  public int a;
+  private int jdField_a_of_type_Int;
   
-  bepf(bepe parambepe) {}
-  
-  public void a(int paramInt)
+  public bepf(DraggableGridView paramDraggableGridView, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Bepe.isVisible())
-    {
-      this.jdField_a_of_type_Bepe.b = this.jdField_a_of_type_Int;
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
     }
-    if (this.jdField_a_of_type_Bepe.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Bepe.c(this.jdField_a_of_type_Bepe.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bepe.e);
-      return;
+    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
+    paramView = new bepd(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
+    localView.setOnClickListener(paramView);
+    localView.setOnLongClickListener(paramView);
+    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
+      localView.setVisibility(0);
     }
-    if (this.jdField_a_of_type_Bepe.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Bepe.b + this.jdField_a_of_type_Bepe.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bepe.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bepe.e);
-        return;
-        this.jdField_a_of_type_Bepe.c(this.jdField_a_of_type_Int);
-      }
-    }
-    removeMessages(0);
+    return localView;
   }
 }
 

@@ -12,7 +12,7 @@ public class ef
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   public RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ansf a;
+  public anwo a;
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
   private eg jdField_a_of_type_Eg = new eg(this);
   private eh jdField_a_of_type_Eh = new eh(this);

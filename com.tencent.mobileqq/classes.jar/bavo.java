@@ -1,48 +1,49 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
+import android.os.Bundle;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
 
-public abstract class bavo
+public class bavo
+  extends CheckConErroObserver
 {
-  static final String TAG = "PreDownload.Task";
-  protected QQAppInterface app;
-  protected bavr ctrl;
-  public String key;
-  protected Handler subHandler;
-  public Object userData;
+  bavq jdField_a_of_type_Bavq;
+  bavr jdField_a_of_type_Bavr;
   
-  protected bavo(QQAppInterface paramQQAppInterface, String paramString)
+  public bavo(ProtoReqManager paramProtoReqManager, bavr parambavr, bavq parambavq)
   {
-    this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((bavr)this.app.getManager(193));
-    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_Bavr = parambavr;
+    this.jdField_a_of_type_Bavq = parambavq;
   }
   
-  public final void cancel()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.subHandler.post(new AbsPreDownloadTask.2(this));
-  }
-  
-  public abstract void realCancel();
-  
-  public abstract void realStart();
-  
-  public final void start()
-  {
-    this.subHandler.post(new AbsPreDownloadTask.1(this));
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.key + "]";
+    if (paramBundle != null)
+    {
+      Object localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      if (this.jdField_a_of_type_Bavr != null)
+      {
+        localObject = this.jdField_a_of_type_Bavr.a;
+        if (localObject != null) {
+          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Bavq.a != null) {
+      this.jdField_a_of_type_Bavq.a.a(this.jdField_a_of_type_Bavr, this.jdField_a_of_type_Bavq);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bavo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -494,7 +494,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     }
     catch (JSONException paramString)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, alpo.a(2131701379), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, alud.a(2131701391), paramInt);
       paramString.printStackTrace();
       return;
     }
@@ -637,7 +637,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         String str1 = (String)AuthorizeCenter.scopeDescMap.get(localObject1);
         paramMessage = (String)AuthorizeCenter.negativeButtonDesMap.get(localObject1);
         if (TextUtils.isEmpty(paramMessage)) {
-          paramMessage = alpo.a(2131701382);
+          paramMessage = alud.a(2131701394);
         }
         Object localObject3;
         String str2;
@@ -658,7 +658,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         label305:
         if ((this.authDialog != null) && (!this.isPause))
         {
-          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), alpo.a(2131701380), new BaseJsPluginEngine.7(this));
+          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), alud.a(2131701392), new BaseJsPluginEngine.7(this));
           continue;
           localObject1 = this.sysPermissionQueue.iterator();
           if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
@@ -776,7 +776,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         if (localObject != null)
         {
           str2 = AuthorizeCenter.getSystemPermission(paramString1, paramString2);
-          if (bdje.a(str2)) {
+          if (bdnn.a(str2)) {
             break label441;
           }
           if (((BaseActivity)localObject).checkSelfPermission(str2) != 0) {

@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequestRunnable;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import java.nio.ByteBuffer;
 
-public class bbqr
+class bbqr
 {
-  public int a;
-  public long a;
-  public alsj a;
-  public bbqq a;
-  public FromServiceMsg a;
-  public boolean a;
-  public TroopFileProtoReqMgr.ProtoRequestRunnable[] a;
+  public final int a;
+  public final long a;
+  public final long b;
   
-  public bbqr()
+  public bbqr(ByteBuffer paramByteBuffer)
   {
-    this.jdField_a_of_type_Alsj = new alsj();
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
+    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbqr
  * JD-Core Version:    0.7.0.1
  */

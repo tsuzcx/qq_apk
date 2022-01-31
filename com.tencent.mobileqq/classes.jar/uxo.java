@@ -1,36 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class uxo
-  extends uxn
 {
-  private bcxb a;
+  @xrk(a="pkIconUrl")
+  public String a;
+  @xrk(a="pkWording")
+  public String b;
+  @xrk(a="pkAction")
+  public String c;
+  @xrk(a="pkIconUrlSelf")
+  public String d;
+  @xrk(a="pkWordingSelf")
+  public String e;
+  @xrk(a="pkActionSelf")
+  public String f;
   
-  public void a(utx paramutx)
+  public String toString()
   {
-    super.a(paramutx);
-    this.itemView.setTag(paramutx.a);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str1 = String.valueOf(paramutx.b);
-      this.jdField_a_of_type_Bcxb = bcxb.a((AppInterface)localObject, 1, str1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bcxb);
-      String str2 = bdbt.m((QQAppInterface)localObject, str1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramutx.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_Bcxb);
-      }
-    }
+    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
   }
 }
 

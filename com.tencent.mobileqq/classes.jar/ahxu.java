@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ProgressBar;
 
-class ahxu
-  implements View.OnClickListener
+final class ahxu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahxu(ahxt paramahxt) {}
+  ahxu(ProgressBar paramProgressBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368613));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Ahys != null) {
-      this.a.a.jdField_a_of_type_Ahys.a();
+    if (this.a != null) {
+      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     }
   }
 }

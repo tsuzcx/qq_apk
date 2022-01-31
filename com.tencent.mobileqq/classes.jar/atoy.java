@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import java.io.File;
+import java.util.Comparator;
 
-public class atoy
-  implements View.OnClickListener
+final class atoy
+  implements Comparator<File>
 {
-  public atoy(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
-  
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {
-      return;
+    if (paramFile1.lastModified() < paramFile2.lastModified()) {
+      return -1;
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-    azmj.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

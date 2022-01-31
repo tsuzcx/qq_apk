@@ -1,18 +1,28 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
-class ahqb
-  extends akee
+public class ahqb
+  extends MqqHandler
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public ahqb(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopSuspiciousFragment.a(this.a) == null);
+      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    this.a.a();
+  }
 }
 
 

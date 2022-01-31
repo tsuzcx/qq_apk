@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amos;
-import amun;
+import amth;
+import amzc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new amun();
+  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new amzc();
   public static int f = 3;
   public int a;
-  public amos a;
+  public amth a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;

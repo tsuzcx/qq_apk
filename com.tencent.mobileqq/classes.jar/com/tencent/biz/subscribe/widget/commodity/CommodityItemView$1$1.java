@@ -2,16 +2,16 @@ package com.tencent.biz.subscribe.widget.commodity;
 
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.widget.SquareImageView;
-import yka;
+import yon;
 
 public class CommodityItemView$1$1
   implements Runnable
 {
-  public CommodityItemView$1$1(yka paramyka, Drawable paramDrawable) {}
+  public CommodityItemView$1$1(yon paramyon, Drawable paramDrawable) {}
   
   public void run()
   {
-    CommodityItemView.a(this.jdField_a_of_type_Yka.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    CommodityItemView.a(this.jdField_a_of_type_Yon.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

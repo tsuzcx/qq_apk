@@ -1,12 +1,6 @@
-import android.view.animation.Interpolator;
-
-public class ajdt
-  implements Interpolator
+public abstract interface ajdt
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

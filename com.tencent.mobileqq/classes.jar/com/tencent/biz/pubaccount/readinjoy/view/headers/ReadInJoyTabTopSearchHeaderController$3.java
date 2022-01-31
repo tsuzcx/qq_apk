@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
 import android.text.format.DateUtils;
-import bdiv;
+import bdne;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import set;
@@ -14,11 +14,11 @@ public class ReadInJoyTabTopSearchHeaderController$3
   public void run()
   {
     int i = 0;
-    if (!DateUtils.isToday(bdiv.b("search_word_prefix_last_change_hotword_time")))
+    if (!DateUtils.isToday(bdne.b("search_word_prefix_last_change_hotword_time")))
     {
-      bdiv.a("search_word_prefix_last_change_hotword_time", System.currentTimeMillis());
-      bdiv.a(this.this$0.a, 0);
-      bdiv.a(this.this$0.b, 0);
+      bdne.a("search_word_prefix_last_change_hotword_time", System.currentTimeMillis());
+      bdne.a(this.this$0.a, 0);
+      bdne.a(this.this$0.b, 0);
     }
     AladdinConfig localAladdinConfig = Aladdin.getConfig(204);
     int m;
@@ -33,25 +33,25 @@ public class ReadInJoyTabTopSearchHeaderController$3
     }
     for (;;)
     {
-      if (bdiv.a(this.this$0.a) < m)
+      if (bdne.a(this.this$0.a) < m)
       {
-        if (bdiv.a(this.this$0.b) >= k) {
+        if (bdne.a(this.this$0.b) >= k) {
           break label200;
         }
-        if ((bdiv.a(this.this$0.b) + 1) % j == 0)
+        if ((bdne.a(this.this$0.b) + 1) % j == 0)
         {
-          bdiv.a(this.this$0.a, bdiv.a(this.this$0.a) + 1);
+          bdne.a(this.this$0.a, bdne.a(this.this$0.a) + 1);
           this.this$0.b(true, this.a, this.b);
         }
       }
       for (;;)
       {
-        bdiv.a(this.this$0.b, bdiv.a(this.this$0.b) + 1);
+        bdne.a(this.this$0.b, bdne.a(this.this$0.b) + 1);
         return;
         label200:
-        if ((bdiv.a(this.this$0.b) + 1 - k) % i == 0)
+        if ((bdne.a(this.this$0.b) + 1 - k) % i == 0)
         {
-          bdiv.a(this.this$0.a, bdiv.a(this.this$0.a) + 1);
+          bdne.a(this.this$0.a, bdne.a(this.this$0.a) + 1);
           this.this$0.b(true, this.a, this.b);
         }
       }

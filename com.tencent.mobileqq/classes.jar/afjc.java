@@ -1,22 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class afjc
-  implements View.OnClickListener
+public class afjc
+  extends ampt
 {
-  afjc(afjb paramafjb, long paramLong) {}
-  
-  public void onClick(View paramView)
+  afjc(afjb paramafjb, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_Afjb.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    adky.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      return;
+    }
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
+    }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 

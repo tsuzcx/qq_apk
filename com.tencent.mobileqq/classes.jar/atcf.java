@@ -1,31 +1,33 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import org.json.JSONObject;
 
-final class atcf
-  implements HookMethodCallback
+class atcf
+  extends BroadcastReceiver
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
-    {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
-      {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
-      }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
-    }
-  }
+  atcf(atca paramatca) {}
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    int i;
+    if ((paramContext.equals(atav.a(atca.b(this.a)))) || (paramContext.equals(atav.d(atca.b(this.a)))))
+    {
+      i = paramIntent.getIntExtra("key_state", -1);
+      paramContext = atca.a(this.a, i);
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 9: 
+    case 100: 
+      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
+      return;
+    }
+    atcg.a.a = 0L;
+  }
 }
 
 

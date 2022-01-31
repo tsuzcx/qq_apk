@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aljq;
+import alof;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import arof;
-import aroj;
-import bbnr;
-import bbpe;
+import arso;
+import arss;
+import bbsa;
+import bbtn;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,7 +45,7 @@ public class TroopFileTransferManager$Item
   public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
   public transient boolean isFileExist;
   public transient String mExcitingSpeed;
-  public aroj mForwardCallback;
+  public arss mForwardCallback;
   public transient int retryTimes;
   public transient String rspHeadStr;
   public transient int thumbInvalidCode;
@@ -55,21 +55,21 @@ public class TroopFileTransferManager$Item
   
   public TroopFileTransferManager$Item() {}
   
-  public TroopFileTransferManager$Item(bbnr parambbnr)
+  public TroopFileTransferManager$Item(bbsa parambbsa)
   {
-    this.Id = parambbnr.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = parambbnr.jdField_h_of_type_JavaLangString;
-    this.Status = parambbnr.jdField_e_of_type_Int;
-    this.FilePath = parambbnr.jdField_b_of_type_JavaLangString;
-    this.FileName = parambbnr.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = parambbnr.jdField_a_of_type_Long;
-    this.UploadTime = parambbnr.a();
-    this.BusId = parambbnr.jdField_a_of_type_Int;
-    if ((parambbnr.jdField_i_of_type_JavaLangString != null) && (parambbnr.jdField_i_of_type_JavaLangString.length() > 0))
+    this.Id = parambbsa.jdField_a_of_type_JavaUtilUUID;
+    this.LocalFile = parambbsa.jdField_h_of_type_JavaLangString;
+    this.Status = parambbsa.jdField_e_of_type_Int;
+    this.FilePath = parambbsa.jdField_b_of_type_JavaLangString;
+    this.FileName = parambbsa.jdField_c_of_type_JavaLangString;
+    this.ProgressTotal = parambbsa.jdField_a_of_type_Long;
+    this.UploadTime = parambbsa.a();
+    this.BusId = parambbsa.jdField_a_of_type_Int;
+    if ((parambbsa.jdField_i_of_type_JavaLangString != null) && (parambbsa.jdField_i_of_type_JavaLangString.length() > 0))
     {
       bool1 = true;
       this.HasThumbnailFile_Small = bool1;
-      if ((parambbnr.j == null) || (parambbnr.j.length() <= 0)) {
+      if ((parambbsa.j == null) || (parambbsa.j.length() <= 0)) {
         break label140;
       }
     }
@@ -77,8 +77,8 @@ public class TroopFileTransferManager$Item
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.HasThumbnailFile_Large = bool1;
-      this.NickName = parambbnr.n;
-      this.mParentId = parambbnr.f;
+      this.NickName = parambbsa.n;
+      this.mParentId = parambbsa.f;
       return;
       bool1 = false;
       break;
@@ -193,43 +193,43 @@ public class TroopFileTransferManager$Item
     new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
-  public final bbpe getInfo(long paramLong)
+  public final bbtn getInfo(long paramLong)
   {
-    bbpe localbbpe = new bbpe();
-    localbbpe.jdField_b_of_type_Long = paramLong;
-    localbbpe.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbbpe.jdField_d_of_type_Long = this.ProgressValue;
-    localbbpe.jdField_b_of_type_Int = this.Status;
-    localbbpe.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbbpe.jdField_c_of_type_Int = this.ErrorCode;
-    localbbpe.jdField_h_of_type_Int = this.BusId;
+    bbtn localbbtn = new bbtn();
+    localbbtn.jdField_b_of_type_Long = paramLong;
+    localbbtn.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localbbtn.jdField_d_of_type_Long = this.ProgressValue;
+    localbbtn.jdField_b_of_type_Int = this.Status;
+    localbbtn.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localbbtn.jdField_c_of_type_Int = this.ErrorCode;
+    localbbtn.jdField_h_of_type_Int = this.BusId;
     if (this.HasThumbnailFile_Small)
     {
       str = getThumbnailFile(paramLong, 128);
-      localbbpe.jdField_b_of_type_JavaLangString = str;
+      localbbtn.jdField_b_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Large) {
         break label349;
       }
       str = getThumbnailFile(paramLong, 640);
       label107:
-      localbbpe.jdField_c_of_type_JavaLangString = str;
+      localbbtn.jdField_c_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Middle) {
         break label371;
       }
       str = getThumbnailFile(paramLong, 383);
       label129:
-      localbbpe.jdField_d_of_type_JavaLangString = str;
-      localbbpe.jdField_c_of_type_Long = this.ProgressTotal;
-      localbbpe.jdField_d_of_type_Int = this.UploadTime;
-      localbbpe.jdField_e_of_type_JavaLangString = this.FilePath;
+      localbbtn.jdField_d_of_type_JavaLangString = str;
+      localbbtn.jdField_c_of_type_Long = this.ProgressTotal;
+      localbbtn.jdField_d_of_type_Int = this.UploadTime;
+      localbbtn.jdField_e_of_type_JavaLangString = this.FilePath;
       if ((TextUtils.isEmpty(this.NameForSave)) || (this.SafeCheckRes != 2)) {
         break label393;
       }
-      localbbpe.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localbbtn.jdField_g_of_type_JavaLangString = this.NameForSave;
       label189:
-      localbbpe.jdField_a_of_type_JavaLangString = this.LocalFile;
-      localbbpe.jdField_h_of_type_JavaLangString = this.NickName;
-      localbbpe.jdField_e_of_type_Long = this.entrySessionID;
+      localbbtn.jdField_a_of_type_JavaLangString = this.LocalFile;
+      localbbtn.jdField_h_of_type_JavaLangString = this.NickName;
+      localbbtn.jdField_e_of_type_Long = this.entrySessionID;
       if (!TextUtils.isEmpty(this.mParentId)) {
         break label405;
       }
@@ -238,18 +238,18 @@ public class TroopFileTransferManager$Item
     label405:
     for (String str = "/";; str = this.mParentId)
     {
-      localbbpe.jdField_i_of_type_JavaLangString = str;
-      localbbpe.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-      if ((localbbpe.jdField_b_of_type_Boolean) && (!arof.b(localbbpe.jdField_d_of_type_JavaLangString))) {
-        localbbpe.jdField_d_of_type_JavaLangString = null;
+      localbbtn.jdField_i_of_type_JavaLangString = str;
+      localbbtn.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
+      if ((localbbtn.jdField_b_of_type_Boolean) && (!arso.b(localbbtn.jdField_d_of_type_JavaLangString))) {
+        localbbtn.jdField_d_of_type_JavaLangString = null;
       }
-      localbbpe.jdField_e_of_type_Int = this.width;
-      localbbpe.f = this.height;
-      localbbpe.jdField_g_of_type_Int = this.duration;
-      localbbpe.j = this.mExcitingSpeed;
-      localbbpe.jdField_i_of_type_Int = this.thumbInvalidCode;
-      localbbpe.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
-      return localbbpe;
+      localbbtn.jdField_e_of_type_Int = this.width;
+      localbbtn.f = this.height;
+      localbbtn.jdField_g_of_type_Int = this.duration;
+      localbbtn.j = this.mExcitingSpeed;
+      localbbtn.jdField_i_of_type_Int = this.thumbInvalidCode;
+      localbbtn.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+      return localbbtn;
       if (canFetchThumbnailFile(128))
       {
         str = null;
@@ -273,7 +273,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label129;
-      localbbpe.jdField_g_of_type_JavaLangString = this.FileName;
+      localbbtn.jdField_g_of_type_JavaLangString = this.FileName;
       break label189;
     }
   }
@@ -281,12 +281,12 @@ public class TroopFileTransferManager$Item
   public final String getThumbnailFile(long paramLong, int paramInt)
   {
     if (paramInt == 128) {
-      return aljq.bp + "[Thumb]" + paramLong + "-" + this.Id.toString();
+      return alof.bp + "[Thumb]" + paramLong + "-" + this.Id.toString();
     }
     if (paramInt == 383) {
-      return aljq.bp + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
+      return alof.bp + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
     }
-    return aljq.bp + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
+    return alof.bp + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.qqmini.nativePlugins;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bgho;
-import bjmq;
+import bglv;
+import bjqx;
 
 class TroopAlbumPlugin$2
-  implements bjmq
+  implements bjqx
 {
   TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString) {}
   

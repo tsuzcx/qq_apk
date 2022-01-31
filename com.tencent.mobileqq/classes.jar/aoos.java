@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
-
-public abstract interface aoos
+public class aoos
 {
-  public abstract long a();
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract ExcitingTransferDownloadConfig a();
+  aoos(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
   
-  public abstract boolean a();
+  public String toString()
+  {
+    return "UIElement(" + this.a + ", " + this.b + ", " + this.c + ")";
+  }
 }
 
 

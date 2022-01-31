@@ -1,17 +1,37 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.List;
+import android.graphics.drawable.Drawable;
 
 public class wrb
 {
-  public final int a;
-  public final List<LocalMediaInfo> a;
-  public final ueq a;
+  public int a;
+  public Drawable a;
+  public String a;
+  public wqx a;
+  public int b;
   
-  public wrb(List<LocalMediaInfo> paramList, int paramInt, ueq paramueq)
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ueq = paramueq;
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "?";
+    }
+    if (this.jdField_a_of_type_Wqx == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return wrm.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Wqx.a() });
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return a().equals(((wrb)paramObject).a());
+  }
+  
+  public int hashCode()
+  {
+    return a().hashCode();
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

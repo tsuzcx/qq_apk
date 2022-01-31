@@ -12,7 +12,7 @@ public class sav
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131717264);
+    jdField_a_of_type_JavaLangString = alud.a(2131717276);
   }
   
   public int a(BaseData paramBaseData)
@@ -22,7 +22,7 @@ public class sav
   
   public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Saw = new saw(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560015, null), paramBaseData);
+    this.jdField_a_of_type_Saw = new saw(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560014, null), paramBaseData);
     return this.jdField_a_of_type_Saw;
   }
   

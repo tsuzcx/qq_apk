@@ -1,45 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
 
-public class blcp
-  implements IVideoShelfPlayerListener
+class blcp
+  extends RecyclerView.ViewHolder
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private AEGIFOutlineTextView jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
+  private DrawableImageView jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView;
+  private ImageView b;
   
-  public blcp(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public blcp(blcj paramblcj, View paramView)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363702));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131373316));
+    this.jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView = ((DrawableImageView)paramView.findViewById(2131362183));
+    this.b = ((ImageView)paramView.findViewById(2131362184));
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView = ((AEGIFOutlineTextView)paramView.findViewById(2131371494));
   }
   
-  public void onChangVideoSize(int paramInt1, int paramInt2) {}
-  
-  public void onCompletion()
+  public void a(boolean paramBoolean)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837984);
+      return;
     }
-  }
-  
-  public boolean onError(int paramInt, String paramString, Object paramObject)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
-  
-  public void onUpdateRate(long paramLong)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837694);
   }
 }
 

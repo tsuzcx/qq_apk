@@ -1,38 +1,60 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class uyv
+class uyv
+  implements vln
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public static boolean a;
+  uyv(uyt paramuyt, List paramList) {}
   
-  public static void a(String paramString)
+  public void a()
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
-      {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
-      }
-      if (!jdField_a_of_type_Boolean)
-      {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
-      }
-      return;
-    }
+    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
+    uyt.b(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "pull video info failed"));
   }
   
-  public static void a(ArrayList<String> paramArrayList)
+  public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    paramArrayList = new uyw(paramArrayList);
-    uyx localuyx = new uyx();
-    upq.a().a(paramArrayList, localuyx);
+    if (paramArrayList == null)
+    {
+      wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
+      uyt.a(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "video list empty !"));
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    Object localObject;
+    while (paramArrayList.hasNext())
+    {
+      localObject = (StoryVideoItem)paramArrayList.next();
+      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
+    }
+    paramArrayList = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    if (i < j)
+    {
+      localObject = (vlp)this.jdField_a_of_type_JavaUtilList.get(i);
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((vlp)localObject).b);
+      if (localStoryVideoItem == null) {
+        wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((vlp)localObject).a = localStoryVideoItem;
+        paramArrayList.add(localObject);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
+    }
+    uyt.a(this.jdField_a_of_type_Uyt, paramArrayList);
   }
 }
 

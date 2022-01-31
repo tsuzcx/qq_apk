@@ -1,62 +1,28 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import java.lang.ref.WeakReference;
 
 public class admi
   extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
+  WeakReference<PayBridgeActivity> a;
   
-  private admi(QQLSActivity paramQQLSActivity) {}
+  public admi(PayBridgeActivity paramPayBridgeActivity)
+  {
+    this.a = new WeakReference(paramPayBridgeActivity);
+  }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
+    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (paramIntent != null) {}
-          try
-          {
-            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-            }
-          }
-          catch (Exception paramContext)
-          {
-            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
-            return;
-          }
-        }
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, atvs.f);
+      paramContext = (PayBridgeActivity)this.a.get();
+      if (paramContext != null) {
+        paramContext.b = true;
+      }
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!atvs.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

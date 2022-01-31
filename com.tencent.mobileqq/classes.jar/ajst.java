@@ -1,31 +1,23 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class ajst
-  implements SensorEventListener
 {
-  public ajst(SensorFrameImageView paramSensorFrameImageView) {}
+  private static int a = 10000;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public static void a(int paramInt)
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
+    a = paramInt;
+  }
+  
+  public static void a(String paramString, Properties paramProperties)
+  {
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
     }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
-    }
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    azqh.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
   }
 }
 

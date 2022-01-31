@@ -1,21 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-
-class aghe
-  implements View.OnTouchListener
+public abstract interface aghe
 {
-  aghe(aghd paramaghd, aggy paramaggy) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
-  }
+  public abstract boolean a(Object paramObject);
 }
 
 

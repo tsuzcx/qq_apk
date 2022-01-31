@@ -1,12 +1,13 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 
 public abstract interface belo
+  extends begg
 {
-  public abstract void a(int paramInt);
+  public abstract WebViewProgressBar a();
   
-  public abstract void a(Drawable paramDrawable);
+  public abstract void a();
   
-  public abstract void b(Drawable paramDrawable);
+  public abstract void b();
 }
 
 

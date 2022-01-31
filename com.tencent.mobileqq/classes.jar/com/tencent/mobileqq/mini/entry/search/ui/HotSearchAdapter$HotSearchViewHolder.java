@@ -30,11 +30,11 @@ class HotSearchAdapter$HotSearchViewHolder
       return;
       this.ranking.setVisibility(0);
       if (paramInt == 0) {
-        this.ranking.setImageResource(2130840765);
-      } else if (paramInt == 1) {
         this.ranking.setImageResource(2130840766);
-      } else if (paramInt == 2) {
+      } else if (paramInt == 1) {
         this.ranking.setImageResource(2130840767);
+      } else if (paramInt == 2) {
+        this.ranking.setImageResource(2130840768);
       }
     }
   }

@@ -1,8 +1,10 @@
-import android.os.Bundle;
+import cooperation.plugin.PluginInfo;
 
 public abstract interface birw
 {
-  public abstract boolean a(int paramInt, Bundle paramBundle);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(PluginInfo paramPluginInfo);
 }
 
 

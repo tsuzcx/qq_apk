@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class aulh
-  extends aukn
 {
-  public aulh(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    super(paramQQAppInterface);
-  }
-  
-  public void a(auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq)
-  {
-    super.a(paramauld, paramHashMap, paramaukq);
-    paramaukq.a(0, 4, paramauld);
+    if (Build.VERSION.SDK_INT > 25)
+    {
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().runFinalization();
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < 2)
+      {
+        ArrayList localArrayList = new ArrayList();
+        do
+        {
+          localArrayList.add(new WeakReference(new byte[100]));
+        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
+        i += 1;
+      }
+    }
   }
 }
 

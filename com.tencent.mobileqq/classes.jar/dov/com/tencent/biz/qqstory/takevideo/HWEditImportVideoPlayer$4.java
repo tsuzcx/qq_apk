@@ -1,23 +1,23 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmeu;
-import bmkq;
+import bmjg;
+import bmpc;
 
 public class HWEditImportVideoPlayer$4
   implements Runnable
 {
-  public HWEditImportVideoPlayer$4(bmkq parambmkq) {}
+  public HWEditImportVideoPlayer$4(bmpc parambmpc) {}
   
   public void run()
   {
     if (this.this$0.j) {}
-    bmeu localbmeu;
+    bmjg localbmjg;
     do
     {
       return;
-      localbmeu = (bmeu)this.this$0.a(bmeu.class);
-    } while (localbmeu == null);
-    localbmeu.b();
+      localbmjg = (bmjg)this.this$0.a(bmjg.class);
+    } while (localbmjg == null);
+    localbmjg.b();
   }
 }
 

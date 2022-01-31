@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.TextView;
 
-class afmo
-  extends afpq
+public class afmo
+  extends aepm
 {
-  afmo(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  TextView b;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new aftc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, aflj.a(this.a));
-  }
+  afmo(afmn paramafmn) {}
 }
 
 

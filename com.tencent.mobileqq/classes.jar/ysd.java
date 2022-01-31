@@ -1,24 +1,49 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ysd
-  implements nbs
+  extends yta
 {
-  public ysd(PluginJumpManager paramPluginJumpManager) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public ysd(VideoCombineHelper.3 param3)
   {
-    if (paramInt == 0) {
-      nbv.a("urlplugin.cfg", this.a.mContext, "1007", new yse(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
-      return;
-    }
-    this.a.loadConfigFromFile();
+    super(param3.this$0);
   }
   
-  public void progress(int paramInt) {}
+  public void a(ysz paramysz)
+  {
+    do
+    {
+      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramysz.c);
+        if ((paramysz instanceof ysu))
+        {
+          this.a.jdField_a_of_type_Ysj.a("", false, "download failed! msg = " + paramysz.d);
+          return;
+        }
+      }
+      if ((paramysz instanceof ysm))
+      {
+        this.a.jdField_a_of_type_Ysj.a("", false, "combine failed! msg = " + paramysz.d);
+        return;
+      }
+    } while (!(paramysz instanceof ysx));
+    this.a.jdField_a_of_type_Ysj.a("", false, "sending failed! msg = " + paramysz.d);
+  }
+  
+  public void b(ysz paramysz)
+  {
+    ysl localysl = paramysz.a();
+    if (((paramysz instanceof ysm)) || (localysl.b)) {}
+    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramysz.c);
+      this.a.jdField_a_of_type_Ysj.a(localysl.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
+    }
+  }
 }
 
 

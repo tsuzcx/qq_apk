@@ -1,6 +1,6 @@
 package com.tencent.biz.troopgift;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -11,8 +11,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import java.util.ArrayList;
-import yqm;
-import yqo;
+import yvb;
+import yvd;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -54,23 +54,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList<Object> paramArrayList)
   {
-    yqo localyqo = new yqo(this, getContext());
-    localyqo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localyqo.setVerticalSpacing(0);
-    localyqo.setHorizontalSpacing(10);
-    localyqo.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localyqo.setNumColumns(this.b);
+    yvd localyvd = new yvd(this, getContext());
+    localyvd.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localyvd.setVerticalSpacing(0);
+    localyvd.setHorizontalSpacing(10);
+    localyvd.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localyvd.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localyqo.setPadding(aekt.a(5.0F, (Resources)localObject), aekt.a(1.0F, (Resources)localObject), aekt.a(5.0F, (Resources)localObject), aekt.a(1.0F, (Resources)localObject));
-    localyqo.setGravity(1);
-    localyqo.setSelector(new ColorDrawable(0));
-    localObject = new yqm(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-    ((yqm)localObject).a(paramArrayList);
-    ((yqm)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localyqo.setAdapter((ListAdapter)localObject);
-    localyqo.setOnItemClickListener(this);
-    ((yqm)localObject).notifyDataSetChanged();
-    return localyqo;
+    localyvd.setPadding(aepi.a(5.0F, (Resources)localObject), aepi.a(1.0F, (Resources)localObject), aepi.a(5.0F, (Resources)localObject), aepi.a(1.0F, (Resources)localObject));
+    localyvd.setGravity(1);
+    localyvd.setSelector(new ColorDrawable(0));
+    localObject = new yvb(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+    ((yvb)localObject).a(paramArrayList);
+    ((yvb)localObject).a(this.jdField_a_of_type_JavaLangString);
+    localyvd.setAdapter((ListAdapter)localObject);
+    localyvd.setOnItemClickListener(this);
+    ((yvb)localObject).notifyDataSetChanged();
+    return localyvd;
   }
   
   public ArrayList<Object> a(int paramInt)
@@ -87,7 +87,7 @@ public class GridListViewPager
     int i = 0;
     while (i < localArrayList.size())
     {
-      ((yqm)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
+      ((yvb)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }

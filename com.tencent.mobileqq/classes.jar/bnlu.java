@@ -1,74 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bnlu
+  implements View.OnTouchListener
 {
-  private static String jdField_a_of_type_JavaLangString = "wx7d02f7e92ea2884d";
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
-  private boolean jdField_a_of_type_Boolean;
+  public bnlu(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b();
-      VoiceTextRecognizer.getInstance().destroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + CameraCaptureButtonLayout.a(this.a));
     }
-  }
-  
-  public void a(Context paramContext, AudioCapture paramAudioCapture)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = true;
-    FeatureManager.Features.VOICE_TO_TEXT.init();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = paramAudioCapture;
-    VoiceTextRecognizer.setWxVoiceRecognizerAppid(jdField_a_of_type_JavaLangString);
-    VoiceTextRecognizer.getInstance().init(paramContext, false);
-    VoiceTextRecognizer.getInstance().setVRErrorListener(new bnlv(this));
-    VoiceTextRecognizer.getInstance().start();
-    paramAudioCapture.c(true);
-    paramAudioCapture.c();
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if ((this.jdField_a_of_type_Boolean) && (paramInt2 > 0))
+    this.a.a();
+    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, CameraCaptureButtonLayout.a(this.a));
+    if (CameraCaptureButtonLayout.a(this.a)) {}
+    do
     {
-      paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2);
-      localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a()), 1));
-    }
-    try
-    {
-      new xpu(paramArrayOfByte, localByteArrayOutputStream, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(), 16000, 2, 2, 1, paramInt2, 0.0D, 0, true);
-      byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-      VoiceTextRecognizer.getInstance().recognizeFromPCMBuffer(arrayOfByte, arrayOfByte.length);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      return false;
+      switch (paramMotionEvent.getAction() & 0xFF)
       {
-        try
-        {
-          paramArrayOfByte.close();
-          localByteArrayOutputStream.close();
-          return;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
+      case 2: 
+      default: 
+        return false;
       }
+    } while (CameraCaptureButtonLayout.b(this.a));
+    if ((CameraCaptureButtonLayout.a(this.a) == 3) || (CameraCaptureButtonLayout.a(this.a) == 1)) {
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
     }
+    CameraCaptureButtonLayout.a(this.a, true);
+    return true;
+    CameraCaptureButtonLayout.b(this.a);
+    return true;
   }
 }
 

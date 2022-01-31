@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afqz
-  implements aubq<MarkFaceMessage, Void>
+  extends afuf
 {
-  afqz(afqr paramafqr, afrf paramafrf) {}
-  
-  public Void a(MarkFaceMessage paramMarkFaceMessage)
+  afqz(afpy paramafpy)
   {
-    paramMarkFaceMessage = ((aube)this.jdField_a_of_type_Afqr.a.getManager(14)).a(paramMarkFaceMessage);
-    this.jdField_a_of_type_Afrf.jdField_a_of_type_Aptm = paramMarkFaceMessage;
-    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
-      this.jdField_a_of_type_Afrf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((aube)this.jdField_a_of_type_Afqr.a.getManager(14)).a(paramMarkFaceMessage.a.epId);
-    }
-    atva.a();
-    return null;
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return aqvw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
   }
 }
 

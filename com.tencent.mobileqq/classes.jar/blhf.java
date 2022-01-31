@@ -1,49 +1,39 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import com.microrapid.opencv.ImageStatisticsData;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import dov.com.qq.im.ae.play.EditTextViewer;
 
 public class blhf
-  extends blhb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public float a;
-  public ImageStatisticsData a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<YoutuResultItem> a;
-  public float[] a;
-  public float b;
-  public String b;
-  public float c;
+  public blhf(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, EditTextViewer paramEditTextViewer, NodeItem paramNodeItem) {}
   
-  public float a()
+  public void onGlobalLayout()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public float b()
-  {
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public float c()
-  {
-    return this.jdField_b_of_type_Float;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getLayoutParams();
+      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      localMarginLayoutParams.leftMargin = i;
+      localMarginLayoutParams.topMargin = j;
+      localMarginLayoutParams.rightMargin = k;
+      localMarginLayoutParams.bottomMargin = m;
+      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
+      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.setLayoutParams(localMarginLayoutParams);
+      return;
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

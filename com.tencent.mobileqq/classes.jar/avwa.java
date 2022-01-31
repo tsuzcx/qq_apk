@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
-public abstract interface avwa
+public class avwa
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public avwa(OCRResultActivity paramOCRResultActivity) {}
   
-  public abstract void a(TorchInfo paramTorchInfo);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.doOnBackPressed();
+  }
 }
 
 

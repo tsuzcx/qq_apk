@@ -1,58 +1,36 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import java.util.ArrayList;
 
 public class bbbv
-  extends AsyncTask<Void, Void, Bundle>
+  extends bbbz
 {
-  public bbbv(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public int a;
+  public String a;
+  public ArrayList<bawy> a;
+  public byte[] a;
+  public ArrayList<bawy> b;
+  public byte[] b;
   
-  protected Bundle a(Void... paramVarArgs)
+  public bbbv()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(aljq.bY);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = aljq.bY + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected void a(Bundle paramBundle)
+  public String toString()
   {
-    if (paramBundle == null)
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, alpo.a(2131706898), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    arum.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" msgUkey:");
+    localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
+    localStringBuilder.append(" ipList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" mIpv6List:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" resId:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    return localStringBuilder.toString();
   }
 }
 

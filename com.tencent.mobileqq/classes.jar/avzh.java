@@ -1,31 +1,17 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-class avzh
-  implements View.OnClickListener
+public class avzh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  avzh(avzg paramavzg) {}
+  public avzh(ScanOcrView paramScanOcrView, avzi paramavzi) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (avzg.a(this.a).size() > 10) {
-      QQToast.a(avzg.a(this.a), 1, 2131690371, 1).a();
-    }
-    while (avzg.a(this.a) == null) {
-      return;
-    }
-    if (avzg.a(this.a).size() > 1) {}
-    for (int i = avzg.a(this.a).size() - 1;; i = 0)
-    {
-      paramView = new AutoReplyText("", i);
-      paramView.getExtra().putBoolean("addFlag", true);
-      avzg.a(this.a).b(paramView, false);
-      return;
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Avzi.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

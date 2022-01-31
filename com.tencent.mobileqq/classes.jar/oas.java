@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelAct
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 
 public class oas
-  implements bhqd
+  implements bhuk
 {
   public oas(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   

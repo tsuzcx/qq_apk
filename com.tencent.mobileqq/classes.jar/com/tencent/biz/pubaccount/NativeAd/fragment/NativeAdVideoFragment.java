@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.fragment;
 
-import adky;
-import akro;
+import adpn;
+import akwd;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,7 +19,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcuq;
+import bcyz;
 import com.tencent.biz.pubaccount.NativeAd.view.NativeAdVideoContainer;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
@@ -71,7 +71,7 @@ public class NativeAdVideoFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtras(paramBundle);
-    adky.a(paramActivity, localIntent, PublicFragmentActivity.class, paramClass);
+    adpn.a(paramActivity, localIntent, PublicFragmentActivity.class, paramClass);
     paramActivity.overridePendingTransition(0, 0);
   }
   
@@ -85,7 +85,7 @@ public class NativeAdVideoFragment
     try
     {
       localObject = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdCorporateLogo), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.a);
+      ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
       paramReadInJoyHeadImageView.setImageDrawable((Drawable)localObject);
       return;
     }
@@ -186,7 +186,7 @@ public class NativeAdVideoFragment
     {
       return;
     } while (paramInt2 != -1);
-    QQToast.a(getActivity(), -1, getString(2131700043), 0).b(getActivity().getTitleBarHeight());
+    QQToast.a(getActivity(), -1, getString(2131700055), 0).b(getActivity().getTitleBarHeight());
   }
   
   public boolean onBackEvent()
@@ -249,28 +249,28 @@ public class NativeAdVideoFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((QQAppInterface)getActivity().getAppInterface());
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = akro.a();
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = akwd.a();
     }
     d();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560073, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer = ((NativeAdVideoContainer)paramLayoutInflater.findViewById(2131370974));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560072, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer = ((NativeAdVideoContainer)paramLayoutInflater.findViewById(2131370993));
     if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer.setVideoPlayPositon(this.jdField_a_of_type_Long);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer.a(this.jdField_a_of_type_Nom, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdVideoContainer.setOnVideoFullScreen(this);
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131370175));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131370194));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131376516));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)paramLayoutInflater.findViewById(2131376570));
     this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
     this.jdField_a_of_type_Not = new not(getActivity(), this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131369902));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131369921));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLayoutInflater.findViewById(2131362020));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362022));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131361996));

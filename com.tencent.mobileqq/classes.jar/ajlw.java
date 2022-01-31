@@ -1,17 +1,12 @@
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
 public class ajlw
-  implements Camera.FaceDetectionListener
+  extends ajlx
 {
-  public ajlw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public ajlw(Context paramContext)
   {
-    if (QLog.isColorLevel()) {}
+    this.a = paramContext.getString(2131697684);
+    this.b = this.a;
   }
 }
 

@@ -1,192 +1,178 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Looper;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.method.MovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class alzc
 {
-  private static alzc jdField_a_of_type_Alzc;
-  private int jdField_a_of_type_Int = -2;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private static alzg jdField_a_of_type_Alzg;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public static alzc a()
+  public static MovementMethod a()
   {
-    try
-    {
-      if (jdField_a_of_type_Alzc == null) {
-        jdField_a_of_type_Alzc = new alzc();
-      }
-      alzc localalzc = jdField_a_of_type_Alzc;
-      return localalzc;
+    if (jdField_a_of_type_Alzg == null) {
+      jdField_a_of_type_Alzg = new alzg();
     }
-    finally {}
+    return jdField_a_of_type_Alzg;
   }
   
-  public int a()
+  public static bdjz a(Context paramContext, String paramString)
   {
-    return this.jdField_a_of_type_Int;
+    return a(paramContext, paramString, null, null);
   }
   
-  public void a()
+  public static bdjz a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    int i = 0;
-    Object localObject2 = DeviceProfileManager.a();
-    Object localObject1 = ((DeviceProfileManager)localObject2).a(DeviceProfileManager.DpcNames.qq_thread_config.name());
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131699653));
+    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/index.html"), 114, 120, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 114, 120, 17);
+    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/privacy/index.html"), 121, 127, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 121, 127, 17);
+    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/privateProtocal.html"), 128, 136, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 128, 136, 17);
+    paramString = new alzd(paramOnClickListener1);
+    paramOnClickListener1 = new alze(paramOnClickListener2);
+    paramContext = bdgm.a(paramContext, 0, paramContext.getString(2131699655), localSpannableString.toString(), 2131699654, 2131699652, paramOnClickListener1, paramString);
+    paramContext.setCanceledOnTouchOutside(false);
+    paramContext.setCancelable(true);
+    paramString = (TextView)paramContext.findViewById(2131365233);
+    paramString.setText(localSpannableString);
+    paramString.setTextSize(1, 13.0F);
+    paramString.setHighlightColor(0);
+    paramString.setMovementMethod(a());
+    ((TextView)paramContext.findViewById(2131365228)).setTextColor(Color.parseColor("#40A0FF"));
+    paramContext.show();
+    return paramContext;
+  }
+  
+  public static String a()
+  {
+    String str2 = bdea.a(BaseApplication.getContext(), "privacypolicy_state");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "0";
+    }
+    return str1;
+  }
+  
+  public static void a()
+  {
+    a();
+  }
+  
+  public static void a(RedTouch paramRedTouch)
+  {
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
+    localRedTypeInfo.red_type.set(0);
+    localRedTypeInfo.red_desc.set("");
+    localRedTypeInfo.red_content.set("");
+    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
+    localAppInfo.iNewFlag.set(1);
+    paramRedTouch.a(localRedTypeInfo);
+  }
+  
+  public static void a(String paramString)
+  {
+    bdea.a(BaseApplication.getContext(), "privacypolicy_state", paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager.Optimizer", 2, "config = " + (String)localObject1);
+      QLog.d("PrivacyPolicyHelper", 2, "setPrivacyPolicyStatus, state=" + paramString);
     }
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
+  }
+  
+  public static boolean a()
+  {
+    if ((!jdField_a_of_type_Boolean) && (a().equals("1"))) {
+      jdField_a_of_type_Boolean = true;
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool3 = false;
+    if (a().equals("0")) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      return;
-      try
+      boolean bool2;
+      if (paramInt == 0)
       {
-        localObject1 = ((String)localObject1).split("\\|");
-        if (localObject1.length >= 5)
+        bool2 = bool1;
+        if (bool1)
         {
-          float f = Float.parseFloat(localObject1[1]);
-          if (((DeviceProfileManager)localObject2).jdField_a_of_type_Int * 1.0F / 10000.0F < f)
-          {
-            this.jdField_a_of_type_Int = Integer.valueOf(localObject1[0]).intValue();
-            this.jdField_a_of_type_Boolean = "1".equals(localObject1[2]);
-            this.b = "1".equals(localObject1[3]);
-            this.c = "1".equals(localObject1[4]);
-            if (localObject1.length > 5)
-            {
-              localObject2 = new File(BaseApplicationImpl.getContext().getFilesDir(), "disableSmallLock");
-              if (!"1".equals(localObject1[5])) {
-                break label507;
-              }
-              if (((File)localObject2).exists()) {
-                ((File)localObject2).delete();
-              }
-            }
-            label204:
-            if (localObject1.length > 6)
-            {
-              if (!"1".equals(localObject1[6])) {
-                break label516;
-              }
-              com.tencent.common.config.AppSetting.e = true;
-            }
-            label229:
-            boolean bool1;
-            boolean bool2;
-            if (localObject1.length > 7)
-            {
-              localObject2 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-              bool1 = ((SharedPreferences)localObject2).getBoolean("enableUpdateIconStep", false);
-              bool2 = "1".equals(localObject1[7]);
-              if (bool1 != bool2) {
-                ((SharedPreferences)localObject2).edit().putBoolean("enableUpdateIconStep", bool2).commit();
-              }
-            }
-            if (localObject1.length > 8)
-            {
-              localObject2 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-              bool1 = ((SharedPreferences)localObject2).getBoolean("serializePreDownload", true);
-              bool2 = "1".equals(localObject1[8]);
-              if (bool1 != bool2) {
-                ((SharedPreferences)localObject2).edit().putBoolean("serializePreDownload", bool2).commit();
-              }
-            }
-            label373:
-            if (!this.b) {
-              if (!this.c) {
-                continue;
-              }
-            }
+          if (!b()) {
+            break label100;
           }
+          bool1 = bool3;
         }
       }
-      catch (Exception localException1)
+      label100:
+      for (;;)
       {
-        try
-        {
-          localObject1 = Thread.currentThread().getThreadGroup();
-          localObject2 = new Thread[((ThreadGroup)localObject1).activeCount()];
-          ((ThreadGroup)localObject1).enumerate((Thread[])localObject2);
-          int j = localObject2.length;
-          label417:
-          if (i < j)
-          {
-            Object localObject3 = localObject2[i];
-            if (localObject3 != null)
-            {
-              if (localObject3.getName() == null) {
-                break label523;
-              }
-              localObject1 = localObject3.getName();
-              label448:
-              if ((!this.b) || (!"MSF-Receiver".equals(localObject1))) {
-                break label530;
-              }
-              localObject3.setPriority(1);
-            }
-            for (;;)
-            {
-              i += 1;
-              break label417;
-              this.jdField_a_of_type_Int = 0;
-              break;
-              localException1 = localException1;
-              if (!QLog.isColorLevel()) {
-                break label373;
-              }
-              QLog.d("ThreadManager.Optimizer", 2, "", localException1);
-              break label373;
-              label507:
-              ((File)localObject2).createNewFile();
-              break label204;
-              com.tencent.common.config.AppSetting.e = false;
-              break label229;
-              String str = "";
-              break label448;
-              if ((this.c) && (("logWriteThread".equals(str)) || (str.startsWith("GlobalPool")) || (str.startsWith("Face")) || (str.startsWith("um-stack")) || (str.startsWith("QQ_FTS")) || (str.startsWith("httpcomm")))) {
-                localObject3.setPriority(1);
-              }
-            }
-          }
-          label516:
-          label523:
-          label530:
-          if (!this.c) {}
-        }
-        catch (Exception localException2)
+        bool2 = bool1;
+        for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("ThreadManager.Optimizer", 2, "", localException2);
+            QLog.d("PrivacyPolicyHelper", 2, "needShowPrivacyPolicy, needShow=" + bool2 + ", from=" + paramInt);
+          }
+          return bool2;
+          bool2 = bool1;
+          if (paramInt == 1)
+          {
+            bool2 = bool1;
+            if (bool1)
+            {
+              b("1");
+              bool2 = bool1;
+            }
           }
         }
       }
     }
-    ThreadManager.getSubThread().setPriority(1);
-    ThreadManager.getFileThread().setPriority(1);
-    ThreadManager.getRecentThreadLooper().getThread().setPriority(1);
   }
   
-  public boolean a()
+  public static String b()
   {
-    return this.jdField_a_of_type_Boolean;
+    String str2 = bdea.a(BaseApplication.getContext(), "privacypolicy_show_reddot");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "0";
+    }
+    return str1;
   }
   
-  public boolean b()
+  public static void b(String paramString)
   {
-    return this.b;
+    bdea.a(BaseApplication.getContext(), "privacypolicy_show_reddot", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("PrivacyPolicyHelper", 2, "setHasShowRedDotState, state=" + paramString);
+    }
   }
   
-  public boolean c()
+  public static boolean b()
   {
-    return this.c;
+    boolean bool = false;
+    if (b().equals("1")) {
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrivacyPolicyHelper", 2, "hasShowRedDotState, hasShow=" + bool);
+    }
+    return bool;
   }
 }
 

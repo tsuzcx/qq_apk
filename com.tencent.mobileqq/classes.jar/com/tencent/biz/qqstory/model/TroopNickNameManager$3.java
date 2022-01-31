@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
-import urz;
+import uwi;
 
 public class TroopNickNameManager$3
   implements Runnable
 {
-  public TroopNickNameManager$3(urz paramurz) {}
+  public TroopNickNameManager$3(uwi paramuwi) {}
   
   public void run()
   {

@@ -1,6 +1,18 @@
-public abstract interface avze
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+
+public class avze
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public avze(ScanOcrView paramScanOcrView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.e = i;
+    this.a.invalidate();
+  }
 }
 
 

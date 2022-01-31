@@ -1,27 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import java.util.ArrayList;
-import java.util.List;
-
-public class ahwr
-  implements bhqd
+class ahwr
+  implements ahwu
 {
-  public ahwr(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bhpy parambhpy) {}
+  ahwr(ahwo paramahwo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ahws(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_Bhpy.isShowing());
-    this.jdField_a_of_type_Bhpy.dismiss();
+    ahwo.a(this.a, paramInt1, paramInt2);
   }
 }
 

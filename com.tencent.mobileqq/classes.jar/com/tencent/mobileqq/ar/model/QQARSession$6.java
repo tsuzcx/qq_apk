@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbo;
+import anfx;
 
 public class QQARSession$6
   implements Runnable
 {
-  public QQARSession$6(anbo paramanbo) {}
+  public QQARSession$6(anfx paramanfx) {}
   
   public void run()
   {
-    anbo.a(this.this$0, false);
+    anfx.a(this.this$0, false);
   }
 }
 

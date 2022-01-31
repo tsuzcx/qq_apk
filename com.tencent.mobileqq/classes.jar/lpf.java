@@ -2,29 +2,29 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class lpf
-  implements bapx
+  implements baug
 {
   lpf(lpe paramlpe, String paramString, loy paramloy, int paramInt) {}
   
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    baps localbaps = (baps)parambaqw.jdField_a_of_type_Baqv;
-    if (this.jdField_a_of_type_Lpe.jdField_a_of_type_Baps == localbaps) {
-      this.jdField_a_of_type_Lpe.jdField_a_of_type_Baps = null;
+    baub localbaub = (baub)parambavf.jdField_a_of_type_Bave;
+    if (this.jdField_a_of_type_Lpe.jdField_a_of_type_Baub == localbaub) {
+      this.jdField_a_of_type_Lpe.jdField_a_of_type_Baub = null;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaps.jdField_a_of_type_JavaLangString, Integer.valueOf(parambaqw.jdField_a_of_type_Int), Integer.valueOf(parambaqw.c), this.jdField_a_of_type_JavaLangString }));
+      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaub.jdField_a_of_type_JavaLangString, Integer.valueOf(parambavf.jdField_a_of_type_Int), Integer.valueOf(parambavf.c), this.jdField_a_of_type_JavaLangString }));
     }
     int i;
-    if (parambaqw.jdField_a_of_type_Int == 0)
+    if (parambavf.jdField_a_of_type_Int == 0)
     {
-      parambaqw = new File(localbaps.c);
-      if (parambaqw.exists())
+      parambavf = new File(localbaub.c);
+      if (parambavf.exists())
       {
         try
         {
-          String str = parambaqw.getParent();
-          bdcs.a(localbaps.c, str, false);
+          String str = parambavf.getParent();
+          bdhb.a(localbaub.c, str, false);
           QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
           lpd.a(this.jdField_a_of_type_Loy);
           i = 1;
@@ -39,7 +39,7 @@ class lpf
           lpd.a(-1);
           return;
         }
-        parambaqw.delete();
+        parambavf.delete();
       }
     }
     for (;;)
@@ -47,8 +47,8 @@ class lpf
       if (i != 0)
       {
         lpd.a(100 / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int + this.jdField_a_of_type_Lpe.b);
-        parambaqw = this.jdField_a_of_type_Lpe;
-        parambaqw.b += 100 / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int;
+        parambavf = this.jdField_a_of_type_Lpe;
+        parambavf.b += 100 / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int;
         if (!this.jdField_a_of_type_Lpe.a(this.jdField_a_of_type_Loy, this.jdField_a_of_type_Int - 1)) {
           this.jdField_a_of_type_Lpe.jdField_a_of_type_Boolean = false;
         }
@@ -58,7 +58,7 @@ class lpf
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
     int i;
     if (paramLong2 == 0L) {

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajlo;
+import ajqd;
 
 public class FlowSendTask$2
   implements Runnable
 {
-  public FlowSendTask$2(ajlo paramajlo) {}
+  public FlowSendTask$2(ajqd paramajqd) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a, 2131695284);
+    this.this$0.a(this.this$0.a, 2131695286);
   }
 }
 

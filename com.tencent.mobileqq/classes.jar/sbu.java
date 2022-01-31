@@ -9,9 +9,9 @@ class sbu
   
   public boolean onLongClick(View paramView)
   {
-    paramView = new bdkz();
-    paramView.a(0, alpo.a(2131717263));
-    bdbk.a(this.jdField_a_of_type_AndroidViewView, paramView, new sbv(this), new sbw(this));
+    paramView = new bdpi();
+    paramView.a(0, alud.a(2131717275));
+    bdft.a(this.jdField_a_of_type_AndroidViewView, paramView, new sbv(this), new sbw(this));
     return true;
   }
 }

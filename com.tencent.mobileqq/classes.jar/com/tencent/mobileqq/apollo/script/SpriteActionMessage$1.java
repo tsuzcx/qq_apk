@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akji;
-import akkb;
-import akwb;
-import akwl;
+import aknx;
+import akoq;
+import alaq;
+import alba;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SpriteActionMessage$1
   implements Runnable
 {
-  public SpriteActionMessage$1(akwb paramakwb, int paramInt, boolean paramBoolean) {}
+  public SpriteActionMessage$1(alaq paramalaq, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((akwb.a(this.this$0) != null) && (akwb.a(this.this$0).a() != null))
+    if ((alaq.a(this.this$0) != null) && (alaq.a(this.this$0).a() != null))
     {
-      akkb localakkb = ((akji)akwb.a(this.this$0).a().getManager(153)).a();
-      if (localakkb != null)
+      akoq localakoq = ((aknx)alaq.a(this.this$0).a().getManager(153)).a();
+      if (localakoq != null)
       {
-        localakkb.a.set(this.jdField_a_of_type_Int);
-        localakkb.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
+        localakoq.a.set(this.jdField_a_of_type_Int);
+        localakoq.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
       }
     }
   }

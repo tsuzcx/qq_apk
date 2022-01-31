@@ -1,87 +1,60 @@
-import android.graphics.drawable.Animatable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import cooperation.qzone.util.QZLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.Map;
 
 public class tvh
-  extends yds
+  extends QQUIEventReceiver<tuz, tuf>
 {
-  private boolean c;
-  
-  public tvh(ComponentPageView paramComponentPageView)
+  public tvh(@NonNull tuz paramtuz)
   {
-    super(paramComponentPageView);
+    super(paramtuz);
   }
   
-  private boolean b()
+  public void a(@NonNull tuz paramtuz, @NonNull tuf paramtuf)
   {
-    return alpo.a(2131698344).equals(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void R_()
-  {
-    this.c = true;
-  }
-  
-  protected RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new tvi(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560552, paramViewGroup, false));
-  }
-  
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof tvi))
+    switch (paramtuf.jdField_a_of_type_Int)
     {
-      paramViewHolder = (tvi)paramViewHolder;
-      if (!this.b)
+    case 4: 
+    case 5: 
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+      FeedCloudMeta.StFeed localStFeed;
+      int i;
+      do
       {
-        tvi.a(paramViewHolder).setVisibility(8);
-        tvi.b(paramViewHolder).setVisibility(8);
-      }
-    }
-    else
-    {
+        do
+        {
+          do
+          {
+            return;
+            paramtuz.h();
+            return;
+            paramtuz.i();
+            return;
+            tuz.a(paramtuz, false);
+            tuz.a(paramtuz, null);
+            tuz.a(paramtuz, null);
+          } while (!(paramtuf.jdField_a_of_type_JavaLangObject instanceof Object[]));
+          paramtuf = (Object[])paramtuf.jdField_a_of_type_JavaLangObject;
+        } while ((paramtuf.length < 2) || (!(paramtuf[0] instanceof FeedCloudMeta.StFeed)) || (!(paramtuf[1] instanceof Integer)));
+        localStFeed = (FeedCloudMeta.StFeed)paramtuf[0];
+        i = ((Integer)paramtuf[1]).intValue();
+      } while (!paramtuz.a(localStFeed));
+      tuz.c(paramtuz).put(Integer.valueOf(i), localStFeed);
+      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
       return;
     }
-    label71:
-    ImageView localImageView;
-    if ((this.jdField_a_of_type_Boolean) && (getItemCount() > a()))
-    {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label134;
-      }
-      tvi.a(paramViewHolder).start();
-      localImageView = tvi.a(paramViewHolder);
-      if (paramInt == 0) {
-        break label146;
-      }
-    }
-    label134:
-    label146:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      localImageView.setVisibility(paramInt);
-      if ((!this.c) || (!b())) {
-        break label152;
-      }
-      tvi.a(paramViewHolder).setVisibility(8);
-      tvi.b(paramViewHolder).setVisibility(0);
-      tyj.a("", 22, 12L);
-      return;
-      paramInt = 0;
-      break;
-      tvi.a(paramViewHolder).stop();
-      break label71;
-    }
-    label152:
-    tvi.a(paramViewHolder).setVisibility(0);
-    tvi.a(paramViewHolder).setText(this.jdField_a_of_type_JavaLangString);
-    tvi.b(paramViewHolder).setVisibility(8);
+    tuz.a(paramtuz, (Object[])paramtuf.jdField_a_of_type_JavaLangObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tuf.class;
   }
 }
 

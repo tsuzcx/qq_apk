@@ -1,59 +1,57 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akdj
-  implements Comparator<akhx>
+public class akdj
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public int a(akhx paramakhx1, akhx paramakhx2)
+  public akdj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    paramakhx1 = (Friends)paramakhx1.a;
-    paramakhx2 = (Friends)paramakhx2.a;
-    int i = a(paramakhx1);
-    int j = a(paramakhx2);
-    if (i == j) {
-      return allu.a(paramakhx1.mComparePartInt, paramakhx1.mCompareSpell, paramakhx2.mComparePartInt, paramakhx2.mCompareSpell);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
     }
-    return i - j;
+    this.a.m = true;
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.h += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+      ShortVideoPlayActivity.c(this.a, true);
+    }
+    this.a.b(paramInt * this.a.b / 10000L);
   }
   
-  public int a(Friends paramFriends)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    int i = 16384;
-    int k = bdbt.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      label32:
-      if (!azib.b()) {
-        break label100;
-      }
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
     }
-    for (;;)
-    {
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label32;
-        label100:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-          i = 4096;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
-        }
-        break;
-      }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    paramSeekBar = this.a;
+    paramSeekBar.i += 1;
+    this.a.g = true;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 

@@ -1,40 +1,24 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aeaw
-  implements View.OnClickListener
+  implements anyo
 {
-  public aeaw(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
+  public aeaw(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)))
+    anyj.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = bdrv.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
     {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
-        paramView.putExtra("member_uin", "0");
-        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-        return;
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, alpo.a(2131716011), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, alpo.a(2131715971), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+    this.a.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 

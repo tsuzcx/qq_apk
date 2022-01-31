@@ -1,51 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
 
-class aglw
-  extends asiw
+public class aglw
 {
-  aglw(aglv paramaglv) {}
-  
-  protected void a(Object paramObject)
-  {
-    QLog.i(aglv.g, 1, "[onGameUsrInfoChangedNotify]");
-    for (;;)
-    {
-      asik localasik;
-      try
-      {
-        if ((paramObject instanceof ArrayList))
-        {
-          paramObject = ((ArrayList)paramObject).iterator();
-          if (paramObject.hasNext())
-          {
-            localasik = (asik)paramObject.next();
-            if ((TextUtils.isEmpty(localasik.b)) || (!localasik.b.equals(this.a.a.a()))) {
-              break label115;
-            }
-            aglv.a(this.a, localasik);
-            aglv.a(this.a, localasik);
-            QLog.i(aglv.g, 1, "update friend info.");
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.e(aglv.g, 1, paramObject.getMessage());
-      }
-      label115:
-      if ((!TextUtils.isEmpty(localasik.b)) && (localasik.b.equals(this.a.a.b())))
-      {
-        aglv.b(this.a, localasik);
-        QLog.i(aglv.g, 1, "update my info.");
-      }
-    }
-  }
+  public int a;
+  public Drawable a;
+  public RedDotImageView a;
 }
 
 

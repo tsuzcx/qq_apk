@@ -3,9 +3,9 @@ import android.content.Context;
 public class pzy
   extends pxl
 {
-  public pzy(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pzy(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()

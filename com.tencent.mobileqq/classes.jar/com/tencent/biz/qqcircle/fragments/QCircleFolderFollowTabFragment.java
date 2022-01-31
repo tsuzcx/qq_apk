@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import axho;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import axlx;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -18,60 +20,70 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 import tra;
-import trf;
-import trl;
-import trv;
-import ttn;
-import tvg;
-import tvm;
-import twc;
-import twd;
-import twe;
-import tyj;
-import tym;
-import tzb;
-import tzd;
-import ydp;
-import yej;
-import yel;
+import trg;
+import tri;
+import trq;
+import tuc;
+import tvv;
+import tvw;
+import tws;
+import twt;
+import twu;
+import twv;
+import tzv;
+import tzy;
+import ubm;
+import ubo;
+import yhy;
+import yib;
+import yiw;
+import yiy;
 
 public class QCircleFolderFollowTabFragment
   extends QCircleBaseTabFragment
-  implements yel
+  implements yiy
 {
-  public static String k = "QCircleFolderFollowTabFragment";
-  private trf jdField_a_of_type_Trf;
-  private ttn jdField_a_of_type_Ttn;
-  private tzd jdField_a_of_type_Tzd;
+  public static String j = "QCircleFolderFollowTabFragment";
+  private trg jdField_a_of_type_Trg;
+  private tri jdField_a_of_type_Tri;
+  private tuc jdField_a_of_type_Tuc;
+  private ubo jdField_a_of_type_Ubo;
   
-  private void h()
+  @NotNull
+  private View a(@Nullable ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560556, null);
+    paramViewGroup.setOnClickListener(new twt(this));
+    return paramViewGroup;
+  }
+  
+  private void j()
   {
     tra.a();
     tra.b();
     tra.a(getActivity());
-    if (this.jdField_a_of_type_Trl != null) {
-      this.jdField_a_of_type_Trl.Q_();
+    if (this.jdField_a_of_type_Trq != null) {
+      this.jdField_a_of_type_Trq.a();
     }
   }
   
-  private void i()
+  private void k()
   {
-    axho localaxho = (axho)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = localaxho.a("140000");
+    axlx localaxlx = (axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = localaxlx.a("140000");
     if (localAppInfo != null)
     {
       localAppInfo.buffer.clear();
-      QLog.i(k, 1, "reportRedPoint clear buffer");
+      QLog.i(j, 1, "reportRedPoint clear buffer");
     }
-    localaxho.b("140000");
+    localaxlx.b("140000");
   }
   
-  public ArrayList<Class> a()
+  public String a()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleFeedEvent.class);
-    return localArrayList;
+    return j;
   }
   
   public void a(int paramInt)
@@ -82,37 +94,33 @@ public class QCircleFolderFollowTabFragment
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Tvm.a().a();
-    this.jdField_a_of_type_Tvm.a().a().addOnScrollListener(new twc(this));
-    yej.a().a(this);
+    this.jdField_a_of_type_Tvw.a().a().a(a(paramViewGroup));
+    this.jdField_a_of_type_Tvw.a().a().addOnScrollListener(new tws(this));
+    yiw.a().a(this);
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if (((paramSimpleBaseEvent instanceof QCircleFeedEvent)) && (((QCircleFeedEvent)paramSimpleBaseEvent).mState == 3) && (this.jdField_a_of_type_Tzb != null)) {
-      this.jdField_a_of_type_Tzb.b(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
-    }
-  }
-  
-  protected void a(List<tvg> paramList)
+  protected void a(List<tvv> paramList)
   {
     super.a(paramList);
-    this.jdField_a_of_type_Ttn = new ttn();
-    paramList.add(this.jdField_a_of_type_Ttn);
+    this.jdField_a_of_type_Tuc = new tuc();
+    paramList.add(this.jdField_a_of_type_Tuc);
   }
   
-  public String b()
-  {
-    return d;
-  }
-  
-  protected List<ydp> b()
+  protected List<yhy> b()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Trf = new trf(new Bundle());
-    this.jdField_a_of_type_Trf.a(false);
-    localArrayList.add(this.jdField_a_of_type_Trf);
+    this.jdField_a_of_type_Trg = new trg(new Bundle());
+    this.jdField_a_of_type_Trg.a(false);
+    this.jdField_a_of_type_Tri = new tri(new Bundle());
+    this.jdField_a_of_type_Tri.a(false);
+    localArrayList.add(this.jdField_a_of_type_Trg);
+    localArrayList.add(this.jdField_a_of_type_Tri);
     return localArrayList;
+  }
+  
+  public String c()
+  {
+    return c;
   }
   
   public void c()
@@ -120,24 +128,32 @@ public class QCircleFolderFollowTabFragment
     super.c();
   }
   
-  protected void c(trv paramtrv)
-  {
-    this.jdField_a_of_type_Tzd.a(getActivity());
-  }
-  
   protected void d()
   {
     super.d();
-    this.jdField_a_of_type_Tzd = ((tzd)a(tzd.class));
-    this.jdField_a_of_type_Tzd.a().observe(this, new twd(this));
-    this.jdField_a_of_type_Tzb.c().observe(this, new twe(this));
+    this.jdField_a_of_type_Ubo = ((ubo)a(ubo.class));
+    this.jdField_a_of_type_Ubo.a().observe(this, new twu(this));
+    this.jdField_a_of_type_Ubm.c().observe(this, new twv(this));
   }
   
   protected void e()
   {
     super.e();
-    h();
-    i();
+    j();
+    k();
+  }
+  
+  protected void g()
+  {
+    this.jdField_a_of_type_Ubo.a(getActivity());
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFeedEvent.class);
+    localArrayList.add(QCircleCloseBannerEvent.class);
+    return localArrayList;
   }
   
   public void onDestroy()
@@ -145,28 +161,44 @@ public class QCircleFolderFollowTabFragment
     tra.c();
     tra.b(getActivity());
     super.onDestroy();
-    yej.a().b(this);
+    yiw.a().b(this);
     tqb.a = false;
   }
   
   public void onDetach()
   {
+    QLog.d(j, 1, "QCircleFolderFollowTabFragment->onDetach");
     super.onDetach();
-    tym.a().a(1);
+    tzy.a().a(1);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleFeedEvent)) && (((QCircleFeedEvent)paramSimpleBaseEvent).mState == 3)) {
+      if (this.jdField_a_of_type_Ubm != null) {
+        this.jdField_a_of_type_Ubm.c(((QCircleFeedEvent)paramSimpleBaseEvent).mTargetId);
+      }
+    }
+    while ((!(paramSimpleBaseEvent instanceof QCircleCloseBannerEvent)) || (this.jdField_a_of_type_Ubm == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Ubm.c().removeObservers(this);
+    this.jdField_a_of_type_Ubm.c().postValue(null);
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
+    QLog.d(j, 1, "QCircleFolderFollowTabFragment->setUserVisibleHint:" + paramBoolean);
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (tym.a().b(1)) {
-        tym.a().a(getActivity().getIntent());
+      if (tzy.a().b(1)) {
+        tzy.a().a(getActivity().getIntent());
       }
-      tyj.a("", 22, 1L);
+      tzv.a("", 22, 1L);
       return;
     }
-    tym.a().a(1);
+    tzy.a().a(1);
   }
 }
 

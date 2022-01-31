@@ -1,37 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-final class anfr
-  implements anmk
+public final class anfr
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public void a()
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
-    }
-    anmg.a().a(null);
+    return new ArVideoResourceInfo(paramParcel);
   }
   
-  public void a(String paramString)
+  public ArVideoResourceInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
-    }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
-        if (localObject != null) {
-          ((anit)localObject).a(paramString);
-        }
-      }
-      return;
-    }
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

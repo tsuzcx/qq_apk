@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bglx;
-import bgly;
-import bgmd;
-import bgme;
-import bgmg;
+import bgqe;
+import bgqf;
+import bgqk;
+import bgql;
+import bgqn;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class ThreadPool$Worker<T>
-  implements bglx<T>, bgme, Comparable<Worker>, Runnable
+  implements bgqe<T>, bgql, Comparable<Worker>, Runnable
 {
   private int jdField_a_of_type_Int;
-  private final bgly<T> jdField_a_of_type_Bgly;
-  private final bgmd<T> jdField_a_of_type_Bgmd;
-  private bgmg jdField_a_of_type_Bgmg;
+  private final bgqf<T> jdField_a_of_type_Bgqf;
+  private final bgqk<T> jdField_a_of_type_Bgqk;
+  private bgqn jdField_a_of_type_Bgqn;
   private T jdField_a_of_type_JavaLangObject;
   private volatile boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  private bgmg a(int paramInt)
+  private bgqn a(int paramInt)
   {
     if (paramInt == 1) {
-      return this.this$0.jdField_a_of_type_Bgmg;
+      return this.this$0.jdField_a_of_type_Bgqn;
     }
     if (paramInt == 2) {
       return this.this$0.b;
@@ -29,19 +29,19 @@ class ThreadPool$Worker<T>
     return null;
   }
   
-  private void a(bgmg parambgmg)
+  private void a(bgqn parambgqn)
   {
     try
     {
-      parambgmg.jdField_a_of_type_Int += 1;
-      parambgmg.notifyAll();
+      parambgqn.jdField_a_of_type_Int += 1;
+      parambgqn.notifyAll();
       return;
     }
     finally {}
   }
   
   /* Error */
-  private boolean a(bgmg parambgmg)
+  private boolean a(bgqn parambgqn)
   {
     // Byte code:
     //   0: aload_0
@@ -51,34 +51,34 @@ class ThreadPool$Worker<T>
     //   6: ifeq +12 -> 18
     //   9: aload_0
     //   10: aconst_null
-    //   11: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgmg	Lbgmg;
+    //   11: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgqn	Lbgqn;
     //   14: aload_0
     //   15: monitorexit
     //   16: iconst_0
     //   17: ireturn
     //   18: aload_0
     //   19: aload_1
-    //   20: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgmg	Lbgmg;
+    //   20: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgqn	Lbgqn;
     //   23: aload_0
     //   24: monitorexit
     //   25: aload_1
     //   26: monitorenter
     //   27: aload_1
-    //   28: getfield 41	bgmg:jdField_a_of_type_Int	I
+    //   28: getfield 41	bgqn:jdField_a_of_type_Int	I
     //   31: ifle +31 -> 62
     //   34: aload_1
     //   35: aload_1
-    //   36: getfield 41	bgmg:jdField_a_of_type_Int	I
+    //   36: getfield 41	bgqn:jdField_a_of_type_Int	I
     //   39: iconst_1
     //   40: isub
-    //   41: putfield 41	bgmg:jdField_a_of_type_Int	I
+    //   41: putfield 41	bgqn:jdField_a_of_type_Int	I
     //   44: aload_1
     //   45: monitorexit
     //   46: aload_0
     //   47: monitorenter
     //   48: aload_0
     //   49: aconst_null
-    //   50: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgmg	Lbgmg;
+    //   50: putfield 51	com/tencent/qqmini/sdk/core/utils/thread/ThreadPool$Worker:jdField_a_of_type_Bgqn	Lbgqn;
     //   53: aload_0
     //   54: monitorexit
     //   55: iconst_1
@@ -108,7 +108,7 @@ class ThreadPool$Worker<T>
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	85	0	this	Worker
-    //   0	85	1	parambgmg	bgmg
+    //   0	85	1	parambgqn	bgqn
     //   71	4	2	localObject	Object
     //   81	1	2	localInterruptedException	java.lang.InterruptedException
     // Exception table:
@@ -127,20 +127,20 @@ class ThreadPool$Worker<T>
   
   public int a(Worker paramWorker)
   {
-    return ((Comparable)this.jdField_a_of_type_Bgmd).compareTo(paramWorker.jdField_a_of_type_Bgmd);
+    return ((Comparable)this.jdField_a_of_type_Bgqk).compareTo(paramWorker.jdField_a_of_type_Bgqk);
   }
   
   public boolean a(int paramInt)
   {
-    bgmg localbgmg = a(this.jdField_a_of_type_Int);
-    if (localbgmg != null) {
-      a(localbgmg);
+    bgqn localbgqn = a(this.jdField_a_of_type_Int);
+    if (localbgqn != null) {
+      a(localbgqn);
     }
     this.jdField_a_of_type_Int = 0;
-    localbgmg = a(paramInt);
-    if (localbgmg != null)
+    localbgqn = a(paramInt);
+    if (localbgqn != null)
     {
-      if (!a(localbgmg)) {
+      if (!a(localbgqn)) {
         return false;
       }
       this.jdField_a_of_type_Int = paramInt;
@@ -150,15 +150,15 @@ class ThreadPool$Worker<T>
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bgly != null) {
-      this.jdField_a_of_type_Bgly.a(this);
+    if (this.jdField_a_of_type_Bgqf != null) {
+      this.jdField_a_of_type_Bgqf.a(this);
     }
     Object localObject4 = null;
     Object localObject1 = localObject4;
     if (a(1)) {}
     try
     {
-      localObject1 = this.jdField_a_of_type_Bgmd.a(this);
+      localObject1 = this.jdField_a_of_type_Bgqk.a(this);
     }
     catch (Throwable localThrowable)
     {
@@ -170,8 +170,8 @@ class ThreadPool$Worker<T>
           this.jdField_a_of_type_JavaLangObject = localObject1;
           this.b = true;
           notifyAll();
-          if (this.jdField_a_of_type_Bgly != null) {
-            this.jdField_a_of_type_Bgly.b(this);
+          if (this.jdField_a_of_type_Bgqf != null) {
+            this.jdField_a_of_type_Bgqf.b(this);
           }
           return;
         }

@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import bdkf;
+import bdoo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ import sky;
 public class WordNavView
   extends View
 {
-  private float jdField_a_of_type_Float = bdkf.b(15.0F);
+  private float jdField_a_of_type_Float = bdoo.b(15.0F);
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -79,7 +79,7 @@ public class WordNavView
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + bdkf.b(5.0F)));
+    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + bdoo.b(5.0F)));
     requestLayout();
     invalidate();
   }

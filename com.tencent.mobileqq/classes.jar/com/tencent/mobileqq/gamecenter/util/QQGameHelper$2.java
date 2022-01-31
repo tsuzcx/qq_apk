@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.util;
 
-import asjf;
+import asno;
 import com.tencent.common.app.BaseApplicationImpl;
 import nbv;
 
@@ -9,7 +9,7 @@ public final class QQGameHelper$2
 {
   public void run()
   {
-    nbv.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new asjf(this));
+    nbv.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new asno(this));
   }
 }
 

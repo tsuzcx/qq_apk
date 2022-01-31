@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
-import azhq;
+import azlz;
 
 class ImageViewVideoPlayer$1
   implements Runnable

@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bghn;
-import bgkd;
-import bguz;
+import bglu;
+import bgok;
+import bgzg;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -17,38 +17,38 @@ public class UpdateManagerJsPlugin
   public static final String NATIVE_EVENT_NAME_UPDATE_APP = "updateApp";
   private static final String TAG = "UpdateManagerJsPlugin";
   
-  public void getUpdateManager(bgkd parambgkd)
+  public void getUpdateManager(bgok parambgok)
   {
-    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambgkd.jdField_a_of_type_JavaLangString);
-    parambgkd.a();
+    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambgok.jdField_a_of_type_JavaLangString);
+    parambgok.a();
     try
     {
       QMLog.d("UpdateManagerJsPlugin", "handleUpdateCheckResult() called with:  hasUpdate = [false]");
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("hasUpdate", false);
-      parambgkd.jdField_a_of_type_Bghn.a("onUpdateCheckResult", localJSONObject.toString(), 0);
+      parambgok.jdField_a_of_type_Bglu.a("onUpdateCheckResult", localJSONObject.toString(), 0);
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("UpdateManagerJsPlugin", "handleNativeRequest", parambgkd);
+      QMLog.e("UpdateManagerJsPlugin", "handleNativeRequest", parambgok);
     }
   }
   
-  public void onUpdateCheckResult(bgkd parambgkd)
+  public void onUpdateCheckResult(bgok parambgok)
   {
-    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString + " should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgok.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void onUpdateDownloadResult(bgkd parambgkd)
+  public void onUpdateDownloadResult(bgok parambgok)
   {
-    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString + " should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgok.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void updateApp(bgkd parambgkd)
+  public void updateApp(bgok parambgok)
   {
-    bguz.a();
-    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString);
+    bgzg.a();
+    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest " + parambgok.jdField_a_of_type_JavaLangString);
   }
 }
 

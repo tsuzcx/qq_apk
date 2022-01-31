@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bllm;
+import blpy;
 
 public class ClipThumbnailImageView
   extends ImageView
@@ -50,7 +50,7 @@ public class ClipThumbnailImageView
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       int i = getWidth();
       int j = getHeight();
-      int k = bllm.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+      int k = blpy.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
       paramCanvas.drawRect(0.0F, 0.0F, i, k, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.drawRect(i - k, 0.0F, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.drawRect(0.0F, j - k, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);

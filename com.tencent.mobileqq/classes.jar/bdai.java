@@ -1,27 +1,7 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-final class bdai
-  extends Handler
+abstract class bdai
 {
-  bdai(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bdah.a();
-      return;
-    }
-    bdah.b();
-  }
+  public int a;
+  public byte[] a;
 }
 
 

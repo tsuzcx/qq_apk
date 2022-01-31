@@ -1,36 +1,105 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class apmm
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class apmm
 {
-  apmm(aply paramaply, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public apmm(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
-    }
-    try
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
+    this.i = paramString9;
+    this.j = paramString10;
+    this.n = paramString11;
+  }
+  
+  public apmm(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
+    this.i = paramString9;
+    this.j = paramString10;
+    this.k = paramString11;
+    this.l = paramString12;
+    this.m = paramString13;
+    this.n = paramString14;
+  }
+  
+  public static apmm a(Bundle paramBundle)
+  {
+    String str1 = "";
+    String str2 = "";
+    String str3 = "";
+    String str4 = "";
+    String str5 = "";
+    String str6 = "";
+    String str7 = "";
+    String str8 = "";
+    String str9 = "";
+    String str10 = "";
+    String str11 = "";
+    String str12 = "";
+    String str13 = "";
+    String str14 = "";
+    if (paramBundle != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
-      }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+      str1 = paramBundle.getString("callbackid");
+      str2 = paramBundle.getString("appid");
+      str3 = paramBundle.getString("userId");
+      str4 = paramBundle.getString("userKey");
+      str5 = paramBundle.getString("sessionId");
+      str6 = paramBundle.getString("sessionType");
+      str7 = paramBundle.getString("zoneId");
+      str8 = paramBundle.getString("pf");
+      str9 = paramBundle.getString("pfKey");
+      str10 = paramBundle.getString("tokenUrl");
+      str11 = paramBundle.getString("discountId");
+      str12 = paramBundle.getString("other");
+      str13 = paramBundle.getString("payload");
+      str14 = paramBundle.getString("drmInfo");
     }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
-    }
+    return new apmm(str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14);
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("callbackid", this.a);
+    localBundle.putString("appid", this.b);
+    localBundle.putString("userId", this.c);
+    localBundle.putString("userKey", this.d);
+    localBundle.putString("sessionId", this.e);
+    localBundle.putString("sessionType", this.f);
+    localBundle.putString("zoneId", this.g);
+    localBundle.putString("pf", this.h);
+    localBundle.putString("pfKey", this.i);
+    localBundle.putString("tokenUrl", this.j);
+    return localBundle;
   }
 }
 

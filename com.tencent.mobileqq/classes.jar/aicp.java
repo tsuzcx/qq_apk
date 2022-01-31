@@ -1,85 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicp
+public class aicp
   implements View.OnClickListener
 {
-  aicp(aicl paramaicl) {}
+  public aicp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
-    }
-    switch (i)
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
     {
-    default: 
-    case 2131364910: 
-    case 2131366750: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.a.jdField_a_of_type_Aicu == null);
-          ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Aicu.a.msg);
-          return;
-        } while (this.a.jdField_a_of_type_Aicu == null);
-        paramView = this.a.jdField_a_of_type_Aicu.a;
-      } while (!(paramView instanceof MessageForText));
-    }
-    for (paramView = (MessageForText)paramView;; paramView = null)
+      return;
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    paramView = paramView.findViewById(2131378883);
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
     {
-      try
+      if (bool)
       {
-        paramView = bbig.a(paramView.msgData);
-        if (paramView == null) {
-          continue;
+        paramView = (aidf)this.a.jdField_a_of_type_Aidj.getItem(i);
+        this.a.a(paramView);
+        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
         }
-        paramView = (TroopLinkElement)paramView;
-        Object localObject = new Bundle();
-        if (paramView != null)
-        {
-          ((Bundle)localObject).putString("image_url_remote", paramView.url);
-          ((Bundle)localObject).putString("detail_url", paramView.iconUrl);
-          ((Bundle)localObject).putString("title", paramView.title);
-          ((Bundle)localObject).putString("desc", paramView.title);
-          ((Bundle)localObject).putString("req_create_time", paramView.timeSecond);
+        if (this.a.jdField_d_of_type_Int != 11) {
+          break;
         }
-        paramView = azqu.a((Bundle)localObject);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("forward_type", -3);
-        ((Intent)localObject).putExtra("stuctmsg_bytes", paramView.getBytes());
-        arum.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+        azqs.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
         return;
       }
-      catch (Exception paramView)
-      {
-        return;
+      paramView = (aidf)this.a.jdField_a_of_type_Aidh.getItem(i);
+      this.a.a(paramView);
+      if (this.a.jdField_d_of_type_Int == 11) {
+        azqs.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+      if (this.a.jdField_d_of_type_Int != 18) {
+        break;
       }
-      this.a.c = false;
-      aicl.a(this.a).setVisibility(8);
-      aicl.a(this.a, 0, null);
-      this.a.jdField_a_of_type_Ahzr.a(aicl.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Ahzr.notifyDataSetChanged();
-      this.a.b = 1;
+      azqs.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
       return;
     }
   }

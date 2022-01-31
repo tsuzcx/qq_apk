@@ -1,56 +1,80 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import java.util.HashMap;
 
 public class arwv
 {
-  public static int a(int paramInt, double paramDouble)
+  private static arwv jdField_a_of_type_Arwv;
+  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
+  private HashMap<String, arwt> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public static arwv a()
   {
-    float f = 1.0F;
-    if (paramInt > 150) {
-      f = paramInt / 100;
+    if (jdField_a_of_type_Arwv == null) {}
+    try
+    {
+      if (jdField_a_of_type_Arwv == null) {
+        jdField_a_of_type_Arwv = new arwv();
+      }
+      return jdField_a_of_type_Arwv;
     }
-    if (paramDouble <= 1.5D) {
-      return (int)(f * 9.0F);
-    }
-    if (paramDouble <= 2.0D) {
-      return (int)(f * 9.0F);
-    }
-    return (int)(f * 4.0F);
+    finally {}
   }
   
-  public static Drawable a(Bitmap paramBitmap)
+  private void a()
   {
-    Object localObject = null;
-    Bitmap localBitmap = bdda.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    a(new arxd("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new arww("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new arwz("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+  }
+  
+  private void a(arwt paramarwt)
+  {
+    if (TextUtils.isEmpty(paramarwt.a())) {
+      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
     }
-    return paramBitmap;
+    do
+    {
+      return;
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramarwt.a()))
+      {
+        arwt localarwt = (arwt)this.jdField_a_of_type_JavaUtilHashMap.remove(paramarwt.a());
+        if (localarwt != null) {
+          localarwt.a();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramarwt.a(), paramarwt);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramarwt.a() }));
   }
   
-  public static Drawable a(Bitmap paramBitmap, double paramDouble)
+  private void b() {}
+  
+  private void c() {}
+  
+  public <T extends arwt> T a(String paramString)
   {
-    Object localObject = null;
-    Bitmap localBitmap = bdda.a(paramBitmap, a(0, paramDouble));
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      return (arwt)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     }
-    return paramBitmap;
+    return null;
   }
   
-  public static Drawable a(Drawable paramDrawable, double paramDouble)
+  public void a(BinaryMessenger paramBinaryMessenger)
   {
-    return a(bczs.a(paramDrawable), paramDouble);
-  }
-  
-  public static final boolean a(Intent paramIntent)
-  {
-    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
+    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
+    {
+      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+    }
+    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
+    a();
+    b();
+    c();
   }
 }
 

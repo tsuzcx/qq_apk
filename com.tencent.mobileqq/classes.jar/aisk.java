@@ -1,35 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class aisk
-  implements TextWatcher
+class aisk
+  extends aira
 {
-  public aisk(TransactionActivity paramTransactionActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  protected aisk(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
-      }
-    }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
-      return;
-    }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    super(paramNewPhotoListActivity);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131695253, new Object[] { Integer.valueOf(i) });
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+  }
 }
 
 

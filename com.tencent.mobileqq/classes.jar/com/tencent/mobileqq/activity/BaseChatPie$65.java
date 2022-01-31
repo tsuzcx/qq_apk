@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afsw;
+import afxl;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$65
@@ -13,7 +13,7 @@ class BaseChatPie$65
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "checkPESourceDowned onShow First");
     }
-    afsw.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    afxl.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

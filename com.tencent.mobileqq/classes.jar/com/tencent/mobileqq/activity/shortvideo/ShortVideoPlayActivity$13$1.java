@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import ajym;
+import akdb;
 
 public class ShortVideoPlayActivity$13$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$13$1(ajym paramajym) {}
+  public ShortVideoPlayActivity$13$1(akdb paramakdb) {}
   
   public void run()
   {

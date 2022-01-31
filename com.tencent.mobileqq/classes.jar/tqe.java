@@ -3,20 +3,20 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 class tqe
-  implements vrw
+  implements vwf
 {
   tqe(tqc paramtqc, String paramString1, QCircleFeedCleanPlayView paramQCircleFeedCleanPlayView, String paramString2) {}
   
-  public void a(vrr paramvrr)
+  public void a(vwa paramvwa)
   {
     Long localLong = (Long)tqc.a(this.jdField_a_of_type_Tqc).get(this.jdField_a_of_type_JavaLangString);
     if ((localLong != null) && (localLong.longValue() > 0L))
     {
-      paramvrr.a(localLong.longValue());
+      paramvwa.a(localLong.longValue());
       QLog.d("QCircleFeedPlayerHelper", 4, "playInner seekTo: " + localLong);
     }
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCleanPlayView.c();
-    tyg.a(8, 4, tqc.a(this.jdField_a_of_type_Tqc, this.b));
+    tzs.a(8, 4, tqc.a(this.jdField_a_of_type_Tqc, this.b));
   }
 }
 

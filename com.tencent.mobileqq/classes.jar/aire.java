@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class aire
-  implements View.OnClickListener
+class aire
+  implements arrh
 {
-  public aire(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  aire(aira paramaira) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b.setVisibility(8);
-    this.a.a.setVisibility(8);
-    RedPacketKSongFragment.a(this.a);
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 

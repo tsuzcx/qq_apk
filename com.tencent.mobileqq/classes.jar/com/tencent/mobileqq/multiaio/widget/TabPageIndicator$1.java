@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.multiaio.widget;
 
-import auic;
+import auml;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 class TabPageIndicator$1
   implements Runnable
 {
-  TabPageIndicator$1(TabPageIndicator paramTabPageIndicator, auic paramauic, RecentBaseData paramRecentBaseData) {}
+  TabPageIndicator$1(TabPageIndicator paramTabPageIndicator, auml paramauml, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Auic, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData);
+    this.this$0.a(this.jdField_a_of_type_Auml, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData);
   }
 }
 

@@ -1,90 +1,80 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.1;
-import java.io.File;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.7.1;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.7.2;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.7.3;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class blmy
-  extends bllx
+  implements blkn
 {
-  public static Object a;
-  public static String a;
-  public QIMCaptureBannerConfig a;
+  public blmy(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  static
+  public void a(int paramInt, bllj parambllj)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = blve.a().getAbsolutePath() + File.separator + "banner_config";
-  }
-  
-  public blmy()
-  {
-    c();
-  }
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig != null)
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.7.1(this, parambllj));
+    }
+    if (paramInt == 0)
     {
-      if (!paramBoolean) {
-        break label36;
-      }
-      if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig.update) {
-        QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
+      bljn.b(AEEditorImageEditFragment.e(), "onAIFilterApplySuccess");
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.7.3(this));
+      if (AEEditorImageEditFragment.a(this.a) != null) {
+        break label107;
       }
     }
-    return;
-    label36:
-    QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(QIMCaptureBannerConfig.BannerItem paramBannerItem)
-  {
-    if ((paramBannerItem == null) || (TextUtils.isEmpty(paramBannerItem.imgMd5))) {}
-    File localFile;
+    label107:
+    bllo localbllo;
     do
     {
       do
       {
-        return false;
-        localFile = new File(jdField_a_of_type_JavaLangString, paramBannerItem.imgMd5);
-        if (localFile.exists()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|file is not exist -> " + paramBannerItem.imgUrl);
-      return false;
-      try
-      {
-        String str = bdcs.c(localFile.getPath());
-        if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramBannerItem.imgMd5))) {
-          break;
-        }
-        return true;
+        return;
+        bljn.b(AEEditorImageEditFragment.e(), "onAIFilterAppliedFailed:" + paramInt);
+        ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.7.2(this));
+        break;
+      } while (parambllj == null);
+      AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(AEEditorImageEditFragment.a(this.a)), parambllj);
+      AEEditorImageEditFragment.a(this.a).put(String.valueOf(AEEditorImageEditFragment.a(this.a)), this.a.a(parambllj));
+      localbllo = (bllo)parambllj;
+    } while (localbllo == null);
+    AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), parambllj);
+    AEEditorImageEditFragment.a(this.a).setOverlayImage(AEEditorImageEditFragment.a(this.a), null);
+    AEEditorImageEditFragment.a(this.a).setAEKitAIFilter(AEEditorImageEditFragment.a(this.a), localbllo.jdField_b_of_type_JavaLangString, localbllo.jdField_a_of_type_Float, localbllo.jdField_a_of_type_JavaUtilHashMap, (int)(localbllo.c * 100.0F), localbllo.jdField_b_of_type_Float);
+    this.a.a(new String[] { "智能滤镜label", localbllo.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
+    parambllj = "none";
+    Iterator localIterator = NewEnhanceCategories.newEnhanceTypes.iterator();
+    if (localIterator.hasNext())
+    {
+      NewEnhanceCategories localNewEnhanceCategories = (NewEnhanceCategories)localIterator.next();
+      if (!localNewEnhanceCategories.serverLabel.equals(localbllo.jdField_a_of_type_JavaLangString)) {
+        break label424;
       }
-      catch (UnsatisfiedLinkError paramBannerItem) {}
-    } while (!QLog.isColorLevel());
-    paramBannerItem.printStackTrace();
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|fileMd5 error " + paramBannerItem.imgUrl);
+      parambllj = localNewEnhanceCategories.filterType;
     }
-    localFile.delete();
-    return false;
+    label424:
+    for (;;)
+    {
+      break;
+      bliy.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), "lut_aieffect_" + parambllj);
+      bliy.a().a().b.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), Float.valueOf(-1.0F));
+      return;
+    }
   }
   
-  public void b()
+  public void aU_()
   {
-    this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = null;
-  }
-  
-  public void c()
-  {
-    ThreadManager.post(new QIMCaptureBannerManager.1(this), 8, null, true);
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.a();
+    }
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "资源下载中，请稍后再试", 0).a();
   }
 }
 

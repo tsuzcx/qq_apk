@@ -1,381 +1,528 @@
 import android.content.Context;
-import android.text.SpannableStringBuilder;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class ayhw
-  extends ayjh
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public bdbo a;
-  public bdbp a;
-  private Friends jdField_a_of_type_ComTencentMobileqqDataFriends;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long = aydi.E;
-  public bdbo b;
-  public bdbp b;
-  private String jdField_b_of_type_JavaLangString;
-  public bdbo c;
-  private String c;
-  public bdbo d;
-  private String d;
+  public static String a = "";
+  public static boolean a;
   
-  public ayhw(QQAppInterface paramQQAppInterface, int paramInt, Friends paramFriends, String paramString, long paramLong)
+  public static int a()
   {
-    super(paramQQAppInterface, paramInt, paramLong);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    if (paramQQAppInterface.a().a().b(paramFriends.uin)) {
-      this.jdField_b_of_type_Long = aydi.z;
+    return 1;
+  }
+  
+  public static int a(Context paramContext, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("search_net_config_version_code" + paramString + AppSetting.f(), -1);
+      paramString = "";
+    }
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+    int i = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getInt(paramString + str, paramInt);
+    if (i == 0) {
+      return paramInt;
+    }
+    return i;
+  }
+  
+  public static String a()
+  {
+    String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+    return PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getString("pref_net_search_function_title" + str, alud.a(2131714017));
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("net_search_cell_summary" + paramString, "");
+      paramString = "";
+    }
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+      paramContext.putInt("search_net_config_version_code" + paramString + AppSetting.f(), paramInt);
+      paramContext.commit();
+      return;
+      paramString = "";
+    }
+  }
+  
+  /* Error */
+  public static void a(Context paramContext, com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config paramConfig, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 28	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   4: invokeinterface 93 1 0
+    //   9: astore 9
+    //   11: aload_2
+    //   12: invokestatic 22	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   15: ifne +650 -> 665
+    //   18: aload_2
+    //   19: astore 8
+    //   21: aload_1
+    //   22: getfield 114	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   25: ifnull +633 -> 658
+    //   28: aload_1
+    //   29: getfield 114	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   32: invokevirtual 119	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   35: ifle +623 -> 658
+    //   38: aload_1
+    //   39: getfield 114	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   42: iconst_0
+    //   43: invokevirtual 123	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   46: checkcast 125	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content
+    //   49: astore_1
+    //   50: aload_1
+    //   51: ifnull +607 -> 658
+    //   54: aload_1
+    //   55: getfield 129	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:compress	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   58: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   61: iconst_1
+    //   62: if_icmpne +553 -> 615
+    //   65: aload_1
+    //   66: getfield 137	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:content	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   69: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   72: invokevirtual 148	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   75: invokestatic 153	awci:a	([B)[B
+    //   78: astore_1
+    //   79: aload_1
+    //   80: ifnull +516 -> 596
+    //   83: new 155	java/lang/String
+    //   86: dup
+    //   87: aload_1
+    //   88: ldc 157
+    //   90: invokespecial 160	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   93: astore_1
+    //   94: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: ifeq +28 -> 125
+    //   100: ldc 167
+    //   102: iconst_2
+    //   103: new 30	java/lang/StringBuilder
+    //   106: dup
+    //   107: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   110: ldc 169
+    //   112: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: aload_1
+    //   116: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   125: aload_1
+    //   126: ifnull +532 -> 658
+    //   129: new 175	org/json/JSONObject
+    //   132: dup
+    //   133: aload_1
+    //   134: invokespecial 178	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   137: astore_1
+    //   138: aload_1
+    //   139: ldc 180
+    //   141: invokevirtual 184	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   144: astore 10
+    //   146: aload_1
+    //   147: ldc 186
+    //   149: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   152: istore_3
+    //   153: aload_1
+    //   154: ldc 192
+    //   156: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   159: istore 4
+    //   161: aload_1
+    //   162: ldc 194
+    //   164: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   167: istore 5
+    //   169: aload_1
+    //   170: ldc 196
+    //   172: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   175: istore 6
+    //   177: aload_1
+    //   178: ldc 198
+    //   180: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   183: istore 7
+    //   185: aload_1
+    //   186: ldc 200
+    //   188: ldc 201
+    //   190: invokestatic 81	alud:a	(I)Ljava/lang/String;
+    //   193: invokevirtual 203	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   196: astore 11
+    //   198: aload 9
+    //   200: new 30	java/lang/StringBuilder
+    //   203: dup
+    //   204: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   207: ldc 88
+    //   209: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: aload 8
+    //   214: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: aload 10
+    //   222: invokeinterface 207 3 0
+    //   227: pop
+    //   228: aload 9
+    //   230: new 30	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   237: ldc 209
+    //   239: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: aload 8
+    //   244: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: aload_1
+    //   251: ldc 211
+    //   253: invokevirtual 184	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   256: invokeinterface 207 3 0
+    //   261: pop
+    //   262: aload 9
+    //   264: new 30	java/lang/StringBuilder
+    //   267: dup
+    //   268: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   271: ldc 213
+    //   273: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: aload 8
+    //   278: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: iload_3
+    //   285: invokeinterface 99 3 0
+    //   290: pop
+    //   291: aload 9
+    //   293: new 30	java/lang/StringBuilder
+    //   296: dup
+    //   297: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   300: ldc 215
+    //   302: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: aload 8
+    //   307: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: iload 4
+    //   315: invokeinterface 99 3 0
+    //   320: pop
+    //   321: aload 9
+    //   323: new 30	java/lang/StringBuilder
+    //   326: dup
+    //   327: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   330: ldc 217
+    //   332: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: aload 8
+    //   337: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: iload 5
+    //   345: invokeinterface 99 3 0
+    //   350: pop
+    //   351: aload 9
+    //   353: new 30	java/lang/StringBuilder
+    //   356: dup
+    //   357: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   360: ldc 219
+    //   362: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: aload 8
+    //   367: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   370: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   373: aload_1
+    //   374: ldc 221
+    //   376: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   379: invokeinterface 99 3 0
+    //   384: pop
+    //   385: aload 9
+    //   387: new 30	java/lang/StringBuilder
+    //   390: dup
+    //   391: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   394: ldc 223
+    //   396: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: aload 8
+    //   401: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   404: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   407: aload_1
+    //   408: ldc 225
+    //   410: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   413: invokeinterface 99 3 0
+    //   418: pop
+    //   419: aload 9
+    //   421: new 30	java/lang/StringBuilder
+    //   424: dup
+    //   425: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   428: ldc 227
+    //   430: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: aload 8
+    //   435: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   441: aload_1
+    //   442: ldc 229
+    //   444: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   447: invokeinterface 99 3 0
+    //   452: pop
+    //   453: aload 9
+    //   455: new 30	java/lang/StringBuilder
+    //   458: dup
+    //   459: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   462: ldc 231
+    //   464: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: aload 8
+    //   469: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   472: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   475: iload 6
+    //   477: invokeinterface 99 3 0
+    //   482: pop
+    //   483: aload 9
+    //   485: new 30	java/lang/StringBuilder
+    //   488: dup
+    //   489: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   492: ldc 233
+    //   494: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   497: aload 8
+    //   499: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   505: iload 7
+    //   507: invokeinterface 99 3 0
+    //   512: pop
+    //   513: aload 9
+    //   515: new 30	java/lang/StringBuilder
+    //   518: dup
+    //   519: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   522: ldc 75
+    //   524: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   527: aload 8
+    //   529: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   535: aload 11
+    //   537: invokeinterface 207 3 0
+    //   542: pop
+    //   543: aload 9
+    //   545: invokeinterface 103 1 0
+    //   550: pop
+    //   551: aconst_null
+    //   552: putstatic 236	ayvj:a	Ljava/lang/String;
+    //   555: return
+    //   556: astore_1
+    //   557: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   560: ifeq +31 -> 591
+    //   563: ldc 167
+    //   565: iconst_2
+    //   566: new 30	java/lang/StringBuilder
+    //   569: dup
+    //   570: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   573: ldc 238
+    //   575: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   578: aload_1
+    //   579: invokevirtual 241	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   582: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   588: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   591: aconst_null
+    //   592: astore_1
+    //   593: goto -499 -> 94
+    //   596: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   599: ifeq +11 -> 610
+    //   602: ldc 167
+    //   604: iconst_2
+    //   605: ldc 243
+    //   607: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   610: aconst_null
+    //   611: astore_1
+    //   612: goto -518 -> 94
+    //   615: aload_1
+    //   616: getfield 137	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:content	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   619: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   622: invokevirtual 246	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   625: astore_1
+    //   626: goto -532 -> 94
+    //   629: astore_1
+    //   630: ldc 167
+    //   632: iconst_2
+    //   633: new 30	java/lang/StringBuilder
+    //   636: dup
+    //   637: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   640: ldc 248
+    //   642: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: aload_1
+    //   646: invokevirtual 249	java/lang/Exception:toString	()Ljava/lang/String;
+    //   649: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   652: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   655: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   658: aload_0
+    //   659: iconst_m1
+    //   660: aload_2
+    //   661: invokestatic 251	ayhw:a	(Landroid/content/Context;ILjava/lang/String;)V
+    //   664: return
+    //   665: ldc 11
+    //   667: astore 8
+    //   669: goto -648 -> 21
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	672	0	paramContext	Context
+    //   0	672	1	paramConfig	com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config
+    //   0	672	2	paramString	String
+    //   152	133	3	i	int
+    //   159	155	4	j	int
+    //   167	177	5	k	int
+    //   175	301	6	m	int
+    //   183	323	7	n	int
+    //   19	649	8	str1	String
+    //   9	535	9	localEditor	SharedPreferences.Editor
+    //   144	77	10	str2	String
+    //   196	340	11	str3	String
+    // Exception table:
+    //   from	to	target	type
+    //   83	94	556	java/lang/Throwable
+    //   129	555	629	java/lang/Exception
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    if (!paramBoolean2)
+    {
+      localSharedPreferences.edit().putBoolean("search_discovery_sp_prefixrefresh_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, paramBoolean1).commit();
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "updateNeedRefreshModelList");
+      return;
+    }
+    localSharedPreferences.edit().putBoolean("search_discovery_sp_prefix_unifyrefresh_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, paramBoolean1).commit();
+    QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "updateNeedRefreshModelList");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, int[] paramArrayOfInt, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("");
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+    {
+      int i = 0;
+      while (i < paramArrayOfInt.length - 1)
+      {
+        localStringBuilder.append(paramArrayOfInt[i]).append("_");
+        i += 1;
+      }
+      localStringBuilder.append(paramArrayOfInt[(paramArrayOfInt.length - 1)]);
+    }
+    paramArrayOfInt = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    if (!paramBoolean)
+    {
+      paramArrayOfInt.edit().putString("search_discovery_sp_prefixpref_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, localStringBuilder.toString()).commit();
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "updateModelListByTab");
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramFriends.remark))
-      {
-        this.jdField_a_of_type_Bdbp = ChnToSpell.a(paramFriends.remark);
-        if (this.jdField_a_of_type_Bdbp != null)
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.uniteSearch.SearchEntryConfigManager", 2, "setEntryListByTab, result = " + localStringBuilder.toString() + ", uin = " + paramQQAppInterface.getCurrentAccountUin() + ", tabType = " + paramInt);
+      }
+      return;
+      paramArrayOfInt.edit().putString("search_discovery_sp_prefix_unifypref_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, localStringBuilder.toString()).commit();
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "updateModelListByTab");
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    if (!paramBoolean)
+    {
+      paramBoolean = localSharedPreferences.getBoolean("search_discovery_sp_prefixrefresh_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, true);
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "getNeedRefreshModelList");
+      return paramBoolean;
+    }
+    paramBoolean = localSharedPreferences.getBoolean("search_discovery_sp_prefix_unifyrefresh_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, true);
+    QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "getNeedRefreshModelList");
+    return paramBoolean;
+  }
+  
+  public static int[] a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
+  {
+    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    String[] arrayOfString;
+    if (!paramBoolean)
+    {
+      arrayOfString = ((SharedPreferences)localObject1).getString("search_discovery_sp_prefixpref_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, "").split("_");
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "getModelListByTab");
+    }
+    Object localObject2;
+    for (;;)
+    {
+      if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+        try
         {
-          this.jdField_a_of_type_Bdbo = this.jdField_a_of_type_Bdbp.a();
-          this.jdField_b_of_type_Bdbo = this.jdField_a_of_type_Bdbp.b();
+          int[] arrayOfInt = new int[arrayOfString.length];
+          int i = 0;
+          for (;;)
+          {
+            localObject1 = arrayOfInt;
+            if (i >= arrayOfString.length) {
+              break;
+            }
+            arrayOfInt[i] = Integer.valueOf(arrayOfString[i]).intValue();
+            i += 1;
+          }
+          arrayOfString = ((SharedPreferences)localObject1).getString("search_discovery_sp_prefix_unifypref_search_model_list" + paramQQAppInterface.getCurrentAccountUin() + "_" + paramInt, "").split("_");
+          QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "getModelListByTab");
         }
-      }
-      if (!TextUtils.isEmpty(paramFriends.name))
-      {
-        this.jdField_b_of_type_Bdbp = ChnToSpell.a(paramFriends.name);
-        if (this.jdField_b_of_type_Bdbp != null)
-        {
-          this.jdField_c_of_type_Bdbo = this.jdField_b_of_type_Bdbp.a();
-          this.jdField_d_of_type_Bdbo = this.jdField_b_of_type_Bdbp.b();
-        }
-      }
-      return;
-      if (paramFriends.gathtertype == 1) {
-        this.jdField_b_of_type_Long = aydi.F;
-      } else if (bfua.b(paramFriends.cSpecialFlag)) {
-        this.jdField_b_of_type_Long = aydi.W;
-      } else if (((aloz)paramQQAppInterface.getManager(51)).a(paramFriends.uin) != null) {
-        this.jdField_b_of_type_Long = aydi.D;
-      }
-    }
-  }
-  
-  private void a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      this.jdField_b_of_type_JavaLangString = "";
-      return;
-    case 0: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark))
-      {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-        this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-        return;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))
-      {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-        this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-        return;
-      }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-      this.jdField_c_of_type_JavaLangString = null;
-      return;
-    case 2: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-      this.jdField_c_of_type_JavaLangString = ayrd.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin });
-      return;
-    case 1: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark))
-      {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-        this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-        return;
-      }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-      this.jdField_c_of_type_JavaLangString = ayrd.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin });
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark))
-    {
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))
-    {
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    long l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_Bdbo, this.jdField_b_of_type_Bdbo, aydi.g);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_c_of_type_Bdbo, this.jdField_d_of_type_Bdbo, aydi.l);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, aydi.n, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 3;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.strMasterUin)) {}
-    for (l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataFriends.strMasterUin, aydi.o, false);; l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, aydi.o, false))
-    {
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 0;
-      }
-      if (this.jdField_a_of_type_Long != -9223372036854775808L)
-      {
-        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-        a();
-      }
-      return this.jdField_a_of_type_Long;
-    }
-  }
-  
-  public Pair<CharSequence, CharSequence> a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return null;
-    case 0: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
-        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, this.jdField_d_of_type_JavaLangString, 6, false));
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name)) {
-        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, this.jdField_d_of_type_JavaLangString, 6, false));
-      }
-      return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, this.jdField_d_of_type_JavaLangString, 6, false), null);
-    case 2: 
-      return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_d_of_type_JavaLangString, 6, true), null);
-    case 1: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
-        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_d_of_type_JavaLangString, 6, true));
-      }
-      return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_d_of_type_JavaLangString, 6, true), null);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
-      return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, this.jdField_d_of_type_JavaLangString, 6, true));
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name)) {
-      return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, this.jdField_d_of_type_JavaLangString, 6, true));
-    }
-    return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias, this.jdField_d_of_type_JavaLangString, 6, true), null);
-  }
-  
-  public ayrb a(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    Object localObject1 = ChnToSpell.a(paramString);
-    ayrb localayrb = ayrd.a(paramString, (bdbp)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_Bdbp, aydi.g);
-    localObject1 = ayrd.a(paramString, (bdbp)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_b_of_type_Bdbp, aydi.g);
-    if ((localayrb != null) && (localayrb.a)) {
-      if ((localObject1 != null) && (((ayrb)localObject1).a) && (((ayrb)localObject1).c > localayrb.c))
-      {
-        this.jdField_a_of_type_Int = 1;
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          this.jdField_a_of_type_Int = 2;
-        }
-      }
-    }
-    for (Object localObject2 = localayrb;; localObject2 = null)
-    {
-      if ((localObject2 != null) && (((ayrb)localObject2).a))
-      {
-        this.jdField_b_of_type_Boolean = true;
-        this.a = ((ayrb)localObject2);
-        a();
-        return localObject2;
-      }
-      return super.a(paramString);
-      localObject1 = null;
-      break;
-    }
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public String a()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    Object localObject;
-    if (ayrd.a(this.jdField_b_of_type_Int))
-    {
-      ajgm.a = true;
-      ajgm.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 0, bdbt.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends), false);
-      ayrd.a(this.jdField_d_of_type_JavaLangString, 20, 1, paramView);
-      alxr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_d_of_type_JavaLangString);
-      String str = a().toString();
-      localObject = str;
-      if (TextUtils.isEmpty(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(h, 2, "saveSearchHistory title is null");
-        }
-        str = c();
-        localObject = str;
-        if (TextUtils.isEmpty(str))
+        catch (NumberFormatException localNumberFormatException)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(h, 2, "saveSearchHistory titlestr is null");
+            QLog.e("Q.uniteSearch.SearchEntryConfigManager", 2, "getEntryListByTab, NumberFormatException, e = " + localNumberFormatException + ", uin = " + paramQQAppInterface.getCurrentAccountUin() + ", tabType = " + paramInt);
           }
-          localObject = d();
+          localObject2 = null;
         }
       }
-      ayrd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, "", 0);
-      ayrd.a(this.jdField_d_of_type_JavaLangString, 20, paramView, false);
-      ayrd.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        ayrd.a("search", "contact", "contacts", 0, 0, new String[] { ayrd.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        ayrd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_d_of_type_JavaLangString, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          aynt.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
-        }
-      }
-      else {
-        return;
-      }
-      aynt.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
-      return;
     }
-    if (11 == this.jdField_b_of_type_Int)
+    for (;;)
     {
-      localObject = (BaseActivity)paramView.getContext();
-      if (((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin) != null)
-      {
-        QQToast.a((Context)localObject, ((BaseActivity)localObject).getString(2131699850), 0).b(((BaseActivity)localObject).getTitleBarHeight());
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.uniteSearch.SearchEntryConfigManager", 2, "getEntryListByTab, result = " + localObject2 + ", uin = " + paramQQAppInterface.getCurrentAccountUin() + ", tabType = " + paramInt);
+      }
+      return localObject2;
+      localObject2 = null;
+    }
+  }
+  
+  public static String b()
+  {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str2 = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str1 = alud.a(2131719563);
+    if (TextUtils.isEmpty(ayvj.a))
+    {
+      if (!ayvj.a(((QQAppInterface)localObject).getCurrentAccountUin())) {
+        break label184;
+      }
+      localObject = BaseApplicationImpl.getContext();
+      str1 = "";
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2;
+      }
+      str1 = PreferenceManager.getDefaultSharedPreferences((Context)localObject).getString("fts_search_bar_summary" + str1, "");
+      if (!TextUtils.isEmpty(str1)) {
+        ayvj.a = str1;
       }
     }
-    ayrd.a(paramView, this);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int == 21) || (this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    if (ayrd.a(this.jdField_b_of_type_Int)) {
-      return alpo.a(2131702921) + this.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public int e()
-  {
-    return 1;
-  }
-  
-  public CharSequence e()
-  {
-    Object localObject = a();
-    CharSequence localCharSequence = b();
-    switch (this.jdField_a_of_type_Int)
+    label184:
+    for (;;)
     {
-    }
-    do
-    {
-      localObject = super.e();
-      SpannableStringBuilder localSpannableStringBuilder;
-      do
-      {
-        return localObject;
-        localSpannableStringBuilder = new SpannableStringBuilder();
-        if (localObject != null) {
-          localSpannableStringBuilder.append((CharSequence)localObject);
-        }
-        localObject = localSpannableStringBuilder;
-      } while (localCharSequence == null);
-      localSpannableStringBuilder.append(localCharSequence);
-      return localSpannableStringBuilder;
-      return localObject;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
-        return localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchEntryConfigManager", 2, "getFtsSearchBarWording() searchBarWording=" + str1);
       }
-    } while ((localCharSequence == null) || (localCharSequence.length() <= 2));
-    return localCharSequence.subSequence(1, localCharSequence.length() - 1);
-  }
-  
-  public int f()
-  {
-    return this.jdField_b_of_type_Int;
+      return str1;
+      str1 = alud.a(2131719563);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchEntryConfigManager", 2, "getFtsSearchBarWording() cache wording is not null. " + ayvj.a);
+      }
+      str1 = ayvj.a;
+    }
   }
 }
 

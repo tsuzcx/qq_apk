@@ -1,26 +1,15 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
 
 public class ahly
-  extends alkl
+  implements View.OnClickListener
 {
-  public ahly(TroopView paramTroopView) {}
+  public ahly(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.a()) {
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131695085);
-    }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
+    this.a.finish();
   }
 }
 

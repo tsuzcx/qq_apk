@@ -4,8 +4,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import bkyt;
-import bkzd;
+import blda;
+import bldk;
 import dov.com.qq.im.BaseVMPeakActivity;
 import dov.com.qq.im.ae.SessionWrap;
 
@@ -47,14 +47,14 @@ public class AEStoryGIFPreviewActivity
     long l = getIntent().getLongExtra("KEY_AVAILABLE_EMO_COUNT", 9223372036854775807L);
     FragmentManager localFragmentManager = getFragmentManager();
     if (i == 202) {
-      if (localFragmentManager.findFragmentByTag(bkyt.class.getSimpleName()) == null) {
-        localFragmentManager.beginTransaction().add(2131366789, bkyt.a(paramBundle, l), bkyt.class.getSimpleName()).commit();
+      if (localFragmentManager.findFragmentByTag(blda.class.getSimpleName()) == null) {
+        localFragmentManager.beginTransaction().add(2131366799, blda.a(paramBundle, l), blda.class.getSimpleName()).commit();
       }
     }
-    while (localFragmentManager.findFragmentByTag(bkzd.class.getSimpleName()) != null) {
+    while (localFragmentManager.findFragmentByTag(bldk.class.getSimpleName()) != null) {
       return;
     }
-    localFragmentManager.beginTransaction().add(2131366789, bkzd.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bkzd.class.getSimpleName()).commit();
+    localFragmentManager.beginTransaction().add(2131366799, bldk.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bldk.class.getSimpleName()).commit();
   }
 }
 

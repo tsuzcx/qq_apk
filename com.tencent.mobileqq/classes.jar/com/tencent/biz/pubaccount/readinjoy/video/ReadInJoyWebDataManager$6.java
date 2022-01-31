@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Bundle;
-import bcgo;
-import bcgp;
+import bckx;
+import bcky;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public final class ReadInJoyWebDataManager$6
         QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
       }
       localObject1 = new qzk(this);
-      new bcgp("https://node.kandian.qq.com/cgi/stats/multy?g_tk=" + qzi.a((String)localObject2), "POST", (bcgo)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
+      new bcky("https://node.kandian.qq.com/cgi/stats/multy?g_tk=" + qzi.a((String)localObject2), "POST", (bckx)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
       return;
     }
     catch (Exception localException)

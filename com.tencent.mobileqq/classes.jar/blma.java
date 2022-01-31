@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
 
 class blma
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  blma(blly paramblly) {}
+  blma(bllz parambllz, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (((blly.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)blly.a(this.a)).c())) {
-      return true;
-    }
-    return blly.a(this.a).a(paramMotionEvent);
+    AEEditorImageClipFragment.a(this.jdField_a_of_type_Bllz.a, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bllz.notifyDataSetChanged();
   }
 }
 

@@ -35,7 +35,7 @@ import java.util.Random;
 import mqq.app.MobileQQ;
 
 public abstract class liy
-  extends alko
+  extends alpd
 {
   private int jdField_a_of_type_Int;
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
@@ -172,7 +172,7 @@ public abstract class liy
       paramArrayOfByte = a(i, bool1, j, paramArrayOfByte);
       lit locallit = this.jdField_a_of_type_Lit;
       localToServiceMsg.putWupBuffer(lit.a(localIntHead.toByteArray(), paramArrayOfByte.toByteArray()));
-      if (bdee.g(this.mApp.getApplication().getApplicationContext())) {
+      if (bdin.g(this.mApp.getApplication().getApplicationContext())) {
         sendPbReq(localToServiceMsg);
       }
       QLog.w("AudioTransClientInterfaceHandler", 1, "sendCmdToServiceSSO, cmd[" + paramString2 + "], seq[" + paramLong + "], bodyType[" + i + "], trans_english[" + bool1 + "], bussiness_direction[" + j + "], mSendRawDataCount[" + m + "->" + this.jdField_a_of_type_Int + "], from[" + paramString1 + "]");
@@ -208,7 +208,7 @@ public abstract class liy
   
   protected abstract boolean a();
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

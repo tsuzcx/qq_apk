@@ -5,10 +5,10 @@ import android.view.ViewGroup;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class qrf
-  extends bhzz<qnz, qrg>
+  extends bieg<qnz, qrg>
 {
   private int jdField_a_of_type_Int = -1;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(BaseApplication.getContext().getResources().getColor(2131167162));
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(BaseApplication.getContext().getResources().getColor(2131167164));
   private qri jdField_a_of_type_Qri;
   
   public qrf(Context paramContext)
@@ -33,9 +33,9 @@ public class qrf
   public qrg a(ViewGroup paramViewGroup, int paramInt)
   {
     if (paramInt == 0) {
-      return new qrg(this, paramViewGroup, 2131559847);
+      return new qrg(this, paramViewGroup, 2131559846);
     }
-    return new qrj(this, paramViewGroup, 2131559848);
+    return new qrj(this, paramViewGroup, 2131559847);
   }
   
   public void a(int paramInt)

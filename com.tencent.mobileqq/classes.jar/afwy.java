@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public class afwy
-  implements ValueAnimator.AnimatorUpdateListener
+class afwy
+  implements bayi
 {
-  public afwy(SixCombolEffectView paramSixCombolEffectView, afxk paramafxk) {}
+  afwy(afwu paramafwu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    this.jdField_a_of_type_Afxk.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    this.a.b();
   }
 }
 

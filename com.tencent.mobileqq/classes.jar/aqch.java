@@ -1,9 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-
-public abstract interface aqch<V extends View>
+class aqch
+  implements bdvu
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
+  aqch(aqcg paramaqcg) {}
+  
+  public void load(bdtv parambdtv)
+  {
+    this.a.a(parambdtv);
+  }
 }
 
 

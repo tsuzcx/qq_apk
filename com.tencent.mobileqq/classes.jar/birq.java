@@ -1,54 +1,67 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.Dex2Oat;
 
-public class birq
-  implements aymg<ayjk, ayru>
+class birq
+  implements DialogInterface.OnClickListener
 {
-  public void a(ayjk paramayjk, ayru paramayru)
+  Context jdField_a_of_type_AndroidContentContext;
+  biqu jdField_a_of_type_Biqu;
+  biqw jdField_a_of_type_Biqw;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  
+  private birq(birn parambirn, biqu parambiqu, boolean paramBoolean1, Context paramContext, biqw parambiqw, boolean paramBoolean2, String paramString)
   {
-    biru localbiru;
-    int i;
-    if (((paramayjk instanceof biru)) && ((paramayru instanceof aytk)))
+    this.jdField_a_of_type_Biqu = parambiqu;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Biqw = parambiqw;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    int i = 0;
+    switch (paramInt)
     {
-      localbiru = (biru)paramayjk;
-      paramayru = (aytk)paramayru;
-      paramayjk = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
-      if ((paramayjk != null) && (paramayjk.getStatus() == 2)) {
-        paramayjk.restartDownload();
-      }
-      paramayru.b().setImageDrawable(paramayjk);
-      paramayru.a().setText(biru.b);
-      if (localbiru.a() != null) {
-        break label204;
-      }
-      i = 0;
-      if (i > 10) {
-        break label218;
-      }
-    }
-    label204:
-    label218:
-    for (paramayjk = String.valueOf(i);; paramayjk = "10+")
-    {
-      ((TextView)paramayru.a().findViewById(2131365121)).setText(String.format("%s条与\"", new Object[] { paramayjk }));
-      paramayjk = (TextView)paramayru.a().findViewById(2131365115);
-      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        paramayjk.setTextColor(Color.parseColor("#004080"));
-      }
-      paramayjk.setText(localbiru.b());
-      ((TextView)paramayru.a().findViewById(2131365122)).setText("\"相关收藏");
-      paramayru.a().setVisibility(8);
-      paramayru.a().setOnClickListener(new birr(this, localbiru));
+    default: 
       return;
-      i = localbiru.a().size();
-      break;
+    case -1: 
+      birn.a(this.jdField_a_of_type_Birn, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Biqw, this.jdField_a_of_type_Biqu);
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt = i;
+    }
+    for (;;)
+    {
+      birn.a(this.jdField_a_of_type_Birn, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Biqw, this.jdField_a_of_type_Biqu);
+      return;
+      paramInt = i;
+      if (this.b)
+      {
+        if (birn.a())
+        {
+          boolean bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
+          if (bool) {}
+          for (i = 4;; i = 2)
+          {
+            paramInt = i;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("plugin_tag", 2, "dialog needOTA :" + bool);
+            paramInt = i;
+            break;
+          }
+        }
+        paramInt = 2;
+      }
     }
   }
 }

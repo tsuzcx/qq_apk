@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-
 public abstract interface ajlt
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
+  public abstract byte[] a();
 }
 
 

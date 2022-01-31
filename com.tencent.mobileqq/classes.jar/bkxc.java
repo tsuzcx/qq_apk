@@ -1,38 +1,11 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
 import java.util.List;
 
-class bkxc
-  implements bmac<bkwc>
+public abstract interface bkxc
 {
-  bkxc(bkwx parambkwx) {}
+  public abstract void a(@NonNull List<bkwo> paramList, @NonNull List<bkwn> paramList1);
   
-  public void a(@Nullable bkwc parambkwc)
-  {
-    if (parambkwc == null) {
-      return;
-    }
-    bkvz localbkvz;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        localIterator = bkwx.a(this.a).iterator();
-      } while (!localIterator.hasNext());
-      localbkvz = (bkvz)localIterator.next();
-      if (!localbkvz.jdField_a_of_type_JavaLangString.equals(parambkwc.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
-        break;
-      }
-      if (localbkvz.jdField_a_of_type_Int != parambkwc.jdField_a_of_type_Int)
-      {
-        localbkvz.jdField_a_of_type_Int = parambkwc.jdField_a_of_type_Int;
-        bkwx.a(this.a).notifyItemChanged(bkwx.a(this.a).indexOf(localbkvz) + 1);
-      }
-    } while ((localbkvz.jdField_a_of_type_Int != 2) || (!localbkvz.jdField_a_of_type_JavaLangString.equals(bkwx.a(this.a))));
-    bkwx.a(this.a).b(localbkvz);
-  }
+  public abstract void x();
 }
 
 

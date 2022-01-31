@@ -1,55 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
 public class awvz
-  extends almw
+  implements Animation.AnimationListener
 {
-  public awvz(QCallDetailActivity paramQCallDetailActivity) {}
+  public awvz(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(QCallDetailActivity.a(this.a));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374180) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374180).equals(Boolean.valueOf(true))))
     {
-      String str = paramString;
-      if (GroupIconHelper.a(paramString)) {
-        str = GroupIconHelper.b(paramString);
-      }
-      if (QCallDetailActivity.a(this.a).equals(str))
-      {
-        this.a.a(QCallDetailActivity.a(this.a));
-        if (QLog.isColorLevel()) {
-          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131374180, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374182)).longValue());
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
   }
   
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
-      this.a.finish();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

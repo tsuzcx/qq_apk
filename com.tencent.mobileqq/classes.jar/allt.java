@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
 public class allt
-  implements Manager
+  implements Animation.AnimationListener
 {
-  private bcxp jdField_a_of_type_Bcxp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public Object a;
+  public allt(ApolloGameViewBinder.GameListAdapter.2 param2) {}
   
-  public allt(QQAppInterface paramQQAppInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
   }
   
-  public bcxp a()
-  {
-    if (this.jdField_a_of_type_Bcxp == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Bcxp == null) {
-        this.jdField_a_of_type_Bcxp = new bcxp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      return this.jdField_a_of_type_Bcxp;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Bcxp != null) {
-      this.jdField_a_of_type_Bcxp.a();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allt
  * JD-Core Version:    0.7.0.1
  */

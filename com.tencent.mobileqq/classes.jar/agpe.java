@@ -1,14 +1,17 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
 class agpe
-  implements nrr
+  implements DialogInterface.OnClickListener
 {
-  agpe(agpd paramagpd) {}
+  agpe(agoz paramagoz, ArrayList paramArrayList, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agot.b(this.a.a, false);
-    this.a.a.a.sendEmptyMessage(1);
+    paramDialogInterface.dismiss();
+    agoz.a(this.jdField_a_of_type_Agoz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agoz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,22 +1,37 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-public final class xje
-  implements Comparator<File>
+public class xje
+  extends xis
 {
-  public int a(File paramFile1, File paramFile2)
+  public int c;
+  
+  public xje(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
   }
   
-  public boolean equals(Object paramObject)
+  @NonNull
+  public Class<? extends xit> a()
+  {
+    return xjf.class;
+  }
+  
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xjf(this, paramContext, paramViewGroup);
+  }
+  
+  public void a(int paramInt)
+  {
+    wxe.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
   {
     return true;
   }

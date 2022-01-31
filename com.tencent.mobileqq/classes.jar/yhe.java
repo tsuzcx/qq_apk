@@ -1,6 +1,8 @@
 public abstract interface yhe
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
 }
 
 

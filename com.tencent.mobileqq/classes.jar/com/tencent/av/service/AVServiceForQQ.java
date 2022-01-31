@@ -81,7 +81,7 @@ public class AVServiceForQQ
             return;
             localException1 = localException1;
             QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
-            String str2 = super.getString(2131721289) + " 0x0a";
+            String str2 = super.getString(2131721302) + " 0x0a";
             try
             {
               Toast.makeText(super.getBaseContext(), str2, 0).show();

@@ -1,69 +1,86 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public abstract class ahtz
+public class ahtz
+  extends ameq
 {
-  protected ahwg a;
-  protected FragmentActivity a;
-  protected View a;
-  protected String a;
+  public ahtz(TroopFragment paramTroopFragment) {}
   
-  public ahtz(FragmentActivity paramFragmentActivity)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.h();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.h();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.h();
   }
   
-  public abstract int a();
-  
-  public FragmentManager a()
+  protected void a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+    if (this.a.jdField_a_of_type_Ahrs != null) {
+      this.a.jdField_a_of_type_Ahrs.b();
+    }
   }
   
-  protected View a(int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_Ahsy != null) {
+        this.a.jdField_a_of_type_Ahsy.a(this.a.b(), paramBoolean, null);
+      }
+    }
+    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
   }
   
-  public BaseActivity a()
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
   
-  public void a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131375981);
-    f();
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(ahwg paramahwg)
+  protected void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ahwg = paramahwg;
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
-    this.jdField_a_of_type_Ahwg = null;
-  }
-  
-  public void e() {}
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
 }
 

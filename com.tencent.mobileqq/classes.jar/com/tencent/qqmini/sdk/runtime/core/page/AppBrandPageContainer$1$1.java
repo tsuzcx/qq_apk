@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bhas;
-import bhbe;
+import bhez;
+import bhfl;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class AppBrandPageContainer$1$1
   implements Runnable
 {
-  public AppBrandPageContainer$1$1(bhbe parambhbe, int paramInt) {}
+  public AppBrandPageContainer$1$1(bhfl parambhfl, int paramInt) {}
   
   public void run()
   {
@@ -16,9 +16,9 @@ public class AppBrandPageContainer$1$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("height", this.jdField_a_of_type_Int);
-      localJSONObject.put("inputId", this.jdField_a_of_type_Bhbe.a.f());
-      if (this.jdField_a_of_type_Bhbe.a.a != null) {
-        this.jdField_a_of_type_Bhbe.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.jdField_a_of_type_Bhbe.a.e());
+      localJSONObject.put("inputId", this.jdField_a_of_type_Bhfl.a.f());
+      if (this.jdField_a_of_type_Bhfl.a.a != null) {
+        this.jdField_a_of_type_Bhfl.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.jdField_a_of_type_Bhfl.a.e());
       }
       return;
     }

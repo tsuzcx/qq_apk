@@ -1,385 +1,109 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-@SuppressLint({"UseSparseArrays"})
 public class akel
-  extends akcy
-  implements View.OnClickListener
+  implements azlv
 {
-  public static int a;
-  protected float a;
-  private akeo jdField_a_of_type_Akeo;
-  protected aloz a;
-  protected Context a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akem(this);
-  protected bcyf a;
-  protected QQAppInterface a;
-  protected HashMap<Integer, ArrayList<awbv>> a;
-  protected List<awbv> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected HashMap<Integer, String> b = new HashMap();
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  static
+  public akel(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    jdField_a_of_type_Int = 1003;
-  }
-  
-  public akel(Context paramContext, ExpandableListView paramExpandableListView, QQAppInterface paramQQAppInterface, List<awbv> paramList, akeo paramakeo, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramExpandableListView);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aloz = ((aloz)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Akeo = paramakeo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Bcyf = new bcyf(paramContext);
-    this.jdField_a_of_type_Bcyf.a((int)(this.jdField_a_of_type_Float * 100.0F), (int)(this.jdField_a_of_type_Float * 100.0F));
-    a(paramList, false);
-    if (this.jdField_a_of_type_Boolean) {
-      a();
-    }
-  }
-  
-  private ArrayList<awbv> a()
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(true));
-  }
-  
-  private ArrayList<awbv> a(List<RecentUser> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bdal.a(localRecentUser.uin)) && (localRecentUser.getType() == 0) && (!bdal.c(localRecentUser.uin)) && (this.jdField_a_of_type_Aloz != null) && (this.jdField_a_of_type_Aloz.b(localRecentUser.uin))) {
-        localArrayList.add(this.jdField_a_of_type_Aloz.e(localRecentUser.uin));
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void a()
-  {
-    Object localObject1 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    int i = ((PhoneContactManagerImp)localObject1).d();
-    if ((((PhoneContactManagerImp)localObject1).c()) || (i == 8))
-    {
-      Object localObject2 = ((PhoneContactManagerImp)localObject1).a();
-      if (localObject2 != null)
-      {
-        localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll((Collection)localObject2);
-        if (!((ArrayList)localObject1).isEmpty())
-        {
-          localObject2 = new Groups();
-          ((Groups)localObject2).group_id = 1002;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131695186);
-          ((Groups)localObject2).group_friend_count = 1;
-          ((Groups)localObject2).seqid = 0;
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((Groups)localObject2).group_id), localObject1);
-        }
-      }
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static int b()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public int a()
-  {
-    return 2131558878;
-  }
-  
-  public List<awbv> a(int paramInt)
-  {
-    paramInt = ((Groups)getGroup(paramInt)).group_id;
-    return (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    aken localaken = (aken)paramView.getTag();
-    if (localaken == null)
-    {
-      localaken = new aken();
-      localaken.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367341));
-      localaken.b = ((TextView)paramView.findViewById(2131364709));
-      paramView.findViewById(2131368762).setVisibility(0);
-      paramView.setTag(localaken);
-    }
-    for (;;)
-    {
-      Groups localGroups = (Groups)getGroup(paramInt);
-      localaken.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      localaken.b.setText(String.valueOf(localGroups.group_friend_count));
-      ((CheckBox)paramView.findViewById(2131368762)).setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramInt));
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString == null) {}
       return;
     }
   }
   
-  public void a(List<awbv> paramList, boolean paramBoolean)
+  public azlw a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (paramList.hasNext())
+    int j = 1280;
+    int i = 30;
+    azlw localazlw = new azlw();
+    Object localObject;
+    if (paramInt1 <= paramInt2)
     {
-      Groups localGroups = (Groups)paramList.next();
-      ArrayList localArrayList;
-      int i;
-      if ((localGroups.group_id == b()) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(b()))))
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localazlw.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      if (paramInt2 < 1280) {
+        break label278;
+      }
+      localObject = "720p";
+      paramInt1 = j;
+      label70:
+      if (paramInt2 >= paramInt1) {
+        break label307;
+      }
+    }
+    label278:
+    label307:
+    for (localazlw.jdField_a_of_type_Int = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localazlw.jdField_a_of_type_Int = 819200)
+    {
+      localazlw.jdField_a_of_type_Float = (paramInt1 / paramInt2);
+      paramInt2 = i;
+      if (this.jdField_b_of_type_Int <= 30) {
+        paramInt2 = this.jdField_b_of_type_Int;
+      }
+      localazlw.jdField_b_of_type_Int = paramInt2;
+      localazlw.jdField_b_of_type_Boolean = a();
+      localazlw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localazlw.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localazlw.jdField_b_of_type_Boolean + ", scaleRate=" + localazlw.jdField_a_of_type_Float + ", videoBitRate=" + localazlw.jdField_a_of_type_Int + ", videoFrameRate=" + localazlw.jdField_b_of_type_Int + ", beginTime=" + localazlw.jdField_a_of_type_Long + ", endTime=" + localazlw.jdField_b_of_type_Long + ",quality:" + (String)localObject + ",videoLongestEdge=" + paramInt1);
+      }
+      return localazlw;
+      paramInt2 = paramInt1;
+      break;
+      if (paramInt2 >= 960)
       {
-        localArrayList = a();
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(b()), localArrayList);
-        if (localArrayList == null)
-        {
-          i = 0;
-          label94:
-          localGroups.group_friend_count = i;
-        }
+        localObject = "540p";
+        paramInt1 = 960;
+        break label70;
       }
-      for (;;)
-      {
-        this.b.put(Integer.valueOf(localGroups.group_id), localGroups.group_name);
-        break;
-        i = localArrayList.size();
-        break label94;
-        Object localObject = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(String.valueOf(localGroups.group_id));
-        localArrayList = new ArrayList();
-        if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-        {
-          localArrayList.addAll((Collection)localObject);
-          localObject = localArrayList.iterator();
-          label330:
-          while (((Iterator)localObject).hasNext())
-          {
-            try
-            {
-              Friends localFriends = (Friends)((Iterator)localObject).next();
-              if (!bdal.b(localFriends.uin)) {
-                break label248;
-              }
-              ((Iterator)localObject).remove();
-            }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-            }
-            continue;
-            label248:
-            if ((TextUtils.equals(localException.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ForwardFriendListActivity)))
-            {
-              Intent localIntent = ((ForwardFriendListActivity)this.jdField_a_of_type_AndroidContentContext).getIntent();
-              if (localIntent != null) {}
-              for (boolean bool = localIntent.getBooleanExtra("choose_friend_isForConfess", false);; bool = false)
-              {
-                if (!bool) {
-                  break label330;
-                }
-                ((Iterator)localObject).remove();
-                break;
-              }
-            }
-          }
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localGroups.group_id), localArrayList);
-      }
-    }
-    if (paramBoolean) {
-      super.notifyDataSetChanged();
+      paramInt1 = 640;
+      localObject = "480p";
+      break label70;
     }
   }
   
-  public Object getChild(int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Throwable paramThrowable)
   {
-    return a(paramInt1).get(paramInt2);
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
   
-  public long getChildId(int paramInt1, int paramInt2)
+  public boolean a()
   {
-    return 0L;
-  }
-  
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    ForwardRecentItemView localForwardRecentItemView;
-    Object localObject1;
-    Object localObject2;
-    String str;
-    if (paramView == null)
-    {
-      localForwardRecentItemView = new ForwardRecentItemView(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup = new akep();
-      localForwardRecentItemView.setTag(paramViewGroup);
-      localObject1 = getChild(paramInt1, paramInt2);
-      if (!(localObject1 instanceof PhoneContact)) {
-        break label284;
-      }
-      localObject2 = (PhoneContact)localObject1;
-      str = ((PhoneContact)localObject2).name;
-      paramView = ((PhoneContact)localObject2).mobileCode;
-      if (!TextUtils.isEmpty(paramView)) {
-        break label258;
-      }
-      paramView = ((PhoneContact)localObject2).mobileNo;
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
     }
-    label258:
-    label284:
-    label316:
-    for (;;)
-    {
-      label86:
-      paramInt1 = 1006;
-      for (paramViewGroup.jdField_c_of_type_Int = 11;; paramViewGroup.jdField_c_of_type_Int = 1)
-      {
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = localForwardRecentItemView.jdField_a_of_type_AndroidWidgetImageView;
-        paramViewGroup.jdField_a_of_type_JavaLangString = paramView;
-        paramViewGroup.jdField_a_of_type_JavaLangObject = localObject1;
-        paramBoolean = this.jdField_a_of_type_Akeo.a(paramView, paramInt1);
-        boolean bool = bcgx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
-        localObject2 = localForwardRecentItemView.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new ResultRecord();
-        }
-        ((ResultRecord)localObject1).a(paramView, str, paramInt1, "", "");
-        localForwardRecentItemView.a(str, "", null, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, paramBoolean, bool);
-        a(paramViewGroup, null);
-        localForwardRecentItemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        if (AppSetting.c) {
-          localForwardRecentItemView.setContentDescription(str);
-        }
-        return localForwardRecentItemView;
-        localForwardRecentItemView = (ForwardRecentItemView)paramView;
-        paramViewGroup = (akep)localForwardRecentItemView.getTag();
-        break;
-        paramInt1 = paramView.indexOf("|");
-        if (paramInt1 <= -1) {
-          break label316;
-        }
-        paramView = paramView.substring(0, paramInt1);
-        break label86;
-        paramView = (Friends)localObject1;
-        str = bdbt.a(paramView);
-        paramView = paramView.uin;
-        paramInt1 = 0;
-      }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
     }
-  }
-  
-  public int getChildrenCount(int paramInt)
-  {
-    if (a(paramInt) == null) {
-      return 0;
-    }
-    return a(paramInt).size();
-  }
-  
-  public Object getGroup(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getGroupCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getGroupId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558878, paramViewGroup, false);
-      paramViewGroup = new aken();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367341));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131364709));
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(this);
-    }
-    for (;;)
-    {
-      Groups localGroups = (Groups)getGroup(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      paramViewGroup.b.setText(String.valueOf(getChildrenCount(paramInt)));
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      if (AppSetting.c) {
-        paramView.setContentDescription(localGroups.group_name);
-      }
-      return paramView;
-      paramViewGroup = (aken)paramView.getTag();
-    }
-  }
-  
-  public boolean hasStableIds()
-  {
     return false;
   }
   
-  public boolean isChildSelectable(int paramInt1, int paramInt2)
-  {
-    return true;
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.jdField_a_of_type_JavaUtilList == null;
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (aken)paramView.getTag();
-    if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramView.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_ComTencentWidgetExpandableListView.b(paramView.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView.a(paramView.jdField_a_of_type_Int);
-  }
+  public void b() {}
 }
 
 

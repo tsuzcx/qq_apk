@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search.ftsentity;
 
 import android.content.Context;
 import android.content.Intent;
-import ayhb;
+import aylk;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
@@ -27,13 +27,13 @@ public class FTSEntitySearchActivity
   
   public String a()
   {
-    return ayhb.b(this, this.a);
+    return aylk.b(this, this.a);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bdlj.a = true;
+    bdps.a = true;
   }
 }
 

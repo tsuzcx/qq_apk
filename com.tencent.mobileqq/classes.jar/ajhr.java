@@ -1,20 +1,24 @@
-import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajhr
-  extends ajhi
+class ajhr
+  implements View.OnClickListener
 {
-  public int c;
+  ajhr(ajgb paramajgb, String paramString) {}
   
-  public ajhr(Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    this.c = paramInt;
-    if (paramInt == 0) {
-      this.a = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
     }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a = alpo.a(2131716064);
+    paramView = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), QQBrowserDelegationActivity.class);
+    paramView.putExtra("injectrecommend", true);
+    ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
   }
 }
 

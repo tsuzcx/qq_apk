@@ -1,7 +1,7 @@
 package cooperation.readinjoy;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -25,7 +25,7 @@ public final class ReadInJoyHelper$6
     ArrayList localArrayList;
     try
     {
-      Object localObject1 = bjxj.a("daily_cba_report_key");
+      Object localObject1 = bkbq.a("daily_cba_report_key");
       localArrayList = new ArrayList();
       if ((localObject1 != null) && (!TextUtils.isEmpty(localObject1.toString()))) {
         localObject1 = new JSONArray(localObject1.toString());
@@ -61,7 +61,7 @@ public final class ReadInJoyHelper$6
       {
         if ((i >= localArrayList.size()) || (i >= j))
         {
-          bjxj.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
+          bkbq.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
           return;
         }
         ((JSONArray)localObject2).put(localArrayList.get(i));

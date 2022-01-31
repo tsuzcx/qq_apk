@@ -41,7 +41,7 @@ public class omd
     this.jdField_a_of_type_Okf = new okf();
     this.jdField_a_of_type_Okf.a(a());
     this.jdField_a_of_type_Okx = new okx(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView, this.jdField_a_of_type_JavaUtilList, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.setOnScrollListener(this.jdField_a_of_type_Bhtv);
   }
   
   private void a(List<omt> paramList)
@@ -331,7 +331,7 @@ public class omd
   {
     if (paramBoolean)
     {
-      QQToast.a(BaseApplication.getContext(), 2, alpo.a(2131713361), 0).a();
+      QQToast.a(BaseApplication.getContext(), 2, alud.a(2131713373), 0).a();
       if (this.jdField_a_of_type_Omz != null) {}
       for (paramomt = this.jdField_a_of_type_Omz.b(this.jdField_b_of_type_JavaLangString);; paramomt = new ArrayList())
       {
@@ -349,7 +349,7 @@ public class omd
         return;
       }
     }
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713206), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713218), 0).a();
   }
   
   public void onCommentStateError(int paramInt)
@@ -360,7 +360,7 @@ public class omd
     while (paramInt != 1001) {
       return;
     }
-    xxb.a(1, 2131718775);
+    ybk.a(1, 2131718787);
   }
 }
 

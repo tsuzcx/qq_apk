@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -31,10 +31,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azmj;
-import baig;
-import bain;
-import bdiv;
+import azqs;
+import bamp;
+import bamw;
+import bdne;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.zimu.ZimuItem;
@@ -188,18 +188,18 @@ public class VideoLayerUI
   
   private void A()
   {
-    this.t = bdiv.a(this.jdField_a_of_type_AndroidContentContext).getInt("video_position", 3);
+    this.t = bdne.a(this.jdField_a_of_type_AndroidContentContext).getInt("video_position", 3);
   }
   
   private void B()
   {
-    int i1 = 2130841599;
+    int i1 = 2130841612;
     int n = i1;
     if (this.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       n = i1;
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_i_of_type_Int == 1008) {
-        n = 2130841755;
+        n = 2130841768;
       }
     }
     this.jdField_a_of_type_ArrayOfMgp[0].a(mww.a(this.jdField_a_of_type_AndroidContentContext, n));
@@ -213,7 +213,7 @@ public class VideoLayerUI
     this.jdField_a_of_type_Lss = new lss(this.jdField_a_of_type_AndroidContentContext, new mnt(this, null));
     this.jdField_b_of_type_Luk = new mny(this);
     a(this.jdField_b_of_type_Luk);
-    this.m = aekt.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.m = aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   private void D()
@@ -322,7 +322,7 @@ public class VideoLayerUI
         }
       }
     }
-    Bitmap localBitmap = mww.a(this.jdField_a_of_type_AndroidContentContext, 2130840312);
+    Bitmap localBitmap = mww.a(this.jdField_a_of_type_AndroidContentContext, 2130840313);
     Object localObject = localBitmap;
     if (QLog.isDevelopLevel())
     {
@@ -346,7 +346,7 @@ public class VideoLayerUI
     if (parammoa.jdField_a_of_type_Int == 0) {
       return this.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(parammoa.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().g), this.jdField_a_of_type_ComTencentAvVideoController.a().E, true, false);
     }
-    return ((BitmapDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841774)).getBitmap();
+    return ((BitmapDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841787)).getBitmap();
   }
   
   private Boolean a()
@@ -361,21 +361,21 @@ public class VideoLayerUI
   {
     StringBuffer localStringBuffer = new StringBuffer(paramCharSequence);
     int n = paramCharSequence.length();
-    bain[] arrayOfbain = (bain[])((baig)paramCharSequence).getSpans(0, n, bain.class);
+    bamw[] arrayOfbamw = (bamw[])((bamp)paramCharSequence).getSpans(0, n, bamw.class);
     n = 0;
     int i2;
-    for (int i1 = 0; n < arrayOfbain.length; i1 = i2)
+    for (int i1 = 0; n < arrayOfbamw.length; i1 = i2)
     {
-      Object localObject = arrayOfbain[n];
+      Object localObject = arrayOfbamw[n];
       i2 = i1;
-      if ((localObject instanceof bain))
+      if ((localObject instanceof bamw))
       {
-        int i3 = ((baig)paramCharSequence).getSpanStart(localObject);
-        int i4 = ((baig)paramCharSequence).getSpanEnd(localObject);
+        int i3 = ((bamp)paramCharSequence).getSpanStart(localObject);
+        int i4 = ((bamp)paramCharSequence).getSpanEnd(localObject);
         i2 = i1;
-        if (((bain)localObject).c == 2)
+        if (((bamw)localObject).c == 2)
         {
-          localObject = ((bain)localObject).a();
+          localObject = ((bamw)localObject).a();
           localStringBuffer.replace(i3 + i1, i4 + i1, (String)localObject);
           i2 = i1 + (((String)localObject).length() - (i4 - i3));
         }
@@ -416,7 +416,7 @@ public class VideoLayerUI
     if ((localAVPhoneUserInfo != null) && (QLog.isColorLevel())) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getMemmberName --> can not get Open Id. PhoneInfo = " + localAVPhoneUserInfo.toString());
     }
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693345);
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693347);
   }
   
   private void a(long paramLong, int paramInt)
@@ -513,9 +513,9 @@ public class VideoLayerUI
     boolean bool2 = false;
     boolean bool1 = bool2;
     int n;
-    if ((paramCharSequence instanceof baig))
+    if ((paramCharSequence instanceof bamp))
     {
-      paramCharSequence = (bain[])((baig)paramCharSequence).getSpans(0, paramCharSequence.length(), bain.class);
+      paramCharSequence = (bamw[])((bamp)paramCharSequence).getSpans(0, paramCharSequence.length(), bamw.class);
       n = 0;
     }
     for (;;)
@@ -598,7 +598,7 @@ public class VideoLayerUI
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
     } while ((paramRecvMsg == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null));
-    Object localObject = new baig(paramRecvMsg, 11);
+    Object localObject = new bamp(paramRecvMsg, 11);
     paramRecvMsg = (RecvMsg)localObject;
     if (a((CharSequence)localObject)) {
       paramRecvMsg = a((CharSequence)localObject);
@@ -1497,7 +1497,7 @@ public class VideoLayerUI
     {
       int n = 0;
       if (paramInt == 2) {
-        n = 2131695958;
+        n = 2131695960;
       }
       if ((n != 0) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
         mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1008, n);
@@ -1528,7 +1528,7 @@ public class VideoLayerUI
     this.jdField_a_of_type_Mgp.d(false);
     this.jdField_a_of_type_Mgp.g(false);
     this.jdField_a_of_type_Mgp.h(true);
-    n = aekt.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    n = aepi.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_a_of_type_Mgp.a(n);
     this.jdField_a_of_type_Mgp.i(true);
     this.jdField_a_of_type_Mgp.d(Color.parseColor("#686E6C"));
@@ -1771,7 +1771,7 @@ public class VideoLayerUI
           a(paramLong, localmgp, paramString, paramInt, true);
         }
         if ((localmgp != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a().c.size() <= 1) && (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int == 4)) {
-          localmgp.a(aekt.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          localmgp.a(aepi.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
         }
         if ((n <= 1) || (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 4)) {
           break label565;
@@ -2027,7 +2027,7 @@ public class VideoLayerUI
       label188:
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().c.size() <= 1)
       {
-        paramString1.a(aekt.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        paramString1.a(aepi.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
         bool = false;
         continue;
         label229:
@@ -2479,7 +2479,7 @@ public class VideoLayerUI
       if (!paramBoolean) {
         break label264;
       }
-      azmj.b(null, "CliOper", "", "", "0X80041B5", "0X80041B5", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80041B5", "0X80041B5", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -2488,30 +2488,30 @@ public class VideoLayerUI
         if (!paramBoolean) {
           break;
         }
-        azmj.b(null, "CliOper", "", "", "0X8005211", "0X8005211", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005211", "0X8005211", 0, 0, "", "", "", "");
       }
       return;
       label264:
-      azmj.b(null, "CliOper", "", "", "0X80041B4", "0X80041B4", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80041B4", "0X80041B4", 0, 0, "", "", "", "");
       continue;
       label300:
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_i_of_type_Int == 1) {
         if (paramBoolean)
         {
           if (this.jdField_a_of_type_ComTencentAvVideoController.a().C == 10) {
-            azmj.b(null, "CliOper", "", "", "0X800593B", "0X800593B", 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X800593B", "0X800593B", 0, 0, "", "", "", "");
           } else {
-            azmj.b(null, "CliOper", "", "", "0X80046E2", "0X80046E2", 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X80046E2", "0X80046E2", 0, 0, "", "", "", "");
           }
         }
         else if (this.jdField_a_of_type_ComTencentAvVideoController.a().C == 10) {
-          azmj.b(null, "CliOper", "", "", "0X800593A", "0X800593A", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X800593A", "0X800593A", 0, 0, "", "", "", "");
         } else {
-          azmj.b(null, "CliOper", "", "", "0X80046E1", "0X80046E1", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X80046E1", "0X80046E1", 0, 0, "", "", "", "");
         }
       }
     }
-    azmj.b(null, "CliOper", "", "", "0X8005210", "0X8005210", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8005210", "0X8005210", 0, 0, "", "", "", "");
   }
   
   void e(long paramLong)
@@ -2624,11 +2624,11 @@ public class VideoLayerUI
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849189);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849262);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#5f656f"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849190);
+    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849263);
   }
   
   boolean f()
@@ -2887,7 +2887,7 @@ public class VideoLayerUI
     label296:
     for (Object localObject = "1";; localObject = "2")
     {
-      azmj.b(null, "CliOper", "", "", "0X8009F5D", "0X8009F5D", 0, 0, (String)localObject, "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8009F5D", "0X8009F5D", 0, 0, (String)localObject, "", "", "");
       if (this.jdField_a_of_type_Mll != null)
       {
         this.jdField_a_of_type_Mll.a();

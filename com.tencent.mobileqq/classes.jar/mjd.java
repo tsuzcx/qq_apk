@@ -39,12 +39,12 @@ public class mjd
       }
       for (;;)
       {
-        QQToast.a(this.a, 2131693340, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131298914));
+        QQToast.a(this.a, 2131693342, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131298914));
         return;
         this.a.jdField_a_of_type_Mjc.b.setVisibility(8);
       }
     }
-    QQToast.a(this.a, 2131693339, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131298914));
+    QQToast.a(this.a, 2131693341, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131298914));
   }
   
   protected void c(long paramLong)

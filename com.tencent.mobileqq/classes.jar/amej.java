@@ -1,107 +1,59 @@
+import android.content.Context;
+import android.text.Editable;
+import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Observable;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.ArrayList;
 
 public class amej
-  extends Observable
-  implements Manager
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, SoftReference<amel>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int a;
+  private int b;
   
   public amej(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    TroopManager.a(paramQQAppInterface);
   }
   
-  private amel a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
   {
+    String str;
+    if (paramEditText != null)
+    {
+      str = "";
+      if (paramInt != 0) {
+        break label166;
+      }
+      this.a = ((int)(Math.random() * TroopManager.c.size()));
+      if (TroopManager.c.size() != 1) {
+        break label124;
+      }
+      str = (String)TroopManager.c.get(0);
+      TroopManager.a(paramQQAppInterface);
+    }
+    label166:
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      Object localObject = (alto)paramQQAppInterface.getManager(51);
+      localObject = bdgc.h(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
+      paramEditText.setText(bciq.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
+      paramEditText.append(str);
+      paramEditText.setSelection(paramEditText.getText().length());
+      return;
+      label124:
+      if (this.a < TroopManager.c.size())
       {
-        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (localObject1 != null)
+        str = (String)TroopManager.c.get(this.a);
+        TroopManager.c.remove(this.a);
+        continue;
+        if (this.b < TroopManager.d.size())
         {
-          localObject1 = (amel)((SoftReference)localObject1).get();
-          Object localObject2 = localObject1;
-          if (localObject1 == null)
-          {
-            localObject2 = new amel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new amek(this));
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
-          }
-          return localObject2;
-        }
-      }
-      Object localObject1 = null;
-    }
-  }
-  
-  public FullMessageSearchResult a(String paramString)
-  {
-    return a(paramString).b();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (SoftReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (amel)((SoftReference)localObject2).get();
-          if (localObject2 != null) {
-            ((amel)localObject2).b(2);
-          }
+          str = (String)TroopManager.d.get(this.b);
+          this.b = ((this.b + 1) % TroopManager.d.size());
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (paramString != null)
-        {
-          paramString = (amel)paramString.get();
-          if (paramString != null) {
-            paramString.a();
-          }
-          return;
-        }
-      }
-      paramString = null;
-    }
-  }
-  
-  public FullMessageSearchResult b(String paramString)
-  {
-    return a(paramString).c();
-  }
-  
-  public void onDestroy()
-  {
-    a();
   }
 }
 

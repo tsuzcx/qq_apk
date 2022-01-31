@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-
 public class becg
-  extends amle
 {
-  public becg(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public String a;
+  public String b;
+  
+  public becg(String paramString1, String paramString2)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public String toString()
+  {
+    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+  }
 }
 
 

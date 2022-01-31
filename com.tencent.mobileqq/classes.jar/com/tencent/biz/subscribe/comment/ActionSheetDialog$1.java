@@ -2,18 +2,18 @@ package com.tencent.biz.subscribe.comment;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import yav;
+import yfe;
 
 public class ActionSheetDialog$1
   implements Runnable
 {
-  public ActionSheetDialog$1(yav paramyav) {}
+  public ActionSheetDialog$1(yfe paramyfe) {}
   
   public void run()
   {
-    yav.a(this.this$0).setVisibility(0);
-    yav.a(this.this$0).setVisibility(0);
-    yav.a(this.this$0);
+    yfe.a(this.this$0).setVisibility(0);
+    yfe.a(this.this$0).setVisibility(0);
+    yfe.a(this.this$0);
   }
 }
 

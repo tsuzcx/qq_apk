@@ -1,45 +1,33 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqmm
-  extends aroh
+  implements TextWatcher
 {
-  public aqmm(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  public aqmm(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.a().b();
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      arri.a(BaseApplicationImpl.getContext().getString(2131694541));
+    }
+    while (TextUtils.isEmpty(paramEditable)) {
+      return;
+    }
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
   
-  public void b()
-  {
-    this.a.a.a().p();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

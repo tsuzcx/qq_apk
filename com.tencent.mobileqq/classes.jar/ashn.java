@@ -1,31 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.widget.RadioGroup;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
 public class ashn
-  extends ashm
+  implements bexc
 {
-  private ImageView a;
+  public ashn(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public ashn(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public void a(View paramView, int paramInt)
   {
-    super(paramContext, paramView, paramViewGroup);
-    this.a = ((ImageView)paramView.findViewById(2131363078));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    this.itemView.setBackgroundDrawable(asjc.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846549);
-    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846549);
-    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
-    this.a.setOnClickListener(new asho(this, paramFeedsItemData));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
   }
 }
 

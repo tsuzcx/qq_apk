@@ -1,37 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aeda
-  extends bcia
+  extends BroadcastReceiver
 {
-  public aeda(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeda(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
+    if (paramIntent == null) {}
+    do
+    {
+      do
       {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
         return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.d = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
-        }
-        this.a.i();
-        QQToast.a(this.a, this.a.getString(2131697809), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
+      this.a.a(9, paramContext, true, 1, true);
+      return;
     }
-    this.a.i();
-    QQToast.a(this.a, this.a.getString(2131697809), 0).b(this.a.getTitleBarHeight());
+    catch (JSONException paramContext) {}
   }
 }
 

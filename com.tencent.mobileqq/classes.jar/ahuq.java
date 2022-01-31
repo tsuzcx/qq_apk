@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
-public class ahuq
-  implements alsn
+class ahuq
+  extends akit
 {
-  public ahuq(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
-  
-  public void a(alsn paramalsn) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
-    }
-    this.a.o();
-    if (paramBoolean)
-    {
-      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
-      return;
-    }
-    this.a.c(this.a.getString(2131690774));
-  }
-  
-  public void b(int paramInt1, int paramInt2, Object paramObject) {}
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

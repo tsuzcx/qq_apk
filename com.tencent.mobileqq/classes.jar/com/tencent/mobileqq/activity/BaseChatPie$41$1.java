@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aelz;
-import bblx;
+import aeqo;
+import bbqg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -28,8 +28,8 @@ class BaseChatPie$41$1
       }
       if ((int)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + 1L)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Bblx != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Bblx.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, false);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Bbqg != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Bbqg.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, false);
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Int == 5) {
           this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
@@ -37,7 +37,7 @@ class BaseChatPie$41$1
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Int, 0, -1, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_a_of_type_JavaLangRunnable, 6);
         return;
       }
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Aelz.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_Aeqo.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     } while (i == -1);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.this$0.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie$41.jdField_b_of_type_Int, i, i, null, 6);
   }

@@ -1,16 +1,21 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.util.Property;
 
-public class bndh
+class bndh
+  extends Property<bndb, Float>
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b;
-  
-  private bndh(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  bndh(bndb parambndb, Class paramClass, String paramString)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bndb parambndb)
+  {
+    return Float.valueOf(bndb.b(parambndb));
+  }
+  
+  public void a(bndb parambndb, Float paramFloat)
+  {
+    bndb.a(parambndb, paramFloat);
   }
 }
 

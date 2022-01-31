@@ -1,21 +1,21 @@
 package com.tencent.open.appstore.dl;
 
-import bfgi;
-import bfko;
+import bfkr;
+import bfox;
 
 public class DownloadManagerV2$4
   implements Runnable
 {
-  public DownloadManagerV2$4(bfgi parambfgi) {}
+  public DownloadManagerV2$4(bfkr parambfkr) {}
   
   public void run()
   {
-    if (!bfgi.a(this.this$0))
+    if (!bfkr.a(this.this$0))
     {
-      if (!bfko.a().b()) {
+      if (!bfox.a().b()) {
         this.this$0.a(true);
       }
-      bfgi.a(this.this$0, true);
+      bfkr.a(this.this$0, true);
     }
   }
 }

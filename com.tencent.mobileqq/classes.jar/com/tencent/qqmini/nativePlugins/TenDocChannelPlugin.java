@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import baca;
-import bach;
-import bafi;
-import bgho;
-import bgkd;
+import bagj;
+import bagq;
+import bajr;
+import bglv;
+import bgok;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -29,16 +29,16 @@ public class TenDocChannelPlugin
   private static final String ACTION_START_EXPORT = "txDocsStartExport";
   public static final String TAG = "TenDocChannelPlugin";
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TenDocChannelPlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("TenDocChannelPlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
@@ -88,8 +88,8 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("fileName");
       new Bundle().putString("fileName", paramString);
-      bach.a(paramActivity, paramString, true);
-      bafi.a(null, "0X800A4B2");
+      bagq.a(paramActivity, paramString, true);
+      bajr.a(null, "0X800A4B2");
       return;
     }
     catch (Exception paramActivity)
@@ -108,7 +108,7 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("folderId");
       Intent localIntent = new Intent(paramActivity, FMActivity.class);
-      localIntent.putExtra(baca.f, true);
+      localIntent.putExtra(bagj.f, true);
       localIntent.addFlags(536870912);
       localIntent.putExtra("selectMode", true);
       localIntent.putExtra("busiType", 9);
@@ -116,7 +116,7 @@ public class TenDocChannelPlugin
       localIntent.putExtra("enterfrom", 9);
       localIntent.putExtra("tab_tab_type", 7);
       localIntent.putExtra("only_show_local_tab", true);
-      localIntent.putExtra(baca.g, paramString);
+      localIntent.putExtra(bagj.g, paramString);
       localIntent.putExtra("smart_device_support_flag", 8);
       paramActivity.startActivity(localIntent);
       return;
@@ -131,33 +131,33 @@ public class TenDocChannelPlugin
     finally {}
   }
   
-  public void tdocChannel(bgkd parambgkd)
+  public void tdocChannel(bgok parambgok)
   {
     Object localObject;
     Activity localActivity;
     try
     {
-      localObject = new JSONObject(getParam(parambgkd).optString("data"));
-      parambgkd = ((JSONObject)localObject).getString("action");
+      localObject = new JSONObject(getParam(parambgok).optString("data"));
+      parambgok = ((JSONObject)localObject).getString("action");
       localObject = ((JSONObject)localObject).getString("data");
       localActivity = this.mMiniAppContext.a();
-      if (TextUtils.equals(parambgkd, "openLocalFilesToImport"))
+      if (TextUtils.equals(parambgok, "openLocalFilesToImport"))
       {
         openFMActivityToImport(localActivity, (String)localObject);
         return;
       }
-      if (TextUtils.equals(parambgkd, "txDocsStartExport"))
+      if (TextUtils.equals(parambgok, "txDocsStartExport"))
       {
         handleStartExportedFile(localActivity, (String)localObject);
         return;
       }
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QLog.e("TenDocChannelPlugin", 1, "parse param failed", parambgkd);
+      QLog.e("TenDocChannelPlugin", 1, "parse param failed", parambgok);
       return;
     }
-    if (TextUtils.equals(parambgkd, "openExportedFile")) {
+    if (TextUtils.equals(parambgok, "openExportedFile")) {
       handleDownloadExportedFile(localActivity, (String)localObject);
     }
   }

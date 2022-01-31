@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import aobk;
+import aoft;
 import ryu;
 
 public class FastWebActivity$3
@@ -10,7 +10,7 @@ public class FastWebActivity$3
   
   public void run()
   {
-    aobk.a(this.this$0, new ryu(this));
+    aoft.a(this.this$0, new ryu(this));
   }
 }
 

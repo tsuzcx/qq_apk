@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
 class bmfr
-  extends blpg
+  implements GestureDetector.OnGestureListener
 {
-  bmfr(bmfp parambmfp) {}
+  private bmfr(bmfm parambmfm) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    bfhq.a().a(alpo.a(2131704075) + bmfp.a(this.a));
+    return true;
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((paramBoolean) && (bmfp.a(this.a).getLocalPath().equals(paramString)))
-    {
-      bmfp.a(this.a).sendEmptyMessage(2);
-      bmfp.a(this.a, bmfp.a(this.a));
+    paramMotionEvent2.getX();
+    paramMotionEvent1.getX();
+    paramMotionEvent1.getX();
+    paramMotionEvent2.getX();
+    paramFloat1 = paramMotionEvent2.getY();
+    float f = paramMotionEvent1.getY();
+    paramMotionEvent1.getY();
+    paramMotionEvent2.getY();
+    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
+      this.a.l();
     }
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return true;
   }
 }
 

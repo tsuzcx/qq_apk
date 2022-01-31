@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ajaf;
+import ajeu;
 import android.content.Context;
 import android.graphics.PointF;
 import android.text.TextUtils;
@@ -73,7 +73,7 @@ public class FaceDetector
   {
     try
     {
-      paramContext = ajaf.b(paramString1);
+      paramContext = ajeu.b(paramString1);
       if (!TextUtils.isEmpty(paramContext))
       {
         paramContext = (JSONObject)new JSONTokener(paramContext).nextValue();

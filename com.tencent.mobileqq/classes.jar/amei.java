@@ -1,28 +1,10 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amei
-  extends amab
+public final class amei
+  implements DialogInterface.OnClickListener
 {
-  private amei(UpdateTroop paramUpdateTroop) {}
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

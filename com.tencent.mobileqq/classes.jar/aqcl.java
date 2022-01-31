@@ -1,344 +1,96 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
-@SuppressLint({"ViewConstructor"})
-public abstract class aqcl
-  extends LoadingLayoutBase
+public class aqcl
 {
-  protected static final Interpolator a;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  protected final ImageView a;
-  protected final ProgressBar a;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected final PullToRefreshBase.Mode a;
-  protected final PullToRefreshBase.Orientation a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private boolean jdField_a_of_type_Boolean;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private CharSequence c;
-  private CharSequence d;
+  public int a;
+  public long a;
+  public aqbt a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "0";
+  public String f = "";
   
-  static
+  public aqcl()
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 1;
   }
   
-  public aqcl(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.Orientation paramOrientation, TypedArray paramTypedArray)
+  public aqcl a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode = paramMode;
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation = paramOrientation;
-    FrameLayout.LayoutParams localLayoutParams;
-    int i;
-    switch (aqcm.a[paramOrientation.ordinal()])
+    aqcl localaqcl = new aqcl();
+    localaqcl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaqcl.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
+    localaqcl.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localaqcl.c = this.c;
+    localaqcl.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localaqcl.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localaqcl.e = this.e;
+    return localaqcl;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = bdeu.a("");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.c = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "0";
+    this.jdField_b_of_type_Int = 0;
+    this.f = "";
+    this.jdField_a_of_type_Aqbt = null;
+  }
+  
+  public boolean a()
+  {
+    String str = bdeu.a(this.jdField_a_of_type_ArrayOfByte);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    do
     {
-    default: 
-      LayoutInflater.from(paramContext).inflate(2131559459, this);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366433));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372487));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372485));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372486));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372482));
-      localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-      switch (aqcm.b[paramMode.ordinal()])
+      do
       {
-      default: 
-        if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL)
-        {
-          i = 80;
-          label179:
-          localLayoutParams.gravity = i;
-          this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695787);
-          this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695788);
-          this.c = paramContext.getString(2131695789);
-          if (paramTypedArray.hasValue(7))
-          {
-            paramOrientation = paramTypedArray.getDrawable(7);
-            if (paramOrientation != null) {
-              aqcn.a(this, paramOrientation);
-            }
-          }
-          if (paramTypedArray.hasValue(11))
-          {
-            paramOrientation = new TypedValue();
-            paramTypedArray.getValue(11, paramOrientation);
-            b(paramOrientation.data);
-          }
-          if (paramTypedArray.hasValue(21))
-          {
-            paramOrientation = new TypedValue();
-            paramTypedArray.getValue(21, paramOrientation);
-            a(paramOrientation.data);
-          }
-          if (paramTypedArray.hasValue(12))
-          {
-            paramOrientation = paramTypedArray.getColorStateList(12);
-            if (paramOrientation != null) {
-              b(paramOrientation);
-            }
-          }
-          if (paramTypedArray.hasValue(10))
-          {
-            paramOrientation = paramTypedArray.getColorStateList(10);
-            if (paramOrientation != null) {
-              a(paramOrientation);
-            }
-          }
-          paramOrientation = null;
-          if (paramTypedArray.hasValue(2)) {
-            paramOrientation = paramTypedArray.getDrawable(2);
-          }
-          switch (aqcm.b[paramMode.ordinal()])
-          {
-          default: 
-            if (paramTypedArray.hasValue(5)) {
-              paramMode = paramTypedArray.getDrawable(5);
-            }
-            break;
-          }
-        }
-        break;
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramOrientation = paramMode;
-      if (paramMode == null) {
-        paramOrientation = paramContext.getResources().getDrawable(b());
-      }
-      setLoadingDrawable(paramOrientation);
-      g();
-      return;
-      LayoutInflater.from(paramContext).inflate(2131559458, this);
-      break;
-      if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL) {}
-      for (i = 48;; i = 3)
-      {
-        localLayoutParams.gravity = i;
-        this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695784);
-        this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695785);
-        this.c = paramContext.getString(2131695786);
-        break;
-      }
-      i = 5;
-      break label179;
-      paramMode = paramOrientation;
-      if (paramTypedArray.hasValue(6))
-      {
-        paramMode = paramTypedArray.getDrawable(6);
-        continue;
-        if (paramTypedArray.hasValue(4))
-        {
-          paramMode = paramTypedArray.getDrawable(4);
-        }
-        else
-        {
-          paramMode = paramOrientation;
-          if (paramTypedArray.hasValue(3)) {
-            paramMode = paramTypedArray.getDrawable(3);
-          }
-        }
-      }
-    }
+        return false;
+      } while (!(paramObject instanceof aqcl));
+      paramObject = (aqcl)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
   }
   
-  private void a(int paramInt)
+  public String toString()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    String str = bdeu.a(this.jdField_a_of_type_ArrayOfByte);
+    int i = 0;
+    if (str != null) {
+      i = str.length();
     }
-  }
-  
-  private void a(ColorStateList paramColorStateList)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    localStringBuilder.append("{sig: ").append(i).append("}");
+    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{nickName: ").append(this.d).append("}");
+    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
+    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.f).append("}");
+    if (this.jdField_a_of_type_Aqbt != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Aqbt.toString());
     }
-  }
-  
-  private void a(CharSequence paramCharSequence)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
-    }
-  }
-  
-  private void b(ColorStateList paramColorStateList)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
-    }
-  }
-  
-  public final int a()
-  {
-    switch (aqcm.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation.ordinal()])
-    {
-    default: 
-      return this.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();
-    }
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
-  }
-  
-  public final void a(float paramFloat)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      b(paramFloat);
-    }
-  }
-  
-  protected abstract void a(Drawable paramDrawable);
-  
-  protected abstract int b();
-  
-  protected abstract void b(float paramFloat);
-  
-  public final void d()
-  {
-    g();
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    }
-    i();
-  }
-  
-  public final void e()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
-    }
-    k();
-  }
-  
-  public final void f()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-      return;
-      j();
-    }
-  }
-  
-  public final void g()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.jdField_a_of_type_Boolean) {
-      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
-          break;
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-      return;
-      l();
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-  }
-  
-  public final void h()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    }
-  }
-  
-  protected abstract void i();
-  
-  protected abstract void j();
-  
-  protected abstract void k();
-  
-  protected abstract void l();
-  
-  public void setLastUpdatedLabel(CharSequence paramCharSequence)
-  {
-    a(paramCharSequence);
-  }
-  
-  public final void setLoadingDrawable(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Boolean = (paramDrawable instanceof AnimationDrawable);
-    a(paramDrawable);
-  }
-  
-  public void setPullLabel(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public void setRefreshResultLabel(CharSequence paramCharSequence)
-  {
-    this.d = paramCharSequence;
-  }
-  
-  public void setRefreshingLabel(CharSequence paramCharSequence)
-  {
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public void setReleaseLabel(CharSequence paramCharSequence)
-  {
-    this.c = paramCharSequence;
-  }
-  
-  public void setTextTypeface(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramTypeface);
+    return localStringBuilder.toString();
   }
 }
 

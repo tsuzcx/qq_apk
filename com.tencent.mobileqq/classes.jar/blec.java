@@ -1,8 +1,16 @@
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public abstract interface blec
+class blec
+  implements View.OnClickListener
 {
-  public abstract void a(NodeItem paramNodeItem);
+  blec(blds paramblds) {}
+  
+  public void onClick(View paramView)
+  {
+    blds.a(this.a).setText("");
+  }
 }
 
 

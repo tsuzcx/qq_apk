@@ -1,24 +1,47 @@
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.Comparator;
-import java.util.Map;
-
-public final class aypf
-  implements Comparator<aypw>
+public class aypf
 {
-  public int a(aypw paramaypw1, aypw paramaypw2)
+  public static final int[] a = { 1, 2, 3, 4 };
+  public static final int[] b = { 6 };
+  public static final int[] c = { 7 };
+  
+  public static int a(int paramInt)
   {
-    paramaypw2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramaypw2.a);
-    if (paramaypw2 == null) {
-      paramaypw2 = Integer.valueOf(0);
+    int k = 0;
+    int[] arrayOfInt = a;
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfInt[i] == paramInt)
+      {
+        i = 1;
+        return i;
+      }
+      i += 1;
     }
+    arrayOfInt = b;
+    j = arrayOfInt.length;
+    i = 0;
+    while (i < j)
+    {
+      if (arrayOfInt[i] == paramInt) {
+        return 2;
+      }
+      i += 1;
+    }
+    arrayOfInt = c;
+    int m = arrayOfInt.length;
+    j = 0;
     for (;;)
     {
-      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramaypw1.a);
-      paramaypw1 = localInteger;
-      if (localInteger == null) {
-        paramaypw1 = Integer.valueOf(0);
+      i = k;
+      if (j >= m) {
+        break;
       }
-      return Integer.signum(paramaypw2.intValue() - paramaypw1.intValue());
+      if (arrayOfInt[j] == paramInt) {
+        return 3;
+      }
+      j += 1;
     }
   }
 }

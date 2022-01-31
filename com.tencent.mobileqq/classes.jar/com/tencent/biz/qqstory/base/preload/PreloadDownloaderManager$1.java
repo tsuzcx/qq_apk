@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import ujl;
-import ujv;
+import unu;
+import uoe;
 
 public class PreloadDownloaderManager$1
   implements Runnable
 {
-  public PreloadDownloaderManager$1(ujl paramujl) {}
+  public PreloadDownloaderManager$1(unu paramunu) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
     this.this$0.jdField_a_of_type_JavaLangRunnable = null;
-    ujv.a().a();
+    uoe.a().a();
   }
 }
 

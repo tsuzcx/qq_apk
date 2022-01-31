@@ -1,21 +1,67 @@
-import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public class aijw
-  implements View.OnClickListener
+class aijw
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public aijw(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  private aijw(aijq paramaijq) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = this.a.getIntent();
-    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bcyw.a());
-    azmj.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramKeyEvent.getKeyCode() == 67)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent.getAction() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121));
+        }
+        if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() != 0) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() != 0)) {
+          break label243;
+        }
+        bool1 = bool2;
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121) != null)
+        {
+          paramKeyEvent = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373121, null);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(aepi.a(36.0F, paramView.getResources()));
+          this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
+          bool1 = true;
+        }
+      }
+    }
+    label243:
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121) == null);
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT < 21);
+      bool1 = bool2;
+    } while (aepi.a(36.0F, paramView.getResources()) != this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight());
+    paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
+    return false;
   }
 }
 

@@ -40,7 +40,7 @@ public class odi
         paramJsBridgeListener = new Bundle();
         paramJsBridgeListener.putBoolean("isSuccess", true);
         paramJsBridgeListener.putString("pkgname", paramString1);
-        ymk.a().a(132, paramJsBridgeListener);
+        yqz.a().a(132, paramJsBridgeListener);
       }
     }
     catch (Exception paramJsBridgeListener)
@@ -67,7 +67,7 @@ public class odi
         paramString1.putLong("navigationStart", l1);
         paramString1.putLong("htmlLoaded", l2);
         paramString1.putLong("domComplete", l3);
-        ymk.a().a(139, paramString1);
+        yqz.a().a(139, paramString1);
       }
     }
     catch (Exception paramJsBridgeListener)

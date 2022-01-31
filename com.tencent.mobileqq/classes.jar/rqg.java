@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.view.RainView;
 
 public class rqg
-  implements azzg
+  implements badp
 {
   public rqg(RainView paramRainView) {}
   

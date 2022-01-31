@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class asnf
-  implements DialogInterface.OnClickListener
+public class asnf
+  implements alpg
 {
-  asnf(asnd paramasnd) {}
+  protected void a(Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    asnd.a(this.a, null);
-    asnd.b(this.a, null);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramObject);
   }
 }
 

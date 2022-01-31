@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
-import bgkd;
-import bgxk;
+import bgok;
+import bhbr;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ class InternalJSPlugin$5$1
               }
               this.this$1.val$activity.startActivity(paramDialogInterface);
               this.this$1.val$req.a();
-              bgxk.a(this.this$1.this$0.mMiniAppInfo, null, "launchapp", "openapp", null);
+              bhbr.a(this.this$1.this$0.mMiniAppInfo, null, "launchapp", "openapp", null);
               return;
             }
             localIntent = this.this$1.val$pm.getLaunchIntentForPackage(this.this$1.val$packageName);

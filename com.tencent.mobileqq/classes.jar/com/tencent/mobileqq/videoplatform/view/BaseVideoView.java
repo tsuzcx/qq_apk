@@ -57,12 +57,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379834) != null)
+      if (findViewById(2131379892) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addCoverImageView, imageView is exist");
         }
-        removeView(findViewById(2131379834));
+        removeView(findViewById(2131379892));
       }
       if (this.mCoverImage == null) {
         this.mCoverImage = new ImageView(this.mContext);
@@ -77,7 +77,7 @@ public class BaseVideoView
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         this.mCoverImage.setLayoutParams(localLayoutParams);
-        this.mCoverImage.setId(2131379834);
+        this.mCoverImage.setId(2131379892);
         this.mCoverImage.setVisibility(0);
         addView(this.mCoverImage, 1);
         return;
@@ -95,15 +95,15 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379835) != null)
+      if (findViewById(2131379893) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addDebugView, debugTextView is exist");
         }
-        removeView(findViewById(2131379835));
+        removeView(findViewById(2131379893));
       }
       this.mDebugTextView = new TextView(this.mContext);
-      this.mDebugTextView.setId(2131379835);
+      this.mDebugTextView.setId(2131379893);
       this.mDebugTextView.setText(String.valueOf(this.mID));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = UIUtil.dp2px(6.0F, this.mContext.getResources());
@@ -125,12 +125,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379836) != null)
+      if (findViewById(2131379894) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131379836));
+        removeView(findViewById(2131379894));
       }
       View localView2 = this.mVPProxy.getVideoView();
       View localView1 = localView2;
@@ -142,7 +142,7 @@ public class BaseVideoView
         localView1 = new View(this.mContext);
       }
       localView1.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView1.setId(2131379836);
+      localView1.setId(2131379894);
       addView(localView1, 0);
       if (LogUtil.isColorLevel()) {
         LogUtil.d(getLogTag(), 2, "addVideoView. ");

@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-class bjuh
-  implements DialogInterface.OnClickListener
+final class bjuh
+  implements QQPermissionCallback
 {
-  bjuh(bjuc parambjuc) {}
+  bjuh(String paramString1, String paramString2, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
+    bdgm.b(bjug.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bjug.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

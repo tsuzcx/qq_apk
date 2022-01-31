@@ -1,18 +1,18 @@
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 
-@TargetApi(16)
-class aqco
+public final class aqco
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  public static void a(View paramView, Drawable paramDrawable)
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
   {
-    paramView.setBackground(paramDrawable);
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
   }
   
-  public static void a(View paramView, Runnable paramRunnable)
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
   {
-    paramView.postOnAnimation(paramRunnable);
+    return new MiniAppRecommInfo.MiniApp[paramInt];
   }
 }
 

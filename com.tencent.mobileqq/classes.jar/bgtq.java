@@ -1,78 +1,11 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.APICallback;
-import com.tencent.mobileqq.triton.sdk.APIProxy;
-import com.tencent.qqmini.sdk.core.plugins.QQFriendJsPlugin;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
-import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.animation.Interpolator;
 
 public class bgtq
-  implements APIProxy
+  implements Interpolator
 {
-  private GameRuntimeLoader a;
-  
-  public bgtq(GameRuntimeLoader paramGameRuntimeLoader)
+  public float getInterpolation(float paramFloat)
   {
-    this.a = paramGameRuntimeLoader;
-  }
-  
-  private void a(long paramLong, int paramInt)
-  {
-    bgyd.a(this.a.getGameInfoManager().a(), 1027, null, null, null, paramInt, "1", paramLong, null);
-  }
-  
-  public void doAddFriend(Context paramContext, String paramString, APICallback paramAPICallback)
-  {
-    QQFriendJsPlugin.doAddFriend(paramContext, this.a.getGameInfoManager().a(), paramString, new bgts(this, paramAPICallback));
-  }
-  
-  public void gotoPermissionSetting(Activity paramActivity)
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, this.a.getGameInfoManager().a(), this.a.getGameInfoManager().c());
-  }
-  
-  public void httpRequestForImage(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString, boolean paramBoolean)
-  {
-    if ((paramString2 == null) || ("".equals(paramString2))) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    if (paramArrayOfString != null)
-    {
-      String str = null;
-      int i = 0;
-      if (i < paramArrayOfString.length)
-      {
-        if (i % 2 == 0) {
-          str = paramArrayOfString[i];
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localHashMap.put(str, paramArrayOfString[i]);
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      localHashMap.put("Referer", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString5)) {
-      localHashMap.put("Cookie", paramString5);
-    }
-    paramString4 = (RequestProxy)ProxyManager.get(RequestProxy.class);
-    long l = System.currentTimeMillis();
-    if (paramString3 != null) {}
-    for (paramString3 = paramString3.getBytes();; paramString3 = null)
-    {
-      paramString4.request(paramString1, paramString3, localHashMap, paramString2, 60, new bgtr(this, l, paramLong, paramString1));
-      return;
-    }
+    return (float)Math.tan((paramFloat * 2.0F - 1.0F) / 4.0F * 3.141592653589793D) / 2.0F + 0.5F;
   }
 }
 

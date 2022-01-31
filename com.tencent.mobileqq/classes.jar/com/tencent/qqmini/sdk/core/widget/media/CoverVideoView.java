@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bghn;
-import bgho;
+import bglu;
+import bglv;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -103,9 +103,9 @@ public class CoverVideoView
     super.setLayoutParams(paramLayoutParams);
   }
   
-  public void setMiniAppContext(bgho parambgho)
+  public void setMiniAppContext(bglv parambglv)
   {
-    this.a.b = new WeakReference(parambgho);
+    this.a.b = new WeakReference(parambglv);
   }
   
   public void setPageWebviewId(int paramInt)
@@ -113,9 +113,9 @@ public class CoverVideoView
     this.a.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setServiceWebview(bghn parambghn)
+  public void setServiceWebview(bglu parambglu)
   {
-    this.a.jdField_a_of_type_Bghn = parambghn;
+    this.a.jdField_a_of_type_Bglu = parambglu;
   }
   
   public void setVideoPath(String paramString)

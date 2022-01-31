@@ -1,55 +1,45 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ufv
+class ufv
+  extends RecyclerView.Adapter<ufw>
 {
-  private double a;
-  private double b;
+  public List<FeedCloudMeta.StTagInfo> a;
   
-  public ufv(double paramDouble1, double paramDouble2)
+  private ufv(uft paramuft)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public double a()
+  public ufw a(ViewGroup paramViewGroup, int paramInt)
   {
-    return this.a;
+    return new ufw(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560546, paramViewGroup, false));
   }
   
-  public qqstory_struct.GpsMsg a()
+  public void a(List<FeedCloudMeta.StTagInfo> paramList)
   {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public double b()
+  public void a(ufw paramufw, int paramInt)
   {
-    return this.b;
+    paramufw.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
   }
   
-  public boolean equals(Object paramObject)
+  public int getItemCount()
   {
-    if (this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof ufv)) {
-      return false;
-    }
-    return (((ufv)paramObject).a == this.a) && (((ufv)paramObject).b == this.b);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public int hashCode()
+  public long getItemId(int paramInt)
   {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
-  }
-  
-  public String toString()
-  {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    return paramInt;
   }
 }
 

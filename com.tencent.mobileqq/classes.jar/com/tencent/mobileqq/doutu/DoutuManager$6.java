@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.doutu;
 
-import apfk;
-import apfp;
+import apjt;
+import apjy;
 
 public class DoutuManager$6
   implements Runnable
 {
-  public DoutuManager$6(apfp paramapfp, long paramLong) {}
+  public DoutuManager$6(apjy paramapjy, long paramLong) {}
   
   public void run()
   {

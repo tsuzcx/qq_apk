@@ -1,54 +1,63 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 
 public class bmwu
-  extends bmxd<bmwn, bmwn>
+  extends bmwj<bmwb>
 {
-  private int a;
-  public WeakReference<Activity> a;
+  private ImageView a;
+  private ImageView b;
   
-  public bmwu(@NonNull Activity paramActivity, int paramInt)
+  public bmwu(Context paramContext, FaceListPage paramFaceListPage)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramFaceListPage);
   }
   
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
+  public int getCount()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = null;
+    if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      wsv.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
-      return;
-    }
-    Object localObject = parambmwn.jdField_a_of_type_Bmwt.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!parambmwn.jdField_a_of_type_Bmwt.c)
-    {
-      paramJobContext = (JobContext)localObject;
-      if (parambmwn.jdField_a_of_type_Bmwt.jdField_b_of_type_Boolean) {
-        paramJobContext = parambmwn.jdField_a_of_type_Bmwt.jdField_b_of_type_JavaLangString;
+      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561441, null);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131380093));
+      this.b = ((ImageView)localView.findViewById(2131375215));
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof EditVideoActivity)) {
+        paramView = ((EditVideoActivity)this.jdField_a_of_type_AndroidContentContext).a();
+      }
+      for (;;)
+      {
+        if (paramView != null)
+        {
+          paramView = paramView.a;
+          if (paramView != null)
+          {
+            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramView);
+            this.b.setOnClickListener(paramView);
+            paramInt = xsm.c * 54 / 750;
+            ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(paramInt, 0, paramInt, 0);
+            ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(paramInt, 0, paramInt, 0);
+          }
+        }
+        localView.setLayoutParams(new AbsListView.LayoutParams(paramViewGroup.getWidth(), paramViewGroup.getHeight()));
+        return localView;
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity)) {
+          paramView = ((EditPicActivity)this.jdField_a_of_type_AndroidContentContext).a();
+        }
       }
     }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      parambmwn.jdField_a_of_type_Bmwv = new bmwv(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      parambmwn.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(parambmwn);
-      return;
-    }
+    return null;
   }
 }
 

@@ -1,43 +1,8 @@
-import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
-import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
-import java.util.Random;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
-public class bkuq
-  implements LogicDataManager.OnGetQQNumberEventListener
+public abstract interface bkuq
 {
-  bkuq(bkup parambkup) {}
-  
-  public int onGetQQNumber()
-  {
-    long l = System.currentTimeMillis();
-    if (l - bkup.a(this.a) > 60000L)
-    {
-      bkup.a(this.a, l);
-      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
-      if (l - bkup.b(this.a) <= 1000L) {
-        break label168;
-      }
-      bkup.b(this.a, l);
-    }
-    for (;;)
-    {
-      synchronized (bkup.a(this.a))
-      {
-        if (bkup.a(this.a) != 0) {
-          bkup.a(this.a, bkup.a(this.a) - 1000 + new Random().nextInt(2000));
-        }
-        return bkup.a(this.a);
-        if (l - bkup.a(this.a) >= 0L) {
-          break;
-        }
-        bkup.a(this.a, l);
-      }
-      label168:
-      if (l - bkup.b(this.a) < 0L) {
-        bkup.b(this.a, l);
-      }
-    }
-  }
+  public abstract void a(int paramInt, AEFilterManager paramAEFilterManager);
 }
 
 

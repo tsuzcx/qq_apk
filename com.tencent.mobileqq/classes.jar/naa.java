@@ -40,29 +40,29 @@ public abstract class naa
           paramInt = paramBundle.error_code.get();
           paramBundle = paramBundle.error_desc.get().toStringUtf8();
           if (paramInt == 0) {
-            wsv.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
+            wxe.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
           }
           for (;;)
           {
-            wta.b("story_net", str, 0, paramInt, new String[] { paramBundle, String.valueOf(l), wta.a(BaseApplication.getContext()) });
+            wxj.b("story_net", str, 0, paramInt, new String[] { paramBundle, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
             return;
-            wsv.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
+            wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
           }
         }
-        wsv.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
-        wta.b("story_net", str, 0, 940002, new String[] { "response is null", String.valueOf(l), wta.a(BaseApplication.getContext()) });
+        wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
+        wxj.b("story_net", str, 0, 940002, new String[] { "response is null", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
         return;
       }
       a(-1, null, paramBundle);
-      wsv.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-      wta.b("story_net", str, 0, 940002, new String[] { "rsp data error", String.valueOf(l), wta.a(BaseApplication.getContext()) });
+      wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      wxj.b("story_net", str, 0, 940002, new String[] { "rsp data error", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
       return;
     }
     paramInt = paramBundle.getInt("data_error_code");
     Object localObject = paramBundle.getString("data_error_msg");
     a(paramInt, null, paramBundle);
-    wsv.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-    wta.b("story_net", str, 0, paramInt, new String[] { localObject, String.valueOf(l), wta.a(BaseApplication.getContext()) });
+    wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+    wxj.b("story_net", str, 0, paramInt, new String[] { localObject, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
   }
   
   public abstract qqstory_struct.ErrorInfo a(int paramInt, @Nullable byte[] paramArrayOfByte, Bundle paramBundle);

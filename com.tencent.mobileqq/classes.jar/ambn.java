@@ -1,17 +1,18 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class ambn
-  implements BusinessObserver
+  extends ampn
 {
-  ambn(ambm paramambm) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  ambn(ambm paramambm, String paramString, boolean paramBoolean)
   {
-    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
-      QLog.d("ActivateFriends.Manager", 2, "acs msg succ");
-    }
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    ambm.a(this.a, paramInt, paramSosoLbsInfo);
   }
 }
 

@@ -31,7 +31,7 @@ public abstract class lkf
     {
       paramString1 = new JSONObject(paramString1);
       paramString2 = paramString1.getJSONObject("video");
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)bcyj.a(paramString2, MagicfaceDataVideoJason.class));
+      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)bdcs.a(paramString2, MagicfaceDataVideoJason.class));
       int i;
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason != null)
       {
@@ -72,7 +72,7 @@ public abstract class lkf
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y));
       }
       if (paramString1.has("audio")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = ((MagicfaceDataAudioJason)bcyj.a(paramString1.getJSONObject("audio"), MagicfaceDataAudioJason.class));
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = ((MagicfaceDataAudioJason)bdcs.a(paramString1.getJSONObject("audio"), MagicfaceDataAudioJason.class));
       }
       this.jdField_a_of_type_JavaUtilMap = new HashMap();
       if (paramString1.has("pendant"))
@@ -81,7 +81,7 @@ public abstract class lkf
         i = j;
         while (i < paramString1.length())
         {
-          paramString2 = (MagicfaceDataPendantJason)bcyj.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
+          paramString2 = (MagicfaceDataPendantJason)bdcs.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
           if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.name)))
           {
             lek.e("AVMagicfaceData", "Pendant: " + paramString2.toString());

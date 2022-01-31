@@ -1,38 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 class agdl
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  agdl(agdi paramagdi, int paramInt, Object paramObject, agfq paramagfq) {}
+  agdl(agdj paramagdj, agdn paramagdn, CharSequence paramCharSequence) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      agdi.a(this.jdField_a_of_type_Agdi, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Agfq);
-      this.jdField_a_of_type_Agdi.u();
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    agdi.a(this.jdField_a_of_type_Agdi, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Agfq);
-    this.jdField_a_of_type_Agfq.a.a = true;
-    this.jdField_a_of_type_Agdi.u();
+    this.jdField_a_of_type_Agdn.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Agdn.d.startAnimation(this.jdField_a_of_type_Agdj.a);
+    this.jdField_a_of_type_Agdn.a.requestLayout();
+    this.jdField_a_of_type_Agdn.g = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Agdn.a.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_Agdn.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Agdn.g = 0;
+    this.jdField_a_of_type_Agdn.d.startAnimation(this.jdField_a_of_type_Agdj.b);
   }
 }
 

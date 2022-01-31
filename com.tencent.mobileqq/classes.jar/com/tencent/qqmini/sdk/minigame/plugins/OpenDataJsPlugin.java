@@ -4,19 +4,19 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bghn;
-import bgho;
-import bgic;
-import bgjm;
-import bgkc;
-import bgkd;
-import bgkk;
-import bglo;
-import bgth;
-import bgtp;
-import bgun;
-import bgut;
-import bgwc;
+import bglu;
+import bglv;
+import bgmj;
+import bgnt;
+import bgoj;
+import bgok;
+import bgor;
+import bgpv;
+import bgxo;
+import bgxw;
+import bgyu;
+import bgza;
+import bhaj;
 import com.tencent.qqmini.sdk.core.model.InnerShareData;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
@@ -50,39 +50,39 @@ public class OpenDataJsPlugin
   private ChannelProxy mChannelProxy;
   private ShareProxy mShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
   
-  private void getPotentialFriendListImpl(bgkd parambgkd)
+  private void getPotentialFriendListImpl(bgok parambgok)
   {
     if (this.mMiniAppInfo == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , no appid");
-      bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , no appid");
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , no appid");
+      bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , no appid");
+      parambgok.b();
       return;
     }
     String str = this.mMiniAppInfo.appId;
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPotentialFriendList(null, str, new OpenDataJsPlugin.6(this, parambgkd));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPotentialFriendList(null, str, new OpenDataJsPlugin.6(this, parambgok));
   }
   
-  private void getUserInteractiveStorage(String[] paramArrayOfString, bgkd parambgkd)
+  private void getUserInteractiveStorage(String[] paramArrayOfString, bgok parambgok)
   {
     if (this.mMiniAppInfo == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , no appid");
-      bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , no appid");
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , no appid");
+      bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , no appid");
+      parambgok.b();
       return;
     }
     String str = this.mMiniAppInfo.appId;
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataJsPlugin.7(this, parambgkd));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataJsPlugin.7(this, parambgok));
   }
   
-  private void modifyFriendInteractiveStorage(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgkd parambgkd, String paramString8, String paramString9)
+  private void modifyFriendInteractiveStorage(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgok parambgok, String paramString8, String paramString9)
   {
     if (this.mMiniAppInfo == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no appid");
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no appid");
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no appid");
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no appid");
+      parambgok.b();
       return;
     }
     String str1 = this.mMiniAppInfo.appId;
@@ -91,27 +91,27 @@ public class OpenDataJsPlugin
     {
       if (TextUtils.isEmpty(paramString3))
       {
-        bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no toUser");
-        bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no toUser");
-        parambgkd.b();
+        bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no toUser");
+        bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no toUser");
+        parambgok.b();
       }
     }
     else if (TextUtils.isEmpty(str2))
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no shareId");
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no shareId");
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no shareId");
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no shareId");
+      parambgok.b();
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put(paramString1, paramInt + "");
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt, paramString2, localHashMap, new OpenDataJsPlugin.8(this, parambgkd, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt, paramString2, localHashMap, new OpenDataJsPlugin.8(this, parambgok, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
   }
   
-  private void shareMessageToFriend(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, bgkd parambgkd)
+  private void shareMessageToFriend(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, bgok parambgok)
   {
     String str = "";
-    ShareState localShareState = bgic.a(this.mMiniAppContext);
+    ShareState localShareState = bgmj.a(this.mMiniAppContext);
     paramString5 = str;
     if (this.mMiniAppInfo != null)
     {
@@ -121,18 +121,18 @@ public class OpenDataJsPlugin
       }
       localShareState.shareAppid = this.mMiniAppInfo.appId;
     }
-    localShareState.shareEvent = parambgkd.jdField_a_of_type_JavaLangString;
-    localShareState.shareCallbackId = parambgkd.jdField_b_of_type_Int;
+    localShareState.shareEvent = parambgok.jdField_a_of_type_JavaLangString;
+    localShareState.shareCallbackId = parambgok.jdField_b_of_type_Int;
     localShareState.shareOpenid = paramString1;
-    parambgkd = paramString5;
+    parambgok = paramString5;
     if (TextUtils.isEmpty(paramString5)) {
-      parambgkd = "miniGamePath";
+      parambgok = "miniGamePath";
     }
     boolean bool1;
     if ((URLUtil.isHttpUrl(paramString4)) || (URLUtil.isHttpsUrl(paramString4)))
     {
       bool1 = true;
-      if ((TextUtils.isEmpty(paramString4)) || (!new File(bgjm.a().a(paramString4)).exists())) {
+      if ((TextUtils.isEmpty(paramString4)) || (!new File(bgnt.a().a(paramString4)).exists())) {
         break label355;
       }
     }
@@ -140,8 +140,8 @@ public class OpenDataJsPlugin
     for (boolean bool2 = true;; bool2 = false)
     {
       paramString2 = new ShareChatModel(0, 0L, paramString2);
-      paramString1 = new bgkc().a(11).b(5).a(this.mMiniAppInfo.name).b(paramString3).a(this.mMiniAppInfo).a(this.mMiniAppContext.a()).d(parambgkd).a(paramString2).c(localShareState.withShareTicket).h(paramString1).b(localShareState.isShareInMiniProcess);
-      if ((!bglo.a(paramString4)) && ((bool1) || (bool2))) {
+      paramString1 = new bgoj().a(11).b(5).a(this.mMiniAppInfo.name).b(paramString3).a(this.mMiniAppInfo).a(this.mMiniAppContext.a()).d(parambgok).a(paramString2).c(localShareState.withShareTicket).h(paramString1).b(localShareState.isShareInMiniProcess);
+      if ((!bgpv.a(paramString4)) && ((bool1) || (bool2))) {
         break label361;
       }
       paramString1.c(WnsUtil.defaultShareImg()).a().a();
@@ -156,31 +156,31 @@ public class OpenDataJsPlugin
       paramString1.c(paramString4).a().a();
       return;
     }
-    paramString1.c(bgjm.a().a(paramString4)).a(true).a().a();
+    paramString1.c(bgnt.a().a(paramString4)).a(true).a().a();
   }
   
-  private void showConfirmModificationModel(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgkd parambgkd, String paramString8, String paramString9, int paramInt2)
+  private void showConfirmModificationModel(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, bgok parambgok, String paramString8, String paramString9, int paramInt2)
   {
     String str2 = paramString9 + paramString8;
     if (paramInt2 > 0) {}
     for (String str1 = "确认" + paramString8 + paramString4 + paramInt1 * paramInt2 + paramString9 + "?"; paramBoolean.booleanValue(); str1 = "确认" + paramString8 + paramString4 + paramString9 + "?")
     {
-      modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, parambgkd, paramString8, paramString9);
+      modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, parambgok, paramString8, paramString9);
       return;
     }
-    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataJsPlugin.9(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, parambgkd, paramString8, paramString9), null, new OpenDataJsPlugin.10(this, parambgkd));
+    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataJsPlugin.9(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, parambgok, paramString8, paramString9), null, new OpenDataJsPlugin.10(this, parambgok));
   }
   
   private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    bgkk.a(new OpenDataJsPlugin.11(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
+    bgor.a(new OpenDataJsPlugin.11(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
   }
   
-  public void getFriendCloudStorage(bgkd parambgkd)
+  public void getFriendCloudStorage(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
+      JSONArray localJSONArray = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
       String[] arrayOfString;
       if (localJSONArray != null)
       {
@@ -194,36 +194,36 @@ public class OpenDataJsPlugin
       }
       for (;;)
       {
-        getFriendCloudStorage(arrayOfString, parambgkd);
+        getFriendCloudStorage(arrayOfString, parambgok);
         return;
         arrayOfString = new String[0];
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest getFriendCloudStorage error " + parambgkd.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest getFriendCloudStorage error " + parambgok.getMessage());
       return;
     }
   }
   
-  public void getFriendCloudStorage(String[] paramArrayOfString, bgkd parambgkd)
+  public void getFriendCloudStorage(String[] paramArrayOfString, bgok parambgok)
   {
-    bgwc localbgwc = bgwc.a();
+    bhaj localbhaj = bhaj.a();
     StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage appid:").append(this.mMiniAppInfo.appId).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
-      localbgwc.i("OpenDataJsPlugin", str);
-      this.mChannelProxy.getFriendCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, new OpenDataJsPlugin.3(this, parambgkd));
+      localbhaj.i("OpenDataJsPlugin", str);
+      this.mChannelProxy.getFriendCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, new OpenDataJsPlugin.3(this, parambgok));
       return;
     }
   }
   
-  public void getGroupCloudStorage(bgkd parambgkd)
+  public void getGroupCloudStorage(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject).optString("shareTicket");
       JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyList");
       if (localJSONArray != null)
@@ -238,19 +238,19 @@ public class OpenDataJsPlugin
       }
       for (;;)
       {
-        getGroupCloudStorage(str, (String[])localObject, parambgkd);
+        getGroupCloudStorage(str, (String[])localObject, parambgok);
         return;
         localObject = new String[0];
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest getUserCloudStorage error " + parambgkd.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest getUserCloudStorage error " + parambgok.getMessage());
       return;
     }
   }
   
-  public void getGroupCloudStorage(String paramString, String[] paramArrayOfString, bgkd parambgkd)
+  public void getGroupCloudStorage(String paramString, String[] paramArrayOfString, bgok parambgok)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -258,41 +258,41 @@ public class OpenDataJsPlugin
       try
       {
         paramString.put("state", "fail");
-        parambgkd.a(paramString, "当前小程序不是从群分享卡片打开");
+        parambgok.a(paramString, "当前小程序不是从群分享卡片打开");
         return;
       }
       catch (JSONException paramString)
       {
-        bgwc.a().e("OpenDataJsPlugin", "getGroupCloudStorage error " + paramString.getMessage());
-        parambgkd.b();
+        bhaj.a().e("OpenDataJsPlugin", "getGroupCloudStorage error " + paramString.getMessage());
+        parambgok.b();
         return;
       }
     }
-    this.mChannelProxy.getGroupCloudStorage(this.mMiniAppInfo.appId, paramString, paramArrayOfString, new OpenDataJsPlugin.2(this, parambgkd));
+    this.mChannelProxy.getGroupCloudStorage(this.mMiniAppInfo.appId, paramString, paramArrayOfString, new OpenDataJsPlugin.2(this, parambgok));
   }
   
-  public void getOpenDataContext(bgkd parambgkd) {}
+  public void getOpenDataContext(bgok parambgok) {}
   
-  public void getPotentialFriendList(bgkd parambgkd)
+  public void getPotentialFriendList(bgok parambgok)
   {
     try
     {
-      getPotentialFriendListImpl(parambgkd);
+      getPotentialFriendListImpl(parambgok);
       return;
     }
     catch (Throwable localThrowable)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable.getMessage());
-      bgwc.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable.getMessage());
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable.getMessage());
+      bhaj.a("handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable.getMessage());
+      parambgok.b();
     }
   }
   
-  public void getUserCloudStorage(bgkd parambgkd)
+  public void getUserCloudStorage(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
+      JSONArray localJSONArray = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
       String[] arrayOfString;
       if (localJSONArray != null)
       {
@@ -306,40 +306,40 @@ public class OpenDataJsPlugin
       }
       for (;;)
       {
-        getUserCloudStorage(arrayOfString, parambgkd);
+        getUserCloudStorage(arrayOfString, parambgok);
         return;
         arrayOfString = new String[0];
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest getUserCloudStorage error " + parambgkd.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest getUserCloudStorage error " + parambgok.getMessage());
       return;
     }
   }
   
-  public void getUserCloudStorage(String[] paramArrayOfString, bgkd parambgkd)
+  public void getUserCloudStorage(String[] paramArrayOfString, bgok parambgok)
   {
-    bgwc localbgwc = bgwc.a();
+    bhaj localbhaj = bhaj.a();
     StringBuilder localStringBuilder = new StringBuilder().append("getUserCloudStorage appid:").append(this.mMiniAppInfo.appId).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
-      localbgwc.i("OpenDataJsPlugin", str);
-      if ((paramArrayOfString != null) && (parambgkd.jdField_a_of_type_Bghn != null)) {
+      localbhaj.i("OpenDataJsPlugin", str);
+      if ((paramArrayOfString != null) && (parambgok.jdField_a_of_type_Bglu != null)) {
         break;
       }
       return;
     }
-    parambgkd = new OpenDataJsPlugin.1(this, parambgkd);
-    this.mChannelProxy.getUserCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, parambgkd);
+    parambgok = new OpenDataJsPlugin.1(this, parambgok);
+    this.mChannelProxy.getUserCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, parambgok);
   }
   
-  public void getUserInteractiveStorage(bgkd parambgkd)
+  public void getUserInteractiveStorage(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).getJSONArray("keyList");
+      JSONArray localJSONArray = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).getJSONArray("keyList");
       String[] arrayOfString;
       if (localJSONArray != null)
       {
@@ -353,28 +353,28 @@ public class OpenDataJsPlugin
       }
       for (;;)
       {
-        getUserInteractiveStorage(arrayOfString, parambgkd);
+        getUserInteractiveStorage(arrayOfString, parambgok);
         return;
         arrayOfString = new String[0];
       }
     }
     catch (Throwable localThrowable)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
-      bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
+      bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
+      parambgok.b();
       return;
     }
   }
   
-  public void modifyFriendInteractiveStorage(bgkd parambgkd)
+  public void modifyFriendInteractiveStorage(bgok parambgok)
   {
     for (;;)
     {
       int i;
       try
       {
-        localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         String str6 = ((JSONObject)localObject1).getString("key");
         int m = ((JSONObject)localObject1).getInt("opNum");
         String str7 = ((JSONObject)localObject1).getString("operation");
@@ -393,14 +393,14 @@ public class OpenDataJsPlugin
           str1 = ((JSONObject)localObject1).getString("openid");
           str2 = ((JSONObject)localObject1).getString("nickname");
         }
-        localObject1 = bgtp.a(this.mMiniAppContext);
+        localObject1 = bgxw.a(this.mMiniAppContext);
         if (localObject1 != null)
         {
-          localObject1 = ((bgut)localObject1).a();
+          localObject1 = ((bgza)localObject1).a();
           if (localObject1 == null) {
             break label465;
           }
-          localObject2 = ((bgun)localObject1).a;
+          localObject2 = ((bgyu)localObject1).a;
           String str3 = str4;
           localObject1 = str5;
           int j = k;
@@ -440,18 +440,18 @@ public class OpenDataJsPlugin
           }
           if (localBoolean.booleanValue())
           {
-            modifyFriendInteractiveStorage(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, parambgkd, str3, (String)localObject1);
+            modifyFriendInteractiveStorage(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, parambgok, str3, (String)localObject1);
             return;
           }
-          showConfirmModificationModel(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, parambgkd, str3, (String)localObject1, j);
+          showConfirmModificationModel(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, parambgok, str3, (String)localObject1, j);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
-        bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
-        parambgkd.b();
+        bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
+        bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
+        parambgok.b();
         return;
       }
       Object localObject1 = null;
@@ -464,43 +464,43 @@ public class OpenDataJsPlugin
     }
   }
   
-  public void onMessage(bgkd parambgkd)
+  public void onMessage(bgok parambgok)
   {
     Object localObject;
     if (this.mIsMiniGame) {
-      localObject = (bgth)parambgkd.jdField_a_of_type_Bghn;
+      localObject = (bgxo)parambgok.jdField_a_of_type_Bglu;
     }
     while (localObject != null) {
-      if (((bgth)localObject).a() == 1)
+      if (((bgxo)localObject).a() == 1)
       {
         localObject = this.mMiniAppInfo;
         if ((localObject != null) && (((MiniAppInfo)localObject).whiteList != null) && (((MiniAppInfo)localObject).whiteList.contains("onMessage")))
         {
-          parambgkd.jdField_a_of_type_Bghn.a("onMessage", parambgkd.jdField_b_of_type_JavaLangString, 0);
-          sendSubscribeEvent("onMessage", parambgkd.jdField_b_of_type_JavaLangString);
+          parambgok.jdField_a_of_type_Bglu.a("onMessage", parambgok.jdField_b_of_type_JavaLangString, 0);
+          sendSubscribeEvent("onMessage", parambgok.jdField_b_of_type_JavaLangString);
           return;
           localObject = null;
         }
         else
         {
-          bgwc.a().e("OpenDataJsPlugin", "开放域调用了未授权的私有API: postMessage -> onMessage");
-          bgwc.a("error 开放域调用了未授权的私有API: postMessage");
+          bhaj.a().e("OpenDataJsPlugin", "开放域调用了未授权的私有API: postMessage -> onMessage");
+          bhaj.a("error 开放域调用了未授权的私有API: postMessage");
         }
       }
       else
       {
-        parambgkd.jdField_a_of_type_Bghn.a("onMessage", parambgkd.jdField_b_of_type_JavaLangString, 0);
+        parambgok.jdField_a_of_type_Bglu.a("onMessage", parambgok.jdField_b_of_type_JavaLangString, 0);
         return;
       }
     }
-    bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest onMessage error, not gameJsRuntime!");
+    bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest onMessage error, not gameJsRuntime!");
   }
   
-  public void removeUserCloudStorage(bgkd parambgkd)
+  public void removeUserCloudStorage(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
+      JSONArray localJSONArray = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optJSONArray("keyList");
       String[] arrayOfString;
       if (localJSONArray != null)
       {
@@ -514,60 +514,60 @@ public class OpenDataJsPlugin
       }
       for (;;)
       {
-        removeUserCloudStorage(arrayOfString, parambgkd);
+        removeUserCloudStorage(arrayOfString, parambgok);
         return;
         arrayOfString = new String[0];
       }
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest removeUserCloudStorage error " + parambgkd.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest removeUserCloudStorage error " + parambgok.getMessage());
       return;
     }
   }
   
-  public void removeUserCloudStorage(String[] paramArrayOfString, bgkd parambgkd)
+  public void removeUserCloudStorage(String[] paramArrayOfString, bgok parambgok)
   {
-    bgwc localbgwc = bgwc.a();
+    bhaj localbhaj = bhaj.a();
     StringBuilder localStringBuilder = new StringBuilder().append("removeUserCloudStorage appid:").append(this.mMiniAppInfo.appId).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
-      localbgwc.i("OpenDataJsPlugin", str);
-      this.mChannelProxy.removeUserCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, new OpenDataJsPlugin.5(this, parambgkd));
+      localbhaj.i("OpenDataJsPlugin", str);
+      this.mChannelProxy.removeUserCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, new OpenDataJsPlugin.5(this, parambgok));
       return;
     }
   }
   
-  public void setMessageToFriendQuery(bgkd parambgkd)
+  public void setMessageToFriendQuery(bgok parambgok)
   {
     try
     {
-      int i = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optInt("shareMessageToFriendScene", -1);
+      int i = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optInt("shareMessageToFriendScene", -1);
       if (i == -1) {
-        parambgkd.b();
+        parambgok.b();
       }
       if (this.mMiniAppInfo != null) {
         this.mMiniAppInfo.friendMessageQuery = ("shareMessageToFriendScene=" + i);
       }
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("success", true);
-      parambgkd.a(localJSONObject);
+      parambgok.a(localJSONObject);
       return;
     }
     catch (Throwable localThrowable)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_SET_MESSAGE_TO_FRIEND_QUERY error " + localThrowable.getMessage());
-      bgwc.a("handleNativeRequest API_SET_MESSAGE_TO_FRIEND_QUERY error " + localThrowable.getMessage());
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_SET_MESSAGE_TO_FRIEND_QUERY error " + localThrowable.getMessage());
+      bhaj.a("handleNativeRequest API_SET_MESSAGE_TO_FRIEND_QUERY error " + localThrowable.getMessage());
+      parambgok.b();
     }
   }
   
-  public void setUserCloudStorage(bgkd parambgkd)
+  public void setUserCloudStorage(bgok parambgok)
   {
     try
     {
-      JSONArray localJSONArray = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optJSONArray("KVDataList");
+      JSONArray localJSONArray = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optJSONArray("KVDataList");
       HashMap localHashMap = new HashMap();
       if (localJSONArray != null)
       {
@@ -579,42 +579,42 @@ public class OpenDataJsPlugin
           i += 1;
         }
       }
-      setUserCloudStorage(localHashMap, parambgkd);
+      setUserCloudStorage(localHashMap, parambgok);
       return;
     }
-    catch (Throwable parambgkd)
+    catch (Throwable parambgok)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest setUserCloudStorage error " + parambgkd.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest setUserCloudStorage error " + parambgok.getMessage());
     }
   }
   
-  public void setUserCloudStorage(HashMap<String, String> paramHashMap, bgkd parambgkd)
+  public void setUserCloudStorage(HashMap<String, String> paramHashMap, bgok parambgok)
   {
-    bgwc localbgwc = bgwc.a();
+    bhaj localbhaj = bhaj.a();
     StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage appid:").append(this.mMiniAppInfo.appId).append(", kvData:");
     if (paramHashMap != null) {}
     for (String str = paramHashMap.toString();; str = "")
     {
-      localbgwc.i("OpenDataJsPlugin", str);
-      this.mChannelProxy.setUserCloudStorage(this.mMiniAppInfo.appId, paramHashMap, new OpenDataJsPlugin.4(this, parambgkd));
+      localbhaj.i("OpenDataJsPlugin", str);
+      this.mChannelProxy.setUserCloudStorage(this.mMiniAppInfo.appId, paramHashMap, new OpenDataJsPlugin.4(this, parambgok));
       return;
     }
   }
   
-  public void shareMessageToFriend(bgkd parambgkd)
+  public void shareMessageToFriend(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       JSONObject localJSONObject2 = localJSONObject1.getJSONObject("friendInfo");
-      shareMessageToFriend(localJSONObject2.getString("openid"), localJSONObject2.getString("nickname"), localJSONObject1.optString("title"), localJSONObject1.optString("imageUrl"), localJSONObject1.optString("imageUrlId"), parambgkd);
+      shareMessageToFriend(localJSONObject2.getString("openid"), localJSONObject2.getString("nickname"), localJSONObject1.optString("title"), localJSONObject1.optString("imageUrl"), localJSONObject1.optString("imageUrlId"), parambgok);
       return;
     }
     catch (Throwable localThrowable)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable.getMessage());
-      bgwc.a("handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable.getMessage());
-      parambgkd.b();
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable.getMessage());
+      bhaj.a("handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable.getMessage());
+      parambgok.b();
     }
   }
 }

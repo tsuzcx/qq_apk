@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class adhw
-  extends asuk
+  implements adif
 {
-  public adhw(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adhw(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719872, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+    LoginPhoneNumActivity.a(this.a);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void b()
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
+    LoginPhoneNumActivity.a(this.a);
   }
 }
 

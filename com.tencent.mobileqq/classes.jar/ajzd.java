@@ -1,31 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class ajzd
-  extends BroadcastReceiver
+  extends Handler
 {
-  public ajzd(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ajzd(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.d();
-    }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
-    }
-    this.a.d();
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

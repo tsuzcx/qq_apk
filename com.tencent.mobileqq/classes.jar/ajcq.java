@@ -1,25 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class ajcq
-  implements View.OnClickListener
+public abstract interface ajcq
 {
-  ajcq(ajbm paramajbm) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (amlp.a().a() == 4) {
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amlo.b(), amlp.b(), amlp.a(), "0");
-    }
-    for (;;)
-    {
-      this.a.a(14, 0);
-      this.a.a(-1, null);
-      return;
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amlo.b(), amlp.b(), amlp.a(), "0");
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

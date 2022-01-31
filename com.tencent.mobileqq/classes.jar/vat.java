@@ -1,40 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vat
-  extends unk<vcr>
+  extends QQUIEventReceiver<vai, vas>
 {
-  public static final String a = ume.a("StorySvc.get_user_black_status");
-  public String b;
-  
-  public String a()
+  public vat(@NonNull vai paramvai)
   {
-    return a;
+    super(paramvai);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public void a(@NonNull vai paramvai, @NonNull vas paramvas)
   {
-    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
-    try
-    {
-      localRspGetBlackList.mergeFrom(paramArrayOfByte);
-      return new vcr(localRspGetBlackList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    vai.a(paramvai, paramvas.jdField_a_of_type_Vpm, paramvas.jdField_a_of_type_JavaLangString);
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
-    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetBlackList.toByteArray();
+    return vas.class;
   }
 }
 

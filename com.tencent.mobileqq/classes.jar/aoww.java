@@ -1,108 +1,61 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.os.HandlerThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aoww
+  extends aokh<aowv>
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final aoyt jdField_a_of_type_Aoyt = new aoyt();
+  public static aowv a()
+  {
+    return (aowv)aoks.a().a(500);
+  }
   
   public int a()
   {
-    return this.jdField_a_of_type_Aoyt.a();
+    return 500;
   }
   
-  public Bitmap a(aoxh paramaoxh, aoxq paramaoxq)
+  @NonNull
+  public aowv a(int paramInt)
   {
-    if (paramaoxh == null) {
-      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
-    }
-    try
-    {
-      if (paramaoxh.f())
-      {
-        Object localObject2 = paramaoxh.a();
-        Object localObject1;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_Aoyt.a((int)paramaoxh.f(), (int)paramaoxh.g());
-        }
-        for (;;)
-        {
-          paramaoxh.a((Bitmap)localObject1);
-          if (localObject1 != null) {
-            break;
-          }
-          return null;
-          if (((Bitmap)localObject2).getWidth() >= (int)paramaoxh.f())
-          {
-            localObject1 = localObject2;
-            if (((Bitmap)localObject2).getHeight() >= (int)paramaoxh.g()) {}
-          }
-          else
-          {
-            this.jdField_a_of_type_Aoyt.a((Bitmap)localObject2);
-            localObject1 = this.jdField_a_of_type_Aoyt.a((int)paramaoxh.f(), (int)paramaoxh.g());
-          }
-        }
-        localObject2 = paramaoxh.a();
-        if (localObject2 == null)
-        {
-          localObject2 = new Canvas((Bitmap)localObject1);
-          paramaoxh.a((Canvas)localObject2);
-        }
-        for (;;)
-        {
-          ((Bitmap)localObject1).eraseColor(0);
-          paramaoxh.c(false);
-          paramaoxq.a(paramaoxh).a((Canvas)localObject2, paramaoxh, paramaoxq, aoxq.a().g(), aoxq.a().c());
-          return localObject1;
-          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
-        }
-      }
-      paramaoxh = paramaoxh.a();
-    }
-    finally {}
-    return paramaoxh;
+    return new aowv();
   }
   
-  public void a()
+  @Nullable
+  public aowv a(aoko[] paramArrayOfaoko)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aowv.a(paramArrayOfaoko);
     }
-    if (aozh.a())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    return null;
   }
   
-  public void a(Bitmap paramBitmap)
+  public Class<aowv> a()
   {
-    this.jdField_a_of_type_Aoyt.a(paramBitmap);
+    return aowv.class;
   }
   
-  public void a(aoxh paramaoxh, aoxq paramaoxq) {}
+  public void a(int paramInt) {}
+  
+  public void a(aowv paramaowv) {}
   
   public int b()
   {
-    return this.jdField_a_of_type_Aoyt.c();
+    return 0;
   }
   
-  public void b()
+  public boolean b()
   {
-    this.jdField_a_of_type_Aoyt.a();
+    return false;
   }
   
-  public int c()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Aoyt.b();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoww
  * JD-Core Version:    0.7.0.1
  */

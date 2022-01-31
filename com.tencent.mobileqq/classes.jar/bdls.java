@@ -1,93 +1,175 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class bdls
-  extends SSLSocketFactory
+  extends Dialog
 {
-  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
-  private String b;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  View jdField_a_of_type_AndroidViewView;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bdlt(this);
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ListView jdField_a_of_type_AndroidWidgetListView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
   
-  public bdls(String paramString, HostnameVerifier paramHostnameVerifier)
+  public bdls(Context paramContext, int paramInt)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
+    super(paramContext, paramInt);
   }
   
-  public Socket createSocket()
+  protected int a(int paramInt)
   {
-    return null;
+    return paramInt;
   }
   
-  public Socket createSocket(String paramString, int paramInt)
+  public bdls a(int paramInt)
   {
-    return null;
+    this.b.setText(paramInt);
+    this.b.setContentDescription(getContext().getString(paramInt));
+    this.b.setVisibility(0);
+    return this;
   }
   
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+  public bdls a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  @TargetApi(17)
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramString = paramSocket.getInetAddress();
-    if (paramBoolean) {
-      paramSocket.close();
-    }
-    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
-    }
-    for (;;)
+    if (paramOnClickListener == null)
     {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
-      }
-      catch (Exception paramString) {}
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      return this;
     }
-    return paramSocket;
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bdlv(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public String[] getDefaultCipherSuites()
+  public bdls a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    return new String[0];
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramInt);
+    this.d.setContentDescription(getContext().getString(paramInt));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bdlw(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public String[] getSupportedCipherSuites()
+  public bdls a(String paramString)
   {
-    return new String[0];
+    if (paramString != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(new bamp(paramString, 5, 24));
+      this.b.setContentDescription(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
+      return this;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
+  }
+  
+  public bdls a(String paramString, float paramFloat)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.b.setText(new bamp(paramString, 5, 20));
+      this.b.setContentDescription(paramString);
+      this.b.setVisibility(0);
+      return this;
+    }
+    this.b.setVisibility(8);
+    return this;
+  }
+  
+  public bdls a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(new bamp(paramString, 5, 20));
+    this.d.setContentDescription(paramString);
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bdlu(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  protected void a() {}
+  
+  public bdls b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.b.setText(paramString);
+      this.b.setContentDescription(paramString);
+      this.b.setVisibility(0);
+      return this;
+    }
+    this.b.setVisibility(8);
+    return this;
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365237));
+    this.b = ((TextView)findViewById(2131365233));
+    this.c = ((TextView)findViewById(2131365211));
+    this.e = ((TextView)findViewById(2131365212));
+    this.g = ((TextView)findViewById(2131365504));
+    this.f = ((TextView)findViewById(2131372246));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366819));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366818);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365222));
+    this.d = ((TextView)findViewById(2131365228));
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.d.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363352));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369519));
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.b.setContentDescription(getContext().getString(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 

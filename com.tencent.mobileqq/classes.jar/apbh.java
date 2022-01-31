@@ -1,10 +1,21 @@
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-
-public abstract interface apbh
+class apbh
+  implements apdm<apbq>
 {
-  public abstract void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg);
+  apbh(apbg paramapbg) {}
+  
+  public int a(apbq paramapbq, long paramLong)
+  {
+    if (paramapbq == null) {}
+    do
+    {
+      return -1;
+      paramLong = paramapbq.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
+      }
+    } while (paramLong <= 0L);
+    return 1;
+  }
 }
 
 

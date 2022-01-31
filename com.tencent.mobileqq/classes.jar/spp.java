@@ -34,8 +34,8 @@ import org.json.JSONObject;
 public class spp
 {
   public static String a;
-  private bepp jdField_a_of_type_Bepp;
-  private bevy jdField_a_of_type_Bevy;
+  private bety jdField_a_of_type_Bety;
+  private bfah jdField_a_of_type_Bfah;
   private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   private String b;
   
@@ -76,18 +76,18 @@ public class spp
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(paramActivity);
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(paramActivity);
     }
   }
   
   private void a(JSONObject paramJSONObject, int paramInt)
   {
-    if (this.jdField_a_of_type_Bevy != null) {
+    if (this.jdField_a_of_type_Bfah != null) {
       return;
     }
-    this.jdField_a_of_type_Bevy = new spq(this);
-    WXShareHelper.a().a(this.jdField_a_of_type_Bevy);
+    this.jdField_a_of_type_Bfah = new spq(this);
+    WXShareHelper.a().a(this.jdField_a_of_type_Bfah);
   }
   
   private void a(JSONObject paramJSONObject, int paramInt, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -101,20 +101,20 @@ public class spp
       if (WXShareHelper.a().a()) {
         break label53;
       }
-      i = 2131721478;
+      i = 2131721491;
     }
     for (;;)
     {
       if (i == -1) {
         break label69;
       }
-      xxb.a(0, i);
+      ybk.a(0, i);
       return;
       j = 4;
       break;
       label53:
       if (!WXShareHelper.a().b()) {
-        i = 2131721479;
+        i = 2131721492;
       }
     }
     label69:
@@ -341,7 +341,7 @@ public class spp
   
   public void a()
   {
-    WXShareHelper.a().b(this.jdField_a_of_type_Bevy);
+    WXShareHelper.a().b(this.jdField_a_of_type_Bfah);
   }
   
   void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt, boolean paramBoolean)
@@ -379,7 +379,7 @@ public class spp
     localIntent.putExtra("req_share_id", paramJSONObject.optLong("app_id", -1L));
     localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
     localIntent.putExtra("image_url_remote", paramString4);
-    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696873, new Object[] { str }));
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696875, new Object[] { str }));
     localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
     localIntent.putExtra("is_need_show_toast", paramBoolean);
     if (paramJSONObject.has("contentAction")) {
@@ -432,13 +432,13 @@ public class spp
       if (paramJSONObject != null)
       {
         a(paramActivity);
-        if (!this.jdField_a_of_type_Bepp.isShowing())
+        if (!this.jdField_a_of_type_Bety.isShowing())
         {
-          this.jdField_a_of_type_Bepp.c(2131694217);
-          this.jdField_a_of_type_Bepp.show();
+          this.jdField_a_of_type_Bety.c(2131694219);
+          this.jdField_a_of_type_Bety.show();
         }
         localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        zbj.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new spr(this, localIntent, paramActivity));
+        zfy.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new spr(this, localIntent, paramActivity));
       }
       return;
       i = paramJSONObject.optInt("req_type", 1);
@@ -450,13 +450,13 @@ public class spp
       }
     }
     a(paramActivity);
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
     {
       l = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
       }
-      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
     }
     paramString1 = paramJSONObject.optString("puin", null);
     if (paramString1 == null) {
@@ -501,9 +501,9 @@ public class spp
         }
         for (;;)
         {
-          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131700022)))
+          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131700034)))
           {
-            paramBoolean = paramString2.equalsIgnoreCase(paramActivity.getString(2131700022));
+            paramBoolean = paramString2.equalsIgnoreCase(paramActivity.getString(2131700034));
             if (paramBoolean)
             {
               paramString3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
@@ -532,7 +532,7 @@ public class spp
           }
           for (;;)
           {
-            paramJSONObject = azqu.a(localIntent.getExtras());
+            paramJSONObject = azvd.a(localIntent.getExtras());
             if (paramJSONObject != null) {
               break label1750;
             }
@@ -617,7 +617,7 @@ public class spp
               localIntent.putExtra("struct_share_key_source_icon", paramJSONObject.optString("srcIconUrl"));
               break label1145;
             }
-            localIntent.putExtra("app_name", paramActivity.getString(2131696889));
+            localIntent.putExtra("app_name", paramActivity.getString(2131696891));
             break label1145;
             localIntent.putExtra("struct_share_key_source_icon", paramJSONObject);
           }
@@ -678,11 +678,11 @@ public class spp
           ((Bundle)localObject2).putStringArrayList("image_url", paramJSONObject);
           ((Bundle)localObject2).putLong("req_share_id", 0L);
           ((Bundle)localObject2).putInt("iUrlInfoFrm", 1);
-          ((Bundle)localObject2).putLong("share_begin_time", beei.b);
-          if (bjao.a((QQAppInterface)localAppInterface, paramActivity, (Bundle)localObject2, null, 125)) {
+          ((Bundle)localObject2).putLong("share_begin_time", beir.b);
+          if (bjev.a((QQAppInterface)localAppInterface, paramActivity, (Bundle)localObject2, null, 125)) {
             break label657;
           }
-          xxb.a(1, 2131689512);
+          ybk.a(1, 2131689512);
           return;
         }
       }
@@ -706,7 +706,7 @@ public class spp
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
           }
-          QQToast.a(BaseActivity.sTopActivity, 0, 2131720019, 0).b(BaseActivity.sTopActivity.getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(BaseActivity.sTopActivity, 0, 2131720031, 0).b(BaseActivity.sTopActivity.getResources().getDimensionPixelSize(2131298914));
           return;
         }
         if (QLog.isColorLevel()) {
@@ -738,7 +738,7 @@ public class spp
           for (;;)
           {
             paramJSONObject = paramJSONObject;
-            QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+            QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
             paramJSONObject.printStackTrace();
           }
         }

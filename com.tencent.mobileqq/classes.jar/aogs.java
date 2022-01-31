@@ -1,19 +1,53 @@
-public class aogs
+import com.tencent.qphone.base.util.QLog;
+
+final class aogs
+  implements apco
 {
-  public static String a = "com.tencent.map.WelcomeActivity";
-  public static String b = "com.google.android.maps.MapsActivity";
-  public static String c = "com.tencent.map";
-  public static String d = "com.autonavi.minimap";
-  public static String e = "com.google.android.apps.maps";
-  public static String f = "com.baidu.BaiduMap";
-  public static String g = "http://softroute.map.qq.com/downloadfile?cid=00214";
-  public static String h = aljq.bo + "tencentmap.apk";
-  public static String i = "QQMAP_DEFAULT";
-  public static String j = "Location";
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(aogr.a(), 2, paramString2);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aogr.a(), 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(aogr.a(), 2, paramString2);
+    }
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(aogr.a(), 2, paramString2);
+    }
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(aogr.a(), 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aogr.a(), 2, paramString2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogs
  * JD-Core Version:    0.7.0.1
  */

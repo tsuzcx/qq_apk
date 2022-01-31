@@ -1,6 +1,19 @@
-public abstract interface beiw
+import android.os.Bundle;
+
+class beiw
+  implements yrb
 {
-  public abstract void a();
+  beiw(beir parambeir) {}
+  
+  public void callback(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("fontSize", 1);
+    if (i != this.a.b)
+    {
+      this.a.b = i;
+      this.a.b(this.a.b);
+    }
+  }
 }
 
 

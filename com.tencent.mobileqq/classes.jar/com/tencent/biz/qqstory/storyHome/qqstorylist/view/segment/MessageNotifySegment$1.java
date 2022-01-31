@@ -4,20 +4,20 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import urr;
-import usd;
-import wre;
+import uwa;
+import uwm;
+import wvn;
 
 public class MessageNotifySegment$1
   implements Runnable
 {
-  public MessageNotifySegment$1(wre paramwre, ImageView paramImageView, Drawable paramDrawable) {}
+  public MessageNotifySegment$1(wvn paramwvn, ImageView paramImageView, Drawable paramDrawable) {}
   
   public void run()
   {
-    usd localusd = (usd)urr.a(2);
-    String str = localusd.b(Long.toString(wre.a(this.this$0)), true);
-    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localusd));
+    uwm localuwm = (uwm)uwa.a(2);
+    String str = localuwm.b(Long.toString(wvn.a(this.this$0)), true);
+    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localuwm));
   }
 }
 

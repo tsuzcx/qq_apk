@@ -1,6 +1,16 @@
-public abstract interface wwn
-  extends wwd
-{}
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class wwn
+  implements View.OnClickListener
+{
+  wwn(wwk paramwwk) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

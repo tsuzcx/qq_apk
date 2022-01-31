@@ -1,22 +1,16 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aiwt
-  implements aivw
+final class aiwt
+  implements DialogInterface.OnClickListener
 {
-  aiwt(aiwk paramaiwk, ResultReceiver paramResultReceiver) {}
+  aiwt(Activity paramActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    this.a.setResult(-1);
+    this.a.finish();
   }
 }
 

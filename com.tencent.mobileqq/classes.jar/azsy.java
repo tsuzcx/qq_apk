@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-
-public class azsy
+class azsy
 {
-  public Bundle a;
-  public View a;
-  public LinearLayout a;
-  public boolean a;
-  public View b;
-  public LinearLayout b;
-  public View c;
-  public View d;
-  public View e;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  
+  private azsy(azsw paramazsw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azsy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,20 @@
-public abstract interface ayfz
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import mqq.app.QQPermissionCallback;
+
+public class ayfz
+  implements QQPermissionCallback
 {
-  public abstract void a(String paramString, int paramInt);
+  public ayfz(ScreenShotFragment paramScreenShotFragment) {}
   
-  public abstract void c(String paramString);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bdgm.b(ScreenShotFragment.a(this.a), this.a.getString(2131699460));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ScreenShotFragment.a(this.a);
+  }
 }
 
 

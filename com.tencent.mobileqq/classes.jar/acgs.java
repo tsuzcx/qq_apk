@@ -1,23 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
-public final class acgs
-  implements DialogInterface.OnClickListener
+public class acgs
+  extends Handler
 {
-  public acgs(acgz paramacgz, acgy paramacgy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Acgz.a) {
-      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Acgy != null) {
-      this.jdField_a_of_type_Acgy.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public acgs(AuthDevRenameActivity paramAuthDevRenameActivity) {}
 }
 
 

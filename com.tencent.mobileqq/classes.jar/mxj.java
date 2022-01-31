@@ -17,7 +17,7 @@ class mxj
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
-    paramArrayOfByte = bdcv.a(this.jdField_a_of_type_ArrayOfByte);
+    paramArrayOfByte = bdhe.a(this.jdField_a_of_type_ArrayOfByte);
     this.jdField_a_of_type_Mxk.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
   }
   
@@ -55,7 +55,7 @@ class mxj
         paramArrayOfByte = null;
         continue;
       }
-      str2 = bdcv.a(this.jdField_a_of_type_ArrayOfByte);
+      str2 = bdhe.a(this.jdField_a_of_type_ArrayOfByte);
       localObject2 = this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString;
       localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
       Object localObject1;
@@ -71,7 +71,7 @@ class mxj
           if (QLog.isDevelopLevel()) {
             QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
           }
-          str1 = bhos.a(str2);
+          str1 = bhsz.a(str2);
           i = 0;
         }
         catch (Exception localException1)

@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nob
-  implements bhqf
+  implements bhum
 {
   public nob(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   

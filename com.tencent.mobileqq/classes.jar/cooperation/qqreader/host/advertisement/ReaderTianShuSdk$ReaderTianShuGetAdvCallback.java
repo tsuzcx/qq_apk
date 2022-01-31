@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import bkch;
+import bkgo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
-  implements bkch
+  implements bkgo
 {
   int jdField_a_of_type_Int;
   ReaderTianShuSdk.RequestListener jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderTianShuSdk$RequestListener;

@@ -76,7 +76,7 @@ public class pdw
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560205, paramViewGroup, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560204, paramViewGroup, false);
       localView.setTag(new pdx(this.a, (WormholeView)localView, this));
     }
     paramView = (pdx)localView.getTag();

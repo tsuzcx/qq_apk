@@ -1,22 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class yfi
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  private yfi(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
+  public yfi(CommentBottomBar paramCommentBottomBar) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
-    {
-      SubscribePersonalDetailFragment.b(this.a, false);
-      yej.a().a(new UserStateUpdateEvent());
+    if (!bdin.g(this.a.getContext())) {
+      QQToast.a(this.a.getContext(), alud.a(2131694772), 0).a();
     }
+    this.a.a();
   }
 }
 

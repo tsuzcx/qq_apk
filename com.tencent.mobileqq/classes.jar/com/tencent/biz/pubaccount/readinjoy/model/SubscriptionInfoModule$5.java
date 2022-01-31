@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ajgm;
+import ajlb;
 import android.content.Context;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ public class SubscriptionInfoModule$5
   {
     suv.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)this.this$0.a, this.jdField_a_of_type_AndroidContentContext, phd.a(this.this$0));
     int i = syb.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString);
-    ajgm.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString, i);
+    ajlb.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString, i);
     ((QQAppInterface)this.this$0.a).a().c(this.jdField_a_of_type_JavaLangString, 1008);
   }
 }

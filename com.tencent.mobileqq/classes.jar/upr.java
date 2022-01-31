@@ -1,57 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class upr
-  implements BusinessObserver
+public class upr
+  implements xtk
 {
-  upr(upq paramupq, long paramLong, ups paramups, String paramString, upt paramupt) {}
+  private ups jdField_a_of_type_Ups;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public upr(upq paramupq, ups paramups)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    Object localObject;
-    upt localupt;
-    String str;
-    if (paramBoolean)
+    this.jdField_a_of_type_Ups = paramups;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    wxe.e(upq.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    upq.a(this.jdField_a_of_type_Upq);
+    if (upq.b(this.jdField_a_of_type_Upq) == 0)
     {
-      localObject = paramBundle.getByteArray("data");
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        localupt = this.jdField_a_of_type_Ups.a((byte[])localObject);
-        if (localupt != null)
-        {
-          paramInt = localupt.jdField_a_of_type_Int;
-          str = localupt.jdField_a_of_type_JavaLangString;
-          if (paramInt == 0)
-          {
-            localupt.a();
-            wsv.a("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s success take time:%d data length=%d", this.jdField_a_of_type_JavaLangString, Long.valueOf(l), Integer.valueOf(localObject.length));
-            wta.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { str, String.valueOf(l), wta.a(BaseApplication.getContext()) });
-          }
-        }
-      }
+      wxe.b(upq.a, "all ffmpeg commands have already finished. start clearing cache.");
+      upq.a(this.jdField_a_of_type_Upq);
     }
-    for (;;)
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    wxe.b(upq.a, "start executing ffmpeg commands.");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (xrg.a(BaseApplication.getContext(), this.jdField_a_of_type_Ups.d, this.jdField_a_of_type_Ups.e))
     {
-      this.jdField_a_of_type_Upt.a(paramBoolean, paramBundle);
+      wxe.b(upq.a, "save video to album success.");
+      wxj.a("video_edit", "video_save_local", 0, 0, new String[0]);
       return;
-      localupt.a(paramInt, str);
-      wsv.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), str, Long.valueOf(l), Integer.valueOf(localObject.length) });
-      break;
-      wsv.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error. response is null", new Object[] { this.jdField_a_of_type_JavaLangString });
-      wta.b("story_net", this.jdField_a_of_type_JavaLangString, 0, 940002, new String[] { "response is null", String.valueOf(l), wta.a(BaseApplication.getContext()) });
-      continue;
-      this.jdField_a_of_type_Upt.a(-2, paramBundle);
-      wsv.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_Ups.a() + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-      wta.b("story_net", this.jdField_a_of_type_Ups.a(), 0, 940002, new String[] { "rsp data error", String.valueOf(l), wta.a(BaseApplication.getContext()) });
-      continue;
-      paramInt = paramBundle.getInt("data_error_code");
-      localObject = paramBundle.getString("data_error_msg");
-      this.jdField_a_of_type_Upt.a(paramInt, paramBundle);
-      wsv.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_JavaLangString + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-      wta.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { localObject, String.valueOf(l), wta.a(BaseApplication.getContext()) });
     }
+    wxe.e(upq.a, "save video to album failed.");
   }
 }
 

@@ -1,35 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Rect;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.widget.ActionSheet.3;
 
 public class bhuh
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int b;
-  private int c;
+  public bhuh(ActionSheet.3 param3) {}
   
-  private bhuh(Bitmap paramBitmap, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-    if (paramBitmap != null)
-    {
-      this.b = paramBitmap.getScaledWidth(paramInt);
-      this.c = paramBitmap.getScaledHeight(paramInt);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
-      return;
-    }
-    this.jdField_a_of_type_Int = 4;
+    this.a.this$0.e();
+    bhuf.a(this.a.this$0, true);
   }
   
-  private void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

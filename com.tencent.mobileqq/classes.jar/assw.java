@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface assw
 {
-  public abstract void a(xig paramxig);
+  public abstract void a(View paramView);
 }
 
 

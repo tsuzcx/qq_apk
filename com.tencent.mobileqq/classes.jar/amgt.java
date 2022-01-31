@@ -1,104 +1,126 @@
-import IMMsgBodyPack.PersonInfoChange;
-import IMMsgBodyPack.PersonInfoField;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import mqq.manager.Manager;
 
 public class amgt
-  extends abnx
+  implements Manager
 {
-  public amgt(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  private amgv jdField_a_of_type_Amgv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private amgr[] jdField_a_of_type_ArrayOfAmgr = new amgr[4];
+  private boolean jdField_b_of_type_Boolean;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[0];
+  
+  public amgt(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amgv = new amgv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  private void a(MsgInfo paramMsgInfo)
+  private void a(int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
-    }
-    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
-    paramMsgInfo.setServerEncoding("utf-8");
-    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
-    localPersonInfoChange.readFrom(paramMsgInfo);
-    int j;
-    int i;
-    long l;
-    int k;
-    if (localPersonInfoChange.cType == 0)
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
-      j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
+      int k = paramArrayOfInt[i];
+      long l = System.currentTimeMillis();
+      amgr localamgr = a(k);
+      if (localamgr != null)
       {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
-        {
-          k = 1;
-          j = i;
-          i = k;
+        localamgr.a();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localamgr.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
         }
+        localamgr.a(0);
       }
+      i += 1;
     }
+  }
+  
+  public amgr a(int paramInt)
+  {
+    amgr localamgr = this.jdField_a_of_type_ArrayOfAmgr[paramInt];
+    if (localamgr == null) {}
     for (;;)
     {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
+      synchronized (this.jdField_a_of_type_ArrayOfAmgr)
       {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
+        localamgr = this.jdField_a_of_type_ArrayOfAmgr[paramInt];
+        if (localamgr != null) {
+          return localamgr;
+        }
+        long l = System.currentTimeMillis();
+        switch (paramInt)
         {
-          paramMsgInfo = (FriendListHandler)this.a.a(1);
-          if (j != 0) {
-            paramMsgInfo.c(this.a.getAccount());
+        case 2: 
+          if ((localamgr != null) && (this.jdField_a_of_type_ArrayOfAmgr[paramInt] == null)) {
+            this.jdField_a_of_type_ArrayOfAmgr[paramInt] = localamgr;
           }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
+          if ((QLog.isColorLevel()) && (localamgr != null)) {
+            QLog.d("Q.db.Cache", 2, "get cache instance:" + localamgr.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+          }
+          return localamgr;
+        }
+      }
+      Object localObject2 = new amha(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amgv);
+      continue;
+      localObject2 = new amhc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amgv);
+      continue;
+      return localObject2;
+    }
+  }
+  
+  public amgv a()
+  {
+    return this.jdField_a_of_type_Amgv;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_Amgv.a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_b_of_type_ArrayOfInt);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onDestroy()
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_ArrayOfAmgr)
+      {
+        amgr[] arrayOfamgr2 = this.jdField_a_of_type_ArrayOfAmgr;
+        int j = arrayOfamgr2.length;
+        i = 0;
+        if (i < j)
+        {
+          amgr localamgr = arrayOfamgr2[i];
+          if (localamgr != null) {
+            localamgr.b();
           }
         }
-        do
+        else
         {
+          this.jdField_a_of_type_Amgv.onDestroy();
           return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
+        }
       }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
-      }
-    }
-  }
-  
-  public aboz a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new aboz(null, false);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
-      }
+      i += 1;
     }
   }
 }

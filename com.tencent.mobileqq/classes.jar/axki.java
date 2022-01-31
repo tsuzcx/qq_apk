@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-class axki
-  implements bapx
+public class axki
+  implements View.OnClickListener
 {
-  axki(axkd paramaxkd) {}
+  public axki(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, MessageForPic paramMessageForPic) {}
   
-  public void onResp(baqw parambaqw)
+  public void onClick(View paramView)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
-    if (parambaqw.jdField_a_of_type_Int != 0)
-    {
-      lek.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+    if (!this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded()) {
       return;
     }
-    if ((axkd.a(this.a).decrementAndGet() == 0) && (axkd.a(this.a) != null)) {
-      axkd.a(this.a).a(true);
-    }
-    lek.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.getActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

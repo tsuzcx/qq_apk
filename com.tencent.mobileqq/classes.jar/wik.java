@@ -1,47 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
 class wik
-  extends uhn
+  implements urr<vfj, vhg>
 {
-  wik(wij paramwij) {}
+  wik(wij paramwij, JobContext paramJobContext, String paramString) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void a(@NonNull vfj paramvfj, @Nullable vhg paramvhg, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramInt = 1;
-    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
       return;
     }
-    if (paramBoolean1)
+    if ((paramvhg == null) || (paramErrorMessage.isFail()))
     {
-      paramString = this.a.a;
-      if (paramBoolean2)
-      {
-        paramString.isSubscribe = paramInt;
-        paramString = (uhl)vhj.a().getManager(181);
-        if (!paramBoolean2) {
-          break label128;
-        }
-        if (!paramString.h()) {
-          paramString.b();
-        }
-        QQToast.a(vhj.a(), 2, alpo.a(2131711322), 0).a();
-      }
-      for (;;)
-      {
-        wij.a(this.a).e();
-        wij.a(this.a).c();
-        return;
-        paramInt = 0;
-        break;
-        label128:
-        QQToast.a(vhj.a(), 2, alpo.a(2131711318), 0).a();
-      }
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
+      wij.a(this.jdField_a_of_type_Wij, paramErrorMessage);
+      return;
     }
-    QQToast.a(vhj.a(), 1, alpo.a(2131711327), 0).a();
+    if (paramvhg.a != null)
+    {
+      paramvfj = paramvhg.a.iterator();
+      do
+      {
+        if (!paramvfj.hasNext()) {
+          break;
+        }
+        paramvhg = (uxd)paramvfj.next();
+      } while (!paramvhg.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    }
+    for (int i = paramvhg.c;; i = 0)
+    {
+      wij.a(this.jdField_a_of_type_Wij, Integer.valueOf(i));
+      return;
+    }
   }
 }
 

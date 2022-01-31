@@ -1,187 +1,96 @@
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.open.component.cache.database.AbstractDbCacheManager;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.HttpInterface;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfjk
-  extends AbstractDbCacheManager
+  implements bfml
 {
-  protected Cursor a;
-  protected bfjm a;
-  protected String b;
-  protected final ArrayList<WeakReference<bfjl>> b;
-  protected String c;
+  protected final WebView a;
+  protected final String a;
+  protected final boolean a;
+  protected final String b;
+  protected final String c;
   
-  protected bfjk(Context paramContext, Class<? extends bfjg> paramClass, long paramLong, String paramString)
+  public bfjk(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramContext, paramClass, paramLong, paramString);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    d();
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int a()
+  public void a(Exception paramException)
   {
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    bflp.c("HttpInterface", "onException >>> ");
+    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    bfjp localbfjp = new bfjp();
+    localbfjp.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localbfjp;
+    paramException.arg1 = 0;
+    if (TextUtils.isEmpty(this.b)) {}
+    for (localbfjp.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbfjp.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
+    {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
+      return;
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    localbfjp = new bfjp();
+    localbfjp.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localbfjp;
+    localMessage.arg1 = 0;
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidDatabaseCursor != null)
-        {
-          i = this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
-          return i;
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
         }
+        localJSONObject.put("guid", this.c);
+        paramJSONObject = localJSONObject.toString();
+        bflp.a("HttpInterface", "onResult >>> " + paramJSONObject);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          continue;
+        }
+        localbfjp.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
       }
-      finally {}
-      int i = 0;
-    }
-  }
-  
-  public bfjg a(int paramInt)
-  {
-    try
-    {
-      bfjg localbfjg = a(this.jdField_a_of_type_AndroidDatabaseCursor, paramInt);
-      return localbfjg;
-    }
-    finally {}
-  }
-  
-  protected List<bfjl> a()
-  {
-    ArrayList localArrayList1;
-    Object localObject2;
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      catch (JSONException paramJSONObject)
       {
-        if (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0) {
-          break;
+        if (!TextUtils.isEmpty(this.b)) {
+          continue;
         }
-        localArrayList1 = new ArrayList();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break label99;
-        }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference == null)
-        {
-          localWeakReference = null;
-          if (localWeakReference == null) {
-            continue;
-          }
-          localArrayList1.add(localWeakReference);
-        }
+        localbfjp.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
+        continue;
+        localbfjp.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        continue;
       }
-      localObject2 = (bfjl)localObject1.get();
-    }
-    for (;;)
-    {
-      return localObject2;
-      localObject2 = null;
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
+      return;
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("guid", this.c);
+      paramJSONObject.put("content", localJSONObject.toString());
+      paramJSONObject = paramJSONObject.toString();
       continue;
-      label99:
-      localObject2 = localArrayList1;
+      localbfjp.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidDatabaseCursor != null) {
-        this.jdField_a_of_type_AndroidDatabaseCursor.close();
-      }
-      d();
-      b();
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(SQLiteDatabase paramSQLiteDatabase, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      super.a(paramSQLiteDatabase, paramInt);
-      return;
-    }
-    a(paramSQLiteDatabase, this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public void a(bfjg parambfjg, int paramInt)
-  {
-    try
-    {
-      a(paramInt, new bfjg[] { parambfjg });
-      return;
-    }
-    finally {}
-  }
-  
-  void a(bfjm parambfjm)
-  {
-    this.jdField_a_of_type_Bfjm = parambfjm;
-  }
-  
-  public void a(bfjg[] paramArrayOfbfjg, int paramInt)
-  {
-    try
-    {
-      a(paramInt, paramArrayOfbfjg);
-      return;
-    }
-    finally {}
-  }
-  
-  public void b()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        bfjl localbfjl = (bfjl)((Iterator)localObject).next();
-        if (localbfjl != null) {
-          localbfjl.a(this);
-        }
-      }
-    }
-  }
-  
-  public void b(bfjg parambfjg, String paramString)
-  {
-    try
-    {
-      a(parambfjg, paramString);
-      return;
-    }
-    finally {}
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      a(paramString);
-      return;
-    }
-    finally {}
-  }
-  
-  protected void d()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidDatabaseCursor = a(this.jdField_b_of_type_JavaLangString, this.c);
-      return;
-    }
-    finally {}
   }
 }
 

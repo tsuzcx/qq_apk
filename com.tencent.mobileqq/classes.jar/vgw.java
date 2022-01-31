@@ -1,47 +1,53 @@
-import android.graphics.Bitmap;
-import android.support.v4.app.NotificationCompat.Builder;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tribe.async.utils.AssertUtils;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-class vgw
-  implements URLDrawable.URLDrawableListener
+public class vgw
 {
-  vgw(vgv paramvgv, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
+  @NonNull
+  public final String a;
+  @NonNull
+  public final Map<String, String> a;
+  @NonNull
+  public String b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public vgw(@NonNull qqstory_group.GroupFeed paramGroupFeed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
+    if (localIterator.hasNext())
+    {
+      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
+      String str = localVideoStoryId.story_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(str)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        AssertUtils.assertTrue(bool);
+        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
+        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+        break;
+      }
     }
-    this.jdField_a_of_type_Vgv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
-    vgv.a(this.jdField_a_of_type_Vgv).remove(paramURLDrawable);
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + vgv.a(this.jdField_a_of_type_Vgv).size());
-    }
-    Bitmap localBitmap1 = bdda.a(paramURLDrawable.getCurrDrawable(), 200, 200);
-    Bitmap localBitmap2 = ndi.b(localBitmap1, 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
-    }
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
-    this.jdField_a_of_type_Vgv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
-    localBitmap1.recycle();
-    vgv.a(this.jdField_a_of_type_Vgv).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + vgv.a(this.jdField_a_of_type_Vgv).size());
-    }
+    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

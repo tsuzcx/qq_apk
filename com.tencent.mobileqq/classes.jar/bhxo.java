@@ -1,94 +1,24 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.HongBaoListView;
 
-public class bhxo
+public abstract interface bhxo
 {
-  public static int a;
-  public static int b;
-  public static int c = 3;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b;
-  int d;
-  private int e = jdField_a_of_type_Int;
-  private int f = ThemeUtil.NIGHTMODE_MASKCOLOR;
+  public abstract void a();
   
-  static
-  {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public bhxo()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
-    this.d = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-  }
+  public abstract void a(HongBaoListView paramHongBaoListView);
   
-  public static boolean a()
-  {
-    return ("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId));
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public static boolean b()
-  {
-    return "2920".equals(ThemeUtil.curThemeId);
-  }
+  public abstract void b();
   
-  public void a(int paramInt)
-  {
-    this.e = paramInt;
-  }
+  public abstract void b(HongBaoListView paramHongBaoListView);
   
-  public void a(Canvas paramCanvas, bhxp parambhxp)
-  {
-    if ((paramCanvas == null) || (parambhxp == null)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (a()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, parambhxp.getWidth(), parambhxp.getHeight());
-      int i = this.e;
-      if (b()) {
-        i = c;
-      }
-      if (i == jdField_a_of_type_Int)
-      {
-        parambhxp.a_(paramCanvas);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      if (i == jdField_b_of_type_Int)
-      {
-        parambhxp.a_(paramCanvas);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint.getColorFilter() == null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-      paramCanvas.saveLayer(null, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-      parambhxp.a_(paramCanvas);
-      paramCanvas.restore();
-      return;
-    }
-    parambhxp.a_(paramCanvas);
-  }
+  public abstract void b(boolean paramBoolean);
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void c();
+  
+  public abstract void c(HongBaoListView paramHongBaoListView);
 }
 
 

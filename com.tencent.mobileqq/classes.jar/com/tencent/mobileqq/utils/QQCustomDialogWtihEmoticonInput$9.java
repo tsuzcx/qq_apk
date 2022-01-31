@@ -2,12 +2,12 @@ package com.tencent.mobileqq.utils;
 
 import android.view.View;
 import android.view.WindowManager;
-import bdgl;
+import bdku;
 
 public class QQCustomDialogWtihEmoticonInput$9
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$9(bdgl parambdgl, View paramView) {}
+  public QQCustomDialogWtihEmoticonInput$9(bdku parambdku, View paramView) {}
   
   public void run()
   {

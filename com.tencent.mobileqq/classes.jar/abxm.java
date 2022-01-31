@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class abxm
-  implements DialogInterface.OnClickListener
+class abxm
+  extends auei<JobSegment>
 {
-  public abxm(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  abxm(abxl paramabxl, JobSegment paramJobSegment)
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, auef paramauef)
+  {
+    if (paramBoolean)
     {
-      this.a.finish();
+      abxl.a(this.a, paramauef);
       return;
     }
-    AddFriendLogicActivity.a(this.a);
+    abxl.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

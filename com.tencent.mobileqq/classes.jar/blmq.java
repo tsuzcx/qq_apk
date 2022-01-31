@@ -1,40 +1,20 @@
 import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
 
 public class blmq
-  implements bnkw
+  implements bazz
 {
-  blmq(blmo paramblmo) {}
+  public blmq(AEEditorCommonEditFragment.8 param8) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a(bazy parambazy) {}
+  
+  public void onResp(bavf parambavf)
   {
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
+    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, parambavf), 64, null, true);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (paramPtvTemplateInfo.usable)
-    {
-      blwn.a(paramPtvTemplateInfo).b();
-      if ((!(blmo.a(this.a) instanceof blly)) || (((blly)blmo.a(this.a)).e())) {
-        break label54;
-      }
-    }
-    label54:
-    do
-    {
-      return;
-      blwn.a(paramPtvTemplateInfo).c();
-      break;
-      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
-    } while (paramBoolean);
-    bnaw.a("", "0X80075BB", "", "", "", "");
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

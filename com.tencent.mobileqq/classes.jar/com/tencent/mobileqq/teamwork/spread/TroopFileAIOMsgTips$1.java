@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aouf;
-import aoui;
-import ayvc;
-import baew;
-import bafh;
+import aoyo;
+import aoyr;
+import ayzl;
+import bajf;
+import bajq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -17,16 +17,16 @@ import java.util.List;
 public class TroopFileAIOMsgTips$1
   implements Runnable
 {
-  public TroopFileAIOMsgTips$1(bafh parambafh, baew parambaew) {}
+  public TroopFileAIOMsgTips$1(bajq parambajq, bajf parambajf) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("TroopFileAIOMsgTips", 1, "sub Thread getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
     }
-    long l1 = ayvc.a();
+    long l1 = ayzl.a();
     ArrayList localArrayList = new ArrayList();
-    int i = aoui.a().a();
+    int i = aoyr.a().a();
     List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2017 }, i);
     if ((localList == null) || (localList.size() == 0))
     {
@@ -38,7 +38,7 @@ public class TroopFileAIOMsgTips$1
     if (QLog.isColorLevel()) {
       QLog.i("TroopFileAIOMsgTips", 1, "current AIO msg count[" + localList.size() + "]");
     }
-    long l2 = aoui.a().c() * 3600;
+    long l2 = aoyr.a().c() * 3600;
     i = 0;
     if (i < localList.size())
     {
@@ -48,7 +48,7 @@ public class TroopFileAIOMsgTips$1
       {
         i += 1;
         break;
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq != ((MessageRecord)localObject).uniseq) && (new bafh(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject, this.this$0.jdField_a_of_type_Bafb).a()))
+        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq != ((MessageRecord)localObject).uniseq) && (new bajq(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject, this.this$0.jdField_a_of_type_Bajk).a()))
         {
           localObject = (MessageForTroopFile)localObject;
           if (l1 - ((MessageForTroopFile)localObject).time <= l2) {

@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONObject;
-
 public class abve
-  extends abvg
 {
-  public abve(TestAppFragment paramTestAppFragment) {}
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    super.onSuccess(paramJSONObject);
-    paramJSONObject.optString("openid", "");
-    this.a.a.a("getAppFriends", null, new abvf(this));
-  }
+  long a;
+  long b;
+  long c;
 }
 
 

@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
 
-public abstract interface aivx
+public class aivx
+  extends bewx
 {
-  public abstract void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap);
+  public aivx(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  
+  public void a()
+  {
+    super.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
+    this.a.a(alud.a(2131713715));
+    if (this.a.jdField_a_of_type_Ajfi != null) {
+      this.a.jdField_a_of_type_Ajfi.b();
+    }
+  }
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profile.view;
 
 import android.view.View;
 import android.widget.ImageView;
-import awmk;
-import azib;
+import awqt;
+import azmk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.mobileqq.data.Card;
@@ -31,10 +31,10 @@ class ProfileHeaderView$4
       }
       ((AvatarLayout)localObject2).setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 200, true, true, true, false, 3);
       localObject2 = (View)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("map_key_face_stoke");
-      if ((this.this$0.jdField_a_of_type_Awmk == null) || (this.this$0.jdField_a_of_type_Awmk.a == null)) {
+      if ((this.this$0.jdField_a_of_type_Awqt == null) || (this.this$0.jdField_a_of_type_Awqt.a == null)) {
         break label229;
       }
-      if (!this.this$0.jdField_a_of_type_Awmk.a.isNoCover()) {
+      if (!this.this$0.jdField_a_of_type_Awqt.a.isNoCover()) {
         break label179;
       }
       i = 1;
@@ -51,7 +51,7 @@ class ProfileHeaderView$4
       }
       for (;;)
       {
-        if (azib.b()) {
+        if (azmk.b()) {
           ((View)localObject2).setVisibility(4);
         }
         ProfileHeaderView.a(this.this$0, (ImageView)localObject1);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import akoq;
+import aktf;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.view.View;
 public abstract class CmGameDebugBaseFragment
   extends Fragment
 {
-  public akoq a;
+  public aktf a;
   
   public void a()
   {
@@ -17,9 +17,9 @@ public abstract class CmGameDebugBaseFragment
     }
   }
   
-  public void a(akoq paramakoq)
+  public void a(aktf paramaktf)
   {
-    this.a = paramakoq;
+    this.a = paramaktf;
   }
   
   public void onDestroy()

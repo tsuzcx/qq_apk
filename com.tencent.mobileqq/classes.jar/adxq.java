@@ -1,43 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adxq
-  implements View.OnClickListener
+  extends altm
 {
-  public adxq(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public adxq(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
-      try
-      {
-        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        switch (paramView.getId())
-        {
-        case 2131378282: 
-          TroopStoryMainActivity.a(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-          }
-          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-          wta.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
-          return;
-        }
-      }
+    if (paramBoolean1)
+    {
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+    }
+  }
+  
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131719884, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131719884, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
     }
   }
 }

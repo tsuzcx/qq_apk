@@ -1,189 +1,120 @@
-import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import com.tencent.mobileqq.vip.KCWraperV2.2;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.mobileqq.pluginsdk.IOUtil;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
-import dualsim.common.IKcActivationViewer;
-import dualsim.common.IKingCardInterface;
-import dualsim.common.OrderCheckResult;
 import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.IOException;
 import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import tmsdk.common.KcSdkShellManager;
 
 public class bdwe
-  extends bdwd
 {
-  public AtomicBoolean a = new AtomicBoolean(false);
-  
-  private void a(OrderCheckResult paramOrderCheckResult)
+  public static File a(Context paramContext)
   {
-    int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
-    {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
-      }
+    return bdwf.a(paramContext);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "GLDrawableV833.zip";
     }
-    label30:
-    label46:
-    boolean bool2;
-    do
+    return paramContext + File.separator + "GLDrawableV833.zip";
+  }
+  
+  public static void a()
+  {
+    try
     {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "GLDrawableV833", "GLDrawable");
+      }
       return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label186;
-      }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label206;
-      }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    ambd localambd = (ambd)((QQAppInterface)localObject).a(27);
-    boolean bool1;
-    label113:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
-    {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label196;
-      }
-      bool1 = true;
-      localambd.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label201;
-      }
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if (paramInt == 0) {}
     for (;;)
     {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localambd.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
-      return;
-      label186:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label196:
-      bool1 = false;
-      break label113;
-      label201:
-      i = 0;
-    }
-    label206:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
-  }
-  
-  public String a()
-  {
-    return "KC.KCWraperV2";
-  }
-  
-  void a(ViewGroup paramViewGroup)
-  {
-    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
-    if (localObject != null)
-    {
-      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
-      if (localObject != null)
-      {
-        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
-        ((IKcActivationViewer)localObject).startLoad();
-        return;
-      }
-      QLog.e("KC.TMSManager", 1, "activationViewer == null");
-    }
-    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
-  }
-  
-  public void a(bdwn parambdwn, boolean paramBoolean)
-  {
-    ThreadManager.post(new KCWraperV2.2(this, parambdwn, paramBoolean), 5, null, false);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("load jar");
-    if (this.a.get()) {
-      return;
-    }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    File localFile = new File(bdwm.a().a(localContext));
-    if (!localFile.exists())
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      a(false);
-      return;
-    }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
-  }
-  
-  boolean a()
-  {
-    if (this.a.get()) {
-      return true;
-    }
-    if (!new File(bdwm.a().a(BaseApplicationImpl.getApplication())).exists()) {
-      return false;
-    }
-    synchronized (this.a)
-    {
+      File localFile1;
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait load");
-        }
-        this.a.wait(500L);
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait end");
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        localFile1 = a(paramContext);
+        paramContext = a(paramContext);
+        try
         {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+          String str1 = localFile1.getAbsolutePath() + "_temp";
+          File localFile2 = new File(str1);
+          if (localFile2.exists()) {
+            bdhb.a(str1, false);
+          }
+          bdhb.a(paramContext, str1, false);
+          if (localFile1.exists()) {
+            bdhb.a(localFile1.getAbsolutePath(), false);
+          }
+          int j = 1;
+          boolean bool = true;
+          String[] arrayOfString = localFile2.list();
+          if (arrayOfString != null)
+          {
+            int i = arrayOfString.length;
+            paramInt = 0;
+            j = bool;
+            if (paramInt < i)
+            {
+              String str2 = arrayOfString[paramInt];
+              if (!str2.startsWith("crc_")) {
+                break label453;
+              }
+              File localFile3 = new File(localFile2, "gldrawable.dex");
+              File localFile4 = new File(localFile2, "jni/armeabi-v7a/libgldrawable.so");
+              File localFile5 = new File(localFile2, "jni/arm64-v8a/libgldrawable.so");
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("crc_");
+              localStringBuilder.append(Long.toHexString(IOUtil.getCRC32Value(localFile3))).append("_");
+              localStringBuilder.append(Long.toHexString(IOUtil.getCRC32Value(localFile4))).append("_");
+              localStringBuilder.append(Long.toHexString(IOUtil.getCRC32Value(localFile5)));
+              bool = str2.toLowerCase().equals(localStringBuilder.toString().toLowerCase());
+              break label453;
+            }
+          }
+          if (j == 0) {
+            continue;
+          }
+          bdhb.c(str1, localFile1.getAbsolutePath());
+          QLog.d("GLDrawable", 1, "unzip succ..." + new File(paramContext).length() + "..." + bflr.a(paramContext));
         }
+        catch (IOException localIOException)
+        {
+          bdwh.a("unzip", localIOException.getMessage());
+          QLog.e("GLDrawable", 1, new Object[] { "unzip error, libDir=" + localFile1, " zipPath=" + paramContext, localIOException });
+          continue;
+        }
+        return;
       }
-      return this.a.get();
+      finally {}
+      bdwh.a("unzip", "unzip crc not valid.");
+      continue;
+      QLog.e("GLDrawable", 1, "error: " + paramInt);
+      continue;
+      label453:
+      paramInt += 1;
     }
   }
   
-  boolean a(Activity paramActivity)
+  public static boolean a(Context paramContext)
   {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-    return true;
-  }
-  
-  boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
-    }
-    return true;
+    return new File(a(paramContext)).exists();
   }
 }
 

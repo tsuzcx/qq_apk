@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import bhxr;
+import biby;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import pdz;
@@ -94,10 +94,10 @@ public class ZImageView
   
   public ZImageView a(URL paramURL)
   {
-    bhxr.a("ZImageView.setImage");
+    biby.a("ZImageView.setImage");
     if (paramURL == null)
     {
-      bhxr.a();
+      biby.a();
       return this;
     }
     if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.getPath().equals(paramURL.getPath()))) {
@@ -109,18 +109,18 @@ public class ZImageView
     }
     if (getWidth() > 0)
     {
-      bhxr.a("ZImageView.newImageRequest");
+      biby.a("ZImageView.newImageRequest");
       sfg localsfg = new sfg();
       localsfg.jdField_a_of_type_JavaNetURL = paramURL;
       localsfg.jdField_a_of_type_Int = getWidth();
       localsfg.b = getHeight();
       pdz.a(1, localsfg);
       this.jdField_a_of_type_Sfd.a(localsfg);
-      bhxr.a();
+      biby.a();
     }
     for (;;)
     {
-      bhxr.a();
+      biby.a();
       return this;
       this.jdField_a_of_type_JavaNetURL = paramURL;
     }

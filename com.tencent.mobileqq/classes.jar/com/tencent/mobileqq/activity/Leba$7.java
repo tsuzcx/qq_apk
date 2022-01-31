@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aywz;
-import azmj;
+import azbi;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$7
@@ -11,9 +11,9 @@ class Leba$7
   
   public void run()
   {
-    aywz localaywz = (aywz)this.this$0.a.getManager(12);
-    if ((localaywz != null) && ((localaywz.a(601L)) || ((this.a > 0L) && (localaywz.a(this.a))))) {
-      azmj.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
+    azbi localazbi = (azbi)this.this$0.a.getManager(12);
+    if ((localazbi != null) && ((localazbi.a(601L)) || ((this.a > 0L) && (localazbi.a(this.a))))) {
+      azqs.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
     }
   }
 }

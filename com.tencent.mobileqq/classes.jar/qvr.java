@@ -1,5 +1,5 @@
 class qvr
-  implements bhrf
+  implements bhvm
 {
   qvr(qvp paramqvp) {}
   

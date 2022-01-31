@@ -1,37 +1,83 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
+
 public class amri
-  extends amqw
+  extends BaseAdapter
 {
-  public amuo a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public amri(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, amuo paramamuo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public amri(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Amuo = paramamuo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
   }
   
-  public String toString()
+  public View a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Amuo).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    return getView(paramInt, null, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
+    {
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
+    {
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
+      }
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject).setTextSize(18.0F);
+      ((WheelTextView)localObject).setTextColor(-7829368);
+      ((WheelTextView)localObject).setGravity(5);
+      ((WheelTextView)localObject).setVisibility(0);
+      ((WheelTextView)localObject).setText(paramView);
+      return paramViewGroup;
+      paramViewGroup = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amri
  * JD-Core Version:    0.7.0.1
  */

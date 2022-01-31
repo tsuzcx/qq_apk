@@ -5,14 +5,14 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
-import bkkj;
-import bkwm;
-import bler;
-import blfo;
-import blfp;
-import blfq;
-import blfr;
-import bljh;
+import bkoq;
+import blat;
+import bliy;
+import bljv;
+import bljw;
+import bljx;
+import bljy;
+import blnt;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
 import com.tencent.tavcut.TAVCut;
@@ -32,19 +32,19 @@ public class AEEditorActivity
   extends PeakFragmentActivity
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorActivity.class.getSimpleName();
-  private blfr jdField_a_of_type_Blfr;
-  private List<blfp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private bljy jdField_a_of_type_Bljy;
+  private List<bljw> jdField_a_of_type_JavaUtilList = new ArrayList();
   private List<String> b = new ArrayList();
   private List<String> c = new ArrayList();
   
   private void a()
   {
-    if (!bkkj.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(new blfp(this, -1));
+    if (!bkoq.a()) {
+      this.jdField_a_of_type_JavaUtilList.add(new bljw(this, -1));
     }
     for (;;)
     {
-      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new blfo(this));
+      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bljv(this));
       return;
       a(FeatureManager.Features.YT_COMMON.init(), -2);
       a(FeatureManager.Features.PTU_TOOLS.init(), -3);
@@ -58,7 +58,7 @@ public class AEEditorActivity
   private void a(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.add(new blfp(this, paramInt));
+      this.jdField_a_of_type_JavaUtilList.add(new bljw(this, paramInt));
     }
   }
   
@@ -73,8 +73,8 @@ public class AEEditorActivity
     if (getIntent().getExtras() != null) {
       localBundle = getIntent().getExtras();
     }
-    this.jdField_a_of_type_Blfr = new blfr(getSupportFragmentManager());
-    this.jdField_a_of_type_Blfr.a(localBundle);
+    this.jdField_a_of_type_Bljy = new bljy(getSupportFragmentManager());
+    this.jdField_a_of_type_Bljy.a(localBundle);
   }
   
   private void d()
@@ -82,35 +82,35 @@ public class AEEditorActivity
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("editorType", -1);
     int j = localIntent.getIntExtra("editorFrom", -1);
-    if (j == bkwm.x.a()) {
+    if ((j == blat.x.a()) || (j == blat.z.a())) {
       if (i == 0) {
-        bler.a().a().b = bler.b.longValue();
+        bliy.a().a().b = bliy.b.longValue();
       }
     }
     for (;;)
     {
-      bler.a().a().jdField_a_of_type_JavaLangString = bler.a().a();
+      bliy.a().a().jdField_a_of_type_JavaLangString = bliy.a().a();
       return;
       if (i == 1)
       {
-        bler.a().a().b = bler.c.longValue();
+        bliy.a().a().b = bliy.c.longValue();
       }
       else
       {
-        bler.a().a().b = bler.a.longValue();
+        bliy.a().a().b = bliy.a.longValue();
         continue;
-        if (j == bkwm.y.a())
+        if ((j == blat.y.a()) || (j == blat.A.a()))
         {
           if (i == 0) {
-            bler.a().a().b = bler.d.longValue();
+            bliy.a().a().b = bliy.d.longValue();
           } else if (i == 1) {
-            bler.a().a().b = bler.e.longValue();
+            bliy.a().a().b = bliy.e.longValue();
           } else {
-            bler.a().a().b = bler.a.longValue();
+            bliy.a().a().b = bliy.a.longValue();
           }
         }
         else {
-          bler.a().a().b = bler.a.longValue();
+          bliy.a().a().b = bliy.a.longValue();
         }
       }
     }
@@ -118,8 +118,8 @@ public class AEEditorActivity
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Blfr != null) {
-      this.jdField_a_of_type_Blfr.a(this, true);
+    if (this.jdField_a_of_type_Bljy != null) {
+      this.jdField_a_of_type_Bljy.a(this, true);
     }
   }
   
@@ -127,7 +127,7 @@ public class AEEditorActivity
   {
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
-    if (blfq.a(getIntent())) {
+    if (bljx.a(getIntent())) {
       setImmersiveStatus(getResources().getColor(2131165219));
     }
     for (;;)
@@ -136,7 +136,7 @@ public class AEEditorActivity
       setContentView(2131558522);
       if (Build.VERSION.SDK_INT >= 19)
       {
-        paramBundle = (RelativeLayout)findViewById(2131375981);
+        paramBundle = (RelativeLayout)findViewById(2131376034);
         int i = getStatusBarHeight();
         paramBundle.setPadding(paramBundle.getPaddingLeft(), i + paramBundle.getPaddingTop(), paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
       }
@@ -145,7 +145,7 @@ public class AEEditorActivity
       }
       a();
       b();
-      bljh.a().a();
+      blnt.a().a();
       c();
       d();
       return true;

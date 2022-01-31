@@ -1,81 +1,69 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.List;
 
-class aktd
-  implements absf
+public class aktd
+  extends RecyclerView.Adapter<akte>
 {
-  aktd(akta paramakta, CmGameInitParams paramCmGameInitParams, long paramLong) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private List<aktc> jdField_a_of_type_JavaUtilList;
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public aktd(Context paramContext, List<aktc> paramList)
   {
-    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
-    try
-    {
-      paramString = akro.a();
-      if (paramString != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("type", "failure");
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
-      }
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public akte a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 1)) {
+      return new akte(this, this.jdField_a_of_type_AndroidViewView);
     }
-    catch (Throwable paramString)
+    return new akte(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558831, paramViewGroup, false));
+  }
+  
+  public void a(akte paramakte, int paramInt)
+  {
+    if (getItemViewType(paramInt) == 0)
     {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramString, new Object[0]);
+      aktc localaktc = (aktc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramakte.a.setText(localaktc.jdField_a_of_type_JavaLangString);
+      paramakte.a.setTextColor(Color.parseColor(akst.c[localaktc.jdField_a_of_type_Int]));
     }
   }
   
-  public void onPermission(int paramInt)
+  public void a(View paramView)
   {
-    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onPermission], code:" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
-    }
-    try
-    {
-      ApolloCmdChannel localApolloCmdChannel = akro.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("type", "unauthorized");
-        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, localThrowable, new Object[0]);
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyItemInserted(getItemCount() - 1);
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void a(List<aktc> paramList)
   {
-    try
-    {
-      ApolloCmdChannel localApolloCmdChannel = akro.a();
-      if (localApolloCmdChannel != null)
-      {
-        paramJSONObject.put("ret", 0);
-        paramJSONObject.put("type", "success");
-        akta.a(this.jdField_a_of_type_Akta, paramJSONObject.optString("access_token"));
-        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", paramJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == getItemCount() - 1)) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

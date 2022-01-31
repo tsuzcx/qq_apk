@@ -1,18 +1,8 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.os.Bundle;
 
-public class yrb
-  implements AdapterView.OnItemClickListener
+public abstract interface yrb
 {
-  public yrb(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.a.onTabSelected(0, paramInt);
-    paramView.setSelected(true);
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 

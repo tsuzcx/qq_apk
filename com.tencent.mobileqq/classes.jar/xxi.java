@@ -1,23 +1,41 @@
-class xxi
-  implements yhz
+import android.view.MotionEvent;
+import android.view.View;
+
+public class xxi
+  implements xxg
 {
-  xxi(xxh paramxxh, String paramString1, String paramString2) {}
+  protected final xxk a;
+  protected final xxm a;
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public xxi(xxm paramxxm)
   {
-    if (!paramBoolean2)
+    this.jdField_a_of_type_Xxk = new xxk();
+    this.jdField_a_of_type_Xxm = paramxxm;
+  }
+  
+  public void a(xxg paramxxg) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    View localView = this.jdField_a_of_type_Xxm.a();
+    xxh localxxh = this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxh;
+    if (!localxxh.a(localView, this.jdField_a_of_type_Xxk, paramMotionEvent)) {}
+    xxl localxxl;
+    do
     {
-      this.jdField_a_of_type_Xxh.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (xxh.a(this.jdField_a_of_type_Xxh) == null)
-      {
-        xxh.a(this.jdField_a_of_type_Xxh, ymk.a());
-        xxh.a(this.jdField_a_of_type_Xxh).a();
-      }
-      xxh.a(this.jdField_a_of_type_Xxh).i(paramString, this.b);
-      yvu.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
-      return;
-    }
-    yvu.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
+      return false;
+      localxxl = this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxl;
+    } while (((!localxxh.a(localView)) || (!this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean)) && ((!localxxh.b(localView)) || (this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean)));
+    localxxl.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+    localxxl.jdField_a_of_type_Float = this.jdField_a_of_type_Xxk.jdField_a_of_type_Float;
+    localxxl.jdField_a_of_type_Boolean = this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Xxm.a(this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxn);
+    return this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxn.a(paramMotionEvent);
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

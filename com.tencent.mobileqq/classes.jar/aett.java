@@ -1,33 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aett
-  implements Animation.AnimationListener
 {
-  public aett(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
 }
 
 

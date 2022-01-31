@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import java.util.Comparator;
 
 public class bakv
-  implements OnCompositionLoadedListener
+  implements Comparator<PadInfo>
 {
-  public bakv(QEffectLottieImageView paramQEffectLottieImageView) {}
+  public bakv(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
+    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
+    if (l > 0L) {
+      return 1;
     }
-    if (paramLottieComposition == null) {
-      return;
+    if (l < 0L) {
+      return -1;
     }
-    if (QEffectLottieImageView.a(this.a))
-    {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
-    }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    return 0;
   }
 }
 

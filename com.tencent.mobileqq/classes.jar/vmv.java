@@ -1,28 +1,15 @@
-class vmv
-  implements wft
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import java.util.Comparator;
+
+public class vmv
+  implements Comparator<QQUserUIItem>
 {
-  vmv(vmu paramvmu) {}
+  public vmv(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(int paramInt)
+  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
   {
-    if ((paramInt == 1) && (vmu.a(this.a) != null) && (vmu.a(this.a).a != null))
-    {
-      if (vmu.a(this.a).a()) {
-        break label66;
-      }
-      if (vmu.a(this.a).a(true)) {
-        vmu.a(this.a).c();
-      }
-    }
-    label66:
-    do
-    {
-      return;
-      if (vmu.a(this.a).a(false)) {
-        vmu.b(this.a).c();
-      }
-    } while (!vmu.a(this.a).a(true));
-    vmu.a(this.a).c();
+    return alqj.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
   }
 }
 

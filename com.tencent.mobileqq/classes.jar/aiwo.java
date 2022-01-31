@@ -1,23 +1,17 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class aiwo
-  implements alln
+public class aiwo
+  extends BroadcastReceiver
 {
-  aiwo(aiwk paramaiwk, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, allj paramallj) {}
+  public aiwo(SendHbActivity paramSendHbActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Allj.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
   }
 }

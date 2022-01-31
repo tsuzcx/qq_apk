@@ -20,7 +20,7 @@ public class otg
       QLog.d("DefaultFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "default_feeds"))
       {
-        bjxj.a("default_feeds_proteus_offline_bid", str2);
+        bkbq.a("default_feeds_proteus_offline_bid", str2);
         new sft().a("default_feeds");
       }
     }
@@ -30,7 +30,7 @@ public class otg
   public void onWipeConfig(int paramInt)
   {
     QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onWipeConfig]");
-    bjxj.a("default_feeds_proteus_offline_bid", "0");
+    bkbq.a("default_feeds_proteus_offline_bid", "0");
   }
 }
 

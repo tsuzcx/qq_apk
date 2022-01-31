@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acso;
-import acsp;
-import acsq;
-import acsr;
-import acss;
-import acst;
-import acsu;
-import adsc;
-import aekt;
-import ajvi;
-import akel;
-import akeo;
-import akep;
-import aloz;
-import alpo;
+import acxd;
+import acxe;
+import acxf;
+import acxg;
+import acxh;
+import acxi;
+import acxj;
+import adwr;
+import aepi;
+import ajzx;
+import akja;
+import akjd;
+import akje;
+import alto;
+import alud;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
@@ -36,15 +36,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aruc;
-import arum;
-import aylz;
-import ayrd;
-import bcws;
-import bcxb;
-import bdcd;
-import bdhc;
-import bhvo;
+import aryl;
+import aryv;
+import ayqi;
+import ayvm;
+import bdbb;
+import bdbk;
+import bdgm;
+import bdll;
+import bhzv;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
@@ -66,17 +66,17 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import zcc;
+import zgr;
 
 public class ForwardFriendListActivity
   extends BaseForwardSelectionActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private adsc jdField_a_of_type_Adsc = new acsr(this);
-  private akel jdField_a_of_type_Akel;
-  private akeo jdField_a_of_type_Akeo = new acst(this);
-  private aloz jdField_a_of_type_Aloz;
+  private adwr jdField_a_of_type_Adwr = new acxg(this);
+  private akja jdField_a_of_type_Akja;
+  private akjd jdField_a_of_type_Akjd = new acxi(this);
+  private alto jdField_a_of_type_Alto;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private View jdField_a_of_type_AndroidViewView;
@@ -86,13 +86,13 @@ public class ForwardFriendListActivity
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aylz jdField_a_of_type_Aylz = new acss(this);
-  private bcws jdField_a_of_type_Bcws;
+  private ayqi jdField_a_of_type_Ayqi = new acxh(this);
+  private bdbb jdField_a_of_type_Bdbb;
   private SelectedAndSearchBar jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar;
   private ContactSearchFragment jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment;
   private PinnedHeaderExpandableListView jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView;
   private Map<String, ResultRecord> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-  private zcc jdField_a_of_type_Zcc;
+  private zgr jdField_a_of_type_Zgr;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -107,9 +107,9 @@ public class ForwardFriendListActivity
   private void a()
   {
     c();
-    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131366913));
+    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131366923));
     Object localObject = LayoutInflater.from(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375671));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375722));
     h();
     if (this.jdField_c_of_type_Boolean) {
       g();
@@ -120,15 +120,15 @@ public class ForwardFriendListActivity
         b();
       }
       return;
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131562564, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131363520).setVisibility(8);
-      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365849);
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131562582, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131363522).setVisibility(8);
+      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365851);
       ((EditText)localObject).setFocusable(false);
       ((EditText)localObject).setOnClickListener(this);
       ((EditText)localObject).setCursorVisible(false);
       this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
       localObject = new View(this);
-      ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, aekt.a(12.0F, getResources())));
+      ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(12.0F, getResources())));
       this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.addHeaderView((View)localObject);
     }
   }
@@ -155,10 +155,10 @@ public class ForwardFriendListActivity
   
   private void a(View paramView)
   {
-    Object localObject = (akep)paramView.getTag();
+    Object localObject = (akje)paramView.getTag();
     if (localObject != null)
     {
-      localObject = ((akep)localObject).a;
+      localObject = ((akje)localObject).a;
       if ((localObject != null) && ((localObject instanceof Friends)))
       {
         localObject = (Friends)localObject;
@@ -168,10 +168,10 @@ public class ForwardFriendListActivity
         if (this.jdField_b_of_type_Int != 2) {
           break label197;
         }
-        if (this.jdField_a_of_type_Aloz.a(((Friends)localObject).uin) == null) {
+        if (this.jdField_a_of_type_Alto.a(((Friends)localObject).uin) == null) {
           break label121;
         }
-        QQToast.a(this, getString(2131699850), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131699862), 0).b(getTitleBarHeight());
       }
     }
     return;
@@ -196,7 +196,7 @@ public class ForwardFriendListActivity
     finish();
     return;
     label264:
-    paramView = (TextView)paramView.findViewById(2131377553);
+    paramView = (TextView)paramView.findViewById(2131377607);
     if (paramView != null) {
       if (paramView.getText() != null) {
         paramView = paramView.getText().toString();
@@ -209,7 +209,7 @@ public class ForwardFriendListActivity
       localBundle.putInt("uintype", 0);
       localBundle.putString("uinname", paramView);
       localBundle.putString("uinname", paramView);
-      localBundle.putInt("chooseFriendFrom", bdhc.b.intValue());
+      localBundle.putInt("chooseFriendFrom", bdll.b.intValue());
       if (getIntent() != null) {}
       for (boolean bool = getIntent().getBooleanExtra("choose_friend_needConfirm", false);; bool = false)
       {
@@ -221,7 +221,7 @@ public class ForwardFriendListActivity
           localBundle.putString("choose_friend_confirmTitle", paramView);
           localBundle.putString("choose_friend_confirmContent", (String)localObject);
         }
-        this.jdField_a_of_type_Arum.a(aruc.b.intValue(), localBundle);
+        this.jdField_a_of_type_Aryv.a(aryl.b.intValue(), localBundle);
         return;
         paramView = null;
         break;
@@ -294,16 +294,16 @@ public class ForwardFriendListActivity
     {
       String str1 = this.app.getAccount();
       String str2 = this.app.getCurrentNickname();
-      View localView = LayoutInflater.from(getActivity()).inflate(2131562528, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
-      ImageView localImageView = (ImageView)localView.findViewById(2131367808);
-      TextView localTextView = (TextView)localView.findViewById(2131377553);
+      View localView = LayoutInflater.from(getActivity()).inflate(2131562546, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
+      ImageView localImageView = (ImageView)localView.findViewById(2131367819);
+      TextView localTextView = (TextView)localView.findViewById(2131377607);
       if (localImageView != null) {
-        localImageView.setBackgroundDrawable(bcxb.a(this.app, 3, str1));
+        localImageView.setBackgroundDrawable(bdbk.a(this.app, 3, str1));
       }
       if (localTextView != null) {
         localTextView.setText(str2);
       }
-      localView.setOnClickListener(new acso(this));
+      localView.setOnClickListener(new acxd(this));
       if (this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView != null) {
         this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.addHeaderView(localView);
       }
@@ -318,15 +318,15 @@ public class ForwardFriendListActivity
   @TargetApi(14)
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375981));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
     if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.mNeedStatusTrans))
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375934));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368659));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131705138));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375987));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368670));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131705150));
     if (getIntent() != null)
     {
       String str = getIntent().getStringExtra("isForConfessDirectFriendsTitle");
@@ -334,43 +334,43 @@ public class ForwardFriendListActivity
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
     if (this.jdField_b_of_type_Int == 2)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368615));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368626));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.d = ((TextView)findViewById(2131368644));
+      this.d = ((TextView)findViewById(2131368655));
       if (this.jdField_a_of_type_Int != 6) {
         break label429;
       }
       this.d.setVisibility(0);
-      this.d.setText(alpo.a(2131705137));
-      this.d.setContentDescription(alpo.a(2131705139));
+      this.d.setText(alud.a(2131705149));
+      this.d.setContentDescription(alud.a(2131705151));
       this.d.setOnClickListener(this);
     }
     for (;;)
     {
-      this.d.setMaxWidth(aekt.a(260.0F, getResources()));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368627));
+      this.d.setMaxWidth(aepi.a(260.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368638));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
       IphoneTitleBarActivity.setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
       if (AppSetting.jdField_c_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(alpo.a(2131705127));
+        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131705139));
       }
       return;
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if (getIntent().getIntExtra("forward_type", 2147483647) == 23)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131705140));
-        this.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(aekt.a(120.0F, getResources()));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131705152));
+        this.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(aepi.a(120.0F, getResources()));
         break;
       }
       if (this.jdField_a_of_type_Int == 4)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131705130));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131705142));
         this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(0);
         break;
       }
@@ -381,7 +381,7 @@ public class ForwardFriendListActivity
       {
         this.d.setVisibility(0);
         this.d.setText(2131690648);
-        this.d.setContentDescription(alpo.a(2131705136));
+        this.d.setContentDescription(alud.a(2131705148));
         this.d.setOnClickListener(this);
       }
     }
@@ -408,7 +408,7 @@ public class ForwardFriendListActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Akel.notifyDataSetChanged();
+      this.jdField_a_of_type_Akja.notifyDataSetChanged();
       return;
       a(paramView);
     }
@@ -416,13 +416,13 @@ public class ForwardFriendListActivity
   
   private void e()
   {
-    if (this.jdField_a_of_type_Zcc == null) {
-      this.jdField_a_of_type_Zcc = zcc.a(this, alpo.a(2131705128), "", 2131690648, 2131694951, new acsp(this), new acsq(this));
+    if (this.jdField_a_of_type_Zgr == null) {
+      this.jdField_a_of_type_Zgr = zgr.a(this, alud.a(2131705140), "", 2131690648, 2131694953, new acxe(this), new acxf(this));
     }
-    if (!this.jdField_a_of_type_Zcc.isShowing())
+    if (!this.jdField_a_of_type_Zgr.isShowing())
     {
-      this.jdField_a_of_type_Zcc.show();
-      b(this.jdField_a_of_type_Zcc.getEditText());
+      this.jdField_a_of_type_Zgr.show();
+      b(this.jdField_a_of_type_Zgr.getEditText());
     }
   }
   
@@ -430,7 +430,7 @@ public class ForwardFriendListActivity
   {
     if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
     {
-      this.d.setText(alpo.a(2131705141));
+      this.d.setText(alud.a(2131705153));
       this.d.setClickable(false);
       this.d.setTextColor(855836698);
     }
@@ -440,9 +440,9 @@ public class ForwardFriendListActivity
         this.d.setContentDescription(this.d.getText());
       }
       return;
-      this.d.setText(String.format(alpo.a(2131705134), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilMap.size()) }));
+      this.d.setText(String.format(alud.a(2131705146), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilMap.size()) }));
       this.d.setClickable(true);
-      this.d.setTextColor(getResources().getColor(2131166908));
+      this.d.setTextColor(getResources().getColor(2131166910));
     }
   }
   
@@ -451,17 +451,17 @@ public class ForwardFriendListActivity
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_Bcws = new bcws(this.app);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(null, this.jdField_a_of_type_Bcws, this.jdField_a_of_type_Adsc);
+    this.jdField_a_of_type_Bdbb = new bdbb(this.app);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(null, this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_Adwr);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
-    localLayoutParams.height = aekt.a(29.0F, getResources());
-    localLayoutParams.rightMargin = aekt.a(10.0F, getResources());
+    localLayoutParams.height = aepi.a(29.0F, getResources());
+    localLayoutParams.rightMargin = aepi.a(10.0F, getResources());
     if (Build.VERSION.SDK_INT <= 18) {
-      localLayoutParams.width = aekt.a(75.0F, getResources());
+      localLayoutParams.width = aepi.a(75.0F, getResources());
     }
     this.d.setLayoutParams(localLayoutParams);
-    this.d.setPadding(aekt.a(7.0F, getResources()), 0, aekt.a(7.0F, getResources()), 0);
-    this.d.setBackgroundResource(2130844732);
+    this.d.setPadding(aepi.a(7.0F, getResources()), 0, aepi.a(7.0F, getResources()), 0);
+    this.d.setBackgroundResource(2130844804);
     this.d.setTextSize(1, 14.0F);
     this.d.setVisibility(0);
     this.d.setOnClickListener(this);
@@ -474,7 +474,7 @@ public class ForwardFriendListActivity
   private void h()
   {
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getSystemService("input_method"));
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar = ((SelectedAndSearchBar)super.findViewById(2131376315));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar = ((SelectedAndSearchBar)super.findViewById(2131376369));
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.setVisibility(8);
   }
   
@@ -489,7 +489,7 @@ public class ForwardFriendListActivity
   private void j()
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null) {
-      this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, getString(2131699374), 0, 2131695095, null, new acsu(this));
+      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getString(2131699386), 0, 2131695097, null, new acxj(this));
     }
     if (!isFinishing()) {
       this.jdField_a_of_type_AndroidAppDialog.show();
@@ -498,7 +498,7 @@ public class ForwardFriendListActivity
   
   private void k()
   {
-    if (this.jdField_a_of_type_Arum == null) {
+    if (this.jdField_a_of_type_Aryv == null) {
       if (QLog.isColorLevel()) {
         QLog.i("ForwardFriendListActivity", 2, "forwardOption is null, return.");
       }
@@ -513,46 +513,46 @@ public class ForwardFriendListActivity
     QLog.i("ForwardFriendListActivity", 2, "forward2MultiTargets map is empty !");
     return;
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilMap.values());
-    Collections.sort(localArrayList, new ajvi());
+    Collections.sort(localArrayList, new ajzx());
     Bundle localBundle = new Bundle();
     localBundle.putParcelableArrayList("forward_multi_target", localArrayList);
-    this.jdField_a_of_type_Arum.a(aruc.a.intValue(), localBundle);
-    this.jdField_a_of_type_Arum.f();
+    this.jdField_a_of_type_Aryv.a(aryl.a.intValue(), localBundle);
+    this.jdField_a_of_type_Aryv.f();
   }
   
   protected boolean a()
   {
-    if (this.jdField_a_of_type_Aloz == null) {
-      this.jdField_a_of_type_Aloz = ((aloz)this.app.getManager(51));
+    if (this.jdField_a_of_type_Alto == null) {
+      this.jdField_a_of_type_Alto = ((alto)this.app.getManager(51));
     }
-    if (!this.jdField_a_of_type_Aloz.c()) {
+    if (!this.jdField_a_of_type_Alto.c()) {
       return false;
     }
-    ArrayList localArrayList1 = this.jdField_a_of_type_Aloz.e();
+    ArrayList localArrayList1 = this.jdField_a_of_type_Alto.e();
     ArrayList localArrayList2 = new ArrayList();
     Groups localGroups = new Groups();
     if ((localArrayList1 != null) && (localArrayList1.size() > 0))
     {
-      akel.a(1003);
-      localGroups.group_id = akel.b();
-      localGroups.group_name = alpo.a(2131705133);
+      akja.a(1003);
+      localGroups.group_id = akja.b();
+      localGroups.group_name = alud.a(2131705145);
       localArrayList2.add(0, localGroups);
       localArrayList2.addAll(localArrayList1);
-      if (this.jdField_a_of_type_Akel != null) {
+      if (this.jdField_a_of_type_Akja != null) {
         break label183;
       }
-      this.jdField_a_of_type_Akel = new akel(this, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, this.app, localArrayList2, this.jdField_a_of_type_Akeo, this.jdField_c_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Akel);
+      this.jdField_a_of_type_Akja = new akja(this, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, this.app, localArrayList2, this.jdField_a_of_type_Akjd, this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Akja);
       this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.a(0);
     }
     for (;;)
     {
       return true;
-      akel.a(0);
-      localGroups.group_id = akel.b();
+      akja.a(0);
+      localGroups.group_id = akja.b();
       break;
       label183:
-      this.jdField_a_of_type_Akel.a(localArrayList2, true);
+      this.jdField_a_of_type_Akja.a(localArrayList2, true);
     }
   }
   
@@ -583,7 +583,7 @@ public class ForwardFriendListActivity
             paramIntent.putExtra("choose_friend_confirmTitle", (String)localObject);
             paramIntent.putExtra("choose_friend_confirmContent", str);
           }
-          ayrd.a(paramIntent, this.jdField_a_of_type_Arum);
+          ayvm.a(paramIntent, this.jdField_a_of_type_Aryv);
           return;
         } while (paramIntent == null);
         paramIntent = paramIntent.getStringExtra("contactSearchResultUin");
@@ -618,7 +618,7 @@ public class ForwardFriendListActivity
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_choose_friend", 0);
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    super.setContentView(2131559109);
+    super.setContentView(2131559108);
     if (!getIntent().getBooleanExtra("only_single_selection", true)) {
       bool = true;
     }
@@ -631,16 +631,16 @@ public class ForwardFriendListActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Akel != null)
+    if (this.jdField_a_of_type_Akja != null)
     {
-      this.jdField_a_of_type_Akel.b();
-      this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setAdapter((bhvo)null);
+      this.jdField_a_of_type_Akja.b();
+      this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setAdapter((bhzv)null);
     }
-    if (this.jdField_a_of_type_Zcc != null) {
-      this.jdField_a_of_type_Zcc.dismiss();
+    if (this.jdField_a_of_type_Zgr != null) {
+      this.jdField_a_of_type_Zgr.dismiss();
     }
-    if (this.jdField_a_of_type_Bcws != null) {
-      this.jdField_a_of_type_Bcws.d();
+    if (this.jdField_a_of_type_Bdbb != null) {
+      this.jdField_a_of_type_Bdbb.d();
     }
   }
   
@@ -679,7 +679,7 @@ public class ForwardFriendListActivity
     {
     default: 
       return;
-    case 2131365849: 
+    case 2131365851: 
       if (this.jdField_a_of_type_Int == 1)
       {
         a(11);
@@ -697,7 +697,7 @@ public class ForwardFriendListActivity
       }
       a(6);
       return;
-    case 2131368613: 
+    case 2131368624: 
       if (this.jdField_c_of_type_Boolean)
       {
         paramView = new Intent();
@@ -717,9 +717,9 @@ public class ForwardFriendListActivity
       k();
       return;
     }
-    if (this.jdField_a_of_type_Arum != null)
+    if (this.jdField_a_of_type_Aryv != null)
     {
-      this.jdField_a_of_type_Arum.a(false);
+      this.jdField_a_of_type_Aryv.a(false);
       com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
     }
     setResult(1);

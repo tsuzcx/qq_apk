@@ -1,14 +1,19 @@
-import android.view.View;
-
-public abstract interface awsa
+public class awsa
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, float paramFloat);
-  
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(View paramView);
+  public static Integer a = Integer.valueOf(1);
+  public static Integer b = Integer.valueOf(2);
+  public static Integer c = Integer.valueOf(3);
+  public static Integer d = Integer.valueOf(4);
+  public Long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public Integer e = Integer.valueOf(0);
+  public Integer f = Integer.valueOf(0);
+  public Integer g = a;
 }
 
 

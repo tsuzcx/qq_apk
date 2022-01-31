@@ -1,12 +1,21 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+
 public class auar
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
+  public auar(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    azqs.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
+    paramView = new Intent();
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, MatchChatSettingFragment.class);
+  }
 }
 
 

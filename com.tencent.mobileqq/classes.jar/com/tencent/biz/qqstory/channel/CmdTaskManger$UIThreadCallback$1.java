@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.channel;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import unf;
-import unj;
-import unk;
+import uro;
+import urs;
+import urt;
 
 public class CmdTaskManger$UIThreadCallback$1
   implements Runnable
 {
-  public CmdTaskManger$UIThreadCallback$1(unj paramunj, unk paramunk, unf paramunf, ErrorMessage paramErrorMessage) {}
+  public CmdTaskManger$UIThreadCallback$1(urs paramurs, urt paramurt, uro paramuro, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Unk, this.jdField_a_of_type_Unf, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.this$0.b(this.jdField_a_of_type_Urt, this.jdField_a_of_type_Uro, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

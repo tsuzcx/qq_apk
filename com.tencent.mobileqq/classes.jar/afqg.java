@@ -1,11 +1,23 @@
-import android.widget.TextView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afqg
-  extends aelt
+  extends afuf
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  afqg(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  afqg(afqf paramafqf) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agca(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 

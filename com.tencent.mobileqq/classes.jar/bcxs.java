@@ -1,10 +1,21 @@
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface bcxs
+class bcxs
+  implements bcxv
 {
-  public abstract void a(int paramInt, List<bcxt> paramList);
+  bcxs(bcxl parambcxl) {}
   
-  public abstract void a(bcxt parambcxt);
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      this.a.d = paramString;
+      bcxl.e(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131716175), 0).a();
+  }
 }
 
 

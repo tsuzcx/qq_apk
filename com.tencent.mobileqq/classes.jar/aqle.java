@@ -1,44 +1,83 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import mqq.app.MobileQQ;
 
 public class aqle
-  extends aroh
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public aqle(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public aqle(FMActivity paramFMActivity) {}
   
-  public void a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().k();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
+    int i = 1;
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.a.g();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
+    {
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
+    }
+    if ((paramInt == 2131375393) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
+    {
+      this.a.a().f();
+      FMActivity.d(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.i(false);
+      FMActivity.a(this.a, 1);
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      paramRadioGroup = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      paramRadioGroup.putInt("last_select_tab_type", paramInt);
+      paramRadioGroup.commit();
+      return;
+      if ((paramInt == 2131369801) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().e();
+        FMActivity.e(this.a);
+        if ((this.a.h == 0) && (this.a.d)) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        }
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 2);
+        paramInt = i;
+      }
+      else if ((paramInt == 2131364374) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().d();
+        FMActivity.b(this.a, 2);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 0);
+        paramInt = 2;
+      }
+      else
+      {
+        paramInt = -1;
+      }
+    }
   }
 }
 

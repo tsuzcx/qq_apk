@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class tsq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  tsq(tsp paramtsp) {}
+  tsq(tsk paramtsk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    tsp.a(this.a);
+    QLog.d("QCircleFolderSplashPart", 4, "btn onClick");
+    tzv.a("", 20, tsk.a(this.a));
+    if (tsk.c(this.a)) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      tzv.a("", 19, 4L, 0L, paramView);
+      tqt.a().a(false);
+      tsk.a(this.a);
+      return;
+    }
   }
 }
 

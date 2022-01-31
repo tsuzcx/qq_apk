@@ -1,17 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import org.json.JSONObject;
 
 public class blxg
-  extends blpe
 {
-  public blxg(StaticStickerProviderView paramStaticStickerProviderView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void d()
+  public static blxg a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
-    }
-    this.a.g();
+    blxg localblxg = new blxg();
+    localblxg.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
+    localblxg.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
+    localblxg.c = paramJSONObject.optString("name");
+    localblxg.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
+    localblxg.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
+    return localblxg;
+  }
+  
+  public String a()
+  {
+    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
   }
 }
 

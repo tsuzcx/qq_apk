@@ -1,14 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class avdx
-  implements View.OnClickListener
+final class avdx
+  implements bfah
 {
-  avdx(avcw paramavcw) {}
+  avdx(String paramString, aved paramaved) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.j(paramView);
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Aved != null) {
+        this.jdField_a_of_type_Aved.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Aved == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aved.a(false);
   }
 }
 

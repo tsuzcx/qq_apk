@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager;
 
-import baps;
-import bapv;
+import baub;
+import baue;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectConfigBase$NetReqRunnable
   implements Runnable
 {
-  final baps a;
+  final baub a;
   
-  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, baps parambaps)
+  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, baub parambaub)
   {
-    this.a = parambaps;
+    this.a = parambaub;
   }
   
   public void run()

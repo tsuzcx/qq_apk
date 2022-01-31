@@ -23,9 +23,9 @@ public abstract class rbo
   int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2130842700;
+      return 2130842713;
     }
-    return 2130842612;
+    return 2130842625;
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean) {}
@@ -137,11 +137,11 @@ public abstract class rbo
     {
       this.a.D.setVisibility(0);
       rdm.b(this.a.D, paramVideoInfo.e, "0");
-      this.a.j.setImageResource(2130842698);
+      this.a.j.setImageResource(2130842711);
       return;
     }
     this.a.D.setVisibility(8);
-    this.a.j.setImageResource(2130842699);
+    this.a.j.setImageResource(2130842712);
   }
   
   public void d()

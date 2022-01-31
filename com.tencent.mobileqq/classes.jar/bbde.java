@@ -1,45 +1,50 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class bbde
-  implements URLDrawableHandler
+  implements TVK_SDKMgr.OnLogListener
 {
-  public bbde(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public bbde(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
-  {
-    return false;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
+  public int d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadFailed", new Object[0]));
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
+    return 0;
   }
   
-  public void onFileDownloadStarted()
+  public int e(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadStarted", new Object[0]));
+      QLog.e("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
+    return 0;
   }
   
-  public void onFileDownloadSucceed(long paramLong)
+  public int i(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadSucceed", new Object[0]));
+      QLog.i("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
+    return 0;
   }
   
-  public void publishProgress(int paramInt)
+  public int v(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload publishProgress", new Object[0]));
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
 }
 

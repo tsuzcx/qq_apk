@@ -1,32 +1,32 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.hotpic.HotVideoData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Callable;
 
 class asuo
-  implements Callable<File>
+  implements asvh
 {
-  asuo(asun paramasun) {}
+  asuo(asun paramasun, HotVideoData paramHotVideoData, asuq paramasuq, URLDrawable paramURLDrawable) {}
   
-  public File a()
+  public void a(asvi paramasvi)
   {
-    try
+    if (paramasvi.jdField_a_of_type_Boolean)
     {
-      boolean bool = asun.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasvi.a();
+      if (this.jdField_a_of_type_Asuq.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
       {
-        localFile = this.a.getLatest();
-        return localFile;
+        this.jdField_a_of_type_Asuq.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
       }
-      File localFile = this.a.a();
-      return localFile;
     }
-    finally
+    do
     {
-      asun.a(this.a, false);
-    }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramasvi.jdField_a_of_type_JavaLangString);
+      }
+    } while (this.jdField_a_of_type_Asuq.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    this.jdField_a_of_type_Asuq.a(-10);
   }
 }
 

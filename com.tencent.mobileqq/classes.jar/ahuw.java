@@ -1,58 +1,22 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
 
-public class ahuw
-  extends arqb
+class ahuw
+  implements View.OnClickListener
 {
-  public ahuw(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  ahuw(ahuu paramahuu) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = (ahzc)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      arni.c(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-      return;
-      if (!bdee.d(BaseApplication.getContext()))
-      {
-        armz.a(2131692745);
-        return;
-      }
-      armf.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new ahux(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((allz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!bdee.d(BaseApplication.getContext()))
-        {
-          armz.a(2131692745);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        armf.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new ahuy(this, localFileManagerEntity));
-      }
-    }
+    paramView = (alwd)this.a.a.getManager(159);
+    Intent localIntent = new Intent(ahuu.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView.a);
+    ahuu.b(this.a).startActivity(localIntent);
+    azqs.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
   }
 }
 

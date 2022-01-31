@@ -1,52 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqzl
-  implements aymg<ayjl, ayru>
+class aqzl
+  extends aqyt
 {
-  public void a(ayjl paramayjl, ayru paramayru)
+  public aqzl(aqyp paramaqyp)
   {
-    if ((paramayru.a() != null) && (!TextUtils.isEmpty(paramayjl.a())))
+    super(paramaqyp);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramayru.a().setVisibility(0);
-      paramayru.a().setText(paramayjl.a());
-    }
-    if ((paramayru.b() != null) && (!TextUtils.isEmpty(paramayjl.b())))
-    {
-      paramayru.b().setVisibility(0);
-      paramayru.b().setText(paramayjl.b());
-    }
-    if ((paramayru.c() != null) && (!TextUtils.isEmpty(paramayjl.c())))
-    {
-      paramayru.c().setVisibility(0);
-      paramayru.c().setText(paramayjl.c());
-    }
-    if ((paramayjl.d() == null) && (paramayru.d() != null)) {
-      paramayru.d().setVisibility(8);
-    }
-    if ((paramayru.d() != null) && (paramayjl.d() != null))
-    {
-      paramayru.d().setVisibility(0);
-      paramayru.d().setText(paramayjl.d());
-    }
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramayru.b();
-    Object localObject = (aqzk)paramayjl;
-    String str = ((aqzk)localObject).c();
-    localObject = ((aqzk)localObject).d();
-    if (bdcs.b(str)) {
-      arni.a(localAsyncImageView, str, arni.a((String)localObject));
-    }
-    for (;;)
-    {
-      paramayru = paramayru.a();
-      if (paramayru != null) {
-        paramayru.setOnClickListener(new aqzm(this, paramayjl));
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      localAsyncImageView.setDefaultImage(arni.b((String)localObject));
     }
+    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 6);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Aqyt = new aqzj(this.jdField_a_of_type_Aqyp);
   }
 }
 

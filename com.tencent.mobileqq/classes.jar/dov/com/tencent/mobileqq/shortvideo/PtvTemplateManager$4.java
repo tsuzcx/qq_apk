@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import azgk;
+import azkt;
 
 class PtvTemplateManager$4
   implements Runnable
 {
   public void run()
   {
-    if (azgk.c()) {
+    if (azkt.c()) {
       this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }

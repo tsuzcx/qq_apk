@@ -1,53 +1,12 @@
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-
-public class auqb
-  implements INetInfoHandler
+public abstract interface auqb
 {
-  private auqb(NearbyAppInterface paramNearbyAppInterface) {}
+  public abstract void a();
   
-  public void onNetMobile2None()
-  {
-    if (NearbyAppInterface.i(this.a) != null) {
-      NearbyAppInterface.j(this.a).onNetMobile2None();
-    }
-  }
+  public abstract void a(aupy paramaupy);
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (NearbyAppInterface.g(this.a) != null) {
-      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
-    }
-  }
+  public abstract void a(aupy paramaupy, int paramInt);
   
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (NearbyAppInterface.a(this.a) != null) {
-      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (NearbyAppInterface.e(this.a) != null) {
-      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (NearbyAppInterface.c(this.a) != null) {
-      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (NearbyAppInterface.k(this.a) != null) {
-      NearbyAppInterface.l(this.a).onNetWifi2None();
-    }
-  }
+  public abstract void b(aupy paramaupy);
 }
 
 

@@ -1,14 +1,6 @@
-import android.view.View;
-
 public abstract interface bhwz
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract void e();
+  public abstract void a(int paramInt);
 }
 
 

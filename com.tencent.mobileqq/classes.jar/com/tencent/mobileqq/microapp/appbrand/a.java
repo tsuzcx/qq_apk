@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import aizx;
+import ajem;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdir;
-import bdje;
+import bdna;
+import bdnn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -255,7 +255,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bdir.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    bdna.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -358,7 +358,7 @@ public final class a
   
   public void f()
   {
-    aizx.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
+    ajem.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public final void g()
@@ -430,7 +430,7 @@ public final class a
         if ((!com.tencent.mobileqq.microapp.apkg.f.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
           break label407;
         }
-        boolean bool = bdje.a(paramString2);
+        boolean bool = bdnn.a(paramString2);
         if (bool) {
           break label407;
         }

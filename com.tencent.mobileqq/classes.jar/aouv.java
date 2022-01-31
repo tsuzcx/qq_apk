@@ -1,7 +1,6 @@
 public class aouv
 {
-  public int a;
-  public int b;
+  public boolean a = true;
 }
 
 

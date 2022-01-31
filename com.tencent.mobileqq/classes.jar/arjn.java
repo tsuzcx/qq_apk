@@ -1,9 +1,17 @@
-public class arjn
+class arjn
+  implements arrh
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
+  arjn(arjm paramarjm) {}
+  
+  public void a()
+  {
+    arjk.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
+  }
+  
+  public void b() {}
 }
 
 

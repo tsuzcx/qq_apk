@@ -2,18 +2,18 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import bgkd;
-import bgkp;
-import bgmu;
+import bgok;
+import bgow;
+import bgrb;
 
 class InternalJSPlugin$5
   implements Runnable
 {
-  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, PackageManager paramPackageManager, String paramString3, bgkd parambgkd) {}
+  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, PackageManager paramPackageManager, String paramString3, bgok parambgok) {}
   
   public void run()
   {
-    bgkp.a(this.val$activity, 230, null, String.format("即将离开QQ，打开「%s」", new Object[] { this.val$appName }), "取消", "允许", new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this)).show();
+    bgow.a(this.val$activity, 230, null, String.format("即将离开QQ，打开「%s」", new Object[] { this.val$appName }), "取消", "允许", new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this)).show();
   }
 }
 

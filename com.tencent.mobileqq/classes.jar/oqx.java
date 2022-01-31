@@ -10,7 +10,7 @@ public class oqx
   public oqx(oqv paramoqv, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368566));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368577));
   }
 }
 

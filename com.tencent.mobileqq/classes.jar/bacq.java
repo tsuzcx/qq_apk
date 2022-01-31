@@ -1,42 +1,57 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class bacq
 {
-  protected bacn a;
-  TeamWorkFileImportInfo a;
-  
-  public bacq(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public static void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Bacn = ((bacn)paramQQAppInterface.a(120));
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  protected void a(boolean paramBoolean)
-  {
-    int i = 0;
-    if ((paramBoolean) && (bdcs.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
+    if (paramBundle == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      return;
+      str1 = paramBundle.getString("action");
+      localObject1 = paramBundle.getString("page");
+      localObject2 = paramBundle.getString("module");
+    } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)));
+    String str1 = String.format("%s#%s#%s", new Object[] { str1, localObject1, localObject2 });
+    Object localObject1 = new HashMap();
+    Object localObject2 = paramBundle.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str2 = (String)((Iterator)localObject2).next();
+      String str3 = paramBundle.getString(str2);
+      if (!TextUtils.isEmpty(str3)) {
+        ((HashMap)localObject1).put(str2, str3);
       }
-      this.jdField_a_of_type_Bacn.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
-      this.jdField_a_of_type_Bacn.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bacn.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    }
+    switch (bdin.a(BaseApplicationImpl.getContext()))
+    {
     }
     for (;;)
     {
-      if (i != 0) {
-        this.jdField_a_of_type_Bacn.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
+      paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      UserAction.setUserID(paramBundle.c());
+      ((HashMap)localObject1).put("qq", paramBundle.c());
+      UserAction.onUserAction(str1, true, -1L, -1L, (Map)localObject1, true, true);
       return;
-      i = 1;
+      ((HashMap)localObject1).put("network_type", "0");
+      continue;
+      ((HashMap)localObject1).put("network_type", "1");
+      continue;
+      ((HashMap)localObject1).put("network_type", "3");
+      continue;
+      ((HashMap)localObject1).put("network_type", "2");
+      continue;
+      ((HashMap)localObject1).put("network_type", "4");
+      continue;
+      ((HashMap)localObject1).put("network_type", "5");
     }
   }
 }

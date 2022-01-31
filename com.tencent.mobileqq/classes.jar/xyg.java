@@ -1,28 +1,46 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
 
 public class xyg
-  implements View.OnLongClickListener
+  extends AccessibilityNodeProvider
 {
-  public xyg(RecommendBannerItemView paramRecommendBannerItemView) {}
+  public xyg(xye paramxye) {}
   
-  public boolean onLongClick(View paramView)
+  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
   {
-    if (RecommendBannerItemView.a(this.a) == null) {
-      return false;
-    }
-    ygy.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new xyh(this), new xyi(this));
-    if (RecommendBannerItemView.a(this.a)) {
-      yvu.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-    }
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt == -1)
     {
-      return true;
-      yvu.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
+      localObject1 = localObject2;
+      if (xye.a(this.a) != null)
+      {
+        localObject1 = AccessibilityNodeInfo.obtain(xye.a(this.a));
+        xye.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
+        ((AccessibilityNodeInfo)localObject1).setText(xye.a(this.a).getContentDescription());
+      }
     }
+    return localObject1;
+  }
+  
+  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    boolean bool = xye.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
+    if (paramInt2 == 128) {
+      xye.a(this.a).post(xye.a(this.a));
+    }
+    do
+    {
+      do
+      {
+        return bool;
+      } while (paramInt2 != 64);
+      xye.a(this.a).removeCallbacks(xye.a(this.a));
+    } while (xye.a(this.a) == null);
+    xye.a(this.a).a();
+    return bool;
   }
 }
 

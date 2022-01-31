@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import awbw;
+import awgf;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -42,7 +42,7 @@ class FeedsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager.1
  * JD-Core Version:    0.7.0.1
  */

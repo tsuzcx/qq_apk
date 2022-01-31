@@ -1,56 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aerl
-  extends aofy<aerk>
+  implements aerd
 {
-  public int a()
-  {
-    return 609;
-  }
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  @NonNull
-  public aerk a(int paramInt)
+  public aerl(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new aerk();
-  }
-  
-  @Nullable
-  public aerk a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aerk.a(paramArrayOfaogf[0].a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
     }
-    return null;
   }
   
-  public Class<aerk> a()
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    return aerk.class;
+    if (paramRedPacketInfo == null) {
+      return;
+    }
+    ThreadManager.post(new CustomizeStrategyFactory.ThemeAnimStrategy.1(this, paramRedPacketInfo), 5, null, true);
   }
   
-  public void a(int paramInt)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
   {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(aerk paramaerk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agnd))) {
+      paramRedPacketInfo.animInfo = ((agnd)paramagmy).a;
+    }
   }
 }
 

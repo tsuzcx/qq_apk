@@ -1,13 +1,18 @@
-public class bmng
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+
+public final class bmng
+  implements Parcelable.Creator<EditVideoParams>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  
-  public String toString()
+  public EditVideoParams a(Parcel paramParcel)
   {
-    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+    return new EditVideoParams(paramParcel);
+  }
+  
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
   }
 }
 

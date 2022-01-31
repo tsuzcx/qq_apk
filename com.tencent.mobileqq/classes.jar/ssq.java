@@ -2,7 +2,7 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class ssq
-  extends alsi
+  extends alwx
 {
   ssq(ssp paramssp) {}
   

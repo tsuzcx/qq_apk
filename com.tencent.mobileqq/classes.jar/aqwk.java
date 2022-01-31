@@ -1,44 +1,19 @@
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aqwk
+public class aqwk
+  extends aqwc
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  int a;
+  int b;
   
-  aqwk(aqwi paramaqwi, Context paramContext)
+  public aqwk(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramContext != null) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
+    super(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwk
  * JD-Core Version:    0.7.0.1
  */

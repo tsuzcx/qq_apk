@@ -1,52 +1,39 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class apyw
-  extends apxc
+class apyw
+  implements DialogInterface.OnClickListener
 {
-  public apyw(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  apyw(apyt paramapyt) {}
   
-  protected void a(boolean paramBoolean, apyo paramapyo, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != ExtendFriendBaseFragment.a(this.a)) {}
-    Object localObject;
-    do
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131720522);
+    bdun.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (paramapyo == null));
-      localObject = ((aloz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    } while (localObject == null);
-    ExtendFriendBaseFragment localExtendFriendBaseFragment = this.a;
-    if (!TextUtils.isEmpty(paramapyo.mDeclaration)) {}
-    for (paramBoolean = true;; paramBoolean = false)
+      if (EmojiStickerManager.a().a != 0) {
+        break label103;
+      }
+      paramInt = 1;
+    }
+    for (;;)
     {
-      localExtendFriendBaseFragment.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.b = ((Card)localObject).isShowCard;
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBaseFragment", 2, String.format("addMyFeed mProfileComplete=%s mShowCard=%s", new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Boolean.valueOf(this.a.b) }));
-      }
-      if (this.a.jdField_a_of_type_Aqay == null) {
-        break;
-      }
-      localObject = this.a.jdField_a_of_type_Aqay.a(0);
-      paramapyo.mIsMyFeed = true;
-      if ((localObject != null) && (TextUtils.equals(((apyo)localObject).mUin, paramapyo.mUin))) {
-        this.a.jdField_a_of_type_Aqay.b(0);
-      }
-      this.a.jdField_a_of_type_Aqay.a(0, paramapyo);
-      if (!TextUtils.isEmpty(paramapyo.mDeclaration)) {
-        paramapyo.mDeclaration = paramapyo.mDeclaration.replace('\n', ' ').trim();
-      }
-      if ((!this.a.b) || (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Aqay.b(0);
-      }
-      this.a.jdField_a_of_type_Aqay.notifyDataSetChanged();
+      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
+      label103:
+      if (EmojiStickerManager.a().a == 1) {
+        paramInt = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        paramInt = 3;
+      } else {
+        paramInt = -1;
+      }
     }
   }
 }

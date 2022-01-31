@@ -1,74 +1,93 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.2;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.utils.WnsUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgtd
+  implements VideoPlayerProxy.OnVideoPreparedListener
 {
-  private static volatile bgtd a;
-  public BaseLibInfo a;
-  public EngineVersion a;
+  public bgtd(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public bgtd()
+  public void onVideoPrepared(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    a();
-    b();
-  }
-  
-  public static bgtd a()
-  {
-    if (jdField_a_of_type_Bgtd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgtd == null) {
-        jdField_a_of_type_Bgtd = new bgtd();
-      }
-      return jdField_a_of_type_Bgtd;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo = new BaseLibInfo();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibUrl = "assets://mini";
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibVersion = WnsUtil.getGameEngineVersion("1.14.0.00225");
-    QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo start");
-    long l = System.currentTimeMillis();
-    QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
-    if (new boolean[] { false }[0] != 0) {}
-    for (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = ("{'file_length':" + new long[] { 0L }[0] + "}");; this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = "{'file_length':-1}")
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibKey = null;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType = 2;
+    boolean bool = true;
+    if (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = new EngineVersion(WnsUtil.getGameEngineVersion("1.14.0.00225"));
-  }
-  
-  private boolean c()
-  {
-    String str = AppLoaderFactory.g().getMiniAppEnv().getContext().getPackageName();
-    QMLog.i("LocalGameEngine", "[MiniEng]isQQSpeedPackage " + str);
-    return (!TextUtils.isEmpty(str)) && (str.toLowerCase().startsWith("com.tencent.qqspeed"));
-  }
-  
-  public boolean a()
-  {
-    return c();
-  }
-  
-  public boolean b()
-  {
-    return c();
+    if (!this.a.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "waiting");
+    }
+    for (;;)
+    {
+      MiniAppVideoPlayer.b(this.a, false);
+      MiniAppVideoPlayer.b(this.a, false);
+      this.a.jdField_a_of_type_Boolean = true;
+      if (!MiniAppVideoPlayer.a(this.a)) {
+        break;
+      }
+      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
+        MiniAppVideoPlayer.a(this.a).pause();
+      }
+      ThreadManager.c().post(new MiniAppVideoPlayer.7.1(this));
+      MiniAppVideoPlayer.c(this.a, false);
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bglu.a("onVideoWaiting", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
+    MiniAppVideoPlayer.a(this.a).start();
+    this.a.postDelayed(new MiniAppVideoPlayer.7.2(this), 200L);
+    if (!this.a.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
+    {
+      MiniAppVideoPlayer.a(this.a, "play");
+      MiniAppVideoPlayer.e(this.a);
+      ThreadManager.c().post(new MiniAppVideoPlayer.7.3(this));
+      paramVideoPlayerProxy = new StringBuilder().append("onVideoPrepared: ").append(MiniAppVideoPlayer.a(this.a).getDuration()).append(" ").append(MiniAppVideoPlayer.a(this.a).getCurrentPostion()).append(" ");
+      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+        break label464;
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        Log.i("MiniAppVideoPlayer", bool);
+        MiniAppVideoPlayer.a(this.a, 200L);
+        return;
+        try
+        {
+          paramVideoPlayerProxy = new JSONObject();
+          paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+          paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+          this.a.jdField_a_of_type_Bglu.a("onVideoPlay", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+          QMLog.d("MiniAppVideoPlayer", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + paramVideoPlayerProxy.toString());
+        }
+        catch (JSONException paramVideoPlayerProxy)
+        {
+          paramVideoPlayerProxy.printStackTrace();
+        }
+      }
+      break;
+      label464:
+      bool = false;
+    }
   }
 }
 

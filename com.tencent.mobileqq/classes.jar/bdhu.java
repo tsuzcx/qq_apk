@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface bdhu
+class bdhu
+  implements vld
 {
-  public abstract int a();
+  bdhu(bdhk parambdhk) {}
   
-  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
-  
-  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  public void a(vgp paramvgp, bety parambety)
+  {
+    if ((parambety != null) && (parambety.isShowing())) {
+      parambety.dismiss();
+    }
+    vlb.a(this.a.a);
+    if ((paramvgp != null) && (paramvgp.jdField_a_of_type_Int == 0))
+    {
+      vlb.a(paramvgp.jdField_a_of_type_JavaLangString, this.a.a);
+      bdhk.a(this.a);
+      return;
+    }
+    if (!bdin.g(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694769, 1).a();
+      return;
+    }
+    this.a.c = "open";
+    bdhk.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhu
  * JD-Core Version:    0.7.0.1
  */

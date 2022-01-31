@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Set;
 
-public class blck
-  implements DialogInterface.OnDismissListener
+class blck
+  implements View.OnClickListener
 {
-  public blck(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
+  blck(blcj paramblcj, blca paramblca, int paramInt, blcp paramblcp) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    AETakeFacePhotoPreviewFragment.a(this.a);
-    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
+    boolean bool;
+    if (this.jdField_a_of_type_Blca.jdField_a_of_type_Int == 13)
+    {
+      if (this.jdField_a_of_type_Blca.a()) {
+        break label73;
+      }
+      bool = true;
+      if (!bool) {
+        break label78;
+      }
+      blcj.a(this.jdField_a_of_type_Blcj).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      blcj.a(this.jdField_a_of_type_Blcj, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blca.a(bool);
+      this.jdField_a_of_type_Blcp.a(bool);
+      return;
+      label73:
+      bool = false;
+      break;
+      label78:
+      blcj.a(this.jdField_a_of_type_Blcj).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (blcj.a(this.jdField_a_of_type_Blcj).size() < 1) {
+        blcj.a(this.jdField_a_of_type_Blcj, false);
+      }
+    }
   }
 }
 

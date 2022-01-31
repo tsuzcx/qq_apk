@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -83,28 +83,28 @@ public class WSPlayerManager
     if (paramInt1 == 123)
     {
       if (paramInt2 == 103) {
-        return alpo.a(2131716618) + paramInt1 + "-" + paramInt2 + ")";
+        return alud.a(2131716630) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alpo.a(2131716605) + paramInt1 + "-" + paramInt2 + ")";
+      return alud.a(2131716617) + paramInt1 + "-" + paramInt2 + ")";
     }
     if (paramInt1 == 122)
     {
       if (paramInt2 == 204) {
-        return alpo.a(2131716582) + paramInt1 + "-" + paramInt2 + ")";
+        return alud.a(2131716594) + paramInt1 + "-" + paramInt2 + ")";
       }
       if (paramInt2 == 202) {
-        return alpo.a(2131716522) + paramInt1 + "-" + paramInt2 + ")";
+        return alud.a(2131716534) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alpo.a(2131716620) + paramInt1 + "-" + paramInt2 + ")";
+      return alud.a(2131716632) + paramInt1 + "-" + paramInt2 + ")";
     }
     if (paramInt1 == 101)
     {
       if (paramInt2 == 80) {
-        return alpo.a(2131716549) + paramInt1 + "-" + paramInt2 + ")";
+        return alud.a(2131716561) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alpo.a(2131716551) + paramInt1 + "-" + paramInt2 + ")";
+      return alud.a(2131716563) + paramInt1 + "-" + paramInt2 + ")";
     }
-    return alpo.a(2131716575) + paramInt1 + "-" + paramInt2 + ")";
+    return alud.a(2131716587) + paramInt1 + "-" + paramInt2 + ")";
   }
   
   private String a(thl paramthl)

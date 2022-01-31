@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import azzb;
-import baav;
+import badk;
+import bafe;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import nrt;
 import org.json.JSONException;
@@ -12,11 +12,11 @@ import ruz;
 public class ReadInJoySkinGuideView$1$1$1
   implements Runnable
 {
-  public ReadInJoySkinGuideView$1$1$1(ruz paramruz, azzb paramazzb) {}
+  public ReadInJoySkinGuideView$1$1$1(ruz paramruz, badk parambadk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ruz.a.this$0.a.a((baav)this.jdField_a_of_type_Azzb);
+    this.jdField_a_of_type_Ruz.a.this$0.a.a((bafe)this.jdField_a_of_type_Badk);
     this.jdField_a_of_type_Ruz.a.this$0.a.a();
     orz localorz = new orz();
     try

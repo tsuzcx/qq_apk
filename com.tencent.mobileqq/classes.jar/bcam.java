@@ -1,18 +1,73 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract interface bcam
+public class bcam
+  extends ameq
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bcam(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  public void a(boolean paramBoolean, bbyf parambbyf)
+  {
+    super.a(paramBoolean, parambbyf);
+    this.a.l();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("获取作业信息");
+      if (!paramBoolean) {
+        break label123;
+      }
+    }
+    for (String str = "成功";; str = "失败")
+    {
+      QLog.d("SubmitHomeWorkFragment", 2, str);
+      if ((!paramBoolean) || (parambbyf == null) || (parambbyf.b == null)) {
+        break;
+      }
+      this.a.a = parambbyf;
+      parambbyf = parambbyf.b;
+      try
+      {
+        parambbyf = new JSONObject(parambbyf).getJSONArray("c");
+        parambbyf = new JSONObject().put("c", parambbyf).toString();
+        this.a.a(parambbyf);
+        return;
+      }
+      catch (Exception parambbyf)
+      {
+        label123:
+        this.a.a(3, null, null, null);
+        return;
+      }
+    }
+    this.a.a(3, null, null, null);
+    this.a.a = null;
+    this.a.getActivity().finish();
+  }
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
-  
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    super.b(paramBoolean, paramInt);
+    this.a.l();
+    if (paramBoolean)
+    {
+      this.a.g();
+      return;
+    }
+    if (paramInt == 1002)
+    {
+      this.a.a(2, null, null, null);
+      return;
+    }
+    if (paramInt == 10022)
+    {
+      this.a.a(1, null, null, null);
+      return;
+    }
+    this.a.a(3, null, null, null);
+  }
 }
 
 

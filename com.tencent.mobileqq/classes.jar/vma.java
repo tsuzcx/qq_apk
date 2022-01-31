@@ -1,14 +1,7 @@
-class vma
-  extends uhe<vlk>
+public class vma
 {
-  vma(vlz paramvlz) {}
-  
-  public void a(vlk paramvlk)
-  {
-    paramvlk.a(new vmb(this));
-  }
-  
-  public void c() {}
+  public int a;
+  public long a;
 }
 
 

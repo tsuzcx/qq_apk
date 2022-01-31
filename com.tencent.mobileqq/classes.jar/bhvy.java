@@ -1,8 +1,19 @@
-public abstract interface bhvy
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.DynamicGridView;
+
+public class bhvy
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bhvy(DynamicGridView paramDynamicGridView) {}
   
-  public abstract void b();
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
+      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+  }
 }
 
 

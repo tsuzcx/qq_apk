@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.widget.media;
 
 import android.graphics.Bitmap;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
@@ -30,7 +30,7 @@ final class h
           return;
         }
         MiniAppCamera.a(localBitmap, (File)localObject, "");
-        if (bdje.a(MiniAppCamera.g()))
+        if (bdnn.a(MiniAppCamera.g()))
         {
           MiniAppCamera.a(this.d, this.a, this.b, this.c);
           return;

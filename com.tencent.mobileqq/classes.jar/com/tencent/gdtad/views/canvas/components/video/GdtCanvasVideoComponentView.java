@@ -1,9 +1,9 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
-import aanp;
-import aape;
-import aaqe;
-import aaqg;
+import aase;
+import aatt;
+import aaut;
+import aauv;
 import com.tencent.ad.tangram.canvas.views.AdViewStatus;
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentView;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView;
@@ -12,10 +12,10 @@ import java.lang.ref.WeakReference;
 
 public class GdtCanvasVideoComponentView
   extends AdCanvasComponentView
-  implements aaqe, aaqg
+  implements aaut, aauv
 {
   public static int a;
-  private aape jdField_a_of_type_Aape;
+  private aatt jdField_a_of_type_Aatt;
   private AdCanvasPageView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView;
   private GdtCanvasVideoComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
   private GdtVideoCommonView jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
@@ -101,8 +101,8 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
-      this.jdField_a_of_type_Aape.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
-      aanp.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      this.jdField_a_of_type_Aatt.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
+      aase.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
   
@@ -112,7 +112,7 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
-      aanp.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      aase.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
 }

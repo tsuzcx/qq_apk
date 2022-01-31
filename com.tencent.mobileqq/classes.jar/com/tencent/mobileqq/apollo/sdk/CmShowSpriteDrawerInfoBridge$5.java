@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akww;
-import akxr;
-import akxs;
+import albl;
+import alcg;
+import alch;
 
 public class CmShowSpriteDrawerInfoBridge$5
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$5(akxs paramakxs, akxr paramakxr) {}
+  public CmShowSpriteDrawerInfoBridge$5(alch paramalch, alcg paramalcg) {}
   
   public void run()
   {
-    akww localakww = this.a.a();
-    if (localakww != null) {
-      localakww.b();
+    albl localalbl = this.a.a();
+    if (localalbl != null) {
+      localalbl.b();
     }
   }
 }

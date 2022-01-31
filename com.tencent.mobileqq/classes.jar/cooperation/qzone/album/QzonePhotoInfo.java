@@ -3,14 +3,14 @@ package cooperation.qzone.album;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjdc;
+import bjhj;
 import java.util.HashMap;
 import java.util.Map;
 
 public class QzonePhotoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new bjdc();
+  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new bjhj();
   public int a;
   public long a;
   public String a;

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aiud;
+import aiys;
 
 public class ThemeHbFragment$3$1
   implements Runnable
 {
-  public ThemeHbFragment$3$1(aiud paramaiud, Object paramObject) {}
+  public ThemeHbFragment$3$1(aiys paramaiys, Object paramObject) {}
   
   public void run()
   {
-    ThemeHbFragment.a(this.jdField_a_of_type_Aiud.a, (String)this.jdField_a_of_type_JavaLangObject);
+    ThemeHbFragment.a(this.jdField_a_of_type_Aiys.a, (String)this.jdField_a_of_type_JavaLangObject);
   }
 }
 

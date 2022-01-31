@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import aklj;
+import akpy;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatPieApolloViewController$3
   extends IApolloRunnableTask
 {
-  public ChatPieApolloViewController$3(aklj paramaklj, ApolloRender paramApolloRender, String paramString) {}
+  public ChatPieApolloViewController$3(akpy paramakpy, ApolloRender paramApolloRender, String paramString) {}
   
   public int a()
   {

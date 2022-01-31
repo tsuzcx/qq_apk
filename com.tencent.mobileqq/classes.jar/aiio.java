@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class aiio
-  extends awdn
+public abstract interface aiio
 {
-  public aiio(PhoneInnerFrame paramPhoneInnerFrame) {}
+  public abstract void setFrom(boolean paramBoolean);
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
-    }
-  }
+  public abstract void setIsShieldTouchForItem(boolean paramBoolean);
 }
 
 

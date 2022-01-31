@@ -1,78 +1,57 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aylr
-  extends ayna
+class aylr
+  extends altw
 {
-  public aylr(bcws parambcws)
-  {
-    super(parambcws);
-  }
+  aylr(ayln paramayln) {}
   
-  protected aymf<ayjl, ayru> a(bcws parambcws)
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    return new aylv(parambcws);
-  }
-  
-  public void a(ayjj paramayjj, ayrt paramayrt)
-  {
-    paramayjj = (ayjk)paramayjj;
-    LinearLayout localLinearLayout = ((ayrm)paramayrt).a();
-    if (localLinearLayout != null)
+    super.a(paramBoolean, paramArrayList, paramArrayList1);
+    paramArrayList1 = (String)paramArrayList1.get(0);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
     {
-      List localList = paramayjj.a();
-      if (localList != null)
+      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
+      while (paramArrayList.hasNext())
       {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), paramayjj.a());
-        int i = 0;
-        if (i < k)
+        Object localObject = (String)paramArrayList.next();
+        if (((String)localObject).charAt(0) < '')
         {
-          ayjl localayjl = (ayjl)localList.get(i);
-          View localView = LayoutInflater.from(paramayrt.a().getContext()).inflate(2131562586, null);
-          ayro localayro = new ayro(localView);
-          localView.setTag(2131379913, localayjl);
-          localView.setTag(2131379918, localayro);
-          localView.setTag(2131379914, Integer.valueOf(i));
-          localView.setTag(2131379912, Integer.valueOf(localList.size()));
-          localView.setTag(2131379915, this.a);
-          ayrg.a(localayjl, k, i);
-          int m = localayjl.a();
-          int n = localayjl.b();
-          if ((localayjl instanceof ayjm)) {}
-          for (int j = ((ayjm)localayjl).r;; j = 0)
+          localObject = bdpr.b((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
           {
-            ayrg.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            this.a.a(localayjl, localayro);
-            i += 1;
-            break;
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              localStringBuilder.append(localObject[i]).append(" ");
+              i += 1;
+            }
           }
         }
-      }
-    }
-    if (paramayrt.b() != null) {
-      paramayrt.b().setVisibility(8);
-    }
-    if ((paramayjj instanceof ayiv))
-    {
-      paramayjj = ((ayiv)paramayjj).a();
-      paramayrt = ((ayrm)paramayrt).a();
-      if (paramayrt != null)
-      {
-        if (paramayjj == null) {
-          break label325;
+        else
+        {
+          localStringBuilder.append((String)localObject).append(" ");
         }
-        paramayrt.a().setVisibility(0);
-        this.a.a(paramayjj, paramayrt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
       }
     }
-    return;
-    label325:
-    paramayrt.a().setVisibility(8);
+    ayln.a(this.a).put(paramArrayList1, localStringBuilder);
+    paramArrayList = ayln.b(this.a).get(paramArrayList1);
+    if (paramArrayList != null) {
+      try
+      {
+        paramArrayList.notify();
+        return;
+      }
+      finally {}
+    }
   }
 }
 

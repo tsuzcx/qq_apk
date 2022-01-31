@@ -1,17 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class aloe
-  implements alvh
+class aloe
+  implements Comparator<Map.Entry<String, Long>>
 {
-  public aloe(FrameHelperActivity paramFrameHelperActivity) {}
+  aloe(alod paramalod) {}
   
-  public void a()
+  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
+    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
   }
 }
 

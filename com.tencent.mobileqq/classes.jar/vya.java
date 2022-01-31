@@ -1,144 +1,97 @@
-import android.app.Dialog;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.net.Uri;
+import java.nio.ByteBuffer;
 import java.util.Map;
 
 public class vya
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
 {
-  private TextView a;
-  private String c = "";
-  private boolean e;
+  private MediaExtractor a;
   
-  public vya(View paramView)
+  public vya()
   {
-    super(paramView);
+    a();
   }
   
-  public String a()
+  public final int a()
   {
-    return "WeishiTagVideoInfoWidget";
+    return this.a.getTrackCount();
   }
   
-  public void a(View paramView)
+  public int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    return this.a.readSampleData(paramByteBuffer, paramInt);
   }
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  public long a()
   {
-    paramMap.put(new vyc(this), "");
+    return this.a.getSampleTime();
   }
   
-  public void a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem)
+  @TargetApi(16)
+  public MediaFormat a(int paramInt)
   {
-    paramvpk = paramvpk.a();
-    if (paramvpk == null)
-    {
-      k();
-      return;
+    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
+    if (localMediaFormat.getString("mime").startsWith("video/")) {
+      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
     }
-    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
-    {
-      this.e = false;
-      int i = paramvpk.mSourceTagType;
-      if (i != 1) {
-        break label123;
-      }
-      j();
-      azmj.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
-      paramStoryVideoItem = xok.b(i);
-      switch (i)
-      {
-      default: 
-        paramvpk = paramStoryVideoItem;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramvpk);
-      return;
-      this.e = true;
-      this.c = paramStoryVideoItem.mVid;
-      break;
-      label123:
-      k();
-      return;
-      paramvpk = paramStoryVideoItem;
-      if (TextUtils.isEmpty(paramStoryVideoItem)) {
-        paramvpk = "来自微视APP";
-      }
-    }
+    return localMediaFormat;
   }
   
-  public boolean a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem)
+  @TargetApi(16)
+  protected void a()
   {
-    if ((paramvpk.a != null) && (paramvpk.a.a == 13)) {}
-    while (paramStoryVideoItem.mSourceTagType != 1) {
-      return false;
+    if (this.a != null) {
+      this.a.release();
     }
-    return true;
+    this.a = new MediaExtractor();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.selectTrack(paramInt);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.a.seekTo(paramLong, paramInt);
+  }
+  
+  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public boolean a()
+  {
+    return this.a.advance();
   }
   
   public int b()
   {
-    return -1;
+    return this.a.getSampleTrackIndex();
   }
   
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
+  public long b()
   {
-    if (this.jdField_a_of_type_Vpk != null) {}
-    for (paramView = this.jdField_a_of_type_Vpk.a(); paramView == null; paramView = null)
-    {
-      wsv.e(this.b, "click error , video info not found");
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
-    xok.a(paramView.mSourceTagType);
-    switch (paramView.mSourceTagType)
-    {
-    default: 
-      return;
-    }
-    Dialog localDialog = xqr.a(b(), paramView.mOwnerUid, "4", paramView.mVid, 3, paramView.mWsSchema);
-    if (localDialog != null)
-    {
-      localDialog.setOnDismissListener(new vyb(this, localVideoViewVideoHolder));
-      if (localVideoViewVideoHolder != null) {
-        localVideoViewVideoHolder.c(true);
-      }
-    }
-    int i;
-    if (xoo.a(b()))
-    {
-      i = 2;
-      wta.a("weishi_share", "tag_clk", 0, i, new String[] { "4", paramView.mOwnerUid, "weishi", paramView.mVid });
-      if (!xoo.a(b())) {
-        break label220;
-      }
-    }
-    label220:
-    for (paramView = "story_clk_ws";; paramView = "story_dl_ws")
-    {
-      azmj.b(null, "dc00898", "", "", "weishi_share_videoplay", paramView, 0, 0, "", "", "", "");
-      return;
-      i = 1;
-      break;
-    }
+    return this.a.getCachedDuration();
+  }
+  
+  public void b()
+  {
+    this.a.release();
+  }
+  
+  public boolean b()
+  {
+    return this.a.hasCacheReachedEndOfStream();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

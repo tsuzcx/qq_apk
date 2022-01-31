@@ -1,16 +1,58 @@
-public class aurn
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
+
+class aurn
+  implements ServiceConnection
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  aurn(aurm paramaurm) {}
   
-  public String toString()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
-    return localStringBuilder.toString();
+    aurm.a(this.a, auqu.a(paramIBinder));
+    try
+    {
+      aurm.a(this.a).a(aurm.a(this.a));
+      if (aurm.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        aurm.a(this.a).a(paramComponentName);
+        aurm.a(this.a, null);
+      }
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (aurm.a(this.a) != null) {
+        aurm.a(this.a).b(aurm.a(this.a));
+      }
+      if (aurm.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        aurm.a(this.a).a(paramComponentName);
+        aurm.a(this.a, null);
+      }
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
+    aurm.a(this.a, null);
   }
 }
 

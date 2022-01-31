@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
 
-public class anln
-  implements annj
+class anln
+  implements DialogInterface.OnClickListener
 {
-  public boolean needProcess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
-    }
-    return true;
-  }
+  anln(anlk paramanlk, String paramString1, String paramString2, DownloadInfo paramDownloadInfo, boolean paramBoolean, int paramInt) {}
   
-  public void process(JSONObject paramJSONObject, annk paramannk, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
+    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.jdField_a_of_type_JavaLangString, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      anlk.a(this.jdField_a_of_type_Anlk, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
     }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramannk, paramObject), 20000L);
   }
 }
 

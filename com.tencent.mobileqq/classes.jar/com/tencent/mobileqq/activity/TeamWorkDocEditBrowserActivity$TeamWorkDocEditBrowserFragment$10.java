@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.support.v4.app.FragmentActivity;
-import bdiv;
+import bdne;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$10
   implements Runnable
@@ -10,7 +10,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$10
   
   public void run()
   {
-    String str = bdiv.p(this.this$0.getActivity());
+    String str = bdne.p(this.this$0.getActivity());
     this.this$0.getActivity().runOnUiThread(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.10.1(this, str));
   }
 }

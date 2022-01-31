@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
@@ -53,7 +53,7 @@ public class JsErrorGuard
     if ((this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
       this.mLoadingDialog.dismiss();
     }
-    QQToast.a(this.mAppBrandRuntime.activity, alpo.a(2131706270), 0).a();
+    QQToast.a(this.mAppBrandRuntime.activity, alud.a(2131706282), 0).a();
   }
   
   private void onX5Succeed()
@@ -66,10 +66,10 @@ public class JsErrorGuard
       if (this.mRestartDialog == null)
       {
         this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755801);
-        this.mRestartDialog.setTitle(alpo.a(2131706268));
-        this.mRestartDialog.setMessage(alpo.a(2131706266));
-        this.mRestartDialog.setNegativeButton(alpo.a(2131706264), new JsErrorGuard.7(this));
-        this.mRestartDialog.setPositiveButton(alpo.a(2131706267), new JsErrorGuard.8(this));
+        this.mRestartDialog.setTitle(alud.a(2131706280));
+        this.mRestartDialog.setMessage(alud.a(2131706278));
+        this.mRestartDialog.setNegativeButton(alud.a(2131706276), new JsErrorGuard.7(this));
+        this.mRestartDialog.setPositiveButton(alud.a(2131706279), new JsErrorGuard.8(this));
         this.mRestartDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.mRestartDialog.isShowing()) {
@@ -98,7 +98,7 @@ public class JsErrorGuard
       if (this.mLoadingDialog == null) {
         this.mLoadingDialog = new JsErrorGuard.LoadingDialog(this.mAppBrandRuntime.activity);
       }
-      this.mLoadingDialog.setTitle(alpo.a(2131706269));
+      this.mLoadingDialog.setTitle(alud.a(2131706281));
     } while (this.mLoadingDialog.isShowing());
     this.mLoadingDialog.show();
   }

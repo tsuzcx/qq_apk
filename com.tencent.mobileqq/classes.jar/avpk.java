@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.2.1;
 
-class avpk
-  implements View.OnClickListener
+public class avpk
+  extends auua
 {
-  avpk(avpi paramavpi, avpd paramavpd) {}
+  public avpk(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void onClick(View paramView)
+  public void a(auub paramauub)
   {
-    this.jdField_a_of_type_Avpi.dismiss();
-    if (this.jdField_a_of_type_Avpd.a != null) {
-      this.jdField_a_of_type_Avpd.a.onClick(paramView);
-    }
+    ThreadManager.post(new NearbyProfileFragment.2.1(this, paramauub), 8, null, false);
+    this.a.a = paramauub;
+    this.a.a(paramauub);
   }
 }
 

@@ -1,8 +1,18 @@
-class ayhy
+import android.support.v4.app.Fragment;
+
+public abstract interface ayhy
 {
-  long jdField_a_of_type_Long;
-  ayhz jdField_a_of_type_Ayhz;
-  String jdField_a_of_type_JavaLangString;
+  public abstract int a();
+  
+  public abstract Fragment a();
+  
+  public abstract String a();
+  
+  public abstract boolean a();
+  
+  public abstract long[] a();
+  
+  public abstract boolean b();
 }
 
 

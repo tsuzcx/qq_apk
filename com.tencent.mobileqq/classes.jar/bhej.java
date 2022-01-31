@@ -1,11 +1,23 @@
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+
 public class bhej
+  implements bgmc<bgqz>
 {
-  public static com.tencent.smtt.sdk.ValueCallback a(android.webkit.ValueCallback paramValueCallback)
+  public static bgqz a(bglv parambglv)
   {
-    if (paramValueCallback != null) {
-      return new bhek(paramValueCallback);
+    return (bgqz)parambglv.a(new bhej());
+  }
+  
+  public bgqz a(bgls parambgls)
+  {
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer))
+    {
+      QMLog.w("Action", "Excepted AppBrandPageContainer, but is " + parambgls);
+      return null;
     }
-    return null;
+    return ((AppBrandPageContainer)parambgls).a();
   }
 }
 

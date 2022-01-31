@@ -2,7 +2,7 @@ package dov.com.qq.im;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bkjq;
+import bknx;
 
 class QIMReadinjoyEffectsCameraCaptureUnit$1$1
   implements Runnable

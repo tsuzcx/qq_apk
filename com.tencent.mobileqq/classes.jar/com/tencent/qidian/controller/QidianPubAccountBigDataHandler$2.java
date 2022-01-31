@@ -1,13 +1,13 @@
 package com.tencent.qidian.controller;
 
-import bfvk;
+import bfzr;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 import java.util.Map;
 
 public class QidianPubAccountBigDataHandler$2
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$2(bfvk parambfvk, long paramLong1, long paramLong2) {}
+  public QidianPubAccountBigDataHandler$2(bfzr parambfzr, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class QidianPubAccountBigDataHandler$2
     }
     for (;;)
     {
-      bfvk.a(this.this$0, this.a, localPubAccountNavigationMenu, this.b);
+      bfzr.a(this.this$0, this.a, localPubAccountNavigationMenu, this.b);
       return;
     }
   }

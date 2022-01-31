@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.book;
 
-import agyz;
-import agza;
+import ahdo;
+import ahdp;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
@@ -12,9 +12,9 @@ public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private agza jdField_a_of_type_Agza;
+  private ahdp jdField_a_of_type_Ahdp;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new agyz(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ahdo(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -52,9 +52,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(agza paramagza)
+  public void setInputListener(ahdp paramahdp)
   {
-    this.jdField_a_of_type_Agza = paramagza;
+    this.jdField_a_of_type_Ahdp = paramahdp;
   }
   
   public void setTextLengthLimit(int paramInt)

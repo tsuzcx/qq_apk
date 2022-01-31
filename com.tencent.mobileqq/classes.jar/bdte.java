@@ -1,22 +1,14 @@
-import android.graphics.Canvas;
-import android.view.SurfaceHolder;
-
 public class bdte
-  extends bdtc
 {
-  public bdte(SurfaceHolder paramSurfaceHolder)
-  {
-    super(paramSurfaceHolder);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  Canvas a(SurfaceHolder paramSurfaceHolder)
+  public String toString()
   {
-    return paramSurfaceHolder.lockHardwareCanvas();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BannerConfig: ").append("backgroudImgUrl=").append(this.a).append(";").append("cornerMarkLevel=").append(this.b).append(";").append("linkUrl=").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

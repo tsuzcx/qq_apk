@@ -22,7 +22,7 @@ public class mmb
         return;
         QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
         if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.n) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
-          azmj.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+          azqs.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
         }
         mww.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
       } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));

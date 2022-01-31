@@ -1,6 +1,23 @@
-public abstract interface bizs
+import android.widget.TextView;
+
+class bizs
+  implements biqt
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  bizs(bizo parambizo) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      bjbl.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
+      if (bizo.a(this.a) != null) {
+        bizo.a(this.a).setText("跳转失败，请返回重试");
+      }
+      return;
+    }
+    bjbl.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
+    bizo.b(this.a);
+  }
 }
 
 

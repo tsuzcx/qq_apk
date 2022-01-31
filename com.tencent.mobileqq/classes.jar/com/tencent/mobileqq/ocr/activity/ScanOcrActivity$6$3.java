@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import avtf;
+import avxo;
 
 public class ScanOcrActivity$6$3
   implements Runnable
 {
-  public ScanOcrActivity$6$3(avtf paramavtf) {}
+  public ScanOcrActivity$6$3(avxo paramavxo) {}
   
   public void run()
   {

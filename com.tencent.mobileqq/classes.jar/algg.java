@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.data.ApolloActionData;
+import org.json.JSONObject;
 
 public class algg
 {
-  public void a() {}
-  
-  public void a(ApolloActionData paramApolloActionData) {}
-  
-  public void a(Boolean paramBoolean) {}
-  
-  public void b(ApolloActionData paramApolloActionData) {}
+  public int a;
+  public long a;
+  public JSONObject a = new JSONObject();
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
 }
 
 

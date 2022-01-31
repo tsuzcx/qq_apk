@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview.swift;
 
-import beck;
-import befm;
+import begt;
+import bejv;
 
 public class WebViewModule$2
   implements Runnable
 {
-  public WebViewModule$2(beck parambeck) {}
+  public WebViewModule$2(begt parambegt) {}
   
   public void run()
   {
-    befm.a(this.this$0.b());
+    bejv.a(this.this$0.b());
   }
 }
 

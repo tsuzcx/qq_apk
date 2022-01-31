@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import Wallet.GetMiniAppReq;
-import aiqs;
+import aivh;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -39,7 +39,7 @@ public class MiniLogManager
   
   public static void compressAndUploadLog(String paramString, int paramInt)
   {
-    if (bdje.a(paramString)) {
+    if (bdnn.a(paramString)) {
       return;
     }
     ThreadManagerV2.executeOnFileThread(new MiniLogManager.5(MiniLog.getMiniLogFolderPath(paramString), paramString, paramInt));
@@ -47,7 +47,7 @@ public class MiniLogManager
   
   private static void doUploadFile(String paramString1, String paramString2)
   {
-    if ((bdje.a(paramString1)) || (bdje.a(paramString2))) {
+    if ((bdnn.a(paramString1)) || (bdnn.a(paramString2))) {
       return;
     }
     ThreadManager.excute(new MiniLogManager.7(paramString1, paramString2), 128, null, false);
@@ -99,10 +99,10 @@ public class MiniLogManager
   
   public static void upload(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((bdje.a(paramString1)) || (bdje.a(paramString2)) || (!new File(paramString2).exists())) {
+    if ((bdnn.a(paramString1)) || (bdnn.a(paramString2)) || (!new File(paramString2).exists())) {
       return;
     }
-    aiqs.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new MiniLogManager.6(paramString2, paramInt1));
+    aivh.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new MiniLogManager.6(paramString2, paramInt1));
   }
   
   /* Error */

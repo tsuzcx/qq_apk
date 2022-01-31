@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import amkv;
+import ampk;
 import nvp;
 
 class DailyDynamicHeaderViewController$9$1
@@ -10,7 +10,7 @@ class DailyDynamicHeaderViewController$9$1
   
   public void run()
   {
-    amkv.a(nvp.a(this.a.this$0));
+    ampk.a(nvp.a(this.a.this$0));
   }
 }
 

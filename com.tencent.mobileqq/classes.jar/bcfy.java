@@ -1,103 +1,80 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
 
 public class bcfy
-  extends bdvu
+  extends bcfx
 {
-  bcfy(bcfr parambcfr) {}
+  private TextView a;
+  private View b;
   
-  public void onDone(bdvv parambdvv)
+  protected bcfy(View paramView)
   {
-    bcgd localbcgd = new bcgd();
-    Bundle localBundle = parambdvv.a();
-    String str1 = localBundle.getString("GiftAnimationId");
-    String str2 = localBundle.getString("TroopUin");
-    int i = localBundle.getInt("GiftAnimationType");
-    boolean bool = localBundle.getBoolean("GiftIsInteract");
-    localbcgd.jdField_a_of_type_Boolean = true;
-    localbcgd.jdField_a_of_type_JavaLangString = str1;
-    bcge.a().setChanged();
-    bcge.a().notifyObservers(localbcgd);
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "onDone Id=" + str1 + " task:" + parambdvv);
-    }
-    azmj.b(null, "P_CliOper", "P_CliOper", "", "troop_gift_animation", "download", 0, parambdvv.a, str1, "", "", "");
-    if (parambdvv.a == 0)
-    {
-      parambdvv = new File(bckh.a(str1, i, bool));
-      if (parambdvv.exists()) {}
-      try
-      {
-        bdcs.a(parambdvv.getAbsolutePath(), aljq.cu, false);
-        parambdvv.delete();
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(str1, Integer.valueOf(3));
-        azmj.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_suc", 1, 0, str2, "", "", "");
-        if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) || (this.a.jdField_a_of_type_AndroidAppActivity != null)) && (!bcfr.jdField_a_of_type_JavaLangString.equals(this.a.b))) {}
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        parambdvv.delete();
-      }
-    }
-    this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(4));
-    i = bdee.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-    if (i == 1) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agoj)) && (!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agmy))) {
-        break label428;
-      }
-      alsy.a("gift_aio", "fail_cartoon", str2, "", "", "");
-      break;
-      if (i == 2) {
-        i = 3;
-      } else if (i == 3) {
-        i = 2;
-      } else if (i == 4) {
-        i = 1;
-      } else {
-        i = 4;
-      }
-    }
-    label428:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      parambdvv = "0";
-      label441:
-      if (!nav.a().a(str2)) {
-        break label521;
-      }
-    }
-    label521:
-    for (int j = 2;; j = 1)
-    {
-      azmj.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_fail", j, 0, str2, localObject + "", parambdvv, i + "");
-      break;
-      parambdvv = "1";
-      break label441;
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378957));
+    this.b = ((ImageView)paramView.findViewById(2131368742));
   }
   
-  public boolean onStart(bdvv parambdvv)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, bcfv parambcfv)
   {
-    String str = parambdvv.a().getString("GiftAnimationId");
-    bcgd localbcgd = new bcgd();
-    localbcgd.jdField_a_of_type_Boolean = false;
-    localbcgd.jdField_a_of_type_JavaLangString = str;
-    bcge.a().setChanged();
-    bcge.a().notifyObservers(localbcgd);
-    return super.onStart(parambdvv);
+    boolean bool2 = false;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131378957: 
+      paramHWReciteItem = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+      if ((paramHWReciteItem != null) && (paramHWReciteItem.isActive())) {
+        paramHWReciteItem.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      }
+      paramHWReciteItem = (bcea)parambcfv.a;
+      boolean bool1 = bool2;
+      if (paramHWReciteItem.a != null)
+      {
+        bool1 = bool2;
+        if (!paramHWReciteItem.a.isEmpty()) {
+          bool1 = true;
+        }
+      }
+      paramView = bhuf.d(paramView.getContext());
+      paramView.a(new bcfz(this, paramView, bool1, paramHWReciteItem));
+      if (bool1) {
+        paramView.c(alud.a(2131713641));
+      }
+      paramView.c(alud.a(2131713640));
+      paramView.d(alud.a(2131713638));
+      paramView.show();
+      return;
+    }
+    paramHWReciteItem.a().a(parambcfv);
+  }
+  
+  public void a(HWReciteItem paramHWReciteItem, bcfv parambcfv, bcea parambcea, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambcea.c))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(alud.a(2131713639)).append(parambcea.b);
+      if ((parambcea.a != null) && (!parambcea.a.isEmpty())) {
+        localStringBuilder.append(bcde.a(parambcea.a));
+      }
+      parambcea.c = localStringBuilder.toString();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambcea.c);
+    if (paramInt != 1)
+    {
+      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, parambcfv);
+      paramHWReciteItem.b(this.b, parambcfv);
+      this.b.setVisibility(0);
+      return;
+    }
+    this.b.setVisibility(8);
   }
 }
 

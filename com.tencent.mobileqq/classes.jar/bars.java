@@ -1,8 +1,22 @@
-public abstract interface bars
+class bars
+  extends alwx
 {
-  public abstract void a(int paramInt, String paramString);
+  bars(barp parambarp) {}
   
-  public abstract void a(String paramString);
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalwy);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    if (paramalwy != null) {
+      this.a.v = paramalwy.d;
+    }
+    this.a.d();
+  }
 }
 
 

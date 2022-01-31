@@ -1,17 +1,10 @@
-import android.app.Activity;
-import android.content.Intent;
-
-public class vwl
-  extends vox
+public abstract interface vwl
 {
-  public vwl(vwk paramvwk) {}
+  public abstract void a(long paramLong1, long paramLong2, vwa paramvwa);
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
-    }
-  }
+  public abstract void b(vwa paramvwa);
+  
+  public abstract void c(vwa paramvwa);
 }
 
 

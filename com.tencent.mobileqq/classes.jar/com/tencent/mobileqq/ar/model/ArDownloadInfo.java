@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ArDownloadInfo
-  extends awbv
+  extends awge
 {
   public int dailyRetryCount;
   public long dailyStartTime;
-  @awdj
+  @awhs
   public String md5;
   public int totalRetryCount;
   

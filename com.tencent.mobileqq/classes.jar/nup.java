@@ -42,16 +42,16 @@ import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsgReq;
 import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsgRsp;
 
 public class nup
-  extends alko
+  extends alpd
 {
   static String a;
   static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "qqshp_client_log_wl_conf.json";
-  public alsi a;
+  public alwx a;
   
   public nup(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_Alsi = new nuq(this);
+    this.jdField_a_of_type_Alwx = new nuq(this);
   }
   
   public static List<String> a(JSONArray paramJSONArray)
@@ -74,7 +74,7 @@ public class nup
     boolean bool = true;
     Object localObject = new File(b);
     if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = bdcs.a((File)localObject);
+      localObject = bdhb.a((File)localObject);
     }
     for (;;)
     {
@@ -146,7 +146,7 @@ public class nup
     long l1 = 0L;
     try
     {
-      i = bdee.a(this.app.getApp().getApplicationContext());
+      i = bdin.a(this.app.getApp().getApplicationContext());
       long l2 = Long.parseLong(paramString1);
       l1 = l2;
     }
@@ -279,7 +279,7 @@ public class nup
           {
             paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
             if ((paramMessageRecord.mStructMsgItemLists != null) && (paramMessageRecord.mStructMsgItemLists.size() > 0)) {
-              aanv.a(1, 2, ntw.a((azqj)paramMessageRecord.mStructMsgItemLists.get(0)));
+              aask.a(1, 2, ntw.a((azus)paramMessageRecord.mStructMsgItemLists.get(0)));
             }
           }
         }
@@ -325,8 +325,8 @@ public class nup
           if ((paramMessageRecord.mStructMsgItemLists == null) || (paramMessageRecord.mStructMsgItemLists.size() <= 0)) {
             return;
           }
-          paramMessageRecord = (azqj)paramMessageRecord.mStructMsgItemLists.get(0);
-          aanv.a(0, 2, ntw.a(paramMessageRecord));
+          paramMessageRecord = (azus)paramMessageRecord.mStructMsgItemLists.get(0);
+          aask.a(0, 2, ntw.a(paramMessageRecord));
           if ((paramMessageRecord == null) || (paramMessageRecord.c != 100) || (!(paramMessageRecord.a instanceof StructMsgForGeneralShare))) {
             return;
           }
@@ -360,7 +360,7 @@ public class nup
         paramMessageRecord.thirdparty_monitor_urls.set((MessageMicro)localObject1);
         localObject1 = new qq_ad_get.QQAdGetRsp.AdInfo();
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.set(paramMessageRecord);
-        aanv.a(0, 2, (qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+        aask.a(0, 2, (qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
         return;
       }
     }
@@ -389,7 +389,7 @@ public class nup
     a(134243856, paramMessageRecord.senderuin, (String)localObject1, null, null, 0L, false);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return nub.class;
   }

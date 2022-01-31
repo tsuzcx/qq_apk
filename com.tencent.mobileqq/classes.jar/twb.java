@@ -1,19 +1,14 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
-
 public class twb
-  implements Observer<tzm<List<FeedCloudMeta.StFeed>>>
 {
-  public twb(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void a(@Nullable tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  public twb(String paramString1, boolean paramBoolean, String paramString2)
   {
-    QLog.d(QCircleBaseTabFragment.c, 4, "initViewData:getFeedListRequestRsp" + this.a.a());
-    this.a.a(paramtzm);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString2;
   }
 }
 

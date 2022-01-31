@@ -1,12 +1,14 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public class baxg
-  extends baxq
+class baxg
+  implements ITransCallbackForReport
 {
-  public String a;
-  public ArrayList<basp> a = new ArrayList();
-  public String b;
-  public ArrayList<basp> b = new ArrayList();
+  baxg(baxe parambaxe) {}
+  
+  public void onFailed(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(false, paramInt, paramString1, paramString2);
+  }
 }
 
 

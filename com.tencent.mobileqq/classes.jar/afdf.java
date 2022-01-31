@@ -1,59 +1,64 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver.1;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import java.lang.ref.WeakReference;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
-public class afdf
-  implements bhqd
+public final class afdf
+  extends BroadcastReceiver
 {
-  public afdf(ApolloItemBuilder paramApolloItemBuilder, afdm paramafdm, ApolloActionData paramApolloActionData, bhpy parambhpy) {}
+  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
+  private Calendar jdField_a_of_type_JavaUtilCalendar;
   
-  public void OnClick(View paramView, int paramInt)
+  private afdf(BaseChatPie paramBaseChatPie)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+  }
+  
+  private void a()
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localBaseChatPie != null)
     {
+      if (this.jdField_a_of_type_JavaUtilCalendar == null) {
+        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+      }
+      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+      int i = this.jdField_a_of_type_JavaUtilCalendar.get(11);
+      if ((i < 19) && (i >= 7)) {
+        break label81;
+      }
     }
-    for (;;)
+    label81:
+    for (boolean bool = true; Looper.getMainLooper() == Looper.myLooper(); bool = false)
     {
-      this.jdField_a_of_type_Bhpy.cancel();
+      localBaseChatPie.a.b(bool);
       return;
-      if ((1 == this.jdField_a_of_type_Afdm.f) || (this.jdField_a_of_type_Afdm.f == 2))
-      {
-        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          QLog.e("ApolloItemBuilder", 1, "mContext is not activity");
-          return;
-        }
-        ApolloUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
-      }
-      else
-      {
-        if (3 == this.jdField_a_of_type_Afdm.f)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-            break;
-            paramView.putExtra("url", alef.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
-          }
-        }
-        if (4 != this.jdField_a_of_type_Afdm.f) {
-          acex.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afdm.a.uniseq);
-        }
-      }
     }
+    localBaseChatPie.a().post(new AIOIconChangeByTimeHelper.TimeChangeReceiver.1(this, localBaseChatPie, bool));
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
+      a();
+    }
+    do
+    {
+      return;
+      if ("android.intent.action.TIME_SET".equals(paramContext))
+      {
+        a();
+        return;
+      }
+    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
+    a();
   }
 }
 

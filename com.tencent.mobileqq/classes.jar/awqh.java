@@ -1,18 +1,6 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-
-public class awqh
-  implements bdjy<Rect>
+public abstract interface awqh
 {
-  public awqh(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bdjs<Rect> parambdjs, float paramFloat, Rect paramRect, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

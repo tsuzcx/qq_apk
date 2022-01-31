@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import anad;
+import anem;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniRecog$3
   implements Runnable
 {
-  public MiniRecog$3(anad paramanad) {}
+  public MiniRecog$3(anem paramanem) {}
   
   public void run()
   {

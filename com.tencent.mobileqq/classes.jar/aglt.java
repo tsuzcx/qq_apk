@@ -1,22 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
-public class aglt
-  implements View.OnClickListener
+class aglt
+  implements View.OnTouchListener
 {
-  aglt(agld paramagld) {}
+  aglt(agls paramagls, agln paramagln) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (agld.a(this.a).getVisibility() == 0) {
-      ThreadManager.post(new FriendChatPie.7.1(this), 5, null, false);
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
     }
-    aekt.n = true;
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    return false;
   }
 }
 

@@ -2,17 +2,17 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
-import bkpi;
+import bktp;
 
 public class VideoStoryPiecesPart$2
   implements Runnable
 {
-  public VideoStoryPiecesPart$2(bkpi parambkpi) {}
+  public VideoStoryPiecesPart$2(bktp parambktp) {}
   
   public void run()
   {
-    bkpi.a(this.this$0).setImageResource(2130837621);
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)bkpi.a(this.this$0).getDrawable();
+    bktp.a(this.this$0).setImageResource(2130837621);
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)bktp.a(this.this$0).getDrawable();
     if (localAnimationDrawable != null) {
       localAnimationDrawable.start();
     }

@@ -60,7 +60,7 @@ public class mfl
             if (this.a.o <= 1) {
               break label381;
             }
-            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372877, 0);
+            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372903, 0);
           }
         }
         break;
@@ -86,7 +86,7 @@ public class mfl
           this.a.e("onGaOperationResult->REQUEST_VIDEO_SUC");
           this.a.a(paramLong1, locallid.c);
           return;
-          this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372877, 8);
+          this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372903, 8);
         }
       }
     } while ((paramLong3 == 2L) || (paramLong3 != 4L));

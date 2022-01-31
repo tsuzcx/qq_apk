@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.audiorecorder;
 
-import bhdy;
+import bhif;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class LameMp3Native
 {
-  public static volatile boolean a = bhdy.a().b();
+  public static volatile boolean a = bhif.a().b();
   
   static
   {
@@ -13,7 +13,7 @@ public class LameMp3Native
     if (!a) {}
     try
     {
-      a = bhdy.a().a();
+      a = bhif.a().a();
       if (a) {}
     }
     catch (Throwable localThrowable1)

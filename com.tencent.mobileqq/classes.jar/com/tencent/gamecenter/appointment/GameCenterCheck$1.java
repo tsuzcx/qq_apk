@@ -1,8 +1,8 @@
 package com.tencent.gamecenter.appointment;
 
-import aact;
+import aahi;
 import android.text.TextUtils;
-import bfnq;
+import bfrz;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 final class GameCenterCheck$1
@@ -13,36 +13,36 @@ final class GameCenterCheck$1
   public void run()
   {
     int j = 0;
-    bfnq.c("GameCenterCheck", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
-    aact.a();
+    bfrz.c("GameCenterCheck", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
+    aahi.a();
     String[] arrayOfString;
     int k;
     int i;
     if (!TextUtils.isEmpty(this.a))
     {
       arrayOfString = this.a.split("\\|");
-      if ((aact.a) && (AppNetConnInfo.isWifiConn())) {
-        aact.a(arrayOfString);
+      if ((aahi.a) && (AppNetConnInfo.isWifiConn())) {
+        aahi.a(arrayOfString);
       }
       k = arrayOfString.length;
       i = 0;
       while (i < k)
       {
-        aact.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
+        aahi.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
         i += 1;
       }
     }
     if (!TextUtils.isEmpty(this.b))
     {
       arrayOfString = this.b.split("\\|");
-      if (aact.b) {
-        aact.b(arrayOfString);
+      if (aahi.b) {
+        aahi.b(arrayOfString);
       }
       k = arrayOfString.length;
       i = j;
       while (i < k)
       {
-        aact.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
+        aahi.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
         i += 1;
       }
     }

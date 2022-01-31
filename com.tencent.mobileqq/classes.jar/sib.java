@@ -24,8 +24,8 @@ public class sib
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131559986, null);
-    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364686);
+    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131559985, null);
+    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364687);
     oqv localoqv = new oqv(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Sic);
     localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
     localRecyclerView.setAdapter(localoqv);

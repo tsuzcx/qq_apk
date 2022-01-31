@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.troop.activity;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,22 +16,22 @@ import com.tencent.biz.qqstory.view.widget.FullScreenEmptyView;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import urr;
-import wdj;
-import wkp;
-import wpi;
-import xrg;
+import uwa;
+import whs;
+import woy;
+import wtr;
+import xvp;
 
 public class TroopStoryMainActivity
   extends QQStoryBaseActivity
-  implements wpi
+  implements wtr
 {
   public static final String a;
   protected StoryInputBarView a;
   public TroopStoryListView a;
   public FullScreenEmptyView a;
   protected Runnable a;
-  public wkp a;
+  public woy a;
   
   static
   {
@@ -53,7 +53,7 @@ public class TroopStoryMainActivity
     return this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView;
   }
   
-  public xrg a(String paramString)
+  public xvp a(String paramString)
   {
     return this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(paramString);
   }
@@ -85,16 +85,16 @@ public class TroopStoryMainActivity
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561574);
-    super.setTitle(alpo.a(2131716173));
-    this.jdField_a_of_type_Wkp = ((wkp)urr.a(11));
-    this.jdField_a_of_type_Wkp.a.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131373758));
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131369552));
+    super.setContentView(2131561592);
+    super.setTitle(alud.a(2131716185));
+    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
+    this.jdField_a_of_type_Woy.a.clear();
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131373809));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131369570));
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(this, this);
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839211);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131166959));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839212);
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131166961));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView = new FullScreenEmptyView(this);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView.setVisibility(8);
     ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView);
@@ -113,7 +113,7 @@ public class TroopStoryMainActivity
       this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.l();
     }
     this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.d();
-    this.jdField_a_of_type_Wkp.a.clear();
+    this.jdField_a_of_type_Woy.a.clear();
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -151,7 +151,7 @@ public class TroopStoryMainActivity
     default: 
       return;
     }
-    wdj.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
+    whs.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
   }
 }

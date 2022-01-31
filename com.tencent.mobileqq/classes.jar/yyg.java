@@ -1,19 +1,6 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-public class yyg
-  extends yyk
+public abstract interface yyg
 {
-  public yyg(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
-  }
+  public abstract void a();
 }
 
 

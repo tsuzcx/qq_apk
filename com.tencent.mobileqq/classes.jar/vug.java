@@ -1,6 +1,19 @@
-public abstract interface vug
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+public class vug
+  implements vme
 {
-  public abstract void a(vtz paramvtz);
+  public vug(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public void a()
+  {
+    wxe.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+  }
+  
+  public void b()
+  {
+    wxe.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+  }
 }
 
 

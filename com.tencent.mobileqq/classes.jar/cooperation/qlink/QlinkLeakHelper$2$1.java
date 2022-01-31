@@ -1,8 +1,8 @@
 package cooperation.qlink;
 
-import abqn;
-import biox;
-import bioy;
+import abvc;
+import bite;
+import bitf;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
@@ -12,20 +12,20 @@ import org.json.JSONObject;
 public class QlinkLeakHelper$2$1
   implements Runnable
 {
-  public QlinkLeakHelper$2$1(bioy parambioy) {}
+  public QlinkLeakHelper$2$1(bitf parambitf) {}
   
   public void run()
   {
-    Object localObject1 = abqn.a("mobile_qlink_leak");
+    Object localObject1 = abvc.a("mobile_qlink_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      biox.a((String)localObject2);
+      bite.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("6b98d0b0"))
+      if (!"0".equals("fd2cc8f9"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();

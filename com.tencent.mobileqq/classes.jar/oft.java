@@ -60,7 +60,7 @@ public class oft
       int i = this.jdField_b_of_type_OrgJsonJSONObject.optInt("iconSize");
       if (i > 0)
       {
-        i = aekt.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i = aepi.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
         paramDrawable.setBounds(0, 0, i, i);
         return;
       }
@@ -70,13 +70,13 @@ public class oft
   
   private void a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559882, null);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369887));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559881, null);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369906));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362676));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView = ((NativeAdDownloadView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379854));
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView = ((NativeAdDownloadView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379912));
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -84,14 +84,14 @@ public class oft
   
   private int d()
   {
-    int j = aekt.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = j;
     if (this.jdField_b_of_type_OrgJsonJSONObject != null)
     {
       int k = this.jdField_b_of_type_OrgJsonJSONObject.optInt("drawablePadding");
       i = j;
       if (k > 0) {
-        i = aekt.a(k, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i = aepi.a(k, this.jdField_a_of_type_AndroidContentContext.getResources());
       }
     }
     return i;
@@ -105,7 +105,7 @@ public class oft
         String str = this.jdField_a_of_type_Qyj.d;
         if (!TextUtils.isEmpty(str))
         {
-          DownloadInfo localDownloadInfo = bfgi.a().c(str);
+          DownloadInfo localDownloadInfo = bfkr.a().c(str);
           if ((noq.a(this.jdField_a_of_type_AndroidContentContext, str)) && (localDownloadInfo != null) && (localDownloadInfo.a() == 4))
           {
             m();
@@ -285,11 +285,11 @@ public class oft
       localObject1 = localObject2;
       if (this.jdField_b_of_type_OrgJsonJSONObject.optString("showBunttonLeftIconOrNot").trim().equals("1"))
       {
-        localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842346);
-        if ((this.jdField_a_of_type_Qyj == null) || (!bdem.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Qyj.d))) {
+        localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842359);
+        if ((this.jdField_a_of_type_Qyj == null) || (!bdiv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Qyj.d))) {
           break label87;
         }
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842346);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842359);
       }
     }
     label87:
@@ -297,10 +297,10 @@ public class oft
     {
       return localObject1;
       if (f()) {
-        return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842344);
+        return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842357);
       }
       if ((d()) || (e())) {
-        return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842347);
+        return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842360);
       }
       localObject1 = localObject2;
     } while (c());
@@ -347,7 +347,7 @@ public class oft
       return;
     case 1: 
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131713254));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131713266));
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.a(paramInt1, paramInt2);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.setVisibility(8);
       return;
@@ -359,7 +359,7 @@ public class oft
     case 6: 
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.setVisibility(8);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, alpo.a(2131713360), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, alud.a(2131713372), 0).a();
       return;
     }
     f();
@@ -403,7 +403,7 @@ public class oft
   {
     if ((paramAdvertisementInfo != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(a())))
     {
-      paramAdvertisementInfo = BaseApplicationImpl.getContext().getResources().getString(2131718895);
+      paramAdvertisementInfo = BaseApplicationImpl.getContext().getResources().getString(2131718907);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdvertisementInfo);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
@@ -439,7 +439,7 @@ public class oft
       n();
       if (this.jdField_a_of_type_Qyj != null)
       {
-        bool1 = bdem.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d);
+        bool1 = bdiv.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Qyj.d);
         boolean bool2 = i();
         if ((bool1) || (bool2) || ((c() != 4) && (c() != 3)) || (b() < 0) || (b() >= 100)) {
           break label137;
@@ -553,7 +553,7 @@ public class oft
               if (f3 > 2.0F) {
                 f2 = 2.0F;
               }
-              localGradientDrawable.setStroke(aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()), npd.a((String)localObject2, "#40A0FF"));
+              localGradientDrawable.setStroke(aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()), npd.a((String)localObject2, "#40A0FF"));
             }
             if (!TextUtils.isEmpty(str3))
             {
@@ -562,7 +562,7 @@ public class oft
                 break label1096;
               }
               f2 = 0.0F;
-              localGradientDrawable.setCornerRadius(aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()));
+              localGradientDrawable.setCornerRadius(aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()));
             }
             opi.a(this.jdField_a_of_type_AndroidWidgetTextView, localGradientDrawable);
           }
@@ -582,12 +582,12 @@ public class oft
           if (f2 <= 0.0F) {
             break label1050;
           }
-          j = aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
+          j = aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
           i = j;
           if (f3 <= 0.0F) {
             break label1041;
           }
-          m = aekt.a(f3, this.jdField_a_of_type_AndroidContentContext.getResources());
+          m = aepi.a(f3, this.jdField_a_of_type_AndroidContentContext.getResources());
           k = m;
           localObject2 = this.jdField_b_of_type_OrgJsonJSONObject.optString("buttonAlignment");
           if (!"3".equals(localObject2)) {
@@ -606,8 +606,8 @@ public class oft
             break label1014;
           }
           localObject2 = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-          ((FrameLayout.LayoutParams)localObject2).height = aekt.a(f3, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((FrameLayout.LayoutParams)localObject2).width = aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((FrameLayout.LayoutParams)localObject2).height = aepi.a(f3, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((FrameLayout.LayoutParams)localObject2).width = aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
           this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
           m = 0;
@@ -638,7 +638,7 @@ public class oft
             if (localObject2 == null) {
               localObject1 = new Layout.Params();
             }
-            ((Layout.Params)localObject1).mLayoutWidth = aekt.a(f2 * 2.0F + f4, this.jdField_a_of_type_AndroidContentContext.getResources());
+            ((Layout.Params)localObject1).mLayoutWidth = aepi.a(f2 * 2.0F + f4, this.jdField_a_of_type_AndroidContentContext.getResources());
             setComLayoutParams((Layout.Params)localObject1);
             i4 = i5;
             f2 = f1;
@@ -952,7 +952,7 @@ public class oft
     } while (this.jdField_a_of_type_Qyj == null);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mProgressFromFeeds = true;
     paramView = this.jdField_a_of_type_Qyj.d;
-    if (bdem.a(BaseApplicationImpl.getContext(), paramView))
+    if (bdiv.a(BaseApplicationImpl.getContext(), paramView))
     {
       k();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = 1;
@@ -961,8 +961,8 @@ public class oft
     }
     if (noq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Qyj))
     {
-      paramView = bfgi.a().c(this.jdField_a_of_type_Qyj.d);
-      bfgi.a().a(paramView);
+      paramView = bfkr.a().c(this.jdField_a_of_type_Qyj.d);
+      bfkr.a().a(paramView);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = 5;
       noy.a(new obk().a(this.jdField_a_of_type_AndroidContentContext).a(noy.jdField_a_of_type_Int).b(noy.X).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a());
       return;
@@ -974,12 +974,12 @@ public class oft
       noy.a(new obk().a(this.jdField_a_of_type_AndroidContentContext).a(noy.jdField_a_of_type_Int).b(noy.L).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a());
       return;
     }
-    if ((bdee.b(this.jdField_a_of_type_AndroidContentContext)) && (oed.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo))) {}
+    if ((bdin.b(this.jdField_a_of_type_AndroidContentContext)) && (oed.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo))) {}
     for (;;)
     {
       for (;;)
       {
-        if ((aaon.a()) || (i != 0))
+        if ((aatc.a()) || (i != 0))
         {
           if (j == 2)
           {
@@ -1004,7 +1004,7 @@ public class oft
           }
           paramView = this.jdField_a_of_type_Qyj.d;
           i = oee.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-          if (bdem.a(BaseApplicationImpl.getContext(), paramView))
+          if (bdiv.a(BaseApplicationImpl.getContext(), paramView))
           {
             k();
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = 1;
@@ -1022,8 +1022,8 @@ public class oft
       }
       if (noq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Qyj))
       {
-        paramView = bfgi.a().c(this.jdField_a_of_type_Qyj.d);
-        bfgi.a().a(paramView);
+        paramView = bfkr.a().c(this.jdField_a_of_type_Qyj.d);
+        bfkr.a().a(paramView);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = 5;
         noy.a(new obk().a(this.jdField_a_of_type_AndroidContentContext).a(noy.jdField_a_of_type_Int).b(noy.L).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a());
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -1040,14 +1040,14 @@ public class oft
         return;
       }
       i = j;
-      if (bdee.b(this.jdField_a_of_type_AndroidContentContext))
+      if (bdin.b(this.jdField_a_of_type_AndroidContentContext))
       {
         i = j;
         if (oed.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) {
           i = 1;
         }
       }
-      if ((aaon.a()) || (i != 0)) {
+      if ((aatc.a()) || (i != 0)) {
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState == 3) {
           j();
         }

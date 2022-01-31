@@ -2,12 +2,12 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.content.Intent;
-import bkjp;
+import bknw;
 
 public class QIMQzoneEffectsCameraCaptureUnit$1
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$1(bkjp parambkjp, Intent paramIntent) {}
+  public QIMQzoneEffectsCameraCaptureUnit$1(bknw parambknw, Intent paramIntent) {}
   
   public void run()
   {

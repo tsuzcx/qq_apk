@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class PayJsPlugin$10
   implements Runnable
 {
-  PayJsPlugin$10(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, Activity paramActivity, bgkd parambgkd, boolean paramBoolean) {}
+  PayJsPlugin$10(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, Activity paramActivity, bgok parambgok, boolean paramBoolean) {}
   
   public void run()
   {

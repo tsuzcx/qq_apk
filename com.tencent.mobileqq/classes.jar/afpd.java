@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.TextView;
 
 class afpd
-  extends afpq
+  extends aepm
 {
-  afpd(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  TextView b;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afie(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  afpd(afnq paramafnq) {}
 }
 
 

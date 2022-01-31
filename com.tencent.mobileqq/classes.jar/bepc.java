@@ -1,31 +1,44 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class bepc
-  implements URLDrawable.URLDrawableListener
+  implements Animation.AnimationListener
 {
-  final WeakReference<View> a;
+  private bepc(DraggableGridView paramDraggableGridView) {}
   
-  public bepc(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+    int i = 0;
+    while (i < DraggableGridView.a(this.a).getChildCount())
+    {
+      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      if ((paramAnimation instanceof GridView))
+      {
+        paramAnimation = (GridView)paramAnimation;
+        int j = 0;
+        while (j < paramAnimation.getChildCount())
+        {
+          paramAnimation.getChildAt(j).clearAnimation();
+          paramAnimation.getChildAt(j).setPressed(false);
+          paramAnimation.getChildAt(j).setVisibility(0);
+          j += 1;
+        }
+      }
+      i += 1;
     }
+    this.a.a();
+    DraggableGridView.b(this.a, false);
+    DraggableGridView.c(this.a, false);
+    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,56 +1,116 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class apln
-  extends apns
+  extends apld
 {
-  public apln(MessengerService paramMessengerService) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public apln(QQAppInterface paramQQAppInterface)
   {
-    int i = 2;
-    if (this.a.a != null) {}
-    try
+    super("qq.android.ptt.so.658", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10007;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PttSilkAndChangeVoiceSoData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPttSilkAndChangeVoiceSo";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
+    }
+    for (;;)
     {
-      Message localMessage = Message.obtain(null, 5);
-      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
-      if (paramInt == 0) {
-        i = 0;
-      }
-      for (;;)
+      try
       {
-        paramEmoticonPackage = new Bundle();
-        paramEmoticonPackage.putInt("packetid", j);
-        paramEmoticonPackage.putInt("peoriodtype", 1);
-        paramEmoticonPackage.putInt("resultcode", i);
-        localMessage.setData(paramEmoticonPackage);
-        this.a.a.send(localMessage);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
-        }
-        return;
-        if (paramInt != 11007) {
-          if (paramInt == 11001) {
-            i = 1;
-          } else if (paramInt == 11000) {
-            i = 6;
-          } else {
-            i = -1;
+        str = awxx.a();
+        if ((str != null) && (!str.equals("")))
+        {
+          bdhb.a(str);
+          if (new File(str).mkdir())
+          {
+            bdhb.a(paramString, str, false);
+            if (QLog.isColorLevel()) {
+              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
+            }
           }
         }
       }
-      return;
+      catch (Exception localException)
+      {
+        String str;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
+        continue;
+      }
+      try
+      {
+        if (!awxx.a)
+        {
+          bdhb.a(awxx.b());
+          bdhb.c(str, awxx.b());
+        }
+        super.a(paramString);
+        return;
+      }
+      finally {}
     }
-    catch (Exception paramEmoticonPackage)
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    Object localObject = (PttSilkAndChangeVoiceSoData)a();
+    if (localObject == null) {
+      return false;
+    }
+    int i = lnz.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.3.5" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
+    }
+    localObject = this.a.getPreferences();
+    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
     {
-      return;
+      bavt.a();
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    catch (RemoteException paramEmoticonPackage) {}
+    if (i > 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
+      }
+      return bool;
+    }
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import usv;
-import xjv;
-import xjw;
+import uxe;
+import xoe;
+import xof;
 
 public class TagUserItem
   extends BaseUIItem
-  implements usv
+  implements uxe
 {
   public long tagId;
-  public xjv tagItem;
+  public xoe tagItem;
   public String tagName;
   
   public void convertFrom(qqstory_struct.TagItem paramTagItem)
   {
     if (paramTagItem.has())
     {
-      this.tagItem = new xjv(paramTagItem);
+      this.tagItem = new xoe(paramTagItem);
       this.tagId = this.tagItem.a.jdField_a_of_type_Long;
       this.tagName = this.tagItem.a.jdField_a_of_type_JavaLangString;
     }

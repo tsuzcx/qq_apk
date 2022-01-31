@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aehu
-  implements DialogInterface.OnClickListener
+public class aehu
+  implements View.OnClickListener
 {
-  aehu(aeht paramaeht) {}
+  public aehu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = new Intent(this.a, AccountDetailActivity.class);
+    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
+    paramView.putExtra("source", 112);
+    this.a.startActivity(paramView);
+    azqs.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
   }
 }
 

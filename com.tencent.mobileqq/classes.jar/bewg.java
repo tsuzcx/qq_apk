@@ -1,19 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 final class bewg
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  bewg(View paramView1, View paramView2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
-      return;
-    }
-    bewd.a(paramIntent.getStringExtra("account"));
-    bewd.b(bewd.a());
+    paramAnimation = new beut(this.a);
+    paramAnimation.setDuration(bewf.a());
+    paramAnimation.setFillAfter(true);
+    this.a.startAnimation(paramAnimation);
+    this.a.setVisibility(0);
+    this.b.clearAnimation();
+    this.b.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.clearAnimation();
+    this.a.setVisibility(4);
   }
 }
 

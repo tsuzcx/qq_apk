@@ -1,22 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class atio
-  implements DialogInterface.OnDismissListener
+  extends WebViewPlugin
 {
-  public atio(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atjn paramatjn) {}
+  private final yqz a = yqz.a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Atjn.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
+    {
+      this.a.k();
+      return true;
     }
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.a.b();
   }
 }
 

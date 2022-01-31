@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minigame.splash;
 
-import baps;
-import baqy;
-import bavo;
+import baub;
+import bavh;
+import bazx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 final class SplashMiniGameDownloadManager$1
-  extends bavo
+  extends bazx
 {
   SplashMiniGameDownloadManager$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
@@ -22,12 +22,12 @@ final class SplashMiniGameDownloadManager$1
   public void realStart()
   {
     QLog.i("SplashMiniGameDownloadMgr", 1, "downloadPicAGifAVideoRes appid" + this.val$appid);
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = new SplashMiniGameDownloadManager.DownLoadNetEngine(this.app, this.val$appid, this.val$contentType, this.val$path, this.val$downloadUrl);
-    localbaps.jdField_a_of_type_JavaLangString = this.val$downloadUrl;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.c = this.val$path;
-    ((baqy)this.app.getNetEngine(0)).a(localbaps);
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = new SplashMiniGameDownloadManager.DownLoadNetEngine(this.app, this.val$appid, this.val$contentType, this.val$path, this.val$downloadUrl);
+    localbaub.jdField_a_of_type_JavaLangString = this.val$downloadUrl;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.c = this.val$path;
+    ((bavh)this.app.getNetEngine(0)).a(localbaub);
   }
 }
 

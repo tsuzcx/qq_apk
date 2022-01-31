@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.SpannableStringBuilder;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ayrd;
-import bdbi;
+import ayvm;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
@@ -93,7 +93,7 @@ public class ComponentHeaderPublish
       if (!ors.a()) {
         break label45;
       }
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(ayrd.a(this.jdField_a_of_type_Bcws, String.valueOf(l), 1));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(ayvm.a(this.jdField_a_of_type_Bdbb, String.valueOf(l), 1));
     }
     for (;;)
     {
@@ -143,7 +143,7 @@ public class ComponentHeaderPublish
         {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setVisibility(0);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alpo.a(2131702707));
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702719));
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qea(this));
           Object localObject1;
           Object localObject2;
@@ -159,7 +159,7 @@ public class ComponentHeaderPublish
             }
             for (;;)
             {
-              localObject2 = alpo.a(2131702691);
+              localObject2 = alud.a(2131702703);
               ((SpannableStringBuilder)localObject1).append(" ");
               ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2);
               qbw localqbw = new qbw(localArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_Qbs);
@@ -195,7 +195,7 @@ public class ComponentHeaderPublish
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setVisibility(8);
         break;
         label464:
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131702670));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131702682));
       }
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setVisibility(8);
@@ -211,7 +211,7 @@ public class ComponentHeaderPublish
       localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
       ors.a = localArticleInfo;
       str2 = "" + a();
-      str1 = oqu.k + bdbi.encodeToString(String.valueOf(str2).getBytes(), 2);
+      str1 = oqu.k + bdfr.encodeToString(String.valueOf(str2).getBytes(), 2);
       ors.a(getContext(), str1);
       str3 = ors.a("4", localArticleInfo, a());
       if (!szp.a(this.jdField_a_of_type_Qbs.a.e())) {
@@ -228,7 +228,7 @@ public class ComponentHeaderPublish
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559969, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559968, this, true);
   }
   
   public void a(long paramLong, Bitmap paramBitmap)
@@ -242,13 +242,13 @@ public class ComponentHeaderPublish
   {
     super.a(paramView);
     this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131362973));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371142));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371161));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377793));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365127));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375206);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)findViewById(2131375168));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368906));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377847));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365129));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375257);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)findViewById(2131375219));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368924));
   }
   
   public void a(Object paramObject)

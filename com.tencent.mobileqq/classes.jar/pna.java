@@ -115,40 +115,40 @@ public class pna
   
   public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    bhxr.a("PgcProteusItem.getDataJson");
+    biby.a("PgcProteusItem.getDataJson");
     long l2 = System.currentTimeMillis();
     pjo localpjo = new pjo();
     try
     {
       l1 = Long.parseLong(paramBaseArticleInfo.mSubscribeID);
-      bhxr.a("PgcProteusItem.bindArticleComment");
+      biby.a("PgcProteusItem.bindArticleComment");
       if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramBaseArticleInfo.mTitle)) || ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString != null)))) {
         localpjo.p(paramBaseArticleInfo);
       }
-      bhxr.a();
-      bhxr.a("PgcProteusItem.bindReadArticle");
+      biby.a();
+      biby.a("PgcProteusItem.bindReadArticle");
       if ((paramInt == 34) || (paramInt == 85)) {
-        localpjo.c(paramBaseArticleInfo, alpo.a(2131708356));
+        localpjo.c(paramBaseArticleInfo, alud.a(2131708368));
       }
-      bhxr.a();
+      biby.a();
       if (paramInt == 29) {
-        localpjo.c(paramBaseArticleInfo, alpo.a(2131708355));
+        localpjo.c(paramBaseArticleInfo, alud.a(2131708367));
       }
-      bhxr.a("PgcProteusItem.bindTopicCapsule");
+      biby.a("PgcProteusItem.bindTopicCapsule");
       if (paramInt != 29) {
         localpjo.A(paramBaseArticleInfo).D(paramBaseArticleInfo).B(paramBaseArticleInfo);
       }
-      bhxr.a();
-      bhxr.a("PgcProteusItem.bindPublicAccountFollowButton");
+      biby.a();
+      biby.a("PgcProteusItem.bindPublicAccountFollowButton");
       if (((paramBaseArticleInfo instanceof ArticleInfo)) && (rqj.h((ArticleInfo)paramBaseArticleInfo))) {
         localpjo.h(paramBaseArticleInfo);
       }
-      bhxr.a();
+      biby.a();
       localpjo.a(paramBaseArticleInfo).b(paramBaseArticleInfo).r(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).d(paramBaseArticleInfo).j(paramBaseArticleInfo).g(paramBaseArticleInfo).k(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).l(paramBaseArticleInfo).I(paramBaseArticleInfo).t(paramBaseArticleInfo).u(paramBaseArticleInfo);
-      bhxr.a("PgcProteusItem.bindMiddleBody");
+      biby.a("PgcProteusItem.bindMiddleBody");
       localpjo.z(paramBaseArticleInfo);
-      bhxr.a();
-      bhxr.a();
+      biby.a();
+      biby.a();
       srq.a("PgcProteusItem", String.valueOf(paramInt), "PgcProteusItem.getDataJson", System.currentTimeMillis() - l2);
       return localpjo.a();
     }
@@ -165,34 +165,34 @@ public class pna
   public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
   {
     long l = System.currentTimeMillis();
-    bhxr.a("PgcProteusItem.bindView");
+    biby.a("PgcProteusItem.bindView");
     ViewBase localViewBase = paramContainer.getVirtualView();
     c(paramInt1, paramContainer, parampgd, paramInt2, localViewBase);
     b(parampgd, localViewBase);
     a(parampgd, localViewBase);
     b(paramInt1, paramContainer, parampgd, paramInt2, localViewBase);
     a(paramInt1, paramContainer, parampgd, paramInt2, localViewBase);
-    bhxr.a("PgcProteusItem.bindView.bindJumpChannel");
+    biby.a("PgcProteusItem.bindView.bindJumpChannel");
     psw.a(localViewBase, parampgd);
-    bhxr.a();
-    bhxr.a("PgcProteusItem.bindView.bindSocialCommon");
+    biby.a();
+    biby.a("PgcProteusItem.bindView.bindSocialCommon");
     psw.b(localViewBase, parampgd);
-    bhxr.a();
-    bhxr.a("PgcProteusItem.bindView.bindFlowGuideSperator");
+    biby.a();
+    biby.a("PgcProteusItem.bindView.bindFlowGuideSperator");
     psw.c(localViewBase, parampgd);
-    bhxr.a();
-    bhxr.a();
+    biby.a();
+    biby.a();
     srq.a("PgcProteusItem", String.valueOf(paramInt1), "PgcProteusItem.bindView", System.currentTimeMillis() - l);
   }
   
   protected void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2, ViewBase paramViewBase)
   {
-    bhxr.a("PgcProteusItem.bindView.socialBottomBar");
+    biby.a("PgcProteusItem.bindView.socialBottomBar");
     paramViewBase = paramViewBase.findViewBaseByName("id_social_bottom");
     if (((paramInt1 == 48) || (paramInt1 == 64) || (paramInt1 == 65)) && (paramViewBase != null) && (paramViewBase.getNativeView() != null)) {
       paramViewBase.getNativeView().setOnClickListener(new pnb(this, paramContainer, parampgd, paramInt2));
     }
-    bhxr.a();
+    biby.a();
   }
   
   protected void a(int paramInt1, pgd parampgd, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
@@ -236,9 +236,9 @@ public class pna
   
   protected void a(pgd parampgd, ViewBase paramViewBase)
   {
-    bhxr.a("PgcProteusItem.bindView.bindBiuTime");
+    biby.a("PgcProteusItem.bindView.bindBiuTime");
     psw.a(paramViewBase, parampgd.a());
-    bhxr.a();
+    biby.a();
   }
   
   public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
@@ -249,7 +249,7 @@ public class pna
   protected void b(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2, ViewBase paramViewBase)
   {
     paramViewBase = (pqe)paramViewBase.findViewBaseByName("id_article_comment");
-    bhxr.a("PgcProteusItem.bindView.commentView");
+    biby.a("PgcProteusItem.bindView.commentView");
     if (paramViewBase != null)
     {
       if ((paramInt1 == 48) || (paramInt1 == 64) || (paramInt1 == 65)) {
@@ -260,7 +260,7 @@ public class pna
     if ((paramViewBase != null) && (paramViewBase.isVisible())) {
       paramViewBase.a(parampgd);
     }
-    bhxr.a();
+    biby.a();
   }
   
   protected void b(pgd parampgd, ViewBase paramViewBase)
@@ -268,18 +268,18 @@ public class pna
     paramViewBase = (pqg)paramViewBase.findViewBaseByName("id_info_avator");
     if (paramViewBase != null)
     {
-      bhxr.a("PgcProteusItem.bindView. avatar.setModel");
+      biby.a("PgcProteusItem.bindView. avatar.setModel");
       paramViewBase.a(parampgd);
-      bhxr.a();
+      biby.a();
     }
   }
   
   protected void c(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2, ViewBase paramViewBase)
   {
-    bhxr.a("PgcProteusItem.bindView.findViewBaseByName");
+    biby.a("PgcProteusItem.bindView.findViewBaseByName");
     prm localprm = (prm)paramViewBase.findViewBaseByName("id_middle_body_content");
-    bhxr.a();
-    bhxr.a("PgcProteusItem.bindView.bodyviewContent");
+    biby.a();
+    biby.a("PgcProteusItem.bindView.bodyviewContent");
     NativeMiddleBodyView localNativeMiddleBodyView;
     View localView;
     if (localprm != null)
@@ -300,14 +300,14 @@ public class pna
       if (localView != null) {
         localNativeMiddleBodyView.a(localView, paramViewBase);
       }
-      bhxr.a("PgcProteusItem.bindView.bindBodyView");
+      biby.a("PgcProteusItem.bindView.bindBodyView");
       a(paramInt1, parampgd, localNativeMiddleBodyView, paramInt2, paramContainer);
-      bhxr.a();
-      bhxr.a();
+      biby.a();
+      biby.a();
       return;
       label136:
       paramViewBase = new RelativeLayout.LayoutParams(-2, -2);
-      paramViewBase.setMargins(bdkf.a(12.0F), 0, bdkf.a(12.0F), 0);
+      paramViewBase.setMargins(bdoo.a(12.0F), 0, bdoo.a(12.0F), 0);
     }
   }
 }

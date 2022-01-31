@@ -1,28 +1,24 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import androidx.annotation.NonNull;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
+import java.lang.ref.WeakReference;
 
 public class ubl
-  extends ClickableSpan
+  implements ykh
 {
-  public ubl(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget, int paramInt) {}
+  private WeakReference<ubk> a;
   
-  public void onClick(@NonNull View paramView)
+  ubl(ubk paramubk)
   {
-    QLog.d(QCirclePersonInfoAndStatusWidget.a(), 1, "addClickReport click location" + this.jdField_a_of_type_Int);
-    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget).id.get(), 11, 6L, this.jdField_a_of_type_Int);
+    this.a = new WeakReference(paramubk);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(Object[] paramArrayOfObject)
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.getResources().getColor(2131165307));
-    paramTextPaint.setUnderlineText(false);
+    if (this.a != null)
+    {
+      ubk localubk = (ubk)this.a.get();
+      if (localubk != null) {
+        localubk.a(paramArrayOfObject);
+      }
+    }
   }
 }
 

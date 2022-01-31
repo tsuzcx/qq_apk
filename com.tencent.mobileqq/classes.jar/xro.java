@@ -1,9 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public abstract interface xro
+final class xro
+  implements INetEventHandler
 {
-  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
+  xro(Context paramContext) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      xrn.a(this.a);
+      return;
+    }
+    xrn.a("");
+    xrn.b("");
+  }
 }
 
 

@@ -10,9 +10,9 @@ class ConfessPlugin$4
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessPlugin", 4, "mProcessShareRunable mLastShareData:" + this.this$0.jdField_a_of_type_OrgJsonJSONObject + " mHeaderLoader:" + this.this$0.jdField_a_of_type_Anoe);
+      QLog.i("ConfessPlugin", 4, "mProcessShareRunable mLastShareData:" + this.this$0.jdField_a_of_type_OrgJsonJSONObject + " mHeaderLoader:" + this.this$0.jdField_a_of_type_Ansn);
     }
-    if ((this.this$0.jdField_a_of_type_OrgJsonJSONObject == null) || (this.this$0.jdField_a_of_type_Anoe == null)) {
+    if ((this.this$0.jdField_a_of_type_OrgJsonJSONObject == null) || (this.this$0.jdField_a_of_type_Ansn == null)) {
       return;
     }
     ConfessPlugin.a(this.this$0, this.this$0.jdField_a_of_type_OrgJsonJSONObject);

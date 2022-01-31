@@ -1,28 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 
 class blbh
-  implements View.OnClickListener
+  implements bmeo<Boolean>
 {
-  blbh(blbg paramblbg, AECaptureMode paramAECaptureMode, int paramInt) {}
+  blbh(blbe paramblbe) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    blbc.a(this.jdField_a_of_type_Blbg.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
-    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
-      blen.a().v();
-    }
-    for (;;)
-    {
-      blfg.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+    int i = 200;
+    if (paramBoolean == null) {
       return;
-      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
-        blen.a().u();
-      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
-        blen.a().C();
-      }
     }
+    Intent localIntent = blbe.a(this.a).a().getIntent();
+    if (localIntent != null) {
+      i = localIntent.getIntExtra("AECAMERA_MODE", 200);
+    }
+    if (paramBoolean.booleanValue())
+    {
+      if ((blbe.a(this.a).a()) && (i != 202))
+      {
+        blbe.a(this.a).setVisibility(0);
+        return;
+      }
+      blbe.a(this.a).setVisibility(8);
+      return;
+    }
+    blbe.a(this.a).setVisibility(4);
   }
 }
 

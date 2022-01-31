@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.data;
 
-import awbv;
+import awge;
 
 public class ApolloWhiteFaceID
-  extends awbv
+  extends awge
 {
   public int action2d;
   public int action3d;

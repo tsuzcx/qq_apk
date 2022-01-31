@@ -19,7 +19,7 @@ public class VideoController$1
     if (this.this$0.l())
     {
       Context localContext = this.this$0.a();
-      PopupDialog.b(localContext, 230, null, localContext.getString(2131721290), 0, 2131721323, new lfi(this), null);
+      PopupDialog.b(localContext, 230, null, localContext.getString(2131721303), 0, 2131721336, new lfi(this), null);
     }
     for (;;)
     {

@@ -1,9 +1,6 @@
-import android.widget.RelativeLayout;
-
-public class apph
-  extends aprv
+public abstract interface apph
 {
-  public RelativeLayout[] a;
+  public abstract float a(float paramFloat, long paramLong);
 }
 
 

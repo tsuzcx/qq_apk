@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-public class aesf
-  implements azzg
+public final class aesf
+  implements Parcelable.Creator<ForwardUtils.Section_Text>
 {
-  public aesf(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
   {
-    int i = (int)(this.a.b - bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Baaj.b / 2.0F);
-    int j = (int)(this.a.b - bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Baaj.b / 2.0F);
-    int k = (int)(this.a.b - bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Baaj.b / 2.0F);
-    azzo localazzo = new azzo(new azzf[] { new azzj(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Baaj.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new azzj(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new azzj(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
-    localazzo.a(new aesg(this));
-    this.a.jdField_a_of_type_Baaj.a(new azzf[] { localazzo });
+    return new ForwardUtils.Section_Text(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Text[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Text[paramInt];
   }
 }
 

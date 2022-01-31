@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.util.Log;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -29,7 +29,7 @@ class DesktopDataManager$30
     try
     {
       localMiniAppRedDotEntity.setStatus(1001);
-      if (((awbw)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
+      if (((awgf)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
       {
         QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
         return;

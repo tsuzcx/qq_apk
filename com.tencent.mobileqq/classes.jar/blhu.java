@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.EditTextViewer;
 
 public class blhu
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public blhu(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  public blhu(EditTextViewer paramEditTextViewer) {}
   
-  public void onClick(View paramView)
-  {
-    AEEditorMvClipMenu.a(this.a);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

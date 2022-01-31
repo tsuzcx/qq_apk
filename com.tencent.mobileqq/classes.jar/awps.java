@@ -1,31 +1,26 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
 class awps
-  implements alkr
+  implements bhuk
 {
-  awps(awpn paramawpn, awpu paramawpu) {}
+  awps(awpq paramawpq, PersonalityLabelInfo paramPersonalityLabelInfo, bhuf parambhuf) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    awpu localawpu;
-    if (this.jdField_a_of_type_Awpu != null)
+    switch (paramInt)
     {
-      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
-        break label50;
-      }
-      localawpu = this.jdField_a_of_type_Awpu;
-      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
-        break label45;
-      }
     }
-    label45:
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
-      localawpu.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
+      this.jdField_a_of_type_Bhuf.e();
       return;
+      awpq.a(this.jdField_a_of_type_Awpq, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Awpq.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Awpq.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
     }
-    label50:
-    this.jdField_a_of_type_Awpu.a(false, null);
   }
 }
 

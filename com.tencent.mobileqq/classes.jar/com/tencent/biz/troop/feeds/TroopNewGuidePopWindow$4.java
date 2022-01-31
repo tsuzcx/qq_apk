@@ -1,35 +1,35 @@
 package com.tencent.biz.troop.feeds;
 
 import android.os.Handler;
-import azmj;
-import bbnp;
-import bckr;
+import azqs;
+import bbry;
+import bcpa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import yom;
+import ytb;
 
 public class TroopNewGuidePopWindow$4
   implements Runnable
 {
-  public TroopNewGuidePopWindow$4(yom paramyom, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
+  public TroopNewGuidePopWindow$4(ytb paramytb, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     int j = 1;
-    this.this$0.jdField_a_of_type_Bbnp = bbnp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.this$0.jdField_a_of_type_Bbry = bbry.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
     this.this$0.g = this.jdField_a_of_type_Boolean;
     String str1;
-    if (this.this$0.jdField_a_of_type_Bbnp != null)
+    if (this.this$0.jdField_a_of_type_Bbry != null)
     {
-      boolean bool = bckr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Bbnp.i);
-      bckr.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      boolean bool = bcpa.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Bbry.i);
+      bcpa.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       if (QLog.isColorLevel()) {
-        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Bbnp.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
+        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Bbry.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
       }
-      if ((!this.this$0.jdField_a_of_type_Bbnp.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && (((this.this$0.jdField_a_of_type_Bbnp.b) && (!bool)) || (this.jdField_a_of_type_Boolean)))
+      if ((!this.this$0.jdField_a_of_type_Bbry.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && (((this.this$0.jdField_a_of_type_Bbry.b) && (!bool)) || (this.jdField_a_of_type_Boolean)))
       {
         localObject = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         str1 = "";
@@ -46,13 +46,13 @@ public class TroopNewGuidePopWindow$4
       }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       String str2 = this.this$0.b;
-      if (this.this$0.jdField_a_of_type_Bbnp.c) {}
+      if (this.this$0.jdField_a_of_type_Bbry.c) {}
       for (int i = 2;; i = 1)
       {
         if (this.this$0.g) {
           j = 2;
         }
-        azmj.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
+        azqs.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
         if (QLog.isColorLevel()) {
           QLog.d("TroopTipsPopWindow", 2, "initViewInThread showing popup window for troopNotice");
         }
@@ -62,7 +62,7 @@ public class TroopNewGuidePopWindow$4
       if (QLog.isColorLevel()) {
         QLog.d("TroopTipsPopWindow", 2, "initViewInThread, mTroopNotify is null!");
       }
-      bckr.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      bcpa.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       return;
     }
   }

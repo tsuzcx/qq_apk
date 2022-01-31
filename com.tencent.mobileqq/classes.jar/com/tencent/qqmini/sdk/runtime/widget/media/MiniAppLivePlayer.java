@@ -17,14 +17,14 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bghl;
-import bghn;
-import bgkd;
-import bhep;
-import bhgi;
-import bhgj;
-import bhgk;
-import bhgr;
+import bgls;
+import bglu;
+import bgok;
+import bhiw;
+import bhkp;
+import bhkq;
+import bhkr;
+import bhky;
 import com.tencent.qqmini.sdk.core.widget.media.VideoGestureLayout;
 import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -46,8 +46,8 @@ public class MiniAppLivePlayer
   private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public bghl a;
-  private bhgr jdField_a_of_type_Bhgr;
+  public bgls a;
+  private bhky jdField_a_of_type_Bhky;
   private VideoGestureLayout jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout;
   private VideoGestureRelativeLayout jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout;
   private Object jdField_a_of_type_JavaLangObject;
@@ -120,11 +120,11 @@ public class MiniAppLivePlayer
     this.h = true;
     setTag("MiniAppLivePlayer");
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559358, null);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout = ((VideoGestureRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369288));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559357, null);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout = ((VideoGestureRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369306));
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout.setContentDescription("video_container");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379741));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372074));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379799));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372094));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaVideoGestureLayout = new VideoGestureLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -188,7 +188,7 @@ public class MiniAppLivePlayer
   
   private void c()
   {
-    this.jdField_a_of_type_JavaLangObject = bhep.a("com.tencent.rtmp.ui.TXCloudVideoView", bhep.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.jdField_a_of_type_JavaLangObject = bhiw.a("com.tencent.rtmp.ui.TXCloudVideoView", bhiw.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.jdField_a_of_type_JavaLangObject == null)
     {
       QMLog.e("MiniAppLivePlayer", "tXCloudVideoView is null?! ");
@@ -215,7 +215,7 @@ public class MiniAppLivePlayer
       localJSONObject.put("livePlayerId", this.jdField_a_of_type_Long);
       localJSONObject.put("direction", "");
       localJSONObject.put("fullScreen", this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Bghl.a().a("onLivePlayerFullScreenChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bgls.a().a("onLivePlayerFullScreenChange", localJSONObject.toString(), this.jdField_a_of_type_Int);
       return;
     }
     catch (JSONException localJSONException)
@@ -229,7 +229,7 @@ public class MiniAppLivePlayer
     this.jdField_a_of_type_AndroidOsHandler.post(new MiniAppLivePlayer.4(this));
   }
   
-  public void a(bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(bgok parambgok, JSONObject paramJSONObject)
   {
     if (QMLog.isColorLevel()) {
       QMLog.d("MiniAppLivePlayer", "initLivePlayerSettings isFullScreen: " + this.jdField_a_of_type_Boolean);
@@ -238,27 +238,27 @@ public class MiniAppLivePlayer
       return;
     }
     c();
-    this.jdField_a_of_type_Bhgr = new bhgr(getContext());
-    this.jdField_a_of_type_Bhgr.a(this.jdField_a_of_type_JavaLangObject, paramJSONObject);
-    this.jdField_a_of_type_Bhgr.a(new bhgi(this, parambgkd));
-    this.jdField_a_of_type_Bhgr.a(new bhgj(this, parambgkd));
+    this.jdField_a_of_type_Bhky = new bhky(getContext());
+    this.jdField_a_of_type_Bhky.a(this.jdField_a_of_type_JavaLangObject, paramJSONObject);
+    this.jdField_a_of_type_Bhky.a(new bhkp(this, parambgok));
+    this.jdField_a_of_type_Bhky.a(new bhkq(this, parambgok));
   }
   
-  public void a(String paramString, bgkd parambgkd, JSONObject paramJSONObject)
+  public void a(String paramString, bgok parambgok, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_Bhgr == null) {
+    if (this.jdField_a_of_type_Bhky == null) {
       return;
     }
     if ("requestFullScreen".equalsIgnoreCase(paramString))
     {
       a();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     if ("exitFullScreen".equalsIgnoreCase(paramString))
     {
       b();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     if ("snapshot".equalsIgnoreCase(paramString))
@@ -277,21 +277,21 @@ public class MiniAppLivePlayer
           }
         }
       }
-      a("operateLivePlayer", bool1, parambgkd);
+      a("operateLivePlayer", bool1, parambgok);
       return;
     }
-    this.jdField_a_of_type_Bhgr.a(paramString, paramJSONObject);
-    parambgkd.a();
+    this.jdField_a_of_type_Bhky.a(paramString, paramJSONObject);
+    parambgok.a();
   }
   
-  public void a(String paramString, boolean paramBoolean, bgkd parambgkd)
+  public void a(String paramString, boolean paramBoolean, bgok parambgok)
   {
-    if (this.jdField_a_of_type_Bhgr == null) {
+    if (this.jdField_a_of_type_Bhky == null) {
       return;
     }
     QMLog.e("MiniAppLivePlayer", "takePhoto invoke");
-    this.jdField_a_of_type_Bhgr.a(new bhgk(this, paramString, parambgkd));
-    this.jdField_a_of_type_Bhgr.a(paramBoolean);
+    this.jdField_a_of_type_Bhky.a(new bhkr(this, paramString, parambgok));
+    this.jdField_a_of_type_Bhky.a(paramBoolean);
   }
   
   public void a(JSONObject paramJSONObject)
@@ -300,10 +300,10 @@ public class MiniAppLivePlayer
       QMLog.d("MiniAppLivePlayer", "updateLivePlayerSetting isFullScreen: " + this.jdField_a_of_type_Boolean);
     }
     if (this.jdField_a_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Bhgr == null) {
+    while (this.jdField_a_of_type_Bhky == null) {
       return;
     }
-    this.jdField_a_of_type_Bhgr.a(paramJSONObject);
+    this.jdField_a_of_type_Bhky.a(paramJSONObject);
   }
   
   public boolean a()

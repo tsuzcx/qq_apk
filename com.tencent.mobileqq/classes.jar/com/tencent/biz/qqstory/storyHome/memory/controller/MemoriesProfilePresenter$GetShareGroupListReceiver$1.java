@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import urr;
-import usd;
-import whl;
-import who;
+import uwa;
+import uwm;
+import wlu;
+import wlx;
 
 public class MemoriesProfilePresenter$GetShareGroupListReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetShareGroupListReceiver$1(who paramwho, whl paramwhl) {}
+  public MemoriesProfilePresenter$GetShareGroupListReceiver$1(wlx paramwlx, wlu paramwlu) {}
   
   public void run()
   {
-    ((usd)urr.a(2)).a(this.a.a);
+    ((uwm)uwa.a(2)).a(this.a.a);
   }
 }
 

@@ -30,7 +30,7 @@ public class qsz
   {
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.a.getActivity()).inflate(2131560010, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.a.getActivity()).inflate(2131560009, paramViewGroup, false);
       paramView = new qta(this.a.getActivity(), (ViewGroup)paramViewGroup);
       paramViewGroup.setTag(paramView);
     }

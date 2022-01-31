@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
-import bcwh;
+import bdaq;
 import nmn;
 import nmo;
 
@@ -121,7 +121,7 @@ public class VerticalPagerView
       } while (i != 2);
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.d - this.jdField_b_of_type_Float);
-      if ((f2 < bcwh.a(super.getContext(), 10.0F)) || (f2 < f1))
+      if ((f2 < bdaq.a(super.getContext(), 10.0F)) || (f2 < f1))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         return false;
@@ -185,7 +185,7 @@ public class VerticalPagerView
     {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int));
       i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      if (Math.abs(this.d - this.jdField_b_of_type_Float) < bcwh.a(super.getContext(), 10.0F))
+      if (Math.abs(this.d - this.jdField_b_of_type_Float) < bdaq.a(super.getContext(), 10.0F))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         this.f = (this.d - this.e);
@@ -228,7 +228,7 @@ public class VerticalPagerView
     float f1 = Math.abs(this.f);
     this.e = this.d;
     i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() - this.jdField_c_of_type_Int * super.getHeight();
-    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > bcwh.a(super.getContext(), 7.0F))))
+    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > bdaq.a(super.getContext(), 7.0F))))
     {
       this.jdField_c_of_type_Int += 1;
       if (this.jdField_c_of_type_Int >= super.getChildCount()) {
@@ -245,7 +245,7 @@ public class VerticalPagerView
       }
       this.jdField_a_of_type_Nmo.a(false, this.jdField_c_of_type_Int);
       break;
-      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > bcwh.a(super.getContext(), 5.0F))))
+      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > bdaq.a(super.getContext(), 5.0F))))
       {
         this.jdField_c_of_type_Int -= 1;
         if (this.jdField_c_of_type_Int < 0) {

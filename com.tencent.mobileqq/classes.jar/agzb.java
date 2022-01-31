@@ -1,6 +1,11 @@
-public abstract interface agzb
+import java.util.List;
+
+public class agzb
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public String a;
+  public List<? extends agxz> a;
+  public String b;
+  public List<? extends agxz> b;
 }
 
 

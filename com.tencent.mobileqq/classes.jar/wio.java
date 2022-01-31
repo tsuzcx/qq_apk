@@ -1,26 +1,8 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
 
-public class wio
-  extends uxs
+public abstract interface wio
 {
-  public int a;
-  public String a;
-  public List<ShareGroupCollectionItem> a;
-  
-  public wio(ErrorMessage paramErrorMessage, String paramString)
-  {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
-  }
+  public abstract void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage);
 }
 
 

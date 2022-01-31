@@ -4,8 +4,8 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import tyl;
-import typ;
+import tzx;
+import uab;
 
 public final class QCircleQualityReporter$1
   implements Runnable
@@ -16,11 +16,11 @@ public final class QCircleQualityReporter$1
   {
     QQCircleReport.SingleDcData localSingleDcData = new QQCircleReport.SingleDcData();
     localSingleDcData.dcid.set(5531);
-    localSingleDcData.report_data.addAll(tyl.a(this.jdField_a_of_type_JavaLangString));
+    localSingleDcData.report_data.addAll(tzx.a(this.jdField_a_of_type_JavaLangString));
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
       localSingleDcData.report_data.addAll(this.jdField_a_of_type_JavaUtilList);
     }
-    typ.a().a(localSingleDcData);
+    uab.a().a(localSingleDcData);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import wsv;
-import xlb;
+import wxe;
+import xpk;
 
 public class StoryPublishLauncher$1
   implements Runnable
 {
-  public StoryPublishLauncher$1(xlb paramxlb, boolean paramBoolean) {}
+  public StoryPublishLauncher$1(xpk paramxpk, boolean paramBoolean) {}
   
   public void run()
   {
-    boolean bool = xlb.b();
-    wsv.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
+    boolean bool = xpk.b();
+    wxe.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
   }
 }
 

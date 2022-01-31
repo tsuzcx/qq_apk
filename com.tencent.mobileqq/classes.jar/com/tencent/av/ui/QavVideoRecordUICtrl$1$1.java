@@ -13,7 +13,7 @@ class QavVideoRecordUICtrl$1$1
   {
     this.a.this$0.c();
     if (((AVActivity)mlf.a(this.a.this$0).get()).a != null) {
-      mdd.a(((AVActivity)mlf.a(this.a.this$0).get()).a, 1023, 2131696238);
+      mdd.a(((AVActivity)mlf.a(this.a.this$0).get()).a, 1023, 2131696240);
     }
   }
 }

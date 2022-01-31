@@ -35,7 +35,7 @@ public class oku
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bdbt.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bdgc.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
         break label79;
       }

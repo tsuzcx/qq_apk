@@ -1,23 +1,15 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
 
 public class xzt
-  implements xyx
+  implements View.OnClickListener
 {
-  public xzt(DetailBaseAdapter.4.1 param1) {}
+  public xzt(QRLoginBaseActivity paramQRLoginBaseActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
-  }
-  
-  public void b()
-  {
-    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
+    this.a.finish();
   }
 }
 

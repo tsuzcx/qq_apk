@@ -1,26 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class yoo
-  extends Handler
+public class yoo
+  implements View.OnClickListener
 {
-  yoo(yom paramyom) {}
+  public yoo(CommodityItemView paramCommodityItemView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
+      if (!(this.a.a() instanceof CommodityBean)) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
     {
-    default: 
+      if (CommodityItemView.a(this.a) != null) {
+        zaj.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + yod.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
+      }
+      ybt.a(paramView, 8002);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Bbnp + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bbnq);
-    }
-    if (this.a.jdField_a_of_type_Bbnq != null) {
-      this.a.a(this.a.jdField_a_of_type_Bbnq);
-    }
-    this.a.a();
   }
 }
 

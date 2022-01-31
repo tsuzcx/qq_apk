@@ -1,69 +1,15 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-class aikn
-  implements absf
+public class aikn
+  implements DialogInterface.OnClickListener
 {
-  aikn(aikl paramaikl, String paramString) {}
+  public aikn(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onComplete()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onComplete");
-    }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-    if ((aikl.a(this.jdField_a_of_type_Aikl).isFinishing()) || (this.jdField_a_of_type_Aikl.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Aikl.d();
-    if (aikl.a(this.jdField_a_of_type_Aikl) != null) {
-      aikl.a(this.jdField_a_of_type_Aikl).removeCallbacks(aikl.a(this.jdField_a_of_type_Aikl));
-    }
-    this.jdField_a_of_type_Aikl.a(alpo.a(2131713970), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((aikl.a(this.jdField_a_of_type_Aikl).isFinishing()) || (this.jdField_a_of_type_Aikl.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Aikl.d();
-    if (aikl.a(this.jdField_a_of_type_Aikl) != null) {
-      aikl.a(this.jdField_a_of_type_Aikl).removeCallbacks(aikl.a(this.jdField_a_of_type_Aikl));
-    }
-    this.jdField_a_of_type_Aikl.a(alpo.a(2131713974), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
-    }
-    if ((aikl.a(this.jdField_a_of_type_Aikl).isFinishing()) || (this.jdField_a_of_type_Aikl.b)) {
-      return;
-    }
-    if (aikl.a(this.jdField_a_of_type_Aikl) != null) {
-      aikl.a(this.jdField_a_of_type_Aikl).removeCallbacks(aikl.a(this.jdField_a_of_type_Aikl));
-    }
-    aikl.a(this.jdField_a_of_type_Aikl);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onTrigger");
-    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
   }
 }
 

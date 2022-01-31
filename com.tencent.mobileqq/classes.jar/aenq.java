@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import mqq.util.WeakReference;
 
-public final class aenq
-  implements Parcelable.Creator<ForwardUtils.Section_Text>
+public class aenq
+  implements View.OnClickListener
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  public aenq(PositionActivatePage paramPositionActivatePage) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    {
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      paramView.putExtra("key_msg_type", 1);
+      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      azqs.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
+    }
   }
 }
 

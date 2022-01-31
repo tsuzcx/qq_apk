@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
 
-public final class bbfq
-  implements QQPermissionCallback
+public class bbfq
+  implements Animation.AnimationListener
 {
-  public bbfq(BaseActivity paramBaseActivity) {}
+  public bbfq(AudioRecordFragment paramAudioRecordFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.a.isFinishing()) {
-      bdcd.b(this.a);
-    }
+    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

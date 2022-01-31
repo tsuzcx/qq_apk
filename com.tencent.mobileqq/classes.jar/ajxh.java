@@ -1,20 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class ajxh
-  extends akee
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
+  public ajxh(RotationSeekBar paramRotationSeekBar) {}
   
-  public ajxh(ajxc paramajxc) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+  }
 }
 
 

@@ -1,53 +1,107 @@
-import android.content.Context;
-import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class amiy
+  extends Observable
+  implements Manager
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private String jdField_a_of_type_JavaLangString;
-  private Resources b;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<amja>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public amiy(Context paramContext)
+  public amiy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a(int paramInt)
+  private amja a(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidContentResResources == null) || (this.b == null)) {}
-    String str1;
-    int i;
-    do
+    for (;;)
     {
-      return paramInt;
-      str1 = this.jdField_a_of_type_AndroidContentResResources.getResourceEntryName(paramInt);
-      String str2 = this.jdField_a_of_type_AndroidContentResResources.getResourceTypeName(paramInt);
-      i = this.b.getIdentifier(str1, str2, this.jdField_a_of_type_JavaLangString);
-    } while (i <= 0);
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = (amja)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new amja(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new amiz(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
+          }
+          return localObject2;
+        }
+      }
+      Object localObject1 = null;
+    }
+  }
+  
+  public FullMessageSearchResult a(String paramString)
+  {
+    return a(paramString).b();
+  }
+  
+  public void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiLanguageEngine", 2, new Object[] { "resourceName:", str1, " ,lanResID:", Integer.valueOf(i), " ,oldId:", Integer.valueOf(paramInt) });
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
     }
-    return i;
-  }
-  
-  public Resources a()
-  {
-    if (this.b == null) {
-      return this.jdField_a_of_type_AndroidContentResResources;
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (amja)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((amja)localObject2).b(2);
+          }
+        }
+      }
     }
-    return this.b;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  public void a(Resources paramResources, String paramString)
+  public void a(String paramString)
   {
-    this.b = paramResources;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (amja)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
+    }
   }
   
-  public Resources b()
+  public FullMessageSearchResult b(String paramString)
   {
-    return this.jdField_a_of_type_AndroidContentResResources;
+    return a(paramString).c();
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 

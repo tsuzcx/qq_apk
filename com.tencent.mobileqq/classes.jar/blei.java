@@ -1,18 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.1;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.2;
+import mqq.os.MqqHandler;
 
 public class blei
+  implements blae
 {
-  public static Bitmap a(Bitmap paramBitmap, String paramString)
+  blei(bleg parambleg) {}
+  
+  public void a(MetaMaterial paramMetaMaterial)
   {
-    if (!BitmapUtils.isLegal(paramBitmap)) {}
-    int i;
-    do
-    {
-      return paramBitmap;
-      i = BitmapUtils.getDegreeByExif(paramString) % 360;
-    } while (i == 0);
-    return BitmapUtils.rotateBitmap(paramBitmap, i);
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.1(this, paramMetaMaterial));
+  }
+  
+  public void a(MetaMaterial paramMetaMaterial, int paramInt) {}
+  
+  public void b(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.2(this, paramMetaMaterial));
   }
 }
 

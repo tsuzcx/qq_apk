@@ -19,7 +19,7 @@ public class TVK_SDKMgr
   public static final int ERROR_NETWORK = 101;
   public static final int ERROR_OTHERS = 100;
   public static final int ERROR_SERVER_RESPONSE = 102;
-  public static String SDK_Ver = "V4.3.000.0129";
+  public static String SDK_Ver = "V4.3.000.0132";
   private static ClassLoader a = null;
   private static boolean b = false;
   private static Context c = null;

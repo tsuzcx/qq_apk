@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class bagy
-  extends bafp
+public final class bagy
+  implements Parcelable.Creator<TeamWorkFileImportInfo>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
-  TextView b;
-  TextView c;
-  
-  private bagy(bagw parambagw)
+  public TeamWorkFileImportInfo a(Parcel paramParcel)
   {
-    super(parambagw);
+    return new TeamWorkFileImportInfo(paramParcel);
+  }
+  
+  public TeamWorkFileImportInfo[] a(int paramInt)
+  {
+    return new TeamWorkFileImportInfo[paramInt];
   }
 }
 

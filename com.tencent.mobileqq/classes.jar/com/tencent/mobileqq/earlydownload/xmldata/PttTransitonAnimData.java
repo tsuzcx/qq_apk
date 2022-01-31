@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphq;
+import aplz;
 
 public class PttTransitonAnimData
   extends XmlData
 {
-  @aphq(a=false, b=true)
+  @aplz(a=false, b=true)
   public boolean autoDownload;
   public boolean isUserClick = true;
   

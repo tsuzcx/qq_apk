@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
-class afpl
-  extends afpq
+public class afpl
 {
-  afpl(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public int a;
+  public String a;
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agas(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public afpl(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
 }
 
 

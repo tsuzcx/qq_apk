@@ -1,141 +1,88 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
+import com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aijk
-  implements Parcelable.Creator<ImageInfo>
+public class aijk
+  implements ShareActionSheet.OnItemClickListener
 {
-  public ImageInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramParcel.readInt() == 0)
-    {
-      bool1 = false;
-      localImageInfo.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label412;
-      }
-      bool1 = false;
-      label35:
-      localImageInfo.jdField_b_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {
-        break label417;
-      }
-      bool1 = false;
-      label59:
-      localImageInfo.jdField_c_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label422;
-      }
-      bool1 = false;
-      label74:
-      localImageInfo.jdField_d_of_type_Boolean = bool1;
-      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label427;
-      }
-      bool1 = false;
-      label116:
-      localImageInfo.jdField_e_of_type_Boolean = bool1;
-      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label432;
-      }
-      bool1 = false;
-      label176:
-      localImageInfo.jdField_f_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 0) {
-        break label437;
-      }
-      bool1 = false;
-      label200:
-      localImageInfo.jdField_h_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label442;
-      }
-      bool1 = false;
-      label215:
-      localImageInfo.jdField_i_of_type_Boolean = bool1;
-      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      localImageInfo.g = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label447;
-      }
-      bool1 = true;
-      label321:
-      localImageInfo.o = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label452;
-      }
-      bool1 = true;
-      label337:
-      localImageInfo.n = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label457;
-      }
-    }
-    label412:
-    label417:
-    label422:
-    label427:
-    label432:
-    label437:
-    label442:
-    label447:
-    label452:
-    label457:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localImageInfo.p = bool1;
-      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      localImageInfo.j = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
-      return localImageInfo;
-      bool1 = true;
-      break;
-      bool1 = true;
-      break label35;
-      bool1 = true;
-      break label59;
-      bool1 = true;
-      break label74;
-      bool1 = true;
-      break label116;
-      bool1 = true;
-      break label176;
-      bool1 = true;
-      break label200;
-      bool1 = true;
-      break label215;
-      bool1 = false;
-      break label321;
-      bool1 = false;
-      break label337;
-    }
-  }
+  public aijk(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public ImageInfo[] a(int paramInt)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    return new ImageInfo[paramInt];
+    int i = paramActionSheetItem.action;
+    int j = paramActionSheetItem.uinType;
+    paramActionSheetItem = paramActionSheetItem.uin;
+    switch (i)
+    {
+    default: 
+      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
+    case 2: 
+    case 73: 
+    case 3: 
+    case 9: 
+    case 10: 
+    case 70: 
+    case 82: 
+    case 76: 
+    case 77: 
+    case 14: 
+    case 78: 
+      do
+      {
+        return;
+        MiniMsgTabFragment.a(this.a, 1, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 5, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 6, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 7, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 13, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 8, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 10, null);
+        return;
+      } while (MiniMsgTabFragment.a(this.a) == -1);
+      if (MiniMsgTabFragment.a(this.a))
+      {
+        MainPageFragment.launchForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+        return;
+      }
+      MainPageFragment.launch(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
+      return;
+    case 11: 
+      MiniMsgTabFragment.a(this.a, 11, null);
+      return;
+    case 74: 
+    case 75: 
+      MiniMsgTabFragment.a(this.a, 2, null);
+      return;
+    case 79: 
+    case 80: 
+      MiniMsgTabFragment.a(this.a, 3, null);
+      return;
+    case 72: 
+      MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
+      return;
+    case 81: 
+      MiniMsgTabFragment.a(this.a, 9, null);
+      return;
+    case 83: 
+      if (this.a.getActivity() != null)
+      {
+        PermissionSettingFragment.launchForResult(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
+        return;
+      }
+      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
+      return;
+    }
+    MiniMsgTabFragment.a(this.a, 14, null);
   }
 }
 

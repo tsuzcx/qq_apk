@@ -12,13 +12,13 @@ class RegisterVerifyCodeActivity$1
   {
     if (RegisterVerifyCodeActivity.a(this.this$0) == 1)
     {
-      RegisterVerifyCodeActivity.a(this.this$0).setText(2131717532);
+      RegisterVerifyCodeActivity.a(this.this$0).setText(2131717544);
       RegisterVerifyCodeActivity.a(this.this$0).setEnabled(true);
       RegisterVerifyCodeActivity.a(this.this$0).setClickable(true);
       return;
     }
     RegisterVerifyCodeActivity.b(this.this$0);
-    RegisterVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131717532) + "(" + RegisterVerifyCodeActivity.a(this.this$0) + "s)");
+    RegisterVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131717544) + "(" + RegisterVerifyCodeActivity.a(this.this$0) + "s)");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }

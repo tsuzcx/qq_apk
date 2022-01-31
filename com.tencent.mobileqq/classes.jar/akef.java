@@ -1,42 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class akef
-  implements ValueAnimator.AnimatorUpdateListener
+  implements SurfaceHolder.Callback
 {
-  public akef(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
+  public akef(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
-    if (AppSetting.c)
-    {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label124;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
     }
-    label124:
-    for (int i = 2131690851;; i = 2131721188)
+    if ((this.a.h == 1) && (this.a.g > 0))
     {
-      paramValueAnimator = paramValueAnimator.getString(i);
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
       return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.jdField_a_of_type_Bdzk != null) {
+      this.a.jdField_a_of_type_Bdzk.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akef
  * JD-Core Version:    0.7.0.1
  */

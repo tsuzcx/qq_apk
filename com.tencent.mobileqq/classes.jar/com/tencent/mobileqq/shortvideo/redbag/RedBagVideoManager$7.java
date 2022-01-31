@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import azey;
+import azjh;
 
 public class RedBagVideoManager$7
   implements Runnable
 {
-  public RedBagVideoManager$7(azey paramazey) {}
+  public RedBagVideoManager$7(azjh paramazjh) {}
   
   public void run()
   {
-    azey.b(this.this$0);
+    azjh.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.7
  * JD-Core Version:    0.7.0.1
  */

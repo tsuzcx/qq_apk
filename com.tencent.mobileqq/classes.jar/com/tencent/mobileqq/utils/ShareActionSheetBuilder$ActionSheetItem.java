@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import bhxo;
+import bibv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -160,7 +160,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   static
   {
     int j = 0;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845779, 2130845780, 2130845741, 2130845742, 2130845747, 2130845748, 2130845735, 2130845736, 2130845732, 2130845733, 2130845785, 2130845786, 2130845770, 2130845771, 2130845777, 2130845778, 2130845751, 2130845752, 2130845753, 2130845754, 2130845809, 2130845810, 2130845760, 2130845761, 2130845745, 2130845746, 2130843242, 2130843244, 2130843247, 2130843246, 2130843954, 2130843955, 2130842285, 2130845811, 2130845812, 2130838913, 2130839127, 2130839160, 2130845755, 2130845756, 2130845739, 2130845740, 2130842286, 2130842296, 2130842281, 2130842287, 2130842283, 2130845781, 2130845782, 2130846146, 2130846390, 2130838918, 2130842269, 2130842765, 2130845766, 2130845767, 2130845749, 2130845750, 2130845743, 2130845744, 2130845825, 2130845826, 2130845728, 2130845793, 2130845794, 2130845797, 2130845729, 2130845730, 2130845799, 2130845800, 2130845775, 2130845776, 2130843845, 2130849866, 2130849867, 2130845764, 2130845765, 2130845773, 2130845774, 2130845795, 2130845796, 2130840084, 2130849078, 2130849079, 2130839740, 2130840990, 2130840991, 2130841002, 2130845769, 2130841003, 2130841004, 2130841005, 2130841006, 2130845830, 2130845810, 2130840992, 2130840993, 2130840997, 2130840998, 2130840994, 2130840995, 2130841000, 2130841001, 2130842278, 2130847329, 2130847326, 2130847324, 2130847323, 2130847322, 2130847315, 2130847316, 2130847313, 2130847314, 2130847327, 2130847317, 2130847325, 2130847328, 2130847872, 2130847312, 2130847319, 2130847875, 2130847871, 2130845801, 2130845802, 2130842278, 2130841477, 2130841475, 2130841479, 2130841480, 2130841487, 2130841493, 2130841483, 2130841484, 2130841489, 2130841490, 2130839741, 2130843773, 2130837566, 2130837567, 2130839732, 2130843769, 2130843782, 2130843783, 2130843771, 2130843772, 2130843774, 2130843775 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130845851, 2130845852, 2130845813, 2130845814, 2130845819, 2130845820, 2130845807, 2130845808, 2130845804, 2130845805, 2130845857, 2130845858, 2130845842, 2130845843, 2130845849, 2130845850, 2130845823, 2130845824, 2130845825, 2130845826, 2130845881, 2130845882, 2130845832, 2130845833, 2130845817, 2130845818, 2130843255, 2130843257, 2130843260, 2130843259, 2130844026, 2130844027, 2130842298, 2130845883, 2130845884, 2130838914, 2130839128, 2130839161, 2130845827, 2130845828, 2130845811, 2130845812, 2130842299, 2130842309, 2130842294, 2130842300, 2130842296, 2130845853, 2130845854, 2130846219, 2130846463, 2130838919, 2130842282, 2130845900, 2130842778, 2130845838, 2130845839, 2130845821, 2130845822, 2130845815, 2130845816, 2130845897, 2130845898, 2130845800, 2130845865, 2130845866, 2130845869, 2130845801, 2130845802, 2130845871, 2130845872, 2130845847, 2130845848, 2130843917, 2130849939, 2130849940, 2130845836, 2130845837, 2130845845, 2130845846, 2130845867, 2130845868, 2130840085, 2130849151, 2130849152, 2130839741, 2130840991, 2130840992, 2130841003, 2130845841, 2130841004, 2130841005, 2130841006, 2130841007, 2130845903, 2130845882, 2130840993, 2130840994, 2130840998, 2130840999, 2130840995, 2130840996, 2130841001, 2130841002, 2130842291, 2130847402, 2130847399, 2130847397, 2130847396, 2130847395, 2130847388, 2130847389, 2130847386, 2130847387, 2130847400, 2130847390, 2130847398, 2130847401, 2130847945, 2130847385, 2130847392, 2130847948, 2130847944, 2130845873, 2130845874, 2130842291, 2130841478, 2130841476, 2130841480, 2130841481, 2130841488, 2130841494, 2130841484, 2130841485, 2130841490, 2130841491, 2130839742, 2130843845, 2130837566, 2130837567, 2130839733, 2130843841, 2130843854, 2130843855, 2130843843, 2130843844, 2130843846, 2130843847 };
     HashSet localHashSet = new HashSet();
     int i = 0;
     if (i < jdField_a_of_type_ArrayOfInt.length)
@@ -176,7 +176,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
       }
     }
     Arrays.sort(jdField_a_of_type_ArrayOfInt);
-    b = new int[] { 2131719966, 2131719986, 2131719987, 2131719925, 2131719926, 2131719927, 2131719958, 2131719991, 2131720016, 2131719963, 2131720013, 2131720014, 2131720015, 2131720004, 2131719924, 2131719970, 2131719985, 2131719965, 2131719967, 2131720009, 2131719933, 2131719969, 2131719997, 2131719995, 2131719996, 2131719934, 2131719988, 2131719942, 2131719992, 2131719939, 2131719937, 2131719940, 2131719938, 2131719941, 2131719952, 2131719947, 2131719948, 2131719923, 2131719936, 2131719971, 2131719994, 2131719935, 2131719998, 2131719949, 2131719928, 2131719932, 2131719931, 2131719929, 2131720008, 2131719989, 2131719946, 2131719961, 2131719962, 2131719993, 2131719973, 2131719950, 2131719951, 2131697672, 2131697675, 2131697678, 2131697677, 2131696876, 2131695765, 2131720006, 2131719959, 2131719960, 2131719957, 2131720007, 2131720012, 2131719974, 2131719930, 2131719956, 2131719964, 2131719955, 2131720001, 2131720002, 2131720005, 2131720000, 2131720010, 2131719990, 2131719968, 2131719943, 2131719953, 2131720011, 2131719972, 2131719945, 2131719999, 2131695765, 2131719976, 2131719975, 2131719977, 2131719978, 2131719981, 2131719984, 2131719979, 2131719980, 2131719982, 2131719983 };
+    b = new int[] { 2131719978, 2131719998, 2131719999, 2131719937, 2131719938, 2131719939, 2131719970, 2131720003, 2131720028, 2131719975, 2131720025, 2131720026, 2131720027, 2131720016, 2131719936, 2131719982, 2131719997, 2131719977, 2131719979, 2131720021, 2131719945, 2131719981, 2131720009, 2131720007, 2131720008, 2131719946, 2131720000, 2131719954, 2131720004, 2131719951, 2131719949, 2131719952, 2131719950, 2131719953, 2131719964, 2131719959, 2131719960, 2131719935, 2131719948, 2131719983, 2131720006, 2131719947, 2131720010, 2131719961, 2131719940, 2131719944, 2131719943, 2131719941, 2131720020, 2131720001, 2131719958, 2131719973, 2131719974, 2131720005, 2131719985, 2131719962, 2131719963, 2131697674, 2131697677, 2131697680, 2131697679, 2131696878, 2131695767, 2131720018, 2131719971, 2131719972, 2131719969, 2131720019, 2131720024, 2131719986, 2131719942, 2131719968, 2131719976, 2131719967, 2131720013, 2131720014, 2131720017, 2131720012, 2131720022, 2131720002, 2131719980, 2131719955, 2131719965, 2131720023, 2131719984, 2131719957, 2131720011, 2131695767, 2131719988, 2131719987, 2131719989, 2131719990, 2131719993, 2131719996, 2131719991, 2131719992, 2131719994, 2131719995 };
     localHashSet = new HashSet();
     i = j;
     if (i < b.length)
@@ -205,217 +205,217 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem A()
   {
-    return a(2130847322, 2131719964, "open_aio");
+    return a(2130847395, 2131719976, "open_aio");
   }
   
   private static ActionSheetItem B()
   {
-    return a(2130847314, 2131719956, "Evernote");
+    return a(2130847387, 2131719968, "Evernote");
   }
   
   private static ActionSheetItem C()
   {
-    return a(2130847872, 2131719953, "delete");
+    return a(2130847945, 2131719965, "delete");
   }
   
   private static ActionSheetItem D()
   {
-    int i = 2130845777;
-    if (bhxo.a()) {
-      i = 2130845778;
+    int i = 2130845849;
+    if (bibv.a()) {
+      i = 2130845850;
     }
-    return a(i, 2131696896, "check_profile");
+    return a(i, 2131696898, "check_profile");
   }
   
   private static ActionSheetItem E()
   {
-    int i = 2130848705;
-    if (bhxo.a()) {
-      i = 2130848706;
+    int i = 2130848778;
+    if (bibv.a()) {
+      i = 2130848779;
     }
-    return a(i, 2131720012, "orignal");
+    return a(i, 2131720024, "orignal");
   }
   
   private static ActionSheetItem F()
   {
-    return a(2130847328, 2131720007, "unfollow");
+    return a(2130847401, 2131720019, "unfollow");
   }
   
   private static ActionSheetItem G()
   {
-    return a(2130847325, 2131719957, "follow");
+    return a(2130847398, 2131719969, "follow");
   }
   
   private static ActionSheetItem H()
   {
-    return a(2130847317, 2131719960, "hide_him");
+    return a(2130847390, 2131719972, "hide_him");
   }
   
   private static ActionSheetItem I()
   {
-    int i = 2130845791;
-    if (bhxo.a()) {
-      i = 2130845792;
+    int i = 2130845863;
+    if (bibv.a()) {
+      i = 2130845864;
     }
-    return a(i, 2131719959, "hide_this_feed");
+    return a(i, 2131719971, "hide_this_feed");
   }
   
   private static ActionSheetItem J()
   {
-    return a(2130847327, 2131720006, "collect_cancel");
+    return a(2130847400, 2131720018, "collect_cancel");
   }
   
   private static ActionSheetItem K()
   {
-    int i = 2130845773;
-    if (bhxo.a()) {
-      i = 2130845774;
+    int i = 2130845845;
+    if (bibv.a()) {
+      i = 2130845846;
     }
-    return a(i, 2131719948, "colornote_cancel");
+    return a(i, 2131719960, "colornote_cancel");
   }
   
   private static ActionSheetItem L()
   {
-    int i = 2130840992;
-    if (bhxo.a()) {
-      i = 2130840993;
+    int i = 2130840993;
+    if (bibv.a()) {
+      i = 2130840994;
     }
-    return a(i, 2131719942, "backtohome");
+    return a(i, 2131719954, "backtohome");
   }
   
   private static ActionSheetItem M()
   {
-    int i = 2130840997;
-    if (bhxo.a()) {
-      i = 2130840998;
+    int i = 2130840998;
+    if (bibv.a()) {
+      i = 2130840999;
     }
-    return a(i, 2131719992, "restart_applet");
+    return a(i, 2131720004, "restart_applet");
   }
   
   private static ActionSheetItem N()
   {
-    int i = 2130841005;
-    if (bhxo.a()) {
-      i = 2130841006;
+    int i = 2130841006;
+    if (bibv.a()) {
+      i = 2130841007;
     }
-    return a(i, 2131719988, "remove_my");
+    return a(i, 2131720000, "remove_my");
   }
   
   private static ActionSheetItem O()
   {
-    int i = 2130841003;
-    if (bhxo.a()) {
-      i = 2130841004;
+    int i = 2130841004;
+    if (bibv.a()) {
+      i = 2130841005;
     }
-    return a(i, 2131719934, "add_my");
+    return a(i, 2131719946, "add_my");
   }
   
   private static ActionSheetItem P()
   {
-    int i = 2130840990;
-    if (bhxo.a()) {
-      i = 2130840991;
+    int i = 2130840991;
+    if (bibv.a()) {
+      i = 2130840992;
     }
-    return a(i, 2131719929, "about");
+    return a(i, 2131719941, "about");
   }
   
   private static ActionSheetItem Q()
   {
-    int i = 2130840994;
-    if (bhxo.a()) {
-      i = 2130840995;
+    int i = 2130840995;
+    if (bibv.a()) {
+      i = 2130840996;
     }
-    return a(i, 2131719938, "applet_closeperformance");
+    return a(i, 2131719950, "applet_closeperformance");
   }
   
   private static ActionSheetItem R()
   {
-    int i = 2130840994;
-    if (bhxo.a()) {
-      i = 2130840995;
+    int i = 2130840995;
+    if (bibv.a()) {
+      i = 2130840996;
     }
-    return a(i, 2131719940, "applet_openperformance");
+    return a(i, 2131719952, "applet_openperformance");
   }
   
   private static ActionSheetItem S()
   {
-    int i = 2130840994;
-    if (bhxo.a()) {
-      i = 2130840995;
+    int i = 2130840995;
+    if (bibv.a()) {
+      i = 2130840996;
     }
-    return a(i, 2131719937, "applet_closedebug");
+    return a(i, 2131719949, "applet_closedebug");
   }
   
   private static ActionSheetItem T()
   {
-    int i = 2130840994;
-    if (bhxo.a()) {
-      i = 2130840995;
+    int i = 2130840995;
+    if (bibv.a()) {
+      i = 2130840996;
     }
-    return a(i, 2131719939, "applet_opendebug");
+    return a(i, 2131719951, "applet_opendebug");
   }
   
   private static ActionSheetItem U()
   {
-    int i = 2130845795;
-    if (bhxo.a()) {
-      i = 2130845796;
+    int i = 2130845867;
+    if (bibv.a()) {
+      i = 2130845868;
     }
-    return a(i, 2131719965, "long_screenshot");
+    return a(i, 2131719977, "long_screenshot");
   }
   
   private static ActionSheetItem V()
   {
-    int i = 2130845764;
-    if (bhxo.a()) {
-      i = 2130845765;
+    int i = 2130845836;
+    if (bibv.a()) {
+      i = 2130845837;
     }
-    return a(i, 2131719947, "colornote");
+    return a(i, 2131719959, "colornote");
   }
   
   private static ActionSheetItem W()
   {
-    int i = 2130849866;
-    if (bhxo.a()) {
-      i = 2130849867;
+    int i = 2130849939;
+    if (bibv.a()) {
+      i = 2130849940;
     }
-    return a(i, 2131720009, "url_to_txdoc");
+    return a(i, 2131720021, "url_to_txdoc");
   }
   
   private static ActionSheetItem X()
   {
-    int i = 2130845775;
-    if (bhxo.a()) {
-      i = 2130845776;
+    int i = 2130845847;
+    if (bibv.a()) {
+      i = 2130845848;
     }
-    return a(i, 2131719997, "search_emotion");
+    return a(i, 2131720009, "search_emotion");
   }
   
   private static ActionSheetItem Y()
   {
-    int i = 2130845799;
-    if (bhxo.a()) {
-      i = 2130845800;
+    int i = 2130845871;
+    if (bibv.a()) {
+      i = 2130845872;
     }
-    return a(i, 2131719970, "other_app");
+    return a(i, 2131719982, "other_app");
   }
   
   private static ActionSheetItem Z()
   {
-    int i = 2130845797;
-    if (bhxo.a()) {
-      i = 2130845798;
+    int i = 2130845869;
+    if (bibv.a()) {
+      i = 2130845870;
     }
-    return a(i, 2131719995, "scan_appletcode");
+    return a(i, 2131720007, "scan_appletcode");
   }
   
   private static ActionSheetItem a()
   {
-    int i = 2130850101;
-    if (bhxo.a()) {
-      i = 2130850102;
+    int i = 2130850174;
+    if (bibv.a()) {
+      i = 2130850175;
     }
-    return a(i, 2131719954, "download");
+    return a(i, 2131719966, "download");
   }
   
   private static ActionSheetItem a(int paramInt1, int paramInt2, String paramString)
@@ -434,332 +434,332 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem aA()
   {
-    int i = 2130845785;
-    if (bhxo.a()) {
-      i = 2130845786;
+    int i = 2130845857;
+    if (bibv.a()) {
+      i = 2130845858;
     }
-    return a(i, 2131719946, "collect");
+    return a(i, 2131719958, "collect");
   }
   
   private static ActionSheetItem aB()
   {
-    int i = 2130845732;
-    if (bhxo.a()) {
-      i = 2130845733;
+    int i = 2130845804;
+    if (bibv.a()) {
+      i = 2130845805;
     }
-    return a(i, 2131719924, "Qbrowser");
+    return a(i, 2131719936, "Qbrowser");
   }
   
   private static ActionSheetItem aC()
   {
-    int i = 2130845735;
-    if (bhxo.a()) {
-      i = 2130845736;
+    int i = 2130845807;
+    if (bibv.a()) {
+      i = 2130845808;
     }
-    return a(i, 2131720004, "browser");
+    return a(i, 2131720016, "browser");
   }
   
   private static ActionSheetItem aD()
   {
-    int i = 2130845747;
-    if (bhxo.a()) {
-      i = 2130845748;
+    int i = 2130845819;
+    if (bibv.a()) {
+      i = 2130845820;
     }
-    return a(i, 2131719926, "Qzone");
+    return a(i, 2131719938, "Qzone");
   }
   
   private static ActionSheetItem aE()
   {
-    int i = 2130845741;
-    if (bhxo.a()) {
-      i = 2130845742;
+    int i = 2130845813;
+    if (bibv.a()) {
+      i = 2130845814;
     }
-    return a(i, 2131719925, "Qfriend");
+    return a(i, 2131719937, "Qfriend");
   }
   
   private static ActionSheetItem aF()
   {
-    int i = 2130845779;
-    if (bhxo.a()) {
-      i = 2130845780;
+    int i = 2130845851;
+    if (bibv.a()) {
+      i = 2130845852;
     }
-    return a(i, 2131719949, "copy_link");
+    return a(i, 2131719961, "copy_link");
   }
   
   private static ActionSheetItem aG()
   {
-    int i = 2130839741;
-    if (bhxo.a()) {
-      i = 2130843773;
+    int i = 2130839742;
+    if (bibv.a()) {
+      i = 2130843845;
     }
-    return a(i, 2131719961, "Import_reader");
+    return a(i, 2131719973, "Import_reader");
   }
   
   private static ActionSheetItem aH()
   {
     int i = 2130837566;
-    if (bhxo.a()) {
+    if (bibv.a()) {
       i = 2130837567;
     }
-    return a(i, 2131719962, "edit_online");
+    return a(i, 2131719974, "edit_online");
   }
   
   private static ActionSheetItem aI()
   {
-    int i = 2130839732;
-    if (bhxo.a()) {
-      i = 2130843769;
+    int i = 2130839733;
+    if (bibv.a()) {
+      i = 2130843841;
     }
-    return a(i, 2131719993, "safe_share");
+    return a(i, 2131720005, "safe_share");
   }
   
   private static ActionSheetItem aJ()
   {
-    int i = 2130843782;
-    if (bhxo.a()) {
-      i = 2130843783;
+    int i = 2130843854;
+    if (bibv.a()) {
+      i = 2130843855;
     }
-    return a(i, 2131719973, "print");
+    return a(i, 2131719985, "print");
   }
   
   private static ActionSheetItem aK()
   {
-    int i = 2130843771;
-    if (bhxo.a()) {
-      i = 2130843772;
+    int i = 2130843843;
+    if (bibv.a()) {
+      i = 2130843844;
     }
-    return a(i, 2131719950, "generate_link");
+    return a(i, 2131719962, "generate_link");
   }
   
   private static ActionSheetItem aL()
   {
-    int i = 2130843774;
-    if (bhxo.a()) {
-      i = 2130843775;
+    int i = 2130843846;
+    if (bibv.a()) {
+      i = 2130843847;
     }
-    return a(i, 2131719951, "generate_QRcode");
+    return a(i, 2131719963, "generate_QRcode");
   }
   
   private static ActionSheetItem aa()
   {
-    int i = 2130845811;
-    if (bhxo.a()) {
-      i = 2130845812;
+    int i = 2130845883;
+    if (bibv.a()) {
+      i = 2130845884;
     }
-    return a(i, 2131719996, "scan_qrcode");
+    return a(i, 2131720008, "scan_qrcode");
   }
   
   private static ActionSheetItem ab()
   {
-    int i = 2130845793;
-    if (bhxo.a()) {
-      i = 2130845794;
+    int i = 2130845865;
+    if (bibv.a()) {
+      i = 2130845866;
     }
-    return a(i, 2131719936, "aio_position");
+    return a(i, 2131719948, "aio_position");
   }
   
   private static ActionSheetItem ac()
   {
-    int i = 2130845825;
-    if (bhxo.a()) {
-      i = 2130845826;
+    int i = 2130845897;
+    if (bibv.a()) {
+      i = 2130845898;
     }
-    return a(i, 2131719971, "pick_words");
+    return a(i, 2131719983, "pick_words");
   }
   
   private static ActionSheetItem ad()
   {
-    int i = 2130845743;
-    if (bhxo.a()) {
-      i = 2130845744;
+    int i = 2130845815;
+    if (bibv.a()) {
+      i = 2130845816;
     }
-    return a(i, 2131719958, "group_album");
+    return a(i, 2131719970, "group_album");
   }
   
   private static ActionSheetItem ae()
   {
-    int i = 2130845749;
-    if (bhxo.a()) {
-      i = 2130845750;
+    int i = 2130845821;
+    if (bibv.a()) {
+      i = 2130845822;
     }
-    return a(i, 2131719927, "Qzone_album");
+    return a(i, 2131719939, "Qzone_album");
   }
   
   private static ActionSheetItem af()
   {
-    int i = 2130845766;
-    if (bhxo.a()) {
-      i = 2130845767;
+    int i = 2130845838;
+    if (bibv.a()) {
+      i = 2130845839;
     }
-    return a(i, 2131719932, "add_emotion");
+    return a(i, 2131719944, "add_emotion");
   }
   
   private static ActionSheetItem ag()
   {
-    int i = 2130841000;
-    if (bhxo.a()) {
-      i = 2130841001;
+    int i = 2130841001;
+    if (bibv.a()) {
+      i = 2130841002;
     }
-    return a(i, 2131719985, "push_setup");
+    return a(i, 2131719997, "push_setup");
   }
   
   private static ActionSheetItem ah()
   {
-    int i = 2130842269;
-    if (bhxo.a()) {
-      i = 2130845828;
+    int i = 2130845900;
+    if (bibv.a()) {
+      i = 2130845901;
     }
-    return a(i, 2131720008, "uninterested");
+    return a(i, 2131720020, "uninterested");
   }
   
   private static ActionSheetItem ai()
   {
-    int i = 2130845781;
-    if (bhxo.a()) {
-      i = 2130845782;
+    int i = 2130845853;
+    if (bibv.a()) {
+      i = 2130845854;
     }
-    return a(i, 2131719994, "save");
+    return a(i, 2131720006, "save");
   }
   
   private static ActionSheetItem aj()
   {
-    if (bhxo.a()) {}
-    return a(2130842283, 2131719967, "not_care");
+    if (bibv.a()) {}
+    return a(2130842296, 2131719979, "not_care");
   }
   
   private static ActionSheetItem ak()
   {
-    if (bhxo.a()) {}
-    return a(2130842286, 2131695704, "open_aio");
+    if (bibv.a()) {}
+    return a(2130842299, 2131695706, "open_aio");
   }
   
   private static ActionSheetItem al()
   {
-    if (bhxo.a()) {}
-    return a(2130842287, 2131719933, "add_friend");
+    if (bibv.a()) {}
+    return a(2130842300, 2131719945, "add_friend");
   }
   
   private static ActionSheetItem am()
   {
-    if (bhxo.a()) {}
-    return a(2130842286, 2131719969, "open_aio");
+    if (bibv.a()) {}
+    return a(2130842299, 2131719981, "open_aio");
   }
   
   private static ActionSheetItem an()
   {
-    int i = 2130845755;
-    if (bhxo.a()) {
-      i = 2130845756;
+    int i = 2130845827;
+    if (bibv.a()) {
+      i = 2130845828;
     }
-    return a(i, 2131720016, "weiyun");
+    return a(i, 2131720028, "weiyun");
   }
   
   private static ActionSheetItem ao()
   {
-    int i = 2130845739;
-    if (bhxo.a()) {
-      i = 2130845740;
+    int i = 2130845811;
+    if (bibv.a()) {
+      i = 2130845812;
     }
-    return a(i, 2131719998, "sent_pc");
+    return a(i, 2131720010, "sent_pc");
   }
   
   private static ActionSheetItem ap()
   {
-    int i = 2130845811;
-    if (bhxo.a()) {
-      i = 2130845812;
+    int i = 2130845883;
+    if (bibv.a()) {
+      i = 2130845884;
     }
-    return a(i, 2131719923, "QRcode");
+    return a(i, 2131719935, "QRcode");
   }
   
   private static ActionSheetItem aq()
   {
-    if (bhxo.a()) {}
-    return a(2130842285, 2131719928, "Screenshot_share");
+    if (bibv.a()) {}
+    return a(2130842298, 2131719940, "Screenshot_share");
   }
   
   private static ActionSheetItem ar()
   {
-    if (bhxo.a()) {}
-    return a(2130843955, 2131719987, "qiyeqq");
+    if (bibv.a()) {}
+    return a(2130844027, 2131719999, "qiyeqq");
   }
   
   private static ActionSheetItem as()
   {
-    if (bhxo.a()) {}
-    return a(2130843954, 2131719986, "qidian");
+    if (bibv.a()) {}
+    return a(2130844026, 2131719998, "qidian");
   }
   
   private static ActionSheetItem at()
   {
-    int i = 2130841002;
-    if (bhxo.a()) {
-      i = 2130845769;
+    int i = 2130841003;
+    if (bibv.a()) {
+      i = 2130845841;
     }
-    return a(i, 2131719931, "add_desktop");
+    return a(i, 2131719943, "add_desktop");
   }
   
   private static ActionSheetItem au()
   {
-    int i = 2130845745;
-    if (bhxo.a()) {
-      i = 2130845746;
+    int i = 2130845817;
+    if (bibv.a()) {
+      i = 2130845818;
     }
-    return a(i, 2131719963, "kandian");
+    return a(i, 2131719975, "kandian");
   }
   
   private static ActionSheetItem av()
   {
-    int i = 2130845760;
-    if (bhxo.a()) {
-      i = 2130845761;
+    int i = 2130845832;
+    if (bibv.a()) {
+      i = 2130845833;
     }
-    return a(i, 2131720015, "weibo");
+    return a(i, 2131720027, "weibo");
   }
   
   private static ActionSheetItem aw()
   {
-    int i = 2130845809;
-    if (bhxo.a()) {
-      i = 2130845810;
+    int i = 2130845881;
+    if (bibv.a()) {
+      i = 2130845882;
     }
-    return a(i, 2131719989, "report");
+    return a(i, 2131720001, "report");
   }
   
   private static ActionSheetItem ax()
   {
-    int i = 2130845753;
-    if (bhxo.a()) {
-      i = 2130845754;
+    int i = 2130845825;
+    if (bibv.a()) {
+      i = 2130845826;
     }
-    return a(i, 2131720014, "wechat_");
+    return a(i, 2131720026, "wechat_");
   }
   
   private static ActionSheetItem ay()
   {
-    int i = 2130845751;
-    if (bhxo.a()) {
-      i = 2130845752;
+    int i = 2130845823;
+    if (bibv.a()) {
+      i = 2130845824;
     }
-    return a(i, 2131720013, "wechat");
+    return a(i, 2131720025, "wechat");
   }
   
   private static ActionSheetItem az()
   {
-    int i = 2130845770;
-    if (bhxo.a()) {
-      i = 2130845771;
+    int i = 2130845842;
+    if (bibv.a()) {
+      i = 2130845843;
     }
-    return a(i, 2131719935, "adjust_font");
+    return a(i, 2131719947, "adjust_font");
   }
   
   private static ActionSheetItem b()
   {
-    int i = 2130850099;
-    if (bhxo.a()) {
-      i = 2130850100;
+    int i = 2130850172;
+    if (bibv.a()) {
+      i = 2130850173;
     }
-    return a(i, 2131719944, "carton_detail");
+    return a(i, 2131719956, "carton_detail");
   }
   
   public static ActionSheetItem build(int paramInt)
@@ -887,9 +887,9 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = U();
       continue;
-      localActionSheetItem1 = a(2130840084, 2131719925, "");
+      localActionSheetItem1 = a(2130840085, 2131719937, "");
       continue;
-      localActionSheetItem1 = a(2130849078, 2131719966, "");
+      localActionSheetItem1 = a(2130849151, 2131719978, "");
       continue;
       localActionSheetItem1 = T();
       continue;
@@ -921,17 +921,17 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = aL();
       continue;
-      localActionSheetItem1 = a(2130843242, 2131697672, "add_troop_app");
+      localActionSheetItem1 = a(2130843255, 2131697674, "add_troop_app");
       continue;
-      localActionSheetItem1 = a(2130843244, 2131697675, "open_app_detail");
+      localActionSheetItem1 = a(2130843257, 2131697677, "open_app_detail");
       continue;
-      localActionSheetItem1 = a(2130843247, 2131697678, "share_troop_app");
+      localActionSheetItem1 = a(2130843260, 2131697680, "share_troop_app");
       continue;
-      localActionSheetItem1 = a(2130843246, 2131697677, "refresh_troop_app_view");
+      localActionSheetItem1 = a(2130843259, 2131697679, "refresh_troop_app_view");
       continue;
-      localActionSheetItem1 = a(2130842281, 2131696876, "share_diandian");
+      localActionSheetItem1 = a(2130842294, 2131696878, "share_diandian");
       continue;
-      localActionSheetItem1 = a(2130842278, 2131695765, "share_more");
+      localActionSheetItem1 = a(2130842291, 2131695767, "share_more");
       continue;
       localActionSheetItem1 = J();
       continue;
@@ -1009,166 +1009,166 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem c()
   {
-    int i = 2130841477;
-    if (bhxo.a()) {
-      i = 2130841478;
+    int i = 2130841478;
+    if (bibv.a()) {
+      i = 2130841479;
     }
-    return a(i, 2131719976, "book_detail");
+    return a(i, 2131719988, "book_detail");
   }
   
   private static ActionSheetItem d()
   {
-    int i = 2130841475;
-    if (bhxo.a()) {
-      i = 2130841476;
+    int i = 2130841476;
+    if (bibv.a()) {
+      i = 2130841477;
     }
-    return a(i, 2131719975, "add_shelf");
+    return a(i, 2131719987, "add_shelf");
   }
   
   private static ActionSheetItem e()
   {
-    int i = 2130841479;
-    if (bhxo.a()) {
-      i = 2130841482;
+    int i = 2130841480;
+    if (bibv.a()) {
+      i = 2130841483;
     }
-    return a(i, 2131719977, "bookmark");
+    return a(i, 2131719989, "bookmark");
   }
   
   private static ActionSheetItem f()
   {
-    int i = 2130841480;
-    if (bhxo.a()) {
-      i = 2130841481;
+    int i = 2130841481;
+    if (bibv.a()) {
+      i = 2130841482;
     }
-    return a(i, 2131719978, "bookmark_cancel");
+    return a(i, 2131719990, "bookmark_cancel");
   }
   
   private static ActionSheetItem g()
   {
-    int i = 2130841487;
-    if (bhxo.a()) {
-      i = 2130841488;
+    int i = 2130841488;
+    if (bibv.a()) {
+      i = 2130841489;
     }
-    return a(i, 2131719981, "hide_opinion");
+    return a(i, 2131719993, "hide_opinion");
   }
   
   private static ActionSheetItem h()
   {
-    int i = 2130841493;
-    if (bhxo.a()) {
-      i = 2130841494;
+    int i = 2130841494;
+    if (bibv.a()) {
+      i = 2130841495;
     }
-    return a(i, 2131719984, "show_opinion");
+    return a(i, 2131719996, "show_opinion");
   }
   
   private static ActionSheetItem i()
   {
-    int i = 2130841483;
-    if (bhxo.a()) {
-      i = 2130841486;
+    int i = 2130841484;
+    if (bibv.a()) {
+      i = 2130841487;
     }
-    return a(i, 2131719979, "continue_purchase");
+    return a(i, 2131719991, "continue_purchase");
   }
   
   private static ActionSheetItem j()
   {
-    int i = 2130841484;
-    if (bhxo.a()) {
-      i = 2130841485;
+    int i = 2130841485;
+    if (bibv.a()) {
+      i = 2130841486;
     }
-    return a(i, 2131719980, "continue_purchase_cancel");
+    return a(i, 2131719992, "continue_purchase_cancel");
   }
   
   private static ActionSheetItem k()
   {
-    int i = 2130841489;
-    if (bhxo.a()) {
-      i = 2130841492;
+    int i = 2130841490;
+    if (bibv.a()) {
+      i = 2130841493;
     }
-    return a(i, 2131719982, "privacy");
+    return a(i, 2131719994, "privacy");
   }
   
   private static ActionSheetItem l()
   {
-    int i = 2130841490;
-    if (bhxo.a()) {
-      i = 2130841491;
+    int i = 2130841491;
+    if (bibv.a()) {
+      i = 2130841492;
     }
-    return a(i, 2131719983, "privacy_cancel");
+    return a(i, 2131719995, "privacy_cancel");
   }
   
   private static ActionSheetItem m()
   {
-    return a(2130847871, 2131719999, "set_background");
+    return a(2130847944, 2131720011, "set_background");
   }
   
   private static ActionSheetItem n()
   {
-    return a(2130847875, 2131719945, "rec_face");
+    return a(2130847948, 2131719957, "rec_face");
   }
   
   private static ActionSheetItem o()
   {
-    return a(2130847319, 2131719972, "psapp");
+    return a(2130847392, 2131719984, "psapp");
   }
   
   private static ActionSheetItem p()
   {
-    return a(2130847312, 2131720011, "watch_on_tv");
+    return a(2130847385, 2131720023, "watch_on_tv");
   }
   
   private static ActionSheetItem q()
   {
-    return a(2130847315, 2131719943, "no_only_friend");
+    return a(2130847388, 2131719955, "no_only_friend");
   }
   
   private static ActionSheetItem r()
   {
-    int i = 2130845801;
-    if (bhxo.a()) {
-      i = 2130845802;
+    int i = 2130845873;
+    if (bibv.a()) {
+      i = 2130845874;
     }
-    return a(i, 2131719968, "only_friend");
+    return a(i, 2131719980, "only_friend");
   }
   
   private static ActionSheetItem s()
   {
-    return a(2130847316, 2131719990, "reprint_diary");
+    return a(2130847389, 2131720002, "reprint_diary");
   }
   
   private static ActionSheetItem t()
   {
-    return a(2130847316, 2131719991, "reprint_photo");
+    return a(2130847389, 2131720003, "reprint_photo");
   }
   
   private static ActionSheetItem u()
   {
-    return a(2130847323, 2131720010, "look_dress");
+    return a(2130847396, 2131720022, "look_dress");
   }
   
   private static ActionSheetItem v()
   {
-    return a(2130847323, 2131720000, "set_card");
+    return a(2130847396, 2131720012, "set_card");
   }
   
   private static ActionSheetItem w()
   {
-    return a(2130847329, 2131720005, "unstick");
+    return a(2130847402, 2131720017, "unstick");
   }
   
   private static ActionSheetItem x()
   {
-    return a(2130847326, 2131720002, "stick");
+    return a(2130847399, 2131720014, "stick");
   }
   
   private static ActionSheetItem y()
   {
-    return a(2130847324, 2131720001, "privacy");
+    return a(2130847397, 2131720013, "privacy");
   }
   
   private static ActionSheetItem z()
   {
-    return a(2130847313, 2131719955, "edit");
+    return a(2130847386, 2131719967, "edit");
   }
   
   public boolean isValidCreate()

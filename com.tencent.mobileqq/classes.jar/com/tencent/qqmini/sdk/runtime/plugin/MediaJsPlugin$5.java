@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
+import bgok;
 import org.json.JSONObject;
 
 class MediaJsPlugin$5
   implements Runnable
 {
-  MediaJsPlugin$5(MediaJsPlugin paramMediaJsPlugin, bgkd parambgkd, int paramInt1, int paramInt2, String paramString1, JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString2, boolean paramBoolean, String paramString3) {}
+  MediaJsPlugin$5(MediaJsPlugin paramMediaJsPlugin, bgok parambgok, int paramInt1, int paramInt2, String paramString1, JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString2, boolean paramBoolean, String paramString3) {}
   
   public void run()
   {

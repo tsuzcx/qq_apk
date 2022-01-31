@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmen;
+import bmiz;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new bmen();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new bmiz();
   public final LocalMediaInfo a;
   public final String a;
   

@@ -1,22 +1,27 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-class aznx
-  implements EIPCResultCallback
+public final class aznx
+  implements QQPermissionCallback
 {
-  aznx(aznw paramaznw) {}
+  public aznx(aznz paramaznz, AppActivity paramAppActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramEIPCResult.isSuccess()) && (paramEIPCResult.data.getBoolean("key_monitor"))) {
-      azob.a().e();
+    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Aznz);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Aznz != null) {
+      this.jdField_a_of_type_Aznz.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznx
  * JD-Core Version:    0.7.0.1
  */

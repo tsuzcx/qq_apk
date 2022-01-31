@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acnr;
+import acsg;
 
 public class Conversation$43$1
   implements Runnable
 {
-  public Conversation$43$1(acnr paramacnr) {}
+  public Conversation$43$1(acsg paramacsg) {}
   
   public void run()
   {

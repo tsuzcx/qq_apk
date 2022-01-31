@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bcel;
-import bcfc;
-import bcfg;
+import bciu;
+import bcjl;
+import bcjp;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class VisitorTroopCardPresenter$5$1
   implements Runnable
 {
-  public VisitorTroopCardPresenter$5$1(bcfg parambcfg, boolean paramBoolean) {}
+  public VisitorTroopCardPresenter$5$1(bcjp parambcjp, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bcfc.a(this.jdField_a_of_type_Bcfg.a).b(bcfc.a(this.jdField_a_of_type_Bcfg.a).troopUin);
+      bcjl.a(this.jdField_a_of_type_Bcjp.a).b(bcjl.a(this.jdField_a_of_type_Bcjp.a).troopUin);
       return;
     }
-    bcfc.a(this.jdField_a_of_type_Bcfg.a).a();
+    bcjl.a(this.jdField_a_of_type_Bcjp.a).a();
   }
 }
 

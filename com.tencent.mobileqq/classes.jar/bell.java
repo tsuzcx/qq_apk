@@ -1,24 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.FolderTextView;
 
-public class bell
-  implements View.OnClickListener
+public abstract interface bell
+  extends begg
 {
-  public bell(FolderTextView paramFolderTextView) {}
+  public abstract View a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (FolderTextView.a(this.a) == 0) {
-      FolderTextView.a(this.a, 1);
-    }
-    for (;;)
-    {
-      FolderTextView.a(this.a);
-      return;
-      FolderTextView.a(this.a, 0);
-    }
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
+  
+  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
 }
 
 

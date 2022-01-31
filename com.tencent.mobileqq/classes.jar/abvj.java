@@ -1,21 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.QAPM.ABType;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class abvj
-  implements View.OnClickListener
+public class abvj
 {
-  abvj(abvh paramabvh, View.OnClickListener paramOnClickListener) {}
+  public static Class<? extends QAPM.ABType>[] a = { abvi.class, abvk.class };
   
-  public void onClick(View paramView)
+  public static int a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    if (paramString != null)
     {
-      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+      if ("actSceneMem".equals(paramString)) {
+        return PluginCombination.leakPlugin.plugin;
+      }
+      if ("actScenePerf".equals(paramString)) {
+        return PluginCombination.resourcePlugin.plugin;
+      }
+      if (!"unifiedMonitor".equals(paramString)) {}
+    }
+    switch (Integer.parseInt((String)paramHashMap.get("family")))
+    {
+    default: 
+      return -1;
+    case 9: 
+    case 10: 
+      return PluginCombination.dropFramePlugin.plugin;
+    case 0: 
+      return PluginCombination.loopStackPlugin.plugin;
+    case 20: 
+      return PluginCombination.resourcePlugin.plugin;
+    }
+    return PluginCombination.batteryPlugin.plugin;
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap.put("deviceLv", String.valueOf(bdgk.f()));
+      paramString = QAPM.getABFactorByQAPMPlugin(a(paramString, paramHashMap));
+    } while ((paramString == null) || (paramString.length() <= 0));
+    paramHashMap.put("abfactor", paramString);
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    azmj.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.has("newplugin"))
+        {
+          i = paramJSONObject.getInt("newplugin");
+          String str = QAPM.getABFactorByQAPMPlugin(i);
+          if ((str == null) || (str.length() <= 0)) {
+            break;
+          }
+          paramJSONObject.put("abfactor", str);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("MagnifierSDK_QAPM.AbFactorManger", 2, "", paramJSONObject);
+        return;
+      }
+      int i = paramJSONObject.getInt("plugin");
+    }
   }
 }
 

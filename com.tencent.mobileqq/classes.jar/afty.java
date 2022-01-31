@@ -1,18 +1,18 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afty
-  extends aekx
+class afty
+  extends afuf
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  afty(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agfa(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

@@ -1,28 +1,54 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
-class bbbn
-  extends amab
+public class bbbn
+  extends bbbz
 {
-  bbbn(bbbm parambbbm) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<bawy> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  protected void a(int paramInt1, int paramInt2)
+  public bbbn()
   {
-    bbbm.a(this.a, false, paramInt1, paramInt2, null);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public String toString()
   {
-    bbbm.a(this.a, true, paramInt1, paramInt2, paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    bbbm.a(this.a, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    bbbm.a(this.a, paramBoolean, paramLong, paramTroopInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" downDomain:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" thumbDownUrl");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" bigDownUrl:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" orgiDownUrl:");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 

@@ -30,7 +30,7 @@ public class pao
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372951);
+      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372977);
     }
   }
   
@@ -42,7 +42,7 @@ public class pao
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560124);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560123);
     this.jdField_a_of_type_Rqj = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
   }
   

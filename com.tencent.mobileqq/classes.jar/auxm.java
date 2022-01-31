@@ -1,16 +1,24 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class auxm
-  implements AudioManager.OnAudioFocusChangeListener
+  implements bhuw
 {
-  public auxm(SmallVideoFragment paramSmallVideoFragment) {}
+  public auxm(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.a();
-    }
+    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView = new acjt();
+    paramView.c = bdin.a(BaseApplication.getContext());
+    paramView.a = System.currentTimeMillis();
+    acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
+    this.a.jdField_a_of_type_Agqq.aM();
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 

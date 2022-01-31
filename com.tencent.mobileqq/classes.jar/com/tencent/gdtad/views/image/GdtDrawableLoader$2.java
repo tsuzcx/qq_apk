@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.image;
 
-import aapv;
+import aauk;
 
 public class GdtDrawableLoader$2
   implements Runnable
 {
-  public GdtDrawableLoader$2(aapv paramaapv) {}
+  public GdtDrawableLoader$2(aauk paramaauk) {}
   
   public void run()
   {
-    aapv.a(this.this$0);
+    aauk.a(this.this$0);
   }
 }
 

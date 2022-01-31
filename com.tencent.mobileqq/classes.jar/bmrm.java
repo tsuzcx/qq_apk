@@ -1,8 +1,15 @@
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+
 public abstract interface bmrm
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
   
-  public abstract void c();
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

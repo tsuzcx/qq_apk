@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aila;
-import ailb;
-import aljq;
+import aipp;
+import aipq;
+import alof;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,12 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.widget.TextView;
-import awen;
-import awfr;
-import axhb;
-import bdcs;
-import bhli;
-import bhnu;
+import awiw;
+import awka;
+import axlk;
+import bdhb;
+import bhpp;
+import bhsb;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -54,18 +54,18 @@ public class SendPhotoActivity
   public SendPhotoActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aila(this);
-    this.jdField_a_of_type_AndroidOsHandler = new ailb(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aipp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aipq(this);
   }
   
   static void a()
   {
-    String str1 = aljq.aX + "photo/" + ".nomedia";
-    String str2 = aljq.aX + "thumb/" + ".nomedia";
-    String str3 = aljq.aX + "thumb2/" + ".nomedia";
-    bdcs.c(str1);
-    bdcs.c(str2);
-    bdcs.c(str3);
+    String str1 = alof.aX + "photo/" + ".nomedia";
+    String str2 = alof.aX + "thumb/" + ".nomedia";
+    String str3 = alof.aX + "thumb2/" + ".nomedia";
+    bdhb.c(str1);
+    bdhb.c(str2);
+    bdhb.c(str3);
   }
   
   private static void b(BaseActivity paramBaseActivity, ArrayList<String> paramArrayList)
@@ -86,8 +86,8 @@ public class SendPhotoActivity
         i = 0;
         while (i < paramArrayList.size())
         {
-          localArrayList.add(bhli.a((String)paramArrayList.get(i)));
-          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + bhli.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
+          localArrayList.add(bhpp.a((String)paramArrayList.get(i)));
+          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + bhpp.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
           i += 1;
         }
         localObject2 = new Intent("com.tencent.biz.pubaccount.picResultAction");
@@ -132,8 +132,8 @@ public class SendPhotoActivity
         this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131755801);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559438);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371874));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559437);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371894));
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
       }
       return;
@@ -141,7 +141,7 @@ public class SendPhotoActivity
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
-      awen.b("PIC_TAG_ERROR", "SendPhotoActivity.showProgressDialog", localThrowable.toString());
+      awiw.b("PIC_TAG_ERROR", "SendPhotoActivity.showProgressDialog", localThrowable.toString());
     }
   }
   
@@ -169,23 +169,23 @@ public class SendPhotoActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     super.doOnCreate(paramBundle);
-    ThreadManager.executeOnFileThread(bdcs.a);
+    ThreadManager.executeOnFileThread(bdhb.a);
     Object localObject1 = getIntent();
     paramBundle = ((Intent)localObject1).getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if (paramBundle == null)
     {
-      awen.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
+      awiw.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
       finish();
       return true;
     }
-    bhnu.a(true, paramBundle);
+    bhsb.a(true, paramBundle);
     int i;
     if (((Intent)localObject1).getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false))
     {
       localObject2 = (SessionInfo)((Intent)localObject1).getParcelableExtra("session_info");
       i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
       if (localObject2 != null) {
-        axhb.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
+        axlk.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
       }
       setResult(-1, getIntent());
       finish();
@@ -202,9 +202,9 @@ public class SendPhotoActivity
       i = ((Intent)localObject1).getIntExtra("key_is_sync_qzone", 0);
       if (i == 1)
       {
-        awfr localawfr = awfr.a();
-        if (localawfr != null) {
-          localawfr.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
+        awka localawka = awka.a();
+        if (localawka != null) {
+          localawka.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
         }
       }
     }
@@ -216,7 +216,7 @@ public class SendPhotoActivity
       {
         localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, "TimeOut");
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, i * 10000);
-        awen.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
+        awiw.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
       }
     }
     catch (RemoteException localRemoteException)
@@ -230,7 +230,7 @@ public class SendPhotoActivity
       }
     }
     this.b = System.nanoTime();
-    awen.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
+    awiw.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
     setCanLock(false);
     return true;
   }

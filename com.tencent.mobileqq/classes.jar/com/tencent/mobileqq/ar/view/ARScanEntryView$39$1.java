@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.view;
 
-import anbr;
-import ancu;
-import avxp;
+import anga;
+import anhd;
+import awby;
 
 public class ARScanEntryView$39$1
   implements Runnable
 {
-  public ARScanEntryView$39$1(ancu paramancu) {}
+  public ARScanEntryView$39$1(anhd paramanhd) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Anbr.e();
-    if ((ARScanEntryView.d(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Avxp != null)) {
-      this.a.jdField_a_of_type_Avxp.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
+    this.a.jdField_a_of_type_Anga.e();
+    if ((ARScanEntryView.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Awby != null)) {
+      this.a.jdField_a_of_type_Awby.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
     }
   }
 }

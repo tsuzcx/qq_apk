@@ -1,53 +1,44 @@
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
-class aurw
-  extends alsi
+public class aurw
+  extends auqr
 {
-  aurw(auru paramauru) {}
+  public aurw(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (paramInt != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onRemoveFromBlackList from nearby");
-    }
-    if (paramBoolean)
+    if (paramSongInfo != null)
     {
-      atvt localatvt = (atvt)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(paramString));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Alxx);
-      localatvt.b(1001, localArrayList, 1);
+      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
+      if (!MusicPlayerActivity.b().containsKey(localObject)) {
+        break label64;
+      }
+      localObject = (ausc)MusicPlayerActivity.b().get(localObject);
+      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((ausc)localObject).a);
+      MusicPlayerActivity.a(this.a, (ausc)localObject, paramSongInfo);
+    }
+    label64:
+    while (MusicPlayerActivity.a().containsKey(localObject)) {
       return;
     }
-    auru.a(this.a, 4116, new Object[] { Boolean.valueOf(false) });
+    Object localObject = MusicPlayerActivity.a(this.a);
+    if (localObject != null) {}
+    for (int i = ((auqt)localObject).c();; i = 0)
+    {
+      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
+      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
+      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
+      return;
+    }
   }
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onPlayStateChanged(int paramInt)
   {
-    if (((Integer)paramArrayOfObject[0]).intValue() != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onInsertIntoBlackList from nearby");
-    }
-    if ((paramBoolean) && (paramArrayOfObject.length == 4))
-    {
-      ((Long)paramArrayOfObject[1]).longValue();
-      String str = (String)paramArrayOfObject[2];
-      int i = ((Integer)paramArrayOfObject[3]).intValue();
-      aush.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
-      paramArrayOfObject = new ArrayList();
-      paramArrayOfObject.add(Long.valueOf(str));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Alxx);
-      ((atvt)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16)).a(1001, paramArrayOfObject, 1);
-      return;
-    }
-    auru.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
+    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
   }
 }
 

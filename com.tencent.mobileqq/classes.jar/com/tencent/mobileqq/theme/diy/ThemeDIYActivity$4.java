@@ -3,9 +3,9 @@ package com.tencent.mobileqq.theme.diy;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bdal;
-import bdou;
-import bdyi;
+import bdeu;
+import bdtd;
+import becr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
@@ -31,8 +31,8 @@ class ThemeDIYActivity$4
     String str1;
     try
     {
-      bool = bdyi.a(this.this$0.app.getApplication(), "ThemeDIYActivity", false);
-      l = bdal.b();
+      bool = becr.a(this.this$0.app.getApplication(), "ThemeDIYActivity", false);
+      l = bdeu.b();
       QLog.d("ThemeDIYActivity", 2, "loadResJson Err haveSDCard:" + bool + ", availableSpace:" + l);
       if (100 == this.val$resType)
       {
@@ -142,14 +142,14 @@ class ThemeDIYActivity$4
           break label1639;
         }
         JSONObject localJSONObject1 = ((JSONObject)localObject5).getJSONArray("operateAndroid").getJSONObject(0);
-        if ((!bdou.a(localJSONObject1.optString("minVersion"), "8.3.3")) || (bdou.a(localJSONObject1.optString("maxVersion"), "8.3.3")))
+        if ((!bdtd.a(localJSONObject1.optString("minVersion"), "8.3.5")) || (bdtd.a(localJSONObject1.optString("maxVersion"), "8.3.5")))
         {
           localObject3 = localObject2;
           m = i;
           if (!QLog.isColorLevel()) {
             break label1639;
           }
-          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 8.3.3, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
+          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 8.3.5, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
           localObject3 = localObject2;
           m = i;
           break label1639;

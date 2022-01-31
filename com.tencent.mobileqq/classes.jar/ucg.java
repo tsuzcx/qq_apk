@@ -1,18 +1,14 @@
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ucg
-  implements antv
+class ucg
+  implements View.OnClickListener
 {
-  public ucg(QCircleRecommendImageView paramQCircleRecommendImageView) {}
+  ucg(uce paramuce) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    QCircleRecommendImageView.a(this.a);
-    QCircleRecommendImageView.a(this.a, true);
+    this.a.dismiss();
   }
 }
 

@@ -1,16 +1,52 @@
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import android.app.Activity;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-final class aapb
-  extends ShapeDrawable.ShaderFactory
+public class aapb
+  implements aane
 {
-  aapb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
   
-  public Shader resize(int paramInt1, int paramInt2)
+  public aapb(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
   {
-    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
+    }
+    return -2147483648L;
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    aana.a().a(paramGdtAd.getAd());
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, aand paramaand)
+  {
+    QLog.e("GdtMotiveVideoAd", 1, "onAdFailedToLoad " + paramaand.a());
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 

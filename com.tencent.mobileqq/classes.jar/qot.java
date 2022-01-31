@@ -15,7 +15,7 @@ public class qot
       ReadInJoyDeliverUGCActivity.c(this.a, false);
       ReadInJoyDeliverUGCActivity.e(this.a);
       if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718846));
+        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718858));
       }
       if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
         ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);

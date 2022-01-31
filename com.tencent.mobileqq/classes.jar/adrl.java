@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class adrl
-  extends alox
+class adrl
+  implements DialogInterface.OnClickListener
 {
-  public adrl(SearchFriendListActivity paramSearchFriendListActivity) {}
+  adrl(adrj paramadrj) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    this.a.a.p();
   }
 }
 

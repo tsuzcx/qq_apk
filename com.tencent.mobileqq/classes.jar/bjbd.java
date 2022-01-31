@@ -1,8 +1,16 @@
-public abstract interface bjbd
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+
+public class bjbd
+  implements View.OnClickListener
 {
-  public abstract void a(attr paramattr);
+  public bjbd(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public abstract void b(attr paramattr);
+  public void onClick(View paramView)
+  {
+    ForceUserUpdateActivity.a(this.a);
+  }
 }
 
 

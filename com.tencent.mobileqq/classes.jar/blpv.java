@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-
-public class blpv
-  implements View.OnClickListener
+public abstract interface blpv
 {
-  public blpv(HummingActivity paramHummingActivity) {}
+  public abstract void aS_();
   
-  public void onClick(View paramView)
-  {
-    if (blpr.b()) {
-      return;
-    }
-    HummingActivity.a(this.a);
-  }
+  public abstract void aT_();
 }
 
 

@@ -1,37 +1,24 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajgl
+class ajgl
+  implements View.OnClickListener
 {
-  private BaseActivity a;
-  public QQAppInterface a;
+  ajgl(ajgb paramajgb) {}
   
-  public ajgl(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
-  {
-    if (paramRecentBaseData == null) {
-      return;
+    if (bhtb.e()) {
+      ajgb.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
     }
-    atwd.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = paramRecentBaseData.a();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
+    for (;;)
     {
-      azmj.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
+      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
       return;
+      ajgb.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
 }
 

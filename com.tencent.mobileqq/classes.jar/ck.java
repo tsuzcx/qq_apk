@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ck
-  implements army
+  implements arrh
 {
-  public ck(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, allz paramallz) {}
+  public ck(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, alqo paramalqo) {}
   
   public void a()
   {
@@ -68,10 +68,10 @@ public class ck
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Allz.a(localObject2, true);
+      this.jdField_a_of_type_Alqo.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Allz.a(localObject1);
+      this.jdField_a_of_type_Alqo.a(localObject1);
     }
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
   }

@@ -1,33 +1,14 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
 import java.util.List;
 
 public class ubp
-  extends FragmentPagerAdapter
+  implements axma
 {
-  public ubp(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  public ubp(QCircleMessageNoticeViewModel.1 param1) {}
   
-  public int getCount()
+  public void a(List<String> paramList, int paramInt)
   {
-    return QCirclePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
-      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    ubo.a(this.a.this$0, paramList, paramInt);
   }
 }
 

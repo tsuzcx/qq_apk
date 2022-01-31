@@ -1,146 +1,58 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import common.config.service.QzoneConfig;
 
 public class aocx
-  implements aoed
+  implements aocw
 {
-  public aocx(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
-  
-  public int a()
+  private void a(Context paramContext, String paramString)
   {
-    int j = 1;
-    int i;
-    if (this.a.i == 0) {
-      i = 2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
-      }
-      return i;
-      i = j;
-      if (this.a.i != 3) {
-        if (this.a.i != 1)
-        {
-          i = j;
-          if (this.a.i != 2) {}
-        }
-        else
-        {
-          i = this.a.h;
-        }
-      }
+    LaunchParam localLaunchParam = new LaunchParam();
+    localLaunchParam.scene = 1131;
+    MiniAppController.startAppByAppid(paramContext, paramString, "", "", localLaunchParam, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
     }
   }
   
-  public int a(int paramInt)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    int j = 0;
-    int i;
-    if (this.a.i == 0) {
-      i = allj.b.length;
+    int i = 0;
+    if (paramColorNote.getServiceType() != 16842752) {
+      return;
     }
-    for (;;)
+    String str = paramColorNote.getSubType();
+    paramColorNote = paramColorNote.getReserve();
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "openColorNoteMiniAppByAppInfo", 0) == 1) {
+      i = 1;
+    }
+    if ((paramColorNote != null) && (paramColorNote.length > 0) && (i != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      if (this.a.i == 3)
-      {
-        i = allj.c.length;
-      }
-      else if (this.a.i != 1)
-      {
-        i = j;
-        if (this.a.i != 2) {}
-      }
-      else
-      {
-        i = j;
-        if (paramInt < this.a.h)
+      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
+      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
+        try
         {
-          i = j;
-          if (paramInt >= 0)
-          {
-            i = j;
-            if (this.a.a[paramInt] != null) {
-              i = ((List)this.a.a[paramInt]).size();
-            }
-          }
+          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
+          return;
+        }
+        catch (Exception paramColorNote)
+        {
+          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
+          a(paramContext, str);
+          return;
         }
       }
+      a(paramContext, str);
+      return;
     }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i;
-    String str;
-    if (this.a.i == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < allj.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      str = allj.b[i];
-      paramInt2 = i;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
-      }
-      return str;
-      if (this.a.i == 3)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < allj.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str = allj.c[i];
-        paramInt2 = i;
-      }
-      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
-        {
-          str = ConditionSearchFriendActivity.a();
-          paramInt2 = i;
-        }
-        else
-        {
-          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
-          paramInt2 = i;
-        }
-      }
-      else
-      {
-        str = "";
-      }
-    }
+    a(paramContext, str);
   }
 }
 

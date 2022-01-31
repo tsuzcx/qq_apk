@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import vdx;
-import vez;
-import vge;
+import vig;
+import vji;
+import vkn;
 
 public class ShareModeBase$26
   implements Runnable
 {
-  public ShareModeBase$26(vez paramvez, vge paramvge) {}
+  public ShareModeBase$26(vji paramvji, vkn paramvkn) {}
   
   public void run()
   {

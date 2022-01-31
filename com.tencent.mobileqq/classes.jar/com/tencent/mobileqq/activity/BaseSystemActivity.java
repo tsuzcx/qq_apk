@@ -35,13 +35,13 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131720882;
+      i = 2131720894;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131721491;
+        return 2131721504;
       }
     } while (k != j - 2);
     return 2131690507;
@@ -55,7 +55,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131720882) {
+      if (k != 2131720894) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -63,7 +63,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131720882) {
+      if (k == 2131720894) {
         if (m == 24)
         {
           i = 24;
@@ -114,9 +114,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131561314);
-    setContentBackgroundResource(2130838591);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377291));
+    super.setContentView(2131561332);
+    setContentBackgroundResource(2130838592);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377345));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -207,7 +207,7 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130849937, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850010, 0, 0, 0);
     return this.rightViewText;
   }
   

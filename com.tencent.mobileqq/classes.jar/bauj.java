@@ -1,192 +1,100 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.VisibleForTesting;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import java.util.ArrayList;
 
 public class bauj
 {
-  public static String a(String paramString)
+  public static boolean a = true;
+  
+  public static ArrayList<bawy> a(ArrayList<bawy> paramArrayList1, ArrayList<bawy> paramArrayList2)
   {
-    paramString = a(paramString);
-    if ((paramString == null) || (paramString.length < 6)) {}
+    return a(paramArrayList1, paramArrayList2, NetConnInfoCenter.getActiveNetIpFamily(true), false);
+  }
+  
+  @VisibleForTesting
+  public static ArrayList<bawy> a(ArrayList<bawy> paramArrayList1, ArrayList<bawy> paramArrayList2, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Ipv6Strategy", 0, "getActiveNetIpFamily type = " + paramInt);
+    }
+    if (paramInt == 2) {
+      return paramArrayList1;
+    }
+    if (paramInt == 3) {
+      return a(paramArrayList1, paramArrayList2, paramBoolean);
+    }
+    return paramArrayList2;
+  }
+  
+  private static ArrayList<bawy> a(ArrayList<bawy> paramArrayList1, ArrayList<bawy> paramArrayList2, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (a(paramBoolean))
+    {
+      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
+        localArrayList.add(paramArrayList1.get(0));
+      }
+      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+        localArrayList.addAll(paramArrayList2);
+      }
+    }
     do
     {
-      return null;
-      paramString = paramString[5];
-      if (QLog.isColorLevel()) {
-        QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent:" + paramString);
+      return localArrayList;
+      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+        localArrayList.addAll(paramArrayList2);
       }
-      if (paramString.length() == 32) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent: error md5: length is not 32.");
-    return null;
-    return paramString;
+    } while ((paramArrayList1 == null) || (paramArrayList1.size() <= 0));
+    localArrayList.add(paramArrayList1.get(0));
+    return localArrayList;
   }
   
-  @Deprecated
-  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  public static boolean a()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('\026');
-    localStringBuffer.append(paramString);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramLong);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramInt);
-    localStringBuffer.append('|');
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localStringBuffer.append(paramInt);
-      return localStringBuffer.toString();
-    }
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    return (i == 2) || (i == 3);
   }
   
-  @Deprecated
-  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2)
+  private static boolean a(boolean paramBoolean)
   {
-    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0)) {
-      return paramString1 + "null";
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (paramBoolean) {
+      paramBoolean = a;
     }
-    return paramString1 + paramString2;
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2, String paramString3, String paramString4)
-  {
-    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
-    paramString1 = paramString1 + "|";
-    if ((paramString2 == null) || (paramString2.length() <= 0))
+    do
     {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString3 != null) && (paramString3.length() > 0)) {
-        break label191;
-      }
-    }
-    label191:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString3)
-    {
-      paramString1 = paramString1 + "|";
-      if ((paramString4 != null) && (paramString4.length() > 0)) {
-        break label214;
-      }
-      return paramString1 + "null";
-      paramString1 = paramString1 + paramString2;
-      break;
-    }
-    label214:
-    return paramString1 + paramString4;
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
-  {
-    return a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3, null);
-  }
-  
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3, String paramString9)
-  {
-    paramString1 = a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4);
-    paramString1 = paramString1 + "|";
-    if ((paramString5 == null) || (paramString5.length() <= 0))
-    {
-      paramString1 = paramString1 + "null";
-      paramString1 = paramString1 + "|";
-      if ((paramString6 != null) && (paramString6.length() > 0)) {
-        break label382;
-      }
-      paramString1 = paramString1 + "null";
-      label121:
-      paramString1 = paramString1 + "|";
-      if ((paramString7 != null) && (paramString7.length() > 0)) {
-        break label405;
-      }
-      paramString1 = paramString1 + "null";
-      label174:
-      paramString1 = paramString1 + "|";
-      if ((paramString8 != null) && (paramString8.length() > 0)) {
-        break label428;
-      }
-    }
-    label405:
-    label428:
-    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString8)
-    {
-      paramString1 = paramString1 + "|";
-      paramString1 = paramString1 + paramInt2;
-      paramString1 = paramString1 + "|";
-      paramString2 = paramString1 + paramInt3;
-      paramString1 = paramString2;
-      if (paramString9 != null)
+      do
       {
-        paramString1 = paramString2 + "|";
-        paramString1 = paramString1 + paramString9;
+        return paramBoolean;
+        if (b()) {
+          break;
+        }
+        paramBoolean = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("Ipv6Strategy", 0, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
+      return false;
+      if (Ipv6Config.sRMDownStrategy == 2) {
+        return true;
       }
-      return paramString1;
-      paramString1 = paramString1 + paramString5;
-      break;
-      label382:
-      paramString1 = paramString1 + paramString6;
-      break label121;
-      paramString1 = paramString1 + paramString7;
-      break label174;
+      paramBoolean = bool2;
+    } while (Ipv6Config.sRMDownStrategy != 3);
+    if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {}
+    for (paramBoolean = bool1;; paramBoolean = false) {
+      return paramBoolean;
     }
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
+  private static boolean b()
   {
-    paramString1 = a(paramString1, 0L, 1, true, paramString2);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramString2);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramString3);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramLong);
-    localStringBuffer.append('|');
-    localStringBuffer.append(paramInt);
-    return paramString1 + localStringBuffer.toString();
-  }
-  
-  public static String[] a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      paramString = paramString.split("\026");
-    } while ((paramString == null) || (paramString.length < 2));
-    return paramString[1].split("\\|");
-  }
-  
-  public static String b(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('\026');
-    paramString1 = a(paramString1);
-    int i = 0;
-    while ((i < paramString1.length) && (i < 5))
-    {
-      localStringBuilder.append(paramString1[i]);
-      localStringBuilder.append('|');
-      i += 1;
+    aorl localaorl = (aorl)aoks.a().a(538);
+    if (localaorl != null) {
+      return localaorl.c;
     }
-    if (paramString1.length == 4)
-    {
-      localStringBuilder.append("");
-      localStringBuilder.append('|');
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramString3);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append('|');
-      localStringBuilder.append(paramInt);
-    }
+    return false;
   }
 }
 

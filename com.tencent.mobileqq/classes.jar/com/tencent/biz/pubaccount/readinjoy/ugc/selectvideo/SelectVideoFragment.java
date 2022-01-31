@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bdag;
-import bhou;
+import bdep;
+import bhtb;
 import com.tencent.biz.pubaccount.readinjoy.view.AlbumPermissionView;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
@@ -59,7 +59,7 @@ public class SelectVideoFragment
   
   private void a()
   {
-    if ((bhou.k()) && (!bdag.b()) && (!bdag.d()))
+    if ((bhtb.k()) && (!bdep.b()) && (!bdep.d()))
     {
       getActivity().getWindow().getDecorView().setSystemUiVisibility(9216);
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(-1);
@@ -177,7 +177,7 @@ public class SelectVideoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     c();
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559843, null);
+    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559842, null);
   }
   
   public void onDestroy()
@@ -202,14 +202,14 @@ public class SelectVideoFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131379688));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378842));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379743));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131377910));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131377976));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364338);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131379746));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378899));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379801));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131377964));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378030));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364340);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362504));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365740);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365742);
     d();
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);

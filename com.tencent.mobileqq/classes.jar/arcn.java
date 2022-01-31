@@ -1,37 +1,51 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class arcn
-  implements Handler.Callback
+public class arcn
+  extends ayjo<aynu, aywd>
 {
-  private final WeakReference<TdsDebugView> a;
-  
-  private arcn(TdsDebugView paramTdsDebugView)
+  public arcn(ListView paramListView, bdbb parambdbb, List<aynu> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    super(parambdbb, paramList);
+    if (paramString == null) {
+      return;
+    }
+    if (paramString.size() == 1)
+    {
+      paramListView = (arcl)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        parambdbb = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new arcl();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          parambdbb.add(paramQQAppInterface);
+        }
+        a(parambdbb);
+        return;
+      }
+    }
+    a(paramString);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
+    return new arcu(ChatFileSearchFragment.a(this.a));
+  }
+  
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new arco(paramViewGroup);
   }
 }
 

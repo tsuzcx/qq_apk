@@ -5,10 +5,10 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bghn;
-import bgjl;
-import bgkd;
-import bglo;
+import bglu;
+import bgns;
+import bgok;
+import bgpv;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
@@ -31,7 +31,7 @@ public class VideoJsPlugin
   private float density;
   private SparseArray<CoverView> mCoverViewSparseArray = new SparseArray();
   
-  private void insertVideoPlayer(Activity paramActivity, bghn parambghn, int paramInt, JSONObject paramJSONObject)
+  private void insertVideoPlayer(Activity paramActivity, bglu parambglu, int paramInt, JSONObject paramJSONObject)
   {
     QMLog.i("VideoPlugin", "insertVideoPlayer: " + paramJSONObject);
     Object localObject = (CoverView)this.mCoverViewSparseArray.get(paramInt);
@@ -40,11 +40,11 @@ public class VideoJsPlugin
       localObject = new CoverVideoView(paramActivity);
       ((CoverVideoView)localObject).setAtyRef(new WeakReference(paramActivity));
       ((CoverVideoView)localObject).setData(paramJSONObject.optString("data"));
-      ((CoverVideoView)localObject).setServiceWebview(parambghn);
+      ((CoverVideoView)localObject).setServiceWebview(parambglu);
       ((CoverVideoView)localObject).setVideoPlayerId(paramInt);
       ((CoverVideoView)localObject).setParentId(paramInt);
       this.mCoverViewSparseArray.put(paramInt, localObject);
-      bgjl.a().a((ViewGroup)localObject);
+      bgns.a().a((ViewGroup)localObject);
     }
     for (paramActivity = (Activity)localObject;; paramActivity = (Activity)localObject)
     {
@@ -71,7 +71,7 @@ public class VideoJsPlugin
         if (localCoverView1.a() != 0) {
           break label72;
         }
-        bgjl.a().a(localCoverView1);
+        bgns.a().a(localCoverView1);
       }
       for (;;)
       {
@@ -93,7 +93,7 @@ public class VideoJsPlugin
       return;
     }
     removeCoverChildView(paramInt);
-    bgjl.a().a(localCoverView);
+    bgns.a().a(localCoverView);
   }
   
   private void updateVideoPlayer(int paramInt, JSONObject paramJSONObject)
@@ -106,49 +106,49 @@ public class VideoJsPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bglo.a(paramJSONObject)) {
+      if (!bgpv.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
   }
   
-  public String insertVideoPlayer(bgkd parambgkd)
+  public String insertVideoPlayer(bgok parambgok)
   {
     if (this.density <= 0.0F) {
       this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgok.b);
       int i = localJSONObject1.optInt("videoPlayerId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("containerId", i);
-      ThreadManager.c().post(new VideoJsPlugin.1(this, parambgkd, i, localJSONObject1, localJSONObject2));
+      ThreadManager.c().post(new VideoJsPlugin.1(this, parambgok, i, localJSONObject1, localJSONObject2));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgok.a + " error.", localThrowable);
     }
     return "{}";
   }
   
-  public String operateVideoPlayer(bgkd parambgkd)
+  public String operateVideoPlayer(bgok parambgok)
   {
     if (this.density <= 0.0F) {
       this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str = localJSONObject.optString("type");
       int i = localJSONObject.optInt("videoPlayerId");
-      ThreadManager.c().post(new VideoJsPlugin.3(this, i, str, parambgkd));
+      ThreadManager.c().post(new VideoJsPlugin.3(this, i, str, parambgok));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgok.a + " error.", localThrowable);
     }
     return "{}";
   }
@@ -240,14 +240,14 @@ public class VideoJsPlugin
     }
   }
   
-  public String removeVideoPlayer(bgkd parambgkd)
+  public String removeVideoPlayer(bgok parambgok)
   {
     if (this.density <= 0.0F) {
       this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      int i = new JSONObject(parambgkd.b).optInt("videoPlayerId");
+      int i = new JSONObject(parambgok.b).optInt("videoPlayerId");
       CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(i);
       if ((localCoverView instanceof CoverVideoView))
       {
@@ -255,31 +255,31 @@ public class VideoJsPlugin
         ((CoverVideoView)localCoverView).c();
         ((CoverVideoView)localCoverView).d();
       }
-      ThreadManager.c().post(new VideoJsPlugin.4(this, i, parambgkd));
+      ThreadManager.c().post(new VideoJsPlugin.4(this, i, parambgok));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgok.a + " error.", localThrowable);
     }
     return "{}";
   }
   
-  public String updateVideoPlayer(bgkd parambgkd)
+  public String updateVideoPlayer(bgok parambgok)
   {
     if (this.density <= 0.0F) {
       this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       int i = localJSONObject.optInt("videoPlayerId");
-      ThreadManager.c().post(new VideoJsPlugin.2(this, i, localJSONObject, parambgkd));
+      ThreadManager.c().post(new VideoJsPlugin.2(this, i, localJSONObject, parambgok));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgok.a + " error.", localThrowable);
     }
     return "{}";
   }

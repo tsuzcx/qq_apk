@@ -1,76 +1,45 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public abstract class xnr
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new xns(this);
-  View jdField_a_of_type_AndroidViewView;
-  xnm jdField_a_of_type_Xnm;
-  xnn jdField_a_of_type_Xnn;
-  xnt jdField_a_of_type_Xnt;
-  boolean b = false;
+  protected int a;
+  protected axvw a;
+  protected String a;
+  protected String b;
   
-  public xnr(xnt paramxnt, View paramView)
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, xnq paramxnq)
   {
-    this.jdField_a_of_type_Xnt = paramxnt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public Rect a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-    return localRect;
-  }
-  
-  public abstract CharSequence a();
-  
-  public void a(float paramFloat) {}
-  
-  public void a(CharSequence paramCharSequence) {}
-  
-  void a(xnm paramxnm)
-  {
-    this.jdField_a_of_type_Xnm = paramxnm;
-  }
-  
-  public void a(xnn paramxnn)
-  {
-    this.jdField_a_of_type_Xnn = paramxnn;
-    if (this.jdField_a_of_type_Xnn != null)
+    if (paramxnq != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public abstract CharSequence b();
-  
-  public void b(CharSequence paramCharSequence) {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.b != paramBoolean)
-    {
-      this.b = paramBoolean;
-      xnm localxnm = this.jdField_a_of_type_Xnm;
-      if (localxnm != null) {
-        localxnm.a(this, paramBoolean);
+      xmp localxmp = new xmp();
+      localxmp.jdField_a_of_type_Long = paramxnq.b;
+      localxmp.jdField_a_of_type_Int = paramInt;
+      localxmp.jdField_b_of_type_JavaLangString = paramString2;
+      localxmp.jdField_a_of_type_JavaLangString = paramString1;
+      localxmp.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localxmp.c = this.jdField_b_of_type_JavaLangString;
+      localxmp.jdField_a_of_type_Boolean = false;
+      localxmp.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
+      {
+        localxmp.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localxmp.jdField_b_of_type_Int = paramSlideItemInfo.c;
+      }
+      if (paramxnq.a != null) {
+        paramxnq.a.a(localxmp);
       }
     }
   }
   
-  public void e(boolean paramBoolean) {}
+  protected boolean a(xnq paramxnq)
+  {
+    if ((!paramxnq.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramxnq.b + " currContext.isRun:" + paramxnq.d);
+    }
+    return !paramxnq.d;
+  }
 }
 
 

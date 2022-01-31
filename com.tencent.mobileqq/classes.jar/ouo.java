@@ -16,9 +16,9 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 
 public class ouo
-  implements Handler.Callback, aznn, Manager
+  implements Handler.Callback, azrw, Manager
 {
-  private awbw jdField_a_of_type_Awbw;
+  private awgf jdField_a_of_type_Awgf;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private HashMap<String, ReadInJoyActivityDAUInfo> jdField_a_of_type_JavaUtilHashMap;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -27,7 +27,7 @@ public class ouo
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bdbw(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bdgf(ThreadManager.getSubThreadLooper(), this);
   }
   
   private String a()
@@ -93,7 +93,7 @@ public class ouo
   
   public void a(ArrayList<UEC.UECItem> paramArrayList)
   {
-    if (bdiv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    if (bdne.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
     {
       Message localMessage = new Message();
       localMessage.what = 0;
@@ -165,7 +165,7 @@ public class ouo
     }
     try
     {
-      if (this.jdField_a_of_type_Awbw != null) {
+      if (this.jdField_a_of_type_Awgf != null) {
         break label418;
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
@@ -173,22 +173,22 @@ public class ouo
       }
     }
     finally {}
-    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     label418:
     paramMessage = this.jdField_a_of_type_JavaUtilHashMap.keySet();
-    Object localObject1 = this.jdField_a_of_type_Awbw.a();
+    Object localObject1 = this.jdField_a_of_type_Awgf.a();
     for (;;)
     {
       try
       {
-        ((awby)localObject1).a();
+        ((awgh)localObject1).a();
         localObject2 = paramMessage.iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break label745;
         }
         localObject3 = (String)((Iterator)localObject2).next();
         localReadInJoyActivityDAUInfo = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3);
-        paramMessage = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_Awbw.a(ReadInJoyActivityDAUInfo.class, (String)localObject3);
+        paramMessage = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_Awgf.a(ReadInJoyActivityDAUInfo.class, (String)localObject3);
         if (paramMessage != null) {
           continue;
         }
@@ -204,7 +204,7 @@ public class ouo
       {
         ReadInJoyActivityDAUInfo localReadInJoyActivityDAUInfo;
         paramMessage.printStackTrace();
-        ((awby)localObject1).b();
+        ((awgh)localObject1).b();
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -220,29 +220,29 @@ public class ouo
       }
       finally
       {
-        ((awby)localObject1).b();
+        ((awgh)localObject1).b();
       }
       if (paramMessage.getStatus() == 1000)
       {
-        this.jdField_a_of_type_Awbw.b(paramMessage);
+        this.jdField_a_of_type_Awgf.b(paramMessage);
       }
       else if ((paramMessage.getStatus() == 1001) || (paramMessage.getStatus() == 1002))
       {
-        this.jdField_a_of_type_Awbw.a(paramMessage);
+        this.jdField_a_of_type_Awgf.a(paramMessage);
         continue;
         label745:
-        ((awby)localObject1).c();
-        ((awby)localObject1).b();
+        ((awgh)localObject1).c();
+        ((awgh)localObject1).b();
       }
     }
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Awbw != null) {}
+    if (this.jdField_a_of_type_Awgf != null) {}
     try
     {
-      this.jdField_a_of_type_Awbw.a();
+      this.jdField_a_of_type_Awgf.a();
       return;
     }
     catch (Exception localException)

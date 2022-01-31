@@ -11,9 +11,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qae
   extends pxl
 {
-  public qae(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qae(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
@@ -48,7 +48,7 @@ public class qae
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Pxk).getId());
-      localLayoutParams.topMargin = aekt.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localLayoutParams.topMargin = aepi.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
       localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);

@@ -1,39 +1,48 @@
-import com.tencent.qqmini.sdk.task.TaskThreadPool.2;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
+import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader;
 
-public class bhhs
+public final class bhhs
+  implements bguo<FlutterRuntimeLoader>
 {
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new TaskThreadPool.2(this);
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private final RejectedExecutionHandler jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler = new bhht(this);
-  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newScheduledThreadPool(1);
-  protected final ScheduledFuture<?> a;
-  private final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  
-  public bhhs(String paramString, int paramInt1, int paramInt2)
+  public FlutterRuntimeLoader a(Context paramContext, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.scheduleAtFixedRate(this.jdField_a_of_type_JavaLangRunnable, 0L, 100L, TimeUnit.MILLISECONDS);
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new bhhu(paramString), this.jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler);
+    return new FlutterRuntimeLoader(paramContext);
   }
   
-  private boolean a()
-  {
-    return !this.jdField_a_of_type_JavaUtilQueue.isEmpty();
-  }
+  public void a(Bundle paramBundle) {}
   
-  public void a(Runnable paramRunnable)
+  public boolean a(Bundle paramBundle)
   {
-    if (paramRunnable != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramRunnable);
+    if ((TissueGlobal.tissueEnv != null) && (!TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir()))) {}
+    for (int i = 1; i != 0; i = 0) {
+      return true;
     }
+    if (paramBundle != null) {
+      try
+      {
+        paramBundle = (String)paramBundle.get("tissuenativelibdir");
+        if (TissueGlobal.tissueEnv == null) {
+          TissueGlobal.tissueEnv = new bhht(this, paramBundle);
+        }
+        boolean bool = TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir());
+        if (!bool) {}
+        for (bool = true;; bool = false) {
+          return bool;
+        }
+        return false;
+      }
+      catch (Throwable paramBundle) {}
+    }
+  }
+  
+  public boolean a(MiniAppInfo paramMiniAppInfo)
+  {
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
   }
 }
 

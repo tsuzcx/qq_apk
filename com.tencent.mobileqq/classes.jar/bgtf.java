@@ -1,30 +1,35 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.utils.GameWnsUtils;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgtf
+  implements VideoPlayerProxy.OnErrorListener
 {
-  private static int jdField_a_of_type_Int;
-  private static boolean jdField_a_of_type_Boolean;
+  public bgtf(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public static void a()
+  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-  }
-  
-  public static void a(WeakReference<Activity> paramWeakReference, String paramString, MiniAppInfo paramMiniAppInfo)
-  {
-    if ((!jdField_a_of_type_Boolean) && (GameWnsUtils.enableStorageExceedDialog()))
+    QMLog.e("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
+    if (!this.a.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "error");
+    }
+    for (;;)
     {
-      jdField_a_of_type_Int += 1;
-      if (jdField_a_of_type_Int >= GameWnsUtils.enableStorageExceedLimit())
+      return true;
+      try
       {
-        jdField_a_of_type_Boolean = true;
-        if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-          bgiv.a((Activity)paramWeakReference.get(), paramString, paramMiniAppInfo, GameWnsUtils.getCacheFreeContent());
-        }
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bglu.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
       }
     }
   }

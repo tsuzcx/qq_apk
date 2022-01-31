@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
 class akkz
-  implements Comparator<ApolloActionData>
 {
-  akkz(akkx paramakkx) {}
+  bcpf jdField_a_of_type_Bcpf;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public akkz(akkt paramakkt, bcpf parambcpf)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    this.jdField_a_of_type_Bcpf = parambcpf;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkz
  * JD-Core Version:    0.7.0.1
  */

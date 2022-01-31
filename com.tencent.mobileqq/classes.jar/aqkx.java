@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-
 public class aqkx
-  extends aqnl
+  extends aqkw
 {
-  public aqkx(FileAssistantActivity paramFileAssistantActivity) {}
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public aqkx(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    super.a(paramLong1, paramLong2, paramString, paramInt);
-    this.a.a.a();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (FileAssistantActivity.a(this.a)) {
-      return;
-    }
-    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!FileAssistantActivity.a(this.a)) {
-      armz.a(paramString);
-    }
+    super(2, paramString1);
+    this.a = paramString2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
   }
 }
 

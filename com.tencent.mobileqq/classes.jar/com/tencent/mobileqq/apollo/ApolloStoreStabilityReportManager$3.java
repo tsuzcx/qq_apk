@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aklc;
+import akpr;
 import android.os.Build.VERSION;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitItem;
@@ -25,18 +25,18 @@ import mzx;
 public class ApolloStoreStabilityReportManager$3
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$3(aklc paramaklc) {}
+  public ApolloStoreStabilityReportManager$3(akpr paramakpr) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(aklc.a(this.this$0));
-    aklc.a(this.this$0);
+    ArrayList localArrayList = new ArrayList(akpr.a(this.this$0));
+    akpr.a(this.this$0);
     try
     {
       Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.3.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.3.5");
       Object localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       if ((localArrayList == null) || (localArrayList.size() == 0))
@@ -68,7 +68,7 @@ public class ApolloStoreStabilityReportManager$3
         i += 1;
       }
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = aklc.a();
+      localObject2 = akpr.a();
       if (localObject2 != null)
       {
         localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), mzx.class);

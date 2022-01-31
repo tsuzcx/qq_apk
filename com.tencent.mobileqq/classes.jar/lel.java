@@ -2,21 +2,21 @@ import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class lel
 {
-  private static bapv jdField_a_of_type_Bapv;
-  private static bdlp jdField_a_of_type_Bdlp = new lem();
+  private static baue jdField_a_of_type_Baue;
+  private static bdpy jdField_a_of_type_Bdpy = new lem();
   
-  public static bapv a()
+  public static baue a()
   {
-    if (jdField_a_of_type_Bapv == null) {}
+    if (jdField_a_of_type_Baue == null) {}
     try
     {
-      if (jdField_a_of_type_Bapv == null)
+      if (jdField_a_of_type_Baue == null)
       {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdlp, 128);
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdpy, 128);
         localHttpCommunicator.a();
-        jdField_a_of_type_Bapv = new baqy(localHttpCommunicator, true);
+        jdField_a_of_type_Baue = new bavh(localHttpCommunicator, true);
       }
-      return jdField_a_of_type_Bapv;
+      return jdField_a_of_type_Baue;
     }
     finally {}
   }

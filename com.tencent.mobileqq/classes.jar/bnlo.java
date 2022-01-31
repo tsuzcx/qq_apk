@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
 
 public class bnlo
-  implements Comparable<bnlo>
+  extends Handler
 {
-  public int a;
-  public bnlj a;
-  public bnlk a;
-  public bnls a;
-  public bnlw a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<bnlk> a;
-  public int b;
-  public String b;
-  public int c = 201;
+  public bnlo(BeautyBar paramBeautyBar) {}
   
-  public bnlo()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = awfc.a();
-  }
-  
-  public int a(bnlo parambnlo)
-  {
-    if (this.c < parambnlo.c) {
-      return -1;
+    switch (paramMessage.what)
+    {
     }
-    if (this.c > parambnlo.c) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    do
+    {
+      return;
+      if (BeautyBar.a(this.a) != null) {
+        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+      }
+    } while (BeautyBar.a(this.a) == null);
+    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
   }
 }
 

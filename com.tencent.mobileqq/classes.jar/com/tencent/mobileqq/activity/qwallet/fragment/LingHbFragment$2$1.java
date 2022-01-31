@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aitn;
+import aiyc;
 import android.view.View;
 
 public class LingHbFragment$2$1
   implements Runnable
 {
-  public LingHbFragment$2$1(aitn paramaitn) {}
+  public LingHbFragment$2$1(aiyc paramaiyc) {}
   
   public void run()
   {

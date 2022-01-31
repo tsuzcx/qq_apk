@@ -1,8 +1,37 @@
-public abstract interface azvz
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
+
+public class azvz
+  extends Animation
 {
-  public abstract void a();
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public abstract void a(long paramLong);
+  public azvz(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      paramTransformation.height = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    }
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
+  }
 }
 
 

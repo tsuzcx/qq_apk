@@ -1,71 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.open.model.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import java.util.List;
 
 public class bfck
-  extends WtloginObserver
+  extends bfqu
 {
-  public bfck(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public bfck(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public void OnException(String paramString, int paramInt)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    super.OnException(paramString, paramInt);
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
-    if (paramInt == 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlAppDetailsActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    Object localObject;
+    if (paramBoolean)
     {
-      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-        paramInt = 0;
-      }
-      while (paramInt < paramArrayList.size())
+      localObject = alud.a(2131701188) + AuthorityControlAppDetailsFragment.a(this.a).b() + alud.a(2131701186);
+      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
+      localObject = new Intent();
+      if ((paramList != null) && (paramList.size() == 1))
       {
-        try
-        {
-          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
-          int i = util.buf_to_int16(paramString, 0);
-          int j = util.buf_to_int16(paramString, 2);
-          if (i == 54)
-          {
-            paramArrayOfByte1 = new byte[j];
-            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
-            paramString = new String(paramArrayOfByte1);
-            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
-            paramString = new JSONObject(paramString);
-            paramLong = paramString.optLong("open_appid");
-            paramString = paramString.optString("comefrom");
-            this.a.a(paramLong, paramString);
-            if (!TextUtils.isEmpty(paramString))
-            {
-              paramArrayOfByte1 = Message.obtain();
-              paramArrayOfByte1.what = 1004;
-              paramArrayOfByte1.obj = paramString;
-              this.a.b.sendMessage(paramArrayOfByte1);
-            }
-          }
-        }
-        catch (Throwable paramString)
-        {
-          for (;;)
-          {
-            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
-          }
-        }
-        paramInt += 1;
-        continue;
-        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
+        ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
+        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
       }
+      AuthorityControlAppDetailsFragment.a(this.a).finish();
+      localObject = AuthorityControlAppDetailsFragment.a(this.a);
+      if (!paramBoolean) {
+        break label236;
+      }
+    }
+    label236:
+    for (paramList = "0";; paramList = "1")
+    {
+      azqs.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
+      return;
+      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, alud.a(2131701187), 0).a();
+      break;
     }
   }
 }

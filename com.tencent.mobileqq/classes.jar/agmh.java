@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class agmh
-  implements DialogInterface.OnClickListener
+  implements bjch
 {
-  agmh(agmb paramagmb) {}
+  agmh(agmg paramagmg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, String... paramVarArgs)
+  {
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    {
+      QLog.i(agmg.a, 2, "error get pskey...");
+      return;
+    }
+    agmg.a(this.a, paramVarArgs[0]);
+  }
 }
 
 

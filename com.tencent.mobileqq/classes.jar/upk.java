@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-
-public final class upk
-  implements View.OnClickListener
+public abstract interface upk
 {
-  public upk(EditText paramEditText) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.append("@");
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

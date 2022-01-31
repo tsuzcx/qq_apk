@@ -1,103 +1,128 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
-import java.util.HashMap;
-import java.util.regex.Pattern;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class ycw
+  extends yci
 {
-  public static String a;
-  public static HashMap<Integer, Bitmap> a;
-  public static final Pattern a;
-  public static final short[] a;
-  public static String b;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private boolean jdField_a_of_type_Boolean;
+  private List<ydn> b = new ArrayList();
   
-  static
+  public ycw(@NotNull RecyclerView paramRecyclerView)
   {
-    jdField_a_of_type_JavaLangString = "http://qzonestyle.gtimg.cn/qzone/em/";
-    b = ".gif";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ArrayOfShort = new short[] { 13, 12, 56, 73, 88, 87, 97, 59, 33, 5, 9, 82, 51, 53, 106, 72, 92, 112, 74, 2, 6, 4, 54, 14, 11, 10, 55, 96, 36, 116, 75, 76, 50, 0, 81, 8, 109, 57, 27, 85, 1, 108, 79, 3, 103, 62, 101, 21, 105, 83, 58, 111, 46, 47, 71, 95, 118, 34, 64, 38, 32, 113, 117, 119, 124, 122, 63, 89, 45, 16, 93, 25, 121, 120, 37, 42, 39, 29, 86, 129, 91, 77, 78, 80, 84, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 23, 26, 125, 196, 127, 128, 130, 131, 132, 133, 134, 7 };
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b", 2);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  public static Drawable a(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
+  private void a()
   {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      paramInt = ydg.jdField_b_of_type_ArrayOfInt[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, SpannableStringBuilder paramSpannableStringBuilder)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramSpannableStringBuilder)) {
-        return;
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
       }
-      float f = paramContext.getResources().getDisplayMetrics().density;
-      String str = paramSpannableStringBuilder.toString();
-      int i = 0;
-      while (i < ydg.jdField_b_of_type_ArrayOfJavaLangString.length)
-      {
-        for (int j = str.indexOf(ydg.jdField_b_of_type_ArrayOfJavaLangString[i]); j >= 0; j = str.indexOf(ydg.jdField_b_of_type_ArrayOfJavaLangString[i], j + ydg.jdField_b_of_type_ArrayOfJavaLangString[i].length())) {
-          paramSpannableStringBuilder.setSpan(new VerticalCenterImageSpan(a(i, f, paramContext, null), 0), j, ydg.jdField_b_of_type_ArrayOfJavaLangString[i].length() + j, 33);
-        }
-        i += 1;
-      }
+    }
+    else {
       return;
     }
-    catch (OutOfMemoryError paramContext) {}
+    notifyDataSetChanged();
   }
   
-  public static Drawable b(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
+  private void b()
   {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
-    {
-      paramInt = ydg.a[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
+    this.b.clear();
+    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
   }
   
-  public static Drawable c(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
+  public List<ydn> a()
   {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
+    return this.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < this.b.size())
     {
-      paramInt = bjwo.c[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
+      this.b.remove(paramInt);
+      notifyItemRemoved(a() + paramInt);
+      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
     }
-    catch (Exception paramContext)
+  }
+  
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    for (;;)
     {
-      paramContext.printStackTrace();
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
+          break;
+        }
+        b();
+        a();
+      }
+      return;
+      this.jdField_a_of_type_JavaUtilList = paramList;
     }
-    return null;
+    this.b.addAll(paramList);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
+    {
+      b();
+      a();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
+        notifyItemInserted(this.b.size());
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size() + a();
+    }
+    return a();
   }
 }
 

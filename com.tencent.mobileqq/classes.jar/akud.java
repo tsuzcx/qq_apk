@@ -1,23 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import java.lang.ref.WeakReference;
+import android.os.Process;
 
 public class akud
 {
-  public int a;
-  public long a;
-  public CmGameStartChecker.StartCheckParam a;
-  public String a;
-  public WeakReference<Activity> a;
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
   
-  public String toString()
+  static
   {
-    StringBuffer localStringBuffer = new StringBuffer("GameRunningTask{");
-    localStringBuffer.append("mStartCheckParam=").append(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    localStringBuffer.append(", mActivityRef=").append(this.jdField_a_of_type_JavaLangRefWeakReference);
-    localStringBuffer.append(", mActivityState=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    jdField_a_of_type_JavaLangString = bdgk.e();
+    jdField_b_of_type_JavaLangString = bdgk.i();
+    jdField_c_of_type_JavaLangString = bdgk.g();
+    jdField_a_of_type_Int = bdgk.b();
+    jdField_a_of_type_Long = bdgk.a();
+  }
+  
+  public akud()
+  {
+    this.jdField_b_of_type_Long = bdgk.a(Process.myPid());
+    this.jdField_c_of_type_Long = bdgk.f();
   }
 }
 

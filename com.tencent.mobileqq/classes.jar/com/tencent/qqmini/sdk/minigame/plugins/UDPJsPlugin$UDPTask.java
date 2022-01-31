@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bglb;
-import bglz;
-import bgma;
+import bgpi;
+import bgqg;
+import bgqh;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class UDPJsPlugin$UDPTask
-  implements bgma
+  implements bgqh
 {
   private final DatagramChannel channel;
   private final ByteBuffer receiveBuffer;
@@ -47,7 +47,7 @@ class UDPJsPlugin$UDPTask
     try
     {
       this.channel.socket().bind(null);
-      bglz.a().a(this.channel, 1, this);
+      bgqg.a().a(this.channel, 1, this);
       onListening();
       int i = this.channel.socket().getLocalPort();
       return i;
@@ -134,7 +134,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "message");
-      bglb.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, bglb.a, "message", localJSONObject);
+      bgpi.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, bgpi.a, "message", localJSONObject);
       paramArrayOfByte = new JSONObject();
       InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))

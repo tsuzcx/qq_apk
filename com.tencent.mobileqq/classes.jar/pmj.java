@@ -56,7 +56,7 @@ public class pmj
     }
     Object localObject1 = BaseApplicationImpl.getContext();
     if (localObject1 != null) {}
-    for (localObject1 = ((Context)localObject1).getResources().getString(2131718922);; localObject1 = "")
+    for (localObject1 = ((Context)localObject1).getResources().getString(2131718934);; localObject1 = "")
     {
       JSONObject localJSONObject = new JSONObject();
       JSONArray localJSONArray = new JSONArray();
@@ -75,8 +75,8 @@ public class pmj
           ((JSONObject)localObject2).put("video_cover_url", localqnb.c);
           ((JSONObject)localObject2).put("video_title_text", localqnb.jdField_b_of_type_JavaLangString);
           ((JSONObject)localObject2).put("rowkey", localqnb.jdField_a_of_type_JavaLangString);
-          String str1 = bjxj.b(localqnb.jdField_a_of_type_Int);
-          String str2 = bjxj.c(localqnb.jdField_b_of_type_Int);
+          String str1 = bkbq.b(localqnb.jdField_a_of_type_Int);
+          String str2 = bkbq.c(localqnb.jdField_b_of_type_Int);
           if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localqnb.jdField_a_of_type_Int > 0)) {
             ((JSONObject)localObject2).put("video_info_text", String.format((String)localObject1, new Object[] { str1, str2 }));
           }
@@ -104,7 +104,7 @@ public class pmj
           ((JSONObject)localObject1).put("video_cover_url", ((qnb)localObject2).c);
           ((JSONObject)localObject1).put("video_title_text", ((qnb)localObject2).jdField_b_of_type_JavaLangString);
           ((JSONObject)localObject1).put("rowkey", ((qnb)localObject2).jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("video_duration_text", bjxj.c(((qnb)localObject2).jdField_b_of_type_Int));
+          ((JSONObject)localObject1).put("video_duration_text", bkbq.c(((qnb)localObject2).jdField_b_of_type_Int));
           localJSONArray.put(paramInt, localObject1);
           paramInt += 1;
         }
@@ -134,7 +134,7 @@ public class pmj
     label167:
     for (Object localObject = "99+";; localObject = Integer.toString(localArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int))
     {
-      localObject = String.format(paramContainer.getContext().getResources().getString(2131718923), new Object[] { localObject });
+      localObject = String.format(paramContainer.getContext().getResources().getString(2131718935), new Object[] { localObject });
       TextBase localTextBase = (TextBase)localViewBase.findViewBaseByName("id_topic_bubble");
       if (localTextBase != null)
       {

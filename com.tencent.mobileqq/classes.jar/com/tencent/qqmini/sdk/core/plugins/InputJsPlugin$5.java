@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import bghn;
-import bgkd;
+import bglu;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 class InputJsPlugin$5
   implements TextWatcher
 {
-  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, bgkd parambgkd) {}
+  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, bgok parambgok) {}
   
   public void afterTextChanged(Editable paramEditable)
   {

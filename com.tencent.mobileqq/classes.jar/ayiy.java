@@ -1,49 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.search.activity.MessageSearchActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 
 public class ayiy
-  implements ayjk
+  implements View.OnClickListener
 {
-  public static final String a;
-  private List<ayjl> a;
-  private String b;
+  public ayiy(BaseSearchActivity paramBaseSearchActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131705770);
-  }
-  
-  public ayiy(List<ayjl> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayrd.a(this.b, 40, 0, paramView);
-    MessageSearchActivity.a(paramView.getContext(), this.b);
-  }
-  
-  public String b()
-  {
-    return this.b;
+    this.a.a();
   }
 }
 

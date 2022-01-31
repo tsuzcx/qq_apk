@@ -1,50 +1,110 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bdbz
-  implements ThreadExcutor.IThreadListener
+class bdbz
+  implements bdcb
 {
-  private int jdField_a_of_type_Int;
-  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private int b;
-  private int c;
+  bdbz(bdby parambdby) {}
   
-  public bdbz(int paramInt1, int paramInt2)
+  public void a(int paramInt, List<bdcc> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.b = 0;
-  }
-  
-  public void a()
-  {
-    if (this.b < this.jdField_a_of_type_Int)
+    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      if (localRunnable != null)
+      localStringBuilder = new StringBuilder(200);
+      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        this.b += 1;
-        ThreadManager.excute(localRunnable, this.c, this, false);
+        bdcc localbdcc = (bdcc)paramList.next();
+        if ((localbdcc != null) && (localbdcc.jdField_a_of_type_Int == 1) && (localbdcc.a()))
+        {
+          if ((localbdcc.jdField_a_of_type_JavaLangString != null) && (localbdcc.jdField_a_of_type_JavaLangString.length() > 0)) {
+            localArrayList.add(localbdcc.jdField_a_of_type_JavaLangString);
+          }
+          if (localStringBuilder != null) {
+            localStringBuilder.append(localbdcc.jdField_a_of_type_JavaLangString).append(",");
+          }
+        }
       }
+      if ((QLog.isColorLevel()) && (localStringBuilder != null))
+      {
+        localStringBuilder.append("]");
+        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
+      }
+      paramList = (FriendListHandler)bdby.a(this.a).a(1);
+      if (paramList == null) {
+        break;
+      }
+      paramList.a(localArrayList, false);
+      return;
+      localStringBuilder = null;
     }
   }
   
-  public void a(Runnable paramRunnable)
+  public void a(bdcc parambdcc)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
-    a();
+    if ((parambdcc == null) || (!parambdcc.a())) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("FetchBuddyAndTroopNameHelper", 2, bdnn.a(new Object[] { "fetchInfo()", parambdcc.toString() }));
+              }
+              if (parambdcc.jdField_a_of_type_Int != 2) {
+                break;
+              }
+              localObject = (amdu)bdby.a(this.a).a(20);
+            } while (localObject == null);
+            ((amdu)localObject).m(parambdcc.jdField_a_of_type_JavaLangString);
+            return;
+            if (parambdcc.jdField_a_of_type_Int != 1) {
+              break;
+            }
+            localObject = (FriendListHandler)bdby.a(this.a).a(1);
+          } while (localObject == null);
+          ((FriendListHandler)localObject).b(parambdcc.jdField_a_of_type_JavaLangString);
+          return;
+          if (parambdcc.jdField_a_of_type_Int != 3) {
+            break;
+          }
+          localObject = (amdu)bdby.a(this.a).a(20);
+        } while (localObject == null);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(parambdcc.jdField_a_of_type_JavaLangString);
+        if ((parambdcc.jdField_a_of_type_AndroidOsBundle != null) && (parambdcc.jdField_a_of_type_AndroidOsBundle.getInt(bdgc.jdField_a_of_type_JavaLangString) == bdgc.b))
+        {
+          ((amdu)localObject).a(parambdcc.b, localArrayList, false, parambdcc.jdField_a_of_type_AndroidOsBundle);
+          return;
+        }
+        ((amdu)localObject).a(parambdcc.b, (String)parambdcc.jdField_a_of_type_JavaLangObject, localArrayList);
+        return;
+      } while (parambdcc.jdField_a_of_type_Int != 4);
+      localObject = (FriendListHandler)bdby.a(this.a).a(1);
+    } while (localObject == null);
+    ((FriendListHandler)localObject).a(parambdcc.jdField_a_of_type_JavaLangString, true);
   }
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    this.b -= 1;
-    a();
-  }
-  
-  public void onPreRun() {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import bfgi;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import qyj;
@@ -19,7 +19,7 @@ class ADVideoAppDownloadManager$6
     int j;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bfgi.a().a((String)localObject);
+      localObject = bfkr.a().a((String)localObject);
       if (localObject == null) {
         break label553;
       }

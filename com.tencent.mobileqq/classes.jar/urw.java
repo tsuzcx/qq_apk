@@ -1,10 +1,22 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class urw
-  extends ugz
+  extends Job<Object, Object, Object>
 {
-  public Map<String, vbc> a = new HashMap();
+  public urw(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, urt paramurt)
+  {
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_Urt.a().a(880001, "no network", null);
+    return null;
+  }
 }
 
 

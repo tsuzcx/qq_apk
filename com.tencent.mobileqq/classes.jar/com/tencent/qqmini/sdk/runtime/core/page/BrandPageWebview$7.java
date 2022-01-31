@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bhbi;
-import bhby;
-import bhbz;
+import bhfp;
+import bhgf;
+import bhgg;
 
 public class BrandPageWebview$7
   implements Runnable
 {
-  public BrandPageWebview$7(bhbi parambhbi) {}
+  public BrandPageWebview$7(bhfp parambhfp) {}
   
   public void run()
   {
-    bhbi.a(this.this$0).a().a().a(bhbi.a(this.this$0));
+    bhfp.a(this.this$0).a().a().a(bhfp.a(this.this$0));
   }
 }
 

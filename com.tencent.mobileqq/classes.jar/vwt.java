@@ -1,24 +1,17 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
 
-class vwt
-  implements bhqd
+public class vwt
+  implements vyq
 {
-  vwt(vwo paramvwo, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bhpy parambhpy) {}
+  public vwt(TextureVideoView paramTextureVideoView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  @TargetApi(15)
+  public void a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      vwo.a(this.jdField_a_of_type_Vwo, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramvyi));
   }
 }
 

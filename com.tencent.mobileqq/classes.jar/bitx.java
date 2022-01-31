@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bitx
   implements DialogInterface.OnDismissListener
 {
-  public bitx(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  public bitx(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {

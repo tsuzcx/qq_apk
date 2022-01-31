@@ -1,8 +1,18 @@
-import java.util.UUID;
+import java.util.Comparator;
 
-public abstract interface bbsc
+public class bbsc
+  implements Comparator<bbsa>
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbsa parambbsa);
+  public int a(bbsa parambbsa1, bbsa parambbsa2)
+  {
+    if (parambbsa1.b < parambbsa2.b) {
+      return 1;
+    }
+    if (parambbsa1.b == parambbsa2.b) {
+      return 0;
+    }
+    return -1;
+  }
 }
 
 

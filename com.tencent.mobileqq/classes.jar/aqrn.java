@@ -1,133 +1,38 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
 
-public class aqrn
+class aqrn
+  implements View.OnClickListener
 {
-  public static int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    int j = -1;
-    int i;
-    if (paramChatMessage.isMultiMsg) {
-      i = arni.a(paramChatMessage);
-    }
-    while ((paramChatMessage instanceof MessageForFile)) {
-      if (i == 0)
-      {
-        return 61;
-        if ((paramChatMessage instanceof MessageForFile))
-        {
-          paramQQAppInterface = paramQQAppInterface.a().a(paramChatMessage.uniseq, paramChatMessage.frienduin, paramChatMessage.istroop);
-          i = j;
-          if (paramQQAppInterface != null)
-          {
-            i = j;
-            if (paramQQAppInterface.cloudType != 0) {
-              i = arni.a(paramQQAppInterface.fileName);
-            }
-          }
-        }
-        else
-        {
-          i = j;
-          if ((paramChatMessage instanceof MessageForTroopFile)) {
-            i = arni.a(((MessageForTroopFile)paramChatMessage).fileName);
-          }
-        }
-      }
-      else
-      {
-        if (i == 2) {
-          return 65;
-        }
-        return 3;
-      }
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile))
-    {
-      if (i == 0) {
-        return 61;
-      }
-      if (i == 2) {
-        return 65;
-      }
-      return 3;
-    }
-    return 3;
-  }
+  aqrn(aqrm paramaqrm) {}
   
-  public static aftj a(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage)
+  public void onClick(View paramView)
   {
-    if (paramInt == 3) {
-      paramBaseAdapter = new aftm(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    aeqi localaeqi = (aeqi)aepi.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localaeqi != null)
+    {
+      i = -1;
+      localChatMessage = arrr.a(localaeqi.a);
+      if (!this.a.b(localChatMessage)) {
+        break label76;
+      }
+      i = 0;
     }
     for (;;)
     {
-      paramChatMessage = a(paramQQAppInterface, paramContext, paramSessionInfo, paramChatMessage);
-      paramAIOAnimationConatiner = paramChatMessage;
-      if (paramChatMessage == null)
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleItemBuilder error, bubbleModel is not.");
-        paramAIOAnimationConatiner = new aqrf(paramQQAppInterface, paramContext, paramSessionInfo);
+      this.a.a(paramView, localaeqi, localChatMessage, i);
+      if (this.a.a != null) {
+        this.a.a.g(localaeqi.a);
       }
-      paramBaseAdapter.a(paramAIOAnimationConatiner);
-      return paramBaseAdapter;
-      if (paramInt == 61)
-      {
-        paramBaseAdapter = new afth(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
-      else if (paramInt == 65)
-      {
-        paramBaseAdapter = new afto(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-      }
-      else
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "");
-        paramBaseAdapter = new aftm(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+      return;
+      label76:
+      if (this.a.a(localChatMessage)) {
+        i = 1;
       }
     }
-  }
-  
-  public static aqro a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.isMultiMsg)
-    {
-      String str = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(str))
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel, fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        int i = Integer.parseInt(str);
-        if (i == 3) {
-          return new aqrp(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 1) {
-          return new aqrg(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 2) {
-          return new aqrg(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, not support fileType. fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        return new aqrf(paramQQAppInterface, paramContext, paramSessionInfo);
-      }
-      QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error,multi file not exist fileType. extInfo[" + paramChatMessage.extStr + "]");
-      return new aqrf(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new aqrg(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new aqrp(paramQQAppInterface, paramContext, paramSessionInfo);
-    }
-    QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, is not file msg.");
-    return new aqrf(paramQQAppInterface, paramContext, paramSessionInfo);
   }
 }
 

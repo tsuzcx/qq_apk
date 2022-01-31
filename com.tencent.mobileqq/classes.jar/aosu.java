@@ -1,85 +1,46 @@
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aosu
 {
-  private boolean a;
-  private boolean b;
+  private Map<String, aosv> a = new HashMap();
   
-  public static aosu a(aogf[] paramArrayOfaogf)
+  public static aosu a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
       return null;
     }
-    aosu localaosu = new aosu();
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfaogf.length;
-    int i = 0;
-    while (i < j)
+    localaosu = new aosu();
+    try
     {
-      localArrayList.add(paramArrayOfaogf[i].a);
-      i += 1;
-    }
-    if (localArrayList.size() > 0)
-    {
-      paramArrayOfaogf = new HashMap();
-      i = 0;
-      if (i < localArrayList.size())
+      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
+      Iterator localIterator = paramArrayOfaoko.keys();
+      while (localIterator.hasNext())
       {
-        Object localObject = (String)localArrayList.get(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((String)localObject).split("=");
-          if (localObject.length == 2)
-          {
-            if (!TextUtils.isEmpty(localObject[1])) {
-              localObject[1] = localObject[1].trim();
-            }
-            paramArrayOfaogf.put(localObject[0], localObject[1]);
-            if (QLog.isColorLevel()) {
-              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
-            }
-          }
-        }
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = paramArrayOfaoko.getJSONObject(str);
+        localaosu.a.put(str, aosv.a(localJSONObject));
       }
-      localaosu.a = "1".equals(paramArrayOfaogf.get("enable_tencent_docs_assistant"));
-      localaosu.b = "1".equals(paramArrayOfaogf.get("preload_tool_process"));
-      paramArrayOfaogf = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramArrayOfaogf instanceof QQAppInterface))
-      {
-        paramArrayOfaogf = (QQAppInterface)paramArrayOfaogf;
-        badt.b(paramArrayOfaogf, localaosu.b);
-        badt.a(paramArrayOfaogf, localaosu.a);
-      }
-    }
-    for (;;)
-    {
       return localaosu;
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
-      }
     }
+    catch (JSONException paramArrayOfaoko) {}
   }
   
-  public boolean a()
+  public static aosv a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (aosr.a() != null)) {
+      return (aosv)aosr.a().a().get(paramString);
+    }
+    return null;
+  }
+  
+  public Map<String, aosv> a()
   {
     return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
 }
 

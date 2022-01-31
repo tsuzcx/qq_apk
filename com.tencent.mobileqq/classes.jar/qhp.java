@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class qhp
-  implements bhpo
+  implements bhtv
 {
   private int jdField_a_of_type_Int;
   public long a;

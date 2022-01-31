@@ -1,13 +1,12 @@
-import android.support.v4.view.ViewPager;
-
-class blcd
-  implements blxa
+public class blcd
 {
-  blcd(blcc paramblcc) {}
+  public String a;
+  public String b;
   
-  public void a(int paramInt)
+  public blcd(String paramString1, String paramString2)
   {
-    blcc.a(this.a).setCurrentItem(paramInt);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

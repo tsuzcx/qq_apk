@@ -4,19 +4,19 @@ import android.app.Activity;
 import android.support.annotation.RequiresApi;
 import android.util.Pair;
 import android.util.SparseArray;
-import axvr;
-import azmj;
-import bdig;
+import ayaa;
+import azqs;
+import bdmp;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xwb;
+import yak;
 
 public class AIOPictureView$7
   implements Runnable
 {
-  public AIOPictureView$7(axvr paramaxvr, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOPictureView$7(ayaa paramayaa, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   @RequiresApi(api=5)
   public void run()
@@ -27,7 +27,7 @@ public class AIOPictureView$7
     Object localObject;
     String str1;
     String str2;
-    if (xwb.a(this.jdField_a_of_type_Int))
+    if (yak.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -58,9 +58,9 @@ public class AIOPictureView$7
             if (localObject == null)
             {
               localObject = "";
-              bdig.a(55, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
-              azmj.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (xwb.b(this.jdField_a_of_type_Int))
+              bdmp.a(55, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
+              azqs.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (yak.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -95,8 +95,8 @@ public class AIOPictureView$7
             break label275;
           }
           localObject = "";
-          bdig.a(56, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
-          azmj.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          bdmp.a(56, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
+          azqs.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
           this.this$0.a.updateUI();
           return;
         }

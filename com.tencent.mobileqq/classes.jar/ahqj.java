@@ -1,14 +1,11 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class ahqj
+  implements ahky
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public ArrayList<String> b;
-  public ArrayList<Integer> c;
-  public ArrayList<byte[]> d;
+  public ahqj(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  
+  public void a() {}
 }
 
 

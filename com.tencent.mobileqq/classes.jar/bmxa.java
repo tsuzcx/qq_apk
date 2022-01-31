@@ -1,82 +1,148 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
-public class bmxa
-  extends bmxd<bmwn, bmwn>
+class bmxa
+  extends LinearLayout
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<bmjh> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private bmwj jdField_a_of_type_Bmwj;
+  private int b;
+  private int c;
+  private int d;
   
-  public bmxa()
+  public bmxa(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener, bmwj parambmwj)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_Int = -1;
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Bmwj = parambmwj;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
   }
   
-  public bmxa(String paramString, bmjh parambmjh, int paramInt)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmjh);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
-  {
-    wsv.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    bmwv localbmwv = parambmwn.jdField_a_of_type_Bmwv;
-    int i = localbmwv.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (bmjh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while (paramJobContext != null)
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
-      {
-        try
-        {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.b, ".jpg");
-          }
-          i = new bmwx(localBitmap, str1, localbmwv.jdField_a_of_type_Int, localbmwv.jdField_b_of_type_Int, i, localbmwv.jdField_a_of_type_Float, localbmwv.jdField_a_of_type_Double, localbmwv.jdField_b_of_type_Double, parambmwn.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          parambmwn.jdField_a_of_type_JavaLangString = str1;
-          parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          wsv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(parambmwn);
-          return;
-        }
-        finally
-        {
-          paramJobContext.a(localBitmap);
-        }
-        paramJobContext = null;
-        continue;
-        label217:
-        wsv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, alpo.a(2131706065) + this.jdField_a_of_type_Int));
+      URLImageView localURLImageView = new URLImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = bmyg.b(getContext(), 7.0F);
       }
-      else
-      {
-        wsv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, alpo.a(2131706066) + this.jdField_a_of_type_Int));
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = bmyg.b(getContext(), 7.0F);
+      }
+      localURLImageView.setLayoutParams(localLayoutParams);
+      localURLImageView.setPadding(this.c, this.c, this.c, this.c);
+      localURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      addView(localURLImageView);
+      i += 1;
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(bmwf parambmwf, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    int i = paramInt1 * this.b;
+    label31:
+    ImageView localImageView;
+    Object localObject;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramInt1 = parambmwf.b();
+      a(paramInt1 - i);
+      paramInt2 = i;
+      if (paramInt2 >= paramInt1) {
         return;
       }
+      localImageView = (ImageView)getChildAt(paramInt2 - i);
+      localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localObject = parambmwf.a(paramInt2);
+      localImageView.setTag(2131377450, localObject);
+      localImageView.setTag(2131377441, Integer.valueOf(paramInt2));
+      if (parambmwf.a(paramInt2) != 1) {
+        break label252;
+      }
+      if (!(getContext() instanceof EditPicActivity)) {
+        break label158;
+      }
+      localObject = parambmwf.b(paramInt2);
+      localImageView.setTag(2131377450, localObject);
+      bmrt.a().a(localImageView, (String)localObject, this.d, this.d, paramBoolean);
     }
-    wsv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, alpo.a(2131706057) + this.jdField_a_of_type_Int));
+    for (;;)
+    {
+      paramInt2 += 1;
+      break label31;
+      paramInt1 = this.b + i;
+      break;
+      label158:
+      localObject = Uri.parse((String)localObject).getPath();
+      localObject = bduc.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      if (localObject != null)
+      {
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        if (paramBoolean) {}
+        for (;;)
+        {
+          localImageView.setImageDrawable((Drawable)localObject);
+          break;
+          localObject = null;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("NormalFaceAdapter", 2, "urlDrawable apng error");
+        continue;
+        label252:
+        bmrt.a().a(localImageView, (String)localObject, this.d, this.d, paramBoolean);
+      }
+    }
   }
 }
 

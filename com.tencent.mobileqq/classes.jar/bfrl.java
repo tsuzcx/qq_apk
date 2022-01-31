@@ -1,27 +1,50 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bfrl
-  implements ServiceConnection
+public class bfrl
+  extends bfrw
 {
-  bfrl(bfrj parambfrj) {}
+  public bfrl(OpenSdkVirtualManager.2 param2) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    bfrg.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
-    bfrj.a(this.a, lzh.a(paramIBinder));
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bfrg.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
-    bfrj.a(this.a, null);
+    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+    aseh.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Bfqv, paramBoolean);
+    int i = paramInt;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        i = new JSONObject(paramString1).optInt("ErrorCode");
+        paramInt = i;
+        i = paramInt;
+        if (paramInt == 0)
+        {
+          paramBoolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+          }
+          if (this.a.jdField_a_of_type_Bfrs != null) {
+            this.a.jdField_a_of_type_Bfrs.a(paramBoolean, paramInt);
+          }
+          return;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("OpenSdkVirtualManager", 1, "Exception.e", paramString2);
+        i = paramInt;
+      }
+      paramBoolean = false;
+      paramInt = i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfrl
  * JD-Core Version:    0.7.0.1
  */

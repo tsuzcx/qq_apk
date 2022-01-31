@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class RegisterQQNumberActivity$5
   implements Runnable
@@ -13,8 +13,8 @@ class RegisterQQNumberActivity$5
     {
       if ((RegisterQQNumberActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        RegisterQQNumberActivity.a(this.this$0, new bepp(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.this$0).c(2131695088);
+        RegisterQQNumberActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RegisterQQNumberActivity.a(this.this$0).c(2131695090);
       }
       if ((RegisterQQNumberActivity.a(this.this$0) != null) && (!RegisterQQNumberActivity.a(this.this$0).isShowing())) {
         RegisterQQNumberActivity.a(this.this$0).show();

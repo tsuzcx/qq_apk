@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class adny
-  extends alls
+public final class adny
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  public adny(QQSettingMe paramQQSettingMe) {}
-  
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.c) {
-      this.a.o();
-    }
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

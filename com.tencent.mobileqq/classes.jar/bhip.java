@@ -1,31 +1,24 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
+import android.os.SystemClock;
 
-public class bhip
-  extends nac
+class bhip
+  implements bhff
 {
-  public bhip(QSecRptControllerImpl paramQSecRptControllerImpl) {}
+  long jdField_a_of_type_Long;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  bhip(bhio parambhio, bhhc parambhhc, long paramLong) {}
+  
+  public void onStateChanged()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
-    try
+    if (this.jdField_a_of_type_Bhhc != null) {}
+    for (bhfg localbhfg = this.jdField_a_of_type_Bhhc.getCurrState();; localbhfg = null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.b)) {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      }
+      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.e)) {
+        this.jdField_a_of_type_Bhio.a(this.jdField_a_of_type_Bhhc, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
       }
       return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
     }
   }
 }

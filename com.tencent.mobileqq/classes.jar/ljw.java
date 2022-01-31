@@ -9,7 +9,7 @@ public class ljw
   public ljw()
   {
     this.jdField_a_of_type_Int = 5000;
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131704357);
+    this.jdField_a_of_type_JavaLangString = alud.a(2131704369);
   }
   
   public String a(String paramString)

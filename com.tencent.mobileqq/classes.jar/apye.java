@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-
-public final class apye
-  implements Parcelable.Creator<MiniAppRecommInfo>
+public abstract interface apye
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
-  {
-    return new MiniAppRecommInfo(paramParcel);
-  }
-  
-  public MiniAppRecommInfo[] a(int paramInt)
-  {
-    return new MiniAppRecommInfo[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

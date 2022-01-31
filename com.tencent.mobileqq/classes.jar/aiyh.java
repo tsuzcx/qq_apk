@@ -1,6 +1,16 @@
-public abstract interface aiyh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+
+public class aiyh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public aiyh(QzoneHbFragment paramQzoneHbFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

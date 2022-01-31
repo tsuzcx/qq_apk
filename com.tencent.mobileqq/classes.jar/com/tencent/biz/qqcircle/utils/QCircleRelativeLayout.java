@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bcwh;
+import bdaq;
 
 public class QCircleRelativeLayout
   extends RelativeLayout
@@ -40,9 +40,9 @@ public class QCircleRelativeLayout
     int i1 = getPaddingBottom();
     Paint localPaint = new Paint();
     localPaint.setColor(Color.parseColor("#EBECF0"));
-    int i2 = bcwh.a(getContext(), 5.0F);
-    localPaint.setShadowLayer(bcwh.a(getContext(), 10.0F), 0, i2, Color.parseColor("#99A6ABBD"));
-    i2 = bcwh.a(getContext(), 6.0F);
+    int i2 = bdaq.a(getContext(), 5.0F);
+    localPaint.setShadowLayer(bdaq.a(getContext(), 10.0F), 0, i2, Color.parseColor("#99A6ABBD"));
+    i2 = bdaq.a(getContext(), 6.0F);
     paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
     super.onDraw(paramCanvas);
   }

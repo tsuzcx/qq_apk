@@ -2,21 +2,21 @@ package com.tencent.mobileqq.unifiedebug;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import bctv;
-import bctx;
+import bcye;
+import bcyg;
 import com.tencent.qphone.base.util.QLog;
 
 class SnapshotService$2
   implements Runnable
 {
-  SnapshotService$2(SnapshotService paramSnapshotService, Bitmap paramBitmap, bctv parambctv, bctx parambctx) {}
+  SnapshotService$2(SnapshotService paramSnapshotService, Bitmap paramBitmap, bcye parambcye, bcyg parambcyg) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i(SnapshotService.a(), 2, "ScreenShot Finish Callback");
     }
-    SnapshotService.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Bctv, this.jdField_a_of_type_Bctx);
+    SnapshotService.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Bcye, this.jdField_a_of_type_Bcyg);
     this.this$0.a.post(new SnapshotService.2.1(this));
   }
 }

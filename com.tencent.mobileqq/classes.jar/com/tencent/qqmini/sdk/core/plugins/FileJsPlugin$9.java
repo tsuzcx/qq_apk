@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgjm;
-import bgkd;
-import bglb;
+import bgnt;
+import bgok;
+import bgpi;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 class FileJsPlugin$9
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$9(FileJsPlugin paramFileJsPlugin, String paramString1, bgkd parambgkd, String paramString2, long paramLong) {}
+  FileJsPlugin$9(FileJsPlugin paramFileJsPlugin, String paramString1, bgok parambgok, String paramString2, long paramLong) {}
   
   public String run()
   {
@@ -21,7 +21,7 @@ class FileJsPlugin$9
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    String str = bgjm.a().a(this.val$filePath);
+    String str = bgnt.a().a(this.val$filePath);
     if ((TextUtils.isEmpty(str)) || (!new File(str).exists())) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$filePath);
     }
@@ -38,12 +38,12 @@ class FileJsPlugin$9
         JSONObject localJSONObject = new JSONObject();
         if ((this.this$0.mIsMiniGame) && ((localObject instanceof byte[])))
         {
-          bglb.a(this.this$0.mMiniAppContext, (byte[])localObject, bglb.a, "data", localJSONObject);
+          bgpi.a(this.this$0.mMiniAppContext, (byte[])localObject, bgpi.a, "data", localJSONObject);
           QMLog.d("FileJsPlugin", "readFile succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str);
           return FileJsPlugin.access$200(this.this$0, this.val$req, localJSONObject);
         }
         if ((!this.this$0.mIsMiniGame) && ((localObject instanceof byte[]))) {
-          bglb.a(this.this$0.mMiniAppContext, (byte[])localObject, bglb.b, "data", localJSONObject);
+          bgpi.a(this.this$0.mMiniAppContext, (byte[])localObject, bgpi.b, "data", localJSONObject);
         } else {
           localJSONObject.put("data", localObject);
         }

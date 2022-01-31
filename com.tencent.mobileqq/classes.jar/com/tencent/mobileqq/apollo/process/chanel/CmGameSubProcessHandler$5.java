@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajaf;
-import akro;
-import akta;
-import aktr;
-import aktv;
+import ajeu;
+import akwd;
+import akxp;
+import akyg;
+import akyk;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CmGameSubProcessHandler$5
   extends ResultReceiver
 {
-  public CmGameSubProcessHandler$5(akta paramakta, Handler paramHandler, long paramLong)
+  public CmGameSubProcessHandler$5(akxp paramakxp, Handler paramHandler, long paramLong)
   {
     super(paramHandler);
   }
@@ -22,10 +22,10 @@ public class CmGameSubProcessHandler$5
   {
     boolean bool = true;
     super.onReceiveResult(paramInt, paramBundle);
-    Object localObject = akro.a(akta.a(this.jdField_a_of_type_Akta));
+    Object localObject = akwd.a(akxp.a(this.jdField_a_of_type_Akxp));
     if (localObject != null)
     {
-      localObject = ((aktr)localObject).a();
+      localObject = ((akyg)localObject).a();
       if (localObject != null)
       {
         if (paramBundle != null)
@@ -33,14 +33,14 @@ public class CmGameSubProcessHandler$5
           if (QLog.isColorLevel()) {
             QLog.d("cmgame_process.CmGameSubProcessHandler", 2, "[handleUpdateGameScore] rst:" + paramBundle.toString());
           }
-          ((aktv)localObject).f = paramBundle.getString("state", "-1");
-          ((aktv)localObject).jdField_d_of_type_JavaLangString = paramBundle.getString("amount", "0");
+          ((akyk)localObject).f = paramBundle.getString("state", "-1");
+          ((akyk)localObject).jdField_d_of_type_JavaLangString = paramBundle.getString("amount", "0");
         }
-        ((aktv)localObject).jdField_b_of_type_Int = 3;
-        if ((localObject != null) && (((aktv)localObject).jdField_a_of_type_Boolean))
+        ((akyk)localObject).jdField_b_of_type_Int = 3;
+        if ((localObject != null) && (((akyk)localObject).jdField_a_of_type_Boolean))
         {
-          akta.a(this.jdField_a_of_type_Akta, this.jdField_a_of_type_Long, 0, (aktv)localObject);
-          if (!((aktv)localObject).f.equals("0")) {
+          akxp.a(this.jdField_a_of_type_Akxp, this.jdField_a_of_type_Long, 0, (akyk)localObject);
+          if (!((akyk)localObject).f.equals("0")) {
             break label210;
           }
         }
@@ -48,7 +48,7 @@ public class CmGameSubProcessHandler$5
     }
     for (;;)
     {
-      ajaf.a(((aktv)localObject).jdField_b_of_type_JavaLangString, ((aktv)localObject).jdField_a_of_type_Long, ((aktv)localObject).jdField_d_of_type_Int + "", Integer.parseInt(((aktv)localObject).jdField_d_of_type_JavaLangString), bool, false, akta.a(this.jdField_a_of_type_Akta));
+      ajeu.a(((akyk)localObject).jdField_b_of_type_JavaLangString, ((akyk)localObject).jdField_a_of_type_Long, ((akyk)localObject).jdField_d_of_type_Int + "", Integer.parseInt(((akyk)localObject).jdField_d_of_type_JavaLangString), bool, false, akxp.a(this.jdField_a_of_type_Akxp));
       return;
       QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "[handleUpdateGameScore] launch is null");
       return;

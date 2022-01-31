@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.adapter;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 import sng;
@@ -15,7 +15,7 @@ public class ViolaReportDelegate$1
   {
     try
     {
-      Object localObject = bjxj.c();
+      Object localObject = bkbq.c();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
       for (localObject = new JSONObject((String)localObject);; localObject = new JSONObject())
       {
@@ -24,8 +24,8 @@ public class ViolaReportDelegate$1
           break;
         }
         ((JSONObject)localObject).put("" + this.jdField_a_of_type_Int, localJSONObject);
-        bjxj.h(((JSONObject)localObject).toString());
-        bjxj.f(true);
+        bkbq.h(((JSONObject)localObject).toString());
+        bkbq.f(true);
         return;
       }
       return;

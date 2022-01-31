@@ -1,4 +1,7 @@
-public class beix {}
+public abstract interface beix
+{
+  public abstract void a(String paramString);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

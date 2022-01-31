@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.debug.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
-import xni;
-import xnj;
+import xrr;
+import xrs;
 
 public class DebugPollLayoutActivity
   extends Activity
@@ -13,8 +13,8 @@ public class DebugPollLayoutActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131558441);
-    paramBundle = xni.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131364735)).addView(paramBundle.a());
+    paramBundle = xrr.a(this, 1, 1, null);
+    ((FrameLayout)findViewById(2131364736)).addView(paramBundle.a());
   }
 }
 

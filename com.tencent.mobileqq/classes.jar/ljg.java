@@ -26,7 +26,7 @@ public abstract class ljg
     if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
       String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      paramContext = bdiv.b(paramContext).edit();
+      paramContext = bdne.b(paramContext).edit();
       paramContext.putBoolean(str, paramBoolean);
       paramContext.commit();
       lek.e(paramString, "setPreload zzzzz  bid=" + paramInt);
@@ -40,7 +40,7 @@ public abstract class ljg
     if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
       String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      boolean bool = bdiv.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      boolean bool = bdne.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
       lek.c(paramString, "isPreloaded:" + str + "|" + bool);
       return bool;
     }

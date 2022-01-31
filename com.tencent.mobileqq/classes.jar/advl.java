@@ -1,28 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advl
-  implements TextWatcher
+  implements DialogInterface.OnDismissListener
 {
-  public advl(SubLoginActivity paramSubLoginActivity) {}
+  public advl(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

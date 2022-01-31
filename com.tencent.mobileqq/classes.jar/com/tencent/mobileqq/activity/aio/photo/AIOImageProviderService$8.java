@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import com.tencent.mobileqq.app.BaseActivity;
-import yzg;
+import zdv;
 
 class AIOImageProviderService$8
   implements Runnable
@@ -12,10 +12,10 @@ class AIOImageProviderService$8
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      yzg.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+      zdv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
       return;
     }
-    yzg.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, this.jdField_a_of_type_JavaLangString, this.c, yzg.a(this.jdField_a_of_type_Int), this.c);
+    zdv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, this.jdField_a_of_type_JavaLangString, this.c, zdv.a(this.jdField_a_of_type_Int), this.c);
   }
 }
 

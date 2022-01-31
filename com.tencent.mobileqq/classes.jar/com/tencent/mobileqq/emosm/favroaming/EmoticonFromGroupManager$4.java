@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apju;
-import apkc;
+import apod;
+import apol;
 
 public class EmoticonFromGroupManager$4
   implements Runnable
 {
-  public EmoticonFromGroupManager$4(apju paramapju) {}
+  public EmoticonFromGroupManager$4(apod paramapod) {}
   
   public void run()
   {
-    apju.a(this.this$0).b = (apkc.a - this.this$0.b());
+    apod.a(this.this$0).b = (apol.a - this.this$0.b());
   }
 }
 

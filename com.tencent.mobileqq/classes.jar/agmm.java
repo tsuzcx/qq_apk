@@ -1,48 +1,73 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 class agmm
-  implements bhqd
+  implements View.OnClickListener
 {
-  agmm(agmb paramagmb, boolean paramBoolean, bhpy parambhpy) {}
+  agmm(agmg paramagmg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (paramView.getTag() == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      try
+      Object localObject;
+      aiul localaiul;
+      aiuk localaiuk;
+      do
       {
-        this.jdField_a_of_type_Bhpy.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Agmb.bD();
-      }
-      else
-      {
-        this.jdField_a_of_type_Agmb.bB();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
+        do
         {
-          this.jdField_a_of_type_Agmb.bB();
-        }
-        else
-        {
-          this.jdField_a_of_type_Agmb.bA();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Agmb.bA();
+          do
+          {
+            return;
+            if (this.a.jdField_a_of_type_Aixi != null) {
+              this.a.jdField_a_of_type_Aixi.a(1);
+            }
+            l = System.currentTimeMillis();
+          } while (!ajet.a(agmg.jdField_a_of_type_Long, l));
+          agmg.jdField_a_of_type_Long = l;
+          localObject = (MessageForQQWalletMsg)paramView.getTag();
+          paramView = ((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg;
+          localaiul = (aiul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+          if (!nav.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+            break;
           }
+          localaiul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
+        } while (!QLog.isColorLevel());
+        QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+        return;
+        localaiuk = localaiul.a(paramView.redPacketId);
+        long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+        if ((localaiuk == null) || ((!localaiuk.jdField_a_of_type_Boolean) && (!localaiuk.b) && (!localaiuk.c) && (localaiuk.jdField_a_of_type_Long >= l))) {
+          break;
+        }
+        localaiul.a(paramView.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=6", 0, null);
+        localaiul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localaiuk, l, ((MessageForQQWalletMsg)localObject).fromHBList);
+        localaiul.a(paramView.redPacketId, true);
+      } while (!QLog.isColorLevel());
+      QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localaiuk.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localaiuk.b + ",isPasswdRedBagOverDue=" + localaiuk.c);
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+      {
+        localObject = (afft)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(27);
+        if (localObject != null) {
+          ((afft)localObject).a(paramView.redPacketId, paramView.elem.title, alud.a(2131711573));
         }
       }
-    }
+      localaiul.a(paramView.redPacketId, false);
+    } while (!QLog.isColorLevel());
+    QLog.d("PasswdRedBagManager", 2, "show passwdredbag tips = " + paramView.elem.title);
   }
 }
 

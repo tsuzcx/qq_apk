@@ -1,57 +1,36 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import java.util.List;
 
-public class aoeb
-  extends BaseAdapter
+class aoeb
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  aoeb(aoea paramaoea, HistoryFormItem paramHistoryFormItem) {}
   
-  public aoeb(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+    ColorNote localColorNote = (ColorNote)aoea.a(this.jdField_a_of_type_Aoea).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Bundle localBundle = new Bundle();
+    if (aoea.a(this.jdField_a_of_type_Aoea) == 17104896) {
+      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
+        localBundle.putBoolean("isFromFavourite", true);
+      }
     }
     for (;;)
     {
-      paramViewGroup = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+      aobw.a(paramView.getContext(), localColorNote, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      }
+      azqs.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", aocr.b(aoea.a(this.jdField_a_of_type_Aoea)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      return;
+      if (aoea.a(this.jdField_a_of_type_Aoea) == 16908289) {
+        localBundle.putBoolean("history_note", true);
+      }
     }
   }
 }

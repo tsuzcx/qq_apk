@@ -3,8 +3,8 @@ package com.tencent.biz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bddb;
-import bdds;
+import bdhk;
+import bdib;
 import com.tencent.mobileqq.app.BaseActivity;
 import myo;
 import mys;
@@ -29,10 +29,10 @@ public class JoinGroupTransitActivity
         finish();
       }
       this.jdField_a_of_type_Myt = new myt(this);
-      bddb localbddb = bdds.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localbddb.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localbddb.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localbddb.b("subsource_id")).intValue();
+      bdhk localbdhk = bdib.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbdhk.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbdhk.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbdhk.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)

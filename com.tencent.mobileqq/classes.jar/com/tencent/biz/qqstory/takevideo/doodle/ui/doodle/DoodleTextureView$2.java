@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
 import com.tencent.qphone.base.util.QLog;
-import xcu;
-import xdd;
+import xhd;
+import xhm;
 
 class DoodleTextureView$2
   implements Runnable
@@ -14,9 +14,9 @@ class DoodleTextureView$2
     if (this.this$0.a != null)
     {
       this.this$0.a.g();
-      xdd localxdd = (xdd)this.this$0.a.a(102);
-      if (localxdd != null) {
-        localxdd.b();
+      xhm localxhm = (xhm)this.this$0.a.a(102);
+      if (localxhm != null) {
+        localxhm.b();
       }
     }
     if (QLog.isColorLevel()) {

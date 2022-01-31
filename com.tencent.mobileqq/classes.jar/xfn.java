@@ -1,35 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class xfn
-  extends utr
+  implements View.OnClickListener
 {
-  xfn(xfm paramxfm, uio paramuio, long paramLong)
-  {
-    super(paramuio);
-  }
+  xfn(xfh paramxfh) {}
   
-  protected void a(utu paramutu)
+  public void onClick(View paramView)
   {
-    if (paramutu.jdField_a_of_type_Int == 0)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      xfm.a().sendMessage(Message.obtain(xfm.a(), 1, null));
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
-    for (;;)
-    {
-      xfm.a(this.jdField_a_of_type_Xfm);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramutu.jdField_a_of_type_Int + ", errMsg:" + paramutu.jdField_a_of_type_JavaLangString);
-      }
-    }
+    wxk.a("0X80076C6");
+    wxk.b("0X80075DA");
   }
 }
 

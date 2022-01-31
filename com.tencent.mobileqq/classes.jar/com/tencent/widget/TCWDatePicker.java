@@ -9,9 +9,9 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import bhxg;
-import bhxh;
-import bhxn;
+import bibn;
+import bibo;
+import bibu;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import java.text.DateFormatSymbols;
@@ -23,7 +23,7 @@ import java.util.Locale;
 public class TCWDatePicker
   extends FrameLayout
 {
-  private bhxh jdField_a_of_type_Bhxh;
+  private bibo jdField_a_of_type_Bibo;
   private final TCWNumberPicker jdField_a_of_type_ComTencentWidgetTCWNumberPicker;
   private final java.text.DateFormat jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("MM/dd/yyyy");
   private Calendar jdField_a_of_type_JavaUtilCalendar;
@@ -48,35 +48,35 @@ public class TCWDatePicker
   {
     super(paramContext, paramAttributeSet, paramInt);
     a(Locale.getDefault());
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559000, this, true);
-    Object localObject1 = new bhxg(this);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131365011));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131558999, this, true);
+    Object localObject1 = new bibn(this);
+    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131365013));
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setFormatter(TCWNumberPicker.a);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(100L);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bhxn)localObject1);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131370684));
+    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bibu)localObject1);
+    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131370703));
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setFormatter(TCWNumberPicker.a);
     Object localObject2 = new DateFormatSymbols();
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setRange(1, 12, ((DateFormatSymbols)localObject2).getShortMonths());
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(200L);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bhxn)localObject1);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131380305));
+    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bibu)localObject1);
+    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131380363));
     this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(100L);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bhxn)localObject1);
+    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((bibu)localObject1);
     if (AppSetting.c)
     {
-      localObject1 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368205);
-      localObject2 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365046);
+      localObject1 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368216);
+      localObject2 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365048);
       ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689638));
-      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694437));
-      localObject1 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368205);
-      localObject2 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365046);
-      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689664));
-      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694438));
-      localObject1 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368205);
-      localObject2 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365046);
-      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689702));
       ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694439));
+      localObject1 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368216);
+      localObject2 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365048);
+      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689664));
+      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694440));
+      localObject1 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368216);
+      localObject2 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365048);
+      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689702));
+      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694441));
     }
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TCWDatePicker);
     paramInt = paramContext.getInt(3, 1900);
@@ -135,7 +135,7 @@ public class TCWDatePicker
     if ((arrayOfChar[0] == 'M') && (arrayOfChar[1] == 'd')) {
       return;
     }
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131371566);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131371585);
     localLinearLayout.removeAllViews();
     int j = arrayOfChar.length;
     label50:
@@ -213,8 +213,8 @@ public class TCWDatePicker
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bhxh != null) {
-      this.jdField_a_of_type_Bhxh.a(this, a(), b(), c());
+    if (this.jdField_a_of_type_Bibo != null) {
+      this.jdField_a_of_type_Bibo.a(this, a(), b(), c());
     }
   }
   
@@ -223,10 +223,10 @@ public class TCWDatePicker
     return this.jdField_a_of_type_JavaUtilCalendar.get(1);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, bhxh parambhxh)
+  public void a(int paramInt1, int paramInt2, int paramInt3, bibo parambibo)
   {
     a(paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_Bhxh = parambhxh;
+    this.jdField_a_of_type_Bibo = parambibo;
     b();
     d();
   }

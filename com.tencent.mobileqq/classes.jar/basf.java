@@ -1,54 +1,179 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.os.Build.VERSION;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Thumbnails;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class basf
+  extends baqn
 {
-  public static boolean a;
-  private bash a;
+  private static final String[] a = { "DISTINCT _id", "_data" };
   
-  public basf()
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Bash = new bash();
-    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
-    a();
-  }
-  
-  private void a()
-  {
-    DeviceProfileManager.a(new basg(this));
-  }
-  
-  public bash a()
-  {
-    return this.jdField_a_of_type_Bash.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString))) {}
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = null;
+    }
+    String str;
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
+      return paramString;
+      str = paramString;
+      if (paramString.startsWith("file://")) {
+        str = paramString.substring("file://".length());
       }
-      paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length != 6));
+      paramString = str;
+    } while (str.startsWith(File.separator));
+    return File.separator + str;
+  }
+  
+  public static URL a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
     try
     {
-      this.jdField_a_of_type_Bash.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
-      this.jdField_a_of_type_Bash.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
-      this.jdField_a_of_type_Bash.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
-      this.jdField_a_of_type_Bash.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
-      this.jdField_a_of_type_Bash.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
-      this.jdField_a_of_type_Bash.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
-      jdField_a_of_type_Boolean = true;
-      return;
+      paramString1 = new URL("devicemsgthumb", "", localStringBuilder.toString());
+      return paramString1;
     }
-    catch (NumberFormatException paramString)
+    catch (MalformedURLException paramString1)
     {
-      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceMsgThumbDownloader", 2, paramString1.getMessage(), paramString1);
+      }
+    }
+    return null;
+  }
+  
+  public Cursor a(String paramString)
+  {
+    paramString = "_data='" + a(paramString) + "' COLLATE NOCASE";
+    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public Bitmap a(String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 8) {
+      return null;
+    }
+    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
+  }
+  
+  public LocalMediaInfo a(URL paramURL)
+  {
+    try
+    {
+      LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+      paramURL = paramURL.getFile().split("\\|");
+      localLocalMediaInfo.path = paramURL[0];
+      localLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
+      localLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
+      return localLocalMediaInfo;
+    }
+    catch (Exception paramURL) {}
+    return null;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(alof.aW);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Bitmap b(String paramString)
+  {
+    Object localObject = null;
+    Cursor localCursor = null;
+    if (Build.VERSION.SDK_INT < 5)
+    {
+      localObject = localCursor;
+      label17:
+      return localObject;
+    }
+    try
+    {
+      localCursor = a(paramString);
+      paramString = (String)localObject;
+      if (localCursor != null) {
+        paramString = (String)localObject;
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (localCursor.getCount() > 0)
+        {
+          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
+          paramString = (String)localObject;
+          if (localCursor.moveToFirst()) {
+            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
+          }
+        }
+        localObject = paramString;
+        if (localCursor == null) {
+          break label17;
+        }
+        localCursor.close();
+        return paramString;
+      }
+      finally
+      {
+        break label112;
+      }
+      paramString = finally;
+      localCursor = null;
+    }
+    label112:
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    throw paramString;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = a(paramDownloadParams.url);
+    if (paramFile == null) {}
+    do
+    {
+      return null;
+      if (bdhb.b(paramFile.path)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
+    return null;
+    paramURLDrawableHandler = BaseApplicationImpl.getContext();
+    if (arrr.a(paramFile.path) == 2) {}
+    for (paramFile = new bash(this);; paramFile = new basg(this)) {
+      return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
     }
   }
 }

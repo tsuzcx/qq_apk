@@ -1,30 +1,19 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class avox
-  implements bhqr
+  implements DialogInterface.OnClickListener
 {
-  private avox(avot paramavot) {}
+  avox(avov paramavov, bdjz parambdjz) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    bhqr localbhqr = this.a.jdField_a_of_type_Avos.a();
-    if (localbhqr != null) {
-      localbhqr.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView)
-  {
-    bhqr localbhqr = this.a.jdField_a_of_type_Avos.a();
-    if (localbhqr != null) {
-      localbhqr.onNothingSelected(paramAdapterView);
-    }
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Avov.a.a.c();
+    paramInt = ((Integer)auwq.a(this.jdField_a_of_type_Avov.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    azqs.b(this.jdField_a_of_type_Avov.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, auwz.a(this.jdField_a_of_type_Avov.a.a.j), paramInt + "", "", "");
   }
 }
 

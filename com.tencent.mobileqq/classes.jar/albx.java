@@ -1,38 +1,33 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class albx
-  implements MediaPlayer.OnCompletionListener
+public final class albx
+  implements EIPCResultCallback
 {
-  public albx(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
+  public albx(albz paramalbz) {}
   
-  public void onCompletion(MediaPlayer arg1)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
-    }
-    int i = this.jdField_a_of_type_Int - 1;
-    if (i == 0) {}
-    do
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    albz localalbz;
+    if (this.a != null)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
-      {
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
-        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
-          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
-        }
-        return;
+      localalbz = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
-      {
-        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
+    }
+    for (;;)
+    {
+      localalbz.a(bool);
+      return;
+      label82:
+      bool = false;
+    }
   }
 }
 

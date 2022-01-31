@@ -1,16 +1,202 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import android.text.TextUtils;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bhbu
-  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public bhbu(PageWebviewContainer paramPageWebviewContainer) {}
+  public static ConcurrentHashMap<String, bhbv> a = new ConcurrentHashMap();
+  public static boolean a;
   
-  public void onScrollChanged()
+  public static int a(String paramString)
   {
-    PageWebviewContainer.a(this.a).a().getView().scrollTo(0, 0);
+    return a(paramString).a;
+  }
+  
+  public static bhbv a(String paramString)
+  {
+    if (a.containsKey(paramString)) {
+      return (bhbv)a.get(paramString);
+    }
+    bhbv localbhbv = new bhbv();
+    a.put(paramString, localbhbv);
+    return localbhbv;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "unknown";
+    }
+    int i = a(paramString);
+    if (i == 0) {
+      return "baselib_not_download";
+    }
+    if (i == 1) {
+      return "baselib_download";
+    }
+    return "unknown";
+  }
+  
+  public static void a(String paramString)
+  {
+    paramString = a(paramString);
+    paramString.a = -1;
+    paramString.b = -1;
+    paramString.c = -1;
+    paramString.d = -1;
+    paramString.e = -1;
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    if (paramBoolean)
+    {
+      paramString.a = 1;
+      paramString.b = 1;
+      paramString.c = 1;
+    }
+    for (paramString.e = 1;; paramString.e = 0)
+    {
+      if (paramString.d == -1) {
+        paramString.d = 0;
+      }
+      return;
+      paramString.a = 0;
+      paramString.b = 0;
+      paramString.c = 0;
+    }
+  }
+  
+  public static int b(String paramString)
+  {
+    return a(paramString).b;
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "unknown";
+    }
+    int i = b(paramString);
+    if (i == 0) {
+      return "service_not_preload";
+    }
+    if (i == 1) {
+      return "service_preload";
+    }
+    return "unknown";
+  }
+  
+  public static void b(String paramString)
+  {
+    a.remove(paramString);
+  }
+  
+  public static void b(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a(paramString).b = 1;
+      return;
+    }
+    a(paramString).b = 0;
+  }
+  
+  public static int c(String paramString)
+  {
+    return a(paramString).c;
+  }
+  
+  public static String c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "unknown";
+    }
+    int i = c(paramString);
+    if (i == 0) {
+      return "apkg_not_download";
+    }
+    if (i == 1) {
+      return "apkg_download";
+    }
+    return "unknown";
+  }
+  
+  public static void c(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a(paramString).c = 1;
+      return;
+    }
+    a(paramString).c = 0;
+  }
+  
+  public static int d(String paramString)
+  {
+    return a(paramString).d;
+  }
+  
+  public static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "unknown";
+    }
+    int i = d(paramString);
+    if (i == 0) {
+      return "hot_start";
+    }
+    if (i == 1) {
+      return "page_switch";
+    }
+    return "unknown";
+  }
+  
+  public static void d(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a(paramString).e = 1;
+      return;
+    }
+    a(paramString).e = 0;
+  }
+  
+  public static int e(String paramString)
+  {
+    return a(paramString).e;
+  }
+  
+  public static String e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "unknown";
+    }
+    int i = e(paramString);
+    if (i == 0) {
+      return "service_not_preload";
+    }
+    if (i == 1) {
+      return "service_preload";
+    }
+    return "unknown";
+  }
+  
+  public static void e(String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && (paramBoolean))
+    {
+      if (paramString.c == -1) {
+        paramString.c = 1;
+      }
+      if (paramString.a == -1) {
+        paramString.a = 1;
+      }
+      if (paramString.b == -1) {
+        paramString.b = 1;
+      }
+    }
   }
 }
 

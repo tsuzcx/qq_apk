@@ -1,220 +1,88 @@
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ayhl
-  extends ayha
+class ayhl
+  implements zgq
 {
-  protected String c;
-  private String d;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private String f;
+  ayhl(ayhk paramayhk) {}
   
-  public ayhl(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<FTSMessage> paramList, String paramString3, CharSequence paramCharSequence)
+  public void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
   {
-    super(paramQQAppInterface, paramString1, paramString2, paramArrayList, paramList);
-    paramString1 = (FTSMessage)paramList.get(0);
-    this.jdField_d_of_type_JavaLangString = String.valueOf(paramString1.uin);
-    this.jdField_e_of_type_JavaLangString = paramString1.senderuin;
-    this.jdField_e_of_type_Int = paramString1.istroop;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    int i;
-    if (this.jdField_e_of_type_Int == 3000)
+    Object localObject;
+    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem;
+    if (paramHotSearchItem != null)
     {
-      i = ((almv)paramQQAppInterface.getManager(53)).a(this.jdField_d_of_type_JavaLangString);
-      if (i <= 0) {
-        this.f = "";
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.f = String.valueOf(i);
-  }
-  
-  public CharSequence a()
-  {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int);
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public void a(View paramView)
-  {
-    Object localObject1;
-    Object localObject2;
-    JSONObject localJSONObject;
-    if ((paramView.getContext() instanceof UniteSearchActivity)) {
-      if (aydw.b.containsKey(this))
+      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
       {
-        localObject1 = (aydx)aydw.b.get(this);
-        localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localJSONObject = new JSONObject();
-      }
-    }
-    try
-    {
-      localJSONObject.put("project", aynt.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", ((aydx)localObject1).jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "native");
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(((aydx)localObject1).jdField_a_of_type_Long + "").obj2(((aydx)localObject1).jdField_b_of_type_JavaLangString).ver1(((aydx)localObject1).jdField_a_of_type_JavaLangString).ver2(aynt.a(UniteSearchActivity.jdField_d_of_type_Int)).ver7(localJSONObject.toString()).session_id(((QQAppInterface)localObject2).getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
-      aynt.a(null, this.s, 0, "0X8009D4D", 0, 0, null, null);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        this.jdField_a_of_type_JavaLangCharSequence = bdli.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, this.jdField_e_of_type_JavaLangString);
-      }
-      localObject1 = (Integer)paramView.getTag(2131379914);
-      localObject2 = (Integer)paramView.getTag(2131379912);
-      if (((paramView.getContext() instanceof UniteSearchActivity)) && (((Integer)localObject1).intValue() >= 0) && (((Integer)localObject2).intValue() >= 0))
-      {
-        ayrd.a("all_result", "clk_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString, "" + localObject2, "" + (((Integer)localObject1).intValue() + 1) });
-        if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-          break label699;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-        bdlj.f = 1;
-        bdlj.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
-        bdlj.g = this.jdField_e_of_type_Int;
-        bdlj.h = this.jdField_b_of_type_Int;
-        bdlj.i = this.jdField_c_of_type_Int;
-        bdlj.j = this.jdField_d_of_type_Int;
-        bdli.a(paramView);
-        if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-          break label725;
-        }
-        ajgm.jdField_a_of_type_Boolean = true;
-        localObject1 = (FTSMessage)this.jdField_a_of_type_JavaUtilList.get(0);
-        if (((FTSMessage)localObject1).msgExts != null)
-        {
-          if ((((FTSMessage)localObject1).istroop != 1) && (((FTSMessage)localObject1).istroop != 3000)) {
-            break label706;
-          }
-          ajgm.jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)((FTSMessage)localObject1).msgExts).shmsgseq;
-        }
-        alxr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        ajgm.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, (String)this.jdField_a_of_type_JavaLangCharSequence, false);
-        ayrd.a(this.jdField_a_of_type_JavaLangString, 40, paramView, false);
-        ayrd.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("FTSMessageSearchResultModel", 2, "e = " + localJSONException);
-        continue;
-        if ((paramView.getContext() instanceof FTSEntitySearchDetailActivity))
-        {
-          ayrd.a("talk", "clk_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString, "" + localObject2, "" + (((Integer)localObject1).intValue() + 1) });
-          continue;
-          label699:
-          bdlj.f = 2;
-          continue;
-          label706:
-          ajgm.jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)((FTSMessage)localObject1).msgExts).time;
-          continue;
-          label725:
-          FTSEntitySearchDetailActivity.a(paramView.getContext(), a(), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_JavaUtilList, 1, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int);
-        }
-      }
-    }
-  }
-  
-  public CharSequence b()
-  {
-    if ((this.jdField_e_of_type_Int == 3000) && (!TextUtils.isEmpty(this.f))) {
-      return ayrd.a(this.f);
-    }
-    return "";
-  }
-  
-  public String b()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    switch (this.jdField_e_of_type_Int)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchResultModel", 2, "Face type is illegal. type = " + this.jdField_e_of_type_Int);
-      }
-    case 0: 
-      return 1;
-    case 1: 
-      return 4;
-    }
-    return 101;
-  }
-  
-  public CharSequence c()
-  {
-    int i;
-    if (this.jdField_d_of_type_JavaLangCharSequence == null)
-    {
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      if (i == 1) {
-        this.jdField_d_of_type_JavaLangCharSequence = ayrd.a(((FTSEntity)this.jdField_a_of_type_JavaUtilList.get(0)).mContent, ((FTSEntity)this.jdField_a_of_type_JavaUtilList.get(0)).mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
-      }
-    }
-    else
-    {
-      return this.jdField_d_of_type_JavaLangCharSequence;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(i + alpo.a(2131705336) + "\"");
-    if ((this.jdField_c_of_type_JavaLangString != null) && ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))) {
-      localSpannableStringBuilder.append(ayrd.a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString));
+        localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)((Iterator)localObject).next();
+      } while (!TextUtils.equals(paramHotSearchItem.title, localHotSearchItem.title));
     }
     for (;;)
     {
-      localSpannableStringBuilder.append("\"").append("相关记录");
-      this.jdField_d_of_type_JavaLangCharSequence = localSpannableStringBuilder;
-      break;
-      localSpannableStringBuilder.append(ayrd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-    }
-  }
-  
-  public CharSequence e()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1) && (this.jdField_b_of_type_JavaLangCharSequence == null) && ((this.jdField_a_of_type_JavaUtilList.get(0) instanceof FTSMessage)))
-    {
-      CharSequence localCharSequence = ((FTSMessage)this.jdField_a_of_type_JavaUtilList.get(0)).matchTitle;
-      if (localCharSequence != null) {
-        this.jdField_b_of_type_JavaLangCharSequence = localCharSequence;
+      if (localHotSearchItem == null) {
+        return;
       }
-    }
-    return this.jdField_b_of_type_JavaLangCharSequence;
-  }
-  
-  public CharSequence f()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1) && (this.jdField_c_of_type_JavaLangCharSequence == null) && ((this.jdField_a_of_type_JavaUtilList.get(0) instanceof FTSMessage)))
-    {
-      CharSequence localCharSequence = ((FTSMessage)this.jdField_a_of_type_JavaUtilList.get(0)).matchSecondTitle;
-      if (localCharSequence != null) {
-        this.jdField_c_of_type_JavaLangCharSequence = localCharSequence;
+      localObject = localHotSearchItem.jumpUrl;
+      paramHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (this.a.jdField_a_of_type_Int != 10) {
+          break label382;
+        }
+        paramHotSearchItem = ayvj.a(localHotSearchItem.recallWord, 5, "kandian_hotword");
       }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "open Browser append suffix url = " + paramHotSearchItem);
+        }
+        ayhk.a(this.a, paramHotSearchItem, localHotSearchItem.recallWord);
+        ayvm.a("hot_list", "clk_hot_list", new String[] { localHotSearchItem.title, String.valueOf(this.a.jdField_a_of_type_Int), String.valueOf(this.a.jdField_a_of_type_JavaUtilList.indexOf(localHotSearchItem) + 1) });
+        paramHotSearchItem = new JSONObject();
+        try
+        {
+          paramHotSearchItem.put("project", aysc.a());
+          paramHotSearchItem.put("event_src", "client");
+          paramHotSearchItem.put("experiment_id", aysc.b);
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_hot_list");
+          if (this.a.jdField_a_of_type_Int == 3)
+          {
+            i = 21;
+            aysc.a(null, localReportModelDC02528.ver2(aysc.a(i)).ver4(localHotSearchItem.title).ver7(paramHotSearchItem.toString()).session_id(((QQAppInterface)localObject).getCurrentAccountUin() + this.a.jdField_a_of_type_Long));
+            aysc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D28", 0, 0, null, null);
+            ((amch)((QQAppInterface)ors.a()).getManager(299)).a(localHotSearchItem.recallWord);
+            return;
+            label382:
+            paramHotSearchItem = ayvj.b(this.a.jdField_a_of_type_Int);
+            paramHotSearchItem = ayvj.a(localHotSearchItem.recallWord, 5, paramHotSearchItem);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
+            continue;
+            int i = this.a.jdField_a_of_type_Int;
+          }
+        }
+      }
+      localHotSearchItem = null;
     }
-    return this.jdField_c_of_type_JavaLangCharSequence;
   }
 }
 

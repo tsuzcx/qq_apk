@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
 
-class alte
-  implements Comparator<SysSuspiciousMsg>
+public class alte
+  implements Handler.Callback
 {
-  alte(altc paramaltc) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  public alte(FrameHelperActivity paramFrameHelperActivity)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
     }
-    return 0;
+    return false;
   }
 }
 

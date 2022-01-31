@@ -1,15 +1,27 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
-class akra
+public abstract interface akra
+  extends akrx
 {
-  public ImageView a;
-  public TextView a;
-  public CornerImageView a;
-  public CornerImageView b;
+  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
   
-  akra(akqz paramakqz) {}
+  public abstract int getHeight();
+  
+  public abstract int getInitHeight();
+  
+  public abstract long getLuaState();
+  
+  public abstract akpl getRenderImpl();
+  
+  public abstract int getWidth();
+  
+  public abstract ApolloRenderDriver getWorker();
+  
+  public abstract void removeAllApolloBarrages(boolean paramBoolean);
+  
+  public abstract void setBubbleType(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
 }
 
 

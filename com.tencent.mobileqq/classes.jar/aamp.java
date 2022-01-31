@@ -1,32 +1,11 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
+import com.tencent.ad.tangram.version.AdVersionAdapter;
 
-class aamp
-  implements View.OnClickListener
+public class aamp
+  implements AdVersionAdapter
 {
-  aamp(aamo paramaamo) {}
-  
-  public void onClick(View paramView)
+  public String getAppVersion()
   {
-    boolean bool;
-    if (this.a.a() != null)
-    {
-      bool = this.a.a().load(this.a.getActivity());
-      if (!bool) {
-        break label59;
-      }
-    }
-    label59:
-    for (paramView = "loading ad data";; paramView = "load ad data error")
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
-      return;
-      bool = false;
-      break;
-    }
+    return aash.a();
   }
 }
 

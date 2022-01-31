@@ -1,28 +1,28 @@
 package com.tencent.biz.qqcircle.viewmodels;
 
-import axho;
+import axlx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import tzd;
-import tze;
+import ubo;
+import ubp;
 
 public class QCircleMessageNoticeViewModel$1
   implements Runnable
 {
-  public QCircleMessageNoticeViewModel$1(tzd paramtzd) {}
+  public QCircleMessageNoticeViewModel$1(ubo paramubo) {}
   
   public void run()
   {
-    axho localaxho = (axho)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
+    axlx localaxlx = (axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
     try
     {
-      localaxho.a(new tze(this));
+      localaxlx.a(new ubp(this));
       return;
     }
     catch (Exception localException)
     {
-      QLog.e(tzd.a(), 1, "updateQQCircleRedFlag  updateRedDot" + localException.toString());
+      QLog.e("QCircleMessageNoticeViewModel", 1, "updateQQCircleRedFlag  updateRedDot" + localException.toString());
     }
   }
 }

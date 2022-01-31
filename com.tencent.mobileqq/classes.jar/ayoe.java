@@ -1,6 +1,18 @@
-public abstract interface ayoe
+public class ayoe
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public int b;
+  public CharSequence b;
+  public String b;
+  public int c;
+  public CharSequence c;
+  public String c;
+  public int d;
+  
+  public ayoe(ayod paramayod) {}
 }
 
 

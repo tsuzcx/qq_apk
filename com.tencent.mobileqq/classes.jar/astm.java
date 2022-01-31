@@ -1,23 +1,44 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class astm
-  implements EIPCResultCallback
+public abstract class astm
 {
-  astm(astl paramastl) {}
+  protected int a;
+  protected Context a;
+  protected Bitmap a;
+  protected astg a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public astm(Context paramContext, int paramInt)
   {
-    astl.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      astl.a(this.a).a(2, paramEIPCResult.data);
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public astm(Context paramContext, int paramInt, astg paramastg)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Astg = paramastg;
+  }
+  
+  public Bitmap a()
+  {
+    if (this.jdField_a_of_type_Astg != null) {
+      a(this.jdField_a_of_type_Astg.a());
     }
-    astl.a(this.a).a(1, paramEIPCResult.data);
+    return null;
+  }
+  
+  public void a(asti paramasti)
+  {
+    paramasti.c = 1.0F;
+  }
+  
+  public Drawable[] a(QQAppInterface paramQQAppInterface)
+  {
+    return null;
   }
 }
 

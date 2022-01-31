@@ -1,16 +1,6 @@
-public class arsi
+public abstract interface arsi
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b = 1000L;
-  public String b;
-  
-  public arsi()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 1000L;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

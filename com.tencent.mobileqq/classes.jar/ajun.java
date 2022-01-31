@@ -1,12 +1,8 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import java.nio.ByteBuffer;
 
-public class ajun
-  extends aecn
+public abstract interface ajun
 {
-  public CheckBox a;
-  
-  private ajun(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 

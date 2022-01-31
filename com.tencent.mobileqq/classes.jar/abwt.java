@@ -1,20 +1,61 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class abwt
-  implements View.OnClickListener
+  extends QIPCModule
 {
-  public abwt(AccountManageActivity paramAccountManageActivity) {}
+  private static abwt a;
   
-  public void onClick(View paramView)
+  public abwt(String paramString)
   {
-    if (!awdr.a().a(this.a.app, this.a)) {}
-    while ((this.a.b != null) && (this.a.b.isShowing())) {
-      return;
+    super(paramString);
+  }
+  
+  public static abwt a()
+  {
+    if (a == null) {}
+    try
+    {
+      a = new abwt("HardCoderModule");
+      return a;
     }
-    AccountManageActivity.a(this.a);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    EIPCResult localEIPCResult = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
+    }
+    if (paramString.equals("start"))
+    {
+      paramInt = paramBundle.getInt("key_delay");
+      i = paramBundle.getInt("key_cpu");
+      j = paramBundle.getInt("key_io");
+      k = paramBundle.getInt("key_bind");
+      m = paramBundle.getInt("key_timeout");
+      n = paramBundle.getInt("key_scene");
+      l = paramBundle.getLong("key_action");
+      paramString = paramBundle.getString("key_tag");
+      localEIPCResult = EIPCResult.createResult(abwo.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
+    }
+    while (!paramString.equals("stop"))
+    {
+      int i;
+      int j;
+      int k;
+      int m;
+      int n;
+      long l;
+      return localEIPCResult;
+    }
+    paramInt = paramBundle.getInt("key_code");
+    abwo.a().a(paramInt);
+    return null;
   }
 }
 

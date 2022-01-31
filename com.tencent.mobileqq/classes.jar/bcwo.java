@@ -1,74 +1,27 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-public final class bcwo
-  extends MqqHandler
+class bcwo
+  implements amek
 {
-  public bcwo(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bcwp a;
   
-  public void handleMessage(Message paramMessage)
+  private bcwo(bcwm parambcwm) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if (paramMessage == null) {}
-    label4:
-    bcwp localbcwp;
-    label143:
-    label150:
-    do
+    if ((this.jdField_a_of_type_Bcwp != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bcwp.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
-      do
-      {
-        int i;
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
-          if (FaceDecodeTask.b.size() <= 0) {
-            break label150;
-          }
-          i = 0;
-          if (i >= FaceDecodeTask.b.size()) {
-            break label143;
-          }
-          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
-          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-            break;
-          }
-          localbcwp = (bcwp)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localbcwp == null);
-        if (paramMessage.jdField_a_of_type_Boolean)
-        {
-          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-          localbcwp.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localbcwp.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        FaceDecodeTask.b.clear();
-        return;
-        paramMessage = (FaceDecodeTask)paramMessage.obj;
-      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      localbcwp = (bcwp)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbcwp == null);
-    if (paramMessage.jdField_a_of_type_Boolean)
-    {
-      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-      localbcwp.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-      return;
+      paramTroopMemberInfo = new bamb(((TroopManager)this.jdField_a_of_type_Bcwm.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
+      this.jdField_a_of_type_Bcwp.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.c) {
+        bcwm.a(this.jdField_a_of_type_Bcwm, this.jdField_a_of_type_Bcwp);
+      }
     }
-    localbcwp.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

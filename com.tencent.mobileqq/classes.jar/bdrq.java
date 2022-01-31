@@ -1,49 +1,33 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
-final class bdrq
-  extends azia
+public class bdrq
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  bdrm jdField_a_of_type_Bdrm;
+  bdrr jdField_a_of_type_Bdrr;
+  ImageView b;
+  
+  public bdrq(View paramView, bdrm parambdrm, bdrr parambdrr)
   {
-    paramInt = 0;
-    Object localObject1;
-    if (paramBoolean1)
-    {
-      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
-      if (!azib.b()) {
-        break label48;
-      }
-      localObject2 = TextHook.getFontPath((Context)localObject1);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        bdrp.a((Context)localObject1, (String)localObject2);
-        bdrp.a(false);
-      }
-    }
-    label48:
-    do
-    {
-      return;
-      localObject1 = bdrp.a((Context)localObject1);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Object localObject2 = arni.a((String)localObject1).split("\\.");
-    try
-    {
-      int i = Integer.parseInt(localObject2[0]);
-      if (localObject2.length > 2) {
-        paramInt = Integer.parseInt(localObject2[1]);
-      }
-      bdrp.b(i, paramInt);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
-      localNumberFormatException.printStackTrace();
+    super(paramView);
+    this.jdField_a_of_type_Bdrm = parambdrm;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364444));
+    this.b = ((ImageView)paramView.findViewById(2131364445));
+    paramView.setOnClickListener(this);
+    this.jdField_a_of_type_Bdrr = parambdrr;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bdrm.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Bdrr != null) {
+      this.jdField_a_of_type_Bdrr.a(this.jdField_a_of_type_Bdrm.a(this.jdField_a_of_type_Int));
     }
   }
 }

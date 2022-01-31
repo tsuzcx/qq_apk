@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator;
 
-import amcq;
-import amcr;
+import amhf;
+import amhg;
 import android.os.Process;
 import android.os.SystemClock;
-import azjg;
-import bhxr;
+import aznp;
+import biby;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
 import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.mobileqq.app.automator.step.GetSubAccount;
@@ -23,7 +23,7 @@ public class AsyncStep
 {
   protected volatile int a;
   private long jdField_a_of_type_Long;
-  public amcq a;
+  public amhf a;
   public Automator a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
@@ -85,7 +85,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((azjg.f) && (!amcr.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((aznp.f) && (!amhg.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -164,7 +164,7 @@ public class AsyncStep
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      bhxr.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      biby.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -204,9 +204,9 @@ public class AsyncStep
       {
         break label653;
       }
-      bhxr.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Amcq != null) {
-        this.jdField_a_of_type_Amcq.a(this, this.jdField_a_of_type_Int);
+      biby.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Amhf != null) {
+        this.jdField_a_of_type_Amhf.a(this, this.jdField_a_of_type_Int);
       }
     }
     try
@@ -219,9 +219,9 @@ public class AsyncStep
     {
       break label250;
     }
-    bhxr.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-    if (this.jdField_a_of_type_Amcq != null) {
-      this.jdField_a_of_type_Amcq.a(this, this.jdField_a_of_type_Int);
+    biby.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_Amhf != null) {
+      this.jdField_a_of_type_Amhf.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

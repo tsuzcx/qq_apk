@@ -1,32 +1,23 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqkg
-  implements aqkm
+class aqkg
+  implements Animation.AnimationListener
 {
-  public aqkg(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  aqkg(aqke paramaqke) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a = paramTextView;
-    return new aqkh(this);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
+    }
   }
   
-  public boolean a()
-  {
-    return this.a.c;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean b()
-  {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

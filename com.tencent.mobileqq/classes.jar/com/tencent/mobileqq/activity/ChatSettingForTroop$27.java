@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdbx;
+import bdgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ChatSettingForTroop$27
@@ -10,8 +10,8 @@ class ChatSettingForTroop$27
   
   public void run()
   {
-    bdbx.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.a, 0);
-    bdbx.a(this.this$0.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.a, this.this$0.j);
+    bdgg.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.a, 0);
+    bdgg.a(this.this$0.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.a, this.this$0.j);
   }
 }
 

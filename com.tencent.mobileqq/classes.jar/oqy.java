@@ -25,7 +25,7 @@ public class oqy
   private void a(int paramInt, pgj parampgj)
   {
     if (paramInt == 0) {
-      bjxj.a("readinjoy_show_recommend_reason_in_title_b", parampgj.c);
+      bkbq.a("readinjoy_show_recommend_reason_in_title_b", parampgj.c);
     }
   }
   
@@ -72,7 +72,7 @@ public class oqy
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new orb(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560048, null));
+    return new orb(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560047, null));
   }
 }
 

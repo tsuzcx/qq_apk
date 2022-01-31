@@ -1,40 +1,24 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.content.Context;
-import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
 
 public class tzd
-  extends tyz
+  implements TypeEvaluator<PointF>
 {
-  private static final String jdField_a_of_type_JavaLangString = tzd.class.getSimpleName();
-  private MutableLiveData<trt> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private PointF jdField_a_of_type_AndroidGraphicsPointF;
+  private PointF b;
   
-  private void a(List<String> paramList, int paramInt)
+  public tzd(tyz paramtyz, PointF paramPointF1, PointF paramPointF2)
   {
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("setNoticeTipValue ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.e(str, 1, i + ", " + paramInt);
-      paramList = new trt(paramList, paramInt);
-      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.postValue(paramList);
-      return;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF1;
+    this.b = paramPointF2;
   }
   
-  public MutableLiveData<trt> a()
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-  }
-  
-  public void a(Context paramContext)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "pullLastestInfo");
-    ThreadManager.getSubThreadHandler().post(new QCircleMessageNoticeViewModel.1(this));
+    PointF localPointF = new PointF();
+    localPointF.x = (paramPointF1.x * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.x * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.x * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.x * paramFloat * paramFloat * paramFloat);
+    localPointF.y = (paramPointF1.y * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.y * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.y * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.y * paramFloat * paramFloat * paramFloat);
+    return localPointF;
   }
 }
 

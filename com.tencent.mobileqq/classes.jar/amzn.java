@@ -1,99 +1,56 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class amzn
+public abstract class amzn
+  extends Binder
+  implements amzm
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  private amzi jdField_a_of_type_Amzi;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  long b;
-  
-  public amzn(AppInterface paramAppInterface)
+  public amzn()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Amzi = new amzi(paramAppInterface);
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
   }
   
-  private int a(long paramLong, int paramInt)
+  public static amzm a(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-    if (this.b == 0L) {
-      return this.jdField_a_of_type_Int;
+    if (paramIBinder == null) {
+      return null;
     }
-    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof amzm))) {
+      return (amzm)localIInterface;
+    }
+    return new amzo(paramIBinder);
   }
   
-  public void a()
+  public IBinder asBinder()
   {
-    if (this.jdField_a_of_type_Amzi != null) {
-      this.jdField_a_of_type_Amzi.a();
-    }
+    return this;
   }
   
-  public void a(ArrayList<amzm> paramArrayList, amzq paramamzq)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
-    this.b = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList.size() < 1) {
-      return;
-    }
-    Object localObject = paramArrayList.iterator();
-    amzm localamzm;
-    while (((Iterator)localObject).hasNext())
+    switch (paramInt1)
     {
-      localamzm = (amzm)((Iterator)localObject).next();
-      this.b = Math.max(this.b, localamzm.jdField_a_of_type_Long);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
     }
-    if (paramamzq != null) {
-      paramamzq.a();
-    }
-    localObject = (ArrayList)paramArrayList.clone();
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
-    int i = 0;
-    label129:
-    if (i < paramArrayList.size())
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
     {
-      if (((amzm)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
-        break label187;
-      }
-      this.jdField_a_of_type_Amzi.a((amzm)paramArrayList.get(i), new amzo(this, paramamzq, paramArrayList, (ArrayList)localObject));
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
     }
-    for (;;)
-    {
-      i += 1;
-      break label129;
-      break;
-      label187:
-      if (((amzm)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
-      {
-        nbv.a();
-        localamzm = (amzm)paramArrayList.get(i);
-        nbv.a(((amzm)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new amzp(this, paramamzq, (ArrayList)localObject, localamzm), true, 0, true);
-      }
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      a();
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Amzi != null) {
-      this.jdField_a_of_type_Amzi.b();
-    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 

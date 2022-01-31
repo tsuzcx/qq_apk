@@ -1,18 +1,12 @@
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class bgsj
-  implements DialogInterface.OnDismissListener
+class bgsj
+  implements View.OnClickListener
 {
-  bgsj(Context paramContext, MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt) {}
+  bgsj(bgsi parambgsi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bgsi.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StJudgeTimingRsp, this.jdField_a_of_type_Int + 1);
-  }
+  public void onClick(View paramView) {}
 }
 
 

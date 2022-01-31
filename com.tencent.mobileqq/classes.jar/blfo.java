@@ -1,17 +1,27 @@
-import com.tencent.tavcut.TAVCut.Callback;
-import dov.com.qq.im.aeeditor.AEEditorActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class blfo
-  implements TAVCut.Callback
+class blfo
+  implements View.OnClickListener
 {
-  public blfo(AEEditorActivity paramAEEditorActivity) {}
+  blfo(blfn paramblfn, AECaptureMode paramAECaptureMode, int paramInt) {}
   
-  public void onDone(int paramInt)
+  public void onClick(View paramView)
   {
-    blfg.b(AEEditorActivity.a(), "TAVCut init ret code = " + paramInt);
-    if (paramInt != 0) {
-      AEEditorActivity.a(this.a).add(new blfp(this.a, -8));
+    blfj.a(this.jdField_a_of_type_Blfn.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
+    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
+      bliu.a().v();
+    }
+    for (;;)
+    {
+      bljn.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      return;
+      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
+        bliu.a().u();
+      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
+        bliu.a().C();
+      }
     }
   }
 }

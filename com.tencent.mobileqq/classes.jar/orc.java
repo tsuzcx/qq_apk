@@ -69,7 +69,7 @@ public class orc
     }
     for (;;)
     {
-      return bdcb.b(paramContext) - bcwh.a(paramContext, i);
+      return bdgk.b(paramContext) - bdaq.a(paramContext, i);
       label56:
       if ((paramrjk.a != null) && (paramrjk.a.mChannelID == 56L))
       {
@@ -178,7 +178,7 @@ public class orc
   
   public static int a(int paramInt, Resources paramResources)
   {
-    return (paramInt - (aekt.a(24.0F, paramResources) + aekt.a(3.0F, paramResources))) / 2;
+    return (paramInt - (aepi.a(24.0F, paramResources) + aepi.a(3.0F, paramResources))) / 2;
   }
   
   public static Drawable a(String paramString)
@@ -194,24 +194,24 @@ public class orc
   public static Pair<Integer, Integer> a()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - aekt.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298578)));
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - aepi.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298578)));
   }
   
   public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int i = aekt.a(1.5F, localResources);
+    int i = aepi.a(1.5F, localResources);
     if (paramInt2 == 56) {
-      i = aekt.a(3.0F, localResources);
+      i = aepi.a(3.0F, localResources);
     }
-    bjxn localbjxn = bjxj.a(BaseApplicationImpl.getApplication().getRuntime());
+    bkbu localbkbu = bkbq.a(BaseApplicationImpl.getApplication().getRuntime());
     float f1;
     float f2;
-    if (localbjxn != null)
+    if (localbkbu != null)
     {
-      f1 = localbjxn.a;
-      f2 = localbjxn.jdField_b_of_type_Float;
-      paramInt2 = aekt.a(localbjxn.jdField_b_of_type_Int, localResources);
+      f1 = localbkbu.a;
+      f2 = localbkbu.jdField_b_of_type_Float;
+      paramInt2 = aepi.a(localbkbu.jdField_b_of_type_Int, localResources);
     }
     for (;;)
     {
@@ -222,7 +222,7 @@ public class orc
           break;
         }
       }
-      for (paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - aekt.a(6, localResources) - i * 2) / 2.1F);; paramInt1 = paramInt2)
+      for (paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - aepi.a(6, localResources) - i * 2) / 2.1F);; paramInt1 = paramInt2)
       {
         i = (int)(paramInt1 / f2);
         paramInt2 = paramInt1;
@@ -230,10 +230,10 @@ public class orc
         for (;;)
         {
           return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
-          paramInt2 = localResources.getDisplayMetrics().widthPixels - aekt.a(12, localResources);
-          paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - aekt.a(6, localResources) - i * 2) / 2.5F * 1.3356F);
+          paramInt2 = localResources.getDisplayMetrics().widthPixels - aepi.a(12, localResources);
+          paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - aepi.a(6, localResources) - i * 2) / 2.5F * 1.3356F);
           continue;
-          paramInt2 = (int)((localResources.getDisplayMetrics().widthPixels - aekt.a(12, localResources) - i) * 0.5F);
+          paramInt2 = (int)((localResources.getDisplayMetrics().widthPixels - aepi.a(12, localResources) - i) * 0.5F);
           paramInt1 = (int)(paramInt2 / f1);
         }
       }
@@ -293,12 +293,12 @@ public class orc
     {
       return str;
       str = paramString;
-    } while (!baiy.a(paramString));
+    } while (!banh.a(paramString));
     paramString = new StringBuilder(paramString);
     int i = 0;
-    while (i < bahu.a.length)
+    while (i < bamd.a.length)
     {
-      str = bahu.a[i];
+      str = bamd.a[i];
       int j = -1;
       for (;;)
       {
@@ -354,7 +354,7 @@ public class orc
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramImageView.setImageResource(2130841377);
+      paramImageView.setImageResource(2130841378);
       return;
     }
     if ((paramContext instanceof BaseActivity)) {}
@@ -363,14 +363,14 @@ public class orc
       if (localObject != null) {}
       for (boolean bool = SettingCloneUtil.readValue((Context)localObject, ((BaseActivity)localObject).app.getCurrentAccountUin(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
       {
-        if ((!bdee.h(paramContext)) && (bool) && (!sff.a().a(paramURL)))
+        if ((!bdin.h(paramContext)) && (bool) && (!sff.a().a(paramURL)))
         {
-          paramImageView.setImageResource(2130841377);
+          paramImageView.setImageResource(2130841378);
           return;
         }
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841377);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841377);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841378);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841378);
         paramImageView.setImageDrawable(URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject));
         return;
       }
@@ -389,7 +389,7 @@ public class orc
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramKandianUrlImageView.setImageResource(2130841377);
+      paramKandianUrlImageView.setImageResource(2130841378);
       return;
     }
     if ((paramContext instanceof BaseActivity)) {}
@@ -403,11 +403,11 @@ public class orc
       }
       for (boolean bool = SettingCloneUtil.readValue(localBaseActivity, str, null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
       {
-        if ((bool) && (!bdee.h(paramContext)) && (!sff.a().a(paramURL)))
+        if ((bool) && (!bdin.h(paramContext)) && (!sff.a().a(paramURL)))
         {
           if (!paramBoolean)
           {
-            paramKandianUrlImageView.setImageResource(2130841377);
+            paramKandianUrlImageView.setImageResource(2130841378);
             return;
             str = ors.a();
             break;
@@ -419,10 +419,10 @@ public class orc
         {
           if (paramKandianUrlImageView.a())
           {
-            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130840212)).a(paramURL);
+            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130840213)).a(paramURL);
             return;
           }
-          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130841377)).a(paramURL);
+          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130841378)).a(paramURL);
           return;
         }
         paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165307)));
@@ -469,7 +469,7 @@ public class orc
     for (boolean bool = SettingCloneUtil.readValue(paramContext, BaseApplicationImpl.getApplication().getRuntime().getAccount(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
     {
       int i;
-      if ((!bool) || (bdee.h(paramContext))) {
+      if ((!bool) || (bdin.h(paramContext))) {
         i = 0;
       }
       while (i < j)
@@ -538,7 +538,7 @@ public class orc
   public static Pair<Integer, Integer> b()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int i = (localResources.getDisplayMetrics().widthPixels - aekt.a(3.0F, localResources)) / 2;
+    int i = (localResources.getDisplayMetrics().widthPixels - aepi.a(3.0F, localResources)) / 2;
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.33F)));
   }
   
@@ -551,7 +551,7 @@ public class orc
   public static Pair<Integer, Integer> d()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int i = (localResources.getDisplayMetrics().widthPixels - aekt.a(3.0F, localResources)) / 3;
+    int i = (localResources.getDisplayMetrics().widthPixels - aepi.a(3.0F, localResources)) / 3;
     return new Pair(Integer.valueOf(i), Integer.valueOf(i));
   }
   

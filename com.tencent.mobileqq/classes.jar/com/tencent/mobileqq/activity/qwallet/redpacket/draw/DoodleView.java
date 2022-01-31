@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import aevb;
-import aevu;
-import aewl;
-import aiyc;
-import aiyd;
+import aezq;
+import afaj;
+import afba;
+import ajcr;
+import ajcs;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import java.util.List;
 public class DoodleView
   extends View
 {
-  private aiyd jdField_a_of_type_Aiyd;
+  private ajcs jdField_a_of_type_Ajcs;
   private LineLayer jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer;
   
   public DoodleView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,7 +27,7 @@ public class DoodleView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer = new LineLayer(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(new aiyc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(new ajcr(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(LineLayer.a);
     super.requestLayout();
   }
@@ -46,18 +46,18 @@ public class DoodleView
     return 0;
   }
   
-  public aevb a(boolean paramBoolean)
+  public aezq a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer == null) {
       return null;
     }
-    aevb localaevb = new aevb();
-    localaevb.a(a(), paramBoolean, true);
-    localaevb.a().a(a());
-    return localaevb;
+    aezq localaezq = new aezq();
+    localaezq.a(a(), paramBoolean, true);
+    localaezq.a().a(a());
+    return localaezq;
   }
   
-  public aevu a()
+  public afaj a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer == null) {
       return null;
@@ -65,7 +65,7 @@ public class DoodleView
     return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
   }
   
-  public List<aewl> a()
+  public List<afba> a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
@@ -80,9 +80,9 @@ public class DoodleView
     }
   }
   
-  public void a(aiyd paramaiyd)
+  public void a(ajcs paramajcs)
   {
-    this.jdField_a_of_type_Aiyd = paramaiyd;
+    this.jdField_a_of_type_Ajcs = paramajcs;
     b();
   }
   

@@ -1,22 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class aqxm
-  implements Cloneable
+public abstract interface aqxm
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public abstract void a(int paramInt, String paramString);
   
-  public aqxm(aqxl paramaqxl) {}
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void aG_();
+  
+  public abstract void aH_();
 }
 
 

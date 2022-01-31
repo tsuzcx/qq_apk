@@ -1,6 +1,20 @@
-public abstract interface bnhy
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+
+public class bnhy
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(String paramString);
+  public bnhy(FixedSizeVideoView paramFixedSizeVideoView) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (this.a.a != null)
+    {
+      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
+      this.a.a.a(paramMediaPlayer);
+    }
+  }
 }
 
 

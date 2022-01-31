@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class ajoj
-  implements bapx
+public class ajoj
+  implements DialogInterface.OnClickListener
 {
-  ajoj(ajog paramajog) {}
+  public ajoj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onResp(baqw parambaqw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
-    if (parambaqw.jdField_a_of_type_Int != 0)
-    {
-      lek.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((ajog.a(this.a).decrementAndGet() == 0) && (ajog.a(this.a) != null)) {
-      ajog.a(this.a).a(true);
-    }
-    lek.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.a.finish();
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

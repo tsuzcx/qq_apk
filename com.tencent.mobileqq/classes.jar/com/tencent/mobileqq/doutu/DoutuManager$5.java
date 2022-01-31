@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.doutu;
 
-import apfk;
-import apfp;
+import apjt;
+import apjy;
 import java.util.List;
 
 public class DoutuManager$5
   implements Runnable
 {
-  public DoutuManager$5(apfp paramapfp, boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong) {}
+  public DoutuManager$5(apjy paramapjy, boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong) {}
   
   public void run()
   {

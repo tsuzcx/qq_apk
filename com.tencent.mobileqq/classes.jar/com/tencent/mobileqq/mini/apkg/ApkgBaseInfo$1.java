@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alpo;
+import alud;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -11,7 +11,7 @@ class ApkgBaseInfo$1
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + alpo.a(2131700655) + this.val$lowCaseUrl, 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + alud.a(2131700667) + this.val$lowCaseUrl, 1).show();
   }
 }
 

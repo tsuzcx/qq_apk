@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class CouponH5Data
-  extends awbv
+  extends awge
 {
   public String mData;
   public String mHost;
@@ -22,7 +22,7 @@ public class CouponH5Data
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CouponH5Data
  * JD-Core Version:    0.7.0.1
  */

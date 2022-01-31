@@ -1,137 +1,108 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.SurfaceTextureFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWVideoDecoder;
-import com.tencent.ttpic.video.AEDecoder;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import java.math.BigDecimal;
 
 public class axpf
-  implements SurfaceTexture.OnFrameAvailableListener, axpo, AEDecoder
+  implements GLGestureListener
 {
-  private final int jdField_a_of_type_Int = 1;
-  private axpl jdField_a_of_type_Axpl;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private SurfaceTextureFilter jdField_a_of_type_ComTencentFilterSurfaceTextureFilter;
-  private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder = new HWVideoDecoder();
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private final int b = 2;
-  private final int c = 3;
-  private final int d = 4;
-  private final int e = 5;
-  private final int f = 6;
-  private int g = 1;
-  private int h = -1;
-  private int i = -1;
-  private int j;
-  private int k;
+  public float a;
+  public GLSurfaceView a;
+  private float b;
+  private float c;
   
-  public axpf(String paramString)
+  public axpf(GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_Axpl = new axpl(paramString, 0, false, false);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  private void a()
+  public int onGetPriority()
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.k = arrayOfInt[0];
-    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter = new SurfaceTextureFilter();
-    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.apply();
+    return 0;
   }
   
-  private void b()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    GLES20.glDeleteTextures(1, new int[] { this.k }, 0);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.clearGLSLSelf();
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    this.g = 6;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-  }
-  
-  public void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.g != 2) {
-        this.jdField_a_of_type_JavaLangObject.wait();
-      }
-    }
-    this.g = 3;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-  }
-  
-  public void b(long paramLong) {}
-  
-  public void f() {}
-  
-  public void g()
-  {
-    this.g = 5;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-  }
-  
-  public int getNextFrameTexture()
-  {
-    int m = -1;
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((j != 3) || ((i == 1) && (paramBoolean))) {
+      switch (j)
       {
-        if ((this.g == 4) || (this.g == 5) || (this.g == 6)) {
-          break label152;
-        }
-        this.jdField_a_of_type_JavaLangObject.wait();
       }
-      if (this.g != 4) {}
     }
-    catch (InterruptedException localInterruptedException) {}
-    label152:
+    float f4;
+    float f2;
+    float f3;
     for (;;)
     {
-      if ((this.h == -1) || (this.i == -1))
+      return false;
+      this.c = this.jdField_a_of_type_Float;
+      continue;
+      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
       {
-        this.h = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
-        this.i = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.b();
+        this.c = this.jdField_a_of_type_Float;
       }
-      this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.RenderProcess(this.k, this.h, this.i, this.j, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      this.g = 2;
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      m = 0;
-      return m;
+      else
+      {
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+        {
+          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+          }
+          for (;;)
+          {
+            this.c = paramMotionEvent.getY();
+            break;
+            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+            }
+          }
+          if ((i == 2) && (!paramBoolean))
+          {
+            wxe.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
+            if (i != 2) {
+              break;
+            }
+            f4 = paramMotionEvent.getX(0);
+            f2 = paramMotionEvent.getY(0);
+            f3 = paramMotionEvent.getX(1);
+            f1 = paramMotionEvent.getY(1);
+            label254:
+            switch (j)
+            {
+            }
+          }
+        }
+      }
     }
-  }
-  
-  public void i() {}
-  
-  public void l() {}
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    paramSurfaceTexture.updateTexImage();
-    paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-    this.g = 4;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-  }
-  
-  public void release()
-  {
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
-  }
-  
-  public void setTexture(int paramInt)
-  {
-    a();
-    this.j = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a(this.jdField_a_of_type_Axpl, this.k, this, this);
-    this.g = 2;
+    float f1 = xcp.a(f4, f2, f3, f1);
+    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+    {
+      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+        break label421;
+      }
+      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+    }
+    for (;;)
+    {
+      this.b = f1;
+      return true;
+      f4 = paramMotionEvent.getX(1);
+      f2 = paramMotionEvent.getY(1);
+      f3 = paramMotionEvent.getX(2);
+      f1 = paramMotionEvent.getY(2);
+      break label254;
+      this.b = xcp.a(f4, f2, f3, f1);
+      break;
+      label421:
+      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+      }
+    }
   }
 }
 

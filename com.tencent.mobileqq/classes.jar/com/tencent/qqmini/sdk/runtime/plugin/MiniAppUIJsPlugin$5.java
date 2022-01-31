@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgic;
-import bgie;
-import bgkd;
+import bgmj;
+import bgml;
+import bgok;
 
 class MiniAppUIJsPlugin$5
   implements Runnable
 {
-  MiniAppUIJsPlugin$5(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgkd parambgkd) {}
+  MiniAppUIJsPlugin$5(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {
-    if (bgie.a(MiniAppUIJsPlugin.access$1000(this.this$0)).a() != null)
+    if (bgml.a(MiniAppUIJsPlugin.access$1000(this.this$0)).a() != null)
     {
-      bgic.a(MiniAppUIJsPlugin.access$1100(this.this$0)).showRestart = false;
+      bgmj.a(MiniAppUIJsPlugin.access$1100(this.this$0)).showRestart = false;
       this.val$req.a();
       return;
     }

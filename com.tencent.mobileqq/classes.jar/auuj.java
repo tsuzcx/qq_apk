@@ -1,30 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class auuj
-  implements behy<oidb_0x8e4.RspBody>
+class auuj
+  implements baug
 {
-  public auuj(GameRoomInviteActivity paramGameRoomInviteActivity, behr parambehr) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public auuj(auui paramauui, Intent paramIntent, byte[] paramArrayOfByte)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public void onResp(bavf parambavf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAlumniServlet", 2, "NearbyAlumniDownloadListener.onResp()");
+    }
+    if ((parambavf == null) || (parambavf.jdField_a_of_type_Int != 0))
     {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
-      for (boolean bool = true;; bool = false)
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, alpo.a(2131705487));
+        localStringBuilder = new StringBuilder().append("NearbyAlumniDownloadListener.onResp() | resp = ").append(parambavf).append(" | mResult=");
+        if (parambavf == null) {
+          break label110;
+        }
+      }
+      label110:
+      for (int i = parambavf.jdField_a_of_type_Int;; i = -1)
+      {
+        QLog.i("NearbyAlumniServlet", 2, i);
+        auui.a(this.jdField_a_of_type_Auui, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
+        parambavf = this.jdField_a_of_type_Auui.a();
+        if (parambavf != null) {
+          parambavf.a();
+        }
         return;
       }
     }
-    this.jdField_a_of_type_Behr.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new auuk(this));
+    auui.a(this.jdField_a_of_type_Auui, this.jdField_a_of_type_AndroidContentIntent, 0, parambavf.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

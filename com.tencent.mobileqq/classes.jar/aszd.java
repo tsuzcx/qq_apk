@@ -1,15 +1,34 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.WebCallHandler;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
+import com.tencent.shadow.core.common.ILoggerFactory;
+import com.tencent.shadow.core.common.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-class aszd
-  implements CustomizedWebView
+public class aszd
+  implements ILoggerFactory
 {
-  aszd(asyy paramasyy) {}
+  private static aszd jdField_a_of_type_Aszd = new aszd();
+  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
   
-  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
+  public static ILoggerFactory a()
   {
-    aszx.a().a(paramBundle);
+    return jdField_a_of_type_Aszd;
+  }
+  
+  public Logger getLogger(String paramString)
+  {
+    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
+    if (localLogger != null) {
+      paramString = localLogger;
+    }
+    asze localasze;
+    do
+    {
+      return paramString;
+      localasze = new asze(this, paramString);
+      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localasze);
+      paramString = localLogger;
+    } while (localLogger != null);
+    return localasze;
   }
 }
 

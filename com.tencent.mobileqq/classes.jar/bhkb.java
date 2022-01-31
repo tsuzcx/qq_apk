@@ -1,237 +1,199 @@
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.NumberPicker;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import java.lang.reflect.Field;
 
 public class bhkb
+  extends Dialog
+  implements DialogInterface.OnCancelListener, View.OnClickListener
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "inc";
+  private int jdField_a_of_type_Int;
+  private NumberPicker jdField_a_of_type_AndroidWidgetNumberPicker;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TimePicker jdField_a_of_type_AndroidWidgetTimePicker;
+  private bhkd jdField_a_of_type_Bhkd;
+  private int jdField_b_of_type_Int;
+  private NumberPicker jdField_b_of_type_AndroidWidgetNumberPicker;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int c;
+  private int d;
   
-  public bhkb(JSONObject paramJSONObject)
+  public bhkb(@NonNull Context paramContext)
   {
-    if (paramJSONObject != null) {}
-    try
-    {
-      this.a = paramJSONObject.getString("name");
-      this.b = paramJSONObject.getString("op");
-      this.c = paramJSONObject.getString("val");
-      this.d = paramJSONObject.getString("act");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
+    super(paramContext, 2131755367);
+    a(paramContext);
   }
   
-  public boolean a()
+  private void a(Context paramContext)
   {
-    return (!this.a.isEmpty()) && (!this.b.isEmpty()) && (!this.c.isEmpty());
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559342, null);
+    setContentView(paramContext);
+    Object localObject = getWindow();
+    if (localObject != null)
+    {
+      ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
+      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+      localLayoutParams.width = -1;
+      localLayoutParams.height = -2;
+      ((Window)localObject).setAttributes(localLayoutParams);
+      ((Window)localObject).setGravity(80);
+    }
+    localObject = (FrameLayout)paramContext.findViewById(2131371992);
+    this.jdField_a_of_type_AndroidWidgetTimePicker = new TimePicker(new ContextThemeWrapper(getContext(), 16973934));
+    ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetTimePicker);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378686));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378721));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    int i = Resources.getSystem().getIdentifier("hour", "id", "android");
+    int j = Resources.getSystem().getIdentifier("minute", "id", "android");
+    int k = Resources.getSystem().getIdentifier("amPm", "id", "android");
+    this.jdField_a_of_type_AndroidWidgetNumberPicker = ((NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(i));
+    this.jdField_b_of_type_AndroidWidgetNumberPicker = ((NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(j));
+    paramContext = (NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(k);
+    a(this.jdField_a_of_type_AndroidWidgetNumberPicker);
+    a(this.jdField_b_of_type_AndroidWidgetNumberPicker);
+    a(paramContext);
+    setOnCancelListener(this);
   }
   
-  public boolean a(Object paramObject)
+  private void a(NumberPicker paramNumberPicker)
   {
-    boolean bool2 = true;
+    Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
+    int j = arrayOfField.length;
+    int i = 0;
     for (;;)
     {
-      try
+      Field localField;
+      if (i < j)
       {
-        paramObject = bhjl.b(paramObject, this.a);
-        if (paramObject == null) {
-          break label668;
+        localField = arrayOfField[i];
+        if (localField.getName().equals("mSelectionDivider")) {
+          localField.setAccessible(true);
         }
-        if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class) || (paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class))
+      }
+      else
+      {
+        try
         {
-          paramObject = (Integer)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.intValue() >= Integer.parseInt(this.c)) {
-              break label672;
-            }
-            bool1 = true;
-            if (!this.d.equalsIgnoreCase("exc")) {
-              break label660;
-            }
-            if (!bool1)
-            {
-              bool1 = bool2;
-              break label670;
-            }
-          }
-          else
-          {
-            if (this.b.equalsIgnoreCase("more"))
-            {
-              if (paramObject.intValue() <= Integer.parseInt(this.c)) {
-                break label677;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("is"))
-            {
-              if (paramObject.intValue() != Integer.parseInt(this.c)) {
-                break label682;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("not"))
-            {
-              if (paramObject.intValue() == Integer.parseInt(this.c)) {
-                break label687;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("and"))
-            {
-              if ((paramObject.intValue() & Integer.parseInt(this.c)) == 0) {
-                break label692;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("or"))
-            {
-              if ((paramObject.intValue() | Integer.parseInt(this.c)) == 0) {
-                break label697;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("xor"))
-            {
-              if ((paramObject.intValue() ^ Integer.parseInt(this.c)) == 0) {
-                break label702;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("begins"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).startsWith(this.c);
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("ends"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).endsWith(this.c);
-              continue;
-            }
-            if (!this.b.equalsIgnoreCase("rem")) {
-              break label663;
-            }
-            bool1 = Pattern.matches(this.c, String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }));
-            continue;
-          }
+          localField.set(paramNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
+          return;
         }
-        else
+        catch (IllegalArgumentException paramNumberPicker)
         {
-          if ((paramObject.getClass() != String.class) && (paramObject.getClass() != CharSequence.class)) {
-            break label663;
-          }
-          paramObject = (String)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) >= 0) {
-              break label707;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("more"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) <= 0) {
-              break label712;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("is"))
-          {
-            bool1 = paramObject.equalsIgnoreCase(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("not"))
-          {
-            if (paramObject.equalsIgnoreCase(this.c)) {
-              break label717;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("has"))
-          {
-            bool1 = paramObject.contains(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("begins"))
-          {
-            bool1 = paramObject.startsWith(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("ends"))
-          {
-            bool1 = paramObject.endsWith(this.c);
-            continue;
-          }
-          if (!this.b.equalsIgnoreCase("rem")) {
-            break label663;
-          }
-          bool1 = Pattern.matches(this.c, paramObject);
-          continue;
+          paramNumberPicker.printStackTrace();
+          return;
         }
-        bool1 = false;
+        catch (Resources.NotFoundException paramNumberPicker)
+        {
+          paramNumberPicker.printStackTrace();
+          return;
+        }
+        catch (IllegalAccessException paramNumberPicker)
+        {
+          paramNumberPicker.printStackTrace();
+          return;
+        }
       }
-      catch (Exception paramObject)
-      {
-        return false;
-      }
-      catch (IllegalArgumentException paramObject)
-      {
-        return false;
-      }
-      label660:
-      break label670;
-      label663:
-      boolean bool1 = false;
-      continue;
-      label668:
-      bool1 = false;
-      label670:
-      return bool1;
-      label672:
-      bool1 = false;
-      continue;
-      label677:
-      bool1 = false;
-      continue;
-      label682:
-      bool1 = false;
-      continue;
-      label687:
-      bool1 = false;
-      continue;
-      label692:
-      bool1 = false;
-      continue;
-      label697:
-      bool1 = false;
-      continue;
-      label702:
-      bool1 = false;
-      continue;
-      label707:
-      bool1 = false;
-      continue;
-      label712:
-      bool1 = false;
-      continue;
-      label717:
-      bool1 = false;
+      i += 1;
     }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (isShowing()) {
+        dismiss();
+      }
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMaxValue(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, bhkd parambhkd)
+  {
+    this.jdField_a_of_type_AndroidWidgetTimePicker.setCurrentHour(Integer.valueOf(paramInt1));
+    this.jdField_a_of_type_AndroidWidgetTimePicker.setCurrentMinute(Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_AndroidWidgetTimePicker.setOnTimeChangedListener(new bhkc(this));
+    this.jdField_a_of_type_Bhkd = parambhkd;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetTimePicker.setIs24HourView(Boolean.valueOf(paramBoolean));
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMinValue(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_Bhkd != null) {
+      this.jdField_a_of_type_Bhkd.onTimeCancel();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131378686)
+    {
+      if (this.jdField_a_of_type_Bhkd != null) {
+        this.jdField_a_of_type_Bhkd.onTimeCancel();
+      }
+      a();
+    }
+    while (paramView.getId() != 2131378721) {
+      return;
+    }
+    if (this.jdField_a_of_type_Bhkd != null)
+    {
+      Object localObject = String.valueOf(this.jdField_a_of_type_Int);
+      paramView = (View)localObject;
+      if (this.jdField_a_of_type_Int < 10) {
+        paramView = "0" + (String)localObject;
+      }
+      String str = String.valueOf(this.jdField_b_of_type_Int);
+      localObject = str;
+      if (this.jdField_b_of_type_Int < 10) {
+        localObject = "0" + str;
+      }
+      this.jdField_a_of_type_Bhkd.onTimeConfirm(paramView, (String)localObject);
+    }
+    a();
   }
 }
 

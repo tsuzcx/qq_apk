@@ -58,7 +58,7 @@ public class qty
   @Nullable
   public ColumnInfo a()
   {
-    Object localObject1 = (String)bjxj.a("key_sp_readinjoy_column_info_sketch", "");
+    Object localObject1 = (String)bkbq.a("key_sp_readinjoy_column_info_sketch", "");
     if (((String)localObject1).isEmpty()) {
       return null;
     }
@@ -81,12 +81,12 @@ public class qty
   
   public void a()
   {
-    bjxj.a("key_sp_readinjoy_column_info_sketch", "");
+    bkbq.a("key_sp_readinjoy_column_info_sketch", "");
   }
   
   public void a(@NotNull ColumnInfo paramColumnInfo)
   {
-    bjxj.a("key_sp_readinjoy_column_info_sketch", Base64.encodeToString(paramColumnInfo.parseToTopicInfo().toByteArray(), 0));
+    bkbq.a("key_sp_readinjoy_column_info_sketch", Base64.encodeToString(paramColumnInfo.parseToTopicInfo().toByteArray(), 0));
   }
   
   public void a(@NotNull ColumnInfo paramColumnInfo, qts paramqts)

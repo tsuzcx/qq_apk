@@ -1,17 +1,41 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-
 public class vyg
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
   
-  public void a(String paramString)
+  public vyg()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
-    }
+    a();
+  }
+  
+  private long b()
+  {
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public long a()
+  {
+    return b() - this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    return paramLong - a();
+  }
+  
+  public void a()
+  {
+    a(0L);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = (b() - paramLong);
   }
 }
 

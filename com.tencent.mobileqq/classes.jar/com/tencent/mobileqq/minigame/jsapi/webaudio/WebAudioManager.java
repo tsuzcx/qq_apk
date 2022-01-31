@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import android.support.annotation.RequiresApi;
-import bdcb;
+import bdgk;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.triton.audio.AudioHandleThread;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
@@ -19,7 +19,7 @@ public class WebAudioManager
 {
   public static int SCRIPT_PROCESSOR_AUDIO_NODE_TYPE = 5;
   private static WebAudioManager mInstance;
-  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(bdcb.b(), bdcb.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(bdgk.b(), bdgk.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
   private ArrayList<Integer> audioBufferList = new ArrayList();
   private AudioContext audioContext;
   private HashMap<Integer, AudioContext> audioContextHashMap = new HashMap();

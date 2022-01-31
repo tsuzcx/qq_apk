@@ -1,16 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class avyf
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TextView.OnEditorActionListener
 {
-  public avyf(ScanIconAnimateView paramScanIconAnimateView) {}
+  public avyf(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
+    }
+    return false;
   }
 }
 

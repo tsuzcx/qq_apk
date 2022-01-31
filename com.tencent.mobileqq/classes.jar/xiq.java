@@ -1,75 +1,55 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
-public class xiq
-  extends bhzo
+public abstract class xiq
 {
-  private xid a;
+  public ValueAnimator a;
+  public PointF a;
+  public boolean b = true;
+  public boolean c;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public float j = 1.0F;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public float p = 1.0F;
   
-  public xiq(xid paramxid)
+  public xiq(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    this.a = paramxid;
+    this.a = new PointF(paramPointF.x, paramPointF.y);
+    this.j = paramFloat1;
+    this.k = paramFloat2;
+    this.l = paramFloat3;
+    this.m = paramFloat4;
+    this.n = paramFloat5;
+    this.o = paramFloat6;
+    this.b = paramBoolean;
   }
   
-  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  public xiq(xiq paramxiq, float paramFloat)
   {
-    super.clearView(paramRecyclerView, paramViewHolder);
-    if ((paramViewHolder instanceof xim))
-    {
-      ((xim)paramViewHolder).a = false;
-      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
-        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
-      }
-    }
+    this.a = new PointF(paramxiq.a.x * paramFloat, paramxiq.a.y * paramFloat);
+    paramxiq.j *= paramFloat;
+    this.k = paramxiq.k;
+    paramxiq.l *= paramFloat;
+    paramxiq.m *= paramFloat;
+    this.n = paramxiq.n;
+    this.o = paramxiq.o;
+    this.b = paramxiq.b;
   }
   
-  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
-  {
-    return 0.25F;
-  }
-  
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
-    for (int i = 15;; i = 0) {
-      return makeMovementFlags(i, 0);
-    }
-  }
-  
-  public boolean isItemViewSwipeEnabled()
-  {
-    return false;
-  }
-  
-  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    if (this.a != null) {
-      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
-    }
-    return false;
-  }
-  
-  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.onSelectedChanged(paramViewHolder, paramInt);
-    if ((paramInt == 2) && ((paramViewHolder instanceof xim)))
-    {
-      paramViewHolder = (xim)paramViewHolder;
-      paramViewHolder.a = true;
-      if ((this.a instanceof xij)) {
-        ((xij)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
-      }
-    }
-  }
-  
-  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xiq
  * JD-Core Version:    0.7.0.1
  */

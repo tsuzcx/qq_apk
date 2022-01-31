@@ -2,7 +2,7 @@ import android.view.View;
 import android.view.animation.Animation;
 
 class rcj
-  extends bhnr
+  extends bhry
 {
   rcj(rch paramrch) {}
   

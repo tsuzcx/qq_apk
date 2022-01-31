@@ -1,15 +1,15 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bnlj;
-import bnln;
-import bnlo;
+import bnpv;
+import bnpz;
+import bnqa;
 
 public class ShortVideoPreDownloader$3
   implements Runnable
 {
   public void run()
   {
-    bnln.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
+    bnpz.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
     this.this$0.a(this.a);
   }
 }

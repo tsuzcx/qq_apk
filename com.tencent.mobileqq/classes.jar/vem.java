@@ -1,54 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vem
-  extends vfy
+  extends uli
 {
-  private HashMap<String, String> a;
-  private boolean c;
+  public String a;
+  public List<wnd> a;
   
   public vem()
   {
-    this(null, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public vem(HashMap<String, String> paramHashMap, boolean paramBoolean)
+  public String toString()
   {
-    a(false, true);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.c = paramBoolean;
-  }
-  
-  public void a()
-  {
-    Object localObject2 = vhj.a();
-    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-    localObject2 = new Bundle();
-    localObject1 = ndd.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
-    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
-      }
-      b(false);
-      return;
-    }
-    a("ShortenUrlJob_shortenedUrls", localObject1);
-    b(true);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
-      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)vgp.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
-    }
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 

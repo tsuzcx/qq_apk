@@ -1,32 +1,42 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bejz
-  implements bhwl
 {
-  public bejz(ContainerView paramContainerView) {}
+  public static long a;
+  static final AtomicBoolean a;
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  static
   {
-    switch (paramInt)
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
+      long l = System.currentTimeMillis();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
+      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
+      QbSdk.initTbsSettings(localHashMap);
+      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
+      beiy.D = SystemClock.elapsedRealtime();
+      jdField_a_of_type_Long = System.currentTimeMillis() - l;
+      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
+      return true;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
-      paramScrollView = ajsx.a();
-      if ((paramScrollView.c()) && (!paramScrollView.a())) {
-        paramScrollView.a();
-      }
-      ContainerView.b(this.a, false);
-      return;
-      ContainerView.b(this.a, true);
-      paramScrollView = ajsx.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
+    return false;
   }
 }
 

@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import aydp;
-import ayfw;
-import ayfx;
-import ayfz;
-import ayga;
-import ayrd;
+import ayhy;
+import aykf;
+import aykg;
+import ayki;
+import aykj;
+import ayvm;
 import com.tencent.widget.XListView;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class AssociateSearchWordsFragment
 {
   public View.OnClickListener a;
   public View.OnTouchListener a;
-  private ayfz jdField_a_of_type_Ayfz;
+  private ayki jdField_a_of_type_Ayki;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
   private List<AssociateSearchWordsFragment.AssociateItem> jdField_a_of_type_JavaUtilList;
@@ -30,8 +30,8 @@ public class AssociateSearchWordsFragment
   
   public AssociateSearchWordsFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ayfw(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ayfx(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aykf(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aykg(this);
   }
   
   public void a(String paramString)
@@ -58,25 +58,25 @@ public class AssociateSearchWordsFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
     {
-      ayga localayga = new ayga(this, paramList);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localayga);
-      localayga.a(paramList);
+      aykj localaykj = new aykj(this, paramList);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localaykj);
+      localaykj.a(paramList);
     }
     for (;;)
     {
       paramList = getActivity();
-      if ((paramList instanceof aydp)) {
-        ayrd.a("sub_result", "exp_auto", new String[] { ((aydp)paramList).a(), "", "", "" });
+      if ((paramList instanceof ayhy)) {
+        ayvm.a("sub_result", "exp_auto", new String[] { ((ayhy)paramList).a(), "", "", "" });
       }
       return;
-      ((ayga)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+      ((aykj)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559660, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131376215));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559659, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131376269));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_Boolean = true;

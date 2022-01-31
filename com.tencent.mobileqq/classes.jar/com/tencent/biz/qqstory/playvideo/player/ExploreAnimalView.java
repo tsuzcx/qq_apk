@@ -12,8 +12,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import vrp;
-import vrq;
+import vvy;
+import vvz;
 
 public class ExploreAnimalView
   extends RelativeLayout
@@ -38,9 +38,9 @@ public class ExploreAnimalView
   public ExploreAnimalView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    RelativeLayout.inflate(getContext(), 2131561621, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373786));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131379786));
+    RelativeLayout.inflate(getContext(), 2131561639, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373837));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131379844));
   }
   
   public void a()
@@ -57,8 +57,8 @@ public class ExploreAnimalView
     this.b = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
     this.b.setDuration(300L);
     this.b.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new vrp(this));
-    this.b.setAnimationListener(new vrq(this));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new vvy(this));
+    this.b.setAnimationListener(new vvz(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
   

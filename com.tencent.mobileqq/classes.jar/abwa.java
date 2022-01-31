@@ -1,43 +1,46 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class abwa
-  implements View.OnClickListener
+  extends Observable
 {
-  public abwa(AccountManageActivity paramAccountManageActivity) {}
+  private static abwa a;
+  public int a;
+  public HashMap<String, String> a;
   
-  public void onClick(View paramView)
+  public static abwa a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!awdr.a().a(this.a.app, this.a)) {
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    if (jdField_a_of_type_Abwa == null) {}
+    try
     {
-      QQToast.a(this.a, 2131694147, 0).a();
-      return;
+      if (jdField_a_of_type_Abwa == null) {
+        jdField_a_of_type_Abwa = new abwa();
+      }
+      return jdField_a_of_type_Abwa;
     }
-    AccountManageActivity.a(this.a, azyl.a(this.a.app));
-    paramView = new Intent();
-    paramView.setPackage(this.a.getPackageName());
-    paramView.setClass(this.a, AddAccountActivity.class);
-    this.a.startActivityForResult(paramView, 1000);
-    this.a.overridePendingTransition(2130771997, 2130771990);
-    azyk.c(this.a.app, this.a);
-    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
+  }
+  
+  public void a(HashMap<String, String> paramHashMap, int paramInt)
+  {
+    paramHashMap.put("key_type", "t_drop_frame");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Int = paramInt;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abwa
  * JD-Core Version:    0.7.0.1
  */

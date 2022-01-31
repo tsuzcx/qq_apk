@@ -1,37 +1,90 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
 
-public final class abus
+public abstract class abus
 {
-  private static Map<String, absg> a;
+  public static String a;
+  public abut a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
   
-  public static Map<String, absg> a()
+  static
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null)
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.putAll(abur.a());
-        localHashMap.put("config", new absg("config", 3, 0, abun.class));
-        localHashMap.put("setShareInfo", new absg("setShareInfo", 25, 0, abuo.class));
-        localHashMap.put("closeWebview", new absg("closeWebview", 2, 0, abuo.class));
-        localHashMap.put("refreshTitle", new absg("refreshTitle", 22, 0, abuo.class));
-        localHashMap.put("setShareListener", new absg("setShareListener", 26, 0, abuo.class));
-        localHashMap.put("lightappGetSDKVersion", new absg("lightappGetSDKVersion", 13, 0, anlh.class));
-        localHashMap.put("lightappShareCallback", new absg("lightappShareCallback", 15, 0, anlh.class));
-        localHashMap.put("lightappShareMessage", new absg("lightappShareMessage", 16, 0, anlh.class));
-        localHashMap.put("lightappOpenApp", new absg("lightappOpenApp", 14, 0, anlh.class));
-        localHashMap.put("lightappDisableLongPress", new absg("lightappDisableLongPress", 11, 0, anlh.class));
-        localHashMap.put("lightappDisableWebViewLongPress", new absg("lightappDisableWebViewLongPress", 12, 0, anlh.class));
-        a = Collections.unmodifiableMap(localHashMap);
-      }
-      return a;
-    }
-    finally {}
+    jdField_a_of_type_JavaLangString = File.separator;
   }
+  
+  public static ArrayList<String> a(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+      return localArrayList;
+    }
+    if (paramString2.equals("DVM"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add(paramString1 + ".jar");
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static abus b(String paramString, abut paramabut)
+  {
+    String str = paramabut.f;
+    if (str.equals("Native"))
+    {
+      paramString = abun.a(paramString, paramabut);
+      if (paramString == null) {
+        return null;
+      }
+    }
+    else
+    {
+      abui.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      return null;
+    }
+    if ((!paramString.c.equals(paramabut.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramabut.b)) || (!paramString.e.equals(paramabut.f)) || (!paramString.e.equals("Native")))
+    {
+      abui.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
+      return null;
+    }
+    paramString.jdField_a_of_type_Abut = paramabut;
+    return paramString;
+  }
+  
+  public static ArrayList<String> b(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+    }
+    while (!paramString2.equals("DVM")) {
+      return localArrayList;
+    }
+    localArrayList.add(paramString1 + ".cfg");
+    localArrayList.add(paramString1 + ".jar");
+    localArrayList.add(paramString1 + ".dex");
+    return localArrayList;
+  }
+  
+  public abstract int a(Context paramContext);
+  
+  public String a()
+  {
+    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+  }
+  
+  public abstract boolean a();
 }
 
 

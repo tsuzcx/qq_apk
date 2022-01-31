@@ -1,6 +1,15 @@
-public abstract interface aexd
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+
+public class aexd
+  implements badp
 {
-  public abstract void a(aexc paramaexc);
+  public aexd(FriendShipWaveView paramFriendShipWaveView) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Baem.a = 255;
+    this.a.jdField_a_of_type_Baem.a(this.a.jdField_a_of_type_Baen);
+  }
 }
 
 

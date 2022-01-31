@@ -1,38 +1,122 @@
-import android.graphics.Rect;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.Bundle;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class bkzo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bkzo
+  extends zhu
 {
-  bkzo(bkzl parambkzl, View paramView1, View paramView2, View paramView3) {}
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "CameraModuleSvc" };
+  public static final HashMap<String, String> b = new HashMap();
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public void onGlobalLayout()
+  public bkzo(AppInterface paramAppInterface)
   {
-    Log.d("AEGIFTextEditFragment", "onGlobalLayout");
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    if (this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom > 150)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  private String a(String paramString)
+  {
+    return bljc.a().a(paramString, "", 4);
+  }
+  
+  private ArrayList<MetaSdkInfo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
+    localMetaSdkInfo.sdk = 0;
+    localMetaSdkInfo.sdkVersion = AEModule.getVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
+    localArrayList.add(localMetaSdkInfo);
+    return localArrayList;
+  }
+  
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = new GetCameraConfigReq();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetCameraConfig");
+    paramUniPacket.put("CameraModuleSvc.GetCameraConfig", paramToServiceMsg);
+    return true;
+  }
+  
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    GetCategoryMaterialReq localGetCategoryMaterialReq = new GetCategoryMaterialReq();
+    localGetCategoryMaterialReq.ServiceId = paramToServiceMsg.extraData.getString("ServiceId");
+    localGetCategoryMaterialReq.ETag = a("CameraModuleSvc.GetCompressedCategoryMaterial" + localGetCategoryMaterialReq.ServiceId);
+    localGetCategoryMaterialReq.SdkInfos = a();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetCompressedCategoryMaterial");
+    paramUniPacket.put("CameraModuleSvc.GetCompressedCategoryMaterial", localGetCategoryMaterialReq);
+    return true;
+  }
+  
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = new GetPlayShowCatMatTreeReq();
+    paramToServiceMsg.ETag = a("CameraModuleSvc.GetPlayShowCatMatTree");
+    paramToServiceMsg.MqVersion = "8.3.5";
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetPlayShowCatMatTree");
+    paramUniPacket.put("CameraModuleSvc.GetPlayShowCatMatTree", paramToServiceMsg);
+    return true;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCameraConfig", new GetCameraConfigRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
+      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCompressedCategoryMaterial", new GetCategoryMaterialRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
+      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetPlayShowCatMatTree", new GetPlayShowCatMatTreeRsp());
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
+      return c(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public final <T> T b(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    bkzw localbkzw = new bkzw(true);
+    try
     {
-      int[] arrayOfInt = new int[2];
-      this.b.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[1];
-      int j = this.b.getHeight();
-      int k = localRect.bottom;
-      if (!bkzl.b(this.jdField_a_of_type_Bkzl))
-      {
-        this.b.scrollBy(0, i + j - k);
-        bkzl.a(this.jdField_a_of_type_Bkzl, this.c, localRect.bottom / 2);
-      }
-      bkzl.a(this.jdField_a_of_type_Bkzl, true);
-      return;
+      localbkzw.setEncodeName("utf-8");
+      localbkzw.decode(paramArrayOfByte);
+      return localbkzw.getByClass(paramString, paramT);
     }
-    this.b.scrollTo(0, 0);
-    if (bkzl.b(this.jdField_a_of_type_Bkzl)) {
-      bkzl.a(this.jdField_a_of_type_Bkzl, this.c, localRect.bottom / 2);
-    }
-    bkzl.a(this.jdField_a_of_type_Bkzl, false);
+    catch (Exception paramArrayOfByte) {}
+    return null;
   }
 }
 

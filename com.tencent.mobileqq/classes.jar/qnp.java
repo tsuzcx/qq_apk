@@ -51,7 +51,7 @@ public class qnp
     for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
       if (localObject != null) {}
-      for (localObject = bdbt.b((QQAppInterface)localObject, getSubscribeUin(), true);; localObject = "")
+      for (localObject = bdgc.b((QQAppInterface)localObject, getSubscribeUin(), true);; localObject = "")
       {
         this.jdField_a_of_type_JavaLangString = ((String)localObject);
         return this.jdField_a_of_type_JavaLangString;

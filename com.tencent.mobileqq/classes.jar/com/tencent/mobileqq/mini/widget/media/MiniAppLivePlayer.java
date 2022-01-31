@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bjpx;
+import bjue;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -155,7 +155,7 @@ public class MiniAppLivePlayer
   
   private void initPlayerView()
   {
-    this.tXCloudVideoView = bjpx.a("com.tencent.rtmp.ui.TXCloudVideoView", bjpx.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bjue.a("com.tencent.rtmp.ui.TXCloudVideoView", bjue.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePlayer", 1, "tXCloudVideoView is null?! ");
@@ -236,11 +236,11 @@ public class MiniAppLivePlayer
     this.hasSetUp = true;
     setTag("MiniAppLivePlayer");
     this.mContext = paramContext;
-    this.view = LayoutInflater.from(paramContext).inflate(2131559314, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369288));
+    this.view = LayoutInflater.from(paramContext).inflate(2131559313, null);
+    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369306));
     this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131379741));
-    this.play_status_img = ((ImageView)this.view.findViewById(2131372074));
+    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131379799));
+    this.play_status_img = ((ImageView)this.view.findViewById(2131372094));
     this.play_status_img.setVisibility(8);
     this.video_container.setOnClickListener(this);
     this.mVideoGestureLayout = new VideoGestureLayout(this.mContext);

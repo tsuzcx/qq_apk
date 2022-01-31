@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class atdp
-  implements QQPermissionCallback
+class atdp
+  implements atff
 {
-  public atdp(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
+  atdp(atdh paramatdh) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bdcd.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 

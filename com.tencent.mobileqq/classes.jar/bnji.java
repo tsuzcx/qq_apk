@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-public abstract interface bnji
+public class bnji
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a(int paramInt, long paramLong);
+  public bnji(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public abstract QQFilterRenderManager a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

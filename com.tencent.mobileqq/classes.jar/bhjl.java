@@ -1,55 +1,55 @@
-import java.lang.reflect.Field;
+import android.graphics.Bitmap;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class bhjl
+  extends WebViewClient
 {
-  public static Object a(Object paramObject, String paramString)
+  public bhjl(InnerWebView paramInnerWebView) {}
+  
+  public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean)
   {
-    try
-    {
-      paramObject = paramObject.getClass().getField(paramString).get(paramObject);
-      return paramObject;
+    QMLog.d("ProgressWebView", "doUpdateVisitedHistory " + paramString);
+    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
+      InnerWebView.a(this.a).a(new bhjm(this, paramString));
     }
-    catch (NoSuchFieldException paramObject)
-    {
-      return null;
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      return null;
-    }
-    catch (IllegalAccessException paramObject) {}
-    return null;
+    super.doUpdateVisitedHistory(paramWebView, paramString, paramBoolean);
   }
   
-  public static Object b(Object paramObject, String paramString)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    try
+    super.onPageFinished(paramWebView, paramString);
+    QMLog.d("ProgressWebView", "onPageFinished " + paramString);
+    this.a.evaluateJavascript(InnerWebView.a(this.a), new bhjn(this));
+    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
+      InnerWebView.a(this.a).a(new bhjo(this, paramString));
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    QMLog.d("ProgressWebView", "onPageStarted " + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
+  {
+    super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
+    paramWebResourceRequest = paramWebView.getUrl();
+    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedError ").append(paramWebResourceRequest).append("; webResourceError : ");
+    if (paramWebResourceError != null) {}
+    for (paramWebView = paramWebResourceError.getDescription() + " " + paramWebResourceError.getErrorCode();; paramWebView = null)
     {
-      String[] arrayOfString = paramString.split("\\.");
-      int j = arrayOfString.length;
-      int i = 0;
-      for (;;)
-      {
-        paramString = paramObject;
-        if (i >= j) {
-          break;
-        }
-        paramString = arrayOfString[i];
-        paramObject = paramObject.getClass().getField(paramString).get(paramObject);
-        i += 1;
+      QMLog.d("ProgressWebView", paramWebView);
+      if ((InnerWebView.a(this.a) != null) && (paramWebResourceRequest != null) && (!paramWebResourceRequest.equals("about:blank"))) {
+        InnerWebView.a(this.a).a(new bhjp(this, paramWebResourceRequest));
       }
-      return null;
+      return;
     }
-    catch (IllegalAccessException paramObject)
-    {
-      paramString = null;
-      return paramString;
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      return null;
-    }
-    catch (NoSuchFieldException paramObject) {}
   }
 }
 

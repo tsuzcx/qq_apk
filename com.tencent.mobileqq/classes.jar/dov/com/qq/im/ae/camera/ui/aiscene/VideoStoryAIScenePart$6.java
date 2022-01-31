@@ -2,19 +2,19 @@ package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.view.View;
 import android.widget.ImageView;
-import bkqa;
-import blev;
+import bkuh;
+import bljc;
 
 public class VideoStoryAIScenePart$6
   implements Runnable
 {
-  public VideoStoryAIScenePart$6(bkqa parambkqa) {}
+  public VideoStoryAIScenePart$6(bkuh parambkuh) {}
   
   public void run()
   {
-    bkqa.a(this.this$0).setVisibility(4);
-    bkqa.a(this.this$0).setVisibility(4);
-    blev.a().a("ai_guide_shown", true, 0);
+    bkuh.a(this.this$0).setVisibility(4);
+    bkuh.a(this.this$0).setVisibility(4);
+    bljc.a().a("ai_guide_shown", true, 0);
   }
 }
 

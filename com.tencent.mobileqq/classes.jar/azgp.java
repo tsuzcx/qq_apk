@@ -1,68 +1,63 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class azgp
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public CameraFilterGLView.SharedMemWriteFile a;
-  public ByteBuffer a;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public static int a;
+  public static boolean a;
+  public static boolean b;
   
-  public azgp(int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = 0;
+    jdField_a_of_type_Int = 1500;
   }
   
-  public void a()
+  public static boolean a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    boolean bool = azhf.a(azhf.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean b()
   {
-    int i = paramInt1 * paramInt2 * paramInt3;
-    if ((this.jdField_a_of_type_Boolean) && (this.b == i) && (this.jdField_a_of_type_JavaNioByteBuffer != null)) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    try
+    if (Build.VERSION.SDK_INT < 18) {}
+    do
     {
-      this.jdField_a_of_type_Long = PtvFilterUtils.getNativePtrIndex(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Long == 0L) {
-        return false;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-    {
-      for (;;)
+      boolean bool;
+      do
       {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaNioByteBuffer = PtvFilterUtils.allocateSharedMem(this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-          return false;
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        for (;;)
+        do
         {
-          this.jdField_a_of_type_JavaNioByteBuffer = null;
+          return false;
+          bool = azhf.e(azhf.o);
+          if (!bool) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
+        return false;
+        bool = azhf.a(azhf.r);
+        if (!bool) {
+          break;
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.b = i;
-      }
-    }
+      } while (!QLog.isColorLevel());
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      return false;
+    } while ((!b) || (!jdField_a_of_type_Boolean));
     return true;
   }
 }

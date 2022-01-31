@@ -1,16 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
-public abstract class yjf
-  implements URLDrawable.URLDrawableListener
+public class yjf
+  implements aofp
 {
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public yjf(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public void onColorNoteAnimFinish()
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

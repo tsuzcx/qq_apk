@@ -14,7 +14,7 @@ public class pkj
     pkm.b(paramBaseArticleInfo, localJSONObject1);
     localJSONObject1.put("id_multi_image", new JSONObject());
     JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", alpo.a(2131713407));
+    localJSONObject2.put("summary_text", alud.a(2131713419));
     localJSONObject1.put("id_summary", localJSONObject2);
     pkm.a(paramBaseArticleInfo, localJSONObject1, true);
     pkm.e(paramBaseArticleInfo, localJSONObject1);

@@ -1,45 +1,37 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.net.BaseCgiTask;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bjap
-  extends AccountObserver
+public class bjap
 {
-  bjap(String paramString, alkr paramalkr) {}
+  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public bjap(BaseCgiTask paramBaseCgiTask, String paramString)
   {
-    if ((paramBoolean) && (paramHashMap != null))
+    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
+      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      return localJSONObject2;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_Alkr != null) {
-            this.jdField_a_of_type_Alkr.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
+      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
     }
+    return localJSONObject1;
   }
 }
 

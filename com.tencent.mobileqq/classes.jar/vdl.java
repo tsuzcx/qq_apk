@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class vdl
-  extends unf
+  extends uli
 {
-  public final String a;
-  public final int b;
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public vdl(qqstory_service.RspGetWeather paramRspGetWeather)
+  public String toString()
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
+    }
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 

@@ -1,9 +1,61 @@
-import com.tencent.mobileqq.emosm.web.IPCConstants.1;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract interface aplm
+public class aplm
+  extends apld
 {
-  public static final HashMap<String, Integer> a = new IPCConstants.1();
+  public aplm(QQAppInterface paramQQAppInterface)
+  {
+    super("qq.android.early.precover", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10045;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PrecoverData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPrecover";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
+  }
 }
 
 

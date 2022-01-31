@@ -1,21 +1,41 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
 public class yip
-  implements yij
+  extends LinearLayoutManager
 {
-  public yip(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void a(boolean paramBoolean)
+  public yip(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
     {
-      this.a.e.setVisibility(8);
-      VideoPlayerView.a(this.a, "");
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
     }
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).a(paramBoolean);
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
     }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

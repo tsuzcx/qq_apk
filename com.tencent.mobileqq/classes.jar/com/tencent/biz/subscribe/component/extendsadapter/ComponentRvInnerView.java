@@ -5,38 +5,38 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
-import yed;
-import yef;
-import yeh;
+import yip;
+import yir;
+import yit;
 
 public class ComponentRvInnerView
   extends RecyclerViewCompat
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private yef jdField_a_of_type_Yef;
-  private yeh jdField_a_of_type_Yeh;
+  private yir jdField_a_of_type_Yir;
+  private yit jdField_a_of_type_Yit;
   
   public ComponentRvInnerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public ComponentRvInnerView(Context paramContext, yef paramyef)
+  public ComponentRvInnerView(Context paramContext, yir paramyir)
   {
     super(paramContext);
-    this.jdField_a_of_type_Yef = paramyef;
+    this.jdField_a_of_type_Yir = paramyir;
     setDescendantFocusability(393216);
-    this.jdField_a_of_type_Yeh = new yeh(this);
-    setAdapter(this.jdField_a_of_type_Yeh);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new yed(getContext(), 0, false);
+    this.jdField_a_of_type_Yit = new yit(this);
+    setAdapter(this.jdField_a_of_type_Yit);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new yip(getContext(), 0, false);
     setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     setOverScrollMode(2);
   }
   
   public void setData(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_Yeh != null) {
-      this.jdField_a_of_type_Yeh.a(paramArrayList);
+    if (this.jdField_a_of_type_Yit != null) {
+      this.jdField_a_of_type_Yit.setDatas(paramArrayList);
     }
   }
   

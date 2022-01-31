@@ -1,64 +1,137 @@
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.util.Pair;
+import android.util.SparseArray;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class awsn
+  extends bhry
 {
-  private final int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new awso(this);
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private boolean jdField_a_of_type_Boolean;
-  private final int b;
-  private int c;
-  private int d;
+  int a;
+  public Drawable a;
+  public SparseArray<Pair<Point, Integer>> a;
+  public View a;
+  public asto a;
+  public boolean a;
+  public Drawable[] a;
+  int b = 0;
   
-  public awsn(View paramView)
+  public awsn()
   {
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_Int = bcwh.a(this.jdField_a_of_type_AndroidViewView.getContext(), 15.0F);
-      this.b = ((int)(this.jdField_a_of_type_Int / 1.5D));
-      return;
-    }
-    throw new IllegalArgumentException("Wrapped View shouldn't be null!");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void a()
+  public static Animation a(Animation.AnimationListener paramAnimationListener, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = 0;
-    this.d = 0;
-    for (;;)
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat1, paramFloat2);
+    localScaleAnimation.setRepeatMode(2);
+    localScaleAnimation.setRepeatCount(-1);
+    localScaleAnimation.setDuration(750L);
+    localAlphaAnimation.setRepeatMode(2);
+    localAlphaAnimation.setRepeatCount(-1);
+    localAlphaAnimation.setDuration(750L);
+    localAlphaAnimation.setAnimationListener(paramAnimationListener);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new awso());
+    return localAnimationSet;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, HeartLayout paramHeartLayout, Bitmap paramBitmap, awss paramawss, int paramInt1, boolean paramBoolean, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    if (azmk.b())
     {
-      int j = (int)(this.b * (Math.random() * 2.0D - 1.0D));
-      int i = (int)Math.sqrt(this.b * this.b - j * j);
-      if (Math.random() > 0.5D) {}
-      while ((this.c + j) * (this.c + j) + (this.d + i) * (this.d + i) <= this.jdField_a_of_type_Int * this.jdField_a_of_type_Int)
+      if (QLog.isColorLevel()) {
+        QLog.i("PraiseManager", 2, "doZanAnim, SimpleUIMode is open now");
+      }
+      paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+    }
+    do
+    {
+      return;
+      PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(209);
+      if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
       {
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(this.c, this.c + j, this.d, this.d + i);
-        this.c = (j + this.c);
-        this.d = (i + this.d);
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.b * (int)(50.0D + Math.random() * 30.0D));
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+        localPraiseManager.a(paramawss);
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
+      }
+      paramawss = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
+      if (paramawss != null)
+      {
+        if ((paramInt2 == 2) && (paramawss.c != null))
+        {
+          if (this.jdField_a_of_type_Asto != null)
+          {
+            paramHeartLayout.a(paramawss, paramawss.c, paramQQAppInterface, this.jdField_a_of_type_Asto.a(paramInt2, paramHeartLayout.a), paramFloat1 - bdaq.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - bdaq.a(paramHeartLayout.getContext(), 120.0F), bdaq.a(paramHeartLayout.getContext(), 75.0F), bdaq.a(paramHeartLayout.getContext(), 65.0F));
+            return;
+          }
+          paramHeartLayout.a(paramawss, paramawss.c, paramFloat1, paramFloat2);
+          return;
+        }
+        paramHeartLayout.a(paramawss, paramawss.b, paramFloat1, paramFloat2);
         return;
-        i = -i;
+      }
+    } while (paramBoolean);
+    paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable, Resources paramResources)
+  {
+    Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable1;
+    if (paramBoolean2) {
+      localDrawable1 = ndi.a(localDrawable2, paramResources.getColor(2131165672));
+    }
+    while (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
+    {
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[] { paramDrawable, localDrawable1 };
+      return;
+      localDrawable1 = localDrawable2;
+      if (paramBoolean1) {
+        localDrawable1 = ndi.a(localDrawable2, paramResources.getColor(2131165675));
       }
     }
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = paramDrawable;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = localDrawable1;
   }
   
-  public boolean a()
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_AndroidViewView.getAnimation() == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (a()) {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    if (this.jdField_a_of_type_Int % 2 == 0)
+    {
+      this.b = ((this.b + 1) % this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length);
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
+        break label89;
+      }
+      ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int / 2 >= awsp.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+      label89:
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
     }
   }
 }

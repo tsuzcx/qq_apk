@@ -1,44 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 
 public class aqmn
-  extends aroh
+  implements ActionMode.Callback
 {
-  public aqmn(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public aqmn(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void a()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.a.a.a().b();
+    return false;
   }
   
-  public void b()
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    this.a.a.a().p();
+    return false;
   }
   
-  public void c()
-  {
-    this.a.a.a().q();
-  }
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public void d()
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    return false;
   }
 }
 

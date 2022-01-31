@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adnz;
+import adso;
 
 public class QQSettingMe$31$1
   implements Runnable
 {
-  public QQSettingMe$31$1(adnz paramadnz) {}
+  public QQSettingMe$31$1(adso paramadso) {}
   
   public void run()
   {

@@ -113,7 +113,7 @@ public class nia
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, alvc paramalvc)
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, alzr paramalzr)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList last_msg_id:" + paramLong2 + "  msg_cnt:" + paramInt + "  mLastMSgID: " + a);
@@ -121,7 +121,7 @@ public class nia
     NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nrz.class);
     localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
     Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.3.3,3,4515");
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.3.5,3,4555");
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);
@@ -134,11 +134,11 @@ public class nia
       bool = true;
       localNewIntent.putExtra("isFirstEnter", bool);
       a = paramLong2;
-      localObject = (aluw)paramQQAppInterface.getManager(56);
+      localObject = (alzl)paramQQAppInterface.getManager(56);
       if (localObject == null) {
         break label350;
       }
-      localObject = ((aluw)localObject).a(String.valueOf(paramLong1));
+      localObject = ((alzl)localObject).a(String.valueOf(paramLong1));
       if (localObject == null) {
         break label350;
       }
@@ -156,7 +156,7 @@ public class nia
       for (localObject = "02";; localObject = "01")
       {
         nrt.a(null, str1, "0X80077FF", "0X80077FF", 0, 0, "1", str2, (String)localObject, String.valueOf(i), false);
-        localNewIntent.setObserver(new nib(paramQQAppInterface, bool, paramalvc));
+        localNewIntent.setObserver(new nib(paramQQAppInterface, bool, paramalzr));
         paramQQAppInterface.startServlet(localNewIntent);
         if (QLog.isColorLevel()) {
           QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList exit");
@@ -174,23 +174,23 @@ public class nia
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, alvc paramalvc)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, alzr paramalzr)
   {
-    nhz.a(paramQQAppInterface).a(paramQQAppInterface, paramLong, paramalvc);
-    a(paramQQAppInterface, paramLong, 0L, 25, paramalvc);
+    nhz.a(paramQQAppInterface).a(paramQQAppInterface, paramLong, paramalzr);
+    a(paramQQAppInterface, paramLong, 0L, 25, paramalzr);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, long paramLong, alvc paramalvc)
+  public static void b(QQAppInterface paramQQAppInterface, long paramLong, alzr paramalzr)
   {
     nhp localnhp = nhz.a(paramQQAppInterface).a(paramLong);
     if ((localnhp != null) && (localnhp.b > 0L))
     {
       if (a != localnhp.b) {
-        a(paramQQAppInterface, paramLong, localnhp.b, 25, paramalvc);
+        a(paramQQAppInterface, paramLong, localnhp.b, 25, paramalzr);
       }
       return;
     }
-    a(paramQQAppInterface, paramLong, paramalvc);
+    a(paramQQAppInterface, paramLong, paramalzr);
   }
 }
 

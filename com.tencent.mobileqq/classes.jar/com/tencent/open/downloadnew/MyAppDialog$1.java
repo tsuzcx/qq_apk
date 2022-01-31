@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bfhg;
-import bflc;
+import bflp;
+import bfpl;
 
 public class MyAppDialog$1
   implements Runnable
 {
-  public MyAppDialog$1(bflc parambflc, int paramInt1, int paramInt2) {}
+  public MyAppDialog$1(bfpl parambfpl, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 100;
     int i = this.a;
-    bfhg.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
+    bflp.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
     Object localObject = this.this$0.getContext().getResources();
     switch (this.b)
     {
@@ -44,16 +44,16 @@ public class MyAppDialog$1
       this.this$0.a.setProgress(j);
       this.this$0.e.setText((CharSequence)localObject);
       return;
-      localObject = ((Resources)localObject).getString(2131691705, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691706, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691729);
+      localObject = ((Resources)localObject).getString(2131691730);
       break;
-      localObject = ((Resources)localObject).getString(2131691713, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691714, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691702);
+      localObject = ((Resources)localObject).getString(2131691703);
       i = 100;
       break;
-      localObject = ((Resources)localObject).getString(2131691713);
+      localObject = ((Resources)localObject).getString(2131691714);
       break;
       if (i > 100) {
         break label124;

@@ -1,17 +1,32 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
+import com.tencent.qphone.base.util.QLog;
 
-class afna
-  extends afpq
+public class afna
+  implements Animation.AnimationListener
 {
-  afna(aflj paramaflj)
+  public afna(GivingHeartItemBuilder.10 param10) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramaflj, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
+    }
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return new afqf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+    }
   }
 }
 

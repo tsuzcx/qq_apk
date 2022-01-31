@@ -1,562 +1,137 @@
 import android.os.Bundle;
+import android.os.Handler;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.minigame.utils.AppUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Observer;
+import mqq.app.AppRuntime;
 
 public class bdvv
+  implements bdvc, ga
 {
-  public byte a;
-  public float a;
-  public int a;
-  public long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bdvu jdField_a_of_type_Bdvu;
-  public bdvw a;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  ArrayList<bdvv> jdField_a_of_type_JavaUtilArrayList;
-  public List<String> a;
-  public Map<String, File> a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public long f;
-  public String f;
-  public boolean f;
-  public int g;
-  public long g;
-  public boolean g;
-  public long h;
-  public boolean h;
-  public long i;
-  public boolean i = true;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o = true;
-  public boolean p = true;
-  public boolean q;
-  public boolean r;
-  public boolean s = true;
+  private float jdField_a_of_type_Float;
+  protected int a;
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  protected bdvd a;
+  private ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+  private fu jdField_a_of_type_Fu = new bdvx(this);
+  protected fx a;
+  private Observer jdField_a_of_type_JavaUtilObserver = new bdvw(this);
+  protected AppRuntime a;
+  private boolean jdField_a_of_type_Boolean;
+  private int b = 1;
+  private int c = 1;
   
-  public bdvv(String paramString, File paramFile)
+  public bdvv(bdvb parambdvb, AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_e_of_type_Int = 60000;
-    this.jdField_f_of_type_JavaLangString = "Vip";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_Bdvw = new bdvw();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramFile);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_d_of_type_Int = 1;
+    this.jdField_a_of_type_Bdvd = parambdvb.a();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Int = paramInt;
+    gb.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
   }
   
-  public bdvv(List<String> paramList, Map<String, File> paramMap, String paramString)
+  protected fw a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_e_of_type_Int = 60000;
-    this.jdField_f_of_type_JavaLangString = "Vip";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_Bdvw = new bdvw();
-    if (paramList != null)
+    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)))
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      if (paramMap == null) {
-        break label169;
-      }
+      this.jdField_a_of_type_Fx = ((fx)this.jdField_a_of_type_MqqAppAppRuntime.getManager(42));
+      this.jdField_a_of_type_Fx.a(this);
+      return this.jdField_a_of_type_Fx.a(paramInt1, paramInt2, false, ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).c(), 0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilMap = paramMap;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_d_of_type_Int = 2;
-      return;
-      paramList = new ArrayList();
-      break;
-      label169:
-      paramMap = new HashMap();
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public Bundle a()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    }
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public bdvu a()
-  {
-    return this.jdField_a_of_type_Bdvu;
-  }
-  
-  public Map<String, String> a()
-  {
-    return this.jdField_b_of_type_JavaUtilMap;
+    return null;
   }
   
   public void a()
   {
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_Bdvd.a().sendEmptyMessage(10003);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+    this.b = paramInt;
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    float f1 = 100.0F;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Int = paramInt;
-    if (this.jdField_b_of_type_Long <= 0L) {
-      f1 = 30.0F;
-    }
-    for (;;)
+    if (paramInt1 == 0)
     {
-      this.jdField_a_of_type_Float = ((f1 + paramInt * 100) / this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(0, System.currentTimeMillis());
       return;
-      if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
-      {
-        if (paramInt + 1 == this.jdField_a_of_type_JavaUtilList.size())
-        {
-          a(3);
-          this.jdField_a_of_type_Float = 100.0F;
-        }
-      }
-      else {
-        f1 = 100.0F * (float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long;
-      }
     }
+    this.jdField_a_of_type_Bdvd.a(paramInt1);
+    this.jdField_a_of_type_Int = paramInt2;
+    b();
   }
   
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(bdvu parambdvu)
-  {
-    this.jdField_a_of_type_Bdvu = parambdvu;
-  }
-  
-  public void a(bdvv parambdvv)
+  public void a(int paramInt, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask,task.key=" + parambdvv.jdField_a_of_type_JavaLangString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambdvv);
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.d("SignatureFontAdapter", 2, "downloadDone type = " + paramInt);
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(ETTextView paramETTextView, float paramFloat, boolean paramBoolean)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Fu);
+  }
+  
+  protected void a(ETTextView paramETTextView, fw paramfw, float paramFloat)
+  {
+    if (paramfw.jdField_a_of_type_Int == 0)
+    {
+      paramETTextView.setFont(0, System.currentTimeMillis());
+      return;
+    }
+    if (paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
+    {
+      paramfw = paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+      paramfw.setSize(paramFloat);
+    }
     for (;;)
     {
-      return;
-      try
-      {
-        if (this.jdField_b_of_type_JavaUtilMap == null) {
-          this.jdField_b_of_type_JavaUtilMap = new HashMap();
-        }
-        this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
+      if ((paramETTextView.mFont == null) || (!paramfw.equals(paramETTextView.mFont))) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
-      finally {}
+      paramETTextView.shouldStartAnimation = this.jdField_a_of_type_Boolean;
+      paramfw.mAnimationId = this.jdField_a_of_type_Long;
+      paramETTextView.setFont(paramfw, this.jdField_a_of_type_Long);
+      paramETTextView.requestLayout();
+      return;
+      ETFont localETFont = new ETFont(paramfw.jdField_a_of_type_Int, paramfw.jdField_a_of_type_JavaLangString, paramFloat, paramfw.b, paramfw.jdField_a_of_type_AndroidGraphicsTypeface);
+      paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont = localETFont;
+      paramfw = localETFont;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public boolean a(byte paramByte)
-  {
-    return ((byte)(this.jdField_a_of_type_Byte | 0x0) & paramByte) == paramByte;
-  }
-  
-  public int b()
-  {
-    int i1 = 0;
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("id");
-    }
-    return i1;
   }
   
   public void b()
   {
-    if (a() != null) {
-      a().onProgress(this);
-    }
-    for (;;)
+    if (AppUtil.isMainProcess()) {}
+    for (fw localfw = a(this.jdField_a_of_type_Bdvd.a(), this.jdField_a_of_type_Int);; localfw = gb.a().a(this.jdField_a_of_type_Bdvd.a(), this.jdField_a_of_type_Int))
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label135;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-            localbdvv.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-            localbdvv.a().onProgress(localbdvv);
-          }
-        }
+      QLog.i("SignatureFontAdapter", 1, "load " + localfw + " fontId:" + this.jdField_a_of_type_Bdvd.a());
+      if ((localfw != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)) {
+        a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localfw, this.jdField_a_of_type_Float);
       }
       return;
-      label135:
-      i1 -= 1;
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Long = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
   public void c()
   {
-    if (a() != null) {
-      a().onCancel(this);
-    }
-    for (;;)
+    gb.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label119;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onCancel(localbdvv);
-          }
-        }
-      }
-      return;
-      label119:
-      i1 -= 1;
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(null);
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = null;
     }
-  }
-  
-  public boolean c()
-  {
-    boolean bool;
-    if (a() != null) {
-      bool = a().onStart(this);
+    if (this.jdField_a_of_type_Fx != null) {
+      this.jdField_a_of_type_Fx.b(this);
     }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label137;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onStart(localbdvv);
-          }
-        }
-      }
-      return bool;
-      bool = true;
-      continue;
-      label137:
-      i1 -= 1;
-    }
-  }
-  
-  public void d()
-  {
-    if (a() != null) {
-      a().onDoneFile(this);
-    }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label119;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onDoneFile(localbdvv);
-          }
-        }
-      }
-      return;
-      label119:
-      i1 -= 1;
-    }
-  }
-  
-  public void e()
-  {
-    if (a() != null) {
-      a().onDone(this);
-    }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label119;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onDone(localbdvv);
-          }
-        }
-      }
-      return;
-      label119:
-      i1 -= 1;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof bdvv)) && (((bdvv)paramObject).jdField_a_of_type_JavaUtilList.equals(this.jdField_a_of_type_JavaUtilList));
-  }
-  
-  public void f()
-  {
-    if (a() != null) {
-      a().onNetWifi2Mobile();
-    }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label117;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onNetWifi2Mobile();
-          }
-        }
-      }
-      return;
-      label117:
-      i1 -= 1;
-    }
-  }
-  
-  public void g()
-  {
-    if (a() != null) {
-      a().onNetWifi2None();
-    }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label117;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onNetWifi2None();
-          }
-        }
-      }
-      return;
-      label117:
-      i1 -= 1;
-    }
-  }
-  
-  public void h()
-  {
-    if (a() != null) {
-      a().onNetMobile2None();
-    }
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
-        {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localbdvv == null) || (localbdvv.a() == null)) {
-              break label117;
-            }
-            localbdvv.a(a());
-            localbdvv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localbdvv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localbdvv.a().onNetMobile2None();
-          }
-        }
-      }
-      return;
-      label117:
-      i1 -= 1;
-    }
-  }
-  
-  public void i()
-  {
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          break label72;
-        }
-        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-        if (i1 >= 0)
-        {
-          bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-          if (localbdvv == null) {
-            break label75;
-          }
-          localbdvv.a(null);
-        }
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList = null;
-      label72:
-      return;
-      label75:
-      i1 -= 1;
-    }
-  }
-  
-  public String toString()
-  {
-    return " key=" + this.jdField_a_of_type_JavaLangString + ",urlList size=" + this.jdField_a_of_type_JavaUtilList.size() + "|currentUrlIndex=" + this.jdField_c_of_type_Int + "|errCode=" + this.jdField_a_of_type_Int + "|status=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger + "|readSize=" + this.jdField_b_of_type_Long + "|maxSize=" + this.jdField_a_of_type_Long + "|percent=" + this.jdField_a_of_type_Float;
   }
 }
 

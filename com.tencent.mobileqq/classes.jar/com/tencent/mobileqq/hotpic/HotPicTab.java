@@ -13,10 +13,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import asqr;
-import asqs;
-import asqu;
-import bhuz;
+import asva;
+import asvb;
+import asvd;
+import bhzg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -43,8 +43,8 @@ public class HotPicTab
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new asqr(this);
-  asqs jdField_a_of_type_Asqs;
+  private Handler jdField_a_of_type_AndroidOsHandler = new asva(this);
+  asvb jdField_a_of_type_Asvb;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = -1;
@@ -59,8 +59,8 @@ public class HotPicTab
     f = (int)(4.0F * localResources.getDisplayMetrics().density + 0.5F);
     g = 14;
     jdField_b_of_type_Float = localResources.getDisplayMetrics().density;
-    h = localResources.getColor(2131166909);
-    i = localResources.getColor(2131166901);
+    h = localResources.getColor(2131166911);
+    i = localResources.getColor(2131166903);
   }
   
   public HotPicTab(Context paramContext, AttributeSet paramAttributeSet)
@@ -93,9 +93,9 @@ public class HotPicTab
   
   public HotPicTagInfo a()
   {
-    if (this.jdField_a_of_type_Asqs != null)
+    if (this.jdField_a_of_type_Asvb != null)
     {
-      Object localObject = this.jdField_a_of_type_Asqs.a;
+      Object localObject = this.jdField_a_of_type_Asvb.a;
       if (((List)localObject).size() > this.mCurrentlySelectedAdapterIndex)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.mCurrentlySelectedAdapterIndex);
@@ -112,7 +112,7 @@ public class HotPicTab
     setAdapter(null);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     setOnItemClickListener(null);
-    this.jdField_a_of_type_Asqs = null;
+    this.jdField_a_of_type_Asvb = null;
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
@@ -122,7 +122,7 @@ public class HotPicTab
     if (ThemeUtil.isNowThemeIsNight(null, false, null)) {}
     Iterator localIterator;
     HotPicTagInfo localHotPicTagInfo;
-    for (int j = 2131165323;; j = 2131167206)
+    for (int j = 2131165323;; j = 2131167208)
     {
       setBackgroundResource(j);
       paramList = new ArrayList(paramList);
@@ -153,9 +153,9 @@ public class HotPicTab
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
       }
     }
-    this.jdField_a_of_type_Asqs = new asqs(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
+    this.jdField_a_of_type_Asvb = new asvb(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
     this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Asqs);
+    setAdapter(this.jdField_a_of_type_Asvb);
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -179,7 +179,7 @@ public class HotPicTab
         localView = getSelectedView();
         if ((localView != null) && (localView.getTag() != null))
         {
-          localObject = ((asqu)localView.getTag()).a;
+          localObject = ((asvd)localView.getTag()).a;
           n = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
           m = localView.getLeft();
           m = (int)(((TextView)localObject).getRight() + m + jdField_b_of_type_Float * 5.0F);
@@ -205,10 +205,10 @@ public class HotPicTab
         if ((localView == null) || (localView.getTag() == null)) {
           break label314;
         }
-        localObject = (asqu)localView.getTag();
-        k = (int)(localView.getLeft() + ((asqu)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
+        localObject = (asvd)localView.getTag();
+        k = (int)(localView.getLeft() + ((asvd)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
         j = localView.getLeft();
-        j = (int)(((asqu)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
+        j = (int)(((asvd)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
         break;
         n = 0;
         break label121;

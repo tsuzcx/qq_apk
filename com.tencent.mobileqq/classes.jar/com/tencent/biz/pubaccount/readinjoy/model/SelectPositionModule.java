@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import amle;
+import ampt;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import awbw;
-import bjxj;
+import awgf;
+import bkbq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,20 +44,20 @@ public class SelectPositionModule
   extends pgp
 {
   private volatile long jdField_a_of_type_Long;
-  private amle jdField_a_of_type_Amle;
+  private ampt jdField_a_of_type_Ampt;
   private volatile SelectPositionModule.PositionData jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData;
   private volatile List<pio> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private pgx jdField_a_of_type_Pgx;
   private volatile SelectPositionModule.PositionData b;
   
-  public SelectPositionModule(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public SelectPositionModule(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private SelectPositionModule.PositionData a(String paramString)
   {
-    Object localObject = bjxj.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+    Object localObject = bkbq.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).getString(paramString, "");
@@ -93,7 +93,7 @@ public class SelectPositionModule
       localJSONObject.put("key_province", paramPositionData.province);
       localJSONObject.put("key_city", paramPositionData.city);
       localJSONObject.put("key_citycode", paramPositionData.cityCode);
-      Object localObject = bjxj.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+      Object localObject = bkbq.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
@@ -113,7 +113,7 @@ public class SelectPositionModule
   
   private void a(String paramString)
   {
-    Object localObject = bjxj.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+    Object localObject = bkbq.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -332,10 +332,10 @@ public class SelectPositionModule
   public void a()
   {
     QLog.d("SelectPositionModule", 2, "requestCurrentLoction");
-    if (this.jdField_a_of_type_Amle == null) {
-      this.jdField_a_of_type_Amle = new pgw(this, 3, true, true, 0L, false, false, "readinjoy_position");
+    if (this.jdField_a_of_type_Ampt == null) {
+      this.jdField_a_of_type_Ampt = new pgw(this, 3, true, true, 0L, false, false, "readinjoy_position");
     }
-    SosoInterface.a(this.jdField_a_of_type_Amle);
+    SosoInterface.a(this.jdField_a_of_type_Ampt);
   }
   
   public void a(SelectPositionModule.PositionData paramPositionData)

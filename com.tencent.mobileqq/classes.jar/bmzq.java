@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
-
-public class bmzq
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bmzq<ERROR_TYPE, DATA_TYPE>
 {
-  public bmzq(PickerContainer paramPickerContainer) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
-  }
+  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
 }
 
 

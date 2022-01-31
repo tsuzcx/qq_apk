@@ -1,20 +1,9 @@
-import android.widget.BaseAdapter;
-
-public abstract class belu
-  extends BaseAdapter
+public abstract interface belu
+  extends begg
 {
-  protected int a = 0;
+  public abstract int b();
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public abstract int b(int paramInt);
+  public abstract boolean d();
 }
 
 

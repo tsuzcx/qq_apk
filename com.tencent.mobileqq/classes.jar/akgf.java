@@ -1,31 +1,83 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-class akgf
-  implements View.OnClickListener
+public class akgf
+  implements MediaPlayer.OnPreparedListener
 {
-  akgf(akge paramakge) {}
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public akgf(akga paramakga, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof akgl)))
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    try
     {
-      paramView = (akgl)paramView;
-      bcgx.a(akge.a(this.a), akge.a(this.a), paramView.a);
-      bckx localbckx = (bckx)akge.a(this.a).getManager(203);
-      if ((localbckx != null) && (localbckx.a(akge.a(this.a), paramView.a, akge.a(this.a)))) {
-        localbckx.a(akge.a(this.a), paramView.a);
-      }
-      if (akge.a(this.a) != null) {}
-    }
-    else
-    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       return;
     }
-    azmj.b(akge.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, paramView.a, "", "", "");
+    catch (Exception localException1)
+    {
+      akga.a(this.jdField_a_of_type_Akga, "-->handleJsRequest exception:" + localException1.toString());
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("code", 2);
+        localJSONObject.put("errorMessage", "exception");
+        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+  }
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (akga.a(this.jdField_a_of_type_Akga).a()) {}
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        akga.a(this.jdField_a_of_type_Akga, "-->play failed");
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      akga.a(this.jdField_a_of_type_Akga, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      try
+      {
+        paramMediaPlayer = new JSONObject();
+        paramMediaPlayer.put("code", 2);
+        paramMediaPlayer.put("errorMessage", "exception");
+        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
+    }
   }
 }
 

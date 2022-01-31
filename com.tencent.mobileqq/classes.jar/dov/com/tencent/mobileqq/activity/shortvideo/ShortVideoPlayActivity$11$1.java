@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bnet;
+import bnjf;
 
 public class ShortVideoPlayActivity$11$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$11$1(bnet parambnet) {}
+  public ShortVideoPlayActivity$11$1(bnjf parambnjf) {}
   
   public void run()
   {

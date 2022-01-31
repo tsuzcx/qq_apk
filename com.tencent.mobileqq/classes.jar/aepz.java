@@ -1,42 +1,45 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aepz
-  extends TranslateAnimation
+  implements apry
 {
-  public static volatile boolean a;
-  public int a;
+  public aepz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public aepz()
+  public void a(View paramView)
   {
-    this(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public aepz(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
+    String str = bdtg.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
+    for (;;)
     {
-      setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
-  
-  public void reset()
-  {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    super.reset();
   }
 }
 

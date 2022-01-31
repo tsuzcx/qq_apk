@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdcb;
-import bdje;
+import bdgk;
+import bdnn;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
@@ -32,7 +32,7 @@ import java.io.File;
 import java.util.Set;
 import ncv;
 import org.json.JSONObject;
-import xmx;
+import xrg;
 
 public class ProgressWebView
   extends WebView
@@ -77,7 +77,7 @@ public class ProgressWebView
     super(paramActivity);
     this.mActivity = paramActivity;
     paramActivity = getSettings();
-    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bdcb.c() + " miniProgram miniprogramhtmlwebview");
+    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bdgk.c() + " miniProgram miniprogramhtmlwebview");
     paramActivity.setSavePassword(false);
     paramActivity.setSaveFormData(false);
     paramActivity.setBuiltInZoomControls(true);
@@ -179,12 +179,12 @@ public class ProgressWebView
     if ((this.mActivity == null) || (this.mActivity.isFinishing()))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of mActivity is empty");
-      QQToast.a(this.mActivity, 1, alpo.a(2131708892), 0).a();
+      QQToast.a(this.mActivity, 1, alud.a(2131708904), 0).a();
     }
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of sourceUrl is empty");
-      QQToast.a(this.mActivity, 1, alpo.a(2131708895), 0).a();
+      QQToast.a(this.mActivity, 1, alud.a(2131708907), 0).a();
       return;
     }
     Object localObject;
@@ -394,20 +394,20 @@ public class ProgressWebView
     {
       Object localObject = new File(paramString);
       localObject = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (xmx.a(this.mActivity, paramString, (String)localObject))
+      if (xrg.a(this.mActivity, paramString, (String)localObject))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ProgressWebView", 2, "savaPicToAlbum success.");
         }
-        QQToast.a(this.mActivity, 2, alpo.a(2131708882), 0).a();
+        QQToast.a(this.mActivity, 2, alud.a(2131708894), 0).a();
         return;
       }
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed.");
-      QQToast.a(this.mActivity, 1, alpo.a(2131708885), 0).a();
+      QQToast.a(this.mActivity, 1, alud.a(2131708897), 0).a();
       return;
     }
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed. activity error.");
-    QQToast.a(this.mActivity, 1, alpo.a(2131708889), 0).a();
+    QQToast.a(this.mActivity, 1, alud.a(2131708901), 0).a();
   }
   
   private void sharePicToQQ(String paramString)
@@ -418,7 +418,7 @@ public class ProgressWebView
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of sourceUrl is empty");
-      QQToast.a(this.mActivity, 1, alpo.a(2131708893), 0).a();
+      QQToast.a(this.mActivity, 1, alud.a(2131708905), 0).a();
       return;
     }
     Object localObject;
@@ -487,7 +487,7 @@ public class ProgressWebView
   public void init(AppBrandRuntime paramAppBrandRuntime)
   {
     this.mAppBrandRuntime = paramAppBrandRuntime;
-    if (bdje.a(this.miniAppWebviewStr)) {
+    if (bdnn.a(this.miniAppWebviewStr)) {
       this.miniAppWebviewStr = AppLoaderFactory.getAppLoaderManager().getMiniAppWebviewStr();
     }
     this.webView = this;

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import abot;
-import amen;
+import abti;
+import amjc;
 import android.text.TextUtils;
-import awdg;
-import azqu;
+import awhp;
+import azvd;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 public class MessageForStructing
   extends MessageForRichText
 {
-  @awdg
+  @awhp
   public boolean bDynicMsg;
   public AbsStructMsg structingMsg;
   
@@ -79,13 +79,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = azqu.a(this.msgData);
+    this.structingMsg = azvd.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = azqu.a(this.msgData);
+      this.structingMsg = azvd.a(this.msgData);
     }
   }
   
@@ -100,7 +100,7 @@ public class MessageForStructing
     String str1 = str2;
     if (this.structingMsg != null)
     {
-      boolean bool = amen.a(String.valueOf(this.structingMsg.mMsgServiceID));
+      boolean bool = amjc.a(String.valueOf(this.structingMsg.mMsgServiceID));
       str1 = str2;
       if ((this.structingMsg instanceof AbsShareMsg))
       {
@@ -144,7 +144,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return abot.x(this.istroop);
+    return abti.x(this.istroop);
   }
   
   public boolean isSupportReply()

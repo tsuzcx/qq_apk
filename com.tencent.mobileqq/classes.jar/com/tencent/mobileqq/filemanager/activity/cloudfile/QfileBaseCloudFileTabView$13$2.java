@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import aqjx;
-import aqsg;
+import aqog;
+import aqwp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfileBaseCloudFileTabView$13$2
   implements Runnable
 {
-  public QfileBaseCloudFileTabView$13$2(aqjx paramaqjx, long paramLong) {}
+  public QfileBaseCloudFileTabView$13$2(aqog paramaqog, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqjx.a.aB_();
-    QfileBaseCloudFileTabView.l(this.jdField_a_of_type_Aqjx.a).a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Aqog.a.ay_();
+    QfileBaseCloudFileTabView.l(this.jdField_a_of_type_Aqog.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

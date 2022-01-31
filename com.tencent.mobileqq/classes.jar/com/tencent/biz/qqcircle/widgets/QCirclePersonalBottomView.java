@@ -13,14 +13,14 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import java.util.ArrayList;
 import java.util.List;
-import ubn;
-import ubo;
-import ubp;
-import ydp;
-import ydw;
+import ueg;
+import ueh;
+import uei;
+import yhy;
+import yif;
 
 public class QCirclePersonalBottomView
-  extends BaseWidgetView<ydw>
+  extends BaseWidgetView<yif>
 {
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -28,8 +28,8 @@ public class QCirclePersonalBottomView
   private QCirclePersonalPushFragment jdField_a_of_type_ComTencentBizQqcircleFragmentsQCirclePersonalPushFragment;
   private QCircleFolderTabViewPager jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager;
   private List<QCirclePersonalBaseBottomFragment> jdField_a_of_type_JavaUtilList;
-  private ubp jdField_a_of_type_Ubp;
-  private ydp jdField_a_of_type_Ydp;
+  private uei jdField_a_of_type_Uei;
+  private yhy jdField_a_of_type_Yhy;
   private RadioButton b;
   
   public QCirclePersonalBottomView(@NonNull Context paramContext)
@@ -37,16 +37,16 @@ public class QCirclePersonalBottomView
     super(paramContext);
   }
   
-  public QCirclePersonalBottomView(Context paramContext, ydp paramydp)
+  public QCirclePersonalBottomView(Context paramContext, yhy paramyhy)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Ydp = paramydp;
-    setInteractor(paramydp.a());
+    this.jdField_a_of_type_Yhy = paramyhy;
+    setInteractor(paramyhy.getInteractor());
     b();
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Ubp = new ubp(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setAdapter(this.jdField_a_of_type_Ubp);
+    this.jdField_a_of_type_Uei = new uei(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setAdapter(this.jdField_a_of_type_Uei);
     c();
   }
   
@@ -61,24 +61,24 @@ public class QCirclePersonalBottomView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ubn(this));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.a(new ubo(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ueg(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.a(new ueh(this));
   }
   
   public int a()
   {
-    return 2131560555;
+    return 2131560568;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375712));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131365510));
-    this.b = ((RadioButton)paramView.findViewById(2131372491));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager = ((QCircleFolderTabViewPager)paramView.findViewById(2131371710));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375763));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131365512));
+    this.b = ((RadioButton)paramView.findViewById(2131372511));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager = ((QCircleFolderTabViewPager)paramView.findViewById(2131371730));
   }
   
-  public void a(ydw paramydw) {}
+  public void a(yif paramyif) {}
 }
 
 

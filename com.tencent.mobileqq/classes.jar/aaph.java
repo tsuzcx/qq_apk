@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.form.GdtFormView;
+import android.app.Activity;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aaph
-  implements View.OnClickListener
+class aaph
+  implements DialogInterface.OnDismissListener
 {
-  public aaph(GdtFormView paramGdtFormView) {}
+  aaph(aape paramaape) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (GdtFormView.a(this.a)) {
-      GdtFormView.a(this.a);
-    }
+    aape.a(this.a).setIntent(aape.a(this.a));
+    aape.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(aape.a(this.a));
+    aape.a(this.a).i();
   }
 }
 

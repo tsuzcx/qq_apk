@@ -1,106 +1,78 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
 
-public class bish
+class bish
+  implements bisf
 {
-  private static int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean = true;
-  private int b = 3;
+  private IBinder a;
   
-  static
+  bish(IBinder paramIBinder)
   {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    int i = 0;
-    for (;;)
-    {
-      if (i < arrayOfStackTraceElement.length)
-      {
-        if (bish.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
-          jdField_a_of_type_Int = i;
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    this.a = paramIBinder;
   }
   
-  private StringBuilder a(int paramInt)
+  /* Error */
+  public void a(cooperation.qappcenter.remote.SendMsg paramSendMsg)
   {
-    return new StringBuilder();
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_1
+    //   15: ifnull +41 -> 56
+    //   18: aload_2
+    //   19: iconst_1
+    //   20: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   23: aload_1
+    //   24: aload_2
+    //   25: iconst_0
+    //   26: invokevirtual 39	cooperation/qappcenter/remote/SendMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   29: aload_0
+    //   30: getfield 15	bish:a	Landroid/os/IBinder;
+    //   33: iconst_1
+    //   34: aload_2
+    //   35: aload_3
+    //   36: iconst_0
+    //   37: invokeinterface 45 5 0
+    //   42: pop
+    //   43: aload_3
+    //   44: invokevirtual 48	android/os/Parcel:readException	()V
+    //   47: aload_3
+    //   48: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   51: aload_2
+    //   52: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   55: return
+    //   56: aload_2
+    //   57: iconst_0
+    //   58: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   61: goto -32 -> 29
+    //   64: astore_1
+    //   65: aload_3
+    //   66: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   69: aload_2
+    //   70: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   73: aload_1
+    //   74: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	75	0	this	bish
+    //   0	75	1	paramSendMsg	cooperation.qappcenter.remote.SendMsg
+    //   3	67	2	localParcel1	android.os.Parcel
+    //   7	59	3	localParcel2	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	14	64	finally
+    //   18	29	64	finally
+    //   29	47	64	finally
+    //   56	61	64	finally
   }
   
-  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
+  public IBinder asBinder()
   {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      StringBuilder localStringBuilder;
-      try
-      {
-        localStringBuilder = a(paramInt3);
-        if (paramString2 != null) {
-          localStringBuilder.append(paramString2);
-        }
-        paramString2 = paramString1;
-        if (paramString1 == null) {
-          paramString2 = this.jdField_a_of_type_JavaLangString;
-        }
-        switch (paramInt2)
-        {
-        default: 
-          return;
-        }
-      }
-      finally {}
-      if (!QLog.isDevelopLevel())
-      {
-        continue;
-        if (!QLog.isColorLevel())
-        {
-          continue;
-          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
-        }
-      }
-    }
-  }
-  
-  public bish a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bish a(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 6, paramString2, this.b);
-    return this;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public bish b(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 4, paramString2, this.b);
-    return this;
-  }
-  
-  public bish c(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 3, paramString2, this.b);
-    return this;
+    return this.a;
   }
 }
 

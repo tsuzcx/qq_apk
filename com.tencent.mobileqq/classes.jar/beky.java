@@ -1,8 +1,20 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
-public abstract interface beky
+public class beky
+  implements bela
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public beky(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+  }
 }
 
 

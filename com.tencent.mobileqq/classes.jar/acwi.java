@@ -1,47 +1,104 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwi
-  implements bhqd
+  implements aufy<List<EmoticonPackage>>
 {
-  public acwi(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bhpy parambhpy) {}
+  public acwi(EmosmActivity paramEmosmActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(List<EmoticonPackage> paramList)
   {
-    int i = 60;
-    if (paramInt == 0)
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, EditInfoActivity.class);
-      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("default_text", this.b);
-      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
-      paramView.putExtra("max_limit_mode", 1);
-      paramView.putExtra("edit_type", 2);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.putExtra("max_num", 60);
-        paramView.putExtra("isTroopNick", true);
-        paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1034);
-      }
-    }
-    else
-    {
-      if (this.jdField_a_of_type_Bhpy != null) {
-        this.jdField_a_of_type_Bhpy.dismiss();
-      }
+    if (paramList == null) {
       return;
     }
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (paramInt = i;; paramInt = 36)
+    int j = paramList.size();
+    int i = 0;
+    label14:
+    if (i < j) {
+      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
+    }
+    for (;;)
     {
-      paramView.putExtra("max_num", paramInt);
-      paramView.putExtra("support_emotion", true);
-      break;
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1;
+      Object localObject2;
+      if (1 == this.a.b)
+      {
+        if (i == -1)
+        {
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          i += 1;
+          break label14;
+        }
+        localObject1 = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject2 = (EmoticonPackage)paramList.next();
+          if (((EmoticonPackage)localObject2).jobType == 3) {
+            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
+          }
+        }
+        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          localArrayList.addAll((Collection)localObject1);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Aufn.a(localArrayList, 0);
+        paramList = (alrp)this.a.app.a(12);
+        if (paramList == null) {
+          break;
+        }
+        paramList.a(localArrayList, true, 0);
+        return;
+        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+        j = 0;
+        while (j < k)
+        {
+          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if (j == i) {
+            localArrayList.addAll((Collection)localObject1);
+          }
+          localArrayList.add(paramList.epId);
+          j += 1;
+        }
+        continue;
+        if (2 == this.a.b)
+        {
+          k = paramList.size();
+          j = 0;
+          while (j < k)
+          {
+            localObject1 = (EmoticonPackage)paramList.get(j);
+            if (j == i)
+            {
+              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
+              }
+            }
+            if (((EmoticonPackage)localObject1).jobType != 3) {
+              localArrayList.add(((EmoticonPackage)localObject1).epId);
+            }
+            j += 1;
+          }
+        }
+      }
+      i = -1;
     }
   }
 }

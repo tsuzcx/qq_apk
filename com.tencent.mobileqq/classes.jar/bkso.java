@@ -1,22 +1,6 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-
-class bkso
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface bkso
 {
-  bkso(bksk parambksk) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    paramCompoundButton = bksk.c(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
-      return;
-    }
-  }
+  public abstract void a();
 }
 
 

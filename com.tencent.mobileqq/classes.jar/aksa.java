@@ -1,17 +1,41 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class aksa
-  implements MediaPlayer.OnSeekCompleteListener
+public class aksa
+  extends akry
 {
-  aksa(akry paramakry, JSONObject paramJSONObject, aksy paramaksy) {}
-  
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void a(aksc paramaksc, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      akry.a(this.jdField_a_of_type_Akry, this.jdField_a_of_type_Aksy, this.jdField_a_of_type_OrgJsonJSONObject);
+    if ((paramBitmap == null) || (paramaksc == null) || (TextUtils.isEmpty(paramaksc.jdField_a_of_type_JavaLangCharSequence))) {
+      return;
     }
+    String str2 = paramaksc.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
+    }
+    paramaksc = str1 + paramaksc.jdField_a_of_type_JavaLangCharSequence;
+    this.a.put(paramaksc, new WeakReference(paramBitmap));
+  }
+  
+  public Bitmap b(aksc paramaksc)
+  {
+    if ((paramaksc == null) || (TextUtils.isEmpty(paramaksc.jdField_a_of_type_JavaLangCharSequence))) {
+      return null;
+    }
+    String str2 = paramaksc.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
+    }
+    paramaksc = str1 + paramaksc.jdField_a_of_type_JavaLangCharSequence;
+    paramaksc = (WeakReference)this.a.get(paramaksc);
+    if (paramaksc != null) {
+      return (Bitmap)paramaksc.get();
+    }
+    return null;
   }
 }
 

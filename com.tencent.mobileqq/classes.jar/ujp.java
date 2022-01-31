@@ -1,51 +1,61 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ujp
-  implements uje
+  extends ujo<ujw>
 {
-  private String a = "SimplePreloadListener";
-  
-  public ujp(String paramString)
+  public String a(AddressItem paramAddressItem)
   {
-    this.a = paramString;
+    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, uja paramuja) {}
-  
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, uja paramuja)
+  protected List<uiz> a(List<uja> paramList)
   {
-    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
+    Object localObject1 = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      wsv.b(this.a, "download ignore because no mask pic url");
-      return;
+      localObject2 = (uja)paramList.next();
+      Object localObject3 = ((uja)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      if (localObject3 != null)
+      {
+        localObject3 = a((AddressItem)localObject3);
+        if (((HashMap)localObject1).containsKey(localObject3))
+        {
+          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          ((HashMap)localObject1).put(localObject3, localArrayList);
+        }
+      }
+      else
+      {
+        wxe.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((uja)localObject2).jdField_a_of_type_JavaLangString);
+      }
     }
-    wsv.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
-  }
-  
-  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja)
-  {
-    paramString = ((uro)urr.a(5)).a(paramString);
-    if (paramString != null) {
-      ujb.a(paramString, paramFile.getAbsolutePath(), paramInt1);
+    paramList = new ArrayList();
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (((List)localObject2).size() >= a().b)
+      {
+        localObject2 = new uiz(a().a, (List)localObject2);
+        ((uiz)localObject2).a(this.a);
+        ((uiz)localObject2).a(a());
+        paramList.add(localObject2);
+      }
     }
-  }
-  
-  public void a(String paramString, int paramInt, uja paramuja) {}
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja)
-  {
-    wsv.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, ugx.a(paramInt1), paramFile.getAbsolutePath());
-    paramString = ((uro)urr.a(5)).a(paramString);
-    if (paramString != null) {
-      ujb.a(paramString, paramFile.getAbsolutePath(), paramInt1, wta.a(BaseApplicationImpl.getContext()));
-    }
-  }
-  
-  public void b(String paramString, int paramInt, uja paramuja)
-  {
-    wsv.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
+    return paramList;
   }
 }
 

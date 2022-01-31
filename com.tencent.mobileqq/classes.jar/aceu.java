@@ -1,83 +1,86 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class aceu
-  extends GestureDetector.SimpleOnGestureListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aceu(BaseChatPie paramBaseChatPie) {}
+  public aceu(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a(paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    ((afaw)this.a.a(26)).a();
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
+    if (AssistantSettingActivity.a(this.a)) {
+      return;
     }
-    do
+    if (!bdin.g(this.a))
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      QQToast.a(BaseApplication.getContext(), 1, 2131694832, 0).b(this.a.getTitleBarHeight());
+      paramCompoundButton = this.a.e;
+      if (!paramBoolean) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.g(this.a) == i)
-        {
-          this.a.w(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.e(this.a, -1);
-        }
-        BaseChatPie.e(this.a, i);
+        paramCompoundButton.setChecked(paramBoolean);
+        return;
       }
-      if (BaseChatPie.a(this.a)) {
-        this.a.i(true);
+    }
+    paramCompoundButton = aous.c();
+    label194:
+    label213:
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (paramCompoundButton.a <= 1))
+    {
+      if (!beat.a(this.a.app, "have_show_ptt_tip", false))
+      {
+        QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box and tip to user");
+        AssistantSettingActivity.a(this.a);
       }
-    } while (paramFloat2 >= 0.0F);
-    this.a.H = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
+      if ((!paramBoolean) && (paramCompoundButton.a <= 1)) {
+        beat.b(this.a.app, "have_add_ptt_gray_msg", false);
+      }
+      AssistantSettingActivity.a(this.a, paramBoolean);
+      ((alpk)this.a.app.a(2)).p(paramBoolean);
+      if (!paramBoolean) {
+        break label297;
+      }
+      azqs.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 1, 0, "", "", "", "");
+      paramCompoundButton = "normal";
+      if (!VipUtils.c(this.a.app)) {
+        break label324;
+      }
+      paramCompoundButton = "vip";
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label343;
+      }
     }
-    this.a.j(false);
-    this.a.i(true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (antn)this.a.a(50);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
+    label297:
+    label324:
+    label343:
+    for (int i = 1;; i = 2)
+    {
+      azqs.b(localQQAppInterface, "dc00898", "", "", "", "0X800A415", i, 0, "", "", "", paramCompoundButton);
+      return;
+      if ((!paramBoolean) || (VipUtils.b(this.a.app))) {
+        break;
+      }
+      QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box but u r not svip");
+      AssistantSettingActivity.b(this.a);
+      this.a.e.setChecked(false);
+      return;
+      azqs.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 2, 0, "", "", "", "");
+      break label194;
+      if (!VipUtils.b(this.a.app)) {
+        break label213;
+      }
+      paramCompoundButton = "svip";
+      break label213;
     }
-    this.a.j(false);
-    this.a.i(true);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
-    }
-    return false;
   }
 }
 

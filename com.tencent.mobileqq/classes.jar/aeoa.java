@@ -1,32 +1,14 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
-class aeoa
-  implements bcwt
+public class aeoa
+  implements aeoq
 {
-  aeoa(aenv paramaenv) {}
+  public aeoa(ReminderListFragment.5.1 param1) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
-    {
-      return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        aenv.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          aenv.a(this.a).setImageBitmap(paramBitmap);
-        }
-      }
-    }
+    ReminderListFragment.a(this.a.a.a, alud.a(2131713777));
   }
 }
 

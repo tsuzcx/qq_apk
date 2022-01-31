@@ -4,14 +4,14 @@ import NS_MOBILE_FEEDS.stPhotoTag;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgp;
+import bjkw;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bjgp();
+  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bjkw();
   public int a;
   public String a;
   public int b;

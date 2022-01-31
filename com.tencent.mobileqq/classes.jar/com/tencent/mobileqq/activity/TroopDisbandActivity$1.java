@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,14 +14,14 @@ class TroopDisbandActivity$1
   {
     try
     {
-      alzf localalzf = (alzf)this.this$0.app.a(20);
-      if (localalzf != null)
+      amdu localamdu = (amdu)this.this$0.app.a(20);
+      if (localamdu != null)
       {
         long l = Long.parseLong(this.this$0.a);
-        localalzf.a(l, 0L, 5, 6, 1);
+        localamdu.a(l, 0L, 5, 6, 1);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Long.valueOf(l));
-        localalzf.a(localArrayList);
+        localamdu.a(localArrayList);
       }
       return;
     }

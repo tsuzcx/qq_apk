@@ -1,31 +1,45 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.DashboardAdapter.1;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class bkwz
-  implements bmac<blbb>
+public class bkwz
+  extends RecyclerView.Adapter<bkxa>
 {
-  bkwz(bkwx parambkwx) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<bkxb> jdField_a_of_type_JavaUtilList;
   
-  public void a(@Nullable blbb paramblbb)
+  public bkwz(@NonNull Context paramContext)
   {
-    if (paramblbb == null) {}
-    do
-    {
-      return;
-      paramblbb = paramblbb.a;
-      if (paramblbb == AECaptureMode.NORMAL)
-      {
-        bkwx.a(this.a).setVisibility(8);
-        return;
-      }
-      if (paramblbb == AECaptureMode.GIF)
-      {
-        bkwx.a(this.a);
-        return;
-      }
-    } while (paramblbb != AECaptureMode.PLAY);
-    bkwx.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+  }
+  
+  public bkxa a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bkxa(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558477, paramViewGroup, false));
+  }
+  
+  public void a(bkxa parambkxa, int paramInt)
+  {
+    parambkxa.a((bkxb)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public void a(@NonNull List<bkxb> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.DashboardAdapter.1(this));
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

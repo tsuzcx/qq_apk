@@ -19,7 +19,7 @@ public class tnu
   extends PopupWindow
   implements View.OnClickListener
 {
-  private static final int jdField_a_of_type_Int = bdkf.a(8.0F);
+  private static final int jdField_a_of_type_Int = bdoo.a(8.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
@@ -76,14 +76,14 @@ public class tnu
   
   private void b(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
   {
-    paramView.findViewById(2131369677).setOnClickListener(this);
+    paramView.findViewById(2131369696).setOnClickListener(this);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369415));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131365991));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131371461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369422));
-    this.b = ((TextView)paramView.findViewById(2131365994));
-    this.c = ((TextView)paramView.findViewById(2131371462));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369433));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131365993));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131371480));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369440));
+    this.b = ((TextView)paramView.findViewById(2131365996));
+    this.c = ((TextView)paramView.findViewById(2131371481));
     String str = "";
     Object localObject1 = "";
     paramView = "";
@@ -184,7 +184,7 @@ public class tnu
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       setBackgroundDrawable(new BitmapDrawable());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559850, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559849, null);
       b(this.jdField_a_of_type_AndroidViewView, paramArrayList);
       setContentView(this.jdField_a_of_type_AndroidViewView);
       setWidth(-2);
@@ -196,7 +196,7 @@ public class tnu
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369677)
+    if (paramView.getId() == 2131369696)
     {
       if (this.jdField_a_of_type_Tnv != null) {
         this.jdField_a_of_type_Tnv.a();

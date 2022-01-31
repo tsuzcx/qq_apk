@@ -1,44 +1,89 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
-class akse
-  implements AudioManager.OnAudioFocusChangeListener
+public class akse
+  extends akrz<Canvas>
 {
-  akse(akry paramakry) {}
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public void onAudioFocusChange(int paramInt)
+  public boolean a(Canvas paramCanvas, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    boolean bool = false;
+    if (paramCanvas == null) {
+      return bool;
     }
+    label25:
+    aksc localaksc;
+    Bitmap localBitmap;
     for (;;)
     {
-      JSONObject localJSONObject;
       try
       {
-        localJSONObject = new JSONObject();
-        if (paramInt != 1) {
-          break label105;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label360;
         }
-        localJSONObject.put("event", 2);
-        aktr localaktr = akro.a(akry.a(this.a));
-        if ((localaktr == null) || (localaktr.a() == null)) {
-          break label104;
+        localaksc = (aksc)localIterator.next();
+        localaksc.b();
+        if (!localaksc.a())
+        {
+          localIterator.remove();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localaksc);
+          continue;
         }
-        akro.a().callbackFromRequest(localaktr.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
-        return;
+        localBitmap = localaksc.a();
       }
-      catch (Throwable localThrowable) {}
-      localJSONObject.put("event", 1);
-      continue;
-      label104:
-      return;
-      label105:
-      if (paramInt != -1) {
-        if (paramInt != -2) {}
+      finally {}
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        paramCanvas.save();
+        if (paramFloat == 1.0F)
+        {
+          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localaksc.d) {
+            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localaksc.d);
+          }
+          label165:
+          if (localaksc.h <= 0.0F) {
+            break label388;
+          }
+        }
+      }
+    }
+    label388:
+    for (float f1 = localaksc.h;; f1 = 1.0F)
+    {
+      float f2 = localaksc.jdField_e_of_type_Float;
+      float f3 = localaksc.jdField_f_of_type_Float;
+      float f4 = localaksc.jdField_e_of_type_Float;
+      float f5 = localaksc.jdField_e_of_type_Int;
+      float f6 = localaksc.jdField_f_of_type_Float;
+      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localaksc.jdField_f_of_type_Int + f6);
+      paramCanvas.translate(localaksc.jdField_e_of_type_Float, localaksc.jdField_f_of_type_Float);
+      if (localaksc.h != 0.0F) {
+        paramCanvas.scale(localaksc.h, localaksc.h);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.b.set(0, 0, localaksc.jdField_e_of_type_Int, localaksc.jdField_f_of_type_Int);
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
+      break label25;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
+      break label165;
+      label360:
+      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      if (!bool) {}
+      for (bool = true;; bool = false) {
+        break;
       }
     }
   }

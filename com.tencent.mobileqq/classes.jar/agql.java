@@ -1,14 +1,50 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class agql
-  implements nrr
+class agql
+  extends asnf
 {
-  public agql(PublicAccountChatPie.8 param8) {}
+  agql(agqk paramagqk) {}
   
-  public void a()
+  protected void a(Object paramObject)
   {
-    this.a.this$0.a.sendEmptyMessage(1);
+    QLog.i(agqk.g, 1, "[onGameUsrInfoChangedNotify]");
+    for (;;)
+    {
+      asmt localasmt;
+      try
+      {
+        if ((paramObject instanceof ArrayList))
+        {
+          paramObject = ((ArrayList)paramObject).iterator();
+          if (paramObject.hasNext())
+          {
+            localasmt = (asmt)paramObject.next();
+            if ((TextUtils.isEmpty(localasmt.b)) || (!localasmt.b.equals(this.a.a.a()))) {
+              break label115;
+            }
+            agqk.a(this.a, localasmt);
+            agqk.a(this.a, localasmt);
+            QLog.i(agqk.g, 1, "update friend info.");
+            continue;
+          }
+        }
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        QLog.e(agqk.g, 1, paramObject.getMessage());
+      }
+      label115:
+      if ((!TextUtils.isEmpty(localasmt.b)) && (localasmt.b.equals(this.a.a.b())))
+      {
+        agqk.b(this.a, localasmt);
+        QLog.i(agqk.g, 1, "update my info.");
+      }
+    }
   }
 }
 

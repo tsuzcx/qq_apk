@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bddb;
-import bdds;
+import bdhk;
+import bdib;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -14,10 +14,10 @@ public class QidianWebViewFragment
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bddb localbddb = bdds.a(null, getActivity(), paramString);
-        if (localbddb != null)
+        bdhk localbdhk = bdib.a(null, getActivity(), paramString);
+        if (localbdhk != null)
         {
-          boolean bool = localbddb.c();
+          boolean bool = localbdhk.c();
           return bool;
         }
       }

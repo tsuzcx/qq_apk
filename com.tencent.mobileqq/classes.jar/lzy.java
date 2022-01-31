@@ -1,24 +1,24 @@
 import java.lang.ref.WeakReference;
 
 public class lzy
-  implements alln
+  implements alqc
 {
   private WeakReference<mac> a;
-  private WeakReference<allj> b;
+  private WeakReference<alpy> b;
   private WeakReference<lzj> c;
   
-  public lzy(mac parammac, allj paramallj, lzj paramlzj)
+  public lzy(mac parammac, alpy paramalpy, lzj paramlzj)
   {
     this.a = new WeakReference(parammac);
-    this.b = new WeakReference(paramallj);
+    this.b = new WeakReference(paramalpy);
     this.c = new WeakReference(paramlzj);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = (allj)this.b.get();
+    Object localObject = (alpy)this.b.get();
     if (localObject != null) {
-      ((allj)localObject).d(this);
+      ((alpy)localObject).d(this);
     }
     localObject = (mac)this.a.get();
     lzj locallzj = (lzj)this.c.get();

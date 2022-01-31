@@ -1,35 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bdzw
-  extends BroadcastReceiver
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public bdzw(WebProcessManager paramWebProcessManager) {}
+  public bdzw(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    }
+    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
   }
 }
 

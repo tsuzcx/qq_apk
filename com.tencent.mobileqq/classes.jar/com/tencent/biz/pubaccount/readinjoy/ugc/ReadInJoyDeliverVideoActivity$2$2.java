@@ -12,7 +12,7 @@ public class ReadInJoyDeliverVideoActivity$2$2
   public void run()
   {
     QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
-    QQToast.a(this.a.a, 2131718859, 0).a();
+    QQToast.a(this.a.a, 2131718871, 0).a();
   }
 }
 

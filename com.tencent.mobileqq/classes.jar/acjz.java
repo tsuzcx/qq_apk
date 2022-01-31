@@ -1,57 +1,22 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acjz
-  extends alsi
+public final class acjz
+  implements DialogInterface.OnClickListener
 {
-  public acjz(ChatSettingActivity paramChatSettingActivity) {}
+  public acjz(aclo paramaclo, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
+    this.jdField_a_of_type_Aclo.d = false;
+    this.jdField_a_of_type_Aclo.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131720063, 1);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
-    }
-    ChatSettingActivity.g(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131720063, 1);
   }
 }
 

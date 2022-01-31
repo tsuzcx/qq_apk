@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
-import aelz;
+import aeqo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bdcb;
+import bdgk;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -45,7 +45,7 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     this.e = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledFadingEdgeLength();
-    if (bdcb.d() / 1048576L > 512L) {}
+    if (bdgk.d() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -298,9 +298,9 @@ public class ScrollerRunnable
     if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof aelz))
+      if ((localObject instanceof aeqo))
       {
-        localObject = ((aelz)localObject).a();
+        localObject = ((aeqo)localObject).a();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           i1 = ((List)localObject).size();

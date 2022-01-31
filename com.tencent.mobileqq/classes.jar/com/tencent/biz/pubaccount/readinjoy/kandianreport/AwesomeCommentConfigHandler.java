@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
@@ -34,7 +34,7 @@ public class AwesomeCommentConfigHandler
         }
         for (;;)
         {
-          bjxj.a(qki.h, Integer.valueOf(paramInt2));
+          bkbq.a(qki.h, Integer.valueOf(paramInt2));
           break;
           if (TextUtils.equals(str2, "2")) {
             paramInt2 = 2;
@@ -46,7 +46,7 @@ public class AwesomeCommentConfigHandler
       if (TextUtils.equals(str1, "awesome_comment_line_number")) {
         try
         {
-          bjxj.a(qki.i, Integer.valueOf(str2));
+          bkbq.a(qki.i, Integer.valueOf(str2));
           Aladdin.getConfig(paramInt1).update(paramString);
         }
         catch (NumberFormatException localNumberFormatException)

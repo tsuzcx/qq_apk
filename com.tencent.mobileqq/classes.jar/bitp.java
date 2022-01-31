@@ -1,19 +1,21 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bitp
-  extends amam
+public class bitp
+  implements DialogInterface.OnClickListener
 {
-  bitp(bito parambito) {}
+  public bitp(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,14 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class agod
-  extends alox
+  implements View.OnClickListener
 {
-  agod(agnz paramagnz) {}
+  agod(agnn paramagnn) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    agnz.a(this.a, paramBoolean, paramObject);
+    paramView.setVisibility(8);
   }
 }
 

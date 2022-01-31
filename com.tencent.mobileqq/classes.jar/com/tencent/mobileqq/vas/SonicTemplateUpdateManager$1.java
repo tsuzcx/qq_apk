@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
-import bdpp;
+import bdty;
 
 public class SonicTemplateUpdateManager$1
   implements Runnable
 {
-  public SonicTemplateUpdateManager$1(bdpp parambdpp) {}
+  public SonicTemplateUpdateManager$1(bdty parambdty) {}
   
   public void run()
   {

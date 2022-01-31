@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbln;
+import bbpw;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TroopAioKeywordTipManager$1
   implements Runnable
 {
-  public TroopAioKeywordTipManager$1(bbln parambbln, List paramList) {}
+  public TroopAioKeywordTipManager$1(bbpw parambbpw, List paramList) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class TroopAioKeywordTipManager$1
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      bbln.a(this.this$0, (MessageRecord)localObject2);
+      bbpw.a(this.this$0, (MessageRecord)localObject2);
     }
     localObject1 = null;
     Object localObject2 = this.a.iterator();
     if (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = (MessageRecord)((Iterator)localObject2).next();
-      localObject3 = bbln.a(this.this$0, (MessageRecord)localObject3);
+      localObject3 = bbpw.a(this.this$0, (MessageRecord)localObject3);
       if (localObject3 == null) {
         break label133;
       }
@@ -42,7 +42,7 @@ public class TroopAioKeywordTipManager$1
     {
       break;
       if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        bbln.a(this.this$0, (List)localObject1);
+        bbpw.a(this.this$0, (List)localObject1);
       }
       return;
       break label97;

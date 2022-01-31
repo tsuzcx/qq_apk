@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nem
-  implements ymm
+  implements yrb
 {
   public nem(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   

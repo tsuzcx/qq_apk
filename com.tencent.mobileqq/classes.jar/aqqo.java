@@ -1,28 +1,26 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aqqo
-  implements aqpk
+  implements bhuk
 {
-  aqqo(aqqn paramaqqn, String paramString) {}
+  aqqo(aqqn paramaqqn, FileManagerEntity paramFileManagerEntity, bhuf parambhuf) {}
   
-  public void a(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " start upload Discfile success");
-      }
-      aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqr.a(this.jdField_a_of_type_JavaLangString, aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm));
+    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Aqqn.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
+    this.jdField_a_of_type_Aqqn.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
+      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Aqqn.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
     }
-    for (;;)
-    {
-      aqpv.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv).a().a(aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_Long, false), true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
+    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Aqqn.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_Aqqn.a.a.g();
+    if (this.jdField_a_of_type_Bhuf.isShowing()) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
   }
 }

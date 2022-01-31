@@ -1,23 +1,13 @@
-import org.xmlpull.v1.XmlSerializer;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-final class alzi
-  extends azsm
+class alzi
+  implements FileFilter
 {
-  alzi(String paramString)
+  public boolean accept(File paramFile)
   {
-    super(paramString);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.S == null) {}
-    for (String str = "";; str = this.S)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
-      return;
-    }
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 

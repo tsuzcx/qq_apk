@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiml;
+import aira;
 import com.tencent.widget.GestureSelectGridView;
 
 public class PhotoListLogicDefault$9
   implements Runnable
 {
-  public PhotoListLogicDefault$9(aiml paramaiml, int paramInt) {}
+  public PhotoListLogicDefault$9(aira paramaira, int paramInt) {}
   
   public void run()
   {

@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
 
 public class avya
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnTouchListener
 {
-  public avya(ScanIconAnimateView paramScanIconAnimateView) {}
+  public avya(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.a.a.a(paramView);
+    return false;
   }
 }
 

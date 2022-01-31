@@ -1,17 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
-
 public class avuv
-  implements ValueAnimator.AnimatorUpdateListener
+  extends avun
 {
-  public avuv(ScanOcrView paramScanOcrView) {}
+  public String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public avuv(String paramString)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
-    this.a.invalidate();
+    this.b = paramString;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

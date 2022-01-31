@@ -1,22 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-class appd
-  implements View.OnClickListener
+public class appd
+  extends DataSetObserver
 {
-  appd(apox paramapox, IPSiteModel.Book paramBook, String paramString1, String paramString2) {}
+  public appd(DragSortListView paramDragSortListView) {}
   
-  public void onClick(View paramView)
+  private void a()
   {
-    paramView = new Intent(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Book.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Apox.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_bookclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    if (this.a.g == 4) {
+      this.a.a();
+    }
+  }
+  
+  public void onChanged()
+  {
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
   }
 }
 

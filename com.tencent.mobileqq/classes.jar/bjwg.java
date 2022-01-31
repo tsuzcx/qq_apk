@@ -1,8 +1,28 @@
-public abstract interface bjwg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+
+public final class bjwg
+  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
 {
-  public abstract void a();
+  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
+  {
+    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
+    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    return localQzoneVerticalVideoTopicInfo;
+  }
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  {
+    return new QzoneVerticalVideoTopicInfo[paramInt];
+  }
 }
 
 

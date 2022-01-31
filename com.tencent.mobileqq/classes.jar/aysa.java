@@ -1,58 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.text.TextUtils;
+import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class aysa
-  extends aysb
+  extends ayqe
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
-  public aysa(ViewGroup paramViewGroup, int paramInt)
+  public aysa(bdbb parambdbb, ayqi paramayqi)
   {
-    super(paramViewGroup, paramInt);
+    super(parambdbb, paramayqi);
   }
   
-  protected void a()
+  public void b(aynu paramaynu, aywd paramaywd)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377884));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369347));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367933));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364891));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377394));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377225));
-    this.d = ((TextView)localView.findViewById(2131365127));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    super.b(paramaynu, paramaywd);
+    if (TextUtils.isEmpty(paramaynu.c()))
     {
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166838));
-      }
-      if (this.d != null) {
-        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166838));
+      paramaywd.c().setVisibility(8);
+      ((ayxw)paramaywd).a().setVisibility(0);
+      if (paramaywd.b() != null)
+      {
+        paramaynu = ((aype)paramaynu).d();
+        if (!TextUtils.isEmpty(paramaynu)) {
+          break label127;
+        }
+        paramaywd.b().setVisibility(8);
       }
     }
-    do
+    for (;;)
     {
+      paramaywd.d().setVisibility(8);
       return;
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      }
-    } while (this.d == null);
-    this.d.setTextColor(Color.parseColor("#737373"));
+      paramaywd.c().setVisibility(0);
+      paramaywd.c().setText(paramaynu.c());
+      ((ayxw)paramaywd).a().setVisibility(8);
+      break;
+      label127:
+      paramaywd.b().setVisibility(0);
+      paramaywd.b().setText(paramaynu);
+    }
+  }
+  
+  protected void c(aynu paramaynu, aywd paramaywd)
+  {
+    super.c(paramaynu, paramaywd);
+    ((ayxw)paramaywd).a().setOnClickListener(new aysb(this, paramaynu));
   }
 }
 

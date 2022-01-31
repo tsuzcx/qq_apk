@@ -1,20 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-class url
-  implements uni<vat, vcr>
+public class url
 {
-  url(urk paramurk, long paramLong) {}
-  
-  public void a(@NonNull vat paramvat, @Nullable vcr paramvcr, @NonNull ErrorMessage paramErrorMessage)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    if (paramvcr != null)
-    {
-      this.jdField_a_of_type_Urk.b("qqstory_black_status", Integer.valueOf(paramvcr.b));
-      this.jdField_a_of_type_Urk.b("qqstory_black_status_update_interval", Integer.valueOf(paramvcr.c));
-      this.jdField_a_of_type_Urk.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
-    }
+    paramQQUserUIItem = vls.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    paramQQUserUIItem = vls.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
   }
 }
 

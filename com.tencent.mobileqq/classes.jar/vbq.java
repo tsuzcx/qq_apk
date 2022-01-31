@@ -1,55 +1,46 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import java.util.List;
 
 public class vbq
-  extends unk
+  extends vbo
 {
-  public List<String> a = new ArrayList();
+  public int a;
   
-  public String a()
+  public vbq(ViewGroup paramViewGroup, int paramInt)
   {
-    return ume.a("StorySvc.get_date_video_list");
+    super(paramViewGroup, 2131561509);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public void a(uyg paramuyg)
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
-    try
+    super.a(paramuyg);
+    switch (this.jdField_a_of_type_Int)
     {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new vdg(localRspSimpleInfoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+    default: 
+      xqq.a(alud.a(2131707996), new Object[0]);
+      return;
+    case 3: 
+      this.itemView.setTag(Integer.valueOf(3));
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramuyg.c, false);
+      String str = xsj.b(paramuyg.g);
+      if (!TextUtils.isEmpty(str)) {
+        b(str);
+      }
+      while ((paramuyg.a == null) || (paramuyg.a.isEmpty()))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramuyg.b);
+        return;
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846185);
       }
     }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(alud.a(2131707995), false);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846182);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
   }
 }
 

@@ -1,6 +1,9 @@
-public abstract interface bjjb
+public class bjjb
 {
-  public abstract void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+  public long a;
+  public String a;
+  public long b;
+  public long c;
 }
 
 

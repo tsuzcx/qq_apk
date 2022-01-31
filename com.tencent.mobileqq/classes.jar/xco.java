@@ -1,4 +1,7 @@
-public abstract interface xco {}
+public abstract interface xco
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

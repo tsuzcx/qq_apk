@@ -1,24 +1,37 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Bitmap;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
 
-class assu
-  implements EIPCResultCallback
+public class assu
 {
-  assu(asst paramasst, long paramLong) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static assu a(HiBoomTextView paramHiBoomTextView)
   {
-    switch (paramEIPCResult.code)
+    if (paramHiBoomTextView != null)
     {
+      assu localassu = new assu();
+      localassu.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
+      localassu.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
+      localassu.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
+      localassu.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
+      localassu.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
+      localassu.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
+      localassu.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
+      localassu.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
+      localassu.jdField_b_of_type_Long = System.currentTimeMillis();
+      return localassu;
     }
-    for (;;)
-    {
-      azmj.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - asst.a(this.jdField_a_of_type_Asst)), String.valueOf(this.jdField_a_of_type_Long), "", "");
-      return;
-      asst.a(this.jdField_a_of_type_Asst).a(2, paramEIPCResult.data);
-      continue;
-      asst.a(this.jdField_a_of_type_Asst).a(1, paramEIPCResult.data);
-    }
+    return null;
   }
 }
 

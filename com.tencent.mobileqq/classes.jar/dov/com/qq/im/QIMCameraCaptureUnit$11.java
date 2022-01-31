@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
 import android.widget.Button;
-import bkil;
+import bkms;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class QIMCameraCaptureUnit$11
   implements Runnable
 {
-  public QIMCameraCaptureUnit$11(bkil parambkil, boolean paramBoolean) {}
+  public QIMCameraCaptureUnit$11(bkms parambkms, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,14 +16,14 @@ public class QIMCameraCaptureUnit$11
       if (!this.a) {
         break label80;
       }
-      if (!bkil.a(this.this$0))
+      if (!bkms.a(this.this$0))
       {
-        if (bkil.b(this.this$0)) {
+        if (bkms.b(this.this$0)) {
           this.this$0.c.setVisibility(0);
         }
         this.this$0.c.setSelected(true);
         this.this$0.a.c(true);
-        bkil.b(this.this$0, false);
+        bkms.b(this.this$0, false);
       }
     }
     return;
@@ -31,7 +31,7 @@ public class QIMCameraCaptureUnit$11
     this.this$0.c.setVisibility(8);
     this.this$0.c.setSelected(false);
     this.this$0.a.c(false);
-    bkil.b(this.this$0, false);
+    bkms.b(this.this$0, false);
   }
 }
 

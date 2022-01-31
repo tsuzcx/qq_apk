@@ -1,10 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import feedcloud.FeedCloudMeta.StUser;
 
-public abstract interface uet
+public class uet
+  extends ClickableSpan
 {
-  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
+  public uet(QCirclePushAsyncTextView paramQCirclePushAsyncTextView, FeedCloudMeta.StUser paramStUser) {}
+  
+  public void onClick(@NonNull View paramView)
+  {
+    if (QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView) != null) {
+      QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView));
+  }
 }
 
 

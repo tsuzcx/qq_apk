@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class acei
-  implements bepj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372225);
+  public acei(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public acei(BaseChatPie paramBaseChatPie) {}
-  
-  public boolean a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
   }
 }
 

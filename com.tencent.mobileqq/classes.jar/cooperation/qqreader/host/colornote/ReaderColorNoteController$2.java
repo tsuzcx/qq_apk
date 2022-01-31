@@ -1,10 +1,10 @@
 package cooperation.qqreader.host.colornote;
 
-import anxw;
+import aocf;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class ReaderColorNoteController$2
-  implements anxw
+  implements aocf
 {
   ReaderColorNoteController$2(ReaderColorNoteController paramReaderColorNoteController, IReaderServiceInfo paramIReaderServiceInfo) {}
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.freshnews;
 
-import alpo;
+import alud;
 import android.widget.ImageView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
@@ -13,9 +13,9 @@ class QQInputView$3
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(0);
-    QQInputView.a(this.this$0).setImageResource(2130847356);
+    QQInputView.a(this.this$0).setImageResource(2130847429);
     if (AppSetting.c) {
-      QQInputView.a(this.this$0).setContentDescription(alpo.a(2131710773));
+      QQInputView.a(this.this$0).setContentDescription(alud.a(2131710785));
     }
   }
 }

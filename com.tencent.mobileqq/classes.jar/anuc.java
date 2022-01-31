@@ -1,83 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
 
 public class anuc
-  implements bcgo
 {
-  public anuc(WordMatchManager paramWordMatchManager) {}
+  public int a;
+  public String a;
+  public ArrayList<anud> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public static anuc a(oidb_0x74b.HeadInfo paramHeadInfo)
   {
-    int i = 1;
-    if (paramJSONObject != null) {}
-    try
+    Object localObject;
+    if (paramHeadInfo == null) {
+      localObject = null;
+    }
+    anuc localanuc;
+    do
     {
-      int j = paramJSONObject.getInt("retcode");
-      if (j != 0) {
-        i = 0;
+      return localObject;
+      localanuc = new anuc();
+      if (paramHeadInfo.uint32_id.has()) {
+        localanuc.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
       }
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
-        }
-        this.a.a(false);
-        return;
+      if (paramHeadInfo.str_photohead.has()) {
+        localanuc.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
+      }
+      if (paramHeadInfo.uint32_invalid.has()) {
+        localanuc.b = paramHeadInfo.uint32_invalid.get();
+      }
+      if (paramHeadInfo.uint32_timestamp.has()) {
+        localanuc.c = paramHeadInfo.uint32_timestamp.get();
+      }
+      if (paramHeadInfo.uint32_type.has()) {
+        localanuc.d = paramHeadInfo.uint32_type.get();
+      }
+      localObject = localanuc;
+    } while (!paramHeadInfo.rpt_videoheadlist.has());
+    localanuc.jdField_a_of_type_JavaUtilArrayList = anud.a(paramHeadInfo.rpt_videoheadlist.get());
+    return localanuc;
+  }
+  
+  public static ArrayList<anuc> a(List<oidb_0x74b.HeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      anuc localanuc = a((oidb_0x74b.HeadInfo)paramList.next());
+      if (localanuc != null) {
+        localArrayList.add(localanuc);
       }
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle = paramBundle;
-      paramBundle.printStackTrace();
-      paramBundle = new anud();
-      try
-      {
-        if (paramJSONObject.has("result"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("result");
-          if (paramJSONObject.has("id")) {
-            paramBundle.c = paramJSONObject.getString("id");
-          }
-          if (paramJSONObject.has("md5")) {
-            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
-          }
-          if (paramJSONObject.has("type")) {
-            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-          }
-          if (paramJSONObject.has("need_flag")) {
-            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
-          }
-          if (paramJSONObject.has("delay")) {
-            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
-          }
-          if (paramJSONObject.has("base_md5")) {
-            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
-          }
-        }
-        this.a.a(paramBundle);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
-      }
-      if (paramBundle.jdField_a_of_type_Int != paramInt)
-      {
-        this.a.a(false);
-        return;
-      }
-    }
-    finally {}
+    return localArrayList;
   }
 }
 

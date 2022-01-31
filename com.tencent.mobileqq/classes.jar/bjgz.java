@@ -1,25 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoInfo.VideoRemark;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
-public final class bjgz
-  implements Parcelable.Creator<VideoInfo.VideoRemark>
+public class bjgz
+  implements DialogInterface.OnDismissListener
 {
-  public VideoInfo.VideoRemark a(Parcel paramParcel)
-  {
-    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
-    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.c = paramParcel.readString();
-    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoRemark.d = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
-    return localVideoRemark;
-  }
+  public bjgz(TranslucentActivity paramTranslucentActivity) {}
   
-  public VideoInfo.VideoRemark[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new VideoInfo.VideoRemark[paramInt];
+    this.a.finish();
   }
 }
 

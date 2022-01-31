@@ -1,8 +1,8 @@
-import android.widget.TextView;
+import android.net.Uri;
 
-class bbkd
+public abstract interface bbkd
 {
-  TextView a;
+  public abstract void a(Uri paramUri);
 }
 
 

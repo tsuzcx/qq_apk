@@ -1,88 +1,73 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class acdx
-  extends allb
+  extends ClickableSpan
 {
-  public acdx(BaseChatPie paramBaseChatPie) {}
+  public int a;
+  public Bundle a;
+  public String a;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public acdx(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView != null) {}
+    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+      return;
+    }
+    Object localObject;
+    switch (this.jdField_a_of_type_Int)
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
-        acex.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      }
-      if ((paramBoolean) && (paramObject != null)) {}
-      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+    default: 
+      return;
+    case 1: 
+      bcpx.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+      return;
+    case 2: 
+      try
       {
-      default: 
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
-        {
-          this.a.A();
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + bdal.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
-          }
-          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-          if (AppSetting.c)
-          {
-            paramObject = this.a.e.getText().toString();
-            this.a.e.setContentDescription(paramObject);
-            this.a.a().setTitle(this.a.e.getText());
-          }
-          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof agkt))) {
-            ((agkt)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
-          }
-        }
-      case 1034: 
+        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
+        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        paramView.startActivity((Intent)localObject);
         return;
       }
-      this.a.b(false, false);
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+      ((ProfileActivity.AllInOne)localObject).h = 109;
+      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
       return;
     }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    catch (Exception paramView)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      this.a.aU();
+      paramView.printStackTrace();
     }
   }
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((this.a.d != null) && (this.a.d.isShowing())) {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
-  }
-  
-  protected void onSetCalReactiveDays(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
-      }
-      this.a.aU();
-    }
+    paramTextPaint.setColor(-12541697);
   }
 }
 

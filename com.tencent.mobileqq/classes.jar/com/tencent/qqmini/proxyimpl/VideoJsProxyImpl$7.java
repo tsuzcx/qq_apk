@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import bgjd;
-import bgje;
+import bgnk;
+import bgnl;
 import java.io.File;
 
 class VideoJsProxyImpl$7
-  implements bgje
+  implements bgnl
 {
   VideoJsProxyImpl$7(VideoJsProxyImpl paramVideoJsProxyImpl, Activity paramActivity, boolean paramBoolean) {}
   
@@ -24,7 +24,7 @@ class VideoJsProxyImpl$7
       }
       for (;;)
       {
-        bgjd.a().b(this);
+        bgnk.a().b(this);
         return true;
         VideoJsProxyImpl.access$600(this.this$0, VideoJsProxyImpl.access$500(this.this$0), "chooseVideo", null);
       }

@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import java.util.ArrayList;
 
 class pjk
-  implements bhtu
+  implements bhyb
 {
   pjk(pjj parampjj) {}
   

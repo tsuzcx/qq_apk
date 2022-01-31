@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import akur;
+import akzg;
 
 public class CmGameSubRscHandler$1
   implements Runnable
 {
-  public CmGameSubRscHandler$1(akur paramakur) {}
+  public CmGameSubRscHandler$1(akzg paramakzg) {}
   
   public void run()
   {

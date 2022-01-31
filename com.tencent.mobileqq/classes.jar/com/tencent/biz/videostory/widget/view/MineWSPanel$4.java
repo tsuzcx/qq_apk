@@ -2,35 +2,35 @@ package com.tencent.biz.videostory.widget.view;
 
 import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
 import android.text.TextUtils;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.biz.videostory.db.WSPersonalEntity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import yxc;
+import zbr;
 
 public class MineWSPanel$4
   implements Runnable
 {
-  public MineWSPanel$4(yxc paramyxc) {}
+  public MineWSPanel$4(zbr paramzbr) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(yxc.a(this.this$0))) {
+    if (TextUtils.isEmpty(zbr.a(this.this$0))) {
       QLog.i("MineWSPanel", 2, "mUin is invalid");
     }
     do
     {
       return;
-      if (yxc.a(this.this$0) == null)
+      if (zbr.a(this.this$0) == null)
       {
         QLog.i("MineWSPanel", 2, "mBaseActivity is null");
         return;
       }
-      Object localObject = yxc.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
-      WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((awbw)localObject).a(WSPersonalEntity.class, yxc.a(this.this$0));
-      ((awbw)localObject).a();
+      Object localObject = zbr.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
+      WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((awgf)localObject).a(WSPersonalEntity.class, zbr.a(this.this$0));
+      ((awgf)localObject).a();
       if (localWSPersonalEntity == null) {
         break;
       }
@@ -38,8 +38,8 @@ public class MineWSPanel$4
       try
       {
         ((WEISHI.stGetPersonalPageRsp)localObject).mergeFrom(localWSPersonalEntity.weiShiPersonalRsp);
-        if ((localObject != null) && (yxc.a(this.this$0) != null)) {
-          yxc.a(this.this$0).runOnUiThread(new MineWSPanel.4.1(this, (WEISHI.stGetPersonalPageRsp)localObject));
+        if ((localObject != null) && (zbr.a(this.this$0) != null)) {
+          zbr.a(this.this$0).runOnUiThread(new MineWSPanel.4.1(this, (WEISHI.stGetPersonalPageRsp)localObject));
         }
         this.this$0.a();
         return;

@@ -1,107 +1,40 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import mqq.util.WeakReference;
 
-class atem
-  extends amab
+final class atem
+  implements Callable<Bundle>
 {
-  atem(atei paramatei) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ateg> jdField_a_of_type_MqqUtilWeakReference;
+  private final String b;
   
-  protected void a(int paramInt1, int paramInt2)
+  atem(ateg paramateg, String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      atei.a(this.a, 2131693803);
-    }
-    this.a.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramateg);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public Bundle a()
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
-      {
-      case -1: 
-      default: 
-        atei.a(this.a, 2131693803);
-      }
-    }
-    for (;;)
+    Object localObject = (ateg)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Bundle[] arrayOfBundle = new Bundle[1];
+    if (localObject != null)
     {
-      this.a.jdField_a_of_type_Int = -1;
-      return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        atei.a(this.a, 2131693804, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        atei.a(this.a, 2131721045);
-        continue;
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
+      aszh localaszh = new aszh();
+      CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      localaszh.a(((ateg)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new aten(this, localaszh, arrayOfBundle, localCountDownLatch));
+      localCountDownLatch.await();
+      return arrayOfBundle[0];
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.b == 0) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
-      }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
-      {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
-        }
-        paramInt2 = 1;
-        label61:
-        paramString = atei.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
-        }
-        ahla.a(paramString, paramTroopInfo.troopuin);
-      }
-    }
-    for (;;)
-    {
-      this.a.b = 0;
-      return;
-      paramInt1 = 0;
-      break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        atei.a(this.a, paramTroopInfo);
-      }
-      else
-      {
-        atei.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
-        }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        atei.a(this.a, 2131719221);
-      }
-    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", false);
+    ((Bundle)localObject).putInt("code", -1000);
+    arrayOfBundle[0] = localObject;
+    return arrayOfBundle[0];
   }
 }
 

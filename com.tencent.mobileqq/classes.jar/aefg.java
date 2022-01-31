@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefg
-  extends awdn
+  implements View.OnClickListener
 {
-  public aefg(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aefg(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
+    TroopMemberListActivity.b(this.a);
+    new azqx(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
   }
 }
 

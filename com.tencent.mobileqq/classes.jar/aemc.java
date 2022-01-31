@@ -1,26 +1,17 @@
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+
 public class aemc
+  extends bhry
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  public aemc(VisitorsActivity paramVisitorsActivity) {}
   
-  public aemc(String paramString)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a.d.setVisibility(0);
+    this.a.a.setClipChildren(false);
   }
 }
 

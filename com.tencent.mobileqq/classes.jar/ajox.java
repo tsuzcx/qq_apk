@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajox
-  extends ajpb
+  implements bhuk
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.p();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  public ajox(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public boolean a()
+  public void OnClick(View paramView, int paramInt)
   {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
-  }
-  
-  public void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
-    }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + alud.a(2131704055);
+    bjgs.a().c(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aekt;
+import aepi;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -20,22 +20,22 @@ import android.view.WindowManager.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import antn;
-import aprh;
-import bdjd;
-import bdlu;
-import bhnq;
-import bhou;
-import bhyl;
-import bhym;
-import bhyn;
-import bhyo;
-import bhyp;
-import bhyq;
-import bhyr;
-import bhys;
-import bhyt;
-import bhzc;
+import anxw;
+import apvq;
+import bdnm;
+import bdqd;
+import bhrx;
+import bhtb;
+import bics;
+import bict;
+import bicu;
+import bicv;
+import bicw;
+import bicx;
+import bicy;
+import bicz;
+import bida;
+import bidj;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -61,10 +61,10 @@ public class XPanelContainer
   private long jdField_a_of_type_Long = -1L;
   private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
   private View jdField_a_of_type_AndroidViewView;
-  public bhyp a;
-  private bhyr jdField_a_of_type_Bhyr;
-  private bhys jdField_a_of_type_Bhys;
-  public WeakReference<bhyq> a;
+  public bicw a;
+  private bicy jdField_a_of_type_Bicy;
+  private bicz jdField_a_of_type_Bicz;
+  public WeakReference<bicx> a;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private View b;
@@ -89,7 +89,7 @@ public class XPanelContainer
   
   static
   {
-    jdField_d_of_type_Boolean = bhou.e();
+    jdField_d_of_type_Boolean = bhtb.e();
   }
   
   public XPanelContainer(Context paramContext)
@@ -107,10 +107,10 @@ public class XPanelContainer
     {
       jdField_a_of_type_Int = (int)(b() * paramContext.getResources().getDisplayMetrics().density);
       jdField_b_of_type_Int = jdField_a_of_type_Int;
-      if (!bhzc.a(paramContext)) {
+      if (!bidj.a(paramContext)) {
         break label309;
       }
-      i1 = bhzc.a(paramContext);
+      i1 = bidj.a(paramContext);
     }
     label309:
     for (jdField_c_of_type_Int = (int)((paramContext.getResources().getDisplayMetrics().heightPixels + i1) * 0.4D);; jdField_c_of_type_Int = (int)(paramContext.getResources().getDisplayMetrics().heightPixels * 0.4D))
@@ -122,8 +122,8 @@ public class XPanelContainer
         QLog.d("XPanelContainer", 2, " mDefaultExternalPanelheight = " + jdField_b_of_type_Int + "mMAXExternalPanelheight=" + jdField_c_of_type_Int + "density=" + paramContext.getResources().getDisplayMetrics().density + "mNavigationBarHeight=" + i1);
       }
       this.l = ImmersiveUtils.getStatusBarHeight(getContext());
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bdlu.a())) {
-        setOnSystemUiVisibilityChangeListener(new bhyl(this));
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bdqd.a())) {
+        setOnSystemUiVisibilityChangeListener(new bics(this));
       }
       return;
     }
@@ -132,10 +132,10 @@ public class XPanelContainer
   private void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (bhyq localbhyq = null;; localbhyq = (bhyq)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    for (bicx localbicx = null;; localbicx = (bicx)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      if (localbhyq != null) {
-        localbhyq.b(paramInt1, paramInt2);
+      if (localbicx != null) {
+        localbicx.b(paramInt1, paramInt2);
       }
       return;
     }
@@ -159,8 +159,8 @@ public class XPanelContainer
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bhys != null) {
-      this.jdField_a_of_type_Bhys.a(paramBoolean);
+    if (this.jdField_a_of_type_Bicz != null) {
+      this.jdField_a_of_type_Bicz.a(paramBoolean);
     }
   }
   
@@ -178,8 +178,8 @@ public class XPanelContainer
     {
       int i1 = this.jdField_f_of_type_Int;
       this.jdField_f_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Bhyr != null) {
-        this.jdField_a_of_type_Bhyr.a(i1, this.jdField_f_of_type_Int);
+      if (this.jdField_a_of_type_Bicy != null) {
+        this.jdField_a_of_type_Bicy.a(i1, this.jdField_f_of_type_Int);
       }
       URLDrawable.resume();
       ApngImage.playByTag(0);
@@ -207,8 +207,8 @@ public class XPanelContainer
   
   private int c()
   {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bhyt))) {
-      return ((bhyt)this.jdField_b_of_type_AndroidViewView).a();
+    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bida))) {
+      return ((bida)this.jdField_b_of_type_AndroidViewView).a();
     }
     return jdField_b_of_type_Int;
   }
@@ -238,7 +238,7 @@ public class XPanelContainer
       return;
     }
     float f1 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) / 0.0F;
-    this.n = ((int)(jdField_a_of_type_Int - bhnq.a(f1) * jdField_a_of_type_Int));
+    this.n = ((int)(jdField_a_of_type_Int - bhrx.a(f1) * jdField_a_of_type_Int));
   }
   
   public int a()
@@ -288,7 +288,7 @@ public class XPanelContainer
                 if (QLog.isColorLevel()) {
                   QLog.d("Q.aio.XPanelContainer", 2, " requestFocusFromTouch success ");
                 }
-                aekt.a(this.jdField_a_of_type_AndroidViewView);
+                aepi.a(this.jdField_a_of_type_AndroidViewView);
                 if (this.jdField_b_of_type_AndroidViewView != null) {
                   this.jdField_b_of_type_AndroidViewView.setVisibility(8);
                 }
@@ -316,7 +316,7 @@ public class XPanelContainer
                   if (localObject2 != null)
                   {
                     localObject1 = localObject2;
-                    if (this.jdField_a_of_type_Bhyr.a(paramInt))
+                    if (this.jdField_a_of_type_Bicy.a(paramInt))
                     {
                       this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                       removeView((View)localObject2);
@@ -328,7 +328,7 @@ public class XPanelContainer
                   if (localObject1 == null) {}
                   try
                   {
-                    localObject2 = this.jdField_a_of_type_Bhyr.a(paramInt);
+                    localObject2 = this.jdField_a_of_type_Bicy.a(paramInt);
                     if (localObject2 == null) {
                       break;
                     }
@@ -362,7 +362,7 @@ public class XPanelContainer
           }
           if (paramInt == 1)
           {
-            aekt.a(this.jdField_a_of_type_AndroidViewView);
+            aepi.a(this.jdField_a_of_type_AndroidViewView);
             return;
           }
           if (paramInt <= 1) {
@@ -372,13 +372,13 @@ public class XPanelContainer
           if (paramInt == 3)
           {
             EmoticonMainPanel.jdField_a_of_type_Long = System.currentTimeMillis();
-            bdjd.a(null, "AIO_EmoticonPanel_OpenDuration");
+            bdnm.a(null, "AIO_EmoticonPanel_OpenDuration");
             localObject2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
             localObject1 = localObject2;
             if (localObject2 != null)
             {
               localObject1 = localObject2;
-              if (this.jdField_a_of_type_Bhyr.a(paramInt))
+              if (this.jdField_a_of_type_Bicy.a(paramInt))
               {
                 this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                 removeView((View)localObject2);
@@ -391,7 +391,7 @@ public class XPanelContainer
           }
           try
           {
-            localObject2 = this.jdField_a_of_type_Bhyr.a(paramInt);
+            localObject2 = this.jdField_a_of_type_Bicy.a(paramInt);
             if (localObject2 != null)
             {
               addView((View)localObject2);
@@ -423,13 +423,13 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new bhyn(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new bicu(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
                     break label409;
                   }
-                  bdjd.a(null, "apollo_panel_open");
+                  bdnm.a(null, "apollo_panel_open");
                 }
               }
             }
@@ -487,7 +487,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new bhym(this));
+      paramView.setOnFocusChangeListener(new bict(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -517,8 +517,8 @@ public class XPanelContainer
       EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)this.jdField_b_of_type_AndroidViewView;
       localEmoticonMainPanel.removeView(localEmoticonMainPanel.jdField_a_of_type_AndroidViewView);
     }
-    if (this.jdField_a_of_type_Bhyr != null) {
-      this.jdField_a_of_type_Bhyr.s();
+    if (this.jdField_a_of_type_Bicy != null) {
+      this.jdField_a_of_type_Bicy.s();
     }
     boolean bool;
     if (this.jdField_f_of_type_Int > 0)
@@ -586,7 +586,7 @@ public class XPanelContainer
       i1 = getHeight();
       ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
       localValueAnimator.setDuration(150L);
-      localValueAnimator.addUpdateListener(new bhyo(this, i1));
+      localValueAnimator.addUpdateListener(new bicv(this, i1));
       localValueAnimator.start();
       return bool;
     }
@@ -596,13 +596,13 @@ public class XPanelContainer
   
   public void b()
   {
-    antn localantn;
-    if ((this.jdField_a_of_type_Bhyr instanceof BaseChatPie))
+    anxw localanxw;
+    if ((this.jdField_a_of_type_Bicy instanceof BaseChatPie))
     {
-      localantn = (antn)((BaseChatPie)this.jdField_a_of_type_Bhyr).a(50);
-      if (localantn == null) {}
+      localanxw = (anxw)((BaseChatPie)this.jdField_a_of_type_Bicy).a(50);
+      if (localanxw == null) {}
     }
-    for (boolean bool = localantn.a();; bool = true)
+    for (boolean bool = localanxw.a();; bool = true)
     {
       if (bool)
       {
@@ -665,7 +665,7 @@ public class XPanelContainer
     {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       this.jdField_b_of_type_AndroidViewView = null;
-      aprh.b();
+      apvq.b();
     }
   }
   
@@ -678,7 +678,7 @@ public class XPanelContainer
   {
     if (jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Bhyr != null) {}
+      if (this.jdField_a_of_type_Bicy != null) {}
       this.jdField_f_of_type_Int = 1;
       this.m = 1;
       this.jdField_g_of_type_Int = 0;
@@ -700,7 +700,7 @@ public class XPanelContainer
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (bhou.f()) {
+    if (bhtb.f()) {
       if ((paramConfiguration.orientation != this.jdField_i_of_type_Int) && ((this.jdField_j_of_type_Int != paramConfiguration.screenWidthDp) || (this.jdField_k_of_type_Int != paramConfiguration.screenHeightDp)))
       {
         this.jdField_i_of_type_Int = -1;
@@ -759,16 +759,16 @@ public class XPanelContainer
     {
       if (this.jdField_c_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Bhyp != null) {
-          this.jdField_a_of_type_Bhyp.l(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Bicw != null) {
+          this.jdField_a_of_type_Bicw.l(jdField_b_of_type_Boolean);
         }
         this.jdField_c_of_type_Boolean = false;
       }
       if (this.jdField_h_of_type_Boolean)
       {
         this.jdField_h_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Bhyp != null) {
-          this.jdField_a_of_type_Bhyp.l(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Bicw != null) {
+          this.jdField_a_of_type_Bicw.l(jdField_b_of_type_Boolean);
         }
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
@@ -825,7 +825,7 @@ public class XPanelContainer
     {
       localObject = getResources().getConfiguration();
       this.jdField_i_of_type_Int = ((Configuration)localObject).orientation;
-      if (bhou.f())
+      if (bhtb.f())
       {
         this.jdField_j_of_type_Int = ((Configuration)localObject).screenWidthDp;
         this.jdField_k_of_type_Int = ((Configuration)localObject).screenHeightDp;
@@ -1204,19 +1204,19 @@ public class XPanelContainer
     }
   }
   
-  public void setOnChangeMultiScreenListener(bhyp parambhyp)
+  public void setOnChangeMultiScreenListener(bicw parambicw)
   {
-    this.jdField_a_of_type_Bhyp = parambhyp;
+    this.jdField_a_of_type_Bicw = parambicw;
   }
   
-  public void setOnGoingToShowPanelListener(bhyq parambhyq)
+  public void setOnGoingToShowPanelListener(bicx parambicx)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhyq);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambicx);
   }
   
-  public void setOnPanelChangeListener(bhyr parambhyr)
+  public void setOnPanelChangeListener(bicy parambicy)
   {
-    this.jdField_a_of_type_Bhyr = parambhyr;
+    this.jdField_a_of_type_Bicy = parambicy;
   }
   
   public void setReadyToShow(boolean paramBoolean)
@@ -1231,9 +1231,9 @@ public class XPanelContainer
     }
   }
   
-  public void setReadyToShowChangeListener(bhys parambhys)
+  public void setReadyToShowChangeListener(bicz parambicz)
   {
-    this.jdField_a_of_type_Bhys = parambhys;
+    this.jdField_a_of_type_Bicz = parambicz;
   }
 }
 

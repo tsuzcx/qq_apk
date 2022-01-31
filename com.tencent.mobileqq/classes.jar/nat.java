@@ -32,7 +32,7 @@ public class nat
     if ((paramRspBody == null) || (!paramRspBody.has())) {
       return false;
     }
-    return bdcs.a(new File(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getFilesDir(), "AddContactTroopManage" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).getAbsolutePath(), paramRspBody.toByteArray(), false);
+    return bdhb.a(new File(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getFilesDir(), "AddContactTroopManage" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).getAbsolutePath(), paramRspBody.toByteArray(), false);
   }
   
   /* Error */
@@ -56,7 +56,7 @@ public class nat
     //   33: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: invokespecial 75	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   42: invokestatic 96	bdcs:a	(Ljava/io/File;)[B
+    //   42: invokestatic 96	bdhb:a	(Ljava/io/File;)[B
     //   45: astore_2
     //   46: new 40	tencent/im/troop_view/troopviewInfo$RspBody
     //   49: dup

@@ -1,6 +1,24 @@
-public abstract interface wkn<T>
+import android.support.annotation.NonNull;
+
+public class wkn
+  extends umf<wjw, veb>
 {
-  public abstract void a(T paramT);
+  public wkn(wjw paramwjw)
+  {
+    super(paramwjw);
+  }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull veb paramveb)
+  {
+    wjw.a(paramwjw, paramveb.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return veb.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull veb paramveb) {}
 }
 
 

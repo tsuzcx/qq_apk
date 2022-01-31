@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-public abstract class amiz
+class amiz
+  implements amje
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  amiz(amiy paramamiy) {}
   
-  public amiz(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    amiy.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 

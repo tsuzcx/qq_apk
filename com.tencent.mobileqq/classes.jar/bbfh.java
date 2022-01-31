@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bbfh
-  implements bbap
+  implements bbkd
 {
-  private bbfh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bbfh(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void a(bbar parambbar)
+  public void a(Uri paramUri)
   {
-    this.a.jdField_a_of_type_Bbar = parambbar;
-    this.a.jdField_a_of_type_Bayf.b();
-    this.a.e(true);
-    azmj.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
+    this.a.a = paramUri;
   }
 }
 

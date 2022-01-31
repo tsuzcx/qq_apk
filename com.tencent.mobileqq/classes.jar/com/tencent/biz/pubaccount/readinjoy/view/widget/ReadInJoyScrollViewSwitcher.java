@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -27,7 +27,7 @@ import sjx;
 import sjy;
 import sjz;
 import ska;
-import xee;
+import xin;
 
 public class ReadInJoyScrollViewSwitcher
   extends ViewSwitcher
@@ -53,17 +53,17 @@ public class ReadInJoyScrollViewSwitcher
   
   private void a(ska paramska, View paramView, int paramInt)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131377552);
+    TextView localTextView = (TextView)paramView.findViewById(2131377606);
     localTextView.setText(paramska.jdField_a_of_type_JavaLangString);
-    paramView = (CornerImageView)paramView.findViewById(2131367808);
-    paramView.setRadius(aekt.a(2.0F, getResources()));
+    paramView = (CornerImageView)paramView.findViewById(2131367819);
+    paramView.setRadius(aepi.a(2.0F, getResources()));
     RelativeLayout.LayoutParams localLayoutParams;
     if (TextUtils.isEmpty(paramska.b)) {
       if (paramska.jdField_a_of_type_Int > 0)
       {
         paramView.setImageDrawable(getResources().getDrawable(paramska.jdField_a_of_type_Int));
         localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localLayoutParams.rightMargin = aekt.a(32.0F, getResources());
+        localLayoutParams.rightMargin = aepi.a(32.0F, getResources());
         localTextView.setLayoutParams(localLayoutParams);
         paramView.setVisibility(0);
       }
@@ -74,12 +74,12 @@ public class ReadInJoyScrollViewSwitcher
       return;
       paramView.setVisibility(8);
       paramView = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      paramView.rightMargin = aekt.a(5.0F, getResources());
+      paramView.rightMargin = aepi.a(5.0F, getResources());
       localTextView.setLayoutParams(paramView);
       continue;
       a(paramska.b, paramView);
       localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      localLayoutParams.rightMargin = aekt.a(32.0F, getResources());
+      localLayoutParams.rightMargin = aepi.a(32.0F, getResources());
       localTextView.setLayoutParams(localLayoutParams);
       paramView.setVisibility(0);
     }
@@ -138,9 +138,9 @@ public class ReadInJoyScrollViewSwitcher
   protected void a(String paramString, URLImageView paramURLImageView)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = xee.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = xee.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = xee.b(getContext(), 2.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = xin.b(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = xin.b(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = xin.b(getContext(), 2.0F);
     try
     {
       localObject = URLDrawable.getDrawable(new URL("redtouchpicdownloadprotoc", null, paramString), (URLDrawable.URLDrawableOptions)localObject);

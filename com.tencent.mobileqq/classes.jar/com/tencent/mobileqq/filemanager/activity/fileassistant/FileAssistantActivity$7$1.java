@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import aqkx;
+import aqpg;
 
 public class FileAssistantActivity$7$1
   implements Runnable
 {
-  public FileAssistantActivity$7$1(aqkx paramaqkx, boolean paramBoolean) {}
+  public FileAssistantActivity$7$1(aqpg paramaqpg, boolean paramBoolean) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      FileAssistantActivity.d(this.jdField_a_of_type_Aqkx.a);
+      FileAssistantActivity.d(this.jdField_a_of_type_Aqpg.a);
       return;
     }
-    FileAssistantActivity.e(this.jdField_a_of_type_Aqkx.a);
+    FileAssistantActivity.e(this.jdField_a_of_type_Aqpg.a);
   }
 }
 

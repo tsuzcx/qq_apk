@@ -62,39 +62,65 @@ class AEKitNode$AEKitFilter
   {
     DurationUtil.start("apply aeFilterManager");
     Logger.i("AEKitFilter", "applying");
-    int i = (int)paramCIImage.getSize().width;
-    int j = (int)paramCIImage.getSize().height;
-    if (this.aeFilterManager == null) {
-      initAEFilterManager(i, j);
+    paramTAVVideoEffect = AEKitNode.access$100(this.this$0).getOverlayImgPath();
+    if (!TextUtils.isEmpty(paramTAVVideoEffect))
+    {
+      Logger.i("AEKitFilter", "apply---has overlayPath: " + paramTAVVideoEffect);
+      paramTAVVideoEffect = new CIImage(paramTAVVideoEffect);
     }
-    if (!this.aeFilterManager.isInited()) {}
+    int i;
     do
     {
+      int j;
+      CIContext localCIContext;
       long l;
       do
       {
         do
         {
-          return paramCIImage;
-          paramTAVVideoEffect = paramRenderInfo.getCiContext();
-        } while ((paramTAVVideoEffect == null) || (paramTAVVideoEffect.getRenderContext() == null));
-        l = paramRenderInfo.getTime().getTimeUs() / 1000L;
-      } while ((AEKitNode.access$100(this.this$0) != null) && ((l < AEKitNode.access$100(this.this$0).getStartTime()) || (l > AEKitNode.access$100(this.this$0).getStartTime() + AEKitNode.access$100(this.this$0).getDuration())));
+          do
+          {
+            do
+            {
+              do
+              {
+                return paramTAVVideoEffect;
+                i = (int)paramCIImage.getSize().width;
+                j = (int)paramCIImage.getSize().height;
+                if (this.aeFilterManager == null) {
+                  initAEFilterManager(i, j);
+                }
+                paramTAVVideoEffect = paramCIImage;
+              } while (!this.aeFilterManager.isInited());
+              localCIContext = paramRenderInfo.getCiContext();
+              paramTAVVideoEffect = paramCIImage;
+            } while (localCIContext == null);
+            paramTAVVideoEffect = paramCIImage;
+          } while (localCIContext.getRenderContext() == null);
+          l = paramRenderInfo.getTime().getTimeUs() / 1000L;
+          if (AEKitNode.access$100(this.this$0) == null) {
+            break;
+          }
+          paramTAVVideoEffect = paramCIImage;
+        } while (l < AEKitNode.access$100(this.this$0).getStartTime());
+        paramTAVVideoEffect = paramCIImage;
+      } while (l > AEKitNode.access$100(this.this$0).getStartTime() + AEKitNode.access$100(this.this$0).getDuration());
       if (this.cacheTextureInfo == null)
       {
-        paramTAVVideoEffect.getRenderContext().makeCurrent();
+        localCIContext.getRenderContext().makeCurrent();
         this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
       }
       if ((this.cacheTextureInfo.width != i) || (this.cacheTextureInfo.height != j))
       {
-        paramTAVVideoEffect.getRenderContext().makeCurrent();
+        localCIContext.getRenderContext().makeCurrent();
         this.cacheTextureInfo.release();
         this.cacheTextureInfo = CIContext.newTextureInfo(i, j);
       }
-      paramTAVVideoEffect.convertImageToTexture(paramCIImage, this.cacheTextureInfo);
-      paramTAVVideoEffect = this.cacheTextureInfo;
-    } while (paramTAVVideoEffect == null);
-    this.aeFilterManager.updateWidthHeight(paramTAVVideoEffect.width, paramTAVVideoEffect.height);
+      localCIContext.convertImageToTexture(paramCIImage, this.cacheTextureInfo);
+      paramRenderInfo = this.cacheTextureInfo;
+      paramTAVVideoEffect = paramCIImage;
+    } while (paramRenderInfo == null);
+    this.aeFilterManager.updateWidthHeight(paramRenderInfo.width, paramRenderInfo.height);
     if (AEKitNode.access$100(this.this$0) != null)
     {
       this.aeFilterManager.setGlowAlpha(AEKitNode.access$100(this.this$0).getGlowAlpha());
@@ -105,20 +131,20 @@ class AEKitNode$AEKitFilter
         this.aeFilterManager.setAdjustParams(AEKitNode.access$100(this.this$0).getAdjustParams());
       }
       if ((TextUtils.isEmpty(AEKitNode.access$100(this.this$0).getLutPath())) && (AEKitNode.access$100(this.this$0).getSmoothLevel() <= 0)) {
-        break label514;
+        break label583;
       }
     }
-    label514:
+    label583:
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2 = AEKitNode.access$100(this.this$0).isEnableAIFilter();
       this.aeFilterManager.switchFilterOn(101, bool1);
       this.aeFilterManager.switchFilterOn(116, bool2);
       DurationUtil.start("aeFilterManager.drawFrame");
-      i = this.aeFilterManager.drawFrame(paramTAVVideoEffect.textureID, false, 0L);
+      i = this.aeFilterManager.drawFrame(paramRenderInfo.textureID, false, 0L);
       DurationUtil.end("aeFilterManager.drawFrame");
       if (this.cacheOutTexture == null) {
-        this.cacheOutTexture = new TextureInfo(i, paramTAVVideoEffect.textureType, paramTAVVideoEffect.width, paramTAVVideoEffect.height, paramTAVVideoEffect.preferRotation);
+        this.cacheOutTexture = new TextureInfo(i, paramRenderInfo.textureType, paramRenderInfo.width, paramRenderInfo.height, paramRenderInfo.preferRotation);
       }
       DurationUtil.end("apply aeFilterManager");
       return new CIImage(this.cacheOutTexture);
@@ -132,7 +158,9 @@ class AEKitNode$AEKitFilter
   
   public void release()
   {
-    this.aeFilterManager.destroy();
+    if (this.aeFilterManager != null) {
+      this.aeFilterManager.destroy();
+    }
     if ((this.cacheTextureInfo != null) && (!this.cacheTextureInfo.isReleased())) {
       this.cacheTextureInfo.release();
     }

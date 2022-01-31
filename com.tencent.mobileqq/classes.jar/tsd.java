@@ -1,17 +1,16 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tsd
-  implements Observer<tzm<List<QQCircleFeedBase.StTabInfo>>>
+class tsd
+  implements View.OnClickListener
 {
-  public tsd(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  tsd(tsc paramtsc) {}
   
-  public void a(@Nullable tzm<List<QQCircleFeedBase.StTabInfo>> paramtzm)
+  public void onClick(View paramView)
   {
-    QCircleFolderFragmentsPart.a(this.a, paramtzm);
+    if (tsc.a(this.a)) {
+      tsc.a(this.a);
+    }
   }
 }
 

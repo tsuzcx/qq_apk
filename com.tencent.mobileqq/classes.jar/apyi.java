@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import java.util.List;
 
-public abstract interface apyi
+class apyi
+  implements aufy<List<apws>>
 {
-  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
+  apyi(apyf paramapyf) {}
+  
+  public void a(List<apws> paramList)
+  {
+    this.a.a(paramList);
+  }
 }
 
 

@@ -1,136 +1,104 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraper.1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import dualsim.common.OrderCheckResult;
-import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdwd
+  extends VasWebviewJsPlugin
 {
-  private static SharedPreferences a()
+  public void a(JSONObject paramJSONObject, String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_sdk", 4);
-  }
-  
-  protected static Pair<Boolean, Integer> a()
-  {
-    SharedPreferences localSharedPreferences = a();
-    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
-  }
-  
-  protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
-  {
-    Object localObject = a();
-    boolean bool;
-    int j;
-    int i;
-    if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
-    {
-      localObject = ((SharedPreferences)localObject).edit().putInt("kingCardProduct", paramOrderCheckResult.product);
-      if (paramOrderCheckResult.kingcard > 0)
-      {
-        bool = true;
-        ((SharedPreferences.Editor)localObject).putBoolean("kingCard", bool).apply();
-      }
+    int i = paramJSONObject.getInt("faceId");
+    if (QLog.isColorLevel()) {
+      QLog.i("VasFaceJsPlugin", 2, "setup " + paramJSONObject.toString());
     }
-    else
-    {
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
-      j = paramString.getInt("kingCardSdk", -1);
-      if (paramOrderCheckResult.kingcard != 0) {
-        break label163;
-      }
-      i = -1;
+    paramJSONObject = new Bundle();
+    paramJSONObject.clear();
+    paramJSONObject.putInt("id", i);
+    super.sendRemoteReq(apml.a("face_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("VasFaceJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    for (;;)
+    boolean bool1;
+    if ((paramString1 == null) || (!"face".equals(paramString2)) || (paramString3 == null)) {
+      bool1 = false;
+    }
+    do
     {
-      if (j == i) {
-        break label195;
-      }
-      paramString.edit().putInt("kingCardSdk", i).putInt("toast_version", 0).putInt("popup_version_v2", 0).commit();
-      return true;
-      bool = false;
-      break;
-      label163:
-      if (paramOrderCheckResult.kingcard == 1)
+      for (;;)
       {
-        if (paramOrderCheckResult.product == 90155946) {
-          i = 2;
-        } else {
-          i = 1;
+        return bool1;
+        try
+        {
+          paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+          bool1 = bool2;
+          if (paramJsBridgeListener != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VasFaceJsPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
+            }
+            paramString1 = paramJsBridgeListener.optString("callback");
+            if (!TextUtils.isEmpty(paramString1)) {
+              break label171;
+            }
+            QLog.e("VasFaceJsPlugin", 1, "callback id is null, so return");
+            return true;
+          }
+        }
+        catch (Throwable paramJsBridgeListener)
+        {
+          bool1 = bool2;
         }
       }
-      else {
-        i = 0;
-      }
-    }
-    label195:
-    return false;
-  }
-  
-  protected static boolean c()
-  {
-    return a().getBoolean("supportActivationView", false);
-  }
-  
-  String a()
-  {
-    return "KC.KCWraper";
-  }
-  
-  void a(ViewGroup paramViewGroup) {}
-  
-  void a(bdwn parambdwn, boolean paramBoolean)
-  {
-    if (parambdwn != null)
+    } while (!QLog.isColorLevel());
+    QLog.e("VasFaceJsPlugin", 2, paramJsBridgeListener.getMessage());
+    return true;
+    label171:
+    if ("setup".equals(paramString3))
     {
-      if (paramBoolean) {
-        ThreadManager.getUIHandler().post(new KCWraper.1(this, parambdwn));
-      }
+      a(paramJsBridgeListener, paramString1);
+      return true;
     }
-    else {
+    throw new Exception(" unsupport method name " + paramString3);
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    Object localObject;
+    String str;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
+    {
+      localObject = paramBundle.getString("cmd");
+      str = paramBundle.getString("callbackid");
+      if (QLog.isColorLevel()) {
+        QLog.i("VasFaceJsPlugin", 2, "response:" + (String)localObject);
+      }
+      if (!"face_setup".equals(localObject)) {}
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("result", paramBundle.getInt("result"));
+      ((JSONObject)localObject).put("message", "ok");
+      if (QLog.isColorLevel()) {
+        QLog.i("VasFaceJsPlugin", 2, "setup result: " + ((JSONObject)localObject).toString());
+      }
+      super.callJs(str + "(" + ((JSONObject)localObject).toString() + ");");
       return;
     }
-    parambdwn.a(false, false, 0);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("tryLoad : disable kingcard");
-  }
-  
-  public final void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a(), 2, paramString);
+    catch (JSONException paramBundle)
+    {
+      QLog.e("VasFaceJsPlugin", 1, "", paramBundle);
     }
-  }
-  
-  boolean a()
-  {
-    a("isReady : disable kingcard");
-    return false;
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  boolean b()
-  {
-    return false;
   }
 }
 

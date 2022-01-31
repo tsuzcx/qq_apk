@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import bkwh;
-import bkwi;
-import blfg;
-import xlb;
+import blao;
+import blap;
+import bljn;
+import xpk;
 
 public class StoryPublishLauncher$2
   implements Runnable
 {
-  public StoryPublishLauncher$2(xlb paramxlb) {}
+  public StoryPublishLauncher$2(xpk paramxpk) {}
   
   public void run()
   {
-    blfg.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-    bkwi.a().a(bkwh.b, null, false);
-    bkwi.a().a(bkwh.c, null, true);
+    bljn.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+    blap.a().a(blao.b, null, false);
+    blap.a().a(blao.c, null, true);
   }
 }
 

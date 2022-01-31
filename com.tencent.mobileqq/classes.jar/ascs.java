@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-public class ascs
-  extends alxo
+class ascs
+  implements zhk
 {
-  public ascs(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  ascs(ascq paramascq) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    QQSettingChatOperationFragment.a(this.a);
+    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
+      if (!this.a.a.isFinishing())
+      {
+        if (!paramBoolean) {
+          break label75;
+        }
+        this.a.a(0, "", "");
+      }
+    }
+    for (;;)
+    {
+      if (this.a.k) {
+        ascq.a(this.a.a, true, "shareToQQ", this.a.b);
+      }
+      return;
+      label75:
+      this.a.a(-1, bfmt.d, bfmt.d);
+    }
   }
 }
 

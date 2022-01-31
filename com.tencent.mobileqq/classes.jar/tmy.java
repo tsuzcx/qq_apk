@@ -167,7 +167,7 @@ public class tmy
   
   protected int b()
   {
-    return 2131559871;
+    return 2131559870;
   }
   
   protected void b()
@@ -189,23 +189,23 @@ public class tmy
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131379686));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131379685));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379687));
-    ((ViewGroup)a(2131379683)).setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379592));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131379744));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131379743));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379745));
+    ((ViewGroup)a(2131379741)).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379650));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379575));
-    TextView localTextView = (TextView)a(2131379758);
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379633));
+    TextView localTextView = (TextView)a(2131379816);
     localTextView.setOnClickListener(this);
     if (tee.a().a())
     {
       this.jdField_a_of_type_Boolean = false;
-      localTextView.setText(2131721477);
+      localTextView.setText(2131721490);
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    localTextView.setText(2131697678);
+    localTextView.setText(2131697680);
   }
   
   public void f()
@@ -242,10 +242,10 @@ public class tmy
     {
     default: 
       return;
-    case 2131379683: 
+    case 2131379741: 
       g();
       return;
-    case 2131379592: 
+    case 2131379650: 
       j();
       return;
     }

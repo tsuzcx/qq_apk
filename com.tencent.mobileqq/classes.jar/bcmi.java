@@ -1,104 +1,39 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class bcmi
-  implements bcpf
 {
-  private long jdField_a_of_type_Long;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  public String c;
-  
-  public bcmi(String paramString1, String paramString2, String paramString3)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nac paramnac)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
+    if (paramLong <= 0L) {
       return;
     }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.5,3,4555");
+    localGetPublicAccountDetailInfoRequest.version.set(1);
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramLong);
+    mzy.a(paramQQAppInterface, paramnac, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nac paramnac, Bundle paramBundle)
+  {
+    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
+    localFollowRequest.luin.set(paramLong);
+    localFollowRequest.ext.set("0");
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b()
-  {
-    h();
-    g();
-  }
-  
-  public void c()
-  {
-    h();
-  }
-  
-  public void d()
-  {
-    a();
-  }
-  
-  public void e()
-  {
-    b();
+    mzy.a(paramQQAppInterface, paramnac, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
+    nrt.a(paramQQAppInterface, "" + paramLong, 0);
   }
 }
 

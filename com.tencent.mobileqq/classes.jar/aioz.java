@@ -1,82 +1,188 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity.ImageAdapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aioz
-  extends aimu
 {
-  protected aioz(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public static LocalMediaInfo a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    super(paramNewPhotoPreviewActivity);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = ((NewPhotoPreviewActivity)this.mActivity).adapter.getItem(paramInt);
-    if (((NewPhotoPreviewActivity)this.mActivity).getMediaType(paramViewGroup) == 1)
+    long l = System.currentTimeMillis();
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.mMediaType = 0;
+    localLocalMediaInfo.path = paramString;
+    paramString = new BitmapFactory.Options();
+    paramString.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(localLocalMediaInfo.path, paramString);
+    localLocalMediaInfo.mediaWidth = paramString.outWidth;
+    localLocalMediaInfo.mediaHeight = paramString.outHeight;
+    if (paramBoolean)
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label96;
+      localLocalMediaInfo.thumbWidth = 0;
+      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131296978));
+      if ((localLocalMediaInfo.mediaWidth > 0) && (localLocalMediaInfo.mediaHeight > 0)) {
+        FlowThumbDecoder.determineThumbSize(localLocalMediaInfo, localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight);
       }
-      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
     }
-    label259:
     for (;;)
     {
-      return paramView;
-      paramInt = 0;
-      break;
-      label96:
-      if (this.a.c)
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      }
+      return localLocalMediaInfo;
+      int i = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo.thumbHeight = i;
+      localLocalMediaInfo.thumbWidth = i;
+    }
+  }
+  
+  public static LocalMediaInfo a(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (paramString.equals(((LocalMediaInfo)localEntry.getValue()).path)) {
+        return (LocalMediaInfo)localEntry.getKey();
+      }
+    }
+    return null;
+  }
+  
+  public static String a(Map<String, String> paramMap, String paramString)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (paramString.equals(localEntry.getValue())) {
+        return (String)localEntry.getKey();
+      }
+    }
+    return null;
+  }
+  
+  public static HashMap<String, String> a(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    if (paramHashMap == null) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
+    }
+    return localHashMap;
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, boolean paramBoolean, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    Object localObject = paramHashMap;
+    if (paramHashMap == null) {
+      localObject = new HashMap();
+    }
+    paramIntent = (HashMap)paramIntent.getSerializableExtra("PhotoConst.editPathMap");
+    LocalMediaInfo localLocalMediaInfo;
+    if (paramIntent != null)
+    {
+      Iterator localIterator = paramIntent.entrySet().iterator();
+      if (localIterator.hasNext())
       {
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
-        if (!this.a.b) {
-          break label228;
+        paramHashMap = (Map.Entry)localIterator.next();
+        paramIntent = a(paramContext, (String)paramHashMap.getKey(), paramBoolean);
+        localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
+        paramHashMap = a((Map)localObject, (String)paramHashMap.getKey());
+        if (paramHashMap == null) {
+          break label127;
         }
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(0);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(0);
+        paramIntent = paramHashMap;
+      }
+    }
+    label127:
+    for (;;)
+    {
+      ((HashMap)localObject).put(paramIntent, localLocalMediaInfo);
+      break;
+      return;
+    }
+  }
+  
+  public static void a(List<LocalMediaInfo> paramList, ArrayList<String> paramArrayList, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
+  {
+    Iterator localIterator1 = paramHashMap.entrySet().iterator();
+    label183:
+    for (;;)
+    {
+      Map.Entry localEntry;
+      if (localIterator1.hasNext())
+      {
+        localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = paramList.iterator();
+        do
+        {
+          if (!localIterator2.hasNext()) {
+            break;
+          }
+          paramHashMap = (LocalMediaInfo)localIterator2.next();
+        } while (!paramHashMap.path.equals(((LocalMediaInfo)localEntry.getKey()).path));
       }
       for (;;)
       {
-        if ((!this.a.g) && (!this.a.isSingleMode)) {
-          break label259;
+        if (paramHashMap == null) {
+          break label183;
         }
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
-        return paramView;
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
+        int i = paramList.indexOf(paramHashMap);
+        paramList.remove(paramHashMap);
+        paramList.add(i, localEntry.getValue());
+        ((LocalMediaInfo)localEntry.getValue()).position = Integer.valueOf(i);
+        if (paramArrayList == null) {
+          break;
+        }
+        i = paramArrayList.indexOf(paramHashMap.path);
+        paramArrayList.remove(paramHashMap.path);
+        paramArrayList.add(i, ((LocalMediaInfo)localEntry.getValue()).path);
         break;
-        label228:
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
+        return;
+        paramHashMap = null;
       }
     }
   }
   
-  public boolean needShowMultiPhoto()
+  public static boolean a(String paramString, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
-    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext()) {
+      if (((LocalMediaInfo)((Map.Entry)paramHashMap.next()).getValue()).path.equals(paramString)) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  public static HashMap<String, String> b(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
-    if (paramBundle != null)
+    HashMap localHashMap = new HashMap(paramHashMap.size());
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
-      paramBundle.putBoolean("key_multi_edit_pic", true);
-      paramBundle.putBoolean("key_enable_edit_title_bar", true);
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
     }
-    super.onMagicStickClick(paramView, 10000, paramBundle, paramInt2, paramIntent);
+    return localHashMap;
   }
 }
 

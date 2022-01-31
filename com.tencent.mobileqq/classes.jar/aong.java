@@ -1,67 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aong
-  extends aofy<aonh>
 {
-  public int a()
-  {
-    return 362;
-  }
+  private boolean a;
   
-  @NonNull
-  public aonh a(int paramInt)
+  public static aong a(String paramString)
   {
-    return new aonh();
-  }
-  
-  @Nullable
-  public aonh a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
     {
-      aonh localaonh = aonh.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaogf[0].a);
+      aong localaong = new aong();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
+      {
+        localaong.a = bool;
+        return localaong;
+        bool = false;
       }
-      return localaonh;
+      return null;
     }
-    return null;
-  }
-  
-  public Class<aonh> a()
-  {
-    return aonh.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
     }
   }
   
-  public void a(aonh paramaonh)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramaonh });
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 

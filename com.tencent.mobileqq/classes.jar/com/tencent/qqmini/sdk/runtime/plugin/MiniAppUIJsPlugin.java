@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
 import android.widget.FrameLayout.LayoutParams;
-import bgho;
-import bgid;
-import bgkd;
-import bgkk;
-import bgkv;
-import bgzz;
-import bhaa;
-import bhae;
+import bglv;
+import bgmk;
+import bgok;
+import bgor;
+import bgpc;
+import bheg;
+import bheh;
+import bhel;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
@@ -56,10 +56,10 @@ public class MiniAppUIJsPlugin
       QMLog.d("MiniAppUIJsPlugin", "insertHTMLWebView htmlId=" + paramInt1 + ",left=" + paramInt5 + ",top=" + paramInt3 + ",w=" + i + ",h=" + paramInt4);
     }
     paramInt2 = paramInt4;
-    if ("custom".equals(bgzz.a(this.mMiniAppContext).a()))
+    if ("custom".equals(bheg.a(this.mMiniAppContext).a()))
     {
       paramInt2 = paramInt4 - (ViewUtils.dpToPx(44.0F) + DisplayUtil.getStatusBarHeight(this.mMiniAppContext.a()));
-      bhaa.a(this.mMiniAppContext).a("default");
+      bheh.a(this.mMiniAppContext).a("default");
     }
     this.innerWebView = new InnerWebView(this.mMiniAppContext.a());
     this.innerWebView.a = paramInt1;
@@ -67,7 +67,7 @@ public class MiniAppUIJsPlugin
     localLayoutParams.leftMargin = paramInt5;
     localLayoutParams.topMargin = paramInt3;
     this.innerWebView.setVisibility(8);
-    return bhae.a(this.mMiniAppContext).a(this.innerWebView, localLayoutParams);
+    return bhel.a(this.mMiniAppContext).a(this.innerWebView, localLayoutParams);
   }
   
   private boolean doRemoveHTMLWebView(int paramInt)
@@ -81,7 +81,7 @@ public class MiniAppUIJsPlugin
     this.innerWebView.loadUrl("about:blank");
     this.innerWebView.clearView();
     this.innerWebView.destroy();
-    boolean bool = bhae.a(this.mMiniAppContext).a(this.innerWebView);
+    boolean bool = bhel.a(this.mMiniAppContext).a(this.innerWebView);
     this.innerWebView = null;
     return bool;
   }
@@ -141,35 +141,35 @@ public class MiniAppUIJsPlugin
     return true;
   }
   
-  public void getRegionData(bgkd parambgkd)
+  public void getRegionData(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("data", bgkv.a(this.mContext, "mini/region"));
-      parambgkd.a(localJSONObject);
+      localJSONObject.put("data", bgpc.a(this.mContext, "mini/region"));
+      parambgok.a(localJSONObject);
       return;
     }
     catch (JSONException localJSONException)
     {
       QMLog.e("MiniAppUIJsPlugin", "getRegionData exception: ", localJSONException);
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
-  public void hideHomeButton(bgkd parambgkd)
+  public void hideHomeButton(bgok parambgok)
   {
-    bgkk.a(new MiniAppUIJsPlugin.5(this, parambgkd));
+    bgor.a(new MiniAppUIJsPlugin.5(this, parambgok));
   }
   
-  public void hideToast(bgkd parambgkd)
+  public void hideToast(bgok parambgok)
   {
-    bgkk.a(new MiniAppUIJsPlugin.4(this, parambgkd));
+    bgor.a(new MiniAppUIJsPlugin.4(this, parambgok));
   }
   
-  public void insertHtmlWebview(bgkd parambgkd)
+  public void insertHtmlWebview(bgok parambgok)
   {
-    bgkk.a(new MiniAppUIJsPlugin.6(this, parambgkd));
+    bgor.a(new MiniAppUIJsPlugin.6(this, parambgok));
   }
   
   public void onDestroy()
@@ -177,7 +177,7 @@ public class MiniAppUIJsPlugin
     super.onDestroy();
     if (this.innerWebView != null)
     {
-      bhae.a(this.mMiniAppContext).a(this.innerWebView);
+      bhel.a(this.mMiniAppContext).a(this.innerWebView);
       this.innerWebView.loadUrl("about:blank");
       this.innerWebView.clearView();
       this.innerWebView.destroy();
@@ -202,66 +202,66 @@ public class MiniAppUIJsPlugin
     {
       QMLog.d("MiniAppUIJsPlugin", "innerWebView resume & requestFocus");
       this.innerWebView.onResume();
-      bgkk.a(new MiniAppUIJsPlugin.1(this));
+      bgor.a(new MiniAppUIJsPlugin.1(this));
     }
   }
   
-  public void pageScrollTo(bgkd parambgkd)
+  public void pageScrollTo(bgok parambgok)
   {
-    sendNativeViewEvent(parambgkd, 0);
+    sendNativeViewEvent(parambgok, 0);
   }
   
-  public void removeHtmlWebview(bgkd parambgkd)
+  public void removeHtmlWebview(bgok parambgok)
   {
-    bgkk.a(new MiniAppUIJsPlugin.8(this, parambgkd));
+    bgor.a(new MiniAppUIJsPlugin.8(this, parambgok));
   }
   
-  public void scrollWebviewTo(bgkd parambgkd)
+  public void scrollWebviewTo(bgok parambgok)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, 1));
+    this.mMiniAppContext.a(bgmk.a(parambgok, 1));
   }
   
-  public void setBackgroundTextStyle(bgkd parambgkd)
+  public void setBackgroundTextStyle(bgok parambgok)
   {
-    sendNativeViewEvent(parambgkd, 3);
+    sendNativeViewEvent(parambgok, 3);
   }
   
-  public void showLoading(bgkd parambgkd)
+  public void showLoading(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
-      bgkk.a(new MiniAppUIJsPlugin.3(this, parambgkd, localJSONObject.optString("title", ""), localJSONObject.optBoolean("mask", false)));
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
+      bgor.a(new MiniAppUIJsPlugin.3(this, parambgok, localJSONObject.optString("title", ""), localJSONObject.optBoolean("mask", false)));
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
       while (!QMLog.isColorLevel()) {}
-      QMLog.e("MiniAppUIJsPlugin", parambgkd.getMessage(), parambgkd);
+      QMLog.e("MiniAppUIJsPlugin", parambgok.getMessage(), parambgok);
     }
   }
   
-  public void showToast(bgkd parambgkd)
+  public void showToast(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       String str1 = localJSONObject.optString("title", "");
       int i = localJSONObject.optInt("duration", 1500);
       boolean bool = localJSONObject.optBoolean("mask", false);
       String str2 = localJSONObject.optString("icon", "success");
-      bgkk.a(new MiniAppUIJsPlugin.2(this, parambgkd, str1, i, bool, localJSONObject.optString("image", ""), str2));
+      bgor.a(new MiniAppUIJsPlugin.2(this, parambgok, str1, i, bool, localJSONObject.optString("image", ""), str2));
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
-      QMLog.e("MiniAppUIJsPlugin", parambgkd.getMessage(), parambgkd);
+      QMLog.e("MiniAppUIJsPlugin", parambgok.getMessage(), parambgok);
     }
   }
   
-  public void updateHtmlWebview(bgkd parambgkd)
+  public void updateHtmlWebview(bgok parambgok)
   {
-    bgkk.a(new MiniAppUIJsPlugin.7(this, parambgkd));
+    bgor.a(new MiniAppUIJsPlugin.7(this, parambgok));
   }
 }
 

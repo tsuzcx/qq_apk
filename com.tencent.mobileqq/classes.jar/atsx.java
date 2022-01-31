@@ -1,21 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.graphics.Bitmap;
 
-public class atsx
-  extends Handler
+class atsx
 {
-  public atsx(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.requestLayout();
-    this.a.invalidate();
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

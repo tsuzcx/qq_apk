@@ -1,49 +1,18 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
 
-public class biyq
-  extends QzoneExternalRequest
+public final class biyq
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  mobile_get_qzone_public_msg_req a;
-  
-  public biyq(long paramLong, Map<String, String> paramMap)
+  public QQPimTipsInfo a(Parcel paramParcel)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
+    return new QQPimTipsInfo(paramParcel, null);
   }
   
-  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  public QQPimTipsInfo[] a(int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + uniKey();
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getQzonePublicMsg";
+    return new QQPimTipsInfo[paramInt];
   }
 }
 

@@ -1,21 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
 
-class akyy
-  implements akzo
+public class akyy
 {
-  akyy(akyw paramakyw) {}
+  public int a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
+  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public akyy(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (paramInt == 1) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      return 1;
+      if (paramInt == 3) {
+        return 0;
       }
-      if (akyw.a(this.a) != null) {
-        akyw.a(this.a).e();
-      }
-      this.a.c();
+    } while (paramInt != 2);
+    return 8;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
     }
   }
 }

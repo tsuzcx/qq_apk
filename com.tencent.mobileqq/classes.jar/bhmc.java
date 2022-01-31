@@ -1,48 +1,39 @@
-public final class bhmc
-  implements Cloneable
+import android.content.Context;
+import android.os.Process;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.Toast;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.ui.MainPageFragment;
+import com.tencent.qqmini.sdk.utils.MD5Utils;
+import java.io.File;
+
+public class bhmc
+  implements View.OnLongClickListener
 {
-  private long a;
+  public bhmc(MainPageFragment paramMainPageFragment) {}
   
-  public bhmc(long paramLong)
+  public boolean onLongClick(View paramView)
   {
-    this.a = paramLong;
-  }
-  
-  public bhmc(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bhmc(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
-    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
-    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public long a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bhmc))) {}
-    while (this.a != ((bhmc)paramObject).a()) {
-      return false;
+    String str = MainPageFragment.b() + MainPageFragment.a(this.a).appId + "_debug";
+    if (new File(str).exists()) {
+      bgpc.a(str, false);
     }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return (int)this.a;
+    str = MainPageFragment.c() + MD5Utils.toMD5(MainPageFragment.a(this.a).appId);
+    if (new File(str).exists()) {
+      bgpc.a(str, false);
+    }
+    str = paramView.getContext().getCacheDir() + File.separator + "mini" + File.separator + this.a.a() + File.separator + MainPageFragment.a(this.a).appId;
+    if (new File(str).exists()) {
+      bgpc.a(str, false);
+    }
+    this.a.getActivity().finish();
+    Process.killProcess(Process.myPid());
+    QMLog.e("debug", "clear miniapp");
+    Toast.makeText(paramView.getContext(), "清除游戏缓存数据成功!", 1).show();
+    return false;
   }
 }
 

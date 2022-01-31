@@ -1,66 +1,71 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfCommand;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-public class bduo
-  extends MSFServlet
+public class bduo<V>
+  implements Manager
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private final ArrayList<bduq<V>> a = new ArrayList();
+  
+  public static <E> bdup<E> a(bdup<E> parambdup)
   {
-    QLog.i("health_manager", 1, "MyServlet onReceive." + paramFromServiceMsg.getServiceCmd());
-    if ((paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getServiceCmd().equals("cmd_refresh_steps")))
+    return new bdur(parambdup);
+  }
+  
+  public void a(String arg1, bdup<V> parambdup, Object paramObject)
+  {
+    if (parambdup != null)
     {
-      String str = paramIntent.getStringExtra("json_string");
-      paramFromServiceMsg = (String)paramFromServiceMsg.getAttribute("StepInfoJSON");
-      Bundle localBundle = new Bundle();
-      if (!TextUtils.isEmpty(str)) {
-        localBundle.putString("json_string", str);
+      parambdup = new bduq(parambdup, paramObject, ???);
+      synchronized (this.a)
+      {
+        this.a.add(parambdup);
+        return;
       }
-      if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-        localBundle.putString("StepInfoJSON", paramFromServiceMsg);
-      }
-      if (paramIntent.getExtras().getString("json_getstepcallback") != null) {
-        localBundle.putString("json_getstepcallback", paramIntent.getExtras().getString("json_getstepcallback"));
-      }
-      notifyObserver(paramIntent, 0, true, localBundle, null);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString, V paramV)
   {
-    paramPacket = paramIntent.getStringExtra("msf_cmd_type");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, "0", paramPacket);
-    localToServiceMsg.setMsfCommand(MsfCommand.msf_step_counter);
-    localToServiceMsg.setNeedCallback(true);
-    localToServiceMsg.setTimeout(30000L);
-    if (paramPacket.equals("cmd_health_switch")) {
-      localToServiceMsg.addAttribute("isOpen", Boolean.valueOf(paramIntent.getBooleanExtra("isOpen", false)));
+    if (paramString == null) {
+      return;
     }
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      sendToMSF(paramIntent, localToServiceMsg);
-      return;
-      if (paramPacket.equals("cmd_update_lastreport_time"))
+      int i;
+      synchronized (this.a)
       {
-        long l = paramIntent.getLongExtra("last_report_time", 0L);
-        boolean bool = paramIntent.getBooleanExtra("has_report_yes", false);
-        localToServiceMsg.addAttribute("last_report_time", Long.valueOf(l));
-        localToServiceMsg.addAttribute("has_report_yes", Boolean.valueOf(bool));
-        localToServiceMsg.setNeedCallback(false);
-      }
-      else if (paramPacket.equals("cmd_reset_step"))
-      {
-        int i = paramIntent.getIntExtra("server_step", -1);
-        if (-1 != i) {
-          localToServiceMsg.addAttribute("server_step", Integer.valueOf(i));
+        i = this.a.size() - 1;
+        if (i >= 0)
+        {
+          bduq localbduq = (bduq)this.a.get(i);
+          if (paramString.equals(localbduq.jdField_a_of_type_JavaLangString))
+          {
+            this.a.remove(i);
+            localArrayList.add(localbduq);
+          }
+        }
+        else
+        {
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          ??? = (bduq)paramString.next();
+          ((bduq)???).jdField_a_of_type_Bdup.a(paramV, ((bduq)???).jdField_a_of_type_JavaLangObject);
         }
       }
+      i -= 1;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      return;
     }
   }
 }

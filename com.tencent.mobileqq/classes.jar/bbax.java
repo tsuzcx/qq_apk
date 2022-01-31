@@ -1,29 +1,36 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbax
-  extends amle
 {
-  public bbax(AbsPublishActivity paramAbsPublishActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bcgo parambcgo)
+  public int a;
+  bavq jdField_a_of_type_Bavq;
+  bbbm jdField_a_of_type_Bbbm = new bbbm();
+  public bbce a;
+  public ProtoReqManager a;
+  public String a;
+  public List<bbbi> a;
+  public byte[] a;
+  
+  public bbax()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bcgo);
+      localStringBuilder.append("index:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(((bbbi)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
+      i += 1;
     }
+    return localStringBuilder.toString();
   }
 }
 

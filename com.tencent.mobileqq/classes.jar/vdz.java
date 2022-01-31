@@ -1,33 +1,51 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class vdz
-  implements vdy
+  extends urt<vea>
 {
-  public void a() {}
+  public final String a;
+  public String b = "";
   
-  public void a(int paramInt)
+  public vdz(vdy paramvdy, String paramString)
   {
-    if (paramInt == 6) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131690089, 0).a();
+    this.jdField_a_of_type_JavaLangString = uqn.a("StorySvc.forbid_video");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public vea a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    try
+    {
+      localRspForbidVideo.mergeFrom(paramArrayOfByte);
+      return new vea(this.jdField_a_of_type_Vdy, localRspForbidVideo);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void b() {}
-  
-  public void b(int paramInt) {}
-  
-  public void c() {}
-  
-  public void c(int paramInt)
+  protected byte[] a()
   {
-    QQToast.a(BaseApplication.getContext(), alpo.a(2131708224), 0).a();
+    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
+    localReqForbidVideo.vid.set(this.b);
+    return localReqForbidVideo.toByteArray();
   }
   
-  public void d() {}
-  
-  public void d(int paramInt) {}
+  public String toString()
+  {
+    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+  }
 }
 
 

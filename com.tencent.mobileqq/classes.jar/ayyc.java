@@ -1,36 +1,47 @@
-import java.util.Map;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ayyc
+  extends ayyd
 {
-  public int a;
-  public long a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  public byte[] a;
-  public long b;
-  public boolean b;
+  PeakAppInterface a;
   
-  public ayyc(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString)
+  public ayyc(PeakAppInterface paramPeakAppInterface)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramPeakAppInterface;
   }
   
-  public ayyc(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString, byte[] paramArrayOfByte)
+  public AppInterface a()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this.a;
   }
   
-  public void a(boolean paramBoolean)
+  protected void a()
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    try
+    {
+      super.a();
+      a(new bkzs(this.a));
+      super.b();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    a(paramToServiceMsg, null, azbe.class);
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 

@@ -1,45 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class bepb
-  implements URLDrawableDownListener
+  extends Handler
 {
-  final String jdField_a_of_type_JavaLangString;
-  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  final String b;
-  
-  public bepb(View paramView, String paramString1, String paramString2)
+  public bepb(DraggableGridView paramDraggableGridView, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    super(paramLooper);
   }
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null)
-    {
-      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
-      paramView.setVisibility(8);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null) {
-      paramView.setVisibility(0);
-    }
+    DraggableGridView.c(this.a, paramMessage.arg1);
+    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
+    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
   }
 }
 

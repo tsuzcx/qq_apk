@@ -44,7 +44,7 @@ public class pkm
       QLog.d("Util", 1, "bindTripleImageData, info is null or outData is null.");
       return;
     }
-    paramJSONObject.put("gallery_cnt", paramBaseArticleInfo.mGalleryPicNumber + alpo.a(2131716365));
+    paramJSONObject.put("gallery_cnt", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131716377));
     ArrayList localArrayList = new ArrayList();
     Object localObject;
     if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
@@ -152,15 +152,15 @@ public class pkm
           if (i <= 0) {
             break label448;
           }
-          localJSONObject.put("like_count", bjxj.b(i));
-          paramJSONObject.put("biu_comment_like_text", String.format(alpo.a(2131718736), new Object[] { bjxj.b(i) }));
+          localJSONObject.put("like_count", bkbq.b(i));
+          paramJSONObject.put("biu_comment_like_text", String.format(alud.a(2131718748), new Object[] { bkbq.b(i) }));
           paramJSONObject.put("id_like_button", localJSONObject);
           localObject1 = new JSONObject();
           if (j <= 0) {
             break label478;
           }
-          ((JSONObject)localObject1).put("comment_count", bjxj.b(j));
-          paramJSONObject.put("biu_comment_text", String.format(alpo.a(2131718737), new Object[] { bjxj.b(j) }));
+          ((JSONObject)localObject1).put("comment_count", bkbq.b(j));
+          paramJSONObject.put("biu_comment_text", String.format(alud.a(2131718749), new Object[] { bkbq.b(j) }));
           label318:
           paramJSONObject.put("id_comment_button", localObject1);
           localObject1 = new JSONObject();
@@ -169,26 +169,26 @@ public class pkm
           if (k <= 0) {
             break label508;
           }
-          ((JSONObject)localObject1).put("biu_count", bjxj.b(k));
+          ((JSONObject)localObject1).put("biu_count", bkbq.b(k));
         }
         for (;;)
         {
           ((JSONObject)localObject1).put("setArticleInfo", paramBaseArticleInfo);
           paramJSONObject.put("id_biu_button", localObject1);
           paramBaseArticleInfo = new JSONObject();
-          paramBaseArticleInfo.put("share_title", alpo.a(2131716319));
+          paramBaseArticleInfo.put("share_title", alud.a(2131716331));
           paramJSONObject.put("id_share_button", paramBaseArticleInfo);
           paramJSONObject.put("id_social_bottom", new JSONObject());
           return;
           localJSONObject.put("selected_state", "0");
           break;
           label448:
-          localJSONObject.put("like_count", alpo.a(2131716360));
-          paramJSONObject.put("biu_comment_like_text", alpo.a(2131716360));
+          localJSONObject.put("like_count", alud.a(2131716372));
+          paramJSONObject.put("biu_comment_like_text", alud.a(2131716372));
           break label258;
           label478:
-          ((JSONObject)localObject1).put("comment_count", alpo.a(2131716380));
-          paramJSONObject.put("biu_comment_text", alpo.a(2131714495));
+          ((JSONObject)localObject1).put("comment_count", alud.a(2131716392));
+          paramJSONObject.put("biu_comment_text", alud.a(2131714507));
           break label318;
           label508:
           ((JSONObject)localObject1).put("biu_count", "Biu");
@@ -224,7 +224,7 @@ public class pkm
         paramJSONObject.put("id_social_data_wrapper", new JSONObject());
         if (j > 0)
         {
-          paramBaseArticleInfo = bjxj.b(j) + alpo.a(2131716384);
+          paramBaseArticleInfo = bkbq.b(j) + alud.a(2131716396);
           localObject = new JSONObject();
           paramJSONObject.put("social_data_like", paramBaseArticleInfo);
           paramJSONObject.put("id_social_data_like", localObject);
@@ -235,7 +235,7 @@ public class pkm
         if (i <= 0) {
           break;
         }
-        paramBaseArticleInfo = bjxj.b(i) + "Biu";
+        paramBaseArticleInfo = bkbq.b(i) + "Biu";
         localObject = new JSONObject();
         ((JSONObject)localObject).put("social_data_biu", paramBaseArticleInfo);
         paramJSONObject.put("id_social_data_biu", localObject);
@@ -402,13 +402,13 @@ public class pkm
         }
       } while (!paramBaseArticleInfo.isNeedShowBtnWhenFollowed);
       paramBaseArticleInfo = new JSONObject();
-      paramBaseArticleInfo.put("button_status", alpo.a(2131716362));
+      paramBaseArticleInfo.put("button_status", alud.a(2131716374));
       paramBaseArticleInfo.put("selected_status", "1");
       paramJSONObject.put("id_social_header_follow_button", paramBaseArticleInfo);
       return;
     } while (localSocializeFeedsInfo.h != 1);
     paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("button_status", alpo.a(2131716363));
+    paramBaseArticleInfo.put("button_status", alud.a(2131716375));
     paramBaseArticleInfo.put("selected_status", "0");
     paramJSONObject.put("id_social_header_follow_button", paramBaseArticleInfo);
   }
@@ -424,14 +424,14 @@ public class pkm
       if (localSocializeFeedsInfo.h == 1)
       {
         paramBaseArticleInfo = new JSONObject();
-        paramBaseArticleInfo.put("button_status", alpo.a(2131716359));
+        paramBaseArticleInfo.put("button_status", alud.a(2131716371));
         paramBaseArticleInfo.put("selected_status", "0");
         paramJSONObject.put("id_social_header_follow_button", paramBaseArticleInfo);
         return;
       }
     } while ((!paramBaseArticleInfo.isNeedShowBtnWhenFollowed) || (localSocializeFeedsInfo.h != 2));
     paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("button_status", alpo.a(2131716383));
+    paramBaseArticleInfo.put("button_status", alud.a(2131716395));
     paramBaseArticleInfo.put("selected_status", "1");
     paramJSONObject.put("id_social_header_follow_button", paramBaseArticleInfo);
   }
@@ -468,7 +468,7 @@ public class pkm
         localJSONObject.put("super_topic_name", paramBaseArticleInfo.jdField_b_of_type_JavaLangString);
         paramJSONObject.put("id_super_topic_name", localJSONObject);
         localJSONObject = new JSONObject();
-        localJSONObject.put("super_topic_subname", ComponentSocialOperation.a(paramBaseArticleInfo.jdField_b_of_type_Int) + alpo.a(2131716378) + ComponentSocialOperation.a(paramBaseArticleInfo.jdField_a_of_type_Int) + alpo.a(2131716385));
+        localJSONObject.put("super_topic_subname", ComponentSocialOperation.a(paramBaseArticleInfo.jdField_b_of_type_Int) + alud.a(2131716390) + ComponentSocialOperation.a(paramBaseArticleInfo.jdField_a_of_type_Int) + alud.a(2131716397));
         paramJSONObject.put("id_super_topic_subname", localJSONObject);
       } while (TextUtils.isEmpty(paramBaseArticleInfo.jdField_e_of_type_JavaLangString));
       JSONObject localJSONObject = new JSONObject();
@@ -533,7 +533,7 @@ public class pkm
     if (i == 1)
     {
       localObject = "readinjoy_privacy_vis_some.png";
-      paramBaseArticleInfo = alpo.a(2131716376);
+      paramBaseArticleInfo = alud.a(2131716388);
     }
     for (;;)
     {
@@ -547,7 +547,7 @@ public class pkm
       if (i == 2)
       {
         localObject = "readinjoy_privacy_vis_self.png";
-        paramBaseArticleInfo = alpo.a(2131716361);
+        paramBaseArticleInfo = alud.a(2131716373);
       }
     }
   }
@@ -1136,7 +1136,7 @@ public class pkm
         break label105;
       }
       paramJSONObject.put("live_status_bg_url", "http://pub.idqqimg.com/pc/misc/files/20191127/d3d83721dfe84278a19c8927e2253f10.png");
-      paramJSONObject.put("live_status_text", alpo.a(2131718918));
+      paramJSONObject.put("live_status_text", alud.a(2131718930));
     }
     for (;;)
     {
@@ -1145,7 +1145,7 @@ public class pkm
       label105:
       paramJSONObject.put("live_status_icon_url", "http://pub.idqqimg.com/pc/misc/files/20191127/b7e14064b3d1417788352c8a47d1e85a.gif");
       paramJSONObject.put("live_status_bg_url", "http://pub.idqqimg.com/pc/misc/files/20191127/84cf4158acb64cc0a7bf1d3a8f1b9d27.png");
-      paramJSONObject.put("live_status_text", alpo.a(2131718919));
+      paramJSONObject.put("live_status_text", alud.a(2131718931));
     }
   }
   
@@ -1274,7 +1274,7 @@ public class pkm
     String str1;
     if ((rqj.d(paramBaseArticleInfo)) || (rqj.c(paramBaseArticleInfo)))
     {
-      str2 = BaseApplicationImpl.getContext().getString(2131719048);
+      str2 = BaseApplicationImpl.getContext().getString(2131719060);
       str1 = "poly_topic";
     }
     for (;;)
@@ -1287,12 +1287,12 @@ public class pkm
       return;
       if ((i == 27) || ((i == 18) && (!paramBaseArticleInfo.isPGCShortContent())) || (i == 31) || ((ors.s(paramBaseArticleInfo)) && (!ors.e(paramBaseArticleInfo))))
       {
-        str2 = BaseApplicationImpl.getContext().getString(2131718717);
+        str2 = BaseApplicationImpl.getContext().getString(2131718729);
         str1 = "poly_article";
       }
       else if (i == 52)
       {
-        str2 = String.valueOf(paramBaseArticleInfo.mGalleryPicNumber) + alpo.a(2131702637);
+        str2 = String.valueOf(paramBaseArticleInfo.mGalleryPicNumber) + alud.a(2131702649);
         str1 = "poly_gallery";
       }
       else if (i != 48)
@@ -1315,7 +1315,7 @@ public class pkm
             str2 = str3;
             if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.a != null)
             {
-              str2 = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.a.jdField_a_of_type_Long) + alpo.a(2131702694);
+              str2 = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.a.jdField_a_of_type_Long) + alud.a(2131702706);
               str1 = "poly_gallery";
             }
           }
@@ -1342,7 +1342,7 @@ public class pkm
         paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.mAdExtInfo);
         double d1 = paramBaseArticleInfo.getDouble("latitude");
         double d2 = paramBaseArticleInfo.getDouble("longitude");
-        paramBaseArticleInfo = amkv.a("readinjoy_feed_ad_distance");
+        paramBaseArticleInfo = ampk.a("readinjoy_feed_ad_distance");
         if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.a != null))
         {
           double d3 = paramBaseArticleInfo.a.a;
@@ -1440,16 +1440,16 @@ public class pkm
             break label405;
           }
           localJSONObject.put("article_large_imge_url", a(paramBaseArticleInfo));
-          if (bdee.h(BaseApplicationImpl.getContext())) {
+          if (bdin.h(BaseApplicationImpl.getContext())) {
             break label379;
           }
           localJSONObject.put("id_play_text_container", new JSONObject());
           localJSONObject.put("id_layout_bottom_cover", new JSONObject());
           localJSONObject.put("id_play_text_icon", new JSONObject());
-          if (bdvr.a() != 1) {
+          if (beaa.a() != 1) {
             break label311;
           }
-          localJSONObject.put("play_text", alpo.a(2131702634));
+          localJSONObject.put("play_text", alud.a(2131702646));
           label183:
           if ((paramBaseArticleInfo.mNewPolymericInfo != null) && (paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.size() > 0) && (paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0) != null)) {
             localJSONObject.put("artilce_title_text", ((qlk)paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
@@ -1469,10 +1469,10 @@ public class pkm
           label311:
           if (paramBaseArticleInfo.mXGFileSize > 0L)
           {
-            localJSONObject.put("play_text", rdm.b(paramBaseArticleInfo.mXGFileSize) + alpo.a(2131702687));
+            localJSONObject.put("play_text", rdm.b(paramBaseArticleInfo.mXGFileSize) + alud.a(2131702699));
             break label183;
           }
-          localJSONObject.put("play_text", alpo.a(2131702719));
+          localJSONObject.put("play_text", alud.a(2131702731));
           break label183;
           label379:
           localJSONObject.put("id_play_icon", new JSONObject());
@@ -1538,7 +1538,7 @@ public class pkm
     if ((parampgd != null) && (parampgd.mSocialFeedInfo != null) && (parampgd.mSocialFeedInfo.jdField_a_of_type_Qme != null) && (qks.a(parampgd)))
     {
       long l = parampgd.mSocialFeedInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long;
-      localpso.a("%s还biu了" + parampgd.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.size() + alpo.a(2131716377), l);
+      localpso.a("%s还biu了" + parampgd.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.size() + alud.a(2131716389), l);
       localpso.setVisibility(0);
       paramViewBase.setVisibility(0);
       return;
@@ -1548,7 +1548,7 @@ public class pkm
   
   static void b(JSONObject paramJSONObject)
   {
-    Object localObject = bjxj.a("kd_topic_recommend_card_jump_switch");
+    Object localObject = bkbq.a("kd_topic_recommend_card_jump_switch");
     if ((localObject instanceof Boolean)) {}
     for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
     {
@@ -1596,7 +1596,7 @@ public class pkm
     JSONObject localJSONObject = new JSONObject();
     paramBaseArticleInfo = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      paramBaseArticleInfo = alpo.a(2131716369);
+      paramBaseArticleInfo = alud.a(2131716381);
     }
     localJSONObject.put("read_article", paramBaseArticleInfo);
     paramJSONObject.put("id_read_article", localJSONObject);
@@ -1668,7 +1668,7 @@ public class pkm
       localObject2 = new StringBuilder();
       paramString = "0";
       if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qna.jdField_a_of_type_Qke.jdField_a_of_type_Int > 0) {
-        paramString = bjxj.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qna.jdField_a_of_type_Qke.jdField_a_of_type_Int, 990000L, "99万", "0");
+        paramString = bkbq.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qna.jdField_a_of_type_Qke.jdField_a_of_type_Int, 990000L, "99万", "0");
       }
       if (!TextUtils.isEmpty(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qna.j))
       {
@@ -1741,7 +1741,7 @@ public class pkm
     {
       l = paramBaseArticleInfo.mCommentCount;
       label41:
-      if (!bjxj.a(paramBaseArticleInfo, l)) {
+      if (!bkbq.a(paramBaseArticleInfo, l)) {
         break label117;
       }
       if (l <= 99990000L) {
@@ -1824,9 +1824,9 @@ public class pkm
     paramJSONObject.put("id_nickname", localObject);
     paramJSONObject.put("id_view_nickname", new JSONObject());
     localJSONObject = new JSONObject();
-    localObject = alpo.a(2131716366);
+    localObject = alud.a(2131716378);
     if (paramBaseArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int > 0) {
-      localObject = bjxj.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int, 990000L, "99万", "0");
+      localObject = bkbq.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int, 990000L, "99万", "0");
     }
     localJSONObject.put("text", localObject);
     paramJSONObject.put("id_img_comment_num", localJSONObject);
@@ -1834,9 +1834,9 @@ public class pkm
     ((JSONObject)localObject).put("comment_count", "");
     paramJSONObject.put("id_comment_button", localObject);
     localJSONObject = new JSONObject();
-    localObject = alpo.a(2131716375);
+    localObject = alud.a(2131716387);
     if (paramBaseArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int > 0) {
-      localObject = bjxj.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int, 990000L, "99万", "0");
+      localObject = bkbq.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int, 990000L, "99万", "0");
     }
     localJSONObject.put("text", localObject);
     paramJSONObject.put("id_img_like_num", localJSONObject);
@@ -2004,7 +2004,7 @@ public class pkm
       else
       {
         if (paramBaseArticleInfo.mTime > 0L) {}
-        for (String str = orr.a(paramBaseArticleInfo.mTime, true);; str = alpo.a(2131716367))
+        for (String str = orr.a(paramBaseArticleInfo.mTime, true);; str = alud.a(2131716379))
         {
           if ((paramBaseArticleInfo.mSocialFeedInfo == null) || (TextUtils.isEmpty(paramBaseArticleInfo.mSocialFeedInfo.jdField_d_of_type_JavaLangString))) {
             break label160;
@@ -2015,7 +2015,7 @@ public class pkm
         label160:
         localObject = str;
         if (rqj.a(paramBaseArticleInfo)) {
-          localObject = str + " · " + alpo.a(2131719255);
+          localObject = str + " · " + alud.a(2131719267);
         }
       }
     }
@@ -2067,7 +2067,7 @@ public class pkm
       if (i == 0) {
         break label350;
       }
-      localObject = alpo.a(2131716370);
+      localObject = alud.a(2131716382);
       label191:
       localJSONObject.put("button_status", localObject);
       if (i == 0) {
@@ -2095,7 +2095,7 @@ public class pkm
       return;
       i = 0;
       break;
-      localObject = alpo.a(2131716364);
+      localObject = alud.a(2131716376);
       break label191;
     }
   }
@@ -2117,7 +2117,7 @@ public class pkm
     localJSONObject.put("topic_avator_url", localqno.jdField_d_of_type_JavaLangString);
     paramJSONObject.put("id_topic_avator", localJSONObject);
     localJSONObject = new JSONObject();
-    localJSONObject.put("biu_time_text", String.format(((Context)localObject).getString(2131719050), new Object[] { bjxj.b(localqno.jdField_b_of_type_Int) }));
+    localJSONObject.put("biu_time_text", String.format(((Context)localObject).getString(2131719062), new Object[] { bkbq.b(localqno.jdField_b_of_type_Int) }));
     paramJSONObject.put("id_topic_recommend_biu_time", localJSONObject);
     localObject = new JSONObject();
     int i;
@@ -2127,7 +2127,7 @@ public class pkm
       if (i == 0) {
         break label299;
       }
-      paramBaseArticleInfo = alpo.a(2131716382);
+      paramBaseArticleInfo = alud.a(2131716394);
       label244:
       ((JSONObject)localObject).put("button_status", paramBaseArticleInfo);
       if (i == 0) {
@@ -2144,7 +2144,7 @@ public class pkm
       return;
       i = 0;
       break;
-      paramBaseArticleInfo = alpo.a(2131716372);
+      paramBaseArticleInfo = alud.a(2131716384);
       break label244;
     }
   }
@@ -2176,14 +2176,14 @@ public class pkm
     for (;;)
     {
       paramBaseArticleInfo = new JSONObject();
-      paramBaseArticleInfo.put("biu_time_text", alpo.a(2131716379));
+      paramBaseArticleInfo.put("biu_time_text", alud.a(2131716391));
       paramJSONObject.put("id_topic_recommend_biu_time", paramBaseArticleInfo);
       return;
       localStringBuilder.append("刚刚");
       break;
       label157:
       if (paramBaseArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0) != null) {
-        localStringBuilder.append(bjxj.a(((qno)paramBaseArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int) + "人参与");
+        localStringBuilder.append(bkbq.a(((qno)paramBaseArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int) + "人参与");
       }
     }
   }
@@ -2355,7 +2355,7 @@ public class pkm
             new JSONObject();
             localJSONObject.put("article_large_imge_url", localqlk.jdField_c_of_type_JavaLangString);
             if (localqlk.jdField_c_of_type_Int == 1) {
-              localJSONObject.put("gallery_cnt", localqlk.jdField_d_of_type_Int + alpo.a(2131716371));
+              localJSONObject.put("gallery_cnt", localqlk.jdField_d_of_type_Int + alud.a(2131716383));
             }
             localJSONObject.put("rowkey", localqlk.g);
             localArrayList1.add(localqlk.g);
@@ -2391,7 +2391,7 @@ public class pkm
       {
         localBaseArticleInfo.mVideoCoverUrl = new URL(localqlk.jdField_c_of_type_JavaLangString);
         if ((paramBaseArticleInfo.isPGCShortContent()) && (localqlk.jdField_e_of_type_Int == 1)) {
-          localJSONObject.put("image_type_text", alpo.a(2131716386));
+          localJSONObject.put("image_type_text", alud.a(2131716398));
         }
         localArrayList2.add(localBaseArticleInfo);
         localJSONObject.put("url", localObject2);

@@ -3,14 +3,14 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import utx;
-import uuc;
-import uuj;
+import uyg;
+import uyl;
+import uys;
 
 public class MsgTabNodeListLoader$11
   implements Runnable
 {
-  public MsgTabNodeListLoader$11(uuc paramuuc, utx paramutx, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2) {}
+  public MsgTabNodeListLoader$11(uyl paramuyl, uyg paramuyg, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class MsgTabNodeListLoader$11
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((uuj)localIterator.next()).a(this.jdField_a_of_type_Utx, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
+        ((uys)localIterator.next()).a(this.jdField_a_of_type_Uyg, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
       }
     }
     if ((QLog.isDevelopLevel()) && (this.this$0.d.isEmpty())) {

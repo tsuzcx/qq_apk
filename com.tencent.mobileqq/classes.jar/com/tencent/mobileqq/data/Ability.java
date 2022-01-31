@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class Ability
-  extends awbv
+  extends awge
 {
   public static final int ABILITY_PHOTO = 2;
   public static final int ABILITY_VIDEO = 1;
   public int flags;
-  @awdj
+  @awhs
   public String uin;
   
   public static boolean hasAbility(int paramInt1, int paramInt2)

@@ -1,16 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wpn
-  extends AnimatorListenerAdapter
+  extends wot
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  public List<wqn> b = new ArrayList();
+  public boolean e;
+  
+  public wpn(ErrorMessage paramErrorMessage)
   {
-    if (this.a) {
-      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    super(paramErrorMessage);
+  }
+  
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      wqn localwqn = (wqn)localIterator.next();
+      localStringBuilder.append("feedId:").append(localwqn.a().feedId);
+      localStringBuilder.append("unionId:").append(localwqn.a().getOwner().getUnionId());
     }
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
   }
 }
 

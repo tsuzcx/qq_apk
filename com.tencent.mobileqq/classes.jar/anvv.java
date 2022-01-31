@@ -1,106 +1,129 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
-import com.tencent.mobileqq.data.Card;
+import android.os.Bundle;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
+import com.tencent.mobileqq.bigbrother.ServerApi.RspPreDownloadRecmd;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.observer.BusinessObserver;
 
-public class anvv
+final class anvv
+  implements BusinessObserver
 {
-  public static BusinessCard a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (anuj)paramQQAppInterface.getManager(112);
-    if (paramQQAppInterface != null) {}
-    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
-    {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new BusinessCard();
-      }
-      return localObject;
-    }
-  }
+  anvv(RockDownloaderTask paramRockDownloaderTask) {}
   
-  public static BusinessCard a(QQAppInterface paramQQAppInterface, awmk paramawmk)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    anuj localanuj = (anuj)paramQQAppInterface.getManager(112);
-    if (paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      paramQQAppInterface = localanuj.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "type=", Integer.valueOf(paramInt), " success=", Boolean.valueOf(paramBoolean), " bundle=", paramBundle });
     }
-    for (;;)
+    Object localObject;
+    if (1 == paramInt)
     {
-      paramawmk = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        paramawmk = new BusinessCard();
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label816;
       }
-      return paramawmk;
-      if (paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      localObject = paramBundle.getByteArray("BUNDLE_KEY_RESPONSE_BYTE");
+      paramBundle = new ServerApi.RspPreDownloadRecmd();
+      if (localObject == null)
       {
-        paramQQAppInterface = paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
-        if ((paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
-          localanuj.a(paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-        } else {
-          paramQQAppInterface = localanuj.b(paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        if (this.a.getRockDownloadListener() != null)
+        {
+          this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), alud.a(2131713884), 10003);
+          this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
         }
-      }
-      else
-      {
-        paramQQAppInterface = null;
+        anvu.a(this.a, "0x800A1E6");
       }
     }
-  }
-  
-  public static void a(String paramString)
-  {
+    else
+    {
+      return;
+    }
     try
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = 1000;
-      localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    azmz.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
-    do
-    {
-      return;
-      try
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = (ServerApi.ErrorInfo)paramBundle.err_info.get();
+      if (localObject == null) {
+        break label757;
+      }
+      if (((ServerApi.ErrorInfo)localObject).err_code.get() != 0) {
+        break label395;
+      }
+      paramBoolean = anvu.a(paramBundle, this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "backend isGetPermission=", Boolean.valueOf(paramBoolean) });
+      }
+      if (!paramBoolean)
       {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramInt1;
-        localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844472);
-        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new anvw(paramURLImageView));
+        anvu.a(this.a, "0x800A1E9");
+        if (this.a.getRockDownloadListener() == null) {
+          break label387;
+        }
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
         return;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard", 2, "error " + paramString.toString());
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "InvalidProtocolBufferMicroException,", paramBundle);
+      }
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_BYTE_INFO", 10003);
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      anvu.a(this.a, "0x800A1E6");
+      return;
+    }
+    anvu.a(this.a, "0x800A1E4");
+    if (this.a.getRockDownloadListener() != null) {
+      this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
+    }
+    label387:
+    anvu.c(this.a);
+    return;
+    label395:
+    if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
+    {
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      anvu.a(this.a, "0x800A1E6");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "GET_DOWNLOAD_CONFIG error!! ", " ", paramBundle.download_url.get(), " ", Integer.valueOf(paramBundle.start_time.get()), " ", Integer.valueOf(paramBundle.end_time.get()), " ", Integer.valueOf(paramBundle.interval.get()), " ", Integer.valueOf(paramBundle.quota_num.get()), " ", Integer.valueOf(paramBundle.daily_num.get()), " ", ((ServerApi.ErrorInfo)localObject).err_msg.get(), " ", Integer.valueOf(((ServerApi.ErrorInfo)localObject).err_code.get()), " ", ((ServerApi.ErrorInfo)localObject).jump_url.get() });
+    }
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
+    return;
+    label757:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_NULL_ERROR_INFO", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
+    return;
+    label816:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
   }
 }
 

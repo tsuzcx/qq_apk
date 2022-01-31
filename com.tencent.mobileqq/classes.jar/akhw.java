@@ -1,25 +1,24 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
-public class akhw
-  extends akia
+class akhw
+  implements View.OnClickListener
 {
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
-  public ImageView d;
+  private WeakReference<akhs> a;
+  
+  public akhw(akhs paramakhs)
+  {
+    this.a = new WeakReference(paramakhs);
+  }
+  
+  public void onClick(View paramView)
+  {
+    akhs localakhs = (akhs)this.a.get();
+    if (localakhs != null) {
+      localakhs.onClick(paramView);
+    }
+  }
 }
 
 

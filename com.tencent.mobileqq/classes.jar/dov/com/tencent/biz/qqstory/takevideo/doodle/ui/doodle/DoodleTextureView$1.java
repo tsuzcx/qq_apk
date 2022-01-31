@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bmqg;
-import bmrd;
+import bmus;
+import bmvp;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    bmrd localbmrd = (bmrd)this.this$0.jdField_a_of_type_Bmqg.a(102);
-    if (localbmrd != null)
+    bmvp localbmvp = (bmvp)this.this$0.jdField_a_of_type_Bmus.a(102);
+    if (localbmvp != null)
     {
-      localbmrd.a();
-      localbmrd.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Bmqg.h();
+      localbmvp.a();
+      localbmvp.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Bmus.h();
       this.this$0.a();
     }
   }

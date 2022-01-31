@@ -1,49 +1,13 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
 
-class ajoh
-  implements bapx
+public class ajoh
+  implements DialogInterface.OnClickListener
 {
-  ajoh(ajog paramajog) {}
+  public ajoh(CameraPreviewNew.1 param1) {}
   
-  public void onResp(baqw parambaqw)
-  {
-    Object localObject = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
-    if (parambaqw.jdField_a_of_type_Int != 0) {
-      lek.c("VideoFilterTools", "download file failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
-      {
-        lek.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-        return;
-      }
-      lek.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = ajog.b;
-        bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
-        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-        if ((ajog.a(this.a).decrementAndGet() == 0) && (ajog.a(this.a) != null))
-        {
-          ajog.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException parambaqw)
-      {
-        parambaqw.printStackTrace();
-        lek.c("VideoFilterTools", "unzip file failed.");
-      }
-    }
-  }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

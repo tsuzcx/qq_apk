@@ -1,134 +1,110 @@
-import ActionMsg.MsgBody;
-import com.qq.taf.jce.HexUtil;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.text.format.Time;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
+import java.util.ArrayList;
 
 public class bdao
 {
-  public static MsgBody a(String paramString)
+  public static final Uri a()
   {
-    MsgBody localMsgBody = new MsgBody();
-    try
-    {
-      JceInputStream localJceInputStream = new JceInputStream(HexUtil.hexStr2Bytes(paramString));
-      localJceInputStream.setServerEncoding("utf-8");
-      localMsgBody.readFrom(localJceInputStream);
-      return localMsgBody;
+    String str = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getString("LastScreenShotUri", "");
+    if (TextUtils.isEmpty(str)) {
+      return null;
     }
-    catch (Exception localException)
-    {
-      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
-      QLog.w("ActionMsgUtil", 2, localException.toString());
-      localMsgBody.msg = "";
-      localMsgBody.action = "";
-      localMsgBody.shareAppID = 0L;
-      localMsgBody.actMsgContentValue = "";
-    }
-    return localMsgBody;
+    return Uri.parse(str);
   }
   
-  public static bdap a(byte[] paramArrayOfByte)
+  public static String a()
   {
-    bdap localbdap = new bdap();
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    Time localTime = new Time();
+    localTime.setToNow();
+    localTime.switchTimezone("Asia/Shanghai");
+    return localTime.format("%Y%m%d%H%M%S");
+  }
+  
+  public static String a(ArrayList<String> paramArrayList, boolean paramBoolean)
+  {
+    Time localTime = new Time();
+    localTime.setToNow();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.process.exit");
+    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
+    localStringBuilder.append(localTime.hour);
+    if (paramBoolean)
+    {
+      localStringBuilder.append(localTime.minute - 1);
+      if (paramArrayList != null) {
+        break label134;
+      }
+    }
+    label134:
+    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
+    {
+      localStringBuilder.append(paramArrayList);
+      paramArrayList = MD5.toMD5(localStringBuilder.toString());
+      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
+      localStringBuilder.append(localTime.minute);
+      break;
+    }
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {}
+    long l;
+    do
+    {
+      return false;
+      l = System.currentTimeMillis();
+    } while ((l < paramLong1) || (l > paramLong2));
+    return true;
+  }
+  
+  public static boolean a(String paramString, ArrayList<String> paramArrayList)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true)))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(ArrayList<String> paramArrayList, Context paramContext)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      bool1 = true;
+    }
+    do
+    {
+      return bool1;
+      paramContext = BaseApplicationImpl.processName;
+      bool1 = bool2;
+    } while (paramContext == null);
+    int i = 0;
     for (;;)
     {
-      try
-      {
-        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        localbdap.jdField_a_of_type_Int = paramArrayOfByte.get();
-        if (paramArrayOfByte.get() != 0) {
-          continue;
-        }
-        i = -3004;
-        localbdap.b = i;
-        if (paramArrayOfByte.hasRemaining())
-        {
-          i = paramArrayOfByte.get();
-          byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
-          paramArrayOfByte.get(arrayOfByte);
-          localbdap.c = i;
-          localbdap.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localbdap.jdField_a_of_type_Int + "appShareCookie.action" + localbdap.b + "appShareCookie.actionType" + localbdap.c + "appShareCookie.actionValue" + localbdap.jdField_a_of_type_JavaLangString);
-          }
-        }
+      bool1 = bool2;
+      if (i >= paramArrayList.size()) {
+        break;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        int i;
-        paramArrayOfByte.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
+      if (paramContext.equals(paramArrayList.get(i))) {
+        return true;
       }
-      return localbdap;
-      i = -3005;
+      i += 1;
     }
-    return localbdap;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, 0L, null);
-  }
-  
-  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
-  {
-    String str = paramString1;
-    if (paramString1 == null)
-    {
-      str = "";
-      QLog.w("ActionMsgUtil", 2, "encode msg is null");
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null)
-    {
-      paramString1 = "";
-      QLog.w("ActionMsgUtil", 2, "encode action is null");
-    }
-    paramString2 = new MsgBody();
-    paramString2.msg = str;
-    paramString2.action = paramString1;
-    paramString2.shareAppID = paramLong;
-    paramString2.actMsgContentValue = paramString3;
-    paramString1 = new JceOutputStream();
-    paramString1.setServerEncoding("utf-8");
-    paramString2.writeTo(paramString1);
-    return HexUtil.bytes2HexStr(paramString1.toByteArray());
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -3000) || (paramInt == -3004) || (paramInt == -3005);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == -2009) || (paramInt == -3012);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return paramInt == -2016;
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -2007;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return paramInt == -2039;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdao
  * JD-Core Version:    0.7.0.1
  */

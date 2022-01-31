@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcgm;
+import bckv;
 
 public final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(bcgm parambcgm, int paramInt) {}
+  public HWTroopUtils$2(bckv parambckv, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bcgm.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bckv.a(this.jdField_a_of_type_Int);
   }
 }
 

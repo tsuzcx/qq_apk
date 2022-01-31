@@ -7,78 +7,80 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import yfn;
-import yfo;
-import yfq;
-import yfr;
-import yfs;
-import yft;
-import yfu;
+import yka;
+import ykb;
+import ykd;
+import yke;
+import ykf;
+import ykg;
+import ykh;
 
 public class Worker<T>
-  implements Runnable, yfs, yft<T>
+  implements Runnable, ykf, ykg<T>
 {
   private static ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = new ThreadPoolExecutor(2, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new yfr();
+  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new yke();
+  private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private String jdField_a_of_type_JavaLangString;
-  yfn<T> jdField_a_of_type_Yfn;
-  private volatile yfu<T> jdField_a_of_type_Yfu;
+  yka<T> jdField_a_of_type_Yka;
+  private volatile ykh<T> jdField_a_of_type_Ykh;
   private T[] jdField_a_of_type_ArrayOfJavaLangObject;
   private volatile String jdField_b_of_type_JavaLangString = "";
   private ExecutorService jdField_b_of_type_JavaUtilConcurrentExecutorService;
   
-  public Worker(String paramString, yfn<T> paramyfn, yfu<T> paramyfu)
+  public Worker(String paramString, yka<T> paramyka, ykh<T> paramykh, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramyfn);
-    if (paramyfu != null) {
-      this.jdField_a_of_type_Yfu = paramyfu;
+    this.jdField_a_of_type_Int = paramInt;
+    a(paramyka);
+    if (paramykh != null) {
+      this.jdField_a_of_type_Ykh = paramykh;
     }
   }
   
   private void a(String paramString)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    yfo.b("set state to:" + paramString);
+    ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", set state to " + paramString);
   }
   
-  private void a(yfn<T> paramyfn)
+  private void a(yka<T> paramyka)
   {
-    this.jdField_a_of_type_Yfn = paramyfn;
-    a(yfq.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yka = paramyka;
+    a(ykd.jdField_a_of_type_JavaLangString);
   }
   
-  private void a(yfu<T> paramyfu, T... paramVarArgs)
+  private void a(ykh<T> paramykh, T... paramVarArgs)
   {
     try
     {
       long l = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Yfn.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > this.jdField_a_of_type_Yfn.jdField_a_of_type_Long * 1000L))
+      if ((this.jdField_a_of_type_Yka.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > this.jdField_a_of_type_Yka.jdField_a_of_type_Long * 1000L))
       {
-        yfo.b("preload response is expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Yfn.jdField_a_of_type_Long);
+        ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", preload response is expored! mPreloadExpiredTime " + this.jdField_a_of_type_Yka.jdField_a_of_type_Long);
         paramVarArgs = null;
       }
       while (a())
       {
-        yfo.b("is in mainThread");
-        paramyfu.a(paramVarArgs);
-        if (!this.jdField_a_of_type_Yfn.jdField_a_of_type_Boolean) {
+        ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", is in mainThread");
+        paramykh.a(paramVarArgs);
+        if (!this.jdField_a_of_type_Yka.jdField_a_of_type_Boolean) {
           return;
         }
-        yfo.a(this.jdField_a_of_type_JavaLangString);
+        ykb.a(this.jdField_a_of_type_JavaLangString);
         return;
-        yfo.b("preload response is not expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Yfn.jdField_a_of_type_Long);
+        ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", preload response is not expored! mPreloadExpiredTime " + this.jdField_a_of_type_Yka.jdField_a_of_type_Long);
       }
-      yfo.b("is not in mainThread");
+      ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", is not in mainThread");
     }
-    catch (Exception paramyfu)
+    catch (Exception paramykh)
     {
-      yfo.a(paramyfu);
+      ykb.a(paramykh);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new Worker.2(this, paramyfu, paramVarArgs));
+    this.jdField_a_of_type_AndroidOsHandler.post(new Worker.2(this, paramykh, paramVarArgs));
   }
   
   private boolean a()
@@ -93,25 +95,25 @@ public class Worker<T>
     }
     for (;;)
     {
-      a(yfq.jdField_b_of_type_JavaLangString);
+      a(ykd.jdField_b_of_type_JavaLangString);
       return;
       jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(this);
     }
   }
   
-  public void a(yfu paramyfu)
+  public void a(ykh paramykh)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("setListener listener");
-    if (paramyfu != null) {}
+    StringBuilder localStringBuilder = new StringBuilder().append("id=").append(this.jdField_a_of_type_JavaLangString).append(", seq=").append(this.jdField_a_of_type_Int).append(", setListener listener ");
+    if (paramykh != null) {}
     for (boolean bool = true;; bool = false)
     {
-      yfo.b(bool);
-      if (paramyfu != null)
+      ykb.b(bool);
+      if (paramykh != null)
       {
-        this.jdField_a_of_type_Yfu = paramyfu;
-        yfo.b("mState" + this.jdField_b_of_type_JavaLangString);
-        if (yfq.c.equals(this.jdField_b_of_type_JavaLangString)) {
-          a(paramyfu, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        this.jdField_a_of_type_Ykh = paramykh;
+        ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", cur state " + this.jdField_b_of_type_JavaLangString);
+        if (ykd.c.equals(this.jdField_b_of_type_JavaLangString)) {
+          a(paramykh, this.jdField_a_of_type_ArrayOfJavaLangObject);
         }
       }
       return;
@@ -122,25 +124,26 @@ public class Worker<T>
   {
     this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(yfq.c);
-    if (this.jdField_a_of_type_Yfu != null)
+    a(ykd.c);
+    if (this.jdField_a_of_type_Ykh != null)
     {
-      a(this.jdField_a_of_type_Yfu, paramVarArgs);
+      a(this.jdField_a_of_type_Ykh, paramVarArgs);
       return;
     }
-    yfo.b("done but listener is null");
+    ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", done but listener is null");
   }
   
   public void b()
   {
     try
     {
-      this.jdField_a_of_type_Yfn.a();
+      ykb.b("id=" + this.jdField_a_of_type_JavaLangString + ", seq=" + this.jdField_a_of_type_Int + ", on remove worker");
+      this.jdField_a_of_type_Yka.a();
       return;
     }
     catch (Exception localException)
     {
-      yfo.a(localException);
+      ykb.a(localException);
     }
   }
   
@@ -148,12 +151,12 @@ public class Worker<T>
   {
     try
     {
-      this.jdField_a_of_type_Yfn.a(this);
+      this.jdField_a_of_type_Yka.a(this);
       return;
     }
     catch (Exception localException)
     {
-      yfo.a(localException);
+      ykb.a(localException);
     }
   }
 }

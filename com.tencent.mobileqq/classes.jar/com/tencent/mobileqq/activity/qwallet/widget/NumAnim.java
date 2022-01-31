@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import alpo;
+import alud;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -24,7 +24,7 @@ public class NumAnim
   public static final int REGION_PREFFIX = 1;
   public static final int REGION_SUFFIX = 3;
   private static final String TAG = "NumAnim";
-  public static final String WAN = alpo.a(2131708062);
+  public static final String WAN = alud.a(2131708074);
   static DecimalFormat decimalFormatTo1;
   static DecimalFormat decimalFormatTo2 = new DecimalFormat("0.00");
   final boolean changeDip;

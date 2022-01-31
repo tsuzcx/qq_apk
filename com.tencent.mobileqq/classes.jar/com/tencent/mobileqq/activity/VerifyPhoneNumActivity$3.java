@@ -10,7 +10,7 @@ class VerifyPhoneNumActivity$3
   {
     this.this$0.a = new Dialog(this.this$0, 2131755801);
     this.this$0.a.setContentView(2131558428);
-    ((TextView)this.this$0.a.findViewById(2131365231)).setText(this.this$0.getString(this.a));
+    ((TextView)this.this$0.a.findViewById(2131365233)).setText(this.this$0.getString(this.a));
     this.this$0.a.show();
   }
 }

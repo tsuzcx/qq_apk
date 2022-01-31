@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aajy;
+import aaon;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
@@ -65,7 +65,7 @@ class AdProxyImpl$SDKInterstitialAdView$1
     {
       localGdtInterstitialParams.jdField_a_of_type_Int = i;
       localGdtInterstitialParams.jdField_a_of_type_Boolean = true;
-      this.this$1.mInterstitialAdView = new aajy(this.val$activity, localGdtInterstitialParams);
+      this.this$1.mInterstitialAdView = new aaon(this.val$activity, localGdtInterstitialParams);
       if (this.this$1.mInterstitialAdView != null)
       {
         if (this.this$1.mInterstitialAdListener != null) {

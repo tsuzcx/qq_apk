@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avto;
-import awbv;
-import awbw;
-import awdj;
+import avxx;
+import awge;
+import awgf;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class OcrRecogResult
-  extends awbv
+  extends awge
   implements Parcelable
 {
-  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new avto();
-  @awdj
+  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new avxx();
+  @awhs
   public String filename;
   public String language;
   public String ocrContent;
@@ -46,54 +46,54 @@ public class OcrRecogResult
     }
   }
   
-  public static OcrRecogResult find(awbw paramawbw, String paramString)
+  public static OcrRecogResult find(awgf paramawgf, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramawbw != null)
+    if (paramawgf != null)
     {
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramString)) {
-        localObject1 = (OcrRecogResult)paramawbw.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
+        localObject1 = (OcrRecogResult)paramawgf.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
       }
     }
     return localObject1;
   }
   
-  public static void persistOrReplace(awbw paramawbw, OcrRecogResult paramOcrRecogResult)
+  public static void persistOrReplace(awgf paramawgf, OcrRecogResult paramOcrRecogResult)
   {
-    if ((paramawbw != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
-      paramawbw.b(paramOcrRecogResult);
+    if ((paramawgf != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
+      paramawgf.b(paramOcrRecogResult);
     }
   }
   
-  public static boolean remove(awbw paramawbw, String paramString)
+  public static boolean remove(awgf paramawgf, String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramawbw != null)
+    if (paramawgf != null)
     {
       bool1 = bool2;
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = find(paramawbw, paramString);
+        paramString = find(paramawgf, paramString);
         bool1 = bool2;
         if (paramString != null) {
-          bool1 = paramawbw.b(paramString);
+          bool1 = paramawgf.b(paramString);
         }
       }
     }
     return bool1;
   }
   
-  public static void removeCache(awbw paramawbw)
+  public static void removeCache(awgf paramawgf)
   {
-    List localList = paramawbw.a(OcrRecogResult.class);
+    List localList = paramawgf.a(OcrRecogResult.class);
     if ((localList != null) && (localList.size() > 50))
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext()) {
-        paramawbw.b((OcrRecogResult)localIterator.next());
+        paramawgf.b((OcrRecogResult)localIterator.next());
       }
       QLog.d("Q.ocr", 1, "removeCache size:" + localList.size());
     }

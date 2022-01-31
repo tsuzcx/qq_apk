@@ -1,21 +1,25 @@
+import java.io.File;
+
 public class basi
-  extends base
 {
-  private int a = 360000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 10000;
-  private int e = 20000;
-  private int f = 3000;
+  File a;
   
-  public int a()
+  public basi(File paramFile)
   {
-    return this.d;
+    this.a = paramFile;
   }
   
-  public int b()
+  basj a(String paramString)
   {
-    return this.e;
+    return new basj(this, paramString);
+  }
+  
+  File a(String paramString)
+  {
+    if (!this.a.exists()) {
+      this.a.mkdirs();
+    }
+    return new File(this.a, paramString);
   }
 }
 

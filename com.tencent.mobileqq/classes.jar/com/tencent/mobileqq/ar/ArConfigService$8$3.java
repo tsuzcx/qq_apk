@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amsj;
+import amwy;
 
 public class ArConfigService$8$3
   implements Runnable
 {
-  public ArConfigService$8$3(amsj paramamsj) {}
+  public ArConfigService$8$3(amwy paramamwy) {}
   
   public void run()
   {

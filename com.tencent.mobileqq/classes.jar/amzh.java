@@ -1,129 +1,212 @@
-import android.annotation.TargetApi;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amzh
+public abstract class amzh
+  extends Binder
+  implements amzg
 {
-  public static String a()
+  public amzh()
   {
-    if (a()) {
-      return bduw.a(aljq.aX);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
-    }
-    float f = bdcs.a();
-    if ((f < 15728640.0F) && (QLog.isColorLevel())) {
-      QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
-    }
-    return BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArConfigManager");
   }
   
-  public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
+  public static amzg a(IBinder paramIBinder)
   {
-    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof amzg))) {
+      return (amzg)localIInterface;
+    }
+    return new amzi(paramIBinder);
   }
   
-  public static String a(String paramString)
+  public IBinder asBinder()
   {
-    return a() + "ar_cloud_transfer/" + paramString + File.separator;
+    return this;
   }
   
-  @TargetApi(18)
-  public static boolean a()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    try
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    boolean bool;
+    switch (paramInt1)
     {
-      boolean bool = Environment.getExternalStorageState().equals("mounted");
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static String b()
-  {
-    return a() + "ar_relationship/";
-  }
-  
-  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a(amzt.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b(amzt.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
-  }
-  
-  public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
+      paramParcel2.writeInt(0);
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
       }
-      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
-  }
-  
-  public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
+      paramParcel2.writeInt(0);
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
-        return "";
+      paramParcel2.writeInt(0);
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a(amzk.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b(amzk.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      bool = a();
+      paramParcel2.writeNoException();
+      paramInt1 = i;
+      if (bool) {
+        paramInt1 = 1;
       }
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
-      return paramArCloudConfigInfo;
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a(amzq.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b(amzq.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      bool = b();
+      paramParcel2.writeNoException();
+      paramInt1 = j;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+      }
+    case 17: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      bool = c();
+      paramParcel2.writeNoException();
+      paramInt1 = k;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 18: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 19: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      a(amzw.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 20: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      b(amzw.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      bool = d();
+      paramParcel2.writeNoException();
+      paramInt1 = m;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 22: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      d();
+      paramParcel2.writeNoException();
+      return true;
     }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
-  }
-  
-  public static String e(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+    c(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

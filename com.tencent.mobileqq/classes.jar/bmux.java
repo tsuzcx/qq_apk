@@ -1,31 +1,60 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class bmux
-  implements TextWatcher
+public abstract class bmux
+  implements bmvb
 {
-  public bmux(bmuv parambmuv) {}
+  protected int[] a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bmux(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    String str = xmt.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private int[] a(int[] paramArrayOfInt)
   {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    wsv.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Bmuy != null) {
-      this.a.jdField_a_of_type_Bmuy.a(this.a.jdField_a_of_type_JavaLangString);
+    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
+      return paramArrayOfInt;
+    }
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
+    }
+    for (;;)
+    {
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

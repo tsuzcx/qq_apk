@@ -1,30 +1,68 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import java.util.Queue;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class aesw
-  implements Animator.AnimatorListener
+  extends BaseAdapter
 {
-  aesw(aesv paramaesv) {}
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  private aesw(aesk paramaesk) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(List<String> paramList)
   {
-    aesv.a(this.a).remove();
-    if (aesv.a(this.a).isEmpty()) {
-      this.a.a();
-    }
-    while (aesv.a(this.a)) {
-      return;
-    }
-    aesv.a(this.a).clear();
-    this.a.a();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_Aesk.a).inflate(2131559193, null);
+    }
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131366927);
+    paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!TextUtils.isEmpty(paramView)) {}
+    try
+    {
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(paramView, null);
+      localURLDrawable.setDecodeHandler(bcyz.y);
+      localImageView.setImageDrawable(localURLDrawable);
+      return paramViewGroup;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + paramView, new Object[] { localException }));
+    }
+    return paramViewGroup;
+  }
 }
 
 

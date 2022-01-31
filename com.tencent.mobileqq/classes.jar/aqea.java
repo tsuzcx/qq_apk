@@ -1,31 +1,14 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class aqea
-  implements Animator.AnimatorListener
+  implements aqeb
 {
-  public aqea(ExtendFriendSearchBarView paramExtendFriendSearchBarView, View paramView) {}
+  public aqea(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    ExtendFriendFragment.b(this.a);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

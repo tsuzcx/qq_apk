@@ -46,14 +46,14 @@ public class mzt
     if (paramView == null)
     {
       paramViewGroup = new mzo(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559823, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370971));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559822, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370990));
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362135));
-      paramViewGroup.c = paramView.findViewById(2131376296);
+      paramViewGroup.c = paramView.findViewById(2131376350);
       paramViewGroup.c.setVisibility(4);
-      paramViewGroup.d = paramView.findViewById(2131370727);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365150);
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376503);
+      paramViewGroup.d = paramView.findViewById(2131370746);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365152);
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376557);
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
       if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {

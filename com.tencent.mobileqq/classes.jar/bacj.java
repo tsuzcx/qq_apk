@@ -1,34 +1,43 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-class bacj
-  implements WtTicketPromise
+public final class bacj
+  implements bacm
 {
-  bacj(baci parambaci, Runnable paramRunnable) {}
+  private final File a;
   
-  public void Done(Ticket paramTicket)
+  public bacj(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
+    return this.a.exists();
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public File getLatest()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    if (this.a.exists()) {
+      return this.a;
     }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return amdp.a(16).submit(new bacl(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return amdp.a(16).submit(new back(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

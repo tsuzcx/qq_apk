@@ -1,27 +1,39 @@
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ylu
-  implements TouchWebView.OnScrollChangedListener
+class ylu
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public ylu(TribeVideoPlugin paramTribeVideoPlugin) {}
+  ylu(ylt paramylt, Rect paramRect) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged before every thing t = " + paramInt2 + " oldt = " + paramInt4);
-    }
-    if (TribeVideoPlugin.a(this.a) != null)
+    switch (paramMotionEvent.getAction())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged t = " + paramInt2 + " oldt = " + paramInt4);
-      }
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
     }
+    int i;
+    int j;
+    do
+    {
+      while (!paramMotionEvent.hasNext())
+      {
+        do
+        {
+          return true;
+          i = (int)(paramMotionEvent.getX() + 0.5F);
+          j = (int)(paramMotionEvent.getY() + 0.5F);
+        } while (ylt.a(this.jdField_a_of_type_Ylt) == null);
+        paramMotionEvent = ylt.a(this.jdField_a_of_type_Ylt).iterator();
+      }
+      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
+    return false;
   }
 }
 

@@ -1,27 +1,36 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahel
-  extends ViewPager.SimpleOnPageChangeListener
+  implements View.OnClickListener
 {
-  public ahel(TroopView paramTroopView) {}
+  public ahel(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (azwu.a()) {}
-    while (paramInt != 1) {
-      return;
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof Integer))) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = ((Integer)paramView).intValue();
+      } while ((i < 0) || (this.a.jdField_a_of_type_Aheo == null));
+      paramView = this.a.getActivity();
+    } while (paramView == null);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+    MessageRecord localMessageRecord = ((ahen)this.a.jdField_a_of_type_Aheo.getItem(i)).a;
+    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
     }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (azwu.a()) {
-      return;
-    }
-    TroopView.a(this.a, paramInt);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
   }
 }
 

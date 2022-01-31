@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import arzs;
+import aseb;
 
 class ForwardShareCardOption$1$1
   implements Runnable

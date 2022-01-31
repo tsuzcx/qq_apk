@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import bcwm;
+import bdav;
 
 class TaskMonitorManager$FpsListener
-  implements bcwm
+  implements bdav
 {
   private TaskMonitorManager$FpsListener(TaskMonitorManager paramTaskMonitorManager) {}
   

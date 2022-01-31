@@ -1,22 +1,6 @@
-import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-
-class yig
-  implements vrw
+public abstract interface yig
 {
-  yig(yid paramyid, affq paramaffq, CleanVideoPlayerView paramCleanVideoPlayerView) {}
-  
-  public void a(vrr paramvrr)
-  {
-    Long localLong = (Long)yid.b(this.jdField_a_of_type_Yid).get(Integer.valueOf(this.jdField_a_of_type_Affq.b));
-    if ((localLong != null) && (localLong.longValue() > 0L))
-    {
-      paramvrr.a(localLong.longValue());
-      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
-  }
+  public abstract void handleShareDataChange(String paramString, yif paramyif);
 }
 
 

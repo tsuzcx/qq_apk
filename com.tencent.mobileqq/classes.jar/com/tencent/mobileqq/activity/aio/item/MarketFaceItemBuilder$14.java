@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqr;
+import afvg;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,7 +13,7 @@ public final class MarketFaceItemBuilder$14
   
   public void run()
   {
-    afqr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidOsHandler);
+    afvg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidOsHandler);
   }
 }
 

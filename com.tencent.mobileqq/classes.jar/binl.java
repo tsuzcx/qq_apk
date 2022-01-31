@@ -1,56 +1,6 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-
-public class binl
-  implements INetEventHandler
+public abstract interface binl
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public binl(bing parambing) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      try
-      {
-        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
-        return;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      try
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
-  }
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    bing.a(this.jdField_a_of_type_Bing).sendEmptyMessage(66304);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

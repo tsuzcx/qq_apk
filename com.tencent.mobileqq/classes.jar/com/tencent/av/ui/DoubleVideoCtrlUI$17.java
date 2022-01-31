@@ -17,7 +17,7 @@ class DoubleVideoCtrlUI$17
     {
       localObject1 = localObject2;
       if (this.this$0.a.get() != null) {
-        localObject1 = (ChildLockSign)((Activity)this.this$0.a.get()).findViewById(2131372586);
+        localObject1 = (ChildLockSign)((Activity)this.this$0.a.get()).findViewById(2131372612);
       }
     }
     if (localObject1 != null) {

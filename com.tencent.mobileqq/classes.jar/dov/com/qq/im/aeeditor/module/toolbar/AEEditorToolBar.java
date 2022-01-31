@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdkf;
-import blld;
+import bdoo;
+import blpp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +18,7 @@ public abstract class AEEditorToolBar
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorToolBar.class.getSimpleName();
-  protected blld a;
+  protected blpp a;
   private List<ToolbarButton> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public AEEditorToolBar(Context paramContext)
@@ -55,8 +55,8 @@ public abstract class AEEditorToolBar
     localToolbarButton.setBackgroundColor(0);
     localToolbarButton.setImageResource(paramInt2);
     paramString = new LinearLayout.LayoutParams(-2, -2);
-    paramString.width = bdkf.a(50.0F);
-    paramString.height = bdkf.a(50.0F);
+    paramString.width = bdoo.a(50.0F);
+    paramString.height = bdoo.a(50.0F);
     addView(localToolbarButton, paramInt1, paramString);
     this.jdField_a_of_type_JavaUtilList.add(paramInt1, localToolbarButton);
   }
@@ -90,9 +90,9 @@ public abstract class AEEditorToolBar
     a((String)paramView.getTag());
   }
   
-  public void setToolBarListener(blld paramblld)
+  public void setToolBarListener(blpp paramblpp)
   {
-    this.jdField_a_of_type_Blld = paramblld;
+    this.jdField_a_of_type_Blpp = paramblpp;
   }
 }
 

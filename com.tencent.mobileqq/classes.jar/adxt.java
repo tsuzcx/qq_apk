@@ -1,18 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.Switch;
 
 public class adxt
-  extends baua
 {
-  public adxt(TroopAssistantActivity paramTroopAssistantActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
-    }
-  }
+  public CompoundButton.OnCheckedChangeListener a;
+  public TextView a;
+  public URLImageView a;
+  public Switch a;
+  public String a;
 }
 
 

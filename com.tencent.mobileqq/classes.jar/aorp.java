@@ -1,97 +1,67 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aorp
-  extends aopw<SSOErrorInfoMapConfig>
+  extends aokh<aorq>
 {
-  public static SSOErrorInfoMapConfig c()
-  {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)aogj.a().a(477);
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
-    if (localSSOErrorInfoMapConfig2 == null) {
-      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
-    }
-    return localSSOErrorInfoMapConfig1;
-  }
-  
   public int a()
   {
-    return 477;
+    return 362;
   }
   
   @NonNull
-  public SSOErrorInfoMapConfig a()
+  public aorq a(int paramInt)
   {
-    return new SSOErrorInfoMapConfig();
+    return new aorq();
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public aorq a(aoko[] paramArrayOfaoko)
   {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    for (;;)
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      String str1;
-      aorn localaorn;
-      String str2;
-      aoro localaoro;
-      try
-      {
-        if (!TextUtils.isEmpty(paramArrayOfaogf))
-        {
-          paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
-          Iterator localIterator1 = paramArrayOfaogf.keys();
-          if (localIterator1.hasNext())
-          {
-            str1 = (String)localIterator1.next();
-            JSONObject localJSONObject1 = paramArrayOfaogf.optJSONObject(str1);
-            Iterator localIterator2 = localJSONObject1.keys();
-            localaorn = new aorn();
-            if (!localIterator2.hasNext()) {
-              break label220;
-            }
-            str2 = (String)localIterator2.next();
-            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
-            Iterator localIterator3 = localJSONObject2.keys();
-            localaoro = new aoro();
-            if (!localIterator3.hasNext()) {
-              break label204;
-            }
-            String str3 = (String)localIterator3.next();
-            String str4 = localJSONObject2.optString(str3);
-            localaoro.a.put(str3, str4);
-            continue;
-          }
-        }
-        return localSSOErrorInfoMapConfig;
+      aorq localaorq = aorq.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      catch (JSONException paramArrayOfaogf)
-      {
-        wsv.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfaogf.getMessage());
-      }
-      label204:
-      localaorn.a.put(str2, localaoro);
-      continue;
-      label220:
-      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localaorn);
+      return localaorq;
+    }
+    return null;
+  }
+  
+  public Class<aorq> a()
+  {
+    return aorq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
     }
   }
   
-  public Class<SSOErrorInfoMapConfig> a()
+  public void a(aorq paramaorq)
   {
-    return SSOErrorInfoMapConfig.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramaorq });
+    }
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig b()
+  public int b()
   {
-    return new SSOErrorInfoMapConfig();
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

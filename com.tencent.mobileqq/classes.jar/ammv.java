@@ -1,22 +1,26 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
 
 public class ammv
 {
-  @TargetApi(23)
-  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  
+  public ammv(MsgLruCache paramMsgLruCache, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramAppActivity != null) {
-      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  @TargetApi(23)
-  public static boolean a(Context paramContext)
+  public String toString()
   {
-    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
+    if (this.jdField_a_of_type_Int == amms.c) {}
+    for (String str = "A";; str = "B") {
+      return this.jdField_a_of_type_JavaLangString + "_" + this.c + "_" + str + "_" + this.b;
+    }
   }
 }
 

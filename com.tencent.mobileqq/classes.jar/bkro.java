@@ -1,9 +1,19 @@
-public class bkro
-  extends bkrm
+import android.widget.Button;
+import mqq.util.WeakReference;
+
+class bkro
+  implements arrh
 {
-  bkrn a()
+  bkro(bkrk parambkrk) {}
+  
+  public void a()
   {
-    return new bkrp();
+    this.a.i();
+  }
+  
+  public void b()
+  {
+    ((bkqs)this.a.a.get()).b.setClickable(true);
   }
 }
 

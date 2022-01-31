@@ -13,7 +13,7 @@ public class tbi
     {
     default: 
       return;
-    case 2131721473: 
+    case 2131721486: 
       WSPublicAccReport.getInstance().reportNotificationClick();
       WSHomeFragment.b(this.a);
       ((tij)this.a.b()).a(this.a.getActivity(), 602);

@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
-class aimo
-  implements DialogInterface.OnClickListener
+public abstract interface aimo
 {
-  aimo(aiml paramaiml) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
-  }
+  public abstract void a(Context paramContext, boolean paramBoolean);
 }
 
 

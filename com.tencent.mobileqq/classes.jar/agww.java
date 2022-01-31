@@ -1,68 +1,49 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 class agww
-  implements bapx
+  extends AccountObserver
 {
-  private Handler a;
+  agww(agwt paramagwt) {}
   
-  agww(Handler paramHandler)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onResp(baqw parambaqw)
-  {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = parambaqw.jdField_a_of_type_Baqv;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)parambaqw.jdField_a_of_type_Baqv.a();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
+    int i;
     if (QLog.isColorLevel())
     {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, agwq.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + parambaqw.jdField_a_of_type_Long + " file.path = " + parambaqw.jdField_a_of_type_Baqv.c + " resp.result = " + parambaqw.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (parambaqw.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, agwq.a((String)localObject, "OnResp", i, "result downloading, "));
-      }
-      return;
-    }
-    if (parambaqw.jdField_a_of_type_Int == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      agwq.a(parambaqw.jdField_a_of_type_Baqv.c);
-      if (localZhituImgResponse != null)
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
       {
-        parambaqw = this.a.obtainMessage(3);
-        parambaqw.obj = localBundle;
-        this.a.sendMessage(parambaqw);
-        return;
+        i = 0;
+        QLog.d("C2CMsgRoamProxy", 2, i);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, agwq.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
+    }
+    else
+    {
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label98;
       }
-      parambaqw = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      parambaqw.obj = localBundle;
+      i = 1;
+      label64:
+      if (i == 0) {
+        break label104;
+      }
+      agwt.a(this.a, true);
     }
     for (;;)
     {
+      agwt.c(this.a).b();
+      return;
+      i = paramString2.length();
       break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", parambaqw.b);
-      ((Message)localObject).obj = localBundle;
-      parambaqw = (baqw)localObject;
+      label98:
+      i = 0;
+      break label64;
+      label104:
+      agwt.a(this.a, false);
     }
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

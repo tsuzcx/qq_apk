@@ -12,7 +12,7 @@ public class llk
     if (QLog.isDevelopLevel()) {
       QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
     }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
+    azqs.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
   }
   
   public static void b()

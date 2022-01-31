@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akji;
+import aknx;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdjj;
-import bhow;
+import bdns;
+import bhtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloPandora;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -51,8 +51,8 @@ class ApolloBoxEnterView$3
       if (localJSONObject == null) {
         return;
       }
-      localakji = (akji)localQQAppInterface.getManager(153);
-      localObject2 = localakji.a(str + "", true);
+      localaknx = (aknx)localQQAppInterface.getManager(153);
+      localObject2 = localaknx.a(str + "", true);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -79,7 +79,7 @@ class ApolloBoxEnterView$3
       QQAppInterface localQQAppInterface;
       String str;
       Object localObject1;
-      akji localakji;
+      aknx localaknx;
       while (QLog.isColorLevel())
       {
         QLog.e("ApolloBoxEnterView", 2, "handleQueryPandora failed ", localException);
@@ -88,7 +88,7 @@ class ApolloBoxEnterView$3
         localException.canSteal = 0;
       }
     }
-    localakji.a((ApolloPandora)localObject1);
+    localaknx.a((ApolloPandora)localObject1);
     if ((ApolloBoxEnterView.a(this.this$0) != null) && (ApolloBoxEnterView.a(this.this$0).equals(String.valueOf(str))))
     {
       ApolloBoxEnterView.a(this.this$0, (ApolloPandora)localObject1);
@@ -96,7 +96,7 @@ class ApolloBoxEnterView$3
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("ApolloBoxEnterView", 2, "handleQueryPandora canSteal: " + ((ApolloPandora)localObject1).canSteal + ", hadStolen: " + ((ApolloPandora)localObject1).hadStolen + ",boxType:" + ((ApolloPandora)localObject1).boxType + ", checkPoint: " + bdjj.a(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
+      QLog.d("ApolloBoxEnterView", 2, "handleQueryPandora canSteal: " + ((ApolloPandora)localObject1).canSteal + ", hadStolen: " + ((ApolloPandora)localObject1).hadStolen + ",boxType:" + ((ApolloPandora)localObject1).boxType + ", checkPoint: " + bdns.a(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
       return;
     }
   }

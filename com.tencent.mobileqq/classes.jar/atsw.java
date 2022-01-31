@@ -1,20 +1,26 @@
-import android.util.Log;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class atsw
-  implements atsy
+  implements INetInfoHandler
 {
-  atsw(atsv paramatsv) {}
+  atsw(atso paramatso) {}
   
-  public void a(int paramInt)
+  public void onNetMobile2None()
   {
-    this.a.a = true;
-    this.a.c(paramInt);
+    atso.c(this.a);
   }
   
-  public void b(int paramInt)
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
   {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
-    this.a.b(paramInt);
+    atso.c(this.a);
   }
 }
 

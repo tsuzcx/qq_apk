@@ -1,17 +1,33 @@
-import com.tencent.qqmini.sdk.core.utils.thread.PriorityThreadFactory.1;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public final class bgmb
-  implements ThreadFactory
+public abstract class bgmb
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private static MiniAppInfo a;
+  public static List<String> a;
   
-  public Thread newThread(Runnable paramRunnable)
+  static
   {
-    return new PriorityThreadFactory.1(this, paramRunnable, this.jdField_a_of_type_JavaLangString + '-' + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
+  }
+  
+  public static MiniAppInfo a()
+  {
+    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
+    try
+    {
+      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
+      {
+        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
+        localMiniAppInfo.appId = "0000000000";
+        localMiniAppInfo.launchParam.miniAppId = "0000000000";
+        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
+      }
+      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    }
+    finally {}
   }
 }
 

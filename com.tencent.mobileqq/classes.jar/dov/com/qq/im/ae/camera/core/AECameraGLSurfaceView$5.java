@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import bkoi;
+import bksp;
 
 class AECameraGLSurfaceView$5
   implements Runnable
@@ -10,8 +10,8 @@ class AECameraGLSurfaceView$5
   
   public void run()
   {
-    if ((bkoi.a().c()) && (!AECameraGLSurfaceView.a(this.this$0))) {
-      bkoi.a().a((Activity)this.this$0.getContext(), false);
+    if ((bksp.a().c()) && (!AECameraGLSurfaceView.a(this.this$0))) {
+      bksp.a().a((Activity)this.this$0.getContext(), false);
     }
   }
 }

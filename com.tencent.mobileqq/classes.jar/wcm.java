@@ -1,61 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import java.util.ArrayList;
 
 public class wcm
-  implements wcw
 {
-  public wcm(QQStoryMainActivity paramQQStoryMainActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public View a()
+  public wcm(String paramString)
   {
-    return QQStoryMainActivity.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public ImageView a()
-  {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.startTitleProgress();
-      return;
-    }
-    this.a.stopTitleProgress();
-  }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, ugx.a, alpo.a(2131711329));
-      return;
-    }
-    a(ugx.a);
-  }
-  
-  public void c() {}
 }
 
 

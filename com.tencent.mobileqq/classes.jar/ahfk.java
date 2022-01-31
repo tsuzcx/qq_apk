@@ -1,16 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
 
-public class ahfk
-  implements ValueAnimator.AnimatorUpdateListener
+class ahfk
+  extends RecyclerView.ViewHolder
 {
-  public ahfk(LoadingAvatarProgressView paramLoadingAvatarProgressView) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ahfk(View paramView)
   {
-    LoadingAvatarProgressView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * LoadingAvatarProgressView.a(this.a));
-    this.a.invalidate();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372183));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372182));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372181));
   }
 }
 

@@ -1,29 +1,66 @@
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import cooperation.photoplus.PhotoPlusManager;
+import cooperation.photoplus.PhotoPlusModule.1;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class biqg
+  extends QIPCModule
 {
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  private static biqg a;
+  
+  private biqg()
   {
-    if (paramContext == null)
+    super("PhotoPlusModule");
+  }
+  
+  public static biqg a()
+  {
+    if (a == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
+      if (a == null) {
+        a = new biqg();
       }
-      Toast.makeText(BaseApplication.getContext(), alpo.a(2131711078), 0).show();
-      return;
+      return a;
     }
-    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
-    localIntent.putExtra("componetname", paramString);
-    if (paramBundle != null) {
-      localIntent.putExtra("_param_", paramBundle);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
     }
-    paramContext.startActivity(localIntent);
+    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(paramBundle)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
+      }
+    }
+    do
+    {
+      return null;
+      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
+      if ("action_get_sticker_templates".equals(paramString))
+      {
+        paramBundle.b(true);
+        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
+        return null;
+      }
+      if ("action_exit_sticker".equals(paramString))
+      {
+        paramBundle.b(false);
+        return null;
+      }
+    } while (!"action_jump_to_shortvideo".equals(paramString));
+    paramBundle.c(true);
+    return null;
   }
 }
 

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 public class acjb
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public acjb(ChatHistoryFileActivity paramChatHistoryFileActivity, acje paramacje) {}
+  public acjb(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Acje.a(false);
+    bdgm.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
+    aggx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8004079", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

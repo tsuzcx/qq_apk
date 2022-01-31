@@ -1,16 +1,35 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class akyr
-  extends akqp
+  extends BroadcastReceiver
 {
-  public akyr(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
+    if (paramIntent == null) {
+      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
     }
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
+        }
+      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      paramContext = paramIntent.getStringExtra("data");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
+      }
+    } while (TextUtils.isEmpty(paramContext));
+    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
   }
 }
 

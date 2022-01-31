@@ -1,155 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
-public final class aaoe
-  implements aanw
+final class aaoe
+  extends FrameLayout
+  implements aany
 {
-  public int a;
-  public long a;
-  aaog jdField_a_of_type_Aaog = new aaof(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  public qq_ad_get.QQAdGetRsp.AdInfo a;
-  public int b;
-  private List<String> b;
-  private List<String> c;
+  private int jdField_a_of_type_Int = -2147483648;
+  private aanv jdField_a_of_type_Aanv;
+  private int b = -2147483648;
   
-  public aaoe()
+  public aaoe(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  private int a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    aaoc.a(BaseApplicationImpl.getApplication(), this, paramString);
-    j = -1;
-    i = j;
-    for (;;)
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      try
-      {
-        aanp.a("GdtC2SReporter", "index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int);
-        i = j;
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-        i = j;
-        localHttpURLConnection.setRequestMethod("GET");
-        i = j;
-        localHttpURLConnection.setConnectTimeout(10000);
-        i = j;
-        localHttpURLConnection.setReadTimeout(10000);
-        i = j;
-        localHttpURLConnection.setUseCaches(false);
-        i = j;
-        localHttpURLConnection.setInstanceFollowRedirects(true);
-        i = j;
-        localHttpURLConnection.connect();
-        i = j;
-        j = localHttpURLConnection.getResponseCode();
-        i = j;
-        aanp.a("GdtC2SReporter", "rspCode:  " + j + " index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int + " reportUrl =" + paramString);
-        i = j;
-        int k = this.jdField_a_of_type_Int;
-        if (j != 200) {
-          continue;
-        }
-        paramInt = 0;
-        i = j;
-        azmj.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
-      }
-      catch (Throwable localThrowable)
-      {
-        aanp.d("GdtC2SReporter", "c2sReport excetpion: " + localThrowable.getMessage());
-        j = i;
-        continue;
-      }
-      aaoc.a(BaseApplicationImpl.getApplication(), this, paramString, j, System.currentTimeMillis() - l);
-      return j;
-      paramInt = 1;
-    }
-  }
-  
-  private void a(List<String> paramList)
-  {
-    int i = -1;
-    paramList = paramList.iterator();
-    int j = 0;
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      j += 1;
-      int k = a(str, j);
-      i = k;
-      if (k < 0) {
-        i = a(str, j);
-      }
-      aaoc.a(BaseApplicationImpl.getApplication(), this, str, i);
-    }
-    azmj.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, i, "", "", this.jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
-  {
-    int j = 1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
-    if (paramAdInfo == null) {}
-    do
-    {
-      aaoc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
-      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
-      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
-      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
-    } while (this.jdField_a_of_type_JavaLangString == null);
-    if ((paramInt1 == 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Int = paramInt1;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((paramInt1 == 1) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if ((paramInt1 == 2) && (this.c != null) && (this.c.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if (this.jdField_a_of_type_Int == -1) {
-        break;
-      }
-      aanp.a("GdtC2SReporter", "reportAsync for ADID: " + this.jdField_a_of_type_JavaLangString + ", operationType: " + paramInt1);
-      aaoc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramAdInfo = BaseApplicationImpl.getApplication().getRuntime();
-      String str = paramAdInfo.getAccount();
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), aaoh.class);
-      localNewIntent.putExtra("key_uin", str);
-      localNewIntent.putExtra("key_adID", this.jdField_a_of_type_JavaLangString);
-      paramInt1 = j;
-      if (i != 0) {
-        paramInt1 = 0;
-      }
-      localNewIntent.putExtra("key_operation", paramInt1);
-      localNewIntent.setObserver(this.jdField_a_of_type_Aaog);
-      paramAdInfo.startServlet(localNewIntent);
-      azmj.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.jdField_a_of_type_Int, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+      aase.d("GdtBannerViewForCreativeSize193", "constructor");
       return;
     }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Aanv = new aanv(paramContext, paramString);
+    this.jdField_a_of_type_Aanv.setId(2131367082);
+    addView(this.jdField_a_of_type_Aanv);
   }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Aanv == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      aase.d("GdtBannerViewForCreativeSize193", "setSize error");
+      return;
+    }
+    Object localObject = new aaod(getContext(), paramInt1, paramInt2);
+    paramInt2 = Double.valueOf(1.0D * (paramInt1 - ((aaod)localObject).b * 2) / this.jdField_a_of_type_Int * this.b + ((aaod)localObject).b * 2).intValue();
+    this.jdField_a_of_type_Aanv.setPadding(((aaod)localObject).b, ((aaod)localObject).b, ((aaod)localObject).b, ((aaod)localObject).b);
+    localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Aanv.setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 

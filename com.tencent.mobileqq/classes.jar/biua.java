@@ -1,38 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class biua
-  implements biug
+  implements DialogInterface.OnClickListener
 {
-  public biua(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  public biua(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
+        arrr.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
+      }
     }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    for (;;)
+    {
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+      return;
+      arrr.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
+      continue;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
+      paramDialogInterface.putExtra("from", "qlink");
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
     }
   }
 }

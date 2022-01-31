@@ -1,13 +1,23 @@
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 class afzr
-  extends aelt
+  extends agdh
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  protected ViewGroup a;
+  protected ImageView a;
+  protected TextView a;
+  protected ETTextView a;
+  protected BubbleImageView a;
+  protected TextView b;
+  protected ETTextView b;
+  protected TextView c;
+  public int e;
   
-  private afzr(afzp paramafzp) {}
+  afzr(afzh paramafzh) {}
 }
 
 

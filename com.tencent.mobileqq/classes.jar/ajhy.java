@@ -1,75 +1,65 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
-public class ajhy
-  extends ajhc
-  implements Cloneable
+public final class ajhy
 {
-  private String d;
+  public final int a;
+  @NonNull
+  public final ajhw a;
+  @NonNull
+  public final String a;
+  public final int b;
+  @NonNull
+  public final String b;
   
-  public ajhy(Context paramContext)
+  public ajhy(int paramInt1, @NonNull String paramString1, int paramInt2, @NonNull String paramString2, @NonNull ajhw paramajhw)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699984);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Ajhw = paramajhw;
   }
   
-  public void a(String paramString)
+  public boolean equals(Object paramObject)
   {
-    this.d = paramString;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      this.d = paramArrayOfByte.getString("senderUin");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bbkv.a(this.c);
-      }
-      return;
+    boolean bool2 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    catch (JSONException paramArrayOfByte)
+    do
     {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("senderUin", this.d);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        this.c = this.jdField_a_of_type_Bbkv.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      do
       {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+              bool1 = bool2;
+            } while (paramObject == null);
+            bool1 = bool2;
+          } while (getClass() != paramObject.getClass());
+          paramObject = (ajhy)paramObject;
+          bool1 = bool2;
+        } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+        bool1 = bool2;
+      } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
+      bool1 = bool2;
+    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    return ((this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangString.hashCode()) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_b_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "MessageToShowBanner{bannerLev=" + this.jdField_a_of_type_Int + ", businessCategory='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconIdx=" + this.jdField_b_of_type_Int + ", wording='" + this.jdField_b_of_type_JavaLangString + '\'' + ", callback=" + this.jdField_a_of_type_Ajhw + '}';
   }
 }
 

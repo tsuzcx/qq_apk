@@ -1,43 +1,85 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class bizl
-  extends QzoneExternalRequest
 {
-  public JceStruct a;
-  
-  public bizl(long paramLong1, long paramLong2, String paramString)
+  public static int a(Context paramContext)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
-    localmobile_sub_get_photo_wall_req.uin = paramLong1;
-    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
-    this.a = localmobile_sub_get_photo_wall_req;
+    return a(paramContext, "QR_USERPREF58", -1);
   }
   
-  public static JceStruct a(byte[] paramArrayOfByte)
+  public static int a(@NonNull Context paramContext, String paramString, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    return paramContext.getSharedPreferences("QR_OUT_SETTING", 0).getInt(paramString, paramInt);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int j = 0;
+    int i = j;
+    int k;
+    if (paramQQAppInterface != null)
+    {
+      k = VipUtils.a(paramQQAppInterface, paramString);
+      if ((k & 0x4) == 0) {
+        break label26;
+      }
+      i = 2;
     }
-    return decode(paramArrayOfByte, "getPhotoWall");
+    label26:
+    do
+    {
+      return i;
+      i = j;
+    } while ((k & 0x2) == 0);
+    return 1;
   }
   
-  public String getCmdString()
+  public static short a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return "QzoneNewService.getPhotoWall";
+    return VipUtils.a(paramQQAppInterface, paramString);
   }
   
-  public JceStruct getReq()
+  public static void a(Context paramContext, int paramInt)
   {
-    return this.a;
+    a(paramContext, "QR_USERPREF58", paramInt);
   }
   
-  public String uniKey()
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    return "getPhotoWall";
+    a(paramContext, "QR_USERPREF58", paramInt);
+    a(paramContext, "QR_USERPREF_FROM_NET", paramBoolean);
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putInt(paramString, paramInt);
+    paramContext.commit();
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putBoolean(paramString, paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface != null)
+    {
+      paramAppInterface = (alzl)paramAppInterface.getManager(56);
+      if (paramAppInterface != null) {
+        return paramAppInterface.b("1805987832") != null;
+      }
+    }
+    return false;
   }
 }
 

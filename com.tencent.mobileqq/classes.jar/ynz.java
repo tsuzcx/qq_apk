@@ -1,27 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-class ynz
-  implements ynu
+public class ynz
+  implements View.OnClickListener
 {
-  ynz(yny paramyny, long paramLong) {}
+  public ynz(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    paramString1 = new File(paramString1);
-    if ((paramBoolean) && (paramString1.exists()))
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Yny.a.a(paramString1, this.jdField_a_of_type_Yny.a.b, new yoa(this, l));
-      return;
-    }
-    this.jdField_a_of_type_Yny.a.d = paramString2;
-    this.jdField_a_of_type_Yny.a.a.a(this.jdField_a_of_type_Yny.a);
+    this.a.this$0.a.dismiss();
   }
 }
 

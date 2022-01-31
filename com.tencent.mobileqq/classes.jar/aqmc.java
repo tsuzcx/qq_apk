@@ -1,38 +1,28 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class aqmc
   implements View.OnClickListener
 {
-  public aqmc(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public aqmc(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
   public void onClick(View paramView)
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
     }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-    if (localFileManagerEntity != null)
+    paramView = (Button)paramView.findViewById(2131365060);
+    if (paramView.getTag() != null)
     {
-      if (this.a.jdField_a_of_type_Aqiz != null) {
-        this.a.jdField_a_of_type_Aqiz.a(null);
-      }
-      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
-        this.a.a(localFileManagerEntity);
+      this.a.e = ((Integer)paramView.getTag()).intValue();
+      if (this.a.jdField_a_of_type_Arcc != null) {
+        this.a.jdField_a_of_type_Arcc.a(null);
       }
     }
-    this.a.jdField_a_of_type_Aqiz.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.g();
+    this.a.m();
   }
 }
 

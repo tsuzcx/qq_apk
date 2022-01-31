@@ -12,12 +12,12 @@ public class nhz
   implements Manager
 {
   private MQLruCache<Long, nhp> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(50);
-  private awbw jdField_a_of_type_Awbw;
+  private awgf jdField_a_of_type_Awgf;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public nhz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Awgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -104,17 +104,17 @@ public class nhz
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, alvc paramalvc)
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, alzr paramalzr)
   {
     ArrayList localArrayList = a(paramLong);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {
-      ThreadManager.post(new AccountDetailDynamicDataManager.2(this, paramLong, paramQQAppInterface, paramalvc), 8, null, true);
+      ThreadManager.post(new AccountDetailDynamicDataManager.2(this, paramLong, paramQQAppInterface, paramalzr), 8, null, true);
     }
   }
   
   public boolean a(long paramLong, byte[] paramArrayOfByte)
   {
-    DynamicInfoEntity localDynamicInfoEntity2 = (DynamicInfoEntity)this.jdField_a_of_type_Awbw.a(DynamicInfoEntity.class, paramLong);
+    DynamicInfoEntity localDynamicInfoEntity2 = (DynamicInfoEntity)this.jdField_a_of_type_Awgf.a(DynamicInfoEntity.class, paramLong);
     DynamicInfoEntity localDynamicInfoEntity1 = localDynamicInfoEntity2;
     if (localDynamicInfoEntity2 == null) {
       localDynamicInfoEntity1 = new DynamicInfoEntity();
@@ -124,26 +124,26 @@ public class nhz
     return a(localDynamicInfoEntity1);
   }
   
-  protected boolean a(awbv paramawbv)
+  protected boolean a(awge paramawge)
   {
     boolean bool = false;
-    if (paramawbv.getStatus() == 1000)
+    if (paramawge.getStatus() == 1000)
     {
-      this.jdField_a_of_type_Awbw.b(paramawbv);
-      if (paramawbv.getStatus() == 1001) {
+      this.jdField_a_of_type_Awgf.b(paramawge);
+      if (paramawge.getStatus() == 1001) {
         bool = true;
       }
     }
-    while ((paramawbv.getStatus() != 1001) && (paramawbv.getStatus() != 1002)) {
+    while ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
       return bool;
     }
-    return this.jdField_a_of_type_Awbw.a(paramawbv);
+    return this.jdField_a_of_type_Awgf.a(paramawge);
   }
   
   public void onDestroy()
   {
     this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
-    this.jdField_a_of_type_Awbw.a();
+    this.jdField_a_of_type_Awgf.a();
   }
 }
 

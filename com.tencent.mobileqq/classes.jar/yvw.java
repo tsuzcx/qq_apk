@@ -1,47 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class yvw
-  implements xpb
+public class yvw
+  implements DialogInterface.OnClickListener
 {
-  yvw(yvv paramyvv, yvx paramyvx, yvy paramyvy) {}
+  public yvw(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onFailure(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Yvx != null)
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Yvy.a(943004);
-      this.jdField_a_of_type_Yvy.a(paramString);
-      this.jdField_a_of_type_Yvx.b(this.jdField_a_of_type_Yvy);
+      bdun.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
+      azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
+    while (paramInt != 0) {
+      return;
     }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo start");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (this.jdField_a_of_type_Yvx != null) {
-      this.jdField_a_of_type_Yvx.a(this.jdField_a_of_type_Yvy);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
-    }
+    azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
   }
 }
 

@@ -99,10 +99,10 @@ public class pkp
           localObject2 = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
           if (localObject2 != null)
           {
-            localObject1 = alpo.a(2131700188);
-            if (bdvr.a() == 1)
+            localObject1 = alud.a(2131700200);
+            if (beaa.a() == 1)
             {
-              localObject1 = alpo.a(2131700187);
+              localObject1 = alud.a(2131700199);
               label469:
               ((NativeText)localObject2).setText((CharSequence)localObject1);
             }
@@ -129,7 +129,7 @@ public class pkp
             if (l <= 0L) {
               break label636;
             }
-            localObject1 = rdm.b(l) + alpo.a(2131700189);
+            localObject1 = rdm.b(l) + alud.a(2131700201);
             break label469;
           }
           label572:

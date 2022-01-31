@@ -1,73 +1,32 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class awcy
-  extends awch
+class awcy
+  implements DialogInterface.OnClickListener
 {
-  public awcy()
-  {
-    this.a = 3;
-  }
+  awcy(awcx paramawcx) {}
   
-  public awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramawbv = (TroopAssistantData)paramawbv;
-    if (paramawcg == null)
-    {
-      paramawbv.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramawbv.lastmsgtime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgtime"));
-      paramawbv.lastdrafttime = paramCursor.getLong(paramCursor.getColumnIndex("lastdrafttime"));
-      return paramawbv;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
     }
-    int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1)
-    {
-      paramawcg.a(new NoColumnError("troopUin", String.class));
-      i = paramCursor.getColumnIndex("lastmsgtime");
-      if (i != -1) {
-        break label187;
-      }
-      paramawcg.a(new NoColumnError("lastmsgtime", Long.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("lastdrafttime");
-      if (i != -1) {
-        break label202;
-      }
-      paramawcg.a(new NoColumnError("lastdrafttime", Long.TYPE));
-      return paramawbv;
-      paramawbv.troopUin = paramCursor.getString(i);
-      break;
-      label187:
-      paramawbv.lastmsgtime = paramCursor.getLong(i);
-    }
-    label202:
-    paramawbv.lastdrafttime = paramCursor.getLong(i);
-    return paramawbv;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,lastmsgtime INTEGER ,lastdrafttime INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(awbv paramawbv, ContentValues paramContentValues)
-  {
-    paramawbv = (TroopAssistantData)paramawbv;
-    paramContentValues.put("troopUin", paramawbv.troopUin);
-    paramContentValues.put("lastmsgtime", Long.valueOf(paramawbv.lastmsgtime));
-    paramContentValues.put("lastdrafttime", Long.valueOf(paramawbv.lastdrafttime));
+    paramDialogInterface = new Intent(awcx.a(this.a), LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("uin", awcx.a(this.a));
+    paramDialogInterface.putExtra("befault_uin", awcx.a(this.a).getCurrentAccountUin());
+    awcx.a(this.a).startActivity(paramDialogInterface);
+    awcx.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awcy
  * JD-Core Version:    0.7.0.1
  */

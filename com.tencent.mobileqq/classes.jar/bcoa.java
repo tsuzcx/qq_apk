@@ -1,18 +1,16 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class bcoa
-  extends bcob
+public class bcoa
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  bcoa(bcnz parambcnz)
+  public bcoa(bcnu parambcnu, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
   {
-    super(parambcnz.a);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

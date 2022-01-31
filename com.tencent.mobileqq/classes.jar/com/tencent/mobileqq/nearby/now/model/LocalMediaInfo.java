@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auym;
+import avcv;
 
 public class LocalMediaInfo
   implements Parcelable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new auym();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new avcv();
   public int a;
   public long a;
   public Integer a;

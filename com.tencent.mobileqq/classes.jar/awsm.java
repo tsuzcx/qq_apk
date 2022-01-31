@@ -1,97 +1,90 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.SystemClock;
-import android.view.animation.AccelerateInterpolator;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class awsm
-  extends BitmapDrawable
 {
-  private static int d;
-  private static int e;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
-  private float jdField_b_of_type_Float = 0.5F;
-  private int jdField_b_of_type_Int = 50;
-  private int c;
+  public static int a;
+  public static SparseArray<String> a;
+  public static String a;
+  private static AtomicBoolean a;
   
-  public awsm(Resources paramResources, Bitmap paramBitmap)
+  static
   {
-    super(paramResources, paramBitmap);
+    jdField_a_of_type_Int = 50;
+    jdField_a_of_type_JavaLangString = alud.a(2131717163);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public static awsm[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
+  public static void a(AppRuntime paramAppRuntime)
   {
-    if ((paramBitmap != null) && (paramResources != null))
-    {
-      awsm[] arrayOfawsm2 = new awsm[paramInt];
-      e = paramBitmap.getWidth() / 2;
-      d = paramBitmap.getHeight() / 2;
-      int i = 0;
-      for (;;)
-      {
-        arrayOfawsm1 = arrayOfawsm2;
-        if (i >= paramInt) {
-          break;
-        }
-        arrayOfawsm2[i] = new awsm(paramResources, paramBitmap);
-        i += 1;
-      }
-    }
-    awsm[] arrayOfawsm1 = null;
-    return arrayOfawsm1;
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_Float = ((float)paramLong);
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = 1;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    int j = 1;
-    int i = j;
-    switch (this.c)
-    {
-    default: 
-      i = j;
-    }
-    float f2;
+    if (paramAppRuntime == null) {}
+    JSONObject localJSONObject;
+    JSONArray localJSONArray;
     for (;;)
     {
-      if (i == 0) {
-        invalidateSelf();
+      try
+      {
+        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
+        return;
       }
-      return;
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.c = 2;
-      i = 0;
-      continue;
-      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
-      if (f2 <= 1.0F) {
+      finally {}
+      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      {
+        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
+        if (localJSONObject == null) {
+          break label217;
+        }
+        localJSONArray = localJSONObject.optJSONArray("fontList");
+        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null)
+          {
+            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+            break label227;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i < localJSONArray.length())
+      {
+        paramAppRuntime = localJSONArray.optJSONObject(i);
+        int j = paramAppRuntime.optInt("id");
+        String str = paramAppRuntime.optString("imgUrl");
+        if (TextUtils.isEmpty(str)) {
+          break label232;
+        }
+        paramAppRuntime = str;
+        if (!str.startsWith("http:"))
+        {
+          paramAppRuntime = str;
+          if (!str.startsWith("https:")) {
+            paramAppRuntime = "http:" + str;
+          }
+        }
+        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
+        break label232;
+        jdField_a_of_type_AndroidUtilSparseArray.clear();
+      }
+      else
+      {
+        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
+        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
+        label217:
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
         break;
       }
-      this.c = 3;
-      i = j;
-    }
-    paramCanvas.save();
-    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
-    if (f3 > 0.5F) {}
-    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
-    {
-      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
-      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
-      setAlpha((int)(255.0F - f2 * 255.0F));
-      super.draw(paramCanvas);
-      paramCanvas.restore();
-      i = 0;
-      break;
+      label227:
+      int i = 0;
+      continue;
+      label232:
+      i += 1;
     }
   }
 }

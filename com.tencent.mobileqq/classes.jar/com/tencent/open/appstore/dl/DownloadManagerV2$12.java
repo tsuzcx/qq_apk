@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bfgi;
+import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$12
   implements Runnable
 {
-  public DownloadManagerV2$12(bfgi parambfgi, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$12(bfkr parambfkr, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    bfgi.c(this.this$0, this.a);
+    bfkr.c(this.this$0, this.a);
   }
 }
 

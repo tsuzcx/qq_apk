@@ -1,73 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class aomo
-  extends aofy<aomn>
 {
-  public int a()
-  {
-    return 546;
-  }
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  @NonNull
-  public aomn a(int paramInt)
+  public aomo(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    return new aomn();
-  }
-  
-  @Nullable
-  public aomn a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
-    {
-      aomn localaomn = aomn.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaomn;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<aomn> a()
-  {
-    return aomn.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(aomn paramaomn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramaomn.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

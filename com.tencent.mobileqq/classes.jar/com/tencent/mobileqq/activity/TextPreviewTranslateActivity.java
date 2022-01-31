@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import adwn;
-import adwo;
-import adwp;
-import adwq;
-import adwr;
-import adws;
-import adwt;
-import aekt;
-import ajtw;
+import aebc;
+import aebd;
+import aebe;
+import aebf;
+import aebg;
+import aebh;
+import aebi;
+import aepi;
+import ajyl;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -21,15 +21,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import avqz;
-import avrb;
-import avvb;
-import avvd;
-import baig;
-import bcvq;
-import bcwh;
-import bdje;
-import bepp;
+import avvi;
+import avvk;
+import avzk;
+import avzm;
+import bamp;
+import bczz;
+import bdaq;
+import bdnn;
+import bety;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.history.widget.DispatchTouchEventRelativeLayout;
@@ -54,14 +54,14 @@ public class TextPreviewTranslateActivity
   public static final int e;
   public static final int f = Color.parseColor("#1F1F1F");
   public static final int g = Color.parseColor("#000000");
-  private ajtw jdField_a_of_type_Ajtw;
+  private ajyl jdField_a_of_type_Ajyl;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avrb jdField_a_of_type_Avrb = new adwo(this);
-  public avvb a;
-  protected bepp a;
+  private avvk jdField_a_of_type_Avvk = new aebd(this);
+  public avzk a;
+  protected bety a;
   private TranslateController jdField_a_of_type_ComTencentMobileqqOcrTranslateController;
   private OcrConfig jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig;
   private ContainerView jdField_a_of_type_ComTencentMobileqqWidgetContainerView;
@@ -71,7 +71,7 @@ public class TextPreviewTranslateActivity
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  public avvb b;
+  public avzk b;
   private String jdField_b_of_type_JavaLangString;
   private List<String> jdField_b_of_type_JavaUtilList;
   private String c;
@@ -121,26 +121,26 @@ public class TextPreviewTranslateActivity
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(this, getResources().getDimensionPixelSize(2131298914));
-      this.jdField_a_of_type_Bepp.c(paramInt);
+      this.jdField_a_of_type_Bety = new bety(this, getResources().getDimensionPixelSize(2131298914));
+      this.jdField_a_of_type_Bety.c(paramInt);
     }
     if (!isFinishing()) {
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
   private void a(TranslateResult paramTranslateResult)
   {
     if (paramTranslateResult == null) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView == null) || (this.jdField_a_of_type_Ajtw == null)) {
+    while ((this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView == null) || (this.jdField_a_of_type_Ajyl == null)) {
       return;
     }
     ContainerView localContainerView = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView;
-    ajtw localajtw = this.jdField_a_of_type_Ajtw;
+    ajyl localajyl = this.jdField_a_of_type_Ajyl;
     String str = paramTranslateResult.b();
-    localajtw.jdField_a_of_type_JavaLangString = str;
+    localajyl.jdField_a_of_type_JavaLangString = str;
     localContainerView.setText(str);
     b(paramTranslateResult.jdField_b_of_type_JavaLangString);
     a(paramTranslateResult.jdField_a_of_type_JavaLangString);
@@ -160,7 +160,7 @@ public class TextPreviewTranslateActivity
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       label82:
       if (AppSetting.c) {
-        bcvq.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_d_of_type_JavaLangString, getString(2131699613));
+        bczz.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_d_of_type_JavaLangString, getString(2131699625));
       }
     }
     else
@@ -172,7 +172,7 @@ public class TextPreviewTranslateActivity
       }
     }
     label149:
-    for (int i = 2130845157;; i = 2130845668)
+    for (int i = 2130845229;; i = 2130845740)
     {
       paramString = paramString.getDrawable(i);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, paramString);
@@ -185,7 +185,7 @@ public class TextPreviewTranslateActivity
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      a(2131699614);
+      a(2131699626);
       if (this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController != null) {
         this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController.a(paramString1, paramString2, paramString3);
       }
@@ -216,10 +216,10 @@ public class TextPreviewTranslateActivity
   
   private String b(String paramString)
   {
-    if (bdje.a(paramString)) {
+    if (bdnn.a(paramString)) {
       return "";
     }
-    return new baig(paramString, 5, 25).a(false);
+    return new bamp(paramString, 5, 25).a(false);
   }
   
   private void b()
@@ -228,9 +228,9 @@ public class TextPreviewTranslateActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setTextColor(jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(jdField_a_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(jdField_a_of_type_Int);
-    Drawable localDrawable = getResources().getDrawable(2130845670);
+    Drawable localDrawable = getResources().getDrawable(2130845742);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-    localDrawable = getResources().getDrawable(2130845666);
+    localDrawable = getResources().getDrawable(2130845738);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
   }
   
@@ -248,7 +248,7 @@ public class TextPreviewTranslateActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       label79:
       if (AppSetting.c) {
-        bcvq.a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_e_of_type_JavaLangString, getString(2131699613));
+        bczz.a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_e_of_type_JavaLangString, getString(2131699625));
       }
     }
     else
@@ -260,7 +260,7 @@ public class TextPreviewTranslateActivity
       }
     }
     label146:
-    for (int i = 2130845157;; i = 2130845668)
+    for (int i = 2130845229;; i = 2130845740)
     {
       paramString = paramString.getDrawable(i);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, paramString);
@@ -286,35 +286,35 @@ public class TextPreviewTranslateActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377718));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131378212));
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(new baig(this.jdField_b_of_type_JavaLangString, 5, 25));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView = ((ContainerView)findViewById(2131378213));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378189));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378185));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378190));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378184));
-    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131376147));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377772));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131378266));
+    this.jdField_a_of_type_AndroidWidgetEditText.setText(new bamp(this.jdField_b_of_type_JavaLangString, 5, 25));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView = ((ContainerView)findViewById(2131378267));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378243));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378239));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378244));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378238));
+    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131376201));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_Ajtw = new ajtw();
-    this.jdField_a_of_type_Ajtw.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView);
+    this.jdField_a_of_type_Ajyl = new ajyl();
+    this.jdField_a_of_type_Ajyl.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView);
     b();
-    this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig = ((avqz)this.app.getManager(228)).a(false);
+    this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig = ((avvi)this.app.getManager(228)).a(false);
     if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout instanceof DispatchTouchEventRelativeLayout)) {
-      ((DispatchTouchEventRelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout).setOnDispatchListener(new adwt(this.jdField_a_of_type_Ajtw));
+      ((DispatchTouchEventRelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout).setOnDispatchListener(new aebi(this.jdField_a_of_type_Ajyl));
     }
     this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
-    int i = bcwh.a(this, 360.0F);
+    int i = bdaq.a(this, 360.0F);
     if (this.jdField_a_of_type_AndroidWidgetEditText.getLineHeight() != 0) {
       i /= this.jdField_a_of_type_AndroidWidgetEditText.getLineHeight();
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setMaxLines(i);
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new adwn(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new aebc(this));
       return;
       i = 17;
     }
@@ -322,18 +322,18 @@ public class TextPreviewTranslateActivity
   
   private void f()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
   private void g()
   {
-    if ((this.jdField_a_of_type_Avvb != null) && (this.jdField_a_of_type_Avvb.isShowing())) {
-      this.jdField_a_of_type_Avvb.dismiss();
+    if ((this.jdField_a_of_type_Avzk != null) && (this.jdField_a_of_type_Avzk.isShowing())) {
+      this.jdField_a_of_type_Avzk.dismiss();
     }
-    if ((this.jdField_b_of_type_Avvb != null) && (this.jdField_b_of_type_Avvb.isShowing())) {
-      this.jdField_b_of_type_Avvb.dismiss();
+    if ((this.jdField_b_of_type_Avzk != null) && (this.jdField_b_of_type_Avzk.isShowing())) {
+      this.jdField_b_of_type_Avzk.dismiss();
     }
     do
     {
@@ -352,31 +352,31 @@ public class TextPreviewTranslateActivity
         {
           i += 1;
           break;
-          avvd localavvd = new avvd();
-          localavvd.jdField_b_of_type_JavaLangString = str;
-          localavvd.jdField_a_of_type_JavaLangString = a(str);
+          avzm localavzm = new avzm();
+          localavzm.jdField_b_of_type_JavaLangString = str;
+          localavzm.jdField_a_of_type_JavaLangString = a(str);
           if (str.equalsIgnoreCase(this.jdField_d_of_type_JavaLangString)) {
             j = i;
           }
-          localArrayList.add(localavvd);
+          localArrayList.add(localavzm);
         }
       }
-      this.jdField_b_of_type_Avvb = avvb.a(this, localArrayList, j, new adwp(this));
-    } while (this.jdField_b_of_type_Avvb == null);
-    this.jdField_b_of_type_Avvb.setOnDismissListener(new adwq(this));
+      this.jdField_b_of_type_Avzk = avzk.a(this, localArrayList, j, new aebe(this));
+    } while (this.jdField_b_of_type_Avzk == null);
+    this.jdField_b_of_type_Avzk.setOnDismissListener(new aebf(this));
     int i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() / 2;
-    int j = aekt.a(75.0F, getResources());
+    int j = aepi.a(75.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    this.jdField_b_of_type_Avvb.showAsDropDown(this.jdField_a_of_type_AndroidWidgetTextView, i - j, 0);
+    this.jdField_b_of_type_Avzk.showAsDropDown(this.jdField_a_of_type_AndroidWidgetTextView, i - j, 0);
   }
   
   private void h()
   {
-    if ((this.jdField_b_of_type_Avvb != null) && (this.jdField_b_of_type_Avvb.isShowing())) {
-      this.jdField_b_of_type_Avvb.dismiss();
+    if ((this.jdField_b_of_type_Avzk != null) && (this.jdField_b_of_type_Avzk.isShowing())) {
+      this.jdField_b_of_type_Avzk.dismiss();
     }
-    if ((this.jdField_a_of_type_Avvb != null) && (this.jdField_a_of_type_Avvb.isShowing())) {
-      this.jdField_a_of_type_Avvb.dismiss();
+    if ((this.jdField_a_of_type_Avzk != null) && (this.jdField_a_of_type_Avzk.isShowing())) {
+      this.jdField_a_of_type_Avzk.dismiss();
     }
     do
     {
@@ -395,22 +395,22 @@ public class TextPreviewTranslateActivity
         {
           i += 1;
           break;
-          avvd localavvd = new avvd();
-          localavvd.jdField_b_of_type_JavaLangString = str;
-          localavvd.jdField_a_of_type_JavaLangString = a(str);
+          avzm localavzm = new avzm();
+          localavzm.jdField_b_of_type_JavaLangString = str;
+          localavzm.jdField_a_of_type_JavaLangString = a(str);
           if (str.equalsIgnoreCase(this.jdField_e_of_type_JavaLangString)) {
             j = i;
           }
-          localArrayList.add(localavvd);
+          localArrayList.add(localavzm);
         }
       }
-      this.jdField_a_of_type_Avvb = avvb.a(this, localArrayList, j, new adwr(this));
-    } while (this.jdField_a_of_type_Avvb == null);
-    this.jdField_a_of_type_Avvb.setOnDismissListener(new adws(this));
+      this.jdField_a_of_type_Avzk = avzk.a(this, localArrayList, j, new aebg(this));
+    } while (this.jdField_a_of_type_Avzk == null);
+    this.jdField_a_of_type_Avzk.setOnDismissListener(new aebh(this));
     int i = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth() / 2;
-    int j = aekt.a(75.0F, getResources());
+    int j = aepi.a(75.0F, getResources());
     this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    this.jdField_a_of_type_Avvb.showAsDropDown(this.jdField_b_of_type_AndroidWidgetTextView, i - j, 0);
+    this.jdField_a_of_type_Avzk.showAsDropDown(this.jdField_b_of_type_AndroidWidgetTextView, i - j, 0);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -425,12 +425,12 @@ public class TextPreviewTranslateActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561323);
+    super.setContentView(2131561341);
     c();
     e();
     d();
     this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController = new TranslateController(this.app);
-    addObserver(this.jdField_a_of_type_Avrb);
+    addObserver(this.jdField_a_of_type_Avvk);
     a();
     a(this.jdField_d_of_type_JavaLangString);
     b(this.jdField_e_of_type_JavaLangString);
@@ -441,20 +441,20 @@ public class TextPreviewTranslateActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Avrb);
-    this.jdField_a_of_type_Ajtw.b(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView);
+    removeObserver(this.jdField_a_of_type_Avvk);
+    this.jdField_a_of_type_Ajyl.b(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView);
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Ajtw.b();
+    this.jdField_a_of_type_Ajyl.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Ajtw.a();
+    this.jdField_a_of_type_Ajyl.a();
   }
   
   public void onClick(View paramView)
@@ -475,11 +475,11 @@ public class TextPreviewTranslateActivity
       a(this.jdField_e_of_type_JavaLangString);
       b(paramView);
       a(b(this.jdField_b_of_type_JavaLangString), this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString);
-      if ((this.jdField_b_of_type_Avvb != null) && (this.jdField_b_of_type_Avvb.isShowing())) {
-        this.jdField_b_of_type_Avvb.dismiss();
+      if ((this.jdField_b_of_type_Avzk != null) && (this.jdField_b_of_type_Avzk.isShowing())) {
+        this.jdField_b_of_type_Avzk.dismiss();
       }
-    } while ((this.jdField_a_of_type_Avvb == null) || (!this.jdField_a_of_type_Avvb.isShowing()));
-    this.jdField_a_of_type_Avvb.dismiss();
+    } while ((this.jdField_a_of_type_Avzk == null) || (!this.jdField_a_of_type_Avzk.isShowing()));
+    this.jdField_a_of_type_Avzk.dismiss();
   }
 }
 

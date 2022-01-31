@@ -1,6 +1,16 @@
-abstract interface bguk
+import com.tencent.qqmini.sdk.launcher.AppUIProxy;
+
+public class bguk
+  extends bgug
 {
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  public bguk(AppUIProxy paramAppUIProxy) {}
+  
+  public void a(bguf parambguf)
+  {
+    if (parambguf.a == 11) {
+      this.a.hideLoading();
+    }
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 
 public class MayKnowExposure
-  extends awbv
+  extends awge
 {
   public static final int EXPOSE_ACTION_CLICK_ADD = 3;
   public static final int EXPOSE_ACTION_CLICK_PROFILE = 2;
@@ -36,7 +36,7 @@ public class MayKnowExposure
   public int exposeCnt;
   public int exposeTime;
   public int pageId;
-  @awdg
+  @awhp
   public long startExploseTime;
   public String uin;
   
@@ -100,7 +100,7 @@ public class MayKnowExposure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MayKnowExposure
  * JD-Core Version:    0.7.0.1
  */

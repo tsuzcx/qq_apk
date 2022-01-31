@@ -1,42 +1,31 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class aozk
-  implements ArkViewImplement.LoadCallback
+class aozk
+  implements aozm
 {
-  public aozk(ArkBabyqCardInfo paramArkBabyqCardInfo, ankl paramankl, ankh paramankh, afds paramafds, int paramInt) {}
+  aozk(aozj paramaozj, QQAppInterface paramQQAppInterface) {}
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public int a()
   {
-    onLoadState(paramInt1);
+    return azdl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Ankl.b.setVisibility(0);
-      this.jdField_a_of_type_Ankh.a(this.jdField_a_of_type_Ankl, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ankh.a(this.jdField_a_of_type_Afds, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Ankl.b.setVisibility(8);
+    azdl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0)) {
+      azdl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozk
  * JD-Core Version:    0.7.0.1
  */

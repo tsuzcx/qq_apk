@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import abqw;
-import alpo;
+import abvl;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -11,8 +11,8 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhpo;
-import bhtf;
+import bhtv;
+import bhxm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
@@ -106,11 +106,11 @@ public class ReadInJoyCommentListView
   private void l()
   {
     Object localObject = getAdapter();
-    if ((localObject instanceof bhtf))
+    if ((localObject instanceof bhxm))
     {
-      localObject = (bhtf)localObject;
-      if ((((bhtf)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
-        ((BaseAdapter)((bhtf)localObject).getWrappedAdapter()).notifyDataSetChanged();
+      localObject = (bhxm)localObject;
+      if ((((bhxm)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
+        ((BaseAdapter)((bhxm)localObject).getWrappedAdapter()).notifyDataSetChanged();
       }
     }
     while (!(localObject instanceof BaseAdapter)) {
@@ -121,9 +121,9 @@ public class ReadInJoyCommentListView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559842, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372477));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372478));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559841, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372497));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372498));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -131,10 +131,10 @@ public class ReadInJoyCommentListView
     setFooterDividersEnabled(false);
   }
   
-  public void a(bhpo parambhpo)
+  public void a(bhtv parambhtv)
   {
     if (this.jdField_a_of_type_Oln != null) {
-      this.jdField_a_of_type_Oln.b(parambhpo);
+      this.jdField_a_of_type_Oln.b(parambhtv);
     }
   }
   
@@ -142,7 +142,7 @@ public class ReadInJoyCommentListView
   {
     if (paramInt == 0)
     {
-      abqw.a().a("list_comment_kandian", false);
+      abvl.a().a("list_comment_kandian", false);
       if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Boolean))
       {
         if (QLog.isColorLevel()) {
@@ -173,7 +173,7 @@ public class ReadInJoyCommentListView
       k();
       return;
     }
-    abqw.a().a("list_comment_kandian");
+    abvl.a().a("list_comment_kandian");
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -221,7 +221,7 @@ public class ReadInJoyCommentListView
         QLog.d("ReadInJoyCommentListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131713150));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131713162));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new olm(this));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -271,15 +271,15 @@ public class ReadInJoyCommentListView
     }
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    if ((parambhpo instanceof oln)) {
+    if ((parambhtv instanceof oln)) {
       super.setOnScrollListener(this.jdField_a_of_type_Oln);
     }
     while (this.jdField_a_of_type_Oln == null) {
       return;
     }
-    this.jdField_a_of_type_Oln.a(parambhpo);
+    this.jdField_a_of_type_Oln.a(parambhtv);
   }
   
   public void setOnScrollOffsetYListener(okz paramokz)

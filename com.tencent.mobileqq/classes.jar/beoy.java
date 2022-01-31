@@ -1,6 +1,9 @@
+import android.app.Dialog;
+import android.view.View;
+
 public abstract interface beoy
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(Dialog paramDialog, View paramView, boolean paramBoolean);
 }
 
 

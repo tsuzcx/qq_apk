@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bgrl;
+import bgvs;
 
 class AppBrandLaunchManager$1
   implements Runnable
@@ -9,7 +9,7 @@ class AppBrandLaunchManager$1
   
   public void run()
   {
-    bgrl.a().a();
+    bgvs.a().a();
   }
 }
 

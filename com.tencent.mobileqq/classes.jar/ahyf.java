@@ -1,58 +1,27 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ahyf
-  extends almw
+  implements aiel
 {
-  public ahyf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ahyf(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public void a(int paramInt)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
+    switch (paramInt)
     {
-      azmj.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Ahys != null) {
-        this.a.jdField_a_of_type_Ahys.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Ahyu != null) {
-          this.a.jdField_a_of_type_Ahyu.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
+    default: 
       return;
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693827), 0).b(this.a.getActivity().getTitleBarHeight());
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    this.a.n();
   }
 }
 

@@ -1,69 +1,28 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bczy
-  extends Drawable
+  implements DownloadParams.DecodeHandler
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private int b;
-  private int c;
+  private final int a = 10;
+  private final int b = 20;
   
-  public bczy(int paramInt1, int paramInt2, int paramInt3)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if ((paramInt2 > 0) && (paramInt3 > 0))
+    try
     {
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(this.b, this.c);
+      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
+      bdnl.a(paramDownloadParams, 10);
+      return paramDownloadParams;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    int i = localRect.right - localRect.left;
-    int j = localRect.bottom - localRect.top;
-    if ((i != this.b) && (j != this.c))
+    catch (OutOfMemoryError paramDownloadParams)
     {
-      this.b = i;
-      this.c = j;
-      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(this.b, this.c);
+      return paramBitmap;
     }
-    paramCanvas.save();
-    paramCanvas.translate(localRect.left, localRect.top);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
+    catch (Exception paramDownloadParams) {}
+    return paramBitmap;
   }
-  
-  public int getOpacity()
-  {
-    switch (this.jdField_a_of_type_Int >>> 24)
-    {
-    default: 
-      return -3;
-    case 255: 
-      return -1;
-    }
-    return -2;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

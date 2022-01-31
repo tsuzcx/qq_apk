@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.qq.taf.jce.HexUtil;
+import java.util.ArrayList;
 
-public final class bbca
-  implements Parcelable.Creator<MediaPreviewInfo>
+public class bbca
+  extends bbbz
 {
-  public MediaPreviewInfo a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public ArrayList<bawy> a;
+  public byte[] a;
+  public String b;
+  public ArrayList<bawy> b;
+  public byte[] b;
+  public String c;
+  
+  public bbca()
   {
-    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMediaPreviewInfo.b = paramParcel.readString();
-    localMediaPreviewInfo.c = paramParcel.readString();
-    return localMediaPreviewInfo;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public MediaPreviewInfo[] a(int paramInt)
+  public String toString()
   {
-    return new MediaPreviewInfo[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mUkey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,17 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class benl
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface benl
 {
-  public benl(ParticipleView paramParticipleView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

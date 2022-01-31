@@ -1,23 +1,12 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-final class xxg
-  implements yvn<CertifiedAccountRead.StGetMainPageRsp>
+public abstract interface xxg
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
-  {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (paramStGetMainPageRsp != null) {
-        xxf.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
-      }
-    }
-    else {
-      return;
-    }
-    QLog.w(xxf.class.getSimpleName(), 1, "getPuinUser empty");
-  }
+  public abstract void a(xxg paramxxg);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

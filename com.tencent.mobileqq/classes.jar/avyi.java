@@ -1,8 +1,22 @@
-public abstract interface avyi
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+
+public class avyi
+  implements TextWatcher
 {
-  public abstract void a();
+  private avyi(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public abstract void b();
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

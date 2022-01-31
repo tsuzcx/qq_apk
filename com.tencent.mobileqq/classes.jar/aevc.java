@@ -1,22 +1,51 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class aevc
-  implements aevz
+class aevc
+  extends Animation
 {
-  public aevc(DoodleLayout paramDoodleLayout) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void a()
+  aevc(aeva paramaeva) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    float f2 = 1.0F;
+    float f1;
+    if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F)
+    {
+      f1 = paramFloat / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F);
+      if (paramFloat >= this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) {
+        break label139;
+      }
+      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) * 0.5F;
+    }
+    for (;;)
+    {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 20.0F)
+      {
+        f1 = 1.0F;
+        break;
+      }
+      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float);
+      break;
+      label139:
+      if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F) {
+        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float);
+      }
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 

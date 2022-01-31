@@ -1,23 +1,32 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.HashMap;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
-class bkgs
-  implements ThreadPool.Job<Void>
+public class bkgs
 {
-  bkgs(bkgl parambkgl, Long paramLong, baqv parambaqv) {}
+  public static bkgs a;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public static bkgs a()
   {
-    paramJobContext = (bkgi)bkgl.a(this.jdField_a_of_type_Bkgl).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      bkgl.a(this.jdField_a_of_type_Bkgl, this.jdField_a_of_type_JavaLangLong.longValue());
-    }
-    for (;;)
+    if (a == null) {}
+    try
     {
-      return null;
-      bkgl.b(this.jdField_a_of_type_Bkgl).a(this.jdField_a_of_type_Baqv);
+      if (a == null) {
+        a = new bkgs();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
+  {
+    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
+  {
+    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

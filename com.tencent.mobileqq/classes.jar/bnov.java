@@ -1,9 +1,4 @@
-import java.io.File;
-
-public abstract interface bnov
-{
-  public abstract boolean a(File paramFile, bnot parambnot, boolean paramBoolean);
-}
+public abstract interface bnov {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

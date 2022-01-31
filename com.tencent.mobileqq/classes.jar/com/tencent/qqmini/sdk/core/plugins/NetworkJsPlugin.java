@@ -2,11 +2,11 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import bghn;
-import bgho;
-import bgkd;
-import bgki;
-import bgld;
+import bglu;
+import bglv;
+import bgok;
+import bgop;
+import bgpk;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class NetworkJsPlugin
   
   private String getCurrentTypeDesc()
   {
-    switch (bgld.a(this.mContext))
+    switch (bgpk.a(this.mContext))
     {
     default: 
       return "unkown";
@@ -46,28 +46,28 @@ public class NetworkJsPlugin
     return "wifi";
   }
   
-  public String getNetworkType(bgkd parambgkd)
+  public String getNetworkType(bgok parambgok)
   {
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("networkType", getCurrentTypeDesc());
-      localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
-      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, (String)localObject);
+      localObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
+      parambgok.jdField_a_of_type_Bglu.a(parambgok.b, (String)localObject);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("NetworkJsPlugin", localThrowable.getMessage(), localThrowable);
-      String str = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
-      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, str);
+      String str = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null).toString();
+      parambgok.jdField_a_of_type_Bglu.a(parambgok.b, str);
     }
     return "";
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     if ((this.mContext != null) && (!this.mRegister))
     {
       this.mReceiver = new NetworkJsPlugin.ConnectionChangeReceiver(this);

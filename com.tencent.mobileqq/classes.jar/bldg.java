@@ -1,94 +1,73 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.support.annotation.Nullable;
 import android.widget.TextView;
-import com.tencent.ttpic.baseutils.string.StringUtils;
-import com.tencent.ttpic.openapi.model.TextWMElement;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
 
-public class bldg
-  extends Dialog
+class bldg
+  implements bmeo<blbt>
 {
-  private int jdField_a_of_type_Int = 12;
-  private transient TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bldl jdField_a_of_type_Bldl;
-  private TextView b;
+  bldg(blda paramblda) {}
   
-  public bldg(@NonNull Context paramContext)
+  public void a(@Nullable blbt paramblbt)
   {
-    super(paramContext, 2131755351);
-    a(paramContext);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setSoftInputMode(21);
-    }
-    setCanceledOnTouchOutside(true);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-  }
-  
-  private void a(Context paramContext)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558487, null);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramContext.findViewById(2131365549));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131365551));
-    this.b = ((TextView)paramContext.findViewById(2131363907));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131364688));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363739));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bldh(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bldi(this));
-    this.b.setOnClickListener(new bldj(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bldk(this));
-    setContentView(paramContext);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bldl parambldl)
-  {
-    this.jdField_a_of_type_Bldl = parambldl;
-  }
-  
-  public void a(TextWMElement paramTextWMElement, boolean paramBoolean)
-  {
-    String str1 = paramTextWMElement.userValue;
-    String str2 = paramTextWMElement.color;
-    a();
-    if ((TextUtils.isEmpty(str1)) && (paramBoolean)) {
-      if (!TextUtils.isEmpty(paramTextWMElement.fmtstr))
+    int i = 0;
+    blda.a(this.a).a().a(blda.a(this.a));
+    if (paramblbt != null)
+    {
+      QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", "=====" + paramblbt });
+      QLog.d("AEGIFChunkPreviewFragment", 4, "emo ===" + paramblbt.jdField_a_of_type_JavaLangString + "text ===" + paramblbt.jdField_a_of_type_Int + "material ====" + paramblbt.jdField_b_of_type_Int);
+      if (paramblbt.jdField_a_of_type_JavaLangString == null)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextWMElement.fmtstr);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramTextWMElement.fmtstr.length());
+        paramblbt.jdField_a_of_type_Int = 0;
+        paramblbt.jdField_b_of_type_Int = 6;
+        paramblbt.jdField_a_of_type_JavaLangString = "default";
+      }
+      if ((paramblbt.jdField_a_of_type_JavaUtilList != null) && (paramblbt.jdField_a_of_type_JavaUtilList.size() == 0)) {
+        paramblbt.jdField_a_of_type_JavaUtilList.addAll(blcf.jdField_a_of_type_JavaUtilList);
+      }
+      Object localObject;
+      if (paramblbt.jdField_a_of_type_JavaLangString.equals("default"))
+      {
+        localObject = alud.a(2131700357);
+        blda.a(this.a).setText((CharSequence)localObject);
+      }
+      for (;;)
+      {
+        if (i < paramblbt.jdField_a_of_type_Int)
+        {
+          localObject = new blca();
+          ((blca)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
+          ((blca)localObject).jdField_a_of_type_JavaLangString = ((String)paramblbt.jdField_a_of_type_JavaUtilList.get(i % paramblbt.jdField_a_of_type_JavaUtilList.size()));
+          ((blca)localObject).jdField_b_of_type_Int = 2;
+          if (blda.a(this.a).size() < blda.a(this.a)) {}
+        }
+        else
+        {
+          blda.a(this.a).a(blda.a(this.a), paramblbt.jdField_a_of_type_JavaLangString);
+          blda.a(this.a).b().a(blda.a(this.a), new bldh(this, paramblbt));
+          blda.a(this.a).a().a(blda.a(this.a), new bldi(this, paramblbt));
+          return;
+          localObject = (String)blda.a(this.a).get(paramblbt.jdField_a_of_type_JavaLangString);
+          localObject = alud.a(2131700352) + (String)localObject + alud.a(2131700359);
+          break;
+        }
+        blda.a(this.a).add(localObject);
+        blda.a(this.a).notifyItemInserted(blda.a(this.a).size() - 1);
+        bler localbler = new bler();
+        localbler.jdField_b_of_type_JavaLangString = ((blca)localObject).jdField_a_of_type_JavaLangString;
+        localbler.jdField_a_of_type_Int = (i + 1);
+        blda.a(this.a).a(localbler);
+        i += 1;
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-      return;
-      paramTextWMElement = StringUtils.removeUTF8Emoji(str1);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextWMElement);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramTextWMElement.length());
-    }
+    QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
+    paramblbt = new blca();
+    paramblbt.jdField_b_of_type_JavaLangString = "";
+    paramblbt.jdField_a_of_type_JavaLangString = "";
+    paramblbt.jdField_b_of_type_Int = 2;
+    paramblbt.jdField_a_of_type_Int = 11;
+    blda.a(this.a).add(paramblbt);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork;
 
-import baei;
+import bair;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class WebViewWrapperForDoc$WebViewClientImpl$1
   implements Runnable
 {
-  public WebViewWrapperForDoc$WebViewClientImpl$1(baei parambaei, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapperForDoc$WebViewClientImpl$1(bair parambair, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

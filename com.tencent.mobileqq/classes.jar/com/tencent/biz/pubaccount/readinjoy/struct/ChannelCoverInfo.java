@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChannelCoverInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public static final String FILTER_COLOR = "filterColor";
@@ -14,12 +14,12 @@ public class ChannelCoverInfo
   public String externalExposureBackgroundUrl = "";
   public int filterColor;
   public boolean hasFilterColor;
-  @awdg
+  @awhp
   public boolean isCurrent;
   public boolean isExternalExposure;
   public boolean isExternalExposurePersist;
   public boolean isReport;
-  @awdg
+  @awhp
   public boolean isSelected;
   public long mArticleId = -1L;
   public String mChannelCoverIcon = "";
@@ -43,7 +43,7 @@ public class ChannelCoverInfo
   public String mTipsText = "";
   public int mTipsType = -1;
   public long mUpdateTime;
-  @awdg
+  @awhp
   public int position;
   
   public ChannelCoverInfo clone()

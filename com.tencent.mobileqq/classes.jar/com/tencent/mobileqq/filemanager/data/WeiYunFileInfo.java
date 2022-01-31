@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqxy;
+import arch;
 
 public class WeiYunFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new aqxy();
+  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new arch();
   public int a;
   public long a;
   public String a;

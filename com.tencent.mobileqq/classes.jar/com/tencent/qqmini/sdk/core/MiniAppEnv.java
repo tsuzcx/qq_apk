@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core;
 
 import android.content.Context;
-import bgjg;
-import bgjv;
-import bgte;
+import bgnn;
+import bgoc;
+import bgxl;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
@@ -16,19 +16,19 @@ public class MiniAppEnv
   implements IMiniAppEnv
 {
   private static final String TAG = "MiniAppEnv";
-  protected bgjg mApkgLoader = bgjg.a();
+  protected bgnn mApkgLoader = bgnn.a();
   private Map<String, AuthState> mAuthStateMap = new HashMap();
   protected Context mContext;
   private LoginInfo mLoginInfo = new LoginInfo();
   private String mMenuStyle = "light";
-  protected BaselibLoader sBaselibLoader = new bgjv();
+  protected BaselibLoader sBaselibLoader = new bgoc();
   
   public static MiniAppEnv g()
   {
     return (MiniAppEnv)AppLoaderFactory.g().getMiniAppEnv();
   }
   
-  public bgjg getApkgLoader()
+  public bgnn getApkgLoader()
   {
     return this.mApkgLoader;
   }
@@ -44,7 +44,7 @@ public class MiniAppEnv
       Object localObject = localAuthState;
       if (localAuthState == null)
       {
-        localObject = bgte.a().a();
+        localObject = bgxl.a().a();
         localObject = new AuthState(getContext(), paramString, (String)localObject);
         this.mAuthStateMap.put(paramString, localObject);
       }
@@ -83,9 +83,9 @@ public class MiniAppEnv
     this.mContext = paramContext;
   }
   
-  public void setApkgLoader(bgjg parambgjg)
+  public void setApkgLoader(bgnn parambgnn)
   {
-    this.mApkgLoader = parambgjg;
+    this.mApkgLoader = parambgnn;
   }
   
   @Deprecated

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import axtf;
-import axtg;
-import baqf;
+import axxo;
+import axxp;
+import bauo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class LightVideoUploadProcessor$5
   implements Runnable
 {
-  public LightVideoUploadProcessor$5(baqf parambaqf, axtf paramaxtf) {}
+  public LightVideoUploadProcessor$5(bauo parambauo, axxo paramaxxo) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class LightVideoUploadProcessor$5
     if (this.this$0.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
       this.this$0.s();
     }
-    while ((this.this$0.jdField_b_of_type_JavaUtilArrayList.size() != 0) || (this.this$0.jdField_b_of_type_JavaUtilMap.size() != 0) || (baqf.a(this.this$0) == null) || (!baqf.a(this.this$0).a())) {
+    while ((this.this$0.jdField_b_of_type_JavaUtilArrayList.size() != 0) || (this.this$0.jdField_b_of_type_JavaUtilMap.size() != 0) || (bauo.a(this.this$0) == null) || (!bauo.a(this.this$0).a())) {
       return;
     }
     this.this$0.r();

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bbnr;
+import bbsa;
 import java.util.Map;
 import java.util.UUID;
 
 class TroopFileTransferManager$9
   implements Runnable
 {
-  TroopFileTransferManager$9(TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID, bbnr parambbnr, int paramInt1, int paramInt2) {}
+  TroopFileTransferManager$9(TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID, bbsa parambbsa, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class TroopFileTransferManager$9
     TroopFileTransferManager.Item localItem1 = localItem2;
     if (localItem2 == null)
     {
-      localItem1 = new TroopFileTransferManager.Item(this.jdField_a_of_type_Bbnr);
+      localItem1 = new TroopFileTransferManager.Item(this.jdField_a_of_type_Bbsa);
       this.this$0.a(localItem1);
     }
     this.this$0.b(localItem1, this.jdField_a_of_type_Int, this.b);

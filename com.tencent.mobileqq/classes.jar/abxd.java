@@ -1,18 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class abxd
-  extends BroadcastReceiver
 {
-  public abxd(AddAccountActivity paramAddAccountActivity) {}
+  public String a;
+  public String b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public abxd(String paramString1, String paramString2)
   {
-    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
-    AddAccountActivity.a(this.a, true);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,154 +1,264 @@
-import android.media.AudioManager;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.VideoGestureLayout;
-import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgos
-  implements bgpc
 {
-  public bgos(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public static int a(int paramInt)
   {
-    if (MiniAppVideoPlayer.a(this.a).getVisibility() != 8)
+    String str1 = bgpx.a("qqminiapp", "configSceneMap", "{}");
+    QMLog.d("AppBrandUtil", "getWikiScene " + str1 + "  scene:" + paramInt);
+    try
     {
-      if (MiniAppVideoPlayer.a(this.a).getVisibility() == 4) {
-        MiniAppVideoPlayer.a(this.a);
+      String str2 = new JSONObject(str1).optString(String.valueOf(paramInt));
+      int i = paramInt;
+      if (!TextUtils.isEmpty(str2)) {
+        i = Integer.parseInt(str2);
       }
+      return i;
     }
-    else {
-      return;
+    catch (Exception localException)
+    {
+      QMLog.e("AppBrandUtil", "getWikiScene fail, " + str1 + "  scene:" + paramInt);
     }
-    MiniAppVideoPlayer.b(this.a);
+    return paramInt;
   }
   
-  public void a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private static int a(MiniAppInfo paramMiniAppInfo)
   {
-    paramFloat1 = 0.0F;
-    if (!this.a.o) {}
-    while (this.a.c) {
-      return;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
+      return paramMiniAppInfo.launchParam.scene;
     }
-    paramFloat2 = (paramMotionEvent1.getY() - paramMotionEvent2.getY()) / MiniAppVideoPlayer.a(this.a).getHeight() + MiniAppVideoPlayer.a(this.a);
-    if (paramFloat2 < 0.0F) {}
-    for (;;)
+    return 9999;
+  }
+  
+  private static String a(MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
+      return paramMiniAppInfo.launchParam.shareTicket;
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      if ((MiniAppVideoPlayer.a(this.a) != null) && (MiniAppVideoPlayer.a(this.a) != null))
+      return paramString;
+      i = paramString.indexOf("?");
+    } while (i == -1);
+    return paramString.substring(0, i);
+  }
+  
+  private static JSONObject a(MiniAppInfo paramMiniAppInfo)
+  {
+    JSONObject localJSONObject1;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      int i = paramMiniAppInfo.launchParam.scene;
+      try
       {
-        MiniAppVideoPlayer.a(this.a).screenBrightness = paramFloat1;
-        MiniAppVideoPlayer.a(this.a).setAttributes(MiniAppVideoPlayer.a(this.a));
+        localJSONObject2.put("appId", paramMiniAppInfo.launchParam.fromMiniAppId);
+        if (i != 1037)
+        {
+          localJSONObject1 = localJSONObject2;
+          if (i != 1038) {
+            return localJSONObject1;
+          }
+        }
+        paramMiniAppInfo = paramMiniAppInfo.launchParam.navigateExtData;
+        localJSONObject1 = localJSONObject2;
+        if (TextUtils.isEmpty(paramMiniAppInfo)) {
+          return localJSONObject1;
+        }
+        if (bgpg.a(paramMiniAppInfo))
+        {
+          localJSONObject2.put("extraData", new JSONObject(paramMiniAppInfo));
+          return localJSONObject2;
+        }
+        localJSONObject2.put("extraData", paramMiniAppInfo);
+        return localJSONObject2;
       }
-      MiniAppVideoPlayer.a(this.a).setProgress((int)(paramFloat1 * 100.0F));
-      MiniAppVideoPlayer.a(this.a).setImageResource(2130840965);
-      MiniAppVideoPlayer.a(this.a).a();
-      return;
-      if (paramFloat2 > 1.0F) {
-        paramFloat1 = 1.0F;
-      } else {
-        paramFloat1 = paramFloat2;
-      }
-    }
-  }
-  
-  public void b(MotionEvent paramMotionEvent)
-  {
-    if (this.a.B)
-    {
-      this.a.b();
-      MiniAppVideoPlayer.a(this.a, MiniAppVideoPlayer.a(this.a).isPlaying());
-      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
-        MiniAppVideoPlayer.a(this.a);
+      catch (Throwable paramMiniAppInfo)
+      {
+        QMLog.e("getReferrerInfo", "error,", paramMiniAppInfo);
+        return localJSONObject2;
       }
     }
     else
     {
-      return;
+      localJSONObject1 = null;
     }
-    MiniAppVideoPlayer.c(this.a);
+    return localJSONObject1;
   }
   
-  public void b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static JSONObject a(String paramString)
   {
-    if (!this.a.o) {}
-    while ((this.a.c) || (MiniAppVideoPlayer.a(this.a) == 0)) {
-      return;
-    }
-    int i = MiniAppVideoPlayer.a(this.a).getHeight() / MiniAppVideoPlayer.a(this.a);
-    i = (int)((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / i + MiniAppVideoPlayer.b(this.a));
-    if (MiniAppVideoPlayer.a(this.a) != null) {
-      MiniAppVideoPlayer.a(this.a).setStreamVolume(3, i, 4);
-    }
-    i = (int)(i / Float.valueOf(MiniAppVideoPlayer.a(this.a)).floatValue() * 100.0F);
-    if (i >= 50) {
-      MiniAppVideoPlayer.a(this.a).setImageResource(2130840970);
-    }
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      MiniAppVideoPlayer.a(this.a).setProgress(i);
-      MiniAppVideoPlayer.a(this.a).a();
-      return;
-      if (i > 0) {
-        MiniAppVideoPlayer.a(this.a).setImageResource(2130840971);
-      } else {
-        MiniAppVideoPlayer.a(this.a).setImageResource(2130840972);
+      String str1;
+      try
+      {
+        Iterator localIterator = Uri.parse("file:///" + paramString).getQueryParameterNames().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          if (str1.startsWith("$"))
+          {
+            localObject2 = str1.substring(1);
+            localObject1 = "[\\\\?&]" + "\\$";
+            String str2 = "";
+            localObject2 = Pattern.compile((String)localObject1 + (String)localObject2 + "=([^&#]*)").matcher(paramString);
+            localObject1 = str2;
+            if (((Matcher)localObject2).find()) {
+              localObject1 = ((Matcher)localObject2).group(1);
+            }
+            localJSONObject.put(str1, localObject1);
+          }
+        }
+        else
+        {
+          return localJSONObject;
+        }
       }
+      catch (Throwable paramString)
+      {
+        QMLog.e("AppBrandUtil", "getQueryJson err:", paramString);
+      }
+      Object localObject1 = "[\\\\?&]";
+      Object localObject2 = str1;
     }
   }
   
-  public void c(MotionEvent paramMotionEvent)
+  public static JSONObject a(String paramString, MiniAppInfo paramMiniAppInfo)
   {
-    MiniAppVideoPlayer.b(this.a, MiniAppVideoPlayer.d(this.a));
-    if (MiniAppVideoPlayer.a(this.a) != null) {
-      MiniAppVideoPlayer.c(this.a, MiniAppVideoPlayer.a(this.a).getStreamVolume(3));
-    }
-    if (MiniAppVideoPlayer.a(this.a) != null) {
-      MiniAppVideoPlayer.a(this.a, MiniAppVideoPlayer.a(this.a).screenBrightness);
-    }
-    if (MiniAppVideoPlayer.a(this.a) == -1.0F) {
-      MiniAppVideoPlayer.a(this.a, MiniAppVideoPlayer.e(this.a) / 255.0F);
-    }
-  }
-  
-  public void c(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (!this.a.w) {}
-    while (MiniAppVideoPlayer.a(this.a) == null) {
-      return;
-    }
-    paramFloat1 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    if (paramFloat1 > 0.0F)
-    {
-      MiniAppVideoPlayer.a(this.a).setImageResource(2130840966);
-      paramMotionEvent1 = this.a;
-      paramFloat2 = MiniAppVideoPlayer.c(this.a);
-      MiniAppVideoPlayer.a(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.a(this.a).getWidth() * 100.0F + paramFloat2));
-      if (MiniAppVideoPlayer.d(this.a) > 100) {
-        MiniAppVideoPlayer.a(this.a, 100);
-      }
-    }
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      MiniAppVideoPlayer.a(this.a).setProgress(MiniAppVideoPlayer.d(this.a));
-      MiniAppVideoPlayer.a(this.a).a();
-      int i = (int)MiniAppVideoPlayer.a(this.a).getDuration() * MiniAppVideoPlayer.d(this.a) / 100;
-      MiniAppVideoPlayer.a(this.a).seekTo(i);
-      return;
-      MiniAppVideoPlayer.a(this.a).setImageResource(2130840967);
-      paramMotionEvent1 = this.a;
-      paramFloat2 = MiniAppVideoPlayer.c(this.a);
-      MiniAppVideoPlayer.a(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.a(this.a).getWidth() * 100.0F + paramFloat2));
-      if (MiniAppVideoPlayer.d(this.a) < 0) {
-        MiniAppVideoPlayer.a(this.a, 0);
+      try
+      {
+        localJSONObject.put("path", a(paramString));
+        localJSONObject.put("query", a(paramString));
+        localJSONObject.put("scene", a(a(paramMiniAppInfo)));
+        localJSONObject.put("shareTicket", a(paramMiniAppInfo));
+        localJSONObject.put("referrerInfo", a(paramMiniAppInfo));
+        paramString = b(paramMiniAppInfo);
+        if (!TextUtils.isEmpty(paramString))
+        {
+          boolean bool = bgpg.a(paramString);
+          if (!bool) {}
+        }
+        else
+        {
+          try
+          {
+            localJSONObject.put("extendData", new JSONObject(paramString));
+            localJSONObject.put("entryDataHash", c(paramMiniAppInfo));
+            return localJSONObject;
+          }
+          catch (JSONException paramString)
+          {
+            QMLog.e("AppBrandUtil", "dispatch extendData parse error", paramString);
+            continue;
+          }
+        }
+        localJSONObject.put("extendData", paramString);
+      }
+      catch (Throwable paramString)
+      {
+        QMLog.e("AppBrandUtil", "getAppLaunchInfo error, ", paramString);
+        return localJSONObject;
       }
     }
   }
   
-  public void d(MotionEvent paramMotionEvent) {}
+  public static JSONObject a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
+  {
+    localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("path", a(paramString1));
+        localJSONObject.put("query", a(paramString1));
+        localJSONObject.put("openType", paramString2);
+        if ("appLaunch".equals(paramString2))
+        {
+          localJSONObject.put("scene", a(paramMiniAppInfo));
+          localJSONObject.put("shareTicket", a(paramMiniAppInfo));
+          localJSONObject.put("referrerInfo", a(paramMiniAppInfo));
+          paramString1 = b(paramMiniAppInfo);
+          if (!TextUtils.isEmpty(paramString1))
+          {
+            boolean bool = bgpg.a(paramString1);
+            if (!bool) {
+              continue;
+            }
+          }
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QMLog.e("AppBrandUtil", "getPageShowInfo error, ", paramString1);
+        continue;
+        localJSONObject.put("extendData", paramString1);
+        continue;
+      }
+      try
+      {
+        localJSONObject.put("extendData", new JSONObject(paramString1));
+        QMLog.i("AppBrandUtil", "getPageLoadInfo : " + localJSONObject.toString());
+        return localJSONObject;
+      }
+      catch (JSONException paramString1)
+      {
+        QMLog.e("AppBrandUtil", "dispatch extendData parse error", paramString1);
+      }
+    }
+  }
+  
+  public static boolean a(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)
+  {
+    if ((paramMiniAppInfo1 != null) && (paramMiniAppInfo2 != null))
+    {
+      if ((paramMiniAppInfo1.versionId != null) && (!paramMiniAppInfo1.versionId.equals(paramMiniAppInfo2.versionId)) && (paramMiniAppInfo1.versionUpdateTime > 0) && (paramMiniAppInfo2.versionUpdateTime > paramMiniAppInfo1.versionUpdateTime))
+      {
+        QMLog.i("AppBrandUtil", "needUpdate=true oldVersionUpdateTime=" + paramMiniAppInfo1.versionUpdateTime + " newVersionUpdateTime=" + paramMiniAppInfo2.versionUpdateTime + " oldVersionId=" + paramMiniAppInfo1.versionId + " newVersionId=" + paramMiniAppInfo2.versionId);
+        return true;
+      }
+      QMLog.i("AppBrandUtil", "needUpdate=false oldVersionUpdateTime=" + paramMiniAppInfo1.versionUpdateTime + " newVersionUpdateTime=" + paramMiniAppInfo2.versionUpdateTime + " oldVersionId=" + paramMiniAppInfo1.versionId + " newVersionId=" + paramMiniAppInfo2.versionId);
+    }
+    return false;
+  }
+  
+  private static String b(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo != null) {
+      return paramMiniAppInfo.extendData;
+    }
+    return null;
+  }
+  
+  private static String c(MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (paramMiniAppInfo.launchParam.entryModel != null)) {
+      return paramMiniAppInfo.launchParam.entryModel.getEntryHash();
+    }
+    return null;
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -34,17 +34,17 @@ public class PokeEmoItemView
   public PokeEmoItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = aekt.a(16.0F, paramContext.getResources());
-    this.c = aekt.a(80.0F, paramContext.getResources());
-    this.jdField_a_of_type_Int = aekt.a(2.0F, paramContext.getResources());
+    this.jdField_b_of_type_Int = aepi.a(16.0F, paramContext.getResources());
+    this.c = aepi.a(80.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = aepi.a(2.0F, paramContext.getResources());
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(aekt.a(24.0F, paramContext.getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(aepi.a(24.0F, paramContext.getResources()));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aekt.a(4.0F, paramContext.getResources()));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aepi.a(4.0F, paramContext.getResources()));
   }
   
   private float a(long paramLong)

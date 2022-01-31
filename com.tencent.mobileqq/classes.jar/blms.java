@@ -1,18 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.5.1;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.tavcut.exporter.ImageExporter;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.10;
 
 public class blms
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  blms(blmo paramblmo) {}
+  public blms(AEEditorImageEditFragment.10 param10) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.excute(new QIMPtvTemplateAdapter.5.1(this), 128, null, true);
-    blwn.a(this.a.a).a();
-    bnck.a("shortvideo_download_effects", null);
+    AEEditorImageEditFragment.a(this.a.this$0).cancel();
   }
 }
 

@@ -1,43 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class apqv
-  extends apkn<CustomEmotionData>
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  apqv(apqu paramapqu) {}
+  apqv(apqh paramapqh, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "upload_finish");
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "download_finish");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    this.a.j();
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelFavHelper", 2, "roaming_finish");
+    catch (Throwable paramBundle)
+    {
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a != null) {
-      ((apkf)this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(103)).b(this.a.jdField_a_of_type_Apkn);
-    }
-    this.a.j();
   }
 }
 

@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import aznl;
+import azru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class LogcatUtil
   private static void a()
   {
     QLog.e("LogcatUtil", 1, "get trace file begin");
-    String str2 = aznl.a(String.valueOf(100));
+    String str2 = azru.a(String.valueOf(100));
     StringBuilder localStringBuilder = new StringBuilder(50);
     localStringBuilder.append("AdditionInfo:0|");
     String str1 = "";
@@ -68,7 +68,7 @@ public class LogcatUtil
     localStringBuilder.append((String)localObject3).append("|").append((String)localObject1).append("|");
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append("|").append(100).append("|").append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
-    i = aznl.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
+    i = azru.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
     if (i == 1)
     {
       bool = true;
@@ -76,7 +76,7 @@ public class LogcatUtil
       if (i == 1) {
         break label332;
       }
-      bool = aznl.a(str2, localStringBuilder.toString());
+      bool = azru.a(str2, localStringBuilder.toString());
       QLog.e("LogcatUtil", 1, new Object[] { "get trace file fileName = ", str2, ",get java trace status=", Boolean.valueOf(bool) });
     }
   }

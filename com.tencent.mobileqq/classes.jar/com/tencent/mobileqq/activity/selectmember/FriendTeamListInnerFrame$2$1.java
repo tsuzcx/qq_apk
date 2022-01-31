@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajuv;
+import ajzk;
 import android.view.View;
 
 public class FriendTeamListInnerFrame$2$1
   implements Runnable
 {
-  public FriendTeamListInnerFrame$2$1(ajuv paramajuv, View paramView) {}
+  public FriendTeamListInnerFrame$2$1(ajzk paramajzk, View paramView) {}
   
   public void run()
   {

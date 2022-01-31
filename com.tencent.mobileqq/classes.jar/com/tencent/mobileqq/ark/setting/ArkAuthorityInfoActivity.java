@@ -3,8 +3,8 @@ package com.tencent.mobileqq.ark.setting;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import anfv;
-import annh;
+import anke;
+import anrq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
@@ -26,7 +26,7 @@ public class ArkAuthorityInfoActivity
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
       paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362797, 2131362793, 2131362796, 2131362794, 2131362795 }[i]);
-      int j = anfv.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      int j = anke.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
@@ -39,7 +39,7 @@ public class ArkAuthorityInfoActivity
         for (boolean bool = true;; bool = false)
         {
           paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new annh(this, i));
+          paramBundle.setOnCheckedChangeListener(new anrq(this, i));
           break;
         }
       }

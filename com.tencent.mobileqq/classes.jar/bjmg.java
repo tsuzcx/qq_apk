@@ -1,50 +1,13 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
-import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bjmg
-  extends QzoneExternalRequest
+  implements bjmi
 {
-  private JceStruct a;
+  public bjmg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public bjmg(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
+  public void a()
   {
-    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
-    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
-    this.a = localMobileQbossReportReq;
-  }
-  
-  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    MobileQbossReportRsp localMobileQbossReportRsp;
-    do
-    {
-      return paramArrayOfByte;
-      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
-      paramArrayOfByte = localMobileQbossReportRsp;
-    } while (localMobileQbossReportRsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.report";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "report";
+    QzoneWebMusicJsPlugin.access$000(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 

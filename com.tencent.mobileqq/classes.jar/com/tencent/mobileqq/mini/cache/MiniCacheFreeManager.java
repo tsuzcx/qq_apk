@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -59,7 +59,7 @@ public class MiniCacheFreeManager
       return;
       str = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
     } while (!new File(str).exists());
-    bdcs.a(str, false);
+    bdhb.a(str, false);
     QLog.i("MiniCacheFreeManager", 1, "clearPkg finish: " + paramMiniAppInfo.appId);
   }
   

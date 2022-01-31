@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ListView;
-import ybx;
+import ygg;
 
 public class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(ybx paramybx) {}
+  public CommentPresenter$13(ygg paramygg) {}
   
   public void run()
   {
-    ybx.b(this.this$0);
+    ygg.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }

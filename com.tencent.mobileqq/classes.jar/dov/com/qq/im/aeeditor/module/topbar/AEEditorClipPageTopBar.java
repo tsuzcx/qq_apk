@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import blli;
+import blpu;
 import dov.com.qq.im.aeeditor.view.AEEditorClipIndexView;
 
 public class AEEditorClipPageTopBar
@@ -14,7 +14,7 @@ public class AEEditorClipPageTopBar
   implements View.OnClickListener
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private blli jdField_a_of_type_Blli;
+  private blpu jdField_a_of_type_Blpu;
   private AEEditorClipIndexView jdField_a_of_type_DovComQqImAeeditorViewAEEditorClipIndexView;
   
   public AEEditorClipPageTopBar(Context paramContext)
@@ -48,19 +48,19 @@ public class AEEditorClipPageTopBar
   {
     int i = paramView.getId();
     if (i == 2131362173) {
-      if (this.jdField_a_of_type_Blli != null) {
-        this.jdField_a_of_type_Blli.a();
+      if (this.jdField_a_of_type_Blpu != null) {
+        this.jdField_a_of_type_Blpu.a();
       }
     }
-    while ((i != 2131362174) || (this.jdField_a_of_type_Blli == null)) {
+    while ((i != 2131362174) || (this.jdField_a_of_type_Blpu == null)) {
       return;
     }
-    this.jdField_a_of_type_Blli.b();
+    this.jdField_a_of_type_Blpu.b();
   }
   
-  public void setClipPageTopBarClickListener(blli paramblli)
+  public void setClipPageTopBarClickListener(blpu paramblpu)
   {
-    this.jdField_a_of_type_Blli = paramblli;
+    this.jdField_a_of_type_Blpu = paramblpu;
   }
   
   public void setIndex(int paramInt)

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.widget.FrameLayout;
 
-public class ual
-  implements DialogInterface.OnClickListener
+class ual
+  implements uau
 {
-  public ual(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
+  ual(uaj paramuaj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (uaj.a(this.a) != null) {
+      uaj.a(this.a).a(3);
+    }
+    uaj.a(this.a).setAlpha(0.0F);
   }
 }
 

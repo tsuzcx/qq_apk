@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import aptl;
-import awrd;
-import awre;
-import awrg;
+import apxu;
+import awvm;
+import awvn;
+import awvp;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import java.util.List;
@@ -25,16 +25,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<awrg> a;
-  protected aptl a;
-  protected awrd a;
-  public awre a;
-  protected awrg a;
+  protected SparseArray<awvp> a;
+  protected apxu a;
+  protected awvm a;
+  public awvn a;
+  protected awvp a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Aptl = new aptl();
+    this.jdField_a_of_type_Apxu = new apxu();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -56,32 +56,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Awrg = ((awrg)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Awrg == null)
+    this.jdField_a_of_type_Awvp = ((awvp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Awvp == null)
     {
-      this.jdField_a_of_type_Awrg = new awrg(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Awrg);
+      this.jdField_a_of_type_Awvp = new awvp(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Awvp);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Awrg.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Awrg);
+    this.jdField_a_of_type_Awvp.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Awvp);
   }
   
-  public void a(awrd paramawrd)
+  public void a(awvm paramawvm)
   {
-    this.jdField_a_of_type_Awrd = paramawrd;
+    this.jdField_a_of_type_Awvm = paramawvm;
   }
   
-  public void a(awre paramawre)
+  public void a(awvn paramawvn)
   {
-    this.jdField_a_of_type_Awre = paramawre;
+    this.jdField_a_of_type_Awvn = paramawvn;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Aptl.a((View)paramObject);
+    this.jdField_a_of_type_Apxu.a((View)paramObject);
   }
   
   public int getCount()
@@ -91,7 +91,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Aptl.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Apxu.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -113,10 +113,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     paramView = (ProfileLabelInfo)paramView.getTag();
-    awrd localawrd;
+    awvm localawvm;
     if (paramView != null)
     {
-      localawrd = this.jdField_a_of_type_Awrd;
+      localawvm = this.jdField_a_of_type_Awvm;
       if (paramView.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label53;
       }
@@ -124,7 +124,7 @@ public class ProfileLabelPanelAdapter
     label53:
     for (boolean bool = false;; bool = true)
     {
-      localawrd.a(paramView, localToggleButton, Boolean.valueOf(bool));
+      localawvm.a(paramView, localToggleButton, Boolean.valueOf(bool));
       return;
     }
   }

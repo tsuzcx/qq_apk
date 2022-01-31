@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
 public class adqf
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public adqf(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
+  public adqf(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramInt == 1)
-    {
-      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
-      }
-    }
+    bdgm.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 

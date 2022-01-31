@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import xhj;
+import xls;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new xhj();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new xls();
   public static final String a;
   public final int a;
   public final long a;

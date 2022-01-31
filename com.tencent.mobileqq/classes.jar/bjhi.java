@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiShareDataInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 
-public final class bjhi
-  implements Parcelable.Creator<WeishiShareDataInfo>
+class bjhi
+  extends BroadcastReceiver
 {
-  public WeishiShareDataInfo a(Parcel paramParcel)
-  {
-    return new WeishiShareDataInfo(paramParcel);
-  }
+  private String jdField_a_of_type_JavaLangString;
   
-  public WeishiShareDataInfo[] a(int paramInt)
+  private bjhi(bjhg parambjhg) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new WeishiShareDataInfo[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
+      }
+      bjhg.a(this.jdField_a_of_type_Bjhg, true);
+    }
+    label40:
+    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      return;
+    }
+    bjhg.b(this.jdField_a_of_type_Bjhg, true);
   }
 }
 

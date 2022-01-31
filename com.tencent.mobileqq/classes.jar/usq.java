@@ -1,75 +1,101 @@
-import java.io.File;
-import java.util.Map;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener.1;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qphone.base.util.QLog;
 
-class usq
-  extends utr
+public class usq
+  implements bhuk
 {
-  usq(usp paramusp, uio paramuio)
+  private final int jdField_a_of_type_Int;
+  private final bhuf jdField_a_of_type_Bhuf;
+  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+  
+  public usq(usn paramusn, bhuf parambhuf, CommentEntry paramCommentEntry, int paramInt)
   {
-    super(paramuio);
+    this.jdField_a_of_type_Bhuf = parambhuf;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected utu a(utt... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    utu localutu = super.a(paramVarArgs);
-    paramVarArgs = paramVarArgs[0];
-    String str;
-    if (localutu.jdField_a_of_type_Int == 0) {
-      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
+    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FeedCommentEventHandler", 2, "onCommentItemClick.ActionSheet click: which=" + paramInt + ", text = " + paramView);
     }
-    try
+    if (alud.a(2131704821).equals(paramView))
     {
-      xmx.d(str);
-      label42:
-      int i = ndr.a(paramVarArgs.b, str);
-      if (i == 0)
+      this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.a(this.jdField_a_of_type_Int);
+      paramView = this.jdField_a_of_type_Usn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+      if ((paramView != null) && (paramView.isVip()))
       {
-        if (usp.a(str, false)) {
-          try
-          {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              wsv.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localutu;
-            }
-          }
-          catch (Exception paramVarArgs)
-          {
-            for (;;)
-            {
-              wsv.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            wsv.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new utu(localutu.jdField_a_of_type_Utt, -1, "illegal config file");
-          }
+        paramInt = 1;
+        if (!this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUin.equals(this.jdField_a_of_type_Usn.jdField_a_of_type_JavaLangString)) {
+          break label177;
         }
-        wsv.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
-        return new utu(localutu.jdField_a_of_type_Utt, -1, "illegal folder");
+        paramView = "2";
+        label124:
+        wxj.a("play_video", "del_reply", paramInt, 0, new String[] { paramView, "", "", this.jdField_a_of_type_Usn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
       }
-      wsv.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
-      return new utu(localutu.jdField_a_of_type_Utt, i, "unzip failed");
     }
-    catch (Exception localException)
+    label171:
+    label177:
+    do
     {
-      break label42;
-    }
-  }
-  
-  protected void a(utu arg1)
-  {
-    wsv.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
-    if (???.jdField_a_of_type_Int == 0) {
-      wsv.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Utt.jdField_a_of_type_JavaLangString });
-    }
-    synchronized (this.a.b)
+      for (;;)
+      {
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+        paramInt = 2;
+        break;
+        paramView = "1";
+        break label124;
+        if (alud.a(2131704810).equals(paramView))
+        {
+          this.jdField_a_of_type_Usn.jdField_a_of_type_AndroidOsHandler.postDelayed(new FeedCommentEventHandler.OnActionSheetButtonClickListener.1(this), 500L);
+        }
+        else if (alud.a(2131704802).equals(paramView))
+        {
+          vls.a(this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+          wxj.a("play_video", "report_reply", wxj.a(this.jdField_a_of_type_Usn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { "", wxj.a(this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.jdField_a_of_type_Int), "", this.jdField_a_of_type_Usn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+        }
+        else
+        {
+          if (!alud.a(2131704825).equals(paramView)) {
+            break label407;
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 1;
+          this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.e();
+          this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.pbType = this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getCommentLikeType();
+          utv.a().jdField_a_of_type_JavaLangString = "";
+          ust.a(this.jdField_a_of_type_Usn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, false, this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.jdField_a_of_type_Int, new usr(this));
+        }
+      }
+    } while (!alud.a(2131704797).equals(paramView));
+    label407:
+    label487:
+    for (;;)
     {
-      usp.a(this.a, null);
-      this.a.d();
+      try
+      {
+        paramView = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content;
+        if (!banh.a(paramView)) {
+          break label487;
+        }
+        paramView = azah.b(paramView);
+        ((ClipboardManager)this.jdField_a_of_type_Usn.jdField_a_of_type_Ust.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("comment content", paramView));
+      }
+      catch (Exception paramView) {}
+      if (!QLog.isColorLevel()) {
+        break label171;
+      }
+      QLog.e("FeedCommentEventHandler", 2, paramView.toString());
       return;
-      wsv.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Utt.jdField_a_of_type_JavaLangString });
     }
   }
 }

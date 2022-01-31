@@ -15,7 +15,11 @@ import com.tencent.biz.qqcircle.QCircleUtil.2;
 import com.tencent.biz.qqcircle.QCircleUtil.3;
 import com.tencent.biz.qqcircle.QCircleUtil.4;
 import com.tencent.biz.qqcircle.QCircleUtil.5;
+import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
+import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -37,8 +41,9 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StRecomForward;
 import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StTagInfo;
 import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudMeta.StVideo;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,16 +58,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import qqcircle.QQCircleBase.StUserBusiData;
 import qqcircle.QQCircleBase.UserCircleInfo;
+import qqcircle.QQCircleDitto.StItemContainer;
+import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
+import qqcircle.QQCircleFeedBase.StLikeBusiData;
 import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class tra
 {
-  private static long jdField_a_of_type_Long;
-  private static final String jdField_a_of_type_JavaLangString = tra.class.getSimpleName();
+  private static final String a = tra.class.getSimpleName();
   
   public static int a()
   {
-    return b(xxl.a());
+    return b(ybu.a());
   }
   
   public static int a(int paramInt)
@@ -80,56 +87,18 @@ public class tra
     return -1;
   }
   
-  public static int a(Context paramContext, FeedCloudMeta.StTagInfo paramStTagInfo, ArrayList<QQCircleBase.UserCircleInfo> paramArrayList1, ArrayList<QQCircleBase.UserCircleInfo> paramArrayList2)
+  public static int a(String paramString)
   {
-    if (paramStTagInfo == null)
+    if (paramString != null)
     {
-      j = 2;
-      return j;
-    }
-    if ((paramStTagInfo.tagType.get() != 2) && (paramStTagInfo.tagType.get() != 3)) {
-      return 2;
-    }
-    if (paramStTagInfo.tagType.get() == 2) {}
-    while (paramArrayList1 == null)
-    {
-      return 0;
-      paramArrayList1 = paramArrayList2;
-    }
-    int k = paramArrayList1.size();
-    if (k == 0) {
-      return 0;
-    }
-    int j = 0;
-    int i = 0;
-    label75:
-    if (j < k)
-    {
-      paramArrayList2 = (QQCircleBase.UserCircleInfo)paramArrayList1.get(j);
-      if (!paramArrayList2.name.get().equals(paramStTagInfo.tagName.get())) {
-        break label171;
+      if (paramString.startsWith("https://")) {
+        return 0;
       }
-      int m = paramArrayList2.circleTab.get();
-      if (m == 1) {
-        return 2;
+      if (paramString.startsWith("mqqapi://")) {
+        return 1;
       }
-      if (m != 2) {
-        break label171;
-      }
-      i = 1;
     }
-    label171:
-    for (;;)
-    {
-      j += 1;
-      break label75;
-      j = i;
-      if (i != 1) {
-        break;
-      }
-      QQToast.a(paramContext, 2131698377, 0).a();
-      return i;
-    }
+    return -1;
   }
   
   public static int a(boolean paramBoolean)
@@ -169,7 +138,7 @@ public class tra
     }
     catch (Exception paramString)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "jsonToLabel error.", paramString);
+      QLog.e(a, 1, "jsonToLabel error.", paramString);
       localBundle.putString("key_parse_data_error_msg", paramString.getMessage());
       localBundle.putStringArrayList("key_selected_label_id", paramBundle);
       localBundle.putStringArrayList("key_selected_label_name", localArrayList);
@@ -180,7 +149,7 @@ public class tra
   {
     if (paramStComment == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "getSimpleComment param comment is null");
+      QLog.e(a, 1, "getSimpleComment param comment is null");
       return null;
     }
     FeedCloudMeta.StComment localStComment = new FeedCloudMeta.StComment();
@@ -192,7 +161,7 @@ public class tra
       localStComment.postUser.set(paramStComment);
       return localStComment;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "getSimpleComment poster is null");
+    QLog.e(a, 1, "getSimpleComment poster is null");
     return localStComment;
   }
   
@@ -200,7 +169,7 @@ public class tra
   {
     if (paramStFeed == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "getSimpleFeed param feed is null");
+      QLog.e(a, 1, "getSimpleFeed param feed is null");
       return null;
     }
     FeedCloudMeta.StFeed localStFeed = new FeedCloudMeta.StFeed();
@@ -213,7 +182,7 @@ public class tra
       localStFeed.poster.set(localStUser);
       return localStFeed;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "getSimpleFeed poster is null");
+    QLog.e(a, 1, "getSimpleFeed poster is null");
     return localStFeed;
   }
   
@@ -272,43 +241,43 @@ public class tra
       i = localTime2.yearDay - 1;
       localStringBuilder = new StringBuilder().append(" ").append(localTime1.hour).append(":");
       if (localTime1.minute >= 10) {
-        break label190;
+        break label187;
       }
     }
-    label190:
+    label187:
     for (Object localObject1 = "0" + localTime1.minute;; localObject1 = Integer.valueOf(localTime1.minute))
     {
       localObject1 = localObject1;
       if (localTime1.year != localTime2.year) {
-        break label357;
+        break label353;
       }
       if (localTime2.yearDay >= localTime1.yearDay) {
-        break label202;
+        break label199;
       }
       return localObject2;
       localObject1 = new Date(paramLong);
       break;
     }
-    label202:
+    label199:
     if (localTime2.yearDay == localTime1.yearDay) {
-      localObject1 = alpo.a(2131720882) + (String)localObject1;
+      localObject1 = alud.a(2131720894) + (String)localObject1;
     }
     for (;;)
     {
       return localObject1;
       if (localTime1.yearDay == i)
       {
-        localObject1 = alpo.a(2131721491) + (String)localObject1;
+        localObject1 = alud.a(2131721504) + (String)localObject1;
       }
       else if (localTime1.yearDay + 1 == i)
       {
-        localObject1 = alpo.a(2131690507) + (String)localObject1;
+        localObject1 = alud.a(2131690507) + (String)localObject1;
       }
       else
       {
         localObject1 = localTime1.month + 1 + "-" + localTime1.monthDay + (String)localObject1;
         continue;
-        label357:
+        label353:
         localObject1 = localObject2;
       }
     }
@@ -317,7 +286,7 @@ public class tra
   public static String a(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (String str = alpo.a(2131698274); paramLong < 10000L; str = "w") {
+    for (String str = alud.a(2131698276); paramLong < 10000L; str = "w") {
       return String.valueOf(paramLong);
     }
     if (paramLong < 1000000L)
@@ -358,10 +327,15 @@ public class tra
     {
       for (;;)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "labelToJson error.", localException);
+        QLog.e(a, 1, "labelToJson error.", localException);
       }
     }
     return paramBundle.toString();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return paramString1 + paramString2;
   }
   
   public static String a(ArrayList<QCirclePublishPictureTagInfo> paramArrayList)
@@ -398,7 +372,7 @@ public class tra
       }
       catch (Exception paramArrayList)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "picTagsToJson error.", paramArrayList);
+        QLog.e(a, 1, "picTagsToJson error.", paramArrayList);
       }
       localJSONObject.put("picTags", localJsonArray);
       localJSONArray.put(localJSONObject);
@@ -463,7 +437,7 @@ public class tra
     }
     catch (Exception paramString)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "jsonToPicTags error.", paramString);
+      QLog.e(a, 1, "jsonToPicTags error.", paramString);
     }
   }
   
@@ -517,6 +491,37 @@ public class tra
     return null;
   }
   
+  public static QQCircleDitto.StItemContainer a(QQCircleDitto.StItemContainer paramStItemContainer)
+  {
+    QQCircleDitto.StItemContainer localStItemContainer = new QQCircleDitto.StItemContainer();
+    if (paramStItemContainer == null) {
+      return localStItemContainer;
+    }
+    try
+    {
+      localStItemContainer.mergeFrom(paramStItemContainer.toByteArray());
+      return localStItemContainer;
+    }
+    catch (InvalidProtocolBufferMicroException paramStItemContainer) {}
+    return localStItemContainer;
+  }
+  
+  public static QQCircleFeedBase.StPolyLike a(String paramString)
+  {
+    Object localObject = tqg.a();
+    int i = 0;
+    while (i < ((List)localObject).size())
+    {
+      if (((QQCircleFeedBase.StPolyLike)((List)localObject).get(i)).polyLikeID.get().equals(paramString)) {
+        return a((QQCircleFeedBase.StPolyLike)((List)localObject).get(i));
+      }
+      i += 1;
+    }
+    localObject = new QQCircleFeedBase.StPolyLike();
+    ((QQCircleFeedBase.StPolyLike)localObject).polyLikeID.set(paramString);
+    return localObject;
+  }
+  
   public static QQCircleFeedBase.StPolyLike a(QQCircleFeedBase.StPolyLike paramStPolyLike)
   {
     QQCircleFeedBase.StPolyLike localStPolyLike = new QQCircleFeedBase.StPolyLike();
@@ -543,34 +548,104 @@ public class tra
   public static void a(Activity paramActivity)
   {
     a(paramActivity, a());
+    ImmersiveUtils.a(true, paramActivity.getWindow());
   }
   
   public static void a(Activity paramActivity, int paramInt)
   {
-    if (paramActivity == null) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
+    if (paramActivity == null) {}
+    do
     {
-      Window localWindow = paramActivity.getWindow();
-      localWindow.clearFlags(67108864);
-      localWindow.getDecorView().setSystemUiVisibility(1280);
-      localWindow.addFlags(-2147483648);
-      localWindow.setStatusBarColor(paramInt);
-    }
-    for (;;)
-    {
-      ImmersiveUtils.a(true, paramActivity.getWindow());
       return;
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramActivity.getWindow().addFlags(67108864);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramActivity = paramActivity.getWindow();
+        paramActivity.clearFlags(67108864);
+        paramActivity.getDecorView().setSystemUiVisibility(1280);
+        paramActivity.addFlags(-2147483648);
+        paramActivity.setStatusBarColor(paramInt);
+        return;
       }
+    } while (Build.VERSION.SDK_INT < 19);
+    paramActivity.getWindow().addFlags(67108864);
+  }
+  
+  public static void a(Activity paramActivity, boolean paramBoolean)
+  {
+    if (((paramActivity instanceof PublicFragmentActivity)) && (ImmersiveUtils.isSupporImmersive() == 1)) {
+      ImmersiveUtils.a(paramBoolean, paramActivity.getWindow());
     }
   }
   
   public static void a(@NonNull Context paramContext)
   {
     ThreadManager.getSubThreadHandler().post(new QCircleUtil.4(paramContext));
+  }
+  
+  public static void a(Context paramContext, FeedCloudMeta.StFeed paramStFeed, zac<FeedCloudWrite.StDoLikeRsp> paramzac)
+  {
+    int i = 1;
+    if (!ndk.a(paramContext))
+    {
+      QQToast.a(paramContext, alud.a(2131694772), 0).a();
+      return;
+    }
+    try
+    {
+      paramContext = new QQCircleFeedBase.StLikeBusiData();
+      paramContext.mergeFrom(paramStFeed.likeInfo.busiData.get().toByteArray());
+      QQCircleFeedBase.StPolyLike localStPolyLike1 = paramContext.curPolyLikeInfo;
+      FeedCloudMeta.StLike localStLike = a(paramStFeed.likeInfo);
+      QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData localStDoLikeReqDoPolyLikeBusiReqData = new QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData();
+      localStDoLikeReqDoPolyLikeBusiReqData.curPolyLikeInfo.set(paramContext.curPolyLikeInfo);
+      QQCircleFeedBase.StPolyLike localStPolyLike2 = a("6");
+      localStDoLikeReqDoPolyLikeBusiReqData.polyLikeInfo.set(localStPolyLike2);
+      String str = paramContext.curPolyLikeInfo.polyLikeID.get();
+      if (TextUtils.isEmpty(str)) {
+        a(paramStFeed, 1, localStPolyLike1, localStPolyLike2);
+      }
+      boolean bool;
+      do
+      {
+        for (;;)
+        {
+          VSNetworkHelper.a().a(new QCircleDoLikeRequest(paramStFeed, i, localStLike, localStDoLikeReqDoPolyLikeBusiReqData), new trb(paramzac));
+          return;
+          if (str.equals("6")) {
+            break;
+          }
+          i = 2;
+          a(paramStFeed, 2, localStPolyLike1, localStPolyLike2);
+        }
+        bool = paramContext.curPolyLikeInfo.polyLikeID.get().equals("6");
+      } while (!bool);
+      return;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  public static void a(FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2)
+  {
+    int j = paramStFeed.likeInfo.count.get();
+    int i;
+    if (paramInt == 1) {
+      i = j + 1;
+    }
+    for (;;)
+    {
+      paramStFeed.likeInfo.count.set(i);
+      paramStFeed.likeInfo.status.set(paramInt);
+      if (paramInt != 0) {
+        break;
+      }
+      yiw.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, new QQCircleFeedBase.StPolyLike(), paramInt, i));
+      return;
+      i = j;
+      if (paramInt == 0) {
+        i = j - 1;
+      }
+    }
+    yiw.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, paramStPolyLike2, paramInt, i));
   }
   
   public static void a(ArrayList<QQCircleBase.UserCircleInfo> paramArrayList, int paramInt, String paramString)
@@ -599,62 +674,12 @@ public class tra
     paramArrayList.add(localUserCircleInfo);
   }
   
-  /* Error */
-  public static boolean a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 247	java/lang/System:currentTimeMillis	()J
-    //   6: lstore_0
-    //   7: getstatic 532	tra:jdField_a_of_type_Long	J
-    //   10: lstore_2
-    //   11: lload_0
-    //   12: lload_2
-    //   13: lsub
-    //   14: lstore_2
-    //   15: lconst_0
-    //   16: lload_2
-    //   17: lcmp
-    //   18: ifge +20 -> 38
-    //   21: lload_2
-    //   22: ldc2_w 533
-    //   25: lcmp
-    //   26: ifge +12 -> 38
-    //   29: iconst_1
-    //   30: istore 4
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: iload 4
-    //   37: ireturn
-    //   38: lload_0
-    //   39: putstatic 532	tra:jdField_a_of_type_Long	J
-    //   42: iconst_0
-    //   43: istore 4
-    //   45: goto -13 -> 32
-    //   48: astore 5
-    //   50: ldc 2
-    //   52: monitorexit
-    //   53: aload 5
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   6	33	0	l1	long
-    //   10	12	2	l2	long
-    //   30	14	4	bool	boolean
-    //   48	6	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	11	48	finally
-    //   38	42	48	finally
-  }
-  
   public static boolean a(Context paramContext, String paramString)
   {
     if ((!(paramContext instanceof BaseActivity)) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    return ((aloz)((BaseActivity)paramContext).app.getManager(51)).b(paramString);
+    return ((alto)((BaseActivity)paramContext).app.getManager(51)).b(paramString);
   }
   
   public static boolean a(FeedCloudMeta.StFeed paramStFeed)
@@ -697,8 +722,10 @@ public class tra
       return 4;
     case 5: 
       return 5;
+    case 4: 
+      return 3;
     }
-    return 3;
+    return 6;
   }
   
   public static int b(boolean paramBoolean)
@@ -761,9 +788,14 @@ public class tra
     ThreadManager.getSubThreadHandler().post(new QCircleUtil.5(paramContext));
   }
   
+  public static boolean b(FeedCloudMeta.StFeed paramStFeed)
+  {
+    return (paramStFeed != null) && (!TextUtils.isEmpty(paramStFeed.video.fileId.get()));
+  }
+  
   public static boolean b(FeedCloudMeta.StUser paramStUser)
   {
-    return (paramStUser != null) && (!a(paramStUser)) && (paramStUser.followState.get() == 1);
+    return (paramStUser != null) && (!a(paramStUser)) && ((paramStUser.followState.get() == 1) || (paramStUser.followState.get() == 2));
   }
   
   public static boolean b(List<Integer> paramList)

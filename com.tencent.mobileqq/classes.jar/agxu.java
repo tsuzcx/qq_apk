@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-
-public class agxu
-  implements View.OnClickListener
+public abstract interface agxu
 {
-  public agxu(BlessActivity paramBlessActivity) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    azmj.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
-    BlessActivity.a(this.a, true);
-  }
+  public abstract int a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

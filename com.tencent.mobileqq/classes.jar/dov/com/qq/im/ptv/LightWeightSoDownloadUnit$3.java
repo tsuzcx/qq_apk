@@ -1,19 +1,19 @@
 package dov.com.qq.im.ptv;
 
-import bmcg;
+import bmgs;
 import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightSoDownloadUnit$3
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$3(bmcg parambmcg, String paramString) {}
+  public LightWeightSoDownloadUnit$3(bmgs parambmgs, String paramString) {}
   
   public void run()
   {
-    this.this$0.a.setProgress(bmcg.a(this.this$0));
+    this.this$0.a.setProgress(bmgs.a(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d("LightWeightSoDownloadUnit", 2, "" + this.a + " setProgress=" + bmcg.a(this.this$0));
+      QLog.d("LightWeightSoDownloadUnit", 2, "" + this.a + " setProgress=" + bmgs.a(this.this$0));
     }
   }
 }

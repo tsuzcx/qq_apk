@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import bgho;
-import bgmu;
-import bgwc;
+import bglv;
+import bgrb;
+import bhaj;
 import com.tencent.qqmini.sdk.utils.ColorUtils;
 
 class OpenDataJsPlugin$11
@@ -19,26 +19,26 @@ class OpenDataJsPlugin$11
     if ((OpenDataJsPlugin.access$900(this.this$0).a() != null) && (!OpenDataJsPlugin.access$1000(this.this$0).a().isFinishing())) {
       try
       {
-        bgmu localbgmu = new bgmu(OpenDataJsPlugin.access$1100(this.this$0).a(), 2131755761);
-        localbgmu.setContentView(2131559342);
+        bgrb localbgrb = new bgrb(OpenDataJsPlugin.access$1100(this.this$0).a(), 2131755761);
+        localbgrb.setContentView(2131559341);
         if (TextUtils.isEmpty(this.val$title)) {}
         for (String str = null;; str = this.val$title)
         {
-          localbgmu.a(str).a(this.val$content);
-          localbgmu.b(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
+          localbgrb.a(str).a(this.val$content);
+          localbgrb.b(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
           if (this.val$showCancel.booleanValue()) {
-            localbgmu.a(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
+            localbgrb.a(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
           }
-          localbgmu.setCanceledOnTouchOutside(true);
-          localbgmu.setOnCancelListener(this.val$onCancelListener);
-          localbgmu.show();
+          localbgrb.setCanceledOnTouchOutside(true);
+          localbgrb.setOnCancelListener(this.val$onCancelListener);
+          localbgrb.show();
           return;
         }
         return;
       }
       catch (Throwable localThrowable)
       {
-        bgwc.a().e("OpenDataJsPlugin", "showQQCustomModel error " + localThrowable.getMessage());
+        bhaj.a().e("OpenDataJsPlugin", "showQQCustomModel error " + localThrowable.getMessage());
       }
     }
   }

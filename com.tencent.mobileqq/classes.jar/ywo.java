@@ -1,66 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-class ywo
-  extends Handler
+public abstract interface ywo
 {
-  private WeakReference<ywm> a;
+  public abstract void a(int paramInt);
   
-  public ywo(ywm paramywm, Looper paramLooper)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramywm);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Object localObject2 = null;
-    if (this.a.get() != null) {}
-    for (ywm localywm = (ywm)this.a.get();; localywm = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
-      {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof ywn)) {
-          localObject1 = (ywn)paramMessage.obj;
-        }
-      }
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        super.handleMessage(paramMessage);
-        return;
-        if ((localywm != null) && (localObject1 != null))
-        {
-          ((ywm)this.a.get()).d();
-          continue;
-          if ((localywm != null) && (localObject1 != null))
-          {
-            ((ywm)this.a.get()).e();
-            continue;
-            if ((localywm != null) && (localObject1 != null))
-            {
-              ((ywm)this.a.get()).c(((ywn)localObject1).a);
-              continue;
-              if ((localywm != null) && (localObject1 != null))
-              {
-                ((ywm)this.a.get()).f();
-                continue;
-                if ((localywm != null) && (localObject1 != null)) {
-                  ((ywm)this.a.get()).b(((ywn)localObject1).a);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  public abstract void a(List<bcon> paramList);
 }
 
 

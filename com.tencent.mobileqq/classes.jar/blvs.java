@@ -1,87 +1,78 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class blvs
-  extends blpg
 {
-  public blvs(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  private blvo jdField_a_of_type_Blvo;
+  private ConcurrentHashMap<String, ArrayList<WeakReference<blvr>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(int paramInt)
+  public blvs(blvo paramblvo)
   {
-    this.a.c(paramInt);
+    this.jdField_a_of_type_Blvo = paramblvo;
   }
   
-  public void a(String paramString)
+  public void a(@NonNull bmvz parambmvz, blvr paramblvr)
   {
-    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    String str = parambmvz.e;
+    if ((str == null) || (TextUtils.isEmpty(str)))
     {
-      MusicFragmentProviderView.a(this.a).mProgress = -1;
-      if (this.a.a != null) {
-        this.a.a.sendEmptyMessage(3);
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
       }
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MusicFragmentProviderView", 2, "download onCancel");
+      QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicText res url: " + str);
     }
-    MusicFragmentProviderView.a(this.a).set(false);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.a.a(paramString, paramInt);
-    MusicFragmentProviderView.a(this.a).set(true);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    for (;;)
     {
-      this.a.b(-115);
-      MusicFragmentProviderView.a(this.a).set(false);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    this.a.b(paramInt);
-    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
-    {
-      MusicFragmentProviderView.a(this.a).musicStart = 0;
-      MusicFragmentProviderView.a(this.a).musicEnd = (MusicFragmentProviderView.a(this.a).musicStart + MusicFragmentProviderView.a(this.a));
-      MusicFragmentProviderView.a(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).getLocalPath()));
-      if (MusicFragmentProviderView.a(this.a).musicEnd > MusicFragmentProviderView.a(this.a).musicDuration) {
-        MusicFragmentProviderView.a(this.a).musicEnd = MusicFragmentProviderView.a(this.a).musicDuration;
-      }
-      MusicFragmentProviderView.a(this.a, MusicFragmentProviderView.a(this.a).musicStart);
-      MusicFragmentProviderView.b(this.a, MusicFragmentProviderView.a(this.a).musicEnd);
-      paramString = (QIMMusicConfigManager)blmf.a(2);
-      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).mItemId);
-      if (localMusicItemInfo != null)
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MusicFragmentProviderView", 2, "music exist name =" + localMusicItemInfo.mMusicName);
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localArrayList != null)
+        {
+          parambmvz = localArrayList.iterator();
+          if (!parambmvz.hasNext()) {
+            break label292;
+          }
+          if (((WeakReference)parambmvz.next()).get() != paramblvr) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            localArrayList.add(new WeakReference(paramblvr));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("QIMInformationPasterManager", 2, "already put url " + str);
+          }
+          return;
         }
-        paramString.a(MusicFragmentProviderView.a(this.a), false);
       }
-      if (this.a.a != null) {
-        this.a.a.sendEmptyMessage(2);
-      }
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder("onFinish musicStart=").append(MusicFragmentProviderView.a(this.a).musicStart);
-        paramString.append(" musicEnd=").append(MusicFragmentProviderView.a(this.a).musicEnd);
-        paramString.append(" musicDuration").append(MusicFragmentProviderView.a(this.a).musicDuration);
-        paramString.append(" premusicStart").append(MusicFragmentProviderView.b(this.a));
-        paramString.append(" premusicEnd").append(MusicFragmentProviderView.c(this.a));
-        paramString.append(" musicName").append(MusicFragmentProviderView.a(this.a).mMusicName);
-        QLog.d("MusicFragmentProviderView", 2, paramString.toString());
-      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new WeakReference(paramblvr));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
+      paramblvr = new baub();
+      paramblvr.jdField_a_of_type_Baug = new blvt(this);
+      paramblvr.jdField_a_of_type_JavaLangString = str;
+      paramblvr.jdField_a_of_type_Int = 0;
+      paramblvr.jdField_c_of_type_JavaLangString = blvo.a(parambmvz);
+      paramblvr.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+      paramblvr.a(parambmvz);
+      lel.a().a(paramblvr);
+      return;
+      label292:
+      int i = 0;
     }
-    MusicFragmentProviderView.a(this.a).set(false);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null;
   }
 }
 

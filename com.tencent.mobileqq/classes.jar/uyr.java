@@ -1,43 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class uyr
-  extends uxv
-  implements uni<uyt, uyu>
+  extends Handler
 {
-  public List<String> a = new ArrayList();
-  
-  public uyr(String paramString)
+  public uyr(uyl paramuyl, Looper paramLooper)
   {
-    this.a.add(paramString);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    uyt localuyt = new uyt();
-    localuyt.c = 1;
-    localuyt.a = this.a;
-    ung.a().a(localuyt, this);
-  }
-  
-  public void a(@NonNull uyt paramuyt, @Nullable uyu paramuyu, @NonNull ErrorMessage paramErrorMessage)
-  {
-    paramuyt = new uys(paramErrorMessage);
-    if ((paramErrorMessage.isSuccess()) && (paramuyu != null) && (paramuyu.a != null))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramuyt.a = paramuyu.a;
-      b();
     }
-    for (;;)
+    do
     {
-      uht.a().dispatch(paramuyt);
+      do
+      {
+        return;
+        removeMessages(1);
+        wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!uyl.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
       return;
-      c();
-    }
+      wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 

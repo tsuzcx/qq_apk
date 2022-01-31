@@ -6,11 +6,11 @@ import mqq.util.WeakReference;
 public class nbf
 {
   HashMap<Integer, WeakReference<nbg>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  ymk jdField_a_of_type_Ymk;
+  yqz jdField_a_of_type_Yqz;
   
-  public nbf(ymk paramymk)
+  public nbf(yqz paramyqz)
   {
-    this.jdField_a_of_type_Ymk = paramymk;
+    this.jdField_a_of_type_Yqz = paramyqz;
   }
   
   public void a()

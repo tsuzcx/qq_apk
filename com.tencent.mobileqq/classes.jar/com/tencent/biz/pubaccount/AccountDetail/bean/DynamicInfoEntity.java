@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.bean;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class DynamicInfoEntity
-  extends awbv
+  extends awge
 {
   public byte[] dynamicInfoData;
-  @awdj
+  @awhs
   public String puin;
 }
 

@@ -1,11 +1,26 @@
-class wuu
-  implements xbw
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class wuu
+  extends QQUIEventReceiver<wub, vej>
 {
-  wuu(wus paramwus) {}
-  
-  public void a(xeh paramxeh)
+  public wuu(@NonNull wub paramwub)
   {
-    this.a.a.a(6);
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull vej paramvej)
+  {
+    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramwub.a(paramvej);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vej.class;
   }
 }
 

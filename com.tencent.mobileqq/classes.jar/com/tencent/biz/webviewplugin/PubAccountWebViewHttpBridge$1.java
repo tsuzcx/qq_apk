@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import zau;
+import zfj;
 
 public class PubAccountWebViewHttpBridge$1
   implements Runnable
 {
-  public PubAccountWebViewHttpBridge$1(zau paramzau) {}
+  public PubAccountWebViewHttpBridge$1(zfj paramzfj) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    zau.a(this.this$0);
+    zfj.a(this.this$0);
     this.this$0.a = (System.currentTimeMillis() - l);
-    zau.b(this.this$0);
+    zfj.b(this.this$0);
   }
 }
 

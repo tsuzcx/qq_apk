@@ -1,17 +1,12 @@
-import android.os.Handler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class yie
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  yie(yid paramyid, affq paramaffq) {}
-  
-  public void onClick(View paramView)
+  public yie(yib paramyib, View paramView)
   {
-    yid.a(this.jdField_a_of_type_Yid).removeCallbacks(yid.a(this.jdField_a_of_type_Yid));
-    yid.a(this.jdField_a_of_type_Yid, true);
-    yid.a(this.jdField_a_of_type_Yid, this.jdField_a_of_type_Affq, this.jdField_a_of_type_Affq.b);
+    super(paramView);
   }
 }
 

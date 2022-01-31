@@ -48,7 +48,7 @@ public class tni
         tlv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl, null);
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842787);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842800);
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
@@ -77,7 +77,7 @@ public class tni
   
   protected int b()
   {
-    return 2131559878;
+    return 2131559877;
   }
   
   protected void b()
@@ -94,15 +94,15 @@ public class tni
   
   protected void e()
   {
-    this.b = a(2131379520);
+    this.b = a(2131379578);
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379522));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379521));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379580));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379579));
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379520) {
+    if (paramView.getId() == 2131379578) {
       tmo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, a(), c());
     }
   }

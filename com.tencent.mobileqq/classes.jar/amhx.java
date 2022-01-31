@@ -1,10 +1,7 @@
-public abstract interface amhx
+public class amhx
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
-  
-  public abstract void b();
+  public int a;
+  public String a;
 }
 
 

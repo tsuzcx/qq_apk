@@ -1,64 +1,141 @@
-import AccostSvc.ReqGetBlackList;
-import AccostSvc.ReqHeader;
-import AccostSvc.RespGetBlackList;
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ayvb
-  implements aywc
 {
-  public static String a;
-  private final QQAppInterface a;
+  public int a;
+  public List<String> a;
   
-  static
+  public ayvb(List<String> paramList, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "GetBlackListItem";
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if ((paramString != null) && (!((List)localObject).contains(paramString))) {
+      ((List)localObject).add(paramString);
+    }
+    Collections.sort((List)localObject, new ayvc(this));
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
   }
   
-  public ayvb(QQAppInterface paramQQAppInterface)
+  public int a(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return -1;
+    }
+    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
   }
   
-  public int a()
+  public SpannableString a(CharSequence paramCharSequence)
   {
-    return 1;
+    return a(paramCharSequence, false, false);
   }
   
-  public ReqItem a(int paramInt)
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.eServiceID = 116;
-    Object localObject = new ReqHeader();
-    ((ReqHeader)localObject).shVersion = 0;
-    ((ReqHeader)localObject).lMID = ayvp.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()));
-    ((ReqHeader)localObject).iAppID = AppSetting.a();
-    localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("AccostObj");
-    localUniPacket.setFuncName("CMD_GET_BlackList");
-    localUniPacket.put("ReqGetBlackList", localObject);
-    localReqItem.vecParam = localUniPacket.encode();
-    return localReqItem;
+    return a(paramCharSequence, paramBoolean, false);
   }
   
-  public void a(RespItem paramRespItem)
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramRespItem.eServiceID == 116) && (paramRespItem.cResult == 2))
+    return a(paramCharSequence, paramBoolean1, paramBoolean2, true);
+  }
+  
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    Object localObject2;
+    if (TextUtils.isEmpty(paramCharSequence))
     {
-      Object localObject = new UniPacket();
-      ((UniPacket)localObject).setEncodeName("utf-8");
-      ((UniPacket)localObject).decode(paramRespItem.vecUpdate);
-      paramRespItem = (RespGetBlackList)((UniPacket)localObject).getByClass("RespGetBlackList", new RespGetBlackList());
-      localObject = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg();
-      localFromServiceMsg.setMsgSuccess();
-      ((MessageHandler)localObject).a(null, localFromServiceMsg, paramRespItem);
+      localObject2 = null;
+      return localObject2;
+    }
+    Object localObject1 = new SpannableString(paramCharSequence);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return localObject1;
+    }
+    paramCharSequence = paramCharSequence.toString();
+    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
+    this.jdField_a_of_type_Int = 0;
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    String str;
+    int k;
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (m >= arrayOfObject.length) {
+        break;
+      }
+      str = (String)arrayOfObject[m];
+      if (str.length() <= 1)
+      {
+        localObject2 = localObject1;
+        if (j != 0) {
+          break;
+        }
+      }
+      k = 0;
+      k = a(paramCharSequence, str, k);
+      if (k != -1) {
+        break label146;
+      }
+      m += 1;
+    }
+    label146:
+    if ((paramBoolean3) && (k > 10) && (i == 0) && (!paramBoolean1))
+    {
+      localObject1 = "…" + paramCharSequence.substring(k - 6);
+      paramCharSequence = new SpannableString((CharSequence)localObject1);
+      i = 1;
+      k = 7;
+    }
+    for (;;)
+    {
+      int n;
+      if (paramBoolean2)
+      {
+        n = ((String)localObject1).indexOf(" ");
+        int i1 = ((String)localObject1).indexOf(" ", n);
+        if ((k < n) || (k > i1))
+        {
+          localObject2 = paramCharSequence;
+          k += 1;
+          paramCharSequence = (CharSequence)localObject1;
+          localObject1 = localObject2;
+          break;
+        }
+      }
+      if (str.length() > 1)
+      {
+        j = 1;
+        i = 1;
+      }
+      for (;;)
+      {
+        n = Color.parseColor("#00a5e0");
+        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+          n = Color.parseColor("#004080");
+        }
+        paramCharSequence.setSpan(new ForegroundColorSpan(n), k, str.length() + k, 34);
+        this.jdField_a_of_type_Int += 1;
+        localObject2 = paramCharSequence;
+        k += 1;
+        paramCharSequence = (CharSequence)localObject1;
+        localObject1 = localObject2;
+        break;
+      }
+      localObject2 = localObject1;
+      localObject1 = paramCharSequence;
+      paramCharSequence = (CharSequence)localObject2;
     }
   }
 }

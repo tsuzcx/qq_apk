@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.widget.SingleLineTextView;
 
-public class ahut
-  extends aqnl
+class ahut
+  extends akit
 {
-  public ahut(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public RecentRecommendTroopItem a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

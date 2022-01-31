@@ -1,25 +1,17 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afti
-  extends aftl
+class afti
+  extends afuf
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
-  public int f;
-  
-  public afti(afth paramafth)
+  afti(afpy paramafpy)
   {
-    super(paramafth);
-    this.jdField_a_of_type_Boolean = true;
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afhq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

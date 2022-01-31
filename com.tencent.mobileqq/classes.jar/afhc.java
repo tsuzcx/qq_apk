@@ -1,29 +1,8 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-class afhc
-  extends ClickableSpan
+public abstract interface afhc
 {
-  afhc(afgz paramafgz) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!bdee.d(this.a.a))
-    {
-      QQToast.a(this.a.a, alpo.a(2131703608), 2000).a();
-      return;
-    }
-    paramView = new Intent();
-    paramView.setFlags(268435456);
-    paramView.setAction("android.intent.action.VIEW");
-    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
-    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
-  }
+  public abstract void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

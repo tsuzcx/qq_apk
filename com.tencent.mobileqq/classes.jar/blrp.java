@@ -1,27 +1,28 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient;
 
-class blrp
-  implements bhpo
+public class blrp
+  implements yrb
 {
-  int jdField_a_of_type_Int = 0;
+  public blrp(CaptureAsyncStep.BindTroopMemberClient paramBindTroopMemberClient) {}
   
-  blrp(blro paramblro) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1) {
-      bhoc.b(this.jdField_a_of_type_Blro.h);
+    paramBundle = paramBundle.getString("nickName");
+    if (paramBundle == null) {
+      paramBundle = "";
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Blro.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Blro.a.size())) {
+    for (;;)
+    {
+      AppInterface localAppInterface = blqr.a();
+      if ((localAppInterface instanceof PeakAppInterface)) {
+        ((PeakAppInterface)localAppInterface).a(paramBundle);
+      }
+      this.a.a.b();
       return;
     }
-    blro.a(this.jdField_a_of_type_Blro);
   }
 }
 

@@ -1,12 +1,20 @@
-class awwi
-  extends almw
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+
+public class awwi
 {
-  awwi(awwg paramawwg) {}
+  public int a;
+  public Point a;
+  public int b;
+  public Point b;
+  public int c;
+  public Point c;
+  public int d;
+  public Point d;
+  public Point e;
+  public Point f;
   
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    this.a.b(paramString, 3000);
-  }
+  public awwi(SingleTouchLayout paramSingleTouchLayout) {}
 }
 
 

@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.mobileqq.hotpic.HotPicData;
 
 public class nyq
-  implements asry
+  implements aswh
 {
   public nyq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   

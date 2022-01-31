@@ -1,73 +1,18 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
-@TargetApi(14)
-public class bmlh
+class bmlh
+  extends AnimatorListenerAdapter
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  bmlh(bmla parambmla) {}
   
-  public static float a(Resources paramResources)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bmli(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return b;
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bmlj(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
+    this.a.d.setVisibility(8);
+    this.a.e.setVisibility(8);
+    this.a.f.setVisibility(8);
+    this.a.b = this.a.c;
   }
 }
 

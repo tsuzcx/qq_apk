@@ -1,17 +1,26 @@
-import android.hardware.Camera.ShutterCallback;
 import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 
-public class anwr
-  implements Camera.ShutterCallback
+class anwr
+  extends Handler
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final anwh jdField_a_of_type_Anwh;
-  private final anwi jdField_a_of_type_Anwi;
-  
-  public void onShutter()
+  anwr(anwq paramanwq, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
   }
 }
 

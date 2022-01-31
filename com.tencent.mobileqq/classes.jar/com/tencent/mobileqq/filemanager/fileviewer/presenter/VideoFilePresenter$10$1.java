@@ -2,24 +2,24 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
 import android.os.PowerManager.WakeLock;
-import aris;
-import ariu;
-import arke;
+import arnb;
+import arnd;
+import aron;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class VideoFilePresenter$10$1
   implements Runnable
 {
-  public VideoFilePresenter$10$1(ariu paramariu) {}
+  public VideoFilePresenter$10$1(arnd paramarnd) {}
   
   public void run()
   {
-    aris.b(this.a.a, true);
-    aris.a(this.a.a, 0);
-    aris.a(this.a.a).release();
+    arnb.b(this.a.a, true);
+    arnb.a(this.a.a, 0);
+    arnb.a(this.a.a).release();
     this.a.a.a.c(0);
     this.a.a.a.b(0L);
-    aris.b(this.a.a);
+    arnb.b(this.a.a);
     ThreadManagerV2.getUIHandlerV2().postDelayed(new VideoFilePresenter.10.1.1(this), 1100L);
   }
 }

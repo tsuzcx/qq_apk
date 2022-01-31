@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webprocess;
 
-import beec;
+import beil;
 
 class WebAccelerateHelper$4
-  implements beec
+  implements beil
 {
   WebAccelerateHelper$4(WebAccelerateHelper paramWebAccelerateHelper) {}
   
@@ -12,7 +12,7 @@ class WebAccelerateHelper$4
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      beep.b = bool;
+      beiy.b = bool;
       return;
     }
   }

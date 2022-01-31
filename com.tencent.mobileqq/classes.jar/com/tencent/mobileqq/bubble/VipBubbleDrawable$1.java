@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import anty;
+import anyh;
 
 public class VipBubbleDrawable$1
   implements Runnable
 {
-  public VipBubbleDrawable$1(anty paramanty) {}
+  public VipBubbleDrawable$1(anyh paramanyh) {}
   
   public void run()
   {

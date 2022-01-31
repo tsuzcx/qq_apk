@@ -1,244 +1,80 @@
-import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
 
 public class ajqc
-  extends ajps
+  extends ajqa
+  implements aghd
 {
-  private int jdField_a_of_type_Int = 522;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private List<ajqb> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b = 350;
-  private int c = 270;
-  private int d = 40;
-  private int e = 44;
-  private int f = 30;
-  private int g = -1;
-  private int h = -136515;
-  private int i = 4;
-  private int j = 3;
-  private int k = 3000;
+  int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
   
-  private void a(ajqb paramajqb)
+  public ajqc(FlowActivity paramFlowActivity)
   {
-    if (paramajqb == null) {}
-    label60:
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label60;
-        }
-        ajqb localajqb = (ajqb)localIterator.next();
-        if (localajqb == paramajqb) {
-          break;
-        }
-        localIterator.remove();
-        localajqb.jdField_a_of_type_Ajqd.g();
-        localajqb.jdField_b_of_type_Ajqd.g();
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    super(paramFlowActivity);
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
+    localPanelIconLinearLayout.setPanelIconListener(this);
+    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366604);
+    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
+    localPanelIconLinearLayout.setCustomHeight(i);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
+    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
     {
-      ajqb localajqb = (ajqb)localIterator.next();
-      if (localajqb != null)
+      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
+      if (paramViewGroup.containsKey("selected_data"))
       {
-        localajqb.jdField_a_of_type_Ajqd.g();
-        localajqb.jdField_b_of_type_Ajqd.g();
+        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
+        localPanelIconLinearLayout.a.clear();
+        localPanelIconLinearLayout.a.addAll((Collection)localObject);
       }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    float f1 = 1.0F;
-    if (paramContext != null) {
-      f1 = paramContext.getResources().getDisplayMetrics().density;
-    }
-    f1 = f1 / 2.0F * a();
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.b = ((int)(this.b * f1));
-    this.c = ((int)(this.c * f1));
-    this.d = ((int)(this.d * f1));
-    this.e = ((int)(this.e * f1));
-    this.f = ((int)(this.f * f1));
-    this.i = ((int)(this.i * f1));
-    this.j = ((int)(f1 * this.j));
-    this.jdField_a_of_type_AndroidGraphicsTypeface = a(paramString);
-  }
-  
-  public void a(WordingItem paramWordingItem)
-  {
-    if (paramWordingItem == null) {}
-    long l;
-    do
-    {
+      localPanelIconLinearLayout.a();
+      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
+      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
+        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      }
+      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseAnimDrawer", 2, "setText ：" + paramWordingItem.jdField_a_of_type_JavaLangString + " ID:" + paramWordingItem.jdField_a_of_type_Long + " baseIndex:" + a(paramWordingItem.jdField_b_of_type_Long) + " time:" + paramWordingItem.jdField_b_of_type_Long + "-" + paramWordingItem.c);
-      }
-      l = paramWordingItem.jdField_a_of_type_Long;
-    } while ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (((ajqb)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Long > l));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ajqb localajqb;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localajqb = (ajqb)localIterator.next();
-    } while (localajqb.jdField_a_of_type_Long != paramWordingItem.jdField_a_of_type_Long);
-    for (;;)
-    {
-      if (localajqb != null)
-      {
-        if (localajqb.jdField_a_of_type_Ajqd != null)
-        {
-          localajqb.jdField_a_of_type_Ajqd.a(paramWordingItem.jdField_a_of_type_JavaLangString);
-          if (localajqb.jdField_b_of_type_Ajqd == null) {
-            break label314;
-          }
-          localajqb.jdField_b_of_type_Ajqd.a(paramWordingItem.jdField_b_of_type_JavaLangString);
-        }
-        for (;;)
-        {
-          localajqb.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
-          return;
-          localajqb.jdField_a_of_type_Ajqd = new ajqd(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-          break;
-          label314:
-          localajqb.jdField_b_of_type_Ajqd = new ajqd(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-        }
-      }
-      localajqb = new ajqb();
-      localajqb.jdField_a_of_type_Long = paramWordingItem.jdField_a_of_type_Long;
-      localajqb.jdField_a_of_type_Ajqd = new ajqd(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-      localajqb.jdField_b_of_type_Ajqd = new ajqd(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-      localajqb.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
-      this.jdField_a_of_type_JavaUtilList.add(localajqb);
+    }
+    throw new RuntimeException("No pass args SELECTED_ITEM");
+  }
+  
+  public void a(Object paramObject)
+  {
+    Intent localIntent = ((FlowActivity)a()).getIntent();
+    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
       return;
-      localajqb = null;
     }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ajqb localajqb = (ajqb)localIterator.next();
-      if (localajqb.jdField_b_of_type_Ajqd != null) {
-        localajqb.jdField_b_of_type_Ajqd.d();
-      }
-      if (localajqb.jdField_a_of_type_Ajqd != null) {
-        localajqb.jdField_a_of_type_Ajqd.d();
-      }
-    }
-    return true;
-  }
-  
-  public boolean a(Canvas paramCanvas, RenderBuffer paramRenderBuffer, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject = null;
-    ajqb localajqb;
-    long l;
-    if (localIterator.hasNext())
-    {
-      localajqb = (ajqb)localIterator.next();
-      l = localajqb.jdField_a_of_type_Ajqd.a(2);
-      if ((!QLog.isColorLevel()) || ((l <= paramLong1) && ((paramLong1 - l) * paramLong2 < this.k + localajqb.jdField_b_of_type_Long)))
-      {
-        localObject = localajqb;
-        if (!QLog.isColorLevel()) {}
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (l <= paramLong1)
-      {
-        localIterator.remove();
-        localajqb.jdField_a_of_type_Ajqd.g();
-        localajqb.jdField_b_of_type_Ajqd.g();
-        if (QLog.isColorLevel()) {
-          QLog.d("BaseAnimDrawer", 2, "removed");
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {}
-        a(localObject);
-        if (localObject != null)
-        {
-          float f1 = localObject.jdField_a_of_type_Ajqd.a(4);
-          float f2 = localObject.jdField_b_of_type_Ajqd.a(4);
-          if ((b() == 1) || (b() == 0))
-          {
-            localObject.jdField_a_of_type_Ajqd.a(7, b(true) - (f1 + f2 + this.jdField_a_of_type_Int));
-            localObject.jdField_b_of_type_Ajqd.a(7, b(true) - (f2 + this.jdField_a_of_type_Int));
-            if (paramCanvas == null) {
-              break label401;
-            }
-            localObject.jdField_a_of_type_Ajqd.a(paramCanvas);
-            localObject.jdField_b_of_type_Ajqd.a(paramCanvas);
-          }
-          for (;;)
-          {
-            return true;
-            if (b() == 2)
-            {
-              localObject.jdField_a_of_type_Ajqd.a(7, b(true) - (f1 + f2 + this.b));
-              localObject.jdField_b_of_type_Ajqd.a(7, b(true) - (f2 + this.b));
-              break;
-            }
-            localObject.jdField_a_of_type_Ajqd.a(7, b(true) - (f1 + f2 + this.c));
-            localObject.jdField_b_of_type_Ajqd.a(7, b(true) - (f2 + this.c));
-            break;
-            label401:
-            localObject.jdField_a_of_type_Ajqd.a(paramRenderBuffer);
-            localObject.jdField_b_of_type_Ajqd.a(paramRenderBuffer);
-          }
-        }
-        return false;
-      }
-    }
+    int i = ((Integer)paramObject).intValue();
+    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
+    localIntent.putExtra("click_item", i);
+    ((FlowActivity)a()).setResult(1000, localIntent);
+    ((FlowActivity)a()).finish();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public boolean b()
-  {
-    b();
-    return true;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

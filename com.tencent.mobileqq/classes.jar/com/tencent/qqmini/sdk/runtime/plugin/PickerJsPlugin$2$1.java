@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghn;
-import bgie;
-import bgkd;
-import bhfq;
+import bglu;
+import bgml;
+import bgok;
+import bhjx;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$2$1
-  implements bhfq
+  implements bhjx
 {
   PickerJsPlugin$2$1(PickerJsPlugin.2 param2) {}
   
@@ -36,7 +36,7 @@ class PickerJsPlugin$2$1
   
   public void onValChange(int paramInt1, int paramInt2)
   {
-    int i = bgie.a(PickerJsPlugin.access$300(this.this$1.this$0)).a();
+    int i = bgml.a(PickerJsPlugin.access$300(this.this$1.this$0)).a();
     this.this$1.val$req.a.a("onMultiPickerViewChange", String.format("{\"column\":%d,\"current\":%d}", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), i);
   }
   

@@ -1,23 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-class aylx
-  implements View.OnClickListener
+public class aylx
 {
-  aylx(aylv paramaylv, ayjl paramayjl) {}
+  public List<Long> a;
   
-  public void onClick(View paramView)
+  public aylx() {}
+  
+  public aylx(List<Long> paramList)
   {
-    Object localObject = paramView.getContext();
-    paramView = this.jdField_a_of_type_Ayjl.b();
-    if ((localObject instanceof BaseActivity))
-    {
-      ayrd.a("all_result", "clk_result_join", new String[0]);
-      localObject = (BaseActivity)localObject;
-      aylv.a(this.jdField_a_of_type_Aylv, (Activity)localObject, paramView);
-    }
+    this.a = paramList;
   }
 }
 

@@ -1,28 +1,33 @@
-public class amsv
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
+
+class amsv
+  implements SoundPool.OnLoadCompleteListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  baps jdField_a_of_type_Baps;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  String c;
+  amsv(amsu paramamsu) {}
   
-  public String toString()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + amsu.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + amsu.a(this.a));
+    }
+    amsu.a(this.a, true);
+    if (amsu.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 

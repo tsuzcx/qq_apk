@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amwd;
-import amxq;
+import anam;
+import anbz;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
 public class ARCloudControl$3
   implements Runnable
 {
-  public ARCloudControl$3(amwd paramamwd, byte[] paramArrayOfByte) {}
+  public ARCloudControl$3(anam paramanam, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     if (this.a == null)
     {
-      amwd.a(this.this$0, true);
-      amwd.b(this.this$0, true);
+      anam.a(this.this$0, true);
+      anam.b(this.this$0, true);
     }
     while (this.this$0.a.recognitions == null) {
       return;
     }
-    amxq.a().a();
-    amxq.a().a = System.currentTimeMillis();
-    amwd.a(this.this$0, this.a, this.this$0.a.recognitions);
+    anbz.a().a();
+    anbz.a().a = System.currentTimeMillis();
+    anam.a(this.this$0, this.a, this.this$0.a.recognitions);
   }
 }
 

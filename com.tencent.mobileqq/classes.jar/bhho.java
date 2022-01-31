@@ -1,8 +1,19 @@
-public abstract interface bhho
+import com.tencent.tissue.v8rt.engine.IServiceEventHandler;
+
+class bhho
+  implements IServiceEventHandler
 {
-  public abstract void onTaskBegin(bhhn parambhhn);
+  bhho(bhhk parambhhk, bhhr parambhhr) {}
   
-  public abstract void onTaskDone(bhhn parambhhn);
+  public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Bhhr.a(paramString1, paramString2, paramArrayOfInt);
+  }
+  
+  public String onServiceNativeRequest(String paramString1, String paramString2, int paramInt)
+  {
+    return this.jdField_a_of_type_Bhhr.a(paramString1, paramString2, paramInt);
+  }
 }
 
 

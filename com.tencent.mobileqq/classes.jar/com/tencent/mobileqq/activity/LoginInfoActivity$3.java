@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aekt;
+import aepi;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -17,8 +17,8 @@ class LoginInfoActivity$3
     int i = LoginInfoActivity.b(this.this$0).getTop();
     int j = LoginInfoActivity.a(this.this$0).getWidth();
     int k = LoginInfoActivity.b(this.this$0).getRight();
-    LoginInfoActivity.a(this.this$0).c((int)aekt.a(j - k - 10, this.this$0.getResources()));
-    LoginInfoActivity.a(this.this$0).d((int)aekt.a(i - 10, this.this$0.getResources()));
+    LoginInfoActivity.a(this.this$0).c((int)aepi.a(j - k - 10, this.this$0.getResources()));
+    LoginInfoActivity.a(this.this$0).d((int)aepi.a(i - 10, this.this$0.getResources()));
     LoginInfoActivity.a(this.this$0).a();
     LoginInfoActivity.a(this.this$0);
   }

@@ -1,14 +1,27 @@
-public abstract interface ailm
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class ailm
+  extends awhw
 {
-  public abstract void a();
+  public ailm(BindNumberActivity paramBindNumberActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(aiiy paramaiiy);
-  
-  public abstract void a(aiiy paramaiiy, bcln parambcln);
-  
-  public abstract void b(aiiy paramaiiy);
+  protected void b(boolean paramBoolean)
+  {
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.b(2131719233);
+    }
+  }
 }
 
 

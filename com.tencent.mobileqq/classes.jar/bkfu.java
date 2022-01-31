@@ -1,60 +1,40 @@
-final class bkfu
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+class bkfu
+  extends QzoneExternalRequest
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
-  int c;
+  bkfu(bkft parambkft, Intent paramIntent) {}
   
-  public int a()
+  public String getCmdString()
   {
-    return this.jdField_b_of_type_Int;
+    return "SweetQzoneService.getPairState";
   }
   
-  public void a(int paramInt)
+  public JceStruct getReq()
   {
-    this.jdField_b_of_type_Int = paramInt;
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = bjdm.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_check_req;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public String uniKey()
   {
-    byte[] arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = bcwj.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = bcwj.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = bcwj.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = bcwj.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = bcwj.a(arrayOfByte);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(bcwj.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(bcwj.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(bcwj.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(bcwj.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(bcwj.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    return "getPairState";
   }
 }
 

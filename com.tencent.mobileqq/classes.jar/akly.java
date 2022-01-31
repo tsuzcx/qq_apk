@@ -1,20 +1,35 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class akly
-  implements View.OnLayoutChangeListener
 {
-  public akly(GLTextureView paramGLTextureView) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public akly(int paramInt, awge paramawge)
   {
-    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawge);
+  }
+  
+  public akly(int paramInt, DiscussionInfo paramDiscussionInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public akly(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akly
  * JD-Core Version:    0.7.0.1
  */

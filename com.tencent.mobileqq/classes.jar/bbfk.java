@@ -1,21 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bbfk
-  extends Handler
+  implements QQPermissionCallback
 {
-  public bbfk(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public bbfk(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.springBackOverScrollHeaderView();
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a(this.a, this.a);
   }
 }
 

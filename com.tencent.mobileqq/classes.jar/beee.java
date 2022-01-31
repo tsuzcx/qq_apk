@@ -1,30 +1,16 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-
-class beee
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class beee
 {
-  beee(beed parambeed, View paramView) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onGlobalLayout()
+  beee(int paramInt)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
-    {
-      this.jdField_a_of_type_Beed.c = true;
-      this.jdField_a_of_type_Beed.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_Beed.c) {
-      return;
-    }
-    this.jdField_a_of_type_Beed.c = false;
+    this.a = paramInt;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
   }
 }
 

@@ -1,30 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
-public class xez
-  implements TextWatcher
+class xez
+  implements urr<vfq, vhk>
 {
-  public xez(xex paramxex) {}
+  xez(xet paramxet, WeakReference paramWeakReference) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(@NonNull vfq paramvfq, @Nullable vhk paramvhk, @NonNull ErrorMessage paramErrorMessage)
   {
-    String str = xmt.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
+    if (paramvhk == null)
+    {
+      paramvfq = (xfg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramvfq != null) {
+        paramvfq.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    wsv.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Xfa != null) {
-      this.a.jdField_a_of_type_Xfa.a(this.a.jdField_a_of_type_JavaLangString);
+    paramvfq = (xfg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramvfq != null)
+    {
+      paramvfq.a(0, paramvhk.a);
+      return;
     }
+    wxe.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

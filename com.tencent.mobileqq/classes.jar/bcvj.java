@@ -1,33 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
-
-final class bcvj
-  implements DownloadParams.DecodeHandler
+public class bcvj
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bdda.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
-  }
+  public float a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

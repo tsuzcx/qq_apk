@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afhq;
+import afmf;
 import android.os.Handler;
-import aroa;
+import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class FilePicItemBuilder$1
   implements Runnable
 {
-  public FilePicItemBuilder$1(afhq paramafhq, FileManagerEntity paramFileManagerEntity) {}
+  public FilePicItemBuilder$1(afmf paramafmf, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    aroa.a(this.a);
+    arsj.a(this.a);
     this.this$0.b.post(new FilePicItemBuilder.1.1(this));
   }
 }

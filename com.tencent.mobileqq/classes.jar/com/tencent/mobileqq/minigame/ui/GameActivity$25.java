@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aobd;
-import aobe;
+import aofm;
+import aofn;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity$25
-  implements aobe
+  implements aofn
 {
   GameActivity$25(GameActivity paramGameActivity) {}
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    aobd.a(BaseApplicationImpl.getContext(), 2, false);
+    aofm.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

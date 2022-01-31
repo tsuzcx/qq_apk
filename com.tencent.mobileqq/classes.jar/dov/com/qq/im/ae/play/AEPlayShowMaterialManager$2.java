@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.play;
 
-import azbp;
-import blbz;
+import azfy;
+import blgg;
 
 public class AEPlayShowMaterialManager$2
   implements Runnable
 {
-  public AEPlayShowMaterialManager$2(blbz paramblbz) {}
+  public AEPlayShowMaterialManager$2(blgg paramblgg) {}
   
   public void run()
   {
-    blbz.a(this.this$0).a(1, null);
+    blgg.a(this.this$0).a(1, null);
   }
 }
 

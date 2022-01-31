@@ -2,7 +2,7 @@ import android.content.Context;
 import android.view.Window;
 
 public class mwz
-  extends bhpy
+  extends bhuf
 {
   public static boolean a;
   boolean b = false;

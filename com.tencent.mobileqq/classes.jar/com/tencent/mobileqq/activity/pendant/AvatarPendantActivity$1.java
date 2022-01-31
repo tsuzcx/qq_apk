@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import aikt;
+import aipi;
 import com.tencent.qphone.base.util.QLog;
 
 class AvatarPendantActivity$1
@@ -12,7 +12,7 @@ class AvatarPendantActivity$1
   {
     try
     {
-      aikt.a(this.this$0);
+      aipi.a(this.this$0);
       return;
     }
     catch (Exception localException)

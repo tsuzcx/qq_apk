@@ -1,22 +1,58 @@
-public class amzw
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+
+public abstract class amzw
+  extends Binder
+  implements amzv
 {
-  public int a()
+  public amzw()
   {
-    return 0;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
   }
   
-  public void a() {}
-  
-  public void a(amzx paramamzx) {}
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  public static amzv a(IBinder paramIBinder)
   {
-    return false;
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amzv))) {
+      return (amzv)localIInterface;
+    }
+    return new amzx(paramIBinder);
   }
   
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  public IBinder asBinder()
   {
-    return false;
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

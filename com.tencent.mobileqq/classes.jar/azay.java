@@ -1,47 +1,103 @@
-import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraDevice.StateCallback;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.util.concurrent.Semaphore;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class azay
-  extends CameraDevice.StateCallback
 {
-  public azay(Camera2Control paramCamera2Control, long paramLong) {}
-  
-  public void onDisconnected(@NonNull CameraDevice paramCameraDevice)
+  public static String a(Map<Integer, String> paramMap)
   {
-    azbl.a(2, "[Camera2]openCamera2 onDisconnected!");
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    paramCameraDevice.close();
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-105);
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramMap.keySet().iterator();
+    if (localIterator.hasNext())
+    {
+      Object localObject = (Integer)localIterator.next();
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.append("&");
+      }
+      String str = (String)paramMap.get(localObject);
+      if (localObject != null) {}
+      for (;;)
+      {
+        try
+        {
+          localObject = URLEncoder.encode(localObject + "", "UTF-8");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("=");
+          if (str == null) {
+            break label147;
+          }
+          localObject = URLEncoder.encode(str, "UTF-8");
+          localStringBuilder.append((String)localObject);
+        }
+        catch (UnsupportedEncodingException paramMap)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
+        }
+        localObject = "";
+        continue;
+        label147:
+        localObject = "";
+      }
     }
+    return localStringBuilder.toString();
   }
   
-  public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
+  public static Map<Integer, String> a(String paramString)
   {
-    azbl.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    paramCameraDevice.close();
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-102);
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
+        }
+      }
     }
+    return localHashMap;
   }
   
-  public void onOpened(@NonNull CameraDevice paramCameraDevice)
+  public static Map<String, String> b(String paramString)
   {
-    azbl.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
+        }
+      }
+    }
+    return localHashMap;
   }
 }
 

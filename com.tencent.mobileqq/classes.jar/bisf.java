@@ -1,6 +1,10 @@
+import android.os.IInterface;
+import cooperation.qappcenter.remote.SendMsg;
+
 public abstract interface bisf
+  extends IInterface
 {
-  public abstract void a(int paramInt, Object paramObject, Object... paramVarArgs);
+  public abstract void a(SendMsg paramSendMsg);
 }
 
 

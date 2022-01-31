@@ -1,9 +1,8 @@
-public abstract class vli
-  implements vlh
+public class vli
 {
-  public boolean a(vle paramvle)
+  public static boolean a(int paramInt)
   {
-    return true;
+    return paramInt > 1000;
   }
 }
 

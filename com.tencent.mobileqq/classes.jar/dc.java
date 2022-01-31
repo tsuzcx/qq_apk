@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class dc
-  implements bfmv
+  implements bfre
 {
   dc(db paramdb) {}
   
@@ -70,7 +70,7 @@ class dc
                 dl.g(this.a.a.app);
                 ((DataLineMsgRecord)localObject).issuc = true;
                 ((DataLineMsgRecord)localObject).progress = 1.0F;
-                ((DataLineMsgRecord)localObject).path = bfmu.a().a(((DataLineMsgRecord)localObject).strMoloKey);
+                ((DataLineMsgRecord)localObject).path = bfrd.a().a(((DataLineMsgRecord)localObject).strMoloKey);
                 if (QLog.isColorLevel())
                 {
                   if (((DataLineMsgRecord)localObject).path == null) {
@@ -123,16 +123,16 @@ class dc
     QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.WAIT(" + paramString + ")");
   }
   
-  public void a(bfmw parambfmw, int paramInt1, String paramString, int paramInt2)
+  public void a(bfrf parambfrf, int paramInt1, String paramString, int paramInt2)
   {
     Object localObject;
-    if ((parambfmw == null) || (paramInt1 == -25))
+    if ((parambfrf == null) || (paramInt1 == -25))
     {
       if (QLog.isColorLevel()) {
         QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
       }
       paramString = this.a.a.a().a().a(0).a();
-      parambfmw = this.a.a.a().a().a(0).a(true);
+      parambfrf = this.a.a.a().a().a(0).a(true);
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
@@ -148,15 +148,15 @@ class dc
           }
         }
       }
-      if (parambfmw != null) {
-        parambfmw = parambfmw.iterator();
+      if (parambfrf != null) {
+        parambfrf = parambfrf.iterator();
       }
     }
     else
     {
-      while (parambfmw.hasNext())
+      while (parambfrf.hasNext())
       {
-        paramString = ((DataLineMsgSet)parambfmw.next()).values().iterator();
+        paramString = ((DataLineMsgSet)parambfrf.next()).values().iterator();
         while (paramString.hasNext())
         {
           localObject = (DataLineMsgRecord)paramString.next();
@@ -169,10 +169,10 @@ class dc
         }
         continue;
         if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambfmw.toString() + "), key[" + parambfmw.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
+          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambfrf.toString() + "), key[" + parambfrf.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
         }
-        parambfmw = this.a.a.app.a(0).a(parambfmw.a);
-        if (parambfmw != null) {
+        parambfrf = this.a.a.app.a(0).a(parambfrf.a);
+        if (parambfrf != null) {
           break label460;
         }
       }
@@ -181,10 +181,10 @@ class dc
     {
       return;
       label460:
-      parambfmw = parambfmw.iterator();
-      while (parambfmw.hasNext())
+      parambfrf = parambfrf.iterator();
+      while (parambfrf.hasNext())
       {
-        paramString = (DataLineMsgRecord)parambfmw.next();
+        paramString = (DataLineMsgRecord)parambfrf.next();
         dl.l(this.a.a.app);
         paramString.issuc = false;
         this.a.a.app.a().a(0).c();
@@ -193,23 +193,23 @@ class dc
     }
   }
   
-  public void a(List<bfmw> paramList)
+  public void a(List<bfrf> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bfmw localbfmw = (bfmw)paramList.next();
+      bfrf localbfrf = (bfrf)paramList.next();
       if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbfmw.a + "], appName[" + localbfmw.e + "], progress[" + localbfmw.f);
+        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbfrf.a + "], appName[" + localbfrf.e + "], progress[" + localbfrf.f);
       }
-      Object localObject = this.a.a.app.a(0).a(localbfmw.a);
+      Object localObject = this.a.a.app.a(0).a(localbfrf.a);
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localbfmw.f / 100.0F;
+          float f = localbfrf.f / 100.0F;
           if (localDataLineMsgRecord.progress < f) {
             localDataLineMsgRecord.progress = f;
           }

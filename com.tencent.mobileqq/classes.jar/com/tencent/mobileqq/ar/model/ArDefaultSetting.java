@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbe;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfn;
 
 public class ArDefaultSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new anbe();
+  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new anfn();
   public int a;
   public String a;
   public int b;

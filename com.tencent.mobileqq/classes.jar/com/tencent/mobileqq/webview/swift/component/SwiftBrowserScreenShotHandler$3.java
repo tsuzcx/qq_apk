@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Handler;
-import beed;
+import beim;
 import com.tencent.qphone.base.util.QLog;
 import sdp;
 
 public class SwiftBrowserScreenShotHandler$3
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$3(beed parambeed, int paramInt) {}
+  public SwiftBrowserScreenShotHandler$3(beim parambeim, int paramInt) {}
   
   public void run()
   {

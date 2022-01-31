@@ -1,17 +1,8 @@
-import java.util.Comparator;
+import android.view.View;
 
-class avtu
-  implements Comparator<String>
+public abstract interface avtu
 {
-  avtu(avtt paramavtt) {}
-  
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
-  }
+  public abstract void onClick(View paramView);
 }
 
 

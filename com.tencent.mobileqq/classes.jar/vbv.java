@@ -1,69 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public class vbv
-  extends unk<vdi>
+class vbv
+  extends vbo
 {
-  private static final String jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
-  
-  public vbv(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public vbv(ViewGroup paramViewGroup)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    super(paramViewGroup, 2131561509);
   }
   
-  public vbv(String paramString, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
+    b(paramString);
   }
   
-  public String a()
+  public void a(uyg paramuyg)
   {
-    return jdField_a_of_type_JavaLangString;
+    super.a(paramuyg);
+    wxe.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramuyg);
+    a(xsj.b(paramuyg.g));
+    this.a.setNodeName(paramuyg.c, 2130846202);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  protected void b(uyg paramuyg)
   {
-    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
-    try
-    {
-      localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new vdi(localRspGetTagList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
-    }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
-    return localReqGetTagList.toByteArray();
+    this.a.setDisplayState(6);
+    this.a.a(paramuyg);
   }
 }
 

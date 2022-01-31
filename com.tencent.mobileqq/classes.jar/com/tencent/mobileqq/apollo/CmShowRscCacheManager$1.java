@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import akll;
+import akqa;
 
 public class CmShowRscCacheManager$1
   implements Runnable
 {
-  public CmShowRscCacheManager$1(akll paramakll) {}
+  public CmShowRscCacheManager$1(akqa paramakqa) {}
   
   public void run()
   {
-    akll.a(this.this$0);
+    akqa.a(this.this$0);
   }
 }
 

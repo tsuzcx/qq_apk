@@ -1,27 +1,16 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class wwy
-  implements bhpo
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
+  wwy(wwx paramwwx, www paramwww, xof paramxof) {}
   
-  wwy(wwx paramwwx) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1) {
-      bhoc.b(this.jdField_a_of_type_Wwx.a().a());
+    if (this.jdField_a_of_type_Www != null) {
+      this.jdField_a_of_type_Www.a(this.jdField_a_of_type_Xof);
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Wwx.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Wwx.a.size())) {
-      return;
-    }
-    wwx.a(this.jdField_a_of_type_Wwx);
   }
 }
 

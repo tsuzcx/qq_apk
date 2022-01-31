@@ -1,26 +1,148 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-
 public class aegt
-  extends VasQuickUpdateManager.CallBacker
 {
-  public aegt(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public double a = -100.0D;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b = "";
+  public boolean b;
+  public int c;
+  public long c;
+  public String c = "";
+  public boolean c;
+  public int d;
+  public long d;
+  public String d = "";
+  public boolean d;
+  public int e;
+  public String e = "";
+  public int f;
+  public String f = "";
+  public int g;
+  public String g = "";
+  public int h;
+  public String h = "";
+  public int i;
+  public String i = "";
+  public int j;
+  public String j = "";
+  public int k;
+  public String k = "";
+  public int l;
+  public String l = "";
+  public int m;
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u;
+  public String v;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(String paramString)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
-    {
-      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
-        this.a.c(this.a.g);
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    else {
-      return;
+    this.d = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
+    this.g = str;
+  }
+  
+  public void c(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.h = str;
+  }
+  
+  public void d(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.i = str;
+  }
+  
+  public void e(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.j = str;
+  }
+  
+  public void f(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.k = str;
+  }
+  
+  public void g(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.p = str;
+  }
+  
+  public void h(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.l = str;
+  }
+  
+  public void i(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.m = str;
+  }
+  
+  public void j(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.n = str;
+  }
+  
+  public void k(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.o = str;
   }
 }
 

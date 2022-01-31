@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
-class asvj
-  implements ataw
+public class asvj
+  implements asvm
 {
-  asvj(asvi paramasvi) {}
+  public asvj(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public void onClick(View paramView)
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    asvi.a(this.a, paramNewTogetherRoomMessageData, 1);
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    asvi.a(this.a, paramNewTogetherRoomMessageData, 3);
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    asvi.a(this.a, paramNewTogetherRoomMessageData, 2);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Asvp != null))
+    {
+      this.a.jdField_a_of_type_Asvp.a(0, paramView);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Asvp != null)) {
+      this.a.jdField_a_of_type_Asvp.a(4, paramView);
+    }
+    for (;;)
+    {
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      return;
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Asvp != null)) {
+        this.a.jdField_a_of_type_Asvp.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Asvp != null)) {
+        this.a.jdField_a_of_type_Asvp.a(2, paramView);
+      }
+    }
   }
 }
 

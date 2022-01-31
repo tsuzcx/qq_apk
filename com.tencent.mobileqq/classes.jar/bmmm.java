@@ -1,24 +1,28 @@
-import android.graphics.PointF;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bmmm
+class bmmm
+  extends AnimatorListenerAdapter
 {
-  public final float a;
-  public final PointF a;
-  public final float b;
-  public final float c;
-  public final float d;
-  public final float e;
-  public final float f;
+  bmmm(bmml parambmml, View paramView) {}
   
-  public bmmm(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.b = paramFloat4;
-    this.c = paramFloat5;
-    this.d = paramFloat6;
-    this.e = paramFloat7;
-    this.f = paramFloat8;
+    wxe.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 

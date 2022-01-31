@@ -1,15 +1,15 @@
 package com.tencent.qidian;
 
-import bfua;
+import bfyh;
 
 public class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bfua parambfua) {}
+  public QidianManager$1(bfyh parambfyh) {}
   
   public void run()
   {
-    bfua.a(this.this$0);
+    bfyh.a(this.this$0);
   }
 }
 

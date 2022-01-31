@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
-class aezo
-  implements DialogInterface.OnClickListener
+public abstract interface aezo
 {
-  aezo(aezm paramaezm) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 

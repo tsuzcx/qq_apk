@@ -1,28 +1,37 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class achc
+class achc
+  extends WtloginObserver
 {
-  public achc(ChatFragment paramChatFragment) {}
+  achc(achb paramachb) {}
   
-  public void a()
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    if (QLog.isColorLevel())
     {
-      bdjd.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().c();
-      bdjd.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
-      {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bdel.a("pubAcc_aio_open", null, str);
-        bdel.a("pubAcc_structMsg_display", null, str);
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      ChatFragment.a(false);
     }
+    if (paramInt2 == 0) {}
+    do
+    {
+      return;
+      achb.a(this.a);
+    } while (achb.a(this.a) == null);
+    paramString = new Intent(achb.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", achb.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    achb.a(this.a).startActivity(paramString);
+    achb.a(this.a).finish();
   }
 }
 

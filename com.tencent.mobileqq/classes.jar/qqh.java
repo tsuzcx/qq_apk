@@ -16,7 +16,7 @@ public class qqh
     ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
     ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
     if (paramList.isEmpty()) {
-      QQToast.a(this.a.getActivity(), 2131719044, 0).a();
+      QQToast.a(this.a.getActivity(), 2131719056, 0).a();
     }
   }
 }

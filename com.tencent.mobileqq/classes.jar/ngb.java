@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class ngb
-  implements bcgo
+  implements bckx
 {
   ngb(nga paramnga) {}
   

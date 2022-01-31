@@ -1,12 +1,23 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 public class wvd
 {
+  public int a;
+  public final long a;
   public final String a;
-  public final www a;
+  public boolean a;
+  public String b = "";
   
-  public wvd(www paramwww, String paramString)
+  public wvd(String paramString)
   {
-    this.jdField_a_of_type_Www = paramwww;
+    this.jdField_a_of_type_Int = 1000;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public ErrorMessage a()
+  {
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
 }
 

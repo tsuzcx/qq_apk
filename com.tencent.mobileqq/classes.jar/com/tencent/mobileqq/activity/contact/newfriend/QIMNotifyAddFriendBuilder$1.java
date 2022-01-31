@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahii;
-import alvf;
-import avqp;
+import ahmx;
+import alzu;
+import avuy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QIMNotifyAddFriendBuilder$1
   implements Runnable
 {
-  public QIMNotifyAddFriendBuilder$1(ahii paramahii) {}
+  public QIMNotifyAddFriendBuilder$1(ahmx paramahmx) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Alvf.b(((avqp)this.this$0.jdField_a_of_type_Avqe).a);
+    this.this$0.jdField_a_of_type_Alzu.b(((avuy)this.this$0.jdField_a_of_type_Avun).a);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new QIMNotifyAddFriendBuilder.1.1(this));
   }
 }

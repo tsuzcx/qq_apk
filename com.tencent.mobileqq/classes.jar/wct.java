@@ -1,31 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class wct
-  extends avqs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wct(QQStoryMainController paramQQStoryMainController) {}
+  public wct(QGSettingFragment paramQGSettingFragment) {}
   
-  protected void a(Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    wre localwre;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((nan)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + nan.a(paramObject));
-      }
-      localwre = (wre)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localwre == null);
-    localwre.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    QGSettingFragment.c(paramBoolean);
   }
 }
 

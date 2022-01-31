@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import aklc;
-import aleb;
+import akpr;
+import aliq;
 
 public class ApolloStoreStabilityReportManager$1
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$1(aklc paramaklc) {}
+  public ApolloStoreStabilityReportManager$1(akpr paramakpr) {}
   
   public void run()
   {
-    aleb.a(null);
-    aklc.a(this.this$0, System.currentTimeMillis());
+    aliq.a(null);
+    akpr.a(this.this$0, System.currentTimeMillis());
   }
 }
 

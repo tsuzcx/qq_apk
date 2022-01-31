@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import android.app.Activity;
-import atrd;
+import atvm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,17 +10,17 @@ import java.lang.ref.WeakReference;
 public class LoginUserGuideHelper$GuideRunnable
   implements Runnable
 {
-  private final atrd jdField_a_of_type_Atrd;
+  private final atvm jdField_a_of_type_Atvm;
   private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   private final boolean jdField_a_of_type_Boolean;
   private final WeakReference<QQAppInterface> b;
   
-  public LoginUserGuideHelper$GuideRunnable(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, atrd paramatrd)
+  public LoginUserGuideHelper$GuideRunnable(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, atvm paramatvm)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     this.b = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Atrd = paramatrd;
+    this.jdField_a_of_type_Atvm = paramatvm;
   }
   
   public void run()
@@ -36,7 +36,7 @@ public class LoginUserGuideHelper$GuideRunnable
     if (this.jdField_a_of_type_Boolean) {
       ThreadManager.excute(new LoginUserGuideHelper.GuideRunnable.1(this, localQQAppInterface), 16, null, false);
     }
-    LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Atrd);
+    LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Atvm);
   }
 }
 

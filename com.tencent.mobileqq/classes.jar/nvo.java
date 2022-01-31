@@ -2,12 +2,12 @@ import android.graphics.Bitmap;
 import com.tencent.image.DownloadParams;
 
 final class nvo
-  extends bcuq
+  extends bcyz
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
-    bdjc.a(paramDownloadParams, 40);
+    bdnl.a(paramDownloadParams, 40);
     return paramDownloadParams;
   }
 }

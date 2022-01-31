@@ -1,13 +1,13 @@
 package com.tencent.open.business.base;
 
-import bfio;
+import bfmx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OpenConfig$1
   implements Runnable
 {
-  public OpenConfig$1(bfio parambfio) {}
+  public OpenConfig$1(bfmx parambfmx) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class OpenConfig$1
     try
     {
       this.this$0.a = new JSONObject(str);
-      bfio.a(this.this$0, true);
+      bfmx.a(this.this$0, true);
       return;
     }
     catch (JSONException localJSONException) {}

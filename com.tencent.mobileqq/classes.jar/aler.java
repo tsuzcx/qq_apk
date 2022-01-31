@@ -1,44 +1,102 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-final class aler
-  implements alev
+public class aler
 {
-  aler(int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public final HashMap<Integer, alet> a;
+  public final List<alet> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<ales> b;
+  public long c;
+  public String c;
+  public List<ales> c;
+  public String d;
+  public String e;
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public aler()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt > 999999) {
+      return String.valueOf(999999) + "+";
     }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+    return String.valueOf(paramInt);
+  }
+  
+  public static String b(int paramInt)
+  {
+    if (paramInt > 99999) {
+      return String.valueOf(99999) + "+";
+    }
+    return String.valueOf(paramInt);
+  }
+  
+  public static String c(int paramInt)
+  {
+    if (paramInt > 9999) {
+      return String.valueOf(9999) + "+";
+    }
+    return String.valueOf(paramInt);
+  }
+  
+  public void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
       return;
     }
-    try
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    label40:
+    ales localales;
+    alet localalet;
+    for (;;)
     {
-      paramQQAppInterface = alep.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
+      if (localIterator.hasNext())
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
+        localales = (ales)localIterator.next();
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localales.jdField_a_of_type_Long))))
+        {
+          if (localales.jdField_a_of_type_Short > 4) {
+            break label165;
+          }
+          localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+          if (localalet != null)
+          {
+            localalet.c += 1;
+            this.jdField_b_of_type_Int += 1;
+          }
+        }
       }
     }
-    catch (Exception paramQQAppInterface)
+    for (;;)
     {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
+      if (this.c == null) {
+        this.c = new ArrayList();
+      }
+      this.c.add(localales);
+      break label40;
+      break;
+      label165:
+      localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localales.jdField_a_of_type_Short));
+      if (localalet != null)
+      {
+        localalet.c += localales.f;
+        this.jdField_b_of_type_Int += localales.f;
+      }
     }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
-    }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    akrg.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

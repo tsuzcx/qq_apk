@@ -1,8 +1,8 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
+import alud;
 import android.app.Activity;
-import bepp;
+import bety;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqmini.sdk.core.model.InnerShareData;
 
@@ -13,10 +13,10 @@ class ShareProxyImpl$5
   
   public void run()
   {
-    bepp localbepp = new bepp(this.val$activity);
-    localbepp.a(alpo.a(2131703114));
-    localbepp.show();
-    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbepp), 128, null, true);
+    bety localbety = new bety(this.val$activity);
+    localbety.a(alud.a(2131703126));
+    localbety.show();
+    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbety), 128, null, true);
   }
 }
 

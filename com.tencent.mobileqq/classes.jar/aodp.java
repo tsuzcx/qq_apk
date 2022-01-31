@@ -1,33 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public class aodp
-  implements Handler.Callback
+class aodp
+  implements aodj
 {
-  public aodp(SearchResultActivity paramSearchResultActivity) {}
+  aodp(aodl paramaodl) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      SearchResultActivity.a(this.a);
-      continue;
-      SearchResultActivity.b(this.a);
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      QQToast.a(this.a, 2131694766, 0).b(this.a.getTitleBarHeight());
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-    }
+    aodl.a(this.a, aodl.a(this.a).inflate());
+    aodl.a(this.a).setOnClickListener(new aodq(this));
+    ((TextView)aodl.a(this.a).findViewById(2131365256)).setOnClickListener(new aodr(this));
+    azqs.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 

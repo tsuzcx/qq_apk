@@ -38,7 +38,7 @@ public class rgx
     this.jdField_a_of_type_Qhj.b(3);
     if (this.jdField_a_of_type_AndroidViewView.getWidth() > 0)
     {
-      this.jdField_a_of_type_Qhj.showAsDropDown(this.jdField_a_of_type_AndroidViewView, -bdkf.a(6.0F), -bdkf.a(10.0F));
+      this.jdField_a_of_type_Qhj.showAsDropDown(this.jdField_a_of_type_AndroidViewView, -bdoo.a(6.0F), -bdoo.a(10.0F));
       return;
     }
     this.jdField_a_of_type_AndroidViewView.post(new VideoFeedsRedPacketShareController.2(this));
@@ -50,7 +50,7 @@ public class rgx
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     int i;
     int j;
-    if ((a(paramVideoInfo)) && (bjxj.o()))
+    if ((a(paramVideoInfo)) && (bkbq.o()))
     {
       i = 1;
       if ((this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) || (this.jdField_b_of_type_AndroidViewView.getVisibility() != 0)) {
@@ -65,7 +65,7 @@ public class rgx
       if ((paramVideoInfo.c) || (i == 0) || (TextUtils.isEmpty(paramVideoInfo.u)) || (k != 0) || (j == 0)) {
         break label122;
       }
-      bjxj.e();
+      bkbq.e();
       a();
       this.jdField_b_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     }

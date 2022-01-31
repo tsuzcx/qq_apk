@@ -1,41 +1,57 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abyb
-  extends bfvh
+class abyb
+  extends abxz
 {
-  public abyb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public abyb(abwu paramabwu, long paramLong)
   {
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    super(paramabwu, 0, paramLong);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
     {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
-        if (AddFriendVerifyActivity.a(this.a) != null)
+      double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Float;
+      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Float;
+      double d5 = paramSosoLbsInfo.a.e;
+      paramSosoLbsInfo = new JSONObject();
+      try
+      {
+        paramSosoLbsInfo.put("latitude", d1);
+        paramSosoLbsInfo.put("longitude", d2);
+        paramSosoLbsInfo.put("speed", d3);
+        paramSosoLbsInfo.put("accuracy", d4);
+        paramSosoLbsInfo.put("altitude", d5);
+        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
+        paramSosoLbsInfo.put("horizontalAccuracy", d4);
+        acab.a(this.jdField_a_of_type_Abwu, paramSosoLbsInfo);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
         {
-          str = AddFriendVerifyActivity.a(this.a).getText().toString();
-          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
-            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
           }
         }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
-      return;
-    }
-    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
+    acab.a(this.jdField_a_of_type_Abwu, paramInt, "error " + paramInt);
   }
 }
 

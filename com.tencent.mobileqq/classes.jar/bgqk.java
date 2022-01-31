@@ -1,19 +1,6 @@
-class bgqk
-  implements bgqi
+public abstract interface bgqk<T>
 {
-  bgqk(bgqj parambgqj) {}
-  
-  public void a(int paramInt, String paramString, bgqg parambgqg)
-  {
-    if ((paramInt == 0) && (parambgqg != null))
-    {
-      if (this.a.isRuntimeLoaderValid(parambgqg)) {
-        this.a.onRuntimeReady();
-      }
-      return;
-    }
-    this.a.onRuntimeFail(paramInt, paramString);
-  }
+  public abstract T a(bgql parambgql);
 }
 
 

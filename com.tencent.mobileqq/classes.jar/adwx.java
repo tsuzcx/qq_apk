@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.DialogInterface.OnClickListener;
 
-public class adwx
-  implements DialogInterface.OnDismissListener
+class adwx
+  implements DialogInterface.OnClickListener
 {
-  public adwx(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  adwx(adws paramadws) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    this.a.a.show();
+    this.a.b = false;
+    adws.c(this.a);
   }
 }
 

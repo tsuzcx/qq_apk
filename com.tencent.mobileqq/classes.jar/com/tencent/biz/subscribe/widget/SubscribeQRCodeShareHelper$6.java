@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
 import android.content.Intent;
-import arum;
+import aryv;
 import java.io.File;
 import java.net.URI;
-import yjk;
+import ynx;
 
 public class SubscribeQRCodeShareHelper$6
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$6(yjk paramyjk) {}
+  public SubscribeQRCodeShareHelper$6(ynx paramynx) {}
   
   public void run()
   {
-    if (yjk.a(this.this$0))
+    if (ynx.a(this.this$0))
     {
-      String str = yjk.a(this.this$0, yjk.a(this.this$0));
+      String str = ynx.a(this.this$0, ynx.a(this.this$0));
       File localFile = new File(str);
       Intent localIntent = new Intent();
       localIntent.putExtra("forward_type", 1);
@@ -30,7 +30,7 @@ public class SubscribeQRCodeShareHelper$6
       localIntent.putExtra("filePath", str);
       localIntent.putExtra("shareQQType", 13);
       localIntent.putExtra("reqType", 1);
-      arum.a(yjk.a(this.this$0), localIntent, 21);
+      aryv.a(ynx.a(this.this$0), localIntent, 21);
     }
   }
 }

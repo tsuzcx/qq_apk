@@ -1,60 +1,13 @@
-import android.util.SparseArray;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class alau
-  implements aklu
+  implements aljj
 {
-  alau(alap paramalap, int paramInt, int[] paramArrayOfInt, List paramList, AppInterface paramAppInterface, JSONArray paramJSONArray, String paramString) {}
+  alau(alas paramalas, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
   
-  public void a(boolean paramBoolean, aklt paramaklt)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    alap.a(this.jdField_a_of_type_Alap).remove(this.jdField_a_of_type_Int);
-    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc onCheckFinish success:" + paramBoolean);
-    if (paramBoolean)
-    {
-      i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        paramaklt = akll.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
-        if (paramaklt != null) {
-          this.jdField_a_of_type_JavaUtilList.add(paramaklt);
-        }
-        i += 1;
-      }
-      akln.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new alav(this), this.jdField_a_of_type_JavaUtilList, false, null);
-      return;
-    }
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      paramaklt = akll.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
-      int j;
-      if (paramaklt != null)
-      {
-        alap localalap = this.jdField_a_of_type_Alap;
-        int k = paramaklt.b;
-        if (paramaklt.a())
-        {
-          j = 0;
-          label167:
-          paramaklt = alap.a(localalap, 8, String.valueOf(k), j);
-          this.jdField_a_of_type_OrgJsonJSONArray.put(paramaklt);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        j = 2;
-        break label167;
-        paramaklt = alap.a(this.jdField_a_of_type_Alap, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramaklt);
-      }
-    }
-    this.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, alpo.a(2131700870), this.jdField_a_of_type_OrgJsonJSONArray);
+    alas.a(this.jdField_a_of_type_Alas, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
   }
 }
 

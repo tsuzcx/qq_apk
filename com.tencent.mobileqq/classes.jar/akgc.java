@@ -1,18 +1,38 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
 class akgc
-  implements bhpo
+  implements akfb
 {
-  akgc(akfy paramakfy) {}
+  akgc(akga paramakga, String paramString) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt != 0) {
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akga.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
     }
-    this.a.d();
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

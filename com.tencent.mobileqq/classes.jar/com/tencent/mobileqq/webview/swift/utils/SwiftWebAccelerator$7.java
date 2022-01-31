@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import befo;
+import bejx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
@@ -18,7 +18,7 @@ public final class SwiftWebAccelerator$7
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine.run cost " + (l - this.a) + "ms.");
     l = System.currentTimeMillis();
-    synchronized (befo.a)
+    synchronized (bejx.a)
     {
       if (WebViewPluginEngine.a == null)
       {

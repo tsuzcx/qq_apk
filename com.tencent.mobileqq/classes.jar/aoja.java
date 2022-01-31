@@ -1,40 +1,40 @@
-import org.json.JSONObject;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
 public class aoja
+  implements View.OnTouchListener
 {
-  private int a;
+  public aoja(ConfessPlugin paramConfessPlugin) {}
   
-  public static aoja a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    switch (paramMotionEvent.getAction())
     {
-      aoja localaoja = new aoja();
-      localaoja.a = new JSONObject(paramString).optInt("open_don_disturb", 0);
-      return localaoja;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      return false;
+      if ((paramView instanceof TextView))
+      {
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
+        continue;
+        if ((paramView instanceof TextView))
+        {
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+        }
+      }
     }
-    return null;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return super.toString() + " showDonDisturb=" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoja
  * JD-Core Version:    0.7.0.1
  */

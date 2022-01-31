@@ -1,56 +1,19 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
-abstract class blzv<K, V>
-  implements blzw<K, V>, Iterator<Map.Entry<K, V>>
+public class blzv
+  implements View.OnClickListener
 {
-  blzt<K, V> a;
-  blzt<K, V> b;
+  public blzv(AdvancedProviderView paramAdvancedProviderView) {}
   
-  blzv(blzt<K, V> paramblzt1, blzt<K, V> paramblzt2)
+  public void onClick(View paramView)
   {
-    this.a = paramblzt2;
-    this.b = paramblzt1;
-  }
-  
-  private blzt<K, V> a()
-  {
-    if ((this.b == this.a) || (this.a == null)) {
-      return null;
+    paramView = bnpk.a().a();
+    if (paramView.size() > 1) {
+      xsx.a(this.a.a, paramView.get(1));
     }
-    return a(this.b);
-  }
-  
-  abstract blzt<K, V> a(blzt<K, V> paramblzt);
-  
-  public Map.Entry<K, V> a()
-  {
-    blzt localblzt = this.b;
-    this.b = a();
-    return localblzt;
-  }
-  
-  public void a(@NonNull blzt<K, V> paramblzt)
-  {
-    if ((this.a == paramblzt) && (paramblzt == this.b))
-    {
-      this.b = null;
-      this.a = null;
-    }
-    if (this.a == paramblzt) {
-      this.a = b(this.a);
-    }
-    if (this.b == paramblzt) {
-      this.b = a();
-    }
-  }
-  
-  abstract blzt<K, V> b(blzt<K, V> paramblzt);
-  
-  public boolean hasNext()
-  {
-    return this.b != null;
   }
 }
 

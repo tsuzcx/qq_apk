@@ -50,7 +50,7 @@ final class qtf
     else
     {
       label180:
-      if ((paramArrayOfByte != null) && (bjxj.k(paramArrayOfByte)))
+      if ((paramArrayOfByte != null) && (bkbq.k(paramArrayOfByte)))
       {
         if ((paramInt != 0) || (paramBundle.size() <= 0)) {
           break label262;

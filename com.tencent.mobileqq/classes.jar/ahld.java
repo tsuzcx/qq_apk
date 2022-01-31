@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.List;
-import mqq.os.MqqHandler;
-
-public class ahld
-  extends amab
+public abstract interface ahld
 {
-  public ahld(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    if ((paramBoolean) && (paramList != null)) {
-      this.a.a(paramList);
-    }
-  }
+  public abstract void a(ahok paramahok, int paramInt);
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aoxe;
-import aoxf;
-import aoxh;
+import apbn;
+import apbo;
+import apbq;
 
 public class DanmakuMeasureManager$1
   implements Runnable
 {
-  public DanmakuMeasureManager$1(aoxe paramaoxe, aoxh paramaoxh, aoxf paramaoxf) {}
+  public DanmakuMeasureManager$1(apbn paramapbn, apbq paramapbq, apbo paramapbo) {}
   
   public void run()
   {
-    aoxe.a(aoxe.a(this.this$0), this.jdField_a_of_type_Aoxh);
-    if (this.jdField_a_of_type_Aoxf != null) {
-      this.jdField_a_of_type_Aoxf.a(this.jdField_a_of_type_Aoxh);
+    apbn.a(apbn.a(this.this$0), this.jdField_a_of_type_Apbq);
+    if (this.jdField_a_of_type_Apbo != null) {
+      this.jdField_a_of_type_Apbo.a(this.jdField_a_of_type_Apbq);
     }
   }
 }

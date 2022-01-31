@@ -76,7 +76,7 @@ public class puy
 {
   private static Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean = { Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false) };
   private static Integer[] jdField_a_of_type_ArrayOfJavaLangInteger;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { alpo.a(2131713193), alpo.a(2131713507), alpo.a(2131713179), alpo.a(2131713226), alpo.a(2131713186), alpo.a(2131713514), alpo.a(2131713368), alpo.a(2131713443), alpo.a(2131713313), alpo.a(2131713136) };
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { alud.a(2131713205), alud.a(2131713519), alud.a(2131713191), alud.a(2131713238), alud.a(2131713198), alud.a(2131713526), alud.a(2131713380), alud.a(2131713455), alud.a(2131713325), alud.a(2131713148) };
   
   static
   {

@@ -1,38 +1,6 @@
-import android.graphics.drawable.Drawable;
-
-class wfj
-  implements appt
+public abstract interface wfj
 {
-  wfj(wfh paramwfh) {}
-  
-  public void a(appw paramappw)
-  {
-    if (((paramappw instanceof apur)) && (wfh.a(this.a) != null)) {
-      ((apur)paramappw).a(wfh.a(), wfh.a(this.a), wfh.a(this.a), null);
-    }
-  }
-  
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (wfh.a(this.a) != null) {
-      baiy.a(wfh.a(this.a));
-    }
-  }
-  
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public abstract boolean a(String paramString);
 }
 
 

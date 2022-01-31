@@ -1,81 +1,213 @@
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
 
-final class bguj
-  implements DownloaderProxy.DownloadListener
+public class bguj
+  extends bgug
 {
-  bguj(MiniAppInfo paramMiniAppInfo, bgum parambgum, String paramString1, String paramString2, bgun parambgun, int paramInt) {}
+  public int a;
+  private long jdField_a_of_type_Long;
+  private bgun jdField_a_of_type_Bgun;
+  public boolean a;
+  private int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void onDownloadFailed(int paramInt, String paramString)
+  public bguj(bgun parambgun)
   {
-    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 614, null, null, null, paramInt, "1", 0L, null);
-    if (this.jdField_a_of_type_Bgum != null)
-    {
-      this.jdField_a_of_type_Bgum.onInitGpkgInfo(2010, null, "download sub pkg fail");
-      QMLog.d("[minigame] GpkgManager", "onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Bgun = parambgun;
   }
   
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
+  public void a(bguf parambguf)
   {
-    if (this.jdField_a_of_type_Bgum != null)
+    if (parambguf == null) {}
+    label4:
+    MiniAppInfo localMiniAppInfo;
+    label61:
+    label223:
+    do
     {
-      float f = paramFloat;
-      long l = paramLong2;
-      if (paramLong2 == 0L)
+      bgls localbgls;
+      Object localObject;
+      int j;
+      do
       {
-        f = paramFloat;
-        l = paramLong2;
-        if (this.jdField_a_of_type_Int > 0)
+        do
         {
-          paramLong2 = this.jdField_a_of_type_Int;
-          f = paramFloat;
-          l = paramLong2;
-          if (paramLong2 > paramLong1)
+          do
           {
-            f = (float)paramLong1 * 1.0F / (float)paramLong2;
-            l = paramLong2;
+            return;
+            QMLog.i("minisdk-start_RuntimeState", "onStateChange message:" + parambguf.jdField_a_of_type_Int);
+            localbgls = this.jdField_a_of_type_Bgun.getRuntime();
+            localMiniAppInfo = this.jdField_a_of_type_Bgun.getMiniAppInfo();
+            if (localMiniAppInfo != null)
+            {
+              i = localMiniAppInfo.getReportType();
+              if ((localbgls == null) || (localbgls.a() == null)) {
+                break label223;
+              }
+            }
+            for (localObject = bgml.a(localbgls).a();; localObject = null) {
+              switch (parambguf.jdField_a_of_type_Int)
+              {
+              default: 
+                return;
+              case 3: 
+                if (!this.jdField_a_of_type_Boolean) {
+                  break label4;
+                }
+                this.jdField_b_of_type_Boolean = true;
+                return;
+                i = 0;
+                break label61;
+              }
+            }
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+            if (localMiniAppInfo != null)
+            {
+              parambguf = localMiniAppInfo.appId;
+              if (localMiniAppInfo == null) {
+                break label321;
+              }
+            }
+            for (localObject = localMiniAppInfo.name;; localObject = "")
+            {
+              QMLog.i("minisdk-start_RuntimeState", "[" + parambguf + "][" + (String)localObject + "] 启动(MiniActivity onCreate)");
+              bhck.a(localMiniAppInfo, 24, String.valueOf(i));
+              this.jdField_a_of_type_Int = 0;
+              return;
+              parambguf = "";
+              break;
+            }
+            this.jdField_a_of_type_Int = 1;
+            localObject = new StringBuilder().append("--- report load appid:");
+            if (localMiniAppInfo != null) {}
+            for (parambguf = localMiniAppInfo.appId;; parambguf = Integer.valueOf(0))
+            {
+              QMLog.i("minisdk-start_RuntimeState", parambguf);
+              bhbs.a("2load", null, null, localMiniAppInfo);
+              return;
+            }
+            this.jdField_a_of_type_Int = 2;
+          } while (this.d);
+          this.d = true;
+          long l1;
+          long l2;
+          if ((localbgls != null) && (localMiniAppInfo != null))
+          {
+            QMLog.i("minisdk-start_RuntimeState", "--- report show firstframe appid:" + localMiniAppInfo.appId);
+            bhbs.a("2launch", "first_frame", (String)localObject, localMiniAppInfo);
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              break label578;
+            }
+            parambguf = localMiniAppInfo.launchParam.entryPath;
+            bhck.a(localMiniAppInfo, 21, parambguf, null, null, 0);
+            l1 = System.currentTimeMillis();
+            l2 = this.jdField_a_of_type_Long;
+            j = this.jdField_b_of_type_Int;
+            if (i != 0) {
+              break label584;
+            }
           }
+          for (parambguf = "0";; parambguf = "1")
+          {
+            bhck.a(localMiniAppInfo, 1043, null, null, null, j, parambguf, l1 - l2, null);
+            parambguf = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+            if ((this.c) && (parambguf.isDebugVersion())) {
+              bgrm.a(AppLoaderFactory.g().getMiniAppEnv().getContext(), "进入native小程序,仅debug可见", 0).a();
+            }
+            parambguf.notifyMiniAppInfo(1, localMiniAppInfo);
+            return;
+            parambguf = (bguf)localObject;
+            break;
+          }
+        } while (localMiniAppInfo == null);
+        QMLog.i("minisdk-start_RuntimeState", "--- report bring_to_front appid:" + localMiniAppInfo.appId);
+        bhbs.a("2show", "bring_to_front", (String)localObject, localMiniAppInfo);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
+        for (parambguf = localMiniAppInfo.launchParam.entryPath;; parambguf = (bguf)localObject)
+        {
+          bhck.a(localMiniAppInfo, 1, parambguf, null, null, 0);
+          if (localbgls == null) {
+            break;
+          }
+          QMLog.i("minisdk-start_RuntimeState", "--- report click_resume appid:" + localMiniAppInfo.appId);
+          bhbs.a("2launch", "click_resume", (String)localObject, localMiniAppInfo);
+          bhck.a(localMiniAppInfo, 21, parambguf, null, null, 0);
+          return;
+        }
+      } while (localMiniAppInfo == null);
+      QMLog.i("minisdk-start_RuntimeState", "--- report launch fail appid:" + localMiniAppInfo.appId);
+      bhbs.a("2launch_fail", "flutter_sdk_fail", (String)localObject, localMiniAppInfo);
+      return;
+      bhbs.a("2close", "loading_page", null, localMiniAppInfo);
+      return;
+      bhbs.a("2close", "inner_page", (String)localObject, localMiniAppInfo);
+      if ((this.jdField_a_of_type_Bgun.isLoadSucceed()) && (localbgls != null) && (localbgls.b()))
+      {
+        bhck.a(localMiniAppInfo, 1025, "1");
+        return;
+      }
+      bhck.a(localMiniAppInfo, 1026, "1");
+      return;
+      bhbs.a("2unload", null, (String)localObject, localMiniAppInfo);
+      return;
+      bhbs.a("2hide", null, (String)localObject, localMiniAppInfo);
+      bhck.a(localMiniAppInfo, 20, "" + i);
+      return;
+      if (i == 1)
+      {
+        if (localMiniAppInfo == null) {
+          break label955;
+        }
+        if (this.jdField_a_of_type_Int != 0) {
+          break label931;
+        }
+        bhcn.a(localMiniAppInfo, "1", null, "load_fail", "loading_page_back_press");
+      }
+      while (this.d)
+      {
+        bhbs.a("2back_key", "inner_page", (String)localObject, localMiniAppInfo);
+        return;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          bhcn.a(localMiniAppInfo, "1", null, "show_fail", "loading_page_back_press");
+          continue;
+          QMLog.e("minisdk-start_RuntimeState", "doOnBackPressed gameConfig=null");
         }
       }
-      this.jdField_a_of_type_Bgum.onDownloadGpkgProgress(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f, l);
-    }
-  }
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
-  {
-    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 614, "1");
-    paramString = bgrb.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    paramMap = new File(this.jdField_a_of_type_JavaLangString);
-    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 615, "1");
-    boolean bool = bgjt.a(paramMap.getAbsolutePath(), paramString, this.b, true);
-    paramMap = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-    if (bool)
-    {
-      paramInt = 0;
-      bgyd.a(paramMap, 616, null, null, null, paramInt, "1", 0L, null);
-      QMLog.d("[minigame] GpkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + this.b);
-      if (!bool) {
-        break label166;
-      }
-      if (this.jdField_a_of_type_Bgum != null) {
-        this.jdField_a_of_type_Bgum.onInitGpkgInfo(0, this.jdField_a_of_type_Bgun, "download sub pkg and unpack succeed");
-      }
-    }
-    label166:
-    while (this.jdField_a_of_type_Bgum == null)
-    {
+      bhbs.a("2back_key", "loading_page", (String)localObject, localMiniAppInfo);
       return;
-      paramInt = 1;
-      break;
-    }
-    this.jdField_a_of_type_Bgum.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail");
+      if (parambguf.jdField_a_of_type_JavaLangObject != null) {}
+      for (int i = ((Integer)parambguf.jdField_a_of_type_JavaLangObject).intValue();; i = 0)
+      {
+        j = i;
+        if (i >= 0) {
+          j = 0;
+        }
+        this.jdField_b_of_type_Int = j;
+        return;
+      }
+      if (localMiniAppInfo == null) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1));
+    label321:
+    label578:
+    label584:
+    bhcn.a(localMiniAppInfo, "1", null, "load_fail", "loading_page_kill");
+    label931:
+    label955:
+    bhbs.a("2launch_fail", "loading_page_kill", null, localMiniAppInfo);
+    return;
+    QMLog.e("minisdk-start_RuntimeState", "doOnDestroy kill self gameConfig=null");
   }
 }
 

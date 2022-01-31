@@ -1,42 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class afny
-  implements afpr
+class afny
+  implements arsg
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afny(afnq paramafnq, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bdzy parambdzy) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 0;
-    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (paramQQAppInterface.items != null)
-      {
-        i = j;
-        if (paramQQAppInterface.items.size() != 0)
-        {
-          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
-            break label85;
-          }
-          if (paramQQAppInterface.items.size() != 1) {
-            break label74;
-          }
-          i = 6;
-        }
-      }
+    paramView = new Bundle();
+    paramView.putString(bdun.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(bdun.c, this.b);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+      paramView.putString(bdun.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
     }
-    return i;
-    label74:
-    paramQQAppInterface.items.size();
-    return 7;
-    label85:
-    return 8;
+    bdun.a(this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afnq.jdField_a_of_type_AndroidContentContext, paramView);
+    String str = this.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
+    for (paramView = "0";; paramView = "1")
+    {
+      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bdzy.a(this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
+      return;
+    }
   }
 }
 

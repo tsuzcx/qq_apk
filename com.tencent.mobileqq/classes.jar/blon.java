@@ -1,56 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
-
-public class blon
-  implements View.OnClickListener
+public final class blon
+  implements baug
 {
-  protected int a;
-  protected View a;
-  protected bkil a;
-  protected CaptureModeController a;
-  protected boolean a;
+  public blon(bloo parambloo, bloh parambloh, String paramString) {}
   
-  public blon(CaptureModeController paramCaptureModeController)
+  public void onResp(bavf parambavf)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
-    this.jdField_a_of_type_Bkil = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bkil;
+    boolean bool2 = true;
+    bliu localbliu;
+    if ((parambavf != null) && (parambavf.a == 0))
+    {
+      bool1 = true;
+      bljn.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
+      if (this.jdField_a_of_type_Bloo != null) {
+        this.jdField_a_of_type_Bloo.a(this.jdField_a_of_type_Bloh, bool1, this.jdField_a_of_type_JavaLangString);
+      }
+      if (parambavf != null)
+      {
+        localbliu = bliu.a();
+        if (parambavf.a != 0) {
+          break label113;
+        }
+      }
+    }
+    label113:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localbliu.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bloh.a(), parambavf.b, parambavf.h);
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

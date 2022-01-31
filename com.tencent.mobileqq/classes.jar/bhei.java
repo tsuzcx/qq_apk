@@ -1,25 +1,76 @@
-import android.os.SystemClock;
+import com.tencent.qqmini.sdk.core.widget.CoverView;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
-class bhei
-  implements bhay
+public class bhei
+  implements bgmc<CoverView>
 {
-  long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int = 0;
+  private bglv jdField_a_of_type_Bglv;
+  private CoverView jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCoverView;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
   
-  bhei(bheh parambheh, bhcv parambhcv, long paramLong) {}
-  
-  public void onStateChanged()
+  public static bhei a(bglv parambglv)
   {
-    if (this.jdField_a_of_type_Bhcv != null) {}
-    for (bhaz localbhaz = this.jdField_a_of_type_Bhcv.getCurrState();; localbhaz = null)
+    bhei localbhei = new bhei();
+    localbhei.jdField_a_of_type_Bglv = parambglv;
+    return localbhei;
+  }
+  
+  public CoverView a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.c = paramInt;
+    return (CoverView)this.jdField_a_of_type_Bglv.a(this);
+  }
+  
+  public CoverView a(bgls parambgls)
+  {
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer))
     {
-      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.e)) {
-        this.jdField_a_of_type_Bheh.a(this.jdField_a_of_type_Bhcv, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+      QMLog.d("CoverViewAction", "Page is invalid");
+      return null;
     }
+    parambgls = (AppBrandPageContainer)parambgls;
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      QMLog.e("CoverViewAction", "Unknown action");
+      for (;;)
+      {
+        return null;
+        return parambgls.a(this.c);
+        parambgls.a(this.b, this.c, this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCoverView, this.jdField_a_of_type_Boolean);
+      }
+      parambgls.a(this.c);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = 3;
+    this.c = paramInt;
+    this.jdField_a_of_type_Bglv.a(this);
+  }
+  
+  public void a(int paramInt1, int paramInt2, CoverView paramCoverView)
+  {
+    a(paramInt1, paramInt2, paramCoverView, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, CoverView paramCoverView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = 2;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCoverView = paramCoverView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bglv.a(this);
   }
 }
 

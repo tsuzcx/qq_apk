@@ -1,54 +1,30 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+
 public class xmv
+  extends RecyclerView.ViewHolder
 {
-  public static String a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label69;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append(localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label69:
-        paramInt = 2;
-      }
-    }
-  }
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RoundCornerImageView a;
+  public boolean a;
+  public RelativeLayout b;
+  public TextView b;
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public xmv(View paramView)
   {
-    if (paramLong <= 0L)
-    {
-      xmh.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
-      return;
-    }
-    xmw localxmw = new xmw();
-    localxmw.jdField_b_of_type_JavaLangString = paramString;
-    localxmw.c = paramInt;
-    localxmw.jdField_b_of_type_Long = paramLong;
-    localxmw.d = 1;
-    ung.a().a(localxmw, null);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376838));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131376834));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363120));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376835));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376837));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376836));
   }
 }
 

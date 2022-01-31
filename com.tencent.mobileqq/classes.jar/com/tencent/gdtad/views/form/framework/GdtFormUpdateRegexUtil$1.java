@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.form.framework;
 
-import aapn;
+import aauc;
 import java.lang.ref.WeakReference;
 
 public final class GdtFormUpdateRegexUtil$1
@@ -10,7 +10,7 @@ public final class GdtFormUpdateRegexUtil$1
   
   public void run()
   {
-    aapn.b(this.a);
+    aauc.b(this.a);
   }
 }
 

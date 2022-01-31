@@ -1,20 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-class bfld
-  implements View.OnClickListener
+public class bfld
+  implements ValueCallback<String>
 {
-  bfld(bflc parambflc, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public bfld(DownloadInterfaceNew.2 param2) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bflc, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bflc.dismiss();
-    }
+    bflp.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
   }
 }
 

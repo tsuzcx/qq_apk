@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.data;
 
-import bkvr;
+import bkzy;
 
 public class AEMaterialManager$1
   implements Runnable
 {
-  public AEMaterialManager$1(bkvr parambkvr) {}
+  public AEMaterialManager$1(bkzy parambkzy) {}
   
   public void run()
   {
-    bkvr.a(this.this$0);
+    bkzy.a(this.this$0);
   }
 }
 

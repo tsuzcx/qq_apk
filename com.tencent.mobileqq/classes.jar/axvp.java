@@ -1,185 +1,289 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
-import com.tencent.richmediabrowser.presenter.IProvider;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.os.MqqHandler;
+import java.nio.ByteBuffer;
 
-class axvp
-  implements ShareActionSheet.OnItemClickListener
+@TargetApi(18)
+public class axvp
 {
-  axvp(axvm paramaxvm, AIOFileVideoData paramAIOFileVideoData) {}
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("HWAudioEncoder", 0);
+  axvr jdField_a_of_type_Axvr;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public axvp()
   {
-    if (paramActionSheetItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Axvm.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new axvq(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+  }
+  
+  private void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = new MediaFormat();
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setString("mime", "audio/mp4a-latm");
     int i;
-    switch (paramActionSheetItem.action)
+    if (azib.o == 16)
     {
-    default: 
-      i = -1;
+      i = 1;
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("channel-count", i);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("sample-rate", this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", azib.n);
+      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("max-input-size", AudioCapture.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      paramString = new File(this.jdField_a_of_type_JavaLangString);
+      if (!paramString.exists()) {
+        bdhb.c(paramString.getAbsolutePath());
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_JavaLangString, 0);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+      this.jdField_b_of_type_Long = 0L;
+      if (azib.p != 2) {
+        break label239;
+      }
     }
-    for (;;)
+    label239:
+    for (int j = 16;; j = 8)
     {
-      azmj.b(null, "dc00898", "", "", "0X8009EFA", "0X8009EFA", i, 0, "", "", "", "");
+      this.jdField_a_of_type_Double = (i * (j * this.jdField_b_of_type_Int) / 8 / Math.pow(10.0D, 6.0D));
       return;
-      int j = 1;
-      i = j;
-      if (RichMediaBrowserManager.getInstance().getProvider() != null)
+      i = 2;
+      break;
+    }
+  }
+  
+  private void d() {}
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    long l = SystemClock.elapsedRealtimeNanos();
+    a(new byte[0], l, true);
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if ((this.jdField_a_of_type_AndroidMediaMediaMuxer != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      if (QLog.isColorLevel()) {
+        QLog.d("HWAudioEncoder", 2, "MediaMuxer stop.");
+      }
+      if (this.jdField_a_of_type_Axvr != null) {
+        this.jdField_a_of_type_Axvr.h();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (this.jdField_a_of_type_Axvr != null) {
+        this.jdField_a_of_type_Axvr.i();
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(axvr paramaxvr)
+  {
+    this.jdField_a_of_type_Axvr = paramaxvr;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString).sendToTarget();
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      paramLong = SystemClock.elapsedRealtimeNanos();
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
+  {
+    long l = System.currentTimeMillis();
+    int i = (int)(paramArrayOfByte.length / this.jdField_a_of_type_Double);
+    this.jdField_b_of_type_Long += i;
+    if (QLog.isColorLevel()) {
+      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame audioData=%s mAudioDataSize=%s frameTime=%s mLastAudioFrameTime=%s timestampNanos=%s endOfStream=&s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(i), Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
+    }
+    i = 0;
+    Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+    int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame inputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+    }
+    if (j >= 0)
+    {
+      localObject = localObject[j];
+      ((ByteBuffer)localObject).clear();
+      ((ByteBuffer)localObject).put(paramArrayOfByte);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(j, 0, paramArrayOfByte.length, this.jdField_b_of_type_Long, 0);
+      label205:
+      i = 0;
+      paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    }
+    label216:
+    do
+    {
+      for (;;)
       {
-        i = j;
-        if (RichMediaBrowserManager.getInstance().getProvider().isPingBinder())
+        j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+        if (QLog.isColorLevel()) {
+          QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame outputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+        }
+        if (j == -1)
         {
-          paramActionSheetItem = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {}
-          for (boolean bool = true;; bool = false)
+          if (!paramBoolean) {}
+          for (;;)
           {
-            axux.a(this.jdField_a_of_type_Axvm.mContext, paramActionSheetItem, bool);
-            i = j;
-            break;
-          }
-          if ((RichMediaBrowserManager.getInstance().getProvider() == null) || (!RichMediaBrowserManager.getInstance().getProvider().isPingBinder())) {
-            break;
-          }
-          paramActionSheetItem = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {}
-          for (bool = true;; bool = false)
-          {
-            axux.a(this.jdField_a_of_type_Axvm.mContext, paramActionSheetItem, bool);
-            i = -1;
-            break;
-          }
-          i = paramActionSheetItem.uinType;
-          paramActionSheetItem = paramActionSheetItem.uin;
-          if ((RichMediaBrowserManager.getInstance().getProvider() != null) && (RichMediaBrowserManager.getInstance().getProvider().isPingBinder()))
-          {
-            paramShareActionSheet = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
-            if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int != 1) {
-              break label436;
+            if (QLog.isColorLevel()) {
+              QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
             }
-          }
-          label436:
-          for (bool = true;; bool = false)
-          {
-            axux.a(this.jdField_a_of_type_Axvm.mContext, paramShareActionSheet, bool, paramActionSheetItem, i);
-            i = -1;
-            break;
-          }
-          if ((RichMediaBrowserManager.getInstance().getProvider() == null) || (!RichMediaBrowserManager.getInstance().getProvider().isPingBinder())) {
-            break;
-          }
-          RichMediaBrowserManager.getInstance().getProvider().sendFileToPC(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-          azmj.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-          QQToast.a(this.jdField_a_of_type_Axvm.mContext, 2, this.jdField_a_of_type_Axvm.mContext.getString(2131692838), 0).a();
-          i = -1;
-          continue;
-          j = 5;
-          i = j;
-          if (RichMediaBrowserManager.getInstance().getProvider() != null)
-          {
+            return;
+            if (j != -1) {
+              break;
+            }
+            if (!paramBoolean) {
+              break label205;
+            }
+            j = i + 1;
             i = j;
-            if (RichMediaBrowserManager.getInstance().getProvider().isPingBinder())
-            {
-              RichMediaBrowserManager.getInstance().getProvider().saveToWeiyun(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-              QQToast.a(this.jdField_a_of_type_Axvm.mContext, this.jdField_a_of_type_Axvm.mContext.getString(2131692912), 0).a();
-              i = j;
-              continue;
-              if (!CheckPermission.isHasStoragePermission(this.jdField_a_of_type_Axvm.mContext))
-              {
-                CheckPermission.requestStorePermission(this.jdField_a_of_type_Axvm.mContext, null);
-                return;
-              }
-              i = 2;
-              if (new axub().a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData))
-              {
-                paramActionSheetItem = new File(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-                paramShareActionSheet = arni.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-                ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(paramActionSheetItem.getAbsolutePath(), this.jdField_a_of_type_Axvm.jdField_a_of_type_Axuk.a, paramShareActionSheet, false));
-              }
-              else
-              {
-                paramActionSheetItem = new Bundle();
-                float f = 0.0F;
-                if (ailv.class.isInstance(this.jdField_a_of_type_Axvm.jdField_a_of_type_Ailt)) {
-                  f = ((ailv)this.jdField_a_of_type_Axvm.jdField_a_of_type_Ailt).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-                }
-                paramActionSheetItem.putFloat("progress", f);
-                this.jdField_a_of_type_Axvm.jdField_a_of_type_Ailt.h();
-                if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-                  RichMediaBrowserManager.getInstance().getProvider().onFileVideoStatusChange(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, 13, paramActionSheetItem);
-                }
-                this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.n = true;
-                this.jdField_a_of_type_Axvm.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int);
-                this.jdField_a_of_type_Axvm.updateUI();
-                continue;
-                j = 3;
-                i = j;
-                if (RichMediaBrowserManager.getInstance().getProvider() != null)
-                {
-                  i = j;
-                  if (RichMediaBrowserManager.getInstance().getProvider().isPingBinder())
-                  {
-                    RichMediaBrowserManager.getInstance().getProvider().favorite(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-                    i = j;
-                    continue;
-                    paramShareActionSheet = axtu.a().a();
-                    paramActionSheetItem = paramShareActionSheet;
-                    if (TextUtils.isEmpty(paramShareActionSheet)) {
-                      paramActionSheetItem = axtu.a().c();
-                    }
-                    axuy.a(this.jdField_a_of_type_Axvm.mContext, axtu.a().a(), axtu.a().c(), paramActionSheetItem, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.d, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int, false);
-                    i = 6;
-                    continue;
-                    paramActionSheetItem = paramActionSheetItem.argus;
-                    paramShareActionSheet = new Intent();
-                    paramShareActionSheet.putExtra("preResult", paramActionSheetItem);
-                    if (bdec.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.f)) {}
-                    for (paramActionSheetItem = axtu.a().d();; paramActionSheetItem = axtu.a().c())
-                    {
-                      axuy.a(this.jdField_a_of_type_Axvm.mContext, this.jdField_a_of_type_Axvm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e, true, paramActionSheetItem, null, null, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.j, 1, axtu.a().d(), axtu.a().c(), paramShareActionSheet);
-                      azmj.b(null, "dc00898", "", "", "0X800AD47", "0X800AD47", axvm.a(this.jdField_a_of_type_Axvm, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
-                      i = 8;
-                      break;
-                    }
-                    paramActionSheetItem = paramActionSheetItem.argus;
-                    paramShareActionSheet = new Intent();
-                    paramShareActionSheet.putExtra("preResult", paramActionSheetItem);
-                    if (bdec.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.f)) {}
-                    for (paramActionSheetItem = axtu.a().d();; paramActionSheetItem = axtu.a().c())
-                    {
-                      axuy.a(this.jdField_a_of_type_Axvm.mContext, this.jdField_a_of_type_Axvm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e, true, paramActionSheetItem, null, null, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.j, 2, axtu.a().d(), axtu.a().c(), paramShareActionSheet);
-                      azmj.b(null, "dc00898", "", "", "0X800AD48", "0X800AD48", axvm.a(this.jdField_a_of_type_Axvm, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
-                      i = 9;
-                      break;
-                    }
-                    i = 7;
-                    arni.a(this.jdField_a_of_type_Axvm.mContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-                  }
-                }
-              }
+            if (j <= 10) {
+              break;
+            }
+            break label205;
+            j = i + 1;
+            i = j;
+            if (j <= 10) {
+              break label216;
             }
           }
         }
+        if (j == -2)
+        {
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+          this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+            this.jdField_a_of_type_Boolean = true;
+          }
+        }
+        else
+        {
+          if (j != -3) {
+            break label436;
+          }
+          paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        }
       }
+    } while (j < 0);
+    label281:
+    label436:
+    i = 0;
+    localObject = paramArrayOfByte[j];
+    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0) {
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+    }
+    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0) && (this.jdField_a_of_type_Boolean))
+    {
+      ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+      ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+      if (QLog.isColorLevel()) {
+        QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame presentationTimeUs=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs) }));
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs < this.jdField_a_of_type_Long) {
+        break label624;
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, (ByteBuffer)localObject, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
+      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
+        break;
+      }
+      break label281;
+      label624:
+      QLog.e("HWAudioEncoder", 1, "handleAudioFrame audio timestamp revert? throw this frame.");
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvp
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bdee;
-import bepp;
+import bdin;
+import bety;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ public class ReadInJoySelectMemberAQFragment
   extends ReadInJoySelectMemberFragment
 {
   private int jdField_a_of_type_Int;
-  protected bepp a;
+  protected bety a;
   private String jdField_a_of_type_JavaLangString = "";
   oxe jdField_a_of_type_Oxe = new qvj(this);
   public boolean a;
@@ -62,19 +62,19 @@ public class ReadInJoySelectMemberAQFragment
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bepp != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
-      this.jdField_a_of_type_Bepp.c(paramInt1);
-      if (!this.jdField_a_of_type_Bepp.isShowing())
+      this.jdField_a_of_type_Bety.c(paramInt1);
+      if (!this.jdField_a_of_type_Bety.isShowing())
       {
-        this.jdField_a_of_type_Bepp.show();
+        this.jdField_a_of_type_Bety.show();
         this.rightViewText.postDelayed(new ReadInJoySelectMemberAQFragment.1(this, paramInt2), paramInt3);
       }
     }
@@ -86,15 +86,15 @@ public class ReadInJoySelectMemberAQFragment
       return;
     }
     e();
-    if (!bdee.g(getActivity()))
+    if (!bdin.g(getActivity()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("IphoneTitleBarFragment", 2, "network error!");
       }
-      QQToast.a(getActivity(), 1, getString(2131718824), 0).b(this.jdField_a_of_type_Int);
+      QQToast.a(getActivity(), 1, getString(2131718836), 0).b(this.jdField_a_of_type_Int);
       return;
     }
-    a(2131719013, 2131719010, this.jdField_b_of_type_Int);
+    a(2131719025, 2131719022, this.jdField_b_of_type_Int);
     owy.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList, ors.a(), this.jdField_a_of_type_Qvz.b());
   }
   
@@ -111,10 +111,10 @@ public class ReadInJoySelectMemberAQFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131298914);
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(getActivity(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Bety = new bety(getActivity(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(true);
     }
     oxb.a().a(this.jdField_a_of_type_Oxe);
   }
@@ -135,10 +135,10 @@ public class ReadInJoySelectMemberAQFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Bepp != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
-      this.jdField_a_of_type_Bepp.dismiss();
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Bety = null;
     }
     oxb.a().b(this.jdField_a_of_type_Oxe);
     super.onDestroy();

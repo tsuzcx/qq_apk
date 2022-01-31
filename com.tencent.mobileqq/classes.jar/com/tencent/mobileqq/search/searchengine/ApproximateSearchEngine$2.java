@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ayos;
-import aypy;
-import ayql;
+import aytb;
+import ayuh;
+import ayuu;
 import java.util.List;
 
 public class ApproximateSearchEngine$2
   implements Runnable
 {
-  public ApproximateSearchEngine$2(ayos paramayos, ayql paramayql) {}
+  public ApproximateSearchEngine$2(aytb paramaytb, ayuu paramayuu) {}
   
   public void run()
   {
-    List localList = ayos.a(this.this$0, this.a);
-    aypy localaypy = ayos.a(this.this$0);
-    if ((localaypy != null) && (localList != null)) {
-      localaypy.a(localList, 1);
+    List localList = aytb.a(this.this$0, this.a);
+    ayuh localayuh = aytb.a(this.this$0);
+    if ((localayuh != null) && (localList != null)) {
+      localayuh.a(localList, 1);
     }
   }
 }

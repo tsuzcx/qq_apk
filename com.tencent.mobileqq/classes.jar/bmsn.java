@@ -1,27 +1,42 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.widget.XPanelContainer;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
 class bmsn
-  implements URLDrawable.URLDrawableListener
+  implements blxn
 {
-  bmsn(bmsm parambmsm, String paramString1, bmrt parambmrt, ImageView paramImageView, String paramString2) {}
+  bmsn(bmsi parambmsi) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
   {
-    wsv.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    wsv.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bmsm.a(this.jdField_a_of_type_Bmsm).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    bmsm.a(this.jdField_a_of_type_Bmsm, this.jdField_a_of_type_Bmrt, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    if ((paramDynamicTextItem != null) && (paramInt > -1))
+    {
+      paramView = paramDynamicTextItem.a(paramInt);
+      if (paramView != null)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
+        if (!paramView.equals(blxf.a(paramDynamicTextItem.c(), paramInt))) {
+          break label139;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bmsi.a(this.a));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
+        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+        }
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
+          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
+        }
+        return;
+        label139:
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+      }
+    }
+    this.a.a(false);
   }
 }
 

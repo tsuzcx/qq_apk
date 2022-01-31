@@ -1,19 +1,16 @@
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public abstract interface vnm
+class vnm
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  vnm(vnl paramvnl) {}
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
-  
-  public abstract void a(@NonNull weh paramweh, ErrorMessage paramErrorMessage);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
+  }
 }
 
 

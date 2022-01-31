@@ -1,21 +1,25 @@
-class ahgb
-  implements ahgc<T>
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+
+public class ahgb
+  implements View.OnTouchListener
 {
-  ahgb(ahga paramahga, int paramInt) {}
+  public ahgb(AddContactsView paramAddContactsView) {}
   
-  public int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ahgk paramahgk, T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Ahga.a(paramahgk, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

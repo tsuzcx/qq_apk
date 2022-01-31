@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class qxl
-  implements azhm
+  implements azlv
 {
   final int jdField_a_of_type_Int;
   final long jdField_a_of_type_Long;
@@ -28,10 +28,10 @@ class qxl
     }
   }
   
-  public azhn a(int paramInt1, int paramInt2)
+  public azlw a(int paramInt1, int paramInt2)
   {
     int j = 1280;
-    azhn localazhn = new azhn();
+    azlw localazlw = new azlw();
     Object localObject;
     int i;
     if (paramInt1 <= paramInt2)
@@ -40,9 +40,9 @@ class qxl
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
-      localazhn.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      localazlw.jdField_a_of_type_JavaIoFile = ((File)localObject);
       i = oqu.c;
-      paramInt1 = bjxj.w(BaseApplicationImpl.getApplication().getRuntime());
+      paramInt1 = bkbq.w(BaseApplicationImpl.getApplication().getRuntime());
       if (paramInt1 > 0) {
         i = paramInt1;
       }
@@ -52,8 +52,8 @@ class qxl
       localObject = "720p";
       paramInt1 = j;
       label87:
-      localazhn.jdField_a_of_type_Int = ((int)(i * 1.0F / 640.0F * paramInt1));
-      localazhn.jdField_a_of_type_Float = (paramInt1 / paramInt2);
+      localazlw.jdField_a_of_type_Int = ((int)(i * 1.0F / 640.0F * paramInt1));
+      localazlw.jdField_a_of_type_Float = (paramInt1 / paramInt2);
       if (this.jdField_b_of_type_Int > 30) {
         break label336;
       }
@@ -62,14 +62,14 @@ class qxl
     label336:
     for (j = this.jdField_b_of_type_Int;; j = 30)
     {
-      localazhn.jdField_b_of_type_Int = j;
-      localazhn.jdField_b_of_type_Boolean = a();
-      localazhn.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localazhn.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      localazlw.jdField_b_of_type_Int = j;
+      localazlw.jdField_b_of_type_Boolean = a();
+      localazlw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localazlw.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n quality:" + (String)localObject + ", sourceLongEdge:" + paramInt2 + ", targetLongEdge:" + paramInt1 + ", scaleRate:" + localazhn.jdField_a_of_type_Float + "\n defaultBitRate:" + i + ", videoBitRate:" + localazhn.jdField_a_of_type_Int + ", videoFrameRate:" + localazhn.jdField_b_of_type_Int + "\n setRotation:" + localazhn.jdField_b_of_type_Boolean + ", beginTime:" + localazhn.jdField_a_of_type_Long + ", endTime:" + localazhn.jdField_b_of_type_Long);
+        QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n quality:" + (String)localObject + ", sourceLongEdge:" + paramInt2 + ", targetLongEdge:" + paramInt1 + ", scaleRate:" + localazlw.jdField_a_of_type_Float + "\n defaultBitRate:" + i + ", videoBitRate:" + localazlw.jdField_a_of_type_Int + ", videoFrameRate:" + localazlw.jdField_b_of_type_Int + "\n setRotation:" + localazlw.jdField_b_of_type_Boolean + ", beginTime:" + localazlw.jdField_a_of_type_Long + ", endTime:" + localazlw.jdField_b_of_type_Long);
       }
-      return localazhn;
+      return localazlw;
       paramInt2 = paramInt1;
       break;
       if (paramInt2 >= 960)

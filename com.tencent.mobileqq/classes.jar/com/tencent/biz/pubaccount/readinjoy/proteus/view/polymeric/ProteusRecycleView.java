@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bcwh;
-import bdcq;
-import bdkf;
+import bdaq;
+import bdgz;
+import bdoo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class ProteusRecycleView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = ((int)bdcq.a(paramContext, 28.0F));
+    this.jdField_a_of_type_Int = ((int)bdgz.a(paramContext, 28.0F));
     setOverScrollMode(2);
   }
   
@@ -137,7 +137,7 @@ public class ProteusRecycleView
     {
       f2 -= this.jdField_a_of_type_Float;
       f1 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_b_of_type_Boolean) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > bcwh.a(getContext(), 3.0F)))
+      if ((this.jdField_b_of_type_Boolean) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > bdaq.a(getContext(), 3.0F)))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
         bool1 = bool2;
@@ -170,7 +170,7 @@ public class ProteusRecycleView
             a();
           }
           this.c = false;
-          if (f2 - this.jdField_a_of_type_Float < -bdkf.b(15.0F)) {
+          if (f2 - this.jdField_a_of_type_Float < -bdoo.b(15.0F)) {
             b();
           }
         }

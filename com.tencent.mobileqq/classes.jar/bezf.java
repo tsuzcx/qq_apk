@@ -1,53 +1,52 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class bezf
-  extends URLDrawableDownListener.Adapter
+class bezf
 {
-  public bezf(CardContainer paramCardContainer) {}
+  private final Drawable a;
+  private final Drawable b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  bezf(Context paramContext)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
+    paramContext = paramContext.getResources();
+    int i = 2130837549;
+    if (bibv.a()) {
+      i = 2130837548;
     }
+    this.a = paramContext.getDrawable(i);
+    this.b = paramContext.getDrawable(2130837553);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private Drawable a(Drawable paramDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
-    }
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  private Drawable b(Drawable paramDrawable)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    CardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 

@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
+import java.util.UUID;
 
 public class bbxp
-  implements DialogInterface.OnClickListener
+  implements bbxs
 {
-  public bbxp(ReciteFragment paramReciteFragment) {}
+  bbxp(bbxo parambbxo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbxr parambbxr)
   {
-    paramDialogInterface.dismiss();
-    this.a.a(false);
-    this.a.c();
+    bbvc.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambbxr), false);
   }
 }
 

@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
 class xma
-  implements View.OnClickListener
+  implements ServiceConnection
 {
-  xma(xlz paramxlz, int paramInt) {}
+  private xly a;
   
-  public void onClick(View paramView)
+  public xma(xly paramxly)
   {
-    if (this.jdField_a_of_type_Xlz.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Xlz.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Xlz.jdField_b_of_type_ComTencentImageURLImageView);
+    this.a = paramxly;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    xly localxly = this.a;
+    if (localxly != null) {
+      localxly.a(paramComponentName, paramIBinder);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    xly localxly = this.a;
+    if (localxly != null) {
+      localxly.a(paramComponentName);
     }
   }
 }

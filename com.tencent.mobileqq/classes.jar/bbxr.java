@@ -1,37 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.util.UUID;
 
-public class bbxr
-  implements DialogInterface.OnClickListener
+public abstract interface bbxr
 {
-  public bbxr(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
-    QQAppInterface localQQAppInterface;
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bbzr.f;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bbzr.f;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
-        break label108;
-      }
-    }
-    label108:
-    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
-    {
-      bdaj.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
-      return;
-    }
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract UUID a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
 }
 
 

@@ -1,12 +1,6 @@
-public class awfd
+public abstract interface awfd
 {
-  public int a = -2;
-  public awey a;
-  public awfc a;
-  public Object a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public abstract void a();
 }
 
 

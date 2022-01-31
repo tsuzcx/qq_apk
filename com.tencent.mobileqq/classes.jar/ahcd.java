@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.graphics.Paint;
 
 public class ahcd
-  implements View.OnClickListener
 {
-  public ahcd(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public final Paint a;
+  public final float[] a;
+  public final String[] a;
+  public final Paint b;
   
-  public void onClick(View paramView)
+  public ahcd(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
   {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
+    this.b = paramPaint2;
   }
 }
 

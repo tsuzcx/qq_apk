@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
 
 public class aypj
-  extends aypw
 {
-  public aypj(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
-  }
+  public int a;
+  public aynu a;
+  public MostUsedSearchItem a;
+  public boolean a;
   
-  public ayjk a(List<ayjl> paramList, String paramString)
+  public aypj(aypg paramaypg)
   {
-    return new ayhd(paramList, paramString, GroupSearchEngine.a(this.a));
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

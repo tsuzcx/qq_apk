@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import bnmx;
+import bnrj;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraPreview
@@ -13,7 +13,7 @@ public class CameraPreview
   implements SurfaceHolder.Callback
 {
   SurfaceHolder a;
-  public bnmx a;
+  public bnrj a;
   
   public CameraPreview(Context paramContext)
   {
@@ -26,7 +26,7 @@ public class CameraPreview
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bnmx.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Bnrj.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreview", 2, "[@] surfaceChanged end");
     }
@@ -34,12 +34,12 @@ public class CameraPreview
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Bnmx.surfaceCreated(paramSurfaceHolder);
+    this.jdField_a_of_type_Bnrj.surfaceCreated(paramSurfaceHolder);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Bnmx.surfaceDestroyed(paramSurfaceHolder);
+    this.jdField_a_of_type_Bnrj.surfaceDestroyed(paramSurfaceHolder);
   }
 }
 

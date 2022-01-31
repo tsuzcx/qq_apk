@@ -46,7 +46,7 @@ public class rlo
     this.jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.e = paramBoolean2;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379372));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379430));
   }
   
   @TargetApi(11)
@@ -106,16 +106,16 @@ public class rlo
         return;
         this.jdField_b_of_type_Boolean = true;
       } while ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.c) || (this.e));
-      i = bjxj.K(this.jdField_a_of_type_MqqAppAppRuntime);
+      i = bkbq.K(this.jdField_a_of_type_MqqAppAppRuntime);
     } while (i >= 3);
-    bjxj.C(this.jdField_a_of_type_MqqAppAppRuntime, i + 1);
+    bkbq.C(this.jdField_a_of_type_MqqAppAppRuntime, i + 1);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
     if (QLog.isColorLevel()) {
       QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "show user guide");
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131379379);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131379437);
     if (!TextUtils.isEmpty(paramVideoInfo.g)) {
-      localTextView.setText(alpo.a(2131716544));
+      localTextView.setText(alud.a(2131716556));
     }
     for (;;)
     {
@@ -135,7 +135,7 @@ public class rlo
       this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new rlq(this));
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideofeedsUserGuideController.4(this), 300L);
       return;
-      localTextView.setText(alpo.a(2131716543));
+      localTextView.setText(alud.a(2131716555));
     }
   }
   

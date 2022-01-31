@@ -1,32 +1,37 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class adap
-  extends WtloginObserver
+  extends bhry
 {
-  public adap(JumpActivity paramJumpActivity) {}
+  public adap(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramDevlockInfo != null) {
-      apwo.a().a(paramDevlockInfo.TransferInfo);
-    }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramWUserSigInfo.a(paramDevlockInfo);
+    if (this.a.d == null) {
       return;
-      paramDevlockInfo = null;
     }
+    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
+      this.a.i(1);
+    }
+    this.a.d.clearAnimation();
+    this.a.a.clearAnimation();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.d == null) {}
+    while (paramAnimation != FriendProfileCardActivity.a(this.a)) {
+      return;
+    }
+    this.a.i(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adap
  * JD-Core Version:    0.7.0.1
  */

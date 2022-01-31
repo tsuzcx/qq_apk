@@ -1,40 +1,24 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aimr
-  extends PhotoPreviewBaseData
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public xiv a;
-  public boolean a;
-  public int b;
-  public String b;
-  public HashMap<String, PhotoSendParams> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public HashMap<String, PicInfo> c;
-  public boolean c;
-  public int d;
-  public HashMap<String, PicInfo> d;
-  public boolean d;
-  public int e;
-  public HashMap<String, byte[]> e;
-  public boolean e;
-  public int f = 1052;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  public aimr(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+      }
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

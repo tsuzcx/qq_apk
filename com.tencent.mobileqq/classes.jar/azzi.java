@@ -1,32 +1,43 @@
-public class azzi
-  extends azzf
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
+
+class azzi
+  extends URLDrawableDownListener.Adapter
 {
-  private float d;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  azzi(azzg paramazzg) {}
   
-  public azzi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramInt1, 11, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-    this.h = paramInt4;
-    this.i = paramInt5;
-    this.d = paramFloat;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
+    }
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_Float > 0.8F) {
-      this.jdField_c_of_type_Float = 0.8F;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
-    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
-    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
-    super.a(paramInt, paramFloat);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    }
   }
 }
 

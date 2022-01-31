@@ -1,115 +1,210 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.CmShowRscCacheManager.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.device.DeviceHeadMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ExpandableListView;
 
-public class akll
+public abstract class akll
+  extends bhzv
+  implements bdbc, bhtv
 {
-  private static akll jdField_a_of_type_Akll;
-  private final SparseArray<aklm> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private bdbb jdField_a_of_type_Bdbb;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ExpandableListView a;
   
-  private akll()
+  public akll(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_Bdbb = new bdbb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Bdbb.a(this);
+    bdhj.a();
   }
   
-  public static akll a()
+  protected void a(aklm paramaklm, Bitmap paramBitmap)
   {
-    try
-    {
-      if (jdField_a_of_type_Akll == null) {
-        jdField_a_of_type_Akll = new akll();
-      }
-      akll localakll = jdField_a_of_type_Akll;
-      return localakll;
+    a(paramaklm, paramBitmap, true);
+  }
+  
+  protected void a(aklm paramaklm, Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramaklm.jdField_a_of_type_AndroidWidgetImageView == null) {
+      return;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Object localObject1 = new aklt();
-    ((aklt)localObject1).jdField_a_of_type_Int = 100;
-    ((aklt)localObject1).jdField_a_of_type_Long = 1L;
-    ((aklt)localObject1).jdField_a_of_type_JavaLangString = "all_room3D";
-    localObject1 = ((aklt)localObject1).b() + "all_room3D.json";
-    Object localObject2 = new File((String)localObject1);
-    if (((File)localObject2).exists()) {
-      try
+    if (alof.z.equals(paramaklm.jdField_a_of_type_JavaLangString))
+    {
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843834);
+      return;
+    }
+    if (alof.A.equals(paramaklm.jdField_a_of_type_JavaLangString))
+    {
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843832);
+      return;
+    }
+    if (alof.B.equals(paramaklm.jdField_a_of_type_JavaLangString))
+    {
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843837);
+      return;
+    }
+    if (alof.y.equals(paramaklm.jdField_a_of_type_JavaLangString))
+    {
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839385);
+      return;
+    }
+    Bitmap localBitmap;
+    if (paramBitmap == null) {
+      if ((alof.aa.equals(paramaklm.jdField_a_of_type_JavaLangString)) && ((paramaklm instanceof akml)))
       {
-        localObject2 = new JSONObject(bdcs.b((File)localObject2)).optJSONObject("data");
-        if (localObject2 != null)
-        {
-          localObject1 = ((JSONObject)localObject2).optString("downloadUrl");
-          localObject2 = ((JSONObject)localObject2).optJSONObject("list");
-          Iterator localIterator = ((JSONObject)localObject2).keys();
-          while (localIterator.hasNext())
+        Object localObject = (Friends)((akml)paramaklm).a;
+        localBitmap = paramBitmap;
+        if (localObject != null) {
+          if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
           {
-            Object localObject3 = (String)localIterator.next();
-            int i = ApolloUtil.b((String)localObject3);
-            if (i > -2147483648)
-            {
-              localObject3 = ((JSONObject)localObject2).optJSONObject((String)localObject3);
-              if (localObject3 != null)
-              {
-                localObject3 = ((JSONObject)localObject3).optString("source_qq");
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  aklm localaklm = new aklm();
-                  localaklm.c = "all_room3D.json";
-                  localaklm.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                  localaklm.jdField_b_of_type_Int = i;
-                  localaklm.jdField_a_of_type_Int = 8;
-                  localaklm.jdField_a_of_type_JavaLangString = ((String)localObject3);
-                  this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localaklm);
-                }
-              }
+            localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
+            localBitmap = paramBitmap;
+            if (localObject != null) {
+              paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
             }
           }
+          else
+          {
+            localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
+          }
         }
-        ApolloUtil.b("小窝json不存在");
+        paramBitmap = localBitmap;
       }
-      catch (Exception localException)
+    }
+    for (;;)
+    {
+      label205:
+      localBitmap = paramBitmap;
+      if (paramBitmap == null) {
+        if (paramBoolean) {
+          if (!(paramaklm instanceof akmt)) {
+            break label368;
+          }
+        }
+      }
+      label368:
+      for (paramBitmap = bdhj.h();; paramBitmap = bdhj.a())
       {
-        QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson e:", localException);
-        if (QLog.isColorLevel()) {
-          QLog.d("rscContent_CmShowRscCacheManager", 2, "initRoomJson mRoomRscMap:" + this.jdField_a_of_type_AndroidUtilSparseArray);
+        localBitmap = paramBitmap;
+        if (!this.jdField_a_of_type_Bdbb.a())
+        {
+          this.jdField_a_of_type_Bdbb.a(paramaklm.jdField_a_of_type_JavaLangString, paramaklm.jdField_a_of_type_Int, false);
+          localBitmap = paramBitmap;
         }
+        if (localBitmap == null) {
+          break;
+        }
+        if ((paramaklm.jdField_a_of_type_Int != 1) || (!(paramaklm.jdField_a_of_type_AndroidWidgetImageView instanceof DynamicAvatarView)) || (!(paramaklm instanceof akml))) {
+          break label399;
+        }
+        if (((akml)paramaklm).b) {
+          break label375;
+        }
+        paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        ((DynamicAvatarView)paramaklm.jdField_a_of_type_AndroidWidgetImageView).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramaklm.jdField_a_of_type_JavaLangString, 100, false, true, 1);
         return;
+        paramBitmap = this.jdField_a_of_type_Bdbb.a(paramaklm.jdField_a_of_type_Int, paramaklm.jdField_a_of_type_JavaLangString);
+        break label205;
+      }
+      label375:
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
+      label399:
+      paramaklm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
+    }
+  }
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    Object localObject;
+    if (i < j)
+    {
+      localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof aklm)))
+      {
+        localObject = (aklm)localObject;
+        if (paramString != null) {
+          break label69;
+        }
+        a((aklm)localObject, null, false);
+      }
+      label69:
+      while (!paramString.equals(((aklm)localObject).jdField_a_of_type_JavaLangString))
+      {
+        i += 1;
+        break;
+      }
+      if (paramBitmap != null)
+      {
+        if ((((aklm)localObject).jdField_a_of_type_Int != 1) || (!(((aklm)localObject).jdField_a_of_type_AndroidWidgetImageView instanceof DynamicAvatarView)) || (!(localObject instanceof akml))) {
+          break label175;
+        }
+        if (((akml)localObject).b) {
+          break label151;
+        }
+        ((DynamicAvatarView)((aklm)localObject).jdField_a_of_type_AndroidWidgetImageView).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
       }
     }
-    QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson file is no exsit path:" + localException);
+    return;
+    label151:
+    ((aklm)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    return;
+    label175:
+    ((aklm)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
   }
   
-  public aklm a(int paramInt1, int paramInt2)
+  public void f()
   {
-    aklm localaklm = null;
-    if (paramInt1 == 8) {
-      localaklm = (aklm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    if (this.jdField_a_of_type_Bdbb != null) {
+      this.jdField_a_of_type_Bdbb.d();
     }
-    if (localaklm == null) {
-      ApolloUtil.b("未获取资源getRscItem type:" + paramInt1 + " id:" + paramInt2);
-    }
-    return localaklm;
   }
   
-  public void a()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscCacheManager", 2, "onRoomZipUpdated");
+    if ((!this.jdField_a_of_type_Bdbb.a()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    ThreadManager.executeOnSubThread(new CmShowRscCacheManager.1(this));
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      this.jdField_a_of_type_Bdbb.a();
+      this.jdField_a_of_type_Bdbb.c();
+      bdar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    if (this.jdField_a_of_type_Bdbb.a())
+    {
+      this.jdField_a_of_type_Bdbb.a();
+      this.jdField_a_of_type_Bdbb.b();
+      a(null, null);
+    }
+    bdar.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,20 @@
-import android.content.Intent;
-import java.util.HashSet;
-import org.json.JSONObject;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface bket
+class bket
+  extends bfxf
 {
-  public abstract HashSet<String> getFilterCmds();
+  bket(bkes parambkes) {}
   
-  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
+  public void a()
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bfxg.b.get());
+  }
+  
+  public void b()
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bfxg.b.get());
+  }
 }
 
 

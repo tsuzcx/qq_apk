@@ -1,8 +1,20 @@
-public abstract interface bllj
+import java.util.HashMap;
+
+public abstract class bllj
 {
-  public abstract void aV_();
+  public boolean a;
   
-  public abstract void aW_();
+  public abstract float a();
+  
+  public abstract String a();
+  
+  public abstract HashMap<String, String> a();
+  
+  public abstract float b();
+  
+  public abstract String b();
+  
+  public abstract float c();
 }
 
 

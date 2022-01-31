@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajaf;
+import ajeu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,7 +41,7 @@ public class ApkgConfigHolder
     String str = getConfigPath(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (ApkgConfigHolder)ajaf.a(str);
+      paramQQAppInterface = (ApkgConfigHolder)ajeu.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new ApkgConfigHolder();

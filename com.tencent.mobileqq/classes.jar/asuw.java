@@ -1,18 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
-public final class asuw
-  implements Parcelable.Creator<IVPluginInfo>
+public class asuw
+  extends RecyclerView.OnScrollListener
 {
-  public IVPluginInfo a(Parcel paramParcel)
+  public asuw(HotPicRecyclerView paramHotPicRecyclerView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return new IVPluginInfo(paramParcel);
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      asve.c();
+      this.a.b();
+      if (paramInt != 2) {
+        break label128;
+      }
+      this.a.jdField_a_of_type_Aswk.a(true);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
+        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Asux != null)) {
+          this.a.jdField_a_of_type_Asux.d();
+        }
+      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      return;
+      this.a.c();
+      AbstractGifImage.pauseAll();
+      asve.b();
+      break;
+      label128:
+      this.a.jdField_a_of_type_Aswk.a(false);
+    }
   }
   
-  public IVPluginInfo[] a(int paramInt)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return new IVPluginInfo[paramInt];
+    if (paramInt2 > 0) {
+      this.a.jdField_a_of_type_Aswk.a(paramInt2);
+    }
   }
 }
 

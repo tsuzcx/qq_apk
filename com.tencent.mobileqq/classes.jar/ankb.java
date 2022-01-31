@@ -1,46 +1,6 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-
-public class ankb
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public abstract interface ankb
 {
-  public ankb(ArkAppPreDownloadMgr.3.1 param1) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
-    }
-    paramString = (QQAppInterface)anka.a(this.a.a.this$0).get();
-    if (paramString != null)
-    {
-      paramString = (bavr)paramString.getManager(193);
-      if (paramString != null)
-      {
-        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
-          break label211;
-        }
-        long l = 0L;
-        paramAppPathInfo = new File(paramAppPathInfo.path);
-        if (paramAppPathInfo.exists()) {
-          l = paramAppPathInfo.length();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
-        }
-        paramString.a(this.a.a.a.a, l);
-      }
-    }
-    return;
-    label211:
-    paramString.a(this.a.a.a.a, -1L);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

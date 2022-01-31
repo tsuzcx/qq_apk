@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
+import com.tencent.image.URLImageView;
 
-final class ashi
-  implements Comparator<PadFaceAd>
+public class ashi
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
-  {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
-    }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
-    }
-    return 1;
-  }
+  public URLImageView a;
+  
+  public ashi(ashg paramashg) {}
 }
 
 

@@ -1,68 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-
 class aquc
-  extends aqnl
 {
-  aquc(aqua paramaqua) {}
+  private int jdField_a_of_type_Int;
+  private aqtw jdField_a_of_type_Aqtw;
   
-  protected void a(long paramLong)
+  public aquc(aqua paramaqua, aqtw paramaqtw)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      return;
-      localaqug = this.a.a(paramLong);
-      if (localaqug == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localaqug.h();
-    } while (!localaqug.c());
-    this.a.c(paramLong);
+    this.jdField_a_of_type_Aqtw = paramaqtw;
   }
   
-  protected void b(long paramLong)
+  public int a()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      return;
-      localaqug = this.a.a(paramLong);
-      if (localaqug == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localaqug.j();
-    } while (!localaqug.c());
-    this.a.c(paramLong);
+    return this.jdField_a_of_type_Int;
   }
   
-  protected void c(long paramLong)
+  public aqtw a()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      return;
-      localaqug = this.a.a(paramLong);
-      if (localaqug == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localaqug.l();
-    } while (!localaqug.c());
-    this.a.c(paramLong);
+    return this.jdField_a_of_type_Aqtw;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

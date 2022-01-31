@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class blef
-  implements View.OnClickListener
+public class blef
+  extends GifAnimationDrawable
 {
-  blef(blee paramblee, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public blef(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
   {
-    if (!blee.a()) {}
-    do
+    super(paramContext, paramArrayList, paramLong);
+  }
+  
+  public void start()
+  {
+    if (!this.a)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("zswp20pro", 2, "start");
+      }
+      this.a = true;
+      this.b = true;
+      this.d = false;
+      a();
+    }
+    while (!QLog.isColorLevel()) {
       return;
-      blee.a(this.jdField_a_of_type_Blee, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Blee.notifyDataSetChanged();
-    } while (blee.a(this.jdField_a_of_type_Blee) == null);
-    blee.a(this.jdField_a_of_type_Blee).a(this.jdField_a_of_type_Int);
+    }
+    QLog.d("zswp20pro", 2, "start but isRunning");
   }
 }
 

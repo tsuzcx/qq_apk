@@ -61,7 +61,7 @@ public class EmoticonImageView
       if (jdField_a_of_type_AndroidGraphicsBitmap == null) {}
       try
       {
-        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130838364);
+        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130838365);
         label37:
         if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
           continue;

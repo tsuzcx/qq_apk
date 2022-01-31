@@ -14,7 +14,7 @@ public class pwz
       return null;
     }
     String str1 = ors.d(paramArticleInfo);
-    JSONObject localJSONObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), (int)paramArticleInfo.mChannelID, bdee.h(null), str1, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
+    JSONObject localJSONObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), (int)paramArticleInfo.mChannelID, bdin.h(null), str1, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
     str1 = localJSONObject.toString();
     try
     {

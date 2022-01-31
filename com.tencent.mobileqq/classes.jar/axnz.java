@@ -1,8 +1,16 @@
-public class axnz
+public abstract interface axnz
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
 }
 
 

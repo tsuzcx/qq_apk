@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import azlf;
+import azpo;
 import java.util.HashSet;
 
 final class CaughtException$1
@@ -9,7 +9,7 @@ final class CaughtException$1
   CaughtException$1()
   {
     add(CaughtException.class.getName());
-    add(azlf.class.getName());
+    add(azpo.class.getName());
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.troopgift;
 
-import yqf;
-import yqg;
-import yqh;
+import yuu;
+import yuv;
+import yuw;
 
 public class AIOGiftPanelContainer$2$1$1$1
   implements Runnable
 {
-  public AIOGiftPanelContainer$2$1$1$1(yqh paramyqh) {}
+  public AIOGiftPanelContainer$2$1$1$1(yuw paramyuw) {}
   
   public void run()
   {
     if (this.a.a.a.this$0.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
     {
-      this.a.a.a.this$0.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(this.a.a.a.this$0.jdField_a_of_type_Yqv, true);
+      this.a.a.a.this$0.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(this.a.a.a.this$0.jdField_a_of_type_Yvk, true);
       this.a.a.a.this$0.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.a.a.a.b);
     }
   }

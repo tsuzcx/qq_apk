@@ -1,15 +1,10 @@
-public class baud
+public abstract interface baud
 {
-  public long a;
-  public String a;
+  public abstract void a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mAppShareID:" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mShareUrl:" + this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
+  public abstract boolean a();
+  
+  public abstract byte[] a(byte[] paramArrayOfByte);
 }
 
 

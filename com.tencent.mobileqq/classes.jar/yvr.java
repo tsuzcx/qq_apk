@@ -1,90 +1,19 @@
-import NS_COMM.COMM.StCommonExt;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.List;
 
 public class yvr
-  extends MSFServlet
+  implements ywo
 {
-  public String a()
-  {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
-  }
+  public yvr(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    try
-    {
-      Bundle localBundle = new Bundle();
-      if (paramFromServiceMsg != null)
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          localBundle.putParcelable("KEY_FOR_AIO_STORY_FEED_DATA", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1010, true, localBundle, avqu.class);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-        }
-        notifyObserver(paramIntent, 1010, false, localBundle, avqu.class);
-        return;
-      }
-    }
-    catch (Throwable paramIntent)
-    {
-      QLog.e("QzoneAioStoryFeedServlet", 1, paramIntent + "onReceive error");
-      notifyObserver(null, 1010, false, null, avqu.class);
-    }
-  }
+  public void a(int paramInt) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(List<bcon> paramList)
   {
-    long l1 = paramIntent.getLongExtra("key_last_aio_story_create_time", 0L);
-    long l2 = paramIntent.getLongExtra("key_friend_uid", -1L);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
-      localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new yvp((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, -1, a());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
-      }
-      paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(bdku.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QzoneAioStoryFeedServlet", 2, "onSend. mergeFrom exception!");
-        }
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
+    long l = System.currentTimeMillis();
+    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
   }
 }
 

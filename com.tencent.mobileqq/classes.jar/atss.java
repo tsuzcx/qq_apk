@@ -1,26 +1,28 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
 
-public class atss
+class atss
+  implements View.OnClickListener
 {
-  private List<atst> a = Collections.synchronizedList(new ArrayList());
+  atss(atso paramatso, Activity paramActivity) {}
   
-  void a(long paramLong)
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((atst)localIterator.next()).a(paramLong);
+    if (this.jdField_a_of_type_Atso.a()) {
+      return;
     }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((atst)localIterator.next()).b(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
     }
+    atso.a(this.jdField_a_of_type_Atso).setClickable(false);
+    atso.a(this.jdField_a_of_type_Atso).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840354));
+    atso.a(this.jdField_a_of_type_Atso).a(true);
+    azqs.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
   }
 }
 

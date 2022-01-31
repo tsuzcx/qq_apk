@@ -63,12 +63,12 @@ public class ooi
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString1);
-      String str1 = new String(bdbi.decode(localJSONObject.getString("comment"), 0));
+      String str1 = new String(bdfr.decode(localJSONObject.getString("comment"), 0));
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("article_id", paramString2);
       ((JSONObject)localObject1).put("comment_val", str1);
       ((JSONObject)localObject1).put("type", paramInt2);
-      ((JSONObject)localObject1).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+      ((JSONObject)localObject1).put("native_version", bdgk.a(BaseApplicationImpl.getContext()));
       ((JSONObject)localObject1).put("os", 1);
       if (paramInt2 == 2)
       {
@@ -142,7 +142,7 @@ public class ooi
         ((JSONObject)localObject).put("article_id", paramString);
         ((JSONObject)localObject).put("like", paramInt2);
         ((JSONObject)localObject).put("oper_type", paramInt1);
-        ((JSONObject)localObject).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+        ((JSONObject)localObject).put("native_version", bdgk.a(BaseApplicationImpl.getContext()));
         if (!paramBaseCommentData.isActivity()) {
           break label400;
         }
@@ -228,7 +228,7 @@ public class ooi
       }
     }
     ((JSONObject)localObject).put("article_id", paramString);
-    ((JSONObject)localObject).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+    ((JSONObject)localObject).put("native_version", bdgk.a(BaseApplicationImpl.getContext()));
     ((JSONObject)localObject).put("src", 20);
     ((JSONObject)localObject).put("uuid", this.jdField_a_of_type_JavaLangString);
     ((JSONObject)localObject).put("content_src", paramInt);

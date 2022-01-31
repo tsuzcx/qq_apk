@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avld;
+import avpm;
 import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
 
 public class NearbyProfileFragment$4$1
   implements Runnable
 {
-  public NearbyProfileFragment$4$1(avld paramavld) {}
+  public NearbyProfileFragment$4$1(avpm paramavpm) {}
   
   public void run()
   {

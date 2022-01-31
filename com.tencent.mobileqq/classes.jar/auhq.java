@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
-public final class auhq
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public class auhq
+  implements DialogInterface.OnClickListener
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
-  }
+  public auhq(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
-  {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
+    if (this.a.b == 2) {
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
+    }
+    while (this.a.b != 3) {
+      return;
+    }
+    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
   }
 }
 

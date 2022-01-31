@@ -34,25 +34,25 @@ public class pgj
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        if (bjxj.a(paramInt))
+        if (bkbq.a(paramInt))
         {
           if (-1 == paramInt) {
             break label195;
           }
-          localObject1 = (String)bjxj.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + paramInt, "");
+          localObject1 = (String)bkbq.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + paramInt, "");
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             localObject3 = new JSONObject();
             ((JSONObject)localObject3).put("daily_sub_channel_request_data", localObject1);
             localJSONArray.put(localObject3);
           }
-          if (bjxj.y()) {
-            localJSONArray.put(bjxj.a());
+          if (bkbq.y()) {
+            localJSONArray.put(bkbq.a());
           }
           return localJSONArray.toString();
         }
         Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
-        Object localObject3 = (String)bjxj.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
+        Object localObject3 = (String)bkbq.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break label190;
         }

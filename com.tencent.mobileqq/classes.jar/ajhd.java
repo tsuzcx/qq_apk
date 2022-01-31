@@ -1,22 +1,56 @@
-import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-public class ajhd
-  extends ajhi
+class ajhd
+  implements View.OnClickListener
 {
-  public ajhd(Context paramContext, String paramString)
-  {
-    a(paramString);
-  }
+  ajhd(ajgb paramajgb, Bundle paramBundle) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = '[' + paramString + ']')
+    if (ajgb.a(this.jdField_a_of_type_Ajgb) != null)
     {
-      this.a = paramString;
-      this.b = this.a;
+      paramView = ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(30);
+      ajgb.a(this.jdField_a_of_type_Ajgb).sendMessageDelayed(paramView, 2500L);
+    }
+    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
+    if (!TextUtils.isEmpty(paramView)) {}
+    try
+    {
+      paramView = Class.forName(paramView);
+      if (paramView != null)
+      {
+        paramView = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb).getApplicationContext(), paramView);
+        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.setAction(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.addCategory(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.putExtra("url", str);
+        }
+        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+        paramView.putExtra("force_no_reload", true);
+        ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(paramView);
+      }
+      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
       return;
+    }
+    catch (ClassNotFoundException paramView)
+    {
+      for (;;)
+      {
+        paramView = null;
+      }
     }
   }
 }

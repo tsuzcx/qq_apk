@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ContactCard
-  extends awbv
+  extends awge
 {
   public byte bAge;
   public byte bSex = -1;
   public boolean bindQQ;
   public String mobileCode;
-  @awdj
+  @awhs
   public String mobileNo;
   public String nationCode;
   public String nickName;
@@ -22,7 +22,7 @@ public class ContactCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ContactCard
  * JD-Core Version:    0.7.0.1
  */

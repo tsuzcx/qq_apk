@@ -1,42 +1,37 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
 
-class aiwj
-  implements EIPClientConnectListener
+public class aiwj
+  extends BroadcastReceiver
 {
-  aiwj(aiwh paramaiwh, long paramLong) {}
+  public aiwj(SendHbActivity paramSendHbActivity) {}
   
-  public void connectFailed()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aiwh.a(this.jdField_a_of_type_Aiwh, false);
-    aiwh.b(this.jdField_a_of_type_Aiwh, false);
-    synchronized (aiwh.a(this.jdField_a_of_type_Aiwh))
+    if ("com.qwallet.report".equals(paramIntent.getAction()))
     {
-      aiwh.a(this.jdField_a_of_type_Aiwh).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + aiwh.a(this.jdField_a_of_type_Aiwh));
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
       }
-      return;
     }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      aiwh.a(this.jdField_a_of_type_Aiwh, ???.procName);
-    }
-    aiwh.a(this.jdField_a_of_type_Aiwh, true);
-    aiwh.b(this.jdField_a_of_type_Aiwh, false);
-    synchronized (aiwh.a(this.jdField_a_of_type_Aiwh))
+    label53:
+    do
     {
-      aiwh.a(this.jdField_a_of_type_Aiwh).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + aiwh.a(this.jdField_a_of_type_Aiwh) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

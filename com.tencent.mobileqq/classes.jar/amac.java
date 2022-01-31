@@ -1,11 +1,26 @@
-class amac
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class amac
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  public amac(QQAppInterface paramQQAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (this.a.l) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
+      }
+    }
+    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      return;
+    }
+    QQAppInterface.a(this.a, paramIntent);
+  }
 }
 
 

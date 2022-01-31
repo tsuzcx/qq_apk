@@ -1,39 +1,26 @@
-import com.tencent.biz.troop.VideoCombineHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ynn
-  extends yol
+  implements View.OnClickListener
 {
-  public ynn(VideoCombineHelper.2 param2)
-  {
-    super(param2.this$0);
-  }
+  public ynn(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(yok paramyok)
+  public void onClick(View paramView)
   {
-    if ((paramyok instanceof yof)) {
-      this.a.jdField_a_of_type_Ynu.a("", false, "download failed! msg = " + paramyok.d);
+    if (VideoPlayerView.b(this.a)) {
+      VideoPlayerView.c(this.a);
     }
     do
     {
       return;
-      if ((paramyok instanceof ynx))
-      {
-        this.a.jdField_a_of_type_Ynu.a("", false, "combine failed! msg = " + paramyok.d);
-        return;
-      }
-    } while (!(paramyok instanceof yoi));
-    this.a.jdField_a_of_type_Ynu.a("", false, "sending failed! msg = " + paramyok.d);
-  }
-  
-  public void b(yok paramyok)
-  {
-    if ((paramyok instanceof yoi))
-    {
-      paramyok = paramyok.a();
-      this.a.jdField_a_of_type_Ynu.a(paramyok.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-    }
+      VideoPlayerView.d(this.a);
+    } while (VideoPlayerView.a(this.a) == null);
+    zaj.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 

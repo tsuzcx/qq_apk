@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bhfx;
+import bgok;
+import bhke;
 
 class MediaJsPlugin$5$1
-  implements bhfx
+  implements bhke
 {
   MediaJsPlugin$5$1(MediaJsPlugin.5 param5) {}
   

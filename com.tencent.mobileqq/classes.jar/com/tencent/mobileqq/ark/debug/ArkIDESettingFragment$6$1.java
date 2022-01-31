@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.debug;
 
-import alpo;
+import alud;
 import android.widget.TextView;
-import anlx;
+import anqg;
 
 public class ArkIDESettingFragment$6$1
   implements Runnable
 {
-  public ArkIDESettingFragment$6$1(anlx paramanlx, int paramInt, TextView paramTextView) {}
+  public ArkIDESettingFragment$6$1(anqg paramanqg, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
@@ -15,31 +15,31 @@ public class ArkIDESettingFragment$6$1
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      str = "js调试库状态: " + alpo.a(2131701067);
+      str = "js调试库状态: " + alud.a(2131701079);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
-      str = "js调试库状态: " + alpo.a(2131701062);
+      str = "js调试库状态: " + alud.a(2131701074);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701068);
+      str = "js调试库状态: " + alud.a(2131701080);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701063);
+      str = "js调试库状态: " + alud.a(2131701075);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701066);
+      str = "js调试库状态: " + alud.a(2131701078);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701061);
+      str = "js调试库状态: " + alud.a(2131701073);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701060);
+      str = "js调试库状态: " + alud.a(2131701072);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701058);
+      str = "js调试库状态: " + alud.a(2131701070);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701065);
+      str = "js调试库状态: " + alud.a(2131701077);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701059);
+      str = "js调试库状态: " + alud.a(2131701071);
       continue;
-      str = "js调试库状态: " + alpo.a(2131701057);
+      str = "js调试库状态: " + alud.a(2131701069);
     }
   }
 }

@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 public class tlu
 {
-  public static final int a = azgq.a(4.0F);
-  private static final int b = azgq.e(BaseApplicationImpl.getApplication());
-  private static final int c = azgq.c(BaseApplicationImpl.getApplication());
+  public static final int a = azkz.a(4.0F);
+  private static final int b = azkz.e(BaseApplicationImpl.getApplication());
+  private static final int c = azkz.c(BaseApplicationImpl.getApplication());
   private static int d;
   private static int e;
   private static int f;
@@ -19,7 +19,7 @@ public class tlu
   public static int a()
   {
     if (f == 0) {
-      f = azgq.a(16.0F);
+      f = azkz.a(16.0F);
     }
     return f;
   }
@@ -27,7 +27,7 @@ public class tlu
   public static int a(Activity paramActivity)
   {
     if (d == 0) {
-      d = bngs.b(paramActivity);
+      d = bnle.b(paramActivity);
     }
     return d;
   }
@@ -43,7 +43,7 @@ public class tlu
   public static int b()
   {
     if (g == 0) {
-      g = azgq.a(41.0F);
+      g = azkz.a(41.0F);
     }
     return g;
   }
@@ -51,7 +51,7 @@ public class tlu
   public static int b(Activity paramActivity)
   {
     if (e == 0) {
-      e = a(paramActivity) + azgq.a(4.5F);
+      e = a(paramActivity) + azkz.a(4.5F);
     }
     return e;
   }
@@ -59,7 +59,7 @@ public class tlu
   public static int c()
   {
     if (h == 0) {
-      h = azgq.a(14.0F);
+      h = azkz.a(14.0F);
     }
     return h;
   }
@@ -67,7 +67,7 @@ public class tlu
   public static int d()
   {
     if (i == 0) {
-      i = azgq.a(2.0F);
+      i = azkz.a(2.0F);
     }
     return i;
   }

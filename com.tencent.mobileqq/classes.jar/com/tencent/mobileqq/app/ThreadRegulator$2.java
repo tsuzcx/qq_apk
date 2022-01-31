@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import alze;
+import amdt;
 
 class ThreadRegulator$2
   implements Runnable
@@ -10,13 +10,13 @@ class ThreadRegulator$2
   public void run()
   {
     if (ThreadRegulator.a(this.this$0) == null) {}
-    alze localalze;
+    amdt localamdt;
     do
     {
       return;
-      localalze = ThreadRegulator.a(this.this$0);
+      localamdt = ThreadRegulator.a(this.this$0);
       ThreadRegulator.a(this.this$0, null);
-    } while (localalze == null);
+    } while (localamdt == null);
   }
 }
 

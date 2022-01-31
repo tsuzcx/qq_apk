@@ -1,20 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.widget.QQBlurView;
 
-class betu
-  implements ValueAnimator.AnimatorUpdateListener
+public class betu
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  betu(bets parambets, float paramFloat1, float paramFloat2) {}
+  public betu(QQBlurView paramQQBlurView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onPreDraw()
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Bets.a.setAlpha(f2 * (f3 - f4) + f1);
+    if (!QQBlurView.a(this.a)) {}
+    while (!QQBlurView.a(this.a).a()) {
+      return true;
+    }
+    return QQBlurView.a(this.a).b();
   }
 }
 

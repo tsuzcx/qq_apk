@@ -12,7 +12,7 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import yji;
+import ynv;
 
 public class SubscribeBannerView
   extends BaseWidgetView
@@ -52,7 +52,7 @@ public class SubscribeBannerView
     paramContext.bottomMargin = jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new yji(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ynv(this));
     ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     a((FrameLayout)paramView);
   }

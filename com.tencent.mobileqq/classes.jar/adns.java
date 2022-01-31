@@ -1,25 +1,48 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
 public class adns
-  implements axxl
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public adns(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.a.c)
-    {
-      if (paramInt != 100) {
-        this.a.a(2131690719);
-      }
-      this.a.z();
-    }
+    return false;
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

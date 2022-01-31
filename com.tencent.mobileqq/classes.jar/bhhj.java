@@ -1,26 +1,16 @@
-public class bhhj
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
+
+class bhhj
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  bhhj(bhhh parambhhh) {}
   
-  public float a()
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return 0.0F;
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
     }
-    return this.jdField_a_of_type_Float / this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float += paramFloat;
-    this.jdField_a_of_type_Int += 1;
   }
 }
 

@@ -1,13 +1,30 @@
-import java.util.ArrayList;
-
 public class vyd
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int a = 0;
   
-  public vyd(String paramString)
+  vyd(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+  }
+  
+  public static vyd a(int paramInt)
+  {
+    return new vyd(paramInt);
+  }
+  
+  public int a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return this.a;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
 }
 

@@ -1,41 +1,69 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import org.json.JSONObject;
 
 public class baha
-  extends bafo
+  extends bagz
 {
-  protected int a;
+  private aqtp jdField_a_of_type_Aqtp = new bahb(this);
+  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   
-  public baha(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public baha(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
   }
   
-  public View a(int paramInt1, bagp parambagp, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  private boolean a(JSONObject paramJSONObject)
   {
-    if (paramView == null)
+    if (paramJSONObject == null) {}
+    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    int i;
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559172, null);
-      parambagp = new bahc(null);
-      parambagp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367357));
-      parambagp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367358));
-      paramView.setTag(parambagp);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
+        break label240;
+      }
+      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
+        break label219;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arrr.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
+        break label240;
+      }
+      i = 1;
+      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aqtp);
     }
     for (;;)
     {
-      parambagp.jdField_a_of_type_AndroidWidgetTextView.setText(2131693319);
-      parambagp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840074);
-      return paramView;
-      parambagp = (bahc)paramView.getTag();
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bagw.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
+      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      return;
+      label219:
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      break;
+      label240:
+      i = 0;
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class StoryAlbumEntry
-  extends awbv
+  extends awge
 {
   public String albumDesc;
   public long albumId;

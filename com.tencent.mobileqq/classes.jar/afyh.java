@@ -1,70 +1,30 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForTroopNotification;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.data.MessageForQQStoryComment;
 
-public class afyh
+class afyh
   implements View.OnClickListener
 {
-  public afyh(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg, MessageForStructing paramMessageForStructing, ChatMessage paramChatMessage, long paramLong, View.OnClickListener paramOnClickListener) {}
+  long jdField_a_of_type_Long = 0L;
+  
+  afyh(afyg paramafyg) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 81) {
-      wta.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, "clk_play");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 98)
-    {
-      aekt.n = true;
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a()) {
-        break;
-      }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 50L) {
       return;
     }
-    int i;
-    label79:
-    String str1;
-    label94:
-    String str3;
-    if ((azto.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mExtraData) & 0x2) != 0)
+    this.jdField_a_of_type_Long = l;
+    paramView = (MessageForQQStoryComment)((aeqi)aepi.a(paramView)).a;
+    if (xpq.a(paramView.vid))
     {
-      i = 1;
-      if (!aupt.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, "isFaceScoreSecondMember")) {
-        break label149;
-      }
-      str1 = "2";
-      str3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
-      if (i == 0) {
-        break label155;
-      }
-    }
-    label149:
-    label155:
-    for (String str2 = "2";; str2 = "1")
-    {
-      aupt.a("clk_obj", str3, new String[] { str1, "", "", str2 });
-      break;
-      i = 0;
-      break label79;
-      str1 = "1";
-      break label94;
-    }
-    if ((((bdyv)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).b(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 38)) {}
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing instanceof MessageForTroopNotification))
-      {
-        paramView = (MessageForTroopNotification)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "AIOchat", "obj_clk", 0, 0, paramView.frienduin, "" + paramView.feedType, "", "");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      vod.a(this.jdField_a_of_type_Afyg.a, paramView.vid, "CommentItemBuilder_Feed_Id", 1004);
+      wxj.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
       return;
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
+    vod.b((Activity)this.jdField_a_of_type_Afyg.a, paramView.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
   }
 }
 

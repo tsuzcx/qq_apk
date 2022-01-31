@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import becq;
-import bepp;
+import begz;
+import bety;
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONException;

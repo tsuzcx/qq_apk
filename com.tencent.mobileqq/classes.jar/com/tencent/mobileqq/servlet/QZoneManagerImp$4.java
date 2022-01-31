@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.servlet;
 
-import ayxn;
-import ayxp;
-import bizm;
+import azbw;
+import azby;
+import bjdt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
@@ -10,18 +10,18 @@ import mqq.app.NewIntent;
 public class QZoneManagerImp$4
   implements Runnable
 {
-  public QZoneManagerImp$4(ayxn paramayxn, int paramInt) {}
+  public QZoneManagerImp$4(azbw paramazbw, int paramInt) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + ayxp.c + ",config interval:" + bizm.a() + "difference: " + (l - ayxp.c));
+      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + azby.c + ",config interval:" + bjdt.a() + "difference: " + (l - azby.c));
     }
     QQAppInterface localQQAppInterface;
-    if (l - ayxp.c > bizm.a())
+    if (l - azby.c > bjdt.a())
     {
-      localQQAppInterface = ayxn.a(this.this$0);
+      localQQAppInterface = azbw.a(this.this$0);
       if ((localQQAppInterface != null) && (localQQAppInterface.getApplication() != null)) {
         break label103;
       }
@@ -30,7 +30,7 @@ public class QZoneManagerImp$4
     do
     {
       return;
-      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), ayxp.class);
+      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), azby.class);
       localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
       localNewIntent.putExtra("qzone_send_by_time", this.a);
       localNewIntent.putExtra("scene", 103);

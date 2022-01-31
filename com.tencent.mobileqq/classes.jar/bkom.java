@@ -1,6 +1,33 @@
+import dov.com.qq.im.ae.view.NoScrollViewPager;
+
 class bkom
+  implements bljt
 {
-  public static bkoi a = new bkoi(null);
+  bkom(bkol parambkol) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      bkol.a(this.a).setCurrentItem(0, true);
+      bkol.a(this.a).d();
+      bkol.a(this.a).t();
+      bliu.a().L();
+      return;
+    }
+    if (bkol.a(this.a))
+    {
+      bkol.a(this.a);
+      bliu.a().M();
+      return;
+    }
+    bkol.b(this.a);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt != 1) || (bkol.a(this.a));
+  }
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.richmedia;
 
 import android.os.Bundle;
 import android.os.RemoteException;
-import axja;
-import axjd;
+import axnj;
+import axnm;
 
 final class RichmediaService$1
   implements Runnable
@@ -14,25 +14,25 @@ final class RichmediaService$1
   {
     if (RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService != null)
     {
-      axja localaxja = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_Axja;
-      if (localaxja != null) {
+      axnj localaxnj = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_Axnj;
+      if (localaxnj != null) {
         try
         {
-          axjd.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
-          localaxja.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-          axjd.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
+          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
+          localaxnj.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
           return;
         }
         catch (RemoteException localRemoteException)
         {
-          axjd.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
+          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
           return;
         }
       }
-      axjd.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
+      axnm.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
       return;
     }
-    axjd.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
+    axnm.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
   }
 }
 

@@ -15,7 +15,7 @@ class mjy
     mjs.a(this.a, false);
     if (paramInt == 1)
     {
-      azmj.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
       this.a.c();
       if (!mww.a(mjs.a(this.a))) {
         mjs.a(this.a).a(mjs.a(this.a));

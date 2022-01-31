@@ -1,27 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public class yku
-  implements View.OnClickListener
+class yku
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public yku(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
+  yku(ykt paramykt) {}
   
-  public void onClick(View paramView)
+  public boolean onPreDraw()
   {
-    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
-      xxk.a(ServiceFolderFollowPBHeadView.a(this.a));
-    }
-    for (;;)
-    {
-      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
-      azmj.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
-      return;
-      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
-    }
+    ykt.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    ykt.a(this.a, ykt.a(this.a).getLeft(), ykt.a(this.a).getTop(), ykt.a(this.a).getWidth(), ykt.a(this.a).getHeight());
+    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + ykt.a(this.a).getLeft(), ",top:", Integer.valueOf(ykt.a(this.a).getTop()), ",width:", Integer.valueOf(ykt.a(this.a).getWidth()), ",height:", Integer.valueOf(ykt.a(this.a).getHeight()) });
+    return true;
   }
 }
 

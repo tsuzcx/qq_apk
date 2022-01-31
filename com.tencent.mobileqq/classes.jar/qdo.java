@@ -31,7 +31,7 @@ public class qdo
   
   public void onClick(View paramView)
   {
-    paramView = oqu.g + bdbi.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    paramView = oqu.g + bdfr.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
     ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getContext(), paramView);
     ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.a();
     ors.a = localArticleInfo;

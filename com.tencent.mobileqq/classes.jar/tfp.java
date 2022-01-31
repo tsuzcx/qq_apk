@@ -3,7 +3,7 @@ import android.view.View;
 import android.widget.TextView;
 
 class tfp
-  implements bhqd
+  implements bhuk
 {
   tfp(tfk paramtfk, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
@@ -11,7 +11,7 @@ class tfp
   {
     if (!ndk.a(tfk.a(this.jdField_a_of_type_Tfk)))
     {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
       return;
     }
     tfk.a(this.jdField_a_of_type_Tfk).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);

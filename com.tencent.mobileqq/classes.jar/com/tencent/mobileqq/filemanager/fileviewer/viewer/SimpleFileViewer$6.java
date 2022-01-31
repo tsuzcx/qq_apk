@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import arca;
-import arcg;
+import argj;
+import argp;
 import com.tencent.smtt.sdk.TbsReaderView;
 
 class SimpleFileViewer$6
   implements Runnable
 {
-  SimpleFileViewer$6(SimpleFileViewer paramSimpleFileViewer, String paramString, arcg paramarcg) {}
+  SimpleFileViewer$6(SimpleFileViewer paramSimpleFileViewer, String paramString, argp paramargp) {}
   
   public void run()
   {
-    TbsReaderView localTbsReaderView = arca.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arcg);
+    TbsReaderView localTbsReaderView = argj.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Argp);
     if ((SimpleFileViewer.a(this.this$0) != null) && (SimpleFileViewer.a(this.this$0, SimpleFileViewer.a(this.this$0), localTbsReaderView, true))) {
       SimpleFileViewer.a(this.this$0, localTbsReaderView);
     }

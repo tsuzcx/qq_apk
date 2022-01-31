@@ -1,8 +1,6 @@
 public abstract interface xrv
 {
-  public abstract void a();
-  
-  public abstract boolean a(boolean paramBoolean);
+  public abstract void a(xsa paramxsa, boolean paramBoolean);
 }
 
 

@@ -12,8 +12,8 @@ import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import aokd;
-import bizf;
+import aoom;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
@@ -98,7 +98,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import yvq;
+import zaf;
 
 public class MiniAppCmdUtil
 {
@@ -231,7 +231,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aokd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -292,7 +292,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aokd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -328,7 +328,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aokd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -491,7 +491,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aokd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -645,7 +645,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), yvq.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), zaf.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -933,7 +933,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (aokd.g()) {}
+    if (aoom.g()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);
@@ -984,7 +984,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bizf.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((bjdm.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1014,7 +1014,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bizf.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((bjdm.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;

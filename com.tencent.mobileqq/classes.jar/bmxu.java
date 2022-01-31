@@ -1,15 +1,17 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.util.ArrayList;
 
 class bmxu
-  implements anoi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bmxu(bmxs parambmxs) {}
+  bmxu(bmxt parambmxt) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (bmxs.a(this.a) != null) {
-      bmxs.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
-    }
+    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
+    this.a.a = paramValueAnimator;
+    this.a.invalidateSelf();
   }
 }
 

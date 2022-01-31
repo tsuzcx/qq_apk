@@ -1,17 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
-class biqm
-  implements DialogInterface.OnClickListener
+public class biqm
 {
-  biqm(biqi parambiqi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b = true;
-    biqi.a(this.a, 1);
-    biqi.c(this.a);
-  }
+  static final Executor a = ;
 }
 
 

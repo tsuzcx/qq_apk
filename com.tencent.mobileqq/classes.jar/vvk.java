@@ -1,65 +1,19 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vvk
-  extends QQUIEventReceiver<vvc, vhs>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vvk(@NonNull vvc paramvvc)
-  {
-    super(paramvvc);
-  }
+  public vvk(XViewPager paramXViewPager) {}
   
-  public void a(@NonNull vvc paramvvc, @NonNull vhs paramvhs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (TextUtils.equals(String.valueOf(paramvvc.hashCode()), paramvhs.jdField_a_of_type_JavaLangString)) {
-      b(paramvvc, paramvhs);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vhs.class;
-  }
-  
-  public void b(vvc paramvvc, vhs paramvhs)
-  {
-    paramvvc = ((StoryPlayerGroupHolder)paramvvc.a()).a();
-    if (paramvvc != null) {
-      paramvvc.c(false);
-    }
-    if (paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = vhj.a(paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramvhs.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131701544), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramvvc = "2";; paramvvc = "1")
-      {
-        wta.a("play_video", "down_suc", 0, 0, new String[] { paramvvc, "", "", paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(BaseApplicationImpl.getContext(), 2, ume.a(2131700088), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramvvc = "2";; paramvvc = "1")
-    {
-      wta.a("play_video", "down_fail", 0, 0, new String[] { paramvvc, "", "", paramvhs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131701545), 0).a();
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
     }
   }
 }

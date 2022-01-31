@@ -98,7 +98,7 @@ public class mso
         if (QLog.isDevelopLevel()) {
           QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008977" + "], statusFixedEntrance[" + j + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], light[" + n + "], first[" + i + "]");
         }
-        azmj.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
+        azqs.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
         return;
         label243:
         i = 0;
@@ -136,7 +136,7 @@ public class mso
     if (QLog.isDevelopLevel()) {
       QLog.w("RedBagReport", 1, "reportClickEvent, key[" + paramString1 + "], mFromType[" + jdField_a_of_type_Int + "], value[" + paramString2 + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
     }
-    azmj.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
+    azqs.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
   }
   
   public static void a(msq parammsq)
@@ -149,7 +149,7 @@ public class mso
     if (parammsq.jdField_a_of_type_Boolean) {}
     for (parammsq = "1";; parammsq = "0")
     {
-      azmj.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammsq, jdField_a_of_type_JavaLangString, "");
+      azqs.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammsq, jdField_a_of_type_JavaLangString, "");
       return;
     }
   }
@@ -164,7 +164,7 @@ public class mso
     if (paramBoolean) {}
     for (;;)
     {
-      azmj.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
+      azqs.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
       return;
       i = 0;
     }
@@ -209,7 +209,7 @@ public class mso
       if (QLog.isDevelopLevel()) {
         QLog.w("RedBagReport", 1, "reportClickEvent, key[" + str1 + "], fromType[" + jdField_a_of_type_Int + "], getRedbag_ResultCode[" + parammsq.jdField_e_of_type_JavaLangString + "], getRedbag_ResultState[" + parammsq.jdField_f_of_type_JavaLangString + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], hitScore[" + parammsq.jdField_a_of_type_Int + "]");
       }
-      azmj.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammsq.jdField_a_of_type_Int, String.valueOf(parammsq.jdField_f_of_type_Int), parammsq.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammsq.jdField_f_of_type_JavaLangString);
+      azqs.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammsq.jdField_a_of_type_Int, String.valueOf(parammsq.jdField_f_of_type_Int), parammsq.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammsq.jdField_f_of_type_JavaLangString);
       return;
       str1 = "0X800897E";
       continue;
@@ -227,7 +227,7 @@ public class mso
     if (!paramBoolean) {
       str = "0X8008A9A";
     }
-    azmj.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
+    azqs.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
   }
   
   public static void c()

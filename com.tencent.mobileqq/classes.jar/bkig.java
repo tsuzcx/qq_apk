@@ -1,21 +1,10 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.IInterface;
 
-final class bkig
-  implements DialogInterface.OnClickListener
+public abstract interface bkig
+  extends IInterface
 {
-  bkig(int paramInt, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (bkif.b(this.jdField_a_of_type_Int))
-    {
-      bkif.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
-      return;
-    }
-    bkif.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

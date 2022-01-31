@@ -1,22 +1,11 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class aneb
-  implements anfn
+public abstract interface aneb
+  extends aneg
 {
-  aneb(andz paramandz, long paramLong) {}
+  public abstract void a(int paramInt);
   
-  public void a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Andz.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    andw.a(this.jdField_a_of_type_Andz.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat);
 }
 
 

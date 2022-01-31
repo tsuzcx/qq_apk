@@ -27,7 +27,7 @@ class psc
     {
     default: 
       return;
-    case 2131366636: 
+    case 2131366642: 
       paramView = this.jdField_a_of_type_Prr;
       RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}

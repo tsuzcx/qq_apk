@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
 import android.text.TextUtils;
-import befm;
-import zbc;
+import bejv;
+import zfr;
 
 public class ReadInJoyWebRenderPlugin$1
   implements Runnable
 {
-  public ReadInJoyWebRenderPlugin$1(zbc paramzbc) {}
+  public ReadInJoyWebRenderPlugin$1(zfr paramzfr) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(zbc.a(this.this$0))) {
-      befm.a(zbc.a(this.this$0));
+    if (!TextUtils.isEmpty(zfr.a(this.this$0))) {
+      bejv.a(zfr.a(this.this$0));
     }
   }
 }

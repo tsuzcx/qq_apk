@@ -1,14 +1,10 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import android.graphics.Bitmap;
 
-public class blic
-  implements blgr
+public abstract interface blic
 {
-  public blic(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    this.a.d();
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

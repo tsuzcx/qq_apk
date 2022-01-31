@@ -1,21 +1,13 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
-final class auuz
-  implements DialogInterface.OnClickListener
+public class auuz
 {
-  auuz(Context paramContext, String paramString, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

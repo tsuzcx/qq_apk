@@ -1,111 +1,101 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class afcv
-  extends aekw
+class afcv
+  extends afct
 {
-  public int a;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public afcv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  void a(long paramLong1, long paramLong2)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297969);
-    int i = paramContext.getResources().getDimensionPixelSize(2131297970);
-    this.f = i;
-    this.jdField_e_of_type_Int = i;
-    this.d = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296314) * 2);
-    this.c = paramContext.getResources().getDimensionPixelSize(2131297968);
-  }
-  
-  private View a(View paramView, afcx paramafcx)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    if (this.b == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558761, null);
-      paramafcx.jdField_b_of_type_AndroidViewView = localView.findViewById(2131364770);
-      paramafcx.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362389));
-      paramafcx.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362390));
-      paramafcx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)localView.findViewById(2131362387));
-      paramafcx.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362388));
-      paramafcx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_a_of_type_Int);
-      paramView = new bczy(-1, this.jdField_e_of_type_Int, this.f);
-      paramafcx.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-    }
-    return localView;
-  }
-  
-  protected aekx a()
-  {
-    return new afcx(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
-  {
-    paramLinearLayout = (MessageForAIOStoryVideo)paramMessageRecord;
-    paramaekx = (afcx)paramaekx;
-    paramView = a(paramView, paramaekx);
-    paramMessageRecord = (String)paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131373384);
-    if ((!TextUtils.isEmpty(paramLinearLayout.cover)) && (bdal.a(paramLinearLayout.cover, paramMessageRecord))) {}
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0) {}
-      try
-      {
-        paramMessageRecord = new URL(paramLinearLayout.cover);
-        if (paramMessageRecord != null)
-        {
-          bczi.a(paramaekx.jdField_a_of_type_AndroidWidgetImageView, paramLinearLayout.cover);
-          paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, this.d, this.c);
-          paramMessageRecord.setDecodeHandler(bcuq.s);
-          paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
-          paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131373384, paramLinearLayout.cover);
-        }
-        if (jdField_e_of_type_Boolean) {
-          paramView.setContentDescription(paramLinearLayout.text);
-        }
-        paramaekx.jdField_b_of_type_AndroidViewView.setOnClickListener(new afcw(this, paramLinearLayout));
-        return paramView;
+      this.b = new HashSet();
+      this.b.add(Long.valueOf(paramLong1));
+      if (this.jdField_a_of_type_JavaUtilSet != null) {
+        break label77;
       }
-      catch (Exception paramMessageRecord)
+      this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong1));
+      return;
+      this.b.clear();
+      break;
+      label77:
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+  }
+  
+  void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((this.b != null) && (this.b.size() > 0) && (a(this.jdField_a_of_type_JavaUtilSet) == paramMessageRecord.uniseq) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    {
+      paramQQAppInterface = acjm.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaLangString = "";
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+        this.jdField_a_of_type_Long = paramQQAppInterface[0];
+      }
+    }
+  }
+  
+  boolean a(long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (Object localObject = this.b; (localObject != null) && (((Set)localObject).size() > 0); localObject = this.jdField_a_of_type_JavaUtilSet)
+    {
+      localObject = ((Set)localObject).iterator();
+      do
       {
-        for (;;)
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (((Long)((Iterator)localObject).next()).longValue() != paramLong);
+      return true;
+    }
+    return false;
+  }
+  
+  boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+      {
+        bool1 = bool2;
+        if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("ChatItemBuilder", 2, " AIOStoryVideoBuilder:  url has problem");
+          bool1 = bool2;
+          if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+            {
+              bool1 = bool2;
+              if (this.jdField_a_of_type_Long > 0L)
+              {
+                MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+                if (localMessageRecord != null) {
+                  paramQQAppInterface.a().b(localMessageRecord, null, false);
+                }
+                this.jdField_a_of_type_Long = 0L;
+                a();
+                bool1 = true;
+              }
+            }
           }
-          paramMessageRecord = null;
         }
       }
     }
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bdlb[] a(View paramView)
-  {
-    return null;
+    return bool1;
   }
 }
 

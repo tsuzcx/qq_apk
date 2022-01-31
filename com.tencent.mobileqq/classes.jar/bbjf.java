@@ -1,24 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbjf
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public bbjf(NewTroopContactView paramNewTroopContactView) {}
+  public bbjf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

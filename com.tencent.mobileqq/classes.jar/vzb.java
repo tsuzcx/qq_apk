@@ -1,40 +1,42 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+
 public class vzb
+  extends QQUIEventReceiver<AbsVideoInfoWidget, vej>
 {
-  public static void a(String paramString1, String paramString2)
+  public vzb(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
-    wsv.b(paramString1, paramString2);
+    super(paramAbsVideoInfoWidget);
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull vej paramvej)
   {
-    wsv.a(paramString1, paramString2, paramObject);
+    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {}
+    String str;
+    StoryVideoItem localStoryVideoItem;
+    do
+    {
+      do
+      {
+        return;
+        while (paramAbsVideoInfoWidget.a == null) {}
+        str = paramAbsVideoInfoWidget.a.a;
+        paramvej = paramvej.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!paramvej.hasNext());
+      localStoryVideoItem = (StoryVideoItem)paramvej.next();
+    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
+    paramAbsVideoInfoWidget.i();
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
+  public Class acceptEventClass()
   {
-    wsv.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    wsv.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    wsv.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    wsv.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    wsv.a(paramString1, paramString2, paramObject1, paramObject2);
+    return vej.class;
   }
 }
 

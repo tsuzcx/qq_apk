@@ -1,343 +1,422 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.ScrollView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.1;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.3;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.5;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.6;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.data.MessageRecord;>;
+import java.util.Map;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class bbpw
+  implements Manager
 {
-  public static final String a;
-  protected Handler a;
-  protected SparseArray<bbqf> a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public ScrollView a;
-  protected bdwa a;
-  public SpriteGLView a;
-  private VasQuickUpdateManager.CallBacker a;
-  public boolean a;
-  protected String b;
+  public final SparseArray<bbpn> a;
+  public QQAppInterface a;
+  protected final List<String> a;
+  protected final Map<String, bbpm> a;
+  protected boolean a;
+  public final SparseArray<TroopAioKeywordTipInfo> b;
+  public final List<String> b;
+  protected boolean b;
   
-  static
+  public bbpw(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = bduw.a(aljq.aX + ".troop/enter_effects/");
-  }
-  
-  public bbpw(QQAppInterface paramQQAppInterface, RelativeLayout paramRelativeLayout)
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new bbqe(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_Bdwa = ((bdvx)paramQQAppInterface.getManager(47)).a(1);
-    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static int a(String paramString)
+  private String a(String paramString)
   {
-    if (paramString.startsWith("groupeffect_item_"))
-    {
-      paramString = paramString.substring("groupeffect_item_".length(), paramString.length() - ".zip".length());
-      if ((!TextUtils.isEmpty(paramString)) && (TextUtils.isDigitsOnly(paramString))) {
-        return Integer.parseInt(paramString);
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return -1;
-  }
-  
-  public static Bitmap a(String paramString, bbqf parambbqf)
-  {
-    Bitmap localBitmap = null;
-    if (parambbqf.c == 2) {
-      paramString = paramString + "/yearsvip/yearsvip_s" + parambbqf.b + ".png";
-    }
+    int i = 2147483647;
     for (;;)
     {
-      try
+      int j;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        localBitmap = bdda.a(paramString, null);
-        return localBitmap;
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        try
-        {
-          paramString = bdda.a(paramString, null);
-          return paramString;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject1 = null;
+        if (!localIterator.hasNext()) {
+          break label101;
         }
-        catch (OutOfMemoryError paramString) {}
-        paramString = paramString;
-        return null;
+        localObject2 = (String)localIterator.next();
+        j = paramString.indexOf((String)localObject2);
+        if ((j < 0) || (j >= i)) {
+          break label98;
+        }
+        if (j == 0) {
+          return localObject2;
+        }
       }
-      if (parambbqf.c == 1) {
-        paramString = paramString + "/svip/svip_s" + parambbqf.b + ".png";
+      Object localObject1 = localObject2;
+      i = j;
+      label98:
+      for (;;)
+      {
+        break;
+      }
+      label101:
+      Object localObject2 = localObject1;
+    }
+  }
+  
+  private String a(String paramString1, String paramString2, Integer paramInteger)
+  {
+    return paramString1 + "_" + paramString2 + "_" + paramInteger;
+  }
+  
+  private List<Integer> a(MessageRecord arg1)
+  {
+    Object localObject1 = ???.getExtInfoFromExtStr("key_aio_keyword");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        localObject1 = (bbpm)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+        if (localObject1 != null)
+        {
+          localObject1 = ((bbpm)localObject1).jdField_a_of_type_JavaUtilList;
+          return localObject1;
+        }
       }
     }
     return null;
   }
   
-  private bbpu a()
+  private void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo, bbpz parambbpz)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bbqh localbbqh = (bbqh)((QQAppInterface)localObject).getManager(231);
-    boolean bool = localbbqh.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "getGrayTips isShowEnterEffectEveryTime = " + false + " hasShowToday = " + bool);
+    if (parambbpz != null) {
+      ThreadManager.getUIHandler().post(new TroopAioKeywordTipManager.5(this, parambbpz, paramMessageRecord, paramTroopAioKeywordTipInfo));
     }
-    if (!bool)
+  }
+  
+  private void a(Integer paramInteger, MessageRecord paramMessageRecord, bbpz parambbpz)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramInteger);
+    ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(localArrayList, new bbpy(this, paramMessageRecord, parambbpz));
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord)
+  {
+    boolean bool = true;
+    a();
+    for (;;)
     {
-      bbpq localbbpq = localbbqh.a();
-      if (localbbpq.a.size() > 0)
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        int k = bdkd.a((QQAppInterface)localObject, ((QQAppInterface)localObject).c());
-        int i;
-        int j;
-        if (localbbqh.b(this.b))
-        {
-          i = 2;
-          j = 0;
+        if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+          return false;
         }
-        for (;;)
+        if (!TextUtils.equals(paramMessageRecord.getExtInfoFromExtStr("key_is_checked_aio_keyword"), "1")) {
+          break;
+        }
+        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword")))
         {
-          if (j >= localbbpq.a.size()) {
-            break label259;
-          }
-          localObject = (bbpu)localbbpq.a.get(j);
-          bool = localbbqh.a().getBoolean("gray_tips_no_longer_" + ((bbpu)localObject).jdField_a_of_type_Int, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopEnterEffect.Controller", 2, "getGrayTips id = " + ((bbpu)localObject).jdField_a_of_type_Int + " nolongerShow = " + bool);
-          }
-          if ((!bool) && (((bbpu)localObject).a(i, k)))
-          {
-            return localObject;
-            i = 1;
-            break;
-          }
-          j += 1;
+          bool = true;
+          return bool;
         }
       }
+      bool = false;
     }
-    label259:
-    return null;
+    Object localObject2 = b(paramMessageRecord);
+    ??? = null;
+    Iterator localIterator = ((List)localObject2).iterator();
+    while (localIterator.hasNext())
+    {
+      localObject2 = a((String)localIterator.next());
+      ??? = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        paramMessageRecord.saveExtInfoToExtStr("key_aio_keyword", (String)localObject2);
+        ??? = localObject2;
+      }
+    }
+    paramMessageRecord.saveExtInfoToExtStr("key_is_checked_aio_keyword", "1");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extStr", paramMessageRecord.extStr);
+    if (!TextUtils.isEmpty((CharSequence)???)) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
-  public static String a()
+  private boolean a(Integer paramInteger, int paramInt, MessageRecord paramMessageRecord)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons.zip").getAbsolutePath();
+    Object localObject1;
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      localObject1 = (bbpn)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInteger.intValue());
+      if (localObject1 == null) {
+        return false;
+      }
     }
-    return null;
-  }
-  
-  public static String a(int paramInt)
-  {
-    return jdField_a_of_type_JavaLangString + paramInt + File.separator + paramInt + ".zip";
-  }
-  
-  public static String b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons").getAbsolutePath();
+    synchronized (this.jdField_b_of_type_JavaUtilList)
+    {
+      if (!this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_b_of_type_JavaUtilList.addAll(bbpl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+        this.jdField_b_of_type_Boolean = true;
+      }
+      paramInteger = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword"), paramInteger);
+      if ((!paramMessageRecord.isSend()) && (this.jdField_b_of_type_JavaUtilList.contains(paramInteger)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, blackUinKeyRuleId=" + paramInteger);
+        }
+        return false;
+      }
+      if ((((bbpn)localObject1).b > NetConnInfoCenter.getServerTime()) || (((bbpn)localObject1).c < NetConnInfoCenter.getServerTime()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, not support timelimit, currentTime=" + NetConnInfoCenter.getServerTime() + ",ruleInfo.startTime =" + ((bbpn)localObject1).b + ",ruleInfo.endTime=" + ((bbpn)localObject1).c);
+        }
+        return false;
+      }
     }
-    return null;
-  }
-  
-  public static void b()
-  {
-    String str = b();
-    if (TextUtils.isEmpty(str)) {
-      QLog.e("TroopEnterEffect.Controller", 1, "checkVipIconsExists get null path");
-    }
-    while (ThemeUtil.getFileNumInFile(new File(str)) != 0) {
-      return;
-    }
-    ((VasQuickUpdateManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(184)).downloadItem(1004L, "enterEffectVipIcons", "TroopEnterEffectController");
-  }
-  
-  public void a()
-  {
-    if (bdcb.e()) {
+    if ((((bbpn)localObject1).d & paramInt) == 0)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "playAnimaions: isLowEndPhoneForPreDownload = true");
+        QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, not support positionFlag, ruleInfo.positionFlag=" + ((bbpn)localObject1).d + ", curInvokeType=" + paramInt);
+      }
+      return false;
+    }
+    if ((((bbpn)localObject1).jdField_a_of_type_JavaUtilList != null) && (((bbpn)localObject1).jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, ruleInfo.troopTypes == null");
+      }
+      paramInteger = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(paramMessageRecord.frienduin);
+      if (!((bbpn)localObject1).jdField_a_of_type_JavaUtilList.contains(Integer.valueOf((int)paramInteger.dwGroupClassExt)))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append("[");
+          localObject1 = ((bbpn)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            paramMessageRecord.append(((Integer)((Iterator)localObject1).next()).intValue());
+            paramMessageRecord.append(",");
+          }
+          paramMessageRecord.append("]");
+          QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, not support troopType, troopTypes=" + paramMessageRecord.toString() + ",mCurType=" + paramInteger.dwGroupClassExt);
+        }
+        return false;
       }
     }
-    bbqh localbbqh;
-    bbqf localbbqf;
+    return true;
+  }
+  
+  private List<String> b(MessageRecord paramMessageRecord)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramMessageRecord.msgtype == -1000) || (paramMessageRecord.msgtype == -1051))
+    {
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb == null) {
+        paramMessageRecord.parse();
+      }
+      if (paramMessageRecord.sb != null) {
+        localArrayList.add(paramMessageRecord.sb.toString().toLowerCase());
+      }
+    }
     do
     {
       do
       {
         do
         {
-          return;
-          if (!azib.b()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopEnterEffect.Controller", 2, "playAnimaions: isSimpleUISwitch = true");
-        return;
-        localbbqh = (bbqh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(231);
-      } while (localbbqh == null);
-      localbbqf = localbbqh.a(this.b);
-    } while ((localbbqf == null) || (!a(localbbqf)));
-    if (System.currentTimeMillis() - localbbqf.jdField_a_of_type_Long < 60000L)
-    {
-      a(localbbqf);
-      return;
-    }
-    localbbqh.b(localbbqf);
+          return localArrayList;
+        } while (paramMessageRecord.msgtype != -2011);
+        paramMessageRecord = (MessageForStructing)paramMessageRecord;
+        if (paramMessageRecord.structingMsg == null) {
+          paramMessageRecord.parse();
+        }
+      } while (!(paramMessageRecord.structingMsg instanceof AbsShareMsg));
+      paramMessageRecord = (AbsShareMsg)paramMessageRecord.structingMsg;
+      if (!TextUtils.isEmpty(paramMessageRecord.mContentTitle)) {
+        localArrayList.add(paramMessageRecord.mContentTitle.toLowerCase());
+      }
+      if (!TextUtils.isEmpty(paramMessageRecord.mContentSummary)) {
+        localArrayList.add(paramMessageRecord.mContentSummary.toLowerCase());
+      }
+    } while (TextUtils.isEmpty(paramMessageRecord.mMsgUrl));
+    localArrayList.add(paramMessageRecord.mMsgUrl.toLowerCase());
+    return localArrayList;
   }
   
-  public void a(bbqf parambbqf)
+  private void b(List<Integer> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "showAnimation: enterEffectData = " + parambbqf + " isAio = " + this.jdField_a_of_type_Boolean);
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
     }
-    Object localObject1;
-    String str;
+    ThreadManager.post(new TroopAioKeywordTipManager.2(this, paramList), 8, null, true);
+  }
+  
+  public Pair<MessageRecord, Integer> a(List<MessageRecord> paramList, List<String> paramList1, int paramInt)
+  {
+    Iterator localIterator1 = paramList.iterator();
+    Object localObject1 = null;
+    paramList = null;
     Object localObject2;
-    View localView2;
-    View localView3;
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null)
+    for (;;)
     {
-      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str = ((QQAppInterface)localObject1).c();
-      if ((TextUtils.isEmpty(str)) || (!str.equals(parambbqf.jdField_a_of_type_JavaLangString))) {
-        break label434;
+      if (localIterator1.hasNext())
+      {
+        localObject2 = (MessageRecord)localIterator1.next();
+        if (a((MessageRecord)localObject2))
+        {
+          Object localObject3 = a((MessageRecord)localObject2);
+          if ((localObject3 != null) && (((List)localObject3).size() > 0))
+          {
+            Iterator localIterator2 = ((List)localObject3).iterator();
+            for (;;)
+            {
+              if (localIterator2.hasNext())
+              {
+                localObject3 = (Integer)localIterator2.next();
+                if (((paramList1 == null) || (!paramList1.contains(((MessageRecord)localObject2).getExtInfoFromExtStr("key_aio_keyword") + "_" + localObject3))) && (a((Integer)localObject3, paramInt, (MessageRecord)localObject2)))
+                {
+                  localObject1 = localObject3;
+                  paramList = (List<MessageRecord>)localObject2;
+                  label160:
+                  if (localObject1 == null) {
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-      VasWebviewUtil.reportCommercialDrainage(str, "style", "0X8008E5F", "", 1, 0, 0, "", Integer.toString(parambbqf.jdField_a_of_type_Int), "");
-      localObject2 = (bbqh)((QQAppInterface)localObject1).getManager(231);
-      if (localObject2 != null) {
-        ((bbqh)localObject2).b(parambbqf);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = new SpriteGLView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 1);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b = true;
-      localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-      View localView1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378256);
-      localView2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378420);
-      localView3 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373393);
-      if ((localView1 == null) || (localView1.getVisibility() != 0)) {
-        break label466;
-      }
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = localView1.getBottom();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
-      }
-      if (this.jdField_a_of_type_AndroidWidgetScrollView == null)
-      {
-        this.jdField_a_of_type_AndroidWidgetScrollView = new bbpx(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
-        this.jdField_a_of_type_AndroidWidgetScrollView.setClickable(false);
-        this.jdField_a_of_type_AndroidWidgetScrollView.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, -1, bcwh.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight()));
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetScrollView, (ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, -1, 0);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.setOnTouchListener(new bbpy(this, str, parambbqf));
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new TroopEnterEffectController.3(this, parambbqf));
-      parambbqf = (bbqh)((QQAppInterface)localObject1).getManager(231);
-      localObject1 = a();
-      if (localObject1 != null) {
-        parambbqf.a((bbpu)localObject1, this.b);
-      }
-      bbqh.a("Grp_AIO", "action_play", new String[0]);
-      return;
-      label434:
-      VasWebviewUtil.reportCommercialDrainage(str, "style", "0X8008E60", "", 1, 0, 0, "", Integer.toString(parambbqf.jdField_a_of_type_Int), "");
+      return new Pair(paramList, localObject1);
+      localObject2 = localObject1;
+      localObject1 = paramList;
+      paramList = (List<MessageRecord>)localObject2;
       break;
-      label466:
-      if ((localView2 != null) && (localView2.getVisibility() == 0)) {
-        ((RelativeLayout.LayoutParams)localObject2).topMargin = localView2.getBottom();
-      } else if ((localView3 != null) && (localView3.getVisibility() == 0)) {
-        ((RelativeLayout.LayoutParams)localObject2).topMargin = localView3.getBottom();
-      } else {
-        ((RelativeLayout.LayoutParams)localObject2).topMargin = bcwh.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 50.0F);
+      localObject2 = paramList;
+      paramList = (List<MessageRecord>)localObject1;
+      localObject1 = localObject2;
+      break label160;
+      paramList1 = paramList;
+      paramList = (List<MessageRecord>)localObject1;
+      localObject1 = paramList1;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        oidb_0x496.AioKeyword localAioKeyword = bbpl.a();
+        a(bbpl.a(localAioKeyword), bbpl.b(localAioKeyword));
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Integer paramInteger)
+  {
+    ThreadManager.post(new TroopAioKeywordTipManager.6(this, paramString1, paramString2, paramInteger), 8, null, true);
+  }
+  
+  public void a(List<? extends MessageRecord> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    ThreadManager.post(new TroopAioKeywordTipManager.1(this, paramList), 5, null, true);
+  }
+  
+  public void a(List<bbpm> arg1, List<bbpn> paramList1)
+  {
+    if (??? != null)
+    {
+      Object localObject2;
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilList)
+        {
+          this.jdField_a_of_type_JavaUtilList.clear();
+          localObject2 = ???.iterator();
+          if (((Iterator)localObject2).hasNext())
+          {
+            bbpm localbbpm = (bbpm)((Iterator)localObject2).next();
+            this.jdField_a_of_type_JavaUtilList.add(localbbpm.jdField_a_of_type_JavaLangString.toLowerCase());
+          }
+        }
+      }
+      finally {}
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        ??? = ???.iterator();
+        if (???.hasNext())
+        {
+          localObject2 = (bbpm)???.next();
+          this.jdField_a_of_type_JavaUtilMap.put(((bbpm)localObject2).jdField_a_of_type_JavaLangString.toLowerCase(), localObject2);
+        }
       }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public boolean a(bbqf parambbqf)
-  {
-    int i = parambbqf.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "downloadAnimationResources: id = " + i);
-    }
-    String str = jdField_a_of_type_JavaLangString + i;
-    if (bckh.a(new File(str))) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null) {
-      return false;
-    }
-    bdcs.a(str);
-    ((VasQuickUpdateManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(184)).downloadItem(25L, "groupeffect_item_" + i + ".zip", "TroopEnterEffectController");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(i, parambbqf);
-    return false;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "onResume");
+    if (paramList1 != null) {
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      {
+        this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+        paramList1 = paramList1.iterator();
+        if (paramList1.hasNext())
+        {
+          ??? = (bbpn)paramList1.next();
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(((bbpn)???).jdField_a_of_type_Int, ???);
+        }
+      }
     }
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void d()
+  public void a(List<MessageRecord> paramList, List<String> paramList1, int paramInt, bbpz parambbpz)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
-      this.jdField_a_of_type_AndroidWidgetScrollView.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetScrollView);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
-      this.jdField_a_of_type_AndroidWidgetScrollView = null;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    bbqh localbbqh = (bbqh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(231);
-    if (localbbqh != null) {
-      localbbqh.b(this.b);
-    }
+    ThreadManager.post(new TroopAioKeywordTipManager.3(this, paramList, paramList1, paramInt, parambbpz), 8, null, true);
   }
   
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "onDestroy remove quickupdate callback");
-    }
-    ((VasQuickUpdateManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(184)).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-  }
+  public void onDestroy() {}
 }
 
 

@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class beny
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface beny
 {
-  beny(benw parambenw) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    benw.a(this.a).setAlpha(f);
-  }
+  public abstract void a(benx parambenx);
 }
 
 

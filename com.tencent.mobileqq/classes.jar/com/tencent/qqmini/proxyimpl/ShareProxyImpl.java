@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdje;
-import bizm;
-import bizt;
+import bdnn;
+import bjdt;
+import bjea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -34,7 +34,7 @@ import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import wsv;
+import wxe;
 
 public class ShareProxyImpl
   implements ShareProxy
@@ -49,7 +49,7 @@ public class ShareProxyImpl
       if (paramString.getStatus() != 1) {
         break label44;
       }
-      wsv.b("ShareProxyImpl", "URLDrawable's status is SUCCESSED.");
+      wxe.b("ShareProxyImpl", "URLDrawable's status is SUCCESSED.");
       paramURLDrawableListener.onLoadSuccessed(paramString);
     }
     for (;;)
@@ -58,7 +58,7 @@ public class ShareProxyImpl
       paramString.downloadImediatly();
       return;
       label44:
-      wsv.b("ShareProxyImpl", "start load URLDrawable.");
+      wxe.b("ShareProxyImpl", "start load URLDrawable.");
     }
   }
   
@@ -87,9 +87,9 @@ public class ShareProxyImpl
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. content=" + paramString1 + ",localPicPath=" + paramString2);
     }
-    bizt localbizt = bizt.a();
-    localbizt.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bizm.a(paramActivity, localbizt, paramString2, paramString3, paramString1, -1);
+    bjea localbjea = bjea.a();
+    localbjea.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bjdt.a(paramActivity, localbjea, paramString2, paramString3, paramString1, -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -233,7 +233,7 @@ public class ShareProxyImpl
     MiniAppInfo localMiniAppInfo = paramInnerShareData.a();
     String str;
     Intent localIntent;
-    if (bdje.a(paramInnerShareData.summary))
+    if (bdnn.a(paramInnerShareData.summary))
     {
       str = localMiniAppInfo.desc;
       localIntent = new Intent();

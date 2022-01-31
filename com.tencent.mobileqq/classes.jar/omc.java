@@ -62,7 +62,7 @@ public class omc
           }
         }
       }
-      if ((paramTextView.getTag(2131375292) != null) && ((paramTextView.getTag(2131375292) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131375292)).booleanValue()))
+      if ((paramTextView.getTag(2131375343) != null) && ((paramTextView.getTag(2131375343) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131375343)).booleanValue()))
       {
         switch (paramMotionEvent.getAction())
         {
@@ -70,9 +70,9 @@ public class omc
         for (;;)
         {
           return true;
-          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848793));
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848866));
           continue;
-          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848797));
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848870));
         }
       }
     }

@@ -1,37 +1,19 @@
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class aobs
+  extends ameq
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  long b;
-  long c;
-  long d;
+  public aobs(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public aobs(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aobs))
-    {
-      paramObject = (aobs)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
-      {
-        bool1 = bool2;
-        if (paramObject.b == this.b) {
-          bool1 = true;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
     }
-    return bool1;
+    if (paramBoolean) {
+      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
+    }
   }
 }
 

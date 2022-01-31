@@ -1,6 +1,24 @@
-public abstract interface auig
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+
+public class auig
+  implements bexc
 {
-  public abstract void a(int paramInt);
+  public auig(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
+      }
+      this.a.onBackEvent();
+    }
+    while (paramInt != 2) {
+      return;
+    }
+  }
 }
 
 

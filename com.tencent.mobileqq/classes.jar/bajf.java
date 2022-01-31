@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-final class bajf
-  implements DialogInterface.OnClickListener
+public abstract interface bajf
 {
-  bajf(String paramString1, String paramString2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = bajd.a();
-    if (paramDialogInterface != null) {
-      ((alyu)paramDialogInterface.a(14)).a(this.a, this.b);
-    }
-    bajd.a("0X800A5B6");
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

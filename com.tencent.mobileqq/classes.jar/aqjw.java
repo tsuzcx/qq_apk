@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqjw
-  implements army
+public class aqjw
+  implements DialogInterface.OnClickListener
 {
-  aqjw(aqjt paramaqjt, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public aqjw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = arni.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Aqjt.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Aqjt.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Aqjt.a.a(localFileManagerEntity);
+    this.a.a = false;
+    this.a.l = false;
+    this.a.doOnBackPressed();
   }
-  
-  public void b() {}
 }
 
 

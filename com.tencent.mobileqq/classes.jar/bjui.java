@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-class bjui
-  implements DialogInterface.OnClickListener
+final class bjui
+  implements QQPermissionCallback
 {
-  bjui(bjuc parambjuc, String[] paramArrayOfString) {}
+  bjui(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
-    bjuc.a(this.jdField_a_of_type_Bjuc, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    bdgm.b(bjug.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bjug.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

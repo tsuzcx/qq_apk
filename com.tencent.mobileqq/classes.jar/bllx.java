@@ -1,15 +1,13 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
 
-public abstract class bllx
+public class bllx
+  implements DialogInterface.OnClickListener
 {
-  public AppInterface a()
-  {
-    return bllv.a();
-  }
+  public bllx(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
   
-  public abstract void a();
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

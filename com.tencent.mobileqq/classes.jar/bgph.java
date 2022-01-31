@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
-import java.util.Set;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgph
-  extends bgpi
 {
-  public bgph(BarrageView paramBarrageView, View paramView)
+  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    super(paramBarrageView, paramView, null);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.a).remove(paramAnimation);
+    switch (paramInt)
+    {
+    case -4: 
+    default: 
+    case -5: 
+      try
+      {
+        paramJSONObject.put("errMsg", "unknown reason");
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
+        return;
+      }
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "abort";; paramString = paramString + ":fail abort")
+      {
+        paramJSONObject.put("errMsg", paramString);
+        return;
+      }
+    }
+    paramJSONObject.put("errMsg", "request protocol error");
   }
 }
 

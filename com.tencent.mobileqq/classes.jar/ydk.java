@@ -1,20 +1,20 @@
-import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class ydk
-  extends tzr
+  implements View.OnClickListener
 {
-  public ydk(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public ydk(BaseWidgetView paramBaseWidgetView) {}
   
-  protected int a()
+  public void onClick(View paramView)
   {
-    return 2131558700;
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    {
+      this.a.b(this.a.a());
+      this.a.a().onClick(paramView);
+    }
   }
-  
-  protected void a(View paramView) {}
 }
 
 

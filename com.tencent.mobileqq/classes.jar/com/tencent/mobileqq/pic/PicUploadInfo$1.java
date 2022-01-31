@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.pic;
 
-import awfl;
+import awju;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class PicUploadInfo$1
   implements Runnable
 {
-  public PicUploadInfo$1(awfl paramawfl) {}
+  public PicUploadInfo$1(awju paramawju) {}
   
   public void run()
   {

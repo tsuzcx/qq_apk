@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import bepx;
+import beug;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -169,7 +169,7 @@ public class QQToast$ProtectedToast
         {
           localObject1 = a(jdField_a_of_type_JavaLangReflectField, "mHandler");
           if ((localObject1 instanceof Handler)) {
-            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new bepx(this, (Handler)localObject1));
+            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new beug(this, (Handler)localObject1));
           }
         }
         if ((!this.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
@@ -194,7 +194,7 @@ public class QQToast$ProtectedToast
         if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
           jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
         }
-        localObject2 = (TextView)getView().findViewById(2131378059);
+        localObject2 = (TextView)getView().findViewById(2131378113);
         if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
         {
           l = 900L;

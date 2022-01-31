@@ -1,10 +1,22 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.QCirclePublishPictureTagInfo;
 
-abstract interface bjle
+public final class bjle
+  implements Parcelable.Creator<QCirclePublishPictureTagInfo>
 {
-  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
+  public QCirclePublishPictureTagInfo a(Parcel paramParcel)
+  {
+    QCirclePublishPictureTagInfo localQCirclePublishPictureTagInfo = new QCirclePublishPictureTagInfo();
+    localQCirclePublishPictureTagInfo.picId = paramParcel.readString();
+    localQCirclePublishPictureTagInfo.picTags = paramParcel.readArrayList(String.class.getClassLoader());
+    return localQCirclePublishPictureTagInfo;
+  }
   
-  public abstract void d(PluginRecord paramPluginRecord);
+  public QCirclePublishPictureTagInfo[] a(int paramInt)
+  {
+    return new QCirclePublishPictureTagInfo[paramInt];
+  }
 }
 
 

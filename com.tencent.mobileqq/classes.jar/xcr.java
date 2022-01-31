@@ -1,65 +1,20 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class xcr
-  implements wzt
+final class xcr
+  implements Animation.AnimationListener
 {
-  private xcr(DoodleLayout paramDoodleLayout) {}
+  xcr(View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.d(3);
+    this.a.setAnimation(null);
   }
   
-  public void a(float paramFloat)
-  {
-    if (paramFloat == 1.0F) {
-      this.a.jdField_a_of_type_Xay.a(this.a.a().a());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3) {}
-  
-  public boolean a(wzu paramwzu)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) && (paramwzu != null))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((xeh)localObject).d = false;
-        if (!(localObject instanceof wzi)) {
-          break label124;
-        }
-        wze localwze = this.a.a();
-        if (localwze != null) {
-          localwze.a.add((wzi)localObject);
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramwzu);
-        paramwzu.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label124:
-        if ((localObject instanceof wzu))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((wzs)localObject).d();
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void b() {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

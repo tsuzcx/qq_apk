@@ -1,51 +1,25 @@
-import android.util.Log;
-import java.io.Writer;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class akmj
-  extends Writer
+class akmj
+  implements Animation.AnimationListener
 {
-  private StringBuilder a = new StringBuilder();
+  akmj(akmi paramakmi, ztp paramztp, View paramView) {}
   
-  private void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
+    this.jdField_a_of_type_Ztp.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839217);
   }
   
-  public void close()
-  {
-    a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmj
  * JD-Core Version:    0.7.0.1
  */

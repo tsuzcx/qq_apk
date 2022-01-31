@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ahwl
-  extends alkl
+class ahwl
 {
-  public ahwl(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  protected void a(Object paramObject)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  private ahwl(ahwi paramahwi) {}
 }
 
 

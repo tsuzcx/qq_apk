@@ -1,18 +1,8 @@
-public class awtv
+public abstract interface awtv
 {
-  public int a;
-  public final awua a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public awtv(int paramInt)
-  {
-    this.jdField_a_of_type_Awua = new awua();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awua.jdField_a_of_type_Int = -2147483648;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

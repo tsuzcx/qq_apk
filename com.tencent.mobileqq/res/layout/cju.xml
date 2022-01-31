@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/alq" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/kr6" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/hvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0KB/s" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#80ffffff" android:id="@id/jmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wnb" android:layout_below="@id/hvh" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <EditText android:textSize="28.0dip" android:textColor="@color/fl" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kr5" android:background="@drawable/bkq" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="3.0dip" android:maxLength="1" android:textCursorDrawable="@drawable/bkp" />
+    <TextView android:textSize="28.0dip" android:textColor="@color/fl" android:layout_gravity="center_vertical" android:id="@id/kr7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*华" />
+</LinearLayout>

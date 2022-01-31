@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.web;
 
-import akji;
-import akow;
-import alpo;
+import aknx;
+import aktl;
+import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
-import aply;
-import bdpx;
+import apqh;
+import bdug;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$29
   implements Runnable
 {
-  public MessengerService$IncomingHandler$29(aply paramaply, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$29(apqh paramapqh, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$29
               return;
             }
             localJSONObject.put("result", 1);
-            localJSONObject.put("msg", alpo.a(2131707048));
+            localJSONObject.put("msg", alud.a(2131707060));
             continue;
             QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
           }
@@ -105,7 +105,7 @@ public class MessengerService$IncomingHandler$29
             else
             {
               localJSONException.put("result", 1);
-              localJSONException.put("msg", alpo.a(2131707068));
+              localJSONException.put("msg", alud.a(2131707080));
             }
           }
           else
@@ -113,7 +113,7 @@ public class MessengerService$IncomingHandler$29
             if (!"danUpgrade".equals(localObject2)) {
               break;
             }
-            ((bdpx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
+            ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
             if (QLog.isColorLevel()) {
               QLog.d("Q.emoji.web.MessengerService", 2, "ipc call danUpgrade,maybe have new slave action");
             }
@@ -133,7 +133,7 @@ public class MessengerService$IncomingHandler$29
     }
     for (;;)
     {
-      akow.a(bool);
+      aktl.a(bool);
       break;
       QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
       i = 0;
@@ -149,7 +149,7 @@ public class MessengerService$IncomingHandler$29
         break;
       }
       localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
+      ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
       break;
       label787:
       label788:

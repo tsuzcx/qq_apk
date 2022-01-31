@@ -1,13 +1,22 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-
 public class ajwl
-  extends akee
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  
+  private ajwl()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+  }
 }
 
 

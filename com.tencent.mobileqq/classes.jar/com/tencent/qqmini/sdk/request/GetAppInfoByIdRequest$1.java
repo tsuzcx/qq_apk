@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.request;
 
-import bgyp;
+import bhcw;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -8,7 +8,7 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 public class GetAppInfoByIdRequest$1
   implements Runnable
 {
-  public GetAppInfoByIdRequest$1(bgyp parambgyp, MiniAppInfo paramMiniAppInfo) {}
+  public GetAppInfoByIdRequest$1(bhcw parambhcw, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {

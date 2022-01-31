@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.media.AudioManager;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akei
-  implements View.OnClickListener
+public class akei
+  implements bdzl
 {
-  akei(akeh paramakeh) {}
+  public akei(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(bdzk parambdzk)
   {
-    akeh.a(this.a).a(paramView);
+    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
+    if (bhtb.b()) {
+      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akei
  * JD-Core Version:    0.7.0.1
  */

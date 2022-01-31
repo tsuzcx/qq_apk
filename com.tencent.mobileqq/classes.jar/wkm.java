@@ -1,11 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
 
 public class wkm
+  extends umf<wjw, uvf>
 {
-  public List<wkh> a = new ArrayList(0);
-  public boolean a;
-  public boolean b;
+  public wkm(wjw paramwjw)
+  {
+    super(paramwjw);
+  }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull uvf paramuvf)
+  {
+    wjw.a(paramwjw, paramuvf.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull uvf paramuvf) {}
 }
 
 

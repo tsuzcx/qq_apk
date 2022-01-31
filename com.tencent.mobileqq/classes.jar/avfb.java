@@ -1,24 +1,21 @@
-import android.view.View;
-import com.tencent.image.Utils;
-import java.io.File;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qphone.base.util.QLog;
 
-class avfb
-  implements bhqd
+public class avfb
+  implements DialogInterface.OnClickListener
 {
-  avfb(avfa paramavfa, bhpy parambhpy, File paramFile, String paramString) {}
+  public avfb(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      agem.a(avfa.a(this.jdField_a_of_type_Avfa), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-      return;
+    auwz.a(this.jdField_a_of_type_AndroidAppActivity, 302);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-    avfa.a(this.jdField_a_of_type_Avfa, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
   }
 }
 

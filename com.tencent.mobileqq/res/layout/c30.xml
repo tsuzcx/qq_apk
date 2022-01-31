@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mpt" android:background="@color/fu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/mpw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <ImageView android:id="@id/mpu" android:clickable="true" android:layout_width="fill_parent" android:layout_height="420.0dip" android:scaleType="fitCenter" />
-        <ImageView android:id="@id/mpv" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a0h" android:layout_below="@id/mpu" android:layout_centerHorizontal="true" />
+    <View android:id="@id/mrb" android:background="@color/fu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/mre" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <ImageView android:id="@id/mrc" android:clickable="true" android:layout_width="fill_parent" android:layout_height="420.0dip" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/mrd" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a0h" android:layout_below="@id/mrc" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </RelativeLayout>

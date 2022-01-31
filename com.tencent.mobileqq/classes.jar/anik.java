@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.ark.ark.VariantWrapper;
 
 class anik
-  implements anio
+  implements anjw
 {
-  anik(anid paramanid, anin paramanin, String paramString, anip paramanip) {}
+  anik(anii paramanii, long paramLong) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(long paramLong)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.b }));
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Anip.a(false);
-      return;
-      if (!anid.b(paramArrayOfByte, this.jdField_a_of_type_Anin.d))
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.b, this.jdField_a_of_type_Anin.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString });
-        if (anid.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.b, str }));
-      }
-    }
-    this.jdField_a_of_type_Anip.a(true);
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

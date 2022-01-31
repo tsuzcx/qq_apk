@@ -1,39 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aifo
-  extends aifb
+class aifo
+  implements DialogInterface.OnClickListener
 {
-  public aifo(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  aifo(aiez paramaiez) {}
   
-  protected boolean b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-  }
-  
-  protected void u()
-  {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    paramDialogInterface.dismiss();
   }
 }
 

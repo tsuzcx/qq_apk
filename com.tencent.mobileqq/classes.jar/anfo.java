@@ -1,7 +1,19 @@
-public abstract interface anfo
-  extends anfm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+
+public final class anfo
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
+  public ArFeatureInfo a(Parcel paramParcel)
+  {
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
+  }
 }
 
 

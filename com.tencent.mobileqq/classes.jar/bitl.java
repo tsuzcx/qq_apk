@@ -1,87 +1,93 @@
-import android.os.IBinder;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bitl
-  implements bitj
+public class bitl
 {
-  private IBinder a;
+  private bitn jdField_a_of_type_Bitn;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  bitl(IBinder paramIBinder)
+  public bitl(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    this.jdField_a_of_type_Bitn = new bitn(paramQQAppInterface);
   }
   
-  /* Error */
-  public void a(int paramInt, android.os.Bundle paramBundle)
+  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 25
-    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: iload_1
-    //   17: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   20: aload_2
-    //   21: ifnull +44 -> 65
-    //   24: aload_3
-    //   25: iconst_1
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: aload_3
-    //   31: iconst_0
-    //   32: invokevirtual 39	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   35: aload_0
-    //   36: getfield 15	bitl:a	Landroid/os/IBinder;
-    //   39: iconst_1
-    //   40: aload_3
-    //   41: aload 4
-    //   43: iconst_0
-    //   44: invokeinterface 45 5 0
-    //   49: pop
-    //   50: aload 4
-    //   52: invokevirtual 48	android/os/Parcel:readException	()V
-    //   55: aload 4
-    //   57: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   60: aload_3
-    //   61: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   64: return
-    //   65: aload_3
-    //   66: iconst_0
-    //   67: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   70: goto -35 -> 35
-    //   73: astore_2
-    //   74: aload 4
-    //   76: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   79: aload_3
-    //   80: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   83: aload_2
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	bitl
-    //   0	85	1	paramInt	int
-    //   0	85	2	paramBundle	android.os.Bundle
-    //   3	77	3	localParcel1	android.os.Parcel
-    //   7	68	4	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	73	finally
-    //   24	35	73	finally
-    //   35	55	73	finally
-    //   65	70	73	finally
+    paramHandler = new SendMsg(paramString);
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
+    }
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramHandler.a.putAll(paramString);
+    }
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramHandler.a(i);
+    if (paramLong > 0L) {
+      paramHandler.a(paramLong);
+    }
+    try
+    {
+      this.jdField_a_of_type_Bitn.a(paramHandler);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new RuntimeException("sendMsg is fail", paramString);
+    }
   }
   
-  public IBinder asBinder()
+  public int a(String paramString, Bundle paramBundle)
   {
-    return this.a;
+    try
+    {
+      int i = a(paramString, paramBundle, null, 0L);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
   }
+  
+  public void a()
+  {
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null)
+    {
+      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
+      return;
+    }
+    localPluginCommunicationHandler.register(new bitm(this, "qlink.notify"));
+  }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return true;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    return true;
+  }
+  
+  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitl
  * JD-Core Version:    0.7.0.1
  */

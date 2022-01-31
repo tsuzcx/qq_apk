@@ -1,12 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
 public class bazj
-  extends bazi
 {
-  public bazj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  int a;
+  int b;
+  
+  public bazj(int paramInt1, int paramInt2)
   {
-    super(paramTribeVideoListPlayerFragment, paramView);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

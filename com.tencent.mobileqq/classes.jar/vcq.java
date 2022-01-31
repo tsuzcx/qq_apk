@@ -1,11 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
-
 public class vcq
-  extends unf
 {
-  public vcq(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
+  
+  public vcq(String paramString)
   {
-    super(paramRspDeleteVideo.result);
+    this.b = paramString;
+  }
+  
+  public void a()
+  {
+    vcr localvcr = new vcr(this, false);
+    vcs localvcs = new vcs(this, false);
+    utz.a().a(localvcr, localvcs);
+  }
+  
+  public void b()
+  {
+    vcr localvcr = new vcr(this, true);
+    vcs localvcs = new vcs(this, true);
+    utz.a().a(localvcr, localvcs);
   }
 }
 

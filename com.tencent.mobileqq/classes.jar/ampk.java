@@ -1,354 +1,291 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload.1;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ampk
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  ArrayList<ampm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static final HashMap<String, ampm> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static Map<ampn, ampt> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(8, 0.75F);
+  private static Map<ampt, ampn> b = new ConcurrentHashMap(8, 0.75F);
   
-  public ampk(long paramLong)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = ("ARPromotionResDownload_" + paramLong);
+    b();
   }
   
-  static ampe a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo)
+  private static ampm a(String paramString)
   {
-    Iterator localIterator = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
-    ampe localampe = null;
-    while (localIterator.hasNext())
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (ampm)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  private static ampt a(ampn paramampn)
+  {
+    boolean bool1 = false;
+    ampm localampm = a(paramampn.businessId);
+    if (localampm == null)
     {
-      ampd localampd = (ampd)((Map.Entry)localIterator.next()).getValue();
-      if (!ampn.a(localampd.jdField_b_of_type_Long))
-      {
-        localampe = a(paramBoolean, paramPromotionConfigInfo.mUin, localampd);
-        if (localampe != null) {
-          return localampe;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "makeSososOnLocationListener business info is null, business id: " + paramampn.businessId);
       }
+      return null;
     }
-    return localampe;
+    int i = localampm.a();
+    int j = localampm.jdField_b_of_type_Int;
+    boolean bool2 = localampm.jdField_b_of_type_Boolean;
+    boolean bool3 = localampm.c;
+    if (!localampm.d) {
+      bool1 = true;
+    }
+    return new ampl(j, bool1, bool3, i, paramampn.observerOnUiThread, bool2, paramampn.businessId, paramampn);
   }
   
-  static ampe a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo, ampd paramampd)
+  public static SosoInterface.SosoLbsInfo a(String paramString)
   {
-    ampe localampe = a(paramBoolean, paramPromotionConfigInfo.mUin, paramampd);
-    paramampd = localampe;
-    if (localampe == null)
-    {
-      paramampd = localampe;
-      if (paramBoolean) {
-        paramampd = a(paramBoolean, paramPromotionConfigInfo);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business id: " + paramString);
     }
-    return paramampd;
-  }
-  
-  public static ampe a(boolean paramBoolean, String paramString, ampd paramampd)
-  {
-    paramampd = paramampd.a().entrySet().iterator();
-    while (paramampd.hasNext())
-    {
-      ampe localampe = (ampe)((Map.Entry)paramampd.next()).getValue();
-      if (localampe.jdField_c_of_type_Int == -1)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w(ampn.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 已经下载失败了, id[" + localampe.e + "], index[" + localampe.jdField_a_of_type_Int + "]");
-        }
-      }
-      else if ((paramBoolean) && (localampe.jdField_b_of_type_Int == 0))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w(ampn.jdField_a_of_type_JavaLangString, 1, "isPromotionResReady, 无需预下载, id[" + localampe.e + "], index[" + localampe.jdField_a_of_type_Int + "]");
-        }
-      }
-      else if (!a(paramString, localampe)) {
-        return localampe;
-      }
-    }
-    return null;
-  }
-  
-  private ArrayList<ampm> a()
-  {
-    ArrayList localArrayList2 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      localArrayList2.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList2;
-    }
-  }
-  
-  private void a(String paramString1, boolean paramBoolean, AppInterface paramAppInterface, String paramString2, int paramInt, ampe paramampe)
-  {
-    if ((a() == null) || (paramampe == null))
-    {
-      a(paramString2, paramInt, -3);
-      return;
-    }
-    paramString2 = a(paramAppInterface, paramampe);
-    paramampe.jdField_b_of_type_Long = System.currentTimeMillis();
-    Object localObject1 = (bavr)paramAppInterface.getManager(193);
-    ((bavr)localObject1).a(paramampe.jdField_a_of_type_JavaLangString);
-    ((bavr)localObject1).a(paramampe.jdField_a_of_type_JavaLangString, 0L);
-    localObject1 = paramampe.jdField_c_of_type_JavaLangString;
-    if (a(paramAppInterface.getAccount(), paramampe))
-    {
-      paramAppInterface = paramampe.jdField_a_of_type_JavaLangObject;
-      if (!paramBoolean) {}
-      try
-      {
-        paramampe.jdField_a_of_type_Boolean = false;
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 资源已经存在, callByPreDownload[" + paramBoolean + "], item[" + paramampe + "], zipPath[" + (String)localObject1 + "]");
-        paramampe.a(2);
-        paramString2.a(paramampe.jdField_a_of_type_JavaLangString, paramampe.jdField_b_of_type_JavaLangString, 100, (String)localObject1, paramampe);
-        return;
-      }
-      finally {}
-    }
-    Object localObject2 = paramampe.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        paramampe.jdField_a_of_type_Boolean = false;
-        if (paramampe.jdField_c_of_type_Int == 1)
-        {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 已经在下载中, callByPreDownload[" + paramBoolean + "], item[" + paramampe + "], zipPath[" + (String)localObject1 + "]");
-          return;
-        }
-      }
-      finally {}
-      paramampe.a(1);
-      boolean bool = ((anon)paramAppInterface.getManager(191)).a(paramampe.jdField_a_of_type_JavaLangString, paramampe.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramampe, paramampe.jdField_a_of_type_Anoq);
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString1 + "], 开始下载, callByPreDownload[" + paramBoolean + "], ret[" + bool + "], item[" + paramampe + "]");
-      if (!bool) {
-        paramString2.a(paramampe.jdField_a_of_type_JavaLangString, paramampe.jdField_b_of_type_JavaLangString, -4, null, paramampe);
-      }
-    }
-  }
-  
-  static boolean a(ampe paramampe)
-  {
-    if (paramampe.jdField_a_of_type_Int == 0)
-    {
-      String str = ampj.a(paramampe);
-      if (!new File(str + "entry.png").exists()) {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.png" + "]");
-        }
-      }
-      do
-      {
-        do
-        {
-          return false;
-          if (new File(str + "entry.json").exists()) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.w("PromotionResDownload", 1, "文件不存在, path[" + str + "], name[" + "entry.json" + "]");
-        return false;
-        paramampe = ampj.b(paramampe);
-        if (new File(paramampe + "guide.json").exists()) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.w("PromotionResDownload", 1, "文件不存在, path[" + paramampe + "], name[" + "guide.json" + "]");
-      return false;
-    }
-    if (paramampe.jdField_a_of_type_Int == 1) {}
-    return true;
-  }
-  
-  public static boolean a(String paramString, ampe paramampe)
-  {
-    String str = paramampe.d;
-    if (bdkx.a(paramString, paramampe.e, paramampe.jdField_a_of_type_Int, paramampe.jdField_b_of_type_JavaLangString, str)) {
-      return a(paramampe);
-    }
-    return false;
-  }
-  
-  /* Error */
-  anoq a(AppInterface paramAppInterface, ampe paramampe)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_2
-    //   3: getfield 218	ampe:jdField_a_of_type_Anoq	Lanoq;
-    //   6: ifnull +12 -> 18
-    //   9: aload_2
-    //   10: getfield 218	ampe:jdField_a_of_type_Anoq	Lanoq;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aload_2
-    //   19: getfield 116	ampe:jdField_a_of_type_Int	I
-    //   22: istore_3
-    //   23: aload_2
-    //   24: new 265	ampl
-    //   27: dup
-    //   28: aload_0
-    //   29: aload_1
-    //   30: aload_2
-    //   31: getfield 112	ampe:e	Ljava/lang/String;
-    //   34: iload_3
-    //   35: invokespecial 268	ampl:<init>	(Lampk;Lcom/tencent/common/app/AppInterface;Ljava/lang/String;I)V
-    //   38: putfield 218	ampe:jdField_a_of_type_Anoq	Lanoq;
-    //   41: aload_2
-    //   42: getfield 218	ampe:jdField_a_of_type_Anoq	Lanoq;
-    //   45: astore_1
-    //   46: goto -32 -> 14
-    //   49: astore_1
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: aload_1
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	54	0	this	ampk
-    //   0	54	1	paramAppInterface	AppInterface
-    //   0	54	2	paramampe	ampe
-    //   22	13	3	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	49	finally
-    //   18	46	49	finally
-  }
-  
-  PromotionConfigInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
-  }
-  
-  public void a(ampm paramampm)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramampm);
-      return;
-    }
-  }
-  
-  void a(AppInterface paramAppInterface, boolean paramBoolean, String paramString, int paramInt)
-  {
-    Object localObject1 = a();
-    if (localObject1 == null) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, ConfigInfo为空, callByPreDownload[" + paramBoolean + "], activatyid[" + paramString + "], index[" + paramInt + "]");
-    }
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      Object localObject2;
-      for (;;)
-      {
-        return;
-        if (!(paramAppInterface instanceof QQAppInterface))
-        {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 不在主进程");
-          return;
-        }
-        localObject2 = ((PromotionConfigInfo)localObject1).getItem(paramString);
-        if (localObject2 == null)
-        {
-          a(paramString, paramInt, -3);
-          return;
-        }
-        localObject1 = a(paramBoolean, (PromotionConfigInfo)localObject1, (ampd)localObject2);
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, expectID[" + paramString + "], expectIndex[" + paramInt + "], callByPreDownload[" + paramBoolean + "], zipItem[" + localObject1 + "]");
-        if (localObject1 != null) {
-          break;
-        }
-        paramAppInterface = ((ampd)localObject2).a().entrySet().iterator();
-        while (paramAppInterface.hasNext()) {
-          a(paramString, ((ampe)((Map.Entry)paramAppInterface.next()).getValue()).jdField_a_of_type_Int, 100);
-        }
-      }
-      paramString = ((ampe)localObject1).jdField_b_of_type_JavaLangString;
-      if (!paramBoolean) {
+      return null;
+      paramString = a(paramString);
+      if (paramString != null) {
         break;
       }
-      if (((ampe)localObject1).jdField_b_of_type_Int != 0)
-      {
-        localObject2 = new bavs((QQAppInterface)paramAppInterface, paramString, new PromotionResDownload.1(this, paramBoolean, paramAppInterface, (ampe)localObject1), 0L);
-        paramBoolean = ((bavr)paramAppInterface.getManager(193)).a(10074, "prd", paramString, 0, ((ampe)localObject1).jdField_a_of_type_JavaLangString, ((ampe)localObject1).jdField_c_of_type_JavaLangString, ((ampe)localObject1).jdField_b_of_type_Int, 0, true, (bavo)localObject2);
-        ((ampe)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 预下载申请调度, ret[" + paramBoolean + "], index[" + ((ampe)localObject1).jdField_a_of_type_Int + "]");
-        return;
-      }
-    } while (!AudioHelper.e());
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 无需预下载，id[" + ((ampe)localObject1).e + "], index[" + ((ampe)localObject1).jdField_a_of_type_Int + "]");
-    return;
-    a(alpo.a(2131708899), paramBoolean, paramAppInterface, ((ampe)localObject1).e, ((ampe)localObject1).jdField_a_of_type_Int, (ampe)localObject1);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
-    paramPromotionConfigInfo = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
-    while (paramPromotionConfigInfo.hasNext())
-    {
-      Iterator localIterator = ((ampd)((Map.Entry)paramPromotionConfigInfo.next()).getValue()).a().entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((ampe)((Map.Entry)localIterator.next()).getValue()).a();
-      }
+    } while (!QLog.isColorLevel());
+    QLog.w("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business info is null.");
+    return null;
+    if (paramString.d) {
+      return SosoInterface.a(paramString.jdField_a_of_type_Boolean);
     }
+    return SosoInterface.a(paramString.jdField_b_of_type_Int, paramString.jdField_a_of_type_Boolean);
   }
   
-  void a(String paramString, int paramInt1, int paramInt2)
+  public static String a()
   {
-    b(paramString, paramInt1, paramInt2);
-    BusinessCommonConfig.sendDownloadResultNotify(2, paramString, paramInt1, paramInt2);
+    return SosoInterface.a();
   }
   
-  void b()
+  public static void a()
   {
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext()) {
-      ((ampm)localIterator.next()).a();
-    }
-  }
-  
-  public void b(ampm paramampm)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (jdField_a_of_type_JavaUtilMap)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramampm);
+      jdField_a_of_type_JavaUtilMap.clear();
+      b.clear();
       return;
     }
   }
   
-  void b(String paramString, int paramInt1, int paramInt2)
+  public static void a(ampn paramampn)
   {
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext()) {
-      ((ampm)localIterator.next()).a(paramString, paramInt1, paramInt2);
+    if (paramampn == null) {
+      return;
+    }
+    label129:
+    label134:
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilMap)
+      {
+        if (jdField_a_of_type_JavaUtilMap.containsKey(paramampn)) {
+          break label129;
+        }
+        localampt = a(paramampn);
+        if (localampt == null) {
+          break label134;
+        }
+        jdField_a_of_type_JavaUtilMap.put(paramampn, localampt);
+        b.put(localampt, paramampn);
+        break label134;
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("startLocation sosoLocationListener is null : ");
+          if (localampt == null)
+          {
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool + " business id: " + paramampn.businessId);
+          }
+        }
+        else
+        {
+          if (localampt == null) {
+            break;
+          }
+          SosoInterface.a(localampt);
+          return;
+        }
+      }
+      boolean bool = false;
+      continue;
+      ampt localampt = null;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return SosoInterface.a();
+  }
+  
+  private static SosoInterface.SosoLbsInfo b(SosoInterface.SosoLbsInfo paramSosoLbsInfo, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    Object localObject;
+    do
+    {
+      return null;
+      localObject = a(paramString);
+    } while ((localObject == null) || (paramSosoLbsInfo == null));
+    if (((ampm)localObject).d)
+    {
+      paramString = new SosoInterface.SosoLbsInfo();
+      paramString.jdField_a_of_type_ArrayOfByte = paramSosoLbsInfo.jdField_a_of_type_ArrayOfByte;
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(0, ((ampm)localObject).jdField_a_of_type_Boolean);
+      }
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a();
+      }
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      paramString.jdField_a_of_type_Long = paramSosoLbsInfo.jdField_a_of_type_Long;
+      paramString.jdField_a_of_type_JavaLangString = paramSosoLbsInfo.jdField_a_of_type_JavaLangString;
+      paramString.jdField_b_of_type_JavaLangString = paramSosoLbsInfo.jdField_b_of_type_JavaLangString;
+      return paramString;
+    }
+    paramString = new SosoInterface.SosoLbsInfo();
+    paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(((ampm)localObject).jdField_b_of_type_Int, ((ampm)localObject).jdField_a_of_type_Boolean);
+    return paramString;
+  }
+  
+  public static String b()
+  {
+    return SosoInterface.b();
+  }
+  
+  private static void b()
+  {
+    ampm localampm = new ampm("official_location", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("QQMapActivity", true, 5, 1, true, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("readinjoy_anti_cheating", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("vas_red_point", false, 2, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_address_select", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_for_report", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_weather", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_live", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_say", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_upload_pic_video", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_photo_recommend", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_little_video_enter", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_request_server", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_h5", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qzone_other", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("readinjoy_feed_ad_distance", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("gdt_tangram", true, 1, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("nearby_readinjoy", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("troop_handler", true, 2, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("troop_member_distance", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("webview", true, 3, 4, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qq_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qq_story_water_mark", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("readinjoy_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("LBSService.Point", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("Login.Guide", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("recommend_troop", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("vfuchong_bus_card", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("readinjoy_position", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+    localampm = new ampm("qqcircle", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localampm.jdField_a_of_type_JavaLangString, localampm);
+  }
+  
+  public static void b(ampn paramampn)
+  {
+    if (paramampn == null) {
+      return;
+    }
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilMap)
+      {
+        if (!jdField_a_of_type_JavaUtilMap.containsKey(paramampn)) {
+          break label120;
+        }
+        localampt = (ampt)jdField_a_of_type_JavaUtilMap.remove(paramampn);
+        b.remove(localampt);
+        if (QLog.isColorLevel())
+        {
+          paramampn = new StringBuilder().append("removeListener business id is: ").append(paramampn.businessId).append(" sosoLocationListener is null: ");
+          if (localampt == null)
+          {
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool);
+          }
+        }
+        else
+        {
+          if (localampt == null) {
+            break;
+          }
+          SosoInterface.b(localampt);
+          return;
+        }
+      }
+      boolean bool = false;
+      continue;
+      label120:
+      ampt localampt = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampk
  * JD-Core Version:    0.7.0.1
  */

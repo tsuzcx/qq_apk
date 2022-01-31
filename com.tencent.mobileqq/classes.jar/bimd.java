@@ -1,19 +1,69 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
-public final class bimd
-  implements Comparator<File>
+public class bimd
 {
-  public int a(File paramFile1, File paramFile2)
+  private final int jdField_a_of_type_Int;
+  public asta a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c = 0;
+  private int d;
+  
+  public bimd(int paramInt1, int paramInt2)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    c();
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
-    if (l == 0L) {
-      return 0;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (this.jdField_b_of_type_Boolean) {}
+    for (int i = 0;; i = 1)
+    {
+      bimc.a(localAppRuntime, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(this.d) });
+      c();
+      return;
     }
-    return -1;
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.d = 0;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    b();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    bimd localbimd = (bimd)bimc.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if ((localbimd != null) && (localbimd.jdField_a_of_type_Boolean)) {
+      localbimd.b();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.c = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    bimc.a().put(Integer.valueOf(this.jdField_a_of_type_Int), this);
   }
 }
 

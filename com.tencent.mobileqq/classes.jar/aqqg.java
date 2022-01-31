@@ -1,53 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-class aqqg
-  extends aqqt
+public class aqqg
+  implements Comparator<FileManagerEntity>
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public aqqg(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  aqqg(aqpv paramaqpv, MessageRecord paramMessageRecord)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    super(paramaqpv);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqqr paramaqqr)
-  {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, true), false);
-      return;
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
     }
-    aqpv.a(this.jdField_a_of_type_Aqpv).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqqh(this, paramString, paramaqqr));
+    return 0;
   }
 }
 

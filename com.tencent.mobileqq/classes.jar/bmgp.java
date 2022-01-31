@@ -1,14 +1,12 @@
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-
-class bmgp
-  implements ViewTreeObserver.OnScrollChangedListener
+public abstract interface bmgp
 {
-  bmgp(bmgo parambmgo) {}
+  public abstract void c(int paramInt);
   
-  public void onScrollChanged()
-  {
-    bmgo.a(this.a);
-  }
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void q();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -16,16 +16,16 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import ayab;
-import ayac;
-import ayae;
-import ayaf;
-import ayag;
-import ayah;
-import ayai;
-import ayaj;
-import ayak;
-import baig;
+import ayek;
+import ayel;
+import ayen;
+import ayeo;
+import ayep;
+import ayeq;
+import ayer;
+import ayes;
+import ayet;
+import bamp;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import com.tencent.qphone.base.util.QLog;
@@ -38,10 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ayae<View> jdField_a_of_type_Ayae;
-  private ayai jdField_a_of_type_Ayai;
-  private ayaj jdField_a_of_type_Ayaj;
-  private ayak jdField_a_of_type_Ayak;
+  private ayen<View> jdField_a_of_type_Ayen;
+  private ayer jdField_a_of_type_Ayer;
+  private ayes jdField_a_of_type_Ayes;
+  private ayet jdField_a_of_type_Ayet;
   private String jdField_a_of_type_JavaLangString = "CommentsView";
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
@@ -70,20 +70,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new ayah(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new ayeq(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Ayae.a();
+    View localView2 = (View)this.jdField_a_of_type_Ayen.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561833, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561851, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -92,7 +92,7 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    ayac localayac = new ayac(this.b, this.b);
+    ayel localayel = new ayel(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     String str = localCommentItem.user.b;
     paramView = "";
@@ -104,24 +104,24 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131719201));
+      localSpannableStringBuilder.append(getContext().getString(2131719213));
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(a(paramView, localCommentItem.toReplyUser.jdField_a_of_type_JavaLangString));
     }
     localSpannableStringBuilder.append(": ");
     localSpannableStringBuilder.append(localCommentItem.content);
-    localTextView.setText(new baig(localSpannableStringBuilder, 3, 16));
+    localTextView.setText(new bamp(localSpannableStringBuilder, 3, 16));
     localTextView.setTextColor(this.c);
-    localTextView.setMovementMethod(localayac);
-    localTextView.setOnClickListener(new ayaf(this, localayac, paramInt));
-    localTextView.setOnLongClickListener(new ayag(this, localayac, paramInt));
+    localTextView.setMovementMethod(localayel);
+    localTextView.setOnClickListener(new ayeo(this, localayel, paramInt));
+    localTextView.setOnLongClickListener(new ayep(this, localayel, paramInt));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Ayae = new ayae();
+    this.jdField_a_of_type_Ayen = new ayen();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167085);
+    this.c = getResources().getColor(2131167087);
   }
   
   public void a()
@@ -135,7 +135,7 @@ public class CommentsView
       return;
       setVisibility(0);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = aekt.a(2.0F, getResources());
+      localLayoutParams.topMargin = aepi.a(2.0F, getResources());
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         if (getChildCount() > i) {
@@ -163,8 +163,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166370));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166832));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166372));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166834));
       return;
     }
     finally
@@ -187,7 +187,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Ayae.a(paramView2);
+    this.jdField_a_of_type_Ayen.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -200,19 +200,19 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(ayai paramayai)
+  public void setOnItemClickListener(ayer paramayer)
   {
-    this.jdField_a_of_type_Ayai = paramayai;
+    this.jdField_a_of_type_Ayer = paramayer;
   }
   
-  public void setOnItemLongClickListener(ayaj paramayaj)
+  public void setOnItemLongClickListener(ayes paramayes)
   {
-    this.jdField_a_of_type_Ayaj = paramayaj;
+    this.jdField_a_of_type_Ayes = paramayes;
   }
   
-  public void setOnSpanItemClick(ayak paramayak)
+  public void setOnSpanItemClick(ayet paramayet)
   {
-    this.jdField_a_of_type_Ayak = paramayak;
+    this.jdField_a_of_type_Ayet = paramayet;
   }
 }
 

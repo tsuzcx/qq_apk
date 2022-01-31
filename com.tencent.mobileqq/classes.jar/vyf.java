@@ -1,16 +1,8 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-class vyf
-  implements vhf
+public abstract interface vyf
 {
-  vyf(vye paramvye) {}
+  public abstract vya a();
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
-  }
+  public abstract vya b();
 }
 
 

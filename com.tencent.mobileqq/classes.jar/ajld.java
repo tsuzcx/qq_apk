@@ -1,32 +1,85 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.widget.CustomImgView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajld
-  implements MessageQueue.IdleHandler
+  extends BaseAdapter
 {
-  public ajld(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  public boolean queueIdle()
+  public ajld(ajlc paramajlc, Context paramContext, int paramInt1, int paramInt2)
   {
-    if (azcw.d(azcw.b)) {
-      this.a.b(true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private void a(List<MessageRecord> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      int j = i;
+      if (i > this.jdField_a_of_type_Int) {
+        j = this.jdField_a_of_type_Int;
+      }
+      return j;
+    }
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0; (paramInt > 0) && (paramInt < i); i = this.jdField_a_of_type_JavaUtilList.size()) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560913, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
     }
     for (;;)
     {
-      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      paramViewGroup = (CustomImgView)paramView;
+      MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.senderuin)))
+      {
+        paramViewGroup.setImageDrawable(this.jdField_a_of_type_Ajlc.a.a(localMessageRecord.istroop, localMessageRecord.senderuin));
+        paramView.setTag(-1, localMessageRecord.senderuin);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.i();
+      return paramView;
     }
   }
 }

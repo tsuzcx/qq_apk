@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import abnw;
+import absl;
 import android.os.Bundle;
-import bbpk;
+import bbtt;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageManagerForTroopAndDisc$1
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$1(abnw paramabnw, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
+  public BaseMessageManagerForTroopAndDisc$1(absl paramabsl, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
   
   public void run()
   {

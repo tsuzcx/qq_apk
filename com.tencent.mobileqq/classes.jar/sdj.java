@@ -16,7 +16,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 
 public class sdj
 {
-  private static bhuf a;
+  private static bhym a;
   
   public static void a()
   {
@@ -59,7 +59,7 @@ public class sdj
     if (!TextUtils.isEmpty(paramString))
     {
       str = paramString;
-      if (bdee.h(paramContext)) {
+      if (bdin.h(paramContext)) {
         str = paramString + "&acttype=42";
       }
     }
@@ -96,7 +96,7 @@ public class sdj
     for (;;)
     {
       if (a == null) {
-        a = new bhuf((Activity)paramContext);
+        a = new bhym((Activity)paramContext);
       }
       if (!a.a()) {
         a.a();

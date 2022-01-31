@@ -1,16 +1,20 @@
-public class blus
+import com.tencent.mobileqq.data.FlowMusic;
+
+class blus
+  implements blrq
 {
-  String a = "";
-  String b = "";
-  String c = "";
+  blus(blur paramblur, String paramString) {}
   
-  public blus() {}
-  
-  public blus(String paramString1, String paramString2, String paramString3)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (paramObject == null) {}
+    do
+    {
+      return;
+      paramObject = (FlowMusic)paramObject;
+      blur.a(this.jdField_a_of_type_Blur, blur.a(this.jdField_a_of_type_Blur, paramObject, this.jdField_a_of_type_JavaLangString));
+    } while (!blur.a(this.jdField_a_of_type_Blur).equals(blur.a(this.jdField_a_of_type_Blur).getClass()));
+    this.jdField_a_of_type_Blur.d();
   }
 }
 

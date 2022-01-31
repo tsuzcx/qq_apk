@@ -1,23 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class auub
-  implements View.OnClickListener
 {
-  public auub(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "";
   
-  public void onClick(View paramView)
+  public auub()
   {
-    if (!NetworkUtils.isNetworkAvailable(this.a))
-    {
-      QQToast.a(this.a, 1, 2131694766, 1).a();
-      return;
-    }
-    this.a.d();
-    this.a.a("invite_page", "clk_exit");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public auub(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public boolean a()
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
   }
 }
 

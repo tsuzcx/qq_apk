@@ -1,12 +1,32 @@
-public class arpi
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
+
+class arpi
+  implements arrh
 {
-  public long a;
-  public String a;
+  arpi(arph paramarph, List paramList, aqsb paramaqsb, arpm paramarpm) {}
   
-  public arpi(String paramString, long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aqsb.b(localFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Arpm != null) {
+      this.jdField_a_of_type_Arpm.a(1, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Arpm != null) {
+      this.jdField_a_of_type_Arpm.a(1, 1);
+    }
   }
 }
 

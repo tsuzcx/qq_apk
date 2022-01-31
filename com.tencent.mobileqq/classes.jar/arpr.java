@@ -1,18 +1,16 @@
-import android.os.Bundle;
+import java.util.List;
 
-public abstract interface arpr
+class arpr
+  implements bezx
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  arpr(arpn paramarpn, List paramList) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      bcnt.a(arpn.a(this.jdField_a_of_type_Arpn), arpn.a(this.jdField_a_of_type_Arpn), this.jdField_a_of_type_JavaUtilList);
+    }
+  }
 }
 
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class aqdu
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
+  public aqdu(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public aqdu(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramDialogInterface.dismiss();
   }
 }
 

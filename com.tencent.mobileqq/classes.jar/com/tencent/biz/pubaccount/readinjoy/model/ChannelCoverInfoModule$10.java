@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 import org.json.JSONArray;
@@ -13,7 +13,7 @@ public class ChannelCoverInfoModule$10
   
   public void run()
   {
-    bdcs.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
+    bdhb.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
   }
 }
 

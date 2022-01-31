@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import aano;
+import aasd;
 import android.os.Bundle;
 import android.text.TextUtils;
-import angm;
+import ankv;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
@@ -18,7 +18,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 public class ArkAppNotifyCenter$GdtNotify$2
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$2(angm paramangm, String paramString1, WeakReference paramWeakReference, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$2(ankv paramankv, String paramString1, WeakReference paramWeakReference, String paramString2) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ArkAppNotifyCenter$GdtNotify$2
         int i = ((JSONObject)localObject3).optInt("clickScene");
         int j = ((JSONObject)localObject3).optInt("clickPosition");
         localObject3 = ((JSONObject)localObject3).optString("gdtRefsid");
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
+        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
         GdtHandler.Params localParams = new GdtHandler.Params();
         localParams.jdField_c_of_type_Int = 7;
         localParams.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;

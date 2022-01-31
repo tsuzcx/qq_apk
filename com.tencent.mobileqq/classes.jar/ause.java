@@ -1,66 +1,69 @@
-import com.tencent.mobileqq.dating.FansEntity;
-import java.util.List;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class ause
-  implements alkr
 {
-  public void a(String paramString1, String paramString2, Object paramObject) {}
+  public static final String a = "qqmusic://qq.com/ui/myTab?p=%7B%22tab%22%3A%22home%22%7D&ADTAG=YIQITING&source=" + URLEncoder.encode("https://y.qq.com/m/index.html?ADTAG=YIQITING");
   
-  protected void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, String paramString1, List<auwl> paramList, String paramString2, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, List<FansEntity> paramList) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void c(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static void a(Context paramContext, String paramString)
   {
-    switch (paramInt)
+    long l = 0L;
+    for (;;)
     {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 13: 
-    default: 
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 12: 
-      a(paramBoolean);
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      if ((paramBoolean) && (paramObject != null) && (paramObject.length == 1))
+      try
       {
-        a(paramBoolean, (List)paramObject[0]);
-        return;
+        localObject = new URL(paramString);
       }
-      a(false, null);
-      return;
-    case 6: 
-      c(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
-      return;
-    case 7: 
-      b(paramBoolean);
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], (String)paramObject[1], paramObject[2]);
-      return;
-    case 14: 
-      b(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
-      return;
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject;
+        int i;
+        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+        continue;
+      }
+      try
+      {
+        i = ((URL)localObject).openConnection().getContentLength();
+        l = i;
+      }
+      catch (IOException localIOException)
+      {
+        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
+      }
     }
-    a(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
+    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
+    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694947));
+    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
+    araj.a().b(paramString, (Bundle)localObject);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return a(paramContext, "com.tencent.qqmusic");
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext.getPackageInfo(paramString, 1);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
   }
 }
 

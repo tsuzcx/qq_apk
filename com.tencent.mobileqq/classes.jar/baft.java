@@ -1,17 +1,25 @@
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
 public class baft
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public AsyncImageView a;
-  public GroupPadTemplateInfo a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public baft(bafr parambafr) {}
+  public baft(TableQueryViewer paramTableQueryViewer, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377398));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131377396));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131377401));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131377393));
+    this.d.setTextSize(10.0F);
+  }
 }
 
 

@@ -1,21 +1,15 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class aell
-  extends View.AccessibilityDelegate
+  implements aelt
 {
-  public aell(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public aell(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
-    }
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.runtime.widget;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
-import bglb;
+import bgpi;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ class CanvasView$1$1
           localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("width", i2);
           ((JSONObject)localObject2).put("height", i3);
-          bglb.a(null, arrayOfByte, bglb.b, "data", (JSONObject)localObject2);
+          bgpi.a(null, arrayOfByte, bgpi.b, "data", (JSONObject)localObject2);
           this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCanvasView$1.this$0.b(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCanvasView$1.jdField_a_of_type_JavaLangString, (JSONObject)localObject2, this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCanvasView$1.jdField_a_of_type_Int);
           return;
         }

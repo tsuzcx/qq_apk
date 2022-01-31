@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import usj;
-import uzh;
-import uzk;
+import uws;
+import vdq;
+import vdt;
 
 public class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1
   implements Runnable
 {
-  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(uzk paramuzk, uzh paramuzh, usj paramusj) {}
+  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(vdt paramvdt, vdq paramvdq, uws paramuws) {}
   
   public void run()
   {
-    uzk.a(this.this$0, this.jdField_a_of_type_Uzh, this.jdField_a_of_type_Usj);
+    vdt.a(this.this$0, this.jdField_a_of_type_Vdq, this.jdField_a_of_type_Uws);
   }
 }
 

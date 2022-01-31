@@ -1,120 +1,117 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.net.NetworkInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import cooperation.qzone.util.NetworkState;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Shader.TileMode;
+import android.support.annotation.NonNull;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bdee
+public final class bdee
 {
-  public static int a(int paramInt)
+  public static final DownloadParams.DecodeHandler a = new bdef();
+  public static final DownloadParams.DecodeHandler b = new bdeg(bcyz.s, a);
+  
+  public static Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    switch (paramInt)
+    try
     {
-    case 2: 
-    default: 
-      return 2;
-    case 1: 
-    case 4: 
-    case 5: 
-      return 4;
+      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      return paramConfig;
     }
-    return 3;
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int j = ndd.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    return i;
-  }
-  
-  public static String a(int paramInt)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
-    return localStringBuffer.toString();
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return NetworkState.getAPN();
-  }
-  
-  public static boolean a()
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
-  
-  public static boolean a(NetworkInfo paramNetworkInfo)
-  {
-    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int j = -1;
-    int i = j;
-    if (AppNetConnInfo.isNetSupport())
+    catch (Exception paramConfig)
     {
-      paramContext = AppNetConnInfo.getRecentNetworkInfo();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getType();
-      }
+      return null;
     }
-    return i;
+    catch (OutOfMemoryError paramConfig) {}
+    return null;
   }
   
-  public static boolean b(Context paramContext)
+  public static Bitmap a(@NonNull Bitmap paramBitmap)
   {
-    return AppNetConnInfo.isMobileConn();
+    return a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
   }
   
-  public static boolean c(Context paramContext)
+  public static Bitmap a(@NonNull Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    int i = bewy.a(paramContext);
-    return (i == 4) || (i == 3);
+    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0) || ((paramInt1 <= 0) && (paramInt2 <= 0))) {}
+    Bitmap localBitmap;
+    do
+    {
+      return paramBitmap;
+      localBitmap = a(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    } while (localBitmap == null);
+    return a(paramBitmap, localBitmap, paramInt1, paramInt2);
   }
   
-  public static boolean d(Context paramContext)
+  public static Bitmap a(@NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2, int paramInt1, int paramInt2)
   {
-    return AppNetConnInfo.isNetSupport();
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return paramBitmap1;
+    }
+    paramBitmap2.setDensity((int)bdoo.c());
+    Canvas localCanvas = new Canvas(paramBitmap2);
+    Path localPath = a(paramInt1, paramInt2);
+    BitmapShader localBitmapShader = new BitmapShader(paramBitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    localBitmapShader.setLocalMatrix(a(paramBitmap1.getWidth(), paramBitmap1.getHeight(), paramInt1, paramInt2));
+    paramBitmap1 = new Paint();
+    paramBitmap1.setShader(localBitmapShader);
+    paramBitmap1.setAntiAlias(true);
+    localCanvas.drawPath(localPath, paramBitmap1);
+    return paramBitmap2;
   }
   
-  public static boolean e(Context paramContext)
+  @NonNull
+  private static Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return HwNetworkUtil.isNetSupport(paramContext);
+    float f1 = 0.0F;
+    Matrix localMatrix = new Matrix();
+    if ((paramInt1 == paramInt3) && (paramInt2 == paramInt4)) {
+      return localMatrix;
+    }
+    float f3;
+    float f2;
+    if (paramInt1 * paramInt4 > paramInt3 * paramInt2)
+    {
+      f3 = paramInt4 / paramInt2;
+      f2 = (paramInt3 - paramInt1 * f3) * 0.5F;
+    }
+    for (;;)
+    {
+      localMatrix.setScale(f3, f3);
+      localMatrix.postTranslate(Math.round(f2), Math.round(f1));
+      return localMatrix;
+      f3 = paramInt3 / paramInt1;
+      f1 = paramInt4;
+      float f4 = paramInt2;
+      f2 = 0.0F;
+      f1 = (f1 - f4 * f3) * 0.5F;
+    }
   }
   
-  @TargetApi(13)
-  public static boolean f(Context paramContext)
+  @NonNull
+  public static Path a(int paramInt1, int paramInt2)
   {
-    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
-  }
-  
-  public static boolean g(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean h(Context paramContext)
-  {
-    return NetworkState.isWifiConn();
+    Path localPath = new Path();
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return localPath;
+    }
+    float f1 = Math.min(paramInt1 * 0.0618F, paramInt2 * 0.0618F);
+    float f2 = paramInt1 / 2.0F;
+    float f3 = paramInt2 / 2.0F;
+    localPath.moveTo(0.0F, f3);
+    localPath.cubicTo(0.0F, f1, f1, 0.0F, f2, 0.0F);
+    localPath.cubicTo(paramInt1 - f1, 0.0F, paramInt1, f1, paramInt1, f3);
+    localPath.cubicTo(paramInt1, paramInt2 - f1, paramInt1 - f1, paramInt2, f2, paramInt2);
+    localPath.cubicTo(f1, paramInt2, 0.0F, paramInt2 - f1, 0.0F, f3);
+    return localPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdee
  * JD-Core Version:    0.7.0.1
  */

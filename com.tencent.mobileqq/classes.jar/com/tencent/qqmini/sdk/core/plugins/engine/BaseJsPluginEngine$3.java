@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.auth.PermissionManager;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 class BaseJsPluginEngine$3
   implements AsyncResult
 {
-  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, bgkd parambgkd) {}
+  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

@@ -5,7 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 class tad
-  extends almg
+  extends alqv
 {
   tad(tac paramtac) {}
   
@@ -15,14 +15,14 @@ class tad
     {
       paramLong = BaseApplicationImpl.getApplication().getBaseContext();
       if (paramBoolean) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719756, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719768, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
       }
     }
     else
     {
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719743, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719755, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
   }
 }
 

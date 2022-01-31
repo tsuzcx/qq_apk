@@ -1,12 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class bazq
-  implements View.OnClickListener
+  implements EIPCOnGetConnectionListener
 {
-  bazq(bazn parambazn) {}
+  bazq(bazo parambazo) {}
   
-  public void onClick(View paramView) {}
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bazo.a(this.a, paramEIPCConnection.procName);
+    }
+    bazo.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bazo.a(this.a, paramEIPCConnection.procName);
+    }
+    bazo.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectUnbind");
+    }
+  }
 }
 
 

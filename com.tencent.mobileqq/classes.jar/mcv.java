@@ -92,8 +92,8 @@ public class mcv
   
   public void a(VideoAppInterface paramVideoAppInterface, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131372865);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372862));
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131372891);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372888));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_Mcy = new mcy(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_Mcz = new mcz(this.jdField_a_of_type_AndroidWidgetLinearLayout);
@@ -182,7 +182,7 @@ public class mcv
     {
       this.jdField_a_of_type_Mcz.a.setOnClickListener(paramOnClickListener);
       if (paramBoolean) {
-        mwj.a(this.jdField_a_of_type_Mcz.a, 2130841697, 2131165897);
+        mwj.a(this.jdField_a_of_type_Mcz.a, 2130841710, 2131165897);
       }
       paramOnClickListener = this.jdField_a_of_type_Mcz.a;
       if (!paramBoolean) {

@@ -1,45 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.CountDownProgressBar;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
 public class bhrm
-  extends Handler
+  implements Resources
 {
-  public bhrm(CountDownProgressBar paramCountDownProgressBar) {}
-  
-  public void handleMessage(Message paramMessage)
+  public SpecialAVFilterResource getAVFilterResource()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
-        break;
-      }
-      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-      this.a.invalidate();
-    } while (CountDownProgressBar.a(this.a) == null);
-    CountDownProgressBar.a(this.a).a();
-    return;
-    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
-    {
-      CountDownProgressBar.b(this.a, 0.0F);
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
-    }
+    return new bhro();
+  }
+  
+  public ArtFilterResource getArtFilterResource()
+  {
+    return new bhrd();
+  }
+  
+  public AVFilterResource getAvFilterResource()
+  {
+    return new bhrc();
+  }
+  
+  public BeautyResource getBeautyResource()
+  {
+    return new bhre();
+  }
+  
+  public GestureResource getGestureResource()
+  {
+    return new bhrh();
+  }
+  
+  public LowLightResource getLowLightResource()
+  {
+    return new bhrj();
+  }
+  
+  public PtuFilterResource getPtuFilterResource()
+  {
+    return new bhrk();
+  }
+  
+  public SensorResource getSensorResource()
+  {
+    return new bhrn();
+  }
+  
+  public GestureGameResource geteGestureGameResource()
+  {
+    return new bhrg();
   }
 }
 

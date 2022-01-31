@@ -1,24 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class apsb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class apsb
 {
-  public apsb(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  public void a(EmoticonPackage paramEmoticonPackage) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
-    }
-  }
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

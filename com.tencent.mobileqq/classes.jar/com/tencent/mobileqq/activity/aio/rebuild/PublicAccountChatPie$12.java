@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 import android.widget.RelativeLayout;
 
 public class PublicAccountChatPie$12
   implements Runnable
 {
-  public PublicAccountChatPie$12(agot paramagot) {}
+  public PublicAccountChatPie$12(agti paramagti) {}
   
   public void run()
   {
-    agot.c(this.this$0).removeView(this.this$0.o);
+    agti.c(this.this$0).removeView(this.this$0.o);
   }
 }
 

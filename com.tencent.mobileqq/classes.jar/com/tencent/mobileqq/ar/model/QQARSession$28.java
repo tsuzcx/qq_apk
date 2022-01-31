@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import amxr;
-import anbo;
+import anca;
+import anfx;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$28
   implements Runnable
 {
-  public QQARSession$28(anbo paramanbo) {}
+  public QQARSession$28(anfx paramanfx) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!anbo.a(this.this$0)))
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!anfx.a(this.this$0)))
     {
       QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
       return;
@@ -19,17 +19,17 @@ public class QQARSession$28
     if (this.this$0.d())
     {
       this.this$0.l();
-      anbo.c(this.this$0, 0L);
-      anbo.a(this.this$0, null);
-      anbo.b(this.this$0, null);
+      anfx.c(this.this$0, 0L);
+      anfx.a(this.this$0, null);
+      anfx.b(this.this$0, null);
     }
     this.this$0.a(5L);
-    anbo.d(this.this$0);
+    anfx.d(this.this$0);
     this.this$0.b = false;
-    if (this.this$0.jdField_a_of_type_Amxr != null) {
-      this.this$0.jdField_a_of_type_Amxr.a(true, anbo.a(this.this$0), anbo.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Anca != null) {
+      this.this$0.jdField_a_of_type_Anca.a(true, anfx.a(this.this$0), anfx.b(this.this$0));
     }
-    anbo.a(this.this$0, 1);
+    anfx.a(this.this$0, 1);
     this.this$0.c = true;
   }
 }

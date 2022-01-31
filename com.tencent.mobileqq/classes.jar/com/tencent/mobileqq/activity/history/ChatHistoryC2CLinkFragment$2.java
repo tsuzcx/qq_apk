@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.history;
 
-import abot;
-import ahzf;
-import akdo;
+import abti;
+import aidu;
+import akid;
 import android.text.TextUtils;
-import aqxh;
-import aroy;
-import bdeo;
+import arbq;
+import arth;
+import bdix;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -72,7 +72,7 @@ class ChatHistoryC2CLinkFragment$2
         break label927;
       }
       localObject3 = (MessageRecord)((List)localObject1).get(i);
-      if (!akdo.a((MessageRecord)localObject3)) {
+      if (!akid.a((MessageRecord)localObject3)) {
         break label771;
       }
       if (((MessageRecord)localObject3).shmsgseq < this.this$0.jdField_b_of_type_Long) {
@@ -95,7 +95,7 @@ class ChatHistoryC2CLinkFragment$2
         break label711;
       }
       localObject4 = (AbsShareMsg)((MessageForStructing)localObject4).structingMsg;
-      if ((((MessageRecord)localObject3).time < 1548460800L) || (!aqxh.a(((AbsShareMsg)localObject4).mMsgUrl))) {
+      if ((((MessageRecord)localObject3).time < 1548460800L) || (!arbq.a(((AbsShareMsg)localObject4).mMsgUrl))) {
         break label711;
       }
     }
@@ -103,7 +103,7 @@ class ChatHistoryC2CLinkFragment$2
     {
       i -= 1;
       break label229;
-      if (abot.a(this.this$0.jdField_a_of_type_Int))
+      if (abti.a(this.this$0.jdField_a_of_type_Int))
       {
         localObject1 = this.this$0;
         ((ChatHistoryC2CLinkFragment)localObject1).jdField_b_of_type_Long -= 1L;
@@ -130,7 +130,7 @@ class ChatHistoryC2CLinkFragment$2
       i = 0;
       break label125;
       label711:
-      localObject4 = aroy.a(((MessageRecord)localObject3).time * 1000L);
+      localObject4 = arth.a(((MessageRecord)localObject3).time * 1000L);
       if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
         ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
       }
@@ -139,10 +139,10 @@ class ChatHistoryC2CLinkFragment$2
       label771:
       if ((((localObject3 instanceof MessageForText)) || ((localObject3 instanceof MessageForMixedMsg)) || ((localObject3 instanceof MessageForReplyText)) || ((localObject3 instanceof MessageForArkApp))) && (((MessageRecord)localObject3).time >= 1548460800L))
       {
-        localObject4 = ahzf.a((MessageRecord)localObject3);
-        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (bdeo.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
+        localObject4 = aidu.a((MessageRecord)localObject3);
+        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (bdix.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
         {
-          localObject4 = aroy.a(((MessageRecord)localObject3).time * 1000L);
+          localObject4 = arth.a(((MessageRecord)localObject3).time * 1000L);
           if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
             ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
           }

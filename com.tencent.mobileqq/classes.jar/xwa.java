@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public abstract class xwa
-  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
+public class xwa
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public xwa(LeftTabBarView paramLeftTabBarView, int paramInt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    a();
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    a();
+    long l = System.currentTimeMillis();
+    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
+      return;
+    }
+    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

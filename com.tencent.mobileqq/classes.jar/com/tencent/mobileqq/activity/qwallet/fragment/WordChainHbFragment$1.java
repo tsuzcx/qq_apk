@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aiuh;
-import aiul;
+import aiyw;
+import aiza;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
-import xod;
+import xsm;
 
 public class WordChainHbFragment$1
   implements Runnable
@@ -23,19 +23,19 @@ public class WordChainHbFragment$1
       Iterator localIterator = WordChainHbFragment.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        aiul localaiul = (aiul)localIterator.next();
+        aiza localaiza = (aiza)localIterator.next();
         TextView localTextView = new TextView(this.this$0.mActivity);
         ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
-        localMarginLayoutParams.leftMargin = xod.a(this.this$0.mActivity, 5.0F);
-        localMarginLayoutParams.rightMargin = xod.a(this.this$0.mActivity, 5.0F);
-        localMarginLayoutParams.bottomMargin = xod.a(this.this$0.mActivity, 10.0F);
+        localMarginLayoutParams.leftMargin = xsm.a(this.this$0.mActivity, 5.0F);
+        localMarginLayoutParams.rightMargin = xsm.a(this.this$0.mActivity, 5.0F);
+        localMarginLayoutParams.bottomMargin = xsm.a(this.this$0.mActivity, 10.0F);
         WordChainHbFragment.a(this.this$0).addView(localTextView, localMarginLayoutParams);
-        localTextView.setText(localaiul.a);
-        localTextView.setPadding(xod.a(this.this$0.mActivity, 16.0F), xod.a(this.this$0.mActivity, 5.0F), xod.a(this.this$0.mActivity, 16.0F), xod.a(this.this$0.mActivity, 5.0F));
+        localTextView.setText(localaiza.a);
+        localTextView.setPadding(xsm.a(this.this$0.mActivity, 16.0F), xsm.a(this.this$0.mActivity, 5.0F), xsm.a(this.this$0.mActivity, 16.0F), xsm.a(this.this$0.mActivity, 5.0F));
         localTextView.setTextColor(Color.parseColor("#03081A"));
-        localTextView.setTag(localaiul);
-        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130846755));
-        localTextView.setOnClickListener(new aiuh(this, localTextView, localaiul));
+        localTextView.setTag(localaiza);
+        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130846828));
+        localTextView.setOnClickListener(new aiyw(this, localTextView, localaiza));
       }
       WordChainHbFragment.b(this.this$0);
     }

@@ -1,44 +1,42 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.widget.ScrollerRunnable.4;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-final class beve
-  extends bevp
+public class beve
+  implements Animator.AnimatorListener
 {
-  beve(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, ambi paramambi) {}
+  public beve(ScrollerRunnable.4 param4) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ambi);
+    if (this.a.a.getParent() != null)
+    {
+      this.a.a.clearAnimation();
+      if (QLog.isColorLevel()) {
+        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    }
+    if ((bbqa.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.obtainMessage(50).sendToTarget();
     }
   }
   
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
-    }
-    if (paramSCGet3rdCloudCheck != null)
-    {
-      if (paramSCGet3rdCloudCheck.delayHour > 24) {
-        bevt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        Message localMessage = localMqqHandler.obtainMessage(1134063);
-        localMessage.obj = paramSCGet3rdCloudCheck;
-        localMqqHandler.sendMessage(localMessage);
-        bevd.b(this.jdField_a_of_type_AndroidContentContext, 398677);
-      }
+      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
     }
   }
 }

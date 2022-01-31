@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class InterestLabelInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @awdj
+  @awhs
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;

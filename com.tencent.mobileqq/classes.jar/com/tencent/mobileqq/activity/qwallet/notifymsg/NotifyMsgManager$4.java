@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import aivf;
-import aivh;
-import ajaf;
+import aizu;
+import aizw;
+import ajeu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -16,23 +16,23 @@ public final class NotifyMsgManager$4
   {
     do
     {
-      synchronized (aivh.jdField_a_of_type_JavaLangObject)
+      synchronized (aizw.jdField_a_of_type_JavaLangObject)
       {
-        if (aivh.jdField_a_of_type_Aivf == null) {
-          aivh.jdField_a_of_type_Aivf = new aivf(BaseApplicationImpl.getContext());
+        if (aizw.jdField_a_of_type_Aizu == null) {
+          aizw.jdField_a_of_type_Aizu = new aizu(BaseApplicationImpl.getContext());
         }
-        ??? = ajaf.a();
+        ??? = ajeu.a();
         if (??? == null) {
           return;
         }
       }
-    } while (aivh.jdField_a_of_type_Aivf == null);
+    } while (aizw.jdField_a_of_type_Aizu == null);
     if (this.jdField_a_of_type_Boolean)
     {
-      aivh.jdField_a_of_type_Aivf.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+      aizw.jdField_a_of_type_Aizu.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
-    aivh.jdField_a_of_type_Aivf.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    aizw.jdField_a_of_type_Aizu.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,17 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class avnr
-  extends avma
+class avnr
+  implements TextWatcher
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  avnr(avnl paramavnl) {}
   
-  public avnr(avnq paramavnq)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramavnq);
+    auwz.a(this.a.e, 40);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

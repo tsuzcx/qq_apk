@@ -1,7 +1,4 @@
-public abstract interface ybw
-{
-  public abstract void a();
-}
+public abstract interface ybw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

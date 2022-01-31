@@ -1,21 +1,10 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class awsy
-  extends awsv
+public abstract interface awsy
 {
-  public awsy(LSRecordPanel paramLSRecordPanel) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
-    }
-    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
-  }
+  public abstract void a(SongInfo paramSongInfo, boolean paramBoolean);
 }
 
 

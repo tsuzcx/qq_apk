@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import anjr;
+import anoa;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap<String, anjr>
+  extends HashMap<String, anoa>
 {}
 
 

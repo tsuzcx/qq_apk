@@ -1,21 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class avrm
-  implements avsu
+final class avrm
+  implements avdi
 {
-  public avrm(OCRResultActivity paramOCRResultActivity) {}
+  avrm(avrq paramavrq, String paramString) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
-      return;
+    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+    if (this.jdField_a_of_type_Avrq != null) {
+      this.jdField_a_of_type_Avrq.a(false, this.jdField_a_of_type_JavaLangString);
     }
-    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
   }
 }
 

@@ -1,40 +1,23 @@
-import android.app.Activity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class vdv
-  implements vdx
+public class vdv
+  extends uli
 {
-  vdv(vdt paramvdt) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public void a(vge paramvge)
+  public vdv(vdu paramvdu, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    vdt.a(this.a).c();
-    Activity localActivity = vdt.a(this.a).a();
-    if (localActivity == null)
-    {
-      c(paramvge);
-      return;
-    }
-    vgq.a(localActivity, paramvge, vdt.a(this.a));
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(vge paramvge)
+  public String toString()
   {
-    vdt.a(this.a).c();
-    if (vdt.a(this.a) != null)
-    {
-      vdt.a(this.a).c(paramvge.a);
-      vdt.a(this.a).a();
-    }
-  }
-  
-  public void c(vge paramvge)
-  {
-    vdt.a(this.a).c();
-    if (vdt.a(this.a) != null)
-    {
-      vdt.a(this.a).d(paramvge.a);
-      vdt.a(this.a).a();
-    }
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
 }
 

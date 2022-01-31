@@ -1,98 +1,19 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import java.util.List;
-
 public class baxu
 {
-  public static baxw a(bawo parambawo)
-  {
-    if ((parambawo != null) && (parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null) && (parambawo.jdField_a_of_type_Baxv != null) && (parambawo.jdField_a_of_type_JavaUtilList.size() != 0))
-    {
-      if ("c2c_pic_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawc();
-      }
-      if ("grp_pic_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawg();
-      }
-      if ("grp_ptt_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawi();
-      }
-      if ("c2c_pic_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawb();
-      }
-      if ("grp_pic_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawf();
-      }
-      if ("c2c_ptt_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawe();
-      }
-      if ("c2c_ptt_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawd();
-      }
-      if ("grp_ptt_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawh();
-      }
-      if ("short_video_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new baxy();
-      }
-      if ("short_video_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new baya();
-      }
-      if ("multi_msg_dw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawj();
-      }
-      if ("multi_msg_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawk();
-      }
-      if (("nearby_people_pic_up".equals(parambawo.jdField_a_of_type_JavaLangString)) || ("friend_avatar_up".equals(parambawo.jdField_a_of_type_JavaLangString))) {
-        return new bawl();
-      }
-      if ("short_video_fw".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new baxz();
-      }
-      if ("bdh_common_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bavz();
-      }
-      if ("pa_long_message".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bawm();
-      }
-      if ("art_filter_up".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new bavy();
-      }
-      if ("share_pic_to_wx".equals(parambawo.jdField_a_of_type_JavaLangString)) {
-        return new baxx();
-      }
-    }
-    return null;
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
   
-  public static void a(bawo parambawo)
+  public String toString()
   {
-    baxw localbaxw = a(parambawo);
-    if (localbaxw != null) {
-      localbaxw.a(parambawo);
-    }
-  }
-  
-  public static void a(bawo parambawo, baxd parambaxd)
-  {
-    if ((parambawo != null) && (parambawo.jdField_a_of_type_Baxv != null))
-    {
-      parambawo.jdField_a_of_type_Barh = null;
-      parambawo.jdField_a_of_type_Baxv.a(parambawo, parambaxd);
-      parambawo.jdField_a_of_type_Baxv = null;
-      parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = null;
-    }
-  }
-  
-  public static void b(bawo parambawo)
-  {
-    if ((parambawo != null) && (parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.b(parambawo.jdField_a_of_type_Barh);
-      parambawo.jdField_a_of_type_Baxv = null;
-      parambawo.jdField_a_of_type_Barh = null;
-      parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = null;
-    }
+    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
   }
 }
 

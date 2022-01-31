@@ -1,37 +1,30 @@
-import android.graphics.Bitmap;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
 
 public class asol
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public asol(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
   
-  public static asol a(HiBoomTextView paramHiBoomTextView)
+  public void onClick(View paramView)
   {
-    if (paramHiBoomTextView != null)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      asol localasol = new asol();
-      localasol.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
-      localasol.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
-      localasol.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
-      localasol.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
-      localasol.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
-      localasol.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
-      localasol.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
-      localasol.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
-      localasol.jdField_b_of_type_Long = System.currentTimeMillis();
-      return localasol;
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramView, 0);
+      paramView = asnl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
+      aahi.a(akwd.a(), "769", "205019", paramView, "76901", "1", "160", new String[] { asnl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
+      ((bdug)akwd.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    return null;
   }
 }
 

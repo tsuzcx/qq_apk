@@ -1,41 +1,15 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 class yrw
-  implements TextView.OnEditorActionListener
+  extends bead
 {
-  yrw(yru paramyru, TroopGiftPanel paramTroopGiftPanel) {}
+  yrw(yrr paramyrr, Bundle paramBundle) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onDone(beae parambeae)
   {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_Yru.c();
-      paramTextView = this.jdField_a_of_type_Yru.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
-        this.jdField_a_of_type_Yru.b();
-        if (!nav.a().a(this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramInt = 2;; paramInt = 1)
-      {
-        azmj.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-        return true;
-        this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
-        break;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Yrr.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

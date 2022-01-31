@@ -1,71 +1,83 @@
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class azrr
 {
-  public static AbsStructMsg a(ArrayList<String> paramArrayList)
+  public static int a(Context paramContext, String paramString)
   {
-    if (paramArrayList != null) {}
-    for (int i = paramArrayList.size(); i <= 0; i = 0) {
-      return null;
-    }
-    StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
-    localStructMsgForGeneralShare.setFlag(1);
-    localStructMsgForGeneralShare.mMsgTemplateID = 1;
-    localStructMsgForGeneralShare.mMsgServiceID = 19;
-    localStructMsgForGeneralShare.mMsgBrief = alpo.a(2131714998);
-    localStructMsgForGeneralShare.mMsgAction = "plugin";
-    localStructMsgForGeneralShare.mMsgActionData = "mqqapi://qzone/to_publish_queue";
-    localStructMsgForGeneralShare.mMsg_A_ActionData = "";
-    localStructMsgForGeneralShare.mMsg_I_ActionData = "";
-    localStructMsgForGeneralShare.mMsgUrl = "";
-    if (i == 1)
-    {
-      localazqk1 = azqt.a(2);
-      localazqk1.a(new azsm((String)paramArrayList.get(0)));
-      localazqk1.a(new StructMsgItemTitle(""));
-      localazqk1.a(new azvd(alpo.a(2131714988)));
-      paramArrayList = azqt.a(0);
-      paramArrayList.a(new azvb(0));
-      localStructMsgForGeneralShare.addItem(localazqk1);
-      localStructMsgForGeneralShare.addItem(paramArrayList);
-      return localStructMsgForGeneralShare;
-    }
-    azqk localazqk1 = azqt.a(3);
-    if (i == 2)
-    {
-      localazqk1.a(new azsm((String)paramArrayList.get(0)));
-      localazqk1.a(new azsm((String)paramArrayList.get(1)));
-    }
-    for (;;)
-    {
-      paramArrayList = azqt.a(0);
-      paramArrayList.a(new azvb(0));
-      azqk localazqk2 = azqt.a(0);
-      localazqk2.a(new azvd(alpo.a(2131714979)));
-      localStructMsgForGeneralShare.addItem(localazqk1);
-      localStructMsgForGeneralShare.addItem(paramArrayList);
-      localStructMsgForGeneralShare.addItem(localazqk2);
-      break;
-      localazqk1.a(new azsm((String)paramArrayList.get(0)));
-      localazqk1.a(new azsm((String)paramArrayList.get(1)));
-      localazqk1.a(new azsm((String)paramArrayList.get(2)));
-    }
+    return a(paramContext, paramString, "Click_grp_asst");
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public static int a(Context paramContext, String paramString1, String paramString2)
   {
-    if ((paramMessageRecord == null) || (paramMessageRecord.msgtype != -2011)) {}
-    do
-    {
-      return false;
-      paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
-    } while ((paramMessageRecord == null) || (paramMessageRecord.mMsgServiceID != 19));
-    return true;
+    paramString1 = paramString1 + paramString2;
+    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
+    paramContext.putInt(paramString + "Click_grp_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_msg", 0);
+    paramContext.putInt(paramString + "grp_msg_equ", 0);
+    paramContext.putInt(paramString + "grp_msg_dec", 0);
+    paramContext.putInt(paramString + "grp_msg_inc", 0);
+    paramContext.commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + paramString2;
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    int i = paramContext.getInt(paramString1, 0);
+    paramContext.edit().putInt(paramString1, i + 1).commit();
+  }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static int c(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_msg");
+  }
+  
+  public static void c(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static int d(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static void d(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static int e(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static void e(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_inc");
+  }
+  
+  public static int f(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_inc");
   }
 }
 

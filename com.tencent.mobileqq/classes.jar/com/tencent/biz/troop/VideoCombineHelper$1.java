@@ -1,17 +1,17 @@
 package com.tencent.biz.troop;
 
-import ynm;
-import ynu;
-import ynw;
+import ysb;
+import ysj;
+import ysl;
 
 public class VideoCombineHelper$1
   implements Runnable
 {
-  public VideoCombineHelper$1(ynm paramynm, ynw paramynw, ynu paramynu) {}
+  public VideoCombineHelper$1(ysb paramysb, ysl paramysl, ysj paramysj) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Ynw, this.jdField_a_of_type_Ynu);
+    this.this$0.a(this.jdField_a_of_type_Ysl, this.jdField_a_of_type_Ysj);
   }
 }
 

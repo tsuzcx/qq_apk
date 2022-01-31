@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.activity;
 
-import abqm;
+import abvb;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
@@ -9,8 +9,8 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import tql;
-import tym;
-import typ;
+import tzy;
+import uab;
 
 public class QCircleFragmentActivity
   extends PublicFragmentActivity
@@ -21,7 +21,7 @@ public class QCircleFragmentActivity
     if (300001 == paramInt1)
     {
       QLog.d("QCircleFragmentActivity", 1, "doOnActivityResult，return from qzone publish page");
-      tym.a().a(36);
+      tzy.a().a(36);
     }
   }
   
@@ -43,11 +43,12 @@ public class QCircleFragmentActivity
   
   public void doOnDestroy()
   {
+    QLog.d("QCircleFragmentActivity", 1, "QCircleFragmentActivity->doOnDestroy");
     super.doOnDestroy();
     tql.a();
-    abqm.a(this);
+    abvb.a(this);
     VSNetworkHelper.a().a(this);
-    typ.a().a();
+    uab.a().a();
   }
   
   public void doOnNewIntent(Intent paramIntent)

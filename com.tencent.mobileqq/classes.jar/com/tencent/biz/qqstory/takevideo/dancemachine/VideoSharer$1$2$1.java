@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
-import wyy;
-import wyz;
+import xdh;
+import xdi;
 
 public class VideoSharer$1$2$1
   implements Runnable
 {
-  public VideoSharer$1$2$1(wyz paramwyz) {}
+  public VideoSharer$1$2$1(xdi paramxdi) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.this$0.a, 1, alpo.a(2131716746), 0).a();
+    QQToast.a(this.a.a.this$0.a, 1, alud.a(2131716758), 0).a();
   }
 }
 

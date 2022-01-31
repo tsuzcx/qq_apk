@@ -1,6 +1,27 @@
-public abstract interface bndv
+import android.util.Property;
+
+class bndv
+  extends Property<bnds, Float>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bndv(bnds parambnds, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bnds parambnds)
+  {
+    if (parambnds != null) {
+      return Float.valueOf(bnds.a(parambnds));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bnds parambnds, Float paramFloat)
+  {
+    if (parambnds != null) {
+      bnds.a(parambnds, paramFloat.floatValue());
+    }
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghk;
-import bgho;
-import bghx;
-import bgkd;
-import bgkk;
-import bglq;
+import bglr;
+import bglv;
+import bgme;
+import bgok;
+import bgor;
+import bgpx;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
@@ -28,9 +28,9 @@ class RewardedVideoAdPlugin$1$1
     RewardedVideoAdPlugin.access$500(this.this$1.this$0, this.this$1.val$req, this.this$1.val$compId);
     ThreadManager.a(new RewardedVideoAdPlugin.1.1.1(this), 16, null, true);
     if (this.this$1.this$0.mMiniAppContext != null) {
-      this.this$1.this$0.mMiniAppContext.a(bghx.a(1));
+      this.this$1.this$0.mMiniAppContext.a(bgme.a(1));
     }
-    bghk.a(false);
+    bglr.a(false);
   }
   
   public void onADExpose()
@@ -50,7 +50,7 @@ class RewardedVideoAdPlugin$1$1
   public void onADShow()
   {
     if (this.this$1.this$0.mMiniAppContext != null) {
-      this.this$1.this$0.mMiniAppContext.a(bghx.a(2));
+      this.this$1.this$0.mMiniAppContext.a(bgme.a(2));
     }
     QMLog.i("RewardedVideoAdPlugin", "onADShow, time = " + System.currentTimeMillis());
   }
@@ -63,7 +63,7 @@ class RewardedVideoAdPlugin$1$1
     RewardedVideoAdPlugin.access$102(this.this$1.this$0, null);
     paramString = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     if ((paramString != null) && (paramString.isGooglePlayVersion())) {
-      if (bglq.a("qqminiapp", "mini_app_google_play_ad_switch", 0) != 1) {
+      if (bgpx.a("qqminiapp", "mini_app_google_play_ad_switch", 0) != 1) {
         break label170;
       }
     }
@@ -72,7 +72,7 @@ class RewardedVideoAdPlugin$1$1
     {
       if ((paramInt == 0) && (!RewardedVideoAdPlugin.access$800(this.this$1.this$0)))
       {
-        bgkk.a(new RewardedVideoAdPlugin.1.1.2(this));
+        bgor.a(new RewardedVideoAdPlugin.1.1.2(this));
         RewardedVideoAdPlugin.access$802(this.this$1.this$0, true);
       }
       return;

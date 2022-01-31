@@ -1,38 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.view.View;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class beta
-  implements Animator.AnimatorListener
+  implements bkcu
 {
-  public beta(FloatingScreenContainer paramFloatingScreenContainer) {}
+  public beta(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
+    if (paramInt == 0)
+    {
+      this.a.g = true;
+      View localView = this.a.a("map_key_troop_mem_recent_said");
+      if (localView != null) {
+        ProfileCardMoreInfoView.a(localView, this.a.a);
+      }
     }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
-    }
-    FloatingScreenContainer.a(this.a, true);
   }
 }
 

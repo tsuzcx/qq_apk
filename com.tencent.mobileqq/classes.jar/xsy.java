@@ -1,21 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-
-public abstract interface xsy
+public class xsy
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(View paramView, float paramFloat);
-  
-  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
-  
-  public abstract void a(View paramView, xsv paramxsv);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract boolean a(View paramView, xtb paramxtb, MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(View paramView);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
 }
 
 

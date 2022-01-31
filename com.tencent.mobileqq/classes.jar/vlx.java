@@ -1,40 +1,35 @@
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class vlx
-  implements vlk
+final class vlx
+  implements bhuk
 {
-  private int jdField_a_of_type_Int;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  vld jdField_a_of_type_Vld;
+  vlx(QQUserUIItem paramQQUserUIItem, bhuf parambhuf) {}
   
-  public vlx(vlw paramvlw, vld paramvld)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Vld = paramvld;
-  }
-  
-  protected void a(String paramString, vll paramvll)
-  {
-    vau localvau = new vau();
-    localvau.jdField_c_of_type_JavaLangString = vlw.a(this.jdField_a_of_type_Vlw).uid;
-    if (vlw.a(this.jdField_a_of_type_Vlw).collectionKey != null) {
-      localvau.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(vlw.a(this.jdField_a_of_type_Vlw).collectionKey);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new vdw().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
     }
-    localvau.jdField_d_of_type_JavaLangString = paramString;
-    localvau.jdField_c_of_type_Int = 20;
-    localvau.jdField_e_of_type_Int = vlw.a(this.jdField_a_of_type_Vlw).shareTimeZone;
-    localvau.jdField_e_of_type_JavaLangString = vlw.a(this.jdField_a_of_type_Vlw).feedId;
-    localvau.f = vlw.a(this.jdField_a_of_type_Vlw).identify;
-    localvau.g = vlw.a(this.jdField_a_of_type_Vlw).videoListOrder;
-    ung.a().a(localvau, new vly(this, paramvll));
-  }
-  
-  public void a(vll paramvll)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a(vlw.a(this.jdField_a_of_type_Vlw), paramvll);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      wxe.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
   }
 }
 

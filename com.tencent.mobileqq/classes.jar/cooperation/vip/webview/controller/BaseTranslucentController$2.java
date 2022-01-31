@@ -1,11 +1,11 @@
 package cooperation.vip.webview.controller;
 
-import bkcz;
+import bkhg;
 
 public class BaseTranslucentController$2
   implements Runnable
 {
-  public BaseTranslucentController$2(bkcz parambkcz) {}
+  public BaseTranslucentController$2(bkhg parambkhg) {}
   
   public void run()
   {

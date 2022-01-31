@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajxi;
+import akbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class TroopListBaseAdapter$1
   implements Runnable
 {
-  public TroopListBaseAdapter$1(ajxi paramajxi) {}
+  public TroopListBaseAdapter$1(akbx paramakbx) {}
   
   public void run()
   {

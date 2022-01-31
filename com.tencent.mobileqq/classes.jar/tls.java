@@ -2,7 +2,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 final class tls
-  implements bevy
+  implements bfah
 {
   public void a(BaseResp paramBaseResp)
   {
@@ -10,7 +10,7 @@ final class tls
     {
     case -1: 
     default: 
-      bfhq.a().a(2131720019);
+      bflz.a().a(2131720031);
     }
     WXShareHelper.a().b(this);
   }

@@ -1,32 +1,20 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acli
-  extends ImageSpan
+public final class acli
+  implements DialogInterface.OnCancelListener
 {
-  public acli(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  public acli(aclo paramaclo, acln paramacln) {}
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramCanvas.save();
-    paramCanvas.translate(azgq.a(9.0F), 0.0F);
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return getDrawable().getBounds().right + azgq.a(9.0F);
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

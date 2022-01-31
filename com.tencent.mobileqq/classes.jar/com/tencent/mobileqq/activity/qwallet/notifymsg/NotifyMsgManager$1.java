@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import aiqz;
-import aivf;
-import aivg;
-import aivh;
-import aivi;
-import ajaf;
+import aivo;
+import aizu;
+import aizv;
+import aizw;
+import aizx;
+import ajeu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -22,18 +22,18 @@ public final class NotifyMsgManager$1
     long l2;
     do
     {
-      synchronized (aivh.jdField_a_of_type_JavaLangObject)
+      synchronized (aizw.jdField_a_of_type_JavaLangObject)
       {
-        if (aivh.jdField_a_of_type_Aivf == null) {
-          aivh.jdField_a_of_type_Aivf = new aivf(BaseApplicationImpl.getContext());
+        if (aizw.jdField_a_of_type_Aizu == null) {
+          aizw.jdField_a_of_type_Aizu = new aizu(BaseApplicationImpl.getContext());
         }
-        ??? = ajaf.a();
+        ??? = ajeu.a();
         if (??? == null) {
           return;
         }
       }
-      if (aivh.jdField_a_of_type_Aivf != null) {
-        aivh.jdField_a_of_type_Aivf.a(((QQAppInterface)???).c(), aivh.c);
+      if (aizw.jdField_a_of_type_Aizu != null) {
+        aizw.jdField_a_of_type_Aizu.a(((QQAppInterface)???).c(), aizw.c);
       }
       if (QLog.isColorLevel()) {
         QLog.i("NotifyMsgManager", 2, "loadFromDb completed");
@@ -41,52 +41,52 @@ public final class NotifyMsgManager$1
       Object localObject3 = new ArrayList();
       Object localObject4 = new ArrayList();
       int i = 0;
-      if (i < aivh.b.size())
+      if (i < aizw.b.size())
       {
-        aivg localaivg1 = (aivg)aivh.b.get(i);
-        if (localaivg1 == null) {}
+        aizv localaizv1 = (aizv)aizw.b.get(i);
+        if (localaizv1 == null) {}
         for (;;)
         {
           i += 1;
           break;
-          aivg localaivg2 = aivh.a(aivh.c, localaivg1.b, localaivg1.a);
-          if (localaivg2 != null)
+          aizv localaizv2 = aizw.a(aizw.c, localaizv1.b, localaizv1.a);
+          if (localaizv2 != null)
           {
-            ((ArrayList)localObject4).add(aivh.a(localaivg1, localaivg2));
+            ((ArrayList)localObject4).add(aizw.a(localaizv1, localaizv2));
           }
           else
           {
-            aivh.c.add(localaivg1);
-            ((ArrayList)localObject3).add(localaivg1);
+            aizw.c.add(localaizv1);
+            ((ArrayList)localObject3).add(localaizv1);
           }
         }
       }
-      aivh.b.clear();
+      aizw.b.clear();
       if (((ArrayList)localObject3).size() > 0) {
-        aivh.a((ArrayList)localObject3, true);
+        aizw.a((ArrayList)localObject3, true);
       }
       if (((ArrayList)localObject4).size() > 0) {
-        aivh.a((ArrayList)localObject4, false);
+        aizw.a((ArrayList)localObject4, false);
       }
-      aivh.jdField_a_of_type_Int = 2;
-      aivh.a(aivh.jdField_a_of_type_JavaUtilArrayList);
-      localObject3 = aivh.jdField_a_of_type_JavaUtilArrayList.iterator();
+      aizw.jdField_a_of_type_Int = 2;
+      aizw.a(aizw.jdField_a_of_type_JavaUtilArrayList);
+      localObject3 = aizw.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (aivi)((Iterator)localObject3).next();
+        localObject4 = (aizx)((Iterator)localObject3).next();
         if (localObject4 != null) {
-          aivh.a((aivi)localObject4);
+          aizw.a((aizx)localObject4);
         }
       }
-      aivh.jdField_a_of_type_JavaUtilArrayList.clear();
-      l1 = aiqz.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", 0L);
+      aizw.jdField_a_of_type_JavaUtilArrayList.clear();
+      l1 = aivo.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", 0L);
       l2 = NetConnInfoCenter.getServerTime();
-    } while ((aivh.jdField_a_of_type_Aivf == null) || ((l1 <= l2) && (l2 - l1 <= 172800L)));
-    aivh.jdField_a_of_type_Aivf.a(2592000L, null);
-    if (aivh.jdField_a_of_type_Aivf != null) {
-      aivh.jdField_a_of_type_Aivf.a(172800L, new int[] { 2 });
+    } while ((aizw.jdField_a_of_type_Aizu == null) || ((l1 <= l2) && (l2 - l1 <= 172800L)));
+    aizw.jdField_a_of_type_Aizu.a(2592000L, null);
+    if (aizw.jdField_a_of_type_Aizu != null) {
+      aizw.jdField_a_of_type_Aizu.a(172800L, new int[] { 2 });
     }
-    aiqz.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", l2);
+    aivo.a(((QQAppInterface)???).c(), "qwallet_last_clear_notify_time_", l2);
   }
 }
 

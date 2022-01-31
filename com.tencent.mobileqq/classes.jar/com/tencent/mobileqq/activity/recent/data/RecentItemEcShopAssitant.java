@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aepx;
-import alpo;
+import aeum;
+import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.TextUtils;
-import aokd;
-import baig;
-import bdec;
+import aoom;
+import bamp;
+import bdil;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -39,7 +39,7 @@ public class RecentItemEcShopAssitant
   
   private void f()
   {
-    if ((this.mExtraInfo != null) && (alpo.a(2131713549).equalsIgnoreCase(this.mExtraInfo.toString()))) {
+    if ((this.mExtraInfo != null) && (alud.a(2131713561).equalsIgnoreCase(this.mExtraInfo.toString()))) {
       this.mExtraInfo = "";
     }
   }
@@ -61,11 +61,11 @@ public class RecentItemEcShopAssitant
     Object localObject3;
     Object localObject1;
     int i;
-    if (aokd.a("MiniAppEcShopNumMsgEnable", 1) == 1)
+    if (aoom.a("MiniAppEcShopNumMsgEnable", 1) == 1)
     {
       this.mUnreadFlag = 1;
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131692014);
+        this.mTitleName = paramContext.getString(2131692015);
       }
       if (!TextUtils.isEmpty(ntw.c)) {
         this.mTitleName = ntw.c;
@@ -91,13 +91,13 @@ public class RecentItemEcShopAssitant
       localObject2 = localntw.a(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).frienduin);
       if (localObject1 != null)
       {
-        bdec.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), (MsgSummary)localObject3, (String)localObject2, true, false);
+        bdil.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), (MsgSummary)localObject3, (String)localObject2, true, false);
         i = ((QQMessageFacade.Message)localObject1).msgtype;
         if ((i == -3006) || (i == -5004))
         {
           ((MsgSummary)localObject3).suffix = "";
           ((MsgSummary)localObject3).strContent = "";
-          localObject2 = aepx.a((MessageRecord)localObject1);
+          localObject2 = aeum.a((MessageRecord)localObject1);
           if ((localObject2 != null) && (((PAMessage)localObject2).items != null) && (((PAMessage)localObject2).items.size() != 0)) {
             break label847;
           }
@@ -131,7 +131,7 @@ public class RecentItemEcShopAssitant
       ((MsgSummary)localObject3).suffix = null;
       ((MsgSummary)localObject3).strPrefix = null;
       label453:
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
       if (!((SharedPreferences)localObject1).contains("PUSH_TYPE_COLOR")) {}
     }
     for (;;)
@@ -209,7 +209,7 @@ public class RecentItemEcShopAssitant
             if (!TextUtils.isEmpty(((MsgSummary)localObject3).suffix)) {
               break label453;
             }
-            ((MsgSummary)localObject3).strContent = paramContext.getString(2131692011);
+            ((MsgSummary)localObject3).strContent = paramContext.getString(2131692012);
             ((MsgSummary)localObject3).strPrefix = null;
           }
         }
@@ -217,7 +217,7 @@ public class RecentItemEcShopAssitant
       catch (Exception localException)
       {
         QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
         continue;
         if (QLog.isColorLevel()) {
           QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");
@@ -283,7 +283,7 @@ public class RecentItemEcShopAssitant
       paramQQAppInterface = localntw.a(paramQQAppInterface, localEcShopData.mUin);
     } while (paramMsgSummary == null);
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new baig(paramQQAppInterface + ": " + (String)localObject, 3, 16);
+    paramMsgSummary.mDraft = new bamp(paramQQAppInterface + ": " + (String)localObject, 3, 16);
   }
 }
 

@@ -1,30 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
 
-class avzn
-  extends Animation
+public class avzn
+  implements avzo
 {
-  avzn(avzg paramavzg, View paramView, int paramInt) {}
+  public avzn(GestureFrameLayout paramGestureFrameLayout) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(awac paramawac)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+    this.a.a(paramawac);
   }
   
-  public boolean willChangeBounds()
+  public void a(awac paramawac1, awac paramawac2)
   {
-    return true;
+    this.a.a(paramawac2);
   }
 }
 

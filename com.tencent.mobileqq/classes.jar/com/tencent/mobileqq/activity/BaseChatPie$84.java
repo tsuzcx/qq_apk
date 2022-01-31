@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acef;
-import aceg;
+import aciu;
+import aciv;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +19,7 @@ public class BaseChatPie$84
   public void run()
   {
     BaseChatPie.b(this.this$0, new View(this.a));
-    BaseChatPie.b(this.this$0).setOnTouchListener(new acef(this));
+    BaseChatPie.b(this.this$0).setOnTouchListener(new aciu(this));
     this.a.addContentView(BaseChatPie.b(this.this$0), new ViewGroup.LayoutParams(-1, -1));
     View localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0);
     AnimationSet localAnimationSet = new AnimationSet(false);
@@ -52,7 +52,7 @@ public class BaseChatPie$84
       l += arrayOfLong[i];
       i += 1;
     }
-    localAnimationSet.setAnimationListener(new aceg(this));
+    localAnimationSet.setAnimationListener(new aciv(this));
     localView.startAnimation(localAnimationSet);
   }
 }

@@ -16,7 +16,7 @@ public class nbd
   public static String a;
   public static String b = "msg_back";
   long jdField_a_of_type_Long = 0L;
-  aumt jdField_a_of_type_Aumt = new nbe(this);
+  aurc jdField_a_of_type_Aurc = new nbe(this);
   TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
   private final String c = "QQMusicService";
   
@@ -135,8 +135,8 @@ public class nbd
     ((SongInfo)localObject).f = paramString.optString("share_url");
     this.jdField_a_of_type_Long = ((SongInfo)localObject).jdField_a_of_type_Long;
     QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-    QQPlayerService.a(this.jdField_a_of_type_Aumt);
-    QQPlayerService.a(BaseApplication.getContext(), this.jdField_a_of_type_Aumt.getToken(), (SongInfo)localObject);
+    QQPlayerService.a(this.jdField_a_of_type_Aurc);
+    QQPlayerService.a(BaseApplication.getContext(), this.jdField_a_of_type_Aurc.getToken(), (SongInfo)localObject);
   }
   
   public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
@@ -165,7 +165,7 @@ public class nbd
       QQPlayerService.b(BaseApplication.getContext());
       return;
     case 4: 
-      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      QQPlayerService.a(this.jdField_a_of_type_Aurc);
       paramAppRuntime.putInt("state", QQPlayerService.a());
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
       return;
@@ -173,12 +173,12 @@ public class nbd
       QQPlayerService.a(paramBundle.getInt("mode"));
       return;
     case 6: 
-      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      QQPlayerService.a(this.jdField_a_of_type_Aurc);
       paramAppRuntime.putInt("mode", QQPlayerService.b());
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
       return;
     case 7: 
-      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      QQPlayerService.a(this.jdField_a_of_type_Aurc);
       paramBundle = a(QQPlayerService.b());
       if (paramBundle != null) {
         paramAppRuntime.putString("music", paramBundle.toString());

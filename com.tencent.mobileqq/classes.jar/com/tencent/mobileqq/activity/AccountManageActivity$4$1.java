@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abwr;
+import acbg;
 
 public class AccountManageActivity$4$1
   implements Runnable
 {
-  public AccountManageActivity$4$1(abwr paramabwr) {}
+  public AccountManageActivity$4$1(acbg paramacbg) {}
   
   public void run()
   {

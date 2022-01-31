@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aion;
+import aitc;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class PhotoListLogicWeiyun$1
   implements Runnable
 {
-  public PhotoListLogicWeiyun$1(aion paramaion, NewPhotoListActivity paramNewPhotoListActivity) {}
+  public PhotoListLogicWeiyun$1(aitc paramaitc, NewPhotoListActivity paramNewPhotoListActivity) {}
   
   public void run()
   {

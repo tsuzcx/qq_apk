@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.text.InputFilter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.support.annotation.RestrictTo;
 
-class bmdu
-  extends xbi
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+public class bmdu
+  implements bmdi
 {
-  bmdu(bmdi parambmdi, Context paramContext)
+  private final bmdh a;
+  
+  bmdu(bmdh parambmdh)
   {
-    super(paramContext);
+    this.a = parambmdh;
   }
   
-  public void a(int paramInt)
+  public void a(bmdn parambmdn, bmdk parambmdk)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new bmdv(this, paramInt, paramInt) });
+    this.a.a(parambmdn, parambmdk, false, null);
+    this.a.a(parambmdn, parambmdk, true, null);
   }
 }
 

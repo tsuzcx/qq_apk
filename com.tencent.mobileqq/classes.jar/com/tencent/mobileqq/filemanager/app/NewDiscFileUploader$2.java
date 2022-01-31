@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqpi;
-import aqzq;
+import aqtr;
+import ardz;
 
 public class NewDiscFileUploader$2
   implements Runnable
 {
-  public NewDiscFileUploader$2(aqpi paramaqpi) {}
+  public NewDiscFileUploader$2(aqtr paramaqtr) {}
   
   public void run()
   {

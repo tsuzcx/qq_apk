@@ -1,82 +1,94 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.Calendar;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class ampa
 {
-  amur jdField_a_of_type_Amur = null;
-  private amvg jdField_a_of_type_Amvg;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public static final int a;
+  private static long a;
   
-  void a()
+  static
   {
+    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
+  }
+  
+  public static int a(Context paramContext)
+  {
+    return ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
+  }
+  
+  public static int a(Context paramContext, int paramInt)
+  {
+    return bdaq.a(paramContext, paramInt);
+  }
+  
+  private static long a()
+  {
+    long l = System.currentTimeMillis() / 1000L;
+    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
+      return jdField_a_of_type_Long;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    l = localCalendar.getTimeInMillis() / 1000L;
+    jdField_a_of_type_Long = l;
+    return l;
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = "{" + paramString + "}";
+    paramString = "";
     try
     {
-      if (this.jdField_a_of_type_Amur != null)
-      {
-        if (this.jdField_a_of_type_Amvg != null)
-        {
-          this.jdField_a_of_type_Amur.b(this.jdField_a_of_type_Amvg);
-          this.jdField_a_of_type_Amvg = null;
-        }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
-        {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentServiceConnection = null;
-        }
-        this.jdField_a_of_type_Amur = null;
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-      return;
+      str = new JSONObject(str).get("metaData").toString();
+      paramString = str;
     }
     catch (Exception localException)
     {
-      QLog.w(ampn.a, 1, "DownloadDependRes.clean, Exception", localException);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQDailyUtils", 2, localException, new Object[0]);
     }
+    return paramString;
+    return "";
   }
   
-  void a(AppInterface paramAppInterface)
+  public static boolean a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
+    return paramLong > a();
+  }
+  
+  public static boolean a(Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.size() == 0))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(ampn.a, 1, "tryDownload, so未准备");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQDailyUtils", 2, "param is null");
       }
-      b();
+      return false;
     }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Amur != null) {
-      try
-      {
-        this.jdField_a_of_type_Amur.c();
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(ampn.a, 2, "downloadArSo Exception", localException);
-        return;
-      }
+    String str1 = (String)paramMap.get("appname");
+    String str2 = (String)paramMap.get("appview");
+    String str3 = (String)paramMap.get("appversion");
+    paramMap = (String)paramMap.get("metaData");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDailyUtils", 2, "appName: " + str1 + "\nappView: " + str2 + "\nappVersion: " + str3 + "\nmetaData: " + paramMap);
     }
-    this.jdField_a_of_type_Amvg = new ampb(this);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new ampc(this);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
-    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    QLog.w(ampn.a, 1, "bindServer, ret[" + bool + "]");
+    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampa
  * JD-Core Version:    0.7.0.1
  */

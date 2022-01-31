@@ -1,39 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import cooperation.qzone.contentbox.BaseMsgView;
-import java.lang.ref.WeakReference;
+import android.net.Proxy;
 
-public class bjed
-  extends Handler
+final class bjed
+  extends bjec
 {
-  private WeakReference<BaseMsgView> a;
-  
-  public bjed(BaseMsgView paramBaseMsgView)
+  public int a()
   {
-    this.a = new WeakReference(paramBaseMsgView);
+    return Proxy.getDefaultPort();
   }
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    super.handleMessage(paramMessage);
-    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
-    if (localBaseMsgView == null) {}
-    ViewPager localViewPager;
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        localBaseMsgView.a(paramMessage);
-        return;
-      }
-      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
-    } while (localViewPager == null);
-    int i = paramMessage.arg1;
-    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
-    localBaseMsgView.a();
+    return Proxy.getDefaultHost();
   }
 }
 

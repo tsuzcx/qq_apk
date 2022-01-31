@@ -1,32 +1,12 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class uns
+public abstract interface uns
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public final String b;
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof uns)) {
-      return TextUtils.equals(((uns)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    return false;
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("\n");
-    localStringBuilder.append("-t ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("  -dt ");
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
-  }
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

@@ -1,10 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public abstract class upp
-  implements View.OnClickListener
+public class upp
+  extends upo
 {
-  public void onClick(View paramView) {}
+  public upp(upl paramupl)
+  {
+    super(paramupl);
+  }
 }
 
 

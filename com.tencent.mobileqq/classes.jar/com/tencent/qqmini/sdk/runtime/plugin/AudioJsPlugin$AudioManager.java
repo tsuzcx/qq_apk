@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
-import bgjm;
-import bgkd;
-import bgkv;
-import bglb;
-import bhak;
-import bhal;
-import bham;
-import bhao;
-import bhel;
+import bgnt;
+import bgok;
+import bgpc;
+import bgpi;
+import bher;
+import bhes;
+import bhet;
+import bhev;
+import bhis;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -21,7 +21,7 @@ import java.io.File;
 import org.json.JSONObject;
 
 class AudioJsPlugin$AudioManager
-  implements bhal, bham, bhao
+  implements bhes, bhet, bhev
 {
   private long audioDuration = 60000L;
   private Activity context;
@@ -29,10 +29,10 @@ class AudioJsPlugin$AudioManager
   private String fileFormat = "mp3";
   private boolean isRecordManagerApi;
   private int maxTime = 600;
-  private bgkd playVoiceReq;
-  private volatile bhak recorder;
-  private bgkd startRecordReq;
-  private bgkd stopRecordReq;
+  private bgok playVoiceReq;
+  private volatile bher recorder;
+  private bgok startRecordReq;
+  private bgok stopRecordReq;
   
   private AudioJsPlugin$AudioManager(AudioJsPlugin paramAudioJsPlugin, Activity paramActivity)
   {
@@ -44,11 +44,11 @@ class AudioJsPlugin$AudioManager
     return this.fateOfRecorder;
   }
   
-  private bhak getLameMp3Recorder()
+  private bher getLameMp3Recorder()
   {
     if (this.recorder == null)
     {
-      this.recorder = new bhak(this.context);
+      this.recorder = new bher(this.context);
       this.recorder.e(this.maxTime);
       this.recorder.a(this.audioDuration);
       this.recorder.c(this.fileFormat);
@@ -62,10 +62,10 @@ class AudioJsPlugin$AudioManager
   
   private String getTransferFilePath(String paramString)
   {
-    paramString = bgjm.a().b(paramString);
+    paramString = bgnt.a().b(paramString);
     try
     {
-      bgkv.a(paramString);
+      bgpc.a(paramString);
       return paramString;
     }
     catch (Exception localException)
@@ -80,7 +80,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      paramString = bgjm.a().e(paramString);
+      paramString = bgnt.a().e(paramString);
       QMLog.d("AudioJsPlugin", "handleOnRecordEnd, tempFilePath:" + paramString + ", duration:" + paramLong1 + ", fileSize:" + paramLong2);
       localJSONObject.put("tempFilePath", paramString);
       localJSONObject.put("duration", paramLong1);
@@ -202,7 +202,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "frameRecorded");
-      bglb.a(AudioJsPlugin.access$1700(this.this$0), paramArrayOfByte, bglb.b, "frameBuffer", localJSONObject);
+      bgpi.a(AudioJsPlugin.access$1700(this.this$0), paramArrayOfByte, bgpi.b, "frameBuffer", localJSONObject);
       localJSONObject.put("isLastFrame", paramBoolean);
       AudioJsPlugin.access$1800(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
@@ -291,20 +291,20 @@ class AudioJsPlugin$AudioManager
   
   public void onRecordUpdate(int paramInt1, int paramInt2) {}
   
-  public void pauseVoice(bgkd parambgkd)
+  public void pauseVoice(bgok parambgok)
   {
     if (this.recorder != null)
     {
       this.recorder.f();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
   
-  public void playVoice(String paramString, bgkd parambgkd)
+  public void playVoice(String paramString, bgok parambgok)
   {
-    this.playVoiceReq = parambgkd;
+    this.playVoiceReq = parambgok;
     if (new File(paramString).exists())
     {
       if (this.recorder == null)
@@ -327,10 +327,10 @@ class AudioJsPlugin$AudioManager
     }
   }
   
-  public void startRecord(bgkd parambgkd, boolean paramBoolean)
+  public void startRecord(bgok parambgok, boolean paramBoolean)
   {
     QMLog.i("AudioJsPlugin", "startRecord() begin");
-    this.startRecordReq = parambgkd;
+    this.startRecordReq = parambgok;
     this.isRecordManagerApi = paramBoolean;
     if ((this.recorder != null) && (this.recorder.a()))
     {
@@ -354,10 +354,10 @@ class AudioJsPlugin$AudioManager
         localObject = DeviceInfoUtil.getSDCardMemory();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
-          if (bhel.a(1))
+          if (bhis.a(1))
           {
-            QMLog.i("AudioJsPlugin", "startRecord() " + this.context.getString(2131694347));
-            parambgkd.b();
+            QMLog.i("AudioJsPlugin", "startRecord() " + this.context.getString(2131694349));
+            parambgok.b();
             return;
             i = 0;
             break;
@@ -369,44 +369,44 @@ class AudioJsPlugin$AudioManager
           if (this.recorder == null) {
             this.recorder = getLameMp3Recorder();
           }
-          parambgkd = this.recorder.a();
-          QMLog.i("AudioJsPlugin", "path: " + parambgkd);
+          parambgok = this.recorder.a();
+          QMLog.i("AudioJsPlugin", "path: " + parambgok);
           ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).muteAudioFocus(this.context, true);
           this.recorder.a();
           setFateOfRecorder(0);
           return;
         }
-        QMLog.d("AudioJsPlugin", "startRecord() " + this.context.getString(2131694401));
-        parambgkd.b();
+        QMLog.d("AudioJsPlugin", "startRecord() " + this.context.getString(2131694403));
+        parambgok.b();
         return;
       }
     }
-    QMLog.w("AudioJsPlugin", "startRecord() " + this.context.getString(2131694349));
-    parambgkd.b();
+    QMLog.w("AudioJsPlugin", "startRecord() " + this.context.getString(2131694351));
+    parambgok.b();
   }
   
-  public void stopRecord(int paramInt, bgkd parambgkd, boolean paramBoolean)
+  public void stopRecord(int paramInt, bgok parambgok, boolean paramBoolean)
   {
     this.isRecordManagerApi = paramBoolean;
-    this.stopRecordReq = parambgkd;
+    this.stopRecordReq = parambgok;
     if (this.recorder != null)
     {
       this.recorder.b();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
   
-  public void stopVoice(bgkd parambgkd)
+  public void stopVoice(bgok parambgok)
   {
     if (this.recorder != null)
     {
       this.recorder.e();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
-    parambgkd.b();
+    parambgok.b();
   }
 }
 

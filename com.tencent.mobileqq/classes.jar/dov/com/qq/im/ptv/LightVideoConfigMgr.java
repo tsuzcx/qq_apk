@@ -5,10 +5,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import avxz;
-import azib;
-import bcyj;
-import bmax;
+import awci;
+import azmk;
+import bdcs;
+import bmfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -34,7 +34,7 @@ import org.json.JSONObject;
 public class LightVideoConfigMgr
 {
   private static AtomicReference<LightVideoConfigMgr> jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-  private bmax jdField_a_of_type_Bmax = new bmax();
+  private bmfj jdField_a_of_type_Bmfj = new bmfj();
   
   public static int a()
   {
@@ -55,7 +55,7 @@ public class LightVideoConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = avxz.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = awci.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -182,7 +182,7 @@ public class LightVideoConfigMgr
         i = 0;
         while (i < j)
         {
-          LightVideoConfigMgr.StrategyItem localStrategyItem = (LightVideoConfigMgr.StrategyItem)bcyj.a(paramJSONObject.getJSONObject(i), LightVideoConfigMgr.StrategyItem.class);
+          LightVideoConfigMgr.StrategyItem localStrategyItem = (LightVideoConfigMgr.StrategyItem)bdcs.a(paramJSONObject.getJSONObject(i), LightVideoConfigMgr.StrategyItem.class);
           if (localStrategyItem == null)
           {
             VideoEnvironment.a("LightVideoConfigMgr", "parseConfigData:item=null i=" + i, null);
@@ -326,8 +326,8 @@ public class LightVideoConfigMgr
     try
     {
       paramString = new JSONObject(paramString);
-      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean = paramString.optBoolean("showLightEntry", false);
-      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Int = paramString.optInt("longClickEntry", 0);
+      localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_a_of_type_Boolean = paramString.optBoolean("showLightEntry", false);
+      localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_a_of_type_Int = paramString.optInt("longClickEntry", 0);
       int m = paramString.optInt("lightDuration", 20);
       i = m;
       if (m > 5) {
@@ -341,7 +341,7 @@ public class LightVideoConfigMgr
       QLog.d("LightVideoConfigMgr", 2, "loadGeneralConfigMgr[JSONException]", paramString);
       return localLightVideoConfigMgr;
     }
-    localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Int = i;
+    localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_b_of_type_Int = i;
     k = paramString.optInt("lightBitrate", 450);
     int i = k;
     if (k >= 2000) {
@@ -350,13 +350,13 @@ public class LightVideoConfigMgr
     for (;;)
     {
       label119:
-      localLightVideoConfigMgr.jdField_a_of_type_Bmax.c = i;
-      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean = false;
-      if ((localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean) && (!a(paramString)))
+      localLightVideoConfigMgr.jdField_a_of_type_Bmfj.c = i;
+      localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_b_of_type_Boolean = false;
+      if ((localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_a_of_type_Boolean) && (!a(paramString)))
       {
         ArrayList localArrayList = new ArrayList(3);
         if (a(paramString, localArrayList) == 0) {
-          localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean = a(localArrayList);
+          localLightVideoConfigMgr.jdField_a_of_type_Bmfj.jdField_b_of_type_Boolean = a(localArrayList);
         }
       }
       return localLightVideoConfigMgr;
@@ -394,27 +394,27 @@ public class LightVideoConfigMgr
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean) && (!azib.b());
+    return (this.jdField_a_of_type_Bmfj.jdField_a_of_type_Boolean) && (!azmk.b());
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Bmax.jdField_b_of_type_Int;
+    return this.jdField_a_of_type_Bmfj.jdField_b_of_type_Int;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Bmax.jdField_a_of_type_Int == 1;
+    return this.jdField_a_of_type_Bmfj.jdField_a_of_type_Int == 1;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Bmax.c;
+    return this.jdField_a_of_type_Bmfj.c;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean;
+    return this.jdField_a_of_type_Bmfj.jdField_b_of_type_Boolean;
   }
 }
 

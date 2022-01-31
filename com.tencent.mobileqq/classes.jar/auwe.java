@@ -1,20 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class auwe
-  implements Animation.AnimationListener
+class auwe
+  extends amcm
 {
-  public auwe(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  auwe(auwd paramauwd) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt)
   {
-    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      }
+      auwd.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
+      }
+      auwd.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
   }
 }
 

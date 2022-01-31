@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acnt;
-import ajbm;
+import acsi;
+import ajgb;
 
 public class Conversation$45$1
   implements Runnable
 {
-  public Conversation$45$1(acnt paramacnt) {}
+  public Conversation$45$1(acsi paramacsi) {}
   
   public void run()
   {

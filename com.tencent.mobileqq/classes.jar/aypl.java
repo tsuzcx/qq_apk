@@ -1,17 +1,90 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class aypl
-  extends aypw
+  implements Manager
 {
-  public aypl(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
+  private aypg jdField_a_of_type_Aypg = new aypg("Cahce_");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public aypl(QQAppInterface paramQQAppInterface)
   {
-    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public ayjk a(List<ayjl> paramList, String paramString)
+  public ArrayList<aypj> a(String paramString)
   {
-    return new biru(paramList, paramString);
+    if (this.jdField_a_of_type_Aypg != null)
+    {
+      paramString = this.jdField_a_of_type_Aypg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
+      {
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
+      }
+      return paramString;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aypg != null)
+    {
+      this.jdField_a_of_type_Aypg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
+      return;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
+    {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = aypf.a(paramInt);
+      if (!a(i)) {
+        break;
+      }
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
+    }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aypg != null) {
+      this.jdField_a_of_type_Aypg.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_Aypg = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 

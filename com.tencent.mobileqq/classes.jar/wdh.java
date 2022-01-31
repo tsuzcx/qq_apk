@@ -1,21 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.view.View;
 
-public class wdh
-  extends SimpleJob<Void>
+class wdh
+  implements bhuk
 {
-  public wdh(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
-  {
-    super(paramString);
-  }
+  wdh(wdg paramwdg, bhuf parambhuf, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    wsv.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(ukd.a()) });
-    return null;
+    this.jdField_a_of_type_Bhuf.e();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Wdg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Wdg.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

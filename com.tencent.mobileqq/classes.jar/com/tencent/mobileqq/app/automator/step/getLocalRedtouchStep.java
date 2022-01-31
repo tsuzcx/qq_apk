@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import avod;
+import avsm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -14,7 +14,7 @@ public class getLocalRedtouchStep
     if (QLog.isColorLevel()) {
       QLog.i("LocalRedTouchManager", 2, "reconnect pullRedTouchs");
     }
-    ((avod)this.a.app.getManager(160)).b();
+    ((avsm)this.a.app.getManager(160)).b();
     return 7;
   }
 }

@@ -1,24 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.widget.AbsListView;
 
-class afgt
-  implements bhqd
+public class afgt
+  implements affa
 {
-  afgt(afgr paramafgr, MessageForDeviceFile paramMessageForDeviceFile, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((ztk)this.jdField_a_of_type_Afgr.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Afgr.b();
-      this.jdField_a_of_type_Bhpy.dismiss();
+    default: 
       return;
-      this.jdField_a_of_type_Afgr.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    case 4: 
+      ymq.a().a();
+      return;
+    case 9: 
+      ymq.a().b();
+      return;
     }
+    ymq.a().c();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    ymq.a().a(paramAbsListView, paramInt);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    ymq.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (afkf.class.isInstance(paramObject)) {
+      ymq.a().a((afkf)paramObject);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11, 6, 4, 9 };
   }
 }
 

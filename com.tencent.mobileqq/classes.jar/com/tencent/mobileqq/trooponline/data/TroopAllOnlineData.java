@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.trooponline.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.util.List;
 
 public class TroopAllOnlineData
-  extends awbv
+  extends awge
 {
   public static final String TAG = "TroopAllOnlineData";
   public List<String> memberUinList;
   public long nextReqTime;
-  @awdj
+  @awhs
   public String troopUin;
   public byte[] uinData;
   
@@ -19,7 +19,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 29	awbv:postRead	()V
+    //   1: invokespecial 29	awge:postRead	()V
     //   4: aload_0
     //   5: getfield 31	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:uinData	[B
     //   8: ifnull +11 -> 19
@@ -182,7 +182,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 80	awbv:prewrite	()V
+    //   1: invokespecial 80	awge:prewrite	()V
     //   4: aload_0
     //   5: getfield 49	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:memberUinList	Ljava/util/List;
     //   8: ifnull +15 -> 23

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ class BaseChatPie$89
   
   public void run()
   {
-    ((aloz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b();
+    ((alto)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b();
     this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(64));
   }
 }

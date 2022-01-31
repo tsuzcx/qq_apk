@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import biat;
+import bifa;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecyclerViewCompat
   extends RecyclerView
 {
-  private biat jdField_a_of_type_Biat;
+  private bifa jdField_a_of_type_Bifa;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -31,9 +31,9 @@ public class RecyclerViewCompat
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public biat a()
+  public bifa a()
   {
-    return this.jdField_a_of_type_Biat;
+    return this.jdField_a_of_type_Bifa;
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -61,7 +61,7 @@ public class RecyclerViewCompat
     boolean bool1 = false;
     int j = paramInt1;
     int k = paramInt2;
-    if (this.jdField_a_of_type_Biat != null)
+    if (this.jdField_a_of_type_Bifa != null)
     {
       if (getLayoutManager() == null) {
         QLog.e("RecyclerViewCompat", 2, "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
@@ -105,7 +105,7 @@ public class RecyclerViewCompat
           bool1 = true;
         }
         dispatchNestedFling(i, paramInt1, bool1);
-        if ((this.jdField_a_of_type_Biat != null) && (this.jdField_a_of_type_Biat.a(i, paramInt1))) {
+        if ((this.jdField_a_of_type_Bifa != null) && (this.jdField_a_of_type_Bifa.a(i, paramInt1))) {
           return true;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -121,9 +121,9 @@ public class RecyclerViewCompat
     super.setAdapter(paramAdapter);
   }
   
-  public void setOnFlingListener(biat parambiat)
+  public void setOnFlingListener(bifa parambifa)
   {
-    this.jdField_a_of_type_Biat = parambiat;
+    this.jdField_a_of_type_Bifa = parambifa;
   }
 }
 

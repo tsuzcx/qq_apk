@@ -1,63 +1,168 @@
-import ColorNick.QC.GroupNickEmoji;
-import ColorNick.QC.GroupNickItem;
-import ColorNick.QC.readItemInfoRsp;
+import android.app.Dialog;
+import android.content.res.Resources;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
 
 public class acra
-  extends alxo
+  extends altm
 {
-  public acra(EditInfoActivity paramEditInfoActivity) {}
+  public acra(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    Object localObject1;
-    if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
+    int j = -10000;
+    if ((!paramString.equals(ContactSyncJumpActivity.a(this.a))) && (!paramString.equals(ContactSyncJumpActivity.b(this.a) + ContactSyncJumpActivity.c(this.a)))) {}
+    label103:
+    int i;
+    label132:
+    label161:
+    label189:
+    label216:
+    label358:
+    label364:
+    label372:
+    label380:
+    do
     {
-      paramObject = (readItemInfoRsp)paramObject;
-      EditInfoActivity.a(this.a, paramObject.index);
-      localObject1 = paramObject.urlprefix;
-      Iterator localIterator;
-      Object localObject2;
-      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditInfoActivity.a(this.a).size() == 0))
+      return;
+      boolean bool;
+      if (QLog.isColorLevel())
       {
-        localIterator = paramObject.emojilist.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (GroupNickEmoji)localIterator.next();
-          EditInfoActivity.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
+        paramString = new StringBuilder();
+        paramString.append("onGetOnlineInfo | isSuccess = ").append(paramBoolean);
+        localObject = paramString.append(" | resp = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label358;
         }
-        this.a.a.sendEmptyMessage(260);
+        bool = true;
+        ((StringBuilder)localObject).append(bool);
+        localObject = paramString.append(" | resp.result = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label364;
+        }
+        i = paramGetOnlineInfoResp.result;
+        ((StringBuilder)localObject).append(i);
+        localObject = paramString.append(" | resp.errorCode = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label372;
+        }
+        i = paramGetOnlineInfoResp.errorCode;
+        ((StringBuilder)localObject).append(i);
+        localObject = paramString.append(" | resp.iTermType = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label380;
+        }
+        paramLong = paramGetOnlineInfoResp.iTermType;
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.status = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label387;
+        }
+        paramLong = paramGetOnlineInfoResp.dwStatus;
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.ability = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label394;
+        }
       }
-      if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
+      for (paramLong = paramGetOnlineInfoResp.uAbiFlag;; paramLong = -10000L)
       {
-        localIterator = paramObject.itemlist.iterator();
-        while (localIterator.hasNext())
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.network = ");
+        i = j;
+        if (paramGetOnlineInfoResp != null) {
+          i = paramGetOnlineInfoResp.eNetworkType;
+        }
+        ((StringBuilder)localObject).append(i);
+        QLog.d("ContactSync.JumpActivity", 2, paramString.toString());
+        if ((paramBoolean) && (paramGetOnlineInfoResp != null)) {
+          break label401;
+        }
+        if ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2)) {
+          break;
+        }
+        paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365268);
+        paramString.setText(2131699037);
+        paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
+        bool = false;
+        break label103;
+        i = -10000;
+        break label132;
+        i = -10000;
+        break label161;
+        paramLong = -10000L;
+        break label189;
+        paramLong = -10000L;
+        break label216;
+      }
+      if (paramGetOnlineInfoResp.result == 1)
+      {
+        if ((paramGetOnlineInfoResp.errorCode == 60001) || (paramGetOnlineInfoResp.errorCode == -5535))
         {
-          localObject2 = (GroupNickItem)localIterator.next();
-          String str = (String)localObject1 + ((GroupNickItem)localObject2).url;
-          localObject2 = new bdnf(3, null, ((GroupNickItem)localObject2).itemid, str);
-          EditInfoActivity.b(this.a).add(localObject2);
+          paramString = String.format(this.a.getResources().getString(2131699027), new Object[] { ContactSyncJumpActivity.d(this.a) });
+          ContactSyncJumpActivity.a(this.a).a(ContactSyncJumpActivity.e(this.a));
+          ContactSyncJumpActivity.a(this.a, 1, paramString);
+          return;
         }
-        localObject1 = this.a;
-        if (paramObject.left != 1) {
-          break label257;
-        }
+        this.a.finish();
+        return;
+      }
+    } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) && (this.a.jdField_a_of_type_Int != 2));
+    label387:
+    label394:
+    label401:
+    paramString = "";
+    String str1 = ContactSyncJumpActivity.a(this.a).a(paramGetOnlineInfoResp);
+    String str2 = ContactSyncJumpActivity.a(this.a).b(paramGetOnlineInfoResp);
+    if (!TextUtils.isEmpty(str1)) {
+      paramString = str1;
+    }
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(str1))
+    {
+      localObject = paramString;
+      if (!TextUtils.isEmpty(str2))
+      {
+        paramString = paramString + "\n";
+        localObject = paramString + str2;
       }
     }
-    label257:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      EditInfoActivity.a((EditInfoActivity)localObject1, paramBoolean);
+      i = 1;
+      label642:
+      if (i != 0) {
+        break label760;
+      }
+    }
+    label760:
+    for (paramString = this.a.getResources().getString(2131699037);; paramString = (String)localObject)
+    {
+      localObject = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365268);
+      ((TextView)localObject).setText(paramString);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if ((i == 0) || ((paramGetOnlineInfoResp.eNetworkType != 4) && (paramGetOnlineInfoResp.eNetworkType != 1))) {
+        break;
+      }
+      paramString = new Message();
+      paramString.what = 1000;
+      paramString.arg1 = 4;
+      ContactSyncJumpActivity.a(this.a).sendMessage(paramString);
       return;
+      i = 0;
+      break label642;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acra
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,42 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import java.util.ArrayList;
-import java.util.List;
 
-public class blok
-  implements Cloneable
+public final class blok
+  implements zao
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
+  public blok(FrameVideoHelper paramFrameVideoHelper, zao paramzao) {}
   
-  public blok() {}
-  
-  public blok(String paramString)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public blok a()
-  {
-    blok localblok = new blok();
-    localblok.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localblok.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localblok.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localblok.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localblok.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localblok.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    localblok.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localblok.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localblok;
+    bljn.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], onResult(), isSuccess=" + paramBoolean + ", dataArray=" + paramArrayList + ", frameSize=" + paramLong);
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("[extractFrameForSmartMusic], executeTime=").append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a()).append(", frameCount=");
+      if (paramArrayList == null)
+      {
+        i = 0;
+        bljn.a("AEEditorMusicHelper", i + ", size=" + this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.b() + "KB");
+      }
+    }
+    else if (this.jdField_a_of_type_Zao != null)
+    {
+      if (paramArrayList != null) {
+        break label169;
+      }
+    }
+    label169:
+    for (paramArrayList = null;; paramArrayList = new ArrayList(paramArrayList))
+    {
+      this.jdField_a_of_type_Zao.a(paramBoolean, paramArrayList, paramLong);
+      if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null) {
+        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+      }
+      return;
+      i = paramArrayList.size();
+      break;
+    }
   }
 }
 

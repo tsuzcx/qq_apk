@@ -1,13 +1,8 @@
-public class andu
+public abstract interface andu
 {
-  public int a;
-  public String a;
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public andu(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(boolean paramBoolean, andv paramandv);
 }
 
 

@@ -43,18 +43,18 @@ public class EcshopNewPageFragment
   
   private void a()
   {
-    this.vg.setTitle(getResources().getString(2131692015));
-    this.vg.setRightImage(getResources().getDrawable(2130849504));
-    ((ImageView)this.vg.findViewById(2131368961)).setImageResource(2130849988);
+    this.vg.setTitle(getResources().getString(2131692016));
+    this.vg.setRightImage(getResources().getDrawable(2130849577));
+    ((ImageView)this.vg.findViewById(2131368979)).setImageResource(2130850061);
     this.vg.setOnItemSelectListener(new nvg(this));
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
       ImmersiveUtils.a(true, getActivity().getWindow());
-      this.mContentView.findViewById(2131371150).setVisibility(0);
+      this.mContentView.findViewById(2131371169).setVisibility(0);
       this.vg.setBackgroundColor(-16777216);
       return;
     }
-    this.mContentView.findViewById(2131371150).setVisibility(8);
+    this.mContentView.findViewById(2131371169).setVisibility(8);
   }
   
   private void a(Intent paramIntent)
@@ -86,7 +86,7 @@ public class EcshopNewPageFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131364960));
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131364962));
     if (nvd.a(nvc.a(), 0, this.jdField_a_of_type_Int))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.setVisibility(0);
@@ -102,7 +102,7 @@ public class EcshopNewPageFragment
     FragmentTransaction localFragmentTransaction = getChildFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment == null) {
       if (!paramEcshopTabFragment.isAdded()) {
-        localFragmentTransaction.add(2131364776, paramEcshopTabFragment).commitAllowingStateLoss();
+        localFragmentTransaction.add(2131364777, paramEcshopTabFragment).commitAllowingStateLoss();
       }
     }
     for (;;)
@@ -113,7 +113,7 @@ public class EcshopNewPageFragment
       continue;
       if (!this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment.a(paramEcshopTabFragment)) {
         if (!paramEcshopTabFragment.isAdded()) {
-          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131364776, paramEcshopTabFragment).commitAllowingStateLoss();
+          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131364777, paramEcshopTabFragment).commitAllowingStateLoss();
         } else {
           localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).show(paramEcshopTabFragment).commitAllowingStateLoss();
         }
@@ -123,7 +123,7 @@ public class EcshopNewPageFragment
   
   public int getContentLayoutId()
   {
-    return 2131561681;
+    return 2131561699;
   }
   
   public void init(Bundle paramBundle)

@@ -1,15 +1,9 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-class atsn
-  implements Comparator<atse>
+public abstract interface atsn
 {
-  public int a(atse paramatse1, atse paramatse2)
-  {
-    if (paramatse1.a >= paramatse2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(List<LocationRoom.Venue> paramList);
 }
 
 

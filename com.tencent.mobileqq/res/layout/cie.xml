@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqcircle.utils.QCircleRelativeLayout android:id="@id/mmk" android:paddingLeft="7.0dip" android:paddingTop="7.0dip" android:paddingRight="10.0dip" android:paddingBottom="20.0dip" android:layout_width="150.0dip" android:layout_height="192.0dip"
+<LinearLayout android:orientation="vertical" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/mmj" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true" app:authIconHeight="18.0dip" app:authIconWidth="18.0dip" />
-    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/mmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="18.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/mmj" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="11.0dip" android:textColor="#ff82848c" android:ellipsize="end" android:gravity="center" android:id="@id/mml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_below="@id/mmn" android:layout_centerHorizontal="true" />
-    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="13.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mmm" android:layout_width="70.0dip" android:layout_height="41.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/mml" android:layout_centerHorizontal="true" />
-</com.tencent.biz.qqcircle.utils.QCircleRelativeLayout>
+    <include layout="@layout/cid" />
+    <include layout="@layout/cib" />
+</LinearLayout>

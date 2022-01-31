@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import aekt;
-import ajfa;
-import alpo;
+import aepi;
+import ajjp;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,9 +16,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bcwt;
-import bdag;
-import bhwu;
+import bdbc;
+import bdep;
+import bibb;
 import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
@@ -41,9 +41,9 @@ import oba;
 
 public class ReadinjoySubscriptManagerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bcwt, bhwu
+  implements View.OnClickListener, bdbc, bibb
 {
-  private ajfa jdField_a_of_type_Ajfa;
+  private ajjp jdField_a_of_type_Ajjp;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
@@ -105,28 +105,28 @@ public class ReadinjoySubscriptManagerActivity
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
-    setTitle(alpo.a(2131713124));
+    setTitle(alud.a(2131713136));
     setLeftViewName(2131690382);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718871);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365759);
-    ((TextView)findViewById(2131378291)).setText(alpo.a(2131713196));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718883);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365761);
+    ((TextView)findViewById(2131378345)).setText(alud.a(2131713208));
     this.jdField_a_of_type_Oaw = new oaw(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131377177));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131377231));
     TextView localTextView = new TextView(this);
-    localTextView.setHeight(aekt.a(20.0F, getResources()));
-    localTextView.setBackgroundResource(2131167138);
+    localTextView.setHeight(aepi.a(20.0F, getResources()));
+    localTextView.setBackgroundResource(2131167140);
     localTextView.setClickable(false);
-    localTextView.setHintTextColor(getResources().getColor(2131167138));
+    localTextView.setHintTextColor(getResources().getColor(2131167140));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Oaw);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Oaw);
-    this.jdField_a_of_type_Ajfa = new ajfa(this.app, this, false);
-    this.b = findViewById(2131371149);
+    this.jdField_a_of_type_Ajjp = new ajjp(this.app, this, false);
+    this.b = findViewById(2131371168);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -149,7 +149,7 @@ public class ReadinjoySubscriptManagerActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label178;
       }
-      if ((bdag.b()) || (bdag.d())) {
+      if ((bdep.b()) || (bdep.d())) {
         break label157;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -158,7 +158,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848925);
+      this.leftView.setBackgroundResource(2130848998);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -172,12 +172,12 @@ public class ReadinjoySubscriptManagerActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label178:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bdag.d())
+      else if (!bdep.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -205,7 +205,7 @@ public class ReadinjoySubscriptManagerActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560129);
+    setContentView(2131560128);
     b();
     a();
     c();
@@ -215,10 +215,10 @@ public class ReadinjoySubscriptManagerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ajfa != null)
+    if (this.jdField_a_of_type_Ajjp != null)
     {
-      this.jdField_a_of_type_Ajfa.a();
-      this.jdField_a_of_type_Ajfa = null;
+      this.jdField_a_of_type_Ajjp.a();
+      this.jdField_a_of_type_Ajjp = null;
     }
   }
   
@@ -247,7 +247,7 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
     label84:
-    for (int i = 2131718792;; i = 2131718871)
+    for (int i = 2131718804;; i = 2131718883)
     {
       paramView.setText(i);
       this.jdField_a_of_type_Oaw.notifyDataSetChanged();

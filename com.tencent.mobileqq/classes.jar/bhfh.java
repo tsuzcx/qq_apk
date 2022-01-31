@@ -1,47 +1,32 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
-import org.json.JSONObject;
-
-class bhfh
-  implements bghv<Void>
+public class bhfh<E>
 {
-  bhfh(bhfe parambhfe, String paramString) {}
+  private bhfe<T, E>.bhfg<T> jdField_a_of_type_Bhfg;
+  private E jdField_a_of_type_JavaLangObject;
+  private bhfe<T, E>.bhfg<T> b;
   
-  public Void a(bghl parambghl)
+  public bhfh(bhfe parambhfe) {}
+  
+  public bhfe<T, E>.bhfg<T> a()
   {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    for (;;)
-    {
-      return null;
-      parambghl = (AppBrandPageContainer)parambghl;
-      Object localObject = parambghl.a();
-      if ((localObject != null) && (((AppBrandPage)localObject).a() != null)) {
-        ((AppBrandPage)localObject).a().a((byte)2);
-      }
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("htmlId", this.jdField_a_of_type_Bhfe.a.a);
-        ((JSONObject)localObject).put("src", this.jdField_a_of_type_JavaLangString);
-        int i = bgie.a(InnerWebView.a(this.jdField_a_of_type_Bhfe.a)).a();
-        if ((parambghl.a() != null) && (parambghl.a().a() != null))
-        {
-          parambghl.a().a().a("onWebviewFinishLoad", ((JSONObject)localObject).toString(), i);
-          return null;
-        }
-      }
-      catch (Exception parambghl)
-      {
-        QMLog.e("Action", "onPageStarted error." + parambghl);
-      }
-    }
-    return null;
+    return this.jdField_a_of_type_Bhfg;
+  }
+  
+  public bhfh a(bhfe<T, E>.bhfg<T> parambhfe)
+  {
+    this.jdField_a_of_type_Bhfg = parambhfe;
+    return this;
+  }
+  
+  public bhfh a(E paramE)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    return this;
+  }
+  
+  public bhfh b(bhfe<T, E>.bhfg<T> parambhfe)
+  {
+    this.b = parambhfe;
+    return this;
   }
 }
 

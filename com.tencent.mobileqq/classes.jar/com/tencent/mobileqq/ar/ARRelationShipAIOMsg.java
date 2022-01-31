@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import amqr;
+import amvg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARRelationShipAIOMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRelationShipAIOMsg> CREATOR = new amqr();
+  public static final Parcelable.Creator<ARRelationShipAIOMsg> CREATOR = new amvg();
   public String a;
   public String b;
   public String c;

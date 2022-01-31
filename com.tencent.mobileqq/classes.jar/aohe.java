@@ -1,71 +1,49 @@
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aohe
+  extends MSFServlet
 {
-  private Map<String, String> a = new HashMap();
-  
-  public static aohe a(aogf[] paramArrayOfaogf)
+  public String[] getPreferSSOCommands()
   {
-    Object localObject;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
+    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-      localObject = null;
-      return localObject;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        aohe localaohe = new aohe();
-        i = 0;
-        localObject = localaohe;
-        if (i >= paramArrayOfaogf.length) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfaogf[i].jdField_a_of_type_Int) });
-        }
-        localObject = new JSONObject(paramArrayOfaogf[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).has("grayUrlConfig")) {
-          localaohe.a.put("apolloGrayUrlWhite", paramArrayOfaogf[i].jdField_a_of_type_JavaLangString);
-        } else if (((JSONObject)localObject).has("traceConfig")) {
-          localaohe.a.put("apolloTraceConfig", paramArrayOfaogf[i].jdField_a_of_type_JavaLangString);
-        }
+      if ((getAppRuntime() instanceof QQAppInterface)) {
+        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
       }
-      catch (Exception paramArrayOfaogf)
-      {
-        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfaogf, new Object[0]);
-        return null;
-      }
-      i += 1;
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aohe paramaohe)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if ((paramQQAppInterface == null) || (paramaohe == null)) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      return;
-      Iterator localIterator = paramaohe.a.keySet().iterator();
-      while (localIterator.hasNext())
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramaohe.a.get(str1);
-        if ((paramBoolean) && (QLog.isColorLevel())) {
-          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
-        }
-        if ("apolloGrayUrlWhite".equals(str1)) {
-          alee.a(paramQQAppInterface, str2, paramBoolean);
-        } else if ("apolloTraceConfig".equals(str1)) {
-          alee.a(paramQQAppInterface, str2);
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
         }
       }
     }
@@ -73,7 +51,7 @@ public class aohe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class VideoEncodeActivity$2
@@ -10,7 +10,7 @@ class VideoEncodeActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0, alpo.a(2131716517), 0).a();
+    QQToast.a(this.this$0, alud.a(2131716529), 0).a();
   }
 }
 

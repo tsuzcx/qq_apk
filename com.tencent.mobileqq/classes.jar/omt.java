@@ -53,7 +53,7 @@ public class omt
         localSpannableStringBuilder.append("：");
       }
     }
-    String str = ayvy.b(paramSubCommentData.commentContent);
+    String str = azah.b(paramSubCommentData.commentContent);
     paramSubCommentData = str;
     if (localSpannableStringBuilder.length() > 0) {
       paramSubCommentData = localSpannableStringBuilder.append(str);
@@ -68,9 +68,9 @@ public class omt
     default: 
       return "";
     case 1: 
-      return alpo.a(2131702588);
+      return alud.a(2131702600);
     }
-    return alpo.a(2131702590);
+    return alud.a(2131702602);
   }
   
   public static void a(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float paramFloat1, float paramFloat2)
@@ -226,7 +226,7 @@ public class omt
     int i;
     Object localObject2;
     label513:
-    for (this.jdField_a_of_type_JavaLangCharSequence = new baig(ayvy.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentContent), 3, this.d);; this.jdField_a_of_type_JavaLangCharSequence = new baig(a((SubCommentData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData), 3, this.d))
+    for (this.jdField_a_of_type_JavaLangCharSequence = new bamp(azah.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentContent), 3, this.d);; this.jdField_a_of_type_JavaLangCharSequence = new bamp(a((SubCommentData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData), 3, this.d))
     {
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData))
       {
@@ -269,7 +269,7 @@ public class omt
           {
             ((SpannableStringBuilder)localObject2).append(" : ");
             String str = a(((SubCommentData)localObject1).getCommentMediaType());
-            ((SpannableStringBuilder)localObject2).append(new baig(ayvy.b(((SubCommentData)localObject1).commentContent) + str, 7, this.d));
+            ((SpannableStringBuilder)localObject2).append(new bamp(azah.b(((SubCommentData)localObject1).commentContent) + str, 7, this.d));
             this.c.add(localObject2);
           }
         }
@@ -309,7 +309,7 @@ public class omt
       if (!TextUtils.isEmpty(((SubCommentData)localObject1).commentContent))
       {
         localObject2 = a(((SubCommentData)localObject1).getCommentMediaType());
-        localObject1 = new baig(ayvy.b(((SubCommentData)localObject1).commentContent) + (String)localObject2, 7, this.d);
+        localObject1 = new bamp(azah.b(((SubCommentData)localObject1).commentContent) + (String)localObject2, 7, this.d);
         this.jdField_b_of_type_JavaUtilList.add(localObject1);
       }
     }

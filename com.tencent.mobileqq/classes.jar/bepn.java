@@ -1,28 +1,35 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.widget.DropdownView.1.1;
 
 public class bepn
-  implements TencentMap.OnCameraChangeListener
+  implements View.OnClickListener
 {
-  public bepn(QQMapView paramQQMapView) {}
+  public bepn(DropdownView paramDropdownView) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Bepo != null) && (!this.a.jdField_a_of_type_Boolean))
+    this.a.jdField_a_of_type_Bepo.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bepo.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Bepo.getAdapter() != null) && (this.a.jdField_a_of_type_Bepo.getAdapter().getCount() > 0))
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bepo.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label160;
+      }
+      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
+      paramView = paramView.getContext();
+      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
+        azqs.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      }
     }
-  }
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QQMapView.a(this.a, paramCameraPosition);
-    }
+    return;
+    label160:
+    this.a.jdField_a_of_type_Bepo.dismissDropDown();
   }
 }
 

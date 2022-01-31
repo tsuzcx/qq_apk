@@ -1,44 +1,31 @@
-import android.text.Spanned;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
-class blug
-  extends bmok
+public class blug
+  extends blts
 {
-  blug(bluf parambluf, int paramInt)
+  public blug(HummingActivity paramHummingActivity) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    super(paramInt);
+    bflz.a().a(alud.a(2131706058) + HummingActivity.a(this.a), 0);
   }
   
-  public int a(CharSequence paramCharSequence)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
+    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).getLocalPath().equals(paramString)))
     {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
-    }
-    label92:
-    for (;;)
-    {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
-      {
-        return paramCharSequence;
-        i = 0;
-        break;
-      }
-      return paramSpanned;
+      paramString = new Intent();
+      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
+      this.a.setResult(-1, paramString);
+      this.a.finish();
     }
   }
 }

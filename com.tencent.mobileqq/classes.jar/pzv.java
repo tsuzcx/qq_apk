@@ -6,9 +6,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pzv
   extends pxl
 {
-  public pzv(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pzv(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
@@ -24,7 +24,7 @@ public class pzv
     }
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
       localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
     }

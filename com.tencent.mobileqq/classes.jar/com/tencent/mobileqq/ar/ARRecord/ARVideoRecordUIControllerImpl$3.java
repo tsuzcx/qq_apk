@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqa;
+import amup;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARVideoRecordUIControllerImpl$3
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$3(amqa paramamqa) {}
+  public ARVideoRecordUIControllerImpl$3(amup paramamup) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, amqa.b, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amup.b, 1).a();
   }
 }
 

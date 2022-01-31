@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import uwn;
-import uwq;
-import wsv;
+import vaw;
+import vaz;
+import wxe;
 
 public class MsgTabStoryNodeListManager$2$1
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$2$1(uwq paramuwq, Object paramObject) {}
+  public MsgTabStoryNodeListManager$2$1(vaz paramvaz, Object paramObject) {}
   
   public void run()
   {
-    wsv.a(uwn.b(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.jdField_a_of_type_JavaLangObject));
-    this.jdField_a_of_type_Uwq.a.a();
+    wxe.a(vaw.b(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.jdField_a_of_type_JavaLangObject));
+    this.jdField_a_of_type_Vaz.a.a();
   }
 }
 

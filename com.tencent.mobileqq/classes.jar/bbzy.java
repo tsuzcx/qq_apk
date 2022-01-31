@@ -1,64 +1,20 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
 public class bbzy
-  extends bbzp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean c;
+  public bbzy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bbzy(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+    default: 
       return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public bbzy(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    PublishHomeWorkFragment.a(this.a);
   }
 }
 

@@ -1,11 +1,17 @@
-import android.widget.RelativeLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class agbt
-  extends aelt
+public class agbt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public RelativeLayout a;
+  public agbt(SixCombolEffectView paramSixCombolEffectView) {}
   
-  private agbt(agbr paramagbr) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

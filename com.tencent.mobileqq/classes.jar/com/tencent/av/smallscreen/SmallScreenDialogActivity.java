@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import bdcb;
-import bdcd;
-import bdfq;
+import bdgk;
+import bdgm;
+import bdjz;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -28,43 +28,43 @@ public class SmallScreenDialogActivity
   implements DialogInterface.OnClickListener
 {
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mbm(this);
-  private bdfq jdField_a_of_type_Bdfq;
+  private bdjz jdField_a_of_type_Bdjz;
   public VideoAppInterface a;
   private final String jdField_a_of_type_JavaLangString = "SmallScreenDialogActivity_" + AudioHelper.b();
-  private bdfq b;
+  private bdjz b;
   
-  private bdfq a()
+  private bdjz a()
   {
-    bdfq localbdfq;
-    if (this.jdField_a_of_type_Bdfq == null)
+    bdjz localbdjz;
+    if (this.jdField_a_of_type_Bdjz == null)
     {
-      localbdfq = bdcd.a(this, 230).setMessage(2131696328).setNegativeButton(2131690648, this);
+      localbdjz = bdgm.a(this, 230).setMessage(2131696330).setNegativeButton(2131690648, this);
       if (!c()) {
         break label76;
       }
     }
     label76:
-    for (int i = 2131696332;; i = 2131696343)
+    for (int i = 2131696334;; i = 2131696345)
     {
-      this.jdField_a_of_type_Bdfq = localbdfq.setPositiveButton(i, this);
-      this.jdField_a_of_type_Bdfq.setTitle(2131696330);
-      this.jdField_a_of_type_Bdfq.setCancelable(false);
-      this.jdField_a_of_type_Bdfq.setCanceledOnTouchOutside(false);
-      return this.jdField_a_of_type_Bdfq;
+      this.jdField_a_of_type_Bdjz = localbdjz.setPositiveButton(i, this);
+      this.jdField_a_of_type_Bdjz.setTitle(2131696332);
+      this.jdField_a_of_type_Bdjz.setCancelable(false);
+      this.jdField_a_of_type_Bdjz.setCanceledOnTouchOutside(false);
+      return this.jdField_a_of_type_Bdjz;
     }
   }
   
   static boolean a()
   {
-    return !"vivo".equalsIgnoreCase(bdcb.h());
+    return !"vivo".equalsIgnoreCase(bdgk.h());
   }
   
-  private bdfq b()
+  private bdjz b()
   {
     if (this.b == null)
     {
-      this.b = bdcd.a(this, 230).setMessage(2131696329).setNegativeButton(2131690648, this).setPositiveButton(2131693376, this);
-      this.b.setTitle(2131696331);
+      this.b = bdgm.a(this, 230).setMessage(2131696331).setNegativeButton(2131690648, this).setPositiveButton(2131693378, this);
+      this.b.setTitle(2131696333);
       this.b.setCancelable(false);
       this.b.setCanceledOnTouchOutside(false);
     }
@@ -176,7 +176,7 @@ public class SmallScreenDialogActivity
         bool1 = bool2;
         continue;
       }
-      if ((!bool2) && ("vivo".equalsIgnoreCase(bdcb.h())) && (mbt.a(this, "permission.intent.action.softPermissionDetail")))
+      if ((!bool2) && ("vivo".equalsIgnoreCase(bdgk.h())) && (mbt.a(this, "permission.intent.action.softPermissionDetail")))
       {
         localObject3 = new Intent("permission.intent.action.softPermissionDetail");
         try
@@ -266,18 +266,18 @@ public class SmallScreenDialogActivity
     }
   }
   
-  void a(String paramString, bdfq parambdfq)
+  void a(String paramString, bdjz parambdjz)
   {
     try
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showDialog, from[" + paramString + "]");
-      parambdfq.show();
+      parambdjz.show();
       return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showDialog BadTokenException, from[" + paramString + "]", localBadTokenException);
-      getWindow().getDecorView().post(new SmallScreenDialogActivity.2(this, paramString, parambdfq));
+      getWindow().getDecorView().post(new SmallScreenDialogActivity.2(this, paramString, parambdjz));
     }
   }
   
@@ -288,7 +288,7 @@ public class SmallScreenDialogActivity
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_Bdfq)) {
+    if (paramDialogInterface.equals(this.jdField_a_of_type_Bdjz)) {
       switch (paramInt)
       {
       }
@@ -321,7 +321,7 @@ public class SmallScreenDialogActivity
         finish();
         return;
       }
-      a("clickCancel", this.jdField_a_of_type_Bdfq);
+      a("clickCancel", this.jdField_a_of_type_Bdjz);
       return;
     }
     b();
@@ -356,10 +356,10 @@ public class SmallScreenDialogActivity
       finish();
       return;
     }
-    if (this.jdField_a_of_type_Bdfq == null)
+    if (this.jdField_a_of_type_Bdjz == null)
     {
       a();
-      a("onResume.1", this.jdField_a_of_type_Bdfq);
+      a("onResume.1", this.jdField_a_of_type_Bdjz);
       return;
     }
     if (!mbt.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp()))

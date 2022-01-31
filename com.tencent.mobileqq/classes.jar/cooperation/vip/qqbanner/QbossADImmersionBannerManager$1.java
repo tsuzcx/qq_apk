@@ -1,40 +1,40 @@
 package cooperation.vip.qqbanner;
 
-import ajdy;
-import ajdz;
+import ajin;
+import ajio;
 import android.util.SparseArray;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdkf;
-import bjwu;
-import bkcc;
-import bkcf;
+import bdoo;
+import bkbb;
+import bkgj;
+import bkgm;
 
 public class QbossADImmersionBannerManager$1
   implements Runnable
 {
-  public QbossADImmersionBannerManager$1(bkcf parambkcf, ajdy paramajdy) {}
+  public QbossADImmersionBannerManager$1(bkgm parambkgm, ajin paramajin) {}
   
   public void run()
   {
     if (this.a == null) {}
-    while (!(this.a instanceof bkcc)) {
+    while (!(this.a instanceof bkgj)) {
       return;
     }
-    bkcf.a(this.this$0, (bkcc)this.a);
-    bkcf.a(this.this$0).setText(bkcf.a(this.this$0, bkcf.a(this.this$0).c));
-    bkcf.b(this.this$0).setText(bkcf.b(this.this$0, bkcf.a(this.this$0).d));
-    bkcf.a(this.this$0).setTextColor(bkcf.a(this.this$0, bkcf.a(this.this$0).e));
-    bkcf.b(this.this$0).setTextColor(bkcf.b(this.this$0, bkcf.a(this.this$0).e));
-    ajdz localajdz = (ajdz)this.a.a.get(2);
-    bkcf.a(this.this$0, new bjwu());
-    bkcf.a(this.this$0).a(localajdz.c, bkcf.a(this.this$0, bkcf.a(this.this$0)));
-    bkcf.a(this.this$0).a(bdkf.a() / 720.0F);
-    bkcf.a(this.this$0).a();
-    bkcf.a(this.this$0).a(true);
-    bkcf.a(this.this$0).b(true);
-    bkcf.a(this.this$0).start();
-    bkcf.a(this.this$0).setImageDrawable(bkcf.a(this.this$0));
+    bkgm.a(this.this$0, (bkgj)this.a);
+    bkgm.a(this.this$0).setText(bkgm.a(this.this$0, bkgm.a(this.this$0).c));
+    bkgm.b(this.this$0).setText(bkgm.b(this.this$0, bkgm.a(this.this$0).d));
+    bkgm.a(this.this$0).setTextColor(bkgm.a(this.this$0, bkgm.a(this.this$0).e));
+    bkgm.b(this.this$0).setTextColor(bkgm.b(this.this$0, bkgm.a(this.this$0).e));
+    ajio localajio = (ajio)this.a.a.get(2);
+    bkgm.a(this.this$0, new bkbb());
+    bkgm.a(this.this$0).a(localajio.c, bkgm.a(this.this$0, bkgm.a(this.this$0)));
+    bkgm.a(this.this$0).a(bdoo.a() / 720.0F);
+    bkgm.a(this.this$0).a();
+    bkgm.a(this.this$0).a(true);
+    bkgm.a(this.this$0).b(true);
+    bkgm.a(this.this$0).start();
+    bkgm.a(this.this$0).setImageDrawable(bkgm.a(this.this$0));
   }
 }
 

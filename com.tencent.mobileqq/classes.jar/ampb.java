@@ -1,36 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkViewModel;
 
-class ampb
-  extends amvh
+public abstract interface ampb
 {
-  ampb(ampa paramampa) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ampn.a, 2, "onArSoDownloadSuccess");
-    }
-    this.a.a();
-  }
+  public abstract void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel);
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ampn.a, 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ampn.a, 2, "onArSoDownloadFail");
-    }
-    this.a.a();
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,33 @@
-public abstract class axow
-  extends axpb
+public class axow
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  public int a;
+  public axox a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c = "";
+  
+  public axow()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Axox == null) || (this.jdField_a_of_type_Axox.d == 2);
+  }
+  
+  public String toString()
+  {
+    return "SubtitleItem{id=" + this.jdField_a_of_type_Int + " name=" + this.jdField_b_of_type_JavaLangString + " isShow=" + this.jdField_a_of_type_Boolean + " pos=" + this.jdField_b_of_type_Int + "}";
+  }
 }
 
 

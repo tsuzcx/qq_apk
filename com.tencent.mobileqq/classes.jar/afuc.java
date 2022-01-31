@@ -1,45 +1,17 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afuc
-  extends afue
+class afuc
+  extends afuf
 {
-  public afuc(QQStoryItemBuilder paramQQStoryItemBuilder) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  afuc(afpy paramafpy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-    do
-    {
-      return;
-      paramString1 = ((uro)urr.a(5)).a(paramString1);
-      if (paramString1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Afuf, this.jdField_a_of_type_Long, paramString1, false);
+    super(paramafpy, null);
   }
   
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Afuf, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Afuf, this.jdField_a_of_type_Long);
+    return new agfq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

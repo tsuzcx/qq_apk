@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bizm;
-import bizt;
+import bjdt;
+import bjea;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class RefreshQzoneFeedPlugin
         Bundle localBundle = new Bundle();
         localBundle.putString("cmd", "refreshFeed");
         localIntent.putExtras(localBundle);
-        bizm.a(paramJSONObject, bizt.a(), localIntent);
+        bjdt.a(paramJSONObject, bjea.a(), localIntent);
         paramJSContext.evaluateCallback(true, null, "");
         if (QLog.isColorLevel()) {
           QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");

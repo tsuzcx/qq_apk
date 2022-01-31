@@ -1,181 +1,136 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.WeakHashMap;
+import android.content.res.AssetManager;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.util.QIMFileUtils.1;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import mqq.os.MqqHandler;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class blzq<K, V>
-  implements Iterable<Map.Entry<K, V>>
+public class blzq
 {
-  private int jdField_a_of_type_Int;
-  private blzt<K, V> jdField_a_of_type_Blzt;
-  private WeakHashMap<blzw<K, V>, Boolean> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  private blzt<K, V> b;
-  
-  public int a()
+  public static File a()
   {
-    return this.jdField_a_of_type_Int;
+    return BaseApplicationImpl.getApplication().getCacheDir();
   }
   
-  protected blzt<K, V> a(K paramK)
+  public static String a(File paramFile, String paramString)
   {
-    for (blzt localblzt = this.jdField_a_of_type_Blzt;; localblzt = localblzt.jdField_a_of_type_Blzt) {
-      if ((localblzt == null) || (localblzt.jdField_a_of_type_JavaLangObject.equals(paramK))) {
-        return localblzt;
+    paramFile = new File(paramFile + File.separator + paramString);
+    if (paramFile.exists())
+    {
+      paramFile = bdhb.a(paramFile);
+      if ((paramFile == null) || (paramFile.length <= 0)) {
+        return null;
+      }
+      if (Build.VERSION.SDK_INT <= 8) {
+        return new String(paramFile);
+      }
+      try
+      {
+        paramFile = new String(paramFile, "UTF-8");
+        return paramFile;
+      }
+      catch (UnsupportedEncodingException paramFile)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramFile.printStackTrace();
+        }
+        return null;
       }
     }
+    return "";
   }
   
-  protected blzt<K, V> a(@NonNull K paramK, @NonNull V paramV)
+  public static String a(String paramString)
   {
-    paramK = new blzt(paramK, paramV);
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_b_of_type_Blzt == null)
-    {
-      this.jdField_a_of_type_Blzt = paramK;
-      this.jdField_b_of_type_Blzt = this.jdField_a_of_type_Blzt;
-      return paramK;
-    }
-    this.jdField_b_of_type_Blzt.jdField_a_of_type_Blzt = paramK;
-    paramK.jdField_b_of_type_Blzt = this.jdField_b_of_type_Blzt;
-    this.jdField_b_of_type_Blzt = paramK;
-    return paramK;
-  }
-  
-  public blzq<K, V>.blzu a()
-  {
-    blzu localblzu = new blzu(this);
-    this.jdField_a_of_type_JavaUtilWeakHashMap.put(localblzu, Boolean.valueOf(false));
-    return localblzu;
-  }
-  
-  public V a(@NonNull K paramK)
-  {
-    paramK = a(paramK);
-    if (paramK == null) {
-      return null;
-    }
-    this.jdField_a_of_type_Int -= 1;
-    if (!this.jdField_a_of_type_JavaUtilWeakHashMap.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      while (localIterator.hasNext()) {
-        ((blzw)localIterator.next()).a(paramK);
-      }
-    }
-    if (paramK.jdField_b_of_type_Blzt != null)
-    {
-      paramK.jdField_b_of_type_Blzt.jdField_a_of_type_Blzt = paramK.jdField_a_of_type_Blzt;
-      if (paramK.jdField_a_of_type_Blzt == null) {
-        break label134;
-      }
-      paramK.jdField_a_of_type_Blzt.jdField_b_of_type_Blzt = paramK.jdField_b_of_type_Blzt;
-    }
+    String str1 = "";
+    Object localObject2 = null;
+    Object localObject1 = null;
     for (;;)
     {
-      paramK.jdField_a_of_type_Blzt = null;
-      paramK.jdField_b_of_type_Blzt = null;
-      return paramK.jdField_b_of_type_JavaLangObject;
-      this.jdField_a_of_type_Blzt = paramK.jdField_a_of_type_Blzt;
-      break;
-      label134:
-      this.jdField_b_of_type_Blzt = paramK.jdField_b_of_type_Blzt;
-    }
-  }
-  
-  public V a(@NonNull K paramK, @NonNull V paramV)
-  {
-    blzt localblzt = a(paramK);
-    if (localblzt != null) {
-      return localblzt.jdField_b_of_type_JavaLangObject;
-    }
-    a(paramK, paramV);
-    return null;
-  }
-  
-  public Iterator<Map.Entry<K, V>> a()
-  {
-    blzs localblzs = new blzs(this.jdField_b_of_type_Blzt, this.jdField_a_of_type_Blzt);
-    this.jdField_a_of_type_JavaUtilWeakHashMap.put(localblzs, Boolean.valueOf(false));
-    return localblzs;
-  }
-  
-  public Map.Entry<K, V> a()
-  {
-    return this.jdField_a_of_type_Blzt;
-  }
-  
-  public Map.Entry<K, V> b()
-  {
-    return this.jdField_b_of_type_Blzt;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    if (paramObject == this) {
-      bool1 = true;
-    }
-    do
-    {
-      do
+      try
       {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof blzq));
-      localObject1 = (blzq)paramObject;
-      bool1 = bool2;
-    } while (a() != ((blzq)localObject1).a());
-    paramObject = iterator();
-    Object localObject1 = ((blzq)localObject1).iterator();
-    for (;;)
-    {
-      if ((paramObject.hasNext()) && (((Iterator)localObject1).hasNext()))
+        paramString = BaseApplication.getContext().getAssets().open(paramString);
+        localObject1 = paramString;
+        localObject2 = paramString;
+        String str2 = ndq.a(paramString);
+        localObject1 = str2;
+        localObject2 = localObject1;
+      }
+      catch (IOException paramString)
       {
-        Map.Entry localEntry = (Map.Entry)paramObject.next();
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (localEntry == null)
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject2 = localObject1;
+        paramString.printStackTrace();
+        localObject2 = str1;
+        if (localObject1 == null) {
+          continue;
+        }
+        try
         {
-          bool1 = bool2;
-          if (localObject2 != null) {
-            break;
-          }
+          ((InputStream)localObject1).close();
+          return "";
         }
-        if ((localEntry != null) && (!localEntry.equals(localObject2))) {
-          return false;
+        catch (Exception paramString)
+        {
+          localObject2 = str1;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return "";
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label113;
         }
       }
+      try
+      {
+        paramString.close();
+        localObject2 = localObject1;
+      }
+      catch (Exception paramString)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return localObject1;
+      }
     }
-    if ((!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext())) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  @NonNull
-  public Iterator<Map.Entry<K, V>> iterator()
-  {
-    blzr localblzr = new blzr(this.jdField_a_of_type_Blzt, this.jdField_b_of_type_Blzt);
-    this.jdField_a_of_type_JavaUtilWeakHashMap.put(localblzr, Boolean.valueOf(false));
-    return localblzr;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[");
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext())
+    return localObject2;
+    try
     {
-      localStringBuilder.append(((Map.Entry)localIterator.next()).toString());
-      if (localIterator.hasNext()) {
-        localStringBuilder.append(", ");
+      ((InputStream)localObject2).close();
+      label113:
+      throw paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
+        }
       }
     }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+  }
+  
+  public static void a(File paramFile, String paramString1, String paramString2)
+  {
+    ThreadManager.getFileThreadHandler().post(new QIMFileUtils.1(paramFile, paramString1, paramString2));
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bhft;
+import bgok;
+import bhka;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$1$1
-  implements bhft
+  implements bhka
 {
   PickerJsPlugin$1$1(PickerJsPlugin.1 param1) {}
   

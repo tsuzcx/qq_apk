@@ -1,6 +1,15 @@
+import java.io.File;
+import java.io.FilenameFilter;
+
 class blep
+  implements FilenameFilter
 {
-  private static blen a = new blen(null);
+  blep(bleo parambleo) {}
+  
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.startsWith("frame");
+  }
 }
 
 

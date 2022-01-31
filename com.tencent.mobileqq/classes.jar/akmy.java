@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
-
-public class akmy
-  implements Comparator<aknb>
+public abstract interface akmy
 {
-  public akmy(ApolloCmdChannel paramApolloCmdChannel) {}
+  public abstract Object a();
   
-  public int a(aknb paramaknb1, aknb paramaknb2)
-  {
-    return paramaknb1.a() - paramaknb2.a();
-  }
+  public abstract void invalidateSelf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmy
  * JD-Core Version:    0.7.0.1
  */

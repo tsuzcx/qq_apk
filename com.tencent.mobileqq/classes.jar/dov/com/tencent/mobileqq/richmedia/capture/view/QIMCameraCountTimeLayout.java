@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdkf;
+import bdoo;
 
 public class QIMCameraCountTimeLayout
   extends LinearLayout
@@ -39,17 +39,17 @@ public class QIMCameraCountTimeLayout
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843979);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bdkf.a(6.0F), bdkf.a(6.0F));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844051);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bdoo.a(6.0F), bdoo.a(6.0F));
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165320);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167192));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167194));
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = bdkf.a(4.0F);
+    localLayoutParams.leftMargin = bdoo.a(4.0F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -73,7 +73,7 @@ public class QIMCameraCountTimeLayout
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772218);
+      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772219);
       this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
     }
   }

@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import alpo;
-import bfhg;
-import bfkb;
+import alud;
+import bflp;
+import bfok;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManager$6
   implements Runnable
 {
-  public DownloadManager$6(bfkb parambfkb, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$6(bfok parambfok, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,13 +19,13 @@ public class DownloadManager$6
     this.a.j = this.this$0.a(this.a);
     if (this.a.j != 0)
     {
-      bfhg.a("DownloadManager_", alpo.a(2131703868));
+      bflp.a("DownloadManager_", alud.a(2131703880));
       this.a.e = -2;
       this.a.f = 100;
       this.this$0.a(this.a, this.a.j, null);
       return;
     }
-    bfhg.a("DownloadManager_", alpo.a(2131703893));
+    bflp.a("DownloadManager_", alud.a(2131703905));
     this.a.e = 4;
     this.a.f = 100;
     this.this$0.b(this.a);

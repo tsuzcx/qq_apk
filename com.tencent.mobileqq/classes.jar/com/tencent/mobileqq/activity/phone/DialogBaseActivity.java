@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aiia;
-import aiib;
-import aiic;
-import aiid;
-import aiie;
-import alpo;
+import aimp;
+import aimq;
+import aimr;
+import aims;
+import aimt;
+import alud;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import azmj;
-import bdcd;
-import bdfq;
-import bepp;
+import azqs;
+import bdgm;
+import bdjz;
+import bety;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,19 +22,19 @@ import com.tencent.mobileqq.widget.QQToast;
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
 {
-  private aiie jdField_a_of_type_Aiie;
+  private aimt jdField_a_of_type_Aimt;
   private View jdField_a_of_type_AndroidViewView;
-  public bepp a;
+  public bety a;
   public PhoneContactManagerImp a;
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Aiie;
+    Object localObject = this.jdField_a_of_type_Aimt;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localObject = ((aiie)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Aiie.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((aimt)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Aimt.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -48,14 +48,14 @@ public class DialogBaseActivity
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bepp == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bety == null))
     {
-      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bepp.setOnDismissListener(new aiid(this));
-      this.jdField_a_of_type_Bepp.c(paramInt);
-      this.jdField_a_of_type_Bepp.setCancelable(paramBoolean);
-      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bety.setOnDismissListener(new aims(this));
+      this.jdField_a_of_type_Bety.c(paramInt);
+      this.jdField_a_of_type_Bety.setCancelable(paramBoolean);
+      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
@@ -67,7 +67,7 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      bdcd.a(this, 231, paramString1, paramString2, new aiia(this), null).show();
+      bdgm.a(this, 231, paramString1, paramString2, new aimp(this), null).show();
     }
   }
   
@@ -77,23 +77,23 @@ public class DialogBaseActivity
     String str1;
     if (!isFinishing())
     {
-      azmj.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131695159);
+      azqs.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
+      str3 = getResources().getString(2131695161);
       if (!paramBoolean) {
         break label103;
       }
-      str1 = alpo.a(2131703626);
+      str1 = alud.a(2131703638);
       if (!paramBoolean) {
         break label112;
       }
     }
     label103:
     label112:
-    for (String str2 = alpo.a(2131703629);; str2 = alpo.a(2131703627))
+    for (String str2 = alud.a(2131703641);; str2 = alud.a(2131703639))
     {
-      bdcd.a(this, 230, str1, str3, alpo.a(2131703628), str2, new aiib(this, paramBoolean), new aiic(this, paramBoolean)).show();
+      bdgm.a(this, 230, str1, str3, alud.a(2131703640), str2, new aimq(this, paramBoolean), new aimr(this, paramBoolean)).show();
       return;
-      str1 = alpo.a(2131703625);
+      str1 = alud.a(2131703637);
       break;
     }
   }
@@ -106,16 +106,16 @@ public class DialogBaseActivity
   public boolean b()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Aiie.hasMessages(1))
+    if (this.jdField_a_of_type_Aimt.hasMessages(1))
     {
-      this.jdField_a_of_type_Aiie.removeMessages(1);
+      this.jdField_a_of_type_Aimt.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bepp != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
-      this.jdField_a_of_type_Bepp.cancel();
-      this.jdField_a_of_type_Bepp.setOnDismissListener(null);
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety.cancel();
+      this.jdField_a_of_type_Bety.setOnDismissListener(null);
+      this.jdField_a_of_type_Bety = null;
       return true;
     }
     return bool;
@@ -124,7 +124,7 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Aiie = new aiie(this);
+    this.jdField_a_of_type_Aimt = new aimt(this);
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
     return true;
   }

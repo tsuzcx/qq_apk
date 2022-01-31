@@ -1,19 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.28.1;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrk
-  implements naz
+class agrk
+  implements DialogInterface.OnClickListener
 {
-  public agrk(TroopChatPie paramTroopChatPie) {}
+  agrk(agqq paramagqq) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
-      TroopChatPie.k(this.a).post(new TroopChatPie.28.1(this, paramString2));
-    }
+    this.a.aa = true;
+    agqq.a(this.a, false);
   }
 }
 

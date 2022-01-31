@@ -1,78 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
-class akiu
-  extends DefaultHandler
+public class akiu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public akiu(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public int a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = paramArrayOfChar.toString();
-    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
-  }
-  
-  public void endDocument()
-  {
-    QLog.d("SAXForHandler", 4, "endDocument");
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-  }
-  
-  public void startDocument()
-  {
-    QLog.d("SAXForHandler", 4, "startDocument");
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    int j = 0;
-    int i = 0;
-    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-    if ("config".equals(paramString2)) {
-      while (i < paramAttributes.getLength())
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
-        i += 1;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
+    if (AppSetting.c)
+    {
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label124;
       }
     }
-    if ("Elem".equals(paramString2))
+    label124:
+    for (int i = 2131690852;; i = 2131721201)
     {
-      i = j;
-      while (i < paramAttributes.getLength())
-      {
-        paramString1 = paramAttributes.getValue(i);
-        paramString3 = paramAttributes.getLocalName(i);
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
-        i += 1;
-      }
+      paramValueAnimator = paramValueAnimator.getString(i);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akiu
  * JD-Core Version:    0.7.0.1
  */

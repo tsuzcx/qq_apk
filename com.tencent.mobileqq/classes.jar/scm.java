@@ -10,7 +10,7 @@ public class scm
 {
   public static float a()
   {
-    float f = ((Float)bjxj.a("readinjoy_font_size_sp", Float.valueOf(-1.0F))).floatValue();
+    float f = ((Float)bkbq.a("readinjoy_font_size_sp", Float.valueOf(-1.0F))).floatValue();
     if (f == -1.0F) {
       return 16.0F;
     }

@@ -1,33 +1,113 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Groups;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class bnam
-  implements bnan
 {
-  public static final int[] a;
-  public static final String[] a;
+  @NonNull
+  protected final Groups a;
+  @NonNull
+  private final List<bnal> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  @NonNull
+  private final List<bnal> b = new ArrayList();
   
-  static
+  public bnam(@NonNull Groups paramGroups, @NonNull List<bnal> paramList)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#FFFFFF", "#DF382C", "#F09A37", "#83D754", "#3478F6", "#7ED5F8", "#F7E368", "#E8519C" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130846256, 2130846254, 2130846257, 2130846255, 2130846260, 2130846259, 2130846263, 2130846258, 2130846261 };
-  }
-  
-  public static int a()
-  {
-    return Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[1]);
-  }
-  
-  public void a(@NonNull ArrayList<bnao> paramArrayList, @NonNull Context paramContext)
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramGroups = paramList.iterator();
+    while (paramGroups.hasNext())
     {
-      paramArrayList.add(new bnao(paramContext.getResources().getDrawable(jdField_a_of_type_ArrayOfInt[i]), 0, jdField_a_of_type_ArrayOfJavaLangString[i]));
-      i += 1;
+      paramList = (bnal)paramGroups.next();
+      if (paramList.jdField_a_of_type_Boolean) {
+        this.b.add(paramList);
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.b.size();
+  }
+  
+  @NonNull
+  public List<bnal> a()
+  {
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public void a(bnal parambnal)
+  {
+    parambnal.a();
+    if ((parambnal.jdField_a_of_type_Boolean) && (!this.b.contains(parambnal)))
+    {
+      this.b.add(parambnal);
+      return;
+    }
+    if ((!parambnal.jdField_a_of_type_Boolean) && (this.b.contains(parambnal)))
+    {
+      this.b.remove(parambnal);
+      return;
+    }
+    throw new IllegalStateException("onFriendClick, friend select:" + parambnal.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(parambnal));
+  }
+  
+  public boolean a()
+  {
+    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  @NonNull
+  public List<bnal> b()
+  {
+    return Collections.unmodifiableList(this.b);
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      bnal localbnal = (bnal)localIterator.next();
+      localbnal.jdField_a_of_type_Boolean = true;
+      this.b.add(localbnal);
+    }
+  }
+  
+  public void b(bnal parambnal)
+  {
+    parambnal.jdField_a_of_type_Boolean = true;
+    if (!this.b.contains(parambnal)) {
+      this.b.add(parambnal);
+    }
+  }
+  
+  public void c()
+  {
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bnal)localIterator.next()).jdField_a_of_type_Boolean = false;
     }
   }
 }

@@ -1,66 +1,56 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
 
-class avkm
-  implements View.OnClickListener
+public class avkm
+  extends Handler
 {
-  avkm(avkg paramavkg) {}
+  public avkm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-    }
-    do
+    switch (paramMessage.what)
     {
+    default: 
+    case 101: 
+    case 100: 
       do
       {
+        do
+        {
+          return;
+          this.a.a();
+          bhso localbhso = bhso.b;
+          if ((localbhso != null) && (localbhso.a())) {
+            localbhso.b(5);
+          }
+        } while (paramMessage.obj == null);
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        this.a.b = true;
+        this.a.a(paramMessage, true, false);
         return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 1);
-      bhoc.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (!bdee.d(BaseApplication.getContext()))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694766));
-        return;
-      }
-    } while (!avkg.a(this.a));
-    this.a.b();
-    boolean bool1 = this.a.a();
-    boolean bool2 = ((Boolean)aush.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694754, new Object[] { this.a.jdField_a_of_type_JavaLangString });
-      paramView = bdcd.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(alpo.a(2131707653), new avkn(this, paramView));
-      paramView.setNegativeButton(alpo.a(2131707648), new avko(this, paramView));
-      paramView.show();
+      } while (NearbyPeopleProfileActivity.a(this.a) == null);
+      NearbyPeopleProfileActivity.a(this.a).b();
+      return;
+    case 102: 
+      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 202: 
+      NearbyPeopleProfileActivity.a(this.a).a(true);
+      this.a.a.sendEmptyMessageDelayed(203, 1500L);
+      return;
+    case 203: 
+      NearbyPeopleProfileActivity.a(this.a).a(false);
+      return;
+    case 204: 
+      this.a.a(this.a.getString(2131694722));
+      return;
+    case 207: 
+      this.a.a(alud.a(2131707633));
       return;
     }
-    if ((bool1) && (bool2))
-    {
-      paramView = alpo.a(2131707677);
-      paramView = bdcd.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(alpo.a(2131707699), new avkp(this, paramView));
-      paramView.setNegativeButton(alpo.a(2131707732), new avkq(this, paramView));
-      paramView.show();
-      aush.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
-      return;
-    }
-    if (bool1)
-    {
-      this.a.e();
-      paramView = new Intent("tribe_profile_edit_finish");
-      BaseApplicationImpl.getApplication().sendBroadcast(paramView);
-      return;
-    }
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+    this.a.a();
   }
 }
 

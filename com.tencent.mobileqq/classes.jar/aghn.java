@@ -1,27 +1,51 @@
-public abstract interface aghn
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public class aghn
+  extends BroadcastReceiver
 {
-  public static final String a = alpo.a(2131706106);
-  public static final String b = alpo.a(2131706103);
-  public static final String c = alpo.a(2131706104);
-  public static final String d = alpo.a(2131706105);
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public abstract void a();
+  public aghn(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
   
-  public abstract void b();
+  public boolean a(Context paramContext)
+  {
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
   
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
+      }
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
+      return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
 }
 
 

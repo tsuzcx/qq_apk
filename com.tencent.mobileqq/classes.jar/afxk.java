@@ -1,26 +1,13 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
-public class afxk
+class afxk
 {
-  public float a;
   public int a;
-  public afxi a;
-  public ValueAnimator a;
-  public boolean a;
-  public float b;
+  public long a;
   public int b;
-  public ValueAnimator b;
-  public boolean b;
-  public int c;
-  public ValueAnimator c;
-  public int d;
-  public ValueAnimator d;
-  public int e;
-  public int f;
-  public int g;
   
-  public afxk(SixCombolEffectView paramSixCombolEffectView) {}
+  afxk(afxh paramafxh)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

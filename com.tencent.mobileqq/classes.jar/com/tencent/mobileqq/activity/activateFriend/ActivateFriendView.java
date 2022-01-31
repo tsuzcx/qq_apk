@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aeiq;
-import aeis;
-import aeit;
-import aeiu;
-import alox;
-import ambl;
-import ambo;
+import aenf;
+import aenh;
+import aeni;
+import aenj;
+import altm;
+import amga;
+import amgd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,11 +15,11 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcws;
-import bcwt;
-import bdbt;
-import bdda;
-import bdkf;
+import bdbb;
+import bdbc;
+import bdgc;
+import bdhj;
+import bdoo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ActivateFriendItem;
 import java.util.ArrayList;
@@ -28,19 +28,19 @@ import java.util.Iterator;
 
 public class ActivateFriendView
   extends LinearLayout
-  implements bcwt
+  implements bdbc
 {
-  private static final int jdField_a_of_type_Int = bdkf.b(85.0F);
+  private static final int jdField_a_of_type_Int = bdoo.b(85.0F);
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static final int jdField_b_of_type_Int = bdkf.b(70.0F);
-  private static final int jdField_c_of_type_Int = bdkf.b(70.0F);
-  private static final int d = bdkf.b(52.0F);
-  private aeiq jdField_a_of_type_Aeiq;
-  alox jdField_a_of_type_Alox = new aeit(this);
-  public ambl a;
-  ambo jdField_a_of_type_Ambo = new aeiu(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeis(this);
-  private bcws jdField_a_of_type_Bcws;
+  private static final int jdField_b_of_type_Int = bdoo.b(70.0F);
+  private static final int jdField_c_of_type_Int = bdoo.b(70.0F);
+  private static final int d = bdoo.b(52.0F);
+  private aenf jdField_a_of_type_Aenf;
+  altm jdField_a_of_type_Altm = new aeni(this);
+  public amga a;
+  amgd jdField_a_of_type_Amgd = new aenj(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aenh(this);
+  private bdbb jdField_a_of_type_Bdbb;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ArrayList<ActivateFriendItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
@@ -57,12 +57,12 @@ public class ActivateFriendView
   
   private Bitmap a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_Bcws.a(1, paramString);
+    Bitmap localBitmap = this.jdField_a_of_type_Bdbb.a(1, paramString);
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (!this.jdField_a_of_type_Bcws.a()) {
-      this.jdField_a_of_type_Bcws.a(paramString, 1, true, (byte)0);
+    if (!this.jdField_a_of_type_Bdbb.a()) {
+      this.jdField_a_of_type_Bdbb.a(paramString, 1, true, (byte)0);
     }
     return jdField_a_of_type_AndroidGraphicsBitmap;
   }
@@ -76,7 +76,7 @@ public class ActivateFriendView
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_Bcws.a())
+    if (!this.jdField_a_of_type_Bdbb.a())
     {
       if (paramBitmap != null) {
         this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
@@ -108,7 +108,7 @@ public class ActivateFriendView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      jdField_a_of_type_AndroidGraphicsBitmap = bdda.a();
+      jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -117,14 +117,14 @@ public class ActivateFriendView
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (this.jdField_a_of_type_Bcws == null)
+    if (this.jdField_a_of_type_Bdbb == null)
     {
-      this.jdField_a_of_type_Bcws = new bcws(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Bcws.a(this);
+      this.jdField_a_of_type_Bdbb = new bdbb(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Bdbb.a(this);
     }
-    this.jdField_a_of_type_Ambl = ((ambl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Ambo);
+    this.jdField_a_of_type_Amga = ((amga)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Altm);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Amgd);
     this.e = 0;
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i;
@@ -151,7 +151,7 @@ public class ActivateFriendView
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          if ((!getResources().getString(2131689585).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_Ambl.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
+          if ((!getResources().getString(2131689585).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_Amga.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
             break label472;
           }
           paramQQAppInterface.setChecked(false);
@@ -173,10 +173,10 @@ public class ActivateFriendView
       break;
       i = d;
       break;
-      paramQQAppInterface.setNickName(bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
+      paramQQAppInterface.setNickName(bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
       break label289;
       label472:
-      if ((this.jdField_a_of_type_Ambl.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_Ambl.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
+      if ((this.jdField_a_of_type_Amga.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_Amga.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
       {
         paramQQAppInterface.setChecked(false);
         paramQQAppInterface.setBirthday(getResources().getString(2131689588));
@@ -188,14 +188,14 @@ public class ActivateFriendView
       }
     }
     label592:
-    if (this.jdField_a_of_type_Aeiq != null) {
-      this.jdField_a_of_type_Aeiq.a(this.e);
+    if (this.jdField_a_of_type_Aenf != null) {
+      this.jdField_a_of_type_Aenf.a(this.e);
     }
   }
   
-  public void setGridCallBack(aeiq paramaeiq)
+  public void setGridCallBack(aenf paramaenf)
   {
-    this.jdField_a_of_type_Aeiq = paramaeiq;
+    this.jdField_a_of_type_Aenf = paramaenf;
   }
   
   public void setSkinable(boolean paramBoolean)

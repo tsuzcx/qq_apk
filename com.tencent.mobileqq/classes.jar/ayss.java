@@ -1,28 +1,13 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Context;
 
-public class ayss
-  extends aysb
+public abstract class ayss
+  extends aysv
 {
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  protected abstract aysq a(Context paramContext);
   
-  public ayss(ViewGroup paramViewGroup, int paramInt)
+  public int b()
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376228));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369366));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375784));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368471));
+    return 1;
   }
 }
 

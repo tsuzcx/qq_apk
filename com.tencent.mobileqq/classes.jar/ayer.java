@@ -1,26 +1,8 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
-public class ayer
-  implements View.OnTouchListener
+public abstract interface ayer
 {
-  public ayer(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-    }
-    return false;
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

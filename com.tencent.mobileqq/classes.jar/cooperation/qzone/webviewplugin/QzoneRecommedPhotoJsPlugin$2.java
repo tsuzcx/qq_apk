@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
-import bjul;
+import bjqu;
+import bjqw;
+import bjys;
 
 public class QzoneRecommedPhotoJsPlugin$2
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$2(bjul parambjul) {}
+  public QzoneRecommedPhotoJsPlugin$2(bjys parambjys) {}
   
   public void run()
   {
-    bjmn.a().a().o();
+    bjqu.a().a().o();
   }
 }
 

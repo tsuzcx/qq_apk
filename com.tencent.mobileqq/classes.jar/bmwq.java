@@ -1,103 +1,42 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Canvas;
-import android.os.SystemClock;
-import android.view.View;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
 
 public class bmwq
-  extends bmxd<bmwn, bmwn>
+  implements blvr
 {
-  public final String a;
-  public final WeakReference<bmee> a;
-  private boolean a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public bmwq(bmee parambmee, String paramString)
+  bmwq(bmwo parambmwo, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmee);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131377419));
   }
   
-  public bmwq(bmee parambmee, String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmee);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_JavaLangBoolean = null;
   }
   
-  private Bitmap a(bmwn parambmwn, Bitmap paramBitmap)
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    try
-    {
-      parambmwn = parambmwn.a();
-      wsv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", parambmwn);
-      if (parambmwn == null)
-      {
-        wsv.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
-        return paramBitmap;
-      }
-      paramBitmap = Bitmap.createBitmap(paramBitmap);
-      float f1 = paramBitmap.getWidth();
-      float f2 = paramBitmap.getHeight();
-      float f3 = parambmwn.getWidth();
-      float f4 = parambmwn.getHeight();
-      Canvas localCanvas = new Canvas(paramBitmap);
-      localCanvas.scale(f1 / f3, f2 / f4);
-      parambmwn.draw(localCanvas);
-      return paramBitmap;
-    }
-    catch (OutOfMemoryError parambmwn)
-    {
-      wsv.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", parambmwn);
-    }
-    return null;
+    paramInt = (int)paramFloat;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
   }
   
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
+  public void a(boolean paramBoolean, String paramString, bmvz parambmvz)
   {
-    long l = SystemClock.uptimeMillis();
-    paramJobContext = this.jdField_a_of_type_JavaLangString;
-    if (paramJobContext == null) {
-      paramJobContext = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.b, ".png");
+    if (QLog.isColorLevel()) {
+      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
     }
-    for (;;)
-    {
-      Object localObject = (bmee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject != null) && (!((bmee)localObject).c()))
-      {
-        localObject = ((bmee)localObject).a();
-        if (localObject != null)
-        {
-          parambmwn.jdField_a_of_type_Bmwt.b = ((Bitmap)localObject);
-          parambmwn.jdField_a_of_type_Boolean = true;
-          Bitmap localBitmap = a(parambmwn, (Bitmap)localObject);
-          if (localBitmap == null) {
-            break label234;
-          }
-          wsv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
-          localObject = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          boolean bool = xmn.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
-          parambmwn.jdField_a_of_type_Boolean = bool;
-          parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
-          if (!bool) {
-            wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
-          }
-        }
-        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + parambmwn.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
-        super.notifyResult(parambmwn);
-        return;
-        label234:
-        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
-      }
-    }
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambmvz));
   }
 }
 

@@ -132,7 +132,7 @@ public class thb<T1>
       localstReqHeader.platform = "Android";
       localstReqHeader.appversion = DeviceUtils.getVersionCode(BaseApplicationImpl.getContext());
       localstReqHeader.user_ip = DeviceUtils.getLocalIpAddress();
-      localstReqHeader.strQua = bizf.a();
+      localstReqHeader.strQua = bjdm.a();
       localstReqHeader.device_info = DeviceUtils.getMachineInfo();
       tlo.b("weishi-810", "device_info:" + localstReqHeader.device_info);
       localstReqHeader.h265key = a();
@@ -362,7 +362,7 @@ public class thb<T1>
         Log.w("weishi-Server", "old cost=" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
         Log.i("weishi-Server", "cmd=" + c() + ",response size=" + this.jdField_c_of_type_Long + ",request size=" + this.jdField_d_of_type_Long);
         if (localObject2 != null) {
-          localObject1 = bdku.b((byte[])localObject2);
+          localObject1 = bdpd.b((byte[])localObject2);
         }
         a((byte[])localObject1, paramFromServiceMsg);
         return;
@@ -445,9 +445,9 @@ public class thb<T1>
         paramArrayOfByte.setEncodeName("utf-8");
         paramArrayOfByte.decode(((QmfDownstream)localObject1).Extra);
         localObject2 = (QmfServerInfo)paramArrayOfByte.get("server_info");
-        if (bjoz.a((QmfServerInfo)localObject2))
+        if (bjtg.a((QmfServerInfo)localObject2))
         {
-          bjoz.a().a((QmfServerInfo)localObject2);
+          bjtg.a().a((QmfServerInfo)localObject2);
           this.jdField_a_of_type_JavaUtilHashMap.put("key_report_busi_serverip", NetworkState.IntAddr2Ip(((QmfServerInfo)localObject2).ipWebapp.ClientIpv4));
         }
         localObject2 = (QmfBusiControl)paramArrayOfByte.get("busiCompCtl");
@@ -657,13 +657,13 @@ public class thb<T1>
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = bizf.a();
+    Object localObject2 = bjdm.a();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bdku.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.jdField_a_of_type_Boolean));
+      return bdpd.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.jdField_a_of_type_Boolean));
     }
     return null;
   }

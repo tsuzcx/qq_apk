@@ -36,7 +36,7 @@ public class rgk
   {
     if (paramInt == 0)
     {
-      abqw.a().a("list_video_feeds", false);
+      abvl.a().a("list_video_feeds", false);
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0) || (paramInt != 1)) {
         break label91;
       }
@@ -54,7 +54,7 @@ public class rgk
       }
       this.jdField_a_of_type_Int = paramInt;
       return;
-      abqw.a().a("list_video_feeds");
+      abvl.a().a("list_video_feeds");
       break;
     }
   }

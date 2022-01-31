@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 
 class AIOEntryPlugin$2
   implements Runnable
 {
-  AIOEntryPlugin$2(AIOEntryPlugin paramAIOEntryPlugin, bgkd parambgkd) {}
+  AIOEntryPlugin$2(AIOEntryPlugin paramAIOEntryPlugin, bgok parambgok) {}
   
   public void run()
   {

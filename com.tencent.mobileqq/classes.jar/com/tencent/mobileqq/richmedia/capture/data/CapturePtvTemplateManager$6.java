@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import axjt;
-import axjz;
+import axoc;
+import axoi;
 
 public class CapturePtvTemplateManager$6
   implements Runnable
 {
-  public CapturePtvTemplateManager$6(axjt paramaxjt) {}
+  public CapturePtvTemplateManager$6(axoc paramaxoc) {}
   
   public void run()
   {
-    axjt.a(this.this$0);
+    axoc.a(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.a();
     }

@@ -1,25 +1,27 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.comment.CommentView;
-import com.tencent.biz.subscribe.comment.ReplyContainer;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ycp
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public ycp(CommentView paramCommentView) {}
+  public ycp(RecommendBannerItemView paramRecommendBannerItemView) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    if (RecommendBannerItemView.a(this.a) == null) {
+      return false;
+    }
+    yll.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new ycq(this), new ycr(this));
+    if (RecommendBannerItemView.a(this.a)) {
+      zaj.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+    }
+    for (;;)
     {
-      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
-      this.a.jdField_a_of_type_Ycq.b.setVisibility(8);
-      this.a.jdField_a_of_type_Ycq.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
+      return true;
+      zaj.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
     }
   }
 }

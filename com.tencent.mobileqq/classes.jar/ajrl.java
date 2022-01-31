@@ -1,6 +1,24 @@
-public abstract interface ajrl
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajrl
+  implements azhn
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public ajrl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(Exception paramException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
+  }
 }
 
 

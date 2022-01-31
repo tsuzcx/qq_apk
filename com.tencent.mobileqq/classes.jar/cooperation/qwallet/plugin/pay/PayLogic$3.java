@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin.pay;
 
-import aiqx;
+import aivm;
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,14 +16,14 @@ class PayLogic$3
     {
     default: 
       return;
-    case 2131365226: 
+    case 2131365228: 
       this.val$dialog.dismiss();
-      paramView = aiqx.a(this.this$0.isPCPushDesc);
+      paramView = aivm.a(this.this$0.isPCPushDesc);
       this.this$0.startPCPushPay(paramView);
       return;
     }
     this.val$dialog.dismiss();
-    aiqx.b();
+    aivm.b();
     this.this$0.end();
   }
 }

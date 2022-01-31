@@ -1,22 +1,21 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbj
-  implements ViewSwitcher.ViewFactory
+  implements Animation.AnimationListener
 {
-  public adbj(Leba paramLeba) {}
+  public adbj(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public View makeView()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.a.f = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

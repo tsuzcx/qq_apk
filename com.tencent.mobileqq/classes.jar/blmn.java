@@ -1,22 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import java.util.List;
 
 public class blmn
+  implements bmeo<List<AEEditorFilterBean>>
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  public blmn(AEEditorCommonEditFragment paramAEEditorCommonEditFragment, boolean paramBoolean) {}
   
-  public blmn(blmm paramblmm) {}
+  public void a(@Nullable List<AEEditorFilterBean> paramList)
+  {
+    bljn.b(AEEditorCommonEditFragment.d(), "mFiltersObserver-onChanged");
+    if (paramList != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorCommonEditFragment.a.setFiltersData(paramList, this.jdField_a_of_type_Boolean);
+    }
+  }
 }
 
 

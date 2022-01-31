@@ -1,47 +1,72 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class uuz
-  extends unk<uva>
+public abstract class uuz<DATA>
 {
-  static final String a = ume.a("StorySvc.msgtab_node_click");
-  public long b;
-  public String b;
-  public int c;
+  public static final String a;
+  protected DATA a;
+  protected List<uva<DATA>> a;
   
-  public String a()
+  static
   {
-    return a;
+    jdField_a_of_type_JavaLangString = uuz.class.getName();
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public uuz()
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
-    {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new uva(localRspMsgTabNodeWatched);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   }
   
-  protected byte[] a()
+  public DATA a()
   {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(3);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull uva<DATA> paramuva)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramuva)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramuva);
+    }
+  }
+  
+  protected abstract void a(uxs paramuxs);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((uva)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
+  
+  public void b()
+  {
+    wxe.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull uva<DATA> paramuva)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramuva)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramuva);
+    }
+  }
+  
+  public void b(uxs paramuxs)
+  {
+    a(paramuxs);
+  }
+  
+  public void c()
+  {
+    wxe.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

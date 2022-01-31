@@ -5,24 +5,24 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import wmu;
-import wrh;
-import xod;
+import wrd;
+import wvq;
+import xsm;
 
 public class NewMyStorySegment$8
   implements Runnable
 {
-  public NewMyStorySegment$8(wrh paramwrh, TextView paramTextView, View paramView, ImageView paramImageView) {}
+  public NewMyStorySegment$8(wvq paramwvq, TextView paramTextView, View paramView, ImageView paramImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(wrh.a(this.this$0, wrh.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - xod.a(wrh.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (wrh.a(this.this$0).f > 0)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(wvq.a(this.this$0, wvq.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - xsm.a(wvq.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
+    if (wvq.a(this.this$0).f > 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(wrh.b(this.this$0).getResources().getColor(2131166989));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(wvq.b(this.this$0).getResources().getColor(2131166991));
   }
 }
 

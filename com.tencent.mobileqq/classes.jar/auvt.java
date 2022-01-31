@@ -1,28 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class auvt
-  implements View.OnClickListener
+class auvt
+  implements DialogInterface.OnClickListener
 {
-  public auvt(NearbyGuideActivity paramNearbyGuideActivity) {}
+  auvt(auvr paramauvr, Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    paramDialogInterface = this.jdField_a_of_type_Auvr.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.b)))
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(alpo.a(2131707562));
-      if (this.a.jdField_a_of_type_Ausy == null) {
-        this.a.jdField_a_of_type_Ausy = ((ausy)this.a.app.a(60));
-      }
-      this.a.jdField_a_of_type_Ausy.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.b);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
+    auvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
   }
 }
 

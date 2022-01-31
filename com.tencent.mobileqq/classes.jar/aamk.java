@@ -1,69 +1,20 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
-public class aamk
-  extends QIPCModule
+class aamk
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  private static volatile aamk a;
+  aamk(aamj paramaamj, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  private aamk(String paramString)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramString);
-  }
-  
-  public static aamk a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new aamk("gdt_ipc");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    aanp.b("gdt_ipc", "Action  " + paramString);
-    if ("do_app_jump".equals(paramString))
-    {
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-      {
-        paramString = (aanq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
-        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
-      }
-      for (;;)
-      {
-        return null;
-        callbackResult(paramInt, EIPCResult.createResult(-1, null));
-      }
-    }
-    AdIPCManager.Params localParams = new AdIPCManager.Params();
-    localParams.bundle = paramBundle;
-    paramString = AdIPCManager.INSTANCE.receive(paramString, localParams);
-    if (paramString == null) {
-      return null;
-    }
-    paramBundle = new EIPCResult();
-    if (paramString.success) {}
-    for (paramInt = 0;; paramInt = -102)
-    {
-      paramBundle.code = paramInt;
-      paramBundle.data = paramString.bundle;
-      return paramBundle;
-    }
+    aase.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.widget.TextView;
 import tdn;
-import yda;
+import yhj;
 
 public class WsCommentPresenter$7
   implements Runnable
@@ -15,7 +15,7 @@ public class WsCommentPresenter$7
     {
       if (tdn.b(this.this$0) > 0L)
       {
-        tdn.b(this.this$0).setText(yda.a(tdn.b(this.this$0)));
+        tdn.b(this.this$0).setText(yhj.a(tdn.b(this.this$0)));
         tdn.b(this.this$0).setVisibility(0);
       }
     }

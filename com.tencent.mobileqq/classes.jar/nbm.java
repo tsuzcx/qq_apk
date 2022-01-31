@@ -7,7 +7,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.HashMap;
 
 public class nbm
-  extends alko
+  extends alpd
 {
   public nbm(QQAppInterface paramQQAppInterface)
   {
@@ -30,7 +30,7 @@ public class nbm
       bool1 = bool2;
       if (paramToServiceMsg != null)
       {
-        ((bfua)this.mApp.getManager(165)).a(paramToServiceMsg);
+        ((bfyh)this.mApp.getManager(165)).a(paramToServiceMsg);
         bool1 = true;
       }
     }
@@ -49,7 +49,7 @@ public class nbm
     send(localToServiceMsg);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return nbn.class;
   }

@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.monitor.service;
 
 import android.os.Handler;
-import bgxe;
+import bhbl;
 
 public final class CPUMonitor$1
   implements Runnable
 {
   public void run()
   {
-    if (!bgxe.a())
+    if (!bhbl.a())
     {
-      bgxe.a();
-      if (bgxe.a() != null) {
-        bgxe.a().postDelayed(bgxe.a(), 1000L);
+      bhbl.a();
+      if (bhbl.a() != null) {
+        bhbl.a().postDelayed(bhbl.a(), 1000L);
       }
     }
   }

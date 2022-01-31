@@ -1,29 +1,6 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
-public class vwe
-  extends uhw<vvy, uow>
+public abstract interface vwe
 {
-  public vwe(vvy paramvvy)
-  {
-    super(paramvvy);
-  }
-  
-  public void a(@NonNull vvy paramvvy, @NonNull uow paramuow)
-  {
-    if ((paramvvy.a != null) && (TextUtils.equals(paramvvy.a.b, paramuow.a)))
-    {
-      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
-      paramvvy.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uow.class;
-  }
-  
-  public void b(@NonNull vvy paramvvy, @NonNull uow paramuow) {}
+  public abstract boolean a(vwa paramvwa, int paramInt, Object paramObject);
 }
 
 

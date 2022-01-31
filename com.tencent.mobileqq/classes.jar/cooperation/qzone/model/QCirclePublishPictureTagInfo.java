@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgx;
+import bjle;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class QCirclePublishPictureTagInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<QCirclePublishPictureTagInfo> CREATOR = new bjgx();
+  public static final Parcelable.Creator<QCirclePublishPictureTagInfo> CREATOR = new bjle();
   public String picId;
   public ArrayList<String> picTags;
   

@@ -1,27 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import mqq.os.MqqHandler;
 
 public class adla
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public adla(QQBroadcastActivity paramQQBroadcastActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void handleMessage(Message paramMessage)
+  public adla(NotificationActivity paramNotificationActivity, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int == 1) {
+        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+      }
     }
-    do
+    while (paramInt != 1)
     {
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 2);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
       return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    }
+    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adla
  * JD-Core Version:    0.7.0.1
  */

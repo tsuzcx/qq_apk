@@ -2,7 +2,7 @@ import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lzr
-  extends alsi
+  extends alwx
 {
   public lzr(QQServiceForAV paramQQServiceForAV) {}
   
@@ -10,7 +10,7 @@ public class lzr
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
     if (localQQAppInterface != null) {
-      new bilo(localQQAppInterface).a(new lzs(this));
+      new bipv(localQQAppInterface).a(new lzs(this));
     }
   }
 }

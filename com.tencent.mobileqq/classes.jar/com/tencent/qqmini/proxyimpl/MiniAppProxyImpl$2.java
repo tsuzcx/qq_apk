@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import anxn;
+import aobw;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;

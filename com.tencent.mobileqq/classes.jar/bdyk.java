@@ -1,17 +1,40 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-final class bdyk
-  implements MediaPlayer.OnPreparedListener
+public class bdyk
+  extends bead
 {
-  bdyk(bdyo parambdyo) {}
+  public bdyk(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onDone(beae parambeae)
   {
-    paramMediaPlayer.start();
-    paramMediaPlayer.setLooping(true);
-    if (this.a != null) {
-      this.a.a();
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager", 1, "voice down");
+    }
+    parambeae = new File(this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      ndr.a(parambeae, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+      i = 1;
+    }
+    catch (IOException parambeae)
+    {
+      for (;;)
+      {
+        QLog.i("PathTraceManager", 1, "unzip fail");
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      QLog.d("PathTraceManager", 1, "unzip success");
+      if (this.b != null) {
+        bdfi.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
+      }
     }
   }
 }

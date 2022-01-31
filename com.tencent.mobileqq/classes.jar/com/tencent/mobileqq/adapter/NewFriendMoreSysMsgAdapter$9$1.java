@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import akfo;
+import akkd;
 
 class NewFriendMoreSysMsgAdapter$9$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewFriendMoreSysMsgAdapter$9$1
   
   public void run()
   {
-    akfo.c(this.a.this$0);
+    akkd.c(this.a.this$0);
   }
 }
 

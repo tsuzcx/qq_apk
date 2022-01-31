@@ -1,35 +1,34 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class bhqw
-  extends bhpy
+public abstract interface bhqw
 {
-  bhqw(Context paramContext)
-  {
-    super(paramContext);
-    f();
-  }
+  public abstract void a(int paramInt);
   
-  private void f()
-  {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559015, null);
-    localLinearLayout.findViewById(2131368697).setOnClickListener(new bhqx(this));
-    String str = getContext().getString(2131690338);
-    TextView localTextView = (TextView)localLinearLayout.findViewById(2131378668);
-    SpannableString localSpannableString = new SpannableString(str);
-    localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
-    localSpannableString.setSpan(new bhqy(getContext(), null), str.length() - 3, str.length() - 1, 33);
-    localTextView.setText(localSpannableString);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    a(localLinearLayout);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt, String paramString);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt, String paramString);
 }
 
 

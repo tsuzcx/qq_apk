@@ -7,14 +7,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azmj;
-import badd;
-import baed;
-import bebw;
-import beep;
-import befb;
-import befq;
-import befr;
+import azqs;
+import bahm;
+import baim;
+import begf;
+import beiy;
+import bejk;
+import bejz;
+import beka;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -30,7 +30,7 @@ import ndq;
 public class UnVisibleWebViewFragment
   extends WebViewFragment
 {
-  private baed a;
+  private baim a;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -43,20 +43,20 @@ public class UnVisibleWebViewFragment
   
   private void a(String paramString)
   {
-    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + badd.a(paramString));
+    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + bahm.a(paramString));
     CookieSyncManager.createInstance(BaseApplicationImpl.getApplication());
     CookieSyncManager.getInstance().sync();
   }
   
-  public baed a(ViewGroup paramViewGroup)
+  public baim a(ViewGroup paramViewGroup)
   {
     boolean bool2 = false;
-    if ((this.jdField_a_of_type_Befb.b & 0x40) != 0L) {}
+    if ((this.jdField_a_of_type_Bejk.b & 0x40) != 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.jdField_a_of_type_Baed = new baed(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this, this.jdField_a_of_type_AndroidContentIntent, bool1);
-      this.jdField_a_of_type_Baed.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
-      TouchWebView localTouchWebView = this.jdField_a_of_type_Baed.a();
+      this.jdField_a_of_type_Baim = new baim(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this, this.jdField_a_of_type_AndroidContentIntent, bool1);
+      this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
+      TouchWebView localTouchWebView = this.jdField_a_of_type_Baim.a();
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
         this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.bindWebView(localTouchWebView);
       }
@@ -64,12 +64,12 @@ public class UnVisibleWebViewFragment
       localTouchWebView.setPluginEngine(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine);
       if ((localTouchWebView instanceof SwiftReuseTouchWebView))
       {
-        beep localbeep = this.jdField_a_of_type_Beep;
+        beiy localbeiy = this.jdField_a_of_type_Beiy;
         bool1 = bool2;
         if (1 == ((SwiftReuseTouchWebView)localTouchWebView).a) {
           bool1 = true;
         }
-        localbeep.u = bool1;
+        localbeiy.u = bool1;
       }
       if (localTouchWebView.getX5WebViewExtension() != null) {
         this.r = true;
@@ -81,7 +81,7 @@ public class UnVisibleWebViewFragment
       if (paramViewGroup != null) {
         paramViewGroup.addView(localTouchWebView);
       }
-      return this.jdField_a_of_type_Baed;
+      return this.jdField_a_of_type_Baim;
     }
   }
   
@@ -94,9 +94,9 @@ public class UnVisibleWebViewFragment
     {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(null).a();
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setOnTouchListener(this);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new bebw(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new begf(this));
       l1 = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Befb.a & 0x10000) == 0L) {
+      if ((this.jdField_a_of_type_Bejk.a & 0x10000) == 0L) {
         break label428;
       }
       i = 2;
@@ -110,10 +110,10 @@ public class UnVisibleWebViewFragment
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowFileAccessFromFileURLs(false);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
       l2 = System.currentTimeMillis();
-      this.jdField_a_of_type_Beep.n = (l2 - l1);
-      this.jdField_a_of_type_Beep.R = l2;
+      this.jdField_a_of_type_Beiy.n = (l2 - l1);
+      this.jdField_a_of_type_Beiy.R = l2;
       if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "init browser, cost = " + this.jdField_a_of_type_Beep.n);
+        QLog.d("WebLog_WebViewFragment", 2, "init browser, cost = " + this.jdField_a_of_type_Beiy.n);
       }
       l2 = System.currentTimeMillis();
       IX5WebViewExtension localIX5WebViewExtension = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension();
@@ -125,11 +125,11 @@ public class UnVisibleWebViewFragment
       if (i == 0) {
         break label510;
       }
-      Bundle localBundle = befr.a();
+      Bundle localBundle = beka.a();
       if (localBundle != null) {
         localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
       }
-      if (!this.jdField_a_of_type_Beep.w) {
+      if (!this.jdField_a_of_type_Beiy.w) {
         break label486;
       }
       l1 = 2L;
@@ -145,13 +145,13 @@ public class UnVisibleWebViewFragment
     {
       label291:
       if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(befq.a) }));
+        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(bejz.a) }));
       }
       System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.reportInitPerformance(l1, i, this.jdField_a_of_type_Beep.jdField_c_of_type_Long, befq.a);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.reportInitPerformance(l1, i, this.jdField_a_of_type_Beiy.jdField_c_of_type_Long, bejz.a);
       System.currentTimeMillis();
-      this.jdField_a_of_type_Beep.e = 2;
-      for (this.jdField_a_of_type_Beep.g = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));; this.jdField_a_of_type_Beep.g = String.valueOf(Build.VERSION.SDK_INT))
+      this.jdField_a_of_type_Beiy.e = 2;
+      for (this.jdField_a_of_type_Beiy.g = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));; this.jdField_a_of_type_Beiy.g = String.valueOf(Build.VERSION.SDK_INT))
       {
         l1 = System.currentTimeMillis();
         if (QLog.isColorLevel()) {
@@ -175,7 +175,7 @@ public class UnVisibleWebViewFragment
           i = 0;
           break label224;
           label486:
-          if (beep.s) {}
+          if (beiy.s) {}
           for (i = 1;; i = 0)
           {
             l1 = i;
@@ -185,7 +185,7 @@ public class UnVisibleWebViewFragment
           i = 0;
           break label291;
           label510:
-          this.jdField_a_of_type_Beep.e = 1;
+          this.jdField_a_of_type_Beiy.e = 1;
         }
       }
       label534:
@@ -200,14 +200,14 @@ public class UnVisibleWebViewFragment
       return;
     }
     a();
-    if ((this.jdField_a_of_type_Beep.i) && (this.jdField_a_of_type_Beep.k > 0L))
+    if ((this.jdField_a_of_type_Beiy.i) && (this.jdField_a_of_type_Beiy.k > 0L))
     {
-      azmj.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Beep.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Beep.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Beep.k = 0L;
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Beiy.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Beiy.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Beiy.k = 0L;
     }
-    this.jdField_a_of_type_Beep.q = System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Beep.q;
-    l = this.jdField_a_of_type_Beep.b;
+    this.jdField_a_of_type_Beiy.q = System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Beiy.q;
+    l = this.jdField_a_of_type_Beiy.b;
     a(this.g);
     if (!TextUtils.isEmpty(this.g))
     {
@@ -215,7 +215,7 @@ public class UnVisibleWebViewFragment
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.g);
     }
     ndq.b("Web_readyToLoadUrl");
-    this.jdField_a_of_type_Beep.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.g, 0, 0, 0, 0, 0, null);
+    this.jdField_a_of_type_Beiy.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.g, 0, 0, 0, 0, 0, null);
   }
   
   void i()
@@ -223,13 +223,13 @@ public class UnVisibleWebViewFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    beep localbeep = this.jdField_a_of_type_Beep;
+    beiy localbeiy = this.jdField_a_of_type_Beiy;
     this.i = true;
-    localbeep.l = true;
-    if (this.jdField_a_of_type_Baed != null)
+    localbeiy.l = true;
+    if (this.jdField_a_of_type_Baim != null)
     {
-      this.jdField_a_of_type_Baed.a();
-      this.jdField_a_of_type_Baed = null;
+      this.jdField_a_of_type_Baim.a();
+      this.jdField_a_of_type_Baim = null;
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;

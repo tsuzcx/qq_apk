@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nmv
-  implements army
+  implements arrh
 {
   public nmv(VideoCoverView paramVideoCoverView) {}
   

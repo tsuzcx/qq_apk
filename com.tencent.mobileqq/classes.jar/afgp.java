@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class afgp
-  implements bhqd
+  implements anxr
 {
-  afgp(afgn paramafgn, MessageForDeviceFile paramMessageForDeviceFile, bhpy parambhpy) {}
+  afgp(afgn paramafgn, int paramInt1, int paramInt2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Afgn.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    this.jdField_a_of_type_Afgn.b();
-    this.jdField_a_of_type_Bhpy.dismiss();
+    afgn.a(this.jdField_a_of_type_Afgn).a.setOnMeasureListener(null);
+    afgn.a(this.jdField_a_of_type_Afgn).a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
   }
 }
 

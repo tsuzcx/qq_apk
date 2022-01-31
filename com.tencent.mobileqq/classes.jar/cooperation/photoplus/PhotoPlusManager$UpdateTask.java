@@ -1,8 +1,8 @@
 package cooperation.photoplus;
 
 import android.text.TextUtils;
-import awiz;
-import bdcs;
+import awni;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.photoplus.sticker.Sticker;
 import java.io.File;
@@ -38,7 +38,7 @@ class PhotoPlusManager$UpdateTask
     } while (!QLog.isColorLevel());
     QLog.d("PhotoPlusManager", 2, "[updateStickerResource] saved stickers = null");
     return;
-    if (!bdcs.a())
+    if (!bdhb.a())
     {
       QLog.e("PhotoPlusManager", 1, "sdcard unavailable");
       return;
@@ -81,7 +81,7 @@ class PhotoPlusManager$UpdateTask
         }
         else
         {
-          localObject1 = awiz.a(str);
+          localObject1 = awni.a(str);
           if (localSticker.md5.equalsIgnoreCase((String)localObject1))
           {
             this.this$0.a(str);
@@ -91,7 +91,7 @@ class PhotoPlusManager$UpdateTask
             if (QLog.isColorLevel()) {
               QLog.d("PhotoPlusManager", 2, "[updateStickerResource] checkMd5 failed: " + str);
             }
-            bdcs.d(str);
+            bdhb.d(str);
           }
         }
       }

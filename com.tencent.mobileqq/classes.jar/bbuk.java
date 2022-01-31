@@ -1,8 +1,4 @@
-public abstract interface bbuk
-{
-  public abstract void a(bbuc parambbuc);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuk

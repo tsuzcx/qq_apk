@@ -1,6 +1,15 @@
-public abstract interface bkri
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bkri
+  implements View.OnClickListener
 {
-  public abstract void d();
+  bkri(bkrh parambkrh, int paramInt, bkqp parambkqp) {}
+  
+  public void onClick(View paramView)
+  {
+    bkrh.a(this.jdField_a_of_type_Bkrh, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bkqp);
+  }
 }
 
 

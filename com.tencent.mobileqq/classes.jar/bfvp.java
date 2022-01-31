@@ -1,29 +1,35 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigGroupInfo;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class bfvp
 {
-  public List<bfvq> a;
+  private static bfvq a = new bfvq();
   
-  public bfvp() {}
-  
-  public bfvp(mobileqq_qidian.ConfigGroupInfo paramConfigGroupInfo)
+  public static void a(bfvq parambfvq)
   {
-    if (paramConfigGroupInfo.rpt_msg_config_info.has())
+    if (parambfvq != null)
     {
-      paramConfigGroupInfo = paramConfigGroupInfo.rpt_msg_config_info.get();
-      this.a = new ArrayList(paramConfigGroupInfo.size());
-      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
-      while (paramConfigGroupInfo.hasNext())
-      {
-        mobileqq_qidian.ConfigInfo localConfigInfo = (mobileqq_qidian.ConfigInfo)paramConfigGroupInfo.next();
-        this.a.add(new bfvq(localConfigInfo));
-      }
+      a = parambfvq;
+      return;
     }
+    a = new bfvq();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a.a(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a.b(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    a.c(paramString1, paramString2);
   }
 }
 

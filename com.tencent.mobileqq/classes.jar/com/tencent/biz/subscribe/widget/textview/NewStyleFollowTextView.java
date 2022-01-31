@@ -22,7 +22,7 @@ public class NewStyleFollowTextView
   {
     if (this.a)
     {
-      i = 2130838727;
+      i = 2130838728;
       setBackgroundResource(i);
       if (!this.a) {
         break label43;
@@ -34,7 +34,7 @@ public class NewStyleFollowTextView
       setTextColor(i);
       setText(2131690707);
       return;
-      i = 2130838725;
+      i = 2130838726;
       break;
     }
   }
@@ -43,7 +43,7 @@ public class NewStyleFollowTextView
   {
     if (this.a)
     {
-      i = 2130838899;
+      i = 2130838900;
       setBackgroundResource(i);
       if (!this.a) {
         break label43;
@@ -55,7 +55,7 @@ public class NewStyleFollowTextView
       setTextColor(i);
       setText(2131690713);
       return;
-      i = 2130838897;
+      i = 2130838898;
       break;
     }
   }

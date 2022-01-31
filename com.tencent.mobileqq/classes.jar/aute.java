@@ -1,65 +1,34 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class aute
-  extends BaseAdapter
 {
-  protected int a;
+  public static HashMap<String, Integer> a = new HashMap();
   
-  public aute(GameQuickWordsPanel paramGameQuickWordsPanel)
+  static
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558578, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, aekt.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
-      paramViewGroup = new autf(this);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131373946));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = (String)getItem(paramInt);
-      paramViewGroup.a.setText(str);
-      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
-      return paramView;
-      paramViewGroup = (autf)paramView.getTag();
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Agmb.a();
-    if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
-    }
-    super.notifyDataSetChanged();
+    a.put("skin_icon_small_ship_svip", Integer.valueOf(2130849635));
+    a.put("skin_icon_big_ship_svip", Integer.valueOf(2130849594));
+    a.put("skin_icon_small_ship_unionvip", Integer.valueOf(2130849636));
+    a.put("skin_icon_big_ship_unionvip", Integer.valueOf(2130849595));
+    a.put("skin_icon_small_fire_svip", Integer.valueOf(2130849631));
+    a.put("skin_icon_big_fire_svip", Integer.valueOf(2130849590));
+    a.put("skin_icon_small_fire_unionvip", Integer.valueOf(2130849632));
+    a.put("skin_icon_big_fire_unionvip", Integer.valueOf(2130849591));
+    a.put("skin_icon_intimate_lover_vip_1", Integer.valueOf(2130849615));
+    a.put("skin_icon_intimate_lover_vip_2", Integer.valueOf(2130849616));
+    a.put("skin_icon_intimate_lover_vip_3", Integer.valueOf(2130849617));
+    a.put("hot_reactive_gray_intimate_guimi_svip_1_icon", Integer.valueOf(2130840117));
+    a.put("hot_reactive_gray_intimate_guimi_svip_2_icon", Integer.valueOf(2130840118));
+    a.put("hot_reactive_gray_intimate_guimi_svip_3_icon", Integer.valueOf(2130840119));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_1_icon", Integer.valueOf(2130840120));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_2_icon", Integer.valueOf(2130840121));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_3_icon", Integer.valueOf(2130840122));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_1_icon", Integer.valueOf(2130840123));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_2_icon", Integer.valueOf(2130840124));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_3_icon", Integer.valueOf(2130840125));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_1_icon", Integer.valueOf(2130840126));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_2_icon", Integer.valueOf(2130840127));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_3_icon", Integer.valueOf(2130840128));
   }
 }
 

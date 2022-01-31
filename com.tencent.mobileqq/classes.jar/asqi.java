@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
-class asqi
-  implements Animation.AnimationListener
+public class asqi
+  implements DialogInterface.OnClickListener
 {
-  asqi(asqh paramasqh) {}
+  public asqi(JefsClass.8 param8) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

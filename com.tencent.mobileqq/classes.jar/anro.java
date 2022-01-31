@@ -1,101 +1,127 @@
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1;
-import com.tencent.mobileqq.data.RockDownloadInfo;
+import android.os.Bundle;
+import com.tencent.ark.open.security.ArkBaseUrlChecker;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
 
 public class anro
-  implements Manager
+  extends WebViewPlugin
 {
-  private QQAppInterface a;
+  private ArkBaseUrlChecker jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String b = "";
   
-  public anro(QQAppInterface paramQQAppInterface)
+  public anro(Bundle paramBundle)
   {
-    this.a = paramQQAppInterface;
-    ThreadManagerV2.executeOnFileThread(new RockDownloaderManager.1(this));
+    this.mPluginNameSpace = "ArkSecurity";
+    if (paramBundle != null) {
+      try
+      {
+        paramBundle.setClassLoader(anro.class.getClassLoader());
+        this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker = ((ArkBaseUrlChecker)paramBundle.getParcelable("h5_ark_url_web_checker"));
+        this.jdField_a_of_type_JavaLangString = paramBundle.getString("h5_ark_app_name", null);
+        this.b = paramBundle.getString("h5_ark_url_web_sender_uin", "");
+        this.jdField_a_of_type_Boolean = paramBundle.getBoolean("h5_ark_url_web_checker_enable", true);
+        String str1 = this.jdField_a_of_type_JavaLangString;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        String str2 = this.b;
+        if (this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker != null)
+        {
+          paramBundle = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker.toString();
+          QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.ArkSecurityWebViewPlugin init appname = ", str1, ",mEnableUrlCheck = ", Boolean.valueOf(bool), ", senderUin=", str2, ", mUrlChecker=", paramBundle });
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          QLog.e("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init exception:", paramBundle);
+          continue;
+          paramBundle = null;
+        }
+      }
+    }
+    QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init bundle is null");
   }
   
-  private void a()
+  protected void a()
   {
-    long l = System.currentTimeMillis();
-    Object localObject1 = anrl.a().a(RockDownloadInfo.class);
-    RockDownloadInfo localRockDownloadInfo;
+    if (this.mRuntime == null) {}
+    CustomWebView localCustomWebView;
+    do
+    {
+      return;
+      localCustomWebView = this.mRuntime.a();
+    } while (localCustomWebView == null);
+    QLog.i("ArkApp.ArkSecurityWebViewPlugin", 1, "now jump url=" + ndq.b("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html", new String[0]));
+    localCustomWebView.loadUrl("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html");
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    boolean bool3 = true;
+    if ("https://qzonestyle.gtimg.cn/qzone/hybrid/page/safeTips/index.html".equals(paramString1))
+    {
+      QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe now jump url=", paramString1 });
+      return false;
+    }
+    boolean bool1;
     int i;
-    if (localObject1 != null)
+    if (this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker != null)
     {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      int j = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker.checkURLLoose(paramString1);
+      if (j == 0)
       {
-        localRockDownloadInfo = (RockDownloadInfo)((Iterator)localObject1).next();
-        Object localObject2;
-        if (localRockDownloadInfo.endTime + 604800L < l / 1000L)
-        {
-          localObject2 = new VFSFile(localRockDownloadInfo.localPath);
-          if (((VFSFile)localObject2).exists()) {
-            ((VFSFile)localObject2).delete();
-          }
-          anrl.a().b(localRockDownloadInfo);
-          if (QLog.isColorLevel()) {
-            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localRockDownloadInfo });
-          }
+        bool1 = true;
+        if (bool1) {
+          break label201;
         }
-        else
+        if (this.jdField_a_of_type_Boolean) {
+          break label196;
+        }
+        QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.web.set isPermitted=true,url=", ndq.b(paramString1, new String[0]) });
+        i = 2;
+        bool1 = true;
+        label101:
+        anrm.c(this.jdField_a_of_type_JavaLangString, paramString1, j, i, this.b);
+        bool2 = bool1;
+        if (!bool1)
         {
-          localObject2 = bdem.d(this.a.getApp(), localRockDownloadInfo.getPackageName());
-          try
-          {
-            i = Integer.parseInt((String)localObject2);
-            if ((localRockDownloadInfo.realVersionCode <= 0) || (i < localRockDownloadInfo.realVersionCode)) {
-              continue;
-            }
-            localObject2 = new VFSFile(localRockDownloadInfo.localPath);
-            if (((VFSFile)localObject2).exists()) {
-              ((VFSFile)localObject2).delete();
-            }
-            anrl.a().b(localRockDownloadInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has install", localRockDownloadInfo });
-          }
-          catch (NumberFormatException localNumberFormatException) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("RockDownloaderManager", 2, new Object[] { "get install info error", localRockDownloadInfo, " error=", localNumberFormatException.getMessage() });
-          }
+          QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.handleSchemaRequest,isPermitted=", Boolean.valueOf(bool1), ", url=", ndq.b(paramString1, new String[0]) });
+          a();
         }
       }
     }
-    localObject1 = new VFSFile(anrl.a());
-    if (((VFSFile)localObject1).exists())
+    for (boolean bool2 = bool1;; bool2 = true)
     {
-      localObject1 = ((VFSFile)localObject1).listFiles();
-      if ((localObject1 != null) && (localObject1.length > 0))
+      if (!bool2) {}
+      for (bool1 = bool3;; bool1 = false)
       {
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
-        {
-          localRockDownloadInfo = localObject1[i];
-          if (localRockDownloadInfo.lastModified() + 604800000L < l)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("RockDownloaderManager", 2, new Object[] { "remove file", localRockDownloadInfo.getAbsolutePath() });
-            }
-            localRockDownloadInfo.delete();
-          }
-          i += 1;
-        }
+        return bool1;
+        bool1 = false;
+        break;
       }
+      label196:
+      i = 1;
+      break label101;
+      label201:
+      i = 0;
+      break label101;
     }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
   
   public void onDestroy()
   {
-    this.a = null;
+    super.onDestroy();
+    QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin onDestroy");
+    anqp.a().a("callDisableReport", null, null);
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aqrg;
-import aqsc;
-import arni;
-import arof;
+import aqvp;
+import aqwl;
+import arrr;
+import arso;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$3
   implements Runnable
 {
-  public OfflineFileBubbleModel$3(aqrg paramaqrg, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$3(aqvp paramaqvp, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    arni.d(this.a);
-    if (arof.b(this.a.strLargeThumPath)) {
+    arrr.d(this.a);
+    if (arso.b(this.a.strLargeThumPath)) {
       this.this$0.a.a().c(this.a);
     }
   }

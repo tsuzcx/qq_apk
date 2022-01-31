@@ -1,64 +1,16 @@
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.GdtJsonPbUtil;
-import java.util.List;
-import org.json.JSONObject;
 
-public class bgyh
-  extends bgzp
+final class bgyh
+  extends MiniCmdCallback.Stub
 {
-  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
+  bgyh(MiniAppInfo paramMiniAppInfo) {}
   
-  public bgyh(List<String> paramList)
+  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.appids.set(paramList);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
-    try
-    {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
-      {
-        paramArrayOfByte = GdtJsonPbUtil.pbToJson(localStGetRobotUinRsp);
-        if ((paramArrayOfByte instanceof JSONObject)) {
-          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
-        }
-      }
-      else
-      {
-        QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
-        return null;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetContact";
+    QMLog.d("ApkgMainProcessManager", "removeSubProcessLoadTask() called with: miniAppConfig = [" + this.a + "]");
   }
 }
 

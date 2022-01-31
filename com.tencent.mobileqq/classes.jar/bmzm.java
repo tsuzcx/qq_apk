@@ -1,12 +1,6 @@
 public abstract interface bmzm
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void f(int paramInt);
+  public abstract void a(String paramString);
 }
 
 

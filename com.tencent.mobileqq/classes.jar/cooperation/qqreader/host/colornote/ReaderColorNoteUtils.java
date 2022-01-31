@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
 import android.content.Context;
-import anxr;
-import anyk;
-import aobd;
+import aoca;
+import aoct;
+import aofm;
 
 public class ReaderColorNoteUtils
 {
@@ -12,17 +12,17 @@ public class ReaderColorNoteUtils
   
   public static void deleteColorNote(int paramInt, String paramString)
   {
-    anxr.b(paramInt, paramString);
+    aoca.b(paramInt, paramString);
   }
   
   public static boolean getSyncState()
   {
-    return anyk.a().b();
+    return aoct.a().b();
   }
   
   public static void sendUpdateSmallScreenStateBroadcast(Context paramContext, boolean paramBoolean)
   {
-    aobd.a(paramContext, 2, paramBoolean);
+    aofm.a(paramContext, 2, paramBoolean);
   }
 }
 

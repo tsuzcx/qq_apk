@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.manager;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bgrl;
-import bgrn;
-import bgrp;
+import bgvs;
+import bgvu;
+import bgvw;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -14,7 +14,7 @@ import java.io.File;
 public class BaseLibManager$2
   implements Runnable
 {
-  public BaseLibManager$2(bgrl parambgrl, boolean paramBoolean, String paramString, bgrp parambgrp) {}
+  public BaseLibManager$2(bgvs parambgvs, boolean paramBoolean, String paramString, bgvw parambgvw) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class BaseLibManager$2
     boolean bool3;
     Object localObject1;
     boolean bool1;
-    if (!bgrl.a(this.this$0))
+    if (!bgvs.a(this.this$0))
     {
       bool3 = true;
       if (!this.jdField_a_of_type_Boolean) {
@@ -58,17 +58,17 @@ public class BaseLibManager$2
       for (;;)
       {
         QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib current requestVersion is:" + (String)localObject1);
-        bool1 = ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib((String)localObject1, bool3, bool1, new bgrn(this, str1, str2));
-        bgrl.a(this.this$0, true);
+        bool1 = ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib((String)localObject1, bool3, bool1, new bgvu(this, str1, str2));
+        bgvs.a(this.this$0, true);
         if (!bool1)
         {
-          bgrl.b(this.this$0, false);
-          this.jdField_a_of_type_Bgrp.a(0);
+          bgvs.b(this.this$0, false);
+          this.jdField_a_of_type_Bgvw.a(0);
         }
         return;
         bool3 = false;
         break;
-        Object localObject3 = bgrl.a().b(str2, str1);
+        Object localObject3 = bgvs.a().b(str2, str1);
         localObject2 = localObject1;
         bool2 = bool1;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {

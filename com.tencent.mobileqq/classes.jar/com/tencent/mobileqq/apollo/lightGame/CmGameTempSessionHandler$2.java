@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import akqu;
+import akvj;
 import android.os.Bundle;
 
 public class CmGameTempSessionHandler$2
   implements Runnable
 {
-  public CmGameTempSessionHandler$2(akqu paramakqu, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public CmGameTempSessionHandler$2(akvj paramakvj, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    akqu.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    akvj.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

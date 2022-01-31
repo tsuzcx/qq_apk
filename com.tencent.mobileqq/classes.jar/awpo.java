@@ -1,33 +1,20 @@
-import QC.UniBusiSimpleItemDetail;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-class awpo
-  implements View.OnClickListener
+public class awpo
+  extends RecyclerView.ItemDecoration
 {
-  awpo(awpn paramawpn, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
+  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
   
-  public void onClick(View paramView)
+  private awpo(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if ((awpn.a(this.jdField_a_of_type_Awpn) == 5) && (awpn.a(this.jdField_a_of_type_Awpn) != null) && ((awpn.a(this.jdField_a_of_type_Awpn) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)awpn.a(this.jdField_a_of_type_Awpn)).a()))
-    {
-      QQToast.a(awpn.a(this.jdField_a_of_type_Awpn), alpo.a(2131715513), 0).a();
-      return;
-    }
-    awpn.a(this.jdField_a_of_type_Awpn, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
-    if (9 == awpn.a(this.jdField_a_of_type_Awpn)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", paramView);
-      this.jdField_a_of_type_Awpn.notifyDataSetChanged();
-      awpn.a(this.jdField_a_of_type_Awpn, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
-      awpn.a(this.jdField_a_of_type_Awpn, true);
-      this.jdField_a_of_type_Awpn.a(awpn.a(this.jdField_a_of_type_Awpn), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Awpn.a);
-      return;
-    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

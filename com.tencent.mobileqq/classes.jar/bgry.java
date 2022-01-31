@@ -1,44 +1,6 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.2;
-
-public class bgry
-  implements bgrw
+public abstract interface bgry
 {
-  public bgry(EngineManager.2 param2) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bgrt localbgrt = (bgrt)bgrx.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbgrt != null) {
-      localbgrt.b(this);
-    }
-  }
-  
-  public void a(float paramFloat, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    bgrt localbgrt = (bgrt)bgrx.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbgrt != null) {
-      localbgrt.b(this);
-    }
-  }
+  public abstract void a(bgrq parambgrq, int paramInt1, int paramInt2);
 }
 
 

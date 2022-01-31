@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bdee;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -96,7 +96,7 @@ public class RequestPlugin$MiniAppWebsocketListener
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("socketTaskId", this.currSocketId);
         ((JSONObject)localObject2).put("state", "error");
-        if ((bdee.b(BaseApplicationImpl.getContext()) != 0) && (bdee.b(BaseApplicationImpl.getContext()) != -1)) {
+        if ((bdin.b(BaseApplicationImpl.getContext()) != 0) && (bdin.b(BaseApplicationImpl.getContext()) != -1)) {
           break label468;
         }
         paramWebSocket = "network is down";

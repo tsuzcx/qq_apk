@@ -1,13 +1,22 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.database.DataSetObserver;
+import com.tencent.widget.ExpandableListConnector;
 
 public class bhwr
+  extends DataSetObserver
 {
-  public int a;
-  public final Rect a = new Rect();
-  public Drawable a;
-  public boolean a;
-  public int b;
+  public bhwr(ExpandableListConnector paramExpandableListConnector) {}
+  
+  public void onChanged()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetInvalidated();
+  }
 }
 
 

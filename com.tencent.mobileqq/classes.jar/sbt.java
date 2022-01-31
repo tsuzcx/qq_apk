@@ -190,7 +190,7 @@ class sbt
     //   505: invokestatic 192	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   508: invokevirtual 196	java/lang/String:getBytes	()[B
     //   511: iconst_2
-    //   512: invokestatic 202	bdbi:encodeToString	([BI)Ljava/lang/String;
+    //   512: invokestatic 202	bdfr:encodeToString	([BI)Ljava/lang/String;
     //   515: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   518: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   521: astore_1
@@ -386,9 +386,9 @@ class sbt
     //   957: ldc 65
     //   959: invokevirtual 286	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   962: astore_3
-    //   963: invokestatic 291	bfgi:a	()Lbfgi;
+    //   963: invokestatic 291	bfkr:a	()Lbfkr;
     //   966: aload_3
-    //   967: invokevirtual 294	bfgi:b	(Ljava/lang/String;)Lcom/tencent/open/downloadnew/DownloadInfo;
+    //   967: invokevirtual 294	bfkr:b	(Ljava/lang/String;)Lcom/tencent/open/downloadnew/DownloadInfo;
     //   970: astore 5
     //   972: aload 5
     //   974: ifnonnull +228 -> 1202
@@ -415,9 +415,9 @@ class sbt
     //   1028: aload 4
     //   1030: ldc_w 310
     //   1033: putfield 313	com/tencent/open/downloadnew/DownloadInfo:e	Ljava/lang/String;
-    //   1036: invokestatic 291	bfgi:a	()Lbfgi;
+    //   1036: invokestatic 291	bfkr:a	()Lbfkr;
     //   1039: aload 4
-    //   1041: invokevirtual 316	bfgi:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   1041: invokevirtual 316	bfkr:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   1044: aload 6
     //   1046: ldc 57
     //   1048: invokevirtual 73	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
@@ -495,13 +495,13 @@ class sbt
     //   1216: ldc_w 349
     //   1219: invokestatic 96	nwh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   1222: invokestatic 99	nwh:a	(Ljava/lang/String;)V
-    //   1225: invokestatic 291	bfgi:a	()Lbfgi;
+    //   1225: invokestatic 291	bfkr:a	()Lbfkr;
     //   1228: aload 5
-    //   1230: invokevirtual 352	bfgi:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)Z
+    //   1230: invokevirtual 352	bfkr:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)Z
     //   1233: ifne -129 -> 1104
-    //   1236: invokestatic 291	bfgi:a	()Lbfgi;
+    //   1236: invokestatic 291	bfkr:a	()Lbfkr;
     //   1239: aload 5
-    //   1241: invokevirtual 316	bfgi:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   1241: invokevirtual 316	bfkr:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   1244: goto -140 -> 1104
     //   1247: aload 5
     //   1249: invokevirtual 347	com/tencent/open/downloadnew/DownloadInfo:a	()I
@@ -523,9 +523,9 @@ class sbt
     //   1288: invokevirtual 347	com/tencent/open/downloadnew/DownloadInfo:a	()I
     //   1291: iconst_2
     //   1292: if_icmpne +28 -> 1320
-    //   1295: invokestatic 291	bfgi:a	()Lbfgi;
+    //   1295: invokestatic 291	bfkr:a	()Lbfkr;
     //   1298: aload_3
-    //   1299: invokevirtual 354	bfgi:a	(Ljava/lang/String;)I
+    //   1299: invokevirtual 354	bfkr:a	(Ljava/lang/String;)I
     //   1302: pop
     //   1303: ldc_w 283
     //   1306: aload 4
@@ -538,9 +538,9 @@ class sbt
     //   1325: ldc_w 298
     //   1328: invokestatic 96	nwh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   1331: invokestatic 99	nwh:a	(Ljava/lang/String;)V
-    //   1334: invokestatic 291	bfgi:a	()Lbfgi;
+    //   1334: invokestatic 291	bfkr:a	()Lbfkr;
     //   1337: aload 5
-    //   1339: invokevirtual 316	bfgi:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   1339: invokevirtual 316	bfkr:b	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   1342: aload 6
     //   1344: ldc 57
     //   1346: invokevirtual 73	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;

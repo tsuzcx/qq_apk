@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip.lianghao.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdxx;
+import becg;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LiangHaoView
@@ -18,7 +18,7 @@ public class LiangHaoView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bdxx a;
+  public becg a;
   
   public LiangHaoView(Context paramContext)
   {
@@ -42,10 +42,10 @@ public class LiangHaoView
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846638);
-    int i = aekt.a(12.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846711);
+    int i = aepi.a(12.0F, getResources());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-    localLayoutParams.rightMargin = aekt.a(5.0F, getResources());
+    localLayoutParams.rightMargin = aepi.a(5.0F, getResources());
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
@@ -67,27 +67,27 @@ public class LiangHaoView
     }
   }
   
-  public void setUin(bdxx parambdxx)
+  public void setUin(becg parambecg)
   {
     int j = 0;
-    if ((parambdxx == null) || (TextUtils.isEmpty(parambdxx.a))) {
+    if ((parambecg == null) || (TextUtils.isEmpty(parambecg.a))) {
       return;
     }
-    this.jdField_a_of_type_Bdxx = parambdxx;
-    SpannableString localSpannableString = new SpannableString(parambdxx.a);
+    this.jdField_a_of_type_Becg = parambecg;
+    SpannableString localSpannableString = new SpannableString(parambecg.a);
     int i;
-    if (TextUtils.isEmpty(parambdxx.b)) {
+    if (TextUtils.isEmpty(parambecg.b)) {
       i = -1;
     }
     for (;;)
     {
       if (j != 0) {
-        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambdxx.b.length() + i, 18);
+        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambecg.b.length() + i, 18);
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693890) + " " + parambdxx.a);
+      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693892) + " " + parambecg.a);
       return;
-      i = parambdxx.a.indexOf(parambdxx.b);
+      i = parambecg.a.indexOf(parambecg.b);
       if (i >= 0) {
         j = 1;
       }

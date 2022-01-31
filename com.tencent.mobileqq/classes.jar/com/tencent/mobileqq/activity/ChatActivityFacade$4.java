@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
-import awlp;
-import ayvc;
+import alto;
+import awpy;
+import ayzl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -15,7 +15,7 @@ public final class ChatActivityFacade$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ExtensionInfo localExtensionInfo = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     long l1;
     long l2;
     label38:
@@ -32,7 +32,7 @@ public final class ChatActivityFacade$4
       }
       l3 = 0L;
       label46:
-      long l4 = ayvc.a();
+      long l4 = ayzl.a();
       if ((l4 <= 0L) || (l4 - l1 <= 604800L)) {
         break label204;
       }
@@ -46,7 +46,7 @@ public final class ChatActivityFacade$4
         QLog.i("ChatActivityFacade", 2, String.format("insertFriendPLNewsIfNeeded latest:%d last:%d pull:%d overWeek:%b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) }));
       }
       if ((l1 > l2) && (!bool) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-        ((awlp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2, l1);
+        ((awpy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2, l1);
       }
       return;
       l1 = localExtensionInfo.latestPLUpdateTimestamp;

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import ausu;
-import ausv;
+import auxd;
+import auxe;
 
 public class OldBigDataChannelManager$1$1
   implements Runnable
 {
-  public OldBigDataChannelManager$1$1(ausv paramausv) {}
+  public OldBigDataChannelManager$1$1(auxe paramauxe) {}
   
   public void run()
   {
-    ausu.a(this.a.a);
-    ausu.b(this.a.a);
+    auxd.a(this.a.a);
+    auxd.b(this.a.a);
   }
 }
 

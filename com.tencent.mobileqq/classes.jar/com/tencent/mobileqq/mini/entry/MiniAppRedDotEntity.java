@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MiniAppRedDotEntity
-  extends awbv
+  extends awge
 {
   public static final String TAG = "MiniAppRedDotEntity";
-  @awdj
+  @awhs
   public String appId;
   public int publicAccountRedDotNum;
   public int wnsPushRedDotNum;

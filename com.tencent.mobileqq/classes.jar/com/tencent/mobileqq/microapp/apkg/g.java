@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import aivz;
+import ajao;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
@@ -110,14 +110,14 @@ public class g
     } while (paramc == null);
     paramc.a(paramMiniAppConfig);
     return;
-    aivz localaivz = aivz.a(BaseApplicationImpl.getApplication().getRuntime());
+    ajao localajao = ajao.a(BaseApplicationImpl.getApplication().getRuntime());
     DownloadParam localDownloadParam = new DownloadParam();
     localDownloadParam.headers = new LinkedList();
     localDownloadParam.url = (str + "?sign=" + URLEncoder.encode(paramMiniAppConfig.config.cos_sign));
     if (QLog.isColorLevel()) {
       QLog.d("ApkgManager", 2, "begin download apkg:" + localDownloadParam);
     }
-    localaivz.a(localDownloadParam, new l(this, (String)localObject, paramMiniAppConfig, paramc));
+    localajao.a(localDownloadParam, new l(this, (String)localObject, paramMiniAppConfig, paramc));
   }
   
   private void a(g.d paramd, int paramInt, f paramf, String paramString)
@@ -165,7 +165,7 @@ public class g
     }
     if (!TextUtils.isEmpty(str1))
     {
-      aivz.a(BaseApplicationImpl.getApplication().getRuntime()).c(str1, new m(this, paramf, str2, paramd));
+      ajao.a(BaseApplicationImpl.getApplication().getRuntime()).c(str1, new m(this, paramf, str2, paramd));
       return;
     }
     paramd.onInitApkgInfo(1, null);

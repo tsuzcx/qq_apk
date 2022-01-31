@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.runtime.widget;
 
-import bgnf;
-import bhfl;
+import bgrm;
+import bhjs;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class InnerWebView$5$1
   implements Runnable
 {
-  public InnerWebView$5$1(bhfl parambhfl) {}
+  public InnerWebView$5$1(bhjs parambhjs) {}
   
   public void run()
   {
     QMLog.e("ProgressWebView", "savaPicToAlbum failed, because of picture downloadFailed");
-    bgnf.a(InnerWebView.a(this.a.a), 1, "保存失败", 0).a();
+    bgrm.a(InnerWebView.a(this.a.a), 1, "保存失败", 0).a();
   }
 }
 

@@ -1,50 +1,23 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
-class arij
-  implements bhqr
+public class arij
+  implements aocf
 {
-  arij(arif paramarif) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ColorNote getColorNote()
   {
-    arif.a(this.a, paramInt);
-    paramAdapterView = this.a.jdField_a_of_type_Arjx;
-    if (arif.a(this.a) == arif.b(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAdapterView.d(bool);
-      this.a.a(paramInt);
-      if (this.a.jdField_a_of_type_Ardo != null) {
-        this.a.jdField_a_of_type_Ardo.a(paramInt);
-      }
-      paramAdapterView = (argc)arif.a(this.a).get(paramInt);
-      if (paramAdapterView != null) {
-        break;
-      }
-      armz.b(BaseApplicationImpl.getContext().getString(2131692559));
-      return;
+    aocl localaocl = new aocl();
+    localaocl.a(17039360);
+    String str = arsx.b(-1, "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    this.a.jdField_a_of_type_Arfz.a().a(paramAdapterView);
-    this.a.jdField_a_of_type_Arfz.a(paramInt, paramAdapterView);
-    this.a.jdField_a_of_type_Arjx.c(arif.a(this.a, arif.a(this.a)));
-    this.a.jdField_a_of_type_Arjx.c();
-    if (this.a.jdField_a_of_type_Ardn != null) {
-      this.a.jdField_a_of_type_Ardn.e();
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Ardo.a(true);
-      this.a.jdField_a_of_type_Arjx.a(false);
-      arif.a(this.a, true);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
+    localaocl.a(str);
+    localaocl.b("default_file");
+    localaocl.c("0MB");
+    localaocl.d("resdrawable://2130843981");
+    return localaocl.a();
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

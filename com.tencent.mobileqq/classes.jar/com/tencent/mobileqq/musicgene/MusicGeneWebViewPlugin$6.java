@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.musicgene;
 
-import aund;
+import aurm;
 import java.util.TimerTask;
 
 public class MusicGeneWebViewPlugin$6
   extends TimerTask
 {
-  public MusicGeneWebViewPlugin$6(aund paramaund) {}
+  public MusicGeneWebViewPlugin$6(aurm paramaurm) {}
   
   public void run()
   {
-    aund.a(this.this$0);
+    aurm.a(this.this$0);
   }
 }
 

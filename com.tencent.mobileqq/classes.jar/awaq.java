@@ -1,6 +1,8 @@
 public abstract interface awaq
 {
-  public abstract void a(awam paramawam);
+  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
+  
+  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

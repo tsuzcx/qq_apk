@@ -1,8 +1,16 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract class bmqi
+class bmqi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  bmqi(bmqh parambmqh) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.k();
+  }
 }
 
 

@@ -1,23 +1,18 @@
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-
-class atvz
-  implements DialogInterface.OnClickListener
+public class atvz
 {
-  atvz(atvy paramatvy) {}
+  public int a;
+  public String a;
+  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atvz()
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.SplashActivity"));
-    localIntent.setFlags(268435456);
-    atvy.a(this.a).getApp().startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    azmj.b(atvy.a(this.a), "dc00898", "", "", "0X80085DA", "0X80085DA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
+    this.jdField_a_of_type_Int = 360;
+  }
+  
+  public String toString()
+  {
+    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
   }
 }
 

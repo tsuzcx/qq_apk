@@ -1,17 +1,20 @@
-public class awmm
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+
+class awmm
+  extends bhry
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  awmm(awmf paramawmf) {}
   
-  public awmm(awml paramawml, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

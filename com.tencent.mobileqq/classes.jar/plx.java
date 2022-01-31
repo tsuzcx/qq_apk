@@ -39,8 +39,8 @@ public class plx
     {
       localObject1 = (ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
       localJSONObject = new JSONObject();
-      paramInt = bjxj.d();
-      bool2 = bjxj.q();
+      paramInt = bkbq.d();
+      bool2 = bkbq.q();
       if (paramBaseArticleInfo == null) {}
     }
     try
@@ -53,12 +53,12 @@ public class plx
       label75:
       if (bool2)
       {
-        localJSONObject.put("left_comment_count", (String)localObject2 + alpo.a(2131713304));
+        localJSONObject.put("left_comment_count", (String)localObject2 + alud.a(2131713316));
         localJSONObject.put("left_play_count", rdm.c(paramBaseArticleInfo.mVideoPlayCount));
         localJSONObject.put("play_icon", "ReadInJoy/video_play_icon.png");
       }
       localJSONObject.put("left_article_title", paramBaseArticleInfo.mTitle);
-      if ((!paramBaseArticleInfo.isUseGif) || (!bdee.h(BaseApplicationImpl.getContext()))) {
+      if ((!paramBaseArticleInfo.isUseGif) || (!bdin.h(BaseApplicationImpl.getContext()))) {
         break label1069;
       }
       bool1 = true;
@@ -136,12 +136,12 @@ public class plx
         localObject2 = rdm.e(i);
         if (bool2)
         {
-          localJSONObject.put("right_comment_count", (String)localObject2 + alpo.a(2131713304));
+          localJSONObject.put("right_comment_count", (String)localObject2 + alud.a(2131713316));
           localJSONObject.put("right_play_count", rdm.c(((BaseArticleInfo)localObject1).mVideoPlayCount));
           localJSONObject.put("play_icon", "ReadInJoy/video_play_icon.png");
         }
         localJSONObject.put("right_article_title", ((BaseArticleInfo)localObject1).mTitle);
-        if ((!((BaseArticleInfo)localObject1).isUseGif) || (!bdee.h(BaseApplicationImpl.getContext()))) {
+        if ((!((BaseArticleInfo)localObject1).isUseGif) || (!bdin.h(BaseApplicationImpl.getContext()))) {
           break label1075;
         }
         bool1 = true;

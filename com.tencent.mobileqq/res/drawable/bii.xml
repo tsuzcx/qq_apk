@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/dnw" android:clipOrientation="vertical"
+<clip android:gravity="bottom" android:drawable="@drawable/dsc" android:clipOrientation="vertical"
   xmlns:android="http://schemas.android.com/apk/res/android" />

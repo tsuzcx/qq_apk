@@ -1,25 +1,56 @@
-import mqq.manager.Manager;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public abstract interface aubo
-  extends Manager
+class aubo
+  implements AdapterView.OnItemClickListener
 {
-  public abstract int a();
+  aubo(aubn paramaubn) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.a.a.getActionSheet().isShowing()) {
+      this.a.a.getActionSheet().dismiss();
+    }
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131721491;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        ybk.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131721492;
+        }
+      }
+      else
+      {
+        switch ((int)paramLong)
+        {
+        default: 
+          return;
+        case 0: 
+          aubn.a(this.a);
+          return;
+        case 1: 
+          aubn.b(this.a);
+          return;
+        case 2: 
+          aubn.c(this.a);
+          return;
+        }
+        aubn.d(this.a);
+        return;
+      }
+      paramInt = -1;
+    }
+  }
 }
 
 

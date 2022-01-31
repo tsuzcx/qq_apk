@@ -1,17 +1,17 @@
 import android.view.View;
 
 final class tlg
-  implements bhqd
+  implements bhuk
 {
-  tlg(bhqd parambhqd, bhpy parambhpy) {}
+  tlg(bhuk parambhuk, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     tlo.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
-    if (this.jdField_a_of_type_Bhqd != null) {
-      this.jdField_a_of_type_Bhqd.OnClick(paramView, paramInt);
+    if (this.jdField_a_of_type_Bhuk != null) {
+      this.jdField_a_of_type_Bhuk.OnClick(paramView, paramInt);
     }
-    this.jdField_a_of_type_Bhpy.dismiss();
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

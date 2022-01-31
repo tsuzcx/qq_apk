@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.manager;
 
-import bgrx;
+import bgwe;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 
 public class EngineManager$1
   implements Runnable
 {
-  public EngineManager$1(bgrx parambgrx, BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel) {}
+  public EngineManager$1(bgwe parambgwe, BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel) {}
   
   public void run()
   {
-    bgrx.a(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    bgwe.a(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
   }
 }
 

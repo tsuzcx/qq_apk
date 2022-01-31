@@ -166,7 +166,7 @@ public class lkv
   
   private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    azmz.a(BaseApplicationImpl.getContext()).a(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
+    azri.a(BaseApplicationImpl.getContext()).a(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
     return true;
   }
 }

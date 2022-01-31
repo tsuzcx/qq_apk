@@ -39,7 +39,7 @@ public class nez
       localGroupInfo.group_geo_info.set(paramString1);
     }
     localGroupInfo.uint32_group_class_ext.set((int)paramLong5);
-    paramString1 = bcrv.a(BaseApplicationImpl.getApplication()).a(BaseApplicationImpl.getApplication(), String.valueOf(localGroupInfo.uint32_group_class_ext.get()));
+    paramString1 = bcwe.a(BaseApplicationImpl.getApplication()).a(BaseApplicationImpl.getApplication(), String.valueOf(localGroupInfo.uint32_group_class_ext.get()));
     if (paramString1 != null) {
       localGroupInfo.string_group_class_text.set(ByteStringMicro.copyFromUtf8(paramString1.a));
     }

@@ -1,120 +1,49 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kingkong.UpdateManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.net.patch.PatchChecker;
-import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
-import com.tencent.mobileqq.msf.core.net.patch.PatchReporter;
-import com.tencent.mobileqq.vas.LzmaUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aarj
+class aarj
+  implements aaru
 {
-  private static void a()
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    aarp localaarp = aarq.a(BaseApplicationImpl.sApplication, "Native");
-    if (localaarp != null) {
-      UpdateManager.a(localaarp.e());
+    Object localObject = null;
+    if (paramaarb != null) {}
+    for (paramVarArgs = paramaarb.a(); (paramaarb == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    b(paramQQAppInterface);
-    a();
-  }
-  
-  public static boolean a(aarp paramaarp)
-  {
-    int j = 701;
-    String str1 = paramaarp.c();
-    Object localObject = PatchCommonUtil.getPatchPath(str1);
-    String str2 = PatchCommonUtil.getPatchPath("");
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      i = LzmaUtils.a(BaseApplicationImpl.sApplication, (String)localObject, str2);
-      if (i != 0) {
-        break label136;
-      }
-      i = 700;
+      localJSONObject.put("deviceId", aatg.a(paramVarArgs));
     }
-    catch (Throwable localThrowable)
+    catch (JSONException localJSONException)
     {
-      for (;;)
+      try
       {
-        label136:
-        int i = 702;
-        QLog.d("PatchLogTag", 1, "PatchFileManager un7zNPatchFile throwable=" + localThrowable);
-        continue;
-        i = j;
-        if (((File)localObject).exists())
+        for (;;)
         {
-          i = 703;
-          ((File)localObject).delete();
+          paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
         }
       }
-    }
-    localObject = new File((String)localObject);
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
-    }
-    if (700 == i)
-    {
-      localObject = new File(PatchCommonUtil.getPatchPath(paramaarp.b()));
-      if ((((File)localObject).exists()) && (((File)localObject).length() == paramaarp.b())) {
-        i = 700;
-      }
-    }
-    for (;;)
-    {
-      PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, "", "actPatchUnzip", i, str1);
-      if (700 == i)
+      catch (Throwable paramString)
       {
-        return true;
-        i = 701;
-        break;
-      }
-      return false;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    int j = 1;
-    aarp localaarp = aarq.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localaarp != null) && (localaarp.a(BaseApplicationImpl.sApplication, false)))
-    {
-      String str = localaarp.b();
-      File localFile = new File(PatchCommonUtil.getPatchPath(str));
-      int i;
-      if ((!localFile.exists()) || (localFile.length() != localaarp.b()))
-      {
-        i = j;
-        if (localFile.exists())
+        for (;;)
         {
-          localFile.delete();
-          i = j;
-        }
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          ((aarh)paramQQAppInterface.getManager(120)).a(0, "dex", localaarp);
-        }
-        return;
-        if (!PatchChecker.checkPatchValid("dex", str))
-        {
-          localFile.delete();
-          i = j;
-        }
-        else
-        {
-          i = 0;
-          zdi.c();
+          aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
         }
       }
     }
-    zdi.c();
   }
 }
 

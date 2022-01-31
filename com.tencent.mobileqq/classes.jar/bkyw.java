@@ -1,97 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 
-class bkyw
-  implements View.OnClickListener
+public class bkyw
 {
-  bkyw(bkyt parambkyt) {}
+  private static volatile bkyw jdField_a_of_type_Bkyw;
+  private final int jdField_a_of_type_Int = 2000;
+  private long jdField_a_of_type_Long;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 60000;
+  private long jdField_b_of_type_Long;
+  private final int c = 1000;
+  private int d;
   
-  public void onClick(View paramView)
+  public static bkyw a()
   {
-    int j = 0;
-    bkyt.a(this.a, true);
-    Set localSet = bkyt.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + localSet);
-    paramView = bler.a();
-    paramView.j();
-    int i = 0;
-    while (i < bkyt.a(this.a).size()) {
-      if (!localSet.contains(Integer.valueOf(i)))
-      {
-        i += 1;
-      }
-      else
-      {
-        if (((bkxt)bkyt.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
-        {
-          paramView.k(((bkxt)bkyt.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-          paramView.i("none");
-          paramView.j("none");
-        }
-        for (;;)
-        {
-          blen.a().S();
-          break;
-          if (!((bkxt)bkyt.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
-          {
-            paramView.k("none");
-            paramView.i(((bkxw)bkxv.jdField_a_of_type_JavaUtilList.get(bkxv.jdField_a_of_type_ArrayOfInt[(i % bkxv.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
-            paramView.j(((bkxt)bkyt.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
-          }
-          else
-          {
-            paramView.k("none");
-            paramView.i("none");
-            paramView.j("none");
-          }
-        }
-      }
-    }
-    bkyt.a(this.a).a(false);
-    blal localblal = bkyt.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + localblal.a + ", texts = " + localblal.b);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    i = j;
-    if (i < localblal.a.size())
+    if (jdField_a_of_type_Bkyw == null) {}
+    try
     {
-      Integer localInteger = (Integer)localblal.d.get(i);
-      if (localSet.contains(localInteger))
-      {
-        if ((i != 0) || (bkyt.a(this.a) == null)) {
-          break label582;
-        }
-        localArrayList1.add(bkyt.a(this.a).jdField_a_of_type_JavaLangString);
-        localArrayList2.add(bkyt.a(this.a).b);
-        localArrayList3.add(bkyt.a(this.a).c);
+      if (jdField_a_of_type_Bkyw == null) {
+        jdField_a_of_type_Bkyw = new bkyw();
       }
-      for (;;)
-      {
-        String str = bkyt.a(this.a, localInteger.intValue());
-        StringBuilder localStringBuilder = new StringBuilder().append("gif^");
-        paramView = str;
-        if (str == null) {
-          paramView = "";
-        }
-        paramView = paramView;
-        localArrayList4.add(paramView);
-        blfg.b("AEGIFChunkPreviewFragment", "save gif, index=" + i + ", widgetInfo=" + paramView + ", originIndex=" + localInteger);
-        i += 1;
-        break;
-        label582:
-        localArrayList1.add(localblal.a.get(i));
-        localArrayList2.add(localblal.b.get(i));
-        localArrayList3.add(localblal.c.get(i));
-      }
+      return jdField_a_of_type_Bkyw;
     }
-    bkyt.a(this.a, localArrayList1, localArrayList2, localArrayList3, localArrayList4);
+    finally {}
+  }
+  
+  private void b()
+  {
+    AppInterface localAppInterface = QQStoryContext.a();
+    if (localAppInterface != null)
+    {
+      bkzt localbkzt = (bkzt)localAppInterface.getBusinessHandler(3);
+      localAppInterface.addObserver(new bkyy(this, localAppInterface));
+      localbkzt.c();
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      LogicDataManager.getInstance().setOnGetQQNumberEventListener(new bkyx(this));
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

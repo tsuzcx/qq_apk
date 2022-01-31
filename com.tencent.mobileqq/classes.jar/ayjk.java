@@ -1,18 +1,25 @@
-import android.view.View;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
-public abstract interface ayjk
-  extends ayjj
+public class ayjk
+  extends Handler
 {
-  public abstract int a();
+  public ayjk(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public abstract String a();
-  
-  public abstract List<ayjl> a();
-  
-  public abstract void a(View paramView);
-  
-  public abstract String b();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      UniteSearchActivity.a(this.a, 3);
+      this.a.f();
+    }
+  }
 }
 
 

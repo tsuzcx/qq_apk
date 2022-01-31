@@ -5,11 +5,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bgho;
-import bgkd;
-import bgkk;
-import bhab;
-import bhac;
+import bglv;
+import bgok;
+import bgor;
+import bhei;
+import bhej;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -36,16 +36,16 @@ public class ScrollViewJsPlugin
     String str = paramJSONObject.optString("data");
     boolean bool1 = paramJSONObject.optBoolean("gesture");
     boolean bool2 = paramJSONObject.optBoolean("fixed", false);
-    CoverView localCoverView = bhab.a(this.mMiniAppContext).a(i);
+    CoverView localCoverView = bhei.a(this.mMiniAppContext).a(i);
     Object localObject = localCoverView;
     if (localCoverView == null)
     {
       localObject = new CoverScrollView(this.mContext);
-      ((CoverView)localObject).setData(str, bool1, bhac.a(this.mMiniAppContext));
+      ((CoverView)localObject).setData(str, bool1, bhej.a(this.mMiniAppContext));
       ((CoverView)localObject).setContentDescription(i + "_" + j);
       ((CoverView)localObject).setParentId(j);
       ((CoverView)localObject).setFixed(bool2);
-      bhab.a(this.mMiniAppContext).a(j, i, (CoverView)localObject, bool2);
+      bhei.a(this.mMiniAppContext).a(j, i, (CoverView)localObject, bool2);
     }
     if ((localObject instanceof CoverScrollView)) {
       updateScrollView(paramJSONObject, (CoverScrollView)localObject);
@@ -54,7 +54,7 @@ public class ScrollViewJsPlugin
   
   private void updateScrollView(JSONObject paramJSONObject)
   {
-    CoverView localCoverView = bhab.a(this.mMiniAppContext).a(paramJSONObject.optInt("viewId"));
+    CoverView localCoverView = bhei.a(this.mMiniAppContext).a(paramJSONObject.optInt("viewId"));
     if ((localCoverView instanceof CoverScrollView)) {
       updateScrollView(paramJSONObject, (CoverScrollView)localCoverView);
     }
@@ -142,48 +142,48 @@ public class ScrollViewJsPlugin
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     this.density = DisplayUtil.getDensity(this.mContext);
   }
   
-  public void setEventInsertScrollview(bgkd parambgkd)
+  public void setEventInsertScrollview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new ScrollViewJsPlugin.1(this, new JSONObject(parambgkd.b)));
+      bgor.a(new ScrollViewJsPlugin.1(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ScrollViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ScrollViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void setEventRemoveScrollview(bgkd parambgkd)
+  public void setEventRemoveScrollview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new ScrollViewJsPlugin.3(this, new JSONObject(parambgkd.b)));
+      bgor.a(new ScrollViewJsPlugin.3(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ScrollViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ScrollViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
   
-  public void setEventUpdateScrollview(bgkd parambgkd)
+  public void setEventUpdateScrollview(bgok parambgok)
   {
     try
     {
-      bgkk.a(new ScrollViewJsPlugin.2(this, new JSONObject(parambgkd.b)));
+      bgor.a(new ScrollViewJsPlugin.2(this, new JSONObject(parambgok.b)));
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ScrollViewJsPlugin", parambgkd.a + " error.", localJSONException);
+      QMLog.e("ScrollViewJsPlugin", parambgok.a + " error.", localJSONException);
     }
   }
 }

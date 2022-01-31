@@ -1,29 +1,65 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class alse
 {
-  public int a;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public boolean a;
-  
-  public alse(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (paramMessageRecord != null) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
+    }
   }
   
-  public alse(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramMessageRecord.msgtype == -2000) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
+    }
+  }
+  
+  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
+  {
+    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null) {
+      if (paramMessageRecord.msgtype != -2000)
+      {
+        bool1 = bool2;
+        if (paramMessageRecord.msgtype != -2006) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
+      return bool;
+    }
+    catch (Exception paramMessageRecord)
+    {
+      paramMessageRecord.printStackTrace();
+    }
+    return false;
   }
 }
 

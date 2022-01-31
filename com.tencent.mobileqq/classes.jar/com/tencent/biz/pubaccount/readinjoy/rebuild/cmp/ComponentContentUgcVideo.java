@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -42,7 +42,7 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559960, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559959, this, true);
   }
   
   public URL a(pgd parampgd)
@@ -133,7 +133,7 @@ public class ComponentContentUgcVideo
         localLayoutParams = getLayoutParams();
         localObject = getResources().getDisplayMetrics();
         i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
-        k = aekt.a(12.0F, getResources());
+        k = aepi.a(12.0F, getResources());
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
         qmy localqmy = (qmy)localArticleInfo.mSocialFeedInfo.a.b.get(0);
         if (ors.a(localqmy.c, localqmy.d)) {

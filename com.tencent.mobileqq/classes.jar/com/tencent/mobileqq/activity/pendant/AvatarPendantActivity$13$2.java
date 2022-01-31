@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import aift;
-import ayzp;
+import aiki;
+import azdy;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class AvatarPendantActivity$13$2
   implements Runnable
 {
-  public AvatarPendantActivity$13$2(aift paramaift) {}
+  public AvatarPendantActivity$13$2(aiki paramaiki) {}
   
   public void run()
   {
     if (!VideoEnvironment.e(this.a.a.app)) {
-      ayzp.a(this.a.a.app);
+      azdy.a(this.a.a.app);
     }
   }
 }

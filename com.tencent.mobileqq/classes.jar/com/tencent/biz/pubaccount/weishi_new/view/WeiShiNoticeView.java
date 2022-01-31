@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bnoa;
+import bnsm;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import java.util.ArrayList;
 import tgu;
@@ -55,7 +55,7 @@ public class WeiShiNoticeView
       if (TextUtils.isEmpty(paramString)) {
         break label78;
       }
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845836);
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845909);
       tlv.a(localRoundImageView, paramString, localDrawable, localDrawable, "avatar" + paramInt);
     }
     for (;;)
@@ -63,7 +63,7 @@ public class WeiShiNoticeView
       localRoundImageView.setVisibility(0);
       return;
       label78:
-      localRoundImageView.setImageResource(2130845836);
+      localRoundImageView.setImageResource(2130845909);
     }
   }
   
@@ -71,11 +71,11 @@ public class WeiShiNoticeView
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841377);
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841378);
       tlv.a(this.jdField_a_of_type_AndroidWidgetImageView, paramString, localDrawable, localDrawable, "banner");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841377);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
   }
   
   private void b()
@@ -95,16 +95,16 @@ public class WeiShiNoticeView
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371262));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371258));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371281));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371277));
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = bnoa.jdField_a_of_type_Int * 120 / 750;
+    int i = bnsm.jdField_a_of_type_Int * 120 / 750;
     if (i > 0)
     {
       localLayoutParams.height = i;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378740));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378794));
   }
   
   public int a()

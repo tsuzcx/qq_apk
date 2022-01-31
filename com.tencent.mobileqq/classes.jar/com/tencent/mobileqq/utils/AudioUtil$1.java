@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import atxn;
-import bdaz;
+import aubw;
+import bdfi;
 
 public final class AudioUtil$1
   implements Runnable
 {
   public void run()
   {
-    atxn.a().a(bdaz.a());
+    aubw.a().a(bdfi.a());
   }
 }
 

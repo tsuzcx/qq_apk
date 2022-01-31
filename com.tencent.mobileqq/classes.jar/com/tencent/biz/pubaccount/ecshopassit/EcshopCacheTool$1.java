@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.support.v4.app.FragmentActivity;
-import awbw;
+import awgf;
 import com.tencent.mobileqq.data.Friends;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public class EcshopCacheTool$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Awbw.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
+    Object localObject = this.this$0.jdField_a_of_type_Awgf.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
     this.this$0.jdField_a_of_type_JavaUtilMap = new HashMap();
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {

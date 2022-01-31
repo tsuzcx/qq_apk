@@ -2,25 +2,25 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bdda;
-import bdkf;
-import bkit;
-import bkpi;
+import bdhj;
+import bdoo;
+import bkna;
+import bktp;
 
 public class VideoStoryPiecesPart$9
   implements Runnable
 {
-  public VideoStoryPiecesPart$9(bkpi parambkpi) {}
+  public VideoStoryPiecesPart$9(bktp parambktp) {}
   
   public void run()
   {
     try
     {
-      bkpi.a(this.this$0, bkit.a(bkpi.f(this.this$0), true));
-      if ((bkpi.a(this.this$0) != null) && (!bkpi.a(this.this$0).isRecycled())) {
-        bkpi.a(this.this$0, bdda.b(bkpi.a(this.this$0), bdkf.a(3.0F), bkpi.a(this.this$0).getWidth(), bkpi.a(this.this$0).getHeight()));
+      bktp.a(this.this$0, bkna.a(bktp.f(this.this$0), true));
+      if ((bktp.a(this.this$0) != null) && (!bktp.a(this.this$0).isRecycled())) {
+        bktp.a(this.this$0, bdhj.b(bktp.a(this.this$0), bdoo.a(3.0F), bktp.a(this.this$0).getWidth(), bktp.a(this.this$0).getHeight()));
       }
-      bkpi.g(this.this$0).runOnUiThread(new VideoStoryPiecesPart.9.1(this));
+      bktp.g(this.this$0).runOnUiThread(new VideoStoryPiecesPart.9.1(this));
       return;
     }
     catch (Exception localException)

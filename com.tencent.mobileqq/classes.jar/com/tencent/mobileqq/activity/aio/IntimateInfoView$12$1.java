@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aens;
-import aenv;
+import aesh;
+import aesk;
 
 class IntimateInfoView$12$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoView$12$1
   
   public void run()
   {
-    aenv.a(this.a.this$0).a();
+    aesk.a(this.a.this$0).a();
   }
 }
 

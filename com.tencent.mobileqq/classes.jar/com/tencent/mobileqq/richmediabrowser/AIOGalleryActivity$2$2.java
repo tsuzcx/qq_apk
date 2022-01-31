@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import axtq;
-import axuh;
+import axxz;
+import axyq;
 
 public class AIOGalleryActivity$2$2
   implements Runnable
 {
-  public AIOGalleryActivity$2$2(axtq paramaxtq, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  public AIOGalleryActivity$2$2(axxz paramaxxz, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_Axtq.a) != null) {
-      AIOGalleryActivity.a(this.jdField_a_of_type_Axtq.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    if (AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a) != null) {
+      AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
     }
   }
 }

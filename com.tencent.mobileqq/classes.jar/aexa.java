@@ -1,9 +1,16 @@
-import android.graphics.Path;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public abstract interface aexa
+class aexa
+  implements badp
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<aewr> paramList);
+  aexa(aewx paramaewx) {}
+  
+  public void a()
+  {
+    badv localbadv = new badv(3000, 360, 0);
+    localbadv.a = true;
+    this.a.a.f.a(new bado[] { localbadv });
+  }
 }
 
 

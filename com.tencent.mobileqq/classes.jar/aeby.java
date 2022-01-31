@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class aeby
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public aeby(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeby(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    if (!this.a.app.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
   }
 }
 

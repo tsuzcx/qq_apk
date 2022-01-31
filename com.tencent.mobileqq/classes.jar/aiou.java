@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 
-class aiou
-  implements DialogInterface.OnClickListener
+public class aiou
 {
-  aiou(aior paramaior, Runnable paramRunnable) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiou(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

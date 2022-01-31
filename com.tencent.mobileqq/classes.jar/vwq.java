@@ -1,26 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class vwq
-  implements bhqd
+public class vwq
 {
-  vwq(vwo paramvwo, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      vhj.a(this.jdField_a_of_type_Vwo.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new vwr(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-  }
+  @xrk(a="clipNo")
+  int jdField_a_of_type_Int;
+  @xrk(a="fileSize")
+  long jdField_a_of_type_Long;
+  @xrk(a="errorMsg")
+  String jdField_a_of_type_JavaLangString;
+  @xrk(a="speedKBS")
+  int b;
+  @xrk(a="offset")
+  int c;
+  @xrk(a="callBackType")
+  int d;
+  @xrk(a="errorCode")
+  int e;
+  @xrk(a="errorDetailCode")
+  int f;
 }
 
 

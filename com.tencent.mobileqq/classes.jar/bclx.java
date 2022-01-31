@@ -1,44 +1,40 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bclx
-  implements bcwt
 {
-  public bclx(AddedRobotView paramAddedRobotView) {}
+  public static bclx[] a;
+  public String a;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  static
   {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
-    for (;;)
+    jdField_a_of_type_ArrayOfBclx = new bclx[] { new bclx("BulkChatMessageConfig") };
+  }
+  
+  public bclx(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  final JSONObject a(String paramString)
+  {
+    try
     {
-      return;
-      if (!AddedRobotView.a(this.a).a())
+      paramString = new JSONObject(paramString);
+      return a(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof bcma))
-          {
-            localObject = (bcma)localObject;
-            if ((!TextUtils.isEmpty(((bcma)localObject).jdField_a_of_type_JavaLangString)) && (((bcma)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((bcma)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
-        }
+        paramString = new JSONObject();
       }
     }
+  }
+  
+  JSONObject a(JSONObject paramJSONObject)
+  {
+    return paramJSONObject;
   }
 }
 

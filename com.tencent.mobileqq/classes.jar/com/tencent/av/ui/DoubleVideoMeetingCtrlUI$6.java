@@ -14,7 +14,7 @@ class DoubleVideoMeetingCtrlUI$6
     this.jdField_a_of_type_ComTencentAvUiAVActivity.a(4, false);
     if ((this.jdField_a_of_type_Boolean) && (this.this$0.a != null))
     {
-      this.this$0.g(this.jdField_a_of_type_Long, 2131695838);
+      this.this$0.g(this.jdField_a_of_type_Long, 2131695840);
       ScreenShareCtrl localScreenShareCtrl = this.this$0.a.a();
       if (localScreenShareCtrl != null) {
         localScreenShareCtrl.a(this.this$0.a(), this.jdField_a_of_type_Long);

@@ -1,9 +1,18 @@
-public abstract interface wti
-  extends wwd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+
+public class wti
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public wti(StoryListPresenter.4.1 param1) {}
   
-  public abstract void b(int paramInt);
+  public void onClick(View paramView)
+  {
+    wxj.a("home_page", "clk_up_know", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
+  }
 }
 
 

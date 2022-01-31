@@ -1,16 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-public class ahdh
-  extends Handler
+public final class ahdh
+  implements DialogInterface.OnClickListener
 {
-  public ahdh(SearchBaseActivity paramSearchBaseActivity) {}
+  public ahdh(Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.clearFocus();
+    ((BlessSelectMemberActivity)this.a).f();
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agtz;
-import agug;
+import agyo;
+import agyv;
 import android.text.TextUtils;
-import awbw;
+import awgf;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -12,12 +12,12 @@ import java.util.List;
 public class StickerRecManager$9
   implements Runnable
 {
-  public StickerRecManager$9(agug paramagug) {}
+  public StickerRecManager$9(agyv paramagyv) {}
   
   public void run()
   {
     int i = 0;
-    Object localObject = new File(agtz.a);
+    Object localObject = new File(agyo.a);
     long l1 = 0L;
     localObject = ((File)localObject).listFiles();
     long l2 = l1;
@@ -52,7 +52,7 @@ public class StickerRecManager$9
       {
         localObject = new String[1];
         localObject[0] = String.valueOf(l1 - 86400000L);
-        Iterator localIterator = agug.a(this.this$0).a(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
+        Iterator localIterator = agyv.a(this.this$0).a(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
         while (localIterator.hasNext())
         {
           StickerRecCacheEntity localStickerRecCacheEntity = (StickerRecCacheEntity)localIterator.next();
@@ -69,7 +69,7 @@ public class StickerRecManager$9
     }
     QLog.d("StickerRecManager", 2, "clearOverdueStickerCache error", localException);
     return;
-    agug.a(this.this$0).a(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
+    agyv.a(this.this$0).a(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
   }
 }
 

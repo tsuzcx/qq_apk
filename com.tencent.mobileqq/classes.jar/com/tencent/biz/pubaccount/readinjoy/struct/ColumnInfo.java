@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awbv;
+import awge;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -14,7 +14,7 @@ import tencent.kandian.ugc.topic_info.TopicInfo;
 import tencent.kandian.ugc.topic_info.TopicInfoExt;
 
 public class ColumnInfo
-  extends awbv
+  extends awge
   implements Parcelable
 {
   public static final Parcelable.Creator<ColumnInfo> CREATOR = new qkn();

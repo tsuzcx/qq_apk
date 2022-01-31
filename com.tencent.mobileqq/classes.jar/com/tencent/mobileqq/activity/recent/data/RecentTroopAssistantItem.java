@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abol;
+import abta;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import azmj;
-import bahs;
-import baig;
-import bckr;
-import bclo;
-import bclr;
-import bdbt;
-import bdnm;
+import azqs;
+import bamb;
+import bamp;
+import bcpa;
+import bcpx;
+import bcqa;
+import bdgc;
+import bdrv;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -78,11 +78,11 @@ public class RecentTroopAssistantItem
       localObject1 = paramQQAppInterface.a();
       if (localObject1 != null)
       {
-        this.mUnreadNum = ((abol)localObject1).a(localMessage.frienduin, localMessage.istroop);
-        if ((bckr.a(str)) || (bckr.c(str)))
+        this.mUnreadNum = ((abta)localObject1).a(localMessage.frienduin, localMessage.istroop);
+        if ((bcpa.a(str)) || (bcpa.c(str)))
         {
-          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131720820);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
+          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131720832);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
         }
         j = this.mMenuFlag;
         localObject1 = (TroopManager)paramQQAppInterface.getManager(52);
@@ -109,7 +109,7 @@ public class RecentTroopAssistantItem
         long l1;
         if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          this.mTitleName = bdbt.a(paramQQAppInterface, str, true);
+          this.mTitleName = bdgc.a(paramQQAppInterface, str, true);
           localMsgSummary = a();
           if ((localMessage != null) && (TextUtils.isEmpty(localMessage.nickName))) {
             localMessage.nickName = localMessage.senderuin;
@@ -131,15 +131,15 @@ public class RecentTroopAssistantItem
               }
             }
             if (!TextUtils.isEmpty(localMsgSummary.strPrefix)) {
-              localSpannableString = new bahs(localMsgSummary.strPrefix, 16).a();
+              localSpannableString = new bamb(localMsgSummary.strPrefix, 16).a();
             }
-            localObject3 = bdnm.a((String)localObject3, localMessage, 16, 3);
+            localObject3 = bdrv.a((String)localObject3, localMessage, 16, 3);
             localObject4 = new SpannableStringBuilder();
             if (localSpannableString != null) {
               ((SpannableStringBuilder)localObject4).append(localSpannableString).append(": ");
             }
             ((SpannableStringBuilder)localObject4).append((CharSequence)localObject3);
-            localMsgSummary.strContent = new baig((CharSequence)localObject4, 3, 16);
+            localMsgSummary.strContent = new bamp((CharSequence)localObject4, 3, 16);
           }
           if ((TextUtils.isEmpty(localMsgSummary.strContent)) && (TextUtils.isEmpty(localMsgSummary.suffix)))
           {
@@ -169,23 +169,23 @@ public class RecentTroopAssistantItem
         this.mIsGroupVideoNotify = paramQQAppInterface.a().b(l1);
         if (this.mIsGroupVideoNotify)
         {
-          localObject1 = (bclr)paramQQAppInterface.getManager(164);
-          if ((localObject1 != null) && (((bclr)localObject1).a(a()) == 2)) {
+          localObject1 = (bcqa)paramQQAppInterface.getManager(164);
+          if ((localObject1 != null) && (((bcqa)localObject1).a(a()) == 2)) {
             this.mIsGroupVideoNotify = false;
           }
         }
         if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
         {
-          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131698229);
-          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167006);
+          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131698231);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167008);
         }
         if ((this.mIsGroupVideoNotify) && (!bool))
         {
           localObject1 = String.valueOf(l1);
-          azmj.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + bclo.a(paramQQAppInterface, (String)localObject1), "", "");
+          azqs.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + bcpx.a(paramQQAppInterface, (String)localObject1), "", "");
         }
         if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (nav.a(localMessage))) {
-          this.mLastMsg = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131697670), -1);
+          this.mLastMsg = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131697672), -1);
         }
         if (localTroopInfo != null)
         {

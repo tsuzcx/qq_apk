@@ -1,27 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import java.util.Comparator;
 
 public class aspp
-  implements Animator.AnimatorListener
+  implements Comparator<MessageForGrayTips.HightlightItem>
 {
-  public aspp(HotPicMainPanel paramHotPicMainPanel) {}
+  public aspp(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    this.a.b.setVisibility(8);
+    return paramHightlightItem1.start - paramHightlightItem2.start;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

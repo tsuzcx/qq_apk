@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public abstract interface zcb
+class zcb
+  implements View.OnClickListener
 {
-  public abstract void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem);
+  zcb(zby paramzby) {}
+  
+  public void onClick(View paramView)
+  {
+    zby.b(this.a).setVisibility(8);
+  }
 }
 
 

@@ -1,19 +1,117 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 public class bcew
-  implements awni
 {
-  public bcew(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  private SparseArray<bceu> a;
   
-  public void a(String paramString)
+  @NonNull
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    QQAppInterface localQQAppInterface = this.a.a;
-    if (VisitorTroopCardFragment.a(this.a)) {}
-    for (String str = "1";; str = "2")
+    bceu localbceu = a(paramInt);
+    if (localbceu != null) {
+      return localbceu.a(paramViewGroup);
+    }
+    return null;
+  }
+  
+  public bceu a(int paramInt)
+  {
+    return (bceu)this.a.get(paramInt);
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.a.size())
     {
-      azmj.b(localQQAppInterface, "grp_info", "", "", "grp_data", "grp_info_copy", 0, 0, paramString, str, "", "");
-      return;
+      ((bceu)this.a.valueAt(i)).a();
+      i += 1;
+    }
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcex)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bceu localbceu = a(paramViewHolder.a.b());
+      if (localbceu != null) {
+        localbceu.a(paramViewHolder);
+      }
+    }
+  }
+  
+  public void a(@NonNull RecyclerView.ViewHolder paramViewHolder, bcdy parambcdy, int paramInt)
+  {
+    bceu localbceu = a(parambcdy.b());
+    if (localbceu != null)
+    {
+      ((bcex)paramViewHolder).a = parambcdy;
+      localbceu.a(paramViewHolder, parambcdy, paramInt);
+    }
+  }
+  
+  public void a(SparseArray<bceu> paramSparseArray)
+  {
+    this.a = paramSparseArray;
+  }
+  
+  public void a(bcdy parambcdy)
+  {
+    bceu localbceu = a(parambcdy.b());
+    if (localbceu != null) {
+      localbceu.b(parambcdy);
+    }
+  }
+  
+  public void a(bcei parambcei)
+  {
+    bceu localbceu = a(parambcei.b());
+    if ((localbceu != null) && ((localbceu instanceof bcfn))) {
+      ((bcfn)localbceu).a(parambcei);
+    }
+  }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcex)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bceu localbceu = a(paramViewHolder.a.b());
+      if (localbceu != null) {
+        localbceu.b(paramViewHolder);
+      }
+    }
+  }
+  
+  public void b(bcdy parambcdy)
+  {
+    bceu localbceu = a(parambcdy.b());
+    if (localbceu != null) {
+      localbceu.c(parambcdy);
+    }
+  }
+  
+  public void c(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcex)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bceu localbceu = a(paramViewHolder.a.b());
+      if (localbceu != null) {
+        localbceu.c(paramViewHolder);
+      }
+    }
+  }
+  
+  public void c(bcdy parambcdy)
+  {
+    bceu localbceu = a(parambcdy.b());
+    if (localbceu != null) {
+      localbceu.d(parambcdy);
     }
   }
 }

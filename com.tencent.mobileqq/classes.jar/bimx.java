@@ -1,15 +1,24 @@
-public abstract interface bimx
-  extends bine
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+public class bimx
+  implements bioh
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  private WeakReference<Handler> a;
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public bimx(Handler paramHandler)
+  {
+    this.a = new WeakReference(paramHandler);
+  }
   
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public void a(int paramInt, String paramString)
+  {
+    Handler localHandler = (Handler)this.a.get();
+    if (localHandler != null) {
+      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
+    }
+  }
 }
 
 

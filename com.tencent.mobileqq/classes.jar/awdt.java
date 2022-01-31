@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
 
 class awdt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  awdt(awdr paramawdr) {}
+  awdt(awdp paramawdp, AutoReplyText paramAutoReplyText) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    if ((awdp.a(this.jdField_a_of_type_Awdp) != null) && (paramView != null))
     {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+      awdp.a(this.jdField_a_of_type_Awdp, (View)paramView.getParent(), i);
     }
   }
 }

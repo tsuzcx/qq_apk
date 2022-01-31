@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import alzf;
-import amme;
+import amdu;
+import amqt;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
@@ -58,7 +58,7 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
         QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask uins = " + Arrays.toString(((ArrayList)localObject).toArray()));
       }
       if ((((ArrayList)localObject).size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((alzf)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
+        ((amdu)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);

@@ -31,7 +31,7 @@ class pjd
         localJSONException.printStackTrace();
         continue;
       }
-      nrt.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
+      nrt.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
       if (pja.a(this.a) != null) {
         pja.a(this.a).c();
       }

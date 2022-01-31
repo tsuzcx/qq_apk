@@ -243,7 +243,7 @@ public class ocp
             paramString3.t = paramString2.optString("nick");
             paramString3.ck = paramString2.optString("role_id");
             if ((!TextUtils.isEmpty(paramString3.ck)) && (TextUtils.isEmpty(paramString3.t))) {
-              paramString3.t = alpo.a(2131705651);
+              paramString3.t = alud.a(2131705663);
             }
             localArrayList.add(paramString3);
             i += 1;

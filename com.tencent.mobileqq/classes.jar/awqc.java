@@ -1,42 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.upload.uinterface.IUploadService;
-import com.tencent.upload.uinterface.UploadServiceBuilder;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
+import mqq.app.QQPermissionCallback;
 
 public class awqc
-  implements Manager
+  implements QQPermissionCallback
 {
-  public awqc(QQAppInterface paramQQAppInterface) {}
+  public awqc(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
   
-  private void b(QQAppInterface paramQQAppInterface, awpy paramawpy)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bjcv localbjcv = new bjcv();
-    if (paramawpy != null)
-    {
-      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramawpy, null, null, localbjcv, localbjcv);
-      return;
-    }
-    paramawpy = new awqd(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramawpy, null, null, localbjcv, localbjcv);
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, awpy paramawpy)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramawpy);
-    }
+    PersonalityLabelShareActivity.a(this.a);
   }
-  
-  public void a(QQAppInterface paramQQAppInterface, awpz paramawpz, awpy paramawpy)
-  {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramawpy);
-    }
-    paramawpz.a();
-  }
-  
-  public void onDestroy() {}
 }
 
 

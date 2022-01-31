@@ -2,28 +2,28 @@ package com.tencent.biz.qqcircle.comment;
 
 import android.widget.TextView;
 import tra;
-import tuk;
+import tuz;
 
 public class QCircleCommentPanelView$5
   implements Runnable
 {
-  public QCircleCommentPanelView$5(tuk paramtuk, int paramInt) {}
+  public QCircleCommentPanelView$5(tuz paramtuz, int paramInt) {}
   
   public void run()
   {
-    if (tuk.a(this.this$0) != null)
+    if (tuz.a(this.this$0) != null)
     {
       if (this.a > 0)
       {
-        tuk.a(this.this$0).setText(tra.b(this.a));
-        tuk.a(this.this$0).setVisibility(0);
+        tuz.a(this.this$0).setText(tra.b(this.a));
+        tuz.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    tuk.a(this.this$0).setText("");
-    tuk.a(this.this$0).setVisibility(8);
+    tuz.a(this.this$0).setText("");
+    tuz.a(this.this$0).setVisibility(8);
   }
 }
 

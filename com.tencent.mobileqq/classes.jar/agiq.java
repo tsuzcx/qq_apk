@@ -1,30 +1,66 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.image.NativeVideoImage;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class agiq
-  extends agij
+class agiq
+  extends MqqHandler
 {
-  public Bitmap a;
-  public String b;
+  agiq(aghx paramaghx) {}
   
-  public agiq(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    switch (paramMessage.what)
     {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(aghx.e(this.a), 2131720109, 0).a();
+          return;
+          aghx.f(this.a).getString(2131720110);
+          paramMessage = (String)paramMessage.obj;
+          bdhj.a(aghx.g(this.a), paramMessage);
+          QQToast.a(aghx.h(this.a), 2, alud.a(2131700436), 0).a();
+          return;
+        } while (paramMessage.obj == null);
+        paramMessage = new File((String)paramMessage.obj);
+      } while (!paramMessage.exists());
+      paramMessage = bdgm.a(aghx.i(this.a), 232, aghx.j(this.a).getResources().getString(2131720142), aghx.k(this.a).getResources().getString(2131720141), 2131720124, 2131719209, new agir(this, paramMessage), new agis(this));
+      try
+      {
+        paramMessage.show();
+        return;
+      }
+      catch (Throwable paramMessage)
+      {
+        return;
+      }
+    case 10001: 
+      this.a.B();
+      QQToast.a(aghx.l(this.a), 1, alud.a(2131700454), 0).a();
+      NativeVideoImage.resumeAll();
+      aghx.a(this.a);
+      return;
+    case 10000: 
+      this.a.n = true;
+      this.a.d(100);
+      sendEmptyMessageDelayed(10003, 200L);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+    this.a.B();
+    QQToast.a(aghx.m(this.a), 2, alud.a(2131700443), 0).a();
+    NativeVideoImage.resumeAll();
+    aghx.a(this.a);
   }
 }
 

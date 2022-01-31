@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import java.util.Comparator;
 
-public abstract interface alzv
+class alzv
+  implements Comparator<QIMNotifyAddFriend>
 {
-  public abstract void a(TroopMemberInfo paramTroopMemberInfo);
+  alzv(alzu paramalzu) {}
+  
+  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
+  {
+    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
+  }
 }
 
 

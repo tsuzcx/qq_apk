@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import asci;
+import asgr;
 
 public class NowLiveFragment$3$3
   implements Runnable
 {
-  public NowLiveFragment$3$3(asci paramasci) {}
+  public NowLiveFragment$3$3(asgr paramasgr) {}
   
   public void run()
   {

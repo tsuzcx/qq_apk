@@ -1,49 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-
 public class wdk
-  extends uhw<StoryAtVideoFragment, wkw>
 {
-  public wdk(StoryAtVideoFragment paramStoryAtVideoFragment)
+  public static void a(String paramString1, String paramString2)
   {
-    super(paramStoryAtVideoFragment);
+    wxe.b(paramString1, paramString2);
   }
   
-  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wkw paramwkw)
+  public static void a(String paramString1, String paramString2, Object paramObject)
   {
-    if ((paramwkw.jdField_a_of_type_Int == 2) || (!paramwkw.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramStoryAtVideoFragment.jdField_a_of_type_Weh == null))
-    {
-      wsv.b(this.TAG, "ignore this video cookie change event. %s.", paramwkw.toString());
-      return;
-    }
-    if (!paramStoryAtVideoFragment.jdField_a_of_type_Weh.c())
-    {
-      wsv.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramwkw.toString() });
-      return;
-    }
-    paramwkw = paramStoryAtVideoFragment.jdField_a_of_type_Wkv.a(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, paramStoryAtVideoFragment.jdField_a_of_type_Weh.a().mVideoPullType);
-    if (paramwkw == null)
-    {
-      wsv.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, Integer.valueOf(paramStoryAtVideoFragment.jdField_a_of_type_Weh.a().mVideoPullType) });
-      return;
-    }
-    wsv.a(this.TAG, "receive video cookie change event. %s.", paramwkw.toString());
-    paramStoryAtVideoFragment.jdField_a_of_type_Weh.a().updateVideoInfo(paramwkw);
-    paramStoryAtVideoFragment.jdField_a_of_type_Weh.a(paramwkw.mVideoItemList, true);
-    if (paramStoryAtVideoFragment.jdField_a_of_type_Wes != null) {
-      paramStoryAtVideoFragment.jdField_a_of_type_Wes.a(paramwkw.mVideoPullType, paramwkw.mVideoNextCookie, paramwkw.mVideoSeq);
-    }
-    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Weh);
+    wxe.a(paramString1, paramString2, paramObject);
   }
   
-  public Class acceptEventClass()
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
   {
-    return wkw.class;
+    wxe.d(paramString1, paramString2);
   }
   
-  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wkw paramwkw) {}
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    wxe.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    wxe.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
 }
 
 

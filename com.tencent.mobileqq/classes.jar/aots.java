@@ -1,46 +1,89 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
+@Deprecated
 public class aots
-  extends aofy<aoto>
+  extends aokh<aotr>
 {
-  public static aoto a()
-  {
-    return (aoto)aogj.a().a(525);
-  }
-  
   public int a()
   {
-    return 525;
+    return 533;
   }
   
   @NonNull
-  public aoto a(int paramInt)
+  public aotr a(int paramInt)
   {
-    return new aoto();
+    return new aotr();
   }
   
   @Nullable
-  public aoto a(aogf[] paramArrayOfaogf)
+  public aotr a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aoto.a(paramArrayOfaogf);
+    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaoko != null) {
+      try
+      {
+        if (paramArrayOfaoko.length > 0)
+        {
+          paramArrayOfaoko = (aotr)aolc.a(paramArrayOfaoko[0].a, aotr.class);
+          return paramArrayOfaoko;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfaoko)
+      {
+        QLog.e("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaoko.getMessage());
+      }
     }
     return null;
   }
   
-  public Class<aoto> a()
+  public Class<aotr> a()
   {
-    return aoto.class;
+    return aotr.class;
   }
   
   public void a(int paramInt)
   {
-    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
   }
   
-  public void a(aoto paramaoto) {}
+  public void a(aotr paramaotr)
+  {
+    if (paramaotr != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramaotr.a)) {
+          paramaotr.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_exciting_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_file_exciting", paramaotr.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "save download config [" + paramaotr.a + "]");
+        localObject = (aqud)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aqud)localObject).a(paramaotr);
+        }
+      }
+      return;
+    }
+  }
   
   public int b()
   {

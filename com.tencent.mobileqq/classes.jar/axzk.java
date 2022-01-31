@@ -1,10 +1,6 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-public class axzk
+class axzk
 {
-  public ProgressBar a;
-  public TextView a;
+  private static final axzi a = new axzi(null);
 }
 
 

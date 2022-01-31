@@ -1,30 +1,25 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
 public class wnd
 {
-  public static ThreadLocal<StringBuilder> a = new wne();
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
   
-  public static String a(Object... paramVarArgs)
+  public wnd(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
-        }
-        i += 1;
-      }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof wnd)) {
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((wnd)paramObject).jdField_a_of_type_JavaLangString);
     }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
+    return false;
   }
 }
 

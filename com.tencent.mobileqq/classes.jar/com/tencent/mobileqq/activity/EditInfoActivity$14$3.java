@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acrb;
+import acvq;
 import android.widget.EditText;
 
 public class EditInfoActivity$14$3
   implements Runnable
 {
-  public EditInfoActivity$14$3(acrb paramacrb) {}
+  public EditInfoActivity$14$3(acvq paramacvq) {}
   
   public void run()
   {

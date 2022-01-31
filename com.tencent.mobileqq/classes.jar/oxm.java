@@ -15,7 +15,7 @@ public class oxm
   public oxm(oxn paramoxn)
   {
     this.jdField_a_of_type_Oxn = paramoxn;
-    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
   }
   
   public void a(Bundle paramBundle)

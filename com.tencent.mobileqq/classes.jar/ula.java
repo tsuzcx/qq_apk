@@ -1,32 +1,22 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
+
 public class ula
+  extends SimpleJob<Void>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  ula(ukt paramukt) {}
   
-  public ula(int paramInt, String paramString)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramJobContext = (uio)uwa.a(30);
+    paramVarArgs = paramJobContext.b();
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
+    return null;
   }
 }
 

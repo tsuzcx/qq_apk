@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.runtime.task;
 
-import bhec;
-import bhed;
+import bhij;
+import bhik;
 
 public class ServiceCreateTask$1$1
   implements Runnable
 {
-  public ServiceCreateTask$1$1(bhed parambhed) {}
+  public ServiceCreateTask$1$1(bhik parambhik) {}
   
   public void run()
   {
-    bhec.a(this.a.a);
+    bhij.a(this.a.a);
   }
 }
 

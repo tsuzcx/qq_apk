@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bmxy;
-import bmyb;
+import bnck;
+import bncn;
 
 public class SendPanelPart$2
   implements Runnable
 {
-  public SendPanelPart$2(bmyb parambmyb, int paramInt, bmxy parambmxy) {}
+  public SendPanelPart$2(bncn parambncn, int paramInt, bnck parambnck) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmxy);
+    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bnck);
   }
 }
 

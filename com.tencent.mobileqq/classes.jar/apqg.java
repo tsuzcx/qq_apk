@@ -1,25 +1,29 @@
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-class apqg
-  implements View.OnClickListener
+public class apqg
+  extends altm
 {
-  apqg(apqf paramapqf) {}
+  public apqg(MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    long l = System.currentTimeMillis();
-    if (l - apqf.a(this.a) > 1000L)
+    if (this.a.b != null)
     {
-      apqf.a(this.a, l);
-      paramView = new Bundle();
-      paramView.putInt("AECAMERA_MODE", 202);
-      paramView.putInt("VIDEO_STORY_FROM_TYPE", bkwm.i.a());
-      bkwq.a((BaseActivity)this.a.a.a, 120, paramView);
-      azmj.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
+      }
+    }
+    label81:
+    for (int i = 0;; i = 101)
+    {
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
+      return;
     }
   }
 }

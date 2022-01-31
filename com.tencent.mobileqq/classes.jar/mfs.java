@@ -19,7 +19,7 @@ public class mfs
   {
     long l = AudioHelper.b();
     int k = paramView.getId();
-    paramView = paramView.getTag(2131377361);
+    paramView = paramView.getTag(2131377415);
     if ((paramView != null) && ((paramView instanceof Boolean))) {}
     for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
     {

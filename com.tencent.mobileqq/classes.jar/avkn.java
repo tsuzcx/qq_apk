@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avkn
-  implements DialogInterface.OnClickListener
+public class avkn
+  implements View.OnClickListener
 {
-  avkn(avkm paramavkm, bdfq parambdfq) {}
+  public avkn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdfq.dismiss();
-    this.jdField_a_of_type_Avkm.a.e();
-    paramDialogInterface = new Intent("tribe_profile_edit_finish");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    this.a.c();
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

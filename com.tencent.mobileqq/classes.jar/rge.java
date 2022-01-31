@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class rge
-  extends alox
+  extends altm
 {
   private rge(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
@@ -25,7 +25,7 @@ public class rge
       {
         Object localObject1 = VideoFeedsRecommendFragment.a(this.a);
         if (localObject1 != null) {}
-        for (localObject1 = bdbt.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
+        for (localObject1 = bdgc.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
         {
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break label227;

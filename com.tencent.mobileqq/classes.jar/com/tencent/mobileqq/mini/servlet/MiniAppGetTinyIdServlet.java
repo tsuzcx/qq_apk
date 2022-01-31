@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StTinyidOpenidPair;
 import NS_MINI_INTERFACE.INTERFACE.StTrans4TinyidRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdku;
+import bdpd;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -55,7 +55,7 @@ public class MiniAppGetTinyIdServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.Trans4Tinyid");
-    paramPacket.putSendData(bdku.a((byte[])localObject));
+    paramPacket.putSendData(bdpd.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

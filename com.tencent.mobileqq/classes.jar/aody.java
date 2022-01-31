@@ -1,34 +1,50 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.AdapterView;
+import android.graphics.drawable.Drawable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aody
-  implements bhqr
 {
-  public aody(IphonePickerView paramIphonePickerView) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static Drawable a(String paramString)
   {
-    IphonePickerView.a(this.a, paramView, 1);
-    IphonePickerView.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
+    String[] arrayOfString1 = paramString.split("&");
+    paramString = "";
+    int m = arrayOfString1.length;
+    int i = 0;
+    int j = 1;
+    if (i < m)
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
+      String[] arrayOfString2 = arrayOfString1[i].split("=");
+      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
+      for (;;)
       {
-        if (i != paramInt)
+        try
         {
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+          k = Integer.parseInt(arrayOfString2[1]);
+          i += 1;
+          j = k;
         }
-        paramInt += 1;
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
+          k = j;
+          continue;
+        }
+        int k = j;
+        if (localNumberFormatException[0].equals("uin"))
+        {
+          paramString = localNumberFormatException[1];
+          k = j;
+        }
       }
     }
+    return a(paramString, j);
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public static Drawable a(String paramString, int paramInt)
+  {
+    return bdbk.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
+  }
 }
 
 

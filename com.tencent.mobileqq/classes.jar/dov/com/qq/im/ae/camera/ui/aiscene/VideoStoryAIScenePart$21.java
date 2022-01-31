@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bkqa;
+import bkuh;
 
 public class VideoStoryAIScenePart$21
   implements Runnable
 {
-  public VideoStoryAIScenePart$21(bkqa parambkqa) {}
+  public VideoStoryAIScenePart$21(bkuh parambkuh) {}
   
   public void run()
   {
-    bkqa.b(this.this$0);
+    bkuh.b(this.this$0);
   }
 }
 

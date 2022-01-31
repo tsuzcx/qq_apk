@@ -1,31 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import mqq.app.AppActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
-public final class azjk
-  implements DialogInterface.OnClickListener
+public class azjk
+  implements afkw
 {
-  public azjk(AppActivity paramAppActivity, azjq paramazjq) {}
+  azjk(azjh paramazjh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
+    if (azjh.a(this.a) == null) {
+      azjh.a(this.a, new Handler());
     }
-    while (this.jdField_a_of_type_Azjq == null) {
-      return;
-    }
-    this.jdField_a_of_type_Azjq.b();
+    azjh.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azjk
  * JD-Core Version:    0.7.0.1
  */

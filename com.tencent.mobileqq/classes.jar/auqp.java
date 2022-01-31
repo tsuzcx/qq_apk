@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-
-class auqp
-  implements View.OnClickListener
+public class auqp
 {
-  auqp(auqn paramauqn) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public auqp(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    auqr localauqr = (auqr)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localauqr.a, localauqr.a);
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

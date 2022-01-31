@@ -1,34 +1,42 @@
-import Wallet.GetBroadCastHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
 import java.util.ArrayList;
+import java.util.List;
+import mqq.observer.AccountObserver;
 
 class aipz
-  implements ajba
+  extends AccountObserver
 {
-  aipz(aipw paramaipw, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
+  aipz(aipw paramaipw) {}
   
-  public void a(String paramString)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    int i = 1;
-    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
-    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
-    localGetBroadCastHbIdiomReq.sKey = paramString;
-    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
-    for (;;)
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null)
     {
-      localGetBroadCastHbIdiomReq.fromType = i;
-      localGetBroadCastHbIdiomReq.platform = 0;
-      localGetBroadCastHbIdiomReq.qqVersion = "8.3.3";
-      aiqs.a(localGetBroadCastHbIdiomReq, new aiqa(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
-        i = 2;
-      } else {
-        i = 0;
+      for (;;)
+      {
+        int j = i - 1;
+        if (i <= 0) {
+          break;
+        }
+        paramString1 = aipw.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
+        if (paramString1 == null)
+        {
+          i = j;
+        }
+        else
+        {
+          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
+          this.a.b(paramString1);
+          i = j;
+        }
       }
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
+    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
 }
 

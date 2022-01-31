@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class aigd
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public aigd(AvatarPendantActivity paramAvatarPendantActivity) {}
+  protected aigd(aigc paramaigc) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2"))) {
-      if (paramInt1 == 0) {
-        this.a.e();
+    if (paramInt == 3)
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.a();
       }
+      return true;
     }
-    while ((paramLong != 23L) || (!paramString1.equals("avatarInPendant_json")) || (paramInt1 != 0)) {
-      return;
-    }
-    this.a.f();
+    return false;
   }
 }
 

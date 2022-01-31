@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import com.tencent.qphone.base.util.QLog;
 
 public class rtt
-  extends alox
+  extends altm
 {
   public rtt(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   

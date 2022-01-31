@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.Bundle;
 
-public class abyf
-  implements View.OnClickListener
+class abyf
+  extends abxb
 {
-  public abyf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abyf(abye paramabye, abwu paramabwu) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramView.getId())
+    if (paramBundle != null)
     {
-    default: 
+      acab.a(this.jdField_a_of_type_Abwu, abww.a(paramBundle));
       return;
     }
-    AddFriendVerifyActivity.c(this.a);
+    acab.a(this.jdField_a_of_type_Abwu, 1, "get user info error, try again");
   }
 }
 

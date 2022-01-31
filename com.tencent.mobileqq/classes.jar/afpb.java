@@ -1,17 +1,35 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 
 class afpb
-  extends afpq
+  extends ClickableSpan
 {
-  afpb(aflj paramaflj)
+  afpb(afnq paramafnq, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramaflj, null);
+    if ((this.jdField_a_of_type_Afnq.a instanceof Activity))
+    {
+      paramView = bhuf.a(this.jdField_a_of_type_Afnq.a);
+      paramView.b(2131692001);
+      paramView.c(2131690648);
+      paramView.a(new afpc(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Afnq.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof agpi)) {
+        ((agpi)localBaseChatPie).a = paramView;
+      }
+    }
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new afdq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramTextPaint.setColor(-12541697);
   }
 }
 

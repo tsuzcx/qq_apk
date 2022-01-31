@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awdc;
+import awhl;
 
 public class MessageForLocationShare
   extends ChatMessage
 {
   private static final String TAG = "MessageForLocationShare";
-  @awdc(a=1)
+  @awhl(a=1)
   public boolean isSharingLocation = true;
   
   public MessageForLocationShare()

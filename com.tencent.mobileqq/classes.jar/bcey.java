@@ -1,35 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class bcey
-  implements Animation.AnimationListener
+  extends bceu<bcez, bceb>
 {
-  public bcey(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bcey(XMediaEditor paramXMediaEditor, Context paramContext)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
-    }
-    if (paramAnimation == this.a.b) {
-      VisitorTroopCardFragment.a(this.a, false);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+    super(paramXMediaEditor);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public bcez a(ViewGroup paramViewGroup)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
-      VisitorTroopCardFragment.a(this.a, true);
-    }
+    return new bcez(this.jdField_a_of_type_AndroidViewView);
   }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(View paramView, bcez parambcez) {}
+  
+  public void a(bcez parambcez, bceb parambceb, int paramInt) {}
 }
 
 

@@ -1,15 +1,22 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class bbgb
-  implements bbfu
+  implements Animation.AnimationListener
 {
-  public bbgb(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public bbgb(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void a(Uri paramUri)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a = paramUri;
+    this.a.b = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

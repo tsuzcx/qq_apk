@@ -57,10 +57,10 @@ public class pkz
     String str;
     if (localNativeText != null)
     {
-      str = alpo.a(2131701472);
-      if (bdvr.a() == 1)
+      str = alud.a(2131701484);
+      if (beaa.a() == 1)
       {
-        localObject = alpo.a(2131701473);
+        localObject = alud.a(2131701485);
         label181:
         localNativeText.setText((CharSequence)localObject);
       }
@@ -84,7 +84,7 @@ public class pkz
       if (parampgd.a().mXGFileSize <= 0L) {
         break label181;
       }
-      localObject = rdm.b(parampgd.a().mXGFileSize) + alpo.a(2131701471);
+      localObject = rdm.b(parampgd.a().mXGFileSize) + alud.a(2131701483);
       break label181;
     }
   }

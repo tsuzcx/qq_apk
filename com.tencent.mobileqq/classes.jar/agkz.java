@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class agkz
-  extends asld
+public class agkz
+  implements DialogInterface.OnClickListener
 {
-  agkz(agkt paramagkt) {}
+  public agkz(PhotoListPanel paramPhotoListPanel) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      agkt.a(this.a).a(this.a.jdField_a_of_type_Agvb, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Agvb.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (agkt.b(this.a).a() == 14)) {
-      agkt.c(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
   }
 }

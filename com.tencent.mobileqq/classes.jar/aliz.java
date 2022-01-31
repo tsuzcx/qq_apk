@@ -1,14 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class aliz
+class aliz
+  implements Comparator<ApolloActionData>
 {
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  aliz(aliw paramaliw) {}
   
-  public aliz(aliy paramaliy) {}
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

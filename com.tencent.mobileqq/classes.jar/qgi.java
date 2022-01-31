@@ -12,7 +12,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 public class qgi
   extends qgf
 {
-  public qgi(ViewGroup paramViewGroup, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, @Nullable ymk paramymk)
+  public qgi(ViewGroup paramViewGroup, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, @Nullable yqz paramyqz)
   {
     super(paramViewGroup);
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
@@ -21,8 +21,8 @@ public class qgi
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     localObject = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20200313/4892c273234b4f39833f389671c1b1fa.png", (URLDrawable.URLDrawableOptions)localObject);
     this.a.setImageDrawable((Drawable)localObject);
-    localObject = (TextView)a(2131380065);
-    ((TextView)localObject).setOnClickListener(new qgj(this, paramBoolean, paramymk, paramString, paramInt1, paramInt2, paramViewGroup));
+    localObject = (TextView)a(2131380123);
+    ((TextView)localObject).setOnClickListener(new qgj(this, paramBoolean, paramyqz, paramString, paramInt1, paramInt2, paramViewGroup));
     paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
     paramString = new ColorDrawable(0);
     paramViewGroup.mFailedDrawable = paramString;
@@ -32,7 +32,7 @@ public class qgi
   
   View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562502, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562520, paramViewGroup, false);
   }
 }
 

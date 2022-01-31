@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.extendfriend;
 
-import apwx;
-import aqbo;
+import aqbg;
+import aqfx;
 
 public class ExtendFriendManager$4
   implements Runnable
 {
-  public ExtendFriendManager$4(apwx paramapwx, boolean paramBoolean) {}
+  public ExtendFriendManager$4(aqbg paramaqbg, boolean paramBoolean) {}
   
   public void run()
   {
-    apwx.b(this.this$0);
-    apwx.c(this.this$0);
+    aqbg.b(this.this$0);
+    aqbg.c(this.this$0);
     if (this.a) {
-      aqbo.a();
+      aqfx.a();
     }
   }
 }

@@ -1,51 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
 
-public class bbgj
-  implements View.OnClickListener
+public final class bbgj
+  implements Parcelable.Creator<MediaPreviewInfo>
 {
-  int jdField_a_of_type_Int = 0;
-  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
-  String jdField_a_of_type_JavaLangString;
-  
-  public bbgj(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
+  public MediaPreviewInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
+    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMediaPreviewInfo.b = paramParcel.readString();
+    localMediaPreviewInfo.c = paramParcel.readString();
+    return localMediaPreviewInfo;
   }
   
-  public void onClick(View paramView)
+  public MediaPreviewInfo[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
-        continue;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
-        if (paramView != null) {
-          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-        }
-      }
-    }
+    return new MediaPreviewInfo[paramInt];
   }
 }
 

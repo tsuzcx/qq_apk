@@ -1,12 +1,7 @@
-import java.util.List;
-
-public abstract interface aklp
-{
-  public abstract void a(boolean paramBoolean, String paramString1, List<aklm> paramList, String paramString2);
-}
+public abstract interface aklp {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklp
  * JD-Core Version:    0.7.0.1
  */

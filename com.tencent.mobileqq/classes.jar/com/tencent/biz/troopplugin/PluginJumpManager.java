@@ -13,7 +13,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
@@ -32,10 +32,10 @@ import ndq;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ysd;
-import ysf;
-import ysg;
-import ysh;
+import yws;
+import ywu;
+import ywv;
+import yww;
 
 public class PluginJumpManager
 {
@@ -49,12 +49,12 @@ public class PluginJumpManager
   public static final String WEB_PLUGIN_CONFIG = "web_plugin_config";
   public static PluginJumpManager sInstance;
   public boolean isLoadedPlugin;
-  public HashMap<String, ysg> mBidInfos;
+  public HashMap<String, ywv> mBidInfos;
   public int mConfigVersion;
   public Context mContext;
   public PluginManagerClient mPluginManager;
   public SharedPreferences mPref;
-  public HashMap<String, ysh> mUrlmappingInfos;
+  public HashMap<String, yww> mUrlmappingInfos;
   
   public PluginJumpManager(Context paramContext)
   {
@@ -74,10 +74,10 @@ public class PluginJumpManager
   
   public static void report(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    azmj.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
+    azqs.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
   }
   
-  public boolean checkQVerAndModel(ysh paramysh)
+  public boolean checkQVerAndModel(yww paramyww)
   {
     boolean bool2 = true;
     int i;
@@ -86,28 +86,28 @@ public class PluginJumpManager
     try
     {
       i = this.mContext.getPackageManager().getPackageInfo(this.mContext.getPackageName(), 0).versionCode;
-      if (TextUtils.isEmpty(paramysh.e)) {
-        if (TextUtils.isEmpty(paramysh.d))
+      if (TextUtils.isEmpty(paramyww.e)) {
+        if (TextUtils.isEmpty(paramyww.d))
         {
           bool1 = bool2;
           bool2 = bool1;
-          if (!TextUtils.isEmpty(paramysh.f))
+          if (!TextUtils.isEmpty(paramyww.f))
           {
             Object localObject = Build.BRAND;
             String str2 = Build.MODEL;
             String str1 = Build.VERSION.RELEASE;
-            paramysh = paramysh.f.split(",");
+            paramyww = paramyww.f.split(",");
             localObject = new StringBuffer((String)localObject);
             ((StringBuffer)localObject).append(" ").append(str2);
             str2 = ((StringBuffer)localObject).toString().toLowerCase();
             str1 = (" " + str1).toLowerCase();
-            j = paramysh.length;
+            j = paramyww.length;
             i = 0;
             label147:
             bool2 = bool1;
             if (i < j)
             {
-              localObject = paramysh[i].toLowerCase();
+              localObject = paramyww[i].toLowerCase();
               if ((!((String)localObject).contains(str2)) || (!str1.startsWith((String)localObject))) {
                 break label281;
               }
@@ -130,7 +130,7 @@ public class PluginJumpManager
     {
       try
       {
-        j = Integer.valueOf(paramysh.d).intValue();
+        j = Integer.valueOf(paramyww.d).intValue();
         if (i < j) {
           break label294;
         }
@@ -141,7 +141,7 @@ public class PluginJumpManager
         bool1 = false;
         continue;
       }
-      String[] arrayOfString = paramysh.e.split(",");
+      String[] arrayOfString = paramyww.e.split(",");
       int k = arrayOfString.length;
       j = 0;
       for (;;)
@@ -201,12 +201,12 @@ public class PluginJumpManager
           Object localObject3;
           while (i < k)
           {
-            localObject3 = new ysg(this);
+            localObject3 = new ywv(this);
             JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            ((ysg)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
-            ((ysg)localObject3).b = localJSONObject.optString("pluginid");
-            ((ysg)localObject3).c = localJSONObject.optString("pluginname");
-            this.mBidInfos.put(((ysg)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+            ((ywv)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
+            ((ywv)localObject3).b = localJSONObject.optString("pluginid");
+            ((ywv)localObject3).c = localJSONObject.optString("pluginname");
+            this.mBidInfos.put(((ywv)localObject3).jdField_a_of_type_JavaLangString, localObject3);
             i += 1;
           }
           localObject1 = new JSONArray((String)localObject1);
@@ -214,17 +214,17 @@ public class PluginJumpManager
           i = j;
           while (i < k)
           {
-            localObject2 = new ysh(this);
+            localObject2 = new yww(this);
             localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-            ((ysh)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
-            ((ysh)localObject2).b = ((JSONObject)localObject3).optString("activity");
-            ((ysh)localObject2).c = ((JSONObject)localObject3).optString("bid");
-            ((ysh)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
-            ((ysh)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
-            ((ysh)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
-            ((ysh)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
-            ((ysh)localObject2).g = ((JSONObject)localObject3).optString("extra");
-            this.mUrlmappingInfos.put(((ysh)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+            ((yww)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
+            ((yww)localObject2).b = ((JSONObject)localObject3).optString("activity");
+            ((yww)localObject2).c = ((JSONObject)localObject3).optString("bid");
+            ((yww)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
+            ((yww)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
+            ((yww)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
+            ((yww)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
+            ((yww)localObject2).g = ((JSONObject)localObject3).optString("extra");
+            this.mUrlmappingInfos.put(((yww)localObject2).jdField_a_of_type_JavaLangString, localObject2);
             i += 1;
           }
           if (!QLog.isColorLevel()) {}
@@ -394,21 +394,21 @@ public class PluginJumpManager
     for (Object localObject1 = paramString1.substring(0, i); !this.mUrlmappingInfos.containsKey(localObject1); localObject1 = paramString1) {
       return false;
     }
-    localObject1 = (ysh)this.mUrlmappingInfos.get(localObject1);
-    Object localObject2 = ((ysh)localObject1).c;
+    localObject1 = (yww)this.mUrlmappingInfos.get(localObject1);
+    Object localObject2 = ((yww)localObject1).c;
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!this.mBidInfos.containsKey(localObject2))) {
       return false;
     }
-    if (!checkQVerAndModel((ysh)localObject1)) {
+    if (!checkQVerAndModel((yww)localObject1)) {
       return false;
     }
-    if (!TextUtils.isEmpty(((ysh)localObject1).g))
+    if (!TextUtils.isEmpty(((yww)localObject1).g))
     {
       String[] arrayOfString;
       int j;
-      if (((ysh)localObject1).g.contains(","))
+      if (((yww)localObject1).g.contains(","))
       {
-        arrayOfString = ((ysh)localObject1).g.split(",");
+        arrayOfString = ((yww)localObject1).g.split(",");
         int k = arrayOfString.length;
         j = 0;
         i = 0;
@@ -425,9 +425,9 @@ public class PluginJumpManager
       }
       else
       {
-        if (((ysh)localObject1).g.contains(";"))
+        if (((yww)localObject1).g.contains(";"))
         {
-          arrayOfString = ((ysh)localObject1).g.split(";");
+          arrayOfString = ((yww)localObject1).g.split(";");
           i = 0;
           j = arrayOfString.length;
           while (i < j)
@@ -438,13 +438,13 @@ public class PluginJumpManager
             i += 1;
           }
         }
-        if (!paramString1.contains(((ysh)localObject1).g)) {
+        if (!paramString1.contains(((yww)localObject1).g)) {
           return false;
         }
       }
     }
-    localObject2 = (ysg)this.mBidInfos.get(localObject2);
-    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new ysf(this, (ysg)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (ysh)localObject1, paramString2));
+    localObject2 = (ywv)this.mBidInfos.get(localObject2);
+    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new ywu(this, (ywv)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (yww)localObject1, paramString2));
     return true;
   }
   
@@ -458,7 +458,7 @@ public class PluginJumpManager
     for (boolean bool = true;; bool = false)
     {
       nbv.jdField_a_of_type_Boolean = bool;
-      nbv.b("1007", paramAppRuntime, true, new ysd(this));
+      nbv.b("1007", paramAppRuntime, true, new yws(this));
       return;
     }
   }

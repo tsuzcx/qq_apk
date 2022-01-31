@@ -1,44 +1,26 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
-public final class afdv
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class afdv
+  implements bhuk
 {
-  protected WeakReference<afdt> a;
+  afdv(afdq paramafdq, ChatMessage paramChatMessage, bhuf parambhuf) {}
   
-  public afdv(WeakReference<afdt> paramWeakReference)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramWeakReference;
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    paramObject = (afdt)this.a.get();
-    if (paramObject == null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
     }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
+    for (;;)
     {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        afdt.a(paramObject).view = str2;
-      }
-      afdt.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
+      afdq.a(this.jdField_a_of_type_Afdq, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      azqs.b(afdq.a(this.jdField_a_of_type_Afdq), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, afdq.a(this.jdField_a_of_type_Afdq).a, "", "", "");
+      continue;
+      azqs.b(afdq.a(this.jdField_a_of_type_Afdq), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, afdq.a(this.jdField_a_of_type_Afdq).a, "", "", "");
     }
   }
 }

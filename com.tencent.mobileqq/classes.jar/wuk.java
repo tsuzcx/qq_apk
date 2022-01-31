@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class wuk
-  implements Parcelable.Creator<EditTakePhotoSource>
+class wuk
+  extends SimpleJob<Object>
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
+  wuk(wub paramwub, String paramString1, String paramString2)
   {
-    return new EditTakePhotoSource(paramParcel);
+    super(paramString1);
   }
   
-  public EditTakePhotoSource[] a(int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return new EditTakePhotoSource[paramInt];
+    wub.a(this.jdField_a_of_type_Wub).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

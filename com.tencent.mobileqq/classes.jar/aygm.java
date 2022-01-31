@@ -1,27 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-
-public class aygm
-  implements ruy
+public abstract interface aygm
 {
-  public aygm(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
-        if (this.a.a != null) {
-          ayrd.a("sub_result", "clk_hot", new String[] { paramString, ayrd.a(this.a.a) });
-        }
-      }
-    }
-  }
+  public abstract boolean a(String paramString);
 }
 
 

@@ -1,14 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class anda
-  implements ValueAnimator.AnimatorUpdateListener
+public class anda
 {
-  anda(ancz paramancz) {}
+  public double a;
+  public int a;
+  public String a;
+  public andb[] a;
+  public int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String toString()
   {
-    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfAndb != null) && (this.jdField_a_of_type_ArrayOfAndb.length > 0)) {
+      i = 0;
+    }
+    while (i < this.jdField_a_of_type_ArrayOfAndb.length)
+    {
+      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAndb[i].toString()).append('\n');
+      i += 1;
+      continue;
+      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+    }
+    return localStringBuilder.toString();
   }
 }
 

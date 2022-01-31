@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adju
-  extends allb
+  implements DialogInterface.OnClickListener
 {
-  public adju(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public adju(NotificationActivity paramNotificationActivity) {}
   
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131720586);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131720584);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adju
  * JD-Core Version:    0.7.0.1
  */

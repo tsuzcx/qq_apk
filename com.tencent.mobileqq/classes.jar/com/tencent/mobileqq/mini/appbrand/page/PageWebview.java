@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
-import bdje;
-import bizf;
+import bdnn;
+import bjdm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo.PageHtmlContent;
@@ -116,7 +116,7 @@ public class PageWebview
   
   private void onWebViewReady(ApkgInfo paramApkgInfo)
   {
-    if (bdje.a(this.pageFrameHtmlJsStr))
+    if (bdnn.a(this.pageFrameHtmlJsStr))
     {
       String str = paramApkgInfo.getPageFrameJSStr(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -213,7 +213,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView end load wawebview ---   webviewid:" + this.pageWebviewId);
     }
-    if (bdje.a(this.mAppWxss)) {
+    if (bdnn.a(this.mAppWxss)) {
       this.mAppWxss = this.apkgInfo.getRootWxssJsContent();
     }
     if (!TextUtils.isEmpty(this.mAppWxss)) {
@@ -222,7 +222,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView begin load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
     }
-    if (!bdje.a(this.pageFrameHtmlJsStr)) {
+    if (!bdnn.a(this.pageFrameHtmlJsStr)) {
       evaluteJs(this.pageFrameHtmlJsStr);
     }
     for (;;)
@@ -233,7 +233,7 @@ public class PageWebview
       QLog.i("miniapp-start", 1, "---PageWebView end initApkgJs ---   webviewid:" + this.pageWebviewId);
       return;
       this.pageFrameHtmlJsStr = this.apkgInfo.getPageHtmlContent().jsStr;
-      if (!bdje.a(this.pageFrameHtmlJsStr))
+      if (!bdnn.a(this.pageFrameHtmlJsStr))
       {
         QLog.i("miniapp-start", 1, "--- PageWebView load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
         evaluteJs(this.pageFrameHtmlJsStr);
@@ -263,7 +263,7 @@ public class PageWebview
       if (this.mEnableNativeBuffer) {}
       for (localObject = "__qqConfig.nativeBufferEnabled = true;";; localObject = "")
       {
-        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bizf.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
+        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bjdm.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
         localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
         localObject = (String)localObject + "__qqConfig.XWebVideoMinVersion=045100;";
         QLog.d("miniapp-embedded", 1, "page enableEmbeddedVideo : " + this.enableEmbeddedVideo);
@@ -390,7 +390,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(ApkgInfo paramApkgInfo)
   {
-    if (bdje.a(this.mRouteUrl)) {}
+    if (bdnn.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }

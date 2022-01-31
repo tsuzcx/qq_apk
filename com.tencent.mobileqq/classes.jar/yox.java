@@ -1,74 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.network.DoLikeRequest;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class yox
-  extends ypp
+  implements View.OnClickListener
 {
-  public yox(MoveFileActivity paramMoveFileActivity, bbnr parambbnr) {}
+  public yox(RelativeFeedItemView paramRelativeFeedItemView, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-    localIntent.putExtra("folderId", this.jdField_a_of_type_Bbnr.b);
-    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131298914);
-    if (paramBoolean)
-    {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
-      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
-      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
-      {
-        paramString = "0";
-        azmj.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, alpo.a(2131707283), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
+    if ((!RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) || (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() == null) || (!ybu.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {
       return;
-      paramString = "1";
-      break;
-      switch (paramInt)
-      {
-      default: 
-        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131696553);
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -302: 
-      case -301: 
-      case -103: 
-        azmj.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, alpo.a(2131707276), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -136: 
-        azmj.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, alpo.a(2131707280), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -107: 
-      case -102: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, alpo.a(2131707279), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -406: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, alpo.a(2131707275), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -407: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, alpo.a(2131707277), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-      }
     }
+    if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), alud.a(2131713760), 0).a();
+      return;
+    }
+    RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
+    paramView = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    VSNetworkHelper.a().a(paramView, new yoy(this));
   }
 }
 

@@ -1,57 +1,23 @@
-import java.util.List;
-import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alsv
-  implements alkr
+  extends awen
 {
-  public void a(aqgk paramaqgk) {}
+  public alsv(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void a(aqgo paramaqgo) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<aqgk> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    do
-    {
-      do
-      {
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
-          return;
-        }
-        a(null, null);
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
-          return;
-        }
-        a(null);
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
-          return;
-        }
-        a(null, "");
-        return;
-      } while ((!paramBoolean) || (paramObject == null));
-      a((aqgk)((Object[])(Object[])paramObject)[0]);
-      return;
-    } while ((!paramBoolean) || (paramObject == null));
-    a((aqgo)((Object[])(Object[])paramObject)[0]);
+    FrameHelperActivity localFrameHelperActivity = this.a;
+    if (paramInt > 0) {
+      i = 1;
+    }
+    FrameHelperActivity.a(localFrameHelperActivity, i);
+    this.a.v();
   }
 }
 

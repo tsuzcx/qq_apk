@@ -1,8 +1,26 @@
-public abstract interface bcdb
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import java.util.Set;
+
+public class bcdb
+  implements bhuw
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public bcdb(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public abstract boolean a();
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bcdd.notifyDataSetChanged();
+      this.a.e();
+      return;
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    }
+  }
 }
 
 

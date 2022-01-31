@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aqkh
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  aqkh(aqkg paramaqkg) {}
+  aqkh(aqke paramaqke, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
+    this.jdField_a_of_type_Aqke.jdField_a_of_type_Float = this.jdField_a_of_type_Aqke.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aqke.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

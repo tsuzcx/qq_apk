@@ -1,21 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class axvz
-  implements DialogInterface.OnClickListener
 {
-  axvz(axvx paramaxvx) {}
+  axvi jdField_a_of_type_Axvi;
+  axvu jdField_a_of_type_Axvu;
+  axvv jdField_a_of_type_Axvv;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.mContext.setResult(8001);
-  }
+  private axvz(axvw paramaxvw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvz
  * JD-Core Version:    0.7.0.1
  */

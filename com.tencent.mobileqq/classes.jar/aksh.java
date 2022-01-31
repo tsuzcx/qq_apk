@@ -1,25 +1,77 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aksh
-  implements SoundPool.OnLoadCompleteListener
+public class aksh
+  extends MSFServlet
 {
-  aksh(aksf paramaksf, float paramFloat, int paramInt, String paramString, akni paramakni, long paramLong) {}
-  
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (-1.0F == this.jdField_a_of_type_Float) {}
-    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      paramInt1 = aksf.a(this.jdField_a_of_type_Aksf).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-      if (paramInt1 != 0) {
-        break;
-      }
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
-      return;
+      l = System.currentTimeMillis();
+      QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
     }
-    aksf.a(this.jdField_a_of_type_Aksf, this.jdField_a_of_type_Akni, paramInt1, this.jdField_a_of_type_Long);
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
+      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
+      localBundle.putString("key1", paramIntent.getStringExtra("key1"));
+      localBundle.putString("key2", paramIntent.getStringExtra("key2"));
+      localBundle.putString("key3", paramIntent.getStringExtra("key3"));
+      localBundle.putString("key4", paramIntent.getStringExtra("key4"));
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bdqa.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

@@ -10,7 +10,7 @@ public class ngk
   public void onClick(View paramView)
   {
     EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString.contains(alpo.a(2131704561))))
+    if ((this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString.contains(alud.a(2131704573))))
     {
       nrt.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
       return;

@@ -11,7 +11,7 @@ public class tfy
   
   private tfy(ViewGroup paramViewGroup, tby paramtby)
   {
-    super(paramViewGroup, paramtby, 2131560228);
+    super(paramViewGroup, paramtby, 2131560227);
   }
   
   public static tfy a(ViewGroup paramViewGroup, tby paramtby)
@@ -21,7 +21,7 @@ public class tfy
   
   protected void a()
   {
-    this.a = ((TextView)a(1).findViewById(2131379788));
+    this.a = ((TextView)a(1).findViewById(2131379846));
   }
   
   protected void a(int paramInt)

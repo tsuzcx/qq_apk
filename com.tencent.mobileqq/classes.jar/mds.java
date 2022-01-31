@@ -105,7 +105,7 @@ public class mds
     }
     for (;;)
     {
-      azmj.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
       if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
         break;
       }
@@ -130,7 +130,7 @@ public class mds
     if (paramBoolean)
     {
       if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.b(2131372877, true);
+        this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.b(2131372903, true);
       }
       if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
         this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
@@ -147,7 +147,7 @@ public class mds
   {
     mth.a("switch_camera", "onBeforeSwitchCamera", 3, new Object[0]);
     if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.b(2131372877, false);
+      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.b(2131372903, false);
     }
   }
   

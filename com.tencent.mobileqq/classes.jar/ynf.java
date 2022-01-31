@@ -1,16 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class ynf
-  implements beao
+public class ynf
+  implements View.OnClickListener
 {
-  ynf(ync paramync, int paramInt, String paramString) {}
+  public ynf(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ync.a.a(146, paramBundle);
+    VideoPlayerView.h(this.a);
+    this.a.f();
   }
 }
 

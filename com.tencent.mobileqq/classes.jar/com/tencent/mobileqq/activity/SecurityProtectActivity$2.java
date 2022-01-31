@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import armz;
+import arri;
 
 class SecurityProtectActivity$2
   implements Runnable
@@ -13,11 +13,11 @@ class SecurityProtectActivity$2
   public void run()
   {
     SecurityProtectActivity.a(this.this$0, false);
-    SecurityProtectActivity.a(this.this$0).setText(2131719642);
+    SecurityProtectActivity.a(this.this$0).setText(2131719654);
     SecurityProtectActivity.b(this.this$0).setVisibility(0);
     SecurityProtectActivity.a(this.this$0).setVisibility(0);
-    ((LinearLayout)this.this$0.findViewById(2131365450)).setVisibility(8);
-    armz.a(2131694829);
+    ((LinearLayout)this.this$0.findViewById(2131365452)).setVisibility(8);
+    arri.a(2131694831);
   }
 }
 

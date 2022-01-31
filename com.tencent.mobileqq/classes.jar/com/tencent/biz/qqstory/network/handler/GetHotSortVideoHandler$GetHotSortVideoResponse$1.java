@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.network.handler;
 
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import uht;
-import uqy;
-import urr;
-import uyh;
-import uyj;
-import uyk;
+import umc;
+import uvh;
+import uwa;
+import vcq;
+import vcs;
+import vct;
 
 public class GetHotSortVideoHandler$GetHotSortVideoResponse$1
   implements Runnable
 {
-  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(uyj paramuyj, ArrayList paramArrayList, uyk paramuyk) {}
+  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(vcs paramvcs, ArrayList paramArrayList, vct paramvct) {}
   
   public void run()
   {
-    ((uqy)urr.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, uyh.a(this.jdField_a_of_type_Uyj.a), true);
-    this.jdField_a_of_type_Uyk.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    uht.a().dispatch(this.jdField_a_of_type_Uyk);
+    ((uvh)uwa.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, vcq.a(this.jdField_a_of_type_Vcs.a), true);
+    this.jdField_a_of_type_Vct.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    umc.a().dispatch(this.jdField_a_of_type_Vct);
   }
 }
 

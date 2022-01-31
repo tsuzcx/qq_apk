@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.widget.QQToast;
-
-class ahjg
-  extends allb
+public abstract interface ahjg
 {
-  ahjg(ahjd paramahjd) {}
-  
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (paramBoolean)
-    {
-      QQToast.a(ahjd.a(this.a), 2131699558, 3000).a();
-      if (ahjd.a(this.a) != 23) {
-        this.a.a(true);
-      }
-      return;
-    }
-    QQToast.a(ahjd.a(this.a), 2131699557, 0).a();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

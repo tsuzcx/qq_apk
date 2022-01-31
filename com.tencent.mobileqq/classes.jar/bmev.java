@@ -1,18 +1,9 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import android.support.annotation.NonNull;
 
-public class bmev
-  extends bnkv
+public abstract interface bmev
 {
-  public bmev(EditPicActivity paramEditPicActivity) {}
-  
-  public void a()
-  {
-    wsv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    bmee localbmee = (bmee)this.a.a.a(bmee.class);
-    if (localbmee != null) {
-      localbmee.b();
-    }
-  }
+  @NonNull
+  public abstract <T extends bmes> T a(@NonNull Class<T> paramClass);
 }
 
 

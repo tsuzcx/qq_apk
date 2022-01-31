@@ -1,92 +1,100 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class uyj
-  extends upt
+  extends JobSegment<List<vlp>, List<vlp>>
 {
-  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
-  boolean jdField_a_of_type_Boolean = false;
+  uyg a;
   
-  public uyj(uyh paramuyh, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
+  public uyj(uyg paramuyg)
   {
-    super(paramRspGetGroupHotRankVideo.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramuyg;
   }
   
-  public uyj(uyh paramuyh, boolean paramBoolean)
+  protected void a(JobContext paramJobContext, List<vlp> paramList)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_Uyh;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
-    uyk localuyk;
-    for (boolean bool = true;; bool = false)
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    if (this.a.jdField_a_of_type_Int == 5)
     {
-      ((uyh)localObject).jdField_a_of_type_Boolean = bool;
-      uyh.a(this.jdField_a_of_type_Uyh, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
-      uyh.a(this.jdField_a_of_type_Uyh, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
-      localObject = new ArrayList();
-      localuyk = new uyk();
-      localuyk.jdField_a_of_type_Boolean = this.jdField_a_of_type_Uyh.jdField_a_of_type_Boolean;
-      localuyk.b = this.jdField_a_of_type_Boolean;
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
-        break label203;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.jobLocalVideo", 2, "self node, check local video");
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
+      paramJobContext = (uvx)uwa.a(5);
+      localObject1 = ((uyz)QQStoryContext.a().getManager(251)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+      if ((localObject1 == null) || (((uyg)localObject1).b == null) || (((uyg)localObject1).b.isEmpty())) {
+        break label410;
+      }
+      localObject1 = ((uyg)localObject1).b.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (vlp)((Iterator)localObject1).next();
+        localObject3 = paramJobContext.a(((vlp)localObject2).jdField_b_of_type_JavaLangString);
+        if (localObject3 != null)
+        {
+          ((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
+          paramList.add(localObject2);
+        }
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    label410:
+    for (int i = 1;; i = 0)
     {
-      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localuyk), 5, null, true);
+      localObject1 = paramJobContext.a(false);
+      int j = i;
+      if (localObject1 != null)
+      {
+        j = i;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
+            localObject3 = new vlp();
+            ((vlp)localObject3).jdField_a_of_type_Boolean = false;
+            ((vlp)localObject3).jdField_a_of_type_JavaLangString = ((StoryVideoItem)localObject2).mAttachedFeedId;
+            ((vlp)localObject3).jdField_b_of_type_JavaLangString = ((StoryVideoItem)localObject2).mVid;
+            ((vlp)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject2);
+            ((vlp)localObject3).jdField_b_of_type_Boolean = true;
+            paramList.add(localObject3);
+          }
+          j = 1;
+        }
+      }
+      if (j != 0)
+      {
+        localObject1 = paramList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (vlp)((Iterator)localObject1).next();
+          if (((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+            ((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramJobContext.a(((vlp)localObject2).jdField_b_of_type_JavaLangString);
+          }
+          if (((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+          {
+            notifyError(new ErrorMessage(940001, "should not be null"));
+            return;
+          }
+        }
+        Collections.sort(paramList, new uyk(this));
+      }
+      if (paramList.isEmpty())
+      {
+        notifyError(new ErrorMessage(103, "nodeInfo not valid"));
+        return;
+      }
+      notifyResult(paramList);
       return;
-      label203:
-      wsv.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
-    }
-    localuyk.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    uht.a().dispatch(localuyk);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    paramBundle = new uyk();
-    paramBundle.c = true;
-    uht.a().dispatch(paramBundle);
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131705642), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    uyk localuyk = new uyk();
-    localuyk.c = true;
-    uht.a().dispatch(localuyk);
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131705641), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.imcore.message;
 
-import abof;
-import bfvv;
+import absu;
+import bgac;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class C2CMessageProcessor$5
   implements Runnable
 {
-  public C2CMessageProcessor$5(abof paramabof, MessageRecord paramMessageRecord) {}
+  public C2CMessageProcessor$5(absu paramabsu, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    bfvv.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
+    bgac.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
   }
 }
 

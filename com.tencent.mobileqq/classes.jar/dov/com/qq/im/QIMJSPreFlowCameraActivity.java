@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import ajli;
+import ajpx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bkjr;
-import blmf;
-import blnl;
+import bkny;
+import blqr;
+import blrx;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class QIMJSPreFlowCameraActivity
@@ -31,18 +31,18 @@ public class QIMJSPreFlowCameraActivity
         paramBundle.printStackTrace();
         continue;
       }
-      ((blnl)blmf.a(5)).f();
+      ((blrx)blqr.a(5)).f();
       int i = localIntent.getIntExtra("firsttab", 0);
       int j = localIntent.getIntExtra("secondtab", 0);
       String str = localIntent.getStringExtra("itemid");
       int k = localIntent.getIntExtra("type", 0);
       int m = localIntent.getIntExtra("direction", 1);
-      int n = localIntent.getIntExtra("WebSceneType", ajli.d);
+      int n = localIntent.getIntExtra("WebSceneType", ajpx.d);
       paramBundle = str;
       if (str == null) {
         paramBundle = "";
       }
-      bkjr.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
+      bkny.a(this, 4, 10007, 7, -1, i, j, paramBundle, 0, true, k, m, n, localIntent.getExtras());
     }
   }
 }

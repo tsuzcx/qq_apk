@@ -1,35 +1,19 @@
-import android.graphics.PointF;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class bkxp
-  extends BaseFilter
+  implements Animator.AnimatorListener
 {
-  private Frame a = new Frame();
+  public bkxp(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public bkxp()
-  {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public Frame a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
-  {
-    float[] arrayOfFloat = new float[8];
-    bkkd.a(paramList, paramInt2, paramInt3, arrayOfFloat);
-    paramList = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-    paramList.apply();
-    paramList.setTexCords(arrayOfFloat);
-    paramList.setRotationAndFlip(0, 1, 1);
-    paramList.RenderProcess(paramInt1, paramInt2, paramInt3, 64, 64, -1, 0.0D, this.a);
-    return this.a;
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public void clearGLSLSelf()
-  {
-    super.clearGLSLSelf();
-    this.a.clear();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

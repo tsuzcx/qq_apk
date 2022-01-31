@@ -1,20 +1,9 @@
-import java.util.Comparator;
+import java.util.HashMap;
 
-class azpw
-  implements Comparator
+public class azpw
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (azps)paramObject1;
-    paramObject2 = (azps)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
 }
 
 

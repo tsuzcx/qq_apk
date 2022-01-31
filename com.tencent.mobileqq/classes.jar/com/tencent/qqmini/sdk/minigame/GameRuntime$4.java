@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import bgtj;
-import bgwp;
+import bgxq;
+import bhaw;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 
 public class GameRuntime$4
   implements Runnable
 {
-  public GameRuntime$4(bgtj parambgtj) {}
+  public GameRuntime$4(bgxq parambgxq) {}
   
   public void run()
   {
-    bgwp.a().b(bgtj.a(this.this$0));
-    bgtj.a(this.this$0).onDestroy();
+    bhaw.a().b(bgxq.a(this.this$0));
+    bgxq.a(this.this$0).onDestroy();
   }
 }
 

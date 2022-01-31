@@ -3,12 +3,12 @@ package com.tencent.biz.webviewplugin;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import yzs;
+import zeh;
 
 public final class NewerGuidePlugin$PhoneInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhoneInfo> CREATOR = new yzs();
+  public static final Parcelable.Creator<PhoneInfo> CREATOR = new zeh();
   public String a;
   public String b;
   public String c;

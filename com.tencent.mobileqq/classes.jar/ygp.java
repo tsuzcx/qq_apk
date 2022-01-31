@@ -1,12 +1,10 @@
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+
 public abstract interface ygp
 {
-  public abstract void k();
+  public abstract void a(int paramInt);
   
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
 }
 
 

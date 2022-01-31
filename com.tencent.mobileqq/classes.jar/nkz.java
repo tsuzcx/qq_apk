@@ -11,7 +11,7 @@ public class nkz
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (paramInt1 - paramInt3 > bcwh.a(this.a, 60.0F))
+    if (paramInt1 - paramInt3 > bdaq.a(this.a, 60.0F))
     {
       PublicAccountAdvertisementActivity.a(this.a);
       PublicAccountAdvertisementActivity.b(this.a);

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import bgzp;
+import bhdw;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class ChannelProxyDefault$4
   implements MiniAppProxy.SenderListener
 {
-  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bgzp parambgzp, AsyncResult paramAsyncResult) {}
+  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bhdw parambhdw, AsyncResult paramAsyncResult) {}
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {

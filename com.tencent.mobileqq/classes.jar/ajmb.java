@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.Comparator;
+import android.content.Context;
 
 public class ajmb
-  implements Comparator<ajof>
+  extends ajlx
 {
-  public ajmb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public int a(ajof paramajof1, ajof paramajof2)
+  public ajmb(Context paramContext)
   {
-    if ((paramajof1.a < paramajof2.a) || ((paramajof1.a == paramajof2.a) && (paramajof1.b < paramajof2.b))) {
-      return -1;
-    }
-    if ((paramajof1.a != paramajof2.a) || (paramajof1.b != paramajof2.b)) {
-      return 1;
-    }
-    return 0;
+    this.a = "";
   }
 }
 

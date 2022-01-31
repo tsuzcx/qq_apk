@@ -20,7 +20,7 @@ public class nkq
     if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
     }
-    paramInt = ((bdip)paramAdapterView).a.action;
+    paramInt = ((bdmy)paramAdapterView).a.action;
     int i = nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
     if (paramInt == 11)
     {
@@ -38,19 +38,19 @@ public class nkq
       return;
       if (paramInt == 2)
       {
-        yqb.b(this.a, this.a.a(), this.a.a(), this.a.b());
+        yuq.b(this.a, this.a.a(), this.a.a(), this.a.b());
         paramInt = 1;
         break;
       }
       if (paramInt == 3)
       {
-        yqb.a(this.a, this.a.a(), this.a.a(), this.a.b());
+        yuq.a(this.a, this.a.a(), this.a.a(), this.a.b());
         paramInt = 2;
         break;
       }
       if ((paramInt == 9) || (paramInt == 10))
       {
-        yqb.a(this.a, this.a.a(), this.a.a(), this.a.b(), paramInt);
+        yuq.a(this.a, this.a.a(), this.a.a(), this.a.b(), paramInt);
         if (paramInt == 9)
         {
           paramInt = 3;
@@ -78,7 +78,7 @@ public class nkq
         break;
       }
       if (paramInt == 19) {
-        bfua.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.h, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, i, true);
+        bfyh.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.h, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, i, true);
       }
       paramInt = 0;
       break;

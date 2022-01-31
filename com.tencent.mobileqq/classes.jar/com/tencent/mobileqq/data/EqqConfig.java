@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class EqqConfig
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String data;
   
   public EqqConfig() {}
@@ -28,7 +28,7 @@ public class EqqConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EqqConfig
  * JD-Core Version:    0.7.0.1
  */

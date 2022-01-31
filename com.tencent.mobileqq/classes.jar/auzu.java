@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface auzu
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(List<auzv> paramList, boolean paramBoolean);
 }
 
 

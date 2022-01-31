@@ -1,6 +1,12 @@
-public abstract interface amti
+public class amti
 {
-  public abstract void a(amtk paramamtk);
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 

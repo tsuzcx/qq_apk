@@ -1,41 +1,14 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bmld
+class bmld
+  implements View.OnClickListener
 {
-  private List<bmlf> a = new LinkedList();
+  bmld(bmla parambmla) {}
   
-  public static bmld a()
+  public void onClick(View paramView)
   {
-    return bmlg.a;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmlf)localIterator.next()).b();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmlf)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  public boolean a(@NonNull bmlf parambmlf)
-  {
-    return this.a.add(parambmlf);
-  }
-  
-  public boolean b(@NonNull bmlf parambmlf)
-  {
-    return this.a.remove(parambmlf);
+    this.a.a.a(22);
   }
 }
 

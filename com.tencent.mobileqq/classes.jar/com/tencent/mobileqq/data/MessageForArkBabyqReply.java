@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import ayvj;
+import ayzs;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -51,7 +51,7 @@ public class MessageForArkBabyqReply
       this.mArkBabyqReplyCardList = new ArrayList();
     }
     fromBytes(this.msgData);
-    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(ayvj.g));
+    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(ayzs.g));
   }
   
   public boolean fromAppXml(String paramString)
@@ -292,7 +292,7 @@ public class MessageForArkBabyqReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkBabyqReply
  * JD-Core Version:    0.7.0.1
  */

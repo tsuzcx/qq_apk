@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,8 +42,8 @@ public class VideoFeedsLoadDelegate
   
   public VideoFeedsLoadDelegate(qyx paramqyx, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131364735;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131716521), alpo.a(2131716556) };
+    this.jdField_a_of_type_Int = 2131364736;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { alud.a(2131716533), alud.a(2131716568) };
     this.jdField_a_of_type_Qyx = paramqyx;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -159,7 +159,7 @@ public class VideoFeedsLoadDelegate
     int j = rdm.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
     if (((k == 0) && (m == 0) && (i == 0)) || (i >= n))
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772215, 0);
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772216, 0);
       return;
     }
     int[] arrayOfInt = rdm.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);

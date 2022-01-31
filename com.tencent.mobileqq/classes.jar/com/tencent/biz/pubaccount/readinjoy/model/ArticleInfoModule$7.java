@@ -11,7 +11,7 @@ public class ArticleInfoModule$7
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131719054), 1).a();
+    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131719066), 1).a();
   }
 }
 

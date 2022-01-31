@@ -1,25 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmow
-  extends GestureDetector.SimpleOnGestureListener
+class bmow
+  implements DialogInterface.OnClickListener
 {
-  private bmow(CropNewView paramCropNewView) {}
+  bmow(bmou parambmou) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return CropNewView.a(this.a, paramFloat1, paramFloat2);
+    paramDialogInterface.dismiss();
   }
 }
 

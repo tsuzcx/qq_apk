@@ -1,23 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-public class aswq
-  implements aswu
+class aswq
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public aswq(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  aswq(aswm paramaswm) {}
   
-  public void a(int paramInt)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    Intent localIntent = new Intent(aswm.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
-  }
-  
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    this.a.finish();
+    this.a.jdField_a_of_type_Boolean = false;
+    aswm.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (aswm.a(this.a) == null);
+    aswm.a(this.a).j();
   }
 }
 

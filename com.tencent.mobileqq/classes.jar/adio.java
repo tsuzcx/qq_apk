@@ -1,13 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
 
 public class adio
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public adio(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adio(MainFragment paramMainFragment) {}
   
-  public void onClick(View paramView) {}
+  public boolean onLongClick(View paramView)
+  {
+    if (this.a.a() == MainFragment.b)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
+      }
+      paramView = (Conversation)this.a.a(Conversation.class);
+      if (paramView != null)
+      {
+        paramView = paramView.a().a();
+        if (paramView != null) {
+          aulb.a(this.a.getActivity(), paramView.a(), paramView.a(), paramView.b(), "conversation_tab_bottom");
+        }
+      }
+    }
+    return true;
+  }
 }
 
 

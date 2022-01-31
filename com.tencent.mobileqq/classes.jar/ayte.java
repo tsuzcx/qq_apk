@@ -1,22 +1,15 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.util.List;
 
-public class ayte
-  extends aytj
+class ayte
 {
-  public View a;
-  public LinearLayout a;
-  public TextView a;
+  String jdField_a_of_type_JavaLangString;
+  List<aynq> jdField_a_of_type_JavaUtilList;
   
-  public ayte(ViewGroup paramViewGroup)
+  public ayte(String paramString, List<aynq> paramList)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559169, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131366710));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131366712));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131365367);
+    this.jdField_a_of_type_JavaLangString = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
 }
 

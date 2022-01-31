@@ -18,11 +18,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import asee;
-import aseg;
-import aseh;
-import asei;
-import bcws;
+import asin;
+import asip;
+import asiq;
+import asir;
+import bdbb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo;
@@ -71,11 +71,11 @@ public class IntimatePlayTogetherMiniGameCardView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    LayoutInflater.from(paramContext).inflate(2131559198, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131366930));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366933));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366931));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366934));
+    LayoutInflater.from(paramContext).inflate(2131559197, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131366940));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366943));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366941));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366944));
     setVisibility(8);
   }
   
@@ -83,7 +83,7 @@ public class IntimatePlayTogetherMiniGameCardView
   {
     if ((paramView instanceof ViewGroup))
     {
-      paramView = (IntimatePlayTogetherMiniGameCardView)((ViewGroup)paramView).findViewById(2131366929);
+      paramView = (IntimatePlayTogetherMiniGameCardView)((ViewGroup)paramView).findViewById(2131366939);
       if (paramView != null) {
         paramView.a(paramIntimateInfo);
       }
@@ -136,7 +136,7 @@ public class IntimatePlayTogetherMiniGameCardView
         setVisibility(8);
         return;
       }
-      localObject2 = new asee(this, (MISC.StGetFriendPlayListV2Rsp)localObject1);
+      localObject2 = new asin(this, (MISC.StGetFriendPlayListV2Rsp)localObject1);
       setVisibility(0);
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(((MISC.StGetFriendPlayListV2Rsp)localObject1).total.get()));
@@ -159,7 +159,7 @@ public class IntimatePlayTogetherMiniGameCardView
         if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
         {
           this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-          paramIntimateInfo = new asei(((MISC.StGetFriendPlayListV2Rsp)localObject1).appPlayingInfos.get(), paramIntimateInfo.friendUin, (View.OnClickListener)localObject2);
+          paramIntimateInfo = new asir(((MISC.StGetFriendPlayListV2Rsp)localObject1).appPlayingInfos.get(), paramIntimateInfo.friendUin, (View.OnClickListener)localObject2);
           paramIntimateInfo.b(2064);
           this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(paramIntimateInfo);
         }
@@ -169,7 +169,7 @@ public class IntimatePlayTogetherMiniGameCardView
         }
         MiniProgramLpReportDC04239.reportAsync(paramIntimateInfo, "page_view", "expo", null, null);
         if (i != 0) {
-          MiniAppCmdUtil.getInstance().getAppInfoByLink(((MISC.StGetFriendPlayListV2Rsp)localObject1).moreJumpLink.get(), 2, new aseg(this, (MISC.StGetFriendPlayListV2Rsp)localObject1));
+          MiniAppCmdUtil.getInstance().getAppInfoByLink(((MISC.StGetFriendPlayListV2Rsp)localObject1).moreJumpLink.get(), 2, new asip(this, (MISC.StGetFriendPlayListV2Rsp)localObject1));
         }
         setOnClickListener((View.OnClickListener)localObject2);
         return;
@@ -189,16 +189,16 @@ public class IntimatePlayTogetherMiniGameCardView
       return;
       localObject = BaseApplicationImpl.getApplication().getRuntime();
     } while (!(localObject instanceof QQAppInterface));
-    Object localObject = new bcws(paramThemeImageView.getContext(), (QQAppInterface)localObject);
-    Bitmap localBitmap = ((bcws)localObject).a(1, paramString, 0, (byte)4);
+    Object localObject = new bdbb(paramThemeImageView.getContext(), (QQAppInterface)localObject);
+    Bitmap localBitmap = ((bdbb)localObject).a(1, paramString, 0, (byte)4);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      ((bcws)localObject).d();
+      ((bdbb)localObject).d();
       paramThemeImageView.setImageBitmap(localBitmap);
       return;
     }
-    ((bcws)localObject).a(new aseh((bcws)localObject, paramThemeImageView));
-    ((bcws)localObject).a(paramString, 200, false, 1, true, (byte)0, 4);
+    ((bdbb)localObject).a(new asiq((bdbb)localObject, paramThemeImageView));
+    ((bdbb)localObject).a(paramString, 200, false, 1, true, (byte)0, 4);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ark.API;
 
-import afdt;
+import afii;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import anfv;
-import anis;
-import anjs;
-import anjv;
-import ankt;
-import bdcd;
-import bdfk;
-import bdfq;
+import anke;
+import annb;
+import anob;
+import anoe;
+import anpc;
+import bdgm;
+import bdjt;
+import bdjz;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -27,19 +27,19 @@ import java.util.List;
 public class ArkAppModuleReg$ModuleQQ$9
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$9(anfv paramanfv, String paramString1, String paramString2, String paramString3, long paramLong) {}
+  public ArkAppModuleReg$ModuleQQ$9(anke paramanke, String paramString1, String paramString2, String paramString3, long paramLong) {}
   
   public void run()
   {
     Object localObject1;
     if (this.jdField_a_of_type_JavaLangString.equals("fullscreen"))
     {
-      anjv.a(null, this.this$0.jdField_a_of_type_JavaLangString, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
+      anoe.a(null, this.this$0.jdField_a_of_type_JavaLangString, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
       if ((BaseActivity.sTopActivity instanceof FragmentActivity))
       {
         localObject1 = (FragmentActivity)BaseActivity.sTopActivity;
-        anjv.a(null, this.this$0.jdField_a_of_type_JavaLangString, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
-        ArkFullScreenAppActivity.a((Context)localObject1, this.this$0.b, this.b, "0.0.0.1", this.c, anjs.a(), null, 0);
+        anoe.a(null, this.this$0.jdField_a_of_type_JavaLangString, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
+        ArkFullScreenAppActivity.a((Context)localObject1, this.this$0.b, this.b, "0.0.0.1", this.c, anob.a(), null, 0);
       }
     }
     do
@@ -67,11 +67,11 @@ public class ArkAppModuleReg$ModuleQQ$9
               localObject1 = ((ChatFragment)localObject1).a();
             } while ((localObject1 == null) || (((BaseChatPie)localObject1).a == null));
             localObject2 = new ArrayList();
-            localObject3 = new anis();
-            ((anis)localObject3).jdField_a_of_type_JavaLangString = this.this$0.b;
-            ((anis)localObject3).d = this.this$0.c;
-            ((anis)localObject3).f = this.c;
-            ((anis)localObject3).b = this.b;
+            localObject3 = new annb();
+            ((annb)localObject3).jdField_a_of_type_JavaLangString = this.this$0.b;
+            ((annb)localObject3).d = this.this$0.c;
+            ((annb)localObject3).f = this.c;
+            ((annb)localObject3).b = this.b;
             ((List)localObject2).add(localObject3);
             ((BaseChatPie)localObject1).a.a((List)localObject2, 0);
             return;
@@ -80,20 +80,20 @@ public class ArkAppModuleReg$ModuleQQ$9
             }
             localObject1 = BaseActivity.sTopActivity;
           } while (!(localObject1 instanceof FragmentActivity));
-          Object localObject2 = bdfk.a(this.this$0.b, this.b, "0.0.0.1", this.c, anjs.a(), null, null);
-          if (anfv.a(this.this$0) != null)
+          Object localObject2 = bdjt.a(this.this$0.b, this.b, "0.0.0.1", this.c, anob.a(), null, null);
+          if (anke.a(this.this$0) != null)
           {
-            localObject3 = (bdfq)anfv.a(this.this$0).get();
-            if ((localObject3 != null) && (((bdfq)localObject3).isShowing())) {
-              ((bdfq)localObject3).dismiss();
+            localObject3 = (bdjz)anke.a(this.this$0).get();
+            if ((localObject3 != null) && (((bdjz)localObject3).isShowing())) {
+              ((bdjz)localObject3).dismiss();
             }
           }
-          localObject2 = bdcd.a((Context)localObject1, null, (Bundle)localObject2);
-          ((bdfq)localObject2).setNegativeButton(2131690648, null);
-          ((bdfq)localObject2).setPositiveButton(2131694951, null);
-          anfv.a(this.this$0, new WeakReference(localObject2));
-          ((bdfq)localObject2).show();
-          anjv.a(((BaseActivity)localObject1).app, "ShowView", this.this$0.jdField_a_of_type_JavaLangString, null, anjv.i, 0, 0);
+          localObject2 = bdgm.a((Context)localObject1, null, (Bundle)localObject2);
+          ((bdjz)localObject2).setNegativeButton(2131690648, null);
+          ((bdjz)localObject2).setPositiveButton(2131694953, null);
+          anke.a(this.this$0, new WeakReference(localObject2));
+          ((bdjz)localObject2).show();
+          anoe.a(((BaseActivity)localObject1).app, "ShowView", this.this$0.jdField_a_of_type_JavaLangString, null, anoe.i, 0, 0);
           return;
           if (!this.jdField_a_of_type_JavaLangString.equals("card")) {
             break;
@@ -101,9 +101,9 @@ public class ArkAppModuleReg$ModuleQQ$9
           localObject1 = ark.arkGetContainer(this.jdField_a_of_type_Long);
           QLog.d("ArkOpenView", 1, "OpenView card container=" + localObject1);
         } while (localObject1 == null);
-        localObject1 = (afdt)afdt.a((ark.Container)localObject1).get();
+        localObject1 = (afii)afii.a((ark.Container)localObject1).get();
       } while (localObject1 == null);
-      ((afdt)localObject1).a(this.b, this.c);
+      ((afii)localObject1).a(this.b, this.c);
       return;
     } while ((!this.jdField_a_of_type_JavaLangString.equals("bottom_card")) || (!(BaseActivity.sTopActivity instanceof FragmentActivity)));
     ArkFullScreenAppActivity.a((FragmentActivity)BaseActivity.sTopActivity, "com.tencent.cmgame.intent", "GameCard", this.c);

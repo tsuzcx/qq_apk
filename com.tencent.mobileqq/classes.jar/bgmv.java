@@ -1,74 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import java.util.concurrent.Callable;
 
 class bgmv
-  extends BaseAdapter
+  implements Callable<Void>
 {
   bgmv(bgmu parambgmu) {}
   
-  public int getCount()
+  public Void a()
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    synchronized (this.a)
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
-      paramView = new bgnc(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368564));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (bgnc)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new bgnb(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label212;
+      if (bgmu.a(this.a) == null) {
+        return null;
       }
-      paramView.a.setBackgroundResource(2130840869);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label212:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130840870);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130840868);
+      bgmu.a(this.a);
+      if (bgmu.a(this.a))
+      {
+        bgmu.b(this.a);
+        bgmu.a(this.a, 0);
       }
+      return null;
     }
   }
 }

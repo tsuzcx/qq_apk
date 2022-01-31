@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bghn;
-import bgho;
-import bgkd;
-import bgki;
+import bglu;
+import bglv;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.RoomConfig;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 class VoIPJsPlugin$2
   implements AsyncResult
 {
-  VoIPJsPlugin$2(VoIPJsPlugin paramVoIPJsPlugin, bgkd parambgkd, VoIPManager.RoomConfig paramRoomConfig) {}
+  VoIPJsPlugin$2(VoIPJsPlugin paramVoIPJsPlugin, bgok parambgok, VoIPManager.RoomConfig paramRoomConfig) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -44,13 +44,13 @@ class VoIPJsPlugin$2
         try
         {
           ((JSONObject)localObject1).put("errCode", -1000);
-          localObject1 = this.val$req.jdField_a_of_type_Bghn;
+          localObject1 = this.val$req.jdField_a_of_type_Bglu;
           i = this.val$req.jdField_b_of_type_Int;
           localObject3 = this.val$req.jdField_a_of_type_JavaLangString;
           if (paramJSONObject != null)
           {
             paramJSONObject = paramJSONObject.optString("errMsg", "idResult failed");
-            ((bghn)localObject1).a(i, bgki.a((String)localObject3, null, paramJSONObject).toString());
+            ((bglu)localObject1).a(i, bgop.a((String)localObject3, null, paramJSONObject).toString());
             return;
             localObject1 = "";
             continue;
@@ -75,13 +75,13 @@ class VoIPJsPlugin$2
       try
       {
         ((JSONObject)localObject2).put("errCode", -1000);
-        localObject2 = this.val$req.jdField_a_of_type_Bghn;
+        localObject2 = this.val$req.jdField_a_of_type_Bglu;
         i = this.val$req.jdField_b_of_type_Int;
         localObject3 = this.val$req.jdField_a_of_type_JavaLangString;
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("errMsg", "muteConfig failed");
-          ((bghn)localObject2).a(i, bgki.a((String)localObject3, null, paramJSONObject).toString());
+          ((bglu)localObject2).a(i, bgop.a((String)localObject3, null, paramJSONObject).toString());
           return;
         }
       }
@@ -102,13 +102,13 @@ class VoIPJsPlugin$2
     try
     {
       localJSONObject.put("errCode", -1000);
-      localObject3 = this.val$req.jdField_a_of_type_Bghn;
+      localObject3 = this.val$req.jdField_a_of_type_Bglu;
       i = this.val$req.jdField_b_of_type_Int;
       String str = this.val$req.jdField_a_of_type_JavaLangString;
       if (paramJSONObject != null)
       {
         paramJSONObject = paramJSONObject.optString("errMsg", "transfer roomId err");
-        ((bghn)localObject3).a(i, bgki.a(str, localJSONObject, paramJSONObject).toString());
+        ((bglu)localObject3).a(i, bgop.a(str, localJSONObject, paramJSONObject).toString());
         return;
       }
     }

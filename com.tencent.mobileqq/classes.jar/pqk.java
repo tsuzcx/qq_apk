@@ -62,7 +62,7 @@ public class pqk
       }
       return;
     }
-    int j = localResources.getDisplayMetrics().widthPixels - aekt.a(24.0F, localResources);
+    int j = localResources.getDisplayMetrics().widthPixels - aepi.a(24.0F, localResources);
     int k = (int)(j * 0.598F);
     float f1 = localResources.getDisplayMetrics().density;
     int i;
@@ -72,8 +72,8 @@ public class pqk
     {
       i = ((qmx)this.jdField_a_of_type_Qbs.a.a().mSocialFeedInfo.a.a.get(0)).a;
       int m = ((qmx)this.jdField_a_of_type_Qbs.a.a().mSocialFeedInfo.a.a.get(0)).b;
-      f2 = aekt.a(i / 2, localResources);
-      f1 = aekt.a(m / 2, localResources);
+      f2 = aepi.a(i / 2, localResources);
+      f1 = aepi.a(m / 2, localResources);
       i = ((qmx)this.jdField_a_of_type_Qbs.a.a().mSocialFeedInfo.a.a.get(0)).c;
       localLayoutParams = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
       if ((f2 >= j) || (f1 >= k)) {
@@ -86,7 +86,7 @@ public class pqk
       if (i == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719055);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719067);
       }
       localLayoutParams.width = ((int)f2);
       localLayoutParams.height = ((int)f1);
@@ -107,9 +107,9 @@ public class pqk
         if (f1 / f2 > 4.0F)
         {
           f1 = k;
-          f2 = aekt.a(150.0F, localResources);
+          f2 = aepi.a(150.0F, localResources);
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719056);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719068);
         }
         else
         {
@@ -123,8 +123,8 @@ public class pqk
         if (f2 / f1 > 4.0F)
         {
           f2 = j;
-          f1 = aekt.a(150.0F, localResources);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719057);
+          f1 = aepi.a(150.0F, localResources);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719069);
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         }
         else
@@ -137,15 +137,15 @@ public class pqk
       else if (f1 / f2 > 4.0F)
       {
         f1 = k;
-        f2 = aekt.a(150.0F, localResources);
+        f2 = aepi.a(150.0F, localResources);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719056);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719068);
       }
       else if (f2 / f1 > 4.0F)
       {
         f2 = j;
-        f1 = aekt.a(150.0F, localResources);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719057);
+        f1 = aepi.a(150.0F, localResources);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719069);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       else

@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import bndp;
-import bndt;
-import bndv;
-import bndz;
+import bnib;
+import bnif;
+import bnih;
+import bnil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoFramesFetcher
-  implements bndv
+  implements bnih
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int;
-  private bndp jdField_a_of_type_Bndp;
-  private BlockingQueue<bndz> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, bndz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private bnib jdField_a_of_type_Bnib;
+  private BlockingQueue<bnil> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, bnil> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   
-  private bndt b(int paramInt)
+  private bnif b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    bndz localbndz2;
+    bnil localbnil2;
     do
     {
       return null;
@@ -35,10 +35,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          bndz localbndz1 = (bndz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          bnil localbnil1 = (bnil)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localbndz1.jdField_a_of_type_Long = l;
+          localbnil1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -49,13 +49,13 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localbndz2 = new bndz(this, l, paramInt, paramInt + this.b);
+      localbnil2 = new bnil(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbndz2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbnil2);
     return null;
   }
   
-  public bndt a(int paramInt)
+  public bnif a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -64,8 +64,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_Bndp.a(paramInt)) {
-      return this.jdField_a_of_type_Bndp.a(paramInt);
+    if (this.jdField_a_of_type_Bnib.a(paramInt)) {
+      return this.jdField_a_of_type_Bnib.a(paramInt);
     }
     return b(this.b * paramInt);
   }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqx;
+import agvm;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,22 +17,22 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class TroopChatPie$12$1
   implements Runnable
 {
-  public TroopChatPie$12$1(agqx paramagqx, List paramList) {}
+  public TroopChatPie$12$1(agvm paramagvm, List paramList) {}
   
   public void run()
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Agqx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo = localTroopManager.b(this.jdField_a_of_type_Agqx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Agvm.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = localTroopManager.b(this.jdField_a_of_type_Agvm.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     if (localTroopInfo == null) {
       break label45;
     }
     label45:
-    while (bdje.a(localTroopInfo.troopowneruin)) {
+    while (bdnn.a(localTroopInfo.troopowneruin)) {
       return;
     }
     int i = 0;
     int j = 0;
-    String str = this.jdField_a_of_type_Agqx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.jdField_a_of_type_Agvm.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     int k;
     label94:
@@ -109,20 +109,20 @@ public class TroopChatPie$12$1
             for (localTroopInfo.dwAdditionalFlag |= 1L;; localTroopInfo.dwAdditionalFlag &= 0xFFFFFFFE)
             {
               if (QLog.isColorLevel()) {
-                QLog.d(this.jdField_a_of_type_Agqx.a.jdField_a_of_type_JavaLangString, 2, "onOIDB0X899_0_Ret: toopUin=" + this.jdField_a_of_type_Agqx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + ", admin=" + localTroopInfo.Administrator + ", owner=" + localTroopInfo.troopowneruin);
+                QLog.d(this.jdField_a_of_type_Agvm.a.jdField_a_of_type_JavaLangString, 2, "onOIDB0X899_0_Ret: toopUin=" + this.jdField_a_of_type_Agvm.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + ", admin=" + localTroopInfo.Administrator + ", owner=" + localTroopInfo.troopowneruin);
               }
               localTroopManager.b(localTroopInfo);
               if (QLog.isColorLevel()) {
-                QLog.i(this.jdField_a_of_type_Agqx.a.jdField_a_of_type_JavaLangString, 2, localTroopInfo.Administrator);
+                QLog.i(this.jdField_a_of_type_Agvm.a.jdField_a_of_type_JavaLangString, 2, localTroopInfo.Administrator);
               }
               if (QLog.isColorLevel()) {
-                QLog.d("troop_gag", 2, "onOIDB0X899_0_Ret, sendEmptyMessage-TIMER_ID, hasDestory=" + this.jdField_a_of_type_Agqx.a.N);
+                QLog.d("troop_gag", 2, "onOIDB0X899_0_Ret, sendEmptyMessage-TIMER_ID, hasDestory=" + this.jdField_a_of_type_Agvm.a.N);
               }
-              if (this.jdField_a_of_type_Agqx.a.N) {
+              if (this.jdField_a_of_type_Agvm.a.N) {
                 break;
               }
-              this.jdField_a_of_type_Agqx.a.b.removeMessages(1);
-              this.jdField_a_of_type_Agqx.a.b.sendEmptyMessage(1);
+              this.jdField_a_of_type_Agvm.a.b.removeMessages(1);
+              this.jdField_a_of_type_Agvm.a.b.sendEmptyMessage(1);
               return;
               localTroopInfo.dwCmdUinUinFlag &= 0xFFFFFFFE;
               break label321;

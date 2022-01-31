@@ -1,12 +1,46 @@
-public class blsy<F, S>
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+
+public class blsy
+  extends bmri
 {
-  public F a;
-  public S b;
-  
-  public blsy(F paramF, S paramS)
+  public blsy(DoodleView paramDoodleView)
   {
-    this.a = paramF;
-    this.b = paramS;
+    super(paramDoodleView);
+  }
+  
+  public String a()
+  {
+    return "PickLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

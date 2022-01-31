@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public abstract class bbnf
+class bbnf
+  implements View.OnClickListener
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  bbnf(bbne parambbne) {}
+  
+  public void onClick(View paramView)
   {
-    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
-    try
-    {
-      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
-      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
-      localTroopFeedItem.tag = paramJSONObject.getString("tag");
-      if (paramJSONObject.has("pub_uin")) {
-        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
-      }
-      return localTroopFeedItem;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localTroopFeedItem;
+    GroupManagerActivity.a((Activity)bbne.a(this.a));
   }
 }
 

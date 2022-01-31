@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bhas;
-import bhbe;
+import bhez;
+import bhfl;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class AppBrandPageContainer$1$2
   implements Runnable
 {
-  public AppBrandPageContainer$1$2(bhbe parambhbe) {}
+  public AppBrandPageContainer$1$2(bhfl parambhfl) {}
   
   public void run()
   {

@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import bgvn;
+import bgzu;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class GameRuntimeStateObserver$4
   implements Runnable
 {
-  public GameRuntimeStateObserver$4(bgvn parambgvn) {}
+  public GameRuntimeStateObserver$4(bgzu parambgzu) {}
   
   public void run()
   {
-    if (bgvn.a(this.this$0) != null) {
-      bgvn.a(this.this$0).a();
+    if (bgzu.a(this.this$0) != null) {
+      bgzu.a(this.this$0).a();
     }
-    if ((bgvn.a(this.this$0) != null) && (bgvn.a(this.this$0).launchParam != null)) {
-      MiniGameAdBannerPopup.a(bgvn.a(this.this$0), bgvn.a(this.this$0).appId, bgvn.a(this.this$0).launchParam.scene);
+    if ((bgzu.a(this.this$0) != null) && (bgzu.a(this.this$0).launchParam != null)) {
+      MiniGameAdBannerPopup.a(bgzu.a(this.this$0), bgzu.a(this.this$0).appId, bgzu.a(this.this$0).launchParam.scene);
     }
   }
 }

@@ -1,17 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import java.util.List;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class atgn
 {
-  public Context a;
-  public View a;
-  public atgp a;
-  public QQAppInterface a;
-  public FPSXListView a;
-  public List<aovj> a;
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new atgo();
+  private static ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  static HookMethodCallback b = new atgp();
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(0L));
+  }
 }
 
 

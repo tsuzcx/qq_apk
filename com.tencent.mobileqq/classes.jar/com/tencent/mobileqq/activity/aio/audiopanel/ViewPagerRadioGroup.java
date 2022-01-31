@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -35,7 +35,7 @@ public class ViewPagerRadioGroup
         localRadioButton.setChecked(true);
         if (paramInt == 1)
         {
-          localRadioButton.setContentDescription(alpo.a(2131716845));
+          localRadioButton.setContentDescription(alud.a(2131716857));
           localRadioButton.sendAccessibilityEvent(128);
         }
       }

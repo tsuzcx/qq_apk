@@ -1,83 +1,324 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppException;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.TMG.utils.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class bkfr
+  implements Handler.Callback
 {
-  private static void a(Activity paramActivity, String paramString, int paramInt)
+  protected int a;
+  protected Handler a;
+  protected View a;
+  private ArrayList<bkfr> a;
+  protected int b;
+  protected String c;
+  
+  public bkfr(View paramView)
   {
-    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public bkfr(String paramString, View paramView)
   {
-    if (paramQQAppInterface.a().a() == true)
-    {
-      paramQQAppInterface.a().c();
+    this(paramView);
+    this.c = paramString;
+  }
+  
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (bdee.d(BaseApplication.getContext()))
+    Drawable localDrawable = a(paramString);
+    if (localDrawable != null)
     {
-      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
-      paramQQAppInterface.putExtra("tab_tab_type", 3);
-      paramQQAppInterface.putExtra("from", "FileAssistant");
-      paramActivity.startActivityForResult(paramQQAppInterface, 101);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localDrawable);
       return;
     }
-    armz.a(BaseApplication.getContext().getString(2131694764));
+    throw new RuntimeException(getClass().getName() + " set background drawable = null not match value = " + paramString);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
+  private int b(String paramString)
   {
-    a(paramQQAppInterface, paramActivity, paramInt, 2131691366);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramActivity == null)) {
-      return;
-    }
-    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt2, paramInt1, paramQQAppInterface), 1000L);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
-  {
-    int i = bdiv.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
-    if (i == 1)
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      String str = bdiv.u(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      i = bdiv.aT(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      if (!TextUtils.isEmpty(str)) {
-        try
-        {
-          a(paramActivity, str, i);
-          return;
+      return -2;
+      try
+      {
+        if ("fill".equals(paramString)) {
+          return -1;
         }
-        catch (MiniAppException paramContext)
+        if (!"fit".equals(paramString))
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
-          }
-          a(paramQQAppInterface, paramActivity);
-          return;
+          int i = a(paramString);
+          return i;
         }
       }
-      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
-      a(paramQQAppInterface, paramActivity);
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return -2;
+  }
+  
+  protected int a()
+  {
+    return bdoo.a();
+  }
+  
+  protected int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    try
+    {
+      int i;
+      if (paramString.endsWith("w")) {
+        i = Integer.parseInt(paramString.substring(0, paramString.indexOf("w"))) * a();
+      }
+      for (;;)
+      {
+        return i / 10000;
+        if (paramString.endsWith("h"))
+        {
+          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("h"))) * b();
+        }
+        else
+        {
+          i = Integer.parseInt(paramString);
+          int j = a();
+          i *= j;
+        }
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("JsonInflateViewModel", 1, "getIntegerValue exception: value =  " + paramString);
+    }
+  }
+  
+  protected Drawable a(String paramString)
+  {
+    ColorDrawable localColorDrawable = null;
+    if (paramString.startsWith("#")) {
+      localColorDrawable = new ColorDrawable(Color.parseColor(paramString));
+    }
+    return localColorDrawable;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
+  {
+    return new ViewGroup.LayoutParams(paramInt1, paramInt2);
+  }
+  
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  {
+    return paramLayoutParams;
+  }
+  
+  public ViewGroup.LayoutParams a(JSONObject paramJSONObject, bkfr parambkfr)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
+      return null;
+    }
+    Object localObject1 = paramJSONObject.optString("width");
+    Object localObject2 = paramJSONObject.optString("height");
+    this.jdField_a_of_type_Int = b((String)localObject1);
+    this.b = b((String)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.i("JsonInflateViewModel", 0, "class = " + this.jdField_a_of_type_AndroidViewView.getClass().getSimpleName() + " width = " + this.jdField_a_of_type_Int + " height = " + this.b);
+    }
+    localObject1 = a(this.jdField_a_of_type_Int, this.b);
+    localObject2 = paramJSONObject.keys();
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str = (String)((Iterator)localObject2).next();
+      a(str, paramJSONObject.optString(str), (ViewGroup.LayoutParams)localObject1);
+    }
+    parambkfr.a((ViewGroup.LayoutParams)localObject1, paramJSONObject);
+    return localObject1;
+  }
+  
+  public bkfr a(String paramString)
+  {
+    bkfr localbkfr2 = null;
+    bkfr localbkfr1 = localbkfr2;
+    if (!TextUtils.isEmpty(this.c))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label25;
+      }
+      localbkfr1 = localbkfr2;
+    }
+    label25:
+    do
+    {
+      return localbkfr1;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        if (this.c.equals(paramString)) {}
+        for (paramString = this;; paramString = null) {
+          return paramString;
+        }
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localbkfr1 = null;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localbkfr2 = (bkfr)localIterator.next();
+      if (localbkfr2 == null) {
+        break label110;
+      }
+      localbkfr2 = localbkfr2.a(paramString);
+      localbkfr1 = localbkfr2;
+    } while (localbkfr2 != null);
+    localbkfr1 = localbkfr2;
+    label110:
+    for (;;)
+    {
+      break;
+      return localbkfr1;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(bkfr parambkfr)
+  {
+    if (parambkfr == null) {
       return;
     }
-    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
-    a(paramQQAppInterface, paramActivity);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkfr);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    if ("background_color".equals(paramString1))
+    {
+      a(paramString2);
+      return;
+    }
+    if ("rotate".equals(paramString1))
+    {
+      this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setRotation(Float.parseFloat(paramString2));
+      return;
+    }
+    if ("id".equals(paramString1))
+    {
+      this.jdField_a_of_type_AndroidViewView.setId(Integer.parseInt(paramString2));
+      return;
+    }
+    QLog.e("JsonInflateViewModel", 1, this.c + " illegal attr :" + paramString1 + " = " + paramString2);
+  }
+  
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams))
+    {
+      if (!"x".equals(paramString1)) {
+        break label30;
+      }
+      ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = a(paramString2);
+    }
+    label30:
+    while (!"y".equals(paramString1)) {
+      return;
+    }
+    ((ViewGroup.MarginLayoutParams)paramLayoutParams).topMargin = a(paramString2);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
+      return;
+    }
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      a(str, paramJSONObject.optString(str));
+    }
+    b();
+  }
+  
+  protected int b()
+  {
+    return bdoo.b();
+  }
+  
+  protected void b() {}
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      bkfr localbkfr = (bkfr)localIterator.next();
+      if (localbkfr != null) {
+        localbkfr.c();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      bkfr localbkfr = (bkfr)localIterator.next();
+      if (localbkfr != null) {
+        localbkfr.e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      bkfr localbkfr = (bkfr)localIterator.next();
+      if (localbkfr != null) {
+        localbkfr.f();
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

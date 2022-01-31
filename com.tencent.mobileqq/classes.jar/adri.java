@@ -1,127 +1,99 @@
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import com.tencent.av.VideoConstants;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.MobileQQ;
 
 public class adri
-  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
+  extends BroadcastReceiver
 {
-  public adri(ScoreQAVFragment paramScoreQAVFragment) {}
+  public adri(QQMapActivity paramQQMapActivity) {}
   
-  protected HashMap<Integer, Integer> a(String... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
-      }
-      return null;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
     }
-    paramVarArgs = bdiv.e(this.a.jdField_d_of_type_JavaLangString);
-    this.a.b = paramVarArgs.getString(VideoConstants.h, "");
-    paramVarArgs = mvs.a();
-    this.a.b(paramVarArgs);
-    paramVarArgs = lex.b(270).a;
-    this.a.a(paramVarArgs);
-    if (this.a.e.isEmpty())
+    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
     {
-      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696307);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
-      }
+      this.a.j = paramIntent.getStringExtra("streetViewUrl");
+      this.a.n();
     }
-    if (this.a.f.isEmpty())
+    do
     {
-      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696305);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
-      }
-    }
-    if (this.a.g.isEmpty())
-    {
-      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696306);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
-      }
-    }
-    if (this.a.jdField_d_of_type_Long == 0L) {
-      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
-    }
-    try
-    {
-      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        i = 0;
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label778;
-        }
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      try
+      do
       {
         do
         {
-          for (;;)
+          return;
+          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
           {
-            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
-            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
-            int j = Integer.parseInt(paramVarArgs[0]);
-            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
-            i += 1;
-            continue;
-            paramVarArgs = this.a.f + "/" + this.a.g;
+            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+            localObject = new LBSShare.LocationResp();
+            paramContext = (Context)localObject;
+            if (arrayOfByte != null) {}
+            try
+            {
+              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
+              paramIntent = paramIntent.getExtras().getBundle("req");
+              this.a.a(paramContext, paramIntent);
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  paramContext.printStackTrace();
+                }
+                paramContext = null;
+              }
+            }
           }
-          paramVarArgs = paramVarArgs;
-          paramVarArgs.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
+          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
+            break;
+          }
+          paramContext = paramIntent.getByteArrayExtra("data");
+        } while (paramContext == null);
+        Object localObject = new LBSShare.NearByShopsResp();
+        try
         {
-          paramVarArgs.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-          }
+          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+          paramIntent = paramIntent.getExtras().getBundle("req");
+          this.a.a(paramContext, paramIntent);
+          return;
         }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
-      }
-      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713959));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713952));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713955));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713958));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713953));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713957));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713954));
-      this.a.jdField_a_of_type_JavaUtilList.add(alpo.a(2131713956));
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
-        i += 1;
-      }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          this.a.a(null, null);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
+      paramContext = paramIntent.getByteArrayExtra("data");
+    } while (paramContext == null);
+    paramIntent = new LBSShare.GetShopsByIdsResp();
+    try
+    {
+      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+      this.a.a(paramContext);
+      return;
     }
-    label778:
-    return this.a.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  protected void a(HashMap<Integer, Integer> paramHashMap)
-  {
-    super.onPostExecute(paramHashMap);
+    catch (InvalidProtocolBufferMicroException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        paramContext.printStackTrace();
+      }
+      this.a.a(null);
+    }
   }
 }
 

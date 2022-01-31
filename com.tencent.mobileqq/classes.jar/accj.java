@@ -1,59 +1,19 @@
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class accj
-  extends avqt
+  implements View.OnTouchListener
 {
-  private WeakReference<avqt> a;
+  public accj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public accj(avqt paramavqt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramavqt);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    avqt localavqt = (avqt)this.a.get();
-    if (localavqt != null)
-    {
-      localavqt.a(paramString1, paramInt, paramString2);
-      return;
-    }
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    avqt localavqt = (avqt)this.a.get();
-    if (localavqt != null)
-    {
-      localavqt.a(paramString1, paramString2);
-      return;
-    }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    avqt localavqt = (avqt)this.a.get();
-    if (localavqt != null)
-    {
-      localavqt.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
-  }
-  
-  public void a(oidb_0x87c.RspBody paramRspBody)
-  {
-    avqt localavqt = (avqt)this.a.get();
-    if (localavqt != null)
-    {
-      localavqt.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 

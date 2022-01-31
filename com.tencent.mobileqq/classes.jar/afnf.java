@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class afnf
-  extends afpq
+public class afnf
+  extends VasQuickUpdateManager.CallBacker
 {
-  afnf(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afnf(afmy paramafmy) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    return new afcy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      }
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
+    }
   }
 }
 

@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqvu;
-import aqvw;
+import arad;
+import araf;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ThumbDownloadManager$3
   implements Runnable
 {
-  public ThumbDownloadManager$3(aqvu paramaqvu) {}
+  public ThumbDownloadManager$3(arad paramarad) {}
   
   public void run()
   {
-    if (aqvu.a(this.this$0).size() >= 8) {}
-    while (aqvu.a(this.this$0).size() == 0) {
+    if (arad.a(this.this$0).size() >= 8) {}
+    while (arad.a(this.this$0).size() == 0) {
       return;
     }
-    aqvw localaqvw = (aqvw)aqvu.a(this.this$0).get(0);
-    if (localaqvw == null)
+    araf localaraf = (araf)arad.a(this.this$0).get(0);
+    if (localaraf == null)
     {
-      aqvu.a(this.this$0).remove(0);
-      aqvu.a(this.this$0);
+      arad.a(this.this$0).remove(0);
+      arad.a(this.this$0);
       return;
     }
-    aqvu.a(this.this$0).remove(localaqvw);
-    aqvu.a(this.this$0, localaqvw);
-    aqvu.b(this.this$0, localaqvw);
+    arad.a(this.this$0).remove(localaraf);
+    arad.a(this.this$0, localaraf);
+    arad.b(this.this$0, localaraf);
   }
 }
 

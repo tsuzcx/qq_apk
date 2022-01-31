@@ -24,7 +24,7 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.RspBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class tap
-  extends alko
+  extends alpd
 {
   static final String a = "Q.pubaccount.video." + taq.class.getSimpleName();
   
@@ -205,7 +205,7 @@ public class tap
     return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return taq.class;
   }

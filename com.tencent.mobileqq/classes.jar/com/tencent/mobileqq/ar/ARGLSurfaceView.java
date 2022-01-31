@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import amns;
-import amnt;
-import amnu;
+import amsh;
+import amsi;
+import amsj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -16,20 +16,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private amnt jdField_a_of_type_Amnt;
-  private amnu jdField_a_of_type_Amnu;
+  private amsi jdField_a_of_type_Amsi;
+  private amsj jdField_a_of_type_Amsj;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, amnt paramamnt)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, amsi paramamsi)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramamnt);
-    setEGLContextFactory(new amns(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramamsi);
+    setEGLContextFactory(new amsh(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_Amnt = paramamnt;
+    this.jdField_a_of_type_Amsi = paramamsi;
   }
   
   public void onPause()
@@ -44,16 +44,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Amnt != null) {
-      this.jdField_a_of_type_Amnt.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_Amsi != null) {
+      this.jdField_a_of_type_Amsi.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
     return false;
   }
   
-  public void setOnEglContextDestoryListener(amnu paramamnu)
+  public void setOnEglContextDestoryListener(amsj paramamsj)
   {
-    this.jdField_a_of_type_Amnu = paramamnu;
+    this.jdField_a_of_type_Amsj = paramamsj;
   }
   
   @Deprecated

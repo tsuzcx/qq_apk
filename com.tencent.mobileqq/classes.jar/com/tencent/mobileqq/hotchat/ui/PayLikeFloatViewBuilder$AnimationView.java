@@ -4,22 +4,22 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
-import aspd;
+import astm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PayLikeFloatViewBuilder$AnimationView
   extends TextView
 {
   protected AnimationDrawable a;
-  protected aspd a;
+  protected astm a;
   protected QQAppInterface a;
   
-  public PayLikeFloatViewBuilder$AnimationView(Context paramContext, QQAppInterface paramQQAppInterface, aspd paramaspd)
+  public PayLikeFloatViewBuilder$AnimationView(Context paramContext, QQAppInterface paramQQAppInterface, astm paramastm)
   {
     super(paramContext);
     super.setGravity(17);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aspd = paramaspd;
+    this.jdField_a_of_type_Astm = paramastm;
     if (super.getVisibility() == 0) {
       setVisibility(0);
     }
@@ -50,7 +50,7 @@ public class PayLikeFloatViewBuilder$AnimationView
     if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() != 20))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
-      Drawable[] arrayOfDrawable = this.jdField_a_of_type_Aspd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      Drawable[] arrayOfDrawable = this.jdField_a_of_type_Astm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (arrayOfDrawable == null) {
         return;
       }

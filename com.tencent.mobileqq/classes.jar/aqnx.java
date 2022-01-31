@@ -1,34 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-final class aqnx
-  extends ypu
+public class aqnx
+  implements bhwz
 {
-  aqnx(String paramString, aqot paramaqot, long paramLong) {}
+  public aqnx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (!paramBoolean)
+    if ((paramInt == this.a.jdField_a_of_type_Aqni.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Long, false), true);
+      if (!this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
+    }
+    else {
       return;
     }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqot.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Long, false), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnx
  * JD-Core Version:    0.7.0.1
  */

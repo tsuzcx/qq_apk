@@ -12,16 +12,16 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bdzm;
-import bdzn;
-import bdzp;
-import bdzq;
+import bedv;
+import bedw;
+import bedy;
+import bedz;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bdzm
+  implements TextureView.SurfaceTextureListener, bedv
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -29,7 +29,7 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  protected bdzn mVPNGRenderer;
+  protected bedw mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
   
@@ -63,7 +63,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bdzn getVPNGRenderer()
+  public bedw getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -73,7 +73,7 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bdzp.a().a(this.mVPNGRenderer);
+      bedy.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
@@ -104,9 +104,9 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(bdzn parambdzn)
+  public void onSetRenderer(bedw parambedw)
   {
-    this.mVPNGRenderer = parambdzn;
+    this.mVPNGRenderer = parambedw;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
@@ -118,7 +118,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bdzp.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -156,7 +156,7 @@ public class VPNGImageView
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bdzq.a(paramString, str))) {
+    if ((!new File(str).exists()) && (bedz.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -175,7 +175,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bdzp.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {

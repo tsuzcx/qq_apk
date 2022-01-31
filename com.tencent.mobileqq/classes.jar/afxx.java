@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class afxx
-  implements DialogInterface.OnClickListener
+  extends afya
 {
-  public afxx(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public FrameLayout a;
+  public RelativeLayout a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public View c;
+  public int e;
+  public int f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afxx(afxw paramafxw)
   {
-    paramDialogInterface.dismiss();
+    super(paramafxw);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

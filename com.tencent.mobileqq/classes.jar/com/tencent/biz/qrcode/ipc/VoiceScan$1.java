@@ -4,22 +4,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
-import bdcd;
+import bdgm;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
-import xwn;
-import xwo;
+import yaw;
+import yax;
 
 public class VoiceScan$1
   implements Runnable
 {
-  public VoiceScan$1(xwn paramxwn) {}
+  public VoiceScan$1(yaw paramyaw) {}
   
   public void run()
   {
-    SpannableString localSpannableString = new SpannableString(xwn.a(this.this$0).getString(2131698769));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(xwn.a(this.this$0).getResources().getColor(2131165571), xwn.a(this.this$0).getResources().getColor(2131165576)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    xwn.a(this.this$0, bdcd.a(xwn.a(this.this$0), xwn.a(this.this$0).getString(2131698768), localSpannableString, 0, 2131690626, null, null, new xwo(this)));
-    xwn.a(this.this$0).show();
+    SpannableString localSpannableString = new SpannableString(yaw.a(this.this$0).getString(2131698781));
+    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(yaw.a(this.this$0).getResources().getColor(2131165571), yaw.a(this.this$0).getResources().getColor(2131165576)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
+    yaw.a(this.this$0, bdgm.a(yaw.a(this.this$0), yaw.a(this.this$0).getString(2131698780), localSpannableString, 0, 2131690626, null, null, new yax(this)));
+    yaw.a(this.this$0).show();
   }
 }
 

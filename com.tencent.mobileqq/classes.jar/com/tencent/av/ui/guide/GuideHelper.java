@@ -7,8 +7,8 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
-import bdiv;
-import bfrq;
+import bdne;
+import bfvz;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.QavPanel;
@@ -67,7 +67,7 @@ public class GuideHelper
   static long a(Context paramContext)
   {
     if (jdField_a_of_type_Long == -1L) {
-      jdField_a_of_type_Long = bdiv.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
+      jdField_a_of_type_Long = bdne.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
     }
     return jdField_a_of_type_Long;
   }
@@ -113,7 +113,7 @@ public class GuideHelper
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Mrk.a(true);
     mtt.a();
-    bfrq.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
+    bfvz.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
     if (i == 0)
     {
       a(paramContext, paramLong);
@@ -125,7 +125,7 @@ public class GuideHelper
   static void a(Context paramContext, long paramLong)
   {
     jdField_a_of_type_Long = System.currentTimeMillis();
-    paramContext = bdiv.a(paramContext).edit();
+    paramContext = bdne.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_gesture_had_show", jdField_a_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -170,13 +170,13 @@ public class GuideHelper
         {
           if (this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub == null)
           {
-            this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131372617));
+            this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131372643));
             if (this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub != null) {
               this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub.inflate();
             }
           }
-          this.jdField_a_of_type_Mrk.b = localAVActivity.findViewById(2131372776);
-          this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mrk.b.findViewById(2131372859);
+          this.jdField_a_of_type_Mrk.b = localAVActivity.findViewById(2131372802);
+          this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mrk.b.findViewById(2131372885);
         }
         this.jdField_a_of_type_Mrk.b.setOnTouchListener(new mre(this, paramLong));
         if (i == 0) {
@@ -196,7 +196,7 @@ public class GuideHelper
         paramContext = this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView.getLayoutParams();
         paramContext.width = -2;
         paramContext.height = -2;
-        this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130841705));
+        this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130841718));
       }
     }
   }
@@ -250,7 +250,7 @@ public class GuideHelper
   private static long b(Context paramContext)
   {
     if (jdField_b_of_type_Long == -1L) {
-      jdField_b_of_type_Long = bdiv.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
+      jdField_b_of_type_Long = bdne.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
     }
     return jdField_b_of_type_Long;
   }
@@ -263,7 +263,7 @@ public class GuideHelper
   private static void b(Context paramContext, long paramLong)
   {
     jdField_b_of_type_Long = System.currentTimeMillis();
-    paramContext = bdiv.a(paramContext).edit();
+    paramContext = bdne.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_textchat_had_show2", jdField_b_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");

@@ -1,11 +1,19 @@
-public abstract interface bmfg
-  extends bmiw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ptv.LWMotionEvent;
+
+public final class bmfg
+  implements Parcelable.Creator<LWMotionEvent>
 {
-  public abstract void b();
+  public LWMotionEvent a(Parcel paramParcel)
+  {
+    return new LWMotionEvent(paramParcel, null);
+  }
   
-  public abstract void c();
-  
-  public abstract void d();
+  public LWMotionEvent[] a(int paramInt)
+  {
+    return new LWMotionEvent[paramInt];
+  }
 }
 
 

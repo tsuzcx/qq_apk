@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqxv;
+import arce;
 
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new aqxv();
+  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new arce();
   public int a;
   public long a;
   public String a;

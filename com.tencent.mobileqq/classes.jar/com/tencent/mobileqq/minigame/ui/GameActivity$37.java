@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ayri;
+import ayvr;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 
 class GameActivity$37
-  implements ayri
+  implements ayvr
 {
   GameActivity$37(GameActivity paramGameActivity) {}
   

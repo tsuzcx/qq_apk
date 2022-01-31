@@ -1,47 +1,13 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-public class anen
-  implements andy
+public abstract interface anen
+  extends aneg
 {
-  private anen(andw paramandw) {}
+  public abstract void a(long paramLong);
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
-    for (;;)
-    {
-      return false;
-      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramString = new Intent();
-      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
-      paramString.putExtra("from", andw.class.getName());
-      paramString.putExtra("finishAfterSucc", true);
-      if (andw.a(this.a) != null) {}
-      try
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(andw.a(this.a));
-        label105:
-        andw.a(this.a, null);
-        andw.a(this.a, new aneo(this, l));
-        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
-        BaseApplicationImpl.getApplication().registerReceiver(andw.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
-        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
-        if (paramArrayOfVariantWrapper == null) {
-          continue;
-        }
-        paramArrayOfVariantWrapper.startActivity(paramString);
-        return false;
-      }
-      catch (Exception paramArrayOfVariantWrapper)
-      {
-        break label105;
-      }
-    }
-  }
+  public abstract void a(List<aned> paramList, long paramLong);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

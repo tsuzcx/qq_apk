@@ -1,54 +1,22 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class balr
-  implements Animation.AnimationListener
+  implements TextView.OnEditorActionListener
 {
-  balr(balo parambalo, AnimatorSet paramAnimatorSet) {}
+  balr(balm parambalm) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = 0;
-    while (i < 3)
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Balo.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Balo.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Balo.b.get(i);
-        Drawable localDrawable = bdda.a(true);
-        localObject1 = bcxb.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof bcxb))) {
-          ((bcxb)localObject2).a();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
+      bhsj.b(this.a.a);
+      this.a.d();
+      return true;
     }
-    this.jdField_a_of_type_Balo.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Balo.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_Balo.c.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new bals(this));
-    this.jdField_a_of_type_Balo.d.startAnimation(paramAnimation);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

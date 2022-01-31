@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import azkw;
-import azoa;
+import azpf;
+import azsj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,7 +15,7 @@ class LoadDex$2
     try
     {
       QQAppInterface.a().a();
-      azkw.b(29, this.this$0.mDirector, null).step();
+      azpf.b(29, this.this$0.mDirector, null).step();
       return;
     }
     catch (Throwable localThrowable)

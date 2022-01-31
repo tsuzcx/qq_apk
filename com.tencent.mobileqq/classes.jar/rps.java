@@ -12,8 +12,8 @@ public class rps
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bhwb jdField_a_of_type_Bhwb;
-  private List<bhwf> jdField_a_of_type_JavaUtilList;
+  private biai jdField_a_of_type_Biai;
+  private List<biam> jdField_a_of_type_JavaUtilList;
   private List<String> b;
   
   public rps(LayoutInflater paramLayoutInflater)
@@ -24,34 +24,34 @@ public class rps
   public rpq a()
   {
     rpq localrpq = new rpq(null);
-    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559086, null);
+    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559085, null);
     rpq.a(localrpq, new PopupWindow((View)localObject, -1, -2));
     rpq.a(localrpq).setBackgroundDrawable(new BitmapDrawable());
     rpq.a(localrpq).setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131366672);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131366682);
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705081), TypedValue.applyDimension(1, 15.0F, alnq.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705078), TypedValue.applyDimension(1, 16.0F, alnq.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705079), TypedValue.applyDimension(1, 17.0F, alnq.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705080), TypedValue.applyDimension(1, 18.0F, alnq.a)));
-      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705082), TypedValue.applyDimension(1, 20.0F, alnq.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new biam(alud.a(2131705093), TypedValue.applyDimension(1, 15.0F, alsf.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new biam(alud.a(2131705090), TypedValue.applyDimension(1, 16.0F, alsf.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new biam(alud.a(2131705091), TypedValue.applyDimension(1, 17.0F, alsf.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new biam(alud.a(2131705092), TypedValue.applyDimension(1, 18.0F, alsf.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new biam(alud.a(2131705094), TypedValue.applyDimension(1, 20.0F, alsf.a)));
     }
     ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
     rpq.a(localrpq, this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Bhwb != null) {
-      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Bhwb);
+    if (this.jdField_a_of_type_Biai != null) {
+      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Biai);
     }
     ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
     if ((this.b == null) || (this.b.isEmpty()))
     {
       this.b = new ArrayList();
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691163));
       this.b.add(BaseApplicationImpl.getApplication().getString(2131691164));
       this.b.add(BaseApplicationImpl.getApplication().getString(2131691165));
       this.b.add(BaseApplicationImpl.getApplication().getString(2131691166));
       this.b.add(BaseApplicationImpl.getApplication().getString(2131691167));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691168));
     }
     ((RangeButtonView)localObject).setContentDescList(this.b);
     return localrpq;
@@ -63,9 +63,9 @@ public class rps
     return this;
   }
   
-  public rps a(bhwb parambhwb)
+  public rps a(biai parambiai)
   {
-    this.jdField_a_of_type_Bhwb = parambhwb;
+    this.jdField_a_of_type_Biai = parambiai;
     return this;
   }
 }

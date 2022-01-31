@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.Advertisement.adapter;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import armz;
-import bewy;
+import arri;
+import bfbh;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
@@ -25,7 +25,7 @@ import nln;
 import nlo;
 import nlp;
 import nmb;
-import ymk;
+import yqz;
 
 public class VideoCoverAdapter
   extends PagerAdapter
@@ -39,7 +39,7 @@ public class VideoCoverAdapter
   private ArrayList<nlp> jdField_a_of_type_JavaUtilArrayList;
   private nln jdField_a_of_type_Nln;
   private nlo jdField_a_of_type_Nlo;
-  private ymk jdField_a_of_type_Ymk;
+  private yqz jdField_a_of_type_Yqz;
   private boolean jdField_a_of_type_Boolean;
   
   public VideoCoverAdapter(Context paramContext, AdvertisementSplitedProgressBar paramAdvertisementSplitedProgressBar, nlo paramnlo, TVK_IMediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -53,8 +53,8 @@ public class VideoCoverAdapter
       this.jdField_a_of_type_Nlo = paramnlo;
       this.jdField_a_of_type_Nln = new nln(this, null);
       AppNetConnInfo.registerConnectionChangeReceiver(paramContext, this.jdField_a_of_type_Nln);
-      this.jdField_a_of_type_Ymk = ymk.a();
-      this.jdField_a_of_type_Ymk.a();
+      this.jdField_a_of_type_Yqz = yqz.a();
+      this.jdField_a_of_type_Yqz.a();
       return;
     }
   }
@@ -74,7 +74,7 @@ public class VideoCoverAdapter
     TVK_IMediaPlayer localTVK_IMediaPlayer = a();
     if ((localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying()))
     {
-      armz.a(alpo.a(2131716506));
+      arri.a(alud.a(2131716518));
       if (!a()) {
         c();
       }
@@ -126,7 +126,7 @@ public class VideoCoverAdapter
         break label320;
       }
       bool = nmb.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.getVid());
-      if (bewy.a(null) != 1) {
+      if (bfbh.a(null) != 1) {
         break label246;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
@@ -140,7 +140,7 @@ public class VideoCoverAdapter
       PublicAccountAdvertisementActivity.a.put(localObject1, Integer.valueOf(((Integer)localObject2).intValue() + i));
       break;
       label246:
-      if ((bewy.a(null) == 0) && (bool))
+      if ((bfbh.a(null) == 0) && (bool))
       {
         this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
       }
@@ -193,10 +193,10 @@ public class VideoCoverAdapter
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler = null;
     AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Nln);
-    if (this.jdField_a_of_type_Ymk != null)
+    if (this.jdField_a_of_type_Yqz != null)
     {
-      this.jdField_a_of_type_Ymk.b();
-      this.jdField_a_of_type_Ymk = null;
+      this.jdField_a_of_type_Yqz.b();
+      this.jdField_a_of_type_Yqz = null;
     }
   }
   
@@ -249,7 +249,7 @@ public class VideoCoverAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    VideoCoverView localVideoCoverView = new VideoCoverView(this.jdField_a_of_type_AndroidContentContext, (nlp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), getCount(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer$OnCompletionListener, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Nlo, this.jdField_a_of_type_Ymk);
+    VideoCoverView localVideoCoverView = new VideoCoverView(this.jdField_a_of_type_AndroidContentContext, (nlp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), getCount(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer$OnCompletionListener, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Nlo, this.jdField_a_of_type_Yqz);
     ((nlp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView = localVideoCoverView;
     paramViewGroup.addView(localVideoCoverView);
     return localVideoCoverView;

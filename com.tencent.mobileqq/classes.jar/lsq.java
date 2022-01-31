@@ -40,7 +40,7 @@ public class lsq
       if (!GestureFilterManager.sGestureType.equals("fivea")) {
         break label79;
       }
-      localObject = VideoController.a().a().getResources().getDrawable(2130841778);
+      localObject = VideoController.a().a().getResources().getDrawable(2130841791);
     }
     for (;;)
     {
@@ -49,11 +49,11 @@ public class lsq
       return;
       label79:
       if (GestureFilterManager.sGestureType.equals("palmup")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130841779);
+        localObject = VideoController.a().a().getResources().getDrawable(2130841792);
       } else if (GestureFilterManager.sGestureType.equals("qheart")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130841780);
+        localObject = VideoController.a().a().getResources().getDrawable(2130841793);
       } else {
-        localObject = new BitmapDrawable(arof.a(azce.a() + paramString + ".png"));
+        localObject = new BitmapDrawable(arso.a(azgn.a() + paramString + ".png"));
       }
     }
   }

@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bcwh;
+import bdaq;
 
 public class BannerView
   extends FrameLayout
@@ -27,7 +27,7 @@ public class BannerView
   private BannerView.DotsIndicator jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryBannerView$DotsIndicator;
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int = bcwh.a(getContext(), 25.0F);
+  int jdField_b_of_type_Int = bdaq.a(getContext(), 25.0F);
   private int c;
   private int d = 1;
   private int e = 3500;
@@ -36,21 +36,21 @@ public class BannerView
   public BannerView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130842702;
+    this.jdField_a_of_type_Int = 2130842715;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130842702;
+    this.jdField_a_of_type_Int = 2130842715;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130842702;
+    this.jdField_a_of_type_Int = 2130842715;
     a(paramContext);
   }
   

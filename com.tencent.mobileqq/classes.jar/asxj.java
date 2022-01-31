@@ -1,85 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class asxj
-  implements aswa
+final class asxj
+  implements EIPCResultCallback
 {
-  asxj(asxg paramasxg) {}
+  asxj(asxk paramasxk) {}
   
-  public void a(boolean paramBoolean)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    boolean bool = true;
-    asxg.a(this.a, paramBoolean);
-    int i;
-    if (!bdee.a(asxg.a(this.a).getApplicationContext()))
+    String str = null;
+    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
+    FaceDetectForThirdPartyManager.AppConf localAppConf;
+    switch (paramEIPCResult.code)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label190;
-      }
-      localObject = asxx.a;
-      if (i != 0) {
-        break label185;
-      }
+    default: 
+      str = alud.a(2131714909);
+      localAppConf = null;
     }
-    label185:
-    for (paramBoolean = bool;; paramBoolean = false)
+    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
     {
-      ((asxy)localObject).a(33, String.valueOf(paramBoolean));
-      asxg.a(this.a).findViewById(16908290).setVisibility(8);
-      if (!asxg.a(this.a).isFinishing())
+      this.a.a(paramEIPCResult.code, str);
+      return;
+      if (paramEIPCResult.data != null)
       {
-        if (this.a.jdField_a_of_type_Bepp != null) {
-          this.a.jdField_a_of_type_Bepp.dismiss();
-        }
-        this.a.jdField_a_of_type_Bepp = new bepp(asxg.a(this.a), 40);
-        this.a.jdField_a_of_type_Bepp.a(alpo.a(2131706032));
-        this.a.jdField_a_of_type_Bepp.setOnDismissListener(new asxk(this));
-        this.a.jdField_a_of_type_Bepp.show();
+        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
+        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
       }
-      asxg.a(this.a, false);
-      return;
-      i = 0;
-      break;
+      else
+      {
+        str = alud.a(2131714909);
+        localAppConf = null;
+        continue;
+        str = alud.a(2131692355);
+        localAppConf = null;
+      }
     }
-    label190:
-    Object localObject = asxx.a;
-    if (i == 0)
-    {
-      paramBoolean = true;
-      ((asxy)localObject).a(34, String.valueOf(paramBoolean));
-      localObject = asxg.a(this.a).opType("huiyin").opName("hy_plugin_down");
-      if (i != 0) {
-        break label331;
-      }
-      paramBoolean = true;
-      label237:
-      ((IVPluginDataReporter)localObject).d1(String.valueOf(paramBoolean)).d2(String.valueOf(this.a.jdField_a_of_type_Boolean)).report();
-      asxg.a(this.a).findViewById(16908290).setVisibility(0);
-      if (i == 0) {
-        break label336;
-      }
-      if (!this.a.jdField_a_of_type_Boolean) {
-        asxg.a(this.a).opType("huiyin").opName("plugin_view").report();
-      }
-      asxg.a(this.a, true);
-    }
-    for (;;)
-    {
-      aswy.b("2880338");
-      return;
-      paramBoolean = false;
-      break;
-      label331:
-      paramBoolean = false;
-      break label237;
-      label336:
-      if (!this.a.jdField_a_of_type_Boolean) {
-        asxg.a(this.a).opType("huiyin").opName("plugin_download_loading_view").d1("3").report();
-      }
-      asxg.a(this.a, false);
-    }
+    this.a.a(localAppConf);
   }
 }
 

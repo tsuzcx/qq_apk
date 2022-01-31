@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awul;
-import awum;
+import awyu;
+import awyv;
 import java.util.List;
 
 public class AIOPushDialogHelper$1$1
   implements Runnable
 {
-  public AIOPushDialogHelper$1$1(awum paramawum, List paramList) {}
+  public AIOPushDialogHelper$1$1(awyv paramawyv, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awum.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
+    this.jdField_a_of_type_Awyv.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
   }
 }
 

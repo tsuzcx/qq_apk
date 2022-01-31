@@ -26,9 +26,9 @@ public class UCropView
   public UCropView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131560220, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView = ((GestureCropImageView)findViewById(2131368026));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView = ((OverlayView)findViewById(2131379878));
+    LayoutInflater.from(paramContext).inflate(2131560219, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView = ((GestureCropImageView)findViewById(2131368037));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView = ((OverlayView)findViewById(2131379936));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.UCropView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView.a(paramContext);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView.a(paramContext);

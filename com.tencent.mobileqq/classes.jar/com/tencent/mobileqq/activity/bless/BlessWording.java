@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class BlessWording
-  extends awbv
+  extends awge
 {
   private String editingWording;
-  @awdj
+  @awhs
   public String wording;
   
   public BlessWording() {}

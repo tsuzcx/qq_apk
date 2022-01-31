@@ -670,7 +670,7 @@ public class ndb
     if (localObject != null)
     {
       localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-      if ((localObject != null) && (bdee.a((NetworkInfo)localObject)))
+      if ((localObject != null) && (bdin.a((NetworkInfo)localObject)))
       {
         localObject = ndd.a(paramContext);
         int i = ndd.a(paramContext);
@@ -686,7 +686,7 @@ public class ndb
   {
     ndc localndc = new ndc(paramURL);
     paramHttpsURLConnection.setRequestProperty("host", paramURL.getHost());
-    paramHttpsURLConnection.setSSLSocketFactory(new bdls(paramURL.getHost(), localndc));
+    paramHttpsURLConnection.setSSLSocketFactory(new bdqb(paramURL.getHost(), localndc));
     paramHttpsURLConnection.setHostnameVerifier(localndc);
   }
 }

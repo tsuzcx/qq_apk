@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import nrt;
 
@@ -15,7 +15,7 @@ class KandianReportSoLoader$1$1
     {
       try
       {
-        bdcs.a(KandianReportSoLoader.access$100());
+        bdhb.a(KandianReportSoLoader.access$100());
         boolean bool = KandianReportSoLoader.access$200();
         if (!bool) {
           continue;
@@ -25,7 +25,7 @@ class KandianReportSoLoader$1$1
         if (!bool)
         {
           QLog.d("kandianreport.KandianReportSoLoader", 1, "copy fail, delete so");
-          bdcs.a(KandianReportSoLoader.access$300());
+          bdhb.a(KandianReportSoLoader.access$300());
         }
       }
       catch (Throwable localThrowable)

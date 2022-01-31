@@ -9,9 +9,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qbj
   extends pxl
 {
-  public qbj(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbj(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
     if (QLog.isColorLevel()) {
       QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain create");
     }
@@ -20,7 +20,7 @@ public class qbj
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().l().g().n().j();
+    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().g().n().j();
   }
   
   public pxl d()

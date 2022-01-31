@@ -1,51 +1,36 @@
-import android.os.Bundle;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import cooperation.qqpim.QQPimBridgeActivity;
 
 public class biyf
+  implements biyn
 {
-  public static final List<String> a = new ArrayList(Arrays.asList(new String[] { "4", "5", "7" }));
-  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "1", "4", "5", "7" }));
-  public static final List<String> c = new ArrayList(Arrays.asList(new String[] { "2", "3", "6", "", null }));
-  public static final List<String> d = new ArrayList(Arrays.asList(new String[] { "2", "3", "", null }));
-  public static final List<String> e = new ArrayList(Arrays.asList(new String[] { "2", "3" }));
-  public static final List<String> f = new ArrayList(Arrays.asList(new String[] { "6" }));
+  public biyf(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public static void a(Bundle paramBundle, biyg parambiyg)
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    for (Object localObject = parambiyg.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
-      localArrayList.addAll(Arrays.asList(((Class)localObject).getDeclaredFields()));
+    if (QLog.isColorLevel()) {
+      QLog.i(biyg.a, 2, "QQPimBridgeActivity.hasInstalled()");
     }
-    int i = 0;
-    if (i < localArrayList.size())
-    {
-      localObject = (Field)localArrayList.get(i);
-      String str1 = ((Field)localObject).getName();
-      String str2 = ((Field)localObject).getType().getSimpleName();
-      QLog.i("HbInfo", 2, "key = " + str1 + " tname = " + str2);
-      String str3 = paramBundle.getString(str1);
-      if (str3 == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          QLog.i("HbInfo", 2, "set " + str1 + " = " + str3);
-          if (str2.equals("String")) {
-            ((Field)localObject).set(parambiyg, str3);
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(biyg.a, 2, "QQPimBridgeActivity.downloadError()");
     }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 

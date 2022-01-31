@@ -1,12 +1,10 @@
-import android.graphics.drawable.Drawable;
-import java.util.List;
-
-public class uml
+public abstract interface uml
 {
-  public static Drawable a(List<String> paramList)
-  {
-    return umm.a(paramList);
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

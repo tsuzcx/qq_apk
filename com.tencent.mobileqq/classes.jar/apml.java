@@ -1,33 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class apml
-  implements URLDrawable.URLDrawableListener
+public final class apml
 {
-  apml(aply paramaply, String paramString) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static Bundle a(String paramString1, String paramString2, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", paramString1);
+    localBundle.putString("callbackid", paramString2);
+    localBundle.putInt("respkey", paramInt);
+    localBundle.putBundle("request", paramBundle);
+    return localBundle;
   }
 }
 

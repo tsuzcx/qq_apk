@@ -1,56 +1,54 @@
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.5.1;
+import com.tencent.mobileqq.ar.ArConfigService.5.2;
+import com.tencent.mobileqq.ar.ArConfigService.5.3;
 import com.tencent.qphone.base.util.QLog;
 
 public class amwv
-  extends amyj
+  implements andm
 {
-  public float a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public amwv(ArConfigService paramArConfigService) {}
   
-  public amwv()
+  public void a()
   {
-    this.jdField_b_of_type_Long = 64L;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
+    }
   }
   
-  public static boolean a(amwv paramamwv)
+  public void a(long paramLong1, long paramLong2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramamwv != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
     {
-      bool1 = bool2;
-      if (paramamwv.a())
-      {
-        bool1 = bool2;
-        if (paramamwv.b()) {
-          bool1 = true;
-        }
+      ArConfigService.c(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
+    while (ArConfigService.e(this.a)) {
+      return;
     }
-    return bool1;
+    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
+    ArConfigService.a(this.a, true);
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
-  }
+  public void b() {}
 }
 
 

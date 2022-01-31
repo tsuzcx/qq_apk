@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bglq;
-import bgnf;
-import bgqp;
-import bgqq;
+import bgpx;
+import bgrm;
+import bguw;
+import bgux;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
@@ -29,7 +29,7 @@ import com.tencent.qqmini.sdk.utils.DebugUtil;
 public class MiniAppInfoLoadingFragment
   extends MiniBaseFragment
 {
-  private static final boolean jdField_a_of_type_Boolean = bglq.a("qqminiapp", "mini_app_enable_db_cache", true);
+  private static final boolean jdField_a_of_type_Boolean = bgpx.a("qqminiapp", "mini_app_enable_db_cache", true);
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -67,7 +67,7 @@ public class MiniAppInfoLoadingFragment
   private void a(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
     a();
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new bgqq(this, paramLaunchParam));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new bgux(this, paramLaunchParam));
   }
   
   private void a(String paramString, long paramLong)
@@ -78,10 +78,10 @@ public class MiniAppInfoLoadingFragment
       {
         if (DebugUtil.isDebugVersion())
         {
-          bgnf.a(getActivity(), 1, "" + paramString + paramLong, 1).a();
+          bgrm.a(getActivity(), 1, "" + paramString + paramLong, 1).a();
           return;
         }
-        bgnf.a(getActivity(), 1, "" + paramString, 1).a();
+        bgrm.a(getActivity(), 1, "" + paramString, 1).a();
         return;
       }
     }
@@ -102,7 +102,7 @@ public class MiniAppInfoLoadingFragment
     if (paramString3 == null) {
       paramString2 = "";
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new bgqp(this, paramLaunchParam));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new bguw(this, paramLaunchParam));
   }
   
   private static boolean a(MiniAppInfo paramMiniAppInfo)
@@ -142,8 +142,8 @@ public class MiniAppInfoLoadingFragment
     QMLog.i("MiniAppInfoLoadingFragment", "LoadingFragment onCreateView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559339, null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369762));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559338, null);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369781));
     }
     return this.jdField_a_of_type_AndroidViewView;
   }

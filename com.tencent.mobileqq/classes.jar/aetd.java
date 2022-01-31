@@ -1,40 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
-class aetd
-  implements Animator.AnimatorListener
+public class aetd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aetd(aetb paramaetb, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
+  public aetd(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
+    {
+      this.a.c.setAlpha(1.0F - f * 2.0F);
+      return;
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
-    aetb.a(this.jdField_a_of_type_Aetb, paramAnimator, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
-    if ((aetg.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    this.a.c.setAlpha(f * 2.0F - 1.0F);
   }
 }
 

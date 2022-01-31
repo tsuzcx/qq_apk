@@ -1,45 +1,13 @@
-import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class aoqh
-  extends aopw<aora>
+class aoqh
+  implements blzd
 {
-  @NonNull
-  public static aora c()
-  {
-    aora localaora2 = (aora)aogj.a().a(527);
-    aora localaora1 = localaora2;
-    if (localaora2 == null) {
-      localaora1 = new aora();
-    }
-    return localaora1;
-  }
+  aoqh(aoqg paramaoqg) {}
   
-  public int a()
+  public void a(String paramString)
   {
-    return 527;
-  }
-  
-  @NonNull
-  public aora a()
-  {
-    return new aora();
-  }
-  
-  @NonNull
-  public aora a(@NonNull aogf[] paramArrayOfaogf)
-  {
-    return aora.a(paramArrayOfaogf[0].a);
-  }
-  
-  public Class<aora> a()
-  {
-    return aora.class;
-  }
-  
-  @NonNull
-  public aora b()
-  {
-    return new aora();
+    bnhb.a(BaseApplicationImpl.getContext(), paramString);
   }
 }
 

@@ -1,30 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-class aenx
-  implements DialogInterface.OnClickListener
+public class aenx
+  implements View.OnClickListener
 {
-  aenx(aenv paramaenv) {}
+  public aenx(ReminderListFragment paramReminderListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((aenv.a(this.a) != null) && (aenv.a(this.a).isShowing())) {
-        aenv.a(this.a).dismiss();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
   }
 }

@@ -1,24 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
 public class beoz
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public beoz(ProfileNameView paramProfileNameView, awmk paramawmk) {}
+  public beoz(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str = bckj.a().a(this.jdField_a_of_type_Awmk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    azmj.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
+    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe;
 
 import android.graphics.Bitmap;
-import anoe;
+import ansn;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xxh;
+import ybq;
 
 public class SubscribeJsPlugin$2
   implements Runnable
 {
-  public SubscribeJsPlugin$2(xxh paramxxh, JSONArray paramJSONArray) {}
+  public SubscribeJsPlugin$2(ybq paramybq, JSONArray paramJSONArray) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class SubscribeJsPlugin$2
           try
           {
             String str = this.a.getJSONObject(i).getString("uin");
-            Bitmap localBitmap = xxh.a(this.this$0).a(str, true, null);
+            Bitmap localBitmap = ybq.a(this.this$0).a(str, true, null);
             QLog.i(this.this$0.TAG, 4, "handleGetAvatar  uin: " + str);
-            xxh.a(this.this$0, str, localBitmap);
+            ybq.a(this.this$0, str, localBitmap);
             i += 1;
           }
           catch (JSONException localJSONException)

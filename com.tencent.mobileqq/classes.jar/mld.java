@@ -10,11 +10,11 @@ public final class mld
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bepp jdField_a_of_type_Bepp;
+  private bety jdField_a_of_type_Bety;
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
   private Boolean jdField_a_of_type_JavaLangBoolean;
   private final Runnable jdField_a_of_type_JavaLangRunnable = new QavSharpnessSVIPHelper.1(this);
-  private xwg jdField_a_of_type_Xwg;
+  private yap jdField_a_of_type_Yap;
   private boolean jdField_a_of_type_Boolean;
   
   public mld(VideoController paramVideoController, AVActivity paramAVActivity)
@@ -30,15 +30,15 @@ public final class mld
   {
     QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction");
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Xwg == null) {
-      this.jdField_a_of_type_Xwg = new xwg(paramActivity);
+    if (this.jdField_a_of_type_Yap == null) {
+      this.jdField_a_of_type_Yap = new yap(paramActivity);
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
     }
-    this.jdField_a_of_type_Xwg.a("doubleVideo", 5000L, new mle(this, paramActivity, l));
+    this.jdField_a_of_type_Yap.a("doubleVideo", 5000L, new mle(this, paramActivity, l));
   }
   
   public boolean a()
@@ -67,12 +67,12 @@ public final class mld
     if (QLog.isColorLevel()) {
       QLog.w("QavSharpnessSVIPHelper", 1, "doRealLaunchQQPayFuntion");
     }
-    if (this.jdField_a_of_type_Xwg != null)
+    if (this.jdField_a_of_type_Yap != null)
     {
-      this.jdField_a_of_type_Xwg.a();
-      this.jdField_a_of_type_Xwg = null;
+      this.jdField_a_of_type_Yap.a();
+      this.jdField_a_of_type_Yap = null;
     }
-    bdqe.a(this.jdField_a_of_type_AndroidAppActivity, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=17301507&aid=mvip.n.a.hdvcall&type=!svip&isAskFriendPay=0&isSend=0");
+    bdun.a(this.jdField_a_of_type_AndroidAppActivity, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=17301507&aid=mvip.n.a.hdvcall&type=!svip&isAskFriendPay=0&isSend=0");
   }
   
   public void c()
@@ -86,14 +86,14 @@ public final class mld
       return;
       try
       {
-        if (this.jdField_a_of_type_Bepp == null)
+        if (this.jdField_a_of_type_Bety == null)
         {
-          this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
-          this.jdField_a_of_type_Bepp.a(alpo.a(2131709324));
-          this.jdField_a_of_type_Bepp.c(false);
+          this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
+          this.jdField_a_of_type_Bety.a(alud.a(2131709336));
+          this.jdField_a_of_type_Bety.c(false);
         }
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bepp.show();
+        this.jdField_a_of_type_Bety.show();
         return;
       }
       catch (Exception localException) {}
@@ -111,8 +111,8 @@ public final class mld
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       }
-      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-        this.jdField_a_of_type_Bepp.dismiss();
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.dismiss();
       }
       this.jdField_a_of_type_Boolean = false;
       return;
@@ -135,10 +135,10 @@ public final class mld
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    if (this.jdField_a_of_type_Xwg != null)
+    if (this.jdField_a_of_type_Yap != null)
     {
-      this.jdField_a_of_type_Xwg.a();
-      this.jdField_a_of_type_Xwg = null;
+      this.jdField_a_of_type_Yap.a();
+      this.jdField_a_of_type_Yap = null;
     }
   }
 }

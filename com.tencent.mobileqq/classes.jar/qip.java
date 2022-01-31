@@ -27,7 +27,7 @@ public class qip
   
   public static String a()
   {
-    return bduw.a(aljq.aX + ".readInjoy/skin_res/");
+    return bdzf.a(alof.aX + ".readInjoy/skin_res/");
   }
   
   public static String a(String paramString)
@@ -100,7 +100,7 @@ public class qip
     if (jdField_a_of_type_OrgJsonJSONObject == null) {}
     try
     {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(bdcs.b(new File(b() + "/colors.json")));
+      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(bdhb.b(new File(b() + "/colors.json")));
       return jdField_a_of_type_OrgJsonJSONObject;
     }
     catch (IOException localIOException)
@@ -124,7 +124,7 @@ public class qip
     Object localObject = null;
     try
     {
-      String str = bdcs.b(new File(d() + "refreshConfig.json"));
+      String str = bdhb.b(new File(d() + "refreshConfig.json"));
       localObject = str;
       JSONObject localJSONObject = new JSONObject(str);
       if (localJSONObject != null)
@@ -161,7 +161,7 @@ public class qip
   
   public static boolean a(String paramString)
   {
-    return azzp.a(new File(a(paramString)));
+    return bady.a(new File(a(paramString)));
   }
   
   public static int b()
@@ -196,7 +196,7 @@ public class qip
   
   public static String c()
   {
-    return bduw.a(aljq.aX + ".readInjoy/skin_guide/");
+    return bdzf.a(alof.aX + ".readInjoy/skin_guide/");
   }
   
   public static String d()
@@ -267,7 +267,7 @@ public class qip
       }
     }
     localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = awgi.a(paramString.getAbsolutePath());
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = awkr.a(paramString.getAbsolutePath());
     localObject2 = new ColorDrawable(0);
     ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
     ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);

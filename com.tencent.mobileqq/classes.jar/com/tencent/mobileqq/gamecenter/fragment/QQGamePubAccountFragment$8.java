@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import asiy;
+import asnh;
 
 class QQGamePubAccountFragment$8
   implements Runnable

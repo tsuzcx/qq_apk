@@ -1,103 +1,33 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class aywp
+  extends aywk
 {
-  public static String a(Map<Integer, String> paramMap)
+  public aywp(ViewGroup paramViewGroup, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      String str = (String)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (str == null) {
-            break label147;
-          }
-          localObject = URLEncoder.encode(str, "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label147:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    super(paramViewGroup, paramInt);
   }
   
-  public static Map<Integer, String> a(String paramString)
+  public void a()
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), URLDecoder.decode(arrayOfString[1], "UTF-8"));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
+    super.a();
+    TextView localTextView = c();
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      if (localTextView != null) {
+        ((TextView)localTextView).setTextColor(localTextView.getContext().getResources().getColor(2131166840));
       }
     }
-    return localHashMap;
-  }
-  
-  public static Map<String, String> b(String paramString)
-  {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
+    while (localTextView == null) {
+      return;
     }
-    return localHashMap;
+    ((TextView)localTextView).setTextColor(Color.parseColor("#737373"));
   }
 }
 

@@ -1,33 +1,17 @@
-import android.content.Context;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ygw
-  implements Callback
+class ygw
+  implements View.OnClickListener
 {
-  ygw(Context paramContext, ygx paramygx) {}
+  ygw(ygq paramygq, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void onClick(View paramView)
   {
-    ygv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ygx, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    try
-    {
-      paramCall = new JSONObject(paramResponse.body().string()).optString("key");
-      ygv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ygx, paramCall);
-      return;
-    }
-    catch (Throwable paramCall)
-    {
-      paramCall.printStackTrace();
-    }
+    ygg.a(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
   }
 }
 

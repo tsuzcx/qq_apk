@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adxf;
+import aebu;
 import android.widget.BaseAdapter;
 import com.tencent.widget.XListView;
 
 public class TroopAssistantActivity$11$1
   implements Runnable
 {
-  public TroopAssistantActivity$11$1(adxf paramadxf) {}
+  public TroopAssistantActivity$11$1(aebu paramaebu) {}
   
   public void run()
   {

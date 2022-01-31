@@ -1,6 +1,6 @@
 package com.tencent.util.pm;
 
-import bdfq;
+import bdjz;
 
 public final class PackageUtil$4
   implements Runnable

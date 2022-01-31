@@ -1,7 +1,4 @@
-class amiw
-{
-  private static amiv a = new amiv();
-}
+public class amiw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

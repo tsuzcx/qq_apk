@@ -1,18 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.View;
 
 public class apcs
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public apcs(DataReportViewer paramDataReportViewer) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static apcw a(View paramView)
   {
-    this.a.a = paramBoolean;
-    if (this.a.a) {
-      this.a.a();
+    if ((paramView instanceof SurfaceView)) {
+      return new apcy((SurfaceView)paramView);
     }
+    if ((paramView instanceof TextureView)) {
+      return new apcz((TextureView)paramView);
+    }
+    return null;
   }
 }
 

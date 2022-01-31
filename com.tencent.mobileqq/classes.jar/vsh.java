@@ -1,21 +1,32 @@
-public class vsh
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import java.util.List;
+
+class vsh
+  implements View.OnClickListener
 {
-  @xnb(a="clipNo")
-  int jdField_a_of_type_Int;
-  @xnb(a="fileSize")
-  long jdField_a_of_type_Long;
-  @xnb(a="errorMsg")
-  String jdField_a_of_type_JavaLangString;
-  @xnb(a="speedKBS")
-  int b;
-  @xnb(a="offset")
-  int c;
-  @xnb(a="callBackType")
-  int d;
-  @xnb(a="errorCode")
-  int e;
-  @xnb(a="errorDetailCode")
-  int f;
+  vsh(vsg paramvsg) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (paramView != null) {
+      paramView.d = 2;
+    }
+    this.a.a().finish();
+    String str = "";
+    paramView = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
+    {
+      paramView = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        paramView = ((vtt)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
+      }
+    }
+    wxj.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", paramView });
+  }
 }
 
 

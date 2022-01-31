@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class waw
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wav, uow>
 {
-  public waw(MyMemoriesListView paramMyMemoriesListView) {}
-  
-  public void onClick(View paramView)
+  public waw(@NonNull wav paramwav)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_Wax != null) {
-        this.a.jdField_a_of_type_Wax.c();
-      }
+    super(paramwav);
+  }
+  
+  public void a(@NonNull wav paramwav, @NonNull uow paramuow)
+  {
+    if ((wav.a(paramwav) == null) || (paramuow.a == null) || (!TextUtils.equals(wav.a(paramwav).a, paramuow.a.mVid))) {
+      return;
     }
+    paramwav.a.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
   }
 }
 

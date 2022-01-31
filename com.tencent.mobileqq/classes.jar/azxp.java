@@ -1,45 +1,100 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
 
 public class azxp
+  extends azut
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
-  
-  public static azxp a(String paramString1, String paramString2, String paramString3)
+  private LinearLayout a(Context paramContext)
   {
-    azxp localazxp = new azxp();
-    localazxp.jdField_a_of_type_JavaLangString = "2";
-    localazxp.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localazxp.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localazxp.b = paramString1;
-    localazxp.c = paramString2;
-    localazxp.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localazxp.toString());
-    return localazxp;
+    Resources localResources = paramContext.getResources();
+    paramContext = new LinearLayout(paramContext);
+    paramContext.setOrientation(1);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = localResources.getDimensionPixelSize(2131298817);
+    int j = localResources.getDimensionPixelSize(2131298818);
+    paramContext.setPadding(i, localResources.getDimensionPixelSize(2131298819), j, localResources.getDimensionPixelSize(2131298816));
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  public DownloaderTask a()
+  protected int b()
   {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
+    return 21;
   }
   
-  public void a(DownloaderTask paramDownloaderTask)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
+    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA) {}
+    Resources localResources = paramContext.getResources();
+    int i;
+    int k;
+    label102:
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    {
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      i = paramView.getPaddingTop();
+      j = paramView.getPaddingBottom();
+      k = localResources.getDimensionPixelSize(2131298817);
+      int m = localResources.getDimensionPixelSize(2131298818);
+      a(paramView);
+      d(paramView);
+      paramView.setPadding(k, i, m, j);
+      k = aepi.a(7.0F, localResources);
+      i = 0;
+      if (i >= this.a.size()) {
+        return paramView;
+      }
+      localObject2 = (azus)this.a.get(i);
+      if (!(localObject2 instanceof azzt)) {
+        break label216;
+      }
+      localObject1 = (azzt)localObject2;
+      localObject2 = ((azzt)localObject1).a(paramContext, null, paramBundle);
+      if (localObject2 != null)
+      {
+        localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        localLayoutParams.topMargin = ((azzt)localObject1).k;
+        localLayoutParams.bottomMargin = ((azzt)localObject1).l;
+        paramView.addView((View)localObject2, localLayoutParams);
+      }
+    }
+    label216:
+    while (!(localObject2 instanceof azwx))
+    {
+      LinearLayout.LayoutParams localLayoutParams;
+      i += 1;
+      break label102;
+      paramView = a(paramContext);
+      break;
+    }
+    Object localObject1 = ((azus)localObject2).a(paramContext, null, paramBundle);
+    if (((azwx)localObject2).a) {}
+    for (int j = 0;; j = aepi.a(2.0F, localResources))
+    {
+      localObject2 = new LinearLayout.LayoutParams(-1, j);
+      ((LinearLayout.LayoutParams)localObject2).topMargin = k;
+      ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
+      if (localObject1 == null) {
+        break;
+      }
+      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      break;
+    }
+    return paramView;
   }
   
-  public String toString()
+  public String b()
   {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    return "Layout21";
   }
 }
 

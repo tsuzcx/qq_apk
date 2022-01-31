@@ -1,12 +1,26 @@
-import android.util.Pair;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
 class awmg
-  implements Comparator<Pair<Long, String>>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  awmg(awmf paramawmf, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return awmf.a((CharSequence)paramPair1.second) - awmf.a((CharSequence)paramPair2.second);
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-awmf.a(this.jdField_a_of_type_Awmf) * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Awmf.f);
+    this.b.setAlpha(1.0F - f);
   }
 }
 

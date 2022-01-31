@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import asle;
+import aspn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -252,7 +252,7 @@ public class PatternLockUtils
     return (paramContext != null) && (paramContext.length() > 0);
   }
   
-  public static String patternToString(List<asle> paramList)
+  public static String patternToString(List<aspn> paramList)
   {
     if (paramList == null) {
       return "";
@@ -262,9 +262,9 @@ public class PatternLockUtils
     int i = 0;
     while (i < j)
     {
-      asle localasle = (asle)paramList.get(i);
-      int k = localasle.a();
-      localStringBuilder.append((char)(localasle.b() + k * 3 + 49));
+      aspn localaspn = (aspn)paramList.get(i);
+      int k = localaspn.a();
+      localStringBuilder.append((char)(localaspn.b() + k * 3 + 49));
       i += 1;
     }
     return localStringBuilder.toString();
@@ -367,7 +367,7 @@ public class PatternLockUtils
     paramContext.commit();
   }
   
-  public static List<asle> stringToPattern(String paramString)
+  public static List<aspn> stringToPattern(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -377,7 +377,7 @@ public class PatternLockUtils
     while (i < paramString.length())
     {
       int j = paramString.indexOf(i) - 49;
-      localArrayList.add(asle.a(j / 3, j % 3));
+      localArrayList.add(aspn.a(j / 3, j % 3));
       i += 1;
     }
     return localArrayList;

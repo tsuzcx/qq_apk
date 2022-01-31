@@ -1,43 +1,73 @@
-import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.ipc.AppBrandProxy;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 
-class bgtu
-  implements DownloaderProxy.DownloadListener
+public class bgtu
 {
-  bgtu(bgtt parambgtt, ITDownloadListener paramITDownloadListener, String paramString1, String paramString2) {}
+  private static volatile bgtu jdField_a_of_type_Bgtu;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private AppBrandProxy jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy;
   
-  public void onDownloadFailed(int paramInt, String paramString)
+  public static bgtu a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, paramInt, null);
-    }
-  }
-  
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onProgress(this.jdField_a_of_type_JavaLangString, paramLong2, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
-  {
-    boolean bool = new File(this.b).exists();
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null)
+    if (jdField_a_of_type_Bgtu == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      if (bool) {
-        this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onSuccess(this.jdField_a_of_type_JavaLangString, paramInt, null, bgjm.a().e(this.b));
+      if (jdField_a_of_type_Bgtu == null) {
+        jdField_a_of_type_Bgtu = new bgtu();
       }
+      return jdField_a_of_type_Bgtu;
     }
-    else {
+  }
+  
+  /* Error */
+  public void a(AppBrandProxy paramAppBrandProxy)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	bgtu:jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy	Lcom/tencent/qqmini/sdk/ipc/AppBrandProxy;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: ifnull +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: aload_1
+    //   16: putfield 23	bgtu:jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy	Lcom/tencent/qqmini/sdk/ipc/AppBrandProxy;
+    //   19: goto -8 -> 11
+    //   22: astore_1
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: aload_1
+    //   26: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	27	0	this	bgtu
+    //   0	27	1	paramAppBrandProxy	AppBrandProxy
+    //   6	2	2	localAppBrandProxy	AppBrandProxy
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	22	finally
+    //   14	19	22	finally
+  }
+  
+  public void a(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy.sendCmd(paramString, paramBundle, paramMiniCmdCallback);
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, 5, "target file not exists");
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

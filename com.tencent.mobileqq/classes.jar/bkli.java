@@ -1,16 +1,14 @@
-import android.support.annotation.Nullable;
+import java.util.List;
 
-class bkli
-  implements bmac<blbb>
+public abstract interface bkli
 {
-  bkli(bkle parambkle) {}
+  public abstract void a(int paramInt, bkkp parambkkp, String paramString);
   
-  public void a(@Nullable blbb paramblbb)
-  {
-    if (paramblbb != null) {
-      bkle.a(this.a, paramblbb.a);
-    }
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, bkkp parambkkp);
+  
+  public abstract void a(long paramLong, boolean paramBoolean1, bkkq parambkkq, boolean paramBoolean2);
+  
+  public abstract void a(String paramString, List<bkkp> paramList);
 }
 
 

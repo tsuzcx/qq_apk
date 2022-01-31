@@ -10,7 +10,7 @@ public class qbz
   
   public void onClick(View paramView)
   {
-    paramView = oqu.g + bdbi.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    paramView = oqu.g + bdfr.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
     ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), paramView);
     pja.a(1, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }

@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public final class ailg
-  implements Parcelable.Creator<TroopClipPic>
+public class ailg
+  implements DialogInterface.OnKeyListener
 {
-  public TroopClipPic a(Parcel paramParcel)
-  {
-    return new TroopClipPic(paramParcel);
-  }
+  public ailg(BaseActivityView paramBaseActivityView) {}
   
-  public TroopClipPic[] a(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return new TroopClipPic[paramInt];
+    return (paramInt == 4) && (this.a.a.e()) && (bdin.d(this.a.getContext()));
   }
 }
 

@@ -1,19 +1,70 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 
-class akub
-  implements Comparator<akud>
+public class akub
 {
-  akub(akua paramakua) {}
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
   
-  public int a(akud paramakud1, akud paramakud2)
+  public WebResourceResponse a()
   {
-    if (paramakud1.a == paramakud2.a) {
-      return 0;
+    try
+    {
+      if (this.b != null)
+      {
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
+          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
+        }
+        if (!bdhb.a(this.b)) {
+          break label102;
+        }
+        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
+        return localWebResourceResponse;
+      }
     }
-    if (paramakud1.a > paramakud2.a) {
-      return 1;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
     }
-    return -1;
+    return null;
+    label102:
+    return null;
+  }
+  
+  public String a()
+  {
+    return "file://" + this.b;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bdhb.a(this.b)))
+      {
+        if (bdhb.b(this.b) <= 8388608L) {
+          break label84;
+        }
+        this.jdField_a_of_type_Boolean = true;
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
+        return;
+        label84:
+        this.jdField_a_of_type_ArrayOfByte = bdhb.a(this.b);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
+    }
   }
 }
 

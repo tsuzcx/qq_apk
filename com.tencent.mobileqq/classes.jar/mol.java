@@ -14,10 +14,10 @@ public class mol
 {
   public static Bitmap a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = bcxb.a(paramQQAppInterface, paramString, (byte)2).a();
+    paramQQAppInterface = bdbk.a(paramQQAppInterface, paramString, (byte)2).a();
     paramString = paramQQAppInterface;
     if (paramQQAppInterface == null) {
-      paramString = bdda.a();
+      paramString = bdhj.a();
     }
     return paramString;
   }
@@ -27,9 +27,9 @@ public class mol
     if (paramQQAppInterface == null) {
       return;
     }
-    View localView = paramView.findViewById(2131370845);
-    TextView localTextView = (TextView)paramView.findViewById(2131370823);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131370822);
+    View localView = paramView.findViewById(2131370864);
+    TextView localTextView = (TextView)paramView.findViewById(2131370842);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131370841);
     int i;
     int j;
     boolean bool;
@@ -37,7 +37,7 @@ public class mol
     {
       l = ((Long)paramMessage.obj).longValue();
       i = paramQQAppInterface.a().b(l);
-      localObject = (LinearLayout)paramView.findViewById(2131370819);
+      localObject = (LinearLayout)paramView.findViewById(2131370838);
       if (i == 2)
       {
         paramMessage = paramQQAppInterface.a().a(l);
@@ -93,7 +93,7 @@ public class mol
     label925:
     for (;;)
     {
-      azmj.a(paramQQAppInterface, "dc00898", "", "", "0X8009EE1", "0X8009EE1", 1, 0, "", "", "", "");
+      azqs.a(paramQQAppInterface, "dc00898", "", "", "0X8009EE1", "0X8009EE1", 1, 0, "", "", "", "");
       return;
       label426:
       if (paramMessage.size() == 2)
@@ -129,7 +129,7 @@ public class mol
         }
       }
       label688:
-      for (i = 2131696160;; i = 2131696159)
+      for (i = 2131696162;; i = 2131696161)
       {
         paramMessage = paramQQAppInterface.getApp().getString(i);
         paramView = paramQQAppInterface.a().e();
@@ -142,19 +142,19 @@ public class mol
       label695:
       if (j == 6)
       {
-        localTextView.setText(paramQQAppInterface.getApp().getString(2131696161));
+        localTextView.setText(paramQQAppInterface.getApp().getString(2131696163));
         mbt.a(localView, bool, paramBoolean);
       }
       else if (j >= 5)
       {
-        paramView = paramQQAppInterface.getApp().getString(2131696159);
+        paramView = paramQQAppInterface.getApp().getString(2131696161);
         paramView = paramView + " ";
         localTextView.setText(paramView + paramQQAppInterface.a().e());
         mbt.a(localView, bool, paramBoolean);
       }
       else if ((j >= 1) && (j < 5))
       {
-        localTextView.setText(paramQQAppInterface.getApp().getString(2131695851));
+        localTextView.setText(paramQQAppInterface.getApp().getString(2131695853));
         mbt.a(localView, bool, paramBoolean);
       }
       else
@@ -175,10 +175,10 @@ public class mol
         if (j != 1) {
           break label1254;
         }
-        paramMessage = paramQQAppInterface.getApp().getString(2131693065);
+        paramMessage = paramQQAppInterface.getApp().getString(2131693067);
         paramView = paramMessage;
         if (i == 2) {
-          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720905), paramQQAppInterface.getApp().getString(2131720906));
+          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720917), paramQQAppInterface.getApp().getString(2131720918));
         }
         mww.a(localView, paramView);
         label978:
@@ -194,7 +194,7 @@ public class mol
       paramMessage = paramQQAppInterface.getApp().getString(2131690006);
       paramView = paramMessage;
       if (i == 2) {
-        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720905), paramQQAppInterface.getApp().getString(2131720906));
+        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720917), paramQQAppInterface.getApp().getString(2131720918));
       }
     }
     label1254:
@@ -212,7 +212,7 @@ public class mol
           if (i != 2) {
             break label1532;
           }
-          paramView = paramView.replace(paramQQAppInterface.getApp().getString(2131720905), paramQQAppInterface.getApp().getString(2131720906));
+          paramView = paramView.replace(paramQQAppInterface.getApp().getString(2131720917), paramQQAppInterface.getApp().getString(2131720918));
           localImageView.setImageDrawable(null);
           continue;
         }
@@ -236,17 +236,17 @@ public class mol
       if (j != 3000) {
         break label978;
       }
-      paramMessage = paramQQAppInterface.getApp().getString(2131693064);
+      paramMessage = paramQQAppInterface.getApp().getString(2131693066);
       paramView = paramMessage;
       if (i == 2) {
-        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720905), paramQQAppInterface.getApp().getString(2131720906));
+        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131720917), paramQQAppInterface.getApp().getString(2131720918));
       }
       mww.a(localView, paramView);
       break label978;
       if (i == 1)
       {
         if (paramQQAppInterface.a().f()) {
-          localTextView.setText(2131696439);
+          localTextView.setText(2131696441);
         }
         for (;;)
         {
@@ -254,14 +254,14 @@ public class mol
           mbt.a(localView, bool, paramBoolean);
           break;
           paramView = paramQQAppInterface.a().e();
-          paramMessage = paramQQAppInterface.getApp().getString(2131695842);
+          paramMessage = paramQQAppInterface.getApp().getString(2131695844);
           localTextView.setText(paramMessage + " " + paramView);
         }
       }
       if ((i == 2) && (!paramQQAppInterface.a().k()))
       {
         if (paramQQAppInterface.a().f()) {
-          localTextView.setText(2131696439);
+          localTextView.setText(2131696441);
         }
         for (;;)
         {
@@ -269,7 +269,7 @@ public class mol
           mbt.a(localView, bool, paramBoolean);
           break;
           paramView = paramQQAppInterface.a().e();
-          paramMessage = paramQQAppInterface.getApp().getString(2131696413);
+          paramMessage = paramQQAppInterface.getApp().getString(2131696415);
           localTextView.setText(paramMessage + " " + paramView);
         }
       }

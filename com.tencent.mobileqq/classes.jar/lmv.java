@@ -9,9 +9,9 @@ public class lmv
 {
   public static int a;
   
-  public static baig a(String paramString, int paramInt)
+  public static bamp a(String paramString, int paramInt)
   {
-    return new baig(a(paramString), 3, paramInt);
+    return new bamp(a(paramString), 3, paramInt);
   }
   
   public static String a(int paramInt)
@@ -21,24 +21,24 @@ public class lmv
     if (paramInt >= 0)
     {
       str1 = str2;
-      if (paramInt < bahu.a.length) {
-        str1 = '\024' + bahu.a[paramInt];
+      if (paramInt < bamd.a.length) {
+        str1 = '\024' + bamd.a[paramInt];
       }
     }
     return str1;
   }
   
-  public static String a(baiq parambaiq)
+  public static String a(bamz parambamz)
   {
     int j = 0;
-    if (parambaiq == null) {
+    if (parambamz == null) {
       return null;
     }
-    int i = parambaiq.length();
+    int i = parambamz.length();
     Object localObject1 = new char[i];
-    parambaiq.getChars(0, i, (char[])localObject1, 0);
+    parambamz.getChars(0, i, (char[])localObject1, 0);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject2 = (bain[])parambaiq.getSpans(0, i, bain.class);
+    Object localObject2 = (bamw[])parambamz.getSpans(0, i, bamw.class);
     if ((localObject2 != null) && (localObject2.length > 0))
     {
       StringBuilder localStringBuilder2 = new StringBuilder();
@@ -54,7 +54,7 @@ public class lmv
         {
           i += 1;
           break;
-          ((ArrayList)localObject1).add(lmw.a((bain)localObject3, parambaiq.getSpanStart(localObject3), parambaiq.getSpanEnd(localObject3)));
+          ((ArrayList)localObject1).add(lmw.a((bamw)localObject3, parambamz.getSpanStart(localObject3), parambamz.getSpanEnd(localObject3)));
         }
       }
       Collections.sort((List)localObject1, lmw.jdField_a_of_type_JavaUtilComparator);
@@ -62,26 +62,26 @@ public class lmv
       i = j;
       if (((Iterator)localObject2).hasNext())
       {
-        parambaiq = (lmw)((Iterator)localObject2).next();
-        localObject3 = parambaiq.jdField_a_of_type_Bain;
-        int k = parambaiq.jdField_a_of_type_Int;
-        j = parambaiq.b;
-        switch (((bain)localObject3).c)
+        parambamz = (lmw)((Iterator)localObject2).next();
+        localObject3 = parambamz.jdField_a_of_type_Bamw;
+        int k = parambamz.jdField_a_of_type_Int;
+        j = parambamz.b;
+        switch (((bamw)localObject3).c)
         {
         default: 
-          parambaiq = localStringBuilder2.substring(k, j);
+          parambamz = localStringBuilder2.substring(k, j);
         }
         for (;;)
         {
           if (i < k) {
             localStringBuilder1.append(localStringBuilder2.substring(i, k));
           }
-          localStringBuilder1.append(parambaiq);
+          localStringBuilder1.append(parambamz);
           i = j;
           break;
-          parambaiq = '\024' + ((bain)localObject3).a();
+          parambamz = '\024' + ((bamw)localObject3).a();
           continue;
-          parambaiq = a(((bain)localObject3).jdField_a_of_type_Int & 0x7FFFFFFF);
+          parambamz = a(((bamw)localObject3).jdField_a_of_type_Int & 0x7FFFFFFF);
         }
       }
       if (i < localStringBuilder2.length()) {
@@ -116,16 +116,16 @@ public class lmv
       try
       {
         String str;
-        if (i < bahu.a.length)
+        if (i < bamd.a.length)
         {
           localObject2 = localObject1;
-          str = '\024' + bahu.a[i];
+          str = '\024' + bamd.a[i];
           localObject2 = localObject1;
           paramString = (String)localObject1;
           if (((String)localObject1).indexOf(str) != -1)
           {
             localObject2 = localObject1;
-            paramString = ((String)localObject1).replace(str, baiy.c(i));
+            paramString = ((String)localObject1).replace(str, banh.c(i));
           }
         }
         else
@@ -134,17 +134,17 @@ public class lmv
           {
             localObject2 = paramString;
             localObject1 = paramString;
-            if (j >= bahu.a.length) {
+            if (j >= bamd.a.length) {
               break;
             }
             localObject2 = paramString;
-            str = bahu.a[j];
+            str = bamd.a[j];
             localObject1 = paramString;
             localObject2 = paramString;
             if (paramString.indexOf(str) != -1)
             {
               localObject2 = paramString;
-              localObject1 = paramString.replace(str, baiy.c(j));
+              localObject1 = paramString.replace(str, banh.c(j));
             }
             j += 1;
             paramString = (String)localObject1;
@@ -171,7 +171,7 @@ public class lmv
     if (QLog.isColorLevel()) {
       QLog.i("ChatRoomUtil", 2, String.format("doReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(i) }));
     }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
   }
 }
 

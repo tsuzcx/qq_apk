@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import java.util.List;
 
-class atow
-  implements View.OnClickListener
+public abstract interface atow
 {
-  atow(atov paramatov) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.a()) {
-      return;
-    }
-    azmj.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
-    atmi.a(atof.a(this.a.a), this.a.a);
-  }
+  public abstract void a(List<MusicInfo> paramList);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import aekt;
+import aepi;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -19,7 +19,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bcwh;
+import bdaq;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.RegionDrawable;
@@ -77,7 +77,7 @@ public class ColorBandVideoEntranceButton
   private Drawable a()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842705);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842718);
     }
     return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
@@ -231,18 +231,18 @@ public class ColorBandVideoEntranceButton
   
   private void h()
   {
-    inflate(getContext(), 2131559932, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379857);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375273));
+    inflate(getContext(), 2131559931, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379915);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375324));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368881));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131375274));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368898));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131375325));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setOnClickListener(this);
     i();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-    this.c = ((ImageView)findViewById(2131379899));
-    this.d = ((ImageView)findViewById(2131379898));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840212);
+    this.c = ((ImageView)findViewById(2131379957));
+    this.d = ((ImageView)findViewById(2131379956));
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840213);
     k();
   }
   
@@ -265,8 +265,8 @@ public class ColorBandVideoEntranceButton
     this.jdField_a_of_type_AndroidViewView.setScaleY(0.2F);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleX(0.2F);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleY(0.2F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, aekt.a(21.0F, getResources()) });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, aekt.a(21.0F, getResources()) });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, aepi.a(21.0F, getResources()) });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, aepi.a(21.0F, getResources()) });
     ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.38F });
     ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.38F });
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
@@ -347,18 +347,18 @@ public class ColorBandVideoEntranceButton
     d();
     this.jdField_a_of_type_Boolean = false;
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.c.getLayoutParams();
-    int i = bcwh.a(getContext(), 4.0F);
+    int i = bdaq.a(getContext(), 4.0F);
     localLayoutParams.topMargin = i;
     localLayoutParams.leftMargin = i;
-    i = bcwh.a(getContext(), 2.5F);
+    i = bdaq.a(getContext(), 2.5F);
     localLayoutParams.bottomMargin = i;
     localLayoutParams.rightMargin = i;
     this.c.setLayoutParams(localLayoutParams);
     localLayoutParams = (FrameLayout.LayoutParams)this.d.getLayoutParams();
-    i = bcwh.a(getContext(), 4.0F);
+    i = bdaq.a(getContext(), 4.0F);
     localLayoutParams.topMargin = i;
     localLayoutParams.leftMargin = i;
-    i = bcwh.a(getContext(), 2.5F);
+    i = bdaq.a(getContext(), 2.5F);
     localLayoutParams.bottomMargin = i;
     localLayoutParams.rightMargin = i;
     this.d.setLayoutParams(localLayoutParams);
@@ -506,16 +506,16 @@ public class ColorBandVideoEntranceButton
     for (;;)
     {
       paramURLDrawable = (FrameLayout.LayoutParams)this.c.getLayoutParams();
-      paramURLDrawable.leftMargin = bcwh.a(getContext(), 4.0F);
-      paramURLDrawable.topMargin = bcwh.a(getContext(), -3.0F);
-      int i = bcwh.a(getContext(), 2.5F);
+      paramURLDrawable.leftMargin = bdaq.a(getContext(), 4.0F);
+      paramURLDrawable.topMargin = bdaq.a(getContext(), -3.0F);
+      int i = bdaq.a(getContext(), 2.5F);
       paramURLDrawable.bottomMargin = i;
       paramURLDrawable.rightMargin = i;
       this.c.setLayoutParams(paramURLDrawable);
       paramURLDrawable = (FrameLayout.LayoutParams)this.d.getLayoutParams();
-      paramURLDrawable.leftMargin = bcwh.a(getContext(), 4.0F);
-      paramURLDrawable.topMargin = bcwh.a(getContext(), -3.0F);
-      i = bcwh.a(getContext(), 2.5F);
+      paramURLDrawable.leftMargin = bdaq.a(getContext(), 4.0F);
+      paramURLDrawable.topMargin = bdaq.a(getContext(), -3.0F);
+      i = bdaq.a(getContext(), 2.5F);
       paramURLDrawable.bottomMargin = i;
       paramURLDrawable.rightMargin = i;
       this.d.setLayoutParams(paramURLDrawable);
@@ -543,8 +543,8 @@ public class ColorBandVideoEntranceButton
   public void setDefaultIconBigMode(int paramInt1, int paramInt2)
   {
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.width = aekt.a(paramInt1, getContext().getResources());
-    localLayoutParams.height = aekt.a(paramInt2, getContext().getResources());
+    localLayoutParams.width = aepi.a(paramInt1, getContext().getResources());
+    localLayoutParams.height = aepi.a(paramInt2, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
   }
   

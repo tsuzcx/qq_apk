@@ -61,7 +61,7 @@ public class mpw
     if (QLog.isColorLevel()) {
       QLog.d("FileSwapHelper", 2, "notifyMp4Saved=" + paramString);
     }
-    xmx.a(paramContext, new File(paramString));
+    xrg.a(paramContext, new File(paramString));
   }
 }
 

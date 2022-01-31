@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
 class aizm
-  implements baaa
+  implements DialogInterface.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  aizm(aizk paramaizk, aize paramaize) {}
   
-  aizm(aizl paramaizl, baaa parambaaa) {}
-  
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
+    paramDialogInterface = this.jdField_a_of_type_Aize.a.pop_dialog.right_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      bjcf.a(aizh.a(this.jdField_a_of_type_Aizk.a), paramDialogInterface);
     }
-    if ((this.jdField_a_of_type_Boolean) || (aizl.a(this.jdField_a_of_type_Aizl))) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (aizl.a(this.jdField_a_of_type_Aizl) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(aizl.a(this.jdField_a_of_type_Aizl));
-      }
-    } while (this.jdField_a_of_type_Baaa == null);
-    this.jdField_a_of_type_Baaa.a();
   }
 }
 

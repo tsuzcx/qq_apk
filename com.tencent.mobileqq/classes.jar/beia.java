@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
 
 public class beia
-  implements auth
+  implements TicketManagerListener
 {
-  public beia(WerewolvesHostInterface paramWerewolvesHostInterface) {}
-  
-  public void bw()
+  public void onTicketRefreshed()
   {
-    this.a.mGameRoomAVController.c();
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
-  
-  public void bx() {}
 }
 
 

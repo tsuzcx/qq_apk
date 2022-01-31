@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
 
-class blkz
-  implements DialogInterface.OnDismissListener
+public class blkz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  blkz(blkw paramblkw) {}
+  public blkz(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (blkw.a(this.a) != null) {
-      blkw.a(this.a).a();
-    }
+    AEEditorApplyAllLoadingView.a(this.a).setPadding(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0, 0);
   }
 }
 

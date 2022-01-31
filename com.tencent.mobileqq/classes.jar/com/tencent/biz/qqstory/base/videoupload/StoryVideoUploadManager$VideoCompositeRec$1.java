@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import ukd;
-import uko;
-import ulg;
+import uom;
+import uox;
+import upp;
 
 public class StoryVideoUploadManager$VideoCompositeRec$1
   implements Runnable
 {
-  public StoryVideoUploadManager$VideoCompositeRec$1(uko paramuko, ukd paramukd, ulg paramulg) {}
+  public StoryVideoUploadManager$VideoCompositeRec$1(uox paramuox, uom paramuom, upp paramupp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ukd.a(this.jdField_a_of_type_Ulg.a, this.jdField_a_of_type_Ulg.b);
+    this.jdField_a_of_type_Uom.a(this.jdField_a_of_type_Upp.a, this.jdField_a_of_type_Upp.b);
   }
 }
 

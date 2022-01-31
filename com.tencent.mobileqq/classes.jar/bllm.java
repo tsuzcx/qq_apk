@@ -1,15 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-
 public class bllm
 {
-  public static int a(Context paramContext, float paramFloat)
+  private String a;
+  
+  public bllm(String paramString)
   {
-    if (paramContext == null) {
-      return 0;
-    }
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 

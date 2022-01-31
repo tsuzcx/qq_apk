@@ -1,19 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
 
-public final class bker
-  implements Parcelable.Creator<WadlResult>
+public abstract class bker
+  implements GLSurfaceView.Renderer
 {
-  public WadlResult a(Parcel paramParcel)
+  public Context a;
+  protected ViewGroup a;
+  
+  public bker(Context paramContext, ViewGroup paramViewGroup)
   {
-    return new WadlResult(paramParcel);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
-  public WadlResult[] a(int paramInt)
-  {
-    return new WadlResult[paramInt];
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

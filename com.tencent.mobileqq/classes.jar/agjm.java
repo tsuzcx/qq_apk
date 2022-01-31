@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agjm
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agjm(agiy paramagiy) {}
+  agjm(agji paramagji, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aekt.n = true;
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Agji.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      agji.b(this.jdField_a_of_type_Agji, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Agji.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import auvk;
-import awbw;
+import auzt;
+import awgf;
 
 public class WerewolvesDataManager$3
   implements Runnable
 {
-  public WerewolvesDataManager$3(auvk paramauvk, RecentInviteUser paramRecentInviteUser) {}
+  public WerewolvesDataManager$3(auzt paramauzt, RecentInviteUser paramRecentInviteUser) {}
   
   public void run()
   {

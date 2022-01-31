@@ -1,78 +1,38 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aqxf
-  extends BaseAdapter
+class aqxf
+  implements aqxh
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bemu jdField_a_of_type_Bemu;
-  private Object jdField_a_of_type_JavaLangObject;
+  private bigh jdField_a_of_type_Bigh = new bigh();
   
-  public aqxf(Context paramContext, View.OnClickListener paramOnClickListener)
+  public aqxf(aqxe paramaqxe)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Bigh.a();
   }
   
-  public void a(bemu parambemu)
+  public int a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Bemu = parambemu;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
+    int j = this.jdField_a_of_type_Bigh.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bigk.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
-      {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Bemu != null) {
-          this.jdField_a_of_type_Bemu.setMotionView(paramView, paramInt);
-        }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
       }
     }
-    else {
-      return bool;
-    }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
+    return i;
   }
   
-  public int getCount()
+  public void a()
   {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
+    this.jdField_a_of_type_Bigh.b();
   }
 }
 

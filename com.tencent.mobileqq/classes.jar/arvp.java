@@ -1,12 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class arvp
-  implements DialogInterface.OnClickListener
+public class arvp
+  implements View.OnClickListener
 {
-  arvp(arvo paramarvo) {}
+  public arvp(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    String str1 = alud.a(2131714183) + arbs.b() + alud.a(2131714189);
+    paramView = null;
+    String str2 = alud.a(2131714201);
+    if (SendBottomBar.a(this.a).g() != -1)
+    {
+      str1 = alud.a(2131714207);
+      paramView = alud.a(2131714203);
+      str2 = alud.a(2131714200);
+    }
+    this.a.a = bdgm.a(SendBottomBar.a(this.a), 230, paramView, str1, alud.a(2131714199), str2, new arvq(this), new arvr(this));
+    this.a.a.show();
+  }
 }
 
 

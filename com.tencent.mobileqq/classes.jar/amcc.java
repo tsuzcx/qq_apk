@@ -1,83 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public abstract class amcc
+public class amcc
+  implements alpg
 {
-  protected amcg a;
-  public QQAppInterface a;
-  protected Class<? extends awbv> a;
-  protected ArrayList<amcf> a;
-  public ConcurrentHashMap<String, awbv> a;
+  public amcc(SVIPHandler.2 param2, akmx paramakmx) {}
   
-  public amcc(QQAppInterface paramQQAppInterface, amcg paramamcg, Class<? extends awbv> paramClass)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Amcg = paramamcg;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public awbv a(String paramString)
-  {
-    return (awbv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  protected String a(awbv paramawbv)
-  {
-    return Long.toString(paramawbv.getId());
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((amcf)localIterator.next()).a(paramInt);
-    }
-  }
-  
-  public void a(awbv paramawbv)
-  {
-    a(paramawbv, 0, null);
-  }
-  
-  public abstract void a(awbv paramawbv, int paramInt, amci paramamci);
-  
-  protected abstract void b();
-  
-  public void b(awbv paramawbv)
-  {
-    b(paramawbv, 0, null);
-  }
-  
-  public void b(awbv paramawbv, int paramInt, amci paramamci)
-  {
-    String str = a(paramawbv);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramawbv);
-    if (paramawbv.getStatus() == 1000)
+    try
     {
-      this.jdField_a_of_type_Amcg.a(paramawbv, 0, paramInt, paramamci);
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Akmx.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Akmx.b.add(localObject);
+            }
+          }
+        }
+      }
       return;
     }
-    this.jdField_a_of_type_Amcg.a(paramawbv, 1, paramInt, paramamci);
-  }
-  
-  public void c(awbv paramawbv)
-  {
-    c(paramawbv, 0, null);
-  }
-  
-  public void c(awbv paramawbv, int paramInt, amci paramamci)
-  {
-    String str = a(paramawbv);
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
     }
-    this.jdField_a_of_type_Amcg.a(paramawbv, 2, paramInt, paramamci);
+    this.jdField_a_of_type_Akmx.b();
   }
 }
 

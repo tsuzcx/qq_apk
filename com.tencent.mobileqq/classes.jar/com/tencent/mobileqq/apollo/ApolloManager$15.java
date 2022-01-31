@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
+import aknx;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloManager$15
   implements Runnable
 {
-  public ApolloManager$15(akji paramakji, String paramString) {}
+  public ApolloManager$15(aknx paramaknx, String paramString) {}
   
   public void run()
   {

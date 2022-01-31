@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.tavcut.session.TAVCutSession;
 
-public abstract interface blpj
+class blpj
+  implements blpg
 {
-  public abstract void a();
+  blpj(blpi paramblpi, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
   
-  public abstract void a(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void c(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void d(int paramInt, MusicItemInfo paramMusicItemInfo);
+  public void a(blpo paramblpo)
+  {
+    if ((paramblpo instanceof blpn))
+    {
+      paramblpo = (blpn)paramblpo;
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramblpo.a());
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramblpo.a());
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    }
+  }
 }
 
 

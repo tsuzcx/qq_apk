@@ -1,6 +1,6 @@
-public abstract interface bemh
+public abstract interface bemh<T>
 {
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt, T paramT);
 }
 
 

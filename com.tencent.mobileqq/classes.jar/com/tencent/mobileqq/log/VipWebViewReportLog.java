@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import aljq;
+import alof;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
@@ -47,7 +47,7 @@ public class VipWebViewReportLog
     jdField_a_of_type_JavaUtilSet = new HashSet();
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
-    jdField_b_of_type_JavaLangString = aljq.aX + "WebViewCheck" + File.separator;
+    jdField_b_of_type_JavaLangString = alof.aX + "WebViewCheck" + File.separator;
     jdField_c_of_type_JavaLangString = "WebViewCheck" + File.separator;
     e = "null";
     f = "null";

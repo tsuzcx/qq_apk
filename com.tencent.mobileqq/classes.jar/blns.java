@@ -1,6 +1,7 @@
-public class blns
+public abstract interface blns
+  extends blnr
 {
-  public static final String[] a = { "Jitter", "SoulOut" };
+  public abstract void l();
 }
 
 

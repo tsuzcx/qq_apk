@@ -1,70 +1,25 @@
-import android.annotation.TargetApi;
-import android.opengl.EGL14;
-import android.opengl.Matrix;
-import com.tencent.ttpic.video.AEEncoder;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-@TargetApi(17)
 public class axpg
-  implements axrl, AEEncoder
+  implements GLGestureListener
 {
-  private axqz jdField_a_of_type_Axqz;
-  private axrn jdField_a_of_type_Axrn = new axrn();
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  public GameplayEngine a;
   
-  public axpg(String paramString, int paramInt1, int paramInt2)
+  public int onGetPriority()
   {
-    this.jdField_a_of_type_Axqz = new axqz(paramString, paramInt1, paramInt2, 5242880, 1, false, 0);
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setRotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
+    return 1040;
   }
   
-  public void a() {}
-  
-  public void a(String arg1)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Axrn.c();
-    this.jdField_a_of_type_Boolean = false;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable paramThrowable) {}
-  
-  public void b() {}
-  
-  public void release()
-  {
-    this.jdField_a_of_type_Axrn.b();
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.wait();
-        label21:
-        return;
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label21;
-    }
-  }
-  
-  public int writeFrame(int paramInt, long paramLong)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Axqz.a(EGL14.eglGetCurrentContext());
-      this.jdField_a_of_type_Axrn.a(this.jdField_a_of_type_Axqz, this);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_Axrn.a(3553, paramInt, null, this.jdField_a_of_type_ArrayOfFloat, 1000000L * paramLong);
-    return 0;
+    paramMotionEvent = new azjb(paramMotionEvent);
+    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
+    return false;
   }
 }
 

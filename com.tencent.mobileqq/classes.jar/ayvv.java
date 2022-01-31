@@ -1,48 +1,60 @@
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-final class ayvv
-  implements mag
+public class ayvv
+  implements aywc
 {
-  ayvv(byte[] paramArrayOfByte, long paramLong1, MessageHandler paramMessageHandler, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aywd jdField_a_of_type_Aywd;
+  private List<aywd> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void a(maf parammaf)
+  public ayvv() {}
+  
+  public ayvv(ViewGroup paramViewGroup, int paramInt)
   {
-    AVPbInfo localAVPbInfo = parammaf.a(this.jdField_a_of_type_ArrayOfByte);
-    if (localAVPbInfo != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, bindId:" + localAVPbInfo.bindId + ", bindIdType:" + localAVPbInfo.bindIdType + ", phoneNum:" + localAVPbInfo.phoneNum);
-      }
-      if ((!lnz.c()) || (!lnz.d())) {
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message cause device not support");
-        }
-      }
-    }
-    for (;;)
-    {
-      parammaf.a();
-      return;
-      if (this.jdField_a_of_type_Long >= 60L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message because of time out " + this.jdField_a_of_type_Long + " s");
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "===========handleSharpVideoMessageResp 1234========");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.c, (int)this.d, this.jdField_a_of_type_Boolean);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, decode failed!");
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370721));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369606));
+    this.jdField_a_of_type_Aywd = new ayvx(this.jdField_a_of_type_AndroidViewView.findViewById(2131368463));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public aywd a()
+  {
+    return this.jdField_a_of_type_Aywd;
+  }
+  
+  public List<aywd> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

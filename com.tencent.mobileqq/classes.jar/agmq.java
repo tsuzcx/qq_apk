@@ -1,30 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-class agmq
-  extends BroadcastReceiver
+public final class agmq
+  extends AnimationView.Player
 {
-  agmq(agmb paramagmb) {}
+  public static boolean a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agmq(AnimationView paramAnimationView)
   {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
-      return;
+    super(paramAnimationView);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.a.jdField_a_of_type_Autg.c();
-    this.a.l.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBind enter room setSoundDisable");
+    for (;;)
+    {
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
     }
-    this.a.jdField_a_of_type_Autg.a(false);
   }
 }
 

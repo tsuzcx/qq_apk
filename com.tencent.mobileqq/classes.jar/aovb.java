@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-
-class aovb
-  implements aovd
+public class aovb
 {
-  aovb(aova paramaova, QQAppInterface paramQQAppInterface) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
   
-  public int a()
+  public aovb()
   {
-    return ayzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-  }
-  
-  public void a(int paramInt)
-  {
-    ayzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0)) {
-      ayzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = alud.a(2131711658);
   }
 }
 

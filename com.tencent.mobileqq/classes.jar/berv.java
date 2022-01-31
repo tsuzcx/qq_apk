@@ -1,33 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class berv
+  extends AnimatorListenerAdapter
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  public berv(ParticipleView paramParticipleView) {}
   
-  public static void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(FrameLayout paramFrameLayout)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    paramFrameLayout.invalidate();
-    View localView = paramFrameLayout.getChildAt(1);
-    paramFrameLayout = paramFrameLayout.getChildAt(0);
-    beke localbeke = new beke(localView);
-    localbeke.setDuration(jdField_a_of_type_Long);
-    localbeke.setFillAfter(true);
-    bekf localbekf = new bekf(paramFrameLayout);
-    localbekf.setDuration(jdField_a_of_type_Long);
-    localbekf.setFillAfter(true);
-    localView.startAnimation(localbeke);
-    paramFrameLayout.startAnimation(localbekf);
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
   }
 }
 

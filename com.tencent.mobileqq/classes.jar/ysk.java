@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-
 class ysk
-  implements ViewTreeObserver.OnPreDrawListener
+  extends ysz
 {
-  ysk(ysj paramysj, View paramView) {}
-  
-  public boolean onPreDraw()
+  public ysk(ysb paramysb, yta paramyta, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    ysj.a(this.jdField_a_of_type_Ysj, this.jdField_a_of_type_AndroidViewView);
-    return false;
+    super(paramysb, paramyta, paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Yta.b(this);
   }
 }
 

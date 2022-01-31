@@ -207,7 +207,7 @@ public class osf
         localObject = ((URL)localObject).getFile();
         if (!TextUtils.isEmpty(str2))
         {
-          ArrayList localArrayList = bavf.a().a(str2, 1006);
+          ArrayList localArrayList = bazo.a().a(str2, 1006);
           int j = localArrayList.size();
           if (j > 0)
           {
@@ -294,8 +294,8 @@ public class osf
     ArticleCenter.GetUrlByVidRequest localGetUrlByVidRequest = new ArticleCenter.GetUrlByVidRequest();
     Object localObject2 = ByteStringMicro.copyFromUtf8(paramString1);
     localGetUrlByVidRequest.vid.set((ByteStringMicro)localObject2);
-    localGetUrlByVidRequest.mv.set(ByteStringMicro.copyFromUtf8("8.3.3,3,4515"));
-    int i = bewy.a(null);
+    localGetUrlByVidRequest.mv.set(ByteStringMicro.copyFromUtf8("8.3.5,3,4555"));
+    int i = bfbh.a(null);
     localGetUrlByVidRequest.net_type.set(i);
     localGetUrlByVidRequest.video_type.set(0);
     localObject2 = rae.a(false);
@@ -324,7 +324,7 @@ public class osf
     ArticleCenter.GetVidByUrlRequest localGetVidByUrlRequest = new ArticleCenter.GetVidByUrlRequest();
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString);
     localGetVidByUrlRequest.url.set(localByteStringMicro);
-    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("8.3.3,3,4515"));
+    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("8.3.5,3,4555"));
     localNewIntent.putExtra("data", localGetVidByUrlRequest.toByteArray());
     localNewIntent.setObserver(new osh(this, l, localNewIntent, paramosj, paramString));
     localAppRuntime.startServlet(localNewIntent);

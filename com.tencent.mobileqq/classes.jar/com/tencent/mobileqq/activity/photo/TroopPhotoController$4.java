@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ailh;
+import aipw;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopPhotoController$4
   implements Runnable
 {
-  public TroopPhotoController$4(ailh paramailh, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  public TroopPhotoController$4(aipw paramaipw, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {

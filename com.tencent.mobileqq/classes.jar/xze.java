@@ -1,22 +1,36 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity.22;
 
 public class xze
+  implements View.OnTouchListener
 {
-  public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
+  public xze(QRDisplayActivity.22 param22) {}
   
-  public xze(CertifiedAccountMeta.StFeed paramStFeed)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public xze(CertifiedAccountMeta.StUser paramStUser)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-    this.jdField_a_of_type_Int = 1;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (QRDisplayActivity.a(this.a.this$0) == null);
+      QRDisplayActivity.a(this.a.this$0, false);
+      QRDisplayActivity.a(this.a.this$0).start();
+      return true;
+      if (QRDisplayActivity.a(this.a.this$0) != null) {
+        QRDisplayActivity.a(this.a.this$0).cancel();
+      }
+    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
+    bczz.c(this.a.this$0.d);
+    this.a.this$0.onClick(this.a.this$0.d);
+    return true;
   }
 }
 

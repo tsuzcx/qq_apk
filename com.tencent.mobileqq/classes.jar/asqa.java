@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.DrawableRes;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class asqa
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/growth/GrowthUtil;", "", "()V", "INVALID_DRAWABLE_ID", "", "getDrawableIdByWns", "wnsPicId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asqa
 {
-  public asqa(HotPicPageView.4.2 param2) {}
+  public static final asqa a = new asqa();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @JvmStatic
+  @DrawableRes
+  public static final int a(int paramInt)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Asqh.a == 1) {
-      this.a.a.jdField_a_of_type_Asqh.a(0);
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 1001: 
+      return 2130847663;
+    case 1002: 
+      return 2130847664;
+    case 1003: 
+      return 2130847665;
+    case 1004: 
+      return 2130847666;
     }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    return 2130847667;
   }
 }
 

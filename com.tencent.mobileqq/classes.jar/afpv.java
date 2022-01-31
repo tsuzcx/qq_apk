@@ -1,19 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afpv
-  implements bemn
+class afpv
+  implements DialogInterface.OnClickListener
 {
-  public afpv(LightVideoItemBuilder paramLightVideoItemBuilder, afpw paramafpw) {}
+  afpv(afps paramafps) {}
   
-  public void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

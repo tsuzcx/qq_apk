@@ -14,7 +14,7 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class lgj
-  extends alsi
+  extends alwx
 {
   lgj(lgh paramlgh) {}
   
@@ -23,13 +23,13 @@ class lgj
     if (QLog.isColorLevel()) {
       QLog.i(lgh.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin 同意添加好友失败 :" + paramString);
     }
-    long l2 = baaz.a().b();
+    long l2 = bafi.a().b();
     long l1 = l2;
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
       l1 = Long.parseLong(paramString);
-      if (baaz.a().a(Long.valueOf(l1)) != null)
+      if (bafi.a().a(Long.valueOf(l1)) != null)
       {
         super.a(paramString);
         return;
@@ -54,13 +54,13 @@ class lgj
     if (QLog.isColorLevel()) {
       QLog.i(lgh.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 issuc" + paramBoolean + ",logStr=" + paramString1 + ";actionType=" + paramInt1 + ";msgDetail=" + paramString2 + ";resultCode=" + paramInt2 + ";respType=" + paramInt3 + ";msgFail=" + paramString3 + ";msgInvalidDecided=" + paramString4 + ";remarkRet=" + paramInt4);
     }
-    long l2 = baaz.a().b();
+    long l2 = bafi.a().b();
     long l1 = l2;
     if (!TextUtils.isEmpty(paramString1)) {}
     try
     {
       l1 = Long.parseLong(paramString1);
-      structmsg.StructMsg localStructMsg = baaz.a().a(Long.valueOf(l1));
+      structmsg.StructMsg localStructMsg = bafi.a().a(Long.valueOf(l1));
       if (localStructMsg != null)
       {
         l1 = localStructMsg.req_uin.get();
@@ -110,7 +110,7 @@ class lgj
       try
       {
         new ArrayList();
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.M, 0);
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.M, 0);
         if (QLog.isColorLevel()) {
           QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin mDataList size=" + ((List)localObject).size());
         }

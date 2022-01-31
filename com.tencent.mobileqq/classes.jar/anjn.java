@@ -1,19 +1,9 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public final class anjn
-  implements ArkEnvironmentManager.LibraryLoader
+abstract interface anjn
 {
-  public boolean Load()
-  {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
-  }
-  
-  public boolean isLibraryLoad()
-  {
-    return ArkAppCenter.b;
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

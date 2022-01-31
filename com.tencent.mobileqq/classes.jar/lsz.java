@@ -18,7 +18,7 @@ public class lsz
     if (paramFloat >= 0.0F) {}
     for (boolean bool = true;; bool = false)
     {
-      bhnt.a(bool);
+      bhsa.a(bool);
       this.jdField_a_of_type_Float = paramFloat;
       return;
     }

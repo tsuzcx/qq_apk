@@ -1,133 +1,51 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class abyu
-  implements TextWatcher
+  extends abwy
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  int b;
-  int c;
-  
-  public abyu(int paramInt, EditText paramEditText)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    String str2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    Object localObject2;
-    String str3;
-    String str1;
-    Object localObject1;
-    if (str2.getBytes().length > this.jdField_a_of_type_Int)
+    paramString = this.a.a();
+    if ((paramString == null) || (paramString.isFinishing()))
     {
-      localObject2 = "";
-      str3 = "";
-      str1 = "";
-      paramEditable = str1;
-      localObject1 = str3;
+      QLog.e("NavigateModule", 1, "execute activity is null or finish");
+      return false;
     }
-    try
+    Intent localIntent;
+    switch (paramInt)
     {
-      String str4 = str2.substring(0, this.b);
-      paramEditable = str1;
-      localObject1 = str3;
-      localObject2 = str4;
-      String str5 = str2.substring(this.b + this.c, str2.length());
-      paramEditable = str1;
-      localObject1 = str5;
-      localObject2 = str4;
-      str1 = str2.substring(this.b, this.b + this.c);
-      paramEditable = str1;
-      localObject1 = str5;
-      localObject2 = str4;
-      if (str4.getBytes().length + str5.getBytes().length <= this.jdField_a_of_type_Int)
+    default: 
+      return false;
+    case 19: 
+      paramJSONObject = paramJSONObject.optString("action", "");
+      if ((paramJSONObject != null) && (paramJSONObject.startsWith("mqqapi:")))
       {
-        for (;;)
-        {
-          paramEditable = str1;
-          localObject1 = str5;
-          localObject2 = str4;
-          if (str2.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramEditable = str1;
-          localObject1 = str5;
-          localObject2 = str4;
-          if (str1.length() <= 0) {
-            break;
-          }
-          paramEditable = str1;
-          localObject1 = str5;
-          localObject2 = str4;
-          str1 = str1.substring(0, str1.length() - 1);
-          paramEditable = str1;
-          localObject1 = str5;
-          localObject2 = str4;
-          str2 = str4 + str1 + str5;
-        }
-        paramEditable = str1;
-        localObject1 = str5;
-        localObject2 = str4;
-        byte[] arrayOfByte = String.valueOf(str2.charAt(str2.length() - 1)).getBytes("UTF-16BE");
-        str3 = str2;
-        paramEditable = str1;
-        localObject1 = str5;
-        localObject2 = str4;
-        if (arrayOfByte.length == 2)
-        {
-          str3 = str2;
-          paramEditable = str1;
-          localObject1 = str5;
-          localObject2 = str4;
-          if (str2.length() > 1)
-          {
-            int i = (char)(arrayOfByte[0] & 0xFF);
-            i = (char)((char)(arrayOfByte[1] & 0xFF) | i << 8);
-            str3 = str2;
-            if (i >= 55296)
-            {
-              str3 = str2;
-              if (i <= 55359)
-              {
-                paramEditable = str1;
-                localObject1 = str5;
-                localObject2 = str4;
-                str3 = str2.substring(0, str2.length() - 1);
-              }
-            }
-          }
-        }
-        paramEditable = str1;
-        localObject1 = str5;
-        localObject2 = str4;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(str3);
-        paramEditable = str1;
-        localObject1 = str5;
-        localObject2 = str4;
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str3.length());
+        localIntent = new Intent(paramString, JumpActivity.class);
+        localIntent.setData(Uri.parse(paramJSONObject));
+        paramString.startActivity(localIntent);
+        acab.a(paramabwu, abww.a);
       }
-      return;
+      break;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AddFriendVerifyActivity", 2, "afterTextChanged, headStr:" + (String)localObject2 + ", tailStr = " + (String)localObject1 + ", insert = " + paramEditable, localThrowable);
+      return true;
+      paramJSONObject = paramJSONObject.optString("url", "");
+      localIntent = new Intent(paramString, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramJSONObject);
+      paramString.startActivity(localIntent);
+      acab.a(paramabwu, abww.a);
+      continue;
+      acab.a(paramabwu, -1, "scheme not support");
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.b = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

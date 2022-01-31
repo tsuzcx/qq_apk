@@ -3,7 +3,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 
 public class rzo
-  implements aobn
+  implements aofw
 {
   public rzo(FastWebActivity paramFastWebActivity) {}
   

@@ -15,7 +15,7 @@ class sax
   {
     ImageView localImageView = saw.a(this.jdField_a_of_type_Saw);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
-    for (int i = 2130842475;; i = 2130841341)
+    for (int i = 2130842488;; i = 2130841342)
     {
       localImageView.setImageResource(i);
       paramAnimation.setInterpolator(new AnticipateInterpolator());

@@ -1,21 +1,76 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Now;
 
 public class admc
-  implements Comparator<ChatMessage>
+  implements whf
 {
-  public admc(QQLSActivity paramQQLSActivity) {}
+  public admc(Now paramNow) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public View a()
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      xqq.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
     }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      xqq.a(bool);
+      return this.a.c;
     }
-    return -1;
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Now.a(this.a);
+      return;
+    }
+    Now.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.a(true);
   }
 }
 

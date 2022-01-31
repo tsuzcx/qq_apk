@@ -10,7 +10,7 @@ final class MiniAppController$6
   
   public void run()
   {
-    QQToast.a(this.val$context, 2131694061, 0).a();
+    QQToast.a(this.val$context, 2131694063, 0).a();
   }
 }
 

@@ -16,13 +16,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Iterator;
 import java.util.List;
-import urr;
-import wbn;
-import wmd;
-import xmh;
+import uwa;
+import wfw;
+import wqm;
+import xqq;
 
 public class ShareGroupFeedItem
-  extends VideoListFeedItem<wmd, ShareGroupItem>
+  extends VideoListFeedItem<wqm, ShareGroupItem>
 {
   public String des = "";
   private ShareGroupItem mOwner = new ShareGroupItem();
@@ -54,7 +54,7 @@ public class ShareGroupFeedItem
     ShareGroupFeedItem localShareGroupFeedItem = new ShareGroupFeedItem();
     localShareGroupFeedItem.feedId = makeFakeFeedId(paramString1, paramString2);
     localShareGroupFeedItem.setDate(paramString2);
-    localShareGroupFeedItem.mOwner = ((wbn)urr.a(7)).b(paramString1);
+    localShareGroupFeedItem.mOwner = ((wfw)uwa.a(7)).b(paramString1);
     localShareGroupFeedItem.ownerId = paramString1;
     localShareGroupFeedItem.mViewTotalTime = 0L;
     localShareGroupFeedItem.mHadLike = 0;
@@ -78,7 +78,7 @@ public class ShareGroupFeedItem
   {
     super.copy(paramObject);
     paramObject = (ShareGroupFeedItem)paramObject;
-    xmh.a(this.mOwner);
+    xqq.a(this.mOwner);
     this.mOwner.copy(paramObject.mOwner);
     if (paramObject.des != null) {
       this.des = paramObject.des;
@@ -108,7 +108,7 @@ public class ShareGroupFeedItem
       this.mOwner = new ShareGroupItem();
       this.mOwner.convertFrom(paramString.info);
       this.ownerId = this.mOwner.shareGroupId;
-      this.mOwner = ((wbn)urr.a(7)).a(this.mOwner);
+      this.mOwner = ((wfw)uwa.a(7)).a(this.mOwner);
       return true;
     }
   }
@@ -124,15 +124,15 @@ public class ShareGroupFeedItem
     {
       localPBStringField.set(str);
       localShareGroupFeed.today_join_member_count.set(this.todayJoinMemberCount);
-      xmh.a(this.des);
+      xqq.a(this.des);
       return localShareGroupFeed.toByteArray();
     }
   }
   
   @NonNull
-  public wmd generateHomeFeed()
+  public wqm generateHomeFeed()
   {
-    return new wmd(this);
+    return new wqm(this);
   }
   
   public int getCommentLikeType()
@@ -157,9 +157,9 @@ public class ShareGroupFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    xmh.a(this.ownerId);
+    xqq.a(this.ownerId);
     if (!TextUtils.isEmpty(this.ownerId)) {
-      this.mOwner = ((wbn)urr.a(7)).b(this.ownerId);
+      this.mOwner = ((wfw)uwa.a(7)).b(this.ownerId);
     }
   }
   

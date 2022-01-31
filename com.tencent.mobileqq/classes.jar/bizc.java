@@ -1,75 +1,186 @@
-import android.app.Activity;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.ArrayMap;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qqreader.QRPluginManagerClient.1;
+import cooperation.qqreader.QRPluginManagerClient.2;
+import cooperation.qqreader.proxy.ReaderInterfacePluginBuilder;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginBuilder;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bizc
 {
-  public static void a(Activity paramActivity)
+  private static bizc jdField_a_of_type_Bizc;
+  private long jdField_a_of_type_Long;
+  private ReaderInterfacePluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder;
+  private ReaderJsPluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder;
+  private List<WeakReference<bizd>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  public static bizc a()
   {
-    if (Build.MANUFACTURER.contains("samsung")) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LeakUtil", 2, "removeLeakOn_SpenGestureManager samsung device");
-      }
-    }
+    
+    if (jdField_a_of_type_Bizc == null) {}
     try
     {
-      paramActivity = Class.forName("com.samsung.android.smartclip.SpenGestureManager").getDeclaredField("mContext");
-      paramActivity.setAccessible(true);
-      paramActivity.set(null, null);
-      return;
+      if (jdField_a_of_type_Bizc == null) {
+        jdField_a_of_type_Bizc = new bizc();
+      }
+      return jdField_a_of_type_Bizc;
     }
-    catch (ClassNotFoundException paramActivity)
+    finally {}
+  }
+  
+  private void b()
+  {
+    bjbl.c("QRPluginManagerClient", "dispatchPluginReadyEvent");
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      paramActivity.printStackTrace();
-      return;
+      Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator2.hasNext())
+      {
+        bizd localbizd = (bizd)((WeakReference)localIterator2.next()).get();
+        if (localbizd != null) {
+          localArrayList.add(localbizd);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    catch (IllegalAccessException paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    catch (NoSuchFieldException paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      paramActivity.printStackTrace();
+    finally {}
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((bizd)localIterator1.next());
     }
   }
   
-  public static void b(Activity paramActivity)
+  private void b(bizd parambizd)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (Build.VERSION.SDK_INT >= 28) || (paramActivity == null)) {}
-    for (;;)
+    if (parambizd == null) {
+      return;
+    }
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      bizd localbizd;
+      do
+      {
+        for (;;)
+        {
+          if (!localIterator.hasNext()) {
+            break label68;
+          }
+          localbizd = (bizd)((WeakReference)localIterator.next()).get();
+          if (localbizd != null) {
+            break;
+          }
+          localIterator.remove();
+        }
+      } while (localbizd != parambizd);
+    }
+    finally {}
+    return;
+    label68:
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(parambizd));
+  }
+  
+  private static void c()
+  {
+    if (BaseApplicationImpl.sProcessId != 7) {
+      bjbl.a("QRPluginManagerClient", "checkToolProcess: QRPluginManagerClient的逻辑必须在Tool进程调用");
+    }
+  }
+  
+  private void c(bizd parambizd)
+  {
+    if (parambizd == null) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new QRPluginManagerClient.2(this, parambizd));
+  }
+  
+  @Nullable
+  public ReaderInterfacePluginProxy a()
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder.create();
+  }
+  
+  @Nullable
+  public ReaderJsPluginProxy a(ReaderJsCallback paramReaderJsCallback)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder.create(paramReaderJsCallback);
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(Context paramContext, Intent paramIntent, String paramString)
+  {
+    if (!a())
+    {
+      bjbl.a("QRPluginManagerClient", "startPluginActivityWhenReady: plugin is not ready");
+      return;
+    }
+    if (bjat.a())
+    {
+      bjat.a(paramContext, paramIntent, paramString);
+      return;
+    }
+    biyw.a(paramContext, paramIntent, paramString);
+  }
+  
+  public void a(bizd parambizd)
+  {
+    if (a()) {
+      c(parambizd);
+    }
+    do
     {
       return;
-      try
-      {
-        Object localObject2 = Class.forName("android.app.ActivityThread");
-        Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(localObject2, new Object[0]);
-        if (localObject1 != null)
-        {
-          localObject2 = ((Class)localObject2).getDeclaredField("mOnPauseListeners");
-          ((Field)localObject2).setAccessible(true);
-          localObject1 = ((Field)localObject2).get(localObject1);
-          if ((localObject1 instanceof ArrayMap))
-          {
-            ((ArrayMap)localObject1).remove(paramActivity);
-            return;
-          }
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.d("LeakUtil", 4, "fixOnPauseListenersLeak", paramActivity);
-      }
+      b(parambizd);
+    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 3000L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (bjat.a())
+    {
+      bjat.a(BaseApplicationImpl.getApplication());
+      return;
     }
+    ThreadManager.getSubThreadHandler().post(new QRPluginManagerClient.1(this));
+  }
+  
+  public void a(ReaderJsPluginBuilder paramReaderJsPluginBuilder, ReaderInterfacePluginBuilder paramReaderInterfacePluginBuilder)
+  {
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder = paramReaderJsPluginBuilder;
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder = paramReaderInterfacePluginBuilder;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

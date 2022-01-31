@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.troop.forward;
 
-import alxl;
+import amca;
 import android.os.Handler;
-import ayvc;
-import ayvw;
+import ayzl;
+import azaf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopStory;
-import xli;
+import xpr;
 
 public class TroopStoryForwardTask$1
   implements Runnable
 {
-  public TroopStoryForwardTask$1(xli paramxli) {}
+  public TroopStoryForwardTask$1(xpr paramxpr) {}
   
   public void run()
   {
-    MessageForTroopStory localMessageForTroopStory = (MessageForTroopStory)ayvw.a(-2057);
-    ayvw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopStory, this.this$0.k, this.this$0.l, this.this$0.jdField_d_of_type_Int);
+    MessageForTroopStory localMessageForTroopStory = (MessageForTroopStory)azaf.a(-2057);
+    azaf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopStory, this.this$0.k, this.this$0.l, this.this$0.jdField_d_of_type_Int);
     localMessageForTroopStory.uid = Long.valueOf(this.this$0.jdField_b_of_type_JavaLangString).longValue();
     localMessageForTroopStory.unionId = this.this$0.jdField_c_of_type_JavaLangString;
     localMessageForTroopStory.md5 = this.this$0.jdField_d_of_type_JavaLangString;
@@ -33,7 +33,7 @@ public class TroopStoryForwardTask$1
     localMessageForTroopStory.msg = MessageForTroopStory.MSG_CONTENT;
     localMessageForTroopStory.serial();
     this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
-    ((alxl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForTroopStory);
+    ((amca)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForTroopStory);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, 0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);

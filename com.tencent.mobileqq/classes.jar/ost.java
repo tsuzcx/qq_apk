@@ -12,7 +12,7 @@ public class ost
   {
     int i = paramArrayOfByte.length - 4;
     byte[] arrayOfByte = new byte[i];
-    bdlr.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
+    bdqa.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
     return arrayOfByte;
   }
   
@@ -28,7 +28,7 @@ public class ost
     localHashMap.put("param_FailCount", String.valueOf(l2));
     l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l1));
-    paramBundle = azmz.a(ors.a().getApplication());
+    paramBundle = azri.a(ors.a().getApplication());
     String str = ors.a();
     if (i == 0) {}
     for (boolean bool = true;; bool = false)
@@ -42,8 +42,8 @@ public class ost
   {
     long l = paramArrayOfByte.length;
     byte[] arrayOfByte = new byte[(int)l + 4];
-    bdlr.a(arrayOfByte, 0, 4L + l);
-    bdlr.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
+    bdqa.a(arrayOfByte, 0, 4L + l);
+    bdqa.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
     return arrayOfByte;
   }
   

@@ -1,6 +1,16 @@
-public abstract interface vlk
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class vlk
+  implements vlo
 {
-  public abstract void a(vll paramvll);
+  vlk(vlj paramvlj) {}
+  
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -147,7 +147,7 @@ public class OpenDataPlugin
     for (boolean bool2 = true;; bool2 = false)
     {
       paramString2 = new ShareChatModel(0, 0L, paramString2);
-      if ((!bdje.a(paramString4)) && ((bool1) || (bool2))) {
+      if ((!bdnn.a(paramString4)) && ((bool1) || (bool2))) {
         break label326;
       }
       this.jsPluginEngine.appBrandRuntime.startShare(paramString3, GameWnsUtils.defaultShareImg(), paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
@@ -206,7 +206,7 @@ public class OpenDataPlugin
       try
       {
         paramString1.put("state", "fail");
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString1, alpo.a(2131708236), paramInt);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString1, alud.a(2131708248), paramInt);
         return;
       }
       catch (JSONException paramString1)

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.persistence.fts;
 
-import awbv;
+import awge;
 
 public abstract class FTSOptSync
-  extends awbv
+  extends awge
 {
   public String mContent;
   public long mOId;

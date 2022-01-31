@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import xzf;
-import yjf;
+import ydo;
+import yns;
 
 public class SubscribeVideoSharedCardView
   extends SubscribeMultiPicSharedCardView
@@ -37,20 +37,20 @@ public class SubscribeVideoSharedCardView
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364082));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364084));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(xzf paramxzf, Bitmap paramBitmap, yjf paramyjf)
+  public void a(ydo paramydo, Bitmap paramBitmap, yns paramyns)
   {
-    super.a(paramxzf, paramBitmap, paramyjf);
-    paramxzf = paramxzf.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramxzf.cover.width.get(), paramxzf.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramxzf.poster.icon.get());
+    super.a(paramydo, paramBitmap, paramyns);
+    paramydo = paramydo.a();
+    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramydo.cover.width.get(), paramydo.cover.height.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramydo.poster.icon.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramxzf.cover.url.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramydo.cover.url.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramyjf);
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramyns);
   }
 }
 

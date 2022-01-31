@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bfgg;
-import bfgx;
-import bfhg;
+import bfkp;
+import bflg;
+import bflp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.InstallStartLog;
@@ -23,18 +23,18 @@ public final class AppCenterReporter$4
     do
     {
       return;
-      localObject = bfgg.a().a(this.a.jdField_b_of_type_JavaLangString);
+      localObject = bfkp.a().a(this.a.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bfhg.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
+        bflp.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
         this.a.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.a.w);
-      bfhg.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
+      bflp.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
     } while (!bool);
-    bfhg.b("AppCenterReporter", "[reportInstallStart]");
-    bfgx.a(3007, bfgx.a(this.a) + "|" + bfgx.b(this.a) + "|" + new File(this.a.l).length());
+    bflp.b("AppCenterReporter", "[reportInstallStart]");
+    bflg.a(3007, bflg.a(this.a) + "|" + bflg.b(this.a) + "|" + new File(this.a.l).length());
     Object localObject = new InstallStartLog();
     ((InstallStartLog)localObject).packageName = this.a.e;
     ((InstallStartLog)localObject).versionCode = this.a.jdField_b_of_type_Int;

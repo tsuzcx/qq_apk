@@ -1,357 +1,236 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Pair;
+import android.os.Build;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.2;
-import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anly
 {
-  private static int jdField_a_of_type_Int;
-  private static anma jdField_a_of_type_Anma;
-  private static Object jdField_a_of_type_JavaLangObject;
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new JSDebuggerSoLoader.3();
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<String, Pair<String, String>> jdField_a_of_type_JavaUtilMap;
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
+  public static String a;
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  public static Map<String, List<anlz>> a;
+  public static boolean a;
+  public static volatile boolean b;
+  public static volatile boolean c;
+  public static boolean d;
+  public static boolean e;
+  public static boolean f;
+  public static boolean g;
+  public static boolean h;
+  public static boolean i;
+  public static boolean j;
+  private anmj jdField_a_of_type_Anmj;
+  private anmm jdField_a_of_type_Anmm;
+  private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
   
   static
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_Boolean = true;
+    f = true;
     jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (Build.MODEL.contains("Android SDK built for x86")) {
+      c = true;
+    }
+    String str1 = Build.CPU_ABI;
+    String str2 = Build.CPU_ABI2;
+    if ((!c) && ((a(str1).booleanValue()) || (a(str2).booleanValue()))) {
+      jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  public anly(ArkAppCenter paramArkAppCenter)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter = paramArkAppCenter;
+    Object localObject = aolx.b(159).a();
+    if ((localObject != null) && (((aolv)localObject).a() != null))
+    {
+      localObject = ((aolv)localObject).a();
+      jdField_a_of_type_Boolean = ((aomp)localObject).jdField_a_of_type_Boolean;
+      f = ((aomp)localObject).jdField_b_of_type_Boolean;
+    }
+    this.jdField_a_of_type_Anmj = new anmj(paramArkAppCenter.b());
+    this.jdField_a_of_type_Anmm = new anmm(paramArkAppCenter.b());
+    d();
+    a();
+    paramArkAppCenter = aolx.b(186).a();
+    if ((paramArkAppCenter != null) && (paramArkAppCenter.a() != null))
+    {
+      ArkAppCenter.c("ArkApp.AI", "ArkAiAppCenter updateDialogConfig content =" + paramArkAppCenter.a());
+      a(paramArkAppCenter.a());
+    }
+  }
+  
+  private static Boolean a(String paramString)
+  {
+    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
   }
   
   public static String a()
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label60;
-      }
-      localObject = ((Context)localObject).getFilesDir();
-      if (localObject != null) {
-        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "arkdebugger/";
-      }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (localAppRuntime == null) {
+      return "";
     }
-    for (;;)
+    return localAppRuntime.getAccount();
+  }
+  
+  public static String a(String paramString)
+  {
+    return bdea.a(BaseApplication.getContext(), paramString + a());
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    bdea.a(BaseApplication.getContext(), paramString1 + a(), paramString2);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "open";; str = "close")
     {
-      return jdField_a_of_type_JavaLangString;
-      label60:
-      QLog.w("JSDebuggerSoLoader", 2, "getLibDirPath but context is null");
+      bdea.a(BaseApplication.getContext(), "ark_use_android_http_" + a(), str);
+      return;
     }
   }
   
-  public static void a(int paramInt, anma paramanma)
+  public static boolean a()
   {
     try
     {
-      c();
-      jdField_a_of_type_Anma = paramanma;
-      jdField_a_of_type_Int = paramInt;
-      ThreadManager.remove(jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.post(jdField_a_of_type_JavaLangRunnable, 5, null, true);
-      return;
+      boolean bool = "open".equals(bdea.a(BaseApplication.getContext(), "ark_use_android_http_" + a()));
+      return bool;
     }
-    finally
-    {
-      paramanma = finally;
-      throw paramanma;
-    }
+    catch (Exception localException) {}
+    return false;
   }
   
-  private static String b()
+  public static boolean a(String paramString)
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str)) {
-      return str + "temp/";
-    }
-    return "";
+    return jdField_a_of_type_JavaUtilList.contains(paramString);
   }
   
-  private static void b()
+  public static void b(boolean paramBoolean)
   {
-    b = false;
-  }
-  
-  private static void b(int paramInt)
-  {
-    if (jdField_a_of_type_Anma != null) {
-      jdField_a_of_type_Anma.a(paramInt);
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
+    if (paramBoolean) {}
+    for (String str = "open";; str = "close") {
       try
       {
-        Object localObject = new File(paramString);
-        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-        {
-          localObject = ((File)localObject).list();
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            File localFile = new File(paramString, localObject[i]);
-            if ((localFile.exists()) && (localFile.isFile())) {
-              localFile.delete();
-            }
-            i += 1;
-          }
-        }
+        bdea.a(BaseApplication.getContext(), "ark_support_android9_emoji", str);
         return;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
+        ArkAppCenter.c("ArkApp.AI", "setAndroid9EmojiSupportState exception: " + localException.getMessage());
       }
     }
   }
   
-  private static void b(String paramString1, String paramString2)
+  public static boolean b()
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      ArkAppCenter.a(new JSDebuggerSoLoader.2(paramString1, paramString2));
-    }
-  }
-  
-  private static boolean b()
-  {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = true;
     try
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_Boolean)
-        {
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.sync failed");
-          return bool1;
-        }
-        if (b)
-        {
-          b(2);
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.has succeed");
-          bool1 = true;
-        }
-      }
-      b(0);
+      boolean bool = "open".equals(bdea.a(BaseApplication.getContext(), "ark_support_android9_emoji"));
+      return bool;
     }
-    finally {}
-    String str1 = a();
-    String str2 = b();
-    Object localObject5;
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    catch (Exception localException)
     {
-      c(str1);
-      localObject5 = new File(str1 + "libarkDebuggerJSImpl.so");
-      if (((File)localObject5).exists())
-      {
-        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.js debugger so exists:" + localObject5);
-        b(str1, "libarkDebuggerJSImpl.so");
-        b(2);
-        bool1 = bool2;
-        break label564;
-      }
+      ArkAppCenter.c("ArkApp.AI", "getAndroid9EmojiSupportState exception: " + localException.getMessage());
     }
-    label564:
-    for (;;)
-    {
-      b = bool1;
-      break;
-      localObject5 = (Pair)jdField_a_of_type_JavaUtilMap.get("");
-      if ((localObject5 != null) && (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).second)))
-      {
-        c(str2);
-        String str3 = str2 + (String)((Pair)localObject5).second;
-        if ((new File(str3).exists()) && (b(str2, (String)((Pair)localObject5).second, (String)((Pair)localObject5).second, str1)))
-        {
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.testZipAndUnzip 1 succeed");
-          b(3);
-          b(str1, "libarkDebuggerJSImpl.so");
-          bool1 = true;
-          break label567;
-        }
-        if (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).first))
-        {
-          ??? = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-          if (??? != null)
-          {
-            ??? = (ArkAppCenter)((QQAppInterface)???).getManager(121);
-            if (??? != null)
-            {
-              anit localanit = ((ArkAppCenter)???).a();
-              if (localanit != null)
-              {
-                String str4 = (String)((Pair)localObject5).second;
-                b(str2);
-                for (;;)
-                {
-                  synchronized (jdField_a_of_type_JavaLangObject)
-                  {
-                    if (!jdField_a_of_type_Boolean)
-                    {
-                      b(1);
-                      localanit.b((String)((Pair)localObject5).first, 0L, new anlz(str3, str2, str4, str1));
-                      jdField_a_of_type_Boolean = true;
-                      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger");
-                      bool1 = true;
-                    }
-                  }
-                  QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger.sync failed");
-                  bool1 = false;
-                }
-              }
-              QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCGI is null");
-              break label570;
-            }
-            QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCenter is null");
-            break label570;
-          }
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.QQAppInterface is null");
-          break label570;
-        }
-        b(7);
-        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage URL is null");
-        break label570;
-      }
-      b(7);
-      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage MD5 is null");
-      bool1 = false;
-      break label564;
-      b(9);
-      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.necessary dir path is null");
-      bool1 = bool3;
-    }
-    for (;;)
-    {
-      label567:
-      break;
-      label570:
-      bool1 = false;
-    }
+    return false;
   }
   
-  private static boolean b(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void d()
   {
-    int i;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4))) {
+    anmj.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.b());
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Anmm.a();
+  }
+  
+  public void a(aomu paramaomu)
+  {
+    if (paramaomu == null)
+    {
+      ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig,dialogConfig is null", new Object[0]));
+      return;
+    }
+    e = paramaomu.jdField_a_of_type_Boolean;
+    d = this.jdField_a_of_type_Anmm.a(paramaomu.jdField_b_of_type_JavaLangString);
+    g = paramaomu.jdField_b_of_type_Boolean;
+    a(g);
+    if (ArkAppCenter.jdField_b_of_type_Boolean) {
+      ark.SetUseAndroidHTTP(g);
+    }
+    h = paramaomu.c;
+    b(h);
+    if (ArkAppCenter.jdField_b_of_type_Boolean) {
+      ark.arkSetAndroid9EmojiFeatureSupport(h);
+    }
+    i = paramaomu.d;
+    Object localObject;
+    if (i) {
+      localObject = "true";
+    }
+    for (;;)
+    {
+      a("ark_engine_multi_thread", (String)localObject);
+      jdField_a_of_type_JavaLangString = paramaomu.jdField_a_of_type_JavaLangString;
+      boolean bool;
+      if (ArkAppCenter.jdField_b_of_type_Boolean)
+      {
+        localObject = ArkEnvironmentManager.getInstance();
+        if (i) {
+          break label183;
+        }
+        bool = true;
+        ((ArkEnvironmentManager)localObject).setSingleThreadMode(bool);
+        ArkEnvironmentManager.getInstance().setThreadMode();
+      }
       try
       {
-        b(paramString4);
-        paramString2 = new File(paramString1 + paramString2);
-        if (paramString2.exists())
-        {
-          String str = bhli.a(paramString2);
-          if ((!TextUtils.isEmpty(str)) && (str.equals(paramString3)))
-          {
-            bdcs.a(paramString2.getAbsolutePath(), paramString1, false);
-            paramString2 = new File(paramString1 + "libarkDebuggerJSImpl.so");
-            if ((paramString2 == null) || (!paramString2.exists())) {
-              break label406;
-            }
-            if (bdcs.d(paramString1 + "libarkDebuggerJSImpl.so", paramString4 + "libarkDebuggerJSImpl.so")) {
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libarkDebuggerJSImpl.so");
-            }
-            for (i = 0;; i = 1)
-            {
-              paramString2 = new File(paramString1 + "libjsc_ark.so");
-              if ((paramString2 == null) || (!paramString2.exists())) {
-                break label404;
-              }
-              if (!bdcs.d(paramString1 + "libjsc_ark.so", paramString4 + "libjsc_ark.so")) {
-                break;
-              }
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libjsc_ark.so");
-              break label412;
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libarkDebuggerJSImpl.so");
-            }
-            QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libjsc_ark.so");
-            i = 1;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("JSDebuggerSoLoader", 1, paramString1, new Object[0]);
-      }
-    }
-    label404:
-    label406:
-    label412:
-    do
-    {
-      return false;
-      i = 0;
-      break;
-    } while (i != 0);
-    return true;
-  }
-  
-  private static void c()
-  {
-    Object localObject1 = aoho.b(186).a();
-    if (localObject1 == null) {
-      ArkAppCenter.c("JSDebuggerSoLoader", "updateJSDebuggerConfig, confBean is null");
-    }
-    do
-    {
-      return;
-      localObject1 = ((aohk)localObject1).a();
-      if (localObject1 == null)
-      {
-        ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig, aiKeywordConfig is null", new Object[0]));
+        localObject = new JSONObject(jdField_a_of_type_JavaLangString);
+        ArkEnvironmentManager.getInstance().setHardwareDisableList((JSONObject)localObject);
+        j = paramaomu.e;
         return;
+        localObject = "false";
+        continue;
+        label183:
+        bool = false;
       }
-      localObject1 = ((aoib)localObject1).d;
-    } while (localObject1 == null);
-    jdField_a_of_type_JavaUtilMap.clear();
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (aoie)((Iterator)localObject1).next();
-      if (localObject2 != null)
+      catch (JSONException localJSONException)
       {
-        String str1 = ((aoie)localObject2).jdField_a_of_type_JavaLangString;
-        String str2 = ((aoie)localObject2).b;
-        localObject2 = ((aoie)localObject2).c;
-        if ((str1 != null) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2))) {
-          jdField_a_of_type_JavaUtilMap.put(str1, new Pair(str2, localObject2));
+        for (;;)
+        {
+          ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
         }
       }
     }
-    ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig success.", new Object[0]));
   }
   
-  private static void c(String paramString)
+  public void b()
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new File(paramString);
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
-    }
+    anmj localanmj = this.jdField_a_of_type_Anmj;
+    anmj.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a());
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Anmj.b();
   }
 }
 

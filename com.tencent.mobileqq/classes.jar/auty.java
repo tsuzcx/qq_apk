@@ -1,32 +1,12 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-
-public class auty
-  implements behy<oidb_0x8e4.RspBody>
+class auty
 {
-  public auty(GameRoomInviteActivity paramGameRoomInviteActivity, auum paramauum) {}
+  public int a;
+  public String a;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public auty()
   {
-    if ((paramInt == 0) && (paramRspBody != null))
-    {
-      paramRspBody = this.jdField_a_of_type_Auum;
-      if (!this.jdField_a_of_type_Auum.a)
-      {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
-      }
-    }
-    while (paramRspBody == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, alpo.a(2131705516));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

@@ -1,16 +1,11 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class ayba
-  extends Editable.Factory
+public class ayba
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof baiq)) {
-      return (Editable)paramCharSequence;
-    }
-    return new baiq(paramCharSequence, 1, 20);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
 }
 
 

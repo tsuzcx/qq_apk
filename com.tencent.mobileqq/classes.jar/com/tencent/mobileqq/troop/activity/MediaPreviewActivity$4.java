@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aupt;
-import auqc;
+import auuc;
+import auul;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ class MediaPreviewActivity$4
     String str1;
     if (this.this$0.app != null)
     {
-      int j = ((auqc)this.this$0.app.getManager(106)).b();
+      int j = ((auul)this.this$0.app.getManager(106)).b();
       if ((this.this$0.b <= 0) || (((MediaPreviewInfo)this.this$0.a.get(0)).a != 2)) {
         break label108;
       }
@@ -35,7 +35,7 @@ class MediaPreviewActivity$4
     label119:
     for (String str2 = "2";; str2 = "1")
     {
-      aupt.a("clk_detail", "", new String[] { "", str1, "", str2 });
+      auuc.a("clk_detail", "", new String[] { "", str1, "", str2 });
       return;
       i = 0;
       break;

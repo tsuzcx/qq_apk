@@ -1,38 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bcmx
-  implements Animator.AnimatorListener
+class bcmx
+  extends ytx
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = false;
+  bcmx(bcmu parambcmu) {}
   
-  public bcmx(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
-        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
-      }
+    if (paramBundle == null) {
+      return;
     }
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914);
+    paramBundle = paramBundle.getString("fileId");
+    bbvl.c("TroopFileManager", bbvl.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
+    {
+      this.a.b(paramBundle);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715759), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715756), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715740), 0).b(i);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

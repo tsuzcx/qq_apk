@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
-public class aqem
-  implements OnCompositionLoadedListener
+public final class aqem
+  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
 {
-  public aqem(MatchingView.1 param1) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
-      return;
-    }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    MatchingView.a(this.a.this$0, localLottieDrawable);
-    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+  }
+  
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
   }
 }
 

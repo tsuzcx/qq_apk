@@ -1,33 +1,34 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aseg
-  implements MiniAppCmdInterface
 {
-  public aseg(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  public ImageView a;
+  public ForwardShortVideoOption.PressDarkImageView a;
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void a(Drawable paramDrawable)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramDrawable == null)
     {
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      if (paramJSONObject != null)
-      {
-        MiniAppController.preloadPackage(paramJSONObject);
-        paramJSONObject = new MiniAppConfig(paramJSONObject);
-        if (paramJSONObject.launchParam != null) {
-          paramJSONObject.launchParam.scene = 2064;
-        }
-        MiniProgramLpReportDC04239.reportAsync(paramJSONObject, "page_view", "expo", null, String.valueOf(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get()));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
       }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837969);
+      return;
     }
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(13);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bdoo.a(140.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
   }
 }
 

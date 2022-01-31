@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class affv
-  implements DialogInterface.OnClickListener
+public class affv
+  implements View.OnClickListener
 {
-  affv(affu paramaffu) {}
+  affv(afft paramafft) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      azqs.b(afft.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
+      afft.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
+      this.a.a();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + paramView);
+    }
   }
 }
 

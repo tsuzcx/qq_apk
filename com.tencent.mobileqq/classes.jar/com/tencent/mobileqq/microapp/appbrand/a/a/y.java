@@ -8,7 +8,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.appbrand.page.WebViewEventListener;
@@ -139,7 +139,7 @@ public final class y
       if (localBaseActivity != null)
       {
         str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (bdje.a(str)) {
+        if (bdnn.a(str)) {
           break label228;
         }
         if (localBaseActivity.checkSelfPermission(str) != 0) {

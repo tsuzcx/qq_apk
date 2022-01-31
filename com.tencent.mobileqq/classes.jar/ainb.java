@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
-class ainb
-  implements DialogInterface.OnClickListener
+public class ainb
+  implements View.OnClickListener
 {
-  ainb(aimu paramaimu, Runnable paramRunnable) {}
+  public ainb(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

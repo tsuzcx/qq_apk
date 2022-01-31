@@ -1,35 +1,25 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public final class avoq<Params, Result>
+class avoq
+  implements aoil
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Params a;
-  public final String a;
-  public SoftReference<View> a;
-  public Future<?> a;
-  public SoftReference<View> b;
-  public SoftReference<Result> c;
+  avoq(avop paramavop, IphonePickerView paramIphonePickerView, bhuf parambhuf) {}
   
-  public avoq(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing()))
     {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
+      avop.a(this.jdField_a_of_type_Avop, this.jdField_a_of_type_Avop.b, false);
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_Avop.b.setTag(Byte.valueOf((byte)paramInt1));
+    this.jdField_a_of_type_Avop.b.setText(avop.a(this.jdField_a_of_type_Avop).a(0, paramInt1));
   }
 }
 

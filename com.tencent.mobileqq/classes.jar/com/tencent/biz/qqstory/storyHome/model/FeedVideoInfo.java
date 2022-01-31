@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.ArrayList;
 import java.util.List;
-import uha;
+import ulj;
 
 public class FeedVideoInfo
   extends BaseUIItem
-  implements uha
+  implements ulj
 {
   public String feedId;
   public boolean mIsVideoEnd;

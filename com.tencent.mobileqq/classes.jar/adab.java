@@ -1,66 +1,84 @@
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.ProfileShoppingView;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class adab
-  extends alqf
+class adab
+  implements bhuk
 {
-  public adab(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  adab(aczv paramaczv, String paramString, bhuf parambhuf) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    switch (paramInt)
     {
-      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
-      if (paramString1 != null)
-      {
-        paramString1.memo = this.a.d;
-        paramString1.memoUrl = this.a.e;
-        paramString1.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, alpo.a(2131705908), 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
     }
-    paramString1 = alpo.a(2131705911);
-    if (paramInt == 1282) {
-      paramString1 = alpo.a(2131705916);
-    }
-    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    for (;;)
     {
-      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.memo = this.a.d;
-        paramArrayOfByte.memoUrl = this.a.e;
-        paramArrayOfByte.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, alpo.a(2131705915), 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
+      this.jdField_a_of_type_Bhuf.e();
       return;
+      azqs.b(this.jdField_a_of_type_Aczv.a.app, "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "1", "", "", VipUtils.a(this.jdField_a_of_type_Aczv.a.app, this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin()));
+      if (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.b) {
+        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin(), "group_card", "click_setresult", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      }
+      if ((this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId == awra.j) || (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId == awra.i)) {
+        VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_setmy", "0", 1, 0, 0, ndd.a(), String.valueOf(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId));
+      }
+      if ((this.jdField_a_of_type_Aczv.a.d == 160L) || (this.jdField_a_of_type_Aczv.a.d == 1600L) || ((bddf.e(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_JavaUtilArrayList)) && (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.cardType != 2) && (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.dynamicCardFlag != 1)) || (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId == awra.h) || ((this.jdField_a_of_type_Aczv.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView)))
+      {
+        Toast.makeText(this.jdField_a_of_type_Aczv.a.getApplicationContext(), 2131695637, 0).show();
+      }
+      else if (awra.a(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId))
+      {
+        bdmj.a(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a, this.jdField_a_of_type_Aczv.a.app, this.jdField_a_of_type_Aczv.a);
+        azqs.b(this.jdField_a_of_type_Aczv.a.app, "dc00898", "", "", "qvip", "0X8009E3A", 2, 0, "", "", "", "");
+      }
+      else if ((!TextUtils.isEmpty(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.diyText)) && (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.diyTextFontId != 0))
+      {
+        this.jdField_a_of_type_Aczv.a.m();
+      }
+      else
+      {
+        this.jdField_a_of_type_Aczv.a.a(this.jdField_a_of_type_Aczv.a.c, this.jdField_a_of_type_Aczv.a.d, this.jdField_a_of_type_Aczv.a.e, this.jdField_a_of_type_Aczv.a.b);
+        azqs.b(this.jdField_a_of_type_Aczv.a.app, "dc00898", "", "", "", "0X800A4C1", 0, 0, "", "", "", "");
+        continue;
+        azqs.b(this.jdField_a_of_type_Aczv.a.app, "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "2", "", "", VipUtils.a(this.jdField_a_of_type_Aczv.a.app, this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin()));
+        if (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.b) {
+          VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin(), "group_card", "click_more", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+        }
+        if ((this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId == awra.j) || (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId == awra.i)) {
+          VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_morecard", "0", 1, 0, 0, ndd.a(), String.valueOf(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.a.lCurrentStyleId));
+        }
+        String str1 = "";
+        Object localObject = this.jdField_a_of_type_Aczv.a.b();
+        paramView = str1;
+        if (localObject != null)
+        {
+          paramView = str1;
+          if (((String)localObject).equals("CustomCover")) {
+            paramView = "oldCustom=1";
+          }
+        }
+        localObject = this.jdField_a_of_type_Aczv.a;
+        String str2 = this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin();
+        if (this.jdField_a_of_type_JavaLangString.equals("CLICK_HEADER_BG")) {}
+        for (str1 = "inside.friendCardBackground";; str1 = "inside.blackBar")
+        {
+          bddf.a((Activity)localObject, str2, str1, 1, 1, 1, paramView, false);
+          break;
+        }
+        azqs.b(this.jdField_a_of_type_Aczv.a.app, "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "3", "", "", VipUtils.a(this.jdField_a_of_type_Aczv.a.app, this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin()));
+        if (this.jdField_a_of_type_Aczv.a.jdField_a_of_type_Awqt.b) {
+          VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aczv.a.app.getCurrentAccountUin(), "group_card", "click_cancel", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+        }
+      }
     }
-    paramArrayOfByte = alpo.a(2131705909);
-    if (paramInt == 1288) {
-      paramArrayOfByte = alpo.a(2131705913);
-    }
-    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 

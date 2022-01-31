@@ -1,38 +1,65 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class azre
-  implements View.OnClickListener
+  extends RecyclablePool.Recyclable
 {
-  public azre(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
   
-  public void onClick(View paramView)
+  public azre()
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692457), 1).a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.e = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.f = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.j = 0L;
+    this.i = 0L;
+    this.h = 0L;
+    this.g = 0L;
+    this.m = 0L;
+    this.l = 0L;
+    this.k = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.p = 0L;
+    this.o = 0L;
+    this.n = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azre
  * JD-Core Version:    0.7.0.1
  */

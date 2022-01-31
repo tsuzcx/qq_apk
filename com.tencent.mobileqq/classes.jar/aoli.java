@@ -3,44 +3,34 @@ import org.json.JSONObject;
 
 public class aoli
 {
-  private int a;
-  private int b;
-  private int c;
+  private boolean a;
   
   public static aoli a(String paramString)
   {
     if (paramString == null) {}
-    do
+    for (;;)
     {
       return null;
       try
       {
         aoli localaoli = new aoli();
-        paramString = new JSONObject(paramString);
-        localaoli.a = paramString.optInt("showVoiceToTextSwitch", -1);
-        localaoli.b = paramString.optInt("grayTipShowPerThousand", -1);
-        localaoli.c = paramString.optInt("mainSwitch", -1);
-        return localaoli;
+        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localaoli.a = bool;
+          return localaoli;
+        }
+        if (!QLog.isColorLevel()) {}
       }
       catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
+    }
     QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public int a()
-  {
-    return this.b;
-  }
-  
   public boolean a()
   {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
+    return this.a;
   }
 }
 

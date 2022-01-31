@@ -1,59 +1,35 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
-public class wmi
-  implements Comparator<wme>
+class wmi
+  extends SimpleJob<Object>
 {
-  public int a(wme paramwme1, wme paramwme2)
+  wmi(wmf paramwmf, String paramString1, String paramString2)
   {
-    int k = 1;
-    int i;
-    int j;
-    if (((paramwme1 instanceof wma)) && (((HotRecommendFeedItem)((wma)paramwme1).a()).mIsTopLocation))
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (uvn)uwa.a(19);
+    paramVarArgs = paramJobContext.a(vcg.a(this.jdField_a_of_type_Wmf.b));
+    wmk localwmk = new wmk(this.jdField_a_of_type_Wmf.c);
+    ArrayList localArrayList = new ArrayList();
+    localwmk.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localwmk.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = 1;
-      if ((!(paramwme2 instanceof wma)) || (!((HotRecommendFeedItem)((wma)paramwme2).a()).mIsTopLocation)) {
-        break label80;
-      }
-      j = 1;
-      label54:
-      if ((j ^ i) == 0) {
-        break label86;
-      }
-      j = k;
-      if (i != 0) {
-        j = -1;
-      }
+      localwmk.jdField_a_of_type_Boolean = bool;
+      umc.a().dispatch(localwmk);
+      wxe.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localwmk.jdField_a_of_type_JavaUtilList);
+      return null;
     }
-    label80:
-    label86:
-    do
-    {
-      do
-      {
-        return j;
-        i = 0;
-        break;
-        j = 0;
-        break label54;
-        if (paramwme1.a.dateTimeMillis != paramwme2.a.dateTimeMillis) {
-          break label146;
-        }
-        if (((paramwme1 instanceof wmg)) && (wmg.a((wmg)paramwme1))) {
-          return -1;
-        }
-        if (!(paramwme2 instanceof wmg)) {
-          break label144;
-        }
-        j = k;
-      } while (wmg.a((wmg)paramwme2));
-      return 0;
-      j = k;
-    } while (paramwme1.a.dateTimeMillis <= paramwme2.a.dateTimeMillis);
-    label144:
-    label146:
-    return -1;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.gdtad.util;
 
-import aanp;
-import aaoj;
-import aaom;
-import aaoo;
+import aase;
+import aasy;
+import aatb;
+import aatd;
 
 public final class GdtDeviceInfoHelper$1
   implements Runnable
@@ -12,8 +12,8 @@ public final class GdtDeviceInfoHelper$1
   
   public void run()
   {
-    aanp.b(aaoo.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(aaoo.a()) }));
-    if (aaoo.a() >= 5) {}
+    aase.b(aatd.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread delayMillis:%d count:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(aatd.a()) }));
+    if (aatd.a() >= 5) {}
     int i;
     label212:
     do
@@ -21,35 +21,35 @@ public final class GdtDeviceInfoHelper$1
       return;
       try
       {
-        if (aaoo.a() >= 5) {
+        if (aatd.a() >= 5) {
           return;
         }
       }
       finally {}
-      aaoo.a(aaoo.a() + 1);
-      aaom localaaom = aaoj.a().a();
-      i = aaoo.a(localaaom);
-      if (localaaom != null) {
-        aanp.b(aaoo.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localaaom.jdField_a_of_type_Int), Long.valueOf(localaaom.jdField_a_of_type_Long) }));
+      aatd.a(aatd.a() + 1);
+      aatb localaatb = aasy.a().a();
+      i = aatd.a(localaatb);
+      if (localaatb != null) {
+        aase.b(aatd.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread errorCode:%d errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(localaatb.jdField_a_of_type_Int), Long.valueOf(localaatb.jdField_a_of_type_Long) }));
       }
       for (;;)
       {
         if (i != 0) {
           break label212;
         }
-        if ((localaaom == null) || (localaaom.jdField_a_of_type_Long == 0L)) {
+        if ((localaatb == null) || (localaatb.jdField_a_of_type_Long == 0L)) {
           break;
         }
-        long l = localaaom.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
+        long l = localaatb.jdField_a_of_type_Long * 1000L - System.currentTimeMillis() + 1000L;
         if (l <= 0L) {
           break;
         }
-        aaoo.a(l);
+        aatd.a(l);
         return;
-        aanp.b(aaoo.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
+        aase.b(aatd.a(), String.format("updateForAidTicketAndTaidTicketOnSubThread initTuringSDK return null, errorCode:%d", new Object[] { Integer.valueOf(i) }));
       }
     } while (i != 3);
-    aaoo.a(1800000L);
+    aatd.a(1800000L);
   }
 }
 

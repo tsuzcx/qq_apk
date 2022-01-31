@@ -1,39 +1,20 @@
-import android.animation.ObjectAnimator;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.ArrayList;
-
 public class ausb
 {
-  public int a;
-  protected Drawable a;
-  public Handler a;
-  protected ImageView a;
-  public ArrayList<String> a;
-  protected int b;
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void a(String paramString)
+  public ausb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
-    paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    paramString.setTag(bcuq.a(this.b, this.b));
-    paramString.setDecodeHandler(bcuq.a);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
-    {
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.1F });
-      ((ObjectAnimator)localObject).addListener(new ausc(this, paramString));
-      ((ObjectAnimator)localObject).setDuration(1500L).start();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
   }
 }
 

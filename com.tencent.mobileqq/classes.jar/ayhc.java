@@ -1,30 +1,16 @@
-import java.util.List;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public abstract class ayhc
-  implements ayjk
+class ayhc
+  implements Comparator<ayms>
 {
-  protected String a;
-  protected List<ayjl> a;
+  ayhc(ayha paramayha) {}
   
-  public ayhc(List<ayjl> paramList, String paramString)
+  public int a(ayms paramayms1, ayms paramayms2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    paramayms1 = paramayms1.c;
+    paramayms2 = paramayms2.c;
+    return ChnToSpell.a(paramayms1, 2).compareTo(ChnToSpell.a(paramayms2, 2));
   }
 }
 

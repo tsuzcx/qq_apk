@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:id="@id/cx" android:background="@drawable/cf4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:layout_gravity="center_vertical" android:id="@id/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="@dimen/n0" android:layout_marginBottom="@dimen/n0" android:text="@string/wmx" android:lineSpacingMultiplier="1.3" style="@style/y7" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="@dimen/n0" android:layout_marginBottom="@dimen/n0" android:text="@string/wn9" android:lineSpacingMultiplier="1.3" style="@style/y7" />
         <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
         <ImageView android:layout_gravity="center_vertical" android:id="@id/co" android:layout_width="@dimen/n4" android:layout_height="@dimen/n4" android:layout_marginRight="12.0dip" android:src="@drawable/cg_" android:contentDescription="@string/vyy" />
     </LinearLayout>

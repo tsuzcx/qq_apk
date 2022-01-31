@@ -1,325 +1,471 @@
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.extendfriend.wiget.FeedBannerItemGradientLinearLayout;
-import com.tencent.mobileqq.extendfriend.wiget.TabLayout;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class apxr
-  extends RecyclerView.ViewHolder
+  extends apwo
+  implements Handler.Callback
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private apxu jdField_a_of_type_Apxu;
-  private aqef jdField_a_of_type_Aqef;
+  private MqqHandler a;
+  List<ProgressBar> d;
   
-  public apxr(View paramView, apxu paramapxu)
+  public apxr(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, apuc paramapuc)
   {
-    super(paramView);
-    this.jdField_a_of_type_Apxu = paramapxu;
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this, true);
+    this.jdField_d_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a(Context paramContext, apxq paramapxq)
+  private ProgressBar a(EmoticonPackage paramEmoticonPackage)
   {
-    if ((paramapxq == null) || (paramContext == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("FeedBannerViewHolder", 2, "jumpUrl bannerTabItem or context null ");
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
+    while ((this.jdField_d_of_type_JavaUtilList == null) || (this.jdField_d_of_type_JavaUtilList.size() <= 0)) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ProgressBar localProgressBar = (ProgressBar)localIterator.next();
+      Object localObject = localProgressBar.getTag();
+      if ((localObject instanceof String)) {}
+      for (localObject = (String)localObject; (!TextUtils.isEmpty((CharSequence)localObject)) && (paramEmoticonPackage.epId.equals(localObject)); localObject = null) {
+        return localProgressBar;
       }
     }
-    label196:
-    do
+  }
+  
+  private void a(URLImageView paramURLImageView, apxv paramapxv)
+  {
+    if ((paramURLImageView == null) || (paramapxv == null))
     {
-      do
+      QLog.e("MagicFaceAdapter", 1, "updateImageView view or info = null");
+      return;
+    }
+    Object localObject = (RelativeLayout.LayoutParams)paramURLImageView.getLayoutParams();
+    if ("push".equals(paramapxv.i))
+    {
+      ((RelativeLayout.LayoutParams)localObject).width = ((int)(this.jdField_a_of_type_Float * 63.0F));
+      ((RelativeLayout.LayoutParams)localObject).height = ((int)(this.jdField_a_of_type_Float * 63.0F));
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicFaceAdapter", 2, "show push_btn drawable.");
+      }
+      paramapxv = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("mobileQQ", 0);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      boolean bool = paramapxv.getBoolean("magic_promotion_is_new_content_" + (String)localObject, false);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846656);
+      if (bool)
       {
-        String str;
-        int i;
-        do
+        paramapxv = paramapxv.getString("magic_promotion_gifUrl", "");
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+        if (TextUtils.isEmpty(paramapxv)) {
+          break label241;
+        }
+      }
+      for (;;)
+      {
+        try
         {
-          do
-          {
-            do
-            {
-              return;
-              str = paramapxq.d;
-              i = paramapxq.jdField_a_of_type_Int;
-              if (QLog.isColorLevel()) {
-                QLog.d("FeedBannerViewHolder", 2, "parse banner jumpUrl " + str + ", type =" + i);
-              }
-              if (i != 0) {
-                break;
-              }
-            } while (this.jdField_a_of_type_Apxu == null);
-            this.jdField_a_of_type_Apxu.a();
-            return;
-            if (i != 1) {
-              break;
-            }
-            if (MiniAppLauncher.isMiniAppUrl(str))
-            {
-              MiniAppLauncher.startMiniApp(this.itemView.getContext(), str, 2065, null);
-              return;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("FeedBannerViewHolder", 2, "jumpUrl is not scheme ");
-          return;
-          if (i != 2) {
-            break label196;
-          }
-          if (!TextUtils.isEmpty(str)) {
+          paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramapxv, (URLDrawable.URLDrawableOptions)localObject));
+          if (!AppSetting.c) {
             break;
           }
-        } while (!QLog.isColorLevel());
-        QLog.e("FeedBannerViewHolder", 2, "web jumpUrl is null ");
-        return;
-        paramapxq = new Intent(paramContext, QQBrowserActivity.class);
-        paramapxq.putExtra("url", str);
-        paramContext.startActivity(paramapxq);
-        return;
-        if (i != 3) {
-          break;
+          paramURLImageView.setContentDescription(alud.a(2131706807));
+          return;
+          paramapxv = paramapxv.getString("magic_promotion_imgUrl", "");
         }
-        try
+        catch (IllegalArgumentException paramapxv)
         {
-          paramapxq = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
-          paramapxq.setData(Uri.parse(str));
-          paramContext.startActivity(paramapxq);
-          paramContext = new Bundle();
-          paramContext.putString("action", "click");
-          paramContext.putString("page", "kuolie");
-          paramContext.putString("module", "selfstudy");
-          azyh.a(paramContext);
+          if (QLog.isColorLevel()) {
+            QLog.w("MagicFaceAdapter", 2, paramapxv.getMessage());
+          }
+          paramURLImageView.setImageDrawable(null);
+          continue;
+        }
+        label241:
+        paramURLImageView.setImageDrawable(null);
+      }
+    }
+    Emoticon localEmoticon = paramapxv.a;
+    if ((localEmoticon == null) || (TextUtils.isEmpty(localEmoticon.epId)))
+    {
+      QLog.e("MagicFaceAdapter", 1, "updateImageView emotion is null or epid is null");
+      return;
+    }
+    EmoticonPackage localEmoticonPackage = ((aufn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(localEmoticon.epId);
+    String str = localEmoticon.epId + "_" + localEmoticon.eId;
+    localObject = str;
+    if (localEmoticonPackage != null) {
+      if (localEmoticonPackage.valid)
+      {
+        localObject = str;
+        if (2 == localEmoticonPackage.status) {}
+      }
+      else
+      {
+        localObject = str;
+        if (!paramapxv.b) {
+          localObject = str + "_panel_magic_gray";
+        }
+      }
+    }
+    try
+    {
+      paramapxv = new URL("emotion_pic", "fromPanel", (String)localObject);
+      if (paramapxv != null)
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837907);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843340);
+        paramapxv = URLDrawable.getDrawable(paramapxv, (URLDrawable.URLDrawableOptions)localObject);
+        paramapxv.setTag(localEmoticon);
+        paramapxv.addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (paramapxv != null)
+        {
+          paramURLImageView.setImageDrawable(paramapxv);
+          paramURLImageView.setBackgroundDrawable(null);
           return;
         }
-        catch (Exception paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("FeedBannerViewHolder", 2, "click studyroom", paramContext);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("FeedBannerViewHolder", 2, "jumpUrl is not support ");
-  }
-  
-  private void a(View paramView, apxq paramapxq, int paramInt1, int paramInt2)
-  {
-    int i = bdkf.a(5.0F);
-    ((RoundCorneredRelativeLayout)paramView).setRadius(i, i, i, i);
-    Object localObject2 = (ImageView)paramView.findViewById(2131367808);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131377884);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131377128);
-    if (!TextUtils.isEmpty(paramapxq.jdField_a_of_type_JavaLangString)) {
-      localTextView1.setText(paramapxq.jdField_a_of_type_JavaLangString);
+      }
     }
-    if (!TextUtils.isEmpty(paramapxq.jdField_b_of_type_JavaLangString)) {
-      localTextView2.setText(paramapxq.jdField_b_of_type_JavaLangString);
-    }
-    Object localObject1 = (FeedBannerItemGradientLinearLayout)paramView.findViewById(2131367262);
-    if (paramInt2 == 1)
+    catch (MalformedURLException paramapxv)
     {
-      i = 24;
-      ((FeedBannerItemGradientLinearLayout)localObject1).a(bdkf.a(i), paramapxq.jdField_b_of_type_Int, paramapxq.jdField_c_of_type_Int);
-      localObject1 = (FrameLayout)paramView.findViewById(2131367811);
-      if (paramapxq.jdField_a_of_type_Int != 0) {
-        break label387;
-      }
-      ((ImageView)localObject2).setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = localTextView2;
-      localObject2 = paramView.getContext().getResources().getDrawable(2130844638);
-      ((Drawable)localObject2).setBounds(bdkf.a(1.0F), 0, bdkf.a(7.0F), bdkf.a(6.0F));
-      localTextView2.setCompoundDrawablePadding(bdkf.a(3.0F));
-      localTextView2.setCompoundDrawables((Drawable)localObject2, null, null, null);
-      if (paramInt2 != 2) {
-        break label339;
-      }
-      ((ViewGroup.MarginLayoutParams)localTextView2.getLayoutParams()).rightMargin = bdkf.a(80.0F);
-      label244:
-      a((FrameLayout)localObject1, paramInt2);
-      a(paramapxq);
-    }
-    for (;;)
-    {
-      localObject2 = (ImageView)paramView.findViewById(2131364881);
-      Object localObject3 = Drawable.createFromPath(aqbo.a(paramInt2));
-      if (localObject3 != null) {
-        ((ImageView)localObject2).setImageDrawable((Drawable)localObject3);
-      }
-      paramView.setOnTouchListener(new apxt(this, paramView.findViewById(2131372215), (FrameLayout)localObject1, localTextView1, localTextView2, paramapxq, paramInt1));
-      return;
-      if (paramInt2 == 2)
+      for (;;)
       {
-        i = 22;
-        break;
-      }
-      i = 40;
-      break;
-      label339:
-      if (paramInt2 != 1) {
-        break label244;
-      }
-      localTextView1.setTextSize(25.0F);
-      localTextView2.setTextSize(12.0F);
-      localTextView2.setPadding(0, bdkf.a(2.0F), 0, 0);
-      paramView.findViewById(2131362837).setVisibility(0);
-      break label244;
-      label387:
-      if (paramapxq.jdField_c_of_type_JavaLangString != null)
-      {
-        try
-        {
-          localObject3 = new URL(paramapxq.jdField_c_of_type_JavaLangString);
-          ColorDrawable localColorDrawable1 = new ColorDrawable(0);
-          ColorDrawable localColorDrawable2 = new ColorDrawable(0);
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mLoadingDrawable = localColorDrawable1;
-          localURLDrawableOptions.mFailedDrawable = localColorDrawable2;
-          localURLDrawableOptions.mUseApngImage = true;
-          localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-          ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((URL)localObject3, localURLDrawableOptions));
-        }
-        catch (MalformedURLException localMalformedURLException) {}
         if (QLog.isColorLevel()) {
-          QLog.e("FeedBannerViewHolder", 2, "setImageUrl error " + localMalformedURLException.toString());
+          QLog.d("MagicFaceAdapter", 2, "updateImageView ,", paramapxv);
         }
+        paramapxv = null;
+        continue;
+        paramURLImageView.setVisibility(4);
+        continue;
+        paramapxv = null;
       }
     }
   }
   
-  private void a(FrameLayout paramFrameLayout, int paramInt)
+  private RelativeLayout b()
   {
-    int j = 3;
-    if (this.jdField_a_of_type_Aqef != null) {
-      this.jdField_a_of_type_Aqef.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceAdapter", 2, "getMagicView");
     }
-    int i;
-    FrameLayout.LayoutParams localLayoutParams;
-    if (paramInt == 1)
-    {
-      i = 4;
-      this.jdField_a_of_type_Aqef = new aqef(i);
-      if (this.jdField_a_of_type_Aqef.a() != null)
-      {
-        localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        if (paramInt != 1) {
-          break label129;
-        }
-        localLayoutParams.bottomMargin = bdkf.a(20.0F);
-        localLayoutParams.topMargin = bdkf.a(16.0F);
-        if (paramInt != 1) {
-          break label166;
-        }
-      }
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.jdField_d_of_type_Int / this.jdField_a_of_type_Int, (int)(72.0F * this.jdField_a_of_type_Float)));
+    Object localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    ((URLImageView)localObject).setId(2131365668);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(56.0F * this.jdField_a_of_type_Float), (int)(56.0F * this.jdField_a_of_type_Float));
+    localLayoutParams1.addRule(10, -1);
+    localLayoutParams1.addRule(14, -1);
+    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+    ((URLImageView)localObject).setAdjustViewBounds(false);
+    ((URLImageView)localObject).setLayoutParams(localLayoutParams1);
+    localRelativeLayout.addView((View)localObject);
+    localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    ((TextView)localObject).setVisibility(8);
+    ((TextView)localObject).setId(2131365673);
+    ((TextView)localObject).setTextSize(11.0F);
+    localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams1.addRule(3, 2131365668);
+    localLayoutParams1.topMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
+    localLayoutParams1.addRule(14, -1);
+    localRelativeLayout.addView((View)localObject, localLayoutParams1);
+    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    ((ImageView)localObject).setVisibility(8);
+    ((ImageView)localObject).setId(2131365674);
+    localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams1.addRule(8, 2131365668);
+    localLayoutParams1.addRule(7, 2131365668);
+    localRelativeLayout.addView((View)localObject, localLayoutParams1);
+    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    ((ImageView)localObject).setId(2131365675);
+    localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams1.addRule(5, 2131365668);
+    localLayoutParams1.addRule(6, 2131365668);
+    ProgressBar localProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
+    localProgressBar.setVisibility(8);
+    localProgressBar.setId(2131365672);
+    localProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839225));
+    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams((int)(16.0F * this.jdField_a_of_type_Float), (int)(16.0F * this.jdField_a_of_type_Float));
+    localLayoutParams2.addRule(14, -1);
+    localLayoutParams2.topMargin = ((int)(20.0F * this.jdField_a_of_type_Float));
+    localRelativeLayout.addView(localProgressBar, localLayoutParams2);
+    localRelativeLayout.addView((View)localObject, localLayoutParams1);
+    if (AppSetting.c) {
+      localRelativeLayout.setFocusable(true);
     }
-    label129:
-    label166:
-    for (paramInt = j;; paramInt = 5)
-    {
-      localLayoutParams.gravity = paramInt;
-      paramFrameLayout.addView(this.jdField_a_of_type_Aqef.a(), localLayoutParams);
+    return localRelativeLayout;
+  }
+  
+  private void b(View paramView, apws paramapws)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceAdapter", 2, "updateUI");
+    }
+    if ((paramView == null) || (paramapws == null)) {
       return;
-      if (paramInt <= 2)
-      {
-        i = 2;
-        break;
-      }
-      i = 3;
-      break;
-      if (paramInt <= 2) {}
-      for (i = bdkf.a(16.0F);; i = bdkf.a(22.0F))
-      {
-        localLayoutParams.bottomMargin = i;
-        localLayoutParams.topMargin = i;
-        break;
-      }
     }
-  }
-  
-  private void a(apxq paramapxq, int paramInt)
-  {
-    a(paramapxq, paramInt, "0X800A9B1");
-    a(this.itemView.getContext(), paramapxq);
-  }
-  
-  private void a(apxq paramapxq, int paramInt, String paramString)
-  {
-    if ((paramapxq != null) && (paramapxq.jdField_a_of_type_Int != 0))
+    if ((paramapws instanceof apuf)) {}
+    for (paramapws = (apxv)paramapws;; paramapws = null)
     {
-      String str1 = paramapxq.jdField_a_of_type_JavaLangString;
-      String str2 = paramapxq.jdField_b_of_type_JavaLangString;
-      long l = paramapxq.jdField_a_of_type_Long;
-      azmj.b(null, "dc00898", "", "", "qq_kuolie", paramString, 0, 0, paramInt + "", "", l + ";" + str1, str2);
+      if (paramapws == null)
+      {
+        QLog.e("MagicFaceAdapter", 1, "updateUI emotionInfo = null");
+        return;
+      }
+      paramView.setVisibility(0);
+      paramView.setTag(paramapws);
+      Object localObject1 = (URLImageView)paramView.findViewById(2131365668);
+      ((URLImageView)localObject1).setVisibility(0);
+      a((URLImageView)localObject1, paramapws);
+      Object localObject2 = (TextView)paramView.findViewById(2131365673);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131365675);
+      localObject1 = (ImageView)paramView.findViewById(2131365674);
+      paramView = (ProgressBar)paramView.findViewById(2131365672);
+      if ("push".equals(paramapws.i))
+      {
+        ((TextView)localObject2).setVisibility(8);
+        localImageView.setVisibility(8);
+        ((ImageView)localObject1).setVisibility(8);
+        paramView.setVisibility(8);
+        return;
+      }
+      paramapws = paramapws.a;
+      if ((paramapws == null) || (TextUtils.isEmpty(paramapws.epId)))
+      {
+        QLog.e("MagicFaceAdapter", 1, "updateUI emotion is null or epid is null");
+        return;
+      }
+      String str = paramapws.name;
+      if (!TextUtils.isEmpty(str))
+      {
+        ((TextView)localObject2).setVisibility(0);
+        if (str.length() > 5)
+        {
+          ((TextView)localObject2).setText(str.substring(0, 4) + "...");
+          if (AppSetting.c) {
+            ((TextView)localObject2).setContentDescription(str);
+          }
+          label274:
+          localImageView.setVisibility(8);
+          ((ImageView)localObject1).setVisibility(8);
+          localObject2 = ((aufn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramapws.epId);
+          if ((localObject2 != null) && (!((EmoticonPackage)localObject2).valid))
+          {
+            ((ImageView)localObject1).setImageResource(2130846665);
+            ((ImageView)localObject1).setVisibility(0);
+          }
+          paramView.setVisibility(8);
+          paramView.setTag(paramapws.epId);
+          if (!this.jdField_d_of_type_JavaUtilList.contains(paramView)) {
+            this.jdField_d_of_type_JavaUtilList.add(paramView);
+          }
+          if (((apro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(43)).a(paramapws.epId) < 0.0F) {
+            break label430;
+          }
+        }
+      }
+      label430:
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label435;
+        }
+        paramView.setVisibility(0);
+        return;
+        ((TextView)localObject2).setText(str);
+        break;
+        ((TextView)localObject2).setVisibility(8);
+        break label274;
+      }
+      label435:
+      paramView.setVisibility(8);
+      return;
     }
   }
   
-  public void a()
+  public View a(aptf paramaptf, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Aqef != null) {
-      this.jdField_a_of_type_Aqef.d();
-    }
-  }
-  
-  public void a(apxq paramapxq)
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramapxq.jdField_b_of_type_JavaLangString != null)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramapxq.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.jdField_a_of_type_Aqef != null) && (paramapxq.jdField_a_of_type_JavaUtilArrayList != null)) {
-      this.jdField_a_of_type_Aqef.a(paramapxq.jdField_a_of_type_JavaUtilArrayList);
-    }
-  }
-  
-  public void a(apyo paramapyo, int paramInt)
-  {
-    Object localObject;
-    ViewGroup.LayoutParams localLayoutParams;
+    int j = 0;
+    paramViewGroup = (apxt)paramaptf;
     int i;
-    if (((paramapyo instanceof apxp)) && ((this.itemView instanceof TabLayout)))
+    if (paramView == null)
     {
-      localObject = (apxp)paramapyo;
-      paramapyo = (TabLayout)this.itemView;
-      paramapyo.setPadding(paramapyo.getPaddingLeft(), paramInt, paramapyo.getPaddingRight(), paramapyo.getPaddingBottom());
-      localObject = ((apxp)localObject).jdField_a_of_type_JavaUtilArrayList;
-      localLayoutParams = paramapyo.getLayoutParams();
-      i = ((ArrayList)localObject).size();
-      if (i != 1) {
-        break label129;
+      paramView = apxa.a().a(this.c);
+      if (paramView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicFaceAdapter", 2, "getEmotionView position = " + paramInt + ";view from infalter");
+        }
+        paramView = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+        paramView.setOrientation(0);
+        if (paramInt == 0) {
+          paramView.setPadding(0, (int)(16.0F * this.jdField_a_of_type_Float), 0, 0);
+        }
+        for (;;)
+        {
+          i = 0;
+          for (;;)
+          {
+            paramaptf = paramView;
+            if (i >= this.jdField_a_of_type_Int) {
+              break;
+            }
+            paramaptf = b();
+            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_d_of_type_Int / this.jdField_a_of_type_Int, -1);
+            paramaptf.setGravity(17);
+            paramaptf.setVisibility(8);
+            paramaptf.setLayoutParams(localLayoutParams);
+            paramaptf.setFocusable(true);
+            paramaptf.setFocusableInTouchMode(true);
+            paramView.addView(paramaptf);
+            i += 1;
+          }
+          paramView.setPadding(0, (int)(14.0F * this.jdField_a_of_type_Float), 0, 0);
+        }
       }
-      i = 122;
+      paramaptf = paramView;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MagicFaceAdapter", 2, "getEmotionView position = " + paramInt + ";view from cache");
+        paramaptf = paramView;
+      }
+      ((EmoticonPanelLinearLayout)paramaptf).setCallBack(this.jdField_a_of_type_Apuc);
+      a(this.c, paramaptf);
+      paramView = (ViewGroup)paramaptf;
+      paramViewGroup.a = new RelativeLayout[this.jdField_a_of_type_Int];
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        paramViewGroup.a[i] = ((RelativeLayout)paramView.getChildAt(i));
+        i += 1;
+      }
+      paramaptf.setTag(paramViewGroup);
+      i = j;
     }
     for (;;)
     {
-      i = bdkf.a(i);
-      if (localLayoutParams != null) {
-        localLayoutParams.height = (i + paramInt);
+      try
+      {
+        if (i < this.jdField_a_of_type_Int)
+        {
+          j = this.jdField_a_of_type_Int * paramInt + i;
+          if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
+          {
+            paramViewGroup.a[i].setTag(null);
+            paramViewGroup.a[i].setVisibility(8);
+          }
+          else
+          {
+            b(paramViewGroup.a[i], (apws)this.jdField_a_of_type_JavaUtilList.get(j));
+          }
+        }
       }
-      paramapyo.a().setMinimumHeight(i);
-      paramapyo.a(new apxs(this, (ArrayList)localObject, bdkf.a(120.0F), bdkf.a(4.0F)));
+      catch (OutOfMemoryError paramView)
+      {
+        QLog.e("MagicFaceAdapter", 1, "updateUI oom");
+      }
+      return paramaptf;
+      paramaptf = paramView;
+      i = j;
+      continue;
+      i += 1;
+    }
+  }
+  
+  public aptf a()
+  {
+    return new apxt();
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceAdapter", 2, "packageDownloadEnd");
+    }
+    if (paramEmoticonPackage == null) {
       return;
-      label129:
-      if (i == 2) {
-        i = 108;
-      } else {
-        i = 168;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 101;
+    localMessage.arg1 = paramInt;
+    localMessage.obj = paramEmoticonPackage;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceAdapter", 2, "refreshPanelData");
+    }
+    apwt.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, null, -1, 0, false, new apxs(this));
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicFaceAdapter", 2, "packageDownloadStart");
+    }
+    if (paramEmoticonPackage == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 100;
+    localMessage.obj = paramEmoticonPackage;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = a((EmoticonPackage)paramMessage.obj);
+      if (paramMessage != null)
+      {
+        paramMessage.setVisibility(0);
+        continue;
+        ProgressBar localProgressBar = a((EmoticonPackage)paramMessage.obj);
+        int i = paramMessage.arg1;
+        if (localProgressBar != null)
+        {
+          localProgressBar.setVisibility(8);
+          if (i == 0) {
+            b();
+          }
+        }
       }
     }
   }

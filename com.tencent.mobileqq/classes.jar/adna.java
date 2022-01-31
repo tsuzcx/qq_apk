@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class adna
-  implements View.OnClickListener
+class adna
+  implements DialogInterface.OnClickListener
 {
-  public adna(QQMapActivity paramQQMapActivity) {}
+  adna(admx paramadmx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((bhpy)bhql.a(this.a, null));
-      this.a.a.b(2131698433);
-      this.a.a.b(2131692400);
-      this.a.a.c(2131690648);
-      this.a.a.a(new adnb(this));
-    }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    this.a.a.setResult(4004);
+    this.a.a.finish();
   }
 }
 

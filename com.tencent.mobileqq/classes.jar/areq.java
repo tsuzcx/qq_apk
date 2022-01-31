@@ -1,52 +1,86 @@
-import android.content.res.Resources;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import java.util.concurrent.Executor;
 
-class areq
-  implements arnz
+public abstract class areq
+  implements ared, IExcitingTransferRecvListener
 {
-  areq(arep paramarep, long paramLong, boolean paramBoolean, String paramString1, String paramString2, short paramShort, String paramString3) {}
+  protected long a;
+  protected aref a;
+  public arqx a;
+  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void a(boolean paramBoolean)
+  public areq(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Aref = a(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  protected abstract aref a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
+  
+  public boolean a()
+  {
+    try
     {
-      localObject1 = new HashMap();
-      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
-      localObject2 = new TVK_PlayerVideoInfo();
-      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
-      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
-      this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.aK_();
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally {}
+  }
+  
+  public void aA_()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      arsd.a().execute(new BaseDownloader.1(this));
       return;
     }
-    if (this.jdField_a_of_type_Long == -100001L) {}
-    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
     {
-      long l = 9360L;
-      if (this.jdField_a_of_type_Long == 0L) {
-        l = 9048L;
-      }
-      this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)l, BaseApplication.getContext().getResources().getString(2131690975));
+      this.jdField_a_of_type_Boolean = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
       return;
-      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
-      {
-        this.jdField_a_of_type_Arep.jdField_a_of_type_Areo.a(true);
-        this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692971));
-        return;
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690975));
-        return;
-      }
     }
-    Object localObject1 = this.b;
-    Object localObject2 = "http://" + this.jdField_a_of_type_JavaLangString + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
-    this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((String)localObject2, (String)localObject1);
+    finally {}
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_Aref.a();
+  }
+  
+  public void d()
+  {
+    b();
+    this.jdField_a_of_type_Aref.b();
+  }
+  
+  public void e()
+  {
+    b();
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, areh.a().b(), this);
   }
 }
 

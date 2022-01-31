@@ -1,54 +1,81 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
 
-class arxb
-  extends URLDrawableDownListener.Adapter
+public abstract class arxb
+  implements MethodChannel.MethodCallHandler
 {
-  arxb(arxa paramarxa) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
-    }
-  }
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
+  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
-    }
-  }
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if (paramView == null) {}
-    do
+    String str = paramMethodCall.method;
+    if ("setSpecialCare".equals(str))
     {
+      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
       return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
+    }
+    if ("setQzoneNotify".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
+      return;
+    }
+    if ("getSCFSwitchs".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("getSpecialRing".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("openSpecialRingMall".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("onPageShowReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellShowReport".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellClickReport".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onSpecialCareSwitchReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork;
 
-import badt;
-import badv;
+import baic;
+import baie;
 
 public class TeamWorkUtils$TDFileQIPCModule$1
   implements Runnable
 {
-  public TeamWorkUtils$TDFileQIPCModule$1(badv parambadv, String paramString) {}
+  public TeamWorkUtils$TDFileQIPCModule$1(baie parambaie, String paramString) {}
   
   public void run()
   {
-    badt.a(this.a);
+    baic.a(this.a);
   }
 }
 

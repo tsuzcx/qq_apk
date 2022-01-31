@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import wrh;
-import wrt;
+import wvq;
+import wwc;
 
 public class NewMyStorySegment$6$1
   implements Runnable
 {
-  public NewMyStorySegment$6$1(wrt paramwrt) {}
+  public NewMyStorySegment$6$1(wwc paramwwc) {}
   
   public void run()
   {

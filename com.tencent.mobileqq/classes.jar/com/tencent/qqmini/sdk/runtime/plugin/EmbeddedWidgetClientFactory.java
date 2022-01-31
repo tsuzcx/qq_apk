@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghn;
+import bglu;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidget;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidgetClient;
@@ -40,7 +40,7 @@ public class EmbeddedWidgetClientFactory
     return this.videoEmbeddedWidgetClientMap;
   }
   
-  public boolean handleInsertXWebVideo(String paramString, bghn parambghn1, bghn parambghn2)
+  public boolean handleInsertXWebVideo(String paramString, bglu parambglu1, bglu parambglu2)
   {
     try
     {
@@ -55,7 +55,7 @@ public class EmbeddedWidgetClientFactory
         VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)this.videoEmbeddedWidgetClientMap.get(Long.valueOf(l));
         if (localVideoEmbeddedWidgetClient != null)
         {
-          localVideoEmbeddedWidgetClient.handleInsertXWebVideo(paramString, parambghn1, parambghn2);
+          localVideoEmbeddedWidgetClient.handleInsertXWebVideo(paramString, parambglu1, parambglu2);
           return true;
         }
       }

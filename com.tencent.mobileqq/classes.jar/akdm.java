@@ -1,22 +1,13 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akdm
-  implements Cloneable
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public TextView b;
+  public akdm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public akdm(akdl paramakdl) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

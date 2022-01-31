@@ -1,6 +1,16 @@
-public abstract interface aydm
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+public class aydm
+  implements bhum
 {
-  public abstract void a(int paramInt);
+  public aydm(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onDismiss()
+  {
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+  }
 }
 
 

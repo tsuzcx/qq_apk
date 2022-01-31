@@ -1,37 +1,46 @@
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijp
+  implements affa
 {
-  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private aijq jdField_a_of_type_Aijq;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public boolean a;
   
-  public aijp(PhotoCropActivity paramPhotoCropActivity)
+  public aijp(aijq paramaijq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaijq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramaijq.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_Aijq = paramaijq;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramaijq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public void a()
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
+    switch (paramInt)
     {
-      bhpy localbhpy = (bhpy)bhql.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        localbhpy.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
-        i += 1;
-      }
-      localbhpy.c(2131690648);
-      localbhpy.a(new aijq(this, localbhpy));
-      localbhpy.show();
+    default: 
+      return;
+    case 4: 
+      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
+      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
+      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+      return;
     }
+    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(String[] paramArrayOfString)
+  public int[] a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    return new int[] { 2, 4, 8, 11 };
   }
 }
 

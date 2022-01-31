@@ -1,407 +1,342 @@
-import android.content.Context;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 public class anyi
 {
-  private static final List<String> a = new LinkedList();
-  private static final List<String> b = new ArrayList();
-  private static final List<String> c = new ArrayList();
-  
-  static
-  {
-    a.add("buluo.qq.com");
-    a.add("null");
-    a.add("unregistered service sub type");
-    a.add("captcha.qq.com");
-    a.add("oauth.youzan.com");
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      a.add("https://zb.vip.qq.com/sonic/funcall?_wv=16778243&asyncMode=3&_sonic_id=42898&_preload=1&from=call_process");
-      c.add("https://zb.vip.qq.com/sonic/funcall?_wv=16778243&asyncMode=3&_sonic_id=42898&_preload=1&from=call_process");
-    }
-  }
-  
-  public static int a(int paramInt)
-  {
-    return 0x7FFFFFFF & paramInt;
-  }
-  
-  public static int a(String paramString)
+  public static int a(byte[] paramArrayOfByte)
   {
     int i = 0;
-    int j = 0;
-    if (bdje.a(paramString)) {}
+    int k = 0;
+    if (paramArrayOfByte.length != 4) {
+      return k;
+    }
+    int j = 3;
     for (;;)
     {
-      return j;
-      paramString = Uri.parse(paramString);
-      try
-      {
-        paramString = paramString.getQueryParameter("_wwv");
-        if (!bdje.a(paramString))
-        {
-          long l = Long.parseLong(paramString);
-          if ((0x20000 & l) != 0L) {
-            i = 1;
-          }
-          j = i;
-          if ((0x10000 & l) != 0L) {
-            return i + 2;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
-      }
-    }
-    return 0;
-  }
-  
-  public static ColorNote a(ColorNote paramColorNote)
-  {
-    if (paramColorNote == null) {
-      return null;
-    }
-    String str = BaseApplicationImpl.getContext().getString(2131690924);
-    int i = paramColorNote.getServiceType();
-    return new anyc().a(i | 0x80000000).a(paramColorNote.getSubType()).b(0).b(paramColorNote.getMainTitle()).c(str).d(paramColorNote.getPicUrl()).a(paramColorNote.getReserve()).a();
-  }
-  
-  public static String a(String paramString)
-  {
-    if (bdje.a(paramString)) {
-      return "";
-    }
-    try
-    {
-      paramString = new Uri.Builder().scheme("webcover").authority(paramString).build().toString();
-      return paramString;
-    }
-    catch (RuntimeException paramString)
-    {
-      QLog.e("ColorNoteUtils", 1, paramString, new Object[0]);
-    }
-    return "";
-  }
-  
-  public static String a(List<ColorNote> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.next();
-      localStringBuilder.append(localColorNote.getMainTitle()).append(", ").append(localColorNote.getSubTitle()).append(". ");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(Context paramContext)
-  {
-    bdfq localbdfq = new bdfq(paramContext, 2131755801);
-    localbdfq.setContentView(2131558943);
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.setTitle(paramContext.getString(2131690916));
-    localbdfq.setNegativeButton(paramContext.getString(2131690915), new anyj(localbdfq, paramContext));
-    localbdfq.show();
-    paramContext = localbdfq.getTitleTextView();
-    paramContext.setClickable(true);
-    paramContext.setFocusable(true);
-    paramContext.setFocusableInTouchMode(true);
-    bcvq.a(paramContext, true);
-  }
-  
-  public static void a(ColorNote paramColorNote)
-  {
-    int j = 1;
-    int i;
-    if (!e(paramColorNote.mMainTitle))
-    {
-      i = 1;
-      if (e(paramColorNote.mSubTitle)) {
-        break label48;
-      }
-    }
-    for (;;)
-    {
-      if ((j ^ i) != 0)
-      {
-        if (i == 0) {
-          break label53;
-        }
-        paramColorNote.mSubTitle = paramColorNote.mMainTitle;
-      }
-      return;
-      i = 0;
-      break;
-      label48:
-      j = 0;
-    }
-    label53:
-    paramColorNote.mMainTitle = paramColorNote.mSubTitle;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
-  }
-  
-  public static boolean a(ColorNote paramColorNote)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramColorNote != null) {
-      if (bdje.a(paramColorNote.mMainTitle))
-      {
-        bool1 = bool2;
-        if (bdje.a(paramColorNote.mSubTitle)) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean a(ColorNote paramColorNote1, ColorNote paramColorNote2)
-  {
-    if ((paramColorNote1 == null) || (paramColorNote2 == null)) {
-      if ((paramColorNote1 != null) || (paramColorNote2 != null)) {}
-    }
-    while ((paramColorNote1.mServiceType == paramColorNote2.getServiceType()) && (a(paramColorNote1.mSubType, paramColorNote2.getSubType())) && (a(paramColorNote1.mMainTitle, paramColorNote2.getMainTitle())) && (a(paramColorNote1.mSubTitle, paramColorNote2.getSubTitle())))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((a == null) || (a.size() == 0) || (bdje.a(paramString))) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < a.size())
-      {
-        String str = (String)a.get(i);
-        if ((str.length() <= paramString.length()) && (paramString.contains(str))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    int i;
-    if (!bdje.a(paramString1))
-    {
-      i = 1;
-      if (bdje.a(paramString2)) {
-        break label31;
-      }
-    }
-    label31:
-    for (int j = 1;; j = 0)
-    {
-      if ((i ^ j) == 0) {
-        break label36;
-      }
-      return false;
-      i = 0;
-      break;
-    }
-    label36:
-    if (paramString1 == null) {
-      return true;
-    }
-    return paramString1.equals(paramString2);
-  }
-  
-  public static boolean a(List<ColorNote> paramList1, List<ColorNote> paramList2)
-  {
-    if ((paramList1 == null) && (paramList2 == null)) {
-      return true;
-    }
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return false;
-    }
-    if (paramList1.size() != paramList2.size()) {
-      return false;
-    }
-    int j = paramList1.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (!((ColorNote)paramList1.get(i)).equals((ColorNote)paramList2.get(i))) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 17039360: 
-      return 1;
-    case 17104896: 
-      return 2;
-    case 16908289: 
-      return 3;
-    }
-    return 4;
-  }
-  
-  public static ColorNote b(ColorNote paramColorNote)
-  {
-    if (paramColorNote == null) {
-      return null;
-    }
-    int i = a(paramColorNote.getServiceType());
-    return new anyc().a(i).a(paramColorNote.getSubType()).b(paramColorNote.getMainTitle()).c(paramColorNote.getSubTitle()).a(paramColorNote.getReserve()).a();
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean b(ColorNote paramColorNote)
-  {
-    if (paramColorNote == null) {}
-    while ((paramColorNote.getServiceType() & 0x80000000) == 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if ((b.size() == 0) || (bdje.a(paramString))) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < b.size())
-      {
-        String str = (String)b.get(i);
-        if ((str.length() <= paramString.length()) && (paramString.contains(str))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static ColorNote c(ColorNote paramColorNote)
-  {
-    if (paramColorNote == null) {
-      return new anyc().a();
-    }
-    return new anyc().a(paramColorNote.getServiceType()).a(paramColorNote.getSubType()).b(paramColorNote.getMainTitle()).c(paramColorNote.getSubTitle()).d(paramColorNote.getPicUrl()).a(paramColorNote.getReserve()).b(paramColorNote.mExtra).a();
-  }
-  
-  public static boolean c(String paramString)
-  {
-    if ((c.size() == 0) || (bdje.a(paramString))) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < c.size())
-      {
-        String str = (String)c.get(i);
-        if ((str.length() <= paramString.length()) && (paramString.contains(str))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static boolean d(String paramString)
-  {
-    boolean bool = true;
-    if (bdje.a(paramString)) {}
-    for (;;)
-    {
-      return false;
-      if (bikj.a(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteUtils", 2, "This is boodo url ,disable swipe.");
-        }
-        return true;
-      }
-      paramString = Uri.parse(paramString);
-      try
-      {
-        paramString = paramString.getQueryParameter("_wv");
-        if (bdje.a(paramString)) {
-          continue;
-        }
-        long l = Long.parseLong(paramString);
-        if ((l & 0x1000) != 0L) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
-        return false;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ColorNoteUtils", 1, "parse long error: ", paramString);
-      }
-    }
-  }
-  
-  public static boolean e(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (bdje.a(paramString))
-    {
-      bool1 = true;
-      return bool1;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramString.length()) {
-        break label43;
-      }
-      bool1 = bool2;
-      if (!Character.isWhitespace(paramString.charAt(i))) {
+      k = i;
+      if (j < 0) {
         break;
       }
-      i += 1;
+      k = paramArrayOfByte[j];
+      j -= 1;
+      i = k & 0xFF | i << 8;
     }
-    label43:
-    return true;
+  }
+  
+  /* Error */
+  public static String a(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 16
+    //   2: invokestatic 22	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   5: astore_2
+    //   6: new 24	java/io/File
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: new 30	java/io/FileInputStream
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 33	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: astore_0
+    //   24: sipush 30720
+    //   27: newarray byte
+    //   29: astore_3
+    //   30: aload_0
+    //   31: aload_3
+    //   32: invokevirtual 36	java/io/FileInputStream:read	([B)I
+    //   35: istore_1
+    //   36: iload_1
+    //   37: ifge +27 -> 64
+    //   40: aload_0
+    //   41: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   44: aload_2
+    //   45: invokevirtual 44	java/security/MessageDigest:digest	()[B
+    //   48: invokestatic 50	bhpp:b	([B)Ljava/lang/String;
+    //   51: areturn
+    //   52: astore_0
+    //   53: aload_0
+    //   54: invokevirtual 53	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   57: ldc 55
+    //   59: areturn
+    //   60: astore_0
+    //   61: ldc 55
+    //   63: areturn
+    //   64: aload_2
+    //   65: aload_3
+    //   66: iconst_0
+    //   67: iload_1
+    //   68: invokevirtual 59	java/security/MessageDigest:update	([BII)V
+    //   71: goto -41 -> 30
+    //   74: astore_2
+    //   75: aload_2
+    //   76: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   79: aload_0
+    //   80: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   83: ldc 55
+    //   85: areturn
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   91: ldc 55
+    //   93: areturn
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   99: goto -55 -> 44
+    //   102: astore_2
+    //   103: aload_0
+    //   104: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   107: aload_2
+    //   108: athrow
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   114: goto -7 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	paramString	String
+    //   35	33	1	i	int
+    //   5	60	2	localMessageDigest	java.security.MessageDigest
+    //   74	2	2	localIOException	java.io.IOException
+    //   102	6	2	localObject	Object
+    //   29	37	3	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   0	6	52	java/security/NoSuchAlgorithmException
+    //   15	24	60	java/io/FileNotFoundException
+    //   24	30	74	java/io/IOException
+    //   30	36	74	java/io/IOException
+    //   64	71	74	java/io/IOException
+    //   79	83	86	java/io/IOException
+    //   40	44	94	java/io/IOException
+    //   24	30	102	finally
+    //   30	36	102	finally
+    //   64	71	102	finally
+    //   75	79	102	finally
+    //   103	107	109	java/io/IOException
+  }
+  
+  /* Error */
+  public static boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 63	anyi:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: ldc 65
+    //   6: invokevirtual 71	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   9: ifne +19 -> 28
+    //   12: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: ifeq +11 -> 26
+    //   18: ldc 79
+    //   20: iconst_2
+    //   21: ldc 81
+    //   23: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: iconst_0
+    //   27: ireturn
+    //   28: new 87	java/io/FileOutputStream
+    //   31: dup
+    //   32: aload_1
+    //   33: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   36: astore 4
+    //   38: aconst_null
+    //   39: astore_3
+    //   40: new 90	java/util/zip/GZIPInputStream
+    //   43: dup
+    //   44: new 30	java/io/FileInputStream
+    //   47: dup
+    //   48: aload_0
+    //   49: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 94	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   55: astore_0
+    //   56: aload_0
+    //   57: astore_3
+    //   58: sipush 1024
+    //   61: newarray byte
+    //   63: astore 5
+    //   65: aload_0
+    //   66: astore_3
+    //   67: aload_0
+    //   68: aload 5
+    //   70: invokevirtual 95	java/util/zip/GZIPInputStream:read	([B)I
+    //   73: istore_2
+    //   74: iload_2
+    //   75: ifle +110 -> 185
+    //   78: aload_0
+    //   79: astore_3
+    //   80: aload 4
+    //   82: aload 5
+    //   84: iconst_0
+    //   85: iload_2
+    //   86: invokevirtual 98	java/io/FileOutputStream:write	([BII)V
+    //   89: goto -24 -> 65
+    //   92: astore_3
+    //   93: aload_0
+    //   94: astore_3
+    //   95: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +30 -> 128
+    //   101: aload_0
+    //   102: astore_3
+    //   103: ldc 79
+    //   105: iconst_2
+    //   106: new 100	java/lang/StringBuilder
+    //   109: dup
+    //   110: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   113: ldc 104
+    //   115: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: aload_1
+    //   119: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: aload_0
+    //   129: ifnull +7 -> 136
+    //   132: aload_0
+    //   133: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   136: aload 4
+    //   138: ifnull -112 -> 26
+    //   141: aload 4
+    //   143: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   146: iconst_0
+    //   147: ireturn
+    //   148: astore_0
+    //   149: iconst_0
+    //   150: ireturn
+    //   151: astore_0
+    //   152: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   155: ifeq -129 -> 26
+    //   158: ldc 79
+    //   160: iconst_2
+    //   161: new 100	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   168: ldc 104
+    //   170: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: aload_1
+    //   174: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   183: iconst_0
+    //   184: ireturn
+    //   185: aload_0
+    //   186: ifnull +7 -> 193
+    //   189: aload_0
+    //   190: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   193: aload 4
+    //   195: ifnull +8 -> 203
+    //   198: aload 4
+    //   200: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   203: iconst_1
+    //   204: ireturn
+    //   205: astore_0
+    //   206: aload_3
+    //   207: astore_0
+    //   208: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +11 -> 222
+    //   214: ldc 79
+    //   216: iconst_2
+    //   217: ldc 116
+    //   219: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: aload_0
+    //   223: ifnull +7 -> 230
+    //   226: aload_0
+    //   227: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   230: aload 4
+    //   232: ifnull -206 -> 26
+    //   235: aload 4
+    //   237: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   240: iconst_0
+    //   241: ireturn
+    //   242: astore_0
+    //   243: iconst_0
+    //   244: ireturn
+    //   245: astore_0
+    //   246: aconst_null
+    //   247: astore_3
+    //   248: aload_3
+    //   249: ifnull +7 -> 256
+    //   252: aload_3
+    //   253: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   256: aload 4
+    //   258: ifnull +8 -> 266
+    //   261: aload 4
+    //   263: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   266: aload_0
+    //   267: athrow
+    //   268: astore_0
+    //   269: goto -76 -> 193
+    //   272: astore_0
+    //   273: goto -70 -> 203
+    //   276: astore_0
+    //   277: goto -141 -> 136
+    //   280: astore_0
+    //   281: goto -51 -> 230
+    //   284: astore_1
+    //   285: goto -29 -> 256
+    //   288: astore_1
+    //   289: goto -23 -> 266
+    //   292: astore_0
+    //   293: goto -45 -> 248
+    //   296: astore_1
+    //   297: aload_0
+    //   298: astore_3
+    //   299: aload_1
+    //   300: astore_0
+    //   301: goto -53 -> 248
+    //   304: astore_1
+    //   305: goto -97 -> 208
+    //   308: astore_0
+    //   309: aconst_null
+    //   310: astore_0
+    //   311: goto -218 -> 93
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	314	0	paramString1	String
+    //   0	314	1	paramString2	String
+    //   73	13	2	i	int
+    //   39	41	3	str1	String
+    //   92	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   94	205	3	str2	String
+    //   36	226	4	localFileOutputStream	java.io.FileOutputStream
+    //   63	20	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   58	65	92	java/io/FileNotFoundException
+    //   67	74	92	java/io/FileNotFoundException
+    //   80	89	92	java/io/FileNotFoundException
+    //   141	146	148	java/io/IOException
+    //   28	38	151	java/io/FileNotFoundException
+    //   40	56	205	java/io/IOException
+    //   235	240	242	java/io/IOException
+    //   40	56	245	finally
+    //   189	193	268	java/io/IOException
+    //   198	203	272	java/io/IOException
+    //   132	136	276	java/io/IOException
+    //   226	230	280	java/io/IOException
+    //   252	256	284	java/io/IOException
+    //   261	266	288	java/io/IOException
+    //   58	65	292	finally
+    //   67	74	292	finally
+    //   80	89	292	finally
+    //   95	101	292	finally
+    //   103	128	292	finally
+    //   208	222	296	finally
+    //   58	65	304	java/io/IOException
+    //   67	74	304	java/io/IOException
+    //   80	89	304	java/io/IOException
+    //   40	56	308	java/io/FileNotFoundException
+  }
+  
+  public static String b(String paramString)
+  {
+    String str2 = "";
+    int i = paramString.lastIndexOf('.');
+    String str1 = str2;
+    if (i > 0)
+    {
+      str1 = str2;
+      if (i < paramString.length() - 1) {
+        str1 = paramString.substring(i + 1);
+      }
+    }
+    return str1;
   }
 }
 

@@ -1,36 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfs
-  implements DialogInterface.OnClickListener
+  extends ResourcePluginListener
 {
-  public adfs(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public adfs(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(byte paramByte)
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
-      }
-      label39:
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label39;
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfs
  * JD-Core Version:    0.7.0.1
  */

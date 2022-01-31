@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkqk;
-import bkqo;
-import bkqq;
-import bkvu;
+import bkur;
+import bkuv;
+import bkux;
+import blab;
 import java.util.Map;
 
 public class AEBottomListAdapter$6$1
   implements Runnable
 {
-  public AEBottomListAdapter$6$1(bkqo parambkqo, bkvu parambkvu) {}
+  public AEBottomListAdapter$6$1(bkuv parambkuv, blab paramblab) {}
   
   public void run()
   {
-    if (bkqk.a(this.jdField_a_of_type_Bkqo.a).get(this.jdField_a_of_type_Bkvu.a) != null) {
-      ((bkqq)bkqk.a(this.jdField_a_of_type_Bkqo.a).get(this.jdField_a_of_type_Bkvu.a)).a(0);
+    if (bkur.a(this.jdField_a_of_type_Bkuv.a).get(this.jdField_a_of_type_Blab.a) != null) {
+      ((bkux)bkur.a(this.jdField_a_of_type_Bkuv.a).get(this.jdField_a_of_type_Blab.a)).a(0);
     }
   }
 }

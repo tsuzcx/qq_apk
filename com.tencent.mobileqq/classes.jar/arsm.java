@@ -1,80 +1,98 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class arsm
+  implements Animation.AnimationListener
 {
-  private static arsm jdField_a_of_type_Arsm;
-  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
-  private HashMap<String, arsk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public static int a;
+  public static int b;
+  View jdField_a_of_type_AndroidViewView;
+  arsn jdField_a_of_type_Arsn;
+  List<arsn> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean = false;
+  int[] jdField_a_of_type_ArrayOfInt = new int[1];
   
-  public static arsm a()
+  public arsm(View paramView)
   {
-    if (jdField_a_of_type_Arsm == null) {}
-    try
-    {
-      if (jdField_a_of_type_Arsm == null) {
-        jdField_a_of_type_Arsm = new arsm();
-      }
-      return jdField_a_of_type_Arsm;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  private void a()
+  private void b(arsn paramarsn)
   {
-    a(new arsu("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new arsn("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new arsq("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    this.jdField_a_of_type_Arsn = paramarsn;
+    Animation localAnimation = (Animation)paramarsn.jdField_a_of_type_JavaLangObject;
+    localAnimation.setDuration(paramarsn.b);
+    localAnimation.setAnimationListener(this);
   }
   
-  private void a(arsk paramarsk)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramarsk.a())) {
-      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
-    }
-    do
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
       return;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramarsk.a()))
+      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+        continue;
+      }
+      synchronized (this.jdField_a_of_type_ArrayOfInt)
       {
-        arsk localarsk = (arsk)this.jdField_a_of_type_JavaUtilHashMap.remove(paramarsk.a());
-        if (localarsk != null) {
-          localarsk.a();
+        arsn localarsn = (arsn)this.jdField_a_of_type_JavaUtilList.get(0);
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        if ((localarsn == null) || ((localarsn.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) || ((!localarsn.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)))) {
+          continue;
         }
+        this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localarsn.jdField_a_of_type_JavaLangObject);
+        this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localarsn.jdField_a_of_type_JavaLangObject);
+        return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramarsk.a(), paramarsk);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramarsk.a() }));
-  }
-  
-  private void b() {}
-  
-  private void c() {}
-  
-  public <T extends arsk> T a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      return (arsk)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     }
-    return null;
   }
   
-  public void a(BinaryMessenger paramBinaryMessenger)
+  public void a(arsn paramarsn)
   {
-    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    synchronized (this.jdField_a_of_type_ArrayOfInt)
     {
-      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
+      this.jdField_a_of_type_JavaUtilList.add(paramarsn);
+      b(paramarsn);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_ArrayOfInt)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
     }
-    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
-    a();
-    b();
-    c();
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_Arsn.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      a();
+      return;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

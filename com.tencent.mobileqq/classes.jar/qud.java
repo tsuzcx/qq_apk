@@ -19,7 +19,7 @@ class qud
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt2;
         qua.a(this.jdField_a_of_type_Qua).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
-        qua.a(this.jdField_a_of_type_Qua).a(2131718874);
+        qua.a(this.jdField_a_of_type_Qua).a(2131718886);
         qua.a(this.jdField_a_of_type_Qua).a();
         return;
       }
@@ -29,11 +29,11 @@ class qud
         qua.a(this.jdField_a_of_type_Qua).a(paramString1);
         return;
       }
-      qua.a(this.jdField_a_of_type_Qua).a(2131718873);
+      qua.a(this.jdField_a_of_type_Qua).a(2131718885);
       return;
     }
     qua.a(this.jdField_a_of_type_Qua).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
-    qua.a(this.jdField_a_of_type_Qua).a(2131718873);
+    qua.a(this.jdField_a_of_type_Qua).a(2131718885);
   }
 }
 

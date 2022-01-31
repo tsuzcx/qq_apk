@@ -14,9 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdbi;
-import bdee;
-import bjxj;
+import bdfr;
+import bdin;
+import bkbq;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -114,7 +114,7 @@ public class ComponentContentRecommend
         localJSONObject.put("idfa", "");
         localJSONObject.put("rowkey", paramBaseArticleInfo.innerUniqueID + "");
         localJSONObject.put("comment", 0);
-        if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+        if (bkbq.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
           break label430;
         }
         paramInt1 = 1;
@@ -253,7 +253,7 @@ public class ComponentContentRecommend
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559953, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559952, this, true);
   }
   
   protected BaseAdapter a()
@@ -270,10 +270,10 @@ public class ComponentContentRecommend
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369221));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368723));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378641));
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)paramView.findViewById(2131369876));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369239));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368737));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378695));
+    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)paramView.findViewById(2131369895));
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = a();
     this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
   }
@@ -293,8 +293,8 @@ public class ComponentContentRecommend
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    if (!bdee.g(getContext())) {
-      QQToast.a(getContext(), 1, 2131718949, 0).a();
+    if (!bdin.g(getContext())) {
+      QQToast.a(getContext(), 1, 2131718961, 0).a();
     }
     do
     {
@@ -303,7 +303,7 @@ public class ComponentContentRecommend
         QLog.d(jdField_a_of_type_JavaLangString, 1, "jumpToProfile, info = " + paramRecommendFollowInfo);
       }
     } while (paramRecommendFollowInfo == null);
-    paramRecommendFollowInfo = oqu.k + bdbi.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
+    paramRecommendFollowInfo = oqu.k + bdfr.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
     Intent localIntent = new Intent(getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", paramRecommendFollowInfo);
     localIntent.putExtra("hide_operation_bar", true);
@@ -313,7 +313,7 @@ public class ComponentContentRecommend
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
-    if (bdee.g(getContext()))
+    if (bdin.g(getContext()))
     {
       if (paramBoolean)
       {
@@ -337,7 +337,7 @@ public class ComponentContentRecommend
         }
       }
     }
-    QQToast.a(getContext(), 1, 2131718949, 0).a();
+    QQToast.a(getContext(), 1, 2131718961, 0).a();
   }
   
   public void a(Object paramObject)

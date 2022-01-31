@@ -1,55 +1,45 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class anok
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public static final String a;
-  public anom[] a;
+  public anok(ArkAppPreDownloadMgr.3.1 param1) {}
   
-  static
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    jdField_a_of_type_JavaLangString = anon.class.getSimpleName() + "." + anok.class.getSimpleName();
-  }
-  
-  public anok()
-  {
-    this.jdField_a_of_type_ArrayOfAnom = new anom[6];
-  }
-  
-  public anom a(AppInterface paramAppInterface, int paramInt)
-  {
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 6) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
     }
-    else
+    paramString = (QQAppInterface)anoj.a(this.a.a.this$0).get();
+    if (paramString != null)
     {
-      i = 0;
-    }
-    Object localObject = this.jdField_a_of_type_ArrayOfAnom[i];
-    paramAppInterface = (AppInterface)localObject;
-    if (localObject == null)
-    {
-      paramAppInterface = (AppInterface)localObject;
-      switch (i)
+      paramString = (bbaa)paramString.getManager(193);
+      if (paramString != null)
       {
-      default: 
-        paramAppInterface = (AppInterface)localObject;
+        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
+          break label211;
+        }
+        long l = 0L;
+        paramAppPathInfo = new File(paramAppPathInfo.path);
+        if (paramAppPathInfo.exists()) {
+          l = paramAppPathInfo.length();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
+        }
+        paramString.a(this.a.a.a.a, l);
       }
     }
-    for (;;)
-    {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new anol();
-      }
-      this.jdField_a_of_type_ArrayOfAnom[i] = localObject;
-      return localObject;
-      paramAppInterface = new lwq();
-      continue;
-      paramAppInterface = new amoz();
-    }
+    return;
+    label211:
+    paramString.a(this.a.a.a.a, -1L);
   }
 }
 

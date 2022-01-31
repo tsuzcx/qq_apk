@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.1.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import mqq.os.MqqHandler;
 
-class avgp
-  implements View.OnClickListener
+public class avgp
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  avgp(avgk paramavgk) {}
+  avgp(avgo paramavgo) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramView = aupq.a(this.a.a, this.a.a.app.getAccount(), 2);
-    if (paramView != null)
-    {
-      paramView.f = "13";
-      paramView.g = avgk.a(this.a).uin;
-      avph localavph = new avph(this.a.a);
-      localavph.a(paramView);
-      localavph.show();
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoViewTVKImpl", 2, "onCompletion() called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "]");
     }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.1(this));
   }
 }
 

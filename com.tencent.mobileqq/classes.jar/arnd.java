@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.10.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-final class arnd
-  implements Comparator<FileInfo>
+public class arnd
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  arnd(arnb paramarnb) {}
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    ThreadManagerV2.getUIHandlerV2().post(new VideoFilePresenter.10.1(this));
   }
 }
 

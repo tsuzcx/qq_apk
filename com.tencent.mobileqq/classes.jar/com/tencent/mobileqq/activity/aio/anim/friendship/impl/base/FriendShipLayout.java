@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl.base;
 
-import aesa;
+import aewp;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class FriendShipLayout
   extends FrameLayout
 {
-  aesa a;
+  aewp a;
   
   public FriendShipLayout(Context paramContext)
   {
@@ -31,9 +31,9 @@ public class FriendShipLayout
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public void setBackListener(aesa paramaesa)
+  public void setBackListener(aewp paramaewp)
   {
-    this.a = paramaesa;
+    this.a = paramaewp;
   }
 }
 

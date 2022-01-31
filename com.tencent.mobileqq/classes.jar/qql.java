@@ -15,7 +15,7 @@ public class qql
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131719042, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131719054, 0).a();
     }
     for (;;)
     {

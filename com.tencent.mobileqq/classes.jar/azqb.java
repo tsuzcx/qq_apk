@@ -1,109 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class azqb
 {
-  public final int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<azpz> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private short jdField_a_of_type_Short;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  public long b;
-  private short jdField_b_of_type_Short;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private short jdField_c_of_type_Short = 1;
+  private static int jdField_a_of_type_Int = -1;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
   
-  public azqb(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = awtq.a(paramQQAppInterface, paramInt1, baqx.a().a());
-    awtg.a(paramString);
+    jdField_a_of_type_JavaLangString = "GeneralConfigUtils";
   }
   
-  public int a()
+  public static void a(String paramString1, String paramString2)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public File a()
-  {
-    return new File(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<azpz> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public short a()
-  {
-    return this.jdField_b_of_type_Short;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Short = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void a(short paramShort)
-  {
-    this.jdField_b_of_type_Short = paramShort;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    if (!TextUtils.isEmpty(paramString2)) {
+      jdField_a_of_type_Int = -1;
+    }
+    try
     {
-      awtg.b(this.jdField_a_of_type_JavaLangString);
+      paramString2 = Integer.valueOf(paramString2);
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt(paramString1, paramString2.intValue()).commit();
       return;
     }
-    awtg.a(this.jdField_a_of_type_JavaLangString);
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "parseConfig(): e = " + paramString1);
+    }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt)
+  public static boolean a()
   {
-    awtg.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public short b()
-  {
-    return this.jdField_c_of_type_Short;
-  }
-  
-  public void b(short paramShort)
-  {
-    this.jdField_c_of_type_Short = paramShort;
-  }
-  
-  public short c()
-  {
-    return this.jdField_a_of_type_Short;
-  }
-  
-  public void c(short paramShort)
-  {
-    this.jdField_a_of_type_Short = paramShort;
+    if (jdField_a_of_type_Int == -1) {
+      if (BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getInt("pic_thumb_400Enable", 0) == 1)
+      {
+        jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    for (;;)
+    {
+      return jdField_a_of_type_Boolean;
+      jdField_a_of_type_Boolean = false;
+      jdField_a_of_type_Int = 0;
+      continue;
+      if (jdField_a_of_type_Int == 1) {
+        jdField_a_of_type_Boolean = true;
+      } else {
+        jdField_a_of_type_Boolean = false;
+      }
+    }
   }
 }
 

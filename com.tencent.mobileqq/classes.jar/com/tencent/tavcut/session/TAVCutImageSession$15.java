@@ -1,13 +1,17 @@
 package com.tencent.tavcut.session;
 
+import android.util.SparseArray;
+import com.tencent.weseevideo.editor.sticker.StickerController;
+import com.tencent.weseevideo.model.effect.StickerModel;
+
 class TAVCutImageSession$15
   implements Runnable
 {
-  TAVCutImageSession$15(TAVCutImageSession paramTAVCutImageSession, int paramInt) {}
+  TAVCutImageSession$15(TAVCutImageSession paramTAVCutImageSession, int paramInt, StickerModel paramStickerModel) {}
   
   public void run()
   {
-    this.this$0.runOnMainThread(new TAVCutImageSession.15.1(this), true);
+    this.this$0.addSticker((StickerController)this.this$0.stickerControllers.get(this.val$index), this.val$stickerModel);
   }
 }
 

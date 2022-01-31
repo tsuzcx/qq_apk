@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
-public final class acfs
-  implements DialogInterface.OnClickListener
+public class acfs
+  implements View.OnClickListener
 {
-  public acfs(acgy paramacgy) {}
+  public acfs(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
+    this.a.onBackEvent();
   }
 }
 

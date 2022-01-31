@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -44,24 +44,24 @@ public class NativeAvatarView
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848898);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848971);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = new ReadInJoyHeadImageView(paramContext);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.addRule(13);
-    int i = aekt.a(3.5F, paramContext.getResources());
+    int i = aepi.a(3.5F, paramContext.getResources());
     localLayoutParams.setMargins(i, i, i, i);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(aekt.a(12.0F, paramContext.getResources()), aekt.a(12.0F, paramContext.getResources()));
+    localLayoutParams = new RelativeLayout.LayoutParams(aepi.a(12.0F, paramContext.getResources()), aepi.a(12.0F, paramContext.getResources()));
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    i = aekt.a(3.0F, paramContext.getResources());
+    i = aepi.a(3.0F, paramContext.getResources());
     localLayoutParams.setMargins(0, 0, i, i);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842494);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842507);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
   }
@@ -94,7 +94,7 @@ public class NativeAvatarView
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842494);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842507);
     if (((ArticleInfo)localObject).isAccountShown) {
       if (((ArticleInfo)localObject).mPartnerAccountInfo != null)
       {

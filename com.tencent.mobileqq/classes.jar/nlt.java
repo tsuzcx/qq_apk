@@ -30,7 +30,7 @@ public class nlt
     for (;;)
     {
       paramTVK_IMediaPlayer = ((nlp)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
-      azmj.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.b);
+      azqs.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nlq.b);
       Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
       i = (int)(((nlp)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
       if (localInteger == null) {

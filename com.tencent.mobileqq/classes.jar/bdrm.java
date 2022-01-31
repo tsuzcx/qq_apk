@@ -1,137 +1,155 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.minigame.utils.AppUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observer;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.LayoutParams;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdrm
-  implements bdqt, ga
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private float jdField_a_of_type_Float;
-  protected int a;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  protected bdqu a;
-  private ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-  private fu jdField_a_of_type_Fu = new bdro(this);
-  protected fx a;
-  private Observer jdField_a_of_type_JavaUtilObserver = new bdrn(this);
-  protected AppRuntime a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 1;
-  private int c = 1;
+  private int jdField_a_of_type_Int = -1;
+  public Drawable a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bdrr jdField_a_of_type_Bdrr;
+  public bdrs a;
+  private ArrayList<bdro> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b;
   
-  public bdrm(bdqs parambdqs, AppRuntime paramAppRuntime, int paramInt)
+  public bdrm(Context paramContext, bdrr parambdrr)
   {
-    this.jdField_a_of_type_Bdqu = parambdqs.a();
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    gb.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Bdrr = parambdrr;
+    this.jdField_a_of_type_Bdrs = new bdrs();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846622);
+    this.jdField_b_of_type_Int = bdaq.a(paramContext, 2.0F);
   }
   
-  protected fw a(int paramInt1, int paramInt2)
+  public bdro a(int paramInt)
   {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)))
-    {
-      this.jdField_a_of_type_Fx = ((fx)this.jdField_a_of_type_MqqAppAppRuntime.getManager(42));
-      this.jdField_a_of_type_Fx.a(this);
-      return this.jdField_a_of_type_Fx.a(paramInt1, paramInt2, false, ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).c(), 0);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bdqu.a().sendEmptyMessage(10003);
+    return (bdro)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public void a(int paramInt)
   {
-    this.b = paramInt;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = paramInt;
+    if (i > 0) {
+      notifyItemChanged(i);
+    }
+    if (this.jdField_a_of_type_Int > 0) {
+      notifyItemChanged(this.jdField_a_of_type_Int);
+    }
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Bdrs.a(-1);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(List<bdro> paramList, boolean paramBoolean)
   {
-    if (paramInt1 == 0)
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new bdro(4, null, 0, null));
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    bdro localbdro = (bdro)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (localbdro.jdField_a_of_type_Int == 3) {
+      return localbdro.jdField_b_of_type_Int;
+    }
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((bdro)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    ((GridLayoutManager)paramRecyclerView.getLayoutManager()).setSpanSizeLookup(new bdrn(this));
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject1 = (bdro)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    switch (((bdro)localObject1).jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(0, System.currentTimeMillis());
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramViewHolder instanceof bdru));
+        paramViewHolder = (bdru)paramViewHolder;
+      } while (paramViewHolder.jdField_a_of_type_Int != 1);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((bdro)localObject1).jdField_a_of_type_JavaLangString);
       return;
-    }
-    this.jdField_a_of_type_Bdqu.a(paramInt1);
-    this.jdField_a_of_type_Int = paramInt2;
-    b();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "downloadDone type = " + paramInt);
-    }
-  }
-  
-  public void a(ETTextView paramETTextView, float paramFloat, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Fu);
-  }
-  
-  protected void a(ETTextView paramETTextView, fw paramfw, float paramFloat)
-  {
-    if (paramfw.jdField_a_of_type_Int == 0)
+    } while (!(paramViewHolder instanceof bdrq));
+    paramViewHolder = (bdrq)paramViewHolder;
+    paramViewHolder.jdField_a_of_type_Int = paramInt;
+    Object localObject2 = (GridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+    if (paramInt % 3 == 0)
     {
-      paramETTextView.setFont(0, System.currentTimeMillis());
-      return;
-    }
-    if (paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
-    {
-      paramfw = paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont;
-      paramfw.setSize(paramFloat);
+      ((GridLayoutManager.LayoutParams)localObject2).rightMargin = 0;
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break label188;
+      }
+      paramViewHolder.b.setVisibility(0);
     }
     for (;;)
     {
-      if ((paramETTextView.mFont == null) || (!paramfw.equals(paramETTextView.mFont))) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      paramETTextView.shouldStartAnimation = this.jdField_a_of_type_Boolean;
-      paramfw.mAnimationId = this.jdField_a_of_type_Long;
-      paramETTextView.setFont(paramfw, this.jdField_a_of_type_Long);
-      paramETTextView.requestLayout();
+      localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject1 = URLDrawable.getDrawable(((bdro)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       return;
-      ETFont localETFont = new ETFont(paramfw.jdField_a_of_type_Int, paramfw.jdField_a_of_type_JavaLangString, paramFloat, paramfw.b, paramfw.jdField_a_of_type_AndroidGraphicsTypeface);
-      paramfw.jdField_a_of_type_ComEtrumpMixlayoutETFont = localETFont;
-      paramfw = localETFont;
+      ((GridLayoutManager.LayoutParams)localObject2).rightMargin = this.jdField_b_of_type_Int;
+      break;
+      label188:
+      paramViewHolder.b.setVisibility(8);
     }
   }
   
-  public void b()
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if (AppUtil.isMainProcess()) {}
-    for (fw localfw = a(this.jdField_a_of_type_Bdqu.a(), this.jdField_a_of_type_Int);; localfw = gb.a().a(this.jdField_a_of_type_Bdqu.a(), this.jdField_a_of_type_Int))
+    switch (paramInt)
     {
-      QLog.i("SignatureFontAdapter", 1, "load " + localfw + " fontId:" + this.jdField_a_of_type_Bdqu.a());
-      if ((localfw != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)) {
-        a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localfw, this.jdField_a_of_type_Float);
-      }
-      return;
+    default: 
+      return null;
+    case 1: 
+      return new bdru(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561689, paramViewGroup, false), 1);
+    case 3: 
+      return new bdrq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561690, paramViewGroup, false), this, this.jdField_a_of_type_Bdrr);
+    case 2: 
+      return new bdrt(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561692, paramViewGroup, false), this.jdField_a_of_type_Bdrr, this.jdField_a_of_type_Bdrs, this);
     }
-  }
-  
-  public void c()
-  {
-    gb.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(null);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = null;
-    }
-    if (this.jdField_a_of_type_Fx != null) {
-      this.jdField_a_of_type_Fx.b(this);
-    }
+    return new bdru(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561688, paramViewGroup, false), 4);
   }
 }
 

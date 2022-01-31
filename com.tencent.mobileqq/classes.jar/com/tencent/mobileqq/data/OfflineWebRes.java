@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class OfflineWebRes
-  extends awbv
+  extends awge
 {
   public String bid;
   public String fileName;
   public String hashName;
   public int hitCount = 1;
-  @awdj
+  @awhs
   public String md5;
 }
 

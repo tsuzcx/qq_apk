@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import android.support.annotation.NonNull;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public final class bjan
-  implements Parcelable.Creator<QZoneShareData>
+public abstract interface bjan
 {
-  public QZoneShareData a(Parcel paramParcel)
-  {
-    return new QZoneShareData(paramParcel, null);
-  }
+  public abstract void a(@NonNull bjap parambjap);
   
-  public QZoneShareData[] a(int paramInt)
-  {
-    return new QZoneShareData[paramInt];
-  }
+  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
+  
+  public abstract void b(@NonNull bjap parambjap);
 }
 
 

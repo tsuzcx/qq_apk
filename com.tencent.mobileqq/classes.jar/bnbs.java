@@ -1,17 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.os.Process;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-class bnbs
-  implements DialogInterface.OnClickListener
+public class bnbs
 {
-  bnbs(bnbp parambnbp) {}
+  private static int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    ((bnbl)this.a.a).f(false);
-    bnbp.a(this.a).setSelected(false);
+    String str;
+    if (paramInt == 1)
+    {
+      bdhb.c(ulg.e + ".nomedia");
+      str = ulg.e + b(paramInt) + "/";
+    }
+    for (;;)
+    {
+      a(str);
+      return str;
+      str = alof.bo + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
+      bdhb.c(str + ".nomedia");
+    }
+  }
+  
+  @NonNull
+  public static String a(int paramInt, String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new IllegalArgumentException("folderPath should not be null");
+    }
+    String str = paramString1;
+    if (!paramString1.endsWith("/")) {
+      str = paramString1 + "/";
+    }
+    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
+  }
+  
+  private static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    boolean bool;
+    if (paramString.isFile())
+    {
+      bool = paramString.delete();
+      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
+    }
+    if (!paramString.exists())
+    {
+      bool = paramString.mkdirs();
+      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
+    }
+  }
+  
+  private static String b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
+    paramInt = a;
+    a = paramInt + 1;
+    return paramInt;
   }
 }
 

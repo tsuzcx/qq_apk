@@ -1,77 +1,29 @@
-import android.content.Intent;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class acpy
-  extends MqqHandler
+  extends ImageSpan
 {
-  public acpy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public acpy(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    label424:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
-            DiscussionInfoCardActivity.a(this.a).dismiss();
-          }
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          this.a.setResult(-1, paramMessage);
-          this.a.finish();
-          return;
-        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-        DiscussionInfoCardActivity.a(this.a).dismiss();
-        return;
-        if (DiscussionInfoCardActivity.a(this.a) == 3000)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
-            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-          }
-        }
-        else
-        {
-          paramMessage = (ArrayList)paramMessage.obj;
-          int i = paramMessage.size();
-          DiscussionInfoCardActivity.a(this.a).setText(alpo.a(2131703724) + i + alpo.a(2131703725));
-          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
-          DiscussionInfoCardActivity.a(this.a, paramMessage);
-          if (DiscussionInfoCardActivity.a(this.a) != null) {
-            break label424;
-          }
-          DiscussionInfoCardActivity.a(this.a, new acpz(this.a));
-          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
-        }
-        for (;;)
-        {
-          removeMessages(0);
-          return;
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694610));
-          if (!AppSetting.c) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(alpo.a(2131703730) + this.a.getString(2131694610) + alpo.a(2131703722));
-          break;
-          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        }
-      } while (DiscussionInfoCardActivity.a(this.a) != 0);
-      paramMessage = (String)paramMessage.obj;
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
-    this.a.finish();
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCanvas.save();
+    paramCanvas.translate(azkz.a(5.0F), -azkz.a(2.0F));
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return super.getDrawable();
   }
 }
 

@@ -1,15 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class arvl
-  implements DialogInterface.OnClickListener
+public class arvl
+  implements View.OnClickListener
 {
-  arvl(arvk paramarvk) {}
+  public arvl(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    if (SendBottomBar.a(this.a).isChecked())
+    {
+      SendBottomBar.b(this.a, true);
+      arrp.a("0X800942B");
+      return;
+    }
+    SendBottomBar.c(this.a, false);
+    SendBottomBar.b(this.a, false);
   }
 }
 

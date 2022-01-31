@@ -1,8 +1,18 @@
-public abstract interface aswu
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+
+class aswu
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public abstract void a(int paramInt);
+  aswu(aswm paramaswm) {}
   
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    }
+  }
 }
 
 

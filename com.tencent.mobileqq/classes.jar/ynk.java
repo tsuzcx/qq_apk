@@ -1,42 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class ynk
-  implements ayzw
+public class ynk
+  implements View.OnClickListener
 {
-  ynk(ynj paramynj) {}
+  public ynk(VideoPlayerView paramVideoPlayerView) {}
   
-  public void G_()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Ync.a.b = false;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label152;
-      }
-      VideoEnvironment.a("TroopMemberApiService", alpo.a(2131715936) + paramInt + "]", null);
-      ShortVideoResourceManager.a(alpo.a(2131715990));
-      ayyy.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).setVisibility(8);
     }
-    for (;;)
-    {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Ync.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Ync.a.b = false;
-      return;
-      label152:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
-    }
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.a(true);
+    this.a.d();
   }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

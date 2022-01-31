@@ -1,6 +1,15 @@
-public abstract interface agdh
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class agdh
+  extends aeqi
 {
-  public abstract void a(long paramLong);
+  long jdField_a_of_type_Long;
+  aetk jdField_a_of_type_Aetk;
+  public ajxp a;
+  public ImageView b;
+  public ImageView c;
+  public TextView d;
 }
 
 

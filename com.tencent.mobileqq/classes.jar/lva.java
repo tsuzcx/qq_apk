@@ -130,7 +130,7 @@ public class lva
                   paramlvn = (lvr)paramlvn;
                   if ((!TextUtils.isEmpty(paramlvn.d)) && (TextUtils.isEmpty(this.a.jdField_a_of_type_Lid.a.e)))
                   {
-                    this.a.jdField_a_of_type_Lid.a.e = (RandomController.a(this.a).getApp().getString(2131696209) + " “" + paramlvn.d + "” ");
+                    this.a.jdField_a_of_type_Lid.a.e = (RandomController.a(this.a).getApp().getString(2131696211) + " “" + paramlvn.d + "” ");
                     RandomController.a(this.a, paramlvn.d);
                     if (QLog.isColorLevel()) {
                       QLog.d("RandomController", 2, "RSP_MULTI_PULL talkTips : " + this.a.jdField_a_of_type_Lid.a.e);
@@ -177,9 +177,9 @@ public class lva
       RandomController.a(this.a, false);
       paramlvn = (lvs)paramlvn;
       long l = paramlvn.jdField_a_of_type_OrgJsonJSONObject.optInt("groupid");
-      this.a.jdField_a_of_type_JavaLangString = bdcv.a(paramlvn.jdField_a_of_type_OrgJsonJSONObject.optString("wording").trim());
+      this.a.jdField_a_of_type_JavaLangString = bdhe.a(paramlvn.jdField_a_of_type_OrgJsonJSONObject.optString("wording").trim());
       if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        this.a.jdField_a_of_type_JavaLangString = RandomController.a(this.a).getApp().getApplicationContext().getString(2131696202);
+        this.a.jdField_a_of_type_JavaLangString = RandomController.a(this.a).getApp().getApplicationContext().getString(2131696204);
       }
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "[random room owner] KICK_MEMBER success groupId = " + l + ", mCurrGroupId = " + this.a.jdField_a_of_type_Long);

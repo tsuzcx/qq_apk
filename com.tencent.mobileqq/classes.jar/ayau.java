@@ -1,8 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public abstract interface ayau
+class ayau
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt, ayat paramayat);
+  ayau(ayao paramayao) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.pauseDownload();
+  }
 }
 
 

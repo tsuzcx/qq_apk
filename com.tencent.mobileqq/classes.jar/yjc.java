@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class yjc
-  implements View.OnClickListener
+  implements aofp
 {
-  public yjc(VideoPlayerView paramVideoPlayerView) {}
+  public yjc(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    if (ytg.a("mLLSkipForwardWrapper", 500L))
+    if (this.a.getActivity() != null)
     {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.c(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() + 10000L);
-      }
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

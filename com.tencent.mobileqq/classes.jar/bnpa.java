@@ -1,122 +1,104 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import dov.com.tencent.mobileqq.shortvideo.PtuTemplate.PtuTemplateManager.3;
+import mqq.os.MqqHandler;
 
 public class bnpa
-  extends bnpb
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
+  public static String a;
+  private static final String b = alud.a(2131709120);
   
-  public bnpa(TCProgressBar paramTCProgressBar)
+  public static boolean a()
   {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public int a()
-  {
-    return this.f + this.d;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
+    boolean bool = false;
+    if (bljc.a().a("key_ae_res_1", 0, 4) >= 77) {
+      bool = true;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
-      return;
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
+    return bool;
   }
   
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
+  public static boolean a(VideoMaterial paramVideoMaterial)
   {
-    if (paramBitmap == null)
+    return (VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isSegmentMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial)) || (VideoMaterialUtil.needVoiceChange(paramVideoMaterial)) || (VideoMaterialUtil.isParticleMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isRapidNetMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isGenderDetect(paramVideoMaterial)) || (VideoMaterialUtil.isEmotionDectectMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isPagMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isHairSegMaterial(paramVideoMaterial)) || (VideoMaterialUtil.is3DMaterial(paramVideoMaterial)) || (VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial));
+  }
+  
+  public static boolean a(VideoMaterial paramVideoMaterial, Activity paramActivity, String paramString)
+  {
+    if ((a(paramVideoMaterial)) && ((!azdw.a) || (!a())))
     {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      if (!bdin.h(paramActivity)) {
+        ThreadManager.getUIHandler().post(new PtuTemplateManager.3(paramActivity, paramString));
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      for (;;)
+      {
+        return true;
+        bljn.b("PtuTemplateManager", "【Camera is in Prepareing wifi】prepare to download");
+        b(paramString);
+      }
     }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
+    bljn.d("PtuTemplateManager", "【Camera is in Prepareing Error】PTU_RES_DOWNLOADED: " + azdw.a);
+    bljn.d("PtuTemplateManager", "【Camera is in Prepareing Error】isSpecialTemplate: " + a(paramVideoMaterial));
     return false;
   }
   
-  public boolean a(float paramFloat)
+  public static boolean a(VideoMaterial paramVideoMaterial, bnqg parambnqg, AudioCapture paramAudioCapture, Activity paramActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
+    if ((!azdw.a) && (a(paramVideoMaterial)))
+    {
+      if (!bdin.h(paramActivity)) {
+        bdgm.a(paramActivity, 230).setMessage(b).setPositiveButton(paramActivity.getString(2131694207), new bnpc(paramString)).setNegativeButton(paramActivity.getString(2131694203), new bnpb()).show();
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PtuTemplateManager", 2, "handleSpecialTempleate true");
+        }
+        return true;
+        b(paramString);
+      }
     }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
+    if (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial))
+    {
+      if (!VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial)) {
+        break label120;
+      }
+      parambnqg.a(paramActivity, paramAudioCapture);
+    }
+    for (;;)
+    {
+      a = null;
+      return false;
+      label120:
+      parambnqg.a();
+    }
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  private static void b(Context paramContext, String paramString)
   {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
+    Bundle localBundle = azjs.a().a("CMD_QUERY_STATUS_PTU_RES", new Bundle());
+    int i = 0;
+    if (localBundle != null) {
+      i = localBundle.getInt("VALUE_MSG_PTU_RES_STATUS");
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+    if ((i == 0) || ((!a()) && (blap.a().a(blao.c) == 4)))
+    {
+      bdgm.a(paramContext, 230).setMessage(b).setPositiveButton(paramContext.getString(2131694207), new bnpe(paramString)).setNegativeButton(paramContext.getString(2131694203), new bnpd()).show();
+      return;
+    }
+    QQToast.a(paramContext, 2131689781, 1).a();
+  }
+  
+  private static void b(String paramString)
+  {
+    a = paramString;
+    azjs.a().a("CMD_DOWNLOAD_PTU_ADDITIONAL_RES", new Bundle());
   }
 }
 

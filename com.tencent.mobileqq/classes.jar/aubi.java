@@ -1,17 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.medalwall.MedalID;
 
-class aubi
-  extends alxo
+public final class aubi
+  implements Parcelable.Creator<MedalID>
 {
-  aubi(aube paramaube) {}
-  
-  public void a()
+  public MedalID a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
-    }
-    super.a();
-    this.a.d();
+    return new MedalID(paramParcel);
+  }
+  
+  public MedalID[] a(int paramInt)
+  {
+    return new MedalID[paramInt];
   }
 }
 

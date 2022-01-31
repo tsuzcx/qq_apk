@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfg
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public adfg(NotificationActivity paramNotificationActivity) {}
+  public adfg(JumpActivity paramJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.finish();
+    if (!this.a.isFinishing())
+    {
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      this.a.finish();
+    }
   }
 }
 

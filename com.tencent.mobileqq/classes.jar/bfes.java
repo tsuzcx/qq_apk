@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface.2;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
 
-public class bfes
-  implements DialogInterface.OnDismissListener
+class bfes
+  implements View.OnClickListener
 {
-  public bfes(AppInterface.2 param2) {}
+  bfes(bfer parambfer, int paramInt, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.this$0.tipDialog = null;
+    paramView = new Bundle();
+    paramView.putInt("group_index", this.jdField_a_of_type_Int);
+    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bfer.a.a.a(1, paramView);
   }
 }
 

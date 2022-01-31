@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.os.Bundle;
-import bgnf;
+import bgrm;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -34,7 +34,7 @@ final class QQFriendJsPlugin$2
           paramJSONObject.putString("appId", this.val$appId);
           if (!this.val$channelProxy.startAddFriendActivity(this.val$context, this.val$appId, this.val$openId))
           {
-            bgnf.a(this.val$context, 0, "暂不支持在" + QUAUtil.getApplicationName(this.val$context) + "中添加好友", 1);
+            bgrm.a(this.val$context, 0, "暂不支持在" + QUAUtil.getApplicationName(this.val$context) + "中添加好友", 1);
             if (this.val$addFriendCallBack != null)
             {
               QMLog.e("QQFriendJsPlugin", "app not implement");

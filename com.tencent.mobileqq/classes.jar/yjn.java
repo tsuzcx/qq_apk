@@ -1,13 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class yjn
-  implements View.OnClickListener
+  implements yia<yei>
 {
-  public yjn(SubscribeQRCodeShareHelper.3 param3) {}
+  public yjn(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
   
-  public void onClick(View paramView) {}
+  public void a(yii paramyii, yei paramyei)
+  {
+    if ((paramyii.e()) && (this.a.a != null) && (this.a.a.a != null))
+    {
+      paramyii = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramyii.b());
+      VSNetworkHelper.a().a(paramyii, new yjo(this, paramyei));
+    }
+  }
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragme
 import com.tencent.widget.AdapterView;
 
 public class qqq
-  implements bhqp
+  implements bhuw
 {
   public qqq(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   

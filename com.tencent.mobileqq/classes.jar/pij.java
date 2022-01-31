@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class pij
-  implements ymm
+  implements yrb
 {
   pij(pih parampih, String paramString) {}
   

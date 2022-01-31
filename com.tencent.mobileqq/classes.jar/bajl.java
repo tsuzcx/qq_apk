@@ -1,60 +1,50 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bajl
-  implements bajj
+public class bajl
+  implements WtTicketPromise
 {
-  private IBinder a;
+  private aoyo jdField_a_of_type_Aoyo;
+  private WeakReference<bajk> jdField_a_of_type_JavaLangRefWeakReference;
   
-  bajl(IBinder paramIBinder)
+  public bajl(bajk parambajk, aoyo paramaoyo)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambajk);
+    this.jdField_a_of_type_Aoyo = paramaoyo;
   }
   
-  public IBinder asBinder()
+  public void Done(Ticket paramTicket)
   {
-    return this.a;
-  }
-  
-  public void onComplete(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.a(false);
+    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.a(false);
     }
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.a(false);
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 

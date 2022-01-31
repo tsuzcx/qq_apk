@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.base.preload;
 
 import java.util.Map;
-import uja;
-import ujq;
+import unj;
+import unz;
 
 public class StorySingleFileDownloader$3
   implements Runnable
 {
-  public StorySingleFileDownloader$3(ujq paramujq, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$3(unz paramunz, String paramString, int paramInt) {}
   
   public void run()
   {
-    Object localObject = uja.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    localObject = (uja)ujq.a(this.this$0).get(localObject);
+    Object localObject = unj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    localObject = (unj)unz.a(this.this$0).get(localObject);
     if (localObject != null) {
-      ((uja)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
+      ((unj)localObject).a.remove("DOWNLOAD_TASK_KEY_LISTENER");
     }
   }
 }

@@ -1,22 +1,18 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import java.util.ArrayList;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class actt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public actt(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public actt(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent();
-    paramView.putParcelableArrayListExtra("selected_target_list", new ArrayList(ForwardTroopListFragment.a(this.a).values()));
-    this.a.getActivity().setResult(0, paramView);
-    this.a.getActivity().finish();
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahwu;
+import aibj;
 import android.support.v4.app.FragmentActivity;
 
 public class ChatHistoryTroopFileFragment$9$1
   implements Runnable
 {
-  public ChatHistoryTroopFileFragment$9$1(ahwu paramahwu, long paramLong1, long paramLong2) {}
+  public ChatHistoryTroopFileFragment$9$1(aibj paramaibj, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ahwu.a.getActivity() == null) || (this.jdField_a_of_type_Ahwu.a.getActivity().isFinishing())) {
+    if ((this.jdField_a_of_type_Aibj.a.getActivity() == null) || (this.jdField_a_of_type_Aibj.a.getActivity().isFinishing())) {
       return;
     }
-    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Ahwu.a, this.jdField_a_of_type_Long);
-    ChatHistoryTroopFileFragment.b(this.jdField_a_of_type_Ahwu.a, this.b);
-    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Ahwu.a);
+    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Aibj.a, this.jdField_a_of_type_Long);
+    ChatHistoryTroopFileFragment.b(this.jdField_a_of_type_Aibj.a, this.b);
+    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Aibj.a);
   }
 }
 

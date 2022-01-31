@@ -1,135 +1,88 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.Layout;
+import android.text.TextPaint;
 
-class bdde
-  extends nac
+public class bdde
+  extends Drawable
 {
-  bdde(bddb parambddb, String paramString1, String paramString2, String paramString3) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bdde(Context paramContext, String paramString)
   {
-    if (paramInt == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      arzy.a("KEY_STAGE_2_GO_TO_CHAT_D55", bool1);
-      this.jdField_a_of_type_Bddb.c();
-      if (!this.jdField_a_of_type_Bddb.c) {
-        break;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdal.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130841744);
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+    this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    float f1 = localRect.width() / this.jdField_a_of_type_Int;
+    float f2 = this.jdField_a_of_type_Int / 2;
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1 * f2);
+    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label172;
       }
-      azmj.b(bddb.a(this.jdField_a_of_type_Bddb), "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.getString(2131699926), "");
-      QQToast.a(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, 1, 2131699926, 1).a();
-      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramArrayOfByte.addFlags(67108864);
-      paramArrayOfByte.addFlags(268435456);
-      this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
-      bddb.c(this.jdField_a_of_type_Bddb);
+    }
+    label172:
+    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
+    {
+      int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
+      j = localRect.left;
+      i = (localRect.width() - i) / 2;
+      f1 = localRect.top;
+      int k = (int)(localRect.height() / 2.0F + f1 - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + j, k, this.jdField_a_of_type_AndroidTextTextPaint);
       return;
     }
-    if (this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramInt == 0) {
-      paramInt = 0;
-    }
-    boolean bool2;
-    Object localObject;
-    for (;;)
-    {
-      if (paramInt <= 1)
-      {
-        paramBundle = (String)this.jdField_a_of_type_Bddb.jdField_a_of_type_JavaUtilHashMap.get("uin");
-        if ((paramBundle == null) || (paramBundle.length() < 5) || (SearchBaseActivity.b.matcher(paramBundle).matches()))
-        {
-          QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131699924, 1).a();
-          azmj.b(bddb.a(this.jdField_a_of_type_Bddb), "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.getString(2131699927), "");
-          bddb.c(this.jdField_a_of_type_Bddb);
-          return;
-          if (paramInt == 25501) {
-            paramInt = 1;
-          } else {
-            paramInt = 2;
-          }
-        }
-        else
-        {
-          bool2 = ((aloz)bddb.a(this.jdField_a_of_type_Bddb).getManager(51)).b(paramBundle);
-          paramArrayOfByte = bdbt.a(bddb.a(this.jdField_a_of_type_Bddb), paramBundle);
-          if ((bool2) && (paramInt == 0))
-          {
-            localObject = new Intent(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-            ((Intent)localObject).putExtra("uin", paramBundle);
-            ((Intent)localObject).putExtra("uintype", 0);
-            ((Intent)localObject).putExtra("openid", this.jdField_a_of_type_JavaLangString);
-            ((Intent)localObject).putExtra("appid", this.b);
-            ((Intent)localObject).putExtra("thridparty_pull_aio", true);
-            paramBundle = aekt.a((Intent)localObject, new int[] { 2 });
-            paramBundle.putExtra("pull_aio_audio", this.c.equals("audio_chat"));
-            paramBundle.putExtra("pull_aio_video", this.c.equals("video_chat"));
-            if (paramArrayOfByte != null) {
-              paramBundle.putExtra("uinname", paramArrayOfByte);
-            }
-            this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      bddb.c(this.jdField_a_of_type_Bddb);
-      return;
-      if (paramInt == 1)
-      {
-        bool1 = true;
-        localObject = new Bundle();
-        ((Bundle)localObject).putBoolean("pull_show_open_id_diff_main", bool1);
-        ((Bundle)localObject).putString("uin", paramBundle);
-        ((Bundle)localObject).putInt("uintype", 0);
-        if (paramArrayOfByte != null) {
-          ((Bundle)localObject).putString("uinname", paramArrayOfByte);
-        }
-        ((Bundle)localObject).putString("openid", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putString("appid", this.b);
-        azmj.b(bddb.a(this.jdField_a_of_type_Bddb), "dc01160", "", "", "0X800A40F", "0X800A40F", 0, 0, "", "", "", "");
-        if (!bool2) {
-          break label658;
-        }
-        ((Bundle)localObject).putBoolean("thridparty_pull_aio", true);
-        ((Bundle)localObject).putBoolean("pull_aio_audio", this.c.equals("audio_chat"));
-        ((Bundle)localObject).putBoolean("pull_aio_video", this.c.equals("video_chat"));
-      }
-      for (;;)
-      {
-        bddb.a(this.jdField_a_of_type_Bddb, (Bundle)localObject);
-        bddb.c(this.jdField_a_of_type_Bddb);
-        return;
-        bool1 = false;
-        break;
-        label658:
-        ((Bundle)localObject).putInt("fragment_id", 1);
-        ((Bundle)localObject).putBoolean("pull_add_friend_tip", true);
-      }
-      paramArrayOfByte = alnx.a(paramArrayOfByte);
-      azmj.a(bddb.a(this.jdField_a_of_type_Bddb), "inter", "skip", "inter_fail", "", 1, "", paramArrayOfByte, "", "", "", "", "", "", "");
-      paramBundle = new Bundle();
-      paramBundle.putBoolean("pull_app_not_privilege", true);
-      paramBundle.putString("pull_app_not_privilege_string", paramArrayOfByte);
-      bddb.a(this.jdField_a_of_type_Bddb, paramBundle);
-    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdde
  * JD-Core Version:    0.7.0.1
  */

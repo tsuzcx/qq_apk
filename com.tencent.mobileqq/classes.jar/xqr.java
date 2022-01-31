@@ -1,265 +1,78 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.QQToast;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.shortvideo.util.AudioResample;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 
+@TargetApi(16)
 public class xqr
-  extends Dialog
-  implements View.OnClickListener
 {
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  protected Button a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected String a;
-  private xqs jdField_a_of_type_Xqs;
-  protected boolean a;
-  private String b;
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f;
-  private String g;
+  private static final int[] a = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350, 0, 0, 0 };
   
-  public xqr(@NonNull Context paramContext, int paramInt, String paramString)
+  public static int a(MediaFormat paramMediaFormat)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.g = paramString;
-  }
-  
-  public xqr(@NonNull Context paramContext, String paramString)
-  {
-    this(paramContext, 2131755801, paramString);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public static Dialog a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
-  {
-    if (xoo.a(paramContext))
-    {
-      xoo.a(paramContext, "biz_src_jc_hyws", paramString4);
-      return null;
+    if (paramMediaFormat == null) {
+      return -1;
     }
-    paramContext = new xqr(paramContext, "biz_src_jc_hyws").a(paramString1, paramString2, paramString3).a(paramInt, paramString4);
-    paramContext.show();
-    return paramContext;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Xqs != null) {
-      this.jdField_a_of_type_Xqs.a(this, paramInt);
+    ByteBuffer localByteBuffer = paramMediaFormat.getByteBuffer("csd-0");
+    if (localByteBuffer.remaining() <= 2) {
+      return paramMediaFormat.getInteger("sample-rate");
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363564));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368728));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369604);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378817));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131717314));
-    a();
-    if (TextUtils.isEmpty(this.b)) {
-      this.b = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new xqt(this.jdField_a_of_type_AndroidWidgetTextView));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
-    int i = ((URLDrawable)localObject).getStatus();
-    if (i != 1)
-    {
-      if (i == 2) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public xqr a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public xqr a(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public xqr a(String paramString1, String paramString2, String paramString3)
-  {
-    this.c = paramString1;
-    this.d = paramString2;
-    this.e = paramString3;
-    return this;
-  }
-  
-  public void a()
-  {
-    boolean bool = xoo.a(getContext());
-    if (this.jdField_a_of_type_Boolean != bool)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131717315));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131717318));
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    a(-1);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int m = 1;
-    int i;
-    label110:
-    int k;
-    label173:
-    int j;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363564: 
-      a();
-      if (TextUtils.isEmpty(this.f))
+    int i = localByteBuffer.remaining();
+    int j = localByteBuffer.position();
+    byte[] arrayOfByte = new byte[i];
+    localByteBuffer.get(arrayOfByte);
+    localByteBuffer.position(j);
+    localByteBuffer.limit(i + j);
+    i = (arrayOfByte.length - 2) * 8;
+    if (i > 11) {
+      if (((arrayOfByte[2] & 0xFF) << 3 | (arrayOfByte[3] & 0xFF) >>> 5) == 695)
       {
-        if (this.jdField_a_of_type_Boolean) {
-          xoo.a(getContext(), this.g, this.jdField_a_of_type_JavaLangString);
-        }
-        for (i = 0;; i = 1)
+        if (((arrayOfByte[3] & 0x1F) == 5) && (i - 16 > 0) && ((arrayOfByte[4] & 0xFF) >>> 7 == 1))
         {
-          wta.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-          dismiss();
-          a(i);
-          return;
-          QQToast.a(getContext(), alpo.a(2131717316), 0).a();
-          xoo.a(getContext(), this.g);
+          i = (arrayOfByte[4] & 0x7F) >>> 3;
+          if (i < 13) {
+            return a[i];
+          }
+          return paramMediaFormat.getInteger("sample-rate");
         }
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        tam.a(getContext(), this.f);
-        i = 0;
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          break label495;
-        }
-        k = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
-        j = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
-        if ((j != 9) && (j != 12)) {
-          break label373;
-        }
-        j = 1;
+      else if (((arrayOfByte[1] & 0x7) << 8 | arrayOfByte[2] & 0xFF) == 520) {
+        return a[4];
       }
-      break;
+    }
+    return paramMediaFormat.getInteger("sample-rate");
+  }
+  
+  public static int a(MediaFormat paramMediaFormat, String paramString)
+  {
+    int j;
+    if (paramMediaFormat == null) {
+      j = -1;
     }
     for (;;)
     {
-      label232:
-      JSONObject localJSONObject = new JSONObject();
-      for (;;)
+      return j;
+      int k = paramMediaFormat.getInteger("channel-count");
+      try
       {
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean) {
-            continue;
-          }
-          paramView = "0";
-          localJSONObject.put("download", paramView);
-          if (j == 0) {
-            continue;
-          }
-          j = m;
-          ntd.a(localJSONObject, j);
+        i = AudioResample.parseMp4Info(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("SegmentClipUtils", 2, "getRealAudioChannel:  channels=" + i + " channelsBake: " + k);
         }
-        catch (JSONException paramView)
-        {
-          label373:
-          paramView.printStackTrace();
-          continue;
-          nrt.a(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(k), "", "", ntd.a(null, null, "", "", localJSONObject), false);
-        }
-        if (!"video_type_videopublic".equals(this.f)) {
+        j = i;
+        if (i > 0) {
           continue;
         }
-        nrt.a(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(k), "", "", ntd.a(null, null, "", "", localJSONObject), false);
-        break;
-        QQToast.a(getContext(), -1, alpo.a(2131717317), 0).b(getContext().getResources().getDimensionPixelSize(2131298914));
-        tam.b(getContext(), this.f);
-        i = 1;
-        break label173;
-        j = 0;
-        break label232;
-        paramView = "1";
-        continue;
-        j = 0;
+        return k;
       }
-      break label110;
-      dismiss();
-      a(-1);
-      if (!TextUtils.isEmpty(this.f)) {
-        break;
+      catch (UnsatisfiedLinkError paramMediaFormat)
+      {
+        for (;;)
+        {
+          int i = -2000;
+        }
       }
-      wta.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-      return;
-      label495:
-      j = 0;
-      k = 0;
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131561634);
-    b();
-    setCanceledOnTouchOutside(false);
-  }
-  
-  public void show()
-  {
-    super.show();
-    if (TextUtils.isEmpty(this.f)) {
-      wta.a("weishi_share", "cover_exp", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
     }
   }
 }

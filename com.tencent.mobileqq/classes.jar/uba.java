@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class uba
-  implements DialogInterface.OnClickListener
+class uba
+  implements ucn
 {
-  public uba(QCircleFollowTagView paramQCircleFollowTagView) {}
+  uba(uax paramuax, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a(false);
-    if (QCircleFollowTagView.a(this.a) != null) {
-      QCircleFollowTagView.a(this.a).a();
+    if (uax.a(this.jdField_a_of_type_Uax) != null)
+    {
+      uax.a(this.jdField_a_of_type_Uax).b("");
+      uax.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, uax.a(this.jdField_a_of_type_Uax).a());
+      uax.a(this.jdField_a_of_type_Uax).a("");
     }
+    uax.a(this.jdField_a_of_type_Uax, null);
+    uax.a(this.jdField_a_of_type_Uax, null);
+    uax.a(this.jdField_a_of_type_Uax).b(this.jdField_a_of_type_Uax.a(null, null));
   }
 }
 

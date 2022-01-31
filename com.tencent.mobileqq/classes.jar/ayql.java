@@ -1,33 +1,14 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayql
+class ayql
+  implements View.OnClickListener
 {
-  public Bundle a;
-  public String a;
-  public byte[] a;
+  ayql(ayqk paramayqk, aypd paramaypd) {}
   
-  public ayql(String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public ayql(String paramString, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public ayql(String paramString, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public ayql(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Aypd.a(paramView);
   }
 }
 

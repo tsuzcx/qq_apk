@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import aaos;
-import aaot;
+import aath;
+import aati;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 
@@ -13,7 +13,7 @@ class AppBrandFragment$4
   public void run()
   {
     MiniLog.init();
-    aaos.a().a(this.val$activity, new aaot());
+    aath.a().a(this.val$activity, new aati());
   }
 }
 

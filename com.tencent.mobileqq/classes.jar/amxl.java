@@ -1,81 +1,37 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class amxl
-  extends amxe
+  extends bazx
 {
-  public int a;
-  public String a;
-  public amxm[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  amxi jdField_a_of_type_Amxi;
+  amxk jdField_a_of_type_Amxk;
   
-  public amxl()
+  public amxl(QQAppInterface paramQQAppInterface, amxk paramamxk, amxi paramamxi)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAmxm = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    super(paramQQAppInterface, paramamxk.b);
+    this.jdField_a_of_type_Amxk = paramamxk;
+    this.jdField_a_of_type_Amxi = paramamxi;
   }
   
-  public static boolean a(amxl paramamxl)
+  protected void realCancel()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramamxl != null)
-    {
-      bool1 = bool2;
-      if (paramamxl.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramamxl.b == 0)
-        {
-          bool1 = bool2;
-          if (paramamxl.jdField_a_of_type_ArrayOfAmxm != null)
-          {
-            bool1 = bool2;
-            if (paramamxl.jdField_a_of_type_ArrayOfAmxm[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramamxl.jdField_a_of_type_ArrayOfAmxm[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
-    return bool1;
   }
   
-  public byte[] a()
+  protected void realStart()
   {
-    return this.jdField_a_of_type_ArrayOfAmxm[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    }
+    amxi.a(this.jdField_a_of_type_Amxi, this.jdField_a_of_type_Amxk);
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_ArrayOfAmxm != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAmxm.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAmxm[i];
-        i += 1;
-      }
-    }
-    String str2 = "null";
-    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Amxk + ", mDownloader=" + this.jdField_a_of_type_Amxi;
   }
 }
 

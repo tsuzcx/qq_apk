@@ -1,24 +1,11 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import java.util.Comparator;
 
-public class auln
+public final class auln
+  implements Comparator<auls>
 {
-  public static HashMap<Integer, String> a = new HashMap();
-  
-  static
+  public int a(auls paramauls1, auls paramauls2)
   {
-    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131719308));
-    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131719306));
-    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131720271));
-    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691358));
-    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131719303));
-    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131719320));
-    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131719307));
-  }
-  
-  public static String a(int paramInt)
-  {
-    return (String)a.get(Integer.valueOf(paramInt));
+    return paramauls1.a - paramauls2.a;
   }
 }
 

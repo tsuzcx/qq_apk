@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import anxn;
-import bdcb;
-import bdee;
-import bjxj;
+import aobw;
+import bdgk;
+import bdin;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
@@ -55,7 +55,7 @@ import syb;
 public class PublicAccountBrowser
   extends QQBrowserActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131709156);
+  private static final String jdField_a_of_type_JavaLangString = alud.a(2131709168);
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -97,14 +97,14 @@ public class PublicAccountBrowser
   {
     if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368627));
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368638));
       if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null) {
         this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibilityHandler(new npv(this));
       }
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368632));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368643));
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new npz(this));
       }
@@ -152,7 +152,7 @@ public class PublicAccountBrowser
     paramString = BaseApplicationImpl.getApplication();
     if (paramString != null)
     {
-      paramString = bjxj.a(paramString.getRuntime(), false, true);
+      paramString = bkbq.a(paramString.getRuntime(), false, true);
       if (paramString != null)
       {
         paramString = paramString.edit();
@@ -165,10 +165,10 @@ public class PublicAccountBrowser
   
   private void b()
   {
-    if (!bjxj.o()) {
+    if (!bkbq.o()) {
       return;
     }
-    bjxj.e();
+    bkbq.e();
     this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.postDelayed(new PublicAccountBrowser.7(this), 200L);
   }
   
@@ -176,8 +176,8 @@ public class PublicAccountBrowser
   {
     int j = 1;
     orz localorz = new orz();
-    paramString = localorz.a("uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())).a("rowkey", paramString).a("os", Integer.valueOf(1)).a("imsi", bdcb.b()).a("imei", ors.f());
-    if (bdee.h(BaseApplicationImpl.getContext()))
+    paramString = localorz.a("uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())).a("rowkey", paramString).a("os", Integer.valueOf(1)).a("imsi", bdgk.b()).a("imei", ors.f());
+    if (bdin.h(BaseApplicationImpl.getContext()))
     {
       i = 2;
       paramString = paramString.a("network_type", Integer.valueOf(i));
@@ -339,7 +339,7 @@ public class PublicAccountBrowser
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380117);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380175);
     if (localTouchWebView != null)
     {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = new npy(this);
@@ -350,7 +350,7 @@ public class PublicAccountBrowser
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380117);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380175);
     if ((localTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener != null)) {
       localTouchWebView.removeScrollChangedListener(this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener);
     }

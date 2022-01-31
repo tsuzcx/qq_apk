@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adlx;
+import adqm;
 import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
 public class QQLSActivity$17$1
   implements Runnable
 {
-  public QQLSActivity$17$1(adlx paramadlx) {}
+  public QQLSActivity$17$1(adqm paramadqm) {}
   
   public void run()
   {

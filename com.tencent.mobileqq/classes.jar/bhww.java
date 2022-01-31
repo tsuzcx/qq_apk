@@ -1,12 +1,9 @@
 import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
 public abstract interface bhww
 {
-  public abstract void a_(View paramView);
-  
-  public abstract void e();
-  
-  public abstract void e(boolean paramBoolean);
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.runtime.util.ToastMessage;
 
 class MiniAppUIJsPlugin$4
   implements Runnable
 {
-  MiniAppUIJsPlugin$4(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgkd parambgkd) {}
+  MiniAppUIJsPlugin$4(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {

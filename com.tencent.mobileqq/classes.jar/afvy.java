@@ -1,50 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afvy
-  implements auls
+  implements View.OnClickListener
 {
-  afvy(afvt paramafvt, String paramString, afwd paramafwd) {}
+  afvy(afvw paramafvw) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-    }
+    afvw.a(this.a, true, this.a.a.getCurrentAccountUin());
   }
-  
-  public void a(aulp paramaulp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "dealVideoSaveUI onSaveComplete");
-    }
-    if (paramaulp != null)
-    {
-      if (paramaulp.jdField_a_of_type_Int != 0) {
-        break label112;
-      }
-      aulq.a(this.jdField_a_of_type_Afvt.a);
-    }
-    for (;;)
-    {
-      paramaulp.jdField_a_of_type_Aulo.b(this);
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-        this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-      }
-      return;
-      label112:
-      aulq.b(this.jdField_a_of_type_Afvt.a);
-    }
-  }
-  
-  public void a(aulp paramaulp, int paramInt)
-  {
-    this.jdField_a_of_type_Afvt.a(this.jdField_a_of_type_Afwd, paramInt, false);
-  }
-  
-  public void b(aulp paramaulp) {}
 }
 
 

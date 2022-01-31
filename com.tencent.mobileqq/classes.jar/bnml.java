@@ -1,15 +1,4 @@
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
-
-public class bnml
-{
-  public int a;
-  public int b = 0;
-  
-  public bnml(SVHwEncoder.HwEncode paramHwEncode)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
-}
+public abstract interface bnml {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

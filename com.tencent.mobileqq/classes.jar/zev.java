@@ -1,21 +1,26 @@
-import android.graphics.drawable.Drawable;
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public abstract class zev
-  extends zeo
+class zev
+  implements QQPermissionCallback
 {
-  public Drawable a()
+  zev(zet paramzet) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return null;
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bdgm.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public abstract URL a();
-  
-  public abstract Drawable b();
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    zet.e(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zev
  * JD-Core Version:    0.7.0.1
  */

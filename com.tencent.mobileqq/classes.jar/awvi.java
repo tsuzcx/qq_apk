@@ -1,122 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class awvi
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f = "";
-  public String g = "";
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  public awvi(ProfileHeaderView paramProfileHeaderView, View paramView) {}
   
-  public awvi(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, int paramInt2, String paramString6, int paramInt3, String paramString7, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString8, int paramInt4, String paramString9, String paramString10, int paramInt5)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_e_of_type_JavaLangString = paramString5;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.f = paramString6;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.g = paramString7;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean3;
-    this.h = paramString8;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.j = paramString9;
-    this.k = paramString10;
-    this.jdField_e_of_type_Int = paramInt5;
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramString = new File(paramString);
-      boolean bool1 = bool2;
-      if (paramString != null)
-      {
-        bool1 = bool2;
-        if (paramString.exists())
-        {
-          if (paramBoolean)
-          {
-            paramBoolean = paramString.getAbsolutePath().endsWith(".splashtemp");
-            if (!paramBoolean) {}
-          }
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      bool1 = bool2;
-      if (a(this.h, true)) {
-        bool1 = true;
-      }
-    }
-    QLog.i("QSplash@QbossSplashUtil", 1, "adid [" + this.jdField_b_of_type_JavaLangString + "] shouldSplash " + bool1);
-    return bool1;
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!a(this.h, true))
-    {
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        bool1 = bool2;
-        if (!awvh.a(this.jdField_d_of_type_JavaLangString)) {
-          bool1 = true;
-        }
-      }
-    }
-    QLog.i("QSplash@QbossSplashUtil", 1, "adid [" + this.jdField_b_of_type_JavaLangString + "] shouldRequestRes result = " + bool1);
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    return "SplashADEntry{, mAdID='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mBeginTime='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mEndTime='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mContentType=" + this.jdField_a_of_type_Int + ", mDownloadUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mJumpType=" + this.jdField_b_of_type_Int + ", mJumpH5Url='" + this.f + '\'' + ", mExposureUrl='" + this.g + '\'' + ", mResPath='" + this.h + '\'' + ", mVideoPath='" + this.i + '\'' + ", mShowpriority" + this.jdField_d_of_type_Int + '\'' + ", isLowerDeviceLimit=" + this.jdField_a_of_type_Boolean + '\'' + ", mCanShow=" + this.jdField_b_of_type_Boolean + '\'' + ", mResTraceinfo=" + this.j + '\'' + ", mResMD5=" + this.k + '\'' + ", mShowAdMark=" + this.jdField_e_of_type_Int + '}';
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awvi
  * JD-Core Version:    0.7.0.1
  */

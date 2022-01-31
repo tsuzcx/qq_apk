@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
-import bgoi;
+import bgok;
+import bgsp;
 
 class ShareJsPlugin$4$1
-  implements bgoi
+  implements bgsp
 {
   ShareJsPlugin$4$1(ShareJsPlugin.4 param4) {}
   

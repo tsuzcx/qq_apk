@@ -1,17 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
+import mqq.os.MqqHandler;
 
 public class agtb
-  implements agtd
+  extends ameq
 {
-  public agtb(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
+  agtb(agsy paramagsy) {}
   
-  public void a(View paramView)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((paramView.getTag() instanceof Integer))
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
+      paramString.Z = paramBoolean1;
+      agsy.c(this.a).post(new NearbyChatPie.12.1(this));
+      return;
     }
   }
 }

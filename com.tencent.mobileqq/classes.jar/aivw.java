@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-public abstract interface aivw
+public class aivw
+  implements View.OnClickListener
 {
-  public abstract void onResult(int paramInt, PreloadManager.PathResult paramPathResult);
+  public aivw(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a();
+  }
 }
 
 

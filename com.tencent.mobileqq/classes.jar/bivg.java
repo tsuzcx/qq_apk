@@ -1,46 +1,62 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QReaderHelper.1;
-import mqq.app.MobileQQ;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qqfav.QfavHelper.4;
 
 public class bivg
-  implements nbs
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public bivg(QReaderHelper.1 param1) {}
+  public bivg(QfavHelper.4 param4) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
-    }
-    switch (paramInt)
+    try
     {
+      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+      {
+        if (this.a.a == null)
+        {
+          paramPluginManagerClient.installPlugin("qqfav.apk");
+          return;
+        }
+        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
+        return;
+      }
     }
-    for (int i = 0;; i = 1)
+    catch (Exception paramPluginManagerClient)
     {
-      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
-      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
-      if (i != 0) {
-        j = k + 1;
+      if (this.a.a != null)
+      {
+        try
+        {
+          this.a.a.onInstallError("qqfav.apk", -1);
+          return;
+        }
+        catch (RemoteException paramPluginManagerClient)
+        {
+          paramPluginManagerClient.printStackTrace();
+          return;
+        }
+        paramPluginManagerClient = this.a.a;
+        if (paramPluginManagerClient != null) {
+          try
+          {
+            this.a.a.onInstallFinish("qqfav.apk");
+            return;
+          }
+          catch (RemoteException paramPluginManagerClient)
+          {
+            paramPluginManagerClient.printStackTrace();
+          }
+        }
       }
-      if (j != k) {
-        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
-      }
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
-      }
-      return;
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bivg
  * JD-Core Version:    0.7.0.1
  */

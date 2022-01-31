@@ -1,46 +1,23 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class uli
-  implements xpb
+  implements Dispatcher.Event
 {
-  private ulj jdField_a_of_type_Ulj;
+  public ErrorMessage a = new ErrorMessage();
   
-  public uli(ulh paramulh, ulj paramulj)
+  public String a()
   {
-    this.jdField_a_of_type_Ulj = paramulj;
+    return this.a.getErrorMessage();
   }
   
-  public void onFailure(String paramString)
+  public String toString()
   {
-    wsv.e(ulh.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    ulh.a(this.jdField_a_of_type_Ulh);
-    if (ulh.b(this.jdField_a_of_type_Ulh) == 0)
-    {
-      wsv.b(ulh.a, "all ffmpeg commands have already finished. start clearing cache.");
-      ulh.a(this.jdField_a_of_type_Ulh);
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
     }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    wsv.b(ulh.a, "start executing ffmpeg commands.");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (xmx.a(BaseApplication.getContext(), this.jdField_a_of_type_Ulj.d, this.jdField_a_of_type_Ulj.e))
-    {
-      wsv.b(ulh.a, "save video to album success.");
-      wta.a("video_edit", "video_save_local", 0, 0, new String[0]);
-      return;
-    }
-    wsv.e(ulh.a, "save video to album failed.");
   }
 }
 

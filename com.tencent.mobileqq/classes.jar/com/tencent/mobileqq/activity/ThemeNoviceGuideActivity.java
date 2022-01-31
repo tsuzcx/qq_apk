@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import adwu;
-import alpo;
+import aebj;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-import axho;
-import azmj;
-import bdal;
-import bdar;
-import bdox;
+import axlx;
+import azqs;
+import bdeu;
+import bdfa;
+import bdtg;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -25,21 +25,21 @@ public class ThemeNoviceGuideActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  Handler a = new adwu(this, Looper.getMainLooper());
+  Handler a = new aebj(this, Looper.getMainLooper());
   
   private void a()
   {
-    setLeftButton(2131690884, null);
-    ((Button)findViewById(2131377274)).setOnClickListener(this);
+    setLeftButton(2131690885, null);
+    ((Button)findViewById(2131377328)).setOnClickListener(this);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562709);
+    super.setContentView(2131562727);
     a();
-    setTitle(alpo.a(2131715305));
+    setTitle(alud.a(2131715317));
     this.a.sendMessageDelayed(Message.obtain(this.a, 0, null), 5L);
     return true;
   }
@@ -53,33 +53,33 @@ public class ThemeNoviceGuideActivity
   public boolean onBackEvent()
   {
     finish();
-    bdar.anim(this, false, false);
+    bdfa.anim(this, false, false);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377274)
+    if (paramView.getId() == 2131377328)
     {
-      if (!bdal.a()) {
+      if (!bdeu.a()) {
         break label121;
       }
       finish();
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("FromWhere", "FromThemeNoviceGuide");
-      VasWebviewUtil.openQQBrowserWithoutAD(this, bdox.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this, bdtg.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, false, -1);
       if (this.app != null) {
-        ((axho)this.app.getManager(36)).b("100005.100002");
+        ((axlx)this.app.getManager(36)).b("100005.100002");
       }
     }
     for (;;)
     {
       if (this.app != null) {
-        azmj.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
+        azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
       }
       return;
       label121:
-      Toast.makeText(getApplicationContext(), getString(2131719535), 0).show();
+      Toast.makeText(getApplicationContext(), getString(2131719547), 0).show();
     }
   }
   

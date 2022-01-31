@@ -1,11 +1,11 @@
 package cooperation.qqreader.host.advertisement;
 
-import aanz;
+import aaso;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 public abstract class ReaderGdtSdk$ReportListener
-  implements aanz
+  implements aaso
 {
   private ReaderAdWrapper a;
   
@@ -16,7 +16,7 @@ public abstract class ReaderGdtSdk$ReportListener
   
   public final void reportImpression(View paramView)
   {
-    if (paramView.getTag(2131379911) == this.a.a()) {
+    if (paramView.getTag(2131379969) == this.a.a()) {
       reportImpression(paramView, this.a);
     }
   }

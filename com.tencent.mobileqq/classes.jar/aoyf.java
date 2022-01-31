@@ -1,20 +1,61 @@
-public abstract interface aoyf
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+public class aoyf
+  extends aokh<aoye>
 {
-  public abstract void a(String paramString1, String paramString2);
+  public static aoye a()
+  {
+    return (aoye)aoks.a().a(487);
+  }
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public int a()
+  {
+    return 487;
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  @NonNull
+  public aoye a(int paramInt)
+  {
+    return new aoye();
+  }
   
-  public abstract void c(String paramString1, String paramString2);
+  @Nullable
+  public aoye a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoye.a(paramArrayOfaoko);
+    }
+    return null;
+  }
   
-  public abstract void d(String paramString1, String paramString2);
+  public Class<aoye> a()
+  {
+    return aoye.class;
+  }
   
-  public abstract void e(String paramString1, String paramString2);
+  public void a(int paramInt) {}
+  
+  public void a(aoye paramaoye) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyf
  * JD-Core Version:    0.7.0.1
  */

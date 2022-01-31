@@ -65,7 +65,7 @@ public abstract class nbq
     paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
     if (paramConfig.compress.get() == 1)
     {
-      paramConfig = avxz.a(paramConfig.content.get().toByteArray());
+      paramConfig = awci.a(paramConfig.content.get().toByteArray());
       if (paramConfig != null) {
         try
         {
@@ -155,13 +155,13 @@ public abstract class nbq
       if (!(paramAppInterface instanceof QQAppInterface)) {
         return false;
       }
-      paramAppInterface = ((bdvx)((QQAppInterface)paramAppInterface).getManager(47)).a(1);
-      paramString = aljq.aX + a() + ".tmp";
-      localObject = new bdvv((String)localObject, new File(paramString));
-      ((bdvv)localObject).b = 3;
+      paramAppInterface = ((beag)((QQAppInterface)paramAppInterface).getManager(47)).a(1);
+      paramString = alof.aX + a() + ".tmp";
+      localObject = new beae((String)localObject, new File(paramString));
+      ((beae)localObject).b = 3;
       Bundle localBundle = new Bundle();
       localBundle.putString("file_path", paramString);
-      paramAppInterface.a((bdvv)localObject, new nbr(this), localBundle);
+      paramAppInterface.a((beae)localObject, new nbr(this), localBundle);
       return true;
     }
     catch (JSONException paramAppInterface) {}

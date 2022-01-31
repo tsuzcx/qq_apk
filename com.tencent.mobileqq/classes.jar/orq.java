@@ -4,25 +4,24 @@ public class orq
   
   static
   {
-    String[] arrayOfString1 = { "&lt;", "<" };
-    String[] arrayOfString2 = { "&gt;", ">" };
-    String[] arrayOfString3 = { "&agrave;", "à" };
-    String[] arrayOfString4 = { "&Agrave;", "À" };
-    String[] arrayOfString5 = { "&acirc;", "â" };
-    String[] arrayOfString6 = { "&ccedil;", "ç" };
-    String[] arrayOfString7 = { "&eacute;", "é" };
-    String[] arrayOfString8 = { "&egrave;", "è" };
-    String[] arrayOfString9 = { "&Egrave;", "È" };
-    String[] arrayOfString10 = { "&ecirc;", "ê" };
-    String[] arrayOfString11 = { "&Ecirc;", "Ê" };
-    String[] arrayOfString12 = { "&Euml;", "Ë" };
-    String[] arrayOfString13 = { "&ocirc;", "ô" };
-    String[] arrayOfString14 = { "&ouml;", "ö" };
-    String[] arrayOfString15 = { "&Oslash;", "Ø" };
-    String[] arrayOfString16 = { "&Ugrave;", "Ù" };
-    String[] arrayOfString17 = { "&Ucirc;", "Û" };
-    String[] arrayOfString18 = { "&Uuml;", "Ü" };
-    a = new String[][] { arrayOfString1, arrayOfString2, { "&amp;", "&" }, { "&quot;", "\"" }, arrayOfString3, arrayOfString4, arrayOfString5, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, { "&aring;", "å" }, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, arrayOfString6, { "&Ccedil;", "Ç" }, arrayOfString7, { "&Eacute;", "É" }, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, { "&euml;", "ë" }, arrayOfString12, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, arrayOfString13, { "&Ocirc;", "Ô" }, arrayOfString14, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, arrayOfString15, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, arrayOfString16, { "&ucirc;", "û" }, arrayOfString17, { "&uuml;", "ü" }, arrayOfString18, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
+    String[] arrayOfString1 = { "&agrave;", "à" };
+    String[] arrayOfString2 = { "&acirc;", "â" };
+    String[] arrayOfString3 = { "&auml;", "ä" };
+    String[] arrayOfString4 = { "&Acirc;", "Â" };
+    String[] arrayOfString5 = { "&aring;", "å" };
+    String[] arrayOfString6 = { "&Ccedil;", "Ç" };
+    String[] arrayOfString7 = { "&Ecirc;", "Ê" };
+    String[] arrayOfString8 = { "&Euml;", "Ë" };
+    String[] arrayOfString9 = { "&iuml;", "ï" };
+    String[] arrayOfString10 = { "&ouml;", "ö" };
+    String[] arrayOfString11 = { "&Ouml;", "Ö" };
+    String[] arrayOfString12 = { "&Oslash;", "Ø" };
+    String[] arrayOfString13 = { "&ugrave;", "ù" };
+    String[] arrayOfString14 = { "&ucirc;", "û" };
+    String[] arrayOfString15 = { "&uuml;", "ü" };
+    String[] arrayOfString16 = { "&copy;", "©" };
+    String[] arrayOfString17 = { "&reg;", "®" };
+    a = new String[][] { { "&lt;", "<" }, { "&gt;", ">" }, { "&amp;", "&" }, { "&quot;", "\"" }, arrayOfString1, { "&Agrave;", "À" }, arrayOfString2, arrayOfString3, { "&Auml;", "Ä" }, arrayOfString4, arrayOfString5, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, { "&ccedil;", "ç" }, arrayOfString6, { "&eacute;", "é" }, { "&Eacute;", "É" }, { "&egrave;", "è" }, { "&Egrave;", "È" }, { "&ecirc;", "ê" }, arrayOfString7, { "&euml;", "ë" }, arrayOfString8, arrayOfString9, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, arrayOfString10, arrayOfString11, { "&oslash;", "ø" }, arrayOfString12, { "&szlig;", "ß" }, arrayOfString13, { "&Ugrave;", "Ù" }, arrayOfString14, { "&Ucirc;", "Û" }, arrayOfString15, { "&Uuml;", "Ü" }, { "&nbsp;", " " }, arrayOfString16, arrayOfString17, { "&euro;", "₠" } };
   }
   
   public static String a(String paramString)

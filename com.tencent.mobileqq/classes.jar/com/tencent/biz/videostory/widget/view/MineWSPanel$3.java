@@ -1,36 +1,36 @@
 package com.tencent.biz.videostory.widget.view;
 
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.biz.videostory.db.WSPersonalEntity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import yxc;
+import zbr;
 
 public class MineWSPanel$3
   implements Runnable
 {
-  public MineWSPanel$3(yxc paramyxc, byte[] paramArrayOfByte) {}
+  public MineWSPanel$3(zbr paramzbr, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (yxc.a(this.this$0) == null)
+    if (zbr.a(this.this$0) == null)
     {
       QLog.i("MineWSPanel", 2, "mBaseActivity is null");
       return;
     }
-    awbw localawbw = yxc.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = zbr.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
     WSPersonalEntity localWSPersonalEntity = new WSPersonalEntity();
-    localWSPersonalEntity.updateWeiShiFeedListEntity(yxc.a(this.this$0), this.a);
+    localWSPersonalEntity.updateWeiShiFeedListEntity(zbr.a(this.this$0), this.a);
     if (localWSPersonalEntity.getStatus() == 1000) {
-      localawbw.a(localWSPersonalEntity);
+      localawgf.a(localWSPersonalEntity);
     }
     for (;;)
     {
-      localawbw.a();
+      localawgf.a();
       return;
-      localawbw.a(localWSPersonalEntity);
+      localawgf.a(localWSPersonalEntity);
     }
   }
 }

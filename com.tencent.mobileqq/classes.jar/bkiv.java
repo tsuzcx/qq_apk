@@ -1,25 +1,33 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public class bkiv
-  implements Animation.AnimationListener
+class bkiv
+  implements EIPCOnGetConnectionListener
 {
-  public bkiv(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  bkiv(bkiu parambkiu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
+    if (paramEIPCConnection != null) {
+      bkiu.a(this.a, paramEIPCConnection.procName);
+    }
+    bkiu.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bkiu.a(this.a, paramEIPCConnection.procName);
+    }
+    bkiu.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
+    }
+  }
 }
 
 

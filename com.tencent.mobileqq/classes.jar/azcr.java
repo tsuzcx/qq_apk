@@ -1,167 +1,470 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.PendantVersionManager.1;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+
 public class azcr
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  private static final String[] a = { "art_res_cache", "other_res_cache", "portrait_res_cache", "ptu_res" };
+  private static final String[] b = { "libimage_filter_common.so", "libimage_filter_gpu.so", "libpitu_tools.so", "libimage_filter_cpu.so", "libalgo_youtu_jni.so", "libformat_convert.so" };
   
-  public azcr()
+  public static String a()
   {
-    this.jdField_a_of_type_Int = 0;
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).getString("pendant_sv_md5_version_soname_key", "Pendant000_0");
+    boolean bool = a(str, 72);
+    VideoEnvironment.a("PendantVersionManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "Pendant000_0";
   }
   
   /* Error */
-  public int a(String paramString1, int paramInt1, int paramInt2, double paramDouble1, double paramDouble2, String paramString2)
+  private static ArrayList<String> a(File paramFile)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: iload_2
-    //   2: iload_3
-    //   3: aload 8
-    //   5: iconst_0
-    //   6: getstatic 27	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   9: invokestatic 32	com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(Ljava/lang/String;IILjava/lang/String;ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
-    //   12: astore_1
-    //   13: aload_1
-    //   14: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   17: ifeq +20 -> 37
-    //   20: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   23: ifeq +11 -> 34
-    //   26: ldc 46
-    //   28: iconst_2
-    //   29: ldc 48
-    //   31: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: bipush 254
-    //   36: ireturn
-    //   37: new 54	java/io/File
-    //   40: dup
-    //   41: aload_1
-    //   42: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
-    //   45: astore 9
-    //   47: aload 9
-    //   49: invokevirtual 60	java/io/File:exists	()Z
-    //   52: ifne +6 -> 58
-    //   55: bipush 254
-    //   57: ireturn
-    //   58: aload_1
-    //   59: dload 4
-    //   61: dload 6
-    //   63: invokestatic 65	bdda:a	(Ljava/lang/String;DD)Z
-    //   66: pop
-    //   67: new 67	java/io/FileInputStream
-    //   70: dup
-    //   71: aload_1
-    //   72: invokespecial 68	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   75: astore 8
-    //   77: aload 8
-    //   79: astore_1
-    //   80: aload_0
-    //   81: aload 8
-    //   83: aload 9
-    //   85: invokevirtual 72	java/io/File:length	()J
-    //   88: invokestatic 78	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   91: invokestatic 84	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   94: putfield 86	azcr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: aload 8
-    //   99: ifnull +8 -> 107
-    //   102: aload 8
-    //   104: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   107: aload_0
-    //   108: getfield 86	azcr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   111: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   114: ifeq +133 -> 247
-    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   120: ifeq +11 -> 131
-    //   123: ldc 46
-    //   125: iconst_2
-    //   126: ldc 91
-    //   128: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: iconst_m1
-    //   132: ireturn
-    //   133: astore_1
-    //   134: aload_1
-    //   135: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   138: goto -31 -> 107
-    //   141: astore 9
-    //   143: aconst_null
-    //   144: astore 8
-    //   146: aload 8
-    //   148: astore_1
-    //   149: aload 9
-    //   151: invokevirtual 95	java/io/FileNotFoundException:printStackTrace	()V
-    //   154: aload 8
-    //   156: ifnull +8 -> 164
-    //   159: aload 8
-    //   161: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: new 95	java/util/ArrayList
+    //   7: dup
+    //   8: iconst_1
+    //   9: invokespecial 98	java/util/ArrayList:<init>	(I)V
+    //   12: astore 4
+    //   14: new 100	java/io/FileReader
+    //   17: dup
+    //   18: aload_0
+    //   19: invokespecial 103	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   22: astore_0
+    //   23: new 105	java/io/BufferedReader
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 108	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnull +18 -> 56
+    //   41: aload 4
+    //   43: aload_1
+    //   44: invokevirtual 115	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   47: pop
+    //   48: aload_2
+    //   49: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: goto -16 -> 37
+    //   56: aload_2
+    //   57: ifnull +7 -> 64
+    //   60: aload_2
+    //   61: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   64: aload_0
+    //   65: ifnull +7 -> 72
+    //   68: aload_0
+    //   69: invokevirtual 119	java/io/FileReader:close	()V
+    //   72: aload 4
+    //   74: areturn
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   80: goto -16 -> 64
+    //   83: astore_0
+    //   84: aload_0
+    //   85: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   88: aload 4
+    //   90: areturn
+    //   91: astore_0
+    //   92: aconst_null
+    //   93: astore_2
+    //   94: aload_0
+    //   95: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   98: ldc 64
+    //   100: ldc 125
+    //   102: aload_0
+    //   103: invokestatic 88	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   106: aload_2
+    //   107: ifnull +7 -> 114
+    //   110: aload_2
+    //   111: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   114: aload_1
+    //   115: ifnull -43 -> 72
+    //   118: aload_1
+    //   119: invokevirtual 119	java/io/FileReader:close	()V
+    //   122: aload 4
+    //   124: areturn
+    //   125: astore_0
+    //   126: aload_0
+    //   127: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   130: aload 4
+    //   132: areturn
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   138: goto -24 -> 114
+    //   141: astore_0
+    //   142: aconst_null
+    //   143: astore_3
+    //   144: aload_2
+    //   145: astore_1
+    //   146: aload_3
+    //   147: astore_2
+    //   148: aload_2
+    //   149: ifnull +7 -> 156
+    //   152: aload_2
+    //   153: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   156: aload_1
+    //   157: ifnull +7 -> 164
+    //   160: aload_1
+    //   161: invokevirtual 119	java/io/FileReader:close	()V
     //   164: aload_0
-    //   165: getfield 86	azcr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   168: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   171: ifeq +76 -> 247
-    //   174: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   177: ifeq +11 -> 188
-    //   180: ldc 46
-    //   182: iconst_2
-    //   183: ldc 91
-    //   185: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   188: iconst_m1
-    //   189: ireturn
-    //   190: astore_1
-    //   191: aload_1
-    //   192: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   195: goto -31 -> 164
-    //   198: astore 8
-    //   200: aconst_null
-    //   201: astore_1
-    //   202: aload_1
-    //   203: ifnull +7 -> 210
-    //   206: aload_1
-    //   207: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   210: aload_0
-    //   211: getfield 86	azcr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   214: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   217: ifeq +27 -> 244
-    //   220: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   223: ifeq +11 -> 234
-    //   226: ldc 46
-    //   228: iconst_2
-    //   229: ldc 91
-    //   231: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: iconst_m1
-    //   235: ireturn
-    //   236: astore_1
-    //   237: aload_1
-    //   238: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   241: goto -31 -> 210
-    //   244: aload 8
-    //   246: athrow
-    //   247: iconst_0
-    //   248: ireturn
-    //   249: astore 8
-    //   251: goto -49 -> 202
-    //   254: astore 9
-    //   256: goto -110 -> 146
+    //   165: athrow
+    //   166: astore_2
+    //   167: aload_2
+    //   168: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   171: goto -15 -> 156
+    //   174: astore_1
+    //   175: aload_1
+    //   176: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   179: goto -15 -> 164
+    //   182: astore_3
+    //   183: aconst_null
+    //   184: astore_2
+    //   185: aload_0
+    //   186: astore_1
+    //   187: aload_3
+    //   188: astore_0
+    //   189: goto -41 -> 148
+    //   192: astore_3
+    //   193: aload_0
+    //   194: astore_1
+    //   195: aload_3
+    //   196: astore_0
+    //   197: goto -49 -> 148
+    //   200: astore_0
+    //   201: goto -53 -> 148
+    //   204: astore_3
+    //   205: aconst_null
+    //   206: astore_2
+    //   207: aload_0
+    //   208: astore_1
+    //   209: aload_3
+    //   210: astore_0
+    //   211: goto -117 -> 94
+    //   214: astore_3
+    //   215: aload_0
+    //   216: astore_1
+    //   217: aload_3
+    //   218: astore_0
+    //   219: goto -125 -> 94
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	259	0	this	azcr
-    //   0	259	1	paramString1	String
-    //   0	259	2	paramInt1	int
-    //   0	259	3	paramInt2	int
-    //   0	259	4	paramDouble1	double
-    //   0	259	6	paramDouble2	double
-    //   0	259	8	paramString2	String
-    //   45	39	9	localFile	java.io.File
-    //   141	9	9	localFileNotFoundException1	java.io.FileNotFoundException
-    //   254	1	9	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	222	0	paramFile	File
+    //   3	50	1	str	String
+    //   75	44	1	localIOException1	java.io.IOException
+    //   145	16	1	localObject1	Object
+    //   174	2	1	localIOException2	java.io.IOException
+    //   186	31	1	localFile	File
+    //   1	152	2	localObject2	Object
+    //   166	2	2	localIOException3	java.io.IOException
+    //   184	23	2	localObject3	Object
+    //   143	4	3	localObject4	Object
+    //   182	6	3	localObject5	Object
+    //   192	4	3	localObject6	Object
+    //   204	6	3	localException1	Exception
+    //   214	4	3	localException2	Exception
+    //   12	119	4	localArrayList	ArrayList
     // Exception table:
     //   from	to	target	type
-    //   102	107	133	java/io/IOException
-    //   67	77	141	java/io/FileNotFoundException
-    //   159	164	190	java/io/IOException
-    //   67	77	198	finally
-    //   206	210	236	java/io/IOException
-    //   80	97	249	finally
-    //   149	154	249	finally
-    //   80	97	254	java/io/FileNotFoundException
+    //   60	64	75	java/io/IOException
+    //   68	72	83	java/io/IOException
+    //   14	23	91	java/lang/Exception
+    //   118	122	125	java/io/IOException
+    //   110	114	133	java/io/IOException
+    //   14	23	141	finally
+    //   152	156	166	java/io/IOException
+    //   160	164	174	java/io/IOException
+    //   23	32	182	finally
+    //   32	37	192	finally
+    //   41	53	192	finally
+    //   94	106	200	finally
+    //   23	32	204	java/lang/Exception
+    //   32	37	214	java/lang/Exception
+    //   41	53	214	java/lang/Exception
+  }
+  
+  public static void a()
+  {
+    int j = 0;
+    String str1 = azkt.a(VideoEnvironment.a());
+    String[] arrayOfString = b;
+    int k = arrayOfString.length;
+    int i = 0;
+    String str2;
+    while (i < k)
+    {
+      str2 = arrayOfString[i];
+      bdhb.d(str1 + str2);
+      i += 1;
+    }
+    bdhb.d(str1 + "libartfilter.so");
+    bdhb.d(str1 + "262_8_model");
+    bdhb.d(str1 + "262_8_md04_reshape");
+    str1 = str1 + "bakcup/";
+    if (bdhb.a(str1))
+    {
+      arrayOfString = b;
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
+      {
+        str2 = arrayOfString[i];
+        bdhb.d(str1 + str2);
+        i += 1;
+      }
+      bdhb.d(str1 + "libartfilter.so");
+      bdhb.d(str1 + "262_8_model");
+      bdhb.d(str1 + "262_8_md04_reshape");
+    }
+  }
+  
+  static void a(boolean paramBoolean) {}
+  
+  public static boolean a()
+  {
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).getString("pendant_sv_md5_version_soname_key", "Pendant000_0");
+    boolean bool = a(str, 72);
+    VideoEnvironment.a("PendantVersionManager", "checkPendantVersionOk success=" + bool + ", md5Version=" + str, null);
+    return bool;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool = true;
+    File localFile = new File(paramString);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      bool = false;
+    }
+    int i;
+    do
+    {
+      return bool;
+      i = bdhb.a(paramString, bkpa.b, false, true, QLog.isColorLevel());
+      VideoEnvironment.a("PendantVersionManager", "copyResFileToFinalDir errorcode:" + i + ", fromPath:" + paramString, null);
+    } while (i == 0);
+    return false;
+  }
+  
+  static boolean a(String paramString, int paramInt)
+  {
+    String str = paramString.trim();
+    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
+    paramString = azek.a(str);
+    int i = paramString.a();
+    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
+    if (i == 0)
+    {
+      paramString = paramString.b().trim();
+      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
+      i = Integer.parseInt(paramString);
+      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
+      if (i >= paramInt) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool3 = false;
+    boolean bool2 = true;
+    bool1 = true;
+    for (;;)
+    {
+      try
+      {
+        String str = azkt.a(VideoEnvironment.a());
+        str = str + paramString1 + File.separator;
+        File localFile = new File(str);
+        if (localFile.exists())
+        {
+          if ((a().equals(paramString1)) && (c(str, "pendant_config_file")))
+          {
+            VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+            bool1 = false;
+            return bool1;
+          }
+          bdhb.a(str);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + str, null);
+        }
+        boolean bool4 = localFile.mkdirs();
+        VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[exists]mkOK=" + bool4, null);
+        if (!localFile.exists())
+        {
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:unzipFile.exists=false[error]", null);
+          continue;
+        }
+        try
+        {
+          bdhb.a(paramString2, str, false);
+          bool1 = c(str, "pendant_config_file");
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool1, null);
+          if (!bool1) {
+            break label437;
+          }
+          bool1 = a(str);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:copyResFileToFinalDir copyOK=" + bool1, null);
+          if (!bool1) {
+            break;
+          }
+          bool4 = c(paramString1);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool4, null);
+          bool1 = bool3;
+          if (!bool4)
+          {
+            bool4 = c(paramString1);
+            VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool4, null);
+            bool1 = bool3;
+            if (!bool4)
+            {
+              VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+              bool1 = c("Pendant000_0");
+              VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+              bool1 = true;
+            }
+          }
+          b();
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
+          {
+            paramString1.printStackTrace();
+            continue;
+            bool1 = true;
+            continue;
+            bool1 = true;
+          }
+        }
+      }
+      finally {}
+      bool2 = bool1;
+      bool1 = bool2;
+      if (bool2)
+      {
+        bdhb.a(str);
+        bool1 = bool2;
+      }
+    }
+  }
+  
+  private static void b()
+  {
+    ThreadManager.excute(new PendantVersionManager.1(), 64, null, false);
+  }
+  
+  static boolean b(String paramString1, String paramString2)
+  {
+    paramString2 = paramString1 + paramString2;
+    VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2, null);
+    Object localObject = new File(paramString2);
+    if (!((File)localObject).exists())
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2 + ",exists=false", null);
+      return false;
+    }
+    paramString2 = a((File)localObject);
+    if (paramString2.size() <= 0)
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configData.size()=" + paramString2.size(), null);
+      return false;
+    }
+    int i = 0;
+    if (i < paramString2.size())
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK itemLineValue=" + (String)paramString2.get(i), null);
+      if (TextUtils.isEmpty((CharSequence)paramString2.get(i))) {}
+      String str;
+      int j;
+      long l;
+      do
+      {
+        do
+        {
+          i += 1;
+          break;
+          str = ((String)paramString2.get(i)).trim();
+        } while (TextUtils.isEmpty(str));
+        VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK trimValue=" + str, null);
+        localObject = azek.a(str);
+        j = ((azel)localObject).a('|');
+        if (j != 0) {
+          break label407;
+        }
+        str = paramString1 + ((azel)localObject).c();
+        File localFile = new File(str);
+        if (!localFile.exists())
+        {
+          VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[exists=false] fileName=" + str, null);
+          return false;
+        }
+        j = Integer.parseInt(((azel)localObject).d());
+        l = localFile.length();
+      } while (j == l);
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK sizeConfig=" + j + ",fileSize=" + l, null);
+      return false;
+      label407:
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[CfgParser] errCode=" + j + ",trimValue=" + str, null);
+      return false;
+    }
+    VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[OK]", null);
+    return true;
+  }
+  
+  private static boolean c(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).edit();
+    localEditor.putString("pendant_sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("PendantVersionManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
+    return bool;
+  }
+  
+  private static boolean c(String paramString1, String paramString2)
+  {
+    if (!azkt.a(paramString1))
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[isFilterSoExist] exists=false", null);
+      return false;
+    }
+    return b(paramString1, paramString2);
+  }
+  
+  private static boolean d(String paramString)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < a.length)
+      {
+        if (paramString.equals(a[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 

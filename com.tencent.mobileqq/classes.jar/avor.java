@@ -1,8 +1,19 @@
-public final class avor<Params>
+import android.text.Editable;
+import android.text.TextWatcher;
+
+class avor
+  implements TextWatcher
 {
-  public int a;
-  public Params a;
-  public boolean a;
+  avor(avop paramavop) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    auwz.a(this.a.f, 90);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

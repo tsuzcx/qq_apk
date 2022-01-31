@@ -1,43 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
+import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class aals
-  extends BroadcastReceiver
+public class aals
+  implements AdAnalysisAdapter
 {
-  private aals(aall paramaall) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public String getAppVersion()
   {
-    if (aall.a(this.a))
+    return aash.a();
+  }
+  
+  public String getUIN()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
     {
-      aall.b(this.a, false);
-      aanp.a("GdtMvViewController", "SilentModeReceiver first auto called! so skip!");
-    }
-    while ((aall.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
-      return;
-    }
-    int i = aall.a(this.a).getRingerMode();
-    int j = aall.a(this.a).getStreamVolume(3);
-    aanp.a("GdtMvViewController", "system context mode: " + i + ", streamVolume = " + j);
-    switch (i)
-    {
-    default: 
-      aall.c(this.a, true);
-      this.a.a = true;
-      aall.a(this.a).a(true);
-    }
-    for (;;)
-    {
-      aall.a(this.a, j, aall.b(this.a), false);
-      return;
-      aall.c(this.a, false);
-      if (j > 0) {
-        this.a.a = false;
-      }
-      aall.a(this.a).a(this.a.a);
-    }
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    return ((AppRuntime)localObject).getAccount();
   }
 }
 

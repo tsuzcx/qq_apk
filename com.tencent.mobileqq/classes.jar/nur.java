@@ -40,7 +40,7 @@ public class nur
     return 0;
   }
   
-  public static azqj a(MessageRecord paramMessageRecord)
+  public static azus a(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof MessageForStructing))
     {
@@ -50,7 +50,7 @@ public class nur
         paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
         if ((paramMessageRecord.mStructMsgItemLists != null) && (paramMessageRecord.mStructMsgItemLists.size() > 0))
         {
-          paramMessageRecord = (azqj)paramMessageRecord.mStructMsgItemLists.get(0);
+          paramMessageRecord = (azus)paramMessageRecord.mStructMsgItemLists.get(0);
           if (paramMessageRecord != null)
           {
             int i = paramMessageRecord.g;
@@ -105,7 +105,7 @@ public class nur
     //   22: getfield 132	com/tencent/mobileqq/data/ArkAppMessage:mSourceAd	Ljava/lang/String;
     //   25: astore_0
     //   26: aload_0
-    //   27: invokestatic 137	bdje:a	(Ljava/lang/String;)Z
+    //   27: invokestatic 137	bdnn:a	(Ljava/lang/String;)Z
     //   30: ifne +62 -> 92
     //   33: new 139	org/json/JSONObject
     //   36: dup
@@ -187,7 +187,7 @@ public class nur
         return;
       }
       str = ((nvb)localObject).b;
-      if ((!bdje.a(str)) && ((str.startsWith("http")) || (str.startsWith("https")) || (MiniAppLauncher.isMiniAppUrl(str)))) {
+      if ((!bdnn.a(str)) && ((str.startsWith("http")) || (str.startsWith("https")) || (MiniAppLauncher.isMiniAppUrl(str)))) {
         break;
       }
     } while (((nvb)localObject).a != 1);
@@ -335,10 +335,10 @@ public class nur
         a(paramContext, paramString1, paramString2);
         return;
       }
-      if (((azqj)localObject2).c == 100) {}
+      if (((azus)localObject2).c == 100) {}
       for (localObject1 = "2";; localObject1 = "1")
       {
-        a(((azqj)localObject2).g, paramContext, paramString1, paramString2);
+        a(((azus)localObject2).g, paramContext, paramString1, paramString2);
         break label287;
         label240:
         a(paramContext, paramString1, paramString2);
@@ -362,16 +362,16 @@ public class nur
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
         localObject = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
-        azqj localazqj = a((MessageRecord)localObject);
-        if (localazqj != null)
+        azus localazus = a((MessageRecord)localObject);
+        if (localazus != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.i("EcshopUtils", 2, "mGdtActionType " + localazqj.c);
+            QLog.i("EcshopUtils", 2, "mGdtActionType " + localazus.c);
           }
-          if ((localazqj.c == 100) && ((localazqj.a instanceof StructMsgForGeneralShare)))
+          if ((localazus.c == 100) && ((localazus.a instanceof StructMsgForGeneralShare)))
           {
-            a(localazqj.g, false);
-            a(paramQQAppInterface, paramString, ((StructMsgForGeneralShare)localazqj.a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", "");
+            a(localazus.g, false);
+            a(paramQQAppInterface, paramString, ((StructMsgForGeneralShare)localazus.a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", "");
           }
         }
         else
@@ -399,7 +399,7 @@ public class nur
     }
     try
     {
-      azmj.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", paramString2, paramString1, 0, 0, paramString4, paramString3, "android", "8.3.3");
+      azqs.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", paramString2, paramString1, 0, 0, paramString4, paramString3, "android", "8.3.5");
       return;
     }
     catch (Throwable paramQQAppInterface)

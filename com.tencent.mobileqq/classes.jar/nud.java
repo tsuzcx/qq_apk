@@ -45,7 +45,7 @@ import tencent.im.oidb.qqshop.qq_ad.QQAdReport;
 import tencent.im.oidb.qqshop.qq_ad.QQAdReportRsp;
 
 public class nud
-  extends alko
+  extends alpd
 {
   public static int a;
   public long a;
@@ -83,7 +83,7 @@ public class nud
         if (localObject != null)
         {
           localObject = ((ArkAppMessage)localObject).metaList;
-          if (bdje.a((String)localObject)) {}
+          if (bdnn.a((String)localObject)) {}
         }
       }
       for (;;)
@@ -114,7 +114,7 @@ public class nud
             localObject = (StructMsgForGeneralShare)localObject;
             if ((((StructMsgForGeneralShare)localObject).mStructMsgItemLists != null) && (((StructMsgForGeneralShare)localObject).mStructMsgItemLists.size() > 0))
             {
-              localObject = (azqj)((StructMsgForGeneralShare)localObject).mStructMsgItemLists.get(0);
+              localObject = (azus)((StructMsgForGeneralShare)localObject).mStructMsgItemLists.get(0);
               if (localObject != null) {
                 l1 = 0L;
               }
@@ -123,7 +123,7 @@ public class nud
         }
         try
         {
-          long l2 = Long.parseLong(((azqj)localObject).s);
+          long l2 = Long.parseLong(((azus)localObject).s);
           l1 = l2;
         }
         catch (Exception localException2)
@@ -150,11 +150,11 @@ public class nud
     do
     {
       return localHashSet;
-      str = aiqz.a(this.app.getCurrentAccountUin(), "risk_ids", "");
+      str = aivo.a(this.app.getCurrentAccountUin(), "risk_ids", "");
       if (QLog.isColorLevel()) {
         QLog.i("EcshopAdHandler", 2, "---getRiskAids---" + str);
       }
-    } while (bdje.a(str));
+    } while (bdnn.a(str));
     return (Set)new Gson().fromJson(str, new nue(this).getType());
   }
   
@@ -277,7 +277,7 @@ public class nud
     Set localSet = a();
     localSet.add(Long.valueOf(paramLong));
     localObject = ((Gson)localObject).toJson(localSet);
-    aiqz.a(this.app.getCurrentAccountUin(), "risk_ids", (String)localObject);
+    aivo.a(this.app.getCurrentAccountUin(), "risk_ids", (String)localObject);
   }
   
   public static void a(AppInterface paramAppInterface, ChatMessage paramChatMessage, View paramView)
@@ -290,8 +290,8 @@ public class nud
       paramChatMessage = ntw.a(paramChatMessage);
       if (paramChatMessage != null)
       {
-        paramView.setTag(2131379911, new GdtAd(paramChatMessage));
-        paramView.setTag(2131379910, new nuf(paramAppInterface));
+        paramView.setTag(2131379969, new GdtAd(paramChatMessage));
+        paramView.setTag(2131379968, new nuf(paramAppInterface));
       }
       return;
     }
@@ -310,9 +310,9 @@ public class nud
     if (BaseActivity.sTopActivity != null)
     {
       Object localObject = ((FragmentActivity)BaseActivity.sTopActivity).getChatFragment();
-      if ((localObject != null) && (((ChatFragment)localObject).a != null) && (((ChatFragment)localObject).a.c != null) && (((ChatFragment)localObject).a.c.findViewById(2131364137) != null))
+      if ((localObject != null) && (((ChatFragment)localObject).a != null) && (((ChatFragment)localObject).a.c != null) && (((ChatFragment)localObject).a.c.findViewById(2131364139) != null))
       {
-        localObject = (CustomTabView)((ChatFragment)localObject).a.c.findViewById(2131364137).findViewWithTag("echopCustomTabView");
+        localObject = (CustomTabView)((ChatFragment)localObject).a.c.findViewById(2131364139).findViewWithTag("echopCustomTabView");
         if (QLog.isColorLevel()) {
           QLog.i("EcshopAdHandler", 2, "[onResponseRedpoint]" + localObject);
         }
@@ -357,7 +357,7 @@ public class nud
                 localChatFragment.a.a(localChatMessage);
               }
               if (this.app != null) {
-                aiqz.a(this.app.getCurrentAccountUin(), "risk_ad_del_time", aeiz.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd"));
+                aivo.a(this.app.getCurrentAccountUin(), "risk_ad_del_time", aeno.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd"));
               }
               a(localLong.longValue());
             }
@@ -401,11 +401,11 @@ public class nud
     }
     try
     {
-      String str1 = aeiz.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd");
+      String str1 = aeno.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd");
       if (QLog.isColorLevel()) {
         QLog.i("EcshopAdHandler", 2, "currentTs:" + str1);
       }
-      String str2 = aiqz.a(this.app.getCurrentAccountUin(), "risk_ad_del_time", str1);
+      String str2 = aivo.a(this.app.getCurrentAccountUin(), "risk_ad_del_time", str1);
       if (QLog.isColorLevel()) {
         QLog.i("EcshopAdHandler", 2, "cacheTs:" + str2);
       }
@@ -414,7 +414,7 @@ public class nud
         if (QLog.isColorLevel()) {
           QLog.i("EcshopAdHandler", 2, "---removeRiskAids---");
         }
-        aiqz.a(this.app.getCurrentAccountUin(), "risk_ids");
+        aivo.a(this.app.getCurrentAccountUin(), "risk_ids");
       }
       if (TextUtils.isEmpty(paramString)) {
         paramString = "SQQShopAdSdkSvr.getAd";
@@ -507,7 +507,7 @@ public class nud
       ((PBStringField)localObject2).set((String)localObject1);
       localQQAdReport.platform_id.set(109);
       localObject2 = localQQAdReport.imei;
-      if (bfin.c() != null) {
+      if (bfmw.c() != null) {
         break label691;
       }
       localObject1 = "";
@@ -527,7 +527,7 @@ public class nud
       localObject1 = "";
       label375:
       ((PBStringField)localObject2).set((String)localObject1);
-      localObject2 = bdcb.c(BaseApplicationImpl.getApplication().getApplicationContext());
+      localObject2 = bdgk.c(BaseApplicationImpl.getApplication().getApplicationContext());
       PBStringField localPBStringField = localQQAdReport.hardware_addr;
       localObject1 = localObject2;
       if (localObject2 == null) {
@@ -541,7 +541,7 @@ public class nud
       localQQAdReport.msg_floor.set(paramnug.jdField_f_of_type_Int);
       localQQAdReport.puin.set(paramnug.jdField_a_of_type_Long);
       localQQAdReport.ad_puin.set(paramnug.jdField_b_of_type_Long);
-      localQQAdReport.version.set("8.3.3");
+      localQQAdReport.version.set("8.3.5");
       localObject2 = localQQAdReport.ad_id;
       if (paramnug.k != null) {
         break label714;
@@ -574,7 +574,7 @@ public class nud
       paramnug.putWupBuffer(localQQAdReport.toByteArray());
       super.sendPbReq(paramnug);
       return;
-      allh.a(paramString, new int[] { 139 });
+      alpw.a(paramString, new int[] { 139 });
       break;
       label627:
       localObject1 = paramnug.jdField_a_of_type_JavaLangString;
@@ -594,7 +594,7 @@ public class nud
       break label238;
       localObject1 = paramnug.h;
       break label297;
-      localObject1 = bfin.c();
+      localObject1 = bfmw.c();
       break label329;
       localObject1 = paramnug.i;
       break label352;
@@ -605,7 +605,7 @@ public class nud
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return num.class;
   }
@@ -662,7 +662,7 @@ public class nud
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         if (QLog.isColorLevel())
         {
-          QLog.i("EcshopAdHandler", 2, "rsp:" + bcyj.a(paramToServiceMsg));
+          QLog.i("EcshopAdHandler", 2, "rsp:" + bdcs.a(paramToServiceMsg));
           return;
         }
       }

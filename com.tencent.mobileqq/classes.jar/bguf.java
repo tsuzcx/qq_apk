@@ -1,21 +1,26 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
-final class bguf
-  implements bgum
+public class bguf
 {
-  bguf(bgum parambgum) {}
+  public int a;
+  public bgun a;
+  public Object a;
   
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  public bguf(int paramInt, bgun parambgun)
   {
-    if (this.a != null) {
-      this.a.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bgun = parambgun;
   }
   
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
+  public static bguf a(int paramInt, bgun parambgun)
   {
-    if (this.a != null) {
-      this.a.onInitGpkgInfo(paramInt, parambgun, paramString);
+    return new bguf(paramInt, parambgun);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader@");
+    if (this.jdField_a_of_type_Bgun != null) {}
+    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_Bgun.hashCode());; localObject = "=") {
+      return localObject + this.jdField_a_of_type_Bgun + " what=" + this.jdField_a_of_type_Int + "}";
     }
   }
 }

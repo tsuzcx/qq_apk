@@ -61,18 +61,18 @@ public class tes
     WSPublicAccReport.getInstance().reportDownload(paramActivity.mEventId, paramInt, 1, 1, 0);
     if (paramInt == 1)
     {
-      anrq.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
+      anvz.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
       tlo.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
       return;
     }
     tlv.a(paramActivity.mScheme);
-    anrq.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
+    anvz.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
     tlo.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo)
   {
-    boolean bool = anrq.a(paramRockDownloadInfo);
+    boolean bool = anvz.a(paramRockDownloadInfo);
     if (bool)
     {
       tlo.b("RockDownloader", "rockdownload deleteSuccess");
@@ -89,7 +89,7 @@ public class tes
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo, int paramInt)
   {
-    boolean bool = anrq.b(paramRockDownloadInfo);
+    boolean bool = anvz.b(paramRockDownloadInfo);
     int i = tfa.b();
     if (bool)
     {

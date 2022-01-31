@@ -1,22 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
+import android.os.Build.VERSION;
+import android.view.Surface;
 
-public final class bgrq
-  implements Parcelable.Creator<EngineChannel>
+public abstract interface bgrq
 {
-  public EngineChannel a(Parcel paramParcel)
+  public static final boolean a;
+  
+  static
   {
-    EngineChannel localEngineChannel = new EngineChannel((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel), null);
-    localEngineChannel.a(paramParcel.readString());
-    return localEngineChannel;
+    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a = bool;
+      return;
+    }
   }
   
-  public EngineChannel[] a(int paramInt)
-  {
-    return new EngineChannel[paramInt];
-  }
+  public abstract void pause();
+  
+  public abstract void prepareAsync();
+  
+  public abstract void reset();
+  
+  public abstract void seekTo(long paramLong);
+  
+  public abstract void setDataSource(String paramString);
+  
+  public abstract void setLooping(boolean paramBoolean);
+  
+  public abstract void setOnBufferingUpdateListener(bgrr parambgrr);
+  
+  public abstract void setOnCompletionListener(bgrs parambgrs);
+  
+  public abstract void setOnErrorListener(bgrt parambgrt);
+  
+  public abstract void setOnPreparedListener(bgrw parambgrw);
+  
+  public abstract void setSurface(Surface paramSurface);
+  
+  public abstract void start();
+  
+  public abstract void stop();
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.camera.utils;
 
-import anwe;
+import aoan;
 
 public final class CameraUtils$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Anwe.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aoan.a(this.jdField_a_of_type_Int);
   }
 }
 

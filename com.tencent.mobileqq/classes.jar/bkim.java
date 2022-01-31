@@ -1,30 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit.10;
-import mqq.app.AppRuntime;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
 
-public class bkim
-  implements MediaScanner.OnMediaInfoScannerListener
+class bkim
+  implements IBinder.DeathRecipient
 {
-  public bkim(QIMCameraCaptureUnit.10 param10) {}
+  bkim(bkil parambkil) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void binderDied()
   {
-    if (!paramBoolean)
+    bfrz.c("WadlProxyServiceManager", "wadl download process is died!");
+    bkil.a(this.a).asBinder().unlinkToDeath(bkil.a(this.a), 0);
+    bkil.a(this.a, null);
+    if ((bkil.a(this.a) != null) && (bkil.a(this.a).a()))
     {
-      this.a.this$0.a(101);
-      return;
+      bfrz.c("WadlProxyServiceManager", "download process died restart service");
+      this.a.b();
     }
-    bkil.a(this.a.this$0, false);
-    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
-    {
-      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-    this.a.this$0.e = true;
   }
 }
 

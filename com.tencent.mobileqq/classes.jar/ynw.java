@@ -1,25 +1,22 @@
-import java.io.File;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeFollowInfoView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ynw
+  implements View.OnClickListener
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public ArrayList<String> b;
-  boolean b;
-  public String c;
-  public ArrayList<File> c = new ArrayList();
-  public String d;
-  public String e;
+  public ynw(SubscribeFollowInfoView paramSubscribeFollowInfoView, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public ynw(ynm paramynm)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a() == null) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a())) {
+      return;
+    }
+    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + yod.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()), "clk_name", 0, 0, new String[0]);
+    ybt.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a(), ((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()).poster);
   }
 }
 

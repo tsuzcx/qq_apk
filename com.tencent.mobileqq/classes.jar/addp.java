@@ -1,20 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-class addp
-  implements DialogInterface.OnClickListener
+public class addp
+  implements DialogInterface.OnDismissListener
 {
-  addp(addn paramaddn) {}
+  public addp(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 1) {
-      this.a.b();
-    }
-    while (addn.a(this.a) == null) {
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
       return;
     }
-    addn.a(this.a).b();
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    azri.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

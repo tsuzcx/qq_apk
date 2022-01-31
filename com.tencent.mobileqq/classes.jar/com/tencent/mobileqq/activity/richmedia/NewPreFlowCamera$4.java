@@ -16,7 +16,7 @@ class NewPreFlowCamera$4
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131719266, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131719278, 0).a();
       NewPreFlowCamera.a(this.this$0, -1);
       return;
     }

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alpo;
-import amwd;
-import amwk;
+import alud;
+import anam;
+import anat;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARCloudControl$2
   implements Runnable
 {
-  public ARCloudControl$2(amwd paramamwd) {}
+  public ARCloudControl$2(anam paramanam) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), String.format(alpo.a(2131701009), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), String.format(alud.a(2131701021), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
   }
 }
 

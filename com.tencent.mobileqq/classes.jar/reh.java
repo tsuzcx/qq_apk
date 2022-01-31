@@ -28,7 +28,7 @@ class reh
     {
       paramBundle.setClassLoader(MessageForShortVideo.class.getClassLoader());
       paramString = (MessageForShortVideo)paramBundle.getParcelable("VALUE_SHORTVIDEO_MSG");
-      paramBundle = aenj.a((QQAppInterface)localObject);
+      paramBundle = aery.a((QQAppInterface)localObject);
       if (paramBundle != null)
       {
         if (reg.a(this.a) == null) {
@@ -38,9 +38,9 @@ class reh
         paramBundle.a(reg.a(this.a), reg.a(this.a));
       }
       paramString.busiType = 0;
-      paramString = ayyu.a((QQAppInterface)localObject, paramString, 1);
+      paramString = azdd.a((QQAppInterface)localObject, paramString, 1);
       if (paramString != null) {
-        ayyu.a(paramString, (QQAppInterface)localObject);
+        azdd.a(paramString, (QQAppInterface)localObject);
       }
     }
     do
@@ -64,8 +64,8 @@ class reh
               {
                 if (reg.a(this.a) != null)
                 {
-                  if (aenj.a((QQAppInterface)localObject) != null) {
-                    aenj.a((QQAppInterface)localObject).a(reg.a(this.a), null);
+                  if (aery.a((QQAppInterface)localObject) != null) {
+                    aery.a((QQAppInterface)localObject).a(reg.a(this.a), null);
                   }
                   reg.a(this.a, null);
                 }
@@ -208,7 +208,7 @@ class reh
                           reg.a(this.a, new rek(this, (QQAppInterface)localObject));
                           ((QQAppInterface)localObject).addObserver(reg.a(this.a));
                           paramString = new Bundle();
-                          paramString.putString("VALUE_USER_NICK_NAME", bdbt.b((QQAppInterface)localObject, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
+                          paramString.putString("VALUE_USER_NICK_NAME", bdgc.b((QQAppInterface)localObject, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
                           return EIPCResult.createSuccessResult(paramString);
                         }
                         if ("CMD_GET_NICK_NAME_BY_UIN_CANCLE".equals(paramString))

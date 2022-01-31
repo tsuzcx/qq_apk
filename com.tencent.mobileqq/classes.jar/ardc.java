@@ -1,127 +1,50 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
 public class ardc
-  extends ardj
+  extends ayjn<aynu, aywd>
 {
-  private FileInfo a;
+  public ardc(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  public ardc(FileInfo paramFileInfo)
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    this.a = paramFileInfo;
+    ardi localardi = new ardi();
+    localardi.a(new ardd(this));
+    return localardi;
   }
   
-  public int a()
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
   {
-    if (this.a.a() == 5) {
-      return 5;
-    }
-    return arni.a(this.a.d());
+    return new ardl(paramViewGroup);
   }
   
-  public long a()
+  public void a(List<aynu> paramList)
   {
-    return -1L;
-  }
-  
-  public FileManagerEntity a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public WeiYunFileInfo a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getWeiyunInfo should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a.d();
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public long b()
-  {
-    return this.a.a();
-  }
-  
-  public String b()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a.a() == 5)
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject1 = localObject2;
-      if (arof.b(this.a.c())) {
-        localObject1 = this.a.c();
-      }
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
+      return;
     }
-    return localObject1;
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
   }
   
-  public int c()
+  public void a(List<aynu> paramList, boolean paramBoolean)
   {
-    return 3;
-  }
-  
-  public long c()
-  {
-    return ayvc.a() * 1000L;
-  }
-  
-  public String c()
-  {
-    return null;
-  }
-  
-  public int d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getFileStatus: has not status");
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
     }
-    return -1;
-  }
-  
-  public String d()
-  {
-    return null;
-  }
-  
-  public int e()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getOpType: has not opType");
-    }
-    return -1;
-  }
-  
-  public String e()
-  {
-    return null;
-  }
-  
-  public String g()
-  {
-    return this.a.c();
-  }
-  
-  public String h()
-  {
-    return this.a.c();
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 

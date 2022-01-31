@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class akwf
-  implements aleu
+final class akwf
+  implements BusinessObserver
 {
-  akwf(akwd paramakwd, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
-  
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    akwd.a(this.jdField_a_of_type_Akwd, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+    try
+    {
+      paramInt = paramBundle.getInt("extra_result_code");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
+    }
   }
 }
 

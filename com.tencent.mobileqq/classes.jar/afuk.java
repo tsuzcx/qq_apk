@@ -1,45 +1,17 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class afuk
-  extends aivj
+public class afuk
+  implements beqw
 {
-  afuk(afui paramafui) {}
+  public afuk(LightVideoItemBuilder paramLightVideoItemBuilder, aful paramaful) {}
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(afui.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
-    }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
-    {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
-      {
-        paramInt = 0;
-        while (paramInt < localSparseArray.size())
-        {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
-          paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (aful)((WeakReference)localObject).get();
-          }
-          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
-          {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
-            }
-          }
-          paramInt += 1;
-        }
-      }
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Aful.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Aful.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Aful.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

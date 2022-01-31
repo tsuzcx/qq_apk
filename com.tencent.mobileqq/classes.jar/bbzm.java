@@ -1,205 +1,130 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bbzm
-  extends bbzz
-  implements bbzt
+  extends BaseAdapter
 {
-  private CopyOnWriteArrayList<bbzn> a = new CopyOnWriteArrayList();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private String jdField_a_of_type_JavaLangString;
+  List<bbzq<TroopInfo, Boolean>> jdField_a_of_type_JavaUtilList;
   
-  public bbzm(JSONObject paramJSONObject)
+  public bbzm(Activity paramActivity, List<TroopInfo> paramList, TroopInfo paramTroopInfo, List<String> paramList1)
   {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public bbzn a(int paramInt)
-  {
-    if (paramInt >= this.a.size()) {
-      return null;
-    }
-    return (bbzn)this.a.get(paramInt);
-  }
-  
-  public List<bbzn> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramTroopInfo != null)
     {
-      bbzn localbbzn = (bbzn)localIterator.next();
-      if ((TextUtils.isEmpty(localbbzn.a)) && (!TextUtils.isEmpty(localbbzn.jdField_b_of_type_JavaLangString))) {
-        localArrayList.add(localbbzn);
+      this.jdField_a_of_type_JavaUtilList.add(new bbzq(paramTroopInfo, Boolean.valueOf(true)));
+      this.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_JavaLangString = "";
       }
     }
-    return localArrayList;
-  }
-  
-  public JSONObject a()
-  {
-    return a(0);
-  }
-  
-  public JSONObject a(int paramInt)
-  {
-    JSONArray localJSONArray = new JSONArray();
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    if (paramList != null)
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      paramActivity = paramList.iterator();
+      while (paramActivity.hasNext())
       {
-        JSONObject localJSONObject2 = ((bbzn)localIterator.next()).a(paramInt);
-        if (localJSONObject2 != null) {
-          localJSONArray.put(localJSONObject2);
+        paramList = (TroopInfo)paramActivity.next();
+        if (paramList != null)
+        {
+          if ((paramList1 != null) && (paramList1.contains(paramList.troopuin))) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.jdField_a_of_type_JavaUtilList.add(new bbzq(paramList, Boolean.valueOf(bool)));
+            break;
+          }
         }
       }
-      localJSONObject1.put("type", "calculation").put("imgs", localJSONException);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject1;
-    }
-    return localJSONObject1;
   }
   
-  public void a()
+  public int getCount()
   {
-    Iterator localIterator = this.a.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bbzq localbbzq = (bbzq)getItem(paramInt);
+    Object localObject1;
+    if (paramView != null)
     {
-      bbzn localbbzn = (bbzn)localIterator.next();
-      int j = this.b.indexOf(Integer.valueOf(localbbzn.jdField_b_of_type_Int));
-      if (j <= i) {
-        break label79;
+      localObject1 = (bbzp)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject1;
+      paramViewGroup.setOnClickListener(null);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)localbbzq.b).booleanValue());
+      localObject1 = paramView.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (((TroopInfo)localbbzq.a).troopuin.equals(this.jdField_a_of_type_JavaLangString)) {
+        break label458;
       }
-      i = j;
     }
-    label79:
-    for (;;)
+    label458:
+    for (boolean bool = true;; bool = false)
     {
+      ((CheckBox)localObject1).setEnabled(bool);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bbzn(this, localbbzq));
+      paramViewGroup.setOnClickListener(new bbzo(this, paramView.jdField_a_of_type_AndroidWidgetCheckBox));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localbbzq.a).troopname);
+      return paramViewGroup;
+      paramView = new bbzp();
+      paramViewGroup = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+      paramViewGroup.setMinimumHeight(azkz.a(48.0F));
+      paramViewGroup.setOrientation(0);
+      paramViewGroup.setGravity(16);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(this.jdField_a_of_type_AndroidAppActivity);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130838922);
+      localObject1 = new LinearLayout.LayoutParams(-2, -2);
+      ((LinearLayout.LayoutParams)localObject1).setMargins(azkz.a(12.0F), 0, 0, 0);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(azkz.a(12.0F), 0, azkz.a(12.0F), 0);
+      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      ((LinearLayout)localObject1).setOrientation(1);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+      localObject2 = new LinearLayout.LayoutParams(-1, 0);
+      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localObject2 = new View(this.jdField_a_of_type_AndroidAppActivity);
+      ((View)localObject2).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#dedfe0")));
+      ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-1, 2));
+      ((LinearLayout)localObject1).addView(paramView.jdField_a_of_type_AndroidWidgetTextView);
+      ((LinearLayout)localObject1).addView((View)localObject2);
+      paramViewGroup.addView(paramView.jdField_a_of_type_AndroidWidgetCheckBox);
+      paramViewGroup.addView((View)localObject1);
+      paramViewGroup.setClickable(true);
+      paramViewGroup.setTag(paramView);
       break;
-      this.g = ((Integer)this.b.get(i)).intValue();
-      return;
     }
-  }
-  
-  public void a(bbzn parambbzn)
-  {
-    this.a.add(parambbzn);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("imgs");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-        bbzn localbbzn = new bbzn();
-        localbbzn.a(localJSONObject);
-        int j = this.a.indexOf(localbbzn);
-        if (j >= 0) {
-          localbbzn.copy(this.a.get(j));
-        }
-        localCopyOnWriteArrayList.add(localbbzn);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ArithmeticInfo", 2, "mergeData ,json = " + paramString);
-      }
-      this.a = localCopyOnWriteArrayList;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    super.a(paramString);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.a = new CopyOnWriteArrayList();
-    paramJSONObject = paramJSONObject.optJSONArray("imgs");
-    if (paramJSONObject != null)
-    {
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        bbzn localbbzn = new bbzn();
-        localbbzn.a(localJSONObject);
-        this.a.add(localbbzn);
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bbzn localbbzn = (bbzn)localIterator.next();
-      if ((localbbzn.jdField_b_of_type_Int != 3) && (localbbzn.jdField_b_of_type_Int != 0)) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public int b()
-  {
-    return 7;
-  }
-  
-  public void b(bbzn parambbzn)
-  {
-    this.a.remove(parambbzn);
-  }
-  
-  public int c()
-  {
-    return this.a.size();
-  }
-  
-  public void c(bbzn parambbzn)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bbzn localbbzn = (bbzn)localIterator.next();
-      if (localbbzn.equals(parambbzn)) {
-        localbbzn.copy(parambbzn);
-      }
-    }
-  }
-  
-  public int d()
-  {
-    if (this.a.size() > 0) {
-      return 1;
-    }
-    return 0;
   }
 }
 

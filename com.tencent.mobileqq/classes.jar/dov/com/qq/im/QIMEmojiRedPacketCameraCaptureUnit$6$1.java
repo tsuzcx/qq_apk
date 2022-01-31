@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import alpo;
-import bkjf;
-import bkjm;
+import alud;
+import bknm;
+import bknt;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$6$1
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bkjm parambkjm) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bknt parambknt) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a(), alpo.a(2131710172), 1).a();
+    QQToast.a(this.a.a.a(), alud.a(2131710184), 1).a();
   }
 }
 

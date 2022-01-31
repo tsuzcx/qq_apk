@@ -1,20 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class apzz
-  implements CompoundButton.OnCheckedChangeListener
+class apzz
+  implements View.OnClickListener
 {
-  public apzz(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  apzz(apzy paramapzy, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aqaa(this, paramBoolean));
-    if (paramBoolean) {}
-    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
+    if (apzy.a(this.jdField_a_of_type_Apzy).a(this.jdField_a_of_type_JavaLangString) == null) {
+      return;
+    }
+    boolean bool = apzy.a(this.jdField_a_of_type_Apzy).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apzy.jdField_a_of_type_Int, this.jdField_a_of_type_Apzy.jdField_a_of_type_JavaUtilList);
+    String str = apzy.a(this.jdField_a_of_type_Apzy) + "";
+    if (bool) {}
+    for (paramView = "1";; paramView = "2")
     {
-      azmj.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str, paramView, "", "");
+      this.jdField_a_of_type_Apzy.notifyDataSetChanged();
       return;
     }
   }

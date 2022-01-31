@@ -1,20 +1,22 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.ad.TianshuBigInsertPage.4.1;
 
-class bkef
-  implements IBinder.DeathRecipient
+public class bkef
+  implements ajal
 {
-  bkef(bkee parambkee) {}
+  bkef(bkeb parambkeb) {}
   
-  public void binderDied()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    bfnq.c("WadlProxyServiceManager", "wadl download process is died!");
-    bkee.a(this.a).asBinder().unlinkToDeath(bkee.a(this.a), 0);
-    bkee.a(this.a, null);
-    if ((bkee.a(this.a) != null) && (bkee.a(this.a).a()))
-    {
-      bfnq.c("WadlProxyServiceManager", "download process died restart service");
-      this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
+      bkeb.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
     }
   }
 }

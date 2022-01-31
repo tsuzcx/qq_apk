@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.playvideo;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import vjz;
-import vkb;
-import vkf;
-import vkg;
+import voi;
+import vok;
+import voo;
+import vop;
 
 public class TVKPreloader$2$2
   implements Runnable
 {
-  public TVKPreloader$2$2(vkb paramvkb, vkf paramvkf, String paramString1, int paramInt, String paramString2) {}
+  public TVKPreloader$2$2(vok paramvok, voo paramvoo, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    Iterator localIterator = vjz.a().iterator();
+    Iterator localIterator = voi.a().iterator();
     while (localIterator.hasNext()) {
-      ((vkg)localIterator.next()).a(this.jdField_a_of_type_Vkf, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
+      ((vop)localIterator.next()).a(this.jdField_a_of_type_Voo, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
     }
-    vjz.a(true);
+    voi.a(true);
   }
 }
 

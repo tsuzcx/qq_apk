@@ -9,24 +9,24 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import Wallet.FocusMpIdReq;
-import aiqs;
-import alxe;
+import aivh;
+import ambt;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcgx;
-import bdcs;
-import bduw;
-import bexd;
-import bgjd;
-import bheo;
-import bize;
-import bkcg;
-import bkci;
-import bkcj;
+import bclg;
+import bdhb;
+import bdzf;
+import bfbm;
+import bgnk;
+import bhiv;
+import bjdl;
+import bkgn;
+import bkgp;
+import bkgq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -84,7 +84,7 @@ public class ChannelProxyImpl
   private void copyDebugSo()
   {
     String str1 = TissueGlobal.tissueEnv.getNativeLibDir();
-    Object localObject = new File(bduw.a("Tencent/tissue_dbg/"));
+    Object localObject = new File(bdzf.a("Tencent/tissue_dbg/"));
     File localFile = ((File)localObject).getParentFile();
     if ((localFile != null) && (!localFile.exists())) {
       localFile.mkdirs();
@@ -108,7 +108,7 @@ public class ChannelProxyImpl
             if ((str2 != null) && (!str2.equals(str3)))
             {
               QMLog.i("V8JsLoader", "overwrite " + localFile.getAbsolutePath() + " from " + localObject[i].getAbsolutePath());
-              bdcs.a(localObject[i], localFile);
+              bdhb.a(localObject[i], localFile);
             }
             QMLog.i("V8JsLoader", localObject[i].getAbsolutePath() + ":" + str2 + "|" + localFile.getAbsolutePath() + ":" + str3);
           }
@@ -275,20 +275,20 @@ public class ChannelProxyImpl
     //   2	18	132	java/lang/Exception
   }
   
-  private bkcj newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private bkgq newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    bkcj localbkcj = new bkcj();
-    localbkcj.b = (String.valueOf(bexd.a().a()) + '_' + i);
-    localbkcj.d = paramInt;
-    localbkcj.jdField_e_of_type_Int = 1;
-    localbkcj.g = String.valueOf(paramAdItem.iAdId.get());
-    localbkcj.n = paramString;
-    localbkcj.jdField_a_of_type_Long = i;
-    localbkcj.jdField_a_of_type_Int = 1;
-    localbkcj.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localbkcj.i = "";
-    return localbkcj;
+    bkgq localbkgq = new bkgq();
+    localbkgq.b = (String.valueOf(bfbm.a().a()) + '_' + i);
+    localbkgq.d = paramInt;
+    localbkgq.jdField_e_of_type_Int = 1;
+    localbkgq.g = String.valueOf(paramAdItem.iAdId.get());
+    localbkgq.n = paramString;
+    localbkgq.jdField_a_of_type_Long = i;
+    localbkgq.jdField_a_of_type_Int = 1;
+    localbkgq.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localbkgq.i = "";
+    return localbkgq;
   }
   
   public static String toHexString(byte[] paramArrayOfByte)
@@ -371,7 +371,7 @@ public class ChannelProxyImpl
   
   public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    aiqs.a(new FocusMpIdReq(paramString1, paramString2), new ChannelProxyImpl.6(this, paramAsyncResult));
+    aivh.a(new FocusMpIdReq(paramString1, paramString2), new ChannelProxyImpl.6(this, paramAsyncResult));
     return true;
   }
   
@@ -419,7 +419,7 @@ public class ChannelProxyImpl
   
   public String getDeviceInfo()
   {
-    return bize.a().c();
+    return bjdl.a().c();
   }
   
   public void getFormId(String paramString, AsyncResult paramAsyncResult)
@@ -453,7 +453,7 @@ public class ChannelProxyImpl
         throw new RuntimeException("BaseApplicationImpl ctx is null");
       }
       PlayerConfig.init(localContext);
-      PlayerConfig.g().setLogger(new bheo());
+      PlayerConfig.g().setLogger(new bhiv());
     }
     if (!VideoManager.hasInit()) {
       VideoManager.init(AppLoaderFactory.g().getContext());
@@ -556,9 +556,9 @@ public class ChannelProxyImpl
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (alxe)((QQAppInterface)localObject).a(5);
+        localObject = (ambt)((QQAppInterface)localObject).a(5);
         if (localObject != null) {
-          ((alxe)localObject).a(paramBundle);
+          ((ambt)localObject).a(paramBundle);
         }
       }
     }
@@ -601,7 +601,7 @@ public class ChannelProxyImpl
       paramString = new Bundle();
       paramString.putBoolean("hide_more_button", true);
       paramContext.putExtras(paramString);
-      bgjd.a().a(new ChannelProxyImpl.5(this, paramAsyncResult));
+      bgnk.a().a(new ChannelProxyImpl.5(this, paramAsyncResult));
       localActivity.startActivityForResult(paramContext, 9);
       return true;
     }
@@ -616,7 +616,7 @@ public class ChannelProxyImpl
   
   public boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2)
   {
-    bcgx.a(paramContext, paramString1, paramString2);
+    bclg.a(paramContext, paramString1, paramString2);
     return true;
   }
   
@@ -688,16 +688,16 @@ public class ChannelProxyImpl
   
   public boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
-    bkci.a().a(newTianShuReportData(paramAdItem, paramString, paramInt));
+    bkgp.a().a(newTianShuReportData(paramAdItem, paramString, paramInt));
     return true;
   }
   
   public boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult)
   {
-    paramContext = new bkcg();
+    paramContext = new bkgn();
     paramContext.jdField_a_of_type_Int = paramInt2;
     paramContext.b = paramInt3;
-    bkci.a().a(Collections.singletonList(paramContext), new ChannelProxyImpl.4(this, paramAsyncResult));
+    bkgp.a().a(Collections.singletonList(paramContext), new ChannelProxyImpl.4(this, paramAsyncResult));
     return true;
   }
   

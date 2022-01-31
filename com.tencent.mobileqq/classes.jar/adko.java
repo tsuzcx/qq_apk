@@ -1,23 +1,20 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adko
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public adko(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public adko(NotificationActivity paramNotificationActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adko
  * JD-Core Version:    0.7.0.1
  */

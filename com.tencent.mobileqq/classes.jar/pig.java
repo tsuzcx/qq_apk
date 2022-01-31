@@ -6,7 +6,7 @@ import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 
 public class pig
-  extends bdvu
+  extends bead
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private String jdField_a_of_type_JavaLangString;
@@ -21,22 +21,22 @@ public class pig
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopMemberApiService);
   }
   
-  public void onCancel(bdvv parambdvv)
+  public void onCancel(beae parambeae)
   {
-    super.onCancel(parambdvv);
-    Object localObject = parambdvv.a().getString("resId");
-    parambdvv = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    super.onCancel(parambeae);
+    Object localObject = parambeae.a().getString("resId");
+    parambeae = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
     {
       ((qja)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
-      if (parambdvv != null)
+      if (parambeae != null)
       {
         localObject = new Bundle();
         ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
         ((Bundle)localObject).putInt("retCode", -1);
         ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
         ((Bundle)localObject).putInt("rate", 0);
-        parambdvv.a(107, (Bundle)localObject);
+        parambeae.a(107, (Bundle)localObject);
         if (QLog.isDebugVersion()) {
           QLog.d("ReadInJoySkinHelper", 4, "onCancel rsp:" + ((Bundle)localObject).toString());
         }
@@ -47,10 +47,10 @@ public class pig
     }
   }
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    super.onDone(parambdvv);
-    Object localObject = parambdvv.a().getString("resId");
+    super.onDone(parambeae);
+    Object localObject = parambeae.a().getString("resId");
     TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
     {
@@ -58,7 +58,7 @@ public class pig
       if (localTroopMemberApiService != null)
       {
         localObject = new Bundle();
-        if (parambdvv.jdField_a_of_type_Int != 0) {
+        if (parambeae.jdField_a_of_type_Int != 0) {
           break label169;
         }
         ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
@@ -79,17 +79,17 @@ public class pig
       return;
       label169:
       ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-      ((Bundle)localObject).putInt("retCode", parambdvv.jdField_a_of_type_Int);
+      ((Bundle)localObject).putInt("retCode", parambeae.jdField_a_of_type_Int);
       ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
       ((Bundle)localObject).putInt("rate", 0);
       localTroopMemberApiService.a(107, (Bundle)localObject);
     }
   }
   
-  public void onProgress(bdvv parambdvv)
+  public void onProgress(beae parambeae)
   {
-    super.onProgress(parambdvv);
-    Object localObject = parambdvv.a().getString("resId");
+    super.onProgress(parambeae);
+    Object localObject = parambeae.a().getString("resId");
     TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (localTroopMemberApiService != null))
     {
@@ -97,7 +97,7 @@ public class pig
       ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
       ((Bundle)localObject).putInt("retCode", 0);
       ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-      int i = (int)(parambdvv.b * 100L / parambdvv.jdField_a_of_type_Long);
+      int i = (int)(parambeae.b * 100L / parambeae.jdField_a_of_type_Long);
       ((Bundle)localObject).putInt("rate", i);
       if (i != 100) {
         localTroopMemberApiService.a(107, (Bundle)localObject);
@@ -105,9 +105,9 @@ public class pig
     }
   }
   
-  public boolean onStart(bdvv parambdvv)
+  public boolean onStart(beae parambeae)
   {
-    return super.onStart(parambdvv);
+    return super.onStart(parambeae);
   }
 }
 

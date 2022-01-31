@@ -1,29 +1,16 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
+import java.util.Observable;
+import java.util.Observer;
 
 public class ayuj
-  extends zdf
+  implements Observer
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
-  private ayug jdField_a_of_type_Ayug = new ayug();
-  private ayui jdField_a_of_type_Ayui = new ayui();
+  public ayuj(MessageSearchEngine.1 param1) {}
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return this.jdField_a_of_type_Ayug.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Ayui.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    this.a.a.a(ayui.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
   }
 }
 

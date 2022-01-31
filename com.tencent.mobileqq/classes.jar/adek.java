@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class adek
+  implements View.OnTouchListener
 {
-  public ResourcePluginInfo a;
-  public String a;
+  public adek(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    return false;
+  }
 }
 
 

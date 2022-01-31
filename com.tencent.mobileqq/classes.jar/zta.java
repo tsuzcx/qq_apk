@@ -1,25 +1,31 @@
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import mqq.app.QQPermissionCallback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class zta
-  implements QQPermissionCallback
+class zta
+  extends MqqHandler
 {
-  public zta(DeviceTipActivity paramDeviceTipActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  zta(zsz paramzsz, Looper paramLooper)
   {
-    bdcd.b(this.a);
-    this.a.finish();
+    super(paramLooper);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    DeviceTipActivity.b(this.a);
+    if (paramMessage.what == 100)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
+      }
+      zsz.a(this.a, paramMessage.arg1);
+      this.a.a((String)paramMessage.obj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zta
  * JD-Core Version:    0.7.0.1
  */

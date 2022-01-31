@@ -1,42 +1,63 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class adhk
   implements CompoundButton.OnCheckedChangeListener
 {
-  public adhk(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adhk(LoginInfoActivity paramLoginInfoActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
-    }
-    if (!NotifyPushSettingActivity.a(this.a).b())
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
-      paramBoolean = bool;
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        paramBoolean = true;
+      paramCompoundButton = this.a.app;
+      if (paramBoolean)
+      {
+        i = 1;
+        azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        if (!paramBoolean) {
+          break label132;
+        }
+        azqs.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行开启！0X800A721");
+        }
+        label94:
+        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.app.p();
       }
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
+    label132:
     do
     {
       return;
-      mti.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        azmj.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      i = 0;
+      break;
+      azqs.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
+      if (!QLog.isColorLevel()) {
+        break label94;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
+      QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行关闭！0X800A722");
+      break label94;
+      if ((LoginInfoActivity.b(this.a) != null) && (paramCompoundButton == LoginInfoActivity.b(this.a).a()))
+      {
+        LoginInfoActivity.a(this.a, paramBoolean);
+        return;
+      }
+    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
+      return;
+    }
   }
 }
 

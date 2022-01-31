@@ -5,10 +5,11 @@ import android.database.ContentObserver;
 import android.graphics.Rect;
 import android.os.Looper;
 import android.text.TextUtils;
-import bihd;
-import bihh;
-import bihi;
+import bilk;
+import bilo;
+import bilp;
 import com.tencent.common.config.provider.QZoneConfigProvider;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
@@ -20,7 +21,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import zds;
+import zih;
 
 public class QzoneConfig
 {
@@ -1798,7 +1799,11 @@ public class QzoneConfig
   public static final String SECONDARY_QFLUTTER_URL = "tissue_qflutter_url";
   public static final String SECONDARY_QMUSIC_HLS_MAX_RETRY_TIMES = "QmusicHlsMaxRetryTimes";
   public static final String SECONDARY_QQCIRCLE_ENABLE = "qqcircle_enable";
+  public static final String SECONDARY_QQCIRCLE_ENABLE_FOLDER_CACHE = "qqcircle_enable_folder_cache";
+  public static final String SECONDARY_QQCIRCLE_ENABLE_FOLDER_CACHE_LIFECYCLE = "qqcircle_enable_folder_cache_life_cycle";
+  public static final String SECONDARY_QQCIRCLE_ENABLE_PLAY_NO_WIFI = "qqcircle_should_auto_play_when_wwan";
   public static final String SECONDARY_QQCIRCLE_ENABLE_REUSE_TAB_FRAGMENT = "qqcircle_enable_reuse_tab_fragment";
+  public static final String SECONDARY_QQCIRCLE_ENABLE_TRANSITION_CLOSE_ANIM = "qqcircle_enable_transition_close_anim";
   public static final String SECONDARY_QQCIRCLE_GENERATE_VIDEO_OVER_TIME_KEY = "qqcircleGenerateOverTime";
   public static final String SECONDARY_QQCIRCLE_MAX_PUSH_COUNT = "qqcircle_max_push_count";
   public static final String SECONDARY_QQCIRCLE_PUSH_NOT_ENOUGH_VALUE = "qqcircle_push_not_enough_value";
@@ -1807,6 +1812,7 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_REPORT_BUFFER_LENGTH = "qqcircle_report_buffer_length";
   public static final String SECONDARY_QQCIRCLE_REPORT_INTERVAL = "qqcircle_report_interval";
   public static final String SECONDARY_QQCIRCLE_SEARCH_PAGE_URL = "qqcircle_search_page_url";
+  public static final String SECONDARY_QQCIRCLE_SHOW_BANNER_INTERVAL = "qqcircle_show_banner_interval";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_MESSAGE_TAB = "qqcircle_show_entrance_on_message_tab";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_PROFILE_CARD = "qqcircle_show_entrance_on_profile_card";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_RECOMMEND_TAB = "qqcircle_show_entrance_on_recommend_tab";
@@ -2437,8 +2443,8 @@ public class QzoneConfig
   private ConcurrentHashMap<String, ConcurrentHashMap<String, String>> configMap = new ConcurrentHashMap();
   private ContentObserver configUpdateObserver;
   private volatile int loadstatus = 0;
-  private ArrayList<WeakReference<bihi>> mCallback = new ArrayList();
-  private bihd mStringHelper;
+  private ArrayList<WeakReference<bilp>> mCallback = new ArrayList();
+  private bilk mStringHelper;
   
   static
   {
@@ -2468,9 +2474,24 @@ public class QzoneConfig
     finally {}
   }
   
+  public static boolean getQQCircleEnableFolderPageCache()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_enable_folder_cache", 1) > 0;
+  }
+  
   public static boolean getQQCircleEnableReuseFragment()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_enable_reuse_tab_fragment", 1) == 1;
+  }
+  
+  public static boolean getQQCircleEnableTransitionCloseAnim()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_enable_transition_close_anim", 1) > 0;
+  }
+  
+  public static int getQQCircleFolderPageCacheLifeCycle()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_enable_folder_cache_life_cycle", 180);
   }
   
   public static int getQQCircleMaxPushCount()
@@ -2544,6 +2565,11 @@ public class QzoneConfig
     return str;
   }
   
+  public static long getQQCircleShowBannerInterval()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_show_banner_interval", 60);
+  }
+  
   public static int getQQCircleShowShareQzone()
   {
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_share_qzone", 0);
@@ -2564,13 +2590,13 @@ public class QzoneConfig
   private void init()
   {
     registObserver();
-    this.mStringHelper = new bihd();
+    this.mStringHelper = new bilk();
   }
   
   private void initConfigUpdateObserver()
   {
     if (this.configUpdateObserver == null) {
-      this.configUpdateObserver = new bihh(this, null);
+      this.configUpdateObserver = new bilo(this, null);
     }
   }
   
@@ -2608,6 +2634,19 @@ public class QzoneConfig
       }
       return bool;
     }
+  }
+  
+  public static boolean isQQCircleAutoPlay()
+  {
+    if (!AppNetConnInfo.isNetSupport()) {}
+    do
+    {
+      return false;
+      if (AppNetConnInfo.isWifiConn()) {
+        return true;
+      }
+    } while ((getInstance().getConfig("qqcircle", "qqcircle_should_auto_play_when_wwan", 1) != 1) || ((AppNetConnInfo.getMobileInfo() != 3) && (AppNetConnInfo.getMobileInfo() != 4)));
+    return true;
   }
   
   public static boolean isQQCircleShowDrawTabEntrance()
@@ -2763,9 +2802,9 @@ public class QzoneConfig
     getInstance().notifyConfigChange();
   }
   
-  public void addListener(bihi parambihi)
+  public void addListener(bilp parambilp)
   {
-    if (parambihi == null) {}
+    if (parambilp == null) {}
     for (;;)
     {
       return;
@@ -2783,19 +2822,19 @@ public class QzoneConfig
             localObject = (WeakReference)localIterator.next();
             if (localObject != null)
             {
-              localObject = (bihi)((WeakReference)localObject).get();
+              localObject = (bilp)((WeakReference)localObject).get();
               if (localObject != null) {
                 break;
               }
               localIterator.remove();
             }
           }
-        } while (!parambihi.equals(localObject));
+        } while (!parambilp.equals(localObject));
       }
       finally {}
       continue;
       label77:
-      this.mCallback.add(new WeakReference(parambihi));
+      this.mCallback.add(new WeakReference(parambilp));
     }
   }
   
@@ -2995,7 +3034,7 @@ public class QzoneConfig
         String str1 = str2;
         if (TextUtils.isEmpty(str2))
         {
-          paramString2 = zds.a(paramString2, paramString1);
+          paramString2 = zih.a(paramString2, paramString1);
           str1 = paramString2;
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -3041,7 +3080,7 @@ public class QzoneConfig
       this.loadstatus = 1;
       try
       {
-        if (zds.a(this.configMap))
+        if (zih.a(this.configMap))
         {
           this.loadstatus = 2;
           return;
@@ -3077,9 +3116,9 @@ public class QzoneConfig
       }
       QLog.e("QzoneConfig", 1, "notifyConfigChange error", localThrowable);
     }
-    bihi localbihi = (bihi)localbihi.get();
-    if (localbihi != null) {
-      localbihi.onConfigChange();
+    bilp localbilp = (bilp)localbilp.get();
+    if (localbilp != null) {
+      localbilp.onConfigChange();
     }
     label74:
     label95:
@@ -3091,8 +3130,8 @@ public class QzoneConfig
         if (i >= j) {
           break label95;
         }
-        localbihi = localThrowable[i];
-        if (localbihi != null) {
+        localbilp = localThrowable[i];
+        if (localbilp != null) {
           break;
         }
         i += 1;
@@ -3143,7 +3182,7 @@ public class QzoneConfig
   }
   
   /* Error */
-  public void removeListener(bihi parambihi)
+  public void removeListener(bilp parambilp)
   {
     // Byte code:
     //   0: aload_0
@@ -3154,30 +3193,30 @@ public class QzoneConfig
     //   7: monitorexit
     //   8: return
     //   9: aload_0
-    //   10: getfield 6834	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
-    //   13: invokevirtual 6993	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   10: getfield 6849	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
+    //   13: invokevirtual 7024	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   16: astore_2
     //   17: aload_2
-    //   18: invokeinterface 6998 1 0
+    //   18: invokeinterface 7029 1 0
     //   23: ifeq -17 -> 6
     //   26: aload_2
-    //   27: invokeinterface 7002 1 0
-    //   32: checkcast 7004	java/lang/ref/WeakReference
+    //   27: invokeinterface 7033 1 0
+    //   32: checkcast 7035	java/lang/ref/WeakReference
     //   35: astore_3
     //   36: aload_3
     //   37: ifnull -20 -> 17
     //   40: aload_3
-    //   41: invokevirtual 7007	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 7009	bihi
+    //   41: invokevirtual 7038	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   44: checkcast 7040	bilp
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull +11 -> 60
     //   52: aload_1
     //   53: aload_3
-    //   54: invokevirtual 7016	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   54: invokevirtual 7047	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   57: ifeq -40 -> 17
     //   60: aload_2
-    //   61: invokeinterface 7012 1 0
+    //   61: invokeinterface 7043 1 0
     //   66: goto -49 -> 17
     //   69: astore_1
     //   70: aload_0
@@ -3187,7 +3226,7 @@ public class QzoneConfig
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	74	0	this	QzoneConfig
-    //   0	74	1	parambihi	bihi
+    //   0	74	1	parambilp	bilp
     //   16	45	2	localIterator	Iterator
     //   35	19	3	localObject	Object
     // Exception table:

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class DeskTopAppEntity
-  extends awbv
+  extends awge
 {
   public static final String TAG = "DeskTopAppInfoEntity";
   public String appId;
   public byte[] appInfo;
   public String name;
-  @awdj
+  @awhs
   public String uniqueId;
   public int verType;
   

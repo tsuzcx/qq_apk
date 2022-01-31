@@ -1,26 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class wny
-  implements uni<woa, wob>
+  implements View.OnClickListener
 {
-  private WeakReference<wnx> a;
+  public wny(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public wny(wnx paramwnx)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramwnx);
-  }
-  
-  public void a(@NonNull woa paramwoa, @Nullable wob paramwob, @NonNull ErrorMessage paramErrorMessage)
-  {
-    wsv.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    wnx localwnx = (wnx)this.a.get();
-    if (localwnx == null) {
-      return;
-    }
-    localwnx.a(paramwoa, paramwob, paramErrorMessage);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    wxj.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

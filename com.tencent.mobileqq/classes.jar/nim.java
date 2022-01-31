@@ -4,7 +4,7 @@ import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
 
 class nim
-  implements bhqp
+  implements bhuw
 {
   nim(nik paramnik) {}
   

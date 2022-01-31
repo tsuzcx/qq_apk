@@ -2,24 +2,24 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bjei;
-import bjzq;
+import bjip;
+import bkdx;
 import java.lang.ref.WeakReference;
 
 public class MsgPhotoView$WeakVipResourcesListener$1
   implements Runnable
 {
-  public MsgPhotoView$WeakVipResourcesListener$1(bjei parambjei, Drawable paramDrawable) {}
+  public MsgPhotoView$WeakVipResourcesListener$1(bjip parambjip, Drawable paramDrawable) {}
   
   public void run()
   {
-    ImageView localImageView = (ImageView)bjei.a(this.this$0).get();
+    ImageView localImageView = (ImageView)bjip.a(this.this$0).get();
     if ((localImageView != null) && (this.a != null))
     {
       localImageView.setImageDrawable(this.a);
       localImageView.setVisibility(0);
-      if (!bjei.a(this.this$0)) {
-        if (bjei.a(this.this$0) != 2) {
+      if (!bjip.a(this.this$0)) {
+        if (bjip.a(this.this$0) != 2) {
           break label68;
         }
       }
@@ -27,7 +27,7 @@ public class MsgPhotoView$WeakVipResourcesListener$1
     label68:
     for (int i = 11;; i = 10)
     {
-      bjzq.a(i, 1);
+      bkdx.a(i, 1);
       return;
     }
   }

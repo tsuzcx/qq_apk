@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ahla;
-import aljq;
+import ahpp;
+import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqwa;
-import ayvc;
-import azyl;
-import bdcs;
-import behr;
+import araj;
+import ayzl;
+import bacu;
+import bdhb;
+import bema;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -54,32 +54,32 @@ public class ActiveAccount
         }
       }
     }
-    azyl.a((QQAppInterface)localObject);
+    bacu.a((QQAppInterface)localObject);
     ((QQAppInterface)localObject).b();
-    aqwa.a().b();
+    araj.a().b();
     UnifiedMonitor.a().a();
     OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
-    if (ahla.a(((QQAppInterface)localObject).getCurrentAccountUin()))
+    if (ahpp.a(((QQAppInterface)localObject).getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
       }
       ((QQAppInterface)localObject).a().e("last_group_seq", 0L);
       ((QQAppInterface)localObject).a().e("last_group_suspicious_seq", 0L);
-      ahla.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
+      ahpp.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
       ((QQAppInterface)localObject).a().e("last_friend_seq_47", 0L);
     }
     if (nav.a != null) {
       nav.a().a();
     }
-    if ((((QQAppInterface)localObject).a(107) instanceof behr)) {
-      ((behr)((QQAppInterface)localObject).a(107)).a();
+    if ((((QQAppInterface)localObject).a(107) instanceof bema)) {
+      ((bema)((QQAppInterface)localObject).a(107)).a();
     }
-    localObject = new File(aljq.aX);
-    if (!bdcs.a(aljq.aX)) {
+    localObject = new File(alof.aX);
+    if (!bdhb.a(alof.aX)) {
       ((File)localObject).mkdirs();
     }
-    CleanCache.a(aljq.aX);
+    CleanCache.a(alof.aX);
     QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", -1L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
     return 7;
   }

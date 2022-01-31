@@ -1,15 +1,10 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
-
-class uub
-  implements Comparator<vhg>
+public abstract class uub
 {
-  uub(uua paramuua) {}
+  public abstract String a();
   
-  public int a(vhg paramvhg1, vhg paramvhg2)
-  {
-    return uvv.a(paramvhg1.a.mCreateTime, paramvhg2.a.mCreateTime);
-  }
+  public abstract uuc a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
 }
 
 

@@ -12,7 +12,7 @@ import java.util.List;
 import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class lzw
-  extends amab
+  extends ameq
 {
   public lzw(QQServiceForAV paramQQServiceForAV) {}
   
@@ -56,7 +56,7 @@ public class lzw
       if (paramString == null) {
         paramList = (QQAppInterface)this.a.a();
       }
-      paramList.removeObserver(this.a.jdField_a_of_type_Amab);
+      paramList.removeObserver(this.a.jdField_a_of_type_Ameq);
     }
   }
   
@@ -73,7 +73,7 @@ public class lzw
       paramString4.putExtra("grayFlag", paramInt2);
       paramString3.getApp().sendBroadcast(paramString4);
     }
-    paramString3.removeObserver(this.a.jdField_a_of_type_Amab);
+    paramString3.removeObserver(this.a.jdField_a_of_type_Ameq);
   }
   
   protected void a(boolean paramBoolean1, String paramString, int paramInt1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2, int paramInt3)
@@ -95,7 +95,7 @@ public class lzw
       localIntent.putExtra("startSpeakInterval", paramInt3);
       localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
+    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
   }
   
   protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)

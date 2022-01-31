@@ -1,89 +1,30 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.view.animation.Interpolator;
 
-public class aqkj
-  implements arqx
+class aqkj
+  implements Interpolator
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  aqkj(aqke paramaqke) {}
   
-  public aqkj(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public float getInterpolation(float paramFloat)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-    if (localWeiYunFileInfo == null) {}
-    do
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
     {
-      return;
-      if (!aqxj.a(localWeiYunFileInfo)) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, localWeiYunFileInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramInt1 != paramInt3) {
-      return;
-    }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
-    if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
-    }
-    for (;;)
-    {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
-      {
-        QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
-    }
-    paramInt2 = this.b;
-    QfileCloudFileTabView localQfileCloudFileTabView;
-    WeiYunFileInfo localWeiYunFileInfo;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 

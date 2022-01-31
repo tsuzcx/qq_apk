@@ -6,9 +6,9 @@ import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
-import bimg;
-import bimp;
-import bjml;
+import biqn;
+import biqw;
+import bjqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,7 +20,7 @@ public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class<? extends Service> clazz;
-  protected ServiceConnection conn = new bjml(this);
+  protected ServiceConnection conn = new bjqs(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
@@ -161,14 +161,14 @@ public class RemoteServiceProxy
     {
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
-      bimp localbimp = new bimp(0);
-      localbimp.b = QzonePluginProxyActivity.a();
-      localbimp.d = "QQ空间";
-      localbimp.jdField_a_of_type_JavaLangString = this.mUin;
-      localbimp.e = this.serviceName;
-      localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbimp.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
-      bimg.c(BaseApplicationImpl.getApplication(), localbimp);
+      biqw localbiqw = new biqw(0);
+      localbiqw.b = QzonePluginProxyActivity.a();
+      localbiqw.d = "QQ空间";
+      localbiqw.jdField_a_of_type_JavaLangString = this.mUin;
+      localbiqw.e = this.serviceName;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbiqw.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      biqn.c(BaseApplicationImpl.getApplication(), localbiqw);
       if (QLog.isColorLevel()) {
         QLog.d("RemoteServiceProxy", 2, " start service finish");
       }

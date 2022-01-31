@@ -1,88 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 public class bnli
+  implements View.OnClickListener
 {
-  public static long a;
-  public static boolean a;
+  public bnli(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public static bnlo a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    bnlo localbnlo = new bnlo();
-    localbnlo.jdField_a_of_type_Int = paramInt1;
-    localbnlo.jdField_b_of_type_Int = paramInt2;
-    return localbnlo;
-  }
-  
-  public static bnlo a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    if (paramMessageForShortVideo.videoFileStatus == 5002)
+    bliu.a().A();
+    Object localObject = bljc.a().a("camera_ad_type", "", 4);
+    paramView = bljc.a().a("camera_ad_schema", "", 4);
+    if ("h5".equals(localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
+      if (!bdin.g(null))
+      {
+        QQToast.a(this.a.getContext(), 1, this.a.getContext().getString(2131698038), 1).a();
+        return;
       }
-      return null;
-    }
-    paramQQAppInterface = a(2, paramMessageForShortVideo.busiType);
-    paramQQAppInterface.a(paramMessageForShortVideo);
-    return paramQQAppInterface;
-  }
-  
-  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    case 4: 
-    default: 
-      return null;
-    }
-    return new bnkk(paramQQAppInterface);
-  }
-  
-  public static void a(bnlo parambnlo, QQAppInterface paramQQAppInterface)
-  {
-    if (parambnlo == null)
-    {
-      awen.b("ShortVideoBusiManager", "launch", "error,req == null");
+      localObject = new Intent(this.a.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("loc_play_show_material_id", paramView);
+      if (AEPituCameraCaptureButtonLayout.a(this.a).hasExtra("ORIGIN_VIDEO_STORY_FROM_TYPE")) {
+        ((Intent)localObject).putExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", AEPituCameraCaptureButtonLayout.a(this.a).getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", blat.a.a()));
+      }
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("VIDEO_STORY_FROM_TYPE", blat.C.a());
+        if (!(this.a.getContext() instanceof Activity)) {
+          break;
+        }
+        ((Activity)this.a.getContext()).startActivityForResult((Intent)localObject, 1025);
+        return;
+        ((Intent)localObject).putExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", AEPituCameraCaptureButtonLayout.a(this.a).getIntExtra("VIDEO_STORY_FROM_TYPE", blat.a.a()));
+      }
+      this.a.getContext().startActivity((Intent)localObject);
       return;
     }
-    BaseShortVideoOprerator localBaseShortVideoOprerator = a(parambnlo.jdField_b_of_type_Int, paramQQAppInterface);
-    if (localBaseShortVideoOprerator == null)
-    {
-      awen.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + parambnlo.jdField_b_of_type_Int);
-      return;
-    }
-    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localBaseShortVideoOprerator.jdField_a_of_type_Bnlo = parambnlo;
-    localBaseShortVideoOprerator.jdField_a_of_type_JavaLangString = parambnlo.jdField_a_of_type_JavaLangString;
-    localBaseShortVideoOprerator.jdField_b_of_type_JavaLangString = parambnlo.jdField_b_of_type_JavaLangString;
-    localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnlw);
-    awen.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.c(parambnlo.jdField_a_of_type_Int) + ", reqBusiType" + parambnlo.jdField_b_of_type_Int + ", uuid:" + parambnlo.jdField_a_of_type_JavaLangString);
-    switch (parambnlo.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnls);
-      return;
-    case 2: 
-      localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnlj);
-      return;
-    case 1: 
-      localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnls);
-      return;
-    case 3: 
-      localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnlk);
-      return;
-    case 4: 
-      localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_Bnlk);
-      return;
-    }
-    localBaseShortVideoOprerator.a(parambnlo.jdField_a_of_type_JavaUtilArrayList);
+    this.a.a.a(paramView);
   }
 }
 

@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.dating.DatingFilters;
 
-public class aphx
-  extends Handler
+public final class aphx
+  implements Parcelable.Creator<DatingFilters>
 {
-  public aphx(Client paramClient, Looper paramLooper)
+  public DatingFilters a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new DatingFilters(paramParcel, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public DatingFilters[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+    return new DatingFilters[paramInt];
   }
 }
 

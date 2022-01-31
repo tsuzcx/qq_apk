@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-public final class aweg
-  implements Parcelable.Creator<CompressInfo>
+public class aweg
+  implements View.OnClickListener
 {
-  public CompressInfo a(Parcel paramParcel)
-  {
-    return new CompressInfo(paramParcel, null);
-  }
+  public aweg(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public CompressInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new CompressInfo[paramInt];
+    awet.a(AutoReplyEditActivity.a(this.a), true);
+    paramView = new Intent();
+    paramView.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
+    if (AutoReplyEditActivity.a(this.a) != null) {
+      paramView.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
+    }
+    this.a.getActivity().setResult(325, paramView);
+    this.a.getActivity().finish();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahbd;
+import ahfs;
 
 public class AddContactViewPagerTroopFragment$4$1
   implements Runnable
 {
-  public AddContactViewPagerTroopFragment$4$1(ahbd paramahbd) {}
+  public AddContactViewPagerTroopFragment$4$1(ahfs paramahfs) {}
   
   public void run()
   {

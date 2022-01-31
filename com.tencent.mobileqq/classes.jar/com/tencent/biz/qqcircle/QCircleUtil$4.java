@@ -2,7 +2,7 @@ package com.tencent.biz.qqcircle;
 
 import android.content.Context;
 import android.content.Intent;
-import bkjr;
+import bkny;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.activity.photo.PeakService;
 import tra;
@@ -14,7 +14,7 @@ public final class QCircleUtil$4
   
   public void run()
   {
-    if (bkjr.a(this.a)) {}
+    if (bkny.a(this.a)) {}
     do
     {
       return;

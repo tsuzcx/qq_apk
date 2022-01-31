@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import allz;
+import alqo;
 
 public class DataLineHandler$14
   implements Runnable
 {
-  public DataLineHandler$14(allz paramallz, long paramLong, int paramInt1, int paramInt2) {}
+  public DataLineHandler$14(alqo paramalqo, long paramLong, int paramInt1, int paramInt2) {}
   
   public void run()
   {

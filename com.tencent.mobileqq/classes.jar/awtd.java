@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.widget.RoundedImageView;
 
-public abstract interface awtd
+public class awtd
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public RoundedImageView a;
+  public boolean a;
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public awtd(awtb paramawtb, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131375862));
+  }
 }
 
 

@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 
-public class bngt
-  implements ValueAnimator.AnimatorUpdateListener
+class bngt
+  implements upk
 {
-  public bngt(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bngt(bngs parambngs, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    if (paramInt == 0)
+    {
+      bngs.a(this.jdField_a_of_type_Bngs, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      return;
+    }
+    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

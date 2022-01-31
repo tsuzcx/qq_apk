@@ -1,25 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class adqr
-  implements Animation.AnimationListener
+public class adqr
+  implements Comparator<ChatMessage>
 {
-  adqr(adqq paramadqq) {}
+  public adqr(QQLSActivity paramQQLSActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.a.a.b.setVisibility(8);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.a.c();
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

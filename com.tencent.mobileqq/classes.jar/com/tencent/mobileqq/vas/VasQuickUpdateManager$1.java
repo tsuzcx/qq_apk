@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vas;
 
-import bdpx;
-import bdqc;
+import bdug;
+import bdul;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 class VasQuickUpdateManager$1
-  extends bdqc
+  extends bdul
 {
   VasQuickUpdateManager$1(VasQuickUpdateManager paramVasQuickUpdateManager) {}
   
@@ -48,7 +48,7 @@ class VasQuickUpdateManager$1
           QLog.d("VasQuickUpdateManager", 2, "onQuickUpdateGetUrl data = " + localJSONObject1.toString());
         }
         if (this.this$0.mEngine != null) {
-          this.this$0.mEngine.onPbMsgRecv(0, bdpx.g, localJSONObject1.toString());
+          this.this$0.mEngine.onPbMsgRecv(0, bdug.g, localJSONObject1.toString());
         }
         return;
       }
@@ -59,14 +59,14 @@ class VasQuickUpdateManager$1
           QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateGetUrl error: ", localException);
         } while (this.this$0.mEngine == null);
         str = "{\"cookie\":" + paramObject.cookie + "}";
-        this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdpx.g, str);
+        this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdug.g, str);
         return;
       }
       paramObject = (VasQuickUpdateManager.QuickUpdateRsp)paramObject;
       QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateGetUrl result = " + paramObject.ret + " cookie = " + paramObject.cookie);
     } while (this.this$0.mEngine == null);
     String str = "{\"cookie\":" + paramObject.cookie + "}";
-    this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdpx.g, str);
+    this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdug.g, str);
   }
   
   public void onQuickUpdateSync(boolean paramBoolean, Object paramObject)
@@ -137,7 +137,7 @@ class VasQuickUpdateManager$1
           QLog.d("VasQuickUpdateManager", 2, "onQuickUpdateSync data = " + localJSONObject1.toString());
         }
         if (this.this$0.mEngine != null) {
-          this.this$0.mEngine.onPbMsgRecv(0, bdpx.e, localJSONObject1.toString());
+          this.this$0.mEngine.onPbMsgRecv(0, bdug.e, localJSONObject1.toString());
         }
         return;
       }
@@ -148,14 +148,14 @@ class VasQuickUpdateManager$1
           QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateSync error: ", localException);
         } while (this.this$0.mEngine == null);
         paramObject = "{\"cookie\":" + paramObject.cookie + "}";
-        this.this$0.mEngine.onPbMsgRecv(-1, bdpx.e, paramObject);
+        this.this$0.mEngine.onPbMsgRecv(-1, bdug.e, paramObject);
         return;
       }
       paramObject = (VasQuickUpdateManager.QuickUpdateRsp)paramObject;
       QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateSync result = " + paramObject.ret + " cookie = " + paramObject.cookie);
     } while (this.this$0.mEngine == null);
     String str = "{\"cookie\":" + paramObject.cookie + "}";
-    this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdpx.e, str);
+    this.this$0.mEngine.onPbMsgRecv((int)paramObject.ret, bdug.e, str);
   }
 }
 

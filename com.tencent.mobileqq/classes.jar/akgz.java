@@ -1,141 +1,66 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager.TopicInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.List;
 
 public class akgz
   extends BaseAdapter
 {
-  private akha jdField_a_of_type_Akha;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<SignatureManager.TopicInfo> jdField_a_of_type_JavaUtilList;
-  private List<SignatureManager.TopicInfo> b;
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new akha(this);
+  private asff jdField_a_of_type_Asff;
+  protected QQAppInterface a;
+  protected List<Object> a;
   
-  public akgz(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, akha paramakha)
+  public akgz(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, asff paramasff)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Akha = paramakha;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramFragmentActivity.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidAppActivity = paramFragmentActivity;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramFragmentActivity.getResources().getDrawable(2130844927);
+    this.jdField_a_of_type_Asff = paramasff;
   }
   
-  private float a(int paramInt)
+  public void a(List<AppletItem> paramList)
   {
-    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
-  }
-  
-  private String a(SignatureManager.TopicInfo paramTopicInfo)
-  {
-    if ((paramTopicInfo == null) || ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum <= 0))) {
-      return null;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramTopicInfo.friendNum > 0)
-    {
-      if (paramTopicInfo.friendNum >= 10000)
-      {
-        localStringBuilder.append(a(paramTopicInfo.friendNum));
-        localStringBuilder.append("万好友");
-      }
-    }
-    else
-    {
-      if ((paramTopicInfo.friendNum > 0) && (paramTopicInfo.totalNum > 0)) {
-        localStringBuilder.append("、");
-      }
-      if (paramTopicInfo.totalNum > 0)
-      {
-        if (paramTopicInfo.totalNum < 10000) {
-          break label168;
-        }
-        localStringBuilder.append(a(paramTopicInfo.totalNum));
-        localStringBuilder.append("万人添加该话题");
-      }
-    }
-    for (;;)
-    {
-      if ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum > 0)) {
-        localStringBuilder.append("添加该话题");
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramTopicInfo.friendNum);
-      localStringBuilder.append("个好友");
-      break;
-      label168:
-      localStringBuilder.append(paramTopicInfo.totalNum);
-      localStringBuilder.append("人添加该话题");
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) && (paramString.length() <= 2)) {}
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.charAt(0) == '#') {
-        str = paramString.substring(1);
-      }
-      paramString = str;
-    } while (str.charAt(str.length() - 1) != '#');
-    return str.substring(0, str.length() - 1);
-  }
-  
-  public SignatureManager.TopicInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return (SignatureManager.TopicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<SignatureManager.TopicInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(List<SignatureManager.TopicInfo> paramList, boolean paramBoolean)
-  {
-    if (paramList != this.jdField_a_of_type_JavaUtilList) {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramList);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if ((paramBoolean) && (paramList != this.b)) {
-        this.b = ((ArrayList)paramList);
-      }
-      return bool;
-    }
-  }
-  
-  public List<SignatureManager.TopicInfo> b()
-  {
-    return this.b;
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
     return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
   }
   
   public long getItemId(int paramInt)
@@ -145,44 +70,55 @@ public class akgz
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    SignatureManager.TopicInfo localTopicInfo;
-    String str;
+    AppletItem localAppletItem = (AppletItem)getItem(paramInt);
+    if (localAppletItem == null) {
+      return paramView;
+    }
+    Object localObject;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561836, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup = new akhb();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368682));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378996));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378997));
-      paramView.setTag(paramViewGroup);
-      localTopicInfo = a(paramInt);
-      if (localTopicInfo != null)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTopicInfo.topicStr);
-        paramViewGroup.jdField_a_of_type_Int = localTopicInfo.topicId;
-        str = a(localTopicInfo);
-        if (!TextUtils.isEmpty(str)) {
-          break label212;
-        }
-        paramViewGroup.b.setVisibility(8);
+      paramView = new akhb();
+      localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561270, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131362722));
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject).findViewById(2131362721));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131362723));
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131362724));
+      ((View)localObject).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839254);
+      localObject = paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (localAppletItem.b() != 1) {
+        break label301;
       }
     }
-    for (;;)
+    label301:
+    for (boolean bool = true;; bool = false)
     {
-      paramView.setContentDescription(alpo.a(2131715408) + a(localTopicInfo.topicStr) + alpo.a(2131715407));
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label232;
+      ((Switch)localObject).setChecked(bool);
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsListAdapter", 2, localAppletItem.toString());
       }
-      paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839208));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localAppletItem.a());
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem = localAppletItem;
+      if (TextUtils.isEmpty(localAppletItem.b())) {
+        break label307;
+      }
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = aepi.a(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getMeasuredWidth(), this.jdField_a_of_type_AndroidAppActivity.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject = URLDrawable.getDrawable(localAppletItem.b(), (URLDrawable.URLDrawableOptions)localObject);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
       return paramView;
       paramViewGroup = (akhb)paramView.getTag();
       break;
-      label212:
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(str);
     }
-    label232:
-    paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839207));
+    label307:
+    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     return paramView;
   }
 }

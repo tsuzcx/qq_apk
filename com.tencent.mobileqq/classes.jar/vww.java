@@ -1,26 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class vww
-  implements DialogInterface.OnClickListener
+public class vww
+  implements vym
 {
-  vww(vwo paramvwo, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
+  public vww(TextureVideoView paramTextureVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (this.a.a != null) {
+      this.a.a.a_(paramvyi, paramInt1, paramInt2);
     }
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    ukd.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    wta.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    return true;
   }
 }
 

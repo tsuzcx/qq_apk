@@ -1,31 +1,11 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
 
 public class vhy
-  extends QQUIEventReceiver<vhx, vhs>
+  extends uro
 {
-  public vhy(@NonNull vhx paramvhx)
+  public vhy(qqstory_service.RspReportEvil paramRspReportEvil)
   {
-    super(paramvhx);
-  }
-  
-  public void a(@NonNull vhx paramvhx, @NonNull vhs paramvhs)
-  {
-    if (TextUtils.equals("SendVideoToFriendHelper", paramvhs.jdField_a_of_type_JavaLangString)) {}
-    switch (paramvhs.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    wsv.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramvhs.b);
-    vhx.a(paramvhx, false);
-    paramvhx.a(paramvhx.jdField_a_of_type_AndroidOsBundle, paramvhx.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramvhx.jdField_a_of_type_JavaLangString, paramvhs.b);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vhs.class;
+    super(paramRspReportEvil.result);
   }
 }
 

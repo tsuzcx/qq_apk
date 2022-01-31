@@ -1,46 +1,59 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.WebEditText;
-import org.json.JSONException;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
-class bhct
-  implements TextView.OnEditorActionListener
+public class bhct
+  extends bhdw
 {
-  bhct(bhcq parambhcq, WebEditText paramWebEditText, bgid parambgid) {}
+  private byte[] a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public bhct(byte[] paramArrayOfByte)
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
+    this.a = paramArrayOfByte;
+  }
+  
+  protected String a()
+  {
+    return "mini_app_report_transfer";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    for (;;)
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    try
     {
-      return bool;
-      try
-      {
-        paramTextView = new JSONObject();
-        paramTextView.put("inputId", bhcq.a(this.jdField_a_of_type_Bhcq));
-        paramTextView.put("value", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.getText().toString());
-        this.jdField_a_of_type_Bgid.a.a("onKeyboardConfirm", paramTextView.toString(), 0);
-        if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.c()) {
-          continue;
-        }
-        this.jdField_a_of_type_Bhcq.a(true);
-        return true;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new APP_REPORT_TRANSFER.StDataReportRsp();
+      paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      int i = paramArrayOfByte.ret.get();
+      if (i == 0) {
+        return new JSONObject();
       }
-      catch (JSONException paramTextView)
-      {
-        for (;;)
-        {
-          paramTextView.printStackTrace();
-        }
-      }
+      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
+      return null;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a;
+  }
+  
+  protected String b()
+  {
+    return "DataReport";
   }
 }
 

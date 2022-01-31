@@ -1,20 +1,28 @@
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class umb
-  implements ulq
+class umb
+  implements ThreadExcutor.IThreadListener
 {
-  public umb(StoryVideoUploadTask paramStoryVideoUploadTask, utg paramutg, ulm paramulm) {}
+  umb(uma paramuma, Runnable paramRunnable) {}
   
-  public void a(ulp paramulp)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    paramulp = this.jdField_a_of_type_Utg;
-    if (this.jdField_a_of_type_Ulm.a == 0) {}
-    for (int i = 2;; i = 3)
-    {
-      paramulp.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_Utg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ulm.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Utg.c = this.jdField_a_of_type_Ulm.c;
-      return;
+    uma.a(this.jdField_a_of_type_Uma).decrementAndGet();
+    wxe.b(uma.a(this.jdField_a_of_type_Uma), "threshold after running current task is " + uma.a(this.jdField_a_of_type_Uma).get());
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      wxe.b(uma.a(this.jdField_a_of_type_Uma), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    }
+  }
+  
+  public void onPreRun()
+  {
+    uma.a(this.jdField_a_of_type_Uma).incrementAndGet();
+    wxe.a(uma.a(this.jdField_a_of_type_Uma), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      wxe.b(uma.a(this.jdField_a_of_type_Uma), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
   }
 }

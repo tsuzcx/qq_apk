@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
 
 class atwe
-  implements Comparator<TroopAssistantData>
+  implements View.OnClickListener
 {
-  atwe(atwd paramatwd) {}
+  atwe(atwa paramatwa, Activity paramActivity) {}
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public void onClick(View paramView)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Atwa.a.a, atwa.a(this.jdField_a_of_type_Atwa));
+    this.jdField_a_of_type_Atwa.g();
+    azqs.b(this.jdField_a_of_type_Atwa.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
   }
 }
 

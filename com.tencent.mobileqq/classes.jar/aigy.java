@@ -1,89 +1,13 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class aigy
-  extends awdn
+class aigy
+  implements bhvm
 {
-  public aigy(BindNumberActivity paramBindNumberActivity) {}
+  aigy(aigx paramaigx, View paramView) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      String str = bdbt.a();
-      if (!TextUtils.isEmpty(str)) {
-        azmj.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      bdbt.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.b(2131719221);
-        }
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.b(2131719221);
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

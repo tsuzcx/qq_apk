@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -17,12 +17,12 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azmz;
-import bdcb;
-import bdee;
-import bhvq;
-import bhvt;
-import bjxj;
+import azri;
+import bdgk;
+import bdin;
+import bhzx;
+import biaa;
+import bkbq;
 import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailTopGestureLayout;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.LeftRedDotRadioButton;
@@ -104,63 +104,63 @@ public class ReadInJoyFeedsActivity
     ArrayList localArrayList;
     if (((KandianMergeManager)localObject2).d())
     {
-      localObject1 = getString(2131721116);
-      i = 2130842120;
-      localObject3 = getString(2131695207);
+      localObject1 = getString(2131721128);
+      i = 2130842133;
+      localObject3 = getString(2131695209);
       localArrayList = new ArrayList();
-      bhvt localbhvt = new bhvt();
-      localbhvt.jdField_a_of_type_Int = 0;
-      localbhvt.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localbhvt.c = localbhvt.jdField_a_of_type_JavaLangString;
-      localbhvt.jdField_b_of_type_Int = i;
-      localArrayList.add(localbhvt);
-      localObject1 = new bhvt();
-      ((bhvt)localObject1).jdField_a_of_type_Int = 1;
-      ((bhvt)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-      ((bhvt)localObject1).c = ((bhvt)localObject1).jdField_a_of_type_JavaLangString;
-      ((bhvt)localObject1).jdField_b_of_type_Int = 2130842118;
+      biaa localbiaa = new biaa();
+      localbiaa.jdField_a_of_type_Int = 0;
+      localbiaa.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localbiaa.c = localbiaa.jdField_a_of_type_JavaLangString;
+      localbiaa.jdField_b_of_type_Int = i;
+      localArrayList.add(localbiaa);
+      localObject1 = new biaa();
+      ((biaa)localObject1).jdField_a_of_type_Int = 1;
+      ((biaa)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+      ((biaa)localObject1).c = ((biaa)localObject1).jdField_a_of_type_JavaLangString;
+      ((biaa)localObject1).jdField_b_of_type_Int = 2130842131;
       localArrayList.add(localObject1);
       if (paramBoolean)
       {
-        localObject3 = new bhvt();
-        ((bhvt)localObject3).jdField_a_of_type_Int = 2;
-        if (!bjxj.d(getAppRuntime())) {
+        localObject3 = new biaa();
+        ((biaa)localObject3).jdField_a_of_type_Int = 2;
+        if (!bkbq.d(getAppRuntime())) {
           break label364;
         }
       }
     }
     label364:
-    for (Object localObject1 = alpo.a(2131713176);; localObject1 = alpo.a(2131713391))
+    for (Object localObject1 = alud.a(2131713188);; localObject1 = alud.a(2131713403))
     {
-      ((bhvt)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-      ((bhvt)localObject3).jdField_b_of_type_Int = 2130848753;
-      ((bhvt)localObject3).c = ((bhvt)localObject3).jdField_a_of_type_JavaLangString;
+      ((biaa)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((biaa)localObject3).jdField_b_of_type_Int = 2130848826;
+      ((biaa)localObject3).c = ((biaa)localObject3).jdField_a_of_type_JavaLangString;
       localArrayList.add(localObject3);
-      localObject1 = new bhvt();
-      ((bhvt)localObject1).jdField_a_of_type_Int = 7;
-      ((bhvt)localObject1).jdField_a_of_type_JavaLangString = alpo.a(2131713381);
-      ((bhvt)localObject1).jdField_b_of_type_Int = 2130842122;
+      localObject1 = new biaa();
+      ((biaa)localObject1).jdField_a_of_type_Int = 7;
+      ((biaa)localObject1).jdField_a_of_type_JavaLangString = alud.a(2131713393);
+      ((biaa)localObject1).jdField_b_of_type_Int = 2130842135;
       localArrayList.add(localObject1);
-      localObject1 = new bhvt();
-      ((bhvt)localObject1).jdField_a_of_type_Int = 8;
-      ((bhvt)localObject1).jdField_a_of_type_JavaLangString = alpo.a(2131713273);
-      ((bhvt)localObject1).jdField_b_of_type_Int = 2130842119;
+      localObject1 = new biaa();
+      ((biaa)localObject1).jdField_a_of_type_Int = 8;
+      ((biaa)localObject1).jdField_a_of_type_JavaLangString = alud.a(2131713285);
+      ((biaa)localObject1).jdField_b_of_type_Int = 2130842132;
       localArrayList.add(localObject1);
       if (paramBoolean) {}
-      localObject1 = bhvq.a(this, localArrayList, new nzb(this, (KandianMergeManager)localObject2));
+      localObject1 = bhzx.a(this, localArrayList, new nzb(this, (KandianMergeManager)localObject2));
       localObject2 = this.jdField_b_of_type_AndroidViewViewGroup;
-      ((bhvq)localObject1).showAsDropDown((View)localObject2, ((View)localObject2).getWidth() - getResources().getDimensionPixelSize(2131298647) - getResources().getDimensionPixelSize(2131298643), getResources().getDimensionPixelSize(2131297978));
+      ((bhzx)localObject1).showAsDropDown((View)localObject2, ((View)localObject2).getWidth() - getResources().getDimensionPixelSize(2131298647) - getResources().getDimensionPixelSize(2131298643), getResources().getDimensionPixelSize(2131297978));
       return;
-      localObject1 = getString(2131700034);
-      i = 2130842121;
+      localObject1 = getString(2131700046);
+      i = 2130842134;
       break;
     }
   }
   
   private void b()
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375814));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375298));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375865));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375349));
     int i = getIntent().getIntExtra("readinjoy_show_tab", -1);
     int j = getIntent().getIntExtra("tab_tab_index", 0);
     if (i >= 0)
@@ -174,8 +174,8 @@ public class ReadInJoyFeedsActivity
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840101);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131713427));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840102);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131713439));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_c_of_type_Int != 5)) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690623));
@@ -322,7 +322,7 @@ public class ReadInJoyFeedsActivity
     try
     {
       i = new JSONObject(swy.h).optInt("releaseServiceMinMem", 80);
-      long l = bdcb.e();
+      long l = bdgk.e();
       if (l >>> 20 <= i)
       {
         if (QLog.isColorLevel()) {
@@ -334,15 +334,15 @@ public class ReadInJoyFeedsActivity
       {
         localObject = new HashMap();
         ((HashMap)localObject).put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        ((HashMap)localObject).put("param_totalMem", String.valueOf(bdcb.d()));
+        ((HashMap)localObject).put("param_totalMem", String.valueOf(bdgk.d()));
         ((HashMap)localObject).put("param_availableMem", String.valueOf(l));
-        ((HashMap)localObject).put("param_cpuNum", String.valueOf(bdcb.b()));
-        ((HashMap)localObject).put("param_cpuFreq", String.valueOf(bdcb.a()));
+        ((HashMap)localObject).put("param_cpuNum", String.valueOf(bdgk.b()));
+        ((HashMap)localObject).put("param_cpuFreq", String.valueOf(bdgk.a()));
         ((HashMap)localObject).put("param_releaseType", String.valueOf(0));
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyBaseActivity", 2, "releaseWebCoreServiceReport:" + ((HashMap)localObject).toString());
         }
-        azmz.a(this).a(this.app.getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, (HashMap)localObject, "");
+        azri.a(this).a(this.app.getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, (HashMap)localObject, "");
       }
       catch (Exception localException1)
       {
@@ -372,8 +372,8 @@ public class ReadInJoyFeedsActivity
   {
     rlb.a().a(this);
     super.doOnCreate(paramBundle);
-    bjxj.c(this.app);
-    bjxj.d(this.app);
+    bkbq.c(this.app);
+    bkbq.d(this.app);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     paramBundle = getIntent();
     Bundle localBundle = paramBundle.getExtras();
@@ -387,12 +387,12 @@ public class ReadInJoyFeedsActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    int i = bdee.a(getApplication());
+    int i = bdin.a(getApplication());
     if ((i == 4) || (i == 1)) {
       ThreadManager.post(new ReadInJoyFeedsActivity.1(this), 5, null, true);
     }
     ThreadManager.executeOnSubThread(new ReadInJoyFeedsActivity.MyRunnable(this, this));
-    setContentView(2131560030);
+    setContentView(2131560029);
     getWindow().setBackgroundDrawable(null);
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler)))
     {
@@ -410,11 +410,11 @@ public class ReadInJoyFeedsActivity
     if (this.app.a() != null) {
       this.app.a().addObserver(this);
     }
-    if (bjxj.a(this.app)) {
+    if (bkbq.a(this.app)) {
       suv.a().c(this.app);
     }
     oxb.a().a(this.jdField_a_of_type_Oxe);
-    bjxj.a(this.app);
+    bkbq.a(this.app);
     this.jdField_b_of_type_Int = ors.jdField_d_of_type_Int;
     szp.a(1, true, 0L, this.jdField_b_of_type_Int, 0);
     ors.g(this.app);
@@ -538,14 +538,14 @@ public class ReadInJoyFeedsActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131368627: 
+    case 2131368638: 
       do
       {
         return;
-      } while (!bjxj.a(this.app));
+      } while (!bkbq.a(this.app));
       a(false);
       return;
-    case 2131368663: 
+    case 2131368674: 
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.a()) {
         nrt.a(null, "CliOper", "", "", "0X80067D0", "0X80067D0", 0, 0, "", "", "", ors.c(), false);
       }

@@ -1,17 +1,23 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Comparator;
 
-public abstract interface akme
+public class akme
+  implements Comparator<TroopInfo>
 {
-  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
-  
-  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
+  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  {
+    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
+      return -1;
+    }
+    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
+      return 1;
+    }
+    return alqj.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akme
  * JD-Core Version:    0.7.0.1
  */

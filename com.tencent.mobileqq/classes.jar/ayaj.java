@@ -1,8 +1,18 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public abstract interface ayaj
+class ayaj
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(int paramInt, View paramView);
+  ayaj(ayaa paramayaa) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a.b) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
+  }
 }
 
 

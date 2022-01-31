@@ -51,7 +51,7 @@ public class nju
       QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
     }
     paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558410, paramViewGroup, false);
-    paramView.setPadding(0, aekt.a(20.0F, paramViewGroup.getResources()), 0, 0);
+    paramView.setPadding(0, aepi.a(20.0F, paramViewGroup.getResources()), 0, 0);
     paramContext = new nju(paramContext, paramnpn, paramnhu, paramString1, paramString2);
     paramView.setTag(paramContext);
     paramContext.a(paramView);
@@ -65,12 +65,12 @@ public class nju
       QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
     }
     Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aekt.a(140.0F, (Resources)localObject);
-    int j = aekt.a(10.0F, (Resources)localObject);
+    int i = aepi.a(140.0F, (Resources)localObject);
+    int j = aepi.a(10.0F, (Resources)localObject);
     if (Build.VERSION.SDK_INT >= 9) {
-      ((HorizontalScrollView)paramLinearLayout.findViewById(2131380196)).setOverScrollMode(2);
+      ((HorizontalScrollView)paramLinearLayout.findViewById(2131380254)).setOverScrollMode(2);
     }
-    localObject = (GridView)paramLinearLayout.findViewById(2131380187);
+    localObject = (GridView)paramLinearLayout.findViewById(2131380245);
     ((GridView)localObject).setClickable(true);
     ((GridView)localObject).setColumnWidth(i);
     ((GridView)localObject).setStretchMode(0);
@@ -78,7 +78,7 @@ public class nju
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
     ((GridView)localObject).setNumColumns(k);
-    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_Bhuw);
     if (Build.VERSION.SDK_INT >= 9) {
       ((GridView)localObject).setOverScrollMode(2);
     }

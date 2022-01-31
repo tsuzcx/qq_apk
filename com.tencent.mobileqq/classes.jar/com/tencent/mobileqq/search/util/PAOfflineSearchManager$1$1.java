@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
-import ayqw;
-import ayqx;
+import ayvf;
+import ayvg;
 import com.tencent.qphone.base.util.QLog;
 import nbv;
 
 public class PAOfflineSearchManager$1$1
   implements Runnable
 {
-  public PAOfflineSearchManager$1$1(ayqx paramayqx) {}
+  public PAOfflineSearchManager$1$1(ayvg paramayvg) {}
   
   public void run()
   {

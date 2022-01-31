@@ -1,104 +1,149 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.Gravity;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
-public abstract class bdtc
-  implements bdsx
+public class bdtc
+  implements Manager
 {
-  protected Rect a;
-  protected SurfaceHolder a;
-  private boolean a;
+  public int a;
+  QQAppInterface a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public bdtc(SurfaceHolder paramSurfaceHolder)
+  public bdtc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void b(Drawable paramDrawable)
+  private void b(String paramString)
   {
-    if (bdrw.a(paramDrawable))
+    if (TextUtils.isEmpty(paramString))
     {
-      bdrw.a().a(paramDrawable, true);
-      paramDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      return;
-    }
-    Rect localRect = new Rect();
-    Object localObject;
-    float f2;
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      localObject = (BitmapDrawable)paramDrawable;
-      localRect.set(0, 0, ((BitmapDrawable)localObject).getBitmap().getWidth(), ((BitmapDrawable)localObject).getBitmap().getHeight());
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width() / localRect.width();
-      f2 = this.jdField_a_of_type_AndroidGraphicsRect.height() / localRect.height();
-      if (f1 <= f2) {
-        break label201;
+      if (QLog.isColorLevel()) {
+        QLog.d("IndividuationABTestManager", 2, "parseJson jsonStr empty");
       }
-      localRect.right = this.jdField_a_of_type_AndroidGraphicsRect.right;
-      localRect.bottom = ((int)(f1 * localRect.bottom));
+      return;
     }
     for (;;)
     {
-      Gravity.apply(17, localRect.width(), localRect.height(), this.jdField_a_of_type_AndroidGraphicsRect, localRect);
-      paramDrawable.setBounds(localRect);
-      return;
-      if (!(paramDrawable instanceof ApngDrawable)) {
-        break;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("personalSwitch");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("enterUrl");
+        if (paramString.has("isShowRed"))
+        {
+          i = paramString.getInt("isShowRed");
+          this.jdField_b_of_type_Int = i;
+          return;
+        }
       }
-      localObject = (ApngDrawable)paramDrawable;
-      localRect.set(0, 0, ((ApngDrawable)localObject).getImage().getWidth(), ((ApngDrawable)localObject).getImage().getHeight());
-      break;
-      label201:
-      localRect.bottom = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      localRect.right = ((int)(localRect.right * f2));
+      catch (Exception paramString)
+      {
+        QLog.e("IndividuationABTestManager", 1, "parseJson error e = " + paramString.getMessage());
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Int = -1;
+        paramString.printStackTrace();
+        return;
+      }
+      int i = -1;
     }
   }
   
-  abstract Canvas a(SurfaceHolder paramSurfaceHolder);
-  
-  public void a()
+  public void a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("IndividuationABTestManager", 2, "handlePostTask version = " + paramInt);
+    }
+    paramString = new File(BaseApplicationImpl.getContext().getFilesDir(), "individuationABTestFile_" + paramString);
+    try
+    {
+      if (paramString.exists()) {
+        paramString.delete();
+      }
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_b_of_type_Int = -1;
+      return;
+    }
+    finally {}
   }
   
-  public final void a(Rect paramRect)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public final void a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    Canvas localCanvas;
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      do
+      for (;;)
       {
         return;
-      } while (!this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().isValid());
-      localCanvas = a(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    } while (localCanvas == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+        Object localObject = null;
+        File localFile = new File(BaseApplicationImpl.getContext().getFilesDir(), "individuationABTestFile_" + paramString);
+        this.jdField_b_of_type_Boolean = true;
+        paramString = localObject;
+        try
+        {
+          if (localFile.exists()) {
+            paramString = bdhb.a(localFile);
+          }
+          if (TextUtils.isEmpty(paramString))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("IndividuationABTestManager", 2, "parseJsonFromFile jsont str is empty");
+          }
+        }
+        finally {}
       }
-      this.jdField_a_of_type_Boolean = false;
-      b(paramDrawable);
-    }
-    paramDrawable.draw(localCanvas);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(localCanvas);
+      if (QLog.isColorLevel()) {
+        QLog.d("IndividuationABTestManager", 2, "parseJsonFromFile fileStr = " + paramString);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    b(paramString);
   }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("IndividuationABTestManager", 2, "updateJsonInfo jsonStr or uin empty");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("IndividuationABTestManager", 2, "updateJsonInfo jsonStr = " + paramString1);
+      }
+      this.jdField_a_of_type_Boolean = true;
+      b(paramString1);
+      String str = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "individuationABTestFile_" + paramString2;
+      try
+      {
+        boolean bool = bdhb.a(str, paramString1);
+        if (!bool) {
+          continue;
+        }
+        bdne.c(BaseApplicationImpl.getContext(), paramInt, paramString2);
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

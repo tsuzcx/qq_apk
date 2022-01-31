@@ -1,97 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0x938.cmd0x938.CommParamReq;
+import tencent.im.oidb.cmd0x938.cmd0x938.ReqBody;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.ReqBody;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.UserInfo;
 
 public class auur
-  implements behy<oidb_0x8e4.RspBody>
+  implements Manager
 {
-  public auur(GameRoomTransActivity paramGameRoomTransActivity, int paramInt) {}
+  AppInterface a;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public auur(AppInterface paramAppInterface)
   {
-    Object localObject3 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("qqBaseActivity", 2, "quickStartGame onCallback errorCode = " + paramInt);
-    }
-    Object localObject2;
-    if (paramRspBody.string_err_title.has())
-    {
-      localObject2 = paramRspBody.string_err_title.get().toStringUtf8();
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    }
-    for (Object localObject1 = null;; localObject1 = null)
-    {
-      localObject2 = localObject3;
-      if (paramRspBody.string_err_msg.has())
-      {
-        localObject2 = paramRspBody.string_err_msg.get().toStringUtf8();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label450;
-        }
-        localObject2 = localObject3;
-      }
-      label450:
-      for (;;)
-      {
-        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          }
-          return;
-          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-          }
-          else
-          {
-            if ((paramInt == 0) || (paramInt == 1009))
-            {
-              paramRspBody = paramRspBody.poi_info;
-              localObject1 = paramRspBody.bytes_uid.get().toStringUtf8();
-              auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), (String)localObject1, paramRspBody.bytes_name.get().toStringUtf8());
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-              return;
-            }
-            if (paramInt == 1008)
-            {
-              localObject1 = paramRspBody.string_invite_id.get().toStringUtf8();
-              com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = (String)localObject1;
-              paramInt = this.jdField_a_of_type_Int;
-              if (paramRspBody.uint32_max_member_num.has()) {
-                paramInt = paramRspBody.uint32_max_member_num.get();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, paramInt);
-            }
-            else
-            {
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-            }
-          }
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, alpo.a(2131705495), 1).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "start game failed! code = " + paramInt);
-        }
-        GameRoomTransActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity);
-        return;
-      }
-    }
+    this.a = paramAppInterface;
   }
+  
+  public void a(long paramLong, auua paramauua)
+  {
+    oidb_0x8da.ReqBody localReqBody = new oidb_0x8da.ReqBody();
+    oidb_0x8da.UserInfo localUserInfo = new oidb_0x8da.UserInfo();
+    localUserInfo.uint64_uin.set(paramLong);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localUserInfo);
+    localReqBody.rpt_msg_user_info.set(localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin, uin=" + paramLong);
+    }
+    mzy.a(this.a, new auut(this, paramauua, paramLong), localReqBody.toByteArray(), "OidbSvc.0x8da_1", 2266, 0, null, 0L);
+  }
+  
+  public void a(auua paramauua)
+  {
+    cmd0x938.ReqBody localReqBody = new cmd0x938.ReqBody();
+    cmd0x938.CommParamReq localCommParamReq = new cmd0x938.CommParamReq();
+    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
+    localCommParamReq.uint32_platform.set(1);
+    localReqBody.msg_comm_param.set(localCommParamReq);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility");
+    }
+    mzy.a(this.a, new auus(this, paramauua), localReqBody.toByteArray(), "OidbSvc.0x938_1", 2360, 1, null, 0L);
+  }
+  
+  public void onDestroy() {}
 }
 
 

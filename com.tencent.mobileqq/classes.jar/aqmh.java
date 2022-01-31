@@ -1,58 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
 
-public class aqmh
+class aqmh
   implements View.OnClickListener
 {
-  public aqmh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  aqmh(aqmg paramaqmg, View paramView) {}
   
   public void onClick(View paramView)
   {
-    Object localObject1 = paramView.getTag();
-    Object localObject2;
-    FileManagerEntity localFileManagerEntity;
-    int i;
-    if ((localObject1 instanceof aqmq))
+    paramView = (arcd)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Aqmg.a.e = paramView.a;
+    paramView = (FileInfo)this.jdField_a_of_type_Aqmg.a.b.get(this.jdField_a_of_type_Aqmg.a.e);
+    if ((!arso.a(paramView.c())) || (arso.c(paramView.c())))
     {
-      localObject2 = (aqmq)paramView.getTag();
-      localObject1 = ((aqmq)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      localFileManagerEntity = (FileManagerEntity)((aqmq)localObject2).jdField_a_of_type_JavaLangObject;
-      i = ((aqmq)localObject2).b;
-      i = ((aqmq)localObject2).c;
+      arrr.d(paramView.c());
+      this.jdField_a_of_type_Aqmg.a.b.remove(this.jdField_a_of_type_Aqmg.a.e);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Aqmg.a);
+      return;
     }
-    for (;;)
-    {
-      if ((paramView.getId() == 2131366299) && (QfileBaseRecentFileTabView.b(this.a))) {
-        azmj.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-      }
-      if (localFileManagerEntity != null)
-      {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131366299) {
-          break label183;
-        }
-      }
-      label183:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
-        return;
-        if (!(localObject1 instanceof aqiy)) {
-          break label188;
-        }
-        localObject2 = (aqiy)paramView.getTag();
-        localObject1 = ((aqiy)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        localFileManagerEntity = (FileManagerEntity)((aqiy)localObject2).jdField_a_of_type_JavaLangObject;
-        i = ((aqiy)localObject2).b;
-        i = ((aqiy)localObject2).jdField_a_of_type_Int;
-        break;
-      }
-      label188:
-      localObject1 = null;
-      localFileManagerEntity = null;
-    }
+    arri.a(2131692487);
   }
 }
 

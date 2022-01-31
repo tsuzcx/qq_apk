@@ -1,27 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-public class aprc
-  extends apns
+class aprc
+  implements alpg
 {
-  aprc(apqz paramapqz) {}
+  aprc(apqh paramapqh, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
+    if ((paramBoolean) && (paramObject != null)) {}
+    try
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (!paramObject.isEmpty())
+        {
+          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
+          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
+          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+        }
       }
-    } while (this.a.a.g);
-    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+        return;
+        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
+      }
+    }
   }
 }
 

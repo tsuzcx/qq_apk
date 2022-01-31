@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
-import aivy;
-import ajaf;
+import ajan;
+import ajeu;
 import android.text.TextUtils;
-import aogj;
+import aoks;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InvalidClassException;
@@ -74,10 +74,10 @@ public class PreloadConfig
   
   public static PreloadConfig readConfig(String paramString, AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = aivy.a(paramAppRuntime, paramString);
+    paramAppRuntime = ajan.a(paramAppRuntime, paramString);
     try
     {
-      paramString = (PreloadConfig)ajaf.a(paramAppRuntime);
+      paramString = (PreloadConfig)ajeu.a(paramAppRuntime);
       if (paramString == null)
       {
         paramString = new PreloadConfig();
@@ -97,7 +97,7 @@ public class PreloadConfig
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "preload config update should delete local config");
         }
-        aogj.a().a(68, 0);
+        aoks.a().a(68, 0);
         paramString = null;
       }
     }
@@ -265,7 +265,7 @@ public class PreloadConfig
         localIterator2 = localPreloadModule.getResList().iterator();
       }
       localPreloadResource = (PreloadResource)localIterator2.next();
-    } while (!ajaf.c(localPreloadResource.mResId, paramString));
+    } while (!ajeu.c(localPreloadResource.mResId, paramString));
     return localPreloadResource.getResInfo(localPreloadModule);
     return null;
   }
@@ -330,7 +330,7 @@ public class PreloadConfig
         }
         localIterator2 = ((PreloadModule)localIterator1.next()).getResList().iterator();
       }
-    } while (!ajaf.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
+    } while (!ajeu.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
     return true;
     return false;
   }

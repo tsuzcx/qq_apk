@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public abstract interface akfn
-  extends akfm
+public class akfn
+  extends akfv
 {
-  public abstract void a(String paramString);
+  public akfn(SpecailCareListActivity paramSpecailCareListActivity)
+  {
+    super(paramSpecailCareListActivity, null);
+  }
   
-  public abstract void a(List<MayKnowRecommend> paramList);
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (this.a.d != 0) {
+      this.a.b = true;
+    }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
+  }
 }
 
 

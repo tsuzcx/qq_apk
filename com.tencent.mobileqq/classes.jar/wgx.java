@@ -1,25 +1,44 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class wgx
-  implements bhtl
+public class wgx
 {
-  wgx(wgw paramwgw, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, wgt paramwgt) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onScrollStateChanged(int paramInt)
+  public wgx(String paramString)
   {
-    if (paramInt == 4097)
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((uvt)uwa.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
       }
-      wgw.a(this.jdField_a_of_type_Wgw).a.put("2_" + this.jdField_a_of_type_Wgw.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Wgt.a.get(paramInt)).mVid);
+      return;
     }
+    catch (Exception paramString)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
+  }
+  
+  public String toString()
+  {
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 

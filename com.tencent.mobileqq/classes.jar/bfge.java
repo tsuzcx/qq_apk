@@ -1,25 +1,18 @@
-import android.content.Context;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bfge
+  extends bibi
 {
-  private android.webkit.CookieSyncManager jdField_a_of_type_AndroidWebkitCookieSyncManager;
-  private com.tencent.smtt.sdk.CookieSyncManager jdField_a_of_type_ComTencentSmttSdkCookieSyncManager;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public bfge(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager = com.tencent.smtt.sdk.CookieSyncManager.createInstance(paramContext);
-    this.jdField_a_of_type_AndroidWebkitCookieSyncManager = android.webkit.CookieSyncManager.createInstance(paramContext);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager.sync();
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieSyncManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieSyncManager.sync();
-    }
-  }
+  private bfge(OpenCardContainer paramOpenCardContainer) {}
 }
 
 

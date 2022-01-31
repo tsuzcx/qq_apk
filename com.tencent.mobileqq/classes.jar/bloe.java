@@ -1,111 +1,146 @@
-import android.app.Activity;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 
 public class bloe
-  extends blnt
 {
-  public bloe(Object paramObject)
+  private int jdField_a_of_type_Int;
+  private List<blof> jdField_a_of_type_JavaUtilList = new ArrayList(9);
+  private List<HashMap<Integer, Float>> b = new ArrayList();
+  
+  public bloe()
   {
-    super(paramObject);
+    b();
   }
   
-  public int a(Activity paramActivity, int paramInt)
+  private blof a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "apply " + toString());
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = this.b.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      blng localblng = (blng)((Iterator)localObject).next();
-      if ((localblng instanceof blni)) {
-        localArrayList.add(((blni)localblng).a);
-      }
-    }
-    ((blnl)blmf.a(5)).a[paramInt].a(this);
-    localObject = (QIMFilterCategoryItem)this.a;
-    bncp.a().a((QIMFilterCategoryItem)localObject, paramInt);
-    if ((QLog.isColorLevel()) && (localObject != null)) {
-      QLog.i("QCombo", 2, "setApplyedFilterGroup" + ((QIMFilterCategoryItem)localObject).b);
-    }
-    blni.a(paramActivity, localArrayList, this, paramInt);
-    return 0;
+    return (blof)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public boolean a()
+  public float a(int paramInt)
   {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (blng)localIterator.next();
-      if ((localObject instanceof blni))
-      {
-        localObject = ((blni)localObject).a;
-        if ((localObject != null) && (((FilterDesc)localObject).predownload == 0)) {
-          return false;
-        }
-      }
-    }
-    return true;
+    return a(paramInt).a();
   }
   
-  public void b(Activity paramActivity, int paramInt)
+  public float a(int paramInt1, int paramInt2, float paramFloat)
   {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "select " + toString());
+    if (!((HashMap)this.b.get(paramInt1)).containsKey(Integer.valueOf(paramInt2))) {
+      return paramFloat;
     }
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    bncp.a().b(localQIMFilterCategoryItem, paramActivity, paramInt);
+    return ((Float)((HashMap)this.b.get(paramInt1)).get(Integer.valueOf(paramInt2))).floatValue();
   }
   
-  public int d()
+  public int a(int paramInt)
   {
-    int k = 0;
-    Iterator localIterator = this.b.iterator();
+    return a(paramInt).a();
+  }
+  
+  public bllj a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public bllm a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public String a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public void a()
+  {
     int i = 0;
-    int j = k;
-    if (localIterator.hasNext())
+    while (i < this.jdField_a_of_type_Int)
     {
-      j = ((blng)localIterator.next()).a;
-      if (j == 2) {
-        j = 1;
-      }
-    }
-    else
-    {
-      if (j == 0) {
-        break label67;
-      }
-      b(2);
-      return 2;
-    }
-    if (j == 1) {
-      i = 1;
-    }
-    for (;;)
-    {
-      break;
-      label67:
-      if (i != 0)
-      {
-        b(2);
-        return 1;
-      }
-      b(3);
-      return 3;
+      ((blof)this.jdField_a_of_type_JavaUtilList.get(i)).a();
+      i += 1;
     }
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "Filter" + this.a;
+    if (paramInt > 9) {
+      throw new IllegalArgumentException("image count > max count 9");
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    a(paramInt).a(paramFloat);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    ((HashMap)this.b.get(paramInt1)).put(Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
+  }
+  
+  public void a(int paramInt, bllj parambllj)
+  {
+    a(paramInt).a(parambllj);
+  }
+  
+  public void a(int paramInt, bllm parambllm)
+  {
+    a(paramInt).a(parambllm);
+  }
+  
+  public void a(int paramInt1, String paramString, float paramFloat, int paramInt2)
+  {
+    ((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).a(paramString, paramFloat, paramInt2);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public int b(int paramInt)
+  {
+    return a(paramInt).b();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
+    int i = 0;
+    while (i < 9)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new blof());
+      this.b.add(new HashMap());
+      i += 1;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((blof)this.jdField_a_of_type_JavaUtilList.get(i)).a(((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
+      ((HashMap)this.b.get(i)).put(Integer.valueOf(((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()), Float.valueOf(((blof)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()));
+      i += 1;
+    }
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return a(paramInt).b();
+  }
+  
+  public void c(int paramInt)
+  {
+    a(paramInt).a();
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return a(paramInt).c();
   }
 }
 

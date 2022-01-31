@@ -1,10 +1,17 @@
-public abstract interface avvo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+
+public class avvo
+  implements View.OnClickListener
 {
-  public abstract void a(avvn paramavvn);
+  public avvo(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public abstract boolean a(avvn paramavvn);
-  
-  public abstract boolean b(avvn paramavvn);
+  public void onClick(View paramView)
+  {
+    avvq.a("0X800AADF", 0);
+    this.a.onBackEvent();
+  }
 }
 
 

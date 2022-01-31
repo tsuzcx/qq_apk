@@ -1,42 +1,64 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.ar.FramePerformanceMonitor;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmc
-  implements amti
+  extends ajlr
 {
-  public ajmc(NewFlowCameraActivity paramNewFlowCameraActivity, SharedPreferences paramSharedPreferences) {}
-  
-  public void a(amtk paramamtk)
+  public ajmc(Context paramContext)
   {
-    long l = paramamtk.jdField_a_of_type_ArrayOfLong[((int)(paramamtk.jdField_a_of_type_ArrayOfLong.length * NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)))];
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicAdjustment", 2, "onDataRefresh: datatype=" + NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) + " monitedValue=" + l);
-    }
-    if (paramamtk.jdField_a_of_type_Int >= 100)
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131693014);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      if (l > NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, true, paramamtk);
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+        localJSONException.printStackTrace();
       }
     }
-    else {
-      return;
-    }
-    if (l < NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
-    {
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false, paramamtk);
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicAdjustment", 2, "Finished. Frame count = " + paramamtk.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("SVDNAdjustment_quality_down_mark", 1).putInt("SVDNAdjustment_quality_up_mark", 1).commit();
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
   }
 }
 

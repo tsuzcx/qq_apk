@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import becq;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public class AchillesFragmentUtils$InstallBroadcastReceiver
     try
     {
       String str = paramIntent.getAction();
-      paramContext = (becq)AchillesFragmentUtils.a().get();
+      paramContext = (begz)AchillesFragmentUtils.a().get();
       paramIntent = paramIntent.getData().getEncodedSchemeSpecificPart();
       if ((paramContext != null) && (!TextUtils.isEmpty(paramIntent))) {
         if (paramContext == null) {

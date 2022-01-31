@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.R.styleable;
-import uae;
-import uah;
+import uct;
+import ucw;
 
 public class QCircleExpandableTextView
   extends LinearLayout
@@ -20,7 +20,7 @@ public class QCircleExpandableTextView
   public TextView a;
   public AsyncRichTextView a;
   public String a;
-  public uah a;
+  public ucw a;
   boolean jdField_a_of_type_Boolean = false;
   public int b;
   public String b;
@@ -90,7 +90,7 @@ public class QCircleExpandableTextView
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)getChildAt(0));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getChildAt(1));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uae(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uct(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -124,9 +124,9 @@ public class QCircleExpandableTextView
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.post(new QCircleExpandableTextView.2(this));
   }
   
-  public void setListener(uah paramuah)
+  public void setListener(ucw paramucw)
   {
-    this.jdField_a_of_type_Uah = paramuah;
+    this.jdField_a_of_type_Ucw = paramucw;
   }
   
   public void setText(String paramString)
@@ -152,8 +152,8 @@ public class QCircleExpandableTextView
       clearAnimation();
       setText(paramString);
       getLayoutParams().height = -2;
-      if (this.jdField_a_of_type_Uah != null) {
-        this.jdField_a_of_type_Uah.a(paramBoolean);
+      if (this.jdField_a_of_type_Ucw != null) {
+        this.jdField_a_of_type_Ucw.a(paramBoolean);
       }
       return;
       bool = false;

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
 
 class njs
-  extends alvc
+  extends alzr
 {
   private nin b;
   
@@ -49,7 +49,7 @@ class njs
         }
       }
     }
-    nin.a(this.b, 2131695727);
+    nin.a(this.b, 2131695729);
   }
 }
 

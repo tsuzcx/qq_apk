@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
-import bahu;
+import bamd;
 import sgy;
 import sha;
 
@@ -63,7 +63,7 @@ public class BiuNicknameSpan
         i = j + 1;
         break;
         j = i;
-      } while (bahu.a.get(k, -1) < 0);
+      } while (bamd.a.get(k, -1) < 0);
       if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
         paramCharSequence.delete(i, i + 2);
       }

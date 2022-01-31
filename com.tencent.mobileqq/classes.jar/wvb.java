@@ -1,61 +1,137 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-class wvb
-  extends QQUIEventReceiver<wus, xav>
+public class wvb
 {
-  public wvb(@NonNull wus paramwus)
+  protected StoryVideoItem a;
+  private Object a;
+  protected List<wqn> a;
+  public unm a;
+  protected wvd a;
+  public wve a;
+  protected wvf a;
+  protected List<unj> b = new ArrayList();
+  
+  public wvb()
   {
-    super(paramwus);
+    this.jdField_a_of_type_Unm = new uob();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Wve = new wve(this);
+    this.jdField_a_of_type_Unm.a(1);
+    this.jdField_a_of_type_Unm.a(this.jdField_a_of_type_Wve);
   }
   
-  public void a(@NonNull wus paramwus, @NonNull xav paramxav)
+  private void a(StoryVideoItem paramStoryVideoItem, List<unj> paramList, boolean paramBoolean)
   {
-    wvc localwvc = paramwus.jdField_a_of_type_Wvc;
-    int i = paramxav.jdField_a_of_type_Int;
-    paramxav = paramxav.jdField_a_of_type_JavaUtilList;
-    paramwus = paramwus.jdField_a_of_type_Xdl;
-    if (localwvc != null)
+    if (paramBoolean)
     {
-      if (i != 0)
-      {
-        wsv.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location failed.");
-        paramwus.jdField_a_of_type_Boolean = false;
-        localwvc.a(paramwus);
-        wtb.a("0X80076CD");
-        wtb.b("0X80075E2");
-        return;
-      }
-      wsv.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location success.");
-      paramwus.jdField_a_of_type_JavaUtilList.clear();
-      paramxav = paramxav.iterator();
-      while (paramxav.hasNext())
-      {
-        usw localusw = (usw)paramxav.next();
-        if ((TextUtils.isEmpty(localusw.d)) || (TextUtils.isEmpty(localusw.a)) || (TextUtils.isEmpty(localusw.b))) {
-          wsv.d(this.TAG, "find illegal content : url=%s, name=%s, des=%s", new Object[] { localusw.d, localusw.a, localusw.b });
-        }
-        xdm localxdm = new xdm();
-        localxdm.d = localusw.d;
-        localxdm.b = localusw.a;
-        localxdm.c = localusw.b;
-        localxdm.a = localusw.c;
-        localxdm.e = localusw.e;
-        paramwus.jdField_a_of_type_JavaUtilList.add(localxdm);
-      }
-      paramwus.jdField_a_of_type_Boolean = false;
-      localwvc.a(paramwus);
+      unj localunj1 = unj.a(paramStoryVideoItem.mVid, 1);
+      unj localunj2 = unj.a(paramStoryVideoItem.mVid, 0);
+      paramStoryVideoItem = unj.a(paramStoryVideoItem.mVid, 2);
+      localunj1.g = 0;
+      localunj2.g = 0;
+      paramStoryVideoItem.g = 1;
+      localunj2.a.put("handleCallback", Boolean.valueOf(true));
+      paramList.add(localunj1);
+      paramList.add(localunj2);
+      paramList.add(paramStoryVideoItem);
       return;
     }
-    wsv.b(this.TAG, "DoodleEmojiPoiPostersReceiver adapter is null");
+    paramList.add(unj.a(paramStoryVideoItem.mVid, 2));
+    paramList.add(unj.a(paramStoryVideoItem.mVid, 1));
+    paramStoryVideoItem = unj.a(paramStoryVideoItem.mVid, 0);
+    paramStoryVideoItem.a.put("handleCallback", Boolean.valueOf(true));
+    paramList.add(paramStoryVideoItem);
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return xav.class;
+    this.jdField_a_of_type_Unm.a();
+    this.jdField_a_of_type_Wvf = null;
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, List<wqn> paramList)
+  {
+    if (paramStoryVideoItem == null) {
+      return;
+    }
+    paramList = new ArrayList(paramList);
+    Bosses.get().postJob(new wvc(this, "Q.qqstory.download.preload.FeedVideoPreloader", paramStoryVideoItem, paramList));
+  }
+  
+  public void a(wvf paramwvf)
+  {
+    this.jdField_a_of_type_Wvf = paramwvf;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return StoryVideoItem.isPlayable(paramString, false);
+  }
+  
+  protected void b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = new ArrayList();
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+          break label290;
+        }
+        i = 0;
+        if (i >= ((List)localObject2).size()) {
+          break label285;
+        }
+        List localList = ((wqn)((List)localObject2).get(i)).d();
+        if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
+        {
+          j = 1;
+          a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
+          if (j == 0)
+          {
+            i = 0;
+            j = i + 1;
+            if (j < ((List)localObject2).size())
+            {
+              ??? = ((wqn)((List)localObject2).get(j)).d();
+              if (((List)???).size() > 0) {
+                a((StoryVideoItem)((List)???).get(0), localArrayList, false);
+              }
+            }
+            i -= 1;
+            if ((i >= 0) && (i < ((List)localObject2).size()))
+            {
+              localObject2 = ((wqn)((List)localObject2).get(i)).d();
+              if (((List)localObject2).size() > 0) {
+                a((StoryVideoItem)((List)localObject2).get(0), localArrayList, false);
+              }
+            }
+            this.b = localArrayList;
+            this.jdField_a_of_type_Unm.a(localArrayList, true);
+          }
+        }
+        else
+        {
+          i += 1;
+        }
+      }
+      continue;
+      label285:
+      int j = 0;
+      continue;
+      label290:
+      j = 0;
+      int i = 0;
+    }
   }
 }
 

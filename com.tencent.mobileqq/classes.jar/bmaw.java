@@ -1,88 +1,38 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LWMotionEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bmaw
+  extends AnimatorListenerAdapter
 {
-  private static ArrayList<bmcm> a = new ArrayList();
+  public bmaw(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public static bmcw a(String paramString, bmcv parambmcv, bmcu parambmcu)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramString.equals(bmba.class.getName())) {
-      return new bmba(parambmcv, parambmcu);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
+    this.a.a = false;
     if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      bmcm localbmcm = (bmcm)localIterator.next();
-      if (localbmcm != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent newCode= " + localbmcm.hashCode());
-        }
-        localbmcm.u();
-      }
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
     }
   }
   
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramString.equals(bmba.class.getName()))
-    {
-      if (!paramBoolean) {
-        paramActivity.getWindow().setBackgroundDrawableResource(2130844114);
-      }
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
     }
-    else {
-      return;
-    }
-    paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(-1));
-  }
-  
-  public static void a(bmcm parambmcm)
-  {
-    a.remove(parambmcm);
     if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "removeIPCEvent: " + a.size() + " newCode=" + parambmcm.hashCode());
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
     }
   }
   
-  public static void a(LWMotionEvent paramLWMotionEvent)
+  public void onAnimationStart(Animator paramAnimator)
   {
+    this.a.a = true;
     if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      bmcm localbmcm = (bmcm)localIterator.next();
-      if (localbmcm != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent newCode= " + localbmcm.hashCode());
-        }
-        localbmcm.a(paramLWMotionEvent);
-      }
-    }
-  }
-  
-  public static void b(bmcm parambmcm)
-  {
-    a.add(parambmcm);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "addIPCEventHook: " + a.size() + " newCode=" + parambmcm.hashCode());
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
     }
   }
 }

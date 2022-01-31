@@ -1,69 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqyz
-  implements aymg<ayjl, ayru>
+class aqyz
+  extends aqyt
 {
-  private aqze a;
-  
-  public void a(aqze paramaqze)
+  public aqyz(aqyp paramaqyp)
   {
-    this.a = paramaqze;
+    super(paramaqyp);
   }
   
-  public void a(ayjl paramayjl, ayru paramayru)
+  protected String a()
   {
-    if ((paramayru.a() != null) && (!TextUtils.isEmpty(paramayjl.a())))
+    return "StateChangeToOffWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramayru.a().setVisibility(0);
-      paramayru.a().setText(paramayjl.a());
-    }
-    if ((paramayru.b() != null) && (!TextUtils.isEmpty(paramayjl.b())))
-    {
-      paramayru.b().setVisibility(0);
-      paramayru.b().setText(paramayjl.b());
-    }
-    if ((paramayru.c() != null) && (!TextUtils.isEmpty(paramayjl.c())))
-    {
-      paramayru.c().setVisibility(0);
-      paramayru.c().setText(paramayjl.c());
-    }
-    if ((paramayjl.d() == null) && (paramayru.d() != null)) {
-      paramayru.d().setVisibility(8);
-    }
-    if ((paramayru.d() != null) && (paramayjl.d() != null))
-    {
-      paramayru.d().setVisibility(0);
-      paramayru.d().setText(paramayjl.d());
-    }
-    aqyy localaqyy = (aqyy)paramayjl;
-    View localView = paramayru.a();
-    paramayru = (AsyncImageView)paramayru.b();
-    String str = localaqyy.c();
-    int i = localaqyy.e();
-    if (!TextUtils.isEmpty(str))
-    {
-      arni.a(paramayru, str, i);
-      paramayru.setOnClickListener(new aqza(this, paramayjl));
-      paramayru = (CheckBox)localView.findViewById(2131366313);
-      if (localaqyy.d() <= 1) {
-        break label336;
-      }
-      paramayru.setVisibility(8);
-    }
-    for (;;)
-    {
-      paramayru.setChecked(localaqyy.b());
-      localView.setOnClickListener(new aqzb(this, paramayjl));
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      paramayru.setDefaultImage(arni.a(i));
-      break;
-      label336:
-      paramayru.setVisibility(0);
     }
+    aqyp.b(this.jdField_a_of_type_Aqyp, 9, 11);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Aqyt = new aqzv(this.jdField_a_of_type_Aqyp);
   }
 }
 

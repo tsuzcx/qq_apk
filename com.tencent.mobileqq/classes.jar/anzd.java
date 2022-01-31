@@ -1,23 +1,25 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anzd
+public class anzd
   implements View.OnClickListener
 {
-  anzd(anzc paramanzc) {}
+  public anzd(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((anzc.a(this.a) != null) && (anzc.a(this.a).getVisibility() == 0) && (anzc.a(this.a).hasFocus())) {
+    paramView = (anzj)paramView.getTag();
+    if (!((alto)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
+    {
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
       return;
     }
-    anzc.a(this.a);
-    paramView = new Bundle();
-    paramView.putInt("start_from", 1);
-    ColorNoteSettingFragment.a(anzc.a(this.a), ColorNoteSettingFragment.class, paramView);
-    azmj.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
   }
 }
 

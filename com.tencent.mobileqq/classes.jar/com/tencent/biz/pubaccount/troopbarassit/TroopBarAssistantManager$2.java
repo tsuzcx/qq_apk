@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.troopbarassit;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -40,7 +40,7 @@ public class TroopBarAssistantManager$2
       }
     }
     localObject1 = ((JSONArray)localObject1).toString();
-    if (bjxj.b()) {
+    if (bkbq.b()) {
       QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
     }
     localObject2 = this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit();

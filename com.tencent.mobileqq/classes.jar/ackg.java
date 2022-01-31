@@ -1,15 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-public class ackg
+public final class ackg
   implements DialogInterface.OnClickListener
 {
-  public ackg(ChatSettingActivity paramChatSettingActivity) {}
+  public ackg(acln paramacln) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatSettingActivity.c(this.a);
+    if (this.a != null) {
+      this.a.a();
+    }
+    mtq.e(true, false);
+    paramDialogInterface.dismiss();
+    mtq.b();
   }
 }
 

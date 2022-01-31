@@ -1,27 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bkts
-  implements Animation.AnimationListener
+class bkts
+  implements bmeo<blag>
 {
-  public bkts(AEProviderContainerView paramAEProviderContainerView) {}
+  bkts(bktp parambktp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@Nullable blag paramblag)
   {
-    this.a.setAlpha(1.0F);
-    this.a.setVisibility(8);
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(false, 150);
-    }
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
+    if (bktp.a(this.a) == AECaptureMode.GIF)
+    {
+      String str = null;
+      if (paramblag != null) {
+        str = blac.a().a(paramblag.a);
+      }
+      bktp.a(this.a).setMaterial(str);
+      bljn.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when material change");
+      bktp.a(this.a);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

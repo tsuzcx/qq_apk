@@ -1,20 +1,8 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
-
-final class arbr
-  implements View.OnClickListener
+public abstract interface arbr
 {
-  arbr(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

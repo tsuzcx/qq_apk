@@ -1,32 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
-public class atws
-  implements ValueAnimator.AnimatorUpdateListener
+final class atws
+  extends atxa<TimerTaskManager, Void>
 {
-  public atws(MedalGuideView paramMedalGuideView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected TimerTaskManager a(Void paramVoid)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.c) && (f >= 0.8857143F))
-    {
-      this.a.c = true;
-      this.a.jdField_a_of_type_Bhow.sendEmptyMessage(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
-      }
-    }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    return new TimerTaskManager();
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import aqjx;
+import aqog;
 
 public class QfileBaseCloudFileTabView$13$3
   implements Runnable
 {
-  public QfileBaseCloudFileTabView$13$3(aqjx paramaqjx) {}
+  public QfileBaseCloudFileTabView$13$3(aqog paramaqog) {}
   
   public void run()
   {
-    this.a.a.aB_();
+    this.a.a.ay_();
   }
 }
 

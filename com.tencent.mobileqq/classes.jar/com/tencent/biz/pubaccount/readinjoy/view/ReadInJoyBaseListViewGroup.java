@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -54,7 +54,7 @@ public abstract class ReadInJoyBaseListViewGroup
     if (paramore == null)
     {
       this.jdField_a_of_type_Ore = new ore();
-      this.jdField_a_of_type_Ore.a = bjxj.a(paramInt, (QQAppInterface)ors.a());
+      this.jdField_a_of_type_Ore.a = bkbq.a(paramInt, (QQAppInterface)ors.a());
       return;
     }
     this.jdField_a_of_type_Ore = paramore;

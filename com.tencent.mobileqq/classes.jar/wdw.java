@@ -1,24 +1,17 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
 class wdw
-  extends ParallelJobSegment<wkg, wdt>
+  implements wdq<Bitmap>
 {
-  public wdw(wds paramwds)
-  {
-    this(paramwds, "RequestCommentListSegment");
-  }
+  wdw(wdt paramwdt, List paramList, String paramString) {}
   
-  public wdw(wds paramwds, String paramString)
+  @NonNull
+  public Stream<Bitmap> a(wdm paramwdm)
   {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, wkg paramwkg)
-  {
-    vay localvay = new vay();
-    localvay.a = paramwkg;
-    ung.a().a(localvay, new wdx(this, paramJobContext, paramwkg));
+    return wdt.a(this.jdField_a_of_type_Wdt, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

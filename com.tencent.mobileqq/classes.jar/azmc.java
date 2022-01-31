@@ -1,108 +1,122 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
-import com.tencent.qphone.base.BaseConstants;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class azmc
-  implements IStatisticsUploader
+  extends azmd
 {
-  public static final Random a = new Random();
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int = -1;
+  public boolean a;
+  int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  int d = 0;
+  public int e;
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public azmc(TCProgressBar paramTCProgressBar)
   {
-    if (a.nextInt(1000) != 0) {}
-    do
+    super(paramTCProgressBar);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public int a()
+  {
+    return this.f + this.d;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
+    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
+    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
+    if (this.jdField_a_of_type_Boolean) {
+      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
+      super.a(paramCanvas);
+      return;
+      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
+    }
+  }
+  
+  void a(Canvas paramCanvas, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      }
+      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_c_of_type_Int < 0) {}
+    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
+    }
+    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    float f = paramMotionEvent.getX();
+    int i = paramMotionEvent.getAction();
+    switch (i)
+    {
+    default: 
+    case 0: 
+    case 2: 
       do
       {
-        return;
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, String.valueOf(paramInt));
-        ((HashMap)localObject1).put("plugin_name", paramString);
-        ((HashMap)localObject1).put("cost", String.valueOf(paramLong));
-        ((HashMap)localObject1).put("result", String.valueOf(paramInt));
-        localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      } while (localObject2 == null);
-      Object localObject2 = ((AppRuntime)localObject2).getAccount();
-      azmz.a(MobileQQ.sMobileQQ).a((String)localObject2, "actPluginDexa2OatInfo", false, paramLong, 0L, (HashMap)localObject1, null);
-    } while (!QLog.isColorLevel());
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("uploadDexOatInfo pluginId ");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(String.valueOf(paramInt));
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(paramLong);
-    QLog.d("PluginStatisticsCollector", 2, ((StringBuilder)localObject1).toString());
-  }
-  
-  public void uploadStartupFailure(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    boolean bool = false;
-    if ("success".equals(paramString5)) {
-      bool = true;
+        return true;
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Float = f;
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Boolean = false;
+        return true;
+        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
+        this.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Float = f;
+        this.jdField_b_of_type_Int += 1;
+        this.jdField_c_of_type_Boolean = false;
+      } while (!a());
+      this.f += this.jdField_c_of_type_Int;
+      return true;
     }
-    String str = paramString5;
-    if (paramString5 != null)
-    {
-      str = paramString5;
-      if (paramString5.contains(ClassNotFoundException.class.getName()))
-      {
-        float f = bdcs.a();
-        str = "GetAvailableInnernalMemorySize:" + f + "__" + paramString5;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginStatisticsCollector", 2, "uploadStartupFailure result = " + bool + ", pluginName = " + paramString2 + ", extraInfo = " + str);
-    }
-    if (!bool)
-    {
-      paramString5 = new HashMap();
-      paramString5.put(BaseConstants.RDM_NoChangeFailCode, "");
-      paramString5.put("plugin_name", paramString2);
-      paramString5.put("plugin_loc", paramString3);
-      paramString5.put("plugin_activity", paramString4);
-      paramString5.put("plugin_extra_info", str);
-      azmz.a(paramContext).a(paramString1, "actPluginStartupFailure", bool, 0L, 0L, paramString5, null);
-    }
-    paramString3 = new HashMap();
-    paramString3.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramString3.put("plugin_name", paramString2);
-    azmz.a(paramContext).a(paramString1, "actPluginStartupResult", bool, 0L, 0L, paramString3, null);
-  }
-  
-  public void uploadStartupSpeedInfo(Context paramContext, Intent paramIntent)
-  {
-    long l1 = paramIntent.getLongExtra("launchTotal", 0L);
-    long l2 = paramIntent.getLongExtra("pluginApkCost", 0L);
-    long l3 = paramIntent.getLongExtra("pluginOatCost", 0L);
-    long l4 = paramIntent.getLongExtra("pluginDownloadCost", 0L);
-    long l5 = paramIntent.getLongExtra("pluginLibCost", 0L);
-    long l6 = paramIntent.getLongExtra("pluginLoaderCost", 0L);
-    String str1 = paramIntent.getStringExtra("launchComponent");
-    String str2 = paramIntent.getStringExtra("launchProcName");
-    String str3 = paramIntent.getStringExtra("pluginsdk_selfuin");
-    String str4 = paramIntent.getStringExtra("pluginsdk_pluginName");
-    String str5 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    String str6 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    paramIntent = paramIntent.getStringExtra("pluginsdk_launchActivity");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("plugin_name", str4);
-    localHashMap.put("plugin_loc", str5);
-    localHashMap.put("plugin_activity", paramIntent);
-    localHashMap.put("plugin_extra_info", str6);
-    localHashMap.put("pluginOatCost", String.valueOf(l3));
-    localHashMap.put("pluginApkCost", String.valueOf(l2));
-    localHashMap.put("pluginLoaderCost", String.valueOf(l6));
-    localHashMap.put("launchTotal", String.valueOf(l1));
-    azmz.a(paramContext).a(str3, "actPluginSpeedInfoV2", false, l1, 0L, localHashMap, null);
-    QLog.d("plugin_tag", 1, "uploadStartupSpeedInfo  " + str5 + ", launchTotal " + l1 + ", apkCost " + l2 + ", dex2OatCost " + l3 + ", libCost " + l5 + ", downloadCost " + l4 + ", loaderCost " + l6 + ", launchComponent " + str1 + ", procName " + str2);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    return true;
   }
 }
 

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aggl
-  implements bevo
+final class aggl
+  implements DialogInterface.OnClickListener
 {
-  public aggl(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
-  
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

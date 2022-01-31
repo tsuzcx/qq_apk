@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import aluc;
-import alud;
-import alxt;
+import alyr;
+import alys;
+import amci;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneUnityManager$2
   implements Runnable
 {
-  public PhoneUnityManager$2(alud paramalud) {}
+  public PhoneUnityManager$2(alys paramalys) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MobileUnityManager", 4, "load phone local data");
     }
-    aluc localaluc = this.this$0.a();
-    ((alxt)this.this$0.a.a(34)).notifyUI(9, true, localaluc);
+    alyr localalyr = this.this$0.a();
+    ((amci)this.this$0.a.a(34)).notifyUI(9, true, localalyr);
   }
 }
 

@@ -1,19 +1,22 @@
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-final class bnkd
-  implements bmve<Boolean, bmvj>
+public class bnkd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bnkd(bnke parambnke) {}
+  public bnkd(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public Void a(Boolean paramBoolean, bmvj parambmvj)
+  public void onGlobalLayout()
   {
-    if (parambmvj.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = parambmvj.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = parambmvj.jdField_a_of_type_Long;
-      QLog.e(bnkb.a(), 2, "MediaCodecThumbnailGenerator progress " + parambmvj.jdField_a_of_type_Long);
+    this.a.f = this.a.a.getWidth();
+    this.a.g = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
     }
-    return null;
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

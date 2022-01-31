@@ -1,57 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-public class asct
-  extends alox
+class asct
+  implements DialogInterface.OnClickListener
 {
-  public asct(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  asct(ascq paramascq) {}
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.a();
-    paramMap = this.a.getActivity();
-    if (paramMap == null)
+    try
     {
-      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
+      paramDialogInterface.dismiss();
       return;
     }
-    if (paramBoolean)
+    catch (Exception paramDialogInterface)
     {
-      QQToast.a(paramMap.getApplicationContext(), 2, 2131695505, 0).b(this.a.getActivity().getTitleBarHeight());
-      return;
-    }
-    FormSwitchItem localFormSwitchItem;
-    if (QQSettingChatOperationFragment.a(this.a) != null)
-    {
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
-      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
-      if (QQSettingChatOperationFragment.a(this.a).e() != 1) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localFormSwitchItem.setChecked(paramBoolean);
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(paramMap.getApplicationContext(), 2131695503, 0).b(paramMap.getTitleBarHeight());
-      return;
-    }
-  }
-  
-  protected void onSetMessageRaoam(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QQSettingChatOperationFragment.a(this.a);
+      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
     }
   }
 }

@@ -1,19 +1,19 @@
 package dov.com.qq.im.capture.poi;
 
 import android.widget.EditText;
-import bhoc;
-import blro;
+import bhsj;
+import blwa;
 
 public class FacePoiSearchUI$2
   implements Runnable
 {
-  public FacePoiSearchUI$2(blro paramblro) {}
+  public FacePoiSearchUI$2(blwa paramblwa) {}
   
   public void run()
   {
     this.this$0.a.setFocusableInTouchMode(true);
     this.this$0.a.requestFocus();
-    bhoc.a(this.this$0.a);
+    bhsj.a(this.this$0.a);
   }
 }
 

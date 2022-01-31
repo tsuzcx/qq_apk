@@ -1,56 +1,15 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.ILoadSo;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
 public class awws
-  implements ILoadSo
+  implements bdoh<Float>
 {
-  boolean a = false;
+  public awws(VipTagView paramVipTagView) {}
   
-  public boolean isCkeygeneratorV2Load()
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    return this.a;
-  }
-  
-  public boolean isCkguardLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isDownProxyLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isTPCoreLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean loadDownProxySync()
-  {
-    boolean bool = azip.a().a("DownloadProxy").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
-    }
-    return bool;
-  }
-  
-  public void loadSo(LoadSoCallback paramLoadSoCallback)
-  {
-    azip localazip = azip.a();
-    paramLoadSoCallback = new awwt(this, paramLoadSoCallback);
-    localazip.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
-  }
-  
-  public boolean loadTPCoreSync()
-  {
-    boolean bool = azip.a().a("TPCore-master").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
-    }
-    return bool;
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 

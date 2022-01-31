@@ -1,79 +1,63 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbrq
+  extends bbro
 {
-  private amab jdField_a_of_type_Amab = new bbrr(this);
-  public Context a;
-  public Handler a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  
-  public bbrq(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, Handler paramHandler)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  private String a(String paramString)
-  {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    if (localTroopManager != null)
-    {
-      paramString = localTroopManager.b(paramString);
-      if (paramString != null) {
-        return paramString.troopcode;
-      }
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amab);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    String str;
-    do
+    for (;;)
     {
-      return;
-      str = a(this.jdField_a_of_type_JavaLangString);
-    } while (TextUtils.isEmpty(str));
-    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).getLong("key_last_update_time" + str, 0L);
-    long l2 = System.currentTimeMillis();
-    if ((paramBoolean) || (l1 == 0L) || ((l1 > 0L) && (l2 - l1 > 300000L)))
-    {
-      ((alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
-      if (l1 == 0L)
+      int i;
+      int j;
+      try
       {
-        QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
-        return;
+        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        i = 0;
+        if (i >= localJSONArray.length()) {
+          break label200;
+        }
+        paramJSONObject = localJSONArray.getJSONObject(i);
+        j = paramJSONObject.getInt("type");
+        if (j == 0)
+        {
+          localTroopFeedItem.content = paramJSONObject.getString("value");
+        }
+        else if (j == 3)
+        {
+          if (!paramJSONObject.has("pic_url")) {
+            break label203;
+          }
+          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
+        }
       }
-      QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
-      return;
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      if (j == 10)
+      {
+        localTroopFeedItem.title = paramJSONObject.getString("value");
+      }
+      else if ((j == 6) && (bdnn.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
+      {
+        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+        break label203;
+        label200:
+        return localTroopFeedItem;
+      }
+      label203:
+      i += 1;
     }
-    QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amab);
   }
 }
 

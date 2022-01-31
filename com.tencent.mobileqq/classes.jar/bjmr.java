@@ -1,46 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class bjmr
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.METHOD})
+public @interface bjmr
 {
-  public static void a(int paramInt, String paramString, long paramLong)
-  {
-    boolean bool = true;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    HashMap localHashMap;
-    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationSampleRate", 1)))
-    {
-      localObject = ((AppRuntime)localObject).getAccount();
-      localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", Integer.toString(paramInt));
-      localHashMap.put("param_businessId", paramString);
-      paramString = azmz.a(BaseApplicationImpl.getContext());
-      if (paramInt != 0) {
-        break label104;
-      }
-    }
-    for (;;)
-    {
-      paramString.a((String)localObject, "QzoneNewLocation", bool, paramLong, 0L, localHashMap, "");
-      return;
-      label104:
-      bool = false;
-    }
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationCacheSampleRate", 1)))
-    {
-      localObject = ((AppRuntime)localObject).getAccount();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_businessId", paramString);
-      azmz.a(BaseApplicationImpl.getContext()).a((String)localObject, "QzoneNewLocationCache", paramBoolean, 0L, 0L, localHashMap, "");
-    }
-  }
+  String a();
 }
 
 

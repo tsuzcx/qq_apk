@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class agqh
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  agqh(agot paramagot) {}
+  agqh(agps paramagps) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.I();
+    if (!awfa.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      bdsr.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
+    }
   }
 }
 

@@ -1,111 +1,62 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.1;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.2;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr.ICallBackListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
-import java.util.LinkedHashMap;
-import mqq.os.MqqHandler;
+import java.util.UUID;
 
-public class aqth
-  implements TVK_IDownloadMgr.ICallBackListener
+class aqth
+  implements bbxs
 {
-  aqth(aqtf paramaqtf) {}
+  aqth(aqtg paramaqtg) {}
   
-  public void downloadCallBack(String paramString)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbxr parambbxr)
   {
-    int i;
-    int j;
-    long l2;
-    long l1;
-    try
+    if (aqtg.a(this.a))
     {
-      paramString = arni.a(paramString);
-      i = Integer.parseInt((String)paramString.get("callbacktype"));
-      j = Integer.parseInt((String)paramString.get("playid"));
-      l2 = Long.parseLong((String)paramString.get("offset"));
-      if (this.a.jdField_b_of_type_Int == 0) {
-        this.a.jdField_b_of_type_Int = aqtf.a(this.a, this.a.jdField_a_of_type_Arek.a());
-      }
-      if ((j != this.a.jdField_c_of_type_Int) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() > 1L) && (l2 > this.a.jdField_a_of_type_Long)) {
-        this.a.jdField_a_of_type_Long = l2;
-      }
-      l1 = l2;
-      if (l2 < this.a.jdField_a_of_type_Long) {
-        l1 = this.a.jdField_a_of_type_Long;
-      }
-      if (!this.a.jdField_c_of_type_Boolean) {
-        break label956;
-      }
-      QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "].[" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "] download success! igon");
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone but has been stopped WorkerId[" + aqtg.a(this.a) + "] filename " + aqtg.a(this.a));
       return;
     }
-    catch (Exception paramString)
+    if (!paramBoolean)
     {
-      paramString.printStackTrace();
+      paramBoolean = parambbxr.d();
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone failed canResume[" + paramBoolean + "] errCode[" + paramInt + "] WorkerId[" + aqtg.a(this.a) + "] filename " + aqtg.a(this.a));
+      aqtg.a(this.a).a(aqsf.a(aqtg.a(this.a), false), paramBoolean);
       return;
     }
-    if (!this.a.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "]mDownloadMgr[" + this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "]" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "] File download over igon");
-      }
+    paramUUID = parambbxr.c();
+    String str1 = parambbxr.d();
+    paramInt = parambbxr.a();
+    String str2 = parambbxr.a();
+    aqtg.a(this.a, parambbxr.b());
+    int i = parambbxr.b();
+    int j = parambbxr.c();
+    int k = parambbxr.d();
+    aqtg.a(this.a).putString("_m_ForwardMd5", paramUUID);
+    aqtg.a(this.a).putString("_m_ForwardSha", str1);
+    aqtg.a(this.a).putString("_m_ForwardBusType", String.valueOf(paramInt));
+    aqtg.a(this.a).putString("_m_ForwardUuid", str2);
+    aqtg.a(this.a).putString("_m_ForwardSize", String.valueOf(aqtg.a(this.a)));
+    if (i != 0) {
+      aqtg.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(i));
     }
-    else
+    if (j != 0) {
+      aqtg.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(j));
+    }
+    if (k != 0) {
+      aqtg.a(this.a).putString("_m_ForwardDuration", String.valueOf(k));
+    }
+    aqtg.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    if (aqsf.a(this.a.a) == null)
     {
-      l2 = arni.a(this.a.jdField_c_of_type_JavaLangString);
-      if (QLog.isDebugVersion()) {
-        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "],downloadId[" + this.a.jdField_c_of_type_Int + "],pos[" + l1 + "], tmpLen[" + l2 + "],block[" + this.a.jdField_b_of_type_Int + "],bDownloadBlock[" + this.a.jdField_a_of_type_Boolean + "],progress[" + (float)l2 / (float)this.a.jdField_a_of_type_Arek.a() + "]");
-      }
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (l1 - l2 > this.a.jdField_b_of_type_Int) && (!this.a.jdField_a_of_type_Boolean))
-      {
-        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.1(this));
-        if (QLog.isColorLevel())
-        {
-          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Arek.a() + "],setRemainTime for playID[" + this.a.jdField_a_of_type_Int + "]");
-          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Arek.a() + "],startDownload for recv block [" + this.a.d + "]");
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        return;
-      }
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.d > 0) && (l1 - l2 < this.a.jdField_b_of_type_Int))
-      {
-        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.2(this));
-        if (QLog.isColorLevel()) {
-          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.jdField_a_of_type_Arek.a() + "] block is full will be stop [" + this.a.d + "]");
-        }
-        this.a.jdField_a_of_type_Boolean = false;
-      }
-      float f = (float)l2 / (float)this.a.jdField_a_of_type_Arek.a();
-      this.a.jdField_a_of_type_Arek.a(l2);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone mApp is null WorkerId[" + aqtg.a(this.a) + "] filename " + aqtg.a(this.a));
+      aqtg.a(this.a).a(aqsf.a(aqtg.a(this.a), false), false);
       return;
-      if (arni.a(this.a.jdField_c_of_type_JavaLangString) == this.a.jdField_a_of_type_Arek.a())
-      {
-        aqtf.a(this.a);
-        return;
-        this.a.jdField_b_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Arek.a(false);
-        if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-        {
-          paramString = (aqtd)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramString != null) {
-            paramString.a(201, "");
-          }
-        }
-        aqsz.a(this.a.jdField_a_of_type_Arek.a());
-      }
     }
-    return;
-    label956:
-    switch (i)
-    {
-    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[" + aqtg.a(this.a) + "] filename " + aqtg.a(this.a));
+    aqsf.a(aqsf.a(this.a.a), aqtg.b(this.a), paramInt, str2, aqtg.a(this.a), 0, i, j, k, false, aqtg.a(this.a), aqtg.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqth
  * JD-Core Version:    0.7.0.1
  */

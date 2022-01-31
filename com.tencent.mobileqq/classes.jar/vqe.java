@@ -1,27 +1,22 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class vqe
-  extends vqk<StoryVideoItem>
+class vqe
+  implements urr<vfr, vfs>
 {
-  public vqe(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  vqe(vqd paramvqd, vps paramvps) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull vfr paramvfr, @Nullable vfs paramvfs, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wsv.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    if ((paramErrorMessage.isFail()) || (paramvfs == null))
+    {
+      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
+      return;
+    }
+    this.jdField_a_of_type_Vqd.a.a(paramvfs.jdField_a_of_type_JavaUtilList, paramvfs.jdField_a_of_type_JavaLangString, paramvfs.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvfs.jdField_a_of_type_JavaUtilList), paramvfs.jdField_a_of_type_Boolean);
   }
 }
 

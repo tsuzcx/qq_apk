@@ -1,34 +1,31 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class akpw
-  implements View.OnLayoutChangeListener
+  implements akqs
 {
-  public akpw(ApolloWebViewFragment paramApolloWebViewFragment) {}
+  private int a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public akpw(int paramInt)
   {
-    paramView = this.a.a();
-    if (paramView == null) {}
-    do
+    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
+  }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      do
-      {
-        return;
-        paramView = paramView.findViewById(16908290);
-      } while (paramView == null);
-      paramView.getWindowVisibleDisplayFrame(ApolloWebViewFragment.a(this.a));
-      paramInt1 = ApolloWebViewFragment.a(this.a).right - ApolloWebViewFragment.a(this.a).left;
-      paramInt2 = ApolloWebViewFragment.a(this.a).bottom - ApolloWebViewFragment.a(this.a).top;
-    } while ((ApolloWebViewFragment.a(this.a) == paramInt1) && (ApolloWebViewFragment.b(this.a) == paramInt2));
-    ThreadManager.getUIHandler().post(this.a.a);
-    ApolloWebViewFragment.a(this.a, paramInt1);
-    ApolloWebViewFragment.b(this.a, paramInt2);
+      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
+    }
+    return arrayOfEGLConfig[0];
   }
 }
 

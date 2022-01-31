@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.browser;
 
-import abui;
-import abvm;
+import abyx;
+import acab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anld;
-import anlh;
-import bedf;
-import beei;
-import befb;
+import anpm;
+import anpq;
+import beho;
+import beir;
+import bejk;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -24,7 +24,7 @@ public class ArkBrowserFragment
     super.a(paramInt1, paramInt2, paramIntent);
     Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
     String str = b();
-    if (TextUtils.isEmpty(abvm.a(str))) {}
+    if (TextUtils.isEmpty(acab.a(str))) {}
     do
     {
       do
@@ -32,18 +32,18 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (anlh)((abui)localObject).a(anlh.class, false);
+      localObject = (anpq)((abyx)localObject).a(anpq.class, false);
     } while (localObject == null);
-    ((anlh)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
+    ((anpq)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void c()
   {
-    beei localbeei = (beei)this.jdField_a_of_type_Bedf.a(4);
-    if (localbeei != null)
+    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
+    if (localbeir != null)
     {
-      localbeei.a(new anld(this));
-      localbeei.a(b(), this.jdField_a_of_type_Befb.a);
+      localbeir.a(new anpm(this));
+      localbeir.a(b(), this.jdField_a_of_type_Bejk.a);
     }
   }
   

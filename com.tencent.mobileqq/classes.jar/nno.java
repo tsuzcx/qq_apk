@@ -11,7 +11,7 @@ import java.util.List;
 import msf.msgcomm.msg_comm.Msg;
 
 public class nno
-  extends abof
+  extends absu
 {
   public nno(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
@@ -83,15 +83,15 @@ public class nno
     Object localObject1 = new ArrayList();
     a(paramList, (List)localObject1);
     paramList = new ArrayList();
-    ayva localayva = new ayva(this.a.getLongAccountUin(), paramLong, true, true, false, false);
-    localayva.h = true;
+    ayzj localayzj = new ayzj(this.a.getLongAccountUin(), paramLong, true, true, false, false);
+    localayzj.h = true;
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (msg_comm.Msg)((Iterator)localObject1).next();
       try
       {
-        localObject2 = a((msg_comm.Msg)localObject2, localayva);
+        localObject2 = a((msg_comm.Msg)localObject2, localayzj);
         if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
           continue;
         }

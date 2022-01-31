@@ -1,36 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+import java.util.ArrayList;
 
-class beqf
-  implements DialogInterface.OnDismissListener
+public class beqf
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<beqi> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public PopupWindow a;
+  beqj jdField_a_of_type_Beqj;
   
-  public beqf(DialogInterface.OnDismissListener paramOnDismissListener)
+  public beqf(Context paramContext)
   {
-    this.a = new WeakReference(paramOnDismissListener);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Beqj = new beqj(this, paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165463)));
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public beqf a(int paramInt, View paramView, beqh parambeqh)
   {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
-      }
+    beqi localbeqi = (beqi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbeqi != null) {
+      localbeqi.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramView, parambeqh));
     }
-    do
+    return this;
+  }
+  
+  public beqf a(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      return;
-      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-      if (localOnDismissListener != null)
+      beqi localbeqi = new beqi(this, null);
+      localbeqi.jdField_a_of_type_AndroidViewView = paramView;
+      if (paramView.isShown())
       {
-        localOnDismissListener.onDismiss(paramDialogInterface);
-        return;
+        localbeqi.jdField_a_of_type_ArrayOfInt = new int[2];
+        paramView.getLocationOnScreen(localbeqi.jdField_a_of_type_ArrayOfInt);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbeqi);
+    }
+    return this;
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    a(paramOnDismissListener, true);
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_Beqj);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+    this.jdField_a_of_type_Beqj.setOnClickListener(new beqg(this, paramBoolean));
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aris;
-import arke;
+import arnb;
+import aron;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class VideoFilePresenter$16
   implements Runnable
 {
-  public VideoFilePresenter$16(aris paramaris) {}
+  public VideoFilePresenter$16(arnb paramarnb) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      aris.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
-      this.this$0.jdField_a_of_type_Arke.a(aris.a(this.this$0));
-      this.this$0.jdField_a_of_type_Arke.b(false);
-      this.this$0.jdField_a_of_type_Arke.f(true);
+      arnb.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
+      this.this$0.jdField_a_of_type_Aron.a(arnb.a(this.this$0));
+      this.this$0.jdField_a_of_type_Aron.b(false);
+      this.this$0.jdField_a_of_type_Aron.f(true);
     }
   }
 }

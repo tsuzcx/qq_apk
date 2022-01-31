@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acak
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acak(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acak(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.b();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

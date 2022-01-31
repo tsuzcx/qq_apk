@@ -130,13 +130,13 @@
     <uses-permission android:name="com.tencent.smartdevice.permission.broadcast"/>
     <permission android:name="com.huawei.hwmultidisplay.permission.WINDOW_CAST_MODE" android:protectionLevel="normal"/>
     <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:resizeableActivity="true" android:theme="@style/d1" android:vmSafeMode="false">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="ac6e1037-b8ab-4903-983c-592de631f2bf"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="ba2ae02b-4e60-46c0-8a2d-9da03fd80e98"/>
         <meta-data android:name="TencentOpenAbility" android:value="login_1,logout_1,newmsg_1,msgread_1,msgsend_1,querymsg_1,queryface_1,querynick_1,reg_1,sendmsg_1,setread_1,openaio_1"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
         <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>
         <uses-library android:name="com.sec.android.app.multiwindow" android:required="false"/>
         <uses-library android:name="scamera_sep" android:required="false"/>
-        <meta-data android:name="mobileqq.dex.count" android:value="12"/>
+        <meta-data android:name="mobileqq.dex.count" android:value="13"/>
         <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip"/>
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip"/>
@@ -145,7 +145,7 @@
         <meta-data android:name="android.max_aspect" android:value="2.4"/>
         <meta-data android:name="android.min_aspect" android:value="1.0"/>
         <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true"/>
-        <meta-data android:name="AppSetting_params" android:value="537063792#CDEFFCD785298BCE#2002#YingYongBao#ffffffffffffffffffffffffff"/>
+        <meta-data android:name="AppSetting_params" android:value="537064392#0CC6717AF58FFE58#2002#YingYongBao#ffffffffffffffffffffffffff"/>
         <meta-data android:name="com.huawei.ar.engine" android:value="optional"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.msf.service.MsfService" android:process=":MSF">
             <intent-filter>

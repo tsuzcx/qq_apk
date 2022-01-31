@@ -1,10 +1,34 @@
-public abstract interface vri
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+public class vri
+  extends SimpleObserver<wiq>
 {
-  public abstract void a(int paramInt);
+  public vri(vrd paramvrd) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  public void a(wiq paramwiq)
+  {
+    super.onNext(paramwiq);
+    vrd.a(this.a, paramwiq, new ErrorMessage(), true);
+  }
   
-  public abstract void b(int paramInt);
+  public void onCancel()
+  {
+    super.onCancel();
+    wxe.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      vrd.a(this.a, vrd.a(this.a), new ErrorMessage(), false);
+      return;
+    }
+    vrd.a(this.a, vrd.a(this.a), (ErrorMessage)paramError, false);
+  }
 }
 
 

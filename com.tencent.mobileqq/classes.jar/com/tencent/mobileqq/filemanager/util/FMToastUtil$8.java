@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import armz;
+import arri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ public final class FMToastUtil$8
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(armz.a());
+    QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(arri.a());
   }
 }
 

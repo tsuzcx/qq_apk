@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.view.TabLayout;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class blfk
-  implements View.OnClickListener
+class blfk
+  implements ViewPager.OnPageChangeListener
 {
-  public blfk(TabLayout paramTabLayout, int paramInt) {}
+  blfk(blfj paramblfj) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImAeViewTabLayout.a(this.jdField_a_of_type_Int);
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
   }
 }
 

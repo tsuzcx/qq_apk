@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.report;
 
-import aaob;
+import aasq;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -92,14 +92,14 @@ public class MiniGdtReporter
         catch (Exception localException1) {}
         try
         {
-          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.3.3", "utf-8"));
+          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.3.5", "utf-8"));
           paramMiniAppConfig = str;
           paramInt = 1;
           if (paramInt == 0) {
             break;
           }
           QLog.i("MiniGdtReporter", 2, "report: get report url " + paramMiniAppConfig + " " + localLaunchParam.timestamp);
-          aaob.a(paramMiniAppConfig);
+          aasq.a(paramMiniAppConfig);
           return;
         }
         catch (Exception localException2)

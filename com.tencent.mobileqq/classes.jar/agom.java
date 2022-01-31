@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agom
-  extends amab
+class agom
+  implements DialogInterface.OnClickListener
 {
-  agom(agoj paramagoj) {}
+  agom(agoe paramagoe) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString.Z = paramBoolean1;
-      agoj.c(this.a).post(new NearbyChatPie.12.1(this));
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

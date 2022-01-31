@@ -1,6 +1,6 @@
 package com.tencent.gdtad.aditem;
 
-import aaii;
+import aamx;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class GdtBaseAdItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new aaii();
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new aamx();
   public Bundle a;
   public Class a;
   public String a;

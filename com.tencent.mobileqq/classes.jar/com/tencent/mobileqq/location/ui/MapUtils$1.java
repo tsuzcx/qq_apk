@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.widget.TextView;
-import atpb;
+import attk;
 
 public final class MapUtils$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class MapUtils$1
   
   public void run()
   {
-    atpb.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
+    attk.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
   }
 }
 

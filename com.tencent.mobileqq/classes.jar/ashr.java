@@ -1,57 +1,17 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
 public class ashr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static View a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 5: 
-    case 7: 
-      return LayoutInflater.from(paramContext).inflate(2131559123, paramViewGroup, false);
-    }
-    return a(paramContext, paramViewGroup);
-  }
+  public ashr(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public static View a(Context paramContext, ViewGroup paramViewGroup)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = paramViewGroup.getWidth();
-    ImageView localImageView = new ImageView(paramContext);
-    paramViewGroup = localImageView.getLayoutParams();
-    paramContext = paramViewGroup;
-    if (paramViewGroup == null) {
-      paramContext = new ViewGroup.LayoutParams(-2, -2);
-    }
-    localImageView.setPadding(0, 20, 0, 20);
-    paramContext.width = (i - localImageView.getPaddingLeft() - localImageView.getPaddingRight() - localImageView.getPaddingLeft());
-    paramContext.height = (i * 200 / 718);
-    localImageView.setLayoutParams(paramContext);
-    localImageView.setId(2131363078);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    return localImageView;
-  }
-  
-  public static ashm a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
-  {
-    View localView = a(paramContext, paramInt, paramViewGroup);
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 5: 
-      return new asht(paramContext, localView, paramViewGroup);
-    case 7: 
-      return new ashs(paramContext, localView, paramViewGroup);
-    }
-    return new ashn(paramContext, localView, paramViewGroup);
+    ((auad)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
+    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
   }
 }
 

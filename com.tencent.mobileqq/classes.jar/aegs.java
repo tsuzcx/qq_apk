@@ -1,29 +1,27 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class aegs
-  extends awdn
+class aegs
+  implements View.OnClickListener
 {
-  public aegs(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  aegs(aegr paramaegr) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692017);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131368624));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Aegv != null) {
+      this.a.a.jdField_a_of_type_Aegv.a();
     }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
-    }
-    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

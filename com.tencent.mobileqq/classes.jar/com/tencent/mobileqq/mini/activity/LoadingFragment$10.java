@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -32,7 +32,7 @@ class LoadingFragment$10
       str = null;
       break;
       label68:
-      str = alpo.a(2131706624);
+      str = alud.a(2131706636);
     }
   }
 }

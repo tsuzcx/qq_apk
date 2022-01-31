@@ -1,10 +1,25 @@
-import android.view.View;
+import android.os.Handler;
+import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
 
-public abstract interface yde
+public class yde
+  implements ydh
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
+  public yde(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
   
-  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
+  public void a()
+  {
+    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
+      PopViewAnimationDrawableHelper.a(this.a).b();
+    }
+    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
+      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
+    }
+  }
+  
+  public void b()
+  {
+    PopViewAnimationDrawableHelper.a(this.a);
+  }
 }
 
 

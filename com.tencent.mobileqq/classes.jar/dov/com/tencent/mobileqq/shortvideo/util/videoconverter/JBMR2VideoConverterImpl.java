@@ -1,24 +1,24 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import bnot;
-import bnov;
+import bntf;
+import bnth;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.io.File;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements bnov
+  implements bnth
 {
   boolean a = false;
   boolean b = false;
   
-  public boolean a(File paramFile, bnot parambnot, boolean paramBoolean)
+  public boolean a(File paramFile, bntf parambntf, boolean paramBoolean)
   {
     if (!this.a)
     {
       this.a = true;
-      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, parambnot);
+      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, parambntf);
       if (!paramBoolean)
       {
         ThreadManagerV2.excute(paramFile, 16, null, false);

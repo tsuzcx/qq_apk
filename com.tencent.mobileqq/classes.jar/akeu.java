@@ -1,19 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akeu
-  implements View.OnClickListener
+public class akeu
+  implements akfb
 {
-  akeu(akes paramakes, String paramString1, String paramString2) {}
+  public akeu(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_Akes.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    this.jdField_a_of_type_Akes.a.startActivity(paramView);
-    azmj.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QQSpecialFriendSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
+    }
   }
 }
 

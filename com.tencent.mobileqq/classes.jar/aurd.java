@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.media.MediaPlayer;
+import android.os.Looper;
+import com.tencent.mobileqq.music.SongInfo;
 
 public class aurd
-  implements INetEventHandler
 {
-  private int jdField_a_of_type_Int = -1;
-  
-  public aurd(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    int i = ndd.a();
-    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
-  }
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 

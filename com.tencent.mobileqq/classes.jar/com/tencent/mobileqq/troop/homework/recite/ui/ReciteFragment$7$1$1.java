@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
 import android.widget.ListAdapter;
-import bbxq;
+import bcbz;
 
 class ReciteFragment$7$1$1
   implements Runnable

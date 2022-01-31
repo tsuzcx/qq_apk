@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.text.TextUtils;
-import asfk;
-import asfn;
-import asfo;
-import asfr;
-import asfs;
+import asjt;
+import asjw;
+import asjx;
+import aska;
+import askb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class PicOcrManager$3
   implements Runnable
 {
-  public PicOcrManager$3(asfk paramasfk, asfn paramasfn, asfo paramasfo) {}
+  public PicOcrManager$3(asjt paramasjt, asjw paramasjw, asjx paramasjx) {}
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Asfn.d)) || (this.jdField_a_of_type_Asfn.a))
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Asjw.d)) || (this.jdField_a_of_type_Asjw.a))
     {
-      this.jdField_a_of_type_Asfn.d = asfs.a(this.jdField_a_of_type_Asfn.b);
-      this.jdField_a_of_type_Asfn.a = false;
+      this.jdField_a_of_type_Asjw.d = askb.a(this.jdField_a_of_type_Asjw.b);
+      this.jdField_a_of_type_Asjw.a = false;
     }
-    if (!asfk.a(this.this$0).isEmpty())
+    if (!asjt.a(this.this$0).isEmpty())
     {
-      asfr localasfr = this.this$0.a(this.jdField_a_of_type_Asfn.d);
-      if (localasfr != null)
+      aska localaska = this.this$0.a(this.jdField_a_of_type_Asjw.d);
+      if (localaska != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localasfr.toString());
+          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localaska.toString());
         }
-        this.jdField_a_of_type_Asfo.a(localasfr);
+        this.jdField_a_of_type_Asjx.a(localaska);
         return;
       }
     }
-    asfk.a(this.this$0, this.jdField_a_of_type_Asfo, this.jdField_a_of_type_Asfn);
-    if (this.jdField_a_of_type_Asfn.a())
+    asjt.a(this.this$0, this.jdField_a_of_type_Asjx, this.jdField_a_of_type_Asjw);
+    if (this.jdField_a_of_type_Asjw.a())
     {
-      this.this$0.a(this.jdField_a_of_type_Asfo, this.jdField_a_of_type_Asfn);
-      this.jdField_a_of_type_Asfo.a();
+      this.this$0.a(this.jdField_a_of_type_Asjx, this.jdField_a_of_type_Asjw);
+      this.jdField_a_of_type_Asjx.a();
       return;
     }
-    this.jdField_a_of_type_Asfo.onUpdate(100, false, new asfr());
+    this.jdField_a_of_type_Asjx.onUpdate(100, false, new aska());
   }
 }
 

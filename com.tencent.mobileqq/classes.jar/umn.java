@@ -1,13 +1,4 @@
-import android.app.Activity;
-import android.os.Bundle;
-
-public abstract interface umn<T extends Activity>
-{
-  public abstract void a(T paramT);
-  
-  public abstract void a(T paramT, Bundle paramBundle);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umn

@@ -33,9 +33,9 @@ public class saw
   public saw(sav paramsav, Context paramContext, View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368814));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378813));
-    paramsav = (LinearLayout)paramView.findViewById(2131365999);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368829));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378868));
+    paramsav = (LinearLayout)paramView.findViewById(2131366001);
     int j = paramsav.getChildCount();
     int k = a(j);
     int i = 0;
@@ -50,7 +50,7 @@ public class saw
   
   private int a(int paramInt)
   {
-    return (int)Math.floor(((int)bdcb.a(true) - this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298564) * 2 - (paramInt - 1) * this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298565)) * 1.0D / paramInt);
+    return (int)Math.floor(((int)bdgk.a(true) - this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298564) * 2 - (paramInt - 1) * this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298565)) * 1.0D / paramInt);
   }
   
   private void a(ArticleInfo paramArticleInfo)
@@ -152,40 +152,40 @@ public class saw
       if (ors.h() != 1) {
         break label288;
       }
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369654).setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369623).setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369697).setBackgroundColor(0);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369671).setBackgroundColor(0);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369641).setBackgroundColor(0);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369716).setBackgroundColor(0);
       paramBaseData2 = this.jdField_a_of_type_AndroidWidgetImageView;
       if (!paramBaseData1.jdField_a_of_type_Boolean) {
         break label280;
       }
     }
     label280:
-    for (int i = 2130842476;; i = 2130841342)
+    for (int i = 2130842489;; i = 2130841343)
     {
       paramBaseData2.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369624)).setImageResource(2130841329);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369698)).setImageResource(2130842268);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369642)).setImageResource(2130841330);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369717)).setImageResource(2130842281);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369625)).setTextColor(Color.parseColor("#737373"));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369699)).setTextColor(Color.parseColor("#737373"));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369643)).setTextColor(Color.parseColor("#737373"));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369718)).setTextColor(Color.parseColor("#737373"));
       if (!ors.n())
       {
-        paramBaseData1 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365999);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131365999).setPadding(paramBaseData1.getPaddingLeft(), bdkf.b(10.5F), paramBaseData1.getPaddingRight(), paramBaseData1.getPaddingBottom());
+        paramBaseData1 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366001);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131366001).setPadding(paramBaseData1.getPaddingLeft(), bdoo.b(10.5F), paramBaseData1.getPaddingRight(), paramBaseData1.getPaddingBottom());
       }
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369654).getLayoutParams().height = -2;
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369623).getLayoutParams().height = -2;
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369697).getLayoutParams().height = -2;
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369671).getLayoutParams().height = -2;
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369641).getLayoutParams().height = -2;
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369716).getLayoutParams().height = -2;
       return;
     }
     label288:
     paramBaseData2 = this.jdField_a_of_type_AndroidWidgetImageView;
     if (paramBaseData1.jdField_a_of_type_Boolean)
     {
-      i = 2130842475;
+      i = 2130842488;
       paramBaseData2.setImageResource(i);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(bjxj.a(paramBaseData1.jdField_a_of_type_Int, 99990000L, "9999万+", sav.a));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(bkbq.a(paramBaseData1.jdField_a_of_type_Int, 99990000L, "9999万+", sav.a));
       if (!paramBaseData1.jdField_a_of_type_Boolean) {
         break label403;
       }
@@ -198,11 +198,11 @@ public class saw
     }
     label403:
     label411:
-    for (paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130848823);; paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130848822))
+    for (paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130848896);; paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130848895))
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131369654).setBackgroundDrawable(paramBaseData1);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131369671).setBackgroundDrawable(paramBaseData1);
       return;
-      i = 2130841341;
+      i = 2130841342;
       break;
       i = -16777216;
       break label350;
@@ -218,17 +218,17 @@ public class saw
       FastWebArticleInfo localFastWebArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a;
       if (localFastWebArticleInfo == null)
       {
-        aekt.a(sav.a(), "", new IllegalArgumentException());
+        aepi.a(sav.a(), "", new IllegalArgumentException());
         return;
       }
       switch (paramView.getId())
       {
       default: 
         return;
-      case 2131369623: 
+      case 2131369641: 
         a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b);
         return;
-      case 2131369654: 
+      case 2131369671: 
         if (localFastWebArticleInfo.jdField_a_of_type_Boolean)
         {
           localFastWebArticleInfo.jdField_a_of_type_Boolean = false;

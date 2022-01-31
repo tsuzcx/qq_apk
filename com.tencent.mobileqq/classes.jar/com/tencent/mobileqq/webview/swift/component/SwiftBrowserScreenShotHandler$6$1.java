@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beed;
-import bepp;
+import beim;
+import bety;
 import sdq;
 
 class SwiftBrowserScreenShotHandler$6$1
@@ -11,7 +11,7 @@ class SwiftBrowserScreenShotHandler$6$1
   
   public void run()
   {
-    beed.a(this.a.this$0).a().dismiss();
+    beim.a(this.a.this$0).a().dismiss();
   }
 }
 

@@ -1,8 +1,8 @@
 package cooperation.qzone.contentbox;
 
 import android.os.Handler;
-import bjel;
-import bjeq;
+import bjis;
+import bjix;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class QZoneMsgFragment$QZoneMsgUIObserver$1
   implements Runnable
 {
-  public QZoneMsgFragment$QZoneMsgUIObserver$1(bjeq parambjeq, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
+  public QZoneMsgFragment$QZoneMsgUIObserver$1(bjix parambjix, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
   
   public void run()
   {
@@ -28,19 +28,19 @@ public class QZoneMsgFragment$QZoneMsgUIObserver$1
       if (localMQMsg.msgType == 9)
       {
         localObject = LocalPhotoGroupData.getLocalPhotoGroupDataFromSp(localMQMsg.pushTime);
-        if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a) != null) {
+        if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a) != null) {
           if (localObject == null) {
-            QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).saveSp(localMQMsg.pushTime);
+            QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).saveSp(localMQMsg.pushTime);
           }
         }
         for (;;)
         {
-          if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a) == null) {
+          if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a) == null) {
             break label421;
           }
-          localMQMsg.uniKey = QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).unikey;
-          localMQMsg.eventTitle = QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).title;
-          localMQMsg.capTime = QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).capTime;
+          localMQMsg.uniKey = QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).unikey;
+          localMQMsg.eventTitle = QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).title;
+          localMQMsg.capTime = QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).capTime;
           if (localMQMsg.msgBody.photolist == null) {
             localMQMsg.msgBody.photolist = new ArrayList();
           }
@@ -49,20 +49,20 @@ public class QZoneMsgFragment$QZoneMsgUIObserver$1
             localMQMsg.msgBody = new MQMsgBody();
             localMQMsg.msgBody.photolist.clear();
           }
-          if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).pathList == null) {
+          if (QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).pathList == null) {
             break label429;
           }
           int i = 0;
-          while (i < QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).pathList.size())
+          while (i < QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).pathList.size())
           {
             localObject = new MQPhotoCell();
-            ((MQPhotoCell)localObject).coverUrl = ((String)QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).pathList.get(i));
+            ((MQPhotoCell)localObject).coverUrl = ((String)QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).pathList.get(i));
             localMQMsg.msgBody.photolist.add(localObject);
             i += 1;
           }
-          QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a, (LocalPhotoGroupData)localObject);
+          QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a, (LocalPhotoGroupData)localObject);
           continue;
-          QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a, (LocalPhotoGroupData)localObject);
+          QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a, (LocalPhotoGroupData)localObject);
         }
       }
     }
@@ -72,17 +72,17 @@ public class QZoneMsgFragment$QZoneMsgUIObserver$1
       {
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "rsp.ArkNes_vec.get(0) == null");
         label336:
-        if ((!QZoneMsgFragment.b(this.jdField_a_of_type_Bjeq.a)) || (localMQMsg == null)) {
+        if ((!QZoneMsgFragment.b(this.jdField_a_of_type_Bjix.a)) || (localMQMsg == null)) {
           break label665;
         }
-        if ((localMQMsg.msgType != 9) || (QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a) != null)) {
+        if ((localMQMsg.msgType != 9) || (QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a) != null)) {
           break label638;
         }
-        this.jdField_a_of_type_Bjeq.a.a.a(new ArrayList());
+        this.jdField_a_of_type_Bjix.a.a.a(new ArrayList());
       }
       for (;;)
       {
-        QZoneMsgFragment.a(this.jdField_a_of_type_Bjeq.a).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1.1(this), 500L);
+        QZoneMsgFragment.a(this.jdField_a_of_type_Bjix.a).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1.1(this), 500L);
         return;
         label421:
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "mLocalPhotoGroupData == null");
@@ -105,10 +105,10 @@ public class QZoneMsgFragment$QZoneMsgUIObserver$1
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         break label336;
         label638:
-        this.jdField_a_of_type_Bjeq.a.a.a(new ArrayList(Collections.singletonList(localMQMsg)));
+        this.jdField_a_of_type_Bjix.a.a.a(new ArrayList(Collections.singletonList(localMQMsg)));
         continue;
         label665:
-        this.jdField_a_of_type_Bjeq.a.a.a(localMQMsg);
+        this.jdField_a_of_type_Bjix.a.a.a(localMQMsg);
       }
       localMQMsg = null;
     }

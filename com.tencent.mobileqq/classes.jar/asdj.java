@@ -1,17 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class asdj
-  implements CompoundButton.OnCheckedChangeListener
+class asdj
+  extends nac
 {
-  public asdj(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  asdj(asdb paramasdb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ((atvu)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
-    azmj.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
+    {
+      return;
+      this.a.x();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if (paramInt == 16)
+      {
+        this.a.L();
+        return;
+      }
+    } while (!asdb.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aryl.e.intValue());
+    this.a.l();
   }
 }
 

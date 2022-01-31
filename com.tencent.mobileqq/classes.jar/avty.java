@@ -1,32 +1,9 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import android.app.Dialog;
+import android.view.View;
 
-public class avty
-  extends FlingGestureHandler
+public abstract interface avty
 {
-  boolean a = true;
-  
-  public avty(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
-  }
+  public abstract void a(Dialog paramDialog, View paramView, avtx paramavtx);
 }
 
 

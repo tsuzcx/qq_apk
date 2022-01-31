@@ -1,21 +1,30 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wwh
-  implements bhqd
+public class wwh
+  extends QQUIEventReceiver<wvq, vdl>
 {
-  wwh(wwe paramwwe, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public wwh(@NonNull wvq paramwvq)
   {
-    switch (paramInt)
-    {
+    super(paramwvq);
+  }
+  
+  public void a(@NonNull wvq paramwvq, @NonNull vdl paramvdl)
+  {
+    if ((paramvdl == null) || (paramvdl.a == null) || (TextUtils.isEmpty(paramvdl.a.headUrl))) {
+      wxe.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    while (!paramvdl.a.isMe()) {
       return;
-      this.jdField_a_of_type_Wwe.c();
     }
+    wvq.b(paramwvq);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

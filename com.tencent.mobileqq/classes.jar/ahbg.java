@@ -1,20 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-
 class ahbg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bhxs
 {
   ahbg(ahbf paramahbf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onScrollStateChanged(int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    if (paramInt == 4097) {}
   }
 }
 

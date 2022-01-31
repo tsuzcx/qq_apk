@@ -1,23 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajnv
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ajnv(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajnv(LoginView paramLoginView) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 10) {
-      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -12,9 +12,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhpo;
-import bhum;
-import bjxj;
+import bhtv;
+import bhyt;
+import bkbq;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
@@ -32,14 +32,14 @@ import szp;
 
 public abstract class ReadInJoyBaseListView
   extends XListView
-  implements bhpo
+  implements bhtv
 {
   protected int a;
   private View jdField_a_of_type_AndroidViewView;
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private ArrayList<bhum> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bhyt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   rrs jdField_a_of_type_Rrs = new rrs();
   private rrt jdField_a_of_type_Rrt;
   protected rru a;
@@ -90,9 +90,9 @@ public abstract class ReadInJoyBaseListView
   private void c()
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, aekt.a(62.0F, getResources())));
+    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(62.0F, getResources())));
     TextView localTextView = new TextView(getContext());
-    localTextView.setText(2131718902);
+    localTextView.setText(2131718914);
     localTextView.setTextColor(-4473925);
     localTextView.setTextSize(14.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -106,9 +106,9 @@ public abstract class ReadInJoyBaseListView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560206, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372477));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372478));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560205, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372497));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372498));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
@@ -125,7 +125,7 @@ public abstract class ReadInJoyBaseListView
         }
       } while ((!a()) || (this.jdField_a_of_type_Rru == null));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700028);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700040);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       b(0);
       this.jdField_c_of_type_Int = 1;
@@ -134,7 +134,7 @@ public abstract class ReadInJoyBaseListView
       if (a())
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700028);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700040);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         b(0);
       }
@@ -158,16 +158,16 @@ public abstract class ReadInJoyBaseListView
     a(this);
   }
   
-  public void a(bhpo parambhpo)
+  public void a(bhtv parambhtv)
   {
     if (this.jdField_a_of_type_Rrs != null) {
-      this.jdField_a_of_type_Rrs.a(parambhpo);
+      this.jdField_a_of_type_Rrs.a(parambhtv);
     }
   }
   
-  public void a(bhum parambhum)
+  public void a(bhyt parambhyt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambhum);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambhyt);
   }
   
   public void a(boolean paramBoolean)
@@ -179,7 +179,7 @@ public abstract class ReadInJoyBaseListView
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700027);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700039);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       b(-this.jdField_a_of_type_Int);
@@ -197,10 +197,10 @@ public abstract class ReadInJoyBaseListView
     }
   }
   
-  public void b(bhpo parambhpo)
+  public void b(bhtv parambhtv)
   {
     if (this.jdField_a_of_type_Rrs != null) {
-      this.jdField_a_of_type_Rrs.b(parambhpo);
+      this.jdField_a_of_type_Rrs.b(parambhtv);
     }
   }
   
@@ -238,7 +238,7 @@ public abstract class ReadInJoyBaseListView
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bhum)localIterator.next()).a(this.mFirstPosition, getChildCount(), this.mItemCount);
+      ((bhyt)localIterator.next()).a(this.mFirstPosition, getChildCount(), this.mItemCount);
     }
   }
   
@@ -300,7 +300,7 @@ public abstract class ReadInJoyBaseListView
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
         a();
       }
-      if ((bjxj.i()) && ((this.jdField_d_of_type_Int == 0) || (this.jdField_d_of_type_Int == 56)))
+      if ((bkbq.i()) && ((this.jdField_d_of_type_Int == 0) || (this.jdField_d_of_type_Int == 56)))
       {
         QLog.d("ReadInJoyBaseListView", 1, "independent kd recommend and video channel, keep footer view.");
         return;
@@ -348,7 +348,7 @@ public abstract class ReadInJoyBaseListView
     this.jdField_a_of_type_Rrt = paramrrt;
   }
   
-  public final void setOnScrollListener(bhpo parambhpo)
+  public final void setOnScrollListener(bhtv parambhtv)
   {
     throw new RuntimeException("use addScrollListener  or removeScrollListener，better call addScrollListener in ReadInJoyBaseAdapter.onAddScrollListeners for control the call sequence");
   }

@@ -1,16 +1,6 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
-
-class zba
-  implements QzoneZipCacheHelperCallBack
+public abstract interface zba
 {
-  zba(zay paramzay, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onResult(boolean paramBoolean)
-  {
-    zay.a(this.jdField_a_of_type_Zay, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-  }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(long paramLong);
 }
 
 

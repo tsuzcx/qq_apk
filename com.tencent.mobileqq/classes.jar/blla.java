@@ -1,6 +1,16 @@
-public abstract interface blla
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
+
+public class blla
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public blla(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+  }
 }
 
 

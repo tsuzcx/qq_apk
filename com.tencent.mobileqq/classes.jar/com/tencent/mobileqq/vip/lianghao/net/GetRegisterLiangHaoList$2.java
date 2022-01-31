@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bdxv;
-import bdyd;
-import bdye;
+import bece;
+import becm;
+import becn;
 import java.util.List;
 
 public class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(bdyd parambdyd, bdxv parambdxv, bdye parambdye) {}
+  public GetRegisterLiangHaoList$2(becm parambecm, bece parambece, becn parambecn) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bdxv != null) && (this.jdField_a_of_type_Bdxv.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bdxv.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bdxv.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_Bece != null) && (this.jdField_a_of_type_Bece.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bece.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bece.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Bdye.a(this.jdField_a_of_type_Bdxv);
+      this.jdField_a_of_type_Becn.a(this.jdField_a_of_type_Bece);
       return;
     }
-    this.jdField_a_of_type_Bdye.a(-1, "");
+    this.jdField_a_of_type_Becn.a(-1, "");
   }
 }
 

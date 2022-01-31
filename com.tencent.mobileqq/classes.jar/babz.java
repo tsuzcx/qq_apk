@@ -1,13 +1,8 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-public class babz
-{
-  public int a;
-  public TimDocSSOMsg.UinRightInfo a;
-  public String a;
-  public String b;
-  public String c;
-}
+public abstract interface babz
+  extends PluginManager
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

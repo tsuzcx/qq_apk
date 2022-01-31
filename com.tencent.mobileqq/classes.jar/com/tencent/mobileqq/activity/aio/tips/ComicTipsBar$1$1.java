@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agus;
-import agut;
-import agwa;
+import agzh;
+import agzi;
+import ahap;
 
 public class ComicTipsBar$1$1
   implements Runnable
 {
-  public ComicTipsBar$1$1(agut paramagut) {}
+  public ComicTipsBar$1$1(agzi paramagzi) {}
   
   public void run()
   {

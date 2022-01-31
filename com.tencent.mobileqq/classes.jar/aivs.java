@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface aivs
+public class aivs
+  implements ajal
 {
-  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
+  public aivs(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+  }
 }
 
 

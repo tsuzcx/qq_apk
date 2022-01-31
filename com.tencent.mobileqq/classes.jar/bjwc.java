@@ -1,28 +1,26 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class bjwc
-  implements bjwg
+public final class bjwc
+  implements InvocationHandler
 {
-  bjwc(bjwb parambjwb, IWebviewListener paramIWebviewListener) {}
+  public bjwc(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public void a()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if (bjwb.a(this.jdField_a_of_type_Bjwb) == null) {}
-    do
-    {
-      return;
-      if (bjwb.a(this.jdField_a_of_type_Bjwb).getVisibility() != 0) {
-        bjwb.a(this.jdField_a_of_type_Bjwb).setVisibility(0);
+    if (paramMethod.getName().equals("onFailed")) {
+      if (this.a != null) {
+        this.a.onFailed();
       }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
+    }
+    for (;;)
+    {
+      return null;
+      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
+        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
     }
   }
 }

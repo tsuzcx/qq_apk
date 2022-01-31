@@ -16,8 +16,8 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bhou;
-import bjxj;
+import bhtb;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
@@ -218,14 +218,14 @@ public class VideoView
   private static Drawable a()
   {
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850002);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850075);
     }
     return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private IVideoViewBase a()
   {
-    if (bhou.d()) {
+    if (bhtb.d()) {
       return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.jdField_a_of_type_AndroidContentContext);
     }
     return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(this.jdField_a_of_type_AndroidContentContext);
@@ -241,12 +241,12 @@ public class VideoView
   {
     if (paramTVK_PlayerVideoInfo != null)
     {
-      paramTVK_PlayerVideoInfo.setConfigMap("ff_probesize", String.valueOf(bjxj.b()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_ff_probelist_switch", String.valueOf(bjxj.r()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_download_async_io", String.valueOf(bjxj.s()));
-      paramTVK_PlayerVideoInfo.setConfigMap("httpbuffertime_for_playpreload", String.valueOf(bjxj.f()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_switch", String.valueOf(bjxj.g()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_config_json", String.valueOf(bjxj.b()));
+      paramTVK_PlayerVideoInfo.setConfigMap("ff_probesize", String.valueOf(bkbq.b()));
+      paramTVK_PlayerVideoInfo.setConfigMap("is_ff_probelist_switch", String.valueOf(bkbq.r()));
+      paramTVK_PlayerVideoInfo.setConfigMap("is_download_async_io", String.valueOf(bkbq.s()));
+      paramTVK_PlayerVideoInfo.setConfigMap("httpbuffertime_for_playpreload", String.valueOf(bkbq.f()));
+      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_switch", String.valueOf(bkbq.g()));
+      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_config_json", String.valueOf(bkbq.b()));
     }
   }
   

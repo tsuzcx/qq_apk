@@ -1,17 +1,10 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import java.util.ArrayList;
 
-public class bnfn
-  implements army
+public abstract interface bnfn
 {
-  public bnfn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void a()
-  {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

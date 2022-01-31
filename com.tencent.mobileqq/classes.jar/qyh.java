@@ -34,7 +34,7 @@ public class qyh
       {
         if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
         {
-          paramKandianUrlImageView.setImageResource(2130841377);
+          paramKandianUrlImageView.setImageResource(2130841378);
           paramKandianUrlImageView.setVisibility(0);
           paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
           return;
@@ -46,14 +46,14 @@ public class qyh
         return;
       }
     } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
-    paramKandianUrlImageView.setImageResource(2130841377);
+    paramKandianUrlImageView.setImageResource(2130841378);
     paramKandianUrlImageView.setVisibility(0);
     paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qyh
  * JD-Core Version:    0.7.0.1
  */

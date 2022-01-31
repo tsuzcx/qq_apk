@@ -1,57 +1,28 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.TextView;
 
 class azxo
-  implements azxm
+  extends alzr
 {
-  azxo(azxn paramazxn) {}
+  azxn jdField_a_of_type_Azxn = null;
   
-  public void a(DownloaderTask paramDownloaderTask)
+  public azxo(azxm paramazxm, azxn paramazxn)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
-    if (azxn.a(this.a) != null) {
-      azxn.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((azxn.a(this.a) != null) && (azxn.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (azxn.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((azxl)azxn.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
-    azxn.a(this.a, paramDownloaderTask.getUrl());
+    this.jdField_a_of_type_Azxn = paramazxn;
   }
   
-  public void b(DownloaderTask paramDownloaderTask)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
-    if (azxn.a(this.a) != null) {
-      azxn.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((azxn.a(this.a) != null) && (azxn.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (azxn.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((azxl)azxn.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
-    }
-    azxn.a(this.a, paramDownloaderTask.getUrl());
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void e(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
-    if ((azxn.a(this.a) != null) && (azxn.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (azxn.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((azxl)azxn.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    if (this.jdField_a_of_type_Azxn != null)
+    {
+      this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131714996));
+        this.jdField_a_of_type_Azxn.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
     }
   }
 }

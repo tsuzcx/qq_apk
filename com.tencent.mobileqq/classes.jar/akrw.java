@@ -1,17 +1,8 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-
-class akrw
-  implements AudioManager.OnAudioFocusChangeListener
+public class akrw
 {
-  akrw(akru paramakru) {}
-  
-  public void onAudioFocusChange(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(akru.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
-    }
-  }
+  public String a = "{}";
+  public boolean a;
+  public boolean b;
 }
 
 

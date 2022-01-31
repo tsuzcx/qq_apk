@@ -5,11 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bkvq;
-import bkvu;
-import blbm;
-import bler;
-import blfg;
+import bkzx;
+import blab;
+import blft;
+import bliy;
+import bljn;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,35 +18,35 @@ public class PlayViewPagerAdapter
 {
   private int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private blbm jdField_a_of_type_Blbm;
+  private blft jdField_a_of_type_Blft;
   private AEPlayShowPageView jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView;
-  private List<bkvq> jdField_a_of_type_JavaUtilList;
+  private List<bkzx> jdField_a_of_type_JavaUtilList;
   
-  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull blbm paramblbm, @NonNull List<bkvq> paramList)
+  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull blft paramblft, @NonNull List<bkzx> paramList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Blbm = paramblbm;
+    this.jdField_a_of_type_Blft = paramblft;
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   private int a(int paramInt)
   {
-    bkvq localbkvq = (bkvq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localbkvq == null) {
+    bkzx localbkzx = (bkzx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localbkzx == null) {
       return 2;
     }
-    return localbkvq.b;
+    return localbkzx.b;
   }
   
   private String a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return ((bkvq)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      return ((bkzx)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
     return "-1";
   }
   
-  private List<bkvu> a(int paramInt)
+  private List<blab> a(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -54,13 +54,13 @@ public class PlayViewPagerAdapter
     {
       localObject1 = localObject2;
       if (this.jdField_a_of_type_JavaUtilList.size() > paramInt) {
-        localObject1 = (bkvq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject1 = (bkzx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       }
     }
-    if ((localObject1 == null) || (((bkvq)localObject1).jdField_a_of_type_JavaUtilList == null)) {
+    if ((localObject1 == null) || (((bkzx)localObject1).jdField_a_of_type_JavaUtilList == null)) {
       return new LinkedList();
     }
-    return ((bkvq)localObject1).jdField_a_of_type_JavaUtilList;
+    return ((bkzx)localObject1).jdField_a_of_type_JavaUtilList;
   }
   
   public AEPlayShowPageView a()
@@ -76,12 +76,12 @@ public class PlayViewPagerAdapter
     return a(this.jdField_a_of_type_Int);
   }
   
-  public List<bkvq> a()
+  public List<bkzx> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(List<bkvq> paramList)
+  public void a(List<bkzx> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -91,7 +91,7 @@ public class PlayViewPagerAdapter
     if ((paramObject instanceof AEPlayShowPageView)) {
       ((AEPlayShowPageView)paramObject).c();
     }
-    blfg.a("AEPlayShowPart", "page destroy.......");
+    bljn.a("AEPlayShowPart", "page destroy.......");
     paramViewGroup.removeView((View)paramObject);
   }
   
@@ -110,7 +110,7 @@ public class PlayViewPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AEPlayShowPageView localAEPlayShowPageView = new AEPlayShowPageView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Blbm, a(paramInt), a(paramInt));
+    AEPlayShowPageView localAEPlayShowPageView = new AEPlayShowPageView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Blft, a(paramInt), a(paramInt));
     paramViewGroup.addView(localAEPlayShowPageView);
     return localAEPlayShowPageView;
   }
@@ -131,9 +131,9 @@ public class PlayViewPagerAdapter
       this.jdField_a_of_type_Int = paramInt;
       if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
       {
-        paramViewGroup = (bkvq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramViewGroup = (bkzx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
         if (paramViewGroup != null) {
-          bler.a().g(paramViewGroup.jdField_a_of_type_JavaLangString + "");
+          bliy.a().g(paramViewGroup.jdField_a_of_type_JavaLangString + "");
         }
       }
       if ((paramObject instanceof AEPlayShowPageView))

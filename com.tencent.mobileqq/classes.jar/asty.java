@@ -1,22 +1,27 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-class asty
-  implements TVK_SDKMgr.InstallListener
+public class asty
+  implements Animator.AnimatorListener
 {
-  asty(astw paramastw) {}
+  public asty(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void onInstallProgress(float paramFloat) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onInstalledFailed(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    astv.b("installSDK onInstalledFailed arg0=" + paramInt);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    this.a.b.setVisibility(8);
   }
   
-  public void onInstalledSuccessed()
-  {
-    astv.b("installSDK onInstalledSuccessed");
-    astw.a(this.a);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

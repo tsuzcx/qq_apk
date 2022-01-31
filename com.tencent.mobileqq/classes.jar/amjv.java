@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 
-final class amjv
-  implements DialogInterface.OnDismissListener
+public abstract interface amjv
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    amju.a(null);
-  }
+  public abstract void a(View paramView);
 }
 
 

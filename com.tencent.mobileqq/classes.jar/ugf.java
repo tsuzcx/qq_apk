@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 
 class ugf
-  implements View.OnClickListener
+  extends LinearLayoutManager
 {
-  ugf(ugc paramugc) {}
-  
-  public void onClick(View paramView)
+  ugf(uge paramuge, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if (ugc.a(this.a) != null) {
-      ugc.a(this.a).a(ugc.a(this.a));
-    }
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
   }
 }
 

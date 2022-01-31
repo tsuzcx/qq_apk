@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bgpw;
+import bgud;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
   implements Runnable
 {
-  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(bgpw parambgpw) {}
+  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(bgud parambgud) {}
   
   public void run()
   {

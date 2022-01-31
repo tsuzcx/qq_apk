@@ -2,8 +2,8 @@ package cooperation.vip.qqbanner;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import bkca;
-import bkcb;
+import bkgh;
+import bkgi;
 import cooperation.qzone.util.QZLog;
 
 class QbossADBannerCountDownManager$2$1
@@ -13,21 +13,21 @@ class QbossADBannerCountDownManager$2$1
   
   public void run()
   {
-    if ((bkcb.c(this.a.this$0) == null) || (TextUtils.isEmpty(bkcb.c(this.a.this$0).getText()))) {}
+    if ((bkgi.c(this.a.this$0) == null) || (TextUtils.isEmpty(bkgi.c(this.a.this$0).getText()))) {}
     Object localObject;
     do
     {
       return;
       if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerManager", 2, "count down text = " + bkcb.c(this.a.this$0).getText());
+        QZLog.i("QbossADBannerManager", 2, "count down text = " + bkgi.c(this.a.this$0).getText());
       }
-      localObject = bkcb.c(this.a.this$0).getText().toString().split(":");
+      localObject = bkgi.c(this.a.this$0).getText().toString().split(":");
       if ((localObject != null) && (localObject.length == 2)) {
         break;
       }
-      bkcb.b(this.a.this$0);
+      bkgi.b(this.a.this$0);
     } while (!QZLog.isColorLevel());
-    QZLog.i("QbossADBannerManager", 2, "stopTimer split error text = " + bkcb.c(this.a.this$0).getText());
+    QZLog.i("QbossADBannerManager", 2, "stopTimer split error text = " + bkgi.c(this.a.this$0).getText());
     return;
     for (;;)
     {
@@ -47,16 +47,16 @@ class QbossADBannerCountDownManager$2$1
       }
       catch (Exception localException)
       {
-        bkcb localbkcb;
+        bkgi localbkgi;
         localException.printStackTrace();
         return;
       }
-      localbkcb = this.a.this$0;
-      if (bkcb.a(this.a.this$0) != null)
+      localbkgi = this.a.this$0;
+      if (bkgi.a(this.a.this$0) != null)
       {
-        localObject = bkcb.a(this.a.this$0).h;
-        bkcb.a(localbkcb, (String)localObject);
-        bkcb.b(this.a.this$0);
+        localObject = bkgi.a(this.a.this$0).h;
+        bkgi.a(localbkgi, (String)localObject);
+        bkgi.b(this.a.this$0);
         return;
       }
       String str = "";
@@ -64,7 +64,7 @@ class QbossADBannerCountDownManager$2$1
       label305:
       do
       {
-        bkcb.a(this.a.this$0, bkcb.a(this.a.this$0, j, i));
+        bkgi.a(this.a.this$0, bkgi.a(this.a.this$0, j, i));
         return;
         if (j < 0) {
           break;

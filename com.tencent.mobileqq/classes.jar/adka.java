@@ -1,114 +1,55 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adka
-  extends BaseAdapter
+  implements DialogInterface.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adkb(this);
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  public adka(NotificationActivity paramNotificationActivity) {}
   
-  public adka(List<ProfileLabelInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  private void a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    Object localObject = null;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a().keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
-      }
-      localObject = localProfileLabelInfo;
+    azqs.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA30", "0X800AA30", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = this.a.getIntent();
+    paramDialogInterface = null;
+    if (localObject != null) {
+      paramDialogInterface = ((Intent)localObject).getStringExtra("errorUrl");
     }
-    label114:
+    localObject = paramDialogInterface;
+    if (TextUtils.isEmpty(paramDialogInterface)) {
+      localObject = "https://aq.qq.com/007";
+    }
+    QLog.d("NotificationActivity", 1, "loginFailed, before operate jump url is : " + (String)localObject);
+    localStringBuilder.append((String)localObject);
+    if (!((String)localObject).contains("?")) {
+      localStringBuilder.append("?");
+    }
+    if (!((String)localObject).endsWith("?")) {
+      localStringBuilder.append("&");
+    }
     for (;;)
     {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a(localObject)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a(localObject));
-        return;
-      }
-      a(paramProfileLabelInfo.labelId);
+      localStringBuilder.append("from=andapp&account=").append(NotificationActivity.d(this.a));
+      paramDialogInterface = localStringBuilder.toString();
+      QLog.d("NotificationActivity", 1, "loginFailed, after operate jump url is : " + paramDialogInterface);
+      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      this.a.startActivity(((Intent)localObject).putExtra("url", paramDialogInterface));
+      this.a.finish();
       return;
-    }
-  }
-  
-  private void a(Long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
-    }
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
-    if (paramLong != null) {
-      paramLong.toggleStatus();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562691, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
-      paramViewGroup = new adjz();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377352));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      return paramView;
-      paramViewGroup = (adjz)paramView.getTag();
+      if (((String)localObject).indexOf("?") != ((String)localObject).lastIndexOf("?")) {
+        localStringBuilder.append("&");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adka
  * JD-Core Version:    0.7.0.1
  */

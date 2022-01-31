@@ -11,8 +11,8 @@ class ShortVideoUploadProcessor$10
     // Byte code:
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   4: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   7: getfield 33	baub:i	Ljava/lang/String;
+    //   4: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   7: getfield 33	bayk:i	Ljava/lang/String;
     //   10: astore_2
     //   11: aload_2
     //   12: ldc 35
@@ -42,11 +42,11 @@ class ShortVideoUploadProcessor$10
     //   64: athrow
     //   65: aload_0
     //   66: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   69: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   69: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
     //   72: aload_3
     //   73: iconst_0
     //   74: aaload
-    //   75: putfield 33	baub:i	Ljava/lang/String;
+    //   75: putfield 33	bayk:i	Ljava/lang/String;
     //   78: aload_0
     //   79: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
     //   82: aload_3
@@ -69,27 +69,27 @@ class ShortVideoUploadProcessor$10
     //   111: putfield 94	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	[B
     //   114: aload_0
     //   115: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   118: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   118: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
     //   121: aload_0
     //   122: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   125: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   128: getfield 97	baub:a	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   125: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   128: getfield 97	bayk:a	Lcom/tencent/mobileqq/data/MessageRecord;
     //   131: checkcast 99	com/tencent/mobileqq/data/MessageForShortVideo
     //   134: checkcast 99	com/tencent/mobileqq/data/MessageForShortVideo
     //   137: getfield 102	com/tencent/mobileqq/data/MessageForShortVideo:mLocalMd5	Ljava/lang/String;
-    //   140: putfield 105	baub:f	Ljava/lang/String;
+    //   140: putfield 105	bayk:f	Ljava/lang/String;
     //   143: aload_0
     //   144: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   147: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   150: getfield 105	baub:f	Ljava/lang/String;
+    //   147: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   150: getfield 105	bayk:f	Ljava/lang/String;
     //   153: invokestatic 111	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   156: ifne +60 -> 216
     //   159: aload_0
     //   160: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
     //   163: aload_0
     //   164: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   167: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   170: getfield 105	baub:f	Ljava/lang/String;
+    //   167: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   170: getfield 105	bayk:f	Ljava/lang/String;
     //   173: invokestatic 91	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   176: putfield 113	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   179: aload_0
@@ -97,16 +97,16 @@ class ShortVideoUploadProcessor$10
     //   183: astore_2
     //   184: aload_0
     //   185: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   188: getfield 116	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baoj	Lbaoj;
+    //   188: getfield 116	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bass	Lbass;
     //   191: astore_3
     //   192: aload_0
     //   193: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   196: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   199: getfield 105	baub:f	Ljava/lang/String;
+    //   196: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   199: getfield 105	bayk:f	Ljava/lang/String;
     //   202: astore 4
     //   204: aload_3
     //   205: aload 4
-    //   207: putfield 119	baoj:f	Ljava/lang/String;
+    //   207: putfield 119	bass:f	Ljava/lang/String;
     //   210: aload_2
     //   211: aload 4
     //   213: putfield 121	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_JavaLangString	Ljava/lang/String;
@@ -124,9 +124,9 @@ class ShortVideoUploadProcessor$10
     //   243: return
     //   244: aload_0
     //   245: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   248: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   251: getfield 33	baub:i	Ljava/lang/String;
-    //   254: invokestatic 132	bdcs:b	(Ljava/lang/String;)Z
+    //   248: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   251: getfield 33	bayk:i	Ljava/lang/String;
+    //   254: invokestatic 132	bdhb:b	(Ljava/lang/String;)Z
     //   257: ifne +23 -> 280
     //   260: aload_0
     //   261: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
@@ -147,8 +147,8 @@ class ShortVideoUploadProcessor$10
     //   297: dup
     //   298: aload_0
     //   299: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   302: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   305: getfield 33	baub:i	Ljava/lang/String;
+    //   302: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   305: getfield 33	bayk:i	Ljava/lang/String;
     //   308: ldc 144
     //   310: invokespecial 147	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   313: putfield 140	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
@@ -353,15 +353,15 @@ class ShortVideoUploadProcessor$10
     //   723: monitorenter
     //   724: aload_0
     //   725: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   728: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   731: getfield 195	baub:b	Ljava/lang/String;
+    //   728: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   731: getfield 195	bayk:b	Ljava/lang/String;
     //   734: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   737: invokevirtual 203	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   740: ifnull +61 -> 801
     //   743: aload_0
     //   744: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   747: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   750: getfield 195	baub:b	Ljava/lang/String;
+    //   747: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   750: getfield 195	bayk:b	Ljava/lang/String;
     //   753: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   756: invokevirtual 203	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   759: arraylength
@@ -374,8 +374,8 @@ class ShortVideoUploadProcessor$10
     //   771: pop
     //   772: aload_0
     //   773: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   776: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   779: getfield 195	baub:b	Ljava/lang/String;
+    //   776: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   779: getfield 195	bayk:b	Ljava/lang/String;
     //   782: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   785: invokevirtual 203	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   788: iconst_0
@@ -387,15 +387,15 @@ class ShortVideoUploadProcessor$10
     //   798: invokestatic 212	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   801: aload_0
     //   802: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   805: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   808: getfield 195	baub:b	Ljava/lang/String;
+    //   805: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   808: getfield 195	bayk:b	Ljava/lang/String;
     //   811: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   814: invokevirtual 215	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   817: ifnull +61 -> 878
     //   820: aload_0
     //   821: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   824: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   827: getfield 195	baub:b	Ljava/lang/String;
+    //   824: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   827: getfield 195	bayk:b	Ljava/lang/String;
     //   830: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   833: invokevirtual 215	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   836: arraylength
@@ -408,8 +408,8 @@ class ShortVideoUploadProcessor$10
     //   848: pop
     //   849: aload_0
     //   850: getfield 12	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor$10:this$0	Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;
-    //   853: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
-    //   856: getfield 195	baub:b	Ljava/lang/String;
+    //   853: getfield 27	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Bayk	Lbayk;
+    //   856: getfield 195	bayk:b	Ljava/lang/String;
     //   859: invokestatic 199	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
     //   862: invokevirtual 215	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   865: iconst_0

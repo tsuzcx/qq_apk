@@ -1,47 +1,35 @@
-import android.graphics.Bitmap;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
-public class wxw
-  extends wyj
+class wxw
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  wxw(wxv paramwxv) {}
   
-  public wxw(int paramInt, Bitmap paramBitmap)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if (paramBoolean)
+    {
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Xan.a.a != null) {
+        this.a.jdField_a_of_type_Xan.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
+    }
   }
   
-  public wxw a(Bitmap paramBitmap)
-  {
-    paramBitmap = new wxw(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    this.jdField_a_of_type_Boolean = false;
-    return paramBitmap;
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
   
-  public String toString()
-  {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
-  }
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

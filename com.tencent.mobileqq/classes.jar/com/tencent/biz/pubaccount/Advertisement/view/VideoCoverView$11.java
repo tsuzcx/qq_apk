@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
 import android.os.Handler;
-import azmj;
+import azqs;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import nlo;
 import nlq;
@@ -20,7 +20,7 @@ class VideoCoverView$11
       {
         i = (int)((float)VideoCoverView.a(this.this$0).getCurrentPostion() * 1.0F * 100.0F / (float)this.this$0.jdField_a_of_type_Long);
         if ((VideoCoverView.a(this.this$0) == 1) && (i < VideoCoverView.a(this.this$0).d) && (VideoCoverView.a(this.this$0) != null) && (VideoCoverView.a(this.this$0).a != null)) {
-          azmj.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
+          azqs.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
         }
         if (VideoCoverView.b(this.this$0) != VideoCoverView.a(this.this$0).c) {
           continue;

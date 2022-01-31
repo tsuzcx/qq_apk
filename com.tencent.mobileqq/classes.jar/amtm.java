@@ -1,10 +1,18 @@
-public abstract interface amtm
+public class amtm
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public long a;
+  public String a;
+  public long b;
   
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void k_(int paramInt);
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
+    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", nEndTime=").append(this.b);
+    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

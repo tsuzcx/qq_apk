@@ -1,59 +1,18 @@
-import SummaryCard.CondFitUser;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aodr
-  implements allp
+class aodr
+  implements View.OnClickListener
 {
-  public aodr(SearchResultActivity paramSearchResultActivity) {}
+  aodr(aodp paramaodp) {}
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramInt == 3) {
-      if (!paramBoolean1)
-      {
-        this.a.b = 3;
-        this.a.jdField_a_of_type_Aodt.notifyDataSetChanged();
-      }
+    aodl.a(this.a.a).setVisibility(8);
+    aodl.a(this.a.a, null);
+    if (aodl.a(this.a.a).getItemCount() == 0) {
+      aodl.a(this.a.a);
     }
-    while (paramInt != 2)
-    {
-      return;
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      paramList = this.a;
-      if (paramBoolean2) {}
-      for (paramInt = i;; paramInt = 0)
-      {
-        paramList.b = paramInt;
-        break;
-      }
-    }
-    if (paramBoolean1)
-    {
-      bdah.a(true);
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      this.a.jdField_a_of_type_Aodt.notifyDataSetChanged();
-      bdah.a(false);
-      SearchResultActivity.a(this.a).a(0);
-      paramList = Message.obtain();
-      paramList.what = 5;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
-      return;
-    }
-    SearchResultActivity.a(this.a).a(1);
-    paramList = Message.obtain();
-    paramList.what = 4;
-    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
   }
 }
 

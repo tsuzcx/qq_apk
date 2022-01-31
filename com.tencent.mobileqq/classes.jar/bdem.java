@@ -1,225 +1,68 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdem
+  implements aetk
 {
-  private static String a = "PackageUtil";
+  List<View.OnTouchListener> a = new ArrayList();
+  List<View.OnLongClickListener> b = new ArrayList();
+  List<aetk> c = new ArrayList();
   
-  public static String a(Context paramContext, String paramString)
+  void a(aetk paramaetk)
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
-      if (paramContext == null) {
-        return "0";
-      }
-      paramContext = paramContext.versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "0";
+    this.c.add(paramaetk);
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  void a(View.OnTouchListener paramOnTouchListener)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
+    this.a.add(paramOnTouchListener);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    for (int i = 0;; i = 0) {
       try
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
-        if (paramContext != null) {
-          return true;
-        }
-      }
-      catch (Exception paramContext) {}
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    return a(paramContext, paramString1, paramString2, null, 0);
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "<--startAppWithPkgName pkgName=" + paramString1 + ",openid=" + paramString2);
-      }
-      paramString1 = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1.trim());
-      paramString1.setFlags(268435456);
-      if ((paramString2 != null) && (paramString2.length() > 4)) {
-        paramString1.putExtra("current_uin", paramString2);
-      }
-      paramString1.putExtra("platformId", "qq_m");
-      paramString1.putExtra("big_brother_source_key", paramString3);
-      paramString1.putExtra("key_callback_id", paramInt);
-      paramContext.startActivity(paramString1);
-      return true;
-    }
-    catch (Exception paramContext) {}
-    return false;
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    if (paramString == null) {
-      return "0";
-    }
-    paramContext = paramContext.getPackageManager();
-    paramString = paramString.split("\\|");
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramString.length)
-      {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
+        while (i < this.b.size())
         {
-          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
-          if (localPackageInfo == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(localPackageInfo.versionName);
+          ((View.OnLongClickListener)this.b.get(i)).onLongClick(paramView);
+          i += 1;
+          continue;
+          while (i < this.c.size())
+          {
+            ((View.OnLongClickListener)this.c.get(i)).onLongClick(paramView);
+            i += 1;
           }
-        }
-        catch (Exception localException)
-        {
-          localStringBuffer.append(0);
+          return false;
         }
       }
-      else
-      {
-        return localStringBuffer.toString();
-      }
-      i += 1;
+      finally {}
     }
   }
   
-  public static boolean b(Context paramContext, String paramString1, String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
-    try
-    {
-      paramString1 = localPackageManager.getPackageInfo(paramString1, 64);
-      paramContext = paramString1;
-    }
-    catch (PackageManager.NameNotFoundException paramString1)
-    {
-      do
+    for (int i = 0;; i = 0) {
+      try
       {
-        for (;;)
+        while (i < this.a.size())
         {
-          paramString1.printStackTrace();
-        }
-      } while ((paramContext.signatures == null) || (paramContext.signatures.length <= 0));
-      paramContext = paramContext.signatures;
-      j = paramContext.length;
-      i = 0;
-    }
-    if (paramContext == null) {}
-    for (;;)
-    {
-      return false;
-      int j;
-      int i;
-      while (i < j)
-      {
-        if (paramString2.equals(MD5.toMD5(paramContext[i].toByteArray()))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static String c(Context paramContext, String paramString)
-  {
-    if (paramString == null) {
-      return "0";
-    }
-    paramContext = paramContext.getPackageManager();
-    paramString = paramString.split("\\|");
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramString.length)
-      {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
-        {
-          if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(1);
+          ((View.OnTouchListener)this.a.get(i)).onTouch(paramView, paramMotionEvent);
+          i += 1;
+          continue;
+          while (i < this.c.size())
+          {
+            ((aetk)this.c.get(i)).onTouch(paramView, paramMotionEvent);
+            i += 1;
           }
-        }
-        catch (Exception localException)
-        {
-          localStringBuffer.append(0);
+          return false;
         }
       }
-      else
-      {
-        return localStringBuffer.toString();
-      }
-      i += 1;
-    }
-  }
-  
-  public static String d(Context paramContext, String paramString)
-  {
-    if (paramString == null) {
-      return "0";
-    }
-    paramContext = paramContext.getPackageManager();
-    paramString = paramString.split("\\|");
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramString.length)
-      {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
-        {
-          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
-          if (localPackageInfo == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(localPackageInfo.versionCode);
-          }
-        }
-        catch (Exception localException)
-        {
-          localStringBuffer.append(0);
-        }
-      }
-      else
-      {
-        return localStringBuffer.toString();
-      }
-      i += 1;
+      finally {}
     }
   }
 }

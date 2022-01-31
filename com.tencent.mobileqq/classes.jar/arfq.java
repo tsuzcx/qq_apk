@@ -1,14 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
 class arfq
-  implements azjq
+  implements DialogInterface.OnDismissListener
 {
-  arfq(arfh paramarfh) {}
+  arfq(arfp paramarfp) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    arni.a(this.a.a, this.a.d());
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
   }
-  
-  public void b() {}
 }
 
 

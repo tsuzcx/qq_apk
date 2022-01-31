@@ -1,15 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 
-final class ales
-  implements akzo
+public class ales
+  implements Comparable<ales>
 {
-  ales(aleu paramaleu, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aknx paramaknx, int[] paramArrayOfInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public short b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e = -1;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 0;
+  public String g;
+  public int h;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public int a(ales paramales)
   {
-    if (this.jdField_a_of_type_Aleu != null) {
-      this.jdField_a_of_type_Aleu.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aknx.a, this.jdField_a_of_type_ArrayOfInt, 22);
-    }
+    if (paramales == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_a_of_type_Boolean == paramales.jdField_a_of_type_Boolean) {
+        return -(int)(this.c - paramales.c);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
   }
 }
 

@@ -9,7 +9,7 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdku;
+import bdpd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -187,7 +187,7 @@ public class CloudStorageServlet
         i = 1015;
         localObject = new Bundle();
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
         ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
         notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject, MiniAppObserver.class);
       }
@@ -219,7 +219,7 @@ public class CloudStorageServlet
         i = 1019;
         localObject = new Bundle();
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
         putData((Bundle)localObject, localStQWebRsp);
         ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
         notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), (Bundle)localObject, MiniAppObserver.class);
@@ -240,7 +240,7 @@ public class CloudStorageServlet
     if (arrayOfByte == null) {
       localObject = new byte[4];
     }
-    paramPacket.putSendData(bdku.a((byte[])localObject));
+    paramPacket.putSendData(bdpd.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

@@ -1,16 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atbx
-  implements DialogInterface.OnDismissListener
+class atbx
+  implements View.OnClickListener
 {
-  public atbx(WatchTogetherVCtrlFragment paramWatchTogetherVCtrlFragment, Activity paramActivity) {}
+  atbx(atbu paramatbu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    atbp.a(this.a.a, false);
   }
 }
 

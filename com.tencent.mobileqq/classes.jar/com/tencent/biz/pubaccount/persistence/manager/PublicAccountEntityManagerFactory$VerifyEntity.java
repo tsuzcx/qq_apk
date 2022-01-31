@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import awbv;
+import awge;
 
 public class PublicAccountEntityManagerFactory$VerifyEntity
-  extends awbv
+  extends awge
 {
   public String flags = "public_account_database_verify_entity";
   public String name = "";

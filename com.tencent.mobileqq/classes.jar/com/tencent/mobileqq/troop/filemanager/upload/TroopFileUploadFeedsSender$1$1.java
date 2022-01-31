@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.text.TextUtils;
-import baet;
-import bbnr;
-import bbra;
-import bbrc;
-import bbtc;
-import bbtd;
+import bajc;
+import bbsa;
+import bbvj;
+import bbvl;
+import bbxl;
+import bbxm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -15,27 +15,27 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class TroopFileUploadFeedsSender$1$1
   implements Runnable
 {
-  public TroopFileUploadFeedsSender$1$1(bbtd parambbtd, String paramString, bbnr parambbnr) {}
+  public TroopFileUploadFeedsSender$1$1(bbxm parambbxm, String paramString, bbsa parambbsa) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bbnr.b)) {
-      localObject = this.jdField_a_of_type_Bbnr.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bbsa.b)) {
+      localObject = this.jdField_a_of_type_Bbsa.b;
     }
-    QQAppInterface localQQAppInterface = bbra.a();
+    QQAppInterface localQQAppInterface = bbvj.a();
     if (localQQAppInterface == null)
     {
-      bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "[" + this.jdField_a_of_type_Bbtd.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "[" + this.jdField_a_of_type_Bbxm.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
       return;
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Bbtd.a.d), 1, (String)localObject);
+    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Bbxm.a.d), 1, (String)localObject);
     if (localObject != null)
     {
-      ((baet)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
+      ((bajc)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
       return;
     }
-    bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "[" + this.jdField_a_of_type_Bbtd.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bbtd.a.d + "], id:" + this.jdField_a_of_type_Bbnr.b);
+    bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "[" + this.jdField_a_of_type_Bbxm.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bbxm.a.d + "], id:" + this.jdField_a_of_type_Bbsa.b);
   }
 }
 

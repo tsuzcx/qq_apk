@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import bdox;
-import befo;
-import befr;
+import bdtg;
+import bejx;
+import beka;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.AppRuntime;
 public class SwiftWebAccelerator$6
   implements Runnable
 {
-  public SwiftWebAccelerator$6(befo parambefo, long paramLong) {}
+  public SwiftWebAccelerator$6(bejx parambejx, long paramLong) {}
   
   public void run()
   {
@@ -25,10 +25,10 @@ public class SwiftWebAccelerator$6
     }
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load http core data config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    befr.a();
+    beka.a();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load cdn cache config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    bdox.a(BaseApplicationImpl.sApplication.getRuntime());
+    bdtg.a(BaseApplicationImpl.sApplication.getRuntime());
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load Individuation url config, cost " + (System.currentTimeMillis() - l) + "ms.");
   }
 }

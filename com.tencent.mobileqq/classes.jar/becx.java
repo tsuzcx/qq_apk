@@ -1,20 +1,8 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class becx
-  extends beda
+public abstract class becx
 {
-  becx(becv parambecv)
-  {
-    super(parambecv);
-  }
+  public void a() {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

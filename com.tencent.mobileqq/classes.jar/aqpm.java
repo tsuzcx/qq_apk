@@ -1,6 +1,17 @@
-public abstract interface aqpm
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+final class aqpm
+  implements arrh
 {
-  public abstract void a(boolean paramBoolean);
+  aqpm(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
+  {
+    arrr.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+  }
+  
+  public void b() {}
 }
 
 

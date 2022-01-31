@@ -1,123 +1,60 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ahcp
-  extends alox
+  extends BroadcastReceiver
 {
   ahcp(ahco paramahco) {}
   
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahco.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean1);
-    }
-    int i;
-    if (paramInt1 == 87)
+    String str1 = paramIntent.getStringExtra("callback");
+    int i = paramIntent.getIntExtra("bless_type", 0);
+    int j = paramIntent.getIntExtra("bless_num", 0);
+    paramContext = new JSONObject();
+    try
     {
-      this.a.b();
-      i = 1;
+      paramContext.put("bless_type", i);
+      paramContext.put("bless_num", j);
+      if (QLog.isColorLevel()) {
+        QLog.i("BlessJsApiPlugin", 2, String.format("call blessWebView, blesstype:%d, member:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+      }
+      if (i != 2) {}
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      Object localObject;
-      if (ahco.a(this.a) != null)
+      try
       {
-        localObject = ahco.a(this.a);
-        if (i != 0) {
-          label81:
-          ((ahcq)localObject).a(paramInt1, paramBoolean1, paramObject, paramInt2, paramString);
-        }
-      }
-      else
-      {
-        label95:
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt1 != 88) {
-              break;
-            }
-          } while (paramLong != ahco.a(this.a));
-          this.a.b();
-          if (paramBoolean2) {
-            break;
-          }
-        } while (ahco.a(this.a) == null);
-        ahco.a(this.a).a(ahco.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
+        str1 = paramIntent.getStringExtra("bless_ptv_url");
+        String str2 = paramIntent.getStringExtra("bless_ptv_uuid");
+        String str3 = paramIntent.getStringExtra("bless_ptv_md5");
+        paramIntent = paramIntent.getStringExtra("bless_ptv_nick");
+        paramContext.put("bless_ptv_url", str1);
+        paramContext.put("bless_ptv_uuid", str2);
+        paramContext.put("bless_ptv_md5", str3);
+        paramContext.put("bless_ptv_nick", paramIntent);
+        this.a.callJs(ahco.a(), new String[] { paramContext.toString() });
         return;
-        if (!paramBoolean1) {}
+        localJSONException = localJSONException;
+        localJSONException.printStackTrace();
       }
-      for (;;)
+      catch (JSONException paramIntent)
       {
-        try
+        for (;;)
         {
-          localObject = (ArrayList)paramObject;
-          if ((localObject != null) && (ahco.a(this.a) != 80000005) && (((ArrayList)localObject).size() == 1)) {
-            ahco.a(this.a, ((ahea)((ArrayList)localObject).get(0)).jdField_b_of_type_Int);
-          }
-          if ((localObject == null) || (((ArrayList)localObject).size() < 1)) {
-            break label582;
-          }
-          localObject = ((ArrayList)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label570;
-          }
-          ahea localahea = (ahea)((Iterator)localObject).next();
-          if (localahea.a != 80000003) {
-            continue;
-          }
-          i = 0;
-          if (i >= localahea.jdField_b_of_type_JavaUtilList.size()) {
-            break label576;
-          }
-          ((AccountSearchPb.record)localahea.jdField_b_of_type_JavaUtilList.get(i)).number.set(i + 1);
-          i += 1;
-          continue;
-          if (i == 0) {
-            break label582;
-          }
-          if (ahco.a(this.a) != 80000005) {
-            nrt.a(ahco.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, ahco.b(this.a) + "", "", this.a.b, "", false);
-          } else {
-            nrt.a(ahco.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D94", "0X8005D94", 0, 0, "", "", this.a.b, "", false);
-          }
+          paramIntent.printStackTrace();
         }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e(ahco.a, 2, "", paramObject);
-          }
-        }
-        if (ahco.a(this.a) == null) {
-          break label95;
-        }
-        ahco.a(this.a).a(ahco.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(ahco.a, 2, "search failed error msg = " + paramString);
-          i = 0;
-          break;
-          this.a.b();
-        }
-        i = 0;
-        break;
-        paramInt1 = ahco.a(this.a);
-        break label81;
-        label570:
-        i = 0;
-        continue;
-        label576:
-        i = 1;
       }
-      label582:
-      i = 0;
+      if (i == 3)
+      {
+        this.a.callJs(ahco.a(), new String[] { paramContext.toString() });
+        return;
+      }
+      this.a.callJs(str1, new String[] { paramContext.toString() });
     }
   }
 }

@@ -1,49 +1,70 @@
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class aoqc
-  extends aopw<aopz>
+  extends aokh<aoqb>
 {
-  @NonNull
-  public static aopz c()
-  {
-    aopz localaopz2 = (aopz)aogj.a().a(541);
-    aopz localaopz1 = localaopz2;
-    if (localaopz2 == null) {
-      localaopz1 = aopz.a();
-    }
-    return localaopz1;
-  }
-  
   public int a()
   {
-    return 541;
+    return 390;
   }
   
   @NonNull
-  public aopz a()
+  public aoqb a(int paramInt)
   {
-    return aopz.a();
+    return new aoqb();
   }
   
-  @NonNull
-  public aopz a(@NonNull aogf[] paramArrayOfaogf)
+  @Nullable
+  public aoqb a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaogf[0].a);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      aoqb localaoqb = aoqb.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaoqb;
     }
-    return aopz.a(paramArrayOfaogf[0].a);
+    return new aoqb();
   }
   
-  public Class<aopz> a()
+  public Class<aoqb> a()
   {
-    return aopz.class;
+    return aoqb.class;
   }
   
-  @NonNull
-  public aopz b()
+  public void a(int paramInt) {}
+  
+  public void a(aoqb paramaoqb)
   {
-    return aopz.a();
+    ((auaa)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramaoqb);
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramaoqb);
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

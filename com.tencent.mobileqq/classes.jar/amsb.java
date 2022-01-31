@@ -1,203 +1,53 @@
-import android.util.Xml;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
 
 public class amsb
 {
-  public static int a(String paramString)
+  private static int a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return 1;
+    }
+    if (paramInt == 1) {
+      return 0;
+    }
+    return 2;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    paramInt = a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
+    }
+    paramQQAppInterface = (amru)paramQQAppInterface.a(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramString1, paramString2, paramInt);
+    }
+  }
+  
+  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
+    }
+    paramQQAppInterface = (amru)paramQQAppInterface.a(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
+    }
+  }
+  
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
   {
     try
     {
-      int i = amsp.a("arcloud", "v8.2.0.1", amsp.b("arcloud", "v8.2.0.1", "arcloud"), paramString);
-      return i;
+      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
+      return;
     }
-    finally
+    catch (NumberFormatException paramQQAppInterface)
     {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    int i = -5;
-    for (;;)
-    {
-      try
-      {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        amsp.a("arcloud", "v8.2.0.1", "arcloud", paramString2);
-        paramString2 = amsp.a("arcloud", "v8.2.0.1", paramString2);
-        try
-        {
-          amsl.a(paramString1, paramString2);
-          localObject1 = paramString2 + File.separator + "md5_config.xml";
-          localObject2 = new File((String)localObject1);
-          if (!((File)localObject2).exists()) {
-            break label587;
-          }
-          new HashMap();
-        }
-        catch (IOException localIOException)
-        {
-          Object localObject1;
-          Object localObject2;
-          Object localObject3;
-          String str;
-          i = -6;
-          bdcs.a(paramString2, false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
-          }
-          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
-          continue;
-        }
-      }
-      finally {}
-      try
-      {
-        localObject1 = a(bdcs.b((File)localObject2));
-        if (((HashMap)localObject1).size() <= 0) {
-          break label557;
-        }
-        paramString1 = ((HashMap)localObject1).entrySet().iterator();
-        if (!paramString1.hasNext()) {
-          break label628;
-        }
-        localObject2 = (Map.Entry)paramString1.next();
-        localObject3 = (String)((Map.Entry)localObject2).getKey();
-        localObject1 = paramString2 + File.separator + (String)localObject3 + ".so";
-        amsp.a("arcloud", "v8.2.0.1", (String)localObject3, (String)((Map.Entry)localObject2).getValue());
-        localObject3 = new File((String)localObject1);
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + (String)localObject1);
-        if (!((File)localObject3).exists()) {
-          break label516;
-        }
-        str = awiz.a((String)localObject1);
-        localObject2 = (String)((Map.Entry)localObject2).getValue();
-        if (((String)localObject2).equalsIgnoreCase(str)) {
-          continue;
-        }
-        ((File)localObject3).delete();
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + (String)localObject1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject2);
-        i = -3;
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + localIOException);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      return i;
-      label516:
-      label557:
-      label587:
-      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + localIOException);
-      i = -2;
-      continue;
-      label628:
-      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
-    }
-  }
-  
-  public static String a()
-  {
-    return "libARCloud";
-  }
-  
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      break label178;
-      str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("libARCloud"))
-      {
-        localHashMap.put("libARCloud", localXmlPullParser.nextText());
-      }
-      else if (str.equalsIgnoreCase("libARCloud_64"))
-      {
-        localHashMap.put("libARCloud_64", localException.nextText());
-        label178:
-        while (i == 1)
-        {
-          String str;
-          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
-        }
-        switch (i)
-        {
-        }
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return new File(amsp.a("arcloud", "v8.2.0.1", amsp.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + a() + ".so").exists();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        String str = amsp.a("arcloud", "v8.2.0.1", amsp.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + paramString + ".so";
-        Object localObject = new File(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
-        }
-        if (((File)localObject).exists())
-        {
-          paramString = amsp.b("arcloud", "v8.2.0.1", paramString);
-          localObject = awiz.a(str);
-          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
-          if (bool2)
-          {
-            bool1 = true;
-            return bool1;
-          }
-          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
-          continue;
-        }
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
-      }
-      finally {}
+      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
     }
   }
 }

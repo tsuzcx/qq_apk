@@ -3,7 +3,7 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import azbz;
+import azgi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 
@@ -27,7 +27,7 @@ public class GestureConfigHandler
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DownloadInfo paramDownloadInfo)
   {
-    azbz.a(paramQQAppInterface, paramString, paramDownloadInfo);
+    azgi.a(paramQQAppInterface, paramString, paramDownloadInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)

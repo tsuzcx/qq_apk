@@ -1,51 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class vly
-  implements uni<vau, vcs>
+final class vly
+  implements bhuk
 {
-  vly(vlx paramvlx, vll paramvll) {}
+  vly(CommentEntry paramCommentEntry, bhuf parambhuf) {}
   
-  public void a(@NonNull vau paramvau, @Nullable vcs paramvcs, @NonNull ErrorMessage paramErrorMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramvcs == null) || (paramErrorMessage.isFail()))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Vll.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Vlx.jdField_a_of_type_Vld));
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new vdw().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      wxe.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
     }
-    paramvcs.jdField_a_of_type_JavaUtilList = ((uro)urr.a(5)).a(paramvcs.jdField_a_of_type_JavaUtilList);
-    paramvau = paramvcs.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramvau.hasNext()) {
-      ((StoryVideoItem)paramvau.next()).mOwnerUid = vlw.a(this.jdField_a_of_type_Vlx.jdField_a_of_type_Vlw).uid;
-    }
-    ((uid)urr.a(28)).a(paramvcs.b);
-    paramvau = paramvcs.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramvau.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramvau.next();
-      vlx.a(this.jdField_a_of_type_Vlx).add(paramErrorMessage.mVid);
-    }
-    if ((paramvcs.jdField_a_of_type_Boolean) || (paramvcs.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramvau = new vle(this.jdField_a_of_type_Vlx.jdField_a_of_type_Vld);
-      paramvau.jdField_a_of_type_JavaUtilList = vlx.a(this.jdField_a_of_type_Vlx);
-      paramvau.a(vlw.a(this.jdField_a_of_type_Vlx.jdField_a_of_type_Vlw).feedId);
-      this.jdField_a_of_type_Vll.a(Collections.singletonList(paramvau), true);
-      return;
-    }
-    vlx.a(this.jdField_a_of_type_Vlx);
-    if (vlx.b(this.jdField_a_of_type_Vlx) > 50)
-    {
-      this.jdField_a_of_type_Vll.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Vlx.jdField_a_of_type_Vld));
-      return;
-    }
-    this.jdField_a_of_type_Vlx.a(paramvcs.c, this.jdField_a_of_type_Vll);
   }
 }
 

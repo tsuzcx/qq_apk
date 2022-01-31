@@ -1,44 +1,44 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
-import aanp;
-import aaod;
-import aapc;
-import aapd;
+import aase;
+import aass;
+import aatr;
+import aats;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
 
 public class GdtDownloadReportManager$1$1
   implements Runnable
 {
-  public GdtDownloadReportManager$1$1(aapd paramaapd, String paramString1, String paramString2) {}
+  public GdtDownloadReportManager$1$1(aats paramaats, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = aapc.a(aapc.a());
+    Object localObject = aatr.a(aatr.a());
     if (localObject == null)
     {
-      aanp.d("GdtDownloadReportManager", "fetch sigh MD5 failed no appbtndata:");
-      aaod.a(aapc.a(this.jdField_a_of_type_Aapd.a), 284);
+      aase.d("GdtDownloadReportManager", "fetch sigh MD5 failed no appbtndata:");
+      aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 284);
     }
     for (;;)
     {
-      aapc.a(this.jdField_a_of_type_Aapd.a, this.b);
+      aatr.a(this.jdField_a_of_type_Aats.a, this.b);
       return;
       localObject = ((AdAppBtnData)localObject).signatureMd5Molo;
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        aanp.b("GdtDownloadReportManager", "fetch appbtndata sigh MD5 failed");
-        aaod.a(aapc.a(this.jdField_a_of_type_Aapd.a), 284);
+        aase.b("GdtDownloadReportManager", "fetch appbtndata sigh MD5 failed");
+        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 284);
       }
       else if (((String)localObject).equals(this.jdField_a_of_type_JavaLangString))
       {
-        aanp.b("GdtDownloadReportManager", "fetch sigh MD5 matched");
-        aaod.a(aapc.a(this.jdField_a_of_type_Aapd.a), 275);
+        aase.b("GdtDownloadReportManager", "fetch sigh MD5 matched");
+        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 275);
       }
       else
       {
-        aanp.b("GdtDownloadReportManager", "fetch sigh MD5 not matched");
-        aaod.a(aapc.a(this.jdField_a_of_type_Aapd.a), 276);
+        aase.b("GdtDownloadReportManager", "fetch sigh MD5 not matched");
+        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 276);
       }
     }
   }

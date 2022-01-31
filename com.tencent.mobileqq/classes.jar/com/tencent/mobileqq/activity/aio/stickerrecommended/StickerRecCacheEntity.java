@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="md5")
 public class StickerRecCacheEntity
-  extends awbv
+  extends awge
 {
   public String filePath;
   public long lastTime;

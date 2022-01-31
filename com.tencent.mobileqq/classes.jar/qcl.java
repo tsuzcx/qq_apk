@@ -52,9 +52,9 @@ public class qcl
     if (0 == 0)
     {
       paramView = new qcm(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch);
-      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560046, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131368210));
-      paramView.b = ((TextView)((View)localObject1).findViewById(2131377972));
+      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560045, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131368221));
+      paramView.b = ((TextView)((View)localObject1).findViewById(2131378026));
       ((View)localObject1).setOnClickListener(paramView);
       ((View)localObject1).setTag(paramView);
       paramViewGroup = paramView;
@@ -76,7 +76,7 @@ public class qcl
         ((TextView)localObject2).setTextColor(i);
         localObject2 = new GradientDrawable();
         ((GradientDrawable)localObject2).setShape(0);
-        ((GradientDrawable)localObject2).setCornerRadius(bcwh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), 2.0F));
+        ((GradientDrawable)localObject2).setCornerRadius(bdaq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), 2.0F));
         if (TextUtils.isEmpty(((qkz)localObject1).d)) {
           break label402;
         }

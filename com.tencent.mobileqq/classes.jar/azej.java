@@ -1,4 +1,10 @@
-class azej {}
+public class azej
+{
+  public int a;
+  public awjh a;
+  public azdx a;
+  public Object a;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

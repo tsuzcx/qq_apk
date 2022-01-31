@@ -1,7 +1,13 @@
+import java.util.List;
+
 public class bcwq
 {
-  public int a = -2147483648;
-  public int b = -2147483648;
+  public int a;
+  public long a;
+  public String a;
+  public List<bcwr> a;
+  public int b;
+  public long b;
 }
 
 

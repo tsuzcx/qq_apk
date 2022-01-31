@@ -1,98 +1,75 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.annotation.TargetApi;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
-class azfw
+@TargetApi(21)
+public class azfw
+  extends CameraCaptureSession.CaptureCallback
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  private int jdField_a_of_type_Int = 0;
+  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
   
-  public void a()
+  public azfw(Camera2Control paramCamera2Control)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
-    {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
   }
   
-  public void b()
+  private void a(CaptureResult paramCaptureResult)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
+    switch (this.jdField_a_of_type_Int)
     {
-      for (;;)
+    }
+    do
+    {
+      do
       {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
+        Integer localInteger;
+        do
+        {
+          do
+          {
+            return;
+            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+            azfu.a(1, "[Camera2]process afState:" + localInteger);
+            if (localInteger != null) {
+              break;
+            }
+          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+          return;
+        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
+        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
+        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
           break;
         }
-        azfu.a("[@] compressVideo log:" + str, null);
-      }
-      label177:
+        this.jdField_a_of_type_Int = 4;
+        azfu.a(1, "[Camera2]process aeState:" + paramCaptureResult);
+      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
       return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label177;
-      }
-    }
+      azfu.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
+    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  {
+    a(paramTotalCaptureResult);
+  }
+  
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  {
+    a(paramCaptureResult);
   }
 }
 

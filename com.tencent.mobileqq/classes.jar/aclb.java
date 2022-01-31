@@ -1,15 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-public class aclb
+public final class aclb
   implements DialogInterface.OnClickListener
 {
-  public aclb(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aclb(acln paramacln) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatSettingForTroop.i(this.a);
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,33 +1,8 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aheh
-  implements ahoj
+public abstract interface aheh
 {
-  public aheh(TroopView paramTroopView) {}
-  
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
-      return;
-    }
-  }
-  
-  public void au_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
-    }
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

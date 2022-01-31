@@ -1,13 +1,6 @@
-class bmhg
-  extends bnkv
+public abstract interface bmhg
 {
-  bmhg(bmhd parambmhd) {}
-  
-  public void a()
-  {
-    wsv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.b();
-  }
+  public abstract void a(int paramInt);
 }
 
 

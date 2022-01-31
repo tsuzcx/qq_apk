@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class nvw
-  extends amky
+  extends ampn
 {
   nvw(nvp paramnvp, String paramString)
   {

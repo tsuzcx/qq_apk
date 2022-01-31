@@ -8,12 +8,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import bghn;
-import bgho;
-import bgkd;
-import bgki;
-import bgkk;
-import bglq;
+import bglu;
+import bglv;
+import bgok;
+import bgop;
+import bgor;
+import bgpx;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy;
@@ -35,23 +35,23 @@ public class AppJsPlugin
   private static final String TAG = "AppJsPlugin";
   private ThirdAppProxy mThirdAppProxy = (ThirdAppProxy)ProxyManager.get(ThirdAppProxy.class);
   
-  public String cancelDownloadAppTask(bgkd parambgkd)
+  public String cancelDownloadAppTask(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optString("appid");
+      Object localObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optString("appid");
       localJSONObject.put("appid", localObject);
       if (this.mThirdAppProxy.stopDownloadTask((String)localObject))
       {
-        localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+        localObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
       }
       for (;;)
       {
         return "";
-        localObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+        localObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
       }
     }
     catch (Throwable localThrowable)
@@ -59,20 +59,20 @@ public class AppJsPlugin
       for (;;)
       {
         QMLog.e("AppJsPlugin", "cancelDownloadAppTask Throwable:", localThrowable);
-        localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, localJSONObject);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }
   
-  public String installApp(bgkd parambgkd)
+  public String installApp(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       ((JSONObject)localObject).optString("packagename");
       localObject = ((JSONObject)localObject).optString("appid");
-      this.mThirdAppProxy.installApp((String)localObject, new AppJsPlugin.4(this, parambgkd));
+      this.mThirdAppProxy.installApp((String)localObject, new AppJsPlugin.4(this, parambgok));
       return "";
     }
     catch (Throwable localThrowable)
@@ -80,15 +80,15 @@ public class AppJsPlugin
       for (;;)
       {
         QMLog.e("AppJsPlugin", "installApp", localThrowable);
-        JSONObject localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        JSONObject localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     if (this.mThirdAppProxy != null) {
       this.mThirdAppProxy.init();
     }
@@ -102,11 +102,11 @@ public class AppJsPlugin
     super.onDestroy();
   }
   
-  public String queryAppInfo(bgkd parambgkd)
+  public String queryAppInfo(bgok parambgok)
   {
     try
     {
-      str = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optString("packagename");
+      str = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optString("packagename");
       localPackageManager = this.mMiniAppContext.a().getPackageManager();
       localObject2 = localPackageManager.getInstalledPackages(0).iterator();
       do
@@ -126,8 +126,8 @@ public class AppJsPlugin
         Object localObject2;
         Object localObject1;
         QMLog.e("AppJsPlugin", "queryAppInfo throwable:", localThrowable);
-        JSONObject localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        JSONObject localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
         localJSONObject = null;
       }
@@ -139,23 +139,23 @@ public class AppJsPlugin
       ((JSONObject)localObject2).put("appName", ((PackageInfo)localObject1).applicationInfo.loadLabel(localPackageManager).toString());
       ((JSONObject)localObject2).put("versionCode", ((PackageInfo)localObject1).versionCode);
       ((JSONObject)localObject2).put("versionName", ((PackageInfo)localObject1).versionName);
-      localObject1 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+      localObject1 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+      parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
     }
     for (;;)
     {
       return "";
-      localObject1 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "not such package");
-      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+      localObject1 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "not such package");
+      parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
     }
   }
   
-  public String queryDownloadAppTask(bgkd parambgkd)
+  public String queryDownloadAppTask(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optString("appid");
-      this.mThirdAppProxy.queryDownloadTask(str, new AppJsPlugin.3(this, parambgkd));
+      String str = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optString("appid");
+      this.mThirdAppProxy.queryDownloadTask(str, new AppJsPlugin.3(this, parambgok));
       return "";
     }
     catch (Throwable localThrowable)
@@ -163,17 +163,17 @@ public class AppJsPlugin
       for (;;)
       {
         QMLog.e("AppJsPlugin", "queryDownloadAppTask Throwable:", localThrowable);
-        JSONObject localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        JSONObject localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }
   
-  public String startApp(bgkd parambgkd)
+  public String startApp(bgok parambgok)
   {
     try
     {
-      localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       str1 = ((JSONObject)localObject1).optString("packagename");
       str2 = ((JSONObject)localObject1).optString("path");
       localPackageManager = this.mMiniAppContext.a().getPackageManager();
@@ -196,11 +196,11 @@ public class AppJsPlugin
         PackageManager localPackageManager;
         Object localObject2;
         QMLog.e("AppJsPlugin", "startApp throwable:", localThrowable);
-        JSONObject localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        JSONObject localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
-        localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
         continue;
         localJSONObject = null;
       }
@@ -220,12 +220,12 @@ public class AppJsPlugin
       }
       for (;;)
       {
-        localObject1 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+        localObject1 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
         return "";
         QMLog.e("AppJsPlugin", "找不到指定的 Activity");
-        localObject1 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "can not find activity.");
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
+        localObject1 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "can not find activity.");
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject1).toString());
         return "";
         localObject1 = localPackageManager.getLaunchIntentForPackage(((PackageInfo)localObject1).packageName);
         ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_miniapp");
@@ -234,27 +234,27 @@ public class AppJsPlugin
     }
   }
   
-  public String startDownloadAppTask(bgkd parambgkd)
+  public String startDownloadAppTask(bgok parambgok)
   {
     Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     if ((localObject != null) && (((ChannelProxy)localObject).isGooglePlayVersion()))
     {
       int i;
-      if (bglq.a("qqminiapp", "mini_app_google_play_download_switch", 0) == 1) {
+      if (bgpx.a("qqminiapp", "mini_app_google_play_download_switch", 0) == 1) {
         i = 1;
       }
       for (;;)
       {
         if (i == 0)
         {
-          bgkk.a(new AppJsPlugin.1(this));
+          bgor.a(new AppJsPlugin.1(this));
           localObject = new JSONObject();
           try
           {
             ((JSONObject)localObject).put("retCode", -123);
             ((JSONObject)localObject).put("errMsg", "googlePlay download no supported!");
-            localObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject);
-            parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+            localObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, (JSONObject)localObject);
+            parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
             return "";
             i = 0;
           }
@@ -270,20 +270,20 @@ public class AppJsPlugin
     }
     try
     {
-      localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      localObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       String str1 = ((JSONObject)localObject).optString("packagename");
       String str2 = ((JSONObject)localObject).optString("appid");
       String str3 = ((JSONObject)localObject).optString("version");
       String str4 = ((JSONObject)localObject).optString("md5");
       boolean bool = ((JSONObject)localObject).optBoolean("autoInstall");
       if (!TextUtils.isEmpty(str2)) {
-        this.mThirdAppProxy.queryApkDownloadInfo(str2, new AppJsPlugin.2(this, parambgkd, str2, bool, str1, str3, str4));
+        this.mThirdAppProxy.queryApkDownloadInfo(str2, new AppJsPlugin.2(this, parambgok, str2, bool, str1, str3, str4));
       }
       for (;;)
       {
         return "";
-        localObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
+        localObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, ((JSONObject)localObject).toString());
       }
     }
     catch (Throwable localThrowable)
@@ -291,8 +291,8 @@ public class AppJsPlugin
       for (;;)
       {
         QMLog.e("AppJsPlugin", "startDownloadAppTask throwable:", localThrowable);
-        JSONObject localJSONObject = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject.toString());
+        JSONObject localJSONObject = bgop.b(parambgok.jdField_a_of_type_JavaLangString, null);
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, localJSONObject.toString());
       }
     }
   }

@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
-class bcrj
-  implements baaa
+public class bcrj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bcrj(bcri parambcri) {}
+  public bcrj(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a == null) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
-      {
-        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new bcrk(this));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
+    this.a.invalidate();
   }
 }
 

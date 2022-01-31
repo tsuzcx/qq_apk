@@ -1,77 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class aguf
-  extends agth
+  implements BusinessObserver
 {
-  public aguf(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  aguf(agti paramagti) {}
   
-  private List<ague> b(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "local emoticon search start.");
+      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
     }
-    aube localaube = (aube)this.a.getManager(14);
-    List localList = localaube.b(paramString, true);
-    if ((localList == null) || (localList.isEmpty()))
+    if (!paramBoolean) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons arrEmoticon is null or empty,keyWord: " + bdal.a(paramString));
-      }
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < localList.size())
-    {
-      Object localObject = (Emoticon)localList.get(i);
-      EmoticonPackage localEmoticonPackage = localaube.a(((Emoticon)localObject).epId);
-      if (localEmoticonPackage == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons emoticonPackage is null.");
-        }
-      }
-      label225:
-      do
+      return;
+      try
       {
-        for (;;)
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          continue;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0) {
+          paramBundle.mergeFrom(arrayOfByte);
+        }
+        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = syb.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
         {
-          i += 1;
-          break;
-          if ((localaube.a == null) || (!localaube.a.contains(((Emoticon)localObject).epId)) || (localEmoticonPackage.status != 2)) {
-            break label225;
-          }
-          localArrayList.add(new ague((Emoticon)localObject));
+          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
+          return;
         }
-      } while (!QLog.isColorLevel());
-      localObject = new StringBuilder().append("findLocalMatchEmoticons emoticonPackage not match, status: ").append(localEmoticonPackage.status).append(" tabCache.size: ");
-      if (localaube.a != null) {}
-      for (int j = localaube.a.size();; j = -1)
-      {
-        QLog.d("StickerRecLocalEmoticonHandleListener", 2, j);
-        break;
+        return;
       }
+      catch (Exception paramBundle) {}
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons stickerRecEmotionList.size:" + localArrayList.size() + ",keyWord: " + bdal.a(paramString));
-    }
-    return localArrayList;
-  }
-  
-  public List<ague> a(String paramString)
-  {
-    return b(paramString);
   }
 }
 

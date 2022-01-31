@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 public class axsn
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  alsi jdField_a_of_type_Alsi;
-  axsq jdField_a_of_type_Axsq;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public boolean a()
+  private void a()
   {
-    return (this.a != null) && (this.b == 1);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public boolean b()
+  private void a(ViewGroup paramViewGroup)
   {
-    return (this.a != null) && (this.b >= 2);
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
   }
   
-  public boolean c()
+  public void a(RelativeLayout paramRelativeLayout)
   {
-    return (this.a != null) && (this.c == 3);
-  }
-  
-  public boolean d()
-  {
-    return (this.a != null) && (this.c >= 4);
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

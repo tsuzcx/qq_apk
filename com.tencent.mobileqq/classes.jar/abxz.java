@@ -1,60 +1,35 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class abxz
-  extends allb
+abstract class abxz
+  extends ampt
 {
-  public abxz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  long jdField_a_of_type_Long;
+  abwu jdField_a_of_type_Abwu;
+  boolean jdField_a_of_type_Boolean;
+  long b;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public abxz(abwu paramabwu, int paramInt, long paramLong)
   {
-    Object localObject;
-    if ((paramBoolean) && (paramObject != null))
-    {
-      if (!(paramObject instanceof Card)) {
-        break label163;
-      }
-      localObject = (Card)paramObject;
-      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
-      {
-        paramObject = bcyw.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-        if (this.a.a != null) {
-          paramObject = bcyw.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
-        }
-        if (!TextUtils.isEmpty(paramObject))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(paramObject);
-        }
-      }
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Abwu = paramabwu;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
     }
-    for (;;)
-    {
-      if (bfua.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
-        this.a.c.setVisibility(8);
-      }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
       return;
-      label163:
-      if ((paramObject instanceof ContactCard))
-      {
-        localObject = (ContactCard)paramObject;
-        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
-        {
-          paramObject = bcyw.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
-            paramObject = bcyw.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
-          }
-          if (!TextUtils.isEmpty(paramObject))
-          {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
-          }
-        }
-      }
     }
+    this.jdField_a_of_type_Boolean = false;
+    acab.a(this.jdField_a_of_type_Abwu, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.b(this);
   }
 }
 

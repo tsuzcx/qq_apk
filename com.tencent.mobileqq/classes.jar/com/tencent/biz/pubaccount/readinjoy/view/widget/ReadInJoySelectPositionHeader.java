@@ -37,10 +37,10 @@ public class ReadInJoySelectPositionHeader
   
   private void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131560111, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376319));
-    this.b = ((TextView)localView.findViewById(2131367257));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367258));
+    View localView = LayoutInflater.from(paramContext).inflate(2131560110, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376373));
+    this.b = ((TextView)localView.findViewById(2131367267));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367268));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new skb(this, paramContext));
   }
   

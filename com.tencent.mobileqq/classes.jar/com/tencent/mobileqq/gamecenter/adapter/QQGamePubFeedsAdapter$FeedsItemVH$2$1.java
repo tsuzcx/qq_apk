@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.gamecenter.adapter;
 
 import android.widget.TextView;
-import asgd;
-import asgg;
+import askm;
+import askp;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class QQGamePubFeedsAdapter$FeedsItemVH$2$1
   implements Runnable
 {
-  public QQGamePubFeedsAdapter$FeedsItemVH$2$1(asgg paramasgg, int paramInt) {}
+  public QQGamePubFeedsAdapter$FeedsItemVH$2$1(askp paramaskp, int paramInt) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 5))
     {
-      asgd.a(this.jdField_a_of_type_Asgg.a).setVisibility(8);
-      this.jdField_a_of_type_Asgg.a.a.setVisibility(4);
-      this.jdField_a_of_type_Asgg.a.b.setVisibility(4);
-      this.jdField_a_of_type_Asgg.a.c.setVisibility(4);
+      askm.a(this.jdField_a_of_type_Askp.a).setVisibility(8);
+      this.jdField_a_of_type_Askp.a.a.setVisibility(4);
+      this.jdField_a_of_type_Askp.a.b.setVisibility(4);
+      this.jdField_a_of_type_Askp.a.c.setVisibility(4);
     }
-    while (asgd.a(this.jdField_a_of_type_Asgg.a).type == 1) {
+    while (askm.a(this.jdField_a_of_type_Askp.a).type == 1) {
       return;
     }
   }

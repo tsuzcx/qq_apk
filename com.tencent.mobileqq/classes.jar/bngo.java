@@ -1,17 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.content.DialogInterface.OnClickListener;
 
-public class bngo
-  implements DialogInterface.OnCancelListener
+class bngo
+  implements DialogInterface.OnClickListener
 {
-  public bngo(CaptureQmcfSoDownloadFragment.7 param7) {}
+  bngo(bngl parambngl) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+    bngl.a(this.a, "an_yuanshipin");
   }
 }
 

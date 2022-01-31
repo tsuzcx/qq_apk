@@ -1,40 +1,46 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class avkv
-  implements aoec
+  implements View.OnClickListener
 {
-  avkv(avkg paramavkg, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
+  avkv(avkt paramavkt, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing()))
-    {
-      avkg.a(this.jdField_a_of_type_Avkg, this.jdField_a_of_type_Avkg.c, false);
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
+    azqx localazqx = new azqx(this.jdField_a_of_type_Avkt.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(avkt.a(this.jdField_a_of_type_Avkt).uin);
+    if (avkt.a(this.jdField_a_of_type_Avkt).gender == 0) {
+      paramView = "1";
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Avkg.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      localazqx.a(new String[] { paramView }).a();
+      if (!this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:")) {
+        break label179;
       }
+      paramView = bdib.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      if (paramView == null) {
+        break;
+      }
+      paramView.c();
       return;
-      this.jdField_a_of_type_Avkg.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Avkg.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Avkg.g = paramInt2;
+      if (avkt.a(this.jdField_a_of_type_Avkt).gender == 1) {
+        paramView = "2";
+      } else {
+        paramView = "0";
+      }
     }
+    QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+    return;
+    label179:
+    paramView = new Intent(this.jdField_a_of_type_Avkt.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Avkt.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
   }
 }
 

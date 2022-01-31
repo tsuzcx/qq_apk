@@ -1,7 +1,7 @@
 package cooperation.photoplus.sticker;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import cooperation.photoplus.PhotoPlusManager;
@@ -16,7 +16,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class Sticker
-  extends awbv
+  extends awge
 {
   public static final String JSON_SUFFIX = ".json";
   public static final String PNG_SUFFIX = ".png";
@@ -24,7 +24,7 @@ public class Sticker
   public static final String THUMB_SUFFIX = "_thumb";
   public static final int TYPE_BASIC = 0;
   public static final int TYPE_NORMAL = 1;
-  @awdj
+  @awhs
   public String id;
   public String md5;
   public int priority;

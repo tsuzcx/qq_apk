@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agld;
-import aglt;
+import agps;
+import agqi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
-import bdiv;
+import bdne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
 
 public class FriendChatPie$7$1
   implements Runnable
 {
-  public FriendChatPie$7$1(aglt paramaglt) {}
+  public FriendChatPie$7$1(agqi paramagqi) {}
   
   public void run()
   {
-    Message localMessage = agld.a(this.a.a).obtainMessage(42);
+    Message localMessage = agps.a(this.a.a).obtainMessage(42);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showRedDot", false);
     localMessage.setData(localBundle);
-    agld.b(this.a.a).sendMessage(localMessage);
-    bdiv.a(this.a.a.a.getCurrentAccountUin()).edit().putBoolean("aio_jump_lightalk_red_dot", false).commit();
+    agps.b(this.a.a).sendMessage(localMessage);
+    bdne.a(this.a.a.a.getCurrentAccountUin()).edit().putBoolean("aio_jump_lightalk_red_dot", false).commit();
   }
 }
 

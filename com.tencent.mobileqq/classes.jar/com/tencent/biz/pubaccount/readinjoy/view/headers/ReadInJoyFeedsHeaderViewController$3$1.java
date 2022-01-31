@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import amap;
+import amfe;
 import sei;
 
 class ReadInJoyFeedsHeaderViewController$3$1
@@ -14,8 +14,8 @@ class ReadInJoyFeedsHeaderViewController$3$1
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_Amap = new amap(this.a.a);
-    this.a.this$0.jdField_a_of_type_Amap.a(this.a.a, 6);
+    this.a.this$0.jdField_a_of_type_Amfe = new amfe(this.a.a);
+    this.a.this$0.jdField_a_of_type_Amfe.a(this.a.a, 6);
   }
 }
 

@@ -1,44 +1,12 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayxj
-  extends MSFServlet
+class ayxj
+  implements View.OnClickListener
 {
-  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), ayxj.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
+  ayxj(ayxg paramayxg) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
-      }
-      return;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = new bjgg((UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
-    paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand(paramIntent.getCmdString());
-    paramPacket.putSendData(paramIntent.encode());
-  }
+  public void onClick(View paramView) {}
 }
 
 

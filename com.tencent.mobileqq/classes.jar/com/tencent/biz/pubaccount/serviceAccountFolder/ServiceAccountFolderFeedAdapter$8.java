@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import ajgm;
-import aluw;
-import awbw;
-import awbx;
+import ajlb;
+import alzl;
+import awgf;
+import awgg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -19,22 +19,22 @@ public class ServiceAccountFolderFeedAdapter$8
   public void run()
   {
     nrc.a().a(ssk.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (aluw)ssk.a(this.this$0).getManager(56);
+    Object localObject = (alzl)ssk.a(this.this$0).getManager(56);
     if (localObject != null)
     {
-      ((aluw)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((aluw)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((aluw)localObject).a(this.jdField_a_of_type_JavaLangString);
+      ((alzl)localObject).c(this.jdField_a_of_type_JavaLangString);
+      ((alzl)localObject).b(this.jdField_a_of_type_JavaLangString);
+      AccountDetail localAccountDetail = ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
       if (localAccountDetail != null)
       {
-        ((aluw)localObject).a(this.jdField_a_of_type_JavaLangString);
+        ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
         localObject = ssk.a(this.this$0).getEntityManagerFactory().createEntityManager();
-        ((awbw)localObject).b(localAccountDetail);
-        ((awbw)localObject).a();
+        ((awgf)localObject).b(localAccountDetail);
+        ((awgf)localObject).a();
       }
     }
     ssk.a(this.this$0).a().a(this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, 1008);
-    ajgm.b(ssk.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
+    ajlb.b(ssk.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

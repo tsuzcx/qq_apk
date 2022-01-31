@@ -1,23 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import java.lang.ref.WeakReference;
 
 public class akys
-  implements Animation.AnimationListener
 {
-  public akys(ApolloGameActivity paramApolloGameActivity) {}
+  public int a;
+  public long a;
+  public CmGameStartChecker.StartCheckParam a;
+  public String a;
+  public WeakReference<Activity> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    ApolloGameActivity.a(this.a).d();
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.d(this.a);
+    StringBuffer localStringBuffer = new StringBuffer("GameRunningTask{");
+    localStringBuffer.append("mStartCheckParam=").append(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    localStringBuffer.append(", mActivityRef=").append(this.jdField_a_of_type_JavaLangRefWeakReference);
+    localStringBuffer.append(", mActivityState=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

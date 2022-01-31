@@ -1,37 +1,25 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
 public class ancg
+  extends ancs
 {
-  private Bundle a;
+  public long a;
+  public ArrayList<amxp> a;
+  public boolean a;
   
-  public ancg(Bundle paramBundle)
+  public ancg()
   {
-    this.a = paramBundle;
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
   }
   
-  public Bundle a()
+  public String toString()
   {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
+    }
   }
 }
 

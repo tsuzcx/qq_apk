@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amoq;
-import amor;
+import amtf;
+import amtg;
 import android.media.SoundPool;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -13,29 +13,29 @@ import java.util.Set;
 public class ARPromotionSoundPlayer$1
   implements Runnable
 {
-  public ARPromotionSoundPlayer$1(amoq paramamoq) {}
+  public ARPromotionSoundPlayer$1(amtf paramamtf) {}
   
   public void run()
   {
     try
     {
-      if (amoq.a(this.this$0) != null)
+      if (amtf.a(this.this$0) != null)
       {
-        if (amoq.a(this.this$0).isPlaying()) {
-          amoq.a(this.this$0).stop();
+        if (amtf.a(this.this$0).isPlaying()) {
+          amtf.a(this.this$0).stop();
         }
-        amoq.a(this.this$0).release();
-        amoq.a(this.this$0, null);
+        amtf.a(this.this$0).release();
+        amtf.a(this.this$0, null);
       }
-      Iterator localIterator = amoq.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = amtf.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        amor localamor = (amor)((Map.Entry)localIterator.next()).getValue();
-        if (localamor != null) {
-          amoq.a(this.this$0).stop(localamor.a);
+        amtg localamtg = (amtg)((Map.Entry)localIterator.next()).getValue();
+        if (localamtg != null) {
+          amtf.a(this.this$0).stop(localamtg.a);
         }
       }
-      amoq.a(this.this$0).release();
+      amtf.a(this.this$0).release();
     }
     catch (Exception localException)
     {
@@ -45,7 +45,7 @@ public class ARPromotionSoundPlayer$1
       }
       return;
     }
-    amoq.a(this.this$0).clear();
+    amtf.a(this.this$0).clear();
   }
 }
 

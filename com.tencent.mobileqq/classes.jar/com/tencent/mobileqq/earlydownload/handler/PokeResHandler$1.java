@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import afsw;
+import afxl;
 import android.text.TextUtils;
-import aphc;
-import bdcs;
+import apll;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
 public class PokeResHandler$1
   implements Runnable
 {
-  public PokeResHandler$1(aphc paramaphc, String paramString1, String paramString2) {}
+  public PokeResHandler$1(apll paramapll, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {}
     try
     {
-      bdcs.a(this.a, false);
-      bdcs.a(this.b, this.a, false);
-      afsw.b(this.a);
+      bdhb.a(this.a, false);
+      bdhb.a(this.b, this.a, false);
+      afxl.b(this.a);
       return;
     }
     catch (IOException localIOException)

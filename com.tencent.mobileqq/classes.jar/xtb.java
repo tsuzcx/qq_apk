@@ -1,8 +1,20 @@
 public class xtb
+  implements xtk
 {
-  public float a;
-  public boolean a;
-  public float b;
+  public long b;
+  
+  public void onFailure(String paramString) {}
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void onSuccess(String paramString) {}
 }
 
 

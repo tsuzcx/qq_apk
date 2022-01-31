@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aceg;
+import aciv;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class BaseChatPie$84$2$1
   implements Runnable
 {
-  public BaseChatPie$84$2$1(aceg paramaceg) {}
+  public BaseChatPie$84$2$1(aciv paramaciv) {}
   
   public void run()
   {

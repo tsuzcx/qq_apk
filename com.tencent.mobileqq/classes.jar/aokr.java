@@ -1,64 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aokr
 {
-  private boolean a;
-  
-  public static aokr a(aogf[] paramArrayOfaogf)
+  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    aokr localaokr = new aokr();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
-    {
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
+  }
+  
+  public static aopz a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    aokp.a().a(419, 0L, false);
+    aoqa localaoqa = new aoqa();
+    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
+    if (paramBaseApplicationImpl != null) {
       try
       {
-        int j = paramArrayOfaogf.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfaogf[i].a;
-          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_d55"))
-          {
-            if (localJSONObject.optInt("enable_d55", 0) == 1)
-            {
-              bool = true;
-              localaokr.a = bool;
-            }
-          }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
-          return localaokr;
+        paramBaseApplicationImpl = localaoqa.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null) {
+          return paramBaseApplicationImpl;
         }
       }
-      catch (JSONException paramArrayOfaogf)
-      {
-        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaogf);
-        return null;
-      }
-      boolean bool = false;
+      catch (Exception paramBaseApplicationImpl) {}
     }
+    return new aopz();
   }
   
-  public boolean a()
+  private static aoko[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    return this.a;
+    Object localObject1 = a(0L, paramBaseApplicationImpl);
+    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
+    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
+    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
+      return null;
+    }
+    localObject1 = new aoko[((Set)localObject2).size()];
+    localObject2 = ((Set)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str = (String)((Iterator)localObject2).next();
+      localObject1[i] = new aoko(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
+      i += 1;
+    }
+    return localObject1;
   }
   
-  public String toString()
+  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    new StringBuilder().append("isSwitchOpen:").append(this.a);
-    return super.toString();
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 

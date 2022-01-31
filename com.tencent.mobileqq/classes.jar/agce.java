@@ -1,25 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-class agce
-  implements View.OnClickListener
+public class agce
+  implements DialogInterface.OnClickListener
 {
-  agce(agcb paramagcb) {}
+  public agce(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (agcb.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(agcb.a(this.a).a) }));
-      }
-      paramView = agcb.a(this.a);
-      agcb.a(this.a);
-      if (paramView != null) {
-        paramView.a();
-      }
+    Bundle localBundle = new Bundle();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin != null) && (!"".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin))) {
+      localBundle.putString("source_puin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin);
     }
+    localBundle.putInt("forward_type", -3);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mCommentText = null;
+    localBundle.putInt("structmsg_service_id", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mMsgServiceID);
+    localBundle.putByteArray("stuctmsg_bytes", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.getBytes());
+    localBundle.putLong("structmsg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+    localBundle.putInt("accostType", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.sourceAccoutType);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(localBundle);
+    aryv.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, localIntent, 21);
+    paramDialogInterface.dismiss();
   }
 }
 

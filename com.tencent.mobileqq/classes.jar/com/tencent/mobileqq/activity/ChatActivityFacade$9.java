@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acex;
+import acjm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ public final class ChatActivityFacade$9
   
   public void run()
   {
-    acex.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    acjm.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

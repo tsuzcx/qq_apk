@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class tba
-  implements bibd
+  implements bifk
 {
   public tba(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   

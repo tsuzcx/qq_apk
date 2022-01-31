@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
-import aobg;
+import aofp;
 
 class ReaderColorNoteController$1
-  implements aobg
+  implements aofp
 {
   ReaderColorNoteController$1(ReaderColorNoteController paramReaderColorNoteController, OnColorNoteAnimFinishCallback paramOnColorNoteAnimFinishCallback) {}
   

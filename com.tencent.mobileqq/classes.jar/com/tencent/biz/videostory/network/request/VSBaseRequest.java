@@ -2,8 +2,8 @@ package com.tencent.biz.videostory.network.request;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import bize;
-import bizf;
+import bjdl;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -18,8 +18,8 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
-import yvh;
-import yvj;
+import yzw;
+import yzy;
 
 public abstract class VSBaseRequest
   implements Serializable
@@ -54,7 +54,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return false;
     }
-    return yvj.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(paramVSBaseRequest.getRequestByteKey()));
+    return yzy.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bjdm.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public static void reMoveCache(VSBaseRequest paramVSBaseRequest)
@@ -62,7 +62,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return;
     }
-    yvj.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(paramVSBaseRequest.getRequestByteKey()));
+    yzy.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bjdm.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public abstract MessageMicro decode(byte[] paramArrayOfByte);
@@ -71,7 +71,7 @@ public abstract class VSBaseRequest
   {
     byte[] arrayOfByte = getRequestByteData();
     if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(getRequestByteKey()));
+      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bjdm.a() + new String(getRequestByteKey()));
     }
     return getRequestWrapper(ByteStringMicro.copyFrom(arrayOfByte)).toByteArray();
   }
@@ -88,6 +88,7 @@ public abstract class VSBaseRequest
     return this.mSeq;
   }
   
+  @Deprecated
   public int getNewSeq()
   {
     this.mSeq = atomicInteger.getAndIncrement();
@@ -112,8 +113,8 @@ public abstract class VSBaseRequest
   {
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(getCurrentSeq());
-    localStQWebReq.qua.set(bizf.a());
-    localStQWebReq.deviceInfo.set(bize.a().c());
+    localStQWebReq.qua.set(bjdm.a());
+    localStQWebReq.deviceInfo.set(bjdl.a().c());
     localStQWebReq.busiBuff.set(paramByteStringMicro);
     localStQWebReq.traceid.set(this.mTraceId);
     return localStQWebReq;

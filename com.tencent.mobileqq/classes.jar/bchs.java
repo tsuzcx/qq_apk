@@ -1,306 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger.1;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.view.IndexBar;
+import com.tencent.mobileqq.activity.contacts.view.IndexBarTipsLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.net.Inet4Address;
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Observer;
-import java.util.Random;
+import com.tencent.widget.XListView;
 
 public class bchs
+  implements ahve
 {
-  protected static final List<String> a;
-  protected static Map<String, bclu> a;
-  protected alzf a;
-  protected final String a;
-  protected final String b = "5520";
-  protected final String c = "3";
-  protected final String d = "5";
-  protected final String e = "cgi-bin/httpconn";
-  public String f;
+  public Context a;
+  private final View jdField_a_of_type_AndroidViewView;
+  public bchv a;
+  public IndexBar a;
+  public IndexBarTipsLayout a;
+  public QQAppInterface a;
+  public XListView a;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  static
+  public bchs(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_JavaUtilList.add("2408:8756:3af0:10::107");
-    jdField_a_of_type_JavaUtilList.add("240e:ff:f101:10::104");
-    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::132");
-    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::22");
-    jdField_a_of_type_JavaUtilList.add("2408:80f1:31:50::21");
-    jdField_a_of_type_JavaUtilList.add("240e:e1:a900:50::3d");
-    jdField_a_of_type_JavaUtilList.add("2402:4e00:8020:2::86");
-    jdField_a_of_type_JavaUtilList.add("2409:8c1e:8fd0:50::1c");
-    jdField_a_of_type_JavaUtilList.add("2408:8711:10:10::13");
-    jdField_a_of_type_JavaUtilList.add("240e:928:1400:10::23");
-    jdField_a_of_type_JavaUtilList.add("2402:4e00:8030:1::a0");
-    jdField_a_of_type_JavaUtilList.add("2409:8702:4860:10::41");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Bchv = new bchv(this, paramTroopChatPie);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bchv);
+    a();
   }
   
-  public bchs(String paramString, Class<? extends bclu> paramClass, alzf paramalzf)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = "0x6ff0072";
-    this.jdField_a_of_type_Alzf = paramalzf;
-    this.f = paramString;
-    if (jdField_a_of_type_JavaUtilMap == null) {
-      jdField_a_of_type_JavaUtilMap = new HashMap();
-    }
-    if ((bclu)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      paramClass = bclt.a(paramClass);
-      jdField_a_of_type_JavaUtilMap.put(paramString, paramClass);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368224));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368223));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBar.setOnIndexBarTouchListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout.setVisibility(8);
   }
   
-  private String a(String paramString1, String paramString2, int paramInt)
+  public void a(String paramString, int paramInt, float paramFloat)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return null;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout.setText(paramString, paramFloat);
     }
-    try
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
     {
-      paramString1 = new URL("http", paramString2, paramInt, "cgi-bin/httpconn").toString();
-      return paramString1;
-    }
-    catch (MalformedURLException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return null;
-  }
-  
-  private String a(boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    Object localObject2;
-    Object localObject1;
-    if (!paramBoolean)
-    {
-      bool1 = true;
-      localObject2 = a("htdata3.qq.com", "cgi-bin/httpconn", bool1);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        if (paramBoolean) {
-          break label77;
-        }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (!"★".equals(paramString)) {
+        break label50;
       }
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
     }
-    label77:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label50:
+    do
     {
-      localObject1 = a("htdata4.qq.com", "cgi-bin/httpconn", bool1);
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = a("cgi-bin/httpconn", paramBoolean);
-      }
-      return localObject2;
-      bool1 = false;
-      break;
-    }
+      return;
+      paramInt = this.jdField_a_of_type_Bchv.a(paramString);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
   }
   
-  public String a(String paramString1, String paramString2, boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
     int i = 0;
-    for (;;)
-    {
-      Object localObject1;
-      try
-      {
-        localObject1 = InetAddress.getAllByName(paramString1);
-        if (localObject1 == null) {
-          break label150;
-        }
-        int j = localObject1.length;
-        if (i >= j) {
-          break label150;
-        }
-        localObject2 = localObject1[i];
-        if (((localObject2 instanceof Inet4Address)) && (paramBoolean))
-        {
-          localObject1 = localObject2.getHostAddress();
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label145;
-          }
-          paramString2 = a(paramString2, (String)localObject1, 80);
-        }
-      }
-      catch (UnknownHostException paramString1)
-      {
-        Object localObject2;
-        paramString2 = null;
-        QLog.i("TroopAvatarManger", 1, "UnknownHostException", paramString1);
-        return paramString2;
-      }
-      try
-      {
-        QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByHost host[%s] %s", new Object[] { paramString1, localObject1 }));
-        return paramString2;
-      }
-      catch (UnknownHostException paramString1)
-      {
-        continue;
-      }
-      if (((localObject2 instanceof Inet6Address)) && (!paramBoolean))
-      {
-        localObject1 = localObject2.getHostAddress();
-      }
-      else
-      {
-        i += 1;
-        continue;
-        label145:
-        paramString2 = null;
-        continue;
-        label150:
-        localObject1 = null;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
     }
-  }
-  
-  public String a(String paramString, boolean paramBoolean)
-  {
-    int i = new Random().nextInt(100);
-    String str;
-    if (paramBoolean)
+    if (!paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    IndexBarTipsLayout localIndexBarTipsLayout;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout != null)
     {
-      int j = jdField_a_of_type_JavaUtilList.size();
-      str = (String)jdField_a_of_type_JavaUtilList.get(Math.abs(i) % j);
+      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewIndexBarTipsLayout;
+      if (!paramBoolean) {
+        break label67;
+      }
     }
     for (;;)
     {
-      paramString = a(paramString, str, 80);
-      QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByRandomIp ip=%s bIpv6=%b", new Object[] { str, Boolean.valueOf(paramBoolean) }));
-      return paramString;
-      if (Math.abs(i) % 2 == 0) {
-        str = "14.17.18.20";
-      } else {
-        str = "112.90.139.96";
-      }
+      localIndexBarTipsLayout.setVisibility(i);
+      return;
+      label67:
+      i = 8;
     }
-  }
-  
-  public ArrayList<bcls> a()
-  {
-    return ((bclu)jdField_a_of_type_JavaUtilMap.get(this.f)).a();
-  }
-  
-  public List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    paramAppInterface = new ArrayList();
-    boolean bool2 = alpp.a().a();
-    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
-    Object localObject = batm.a();
-    ((batm)localObject).b();
-    if (i == 3)
-    {
-      String str = ((batm)localObject).a(0, bool2);
-      if (!TextUtils.isEmpty(str)) {
-        paramAppInterface.add(str + "cgi-bin/httpconn");
-      }
-      if (!bool2) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        localObject = ((batm)localObject).a(0, bool1);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramAppInterface.add((String)localObject + "cgi-bin/httpconn");
-        }
-        if (paramAppInterface.size() < 2)
-        {
-          localObject = a(false);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            paramAppInterface.add(localObject);
-          }
-        }
-        localObject = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramAppInterface.add(localObject);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAvatarManger", 2, String.format("getSrvAddr type=%d prefV6=%b getUrl=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Arrays.toString(paramAppInterface.toArray()) }));
-        }
-        i = 0;
-        while (i < paramAppInterface.size())
-        {
-          paramAppInterface.set(i, (String)paramAppInterface.get(i) + "?htcmd=" + "0x6ff0072" + "&ver=" + "5520" + "&ukey=" + paramString5 + "&range=" + paramString2 + "&uin=" + paramString4 + "&seq=23&groupuin=" + paramString3 + "&filetype=" + "3" + "&imagetype=" + "5" + "&userdata=" + paramString1);
-          i += 1;
-        }
-      }
-    }
-    if (i == 2)
-    {
-      bool1 = true;
-      label416:
-      localObject = ((batm)localObject).a(0, bool1);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramAppInterface.add((String)localObject + "cgi-bin/httpconn");
-      }
-      if (i != 2) {
-        break label533;
-      }
-    }
-    label533:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject = a(bool1);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramAppInterface.add(localObject);
-      }
-      localObject = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      paramAppInterface.add(localObject);
-      break;
-      bool1 = false;
-      break label416;
-    }
-    return paramAppInterface;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Alzf = null;
-  }
-  
-  public void a(Class<? extends Thread> paramClass, AppInterface paramAppInterface, ArrayList<TroopClipPic> paramArrayList, String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
-  {
-    ThreadManager.executeOnNetWorkThread(new TroopAvatarManger.1(this, paramAppInterface, paramString1, paramString3, paramString2, (bclu)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Alzf != null) {
-      this.jdField_a_of_type_Alzf.e(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, ArrayList<Integer> paramArrayList)
-  {
-    if (this.jdField_a_of_type_Alzf != null) {
-      this.jdField_a_of_type_Alzf.a(paramString, paramInt, paramArrayList);
-    }
-  }
-  
-  public void a(Observer paramObserver)
-  {
-    ((bclu)jdField_a_of_type_JavaUtilMap.get(this.f)).addObserver(paramObserver);
-  }
-  
-  public void b(Observer paramObserver)
-  {
-    ((bclu)jdField_a_of_type_JavaUtilMap.get(this.f)).a(paramObserver);
   }
 }
 

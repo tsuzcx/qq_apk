@@ -1,28 +1,14 @@
-import android.os.Process;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class akpo
+class akpo
+  implements Comparator<ApolloActionData>
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
+  akpo(akpm paramakpm) {}
   
-  static
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    jdField_a_of_type_JavaLangString = bdcb.e();
-    jdField_b_of_type_JavaLangString = bdcb.i();
-    jdField_c_of_type_JavaLangString = bdcb.g();
-    jdField_a_of_type_Int = bdcb.b();
-    jdField_a_of_type_Long = bdcb.a();
-  }
-  
-  public akpo()
-  {
-    this.jdField_b_of_type_Long = bdcb.a(Process.myPid());
-    this.jdField_c_of_type_Long = bdcb.f();
+    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
   }
 }
 

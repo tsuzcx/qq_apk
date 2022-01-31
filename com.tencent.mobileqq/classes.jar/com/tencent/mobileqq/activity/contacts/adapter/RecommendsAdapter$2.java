@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahnl;
+import ahsa;
 
 public class RecommendsAdapter$2
   implements Runnable
 {
-  public RecommendsAdapter$2(ahnl paramahnl) {}
+  public RecommendsAdapter$2(ahsa paramahsa) {}
   
   public void run()
   {

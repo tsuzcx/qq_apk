@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class vrm
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+public abstract interface vrm
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
-  {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
-  }
+  public abstract void a();
   
-  public XViewPager.SavedState[] a(int paramInt)
-  {
-    return new XViewPager.SavedState[paramInt];
-  }
+  public abstract void a(@NonNull wiq paramwiq, ErrorMessage paramErrorMessage, boolean paramBoolean);
+  
+  public abstract void a(@NonNull wiq paramwiq, boolean paramBoolean);
 }
 
 

@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
-
 public class avyw
-  extends AccountObserver
 {
-  avyw(avyo paramavyo) {}
+  avyn[] a = new avyn[3];
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public avyn a(int paramInt)
   {
-    if ((paramBoolean1) && (avyo.a(this.a) != null)) {
-      avyo.a(this.a).a(paramStatus);
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
     }
-    if (!paramBoolean2) {
-      return;
+    switch (paramInt)
+    {
     }
-    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean1, paramStatus));
+    for (;;)
+    {
+      this.a[paramInt] = localObject;
+      return localObject;
+      localObject = new avyt();
+      continue;
+      localObject = new avyq();
+    }
   }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
 }
 
 

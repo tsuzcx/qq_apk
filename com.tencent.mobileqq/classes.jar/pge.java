@@ -26,9 +26,9 @@ public class pge
   private List<InterestLabelInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   
-  public pge(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pge(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

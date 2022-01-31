@@ -1,21 +1,15 @@
-class aqnn
-  extends aqpp
+import android.widget.CheckBox;
+import com.tencent.widget.SingleLineTextView;
+
+public class aqnn
 {
-  aqnn(aqnm paramaqnm, aqnr paramaqnr) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqnr.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aqnr.a(paramInt, paramString1);
-  }
+  public int a;
+  public CheckBox a;
+  public SingleLineTextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import java.util.Iterator;
-import java.util.Set;
-
 class vjs
-  extends uhn
+  extends vio
 {
-  vjs(vjr paramvjr) {}
+  vjs(vji paramvji, vkq paramvkq) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean b()
   {
-    wsv.a("Q.qqstory.playernew.StoryPlayerImpl", "QQStoryObserver, onUpdate, type=%d, isSuccess=%s, data=%s", Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject);
-    Iterator localIterator = vjr.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((uhn)localIterator.next()).onUpdate(paramInt, paramBoolean, paramObject);
-    }
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Vkq.d);
+    return true;
   }
 }
 

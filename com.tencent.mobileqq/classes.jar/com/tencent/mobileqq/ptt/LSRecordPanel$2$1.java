@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt;
 
-import awsy;
+import awxh;
 import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
 
 public class LSRecordPanel$2$1
   implements Runnable
 {
-  public LSRecordPanel$2$1(awsy paramawsy) {}
+  public LSRecordPanel$2$1(awxh paramawxh) {}
   
   public void run()
   {

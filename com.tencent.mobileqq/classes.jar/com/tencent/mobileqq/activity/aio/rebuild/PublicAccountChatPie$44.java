@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acex;
-import agot;
+import acjm;
+import agti;
 
 public class PublicAccountChatPie$44
   implements Runnable
 {
-  public PublicAccountChatPie$44(agot paramagot) {}
+  public PublicAccountChatPie$44(agti paramagti) {}
   
   public void run()
   {
-    acex.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    acjm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

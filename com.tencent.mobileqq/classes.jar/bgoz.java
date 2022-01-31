@@ -1,25 +1,21 @@
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.qqmini.sdk.core.utils.FileInfo;
+import java.util.Comparator;
 
 public class bgoz
-  implements Observer
+  implements Comparator<FileInfo>
 {
-  public bgoz(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (!(paramObject instanceof String)) {}
-    do
+    if (paramFileInfo1.a())
     {
-      return;
-      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
-      {
-        this.a.g();
-        this.a.c();
-        return;
+      if (!paramFileInfo2.a()) {
+        return -1000;
       }
-    } while (!"resumePlayer".equals((String)paramObject));
+    }
+    else if (paramFileInfo2.a()) {
+      return 1000;
+    }
+    return paramFileInfo1.b().compareToIgnoreCase(paramFileInfo2.b());
   }
 }
 

@@ -1,64 +1,124 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.mqsafeedit.MD5;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class alpd
-  extends bdvu
+public abstract class alpd
+  extends aloy
 {
-  alpd(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, apke paramapke, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  public static final int MM_APPID = 1000277;
+  public final QQAppInterface app;
+  public final AppInterface mApp;
   
-  public void onDone(bdvv parambdvv)
+  protected alpd(AppInterface paramAppInterface)
   {
-    super.onDone(parambdvv);
-    alpc.a.remove(this.jdField_a_of_type_JavaLangString);
-    if ((3 == parambdvv.a()) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    if ((paramAppInterface instanceof QQAppInterface)) {}
+    for (this.app = ((QQAppInterface)paramAppInterface);; this.app = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId = "";
-      }
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
+      this.mApp = paramAppInterface;
+      return;
+    }
+  }
+  
+  protected alpd(QQAppInterface paramQQAppInterface)
+  {
+    this.app = paramQQAppInterface;
+    this.mApp = paramQQAppInterface;
+  }
+  
+  public static <T extends MessageMicro<T>> T decodeOidb(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      paramArrayOfByte = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
+      if ((!paramArrayOfByte.uint32_result.has()) || (paramArrayOfByte.uint32_result.get() != 0) || (!paramArrayOfByte.bytes_bodybuffer.has()) || (paramArrayOfByte.bytes_bodybuffer.get() == null))
       {
-        parambdvv = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(parambdvv);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_Apke.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->sucess");
+        if (QLog.isColorLevel()) {
+          QLog.e(paramString, 2, "sso check fail " + paramArrayOfByte.uint32_result.get());
+        }
+        return null;
       }
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
-      return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->faile");
+        QLog.e(paramString, 2, "merge fail " + paramArrayOfByte.toString());
       }
-      bdqr.a("emotionType", "emotionActionFav", "3", "", "", bdee.b(this.jdField_a_of_type_AndroidContentContext) + "", parambdvv.a + "", "", "", "");
+      return null;
+    }
+    try
+    {
+      paramClass = (MessageMicro)paramClass.newInstance();
+      paramClass.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
+      return paramClass;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(paramString, 2, "rspBody merge fail " + paramArrayOfByte.toString());
+      }
+      return null;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  protected void checkReportErrorToMM(FromServiceMsg paramFromServiceMsg)
+  {
+    if (reportErrorToMM(paramFromServiceMsg))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("msgCmdFilter", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + getCurrentAccountUin());
+      }
+      bfhz.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, alud.a(2131701646) + paramFromServiceMsg.getServiceCmd(), true);
+    }
+  }
+  
+  public String getCurrentAccountUin()
+  {
+    return this.mApp.getCurrentAccountUin();
+  }
+  
+  public List<alpg> getObservers(int paramInt)
+  {
+    return this.mApp.getBusinessObserver(paramInt);
+  }
+  
+  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    boolean bool = false;
+    if (paramToServiceMsg != null) {
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    }
+    return bool;
+  }
+  
+  protected boolean reportErrorToMM(FromServiceMsg paramFromServiceMsg)
+  {
+    return (!paramFromServiceMsg.isSuccess()) && ((paramFromServiceMsg.getServiceCmd().equals("EncounterSvc.ReqGetEncounter")) || (paramFromServiceMsg.getServiceCmd().equals("RoamClientSvr.GetQualify")) || (paramFromServiceMsg.getServiceCmd().equals("NeighborSvc.ReqGetPoint")));
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.mApp.sendToService(paramToServiceMsg);
+  }
+  
+  public void sendPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+      this.mApp.sendToService(paramToServiceMsg);
     }
   }
 }

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
 import android.graphics.ColorMatrixColorFilter;
-import asti;
-import astj;
-import astn;
+import asxr;
+import asxs;
+import asxw;
 
 public class IdentificationPoseReflect$3$1
   implements Runnable
 {
-  public IdentificationPoseReflect$3$1(astj paramastj, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
+  public IdentificationPoseReflect$3$1(asxs paramasxs, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Astj.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
+    this.jdField_a_of_type_Asxs.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
   }
 }
 

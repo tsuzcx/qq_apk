@@ -1,85 +1,562 @@
-import android.annotation.SuppressLint;
-import android.net.Uri;
-import android.view.View;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class beae
-  extends nmx
+public class beae
 {
-  beae(beaa parambeaa) {}
+  public byte a;
+  public float a;
+  public int a;
+  public long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private bead jdField_a_of_type_Bead;
+  public beaf a;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  ArrayList<beae> jdField_a_of_type_JavaUtilArrayList;
+  public List<String> a;
+  public Map<String, File> a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public boolean f;
+  public int g;
+  public long g;
+  public boolean g;
+  public long h;
+  public boolean h;
+  public long i;
+  public boolean i = true;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o = true;
+  public boolean p = true;
+  public boolean q;
+  public boolean r;
+  public boolean s = true;
   
-  private void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  public beae(String paramString, File paramFile)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Beaf = new beaf();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramFile);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_d_of_type_Int = 1;
+  }
+  
+  public beae(List<String> paramList, Map<String, File> paramMap, String paramString)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Beaf = new beaf();
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      if (paramMap == null) {
+        break label169;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilMap = paramMap;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_d_of_type_Int = 2;
+      return;
+      paramList = new ArrayList();
+      break;
+      label169:
+      paramMap = new HashMap();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public Bundle a()
+  {
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public bead a()
+  {
+    return this.jdField_a_of_type_Bead;
+  }
+  
+  public Map<String, String> a()
+  {
+    return this.jdField_b_of_type_JavaUtilMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    float f1 = 100.0F;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Int = paramInt;
+    if (this.jdField_b_of_type_Long <= 0L) {
+      f1 = 30.0F;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Float = ((f1 + paramInt * 100) / this.jdField_a_of_type_JavaUtilList.size());
+      return;
+      if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
+      {
+        if (paramInt + 1 == this.jdField_a_of_type_JavaUtilList.size())
+        {
+          a(3);
+          this.jdField_a_of_type_Float = 100.0F;
+        }
+      }
+      else {
+        f1 = 100.0F * (float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long;
+      }
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(bead parambead)
+  {
+    this.jdField_a_of_type_Bead = parambead;
+  }
+  
+  public void a(beae parambeae)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "show custom view called");
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask,task.key=" + parambeae.jdField_a_of_type_JavaLangString);
     }
-    this.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
-  }
-  
-  public View getVideoLoadingProgressView()
-  {
-    return this.a.getVideoLoadingProgressView();
-  }
-  
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambeae);
+      }
+      while (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
     }
-    this.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
   }
   
-  public void onHideCustomView()
+  public void a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "hide custom view called");
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_b_of_type_JavaUtilMap == null) {
+          this.jdField_b_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
+      }
+      finally {}
     }
-    this.a.onHideCustomView();
   }
   
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  public void a(boolean paramBoolean)
   {
-    return this.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
   }
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "onProgressChanged:" + paramInt);
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean a(byte paramByte)
+  {
+    return ((byte)(this.jdField_a_of_type_Byte | 0x0) & paramByte) == paramByte;
+  }
+  
+  public int b()
+  {
+    int i1 = 0;
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("id");
     }
-    if ((this.a.mProgressBarController != null) && (this.a.mProgressBarController.b() == 0)) {
-      this.a.mProgressBarController.a((byte)1);
+    return i1;
+  }
+  
+  public void b()
+  {
+    if (a() != null) {
+      a().onProgress(this);
     }
-    if (paramInt == 100) {
-      this.a.showProgressBar(false);
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label135;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+            localbeae.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+            localbeae.a().onProgress(localbeae);
+          }
+        }
+      }
+      return;
+      label135:
+      i1 -= 1;
     }
-    this.a.onProgressChanged(paramWebView, paramInt);
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public void b(int paramInt)
   {
-    this.a.onReceivedTitle(paramWebView, paramString);
+    this.jdField_f_of_type_Long = paramInt;
   }
   
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  public boolean b()
   {
-    a(paramView, paramInt, paramCustomViewCallback);
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
-  @SuppressLint({"InlinedApi"})
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  public void c()
   {
-    a(paramView, 10, paramCustomViewCallback);
+    if (a() != null) {
+      a().onCancel(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label119;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onCancel(localbeae);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
   }
   
-  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  public boolean c()
   {
-    this.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    boolean bool;
+    if (a() != null) {
+      bool = a().onStart(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label137;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onStart(localbeae);
+          }
+        }
+      }
+      return bool;
+      bool = true;
+      continue;
+      label137:
+      i1 -= 1;
+    }
+  }
+  
+  public void d()
+  {
+    if (a() != null) {
+      a().onDoneFile(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label119;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onDoneFile(localbeae);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
+  }
+  
+  public void e()
+  {
+    if (a() != null) {
+      a().onDone(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label119;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onDone(localbeae);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof beae)) && (((beae)paramObject).jdField_a_of_type_JavaUtilList.equals(this.jdField_a_of_type_JavaUtilList));
+  }
+  
+  public void f()
+  {
+    if (a() != null) {
+      a().onNetWifi2Mobile();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label117;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onNetWifi2Mobile();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void g()
+  {
+    if (a() != null) {
+      a().onNetWifi2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label117;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onNetWifi2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void h()
+  {
+    if (a() != null) {
+      a().onNetMobile2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbeae == null) || (localbeae.a() == null)) {
+              break label117;
+            }
+            localbeae.a(a());
+            localbeae.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbeae.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbeae.a().onNetMobile2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void i()
+  {
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          break label72;
+        }
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
+        {
+          beae localbeae = (beae)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (localbeae == null) {
+            break label75;
+          }
+          localbeae.a(null);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      label72:
+      return;
+      label75:
+      i1 -= 1;
+    }
+  }
+  
+  public String toString()
+  {
+    return " key=" + this.jdField_a_of_type_JavaLangString + ",urlList size=" + this.jdField_a_of_type_JavaUtilList.size() + "|currentUrlIndex=" + this.jdField_c_of_type_Int + "|errCode=" + this.jdField_a_of_type_Int + "|status=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger + "|readSize=" + this.jdField_b_of_type_Long + "|maxSize=" + this.jdField_a_of_type_Long + "|percent=" + this.jdField_a_of_type_Float;
   }
 }
 

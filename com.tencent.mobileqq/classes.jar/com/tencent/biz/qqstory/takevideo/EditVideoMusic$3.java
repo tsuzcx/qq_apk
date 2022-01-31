@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import aelc;
+import aepr;
 import android.content.Context;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import xgc;
+import xkl;
 
 class EditVideoMusic$3
   extends AudioPlayer
 {
-  EditVideoMusic$3(EditVideoMusic paramEditVideoMusic, Context paramContext, aelc paramaelc, xgc paramxgc)
+  EditVideoMusic$3(EditVideoMusic paramEditVideoMusic, Context paramContext, aepr paramaepr, xkl paramxkl)
   {
-    super(paramContext, paramaelc);
+    super(paramContext, paramaepr);
   }
   
   public void a()

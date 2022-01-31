@@ -8,7 +8,7 @@ public class lmw
   private static lmw b;
   private static int c;
   public int a;
-  public bain a;
+  public bamw a;
   private lmw a;
   public int b;
   
@@ -18,14 +18,14 @@ public class lmw
     jdField_a_of_type_JavaUtilComparator = new lmx();
   }
   
-  private lmw(bain parambain, int paramInt1, int paramInt2)
+  private lmw(bamw parambamw, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bain = parambain;
+    this.jdField_a_of_type_Bamw = parambamw;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static lmw a(bain parambain, int paramInt1, int paramInt2)
+  public static lmw a(bamw parambamw, int paramInt1, int paramInt2)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
@@ -33,18 +33,18 @@ public class lmw
       {
         lmw locallmw = jdField_b_of_type_Lmw;
         jdField_b_of_type_Lmw = locallmw.jdField_a_of_type_Lmw;
-        locallmw.a(parambain, paramInt1, paramInt2);
+        locallmw.a(parambamw, paramInt1, paramInt2);
         c -= 1;
         return locallmw;
       }
-      return new lmw(parambain, paramInt1, paramInt2);
+      return new lmw(parambamw, paramInt1, paramInt2);
     }
   }
   
-  private void a(bain parambain, int paramInt1, int paramInt2)
+  private void a(bamw parambamw, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Lmw = null;
-    this.jdField_a_of_type_Bain = parambain;
+    this.jdField_a_of_type_Bamw = parambamw;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
   }

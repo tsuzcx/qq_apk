@@ -1,6 +1,24 @@
-public abstract interface bbrk
+import com.tencent.mobileqq.data.TroopInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
+
+final class bbrk
+  extends altm
 {
-  public abstract void a(boolean paramBoolean, bbnr parambbnr);
+  WeakReference<bbrh> a;
+  
+  private bbrk(bbrh parambbrh)
+  {
+    this.a = new WeakReference(parambbrh);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    bbrh localbbrh = (bbrh)this.a.get();
+    if ((localbbrh != null) && (paramBoolean) && (paramString != null) && (localbbrh.a != null) && (localbbrh.a.size() > 0) && (paramString.equals(((TroopInfo)localbbrh.a.get(0)).troopuin))) {
+      localbbrh.c();
+    }
+  }
 }
 
 

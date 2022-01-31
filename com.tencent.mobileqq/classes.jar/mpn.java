@@ -35,7 +35,7 @@ public class mpn
       if (!paramString.isUsable()) {
         EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
       }
-      azmb.c(paramString.getId());
+      azqk.c(paramString.getId());
       if ((paramString.getId() != null) && (paramString.getId().compareToIgnoreCase("MANHUA") == 0)) {
         EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(51, paramString.getId());
       }

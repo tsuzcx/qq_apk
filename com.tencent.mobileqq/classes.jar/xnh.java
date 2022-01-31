@@ -1,165 +1,76 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBFixed64Field;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBPrimitiveField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBSFixed32Field;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBSInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.media.MediaFormat;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class xnh
+  extends alpd
 {
-  public static <PB extends MessageMicro<PB>> String a(PB paramPB)
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public xnh(AppInterface paramAppInterface)
   {
-    if (paramPB == null) {
-      return String.valueOf(paramPB);
-    }
-    return a(paramPB).toString();
+    super(paramAppInterface);
   }
   
-  private static <PB extends PBPrimitiveField<PB>> String a(PB paramPB)
+  public MediaFormat a()
   {
-    if ((paramPB instanceof PBBytesField)) {
-      return ((PBBytesField)paramPB).get().toStringUtf8();
-    }
-    if ((paramPB instanceof PBStringField)) {
-      return ((PBStringField)paramPB).get();
-    }
-    if ((paramPB instanceof PBBoolField)) {
-      return String.valueOf(((PBBoolField)paramPB).get());
-    }
-    if ((paramPB instanceof PBFixed32Field)) {
-      return String.valueOf(((PBFixed32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBFixed64Field)) {
-      return String.valueOf(((PBFixed64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBFloatField)) {
-      return String.valueOf(((PBFloatField)paramPB).get());
-    }
-    if ((paramPB instanceof PBInt32Field)) {
-      return String.valueOf(((PBInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBInt64Field)) {
-      return String.valueOf(((PBInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSFixed32Field)) {
-      return String.valueOf(((PBSFixed32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSInt32Field)) {
-      return String.valueOf(((PBSInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSInt64Field)) {
-      return String.valueOf(((PBSInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBUInt32Field)) {
-      return String.valueOf(((PBUInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBUInt64Field)) {
-      return String.valueOf(((PBUInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBEnumField)) {
-      return String.valueOf(((PBEnumField)paramPB).get());
-    }
-    return "(null)";
+    return this.jdField_a_of_type_AndroidMediaMediaFormat;
   }
   
-  public static <PB extends MessageMicro<PB>> JSONObject a(PB paramPB)
+  public LocalMediaInfo a(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    a(paramPB, localJSONObject);
-    return localJSONObject;
+    if (!TextUtils.isEmpty(paramString)) {
+      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return null;
   }
   
-  private static <PB extends MessageMicro<PB>> void a(PB paramPB, JSONObject paramJSONObject)
+  public void a()
   {
-    Field[] arrayOfField = paramPB.getClass().getDeclaredFields();
-    for (;;)
-    {
-      int i;
-      Object localObject1;
-      String str;
-      try
-      {
-        int j = arrayOfField.length;
-        i = 0;
-        if (i < j)
-        {
-          localObject1 = arrayOfField[i];
-          str = ((Field)localObject1).getName();
-          if (!Modifier.isPublic(((Field)localObject1).getModifiers())) {
-            break label343;
-          }
-          localObject1 = ((Field)localObject1).get(paramPB);
-          if ((!(localObject1 instanceof MessageMicro)) || (!((MessageMicro)localObject1).has())) {
-            break label98;
-          }
-          paramJSONObject.put(str, a((MessageMicro)localObject1));
-        }
-      }
-      catch (Exception paramPB)
-      {
-        paramPB.printStackTrace();
-      }
-      return;
-      label98:
-      if (((localObject1 instanceof PBPrimitiveField)) && (((PBPrimitiveField)localObject1).has()))
-      {
-        paramJSONObject.put(str, a((PBPrimitiveField)localObject1));
-      }
-      else
-      {
-        Object localObject2;
-        if ((localObject1 instanceof PBRepeatField))
-        {
-          localObject2 = ((PBRepeatField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Object localObject3 = ((Iterator)localObject2).next();
-            if ((localObject3 instanceof PBPrimitiveField)) {
-              ((JSONArray)localObject1).put(a((PBPrimitiveField)localObject3));
-            } else if ((localObject3 instanceof ByteStringMicro)) {
-              ((JSONArray)localObject1).put(((ByteStringMicro)localObject3).toStringUtf8());
-            } else {
-              ((JSONArray)localObject1).put(String.valueOf(localObject3));
-            }
-          }
-          paramJSONObject.put(str, localObject1);
-        }
-        else if ((localObject1 instanceof PBRepeatMessageField))
-        {
-          localObject2 = ((PBRepeatMessageField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((JSONArray)localObject1).put(a((MessageMicro)((Iterator)localObject2).next()));
-          }
-          paramJSONObject.put(str, localObject1);
-        }
-      }
-      label343:
-      i += 1;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
     }
   }
+  
+  public void a(MediaFormat paramMediaFormat)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

@@ -1,41 +1,20 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.4.1;
 
 public class bfcw
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public bfcw(BindGroupActivity.4.1 param1) {}
   
-  public bfcw(SwitchAccountActivity paramSwitchAccountActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bfcx(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
+      this.a.a.a.a.cancel();
+      this.a.a.a.finish();
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import abnw;
-import abot;
+import absl;
+import abti;
 import java.util.Map;
 
 class BaseMessageManagerForTroopAndDisc$4$1
@@ -11,8 +11,8 @@ class BaseMessageManagerForTroopAndDisc$4$1
   
   public void run()
   {
-    if (this.a.this$0.a.b.containsKey(abot.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.this$0.a.b.remove(abot.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.this$0.a.b.containsKey(abti.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.this$0.a.b.remove(abti.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }

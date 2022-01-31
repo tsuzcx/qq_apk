@@ -1,40 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class acju
+public final class acju
+  implements DialogInterface.OnClickListener
 {
-  public ChatHistoryFileActivity a;
-  public boolean i = true;
+  public acju(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln, aclo paramaclo, BaseActivity paramBaseActivity, boolean paramBoolean) {}
   
-  public abstract View a();
-  
-  public void a(int paramInt) {}
-  
-  public void a(long paramLong) {}
-  
-  public void b() {}
-  
-  public abstract boolean b();
-  
-  public void c() {}
-  
-  protected boolean c()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.i;
-  }
-  
-  public void d() {}
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  protected void k()
-  {
-    this.i = false;
-    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
+    if (paramInt == 1)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
   }
 }
 

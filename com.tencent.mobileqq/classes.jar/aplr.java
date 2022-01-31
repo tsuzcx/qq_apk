@@ -1,70 +1,78 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
 
 public class aplr
-  extends bada
+  extends apld
 {
-  public aplr(MessengerService paramMessengerService) {}
+  QQAppInterface b = null;
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public aplr(QQAppInterface paramQQAppInterface)
   {
-    Bundle localBundle;
-    int i;
-    String str;
-    if (this.a.a != null)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("url", null);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label115;
-      }
-      i = paramTeamWorkFileImportInfo.f;
-      localBundle.putInt("retCode", i);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label120;
-      }
-      str = paramTeamWorkFileImportInfo.h;
-      label53:
-      localBundle.putString("errorStr", str);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label126;
-      }
+    super("qq.android.qav.image2", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 10047;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavImageData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadImageDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavImageHandler", 2, "download success: " + paramString);
     }
-    label115:
-    label120:
-    label126:
-    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
+    try
     {
-      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
+      bdhb.a(paramString, mum.b(), false);
+      super.a(paramString);
       return;
-      i = 0;
-      break;
-      str = "";
-      break label53;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
+    QavImageData localQavImageData = (QavImageData)a();
+    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", paramString);
-      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
-        localBundle.putBoolean("needRefresh", true);
-      }
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
+      localQavImageData.autoDownload = true;
+      apkr.a(localQavImageData, new String[] { "autoDownload" });
     }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavImageData)a()).autoDownload;
   }
 }
 

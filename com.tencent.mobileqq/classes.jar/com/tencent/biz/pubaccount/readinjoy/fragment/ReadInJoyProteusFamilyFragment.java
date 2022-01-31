@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdkf;
-import bhvq;
-import bhvt;
+import bdoo;
+import bhzx;
+import biaa;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -52,7 +52,7 @@ public class ReadInJoyProteusFamilyFragment
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
       this.jdField_a_of_type_Pao = new pao((Activity)this.jdField_a_of_type_AndroidContentContext);
-      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131372357);
+      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131372377);
       this.jdField_a_of_type_Pao.a(localViewGroup);
       b();
     }
@@ -63,7 +63,7 @@ public class ReadInJoyProteusFamilyFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(paramInt);
-      this.leftView.setBackgroundResource(2130848925);
+      this.leftView.setBackgroundResource(2130848998);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(paramInt);
@@ -72,13 +72,13 @@ public class ReadInJoyProteusFamilyFragment
   
   private void b()
   {
-    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718966));
+    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718978));
     ors.a(getTitleBarView());
     a(-16777216);
     Object localObject = this.rightViewImg;
     if (localObject != null)
     {
-      ((ImageView)localObject).setImageResource(2130842460);
+      ((ImageView)localObject).setImageResource(2130842473);
       ((ImageView)localObject).setVisibility(0);
       ((ImageView)localObject).setBackgroundResource(0);
       ((ImageView)localObject).setOnClickListener(new pak(this, (ImageView)localObject));
@@ -100,21 +100,21 @@ public class ReadInJoyProteusFamilyFragment
     int[] tmp24_20 = tmp20_16;
     tmp24_20[2] = 2;
     tmp24_20;
-    String str1 = BaseApplicationImpl.getApplication().getString(2131718966);
-    String str2 = BaseApplicationImpl.getApplication().getString(2131718966);
-    String str3 = BaseApplicationImpl.getApplication().getString(2131718966);
+    String str1 = BaseApplicationImpl.getApplication().getString(2131718978);
+    String str2 = BaseApplicationImpl.getApplication().getString(2131718978);
+    String str3 = BaseApplicationImpl.getApplication().getString(2131718978);
     int i = 0;
     while (i < arrayOfInt.length)
     {
-      bhvt localbhvt = new bhvt();
-      localbhvt.jdField_a_of_type_Int = arrayOfInt[i];
-      localbhvt.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
-      localbhvt.b = new int[] { 2130842455, 2130842456, 2130842455 }[i];
-      localArrayList.add(localbhvt);
+      biaa localbiaa = new biaa();
+      localbiaa.jdField_a_of_type_Int = arrayOfInt[i];
+      localbiaa.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
+      localbiaa.b = new int[] { 2130842468, 2130842469, 2130842468 }[i];
+      localArrayList.add(localbiaa);
       i += 1;
     }
-    i = bdkf.a(125.0F);
-    bhvq.a(paramBaseActivity, localArrayList, new pam(this), new pan(this), i, false, -1, 2131755030).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
+    i = bdoo.a(125.0F);
+    bhzx.a(paramBaseActivity, localArrayList, new pam(this), new pan(this), i, false, -1, 2131755030).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
   }
   
   public void a(String paramString)
@@ -138,13 +138,13 @@ public class ReadInJoyProteusFamilyFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
     this.jdField_a_of_type_Pao.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366277));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366279));
     nxa.a().a(8888, this);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560093;
+    return 2131560092;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)

@@ -1,10 +1,20 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface bfjs
+class bfjs
+  implements INetEventHandler
 {
-  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
+  bfjs(bfjr parambfjr) {}
   
-  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    int i = ndd.a();
+    Iterator localIterator = bfjr.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bfju)localIterator.next()).a(i);
+    }
+  }
 }
 
 

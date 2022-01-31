@@ -1,26 +1,14 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class asah
-  extends amab
+  implements DialogInterface.OnClickListener
 {
   asah(asag paramasag) {}
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((asag.a(this.a).equals(paramString)) && (asag.a(this.a) != null))
-      {
-        asag.a(this.a);
-        asag.a(this.a).a(paramList);
-      }
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

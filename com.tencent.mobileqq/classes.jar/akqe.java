@@ -1,10 +1,8 @@
+import java.util.List;
+
 public abstract interface akqe
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean, String paramString1, List<akqb> paramList, String paramString2);
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_REPORT.REPORT.SingleDcData;
-import bgya;
+import bhch;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class MiniProgramReporter$5
   implements Runnable
 {
-  public MiniProgramReporter$5(bgya parambgya, Collection paramCollection) {}
+  public MiniProgramReporter$5(bhch parambhch, Collection paramCollection) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class MiniProgramReporter$5
         this.this$0.a(localSingleDcData);
       }
     }
-    bgya.a(this.this$0);
+    bhch.a(this.this$0);
   }
 }
 

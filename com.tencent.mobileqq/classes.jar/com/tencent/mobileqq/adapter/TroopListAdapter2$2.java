@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import akhc;
+import aklr;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -8,11 +8,11 @@ import mqq.os.MqqHandler;
 public class TroopListAdapter2$2
   implements Runnable
 {
-  public TroopListAdapter2$2(akhc paramakhc) {}
+  public TroopListAdapter2$2(aklr paramaklr) {}
   
   public void run()
   {
-    List localList = akhc.a(this.this$0);
+    List localList = aklr.a(this.this$0);
     ThreadManager.getUIHandler().post(new TroopListAdapter2.2.1(this, localList));
   }
 }

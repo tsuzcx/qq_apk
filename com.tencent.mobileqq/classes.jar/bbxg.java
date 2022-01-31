@@ -1,17 +1,26 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-
-class bbxg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bbxg
 {
-  bbxg(bbxf parambbxf, String paramString) {}
+  public abstract int a();
   
-  public void onGlobalLayout()
-  {
-    bbxf.a(this.jdField_a_of_type_Bbxf).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bbxf.a(this.jdField_a_of_type_Bbxf, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(bbxh parambbxh);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract int g();
 }
 
 

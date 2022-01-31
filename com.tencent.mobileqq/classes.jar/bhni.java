@@ -1,7 +1,24 @@
-public class bhni
+final class bhni
+  extends bhnl
 {
-  public bhnj a;
-  public boolean a;
+  public bhoe a;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bhni(bhng parambhng, String paramString)
+  {
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(String paramString, bhoe parambhoe)
+  {
+    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Bhoe = parambhoe;
+      return false;
+    }
+    return true;
+  }
 }
 
 

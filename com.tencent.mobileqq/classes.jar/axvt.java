@@ -1,26 +1,17 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import android.media.MediaFormat;
 
-class axvt
-  implements MessageQueue.IdleHandler
+public class axvt
 {
-  axvt(axvr paramaxvr) {}
-  
-  public boolean queueIdle()
-  {
-    AIOPictureData localAIOPictureData = this.a.a();
-    axue localaxue = new axue();
-    if ((localAIOPictureData != null) && (localaxue.a(localAIOPictureData, 4)) && (localaxue.a(localAIOPictureData, 4) == null))
-    {
-      this.a.e(true);
-      this.a.updateUI();
-    }
-    return false;
-  }
+  public int a = -1;
+  public MediaFormat a;
+  public String a;
+  public int b = -1;
+  public MediaFormat b;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvt
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,11 @@ package com.tencent.biz.qqcircle.widgets;
 import android.text.TextUtils;
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
-import uby;
+import uer;
 
 public class QCirclePolymorphicLikePopWindow$LoadGifRunnable
   implements Runnable
@@ -51,7 +52,7 @@ public class QCirclePolymorphicLikePopWindow$LoadGifRunnable
     {
       try
       {
-        Arrays.sort((Object[])localObject1, new uby(this));
+        Arrays.sort((Object[])localObject1, new uer(this));
         localObject2 = new QQAnimationDrawable();
         ((QQAnimationDrawable)localObject2).c(2147483647);
         ((QQAnimationDrawable)localObject2).a(false);
@@ -60,11 +61,15 @@ public class QCirclePolymorphicLikePopWindow$LoadGifRunnable
           ((QQAnimationDrawable)localObject2).a(localObject1.length * 30);
           ((QQAnimationDrawable)localObject2).a((String[])localObject1);
         }
-        localAnimationView.post(new QCirclePolymorphicLikePopWindow.LoadGifRunnable.2(this, (QQAnimationDrawable)localObject2, localAnimationView));
+        if (localAnimationView != null) {
+          localAnimationView.post(new QCirclePolymorphicLikePopWindow.LoadGifRunnable.2(this, localAnimationView, (QQAnimationDrawable)localObject2));
+        }
         return;
       }
       catch (Exception localException)
       {
+        localException.printStackTrace();
+        QLog.d("polyView", 1, localException.getMessage());
         continue;
       }
       localObject1 = null;

@@ -1,17 +1,18 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-public class ackc
+public final class ackc
   implements DialogInterface.OnClickListener
 {
-  public ackc(ChatSettingActivity paramChatSettingActivity) {}
+  public ackc(acln paramacln) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

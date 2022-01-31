@@ -1,744 +1,628 @@
-import android.content.BroadcastReceiver;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.1;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Set;
+import tencent.im.cs.cmd0x345.cmd0x345.ReqBody;
+import tencent.im.cs.cmd0x345.cmd0x345.ReqBody.SubCmd0x5ReqBody;
+import tencent.im.cs.cmd0x345.cmd0x345.ReqBody.SubCmd0x6ReqBody;
+import tencent.im.cs.cmd0x345.cmd0x345.RspBody;
+import tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x5RspBody;
+import tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x6RspBody;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyForwardFileReq;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyForwardFileRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReqV3;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
+import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
+import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import tencent.im.cs.cmd0x346.cmd0x346.UploadSuccReq;
+import tencent.im.cs.cmd0x346.cmd0x346.UploadSuccRsp;
 
 public class aqua
+  implements bavp
 {
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  public Handler a;
-  private aqnl jdField_a_of_type_Aqnl = new aquc(this);
-  private aquf jdField_a_of_type_Aquf;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  LinkedHashMap<Long, aqug> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private LinkedHashMap<String, LinkedHashMap<Long, aque>> b = new LinkedHashMap();
+  private static int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final String jdField_a_of_type_JavaLangString = "ProtocolManager";
   
   public aqua(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqnl);
-    try
+  }
+  
+  private void a(bavq parambavq, bavr parambavr)
+  {
+    long l2 = 0L;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    int i = -100003;
+    boolean bool2 = false;
+    long l1;
+    boolean bool1;
+    if ((parambavr.a.getResultCode() == 1002) || (parambavr.a.getResultCode() == 1013))
     {
-      ThreadManager.executeOnSubThread(new OnlineFileSessionCenter.1(this, paramQQAppInterface));
+      i = -100001;
+      QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: resp is timeout[" + parambavr.a.getResultCode() + "]");
+      l1 = 0L;
+      parambavr = null;
+      bool1 = false;
+    }
+    label96:
+    Object localObject3;
+    while (i != 0)
+    {
+      bool1 = bool2;
+      ((aqty)((aquc)parambavq.jdField_a_of_type_JavaLangObject).a()).a(bool1, i, (String)localObject1, parambavr, l1, l2);
       return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 2, paramQQAppInterface.toString());
-    }
-  }
-  
-  aqug a(long paramLong)
-  {
-    aqug localaqug3 = (aqug)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-    aqug localaqug1 = localaqug3;
-    if (localaqug3 == null)
-    {
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
-      localaqug1 = localaqug3;
-      if (localFileManagerEntity != null)
+      if (parambavr.a.getResultCode() != 1000)
       {
-        localaqug1 = new aqug(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
-        localaqug1.a(localFileManagerEntity);
+        i = -100002;
+        QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: resp is failed[" + parambavr.a.getResultCode() + "]");
+        l1 = 0L;
+        parambavr = null;
+        bool1 = false;
       }
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), localaqug1);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong))
+      else
       {
-        QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] getOnlineWorker, but user had deleted it, return null");
-        if (localaqug1 != null)
-        {
-          localaqug1.n();
-          c(paramLong);
-        }
-        return null;
-      }
-    }
-    finally {}
-    if (localaqug2 != null) {
-      localaqug2.k();
-    }
-    b();
-    return localaqug2;
-  }
-  
-  aqug a(String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      return null;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
-    aqug localaqug;
-    do
-    {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      localaqug = (aqug)((Iterator)localObject).next();
-    } while ((localaqug == null) || (localaqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (!paramString.equalsIgnoreCase(localaqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin)) || (paramLong != localaqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId));
-    for (;;)
-    {
-      if (localaqug == null)
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong);
-        if (localObject == null) {
-          break label261;
-        }
-        paramLong = ((FileManagerEntity)localObject).nSessionId;
-        paramString = new aqug(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).nSessionId);
-        paramString.a((FileManagerEntity)localObject);
-      }
-      for (;;)
-      {
+        parambavr = parambavr.a.getWupBuffer();
+        localObject3 = new cmd0x346.RspBody();
         try
         {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), paramString);
-          if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong)) {
-            break label247;
+          ((cmd0x346.RspBody)localObject3).mergeFrom(parambavr);
+          if (((cmd0x346.RspBody)localObject3).msg_apply_forward_file_rsp.has()) {
+            break label256;
           }
-          QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] getOnlineWorker, but user had deleted it, return null");
-          if (paramString != null)
-          {
-            paramString.n();
-            c(paramLong);
-          }
-          return null;
+          QLog.i("ProtocolManager", 1, "onForwardOfflineResponse rspBody has not hasMsgApplyForwardFileRsp");
+          l1 = 0L;
+          parambavr = null;
+          bool1 = false;
         }
-        finally {}
-        if (localaqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+        catch (InvalidProtocolBufferMicroException parambavr)
         {
-          paramLong = localaqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-          paramString = localaqug;
-          continue;
-          label247:
-          if (paramString != null) {
-            paramString.k();
-          }
-          b();
-          return paramString;
+          parambavr.printStackTrace();
+          l1 = 0L;
+          parambavr = null;
+          bool1 = false;
         }
-        else
+        continue;
+        label256:
+        localObject3 = (cmd0x346.ApplyForwardFileRsp)((cmd0x346.RspBody)localObject3).msg_apply_forward_file_rsp.get();
+        if (!((cmd0x346.ApplyForwardFileRsp)localObject3).int32_ret_code.has()) {
+          break label416;
+        }
+      }
+    }
+    label416:
+    for (i = ((cmd0x346.ApplyForwardFileRsp)localObject3).int32_ret_code.get();; i = 0)
+    {
+      if (((cmd0x346.ApplyForwardFileRsp)localObject3).str_ret_msg.has()) {}
+      for (parambavr = ((cmd0x346.ApplyForwardFileRsp)localObject3).str_ret_msg.get();; parambavr = null)
+      {
+        localObject1 = localObject2;
+        if (((cmd0x346.ApplyForwardFileRsp)localObject3).bytes_uuid.has()) {
+          localObject1 = new String(((cmd0x346.ApplyForwardFileRsp)localObject3).bytes_uuid.get().toByteArray());
+        }
+        if (((cmd0x346.ApplyForwardFileRsp)localObject3).uint64_total_space.has()) {}
+        for (l1 = ((cmd0x346.ApplyForwardFileRsp)localObject3).uint64_total_space.get();; l1 = 0L)
         {
-          label261:
-          paramString = localaqug;
-          paramLong = 0L;
-        }
-      }
-      localaqug = null;
-    }
-  }
-  
-  public void a()
-  {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ((aqug)localEntry.getValue()).n();
-      long l = ((Long)localEntry.getKey()).longValue();
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-      localIterator.remove();
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]. stop. and remove the worker..[" + i + " - " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      aqug localaqug = (aqug)localEntry.getValue();
-      localaqug.b(paramInt);
-      if (localaqug.c())
-      {
-        long l = ((Long)localEntry.getKey()).longValue();
-        localIterator.remove();
-        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]. remove the worker....");
-      }
-    }
-    a();
-  }
-  
-  public void a(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] PauseTrans sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      return;
-      localaqug = a(paramLong);
-      if (localaqug == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.PauseTrans");
-        return;
-      }
-      localaqug.f();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong))
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] had be deleted by user. stop it");
-        localaqug.n();
-      }
-    } while (!localaqug.c());
-    c(paramLong);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderCancelUpload sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      do
-      {
-        return;
-        localaqug = a(paramString, paramLong);
-        if (localaqug != null) {
+          if (((cmd0x346.ApplyForwardFileRsp)localObject3).uint64_used_space.has()) {
+            l2 = ((cmd0x346.ApplyForwardFileRsp)localObject3).uint64_used_space.get();
+          }
+          bool1 = true;
+          localObject2 = localObject1;
+          localObject1 = parambavr;
+          parambavr = localObject2;
           break;
+          break label96;
         }
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderCancelUpload");
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
-      a(paramString, paramLong, new aque(this, 10));
-      return;
-      localaqug.e();
-    } while (!localaqug.c());
-    c(localaqug.jdField_a_of_type_Long);
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onFileRequestBeHandledByPC sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      do
-      {
-        return;
-        localaqug = a(paramString, paramLong);
-        if (localaqug != null) {
-          break;
-        }
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onFileRequestBeHandledByPC");
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
-      a(paramString, paramLong, new aque(this, paramInt));
-      return;
-      localaqug.a(paramInt);
-    } while (!localaqug.c());
-    c(localaqug.jdField_a_of_type_Long);
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderUploadProgressNotify sessionid error.return");
-    }
-    do
-    {
-      return;
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderUploadProgressNotify");
-        return;
       }
-      paramString.a(paramInt1, paramInt2);
-    } while (!paramString.c());
-    c(paramString.jdField_a_of_type_Long);
+    }
   }
   
-  public void a(String paramString1, long paramLong, int paramInt, String paramString2)
+  private void a(String paramString, byte[] paramArrayOfByte, aquc paramaquc, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramString1 == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderUploadException sessionid error.return");
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = a(paramString1, paramLong);
-        if (localObject != null) {
-          break;
-        }
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderUploadException");
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong));
-      localObject = new aque(this, 12);
-      ((aque)localObject).jdField_b_of_type_Int = paramInt;
-      ((aque)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      a(paramString1, paramLong, (aque)localObject);
-      return;
-      ((aqug)localObject).a(paramInt, paramString2);
-    } while (!((aqug)localObject).c());
-    c(((aqug)localObject).jdField_a_of_type_Long);
+    bavq localbavq = new bavq();
+    localbavq.jdField_a_of_type_JavaLangString = paramString;
+    localbavq.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localbavq.jdField_a_of_type_JavaLangObject = paramaquc;
+    localbavq.jdField_a_of_type_Int = paramInt1;
+    localbavq.b = paramInt2;
+    localbavq.c = paramInt3;
+    localbavq.jdField_a_of_type_Bavp = this;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbavq);
   }
   
-  public void a(String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  private void b(bavq parambavq, bavr parambavr)
   {
-    if ((paramString1 == null) || (paramLong1 <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "]onSenderUploadCompleted  sessionid error.return");
-    }
-    Object localObject;
-    do
+    Object localObject2 = null;
+    Object localObject1 = null;
+    int i = -100003;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((parambavr.a.getResultCode() == 1002) || (parambavr.a.getResultCode() == 1013))
     {
-      do
-      {
-        return;
-        localObject = a(paramString1, paramLong1);
-        if (localObject != null) {
-          break;
-        }
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "]. not find worker.onSenderUploadCompleted");
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong1));
-      localObject = new aque(this, 11);
-      ((aque)localObject).jdField_b_of_type_Int = paramInt;
-      ((aque)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      ((aque)localObject).jdField_b_of_type_Long = paramLong2;
-      a(paramString1, paramLong1, (aque)localObject);
-      return;
-      if (!((aqug)localObject).a(paramInt, paramString2, paramLong2)) {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "] upload competed. but onlineworker handle failed!!!!");
+      i = -100001;
+      QLog.i("ProtocolManager", 1, "onForwardOfflineToOther: resp is timeout[" + parambavr.a.getResultCode() + "]");
+      parambavr = null;
+      bool1 = false;
+    }
+    label90:
+    Object localObject3;
+    while (i != 0)
+    {
+      bool1 = bool2;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProtocolManager", 2, "onForwardOfflineToOther: return " + bool1 + ", retCode=" + i + ", retMsg=" + (String)localObject1);
       }
-    } while (!((aqug)localObject).c());
-    c(((aqug)localObject).jdField_a_of_type_Long);
-  }
-  
-  void a(String paramString, long paramLong, aque paramaque)
-  {
-    if ((paramString == null) || (paramLong <= 0L) || (paramaque == null)) {
+      ((aqty)((aquc)parambavq.jdField_a_of_type_JavaLangObject).a()).a(bool1, i, (String)localObject1, parambavr, 0L, 0L);
       return;
-    }
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  cacheHandleBeforeRequest handleType:" + paramaque.jdField_a_of_type_Int + " info_1:" + paramaque.jdField_b_of_type_Int + " info_2:" + paramaque.jdField_a_of_type_JavaLangString + " info_3:" + paramaque.jdField_b_of_type_Long);
-    LinkedHashMap localLinkedHashMap = (LinkedHashMap)this.b.get(paramString);
-    if (localLinkedHashMap == null)
-    {
-      localLinkedHashMap = new LinkedHashMap();
-      localLinkedHashMap.put(Long.valueOf(paramLong), paramaque);
-      this.b.put(paramString, localLinkedHashMap);
-      return;
-    }
-    localLinkedHashMap.put(Long.valueOf(paramLong), paramaque);
-  }
-  
-  public void a(String paramString, long paramLong, boolean paramBoolean)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onRecvOnLineFileResult sessionid error.return");
-    }
-    do
-    {
-      return;
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
+      if (parambavr.a.getResultCode() != 1000)
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onRecvOnLineFileResult");
-        return;
+        i = -100002;
+        QLog.i("ProtocolManager", 1, "onForwardOfflineToOther: resp is failed[" + parambavr.a.getResultCode() + "]");
+        parambavr = null;
+        bool1 = false;
       }
-      paramString.a(paramBoolean);
-    } while (!paramString.c());
-    c(paramString.jdField_a_of_type_Long);
+      else
+      {
+        parambavr = parambavr.a.getWupBuffer();
+        localObject3 = new cmd0x346.RspBody();
+        try
+        {
+          ((cmd0x346.RspBody)localObject3).mergeFrom(parambavr);
+          if (((cmd0x346.RspBody)localObject3).msg_apply_copy_to_rsp.has()) {
+            break label290;
+          }
+          QLog.i("ProtocolManager", 1, "onForwardOfflineToOther rspBody has not hasMsgApplyDownloadAbsRsp");
+          parambavr = null;
+          bool1 = false;
+        }
+        catch (InvalidProtocolBufferMicroException parambavr)
+        {
+          parambavr.printStackTrace();
+          parambavr = null;
+          bool1 = false;
+        }
+        continue;
+        label290:
+        localObject3 = (cmd0x346.ApplyCopyToRsp)((cmd0x346.RspBody)localObject3).msg_apply_copy_to_rsp.get();
+        if (!((cmd0x346.ApplyCopyToRsp)localObject3).int32_ret_code.has()) {
+          break label392;
+        }
+      }
+    }
+    label392:
+    for (i = ((cmd0x346.ApplyCopyToRsp)localObject3).int32_ret_code.get();; i = 0)
+    {
+      if (((cmd0x346.ApplyCopyToRsp)localObject3).str_ret_msg.has()) {}
+      for (parambavr = ((cmd0x346.ApplyCopyToRsp)localObject3).str_ret_msg.get();; parambavr = null)
+      {
+        localObject1 = localObject2;
+        if (((cmd0x346.ApplyCopyToRsp)localObject3).str_file_key.has()) {
+          localObject1 = ((cmd0x346.ApplyCopyToRsp)localObject3).str_file_key.get();
+        }
+        bool1 = true;
+        localObject2 = localObject1;
+        localObject1 = parambavr;
+        parambavr = localObject2;
+        break;
+        break label90;
+      }
+    }
   }
   
-  public void a(String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt1, String paramString3, aqxw paramaqxw, long paramLong2, int paramInt2)
+  private void c(bavq parambavq, bavr parambavr)
   {
-    if (paramaqxw == null)
+    boolean bool = false;
+    String str = "";
+    Object localObject2 = null;
+    Object localObject1;
+    if ((parambavr.a.getResultCode() == 1002) || (parambavr.a.getResultCode() == 1013))
     {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession. request come,but session = null");
-      return;
+      QLog.i("ProtocolManager", 1, "internalForwardDiscFile: resp is timeout[" + parambavr.a.getResultCode() + "]");
+      localObject1 = null;
+      parambavr = "";
     }
-    if (0L == paramaqxw.jdField_b_of_type_Long)
+    for (int i = -100001;; i = -100002)
     {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramaqxw.jdField_b_of_type_Long + "]  onFileRequestCome sessionid error.return");
+      ((aqty)((aquc)parambavq.jdField_a_of_type_JavaLangObject).a()).a(bool, i, parambavr, (String)localObject1, 0L, 0L);
       return;
+      if (parambavr.a.getResultCode() == 1000) {
+        break;
+      }
+      QLog.i("ProtocolManager", 1, "internalForwardDiscFile: resp is failed[" + parambavr.a.getResultCode() + "]");
+      localObject1 = null;
+      parambavr = "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramaqxw.jdField_b_of_type_Long) != null)
-    {
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramaqxw.jdField_b_of_type_Long + "] request come filename:" + paramaqxw.jdField_a_of_type_JavaLangString + ", but is repeat session and return");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramaqxw.jdField_b_of_type_Long))
-    {
-      QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramaqxw.jdField_b_of_type_Long + "] request come filename:" + paramaqxw.jdField_a_of_type_JavaLangString + "but it had be deleted by user");
-      return;
-    }
-    String str = bauj.a(banc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramaqxw.jdField_a_of_type_JavaLangString, 0, null), paramaqxw.jdField_a_of_type_Long, 0, false, null);
-    long l = ayvw.a(-1000).uniseq;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l, paramString1, 0);
-    localFileManagerEntity.uniseq = l;
-    localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localFileManagerEntity.setCloudType(0);
-    localFileManagerEntity.fileName = paramaqxw.jdField_a_of_type_JavaLangString;
-    localFileManagerEntity.fileSize = paramaqxw.jdField_a_of_type_Long;
-    localFileManagerEntity.nOpType = -1;
-    localFileManagerEntity.peerNick = arni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, null, 0);
-    localFileManagerEntity.peerType = 0;
-    localFileManagerEntity.peerUin = paramString1;
-    localFileManagerEntity.srvTime = (1000L * paramLong1);
-    localFileManagerEntity.status = 4;
-    localFileManagerEntity.Uuid = null;
-    localFileManagerEntity.isReaded = paramBoolean;
-    localFileManagerEntity.bSend = false;
-    localFileManagerEntity.nFileType = -1;
-    localFileManagerEntity.nOLfileSessionId = paramaqxw.jdField_b_of_type_Long;
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramaqxw.jdField_b_of_type_Long + "] - nSessionId[" + localFileManagerEntity.nSessionId + "] request come filename:" + paramaqxw.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramString2, false, paramaqxw.jdField_a_of_type_JavaLangString, paramaqxw.jdField_a_of_type_Long, false, 0, str, paramShort, paramShort, paramString3, paramInt1, l, localFileManagerEntity.nSessionId, paramLong2, paramLong1, paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "File Coming:" + arni.a(localFileManagerEntity));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l, localFileManagerEntity.nSessionId, paramString1, 0, 17, null, 0, null);
-    if (!paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, true, true);
-    }
-    paramString2 = new aqug(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
-    paramString2.a(localFileManagerEntity);
-    do
+    parambavr = parambavr.a.getWupBuffer();
+    Object localObject3 = new cmd0x345.RspBody();
+    for (;;)
     {
       try
       {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(localFileManagerEntity.nSessionId), paramString2);
-        paramString2.k();
-        if (paramString2.c())
-        {
-          c(localFileManagerEntity.nSessionId);
-          b();
-          return;
+        ((cmd0x345.RspBody)localObject3).mergeFrom(parambavr);
+        if (!((cmd0x345.RspBody)localObject3).uint32_return_code.has()) {
+          break label440;
+        }
+        i = ((cmd0x345.RspBody)localObject3).uint32_return_code.get();
+        if ((((cmd0x345.RspBody)localObject3).msg_subcmd_0x6_rsp_body.has()) || (((cmd0x345.RspBody)localObject3).msg_subcmd_0x5_rsp_body.has())) {
+          break label271;
+        }
+        QLog.i("ProtocolManager", 1, "internalForwardDiscFile: rspBody has not hasMsgApplyDownloadRsp");
+        parambavr = "";
+        i = -100003;
+        localObject1 = null;
+      }
+      catch (InvalidProtocolBufferMicroException parambavr)
+      {
+        parambavr.printStackTrace();
+        parambavr = "";
+        i = -100003;
+        localObject1 = null;
+      }
+      break;
+      label271:
+      if (((cmd0x345.RspBody)localObject3).msg_subcmd_0x6_rsp_body.has())
+      {
+        localObject1 = (cmd0x345.RspBody.SubCmd0x6RspBody)((cmd0x345.RspBody)localObject3).msg_subcmd_0x6_rsp_body.get();
+        if (!((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_ret_msg.has()) {
+          break label434;
         }
       }
-      finally {}
-    } while (!a(paramString1, paramaqxw.jdField_b_of_type_Long));
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramaqxw.jdField_b_of_type_Long + "] had be handled before request come");
-  }
-  
-  public boolean a(long paramLong)
-  {
-    boolean bool1 = false;
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] recvOnLineFile sessionid error.return");
-    }
-    aqug localaqug;
-    boolean bool2;
-    do
-    {
-      return bool1;
-      localaqug = a(paramLong);
-      if (localaqug == null)
+      label434:
+      for (parambavr = ((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_ret_msg.get();; parambavr = "")
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.recvOnLineFile");
-        return false;
-      }
-      arnh localarnh = new arnh();
-      localarnh.b = "recv_file_online";
-      arng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localarnh);
-      bool2 = localaqug.d();
-      bool1 = bool2;
-    } while (!localaqug.c());
-    c(paramLong);
-    return bool2;
-  }
-  
-  boolean a(String paramString, long paramLong)
-  {
-    boolean bool2;
-    if ((paramString == null) || (paramLong <= 0L))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    LinkedHashMap localLinkedHashMap = (LinkedHashMap)this.b.get(paramString);
-    Object localObject;
-    boolean bool1;
-    if (localLinkedHashMap != null)
-    {
-      localObject = (aque)localLinkedHashMap.get(Long.valueOf(paramLong));
-      if (localObject != null)
-      {
-        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  isBeHandledBeforeRequest handleType:" + ((aque)localObject).jdField_a_of_type_Int + " info_1:" + ((aque)localObject).jdField_b_of_type_Int + " info_2:" + ((aque)localObject).jdField_a_of_type_JavaLangString + " info_3:" + ((aque)localObject).jdField_b_of_type_Long);
-        switch (((aque)localObject).jdField_a_of_type_Int)
+        if (((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_file_id.has()) {
+          localObject1 = ((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_file_id.get();
+        }
+        for (;;)
         {
-        case 6: 
-        case 7: 
-        case 8: 
-        case 9: 
-        default: 
-          bool1 = false;
-          localLinkedHashMap.remove(Long.valueOf(paramLong));
-          if (localLinkedHashMap.size() == 0) {
-            this.b.remove(paramString);
-          }
+          bool = true;
           break;
+          parambavr = str;
+          localObject1 = localObject2;
+          if (((cmd0x345.RspBody)localObject3).msg_subcmd_0x5_rsp_body.has())
+          {
+            localObject3 = (cmd0x345.RspBody.SubCmd0x5RspBody)((cmd0x345.RspBody)localObject3).msg_subcmd_0x5_rsp_body.get();
+            if (((cmd0x345.RspBody.SubCmd0x5RspBody)localObject3).str_ret_msg.has()) {
+              str = ((cmd0x345.RspBody.SubCmd0x5RspBody)localObject3).str_ret_msg.get();
+            }
+            parambavr = str;
+            localObject1 = localObject2;
+            if (((cmd0x345.RspBody.SubCmd0x5RspBody)localObject3).str_file_id.has())
+            {
+              localObject1 = ((cmd0x345.RspBody.SubCmd0x5RspBody)localObject3).str_file_id.get();
+              parambavr = str;
+              continue;
+              localObject1 = null;
+            }
+          }
         }
       }
+      label440:
+      i = 0;
+    }
+  }
+  
+  private void d(bavq parambavq, bavr parambavr)
+  {
+    boolean bool = false;
+    Object localObject = null;
+    int i = -1;
+    if ((parambavr.a.getResultCode() == 1002) || (parambavr.a.getResultCode() == 1013))
+    {
+      QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: resp is timeout[" + parambavr.a.getResultCode() + "]");
+      i = -100001;
+      parambavr = localObject;
     }
     for (;;)
     {
-      paramLong = ayvc.a();
-      bool2 = bool1;
-      if (paramLong - this.jdField_a_of_type_Long < 3600L) {
-        break;
-      }
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  isBeHandledBeforeRequest handleType. start clear something");
-      this.jdField_a_of_type_Long = paramLong;
-      bool2 = bool1;
-      if (this.b.size() <= 0) {
-        break;
-      }
-      paramString = this.b.entrySet().iterator();
-      for (;;)
+      ((aqtz)((aquc)parambavq.jdField_a_of_type_JavaLangObject).a()).a(bool, i, parambavr);
+      return;
+      if (parambavr.a.getResultCode() != 1000)
       {
-        bool2 = bool1;
-        if (!paramString.hasNext()) {
-          break;
-        }
-        localLinkedHashMap = (LinkedHashMap)((Map.Entry)paramString.next()).getValue();
-        if ((localLinkedHashMap != null) && (localLinkedHashMap.size() > 0))
+        QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: resp is failed[" + parambavr.a.getResultCode() + "]");
+        i = -100002;
+        parambavr = localObject;
+      }
+      else
+      {
+        parambavr = parambavr.a.getWupBuffer();
+        cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
+        try
         {
-          localObject = localLinkedHashMap.entrySet().iterator();
-          for (;;)
-          {
-            if (!((Iterator)localObject).hasNext()) {
-              break label597;
-            }
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-            aque localaque = (aque)localEntry.getValue();
-            long l = ((Long)localEntry.getKey()).longValue();
-            if (localaque != null)
-            {
-              if (paramLong - localaque.jdField_a_of_type_Long < 7200L) {
-                continue;
-              }
-              QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]  isBeHandledBeforeRequest and clear it.handleType:" + localaque.jdField_a_of_type_Int + " info_1:" + localaque.jdField_b_of_type_Int + " info_2:" + localaque.jdField_a_of_type_JavaLangString + " info_3:" + localaque.jdField_b_of_type_Long);
-              ((Iterator)localObject).remove();
-              continue;
-              a(paramString, paramLong, ((aque)localObject).jdField_a_of_type_Int);
-              bool1 = true;
-              break;
-              a(paramString, paramLong);
-              bool1 = true;
-              break;
-              a(paramString, paramLong, ((aque)localObject).jdField_b_of_type_Int, ((aque)localObject).jdField_a_of_type_JavaLangString, ((aque)localObject).jdField_b_of_type_Long);
-              bool1 = true;
-              break;
-              a(paramString, paramLong, ((aque)localObject).jdField_b_of_type_Int, ((aque)localObject).jdField_a_of_type_JavaLangString);
-              bool1 = true;
-              break;
-            }
-            ((Iterator)localObject).remove();
+          localRspBody.mergeFrom(parambavr);
+          if (localRspBody.msg_apply_upload_rsp_v3.has()) {
+            break label224;
           }
-          label597:
-          if (localLinkedHashMap.size() == 0) {
-            paramString.remove();
-          }
+          QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
+          i = -100003;
+          parambavr = localObject;
         }
-        else
+        catch (InvalidProtocolBufferMicroException parambavr)
         {
-          paramString.remove();
+          parambavr.printStackTrace();
+          i = -100003;
+          parambavr = localObject;
+        }
+        continue;
+        label224:
+        parambavr = (cmd0x346.ApplyUploadRspV3)localRspBody.msg_apply_upload_rsp_v3.get();
+        bool = true;
+      }
+    }
+  }
+  
+  private void e(bavq parambavq, bavr parambavr)
+  {
+    boolean bool = false;
+    int i = -1;
+    String str = "";
+    if ((parambavr.a.getResultCode() == 1002) || (parambavr.a.getResultCode() == 1013))
+    {
+      i = -100001;
+      QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: resp is timeout[" + parambavr.a.getResultCode() + "]");
+      parambavr = str;
+    }
+    cmd0x346.RspBody localRspBody;
+    for (;;)
+    {
+      if (parambavq.jdField_a_of_type_JavaLangObject != null) {
+        ((aqtx)((aquc)parambavq.jdField_a_of_type_JavaLangObject).a()).a(bool, i, parambavr);
+      }
+      return;
+      if (parambavr.a.getResultCode() != 1000)
+      {
+        i = -100002;
+        QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: resp is failed[" + parambavr.a.getResultCode() + "]");
+        parambavr = str;
+      }
+      else
+      {
+        parambavr = parambavr.a.getWupBuffer();
+        localRspBody = new cmd0x346.RspBody();
+        try
+        {
+          localRspBody.mergeFrom(parambavr);
+          if (localRspBody.msg_upload_succ_rsp.has()) {
+            break;
+          }
+          QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: rspBody has not hasMsgUploadSuccRsp");
+          i = -100003;
+          parambavr = str;
+        }
+        catch (InvalidProtocolBufferMicroException parambavr)
+        {
+          parambavr.printStackTrace();
+          i = -100003;
+          parambavr = str;
         }
       }
-      bool1 = false;
+    }
+    parambavr = (cmd0x346.UploadSuccRsp)localRspBody.msg_upload_succ_rsp.get();
+    if (parambavr.int32_ret_code.has()) {
+      i = parambavr.int32_ret_code.get();
+    }
+    if (parambavr.str_ret_msg.has()) {}
+    for (parambavr = parambavr.str_ret_msg.get();; parambavr = "")
+    {
+      bool = true;
+      break;
     }
   }
   
-  void b()
+  public void a(bavr parambavr, bavq parambavq)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new aqud(this, Looper.getMainLooper());
+    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(parambavq.jdField_a_of_type_JavaLangString)) {
+      a(parambavq, parambavr);
     }
-    if (this.jdField_a_of_type_Aquf == null)
+    for (;;)
     {
-      this.jdField_a_of_type_Aquf = new aquf(this, null);
-      this.jdField_a_of_type_Aquf.a();
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] start progress make pump thread!!!");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession onNeworkChanged set failed");
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new OnlineFileSessionCenter.3(this, paramInt));
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(parambavq.jdField_a_of_type_JavaLangString)) {
+        e(parambavq, parambavr);
+      }
       return;
-    }
-    a(paramInt);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] ResumeTrans sessionid error.return");
-    }
-    aqug localaqug;
-    do
-    {
-      return;
-      localaqug = a(paramLong);
-      if (localaqug == null)
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(parambavq.jdField_a_of_type_JavaLangString))
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.ResumeTrans");
-        return;
+        b(parambavq, parambavr);
       }
-      localaqug.g();
-    } while (!localaqug.c());
-    c(paramLong);
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderReplayComeOnRecv sessionid error.return");
-    }
-    do
-    {
-      return;
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
+      else if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(parambavq.jdField_a_of_type_JavaLangString))
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderReplayComeOnRecv");
-        return;
+        aquc localaquc = (aquc)parambavq.jdField_a_of_type_JavaLangObject;
+        int i = localaquc.a();
+        if (i == 6) {
+          c(parambavq, parambavr);
+        } else if (i == 7) {
+          c(parambavq, parambavr);
+        } else {
+          QLog.w("ProtocolManager", 1, "unspourt:" + localaquc.a());
+        }
       }
-      paramString.i();
-    } while (!paramString.c());
-    c(paramString.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString, long paramLong, boolean paramBoolean)
-  {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onAskSenderUpProgressResult sessionid error.return");
-    }
-    do
-    {
-      return;
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
+      else if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(parambavq.jdField_a_of_type_JavaLangString))
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onAskSenderUpProgressResult");
-        return;
+        d(parambavq, parambavr);
       }
-      paramString.b(paramBoolean);
-    } while (!paramString.c());
-    c(paramString.jdField_a_of_type_Long);
-  }
-  
-  void c()
-  {
-    if (this.jdField_a_of_type_Aquf != null)
-    {
-      this.jdField_a_of_type_Aquf.b();
-      this.jdField_a_of_type_Aquf = null;
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] stop progress make pump thread!!!");
     }
   }
   
-  void c(long paramLong)
+  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, aqty paramaqty)
   {
-    try
+    cmd0x346.ApplyForwardFileReq localApplyForwardFileReq = new cmd0x346.ApplyForwardFileReq();
+    localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    Object localObject = paramString1.replace("+", "");
+    localApplyForwardFileReq.uint64_recver_uin.set(Long.parseLong((String)localObject));
+    localApplyForwardFileReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
+    paramString1 = new cmd0x346.ReqBody();
+    paramString1.msg_apply_forward_file_req.set(localApplyForwardFileReq);
+    paramString1.uint32_cmd.set(700);
+    paramString2 = paramString1.uint32_seq;
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    paramString2.set(i);
+    paramString1.uint32_business_id.set(3);
+    paramString1.uint32_client_type.set(104);
+    if (paramInt1 != 0)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. remove the worker");
-      return;
+      paramString2 = new cmd0x346.ExtensionReq();
+      paramString2.uint64_id.set(3L);
+      paramString2.uint64_type.set(paramInt1);
+      localObject = arrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, paramInt1);
+      if (localObject != null) {
+        paramString2.bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject));
+      }
+      paramString1.msg_extension_req.set(paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.i("ProtocolManager", 2, "forwardOfflineFileToBuddy : add tempinfo SessionType[" + paramInt1 + "]");
+      }
     }
-    finally {}
+    paramString2 = new aquc(this, paramaqty);
+    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700", paramString1.toByteArray(), paramString2, paramInt2, paramInt3, 1);
   }
   
-  public void c(String paramString, long paramLong)
+  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, aqub paramaqub, int paramInt3, int paramInt4, aqty paramaqty)
   {
-    if ((paramString == null) || (paramLong <= 0L)) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onAskUpProgressAndSessionInvaid sessionid error.return");
+    cmd0x345.ReqBody.SubCmd0x6ReqBody localSubCmd0x6ReqBody = new cmd0x345.ReqBody.SubCmd0x6ReqBody();
+    localSubCmd0x6ReqBody.uint32_dst_bus_id.set(paramInt2);
+    localSubCmd0x6ReqBody.uint64_file_size.set(paramaqub.jdField_a_of_type_Long);
+    localSubCmd0x6ReqBody.bytes_uuid.set(ByteStringMicro.copyFrom(paramaqub.b.getBytes()));
+    if (!TextUtils.isEmpty(paramaqub.c)) {
+      localSubCmd0x6ReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramaqub.c.getBytes()));
     }
-    do
+    localSubCmd0x6ReqBody.uint64_src_uin.set(Long.parseLong(paramString2));
+    paramString2 = paramString1.replace("+", "");
+    localSubCmd0x6ReqBody.uint64_dst_uin.set(Long.parseLong(paramString2));
+    localSubCmd0x6ReqBody.str_file_name.set(paramaqub.jdField_a_of_type_JavaLangString);
+    localSubCmd0x6ReqBody.str_src_file_path.set(paramaqub.b);
+    localSubCmd0x6ReqBody.str_src_parent_folder.set("/");
+    localSubCmd0x6ReqBody.uint32_client_type.set(104);
+    if ((paramInt1 != 1) && (paramInt1 != 0))
     {
-      return;
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onAskUpProgressAndSessionInvaid");
-        return;
+      localSubCmd0x6ReqBody.uint64_app_id.set(3L);
+      localSubCmd0x6ReqBody.uint64_talk_type.set(paramInt1);
+      paramString1 = arrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1);
+      if (paramString1 != null) {
+        localSubCmd0x6ReqBody.bytes_sig.set(ByteStringMicro.copyFrom(paramString1));
       }
-      paramString.m();
-    } while (!paramString.c());
-    c(paramString.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.i("ProtocolManager", 2, "forwardDiscToOther : add tempinfo SessionType[" + paramInt1 + "]");
+      }
+    }
+    paramString1 = new cmd0x345.ReqBody();
+    paramString1.msg_subcmd_0x6_req_body.set(localSubCmd0x6ReqBody);
+    paramString1.uint32_sub_cmd.set(7);
+    paramString2 = new aquc(this, paramaqty);
+    paramString2.a(7);
+    a("GTalkFileAppSvr.CMD_DISCUSS_FILE", paramString1.toByteArray(), paramString2, paramInt3, paramInt4, 1);
   }
   
-  void d()
+  public void a(String paramString1, String paramString2, aqub paramaqub, int paramInt1, int paramInt2, int paramInt3, aqty paramaqty)
   {
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    cmd0x346.ApplyCopyToReq localApplyCopyToReq = new cmd0x346.ApplyCopyToReq();
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().replace("+", "");
+    localApplyCopyToReq.uint64_dst_id.set(Long.parseLong(str));
+    if ((paramInt1 == 106) || (paramInt1 == 102) || (paramInt1 == 104))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      aqug localaqug = (aqug)localEntry.getValue();
-      localaqug.b(l1);
-      if (localaqug.c())
-      {
-        long l2 = ((Long)localEntry.getKey()).longValue();
-        int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-        localIterator.remove();
-        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l2 + "]. remove the worker..[" + i + " - " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
-      }
+      paramString2 = paramString2.replace("+", "");
+      localApplyCopyToReq.uint64_dst_id.set(Long.parseLong(paramString2));
     }
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0) {
-      c();
-    }
+    localApplyCopyToReq.uint32_dst_svcid.set(paramInt1);
+    localApplyCopyToReq.uint64_src_uin.set(Long.parseLong(str));
+    localApplyCopyToReq.uint64_file_size.set(paramaqub.jdField_a_of_type_Long);
+    localApplyCopyToReq.str_file_name.set(paramaqub.jdField_a_of_type_JavaLangString);
+    localApplyCopyToReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
+    paramString1 = new cmd0x346.ReqBody();
+    paramString1.msg_apply_copy_to_req.set(localApplyCopyToReq);
+    paramString1.uint32_cmd.set(60100);
+    paramString2 = paramString1.uint32_seq;
+    paramInt1 = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = paramInt1 + 1;
+    paramString2.set(paramInt1);
+    paramString1.uint32_business_id.set(3);
+    paramString1.uint32_client_type.set(104);
+    paramString2 = new aquc(this, paramaqty);
+    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100", paramString1.toByteArray(), paramString2, paramInt2, paramInt3, 1);
   }
   
-  public void d(long paramLong)
+  public void a(String paramString1, String paramString2, aqub paramaqub, aqty paramaqty)
   {
-    try
-    {
-      aqug localaqug = (aqug)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-      if (localaqug != null) {
-        localaqug.n();
-      }
-      c(paramLong);
-      return;
+    cmd0x345.ReqBody.SubCmd0x5ReqBody localSubCmd0x5ReqBody = new cmd0x345.ReqBody.SubCmd0x5ReqBody();
+    localSubCmd0x5ReqBody.uint32_src_bus_id.set(106);
+    localSubCmd0x5ReqBody.bytes_src_parent_folder.set(ByteStringMicro.copyFrom("/".getBytes()));
+    localSubCmd0x5ReqBody.bytes_src_file_path.set(ByteStringMicro.copyFrom(paramaqub.b.getBytes()));
+    localSubCmd0x5ReqBody.uint32_dst_uin.set(Integer.parseInt(paramString1));
+    localSubCmd0x5ReqBody.uint64_file_size.set(paramaqub.jdField_a_of_type_Long);
+    localSubCmd0x5ReqBody.uint32_from_uin.set(Integer.parseInt(paramString2));
+    localSubCmd0x5ReqBody.str_file_name.set(paramaqub.jdField_a_of_type_JavaLangString);
+    if ((paramaqub.c != null) && (paramaqub.c.length() > 0)) {
+      localSubCmd0x5ReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramaqub.c.getBytes()));
     }
-    finally {}
+    paramString1 = new cmd0x345.ReqBody();
+    paramString1.msg_subcmd_0x5_req_body.set(localSubCmd0x5ReqBody);
+    paramString1.uint32_sub_cmd.set(6);
+    paramString2 = new aquc(this, paramaqty);
+    paramString2.a(6);
+    a("GTalkFileAppSvr.CMD_DISCUSS_FILE", paramString1.toByteArray(), paramString2, 30000, 3, 1);
   }
   
-  public void e()
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, aqtz paramaqtz)
   {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  clearHistory. session center stop. . .");
-    a();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (this.jdField_a_of_type_Aqnl != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqnl);
-      }
+    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
+    localReqBody.uint32_cmd.set(1700);
+    localReqBody.uint32_business_id.set(3);
+    localReqBody.uint32_client_type.set(104);
+    Object localObject = localReqBody.uint32_seq;
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    ((PBUInt32Field)localObject).set(i);
+    localObject = new cmd0x346.ApplyUploadReqV3();
+    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_sender_uin.set(l);
+    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_recver_uin.set(Long.parseLong(paramString1));
+    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_file_size.set(paramLong);
+    ((cmd0x346.ApplyUploadReqV3)localObject).str_file_name.set(new String(paramString3));
+    ((cmd0x346.ApplyUploadReqV3)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte1));
+    ((cmd0x346.ApplyUploadReqV3)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramArrayOfByte2));
+    ((cmd0x346.ApplyUploadReqV3)localObject).str_local_filepath.set(paramString2);
+    ((cmd0x346.ApplyUploadReqV3)localObject).uint32_danger_level.set(0);
+    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_total_space.set(0L);
+    localReqBody.msg_apply_upload_req_v3.set((MessageMicro)localObject);
+    localReqBody.setHasFlag(true);
+    paramString1 = new aquc(this, paramaqtz);
+    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700", localReqBody.toByteArray(), paramString1, paramInt1, paramInt2, 1);
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, aqtx paramaqtx)
+  {
+    cmd0x346.UploadSuccReq localUploadSuccReq = new cmd0x346.UploadSuccReq();
+    localUploadSuccReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    paramString = paramString.replace("+", "");
+    localUploadSuccReq.uint64_recver_uin.set(Long.parseLong(paramString));
+    localUploadSuccReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    paramArrayOfByte = new cmd0x346.ReqBody();
+    paramArrayOfByte.msg_upload_succ_req.set(localUploadSuccReq);
+    paramArrayOfByte.uint32_cmd.set(800);
+    paramString = paramArrayOfByte.uint32_seq;
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    paramString.set(i);
+    paramArrayOfByte.uint32_business_id.set(3);
+    paramArrayOfByte.uint32_client_type.set(104);
+    paramString = null;
+    if (paramaqtx != null) {
+      paramString = new aquc(this, paramaqtx);
     }
+    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800", paramArrayOfByte.toByteArray(), paramString, paramInt1, paramInt2, 1);
   }
 }
 

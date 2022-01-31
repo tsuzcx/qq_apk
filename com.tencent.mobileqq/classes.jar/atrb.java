@@ -1,12 +1,17 @@
-public abstract interface atrb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+
+public class atrb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Exception paramException);
+  public atrb(LocationDialogUtil.4 param4) {}
   
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.b();
+    azqs.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
+  }
 }
 
 

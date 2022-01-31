@@ -1,16 +1,14 @@
-import java.util.Observable;
-import java.util.Observer;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class bgpz
-  implements Observer
+public final class bgpz
+  implements ThreadFactory
 {
-  public abstract void a(bgpy parambgpy);
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void update(Observable paramObservable, Object paramObject)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if ((paramObject instanceof bgpy)) {
-      a((bgpy)paramObject);
-    }
+    return new Thread(paramRunnable, "AsyncTask ##" + this.a.getAndIncrement());
   }
 }
 

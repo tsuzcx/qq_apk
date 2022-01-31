@@ -1,16 +1,19 @@
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
 
-public abstract interface begw
-  extends bebx
+public class begw
 {
-  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
+  public static final WebAccelerateHelper.CommonJsPluginFactory a = new begx();
   
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract String e();
+  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
+  {
+    switch (paramIntent.getIntExtra("web_view_module_from", -1))
+    {
+    default: 
+      return null;
+    }
+    return a;
+  }
 }
 
 

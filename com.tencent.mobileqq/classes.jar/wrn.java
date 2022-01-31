@@ -1,11 +1,11 @@
-class wrn
-  implements xoi<wnq>
+final class wrn
+  extends ThreadLocal<StringBuilder>
 {
-  wrn(wrh paramwrh) {}
-  
-  public wnq a()
+  protected StringBuilder a()
   {
-    return new wnq();
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 

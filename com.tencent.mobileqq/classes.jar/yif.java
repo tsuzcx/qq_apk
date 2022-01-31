@@ -1,22 +1,17 @@
-import android.widget.TextView;
-import java.util.Map;
-
-class yif
-  implements yjd
+public class yif
 {
-  yif(yid paramyid, affq paramaffq) {}
+  public Object a;
+  public boolean a;
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public yif(Object paramObject)
   {
-    Long localLong = (Long)yid.b(this.jdField_a_of_type_Yid).get(Integer.valueOf(this.jdField_a_of_type_Affq.b));
-    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
-    {
-      this.jdField_a_of_type_Affq.a.setText((CharSequence)yid.c(this.jdField_a_of_type_Yid).get(Integer.valueOf(this.jdField_a_of_type_Affq.b)));
-      return;
-    }
-    yid.b(this.jdField_a_of_type_Yid).put(Integer.valueOf(this.jdField_a_of_type_Affq.b), Long.valueOf(paramLong2));
-    yid.c(this.jdField_a_of_type_Yid).put(Integer.valueOf(this.jdField_a_of_type_Affq.b), paramString);
-    this.jdField_a_of_type_Affq.a.setText(paramString);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public yif(Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

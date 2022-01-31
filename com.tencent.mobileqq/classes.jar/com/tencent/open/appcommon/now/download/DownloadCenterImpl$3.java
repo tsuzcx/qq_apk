@@ -1,9 +1,9 @@
 package com.tencent.open.appcommon.now.download;
 
-import bffi;
-import bffl;
-import bfhg;
-import bfkb;
+import bfjr;
+import bfju;
+import bflp;
+import bfok;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,25 +12,25 @@ import java.util.List;
 public class DownloadCenterImpl$3
   implements Runnable
 {
-  public DownloadCenterImpl$3(bffi parambffi, ArrayList paramArrayList) {}
+  public DownloadCenterImpl$3(bfjr parambfjr, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bfhg.a("DownloadCenterImpl", "getQueryDownloadAction enter");
+    bflp.a("DownloadCenterImpl", "getQueryDownloadAction enter");
     ArrayList localArrayList = new ArrayList();
     int j = this.a.size();
     int i = 0;
     while (i < j)
     {
       localObject = (DownloadInfo)this.a.get(i);
-      if (bfkb.a().a((DownloadInfo)localObject)) {
+      if (bfok.a().a((DownloadInfo)localObject)) {
         localArrayList.add(localObject);
       }
       i += 1;
     }
-    Object localObject = bffi.a(this.this$0).iterator();
+    Object localObject = bfjr.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((bffl)((Iterator)localObject).next()).a(localArrayList);
+      ((bfju)((Iterator)localObject).next()).a(localArrayList);
     }
   }
 }

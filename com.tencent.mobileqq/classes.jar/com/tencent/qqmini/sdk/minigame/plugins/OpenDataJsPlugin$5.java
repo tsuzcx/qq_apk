@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bgkd;
-import bgwc;
+import bgok;
+import bhaj;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;
@@ -9,11 +9,11 @@ import org.json.JSONObject;
 class OpenDataJsPlugin$5
   implements AsyncResult
 {
-  OpenDataJsPlugin$5(OpenDataJsPlugin paramOpenDataJsPlugin, bgkd parambgkd) {}
+  OpenDataJsPlugin$5(OpenDataJsPlugin paramOpenDataJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bgwc.a().i("OpenDataJsPlugin", "removeUserCloudStorage callback appid:" + OpenDataJsPlugin.access$400(this.this$0).appId + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
+    bhaj.a().i("OpenDataJsPlugin", "removeUserCloudStorage callback appid:" + OpenDataJsPlugin.access$400(this.this$0).appId + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
     paramJSONObject = new JSONObject();
     if (paramBoolean) {}
     try
@@ -24,7 +24,7 @@ class OpenDataJsPlugin$5
     }
     catch (Throwable paramJSONObject)
     {
-      bgwc.a().e("OpenDataJsPlugin", "removeUserCloudStorage error " + paramJSONObject.getMessage());
+      bhaj.a().e("OpenDataJsPlugin", "removeUserCloudStorage error " + paramJSONObject.getMessage());
       this.val$req.b();
     }
     paramJSONObject.put("state", "fail");

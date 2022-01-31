@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
-
-public final class apdo
-  implements Parcelable.Creator<DatingFilters>
+public class apdo
 {
-  public DatingFilters a(Parcel paramParcel)
+  private float a;
+  private float b;
+  
+  public apdo(float paramFloat1, float paramFloat2)
   {
-    return new DatingFilters(paramParcel, null);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public DatingFilters[] a(int paramInt)
+  public float a()
   {
-    return new DatingFilters[paramInt];
+    return this.a;
+  }
+  
+  public float b()
+  {
+    return this.b;
   }
 }
 

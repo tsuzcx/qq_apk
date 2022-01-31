@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vas;
 
-import akpq;
-import bdpx;
+import akuf;
+import bdug;
 import org.json.JSONArray;
 
 public class VasExtensionHandler$1
   implements Runnable
 {
-  public VasExtensionHandler$1(bdpx parambdpx, String paramString, JSONArray paramJSONArray) {}
+  public VasExtensionHandler$1(bdug parambdug, String paramString, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    akpq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
+    akuf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

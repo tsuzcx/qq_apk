@@ -1,35 +1,47 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bmuj
-  implements wfk
+public class bmuj
+  implements bmrl
 {
-  bmuj(bmui parambmui) {}
+  ArrayList<bmri> a = null;
   
-  public void b(boolean paramBoolean)
+  public bmuj(bmri... paramVarArgs)
   {
-    if (bmui.a(this.a).b())
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
+    }
+    this.a = new ArrayList(paramVarArgs.length);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      wta.a("video_edit", "repost_comment", 0, 0, new String[] { "", "", "", bmui.a(this.a).a.a("vip_forward_vid") });
-      return;
-    }
-    wta.a("video_edit", "repost_emoji", 0, 0, new String[] { "", "", "", bmui.a(this.a).a.a("vip_forward_vid") });
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if ((!bmui.a(this.a).a()) && (!bmui.a(this.a).c())) {
-      this.a.dismiss();
+      bmri localbmri = paramVarArgs[i];
+      if (localbmri != null) {
+        this.a.add(localbmri);
+      }
+      i += 1;
     }
   }
   
-  public void d()
+  public bmri a(String paramString)
   {
-    this.a.dismiss();
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (((bmri)this.a.get(i)).a().equals(paramString)) {
+        return (bmri)this.a.get(i);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public void a(List<bmri> paramList, DoodleView paramDoodleView)
+  {
+    paramList.addAll(this.a);
   }
 }
 

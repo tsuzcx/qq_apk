@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agdi;
-import ages;
-import agfq;
-import ailt;
+import aghx;
+import agjh;
+import agkf;
+import aiqi;
 import mqq.os.MqqHandler;
 
 public class AIOGalleryScene$5
   implements Runnable
 {
-  public AIOGalleryScene$5(agdi paramagdi) {}
+  public AIOGalleryScene$5(aghx paramaghx) {}
   
   public void run()
   {
     this.this$0.c(false);
     this.this$0.a(false);
-    if ((this.this$0.jdField_a_of_type_Ages.a() != null) && ((this.this$0.jdField_a_of_type_Ages.a().a instanceof AIOShortVideoData))) {
-      agdi.a(this.this$0, true);
+    if ((this.this$0.jdField_a_of_type_Agjh.a() != null) && ((this.this$0.jdField_a_of_type_Agjh.a().a instanceof AIOShortVideoData))) {
+      aghx.a(this.this$0, true);
     }
-    if (this.this$0.jdField_a_of_type_Ailt.c())
+    if (this.this$0.jdField_a_of_type_Aiqi.c())
     {
       this.this$0.u();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.this$0.b);

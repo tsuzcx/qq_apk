@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class DBFixConfigActivity$7$3
@@ -10,7 +10,7 @@ class DBFixConfigActivity$7$3
   
   public void run()
   {
-    QQToast.a(this.a.this$0.getApplicationContext(), alpo.a(2131703240), 1).a();
+    QQToast.a(this.a.this$0.getApplicationContext(), alud.a(2131703252), 1).a();
   }
 }
 

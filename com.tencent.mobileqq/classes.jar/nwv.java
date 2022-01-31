@@ -24,7 +24,7 @@ class nwv
   private void d(List<Long> paramList)
   {
     Object localObject = ors.a();
-    if ((!bjxj.A((AppRuntime)localObject)) || (!bjxj.B((AppRuntime)localObject))) {}
+    if ((!bkbq.A((AppRuntime)localObject)) || (!bkbq.B((AppRuntime)localObject))) {}
     while ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
@@ -131,7 +131,7 @@ class nwv
           if ((localObject != null) && (!ors.a(((BaseArticleInfo)localObject).mArticleContentUrl, ((BaseArticleInfo)localObject).mChannelID, (ArticleInfo)localObject)) && (!ors.a((BaseArticleInfo)localObject)) && (!owy.a().a(((BaseArticleInfo)localObject).mArticleID)))
           {
             localObject = ((BaseArticleInfo)localObject).mArticleContentUrl;
-            if (zak.a((String)localObject)) {
+            if (zez.a((String)localObject)) {
               PreloadManager.a().a((String)localObject);
             }
           }
@@ -165,7 +165,7 @@ class nwv
           QLog.d("ReadInJoyChannelWaterFallViewController_" + nwu.a(this.a), 1, ((StringBuilder)localObject).toString());
         }
         nwu.a(this.a, owy.a().a(Integer.valueOf(nwu.a(this.a)), paramList), 1);
-        localObject = String.format(this.a.a().getResources().getString(2131718721), new Object[] { Integer.valueOf(paramInt) });
+        localObject = String.format(this.a.a().getResources().getString(2131718733), new Object[] { Integer.valueOf(paramInt) });
         this.a.a.a(true, (String)localObject);
       }
     }
@@ -177,22 +177,22 @@ class nwv
       if (this.a.a.a())
       {
         this.a.a.b(true);
-        b(this.a.a().getResources().getString(2131718995));
+        b(this.a.a().getResources().getString(2131719007));
       }
       else
       {
-        localObject = this.a.a().getResources().getString(2131718720);
+        localObject = this.a.a().getResources().getString(2131718732);
         this.a.a.a(true, (String)localObject);
         continue;
         if (this.a.a.a()) {
-          b(this.a.a().getResources().getString(2131718950));
+          b(this.a.a().getResources().getString(2131718962));
         }
         this.a.a.b(paramBoolean1);
       }
     }
   }
   
-  public void ax_()
+  public void au_()
   {
     this.a.a.a();
   }
@@ -238,7 +238,7 @@ class nwv
       }
       if ((!nwu.b(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(this.a.a())) && (nwu.a(this.a) != 70))
       {
-        paramList = this.a.a().getResources().getString(2131718720);
+        paramList = this.a.a().getResources().getString(2131718732);
         QQToast.a(this.a.a().getApplicationContext(), paramList, 0).a();
       }
       nwu.c(this.a, false);
@@ -274,7 +274,7 @@ class nwv
         return;
       }
     } while (!this.a.a.a());
-    b(this.a.a().getResources().getString(2131718995));
+    b(this.a.a().getResources().getString(2131719007));
   }
 }
 

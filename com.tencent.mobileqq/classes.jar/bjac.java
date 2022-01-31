@@ -1,41 +1,137 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class bjac
-  extends bjkb
+  extends QIPCModule
 {
-  public bjac(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  private static bjac a;
   
-  public void a()
+  public bjac(String paramString)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    super(paramString);
   }
   
-  public void a(float paramFloat)
+  public static bjac a()
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bjac("ReaderIPCModule");
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void a(int paramInt)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    bjbl.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
+    {
+      bjbl.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      bjbl.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (axlx)((QQAppInterface)localObject).getManager(36);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
+      {
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(axmc.a(localAppInfo));
+          }
+        }
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
+      }
+    }
+    else if ("getSingleRedTouchInfo".equals(paramString))
+    {
+      paramString = (axlx)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = axmc.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            bjbl.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
+        }
+      }
+    }
+    else
+    {
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label396;
+      }
+      paramString = (axlx)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
+    }
+    label396:
+    do
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        biyz.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
-  
-  public void b()
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
-  }
-  
-  public void c() {}
 }
 
 

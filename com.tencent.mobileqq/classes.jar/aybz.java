@@ -1,33 +1,12 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.qphone.base.util.QLog;
-
 public class aybz
-  implements Comparable<aybz>
 {
   public int a;
-  public MessageForScribble a;
+  public int b;
   
-  aybz(MessageForScribble paramMessageForScribble, int paramInt)
+  public aybz(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
-    if (paramInt >= 200)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    QLog.e("ScribbleDownloadInfo", 1, "err priority");
-  }
-  
-  public int a(aybz paramaybz)
-  {
-    if (this.jdField_a_of_type_Int < paramaybz.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramaybz.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

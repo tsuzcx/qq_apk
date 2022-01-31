@@ -11,7 +11,7 @@ public class tga
   
   private tga(ViewGroup paramViewGroup, tby paramtby)
   {
-    super(paramViewGroup, paramtby, 2131560227);
+    super(paramViewGroup, paramtby, 2131560226);
   }
   
   public static tga a(ViewGroup paramViewGroup, tby paramtby)
@@ -21,7 +21,7 @@ public class tga
   
   protected void a()
   {
-    this.a = ((TextView)a(1).findViewById(2131379788));
+    this.a = ((TextView)a(1).findViewById(2131379846));
   }
   
   protected void a(int paramInt)

@@ -11,12 +11,12 @@ public class ouj
   private static void a(int paramInt)
   {
     QLog.d("WormholeConfigHandler", 0, "update wormhole value: " + paramInt);
-    bjxj.a("wormhole_open", Integer.valueOf(paramInt));
+    bkbq.a("wormhole_open", Integer.valueOf(paramInt));
   }
   
   public static boolean a()
   {
-    return ((Integer)bjxj.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bkbq.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)

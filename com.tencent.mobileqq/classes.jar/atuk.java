@@ -1,30 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class atuk
-  implements atup
+  implements View.OnClickListener
 {
-  atuk(atuj paramatuj) {}
+  atuk(atuh paramatuh, View.OnClickListener paramOnClickListener) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        azmj.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    azmj.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    this.jdField_a_of_type_Atuh.b();
   }
 }
 

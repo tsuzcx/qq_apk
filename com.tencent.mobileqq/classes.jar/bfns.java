@@ -1,242 +1,202 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bfns
-  extends bfnr
+  extends SQLiteOpenHelper
 {
-  private HashMap<String, bfno> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<bfnp> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public String c = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
+  protected static HashMap<Long, bfns> a;
+  protected int a;
+  protected Context a;
+  protected String a;
+  protected HashSet<Integer> a;
+  protected volatile boolean a;
+  protected boolean b = true;
   
-  private bfno a(String paramString1, String paramString2, bfnp parambfnp)
+  static
   {
-    if ((TextUtils.isEmpty(paramString2)) || (parambfnp == null)) {}
-    String[] arrayOfString;
-    do
-    {
-      int i;
-      do
-      {
-        return null;
-        i = paramString2.lastIndexOf("/") + 1;
-      } while (i < 2);
-      str1 = paramString2.substring(i);
-      paramString2 = paramString2.substring(0, i).split("/");
-      arrayOfString = str1.split(parambfnp.jdField_b_of_type_JavaLangString);
-      if ((paramString2.length >= parambfnp.jdField_a_of_type_Int) && (arrayOfString.length >= parambfnp.d)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WadlCommConfig", 1, "interrupt url fail, pathInfo.length=" + paramString2.length + ",fileInfo.length=" + arrayOfString.length);
-    return null;
-    String str2 = paramString2[parambfnp.jdField_b_of_type_Int];
-    if (parambfnp.c > -1)
-    {
-      paramString2 = paramString2[parambfnp.c];
-      if (parambfnp.e <= -1) {
-        break label192;
-      }
-    }
-    label192:
-    for (String str1 = arrayOfString[parambfnp.e];; str1 = "")
-    {
-      return new bfno(str2, paramString2, str1, arrayOfString[parambfnp.f], paramString1);
-      paramString2 = "";
-      break;
-    }
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  /* Error */
-  public bfno a(String paramString)
+  protected bfns(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 36	bfns:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   4: aload_1
-    //   5: invokevirtual 127	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   8: checkcast 112	bfno
-    //   11: astore_2
-    //   12: aload_2
-    //   13: astore_3
-    //   14: aload_2
-    //   15: ifnonnull +70 -> 85
-    //   18: aload_0
-    //   19: getfield 31	bfns:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   22: invokeinterface 133 1 0
-    //   27: astore 4
-    //   29: aload_2
-    //   30: astore_3
-    //   31: aload 4
-    //   33: invokeinterface 138 1 0
-    //   38: ifeq +47 -> 85
-    //   41: aload 4
-    //   43: invokeinterface 142 1 0
-    //   48: checkcast 65	bfnp
-    //   51: astore_3
-    //   52: aload_3
-    //   53: getfield 144	bfnp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: invokestatic 150	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   59: aload_1
-    //   60: invokevirtual 154	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   63: astore 5
-    //   65: aload 5
-    //   67: invokevirtual 159	java/util/regex/Matcher:find	()Z
-    //   70: ifeq -41 -> 29
-    //   73: aload_0
-    //   74: aload_1
-    //   75: aload 5
-    //   77: invokevirtual 162	java/util/regex/Matcher:group	()Ljava/lang/String;
-    //   80: aload_3
-    //   81: invokespecial 164	bfns:a	(Ljava/lang/String;Ljava/lang/String;Lbfnp;)Lbfno;
-    //   84: astore_3
-    //   85: aload_3
-    //   86: areturn
-    //   87: astore_1
-    //   88: aconst_null
-    //   89: astore_2
-    //   90: aload_1
-    //   91: invokevirtual 167	java/lang/Exception:printStackTrace	()V
-    //   94: aload_2
-    //   95: areturn
-    //   96: astore_1
-    //   97: goto -7 -> 90
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	bfns
-    //   0	100	1	paramString	String
-    //   11	84	2	localbfno	bfno
-    //   13	73	3	localObject	Object
-    //   27	15	4	localIterator	java.util.Iterator
-    //   63	13	5	localMatcher	java.util.regex.Matcher
-    // Exception table:
-    //   from	to	target	type
-    //   0	12	87	java/lang/Exception
-    //   18	29	96	java/lang/Exception
-    //   31	85	96	java/lang/Exception
+    super(paramContext, paramString, paramCursorFactory, paramInt);
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public HashSet<String> a()
+  public static bfns a(Context paramContext, long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public void a(String arg1)
-  {
-    boolean bool = true;
-    super.a(???);
-    Object localObject3;
-    int j;
-    int i;
-    Object localObject4;
     try
     {
-      JSONObject localJSONObject = new JSONObject(new JSONObject(???).optString(this.jdField_a_of_type_JavaLangString));
-      this.c = localJSONObject.optString("download_mgr_url", "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin");
-      localObject3 = localJSONObject.optJSONArray("websso_cmds");
-      if (localObject3 == null) {
-        break label137;
-      }
-      j = ((JSONArray)localObject3).length();
-      if (j <= 0) {
-        break label137;
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      bfns localbfns2 = (bfns)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      bfns localbfns1 = localbfns2;
+      if (localbfns2 == null)
       {
-        this.jdField_a_of_type_JavaUtilHashSet.clear();
-        i = 0;
-        if (i >= j) {
-          break label135;
-        }
-        localObject4 = ((JSONArray)localObject3).optString(i);
-        if (TextUtils.isEmpty((CharSequence)localObject4)) {
-          break label531;
-        }
-        this.jdField_a_of_type_JavaUtilHashSet.add(localObject4);
+        localbfns1 = new bfns(paramContext, bflr.b(String.valueOf(paramLong) + "_opensdk"), null, 74);
+        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbfns1);
+      }
+      return localbfns1;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContext.deleteDatabase(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt))) {
+        this.jdField_a_of_type_Int += 1;
       }
       return;
     }
-    catch (JSONException ???)
-    {
-      ???.printStackTrace();
-    }
-    label134:
-    label135:
-    label137:
-    if (localObject1.optInt("providerSwitch", 1) == 1) {}
-    for (;;)
-    {
-      cooperation.wadl.WadlProvider.jdField_a_of_type_Boolean = bool;
-      cooperation.wadl.WadlProvider.jdField_a_of_type_JavaLangString = localObject1.optString("providerSignKey", "");
-      ??? = localObject1.optJSONObject("url_match_rule");
-      if (??? == null) {
-        break label134;
-      }
-      Object localObject2 = ???.optJSONArray("reg_list");
-      if (localObject2 != null)
-      {
-        j = ((JSONArray)localObject2).length();
-        if (j > 0) {
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        if (i < j)
-        {
-          localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-          localObject4 = new bfnp();
-          ((bfnp)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).getString("pattern");
-          ((bfnp)localObject4).jdField_a_of_type_Int = ((JSONObject)localObject3).getInt("path_node_num");
-          ((bfnp)localObject4).jdField_b_of_type_Int = ((JSONObject)localObject3).getInt("appid_index");
-          ((bfnp)localObject4).c = ((JSONObject)localObject3).optInt("app_name_index", -1);
-          ((bfnp)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).getString("split_name_char");
-          ((bfnp)localObject4).d = ((JSONObject)localObject3).getInt("name_node_num");
-          ((bfnp)localObject4).e = ((JSONObject)localObject3).optInt("channel_index", -1);
-          ((bfnp)localObject4).f = ((JSONObject)localObject3).getInt("pkg_name_index");
-          if ((((bfnp)localObject4).jdField_b_of_type_Int < ((bfnp)localObject4).jdField_a_of_type_Int) && (((bfnp)localObject4).c < ((bfnp)localObject4).jdField_a_of_type_Int) && (((bfnp)localObject4).e < ((bfnp)localObject4).d) && (((bfnp)localObject4).f < ((bfnp)localObject4).d)) {
-            this.jdField_a_of_type_JavaUtilList.add(localObject4);
-          }
-        }
-        else
-        {
-          ??? = ???.optJSONArray("replace_list");
-          if (??? == null) {
-            break label134;
-          }
-          j = ???.length();
-          if (j <= 0) {
-            break label134;
-          }
-          i = 0;
-          while (i < j)
-          {
-            Object localObject5 = ???.getJSONObject(i);
-            localObject2 = ((JSONObject)localObject5).getString("url");
-            localObject3 = ((JSONObject)localObject5).getString("appid");
-            localObject4 = ((JSONObject)localObject5).optString("app_name", "");
-            String str1 = ((JSONObject)localObject5).optString("channel", "");
-            String str2 = ((JSONObject)localObject5).getString("pkg_name");
-            localObject5 = ((JSONObject)localObject5).optString("replace_url", "");
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, new bfno((String)localObject3, (String)localObject4, str1, str2, (String)localObject5));
-            i += 1;
-          }
-          break label134;
-          label531:
-          i += 1;
-          break;
-        }
-        i += 1;
-      }
-      bool = false;
-    }
+    finally {}
+  }
+  
+  /* Error */
+  public SQLiteDatabase getWritableDatabase()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   8: astore_2
+    //   9: aload_2
+    //   10: astore_1
+    //   11: aload_1
+    //   12: astore_2
+    //   13: aload_0
+    //   14: getfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   17: ifeq +29 -> 46
+    //   20: aload_1
+    //   21: ifnull +7 -> 28
+    //   24: aload_1
+    //   25: invokevirtual 108	android/database/sqlite/SQLiteDatabase:close	()V
+    //   28: aload_0
+    //   29: invokevirtual 110	bfns:a	()V
+    //   32: aload_0
+    //   33: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   36: astore_2
+    //   37: aload_2
+    //   38: astore_1
+    //   39: aload_0
+    //   40: iconst_0
+    //   41: putfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   44: aload_1
+    //   45: astore_2
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_2
+    //   49: areturn
+    //   50: astore_2
+    //   51: aload_0
+    //   52: invokevirtual 110	bfns:a	()V
+    //   55: aload_0
+    //   56: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   59: astore_2
+    //   60: aload_2
+    //   61: astore_1
+    //   62: aload_1
+    //   63: astore_2
+    //   64: aload_0
+    //   65: getfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   68: ifeq -22 -> 46
+    //   71: aload_0
+    //   72: iconst_0
+    //   73: putfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   76: aload_1
+    //   77: astore_2
+    //   78: goto -32 -> 46
+    //   81: astore_1
+    //   82: aload_0
+    //   83: monitorexit
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_2
+    //   87: aload_0
+    //   88: getfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   91: ifeq +29 -> 120
+    //   94: iconst_0
+    //   95: ifeq +11 -> 106
+    //   98: new 112	java/lang/NullPointerException
+    //   101: dup
+    //   102: invokespecial 113	java/lang/NullPointerException:<init>	()V
+    //   105: athrow
+    //   106: aload_0
+    //   107: invokevirtual 110	bfns:a	()V
+    //   110: aload_0
+    //   111: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   114: pop
+    //   115: aload_0
+    //   116: iconst_0
+    //   117: putfield 103	bfns:jdField_a_of_type_Boolean	Z
+    //   120: aload_2
+    //   121: athrow
+    //   122: astore_2
+    //   123: goto -84 -> 39
+    //   126: astore_2
+    //   127: goto -65 -> 62
+    //   130: astore_1
+    //   131: goto -16 -> 115
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	this	bfns
+    //   3	74	1	localObject1	Object
+    //   81	4	1	localObject2	Object
+    //   130	1	1	localThrowable1	java.lang.Throwable
+    //   8	41	2	localObject3	Object
+    //   50	1	2	localThrowable2	java.lang.Throwable
+    //   59	19	2	localObject4	Object
+    //   86	35	2	localObject5	Object
+    //   122	1	2	localThrowable3	java.lang.Throwable
+    //   126	1	2	localThrowable4	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   4	9	50	java/lang/Throwable
+    //   13	20	81	finally
+    //   24	28	81	finally
+    //   28	32	81	finally
+    //   32	37	81	finally
+    //   39	44	81	finally
+    //   46	48	81	finally
+    //   64	76	81	finally
+    //   82	84	81	finally
+    //   87	94	81	finally
+    //   98	106	81	finally
+    //   106	110	81	finally
+    //   110	115	81	finally
+    //   115	120	81	finally
+    //   120	122	81	finally
+    //   4	9	86	finally
+    //   51	55	86	finally
+    //   55	60	86	finally
+    //   32	37	122	java/lang/Throwable
+    //   55	60	126	java/lang/Throwable
+    //   110	115	130	java/lang/Throwable
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

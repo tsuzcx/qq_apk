@@ -1,13 +1,8 @@
-public class bbvh<F, S>
+public abstract interface bbvh
 {
-  public F a;
-  public S b;
+  public abstract long b();
   
-  bbvh(F paramF, S paramS)
-  {
-    this.a = paramF;
-    this.b = paramS;
-  }
+  public abstract void b(String paramString);
 }
 
 

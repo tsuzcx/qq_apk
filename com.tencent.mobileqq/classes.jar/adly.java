@@ -1,33 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.20.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class adly
-  implements Animation.AnimationListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adly(QQLSActivity paramQQLSActivity) {}
+  public adly(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.removeMessages(99);
-    if (bhou.g())
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
+      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
       return;
     }
-    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

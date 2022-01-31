@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.EncryptUinInfo;
 import java.util.List;
 
 public abstract class nnr
-  implements alkr
+  implements alpg
 {
   protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   

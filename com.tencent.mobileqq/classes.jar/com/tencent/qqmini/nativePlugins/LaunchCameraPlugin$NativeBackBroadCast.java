@@ -3,8 +3,8 @@ package com.tencent.qqmini.nativePlugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bgho;
-import bgjm;
+import bglv;
+import bgnt;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ class LaunchCameraPlugin$NativeBackBroadCast
       String str2 = paramIntent.getStringExtra("video_thumb_path");
       long l = paramIntent.getLongExtra("video_duration", 0L);
       boolean bool = paramIntent.getBooleanExtra("is_video", false);
-      paramContext.put("filePath", bgjm.a().e(str1));
+      paramContext.put("filePath", bgnt.a().e(str1));
       if (bool) {
         i = 1;
       }
@@ -35,7 +35,7 @@ class LaunchCameraPlugin$NativeBackBroadCast
       if (bool)
       {
         paramContext.put("videoDuration", (l + 999L) / 1000L);
-        paramContext.put("cover", bgjm.a().e(str2));
+        paramContext.put("cover", bgnt.a().e(str2));
       }
     }
     catch (JSONException paramIntent)

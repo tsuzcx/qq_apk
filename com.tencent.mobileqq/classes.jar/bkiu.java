@@ -1,88 +1,63 @@
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+
 public class bkiu
-  extends bllx
 {
-  public int a;
+  private static volatile bkiu jdField_a_of_type_Bkiu;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
-  private int jdField_b_of_type_Int = 1;
-  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[2];
-  private int c;
+  private boolean b;
   
-  public bkiu()
+  public static bkiu a()
   {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString[this.c] = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 1) || ((this.jdField_b_of_type_Int & paramInt) != 0);
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_ArrayOfJavaLangString[this.c] = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 14;
-  }
-  
-  public String[] b()
-  {
-    return this.jdField_b_of_type_ArrayOfJavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt > -1) && (paramInt < 2)) {
-      this.c = paramInt;
+    if (jdField_a_of_type_Bkiu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bkiu == null) {
+        jdField_a_of_type_Bkiu = new bkiu();
+      }
+      return jdField_a_of_type_Bkiu;
     }
+    finally {}
   }
   
-  public void d(int paramInt)
+  private void b()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = null;
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "begin connect:");
+    }
+    QIPCClientHelper.getInstance().getClient().addListener(new bkiv(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new bkiw(this, l));
+  }
+  
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,10 +1,17 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bdwb
+public class bdwb
 {
-  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
-  
-  public void a(Bundle paramBundle) {}
+  public static int a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 0)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
+      i = 7;
+    }
+    return i;
+  }
 }
 
 

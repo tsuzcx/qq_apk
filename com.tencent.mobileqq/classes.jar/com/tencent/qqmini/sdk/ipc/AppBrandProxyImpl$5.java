@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bgpo;
+import bgtv;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -15,7 +15,7 @@ import com.tencent.qqmini.sdk.log.QMLog;
 public class AppBrandProxyImpl$5
   extends ResultReceiver
 {
-  public AppBrandProxyImpl$5(bgpo parambgpo, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
+  public AppBrandProxyImpl$5(bgtv parambgtv, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
   {
     super(paramHandler);
   }

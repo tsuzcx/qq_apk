@@ -1,42 +1,56 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class acct
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  public acct(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public acct(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onGlobalLayout()
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    switch (paramMessage.what)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
+    for (;;)
     {
       return;
-      i = 0;
-      break;
+      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
+        continue;
+      }
+      AddFriendVerifyActivity.a(this.a).setVisibility(0);
+      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+      return;
+      if (this.a.isFinishing()) {
+        continue;
+      }
+      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
+      try
+      {
+        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
+        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+        label142:
+        if (AddFriendVerifyActivity.a(this.a) == null) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.a).setVisibility(8);
+        return;
+        QQToast.a(this.a.getApplicationContext(), 1, 2131721247, 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+      catch (MalformedURLException paramMessage)
+      {
+        break label142;
+      }
     }
-    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

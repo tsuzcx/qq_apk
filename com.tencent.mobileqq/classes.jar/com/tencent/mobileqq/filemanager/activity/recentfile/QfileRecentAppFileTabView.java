@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.content.Context;
-import aqiz;
-import aqmm;
-import aqmo;
-import aroh;
-import arol;
-import aroy;
+import aqni;
+import aqqv;
+import aqqx;
+import arsq;
+import arsu;
+import arth;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import java.util.List;
 public class QfileRecentAppFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private aroh a;
+  private arsq a;
   
   public QfileRecentAppFileTabView(Context paramContext)
   {
@@ -40,19 +40,19 @@ public class QfileRecentAppFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().I();
     }
-    while (this.jdField_a_of_type_Aroh != null)
+    while (this.jdField_a_of_type_Arsq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Aroh);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().N();
     }
-    this.jdField_a_of_type_Aroh = new aqmm(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Aroh);
+    this.jdField_a_of_type_Arsq = new aqqv(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
   }
   
-  protected aqiz a()
+  protected aqni a()
   {
-    return new aqmo(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new aqqx(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -64,7 +64,7 @@ public class QfileRecentAppFileTabView
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!localFileManagerEntity.bDelInFM) && (localFileManagerEntity.nFileType == 5))
       {
-        String str = aroy.a(localFileManagerEntity.srvTime);
+        String str = arth.a(localFileManagerEntity.srvTime);
         if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
         }
@@ -93,7 +93,7 @@ public class QfileRecentAppFileTabView
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject = aroy.a(paramFileManagerEntity.srvTime);
+    Object localObject = arth.a(paramFileManagerEntity.srvTime);
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aqns;
-import armz;
-import arng;
-import badd;
+import aqsb;
+import arri;
+import arrp;
+import bahm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -68,14 +68,14 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((badd)this.this$0.app.a(122)).a(localJSONException);
+      localObject2 = ((bahm)this.this$0.app.a(122)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        arng.a("0X8009AA0");
+        arrp.a("0X8009AA0");
       } else {
-        armz.a(((JSONObject)localObject2).getString("msg"));
+        arri.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }

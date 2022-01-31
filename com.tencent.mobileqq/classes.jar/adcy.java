@@ -1,99 +1,35 @@
-import QQService.DeviceItemDes;
-import QQService.SvcDevLoginInfo;
-import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class adcy
-  extends MqqHandler
+  extends Handler
 {
-  public adcy(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcy(GeneralSettingActivity paramGeneralSettingActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
+    super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
     }
     do
     {
-      do
+      return;
+      if (!this.a.isFinishing())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("LoginInfoActivity.AccDevSec", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
-              }
-            } while (LoginInfoActivity.a(this.a) == null);
-            LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
-            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-            return;
-            LoginInfoActivity.a(this.a, this.a.findViewById(1));
-            return;
-          } while (LoginInfoActivity.a(this.a) == null);
-          localObject = paramMessage.getData();
-        } while (localObject == null);
-        paramMessage = ((Bundle)localObject).getString(AuthDevRenameActivity.f);
-        Object localObject = ((Bundle)localObject).getByteArray(AuthDevRenameActivity.h);
-        int i = 0;
-        for (;;)
-        {
-          if (i < LoginInfoActivity.a(this.a).size())
-          {
-            SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)LoginInfoActivity.a(this.a).get(i);
-            if ((localSvcDevLoginInfo != null) && (Arrays.equals(localSvcDevLoginInfo.stDeviceItemDes.vecItemDes, (byte[])localObject))) {
-              localSvcDevLoginInfo.strDeviceName = paramMessage;
-            }
-          }
-          else
-          {
-            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-            return;
-          }
-          i += 1;
-        }
-      } while ((LoginInfoActivity.a(this.a) == null) || ((!LoginInfoActivity.a(this.a)) && (!LoginInfoActivity.b(this.a))));
-      paramMessage = this.a.getString(2131717627);
-      if (LoginInfoActivity.a(this.a) >= 4)
-      {
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        return;
+        this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
+        this.a.jdField_a_of_type_Bety.d(2130849126);
+        this.a.jdField_a_of_type_Bety.b(false);
       }
-      LoginInfoActivity.a(this.a).setVisibility(0);
-      LoginInfoActivity.a(this.a, (LoginInfoActivity.a(this.a) + 1) % 4);
-      switch (LoginInfoActivity.a(this.a))
-      {
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(20170210, 300L);
-        return;
-        paramMessage = paramMessage + this.a.getString(2131719655);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        paramMessage = paramMessage + this.a.getString(2131719656);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        paramMessage = paramMessage + this.a.getString(2131719657);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-      }
-      paramMessage = paramMessage.getData();
-    } while (paramMessage == null);
-    boolean bool = paramMessage.getBoolean("bSafe");
-    paramMessage = paramMessage.getString("TipText");
-    LoginInfoActivity.a(this.a, bool, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
+    this.a.jdField_a_of_type_Bety.cancel();
+    this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
+    this.a.jdField_a_of_type_Bety.c(true);
+    this.a.jdField_a_of_type_Bety.a(false);
+    this.a.jdField_a_of_type_Bety.b(true);
   }
 }
 

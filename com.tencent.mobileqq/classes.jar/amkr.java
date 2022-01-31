@@ -1,28 +1,46 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
+import IMMsgBodyPack.SlaveMasterMsg;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class amkr
-  implements phj
+  extends absm
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
-  
-  public amkr(int paramInt1, int paramInt2, String paramString)
+  public amkr(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  private boolean a(MsgInfo paramMsgInfo)
   {
-    paramString = new Intent("notify_main_subscribe_follow_state");
-    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
-    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
-    paramString.putExtra("follow_uin_smooth_dx", this.b);
-    paramString.putExtra("follow_uin_status", paramBoolean);
-    BaseApplication.getContext().sendBroadcast(paramString);
+    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
+    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
+    localSlaveMasterMsg.readFrom(localJceInputStream);
+    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
+    {
+      azad.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
+      return true;
+    }
+    return false;
+  }
+  
+  public abto a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    boolean bool = false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new abto(null, bool);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        bool = a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
+      }
+    }
   }
 }
 

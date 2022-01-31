@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-
 class bmjm
-  implements View.OnClickListener
+  implements afdp
 {
   bmjm(bmjl parambmjl) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (bmjl.a(this.a) != null)
-    {
-      if ((bmjl.a(this.a).b() != 1) || (bmjl.a(this.a) != 1)) {
-        break label64;
-      }
-      bmjl.a(this.a);
-      bmjl.a(this.a).setImageResource(2130847143);
-      bmjl.a(this.a, 2);
-    }
-    label64:
-    while ((bmjl.a(this.a).b() != 2) || (bmjl.a(this.a) != 2)) {
-      return;
-    }
-    bmjl.b(this.a);
-    bmjl.a(this.a).setImageResource(2130847144);
-    bmjl.a(this.a, 1);
+    this.a.a.a.a(-1, bmjk.a(this.a.a), 2130772028, 0, false);
+    bmjk.a(this.a.a, null);
+  }
+  
+  public void b()
+  {
+    this.a.a.a.a(-1, bmjk.a(this.a.a), 2130772028, 0, false);
+    bmjk.a(this.a.a, null);
   }
 }
 

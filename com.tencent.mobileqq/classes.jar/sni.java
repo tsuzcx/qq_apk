@@ -54,7 +54,7 @@ public class sni
   public static URLDrawable.URLDrawableOptions a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = baul.a;
+    localURLDrawableOptions.mFailedDrawable = bayu.a;
     localURLDrawableOptions.mRequestWidth = paramInt1;
     localURLDrawableOptions.mRequestHeight = paramInt2;
     if (paramBoolean)
@@ -79,7 +79,7 @@ public class sni
         if (QLog.isColorLevel()) {
           QLog.d("ComponentAdapter", 2, "faceIndex:" + j);
         }
-        j = apog.b(j);
+        j = apsp.b(j);
         if (j >= 0)
         {
           localStringBuilder.append(paramString.charAt(i));
@@ -99,7 +99,7 @@ public class sni
   
   private void a(ImageAction paramImageAction, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramImageAction == null) || (paramImageAction.getTarget() == null) || (paramURLDrawable == null) || (!bdee.g(paramImageAction.getTarget().getContext()))) {}
+    if ((paramImageAction == null) || (paramImageAction.getTarget() == null) || (paramURLDrawable == null) || (!bdin.g(paramImageAction.getTarget().getContext()))) {}
     do
     {
       return;
@@ -236,8 +236,8 @@ public class sni
   
   public void initKdRefresh(VRefreshLayout paramVRefreshLayout)
   {
-    PullRefreshHeader localPullRefreshHeader = (PullRefreshHeader)LayoutInflater.from(paramVRefreshLayout.getContext()).inflate(2131562506, paramVRefreshLayout, false);
-    RefreshAnimView localRefreshAnimView = (RefreshAnimView)localPullRefreshHeader.findViewById(2131375529);
+    PullRefreshHeader localPullRefreshHeader = (PullRefreshHeader)LayoutInflater.from(paramVRefreshLayout.getContext()).inflate(2131562524, paramVRefreshLayout, false);
+    RefreshAnimView localRefreshAnimView = (RefreshAnimView)localPullRefreshHeader.findViewById(2131375580);
     paramVRefreshLayout.addView(localPullRefreshHeader);
     paramVRefreshLayout.setonRefreshStateChangeListener(new snj(this, localRefreshAnimView, paramVRefreshLayout));
   }
@@ -266,7 +266,7 @@ public class sni
     }
     try
     {
-      paramCharSequence = new baig(a(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
+      paramCharSequence = new bamp(a(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
       return paramCharSequence;
     }
     catch (Throwable paramCharSequence)

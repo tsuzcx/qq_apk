@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-class arrm
-  extends bdco
+final class arrm
+  implements Comparator<FileInfo>
 {
-  arrm(arrk paramarrk, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.jdField_a_of_type_Arrk.a.a(this.jdField_a_of_type_Int);
+    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
   }
 }
 

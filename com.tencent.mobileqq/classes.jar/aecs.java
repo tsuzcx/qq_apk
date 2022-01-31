@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class aecs
-  extends alox
+class aecs
+  implements DialogInterface.OnClickListener
 {
-  public aecs(TroopRequestActivity paramTroopRequestActivity) {}
+  aecs(aecq paramaecq, bdjz parambdjz) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
+    azqs.b(this.jdField_a_of_type_Aecq.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aecq.a.a, "", "", "");
+    this.jdField_a_of_type_Bdjz.cancel();
   }
 }
 

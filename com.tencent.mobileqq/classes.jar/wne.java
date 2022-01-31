@@ -1,11 +1,15 @@
-final class wne
-  extends ThreadLocal<StringBuilder>
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+
+public class wne
+  implements bhxs
 {
-  protected StringBuilder a()
+  public wne(MemoriesInnerListView paramMemoriesInnerListView) {}
+  
+  public void onScrollStateChanged(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    }
   }
 }
 

@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aigr
-  implements DialogInterface.OnKeyListener
+class aigr
+  implements View.OnClickListener
 {
-  public aigr(BaseActivityView paramBaseActivityView) {}
+  aigr(aigp paramaigp) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    return (paramInt == 4) && (this.a.a.e()) && (bdee.d(this.a.getContext()));
+    this.a.a.setText("");
   }
 }
 

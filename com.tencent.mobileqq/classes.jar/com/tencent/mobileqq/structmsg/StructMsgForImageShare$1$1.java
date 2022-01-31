@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import agot;
-import azrl;
+import agti;
+import azvu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import nrt;
@@ -9,12 +9,12 @@ import nrt;
 public class StructMsgForImageShare$1$1
   implements Runnable
 {
-  public StructMsgForImageShare$1$1(azrl paramazrl, StructMsgForImageShare paramStructMsgForImageShare, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForImageShare$1$1(azvu paramazvu, StructMsgForImageShare paramStructMsgForImageShare, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
-    if (agot.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    if (agti.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
     nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgAction, Integer.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mPromotionType), false);
   }
 }

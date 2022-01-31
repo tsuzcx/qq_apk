@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import anad;
-import anae;
+import anem;
+import anen;
 
 public class MiniRecog$2
   implements Runnable
 {
-  public MiniRecog$2(anad paramanad, long paramLong) {}
+  public MiniRecog$2(anem paramanem, long paramLong) {}
   
   public void run()
   {

@@ -3,7 +3,7 @@ import com.tencent.biz.PoiMapActivity;
 import com.tencent.widget.AdapterView;
 
 class mzr
-  implements bhqp
+  implements bhuw
 {
   mzr(mzq parammzq, PoiMapActivity paramPoiMapActivity) {}
   

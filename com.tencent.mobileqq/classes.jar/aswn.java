@@ -1,119 +1,26 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 class aswn
-  extends BroadcastReceiver
+  implements IVideoViewBase.IVideoViewCallBack
 {
   aswn(aswm paramaswm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    JSONObject localJSONObject;
-    if ((paramContext.equals(aswm.a(this.a.b))) || (paramContext.equals(aswm.d(this.a.b))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      aswm.a(this.a, i);
-      localJSONObject = aswm.a(this.a, i);
-      switch (i)
-      {
-      default: 
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        l = paramIntent.getLongExtra("key_totalSize", 0L);
-        aswm.a(this.a, "size:" + l);
-        try
-        {
-          localJSONObject.putOpt("totalSize", Long.valueOf(l));
-          localJSONObject.remove("state");
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-      }
-      int j = paramIntent.getIntExtra("key_progress", 0);
-      long l = paramIntent.getLongExtra("key_totalSize", 0L);
-      paramIntent = this.a;
-      if (i == 1) {}
-      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
-      {
-        for (;;)
-        {
-          aswm.a(paramIntent, paramContext);
-          if (i == 4)
-          {
-            if (j <= 90) {
-              break;
-            }
-            aswm.a(this.a).removeCallbacksAndMessages(null);
-          }
-          try
-          {
-            localJSONObject.putOpt("totalSize", Long.valueOf(l));
-            localJSONObject.putOpt("pro", Integer.valueOf(j));
-          }
-          catch (JSONException paramContext)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-        break;
-      }
-      aswm.a(this.a, "STATE_DOWANLODAD_COMPLETE");
-      paramContext = Message.obtain();
-      if (aswm.a(this.a) == 1) {}
-      for (paramContext.arg1 = 40; !TextUtils.equals(aswm.a(this.a), "checkVersion"); paramContext.arg1 = 0)
-      {
-        aswm.b(this.a, 0);
-        aswm.a(this.a).sendMessage(paramContext);
-        break;
-      }
-      aswm.a(this.a, "STATE_DOWANLODAD_FAILED");
-      break;
-      aswm.a(this.a, "STATE_PRELOAD_FALIED");
-      break;
-      aswm.a(this.a, "STATE_LOAD_COMPLETE");
-      break;
-      aswm.a(this.a, "STATE_LOAD_FALIED");
-      break;
-      aswm.a(this.a, "STATE_LAUNCHERING");
-      break;
-      aswm.a(this.a, "STATE_LAUNCHER_SUCC");
-      break;
-      aswm.a(this.a, "STATE_LAUNCHER_FAILED");
-      break;
-      if (aswm.b(this.a.b).equals(paramContext))
-      {
-        paramContext = this.a.mRuntime.a();
-        if ((paramContext instanceof BaseActivity))
-        {
-          ((BaseActivity)paramContext).doOnBackPressed();
-          return;
-        }
-        paramContext.onBackPressed();
-        return;
-      }
-    } while (!aswm.c(this.a.b).equals(paramContext));
-    aswm.c(this.a, paramIntent.getIntExtra("key_isCache", -1));
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import azzb;
-import baah;
-import bbpw;
-import bbpz;
+import badk;
+import baeq;
+import bbuf;
+import bbui;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class TroopEnterEffectController$3$1$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$1$1(bbpz parambbpz, azzb paramazzb) {}
+  public TroopEnterEffectController$3$1$1(bbui parambbui, badk parambadk) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bbpz.a.this$0.a != null) {
-      this.jdField_a_of_type_Bbpz.a.this$0.a.a((baah)this.jdField_a_of_type_Azzb);
+    if (this.jdField_a_of_type_Bbui.a.this$0.a != null) {
+      this.jdField_a_of_type_Bbui.a.this$0.a.a((baeq)this.jdField_a_of_type_Badk);
     }
   }
 }

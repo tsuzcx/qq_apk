@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import amyt;
-import anbo;
+import andc;
+import anfx;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$10
   implements Runnable
 {
-  public QQARSession$10(anbo paramanbo) {}
+  public QQARSession$10(anfx paramanfx) {}
   
   public void run()
   {
     QLog.i("AREngine_QQARSession", 1, "processCloudMarkerRecogResult. download resource timeout.");
-    anbo.a(this.this$0).b();
+    anfx.a(this.this$0).b();
     this.this$0.a(false, null);
   }
 }

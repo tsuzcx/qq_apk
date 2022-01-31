@@ -1,8 +1,8 @@
 package com.tencent.av.share;
 
-import aekt;
-import alpo;
-import alzf;
+import aepi;
+import alud;
+import amdu;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,10 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bclo;
-import bdcd;
-import bdfq;
-import bngs;
+import bcpx;
+import bdgm;
+import bdjz;
+import bnle;
 import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -51,7 +51,7 @@ public class AVSchema
   extends PublicBaseFragment
 {
   Handler jdField_a_of_type_AndroidOsHandler;
-  public bdfq a;
+  public bdjz a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   public final String a;
@@ -63,7 +63,7 @@ public class AVSchema
   public AVSchema()
   {
     this.jdField_a_of_type_Mas = new mas();
-    this.jdField_a_of_type_Bdfq = null;
+    this.jdField_a_of_type_Bdjz = null;
     this.jdField_a_of_type_JavaLangString = ("AVSchema." + AudioHelper.b());
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "AVSchema");
   }
@@ -84,13 +84,13 @@ public class AVSchema
     return TextUtils.equals(parammas1.jdField_a_of_type_JavaLangString, parammas2.jdField_a_of_type_JavaLangString);
   }
   
-  bdfq a()
+  bdjz a()
   {
     a();
-    this.jdField_a_of_type_Bdfq = bdcd.a(getActivity(), 230);
-    this.jdField_a_of_type_Bdfq.setCancelable(true);
-    this.jdField_a_of_type_Bdfq.setOnDismissListener(new mao(this));
-    return this.jdField_a_of_type_Bdfq;
+    this.jdField_a_of_type_Bdjz = bdgm.a(getActivity(), 230);
+    this.jdField_a_of_type_Bdjz.setCancelable(true);
+    this.jdField_a_of_type_Bdjz.setOnDismissListener(new mao(this));
+    return this.jdField_a_of_type_Bdjz;
   }
   
   QQAppInterface a()
@@ -103,12 +103,12 @@ public class AVSchema
   
   void a()
   {
-    bdfq localbdfq = this.jdField_a_of_type_Bdfq;
-    this.jdField_a_of_type_Bdfq = null;
-    if (localbdfq != null) {}
+    bdjz localbdjz = this.jdField_a_of_type_Bdjz;
+    this.jdField_a_of_type_Bdjz = null;
+    if (localbdjz != null) {}
     try
     {
-      localbdfq.dismiss();
+      localbdjz.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -138,21 +138,21 @@ public class AVSchema
   
   void a(long paramLong, String paramString)
   {
-    bdfq localbdfq = a();
-    localbdfq.setMessage(paramString);
-    a(localbdfq);
-    localbdfq.show();
+    bdjz localbdjz = a();
+    localbdjz.setMessage(paramString);
+    a(localbdjz);
+    localbdjz.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_I_Known, msg[" + paramString + "], seq[" + paramLong + "]");
     new MqqHandler(Looper.getMainLooper()).postDelayed(new AVSchema.4(this, paramLong), 100L);
   }
   
   void a(long paramLong, String paramString1, String paramString2)
   {
-    bdfq localbdfq = a();
-    localbdfq.setMessage(paramString1);
-    b(localbdfq);
-    localbdfq.setPositiveButton(alpo.a(2131701264), new mam(this, paramString2));
-    localbdfq.show();
+    bdjz localbdjz = a();
+    localbdjz.setMessage(paramString1);
+    b(localbdjz);
+    localbdjz.setPositiveButton(alud.a(2131701276), new mam(this, paramString2));
+    localbdjz.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_ROOM_CLOSE, msg[" + paramString1 + "], seq[" + paramLong + "]");
   }
   
@@ -161,9 +161,9 @@ public class AVSchema
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "cancelLastRequest, info[" + parammas + "], seq[" + paramLong + "]");
   }
   
-  void a(bdfq parambdfq)
+  void a(bdjz parambdjz)
   {
-    parambdfq.setNegativeButton(alpo.a(2131701262), new map(this));
+    parambdjz.setNegativeButton(alud.a(2131701274), new map(this));
   }
   
   public void a(String paramString)
@@ -172,7 +172,7 @@ public class AVSchema
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    Intent localIntent = aekt.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    Intent localIntent = aepi.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
     localIntent.putExtra("uin", paramString);
     localIntent.putExtra("uintype", 1);
     localIntent.putExtra("entrance", 8);
@@ -196,7 +196,7 @@ public class AVSchema
       {
         localView1.setVisibility(0);
         localView2.setBackgroundColor(-271725107);
-        ((TextView)localView2.findViewById(2131370763)).setText(2131695088);
+        ((TextView)localView2.findViewById(2131370782)).setText(2131695090);
         return;
       }
       localView1.setVisibility(4);
@@ -239,7 +239,7 @@ public class AVSchema
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "joinVideoChat, groupUin[" + paramString + "], isBeInvitingOnDoubleVideo[" + bool + "], seq[" + paramLong + "]");
     if (bool)
     {
-      QQToast.a(getActivity(), 2131696351, 1).b(getActivity().getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(getActivity(), 2131696353, 1).b(getActivity().getResources().getDimensionPixelSize(2131298914));
       return;
     }
     this.b = true;
@@ -251,11 +251,11 @@ public class AVSchema
   
   void b(long paramLong, String paramString1, String paramString2)
   {
-    bdfq localbdfq = a();
-    localbdfq.setMessage(paramString1);
-    b(localbdfq);
-    localbdfq.setPositiveButton(alpo.a(2131701265), new man(this, paramString2));
-    localbdfq.show();
+    bdjz localbdjz = a();
+    localbdjz.setMessage(paramString1);
+    b(localbdjz);
+    localbdjz.setPositiveButton(alud.a(2131701277), new man(this, paramString2));
+    localbdjz.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_NEED_ADMIN_CONFIRM, msg[" + paramString1 + "], seq[" + paramLong + "]");
   }
   
@@ -269,23 +269,23 @@ public class AVSchema
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "realyRequest, info[" + parammas + "], seq[" + paramLong + "]");
   }
   
-  void b(bdfq parambdfq)
+  void b(bdjz parambdjz)
   {
-    parambdfq.setNegativeButton(alpo.a(2131701261), new maq(this));
+    parambdjz.setNegativeButton(alud.a(2131701273), new maq(this));
   }
   
   public void b(String paramString)
   {
     paramString = TroopInfoActivity.a(paramString, 14);
-    bclo.a(getActivity(), paramString, 2);
+    bcpx.a(getActivity(), paramString, 2);
   }
   
   void c(String paramString)
   {
     this.jdField_a_of_type_Mau.jdField_a_of_type_JavaLangString = paramString;
-    alzf localalzf = (alzf)a().a(20);
-    localalzf.b(paramString, false);
-    localalzf.b();
+    amdu localamdu = (amdu)a().a(20);
+    localamdu.b(paramString, false);
+    localamdu.b();
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -301,16 +301,16 @@ public class AVSchema
   {
     super.onAttach(paramActivity);
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onAttach, activity[" + paramActivity + "]");
-    bngs.a(paramActivity);
+    bnle.a(paramActivity);
     a().addObserver(this.jdField_a_of_type_Mau);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561217, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561235, paramViewGroup, false);
     paramLayoutInflater.getLayoutParams().height = -1;
-    int i = bngs.b(getActivity());
+    int i = bnle.b(getActivity());
     paramViewGroup = paramLayoutInflater.findViewById(2131363330);
     ((FrameLayout.LayoutParams)paramViewGroup.getLayoutParams()).topMargin = i;
     paramViewGroup.setVisibility(4);
@@ -360,7 +360,7 @@ public class AVSchema
   {
     super.onResume();
     long l = AudioHelper.b();
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onResume, seq[" + l + "], mQQCustomDialog[" + this.jdField_a_of_type_Bdfq + "]");
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onResume, seq[" + l + "], mQQCustomDialog[" + this.jdField_a_of_type_Bdjz + "]");
     a(l);
   }
   

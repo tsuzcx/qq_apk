@@ -1,19 +1,57 @@
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bhgf
-  implements bglj
+public class bhgf
 {
-  bhgf(bhge parambhge) {}
+  private bhgg jdField_a_of_type_Bhgg;
+  private final ConcurrentLinkedQueue<AppBrandPage> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public void a(Context paramContext, Intent paramIntent)
+  public bhgf(bglv parambglv)
   {
-    paramContext = paramIntent.getAction();
-    QMLog.i("MiniAppAudioPlayer", "onReceiveListener:" + paramContext);
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) && (this.a.a())) {
-      this.a.b();
+    this.jdField_a_of_type_Bhgg = new bhgg(parambglv);
+  }
+  
+  public bhgg a()
+  {
+    return this.jdField_a_of_type_Bhgg;
+  }
+  
+  public AppBrandPage a(bglv parambglv, AppBrandPageContainer paramAppBrandPageContainer)
+  {
+    QMLog.d("AppBrandPagePool", "mBrandPageList size : " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+    AppBrandPage localAppBrandPage = (AppBrandPage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    if (localAppBrandPage == null)
+    {
+      QMLog.i("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
+      return new AppBrandPage(parambglv, paramAppBrandPageContainer);
     }
+    QMLog.i("AppBrandPagePool", "getAppBrandPage from cache.");
+    return localAppBrandPage;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    }
+    if (this.jdField_a_of_type_Bhgg != null) {
+      this.jdField_a_of_type_Bhgg.a();
+    }
+  }
+  
+  public void a(bglv parambglv, AppBrandPageContainer paramAppBrandPageContainer)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) || (parambglv == null)) {}
+    do
+    {
+      return;
+      QMLog.d("AppBrandPagePool", "preLoadAppBrandPage");
+      parambglv = new AppBrandPage(parambglv, paramAppBrandPageContainer);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambglv);
+    } while (this.jdField_a_of_type_Bhgg == null);
+    this.jdField_a_of_type_Bhgg.a(paramAppBrandPageContainer);
   }
 }
 

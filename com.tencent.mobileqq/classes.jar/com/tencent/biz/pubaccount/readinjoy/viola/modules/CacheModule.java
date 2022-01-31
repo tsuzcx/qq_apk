@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -81,7 +81,7 @@ public class CacheModule
       }
       return;
     }
-    paramString1 = bdcs.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
+    paramString1 = bdhb.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
     if ((paramString1 instanceof String)) {}
     for (paramString1 = (String)paramString1;; paramString1 = null)
     {
@@ -124,7 +124,7 @@ public class CacheModule
             continue;
           }
           str = localJSONArray.getString(i);
-          paramJSONObject = bdcs.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
+          paramJSONObject = bdhb.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
           if (!(paramJSONObject instanceof String)) {
             continue;
           }
@@ -169,7 +169,7 @@ public class CacheModule
         while (i < paramJSONObject.length())
         {
           String str = paramJSONObject.getString(i);
-          bdcs.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + str + "_" + paramString.getAccount());
+          bdhb.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + str + "_" + paramString.getAccount());
           i += 1;
         }
         return;
@@ -198,7 +198,7 @@ public class CacheModule
         {
           String str1 = (String)localIterator.next();
           String str2 = (String)paramJSONObject.get(str1);
-          bdcs.a("viola_cache_file_" + str1 + "_" + paramString.getAccount(), str2);
+          bdhb.a("viola_cache_file_" + str1 + "_" + paramString.getAccount(), str2);
         }
         return;
       }
@@ -218,7 +218,7 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to remove");
       return;
     }
-    bdcs.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+    bdhb.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
   }
   
   @JSMethod(uiThread=false)
@@ -230,7 +230,7 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to setItem");
       return;
     }
-    bdcs.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
+    bdhb.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
   }
 }
 

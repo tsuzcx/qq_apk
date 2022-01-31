@@ -79,9 +79,9 @@ public class rbi
     super(paramView, paramInt);
     if (paramInt == 4)
     {
-      this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367594));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367566));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367563));
+      this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367604));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367576));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367573));
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131362012));
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362013));
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362011));
@@ -99,7 +99,7 @@ public class rbi
       return;
       if ((paramInt == 5) || (paramInt == 7))
       {
-        this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367594));
+        this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367604));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131362021));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131362019));
         this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362023));
@@ -111,15 +111,15 @@ public class rbi
         this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361995));
         this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131361993);
         this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361994));
-        this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131367402);
-        this.jdField_h_of_type_AndroidViewView = paramView.findViewById(2131367385);
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367394));
-        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367403));
-        this.jdField_i_of_type_AndroidViewView = paramView.findViewById(2131367405);
-        this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367407));
-        this.jdField_j_of_type_AndroidViewView = paramView.findViewById(2131367391);
-        this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367393));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCircleCountdownView = ((CircleCountdownView)paramView.findViewById(2131367404));
+        this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131367412);
+        this.jdField_h_of_type_AndroidViewView = paramView.findViewById(2131367395);
+        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367404));
+        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367413));
+        this.jdField_i_of_type_AndroidViewView = paramView.findViewById(2131367415);
+        this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367417));
+        this.jdField_j_of_type_AndroidViewView = paramView.findViewById(2131367401);
+        this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367403));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCircleCountdownView = ((CircleCountdownView)paramView.findViewById(2131367414));
         this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131361997);
         this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131361998));
         this.jdField_a_of_type_AndroidWidgetProgressBar.setClickable(false);
@@ -128,39 +128,39 @@ public class rbi
         this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362000));
         this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361999));
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842338);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842351);
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363038));
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365454));
-        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365456));
-        this.s = ((TextView)paramView.findViewById(2131365457));
-        this.t = ((TextView)paramView.findViewById(2131365452));
-        this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365451));
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365456));
+        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365458));
+        this.s = ((TextView)paramView.findViewById(2131365459));
+        this.t = ((TextView)paramView.findViewById(2131365454));
+        this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365453));
         this.jdField_k_of_type_AndroidViewView = paramView.findViewById(2131362007);
         this.jdField_l_of_type_AndroidViewView = paramView.findViewById(2131362004);
         this.jdField_m_of_type_AndroidViewView = paramView.findViewById(2131362005);
         this.jdField_n_of_type_AndroidViewView = paramView.findViewById(2131362006);
-        this.jdField_o_of_type_AndroidViewView = paramView.findViewById(2131367377);
-        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367378));
-        this.jdField_p_of_type_AndroidViewView = paramView.findViewById(2131367376);
-        this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367379));
-        this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367380));
-        this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367389));
+        this.jdField_o_of_type_AndroidViewView = paramView.findViewById(2131367387);
+        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367388));
+        this.jdField_p_of_type_AndroidViewView = paramView.findViewById(2131367386);
+        this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367389));
+        this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367390));
+        this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367399));
         this.jdField_r_of_type_AndroidViewView = paramView.findViewById(2131362003);
         this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362008));
         this.jdField_b_of_type_AndroidWidgetProgressBar.setClickable(false);
         this.jdField_b_of_type_AndroidWidgetProgressBar.setFocusable(false);
         this.jdField_b_of_type_AndroidWidgetProgressBar.setEnabled(false);
         this.jdField_n_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362009));
-        this.jdField_q_of_type_AndroidViewView = paramView.findViewById(2131367383);
-        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371203));
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365453));
-        this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365461));
-        this.jdField_e_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365458));
-        this.jdField_o_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365455));
-        this.jdField_p_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365462));
-        this.jdField_q_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365460));
-        this.jdField_r_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365459));
+        this.jdField_q_of_type_AndroidViewView = paramView.findViewById(2131367393);
+        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371222));
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365455));
+        this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365463));
+        this.jdField_e_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365460));
+        this.jdField_o_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365457));
+        this.jdField_p_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365464));
+        this.jdField_q_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365462));
+        this.jdField_r_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365461));
       }
     }
   }

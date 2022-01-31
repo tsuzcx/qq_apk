@@ -1,34 +1,109 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
 
-class agjf
-  extends allb
+final class agjf
+  extends AsyncTask<Void, Void, Integer>
 {
-  agjf(agiy paramagiy) {}
+  agjf(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
   
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  protected Integer a(Void... paramVarArgs)
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    agiy.a(this.a);
-    this.a.br();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bfua.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!agiy.a(this.a)))
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
+    }
+    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getTag() == null) {
+      return Integer.valueOf(1);
+    }
+    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
+    paramVarArgs = agjb.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
+    if (paramVarArgs != null)
     {
-      agiy.a(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
+      agjb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
+      return Integer.valueOf(2);
     }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      agiy.b(this.a);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    if (!baqn.b(paramVarArgs))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ndv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, has file");
+      }
+      return Integer.valueOf(1);
     }
+    File localFile = baqn.a(paramVarArgs);
+    if (localFile != null) {}
+    for (paramVarArgs = SecUtil.getFileMd5(localFile.getAbsolutePath());; paramVarArgs = null)
+    {
+      if ((paramVarArgs == null) || ("".equals(paramVarArgs)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, md5 is null");
+        }
+        return Integer.valueOf(1);
+      }
+      bdhb.c(alof.bi + ".nomedia");
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      int i;
+      StringBuilder localStringBuilder;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
+      {
+        i = 1;
+        if (i == 0) {
+          break label364;
+        }
+        localStringBuilder = new StringBuilder().append("_diydoutu@");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          break label353;
+        }
+        str1 = "0";
+      }
+      label266:
+      label353:
+      label364:
+      for (String str1 = str1;; str1 = "")
+      {
+        paramVarArgs = alof.bi + amqy.a(str2) + paramVarArgs + str1 + ".jpg";
+        try
+        {
+          bdhb.a(localFile, new File(paramVarArgs));
+          return Integer.valueOf(agjb.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+        }
+        catch (Exception paramVarArgs)
+        {
+          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
+          return Integer.valueOf(1);
+        }
+        i = 0;
+        break;
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+        break label266;
+      }
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    if (paramInteger.intValue() == 1)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131695342, 0).b(this.jdField_a_of_type_Int);
+      aufn.c("2004", 1);
+    }
+    while (paramInteger.intValue() != 2) {
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131689688, 0).b(this.jdField_a_of_type_Int);
+    aufn.c("2003", 1);
   }
 }
 

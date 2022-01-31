@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bgkd;
-import bhew;
+import bgok;
+import bhjd;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$3$1
-  implements bhew
+  implements bhjd
 {
   PickerJsPlugin$3$1(PickerJsPlugin.3 param3) {}
   

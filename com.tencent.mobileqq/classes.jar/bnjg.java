@@ -1,76 +1,16 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12;
 
 public class bnjg
+  implements DialogInterface.OnClickListener
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  public boolean a;
-  int b;
-  int c;
-  protected int d = -1;
-  protected int e = -1;
+  public bnjg(ShortVideoPlayActivity.12 param12) {}
   
-  public bnjg(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
-    }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    }
-    return 5;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.e = paramInt;
+    this.a.this$0.s();
   }
 }
 

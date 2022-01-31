@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import apgy;
-import aphq;
+import aplh;
+import aplz;
 
 public class JpegSoData
   extends XmlData
 {
-  @aphq(a=true, b=false)
+  @aplz(a=true, b=false)
   public String SO_MD5;
   
   public String getSharedPreferencesName()
   {
-    return "early_" + apgy.e();
+    return "early_" + aplh.e();
   }
   
   public String getStrResName()
   {
-    return apgy.e();
+    return aplh.e();
   }
 }
 

@@ -1,90 +1,69 @@
-import android.graphics.Canvas;
-import android.util.SparseArray;
-import android.view.View.MeasureSpec;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public abstract class aoyr
-  extends aoyh<aoxp>
+public class aoyr
+  extends aokh<aoyo>
 {
-  private SparseArray<List<aoys>> a = new SparseArray();
+  public static aoyo a()
+  {
+    return (aoyo)aoks.a().a(346);
+  }
   
-  public int a(Object paramObject)
+  public int a()
+  {
+    return 346;
+  }
+  
+  @NonNull
+  public aoyo a(int paramInt)
+  {
+    return new aoyo();
+  }
+  
+  @Nullable
+  public aoyo a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoyo.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aoyo> a()
+  {
+    return aoyo.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoyo paramaoyo)
+  {
+    if ((paramaoyo != null) && (!TextUtils.isEmpty(paramaoyo.d()))) {
+      ((bajc)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramaoyo);
+    }
+  }
+  
+  public int b()
   {
     return 0;
   }
   
-  public abstract aoys a(int paramInt);
-  
-  public aozf a(aoxp paramaoxp)
+  public boolean b()
   {
-    int i = a(paramaoxp.a());
-    List localList = (List)this.a.get(i);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.a.put(i, localObject);
-    }
-    if (((List)localObject).isEmpty()) {
-      ((List)localObject).add(a(i));
-    }
-    localObject = (aoys)((List)localObject).remove(0);
-    a(i, (aoys)localObject, paramaoxp);
-    ((aoys)localObject).a(View.MeasureSpec.makeMeasureSpec(paramaoxp.f(), -2147483648), View.MeasureSpec.makeMeasureSpec(paramaoxp.g(), -2147483648));
-    ((aoys)localObject).a(0, 0, ((aoys)localObject).a(), ((aoys)localObject).b());
-    paramaoxp.a((aoys)localObject);
-    paramaoxp.b(((aoys)localObject).a());
-    paramaoxp.a(((aoys)localObject).b());
-    return new aozf(((aoys)localObject).a(), ((aoys)localObject).b());
+    return false;
   }
   
-  public abstract void a(int paramInt, aoys paramaoys, aoxp paramaoxp);
-  
-  public void a(Canvas paramCanvas, aoxp paramaoxp, aoxq paramaoxq, float paramFloat1, float paramFloat2)
+  public boolean c()
   {
-    paramaoxq = paramaoxp.a();
-    if (paramaoxq == null) {
-      return;
-    }
-    if (!paramaoxp.i())
-    {
-      paramaoxq.a(View.MeasureSpec.makeMeasureSpec(paramaoxq.a(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramaoxq.b(), 1073741824));
-      paramaoxq.a(0, 0, paramaoxq.a(), paramaoxq.b());
-      paramaoxp.f(true);
-    }
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat1, paramFloat2);
-    paramaoxq.a(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(aoxp paramaoxp)
-  {
-    aoys localaoys = paramaoxp.a();
-    if (localaoys != null)
-    {
-      int i = a(paramaoxp.a());
-      List localList = (List)this.a.get(i);
-      Object localObject = localList;
-      if (localList == null)
-      {
-        localObject = new ArrayList();
-        this.a.put(i, localObject);
-      }
-      ((List)localObject).add(localaoys);
-      paramaoxp.a(null);
-    }
-  }
-  
-  public boolean a(aoxh paramaoxh)
-  {
-    return paramaoxh instanceof aoxp;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoyr
  * JD-Core Version:    0.7.0.1
  */

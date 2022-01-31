@@ -18,7 +18,7 @@ public class mzx
     }
     Bundle localBundle = paramIntent.getExtras();
     if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bdku.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    for (byte[] arrayOfByte = bdpd.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
       localBundle.putByteArray("data", arrayOfByte);
       notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
@@ -39,7 +39,7 @@ public class mzx
     }
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bdku.a(arrayOfByte));
+    paramPacket.putSendData(bdpd.a(arrayOfByte));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     if (QLog.isColorLevel()) {
       QLog.i("MSFServlet", 2, "onSend exit");

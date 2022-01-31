@@ -1,34 +1,17 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class ackw
-  implements ney
+public final class ackw
+  implements bdjo
 {
-  public ackw(ChatSettingForTroop paramChatSettingForTroop) {}
+  public ackw(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public void a() {}
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public void a(String paramString, int paramInt)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      aubr localaubr = (aubr)this.a.app.getManager(37);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localaubr.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
-      }
-      localaubr.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.i);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

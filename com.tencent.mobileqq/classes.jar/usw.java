@@ -1,19 +1,43 @@
-public class usw
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+class usw
+  implements uud
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  usw(ust paramust, int paramInt, CommentEntry paramCommentEntry) {}
   
-  public usw(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    a(-1, alud.a(2131704788));
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131704811) + paramInt, 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    this.jdField_a_of_type_Ust.e();
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
+    }
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    this.jdField_a_of_type_Ust.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Ust.e();
+    this.jdField_a_of_type_Ust.jdField_a_of_type_Uux.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    utp.a().a();
+    this.jdField_a_of_type_Ust.a(false, null);
+    QQToast.a(BaseApplication.getContext(), 2, alud.a(2131704812), 0).a();
+    ust.a(this.jdField_a_of_type_Ust.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

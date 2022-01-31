@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aeze
-  implements DialogInterface.OnClickListener
+public class aeze
+  extends BroadcastReceiver
 {
-  aeze(aezb paramaezb) {}
+  public aeze(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      }
+      this.a.finish();
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId,keyword")
 public class EmotionKeyword
-  extends awbv
+  extends awge
 {
   public String eId;
   public String epId;
@@ -49,7 +49,7 @@ public class EmotionKeyword
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmotionKeyword
  * JD-Core Version:    0.7.0.1
  */

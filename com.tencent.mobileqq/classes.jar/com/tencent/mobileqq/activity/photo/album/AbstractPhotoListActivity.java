@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -29,8 +29,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhqp;
-import bhte;
+import bhuw;
+import bhxl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -63,9 +63,9 @@ public abstract class AbstractPhotoListActivity
   public int mImageHeight;
   public int mImageWidth;
   int mItemPadding;
-  bhte mOnSelectChangeListener = new AbstractPhotoListActivity.1(this);
+  bhxl mOnSelectChangeListener = new AbstractPhotoListActivity.1(this);
   PhotoListBaseData mPhotoListData;
-  bhqp mPhotoListItemClickListener = new AbstractPhotoListActivity.2(this);
+  bhuw mPhotoListItemClickListener = new AbstractPhotoListActivity.2(this);
   public PhotoListLogicBase mPhotoListLogic;
   public int mTitleBarHeight;
   int mVerticalSpacing;
@@ -197,7 +197,7 @@ public abstract class AbstractPhotoListActivity
     super.adjustStatusBar();
     try
     {
-      super.setContentView(2131561132);
+      super.setContentView(2131561150);
       getWindow().setBackgroundDrawable(null);
       this.mPhotoListLogic = ((PhotoListLogicBase)generateLogic());
       this.mPhotoListData = this.mPhotoListLogic.mPhotoListData;
@@ -291,10 +291,10 @@ public abstract class AbstractPhotoListActivity
   protected void initUI()
   {
     this.albumListContainer = ((FrameLayout)findViewById(2131362467));
-    this.titleLeftBtn = ((TextView)findViewById(2131368613));
+    this.titleLeftBtn = ((TextView)findViewById(2131368624));
     this.titleLeftBtn.setVisibility(0);
     this.titleLeftBtn.setOnClickListener(this);
-    this.titleText = ((TextView)findViewById(2131368659));
+    this.titleText = ((TextView)findViewById(2131368670));
     String str;
     if (this.mPhotoListLogic.mPhotoCommonData.albumName != null) {
       str = this.mPhotoListLogic.mPhotoCommonData.albumName;
@@ -302,14 +302,14 @@ public abstract class AbstractPhotoListActivity
     for (;;)
     {
       setTitle(str);
-      this.titleImage = ((TriangleView)findViewById(2131368656));
+      this.titleImage = ((TriangleView)findViewById(2131368667));
       this.titleImage.setColor(this.titleText.getCurrentTextColor());
-      this.titleLayout = ((LinearLayout)findViewById(2131368606));
+      this.titleLayout = ((LinearLayout)findViewById(2131368617));
       this.titleLayout.setOnClickListener(this);
-      this.previewBtn = ((Button)findViewById(2131372229));
-      this.sendBtn = ((Button)findViewById(2131376341));
-      this.bottomBar = findViewById(2131378081);
-      this.mGridView = ((GestureSelectGridView)findViewById(2131371830));
+      this.previewBtn = ((Button)findViewById(2131372249));
+      this.sendBtn = ((Button)findViewById(2131376395));
+      this.bottomBar = findViewById(2131378135);
+      this.mGridView = ((GestureSelectGridView)findViewById(2131371850));
       this.mGridView.setScrollBarStyle(0);
       this.mGridView.setNumColumns(3);
       this.mGridView.setColumnWidth(this.mImageWidth);
@@ -361,8 +361,8 @@ public abstract class AbstractPhotoListActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aimj localaimj = this.mPhotoListLogic.mPhotoCommonData;
-    if (paramCompoundButton.getId() == 2131373917) {
+    aiqy localaiqy = this.mPhotoListLogic.mPhotoCommonData;
+    if (paramCompoundButton.getId() == 2131373968) {
       this.mPhotoListLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
   }
@@ -371,23 +371,23 @@ public abstract class AbstractPhotoListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131368613) {
+    if (i == 2131368624) {
       this.mPhotoListLogic.onTitleBtnCancelClick(paramView);
     }
     do
     {
       return;
-      if (i == 2131372229)
+      if (i == 2131372249)
       {
         this.mPhotoListLogic.onPreviewBtnClick(paramView);
         return;
       }
-      if (i == 2131376341)
+      if (i == 2131376395)
       {
         this.mPhotoListLogic.onSendBtnClick(paramView);
         return;
       }
-    } while (i != 2131368606);
+    } while (i != 2131368617);
     if ((this.albumListFragment == null) || (!this.albumListFragment.isAdded())) {}
     for (boolean bool = true;; bool = false)
     {

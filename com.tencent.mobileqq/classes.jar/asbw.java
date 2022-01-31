@@ -1,55 +1,97 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.2;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.3;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.List;
 
 public class asbw
-  implements WtTicketPromise
+  extends RecyclerView.Adapter<asbz>
 {
-  public asbw(NearbyHybridFragment paramNearbyHybridFragment) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  bdbb jdField_a_of_type_Bdbb;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public void Done(Ticket paramTicket)
+  public asbw(QQAppInterface paramQQAppInterface, Context paramContext, bdbb parambdbb)
   {
-    if (paramTicket != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bdbb = parambdbb;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public asbz a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == asbs.b)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296992)));
+      return new asbz(paramViewGroup);
+    }
+    return new asby(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559109, paramViewGroup, false));
+  }
+  
+  public void a(asbz paramasbz, int paramInt)
+  {
+    if (paramasbz.a == asbs.b) {}
+    Pair localPair;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramasbz.a != asbs.a);
+      paramInt -= 1;
+      if (paramInt < 0) {
+        QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
       }
-      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
-      CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.1(this));
+      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    } while (!(paramasbz instanceof asby));
+    ((asby)paramasbz).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Bdbb);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void a(List<Pair<String, String>> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.2(this));
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public int getItemCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.3(this));
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return asbs.b;
+    }
+    return asbs.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new asbx(this));
+    }
   }
 }
 

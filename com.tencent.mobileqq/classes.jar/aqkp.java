@@ -1,17 +1,52 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aqkp
-  implements Comparator<Long>
+  implements Animation.AnimationListener
 {
-  public aqkp(QfileLocalFileDelFileTabView.1 param1) {}
+  public aqkp(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
     }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    for (;;)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      return;
+      if (Face2FaceFriendBubbleView.a(this.a) == 2)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839675);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839676);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839677);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+      }
+    }
   }
 }
 

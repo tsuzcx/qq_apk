@@ -12,7 +12,7 @@ import java.util.List;
 import mqq.util.WeakReference;
 
 class mws
-  implements bhmp
+  implements bhqw
 {
   mws(mwk parammwk) {}
   

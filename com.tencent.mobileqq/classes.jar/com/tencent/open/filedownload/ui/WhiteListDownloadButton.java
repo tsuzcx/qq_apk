@@ -1,10 +1,10 @@
 package com.tencent.open.filedownload.ui;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
-import azmj;
-import bfmf;
+import azqs;
+import bfqo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -40,7 +40,7 @@ public class WhiteListDownloadButton
     label70:
     for (paramString = "";; paramString = this.a.h)
     {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
+      azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
       return;
     }
   }
@@ -48,9 +48,9 @@ public class WhiteListDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return alpo.a(2131717339);
+      return alud.a(2131717351);
     }
-    return alpo.a(2131717340);
+    return alud.a(2131717352);
   }
 }
 

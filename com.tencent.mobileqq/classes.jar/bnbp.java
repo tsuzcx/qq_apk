@@ -1,64 +1,35 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-public class bnbp
-  extends bmiv
-  implements View.OnClickListener
+public abstract class bnbp<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  protected long a;
+  private final String a;
+  private long b;
   
-  public bnbp(@NonNull bnbl parambnbl)
+  public bnbp()
   {
-    super(parambnbl);
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
   }
   
-  private void d()
+  public void call(IN paramIN)
   {
-    bdcd.a(a().getActivity(), 230).setMessage(2131718629).setPositiveButton(2131718137, new bnbs(this)).setNegativeButton(2131691088, new bnbr(this)).show();
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
   }
   
-  public bnbl a()
+  public void notifyError(Error paramError)
   {
-    return (bnbl)this.jdField_a_of_type_Bmix;
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
   }
   
-  public void a()
+  public void notifyResult(OUT paramOUT)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131374549));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131366542));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bnbq(this));
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.arg1)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

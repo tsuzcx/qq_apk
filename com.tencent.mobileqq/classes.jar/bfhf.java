@@ -1,53 +1,41 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.widget.EditText;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bfhf
-  implements InputFilter
+  implements View.OnTouchListener
 {
-  protected int a;
-  protected EditText a;
+  protected GestureDetector.SimpleOnGestureListener a;
+  protected GestureDetector a;
+  View jdField_a_of_type_AndroidViewView;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bfhf(EditText paramEditText, int paramInt)
+  public bfhf(SwitchAccountActivity paramSwitchAccountActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bfhg(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - bfhm.a(paramSpanned.toString());
-    paramInt3 = bfhm.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
     }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    if (i == 0)
     {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bfhm.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bfhm.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
+        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
       }
     }
-    label161:
-    if (paramInt3 == paramInt1) {
-      return "";
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

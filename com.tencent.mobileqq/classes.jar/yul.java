@@ -1,85 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-public class yul
-  extends aofy<yuk>
+public abstract class yul
+  extends nac
 {
-  private void a(String paramString1, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
-    if (!TextUtils.isEmpty(paramString2))
+    if (paramInt != 0)
     {
-      yuh.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
-      yuh.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
-      yuh.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-  }
-  
-  public int a()
-  {
-    return 473;
-  }
-  
-  public Class<yuk> a()
-  {
-    return yuk.class;
-  }
-  
-  @NonNull
-  public yuk a(int paramInt)
-  {
-    return new yuk();
-  }
-  
-  @Nullable
-  public yuk a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
+    try
     {
-      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      yuk localyuk = yuk.a(paramArrayOfaogf[0].a);
-      if (localyuk == null)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
-        return null;
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
-      String str = (String)yuh.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
-      if ((!TextUtils.isEmpty(localyuk.b())) && (!localyuk.b().equals(str)))
-      {
-        yuz.a().a(localyuk);
-        a(localyuk.b(), paramArrayOfaogf[0].a);
-      }
-      return localyuk;
     }
-    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(yuk paramyuk)
-  {
-    if (paramyuk != null) {
-      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramyuk.toString());
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
     }
+    a(false, -1, null, paramBundle);
   }
   
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
 }
 
 

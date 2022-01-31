@@ -3,7 +3,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.widget.QQToast;
 
 final class taf
-  implements bevy
+  implements bfah
 {
   public void a(BaseResp paramBaseResp)
   {
@@ -11,11 +11,11 @@ final class taf
     {
     case -1: 
     default: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720019, 1).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720031, 1).a();
     case -2: 
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720038, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720050, 1).a();
   }
 }
 

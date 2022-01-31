@@ -1,18 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class vsy
-  implements TVK_IMediaPlayer.OnErrorListener
+class vsy
+  implements View.OnTouchListener
 {
-  vsy(vsv paramvsv) {}
+  private vsy(vsv paramvsv) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    return vsv.a(this.a).a(paramMotionEvent);
   }
 }
 

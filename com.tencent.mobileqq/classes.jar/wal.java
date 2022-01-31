@@ -1,21 +1,17 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class wal
-  extends vdz
+  implements DialogInterface.OnDismissListener
 {
   wal(wak paramwak) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.a();
-    wak.a(this.a).jdField_a_of_type_Vdt = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    wta.a("share_story", "day_suc", 0, paramInt, new String[] { wak.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
   }
 }
 

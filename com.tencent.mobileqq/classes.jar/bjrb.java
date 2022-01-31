@@ -1,84 +1,38 @@
-import android.text.TextUtils;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bjrb
+  extends MSFServlet
 {
-  private static String a(List<String> paramList)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localStringBuilder.append((String)paramList.next());
-      localStringBuilder.append(";");
+    if (paramFromServiceMsg != null) {
+      bjra.a().c(paramFromServiceMsg.getResultCode());
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static List<String> a(String paramString)
-  {
-    return a(paramString, 500);
-  }
-  
-  public static List<String> a(String paramString, int paramInt)
-  {
-    int i = 0;
-    paramString = LocalMultiProcConfig.getString(paramString, "").split(";");
-    LinkedList localLinkedList = new LinkedList();
-    if ((paramString.length == 0) || (paramInt <= 0)) {
-      return localLinkedList;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      if (i < paramString.length)
-      {
-        CharSequence localCharSequence = paramString[i];
-        k = j;
-        if (!TextUtils.isEmpty(localCharSequence))
-        {
-          localLinkedList.add(localCharSequence);
-          k = j + 1;
-        }
-        if (k != paramInt) {}
-      }
-      else
-      {
-        return localLinkedList;
-      }
-      i += 1;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    List localList;
-    do
-    {
-      return;
-      localList = a(paramString1, 500);
-    } while (localList.contains(paramString2));
-    localList.add(0, paramString2);
-    if (localList.size() > 500) {
-      localList.remove(500);
-    }
-    LocalMultiProcConfig.putString(paramString1, a(localList));
-  }
-  
-  public static void a(String paramString, List<String> paramList)
-  {
-    if (paramList == null) {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    LinkedList localLinkedList = new LinkedList();
-    List localList = a(paramString, 500 - paramList.size());
-    localLinkedList.addAll(paramList);
-    localLinkedList.addAll(localList);
-    LocalMultiProcConfig.putString(paramString, a(localLinkedList));
+    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getSerializableExtra("list");
+    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
+    bjqz localbjqz = new bjqz(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
+    byte[] arrayOfByte = localbjqz.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjqz.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

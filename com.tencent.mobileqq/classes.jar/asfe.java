@@ -1,162 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.fts.FTSDatabase;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.widget.Switch;
 
 public class asfe
+  implements DialogInterface.OnClickListener
 {
-  public static String a(String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        localStringBuilder = new StringBuilder(64);
-        asez localasez = new asez(new StringReader(paramString), paramString.length());
-        paramString = null;
-        try
-        {
-          localasew = localasez.a();
-          if (localasew != null) {
-            continue;
-          }
-          if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && (!TextUtils.isEmpty(paramString.a())))
-          {
-            localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
-            localStringBuilder.append("*");
-          }
-        }
-        catch (IOException paramString)
-        {
-          asew localasew;
-          paramString.printStackTrace();
-          FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
-          continue;
-        }
-        paramString = localStringBuilder.toString();
-        return paramString;
-      }
-      catch (Throwable paramString)
-      {
-        StringBuilder localStringBuilder;
-        paramString.printStackTrace();
-        FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
-      }
-      if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && ((!TextUtils.equals(localasew.b(), "double")) || (paramString.b() < localasew.a())) && (!TextUtils.isEmpty(paramString.a())))
-      {
-        localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
-        localStringBuilder.append("*");
-        localStringBuilder.append(' ');
-      }
-      if ((!TextUtils.isEmpty(localasew.a())) && ((!TextUtils.equals(localasew.b(), "double")) || (localasew.a().length() != 1)))
-      {
-        localStringBuilder.append(localasew.a());
-        localStringBuilder.append(' ');
-      }
-      paramString = localasew;
-    }
-    return null;
-  }
+  public asfe(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public static ArrayList<String> a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = paramString.split("\\s");
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramString.length)
+    boolean bool = true;
+    if (paramInt == 1)
     {
-      String str = paramString[i].trim();
-      if ((str != null) && (!TextUtils.isEmpty(str))) {
-        localArrayList.add(str);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static String[] a(String paramString)
-  {
-    int j = 0;
-    Object localObject = a(paramString);
-    if (localObject == null) {
-      return null;
-    }
-    paramString = new ArrayList();
-    int i = 0;
-    while (i < ((ArrayList)localObject).size())
-    {
-      String str = a((String)((ArrayList)localObject).get(i));
-      if (!TextUtils.isEmpty(str)) {
-        paramString.add(str.trim());
-      }
-      i += 1;
-    }
-    if (paramString.size() == 0) {
-      return null;
-    }
-    localObject = new String[paramString.size()];
-    i = j;
-    while (i < paramString.size())
-    {
-      localObject[i] = ((String)paramString.get(i));
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  public static String[] b(String paramString)
-  {
-    Object localObject2 = a(paramString);
-    FTSDatabase.a().a("SegmentUtils", "i", "query segments = " + Arrays.toString((Object[])localObject2));
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (localObject2.length != 0) {}
-    }
-    else
-    {
-      if ((paramString == null) || (paramString.length() <= 0)) {
-        break label223;
-      }
-      localObject1 = new String[1];
-      localObject1[0] = paramString;
-    }
-    paramString = new String[localObject1.length];
-    int i = 0;
-    while (i < localObject1.length)
-    {
-      localObject2 = new StringBuilder(64);
-      String[] arrayOfString = localObject1[i].split(" ");
-      int j = 0;
-      if (j < arrayOfString.length)
+      paramDialogInterface = this.a;
+      if (!AppletsSettingFragment.a(this.a))
       {
-        if (((StringBuilder)localObject2).length() > 0) {
-          ((StringBuilder)localObject2).append(" ");
-        }
-        if ((arrayOfString[j].length() == 1) || ((arrayOfString[j].charAt(0) >= '0') && (arrayOfString[j].charAt(0) <= '9')) || ((arrayOfString[j].charAt(0) >= 'a') && (arrayOfString[j].charAt(0) <= 'z')))
-        {
-          ((StringBuilder)localObject2).append(arrayOfString[j]);
-          ((StringBuilder)localObject2).append("*");
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          label223:
-          return null;
-          ((StringBuilder)localObject2).append(arrayOfString[j]);
-        }
+        AppletsSettingFragment.a(paramDialogInterface, bool);
+        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+        this.a.a.cancel();
       }
-      paramString[i] = ((StringBuilder)localObject2).toString();
-      i += 1;
     }
-    return paramString;
+    while (paramInt != 0) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
+    }
+    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
+    this.a.a.cancel();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Handler;
-import aylc;
-import aypx;
+import aypl;
+import ayug;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class GroupSearchFragment$2
@@ -14,14 +14,14 @@ class GroupSearchFragment$2
   {
     if (!this.this$0.d)
     {
-      this.this$0.jdField_a_of_type_Aypx.a();
+      this.this$0.jdField_a_of_type_Ayug.a();
       this.this$0.d = true;
     }
     if (!GroupSearchFragment.a(this.this$0))
     {
-      aylc localaylc = (aylc)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
-      if (localaylc != null) {
-        localaylc.a();
+      aypl localaypl = (aypl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
+      if (localaypl != null) {
+        localaypl.a();
       }
       GroupSearchFragment.a(this.this$0, true);
     }

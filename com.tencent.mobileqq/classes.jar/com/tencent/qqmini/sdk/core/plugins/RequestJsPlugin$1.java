@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bghn;
-import bgkd;
-import bgkz;
-import bgla;
-import bglb;
-import bgxw;
-import bgxy;
-import bgyd;
+import bglu;
+import bgok;
+import bgpg;
+import bgph;
+import bgpi;
+import bhcd;
+import bhcf;
+import bhck;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -23,7 +23,7 @@ class RequestJsPlugin$1
 {
   String contentType;
   
-  RequestJsPlugin$1(RequestJsPlugin paramRequestJsPlugin, String paramString, RequestJsPlugin.RequestTask paramRequestTask, bgkd parambgkd) {}
+  RequestJsPlugin$1(RequestJsPlugin paramRequestJsPlugin, String paramString, RequestJsPlugin.RequestTask paramRequestTask, bgok parambgok) {}
   
   public void onRequestFailed(int paramInt, String paramString)
   {
@@ -43,9 +43,9 @@ class RequestJsPlugin$1
     }
     for (;;)
     {
-      bgyd.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject, l, str);
-      bgxw.a(this.this$0.mMiniAppInfo, paramInt, 0L, l);
-      bgxy.a(this.this$0.mMiniAppInfo, this.val$url, 0L, l, paramInt);
+      bhck.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject, l, str);
+      bhcd.a(this.this$0.mMiniAppInfo, paramInt, 0L, l);
+      bhcf.a(this.this$0.mMiniAppInfo, this.val$url, 0L, l, paramInt);
       QMLog.e("[mini] http.RequestJsPlugin", "--fail--- url: " + this.val$request.mUrl + " taskId=" + this.val$request.mTaskId + " resCode=" + paramInt);
       localObject = new JSONObject();
       try
@@ -62,7 +62,7 @@ class RequestJsPlugin$1
           label349:
           localObject = "0";
           break;
-          bgla.a("request", (JSONObject)localObject, paramInt);
+          bgph.a("request", (JSONObject)localObject, paramInt);
         }
         return;
       }
@@ -77,7 +77,7 @@ class RequestJsPlugin$1
     {
       localJSONObject.put("url", this.val$url);
       localJSONObject.put("requestTaskId", this.val$request.mTaskId);
-      localJSONObject.put("header", bgkz.a(paramMap));
+      localJSONObject.put("header", bgpg.a(paramMap));
       localJSONObject.put("errMsg", "ok");
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("state", "headersReceived");
@@ -114,14 +114,14 @@ class RequestJsPlugin$1
     }
     for (;;)
     {
-      bgyd.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject1, l2, (String)localObject2);
+      bhck.a(this.this$0.mMiniAppInfo, 628, null, null, null, paramInt, (String)localObject1, l2, (String)localObject2);
       localObject1 = this.this$0.mMiniAppInfo;
       long l1;
       if (paramArrayOfByte != null)
       {
         l1 = paramArrayOfByte.length;
         label215:
-        bgxw.a((MiniAppInfo)localObject1, paramInt, l1, l2);
+        bhcd.a((MiniAppInfo)localObject1, paramInt, l1, l2);
         localObject1 = this.this$0.mMiniAppInfo;
         localObject2 = this.val$url;
         if (paramArrayOfByte == null) {
@@ -129,7 +129,7 @@ class RequestJsPlugin$1
         }
         l1 = paramArrayOfByte.length;
         label249:
-        bgxy.a((MiniAppInfo)localObject1, (String)localObject2, l1, l2, paramInt);
+        bhcf.a((MiniAppInfo)localObject1, (String)localObject2, l1, l2, paramInt);
         localObject1 = new JSONObject();
         localObject2 = new JSONObject();
       }
@@ -140,7 +140,7 @@ class RequestJsPlugin$1
         {
           ((JSONObject)localObject2).put("requestTaskId", this.val$request.mTaskId);
           if (paramMap != null) {
-            ((JSONObject)localObject2).put("header", bgkz.a(paramMap));
+            ((JSONObject)localObject2).put("header", bgpg.a(paramMap));
           }
           ((JSONObject)localObject2).put("statusCode", paramInt);
           ((JSONObject)localObject2).put("state", "success");
@@ -153,7 +153,7 @@ class RequestJsPlugin$1
             if (!this.this$0.mIsMiniGame) {
               break label456;
             }
-            bglb.a(this.this$0.mMiniAppContext, paramArrayOfByte, bglb.a, "data", (JSONObject)localObject2);
+            bgpi.a(this.this$0.mMiniAppContext, paramArrayOfByte, bgpi.a, "data", (JSONObject)localObject2);
           }
         }
         for (;;)
@@ -170,7 +170,7 @@ class RequestJsPlugin$1
           l1 = 0L;
           break label249;
           label456:
-          bglb.a(this.this$0.mMiniAppContext, paramArrayOfByte, bglb.jdField_b_of_type_Int, "data", (JSONObject)localObject2);
+          bgpi.a(this.this$0.mMiniAppContext, paramArrayOfByte, bgpi.jdField_b_of_type_Int, "data", (JSONObject)localObject2);
           continue;
           try
           {

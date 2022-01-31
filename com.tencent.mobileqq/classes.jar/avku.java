@@ -1,11 +1,21 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+
 class avku
-  implements bhqf
+  implements Handler.Callback
 {
-  avku(avkg paramavkg) {}
+  avku(avkt paramavkt) {}
   
-  public void onDismiss()
+  public boolean handleMessage(Message paramMessage)
   {
-    avkg.a(this.a, this.a.b, false);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      avkt.a(this.a);
+    }
   }
 }
 

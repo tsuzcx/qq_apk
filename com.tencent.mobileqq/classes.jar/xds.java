@@ -1,8 +1,16 @@
-public abstract interface xds
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class xds
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract int a();
+  xds(xdr paramxdr) {}
   
-  public abstract xdi a(int paramInt);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
+  }
 }
 
 

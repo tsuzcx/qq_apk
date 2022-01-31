@@ -27,7 +27,7 @@ public class sfc
     if (this.a != null) {
       return (Bitmap)this.a.a();
     }
-    azmj.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
+    azqs.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
     return null;
   }
   

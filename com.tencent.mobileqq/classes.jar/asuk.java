@@ -1,26 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
+
 public class asuk
-  implements alkr
+  implements DialogInterface.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public asuk(HotPicPageView paramHotPicPageView, asuq paramasuq, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Asuq, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 

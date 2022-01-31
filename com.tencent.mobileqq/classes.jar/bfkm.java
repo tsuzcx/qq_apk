@@ -1,44 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
-
-class bfkm
-  extends QIPCModule
+public class bfkm
 {
-  bfkm(bfkl parambfkl, String paramString)
+  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
+  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  
+  public void a(String paramString1, String paramString2)
   {
-    super(paramString);
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    bfhg.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = bfkl.a(this.a);
-    if (localObject == null) {
-      bfhg.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
     }
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      bfhg.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(bfkl.a(this.a));
-    paramString = (allq)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    bfkl.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    }
   }
 }
 

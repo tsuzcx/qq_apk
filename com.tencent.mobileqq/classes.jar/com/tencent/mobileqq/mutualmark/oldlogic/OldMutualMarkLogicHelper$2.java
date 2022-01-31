@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import aloz;
-import aupg;
+import alto;
+import autp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,13 +13,13 @@ public final class OldMutualMarkLogicHelper$2
   
   public void run()
   {
-    aloz localaloz = (aloz)this.a.getManager(51);
-    if (localaloz != null)
+    alto localalto = (alto)this.a.getManager(51);
+    if (localalto != null)
     {
-      HashSet localHashSet = aupg.a();
+      HashSet localHashSet = autp.a();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localaloz.b(new ArrayList(localHashSet));
+        localalto.b(new ArrayList(localHashSet));
         localHashSet.clear();
       }
     }

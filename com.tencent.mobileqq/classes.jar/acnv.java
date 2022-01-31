@@ -1,30 +1,47 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-public class acnv
-  extends alqf
+class acnv
+  implements Comparator<Object>
 {
-  public acnv(Conversation paramConversation) {}
+  acnv(acnu paramacnu) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    if ((paramObject1 instanceof FileManagerEntity)) {
+      if ((paramObject2 instanceof FileManagerEntity)) {
+        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
+      }
     }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return -1;
+          return 1;
+          if (!(paramObject2 instanceof TencentDocData)) {
+            break;
+          }
+        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
+        return 1;
+        if (!(paramObject1 instanceof TencentDocData)) {
+          break label124;
+        }
+        if (!(paramObject2 instanceof FileManagerEntity)) {
+          break;
+        }
+      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
+      return 1;
+      if (!(paramObject2 instanceof TencentDocData)) {
+        break;
+      }
+    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
+    return 1;
+    label124:
+    return 0;
   }
 }
 

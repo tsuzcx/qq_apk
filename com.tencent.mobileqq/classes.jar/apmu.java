@@ -1,30 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.app.QQPermissionCallback;
 
 class apmu
-  implements bdqg<arsi>
+  implements QQPermissionCallback
 {
-  apmu(aply paramaply, int paramInt, alxl paramalxl, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  apmu(apmt paramapmt) {}
   
-  public void a(arsi paramarsi, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramObject = new Bundle();
-    paramObject.putInt("id", this.jdField_a_of_type_Int);
-    if ((paramarsi != null) || (this.jdField_a_of_type_Int == 0))
-    {
-      paramObject.putInt("result", 0);
-      this.jdField_a_of_type_Alxl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bdqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      bdqj.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
-      paramObject.putInt("result", 1);
-    }
+    bdgm.b(this.a.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.c();
+    apmt.a(this.a).f();
   }
 }
 

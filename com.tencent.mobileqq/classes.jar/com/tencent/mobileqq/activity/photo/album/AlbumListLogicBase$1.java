@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import bddw;
+import bdif;
 
 class AlbumListLogicBase$1
   implements Runnable
@@ -9,9 +9,9 @@ class AlbumListLogicBase$1
   
   public void run()
   {
-    bddw.a();
+    bdif.a();
     this.this$0.mAlbumListAdapterCallBack.queryAlbumList(100);
-    bddw.a("PEAK", "queryAlbumList");
+    bdif.a("PEAK", "queryAlbumList");
   }
 }
 

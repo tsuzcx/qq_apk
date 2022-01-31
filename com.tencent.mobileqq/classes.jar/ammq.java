@@ -1,27 +1,28 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-
 public class ammq
 {
-  public static Object a(byte[] paramArrayOfByte)
+  public static boolean a(int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
   }
   
-  public static byte[] a(Serializable paramSerializable)
+  public static boolean b(int paramInt)
   {
-    if (paramSerializable == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
-    return localByteArrayOutputStream.toByteArray();
+    return paramInt == -2022;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return paramInt == -1035;
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == -2011;
   }
 }
 

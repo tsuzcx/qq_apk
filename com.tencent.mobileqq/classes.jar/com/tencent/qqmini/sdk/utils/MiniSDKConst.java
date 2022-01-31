@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.utils;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
-import bglq;
+import bgpx;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
@@ -45,7 +45,7 @@ public class MiniSDKConst
   public static final int START_MODE_APPID = 1;
   public static final int START_MODE_LINK = 2;
   public static final int START_MODE_NORMAL = 0;
-  public static final String STR_WXFILE = bglq.a("qqminiapp", "MiniAppFileString", "wxfile://");
+  public static final String STR_WXFILE = bgpx.a("qqminiapp", "MiniAppFileString", "wxfile://");
   public static final String TAG = "miniapp-start";
   public static final String TAG_CHROMIUM = "miniapp-chromium";
   public static final String TAG_JS = "miniapp-JS";

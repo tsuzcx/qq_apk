@@ -1,6 +1,6 @@
 package com.tencent.biz.viewplugin;
 
-import azmj;
+import azqs;
 import nbv;
 
 public final class ViewPluginManager$1
@@ -10,7 +10,7 @@ public final class ViewPluginManager$1
   
   public void run()
   {
-    azmj.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, nbv.a("1002"), this.a.getClass().getSimpleName(), null, null);
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, nbv.a("1002"), this.a.getClass().getSimpleName(), null, null);
   }
 }
 

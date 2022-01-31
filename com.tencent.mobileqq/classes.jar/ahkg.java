@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-
 class ahkg
-  implements View.OnClickListener
+  implements Comparable<ahkg>
 {
-  ahkg(ahke paramahke) {}
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  ahkg(ahke paramahke, String paramString, Long paramLong)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bclo.a(ahke.a(this.a), paramView, 10001);
-    bdaj.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
+  
+  public int a(ahkg paramahkg)
+  {
+    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramahkg.jdField_a_of_type_JavaLangLong.longValue()) {
+      return -1;
+    }
+    return 1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

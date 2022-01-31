@@ -1,25 +1,52 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Set;
+import java.lang.ref.WeakReference;
 
 class atan
-  extends alox
+  extends BroadcastReceiver
 {
-  atan(atal paramatal) {}
+  atan(atam paramatam) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if ((paramBoolean) && (paramObject != null))
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    if (atam.a(this.a)) {
+      atam.a(this.a, j);
+    }
+    if (paramContext.equals(atav.a(atam.a(this.a))))
     {
-      long l = ((Long)paramObject).longValue();
-      paramObject = atal.a(this.a).keySet().toArray();
-      int i = paramObject.length - 1;
-      while (i >= 0)
+      paramContext = (atao)atam.a(this.a).get();
+      if (paramContext != null) {
+        paramContext.a(j, paramIntent.getExtras());
+      }
+      for (;;)
       {
-        Long localLong = (Long)paramObject[i];
-        this.a.a(localLong.longValue(), l);
-        i -= 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
+        }
+        paramContext = atam.jdField_a_of_type_ArrayOfInt;
+        int k = paramContext.length;
+        int i = 0;
+        while (i < k)
+        {
+          if ((j == paramContext[i]) && (atam.b(this.a)))
+          {
+            atam.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+            atam.a(this.a, false);
+          }
+          i += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
+        }
+      }
+      if ((atam.c(this.a)) && (j == 4))
+      {
+        atam.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        atam.a(this.a, false);
       }
     }
   }

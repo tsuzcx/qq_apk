@@ -1,143 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-public class babx
-  extends bhyb
+class babx
+  implements babv
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<babz> jdField_a_of_type_JavaUtilList;
-  Map<String, babz> jdField_a_of_type_JavaUtilMap = new HashMap();
+  babx(babw parambabw) {}
   
-  public babx(QQAppInterface paramQQAppInterface, Context paramContext, View.OnClickListener paramOnClickListener, List<babz> paramList)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject = (babz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null) {
-      return paramString;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
+    if (babw.a(this.a) != null) {
+      babw.a(this.a).deleteTask(paramDownloaderTask, false);
     }
-    localObject = bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((babz)localObject).jdField_a_of_type_JavaLangString, ((babz)localObject).b, ((babz)localObject).jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ((babz)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = ((String)localObject);
+    if ((babw.a(this.a) != null) && (babw.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (babw.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((babu)babw.a(this.a).get(paramDownloaderTask.getUrl())).a();
     }
-    return ((babz)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c;
+    babw.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public void a(int paramInt)
+  public void b(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public void a(babz parambabz)
+  public void c(DownloaderTask paramDownloaderTask)
   {
-    if (parambabz == null) {
-      return;
+    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
+    if (babw.a(this.a) != null) {
+      babw.a(this.a).deleteTask(paramDownloaderTask, false);
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, parambabz);
-    this.jdField_a_of_type_JavaUtilMap.put(parambabz.jdField_a_of_type_JavaLangString, parambabz);
-  }
-  
-  public void a(String paramString)
-  {
-    babz localbabz = (babz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localbabz == null) {
-      return;
+    if ((babw.a(this.a) != null) && (babw.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (babw.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((babu)babw.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
     }
-    localbabz.c = a(paramString);
-    notifyDataSetChanged();
+    babw.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public void b(String paramString)
+  public void d(DownloaderTask paramDownloaderTask)
   {
-    paramString = (babz)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public int getCount()
+  public void e(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public Object getItem(int paramInt)
+  public void f(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    label110:
-    babz localbabz;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562693, null);
-      paramViewGroup = new baby(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367610));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371120));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131376954));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362838));
-      paramView.setTag(paramViewGroup);
-      if (this.jdField_a_of_type_Int != 2) {
-        break label230;
-      }
-      paramViewGroup.b.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localbabz = (babz)getItem(paramInt);
-      String str = String.valueOf(localbabz.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
-      bcxb localbcxb = bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localbcxb);
-      str = a(str);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramInt = localbabz.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
-      if (paramInt != 1) {
-        break label249;
-      }
-      paramViewGroup.b.setText(2131720637);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = localbabz.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return paramView;
-      paramViewGroup = (baby)paramView.getTag();
-      break;
-      label230:
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label110;
-      label249:
-      if (paramInt == 2) {
-        paramViewGroup.b.setText(2131720638);
-      } else {
-        paramViewGroup.b.setText(alpo.a(2131715161));
-      }
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
+    if ((babw.a(this.a) != null) && (babw.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (babw.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((babu)babw.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
     }
   }
 }

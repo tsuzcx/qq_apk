@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import asrp;
+import asvy;
 
 public class PresenceInterfaceImpl$6
   implements Runnable
 {
-  public PresenceInterfaceImpl$6(asrp paramasrp) {}
+  public PresenceInterfaceImpl$6(asvy paramasvy) {}
   
   public void run()
   {

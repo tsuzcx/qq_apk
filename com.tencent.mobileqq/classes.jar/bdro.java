@@ -1,24 +1,17 @@
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class bdro
-  extends fu
+public class bdro
 {
-  bdro(bdrm parambdrm) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a(ChatMessage paramChatMessage, int paramInt)
+  public bdro(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    if ((bdrm.a(this.a) < 0) || (bdrm.b(this.a) < bdrm.a(this.a)))
-    {
-      bdrm.a(this.a).shouldStartAnimation = true;
-      bdrm.a(this.a).startAnimation(false, false);
-      if (bdrm.a(this.a) > 0) {
-        bdrm.c(this.a);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

@@ -11,25 +11,25 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class nrf
-  implements bhqd
+  implements bhuk
 {
-  nrf(nrc paramnrc, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bhpy parambhpy) {}
+  nrf(nrc paramnrc, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     case 0: 
-      aepf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      aetu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
-    aepf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Bhpy.dismiss();
+    aetu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 

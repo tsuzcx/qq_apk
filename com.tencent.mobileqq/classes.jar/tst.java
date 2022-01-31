@@ -1,37 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class tst
-  extends BroadcastReceiver
+  implements Observer<ubz<FeedCloudRead.StGetMainPageRsp>>
 {
-  private tst(tsp paramtsp) {}
+  tst(tss paramtss) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(@Nullable ubz<FeedCloudRead.StGetMainPageRsp> paramubz)
   {
-    int i;
-    int j;
-    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
+    if (paramubz != null) {}
+    try
     {
-      i = paramIntent.getIntExtra("type", 1);
-      j = paramIntent.getIntExtra("status", 0);
-      paramContext = paramIntent.getStringExtra("tagName");
-      if (i != 2) {
-        break label59;
-      }
-      i = tra.a(j);
-      tra.a(tqg.a(), i, paramContext);
-    }
-    for (;;)
-    {
-      tqg.b();
-      return;
-      label59:
-      if (i == 3)
+      if ((paramubz.a() == 2) || (paramubz.a() == 3))
       {
-        i = tra.a(j);
-        tra.a(tqg.b(), i, paramContext);
+        tss.a(this.a, (FeedCloudRead.StGetMainPageRsp)paramubz.a());
+        tss.a(this.a, (FeedCloudMeta.StUser)tss.a(this.a).user.get());
+        tss.a(this.a);
+        tss.b(this.a);
+        tss.c(this.a);
       }
+      return;
+    }
+    catch (Exception paramubz)
+    {
+      QLog.e("QCirclePersonalTitleBar", 1, "getShareInfo error");
     }
   }
 }

@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bhxo;
-import bhxp;
+import bibv;
+import bibw;
 
 public class ThemeLabelTextView
   extends TextView
-  implements bhxp
+  implements bibw
 {
-  bhxo a;
+  bibv a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -64,10 +64,10 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bhxo();
+        this.a = new bibv();
       }
       this.a.a(true);
-      setMaskShape(bhxo.c);
+      setMaskShape(bibv.c);
     }
     while (this.a == null) {
       return;

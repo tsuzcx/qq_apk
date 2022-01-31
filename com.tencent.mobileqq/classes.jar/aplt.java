@@ -1,60 +1,138 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoDataBase;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aplt
-  extends bdwb
+public abstract class aplt
+  extends apld
 {
-  public aplt(MessengerService paramMessengerService) {}
-  
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public aplt(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (this.a.a != null) {}
-    try
+    super(paramString, paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10048;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadSoDuration";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp begins, respData" + paramXmlData);
+    }
+    if ((paramXmlData == null) || (!(paramXmlData instanceof QavSoDataBase)))
     {
-      Message localMessage = Message.obtain(null, 5);
-      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
-      {
-        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
-        paramBundle.putString("name", localChatBackgroundInfo.name);
-        paramBundle.putString("url", localChatBackgroundInfo.url);
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp ends. respData is not QavSoDataBase");
       }
-      paramBundle.putInt("type", 2);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
+      super.a(paramXmlData);
       return;
     }
-    catch (Exception paramBundle)
+    QavSoDataBase localQavSoDataBase = (QavSoDataBase)paramXmlData;
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "doOnServerResp url:" + paramXmlData.strResURL_big + ", md5:" + paramXmlData.MD5 + ", m_TcHevcDec =" + localQavSoDataBase.m_TcHevcDec + ", m_TcHevcDec2 = " + localQavSoDataBase.m_TcHevcDec2 + ", m_TcHevcEnc = " + localQavSoDataBase.m_TcHevcEnc);
+    }
+    super.a(paramXmlData);
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject1 = a();
+    String str2;
+    Object localObject3;
+    String str1;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+      str2 = "QAVSOMD5__" + ((XmlData)localObject1).getSharedPreferencesName();
+      localObject3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
+      str1 = ((SharedPreferences)localObject3).getString(str2, null);
+      localObject2 = bflr.a(paramString);
+      if ((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (!((XmlData)localObject1).MD5.equalsIgnoreCase((String)localObject2)))
+      {
+        localObject3 = new StringBuilder().append("download success but check md5 failed. config zip file md5 = ");
+        if (!TextUtils.isEmpty(((XmlData)localObject1).MD5)) {}
+        for (localObject1 = ((XmlData)localObject1).MD5;; localObject1 = "null")
+        {
+          QLog.e("QavSoDownloadHandlerBase", 1, (String)localObject1 + ", realZipFileMd5 = " + (String)localObject2);
+          paramString = new File(paramString);
+          if (paramString.exists()) {
+            paramString.delete();
+          }
+          return;
+        }
+      }
+      QLog.d("QavSoDownloadHandlerBase", 1, "download success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
+      if (((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (((XmlData)localObject1).MD5.equalsIgnoreCase(str1))) && (UpdateAvSo.a(this.a.getApp().getApplicationContext(), Boolean.valueOf(true)))) {}
+    }
+    try
+    {
+      bdhb.a(paramString, UpdateAvSo.a(), false);
+      ((SharedPreferences)localObject3).edit().putString(str2, ((XmlData)localObject1).MD5).commit();
+      if (!UpdateAvSo.a(true)) {
+        QLog.e("QavSoDownloadHandlerBase", 1, "checkHevcSoMd5 failed. md5 error!");
+      }
+      for (;;)
+      {
+        super.a(paramString);
+        return;
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcEnc.so");
+        if (((File)localObject2).exists()) {
+          break;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcEnc.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec.so");
+        if (((File)localObject2).exists()) {
+          break label569;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec2.so");
+        if (((File)localObject2).exists()) {
+          break label596;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec2.so is not exist.");
+        QLog.d("QavSoDownloadHandlerBase", 1, "uncompressZip success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        QLog.e("QavSoDownloadHandlerBase", 1, "uncompressZip qavso failed.");
+        File localFile = new File(paramString);
+        if (localFile.exists())
+        {
+          localFile.delete();
+          continue;
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_ENC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label569:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label596:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC2_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+        }
+      }
     }
   }
   
-  public void a(Bundle paramBundle)
+  public boolean a()
   {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
+    return true;
   }
 }
 

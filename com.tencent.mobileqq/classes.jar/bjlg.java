@@ -1,9 +1,26 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-abstract interface bjlg
+public final class bjlg
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  public abstract boolean a(PluginRecord paramPluginRecord, File paramFile);
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
+  {
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
+  }
+  
+  public VideoInfo.VideoRemark[] a(int paramInt)
+  {
+    return new VideoInfo.VideoRemark[paramInt];
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aewt;
+import afbi;
 
 public class PlayLastLogic$1
   implements Runnable
 {
-  public PlayLastLogic$1(aewt paramaewt) {}
+  public PlayLastLogic$1(afbi paramafbi) {}
   
   public void run()
   {
     if (this.this$0.a == 0) {
-      aewt.a(this.this$0, true);
+      afbi.a(this.this$0, true);
     }
   }
 }

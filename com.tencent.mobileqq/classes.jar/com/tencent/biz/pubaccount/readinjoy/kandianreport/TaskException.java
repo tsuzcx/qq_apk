@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.os.Build;
-import bdcb;
+import bdgk;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import nrt;
@@ -85,7 +85,7 @@ public class TaskException
     //   155: ifne +327 -> 482
     //   158: ldc 95
     //   160: ldc 97
-    //   162: invokestatic 103	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   162: invokestatic 103	bkbq:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   165: checkcast 90	java/lang/String
     //   168: astore 14
     //   170: new 105	org/json/JSONArray
@@ -184,7 +184,7 @@ public class TaskException
     //   355: ldc 152
     //   357: iconst_0
     //   358: invokestatic 158	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   361: invokestatic 161	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   361: invokestatic 161	bkbq:a	(Ljava/lang/String;Ljava/lang/Object;)V
     //   364: aconst_null
     //   365: ldc 97
     //   367: ldc 163
@@ -200,7 +200,7 @@ public class TaskException
     //   385: invokestatic 169	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   388: ldc 95
     //   390: aload_0
-    //   391: invokestatic 161	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   391: invokestatic 161	bkbq:a	(Ljava/lang/String;Ljava/lang/Object;)V
     //   394: invokestatic 175	com/tencent/biz/pubaccount/readinjoy/kandianreport/TaskManager:getInstance	()Lcom/tencent/biz/pubaccount/readinjoy/kandianreport/TaskManager;
     //   397: pop
     //   398: bipush 81
@@ -291,8 +291,8 @@ public class TaskException
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bdcb.e());
-      localJSONObject.put("qq_version", bdcb.c());
+      localJSONObject.put("sys_version", bdgk.e());
+      localJSONObject.put("qq_version", bdgk.c());
       localJSONObject.put("appid", AppSetting.a() + "");
       QLog.d(TAG, 1, "reportException: " + localJSONObject.toString());
       nrt.a(null, "", "0X8009831", "0X8009831", 0, 0, "", "", "", localJSONObject.toString(), false);
@@ -313,8 +313,8 @@ public class TaskException
       localJSONObject.put("taskId", paramString1);
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bdcb.e());
-      localJSONObject.put("qq_version", bdcb.c());
+      localJSONObject.put("sys_version", bdgk.e());
+      localJSONObject.put("qq_version", bdgk.c());
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("appid", AppSetting.a() + "");
       nrt.a(null, "", "0X8009830", "0X8009830", 0, 0, "", "", "", localJSONObject.toString(), false);
@@ -334,8 +334,8 @@ public class TaskException
       localJSONObject.put("exception", paramString);
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bdcb.e());
-      localJSONObject.put("qq_version", bdcb.c());
+      localJSONObject.put("sys_version", bdgk.e());
+      localJSONObject.put("qq_version", bdgk.c());
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("appid", AppSetting.a() + "");
       nrt.a(null, "", "0X800982E", "0X800982E", 0, 0, "", "", "", localJSONObject.toString(), false);

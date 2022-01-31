@@ -1,15 +1,77 @@
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-class aypc
+public class aypc
+  implements aynt
 {
-  String jdField_a_of_type_JavaLangString;
-  List<ayjh> jdField_a_of_type_JavaUtilList;
+  public int a;
+  public int b;
+  public int c;
   
-  public aypc(String paramString, List<ayjh> paramList)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = -1;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<aynu> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
+      return;
+    }
+    this.c = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return null;
   }
 }
 

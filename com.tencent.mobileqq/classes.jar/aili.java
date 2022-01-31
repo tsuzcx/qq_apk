@@ -1,48 +1,43 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
-class aili
-  implements bhqd
+public class aili
+  extends Handler
 {
-  aili(ailh paramailh, bhpy parambhpy) {}
+  private WeakReference<BaseActivityView> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public aili(BaseActivityView paramBaseActivityView)
   {
-    if ((this.jdField_a_of_type_Ailh.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Ailh.jdField_a_of_type_ArrayOfInt.length)) {
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
       return;
     }
-    switch (this.jdField_a_of_type_Ailh.jdField_a_of_type_ArrayOfInt[paramInt])
+    switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      try
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
       {
-        this.jdField_a_of_type_Bhpy.dismiss();
+        localBaseActivityView.b(i, bool);
         return;
+        bool = false;
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if (this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
-          ((BaseActivity)this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidAppActivity).requestPermissions(new ailj(this), 1, new String[] { "android.permission.CAMERA" });
-        } else {
-          ailh.a(this.jdField_a_of_type_Ailh);
-        }
-      }
-      else
-      {
-        ailh.a(this.jdField_a_of_type_Ailh);
-        continue;
-        ailp.b(this.jdField_a_of_type_Ailh.jdField_a_of_type_AndroidAppActivity, ailp.d(this.jdField_a_of_type_Ailh.c));
-      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
     }
+    localBaseActivityView.i();
   }
 }
 

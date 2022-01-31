@@ -3,7 +3,7 @@ package com.tencent.mqp.app.sec;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bewd;
+import bfam;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class MQPSensitiveMsgUtil$5
@@ -12,7 +12,7 @@ public final class MQPSensitiveMsgUtil$5
   public void run()
   {
     int i = 0;
-    Object localObject = "sp_confirmed_sensmsg_" + bewd.a();
+    Object localObject = "sp_confirmed_sensmsg_" + bfam.a();
     localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
     Bundle localBundle = new Bundle();
     if (i < 10)
@@ -30,9 +30,9 @@ public final class MQPSensitiveMsgUtil$5
       }
     }
     if (localBundle.size() > 0) {
-      bewd.a(localBundle.size() - 1);
+      bfam.a(localBundle.size() - 1);
     }
-    bewd.a().putBundle(bewd.a(), localBundle);
+    bfam.a().putBundle(bfam.a(), localBundle);
   }
 }
 

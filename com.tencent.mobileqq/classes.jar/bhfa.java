@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import io.flutter.view.FlutterNativeView;
 
-class bhfa
-  implements DialogInterface.OnClickListener
+public class bhfa
+  extends bhey
 {
-  bhfa(bhex parambhex, JsResult paramJsResult) {}
+  private FlutterNativeView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bhhq parambhhq)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
-    paramDialogInterface.dismiss();
+    super.a(parambhhq);
+    parambhhq = new bhgo(this, this.jdField_a_of_type_Bhez);
+    parambhhq.a(null);
+    this.jdField_a_of_type_Bhfv = parambhhq;
+    parambhhq.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
+  }
+  
+  public void a(FlutterNativeView paramFlutterNativeView)
+  {
+    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
   }
 }
 

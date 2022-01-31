@@ -1,28 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bcce
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  public bcce(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
+  public bcce(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -55,11 +55,11 @@ public class seb
     if (paramView == null)
     {
       paramView = new sed(null);
-      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560002, null);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)((View)localObject1).findViewById(2131368007));
-      paramView.b = ((TextView)((View)localObject1).findViewById(2131364647));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131364874));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131369119));
+      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560001, null);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)((View)localObject1).findViewById(2131368018));
+      paramView.b = ((TextView)((View)localObject1).findViewById(2131364649));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131364876));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131369137));
       paramView.jdField_a_of_type_Sef = new sef(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, null);
       ((View)localObject1).setTag(paramView);
       ((View)localObject1).setOnClickListener(paramView.jdField_a_of_type_Sef);
@@ -73,16 +73,16 @@ public class seb
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bcwh.a(paramView.getContext(), 60.0F);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bcwh.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bdaq.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bdaq.a(paramView.getContext(), 60.0F);
       ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
       if (TextUtils.isEmpty(((CommunityConfigInfo)localObject1).picUrl)) {
         break label475;
       }
       localObject2 = URLDrawable.getDrawable(((CommunityConfigInfo)localObject1).picUrl, (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject2).setTag(bcuq.a(bcwh.a(paramView.getContext(), 60.0F), bcwh.a(paramView.getContext(), 60.0F)));
+      ((URLDrawable)localObject2).setTag(bcyz.a(bdaq.a(paramView.getContext(), 60.0F), bdaq.a(paramView.getContext(), 60.0F)));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject2);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(bcwh.a(paramView.getContext(), 2.0F));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(bdaq.a(paramView.getContext(), 2.0F));
       if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
         ((URLDrawable)localObject2).restartDownload();
       }
@@ -121,7 +121,7 @@ public class seb
     this.jdField_a_of_type_Int = paramInt;
     return paramView;
     label533:
-    paramViewGroup.b.setText(alpo.a(2131713432));
+    paramViewGroup.b.setText(alud.a(2131713444));
     paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#F2F2F2"));

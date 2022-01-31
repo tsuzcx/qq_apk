@@ -1,56 +1,41 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class anps
+class anps
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public ArrayList<anpt> a;
-  public long b;
+  anps(anpq paramanpq) {}
   
-  public static anps a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramOneUinHeadInfo == null) {
-      localObject = null;
-    }
-    anps localanps;
-    do
+    anpq.a(this.a).put(anpq.a(this.a).a, Integer.valueOf(1));
+    paramView = anpq.a(this.a).a();
+    if (!bdiv.a(paramView, anpq.a(this.a).c))
     {
-      return localObject;
-      localanps = new anps();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localanps.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+      if (!TextUtils.isEmpty(anpq.a(this.a).g))
+      {
+        Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+        localIntent.putExtra("url", anpq.a(this.a).g);
+        localIntent.putExtra("fromArkAppDownload", true);
+        paramView.startActivity(localIntent);
       }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localanps.b = paramOneUinHeadInfo.uint64_tinyid.get();
-      }
-      localanps.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-      localObject = localanps;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localanps.jdField_a_of_type_JavaUtilArrayList = anpt.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
-    return localanps;
-  }
-  
-  public static ArrayList<anps> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
+      acab.a(anpq.a(this.a), -4, "need to download");
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    for (;;)
     {
-      anps localanps = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
-      if (localanps != null) {
-        localArrayList.add(localanps);
-      }
+      anpq.a(this.a).a();
+      anpq.a(this.a).dismiss();
+      anpq.a(this.a, null);
+      return;
+      anpq.a(this.a, anpq.a(this.a).a, anpq.a(this.a).b, anpq.a(this.a).c, anpq.a(this.a).d, anpq.a(this.a).e, anpq.a(this.a).f);
+      acab.a(anpq.a(this.a), abww.a);
     }
-    return localArrayList;
   }
 }
 

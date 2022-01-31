@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adnu
-  implements axxg
+  extends WebViewClient
 {
-  public adnu(QQSettingMe paramQQSettingMe) {}
+  public adnu(PreloadWebService paramPreloadWebService) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.z();
-    }
+    return true;
   }
 }
 

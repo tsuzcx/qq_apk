@@ -10,7 +10,7 @@ class BridgeModule$20$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131695349, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131695351, 0).a();
   }
 }
 

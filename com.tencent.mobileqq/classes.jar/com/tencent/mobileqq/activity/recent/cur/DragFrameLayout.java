@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ajgv;
-import ajgw;
-import ajgx;
-import ajha;
+import ajlk;
+import ajll;
+import ajlm;
+import ajlp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,13 +31,13 @@ import java.util.List;
 
 public class DragFrameLayout
   extends FrameLayout
-  implements ajha
+  implements ajlp
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842030, 2130842031, 2130842032, 2130842033, 2130842034 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842043, 2130842044, 2130842045, 2130842046, 2130842047 };
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int;
-  private ajgv jdField_a_of_type_Ajgv;
-  private ajgw jdField_a_of_type_Ajgw;
+  private ajlk jdField_a_of_type_Ajlk;
+  private ajll jdField_a_of_type_Ajll;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
@@ -46,7 +46,7 @@ public class DragFrameLayout
   private DragFrameLayout.AllBornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner;
   private DragFrameLayout.BornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner;
   private DragFrameLayout.ShakeRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner;
-  private final List<ajgx> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<ajlm> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private final int c;
@@ -120,8 +120,8 @@ public class DragFrameLayout
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    if (this.jdField_a_of_type_Ajgw != null) {
-      this.jdField_a_of_type_Ajgw.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Ajll != null) {
+      this.jdField_a_of_type_Ajll.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -262,7 +262,7 @@ public class DragFrameLayout
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((ajgx)localIterator.next()).a(paramBoolean, this.f, this);
+      ((ajlm)localIterator.next()).a(paramBoolean, this.f, this);
     }
   }
   
@@ -302,25 +302,25 @@ public class DragFrameLayout
     }
   }
   
-  public void a(ajgx paramajgx)
+  public void a(ajlm paramajlm)
   {
-    if ((paramajgx != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramajgx))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajgx);
+    if ((paramajlm != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramajlm))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramajlm);
     }
   }
   
-  public void a(ajgx paramajgx, boolean paramBoolean)
+  public void a(ajlm paramajlm, boolean paramBoolean)
   {
-    if ((paramajgx != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramajgx)))
+    if ((paramajlm != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramajlm)))
     {
       if (!paramBoolean) {
-        this.jdField_a_of_type_JavaUtilList.add(paramajgx);
+        this.jdField_a_of_type_JavaUtilList.add(paramajlm);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramajgx);
+    this.jdField_a_of_type_JavaUtilList.add(0, paramajlm);
   }
   
   public void a(View paramView, int paramInt)
@@ -386,7 +386,7 @@ public class DragFrameLayout
     if (i < paramArrayList.size())
     {
       localView = (View)paramArrayList.get(i);
-      if (localView.getId() != 2131369197) {}
+      if (localView.getId() != 2131369215) {}
     }
     for (;;)
     {
@@ -547,14 +547,14 @@ public class DragFrameLayout
     return true;
   }
   
-  public void setDragViewProvider(ajgv paramajgv)
+  public void setDragViewProvider(ajlk paramajlk)
   {
-    this.jdField_a_of_type_Ajgv = paramajgv;
+    this.jdField_a_of_type_Ajlk = paramajlk;
   }
   
-  public void setOnDragListener(ajgw paramajgw)
+  public void setOnDragListener(ajll paramajll)
   {
-    this.jdField_a_of_type_Ajgw = paramajgw;
+    this.jdField_a_of_type_Ajll = paramajll;
   }
 }
 

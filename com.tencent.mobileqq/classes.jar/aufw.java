@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-
-public class aufw
-  implements View.OnClickListener
+public abstract interface aufw
 {
-  public aufw(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379023);
-    augz.a -= 1;
-    if (augz.a < 1) {
-      augz.a = 1;
-    }
-    paramView.setText(alpo.a(2131707373) + augz.a);
-    MultiAIOFragment.c(this.a);
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

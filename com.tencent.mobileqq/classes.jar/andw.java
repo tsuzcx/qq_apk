@@ -1,203 +1,99 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class andw
-  extends anft
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private andx jdField_a_of_type_Andx = new andx(this, null);
-  private andz jdField_a_of_type_Andz = new andz(this, null);
-  private anen jdField_a_of_type_Anen = new anen(this, null);
-  private anep jdField_a_of_type_Anep = new anep(this, null);
-  public anff a;
-  private HashMap<String, andy> b = new ArkAppDeviceModule.1(this);
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  private andr jdField_a_of_type_Andr;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  long b;
   
-  public andw(ark.Application paramApplication, long paramLong)
+  public andw(AppInterface paramAppInterface)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Anff = new anff(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Andr = new andr(paramAppInterface);
   }
   
-  private void a(long paramLong, String paramString1, String paramString2)
+  private int a(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
+    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+    if (this.b == 0L) {
+      return this.jdField_a_of_type_Int;
     }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
+    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Andr != null) {
+      this.jdField_a_of_type_Andr.a();
+    }
+  }
+  
+  public void a(ArrayList<andv> paramArrayList, andz paramandz)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
+    this.b = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList.size() < 1) {
       return;
     }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    Object localObject = paramArrayList.iterator();
+    andv localandv;
+    while (((Iterator)localObject).hasNext())
     {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
+      localandv = (andv)((Iterator)localObject).next();
+      this.b = Math.max(this.b, localandv.jdField_a_of_type_Long);
+    }
+    if (paramandz != null) {
+      paramandz.a();
+    }
+    localObject = (ArrayList)paramArrayList.clone();
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
+    int i = 0;
+    label129:
+    if (i < paramArrayList.size())
+    {
+      if (((andv)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
+        break label187;
       }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
+      this.jdField_a_of_type_Andr.a((andv)paramArrayList.get(i), new andx(this, paramandz, paramArrayList, (ArrayList)localObject));
     }
     for (;;)
     {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
+      i += 1;
+      break label129;
       break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
-      }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
-        break;
-      }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  public void Destruct()
-  {
-    if (this.jdField_a_of_type_Anff != null) {
-      this.jdField_a_of_type_Anff.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
-      return false;
-    }
-    if (this.b != null)
-    {
-      andy localandy = (andy)this.b.get(paramString);
-      if (localandy != null) {
-        return localandy.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      label187:
+      if (((andv)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
+      {
+        nbv.a();
+        localandv = (andv)paramArrayList.get(i);
+        nbv.a(((andv)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new andy(this, paramandz, (ArrayList)localObject, localandv), true, 0, true);
       }
     }
-    return false;
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Andr != null) {
+      this.jdField_a_of_type_Andr.b();
+    }
   }
 }
 

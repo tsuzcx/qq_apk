@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.managers;
 
-import atvk;
-import awbw;
-import awbx;
-import awby;
+import atzt;
+import awgf;
+import awgg;
+import awgh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 
 public class DraftTextManager$1
   implements Runnable
 {
-  public DraftTextManager$1(atvk paramatvk, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
+  public DraftTextManager$1(atzt paramatzt, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
   public void run()
   {
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localawby = localawbw.a();
+    awgf localawgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localawgh = localawgf.a();
     try
     {
-      localawby.a();
-      localawbw.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
-      localawby.c();
+      localawgh.a();
+      localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+      localawgh.c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        localawby.b();
+        localawgh.b();
       }
     }
     finally
     {
-      localawby.b();
+      localawgh.b();
     }
-    localawbw.a();
+    localawgf.a();
   }
 }
 

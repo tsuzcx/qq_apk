@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import bgkd;
-import bgwc;
+import bgok;
+import bhaj;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -11,15 +11,15 @@ import org.json.JSONObject;
 class OpenDataJsPlugin$7
   implements AsyncResult
 {
-  OpenDataJsPlugin$7(OpenDataJsPlugin paramOpenDataJsPlugin, bgkd parambgkd) {}
+  OpenDataJsPlugin$7(OpenDataJsPlugin paramOpenDataJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     QMLog.d("OpenDataJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
-      bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
+      bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.b();
       return;
     }
@@ -45,20 +45,20 @@ class OpenDataJsPlugin$7
       }
       catch (Exception paramJSONObject)
       {
-        bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
-        bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
+        bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
+        bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
         this.val$req.b();
         return;
       }
       localJSONObject.put("errMsg", paramJSONObject);
       localJSONObject.put("errCode", i);
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE ret != null");
-      bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ret != null");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE ret != null");
+      bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ret != null");
       this.val$req.b();
       return;
     }
-    bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
-    bgwc.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
+    bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
+    bhaj.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
   }
 }
 

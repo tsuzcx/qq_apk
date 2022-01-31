@@ -1,50 +1,71 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class aepa
-  implements bhqd
 {
-  public aepa(PlusPanel paramPlusPanel, bhpy parambhpy) {}
+  private static aepa a;
+  public int a;
+  private int b = -1;
   
-  public void OnClick(View paramView, int paramInt)
+  private aepa()
   {
-    if (this.jdField_a_of_type_Bhpy != null) {
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  /* Error */
+  public static aepa a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	aepa:jdField_a_of_type_Aepa	Laepa;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	aepa
+    //   12: dup
+    //   13: invokespecial 21	aepa:<init>	()V
+    //   16: putstatic 20	aepa:jdField_a_of_type_Aepa	Laepa;
+    //   19: getstatic 20	aepa:jdField_a_of_type_Aepa	Laepa;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	aepa:jdField_a_of_type_Aepa	Laepa;
+    //   31: iconst_1
+    //   32: putfield 14	aepa:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localaepa	aepa
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
+  }
+  
+  public int a()
+  {
+    if (-1 == this.b)
     {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, true);
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
-        return;
+      if ((bdgk.d() >>> 20 <= 1390L) || (bdgk.b() <= 3) || (bdgk.a() <= 1433L)) {
+        break label48;
       }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          QLog.d("PlusPanel", 1, "showTroopCourseActionSheet handleTroopLiveOrTroopCourseClick Exception", paramView);
-        }
+      this.b = 1;
+    }
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((bdgk.d() >>> 20 > 926L) && (bdgk.b() > 1) && (bdgk.a() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
       }
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    paramView = "https://qun.qq.com/livework/index?gc=" + paramView + "&_wv=2";
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramView);
-    if (QLog.isColorLevel()) {
-      QLog.i("PlusPanel", 2, "showTroopCourseActionSheet replayUrl = " + paramView);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity(localIntent);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
   }
 }
 

@@ -27,8 +27,8 @@ public class QCirclePushTipView
   
   private void a()
   {
-    setBackgroundDrawable(getResources().getDrawable(2130843637));
-    setTextColor(getResources().getColor(2131167192));
+    setBackgroundDrawable(getResources().getDrawable(2130843687));
+    setTextColor(getResources().getColor(2131167194));
     setTextSize(1, 14.0F);
   }
 }

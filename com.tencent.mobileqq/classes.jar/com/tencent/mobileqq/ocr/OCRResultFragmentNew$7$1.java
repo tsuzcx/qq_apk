@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr;
 
-import avsg;
-import avva;
+import avwp;
+import avzj;
 
 public class OCRResultFragmentNew$7$1
   implements Runnable
 {
-  public OCRResultFragmentNew$7$1(avsg paramavsg) {}
+  public OCRResultFragmentNew$7$1(avwp paramavwp) {}
   
   public void run()
   {

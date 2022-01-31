@@ -1,23 +1,22 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class apoz
-  implements View.OnClickListener
+public class apoz
 {
-  apoz(apox paramapox, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  ImageView d;
+  ImageView e;
+  ImageView f;
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Apox.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Apox.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-  }
+  public apoz(apoy paramapoy) {}
 }
 
 

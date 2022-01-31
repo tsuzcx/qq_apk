@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import arfr;
-import arfs;
-import argf;
+import arka;
+import arkb;
+import arko;
 
 public class DeviceFileModel$1$1
   implements Runnable
 {
-  public DeviceFileModel$1$1(arfs paramarfs) {}
+  public DeviceFileModel$1$1(arkb paramarkb) {}
   
   public void run()
   {

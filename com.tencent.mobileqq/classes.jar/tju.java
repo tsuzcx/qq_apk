@@ -16,7 +16,7 @@ public class tju
   public static String a()
   {
     String str = "Other";
-    int i = bdee.a(BaseApplicationImpl.getApplication());
+    int i = bdin.a(BaseApplicationImpl.getApplication());
     if (i == 1) {
       str = "WiFi";
     }
@@ -412,7 +412,7 @@ public class tju
       }
       long l1;
       long l2;
-      if (xoo.a(BaseApplicationImpl.getApplication().getApplicationContext()))
+      if (xsx.a(BaseApplicationImpl.getApplication().getApplicationContext()))
       {
         l1 = 1L;
         l2 = j;
@@ -460,7 +460,7 @@ public class tju
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    azmj.b(null, "dc00898", "", "", paramString1, paramString2, paramInt1, paramInt2, String.valueOf(paramLong1), String.valueOf(paramLong2), paramString3, paramString4);
+    azqs.b(null, "dc00898", "", "", paramString1, paramString2, paramInt1, paramInt2, String.valueOf(paramLong1), String.valueOf(paramLong2), paramString3, paramString4);
   }
   
   private static void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)

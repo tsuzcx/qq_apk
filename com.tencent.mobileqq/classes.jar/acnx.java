@@ -1,26 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class acnx
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  acnx(acnw paramacnw) {}
+  acnx(acnu paramacnu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+    paramView = (akib)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      arrr.c(localFileManagerEntity);
     }
-    paramDialogInterface.dismiss();
+    switch (paramView.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Akia.notifyDataSetChanged();
+      return;
+      if (!bdin.d(BaseApplication.getContext()))
+      {
+        arri.a(2131692747);
+        return;
+      }
+      arqo.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new acny(this, localFileManagerEntity));
+      continue;
+      this.a.a(localFileManagerEntity);
+      continue;
+      if (localFileManagerEntity.getCloudType() == 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+      }
+      else if (localFileManagerEntity.getCloudType() == 6)
+      {
+        ((alqo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+        continue;
+        if (!bdin.d(BaseApplication.getContext()))
+        {
+          arri.a(2131692747);
+          return;
+        }
+        boolean bool = localFileManagerEntity.isSend();
+        arqo.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new acnz(this, localFileManagerEntity));
+      }
+    }
   }
 }
 

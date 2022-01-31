@@ -1,46 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class adgr
-  implements CompoundButton.OnCheckedChangeListener
+  extends avva
 {
-  public adgr(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adgr(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    int i = 1;
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.c(this.a).setContentDescription(alpo.a(2131719338));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
     }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719338), "qqsetting_notify_blncontrol_key", paramBoolean);
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
     {
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label147;
-      }
-      label89:
-      if (!paramBoolean) {
-        break label152;
-      }
-    }
-    label147:
-    label152:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      azmj.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
-      return;
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
-      break;
-      i = 0;
-      break label89;
+      List localList = aieq.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
     }
   }
 }

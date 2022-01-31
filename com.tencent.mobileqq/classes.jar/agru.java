@@ -1,28 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agru
-  extends BroadcastReceiver
+class agru
+  implements DialogInterface.OnClickListener
 {
-  public agru(TroopChatPie paramTroopChatPie) {}
+  agru(agrn paramagrn, bdjz parambdjz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
-      }
-      if (TroopChatPie.a(this.a) != null)
-      {
-        TroopChatPie.b(this.a).a(35);
-        aofk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      }
-    }
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

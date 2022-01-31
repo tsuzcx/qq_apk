@@ -1,40 +1,47 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.lang.ref.WeakReference;
 
-public class baou
-  extends baop
+public final class baou
+  extends BroadcastReceiver
 {
-  private int a;
-  
-  baou(baoo parambaoo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(parambaoo);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
-  }
-  
-  protected boolean a()
-  {
-    return baoo.a(this.jdField_b_of_type_Baoo).get();
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + baoo.a(this.jdField_b_of_type_Baoo) + ",remoteUrl=" + baoo.a(this.jdField_b_of_type_Baoo) + " ,localUrl=" + baoo.b(this.jdField_b_of_type_Baoo));
+    String str2 = paramIntent.getStringExtra("themePath");
+    String str3 = paramIntent.getStringExtra("themeId");
+    String str1 = paramIntent.getStringExtra("bg3D");
+    String str4 = paramIntent.getStringExtra("aio");
+    String str5 = paramIntent.getStringExtra("playerSkin");
+    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
+      ThemeUtil.validLocalTheme(paramContext, str2, str3);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    do
     {
-      f();
+      do
+      {
+        return;
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        paramIntent = (QQAppInterface)ThemeUtil.weakApp.get();
+      } while (paramIntent == null);
+      ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getCurrentAccountUin(), str1);
       return;
-    }
-    if (baoo.a(this.jdField_b_of_type_Baoo).get())
-    {
-      b();
-      return;
-    }
-    ThreadManager.excute(new ForwardSdkShareProcessor.ImageUploadStep.1(this), 128, null, true);
+      if (!TextUtils.isEmpty(str4))
+      {
+        ThemeUtil.previewAIOTheme(paramContext, str4);
+        return;
+      }
+      if (!TextUtils.isEmpty(str5))
+      {
+        ThemeUtil.previewPlayerSkin(paramContext, str5);
+        return;
+      }
+    } while (!ThemeUtil.themeFont(paramIntent, "themeFont"));
   }
 }
 

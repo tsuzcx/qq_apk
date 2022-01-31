@@ -1,14 +1,30 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.QQKandianInterface;
-
 class aszc
-  implements QQKandianInterface
 {
-  aszc(asyy paramasyy) {}
+  public static aszc a;
+  private String jdField_a_of_type_JavaLangString;
+  private Throwable jdField_a_of_type_JavaLangThrowable;
+  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void jumpToKandianBiu(Bundle paramBundle)
+  static
   {
-    aszx.a().d(paramBundle);
+    jdField_a_of_type_Aszc = new aszc(null);
+  }
+  
+  public aszc(String paramString)
+  {
+    this(paramString, null, null);
+  }
+  
+  public aszc(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

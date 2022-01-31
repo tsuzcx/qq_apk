@@ -81,7 +81,7 @@ import tencent.im.oidb.cmd0x885.oidb_0x885.GameComponentInfo;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ntb
-  extends alko
+  extends alpd
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -101,7 +101,7 @@ public class ntb
   public static int a()
   {
     int i = 1;
-    if (azwu.a()) {
+    if (babd.a()) {
       i = 8193;
     }
     return i;
@@ -720,7 +720,7 @@ public class ntb
         bool = false;
         label432:
         paramString2.msg_ad_req_info.set(paramString3);
-        if (azwu.a()) {
+        if (babd.a()) {
           paramString3 = new JSONObject();
         }
       }
@@ -888,7 +888,7 @@ public class ntb
     localReqBody.uint32_req_times.set(paramInt3);
     localReqBody.uint32_req_network.set(b());
     localReqBody.uint32_req_os.set(1);
-    localReqBody.uint32_req_sim_type.set(bjxj.c());
+    localReqBody.uint32_req_sim_type.set(bkbq.c());
     localReqBody.uint32_req_column_id.set(paramInt2);
     localReqBody.enum_req_video_show_mode.set(paramInt6);
     if ((paramArrayList2 != null) && (paramArrayList2.size() > 0))
@@ -911,7 +911,7 @@ public class ntb
       localReqBody.user_expose_article.set(paramArrayList1);
     }
     a(localReqBody);
-    paramInt1 = ((Integer)bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
+    paramInt1 = ((Integer)bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
     localReqBody.uint32_youngster_status.set(paramInt1);
     localReqBody.uint32_req_recommend_flag.set(a());
     paramArrayList1 = super.makeOIDBPkg("OidbSvc.0x6cf", 1743, 0, localReqBody.toByteArray());
@@ -932,7 +932,7 @@ public class ntb
       String str = arrayOfString[i];
       oidb_0x6cf.PkgInstallInfo localPkgInstallInfo = new oidb_0x6cf.PkgInstallInfo();
       localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(str));
-      str = bdem.a(BaseApplicationImpl.getContext(), str);
+      str = bdiv.a(BaseApplicationImpl.getContext(), str);
       PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
       if (!str.equals("0")) {}
       for (int j = 1;; j = 0)
@@ -969,7 +969,7 @@ public class ntb
   
   private int b()
   {
-    switch (bdee.a(BaseApplicationImpl.getApplication().getApplicationContext()))
+    switch (bdin.a(BaseApplicationImpl.getApplication().getApplicationContext()))
     {
     case 2: 
     default: 
@@ -1819,7 +1819,7 @@ public class ntb
     for (paramInt = 1;; paramInt = 0)
     {
       localReqBody.uint32_has_cache_pre_video.set(paramInt);
-      localReqBody.uint32_req_sim_type.set(bjxj.c());
+      localReqBody.uint32_req_sim_type.set(bkbq.c());
       if (rdm.e())
       {
         int i = qyr.a().a();
@@ -1836,7 +1836,7 @@ public class ntb
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return ntc.class;
   }

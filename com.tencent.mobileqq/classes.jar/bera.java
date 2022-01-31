@@ -1,11 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-
 public abstract interface bera
 {
-  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
-  
-  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

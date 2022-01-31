@@ -1,17 +1,31 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bkzu
-  implements View.OnClickListener
+class bkzu
+  implements blic
 {
-  bkzu(bkzl parambkzl) {}
+  bkzu(bkzt parambkzt, ToServiceMsg paramToServiceMsg) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    bkzl.b(this.a);
-    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+    bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      paramBitmap = bkzt.a(this.jdField_a_of_type_Bkzt.mApp.getApp(), paramBitmap);
+      if ((paramBitmap == null) || (paramBitmap.length() < 1))
+      {
+        bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
+        return;
+      }
+      bkzt.a(this.jdField_a_of_type_Bkzt, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
+      return;
+    }
+    bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
   }
 }
 

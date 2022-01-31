@@ -1,33 +1,38 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class acap
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public acap(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acap(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (AppSetting.c) {
-      this.a.f.setContentDescription(alpo.a(2131701149));
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
     }
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      azmj.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695442), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.turnOnShake();
+    if (!awia.a().a(this.a.app, this.a)) {
       return;
     }
-    this.a.turnOffShake();
+    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    {
+      QQToast.a(this.a, 2131694149, 0).a();
+      return;
+    }
+    AccountManageActivity.a(this.a, bacu.a(this.a.app));
+    paramView = new Intent();
+    paramView.setPackage(this.a.getPackageName());
+    paramView.setClass(this.a, AddAccountActivity.class);
+    this.a.startActivityForResult(paramView, 1000);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    bact.c(this.a.app, this.a);
+    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 

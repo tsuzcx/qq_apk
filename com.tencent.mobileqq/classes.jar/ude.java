@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class ude
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ude(udd paramudd) {}
+  ude(udb paramudb) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).c(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

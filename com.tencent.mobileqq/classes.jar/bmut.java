@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
-
-public class bmut
-  implements View.OnClickListener
+public abstract interface bmut
 {
-  public bmut(RateWidgetRatingBar paramRateWidgetRatingBar) {}
-  
-  public void onClick(View paramView)
-  {
-    if (RateWidgetRatingBar.a(this.a))
-    {
-      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
-      if (RateWidgetRatingBar.a(this.a) != null) {
-        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
-      }
-    }
-  }
+  public abstract void a();
 }
 
 

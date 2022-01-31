@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akpc;
+import aktr;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ApolloFragmentManager$2
   implements Runnable
 {
-  public ApolloFragmentManager$2(akpc paramakpc, ApolloFragment paramApolloFragment) {}
+  public ApolloFragmentManager$2(aktr paramaktr, ApolloFragment paramApolloFragment) {}
   
   public void run()
   {
-    ((ApolloGameActivity)akpc.a(this.this$0)).a(this.a.a());
+    ((ApolloGameActivity)aktr.a(this.this$0)).a(this.a.a());
   }
 }
 

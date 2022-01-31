@@ -1,80 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class wmk
-  implements wml
+public class wmk
+  extends uli
 {
-  protected Activity a;
+  public String a;
+  public ArrayList<String> a;
+  public List<String> a;
+  public boolean a;
   
-  public Activity a()
+  public wmk(String paramString)
   {
-    return this.a;
-  }
-  
-  public View a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    wsv.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setContentView(paramInt);
-      return;
-    }
-    wsv.e(getClass().getSimpleName(), "setContentView can not access after detach");
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setResult(paramInt, paramIntent);
-      return;
-    }
-    wsv.e(getClass().getSimpleName(), "finish can not access after detach");
-  }
-  
-  public void a(@NonNull Activity paramActivity)
-  {
-    this.a = paramActivity;
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.a = null;
-  }
-  
-  public void e()
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    wsv.e(getClass().getSimpleName(), "finish can not access after detach");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

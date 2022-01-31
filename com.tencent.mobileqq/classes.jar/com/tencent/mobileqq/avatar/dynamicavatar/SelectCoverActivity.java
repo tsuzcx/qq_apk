@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aikt;
-import alpo;
+import aipi;
+import alud;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -42,21 +42,21 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anpx;
-import anqj;
-import anqk;
-import anql;
-import anqm;
-import anqn;
-import anqo;
-import anqp;
-import baqs;
-import batw;
-import bcyw;
-import bdcs;
-import bdee;
-import beps;
-import bhou;
+import anug;
+import anus;
+import anut;
+import anuu;
+import anuv;
+import anuw;
+import anux;
+import anuy;
+import bavb;
+import bayf;
+import bddf;
+import bdhb;
+import bdin;
+import beub;
+import bhtb;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -72,7 +72,7 @@ import java.io.File;
 
 public class SelectCoverActivity
   extends IphoneTitleBarActivity
-  implements Handler.Callback, View.OnClickListener, View.OnTouchListener, anqn, anqp
+  implements Handler.Callback, View.OnClickListener, View.OnTouchListener, anuw, anuy
 {
   float jdField_a_of_type_Float = 0.0F;
   int jdField_a_of_type_Int;
@@ -82,10 +82,10 @@ public class SelectCoverActivity
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
   View jdField_a_of_type_AndroidViewView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  anpx jdField_a_of_type_Anpx;
-  anqm jdField_a_of_type_Anqm;
-  anqo jdField_a_of_type_Anqo;
-  beps jdField_a_of_type_Beps;
+  anug jdField_a_of_type_Anug;
+  anuv jdField_a_of_type_Anuv;
+  anux jdField_a_of_type_Anux;
+  beub jdField_a_of_type_Beub;
   DrawableSeekbar jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar;
   VideoDrawableHandler jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler;
   CustomImgView jdField_a_of_type_ComTencentWidgetCustomImgView;
@@ -95,12 +95,12 @@ public class SelectCoverActivity
   Rect jdField_b_of_type_AndroidGraphicsRect = null;
   Handler jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   View jdField_b_of_type_AndroidViewView;
-  anqo jdField_b_of_type_Anqo;
+  anux jdField_b_of_type_Anux;
   public String b;
   volatile boolean jdField_b_of_type_Boolean = false;
   int jdField_c_of_type_Int;
   View jdField_c_of_type_AndroidViewView;
-  anqo jdField_c_of_type_Anqo;
+  anux jdField_c_of_type_Anux;
   public String c;
   private boolean jdField_c_of_type_Boolean;
   public int d;
@@ -132,17 +132,17 @@ public class SelectCoverActivity
   
   private void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Anqo = new anqo(paramBitmap, getResources());
-    this.jdField_b_of_type_Anqo = new anqo(paramBitmap, getResources());
-    this.jdField_c_of_type_Anqo = new anqo(paramBitmap, getResources());
-    this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(this.jdField_a_of_type_Anqo);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Anqo);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_a_of_type_Anqo);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_b_of_type_Anqo);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_c_of_type_Anqo);
-    this.jdField_c_of_type_Anqo.a(true);
+    this.jdField_a_of_type_Anux = new anux(paramBitmap, getResources());
+    this.jdField_b_of_type_Anux = new anux(paramBitmap, getResources());
+    this.jdField_c_of_type_Anux = new anux(paramBitmap, getResources());
+    this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(this.jdField_a_of_type_Anux);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Anux);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_a_of_type_Anux);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_b_of_type_Anux);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_c_of_type_Anux);
+    this.jdField_c_of_type_Anux.a(true);
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setOnProgressChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumb(a(this.jdField_b_of_type_Anqo));
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumb(a(this.jdField_b_of_type_Anux));
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setMax((int)this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a());
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumbSize(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
   }
@@ -163,14 +163,14 @@ public class SelectCoverActivity
   @TargetApi(11)
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)findViewById(2131372225));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367506);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131364735);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131367513);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367537);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar = ((DrawableSeekbar)findViewById(2131376277));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369714));
-    this.jdField_e_of_type_AndroidViewView = findViewById(2131378776);
+    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)findViewById(2131372245));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367516);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131364736);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131367523);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131367547);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar = ((DrawableSeekbar)findViewById(2131376331));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369733));
+    this.jdField_e_of_type_AndroidViewView = findViewById(2131378831);
     int k = ImmersiveUtils.a();
     int j = ImmersiveUtils.b();
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetCustomImgView.getLayoutParams();
@@ -201,7 +201,7 @@ public class SelectCoverActivity
     if (Build.VERSION.SDK_INT <= 9)
     {
       this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setVisibility(8);
-      findViewById(2131377766).setVisibility(8);
+      findViewById(2131377820).setVisibility(8);
       this.jdField_e_of_type_AndroidViewView.setVisibility(8);
     }
     for (;;)
@@ -272,7 +272,7 @@ public class SelectCoverActivity
   
   private void d()
   {
-    setRightButton(2131692680, this);
+    setRightButton(2131692682, this);
     if (this.jdField_d_of_type_Int == 3) {
       setTitle("设置QQ动态头像");
     }
@@ -280,9 +280,9 @@ public class SelectCoverActivity
     {
       if (ThemeUtil.isNowThemeIsSimple(this.app, false, null))
       {
-        this.leftView.setBackgroundResource(2130849989);
-        this.rightViewText.setTextColor(getResources().getColorStateList(2131166265));
-        this.centerView.setTextColor(getResources().getColorStateList(2131166265));
+        this.leftView.setBackgroundResource(2130850062);
+        this.rightViewText.setTextColor(getResources().getColorStateList(2131166267));
+        this.centerView.setTextColor(getResources().getColorStateList(2131166267));
       }
       int i = Color.parseColor("#1a1a1a");
       getTitleBarView().setBackgroundDrawable(null);
@@ -295,37 +295,37 @@ public class SelectCoverActivity
         this.mSystemBarComp.setStatusBarColor(i);
       }
       return;
-      setTitle(alpo.a(2131714091));
+      setTitle(alud.a(2131714103));
     }
   }
   
   private void e()
   {
-    String str = anqj.a(this.jdField_a_of_type_JavaLangString, 200);
-    anqj.a(this.jdField_a_of_type_JavaLangString, str, 200, this);
-    this.jdField_a_of_type_Anpx.jdField_a_of_type_JavaLangString = str;
-    str = anqj.a(this.jdField_a_of_type_JavaLangString, 100);
-    anqj.a(this.jdField_a_of_type_JavaLangString, str, 100, this);
-    this.jdField_a_of_type_Anpx.b = str;
-    if ((this.jdField_a_of_type_Beps != null) && (this.jdField_a_of_type_Beps.a())) {}
+    String str = anus.a(this.jdField_a_of_type_JavaLangString, 200);
+    anus.a(this.jdField_a_of_type_JavaLangString, str, 200, this);
+    this.jdField_a_of_type_Anug.jdField_a_of_type_JavaLangString = str;
+    str = anus.a(this.jdField_a_of_type_JavaLangString, 100);
+    anus.a(this.jdField_a_of_type_JavaLangString, str, 100, this);
+    this.jdField_a_of_type_Anug.b = str;
+    if ((this.jdField_a_of_type_Beub != null) && (this.jdField_a_of_type_Beub.a())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_Anpx.jdField_a_of_type_JavaLangString)) || (!new File(this.jdField_a_of_type_Anpx.jdField_a_of_type_JavaLangString).exists()) || (TextUtils.isEmpty(this.jdField_a_of_type_Anpx.b)) || (!new File(this.jdField_a_of_type_Anpx.b).exists())) {
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_Anug.jdField_a_of_type_JavaLangString)) || (!new File(this.jdField_a_of_type_Anug.jdField_a_of_type_JavaLangString).exists()) || (TextUtils.isEmpty(this.jdField_a_of_type_Anug.b)) || (!new File(this.jdField_a_of_type_Anug.b).exists())) {
           break;
         }
         h();
       }
       return;
     }
-    this.jdField_a_of_type_Beps.b();
-    a(2, alpo.a(2131714093), 0);
+    this.jdField_a_of_type_Beub.b();
+    a(2, alud.a(2131714105), 0);
   }
   
   private void f()
   {
-    if (bhou.d())
+    if (bhtb.d())
     {
       a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetCustomImgView);
       return;
@@ -338,7 +338,7 @@ public class SelectCoverActivity
   
   private void g()
   {
-    if (bhou.d())
+    if (bhtb.d())
     {
       b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetCustomImgView);
       return;
@@ -351,16 +351,16 @@ public class SelectCoverActivity
   
   private void h()
   {
-    this.jdField_a_of_type_Anqm.addFilter(new Class[] { baqs.class });
-    this.app.a().a(this.jdField_a_of_type_Anqm);
+    this.jdField_a_of_type_Anuv.addFilter(new Class[] { bavb.class });
+    this.app.a().a(this.jdField_a_of_type_Anuv);
     this.jdField_e_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-    anqj.a(this.app, this.jdField_a_of_type_JavaLangString, 36, this.jdField_e_of_type_Int, 640);
-    bcyw.a(this.jdField_a_of_type_JavaLangString);
+    anus.a(this.app, this.jdField_a_of_type_JavaLangString, 36, this.jdField_e_of_type_Int, 640);
+    bddf.a(this.jdField_a_of_type_JavaLangString);
   }
   
   Drawable a(Drawable paramDrawable)
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { paramDrawable, (GradientDrawable)getResources().getDrawable(2130845388) });
+    paramDrawable = new LayerDrawable(new Drawable[] { paramDrawable, (GradientDrawable)getResources().getDrawable(2130845460) });
     int i = (int)(1.0F * ImmersiveUtils.a());
     paramDrawable.setLayerInset(0, i, i, i, i);
     return paramDrawable;
@@ -372,8 +372,8 @@ public class SelectCoverActivity
     // Byte code:
     //   0: new 521	java/io/File
     //   3: dup
-    //   4: getstatic 611	aljq:cg	Ljava/lang/String;
-    //   7: invokestatic 616	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: getstatic 611	alof:cg	Ljava/lang/String;
+    //   7: invokestatic 616	bdzf:a	(Ljava/lang/String;)Ljava/lang/String;
     //   10: invokespecial 524	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_2
     //   14: aload_2
@@ -451,7 +451,7 @@ public class SelectCoverActivity
     //   159: ifeq +148 -> 307
     //   162: new 521	java/io/File
     //   165: dup
-    //   166: getstatic 665	aljq:cO	Ljava/lang/String;
+    //   166: getstatic 665	alof:cO	Ljava/lang/String;
     //   169: invokespecial 524	java/io/File:<init>	(Ljava/lang/String;)V
     //   172: astore_3
     //   173: aload_3
@@ -813,7 +813,7 @@ public class SelectCoverActivity
     if (QLog.isColorLevel()) {
       QLog.i("SelectCoverActivity", 2, "onSeekStart");
     }
-    anqj.a(this.app, "0X800710B", a());
+    anus.a(this.app, "0X800710B", a());
     if (this.jdField_b_of_type_AndroidOsHandler.hasMessages(8)) {
       this.jdField_b_of_type_AndroidOsHandler.removeMessages(8);
     }
@@ -854,7 +854,7 @@ public class SelectCoverActivity
     paramView1.play(ObjectAnimator.ofFloat(paramView2, View.X, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.left })).with(ObjectAnimator.ofFloat(paramView2, View.Y, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.top })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_X, new float[] { this.jdField_a_of_type_Float, 1.0F })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_Y, new float[] { this.jdField_a_of_type_Float, 1.0F }));
     paramView1.setDuration(250L);
     paramView1.setInterpolator(new DecelerateInterpolator());
-    paramView1.addListener(new anqk(this));
+    paramView1.addListener(new anut(this));
     paramView1.start();
     this.jdField_a_of_type_AndroidAnimationAnimator = paramView1;
   }
@@ -890,7 +890,7 @@ public class SelectCoverActivity
         if (localObject1 == null) {
           continue;
         }
-        localBitmap = anqj.a((Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+        localBitmap = anus.a((Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
         if ((localObject1 == null) || (localObject1 == localBitmap) || (((Bitmap)localObject1).isRecycled())) {
           continue;
         }
@@ -920,7 +920,7 @@ public class SelectCoverActivity
       localObject1 = null;
       try
       {
-        localObject2 = AnimationUtils.loadAnimation(this, 2130772229);
+        localObject2 = AnimationUtils.loadAnimation(this, 2130772230);
         localObject1 = localObject2;
         ((Animation)localObject2).setInterpolator(new DecelerateInterpolator(2.0F));
         localObject1 = localObject2;
@@ -974,7 +974,7 @@ public class SelectCoverActivity
     localAnimatorSet.play(ObjectAnimator.ofFloat(paramView2, View.X, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.left })).with(ObjectAnimator.ofFloat(paramView2, View.Y, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.top })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_X, new float[] { this.jdField_a_of_type_Float })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_Y, new float[] { this.jdField_a_of_type_Float }));
     localAnimatorSet.setDuration(250L);
     localAnimatorSet.setInterpolator(new DecelerateInterpolator());
-    localAnimatorSet.addListener(new anql(this, paramView1, paramView2));
+    localAnimatorSet.addListener(new anuu(this, paramView1, paramView2));
     localAnimatorSet.start();
     this.jdField_a_of_type_AndroidAnimationAnimator = localAnimatorSet;
   }
@@ -991,15 +991,15 @@ public class SelectCoverActivity
     this.f = getIntent().getIntExtra("key_video_duration", 0);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("key_video_has_voice");
     this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("key_camera_id");
-    this.jdField_a_of_type_Anpx = ((anpx)this.app.getManager(180));
-    this.jdField_a_of_type_Anpx.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Anpx.b = null;
-    setContentView(getLayoutInflater().inflate(2131561203, null));
+    this.jdField_a_of_type_Anug = ((anug)this.app.getManager(180));
+    this.jdField_a_of_type_Anug.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Anug.b = null;
+    setContentView(getLayoutInflater().inflate(2131561221, null));
     d();
     getWindow().setBackgroundDrawable(null);
     c();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_video_file_path");
-    if (!bdcs.a(this.jdField_a_of_type_JavaLangString))
+    if (!bdhb.a(this.jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.i("SelectCoverActivity", 2, "doOnCreate return filepath:" + this.jdField_a_of_type_JavaLangString);
@@ -1007,14 +1007,14 @@ public class SelectCoverActivity
       finish();
       return false;
     }
-    this.jdField_a_of_type_Anqm = new anqm(this.app, this);
+    this.jdField_a_of_type_Anuv = new anuv(this.app, this);
     if (Build.VERSION.SDK_INT <= 9) {
       ThreadManager.postImmediately(new SelectCoverActivity.1(this), null, true);
     }
     for (;;)
     {
       if (this.jdField_d_of_type_Int == 3) {
-        aikt.a(this, this.jdField_a_of_type_JavaLangString);
+        aipi.a(this, this.jdField_a_of_type_JavaLangString);
       }
       return true;
       ThreadManager.postImmediately(new SelectCoverActivity.2(this), null, true);
@@ -1034,8 +1034,8 @@ public class SelectCoverActivity
     if (this.jdField_a_of_type_AndroidAnimationAnimator != null) {
       this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
     }
-    if (this.jdField_a_of_type_Anqm != null) {
-      this.app.a().b(this.jdField_a_of_type_Anqm);
+    if (this.jdField_a_of_type_Anuv != null) {
+      this.app.a().b(this.jdField_a_of_type_Anuv);
     }
   }
   
@@ -1087,23 +1087,23 @@ public class SelectCoverActivity
           this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.b();
           a(paramMessage.arg1);
           return true;
-          this.jdField_c_of_type_Anqo = new anqo((Bitmap)paramMessage.obj, getResources());
-          this.jdField_c_of_type_Anqo.a(true);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Anqo);
+          this.jdField_c_of_type_Anux = new anux((Bitmap)paramMessage.obj, getResources());
+          this.jdField_c_of_type_Anux.a(true);
+          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Anux);
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
           return true;
           i = paramMessage.arg1;
         } while (paramMessage.arg2 == 0);
         float f1 = i / 1000.0F;
-        QQToast.a(this, String.format(alpo.a(2131714086), new Object[] { Float.valueOf(f1) }), 0).a();
+        QQToast.a(this, String.format(alud.a(2131714098), new Object[] { Float.valueOf(f1) }), 0).a();
         return true;
-        QQToast.a(this, alpo.a(2131714097), 0).a();
+        QQToast.a(this, alud.a(2131714109), 0).a();
         return true;
         i = paramMessage.arg1;
         j = paramMessage.arg2;
         paramMessage = (String)paramMessage.obj;
-      } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Beps == null));
-      this.jdField_a_of_type_Beps.a(i, paramMessage, j);
+      } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Beub == null));
+      this.jdField_a_of_type_Beub.a(i, paramMessage, j);
       return true;
     }
     g();
@@ -1112,7 +1112,7 @@ public class SelectCoverActivity
   
   public boolean onBackEvent()
   {
-    anqj.a(this.app, "0X800710C", a());
+    anus.a(this.app, "0X800710C", a());
     return super.onBackEvent();
   }
   
@@ -1120,18 +1120,18 @@ public class SelectCoverActivity
   {
     if (paramView == this.rightViewText)
     {
-      anqj.a(this.app, "0X800710D", a());
-      if (bcyw.a()) {
-        a(2, alpo.a(2131714095), 0);
+      anus.a(this.app, "0X800710D", a());
+      if (bddf.a()) {
+        a(2, alud.a(2131714107), 0);
       }
     }
     else
     {
       return;
     }
-    if (!bdee.g(this))
+    if (!bdin.g(this))
     {
-      QQToast.a(this, 1, getString(2131694766), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, getString(2131694768), 0).b(getTitleBarHeight());
       return;
     }
     paramView = this.jdField_a_of_type_AndroidViewView.getBackground();
@@ -1142,22 +1142,22 @@ public class SelectCoverActivity
     {
       if (paramView == null)
       {
-        QQToast.a(this, alpo.a(2131714092), 0).a();
+        QQToast.a(this, alud.a(2131714104), 0).a();
         if (!QLog.isColorLevel()) {
           break;
         }
         QLog.i("SelectCoverActivity", 2, "android version:" + Build.VERSION.SDK_INT);
         return;
-        if ((paramView == null) || (!(paramView instanceof anqo))) {
+        if ((paramView == null) || (!(paramView instanceof anux))) {
           break label219;
         }
-        paramView = ((anqo)paramView).a();
+        paramView = ((anux)paramView).a();
         continue;
       }
-      if (this.jdField_a_of_type_Beps == null) {
-        this.jdField_a_of_type_Beps = new beps(this);
+      if (this.jdField_a_of_type_Beub == null) {
+        this.jdField_a_of_type_Beub = new beub(this);
       }
-      a(0, alpo.a(2131714088), 0);
+      a(0, alud.a(2131714100), 0);
       ThreadManager.postImmediately(new SelectCoverActivity.3(this, paramView), null, true);
       return;
       label219:
@@ -1176,7 +1176,7 @@ public class SelectCoverActivity
     int i = ((Integer)paramView.getTag()).intValue();
     this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, i, 0).sendToTarget();
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumbOffset(paramView.getLeft());
-    anqj.a(this.app, "0X800710A", a());
+    anus.a(this.app, "0X800710A", a());
     if (QLog.isColorLevel()) {
       QLog.i("SelectCoverActivity", 2, "onTouchDown");
     }

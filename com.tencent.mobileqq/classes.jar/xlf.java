@@ -1,83 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoDelete;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.graphics.Bitmap;
 
 public class xlf
-  implements Manager
 {
-  static final String jdField_a_of_type_JavaLangString = ume.a("StoryGroupSvc.do_video_delete");
-  awbw jdField_a_of_type_Awbw;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected Map<String, Long> a;
-  naa jdField_a_of_type_Naa = new xlg(this);
-  public xle a;
+  private static boolean[] a;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public xlf(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Xle = new xle(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
   }
   
-  public Long a(String paramString)
+  public xlf(String paramString)
   {
-    return (Long)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public static void a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForTroopStory)) {
-      a(((MessageForTroopStory)paramMessageRecord).storyId, 1, this.jdField_a_of_type_Naa);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke with unknown msg type:" + paramMessageRecord.getClass().getSimpleName());
-  }
-  
-  public void a(String paramString, int paramInt, naa paramnaa)
-  {
-    a(paramString, paramInt, false, paramnaa);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean, naa paramnaa)
-  {
-    qqstory_group.ReqGroupVideoDelete localReqGroupVideoDelete = new qqstory_group.ReqGroupVideoDelete();
-    localReqGroupVideoDelete.story_id.set(ByteStringMicro.copyFromUtf8(paramString));
-    PBUInt32Field localPBUInt32Field = localReqGroupVideoDelete.remove_author;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localReqGroupVideoDelete.type.set(paramInt);
-      if (paramnaa != null)
+    int i = 0;
+    while (i < 5) {
+      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "send delete, storyId=" + paramString + ", op=" + paramInt);
-        }
-        mzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramnaa, localReqGroupVideoDelete.toByteArray(), jdField_a_of_type_JavaLangString);
+        jdField_a_of_type_ArrayOfBoolean[i] = false;
+        i += 1;
       }
-      return;
+      else
+      {
+        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
+        int k = arrayOfBoolean[i];
+        if (paramArrayOfInt[i] > 0) {}
+        for (int j = 1;; j = 0)
+        {
+          arrayOfBoolean[i] = (j | k);
+          break;
+        }
+      }
     }
   }
   
-  public void onDestroy()
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Awbw.a();
+    if ((paramInt < 0) || (paramInt > 4)) {
+      return true;
+    }
+    return jdField_a_of_type_ArrayOfBoolean[paramInt];
   }
 }
 

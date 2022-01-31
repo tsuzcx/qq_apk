@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajix
-  implements View.OnClickListener
+class ajix
+  implements DialogInterface.OnClickListener
 {
-  public ajix(LoginView paramLoginView) {}
+  ajix(ajit paramajit) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
+    ((alpk)this.a.a.a(2)).m(false);
   }
 }
 

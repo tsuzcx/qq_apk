@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBBoolField;
+import tencent.im.oidb.cmd0x934.cmd0x934.Item;
 
 public class bcrq
-  implements baaa
 {
-  public bcrq(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bcrr a;
+  public boolean a;
+  public bcrr b;
+  public boolean b;
   
-  public void a()
+  public static bcrq a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.a.a.this$0.a();
-    if (this.a.a.jdField_a_of_type_Baaa != null) {
-      this.a.a.jdField_a_of_type_Baaa.a();
-    }
-    this.a.a.this$0.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.this$0.a, true);
+    bcrq localbcrq = new bcrq();
+    localbcrq.jdField_a_of_type_Bcrr = bcrr.a(paramString4, paramString3);
+    localbcrq.b = bcrr.a(paramString2, paramString1);
+    localbcrq.jdField_a_of_type_Boolean = false;
+    return localbcrq;
+  }
+  
+  public static bcrq a(cmd0x934.Item paramItem)
+  {
+    bcrq localbcrq = new bcrq();
+    localbcrq.jdField_a_of_type_Bcrr = bcrr.a(paramItem.off_info);
+    localbcrq.b = bcrr.a(paramItem.on_info);
+    localbcrq.jdField_a_of_type_Boolean = paramItem.hot.get();
+    return localbcrq;
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b.a);
   }
 }
 

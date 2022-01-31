@@ -1,22 +1,22 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 
-final class bimh
-  implements bimn
+public class bimh
 {
-  bimh(bimm parambimm) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void a(boolean paramBoolean, Context paramContext, bimp parambimp)
+  public bimh(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bimg.d(paramContext, parambimp);
-    }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4);
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(paramInt + "preload_switch" + paramString, -1);
+    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload" + paramString, false);
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload_data" + paramString, false);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt(paramInt + "mem_limit" + paramString, 256);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramInt + "ext1" + paramString, "");
   }
 }
 

@@ -1,6 +1,9 @@
+import SummaryCard.CondFitUser;
+import java.util.List;
+
 public abstract interface alqe
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

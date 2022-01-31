@@ -1,47 +1,20 @@
-import android.app.Application;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
-import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
-import com.tencent.mobileqq.videoplatform.util.ReportUtil;
-import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
 
 public class awwp
+  implements Animation.AnimationListener
 {
-  private static volatile boolean a;
+  public awwp(VipProfileSimpleView paramVipProfileSimpleView, Animation paramAnimation) {}
   
-  static {}
-  
-  public static void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      if (!a)
-      {
-        LogUtil.setLogImp(new awwu());
-        ThreadUtil.setThreadImp(new awww());
-        LoadSoUtil.setLoadSoImp(new awws());
-        ReportUtil.setReportImp(new awwv());
-        a = true;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
-  {
-    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static boolean a()
-  {
-    return VideoPlaySDKManager.getInstance().isSDKReady();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

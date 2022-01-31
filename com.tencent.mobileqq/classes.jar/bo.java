@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.ListView;
 
 public class bo
-  implements bhuy
+  implements bhzf
 {
   public bo(LiteActivity paramLiteActivity) {}
   

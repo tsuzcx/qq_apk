@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import abpt;
-import abpv;
+import abui;
+import abuk;
 
 final class Common$1
   implements Runnable
@@ -9,7 +9,7 @@ final class Common$1
   public void run()
   {
     ReportUtil.a(2088, 0, 0, "");
-    abpt.a("KingKongCommon", "QQ Login " + abpv.o());
+    abui.a("KingKongCommon", "QQ Login " + abuk.o());
   }
 }
 

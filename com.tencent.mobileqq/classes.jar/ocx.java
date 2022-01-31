@@ -33,7 +33,7 @@ public class ocx
   
   private Long a(MaterialData paramMaterialData)
   {
-    paramMaterialData = this.jdField_a_of_type_Awbw.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "id=?", new String[] { String.valueOf(paramMaterialData.id) }, null, null, null, null);
+    paramMaterialData = this.jdField_a_of_type_Awgf.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "id=?", new String[] { String.valueOf(paramMaterialData.id) }, null, null, null, null);
     if ((paramMaterialData != null) && (paramMaterialData.size() == 1)) {
       return Long.valueOf(((MaterialData)paramMaterialData.get(0)).getId());
     }
@@ -42,7 +42,7 @@ public class ocx
   
   private List<MaterialData> a()
   {
-    return this.jdField_a_of_type_Awbw.a(MaterialData.class);
+    return this.jdField_a_of_type_Awgf.a(MaterialData.class);
   }
   
   private List<MaterialData> a(int paramInt)
@@ -50,9 +50,9 @@ public class ocx
     long l = NetConnInfoCenter.getServerTime();
     String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     if (paramInt == -1) {
-      return this.jdField_a_of_type_Awbw.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { str, String.valueOf(l), String.valueOf(1) }, null, null, null, null);
+      return this.jdField_a_of_type_Awgf.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { str, String.valueOf(l), String.valueOf(1) }, null, null, null, null);
     }
-    return this.jdField_a_of_type_Awbw.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=? and ad_type=?", new String[] { str, String.valueOf(l), String.valueOf(1), String.valueOf(paramInt) }, null, null, null, null);
+    return this.jdField_a_of_type_Awgf.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=? and ad_type=?", new String[] { str, String.valueOf(l), String.valueOf(1), String.valueOf(paramInt) }, null, null, null, null);
   }
   
   private ConcurrentHashMap<String, MaterialData> a()
@@ -101,8 +101,8 @@ public class ocx
       if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramMaterialData.id);
       }
-      bdcs.a(paramMaterialData.res_path, false);
-      this.jdField_a_of_type_Awbw.a(MaterialData.class.getSimpleName(), "id=? ", new String[] { String.valueOf(paramMaterialData.id) });
+      bdhb.a(paramMaterialData.res_path, false);
+      this.jdField_a_of_type_Awgf.a(MaterialData.class.getSimpleName(), "id=? ", new String[] { String.valueOf(paramMaterialData.id) });
       return;
     }
     catch (Exception paramMaterialData)
@@ -153,7 +153,7 @@ public class ocx
         if (paramString2 != null) {
           localJSONObject.put("content", paramString2);
         }
-        azlj.a(localQQAppInterface, "sendtdbank|b_pcg_ffc_game_dev_qq_kandian_commercial|ad_resource_statistics_report", paramString3 + "|" + localJSONObject.toString(), true);
+        azps.a(localQQAppInterface, "sendtdbank|b_pcg_ffc_game_dev_qq_kandian_commercial|ad_resource_statistics_report", paramString3 + "|" + localJSONObject.toString(), true);
         return;
       }
       catch (Exception paramMaterialData)
@@ -227,7 +227,7 @@ public class ocx
       }
       QLog.d("AdMaterialResManager", 4, "[insert new] data adid =  " + localMaterialData.adid);
       label170:
-      this.jdField_a_of_type_Awbw.b(localMaterialData);
+      this.jdField_a_of_type_Awgf.b(localMaterialData);
     }
     return true;
   }
@@ -239,7 +239,7 @@ public class ocx
     {
       long l = NetConnInfoCenter.getServerTime();
       Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      localObject = this.jdField_a_of_type_Awbw.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { localObject, String.valueOf(l), String.valueOf(0) }, null, null, null, null);
+      localObject = this.jdField_a_of_type_Awgf.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { localObject, String.valueOf(l), String.valueOf(0) }, null, null, null, null);
       return localObject;
     }
     catch (Exception localException)
@@ -255,7 +255,7 @@ public class ocx
   {
     paramMaterialData.res_path = "";
     paramMaterialData.isReady = false;
-    this.jdField_a_of_type_Awbw.a(paramMaterialData);
+    this.jdField_a_of_type_Awgf.a(paramMaterialData);
   }
   
   public static void b(MaterialData paramMaterialData, boolean paramBoolean, String paramString)
@@ -316,12 +316,12 @@ public class ocx
           while (paramList.hasNext())
           {
             MaterialData localMaterialData = (MaterialData)paramList.next();
-            bdcs.a(localMaterialData.res_path, false);
+            bdhb.a(localMaterialData.res_path, false);
             localMaterialData.res_path = "";
             if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
               this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(localMaterialData.id, localMaterialData);
             }
-            if ((!this.jdField_a_of_type_Awbw.a(localMaterialData)) && (QLog.isColorLevel())) {
+            if ((!this.jdField_a_of_type_Awgf.a(localMaterialData)) && (QLog.isColorLevel())) {
               QLog.d("AdMaterialResManager", 2, "updateDataByList failed data id =  " + localMaterialData.id);
             }
           }
@@ -343,7 +343,7 @@ public class ocx
     try
     {
       long l = NetConnInfoCenter.getServerTime();
-      List localList = this.jdField_a_of_type_Awbw.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time<?", new String[] { this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), String.valueOf(l) }, null, null, null, null);
+      List localList = this.jdField_a_of_type_Awgf.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time<?", new String[] { this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), String.valueOf(l) }, null, null, null, null);
       return localList;
     }
     catch (Exception localException)
@@ -380,7 +380,7 @@ public class ocx
       paramString1 = (MaterialData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
       if (paramString1 != null)
       {
-        if (bdcs.a(paramString1.res_path)) {
+        if (bdhb.a(paramString1.res_path)) {
           return paramString1.res_path;
         }
         b(paramString1);
@@ -397,7 +397,7 @@ public class ocx
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if (((MaterialData)localEntry.getValue()).ad_type == paramInt) {
-        if (bdcs.a(((MaterialData)localEntry.getValue()).res_path)) {
+        if (bdhb.a(((MaterialData)localEntry.getValue()).res_path)) {
           this.jdField_b_of_type_JavaUtilArrayList.add(localEntry.getValue());
         } else {
           b((MaterialData)localEntry.getValue());
@@ -425,7 +425,7 @@ public class ocx
     if ((paramBaseResData instanceof MaterialData))
     {
       ((MaterialData)paramBaseResData).res_path = b(paramString, paramBaseResData.id);
-      if (bdcs.a(((MaterialData)paramBaseResData).res_path)) {
+      if (bdhb.a(((MaterialData)paramBaseResData).res_path)) {
         break label93;
       }
       if (QLog.isColorLevel()) {
@@ -441,7 +441,7 @@ public class ocx
         return;
         a((MaterialData)paramBaseResData, true, "no error");
         paramBaseResData.setStatus(1001);
-        if (!this.jdField_a_of_type_Awbw.a(paramBaseResData)) {
+        if (!this.jdField_a_of_type_Awgf.a(paramBaseResData)) {
           break;
         }
         if (QLog.isColorLevel()) {
@@ -460,7 +460,7 @@ public class ocx
     if ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1) != null))
     {
       paramString2 = (MaterialData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      bdcs.a(paramString2.res_path, false);
+      bdhb.a(paramString2.res_path, false);
       b(paramString2);
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
       if (QLog.isColorLevel()) {

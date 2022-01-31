@@ -1,42 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvy
-  implements amvu
+  extends amvl
 {
-  private final String jdField_a_of_type_JavaLangString = "huawei_arcore";
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final String b = "huawei_arcore_arch64";
-  private final String c = "v8.0.0";
-  private final String d = "v8.2.0";
-  private final String e = "md5_config.xml";
+  public String b;
+  public String c;
   
-  public amvy()
+  public amvy(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add("libarengine_api");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_impl");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_ndk");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_jni");
-  }
-  
-  public String a()
-  {
-    return "huawei_arcore";
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public String b()
-  {
-    return "v8.0.0";
-  }
-  
-  public String c()
-  {
-    return "md5_config.xml";
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString2.split("\\|");
+      if (paramString1.length > 0) {
+        this.b = paramString1[0];
+      }
+    }
+    this.c = paramString3;
+    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
   }
 }
 

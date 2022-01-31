@@ -1,51 +1,24 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class alky
-  extends baua
+  extends almf
 {
-  WeakReference<alkz> a;
-  
-  public alky(alkz paramalkz)
+  public alky(String paramString)
   {
-    this.a = new WeakReference(paramalkz);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    if (localbaoj.b == 35) {
-      switch (paramMessage.what)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = localbaoj.a;
-        if ((this.a != null) && (this.a.get() != null))
-        {
-          ((alkz)this.a.get()).b(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
-      return;
-      if ((this.a != null) && (this.a.get() != null))
-      {
-        ((alkz)this.a.get()).d();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alky
  * JD-Core Version:    0.7.0.1
  */

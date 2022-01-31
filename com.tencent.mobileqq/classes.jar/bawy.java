@@ -1,33 +1,68 @@
 public class bawy
-  extends bawz
 {
   public int a;
   public String a;
   public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public boolean b;
   
   public bawy()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 80;
   }
+  
+  public String a(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    if (paramString != null)
+    {
+      if (!this.b) {
+        break label109;
+      }
+      if (!paramString.startsWith("http://")) {
+        break label72;
+      }
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      localObject1 = (String)localObject1 + "/";
+      return localObject1;
+      label72:
+      localObject1 = localObject2;
+      if (paramString.startsWith("https://")) {
+        localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
+    label109:
+    if (paramString.startsWith("http://")) {
+      if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+        localObject1 = "http://[" + this.jdField_a_of_type_JavaLangString + "]";
+      }
+    }
+    while (this.jdField_a_of_type_Int != 80)
+    {
+      return (String)localObject1 + ":" + this.jdField_a_of_type_Int + "/";
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
+      continue;
+      localObject1 = localObject3;
+      if (paramString.startsWith("https://")) {
+        if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+          localObject1 = "https://[" + this.jdField_a_of_type_JavaLangString + "]";
+        } else {
+          localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
+    return (String)localObject1 + "/";
+  }
+  
+  public void a() {}
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" voiceLength:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" autoToText:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
   }
 }
 

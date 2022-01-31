@@ -1,60 +1,29 @@
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.SslError;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ScrollView;
+import java.lang.ref.WeakReference;
 
-public abstract interface beby
+class beby
+  implements View.OnLayoutChangeListener
 {
-  public abstract Object a(String paramString, Bundle paramBundle);
+  final int jdField_a_of_type_Int;
+  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public abstract String a();
+  private beby(ScrollView paramScrollView, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
-  
-  public abstract void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
-  
-  public abstract void a(WebView paramWebView, int paramInt);
-  
-  public abstract void a(WebView paramWebView, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(WebView paramWebView, SslError paramSslError);
-  
-  public abstract void a(WebView paramWebView, String paramString);
-  
-  public abstract void a(WebView paramWebView, String paramString, Bitmap paramBitmap);
-  
-  public abstract void a(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
-  
-  public abstract boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
-  
-  public abstract boolean a(WebView paramWebView, String paramString);
-  
-  public abstract boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
-  
-  public abstract View b();
-  
-  public abstract void b(WebView paramWebView, String paramString);
-  
-  public abstract void b(WebView paramWebView, String paramString, Bitmap paramBitmap);
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract boolean b(WebView paramWebView, String paramString);
-  
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract boolean c(WebView paramWebView, String paramString);
-  
-  public abstract void v();
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
+    {
+      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
+      paramView.removeOnLayoutChangeListener(this);
+    }
+  }
 }
 
 

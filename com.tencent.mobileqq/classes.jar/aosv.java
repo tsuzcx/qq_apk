@@ -1,65 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aosv
-  extends aofy<aosu>
 {
-  public int a()
-  {
-    return 294;
-  }
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  @NonNull
-  public aosu a(int paramInt)
+  public static aosv a(JSONObject paramJSONObject)
   {
-    return new aosu();
-  }
-  
-  @Nullable
-  public aosu a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aosu.a(paramArrayOfaogf);
+    if (paramJSONObject == null) {
+      return null;
     }
-    return null;
+    aosv localaosv = new aosv();
+    localaosv.a = paramJSONObject.getString("tips");
+    localaosv.b = paramJSONObject.getString("buttonText");
+    localaosv.c = paramJSONObject.getString("url");
+    localaosv.d = paramJSONObject.getString("icon");
+    return localaosv;
   }
   
-  public Class<aosu> a()
+  public String a()
   {
-    return aosu.class;
+    return this.a;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
   }
   
-  public void a(aosu paramaosu)
+  public String b()
   {
-    if (paramaosu == null) {}
-    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return;
-    }
-    badt.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaosu.a());
-    badt.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaosu.b());
+    return this.b;
   }
   
-  public int b()
+  public String c()
   {
-    return 0;
+    return this.c;
   }
   
-  public boolean b()
+  public String d()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.d;
   }
 }
 

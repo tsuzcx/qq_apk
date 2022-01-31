@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.content.Intent;
-import anfv;
-import anjs;
-import arum;
+import anke;
+import anob;
+import aryv;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ArkAppModuleReg$ModuleQQ$11
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$11(anfv paramanfv, String paramString1, String paramString2, String paramString3) {}
+  public ArkAppModuleReg$ModuleQQ$11(anke paramanke, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null)
     {
-      Intent localIntent = ArkFullScreenAppActivity.a(localBaseActivity, this.a, this.this$0.a, this.b, this.c, anjs.a());
+      Intent localIntent = ArkFullScreenAppActivity.a(localBaseActivity, this.a, this.this$0.a, this.b, this.c, anob.a());
       if (localIntent != null) {
-        arum.a(localBaseActivity, localIntent);
+        aryv.a(localBaseActivity, localIntent);
       }
     }
   }

@@ -1,24 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class xyu
-  implements ValueAnimator.AnimatorUpdateListener
+class xyu
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
+  xyu(xys paramxys) {}
   
-  private xyu(TopPanelViewNew paramTopPanelViewNew, View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    paramView = (TextView)this.a.a.findViewById(2131364771);
+    if ((paramView.getText() instanceof String)) {
+      this.a.a((String)paramView.getText());
+    }
   }
 }
 

@@ -1,13 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class ayxa
-  implements aadk
+public class ayxa
+  extends aywk
 {
-  ayxa(aywz paramaywz, int paramInt) {}
+  public LinearLayout a;
+  public TextView a;
   
-  public void a(int paramInt, String paramString)
+  public ayxa(ViewGroup paramViewGroup, int paramInt)
   {
-    QLog.i("Q.lebatab.GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131379043));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362832));
   }
 }
 

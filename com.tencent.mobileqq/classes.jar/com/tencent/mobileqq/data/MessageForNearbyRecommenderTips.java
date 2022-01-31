@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ammq;
+import amrf;
 
 public class MessageForNearbyRecommenderTips
   extends ChatMessage
@@ -13,7 +13,7 @@ public class MessageForNearbyRecommenderTips
   {
     try
     {
-      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)ammq.a(this.msgData);
+      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)amrf.a(this.msgData);
       if (localNearbyRecommenderInfo != null)
       {
         this.uRecommendTime = localNearbyRecommenderInfo.uRecommendTime;
@@ -50,7 +50,7 @@ public class MessageForNearbyRecommenderTips
     localNearbyRecommenderInfo.strBrief = this.strBrief;
     try
     {
-      this.msgData = ammq.a(localNearbyRecommenderInfo);
+      this.msgData = amrf.a(localNearbyRecommenderInfo);
       return;
     }
     catch (Exception localException)

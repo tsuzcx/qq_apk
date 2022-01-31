@@ -1,62 +1,61 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import mqq.os.MqqHandler;
 
 public class acbc
-  extends allb
+  implements View.OnClickListener
 {
-  public acbc(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbc(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
+    if (!this.a.b) {
+      return;
+    }
+    paramView = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label245;
       }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131699852;
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692682);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166983));
     }
     for (;;)
     {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
       }
-      AssociatedAccountManageActivity.a(this.a);
-      azyl.a(this.a.app, bool2);
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
       return;
-      i = 1;
+      bool = false;
       break;
-      label128:
-      i = 2131699851;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131720398;
-      } else {
-        i = 2131720397;
-      }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
-      return;
+      label245:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131692017);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166911));
     }
   }
 }

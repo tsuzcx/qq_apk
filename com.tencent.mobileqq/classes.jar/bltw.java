@@ -1,43 +1,27 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import java.util.ArrayList;
+import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
+import NS_QQ_STORY_META.META.StMusic;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class bltw
-  extends blsg
+  implements zac<CLIENT.StBatchGetMusicInfoRsp>
 {
-  private final int a;
+  public bltw(QIMMusicConfigManager paramQIMMusicConfigManager, blrq paramblrq) {}
   
-  public bltw(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2)
-  {
-    if ((paramCanvas == null) || (paramRectF == null)) {
+    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
+      this.jdField_a_of_type_Blrq.a(false, new FlowMusic());
+    }
+    while (this.jdField_a_of_type_Blrq == null) {
       return;
     }
-    float f1 = paramRectF.left;
-    float f2 = this.jdField_a_of_type_Int;
-    float f3 = paramInt1;
-    float f4 = paramRectF.top;
-    float f5 = this.jdField_a_of_type_Int;
-    float f6 = paramInt2;
-    float f7 = paramRectF.right;
-    float f8 = this.jdField_a_of_type_Int;
-    float f9 = paramInt1;
-    float f10 = paramRectF.bottom;
-    float f11 = this.jdField_a_of_type_Int;
-    paramCanvas.drawRect(f3 + (f1 - f2), f6 + (f4 - f5), f9 + (f7 + f8), paramInt2 + (f10 + f11), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramString = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
+    QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo from story success flow info:" + paramString.toString());
+    this.jdField_a_of_type_Blrq.a(true, paramString);
   }
-  
-  public void a(Canvas paramCanvas, ArrayList<blty> paramArrayList, int paramInt1, int paramInt2) {}
 }
 
 

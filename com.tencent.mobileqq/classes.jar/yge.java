@@ -1,35 +1,15 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
-public abstract class yge
+public class yge
+  implements ygb
 {
-  public static final AtomicInteger a = new AtomicInteger(0);
-  
-  public abstract byte[] a();
-  
-  public byte[] a(Intent paramIntent, int paramInt, String paramString)
+  public void a(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("req traceId is null!");
+    if (this.a.isShowing()) {
+      ygd.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
     }
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(bizf.a());
-    localStQWebReq.deviceInfo.set(bize.a().c());
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
-    if (!TextUtils.isEmpty(paramString)) {
-      localStQWebReq.traceid.set(paramString);
-    }
-    if (paramIntent != null) {
-      paramIntent.putExtra("traceid", paramString);
-    }
-    return localStQWebReq.toByteArray();
   }
 }
 

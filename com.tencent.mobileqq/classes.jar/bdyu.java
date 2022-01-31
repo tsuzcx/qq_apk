@@ -1,20 +1,18 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vashealth.SportManager.3.1;
+import mqq.observer.BusinessObserver;
+
 public class bdyu
+  implements BusinessObserver
 {
-  public long a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public long c;
-  public String c = "";
-  public long d;
-  public String d;
-  public long e;
-  public long f;
+  bdyu(bdys parambdys) {}
   
-  public bdyu()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_d_of_type_Long = 999L;
-    this.jdField_d_of_type_JavaLangString = "";
+    if (paramBoolean) {
+      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    }
   }
 }
 

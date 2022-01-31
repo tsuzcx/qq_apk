@@ -29,7 +29,7 @@ public class pif
     qja localqja = (qja)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
     while (localIterator.hasNext()) {
-      localqja.b((bdvu)((Map.Entry)localIterator.next()).getValue());
+      localqja.b((bead)((Map.Entry)localIterator.next()).getValue());
     }
     this.jdField_a_of_type_MqqAppAppRuntime = null;
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
@@ -47,7 +47,7 @@ public class pif
     }
     for (;;)
     {
-      boolean bool = bdiv.v(((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getApp().getApplicationContext(), ((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getCurrentAccountUin());
+      boolean bool = bdne.v(((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getApp().getApplicationContext(), ((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getCurrentAccountUin());
       Bundle localBundle = new Bundle();
       localBundle.putInt("seq", paramBundle.getInt("seq"));
       localBundle.putInt("retCode", 0);

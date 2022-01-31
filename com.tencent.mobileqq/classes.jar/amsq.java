@@ -1,450 +1,276 @@
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ArNativeSoManager.1;
-import com.tencent.mobileqq.ar.ArNativeSoManager.3;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import android.text.style.StyleSpan;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog.1;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;>;
-import mqq.os.MqqHandler;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
 public class amsq
+  extends Dialog
 {
-  amyy jdField_a_of_type_Amyy;
-  private WeakReference<amzd> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<amzd> b;
-  private WeakReference<amzd> c;
-  private WeakReference<amzd> d;
+  int jdField_a_of_type_Int;
+  anav jdField_a_of_type_Anav;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public ProgressBar a;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private ARScanEntryView jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView;
+  MapView jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
+  public boolean a;
+  int jdField_b_of_type_Int;
+  View jdField_b_of_type_AndroidViewView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  View jdField_c_of_type_AndroidViewView;
+  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  public amsq(QQAppInterface paramQQAppInterface)
+  public amsq(Activity paramActivity, MapView paramMapView, ARScanEntryView paramARScanEntryView)
   {
-    this.jdField_a_of_type_Amyy = new amyy(paramQQAppInterface);
+    super(paramActivity, 2131755801);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = paramARScanEntryView;
+    c();
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView = paramMapView;
+    paramMapView = getWindow();
+    paramARScanEntryView = paramMapView.getAttributes();
+    paramARScanEntryView.width = paramActivity.getResources().getDisplayMetrics().widthPixels;
+    paramARScanEntryView.height = paramActivity.getResources().getDisplayMetrics().heightPixels;
+    paramMapView.setAttributes(paramARScanEntryView);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new ARLBSPOIDialog.1(this), 1500L);
   }
   
-  private amzd a(String paramString)
+  private void a(anav paramanav)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramString.equalsIgnoreCase("arsdk2"))
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localObject1 = (amzd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      }
-    }
-    do
-    {
-      amvu localamvu;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject1;
-              if (!paramString.equalsIgnoreCase("arcloud")) {
-                break;
-              }
-              localObject1 = localObject2;
-            } while (this.b == null);
-            return (amzd)this.b.get();
-            if (!paramString.equalsIgnoreCase("arfeature")) {
-              break;
-            }
-            localObject1 = localObject2;
-          } while (this.d == null);
-          return (amzd)this.d.get();
-          localamvu = amvq.a();
-          localObject1 = localObject2;
-        } while (localamvu == null);
-        localObject1 = localObject2;
-      } while (!paramString.equalsIgnoreCase(localamvu.a()));
-      localObject1 = localObject2;
-    } while (this.c == null);
-    return (amzd)this.c.get();
-  }
-  
-  private String a(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("arsdk2")) {
-      return amsy.a();
-    }
-    if (paramString.equalsIgnoreCase("arcloud")) {
-      return "v8.2.0.1";
-    }
-    if (paramString.equalsIgnoreCase("arfeature")) {
-      return "v8.0.0";
-    }
-    amvu localamvu = amvq.a();
-    if ((localamvu != null) && (paramString.equalsIgnoreCase(localamvu.a()))) {
-      return localamvu.b();
-    }
-    return "";
-  }
-  
-  private void a(ARCommonConfigInfo.NativeSoRes paramNativeSoRes, amze paramamze)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes. fileName = " + paramamze.c + ", url = " + paramamze.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Amyy == null) {
+    if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView == null) || (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getParent() == null) || (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap() == null)) {
       return;
     }
-    this.jdField_a_of_type_Amyy.a(paramamze, new amss(this, paramNativeSoRes));
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
-    }
-  }
-  
-  private void a(String paramString, amzd paramamzd)
-  {
-    if (paramString.equalsIgnoreCase("arsdk2")) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamzd);
-    }
-    amvu localamvu;
-    do
+    Object localObject1 = new RelativeLayout.LayoutParams(-1, aepi.a(210.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131368322);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView, (ViewGroup.LayoutParams)localObject1);
+    this.d = getLayoutInflater().inflate(2131560853, null);
+    localObject1 = (TextView)this.d.findViewById(2131372142);
+    Object localObject3 = (TextView)this.d.findViewById(2131365347);
+    Object localObject2 = (TextView)this.d.findViewById(2131372141);
+    ((TextView)localObject1).setText(alud.a(2131701108));
+    if (paramanav.c < 1000)
     {
-      return;
-      if (paramString.equalsIgnoreCase("arcloud"))
-      {
-        this.b = new WeakReference(paramamzd);
-        return;
+      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698908, new Object[] { String.valueOf(paramanav.c) }));
+      localObject3 = new StringBuilder().append(paramanav.jdField_a_of_type_JavaLangString).append("|");
+      if (!TextUtils.isEmpty(paramanav.jdField_b_of_type_JavaLangString)) {
+        break label550;
       }
-      if (paramString.equalsIgnoreCase("arfeature"))
-      {
-        this.d = new WeakReference(paramamzd);
-        return;
+      localObject1 = "";
+      label204:
+      localObject1 = (String)localObject1;
+      if (TextUtils.isEmpty(paramanav.jdField_a_of_type_JavaLangString)) {
+        break label558;
       }
-      localamvu = amvq.a();
-    } while ((localamvu == null) || (!paramString.equalsIgnoreCase(localamvu.a())));
-    this.c = new WeakReference(paramamzd);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("arsdk2")) {
-      return amsy.a();
-    }
-    if (paramString.equalsIgnoreCase("arcloud")) {
-      return amsb.a();
-    }
-    if (paramString.equalsIgnoreCase("arfeature")) {
-      return amsn.a();
-    }
-    amvu localamvu = amvq.a();
-    if ((localamvu != null) && (paramString.equalsIgnoreCase(localamvu.a()))) {
-      return amvq.b(localamvu);
-    }
-    return true;
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    int i = 0;
-    QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. dir = " + paramString1 + ", excludeSubDirOrFile = " + paramString2);
-    paramString1 = new File(paramString1).listFiles();
-    if (paramString1 == null) {
-      return false;
-    }
-    boolean bool = false;
-    if (i < paramString1.length)
-    {
-      Object localObject = paramString1[i];
-      if (!localObject.getAbsolutePath().equalsIgnoreCase(paramString2)) {
-        if (localObject.isDirectory())
-        {
-          bool = a(localObject.getAbsolutePath(), paramString2);
-          if (bool)
-          {
-            QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
-            bool = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
-        localObject.delete();
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
-        localObject.delete();
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
-        bool = true;
-      }
-    }
-    return bool;
-  }
-  
-  private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, amzd paramamzd)
-  {
-    boolean bool = false;
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadArNativeSo. resName = " + paramString);
-    String str = a(paramString);
-    a(paramString, paramamzd);
-    Object localObject1 = new ARCommonConfigInfo.NativeSoRes();
-    int i = 0;
-    Object localObject2;
-    if (i < paramArrayList.size())
-    {
-      localObject2 = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
-      if ((((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject2).b.equalsIgnoreCase(str)))
-      {
-        paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject2;
-        i = 1;
-      }
+      localObject1 = new SpannableString((CharSequence)localObject1);
+      ((SpannableString)localObject1).setSpan(new StyleSpan(1), 0, paramanav.jdField_a_of_type_JavaLangString.length(), 17);
+      ((TextView)localObject2).setText((CharSequence)localObject1);
     }
     for (;;)
     {
-      if ((i != 0) && (this.jdField_a_of_type_Amyy != null))
+      this.d.setOnClickListener(new amss(this));
+      localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap();
+      ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.zoomTo(16.0F));
+      paramanav = new LatLng(paramanav.jdField_a_of_type_Int * 1.0D / 1000000.0D, paramanav.jdField_b_of_type_Int * 1.0D / 1000000.0D);
+      ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.newLatLng(paramanav));
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(this.d)).position(paramanav));
+      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView != null) && (this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.j))
       {
-        localObject1 = amsp.a(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList.b, paramArrayList.d) + File.separator + paramArrayList.d + ".zip";
-        if (!b((String)localObject1, paramArrayList.d))
+        paramanav = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getProjection();
+        if ((paramanav != null) && (((TencentMap)localObject1).getCameraPosition() != null))
         {
-          a((String)localObject1);
-          if ((!TextUtils.isEmpty(paramArrayList.c)) && (!TextUtils.isEmpty(paramArrayList.d)))
-          {
-            localObject2 = new amze();
-            ((amze)localObject2).jdField_a_of_type_Int = 5;
-            ((amze)localObject2).jdField_a_of_type_JavaLangString = paramArrayList.c;
-            ((amze)localObject2).b = paramArrayList.d;
-            ((amze)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
-            ((amze)localObject2).c = ((String)localObject1);
-            ((amze)localObject2).jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_Amyy.a((amze)localObject2, new amsr(this, paramString, paramamzd));
-          }
+          localObject2 = paramanav.toScreenLocation(((TencentMap)localObject1).getCameraPosition().target);
+          ((Point)localObject2).offset(0, aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * -1);
+          ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.newLatLng(paramanav.fromScreenLocation((Point)localObject2)));
         }
       }
-      label370:
-      while (paramamzd == null)
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              i += 1;
-              break;
-              QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + (String)localObject1);
-            } while (paramamzd == null);
-            paramamzd.a(false, null);
-            return;
-            if (a(paramString)) {
-              break label370;
-            }
-            i = a(paramString, (String)localObject1, paramArrayList.d);
-          } while (paramamzd == null);
-          if (i == 0) {
-            bool = true;
-          }
-          paramamzd.a(bool, null);
-          return;
-        } while (paramamzd == null);
-        paramamzd.a(true, null);
-        return;
-      }
-      paramamzd.a(false, null);
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.onResume();
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      i = 0;
-      paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject1;
+      float f = Math.round(paramanav.c / 1000.0F * 100.0F) / 100.0F;
+      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698906, new Object[] { String.valueOf(f) }));
+      break;
+      label550:
+      localObject1 = paramanav.jdField_b_of_type_JavaLangString;
+      break label204;
+      label558:
+      ((TextView)localObject2).setText((CharSequence)localObject1);
     }
   }
   
-  private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList1, ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList2, String paramString)
+  private void c()
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. resName = " + paramString);
-    String str1 = a(paramString);
-    int i = 0;
-    if (i < paramArrayList2.size())
+    setContentView(2131560849);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368322));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131372144));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372154));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377467));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366269));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131372287));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372288));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372341));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364337));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amsr(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364801));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372146);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131363425);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131370051);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370050));
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void a()
+  {
+    super.show();
+    int i = getWindow().getAttributes().width;
+    int j = getWindow().getAttributes().height;
+    int k = (i - aepi.a(320.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    int m = (j - aepi.a(420.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    this.jdField_a_of_type_Int = (i / 2);
+    this.jdField_b_of_type_Int = (j / 2);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 0, this.jdField_a_of_type_Int - k, 0, this.jdField_b_of_type_Int - m);
+    localScaleAnimation.setInterpolator(new AccelerateInterpolator(1.5F));
+    localScaleAnimation.setDuration(350L);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.setFillAfter(true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
+  }
+  
+  public void a(anav paramanav, ArLBSActivity paramArLBSActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSPOIDialog", 2, "bindView");
+    }
+    this.jdField_a_of_type_Anav = paramanav;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    Object localObject;
+    if (!TextUtils.isEmpty(paramArLBSActivity.d))
     {
-      ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList2.get(i);
-      String str2;
-      if (localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
-        if (localNativeSoRes.b.equalsIgnoreCase(str1))
-        {
-          str2 = amsp.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
-          if (!b(str2, localNativeSoRes.d))
-          {
-            a(str2);
-            if ((!TextUtils.isEmpty(localNativeSoRes.c)) && (!TextUtils.isEmpty(localNativeSoRes.d)))
-            {
-              int j = 0;
-              while (j < paramArrayList1.size())
-              {
-                localObject = (ARCommonConfigInfo.NativeSoRes)paramArrayList1.get(j);
-                if ((((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject).b.equalsIgnoreCase(str1))) {
-                  a(amsp.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString), amsp.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject).b, ((ARCommonConfigInfo.NativeSoRes)localObject).d));
-                }
-                j += 1;
-              }
-              Object localObject = new amze();
-              ((amze)localObject).jdField_a_of_type_Int = 5;
-              ((amze)localObject).jdField_a_of_type_JavaLangString = localNativeSoRes.c;
-              ((amze)localObject).b = localNativeSoRes.d;
-              ((amze)localObject).d = localNativeSoRes.jdField_a_of_type_JavaLangString;
-              ((amze)localObject).c = str2;
-              ((amze)localObject).jdField_a_of_type_Boolean = true;
-              a(localNativeSoRes, (amze)localObject);
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + str2);
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soRes exists, not need to download. soZipFilename = " + str2);
-        if (a(paramString, str2, localNativeSoRes.d) == 0)
-        {
-          continue;
-          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResVersion is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString + ", soResVersionFromConfig = " + localNativeSoRes.b + ", soResVersionFromLocal = " + str1);
-          continue;
-          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResName is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString);
-        }
-      }
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = aepi.a(140.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = aepi.a(170.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      localObject = URLDrawable.getDrawable(paramArLBSActivity.d, (URLDrawable.URLDrawableOptions)localObject);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+    }
+    if (!TextUtils.isEmpty(paramArLBSActivity.jdField_b_of_type_JavaLangString))
+    {
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      int i = aepi.a(31.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      localObject = URLDrawable.getDrawable(paramArLBSActivity.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+    }
+    if (!TextUtils.isEmpty(paramArLBSActivity.c))
+    {
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850072);
+      localObject = URLDrawable.getDrawable(paramArLBSActivity.c, (URLDrawable.URLDrawableOptions)localObject);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable((Drawable)localObject);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArLBSActivity.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(paramArLBSActivity.e)) {
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramArLBSActivity.e);
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131701109));
+    a(paramanav);
+  }
+  
+  public void b()
+  {
+    int j = getWindow().getAttributes().width;
+    int i = getWindow().getAttributes().height;
+    j = (j - aepi.a(320.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    i = (i - aepi.a(420.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 0, this.jdField_a_of_type_Int - j, 0, this.jdField_b_of_type_Int - i);
+    localScaleAnimation.setInterpolator(new AccelerateInterpolator());
+    localScaleAnimation.setDuration(350L);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.setFillAfter(true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
+    localAnimationSet.setAnimationListener(new amst(this));
+  }
+  
+  public void dismiss()
+  {
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      super.dismiss();
     }
   }
   
-  private boolean b(String paramString1, String paramString2)
+  protected void onStop()
   {
-    if (new File(paramString1).exists())
+    super.onStop();
+    if ((this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView != null) && (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getParent() != null))
     {
-      if (!paramString2.equalsIgnoreCase(awiz.a(paramString1)))
-      {
-        QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
-        return false;
+      if (this.d != null) {
+        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.removeView(this.d);
       }
-      return true;
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView);
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.onPause();
     }
-    QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
-    return false;
   }
   
-  /* Error */
-  public int a(String paramString1, String paramString2, String paramString3)
+  public void show()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ldc 29
-    //   5: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   8: ifeq +15 -> 23
-    //   11: aload_2
-    //   12: aload_3
-    //   13: invokestatic 271	amsy:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   16: istore 4
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload 4
-    //   22: ireturn
-    //   23: aload_1
-    //   24: ldc 47
-    //   26: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   29: ifeq +13 -> 42
-    //   32: aload_2
-    //   33: aload_3
-    //   34: invokestatic 272	amsb:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   37: istore 4
-    //   39: goto -21 -> 18
-    //   42: aload_1
-    //   43: ldc 51
-    //   45: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   48: ifeq +13 -> 61
-    //   51: aload_2
-    //   52: aload_3
-    //   53: invokestatic 273	amsn:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   56: istore 4
-    //   58: goto -40 -> 18
-    //   61: invokestatic 58	amvq:a	()Lamvu;
-    //   64: astore 5
-    //   66: aload 5
-    //   68: ifnull +29 -> 97
-    //   71: aload_1
-    //   72: aload 5
-    //   74: invokeinterface 63 1 0
-    //   79: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   82: ifeq +15 -> 97
-    //   85: aload 5
-    //   87: aload_2
-    //   88: aload_3
-    //   89: invokestatic 276	amvq:a	(Lamvu;Ljava/lang/String;Ljava/lang/String;)I
-    //   92: istore 4
-    //   94: goto -76 -> 18
-    //   97: iconst_m1
-    //   98: istore 4
-    //   100: goto -82 -> 18
-    //   103: astore_1
-    //   104: aload_0
-    //   105: monitorexit
-    //   106: aload_1
-    //   107: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	amsq
-    //   0	108	1	paramString1	String
-    //   0	108	2	paramString2	String
-    //   0	108	3	paramString3	String
-    //   16	83	4	i	int
-    //   64	22	5	localamvu	amvu
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	103	finally
-    //   23	39	103	finally
-    //   42	58	103	finally
-    //   61	66	103	finally
-    //   71	94	103	finally
-  }
-  
-  public void a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, amzd paramamzd)
-  {
-    ThreadManager.getSubThreadHandler().post(new ArNativeSoManager.1(this, paramArrayList, paramString, paramamzd));
-  }
-  
-  public void a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList1, ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList2, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new ArNativeSoManager.3(this, paramArrayList1, paramArrayList2, paramString));
-  }
-  
-  public boolean a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "isArNativeSoDownload. resName = " + paramString);
-    String str = a(paramString);
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramArrayList.size())
-      {
-        ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
-        if ((!localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || (!localNativeSoRes.b.equalsIgnoreCase(str))) {
-          break label155;
-        }
-        paramArrayList = amsp.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
-        if (!b(paramArrayList, localNativeSoRes.d)) {
-          a(paramArrayList);
-        }
-      }
-      else
-      {
-        return false;
-      }
-      return a(paramString);
-      label155:
-      i += 1;
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      super.show();
     }
   }
 }

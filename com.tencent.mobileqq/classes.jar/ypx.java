@@ -1,39 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class ypx
-  extends nac
+public class ypx
+  extends alzr
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
-  }
+  public ypx(FollowTextView paramFollowTextView) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      }
+      this.a.a(1);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        }
+        yiw.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131690705, 0).a();
+  }
 }
 
 

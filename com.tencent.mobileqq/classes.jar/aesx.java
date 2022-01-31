@@ -1,62 +1,92 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import java.io.File;
-import java.util.WeakHashMap;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo;
+import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aesx
-  implements ImageAssetDelegate
+public class aesx
+  extends BaseAdapter
 {
-  aesx(aesv paramaesv, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private List<IntimateInfo.MutualMarkInfo> jdField_a_of_type_JavaUtilList;
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  private aesx(aesk paramaesk) {}
+  
+  public IntimateInfo.MutualMarkInfo a(int paramInt)
   {
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inScaled = true;
-    ((BitmapFactory.Options)localObject).inDensity = aesv.a(this.jdField_a_of_type_Aesv).a.getResources().getDisplayMetrics().densityDpi;
-    try
+    return (IntimateInfo.MutualMarkInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<IntimateInfo.MutualMarkInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
-      if (aesv.a(this.jdField_a_of_type_Aesv) != null)
-      {
-        paramLottieImageAsset = (Bitmap)aesv.a(this.jdField_a_of_type_Aesv).get(str);
-        if (paramLottieImageAsset != null) {
-          localObject = paramLottieImageAsset;
-        }
-        for (;;)
-        {
-          return localObject;
-          try
-          {
-            Bitmap localBitmap = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
-            localObject = localBitmap;
-            paramLottieImageAsset = localBitmap;
-            if (aesv.a(this.jdField_a_of_type_Aesv) != null)
-            {
-              paramLottieImageAsset = localBitmap;
-              aesv.a(this.jdField_a_of_type_Aesv).put(str, localBitmap);
-              return localBitmap;
-            }
-          }
-          catch (Exception localException1) {}
-        }
-        localException1.printStackTrace();
-        return paramLottieImageAsset;
+      this.jdField_a_of_type_Int = ((bdoo.a() - bdoo.a(40.0F) - 80) / bdoo.a(50.0F));
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "friend mark max count: " + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Int = 6;
       }
     }
-    catch (Exception localException2)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext).inflate(2131559194, null);; paramViewGroup = paramView)
     {
+      ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131366927);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramViewGroup;
+      paramView = a(paramInt);
+      if ((paramView instanceof IntimateInfo.PrefetchMutualMarkInfo))
+      {
+        paramView = (IntimateInfo.PrefetchMutualMarkInfo)paramView;
+        aesk.a(this.jdField_a_of_type_Aesk, paramView);
+        return paramViewGroup;
+      }
+      if (!TextUtils.isEmpty(paramView.icon_static_url)) {
+        paramView = new ausp(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext, paramView.icon_static_url);
+      }
       for (;;)
       {
-        paramLottieImageAsset = null;
-        continue;
-        paramLottieImageAsset = null;
+        localImageView.setImageDrawable(paramView);
+        localRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130840240));
+        return paramViewGroup;
+        paramInt = aush.a(this.jdField_a_of_type_Aesk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aesk.jdField_a_of_type_JavaLangString, paramView.type, paramView.level);
+        if (paramInt != 0) {
+          paramView = new ausp(this.jdField_a_of_type_Aesk.jdField_a_of_type_AndroidContentContext, paramInt);
+        } else {
+          paramView = null;
+        }
       }
     }
   }

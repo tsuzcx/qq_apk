@@ -1,75 +1,88 @@
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.BubblePopupWindow;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class acim
-  implements aeov, View.OnClickListener, bhrf
+  extends alpq
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public acim(BaseChatPie paramBaseChatPie) {}
   
-  public acim(ChatHistory paramChatHistory)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  void a(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131365069) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      a(paramView);
-      return false;
+      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
+        acjm.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      if ((paramBoolean) && (paramObject != null)) {}
+      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
+        {
+          this.a.A();
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + bdeu.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
+          }
+          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          if (AppSetting.c)
+          {
+            paramObject = this.a.e.getText().toString();
+            this.a.e.setContentDescription(paramObject);
+            this.a.a().setTitle(this.a.e.getText());
+          }
+          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof agpi))) {
+            ((agpi)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
+          }
+        }
+      case 1034: 
+        return;
+      }
+      this.a.b(false, false);
+      return;
     }
-    bdkz localbdkz = new bdkz();
-    localbdkz.a(2131365069, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690760), 2130838672);
-    if (localbdkz.a() > 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((acin)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = aekt.a(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdbk.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbdkz, this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
-      a(paramView);
-      return true;
-    }
-    a(paramView);
-    return false;
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramBoolean1)
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aU();
     }
-    return false;
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.d != null) && (this.a.d.isShowing())) {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aU();
+    }
   }
 }
 

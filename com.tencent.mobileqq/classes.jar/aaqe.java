@@ -1,6 +1,16 @@
-public abstract interface aaqe
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
+class aaqe
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(boolean paramBoolean);
+  aaqe(aaqa paramaaqa) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
+  }
 }
 
 

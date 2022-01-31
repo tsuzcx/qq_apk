@@ -1,30 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class apjo
-  implements View.OnClickListener
+  extends Handler
 {
-  apjo(apjn paramapjn, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  apjo(apjm paramapjm, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    paramView = (apke)this.jdField_a_of_type_Apjn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Apjn.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-    apsw localapsw = new apsw();
-    localapsw.c = 4;
-    localapsw.e = paramView.a(localCustomEmotionData);
-    localapsw.jdField_d_of_type_Int = 2;
-    localapsw.jdField_d_of_type_JavaLangString = localCustomEmotionData.eId;
-    localapsw.f = localCustomEmotionData.url;
-    localapsw.h = localCustomEmotionData.RomaingType;
-    localapsw.jdField_g_of_type_Int = localCustomEmotionData.emoId;
-    localapsw.jdField_g_of_type_JavaLangString = localCustomEmotionData.resid;
-    AIOEmotionFragment.a(this.jdField_a_of_type_Apjn.jdField_a_of_type_AndroidContentContext, localapsw, null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (apjm.a(this.a));
+    QLog.e("CameraHelper", 1, "checkPermission uncertain");
+    apjm.a(this.a, false, 1830004);
   }
 }
 

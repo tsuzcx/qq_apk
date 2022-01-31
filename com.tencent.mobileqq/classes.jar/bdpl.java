@@ -1,10 +1,16 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
 public class bdpl
+  implements bhvp
 {
-  public int a;
-  public String a;
-  public ArrayList<bdpm> a = new ArrayList();
+  public bdpl(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
+  
+  public void a()
+  {
+    if (ajxm.a().c()) {
+      ajxm.a().d();
+    }
+  }
 }
 
 

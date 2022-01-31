@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import apaw;
-import azqu;
-import azsd;
+import apff;
+import azvd;
+import azwm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -36,12 +36,12 @@ public class MessageForStarLeague
     for (;;)
     {
       return null;
-      paramQQAppInterface = azsd.a(paramArrayOfByte, paramInt2);
+      paramQQAppInterface = azwm.a(paramArrayOfByte, paramInt2);
       try
       {
-        paramQQAppInterface = azqu.a(new String(paramQQAppInterface, "utf-8"));
+        paramQQAppInterface = azvd.a(new String(paramQQAppInterface, "utf-8"));
         paramQQAppInterface = new ByteArrayInputStream(paramQQAppInterface.getBytes());
-        paramArrayOfByte = new apaw();
+        paramArrayOfByte = new apff();
         SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
         if (!QLog.isColorLevel()) {}
       }

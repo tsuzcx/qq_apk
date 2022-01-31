@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
-import akjx;
-import akou;
-import akwt;
-import albu;
-import alda;
-import alfz;
-import aloz;
+import aknx;
+import akom;
+import aktj;
+import albi;
+import algj;
+import alhp;
+import alko;
+import alto;
 import android.os.Message;
 import android.text.TextUtils;
-import awmk;
-import bdpx;
-import bhow;
+import awqt;
+import bdug;
+import bhtd;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,25 +38,25 @@ class FriendCardApolloViewController$RefreshApolloTask
   {
     FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)this.a.get();
     FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.b.get();
-    if ((localFriendProfileCardActivity == null) || (localFriendCardApolloViewController == null) || (localFriendCardApolloViewController.jdField_a_of_type_Bhow == null)) {
+    if ((localFriendProfileCardActivity == null) || (localFriendCardApolloViewController == null) || (localFriendCardApolloViewController.jdField_a_of_type_Bhtd == null)) {
       return;
     }
-    Object localObject = (akji)localFriendProfileCardActivity.app.getManager(153);
-    int i = akwt.b(2);
+    Object localObject = (aknx)localFriendProfileCardActivity.app.getManager(153);
+    int i = albi.b(2);
     if ((localObject != null) && (localFriendProfileCardActivity.a != null) && (localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
       if ((localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin.equals(localFriendProfileCardActivity.app.getCurrentAccountUin())) || ((localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(localFriendProfileCardActivity.app.getCurrentAccountUin()))))
       {
-        if (akji.a(localFriendProfileCardActivity.app, "mycard", null) <= 0) {
-          alda.a(i, 10, 105, new Object[] { "mycard not open" });
+        if (aknx.a(localFriendProfileCardActivity.app, "mycard", null) <= 0) {
+          alhp.a(i, 10, 105, new Object[] { "mycard not open" });
         }
       }
-      else if (akji.a(localFriendProfileCardActivity.app, "friendcard", null) <= 0)
+      else if (aknx.a(localFriendProfileCardActivity.app, "friendcard", null) <= 0)
       {
-        alda.a(i, 10, 105, new Object[] { "friendcard not open" });
+        alhp.a(i, 10, 105, new Object[] { "friendcard not open" });
         return;
       }
     }
-    alfz.a("FriendCard");
+    alko.a("FriendCard");
     if ((localFriendProfileCardActivity.a != null) && (localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null)) {}
     for (localObject = localFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;; localObject = null)
     {
@@ -65,41 +65,41 @@ class FriendCardApolloViewController$RefreshApolloTask
       }
       for (;;)
       {
-        alda.a(i, (String)localObject, new int[0]);
-        ApolloBaseInfo localApolloBaseInfo = ((akji)localFriendProfileCardActivity.app.getManager(153)).b((String)localObject);
+        alhp.a(i, (String)localObject, new int[0]);
+        ApolloBaseInfo localApolloBaseInfo = ((aknx)localFriendProfileCardActivity.app.getManager(153)).b((String)localObject);
         if (localApolloBaseInfo != null)
         {
           localFriendCardApolloViewController.jdField_b_of_type_Int = localApolloBaseInfo.apolloStatus;
           localFriendCardApolloViewController.jdField_a_of_type_ComTencentMobileqqDataApolloBaseInfo = localApolloBaseInfo;
         }
-        localFriendCardApolloViewController.jdField_b_of_type_Boolean = ((aloz)localFriendProfileCardActivity.app.getManager(51)).b((String)localObject);
-        if ((akji.a(localFriendProfileCardActivity.app) != 1) || (localFriendCardApolloViewController.jdField_b_of_type_Boolean) || ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(localFriendProfileCardActivity.app.c())))) {}
-        akjx localakjx;
+        localFriendCardApolloViewController.jdField_b_of_type_Boolean = ((alto)localFriendProfileCardActivity.app.getManager(51)).b((String)localObject);
+        if ((aknx.a(localFriendProfileCardActivity.app) != 1) || (localFriendCardApolloViewController.jdField_b_of_type_Boolean) || ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(localFriendProfileCardActivity.app.c())))) {}
+        akom localakom;
         for (boolean bool = true;; bool = false)
         {
           localFriendCardApolloViewController.jdField_a_of_type_Boolean = bool;
-          localakjx = akou.a(localFriendProfileCardActivity.app, (String)localObject, localApolloBaseInfo, 2);
-          if ((localakjx != null) && (!localakjx.jdField_a_of_type_Boolean)) {
+          localakom = aktj.a(localFriendProfileCardActivity.app, (String)localObject, localApolloBaseInfo, 2);
+          if ((localakom != null) && (!localakom.jdField_a_of_type_Boolean)) {
             break;
           }
           QLog.w("FriendCardApolloViewController", 1, "checkDrawerRoleDressInfo not ready");
           return;
         }
-        if (!albu.a(localFriendProfileCardActivity.app, 7))
+        if (!algj.a(localFriendProfileCardActivity.app, 7))
         {
-          alda.a(i, 10, 110, new Object[] { "role 0 not ready" });
+          alhp.a(i, 10, 110, new Object[] { "role 0 not ready" });
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.w("FriendCardApolloViewController", 2, "checkDrawerBasicApolloAction up and down not ready");
           return;
         }
-        if ((localApolloBaseInfo != null) && (!localFriendCardApolloViewController.jdField_b_of_type_Boolean) && (akji.a(localFriendProfileCardActivity.app)) && (localakjx.d != 0) && (NetConnInfoCenter.getServerTime() - localApolloBaseInfo.apolloUpdateTime >= 300L)) {
-          ((bdpx)localFriendProfileCardActivity.app.a(71)).b((String)localObject);
+        if ((localApolloBaseInfo != null) && (!localFriendCardApolloViewController.jdField_b_of_type_Boolean) && (aknx.a(localFriendProfileCardActivity.app)) && (localakom.d != 0) && (NetConnInfoCenter.getServerTime() - localApolloBaseInfo.apolloUpdateTime >= 300L)) {
+          ((bdug)localFriendProfileCardActivity.app.a(71)).b((String)localObject);
         }
-        localObject = localFriendCardApolloViewController.jdField_a_of_type_Bhow.obtainMessage(1);
-        ((Message)localObject).obj = localakjx;
-        localFriendCardApolloViewController.jdField_a_of_type_Bhow.sendMessage((Message)localObject);
+        localObject = localFriendCardApolloViewController.jdField_a_of_type_Bhtd.obtainMessage(1);
+        ((Message)localObject).obj = localakom;
+        localFriendCardApolloViewController.jdField_a_of_type_Bhtd.sendMessage((Message)localObject);
         return;
       }
     }

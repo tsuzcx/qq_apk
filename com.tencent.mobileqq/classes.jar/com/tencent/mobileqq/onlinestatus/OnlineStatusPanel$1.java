@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
-import awaf;
+import aweo;
 import java.util.ArrayList;
 
 class OnlineStatusPanel$1
@@ -11,7 +11,7 @@ class OnlineStatusPanel$1
   
   public void run()
   {
-    ArrayList localArrayList = awaf.a().a();
+    ArrayList localArrayList = aweo.a().a();
     ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.1.1(this, localArrayList));
   }
 }

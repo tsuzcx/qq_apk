@@ -1,18 +1,18 @@
 package com.tencent.mqpsdk.secsrv;
 
-import bewt;
+import bfbc;
 
 public class MQPAPPScanService$1
   extends Thread
 {
-  public MQPAPPScanService$1(bewt parambewt, byte[] paramArrayOfByte) {}
+  public MQPAPPScanService$1(bfbc parambfbc, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      bewt.a += 1;
-      bewt.a(this.this$0, this.a);
+      bfbc.a += 1;
+      bfbc.a(this.this$0, this.a);
       return;
     }
     finally {}

@@ -1,36 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.widget.QQToast;
 
-class afac
-  implements InputFilter
+public class afac
+  implements aezs
 {
-  afac(afab paramafab) {}
+  public afac(DoodlePanel paramDoodlePanel) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(int paramInt)
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
     {
-      afab.a(this.a);
-      return "";
-    }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
+      if (!DoodlePanel.a(this.a))
       {
-        afab.a(this.a);
-        return "";
+        DoodlePanel.a(this.a, true);
+        afad localafad = new afad(this);
+        bdgm.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689945), null, this.a.getContext().getString(2131689934), localafad, null).show();
       }
+      return;
     }
-    afab.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689937), 0).a();
   }
 }
 

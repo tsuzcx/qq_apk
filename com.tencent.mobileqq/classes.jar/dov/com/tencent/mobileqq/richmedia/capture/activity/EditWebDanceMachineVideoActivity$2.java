@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.richmedia.capture.activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import bngb;
+import bnkn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -61,7 +61,7 @@ public class EditWebDanceMachineVideoActivity$2
         QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "share to wechat bitmap ratio  : " + i + "   size : " + j * k / 1024 + "KB  fileSize : " + new File(EditWebDanceMachineVideoActivity.c(this.this$0)).length());
       }
       if (EditWebDanceMachineVideoActivity.a(this.this$0) == null) {
-        EditWebDanceMachineVideoActivity.a(this.this$0, new bngb(this, (Bitmap)localObject));
+        EditWebDanceMachineVideoActivity.a(this.this$0, new bnkn(this, (Bitmap)localObject));
       }
       if (this.a == 1)
       {

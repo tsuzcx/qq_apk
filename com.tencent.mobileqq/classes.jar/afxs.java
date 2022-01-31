@@ -1,23 +1,23 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class afxs
-  implements View.OnClickListener
+class afxs
+  implements bixi
 {
-  public afxs(StructingMsgItemBuilder paramStructingMsgItemBuilder, ImageView paramImageView, ChatMessage paramChatMessage, String paramString, long paramLong) {}
+  afxs(afxr paramafxr, MessageForPtt paramMessageForPtt) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+    bivo.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop);
+    biva.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_Afxr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      bivo.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
       return;
     }
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X800631E", "0X800631E", 0, 0, "" + this.jdField_a_of_type_Long, "", "", "");
   }
 }
 

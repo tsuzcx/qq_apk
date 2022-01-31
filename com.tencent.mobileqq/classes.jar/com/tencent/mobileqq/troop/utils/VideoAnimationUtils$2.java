@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.utils;
 
-import baaa;
+import baej;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 import java.lang.ref.WeakReference;
 
 public final class VideoAnimationUtils$2
   implements Runnable
 {
-  public VideoAnimationUtils$2(WeakReference paramWeakReference, String paramString, baaa parambaaa) {}
+  public VideoAnimationUtils$2(WeakReference paramWeakReference, String paramString, baej parambaej) {}
   
   public void run()
   {
     SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localSpriteVideoView != null) {
-      localSpriteVideoView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Baaa);
+      localSpriteVideoView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Baej);
     }
   }
 }

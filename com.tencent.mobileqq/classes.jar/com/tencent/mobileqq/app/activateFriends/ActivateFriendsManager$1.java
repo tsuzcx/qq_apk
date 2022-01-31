@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import ambk;
-import ambl;
+import amfz;
+import amga;
 import com.tencent.qphone.base.util.QLog;
 
 public class ActivateFriendsManager$1
   implements Runnable
 {
-  public ActivateFriendsManager$1(ambl paramambl) {}
+  public ActivateFriendsManager$1(amga paramamga) {}
   
   public void run()
   {
     boolean bool2 = true;
     boolean bool1;
-    if (Math.abs(System.currentTimeMillis() - ambl.a(this.this$0)) > ambl.b(this.this$0))
+    if (Math.abs(System.currentTimeMillis() - amga.a(this.this$0)) > amga.b(this.this$0))
     {
       bool1 = true;
-      if (Math.abs(System.currentTimeMillis() - ambl.c(this.this$0)) <= ambl.d(this.this$0)) {
+      if (Math.abs(System.currentTimeMillis() - amga.c(this.this$0)) <= amga.d(this.this$0)) {
         break label168;
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + ambl.a(this.this$0) + " | checkBirthdayInterval = " + ambl.b(this.this$0) + " | lastMemorialCheckInStamp = " + ambl.c(this.this$0) + " | checkMemorialInterval = " + ambl.d(this.this$0) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
+        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + amga.a(this.this$0) + " | checkBirthdayInterval = " + amga.b(this.this$0) + " | lastMemorialCheckInStamp = " + amga.c(this.this$0) + " | checkMemorialInterval = " + amga.d(this.this$0) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
       }
       if ((bool1) || (bool2)) {
         break label173;
@@ -35,8 +35,8 @@ public class ActivateFriendsManager$1
       bool2 = false;
     }
     label173:
-    ambk.a(ambl.a(this.this$0), bool1, bool2);
-    this.this$0.a = ambl.a(this.this$0);
+    amfz.a(amga.a(this.this$0), bool1, bool2);
+    this.this$0.a = amga.a(this.this$0);
   }
 }
 

@@ -1,71 +1,71 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bdum
-  implements Handler.Callback
+public class bdum
+  extends MSFServlet
 {
-  bdum(bduj parambduj) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramMessage.what == 1)
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      paramMessage = bduj.a();
-      int i = paramMessage.getInt("timer2_interval", 0);
-      int m = paramMessage.getInt("timer2_retry_times", 0);
-      int j = paramMessage.getInt("timer2_start_hour", 0);
-      int k = paramMessage.getInt("timer2_end_hour", 0);
-      if ((bdug.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bdug.a < i))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
-        return true;
-      }
-      if (this.a.jdField_a_of_type_Int >= m)
-      {
-        QLog.i("SportManager", 2, "retry time enough cancel task.");
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        return true;
-      }
-      paramMessage = Calendar.getInstance();
-      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      m = paramMessage.get(11);
-      if (m >= j)
-      {
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report1");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
-        return true;
-        if (m >= k) {
-          break;
-        }
-        paramMessage.set(11, 0);
-        paramMessage.set(12, 0);
-        paramMessage.set(13, 0);
-        paramMessage.set(14, 0);
-        if (bdug.a - paramMessage.getTimeInMillis() > 0L)
-        {
-          QLog.i("SportManager", 2, "already report cancel task.");
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          return true;
-        }
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report2");
-      }
-      QLog.i("SportManager", 2, "over time cancel task.");
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return true;
+      l = System.currentTimeMillis();
+      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    return false;
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      bdug localbdug = (bdug)((QQAppInterface)super.getAppRuntime()).a(71);
+      if (localbdug != null) {
+        localbdug.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bdqa.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

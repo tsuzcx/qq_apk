@@ -1,30 +1,44 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class vis
-  extends GestureDetector.SimpleOnGestureListener
+  extends vkh
 {
-  public vis(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  protected String a;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    ShareGroupItem localShareGroupItem = ((wfw)uwa.a(7)).a(this.a);
+    wdt localwdt = (wdt)uwa.a(24);
+    wdl localwdl = localwdt.a(localShareGroupItem.headerUnionIdList);
+    if (localwdl == null)
+    {
+      localwdt.a(localShareGroupItem.headerUnionIdList, new vit(this));
+      return;
+    }
+    a(localwdl);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected void a(Error paramError)
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
     }
-    return false;
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+    }
+  }
+  
+  protected void a(wdl paramwdl)
+  {
+    a("ShareGroupAvatarJob_sga", paramwdl.a());
+    b(true);
   }
 }
 

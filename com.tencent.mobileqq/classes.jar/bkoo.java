@@ -1,10 +1,15 @@
-public abstract interface bkoo
+import android.view.View;
+
+final class bkoo
 {
-  public abstract void a(String paramString, float paramFloat);
+  private View jdField_a_of_type_AndroidViewView;
+  private bkmz jdField_a_of_type_Bkmz;
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
+  public bkoo(bkmz parambkmz, View paramView)
+  {
+    this.jdField_a_of_type_Bkmz = parambkmz;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
 }
 
 

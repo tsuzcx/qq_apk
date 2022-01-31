@@ -1,37 +1,45 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aesi
-  implements azzg
+class aesi
+  implements AdapterView.OnItemClickListener
 {
-  public aesi(FriendShipWaveView paramFriendShipWaveView) {}
+  aesi(aesh paramaesh) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    azzn localazzn = new azzn(500, 0.0F, 1.0F);
-    this.a.d.jdField_a_of_type_Int = 255;
-    this.a.d.a(new azzf[] { localazzn });
-    localazzn.a(new aesj(this));
-    this.a.e = new baaj();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localazzn = new azzn(500, 0.0F, 1.0F);
-    this.a.e.a(new azzf[] { localazzn });
-    localazzn.a(new aesk(this));
-    this.a.f = new baaj();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localazzn = new azzn(500, 0.0F, 1.0F);
-    this.a.f.a(new azzf[] { localazzn });
-    localazzn.a(new aesl(this));
-    this.a.g = new baaj();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + bcwh.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localazzn = new azzn(500, 0.0F, 1.0F);
-    this.a.g.a(new azzf[] { localazzn });
-    localazzn.a(new aesm(this));
+    int j = ((ShareActionSheetBuilder.ActionSheetItem)aesh.a(this.a)[0].get(paramInt)).action;
+    aesh.a(this.a).dismiss();
+    int i = 0;
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        azqs.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+      }
+      this.a.a(j, aesh.a(this.a));
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
   }
 }
 

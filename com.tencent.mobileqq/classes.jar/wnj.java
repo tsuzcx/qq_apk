@@ -1,17 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-final class wnj
-  implements wor
+public class wnj
+  extends wwj
 {
-  wnj(WeakReference paramWeakReference) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public wnj(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    wnk localwnk = (wnk)this.a.get();
-    if (localwnk != null) {
-      localwnk.a(paramErrorMessage);
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void X_()
+  {
+    xvp localxvp = a().a("FeedSegment");
+    if ((localxvp != null) && (localxvp.a() == 0))
+    {
+      this.a = true;
+      return;
     }
+    this.a = false;
   }
 }
 

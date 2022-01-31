@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajvh;
+import ajzw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.text.TextUtils;
 public class ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultRecord> CREATOR = new ajvh();
+  public static final Parcelable.Creator<ResultRecord> CREATOR = new ajzw();
   public int a;
   public long a;
   public String a;

@@ -1,46 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
 
 class xwq
   implements View.OnTouchListener
 {
-  xwq(xwp paramxwp, Drawable paramDrawable, xwv paramxwv) {}
+  xwq(xwp paramxwp) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
-        }
-        else
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
-          continue;
-          if (xwp.a(this.jdField_a_of_type_Xwp) != null) {
-            xwp.a(this.jdField_a_of_type_Xwp).a(this.jdField_a_of_type_Xwv);
-          }
-          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
-            } else {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
-            }
-          }
-        }
-      }
-    }
+    xwp.a(this.a);
+    return true;
   }
 }
 

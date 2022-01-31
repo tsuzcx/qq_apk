@@ -1,6 +1,17 @@
-public abstract interface aith
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+
+class aith
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, aitb paramaitb);
+  aith(aitg paramaitg) {}
+  
+  public void onClick(View paramView)
+  {
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+  }
 }
 
 

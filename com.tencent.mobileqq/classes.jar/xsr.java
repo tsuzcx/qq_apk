@@ -1,13 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class xsr
-  extends RecyclerView.ViewHolder
+public abstract interface xsr<V>
 {
-  xsr(xsp paramxsp, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract V a();
 }
 
 

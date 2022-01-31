@@ -1,48 +1,61 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupNodeInfo;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class vdc
-  extends unf
+  extends urt<vdd>
 {
-  public long a;
-  public String a;
-  public ArrayList<VideoCollectionItem> a;
-  public boolean a;
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public vdc(String paramString, qqstory_service.RspGroupDateVideoList paramRspGroupDateVideoList)
+  static
   {
-    super(paramRspGroupDateVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramRspGroupDateVideoList.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
-      this.jdField_a_of_type_Long = paramRspGroupDateVideoList.seqno.get();
-      paramRspGroupDateVideoList = paramRspGroupDateVideoList.group_node_info.get().iterator();
-      while (paramRspGroupDateVideoList.hasNext())
-      {
-        qqstory_struct.GroupNodeInfo localGroupNodeInfo = (qqstory_struct.GroupNodeInfo)paramRspGroupDateVideoList.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.shareGroup:GetDateCollectionListResponse", paramString, localGroupNodeInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      }
-      bool = false;
-    }
+    jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.convert_group_id");
   }
   
-  public String toString()
+  public String a()
   {
-    return "GetShareGroupDateListResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mCollectionItemList=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
+    try
+    {
+      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
+      return new vdd(localRspConvertGroupId);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
+    localReqConvertGroupId.convert_from.set(this.c);
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
+        localGroupId.group_uin.set(Long.valueOf(str).longValue());
+        localReqConvertGroupId.group_req_list.add(localGroupId);
+      }
+    }
+    return localReqConvertGroupId.toByteArray();
   }
 }
 

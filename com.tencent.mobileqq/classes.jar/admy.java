@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class admy
-  implements View.OnClickListener
+class admy
+  implements DialogInterface.OnClickListener
 {
-  public admy(QQMapActivity paramQQMapActivity) {}
+  admy(admx paramadmx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.l)
-    {
-      this.a.w();
-      return;
-    }
-    if ("group_activity".equals(this.a.o))
-    {
-      this.a.k();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
-    this.a.finish();
-    this.a.d();
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

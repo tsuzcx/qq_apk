@@ -1,12 +1,6 @@
-import feedcloud.FeedCloudMeta.StUser;
-
 public abstract interface ucd
 {
   public abstract void a();
-  
-  public abstract void a(FeedCloudMeta.StUser paramStUser);
-  
-  public abstract void b();
 }
 
 

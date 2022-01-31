@@ -1,15 +1,12 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-
 public class bbay
-  implements bbfu
+  extends bbbi
 {
-  public bbay(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void a(Uri paramUri)
-  {
-    this.a.a = paramUri;
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

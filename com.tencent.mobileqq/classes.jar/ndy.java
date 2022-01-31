@@ -5,20 +5,20 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 final class ndy
-  implements bhqd
+  implements bhuk
 {
-  ndy(bhpy parambhpy, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  ndy(bhuf parambhuf, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
+    this.jdField_a_of_type_Bhuf.dismiss();
     switch (paramInt)
     {
     }
     do
     {
       return;
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
       try
       {
         ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");

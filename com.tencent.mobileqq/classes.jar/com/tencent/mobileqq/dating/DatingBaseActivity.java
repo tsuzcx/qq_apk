@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dating;
 
 import android.content.Intent;
 import android.os.Bundle;
-import beps;
+import beub;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.NearbyTitleBarActivity;
 
@@ -11,7 +11,7 @@ public class DatingBaseActivity
 {
   public static final boolean a;
   protected int a;
-  protected beps a;
+  protected beub a;
   public boolean b;
   public boolean c;
   
@@ -24,7 +24,7 @@ public class DatingBaseActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_Beps = new beps(this);
+    this.jdField_a_of_type_Beub = new beub(this);
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
@@ -36,8 +36,8 @@ public class DatingBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Beps != null) {
-      this.jdField_a_of_type_Beps.b();
+    if (this.jdField_a_of_type_Beub != null) {
+      this.jdField_a_of_type_Beub.b();
     }
   }
   

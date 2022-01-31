@@ -1,19 +1,18 @@
 public class bmnc
 {
-  public int a;
-  public bmmz a;
-  public int b;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  private bmnc(bmne parambmne)
+  public bmnc(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    this.jdField_a_of_type_Bmmz = bmne.a(parambmne);
-    this.jdField_a_of_type_Int = bmne.a(parambmne);
-    this.b = bmne.b(parambmne);
-  }
-  
-  public String toString()
-  {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Bmmz + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+    this.e = paramBoolean5;
   }
 }
 

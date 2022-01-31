@@ -35,7 +35,7 @@ public class pfv
   public int a()
   {
     int i = 0;
-    SharedPreferences localSharedPreferences = bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
     if (localSharedPreferences != null) {
       i = localSharedPreferences.getInt("follow_tab_enter_topic_reddot_time", 0);
     }
@@ -44,7 +44,7 @@ public class pfv
   
   public String a()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
     if (localSharedPreferences != null) {
       return localSharedPreferences.getString("follow_tab_last_refresh_cookie", "");
     }
@@ -81,14 +81,14 @@ public class pfv
   
   public void a(int paramInt)
   {
-    Object localObject = bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
         ((SharedPreferences.Editor)localObject).putInt("follow_tab_user_topic_reddot_update_num", paramInt);
-        bjxj.a((SharedPreferences.Editor)localObject, true);
+        bkbq.a((SharedPreferences.Editor)localObject, true);
         QLog.d("FollowCoverInfoModule", 2, "update user topic reddot update num : " + paramInt);
       }
     }
@@ -111,14 +111,14 @@ public class pfv
   
   public void a(String paramString)
   {
-    Object localObject = bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
         ((SharedPreferences.Editor)localObject).putString("follow_tab_last_refresh_cookie", paramString);
-        bjxj.a((SharedPreferences.Editor)localObject, true);
+        bkbq.a((SharedPreferences.Editor)localObject, true);
         QLog.d("FollowCoverInfoModule", 2, "updateLastRefreshCookie cookie : " + paramString);
       }
     }
@@ -165,14 +165,14 @@ public class pfv
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = bjxj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = bkbq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
         ((SharedPreferences.Editor)localObject).putBoolean("follow_tab_user_topic_follow_state", paramBoolean);
-        bjxj.a((SharedPreferences.Editor)localObject, true);
+        bkbq.a((SharedPreferences.Editor)localObject, true);
         QLog.d("FollowCoverInfoModule", 2, "update user follow state : " + paramBoolean);
       }
     }

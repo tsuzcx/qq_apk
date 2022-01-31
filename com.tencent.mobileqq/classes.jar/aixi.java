@@ -1,22 +1,6 @@
-import Wallet.SetSelectedSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-public class aixi
-  implements BusinessObserver
+public abstract class aixi
 {
-  public aixi(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

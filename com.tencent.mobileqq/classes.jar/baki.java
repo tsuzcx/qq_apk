@@ -1,50 +1,34 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class baki
-  extends Handler
+public class baki
+  implements DialogInterface.OnClickListener
 {
-  baki(bakh parambakh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public baki(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Activity localActivity;
-    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
-    {
-      localActivity = null;
-      if (localActivity != null) {
-        break label75;
-      }
-      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    if (!bdin.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131692398), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914));
     }
-    label75:
-    do
-    {
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bakf == null) {
       return;
-      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      break;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())));
-    this.a.jdField_a_of_type_Bepp = new bepp(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
-    this.a.jdField_a_of_type_Bepp.setCancelable(true);
-    this.a.jdField_a_of_type_Bepp.c(2131720515);
-    this.a.jdField_a_of_type_Bepp.show();
-    return;
-    this.a.c();
-    QQToast.a(localActivity, alpo.a(2131715306), 4000).a();
+    }
+    paramDialogInterface = baic.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bakf.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bakf.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
+    }
   }
 }
 

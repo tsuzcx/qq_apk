@@ -12,7 +12,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
-import bcli;
+import bcpr;
 import com.tencent.mobileqq.R.styleable;
 import slf;
 import slg;
@@ -153,7 +153,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcli.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bcpr.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -187,7 +187,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcli.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bcpr.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;

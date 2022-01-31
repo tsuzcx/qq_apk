@@ -1,129 +1,70 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class almn
-  extends DefaultHandler
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  public String a;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  public HashMap<String, almo> a;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^([0-9]{1,5}|\\{([\\s\\S]*)\\})$");
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "0";
+  public almn(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public almn(HashMap<String, almo> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  private boolean a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
-    }
-    return this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuffer.append(paramArrayOfChar, paramInt1, paramInt2);
-    }
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (!a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DeviceProfileManager", 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        }
-        return;
-      }
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-        break label229;
-      }
-      paramString1 = (almo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-      if (paramString1.jdField_a_of_type_Int < this.jdField_a_of_type_Int)
-      {
-        paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-        paramString1.c = this.b;
-        paramString1.d = this.jdField_a_of_type_JavaLangString;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label229:
-      paramString1 = new almo();
-      paramString1.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-      paramString1.c = this.b;
-      paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      paramString1.d = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     int i = 0;
-    if (paramString2.equals("features"))
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)) {}
+    for (;;)
     {
-      if (i < paramAttributes.getLength())
+      return;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(this.b)) && (this.b.equals("true")))
       {
-        if (paramAttributes.getLocalName(i).equals("weight")) {
-          this.jdField_a_of_type_Int = Integer.parseInt(paramAttributes.getValue(i));
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+          break label467;
         }
-        for (;;)
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.c, "0" });
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "participate", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.c });
+        i = 9999;
+        paramInt = 1;
+      }
+      while (paramInt != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivityForResult(paramDialogInterface, i);
+        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(this.d)))
         {
-          i += 1;
-          break;
-          if (paramAttributes.getLocalName(i).equals("taskId")) {
-            this.b = paramAttributes.getValue(i);
-          } else if (paramAttributes.getLocalName(i).equals("testType")) {
-            this.jdField_a_of_type_JavaLangString = paramAttributes.getValue(i);
+          if (this.d.equals(String.valueOf(9)))
+          {
+            ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "vip_alert_view", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.c, "0" });
+            paramInt = 0;
+            continue;
+          }
+          if (this.d.equals(String.valueOf(2))) {
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "debt_alert_clickcharge", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.c });
           }
         }
+        paramInt = 1;
+        continue;
+        label467:
+        i = 9999;
+        paramInt = 1;
       }
-    }
-    else
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almn
  * JD-Core Version:    0.7.0.1
  */

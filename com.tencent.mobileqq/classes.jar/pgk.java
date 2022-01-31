@@ -19,9 +19,9 @@ import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.RspBody;
 public class pgk
   extends pgp
 {
-  public pgk(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pgk(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.chat;
 
-import alpo;
-import anxb;
+import alud;
+import aobk;
 import com.tencent.common.config.AppSetting;
 import java.util.HashMap;
 
 public class MessageNotificationSettingManager$1
   extends HashMap<Integer, String>
 {
-  public MessageNotificationSettingManager$1(anxb paramanxb)
+  public MessageNotificationSettingManager$1(aobk paramaobk)
   {
-    put(Integer.valueOf(2131230759), alpo.a(2131707023));
-    put(Integer.valueOf(2131230721), alpo.a(2131707025));
-    put(Integer.valueOf(2131230758), alpo.a(2131707020));
-    put(Integer.valueOf(2131230720), alpo.a(2131707021));
-    put(Integer.valueOf(AppSetting.d), alpo.a(2131707024));
-    put(Integer.valueOf(AppSetting.e), alpo.a(2131707028));
+    put(Integer.valueOf(2131230759), alud.a(2131707035));
+    put(Integer.valueOf(2131230721), alud.a(2131707037));
+    put(Integer.valueOf(2131230758), alud.a(2131707032));
+    put(Integer.valueOf(2131230720), alud.a(2131707033));
+    put(Integer.valueOf(AppSetting.d), alud.a(2131707036));
+    put(Integer.valueOf(AppSetting.e), alud.a(2131707040));
   }
 }
 

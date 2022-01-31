@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import abyu;
+import acdj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +18,7 @@ public class UnitedVerifyMsgEditFragment
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 100;
-  abyu jdField_a_of_type_Abyu;
+  acdj jdField_a_of_type_Acdj;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
@@ -30,16 +30,16 @@ public class UnitedVerifyMsgEditFragment
     setTitle(getString(2131689648));
     setLeftButton(2131690648, null);
     setRightButton(2131690797, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131375633));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131375634));
-    this.jdField_a_of_type_Abyu = new abyu(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Abyu);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131375684));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131375685));
+    this.jdField_a_of_type_Acdj = new acdj(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Acdj);
     ThreadManager.post(new UnitedVerifyMsgEditFragment.1(this), 8, null, true);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561371;
+    return 2131561389;
   }
   
   public boolean onBackEvent()
@@ -71,7 +71,7 @@ public class UnitedVerifyMsgEditFragment
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Abyu);
+    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Acdj);
     super.onDestroyView();
   }
 }

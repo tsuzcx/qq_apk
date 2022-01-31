@@ -1,21 +1,25 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 
-class yki
-  implements View.OnClickListener
+public class yki
+  extends yka
 {
-  yki(ykh paramykh, CertifiedAccountMeta.StFeed paramStFeed) {}
+  private CertifiedAccountMeta.StFeed a;
   
-  public void onClick(View paramView)
+  public yki(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    xxk.a(this.jdField_a_of_type_Ykh.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, ygg.a(ykh.a(this.jdField_a_of_type_Ykh), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
-    yvu.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", ykh.a(this.jdField_a_of_type_Ykh) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    this.a = paramStFeed;
+  }
+  
+  public void a() {}
+  
+  public void a(ykg paramykg)
+  {
+    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
+    paramykg = new ykj(this, paramykg);
+    localGetSubscribeFeedDetailRequest.setEnableCache(false);
+    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramykg);
   }
 }
 

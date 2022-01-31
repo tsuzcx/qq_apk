@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import avms;
-import avmw;
+import avrb;
+import avrf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class NearbyMomentManager$4$1
   implements Runnable
 {
-  public NearbyMomentManager$4$1(avmw paramavmw, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public NearbyMomentManager$4$1(avrf paramavrf, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {
-    List localList = avms.a(this.jdField_a_of_type_Avmw.a, this.jdField_a_of_type_JavaUtilList);
+    List localList = avrb.a(this.jdField_a_of_type_Avrf.a, this.jdField_a_of_type_JavaUtilList);
     Object localObject;
     if (localList == null)
     {

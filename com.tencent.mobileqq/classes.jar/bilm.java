@@ -1,22 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-
-public class bilm
-  extends FlingGestureHandler
+public abstract interface bilm
 {
-  boolean a = true;
-  
-  public bilm(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

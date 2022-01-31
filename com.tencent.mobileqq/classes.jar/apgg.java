@@ -1,33 +1,17 @@
-import android.graphics.drawable.ColorDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class apgg
-  extends ColorDrawable
+class apgg
+  implements DialogInterface.OnClickListener
 {
-  private int a;
-  private int b;
+  apgg(apgd paramapgd) {}
   
-  public apgg(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(0);
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public apgg(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1);
-    this.a = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.a;
+    paramDialogInterface.cancel();
+    QLog.d(apgd.a(), 1, "showConfirmDialog, cancel click");
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, apgd.d, apgd.d, 0, 0, "", "", "", "");
   }
 }
 

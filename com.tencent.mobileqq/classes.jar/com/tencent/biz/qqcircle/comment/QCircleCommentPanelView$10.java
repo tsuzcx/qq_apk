@@ -1,15 +1,17 @@
 package com.tencent.biz.qqcircle.comment;
 
-import tuk;
+import com.tencent.qphone.base.util.QLog;
+import tuz;
 
 public class QCircleCommentPanelView$10
   implements Runnable
 {
-  public QCircleCommentPanelView$10(tuk paramtuk) {}
+  public QCircleCommentPanelView$10(tuz paramtuz) {}
   
   public void run()
   {
-    this.this$0.f();
+    QLog.d("QCircleCommentPanelView", 1, "");
+    this.this$0.g();
   }
 }
 

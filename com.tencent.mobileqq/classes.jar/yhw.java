@@ -1,26 +1,118 @@
-import android.content.Context;
-import android.view.View;
+import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class yhw
-  implements bhqd
+public abstract class yhw<E>
+  extends RecyclerView.Adapter
 {
-  yhw(Context paramContext, String paramString, yhz paramyhz, bhpy parambhpy) {}
+  public final ArrayList<E> mDataList = new ArrayList();
   
-  public void OnClick(View paramView, int paramInt)
+  public void addAll(List<E> paramList)
   {
-    if (yht.a()) {
+    if (paramList == null) {
       return;
     }
-    yht.a(true);
-    switch (paramInt)
-    {
-    }
+    this.mDataList.addAll(paramList);
+    notifyItemRangeInserted(this.mDataList.size(), paramList.size());
+  }
+  
+  public void addAll(E[] paramArrayOfE)
+  {
+    if (paramArrayOfE == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      yht.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yhz);
+      int j = paramArrayOfE.length;
+      int i = 0;
+      while (i < j)
+      {
+        E ? = paramArrayOfE[i];
+        this.mDataList.add(?);
+        i += 1;
+      }
     }
+  }
+  
+  public E addData(E paramE)
+  {
+    if (paramE == null) {}
+    do
+    {
+      return null;
+      Iterator localIterator = this.mDataList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = localIterator.next();
+        if (localObject == paramE) {
+          return localObject;
+        }
+        if (isItemEqual(localObject, paramE))
+        {
+          copyItem(localObject, paramE);
+          return localObject;
+        }
+      }
+    } while (!this.mDataList.add(paramE));
+    return this.mDataList.get(this.mDataList.size() - 1);
+  }
+  
+  public void addData(E paramE, int paramInt)
+  {
+    this.mDataList.add(paramInt, paramE);
+  }
+  
+  public void clearData()
+  {
+    this.mDataList.clear();
+  }
+  
+  protected void copyItem(E paramE1, E paramE2) {}
+  
+  public void delete(int paramInt)
+  {
+    if (paramInt < this.mDataList.size()) {
+      this.mDataList.remove(paramInt);
+    }
+  }
+  
+  public ArrayList<E> getDataList()
+  {
+    return this.mDataList;
+  }
+  
+  public int getDataNumber()
+  {
+    return this.mDataList.size();
+  }
+  
+  public int getItemCount()
+  {
+    return this.mDataList.size();
+  }
+  
+  protected boolean isItemEqual(E paramE1, E paramE2)
+  {
+    return false;
+  }
+  
+  public void setDatas(ArrayList<E> paramArrayList)
+  {
+    this.mDataList.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
+    }
+    this.mDataList.addAll(paramArrayList);
+    notifyDataSetChanged();
+  }
+  
+  public void updateData(E paramE, int paramInt)
+  {
+    if ((paramE == null) || (paramInt >= this.mDataList.size())) {
+      return;
+    }
+    this.mDataList.set(paramInt, paramE);
   }
 }
 

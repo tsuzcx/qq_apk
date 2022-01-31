@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import abqw;
+import abvl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -8,28 +8,28 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bdee;
-import bhpo;
-import bhuy;
+import bdin;
+import bhtv;
+import bhzf;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
 import com.tencent.widget.SwipListView;
-import xrt;
-import xrx;
-import xrz;
+import xwc;
+import xwg;
+import xwi;
 
 public class QQStoryPullToRefreshListView
   extends SwipListView
-  implements bhpo, bhuy
+  implements bhtv, bhzf
 {
   private int jdField_a_of_type_Int = -1;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
-  private bhpo jdField_a_of_type_Bhpo;
+  private bhtv jdField_a_of_type_Bhtv;
   private String jdField_a_of_type_JavaLangString;
-  public xrt a;
-  private xrx jdField_a_of_type_Xrx = new xrx(this);
-  protected xrz a;
+  public xwc a;
+  private xwg jdField_a_of_type_Xwg = new xwg(this);
+  protected xwi a;
   public PullRefreshHeader b;
   
   public QQStoryPullToRefreshListView(Context paramContext)
@@ -80,13 +80,13 @@ public class QQStoryPullToRefreshListView
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     this.b.a(0L);
-    if (!bdee.g(getContext().getApplicationContext())) {
+    if (!bdin.g(getContext().getApplicationContext())) {
       a(false);
     }
     for (;;)
     {
       return true;
-      this.jdField_a_of_type_Xrz.a();
+      this.jdField_a_of_type_Xwi.a();
     }
   }
   
@@ -103,28 +103,28 @@ public class QQStoryPullToRefreshListView
   protected void n()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Xrt = new xrt(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_a_of_type_Xwc = new xwc(localLoadMoreLayout, getContext().getApplicationContext());
     super.addFooterView(localLoadMoreLayout);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (paramInt1 == this.jdField_a_of_type_Int) {}
     do
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Xrt.a());
-    this.jdField_a_of_type_Xrt.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Xwc.a());
+    this.jdField_a_of_type_Xwc.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -150,23 +150,23 @@ public class QQStoryPullToRefreshListView
     if (this.jdField_a_of_type_JavaLangString != null)
     {
       if (paramInt == 0) {
-        abqw.a().a(this.jdField_a_of_type_JavaLangString, false);
+        abvl.a().a(this.jdField_a_of_type_JavaLangString, false);
       }
     }
     else {
       return;
     }
-    abqw.a().a(this.jdField_a_of_type_JavaLangString);
+    abvl.a().a(this.jdField_a_of_type_JavaLangString);
   }
   
   protected void s()
   {
-    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561534, this, false));
+    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561552, this, false));
     this.b.setTextColor(-1, -1, -1, -1, -1);
-    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839219));
+    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839220));
     super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131298665));
     super.setOverScrollHeader(this.b);
-    super.setOverScrollListener(this.jdField_a_of_type_Xrx);
+    super.setOverScrollListener(this.jdField_a_of_type_Xwg);
   }
   
   public void setActTAG(String paramString)
@@ -174,9 +174,9 @@ public class QQStoryPullToRefreshListView
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
   
   public void setOnTouchExtraListener(View.OnTouchListener paramOnTouchListener)
@@ -184,9 +184,9 @@ public class QQStoryPullToRefreshListView
     this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
   }
   
-  public void setPullToRefreshListener(xrz paramxrz)
+  public void setPullToRefreshListener(xwi paramxwi)
   {
-    this.jdField_a_of_type_Xrz = paramxrz;
+    this.jdField_a_of_type_Xwi = paramxwi;
   }
 }
 

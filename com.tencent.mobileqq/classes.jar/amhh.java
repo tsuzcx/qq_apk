@@ -1,31 +1,32 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-class amhh
-  implements barg
+public class amhh
+  implements alrb
 {
-  amhh(amha paramamha, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(bari parambari, barh parambarh)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      parambari = parambari.a.getWupBuffer();
-      parambarh = new structmsg.RspSystemMsgRead();
-      parambarh.mergeFrom(parambari);
-      int i = parambarh.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
-      return;
+    if (paramBoolean) {
+      paramBoolean = azri.a(3);
     }
-    catch (Exception parambari)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambari);
+      try
+      {
+        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
+        if (paramBoolean) {
+          continue;
+        }
+        bdhb.d(ambz.a);
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
+        continue;
+      }
+      DeviceProfileManager.b(this);
+      return;
+      bdhb.a(ambz.a);
     }
   }
 }

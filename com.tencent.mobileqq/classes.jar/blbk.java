@@ -1,39 +1,13 @@
-public class blbk
-  extends bmag
+import android.support.v7.widget.RecyclerView;
+
+class blbk
+  implements yyh
 {
-  private bmab<Boolean> a = new bmab();
-  private bmab<Boolean> b = new bmab();
-  private bmab<Boolean> c = new bmab();
+  blbk(blbe paramblbe) {}
   
-  public bmab<Boolean> a()
+  public void a()
   {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    if (this.b.a() != null) {
-      return ((Boolean)this.b.a()).booleanValue();
-    }
-    return false;
-  }
-  
-  public bmab<Boolean> b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    if (this.c.a() != null) {
-      return ((Boolean)this.c.a()).booleanValue();
-    }
-    return false;
-  }
-  
-  public bmab<Boolean> c()
-  {
-    return this.c;
+    blbe.a(this.a).setVisibility(0);
   }
 }
 

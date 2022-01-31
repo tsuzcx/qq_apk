@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$4
@@ -14,7 +14,7 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    bdcd.a(this.val$activity, 230, null, String.format(alpo.a(2131706181), new Object[] { this.val$appName }), alpo.a(2131706188), alpo.a(2131706189), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bdgm.a(this.val$activity, 230, null, String.format(alud.a(2131706193), new Object[] { this.val$appName }), alud.a(2131706200), alud.a(2131706201), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 

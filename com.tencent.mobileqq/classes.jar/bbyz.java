@@ -1,12 +1,32 @@
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
-public abstract interface bbyz
+public class bbyz
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public bbyz(DotStyleNavBar paramDotStyleNavBar) {}
   
-  public abstract void a(WordInfo paramWordInfo);
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    }
+  }
   
-  public abstract void g();
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    }
+  }
 }
 
 

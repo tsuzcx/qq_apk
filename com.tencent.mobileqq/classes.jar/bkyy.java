@@ -1,14 +1,19 @@
-import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 
 class bkyy
-  implements bmac<blam>
+  extends bkzv
 {
-  bkyy(bkyt parambkyt) {}
+  bkyy(bkyw parambkyw, AppInterface paramAppInterface) {}
   
-  public void a(@Nullable blam paramblam)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (paramblam != null) {
-      bkyt.a(this.a, paramblam);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean) {
+      synchronized (bkyw.a(this.jdField_a_of_type_Bkyw))
+      {
+        bkyw.a(this.jdField_a_of_type_Bkyw, paramInt);
+        return;
+      }
     }
   }
 }

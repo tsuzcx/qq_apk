@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
-import aokd;
+import alud;
+import aoom;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -15,9 +15,9 @@ class MiniAppProxyImpl$3$1
     if (this.this$1.val$miniAppInfo != null) {
       this.this$1.val$miniAppInfo.topType = 0;
     }
-    if (aokd.g())
+    if (aoom.g())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131701724) + aokd.c() + alpo.a(2131701723), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131701736) + aoom.c() + alud.a(2131701735), 0).a();
       return;
     }
     QQToast.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();

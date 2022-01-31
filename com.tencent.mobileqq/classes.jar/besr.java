@@ -1,47 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class besr
-  extends Handler
+  implements View.OnClickListener
 {
-  WeakReference<KSongView> a;
+  public besr(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
   
-  public besr(KSongView paramKSongView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramKSongView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0)
+    if (aqbg.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
     {
-      paramMessage = (KSongView)this.a.get();
-      if ((paramMessage != null) && (1 == paramMessage.a())) {
-        break label31;
-      }
-    }
-    label31:
-    do
-    {
-      return;
-      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
-      besn localbesn = paramMessage.a();
-      paramMessage.a(l);
-      if (l >= localbesn.d) {
-        KSongView.a(paramMessage, l);
-      }
-      QLog.i("KSongView", 2, "real_duration = " + l);
-      if (l < localbesn.e)
+      paramView = aqhx.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      int j = 1;
+      int i = j;
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof FriendProfileCardActivity))
       {
-        sendEmptyMessageDelayed(0, 50L);
-        return;
+        i = j;
+        if (((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).k) {
+          i = 2;
+        }
       }
-      KSongView.a(paramMessage, 3);
-    } while (KSongView.a(paramMessage) == null);
-    KSongView.a(paramMessage).a();
+      azqs.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i, 0, "", "", "", "");
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
+        paramView.show();
+      }
+      return;
+    }
+    paramView = new Intent();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
+      paramView.putExtra("key_extend_friend_info", new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard));
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "kuolie", "0X80092DB", 0, 0, "", "", "", "");
+    PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, ExtendFriendEditFragment.class, 4097);
   }
 }
 

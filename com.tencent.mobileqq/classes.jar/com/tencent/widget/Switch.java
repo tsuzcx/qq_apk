@@ -20,9 +20,9 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bhqv;
-import bhxe;
-import bhxs;
+import bhvc;
+import bibl;
+import bibz;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -37,7 +37,7 @@ public class Switch
   private Layout jdField_a_of_type_AndroidTextLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private bhxs jdField_a_of_type_Bhxs;
+  private bibz jdField_a_of_type_Bibz;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -64,7 +64,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034955);
+    this(paramContext, paramAttributeSet, 2131034963);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -96,7 +96,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new bhxe(this));
+    setOnClickListener(new bibl(this));
   }
   
   private int a()
@@ -110,8 +110,8 @@ public class Switch
   
   private Layout a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Bhxs != null) {
-      paramCharSequence = this.jdField_a_of_type_Bhxs.getTransformation(paramCharSequence, this);
+    if (this.jdField_a_of_type_Bibz != null) {
+      paramCharSequence = this.jdField_a_of_type_Bibz.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
@@ -432,8 +432,8 @@ public class Switch
       if (!paramContext.getBoolean(1, false)) {
         break label130;
       }
-      this.jdField_a_of_type_Bhxs = new bhqv(getContext());
-      this.jdField_a_of_type_Bhxs.a(true);
+      this.jdField_a_of_type_Bibz = new bhvc(getContext());
+      this.jdField_a_of_type_Bibz.a(true);
     }
     for (;;)
     {
@@ -442,7 +442,7 @@ public class Switch
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
       break;
       label130:
-      this.jdField_a_of_type_Bhxs = null;
+      this.jdField_a_of_type_Bibz = null;
     }
   }
   

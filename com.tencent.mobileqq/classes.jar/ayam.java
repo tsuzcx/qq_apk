@@ -1,20 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import com.tencent.richmediabrowser.view.GalleryUrlImageView;
+import com.tencent.richmediabrowser.view.IBrowserViewHolder;
 
 public class ayam
-  extends ayad
+  extends IBrowserViewHolder
 {
-  public ayam(LikesView paramLikesView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  public GalleryUrlImageView a;
   
-  public void onClick(View paramView)
-  {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public ayam(ayaa paramayaa) {}
 }
 
 

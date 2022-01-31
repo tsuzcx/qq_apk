@@ -1,32 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class avev
-  extends zep
+  implements bhuk
 {
-  public avev(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public avev(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bhuf parambhuf) {}
   
-  public zdw a(Activity paramActivity, zec paramzec)
+  public void OnClick(View paramView, int paramInt)
   {
-    return super.a(paramActivity, paramzec);
-  }
-  
-  public zdy a(Activity paramActivity, zec paramzec)
-  {
-    return new avex((PicBrowserActivity)paramActivity, paramzec);
-  }
-  
-  public zec a(Activity paramActivity)
-  {
-    paramActivity = new avfg(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public zed a(Activity paramActivity, zec paramzec)
-  {
-    return null;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bhuf != null) {
+        this.jdField_a_of_type_Bhuf.dismiss();
+      }
+      return;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 

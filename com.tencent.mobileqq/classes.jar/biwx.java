@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class biwx
   implements View.OnClickListener
 {
-  public biwx(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public biwx(LocationDetailActivity paramLocationDetailActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.b(false);
   }
 }
 

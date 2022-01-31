@@ -1,57 +1,26 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class acis
-  implements aulr
+class acis
+  implements DialogInterface.OnClickListener
 {
-  public acis(ChatHistoryFileActivity paramChatHistoryFileActivity, aulk paramaulk, ault paramault, List paramList) {}
+  acis(acir paramacir) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aulk.a(new acit(this));
-    this.jdField_a_of_type_Aulk.show();
-  }
-  
-  public void a(aulp paramaulp)
-  {
-    if ((paramaulp != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
-      switch (paramaulp.a)
-      {
-      }
-    }
-    for (;;)
+    if (this.a.a.a() != null)
     {
-      if (this.jdField_a_of_type_Aulk.isShowing()) {
-        this.jdField_a_of_type_Aulk.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-      this.jdField_a_of_type_Ault.b();
-      return;
-      aulq.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      aulq.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      aulq.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
     }
-  }
-  
-  public void a(aulp paramaulp, int paramInt)
-  {
-    this.jdField_a_of_type_Aulk.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aulk.isShowing()) {
-      this.jdField_a_of_type_Aulk.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    this.jdField_a_of_type_Ault.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Ault.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity, this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

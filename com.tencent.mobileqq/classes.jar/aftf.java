@@ -1,57 +1,17 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
-import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aftf
-  extends aelt
+class aftf
+  extends afuf
 {
-  public aeov a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public VoicePrintUtils.VoicePrintView a;
-  public BreathAnimationLayout a;
-  public PttAudioChangeView a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public StringBuilder a;
-  private boolean a;
-  public ImageView b;
-  public TextView b;
-  public PttAudioChangeView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
-  
-  public void a()
+  aftf(afpy paramafpy)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
-    }
+    super(paramafpy, null);
   }
   
-  public void a(boolean paramBoolean)
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return new aflo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

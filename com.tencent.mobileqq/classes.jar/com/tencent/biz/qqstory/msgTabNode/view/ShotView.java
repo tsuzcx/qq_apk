@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -20,9 +20,9 @@ public class ShotView
   public ShotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2131561493, this);
-    ((TextView)findViewById(2131377884)).setText(alpo.a(2131714476));
-    ((ImageView)findViewById(2131367514)).setImageResource(2130846115);
+    LayoutInflater.from(paramContext).inflate(2131561511, this);
+    ((TextView)findViewById(2131377938)).setText(alud.a(2131714488));
+    ((ImageView)findViewById(2131367524)).setImageResource(2130846188);
   }
 }
 

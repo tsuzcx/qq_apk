@@ -1,6 +1,12 @@
-public abstract interface bhcb
+import android.os.Handler;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04884.1;
+
+public class bhcb
 {
-  public abstract void a();
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    bhch.a().a().post(new MiniProgramLpReportDC04884.1(paramString2, paramString1, paramString3));
+  }
 }
 
 

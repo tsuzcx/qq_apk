@@ -1,19 +1,28 @@
-import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class alym
+  extends awhx
 {
-  public int a;
-  public long a;
-  public signature.SignatureReport a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public alym(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  alym(alyh paramalyh, String paramString)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
+      PhoneContactManagerImp.d(this.a, paramBoolean);
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
   }
 }
 

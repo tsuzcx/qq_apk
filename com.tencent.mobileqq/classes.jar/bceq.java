@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-
-public class bceq
-  implements View.OnClickListener
+class bceq
+  implements bdpc
 {
-  public bceq(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  bceq(bcep parambcep) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+    this.a.b(bcep.a(this.a));
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

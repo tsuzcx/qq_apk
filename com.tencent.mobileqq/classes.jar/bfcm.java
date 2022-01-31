@@ -1,24 +1,13 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
 
 public class bfcm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  public bfcm(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public bfcm(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public void onGlobalLayout()
-  {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
-    {
-      int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
-    }
-    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

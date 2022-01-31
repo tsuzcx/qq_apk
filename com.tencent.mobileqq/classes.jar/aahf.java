@@ -1,18 +1,43 @@
-import android.os.SystemClock;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.qphone.base.util.QLog;
 
-class aahf
-  implements affd
+final class aahf
+  extends BroadcastReceiver
 {
-  aahf(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
-  
-  public void a() {}
-  
-  public void b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
+    boolean bool = false;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            bfrz.c("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.b();
+          return;
+        }
+        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
+          break;
+        }
+        aahe.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      } while (!QLog.isColorLevel());
+      bfrz.c("GameCenterBroadcastReceiver", "battery cap= " + aahe.a);
+      return;
+    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
+    int i = paramIntent.getIntExtra("status", -1);
+    if ((i == 2) || (i == 5)) {
+      bool = true;
     }
+    aahe.b = bool;
   }
 }
 

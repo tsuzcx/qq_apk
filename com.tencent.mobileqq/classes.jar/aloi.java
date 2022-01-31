@@ -1,20 +1,42 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aloi
-  implements View.OnClickListener
+class aloi
+  extends BroadcastReceiver
 {
-  public aloi(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
+  aloi(aloh paramaloh) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
-      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
+    if (!TextUtils.isEmpty(aloh.a(this.a)))
+    {
+      int i = paramIntent.getIntExtra("result", -1);
+      paramContext = "{ \"ret\": " + i + " }";
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+      }
+      if (i != 0) {
+        break label176;
+      }
+      if (aloh.a(this.a) != null)
+      {
+        paramContext = new Intent(aloh.a(this.a), ChatActivity.class);
+        paramContext.putExtra("uin", alof.aC);
+        paramContext.putExtra("uintype", 0);
+        paramContext.putExtra("uinname", "babyQ");
+        paramContext.putExtra("selfSet_leftViewText", aloh.a(this.a).getString(2131690623));
+        aloh.a(this.a).startActivity(paramContext);
+        aloh.a(this.a).finish();
+      }
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
+    return;
+    label176:
+    this.a.callJs(aloh.a(this.a) + "(" + paramContext + ");");
   }
 }
 

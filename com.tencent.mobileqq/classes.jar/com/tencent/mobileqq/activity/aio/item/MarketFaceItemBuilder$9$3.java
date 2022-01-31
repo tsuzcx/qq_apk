@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqr;
-import afrd;
-import afrf;
+import afvg;
+import afvs;
+import afvu;
 import android.widget.ImageView;
-import apnf;
+import apro;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 public class MarketFaceItemBuilder$9$3
   implements Runnable
 {
-  public MarketFaceItemBuilder$9$3(afrd paramafrd, afrf paramafrf, Emoticon paramEmoticon) {}
+  public MarketFaceItemBuilder$9$3(afvs paramafvs, afvu paramafvu, Emoticon paramEmoticon) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Afrf != null) && (this.jdField_a_of_type_Afrf.f != null))
+    if ((this.jdField_a_of_type_Afvu != null) && (this.jdField_a_of_type_Afvu.f != null))
     {
-      if ((!this.jdField_a_of_type_Afrd.a.f) || (!this.jdField_a_of_type_Afrd.a.a.b())) {
+      if ((!this.jdField_a_of_type_Afvs.a.f) || (!this.jdField_a_of_type_Afvs.a.a.b())) {
         break label107;
       }
-      this.jdField_a_of_type_Afrf.f.setVisibility(0);
-      this.jdField_a_of_type_Afrf.f.setImageResource(2130837910);
+      this.jdField_a_of_type_Afvu.f.setVisibility(0);
+      this.jdField_a_of_type_Afvu.f.setImageResource(2130837911);
       if (QLog.isColorLevel()) {
         QLog.d("MarketFaceItemBuilder", 2, "magicFaceIcon visible,h5source download sucess and doesnot needplay epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
       }
     }
     return;
     label107:
-    this.jdField_a_of_type_Afrf.f.setVisibility(8);
+    this.jdField_a_of_type_Afvu.f.setVisibility(8);
   }
 }
 

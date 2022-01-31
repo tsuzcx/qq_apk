@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
 class akvw
-  implements DialogInterface.OnClickListener
+  implements oir
 {
-  akvw(akvu paramakvu) {}
+  akvw(akvv paramakvv, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (akvu.a(this.a) != null)
+    akvv.b = false;
+    if (paramInt == 1)
     {
-      akvu.b(this.a).setVisibility(8);
-      akvu.c(this.a).setVisibility(8);
-      akvu.b(this.a, false);
-      akvu.a(this.a).a();
+      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
+      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
     }
-    this.a.a(6, 3, true);
   }
 }
 

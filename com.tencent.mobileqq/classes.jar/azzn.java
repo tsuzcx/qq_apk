@@ -1,35 +1,128 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlSerializer;
+
 public class azzn
-  extends azzf
+  extends azuu
 {
-  private float d;
-  private float e;
+  public boolean c;
+  public boolean d = true;
+  public int k;
+  public int l = 48;
+  public int m = 1;
+  public int n = 1;
   
-  public azzn(int paramInt, float paramFloat1, float paramFloat2)
+  public azzn()
   {
-    super(paramInt, 2, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
+    this(null);
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public azzn(String paramString)
   {
-    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
-    if (this.e - this.d > 0.0F) {
-      if (this.jdField_c_of_type_Float >= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
-    for (;;)
+    super(paramString, "td");
+  }
+  
+  public TextView a(Context paramContext)
+  {
+    return new TextView(paramContext);
+  }
+  
+  public String a()
+  {
+    return "td";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.n = paramObjectInput.readInt();
+    this.l = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.n);
+    paramObjectOutput.writeInt(this.l);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.a);
+    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.n));
+    paramXmlSerializer.attribute(null, "align", String.valueOf(this.l));
+    paramXmlSerializer.endTag(null, this.a);
+    super.a(paramXmlSerializer);
+  }
+  
+  public boolean a(azwj paramazwj)
+  {
+    try
     {
-      if (paramInt >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Float = this.e;
+      Object localObject = paramazwj.a("weight");
+      if (localObject != null) {}
+      for (int i = Integer.parseInt((String)localObject);; i = 0)
+      {
+        this.n = i;
+        localObject = paramazwj.a("align");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break;
+        }
+        localObject = ((String)localObject).split("\\|");
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("left", Integer.valueOf(3));
+        localHashMap.put("right", Integer.valueOf(5));
+        localHashMap.put("top", Integer.valueOf(48));
+        localHashMap.put("bottom", Integer.valueOf(80));
+        localHashMap.put("center", Integer.valueOf(17));
+        i = 0;
+        while (i < localObject.length)
+        {
+          if (!TextUtils.isEmpty(localObject[i]))
+          {
+            String str = localObject[i].toLowerCase();
+            if (localHashMap.containsKey(str))
+            {
+              int j = this.l;
+              this.l = (((Integer)localHashMap.get(str)).intValue() | j);
+            }
+          }
+          i += 1;
+        }
       }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_c_of_type_Float <= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
+      return super.a(paramazwj);
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      this.n = 1;
+    }
+  }
+  
+  public int b()
+  {
+    return this.m;
+  }
+  
+  protected int c()
+  {
+    return 2131379018;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.k != 0)) {
+      return -1;
+    }
+    return -16777216;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 

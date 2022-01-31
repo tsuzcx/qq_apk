@@ -1,27 +1,29 @@
-public class umf
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public abstract class umf<T extends IEventReceiver, EVENT extends uli>
+  extends QQUIEventReceiver<T, EVENT>
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
-  
-  static
+  public umf(T paramT)
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-    c = false;
-    jdField_a_of_type_Int = 725;
+    super(paramT);
   }
   
-  public static boolean a()
+  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
   {
-    return false;
+    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
+    {
+      c(paramT, paramEVENT);
+      return;
+    }
+    b(paramT, paramEVENT);
   }
   
-  public static boolean b()
-  {
-    return true;
-  }
+  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  
+  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

@@ -1,60 +1,51 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenRsp;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.1;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.2;
 
 public class bgzd
-  extends bgzp
 {
-  private INTERFACE.StGetSDKOpenKeyTokenReq a = new INTERFACE.StGetSDKOpenKeyTokenReq();
+  private static String jdField_a_of_type_JavaLangString;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public bgzd(COMM.StCommonExt paramStCommonExt)
+  public bgzd()
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    jdField_a_of_type_JavaLangString = toString();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  protected String a()
+  public void a()
   {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetSDKOpenKeyTokenRsp localStGetSDKOpenKeyTokenRsp = new INTERFACE.StGetSDKOpenKeyTokenRsp();
     try
     {
-      localStGetSDKOpenKeyTokenRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetSDKOpenKeyTokenRsp != null)
+      if (!this.b)
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
-        return paramArrayOfByte;
+        this.b = true;
+        bhch.a().a().post(new GameReportManager.1(this));
       }
-      QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
-      return null;
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
+      QMLog.e(jdField_a_of_type_JavaLangString, "onJsError", localThrowable);
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void b()
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetSDKOpenKeyToken";
+    try
+    {
+      bhch.a().a().post(new GameReportManager.2(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e(jdField_a_of_type_JavaLangString, "onFirstFrame", localThrowable);
+    }
   }
 }
 

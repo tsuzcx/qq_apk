@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.net.MalformedURLException;
@@ -61,7 +61,7 @@ public class ComponentTopicItemSingle
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559981, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559980, this, true);
   }
   
   public void a() {}
@@ -73,9 +73,9 @@ public class ComponentTopicItemSingle
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364879));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377884));
-    this.b = ((TextView)findViewById(2131365102));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364881));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
+    this.b = ((TextView)findViewById(2131365104));
   }
   
   public void a(Object paramObject)
@@ -98,7 +98,7 @@ public class ComponentTopicItemSingle
       Object localObject = new URL(paramObject.d);
       orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.c + paramObject.a);
-      localObject = String.format(getResources().getString(2131719051), new Object[] { bjxj.a(paramObject.jdField_b_of_type_Int) });
+      localObject = String.format(getResources().getString(2131719063), new Object[] { bkbq.a(paramObject.jdField_b_of_type_Int) });
       this.b.setText((CharSequence)localObject);
       if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
       {

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import akro;
-import akun;
-import akuq;
+import akwd;
+import akzc;
+import akzf;
 import com.tencent.qphone.base.util.QLog;
 
 public class CmGameRscDownloader$1
   implements Runnable
 {
-  public CmGameRscDownloader$1(akun paramakun) {}
+  public CmGameRscDownloader$1(akzc paramakzc) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameRscDownloader", 2, "download now");
     }
-    akro.a(new Object[] { "[downloadRes], for delay:", Integer.valueOf(akun.a(this.this$0).e), ",and download now" });
+    akwd.a(new Object[] { "[downloadRes], for delay:", Integer.valueOf(akzc.a(this.this$0).e), ",and download now" });
     this.this$0.a();
   }
 }

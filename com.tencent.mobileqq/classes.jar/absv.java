@@ -1,35 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 class absv
-  extends SimpleObserver<atzw>
+  implements Comparator<msg_comm.Msg>
 {
-  absv(absu paramabsu, abte paramabte) {}
+  absv(absu paramabsu) {}
   
-  public void a(atzw paramatzw)
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    abte localabte = this.jdField_a_of_type_Abte;
-    if (paramatzw.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localabte.a(paramatzw, i);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    if ((paramError instanceof AppInfoError)) {}
-    for (int i = ((AppInfoError)paramError).type;; i = 0)
-    {
-      this.jdField_a_of_type_Abte.a(null, i);
-      return;
-    }
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 

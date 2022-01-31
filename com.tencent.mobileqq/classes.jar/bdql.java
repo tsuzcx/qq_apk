@@ -1,45 +1,68 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.os.IBinder;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public class bdql
-  extends QIPCModule
+public final class bdql
 {
-  private static bdql a;
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method b;
+  private static Method c;
+  private static Method d;
   
-  public bdql(String paramString)
+  static
   {
-    super(paramString);
-  }
-  
-  public static bdql a()
-  {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new bdql("VasMonitorIPCModule");
-      }
-      return a;
+      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
+      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
+      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
+      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
+      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
+      return;
     }
-    finally {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static IBinder a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
+    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+  }
+  
+  private static Object a(Method paramMethod, Object... paramVarArgs)
+  {
+    try
+    {
+      paramMethod = paramMethod.invoke(null, paramVarArgs);
+      return paramMethod;
     }
-    if (paramBundle == null) {
-      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
-    }
-    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+    catch (IllegalArgumentException paramMethod)
+    {
+      paramMethod.printStackTrace();
       return null;
     }
-    bdqk.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    catch (IllegalAccessException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramMethod)
+    {
+      paramMethod.printStackTrace();
+    }
     return null;
   }
 }

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import acvg;
+import aczv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdiv;
+import bdne;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class FriendProfileCardActivity$32$2
   implements Runnable
 {
-  public FriendProfileCardActivity$32$2(acvg paramacvg) {}
+  public FriendProfileCardActivity$32$2(aczv paramaczv) {}
   
   public void run()
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("showPresentRed", 0).edit();
     localEditor.putBoolean("showRed", false);
-    bdiv.a(localEditor);
+    bdne.a(localEditor);
   }
 }
 

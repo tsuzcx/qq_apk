@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afqj
-  implements DialogInterface.OnClickListener
+  extends afuf
 {
-  afqj(afqh paramafqh, MessageForLongMsg paramMessageForLongMsg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afqj(afpy paramafpy)
   {
-    acex.a(this.jdField_a_of_type_Afqh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afqh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afqh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afve(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

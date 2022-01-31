@@ -1,8 +1,25 @@
-public abstract interface bhfw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import java.util.Iterator;
+import java.util.List;
+
+public class bhfw
+  implements View.OnClickListener
 {
-  public abstract void onTimeCancel();
+  public bhfw(NativeViewContainer paramNativeViewContainer) {}
   
-  public abstract void onTimeConfirm(String paramString1, String paramString2);
+  public void onClick(View paramView)
+  {
+    paramView = NativeViewContainer.a(this.a).iterator();
+    while (paramView.hasNext())
+    {
+      bhfx localbhfx = (bhfx)paramView.next();
+      if (localbhfx != null) {
+        localbhfx.a();
+      }
+    }
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import aokd;
+import aoom;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class MiniAppTransferModule$1
     DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(336);
     if ((localDesktopDataManager != null) && (!TextUtils.isEmpty(this.val$appid)))
     {
-      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < aokd.c())) {
+      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < aoom.c())) {
         break label64;
       }
       this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));

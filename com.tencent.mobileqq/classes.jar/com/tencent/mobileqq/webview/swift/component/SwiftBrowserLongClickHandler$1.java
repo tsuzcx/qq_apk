@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import amzy;
 import android.app.Activity;
-import beds;
+import aneh;
+import beib;
 
 public class SwiftBrowserLongClickHandler$1
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$1(beds parambeds, Activity paramActivity) {}
+  public SwiftBrowserLongClickHandler$1(beib parambeib, Activity paramActivity) {}
   
   public void run()
   {
-    amzy.a().a(this.a, this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
+    aneh.a().a(this.a, this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
   }
 }
 

@@ -1,15 +1,6 @@
-import android.support.annotation.NonNull;
-
-class blse
-  implements blsz
+public class blse
 {
-  blse(blsd paramblsd) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    return bcjk.b(paramString);
-  }
+  public static final String[] a = { "Jitter", "SoulOut" };
 }
 
 

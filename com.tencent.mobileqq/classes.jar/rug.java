@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.widget.ListView;
 
 public abstract interface rug
-  extends bhuy
+  extends bhzf
 {
   public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
   

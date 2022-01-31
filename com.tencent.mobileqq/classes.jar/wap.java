@@ -1,26 +1,27 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wap
-  extends whw
+public final class wap
+  extends QQUIEventReceiver<wah, wpd>
 {
-  protected final int a;
-  protected final String a;
-  
-  public wap(String paramString1, int paramInt, String paramString2)
+  public wap(@NonNull wah paramwah)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramwah);
   }
   
-  protected uxv a(String paramString, List<String> paramList)
+  public void a(@NonNull wah paramwah, @NonNull wpd paramwpd)
   {
-    return new vab(paramString, paramList);
+    if ((paramwpd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwah.a != null) && (TextUtils.equals(paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwah.a.b))) {
+      paramwah.i();
+    }
   }
   
-  protected uxw a()
+  public Class acceptEventClass()
   {
-    return new waq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
+    return wpd.class;
   }
 }
 

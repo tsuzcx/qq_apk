@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.CirclePageIndicator.SavedState;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 
-public final class bhrk
-  implements Parcelable.Creator<CirclePageIndicator.SavedState>
+public class bhrk
+  implements PtuFilterResource
 {
-  public CirclePageIndicator.SavedState a(Parcel paramParcel)
+  public boolean checkPendantVersionOK()
   {
-    return new CirclePageIndicator.SavedState(paramParcel, null);
+    return azkt.d();
   }
   
-  public CirclePageIndicator.SavedState[] a(int paramInt)
+  public String getPortraitPathDir()
   {
-    return new CirclePageIndicator.SavedState[paramInt];
+    return getSoPathDir();
+  }
+  
+  public String getSoPathDir()
+  {
+    return azkt.b(BaseApplicationImpl.getContext());
   }
 }
 

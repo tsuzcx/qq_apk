@@ -1,20 +1,28 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-final class bbkx
-  implements TextUtils.EllipsizeCallback
+public class bbkx
+  implements URLDrawable.URLDrawableListener
 {
-  bbkx(bbky parambbky, String paramString) {}
+  public bbkx(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bbkz parambbkz) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_Bbky.c.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Bbky.c.setText(new baig(ndd.b(ndd.c(str + "...")), 3, 14));
+    this.jdField_a_of_type_Bbkz.a(null);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_Bbkz.a(null);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = bfln.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bbkz.a(paramURLDrawable);
   }
 }
 

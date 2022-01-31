@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import aply;
+import apqh;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MessengerService$IncomingHandler$31
   implements Runnable
 {
-  public MessengerService$IncomingHandler$31(aply paramaply, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, Bundle paramBundle1, Bundle paramBundle2, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  public MessengerService$IncomingHandler$31(apqh paramapqh, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, Bundle paramBundle1, Bundle paramBundle2, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
   
   public void run()
   {
-    aply.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    apqh.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
 }
 

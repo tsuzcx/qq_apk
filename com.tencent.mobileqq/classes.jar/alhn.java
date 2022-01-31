@@ -1,39 +1,8 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class alhn
-  implements OnCompositionLoadedListener
+public abstract class alhn
 {
-  public alhn(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
+  public abstract void a(int paramInt);
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    if (paramLottieComposition == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
-      }
-    }
-    do
-    {
-      return;
-      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new alho(this));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-    }
-    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

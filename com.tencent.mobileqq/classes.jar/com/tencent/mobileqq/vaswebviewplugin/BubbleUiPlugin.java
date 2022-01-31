@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
 import android.os.Handler;
-import aphy;
-import apmy;
-import becq;
+import apmh;
+import aprh;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -13,19 +13,19 @@ public class BubbleUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "BubbleUiPlugin";
-  aphy mOnRemoteResp = new BubbleUiPlugin.2(this);
+  apmh mOnRemoteResp = new BubbleUiPlugin.2(this);
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    apmy.a().b(this.mOnRemoteResp);
+    aprh.a().b(this.mOnRemoteResp);
   }
   
   void OnActivityResume()
   {
     super.OnActivityResume();
-    apmy.a().a(this.mOnRemoteResp);
-    if (apmy.a().a())
+    aprh.a().a(this.mOnRemoteResp);
+    if (aprh.a().a())
     {
       reportBubbleSetting();
       if (QLog.isColorLevel()) {

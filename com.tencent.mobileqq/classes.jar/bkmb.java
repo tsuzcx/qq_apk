@@ -1,19 +1,55 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-
-class bkmb
-  implements MessageQueue.IdleHandler
+public class bkmb
 {
-  bkmb(bklz parambklz, int paramInt1, int paramInt2) {}
+  private static int a;
+  private static int b;
+  private static int c;
+  private static int d;
   
-  public boolean queueIdle()
+  public static int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
+    a();
+    return a;
+  }
+  
+  private static void a()
+  {
+    String[] arrayOfString;
+    if (c == 0)
+    {
+      arrayOfString = baws.a().split("\\.");
+      if (arrayOfString.length >= 4) {}
     }
-    this.jdField_a_of_type_Bklz.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
+    else
+    {
+      return;
+    }
+    try
+    {
+      a = Integer.valueOf(arrayOfString[0]).intValue();
+      b = Integer.valueOf(arrayOfString[1]).intValue();
+      d = Integer.valueOf(arrayOfString[2]).intValue();
+      c = Integer.valueOf(arrayOfString[3]).intValue();
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+  }
+  
+  public static int b()
+  {
+    a();
+    return b;
+  }
+  
+  public static int c()
+  {
+    a();
+    return c;
+  }
+  
+  public static int d()
+  {
+    a();
+    return d;
   }
 }
 

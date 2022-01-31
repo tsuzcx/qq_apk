@@ -2,7 +2,7 @@ import android.os.Bundle;
 import org.json.JSONObject;
 
 class nje
-  implements bcgo
+  implements bckx
 {
   nje(nin paramnin) {}
   

@@ -1,581 +1,328 @@
-import AvatarInfo.QQHeadInfo;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlReq;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlRsp;
-import com.tencent.avatarinfo.MultiHeadUrl.ReqUsrInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspHeadInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspUsrHeadInfo;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
+import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class alnk
-  extends alko
+  extends alnp
+  implements View.OnClickListener
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Hashtable<Integer, ArrayList<FaceInfo>> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean;
-  private Hashtable<String, Long> b = new Hashtable();
+  private static int g;
+  private static int h;
+  private static int i;
+  private static int j;
+  private int jdField_a_of_type_Int = 2;
+  Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int b = 2;
   
-  public alnk(NearbyAppInterface paramNearbyAppInterface)
+  public alnk(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    super(paramNearbyAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = 4;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a()
+  private void b(View paramView, int paramInt)
   {
+    if (!(paramView instanceof ApolloLinearLayout)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "panel is not apolloLinearLayout");
+      }
+    }
+    label525:
+    label1321:
     for (;;)
     {
-      int i;
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-        Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
-        if (!localEnumeration.hasMoreElements()) {
-          break;
-        }
-        i = ((Integer)localEnumeration.nextElement()).intValue();
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
-        if ((i == 200) || (i == 202))
-        {
-          a(i, localArrayList);
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-      }
-      finally {}
-      QLog.d("Q.qqhead.FaceHandler", 2, "checkWaitingRequests,key =" + i);
-    }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-  }
-  
-  private void a(int paramInt, ArrayList<FaceInfo> paramArrayList)
-  {
-    int k = 0;
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      localObject2 = ((StringBuilder)localObject1).append("realGetStrangerFace").append(", size=");
-      if (paramArrayList != null) {}
-      for (i = paramArrayList.size();; i = 0)
-      {
-        ((StringBuilder)localObject2).append(i);
-        if (paramArrayList == null) {
-          break;
-        }
-        i = 0;
-        while (i < paramArrayList.size())
-        {
-          ((StringBuilder)localObject1).append(',').append(paramArrayList.get(i));
-          i += 1;
-        }
-      }
-      QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject1).toString());
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
-    }
-    if (paramInt == 202) {}
-    for (int i = 1;; i = 0)
-    {
-      localObject1 = new MultiHeadUrl.MultiBusidUrlReq();
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.set(0);
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(1));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(32));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.set(i);
-      int j = 0;
-      if (j < paramArrayList.size())
-      {
-        localObject2 = (FaceInfo)paramArrayList.get(j);
-        MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
-        if (i == 0) {}
-        for (;;)
-        {
-          try
-          {
-            localReqUsrInfo.dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-            ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add(localReqUsrInfo);
-            ((FaceInfo)localObject2).a(FaceInfo.l);
-          }
-          catch (Exception localException)
-          {
-            continue;
-          }
-          j += 1;
-          break;
-          if (i == 1) {
-            localReqUsrInfo.dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-          }
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("QQHead_Stranger request.srcUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.get()).append(";srcUin=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()).append("\n\n").append(";dstUsrType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.get()).append(";dstUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.get()).append("\n\n").append(";uinset={");
-        if (paramArrayList != null)
-        {
-          i = k;
-          while (i < paramArrayList.size())
-          {
-            ((StringBuilder)localObject3).append(paramArrayList.get(i) + ",");
-            i += 1;
-          }
-        }
-        ((StringBuilder)localObject3).append("}");
-        QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject3).toString());
-      }
-      Object localObject3 = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-      ((ToServiceMsg)localObject3).extraData.putParcelableArrayList("list", paramArrayList);
-      ((ToServiceMsg)localObject3).extraData.putLong("startTime", System.currentTimeMillis());
-      ((ToServiceMsg)localObject3).extraData.putInt("idType", paramInt);
-      ((ToServiceMsg)localObject3).putWupBuffer(((MultiHeadUrl.MultiBusidUrlReq)localObject1).toByteArray());
-      sendPbReq((ToServiceMsg)localObject3);
-      return;
-    }
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, int paramInt)
-  {
-    paramToServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = localStringBuilder.append("handleGetQQHeadError, result=").append(paramInt).append(", listSize=");
-    if (paramToServiceMsg != null) {}
-    for (paramInt = paramToServiceMsg.size();; paramInt = -1)
-    {
-      ((StringBuilder)localObject).append(paramInt);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() != 0)) {
-        break;
-      }
-      QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
-      return;
-    }
-    paramInt = 0;
-    while (paramInt < paramToServiceMsg.size())
-    {
-      localObject = (FaceInfo)paramToServiceMsg.get(paramInt);
-      a(((FaceInfo)localObject).b(), false);
-      localStringBuilder.append("info=").append(localObject);
-      paramInt += 1;
-    }
-    QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
-  }
-  
-  public void a(FaceInfo paramFaceInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo.faceInfo=" + paramFaceInfo);
-    }
-    Object localObject = paramFaceInfo.b();
-    if (a((String)localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo|repeat info=" + paramFaceInfo);
-      }
-      return;
-    }
-    a((String)localObject, true);
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(paramFaceInfo.b));
-    localObject = localArrayList;
-    if (localArrayList == null)
-    {
-      localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashtable.put(Integer.valueOf(paramFaceInfo.b), localObject);
-    }
-    ((ArrayList)localObject).add(paramFaceInfo);
-    a();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (paramFromServiceMsg != null) {
-      localObject1 = localObject3;
-    }
-    int i;
-    Object localObject2;
-    Object localObject4;
-    label786:
-    label804:
-    int k;
-    try
-    {
-      if (paramFromServiceMsg.getResultCode() == 1000)
-      {
-        localObject1 = localObject3;
-        if (paramObject != null)
-        {
-          localObject1 = new MultiHeadUrl.MultiBusidUrlRsp();
-          ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).mergeFrom((byte[])paramObject);
-        }
-      }
-      paramObject = localObject1;
-    }
-    catch (Exception localException)
-    {
+      int i2 = this.jdField_a_of_type_Int;
+      int i3 = this.b;
+      int k = 0;
+      int m = 0;
       for (;;)
       {
-        paramObject = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.FaceHandler", 2, "handleStrangerFaceResp multiBusidUrlRsp mergeFrom exception..." + localException.getMessage());
+        if (m >= this.b) {
+          break label1321;
         }
-        localException.printStackTrace();
-        continue;
-        if (paramFromServiceMsg != null) {
-          i = paramFromServiceMsg.getResultCode();
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break label804;
-      }
-      paramFromServiceMsg = new StringBuilder();
-      paramFromServiceMsg.append("start ====================================================================================\n\n");
-      paramFromServiceMsg.append("QQHead_Stranger response.srcUidType=" + paramObject.srcUidType.get()).append(";srcUin=" + paramObject.srcUin.get()).append("\n\n").append(";srcTid=" + paramObject.srcTid.get()).append(";srcOpenid=" + paramObject.srcOpenid.get()).append("\n\n").append(";dstUidType=" + paramObject.dstUidType.get()).append(";result=" + paramObject.result.get()).append("\n\n");
-      localObject2 = paramObject.dstUsrHeadInfos.get();
-      if (localObject2 == null) {
-        break label786;
-      }
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (MultiHeadUrl.RspUsrHeadInfo)((Iterator)localObject2).next();
-        paramFromServiceMsg.append("-------------------------------------------------------------------------------------\n\n");
-        paramFromServiceMsg.append("RspUsrHeadInfo.dstUin=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstUin.get()).append(";dstTid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstTid.get()).append(";dstOpenid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstOpenid.get()).append("\n\n");
-        localObject3 = ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstHeadInfos.get().iterator();
-        while (((Iterator)localObject3).hasNext())
+        LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(m);
+        int n = 0;
+        if (n < this.jdField_a_of_type_Int)
         {
-          localObject4 = (MultiHeadUrl.RspHeadInfo)((Iterator)localObject3).next();
-          paramFromServiceMsg.append("RspHeadInfo.usrType=" + ((MultiHeadUrl.RspHeadInfo)localObject4).usrType.get()).append("\n\n").append(";faceType=" + ((MultiHeadUrl.RspHeadInfo)localObject4).faceType.get()).append("\n\n").append(";timestamp=" + ((MultiHeadUrl.RspHeadInfo)localObject4).timestamp.get()).append("\n\n").append(";faceFlag=" + ((MultiHeadUrl.RspHeadInfo)localObject4).faceFlag.get()).append("\n\n").append(";url=" + ((MultiHeadUrl.RspHeadInfo)localObject4).url.get()).append("\n\n").append(";sysid=" + ((MultiHeadUrl.RspHeadInfo)localObject4).sysid.get()).append("\n\n");
-        }
-      }
-      paramFromServiceMsg.append("end ====================================================================================\n\n");
-      QLog.i("Q.qqhead.FaceHandler", 2, paramFromServiceMsg.toString());
-      localObject4 = paramObject.dstUsrHeadInfos.get();
-      localObject3 = new ArrayList();
-      paramFromServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
-      localArrayList = new ArrayList();
-      k = paramObject.dstUidType.get();
-      j = paramToServiceMsg.extraData.getInt("idType");
-      localbcxl = (bcxl)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216);
-      localIterator1 = paramFromServiceMsg.iterator();
-    }
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-    {
-      i = 65535;
-      if (paramObject != null)
-      {
-        i = paramObject.result.get();
-        a(paramToServiceMsg, i);
-        return;
-      }
-    }
-    ArrayList localArrayList;
-    int j;
-    bcxl localbcxl;
-    Iterator localIterator1;
-    FaceInfo localFaceInfo;
-    if (localIterator1.hasNext())
-    {
-      localFaceInfo = (FaceInfo)localIterator1.next();
-      localFaceInfo.a(FaceInfo.m);
-      Iterator localIterator2 = ((List)localObject4).iterator();
-      label921:
-      if (localIterator2.hasNext())
-      {
-        paramToServiceMsg = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-        if (k == 0)
-        {
-          paramObject = String.valueOf(paramToServiceMsg.dstUin.get());
-          label958:
-          if (!localFaceInfo.jdField_a_of_type_JavaLangString.equals(paramObject)) {
-            break label1065;
+          View localView = localLinearLayout.getChildAt(n);
+          almb localalmb = (almb)localView.getTag();
+          int i1 = i2 * i3 * paramInt + k;
+          if (this.jdField_a_of_type_JavaUtilList == null) {
+            break;
           }
-          localObject2 = paramToServiceMsg.dstHeadInfos.get();
-          paramFromServiceMsg = null;
-          paramToServiceMsg = null;
-          Iterator localIterator3 = ((List)localObject2).iterator();
-          label992:
-          if (!localIterator3.hasNext()) {
-            break label1091;
-          }
-          localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-          i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
-          if (i != 1) {
-            break label1067;
-          }
-          paramFromServiceMsg = (FromServiceMsg)localObject2;
-        }
-      }
-    }
-    label1158:
-    for (;;)
-    {
-      break label992;
-      if (k == 1)
-      {
-        paramObject = String.valueOf(paramToServiceMsg.dstTid.get());
-        break label958;
-      }
-      paramObject = paramToServiceMsg.dstOpenid.get();
-      break label958;
-      label1065:
-      break label921;
-      label1067:
-      if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0))
-      {
-        paramToServiceMsg = (ToServiceMsg)localObject2;
-        continue;
-        label1091:
-        if (paramToServiceMsg != null)
-        {
-          label1095:
-          i = 0;
-          paramFromServiceMsg = localbcxl.a("stranger_" + String.valueOf(localFaceInfo.b) + "_" + localFaceInfo.jdField_a_of_type_JavaLangString);
-          if (localbcxl.a(localFaceInfo)) {
-            break label1353;
-          }
-          i = 1;
-          if (i == 0) {
-            break label1396;
-          }
-          paramFromServiceMsg = new QQHeadInfo();
-          paramFromServiceMsg.headLevel = localFaceInfo.jdField_a_of_type_Byte;
-          paramFromServiceMsg.idType = j;
-          paramFromServiceMsg.phoneNum = paramObject;
-          paramFromServiceMsg.dwTimestamp = paramToServiceMsg.timestamp.get();
-          paramFromServiceMsg.cHeadType = ((byte)paramToServiceMsg.faceType.get());
-          paramFromServiceMsg.dstUsrType = 32;
-          paramFromServiceMsg.dwFaceFlgas = ((byte)paramToServiceMsg.faceFlag.get());
-          paramFromServiceMsg.downLoadUrl = paramToServiceMsg.url.get();
-          paramFromServiceMsg.systemHeadID = ((short)paramToServiceMsg.sysid.get());
-          paramFromServiceMsg.originUsrType = paramToServiceMsg.usrType.get();
-          if (!paramToServiceMsg.headVerify.has()) {
-            break label1398;
-          }
-        }
-        label1353:
-        label1396:
-        label1398:
-        for (paramToServiceMsg = paramToServiceMsg.headVerify.get();; paramToServiceMsg = "")
-        {
-          paramFromServiceMsg.headVerify = paramToServiceMsg;
-          localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = paramFromServiceMsg;
-          localArrayList.add(localFaceInfo);
-          break label921;
-          if (paramFromServiceMsg != null)
+          label311:
+          float f;
+          label362:
+          int i4;
+          Object localObject1;
+          if (i1 < this.jdField_a_of_type_JavaUtilList.size())
           {
-            paramToServiceMsg = paramFromServiceMsg;
-            break label1095;
-          }
-          if (!QLog.isColorLevel()) {
-            break label921;
-          }
-          QLog.d("Q.qqhead.FaceHandler", 2, "there is no headinfo uin=" + paramObject);
-          break label921;
-          break;
-          if (paramFromServiceMsg != null)
-          {
-            if (paramFromServiceMsg.headImgTimestamp != paramToServiceMsg.timestamp.get())
+            ApolloActionData localApolloActionData = ((allz)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
+            localalmb.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838480);
+            localalmb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            localalmb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((allz)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
+            localalmb.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
+            localalmb.jdField_a_of_type_Allz = ((allz)this.jdField_a_of_type_JavaUtilList.get(i1));
+            if (!TextUtils.isEmpty(localApolloActionData.iconUrl))
             {
-              i = 1;
-              break label1158;
+              localalmb.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(aldt.a(String.valueOf(localApolloActionData.iconUrl.hashCode()), null, localApolloActionData.iconUrl, true));
+              localalmb.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
             }
-            ((List)localObject3).add(localFaceInfo);
-            break label1158;
-          }
-          i = 1;
-          break label1158;
-          break label921;
-        }
-        i = 0;
-        while (i < localArrayList.size())
-        {
-          localbcxl.a((FaceInfo)localArrayList.get(i));
-          i += 1;
-        }
-        if (((List)localObject3).size() <= 0) {
-          break;
-        }
-        try
-        {
-          paramToServiceMsg = new ArrayList();
-          i = 0;
-          while (i < ((List)localObject3).size())
-          {
-            paramFromServiceMsg = (FaceInfo)((List)localObject3).get(i);
-            paramToServiceMsg.add("stranger_" + String.valueOf(j) + "_" + paramFromServiceMsg.jdField_a_of_type_JavaLangString);
-            a(paramFromServiceMsg.b(), false);
-            i += 1;
-          }
-          localbcxl.a(paramToServiceMsg, System.currentTimeMillis());
-          return;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          paramToServiceMsg.printStackTrace();
-          return;
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {
-      try
-      {
-        this.b.remove(paramString);
-        return;
-      }
-      finally {}
-    }
-    ArrayList localArrayList;
-    Object localObject2;
-    if (this.b.size() > 30)
-    {
-      long l = System.currentTimeMillis();
-      localArrayList = new ArrayList();
-      localObject2 = this.b.keys();
-      while (((Enumeration)localObject2).hasMoreElements())
-      {
-        String str = (String)((Enumeration)localObject2).nextElement();
-        if (Math.abs(l - ((Long)this.b.get(str)).longValue()) > 60000L) {
-          localArrayList.add(paramString);
-        }
-      }
-    }
-    for (;;)
-    {
-      int i;
-      if (i < localArrayList.size())
-      {
-        localObject2 = (String)localArrayList.get(i);
-        this.b.remove(paramString);
-        i += 1;
-      }
-      else
-      {
-        this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        break;
-        i = 0;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    for (;;)
-    {
-      boolean bool1;
-      boolean bool3;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (!this.b.containsKey(paramString)) {
-          break label212;
-        }
-        long l = ((Long)this.b.get(paramString)).longValue();
-        if (Math.abs(System.currentTimeMillis() - l) > 60000L)
-        {
-          this.b.remove(paramString);
-          bool1 = false;
-          bool2 = bool1;
-          if (!bool1)
-          {
-            bool3 = bdag.a();
-            if (((bool3) && (bdag.a() < 2048L)) || ((!bool3) && (bdag.b() < 102400L)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.FaceHandler", 2, "getQQHead|fail, storage is not enough. key=" + paramString + ", isExistSDCard=" + bool3);
+            if (!TextUtils.isEmpty(localalmb.jdField_a_of_type_Allz.b)) {
+              if (XPanelContainer.d == 0)
+              {
+                i1 = 1;
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+                localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+                localalmb.e.setVisibility(0);
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setText(localalmb.jdField_a_of_type_Allz.b);
+                if (i1 == 0) {
+                  break label1011;
+                }
+                f = 3.0F;
+                i4 = aepi.a(f, this.jdField_a_of_type_AndroidContentContext.getResources());
+                localObject1 = (RelativeLayout.LayoutParams)localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+                ((RelativeLayout.LayoutParams)localObject1).topMargin = i4;
+                ((RelativeLayout.LayoutParams)localObject1).width = (ApolloLinearLayout.e - i4 * 2);
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - i4 * 3);
+                localObject1 = (RelativeLayout.LayoutParams)localalmb.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+                if (i1 == 0) {
+                  break label1018;
+                }
+                f = 2.0F;
+                label444:
+                ((RelativeLayout.LayoutParams)localObject1).topMargin = aepi.a(f, this.jdField_a_of_type_AndroidContentContext.getResources());
+                localalmb.e.setBackgroundResource(2130838327);
+                if (localalmb.jdField_a_of_type_Allz.d != 1) {
+                  break label1083;
+                }
+                if (i1 == 0) {
+                  break label1025;
+                }
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(8.0F);
+                if (i == 0) {
+                  i = aksb.a(localalmb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+                }
+                ((RelativeLayout.LayoutParams)localObject1).width = i;
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-4473925);
+                localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(null);
+                localObject1 = localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout;
+                if (i1 == 0) {
+                  break label1223;
+                }
+                f = 3.0F;
+                label559:
+                ((RelativeLayout)localObject1).setPadding(0, 0, 0, aepi.a(f, this.jdField_a_of_type_AndroidContentContext.getResources()));
+                localalmb.jdField_c_of_type_AndroidWidgetTextView.setMaxLines(3);
+                label587:
+                ApolloLinearLayout.setApolloActionIcon(localalmb.jdField_a_of_type_Allz.g, localalmb.jdField_a_of_type_Allz.a, localalmb);
+                if ((localApolloActionData.personNum == 1) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))) {
+                  localalmb.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+                }
+                i1 = this.b;
+                i4 = this.jdField_a_of_type_Int;
+                int i5 = this.jdField_a_of_type_Int;
+                localObject1 = (RelativeLayout)localView;
+                if ((this.f == -1) || (this.f != i1 * paramInt * i4 + i5 * m + n)) {
+                  break label1272;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloSlaveViewBinder", 2, new Object[] { "[updateBinderPanel] highlight item, start animation, mHighlightItemIndex=", Integer.valueOf(this.f), ", name=", localApolloActionData.actionName, ",id=", Integer.valueOf(localApolloActionData.actionId), ", pkgId=", Integer.valueOf(this.e) });
+                }
+                if (localalmb.jdField_a_of_type_AndroidViewView != null)
+                {
+                  ((RelativeLayout)localObject1).removeView(localalmb.jdField_a_of_type_AndroidViewView);
+                  localalmb.jdField_a_of_type_AndroidViewView = null;
+                }
+                Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131362995);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131362995);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131362995);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131362995);
+                RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+                localRelativeLayout.setId(2131362616);
+                localRelativeLayout.setBackgroundDrawable(null);
+                ((RelativeLayout)localObject1).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject2);
+                localalmb.jdField_a_of_type_AndroidViewView = localRelativeLayout;
+                localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+                ((ImageView)localObject2).setImageResource(2130838477);
+                ((ImageView)localObject2).setVisibility(8);
+                localRelativeLayout.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
+                ((ImageView)localObject2).postDelayed(new ApolloSlaveViewBinder.1(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localalmb), 200L);
+                this.f = -1;
+                label980:
+                localView.setContentDescription(localApolloActionData.actionName);
               }
-              bool2 = true;
             }
           }
-          else
+          for (;;)
           {
-            return bool2;
+            k += 1;
+            n += 1;
+            break;
+            i1 = 0;
+            break label311;
+            label1011:
+            f = 5.0F;
+            break label362;
+            label1018:
+            f = 5.0F;
+            break label444;
+            localalmb.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - i4 * 2);
+            localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(12.0F);
+            if (g == 0) {
+              g = aksb.a(localalmb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+            }
+            ((RelativeLayout.LayoutParams)localObject1).width = g;
+            break label525;
+            label1083:
+            if (i1 != 0)
+            {
+              localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(7.0F);
+              if (j == 0) {
+                j = aksb.a(localalmb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+              }
+              ((RelativeLayout.LayoutParams)localObject1).width = j;
+              label1127:
+              localObject1 = localalmb.jdField_c_of_type_AndroidWidgetTextView;
+              if (i1 == 0) {
+                break label1216;
+              }
+            }
+            label1216:
+            for (f = 7.0F;; f = 10.0F)
+            {
+              ((TextView)localObject1).setTextSize(f);
+              localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+              localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838328);
+              break;
+              localalmb.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+              if (h == 0) {
+                h = aksb.a(localalmb.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+              }
+              ((RelativeLayout.LayoutParams)localObject1).width = h;
+              break label1127;
+            }
+            label1223:
+            f = 9.0F;
+            break label559;
+            localalmb.e.setBackgroundDrawable(null);
+            localalmb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            localalmb.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+            localalmb.e.setVisibility(8);
+            break label587;
+            label1272:
+            if (localalmb.jdField_a_of_type_AndroidViewView == null) {
+              break label980;
+            }
+            ((RelativeLayout)localObject1).removeView(localalmb.jdField_a_of_type_AndroidViewView);
+            localalmb.jdField_a_of_type_AndroidViewView = null;
+            break label980;
+            localView.setContentDescription(null);
+            localView.setOnClickListener(null);
           }
         }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      boolean bool2 = bool1;
-      if (!bool3)
-      {
-        bool2 = bool1;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          bdbs.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getApp().getApplicationContext(), true);
-          return bool1;
-          label212:
-          bool1 = false;
-        }
+        m += 1;
       }
     }
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public int a()
   {
-    if (this.allowCmdSet == null)
+    int n = this.jdField_a_of_type_Int * this.b;
+    int k;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      k = 1;
+    }
+    int i1;
+    int m;
+    do
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("MultibusidURLSvr.HeadUrlReq");
-    }
-    return !this.allowCmdSet.contains(paramString);
+      return k;
+      i1 = this.jdField_a_of_type_JavaUtilList.size();
+      m = 0 + i1 / n;
+      k = m;
+    } while (i1 % n == 0);
+    return m + 1;
   }
   
-  protected Class<? extends alkr> observerClass()
+  public int a(int paramInt)
   {
-    return alnl.class;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return -1;
+    }
+    return paramInt / (this.b * this.jdField_a_of_type_Int);
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public allz a(String paramString)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
-      }
-    }
-    while (!"MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    return new almf(paramString);
   }
+  
+  public View a()
+  {
+    return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public ArrayList<allz> a(int paramInt)
+  {
+    if ((this.c != 9) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    do
+    {
+      return null;
+      k = a();
+    } while ((paramInt < 0) || (paramInt >= k));
+    int k = this.jdField_a_of_type_Int;
+    int m = this.b * k;
+    k = paramInt * m;
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Int * this.b);
+    paramInt = k;
+    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= m + k - 1))
+    {
+      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramInt += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList = null;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    b(paramView, paramInt);
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnk
  * JD-Core Version:    0.7.0.1
  */

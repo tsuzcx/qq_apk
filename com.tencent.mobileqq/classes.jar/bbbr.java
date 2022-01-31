@@ -1,15 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class bbbr
-  implements bhqp
+  extends bbbz
 {
-  public bbbr(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<bawy> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c = false;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bbbr()
   {
-    this.a.onBackPressed();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

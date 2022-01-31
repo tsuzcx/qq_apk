@@ -1,47 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
 
 class bgvj
-  implements AsyncResult
+  implements bgvn
 {
-  bgvj(bgvi parambgvi) {}
+  bgvj(bgvi parambgvi, bgvo parambgvo, long paramLong, MiniAppInfo paramMiniAppInfo) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void a(bgod parambgod, int paramInt, String paramString)
   {
-    if (paramBoolean)
-    {
-      long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      QMLog.i("MiniAppInfoLoadTask", "getAppInfoById, retCode = " + l + ",errMsg = " + str);
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject.launchParam.clone(bgvi.a(this.a).launchParam);
-        paramJSONObject.apkgInfo = bgvi.a(this.a).apkgInfo;
-        paramJSONObject.launchParam.miniAppId = paramJSONObject.appId;
-        if (!TextUtils.isEmpty(bgvi.a(this.a).launchParam.extendData)) {
-          paramJSONObject.extendData = bgvi.a(this.a).launchParam.extendData;
-        }
-        if (paramJSONObject.verType != 3) {
-          paramJSONObject.forceReroad = 3;
-        }
-        bgyd.a(paramJSONObject, 1028, "main_loading", bgyd.a(paramJSONObject));
-        bgvi.a(this.a, paramJSONObject);
-        this.a.c();
-        return;
-      }
-      bgyg.a(bgvi.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-      bgxl.a("2launch_fail", "shotcut_request_fail", null, bgvi.a(this.a));
-      this.a.e();
-      return;
+    if ((paramInt == 0) && (parambgod != null)) {
+      bgvi.a(this.jdField_a_of_type_Bgvi, this.jdField_a_of_type_Bgvo, 0, parambgod, "Apkg init succ :" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    bgyg.a(bgvi.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-    bgxl.a("2launch_fail", "shotcut_request_fail", null, bgvi.a(this.a));
-    this.a.e();
+    for (;;)
+    {
+      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 13, null, null, null, 0);
+      return;
+      bgvi.a(this.jdField_a_of_type_Bgvi, this.jdField_a_of_type_Bgvo, paramInt, null, paramString);
+    }
   }
 }
 

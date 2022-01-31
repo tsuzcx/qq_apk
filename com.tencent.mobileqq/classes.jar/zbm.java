@@ -1,40 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class zbm
-  implements BusinessObserver
+  extends AnimatorListenerAdapter
 {
-  zbm(zbj paramzbj) {}
+  public zbm(SingleLyricView paramSingleLyricView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
-    {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.post(new Share.7.1(this, paramBundle), 5, null, true);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(zbj.a, 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
-      }
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
   }
 }

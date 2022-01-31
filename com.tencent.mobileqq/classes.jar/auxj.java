@@ -1,19 +1,13 @@
-public class auxj
-  implements alkr
+import com.tencent.qphone.base.util.QLog;
+
+class auxj
+  implements avdi
 {
-  protected void a(boolean paramBoolean, String paramString) {}
+  auxj(auxh paramauxh) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!paramBoolean);
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
   }
 }
 

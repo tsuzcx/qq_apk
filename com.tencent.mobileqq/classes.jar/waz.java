@@ -1,24 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class waz
-  implements xrv
+class waz
+  implements bhuk
 {
-  public waz(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  waz(wax paramwax, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bhuf parambhuf) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Wba != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Wba.a(this.a.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Wba != null) {
-      return this.a.jdField_a_of_type_Wba.a(this.a.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      vls.a(this.jdField_a_of_type_Wax.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new wba(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    return false;
   }
 }
 

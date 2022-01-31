@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-
-public class ajvo
-  extends alox
+public abstract interface ajvo
 {
-  public ajvo(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public abstract void a(int paramInt, String paramString);
 }
 
 

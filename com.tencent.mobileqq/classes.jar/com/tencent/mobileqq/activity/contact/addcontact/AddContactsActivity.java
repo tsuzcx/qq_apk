@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahbe;
-import ahbf;
-import ahbk;
-import ahbl;
-import ahcn;
+import ahft;
+import ahfu;
+import ahfz;
+import ahga;
+import ahhc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -24,9 +24,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import aofo;
-import azly;
-import azmj;
+import aojx;
+import azqh;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.TextHook;
@@ -39,13 +39,13 @@ public class AddContactsActivity
   extends FragmentActivity
   implements View.OnClickListener
 {
-  public ahcn a;
-  Handler jdField_a_of_type_AndroidOsHandler = new ahbl(this);
+  public ahhc a;
+  Handler jdField_a_of_type_AndroidOsHandler = new ahga(this);
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public LinearLayout a;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  private RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new ahbe(this);
+  private RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new ahft(this);
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AddContactsView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView;
@@ -60,28 +60,28 @@ public class AddContactsActivity
   
   public AddContactsActivity()
   {
-    this.jdField_a_of_type_Ahcn = new ahbf(this);
+    this.jdField_a_of_type_Ahhc = new ahfu(this);
   }
   
   @TargetApi(14)
   private void a()
   {
-    ((TextView)findViewById(2131368659)).setText(2131689628);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375981));
+    ((TextView)findViewById(2131368670)).setText(2131689628);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368670));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368681));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131362088));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377315));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377317));
-    this.jdField_c_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377316));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377369));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377371));
+    this.jdField_c_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377370));
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
     String str = Build.MODEL.toUpperCase();
     if ((str.contains("S968T")) || (str.contains("A0001")) || (str.contains("B9388"))) {
@@ -95,11 +95,11 @@ public class AddContactsActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364715));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364716));
       return;
       this.jdField_c_of_type_AndroidWidgetRadioButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRadioButton.setGravity(16);
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130849028));
+      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130849101));
       int i = this.jdField_c_of_type_AndroidWidgetRadioButton.getPaddingRight();
       if (!TextHook.getInstance().isDefault()) {
         i = 0;
@@ -142,7 +142,7 @@ public class AddContactsActivity
   private void b()
   {
     boolean bool = true;
-    String str = aofo.a(this.app.getCurrentAccountUin(), "add_contact_page_public_account_switch");
+    String str = aojx.a(this.app.getCurrentAccountUin(), "add_contact_page_public_account_switch");
     if (QLog.isColorLevel()) {
       QLog.i("addContacts.Activity", 2, "public account switch config is: " + str);
     }
@@ -188,7 +188,7 @@ public class AddContactsActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView = new AddContactsView(this.jdField_a_of_type_Ahcn);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView = new AddContactsView(this.jdField_a_of_type_Ahhc);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a();
     }
     a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
@@ -198,19 +198,19 @@ public class AddContactsActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView = new TroopView(this.jdField_a_of_type_Ahcn);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.setNavStickyListener(new ahbk(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView = new TroopView(this.jdField_a_of_type_Ahhc);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.setNavStickyListener(new ahfz(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a();
     }
     a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView);
-    azmj.b(this.app, "dc00899", "Grp_find_new", "", "grptab", "exp", 0, 0, "", "", "", "");
+    azqs.b(this.app, "dc00899", "Grp_find_new", "", "grptab", "exp", 0, 0, "", "", "", "");
   }
   
   private void f()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView = new PublicView(this.jdField_a_of_type_Ahcn);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView = new PublicView(this.jdField_a_of_type_Ahhc);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.a();
     }
     a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView);
@@ -241,12 +241,12 @@ public class AddContactsActivity
       paramBundle.putParcelable("android:support:fragments", null);
     }
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560762);
+    super.setContentView(2131560780);
     getWindow().setBackgroundDrawable(null);
     b();
     a();
     c();
-    azly.a(getApplicationContext()).reportKVEvent("AddContactsActivity", null);
+    azqh.a(getApplicationContext()).reportKVEvent("AddContactsActivity", null);
     return true;
   }
   

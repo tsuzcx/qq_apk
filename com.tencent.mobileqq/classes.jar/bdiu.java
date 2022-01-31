@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bdiu
-  implements View.OnClickListener
+public class bdiu
 {
-  bdiu(bdit parambdit) {}
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap(new HashMap(8));
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-  }
+  public static void a(String paramString1, String paramString2, String paramString3) {}
 }
 
 

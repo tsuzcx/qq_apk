@@ -1,25 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
-
-class amqb
-  implements QQPermissionCallback
+public abstract interface amqb
 {
-  amqb(amqa paramamqa) {}
+  public abstract void a(int paramInt);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.a(amqa.a(this.a), paramArrayOfString, paramArrayOfInt);
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
-  }
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqb
  * JD-Core Version:    0.7.0.1
  */

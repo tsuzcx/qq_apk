@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-
-class bfbg
-  implements DialogInterface.OnClickListener
+public abstract interface bfbg
 {
-  bfbg(bfbd parambfbd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
-  }
+  public abstract void a(String paramString);
 }
 
 

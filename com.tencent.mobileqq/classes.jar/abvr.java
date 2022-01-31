@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class abvr
-  implements View.OnClickListener
+class abvr
+  extends AsyncTask<Void, Void, Void>
 {
-  public abvr(AboutActivity paramAboutActivity) {}
+  abvr(abvq paramabvq) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
-    {
-      azmj.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", amlp.a(), "");
-      UpgradeDetailActivity.a(this.a, amlp.a().a(), false, false, true);
+    paramVarArgs = abvq.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
+    abvq.a(this.a).clear();
+    return null;
   }
 }
 

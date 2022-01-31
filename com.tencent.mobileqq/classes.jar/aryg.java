@@ -1,71 +1,104 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class aryg
-  extends nac
+public class aryg
+  implements Handler.Callback
 {
-  aryg(arye paramarye, long paramLong, Bundle paramBundle) {}
+  private static aryg jdField_a_of_type_Aryg;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static aryg a()
   {
-    if (paramInt == 0)
+    if (jdField_a_of_type_Aryg == null) {}
+    try
     {
-      bool = true;
-      arzy.a("KEY_STAGE_2_NORMAL_B77", bool);
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 10000L) {
-        break label116;
+      if (jdField_a_of_type_Aryg == null) {
+        jdField_a_of_type_Aryg = new aryg();
       }
+      return jdField_a_of_type_Aryg;
     }
-    label116:
-    for (boolean bool = true;; bool = false)
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onCreate");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onFirstFrameRendered");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    if (paramBoolean) {}
+    for (;;)
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", timeout=", Boolean.valueOf(bool) });
-      if (!bool) {
-        break label122;
-      }
-      arye.a(this.jdField_a_of_type_Arye, new Object[] { Integer.valueOf(0), "", alpo.a(2131705173), "" }, -1);
+      localMessage.arg1 = i;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 2000L);
       return;
-      bool = false;
-      break;
-    }
-    label122:
-    if (paramBundle != null)
-    {
-      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
-      if ((l == -1L) || (l != arye.a(this.jdField_a_of_type_Arye)))
-      {
-        QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "handleGetMessageState currentRequestTime =" + arye.a(this.jdField_a_of_type_Arye) + ", sendStamp = " + l);
-        return;
-      }
-    }
-    Object localObject = ForwardUtils.c(arye.a(this.jdField_a_of_type_Arye).getInt("req_type"));
-    String str = ForwardUtils.a(arye.a(this.jdField_a_of_type_Arye).getInt("uintype"));
-    if ((arye.a(this.jdField_a_of_type_Arye) instanceof AbsShareMsg)) {}
-    for (paramBundle = ((AbsShareMsg)arye.a(this.jdField_a_of_type_Arye)).mContentTitle;; paramBundle = "")
-    {
-      azmj.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, (String)localObject, str, paramBundle);
-      if ((paramInt == 0) && (paramArrayOfByte != null)) {
-        arye.a(this.jdField_a_of_type_Arye, this.jdField_a_of_type_AndroidOsBundle.getString("share_comment_message_for_server"));
-      }
-      paramBundle = this.jdField_a_of_type_Arye;
-      localObject = ForwardUtils.a(paramArrayOfByte);
-      if (paramArrayOfByte == null) {
-        paramInt = -1;
-      }
-      arye.a(paramBundle, (Object[])localObject, paramInt);
-      return;
+      i = 0;
     }
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "onError msg =", paramString });
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 1, "onDestroy");
     }
-    return super.a(paramInt, paramString, paramBundle);
+    if ((paramBoolean2) && (paramBoolean1)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onPagePause");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+        QLog.d("QFlutter.Reporter", 1, "init memory");
+        this.jdField_a_of_type_JavaUtilMap = bdgk.a(BaseApplicationImpl.getContext());
+        return false;
+      } while (this.jdField_a_of_type_JavaUtilMap == null);
+      if (paramMessage.arg1 == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        aryh.a(bool, true, this.jdField_a_of_type_JavaUtilMap);
+        if (bool) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilMap = null;
+        return false;
+      }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    aryh.a(true, false, this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_JavaUtilMap = null;
+    return false;
   }
 }
 

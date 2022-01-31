@@ -1,42 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class agqi
-  implements BusinessObserver
+public class agqi
+  implements View.OnClickListener
 {
-  agqi(agot paramagot) {}
+  agqi(agps paramagps) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    if (agps.a(this.a).getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.7.1(this), 5, null, false);
     }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.ap = true;
-          this.a.bH();
-          this.a.bs();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.B(2131695727);
-    this.a.bs();
+    aepi.n = true;
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
   }
 }
 

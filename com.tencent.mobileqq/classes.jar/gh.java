@@ -167,19 +167,19 @@ public class gh
   {
     if ((this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (paramInt1 == 102) && (paramInt2 == 300) && (BaseApplicationImpl.getApplication() != null) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)))
     {
-      axwp localaxwp = ((axzt)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(15)).a(this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      if (localaxwp != null)
+      ayay localayay = ((ayec)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(15)).a(this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      if (localayay != null)
       {
         Object localObject = new Bundle();
         ((Bundle)localObject).putInt("notify_type", 6);
-        ((Bundle)localObject).putString("url", localaxwp.jdField_b_of_type_JavaLangString);
+        ((Bundle)localObject).putString("url", localayay.jdField_b_of_type_JavaLangString);
         ((Bundle)localObject).putInt("id", this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
         localObject = EIPCResult.createResult(0, (Bundle)localObject);
         callbackResult(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get(), (EIPCResult)localObject);
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "IPC get action callback id = " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " url = " + localaxwp.jdField_b_of_type_JavaLangString);
+          QLog.d("Signature", 2, "IPC get action callback id = " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " url = " + localayay.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -222,7 +222,7 @@ public class gh
               if (!jdField_b_of_type_JavaLangString.equals(paramString)) {
                 break;
               }
-              if (new File(bdkd.a() + "libFounderColorFont_818.so").exists())
+              if (new File(bdom.a() + "libFounderColorFont_818.so").exists())
               {
                 callbackResult(paramInt, EIPCResult.createResult(0, null));
                 return null;
@@ -244,7 +244,7 @@ public class gh
           return null;
           if (e.equals(paramString))
           {
-            paramString = ((axzt)localQQAppInterface.getManager(15)).a(true);
+            paramString = ((ayec)localQQAppInterface.getManager(15)).a(true);
             paramBundle = new Bundle();
             paramBundle.putInt("notify_type", 4);
             paramBundle.putSerializable("my_signature", paramString);
@@ -261,7 +261,7 @@ public class gh
             if ((paramString instanceof RichStatus))
             {
               paramString = (RichStatus)paramString;
-              ((axzt)localQQAppInterface.getManager(15)).a(paramString, 0);
+              ((ayec)localQQAppInterface.getManager(15)).a(paramString, 0);
               return null;
             }
             QLog.e("VasFontIPCModule", 1, "change status error, status is null");
@@ -273,7 +273,7 @@ public class gh
             break label710;
           }
           k = paramBundle.getInt("id");
-          paramString = ((axzt)localQQAppInterface.getManager(15)).a(k);
+          paramString = ((ayec)localQQAppInterface.getManager(15)).a(k);
           if (paramString != null) {
             break;
           }
@@ -327,7 +327,7 @@ public class gh
       {
         l = paramBundle.getLong("key_current_uin");
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-        ((axzt)localQQAppInterface.getManager(15)).a(l);
+        ((ayec)localQQAppInterface.getManager(15)).a(l);
         return null;
       }
     } while (!QLog.isColorLevel());

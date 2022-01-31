@@ -1,14 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class acdn
-  implements bcvv
+  extends alpq
 {
-  public acdn(BaseChatPie paramBaseChatPie) {}
+  public acdn(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    this.a.onClick(this.a.a);
+    if (!this.a.a.equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.a(2130839405, this.a.getString(2131690676));
+      return;
+    }
+    this.a.a(2130839392, this.a.getString(2131690674));
   }
 }
 

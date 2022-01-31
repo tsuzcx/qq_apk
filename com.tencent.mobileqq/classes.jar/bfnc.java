@@ -1,50 +1,114 @@
-import com.tencent.open.virtual.OpenSdkVirtualManager.2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bfnc
-  extends bfnn
+  implements bfml
 {
-  public bfnc(OpenSdkVirtualManager.2 param2) {}
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public bfnc(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-    arzy.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Bfmm, paramBoolean);
-    int i = paramInt;
-    if (paramBoolean) {}
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(Exception paramException)
+  {
+    bflp.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (bfms.a(this.jdField_a_of_type_AndroidContentContext))) {
+      bfmz.b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
+      }
+      catch (Exception paramException) {}
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    bflp.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        i = new JSONObject(paramString1).optInt("ErrorCode");
-        paramInt = i;
-        i = paramInt;
-        if (paramInt == 0)
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
         {
-          paramBoolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramJSONObject = (JSONObject)localObject;
+            if (bfms.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              bfmz.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
+            }
           }
-          if (this.a.jdField_a_of_type_Bfnj != null) {
-            this.a.jdField_a_of_type_Bfnj.a(paramBoolean, paramInt);
-          }
-          return;
         }
       }
-      catch (Exception paramString2)
+      catch (JSONException paramJSONObject)
       {
-        QLog.e("OpenSdkVirtualManager", 1, "Exception.e", paramString2);
-        i = paramInt;
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
       }
-      paramBoolean = false;
-      paramInt = i;
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      bfmz.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfnc
  * JD-Core Version:    0.7.0.1
  */

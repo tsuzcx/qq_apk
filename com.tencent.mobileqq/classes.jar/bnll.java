@@ -1,8 +1,18 @@
-public class bnll
+public abstract interface bnll
 {
-  public long a;
-  public long b;
-  public long c;
+  public abstract void a(String paramString);
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

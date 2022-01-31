@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,12 @@ public class PublicFragmentActivityForTool
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adky.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    adpn.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adky.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    adpn.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public String getModuleId()

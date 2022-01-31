@@ -1,39 +1,14 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class xev
-  extends xej
+class xev
+  implements FilenameFilter
 {
-  public int c;
+  xev(xet paramxet) {}
   
-  public xev(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public boolean accept(File paramFile, String paramString)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public Class<? extends xek> a()
-  {
-    return xew.class;
-  }
-  
-  @NonNull
-  public xek a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new xew(this, paramContext, paramViewGroup);
-  }
-  
-  public void a(int paramInt)
-  {
-    wsv.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

@@ -1,6 +1,11 @@
-public abstract interface alga
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+
+class alga
 {
-  public abstract void a(int paramInt);
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
+  boolean jdField_a_of_type_Boolean;
 }
 
 

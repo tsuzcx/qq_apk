@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-final class afme
-  implements afpr
+public class afme
+  extends aeqi
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
-      return 59;
-    }
-    return 60;
-  }
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public int e;
+  
+  public afme(aflw paramaflw) {}
 }
 
 

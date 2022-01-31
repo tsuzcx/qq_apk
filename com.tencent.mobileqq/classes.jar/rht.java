@@ -148,7 +148,7 @@ class rht
           k = 0;
           break;
           ((ClipboardManager)rhf.a(this.a).getSystemService("clipboard")).setText((CharSequence)localObject6);
-          xxb.a(2, 2131691362);
+          ybk.a(2, 2131691363);
           i = 3;
           j = 3;
           k = -1;
@@ -216,13 +216,13 @@ class rht
         ((ArrayList)localObject5).add(localVideoInfo.jdField_b_of_type_JavaLangString);
         ((Bundle)localObject3).putStringArrayList("image_url", (ArrayList)localObject5);
         ((Bundle)localObject3).putLong("req_share_id", 0L);
-        bjao.a(rhf.a(this.a), rhf.a(this.a), (Bundle)localObject3, null, 10001);
+        bjev.a(rhf.a(this.a), rhf.a(this.a), (Bundle)localObject3, null, 10001);
         j = -1;
         k = 2;
         break;
-        if (!bdee.g(rhf.a(this.a)))
+        if (!bdin.g(rhf.a(this.a)))
         {
-          QQToast.a(rhf.a(this.a), 0, alpo.a(2131716580), 0).a();
+          QQToast.a(rhf.a(this.a), 0, alud.a(2131716592), 0).a();
           return false;
         }
         rdm.a(rhf.a(this.a), rhf.a(this.a));
@@ -328,9 +328,9 @@ class rht
           localObject5 = rhf.a(this.a);
           if ((((VideoInfo)localObject5).jdField_b_of_type_JavaUtilArrayList != null) && (((VideoInfo)localObject5).jdField_b_of_type_JavaUtilArrayList.size() > 0))
           {
-            rhf.a(this.a, (bhpy)bhql.a(rhf.a(this.a), null));
+            rhf.a(this.a, (bhuf)bhus.a(rhf.a(this.a), null));
             localObject6 = new rhu(this);
-            rhf.a(this.a).a((bhqg)localObject6);
+            rhf.a(this.a).a((bhun)localObject6);
             localObject6 = new ReadInJoyDisLikeDialogView(rhf.a(this.a));
             ((ReadInJoyDisLikeDialogView)localObject6).setOnUninterestConfirmListener(new rhv(this, (VideoInfo)localObject5, (JSONObject)localObject3));
             ((ReadInJoyDisLikeDialogView)localObject6).setUninterestData(((VideoInfo)localObject5).jdField_b_of_type_JavaUtilArrayList);
@@ -339,7 +339,7 @@ class rht
             {
               if (!rhf.a(this.a).isShowing())
               {
-                if ((bhou.g()) && (!ShortVideoUtils.c()))
+                if ((bhtb.g()) && (!ShortVideoUtils.c()))
                 {
                   rhf.a(this.a).getWindow().setFlags(8, 8);
                   rhf.a(this.a).getWindow().getDecorView().setSystemUiVisibility(rhf.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
@@ -367,7 +367,7 @@ class rht
           {
             localJSONException.printStackTrace();
           }
-          rhf.a(this.a, "文章ID为：" + localJSONException.jdField_g_of_type_JavaLangString + alpo.a(2131716624));
+          rhf.a(this.a, "文章ID为：" + localJSONException.jdField_g_of_type_JavaLangString + alud.a(2131716636));
           i = 3;
           j = 7;
           k = -1;
@@ -397,7 +397,7 @@ class rht
         if (TextUtils.isEmpty(localVideoInfo.j)) {
           break;
         }
-        localObject4 = oqu.jdField_g_of_type_JavaLangString + bdbi.encodeToString(localVideoInfo.j.getBytes(), 2);
+        localObject4 = oqu.jdField_g_of_type_JavaLangString + bdfr.encodeToString(localVideoInfo.j.getBytes(), 2);
         ors.a(rhf.a(this.a), (String)localObject4);
         i = 3;
         j = -1;
@@ -407,7 +407,7 @@ class rht
       if ((TextUtils.isEmpty(localVideoInfo.j)) || (localVideoInfo.j.equals("16888"))) {
         break;
       }
-      localObject4 = oqu.k + bdbi.encodeToString(localVideoInfo.j.getBytes(), 2);
+      localObject4 = oqu.k + bdfr.encodeToString(localVideoInfo.j.getBytes(), 2);
       ors.a(rhf.a(this.a), (String)localObject4);
       i = 3;
       j = -1;

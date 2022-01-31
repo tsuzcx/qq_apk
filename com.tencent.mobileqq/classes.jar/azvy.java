@@ -1,26 +1,38 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
 public class azvy
-  extends aipp
+  extends Animation
 {
-  public azvy(CountdownTextView paramCountdownTextView, long paramLong, azvz paramazvz)
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  
+  public azvy(ViewGroup paramViewGroup)
   {
-    super(paramLong);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
+    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramViewGroup.height = 0;
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
   
-  public void b()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_Azvz != null) {
-      this.jdField_a_of_type_Azvz.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
   }
   
-  public void b(long paramLong)
+  public boolean willChangeBounds()
   {
-    if (this.jdField_a_of_type_Azvz != null) {
-      this.jdField_a_of_type_Azvz.a(paramLong);
-    }
+    return true;
   }
 }
 

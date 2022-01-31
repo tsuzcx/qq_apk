@@ -1,41 +1,15 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.View;
 
-public class bcxg
-  implements bcxe
+public abstract interface bcxg
 {
-  public String a;
+  public abstract View a();
   
-  bcxg(bcxd parambcxd, bcxb parambcxb)
-  {
-    if ((parambcxb != null) && (parambcxb.a != null)) {
-      this.jdField_a_of_type_JavaLangString = parambcxb.a.jdField_a_of_type_JavaLangString;
-    }
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    int i;
-    if (GroupIconHelper.a(paramString)) {
-      i = 1001;
-    }
-    for (String str = GroupIconHelper.b(paramString);; str = paramString)
-    {
-      if (paramBoolean2) {
-        this.jdField_a_of_type_Bcxd.a(paramBoolean1, i, str, this.jdField_a_of_type_Bcxd.a);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + i);
-        }
-        return;
-        this.jdField_a_of_type_Bcxd.a(paramBoolean1, i, str, null);
-      }
-      i = 101;
-    }
-  }
+  public abstract void b();
+  
+  public abstract void setBitmap(Bitmap paramBitmap);
 }
 
 

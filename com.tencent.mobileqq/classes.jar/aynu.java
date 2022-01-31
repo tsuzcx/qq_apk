@@ -1,216 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.ark.Container;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.ark.open.security.ArkAppUrlChecker;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
 
-public class aynu
-  implements aynw, ark.ApplicationCallback
+public abstract interface aynu
+  extends aynr
 {
-  private ArrayList<WeakReference<ayof>> a = new ArrayList();
+  public abstract int a();
   
-  private ayof a(long paramLong)
-  {
-    ark.Container localContainer = ark.arkGetContainer(paramLong);
-    ayof localayof;
-    if (localContainer == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkNodeContainer", 2, "getArkNode, arkcontainer is null");
-      }
-      localayof = null;
-    }
-    label150:
-    label154:
-    for (;;)
-    {
-      return localayof;
-      if (this.a.size() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeContainer", 2, "getArkNode, list is null");
-        }
-        return null;
-      }
-      int i = 0;
-      if (i < this.a.size())
-      {
-        localayof = (ayof)((WeakReference)this.a.get(i)).get();
-        if ((localayof == null) || (!(localayof instanceof ayod))) {
-          break label150;
-        }
-      }
-      for (aynz localaynz = ((ayod)localayof).a();; localaynz = null)
-      {
-        if ((localaynz != null) && (localaynz.getContainer() == localContainer)) {
-          break label154;
-        }
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeContainer", 2, "getArkNode, not found");
-        }
-        return null;
-      }
-    }
-  }
+  public abstract CharSequence a();
   
-  public void AppCreate(ark.Application paramApplication)
-  {
-    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
-  }
+  public abstract String a();
   
-  public void AppDestroy(ark.Application paramApplication)
-  {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppCenterEvent.a(1, paramApplication, null);
-    annd.a(paramApplication);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
-  {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
-    boolean bool;
-    int i;
-    if (localArkAppUrlChecker != null)
-    {
-      int j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
-      if (j == 0)
-      {
-        bool = true;
-        if (bool) {
-          break label170;
-        }
-        if (ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication)) {
-          break label165;
-        }
-        QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback seach appName=", paramApplication, ",url=", ndq.b(paramString, new String[0]), ", isValid set=true" });
-        i = 2;
-        bool = true;
-        label97:
-        annd.a(paramApplication, paramString, j, i, "");
-      }
-    }
-    for (;;)
-    {
-      QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.EngineCallback search appName=", paramApplication, ",url=", ndq.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool) });
-      return bool;
-      bool = false;
-      break;
-      label165:
-      i = 1;
-      break label97;
-      label170:
-      i = 0;
-      break label97;
-      bool = true;
-    }
-  }
+  public abstract void a(View paramView);
   
-  public void OutputScriptError(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      paramString1 = "";
-    }
-    for (;;)
-    {
-      if (paramString2 == null) {
-        paramString2 = "";
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkNodeContainer", 2, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
-        }
-        anjv.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
-        return;
-      }
-    }
-  }
+  public abstract boolean a();
   
-  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
-  {
-    anfp.a(paramModuleRegister, paramApplication);
-    String str = paramApplication.GetSpecific("appName");
-    aynv localaynv = new aynv(paramApplication, anfp.a(str));
-    localaynv.a(this);
-    paramApplication = anfp.a();
-    if ((!TextUtils.isEmpty(str)) && (paramApplication != null))
-    {
-      paramApplication = (ArkAppCenter)paramApplication.getManager(121);
-      if (paramApplication == null) {}
-    }
-    for (paramApplication = paramApplication.a();; paramApplication = null)
-    {
-      if (paramApplication != null) {
-        localaynv.a((List)anhp.a.get(localaynv.GetTypeName()));
-      }
-      paramModuleRegister.RegCallbackWrapper(localaynv);
-      return;
-    }
-  }
+  public abstract int b();
   
-  public void a(long paramLong, String paramString)
-  {
-    ayof localayof = a(paramLong);
-    if ((localayof != null) && ((localayof instanceof ayod))) {
-      ((ayod)localayof).a(paramString);
-    }
-  }
+  public abstract CharSequence b();
   
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkNodeContainer", 2, "onNotify, KEY：" + paramString1 + " VALUE:" + paramString2);
-    }
-    ayof localayof = a(paramLong);
-    if ((localayof != null) && ((localayof instanceof ayod))) {
-      ((ayod)localayof).a(paramString1, paramString2);
-    }
-  }
+  public abstract CharSequence c();
   
-  public void a(ayod paramayod)
-  {
-    if (paramayod == null) {
-      return;
-    }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramayod) {
-        return;
-      }
-    }
-    this.a.add(new WeakReference(paramayod));
-  }
-  
-  public void b(ayod paramayod)
-  {
-    if (paramayod == null) {}
-    WeakReference localWeakReference;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.a.iterator();
-      }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (localWeakReference.get() != paramayod);
-    this.a.remove(localWeakReference);
-  }
+  public abstract CharSequence d();
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.util.Pair;
-import bjxj;
+import bkbq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import ors;
@@ -29,8 +29,8 @@ public class ReadinjoySPEventReport$5
       label59:
       int j = oxp.a(this.this$0).size();
       long l1;
-      if (j > bjxj.d(ors.a())) {
-        l1 = j - bjxj.d(ors.a());
+      if (j > bkbq.d(ors.a())) {
+        l1 = j - bkbq.d(ors.a());
       }
       for (;;)
       {
@@ -63,8 +63,8 @@ public class ReadinjoySPEventReport$5
         for (;;)
         {
           int k = oxp.b(this.this$0).size();
-          if (k > bjxj.e(ors.a())) {
-            l1 = k - bjxj.e(ors.a());
+          if (k > bkbq.e(ors.a())) {
+            l1 = k - bkbq.e(ors.a());
           }
           for (;;)
           {
@@ -88,7 +88,7 @@ public class ReadinjoySPEventReport$5
               oxp.b(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)oxp.b(this.this$0).get(0)).first).longValue()), Integer.valueOf(j)));
               oxp.b(this.this$0).add(oxp.b(this.this$0));
               QLog.d(oxp.class.getSimpleName(), 2, "update msg tab first screen red pnt change, cnt : " + j);
-              j = bjxj.b();
+              j = bkbq.b();
               if ((this.a <= j) && (!oxp.a(this.this$0)) && (i == 0))
               {
                 if ((oxp.c(this.this$0) != null) && (oxp.c(this.this$0).size() > 0))

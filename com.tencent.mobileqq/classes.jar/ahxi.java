@@ -1,31 +1,23 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxi
-  implements View.OnClickListener
+class ahxi
+  implements DialogInterface.OnClickListener
 {
-  public ahxi(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxi(ahww paramahww, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    xmh.a(this.a.jdField_a_of_type_Ahys);
-    xmh.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView.add(((ahyq)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+    azqs.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, ahww.a(this.jdField_a_of_type_Ahww), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false);
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    for (;;)
+    {
+      this.jdField_a_of_type_Ahww.f();
+      return;
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

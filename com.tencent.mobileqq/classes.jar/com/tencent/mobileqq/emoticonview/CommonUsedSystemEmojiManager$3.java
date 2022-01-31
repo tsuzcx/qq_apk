@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import appp;
-import bdcs;
+import apty;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +17,7 @@ import mqq.app.AppRuntime;
 public class CommonUsedSystemEmojiManager$3
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$3(appp paramappp) {}
+  public CommonUsedSystemEmojiManager$3(apty paramapty) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class CommonUsedSystemEmojiManager$3
             }
             QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
           }
-          bdcs.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          bdhb.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
           return;
         }
       }

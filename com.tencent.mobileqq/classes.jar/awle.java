@@ -1,19 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-
-public class awle
-  implements ValueAnimator.AnimatorUpdateListener
+public final class awle
+  extends awky
 {
-  public awle(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected int c()
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    return 509;
   }
 }
 

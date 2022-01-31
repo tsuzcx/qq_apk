@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RecommendFriend
-  extends awbv
+  extends awge
 {
   public String name;
   public String source;
-  @awdj
+  @awhs
   public String uin;
 }
 

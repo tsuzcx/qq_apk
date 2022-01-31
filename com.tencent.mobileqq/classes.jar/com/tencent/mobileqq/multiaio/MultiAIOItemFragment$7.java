@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio;
 
-import aifb;
+import aijq;
 
 class MultiAIOItemFragment$7
   implements Runnable

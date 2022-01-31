@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
-class atxg
-  implements DialogInterface.OnDismissListener
+public class atxg
+  extends Handler
 {
-  atxg(atxe paramatxe, DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public atxg(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 

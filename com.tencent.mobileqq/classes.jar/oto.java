@@ -25,7 +25,7 @@ public class oto
           str1 = (String)((Iterator)localObject).next();
           str2 = (String)paramString.get(str1);
           if (TextUtils.equals(str1, "kingcard_switch")) {
-            bjxj.o(Integer.parseInt(str2));
+            bkbq.o(Integer.parseInt(str2));
           }
         }
         else
@@ -38,21 +38,21 @@ public class oto
         paramString.printStackTrace();
       }
       if (TextUtils.equals(str1, "kingcard_guide_url")) {
-        bjxj.i(str2);
+        bkbq.i(str2);
       } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
-        bjxj.j(str2);
+        bkbq.j(str2);
       } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
-        bjxj.k(str2);
+        bkbq.k(str2);
       }
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.o(0);
-    bjxj.i("");
-    bjxj.j("");
-    bjxj.k("");
+    bkbq.o(0);
+    bkbq.i("");
+    bkbq.j("");
+    bkbq.k("");
   }
 }
 

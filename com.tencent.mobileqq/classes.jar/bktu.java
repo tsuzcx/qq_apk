@@ -1,26 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bktu
-  extends RecyclerView.ViewHolder
+class bktu
+  implements bmeo<bkyr>
 {
-  public ImageView a;
+  bktu(bktp parambktp) {}
   
-  public bktu(View paramView)
+  public void a(@Nullable bkyr parambkyr)
   {
-    super(paramView);
-    this.a = ((ImageView)paramView.findViewById(2131377765));
-  }
-  
-  public void a()
-  {
-    this.a.setImageResource(2130845464);
-  }
-  
-  public void b()
-  {
-    this.a.setImageResource(2130845465);
+    if (parambkyr == null) {
+      return;
+    }
+    boolean bool = parambkyr.a();
+    if (bool) {
+      bktp.b(this.a);
+    }
+    for (;;)
+    {
+      bktp.a(this.a).a(bool, new bktv(this, parambkyr));
+      return;
+      if (bktp.a(this.a) != null) {
+        bktp.a(this.a).a();
+      }
+    }
   }
 }
 

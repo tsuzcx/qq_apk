@@ -1,26 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-class trm
-  extends RecyclerView.ViewHolder
+public class trm
+  extends yiu
 {
-  public trm(BaseWidgetView paramBaseWidgetView)
+  private QCirclePersonalBottomView a;
+  
+  public trm(Bundle paramBundle)
   {
-    super(paramBaseWidgetView);
+    super(paramBundle);
   }
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trr paramtrr)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramtrr);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
+    this.a = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramyhy);
+    return this.a;
   }
+  
+  public void loadData(yii paramyii) {}
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

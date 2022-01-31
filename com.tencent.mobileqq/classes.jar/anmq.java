@@ -1,13 +1,20 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-final class anmq
-  implements ArkEnvironmentManager.ThreadCreater
+class anmq
+  implements anmy
 {
-  public HandlerThread createHanderThread(String paramString)
+  anmq(anmm paramanmm, anmw paramanmw, anmy paramanmy, String paramString) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
+    if (paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Anmy.a(true);
+      return;
+    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
+    anmm.a(this.jdField_a_of_type_Anmm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw, new anmr(this));
   }
 }
 

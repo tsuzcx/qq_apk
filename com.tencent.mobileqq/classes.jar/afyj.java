@@ -1,70 +1,28 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class afyj
+class afyj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static final String jdField_a_of_type_JavaLangString = afyj.class.getSimpleName();
-  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
-  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
+  afyj(afyi paramafyi) {}
   
-  private afyk a(String paramString, ViewGroup paramViewGroup)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = this.b.get(paramString).iterator();
-    while (localIterator.hasNext())
-    {
-      paramString = (afyk)localIterator.next();
-      if (paramString != null) {
-        paramString.a(paramViewGroup);
-      }
+    if (this.a.jdField_a_of_type_Afyg.a()) {
+      return false;
     }
-    for (;;)
-    {
-      this.b.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
-      return paramString;
-      paramString = null;
+    aepi.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Afyg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Afyg.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Aetk != null) {
+      this.a.jdField_a_of_type_Aetk.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
     }
-  }
-  
-  public View a(String paramString, ViewGroup paramViewGroup)
-  {
-    a(paramString, paramViewGroup);
-    paramString = a(paramString, paramViewGroup);
-    if (paramString != null) {
-      return paramString.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
-    this.b.clear();
-  }
-  
-  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new afyk(paramString, paramView, paramViewGroup));
-  }
-  
-  public void a(String paramString, ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup == null) {}
-    afyk localafyk;
-    do
-    {
-      return;
-      while (!paramString.hasNext()) {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
-      }
-      localafyk = (afyk)paramString.next();
-    } while ((localafyk == null) || (localafyk.a() == null) || (localafyk.a() != paramViewGroup));
-    localafyk.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localafyk);
-    this.b.add(localafyk);
   }
 }
 

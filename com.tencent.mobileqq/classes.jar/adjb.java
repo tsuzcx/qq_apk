@@ -1,6 +1,16 @@
-public abstract interface adjb
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+
+public class adjb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public adjb(MoveToGroupActivity paramMoveToGroupActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    MoveToGroupActivity.b(this.a);
+  }
 }
 
 

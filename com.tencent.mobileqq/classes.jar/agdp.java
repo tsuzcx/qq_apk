@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class agdp
-  implements DialogInterface.OnCancelListener
+  extends Handler
 {
-  agdp(agdi paramagdi) {}
+  agdp(agdo paramagdo, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == agdo.a) {
+      this.a.b();
+    }
+  }
 }
 
 

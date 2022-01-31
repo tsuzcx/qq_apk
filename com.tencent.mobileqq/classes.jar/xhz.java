@@ -1,6 +1,8 @@
 public abstract interface xhz
 {
-  public abstract void a(xig paramxig);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

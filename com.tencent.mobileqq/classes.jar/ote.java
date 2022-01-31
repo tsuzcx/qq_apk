@@ -10,7 +10,7 @@ public class ote
   {
     boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
     paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bjxj.a("daily_header_proteus_bid", paramString);
+    bkbq.a("daily_header_proteus_bid", paramString);
     QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
     return bool;
   }

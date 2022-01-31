@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.automator.step.GetSig;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class amds
-  extends alsi
+  extends MqqHandler
 {
-  private amds(GetSig paramGetSig) {}
-  
-  protected void j(boolean paramBoolean)
+  public amds(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = (amdt)paramMessage.obj;
+    if (paramMessage != null)
     {
-      localGetSig.a(i);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      }
+      paramMessage.recycle();
     }
   }
 }

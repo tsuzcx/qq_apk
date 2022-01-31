@@ -156,14 +156,9 @@ class TbsInstaller
     mTbsCoreRenameFileLockForMultiProcess = null;
     mTbsCoreInstalledVer = new TbsInstaller.1();
     mTbsInstallerHandler = null;
-    Long[] arrayOfLong1 = { Long.valueOf(44006L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong2 = { Long.valueOf(44005L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong3 = { Long.valueOf(43910L), Long.valueOf(38917816L) };
-    Long[] arrayOfLong4 = { Long.valueOf(44028L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong5 = { Long.valueOf(44029L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong6 = { Long.valueOf(44030L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong7 = { Long.valueOf(43909L), Long.valueOf(38917816L) };
-    WEBCORE_LIB_LENGTH_MAP = new Long[][] { arrayOfLong1, arrayOfLong2, arrayOfLong3, { Long.valueOf(44027L), Long.valueOf(39094008L) }, arrayOfLong4, arrayOfLong5, arrayOfLong6, { Long.valueOf(44032L), Long.valueOf(39094008L) }, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, arrayOfLong7 };
+    Long[] arrayOfLong1 = { Long.valueOf(43910L), Long.valueOf(38917816L) };
+    Long[] arrayOfLong2 = { Long.valueOf(44032L), Long.valueOf(39094008L) };
+    WEBCORE_LIB_LENGTH_MAP = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, { Long.valueOf(44005L), Long.valueOf(39094008L) }, arrayOfLong1, { Long.valueOf(44027L), Long.valueOf(39094008L) }, { Long.valueOf(44028L), Long.valueOf(39094008L) }, { Long.valueOf(44029L), Long.valueOf(39094008L) }, { Long.valueOf(44030L), Long.valueOf(39094008L) }, arrayOfLong2, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, { Long.valueOf(43909L), Long.valueOf(38917816L) } };
     isStaticTbsInstalling = false;
     tbs_core_copy_filter = new TbsInstaller.2();
     mCoreVersion = 0;
@@ -6682,29 +6677,29 @@ class TbsInstaller
     //   614: aload_2
     //   615: ldc 78
     //   617: invokevirtual 1033	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   620: astore 11
+    //   620: astore 12
     //   622: aload_2
     //   623: ldc 72
     //   625: invokevirtual 1033	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   628: astore 12
+    //   628: astore 11
     //   630: aload_2
     //   631: ldc 69
     //   633: invokevirtual 1033	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   636: astore_2
-    //   637: aload 11
+    //   637: aload 12
     //   639: invokestatic 910	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   642: ifne +15 -> 657
     //   645: new 460	java/io/File
     //   648: dup
-    //   649: aload 11
+    //   649: aload 12
     //   651: invokespecial 1034	java/io/File:<init>	(Ljava/lang/String;)V
     //   654: invokestatic 1058	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
-    //   657: aload 12
+    //   657: aload 11
     //   659: invokestatic 910	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   662: ifne +15 -> 677
     //   665: new 460	java/io/File
     //   668: dup
-    //   669: aload 12
+    //   669: aload 11
     //   671: invokespecial 1034	java/io/File:<init>	(Ljava/lang/String;)V
     //   674: invokestatic 1058	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
     //   677: aload_2
@@ -7220,8 +7215,8 @@ class TbsInstaller
     //   88	32	6	l1	long
     //   97	34	8	l2	long
     //   179	29	10	bool	boolean
-    //   620	1148	11	localObject1	Object
-    //   628	1158	12	localObject2	Object
+    //   628	1140	11	localObject1	Object
+    //   620	1166	12	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   938	983	993	java/lang/Exception

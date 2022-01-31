@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bivd
-  implements army
+final class bivd
+  implements DialogInterface.OnClickListener
 {
-  bivd(bivc parambivc, Activity paramActivity, Intent paramIntent) {}
-  
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arum.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bivd
  * JD-Core Version:    0.7.0.1
  */

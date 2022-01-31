@@ -1,28 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import org.json.JSONObject;
 
-class baec
-  extends WebViewClient
+public abstract interface baec
 {
-  baec(baea parambaea) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
-  }
+  public abstract badn[] a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, float paramFloat);
 }
 
 

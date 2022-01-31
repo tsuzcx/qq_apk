@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.topbar;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bllj;
+import blpv;
 
 public class AEEditorTopBar
   extends RelativeLayout
@@ -16,7 +16,7 @@ public class AEEditorTopBar
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bllj jdField_a_of_type_Bllj;
+  private blpv jdField_a_of_type_Blpv;
   private TextView b;
   private TextView c;
   
@@ -72,25 +72,25 @@ public class AEEditorTopBar
       do
       {
         return;
-      } while (this.jdField_a_of_type_Bllj == null);
-      this.jdField_a_of_type_Bllj.aV_();
+      } while (this.jdField_a_of_type_Blpv == null);
+      this.jdField_a_of_type_Blpv.aS_();
       return;
-    } while (this.jdField_a_of_type_Bllj == null);
-    this.jdField_a_of_type_Bllj.aW_();
+    } while (this.jdField_a_of_type_Blpv == null);
+    this.jdField_a_of_type_Blpv.aT_();
   }
   
   public void setLeftButtonAsBackArray()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setText(alpo.a(2131689803));
+    this.c.setText(alud.a(2131689803));
   }
   
   public void setStyleAsCancelAndFinish()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.c.setText(alpo.a(2131689800));
+    this.c.setText(alud.a(2131689800));
   }
   
   public void setTitle(String paramString)
@@ -98,9 +98,9 @@ public class AEEditorTopBar
     this.b.setText(paramString);
   }
   
-  public void setTopBarClickListener(bllj parambllj)
+  public void setTopBarClickListener(blpv paramblpv)
   {
-    this.jdField_a_of_type_Bllj = parambllj;
+    this.jdField_a_of_type_Blpv = paramblpv;
   }
 }
 

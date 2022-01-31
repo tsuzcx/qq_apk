@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import armo;
+import arqx;
 import java.io.File;
 
 public class FMSettings$1
   implements Runnable
 {
-  public FMSettings$1(armo paramarmo, String paramString) {}
+  public FMSettings$1(arqx paramarqx, String paramString) {}
   
   public void run()
   {

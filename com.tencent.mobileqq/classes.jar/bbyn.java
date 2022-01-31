@@ -1,8 +1,23 @@
-import android.view.View;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public abstract interface bbyn
+public class bbyn
+  extends JobSegment<String, bbyr>
 {
-  public abstract void a(View paramView, int paramInt);
+  private bbyp jdField_a_of_type_Bbyp;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bbyn(bbyp parambbyp)
+  {
+    this.jdField_a_of_type_Bbyp = parambbyp;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    wxe.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    urp.a().a(new bbyq(this.jdField_a_of_type_Bbyp, this.jdField_a_of_type_JavaLangString), new bbyo(this));
+  }
 }
 
 

@@ -1,187 +1,125 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
 
 public class aeuw
-  extends beaa
-  implements becr, bedk, behg, behk
 {
-  private aeut a;
-  protected zbj a;
+  public static final int a;
+  String a;
+  int b;
   
-  public aeuw(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  static
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-    this.mWebview = new TouchWebView(paramContext);
-    buildBaseWebView(this.mInterface);
-    this.jdField_a_of_type_Aeut = new aeut(paramActivity, this.mWebview);
+    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public Activity a()
+  public static int a(String paramString)
   {
-    return this.mInActivity;
-  }
-  
-  public TouchWebView a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.addView(this.mWebview);
+    if (paramString.equalsIgnoreCase("Emoji")) {
+      return 0;
     }
-    return this.mWebview;
+    if (paramString.equalsIgnoreCase("Face")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("Image")) {
+      return 2;
+    }
+    if (paramString.equalsIgnoreCase("Lottie")) {
+      return 3;
+    }
+    return -1;
   }
   
-  public WebViewFragment a()
+  public static Drawable a(Context paramContext, aeuw paramaeuw)
   {
-    return null;
-  }
-  
-  public WebView a()
-  {
-    return this.mWebview;
-  }
-  
-  public zbj a()
-  {
-    return b();
-  }
-  
-  public void a()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void a(String paramString)
-  {
-    this.mUrl = paramString;
-    this.mWebview.loadUrl(this.mUrl);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a(String paramString)
-  {
-    return b().a(paramString);
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
-  {
-    return b().a(paramString1, paramString2, paramString3, paramString4, paramBundle);
-  }
-  
-  public String b()
-  {
-    String str2 = this.mUrl;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2))
+    Object localObject = null;
+    switch (paramaeuw.b)
     {
-      str1 = str2;
-      if (this.mWebview != null)
-      {
-        if (TextUtils.isEmpty(this.mWebview.getUrl())) {
-          break label46;
-        }
-        str1 = this.mWebview.getUrl();
-      }
-    }
-    return str1;
-    label46:
-    return this.mInActivity.getIntent().getStringExtra("url");
-  }
-  
-  protected zbj b()
-  {
-    if (this.jdField_a_of_type_Zbj == null)
-    {
-      this.jdField_a_of_type_Zbj = new zbj(this.mInterface, this.mInActivity);
-      this.jdField_a_of_type_Zbj.a(this);
-    }
-    return this.jdField_a_of_type_Zbj;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList.add(new behn());
-      paramArrayList.add(new ConfessPlugin());
-      paramArrayList.add(new UiApiPlugin());
-      paramArrayList.add(new atdu());
-      paramArrayList.add(new zbp());
-      paramArrayList.add(new nsd());
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Aeut.a(b());
-  }
-  
-  public CustomWebView getWebView()
-  {
-    return this.mWebview;
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public final int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
-  {
-    paramByte = switchRequestCode(paramWebViewPlugin, (byte)1);
-    if (paramByte == -1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "pluginStartActivityForResult not handled");
-      }
-    }
-    while (this.mInActivity == null) {
-      return paramByte;
-    }
-    this.mInActivity.startActivityForResult(paramIntent, 15001);
-    return paramByte;
-  }
-  
-  public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
-  {
-    CustomWebView localCustomWebView = paramWebViewPlugin.mRuntime.a();
-    if (localCustomWebView == null) {}
-    int i;
-    do
-    {
+    default: 
+      paramContext = localObject;
+    case 0: 
+    case 1: 
       do
       {
-        return -1;
-      } while (localCustomWebView.getPluginEngine() == null);
-      i = WebViewPluginEngine.a(paramWebViewPlugin);
-      if (i != -1) {
+        do
+        {
+          int i;
+          do
+          {
+            return paramContext;
+            i = Integer.valueOf(paramaeuw.jdField_a_of_type_JavaLangString).intValue();
+            paramContext = localObject;
+          } while (i < 0);
+          paramaeuw = apsi.a(i);
+          paramContext = paramaeuw;
+        } while (paramaeuw == null);
+        paramaeuw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+        return paramaeuw;
+        paramaeuw = a(paramaeuw.jdField_a_of_type_JavaLangString);
+        paramContext = paramaeuw;
+      } while (paramaeuw == null);
+      paramaeuw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+      return paramaeuw;
+    }
+    String str2 = aeur.jdField_a_of_type_JavaLangString + paramaeuw.jdField_a_of_type_JavaLangString;
+    String str1 = "JumpImage:" + str2;
+    Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
+    localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      localBitmap = bdal.a(str2);
+      if (localBitmap == null) {
+        break label248;
+      }
+      BaseApplicationImpl.sImageCache.put(str1, localBitmap);
+      localObject = localBitmap;
+    }
+    for (;;)
+    {
+      paramContext = new BitmapDrawable(paramContext.getResources(), localObject);
+      paramContext.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+      return paramContext;
+      label248:
+      localObject = localBitmap;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramaeuw.jdField_a_of_type_JavaLangString);
+        localObject = localBitmap;
+      }
+    }
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int j = bamd.a.length;
+    int i = 0;
+    if (i < j) {
+      if (paramString.equals(bamd.a[i]))
+      {
+        j = i;
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
+        }
+      }
+    }
+    for (j = i;; j = -1)
+    {
+      if (j < 0)
+      {
+        return null;
+        i += 1;
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AbsWebView", 2, "switchRequestCode failed: webView index=" + 0 + ", pluginIndex=" + i);
-    return -1;
-    return i << 8 & 0xFF00 | 0x0 | paramByte & 0xFF;
+      return banh.a(j, false);
+    }
   }
 }
 

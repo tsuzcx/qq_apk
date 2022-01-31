@@ -1,26 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class adkk
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public adkk(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adkk(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    try
     {
-      this.a.a();
-      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+      paramDialogInterface = new AlertReport.ButtonAction();
+      paramDialogInterface.uint32_cmd.set(1);
+      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.str_package_name.set(bhmt.c());
+      paramDialogInterface.uint32_app_id.set(AppSetting.a());
+      mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+      azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
     }
-    return true;
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkk
  * JD-Core Version:    0.7.0.1
  */

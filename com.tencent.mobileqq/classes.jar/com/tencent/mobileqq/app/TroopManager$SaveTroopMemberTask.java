@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app;
 
 import android.os.Handler;
 import android.os.Looper;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.troop.utils.TroopNameHelper;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -24,13 +24,13 @@ public class TroopManager$SaveTroopMemberTask
   public void run()
   {
     this.b = true;
-    awbw localawbw = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localawbw.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localawbw.a();
+      localawgf.a();
       new Handler(Looper.getMainLooper()).post(new TroopManager.SaveTroopMemberTask.1(this));
       if (this.jdField_a_of_type_Boolean) {
         TroopNameHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
@@ -39,7 +39,7 @@ public class TroopManager$SaveTroopMemberTask
       this.this$0.b.remove(this);
       this.this$0.c();
       return;
-      localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import aekt;
+import aepi;
 import android.widget.EditText;
 
 class BusinessCardEditActivity$2
@@ -11,7 +11,7 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    aekt.a(this.a);
+    aepi.a(this.a);
   }
 }
 

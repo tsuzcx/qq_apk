@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.stickynote.publish.ui;
 
-import awpj;
+import awts;
 import com.tencent.widget.XEditTextEx;
 
 public class StickyNotePublishFragment$9$1
   implements Runnable
 {
-  public StickyNotePublishFragment$9$1(awpj paramawpj) {}
+  public StickyNotePublishFragment$9$1(awts paramawts) {}
   
   public void run()
   {

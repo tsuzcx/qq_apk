@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import pvy;
 import pwx;
@@ -21,7 +21,7 @@ public class PTSEngineLoader$5
     QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], soFullPath = " + str);
     try
     {
-      if (bdcs.a(str))
+      if (bdhb.a(str))
       {
         System.load(str);
         pvy.a(this.this$0, true);

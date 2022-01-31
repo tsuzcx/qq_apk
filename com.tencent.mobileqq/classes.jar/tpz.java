@@ -15,6 +15,7 @@ public class tpz
   private static volatile Uri jdField_a_of_type_AndroidNetUri;
   private static volatile tpz jdField_a_of_type_Tpz;
   private int jdField_a_of_type_Int;
+  private twi jdField_a_of_type_Twi;
   private boolean jdField_a_of_type_Boolean = e();
   private boolean b;
   
@@ -38,12 +39,12 @@ public class tpz
   {
     int i = a();
     if (i > 720) {
-      return "https://down.qq.com/video_story/qcircle/splash/qcircle_splash2_1080p.mp4.zip";
+      return "https://d3g.qq.com/sngapp/app/update/20200420145917_1860/qcircle_splash2_1080p.mp4.zip";
     }
     if (i > 480) {
-      return "https://down.qq.com/video_story/qcircle/splash/qcircle_splash2_720p.mp4.zip";
+      return "https://d3g.qq.com/sngapp/app/update/20200420145909_3211/qcircle_splash2_720p.mp4.zip";
     }
-    return "https://down.qq.com/video_story/qcircle/splash/qcircle_splash2_480p.mp4.zip";
+    return "https://d3g.qq.com/sngapp/app/update/20200420145902_9462/qcircle_splash2_480p.mp4.zip";
   }
   
   public static tpz a()
@@ -95,6 +96,16 @@ public class tpz
       bool = localSharedPreferences.getBoolean("show_first_guide", true);
     }
     return bool;
+  }
+  
+  public long a()
+  {
+    long l = 0L;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("close_banner_time", 0L);
+    }
+    return l;
   }
   
   public Uri a()
@@ -170,12 +181,13 @@ public class tpz
     }
     try
     {
-      tvt.a().a(a(), new tqa(this));
+      this.jdField_a_of_type_Twi = new tqa(this);
+      twe.a().a(a(), this.jdField_a_of_type_Twi);
       return;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
+      QLog.e("QCircleConfig", 1, "tryGetSplashVideoAsync error:", localException);
     }
   }
   
@@ -201,6 +213,14 @@ public class tpz
   }
   
   public void f()
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("close_banner_time", System.currentTimeMillis()).apply();
+    }
+  }
+  
+  public void g()
   {
     this.jdField_a_of_type_Boolean = false;
     SharedPreferences localSharedPreferences = a();

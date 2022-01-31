@@ -1,6 +1,15 @@
-public abstract interface avwz
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+
+class avwz
+  implements Camera.PictureCallback
 {
-  public abstract void a();
+  avwz(avwv paramavwv) {}
+  
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    this.a.a(paramArrayOfByte, true);
+  }
 }
 
 

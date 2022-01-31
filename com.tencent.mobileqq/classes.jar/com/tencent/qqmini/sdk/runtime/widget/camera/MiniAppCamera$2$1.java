@@ -4,17 +4,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.util.Log;
-import bgjm;
-import bhem;
-import bhga;
-import bhgd;
+import bgnt;
+import bhit;
+import bhkh;
+import bhkk;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
 
 public class MiniAppCamera$2$1
   implements Runnable
 {
-  public MiniAppCamera$2$1(bhga parambhga, byte[] paramArrayOfByte) {}
+  public MiniAppCamera$2$1(bhkh parambhkh, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class MiniAppCamera$2$1
       int j;
       Object localObject3;
       Log.e("MiniAppCamera", "run: nativeTakePhoto ", localException);
-      this.jdField_a_of_type_Bhga.jdField_a_of_type_Bhgd.a(null);
+      this.jdField_a_of_type_Bhkh.jdField_a_of_type_Bhkk.a(null);
       return;
     }
     localObject2 = BitmapFactory.decodeByteArray(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
@@ -52,22 +52,22 @@ public class MiniAppCamera$2$1
     float f5;
     float f2;
     float f4;
-    if (bhem.a(bhem.g))
+    if (bhit.a(bhit.g))
     {
-      if (!this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
         break label677;
       }
       f1 = 270.0F;
       break label651;
-      Log.i("MiniAppCamera", "run: " + this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() + ":" + this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight());
-      if (!this.jdField_a_of_type_Bhga.jdField_a_of_type_Boolean) {
+      Log.i("MiniAppCamera", "run: " + this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() + ":" + this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight());
+      if (!this.jdField_a_of_type_Bhkh.jdField_a_of_type_Boolean) {
         break label694;
       }
-      f5 = Math.max(this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight() / i, this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() / j);
+      f5 = Math.max(this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight() / i, this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() / j);
       f2 = i;
       f1 = j;
-      f2 = (this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight() - f2 * f5) / f5;
-      f4 = (this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() - f1 * f5) / f5;
+      f2 = (this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getHeight() - f2 * f5) / f5;
+      f4 = (this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.getWidth() - f1 * f5) / f5;
       f1 = f2;
       if (f2 <= 0.0F) {
         break label656;
@@ -81,11 +81,11 @@ public class MiniAppCamera$2$1
       Object localObject1;
       ((Matrix)localObject3).postRotate(localObject1);
       ((Matrix)localObject3).postScale(f2, f2);
-      if (!this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
         ((Matrix)localObject3).postScale(-1.0F, 1.0F);
       }
       localObject3 = Bitmap.createBitmap((Bitmap)localObject2, (int)(-f1 / 2.0F), (int)(-f4 / 2.0F), (int)(f1 + ((Bitmap)localObject2).getWidth()), (int)(f4 + ((Bitmap)localObject2).getHeight()), (Matrix)localObject3, true);
-      if ("normal".equals(this.jdField_a_of_type_Bhga.jdField_a_of_type_JavaLangString)) {
+      if ("normal".equals(this.jdField_a_of_type_Bhkh.jdField_a_of_type_JavaLangString)) {
         f1 = 0.8F;
       }
       for (;;)
@@ -97,18 +97,18 @@ public class MiniAppCamera$2$1
           ((Matrix)localObject2).postScale(f1, f1);
           localObject2 = Bitmap.createBitmap((Bitmap)localObject3, 0, 0, ((Bitmap)localObject3).getWidth(), ((Bitmap)localObject3).getHeight(), (Matrix)localObject2, true);
         }
-        localObject3 = new File(bgjm.a().b("jpg"));
+        localObject3 = new File(bgnt.a().b("jpg"));
         ((File)localObject3).getParentFile().mkdirs();
-        localObject2 = MiniAppCamera.a((Bitmap)localObject2, (File)localObject3, this.jdField_a_of_type_Bhga.jdField_a_of_type_JavaLangString);
+        localObject2 = MiniAppCamera.a((Bitmap)localObject2, (File)localObject3, this.jdField_a_of_type_Bhkh.jdField_a_of_type_JavaLangString);
         Log.i("MiniAppCamera", "run: return");
-        this.jdField_a_of_type_Bhga.jdField_a_of_type_Bhgd.a((String)localObject2);
+        this.jdField_a_of_type_Bhkh.jdField_a_of_type_Bhkk.a((String)localObject2);
         return;
-        if (!this.jdField_a_of_type_Bhga.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
+        if (!this.jdField_a_of_type_Bhkh.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.jdField_a_of_type_Boolean) {
           break label688;
         }
         f1 = 90.0F;
         break;
-        boolean bool = "low".equals(this.jdField_a_of_type_Bhga.jdField_a_of_type_JavaLangString);
+        boolean bool = "low".equals(this.jdField_a_of_type_Bhkh.jdField_a_of_type_JavaLangString);
         if (bool) {
           f1 = 0.6F;
         } else {

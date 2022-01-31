@@ -1,10 +1,27 @@
-public abstract interface bhyq
+public class bhyq
 {
-  public abstract void b(int paramInt1, int paramInt2);
+  private int a;
+  private int b;
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhyq
  * JD-Core Version:    0.7.0.1
  */

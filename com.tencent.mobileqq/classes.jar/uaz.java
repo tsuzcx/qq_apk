@@ -1,43 +1,18 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import qqcircle.QQCircleWrite.DoFollowTagRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class uaz
-  implements yvn<QQCircleWrite.DoFollowTagRsp>
+class uaz
+  implements DialogInterface.OnShowListener
 {
-  public uaz(QCircleFollowTagView paramQCircleFollowTagView, int paramInt, boolean paramBoolean) {}
+  uaz(uax paramuax, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleWrite.DoFollowTagRsp paramDoFollowTagRsp)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    boolean bool = true;
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.a(this.jdField_a_of_type_Int);
-      if (QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView) != null)
-      {
-        QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext(), QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get(), this.jdField_a_of_type_Int);
-        paramString = txu.a();
-        paramDoFollowTagRsp = QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get();
-        if (this.jdField_a_of_type_Int != 1) {
-          break label101;
-        }
-      }
-      label101:
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.a(paramDoFollowTagRsp, paramBoolean);
-        return;
-      }
-    }
-    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2131698316;; i = 2131698381)
-    {
-      QQToast.a(paramString, i, 0).a();
-      return;
-    }
+    paramDialogInterface = uax.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    uax.a(this.jdField_a_of_type_Uax).a(paramDialogInterface);
   }
 }
 

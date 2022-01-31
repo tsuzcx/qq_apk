@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.fragment;
 
-import asdm;
-import bckv;
+import ashv;
+import bcpe;
 
 public class TroopRobotFragment$1$1
   implements Runnable
 {
-  public TroopRobotFragment$1$1(asdm paramasdm, bckv parambckv) {}
+  public TroopRobotFragment$1$1(ashv paramashv, bcpe parambcpe) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Asdm.a.a(this.jdField_a_of_type_Bckv.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bckv.b, this.jdField_a_of_type_Bckv.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Ashv.a.a(this.jdField_a_of_type_Bcpe.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bcpe.b, this.jdField_a_of_type_Bcpe.jdField_a_of_type_Int);
   }
 }
 

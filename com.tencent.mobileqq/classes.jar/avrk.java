@@ -1,45 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class avrk
-  implements benj
+final class avrk
+  implements avdi
 {
-  public avrk(OCRResultActivity paramOCRResultActivity) {}
+  avrk(avrr paramavrr, int paramInt) {}
   
-  public void a()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (OCRResultActivity.a(this.a) == 0) {
-      OCRResultActivity.a(this.a);
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Avrr != null) {
+      this.jdField_a_of_type_Avrr.a(false, null, true, this.jdField_a_of_type_Int);
     }
-    while (OCRResultActivity.a(this.a) != 1) {
-      return;
-    }
-    OCRResultActivity.b(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    baja.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    OCRResultActivity.a(this.a, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    baja.a(this.a, this.a.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
-    this.a.startActivityForResult(localIntent, 1);
-    OCRResultActivity.a(this.a, true);
   }
 }
 

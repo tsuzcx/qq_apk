@@ -1,87 +1,34 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.widget.AbsListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public class wpj
-  implements bhpo
+class wpj
+  implements urr<vex, vey>
 {
-  public wpj(MystoryListView paramMystoryListView) {}
+  wpj(wpi paramwpi, JobContext paramJobContext, wov paramwov) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull vex paramvex, @Nullable vey arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    int j;
-    int k;
-    int m;
-    int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if (-MystoryListView.b(this.a) > xod.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_Wpi.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
-        return;
-      }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
-    {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
       return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
-      {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
-      }
-      else
-      {
-        i = k - MystoryListView.f(this.a);
-      }
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
-      }
+    vey localvey = ???;
+    if (??? == null) {
+      localvey = new vey(paramErrorMessage);
     }
-    for (;;)
+    if (paramErrorMessage.isFail()) {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
+    }
+    synchronized (this.jdField_a_of_type_Wpi)
     {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-      }
+      wpi.a(this.jdField_a_of_type_Wpi, localvey);
+      wpi.a(this.jdField_a_of_type_Wpi).remove(paramvex);
+      wpi.a(this.jdField_a_of_type_Wpi, this.jdField_a_of_type_Wov);
       return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
-      {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
     }
   }
 }

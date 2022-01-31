@@ -1,73 +1,64 @@
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopFileData;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class bcif
+  extends ahes
 {
-  public static Map<Long, bcif> a;
-  public long a;
-  public Map<String, TroopFileData> b = new HashMap();
-  
-  static
+  public bcif(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    super(paramContext, paramQQAppInterface, paramBoolean);
   }
   
-  public bcif(long paramLong)
+  protected int a()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    return 10100;
   }
   
-  public static bcif a(long paramLong)
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
   {
-    try
+    String str1 = paramRecommendTroopItem.uin;
+    String str2 = paramRecommendTroopItem.recomAlgol;
+    if (paramRecommendTroopItem.isJoined()) {}
+    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
     {
-      bcif localbcif2 = (bcif)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      bcif localbcif1 = localbcif2;
-      if (localbcif2 == null)
-      {
-        localbcif1 = new bcif(paramLong);
-        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localbcif1);
-      }
-      return localbcif1;
-    }
-    finally {}
-  }
-  
-  public TroopFileData a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    TroopFileData localTroopFileData1 = null;
-    try
-    {
-      if (this.b != null) {
-        localTroopFileData1 = (TroopFileData)this.b.get(paramString);
-      }
-      TroopFileData localTroopFileData2 = localTroopFileData1;
-      if (localTroopFileData1 == null)
-      {
-        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localTroopFileData2 = (TroopFileData)paramQQAppInterface.a(TroopFileData.class, paramString);
-        paramQQAppInterface.a();
-      }
-      return localTroopFileData2;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, TroopFileData paramTroopFileData)
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.put(paramTroopFileData.fileUrl, paramTroopFileData);
-      }
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      paramQQAppInterface.a(paramTroopFileData);
-      paramQQAppInterface.a();
+      azqs.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
       return;
     }
-    finally {}
+  }
+  
+  protected int b()
+  {
+    return 39;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    String str1 = String.valueOf(paramRecommendTroopItem.uin);
+    String str2 = paramRecommendTroopItem.recomAlgol;
+    if (paramRecommendTroopItem.isJoined()) {}
+    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    {
+      azqs.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_add", 0, 0, str1, str2, paramRecommendTroopItem, "");
+      return;
+    }
+  }
+  
+  protected int c()
+  {
+    return 10101;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    String str1 = paramRecommendTroopItem.uin;
+    String str2 = paramRecommendTroopItem.recomAlgol;
+    if (paramRecommendTroopItem.isJoined()) {}
+    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    {
+      azqs.b(null, "dc00899", "Grp_recom", "", "set_page", "exp_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
+      return;
+    }
   }
 }
 

@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import arum;
+import aryv;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import xxb;
+import ybk;
 
 class RedPacketShareFragment$1$1
   implements Runnable
@@ -22,7 +22,7 @@ class RedPacketShareFragment$1$1
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0);
-      xxb.a(1, 2131696944);
+      ybk.a(1, 2131696946);
       return;
     }
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.a(false);
@@ -32,14 +32,14 @@ class RedPacketShareFragment$1$1
     ((Bundle)localObject).putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
     ((Bundle)localObject).putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
     ((Bundle)localObject).putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putInt(arum.e, 1);
+    ((Bundle)localObject).putInt(aryv.e, 1);
     Intent localIntent = new Intent();
     localIntent.putExtra("isFromShare", false);
     localIntent.putExtras((Bundle)localObject);
     localObject = new ForwardFileInfo();
     ((ForwardFileInfo)localObject).b(10012);
     localIntent.putExtra("fileinfo", (Parcelable)localObject);
-    arum.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.getActivity(), localIntent, 21);
+    aryv.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.getActivity(), localIntent, 21);
   }
 }
 

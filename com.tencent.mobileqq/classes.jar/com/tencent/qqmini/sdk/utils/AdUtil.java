@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgte;
+import bgxl;
 
 public class AdUtil
 {
@@ -20,7 +20,7 @@ public class AdUtil
   
   private static String getGdtCookieSpKey(int paramInt)
   {
-    return "gdt_cookie_" + bgte.a().a() + "_" + paramInt;
+    return "gdt_cookie_" + bgxl.a().a() + "_" + paramInt;
   }
   
   public static String getSpAdGdtCookie(int paramInt)

@@ -1,21 +1,6 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class blnb
-  implements ThreadFactory
+public abstract interface blnb
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  private blnb(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
-  
-  public Thread newThread(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    paramRunnable.setPriority(4);
-    return paramRunnable;
-  }
+  public abstract void a(int paramInt);
 }
 
 

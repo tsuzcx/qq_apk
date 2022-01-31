@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aeuf;
+import aeyu;
 
 public class VoiceTextEditPanel$9$1
   implements Runnable
 {
-  public VoiceTextEditPanel$9$1(aeuf paramaeuf) {}
+  public VoiceTextEditPanel$9$1(aeyu paramaeyu) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajih;
+import ajmw;
 import android.view.View;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
@@ -14,8 +14,8 @@ class Conversation$53
     View localView = Conversation.a(this.this$0).getChildAt(this.a - Conversation.a(this.this$0).getFirstVisiblePosition());
     if (localView != null)
     {
-      localView = localView.findViewById(2131375577);
-      this.this$0.jdField_a_of_type_Ajih.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localView);
+      localView = localView.findViewById(2131375628);
+      this.this$0.jdField_a_of_type_Ajmw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localView);
     }
   }
 }

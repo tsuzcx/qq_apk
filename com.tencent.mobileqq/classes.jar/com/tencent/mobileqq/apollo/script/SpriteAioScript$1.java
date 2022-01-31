@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akml;
-import akwd;
-import akwl;
-import alda;
-import algf;
+import akra;
+import alas;
+import alba;
+import alhp;
+import alku;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRenderDriver;
@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 public class SpriteAioScript$1
   extends IApolloRunnableTask
 {
-  public SpriteAioScript$1(akwd paramakwd, String paramString, akml paramakml, int paramInt, boolean paramBoolean) {}
+  public SpriteAioScript$1(alas paramalas, String paramString, akra paramakra, int paramInt, boolean paramBoolean) {}
   
   public int a()
   {
@@ -43,23 +43,23 @@ public class SpriteAioScript$1
       QLog.i("cmshow_scripted_SpriteAioScript", 1, "TraceReport exe Js:" + this.jdField_a_of_type_JavaLangString.length());
     }
     if ((this.jdField_a_of_type_JavaLangString.startsWith("initDrawerInfoSprite")) || (this.jdField_a_of_type_JavaLangString.startsWith("initSprite"))) {
-      alda.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
+      alhp.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
     }
-    if ((this.jdField_a_of_type_Akml != null) && (this.jdField_a_of_type_Akml.getWorker() != null) && (this.jdField_a_of_type_Akml.getWorker().a != null)) {
-      this.jdField_a_of_type_Akml.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Akra != null) && (this.jdField_a_of_type_Akra.getWorker() != null) && (this.jdField_a_of_type_Akra.getWorker().a != null)) {
+      this.jdField_a_of_type_Akra.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
     }
     if (QLog.isColorLevel())
     {
       if (!this.jdField_a_of_type_JavaLangString.contains("CMShowDefActionName")) {
         break label164;
       }
-      algf.b("exeCmshow0");
+      alku.b("exeCmshow0");
     }
     label164:
     while (!this.jdField_a_of_type_JavaLangString.contains("commonInit")) {
       return;
     }
-    algf.b("exeCommon");
+    alku.b("exeCommon");
   }
 }
 

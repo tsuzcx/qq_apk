@@ -1,25 +1,60 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.common.app.AppInterface;
 
-public class unf
+class unf
+  implements uni
 {
-  public int a;
-  public String b;
+  protected bauf a;
   
-  public unf() {}
-  
-  public unf(int paramInt, String paramString)
+  private unf(una paramuna)
   {
-    this.a = paramInt;
-    this.b = paramString;
+    this.jdField_a_of_type_Bauf = new unh(this);
   }
   
-  public unf(qqstory_struct.ErrorInfo paramErrorInfo)
+  protected baue a()
   {
-    this.a = paramErrorInfo.error_code.get();
-    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
+    AppInterface localAppInterface = blqr.a();
+    if (localAppInterface != null) {
+      return localAppInterface.getNetEngine(0);
+    }
+    return null;
+  }
+  
+  public void a(unj paramunj)
+  {
+    paramunj.jdField_d_of_type_Int = 0;
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_JavaLangString = paramunj.jdField_d_of_type_JavaLangString;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_c_of_type_JavaLangString = paramunj.e;
+    localbaub.jdField_d_of_type_JavaLangString = paramunj.f;
+    localbaub.e = paramunj.g;
+    localbaub.jdField_c_of_type_Int = 3;
+    localbaub.a(paramunj);
+    localbaub.jdField_a_of_type_Bauf = this.jdField_a_of_type_Bauf;
+    paramunj.a = localbaub;
+    localbaub.jdField_a_of_type_Baug = new ung(this);
+    baue localbaue = a();
+    if (localbaue != null) {
+      localbaue.a(localbaub);
+    }
+    wxe.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramunj);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(unj paramunj)
+  {
+    baub localbaub = paramunj.a;
+    if (localbaub != null)
+    {
+      if (a() != null) {
+        a().b(localbaub);
+      }
+      wxe.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramunj }));
+    }
   }
 }
 

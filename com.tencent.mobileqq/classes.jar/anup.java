@@ -1,20 +1,74 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.qphone.base.util.QLog;
 
 public class anup
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public anup(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public anup(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
     }
+    do
+    {
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
+      {
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
+        {
+          azqs.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
+        }
+      }
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
+    return true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+    }
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
+    }
+    DynamicAvatarRecordActivity.b(this.a);
+    return true;
   }
 }
 

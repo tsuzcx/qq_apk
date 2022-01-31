@@ -1,13 +1,24 @@
-import android.media.MediaFormat;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class axrk
+public abstract interface axrk
 {
-  public int a = -1;
-  public MediaFormat a;
-  public String a;
-  public int b = -1;
-  public MediaFormat b;
-  public String b;
+  public abstract void a(long paramLong);
+  
+  public abstract void a(VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void a_(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

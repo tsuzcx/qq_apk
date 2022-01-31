@@ -1,26 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-
-class awlj
-  implements bhqd
+public final class awlj
+  extends awky
 {
-  awlj(awlh paramawlh, PersonalityLabelInfo paramPersonalityLabelInfo, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  protected int c()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      awlh.a(this.jdField_a_of_type_Awlh, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-      continue;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Awlh.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-      this.jdField_a_of_type_Awlh.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-    }
+    return 506;
   }
 }
 

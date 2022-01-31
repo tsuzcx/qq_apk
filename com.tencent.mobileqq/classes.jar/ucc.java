@@ -2,17 +2,18 @@ import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 
 public class ucc
   extends ClickableSpan
 {
-  public ucc(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  public ucc(QCircleAsyncTextView paramQCircleAsyncTextView, ucd paramucd) {}
   
   public void onClick(@NonNull View paramView)
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).b();
+    QCircleAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, true);
+    if (this.jdField_a_of_type_Ucd != null) {
+      this.jdField_a_of_type_Ucd.a();
     }
   }
   
@@ -21,6 +22,7 @@ public class ucc
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setColor(-16777216);
     paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(true);
   }
 }
 

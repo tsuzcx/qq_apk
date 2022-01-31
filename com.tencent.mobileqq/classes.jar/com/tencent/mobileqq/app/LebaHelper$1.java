@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import alra;
-import beik;
+import alvp;
+import bemt;
 
 public class LebaHelper$1
   implements Runnable
 {
-  public LebaHelper$1(alra paramalra) {}
+  public LebaHelper$1(alvp paramalvp) {}
   
   public void run()
   {
-    alra.a(this.this$0);
-    alra.b(this.this$0);
-    this.this$0.jdField_a_of_type_Beik = new beik(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    alra.c(this.this$0);
+    alvp.a(this.this$0);
+    alvp.b(this.this$0);
+    this.this$0.jdField_a_of_type_Bemt = new bemt(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    alvp.c(this.this$0);
   }
 }
 

@@ -1,36 +1,28 @@
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-public abstract interface ahfj
+public class ahfj
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a();
+  private int a;
+  private int b;
   
-  public abstract void a(int paramInt);
+  public ahfj(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, List<ahfi> paramList);
-  
-  public abstract void a(List<String> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
+    }
+  }
 }
 
 

@@ -1,24 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class babk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class babk
+  implements DialogInterface.OnDismissListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  babk(babh parambabh) {}
   
-  public babk(TableQueryViewer paramTableQueryViewer, View paramView)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377344));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.b = ((TextView)paramView.findViewById(2131377342));
-    this.b.setTextSize(10.0F);
-    this.c = ((TextView)paramView.findViewById(2131377347));
-    this.c.setTextSize(10.0F);
-    this.d = ((TextView)paramView.findViewById(2131377339));
-    this.d.setTextSize(10.0F);
+    babh.a(this.a).b((baav)this.a);
+    babh.a(this.a).a();
   }
 }
 

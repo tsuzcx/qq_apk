@@ -1,46 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class ahew
-  extends Handler
+  extends ahes
 {
-  public ahew(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ahew(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramMessage.what == 5)
-    {
-      Face2FaceAddContactFragment.a(this.a).setText(2131692371);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 301)
-      {
-        Face2FaceAddContactFragment.a(this.a);
-        return;
-      }
-      if (paramMessage.what == 500)
-      {
-        Face2FaceAddContactFragment.b(this.a);
-        return;
-      }
-      if (paramMessage.what == 401)
-      {
-        removeMessages(301);
-        this.a.d();
-        return;
-      }
-    } while (paramMessage.what != 6);
-    Face2FaceAddContactFragment.c(this.a);
-    QQToast.a(this.a.getActivity(), this.a.getString(2131691071), 0).a();
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10021;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 109;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10022;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

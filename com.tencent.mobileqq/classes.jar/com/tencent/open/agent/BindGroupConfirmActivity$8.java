@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
 import android.text.TextUtils;
-import bdcd;
-import bdfq;
-import beyx;
+import bdgm;
+import bdjz;
+import bfdg;
 
 public class BindGroupConfirmActivity$8
   implements Runnable
@@ -13,15 +13,15 @@ public class BindGroupConfirmActivity$8
   public void run()
   {
     if (this.this$0.a == null) {
-      this.this$0.a = bdcd.a(this.this$0, 230);
+      this.this$0.a = bdgm.a(this.this$0, 230);
     }
     if (!TextUtils.isEmpty(this.a)) {
       this.this$0.a.setMessage(this.a);
     }
-    beyx localbeyx = new beyx(this);
-    this.this$0.a.setTitle(2131721017);
-    this.this$0.a.setPositiveButton(2131691088, localbeyx);
-    this.this$0.a.setNegativeButton(2131690648, localbeyx);
+    bfdg localbfdg = new bfdg(this);
+    this.this$0.a.setTitle(2131721029);
+    this.this$0.a.setPositiveButton(2131691089, localbfdg);
+    this.this$0.a.setNegativeButton(2131690648, localbfdg);
     if (!this.this$0.a.isShowing()) {
       this.this$0.a.show();
     }

@@ -1,25 +1,29 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1;
+import com.tencent.qphone.base.util.QLog;
 
-class avkh
-  implements aoec
+public class avkh
+  implements antz
 {
-  avkh(avkg paramavkg, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
+  public avkh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing()))
-    {
-      avkg.a(this.jdField_a_of_type_Avkg, this.jdField_a_of_type_Avkg.b, false);
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Avkg.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Avkg.b.setText(avkg.a(this.jdField_a_of_type_Avkg).a(0, paramInt1));
+    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    this.a.runOnUiThread(new NearbyPeopleProfileActivity.17.1(this, paramString, paramBoolean1));
   }
 }
 

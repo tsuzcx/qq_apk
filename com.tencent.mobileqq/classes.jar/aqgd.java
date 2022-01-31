@@ -1,20 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-
 public class aqgd
-  implements Animation.AnimationListener
+  extends aqga
 {
-  public aqgd(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aqgd(aqfz paramaqfz, aqfk paramaqfk)
   {
-    this.a.a.b();
+    super(paramaqfz, paramaqfk);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Aqfk.a();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
+    {
+    default: 
+      return false;
+    }
+    this.jdField_a_of_type_Aqfz.a(2, paramInt2);
+    return true;
+  }
 }
 
 

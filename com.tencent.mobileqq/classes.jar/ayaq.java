@@ -1,17 +1,19 @@
+import mqq.app.QQPermissionCallback;
+
 class ayaq
-  implements bdqy
+  implements QQPermissionCallback
 {
-  ayaq(ayap paramayap) {}
+  ayaq(ayao paramayao) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.l();
-    this.a.h();
+    bdgm.b(this.a.mContext);
   }
   
-  public void b() {}
-  
-  public void c() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ayao.b(this.a);
+  }
 }
 
 

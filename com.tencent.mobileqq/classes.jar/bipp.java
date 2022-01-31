@@ -1,21 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Bundle;
 
-public class bipp
-  extends BroadcastReceiver
+public abstract interface bipp
 {
-  public bipp(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

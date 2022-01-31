@@ -1,179 +1,140 @@
-import android.opengl.GLES20;
-import android.os.Build;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import java.util.ArrayList;
 
-public class anap
+class anap
+  implements anab
 {
-  int jdField_a_of_type_Int = 0;
-  FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  FloatBuffer b;
+  anap(anam paramanam, long paramLong, anbr paramanbr) {}
   
-  public anap(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(int paramInt, String paramString, anbm paramanbm)
   {
-    a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f1 = (float)(paramFloat2 / (paramFloat4 * 3.141592653589793D) * 360.0D);
-    float f2 = paramFloat1 * (paramFloat4 / 2.0F);
-    float f3 = paramFloat1 * paramFloat3;
-    int i1 = (int)(f1 / 1.0F);
-    float f4 = f1 / 1.0F;
-    this.jdField_a_of_type_Int = (i1 * 3 * 4);
-    Object localObject = new float[this.jdField_a_of_type_Int * 4];
-    float[] arrayOfFloat = new float[this.jdField_a_of_type_Int * 4];
-    QLog.i("AREngine_CylinderSide", 1, "initVertexData. w = " + paramFloat2 + ", h = " + f3 + ", d = " + paramFloat4 + ", angleLen = " + f1 + ", angdegSpan = " + 1.0F + ", ni = " + i1 + ", nf = " + f4);
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 1;
-    int i = 0;
-    if ((Build.MODEL.equalsIgnoreCase("MI-ONE Plus")) || (Build.MODEL.equalsIgnoreCase("M040")))
-    {
-      j = 0;
-      i = 1;
+    anam.c(this.jdField_a_of_type_Anam, false);
+    if (anam.a(this.jdField_a_of_type_Anam)) {
+      return;
     }
-    for (paramFloat1 = 0.0F; Math.ceil(paramFloat1) < f1; paramFloat1 += 1.0F)
+    for (;;)
     {
-      double d3 = Math.toRadians(paramFloat1);
-      double d2 = Math.toRadians(paramFloat1 + 1.0F);
-      paramFloat3 = k + 1;
-      paramFloat2 = paramFloat3;
-      double d1 = d2;
-      if (f1 - i1 * 1.0F > 0.01D)
+      try
       {
-        paramFloat2 = paramFloat3;
-        d1 = d2;
-        if (k == i1)
-        {
-          d1 = Math.toRadians(f1 - i1 * 1.0F + paramFloat1);
-          paramFloat2 = k + (f1 - i1 * 1.0F) / 1.0F;
-          QLog.i("AREngine_CylinderSide", 1, "initVertexData. angrad = " + 180.0D * d3 / 3.141592653589793D + ", angradNext = " + 180.0D * d1 / 3.141592653589793D + ", k = " + k + ", kNext = " + paramFloat2);
+        localObject = this.jdField_a_of_type_Anam;
+        if ((paramanbm == null) || (paramanbm.jdField_a_of_type_Anax == null)) {
+          continue;
         }
+        i = paramanbm.jdField_a_of_type_Anax.c;
+        ((anam)localObject).i = i;
+        anam localanam = this.jdField_a_of_type_Anam;
+        if ((paramanbm == null) || (paramanbm.jdField_a_of_type_Anax == null) || (paramanbm.jdField_a_of_type_Anax.a == null) || (paramanbm.jdField_a_of_type_Anax.a.length <= 0)) {
+          continue;
+        }
+        localObject = paramanbm.jdField_a_of_type_Anax.a[0].jdField_a_of_type_JavaLangString;
+        localanam.jdField_a_of_type_JavaLangString = ((String)localObject);
       }
-      int i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d3) * d2));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d1) * d2));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      k += 1;
+      catch (Exception localException)
+      {
+        Object localObject;
+        long l1;
+        long l2;
+        boolean bool2;
+        boolean bool1;
+        QLog.i("AREngine_ARCloudControl", 1, "  mCloudTime  mImageId " + localException.getMessage());
+        continue;
+        int i = 0;
+        continue;
+        QLog.i("AREngine_ARCloudControl", 1, "MIGObjectClaasify not need  run requestToCheckLBSLocation.");
+        anam.a(this.jdField_a_of_type_Anam).a(paramInt, paramanbm);
+        return;
+      }
+      if (this.jdField_a_of_type_Anam.c != 0L) {
+        this.jdField_a_of_type_Anam.jdField_j_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Anam.c);
+      }
+      if (this.jdField_a_of_type_Anam.d != 0L)
+      {
+        localObject = this.jdField_a_of_type_Anam;
+        ((anam)localObject).g += System.currentTimeMillis() - this.jdField_a_of_type_Anam.d;
+      }
+      if (anam.a(this.jdField_a_of_type_Anam) != null) {
+        anam.a(this.jdField_a_of_type_Anam).removeMessages(1);
+      }
+      l1 = System.currentTimeMillis();
+      l2 = this.jdField_a_of_type_Long;
+      QLog.i("AREngine_ARCloudControl", 1, "[DEBUG_SCAN_yt_face] onARCloudUploadImgComplete  retCode = " + paramInt + ", rspInfo = , sessionId = " + paramString + ",uploadCost = " + (l1 - l2));
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "requestToUpload" }));
+      if (anam.a(this.jdField_a_of_type_Anam) == null) {
+        break;
+      }
+      if ((paramInt == 0) && (paramanbm != null) && ((anax.a(paramanbm.jdField_a_of_type_Anax)) || (anbc.a(paramanbm.jdField_a_of_type_Anbc)) || (anct.a(paramanbm.jdField_a_of_type_Anct)) || (anbo.a(paramanbm.jdField_a_of_type_Anbo)) || (anbu.a(paramanbm.jdField_a_of_type_Anbu))))
+      {
+        QLog.d("AREngine_ARCloudControl", 2, "mResult set:" + this.jdField_a_of_type_Anam.jdField_j_of_type_Int);
+        this.jdField_a_of_type_Anam.jdField_j_of_type_Int = 0;
+      }
+      if ((paramanbm != null) && (anax.a(paramanbm.jdField_a_of_type_Anax))) {
+        paramanbm.jdField_a_of_type_Anax.b = this.jdField_a_of_type_Anbr.a.jdField_a_of_type_JavaLangString;
+      }
+      if ((paramanbm != null) && (anbc.a(paramanbm.jdField_a_of_type_Anbc))) {
+        paramanbm.jdField_a_of_type_Anbc.b = this.jdField_a_of_type_Anbr.a.jdField_a_of_type_JavaLangString;
+      }
+      if ((paramanbm != null) && (anbu.a(paramanbm.jdField_a_of_type_Anbu))) {
+        paramanbm.jdField_a_of_type_Anbu.b = this.jdField_a_of_type_Anbr.a.jdField_a_of_type_JavaLangString;
+      }
+      if (!anam.c(this.jdField_a_of_type_Anam))
+      {
+        bool2 = false;
+        bool1 = bool2;
+        if (paramInt == 0)
+        {
+          bool1 = bool2;
+          if (paramanbm != null) {
+            if ((!anax.a(paramanbm.jdField_a_of_type_Anax)) && (!anbc.a(paramanbm.jdField_a_of_type_Anbc)) && (!anbo.a(paramanbm.jdField_a_of_type_Anbo)) && (!anbe.a(paramanbm.jdField_a_of_type_Anbe)))
+            {
+              bool1 = bool2;
+              if (!anbu.a(paramanbm.jdField_a_of_type_Anbu)) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+        l1 = anam.a(this.jdField_a_of_type_Anam).b();
+        amys.a().a(bool1, l1);
+        anam.d(this.jdField_a_of_type_Anam, true);
+      }
+      if ((!anam.d(this.jdField_a_of_type_Anam)) && (paramInt == 0) && (paramanbm != null) && ((anax.a(paramanbm.jdField_a_of_type_Anax)) || (anbc.a(paramanbm.jdField_a_of_type_Anbc)) || (anbo.a(paramanbm.jdField_a_of_type_Anbo)) || (anbe.a(paramanbm.jdField_a_of_type_Anbe)) || (anbu.a(paramanbm.jdField_a_of_type_Anbu))))
+      {
+        l1 = anam.a(this.jdField_a_of_type_Anam).b();
+        amys.a().a(l1, this.jdField_a_of_type_Anam.jdField_a_of_type_Anat.c);
+        anam.e(this.jdField_a_of_type_Anam, true);
+      }
+      if (anam.a(this.jdField_a_of_type_Anam) != null) {
+        anam.a(this.jdField_a_of_type_Anam).add(paramString);
+      }
+      if ((this.jdField_a_of_type_Anam.jdField_j_of_type_Int != 0) || (!anbm.a(this.jdField_a_of_type_Anam.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramanbm))) {
+        break label932;
+      }
+      if (this.jdField_a_of_type_Anam.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.switchLBSLocation != 1) {
+        break label917;
+      }
+      if ((paramanbm.jdField_a_of_type_Long == 128L) && ((paramanbm.jdField_a_of_type_Long != 128L) || (!anam.a(this.jdField_a_of_type_Anam).a(paramanbm.jdField_a_of_type_Anct)))) {
+        continue;
+      }
+      i = 1;
+      if (i == 0) {
+        continue;
+      }
+      QLog.i("AREngine_ARCloudControl", 1, "normal process run requestToCheckLBSLocation.");
+      anam.a(this.jdField_a_of_type_Anam, paramInt, paramanbm);
+      return;
+      i = 0;
+      continue;
+      localObject = "";
     }
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(localObject.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put((float[])localObject);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    localObject = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.b = ((ByteBuffer)localObject).asFloatBuffer();
-    this.b.put(arrayOfFloat);
-    this.b.position(0);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 16, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 16, this.b);
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    GLES20.glDrawArrays(4, 0, this.jdField_a_of_type_Int);
+    label917:
+    anam.a(this.jdField_a_of_type_Anam).a(2, null);
+    return;
+    label932:
+    anam.a(this.jdField_a_of_type_Anam).a(paramInt, paramanbm);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bexd;
-import bfij;
-import bfkb;
-import bfln;
-import bflo;
+import bfbm;
+import bfms;
+import bfok;
+import bfpw;
+import bfpx;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,28 +14,28 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManager$3
   implements Runnable
 {
-  public DownloadManager$3(bfkb parambfkb) {}
+  public DownloadManager$3(bfok parambfok) {}
   
   public void run()
   {
-    Object localObject1 = bfij.b(bexd.a().a());
+    Object localObject1 = bfms.b(bfbm.a().a());
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      localObject1 = bfln.a().a();
+      localObject1 = bfpw.a().a();
       if (localObject1 != null)
       {
         Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
         while (localIterator.hasNext())
         {
-          bflo localbflo = (bflo)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localbflo != null)
+          bfpx localbfpx = (bfpx)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localbfpx != null)
           {
-            Object localObject2 = this.this$0.a(localbflo.b);
+            Object localObject2 = this.this$0.a(localbfpx.b);
             if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).d)))
             {
               localObject2 = this.this$0.a(((DownloadInfo)localObject2).d);
-              if ((localObject2 != null) && (4 != bfkb.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                bfln.a().a(localbflo.a);
+              if ((localObject2 != null) && (4 != bfok.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                bfpw.a().a(localbfpx.a);
               }
             }
           }

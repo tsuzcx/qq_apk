@@ -3,54 +3,59 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoni
-  extends aofy<aonj>
+  extends aokh<aonh>
 {
   public int a()
   {
-    return 607;
+    return 528;
   }
   
   @NonNull
-  public aonj a(int paramInt)
+  public aonh a(int paramInt)
   {
-    return new aonj();
+    return new aonh();
   }
   
   @Nullable
-  public aonj a(aogf[] paramArrayOfaogf)
+  public aonh a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      return aonj.a(paramArrayOfaogf[0].a);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aonh localaonh = aonh.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaonh;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
+      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
     }
     return null;
   }
   
-  public Class<aonj> a()
+  public Class<aonh> a()
   {
-    return aonj.class;
+    return aonh.class;
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public void a(aonj paramaonj)
+  public void a(aonh paramaonh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramaonj.toString());
+      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramaonh.toString());
     }
   }
   
   public int b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
+      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
     }
     return 0;
   }

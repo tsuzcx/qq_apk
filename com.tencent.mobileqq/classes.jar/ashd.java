@@ -1,35 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
-public final class ashd
-  implements Parcelable.Creator<GameCenterSessionInfo>
+public class ashd
+  extends Handler
 {
-  public GameCenterSessionInfo a(Parcel paramParcel)
-  {
-    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
-    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.e = paramParcel.readString();
-    localGameCenterSessionInfo.f = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.g = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.h = paramParcel.readString();
-    localGameCenterSessionInfo.i = paramParcel.readString();
-    localGameCenterSessionInfo.j = paramParcel.readString();
-    return localGameCenterSessionInfo;
-  }
+  public ashd(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public GameCenterSessionInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new GameCenterSessionInfo[paramInt];
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        return;
+        if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
+        {
+          this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
+          this.a.jdField_a_of_type_Bety.d(2130849126);
+          this.a.jdField_a_of_type_Bety.b(false);
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+        return;
+      } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
+      this.a.jdField_a_of_type_Bety.cancel();
+      this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
+      this.a.jdField_a_of_type_Bety.c(true);
+      this.a.jdField_a_of_type_Bety.a(false);
+      this.a.jdField_a_of_type_Bety.b(true);
+      return;
+    }
+    QQSettingChatOperationFragment.b(this.a);
   }
 }
 

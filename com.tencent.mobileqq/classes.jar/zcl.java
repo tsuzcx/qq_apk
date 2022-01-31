@@ -1,8 +1,17 @@
-public abstract interface zcl
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
+
+public class zcl
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a(int paramInt);
+  public zcl(SmartMusicRecyclerView paramSmartMusicRecyclerView) {}
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    SmartMusicRecyclerView.a(this.a, paramRecyclerView, paramInt);
+  }
 }
 
 

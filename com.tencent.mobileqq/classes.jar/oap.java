@@ -122,10 +122,10 @@ public class oap
       return;
       if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty())
       {
-        ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131718995));
+        ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131719007));
         continue;
         if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty()) {
-          ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131718950));
+          ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131718962));
         }
       }
     }
@@ -168,7 +168,7 @@ public class oap
       }
       if ((!ReadInJoyVideoSubChannelActivity.c(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.a(this.a))))
       {
-        paramList = this.a.getResources().getString(2131718720);
+        paramList = this.a.getResources().getString(2131718732);
         QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a).getApplicationContext(), paramList, 0).a();
       }
       ReadInJoyVideoSubChannelActivity.d(this.a, false);
@@ -182,13 +182,13 @@ public class oap
   {
     if (paramInt == 97)
     {
-      QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), alpo.a(2131713149), 0).a();
+      QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), alud.a(2131713161), 0).a();
       ReadInJoyVideoSubChannelActivity.b(this.a, true);
     }
     while (paramInt != 98) {
       return;
     }
-    QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), alpo.a(2131713219), 0).a();
+    QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), alud.a(2131713231), 0).a();
     ReadInJoyVideoSubChannelActivity.b(this.a, false);
   }
 }

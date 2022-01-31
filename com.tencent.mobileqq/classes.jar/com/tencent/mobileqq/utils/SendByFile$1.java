@@ -2,13 +2,13 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bdil;
+import bdmu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class SendByFile$1
   implements Runnable
 {
-  public SendByFile$1(bdil parambdil, Context paramContext, String paramString) {}
+  public SendByFile$1(bdmu parambdmu, Context paramContext, String paramString) {}
   
   public void run()
   {

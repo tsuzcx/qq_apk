@@ -2,7 +2,7 @@ package com.tencent.mobileqq.database.corrupt;
 
 import android.content.Intent;
 import android.os.Bundle;
-import apbu;
+import apgd;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class DBFixDialogActivity
@@ -11,7 +11,7 @@ public class DBFixDialogActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    new apbu(this, this.app).b();
+    new apgd(this, this.app).b();
     return true;
   }
   

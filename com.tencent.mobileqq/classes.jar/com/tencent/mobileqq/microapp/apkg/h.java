@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import aivz;
+import ajao;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
@@ -23,11 +23,11 @@ final class h
         QLog.d("ApkgManager", 2, "initApkgByConfig - base lib is not ready");
       }
       long l = System.currentTimeMillis();
-      aivz localaivz = aivz.a(BaseApplicationImpl.getApplication().getRuntime());
+      ajao localajao = ajao.a(BaseApplicationImpl.getApplication().getRuntime());
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = this.a.baseLibInfo.baseLibUrl;
-      localaivz.a(localDownloadParam, new i(this, paramd, l));
+      localajao.a(localDownloadParam, new i(this, paramd, l));
       return;
     }
     g.a(this.b, paramd, 1, null, "miniConfig not valid");

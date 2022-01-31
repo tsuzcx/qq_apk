@@ -1,50 +1,70 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import java.util.ArrayList;
 
 public class ylt
-  implements TVK_SDKMgr.OnLogListener
+  extends FlingGestureHandler
 {
-  public ylt(TribeVideoPlugin paramTribeVideoPlugin) {}
+  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
   
-  public int d(String paramString1, String paramString2)
+  public ylt(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    super(paramActivity);
+    paramActivity = new TopGestureLayout(paramActivity);
+    paramActivity.setInterceptScrollRLFlag(true);
+    setTopLayout(paramActivity);
+    if (this.mTopLayout != null)
+    {
+      paramActivity = new Rect();
+      this.mTopLayout.setInterceptTouchEventListener(new ylu(this, paramActivity));
     }
-    return 0;
+    onStart();
   }
   
-  public int e(String paramString1, String paramString2)
+  public void a(CertifiedAccountMeta.StUser paramStUser)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
   }
   
-  public int i(String paramString1, String paramString2)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    if (paramView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramView));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
   }
   
-  public int v(String paramString1, String paramString2)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    return true;
   }
   
-  public int w(String paramString1, String paramString2)
+  public void flingRToL()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    if (this.mTopLayout != null)
+    {
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
+        break label29;
+      }
+      ybt.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
     }
-    return 0;
+    label29:
+    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
+      return;
+    }
+    ybt.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 

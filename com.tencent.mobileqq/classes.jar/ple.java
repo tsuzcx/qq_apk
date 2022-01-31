@@ -141,10 +141,10 @@ public class ple
       }
     }
     if ((paramInt == 35) && (!paramBaseArticleInfo.isPGCShortContent())) {
-      localpjo.c(paramBaseArticleInfo, alpo.a(2131701523));
+      localpjo.c(paramBaseArticleInfo, alud.a(2131701535));
     }
     if (paramInt == 33) {
-      localpjo.c(paramBaseArticleInfo, alpo.a(2131701524));
+      localpjo.c(paramBaseArticleInfo, alud.a(2131701536));
     }
     if (paramInt != 33) {
       localpjo.A(paramBaseArticleInfo).D(paramBaseArticleInfo).B(paramBaseArticleInfo);
@@ -230,7 +230,7 @@ public class ple
       return;
       label329:
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(bdkf.a(12.0F), 0, bdkf.a(12.0F), 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(bdoo.a(12.0F), 0, bdoo.a(12.0F), 0);
     }
   }
   
@@ -263,7 +263,7 @@ public class ple
     case 113: 
       if ((paramNativeMiddleBodyView.a() instanceof AdapterView))
       {
-        aekt.a("BiuPgcProteusItem", "", new IllegalArgumentException(" adapterViewType " + paramInt1 + " articleInfo : " + parampgd.a()));
+        aepi.a("BiuPgcProteusItem", "", new IllegalArgumentException(" adapterViewType " + paramInt1 + " articleInfo : " + parampgd.a()));
         return;
       }
       paramNativeMiddleBodyView.a().setOnClickListener(new pli(this, localrqj, parampgd));

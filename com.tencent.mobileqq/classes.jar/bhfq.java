@@ -1,10 +1,35 @@
-public abstract interface bhfq
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
+class bhfq
+  extends WebViewClient
 {
-  public abstract void onValCancel();
+  bhfq(bhfp parambhfp) {}
   
-  public abstract void onValChange(int paramInt1, int paramInt2);
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    this.a.setCurrState(bhfp.a(this.a));
+    this.a.d();
+  }
   
-  public abstract void onValConfirm(int[] paramArrayOfInt);
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    QMLog.i("TAG_CHROMIUM", "shouldInterceptRequest: " + paramWebResourceRequest.getUrl());
+    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null))
+    {
+      String str = paramWebResourceRequest.getUrl().toString();
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("https://appservice.qq.com/")) || (str.startsWith("wxfile://")))) {
+        return bhfp.a(this.a, paramWebView, paramWebResourceRequest.getUrl().toString());
+      }
+    }
+    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
+  }
 }
 
 

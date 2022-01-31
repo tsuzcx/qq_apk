@@ -1,42 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aqor
-  implements aqot
+public class aqor
+  extends aqru
 {
-  aqor(aqoq paramaqoq, aqnw paramaqnw, MessageRecord paramMessageRecord, String paramString, int paramInt) {}
+  public aqor(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void a(String paramString, Bundle paramBundle)
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aqoq.jdField_a_of_type_Long + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
-    }
-    this.jdField_a_of_type_Aqoq.b = 2;
-    aqnw.a(this.jdField_a_of_type_Aqoq.jdField_a_of_type_Aqnw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBundle);
-    aqnw.b(this.jdField_a_of_type_Aqoq.jdField_a_of_type_Aqnw, this.jdField_a_of_type_Aqoq.jdField_a_of_type_Long);
+    super.a(paramInt, paramString1, paramString2);
+    this.a.c(false);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(Integer paramInteger, long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aqoq.jdField_a_of_type_Long + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
-    }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Aqoq.b = 4;; this.jdField_a_of_type_Aqoq.b = 3)
+    arrr.a(paramLong, paramInteger.intValue(), paramString);
+  }
+  
+  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List<WeiYunFileInfo> paramList, int paramInt2)
+  {
+    QfileCloudFileTabView.b(this.a, true);
+    QfileCloudFileTabView.c(this.a, paramBoolean);
+    this.a.jdField_c_of_type_Int = paramInt2;
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      aqnw.b(this.jdField_a_of_type_Aqoq.jdField_a_of_type_Aqnw, this.jdField_a_of_type_Aqoq.jdField_a_of_type_Long);
-      return;
-      String str = alpo.a(2131704940) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      paramInt1 = arrr.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
+      String str;
+      if (paramInt1 == 0)
+      {
+        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
+        if (str != null) {
+          localWeiYunFileInfo.h = str;
+        }
+      }
+      else if (2 == paramInt1)
+      {
+        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
+        if (str != null) {
+          localWeiYunFileInfo.h = str;
+        }
+      }
     }
+    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (QfileCloudFileTabView.b(this.a)) {
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
+      this.a.setListFooter();
+    }
+    this.a.jdField_c_of_type_JavaLangString = paramString2;
+    this.a.jdField_c_of_type_Boolean = true;
+    this.a.g();
+    this.a.a();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aqni.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqor
  * JD-Core Version:    0.7.0.1
  */

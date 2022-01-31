@@ -107,7 +107,7 @@ public class ocq
       if ((!jdField_b_of_type_JavaUtilHashMap.containsKey(paramAdvertisementInfo.mAdTraceId)) || (paramrqj.jdField_b_of_type_Long - ((Long)jdField_b_of_type_JavaUtilHashMap.get(paramAdvertisementInfo.mAdTraceId)).longValue() < 500L)) {
         break;
       }
-      bdzt.b(1);
+      beec.b(1);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInjoyADExposureManager", 2, "checkWebProcess : preloadWebview ! traceId=" + paramAdvertisementInfo.mAdTraceId);
       }
@@ -399,7 +399,7 @@ public class ocq
           k = ((View)localObject2).getTop() + ((ViewBase)localObject5).getNativeView().getTop();
           m = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().heightPixels;
           i4 = ((ViewBase)localObject5).getNativeView().getHeight();
-          int i5 = aekt.a(50.0F, paramActivity.getResources());
+          int i5 = aepi.a(50.0F, paramActivity.getResources());
           ((ogr)localObject3).a(((ViewBase)localObject5).getNativeView().getHeight(), m, m - k - i4 - i5, k - i, bool1);
         }
         catch (Exception paramrqj) {}
@@ -513,7 +513,7 @@ public class ocq
               break label1287;
             }
             i = ((View)localObject2).getTop();
-            if (((ViewBase)localObject3).getNativeView().getTop() + i > aekt.a(120.0F, ((View)localObject2).getResources()) + paramrqj.a().getPaddingTop()) {
+            if (((ViewBase)localObject3).getNativeView().getTop() + i > aepi.a(120.0F, ((View)localObject2).getResources()) + paramrqj.a().getPaddingTop()) {
               break label1287;
             }
             ((ofn)localObject4).b();
@@ -677,7 +677,7 @@ public class ocq
     if ((localObject1 == null) || (localList == null)) {
       return false;
     }
-    if ((oee.a(i)) && (System.currentTimeMillis() - paramrqj.jdField_b_of_type_Long > bjxj.M(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+    if ((oee.a(i)) && (System.currentTimeMillis() - paramrqj.jdField_b_of_type_Long > bkbq.M(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
       paramrqj.jdField_b_of_type_Long = System.currentTimeMillis();
       paramrqj.jdField_a_of_type_JavaUtilHashSet.clear();

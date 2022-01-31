@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.4.1;
 
-class bbim
-  implements DialogInterface.OnDismissListener
+public class bbim
+  implements Animation.AnimationListener
 {
-  bbim(bbij parambbij) {}
+  public bbim(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (this.a.jdField_b_of_type_AndroidViewView == null) {
+      return;
     }
+    this.a.jdField_b_of_type_AndroidViewView.post(new TroopAvatarWallPreviewActivity.4.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

@@ -1,20 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class yai
-  implements yhe
+public class yai
+  implements Handler.Callback
 {
-  yai(yag paramyag) {}
+  public yai(ScannerActivity paramScannerActivity) {}
   
-  public void a(boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
+    switch (paramMessage.what)
     {
-      yvu.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Yae.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      return;
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
     }
   }
 }

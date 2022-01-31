@@ -1,25 +1,62 @@
-import android.os.SystemClock;
+import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-class bhef
-  implements bhay
+public class bhef
+  extends bhdw
 {
-  long jdField_a_of_type_Long;
+  private INTERFACE.StGetPhoneNumberReq a = new INTERFACE.StGetPhoneNumberReq();
   
-  bhef(bhee parambhee, bhcv parambhcv, long paramLong) {}
-  
-  public void onStateChanged()
+  public bhef(String paramString)
   {
-    if (this.jdField_a_of_type_Bhcv != null) {}
-    for (bhaz localbhaz = this.jdField_a_of_type_Bhcv.getCurrState();; localbhaz = null)
-    {
-      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.e)) {
-        this.jdField_a_of_type_Bhee.a(this.jdField_a_of_type_Bhcv, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+    this.a.appId.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    INTERFACE.StGetPhoneNumberRsp localStGetPhoneNumberRsp = new INTERFACE.StGetPhoneNumberRsp();
+    try
+    {
+      localStGetPhoneNumberRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetPhoneNumberRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("countryCode", localStGetPhoneNumberRsp.countryCode.get());
+        paramArrayOfByte.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
+        paramArrayOfByte.put("iv", localStGetPhoneNumberRsp.iv.get());
+        paramArrayOfByte.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
+        paramArrayOfByte.put("cloudID", "");
+        paramArrayOfByte.put("errMsg", "ok");
+        return paramArrayOfByte;
+      }
+      QMLog.d("getPhoneNumberRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("getPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetPhoneNumber";
   }
 }
 

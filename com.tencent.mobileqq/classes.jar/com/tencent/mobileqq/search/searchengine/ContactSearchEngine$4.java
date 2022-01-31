@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ayox;
-import aype;
-import aypy;
-import ayql;
-import ayqm;
+import aytg;
+import aytn;
+import ayuh;
+import ayuu;
+import ayuv;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(ayox paramayox, ayql paramayql) {}
+  public ContactSearchEngine$4(aytg paramaytg, ayuu paramayuu) {}
   
   public void run()
   {
-    List localList1 = ayox.a(this.this$0, this.a);
-    aypy localaypy = ayox.a(this.this$0);
-    ayqm localayqm;
-    if ((localaypy != null) && (localList1 != null))
+    List localList1 = aytg.a(this.this$0, this.a);
+    ayuh localayuh = aytg.a(this.this$0);
+    ayuv localayuv;
+    if ((localayuh != null) && (localList1 != null))
     {
-      localayqm = new ayqm(this.a.a, 1);
-      if (ayox.a(this.this$0) == null) {
-        localaypy.a(localList1, localayqm);
+      localayuv = new ayuv(this.a.a, 1);
+      if (aytg.a(this.this$0) == null) {
+        localayuh.a(localList1, localayuv);
       }
     }
     else
     {
       return;
     }
-    localaypy.a(localList1);
-    List localList2 = ayox.a(this.this$0).a(this.a);
+    localayuh.a(localList1);
+    List localList2 = aytg.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localaypy.a(localList1, localayqm);
+    localayuh.a(localList1, localayuv);
   }
 }
 

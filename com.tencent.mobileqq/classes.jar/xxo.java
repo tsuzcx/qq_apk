@@ -1,6 +1,15 @@
-public abstract interface xxo<T extends xxn>
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+
+public final class xxo
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  public abstract void setPresenter(T paramT);
+  public xxo(int paramInt)
+  {
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+  }
 }
 
 

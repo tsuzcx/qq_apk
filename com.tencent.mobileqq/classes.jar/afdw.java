@@ -1,8 +1,15 @@
-public abstract interface afdw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class afdw
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(afdt paramafdt);
+  afdw(afdq paramafdq) {}
   
-  public abstract boolean a(afdt paramafdt, String paramString1, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

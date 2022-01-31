@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import java.util.Comparator;
-
-public class aewd
-  implements Comparator
+class aewd
+  implements baen
 {
-  public aewd(LoadDataJob paramLoadDataJob) {}
+  aewd(aewc paramaewc) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void a(baes parambaes)
   {
-    paramObject1 = (aewp)paramObject1;
-    paramObject2 = (aewp)paramObject2;
-    return paramObject1.a - paramObject2.a;
+    this.a.b();
   }
 }
 

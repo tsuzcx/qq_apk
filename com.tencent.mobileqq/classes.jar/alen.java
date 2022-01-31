@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class alen
-  implements Comparator<ApolloActionData>
+public class alen
+  implements Comparable
 {
-  alen(aleh paramaleh) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public int compareTo(Object paramObject)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+    paramObject = (alen)paramObject;
+    if (this.d < paramObject.d) {
       return 1;
     }
-    return -1;
+    if (this.d > paramObject.d) {
+      return -1;
+    }
+    return 0;
   }
 }
 

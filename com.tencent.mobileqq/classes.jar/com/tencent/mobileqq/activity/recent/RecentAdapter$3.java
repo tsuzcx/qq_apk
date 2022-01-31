@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import agyc;
-import ajee;
+import ahcr;
+import ajit;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$3
   implements Runnable
 {
-  public RecentAdapter$3(ajee paramajee) {}
+  public RecentAdapter$3(ajit paramajit) {}
   
   public void run()
   {
-    ((agyc)this.this$0.a.getManager(138)).b(true);
+    ((ahcr)this.this$0.a.getManager(138)).b(true);
   }
 }
 

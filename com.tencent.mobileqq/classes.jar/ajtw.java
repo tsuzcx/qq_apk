@@ -1,71 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ajtw
-  extends ajth<TextPreviewTranslateActivity>
 {
-  protected void a(ContainerView paramContainerView)
-  {
-    super.a(paramContainerView);
-    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
-    if (localTextPreviewTranslateActivity != null) {
-      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376147));
-    }
-    paramContainerView.jdField_a_of_type_Boolean = false;
-    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
-  }
+  public int a;
+  ajtx jdField_a_of_type_Ajtx = new ajtx(this.jdField_a_of_type_Ajtv);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
   
-  protected void a(ContainerView paramContainerView, View paramView)
+  public ajtw(ajtv paramajtv)
   {
-    super.a(paramContainerView, paramView);
-    azmj.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
-  }
-  
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      if ((paramView.getId() != 2131376287) && (ajsx.a().c())) {
-        ajsx.a().d();
-      }
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            baja.a(a(), "TextPreview");
-            azmj.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
-          }
-          catch (Exception paramView) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("TranslateSelectableMenu", 2, paramView.toString());
-      return;
-      baja.a((Activity)paramView.getContext(), a());
-      azmj.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
-      continue;
-      if (localQQAppInterface != null) {
-        baja.a((Activity)paramView.getContext(), localQQAppInterface, a());
-      }
-      azmj.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
-      continue;
-      ajsx.a().a(null);
-      azmj.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   }
 }
 

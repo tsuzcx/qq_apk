@@ -1,29 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
 
 public class wji
-  extends QQUIEventReceiver<wjf, vol>
+  implements View.OnFocusChangeListener
 {
-  public wji(@NonNull wjf paramwjf)
-  {
-    super(paramwjf);
-  }
+  wji(wjf paramwjf) {}
   
-  public void a(@NonNull wjf paramwjf, @NonNull vol paramvol)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    wsv.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramvol.jdField_a_of_type_Vld, paramvol.b);
-    if ((wjf.a(paramwjf).equals(paramvol.jdField_a_of_type_JavaLangString)) && ((paramvol.jdField_a_of_type_Vld instanceof vlo)))
-    {
-      wkh localwkh = ((vlo)paramvol.jdField_a_of_type_Vld).a;
-      if (localwkh != null) {
-        paramwjf.a(localwkh.jdField_a_of_type_JavaLangString, paramvol.b, true);
-      }
+    if (!paramBoolean) {
+      this.a.b();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vol.class;
+    while (wjf.a(this.a)) {
+      return;
+    }
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 

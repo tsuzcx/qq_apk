@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class apxw
-  extends apyo
+class apxw
+  implements aufy<EmoticonPackage>
 {
-  public ExtendFriendCampusVerifyTipsView.TipsType a;
+  apxw(apxv paramapxv, String paramString) {}
   
-  public apxw()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.mType = 7;
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

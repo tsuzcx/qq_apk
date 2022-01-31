@@ -1,26 +1,16 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class beru
-  extends VerticalCenterImageSpan
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int a;
+  public beru(ParticipleView paramParticipleView) {}
   
-  public beru(Drawable paramDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramDrawable, 0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt) + this.a;
+    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

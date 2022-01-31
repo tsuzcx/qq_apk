@@ -3,7 +3,7 @@ import android.view.ViewGroup;
 
 public class tfv
 {
-  public static biac<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, tby paramtby)
+  public static biej<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, tby paramtby)
   {
     switch (paramInt)
     {

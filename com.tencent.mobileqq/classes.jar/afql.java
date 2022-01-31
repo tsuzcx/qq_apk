@@ -1,19 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afql
-  implements beiq
+final class afql
+  implements afug
 {
-  afql(afqh paramafqh) {}
-  
-  public void a(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (athk.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-      return;
-    }
-    aekt.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    return aqvw.a(paramQQAppInterface, paramChatMessage);
   }
 }
 

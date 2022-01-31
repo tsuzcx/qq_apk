@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import arwl;
-import bhoc;
+import asau;
+import bhsj;
 
 public class ForwardNewVersionDialog$7
   implements Runnable
 {
-  public ForwardNewVersionDialog$7(arwl paramarwl) {}
+  public ForwardNewVersionDialog$7(asau paramasau) {}
   
   public void run()
   {
-    bhoc.a(arwl.a(this.this$0));
+    bhsj.a(asau.a(this.this$0));
   }
 }
 

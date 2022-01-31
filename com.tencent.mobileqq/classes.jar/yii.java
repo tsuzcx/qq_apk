@@ -1,109 +1,88 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.view.TextureView;
-import android.view.View;
-import com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1;
-import mqq.util.WeakReference;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class yii
 {
-  private long jdField_a_of_type_Long;
-  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoFrameCheckHelper");
-  private final String jdField_a_of_type_JavaLangString = "VideoFrameCheckHelper";
-  private final Handler b;
+  private volatile int jdField_a_of_type_Int = 4;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private String b;
   
-  public yii()
+  public COMM.StCommonExt a()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.b = new Handler(Looper.getMainLooper());
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
   }
   
-  private void a(TextureView paramTextureView, yij paramyij)
+  public String a()
   {
-    paramyij = new WeakReference(paramyij);
-    paramTextureView = new WeakReference(paramTextureView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideoFrameCheckHelper.1(this, paramyij, paramTextureView), 40L);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  private boolean a(TextureView paramTextureView)
+  public void a(int paramInt)
   {
-    try
-    {
-      if (!paramTextureView.isAvailable()) {
-        break label152;
-      }
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      int i = paramTextureView.getWidth() / 16;
-      int j = paramTextureView.getHeight() / 16;
-      if ((i <= 0) || (j <= 0)) {
-        break label159;
-      }
-      if (Build.VERSION.SDK_INT >= 17) {}
-      for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        if (!vjy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16)) {
-          break;
-        }
-        wsv.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
-        return true;
-      }
-      wsv.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(COMM.StCommonExt paramStCommonExt)
+  {
+    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public COMM.StCommonExt b()
+  {
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public String b()
+  {
+    if (this.b == null) {
+      this.b = bdea.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
     }
-    catch (Exception paramTextureView)
-    {
-      paramTextureView.printStackTrace();
-      return false;
-    }
-    return false;
-    label152:
-    wsv.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
-    label159:
-    return false;
+    return this.b;
   }
   
-  public void a()
+  public void b(String paramString)
   {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      this.b.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      wsv.d("VideoFrameCheckHelper", "release");
-      return;
+    if (paramString != null) {
+      bdea.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
     }
-    finally {}
+    this.b = paramString;
   }
   
-  public void a(View paramView, yij paramyij)
+  public boolean b()
   {
-    if ((paramView == null) || (paramyij == null)) {}
-    do
-    {
-      return;
-      paramView = vjy.a(paramView);
-    } while (paramView == null);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(paramView, paramyij);
+    return this.jdField_a_of_type_Int != 4;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Int == 3;
   }
 }
 

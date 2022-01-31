@@ -1,13 +1,19 @@
-import java.util.ArrayList;
-
-public class baxh
-  extends baxq
+class baxh
+  extends alwx
 {
-  public int a;
-  public String a;
-  public ArrayList<basp> a = new ArrayList();
-  public boolean a;
-  public String b;
+  baxh(baxe parambaxe) {}
+  
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalwy);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

@@ -1,60 +1,121 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.tfs.BaseTask;
+import com.tencent.mobileqq.mini.tfs.TaskFlowEngine;
+import com.tencent.mobileqq.minigame.manager.EngineChannel;
+import com.tencent.mobileqq.minigame.utils.AppUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class auep
-  extends aueu<MessageForMixedMsg>
+  extends TaskFlowEngine
 {
-  public auep(MessageForMixedMsg paramMessageForMixedMsg)
+  private static volatile auep jdField_a_of_type_Auep;
+  private aueq jdField_a_of_type_Aueq;
+  private auer jdField_a_of_type_Auer;
+  private boolean jdField_a_of_type_Boolean;
+  
+  private auep()
   {
-    super(paramMessageForMixedMsg);
+    a();
   }
   
-  protected int a()
+  public static auep a()
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
+    if (jdField_a_of_type_Auep == null) {}
+    try
     {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
+      if (jdField_a_of_type_Auep == null) {
+        jdField_a_of_type_Auep = new auep();
+      }
+      return jdField_a_of_type_Auep;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Auer = new auer(BaseApplicationImpl.getApplication());
+    initTasks(new BaseTask[] { this.jdField_a_of_type_Auer });
+  }
+  
+  public void a(aueq paramaueq)
+  {
+    QLog.i("MiniLoadManager", 1, "[MiniEng]detachDownloadListener in:" + paramaueq + ",current:" + this.jdField_a_of_type_Aueq);
+    if ((paramaueq != null) && (paramaueq.equals(this.jdField_a_of_type_Aueq)))
+    {
+      this.jdField_a_of_type_Aueq = null;
+      this.jdField_a_of_type_Auer.a(null);
+      return;
+    }
+    QLog.w("MiniLoadManager", 1, "[MiniEng]detachDownloadListener failed");
+  }
+  
+  public void a(MiniAppConfig paramMiniAppConfig, aueq paramaueq)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    resetTaskAndDepends(this.jdField_a_of_type_Auer);
+    b(paramaueq);
+    super.start();
+  }
+  
+  public void a(EngineChannel paramEngineChannel)
+  {
+    this.jdField_a_of_type_Auer.a(paramEngineChannel);
+    QLog.i("MiniLoadManager", 1, "[MiniEng]setDownloadEngineChannel " + paramEngineChannel + ", " + AppUtil.getProcessName());
+  }
+  
+  public void b(aueq paramaueq)
+  {
+    QLog.i("MiniLoadManager", 1, "[MiniEng]attachDownloadListener " + paramaueq);
+    this.jdField_a_of_type_Aueq = paramaueq;
+    this.jdField_a_of_type_Auer.a(paramaueq);
+    boolean bool;
+    if (this.jdField_a_of_type_Auer.isDone())
+    {
+      QLog.i("MiniLoadManager", 1, "[MiniEng]attachDownloadListener after mMiniAppEngineLoadTask isDone");
+      if (paramaueq != null)
       {
-        localObject = auco.a((MessageRecord)localObject);
-        ((aueu)localObject).a(this.a);
-        localArrayList.addAll(((aueu)localObject).a());
+        bool = this.jdField_a_of_type_Auer.isSucceed();
+        if (this.jdField_a_of_type_Auer.msg != null) {
+          break label90;
+        }
       }
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
+    label90:
+    for (String str = "";; str = this.jdField_a_of_type_Auer.msg)
     {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        auco.a(localMessageRecord).a();
-      }
+      paramaueq.onEngineLoad(bool, str);
+      return;
     }
   }
   
-  public void b()
+  public void onTaskDone(BaseTask paramBaseTask)
   {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
+    QLog.i("MiniLoadManager", 1, "[MiniEng]" + paramBaseTask + " done! succ:" + paramBaseTask.isSucceed() + ", listener=" + this.jdField_a_of_type_Auer);
+    if ((paramBaseTask instanceof auer))
     {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
+      if (paramBaseTask.isSucceed()) {
+        break label98;
+      }
+      if (this.jdField_a_of_type_Aueq != null) {
+        this.jdField_a_of_type_Aueq.onEngineLoad(false, ((auer)paramBaseTask).msg);
+      }
     }
+    for (this.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Boolean = true)
+    {
+      super.onTaskDone(paramBaseTask);
+      return;
+      label98:
+      if (this.jdField_a_of_type_Aueq != null) {
+        this.jdField_a_of_type_Aueq.onEngineLoad(true, "");
+      }
+    }
+  }
+  
+  @Deprecated
+  public void start()
+  {
+    QLog.w("MiniLoadManager", 1, "[MiniEng]start does nothing, use start(MiniAppConfig) instead");
   }
 }
 

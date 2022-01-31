@@ -1,46 +1,37 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class upy<M>
-  extends RecyclerView.ViewHolder
+public abstract class upy
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  private SparseArray<View> a = new SparseArray();
+  protected AtomicInteger a;
+  public upz a;
   
-  public upy(View paramView)
+  public upy()
   {
-    super(paramView);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public upy(ViewGroup paramViewGroup, int paramInt)
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
   {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+    a();
   }
   
-  protected Context a()
+  public void a(upz paramupz)
   {
-    return this.itemView.getContext();
+    this.jdField_a_of_type_Upz = paramupz;
   }
   
-  protected <T extends View> T a(@IdRes int paramInt)
+  protected void b()
   {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    if (this.jdField_a_of_type_Upz != null) {
+      this.jdField_a_of_type_Upz.a(this);
     }
-    return localView1;
   }
-  
-  public void a() {}
-  
-  public void a(M paramM) {}
 }
 
 

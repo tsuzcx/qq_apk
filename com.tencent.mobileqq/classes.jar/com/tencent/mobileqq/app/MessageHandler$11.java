@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aufi;
-import bdcs;
+import aujr;
+import bdhb;
 
 class MessageHandler$11
   implements Runnable
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    bdcs.a(aufi.a, true);
+    bdhb.a(aujr.a, true);
   }
 }
 

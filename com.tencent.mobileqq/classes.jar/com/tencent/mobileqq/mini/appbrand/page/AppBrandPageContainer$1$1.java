@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
-import bepp;
+import bety;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -50,7 +50,7 @@ class AppBrandPageContainer$1$1
       {
         ((AppBrandPageContainer)localObject).launch(this.this$1.val$url, "reLaunch");
         continue;
-        QQToast.a(this.this$1.val$dialog.getContext(), alpo.a(2131700969), 1).a();
+        QQToast.a(this.this$1.val$dialog.getContext(), alud.a(2131700981), 1).a();
         QLog.e("AppBrandPageContainer", 1, "Page not found." + this.this$1.val$url);
         if ((this.val$apkgInfo != null) && (this.val$apkgInfo.mAppConfigInfo != null) && (this.val$apkgInfo.appConfig != null) && (this.val$apkgInfo.appConfig.config != null))
         {

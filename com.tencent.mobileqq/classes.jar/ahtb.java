@@ -1,25 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class ahtb
-  implements View.OnClickListener
+public class ahtb
+  extends alqv
 {
-  ahtb(ahta paramahta, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ahtb(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(View paramView)
+  protected void b()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahta, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Ahta.isShowing()) {
-        this.jdField_a_of_type_Ahta.dismiss();
-      }
+    if (this.a.a == null) {
       return;
     }
-    catch (Exception paramView) {}
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

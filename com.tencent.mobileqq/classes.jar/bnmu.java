@@ -1,15 +1,6 @@
-public class bnmu
+public abstract interface bnmu
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
-  }
+  public abstract void a();
 }
 
 

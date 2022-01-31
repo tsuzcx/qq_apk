@@ -1,60 +1,44 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 class azld
+  extends BroadcastReceiver
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public final long e;
-  public String e;
-  public long f = 0L;
-  public long g = 0L;
+  azld(azlc paramazlc) {}
   
-  public azld()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_e_of_type_Long = 2L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 1L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append("${count_unknown}");
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(2L);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    paramContext = paramIntent.getStringExtra("callback");
+    String str1 = paramIntent.getStringExtra("uuid");
+    String str2 = paramIntent.getStringExtra("md5");
+    String str3 = paramIntent.getStringExtra("imgurl");
+    String str4 = paramIntent.getStringExtra("mediaType");
+    boolean bool = axpm.e();
+    paramIntent = new JSONObject();
+    try
+    {
+      paramIntent.put("uuid", str1);
+      paramIntent.put("md5", str2);
+      paramIntent.put("imgurl", str3);
+      paramIntent.put("mediaType", str4);
+      paramIntent.put("hasGesture", bool);
+      if (QLog.isColorLevel()) {
+        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
+      }
+      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

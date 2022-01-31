@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-
-class bjsl
-  implements bjbi
+public abstract class bjsl<T, P>
 {
-  bjsl(bjsk parambjsk, String paramString) {}
+  private volatile T a;
   
-  public void a()
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
   {
-    if (this.jdField_a_of_type_Bjsk.a != null)
+    if (this.a == null) {}
+    try
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_Bjsk.a.callJs(str);
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
     }
+    finally {}
   }
 }
 

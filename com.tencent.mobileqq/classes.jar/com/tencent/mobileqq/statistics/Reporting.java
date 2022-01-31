@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mTag, mDetail")
 public class Reporting
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public int mCount;

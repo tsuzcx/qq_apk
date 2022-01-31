@@ -1,6 +1,12 @@
-public abstract interface anbn
+public class anbn
 {
-  public abstract boolean a(byte[] paramArrayOfByte);
+  public anau a;
+  public boolean a;
+  
+  public String toString()
+  {
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Anau + '}';
+  }
 }
 
 

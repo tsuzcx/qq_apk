@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
 
 class agpt
-  implements DialogInterface.OnDismissListener
+  extends azcg
 {
-  agpt(agot paramagot) {}
+  agpt(agps paramagps) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.g = null;
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
+    }
   }
 }
 

@@ -109,9 +109,9 @@ public class npf
         } while (!(localObject instanceof rbt));
         localObject = (rbt)localObject;
       } while ((((rbt)localObject).u == null) || (((rbt)localObject).u.getVisibility() != 0));
-      localObject = (obm)((rbt)localObject).u.getTag(2131379913);
+      localObject = (obm)((rbt)localObject).u.getTag(2131379971);
     } while ((localObject == null) || (!paramqyj.d.equals(((obm)localObject).n)));
-    paramqyj = ((raw)((biau)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
+    paramqyj = ((raw)((bifb)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
     this.b.post(new VideoFeedsSoftAdDownloadManager.1(this, paramqyj, paramInt1, paramInt2));
   }
 }

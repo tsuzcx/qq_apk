@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import bhou;
-import bhya;
+import bhtb;
+import bich;
 import com.tencent.qphone.base.util.QLog;
 
 public class WaveView
@@ -21,7 +21,7 @@ public class WaveView
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bhya(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bich(this));
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;
@@ -115,7 +115,7 @@ public class WaveView
   
   private void d()
   {
-    if (!bhou.e()) {
+    if (!bhtb.e()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
@@ -123,7 +123,7 @@ public class WaveView
   
   private void e()
   {
-    if (!bhou.e()) {
+    if (!bhtb.e()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);

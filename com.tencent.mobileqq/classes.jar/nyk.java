@@ -32,7 +32,7 @@ public class nyk
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
         }
-        i = bdkf.b(this.a.f);
+        i = bdoo.b(this.a.f);
         j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
         int k = j - i;
         if (QLog.isColorLevel()) {

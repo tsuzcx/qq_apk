@@ -1,20 +1,53 @@
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.widget.EditText;
+
 public class bflo
+  implements InputFilter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  protected int a;
+  protected EditText a;
   
-  public bflo(bfln parambfln)
+  public bflo(EditText paramEditText, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String toString()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
+    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
+    paramInt4 = this.jdField_a_of_type_Int - bflv.a(paramSpanned.toString());
+    paramInt3 = bflv.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
+      return "";
+    }
+    if (paramInt4 >= paramInt3) {
+      return null;
+    }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
+    {
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bflv.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
+      {
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label161;
+        }
+        paramInt3 = i + paramInt3;
+        break;
+        j = bflv.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      }
+    }
+    label161:
+    if (paramInt3 == paramInt1) {
+      return "";
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

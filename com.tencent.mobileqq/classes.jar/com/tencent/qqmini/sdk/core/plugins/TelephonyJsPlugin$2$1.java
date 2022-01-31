@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import bgkd;
-import bgob;
-import bgog;
+import bgok;
+import bgsi;
+import bgsn;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class TelephonyJsPlugin$2$1
-  implements bgog
+  implements bgsn
 {
-  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, bgob parambgob) {}
+  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, bgsi parambgsi) {}
   
   public void OnClick(View paramView, int paramInt)
   {

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bebx;
-import becq;
-import behj;
-import bepp;
+import begg;
+import begz;
+import bels;
+import bety;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        bebx localbebx = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localbebx != null) && ((localbebx instanceof behj)))
+        begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localbegg != null) && ((localbegg instanceof bels)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new bepp(this.this$0.activity, ((behj)localbebx).b()));
+          MQPSecJsPlugin.access$102(this.this$0, new bety(this.this$0.activity, ((bels)localbegg).b()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131695088);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131695090);
         }
       }
     }

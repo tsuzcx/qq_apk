@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm;
 
-import aphz;
-import awbw;
-import awbx;
+import apmi;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.qphone.base.util.QLog;
@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomEmotionRoamingDBManagerBase$2
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$2(aphz paramaphz, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
+  public CustomEmotionRoamingDBManagerBase$2(apmi paramapmi, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
   
   public void run()
   {
     if (this.this$0.a == null) {}
-    awbw localawbw;
+    awgf localawgf;
     do
     {
       return;
-      localawbw = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    } while (localawbw == null);
+      localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    } while (localawgf == null);
     boolean bool2 = false;
     boolean bool1;
     switch (this.jdField_a_of_type_Int)
@@ -37,19 +37,19 @@ public class CustomEmotionRoamingDBManagerBase$2
     }
     for (;;)
     {
-      localawbw.a();
+      localawgf.a();
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("CustomEmotionRoamingDBManagerBase", 2, "updateCustomEmotionDataListInDB type:" + this.jdField_a_of_type_Int + "save result: " + bool1);
       return;
       this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase.setStatus(1000);
-      localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
       bool1 = bool2;
       continue;
-      bool1 = localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      bool1 = localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
       continue;
-      bool1 = localawbw.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      bool1 = localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
     }
   }
 }

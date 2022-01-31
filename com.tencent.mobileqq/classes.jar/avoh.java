@@ -1,68 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class avoh
+class avoh
+  implements aoil
 {
-  public static HashMap<Integer, Integer> a;
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b;
-  public int c;
-  public int d;
+  avoh(avnl paramavnl, IphonePickerView paramIphonePickerView, bhuf parambhuf) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), Integer.valueOf(40));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), Integer.valueOf(60));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), Integer.valueOf(80));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), Integer.valueOf(100));
-  }
-  
-  public avoh()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue() < ((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int))).intValue()) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 0;
-    try
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing()))
     {
-      int j = Integer.valueOf(paramString).intValue();
-      i = j;
+      avnl.a(this.jdField_a_of_type_Avnl, this.jdField_a_of_type_Avnl.h, false);
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-    }
-    this.b = (i + this.b);
   }
   
-  public void b(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.b += paramInt;
-  }
-  
-  public String toString()
-  {
-    return "[redType=" + this.jdField_a_of_type_Int + ", redNum=" + this.b + ", redTxt=" + this.jdField_a_of_type_JavaLangString + ", redAppIdType=" + this.d + ", url=" + this.jdField_a_of_type_JavaUtilList + "]";
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_Avnl.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
+    this.jdField_a_of_type_Avnl.h.setText(avnl.b(this.jdField_a_of_type_Avnl).a(0, paramInt1));
   }
 }
 

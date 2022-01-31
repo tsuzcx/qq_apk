@@ -1,49 +1,123 @@
-import com.tencent.common.app.AppInterface;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import java.io.IOException;
 
 public class bnob
+  extends bnny
 {
-  public static String a;
-  private static final String[] a;
-  private static final String[] b = new String[0];
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
+  private float jdField_a_of_type_Float = 30.0F;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private int d = -1;
+  private int e;
   
-  static
+  public bnob()
   {
-    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "N1T", "ZTE A2015" };
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mTextureType = 3553;
+    this.mFilterType = 106;
   }
   
-  public static boolean a(AppInterface paramAppInterface)
+  public void a(float paramFloat)
   {
-    if (VideoEnvironment.a() == null) {}
-    do
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    try
     {
-      do
+      this.jdField_a_of_type_AndroidGraphicsBitmap = xqw.a(paramString, null);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      wxe.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      wxe.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
+    }
+    if (this.d != -1) {
+      GlUtil.deleteTexture(this.d);
+    }
+  }
+  
+  public void onDrawTexture()
+  {
+    super.onDrawTexture();
+    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
+    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
+    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      wxe.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
+      return;
+    }
+    GLES20.glActiveTexture(33985);
+    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
       {
-        return false;
-        if (ShortVideoUtils.a()) {
-          break;
-        }
-        ShortVideoUtils.a(paramAppInterface);
-      } while (!ShortVideoUtils.a());
-    } while ((azgk.a(BaseApplicationImpl.getContext()) == 2) || (!azbx.a().a()) || (azgk.a() == 2));
-    return true;
+        wxe.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
+        return;
+      }
+      if (this.d != -1) {
+        GlUtil.deleteTexture(this.d);
+      }
+      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+    }
+    GLES20.glBindTexture(3553, this.d);
+    GLES20.glUniform1i(this.e, 1);
   }
   
-  public static boolean b(AppInterface paramAppInterface)
+  public void onInitialized()
   {
-    if (VideoEnvironment.a() == null) {}
-    do
-    {
-      return false;
-      if (ShortVideoUtils.a()) {
-        break;
-      }
-      ShortVideoUtils.a(paramAppInterface);
-    } while (!ShortVideoUtils.a());
-    return true;
+    super.onInitialized();
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
+    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
+    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
+    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
+    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+    a(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    wxe.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_b_of_type_Float = 0.0009259259F;
+    this.jdField_c_of_type_Float = 0.0005208334F;
   }
 }
 

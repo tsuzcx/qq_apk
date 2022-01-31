@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
 import android.os.Bundle;
-import bbmd;
+import bbqm;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -46,7 +46,7 @@ public final class NativeCommentServlet$3
               ((Map)localObject3).put("feedsType", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType));
               String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
               str2 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getSkey(str1);
-              ((Map)localObject3).put("g_tk", String.valueOf(bbmd.a(str2)));
+              ((Map)localObject3).put("g_tk", String.valueOf(bbqm.a(str2)));
               if (this.jdField_a_of_type_OrgJsonJSONArray != null) {
                 ((Map)localObject3).put("comment_gif_urls", URLEncoder.encode(this.jdField_a_of_type_OrgJsonJSONArray.toString()));
               }

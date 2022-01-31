@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 import com.tencent.widget.Switch;
 
 public class nzw
-  implements bhqf
+  implements bhum
 {
   public nzw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   

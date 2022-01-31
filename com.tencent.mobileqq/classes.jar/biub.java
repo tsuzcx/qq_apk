@@ -1,54 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class biub
-  extends QIPCModule
+  implements DialogInterface.OnClickListener
 {
-  public biub(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
-  {
-    super(paramString);
-  }
+  public biub(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
-    }
-    if (bitz.g.equals(paramString)) {
-      if (QQPimGetTipsInfoIPC.a() != -1) {}
-    }
-    while ((!bitz.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
-    {
-      do
-      {
-        do
-        {
-          return null;
-        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
-        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-        if (QQPimGetTipsInfoIPC.a() == 0)
-        {
-          QQPimGetTipsInfoIPC.a(-1);
-          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
-          return null;
-        }
-      } while (QQPimGetTipsInfoIPC.a() != 1);
-      QQPimGetTipsInfoIPC.a(-1);
-      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
-      return null;
-    }
-    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-    paramString = new QQPimTipsInfo();
-    paramString.a = 0;
-    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
-    return null;
+    this.a.finish();
   }
 }
 

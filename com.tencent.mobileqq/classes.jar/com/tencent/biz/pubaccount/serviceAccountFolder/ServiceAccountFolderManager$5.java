@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import abol;
-import ajgm;
+import abta;
+import ajlb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class ServiceAccountFolderManager$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ajgm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
+      ajlb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 1008, true);
     }

@@ -1,10 +1,17 @@
-final class aogo
+public class aogo
 {
-  public static final aogm a = new aogm(null);
+  public String a = "";
+  
+  public aogo() {}
+  
+  public aogo(String paramString)
+  {
+    this.a = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,53 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
 public class avib
-  implements View.OnClickListener
+  implements GestureDetector.OnDoubleTapListener
 {
-  public avib(NearbyProfileDisplayTribePanel.13.1 param1) {}
+  avib(avhf paramavhf) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (TextUtils.isEmpty(avhw.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl)) {
-      return;
-    }
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a, QQBrowserActivity.class);
-    Object localObject = new StringBuilder().append(avhw.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl).append("&gender=");
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
+    if (System.currentTimeMillis() - avhf.a(this.a) >= 500L)
     {
-      i = 0;
-      paramView.putExtra("url", i);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.startActivity(paramView);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.app;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.e != 2) {
-        break label202;
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369428)).a(i, j);
+      }
+      if (!avhf.a(this.a)) {
+        break label98;
       }
     }
-    label202:
-    for (paramView = "1";; paramView = "2")
+    for (;;)
     {
-      azmj.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, paramView, "", "", "");
-      return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
-      break;
+      avhf.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!avhf.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369428).getVisibility() == 0))
+      {
+        avhf.a(this.a, false);
+        this.a.c(null);
+        new aveg().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (auul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+      }
     }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

@@ -1,106 +1,72 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class azkj
 {
-  public static int a(Context paramContext, String paramString)
+  public static final List<String> a = Arrays.asList(new String[] { "VIVO X7", "VIVO XPLAY5A", "VIVO X6SPLUS", "VIVO X6S A", "REDMI NOTE 3", "REDMI NOTE 4X", "MI 5", "MI-4C", "CAM-AL00", "MLA-AL10", "CAZ-AL10", "VNS-AL00" });
+  
+  public static boolean a()
   {
-    if (paramContext != null)
+    boolean bool2 = false;
+    String str1 = Build.MANUFACTURER + ";" + Build.MODEL;
+    String[] arrayOfString = "Meizu;PRO 6 Plus|samsung;SM-G9250|samsung;SM-G955FD|HUAWEI;CAM-TL00|OPPO;OPPO A37m|OPPO;OPPO A59s|samsung;SM-G9280|samsung;SM-G9200|samsung;SM-G955F|Meizu;Meizu S6".split("\\|");
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (arrayOfString != null)
     {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null)
+      bool1 = bool2;
+      if (arrayOfString.length > 0)
       {
-        paramContext = paramContext.getRunningAppProcesses();
-        if (paramContext != null)
+        j = arrayOfString.length;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str2 = arrayOfString[i];
+        if ((str2 != null) && (str2.equals(str1)))
         {
-          paramContext = paramContext.iterator();
-          while (paramContext.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
-              return localRunningAppProcessInfo.pid;
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("MediaCodecUtil", 2, "isFollowBlackPhone true: " + str1);
           }
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b()
+  {
+    int i = Build.VERSION.SDK_INT;
+    if ((i == 22) || (i == 23) || (i == 24))
+    {
+      String str = Build.MODEL.toUpperCase();
+      Iterator localIterator = a.iterator();
+      while (localIterator.hasNext()) {
+        if (str.contains((String)localIterator.next())) {
+          return true;
         }
       }
     }
-    return -1;
+    return false;
   }
   
-  public static int a(String paramString)
+  public static boolean c()
   {
-    int i = -1;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
-    }
-    return i;
-  }
-  
-  public static long a(String paramString)
-  {
-    long l2 = 0L;
-    int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
-    if (i == -1) {
-      l1 = l2;
-    }
-    do
-    {
-      long l3;
-      do
-      {
-        int j;
-        do
-        {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
-  }
-  
-  public static void a(String paramString)
-  {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
-  }
-  
-  public static long b(String paramString)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
-    }
-    return l;
-  }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
-    }
-    return null;
+    return (Build.MANUFACTURER.toLowerCase().contains("samsung")) && (Build.VERSION.SDK_INT == 18);
   }
 }
 

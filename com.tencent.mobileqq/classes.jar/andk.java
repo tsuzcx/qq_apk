@@ -1,52 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class andk
-  implements View.OnClickListener
+class andk
+  extends bazy
 {
-  public andk(QRScanEntryView paramQRScanEntryView) {}
-  
-  public void onClick(View paramView)
+  andk(andh paramandh, QQAppInterface paramQQAppInterface, String paramString, bazz parambazz, baub parambaub, andn paramandn, andm paramandm)
   {
-    boolean bool2 = false;
-    if (QRScanEntryView.a(this.a))
+    super(paramQQAppInterface, paramString, parambazz, parambaub);
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
+    synchronized (andh.a(this.jdField_a_of_type_Andh))
     {
-      paramView = anbk.a();
-      if (!QRScanEntryView.b(this.a))
-      {
-        bool1 = true;
-        if (paramView.a(bool1))
-        {
-          paramView = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label118;
-          }
-          bool1 = true;
-          QRScanEntryView.a(paramView, bool1);
-          paramView = (anbp)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          paramView.a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
-        }
+      andm localandm = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+      if (localandm != null) {
+        localandm.b();
       }
+      super.realCancel();
+      return;
     }
-    label118:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        boolean bool1 = false;
-        continue;
-        bool1 = false;
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (andh.a(this.jdField_a_of_type_Andh))
+    {
+      andm localandm = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+      if (localandm != null) {
+        this.jdField_a_of_type_Andm.a();
       }
+      super.realStart();
+      return;
     }
-    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 

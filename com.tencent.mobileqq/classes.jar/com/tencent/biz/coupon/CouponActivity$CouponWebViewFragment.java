@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azmj;
-import bebk;
+import azqs;
+import beft;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
@@ -43,15 +43,15 @@ public class CouponActivity$CouponWebViewFragment
     int i = super.a(paramBundle);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_Bebk.a.setVisibility(8);
-      this.jdField_a_of_type_Bebk.c.setVisibility(0);
-      this.jdField_a_of_type_Bebk.c.setText(2131696563);
-      this.jdField_a_of_type_Bebk.c.setOnClickListener(this);
+      this.jdField_a_of_type_Beft.a.setVisibility(8);
+      this.jdField_a_of_type_Beft.c.setVisibility(0);
+      this.jdField_a_of_type_Beft.c.setText(2131696565);
+      this.jdField_a_of_type_Beft.c.setOnClickListener(this);
       return i;
     }
     this.jdField_a_of_type_AndroidContentIntent.removeExtra("source");
-    this.jdField_a_of_type_Bebk.a.setVisibility(8);
-    this.jdField_a_of_type_Bebk.c.setVisibility(8);
+    this.jdField_a_of_type_Beft.a.setVisibility(8);
+    this.jdField_a_of_type_Beft.c.setVisibility(8);
     return i;
   }
   
@@ -89,14 +89,14 @@ public class CouponActivity$CouponWebViewFragment
     super.a(this.jdField_a_of_type_AndroidContentIntent, this.g);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_Bebk.a.setVisibility(8);
-      this.jdField_a_of_type_Bebk.c.setVisibility(0);
-      this.jdField_a_of_type_Bebk.c.setText(2131696563);
-      this.jdField_a_of_type_Bebk.c.setClickable(false);
+      this.jdField_a_of_type_Beft.a.setVisibility(8);
+      this.jdField_a_of_type_Beft.c.setVisibility(0);
+      this.jdField_a_of_type_Beft.c.setText(2131696565);
+      this.jdField_a_of_type_Beft.c.setClickable(false);
       return;
     }
-    this.jdField_a_of_type_Bebk.a.setVisibility(8);
-    this.jdField_a_of_type_Bebk.c.setVisibility(8);
+    this.jdField_a_of_type_Beft.a.setVisibility(8);
+    this.jdField_a_of_type_Beft.c.setVisibility(8);
   }
   
   public boolean a(Bundle paramBundle)
@@ -106,7 +106,7 @@ public class CouponActivity$CouponWebViewFragment
     this.jdField_a_of_type_AndroidContentIntent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131696566));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131696568));
       this.jdField_a_of_type_Boolean = true;
       super.a(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -136,7 +136,7 @@ public class CouponActivity$CouponWebViewFragment
       this.jdField_a_of_type_AndroidContentIntent.putExtra("url", paramBundle);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
       i();
-      azmj.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+      azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("title");
       break;
@@ -145,7 +145,7 @@ public class CouponActivity$CouponWebViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Bebk.c)
+    if (paramView == this.jdField_a_of_type_Beft.c)
     {
       if ((this.jdField_a_of_type_Int & 0x4) != 0)
       {

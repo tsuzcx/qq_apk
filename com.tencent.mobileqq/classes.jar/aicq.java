@@ -1,75 +1,228 @@
-import android.content.Context;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+import java.util.List;
 
-class aicq
-  implements bhpo
+public class aicq
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b;
-  int c = 0;
+  public aicq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  aicq(aicl paramaicl)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_b_of_type_Int = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Aicl.d + ", requesting:" + this.jdField_a_of_type_Aicl.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Aicl.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Aicl.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_Int == 0) {}
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
+    String str;
+    label93:
     do
     {
       do
       {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
-      if ((this.c != 0) && (!this.jdField_a_of_type_Aicl.jdField_c_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Aicl.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Aicl.jdField_b_of_type_Int == 0)
+        do
         {
+          int j;
+          do
+          {
+            do
+            {
+              int i;
+              do
+              {
+                do
+                {
+                  return;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("Q.history.BaseFragment", 2, "mOnKickOutBtnClickListener onclick");
+                  }
+                  j = paramView.getId();
+                  str = (String)paramView.getTag();
+                  bool1 = str.equals(this.a.jdField_f_of_type_JavaLangString);
+                  if ((this.a.jdField_g_of_type_JavaLangString != null) && (this.a.jdField_g_of_type_JavaLangString.contains(str)))
+                  {
+                    i = 1;
+                    boolean bool4 = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_f_of_type_JavaLangString);
+                    if (((!bool4) || (str.equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
+                      break label292;
+                    }
+                  }
+                  for (i = 1;; i = 0)
+                  {
+                    if (j != 2131365069) {
+                      break label551;
+                    }
+                    paramView = paramView.findViewById(2131365070);
+                    bool1 = bool2;
+                    if (paramView.getTag() != null)
+                    {
+                      bool1 = bool2;
+                      if ((paramView.getTag() instanceof Boolean)) {
+                        bool1 = ((Boolean)paramView.getTag()).booleanValue();
+                      }
+                    }
+                    paramView = this.a.a(str, bool1);
+                    if (this.a.jdField_d_of_type_Int != 20) {
+                      break label297;
+                    }
+                    if (paramView == null) {
+                      break;
+                    }
+                    paramView = paramView.a.getTag();
+                    if ((paramView == null) || (!(paramView instanceof Integer))) {
+                      break;
+                    }
+                    i = ((Integer)paramView).intValue();
+                    if (i < 0) {
+                      break;
+                    }
+                    paramView = (aidf)this.a.jdField_a_of_type_Aidh.getItem(i);
+                    this.a.a(paramView);
+                    return;
+                    i = 0;
+                    break label93;
+                  }
+                  if (this.a.jdField_g_of_type_Boolean)
+                  {
+                    if (this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.contains(str)) {
+                      this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.remove(str);
+                    }
+                    for (;;)
+                    {
+                      ChatHistoryTroopMemberFragment.a(this.a);
+                      this.a.jdField_a_of_type_Aidh.notifyDataSetChanged();
+                      return;
+                      if (i != 0) {
+                        this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.add(str);
+                      }
+                    }
+                  }
+                  if (!bool1) {
+                    break;
+                  }
+                } while (this.a.v.equals(str));
+                if (paramView != null) {
+                  paramView.a.a(true);
+                }
+                if (!TextUtils.isEmpty(this.a.v))
+                {
+                  paramView = this.a.a(this.a.v, bool1);
+                  if (paramView != null) {
+                    paramView.a.b(true);
+                  }
+                }
+                this.a.v = str;
+                return;
+              } while (this.a.u.equals(str));
+              if (paramView != null) {
+                paramView.a.a(true);
+              }
+              if (!TextUtils.isEmpty(this.a.u))
+              {
+                paramView = this.a.a(this.a.u, bool1);
+                if (paramView != null) {
+                  paramView.a.b(true);
+                }
+              }
+              this.a.u = str;
+              return;
+              if (j != 2131376827) {
+                break;
+              }
+              paramView = paramView.findViewById(2131378883);
+              boolean bool1 = bool3;
+              if (paramView.getTag() != null)
+              {
+                bool1 = bool3;
+                if ((paramView.getTag() instanceof Boolean)) {
+                  bool1 = ((Boolean)paramView.getTag()).booleanValue();
+                }
+              }
+              if (this.a.jdField_g_of_type_Boolean)
+              {
+                if (!this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.contains(str)) {
+                  break label720;
+                }
+                this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.remove(str);
+              }
+              for (;;)
+              {
+                ChatHistoryTroopMemberFragment.a(this.a);
+                this.a.jdField_a_of_type_Aidh.notifyDataSetChanged();
+                if (!bool1) {
+                  break;
+                }
+                paramView = this.a.a(this.a.v, bool1);
+                if (paramView != null)
+                {
+                  paramView.a.b(true);
+                  this.a.v = "";
+                }
+                this.a.jdField_a_of_type_Aidj.notifyDataSetChanged();
+                return;
+                if (i != 0) {
+                  this.a.jdField_a_of_type_Aidh.jdField_b_of_type_JavaUtilList.add(str);
+                }
+              }
+              paramView = this.a.a(this.a.u, bool1);
+            } while (paramView == null);
+            paramView.a.b(true);
+            this.a.u = "";
+            return;
+          } while ((j != 2131363618) || (!this.a.jdField_f_of_type_Boolean));
           if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Aicl.d);
+            QLog.d("Q.history.BaseFragment", 2, "delBtn onClick, uin=" + str);
           }
-          this.jdField_a_of_type_Aicl.jdField_a_of_type_Ahzr.a(this.jdField_a_of_type_Aicl.jdField_a_of_type_Long, this.jdField_a_of_type_Aicl.jdField_a_of_type_JavaLangString, 2);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Aicl.d);
-        }
-        if (this.jdField_a_of_type_Aicl.d)
-        {
-          this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131706492));
-          this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372313).setVisibility(8);
-          this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_a_of_type_Aicl.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aicl.jdField_a_of_type_AndroidContentContext.getString(2131719576));
-        this.jdField_a_of_type_Aicl.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372313).setVisibility(0);
-        this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_Aicl.jdField_a_of_type_Long = System.currentTimeMillis();
+          if (bdin.d(BaseApplication.getContext())) {
+            break;
+          }
+        } while (!this.a.getActivity().isResume());
+        QQToast.a(this.a.getActivity(), this.a.getString(2131694768), 0).b(this.a.getActivity().getTitleBarHeight());
         return;
+        if (this.a.jdField_d_of_type_Int == 1)
+        {
+          this.a.f(str);
+          return;
+        }
+        if (this.a.jdField_d_of_type_Int != 13) {
+          break;
+        }
+        paramView = this.a.a(str);
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
+        this.a.jdField_a_of_type_Aidh.a();
+      } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
+      if (paramView != null) {
+        this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
       }
-    } while ((this.c != 0) || (this.jdField_a_of_type_Aicl.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Aicl.d) || (this.jdField_a_of_type_Aicl.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131706488));
-    this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372313).setVisibility(8);
-    this.jdField_a_of_type_Aicl.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Aicl.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_Aidj.notifyDataSetChanged();
+      return;
+      if (this.a.jdField_d_of_type_Int != 21) {
+        break;
+      }
+      paramView = this.a.a(str);
+      this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
+      this.a.jdField_a_of_type_Aidh.a();
+    } while (!this.a.jdField_d_of_type_AndroidAppDialog.isShowing());
+    label292:
+    label297:
+    label720:
+    if (paramView != null) {
+      this.a.jdField_b_of_type_JavaUtilList.remove(paramView);
+    }
+    label551:
+    this.a.jdField_a_of_type_Aidj.notifyDataSetChanged();
+    return;
+    paramView = new ArrayList();
+    paramView.add(Long.valueOf(Long.parseLong(str)));
+    ChatHistoryTroopMemberFragment.a(this.a, paramView);
   }
 }
 

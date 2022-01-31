@@ -1,132 +1,93 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Pair;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class asak
-  extends RecyclerView.Adapter<asan>
+  extends aryv
 {
-  float jdField_a_of_type_Float = 1.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  bcws jdField_a_of_type_Bcws;
-  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
-  
-  public asak(Context paramContext, bcws parambcws, float paramFloat)
+  public asak(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = paramFloat;
+    super(paramIntent);
   }
   
-  public asan a(ViewGroup paramViewGroup, int paramInt)
+  public List<RecentUser> a(List<RecentUser> paramList)
   {
-    if (paramInt == asag.b)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296992);
-      paramInt = i;
-      if (this.jdField_a_of_type_Float != 0.0F) {
-        paramInt = (int)(i / this.jdField_a_of_type_Float);
-      }
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
-      return new asan(paramViewGroup);
-    }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559110, paramViewGroup, false);
-    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
-    {
-      Object localObject1 = paramViewGroup.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = aekt.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (ImageView)paramViewGroup.findViewById(2131368169);
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = ((ImageView)localObject1).getLayoutParams();
-        if (localObject2 != null)
-        {
-          paramInt = aekt.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
-          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
-      }
-      localObject1 = (TextView)paramViewGroup.findViewById(2131379141);
-      if (localObject1 != null)
-      {
-        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
-        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
-        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
-        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (!bdeu.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aryl.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+        localArrayList.add(localRecentUser);
       }
     }
-    return new asam(paramViewGroup);
+    return localArrayList;
   }
   
-  public void a(asan paramasan, int paramInt)
+  protected void a(Drawable paramDrawable, boolean paramBoolean)
   {
-    if (paramasan.a == asag.b) {}
-    Pair localPair;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramasan.a != asag.a);
-      paramInt -= 1;
-      if (paramInt < 0) {
-        QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
-      }
-      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while (!(paramasan instanceof asam));
-    ((asam)paramasan).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Bcws);
-  }
-  
-  public void a(List<Pair<String, String>> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    if (paramBoolean) {
+      bayu.a((URLDrawable)paramDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    }
+    if (paramDrawable == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    paramDrawable.setBounds(0, 0, (int)(264.0F * this.jdField_a_of_type_Float), (int)(138.0F * this.jdField_a_of_type_Float));
   }
   
-  public int getItemCount()
+  protected void a(bdjz parambdjz)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    a(asbe.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839434), this.jdField_a_of_type_Float), false, 0);
   }
   
-  public int getItemViewType(int paramInt)
+  protected void b()
   {
-    if (paramInt == 0) {
-      return asag.b;
+    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_location_string");
+    this.jdField_a_of_type_Bdjz.setMessage(str);
+  }
+  
+  protected boolean c()
+  {
+    boolean bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false);
+    boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromFavorites", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("forward", 2, "ForwardMapOption realForwardTo isFromFavorite=" + bool1 + "isFromFav=" + bool2);
     }
-    return asag.a;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new asal(this));
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    if ((bool1) || (bool2))
+    {
+      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    for (;;)
+    {
+      return true;
+      if (this.f)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
+      else
+      {
+        super.c();
+      }
     }
   }
 }

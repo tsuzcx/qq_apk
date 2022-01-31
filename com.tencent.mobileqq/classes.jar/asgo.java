@@ -1,67 +1,49 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class asgo
-  implements ashc
+public class asgo
+  implements avuc
 {
-  public Context a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public FullPopData a;
-  public FullPopVideoView a;
-  private String a;
-  public boolean a;
-  public ImageView b;
-  private String b;
-  public boolean b;
-  public ImageView c;
-  private boolean c;
-  public ImageView d;
+  public asgo(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public asgo(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
   
-  public void a()
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "205929";; str = "205927")
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
+    }
+    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(str)) {
+      localJSONObject = new JSONObject();
+    }
+    try
     {
-      asiy.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
-      return;
+      localJSONObject.put("status", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      localJSONObject.put("height", paramInt3);
+      if (this.a.jdField_a_of_type_Asgp != null) {
+        this.a.jdField_a_of_type_Asgp.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      }
+      return false;
     }
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
-      return;
+    catch (JSONException localJSONException)
+    {
+      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
-    this.d = ((ImageView)paramVarArgs[6]);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new asgp(this));
+    return false;
   }
 }
 

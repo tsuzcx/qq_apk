@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class ahpi
-  extends alox
+  implements View.OnClickListener
 {
-  public ahpi(TroopFragment paramTroopFragment) {}
+  public ahpi(TroopActivity paramTroopActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      this.a.h();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    TroopActivity.a(this.a);
   }
 }
 

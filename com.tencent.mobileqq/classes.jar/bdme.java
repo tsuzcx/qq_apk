@@ -1,11 +1,18 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-final class bdme
-  implements Comparator<bdmf>
+public final class bdme
+  implements Parcelable.Creator<QQRecorder.RecorderParam>
 {
-  public int a(bdmf parambdmf1, bdmf parambdmf2)
+  public QQRecorder.RecorderParam a(Parcel paramParcel)
   {
-    return parambdmf2.a() - parambdmf1.a();
+    return new QQRecorder.RecorderParam(paramParcel);
+  }
+  
+  public QQRecorder.RecorderParam[] a(int paramInt)
+  {
+    return new QQRecorder.RecorderParam[paramInt];
   }
 }
 

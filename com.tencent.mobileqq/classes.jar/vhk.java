@@ -1,34 +1,29 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
-final class vhk
-  implements URLDrawable.URLDrawableListener
+public class vhk
+  extends uro
 {
-  vhk(long paramLong, vhv paramvhv) {}
+  public final ArrayList<uxf> a = new ArrayList();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public vhk(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
-    if (this.jdField_a_of_type_Vhv != null) {
-      this.jdField_a_of_type_Vhv.b();
-    }
+    a(paramRspGetPOIPosters);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
-    }
-    wta.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    if (this.jdField_a_of_type_Vhv != null) {
-      this.jdField_a_of_type_Vhv.a();
+    int i = 0;
+    while (i < paramRspGetPOIPosters.poi_posters.size())
+    {
+      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
+      localObject = new uxf(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
+      this.a.add(localObject);
+      i += 1;
     }
   }
 }

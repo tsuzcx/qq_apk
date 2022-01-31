@@ -1,28 +1,71 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class agyl
-  extends BroadcastReceiver
+  extends agxw
 {
-  public agyl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  private Collection<String> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agyl(QQAppInterface paramQQAppInterface)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
+    super(paramQQAppInterface);
+  }
+  
+  private List<agyk> b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = (apnv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
+    agyv localagyv = agyv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localObject = ((apnv)localObject).a();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
+        if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localagyv.b(localCameraEmotionData.strContext)))) {
+          localArrayList.add(new agyk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCameraEmotionData));
+        }
+      }
+    }
+    if (localArrayList.isEmpty())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
+        QLog.d("StickerRecCameraEmoticonHandleListener", 2, "findMatchCameraEmoticons matchList is null or empty,keyWord: " + bdeu.a(paramString));
       }
-      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
-      paramContext.putExtra("broadcastType", 1);
-      this.a.app.getApp().sendBroadcast(paramContext);
-      this.a.finish();
+      return null;
     }
+    return localArrayList;
+  }
+  
+  public List<agyk> a(String paramString)
+  {
+    return b(paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilCollection = agyv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+      a();
+    }
+    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
   }
 }
 

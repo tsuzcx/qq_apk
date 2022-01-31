@@ -1,42 +1,40 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aloc
-  implements View.OnTouchListener
 {
-  public aloc(FrameHelperActivity paramFrameHelperActivity) {}
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aloc(String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    try
     {
-    }
-    do
-    {
-      do
+      paramString = aojx.a(paramString, "troop_member_list_config");
+      if (paramString != null)
       {
-        return false;
-      } while (!azyl.c(this.a.getActivity().app, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
-      return false;
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
-        break;
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
+        }
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      if (QLog.isColorLevel()) {
+        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
       }
-    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    return false;
-    FrameHelperActivity.b(this.a);
-    return false;
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

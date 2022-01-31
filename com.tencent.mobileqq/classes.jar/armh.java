@@ -1,12 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class armh
-  implements bevo
+  implements View.OnClickListener
 {
-  armh(armf paramarmf, army paramarmy) {}
+  armh(armd paramarmd) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Army.a();
+    int i = arsx.b(this.a.a.e());
+    azqs.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a();
     }
   }
 }

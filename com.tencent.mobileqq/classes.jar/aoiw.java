@@ -1,110 +1,84 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aoiw
-  extends aofy<aoix>
 {
-  public static boolean a;
-  private static boolean b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
   
-  public static boolean e()
+  public static aoiw a(String paramString)
   {
-    if (b) {
-      return a;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    b = true;
-    a = f();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean f()
-  {
-    aoix localaoix2 = (aoix)aogj.a().a(531);
-    aoix localaoix1 = localaoix2;
-    if (localaoix2 == null)
+    aoiw localaoiw = new aoiw();
+    try
     {
-      localaoix2 = new aoix();
-      localaoix1 = localaoix2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localaoix1 = localaoix2;
-      }
+      paramString = new JSONObject(paramString);
+      localaoiw.jdField_a_of_type_JavaLangString = paramString.optString("strGroupUin");
+      localaoiw.jdField_b_of_type_JavaLangString = paramString.optString("strSendUin");
+      localaoiw.jdField_a_of_type_Int = paramString.optInt("nTopicId");
+      localaoiw.jdField_b_of_type_Int = paramString.optInt("nBGType");
+      localaoiw.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
+      localaoiw.jdField_c_of_type_JavaLangString = paramString.optString("strRecNick");
+      localaoiw.jdField_d_of_type_Int = paramString.optInt("nRecNickType");
+      localaoiw.jdField_d_of_type_JavaLangString = paramString.optString("strRecUin");
+      localaoiw.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorUin");
+      localaoiw.f = paramString.optString("strConfessorDesc");
+      localaoiw.g = paramString.optString("strConfessorNick");
+      localaoiw.jdField_e_of_type_Int = paramString.optInt("flag");
+      localaoiw.jdField_a_of_type_Long = paramString.optInt("confessTime");
+      localaoiw.jdField_a_of_type_Boolean = paramString.optBoolean("isRandomShmsgseq");
+      return localaoiw;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localaoix1);
-    }
-    return localaoix1.a();
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public int a()
+  public String a()
   {
-    return 531;
-  }
-  
-  @NonNull
-  public aoix a(int paramInt)
-  {
-    return new aoix();
-  }
-  
-  @Nullable
-  public aoix a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaogf[0].a);
-      }
-      return aoix.a(paramArrayOfaogf[0].a);
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("strGroupUin", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strSendUin", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject).put("strRecNick", this.jdField_c_of_type_JavaLangString);
+      ((JSONObject)localObject).put("nRecNickType", this.jdField_d_of_type_Int);
+      ((JSONObject)localObject).put("strRecUin", this.jdField_d_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorUin", this.jdField_e_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorDesc", this.f);
+      ((JSONObject)localObject).put("strConfessorNick", this.g);
+      ((JSONObject)localObject).put("flag", this.jdField_e_of_type_Int);
+      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("isRandomShmsgseq", this.jdField_a_of_type_Boolean);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    return new aoix();
-  }
-  
-  public Class<aoix> a()
-  {
-    return aoix.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoix paramaoix)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramaoix);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    if (paramaoix != null) {
-      a = paramaoix.a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoiw
  * JD-Core Version:    0.7.0.1
  */

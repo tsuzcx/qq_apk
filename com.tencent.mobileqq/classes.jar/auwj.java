@@ -1,38 +1,17 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
-public class auwj
-  implements View.OnKeyListener
+class auwj
+  extends avbp
 {
-  public auwj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  auwj(auwd paramauwd, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a()
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      if (ChooseInterestTagActivity.a(this.a).getText() == null)
-      {
-        paramView = "";
-        if (TextUtils.isEmpty(paramView))
-        {
-          ChooseInterestTagActivity.a(this.a).fullScroll(66);
-          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      auwz.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
     }
-    for (;;)
-    {
-      return false;
-      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
-        bhoc.b(ChooseInterestTagActivity.a(this.a));
-      }
-    }
+    auwd.a(this.jdField_a_of_type_Auwd, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

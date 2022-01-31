@@ -1,7 +1,10 @@
-class bcyi
+import java.util.List;
+
+public class bcyi
 {
-  bcye jdField_a_of_type_Bcye;
-  bcyg jdField_a_of_type_Bcyg;
+  public String a;
+  public List<String> a;
+  public boolean a;
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bbjz;
-import bbka;
-import bbkb;
+import bboi;
+import bboj;
+import bbok;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,18 +10,18 @@ import java.util.ArrayList;
 public class RelationFriendsTroopViewHelper$4$1
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$4$1(bbka parambbka, ArrayList paramArrayList) {}
+  public RelationFriendsTroopViewHelper$4$1(bboj parambboj, ArrayList paramArrayList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      bbjz.b(this.jdField_a_of_type_Bbka.a).clear();
+      bboi.b(this.jdField_a_of_type_Bboj.a).clear();
       int i = 0;
       if ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 5))
       {
         Object localObject = (RelationTroopEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        bbjz.b(this.jdField_a_of_type_Bbka.a).add(localObject);
+        bboi.b(this.jdField_a_of_type_Bboj.a).add(localObject);
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
@@ -38,7 +38,7 @@ public class RelationFriendsTroopViewHelper$4$1
           break;
         }
       }
-      bbjz.a(this.jdField_a_of_type_Bbka.a).a();
+      bboi.a(this.jdField_a_of_type_Bboj.a).a();
     }
   }
 }

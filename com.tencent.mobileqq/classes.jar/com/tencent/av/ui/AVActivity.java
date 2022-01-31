@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
-import abqm;
-import aekt;
+import abvb;
+import aepi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -43,16 +43,16 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
-import aobd;
-import arof;
-import azmj;
-import bdcv;
-import bdiv;
-import bdyi;
-import bdyo;
-import betl;
-import bhpy;
-import bngs;
+import aofm;
+import arso;
+import azqs;
+import bdhe;
+import bdne;
+import becr;
+import becx;
+import bexu;
+import bhuf;
+import bnle;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.magicface.FaceItem;
@@ -159,7 +159,7 @@ public class AVActivity
   private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new mdk(this);
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
   public RelativeLayout a;
-  public bdyo a;
+  public becx a;
   public VideoController a;
   public VideoAppInterface a;
   public CameraUtils a;
@@ -259,7 +259,7 @@ public class AVActivity
     this.jdField_a_of_type_Meu = new mdw(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
     this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper = new GuideHelper();
-    this.jdField_a_of_type_Bdyo = new mdl(this);
+    this.jdField_a_of_type_Becx = new mdl(this);
     this.jdField_k_of_type_Boolean = false;
     this.jdField_m_of_type_Boolean = false;
     this.mIsShadow = false;
@@ -340,13 +340,13 @@ public class AVActivity
   
   static boolean a(Activity paramActivity)
   {
-    bngs.a(paramActivity);
-    if (bngs.b())
+    bnle.a(paramActivity);
+    if (bnle.b())
     {
-      int i1 = bngs.b(paramActivity);
+      int i1 = bnle.b(paramActivity);
       int i2 = ImmersiveUtils.getStatusBarHeight(paramActivity);
       QLog.w(ImmersiveUtils.jdField_a_of_type_JavaLangString, 1, "initLiuHaiProperty, onAttachedToWindow, notchheight[" + i1 + "], statusBarHeight[" + i2 + "]");
-      if (bngs.c(paramActivity))
+      if (bnle.c(paramActivity))
       {
         if (QLog.isDevelopLevel()) {
           QLog.w(ImmersiveUtils.jdField_a_of_type_JavaLangString, 1, "initLiuHaiProperty, onAttachedToWindow, enableNotch");
@@ -458,7 +458,7 @@ public class AVActivity
           break;
         }
       } while (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-      mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696216);
+      mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696218);
       return;
       if (!a())
       {
@@ -488,13 +488,13 @@ public class AVActivity
   private void k()
   {
     if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = mww.a(getApplicationContext(), 2130841599);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = mww.a(getApplicationContext(), 2130841612);
     }
   }
   
   private void l()
   {
-    View localView = findViewById(2131372873);
+    View localView = findViewById(2131372899);
     if ((localView != null) && (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) && (!isDestroyed())) {
       runOnUiThread(new AVActivity.9(this, localView));
     }
@@ -525,7 +525,7 @@ public class AVActivity
       if ((this.jdField_a_of_type_Men != null) && (this.jdField_a_of_type_Men.a())) {
         this.jdField_a_of_type_Men.a(paramView);
       }
-      while ((paramView.getId() == 2131372873) && (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null))
+      while ((paramView.getId() == 2131372899) && (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null))
       {
         lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, 1);
         this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = null;
@@ -564,7 +564,7 @@ public class AVActivity
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
       return 0;
     }
-    SharedPreferences localSharedPreferences = bdiv.a(getApplicationContext());
+    SharedPreferences localSharedPreferences = bdne.a(getApplicationContext());
     String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
     return localSharedPreferences.getInt("showRecordTip" + String.valueOf(str), 0);
   }
@@ -585,7 +585,7 @@ public class AVActivity
       }
       return null;
     }
-    Object localObject = findViewById(2131372873);
+    Object localObject = findViewById(2131372899);
     if (localObject == null)
     {
       if (QLog.isDevelopLevel()) {
@@ -600,7 +600,7 @@ public class AVActivity
       }
       return null;
     }
-    ImageView localImageView = (ImageView)findViewById(2131372744);
+    ImageView localImageView = (ImageView)findViewById(2131372770);
     if (localImageView == null)
     {
       if (QLog.isDevelopLevel()) {
@@ -617,7 +617,7 @@ public class AVActivity
     }
     QLog.i(this.jdField_b_of_type_JavaLangString, 1, "MoreBtnTips. showTips. mMoreBtnTipsImageDownloaded = " + this.n + ", mMoreBtnTips = " + this.jdField_a_of_type_Mvi);
     localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    int i1 = aekt.a(10.0F, getResources());
+    int i1 = aepi.a(10.0F, getResources());
     int i2 = (int)(25 * getResources().getDisplayMetrics().density / 1.5D);
     int[] arrayOfInt = new int[2];
     ((View)localObject).getLocationInWindow(arrayOfInt);
@@ -761,7 +761,7 @@ public class AVActivity
     Object localObject;
     if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h())
     {
-      localObject = findViewById(2131372869);
+      localObject = findViewById(2131372895);
       if ((localObject == null) || (!(((View)localObject).getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
         break label516;
       }
@@ -800,14 +800,14 @@ public class AVActivity
           }
           this.jdField_a_of_type_Mpe.b(i6);
           return;
-          if ((i5 != 0) || (!bngs.b())) {
+          if ((i5 != 0) || (!bnle.b())) {
             break label510;
           }
         }
       }
       label447:
       label510:
-      for (i1 = bngs.b(this);; i1 = 0)
+      for (i1 = bnle.b(this);; i1 = 0)
       {
         localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
         if ((((lid)localObject).w()) && ((((lid)localObject).B) || (((lid)localObject).jdField_C_of_type_Boolean)) && (this.jdField_a_of_type_Mlf != null) && (!this.jdField_a_of_type_Mlf.d()))
@@ -846,7 +846,7 @@ public class AVActivity
   
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 == 2131372873) && (paramInt3 == 0))
+    if ((paramInt1 == 2131372899) && (paramInt3 == 0))
     {
       a(paramLong, 2000L);
       this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a(paramLong, this, 1, 0);
@@ -891,7 +891,7 @@ public class AVActivity
     if (this.jdField_a_of_type_ComTencentAvVideoController == null) {
       return;
     }
-    Intent localIntent = aekt.a(new Intent(super.getApplicationContext(), SplashActivity.class), null);
+    Intent localIntent = aepi.a(new Intent(super.getApplicationContext(), SplashActivity.class), null);
     localIntent.putExtra("uin", paramString1);
     localIntent.putExtra("uintype", paramInt);
     localIntent.putExtra("uinname", paramString2);
@@ -947,7 +947,7 @@ public class AVActivity
       ((lsa)localObject2).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131372592));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131372618));
     }
     this.jdField_a_of_type_JavaLangRunnable = new AVActivity.5(this);
     if (this.jdField_a_of_type_ComTencentAvCameraCameraUtils == null)
@@ -959,7 +959,7 @@ public class AVActivity
     localObject2 = super.findViewById(2131362964).findViewById(2131362961);
     try
     {
-      ((View)localObject2).setBackgroundResource(2130841755);
+      ((View)localObject2).setBackgroundResource(2130841768);
       if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI == null) {
         m();
       }
@@ -1002,7 +1002,7 @@ public class AVActivity
           {
             paramBoolean = true;
             this.n = paramBoolean;
-            azmj.b(null, "CliOper", "", "", "0X800A75E", "0X800A75E", i1, this.jdField_a_of_type_Mvi.jdField_a_of_type_Int, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X800A75E", "0X800A75E", i1, this.jdField_a_of_type_Mvi.jdField_a_of_type_Int, "", "", "", "");
             QLog.i(this.jdField_b_of_type_JavaLangString, 1, "MoreBtnTips. getDrawableAndToDownloadImage. mMoreBtnTipsImageDownloaded = " + this.n);
           }
         }
@@ -1014,7 +1014,7 @@ public class AVActivity
             if ((this.jdField_d_of_type_Int == 9500) && ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI)))
             {
               localObject2 = (DoubleVideoCtrlUI)this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
-              ((DoubleVideoCtrlUI)localObject2).a(2131372574, this.jdField_a_of_type_ComTencentAvVideoController.o, 2130841657);
+              ((DoubleVideoCtrlUI)localObject2).a(2131372600, this.jdField_a_of_type_ComTencentAvVideoController.o, 2130841670);
               if (!this.jdField_a_of_type_ComTencentAvVideoController.q) {
                 ((DoubleVideoCtrlUI)localObject2).a.a(true, 0, false);
               }
@@ -1024,10 +1024,10 @@ public class AVActivity
           {
             i1 = mpj.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, ((lid)localObject1).jdField_d_of_type_JavaLangString, true, true);
             if ((i1 > 0) && (this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView == null)) {
-              this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = bdyi.a(this, (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent(), false);
+              this.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = becr.a(this, (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent(), false);
             }
-            i2 = bdyi.a();
-            localObject1 = bdyi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, i1, i2, null);
+            i2 = becr.a();
+            localObject1 = becr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, i1, i2, null);
             if (localObject1 != null)
             {
               localObject2 = new File((String)localObject1);
@@ -1039,12 +1039,12 @@ public class AVActivity
               }
             }
           }
-          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)findViewById(2131375458));
+          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)findViewById(2131375509));
           a(paramLong, "onCreateUI", false);
           if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
             this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(0);
           }
-          localObject1 = (RelativeLayout)findViewById(2131379753);
+          localObject1 = (RelativeLayout)findViewById(2131379811);
           if ((localObject1 != null) && (mlf.f()))
           {
             this.jdField_a_of_type_Mlf = new mlf(this, (RelativeLayout)localObject1, this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentAvUiVideoControlUI);
@@ -1153,7 +1153,7 @@ public class AVActivity
         }
         new mez(l1, localFaceItem.getId(), true, 2).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
         VoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString);
-        azmj.b(null, "CliOper", "", "", "0X800984F", "0X800984F", 0, 0, "", "", "", localFaceItem.getId());
+        azqs.b(null, "CliOper", "", "", "0X800984F", "0X800984F", 0, 0, "", "", "", localFaceItem.getId());
         return;
       }
       locallju.a(l1, localFaceItem);
@@ -1164,7 +1164,7 @@ public class AVActivity
   
   void a(String paramString, long paramLong)
   {
-    View localView = findViewById(2131372744);
+    View localView = findViewById(2131372770);
     if (localView == null) {}
     do
     {
@@ -1466,7 +1466,7 @@ public class AVActivity
         if (locallid.jdField_C_of_type_Int != 10) {
           break label428;
         }
-        azmj.b(null, "CliOper", "", "", "0X8005930", "0X8005930", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005930", "0X8005930", 0, 0, "", "", "", "");
       }
     }
     label390:
@@ -1474,7 +1474,7 @@ public class AVActivity
     for (;;)
     {
       if (bool) {
-        azmj.b(null, "CliOper", "", "", "0X8005209", "0X8005209", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005209", "0X8005209", 0, 0, "", "", "", "");
       }
       if (i4 != 0) {
         break label464;
@@ -1488,7 +1488,7 @@ public class AVActivity
       this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, l1, 1);
       break;
       label428:
-      azmj.b(null, "CliOper", "", "", "0X80046D7", "0X80046D7", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80046D7", "0X80046D7", 0, 0, "", "", "", "");
     }
     label464:
     String str = null;
@@ -1585,7 +1585,7 @@ public class AVActivity
         d(paramLong);
         label984:
         QLog.w(this.jdField_b_of_type_JavaLangString, 1, "processExtraData, mSessionType[" + this.jdField_b_of_type_Int + "], mUinType[" + this.jdField_d_of_type_Int + "], mPeerUin[" + this.jdField_c_of_type_JavaLangString + "], mPeerName[" + this.jdField_e_of_type_JavaLangString + "], mPhoneNum[" + this.jdField_f_of_type_JavaLangString + "], mSelfNation[" + this.jdField_g_of_type_JavaLangString + "], mSelfMobile[" + this.jdField_h_of_type_JavaLangString + "], mIsReceiver[" + this.jdField_a_of_type_Boolean + "], mIsAudioMode[" + this.jdField_b_of_type_Boolean + "], mExtraUin[" + this.jdField_i_of_type_JavaLangString + "], mIsPeerNetworkWell[" + this.jdField_c_of_type_Boolean + "], mIsFriend[" + this.jdField_d_of_type_Boolean + "], mFromWhere[" + this.jdField_j_of_type_JavaLangString + "], intentUinStr[" + str + "], \nsession[" + locallid + "]");
-        bdcv.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte);
+        bdhe.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte);
         return;
       }
       if ((i2 == 3) || (i2 == 4) || (this.jdField_a_of_type_ComTencentAvVideoController.l()))
@@ -1850,7 +1850,7 @@ public class AVActivity
       this.jdField_j_of_type_JavaLangString = ((Intent)localObject1).getStringExtra("from");
       this.jdField_f_of_type_Boolean = ((Intent)localObject1).getBooleanExtra("shutCamera", false);
       str2 = ((Intent)localObject1).getStringExtra("headUrl");
-      this.jdField_b_of_type_Long = bdyi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_c_of_type_JavaLangString, 3, true, null);
+      this.jdField_b_of_type_Long = becr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_c_of_type_JavaLangString, 3, true, null);
       this.jdField_g_of_type_Int = ((Intent)localObject1).getIntExtra("vipType", 0);
       lek.b("VideoNodeManager", "==> AVActivity processIntentData() mSessionType = " + this.jdField_b_of_type_Int + "  mIsAudioMode = " + this.jdField_b_of_type_Boolean);
       lkx.b(this.jdField_b_of_type_Int);
@@ -2022,7 +2022,7 @@ public class AVActivity
       }
       locallid.jdField_a_of_type_Lie.jdField_a_of_type_Boolean = true;
       localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationInfo().dataDir + "/" + MD5.toMD5(str2) + ".jpg";
-      if (!arof.a((String)localObject1)) {}
+      if (!arso.a((String)localObject1)) {}
     }
     for (;;)
     {
@@ -2229,17 +2229,17 @@ public class AVActivity
     }
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "showRotateMenu, seq[" + paramLong + "]");
     i();
-    bhpy localbhpy = bhpy.c(this);
-    localbhpy.getWindow().addFlags(524288);
-    localbhpy.getWindow().addFlags(2097152);
-    localbhpy.getWindow().addFlags(128);
-    localbhpy.b(2131721346);
-    localbhpy.c(2131690648);
-    localbhpy.a(new mdn(this));
-    localbhpy.setOnDismissListener(new mdo(this));
-    localbhpy.setCanceledOnTouchOutside(true);
-    localbhpy.e(150);
-    this.jdField_a_of_type_AndroidAppDialog = localbhpy;
+    bhuf localbhuf = bhuf.c(this);
+    localbhuf.getWindow().addFlags(524288);
+    localbhuf.getWindow().addFlags(2097152);
+    localbhuf.getWindow().addFlags(128);
+    localbhuf.b(2131721359);
+    localbhuf.c(2131690648);
+    localbhuf.a(new mdn(this));
+    localbhuf.setOnDismissListener(new mdo(this));
+    localbhuf.setCanceledOnTouchOutside(true);
+    localbhuf.e(150);
+    this.jdField_a_of_type_AndroidAppDialog = localbhuf;
     try
     {
       this.jdField_a_of_type_AndroidAppDialog.show();
@@ -2275,12 +2275,12 @@ public class AVActivity
     for (;;)
     {
       locallid.u = i1;
-      azmj.b(null, "CliOper", "", "", "0X800863D", "0X800863D", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800863D", "0X800863D", 0, 0, "", "", "", "");
       if ((this.jdField_e_of_type_Boolean) && (locallid.aD) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
       {
         String str1 = String.valueOf(locallid.jdField_g_of_type_Long);
         String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.jdField_d_of_type_Int, str1, locallid.jdField_f_of_type_JavaLangString);
-        Intent localIntent = aekt.a(new Intent(super.getApplicationContext(), SplashActivity.class), null);
+        Intent localIntent = aepi.a(new Intent(super.getApplicationContext(), SplashActivity.class), null);
         localIntent.putExtra("uin", str1);
         localIntent.putExtra("uintype", locallid.jdField_i_of_type_Int);
         localIntent.putExtra("uinname", str2);
@@ -2306,7 +2306,7 @@ public class AVActivity
     ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)f2, 0, 0);
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel = new EffectFilterPanel(getBaseContext(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = localViewGroup.findViewById(2131372891);
+    localObject = localViewGroup.findViewById(2131372917);
     if (localObject != null) {
       i1 = localViewGroup.indexOfChild((View)localObject);
     }
@@ -2516,7 +2516,7 @@ public class AVActivity
     this.mIsShadow = false;
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
-    super.setContentView(2131559548);
+    super.setContentView(2131559547);
     super.getWindow().addFlags(524288);
     super.getWindow().addFlags(2097152);
     super.getWindow().addFlags(128);
@@ -2549,7 +2549,7 @@ public class AVActivity
         break label343;
       }
       lek.d(this.jdField_b_of_type_JavaLangString, "onCreate, appRuntime is null exit");
-      paramBundle = super.getString(2131721289) + " 0x05";
+      paramBundle = super.getString(2131721302) + " 0x05";
       Toast.makeText(super.getBaseContext(), paramBundle, 0).show();
       this.jdField_e_of_type_Boolean = true;
       sendBroadcast(new Intent("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH"));
@@ -2567,7 +2567,7 @@ public class AVActivity
     for (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)paramBundle); this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null; this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null)
     {
       lek.d(this.jdField_b_of_type_JavaLangString, "onCreate, AppRuntime is no VideoAppInterface, " + paramBundle.getClass().getName() + " exit");
-      paramBundle = super.getString(2131721289) + " 0x06";
+      paramBundle = super.getString(2131721302) + " 0x06";
       Toast.makeText(super.getBaseContext(), paramBundle, 0).show();
       this.jdField_e_of_type_Boolean = true;
       sendBroadcast(new Intent("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH"));
@@ -2598,7 +2598,7 @@ public class AVActivity
         break;
       }
       lek.d(this.jdField_b_of_type_JavaLangString, "onCreate,VideoAppInterface.mVideoController exit");
-      paramBundle = super.getString(2131721289) + " 0x07";
+      paramBundle = super.getString(2131721302) + " 0x07";
       Toast.makeText(super.getBaseContext(), paramBundle, 0).show();
       this.jdField_e_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(new Intent("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH"));
@@ -2609,7 +2609,7 @@ public class AVActivity
     if (!this.jdField_a_of_type_ComTencentAvVideoController.c())
     {
       lek.d(this.jdField_b_of_type_JavaLangString, "onCreate,VideoAppInterface.initVcController exit");
-      paramBundle = super.getString(2131721289) + " 0x08";
+      paramBundle = super.getString(2131721302) + " 0x08";
       Toast.makeText(super.getBaseContext(), paramBundle, 0).show();
       this.jdField_e_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(new Intent("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH"));
@@ -2699,11 +2699,11 @@ public class AVActivity
       }
       a(i1, false);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(new Intent("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH"));
-      paramBundle = (ViewStub)findViewById(2131372601);
-      this.jdField_a_of_type_Mjs = new mjs(findViewById(2131372540), paramBundle, 2131372835, this.jdField_a_of_type_ComTencentAvVideoController, this);
+      paramBundle = (ViewStub)findViewById(2131372627);
+      this.jdField_a_of_type_Mjs = new mjs(findViewById(2131372566), paramBundle, 2131372861, this.jdField_a_of_type_ComTencentAvVideoController, this);
       this.jdField_a_of_type_Mpe = new mpe(this, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
-        findViewById(2131372770).setVisibility(0);
+        findViewById(2131372796).setVisibility(0);
       }
       this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a(this);
       AudioHelper.b(this.jdField_b_of_type_JavaLangString + ".onCreate.end");
@@ -2811,11 +2811,11 @@ public class AVActivity
     }
     lvt.a().a();
     lvt.a().a(null, null);
-    abqm.a(this);
+    abvb.a(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     if (this.jdField_a_of_type_Mjs != null)
     {
-      azmj.b(null, "CliOper", "", "", "0X800A345", "0X800A345", this.jdField_a_of_type_Mjs.a(), 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800A345", "0X800A345", this.jdField_a_of_type_Mjs.a(), 0, "", "", "", "");
       this.jdField_a_of_type_Mjs.g();
     }
     this.jdField_a_of_type_Mjs = null;
@@ -2946,10 +2946,10 @@ public class AVActivity
   {
     long l1 = AudioHelper.b();
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "avideo life_onPause, seq[" + l1 + "]");
-    aobd.a(this, 2, true);
+    aofm.a(this, 2, true);
     lvt.a().a(16);
     i(false);
-    betl.a(BaseApplicationImpl.getContext(), true, 50, 1);
+    bexu.a(BaseApplicationImpl.getContext(), true, 50, 1);
     this.jdField_i_of_type_Boolean = true;
     try
     {
@@ -2995,20 +2995,20 @@ public class AVActivity
     //   10: aload_0
     //   11: iconst_2
     //   12: iconst_0
-    //   13: invokestatic 2523	aobd:a	(Landroid/content/Context;IZ)V
+    //   13: invokestatic 2523	aofm:a	(Landroid/content/Context;IZ)V
     //   16: invokestatic 2528	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: bipush 50
     //   21: iconst_0
-    //   22: invokestatic 2559	betl:a	(Landroid/content/Context;II)V
+    //   22: invokestatic 2559	bexu:a	(Landroid/content/Context;II)V
     //   25: invokestatic 2528	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   28: iconst_0
     //   29: bipush 50
     //   31: iconst_1
-    //   32: invokestatic 2533	betl:a	(Landroid/content/Context;ZII)V
+    //   32: invokestatic 2533	bexu:a	(Landroid/content/Context;ZII)V
     //   35: invokestatic 2528	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   38: bipush 50
     //   40: iconst_2
-    //   41: invokestatic 2559	betl:a	(Landroid/content/Context;II)V
+    //   41: invokestatic 2559	bexu:a	(Landroid/content/Context;II)V
     //   44: new 231	java/lang/StringBuilder
     //   47: dup
     //   48: invokespecial 232	java/lang/StringBuilder:<init>	()V
@@ -3180,7 +3180,7 @@ public class AVActivity
     //   426: istore 18
     //   428: iload 18
     //   430: ifeq +41 -> 471
-    //   433: invokestatic 2593	bdcb:d	()Ljava/lang/String;
+    //   433: invokestatic 2593	bdgk:d	()Ljava/lang/String;
     //   436: astore 20
     //   438: aload_0
     //   439: getfield 903	com/tencent/av/ui/AVActivity:jdField_a_of_type_ComTencentAvCameraCameraUtils	Lcom/tencent/av/camera/CameraUtils;
@@ -3313,7 +3313,7 @@ public class AVActivity
     //   723: if_icmpne +105 -> 828
     //   726: aload_0
     //   727: invokevirtual 576	com/tencent/av/ui/AVActivity:getApplicationContext	()Landroid/content/Context;
-    //   730: invokestatic 685	bdiv:a	(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   730: invokestatic 685	bdne:a	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   733: astore 19
     //   735: aload 21
     //   737: aload 19
@@ -3450,14 +3450,14 @@ public class AVActivity
     //   1047: iconst_0
     //   1048: invokevirtual 267	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   1051: ifeq +21 -> 1072
-    //   1054: invokestatic 2663	absd:a	()Labsd;
+    //   1054: invokestatic 2663	abws:a	()Labws;
     //   1057: aload_0
     //   1058: invokevirtual 1135	com/tencent/av/ui/AVActivity:getIntent	()Landroid/content/Intent;
     //   1061: ldc_w 2658
     //   1064: iconst_0
     //   1065: invokevirtual 267	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   1068: iconst_1
-    //   1069: invokevirtual 2664	absd:a	(IZ)V
+    //   1069: invokevirtual 2664	abws:a	(IZ)V
     //   1072: aload_0
     //   1073: invokevirtual 2665	com/tencent/av/ui/AVActivity:a	()Lcom/tencent/av/VideoController;
     //   1076: invokevirtual 2666	com/tencent/av/VideoController:x	()V
@@ -3774,7 +3774,7 @@ public class AVActivity
     //   1783: ldc_w 412
     //   1786: ldc_w 412
     //   1789: ldc_w 412
-    //   1792: invokestatic 1178	azmj:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1792: invokestatic 1178	azqs:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1795: aload_0
     //   1796: getfield 595	com/tencent/av/ui/AVActivity:jdField_a_of_type_ComTencentAvUiVideoLayerUI	Lcom/tencent/av/ui/VideoLayerUI;
     //   1799: lload 9
@@ -3891,7 +3891,7 @@ public class AVActivity
     //   2036: ldc_w 412
     //   2039: ldc_w 412
     //   2042: ldc_w 412
-    //   2045: invokestatic 1178	azmj:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2045: invokestatic 1178	azqs:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   2048: goto -253 -> 1795
     //   2051: aconst_null
     //   2052: ldc_w 1170
@@ -3905,7 +3905,7 @@ public class AVActivity
     //   2072: ldc_w 412
     //   2075: ldc_w 412
     //   2078: ldc_w 412
-    //   2081: invokestatic 1178	azmj:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2081: invokestatic 1178	azqs:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   2084: goto -289 -> 1795
     //   2087: aload_0
     //   2088: getfield 595	com/tencent/av/ui/AVActivity:jdField_a_of_type_ComTencentAvUiVideoLayerUI	Lcom/tencent/av/ui/VideoLayerUI;
@@ -4045,7 +4045,7 @@ public class AVActivity
     for (int i1 = 1;; i1 = 2)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a().u = i1;
-      azmj.b(null, "CliOper", "", "", "0X800863D", "0X800863D", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800863D", "0X800863D", 0, 0, "", "", "", "");
       b(4);
       if (!this.jdField_h_of_type_Boolean) {
         b(l1);

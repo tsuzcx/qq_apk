@@ -1,16 +1,19 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface awde {}
+class awde
+  implements View.OnClickListener
+{
+  awde(awcx paramawcx) {}
+  
+  public void onClick(View paramView)
+  {
+    bdsr.a(awcx.a(this.a), "panel");
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awde
  * JD-Core Version:    0.7.0.1
  */

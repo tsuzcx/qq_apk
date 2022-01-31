@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.bubble;
 
-import antw;
+import anyf;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQAnimationDrawable$SerialExecutor$1
   implements Runnable
 {
-  public QQAnimationDrawable$SerialExecutor$1(antw paramantw, Runnable paramRunnable) {}
+  public QQAnimationDrawable$SerialExecutor$1(anyf paramanyf, Runnable paramRunnable) {}
   
   public void run()
   {

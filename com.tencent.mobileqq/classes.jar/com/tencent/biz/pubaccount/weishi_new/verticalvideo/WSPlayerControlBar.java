@@ -43,9 +43,9 @@ public class WSPlayerControlBar
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559876, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131379700));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379701));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559875, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131379758));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379759));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setProgress(0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setMax(1000);
@@ -61,7 +61,7 @@ public class WSPlayerControlBar
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841473);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841474);
       AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
       if (localAnimationDrawable != null)
       {

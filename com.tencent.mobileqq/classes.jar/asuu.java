@@ -1,35 +1,9 @@
-import com.tencent.shadow.core.common.ILoggerFactory;
-import com.tencent.shadow.core.common.Logger;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public class asuu
-  implements ILoggerFactory
+public abstract interface asuu
 {
-  private static asuu jdField_a_of_type_Asuu = new asuu();
-  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
-  
-  public static ILoggerFactory a()
-  {
-    return jdField_a_of_type_Asuu;
-  }
-  
-  public Logger getLogger(String paramString)
-  {
-    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
-    if (localLogger != null) {
-      paramString = localLogger;
-    }
-    asuv localasuv;
-    do
-    {
-      return paramString;
-      localasuv = new asuv(this, paramString);
-      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localasuv);
-      paramString = localLogger;
-    } while (localLogger != null);
-    return localasuv;
-  }
+  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
 }
 
 

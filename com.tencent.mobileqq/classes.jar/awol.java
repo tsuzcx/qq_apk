@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import mqq.app.QQPermissionCallback;
 
 public class awol
-  implements awoj
+  implements QQPermissionCallback
 {
-  public int a;
-  public awoj a;
-  public int b;
+  public awol(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
   
-  public awol(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, awoi paramawoi, int paramInt2, String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_Awoj != null) {
-        this.jdField_a_of_type_Awoj.a(0, null, 0, "");
-      }
-    }
+    bdgm.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
 }
 

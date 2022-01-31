@@ -1,36 +1,94 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.widget.XEditTextEx;
 
-public class aijt
-  extends allb
+class aijt
+  implements apuc
 {
-  public aijt(PhotoCropActivity paramPhotoCropActivity) {}
+  aijt(aijq paramaijq) {}
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  public void a(apuf paramapuf)
   {
-    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
+    int i;
+    int j;
+    if ((paramapuf instanceof apzf))
     {
-      this.a.a.removeMessages(1003);
-      this.a.c();
-      if (!paramBoolean)
-      {
-        paramString = this.a.getIntent();
-        paramString.putExtra("key_from_sdk_set_avatar_result", false);
-        this.a.setResult(-1, paramString);
-        this.a.finish();
-      }
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
     }
-    else
+    apza localapza;
+    int k;
+    int m;
+    do
     {
+      this.a.a.getEditableText().replace(i, j, banh.c(((apzf)paramapuf).a));
+      do
+      {
+        return;
+      } while (!(paramapuf instanceof apza));
+      localapza = (apza)paramapuf;
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      k = localapza.a;
+      m = localapza.b;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramapuf = banh.c(m);; paramapuf = banh.a(m))
+    {
+      this.a.a.getEditableText().replace(i, j, paramapuf);
+      this.a.a.requestFocus();
+      localapza.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      apsj.a().a(k).a(m, 2);
       return;
     }
-    azmj.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
-    paramString = this.a.getIntent();
-    paramString.putExtra("key_from_sdk_set_avatar_result", true);
-    this.a.setResult(-1, paramString);
-    this.a.finish();
   }
+  
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
+  
+  public boolean a(apuf paramapuf)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.a.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(apuf paramapuf) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

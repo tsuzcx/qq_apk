@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.weishi_new.presenter;
 
-import aano;
-import aanp;
-import aaoo;
-import aaop;
-import aaoq;
+import aasd;
+import aase;
+import aatd;
+import aate;
+import aatf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBField;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -17,12 +17,12 @@ public final class WSRecommendFragmentPresenter$4
 {
   public void run()
   {
-    Object localObject1 = new aaop();
-    ((aaop)localObject1).a = "23c763";
-    localObject1 = aaoo.a(BaseApplicationImpl.getContext(), (aaop)localObject1);
+    Object localObject1 = new aate();
+    ((aate)localObject1).a = "23c763";
+    localObject1 = aatd.a(BaseApplicationImpl.getContext(), (aate)localObject1);
     if (localObject1 != null)
     {
-      localObject1 = ((aaoq)localObject1).a;
+      localObject1 = ((aatf)localObject1).a;
       JSONObject localJSONObject = null;
       if (localObject1 == null) {
         localObject1 = localJSONObject;
@@ -36,16 +36,16 @@ public final class WSRecommendFragmentPresenter$4
             break label146;
           }
           tip.a((JSONObject)localObject1, localJSONObject);
-          aanp.d("WSRecommendFragmentPresenter", "setGdtArgs success args =" + tip.a());
+          aase.d("WSRecommendFragmentPresenter", "setGdtArgs success args =" + tip.a());
           return;
         }
         catch (JSONException localJSONException)
         {
           Object localObject2;
-          aanp.a("WSRecommendFragmentPresenter", localJSONException.getMessage());
+          aase.a("WSRecommendFragmentPresenter", localJSONException.getMessage());
           return;
         }
-        localObject2 = aano.a((PBField)localObject1);
+        localObject2 = aasd.a((PBField)localObject1);
         localObject1 = localJSONObject;
         if (localObject2 != null)
         {
@@ -56,7 +56,7 @@ public final class WSRecommendFragmentPresenter$4
             LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
             continue;
             label146:
-            aanp.d("WSRecommendFragmentPresenter", "onResult error");
+            aase.d("WSRecommendFragmentPresenter", "onResult error");
           }
         }
       }

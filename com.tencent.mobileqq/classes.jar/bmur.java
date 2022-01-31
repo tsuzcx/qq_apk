@@ -1,20 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import org.json.JSONObject;
 
 public class bmur
 {
-  public final Bitmap a;
-  public final boolean a;
-  public final Rect[] a;
-  public final String[] a;
+  public int a;
   
-  public bmur(Bitmap paramBitmap, String[] paramArrayOfString, Rect[] paramArrayOfRect, boolean paramBoolean)
+  public bmur(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramInt;
   }
+  
+  public JSONObject a()
+  {
+    return null;
+  }
+  
+  public void a() {}
 }
 
 

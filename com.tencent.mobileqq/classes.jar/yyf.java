@@ -1,21 +1,6 @@
-import android.net.Uri;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-public class yyf
-  extends yyk
+public abstract interface yyf
 {
-  public yyf(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
-  }
+  public abstract void a();
 }
 
 

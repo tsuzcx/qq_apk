@@ -1,17 +1,33 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afpc
-  extends afpq
+  implements bhuk
 {
-  afpc(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afpc(afpb paramafpb, bhuf parambhuf) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new agbr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Afpb.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Afpb.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      paramView = (aloz)this.jdField_a_of_type_Afpb.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      azqs.b(this.jdField_a_of_type_Afpb.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Afpb.jdField_a_of_type_Int), "", "");
+      return;
+    }
+    catch (NumberFormatException paramView) {}
   }
 }
 

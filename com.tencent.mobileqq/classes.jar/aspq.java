@@ -1,17 +1,72 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-
 public class aspq
-  implements View.OnTouchListener
 {
-  public aspq(HotPicMainPanel paramHotPicMainPanel) {}
+  aspr a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aspq(int paramInt)
   {
-    HotPicMainPanel.a(this.a);
-    return true;
+    this.a = new aspr(paramInt);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "graytip";
+    case 2: 
+      return "nor_text";
+    case 3: 
+      return "url";
+    case 4: 
+      return "qq";
+    case 5: 
+      return "img";
+    case 6: 
+      return "dialog";
+    case 7: 
+      return "title";
+    case 8: 
+      return "alter";
+    case 9: 
+      return "btn";
+    }
+    return "item";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "align";
+    case 2: 
+      return "text";
+    case 3: 
+      return "size";
+    case 4: 
+      return "jump";
+    case 5: 
+      return "color";
+    case 6: 
+      return "uin";
+    case 7: 
+      return "name";
+    }
+    return "src";
+  }
+  
+  public aspr a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return aspr.a(this.a, 0);
   }
 }
 

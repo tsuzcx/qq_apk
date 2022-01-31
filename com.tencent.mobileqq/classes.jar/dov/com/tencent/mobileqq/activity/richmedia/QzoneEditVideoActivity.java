@@ -1,20 +1,20 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import ajlk;
-import ajlu;
-import ajlv;
-import alpo;
+import ajpz;
+import ajqj;
+import ajqk;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import blmf;
-import blnl;
-import bmkf;
-import bnbg;
-import bnbw;
+import blqr;
+import blrx;
+import bmor;
+import bnfs;
+import bngi;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -24,24 +24,24 @@ import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 import java.io.File;
 import java.util.ArrayList;
-import xie;
-import xir;
+import xmn;
+import xna;
 
 public class QzoneEditVideoActivity
   extends EditVideoActivity
 {
   private static final String jdField_a_of_type_JavaLangString = QzoneEditVideoActivity.class.getSimpleName();
-  private bnbg jdField_a_of_type_Bnbg;
+  private bnfs jdField_a_of_type_Bnfs;
   private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
   private boolean b;
   
   private void a()
   {
-    this.jdField_a_of_type_Bnbg.n = a();
-    this.jdField_a_of_type_Bnbg.jdField_f_of_type_Boolean = getIntent().getBooleanExtra("mIsQzoneVip", false);
+    this.jdField_a_of_type_Bnfs.n = a();
+    this.jdField_a_of_type_Bnfs.jdField_f_of_type_Boolean = getIntent().getBooleanExtra("mIsQzoneVip", false);
   }
   
-  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, ajlk paramajlk, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, ajpz paramajpz, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
     if (TextUtils.isEmpty(paramString2)) {
       return;
@@ -50,36 +50,36 @@ public class QzoneEditVideoActivity
     if (!TextUtils.isEmpty(paramString4)) {
       PtvFilterUtils.a(str, paramString4);
     }
-    ajlv localajlv = new ajlv();
-    localajlv.jdField_a_of_type_AndroidAppActivity = this;
-    localajlv.jdField_a_of_type_JavaLangString = str;
-    localajlv.jdField_b_of_type_JavaLangString = paramString1;
-    localajlv.jdField_a_of_type_Int = paramInt1;
-    localajlv.jdField_c_of_type_JavaLangString = paramString2;
-    localajlv.jdField_f_of_type_JavaLangString = paramString3;
-    localajlv.jdField_c_of_type_Int = 0;
-    localajlv.jdField_d_of_type_Int = 0;
-    localajlv.jdField_k_of_type_JavaLangString = paramString4;
-    localajlv.j = paramInt2;
-    localajlv.jdField_a_of_type_Ajlk = paramajlk;
-    localajlv.jdField_g_of_type_JavaLangString = paramString5;
-    localajlv.jdField_e_of_type_Int = paramInt3;
-    localajlv.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    localajlv.jdField_b_of_type_Boolean = paramBoolean1;
-    localajlv.jdField_f_of_type_Int = paramInt4;
-    localajlv.jdField_g_of_type_Int = paramInt5;
-    localajlv.jdField_h_of_type_JavaLangString = paramString6;
-    localajlv.jdField_h_of_type_Int = paramInt6;
-    localajlv.i = paramString7;
-    localajlv.jdField_e_of_type_Boolean = paramBoolean2;
-    localajlv.jdField_f_of_type_Boolean = paramBoolean3;
-    localajlv.jdField_g_of_type_Boolean = paramBoolean4;
-    localajlv.jdField_h_of_type_Boolean = paramBoolean5;
-    localajlv.jdField_k_of_type_Int = 3;
-    localajlv.jdField_d_of_type_JavaLangString = "";
-    localajlv.jdField_b_of_type_Int = 0;
-    localajlv.jdField_e_of_type_JavaLangString = "";
-    new ajlu(localajlv).execute(new Void[0]);
+    ajqk localajqk = new ajqk();
+    localajqk.jdField_a_of_type_AndroidAppActivity = this;
+    localajqk.jdField_a_of_type_JavaLangString = str;
+    localajqk.jdField_b_of_type_JavaLangString = paramString1;
+    localajqk.jdField_a_of_type_Int = paramInt1;
+    localajqk.jdField_c_of_type_JavaLangString = paramString2;
+    localajqk.jdField_f_of_type_JavaLangString = paramString3;
+    localajqk.jdField_c_of_type_Int = 0;
+    localajqk.jdField_d_of_type_Int = 0;
+    localajqk.jdField_k_of_type_JavaLangString = paramString4;
+    localajqk.j = paramInt2;
+    localajqk.jdField_a_of_type_Ajpz = paramajpz;
+    localajqk.jdField_g_of_type_JavaLangString = paramString5;
+    localajqk.jdField_e_of_type_Int = paramInt3;
+    localajqk.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localajqk.jdField_b_of_type_Boolean = paramBoolean1;
+    localajqk.jdField_f_of_type_Int = paramInt4;
+    localajqk.jdField_g_of_type_Int = paramInt5;
+    localajqk.jdField_h_of_type_JavaLangString = paramString6;
+    localajqk.jdField_h_of_type_Int = paramInt6;
+    localajqk.i = paramString7;
+    localajqk.jdField_e_of_type_Boolean = paramBoolean2;
+    localajqk.jdField_f_of_type_Boolean = paramBoolean3;
+    localajqk.jdField_g_of_type_Boolean = paramBoolean4;
+    localajqk.jdField_h_of_type_Boolean = paramBoolean5;
+    localajqk.jdField_k_of_type_Int = 3;
+    localajqk.jdField_d_of_type_JavaLangString = "";
+    localajqk.jdField_b_of_type_Int = 0;
+    localajqk.jdField_e_of_type_JavaLangString = "";
+    new ajqj(localajqk).execute(new Void[0]);
   }
   
   private boolean a()
@@ -154,22 +154,22 @@ public class QzoneEditVideoActivity
   
   private void b(@Nullable Intent paramIntent)
   {
-    if ((paramIntent != null) && (this.jdField_a_of_type_Bnbg != null))
+    if ((paramIntent != null) && (this.jdField_a_of_type_Bnfs != null))
     {
-      paramIntent.putExtra("key_content", this.jdField_a_of_type_Bnbg.jdField_c_of_type_JavaLangString);
-      paramIntent.putExtra("key_topic_sync_qzone", this.jdField_a_of_type_Bnbg.jdField_g_of_type_Boolean);
-      paramIntent.putExtra("key_priv", this.jdField_a_of_type_Bnbg.jdField_c_of_type_Int);
-      paramIntent.putExtra("key_priv_uin_list", this.jdField_a_of_type_Bnbg.jdField_a_of_type_JavaUtilArrayList);
-      paramIntent.putExtra("key_font_id", this.jdField_a_of_type_Bnbg.jdField_d_of_type_Int);
-      paramIntent.putExtra("key_font_format_type", this.jdField_a_of_type_Bnbg.jdField_e_of_type_Int);
-      paramIntent.putExtra("key_font_url", this.jdField_a_of_type_Bnbg.jdField_d_of_type_JavaLangString);
-      paramIntent.putExtra("key_super_font_id", this.jdField_a_of_type_Bnbg.jdField_f_of_type_Int);
-      paramIntent.putExtra("key_super_font_info", this.jdField_a_of_type_Bnbg.jdField_e_of_type_JavaLangString);
-      paramIntent.putExtra("key_generate_gif", this.jdField_a_of_type_Bnbg.jdField_d_of_type_Boolean);
-      paramIntent.putExtra("key_timer_delete", this.jdField_a_of_type_Bnbg.q);
-      paramIntent.putExtra("key_sync_to_qqstory", this.jdField_a_of_type_Bnbg.o);
-      paramIntent.putExtra("param.isUploadOrigin", this.jdField_a_of_type_Bnbg.p);
-      if ((xie.a().a() == 14) || (xie.a().a() == 19)) {
+      paramIntent.putExtra("key_content", this.jdField_a_of_type_Bnfs.jdField_c_of_type_JavaLangString);
+      paramIntent.putExtra("key_topic_sync_qzone", this.jdField_a_of_type_Bnfs.jdField_g_of_type_Boolean);
+      paramIntent.putExtra("key_priv", this.jdField_a_of_type_Bnfs.jdField_c_of_type_Int);
+      paramIntent.putExtra("key_priv_uin_list", this.jdField_a_of_type_Bnfs.jdField_a_of_type_JavaUtilArrayList);
+      paramIntent.putExtra("key_font_id", this.jdField_a_of_type_Bnfs.jdField_d_of_type_Int);
+      paramIntent.putExtra("key_font_format_type", this.jdField_a_of_type_Bnfs.jdField_e_of_type_Int);
+      paramIntent.putExtra("key_font_url", this.jdField_a_of_type_Bnfs.jdField_d_of_type_JavaLangString);
+      paramIntent.putExtra("key_super_font_id", this.jdField_a_of_type_Bnfs.jdField_f_of_type_Int);
+      paramIntent.putExtra("key_super_font_info", this.jdField_a_of_type_Bnfs.jdField_e_of_type_JavaLangString);
+      paramIntent.putExtra("key_generate_gif", this.jdField_a_of_type_Bnfs.jdField_d_of_type_Boolean);
+      paramIntent.putExtra("key_timer_delete", this.jdField_a_of_type_Bnfs.q);
+      paramIntent.putExtra("key_sync_to_qqstory", this.jdField_a_of_type_Bnfs.o);
+      paramIntent.putExtra("param.isUploadOrigin", this.jdField_a_of_type_Bnfs.p);
+      if ((xmn.a().a() == 14) || (xmn.a().a() == 19)) {
         a(paramIntent);
       }
       QLog.i(jdField_a_of_type_JavaLangString, 2, "QzoneEditVideoActivity " + paramIntent.getExtras());
@@ -179,26 +179,26 @@ public class QzoneEditVideoActivity
   private void f()
   {
     boolean bool = getIntent().getBooleanExtra("enable_input_text", true);
-    this.jdField_a_of_type_Bnbg.i = bool;
-    this.jdField_a_of_type_Bnbg.j = getIntent().getBooleanExtra("enable_sync_qzone", false);
-    this.jdField_a_of_type_Bnbg.k = getIntent().getBooleanExtra("enable_priv_list", true);
+    this.jdField_a_of_type_Bnfs.i = bool;
+    this.jdField_a_of_type_Bnfs.j = getIntent().getBooleanExtra("enable_sync_qzone", false);
+    this.jdField_a_of_type_Bnfs.k = getIntent().getBooleanExtra("enable_priv_list", true);
     if (!TextUtils.isEmpty(getIntent().getStringExtra("topic_id"))) {
-      this.jdField_a_of_type_Bnbg.jdField_h_of_type_Boolean = true;
+      this.jdField_a_of_type_Bnfs.jdField_h_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Bnbg.jdField_d_of_type_Int = getIntent().getIntExtra("key_font_id", -1);
-    this.jdField_a_of_type_Bnbg.jdField_f_of_type_Int = getIntent().getIntExtra("key_super_font_id", -1);
-    this.jdField_a_of_type_Bnbg.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_super_font_info");
+    this.jdField_a_of_type_Bnfs.jdField_d_of_type_Int = getIntent().getIntExtra("key_font_id", -1);
+    this.jdField_a_of_type_Bnfs.jdField_f_of_type_Int = getIntent().getIntExtra("key_super_font_id", -1);
+    this.jdField_a_of_type_Bnfs.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_super_font_info");
   }
   
   private void g()
   {
     this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = ((QzoneVerticalVideoTopicInfo)getIntent().getParcelableExtra("key_qzone_topic"));
-    this.jdField_a_of_type_Bnbg.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+    this.jdField_a_of_type_Bnfs.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
   }
   
   public void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bnbg.s)
+    if (this.jdField_a_of_type_Bnfs.s)
     {
       b(paramInt1, paramIntent, paramInt2, paramInt3, false);
       return;
@@ -227,7 +227,7 @@ public class QzoneEditVideoActivity
     label80:
     for (Object localObject = ((EditVideoParams)localObject).a(); !TextUtils.isEmpty((CharSequence)localObject); localObject = "can not find EditVideoParams")
     {
-      QQToast.a(this, alpo.a(2131712112) + (String)localObject, 0).a();
+      QQToast.a(this, alud.a(2131712124) + (String)localObject, 0).a();
       finish();
       return;
     }
@@ -237,13 +237,13 @@ public class QzoneEditVideoActivity
     setIntent(paramIntent);
     doOnCreate(null);
     doOnResume();
-    this.jdField_a_of_type_Bnbg.jdField_a_of_type_Bmkf.b();
+    this.jdField_a_of_type_Bnfs.jdField_a_of_type_Bmor.b();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Bnbg = new bnbg(this);
-    this.jdField_a_of_type_Bmix = this.jdField_a_of_type_Bnbg;
+    this.jdField_a_of_type_Bnfs = new bnfs(this);
+    this.jdField_a_of_type_Bmnj = this.jdField_a_of_type_Bnfs;
     f();
     a();
     g();
@@ -254,17 +254,17 @@ public class QzoneEditVideoActivity
     if ((paramInt2 == -1) && (paramInt1 == 666) && (paramIntent != null) && (paramIntent.getBooleanExtra("key_is_qzone_slide_show_edited", false)))
     {
       paramIntent = paramIntent.getParcelableArrayListExtra("qzone_slide_show_matters");
-      xie.a().b(paramIntent);
-      xie.a().a(paramIntent);
+      xmn.a().b(paramIntent);
+      xmn.a().a(paramIntent);
       getIntent().putExtra("from_qzone_slideshow", true);
       getIntent().putExtra("edit_video_type", 10001);
       getIntent().putExtra("qq_sub_business_id", 3);
       getIntent().putExtra("qzone_slide_enable_mask", 3848427020667L);
-      this.jdField_a_of_type_Bnbg.jdField_a_of_type_Bmkf.a(alpo.a(2131712108), false, 500L);
-      this.jdField_a_of_type_Bnbg.b();
+      this.jdField_a_of_type_Bnfs.jdField_a_of_type_Bmor.a(alud.a(2131712120), false, 500L);
+      this.jdField_a_of_type_Bnfs.b();
       this.jdField_b_of_type_Boolean = true;
-      ((blnl)blmf.a(5)).a(this);
-      xie.a().a(this, new bnbw(this), 2);
+      ((blrx)blqr.a(5)).a(this);
+      xmn.a().a(this, new bngi(this), 2);
       return;
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -272,8 +272,8 @@ public class QzoneEditVideoActivity
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Bnbg != null) {
-      this.jdField_a_of_type_Bnbg.s = true;
+    if (this.jdField_a_of_type_Bnfs != null) {
+      this.jdField_a_of_type_Bnfs.s = true;
     }
     super.doOnBackPressed();
   }
@@ -281,18 +281,18 @@ public class QzoneEditVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    findViewById(2131373261).setVisibility(8);
+    findViewById(2131373313).setVisibility(8);
     return bool;
   }
   
   public void doOnDestroy()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (xie.a().b() == 22))
+    if ((!this.jdField_b_of_type_Boolean) && (xmn.a().b() == 22))
     {
-      if (xie.a().a() != 19) {
+      if (xmn.a().a() != 19) {
         break label54;
       }
-      xie.a().b(14);
+      xmn.a().b(14);
     }
     for (;;)
     {
@@ -302,10 +302,10 @@ public class QzoneEditVideoActivity
       super.doOnDestroy();
       return;
       label54:
-      if (xie.a().a() == 14)
+      if (xmn.a().a() == 14)
       {
-        xie.a().c(20);
-        xie.a().b(99);
+        xmn.a().c(20);
+        xmn.a().b(99);
       }
     }
   }

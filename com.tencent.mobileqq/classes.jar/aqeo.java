@@ -1,17 +1,17 @@
-import android.graphics.Rect;
-import android.view.View;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-public abstract interface aqeo
+public class aqeo
+  implements aqie
 {
-  public abstract int a();
+  public aqeo(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
   
-  public abstract Rect a(int paramInt);
-  
-  public abstract View a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public void a(String paramString, int paramInt)
+  {
+    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
+    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
+    ExtendFriendSearchBaseFragment.a(this.a, paramString);
+  }
 }
 
 

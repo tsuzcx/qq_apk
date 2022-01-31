@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahwz
-  implements bcij
+class ahwz
+  implements DialogInterface.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  ahwz(ahww paramahww) {}
   
-  public ahwz(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      ahww.c(this.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    ahww.a(this.a);
   }
 }
 

@@ -1,6 +1,12 @@
-public abstract interface behq
+import android.os.Bundle;
+
+public class behq
 {
-  public abstract void a();
+  protected behr a;
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void b() {}
 }
 
 

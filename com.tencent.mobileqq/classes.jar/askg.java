@@ -1,25 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class askg
-  extends Handler
+class askg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public askg(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  askg(askd paramaskd, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    paramCompoundButton = bkjb.a();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      paramCompoundButton.a(str, i);
       return;
     }
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
   }
 }
 

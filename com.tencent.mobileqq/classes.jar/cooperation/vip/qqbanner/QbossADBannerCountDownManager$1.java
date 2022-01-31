@@ -1,14 +1,14 @@
 package cooperation.vip.qqbanner;
 
-import ajdy;
+import ajin;
 import android.widget.TextView;
-import bkca;
-import bkcb;
+import bkgh;
+import bkgi;
 
 public class QbossADBannerCountDownManager$1
   implements Runnable
 {
-  public QbossADBannerCountDownManager$1(bkcb parambkcb, ajdy paramajdy) {}
+  public QbossADBannerCountDownManager$1(bkgi parambkgi, ajin paramajin) {}
   
   public void run()
   {
@@ -18,17 +18,17 @@ public class QbossADBannerCountDownManager$1
       do
       {
         return;
-      } while (!(this.a instanceof bkca));
-      bkcb.a(this.this$0, (bkca)this.a);
-      bkcb.a(this.this$0).setText(bkcb.a(this.this$0, bkcb.a(this.this$0).c));
-      bkcb.b(this.this$0).setText(bkcb.b(this.this$0, bkcb.a(this.this$0).jdField_d_of_type_JavaLangString));
-      bkcb.a(this.this$0).setTextColor(bkcb.a(this.this$0, bkcb.a(this.this$0).e));
-      bkcb.b(this.this$0).setTextColor(bkcb.b(this.this$0, bkcb.a(this.this$0).e));
-      bkcb.a(this.this$0, bkcb.a(this.this$0));
-      bkcb.c(this.this$0).setBackgroundDrawable(bkcb.a(this.this$0, bkcb.a(this.this$0).f));
-      bkcb.c(this.this$0).setTextColor(bkcb.c(this.this$0, bkcb.a(this.this$0).g));
-    } while (bkcb.a(this.this$0).jdField_d_of_type_Int != 1);
-    bkcb.a(this.this$0);
+      } while (!(this.a instanceof bkgh));
+      bkgi.a(this.this$0, (bkgh)this.a);
+      bkgi.a(this.this$0).setText(bkgi.a(this.this$0, bkgi.a(this.this$0).c));
+      bkgi.b(this.this$0).setText(bkgi.b(this.this$0, bkgi.a(this.this$0).jdField_d_of_type_JavaLangString));
+      bkgi.a(this.this$0).setTextColor(bkgi.a(this.this$0, bkgi.a(this.this$0).e));
+      bkgi.b(this.this$0).setTextColor(bkgi.b(this.this$0, bkgi.a(this.this$0).e));
+      bkgi.a(this.this$0, bkgi.a(this.this$0));
+      bkgi.c(this.this$0).setBackgroundDrawable(bkgi.a(this.this$0, bkgi.a(this.this$0).f));
+      bkgi.c(this.this$0).setTextColor(bkgi.c(this.this$0, bkgi.a(this.this$0).g));
+    } while (bkgi.a(this.this$0).jdField_d_of_type_Int != 1);
+    bkgi.a(this.this$0);
   }
 }
 

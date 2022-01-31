@@ -1,149 +1,25 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.RoundCornerLinearLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.4.1;
 
 public class avpm
-  extends Dialog
+  implements View.OnClickListener
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected View.OnClickListener a;
-  protected avpp a;
-  protected int b;
+  public avpm(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public avpm(Context paramContext, ArrayList<avpo> paramArrayList)
+  public void onClick(View paramView)
   {
-    super(paramContext, 2131755801);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new avpn(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = bcwh.a(paramContext, 34.0F);
-    this.jdField_a_of_type_Int = bcwh.a(paramContext, 34.0F);
-    a(paramArrayList);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    Window localWindow = getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.x = paramInt1;
-    localLayoutParams.y = paramInt2;
-    localLayoutParams.gravity = 85;
-    localLayoutParams.dimAmount = paramFloat;
-    localWindow.setAttributes(localLayoutParams);
-    super.show();
-  }
-  
-  protected void a(ImageView paramImageView, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
-    }
-    Object localObject2 = null;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      }
-      for (;;)
-      {
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-        paramImageView.setImageDrawable(paramString);
-        return;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage empty url");
-          localObject1 = localObject2;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage exp: url=" + paramString, localException);
-          localObject1 = localObject2;
-        }
-      }
-    }
-  }
-  
-  public void a(avpp paramavpp)
-  {
-    this.jdField_a_of_type_Avpp = paramavpp;
-  }
-  
-  protected void a(ArrayList<avpo> paramArrayList)
-  {
-    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRoundCornerLinearLayout.setOrientation(1);
-    localRoundCornerLinearLayout.setBackgroundResource(2130845072);
-    int i = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    localRoundCornerLinearLayout.setPadding(0, i, 0, i);
-    localRoundCornerLinearLayout.setRadius(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramArrayList = paramArrayList.iterator();
-    if (paramArrayList.hasNext())
-    {
-      avpo localavpo = (avpo)paramArrayList.next();
-      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131559390, localRoundCornerLinearLayout, false);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131367808);
-      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131377884);
-      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131377143);
-      localTextView1.setText(localavpo.jdField_b_of_type_JavaLangString);
-      if (TextUtils.isEmpty(localavpo.c))
-      {
-        localTextView2.setVisibility(8);
-        label167:
-        if (TextUtils.isEmpty(localavpo.a)) {
-          break label227;
-        }
-        a(localImageView, localavpo.a);
-      }
-      for (;;)
-      {
-        localViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localViewGroup.setTag(localavpo);
-        localRoundCornerLinearLayout.addView(localViewGroup);
-        break;
-        localTextView2.setText(localavpo.c);
-        break label167;
-        label227:
-        if (localavpo.jdField_b_of_type_Int > 0) {
-          localImageView.setImageResource(localavpo.jdField_b_of_type_Int);
-        }
-      }
-    }
-    setContentView(localRoundCornerLinearLayout);
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(paramView);
+    NearbyProfileFragment.a(this.a, null);
+    ThreadManager.post(new NearbyProfileFragment.4.1(this), 5, null, false);
+    azqs.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
   }
 }
 

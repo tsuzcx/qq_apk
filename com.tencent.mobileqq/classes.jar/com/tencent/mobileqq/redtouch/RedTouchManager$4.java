@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Build.VERSION;
-import axho;
+import axlx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -15,15 +15,15 @@ import org.json.JSONObject;
 public class RedTouchManager$4
   implements Runnable
 {
-  public RedTouchManager$4(axho paramaxho, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
+  public RedTouchManager$4(axlx paramaxlx, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
   
   public void run()
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.this$0.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("8.3.3.4515");
+    localReportReqBody.clientver.set("8.3.5.4555");
     localReportReqBody.platid.set(109);
-    localReportReqBody.appid.set(axho.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
+    localReportReqBody.appid.set(axlx.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
     localReportReqBody.cmd.set(18);
     localReportReqBody.extend.set(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.extend.get());
@@ -52,9 +52,9 @@ public class RedTouchManager$4
       break label179;
     }
     localReportReqBody.buffer.set(((JSONObject)localObject1).toString());
-    localObject1 = axho.a(this.this$0, "RedTouchSvc.ClientReport");
+    localObject1 = axlx.a(this.this$0, "RedTouchSvc.ClientReport");
     ((ToServiceMsg)localObject1).putWupBuffer(localReportReqBody.toByteArray());
-    axho.a(this.this$0, (ToServiceMsg)localObject1);
+    axlx.a(this.this$0, (ToServiceMsg)localObject1);
   }
 }
 

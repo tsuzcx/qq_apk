@@ -1,16 +1,19 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
-class adtt
-  extends AccessibilityDelegateCompat
+public class adtt
+  implements bibb
 {
-  adtt(adtr paramadtr) {}
+  public adtt(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(false);
+    RecommendFriendActivity.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, true);
   }
 }
 

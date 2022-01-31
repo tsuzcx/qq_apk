@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.emosm.web;
 
-import apmy;
-import apmz;
-import apna;
+import aprh;
+import apri;
+import aprj;
 
 public class WebIPCOperator$5$1
   implements Runnable
 {
-  public WebIPCOperator$5$1(apmz paramapmz, apna paramapna) {}
+  public WebIPCOperator$5$1(apri paramapri, aprj paramaprj) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apmz.a.e(this.jdField_a_of_type_Apna.a);
+    this.jdField_a_of_type_Apri.a.e(this.jdField_a_of_type_Aprj.a);
   }
 }
 

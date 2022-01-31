@@ -1,36 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
-class yny
-  implements ynu
+public class yny
+  extends yns
 {
-  yny(ynx paramynx, ynw paramynw) {}
+  public yny(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      if (this.jdField_a_of_type_Ynw.a)
-      {
-        this.jdField_a_of_type_Ynx.jdField_a_of_type_Yol.b(this.jdField_a_of_type_Ynx);
-        return;
-      }
-      if (this.jdField_a_of_type_Ynx.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Ynx.jdField_a_of_type_Ynm.a(paramString1, this.jdField_a_of_type_Ynx.jdField_a_of_type_JavaLangString, new ynz(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Ynx.a(localFile, this.jdField_a_of_type_Ynx.b, new yob(this, l));
-      return;
-    }
-    this.jdField_a_of_type_Ynx.d = paramString2;
-    this.jdField_a_of_type_Ynx.jdField_a_of_type_Yol.a(this.jdField_a_of_type_Ynx);
+    ynx.a(this.a.a.this$0, ynx.b(this.a.a.this$0));
   }
 }
 

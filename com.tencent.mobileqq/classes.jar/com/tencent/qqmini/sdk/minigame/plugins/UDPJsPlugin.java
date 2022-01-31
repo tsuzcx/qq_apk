@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bgkd;
-import bglb;
+import bgok;
+import bgpi;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -98,7 +98,7 @@ public class UDPJsPlugin
         paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
         QMLog.d("UDPPlugin", "invalid address :[" + str + "]");
         return;
-        localObject1 = bglb.a(this.mMiniAppContext, paramJSONObject2, "message");
+        localObject1 = bgpi.a(this.mMiniAppContext, paramJSONObject2, "message");
         int k = paramJSONObject2.optInt("offset");
         int m = paramJSONObject2.optInt("length", -1);
         i = m;
@@ -106,7 +106,7 @@ public class UDPJsPlugin
         paramJSONObject2 = localObject2;
         if (localObject1 != null)
         {
-          localObject1 = ((bglb)localObject1).a;
+          localObject1 = ((bgpi)localObject1).a;
           i = m;
           j = k;
           paramJSONObject2 = (JSONObject)localObject1;
@@ -173,15 +173,15 @@ public class UDPJsPlugin
     return null;
   }
   
-  public String createUDPTask(bgkd parambgkd)
+  public String createUDPTask(bgok parambgok)
   {
-    parambgkd = new JSONObject();
+    parambgok = new JSONObject();
     try
     {
       UDPJsPlugin.UDPTask localUDPTask = new UDPJsPlugin.UDPTask(this);
       this.mTaskRegistry.put(localUDPTask.taskId, localUDPTask);
-      parambgkd.put("udpTaskId", localUDPTask.taskId);
-      return parambgkd.toString();
+      parambgok.put("udpTaskId", localUDPTask.taskId);
+      return parambgok.toString();
     }
     catch (IOException localIOException)
     {
@@ -189,7 +189,7 @@ public class UDPJsPlugin
       {
         try
         {
-          parambgkd.put("errMsg", localIOException.getMessage());
+          parambgok.put("errMsg", localIOException.getMessage());
         }
         catch (JSONException localJSONException1) {}
       }
@@ -200,7 +200,7 @@ public class UDPJsPlugin
       {
         try
         {
-          parambgkd.put("errMsg", localJSONException2.getMessage());
+          parambgok.put("errMsg", localJSONException2.getMessage());
         }
         catch (JSONException localJSONException3) {}
       }
@@ -239,42 +239,42 @@ public class UDPJsPlugin
     super.onDestroy();
   }
   
-  public String operateUDPTask(bgkd parambgkd)
+  public String operateUDPTask(bgok parambgok)
   {
     localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        parambgkd = new JSONObject(parambgkd.b);
-        String str = parambgkd.optString("operation");
-        int i = parambgkd.optInt("udpTaskId");
+        parambgok = new JSONObject(parambgok.b);
+        String str = parambgok.optString("operation");
+        int i = parambgok.optInt("udpTaskId");
         UDPJsPlugin.UDPTask localUDPTask = (UDPJsPlugin.UDPTask)this.mTaskRegistry.get(i);
         if (localUDPTask == null) {
           continue;
         }
-        handleTaskOperation(localJSONObject, parambgkd, str, i, localUDPTask);
-        parambgkd = localJSONObject.optString("errMsg", null);
-        if (parambgkd != null) {
-          callbackError(parambgkd, i);
+        handleTaskOperation(localJSONObject, parambgok, str, i, localUDPTask);
+        parambgok = localJSONObject.optString("errMsg", null);
+        if (parambgok != null) {
+          callbackError(parambgok, i);
         }
       }
-      catch (IOException parambgkd)
+      catch (IOException parambgok)
       {
         try
         {
-          localJSONObject.put("errMsg", parambgkd.getMessage());
+          localJSONObject.put("errMsg", parambgok.getMessage());
         }
-        catch (JSONException parambgkd) {}
+        catch (JSONException parambgok) {}
         continue;
       }
-      catch (JSONException parambgkd)
+      catch (JSONException parambgok)
       {
         try
         {
-          localJSONObject.put("errMsg", parambgkd.getMessage());
+          localJSONObject.put("errMsg", parambgok.getMessage());
         }
-        catch (JSONException parambgkd) {}
+        catch (JSONException parambgok) {}
         continue;
       }
       return localJSONObject.toString();

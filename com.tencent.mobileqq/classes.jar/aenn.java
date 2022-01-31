@@ -1,30 +1,34 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.TextView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aenn
-  implements army
+public class aenn
+  implements ArkViewImplement.LoadCallback
 {
-  public aenn(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public aenn(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
   
-  public void a()
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Uri)localIterator.next();
-      localObject = arvk.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-      }
-    }
+    onLoadState(paramInt1);
   }
   
-  public void b() {}
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt == 1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
+      }
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
+    }
+    this.a.a(false);
+    BirthdayActivatePageArkView.a(this.a).setText(alud.a(2131701533));
+  }
 }
 
 

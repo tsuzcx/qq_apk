@@ -1,17 +1,6 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-
-class anoa
-  extends bhnr
+public abstract interface anoa
 {
-  anoa(annx paramannx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
-  }
+  public abstract void a(int paramInt, String paramString, Object paramObject);
 }
 
 

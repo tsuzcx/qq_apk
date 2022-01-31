@@ -18,7 +18,7 @@ public class nkb
     case 0: 
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
-      arys.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
+      asdb.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();

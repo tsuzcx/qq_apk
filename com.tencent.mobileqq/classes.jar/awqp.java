@@ -1,6 +1,13 @@
-public abstract interface awqp
+import android.util.Pair;
+import java.util.Comparator;
+
+class awqp
+  implements Comparator<Pair<Long, String>>
 {
-  public abstract void a(int paramInt);
+  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  {
+    return awqo.a((CharSequence)paramPair1.second) - awqo.a((CharSequence)paramPair2.second);
+  }
 }
 
 

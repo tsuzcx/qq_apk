@@ -1,62 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.os.IInterface;
 
-class amzj
-  implements bapx
+public abstract interface amzj
+  extends IInterface
 {
-  amzj(amzi paramamzi, amzm paramamzm, amzl paramamzl) {}
+  public abstract void a(int paramInt);
   
-  public void onResp(baqw parambaqw)
-  {
-    if (parambaqw.jdField_a_of_type_Int == 3)
-    {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
-      return;
-    }
-    synchronized (amzi.a(this.jdField_a_of_type_Amzi))
-    {
-      int i;
-      if (amzi.a(this.jdField_a_of_type_Amzi) != null)
-      {
-        i = 0;
-        if (i < amzi.a(this.jdField_a_of_type_Amzi).size())
-        {
-          if (!((amzm)amzi.a(this.jdField_a_of_type_Amzi).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Amzm.jdField_a_of_type_JavaLangString)) {
-            break label268;
-          }
-          amzi.a(this.jdField_a_of_type_Amzi).remove(i);
-        }
-      }
-      if (parambaqw.jdField_a_of_type_Int == 0)
-      {
-        ??? = new File(((baps)parambaqw.jdField_a_of_type_Baqv).c);
-        String str = awiz.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Amzm.b))) && (this.jdField_a_of_type_Amzm.jdField_a_of_type_Int != 1))
-        {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_Amzl.a(false, this.jdField_a_of_type_Amzm);
-          return;
-          label268:
-          i += 1;
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Amzl.a(bool, this.jdField_a_of_type_Amzm);
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
-    }
-    this.jdField_a_of_type_Amzl.a(paramLong1, paramLong2);
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

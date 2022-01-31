@@ -1,36 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class ated
-  extends Handler
+class ated
+  implements ActionCallback
 {
-  atec a;
+  ated(ateb paramateb) {}
   
-  protected ated(atec paramatec)
+  public void onResult(String paramString)
   {
-    this.a = paramatec;
-  }
-  
-  protected void a()
-  {
-    this.a = null;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+      i = Integer.parseInt(paramString);
+      if (ateb.a(this.a) != null) {
+        ateb.a(this.a).a(i, "");
+      }
       return;
     }
-    this.a.a();
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 

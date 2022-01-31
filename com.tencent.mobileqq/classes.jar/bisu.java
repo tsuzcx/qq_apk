@@ -1,29 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
 
-public class bisu
+class bisu
   implements DialogInterface.OnClickListener
 {
-  public bisu(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
+  bisu(bisq parambisq) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

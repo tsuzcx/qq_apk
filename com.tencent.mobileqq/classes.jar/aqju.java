@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aqju
-  implements army
+  implements Animation.AnimationListener
 {
-  aqju(aqjt paramaqjt, FileManagerEntity paramFileManagerEntity) {}
+  aqju(aqjt paramaqjt) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Aqjt.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    if (aqkl.a >= aqkl.b)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqkl.a, aqkl.b);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqkl.a, 0L);
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

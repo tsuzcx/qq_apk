@@ -1,15 +1,58 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.support.v4.util.SparseArrayCompat;
 
 public class aiit
-  implements bhqd
 {
-  public aiit(SettingActivity2 paramSettingActivity2, bhpy parambhpy) {}
+  private SparseArrayCompat<SparseArrayCompat<affa>> a = new SparseArrayCompat(15);
+  private SparseArrayCompat<afez> b = new SparseArrayCompat();
   
-  public void OnClick(View paramView, int paramInt)
+  public aiit(aijq paramaijq)
   {
-    this.jdField_a_of_type_Bhpy.cancel();
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, alpo.a(2131714241), alpo.a(2131714238), alpo.a(2131714239), alpo.a(2131714237), new aiiu(this), new aiiv(this)).show();
+    a(1, new aike(paramaijq));
+    a(2, new aijp(paramaijq));
+    a(3, new aiix(paramaijq));
+  }
+  
+  private void a(int paramInt, affa paramaffa)
+  {
+    this.b.put(paramInt, paramaffa);
+    int[] arrayOfInt = paramaffa.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
+      {
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
+      }
+      localSparseArrayCompat1.put(paramInt, paramaffa);
+      i += 1;
+    }
+  }
+  
+  public <T extends afez> T a(int paramInt)
+  {
+    return (afez)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((affa)localSparseArrayCompat.valueAt(i)).a(paramInt);
+        i += 1;
+      }
+    }
   }
 }
 

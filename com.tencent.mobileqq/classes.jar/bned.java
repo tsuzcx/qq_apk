@@ -1,23 +1,37 @@
-public final class bned
-  implements ajse
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+
+public class bned
+  implements Animator.AnimatorListener
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public bned(PickerContainer paramPickerContainer) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if (PickerContainer.a(this.a))
+    {
+      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
+        this.a.setVisibility(4);
+      }
+      PickerContainer.a(this.a, false);
     }
-    return -paramInt1;
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if (PickerContainer.a(this.a))
+    {
+      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
+        this.a.setVisibility(4);
+      }
+      PickerContainer.a(this.a, false);
     }
-    return -paramInt1;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqvu;
+import arad;
 
 public class ThumbDownloadManager$2
   implements Runnable
 {
-  public ThumbDownloadManager$2(aqvu paramaqvu, String paramString) {}
+  public ThumbDownloadManager$2(arad paramarad, String paramString) {}
   
   public void run()
   {
-    aqvu.a(this.this$0, this.a);
-    aqvu.b(this.this$0, this.a);
+    arad.a(this.this$0, this.a);
+    arad.b(this.this$0, this.a);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import amnk;
-import azmj;
+import amrz;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$5
@@ -16,8 +16,8 @@ public final class PublicAccountEventReport$5
     if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      amnk.a(str1, 102, str2, bool);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
+      amrz.a(str1, 102, str2, bool);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
       return;
     }
   }

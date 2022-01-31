@@ -1,30 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import java.util.Comparator;
 
-public class akza
-  implements View.OnTouchListener
+class akza
+  implements Comparator<akzb>
 {
-  public akza(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  akza(akyz paramakyz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(akzb paramakzb1, akzb paramakzb2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (paramakzb1.a == paramakzb2.a) {
+      return 0;
     }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+    if (paramakzb1.a > paramakzb2.a) {
+      return -1;
     }
+    return 1;
   }
 }
 

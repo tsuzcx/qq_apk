@@ -1,84 +1,56 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.util.SparseArrayCompat;
 
-public class ahks
-  implements ahjp
+public class ahks<T>
 {
-  public ahks(TroopActivity paramTroopActivity) {}
+  SparseArrayCompat<ahkr<T>> a = new SparseArrayCompat();
   
-  public Activity a()
+  public int a()
   {
-    return this.a;
+    return this.a.size();
   }
   
-  public View a()
+  public int a(T paramT, int paramInt)
   {
-    return this.a.findViewById(2131375981);
-  }
-  
-  public arum a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public bhoe a()
-  {
-    return this.a.jdField_a_of_type_Bhoe;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.a.b != 2) {
-      return;
-    }
-    switch (paramInt)
+    int i = this.a.size() - 1;
+    while (i >= 0)
     {
+      if (((ahkr)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
     }
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
   }
   
-  public void a(Runnable paramRunnable)
+  public ahkr a(int paramInt)
   {
-    this.a.runOnUiThread(paramRunnable);
+    return (ahkr)this.a.get(paramInt);
   }
   
-  public void a(String paramString)
+  public ahks<T> a(ahkr<T> paramahkr)
   {
-    if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    int i = this.a.size();
+    if (paramahkr != null) {
+      this.a.put(i, paramahkr);
     }
+    return this;
   }
   
-  public boolean a()
+  public void a(ahkz paramahkz, T paramT, int paramInt)
   {
-    return TroopActivity.a(this.a);
-  }
-  
-  public View b()
-  {
-    return this.a.findViewById(2131375934);
-  }
-  
-  public boolean b()
-  {
-    return TroopActivity.b(this.a);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131375926);
-  }
-  
-  public View d()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ahkr localahkr = (ahkr)this.a.valueAt(i);
+      if (localahkr.a(paramT, paramInt))
+      {
+        localahkr.a(paramahkz, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 

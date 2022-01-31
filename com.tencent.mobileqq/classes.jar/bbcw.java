@@ -1,30 +1,14 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class bbcw
-  implements View.OnTouchListener
+public class bbcw
+  implements bhum
 {
-  bbcw(bbcv parambbcv) {}
+  public bbcw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    TribeVideoListPlayerFragment.a(this.a);
+    this.a.e = false;
   }
 }
 

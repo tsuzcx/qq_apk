@@ -1,144 +1,275 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdx
-  extends BaseAdapter
+  extends xeh
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<ImageView> jdField_a_of_type_AndroidUtilSparseArray;
-  private xds jdField_a_of_type_Xds;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  public int a;
+  public xhd a;
   
-  public xdx(Context paramContext)
+  public xdx(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = xee.b(this.jdField_a_of_type_AndroidContentContext, 30.0F);
-    this.c = xee.b(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    this.d = xee.b(this.jdField_a_of_type_AndroidContentContext, 45.0F);
-    this.e = xee.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    this.f = xee.b(this.jdField_a_of_type_AndroidContentContext, 7.5F);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    super(paramDoodleView);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Xhd = new xhd();
   }
   
-  private ImageView a(boolean paramBoolean)
+  private void a(int paramInt)
   {
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.d);
-    localImageView.setPadding(this.e, this.f, this.e, this.f);
-    localImageView.setLayoutParams(localLayoutParams);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    if (paramBoolean) {}
-    for (float f1 = 1.0F;; f1 = 0.5F)
+    switch (paramInt)
     {
-      wzc.a(localImageView, f1);
-      return localImageView;
     }
+    xhh localxhh;
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_Int = 1;
+        return;
+        this.jdField_a_of_type_Int = 2;
+        return;
+        this.jdField_a_of_type_Int = 3;
+        return;
+        this.jdField_a_of_type_Int = 4;
+        localxhh = (xhh)this.jdField_a_of_type_Xhd.a(103);
+      } while (localxhh == null);
+      localxhh.a(104);
+      localxhh.b();
+      return;
+      this.jdField_a_of_type_Int = 6;
+      localxhh = (xhh)this.jdField_a_of_type_Xhd.a(103);
+    } while (localxhh == null);
+    localxhh.a(105);
+    localxhh.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.b);
+  }
+  
+  private void j()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_Xhd.d(101);
+    }
+    while ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int != 4)) {
+      return;
+    }
+    this.jdField_a_of_type_Xhd.d(104);
   }
   
   public int a()
   {
-    return this.c;
+    int[] arrayOfInt = this.jdField_a_of_type_Xhd.a();
+    int i = arrayOfInt[0];
+    return arrayOfInt[1] + i;
+  }
+  
+  public Bitmap a()
+  {
+    return ((xhh)this.jdField_a_of_type_Xhd.a(103)).b;
+  }
+  
+  public String a()
+  {
+    return "LineLayer";
+  }
+  
+  public xhf a(int paramInt)
+  {
+    return this.jdField_a_of_type_Xhd.a(paramInt);
   }
   
   public void a()
   {
-    super.notifyDataSetChanged();
+    this.jdField_a_of_type_Xhd.i();
+    wxe.b("LineLayer", "clear over.");
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(xds paramxds)
-  {
-    if (paramxds == null) {
-      wsv.b("LogoIconAdapter", "setFacePanelAdapter: null.");
+    super.a(paramInt1, paramInt2);
+    xhh localxhh = (xhh)this.jdField_a_of_type_Xhd.a(103);
+    if (localxhh != null) {
+      localxhh.c(paramInt1, paramInt2);
     }
-    this.jdField_a_of_type_Xds = paramxds;
-    super.notifyDataSetChanged();
   }
   
-  public int getCount()
+  protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Xds == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Xds.a();
+    this.jdField_a_of_type_Xhd.a(paramCanvas, this.jdField_a_of_type_Float);
+    j();
   }
   
-  public Object getItem(int paramInt)
+  public void a(Canvas paramCanvas, float paramFloat)
   {
-    if (this.jdField_a_of_type_Xds == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Xds.a(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Xds == null) {
-      return paramView;
-    }
-    if (paramView == null)
+    this.jdField_a_of_type_Xhd.b(paramCanvas, paramFloat);
+    if (this.jdField_a_of_type_Xhd.a())
     {
-      paramView = a(false);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
-      if (paramInt == this.jdField_a_of_type_Int) {
-        wzc.a(paramView, 1.0F);
+      Bitmap localBitmap = this.jdField_a_of_type_Xhd.a;
+      if (localBitmap == null) {
+        break label94;
       }
-      paramView.setContentDescription("");
-      if (paramInt != 0) {
-        break label111;
-      }
-      paramView.setContentDescription(alpo.a(2131706754));
-      label60:
-      paramViewGroup = (xdi)getItem(paramInt);
-      if (paramViewGroup != null)
-      {
-        if (paramViewGroup.a == null) {
-          break label128;
-        }
-        wsv.b("LogoIconAdapter", "logo is already load. ");
-        paramView.setImageDrawable(paramViewGroup.a);
-      }
+      PorterDuffXfermode localPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
+      Paint localPaint = new Paint(1);
+      localPaint.setXfermode(localPorterDuffXfermode);
+      paramCanvas.save();
+      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
+      paramCanvas.restore();
+      this.jdField_a_of_type_Xhd.j();
     }
     for (;;)
     {
-      return paramView;
-      paramView = (ImageView)paramView;
-      wzc.a(paramView, 0.5F);
-      break;
-      label111:
-      if (paramInt != 1) {
-        break label60;
+      this.jdField_a_of_type_Xhd.c();
+      return;
+      label94:
+      if (QLog.isColorLevel()) {
+        QLog.d("LineLayer", 2, "imgDoodle is null");
       }
-      paramView.setContentDescription(alpo.a(2131706753));
-      break label60;
-      label128:
-      String str = (String)paramView.getTag(2131377396);
-      if ((TextUtils.isEmpty(str)) || (!str.equals(paramViewGroup.c)))
-      {
-        paramView.setTag(2131377396, paramViewGroup.c);
-        xai.a().a(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup.c, this.b, this.b, null);
-      }
+    }
+  }
+  
+  @TargetApi(14)
+  public void a(DoodleTextureView paramDoodleTextureView, DoodleView paramDoodleView)
+  {
+    if (paramDoodleTextureView.getVisibility() == 0) {
+      paramDoodleTextureView.setOpController(this.jdField_a_of_type_Xhd);
+    }
+    paramDoodleTextureView = (xhh)this.jdField_a_of_type_Xhd.a(103);
+    if (paramDoodleTextureView != null) {
+      paramDoodleTextureView.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2)
+  {
+    wxe.b("LineLayer", "switchImageMode.");
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Xhd.a(paramAppInterface, paramInt2);
+  }
+  
+  public void a(xdy paramxdy)
+  {
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b();
+    xhh localxhh = (xhh)this.jdField_a_of_type_Xhd.a(103);
+    if (localxhh != null) {
+      localxhh.a(paramxdy, this.jdField_a_of_type_Float, localBitmap, this.jdField_a_of_type_AndroidGraphicsRect);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Xhd.d();
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    while (this.jdField_a_of_type_Int == 5)
+    {
+      return this.jdField_a_of_type_Xhd.a(102, paramMotionEvent);
+      wxk.a("0X80076BE");
+      wxk.b("0X80075CB");
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      return this.jdField_a_of_type_Xhd.a(101, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_Int == 3) {
+      return this.jdField_a_of_type_Xhd.a(103, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_Int == 4) {
+      return this.jdField_a_of_type_Xhd.a(104, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_Int == 6) {
+      return this.jdField_a_of_type_Xhd.a(105, paramMotionEvent);
+    }
+    return false;
+  }
+  
+  public byte[] a()
+  {
+    return ((xhh)this.jdField_a_of_type_Xhd.a(103)).a;
+  }
+  
+  public void b()
+  {
+    ((xhh)this.jdField_a_of_type_Xhd.a(103)).c();
+  }
+  
+  public void b(Canvas paramCanvas)
+  {
+    a(paramCanvas, this.jdField_a_of_type_Float);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Xhd.c()) {
+      super.g();
+    }
+  }
+  
+  public void c(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_Xhd.c(paramCanvas, this.jdField_a_of_type_Float);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 6);
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void d()
+  {
+    wxe.b("LineLayer", "switchMosaicMode.");
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a())
+    {
+      a(4);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.g())
+    {
+      a(6);
+      return;
+    }
+    a(3);
+  }
+  
+  public void e()
+  {
+    wxe.b("LineLayer", "switchNormalMode.");
+    a(1);
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (this.jdField_a_of_type_Xhd != null) {
+      this.jdField_a_of_type_Xhd.b();
     }
   }
 }

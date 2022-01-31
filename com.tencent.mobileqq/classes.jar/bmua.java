@@ -1,40 +1,13 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
 
-public abstract class bmua<T extends bmtz>
+public abstract interface bmua
 {
-  protected int a;
-  public final View a;
-  public T a;
+  public abstract void a(Animation paramAnimation);
   
-  protected bmua(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
-    }
-  }
+  public abstract Bitmap b();
   
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bmtz = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Bmtz = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bmtz != null) && (this.jdField_a_of_type_Bmtz.a());
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 

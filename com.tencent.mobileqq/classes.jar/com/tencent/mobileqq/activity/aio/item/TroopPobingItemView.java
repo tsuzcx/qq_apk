@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agal;
-import agao;
+import agfa;
+import agfd;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,10 +18,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aubp;
-import azmj;
-import bdpd;
-import bdse;
+import aufy;
+import azqs;
+import bdtm;
+import bdwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.vas.PobingDecoder;
@@ -30,11 +30,11 @@ import java.util.HashMap;
 
 public class TroopPobingItemView
   extends RelativeLayout
-  implements View.OnClickListener, aubp<bdpd>
+  implements View.OnClickListener, aufy<bdtm>
 {
   public static final HashMap<Integer, String> a;
   int jdField_a_of_type_Int;
-  private agao jdField_a_of_type_Agao;
+  private agfd jdField_a_of_type_Agfd;
   private View jdField_a_of_type_AndroidViewView;
   private boolean jdField_a_of_type_Boolean;
   
@@ -51,9 +51,9 @@ public class TroopPobingItemView
   public TroopPobingItemView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131561784, this);
-    findViewById(2131372113).setOnClickListener(this);
-    findViewById(2131372107).setOnClickListener(this);
+    inflate(paramContext, 2131561802, this);
+    findViewById(2131372133).setOnClickListener(this);
+    findViewById(2131372127).setOnClickListener(this);
   }
   
   static String a(int paramInt)
@@ -61,7 +61,7 @@ public class TroopPobingItemView
     return "pobing.bitmap.cache." + paramInt;
   }
   
-  private void b(bdpd parambdpd)
+  private void b(bdtm parambdtm)
   {
     Resources localResources = getContext().getResources();
     int i = 0;
@@ -69,22 +69,22 @@ public class TroopPobingItemView
     {
       View localView = getChildAt(i);
       int j = localView.getId();
-      BitmapDrawable localBitmapDrawable1 = new BitmapDrawable(localResources, (Bitmap)parambdpd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
+      BitmapDrawable localBitmapDrawable1 = new BitmapDrawable(localResources, (Bitmap)parambdtm.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
       switch (j)
       {
       default: 
         localView.setBackgroundDrawable(localBitmapDrawable1);
-      case 2131372105: 
+      case 2131372125: 
         for (;;)
         {
           i += 1;
           break;
-          localObject = (Bitmap)parambdpd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j));
-          ((TextView)localView).setTextColor(parambdpd.b);
+          localObject = (Bitmap)parambdtm.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j));
+          ((TextView)localView).setTextColor(parambdtm.b);
           ((TextView)localView).setMaxWidth(localBitmapDrawable1.getIntrinsicWidth());
-          localView.setBackgroundDrawable(bdse.a(getResources(), (Bitmap)localObject));
+          localView.setBackgroundDrawable(bdwn.a(getResources(), (Bitmap)localObject));
         }
-      case 2131372104: 
+      case 2131372124: 
         localView.setBackgroundDrawable(localBitmapDrawable1);
         if (this.jdField_a_of_type_Boolean) {}
         for (j = 8;; j = 0)
@@ -94,7 +94,7 @@ public class TroopPobingItemView
         }
       }
       Object localObject = new StateListDrawable();
-      BitmapDrawable localBitmapDrawable2 = new BitmapDrawable(localResources, (Bitmap)parambdpd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
+      BitmapDrawable localBitmapDrawable2 = new BitmapDrawable(localResources, (Bitmap)parambdtm.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
       localBitmapDrawable2.setColorFilter(0, PorterDuff.Mode.CLEAR);
       ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localBitmapDrawable1);
       ((StateListDrawable)localObject).addState(new int[] { 0 }, localBitmapDrawable2);
@@ -103,38 +103,38 @@ public class TroopPobingItemView
       for (j = 8;; j = 0)
       {
         localView.setVisibility(j);
-        ((TextView)localView).setTextColor(parambdpd.b);
+        ((TextView)localView).setTextColor(parambdtm.b);
         break;
       }
     }
-    agal.a(this.jdField_a_of_type_AndroidViewView, true);
-    azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A4F6", 0, 0, "", "", "", "");
+    agfa.a(this.jdField_a_of_type_AndroidViewView, true);
+    azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A4F6", 0, 0, "", "", "", "");
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = paramInt;
-    bdpd localbdpd = (bdpd)BaseApplicationImpl.sImageCache.get(a(paramInt));
-    if (localbdpd != null)
+    bdtm localbdtm = (bdtm)BaseApplicationImpl.sImageCache.get(a(paramInt));
+    if (localbdtm != null)
     {
-      b(localbdpd);
+      b(localbdtm);
       return;
     }
     new PobingDecoder(paramInt, jdField_a_of_type_JavaUtilHashMap, this);
   }
   
-  public void a(View paramView, agao paramagao)
+  public void a(View paramView, agfd paramagfd)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Agao = paramagao;
+    this.jdField_a_of_type_Agfd = paramagfd;
   }
   
-  public void a(bdpd parambdpd)
+  public void a(bdtm parambdtm)
   {
-    BaseApplicationImpl.sImageCache.put(a(parambdpd.jdField_a_of_type_Int), parambdpd);
-    if (parambdpd.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-      b(parambdpd);
+    BaseApplicationImpl.sImageCache.put(a(parambdtm.jdField_a_of_type_Int), parambdtm);
+    if (parambdtm.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+      b(parambdtm);
     }
   }
   
@@ -144,11 +144,11 @@ public class TroopPobingItemView
     {
     default: 
       return;
-    case 2131372113: 
-      if (this.jdField_a_of_type_Agao != null) {
-        this.jdField_a_of_type_Agao.a(this);
+    case 2131372133: 
+      if (this.jdField_a_of_type_Agfd != null) {
+        this.jdField_a_of_type_Agfd.a(this);
       }
-      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 2, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 2, 0, "", "", "", "");
       return;
     }
     paramView = getContext();
@@ -156,7 +156,7 @@ public class TroopPobingItemView
     Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
     localIntent.putExtra("url", str);
     paramView.startActivity(localIntent);
-    azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 3, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 3, 0, "", "", "", "");
   }
 }
 

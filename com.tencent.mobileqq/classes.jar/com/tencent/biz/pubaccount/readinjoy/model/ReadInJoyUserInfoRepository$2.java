@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public class ReadInJoyUserInfoRepository$2
   {
     Object localObject = pgu.a(this.this$0);
     int i = this.a;
-    localObject = ((awbw)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
+    localObject = ((awgf)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       Iterator localIterator = ((List)localObject).iterator();

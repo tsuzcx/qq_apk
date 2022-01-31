@@ -1,20 +1,16 @@
-import android.os.ResultReceiver;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-class aiwa
-  implements EIPCResultCallback
+public class aiwa
+  implements MediaPlayer.OnCompletionListener
 {
-  aiwa(aivz paramaivz, ResultReceiver paramResultReceiver) {}
+  public aiwa(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
   }
 }
 

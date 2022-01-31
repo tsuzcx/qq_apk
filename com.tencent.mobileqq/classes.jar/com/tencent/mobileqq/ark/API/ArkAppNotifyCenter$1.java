@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import ango;
+import ankx;
 
 public final class ArkAppNotifyCenter$1
   implements Runnable
 {
-  ArkAppNotifyCenter$1(ango paramango, String paramString1, String paramString2, String paramString3) {}
+  ArkAppNotifyCenter$1(ankx paramankx, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ango.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    this.jdField_a_of_type_Ankx.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 

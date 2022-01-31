@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ailq;
+import aiqf;
 import android.annotation.TargetApi;
 import android.view.View;
 import android.widget.Adapter;
-import bhqp;
+import bhuw;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewLogicBase$4
-  implements bhqp
+  implements bhuw
 {
   PhotoPreviewLogicBase$4(PhotoPreviewLogicBase paramPhotoPreviewLogicBase) {}
   

@@ -19,8 +19,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdcb;
-import bhpo;
+import bdgk;
+import bhtv;
 import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
@@ -52,7 +52,7 @@ import rqj;
 
 public class ComponentContentNoteCard
   extends RelativeLayout
-  implements bhpo, pie, pxj, rpx
+  implements bhtv, pie, pxj, rpx
 {
   private int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -198,7 +198,7 @@ public class ComponentContentNoteCard
     //   97: aload_0
     //   98: invokevirtual 217	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentNoteCard:getContext	()Landroid/content/Context;
     //   101: fload 6
-    //   103: invokestatic 222	xee:b	(Landroid/content/Context;F)I
+    //   103: invokestatic 222	xin:b	(Landroid/content/Context;F)I
     //   106: i2f
     //   107: fstore 6
     //   109: fload 8
@@ -208,7 +208,7 @@ public class ComponentContentNoteCard
     //   117: aload_0
     //   118: invokevirtual 217	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentNoteCard:getContext	()Landroid/content/Context;
     //   121: fload 8
-    //   123: invokestatic 222	xee:b	(Landroid/content/Context;F)I
+    //   123: invokestatic 222	xin:b	(Landroid/content/Context;F)I
     //   126: istore 9
     //   128: iload 9
     //   130: i2f
@@ -428,7 +428,7 @@ public class ComponentContentNoteCard
             if ((i != 0) || (pid.a() != 1)) {
               continue;
             }
-            this.jdField_d_of_type_AndroidWidgetTextView.setText(getContext().getString(2131718955));
+            this.jdField_d_of_type_AndroidWidgetTextView.setText(getContext().getString(2131718967));
             this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new qcn(this));
             a(this.jdField_a_of_type_AndroidWidgetImageView, paramqlx.e);
             a(this.jdField_b_of_type_AndroidWidgetImageView, paramqlx.c);
@@ -481,7 +481,7 @@ public class ComponentContentNoteCard
       {
         if ((i == 0) && (pid.a() == 1))
         {
-          localObject = paramqlx.h.replace("#$%", getContext().getString(2131718954));
+          localObject = paramqlx.h.replace("#$%", getContext().getString(2131718966));
           this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new qcp(this));
         }
         try
@@ -530,8 +530,8 @@ public class ComponentContentNoteCard
   private void e()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    localLayoutParams.width = ((int)bdcb.k());
-    localLayoutParams.height = ((int)(bdcb.k() * 0.5625D));
+    localLayoutParams.width = ((int)bdgk.k());
+    localLayoutParams.height = ((int)(bdgk.k() * 0.5625D));
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     }
@@ -568,12 +568,12 @@ public class ComponentContentNoteCard
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.c(7);
       return;
     }
-    QQToast.a(getContext(), 0, getContext().getString(2131719054), 0).a();
+    QQToast.a(getContext(), 0, getContext().getString(2131719066), 0).a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559951, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559950, this, true);
   }
   
   public void a()
@@ -635,16 +635,16 @@ public class ComponentContentNoteCard
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131371231));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370019));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377145));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371228));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369337));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369335));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375753));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369854));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371230));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371222));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131371250));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370038));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377199));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371247));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369355));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369353));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375804));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369873));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371249));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371241));
     e();
   }
   

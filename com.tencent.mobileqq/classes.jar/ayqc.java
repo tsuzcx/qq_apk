@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class ayqc
-  extends amle
+  extends ayqe
 {
-  public ayqc(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ayqc(bdbb parambdbb, ayqi paramayqi)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(parambdbb, paramayqi);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void b(aynu paramaynu, aywd paramaywd)
   {
-    if (paramInt == 0)
+    super.b(paramaynu, paramaywd);
+    if (TextUtils.isEmpty(paramaynu.c()))
     {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+      paramaywd.c().setVisibility(8);
+      ((ayvw)paramaywd).a().setVisibility(0);
     }
+    for (;;)
+    {
+      if (paramaywd.d() != null)
+      {
+        paramaynu = paramaynu.d();
+        if (!TextUtils.isEmpty(paramaynu)) {
+          break;
+        }
+        paramaywd.d().setVisibility(8);
+      }
+      return;
+      paramaywd.c().setVisibility(0);
+      paramaywd.c().setText(paramaynu.c());
+      ((ayvw)paramaywd).a().setVisibility(8);
+    }
+    paramaywd.d().setVisibility(0);
+    paramaywd.d().setText(paramaynu);
   }
+  
+  protected void c(aynu paramaynu, aywd paramaywd)
+  {
+    super.c(paramaynu, paramaywd);
+    ((ayvw)paramaywd).a().setOnClickListener(new ayqd(this, paramaynu));
+  }
+  
+  public void d(aynu paramaynu, aywd paramaywd) {}
 }
 
 

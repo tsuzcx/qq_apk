@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoySearch;
 
 import android.os.Handler;
 import android.os.Message;
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -16,12 +16,12 @@ class ReadInJoyNewSearchActivity$4
   
   public void run()
   {
-    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = localawbw.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    List localList = localawgf.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Message localMessage = this.this$0.a.obtainMessage(1);
     localMessage.obj = localList;
     this.this$0.a.sendMessage(localMessage);
-    localawbw.a();
+    localawgf.a();
     if (localList != null) {
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyNewSearchActivity", 2, "lookupHistory size: " + localList.size());

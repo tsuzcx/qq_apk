@@ -1,36 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aqhp
-  implements bhpo
+final class aqhp
+  implements DialogInterface.OnClickListener
 {
-  public aqhp(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  aqhp(BaseActivity paramBaseActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.g + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
+    String str = aqhi.a(this.a.app);
+    aqgz.b(this.a, str);
+    paramDialogInterface.dismiss();
   }
 }
 

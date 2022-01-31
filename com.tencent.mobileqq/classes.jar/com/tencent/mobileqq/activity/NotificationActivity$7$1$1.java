@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adgf;
-import adgg;
+import adku;
+import adkv;
 
 public class NotificationActivity$7$1$1
   implements Runnable
 {
-  public NotificationActivity$7$1$1(adgg paramadgg) {}
+  public NotificationActivity$7$1$1(adkv paramadkv) {}
   
   public void run()
   {

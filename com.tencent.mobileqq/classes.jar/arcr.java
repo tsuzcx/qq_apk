@@ -1,44 +1,43 @@
-import android.content.Context;
-import com.tencent.kwstudio.office.base.IGlobal;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class arcr
-  implements IGlobal
+public class arcr
+  extends ayjo<aynu, aywd>
 {
-  private final TdsReaderGlobal a;
-  
-  private arcr(TdsReaderGlobal paramTdsReaderGlobal)
+  public arcr(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, bdbb parambdbb, aynu paramaynu, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.a = paramTdsReaderGlobal;
-  }
-  
-  public Context getApplicationContext()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public Executor getExecutor()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public String getFileDir()
-  {
-    Context localContext = getApplicationContext();
-    File localFile2 = localContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null) {
-      localFile1 = localContext.getFilesDir();
+    super(paramListView, parambdbb);
+    paramFileSearchDetailFragment = (arcp)paramaynu;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    {
+      paramListView = new ArrayList();
+      parambdbb = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (parambdbb.hasNext())
+      {
+        paramaynu = (FileManagerEntity)parambdbb.next();
+        paramString = new arcp();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(paramaynu);
+        paramListView.add(paramString);
+      }
+      a(paramListView);
     }
-    return localFile1.getAbsolutePath();
   }
   
-  public InputStream getResourceAsStream(String paramString)
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    return null;
+    return new arcu(this.a.a);
+  }
+  
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new arcv(paramViewGroup);
   }
 }
 

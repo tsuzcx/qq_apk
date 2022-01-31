@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import aubu;
-import aucf;
+import augd;
+import augo;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,11 +11,11 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    aucf localaucf = aucf.a();
-    String str = localaucf.a().a();
+    augo localaugo = augo.a();
+    String str = localaugo.a().a();
     if (str != null)
     {
-      localaucf.a(str);
+      localaugo.a(str);
       this.this$0.b.postDelayed(this, 500L);
     }
   }

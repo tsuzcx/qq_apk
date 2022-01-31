@@ -1,11 +1,13 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-
 public class bcob
 {
-  int jdField_a_of_type_Int;
-  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+  public long a;
+  public String a;
   
-  public bcob(bcnw parambcnw) {}
+  public bcob(bcnu parambcnu, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amvz;
-import amwb;
+import anai;
+import anak;
 
 public class ARCamera$ARCameraHandler$3
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$3(amwb paramamwb) {}
+  public ARCamera$ARCameraHandler$3(anak paramanak) {}
   
   public void run()
   {
-    amvz.b(this.a.a);
+    anai.b(this.a.a);
   }
 }
 

@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azmj;
+import azqs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -102,14 +102,14 @@ public class GatewayVerifyFailedFragment
           {
             localObject1 = (QQAppInterface)getActivity().getAppInterface();
             label476:
-            azmj.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
+            azqs.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
             if (!(getActivity().getAppInterface() instanceof QQAppInterface)) {
               break label579;
             }
           }
           for (localObject1 = (QQAppInterface)getActivity().getAppInterface();; localObject1 = null)
           {
-            azmj.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
+            azqs.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
             return;
             ((StringBuilder)localObject1).append("?");
             break;
@@ -150,7 +150,7 @@ public class GatewayVerifyFailedFragment
     {
     default: 
       return;
-    case 2131368613: 
+    case 2131368624: 
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return;
     }
@@ -159,18 +159,18 @@ public class GatewayVerifyFailedFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131560905, paramViewGroup, false);
-    ((TextView)paramViewGroup.findViewById(2131378859)).setOnClickListener(this);
-    ((TextView)paramViewGroup.findViewById(2131368659)).setText(getString(2131692213));
-    paramLayoutInflater = paramViewGroup.findViewById(2131375934);
+    paramViewGroup = paramLayoutInflater.inflate(2131560923, paramViewGroup, false);
+    ((TextView)paramViewGroup.findViewById(2131378916)).setOnClickListener(this);
+    ((TextView)paramViewGroup.findViewById(2131368670)).setText(getString(2131692214));
+    paramLayoutInflater = paramViewGroup.findViewById(2131375987);
     paramBundle = (LinearLayout.LayoutParams)paramLayoutInflater.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramLayoutInflater.setLayoutParams(paramBundle);
-    paramViewGroup.findViewById(2131368613).setOnClickListener(this);
+    paramViewGroup.findViewById(2131368624).setOnClickListener(this);
     if ((getActivity().getAppInterface() instanceof QQAppInterface)) {}
     for (paramLayoutInflater = (QQAppInterface)getActivity().getAppInterface();; paramLayoutInflater = null)
     {
-      azmj.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
+      azqs.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
       return paramViewGroup;
     }
   }

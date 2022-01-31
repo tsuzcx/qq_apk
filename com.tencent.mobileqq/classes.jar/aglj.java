@@ -1,53 +1,16 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import mqq.util.WeakReference;
 
 class aglj
-  extends alox
+  implements View.OnClickListener
 {
-  aglj(agld paramagld) {}
+  aglj(agli paramagli, int paramInt) {}
   
-  protected void onReqRecheckInHotReactive(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Aupl.a(paramBoolean, paramString1, paramString2, paramInt);
-  }
-  
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (!paramBoolean) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719810), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-    }
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    super.onUpdateFriendInfo(paramString, paramBoolean);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateHotFriendLevel");
-      }
-      this.a.F();
-    }
-  }
-  
-  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateHotFriendLevel");
-      }
-      this.a.F();
-    }
+    ((PhotoListPanel)this.jdField_a_of_type_Agli.a.get()).a(paramView, this.jdField_a_of_type_Int);
   }
 }
 

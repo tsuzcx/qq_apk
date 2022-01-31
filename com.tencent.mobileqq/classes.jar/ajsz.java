@@ -1,6 +1,6 @@
-final class ajsz
+public abstract interface ajsz
 {
-  public static final ajsx a = new ajsx(null);
+  public abstract void a(boolean paramBoolean);
 }
 
 

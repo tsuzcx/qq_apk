@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ailg;
+import aipv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class TroopClipPic
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<TroopClipPic> CREATOR = new ailg();
+  public static final Parcelable.Creator<TroopClipPic> CREATOR = new aipv();
   public String clipInfo;
   public String id;
   public long ts;

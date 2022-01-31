@@ -1,8 +1,23 @@
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
-public abstract interface aoag
+public class aoag
+  implements TextWatcher
 {
-  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
+  public aoag(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
+      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
+    }
+    ClearEllipsisEditText.a(this.a, false);
+  }
 }
 
 

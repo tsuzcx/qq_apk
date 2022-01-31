@@ -1,12 +1,16 @@
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.widget.Switch;
 
 public class akhb
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 

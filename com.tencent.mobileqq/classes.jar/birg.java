@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import java.io.File;
+import java.io.FileFilter;
 
-public class birg
+final class birg
+  implements FileFilter
 {
-  public ChatMessage a;
-  public String a;
-  
-  public birg(ChatMessage paramChatMessage, String paramString)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return paramFile.getName().endsWith(".cfg");
   }
 }
 

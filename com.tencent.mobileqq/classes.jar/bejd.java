@@ -1,8 +1,26 @@
-public abstract interface bejd
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+
+class bejd
+  implements TbsDownloader.TbsDownloaderCallback
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  bejd(bejc parambejc) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs need download");
+      }
+      this.a.a.a.a(false);
+    }
+  }
 }
 
 

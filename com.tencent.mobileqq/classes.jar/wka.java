@@ -1,39 +1,44 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wka
+class wka
+  extends umf<wjw, whz>
 {
-  private uhh<wkg> a;
-  
-  public void a()
+  wka(wjw paramwjw)
   {
-    try
-    {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    super(paramwjw);
   }
   
-  public void a(List<wkg> paramList)
+  public void a(@NonNull wjw paramwjw, @NonNull whz paramwhz)
   {
-    try
-    {
-      if (this.a == null) {
-        this.a = new uhh(new wkc());
-      }
-      this.a.a(paramList);
-      return;
+    if ((!paramwhz.jdField_a_of_type_JavaLangString.equals(wjw.a(paramwjw))) || (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wjw.a(paramwjw) == null)) {
+      wxe.b(this.TAG, "ignore this comment list event. %s.", paramwhz.toString());
     }
-    finally {}
+    boolean bool2;
+    boolean bool1;
+    do
+    {
+      return;
+      wxe.a(this.TAG, "receive comment list event. %s.", paramwhz.toString());
+      bool2 = wjw.a(paramwjw);
+      bool1 = true;
+      if (paramwhz.jdField_a_of_type_Int == 0) {
+        bool1 = false;
+      }
+      wjw.a(paramwjw).a(bool1);
+      wjw.a(paramwjw).a(bool1, paramwhz.b);
+      wjw.a(paramwjw).a(bool1, paramwhz.jdField_a_of_type_Boolean);
+      wjw.a(paramwjw).a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.c, bool1);
+    } while (bool2 != bool1);
+    paramwjw.b(paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
+  
+  public Class acceptEventClass()
+  {
+    return whz.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull whz paramwhz) {}
 }
 
 

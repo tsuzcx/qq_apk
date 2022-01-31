@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
-class aibk
-  implements alti
+public class aibk
+  implements bcms
 {
-  aibk(aiak paramaiak) {}
+  private long jdField_a_of_type_Long;
   
-  public void ao_() {}
-  
-  public void b()
+  public aibk(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, long paramLong)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    ((altc)this.a.a.app.getManager(34)).d();
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void j_(int paramInt)
+  public long a()
   {
-    this.a.f();
+    return this.jdField_a_of_type_Long;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahco;
+import ahhd;
 import android.os.Bundle;
-import ayjk;
-import aylg;
-import ayli;
-import aypx;
-import aypy;
-import ayqc;
-import ayqd;
-import ayql;
+import aynt;
+import aypp;
+import aypr;
+import ayug;
+import ayuh;
+import ayul;
+import ayum;
+import ayuu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
@@ -22,12 +22,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class NetSearchEngine
-  implements aypx<ayjk>
+  implements ayug<aynt>
 {
   public static double a;
   public static double b;
   private int jdField_a_of_type_Int = -1;
-  ahco jdField_a_of_type_Ahco;
+  ahhd jdField_a_of_type_Ahhd;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private NetSearchEngine.NetSearchRunnalbe jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe;
   private Future jdField_a_of_type_JavaUtilConcurrentFuture;
@@ -41,8 +41,8 @@ public class NetSearchEngine
     if (paramThreadPoolExecutor == null) {
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128));
     }
-    SosoInterface.a(new ayqc(this, 0, true, false, 60000L, false, false, "SearchContacts"));
-    this.jdField_a_of_type_Ahco = new ahco(paramQQAppInterface);
+    SosoInterface.a(new ayul(this, 0, true, false, 60000L, false, false, "SearchContacts"));
+    this.jdField_a_of_type_Ahhd = new ahhd(paramQQAppInterface);
   }
   
   private int[] a(int paramInt)
@@ -78,9 +78,9 @@ public class NetSearchEngine
     return arrayOfInt;
   }
   
-  public List<ayjk> a(ayql paramayql)
+  public List<aynt> a(ayuu paramayuu)
   {
-    Object localObject = paramayql.jdField_a_of_type_AndroidOsBundle;
+    Object localObject = paramayuu.jdField_a_of_type_AndroidOsBundle;
     int i = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1);
     int j = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
     int[] arrayOfInt = a(i);
@@ -88,43 +88,43 @@ public class NetSearchEngine
       return null;
     }
     localObject = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayql.jdField_a_of_type_JavaLangString, arrayOfInt, j, new ayqd(this, (List)localObject));
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayuu.jdField_a_of_type_JavaLangString, arrayOfInt, j, new ayum(this, (List)localObject));
     this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe);
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe.a.await();
       return localObject;
     }
-    catch (InterruptedException paramayql)
+    catch (InterruptedException paramayuu)
     {
       for (;;)
       {
-        paramayql.printStackTrace();
+        paramayuu.printStackTrace();
       }
     }
   }
   
-  List<ayjk> a(String paramString, int paramInt, SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
+  List<aynt> a(String paramString, int paramInt, SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
   {
-    aylg localaylg = ayli.a(paramInt);
-    if (localaylg != null) {
-      return localaylg.a(new Object[] { paramcomm, paramArrayOfByte, paramString });
+    aypp localaypp = aypr.a(paramInt);
+    if (localaypp != null) {
+      return localaypp.a(new Object[] { paramcomm, paramArrayOfByte, paramString });
     }
     return null;
   }
   
   public void a() {}
   
-  public void a(ayql paramayql, aypy<ayjk> paramaypy)
+  public void a(ayuu paramayuu, ayuh<aynt> paramayuh)
   {
-    Object localObject = paramayql.jdField_a_of_type_AndroidOsBundle;
+    Object localObject = paramayuu.jdField_a_of_type_AndroidOsBundle;
     int i = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1);
     int j = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
     localObject = a(i);
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayql.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramaypy);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayuu.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramayuh);
     this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe);
   }
   

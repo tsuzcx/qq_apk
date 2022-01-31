@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import aphn;
-import apho;
-import bcwm;
-import bdcs;
-import bfib;
+import aplw;
+import aplx;
+import bdav;
+import bdhb;
+import bfmk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
@@ -73,7 +73,7 @@ public class ViolaBaseView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
-  private bcwm jdField_a_of_type_Bcwm;
+  private bdav jdField_a_of_type_Bdav;
   private ViolaInstance jdField_a_of_type_ComTencentViolaCoreViolaInstance;
   public String a;
   private orz jdField_a_of_type_Orz;
@@ -283,7 +283,7 @@ public class ViolaBaseView
     do
     {
       return;
-      if ((apho.i()) && (aphn.i()))
+      if ((aplx.i()) && (aplw.i()))
       {
         a(jdField_e_of_type_Int);
         return;
@@ -344,7 +344,7 @@ public class ViolaBaseView
       this.jdField_a_of_type_Sng.addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_START);
     }
     Bundle localBundle = new Bundle();
-    new bfib("https://viola.kandian.qq.com/cgi-bin/bundle/exchange?from=android&originUrl=" + URLEncoder.encode(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&v_sdk=").append("8.3.3").append("&v_appid=1&v_uid=").append(ors.a()).append("&v_platform=1").toString()), "GET", new sqx(this, paramBoolean)).a(localBundle);
+    new bfmk("https://viola.kandian.qq.com/cgi-bin/bundle/exchange?from=android&originUrl=" + URLEncoder.encode(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&v_sdk=").append("8.3.5").append("&v_appid=1&v_uid=").append(ors.a()).append("&v_platform=1").toString()), "GET", new sqx(this, paramBoolean)).a(localBundle);
   }
   
   private void e(boolean paramBoolean)
@@ -403,7 +403,7 @@ public class ViolaBaseView
       b(true);
       return;
     }
-    Object localObject = bdcs.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString) + "_" + ors.a());
+    Object localObject = bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString) + "_" + ors.a());
     if ((localObject instanceof String))
     {
       this.jdField_c_of_type_JavaLangString = ((String)localObject);
@@ -446,7 +446,7 @@ public class ViolaBaseView
       this.jdField_a_of_type_Srh.sendEmptyMessageDelayed(3, 0L);
       return;
     }
-    Object localObject = bdcs.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a());
+    Object localObject = bdhb.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ors.a());
     if ((localObject instanceof String))
     {
       this.jdField_e_of_type_JavaLangString = ((String)localObject);
@@ -790,7 +790,7 @@ public class ViolaBaseView
       Object localObject = this.jdField_a_of_type_AndroidSupportV4AppFragment.getActivity();
       if ((paramInt2 == -1) && (localObject != null) && (!((Activity)localObject).isFinishing()))
       {
-        localObject = aekt.a(new Intent((Context)localObject, SplashActivity.class), null);
+        localObject = aepi.a(new Intent((Context)localObject, SplashActivity.class), null);
         if ((paramIntent != null) && ((ors.a() instanceof QQAppInterface)))
         {
           ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));

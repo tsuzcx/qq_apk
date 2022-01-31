@@ -6,7 +6,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class szg
-  implements ymm
+  implements yrb
 {
   public szg(ReadInjoyWebShareHelper.4 param4, Bitmap paramBitmap) {}
   

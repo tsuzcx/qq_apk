@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aezm;
+import afeb;
 import android.content.Intent;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 public class ApolloHelper$3
   extends IApolloRunnableTask
 {
-  public ApolloHelper$3(aezm paramaezm, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ApolloHelper$3(afeb paramafeb, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public String a()
   {

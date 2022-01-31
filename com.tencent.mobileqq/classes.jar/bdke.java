@@ -1,17 +1,27 @@
-public abstract class bdke
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+class bdke
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
+  bdke(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bdke(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = paramInt;
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    bdjz localbdjz = this.jdField_a_of_type_Bdjz;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton.onClick(localbdjz, i);
+      return;
+    }
   }
-  
-  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdke
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131370484));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370483));
+    this.mModuleText = ((TextView)paramView.findViewById(2131370503));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370502));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
@@ -41,8 +41,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
     if (localAppInterface != null)
     {
-      this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166979));
-      this.mMoreMiniApp.setImageResource(2130849513);
+      this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166981));
+      this.mMoreMiniApp.setImageResource(2130849586);
     }
     int j = paramDesktopAppModuleInfo.getModuleType();
     if ((j == 1) || (j == 2))

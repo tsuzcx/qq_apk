@@ -1,14 +1,43 @@
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface way
+class way
+  implements View.OnLongClickListener
 {
-  public abstract void a();
+  way(wax paramwax) {}
   
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
-  
-  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
+  public boolean onLongClick(View paramView)
+  {
+    int i = 0;
+    paramView = (uvt)uwa.a(10);
+    boolean bool;
+    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
+    {
+      bool = true;
+      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      if (paramView != null)
+      {
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+        if (paramView != null) {
+          if (!bool) {
+            break label90;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      paramView.a(i);
+      return true;
+      bool = false;
+      break;
+      label90:
+      i = 8;
+    }
+  }
 }
 
 

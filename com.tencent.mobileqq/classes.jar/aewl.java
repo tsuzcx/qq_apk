@@ -1,101 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
 
-public class aewl
+class aewl
+  implements ImageAssetDelegate
 {
-  public int a;
-  private ArrayList<aewm> a;
-  private int b;
-  private int c = -1;
+  aewl(aewi paramaewi) {}
   
-  public aewl()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    return this.c;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((aewm)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).a();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      paramLottieImageAsset = bdhj.a(aewi.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    return 0L;
-  }
-  
-  public aewm a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return (aewm)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
     }
     return null;
-  }
-  
-  public ArrayList<aewm> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    aewm localaewm = new aewm();
-    localaewm.a(paramFloat1);
-    localaewm.b(paramFloat2);
-    localaewm.c(paramFloat3);
-    localaewm.a(paramLong);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localaewm);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(aewl paramaewl)
-  {
-    this.b = paramaewl.b;
-    this.c = paramaewl.c;
-    this.jdField_a_of_type_Int = paramaewl.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramaewl.a());
-  }
-  
-  public void a(List<aewm> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    }
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public aewm b()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return (aewm)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    }
-    return null;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 

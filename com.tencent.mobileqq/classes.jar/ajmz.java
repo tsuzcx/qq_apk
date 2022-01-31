@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
 
-public class ajmz
-  implements azdk
+public abstract interface ajmz
 {
-  public ajmz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
-    }
-    ajnh.a(paramBoolean1);
-    NewFlowCameraActivity.b(this.a);
-  }
+  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
 }
 
 

@@ -1,103 +1,155 @@
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aoti
+  implements aokj<String>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "";
-  private String c = "";
+  public String a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
   
-  public static aoti a(aogf[] paramArrayOfaogf)
+  public aoti()
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      return null;
-    }
-    aoti localaoti = new aoti();
-    try
-    {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocGrayTipsBean", 2, "handleTencentDocGrayTipsConfig call after " + paramArrayOfaogf.toString());
-      }
-      a(localaoti, paramArrayOfaogf);
-      return localaoti;
-    }
-    catch (JSONException paramArrayOfaogf)
-    {
-      paramArrayOfaogf.printStackTrace();
-    }
-    return localaoti;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public static void a(aoti paramaoti, JSONObject paramJSONObject)
+  private void a(JSONObject paramJSONObject)
   {
-    if ((paramaoti == null) || (paramJSONObject == null)) {}
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no troop");
+    }
+    do
+    {
+      return;
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("videopreview");
+        if (paramJSONObject == null)
+        {
+          QLog.e("QFileCommonConfigBean", 1, "parse Troop Json |type: 396no videoPreview");
+          return;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+        return;
+      }
+      this.m = paramJSONObject.getBoolean("switch");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview = " + this.m);
+      }
+      this.n = paramJSONObject.getBoolean("svip");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for SVIP = " + this.n);
+      }
+      this.o = paramJSONObject.getBoolean("yearsvip");
+    } while (!QLog.isColorLevel());
+    QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for YearSVIP = " + this.n);
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no httpsJson");
+    }
     for (;;)
     {
       return;
-      if ((AudioHelper.d()) && (AudioHelper.a(10) == 1)) {
-        AudioHelper.a(alpo.a(2131715212));
-      }
       try
       {
-        paramJSONObject.put("tencentDocAIOGrayTipsEnable", true);
-        paramJSONObject.put("plainContent", alpo.a(2131715205));
-        paramJSONObject.put("hightLightContent", alpo.a(2131715208));
-        paramJSONObject.put("showTimes", 3);
-        paramJSONObject.put("linkUrl", "https://docs.qq.com/desktop");
-        label81:
-        if (paramJSONObject.has("tencentDocAIOGrayTipsEnable")) {
-          paramaoti.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("tencentDocAIOGrayTipsEnable");
+        this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_up = " + this.jdField_a_of_type_Boolean);
         }
-        if (paramJSONObject.has("plainContent")) {
-          paramaoti.jdField_a_of_type_JavaLangString = paramJSONObject.optString("plainContent");
+        this.b = paramJSONObject.getBoolean("c2c_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_down = " + this.b);
         }
-        if (paramJSONObject.has("hightLightContent")) {
-          paramaoti.b = paramJSONObject.optString("hightLightContent");
+        this.c = paramJSONObject.getBoolean("c2czip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2czip_down = " + this.c);
         }
-        if (paramJSONObject.has("showTimes")) {
-          paramaoti.jdField_a_of_type_Int = paramJSONObject.optInt("showTimes");
+        this.d = paramJSONObject.getBoolean("c2c_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_thumb = " + this.d);
         }
-        if (!paramJSONObject.has("linkUrl")) {
-          continue;
+        this.e = paramJSONObject.getBoolean("disc_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_up = " + this.e);
         }
-        paramaoti.c = paramJSONObject.optString("linkUrl");
-        return;
+        this.f = paramJSONObject.getBoolean("disc_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_down = " + this.f);
+        }
+        this.g = paramJSONObject.getBoolean("disczip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disczip_down = " + this.g);
+        }
+        this.h = paramJSONObject.getBoolean("disc_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_thumb = " + this.h);
+        }
+        this.i = paramJSONObject.getBoolean("troop_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_up = " + this.i);
+        }
+        this.j = paramJSONObject.getBoolean("troop_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_down = " + this.j);
+        }
+        this.k = paramJSONObject.getBoolean("troopzip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troopzip_down = " + this.k);
+        }
+        this.l = paramJSONObject.getBoolean("troop_thumb");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_thumb = " + this.l);
+          return;
+        }
       }
-      catch (Exception localException)
+      catch (JSONException paramJSONObject)
       {
-        break label81;
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
       }
     }
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396configContent is empty");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      b(paramString.getJSONObject("https"));
+      a(paramString.getJSONObject("troop"));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramString, new Object[0]);
+    }
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.biz.ui;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
-import ytd;
+import yxs;
 
 class TouchWebView$1
   extends GestureDetector.SimpleOnGestureListener

@@ -1,29 +1,22 @@
-import android.content.Context;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahwh
+  implements URLDrawable.URLDrawableListener
 {
-  public ArrayList<ahwi> a;
-  public int[] a;
-  public String[] a;
+  public ahwh(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public ahwh()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new ahwi(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 

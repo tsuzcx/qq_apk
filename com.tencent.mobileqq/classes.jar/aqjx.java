@@ -1,79 +1,120 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aqjx
-  extends aqnl
+  extends alvn
 {
-  public aqjx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public aqjx(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  protected void a(aqxx paramaqxx)
+  protected void a(aqky paramaqky, boolean paramBoolean, int paramInt)
   {
-    if (paramaqxx == null) {}
-    do
+    super.a(paramaqky, paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, pushTime=" + paramInt + "from_type=" + this.a.jdField_b_of_type_Int);
+    }
+    if (paramaqky == null)
     {
-      FileManagerEntity localFileManagerEntity;
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=null!!");
+      }
+      if ((this.a.jdField_b_of_type_Int == 0) && (paramaqky != null) && (!this.a.a(paramaqky, this.a.jdField_a_of_type_JavaUtilList)))
       {
-        return;
-        if (!(paramaqxx.a instanceof FileManagerEntity)) {
-          break;
+        this.a.jdField_a_of_type_JavaUtilList.add(paramaqky);
+        if (QLog.isColorLevel()) {
+          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, mhasShowList=" + this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + "mNeedShowList.size()" + this.a.d.size());
         }
-        localFileManagerEntity = (FileManagerEntity)paramaqxx.a;
-      } while ((paramaqxx.b == null) || (paramaqxx.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramaqxx.b;
-      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
-      this.a.i();
-      return;
-    } while (!(paramaqxx.a instanceof WeiYunFileInfo));
-    this.a.i();
-  }
-  
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
-  {
-    aqxj.a(paramString1);
-    arni.a(paramInteger.intValue(), paramString2);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
-  }
-  
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString2 = aqxj.a(paramString1);
-    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString2.hasNext())
-      {
-        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
-        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
-          this.a.b(localWeiYunFileInfo);
+        if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != this.a.d.size()) {
+          break label267;
         }
+        Face2FaceAddFriendActivity.a(this.a, paramaqky);
       }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+    for (;;)
+    {
+      paramaqky = this.a;
+      paramaqky.j += 1;
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=" + paramaqky.e);
+      break;
+      label267:
+      Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
+      localMessage.what = 10;
+      localMessage.obj = paramaqky;
+      Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(10, this.a.a());
+    }
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, List<aqky> paramList, int paramInt1, int paramInt2)
   {
-    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
+    super.a(paramBoolean, paramList, paramInt1, paramInt2);
+    if (paramBoolean)
+    {
+      this.a.e = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList heartBeatTime=" + paramInt2 + "from_type=" + this.a.jdField_b_of_type_Int + "reqInterval=" + paramInt1 + "好友列表返回isSuccess=" + paramBoolean);
+      }
+      if (paramList == null) {
+        break label241;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList size=" + paramList.size());
+      }
+    }
+    for (;;)
+    {
+      int i = paramInt1;
+      if (paramInt1 < 0) {
+        i = 2;
+      }
+      long l = System.currentTimeMillis() - aqkl.c;
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList interval=" + l + "leaveFaceTofaceTime=" + aqkl.c);
+      }
+      if ((l > i * 1000) || (aqkl.c == 0L)) {
+        break label259;
+      }
+      Face2FaceAddFriendActivity.a(this.a, i * 1000 - l);
+      return;
+      this.a.e = 2;
+      break;
+      label241:
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList is null");
+      }
+    }
+    label259:
+    if (paramInt2 > 0) {
+      Face2FaceAddFriendActivity.h = paramInt2 * 1000;
+    }
+    if (!this.a.jdField_b_of_type_Boolean) {
+      Face2FaceAddFriendActivity.c(this.a);
+    }
+    this.a.jdField_b_of_type_Boolean = true;
+    if ((this.a.jdField_b_of_type_Int == 0) && (paramList != null) && (paramList.size() > 0)) {
+      paramList = paramList.iterator();
+    }
+    for (;;)
+    {
+      aqkw localaqkw;
+      if (paramList.hasNext())
+      {
+        localaqkw = (aqkw)paramList.next();
+        if (!this.a.jdField_a_of_type_JavaUtilList.contains(localaqkw)) {}
+      }
+      else
+      {
+        Face2FaceAddFriendActivity.d(this.a);
+        return;
+      }
+      this.a.jdField_a_of_type_JavaUtilList.add(localaqkw);
+    }
   }
 }
 

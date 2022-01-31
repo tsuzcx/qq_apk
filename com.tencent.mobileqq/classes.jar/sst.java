@@ -4,21 +4,21 @@ import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabF
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class sst
-  extends yei
+  extends yiu
 {
   public sst(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, ydp paramydp)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
   {
     return FolderFollowTabFragment.a(this.a);
   }
   
-  public void a(Bundle paramBundle) {}
+  public void loadData(yii paramyii) {}
   
-  public void a(yeb paramyeb) {}
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

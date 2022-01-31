@@ -1,116 +1,82 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
 
 public class awob
 {
-  public static String a(Context paramContext)
-  {
-    return bcyw.c(paramContext) + "wzryTemplate/";
-  }
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public static void a(QQAppInterface paramQQAppInterface, VasQuickUpdateManager.CallBacker paramCallBacker)
+  public awob(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, long paramLong1, long paramLong2)
   {
-    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    paramQQAppInterface.addCallBacker(paramCallBacker);
-    paramQQAppInterface.downloadItem(15L, "cardWZ.zip", "ProfileCard");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramInt == 0) {
-      if ("cardWZ.zip".equals(paramString1))
+    this.jdField_a_of_type_Int = bdin.a(BaseApplication.getContext());
+    this.jdField_a_of_type_Boolean = azdo.a(paramQQAppInterface, paramMessageForShortVideo);
+    if (paramMessageForShortVideo.videoAttr == 1) {}
+    for (;;)
+    {
+      this.c = bool;
+      paramQQAppInterface = (alto)paramQQAppInterface.getManager(51);
+      if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = a(paramQQAppInterface.getApp()) + "xydata.json";
-        awny.a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete, parseConfig " + paramQQAppInterface);
+        paramQQAppInterface = paramQQAppInterface.e(String.valueOf(paramMessageForShortVideo.senderuin));
+        if (paramQQAppInterface != null) {
+          this.jdField_b_of_type_Boolean = paramQQAppInterface.isFriend();
         }
       }
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_b_of_type_Long = paramLong2;
+      return;
+      bool = false;
     }
-    while (!QLog.isColorLevel()) {
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder("doReport:");
+      ((StringBuilder)localObject).append("mMsgViewedInAIOTime=").append(this.jdField_a_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mMsgClickedTime=").append(this.jdField_b_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mViewNetType=").append(this.jdField_a_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mClickNetType=").append(this.jdField_b_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mAutoDownload=").append(this.jdField_a_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsFriend=").append(this.jdField_b_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsHotVideo=").append(this.c).append("|");
+      QLog.i("ShortVideoPredictionEvaluator", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    ((HashMap)localObject).put("viewed_time", String.valueOf(this.jdField_a_of_type_Long));
+    ((HashMap)localObject).put("click_time", String.valueOf(this.jdField_b_of_type_Long));
+    ((HashMap)localObject).put("view_net", String.valueOf(this.jdField_a_of_type_Int));
+    ((HashMap)localObject).put("click_net", String.valueOf(this.jdField_b_of_type_Int));
+    ((HashMap)localObject).put("auto_download", String.valueOf(this.jdField_a_of_type_Boolean));
+    ((HashMap)localObject).put("is_friend", String.valueOf(this.jdField_b_of_type_Boolean));
+    ((HashMap)localObject).put("is_hot", String.valueOf(this.c));
+    if (this.jdField_b_of_type_Long > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      azri.a(BaseApplication.getContext()).a(null, "actVideoMessageTime", bool, 0L, 0L, (HashMap)localObject, "");
       return;
     }
-    QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete failed, errorCode = " + paramInt);
   }
   
-  public static boolean a(long paramLong)
+  public void a(long paramLong)
   {
-    return (paramLong == awmr.i) || (paramLong == awmr.j);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    if ("cardWZ.zip".equals(paramString))
+    if (this.jdField_b_of_type_Long == 0L)
     {
-      String str = a(paramContext);
-      paramContext = new File(str, "xydata.json");
-      if (awny.jdField_a_of_type_Awny == null) {
-        awny.a(paramContext.getAbsolutePath());
-      }
-      if (awny.jdField_a_of_type_Awny != null)
-      {
-        paramContext = new File(str, "logo.png");
-        paramString = new File(str, "bgImage.jpg");
-        Object localObject = new File(str, "shimmer_mask.png");
-        File localFile1 = new File(str, "logo_bg.png");
-        File localFile2 = new File(str, "font_chs.tff");
-        File localFile3 = new File(str, "font_num.tff");
-        File localFile4 = new File(str, "addIcon.png");
-        int i;
-        if ((paramContext.exists()) && (paramString.exists()) && (((File)localObject).exists()) && (localFile1.exists()) && (localFile2.exists()) && (localFile3.exists()) && (localFile4.exists()))
-        {
-          bool1 = true;
-          localObject = awny.jdField_a_of_type_Awny;
-          if (((awny)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) {
-            break label338;
-          }
-          i = 0;
-          label207:
-          bool2 = bool1;
-          if (i >= ((awny)localObject).jdField_a_of_type_AndroidUtilSparseArray.size()) {
-            break label341;
-          }
-          paramContext = (awnz)((awny)localObject).jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-          bool2 = bool1;
-          if (paramContext.a != null)
-          {
-            bool2 = bool1;
-            if (!TextUtils.isEmpty(paramContext.a.a))
-            {
-              paramString = paramContext.a.a;
-              paramContext = paramString;
-              if (paramString.contains("/")) {
-                paramContext = paramString.substring(paramString.lastIndexOf("/"));
-              }
-              paramContext = new File(str, paramContext);
-              if ((!bool1) || (!paramContext.exists())) {
-                break label333;
-              }
-            }
-          }
-        }
-        label333:
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          bool2 = bool1;
-          i += 1;
-          bool1 = bool2;
-          break label207;
-          bool1 = false;
-          break;
-        }
-      }
+      this.jdField_b_of_type_Long = paramLong;
+      this.jdField_b_of_type_Int = bdin.a(BaseApplication.getContext());
     }
-    label338:
-    boolean bool2 = false;
-    label341:
-    return bool2;
   }
 }
 

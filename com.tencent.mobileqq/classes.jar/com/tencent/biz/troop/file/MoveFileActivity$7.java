@@ -1,7 +1,7 @@
 package com.tencent.biz.troop.file;
 
 import android.widget.EditText;
-import bhoc;
+import bhsj;
 
 class MoveFileActivity$7
   implements Runnable
@@ -10,7 +10,7 @@ class MoveFileActivity$7
   
   public void run()
   {
-    bhoc.a(this.a);
+    bhsj.a(this.a);
   }
 }
 

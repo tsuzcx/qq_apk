@@ -1,20 +1,26 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class aimg
-  extends avqu
+  implements Animation.AnimationListener
 {
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public aimg(CountryActivity paramCountryActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      aimj.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Aimm.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

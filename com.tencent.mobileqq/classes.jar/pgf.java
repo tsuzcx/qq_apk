@@ -17,9 +17,9 @@ import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoRspInfo;
 public class pgf
   extends pgp
 {
-  public pgf(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pgf(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     if (QLog.isColorLevel()) {
       QLog.d("KingShareReadInjoyModule", 2, "construct!");
     }

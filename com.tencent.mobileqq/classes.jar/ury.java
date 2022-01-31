@@ -1,17 +1,22 @@
-import com.tencent.image.URLDrawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public class ury
-  implements ura
+class ury
+  extends Job<Object, Object, Object>
 {
-  public void a(int paramInt)
+  ury(urx paramurx, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    URLDrawable.clearMemoryCache();
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    wxe.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Urx.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 

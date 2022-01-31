@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import apwx;
-import aqao;
+import aqbg;
+import aqex;
 import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ class ExtendFriendSearchFragment$3
     ExtendFriendSearchFragment localExtendFriendSearchFragment;
     if ((this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) && (this.this$0.isAdded()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendMultiLinesTagsView != null))
     {
-      List localList = this.this$0.jdField_a_of_type_Apwx.a().a();
+      List localList = this.this$0.jdField_a_of_type_Aqbg.a().a();
       this.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendMultiLinesTagsView.setSearchTags((ArrayList)localList);
       localExtendFriendSearchFragment = this.this$0;
       if (localList.size() <= 0) {

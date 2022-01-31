@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MiniAppShowInfoEntity
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String appId;
   public String appName;
   public String desc;

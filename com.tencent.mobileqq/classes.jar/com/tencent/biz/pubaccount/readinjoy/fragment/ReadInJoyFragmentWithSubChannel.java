@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Constants.LogoutReason;
@@ -47,7 +47,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends rpj>
   public void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
-    if ((bjxj.i()) && (this.jdField_a_of_type_Nwu != null)) {
+    if ((bkbq.i()) && (this.jdField_a_of_type_Nwu != null)) {
       this.jdField_a_of_type_Nwu.a(paramLogoutReason);
     }
   }
@@ -105,7 +105,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends rpj>
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (bjxj.C(getActivity().getAppRuntime()) == 0) {}
+    if (bkbq.C(getActivity().getAppRuntime()) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;

@@ -1,24 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
-class aiay
-  extends alxa
+public class aiay
+  implements aien
 {
-  aiay(aiak paramaiak) {}
+  public aiay(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
-    }
-    this.a.e();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
-    }
-    this.a.g();
+    this.a.a.a(paramMotionEvent);
   }
 }
 

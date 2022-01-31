@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
 
-final class bkfi
-  implements bevo
+public class bkfi
+  extends ApolloLottieAnim
 {
-  bkfi(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  private Downloader a;
   
-  public void a(int paramInt)
+  public bkfi(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramInt == 2) {
-      arni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-    }
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bkfj(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
   }
 }
 

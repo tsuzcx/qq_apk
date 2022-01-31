@@ -1,7 +1,21 @@
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+
 public class agwk
+  implements aepd
 {
-  public String a = null;
-  public String b = null;
+  public agwk(TroopChatPie paramTroopChatPie) {}
+  
+  public void a(ahan paramahan)
+  {
+    ((atpl)this.a.a(33)).a(1, paramahan);
+    ((afgf)this.a.a(43)).b(1, paramahan);
+  }
+  
+  public void b(ahan paramahan)
+  {
+    ((atpl)this.a.a(33)).b(1, paramahan);
+    ((afgf)this.a.a(43)).a(1, paramahan);
+  }
 }
 
 

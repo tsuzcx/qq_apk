@@ -1,25 +1,8 @@
-import android.support.annotation.NonNull;
-
-public class wlz
-  extends uhw<wli, uzs>
+public abstract interface wlz
 {
-  public wlz(wli paramwli)
-  {
-    super(paramwli);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(@NonNull wli paramwli, @NonNull uzs paramuzs)
-  {
-    wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuzs);
-    wli.a(paramwli, paramuzs.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzs.class;
-  }
-  
-  public void b(@NonNull wli paramwli, @NonNull uzs paramuzs) {}
+  public abstract void b(boolean paramBoolean);
 }
 
 

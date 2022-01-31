@@ -1,58 +1,79 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
-public class axly
-  extends Handler
+class axly
+  extends axlr
 {
-  public axly(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  axly(axlx paramaxlx, axma paramaxma, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
-    }
-    switch (paramMessage.what)
+    ArraySet localArraySet = new ArraySet();
+    ArrayList localArrayList = new ArrayList();
+    if ("QQCircleRedCircle".equals(paramString))
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
+      QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle updateNumMsg");
+      if (paramList != null)
       {
-        do
+        paramString = paramList.iterator();
+        while (paramString.hasNext())
         {
-          do
+          paramList = (NumRedMsg.NumMsgBusi)paramString.next();
+          if ((paramList != null) && (paramList.str_ext.get() != null)) {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject(paramList.str_ext.get());
+              localArraySet.add(localJSONObject.optString("_red_ext_uin"));
+              long l = axlx.a(this.jdField_a_of_type_Axlx);
+              if (l > 0L) {
+                try
+                {
+                  if (Long.parseLong(localJSONObject.optString("_red_ext_feed_time")) < axlx.a(this.jdField_a_of_type_Axlx))
+                  {
+                    localArrayList.add(Long.valueOf(paramList.ui64_msgid.get()));
+                    axlx.a(this.jdField_a_of_type_Axlx, 140000, (int)paramList.ui64_msgid.get(), 3);
+                  }
+                }
+                catch (Exception paramList)
+                {
+                  paramList.printStackTrace();
+                  QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle ", paramList);
+                }
+              }
+            }
+            catch (Exception paramList)
+            {
+              paramList.printStackTrace();
+              QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle ", paramList);
+            }
+          }
+        }
+        paramString = new ArrayList(localArraySet);
+        if (this.jdField_a_of_type_Axma != null)
+        {
+          this.jdField_a_of_type_Axma.a(paramString, this.b);
+          QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle listener returns successfully: " + paramString.size() + ", num = " + this.b);
+        }
+        if (axlx.a(this.jdField_a_of_type_Axlx) > 0L)
+        {
+          axlx.a(this.jdField_a_of_type_Axlx, 0L);
+          if (localArrayList.size() > 0)
           {
-            return;
-            CameraCaptureButtonLayout.c(this.a);
-            return;
-          } while (CameraCaptureButtonLayout.a(this.a) == null);
-          CameraCaptureButtonLayout.a(this.a).b();
-          return;
-        } while (!this.a.a.get());
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).c();
+            paramString = this.jdField_a_of_type_Axlx.a("140000");
+            axlx.a(this.jdField_a_of_type_Axlx, paramString, 9, false, null, localArrayList, "");
+            QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle updateNumMsg updateMsgId: " + localArrayList);
+          }
         }
-        this.a.a.set(false);
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).a();
-        }
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      CameraCaptureButtonLayout.e(this.a);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
-      return;
+      }
     }
-    this.a.b();
   }
 }
 

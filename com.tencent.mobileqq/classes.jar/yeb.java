@@ -1,89 +1,23 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class yeb
+  implements ylh
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private String b;
+  yeb(ydw paramydw) {}
   
-  public COMM.StCommonExt a()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
+  public void a() {}
   
-  public String a()
+  public void a(AnimationDrawable paramAnimationDrawable)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(COMM.StCommonExt paramStCommonExt)
-  {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String b()
-  {
-    if (this.b == null) {
-      this.b = bczr.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
+    if (ydw.g(this.a) != null) {
+      ydw.m(this.a).runOnUiThread(new DetailBaseAdapter.4.1(this, paramAnimationDrawable));
     }
-    return this.b;
   }
   
-  public void b(String paramString)
-  {
-    if (paramString != null) {
-      bczr.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
-    }
-    this.b = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 4;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Int == 3;
-  }
+  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 

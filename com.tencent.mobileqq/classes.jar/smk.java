@@ -42,7 +42,7 @@ public class smk
   
   static
   {
-    jdField_b_of_type_JavaLangString = "QQ/8.3.3 Android/0.17 Android/" + Build.VERSION.RELEASE;
+    jdField_b_of_type_JavaLangString = "QQ/8.3.5 Android/0.17 Android/" + Build.VERSION.RELEASE;
   }
   
   public static int a(int paramInt)
@@ -112,13 +112,13 @@ public class smk
         localObject1 = Uri.parse(paramString).getQueryParameter("v_bid");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          Object localObject2 = befm.a(paramString);
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((befn)localObject2).jdField_b_of_type_JavaLangString)))
+          Object localObject2 = bejv.a(paramString);
+          if ((localObject2 != null) && (!TextUtils.isEmpty(((bejw)localObject2).jdField_b_of_type_JavaLangString)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ViolaAccessHelper", 2, "load offline想 data cache on loadRes");
             }
-            return ((befn)localObject2).jdField_b_of_type_JavaLangString;
+            return ((bejw)localObject2).jdField_b_of_type_JavaLangString;
           }
           try
           {
@@ -172,7 +172,7 @@ public class smk
   
   public static String a(AppRuntime paramAppRuntime)
   {
-    if (bjxj.j(paramAppRuntime)) {
+    if (bkbq.j(paramAppRuntime)) {
       return "http://viola.qq.com/js/messageBox.js?_rij_violaUrl=1&v_tid=2&v_bundleName=messageBox&statusColor=1&support_night=1";
     }
     return "http://viola.qq.com/js/messageBox.js?_rij_violaUrl=1&v_tid=6&v_bundleName=messageBox&v_bid=3740&statusColor=1&support_night=1";
@@ -359,7 +359,7 @@ public class smk
     {
       try
       {
-        ((JSONObject)localObject2).put("autoPlayDisable", bjxj.h());
+        ((JSONObject)localObject2).put("autoPlayDisable", bkbq.h());
         i = j;
       }
       catch (JSONException localJSONException)
@@ -490,7 +490,7 @@ public class smk
         paramString2 = "&from_splash_activity=0";
         continue;
         label387:
-        adky.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class);
+        adpn.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class);
       }
       label405:
       if ((paramBundle == null) || (!paramBundle.containsKey("requestCode")) || (!(paramContext instanceof Activity))) {
@@ -500,7 +500,7 @@ public class smk
         break label476;
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      adky.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class, paramBundle.getInt("requestCode", -1));
+      adpn.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class, paramBundle.getInt("requestCode", -1));
       ((Activity)paramContext).overridePendingTransition(2130772010, 0);
       return;
       label476:
@@ -511,7 +511,7 @@ public class smk
         break label536;
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      adky.a(paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class);
+      adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class);
       ((Activity)paramContext).overridePendingTransition(2130772010, 0);
       return;
       label536:
@@ -542,7 +542,7 @@ public class smk
       if ((paramBundle == null) || (!paramBundle.containsKey("requestCode")) || (!(paramContext instanceof Activity))) {
         break label387;
       }
-      adky.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class, paramBundle.getInt("requestCode", -1));
+      adpn.a((Activity)paramContext, localIntent, PublicTransFragmentActivity.class, ViolaFragment.class, paramBundle.getInt("requestCode", -1));
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -901,7 +901,7 @@ public class smk
   
   public static boolean a()
   {
-    return bjxj.q(ors.a());
+    return bkbq.q(ors.a());
   }
   
   private static boolean a(Context paramContext)
@@ -929,14 +929,14 @@ public class smk
             if (a()) {
               break;
             }
-            a(paramContext, alpo.a(2131716847));
+            a(paramContext, alud.a(2131716859));
           } while (!QLog.isColorLevel());
           QLog.d("ViolaAccessHelper", 2, "isViolaPermit checkWhiteConfig is false");
           return false;
           if (c()) {
             break;
           }
-          a(paramContext, alpo.a(2131716849));
+          a(paramContext, alud.a(2131716861));
         } while (!QLog.isColorLevel());
         QLog.d("ViolaAccessHelper", 2, "isViolaPermit checkSO is false");
         return false;
@@ -951,7 +951,7 @@ public class smk
       if (new File(str).exists()) {
         break;
       }
-      a(paramContext, alpo.a(2131716848));
+      a(paramContext, alud.a(2131716860));
       if (QLog.isColorLevel()) {
         QLog.d("ViolaAccessHelper", 2, "isViolaPermit viola.js is false");
       }
@@ -1041,7 +1041,7 @@ public class smk
               return true;
             }
             localObject = ((String)localObject).split("\\.");
-            String[] arrayOfString = "8.3.3".split("\\.");
+            String[] arrayOfString = "8.3.5".split("\\.");
             if (Integer.valueOf(localObject[0]).intValue() < Integer.valueOf(arrayOfString[0]).intValue()) {
               return true;
             }

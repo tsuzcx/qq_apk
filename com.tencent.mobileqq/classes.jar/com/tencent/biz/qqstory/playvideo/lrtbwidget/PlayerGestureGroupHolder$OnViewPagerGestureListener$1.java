@@ -2,18 +2,18 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
-import vom;
-import voo;
+import vsv;
+import vsx;
 
 public class PlayerGestureGroupHolder$OnViewPagerGestureListener$1
   implements Runnable
 {
-  public PlayerGestureGroupHolder$OnViewPagerGestureListener$1(voo paramvoo, AnimationDrawable paramAnimationDrawable) {}
+  public PlayerGestureGroupHolder$OnViewPagerGestureListener$1(vsx paramvsx, AnimationDrawable paramAnimationDrawable) {}
   
   public void run()
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_Voo.a.a.setVisibility(8);
+    this.jdField_a_of_type_Vsx.a.a.setVisibility(8);
   }
 }
 

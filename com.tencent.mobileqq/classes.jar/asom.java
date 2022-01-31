@@ -1,93 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class asom
-  extends Handler
+  implements View.OnClickListener
 {
-  public void handleMessage(Message paramMessage)
+  public asom(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    asol localasol = (asol)paramMessage.obj;
-    if (localasol == null) {}
-    label277:
-    label299:
-    label322:
-    label344:
-    label377:
-    label380:
-    label381:
-    for (;;)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+      aahi.a(akwd.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bkjb.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    }
+    try
+    {
+      asnm.a(102, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
       return;
-      HiBoomTextView localHiBoomTextView = (HiBoomTextView)asol.a(localasol).get();
-      if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null)) {
-        switch (paramMessage.what)
-        {
-        case 258: 
-        default: 
-          return;
-        case 257: 
-          if ((localHiBoomTextView.getVisibility() == 0) && (HiBoomTextView.jdField_a_of_type_AndroidOsHandler != null))
-          {
-            HiBoomTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(258, asol.a(localHiBoomTextView)).sendToTarget();
-            return;
-          }
-          break;
-        case 259: 
-          if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null) && (localHiBoomTextView.getVisibility() == 0) && (localasol != null) && (HiBoomTextView.a(localHiBoomTextView) == asol.a(localasol)) && (localHiBoomTextView.jdField_a_of_type_Asok.a() == asol.a(localasol)) && (HiBoomTextView.a(localHiBoomTextView).currentFrameIndex() == asol.b(localasol)) && (HiBoomTextView.a(localHiBoomTextView) != null) && (HiBoomTextView.a(localHiBoomTextView).equals(asol.a(localasol))))
-          {
-            localHiBoomTextView.invalidate();
-            boolean bool;
-            int i;
-            if ((HiBoomTextView.b(localHiBoomTextView)) && (!HiBoomTextView.c(localHiBoomTextView)) && (HiBoomTextView.c()))
-            {
-              bool = true;
-              if (!bool) {
-                break label380;
-              }
-              paramMessage = HiBoomTextView.a(localHiBoomTextView);
-              if (!paramMessage.nextFrame()) {
-                break label344;
-              }
-              i = paramMessage.getFrameDelay();
-              long l = System.currentTimeMillis() - asol.b(localasol);
-              if (l <= 0L) {
-                break label377;
-              }
-              i = (int)(i - l);
-              if (i > 1) {
-                break label322;
-              }
-              sendMessage(obtainMessage(257, asol.a(localHiBoomTextView)));
-              bool = true;
-            }
-            for (;;)
-            {
-              if (localHiBoomTextView.d()) {
-                break label381;
-              }
-              HiBoomTextView.b(localHiBoomTextView, bool);
-              return;
-              bool = false;
-              break;
-              sendMessageDelayed(obtainMessage(257, asol.a(localHiBoomTextView)), i);
-              break label299;
-              HiBoomTextView.a(localHiBoomTextView, true);
-              HiBoomTextView.b(localHiBoomTextView, false);
-              if (localHiBoomTextView.d()) {
-                localHiBoomTextView.a(true);
-              }
-              bool = false;
-              continue;
-              break label277;
-            }
-          }
-          break;
-        }
-      }
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }

@@ -1,40 +1,57 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class axkh
-  implements bapx
+public class axkh
+  extends QIPCModule
 {
-  public void onResp(baqw parambaqw)
+  private static axkh jdField_a_of_type_Axkh;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  private axkh(String paramString)
   {
-    Object localObject = (axkk)parambaqw.jdField_a_of_type_Baqv.a();
-    lek.c("CaptureVideoFilterManager", "download file call back. file = " + ((axkk)localObject).a);
-    if (parambaqw.jdField_a_of_type_Int != 0)
-    {
-      lek.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambaqw.b);
-      return;
+    super(paramString);
+  }
+  
+  public static axkh a()
+  {
+    if (jdField_a_of_type_Axkh != null) {
+      return jdField_a_of_type_Axkh;
     }
-    if (!((axkk)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      lek.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
-      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-      return;
-    }
-    lek.c("CaptureVideoFilterManager", "download file successed.");
-    try
-    {
-      localObject = axkd.a();
-      bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
-      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-      return;
-    }
-    catch (IOException parambaqw)
-    {
-      parambaqw.printStackTrace();
-      lek.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
+      if (jdField_a_of_type_Axkh == null) {
+        jdField_a_of_type_Axkh = new axkh("REAL_NAME");
+      }
+      axkh localaxkh = jdField_a_of_type_Axkh;
+      return localaxkh;
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RealName", 2, "onCall s: " + paramString);
+    }
+    if (paramBundle == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        paramInt = paramBundle.getInt("result");
+        if (QLog.isColorLevel()) {
+          QLog.i("RealName", 2, "result is : " + paramInt);
+        }
+      } while (paramInt == 0);
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramString == null);
+    ((alqf)paramString.a(4)).e();
+    return null;
+  }
 }
 
 

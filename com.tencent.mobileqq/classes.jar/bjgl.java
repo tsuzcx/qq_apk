@@ -1,29 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-public final class bjgl
-  implements Parcelable.Creator<CoverCacheData.PackageInfo>
+public class bjgl
+  implements View.OnClickListener
 {
-  public CoverCacheData.PackageInfo a(Parcel paramParcel)
-  {
-    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
-    if (paramParcel != null)
-    {
-      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localPackageInfo.d = paramParcel.readString();
-    }
-    return localPackageInfo;
-  }
+  public bjgl(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public CoverCacheData.PackageInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return null;
+    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
+    {
+      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
+      QzoneVerticalVideoDownloadActivity.access$400(this.a);
+    }
   }
 }
 

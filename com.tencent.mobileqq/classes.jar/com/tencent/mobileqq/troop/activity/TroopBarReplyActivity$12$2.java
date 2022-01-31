@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bbga;
+import bbkj;
 
 public class TroopBarReplyActivity$12$2
   implements Runnable
 {
-  public TroopBarReplyActivity$12$2(bbga parambbga) {}
+  public TroopBarReplyActivity$12$2(bbkj parambbkj) {}
   
   public void run()
   {

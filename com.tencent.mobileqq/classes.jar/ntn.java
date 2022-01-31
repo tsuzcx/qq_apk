@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 public class ntn
-  extends aofy<ntm>
+  extends aokh<ntm>
 {
   public int a()
   {
@@ -35,13 +35,13 @@ public class ntn
   }
   
   @Nullable
-  public ntm a(aogf[] paramArrayOfaogf)
+  public ntm a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
     }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return ntm.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return ntm.a(paramArrayOfaoko);
     }
     return null;
   }

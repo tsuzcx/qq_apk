@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adid
-  implements View.OnClickListener
+class adid
+  implements DialogInterface.OnClickListener
 {
-  public adid(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  adid(adic paramadic) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdoi.a(this.a, "settings");
+    if ((paramInt == 1) && (this.a.a(adic.a(this.a)))) {}
   }
 }
 

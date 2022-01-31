@@ -1,15 +1,28 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class aeho
-  extends bhnr
+  extends amdd
 {
-  public aeho(VisitorsActivity paramVisitorsActivity) {}
+  public aeho(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    this.a.e.setVisibility(0);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131720220), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131720217), 0).a();
   }
 }
 

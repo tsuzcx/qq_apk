@@ -1,8 +1,15 @@
-public class yfq
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_COMM.COMM.StCommonExt;
+
+class yfq
+  implements zac<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public static String a = "Initialed";
-  public static String b = "Loading";
-  public static String c = "Done";
+  yfq(yfp paramyfp, COMM.StCommonExt paramStCommonExt) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  {
+    yfp.a(this.jdField_a_of_type_Yfp, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
+  }
 }
 
 

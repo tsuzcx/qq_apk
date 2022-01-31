@@ -1,29 +1,16 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agio
-  extends agij
+class agio
+  implements DialogInterface.OnClickListener
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  agio(aghx paramaghx) {}
   
-  public agio(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
+    if (this.a.a != null) {
+      this.a.a.o();
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
   }
 }
 

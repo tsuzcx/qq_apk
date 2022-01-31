@@ -1,6 +1,13 @@
-public abstract interface xnm
+import java.io.File;
+import java.io.FilenameFilter;
+
+public final class xnm
+  implements FilenameFilter
 {
-  public abstract void a(xnr paramxnr, boolean paramBoolean);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.endsWith(".mp4");
+  }
 }
 
 

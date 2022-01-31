@@ -1,27 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
 
-public class twj
-  extends RecyclerView.OnScrollListener
+public final class twj
+  implements Parcelable.Creator<QCircleFakeFeed>
 {
-  public twj(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public QCircleFakeFeed a(Parcel paramParcel)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      abqw.a().a("qcircle_personal_detail_page", false);
-      return;
-    }
-    abqw.a().a("qcircle_personal_detail_page");
+    return new QCircleFakeFeed(paramParcel);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public QCircleFakeFeed[] a(int paramInt)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    QCirclePersonalDetailFragment.a(this.a, paramInt2);
+    return new QCircleFakeFeed[paramInt];
   }
 }
 

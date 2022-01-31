@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aemb;
-import ammj;
+import aeqq;
+import amqy;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +11,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import bdpt;
+import bduc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -65,7 +65,7 @@ public class ThemeBackground
     String str;
     if ((!TextUtils.isEmpty(paramString1)) && ("theme_bg_aio_path".equals(paramString1)))
     {
-      str = aemb.a(paramContext, paramString2, 0).getString("chat_uniform_bg", "null");
+      str = aeqq.a(paramContext, paramString2, 0).getString("chat_uniform_bg", "null");
       if (!TextUtils.isEmpty(str)) {
         break label41;
       }
@@ -100,7 +100,7 @@ public class ThemeBackground
         String str1 = arrayOfString[paramInt];
         String str2 = paramContext.getString(str1, null);
         if ((str2 != null) && (str2.contains("custom_background/" + paramString + "/"))) {
-          localEditor.putString(str1, str2.replace("custom_background/" + paramString + "/", "custom_background/" + ammj.a(paramString) + "/"));
+          localEditor.putString(str1, str2.replace("custom_background/" + paramString + "/", "custom_background/" + amqy.a(paramString) + "/"));
         }
         paramInt += 1;
       }
@@ -483,15 +483,15 @@ public class ThemeBackground
     //   812: putfield 368	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   815: aload 9
     //   817: aload 11
-    //   819: invokestatic 373	bcwc:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbcwd;
+    //   819: invokestatic 373	bdal:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbdam;
     //   822: astore 8
     //   824: aload 8
-    //   826: getfield 378	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   826: getfield 378	bdam:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   829: astore_2
     //   830: aload_2
     //   831: ifnull +11 -> 842
     //   834: aload 8
-    //   836: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   836: getfield 380	bdam:jdField_a_of_type_Int	I
     //   839: ifeq +757 -> 1596
     //   842: new 53	java/lang/StringBuilder
     //   845: dup
@@ -507,7 +507,7 @@ public class ThemeBackground
     //   869: ldc_w 384
     //   872: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   875: aload 8
-    //   877: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   877: getfield 380	bdam:jdField_a_of_type_Int	I
     //   880: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   883: ldc_w 386
     //   886: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -526,8 +526,8 @@ public class ThemeBackground
     //   914: new 388	java/util/HashMap
     //   917: dup
     //   918: invokespecial 389	java/util/HashMap:<init>	()V
-    //   921: astore 13
-    //   923: aload 13
+    //   921: astore 12
+    //   923: aload 12
     //   925: ldc_w 391
     //   928: new 53	java/lang/StringBuilder
     //   931: dup
@@ -535,45 +535,45 @@ public class ThemeBackground
     //   935: ldc_w 393
     //   938: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   941: aload 8
-    //   943: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   943: getfield 380	bdam:jdField_a_of_type_Int	I
     //   946: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   949: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   952: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   955: pop
-    //   956: aload 13
+    //   956: aload 12
     //   958: ldc_w 399
     //   961: aload_1
     //   962: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   965: pop
-    //   966: aload 13
+    //   966: aload 12
     //   968: ldc_w 401
     //   971: invokestatic 404	com/tencent/mobileqq/theme/ThemeUtil:getCurrentThemeId	()Ljava/lang/String;
     //   974: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   977: pop
     //   978: aload_0
-    //   979: invokestatic 409	azmz:a	(Landroid/content/Context;)Lazmz;
-    //   982: astore 12
+    //   979: invokestatic 409	azri:a	(Landroid/content/Context;)Lazri;
+    //   982: astore 14
     //   984: getstatic 413	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   987: invokevirtual 417	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   990: checkcast 419	com/tencent/mobileqq/app/QQAppInterface
     //   993: invokevirtual 422	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   996: astore 14
+    //   996: astore 13
     //   998: aload_2
     //   999: ifnull +794 -> 1793
     //   1002: iconst_1
     //   1003: istore 6
-    //   1005: aload 12
-    //   1007: aload 14
+    //   1005: aload 14
+    //   1007: aload 13
     //   1009: ldc_w 424
     //   1012: iload 6
     //   1014: lconst_1
     //   1015: lconst_0
-    //   1016: aload 13
+    //   1016: aload 12
     //   1018: ldc 200
     //   1020: iconst_0
-    //   1021: invokevirtual 427	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1021: invokevirtual 427	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1024: aload 8
-    //   1026: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   1026: getfield 380	bdam:jdField_a_of_type_Int	I
     //   1029: iconst_1
     //   1030: if_icmpne +1797 -> 2827
     //   1033: iconst_2
@@ -586,10 +586,10 @@ public class ThemeBackground
     //   1047: putfield 430	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   1050: aload 9
     //   1052: aload 11
-    //   1054: invokestatic 373	bcwc:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbcwd;
+    //   1054: invokestatic 373	bdal:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbdam;
     //   1057: astore 8
     //   1059: aload 8
-    //   1061: getfield 378	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1061: getfield 378	bdam:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   1064: astore_2
     //   1065: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1068: ifne +7 -> 1075
@@ -625,12 +625,12 @@ public class ThemeBackground
     //   1138: ldc_w 438
     //   1141: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1144: aload 8
-    //   1146: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   1146: getfield 380	bdam:jdField_a_of_type_Int	I
     //   1149: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1152: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1155: invokestatic 198	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1158: aload 8
-    //   1160: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   1160: getfield 380	bdam:jdField_a_of_type_Int	I
     //   1163: istore 5
     //   1165: iload 5
     //   1167: iconst_1
@@ -647,7 +647,7 @@ public class ThemeBackground
     //   1192: ldc_w 440
     //   1195: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1198: aload 8
-    //   1200: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   1200: getfield 380	bdam:jdField_a_of_type_Int	I
     //   1203: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1206: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1209: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -658,19 +658,19 @@ public class ThemeBackground
     //   1221: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1224: pop
     //   1225: aload_0
-    //   1226: invokestatic 409	azmz:a	(Landroid/content/Context;)Lazmz;
-    //   1229: astore 12
+    //   1226: invokestatic 409	azri:a	(Landroid/content/Context;)Lazri;
+    //   1229: astore 8
     //   1231: getstatic 413	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   1234: invokevirtual 417	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   1237: checkcast 419	com/tencent/mobileqq/app/QQAppInterface
     //   1240: invokevirtual 422	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   1243: astore 8
+    //   1243: astore 12
     //   1245: aload_2
     //   1246: ifnull +568 -> 1814
     //   1249: iconst_1
     //   1250: istore 6
-    //   1252: aload 12
-    //   1254: aload 8
+    //   1252: aload 8
+    //   1254: aload 12
     //   1256: ldc_w 424
     //   1259: iload 6
     //   1261: lconst_1
@@ -678,7 +678,7 @@ public class ThemeBackground
     //   1263: aload 11
     //   1265: ldc 200
     //   1267: iconst_0
-    //   1268: invokevirtual 427	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1268: invokevirtual 427	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1271: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1274: ifeq +61 -> 1335
     //   1277: new 53	java/lang/StringBuilder
@@ -810,7 +810,7 @@ public class ThemeBackground
     //   1550: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1553: pop
     //   1554: aload_0
-    //   1555: invokestatic 409	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1555: invokestatic 409	azri:a	(Landroid/content/Context;)Lazri;
     //   1558: getstatic 413	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   1561: invokevirtual 417	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   1564: checkcast 419	com/tencent/mobileqq/app/QQAppInterface
@@ -822,7 +822,7 @@ public class ThemeBackground
     //   1576: aload_2
     //   1577: ldc 200
     //   1579: iconst_0
-    //   1580: invokevirtual 427	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1580: invokevirtual 427	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1583: goto -194 -> 1389
     //   1586: astore_2
     //   1587: goto -198 -> 1389
@@ -845,7 +845,7 @@ public class ThemeBackground
     //   1629: ldc_w 384
     //   1632: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1635: aload 8
-    //   1637: getfield 380	bcwd:jdField_a_of_type_Int	I
+    //   1637: getfield 380	bdam:jdField_a_of_type_Int	I
     //   1640: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1643: ldc_w 386
     //   1646: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -898,7 +898,7 @@ public class ThemeBackground
     //   1747: invokevirtual 397	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1750: pop
     //   1751: aload_0
-    //   1752: invokestatic 409	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   1752: invokestatic 409	azri:a	(Landroid/content/Context;)Lazri;
     //   1755: getstatic 413	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   1758: invokevirtual 417	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   1761: checkcast 419	com/tencent/mobileqq/app/QQAppInterface
@@ -910,7 +910,7 @@ public class ThemeBackground
     //   1773: aload_2
     //   1774: ldc 200
     //   1776: iconst_0
-    //   1777: invokevirtual 427	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1777: invokevirtual 427	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1780: goto -391 -> 1389
     //   1783: astore_2
     //   1784: goto -395 -> 1389
@@ -936,14 +936,14 @@ public class ThemeBackground
     //   1825: new 279	java/io/File
     //   1828: dup
     //   1829: aload 8
-    //   1831: invokestatic 467	bhlt:a	(Ljava/io/File;)Ljava/lang/String;
+    //   1831: invokestatic 467	bhqa:a	(Ljava/io/File;)Ljava/lang/String;
     //   1834: invokespecial 284	java/io/File:<init>	(Ljava/lang/String;)V
     //   1837: astore 11
     //   1839: aload 11
     //   1841: invokevirtual 287	java/io/File:exists	()Z
     //   1844: ifeq +326 -> 2170
     //   1847: aload_0
-    //   1848: invokestatic 470	bhlt:a	(Landroid/content/Context;)Z
+    //   1848: invokestatic 470	bhqa:a	(Landroid/content/Context;)Z
     //   1851: istore 6
     //   1853: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1856: ifne +8 -> 1864
@@ -1056,7 +1056,7 @@ public class ThemeBackground
     //   2101: aload_2
     //   2102: astore 8
     //   2104: goto -108 -> 1996
-    //   2107: astore 8
+    //   2107: astore 10
     //   2109: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2112: ifne +7 -> 2119
     //   2115: aload_2
@@ -1066,14 +1066,14 @@ public class ThemeBackground
     //   2123: invokespecial 54	java/lang/StringBuilder:<init>	()V
     //   2126: ldc_w 485
     //   2129: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2132: astore 10
+    //   2132: astore 8
     //   2134: aload_2
     //   2135: ifnull +725 -> 2860
     //   2138: iconst_1
     //   2139: istore 6
     //   2141: ldc 27
     //   2143: iconst_2
-    //   2144: aload 10
+    //   2144: aload 8
     //   2146: iload 6
     //   2148: invokevirtual 222	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2151: ldc 234
@@ -1082,7 +1082,7 @@ public class ThemeBackground
     //   2158: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2161: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2164: invokestatic 198	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2167: aload 8
+    //   2167: aload 10
     //   2169: athrow
     //   2170: ldc 27
     //   2172: iconst_2
@@ -1100,16 +1100,16 @@ public class ThemeBackground
     //   2200: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2203: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   2206: goto +660 -> 2866
-    //   2209: new 492	apgf
+    //   2209: new 492	apko
     //   2212: dup
     //   2213: aload_0
     //   2214: invokevirtual 204	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   2217: aload_2
-    //   2218: invokespecial 493	apgf:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   2218: invokespecial 493	apko:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
     //   2221: astore_2
     //   2222: aload_2
     //   2223: bipush 48
-    //   2225: invokevirtual 497	apgf:setGravity	(I)V
+    //   2225: invokevirtual 497	apko:setGravity	(I)V
     //   2228: aload_3
     //   2229: aload_2
     //   2230: putfield 213	com/tencent/mobileqq/theme/diy/ThemeBackground:img	Landroid/graphics/drawable/Drawable;
@@ -1423,16 +1423,15 @@ public class ThemeBackground
     //   1820	10	8	localException1	java.lang.Exception
     //   1912	85	8	localObject2	Object
     //   2008	19	8	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   2047	56	8	localObject3	Object
-    //   2107	61	8	localObject4	Object
-    //   2331	322	8	localResData	ResData
-    //   46	2604	9	localObject5	Object
-    //   34	2493	10	localObject6	Object
+    //   2047	606	8	localObject3	Object
+    //   46	2604	9	localObject4	Object
+    //   34	473	10	localObject5	Object
+    //   2107	420	10	localObject6	Object
     //   305	1615	11	localObject7	Object
     //   889	773	12	localObject8	Object
     //   2822	1	12	localException2	java.lang.Exception
-    //   921	96	13	localHashMap	java.util.HashMap
-    //   996	12	14	str	String
+    //   996	12	13	str	String
+    //   982	24	14	localazri	azri
     // Exception table:
     //   from	to	target	type
     //   11	19	1458	finally
@@ -1692,7 +1691,7 @@ public class ThemeBackground
       getThemeBackground(paramContext, "theme_bg_setting_path_png", paramAppRuntime.getAccount(), localThemeBackground);
       if (localThemeBackground.img != null)
       {
-        localThemeBackground.img = new LayerDrawable(new Drawable[] { localThemeBackground.img, paramAppRuntime.getApplication().getApplicationContext().getResources().getDrawable(2130846929) });
+        localThemeBackground.img = new LayerDrawable(new Drawable[] { localThemeBackground.img, paramAppRuntime.getApplication().getApplicationContext().getResources().getDrawable(2130847002) });
         continue;
         getThemeBackground(paramContext, "theme_bg_message_path_png", paramAppRuntime.getAccount(), localThemeBackground);
         continue;
@@ -1716,8 +1715,8 @@ public class ThemeBackground
                 break;
               case 0: 
                 localThemeBackground.path = ThemeUtil.getAnimatePathByTag(1);
-                paramContext = paramContext.getResources().getDrawable(2130845566);
-                localThemeBackground.img = bdpt.a(paramAppRuntime, localThemeBackground.path, "-setting-", paramContext, new int[] { 1 }, paramString, null);
+                paramContext = paramContext.getResources().getDrawable(2130845638);
+                localThemeBackground.img = bduc.a(paramAppRuntime, localThemeBackground.path, "-setting-", paramContext, new int[] { 1 }, paramString, null);
                 break;
               case 1: 
               case 3: 
@@ -1725,8 +1724,8 @@ public class ThemeBackground
                 Bundle localBundle = new Bundle();
                 localBundle.putBoolean("key_use_rect", true);
                 localThemeBackground.path = ThemeUtil.getAnimatePathByTag(2);
-                paramContext = paramContext.getResources().getDrawable(2130838592);
-                localThemeBackground.img = bdpt.a(paramAppRuntime, localThemeBackground.path, "-conversation-", paramContext, bdpt.a, paramString, localBundle);
+                paramContext = paramContext.getResources().getDrawable(2130838593);
+                localThemeBackground.img = bduc.a(paramAppRuntime, localThemeBackground.path, "-conversation-", paramContext, bduc.a, paramString, localBundle);
               }
             }
           }

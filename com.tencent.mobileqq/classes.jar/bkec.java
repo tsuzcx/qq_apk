@@ -1,20 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class bkec
-  implements Parcelable.Creator<WadlParams>
+class bkec
+  implements View.OnTouchListener
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  bkec(bkeb parambkeb) {}
   
-  public WadlParams[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WadlParams[paramInt];
+    if (paramMotionEvent.getAction() == 1) {
+      bkeb.a(this.a);
+    }
+    return true;
   }
 }
 

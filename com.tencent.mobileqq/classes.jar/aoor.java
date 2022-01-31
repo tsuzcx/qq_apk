@@ -1,93 +1,119 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aoor
-  extends aofy<aooq>
 {
-  public static aooq a()
+  private static final String a;
+  private static final String b;
+  private static final String c;
+  private static final String d;
+  private static final String e;
+  private static final String f;
+  private static final String g = alud.a(2131707883);
+  private static final String h = alud.a(2131707880);
+  private static final String i = alud.a(2131707877);
+  private static final String j = alud.a(2131707881);
+  private static final String k = alud.a(2131707894);
+  private static final String l = alud.a(2131707886);
+  private static final String m = alud.a(2131707878);
+  private static final String n = alud.a(2131707882);
+  public int a;
+  public final aoos a;
+  public boolean a;
+  public final aoos b;
+  public final aoos c;
+  public final aoos d;
+  public final aoos e;
+  public final aoos f;
+  
+  static
   {
-    aooq localaooq2 = (aooq)aogj.a().a(493);
-    aooq localaooq1 = localaooq2;
-    if (localaooq2 == null) {
-      localaooq1 = new aooq();
-    }
-    return localaooq1;
+    jdField_a_of_type_JavaLangString = alud.a(2131707895);
+    jdField_b_of_type_JavaLangString = alud.a(2131707889);
+    jdField_c_of_type_JavaLangString = alud.a(2131707876);
+    jdField_d_of_type_JavaLangString = alud.a(2131707879);
+    jdField_e_of_type_JavaLangString = alud.a(2131707884);
+    jdField_f_of_type_JavaLangString = alud.a(2131707891);
   }
   
-  public int a()
+  public aoor()
   {
-    return 493;
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_Aoos = new aoos(jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
+    this.jdField_b_of_type_Aoos = new aoos(jdField_d_of_type_JavaLangString, jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString);
+    this.jdField_c_of_type_Aoos = new aoos(g, "", h);
+    this.jdField_d_of_type_Aoos = new aoos(i, "", j);
+    this.jdField_e_of_type_Aoos = new aoos(k, "", l);
+    this.jdField_f_of_type_Aoos = new aoos(m, "", n);
   }
   
-  @NonNull
-  public aooq a(int paramInt)
+  public static aoor a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aooq();
-  }
-  
-  @Nullable
-  public aooq a(aogf[] paramArrayOfaogf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    aoor localaoor = new aoor();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
+      int i2 = paramArrayOfaoko.length;
+      int i1 = 0;
+      if (i1 < i2)
+      {
+        Object localObject = paramArrayOfaoko[i1];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i1 += 1;
+          break;
+          localObject = ((aoko)localObject).jdField_a_of_type_JavaLangString;
+          try
+          {
+            JSONObject localJSONObject = new JSONObject((String)localObject);
+            localaoor.jdField_a_of_type_Boolean = localJSONObject.optBoolean("newFriendContactsBannerEnable", false);
+            localaoor.jdField_a_of_type_Int = localJSONObject.optInt("totalCount", 0);
+            a(localaoor.jdField_a_of_type_Aoos, localJSONObject.optJSONObject("unauthorized"), jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
+            a(localaoor.jdField_b_of_type_Aoos, localJSONObject.optJSONObject("unbound"), jdField_d_of_type_JavaLangString, jdField_e_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
+            a(localaoor.jdField_c_of_type_Aoos, localJSONObject.optJSONObject("contactsListUnauthorized"), g, "", h);
+            a(localaoor.jdField_d_of_type_Aoos, localJSONObject.optJSONObject("contactsListUnbinding"), i, "", j);
+            a(localaoor.jdField_e_of_type_Aoos, localJSONObject.optJSONObject("contactsListInactive"), k, "", l);
+            a(localaoor.jdField_f_of_type_Aoos, localJSONObject.optJSONObject("contactsListUnmatched"), m, "", n);
+            if (QLog.isColorLevel()) {
+              QLog.i("NewFriendContactGuideConfBean", 2, "parse: " + (String)localObject);
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              localThrowable.printStackTrace();
+            }
+          }
+        }
       }
-      return aooq.a(paramArrayOfaogf[0]);
     }
-    return null;
-  }
-  
-  public Class<aooq> a()
-  {
-    return aooq.class;
-  }
-  
-  public void a(int paramInt)
-  {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.i("NewFriendContactGuideConfBean", 2, "parse: " + localaoor);
     }
+    return localaoor;
   }
   
-  public void a(aooq paramaooq)
+  private static void a(aoos paramaoos, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaooq == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramaooq = paramaooq.toString();; paramaooq = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramaooq);
+    if (paramaoos == null) {
       return;
     }
+    if (paramJSONObject != null)
+    {
+      paramaoos.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title", paramString1);
+      paramaoos.jdField_b_of_type_JavaLangString = paramJSONObject.optString("subTitle", paramString2);
+      paramaoos.jdField_c_of_type_JavaLangString = paramJSONObject.optString("buttonTitle", paramString3);
+      return;
+    }
+    paramaoos.jdField_a_of_type_JavaLangString = paramString1;
+    paramaoos.jdField_b_of_type_JavaLangString = paramString2;
+    paramaoos.jdField_c_of_type_JavaLangString = paramString3;
   }
   
-  public int b()
+  public String toString()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "NewFriendContactGuideConfBean(" + this.jdField_a_of_type_Boolean + ", " + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_Aoos + ", " + this.jdField_b_of_type_Aoos + ", " + this.jdField_c_of_type_Aoos + ", " + this.jdField_d_of_type_Aoos + ", " + this.jdField_e_of_type_Aoos + ", " + this.jdField_f_of_type_Aoos + ")";
   }
 }
 

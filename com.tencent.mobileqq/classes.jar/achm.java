@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.17.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achm
-  implements DialogInterface.OnClickListener
+  implements agll
 {
-  public achm(ChatHistory paramChatHistory) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
-  }
+  public achm(BaseChatPie paramBaseChatPie) {}
 }
 
 

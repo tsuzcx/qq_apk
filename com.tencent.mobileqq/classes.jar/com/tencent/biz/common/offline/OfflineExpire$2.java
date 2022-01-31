@@ -1,6 +1,6 @@
 package com.tencent.biz.common.offline;
 
-import bavr;
+import bbaa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -22,7 +22,7 @@ public final class OfflineExpire$2
       QLog.i(ncc.a, 1, "app == null, download wont start");
       return;
     }
-    localObject = (bavr)((QQAppInterface)localObject).getManager(193);
+    localObject = (bbaa)((QQAppInterface)localObject).getManager(193);
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i = 0;
     label50:
@@ -43,7 +43,7 @@ public final class OfflineExpire$2
     label197:
     for (int j = 1;; j = 2)
     {
-      boolean bool = ((bavr)localObject).a(10066, "app", str1, k - i, str2, str3, j, 0, ncb.a(localncf.a.a), localncf);
+      boolean bool = ((bbaa)localObject).a(10066, "app", str1, k - i, str2, str3, j, 0, ncb.a(localncf.a.a), localncf);
       QLog.i(ncc.a, 1, "requestPreDownload bid=" + localncf.a.a + " re=" + bool);
       i += 1;
       break label50;

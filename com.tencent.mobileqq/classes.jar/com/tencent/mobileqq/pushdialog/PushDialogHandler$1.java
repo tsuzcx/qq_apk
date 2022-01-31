@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awul;
-import awut;
+import awyu;
+import awzc;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class PushDialogHandler$1
   implements Runnable
 {
-  public PushDialogHandler$1(awut paramawut, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
+  public PushDialogHandler$1(awzc paramawzc, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate != null)) {
-      ((awul)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
+      ((awyu)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
     }
   }
 }

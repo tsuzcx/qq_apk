@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbo;
+import anfx;
 
 public class QQARSession$1
   implements Runnable
 {
-  public QQARSession$1(anbo paramanbo) {}
+  public QQARSession$1(anfx paramanfx) {}
   
   public void run()
   {

@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
+import Wallet.AcsMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-class aeny
-  implements DialogInterface.OnClickListener
+public class aeny
+  implements View.OnClickListener
 {
-  aeny(aenv paramaenv) {}
+  public aeny(ReminderListFragment paramReminderListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (aenv.a(this.a) != null))
-    {
-      if (aenv.a(this.a) == 1) {
-        aenv.b(this.a, this.a.a);
-      }
+    paramView = (AcsMsg)paramView.getTag();
+    ReminderListFragment.a(this.a, paramView);
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
-    else {
-      return;
-    }
-    aenv.a(this.a, this.a.a, aenv.a(this.a).maskType);
   }
 }
 

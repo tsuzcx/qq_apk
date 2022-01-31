@@ -1,18 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
 
-public class afpu
-  implements bemn
+class afpu
+  implements DialogInterface.OnClickListener
 {
-  public afpu(LightVideoItemBuilder paramLightVideoItemBuilder, afpw paramafpw) {}
+  afpu(afps paramafps, ChatMessage paramChatMessage) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Afpw.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
+    acjm.b(this.jdField_a_of_type_Afps.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afps.b, this.jdField_a_of_type_Afps.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

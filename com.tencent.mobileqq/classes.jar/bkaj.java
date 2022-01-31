@@ -1,34 +1,34 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.biz.ui.TouchWebView;
+import cooperation.qzone.webviewwrapper.IWebviewListener;
 
 class bkaj
-  implements GLSurfaceView.EGLContextFactory
+  implements bkan
 {
-  private int jdField_a_of_type_Int = 12440;
+  bkaj(bkai parambkai, IWebviewListener paramIWebviewListener) {}
   
-  private bkaj(bkae parambkae) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void a()
   {
-    int i = this.jdField_a_of_type_Int;
-    bkae.a(this.jdField_a_of_type_Bkae, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
-    return bkae.a(this.jdField_a_of_type_Bkae);
+    if (bkai.a(this.jdField_a_of_type_Bkai) == null) {}
+    do
+    {
+      return;
+      if (bkai.a(this.jdField_a_of_type_Bkai).getVisibility() != 0) {
+        bkai.a(this.jdField_a_of_type_Bkai).setVisibility(0);
+      }
+    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
+      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkaj
  * JD-Core Version:    0.7.0.1
  */

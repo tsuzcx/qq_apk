@@ -1,42 +1,80 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.widget.ImageView;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class vus
-  extends QQUIEventReceiver<AbsVideoInfoWidget, vaa>
+  extends JobSegment<vtt, String>
 {
-  public vus(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
-  {
-    super(paramAbsVideoInfoWidget);
-  }
+  private vus(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull vaa paramvaa)
+  protected void a(JobContext paramJobContext, vtt paramvtt)
   {
-    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
+    wxe.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
+    if (this.a.jdField_a_of_type_Vtt.a())
     {
-      do
+      wxe.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
+      VideoViewVideoHolder.a(this.a, 2);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.a.jdField_a_of_type_Vwa.a(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.b.setVisibility(8);
+      notifyError(new ErrorMessage(0, "isLoadingData"));
+      return;
+    }
+    if (this.a.jdField_a_of_type_Vtt.b())
+    {
+      wxe.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Vtt.a());
+      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Vtt.a().errorCode);
+      VideoViewVideoHolder.a(this.a, false);
+      wxe.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
+      if (VideoViewVideoHolder.a(this.a) == 97000000)
       {
+        VideoViewVideoHolder.c(this.a, 4);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
         return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
-        paramvaa = paramvaa.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramvaa.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramvaa.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
+      }
+      VideoViewVideoHolder.c(this.a, 9);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
+      return;
+    }
+    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString))
+    {
+      paramJobContext = ((uvx)uwa.a(5)).b(this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString);
+      if (paramJobContext != null)
+      {
+        VideoViewVideoHolder.a(this.a, paramJobContext);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramvtt = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
+        if (!TextUtils.equals(this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString, paramvtt))
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString);
+          vls.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Vme);
+        }
+        wxe.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString });
+        VideoViewVideoHolder.c(this.a, 5);
+        VideoViewVideoHolder.a(this.a, false);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
+        return;
+      }
+      VideoViewVideoHolder.c(this.a, 11);
+      VideoViewVideoHolder.a(this.a, false);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
+      return;
+    }
+    notifyResult(this.a.jdField_a_of_type_Vtt.jdField_a_of_type_JavaLangString);
   }
   
-  public Class acceptEventClass()
+  public void onCancel()
   {
-    return vaa.class;
+    super.onCancel();
+    wxe.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
   }
 }
 

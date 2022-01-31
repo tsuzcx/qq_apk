@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bcxb;
+import bdbk;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.SquareImageView;
@@ -76,7 +76,7 @@ public class AvatarListView
     {
       addView(localSquareImageView);
       return;
-      localSquareImageView.setImageDrawable(bcxb.a(((BaseActivity)getContext()).app, 1, 4, paramString));
+      localSquareImageView.setImageDrawable(bdbk.a(((BaseActivity)getContext()).app, 1, 4, paramString));
     }
   }
   

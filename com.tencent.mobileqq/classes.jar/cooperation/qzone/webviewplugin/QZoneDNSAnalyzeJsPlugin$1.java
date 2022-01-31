@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bjsg;
+import bjwn;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 public class QZoneDNSAnalyzeJsPlugin$1
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$1(bjsg parambjsg, String paramString1, String paramString2) {}
+  public QZoneDNSAnalyzeJsPlugin$1(bjwn parambjwn, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,14 +23,14 @@ public class QZoneDNSAnalyzeJsPlugin$1
         localObject = str;
         QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.a + " ip address : " + str);
         localObject = str;
-        bjsg.a(this.this$0, this.b, 0, str);
+        bjwn.a(this.this$0, this.b, 0, str);
       }
       return;
     }
     catch (UnknownHostException localUnknownHostException)
     {
       QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.a + " ip address failed");
-      bjsg.a(this.this$0, this.b, -1, (String)localObject);
+      bjwn.a(this.this$0, this.b, -1, (String)localObject);
     }
   }
 }

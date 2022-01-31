@@ -195,7 +195,7 @@ public class mdz
     ljt.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     mem.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
     moi.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-    azmb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    azqk.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     paramString = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_d_of_type_JavaLangString) + "";
     ljx.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString);
     ljx.a(2, paramString);
@@ -387,7 +387,7 @@ public class mdz
           }
           while (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null)
           {
-            paramString = bdiv.a(this.a.getApplicationContext()).edit();
+            paramString = bdne.a(this.a.getApplicationContext()).edit();
             paramString.putInt("video_position", this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g());
             paramString.commit();
             mtq.a(this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g());
@@ -568,7 +568,7 @@ public class mdz
     {
       if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null)
       {
-        paramString = bdiv.a(this.a.getApplicationContext()).edit();
+        paramString = bdne.a(this.a.getApplicationContext()).edit();
         paramString.putInt("video_position", this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g());
         paramString.commit();
         mtq.a(this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g());
@@ -637,7 +637,7 @@ public class mdz
           {
             mqj.a("0X8008ACB");
             if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-              mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696226);
+              mdd.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131696228);
             }
           }
         }
@@ -663,8 +663,8 @@ public class mdz
     if (QLog.isColorLevel()) {
       QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "yiler onPlayAnnimate receive id:" + paramInt);
     }
-    int i = bdyi.a();
-    String str = bdyi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
+    int i = becr.a();
+    String str = becr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
     if (str == null) {}
     do
     {
@@ -676,9 +676,9 @@ public class mdz
           this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.w();
         }
         if (this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = bdyi.a((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), (RelativeLayout)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent(), false);
+          this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView = becr.a((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), (RelativeLayout)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent(), false);
         }
-        if (!bdyi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext(), this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, str, i, this.a.jdField_a_of_type_Bdyo, paramInt, false)) {}
+        if (!becr.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext(), this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView, str, i, this.a.jdField_a_of_type_Becx, paramInt, false)) {}
       }
     } while (!QLog.isColorLevel());
     QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "yiler onPlayAnnimate finish id:" + paramInt);

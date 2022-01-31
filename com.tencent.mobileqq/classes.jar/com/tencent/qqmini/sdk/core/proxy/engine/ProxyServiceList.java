@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
-import bglg;
+import bgpn;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,7 +44,7 @@ public class ProxyServiceList
   
   private static Map<String, String> getProxyServices(String paramString)
   {
-    paramString = bglg.a(paramString, "PROXY_SERVICES");
+    paramString = bgpn.a(paramString, "PROXY_SERVICES");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }

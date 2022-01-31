@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
-class aqmk
-  implements army
+public class aqmk
+  implements View.OnClickListener
 {
-  aqmk(aqmi paramaqmi, FileManagerEntity paramFileManagerEntity) {}
+  public aqmk(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Aqmi.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    allz localallz;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localallz = (allz)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Aqmi.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localallz.a(localArrayList));
-    armz.a(2131692744);
-    return;
-    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Aqmi.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    LocalFileBrowserActivity.a(this.a);
   }
-  
-  public void b() {}
 }
 
 

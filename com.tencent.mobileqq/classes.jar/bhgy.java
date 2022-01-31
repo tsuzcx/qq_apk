@@ -1,57 +1,13 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.Proxy;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
 
-public class bhgy
+class bhgy
+  implements bhfz
 {
-  public static Object a(bhgz parambhgz)
-  {
-    try
-    {
-      ClassLoader localClassLoader = bhgq.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.ITXLivePushListener");
-      parambhgz = new bhhe(parambhgz);
-      parambhgz = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhgz);
-      return parambhgz;
-    }
-    catch (ClassNotFoundException parambhgz)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhgz);
-    }
-    return null;
-  }
+  bhgy(bhgx parambhgx, PageWebview paramPageWebview) {}
   
-  public static Object a(bhha parambhha)
+  public void a(int paramInt)
   {
-    try
-    {
-      ClassLoader localClassLoader = bhgq.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener");
-      parambhha = new bhhb(parambhha);
-      parambhha = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhha);
-      return parambhha;
-    }
-    catch (ClassNotFoundException parambhha)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhha);
-    }
-    return null;
-  }
-  
-  public static Object a(bhhc parambhhc)
-  {
-    try
-    {
-      ClassLoader localClassLoader = bhgq.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify");
-      parambhhc = new bhhd(parambhhc);
-      parambhhc = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhhc);
-      return parambhhc;
-    }
-    catch (ClassNotFoundException parambhhc)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhhc);
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebview.c = paramInt;
   }
 }
 

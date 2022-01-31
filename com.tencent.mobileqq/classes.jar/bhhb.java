@@ -1,36 +1,58 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhhb
-  implements InvocationHandler
+public class bhhb
+  implements bgpu
 {
-  private bhha a;
+  public bhhb(bhgx parambhgx) {}
   
-  public bhhb(bhha parambhha)
+  public void onSoftKeyboardClosed()
   {
-    this.a = parambhha;
+    if (bhgx.c(this.a) != 0)
+    {
+      bgox.a(bhgx.a(this.a).a(), bhgx.c(this.a), 0.0F, 1.0F, 1.0F);
+      bhgx.b(this.a, 0);
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)bhgx.a(this.a).getContext().getSystemService("input_method");
+    if (localInputMethodManager == null) {
+      return;
+    }
+    localInputMethodManager.hideSoftInputFromWindow(bhgx.a(this.a).getWindowToken(), 0);
+    this.a.a(true);
   }
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void onSoftKeyboardOpened(int paramInt)
   {
-    QMLog.e("TXLivePushListenerRefle", "ITXSnapshotListenerInvocationHandler invoke:" + paramMethod.getName());
-    if (Object.class.equals(paramMethod.getDeclaringClass())) {
-      try
+    try
+    {
+      bhgx.a(this.a, paramInt);
+      if ((bhgx.a(this.a) != null) && (bhgx.a(this.a).a() != null)) {}
+      for (Object localObject = bhgx.a(this.a).a().a();; localObject = null)
       {
-        paramObject = paramMethod.invoke(this, paramArrayOfObject);
-        return paramObject;
+        if ((localObject != null) && (DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject))) {
+          bhgx.a(this.a, bhgx.b(this.a) + DisplayUtil.getNavigationBarHeight(bhgx.a(this.a).a().a()));
+        }
+        bhgx.a(this.a);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("inputId", bhgx.a(this.a));
+        ((JSONObject)localObject).put("height", paramInt);
+        if ((bhgx.a(this.a) != null) && (bhgx.a(this.a).a() != null)) {
+          bhgx.a(this.a).a().b("onKeyboardShow", ((JSONObject)localObject).toString());
+        }
+        return;
       }
-      catch (Throwable paramObject)
-      {
-        QMLog.e("TXLivePushListenerRefle", "invoke", paramObject);
-      }
+      return;
     }
-    if (("onSnapshot".equals(paramMethod.getName())) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Bitmap)) && (this.a != null)) {
-      this.a.a((Bitmap)paramArrayOfObject[0]);
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
-    return null;
   }
 }
 

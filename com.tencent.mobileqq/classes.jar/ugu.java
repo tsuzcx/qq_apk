@@ -1,297 +1,208 @@
-import android.app.Activity;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.events.QCircleFeedVideoPositionLinkEvent;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import feedcloud.FeedCloudMeta.StVideo;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
 
 public class ugu
-  extends RecyclerView.Adapter<ugc>
-  implements IEventReceiver, ugi
+  extends uga
+  implements View.OnClickListener, yiy
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<ueq> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uef jdField_a_of_type_Uef = (uef)urr.a(30);
-  private ugv jdField_a_of_type_Ugv;
-  private ugw jdField_a_of_type_Ugw;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  private int d;
-  private int e = -1;
+  private float jdField_a_of_type_Float = 1.777778F;
+  public FrameLayout a;
+  public ImageView a;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  public URLImageView a;
+  private tqc jdField_a_of_type_Tqc;
+  private float jdField_b_of_type_Float = 0.75F;
+  private int jdField_b_of_type_Int = ImmersiveUtils.a();
+  public ImageView b;
   
-  public ugu(Activity paramActivity, ugw paramugw, int paramInt1, int paramInt2)
+  private void a(FeedCloudMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Ugw = paramugw;
-    this.jdField_a_of_type_Ugv = new ugv(this);
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-    if (!this.jdField_a_of_type_Uef.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(ueq.a(3));
+    Object localObject = tqg.a(paramStFeed.id.get());
+    paramStFeed = paramStFeed.cover.picUrl.get();
+    if (localObject != null) {
+      paramStFeed = ((FeedCloudMeta.StFeed)localObject).cover.picUrl.get();
     }
-    this.jdField_a_of_type_Boolean = true;
-    uht.a().registerSubscriber(this.jdField_a_of_type_Ugv);
-  }
-  
-  private void a(List<ueq> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    for (;;)
+    {
+      localObject = "";
+      if ((this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373174) instanceof String)) {
+        localObject = (String)this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373174);
+      }
+      this.jdField_a_of_type_ComTencentImageURLImageView.setTag(2131373174, paramStFeed);
+      if (!((String)localObject).equals(paramStFeed)) {
+        tql.a(paramStFeed, this.jdField_a_of_type_ComTencentImageURLImageView, null, bdhb.c(paramStFeed));
+      }
       return;
     }
-    wta.a("video_shoot_slides", "number_smartalbum", 0, 0, new String[] { "", paramList.size() + "" });
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ueq localueq = (ueq)paramList.next();
-      if (localueq.a() == 1) {
-        localArrayList1.add(localueq);
-      } else {
-        localArrayList2.add(localueq);
-      }
-    }
-    wta.a("video_shoot_slides", "read_smartalbum", 0, 0, new String[] { uef.a(localArrayList1) + "", localArrayList1.size() + "" });
-    wta.a("video_shoot_slides", "unread_smartalbum", 0, 0, new String[] { uef.a(localArrayList2) + "", localArrayList2.size() + "" });
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (!((ueq)localIterator.next()).a()) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    return this.e;
-  }
-  
-  public int a(ueq paramueq)
-  {
-    return this.jdField_a_of_type_JavaUtilList.indexOf(paramueq);
-  }
-  
-  public List<ueq> a()
-  {
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public ueq a()
-  {
-    if ((this.e >= 0) && (this.e < getItemCount())) {
-      return (ueq)this.jdField_a_of_type_JavaUtilList.get(this.e);
-    }
-    return null;
-  }
-  
-  public ugc a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561391, paramViewGroup, false);
-    return new ugc(this.jdField_a_of_type_AndroidAppActivity, paramViewGroup, this.jdField_a_of_type_Int, this.b, this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Ugv);
+    yiw.a().b(this);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(ViewStub paramViewStub)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  public void a(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < getItemCount()))
+    if (paramViewStub != null)
     {
-      int i = this.e;
-      this.e = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", 2, "setSelectPos " + paramInt + " oldPos:" + i);
-      }
-      b(paramRecyclerView, i);
-      b(paramRecyclerView, paramInt);
-      b(paramRecyclerView, paramInt - 1);
-      b(paramRecyclerView, paramInt + 1);
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373181));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373175));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373173));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373174));
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373176));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     }
   }
   
-  public void a(ueq paramueq)
+  public void a(Object paramObject, int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_a_of_type_Long > 500L) {
-      if ((!paramueq.b()) && (this.jdField_a_of_type_JavaUtilList.indexOf(paramueq) >= 0) && (paramueq == a()) && (this.jdField_a_of_type_Ugw != null)) {
-        this.jdField_a_of_type_Ugw.a(paramueq);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    int j;
+    float f;
+    if ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
+      paramObject = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+      int k = paramObject.video.width.get();
+      int m = paramObject.video.height.get();
+      j = this.jdField_b_of_type_Int;
+      int i = this.jdField_b_of_type_Int;
+      paramInt = i;
+      if (k != 0)
+      {
+        paramInt = i;
+        if (m != 0)
+        {
+          f = k / m;
+          if (f < this.jdField_a_of_type_Float) {
+            break label254;
+          }
+          paramInt = (int)(j / this.jdField_a_of_type_Float);
+        }
       }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = j;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = paramInt;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams());
+      this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width = j;
+      this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height = paramInt;
+      this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams());
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      if (QzoneConfig.isQQCircleAutoPlay()) {
+        break label295;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Long = l;
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject);
       return;
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "you click too fast, wait...");
+      label254:
+      if ((f > this.jdField_b_of_type_Float) && (f <= this.jdField_a_of_type_Float))
+      {
+        paramInt = (int)(j / f);
+        break;
+      }
+      paramInt = (int)(j / this.jdField_b_of_type_Float);
+      break;
+      label295:
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
   
-  public void a(ugc paramugc, int paramInt)
+  public void a(Object paramObject1, Object paramObject2)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {}
+    if (((paramObject1 instanceof RecyclerView.ViewHolder)) && ((paramObject2 instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Tqc != null)) {
+      this.jdField_a_of_type_Tqc.a((RecyclerView.ViewHolder)paramObject1, (FeedCloudMeta.StFeed)paramObject2);
+    }
+  }
+  
+  public void a(tqc paramtqc)
+  {
+    this.jdField_a_of_type_Tqc = paramtqc;
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFeedVideoPositionLinkEvent.class);
+    return localArrayList;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
     do
     {
-      return;
-      paramugc.a((ueq)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    } while (((this.e != -1) || (paramInt == 0)) && (this.e == paramInt));
-    ugk.a(paramugc, this.c, this.jdField_a_of_type_Int, this.d, this.b, 0.0F, paramInt);
-  }
-  
-  public boolean a(@NonNull List<ueq> paramList)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        if (!((ueq)localIterator.next()).a()) {
-          return false;
-        }
-      }
-    }
-    if (paramList.size() > 0)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ugw.e();
-      a(paramList);
-      return true;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-      this.jdField_a_of_type_JavaUtilList.add(ueq.a(4));
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b()
-  {
-    if (a()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(2));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Ugw.e();
-  }
-  
-  public void b(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < getItemCount()))
-    {
-      paramRecyclerView = (ugc)paramRecyclerView.findViewHolderForAdapterPosition(paramInt);
-      if (paramRecyclerView != null) {
-        paramRecyclerView.a();
-      }
-    }
-  }
-  
-  public void b(ueq paramueq)
-  {
-    int j = a(paramueq);
-    if (j >= 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramueq);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label188;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       do
       {
-        if (!localIterator.hasNext()) {
-          break;
+        do
+        {
+          return;
+        } while ((!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)) || (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) || (c()) || (this.jdField_a_of_type_Trw == null));
+        Object localObject1 = new QQCircleFeedBase.StFeedListBusiReqData();
+        ((QQCircleFeedBase.StFeedListBusiReqData)localObject1).tabAttachInfo.set(this.jdField_a_of_type_Trw.a());
+        Object localObject2 = this.jdField_a_of_type_Trw.a();
+        if (localObject2 != null)
+        {
+          ((QQCircleFeedBase.StFeedListBusiReqData)localObject1).tagId.set(((QCircleInitBean)localObject2).getTagInfo().tagId.get());
+          ((QQCircleFeedBase.StFeedListBusiReqData)localObject1).tagName.set(((QCircleInitBean)localObject2).getTagInfo().tagName.get());
         }
-      } while (((ueq)localIterator.next()).a());
-    }
-    label188:
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0)
-      {
-        wsv.b("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "album delete all , show empty page");
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-        this.jdField_a_of_type_JavaUtilList.add(ueq.a(4));
-      }
-      notifyItemRemoved(j);
-      if (j < this.jdField_a_of_type_JavaUtilList.size()) {
-        notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size() - j);
-      }
-      if (this.jdField_a_of_type_Ugw != null) {
-        this.jdField_a_of_type_Ugw.a(paramueq, j);
-      }
-      this.jdField_a_of_type_Uef.a(paramueq.a());
+        localObject2 = new tqo();
+        ((tqo)localObject2).a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject);
+        ((tqo)localObject2).a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType);
+        ((tqo)localObject2).a((QQCircleFeedBase.StFeedListBusiReqData)localObject1);
+        localObject1 = ((tqo)localObject2).a();
+        if (this.jdField_a_of_type_Tqc != null)
+        {
+          ((QCircleInitBean)localObject1).mDataPosInList = this.jdField_a_of_type_Tqc.a();
+          ((QCircleInitBean)localObject1).mVideoCurrentPosition = this.jdField_a_of_type_Tqc.a();
+        }
+        tqs.a(paramView.getContext(), (QCircleInitBean)localObject1, uaj.a(this.jdField_a_of_type_ComTencentImageURLImageView, ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).cover.width.get(), ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).cover.height.get()));
+        tzs.a(8, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+        yiw.a().a(this);
+        return;
+      } while ((this.jdField_a_of_type_Tqc == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)));
+      this.jdField_a_of_type_Tqc.a(this, (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject);
       return;
+    } while ((this.jdField_a_of_type_Tqc == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)));
+    this.jdField_a_of_type_Tqc.a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleFeedVideoPositionLinkEvent)) && (this.jdField_a_of_type_Tqc != null)) {
+      this.jdField_a_of_type_Tqc.a(((QCircleFeedVideoPositionLinkEvent)paramSimpleBaseEvent).mFeedUrl, ((QCircleFeedVideoPositionLinkEvent)paramSimpleBaseEvent).mCurrentPlayPosition);
     }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(3));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Ugw.e();
-  }
-  
-  public void c(ueq paramueq)
-  {
-    b(paramueq);
-    wta.a("video_shoot_slides", "delete_smartalbum", 0, 0, new String[] { String.valueOf(paramueq.d()), "2" });
-  }
-  
-  public void d()
-  {
-    if (a()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(1));
-    this.jdField_a_of_type_JavaUtilList.add(ueq.a(5));
-    notifyDataSetChanged();
-    this.jdField_a_of_type_Ugw.e();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

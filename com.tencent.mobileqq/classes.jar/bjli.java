@@ -1,10 +1,19 @@
-import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBasicInfo;
 
-public class bjli
+public final class bjli
+  implements Parcelable.Creator<WeishiBasicInfo>
 {
-  public Context a;
-  public bjjy a;
-  public bjjz a;
+  public WeishiBasicInfo a(Parcel paramParcel)
+  {
+    return new WeishiBasicInfo(paramParcel);
+  }
+  
+  public WeishiBasicInfo[] a(int paramInt)
+  {
+    return new WeishiBasicInfo[paramInt];
+  }
 }
 
 

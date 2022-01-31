@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.Context;
+import android.widget.ListView;
+import java.util.List;
 
 public class bbev
-  implements DialogInterface.OnClickListener
 {
-  public bbev(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private bbez jdField_a_of_type_Bbez;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbev(Context paramContext, ListView paramListView)
   {
-    this.a.setResult(-1, null);
-    this.a.finish();
+    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
+    this.jdField_a_of_type_Bbez = new bbez(paramContext);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bbez);
+  }
+  
+  public void a(bbey parambbey)
+  {
+    if (this.jdField_a_of_type_Bbez != null) {
+      this.jdField_a_of_type_Bbez.a(parambbey);
+    }
+  }
+  
+  public void a(List<bbfa> paramList)
+  {
+    if (this.jdField_a_of_type_Bbez != null) {
+      this.jdField_a_of_type_Bbez.a(paramList);
+    }
   }
 }
 

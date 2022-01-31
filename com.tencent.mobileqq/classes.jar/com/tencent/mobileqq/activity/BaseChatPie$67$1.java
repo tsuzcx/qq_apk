@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aprw;
+import apwf;
 import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
 import java.util.List;
 

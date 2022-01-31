@@ -1,121 +1,135 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.RemoteViews;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bflp
 {
-  protected float a;
-  protected DisplayMetrics a;
-  protected Integer a;
-  protected final String a;
-  protected float b;
-  protected Integer b;
-  protected final String b;
+  protected static String a;
+  protected static boolean a;
   
-  bflp(bfln parambfln, Context paramContext)
+  static
   {
-    this.jdField_a_of_type_Float = 14.0F;
-    this.jdField_b_of_type_Float = 16.0F;
-    this.jdField_a_of_type_JavaLangString = "SearchForText";
-    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    a(paramContext);
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
+    jdField_a_of_type_JavaLangString += "|.*==.*";
+    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
+    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
+    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
   }
   
-  public float a()
+  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  protected void a(Context paramContext)
-  {
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
-      return;
-    }
-    try
-    {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
-      a(paramContext);
-      b(paramContext);
-      return;
-    }
-    catch (Exception paramContext) {}
-  }
-  
-  protected boolean a(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+    if (jdField_a_of_type_Boolean) {
+      if (paramInt == 1)
       {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
+        if (paramThrowable != null) {
+          break label187;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i(paramString1, 2, "" + "::" + paramString2);
         }
       }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
     }
-    return false;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  protected boolean b(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
+    label98:
+    do
     {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      break label186;
+      if ((paramInt == 2) || (paramInt == 0))
       {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
+        if (paramThrowable != null) {
+          break label226;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(paramString1, 2, "" + "::" + paramString2);
         }
       }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      if (paramInt == 3)
       {
-        return true;
+        if (paramThrowable != null) {
+          break label265;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w(paramString1, 2, "" + "::" + paramString2);
+        }
       }
-      i += 1;
-    }
-    return false;
+      for (;;)
+      {
+        if (paramInt == 4)
+        {
+          if (paramThrowable != null) {
+            break label304;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(paramString1, 2, "" + "::" + paramString2);
+          }
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        break;
+        if (!QLog.isColorLevel()) {
+          break label98;
+        }
+        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        break label98;
+        if (QLog.isColorLevel()) {
+          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    label186:
+    label187:
+    label226:
+    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+    label265:
+    label304:
+    return;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(0, paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(2, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a(1, paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(3, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    a(2, paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(4, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    a(3, paramString1, paramString2, null);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    a(4, paramString1, paramString2, null);
   }
 }
 

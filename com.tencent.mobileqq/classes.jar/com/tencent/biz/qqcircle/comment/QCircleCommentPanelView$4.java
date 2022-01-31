@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.comment;
 
-import ttr;
-import tuk;
+import tug;
+import tuz;
 
 public class QCircleCommentPanelView$4
   implements Runnable
 {
-  public QCircleCommentPanelView$4(tuk paramtuk) {}
+  public QCircleCommentPanelView$4(tuz paramtuz) {}
   
   public void run()
   {
-    tuk.a(this.this$0).notifyDataSetChanged();
+    tuz.a(this.this$0).notifyDataSetChanged();
   }
 }
 

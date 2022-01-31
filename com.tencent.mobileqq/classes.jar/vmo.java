@@ -1,19 +1,58 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class vmo
-  implements Animation.AnimationListener
+public class vmo
+  extends Handler
 {
-  vmo(vml paramvml) {}
+  WeakReference<FollowCaptureLauncher> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public vmo(FollowCaptureLauncher paramFollowCaptureLauncher)
   {
-    this.a.dismiss();
+    this.a = new WeakReference(paramFollowCaptureLauncher);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    int i = 0;
+    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
+    if (localFollowCaptureLauncher == null) {}
+    for (;;)
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      }
+      while (i != 0)
+      {
+        FollowCaptureLauncher.f(localFollowCaptureLauncher);
+        return;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher);
+        continue;
+        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.c(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.d(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
+        }
+        wxj.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
+        FollowCaptureLauncher.e(localFollowCaptureLauncher);
+        continue;
+        localFollowCaptureLauncher.a();
+      }
+    }
+  }
 }
 
 

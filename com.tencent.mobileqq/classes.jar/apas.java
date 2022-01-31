@@ -1,103 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.os.Handler;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public final class apas
-  implements Parcelable.Creator<MessageForPic>
+class apas
+  implements View.OnClickListener
 {
-  public MessageForPic a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    MessageForPic localMessageForPic = new MessageForPic();
-    localMessageForPic.path = paramParcel.readString();
-    localMessageForPic.size = paramParcel.readLong();
-    localMessageForPic.type = paramParcel.readInt();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localMessageForPic.isRead = bool1;
-      localMessageForPic.uuid = paramParcel.readString();
-      localMessageForPic.groupFileID = paramParcel.readLong();
-      localMessageForPic.md5 = paramParcel.readString();
-      localMessageForPic.serverStoreSource = paramParcel.readString();
-      localMessageForPic.thumbMsgUrl = paramParcel.readString();
-      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
-      localMessageForPic.thumbWidth = paramParcel.readInt();
-      localMessageForPic.thumbHeight = paramParcel.readInt();
-      localMessageForPic.bigMsgUrl = paramParcel.readString();
-      localMessageForPic.rawMsgUrl = paramParcel.readString();
-      localMessageForPic.fileSizeFlag = paramParcel.readInt();
-      localMessageForPic.picExtraFlag = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label466;
-      }
-      bool1 = true;
-      label172:
-      localMessageForPic.isMixed = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label471;
-      }
-      bool1 = true;
-      label188:
-      localMessageForPic.isShareAppActionMsg = bool1;
-      localMessageForPic.action = paramParcel.readString();
-      localMessageForPic.shareAppID = paramParcel.readLong();
-      localMessageForPic.actMsgContentValue = paramParcel.readString();
-      localMessageForPic.localUUID = paramParcel.readString();
-      localMessageForPic.subMsgId = paramParcel.readInt();
-      localMessageForPic.isReport = paramParcel.readInt();
-      localMessageForPic.subVersion = paramParcel.readInt();
-      localMessageForPic.busiType = paramParcel.readInt();
-      localMessageForPic.width = paramParcel.readLong();
-      localMessageForPic.height = paramParcel.readLong();
-      localMessageForPic.imageType = paramParcel.readInt();
-      localMessageForPic.frienduin = paramParcel.readString();
-      localMessageForPic.selfuin = paramParcel.readString();
-      localMessageForPic.senderuin = paramParcel.readString();
-      localMessageForPic.istroop = paramParcel.readInt();
-      localMessageForPic.versionCode = paramParcel.readInt();
-      localMessageForPic.uniseq = paramParcel.readLong();
-      localMessageForPic.issend = paramParcel.readInt();
-      localMessageForPic.time = paramParcel.readLong();
-      localMessageForPic.msgtype = paramParcel.readInt();
-      localMessageForPic.preDownState = paramParcel.readInt();
-      localMessageForPic.preDownNetworkType = paramParcel.readInt();
-      localMessageForPic.previewed = paramParcel.readInt();
-      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
-      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
-      if (paramParcel.readByte() == 0) {
-        break label476;
-      }
-      bool1 = true;
-      label436:
-      localMessageForPic.sync2Story = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label481;
-      }
-    }
-    label466:
-    label471:
-    label476:
-    label481:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForPic.isQzonePic = bool1;
-      return localMessageForPic;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label172;
-      bool1 = false;
-      break label188;
-      bool1 = false;
-      break label436;
-    }
-  }
+  apas(apap paramapap, String paramString) {}
   
-  public MessageForPic[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MessageForPic[paramInt];
+    apap.a(this.jdField_a_of_type_Apap).removeCallbacks(apap.a(this.jdField_a_of_type_Apap));
+    apap.a(this.jdField_a_of_type_Apap).run();
+    int i = apap.a(this.jdField_a_of_type_Apap).a.getSelectionStart();
+    paramView = apap.a(this.jdField_a_of_type_Apap).a.getEditableText();
+    if ((i < 0) || (i >= paramView.length()))
+    {
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
   }
 }
 

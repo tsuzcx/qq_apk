@@ -1,6 +1,7 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,8 +12,13 @@ import com.tencent.biz.qqcircle.fragments.QCircleHybirdFragment;
 import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
 import com.tencent.biz.qqcircle.fragments.QCircleTagPageFragment;
 import com.tencent.biz.qqcircle.fragments.content.QCircleContentDetailFragment;
+import com.tencent.biz.qqcircle.list.QCirclePublicListFragment;
+import com.tencent.biz.qqcircle.list.bizadapters.QCircleFollowTagListAdapter;
+import com.tencent.biz.qqcircle.list.bizadapters.QCircleMessageAdapter;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -24,6 +30,7 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StReply;
 import feedcloud.FeedCloudMeta.StUser;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
@@ -32,13 +39,16 @@ public class tqs
 {
   public static void a(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
   {
+    if (yxv.a("QCircleLauncher_launchQcirclePublishActiviy", 500L)) {
+      return;
+    }
     boolean bool = true;
     if (Build.VERSION.SDK_INT >= 23) {
-      bool = ammv.a(paramActivity);
+      bool = amrk.a(paramActivity);
     }
     if (!bool)
     {
-      bdcd.b(paramActivity);
+      bdgm.b(paramActivity);
       return;
     }
     Intent localIntent = new Intent();
@@ -48,7 +58,7 @@ public class tqs
     if (paramBundle != null) {
       localIntent.putExtras(paramBundle);
     }
-    bizm.a(paramActivity, localIntent);
+    bjdt.a(paramActivity, localIntent);
   }
   
   public static void a(Activity paramActivity, String paramString, HashMap<String, String> paramHashMap)
@@ -60,12 +70,12 @@ public class tqs
       }
       if ("openwebview".equals(paramString))
       {
-        a(paramHashMap);
+        b(paramHashMap);
         return;
       }
       if ("openmainpage".equals(paramString))
       {
-        b(paramHashMap);
+        d(paramHashMap);
         return;
       }
     }
@@ -76,25 +86,35 @@ public class tqs
     }
     if ("opentag".equals(paramString))
     {
-      c(paramHashMap);
+      e(paramHashMap);
       return;
     }
     if ("opendetail".equals(paramString))
     {
-      d(paramHashMap);
+      a(paramHashMap);
       return;
     }
-    if ("openfolder".equals(paramString)) {
-      e(paramHashMap);
+    if ("openfolder".equals(paramString))
+    {
+      f(paramHashMap);
+      return;
+    }
+    if ("opennoticelist".equals(paramString)) {
+      c(paramHashMap);
     }
   }
   
   public static void a(Context paramContext, Intent paramIntent)
   {
+    if (yxv.a("QCircleLauncher_launchFolderPage", 500L)) {
+      return;
+    }
     tqj.a().a();
     tpz.a().b();
-    yfo.a("2002");
-    yfo.a("2002", new txv(tqj.a().a()));
+    ykb.a("2002");
+    ykb.a("2006");
+    ykb.a("2002", new tzf(tqj.a().a()));
+    ykb.a("2006", new tzh());
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent();
@@ -108,6 +128,35 @@ public class tqs
     paramIntent.startActivity(localIntent);
   }
   
+  public static void a(Context paramContext, QCircleInitBean paramQCircleInitBean, Intent paramIntent)
+  {
+    if (yxv.a("QCircleLauncher_launchContentDetailPage", 500L)) {
+      return;
+    }
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = (Activity)paramContext;
+      localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+      localIntent.addFlags(268435456);
+      localIntent.setClass(BaseApplicationImpl.getContext(), PublicTransFragmentActivity.class);
+      localIntent.putExtra("public_fragment_class", QCircleContentDetailFragment.class.getName());
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      paramContext.startActivity(localIntent);
+      paramContext.overridePendingTransition(0, 0);
+      return;
+    }
+    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+    localIntent.addFlags(268435456);
+    localIntent.setClass(BaseApplicationImpl.getContext(), PublicTransFragmentActivity.class);
+    localIntent.putExtra("public_fragment_class", QCircleContentDetailFragment.class.getName());
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    a(localIntent);
+  }
+  
   public static void a(Context paramContext, String paramString)
   {
     a(paramContext, paramString, null);
@@ -119,7 +168,7 @@ public class tqs
     if (!tqr.a(paramString)) {
       QLog.i("QCircleLauncher", 1, "launchQCircleHybirdActivity url isEmpty or Invalid");
     }
-    while (ytg.a("launchQCircleHybirdActivity:" + paramString, 2000L)) {
+    while (yxv.a("launchQCircleHybirdActivity:" + paramString, 1500L)) {
       return;
     }
     Object localObject = paramContext;
@@ -133,9 +182,9 @@ public class tqs
     if (paramString != null) {
       paramContext.putExtra("url", paramString);
     }
-    tyv.a(paramContext, paramString);
+    uah.a(paramContext, paramString);
     paramContext.putExtra("titleBarStyle", 4);
-    paramContext.putExtra("titleStyle", tyv.a().a((Context)localObject, paramString));
+    paramContext.putExtra("titleStyle", uah.a().a((Context)localObject, paramString));
     paramContext.setClass(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
     paramContext.putExtra("fragment_class", QCircleHybirdFragment.class.getCanonicalName());
     paramContext.addFlags(268435456);
@@ -148,25 +197,45 @@ public class tqs
     BaseApplicationImpl.getContext().startActivity(paramIntent);
   }
   
-  public static void a(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
+  private static void a(Intent paramIntent, String paramString, ArrayList paramArrayList, QCircleInitBean paramQCircleInitBean)
   {
-    if (tra.a()) {
-      return;
-    }
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
-    localIntent.addFlags(268435456);
     localIntent.setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
-    localIntent.putExtra("public_fragment_class", QCircleContentDetailFragment.class.getName());
+    localIntent.putExtra("public_fragment_class", QCirclePublicListFragment.class.getName());
+    localIntent.putExtra("qcircle_base_list_adapter_class", paramString);
+    localIntent.putExtra("qcircle_base_list_init_data", paramArrayList);
+    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+    localIntent.putExtra("fling_action_key", 2);
+    localIntent.putExtra("fling_code_key", new Object().hashCode());
+    localIntent.addFlags(268435456);
     a(localIntent);
+  }
+  
+  public static void a(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
+  {
+    if (yxv.a("QCircleLauncher_launchPersonalDetailPage", 500L)) {
+      return;
+    }
+    Object localObject = paramQCircleInitBean.getUser().id.get();
+    ykb.a("2001" + (String)localObject);
+    ykb.a("2001" + (String)localObject, new tzj((String)localObject));
+    localObject = paramIntent;
+    if (paramIntent == null) {
+      localObject = new Intent();
+    }
+    ((Intent)localObject).addFlags(268435456);
+    ((Intent)localObject).setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
+    ((Intent)localObject).putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+    ((Intent)localObject).putExtra("public_fragment_class", QCirclePersonalDetailFragment.class.getName());
+    a((Intent)localObject);
   }
   
   public static void a(FeedCloudMeta.StUser paramStUser)
   {
-    b(new tqo().a(paramStUser).a(), null);
+    a(new tqo().a(paramStUser).a(), null);
   }
   
   public static void a(String paramString)
@@ -175,7 +244,7 @@ public class tqs
     if (TextUtils.isEmpty(paramString)) {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     }
-    b(new tqo().a(str).a(), null);
+    a(new tqo().a(str).a(), null);
   }
   
   public static void a(String paramString, Intent paramIntent)
@@ -184,7 +253,7 @@ public class tqs
     if (TextUtils.isEmpty(paramString)) {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     }
-    b(new tqo().a(str).a(), paramIntent);
+    a(new tqo().a(str).a(), paramIntent);
   }
   
   public static void a(String paramString1, String paramString2)
@@ -198,128 +267,6 @@ public class tqs
   }
   
   public static void a(HashMap<String, String> paramHashMap)
-  {
-    if ((paramHashMap != null) && (paramHashMap.containsKey("url"))) {}
-    try
-    {
-      String str = URLDecoder.decode((String)paramHashMap.get("url"));
-      a(BaseApplicationImpl.getContext(), str);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QCircleLauncher", 1, "parseUrl:" + (String)paramHashMap.get("url") + " error:" + localException.getMessage());
-      localException.printStackTrace();
-    }
-  }
-  
-  public static void b(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
-  {
-    Object localObject = paramQCircleInitBean.getUser().id.get();
-    yfo.a("2001" + (String)localObject);
-    yfo.a("2001" + (String)localObject, new txx((String)localObject));
-    localObject = paramIntent;
-    if (paramIntent == null) {
-      localObject = new Intent();
-    }
-    ((Intent)localObject).addFlags(268435456);
-    ((Intent)localObject).setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
-    ((Intent)localObject).putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
-    ((Intent)localObject).putExtra("public_fragment_class", QCirclePersonalDetailFragment.class.getName());
-    a((Intent)localObject);
-  }
-  
-  private static void b(HashMap<String, String> paramHashMap)
-  {
-    if (paramHashMap != null)
-    {
-      Intent localIntent = new Intent();
-      String str2 = (String)paramHashMap.get("from");
-      String str1;
-      if (!TextUtils.isEmpty(str2))
-      {
-        str1 = str2;
-        if (TextUtils.isDigitsOnly(str2)) {}
-      }
-      else
-      {
-        str1 = str2;
-        if (!tym.b()) {
-          str1 = "8";
-        }
-      }
-      localIntent.putExtra("key_jump_from", str1);
-      if (paramHashMap.containsKey("pushid")) {
-        localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
-      }
-      if (paramHashMap.containsKey("uin"))
-      {
-        str1 = (String)paramHashMap.get("uin");
-        paramHashMap = str1;
-        if (TextUtils.isEmpty(str1)) {
-          paramHashMap = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        }
-        localIntent.putExtra("key_to_uin", paramHashMap);
-        b(new tqo().a(paramHashMap).a(), localIntent);
-      }
-    }
-  }
-  
-  private static void c(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
-  {
-    yfo.a("2005");
-    yfo.a("2005", new txz(paramQCircleInitBean));
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.addFlags(268435456);
-    localIntent.setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
-    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
-    localIntent.putExtra("public_fragment_class", QCircleTagPageFragment.class.getName());
-    a(localIntent);
-  }
-  
-  private static void c(HashMap<String, String> paramHashMap)
-  {
-    Intent localIntent;
-    String str1;
-    if (paramHashMap != null)
-    {
-      localIntent = new Intent();
-      String str2 = (String)paramHashMap.get("from");
-      if (!TextUtils.isEmpty(str2))
-      {
-        str1 = str2;
-        if (TextUtils.isDigitsOnly(str2)) {}
-      }
-      else
-      {
-        str1 = str2;
-        if (!tym.b()) {
-          str1 = "8";
-        }
-      }
-      localIntent.putExtra("key_jump_from", str1);
-      if (paramHashMap.containsKey("pushid")) {
-        localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
-      }
-      if ((paramHashMap.containsKey("tagid")) || (paramHashMap.containsKey("tagname")))
-      {
-        str1 = (String)paramHashMap.get("tagid");
-        paramHashMap = (String)paramHashMap.get("tagname");
-        if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(paramHashMap))) {
-          break label154;
-        }
-        QLog.e("QCircleLauncher", 1, "launchTagPage error tagId and tagName all Empty");
-      }
-    }
-    return;
-    label154:
-    c(new tqo().a(str1, paramHashMap).a(), localIntent);
-  }
-  
-  private static void d(HashMap<String, String> paramHashMap)
   {
     boolean bool2 = false;
     FeedCloudMeta.StFeed localStFeed;
@@ -364,7 +311,7 @@ public class tqs
       else
       {
         localObject1 = localObject2;
-        if (!tym.b()) {
+        if (!tzy.b()) {
           localObject1 = "8";
         }
       }
@@ -405,19 +352,97 @@ public class tqs
       paramHashMap.a((ExtraTypeInfo)localObject2);
       paramHashMap = paramHashMap.a();
       paramHashMap.isSingleFeed = bool1;
-      a(paramHashMap, localIntent);
+      b(paramHashMap, localIntent);
       return;
     }
   }
   
-  private static void e(HashMap<String, String> paramHashMap)
+  public static void b(Context paramContext, String paramString)
   {
+    int i = tra.a(paramString);
+    if (i == 0) {
+      a(paramContext, paramString);
+    }
+    while (i != 1) {
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, JumpActivity.class);
+    localIntent.setData(Uri.parse(paramString));
+    paramContext.startActivity(localIntent);
+  }
+  
+  private static void b(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
+  {
+    if (yxv.a("QCircleLauncher_launchContentDetailPage", 500L)) {
+      return;
+    }
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+    localIntent.addFlags(268435456);
+    localIntent.setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
+    localIntent.putExtra("public_fragment_class", QCircleContentDetailFragment.class.getName());
+    a(localIntent);
+  }
+  
+  public static void b(String paramString)
+  {
+    ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
+    localExtraTypeInfo.userId = paramString;
+    paramString = new tqo();
+    paramString.a(localExtraTypeInfo);
+    a(null, QCircleFollowTagListAdapter.class.getName(), null, paramString.a());
+  }
+  
+  public static void b(HashMap<String, String> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.containsKey("url"))) {
+      try
+      {
+        Object localObject = URLDecoder.decode((String)paramHashMap.get("url"));
+        if (((String)localObject).startsWith("https://h5.qzone.qq.com/v2/wezone/message"))
+        {
+          localObject = tqr.a((String)localObject);
+          ((HashMap)localObject).put("from", String.valueOf(7));
+          c((HashMap)localObject);
+          return;
+        }
+        a(BaseApplicationImpl.getContext(), (String)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QCircleLauncher", 1, "parseUrl:" + (String)paramHashMap.get("url") + " error:" + localException.getMessage());
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  private static void c(QCircleInitBean paramQCircleInitBean, Intent paramIntent)
+  {
+    if (yxv.a("QCircleLauncher_launchTagPage", 500L)) {
+      return;
+    }
+    ykb.a("2005");
+    ykb.a("2005", new tzl(paramQCircleInitBean));
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.addFlags(268435456);
+    localIntent.setClass(BaseApplicationImpl.getContext(), QCircleFragmentActivity.class);
+    localIntent.putExtra("key_bundle_common_init_bean", paramQCircleInitBean);
+    localIntent.putExtra("public_fragment_class", QCircleTagPageFragment.class.getName());
+    a(localIntent);
+  }
+  
+  public static void c(HashMap<String, String> paramHashMap)
+  {
+    Intent localIntent = new Intent();
     if (paramHashMap != null)
     {
-      Intent localIntent = new Intent();
-      if (paramHashMap.containsKey("tabtype")) {
-        localIntent.putExtra("key_first_show_tab", (String)paramHashMap.get("tabtype"));
-      }
       String str2 = (String)paramHashMap.get("from");
       String str1;
       if (!TextUtils.isEmpty(str2))
@@ -428,7 +453,7 @@ public class tqs
       else
       {
         str1 = str2;
-        if (!tym.b()) {
+        if (!tzy.b()) {
           str1 = "8";
         }
       }
@@ -436,25 +461,135 @@ public class tqs
       if (paramHashMap.containsKey("pushid")) {
         localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
       }
-      if (paramHashMap.containsKey("uin")) {
-        localIntent.putExtra("key_to_uin", (String)paramHashMap.get("uin"));
-      }
-      if (paramHashMap.containsKey("invite_id"))
+    }
+    a(localIntent, QCircleMessageAdapter.class.getName(), null, null);
+  }
+  
+  private static void d(HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap != null)
+    {
+      Intent localIntent = new Intent();
+      String str2 = (String)paramHashMap.get("from");
+      String str1;
+      if (!TextUtils.isEmpty(str2))
       {
-        paramHashMap = (String)paramHashMap.get("invite_id");
-        if (!TextUtils.isEmpty(paramHashMap)) {
-          tym.a().a(paramHashMap);
+        str1 = str2;
+        if (TextUtils.isDigitsOnly(str2)) {}
+      }
+      else
+      {
+        str1 = str2;
+        if (!tzy.b()) {
+          str1 = "8";
         }
       }
-      tqj.a().a();
-      tpz.a().b();
-      yfo.a("2002");
-      yfo.a("2002", new txv(tqj.a().a()));
-      paramHashMap = BaseApplicationImpl.getContext();
-      localIntent.addFlags(268435456);
-      localIntent.setClass(paramHashMap, QCircleFolderActivity.class);
-      paramHashMap.startActivity(localIntent);
+      localIntent.putExtra("key_jump_from", str1);
+      if (paramHashMap.containsKey("pushid")) {
+        localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
+      }
+      if (paramHashMap.containsKey("uin"))
+      {
+        str1 = (String)paramHashMap.get("uin");
+        paramHashMap = str1;
+        if (TextUtils.isEmpty(str1)) {
+          paramHashMap = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+        }
+        localIntent.putExtra("key_to_uin", paramHashMap);
+        a(new tqo().a(paramHashMap).a(), localIntent);
+      }
     }
+  }
+  
+  private static void e(HashMap<String, String> paramHashMap)
+  {
+    Intent localIntent;
+    String str1;
+    if (paramHashMap != null)
+    {
+      localIntent = new Intent();
+      String str2 = (String)paramHashMap.get("from");
+      if (!TextUtils.isEmpty(str2))
+      {
+        str1 = str2;
+        if (TextUtils.isDigitsOnly(str2)) {}
+      }
+      else
+      {
+        str1 = str2;
+        if (!tzy.b()) {
+          str1 = "8";
+        }
+      }
+      localIntent.putExtra("key_jump_from", str1);
+      if (paramHashMap.containsKey("pushid")) {
+        localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
+      }
+      if ((paramHashMap.containsKey("tagid")) || (paramHashMap.containsKey("tagname")))
+      {
+        str1 = (String)paramHashMap.get("tagid");
+        paramHashMap = (String)paramHashMap.get("tagname");
+        if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(paramHashMap))) {
+          break label154;
+        }
+        QLog.e("QCircleLauncher", 1, "launchTagPage error tagId and tagName all Empty");
+      }
+    }
+    return;
+    label154:
+    c(new tqo().a(str1, paramHashMap).a(), localIntent);
+  }
+  
+  private static void f(HashMap<String, String> paramHashMap)
+  {
+    if (yxv.a("QCircleLauncher_launchFolderPageBySchema", 500L)) {}
+    while (paramHashMap == null) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    if (paramHashMap.containsKey("tabtype")) {
+      localIntent.putExtra("key_first_show_tab", (String)paramHashMap.get("tabtype"));
+    }
+    String str2 = (String)paramHashMap.get("from");
+    String str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (TextUtils.isDigitsOnly(str2)) {}
+    }
+    else
+    {
+      str1 = str2;
+      if (!tzy.b()) {
+        str1 = "8";
+      }
+    }
+    localIntent.putExtra("key_jump_from", str1);
+    if (paramHashMap.containsKey("pushid")) {
+      localIntent.putExtra("key_push_id", (String)paramHashMap.get("pushid"));
+    }
+    if (paramHashMap.containsKey("uin")) {
+      localIntent.putExtra("key_to_uin", (String)paramHashMap.get("uin"));
+    }
+    if (paramHashMap.containsKey("invite_id"))
+    {
+      paramHashMap = (String)paramHashMap.get("invite_id");
+      if (!TextUtils.isEmpty(paramHashMap))
+      {
+        tzy.a().a(paramHashMap);
+        localIntent.putExtra("key_enable_splash", true);
+      }
+    }
+    tqj.a().a();
+    tpz.a().b();
+    ykb.a("2002");
+    ykb.a("2002", new tzf(tqj.a().a()));
+    ykb.a("2006");
+    ykb.a("2006", new tzh());
+    paramHashMap = BaseApplicationImpl.getContext();
+    localIntent.addFlags(268435456);
+    localIntent.setClass(paramHashMap, QCircleFolderActivity.class);
+    paramHashMap.startActivity(localIntent);
   }
 }
 

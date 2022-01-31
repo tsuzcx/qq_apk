@@ -1,12 +1,20 @@
-class yng
-  implements bjyn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+
+public class yng
+  implements View.OnClickListener
 {
-  yng(ync paramync, alzf paramalzf, String paramString1, int paramInt, String paramString2) {}
+  public yng(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Alzf != null)) {
-      this.jdField_a_of_type_Alzf.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
+    if (VideoPlayerView.a(this.a) != null)
+    {
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.i(this.a);
+      VideoPlayerView.a(this.a, false);
     }
   }
 }

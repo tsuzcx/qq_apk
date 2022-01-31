@@ -1,82 +1,62 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
 
-public class birv
-  extends RemoteCommand
+class birv
+  implements OnPluginInstallListener
 {
-  private SparseArray<List<birw>> a = new SparseArray();
+  birv(biru parambiru) {}
   
-  public birv(AppRuntime paramAppRuntime)
+  public IBinder asBinder()
   {
-    super("com.tencent.qqfav.favoritesremotecommand");
-    a(0, new birx());
+    return null;
   }
   
-  public boolean a(int paramInt, birw parambirw)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
+    if ("qqreaderplugin.apk".equals(paramString))
     {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "PluginPreInstaller onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
+      }
+      azqs.b(biru.a(this.a), "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 0, paramInt, "", "", "", "");
     }
-    if (!((List)localObject).contains(parambirw)) {
-      return ((List)localObject).add(parambirw);
-    }
-    return false;
   }
   
-  public boolean b(int paramInt, birw parambirw)
+  public void onInstallFinish(String paramString)
   {
-    List localList = (List)this.a.get(paramInt);
-    if ((localList != null) && (localList.contains(parambirw))) {
-      return localList.remove(parambirw);
+    if (QLog.isColorLevel()) {
+      QLog.i("PluginPreInstaller", 2, "PluginReinstallInWiFi finish,plugin:" + paramString);
     }
-    return false;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("com.tencent.qqfav.favoritesremotecommand.id", -1);
-    if (-1 != i)
+    Object localObject;
+    if ("qqreaderplugin.apk".equals(paramString))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FavoritesRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "PluginPreInstaller onInstallFinish, pluginId = " + paramString);
       }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
+      azqs.b(biru.a(this.a), "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 0, 0, "", "", "", "");
+      localObject = (bize)biru.a(this.a).getManager(129);
+      if (localObject != null) {
+        ((bize)localObject).a();
       }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((birw)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
     }
-    label100:
-    do
+    for (;;)
     {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      localObject = new Intent("com.tencent.mobileqq.cooperation.plugin." + paramString);
+      ((Intent)localObject).putExtra("plugin", paramString);
+      biru.a(this.a).sendBroadcast((Intent)localObject);
+      return;
+      if ("comic_plugin.apk".equals(paramString)) {
+        biof.a(biru.a(this.a));
       }
-    } while (!((birw)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+    }
   }
 }
 

@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 class azzr
-  implements View.OnClickListener
+  implements baai
 {
-  azzr(azzp paramazzp, azzb paramazzb, azyx paramazyx, String paramString) {}
+  azzr(azzq paramazzq, CountdownTextView paramCountdownTextView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (azzp.a(this.jdField_a_of_type_Azzp) != null) {
-      azzp.a(this.jdField_a_of_type_Azzp).a(this.jdField_a_of_type_Azzb, (azzc)this.jdField_a_of_type_Azyx, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azzq.a(this.jdField_a_of_type_Azzq, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azzq.a(this.jdField_a_of_type_Azzq, paramLong));
+    this.jdField_a_of_type_Azzq.jdField_d_of_type_Long = paramLong;
   }
 }
 

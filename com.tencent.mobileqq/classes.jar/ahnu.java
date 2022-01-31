@@ -1,72 +1,74 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 class ahnu
-  implements Handler.Callback
+  extends altm
 {
-  ahnu(ahnt paramahnt) {}
+  ahnu(ahns paramahns) {}
   
-  private void a()
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (ahnt.a(this.a) != null) {
-      ahnt.a(this.a).setRefreshing(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
     }
-    if (ahnt.a(this.a) != null) {
-      ahnt.a(this.a).setRefresh(false);
+    if (paramBoolean) {
+      this.a.a(false);
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-      label146:
-      do
-      {
-        return false;
-        QQToast.a(this.a.a(), 1, 2131720325, 0).b(ahnt.a(this.a));
-        a();
-        return false;
-        int i = paramMessage.arg1;
-        if (paramMessage.arg2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label146;
-          }
-          ahnt.a(this.a);
-          if (ahnt.a(this.a) == null) {
-            break;
-          }
-          ahnt.a(this.a).a(0);
-          this.a.a.sendEmptyMessageDelayed(5, 800L);
-          return false;
-        }
-        a();
-        QQToast.a(this.a.a(), 1, 2131720325, 0).b(ahnt.a(this.a));
-        return false;
-        a();
-        return false;
-        ahnt.a(this.a, true, true);
-        return false;
-      } while ((ahnt.a(this.a) == null) || (ahnt.a(this.a) == null));
-      ahnt.a(this.a).a(ahnt.a(this.a).getScrollY(), ahnt.a(this.a).a());
-      return false;
+    if (paramInt2 == ahns.a(this.a)) {
+      this.a.a(false);
     }
-    this.a.f();
-    return false;
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (ahns.a(this.a) == 23)) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.a.notifyDataSetChanged();
+      if (ahns.a(this.a) != null)
+      {
+        ahns.a(this.a).removeCallbacks(this.a.a);
+        ahns.a(this.a).postDelayed(this.a.a, 1600L);
+      }
+    }
   }
 }
 

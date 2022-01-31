@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.leba;
 
-import bizm;
+import bjdt;
 
 class QzoneFrame$3
   implements Runnable
@@ -9,7 +9,7 @@ class QzoneFrame$3
   
   public void run()
   {
-    bizm.a(this.this$0.a, "Leba");
+    bjdt.a(this.this$0.a, "Leba");
   }
 }
 

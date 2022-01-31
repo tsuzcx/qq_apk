@@ -1,39 +1,33 @@
-import android.content.Context;
-import android.net.Uri;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vty
-  implements vtw
+  extends QQUIEventReceiver<vtv, vej>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private Uri jdField_b_of_type_AndroidNetUri;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap;
-  
-  public vty(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  public vty(@NonNull vtv paramvtv)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    super(paramvtv);
   }
   
-  public vtr a()
+  public void a(@NonNull vtv paramvtv, @NonNull vej paramvej)
   {
-    vtr localvtr = new vtr();
-    localvtr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
-    return localvtr;
-  }
-  
-  public vtr b()
-  {
-    if (this.jdField_b_of_type_AndroidNetUri != null)
-    {
-      vtr localvtr = new vtr();
-      localvtr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
-      return localvtr;
+    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {
+      return;
     }
-    return null;
+    if (vtv.b(paramvtv))
+    {
+      vtv.b(paramvtv, true);
+      wxe.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
+      return;
+    }
+    paramvtv.d();
+    wxe.b("VideoCoverListGroupHolder", "base info return , notify list now");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vej.class;
   }
 }
 

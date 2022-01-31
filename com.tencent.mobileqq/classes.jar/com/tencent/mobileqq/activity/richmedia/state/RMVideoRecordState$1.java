@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajpa;
+import ajtp;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class RMVideoRecordState$1
   implements Runnable
 {
-  public RMVideoRecordState$1(ajpa paramajpa, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public RMVideoRecordState$1(ajtp paramajtp, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {

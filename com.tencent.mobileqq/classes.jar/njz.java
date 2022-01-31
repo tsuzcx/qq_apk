@@ -21,7 +21,7 @@ public class njz
     paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
     int i;
     if (this.a.hasGestureFlag(1)) {
-      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bdcb.i())
+      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bdgk.i())
       {
         i = 1;
         if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))

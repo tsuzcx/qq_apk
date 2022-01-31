@@ -1,59 +1,34 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
-import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class vix
+class vix
+  implements awkh
 {
-  protected long a;
-  public Handler a;
-  public WeakReference<vrr> a;
-  public Timer a;
-  private TimerTask a;
-  public boolean a;
-  public long b;
-  public long c;
+  vix(viw paramviw) {}
   
-  private void a()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    ProgressControler.2 local2 = new ProgressControler.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+    return null;
   }
   
-  private void b()
-  {
-    Timer localTimer = new Timer();
-    ProgressControler.3 local3 = new ProgressControler.3(this);
-    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
-    this.jdField_a_of_type_JavaUtilTimer = localTimer;
-    this.jdField_a_of_type_JavaUtilTimerTask = local3;
-  }
+  public void a(awki paramawki) {}
   
-  public void a(long paramLong1, long paramLong2, vrr paramvrr)
+  public void b(awki paramawki)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = this.jdField_a_of_type_Long;
-    this.b = paramLong2;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramLong2 <= 0L)
+    if ((paramawki.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramawki.jdField_b_of_type_JavaLangString)))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvrr);
-      a();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.a.a("UploadImageJob_out_image_url", paramawki.jdField_b_of_type_JavaLangString);
+      viw.a(this.a, true);
       return;
     }
-    b();
+    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramawki, new Object[0]);
+    }
+    viw.b(this.a, false);
   }
 }
 

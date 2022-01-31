@@ -1,89 +1,58 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class xyz<T>
-  implements Handler.Callback
+public class xyz
+  implements AdapterView.OnItemClickListener
 {
-  protected int a;
-  protected Context a;
-  protected Handler a;
-  protected int b = -1;
-  protected View b;
+  public xyz(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public xyz(Context paramContext, boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (paramBoolean) {
-      i();
+    QRDisplayActivity.a(this.a).dismiss();
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131721491;
+      }
     }
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
-    }
-    return null;
-  }
-  
-  protected final void a(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract void b();
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected abstract void c();
-  
-  public void d()
-  {
-    e();
-    b(-1);
-  }
-  
-  protected abstract void e();
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    for (;;)
     {
-    default: 
-      return false;
+      if (i != -1)
+      {
+        QQToast.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_c_of_type_Int == 2) {
+          if (paramLong != 2L) {
+            break label165;
+          }
+        }
+        label165:
+        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
+        {
+          bdes.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+          this.a.h = -1;
+          return;
+          if (WXShareHelper.a().b()) {
+            break label230;
+          }
+          i = 2131721492;
+          break;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      this.a.h = ((int)paramLong);
+      QRDisplayActivity.a(this.a);
+      return;
+      label230:
+      i = -1;
     }
-    c();
-    return true;
-  }
-  
-  protected abstract void i();
-  
-  public final void j()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }
 

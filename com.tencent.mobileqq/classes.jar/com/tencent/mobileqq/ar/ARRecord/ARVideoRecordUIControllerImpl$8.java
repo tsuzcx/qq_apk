@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import ampw;
-import amqa;
-import amqd;
+import amul;
+import amup;
+import amus;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(amqa paramamqa, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(amup paramamup, int paramInt) {}
   
   public void run()
   {
-    if (amqa.a(this.this$0) != null) {
-      amqa.a(this.this$0).a(0);
+    if (amup.a(this.this$0) != null) {
+      amup.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (amqa.a(this.this$0) != -1) {
-        switch (amqa.a(this.this$0))
+      if (amup.a(this.this$0) != -1) {
+        switch (amup.a(this.this$0))
         {
         case 5: 
         default: 
-          amqa.a(this.this$0, -1);
+          amup.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      amqa.b(this.this$0, false);
-      if (!amqa.c(this.this$0)) {
-        amqa.a(this.this$0);
+      amup.b(this.this$0, false);
+      if (!amup.c(this.this$0)) {
+        amup.a(this.this$0);
       }
       return;
-      amqa.a("0X8008A56");
-      ampw.a("AR视频已保存", amqa.e);
+      amup.a("0X8008A56");
+      amul.a("AR视频已保存", amup.e);
       break;
-      ampw.a(amqa.h, true);
+      amul.a(amup.h, true);
       break;
-      amqa.a("0X8008A56");
-      ampw.a(amqa.h, true);
+      amup.a("0X8008A56");
+      amul.a(amup.h, true);
       break;
-      if (amqa.b(this.this$0) == true)
+      if (amup.b(this.this$0) == true)
       {
-        amqa.a(this.this$0, false);
+        amup.a(this.this$0, false);
       }
       else
       {
-        amqa.a("0X8008A56");
-        ampw.a(amqa.h, true);
+        amup.a("0X8008A56");
+        amul.a(amup.h, true);
         continue;
-        amqa.a("0X8008A56");
+        amup.a("0X8008A56");
         if (this.a == 1) {
-          ampw.a("AR视频已保存", amqa.f);
+          amul.a("AR视频已保存", amup.f);
         } else {
-          ampw.a("AR视频已保存", amqa.g);
+          amul.a("AR视频已保存", amup.g);
         }
       }
     }

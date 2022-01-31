@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import alyn;
-import awbw;
-import awbx;
+import amdc;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.data.Stranger;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,13 @@ import java.util.List;
 public class StrangerHandler$1
   implements Runnable
 {
-  public StrangerHandler$1(alyn paramalyn) {}
+  public StrangerHandler$1(amdc paramamdc) {}
   
   public void run()
   {
     Object localObject = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = ((awbw)localObject).a(Stranger.class);
-    ((awbw)localObject).a();
+    List localList = ((awgf)localObject).a(Stranger.class);
+    ((awgf)localObject).a();
     localObject = localList;
     if (localList == null) {
       localObject = new ArrayList();

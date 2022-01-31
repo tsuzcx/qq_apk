@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
 
 class ubu
-  implements ytt
+  implements zac<FeedCloudRead.StGetLightInteractListRsp>
 {
-  ubu(ubt paramubt, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike) {}
+  ubu(ubt paramubt, QCircleGetLightInteractRequest paramQCircleGetLightInteractRequest, boolean paramBoolean) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
   {
-    if ((!QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow)) && (!QCirclePolymorphicLikePopWindow.c(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow)) && (ndk.a(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).getContext())) && (this.jdField_a_of_type_Int != 0))
-    {
-      this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(true, false, QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, (QQCircleFeedBase.StPolyLike)ubx.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_Ubx).get());
-      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, true);
-    }
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d(ubt.a, 1, "requestPolyList onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
+    this.jdField_a_of_type_Ubt.a(paramBoolean, paramLong, this.jdField_a_of_type_Boolean, paramString, paramStGetLightInteractListRsp);
   }
 }
 

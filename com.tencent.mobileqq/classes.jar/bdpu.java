@@ -1,39 +1,23 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-final class bdpu
-  implements URLDrawable.URLDrawableListener
+public class bdpu
+  implements HostnameVerifier
 {
-  bdpu(int[] paramArrayOfInt) {}
+  public bdpu(HttpCommunicator paramHttpCommunicator, String paramString, bdpx parambdpx) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
-      ApngImage.playByTag(this.a[0]);
-    }
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_Bdpx, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdpu
  * JD-Core Version:    0.7.0.1
  */

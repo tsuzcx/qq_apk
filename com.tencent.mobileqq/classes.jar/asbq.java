@@ -1,79 +1,53 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 
 public class asbq
-  extends aubv
+  extends asbm
 {
-  public asbq(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
   
-  public void a(boolean paramBoolean)
+  public asbq(bdjz parambdjz)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
-    }
-    for (;;)
-    {
-      super.a(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
-    }
+    super(parambdjz);
   }
   
-  public void a(boolean paramBoolean, aucz paramaucz)
+  protected int a()
   {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, paramaucz);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bdjz.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296991)) / bdoo.a));
     }
-    for (;;)
-    {
-      super.a(paramBoolean, paramaucz);
-      return;
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected View a()
   {
-    if ((paramBoolean) && ((paramObject instanceof auct)))
-    {
-      MsgBackupSettingFragment.a = (auct)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558924, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377620));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new asbr(this));
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
-  public void b(boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewTextController", 2, " bindData ");
     }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
+    if (paramString1 != null) {
+      a(paramString1);
     }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, (aucp)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.b(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
+    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new bamp(paramString2, 5, 20));
     }
   }
 }

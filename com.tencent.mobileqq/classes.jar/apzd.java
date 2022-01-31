@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
 
 public class apzd
-  implements aqds
+  implements TextWatcher
 {
-  public apzd(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  public apzd(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel) {}
   
-  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  public void afterTextChanged(Editable paramEditable)
   {
-    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
+    ImageButton localImageButton;
+    if (SystemAndEmojiUniversalPanel.a(this.a) != null)
+    {
+      localImageButton = SystemAndEmojiUniversalPanel.a(this.a);
+      if (TextUtils.isEmpty(paramEditable)) {
+        break label33;
+      }
+    }
+    label33:
+    for (boolean bool = true;; bool = false)
+    {
+      localImageButton.setEnabled(bool);
+      return;
+    }
   }
   
-  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
-  {
-    aqcq.a(ExtendFriendCampusFragment.a(this.a), false);
-    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

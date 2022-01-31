@@ -1,32 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class aqna
-  implements army
+public class aqna
+  implements bhum
 {
-  aqna(aqmz paramaqmz, FileManagerEntity paramFileManagerEntity) {}
+  public aqna(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 3) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 0))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-      {
-        this.jdField_a_of_type_Aqmz.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return;
-      }
-      this.jdField_a_of_type_Aqmz.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aqmz.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Aqmz.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
-  
-  public void b() {}
 }
 
 

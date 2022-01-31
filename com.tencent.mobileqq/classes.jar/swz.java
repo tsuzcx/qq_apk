@@ -43,7 +43,7 @@ public class swz
     }
     if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
     {
-      paramString1 = adby.b(paramContext, paramString2);
+      paramString1 = adgn.b(paramContext, paramString2);
       if (paramString1 != null) {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
       }
@@ -51,7 +51,7 @@ public class swz
     while (!QLog.isColorLevel())
     {
       return;
-      adby.a(paramQQAppInterface, paramContext, paramString2, new adbz(paramContext, new sxa(this, paramQQAppInterface, this.c), new Object[0]));
+      adgn.a(paramQQAppInterface, paramContext, paramString2, new adgo(paramContext, new sxa(this, paramQQAppInterface, this.c), new Object[0]));
       return;
     }
     QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
@@ -66,9 +66,9 @@ public class swz
     case 1: 
       return String.valueOf(7210);
     case 2: 
-      return String.valueOf(aljq.az);
+      return String.valueOf(alof.az);
     }
-    return String.valueOf(aljq.aA);
+    return String.valueOf(alof.aA);
   }
   
   public Drawable a()

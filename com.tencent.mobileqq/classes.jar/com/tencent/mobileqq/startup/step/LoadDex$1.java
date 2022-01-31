@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdiv;
+import bdne;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class LoadDex$1
@@ -10,7 +10,7 @@ class LoadDex$1
   
   public void run()
   {
-    bdiv.b(BaseApplicationImpl.context);
+    bdne.b(BaseApplicationImpl.context);
   }
 }
 

@@ -1,422 +1,146 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.UserguideActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.PhoneContactManagerImp.2.1;
-import com.tencent.mobileqq.app.PhoneContactManagerImp.2.2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp.UploadProgressGenerator;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppActivity;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.ReqBody;
+import tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.RspBody;
+import tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.RspBody.WordsOfCut;
 
 public class altv
-  extends awdn
+  extends alpd
 {
-  public altv(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  void a()
+  public altv(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.excute(new PhoneContactManagerImp.2.2(this), 16, null, false);
+    super(paramQQAppInterface);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
+    paramToServiceMsg = paramToServiceMsg.extraData.getStringArrayList("mq_kandian_svc_sentences");
+    paramObject = new HashMap();
+    paramObject.put("mq_kandian_svc_sentences", paramToServiceMsg);
+    Object localObject;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      return;
-      if (PhoneContactManagerImp.a(this.a) == null) {
-        PhoneContactManagerImp.a(this.a, new PhoneContactManagerImp.UploadProgressGenerator(this.a, null));
-      }
-      PhoneContactManagerImp.a(this.a).a(paramInt1, paramInt2);
-    } while (!PhoneContactManagerImp.e(this.a));
-    PhoneContactManagerImp.a(this.a, 2, PhoneContactManagerImp.a(this.a).size(), paramInt1, paramInt2);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, 2);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUploadContact, isSuc = " + paramBoolean + ", reason = " + paramInt + ", currentState=" + this.a.jdField_a_of_type_Int);
-    }
-    int i;
-    if (PhoneContactManagerImp.e(this.a))
-    {
-      PhoneContactManagerImp localPhoneContactManagerImp = this.a;
-      if (paramBoolean)
+      paramToServiceMsg = new MQKanDianSvc0x001.RspBody();
+      try
       {
-        i = 3;
-        PhoneContactManagerImp.a(localPhoneContactManagerImp, i, PhoneContactManagerImp.a(this.a).size(), 100, 100);
-      }
-    }
-    else
-    {
-      if (PhoneContactManagerImp.a(this.a) != null)
-      {
-        PhoneContactManagerImp.a(this.a).b();
-        PhoneContactManagerImp.a(this.a, null);
-      }
-      if (!paramBoolean) {
-        break label193;
-      }
-      this.a.jdField_a_of_type_Int = 9;
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-      PhoneContactManagerImp.a(this.a, 15);
-    }
-    for (;;)
-    {
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 7L);
-      return;
-      i = 4;
-      break;
-      label193:
-      this.a.e = System.currentTimeMillis();
-      if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Int = 7;
-      }
-      else if (paramInt == 3)
-      {
-        this.a.jdField_a_of_type_Int = 9;
-        this.a.g = true;
-      }
-      else if (paramInt == 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        this.a.e = 0L;
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      MqqHandler localMqqHandler = PhoneContactManagerImp.a(this.a).getHandler(Conversation.class);
-      if (localMqqHandler != null)
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 1041;
-        localMqqHandler.sendMessage(localMessage);
-      }
-    }
-    this.a.b = false;
-    this.a.d = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onQueryBindState [%s, %s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.d()) }));
-    }
-    PhoneContactManagerImp.a(this.a, 6, paramBoolean1);
-    if (paramBoolean1)
-    {
-      PhoneContactManagerImp.a(this.a, this.a.jdField_a_of_type_Boolean);
-      if (this.a.jdField_a_of_type_Boolean) {
-        ThreadManager.excute(new PhoneContactManagerImp.2.1(this), 16, null, false);
-      }
-    }
-    a();
-  }
-  
-  public void b()
-  {
-    boolean bool2 = false;
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    int i = this.a.d();
-    boolean bool3 = LoginWelcomeManager.a(PhoneContactManagerImp.a(this.a)).jdField_a_of_type_Boolean;
-    boolean bool4 = PhoneContactManagerImp.b(this.a);
-    long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_pop_time_for_switchphone", 0L);
-    if ((PhoneContactManagerImp.c(this.a)) && (System.currentTimeMillis() - l > 86400000L)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "onFirstRespQueryNotBindState bindState = " + i + ", needToJumpBind = " + bool4 + ", phoneSwitchBefit = " + bool1 + l + ",showNewUserGuide = " + bool3);
-      }
-      if ((!bool4) && (!bool1)) {
-        break;
-      }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("topActivity is:").append(localBaseActivity).append(",isFinishing is:");
-        bool1 = bool2;
-        if (localBaseActivity != null) {
-          bool1 = localBaseActivity.isFinishing();
-        }
-        QLog.d("PhoneContact.Manager", 2, bool1);
-      }
-      if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (localBaseActivity.getAppRuntime() != PhoneContactManagerImp.a(this.a)) || ((localBaseActivity instanceof UserguideActivity)) || (bool3) || (UserguideActivity.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      PhoneContactManagerImp.b(this.a, true);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, true, true, 11L);
-    this.a.jdField_a_of_type_Int = 1;
-    PhoneContactManagerImp.b(this.a);
-    PhoneContactManagerImp.a(this.a).getPreferences().edit().putInt("system_msg_list_showcount", 0).putBoolean("contact_guide_user_close", false).putInt("new_friend_show_count_after_user_close", 0).apply();
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUpdateContact, isSuc = " + paramBoolean + ", reason = " + paramInt);
-    }
-    this.a.c = false;
-    if (paramBoolean)
-    {
-      PhoneContactManagerImp.a(this.a, 1);
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-    }
-    for (;;)
-    {
-      PhoneContactManagerImp.a(this.a, true, true, 9L);
-      return;
-      if ((paramInt == 2) || (paramInt == 3)) {
-        this.a.g = true;
-      }
-      this.a.jdField_f_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool1 = true;
-    if (PhoneContactManagerImp.jdField_f_of_type_Boolean) {}
-    boolean bool2;
-    boolean bool3;
-    label176:
-    do
-    {
-      do
-      {
-        do
+        paramToServiceMsg = (MQKanDianSvc0x001.RspBody)paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (paramToServiceMsg.int32_error_num.get() != 0)
         {
-          do
-          {
-            return;
-            if (PhoneContactManagerImp.a(this.a))
-            {
-              QLog.e("PhoneContact", 1, "onFirstRespQueryState app is null");
-              return;
-            }
-            if (!UserguideActivity.a(PhoneContactManagerImp.a(this.a).getApp(), PhoneContactManagerImp.a(this.a).getCurrentAccountUin())) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("PhoneContact", 2, "UserguideActivity.showUserGuideThisTime = ture");
+          if (QLog.isColorLevel()) {
+            QLog.w("Q.groupsearch", 2, "handleSvcSeg error, errorNum: " + paramToServiceMsg.int32_error_num.get());
+          }
+          notifyUI(1, false, paramObject);
           return;
-        } while (awdr.a().a());
-        if (!PortalManager.c()) {
-          break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("PhoneContact", 2, "hongbao forbid alert");
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.groupsearch", 2, "handleSvcSeg error: ", paramToServiceMsg);
+        }
+        notifyUI(1, false, paramObject);
+        return;
+      }
+      paramFromServiceMsg = paramToServiceMsg.rpt_msg_words.get();
+      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isEmpty()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.groupsearch", 2, "handleSvcSeg error, msgWords is empty...");
+        }
+        notifyUI(1, false, paramObject);
+        return;
+      }
+      paramToServiceMsg = new ArrayList();
+      paramFromServiceMsg = paramFromServiceMsg.iterator();
+      while (paramFromServiceMsg.hasNext())
+      {
+        localObject = ((MQKanDianSvc0x001.RspBody.WordsOfCut)((MQKanDianSvc0x001.RspBody.WordsOfCut)paramFromServiceMsg.next()).get()).rpt_str_words.get();
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.addAll((Collection)localObject);
+        paramToServiceMsg.add(localArrayList);
+      }
+      paramObject.put("mq_kandian_svc_results", paramToServiceMsg);
+      notifyUI(1, true, paramObject);
       return;
-      int i = this.a.d();
-      bool2 = LoginWelcomeManager.a(PhoneContactManagerImp.a(this.a)).jdField_a_of_type_Boolean;
-      bool3 = PhoneContactManagerImp.d(this.a);
-      long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_pop_time_for_switchphone", 0L);
-      if ((!PhoneContactManagerImp.c(this.a)) || (System.currentTimeMillis() - l <= 86400000L)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "bindState = " + i + ", isFristRun = " + bool3 + ", attempPop = " + bool1 + l + ",showNewUserGuide = " + bool2);
-      }
-    } while ((!bool3) && (!bool1));
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    StringBuilder localStringBuilder;
+    }
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("topActivity is:").append(localBaseActivity).append(",isFinishing is:");
-      if (localBaseActivity == null) {
-        break label373;
+      localObject = new StringBuilder().append("handleSvcSeg error, resultCode: ");
+      if (paramFromServiceMsg == null) {
+        break label359;
       }
     }
-    label373:
-    for (bool1 = localBaseActivity.isFinishing();; bool1 = false)
+    label359:
+    for (paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode());; paramToServiceMsg = "null")
     {
-      QLog.d("PhoneContact.Manager", 2, bool1);
-      if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (localBaseActivity.getAppRuntime() != PhoneContactManagerImp.a(this.a)) || ((localBaseActivity instanceof UserguideActivity)) || (bool2) || (UserguideActivity.jdField_a_of_type_Boolean)) {
-        break;
+      QLog.w("Q.groupsearch", 2, paramToServiceMsg);
+      if ((QLog.isColorLevel()) && (paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1002)) {
+        QLog.w("Q.groupsearch", 2, "handleSvcSeg error, server segmentation timeout...");
       }
-      PhoneContactManagerImp.b(this.a, false);
+      notifyUI(1, false, paramObject);
       return;
-      bool1 = false;
-      break label176;
     }
   }
   
-  protected void c(boolean paramBoolean, int paramInt)
+  public void a(ArrayList<String> paramArrayList)
   {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while ((!paramBoolean) || (paramInt != 0)) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, true, true, 10L);
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
-    {
-      return;
-      PhoneContactManagerImp.a(this.a, false);
-    } while (!paramBoolean);
-    PhoneContactManagerImp.a(this.a, 2);
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onQueryContactList, isSuc = " + paramBoolean + ", updateFlag = " + paramInt);
-    }
-    if (paramBoolean) {
-      PhoneContactManagerImp.a(this.a, paramInt);
-    }
-    if (this.a.e() >= 7) {
-      ThreadManager.getSubThreadHandler().postDelayed(PhoneContactManagerImp.a(this.a), PhoneContactManagerImp.jdField_a_of_type_Long);
-    }
-    PhoneContactManagerImp.c(this.a);
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUploadContactNotBind, isSuc = " + paramBoolean + ", reason = " + paramInt + ", currentState=" + this.a.jdField_a_of_type_Int);
-    }
-    if (PhoneContactManagerImp.a(this.a) != null)
-    {
-      PhoneContactManagerImp.a(this.a).b();
-      PhoneContactManagerImp.a(this.a, null);
-    }
-    int i;
-    if (PhoneContactManagerImp.e(this.a))
-    {
-      PhoneContactManagerImp localPhoneContactManagerImp = this.a;
-      if (paramBoolean)
-      {
-        i = 3;
-        PhoneContactManagerImp.a(localPhoneContactManagerImp, i, PhoneContactManagerImp.a(this.a).size(), 100, 100);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label193;
-      }
-      this.a.jdField_a_of_type_Int = 2;
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-      PhoneContactManagerImp.a(this.a, 15);
-    }
-    for (;;)
-    {
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
-      return;
-      i = 4;
-      break;
-      label193:
-      this.a.e = System.currentTimeMillis();
-      if ((paramInt != 2) && (paramInt != 3)) {
-        break label232;
-      }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.g = true;
-    }
-    label232:
-    if (paramInt == 5)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      this.a.e = 0L;
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
-      return;
-    }
-    if (paramInt == 4)
-    {
-      this.a.jdField_a_of_type_Int = 9;
-      this.a.g = true;
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
-      return;
-    }
-    this.a.jdField_a_of_type_Int = 0;
-    PhoneContactManagerImp.b(this.a);
-    PhoneContactManagerImp.a(this.a, true, true, 6L);
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
-    {
-      return;
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "onUpdateContactNotBind, isSuc = " + paramBoolean + ", reason = " + paramInt);
+        QLog.w("Q.groupsearch", 2, "getSvcSeg sentences is empty...");
       }
-      this.a.c = false;
-      if (paramBoolean)
-      {
-        PhoneContactManagerImp.a(this.a, 1);
-        PhoneContactManagerImp.a(this.a, 0L);
-      }
-      do
-      {
-        for (;;)
-        {
-          PhoneContactManagerImp.a(this.a, true, true, 8L);
-          return;
-          this.a.jdField_f_of_type_Long = System.currentTimeMillis();
-          if ((paramInt != 2) && (paramInt != 3)) {
-            break;
-          }
-          this.a.g = true;
-        }
-      } while ((paramInt != 5) && (paramInt != 4));
-    } while (this.a.jdField_a_of_type_Int == 8);
-    PhoneContactManagerImp.a(this.a, true, true, 8L);
+    }
+    do
+    {
+      return;
+      MQKanDianSvc0x001.ReqBody localReqBody = new MQKanDianSvc0x001.ReqBody();
+      localReqBody.enum_cut_mode.set(0);
+      localReqBody.enum_request_mode.set(0);
+      localReqBody.bool_use_hmm.set(true);
+      localReqBody.uint32_request_article_num.set(0);
+      localReqBody.rpt_str_sentences.set(paramArrayList);
+      ToServiceMsg localToServiceMsg = createToServiceMsg("MQKanDianSvc.0x001");
+      localToServiceMsg.setTimeout(4500L);
+      localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
+      localToServiceMsg.extraData.putInt("mq_kandian_svc_mode", 1);
+      localToServiceMsg.extraData.putStringArrayList("mq_kandian_svc_sentences", paramArrayList);
+      sendPbReq(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.groupsearch", 2, "getSvcSeg sentences : " + paramArrayList);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return altw.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder(128);
+      localStringBuilder.append("onReceive success ssoSeq: ").append(paramToServiceMsg.getRequestSsoSeq()).append(", serviceCmd: ").append(str).append(", resultCode: ").append(paramFromServiceMsg.getResultCode());
+      QLog.d("Q.groupsearch", 2, localStringBuilder.toString());
+    }
+    if (("MQKanDianSvc.0x001".equals(str)) && (paramToServiceMsg.extraData.getInt("mq_kandian_svc_mode") == 1)) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.app.Activity;
-import arhz;
+import armi;
 import java.util.TimerTask;
 
 public class MusicFilePresenter$5
   extends TimerTask
 {
-  public MusicFilePresenter$5(arhz paramarhz) {}
+  public MusicFilePresenter$5(armi paramarmi) {}
   
   public void run()
   {

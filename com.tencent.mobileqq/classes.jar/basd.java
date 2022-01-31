@@ -1,21 +1,17 @@
-public class basd
-  extends base
+import android.graphics.Bitmap;
+import java.net.URL;
+
+class basd
+  implements bazg
 {
-  private int a = 420000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 15000;
-  private int e = 30000;
-  private int f = 4000;
+  public basc a;
   
-  public int a()
-  {
-    return this.d;
-  }
+  basd(basb parambasb) {}
   
-  public int b()
+  public Bitmap getBitmap(URL paramURL)
   {
-    return this.e;
+    this.jdField_a_of_type_Basc = this.jdField_a_of_type_Basb.a(paramURL);
+    return basb.a(this.jdField_a_of_type_Basb, this.jdField_a_of_type_Basc);
   }
 }
 

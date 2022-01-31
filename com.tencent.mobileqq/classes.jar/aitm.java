@@ -1,18 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
 
-public class aitm
+class aitm
   implements View.OnClickListener
 {
-  public aitm(LingHbFragment paramLingHbFragment) {}
+  aitm(aitl paramaitl) {}
   
   public void onClick(View paramView)
   {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
+    AIOLongShotHelper.a(this.a.mActivity, (String)aitl.a(this.a).selectedPhotoList.get(0), new aitn(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
 }
 

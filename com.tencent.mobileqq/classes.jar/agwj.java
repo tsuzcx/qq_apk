@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class agwj
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public agwj(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  public agwj(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    mtq.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
+      }
+      if (TroopChatPie.a(this.a) != null)
+      {
+        TroopChatPie.b(this.a).a(35);
+        aojt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      }
     }
   }
 }

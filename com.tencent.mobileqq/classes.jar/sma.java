@@ -106,7 +106,7 @@ public class sma
         }
       }
     }
-    return new baig(localCharSequence, 3, 16);
+    return new bamp(localCharSequence, 3, 16);
   }
   
   public static CharSequence a(CharSequence paramCharSequence, String paramString)
@@ -234,7 +234,7 @@ public class sma
           }
           if (rqj.d((BaseArticleInfo)localObject3))
           {
-            localObject1 = new StringBuilder(alpo.a(2131716412));
+            localObject1 = new StringBuilder(alud.a(2131716424));
             if (!rqj.g(paramBaseArticleInfo))
             {
               localObject2 = (qno)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qnm.a.get(0);
@@ -286,9 +286,9 @@ public class sma
                 localObject1 = orc.a((String)localObject2);
                 parampgr = (pgr)localObject1;
                 if (TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {
-                  parampgr = ayvy.b((String)localObject2);
+                  parampgr = azah.b((String)localObject2);
                 }
-                parampgr = new baig(parampgr, 3, 16);
+                parampgr = new bamp(parampgr, 3, 16);
               }
               for (i = 7;; i = i1)
               {
@@ -302,7 +302,7 @@ public class sma
                 parampgr = null;
                 try
                 {
-                  localObject1 = ayvy.b(localqmw.jdField_a_of_type_JavaLangString);
+                  localObject1 = azah.b(localqmw.jdField_a_of_type_JavaLangString);
                   parampgr = (pgr)localObject1;
                 }
                 catch (Exception localException)
@@ -310,7 +310,7 @@ public class sma
                   label969:
                   break label969;
                 }
-                localObject1 = new baig(parampgr, 3, 16);
+                localObject1 = new bamp(parampgr, 3, 16);
                 i = 8;
                 break;
                 label993:

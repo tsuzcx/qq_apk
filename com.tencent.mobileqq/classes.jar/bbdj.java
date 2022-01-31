@@ -1,79 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-public final class bbdj
+public class bbdj
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private Drawable b;
+  public bbdj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public bbdj(@NonNull LinearLayout paramLinearLayout)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramLinearLayout.getContext();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bclo.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#66ffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843291));
-    this.b = bclo.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#ffffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843291));
-    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      this.b.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onError");
     }
-    int i = azgq.a(7.5F);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = azgq.a(7.0F);
-  }
-  
-  public void a(int paramInt)
-  {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    if ((paramInt < 0) || (paramInt >= j)) {
-      return;
-    }
-    int i = 0;
-    label20:
-    View localView;
-    if (i < j)
-    {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (paramInt != i) {
-        break label60;
-      }
-    }
-    label60:
-    for (Drawable localDrawable = this.b;; localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-    {
-      localView.setBackgroundDrawable(localDrawable);
-      i += 1;
-      break label20;
-      break;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != paramInt)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      while (paramInt > 0)
-      {
-        View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-        localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-        paramInt -= 1;
-      }
-    }
-    a(0);
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
+    return false;
   }
 }
 

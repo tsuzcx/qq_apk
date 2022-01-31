@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import aush;
-import awbw;
-import awbx;
+import auwq;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 
@@ -14,16 +14,16 @@ public final class NearbyCardManager$1
   public void run()
   {
     this.a.a(this.a.getCurrentAccountUin(), 200, true);
-    long l1 = ((Long)aush.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+    long l1 = ((Long)auwq.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
     long l2 = l1;
-    awbw localawbw;
+    awgf localawgf;
     if (l1 == 0L)
     {
-      localawbw = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
+      localawgf = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
       l2 = l1;
-      if (localawbw != null)
+      if (localawgf != null)
       {
-        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localawbw.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
+        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
         if (localNearbyPeopleCard == null) {
           break label143;
         }
@@ -33,7 +33,7 @@ public final class NearbyCardManager$1
     label143:
     for (;;)
     {
-      localawbw.a();
+      localawgf.a();
       l2 = l1;
       if (l2 != 0L) {
         this.a.a(String.valueOf(l2), 202, true);

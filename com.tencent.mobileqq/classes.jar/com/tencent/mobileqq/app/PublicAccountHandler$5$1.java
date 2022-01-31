@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aluy;
+import alzn;
 
 public class PublicAccountHandler$5$1
   implements Runnable
 {
-  public PublicAccountHandler$5$1(aluy paramaluy) {}
+  public PublicAccountHandler$5$1(alzn paramalzn) {}
   
   public void run()
   {

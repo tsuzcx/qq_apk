@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bmix;
-import bmkv;
+import bmnj;
+import bmph;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import wsv;
+import wxe;
 
 class HWEditLocalVideoPlayer$2$1
   implements Runnable
@@ -16,23 +16,23 @@ class HWEditLocalVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      bmkv localbmkv = (bmkv)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.this$0, localbmkv);
+      bmph localbmph = (bmph)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.this$0, localbmph);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Bmix.a(Message.obtain(null, 8));
+      this.a.this$0.jdField_a_of_type_Bmnj.a(Message.obtain(null, 8));
       HWEditLocalVideoPlayer.a(this.a.this$0, this.a.this$0.jdField_a_of_type_Int);
       HWEditLocalVideoPlayer.a(this.a.this$0).set(true);
-      this.a.this$0.jdField_a_of_type_Bmix.e(true);
+      this.a.this$0.jdField_a_of_type_Bmnj.e(true);
       return;
-      wsv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      wxe.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.2.1
  * JD-Core Version:    0.7.0.1
  */

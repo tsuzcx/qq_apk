@@ -1,20 +1,20 @@
-public abstract interface vdy
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public class vdy
+  implements urr<vdz, vea>
 {
-  public abstract void a();
+  public void a(String paramString)
+  {
+    paramString = new vdz(this, paramString);
+    urp.a().a(paramString, this);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
+  public void a(@NonNull vdz paramvdz, @Nullable vea paramvea, @NonNull ErrorMessage paramErrorMessage)
+  {
+    new veb(paramErrorMessage, paramvdz.b);
+  }
 }
 
 

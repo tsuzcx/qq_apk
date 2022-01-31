@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class atbw
-  implements Parcelable.Creator<WatchTogetherSession>
+class atbw
+  implements View.OnClickListener
 {
-  public WatchTogetherSession a(Parcel paramParcel)
-  {
-    return new WatchTogetherSession(paramParcel);
-  }
+  atbw(atbu paramatbu) {}
   
-  public WatchTogetherSession[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WatchTogetherSession[paramInt];
+    atbp.a(this.a.a, false);
   }
 }
 

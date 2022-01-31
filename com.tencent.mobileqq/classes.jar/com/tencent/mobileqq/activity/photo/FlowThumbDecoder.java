@@ -12,9 +12,9 @@ import android.graphics.Rect;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.util.DisplayMetrics;
-import azmz;
-import baul;
-import baux;
+import azri;
+import bayu;
+import bazg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class FlowThumbDecoder
-  implements baux
+  implements bazg
 {
   static final int SCALE_MODE_BY_HEIGHT = 2;
   static final int SCALE_MODE_BY_WIDTH = 1;
@@ -242,11 +242,11 @@ public class FlowThumbDecoder
         {
           paramOptions = paramContext.getInfo();
           paramOptions.put("from", "FlowThumbDecoder");
-          azmz localazmz = azmz.a(BaseApplicationImpl.getApplication());
+          azri localazri = azri.a(BaseApplicationImpl.getApplication());
           boolean bool = paramContext.isGetBitmap;
           long l = paramContext.runTime;
           i = paramContext.rawHeight;
-          localazmz.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
+          localazri.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
         }
         return paramLocalMediaInfo;
       }
@@ -315,7 +315,7 @@ public class FlowThumbDecoder
   {
     paramURL = this.mContext;
     LocalMediaInfo localLocalMediaInfo = this.mInfo;
-    int i = baul.a(localLocalMediaInfo.path);
+    int i = bayu.a(localLocalMediaInfo.path);
     if ((i != 0) && (i != localLocalMediaInfo.orientation))
     {
       if (QLog.isColorLevel()) {

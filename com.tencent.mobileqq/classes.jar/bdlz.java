@@ -1,104 +1,69 @@
-import android.os.Build;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdlz
 {
-  public static int a;
-  public static boolean a = true;
-  public static boolean b = true;
-  public static boolean c = true;
-  public static boolean d = true;
-  public static boolean e = true;
-  public static boolean f = true;
-  public static boolean g = true;
-  public static boolean h = true;
-  public static boolean i = true;
-  public static boolean j = true;
-  public static boolean k = true;
-  public static boolean l;
-  public static boolean m;
+  private float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  public SensorEventListener a;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bdmb(this, Looper.getMainLooper());
+  private bdmc jdField_a_of_type_Bdmc;
+  public boolean a;
+  private boolean b;
   
-  static
+  public bdlz(Context paramContext, bdmc parambdmc)
   {
-    String str1 = Build.MODEL;
-    String str2 = Build.MANUFACTURER;
-    if (str2.equalsIgnoreCase("htc")) {
-      bdma.a().b(str1);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bdma(this);
+    this.jdField_a_of_type_Bdmc = parambdmc;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor open=====");
     }
-    do
+    this.b = false;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
     {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
+      if (this.jdField_a_of_type_Float > 10.0F) {
+        this.jdField_a_of_type_Float = 10.0F;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
       return;
-      if ((str2.equalsIgnoreCase("samsung")) || (str2.equalsIgnoreCase("samsng")))
-      {
-        bdma.a().a(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("motorola"))
-      {
-        bdma.a().c(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("huawei"))
-      {
-        bdma.a().d(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("zte"))
-      {
-        bdma.a().e(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("meizu"))
-      {
-        bdma.a().f(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("alps"))
-      {
-        bdma.a().g(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("k-touch")) || (str2.equalsIgnoreCase("sprd")))
-      {
-        bdma.a().h(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("yulong")) || (str2.equalsIgnoreCase("coolpad")))
-      {
-        bdma.a().i(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("lenovo"))
-      {
-        bdma.a().j(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("bbk"))
-      {
-        bdma.a().k(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("gionee"))
-      {
-        bdma.a().l(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("eton"))
-      {
-        bdma.a().m(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("doov"))
-      {
-        bdma.a().n(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("sony ericsson"))
-      {
-        bdma.a().o(str1);
-        return;
-      }
-    } while (!"xiaomi".equalsIgnoreCase(str2));
-    bdma.a().p(str1);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bdmc.a(this.b);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bdmc = null;
+      this.jdField_a_of_type_AndroidHardwareSensor = null;
+      return;
+    }
+    finally {}
   }
 }
 

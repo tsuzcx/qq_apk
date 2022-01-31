@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class ajbr
-  implements View.OnClickListener
+public class ajbr
 {
-  ajbr(ajbm paramajbm) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public ajbr(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    try
-    {
-      bdcd.a(ajbm.a(this.a), 0, null, alpo.a(2131701287), 2131690648, 2131694951, new ajbs(this), new ajbt(this)).show();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

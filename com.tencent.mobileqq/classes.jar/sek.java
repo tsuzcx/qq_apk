@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class sek
-  extends amar
+  extends amfg
 {
   sek(sei paramsei) {}
   
@@ -14,7 +14,7 @@ class sek
     }
   }
   
-  public void a(List<ayks> paramList, int paramInt)
+  public void a(List<aypb> paramList, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);

@@ -1,75 +1,59 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
 
 public class bbyq
-  extends BaseAdapter
+  extends urt
 {
-  protected SearchReciteArticleFragment a;
-  protected String a;
-  protected List<bbyp> a;
+  bbyp jdField_a_of_type_Bbyp;
+  String jdField_a_of_type_JavaLangString;
   
-  public bbyq(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  public bbyq(bbyp parambbyp, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
-  }
-  
-  public bbyp a(int paramInt)
-  {
-    return (bbyp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(bbyp parambbyp)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambbyp);
-  }
-  
-  public void a(String paramString)
-  {
+    this.jdField_a_of_type_Bbyp = parambbyp;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int getCount()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return "HwSvc.check_homework";
   }
   
-  public long getItemId(int paramInt)
+  public uro a(byte[] paramArrayOfByte)
   {
-    return paramInt;
+    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
+    try
+    {
+      localErrorInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new uro(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
+      return paramArrayOfByte;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
+    }
+    return new uro(-99, "decodeResponse error:" + paramArrayOfByte);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected byte[] a()
   {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560475, null, false);
-      paramViewGroup = new bbyr(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378985));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378668));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      bbyp localbbyp = a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localbbyp.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramViewGroup.b.setText(localbbyp.b);
-      return paramView;
-      paramViewGroup = (bbyr)paramView.getTag();
-    }
+    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
+    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
+    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Bbyp.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Bbyp.jdField_b_of_type_JavaLangString));
+    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Bbyp.jdField_a_of_type_Long);
+    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Bbyp.jdField_b_of_type_Long);
+    localReqCheckHomework.uin.set(this.jdField_a_of_type_Bbyp.c);
+    localReqCheckHomework.pics.add(localYoutuPicInfo);
+    return localReqCheckHomework.toByteArray();
   }
 }
 

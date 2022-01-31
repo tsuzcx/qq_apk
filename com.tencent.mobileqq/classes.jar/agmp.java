@@ -1,20 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnimationView;
 
-class agmp
-  extends BroadcastReceiver
+public class agmp
+  extends aeqi
 {
-  agmp(agmb paramagmb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (this.a.jdField_a_of_type_Autg != null) {
-      this.a.jdField_a_of_type_Autg.a(paramContext);
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-  }
+  public long a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public AnimationView a;
+  public RelativeLayout b;
+  public TextView b;
+  public AnimationView b;
+  public String b = "";
+  public RelativeLayout c;
+  public RelativeLayout d;
+  public RelativeLayout e;
+  public RelativeLayout f;
+  public RelativeLayout g;
 }
 
 

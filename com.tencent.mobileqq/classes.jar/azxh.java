@@ -1,37 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.GuardProcessExitListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
-class azxh
-  extends BroadcastReceiver
+public class azxh
 {
-  azxh(azxf paramazxf) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      return;
-      if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.LOGOUT")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
-        }
-        azxf.a(this.a).a(false);
-        return;
-      }
-    } while (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getContext().getPackageName()));
-    if (QLog.isColorLevel()) {
-      QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
-    }
-    azxf.a(this.a).a(true);
-  }
+  public Bundle a;
+  public View a;
+  public LinearLayout a;
+  public boolean a;
+  public View b;
+  public LinearLayout b;
+  public View c;
+  public View d;
+  public View e;
 }
 
 

@@ -1,8 +1,14 @@
-public abstract interface ahqp
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+
+public class ahqp
+  extends alwx
 {
-  public abstract void a(String paramString, int paramInt, float paramFloat);
+  public ahqp(TroopView paramTroopView) {}
   
-  public abstract void c(boolean paramBoolean);
+  protected void a()
+  {
+    this.a.j();
+  }
 }
 
 

@@ -1,50 +1,61 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
-final class baii
-  implements bhqd
+public class baii
 {
-  baii(int paramInt, String paramString1, Context paramContext, String paramString2, bhpy parambhpy) {}
+  public static volatile String a = "";
   
-  public void OnClick(View paramView, int paramInt)
+  public static TouchWebView a(Context paramContext)
   {
-    switch (paramInt)
-    {
+    baij localbaij = baij.a();
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.sApplication;
     }
-    for (;;)
+    return localbaij.a((Context)localObject);
+  }
+  
+  public static void a(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
+    baij.a().a(paramString);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString)
+  {
+    if (!aoyh.a().a()) {}
+    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!baic.c(paramString))) || (!baij.a().a()) || ((!paramString.contains(a)) && (a != null))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131694183));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      a = paramString;
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        break label61;
       }
-      else
+      if ((baic.c(paramString)) && (!baij.a().a(paramString)))
       {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        baig.a("1", "2");
-        continue;
-        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-        baig.a("2", "1");
-        continue;
-        baig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        baig.b("0X800A00A", "0X800A00A");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
-        baig.a("3", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
-        baig.a("4", "1");
+        baij.a().a(paramString);
+        baij.a().a(paramString);
       }
     }
+    return;
+    label61:
+    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
   }
 }
 

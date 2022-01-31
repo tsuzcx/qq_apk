@@ -1,34 +1,53 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.util.Locale;
 
-public class agip
-  extends agij
+class agip
+  implements MessageQueue.IdleHandler
 {
-  public aemn a;
-  public Bitmap a;
-  public boolean a;
-  public Drawable[] a;
+  agip(aghx paramaghx) {}
   
-  public agip(String paramString)
+  public boolean queueIdle()
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    Object localObject = this.a.jdField_a_of_type_Agjh.a();
+    if ((localObject != null) && (AIOImageData.class.isInstance(((agkf)localObject).a)))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_Aemn = paramRedPacketInfo.jdField_a_of_type_Aemn;
-      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
+      AIOImageData localAIOImageData = (AIOImageData)((agkf)localObject).a;
+      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
+      {
+        this.a.c(true);
+        this.a.u();
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
+    if ((localObject != null) && (AIOFilePicData.class.isInstance(((agkf)localObject).a)))
+    {
+      localObject = (AIOFilePicData)((agkf)localObject).a;
+      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
+      {
+        if ((!((AIOFilePicData)localObject).d) || (!bdil.a(((AIOFilePicData)localObject).b))) {
+          break label211;
+        }
+        this.a.c(true);
+        this.a.a(false);
+        this.a.jdField_a_of_type_Agiw = null;
+      }
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aghx.d(this.a).getString(2131695502), new Object[] { arso.a(((AIOFilePicData)localObject).a) }));
+      }
+      return false;
+      label211:
+      if (((AIOFilePicData)localObject).e) {
+        this.a.c(false);
+      } else {
+        this.a.c(true);
+      }
+    }
   }
 }
 

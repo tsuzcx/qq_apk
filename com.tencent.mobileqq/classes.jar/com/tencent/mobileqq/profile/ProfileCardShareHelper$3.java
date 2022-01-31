@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import arof;
-import awmn;
-import bcwc;
+import arso;
+import awqw;
+import bdal;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -13,23 +13,23 @@ import mqq.os.MqqHandler;
 public class ProfileCardShareHelper$3
   implements Runnable
 {
-  public ProfileCardShareHelper$3(awmn paramawmn, String paramString) {}
+  public ProfileCardShareHelper$3(awqw paramawqw, String paramString) {}
   
   public void run()
   {
     try
     {
       Bitmap localBitmap;
-      if (arof.a(this.a))
+      if (arso.a(this.a))
       {
-        awmn.a(this.this$0, BitmapFactory.decodeFile(awmn.b(this.this$0)));
-        localBitmap = awmn.a(this.this$0);
+        awqw.a(this.this$0, BitmapFactory.decodeFile(awqw.b(this.this$0)));
+        localBitmap = awqw.a(this.this$0);
       }
       for (;;)
       {
         ThreadManager.getUIHandler().post(new ProfileCardShareHelper.3.1(this, localBitmap));
         return;
-        localBitmap = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130840085);
+        localBitmap = bdal.b(BaseApplicationImpl.getApplication().getResources(), 2130840086);
         QLog.d("ProfileCardShareHelper", 2, String.format("decodeFace facePath: %s is not exist", new Object[] { this.a }));
       }
       return;

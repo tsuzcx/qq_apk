@@ -1,41 +1,82 @@
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.pool.RecyclablePool;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import java.util.Arrays;
+import java.util.HashMap;
+
+@TargetApi(18)
 public class bnjc
+  extends bnfd
 {
-  public int a;
-  public long a;
-  public azfn a;
-  public String a;
-  public boolean a;
-  public long b;
-  public azfn b;
-  public String b;
-  public boolean b;
-  public long c;
+  private static bnjc a;
+  public boolean d;
   
-  public bnjc()
+  private bnjc()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  public void a(bnjc parambnjc)
+  public static bnjc a()
   {
-    if (parambnjc == null) {
-      throw new NullPointerException();
+    if (jdField_a_of_type_Bnjc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bnjc == null) {
+        jdField_a_of_type_Bnjc = new bnjc();
+      }
+      return jdField_a_of_type_Bnjc;
     }
-    this.jdField_a_of_type_JavaLangString = parambnjc.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambnjc.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Azfn = parambnjc.jdField_a_of_type_Azfn;
-    this.jdField_a_of_type_Boolean = parambnjc.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambnjc.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambnjc.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambnjc.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambnjc.jdField_b_of_type_Long;
-    this.c = parambnjc.c;
+    finally {}
   }
   
-  public String toString()
+  public void a(String paramString, boolean paramBoolean)
   {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    label253:
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          return;
+        }
+        if (this.jdField_a_of_type_Bnff != null)
+        {
+          if (!paramBoolean)
+          {
+            l1 = a(this.jdField_a_of_type_Bnff.c - this.jdField_a_of_type_Bnff.jdField_b_of_type_Long);
+            if ((this.jdField_a_of_type_Bnff.jdField_a_of_type_Long > 0L) && (l1 > a()))
+            {
+              long l2 = (this.jdField_a_of_type_Bnff.c - this.jdField_a_of_type_Bnff.jdField_b_of_type_Long) / this.jdField_b_of_type_Long;
+              long l3 = this.jdField_a_of_type_Bnff.jdField_a_of_type_Long;
+              paramString = new HashMap(10);
+              paramString.put("dropCount", String.valueOf(l2 + 1L - l3));
+              paramString.put("totalMs", String.valueOf(l1));
+              paramString.put("scene", this.jdField_a_of_type_Bnff.jdField_a_of_type_JavaLangString);
+              paramString.put("dropTimes", Arrays.toString(this.jdField_a_of_type_Bnff.jdField_a_of_type_ArrayOfLong));
+              paramString.put("isFirstLaunch", String.valueOf(BaseApplicationImpl.isFirstLaunchNew));
+              if (jdField_a_of_type_Long <= 0L) {
+                break label253;
+              }
+              l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+              paramString.put("intervalAfterSyncMsg", String.valueOf(l1));
+              UnifiedMonitor.a().addEvent(9, null, 0, 0, paramString);
+            }
+          }
+          this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(this.jdField_a_of_type_Bnff);
+          this.jdField_a_of_type_Bnff = null;
+        }
+        else
+        {
+          this.c = false;
+          continue;
+        }
+        long l1 = -1L;
+      }
+      finally {}
+    }
   }
 }
 

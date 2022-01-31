@@ -1,123 +1,37 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.ui.MoreFragment;
 
-public abstract class bhmj
+public class bhmj
+  implements Animation.AnimationListener
 {
-  bhmj(TraeAudioManager paramTraeAudioManager) {}
+  public bhmj(MoreFragment paramMoreFragment, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  public abstract String a();
-  
-  String a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str;
-    switch (paramInt)
+    paramAnimation = MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment);
+    if (paramAnimation != null)
     {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
-    }
-  }
-  
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, bhmk parambhmk)
-  {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
+      paramAnimation.putExtra("miniAppID", MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment));
+      paramAnimation.putExtra("more_item_id", this.jdField_a_of_type_Int);
+      paramAnimation.putExtra("share_in_mini_process", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        paramAnimation.putExtras(this.jdField_a_of_type_AndroidOsBundle);
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10)
+      if (this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity() != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("TraeAudioManager", 2, "    BT off");
-        }
-        parambhmk.a("DEVICE_BLUETOOTHHEADSET", false);
+        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().setResult(-1, paramAnimation);
+        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().finish();
       }
-      while ((i != 12) || (!QLog.isColorLevel())) {
-        return;
-      }
-      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
-      return;
-    }
-    a(paramContext, paramIntent);
-  }
-  
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, bhmk parambhmk);
-  
-  String b(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
     }
   }
   
-  public void b(IntentFilter paramIntentFilter)
-  {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  String c(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-abstract class abtk
-  extends amle
+final class abtk
+  implements Comparator<MessageRecord>
 {
-  long jdField_a_of_type_Long;
-  absf jdField_a_of_type_Absf;
-  boolean jdField_a_of_type_Boolean;
-  long b;
-  
-  public abtk(absf paramabsf, int paramInt, long paramLong)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    super(paramInt, true, true, paramLong, true, false, "Doraemon");
-    this.jdField_a_of_type_Absf = paramabsf;
-    this.b = 10000L;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
-    }
-    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    abvm.a(this.jdField_a_of_type_Absf, paramInt1, "error " + paramInt1);
-    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    SosoInterface.b(this);
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

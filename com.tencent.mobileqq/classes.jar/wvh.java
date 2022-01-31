@@ -1,13 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public abstract interface wvh
+class wvh
+  implements wvm
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  wvh(wvg paramwvg, ImageView paramImageView) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public void a(Drawable paramDrawable)
+  {
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    }
+  }
 }
 
 

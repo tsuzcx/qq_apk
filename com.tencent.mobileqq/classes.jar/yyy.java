@@ -1,25 +1,71 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class yyy
-  implements ymm
+public class yyy
+  extends aokh<yyx>
 {
-  yyy(yyu paramyyu) {}
-  
-  public void callback(Bundle paramBundle)
+  public int a()
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    return 411;
+  }
+  
+  public Class<yyx> a()
+  {
+    return yyx.class;
+  }
+  
+  @NonNull
+  public yyx a(int paramInt)
+  {
+    return new yyx();
+  }
+  
+  @Nullable
+  public yyx a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        yyu.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
+      yyx localyyx = yyx.a(paramArrayOfaoko[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      a(localyyx);
+      return localyyx;
     }
+    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yyx paramyyx)
+  {
+    if (paramyyx != null)
+    {
+      yyw.a().a("mine_videostory_entrance", paramyyx.a());
+      yyw.a().a("enable_click_take_picture", paramyyx.b());
+      yyw.a().a("mine_videostory_drawer_entrance", paramyyx.c());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramyyx.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

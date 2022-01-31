@@ -1,21 +1,9 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class ujg
-  extends SimpleJob
+public abstract interface ujg
 {
-  ujg(ujf paramujf, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
-  
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Ujf.b(this.jdField_a_of_type_Boolean);
-    return null;
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 

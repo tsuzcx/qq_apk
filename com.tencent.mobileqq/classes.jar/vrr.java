@@ -1,46 +1,42 @@
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public abstract interface vrr
+public class vrr
+  implements View.OnTouchListener
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract vse a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(vrs paramvrs);
-  
-  public abstract void a(vrt paramvrt);
-  
-  public abstract void a(vru paramvru);
-  
-  public abstract void a(vrv paramvrv);
-  
-  public abstract void a(vrw paramvrw);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    Object localObject = ((TextView)paramView).getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    paramView = (TextView)paramView;
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 

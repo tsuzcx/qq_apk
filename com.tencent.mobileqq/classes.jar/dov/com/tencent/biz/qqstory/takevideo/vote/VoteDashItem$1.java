@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo.vote;
 
 import android.view.View;
-import bmmu;
-import bnap;
+import bmrg;
+import bnfb;
 
 public class VoteDashItem$1
   implements Runnable
 {
-  public VoteDashItem$1(bnap parambnap, bmmu parambmmu, View paramView) {}
+  public VoteDashItem$1(bnfb parambnfb, bmrg parambmrg, View paramView) {}
   
   public void run()
   {
-    bmmu localbmmu = this.jdField_a_of_type_Bmmu;
-    if (!this.jdField_a_of_type_Bmmu.a) {}
+    bmrg localbmrg = this.jdField_a_of_type_Bmrg;
+    if (!this.jdField_a_of_type_Bmrg.a) {}
     for (boolean bool = true;; bool = false)
     {
-      localbmmu.a = bool;
+      localbmrg.a = bool;
       this.jdField_a_of_type_AndroidViewView.invalidate();
       return;
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -48,8 +48,8 @@ public class MaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845149);
-    this.jdField_a_of_type_Int = aekt.a(3.0F, getResources());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845221);
+    this.jdField_a_of_type_Int = aepi.a(3.0F, getResources());
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     int j;
     int i;
@@ -60,7 +60,7 @@ public class MaskView
     }
     for (;;)
     {
-      int k = j - aekt.a(18.0F, getResources());
+      int k = j - aepi.a(18.0F, getResources());
       int m = k * 424 / 680;
       int n = (j - k) / 2 + 0;
       int i1 = (i - m) / 2 + 0;

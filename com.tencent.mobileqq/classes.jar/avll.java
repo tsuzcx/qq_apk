@@ -1,9 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface avll
+class avll
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  avll(avkt paramavkt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.d(true);
+    azqs.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+  }
 }
 
 

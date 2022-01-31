@@ -1,26 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahiy
-  implements bhwu
+  implements ahvv
 {
-  public ahiy(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
+  public ahiy(TroopView paramTroopView) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(false);
+    if (babd.a())
+    {
+      localMessage = TroopView.a(this.a).obtainMessage(15);
+      TroopView.a(this.a).sendMessage(localMessage);
     }
-  }
-  
-  public void b(View paramView)
-  {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(true);
+    do
+    {
+      return;
+      if (!bdin.g(BaseApplication.getContext())) {
+        break label105;
+      }
+      if (this.a.a.size() <= 0) {
+        break;
+      }
+    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
+    TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
+    return;
+    TroopView.b(this.a);
+    return;
+    label105:
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
     }
+    Message localMessage = TroopView.a(this.a).obtainMessage(13);
+    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
   }
 }
 

@@ -1,56 +1,28 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aunm
-  implements ServiceConnection
+  implements aumm
 {
-  public aunm(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public aunm(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    MusicPlayerActivity.a(this.a, auml.a(paramIBinder));
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    }
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(true);
+    }
+    if (MultiCardFragment.a(this.a) != null)
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
-      {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (aunt)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
-        }
+      MultiCardFragment.a(this.a).c(paramInt);
+      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
       }
-      return;
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
-    {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
-      return;
-    }
-    catch (RemoteException paramComponentName) {}
   }
 }
 

@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apkf;
-import batw;
-import baub;
-import bdcs;
-import bdvv;
-import bdvx;
+import apoo;
+import bayf;
+import bayk;
+import bdhb;
+import beae;
+import beag;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class FavroamingManager$7
   implements Runnable
 {
-  public FavroamingManager$7(apkf paramapkf, String[] paramArrayOfString, baub parambaub) {}
+  public FavroamingManager$7(apoo paramapoo, String[] paramArrayOfString, bayk parambayk) {}
   
   public void run()
   {
-    if (!bdcs.a(this.jdField_a_of_type_ArrayOfJavaLangString[1]))
+    if (!bdhb.a(this.jdField_a_of_type_ArrayOfJavaLangString[1]))
     {
       Object localObject = new File(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-      localObject = new bdvv(this.jdField_a_of_type_ArrayOfJavaLangString[0], (File)localObject);
-      ((bdvv)localObject).n = true;
-      if (bdvx.a((bdvv)localObject, apkf.r(this.this$0)) != 0) {
+      localObject = new beae(this.jdField_a_of_type_ArrayOfJavaLangString[0], (File)localObject);
+      ((beae)localObject).n = true;
+      if (beag.a((beae)localObject, apoo.r(this.this$0)) != 0) {
         QLog.e("FavroamingManager", 1, "collectEmoji fail to download thumbFile: " + this.jdField_a_of_type_ArrayOfJavaLangString[1]);
       }
     }
     while (this.this$0.a == null) {
       return;
     }
-    this.this$0.a.a(this.jdField_a_of_type_Baub);
+    this.this$0.a.a(this.jdField_a_of_type_Bayk);
   }
 }
 

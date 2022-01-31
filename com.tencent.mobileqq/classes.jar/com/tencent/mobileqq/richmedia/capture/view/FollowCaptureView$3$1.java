@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.Bitmap;
-import axqh;
+import axuq;
 
 class FollowCaptureView$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class FollowCaptureView$3$1
   
   public void run()
   {
-    axqh.a(FollowCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    axuq.a(FollowCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

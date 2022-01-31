@@ -9,7 +9,7 @@ public final class ShareImageUtils$4
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2131695348), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2131695350), 0).a();
   }
 }
 

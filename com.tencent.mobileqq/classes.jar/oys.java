@@ -12,7 +12,7 @@ public class oys
   
   public void onClick(View paramView)
   {
-    paramView = (beei)this.a.a.a(4);
+    paramView = (beir)this.a.a.a(4);
     if ((paramView != null) && (paramView.a != null) && (paramView.a.isShowing())) {
       return;
     }

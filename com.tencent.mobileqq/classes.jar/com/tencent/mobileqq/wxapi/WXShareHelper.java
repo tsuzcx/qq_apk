@@ -10,9 +10,9 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import aywp;
-import bevx;
-import bevy;
+import azay;
+import bfag;
+import bfah;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -38,7 +38,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
 import ndi;
-import xxb;
+import ybk;
 
 public class WXShareHelper
   extends BroadcastReceiver
@@ -46,10 +46,10 @@ public class WXShareHelper
 {
   private static WXShareHelper jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bevx(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bfag(this);
   Context jdField_a_of_type_AndroidContentContext;
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxf0a80d0ac2e82aa7", true);
-  private ArrayList<bevy> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private ArrayList<bfah> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   private IWXAPI b;
   
   private WXShareHelper()
@@ -128,7 +128,7 @@ public class WXShareHelper
     QLog.d("WXShareHelper", 1, "--shareImageToWX");
     if (TextUtils.isEmpty(paramString1))
     {
-      xxb.a(1, 2131696944);
+      ybk.a(1, 2131696946);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -222,12 +222,12 @@ public class WXShareHelper
     }
   }
   
-  public void a(bevy parambevy)
+  public void a(bfah parambfah)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambevy)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambevy);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambfah)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambfah);
       }
       return;
     }
@@ -256,7 +256,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      xxb.a(1, 2131696944);
+      ybk.a(1, 2131696946);
       return;
     }
     a(paramString1, a(paramBitmap, paramInt1), paramInt2, paramString2);
@@ -271,7 +271,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      xxb.a(1, 2131696944);
+      ybk.a(1, 2131696946);
       return;
     }
     a(paramString1, a(paramBitmap, false, paramBoolean), paramInt, paramString2);
@@ -384,12 +384,12 @@ public class WXShareHelper
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
   }
   
-  public void b(bevy parambevy)
+  public void b(bfah parambfah)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(parambevy)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(parambevy);
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(parambfah)) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(parambfah);
       }
       return;
     }
@@ -511,7 +511,7 @@ public class WXShareHelper
     }
     try
     {
-      paramBaseReq = aywp.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
+      paramBaseReq = azay.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
       if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
       {
         paramBaseReq = Uri.decode((String)paramBaseReq.get("schema"));
@@ -547,7 +547,7 @@ public class WXShareHelper
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((bevy)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((bfah)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;

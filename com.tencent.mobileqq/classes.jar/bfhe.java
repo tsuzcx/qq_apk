@@ -1,96 +1,97 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.Base64;
-import com.tencent.open.base.img.ImageCache;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bfhe
+  extends SSOAccountObserver
 {
-  public static Bitmap a(Drawable paramDrawable)
+  public bfhe(SwitchAccountActivity paramSwitchAccountActivity) {}
+  
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+    this.a.e();
+    String str = paramBundle.getString("error");
+    try
     {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+      paramInt1 = paramBundle.getInt("code");
+      bfng.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
+      if (paramInt2 == -1000) {
+        this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, this.a.getResources().getString(2131695065));
+      }
+      for (;;)
+      {
+        paramInt1 = paramBundle.getInt("code");
+        QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
+        return;
+        if ((paramInt2 == 1) || (paramInt2 == -1004))
+        {
+          this.a.b();
+        }
+        else
+        {
+          Object localObject1 = (ErrMsg)paramBundle.getParcelable("lastError");
+          if (localObject1 == null) {
+            break;
+          }
+          localObject1 = ((ErrMsg)localObject1).getMessage();
+          Object localObject3;
+          if (localObject1 != null)
+          {
+            localObject3 = localObject1;
+            if (((String)localObject1).length() != 0) {}
+          }
+          else
+          {
+            localObject3 = this.a.getString(2131721214);
+          }
+          this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, (String)localObject3);
+        }
+      }
     }
-  }
-  
-  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+    catch (Exception localException)
     {
-      localObject = Bitmap.createBitmap(paramInt1, paramInt2, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+      for (;;)
+      {
+        continue;
+        Object localObject2 = null;
+      }
     }
   }
   
-  public static Bitmap a(String paramString)
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    String str1 = a(paramString, 100);
-    String str2 = ImageCache.a("app", str1);
-    bfhg.b("ImageUtil", "100_url:" + str1 + " icon_path=" + str2);
-    if (new File(str2).exists()) {
-      return bfhc.a(str2, 72, 72, false);
+    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
+      bfnz.a(paramString, System.currentTimeMillis());
     }
-    paramString = a(paramString, 75);
-    str1 = ImageCache.a("app", paramString);
-    bfhg.b("ImageUtil", "75_url:" + paramString + " icon_path=" + str1);
-    if (new File(str1).exists()) {
-      return bfhc.a(str1, 72, 72, false);
+    this.a.e();
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
     }
-    return null;
+    this.a.a(paramString, str, paramBundle);
+    paramInt = paramBundle.getInt("code");
+    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : success | code: " + paramInt);
+    try
+    {
+      bfng.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, 0, Long.parseLong(paramString), "1000069", null);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SwitchAccountActivity", 2, "report login error : " + paramString.toString());
+    }
   }
   
-  @TargetApi(8)
-  public static String a(Drawable paramDrawable)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT <= 7) {
-      return "";
-    }
-    paramDrawable = a(paramDrawable);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramDrawable.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 0);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    String str = "00000000" + paramString;
-    str = str.substring(str.length() - 8);
-    paramString = String.format("http://i.gtimg.cn/open/app_icon/%s/%s/%s/%s/%s_%d_m.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString, Integer.valueOf(paramInt) });
-    bfhg.b("opensdk", ">>iconUrl=" + paramString);
-    return paramString;
-  }
-  
-  public static Bitmap b(Drawable paramDrawable)
-  {
-    return a(paramDrawable);
+    this.a.e();
+    paramInt = paramBundle.getInt("code");
+    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
   }
 }
 

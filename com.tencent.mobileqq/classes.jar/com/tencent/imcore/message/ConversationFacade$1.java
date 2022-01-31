@@ -1,18 +1,18 @@
 package com.tencent.imcore.message;
 
-import abol;
+import abta;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ConversationFacade$1
   implements Runnable
 {
-  public ConversationFacade$1(abol paramabol) {}
+  public ConversationFacade$1(abta paramabta) {}
   
   public void run()
   {
-    abol.a(this.this$0);
-    abol.a(this.this$0).a().notifyUI(8023, true, null);
+    abta.a(this.this$0);
+    abta.a(this.this$0).a().notifyUI(8023, true, null);
   }
 }
 

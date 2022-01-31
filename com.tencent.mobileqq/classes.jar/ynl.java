@@ -1,30 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-class ynl
-  implements alqk
+public class ynl
+  implements yqb
 {
-  ynl(ync paramync, Bundle paramBundle) {}
+  public ynl(VideoPlayerView paramVideoPlayerView) {}
   
-  public boolean a(alqp paramalqp)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    Bundle localBundle = new Bundle();
-    alqp localalqp = paramalqp;
-    if (paramalqp == null) {
-      localalqp = this.jdField_a_of_type_Ync.a.a.jdField_a_of_type_Alql.a(this.jdField_a_of_type_Ync.a.a.jdField_a_of_type_JavaLangString, 1, alqj.a());
-    }
-    if (localalqp != null)
+    if (VideoPlayerView.a(this.a) != null)
     {
-      localBundle.putString("url", localalqp.b);
-      localBundle.putString("content", localalqp.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Ync.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+      zaj.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+      VideoPlayerView.a(this.a).poster.followState.set(1);
+      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
     }
   }
 }

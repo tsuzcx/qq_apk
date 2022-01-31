@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MarkFaceMessage;
 
 class aufp
-  implements DialogInterface.OnClickListener
+  implements aufz<MarkFaceMessage, apxv>
 {
-  aufp(aufi paramaufi) {}
+  aufp(aufn paramaufn, MarkFaceMessage paramMarkFaceMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apxv a(MarkFaceMessage paramMarkFaceMessage)
   {
-    paramDialogInterface.dismiss();
-    azmj.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
-      aufi.a(this.a).a(false, null, false);
-    }
+    return this.jdField_a_of_type_Aufn.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
   }
 }
 

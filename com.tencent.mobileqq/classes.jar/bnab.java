@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import android.graphics.Bitmap;
+import java.util.List;
 
-public class bnab
-  implements View.OnClickListener
+public abstract interface bnab
 {
-  public bnab(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  public abstract void a();
   
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
+  
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

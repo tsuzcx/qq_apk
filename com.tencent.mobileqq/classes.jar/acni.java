@@ -1,39 +1,15 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-public class acni
-  extends alyo
+class acni
+  implements aupv
 {
-  public acni(Conversation paramConversation) {}
+  acni(acnh paramacnh) {}
   
-  public void a(List<String> paramList)
+  public void a()
   {
-    amjk localamjk;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localamjk = this.a.a.a();
-      if (localamjk != null) {
-        break label37;
-      }
-      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
-    }
-    for (;;)
-    {
-      return;
-      label37:
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RecentUser localRecentUser = localamjk.a((String)paramList.next(), 0);
-        if (localRecentUser != null) {
-          localamjk.b(localRecentUser);
-        }
-      }
-    }
+    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Auqc.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
   }
 }
 

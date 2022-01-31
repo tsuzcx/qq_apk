@@ -1,15 +1,15 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class besv
-  extends StateListDrawable
+  implements View.OnClickListener
 {
-  public besv(int paramInt1, int paramInt2)
+  public besv(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  
+  public void onClick(View paramView)
   {
-    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
-    addState(new int[] { 16842919 }, localColorDrawable);
-    localColorDrawable = new ColorDrawable(paramInt2);
-    addState(new int[] { 16842921 }, localColorDrawable);
+    ProfileCardMoreInfoView.a(this.a);
   }
 }
 

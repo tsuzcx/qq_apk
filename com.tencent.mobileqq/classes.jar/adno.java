@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adno
-  implements baji
+class adno
+  implements DialogInterface.OnClickListener
 {
-  public adno(QQSettingMe paramQQSettingMe) {}
+  adno(adnn paramadnn) {}
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingMe.d(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

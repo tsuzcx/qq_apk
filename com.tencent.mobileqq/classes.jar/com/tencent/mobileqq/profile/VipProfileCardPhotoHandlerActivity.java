@@ -5,9 +5,9 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awns;
-import bcyw;
-import bdda;
+import awsb;
+import bddf;
+import bdhj;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -27,7 +27,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bcyw.b(this), bcyw.a(this), bcyw.b(this), bcyw.a(this), bcyw.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bddf.b(this), bddf.a(this), bddf.b(this), bddf.a(this), bddf.c());
   }
   
   private void b()
@@ -36,7 +36,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new awns(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new awsb(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -47,11 +47,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bdda.b(this, paramUri);
+    paramUri = bdhj.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bcyw.b(this), bcyw.a(this), bcyw.b(this), bcyw.a(this), paramUri, bcyw.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bddf.b(this), bddf.a(this), bddf.b(this), bddf.a(this), paramUri, bddf.c());
   }
   
   protected void a(String paramString)

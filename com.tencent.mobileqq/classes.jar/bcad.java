@@ -1,43 +1,43 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
 public class bcad
-  extends bcbe<ArithmeticViewHolder, bbzm>
+  implements bckx
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
+  public bcad(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bcad(XMediaEditor paramXMediaEditor, Context paramContext)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561329, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
-  }
-  
-  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
-  
-  public void a(bbzm parambbzm)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getActivity(), 2131697874, 0).a();
+        paramJSONObject = aepi.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
+        paramJSONObject.addFlags(268435456);
+        paramJSONObject.putExtra("uin", this.a.b);
+        paramJSONObject.putExtra("uintype", 1);
+        this.a.getActivity().startActivity(paramJSONObject);
+        this.a.getActivity().overridePendingTransition(2130771990, 2130772295);
+      }
     }
-  }
-  
-  public void a(ArithmeticViewHolder paramArithmeticViewHolder, bbzm parambbzm, int paramInt)
-  {
-    paramArithmeticViewHolder.a(parambbzm, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    else
+    {
+      return;
     }
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131697873, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131697933, 0).a();
   }
 }
 

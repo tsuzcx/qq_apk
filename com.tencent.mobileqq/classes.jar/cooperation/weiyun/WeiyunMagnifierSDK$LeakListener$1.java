@@ -1,18 +1,18 @@
 package cooperation.weiyun;
 
-import alpo;
-import bkfo;
+import alud;
+import bkjv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class WeiyunMagnifierSDK$LeakListener$1
   implements Runnable
 {
-  public WeiyunMagnifierSDK$LeakListener$1(bkfo parambkfo, String paramString) {}
+  public WeiyunMagnifierSDK$LeakListener$1(bkjv parambkjv, String paramString) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString + alpo.a(2131717310), 2000).a();
+    QQToast.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString + alud.a(2131717322), 2000).a();
   }
 }
 

@@ -38,19 +38,19 @@ public class rnm
   {
     super(paramView, paramActivity, 0);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = ((ViewGroup)paramView.findViewById(2131367565));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367566));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367563));
-    this.e = ((ViewGroup)paramView.findViewById(2131367564));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367568));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376516));
+    this.d = ((ViewGroup)paramView.findViewById(2131367575));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367576));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367573));
+    this.e = ((ViewGroup)paramView.findViewById(2131367574));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367578));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376570));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.e.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369843));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369862));
   }
   
   private void a()
@@ -126,13 +126,13 @@ public class rnm
     localLayoutParams.topMargin = arrayOfInt[0];
     localLayoutParams.rightMargin = arrayOfInt[1];
     if (this.jdField_a_of_type_Boolean) {
-      localLayoutParams.width = aekt.a(91.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.width = aepi.a(91.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     }
-    for (localLayoutParams.height = aekt.a(28.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());; localLayoutParams.height = aekt.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()))
+    for (localLayoutParams.height = aepi.a(28.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());; localLayoutParams.height = aepi.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()))
     {
       this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams(localLayoutParams);
       return;
-      localLayoutParams.width = aekt.a(78.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.width = aepi.a(78.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     }
   }
   
@@ -212,11 +212,11 @@ public class rnm
     {
     default: 
       return;
-    case 2131367564: 
-    case 2131367566: 
+    case 2131367574: 
+    case 2131367576: 
       this.jdField_a_of_type_Rng.d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
       return;
-    case 2131367560: 
+    case 2131367570: 
       this.jdField_a_of_type_Rng.c(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
       return;
     }

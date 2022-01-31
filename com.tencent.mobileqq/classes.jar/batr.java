@@ -1,187 +1,247 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngImage;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtil;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import org.apache.http.Header;
+import java.util.HashMap;
+import java.util.List;
 
 public class batr
-  extends bame
+  extends batj
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public batr(bayf parambayf, bayk parambayk)
   {
-    Object localObject2 = null;
-    int j = 0;
-    paramURLDrawableHandler = paramDownloadParams.url.getFile();
-    String str = paramDownloadParams.url.getHost();
-    if (paramURLDrawableHandler.startsWith(File.separator))
-    {
-      paramURLDrawableHandler = paramURLDrawableHandler.substring(1);
-      for (;;)
-      {
-        Object localObject1 = new File(str);
-        int i;
-        Object localObject3;
-        if (((File)localObject1).exists())
-        {
-          i = 1;
-          paramOutputStream = (OutputStream)localObject1;
-          localObject3 = paramDownloadParams.getHeader("my_uin");
-          localObject1 = paramOutputStream;
-          if (localObject3 == null) {}
-        }
-        try
-        {
-          localObject1 = ((Header)localObject3).getValue();
-          localObject3 = (bakh)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject1)).getManager(185);
-          localObject1 = paramOutputStream;
-          ResData localResData;
-          if (((bakh)localObject3).a != null)
-          {
-            Header localHeader = paramDownloadParams.getHeader("my_id");
-            localResData = new ResData();
-            localObject1 = localObject2;
-            if (localHeader != null) {
-              localObject1 = localHeader.getValue();
-            }
-            localResData.id = ((String)localObject1);
-            localResData.path = str;
-            localResData.url = paramURLDrawableHandler;
-            paramURLDrawableHandler = paramDownloadParams.getHeader("my_type");
-            if (paramURLDrawableHandler != null) {
-              j = Integer.parseInt(paramURLDrawableHandler.getValue());
-            }
-            localResData.type = j;
-            paramURLDrawableHandler = new Bundle();
-            paramDownloadParams = paramDownloadParams.getHeader("page_index");
-            if (paramDownloadParams == null) {
-              break label722;
-            }
-            j = Integer.parseInt(paramDownloadParams.getValue());
-            label236:
-            paramURLDrawableHandler.putInt("page_index", j);
-            paramDownloadParams = ((bakh)localObject3).a;
-            if (i == 0) {
-              break label728;
-            }
-          }
-          label663:
-          label722:
-          label728:
-          for (i = 4;; i = 8)
-          {
-            paramDownloadParams.callback(18, i, paramURLDrawableHandler, localResData);
-            localObject1 = paramOutputStream;
-            boolean bool;
-            do
-            {
-              return localObject1;
-              paramOutputStream = new File(bhlt.a((File)localObject1));
-              bool = paramDownloadParams.useSharpPImage;
-              if ((!bool) || (!paramOutputStream.exists())) {
-                break;
-              }
-              localObject1 = paramOutputStream;
-            } while (!QLog.isColorLevel());
-            QLog.d("themediydownloader", 2, "downloadImage shpFile.exists url=" + paramURLDrawableHandler + ", path=" + str);
-            return paramOutputStream;
-            if (QLog.isColorLevel()) {
-              QLog.d("themediydownloader", 2, "downloadImage download url=" + paramURLDrawableHandler + ", path=" + str + ", isSharpPAv=" + bool);
-            }
-            paramOutputStream = new bdvv(paramURLDrawableHandler, (File)localObject1);
-            paramOutputStream.k = bool;
-            if (bdvx.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) == 0)
-            {
-              if ((((File)localObject1).exists()) && (!SignatureManager.a(((File)localObject1).getAbsolutePath())))
-              {
-                ((File)localObject1).delete();
-                QLog.e("themediydownloader", 1, "downloadImage file Error url=" + paramURLDrawableHandler + ", path=" + str);
-                paramOutputStream = null;
-                label498:
-                if (!(paramDownloadParams.mExtraInfo instanceof Integer)) {
-                  break label663;
-                }
-              }
-              for (;;)
-              {
-                try
-                {
-                  i = Integer.parseInt(String.valueOf(paramDownloadParams.mExtraInfo));
-                  QLog.i("themediydownloader", 1, "downloadImage onPostThemeChanged pageIndex: " + i + ", needUpdateThemeForBg=" + ThemeBackground.needUpdateThemeForBg);
-                  if ((ThemeBackground.needUpdateThemeForBg) && (100 == i))
-                  {
-                    ThemeBackground.needUpdateThemeForBg = false;
-                    localObject1 = new Intent("com.tencent.qplus.THEME_INVALIDATE");
-                    ((Intent)localObject1).putExtra("pid", Process.myPid());
-                    BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
-                  }
-                  i = 1;
-                }
-                catch (Exception localException)
-                {
-                  QLog.e("themediydownloader", 1, "downloadImage parseInt Error:" + localException.getMessage());
-                }
-                paramOutputStream = (OutputStream)localObject1;
-                if (!SharpPUtil.isSharpPFile((File)localObject1)) {
-                  break label498;
-                }
-                paramOutputStream = bhlt.a((File)localObject1);
-                break label498;
-                i = 0;
-              }
-            }
-            paramOutputStream = new File(aljq.aX);
-            QLog.e("themediydownloader", 1, "downloadImage Error url=" + paramURLDrawableHandler + ", path=" + str);
-            i = 0;
-            break;
-            j = -1;
-            break label236;
-          }
-        }
-        catch (Exception paramDownloadParams)
-        {
-          QLog.e("themediydownloader", 1, "downloadImage Error:" + paramDownloadParams.getMessage());
-          return paramOutputStream;
-        }
-      }
-    }
+    super(parambayf, parambayk);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected void a(boolean paramBoolean)
   {
-    paramURLDrawableHandler = null;
-    if (paramDownloadParams == null) {
-      paramDownloadParams = paramURLDrawableHandler;
+    super.a(paramBoolean);
+    HashMap localHashMap = new HashMap();
+    if (!paramBoolean)
+    {
+      localHashMap.put("param_FailCode", String.valueOf(this.j));
+      localHashMap.put("fail_url", this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawDownloadUrl);
+    }
+    azri.a(BaseApplicationImpl.getContext()).a(null, "actGroupSendQzonePicInfo", paramBoolean, (System.nanoTime() - this.k) / 1000000L, 0L, localHashMap, "");
+  }
+  
+  protected void b(bbax parambbax, bbbm parambbbm)
+  {
+    this.jdField_a_of_type_Bbax = null;
+    if (parambbbm != null)
+    {
+      int i = 0;
+      while (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
+      {
+        parambbax = (bbbz)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("procUrl", parambbax.toString());
+        }
+        this.i = parambbax.d;
+        if (QLog.isColorLevel()) {
+          QLog.e("http_sideway", 2, "GroupPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
+        }
+        a(this.jdField_a_of_type_Barh, parambbax);
+        if ((parambbax instanceof bbbr))
+        {
+          parambbax = (bbbr)parambbax;
+          if (parambbax.c != 0) {
+            break label267;
+          }
+          if (parambbax.jdField_a_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> onBusiProtoResp() picUpResp GroupPicUpResp.isExist, mFileID:" + parambbax.jdField_a_of_type_Long + ", mFileSize:" + this.jdField_a_of_type_Bass.jdField_a_of_type_Long);
+            }
+            this.f = true;
+            this.jdField_a_of_type_Bass.jdField_e_of_type_Long = this.jdField_a_of_type_Bass.jdField_a_of_type_Long;
+            this.jdField_a_of_type_Long = parambbax.jdField_a_of_type_Long;
+            this.jdField_a_of_type_JavaUtilArrayList = parambbax.jdField_a_of_type_JavaUtilArrayList;
+            t();
+          }
+        }
+        else
+        {
+          i += 1;
+          continue;
+        }
+        d("<BDH_LOG> onBusiProtoResp() picUpResp exist : " + parambbax.jdField_a_of_type_Boolean + " ,select HTTP channel");
+        this.w = 2;
+        d();
+      }
+    }
+    return;
+    label267:
+    d("<BDH_LOG> onBusiProtoResp() picUpResp error : " + parambbax.c + " ,select HTTP channel");
+    this.w = 2;
+    d();
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      d(1001);
+    }
+    d(1000);
+    this.jdField_a_of_type_Bass.a();
+    d(1001);
+    bayk localbayk = a();
+    if ((localbayk != null) && (localbayk.h))
+    {
+      this.p = localbayk.l;
+      this.jdField_q_of_type_Int = localbayk.m;
+      this.jdField_q_of_type_Long = localbayk.jdField_e_of_type_Long;
+      this.jdField_a_of_type_ArrayOfByte = bdhe.a(localbayk.f);
+      this.d = localbayk.f;
+      this.c = this.d;
+      this.jdField_a_of_type_Bass.f = this.d;
+      this.d = (this.d + "." + this.e);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().preConnect();
+      f();
+      return;
+    }
+    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams != null)
+    {
+      this.p = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawWidth;
+      this.jdField_q_of_type_Int = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawHeight;
+      this.jdField_a_of_type_ArrayOfByte = bdhe.a(this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5);
+      this.d = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      this.c = this.d;
+      this.jdField_a_of_type_Bass.f = this.d;
+      this.e = "jpg";
+      this.d = (this.d + "." + this.e);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().preConnect();
+    f();
+  }
+  
+  protected int d()
+  {
+    boolean bool = true;
+    int j = 0;
+    b("uiParam", this.jdField_a_of_type_Bayk.toString());
+    int i;
+    switch (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int)
+    {
+    default: 
+      this.jdField_b_of_type_Boolean = false;
+      if (2 == this.jdField_a_of_type_Bayk.jdField_b_of_type_Int) {
+        bool = false;
+      }
+      this.g = bool;
+      if ((!this.g) && (this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null))
+      {
+        b(9302, a(new Exception("message null")));
+        d();
+        i = -1;
+      }
+      break;
+    }
+    label193:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            this.jdField_b_of_type_Boolean = true;
+            break;
+            localObject = a();
+            if ((localObject == null) || (!((bayk)localObject).h)) {
+              break label193;
+            }
+            i = j;
+          } while (this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject == null);
+          i = j;
+        } while (!(this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject instanceof bayo));
+        this.l = ((bayo)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Boolean;
+        return 0;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_Bayk.f))
+        {
+          b(9042, a(new Exception("qzonePic md5 null!")));
+          d();
+          return -1;
+        }
+        if ((this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawDownloadUrl)) || (TextUtils.isEmpty(this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5)))
+        {
+          b(9302, a(new Exception("qzonePic param_check error!")));
+          d();
+          return -1;
+        }
+        Object localObject = this.jdField_a_of_type_Bass;
+        long l = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.fileSize;
+        ((bass)localObject).jdField_a_of_type_Long = l;
+        this.jdField_q_of_type_Long = l;
+        if (this.jdField_q_of_type_Long <= 0L)
+        {
+          b(9071, a(new Exception("qzonePic file size 0 ")));
+          d();
+          return -1;
+        }
+        if (this.jdField_q_of_type_Long >= bazm.a())
+        {
+          b(9063, a(new Exception("qzonePic file size TooBig! ")));
+          d();
+          return -1;
+        }
+        i = j;
+      } while (this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject == null);
+      i = j;
+    } while (!(this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject instanceof bayo));
+    this.l = ((bayo)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Boolean;
+    return 0;
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Barh.a();
+    bbax localbbax = new bbax();
+    bbbg localbbbg = new bbbg();
+    localbbbg.jdField_a_of_type_JavaLangString = this.d;
+    localbbbg.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+    localbbbg.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localbbbg.c = this.p;
+    localbbbg.d = this.jdField_q_of_type_Int;
+    localbbbg.jdField_b_of_type_Boolean = this.l;
+    localbbbg.jdField_b_of_type_Int = this.jdField_a_of_type_Bayk.jdField_e_of_type_Int;
+    localbbbg.jdField_e_of_type_Int = 3;
+    localbbbg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawDownloadUrl;
+    MessageRecord localMessageRecord = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (MessageForPic.class.isInstance(localMessageRecord))
+    {
+      localbbbg.jdField_a_of_type_Int = ((MessageForPic)localMessageRecord).imageType;
+      this.u = ((MessageForPic)localMessageRecord).imageType;
+    }
+    localbbbg.c = this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString;
+    localbbbg.d = this.jdField_a_of_type_Bayk.c;
+    localbbbg.e = this.jdField_a_of_type_Bayk.d;
+    localbbbg.f = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+    localbbax.jdField_a_of_type_Bbce = this;
+    localbbax.jdField_a_of_type_JavaLangString = "grp_pic_up";
+    localbbax.jdField_a_of_type_JavaUtilList.add(localbbbg);
+    localbbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
+      d();
     }
     do
     {
-      return paramDownloadParams;
-      if ((paramFile == null) || (!paramFile.exists()) || (!paramDownloadParams.useApngImage) || (!ChatBackgroundManager.a(paramFile))) {
-        break;
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localbbax.toString());
       }
-      paramDownloadParams = new Bundle();
-      paramDownloadParams.putBoolean("key_use_rect", true);
-      paramDownloadParams.putBoolean("key_double_bitmap", true);
-      paramDownloadParams.putIntArray("key_tagId_arr", new int[] { 0 });
-      paramURLDrawableHandler = new ApngImage(paramFile, true, paramDownloadParams);
-      paramDownloadParams = paramURLDrawableHandler;
-    } while (paramURLDrawableHandler.firstFrame != null);
-    ChatBackgroundManager.a(paramFile.getAbsolutePath());
-    return paramURLDrawableHandler;
-    paramDownloadParams.useApngImage = false;
-    return null;
+    } while (!f());
+    this.jdField_a_of_type_Bbax = localbbax;
+    bbcd.a(localbbax);
   }
 }
 

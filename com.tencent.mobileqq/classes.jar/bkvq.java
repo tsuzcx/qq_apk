@@ -1,47 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class bkvq
-  implements Cloneable
+public abstract interface bkvq<T extends RecyclerView.ViewHolder>
 {
-  public int a;
-  public String a;
-  public List<bkvu> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public bkvq()
-  {
-    this.jdField_b_of_type_Int = 2;
-  }
-  
-  public bkvq(String paramString)
-  {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public bkvq a()
-  {
-    bkvq localbkvq = new bkvq();
-    localbkvq.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbkvq.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbkvq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbkvq.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbkvq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbkvq.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localbkvq.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localbkvq;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.hashCode()) {
-      return i + 31;
-    }
-  }
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class aewu
+public class aewu
+  implements badp
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  WeakReference<DoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  long b;
+  public aewu(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public aewu(aewt paramaewt, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
+  public void a()
   {
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
+    int i = (int)(this.a.b - bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Baes.b / 2.0F);
+    int j = (int)(this.a.b - bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Baes.b / 2.0F);
+    int k = (int)(this.a.b - bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Baes.b / 2.0F);
+    badx localbadx = new badx(new bado[] { new bads(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Baes.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bads(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bads(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localbadx.a(new aewv(this));
+    this.a.jdField_a_of_type_Baes.a(new bado[] { localbadx });
   }
 }
 

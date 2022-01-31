@@ -1,19 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
-
-class aezk
-  implements bhqp
+public class aezk
 {
-  aezk(aezj paramaezj) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (aicu)aezj.a(this.a).a.getItem(paramInt - 1);
-    aezj.a(this.a, paramAdapterView);
-    aezj.a(this.a).dismiss();
-    azmj.b(aezj.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
-  }
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

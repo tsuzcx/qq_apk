@@ -11,7 +11,7 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 import qhu;
-import zdk;
+import zhz;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -122,7 +122,7 @@ public class ToolRuntimeBase
     {
       if (this.componentCallbacks == null)
       {
-        this.componentCallbacks = new zdk(this);
+        this.componentCallbacks = new zhz(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
       }
       return;

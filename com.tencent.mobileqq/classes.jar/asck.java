@@ -1,55 +1,24 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class asck
-  implements bhvu
+class asck
+  implements DialogInterface.OnClickListener
 {
-  public asck(NowLiveFragment paramNowLiveFragment) {}
+  asck(ascj paramascj, int paramInt, String paramString) {}
   
-  public void a(bhvt parambhvt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (parambhvt.a)
+    if (paramInt == 1)
     {
-    default: 
-      return;
-    case 0: 
-      parambhvt = this.a.getActivity().getIntent().getStringExtra("big_brother_source_key");
-      if (asyy.a())
-      {
-        localObject = new Bundle();
-        if (!TextUtils.isEmpty(parambhvt)) {
-          ((Bundle)localObject).putString("big_brother_source_key", parambhvt);
-        }
-        asyy.b((Bundle)localObject);
-        return;
+      asdt.a(ascj.a(this.jdField_a_of_type_Ascj), "shareToQQ", ascj.a(this.jdField_a_of_type_Ascj), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      ndq.a(ascj.a(this.jdField_a_of_type_Ascj), 0, "", "");
+      if (ascj.a(this.jdField_a_of_type_Ascj) != null) {
+        ascj.a(this.jdField_a_of_type_Ascj).b(1);
       }
-      localObject = "" + this.a.c;
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      if (!TextUtils.isEmpty(parambhvt)) {
-        localIntent.putExtra("big_brother_source_key", parambhvt);
-      }
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
-    case 1: 
-      parambhvt = "" + this.a.d;
-      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", parambhvt);
-      ((Intent)localObject).putExtra("reqType", 1);
-      this.a.startActivity((Intent)localObject);
-      return;
+      ascj.a(this.jdField_a_of_type_Ascj).moveTaskToBack(true);
     }
-    parambhvt = "" + this.a.e;
-    Object localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", parambhvt);
-    ((Intent)localObject).putExtra("reqType", 1);
-    ((Intent)localObject).putExtra("title", alpo.a(2131708053));
-    this.a.startActivity((Intent)localObject);
   }
 }
 

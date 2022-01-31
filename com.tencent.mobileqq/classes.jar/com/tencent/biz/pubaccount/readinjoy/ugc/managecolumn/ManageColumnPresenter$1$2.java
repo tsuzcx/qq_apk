@@ -12,7 +12,7 @@ public class ManageColumnPresenter$1$2
   public void run()
   {
     qua.a(this.a.a).b();
-    qua.a(this.a.a).a(2131718766);
+    qua.a(this.a.a).a(2131718778);
   }
 }
 

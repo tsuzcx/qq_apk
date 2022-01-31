@@ -1,28 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qapmsdk.QAPM.ABType;
 
-class abvi
-  implements View.OnClickListener
+public class abvi
+  extends QAPM.ABType
 {
-  abvi(abvh paramabvh, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public void active()
   {
-    if (!bdee.d(abvh.a(this.jdField_a_of_type_Abvh)))
-    {
-      QQToast.a(abvh.a(this.jdField_a_of_type_Abvh), abvh.a(this.jdField_a_of_type_Abvh).getString(2131694764), 0).a();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
-    {
-      QLog.e("SdkAuthDialog", 1, "positiveListener is null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    azmj.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
+    setPerfTimeout(1, 9223372036854775807L);
+    setPerfTimeout(4, 9223372036854775807L);
+    setPerfTimeout(2, 9223372036854775807L);
+  }
+  
+  public String getDescription()
+  {
+    return "AIO3D背景";
+  }
+  
+  public void unactive()
+  {
+    setPerfTimeout(1, 3000L);
+    setPerfTimeout(2, 2000L);
+    setPerfTimeout(4, 9223372036854775807L);
   }
 }
 

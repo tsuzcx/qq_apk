@@ -1,23 +1,39 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import android.os.SystemClock;
 
-public class aiue
-  implements AnimationView.MyAnimationListener
+public abstract class aiue
 {
-  public aiue(ThemeHbFragment paramThemeHbFragment) {}
+  private long jdField_a_of_type_Long;
+  private aiud jdField_a_of_type_Aiud;
+  private long b;
   
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  public aiue(long paramLong)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
-    }
+    a(paramLong);
   }
+  
+  public final void a()
+  {
+    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
+    if (l > 1000L)
+    {
+      b(l);
+      return;
+    }
+    b();
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Aiud != null) {
+      this.jdField_a_of_type_Aiud.a(paramLong);
+    }
+    this.b = paramLong;
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
 }
 
 

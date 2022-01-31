@@ -1,109 +1,92 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.os.Bundle;
+import android.os.Looper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqlu
-  implements arqx
+  implements aqlx
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public aqlu(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public aqlu(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
-    if (localFileInfo == null) {}
+    if (this.a.c) {}
     do
     {
       return;
-      if (!aqxj.a(localFileInfo)) {
-        bool = true;
+      if (this.a.jdField_a_of_type_Arca != null) {
+        this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long = System.currentTimeMillis();
       }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, localFileInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramInt1 != paramInt3) {
-      return;
-    }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
-    if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
-    }
-    for (;;)
-    {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
+      this.a.c = true;
+      if (!paramBoolean)
       {
-        QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
+        if ((paramString3 != null) && (paramString3.length() > 0)) {
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+        }
+        for (;;)
+        {
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.a.jdField_f_of_type_Boolean = true;
+          this.a.stopTitleProgress();
+          if (this.a.jdField_a_of_type_Arca != null)
+          {
+            this.a.jdField_a_of_type_Arca.jdField_a_of_type_Boolean = false;
+            this.a.jdField_a_of_type_Arca.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long - this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long);
+            this.a.jdField_a_of_type_Arca.jdField_e_of_type_JavaLangString = String.valueOf(paramLong);
+            this.a.jdField_a_of_type_Arca.i = paramString3;
+            this.a.jdField_a_of_type_Arca.jdField_d_of_type_JavaLangString = paramString6;
+            this.a.jdField_a_of_type_Arca.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Arca.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_Arca.a();
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "OnCSReplay[false],retMsg[" + paramString3 + "]");
+          return;
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131704959));
+        }
       }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
-    }
-    paramInt2 = this.b;
-    QfileLocalFilePicTabView localQfileLocalFilePicTabView;
-    FileInfo localFileInfo;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
-      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
+      this.a.h = paramString1;
+      this.a.i = paramString2;
+      this.a.jdField_f_of_type_JavaLangString = paramString4;
+      this.a.g = paramString5;
+      this.a.jdField_b_of_type_JavaLangString = ("http://" + paramString1 + ":" + paramString2 + "/ftn_doc_previewer/" + this.a.j);
+      this.a.k = paramString6;
+      if (this.a.jdField_a_of_type_Arca != null)
       {
-        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
-        paramInt2 += 1;
-        break;
+        this.a.jdField_a_of_type_Arca.jdField_a_of_type_Boolean = true;
+        this.a.jdField_a_of_type_Arca.g = paramString4;
+        this.a.jdField_a_of_type_Arca.i = "";
+        this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long = System.currentTimeMillis();
+        this.a.jdField_a_of_type_Arca.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long - this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long);
+        this.a.jdField_a_of_type_Arca.jdField_c_of_type_JavaLangString = paramString1;
+        this.a.jdField_a_of_type_Arca.jdField_f_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
+        this.a.jdField_a_of_type_Arca.jdField_d_of_type_JavaLangString = paramString6;
+        this.a.jdField_a_of_type_Arca.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Arca.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Arca.a();
       }
-    }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
-      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
-      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
+      if (this.a.jdField_b_of_type_JavaLangString == null)
       {
-        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
-        paramInt2 += 1;
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "mPreviewUrl is null ,threadid[" + Thread.currentThread().getId() + "], mainId[" + Looper.getMainLooper().getThread().getId() + "]");
+        }
+        this.a.finish();
+        return;
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      URLDrawable.pause();
-      return;
-    }
-    URLDrawable.resume();
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g()) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h()))
-    {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-      localEditor.putInt("GROUP", paramInt1);
-      localEditor.putInt("CHILD", (paramInt2 + 1) / 4);
-      localEditor.commit();
-    }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(this.a.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("<FileAssistant>FilePreviewActivity", 2, "time[" + System.currentTimeMillis() + "]OnCSReplay mWebView.loadUrl(" + this.a.jdField_b_of_type_JavaLangString + ")");
+      }
+    } while (this.a.jdField_a_of_type_Arca == null);
+    this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long = System.currentTimeMillis();
+    this.a.jdField_a_of_type_Arca.l = "2";
   }
 }
 

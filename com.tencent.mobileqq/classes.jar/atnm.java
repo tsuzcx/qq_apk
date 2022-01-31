@@ -1,10 +1,6 @@
-import android.graphics.Bitmap;
-
 class atnm
 {
-  long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  long b;
+  private static atnl a = new atnl(null);
 }
 
 

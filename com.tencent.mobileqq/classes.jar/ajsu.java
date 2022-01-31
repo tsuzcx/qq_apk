@@ -1,62 +1,82 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
-
-public class ajsu
-  extends Animation
+public final class ajsu
 {
-  private int jdField_a_of_type_Int;
-  private ajsv jdField_a_of_type_Ajsv;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public final int a;
+  public final int b;
   
-  public ajsu(ArrayList<Integer> paramArrayList)
+  public ajsu(int paramInt1, int paramInt2)
   {
-    a(paramArrayList);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static ajsu a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
+    }
+    int i = paramString.indexOf('*');
+    if (i < 0) {
+      i = paramString.indexOf('x');
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        throw a(paramString);
+      }
+      try
+      {
+        ajsu localajsu = new ajsu(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
+        return localajsu;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        throw a(paramString);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw a(paramString);
+      }
+    }
+  }
+  
+  private static NumberFormatException a(String paramString)
+  {
+    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public void a(ArrayList<Integer> paramArrayList)
+  public int b()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    return this.b;
   }
   
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public boolean equals(Object paramObject)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof ajsu));
+    paramObject = (ajsu)paramObject;
+    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
     for (;;)
     {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
-      }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Ajsv == null) {
-        break;
-      }
-      this.jdField_a_of_type_Ajsv.a(i);
-      return;
+      return bool;
+      bool = false;
     }
+  }
+  
+  public String toString()
+  {
+    return this.a + "x" + this.b;
   }
 }
 

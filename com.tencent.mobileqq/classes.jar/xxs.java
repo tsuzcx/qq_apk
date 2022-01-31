@@ -1,17 +1,16 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class xxs
-  implements xxy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xxs(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public xxs(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
-      return;
-    }
-    yvu.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

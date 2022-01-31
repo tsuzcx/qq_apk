@@ -24,7 +24,7 @@ public class rjs
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       localJSONObject.put("error_code", paramInt);
       label25:
       nrt.a(null, null, "0X8009752", "0X8009752", 0, 0, "0", rae.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
@@ -45,7 +45,7 @@ public class rjs
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("version", "8.3.5");
       label17:
       nrt.a(null, null, "0X8009753", "0X8009753", 0, 0, "1", rae.a(false), "", localJSONObject.toString(), false);
       if (this.a != null) {

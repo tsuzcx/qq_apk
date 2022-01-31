@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import alro;
+import alwd;
 
 public class MayknowRecommendManager$1
   implements Runnable
 {
-  public MayknowRecommendManager$1(alro paramalro) {}
+  public MayknowRecommendManager$1(alwd paramalwd) {}
   
   public void run()
   {
-    alro.a(this.this$0);
+    alwd.a(this.this$0);
   }
 }
 

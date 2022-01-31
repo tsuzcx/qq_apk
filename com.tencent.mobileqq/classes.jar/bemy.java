@@ -1,10 +1,15 @@
-public abstract interface bemy
+import com.tencent.mobileqq.widget.AdaptiveLayout;
+
+public class bemy
 {
-  public abstract void b();
+  public int a;
+  public int b;
   
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public bemy(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

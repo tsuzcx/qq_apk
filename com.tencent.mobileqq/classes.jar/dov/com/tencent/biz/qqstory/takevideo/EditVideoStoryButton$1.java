@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.content.Intent;
-import blfg;
-import bmix;
-import bmjv;
-import bmkf;
-import bmlc;
-import bmxy;
-import bmxz;
+import bljn;
+import bmnj;
+import bmoh;
+import bmor;
+import bmpo;
+import bnck;
+import bncl;
 
 public class EditVideoStoryButton$1
   implements Runnable
 {
-  public EditVideoStoryButton$1(bmjv parambmjv, Intent paramIntent, boolean paramBoolean, bmxy parambmxy) {}
+  public EditVideoStoryButton$1(bmoh parambmoh, Intent paramIntent, boolean paramBoolean, bnck parambnck) {}
   
   public void run()
   {
@@ -20,27 +20,27 @@ public class EditVideoStoryButton$1
     this.this$0.k();
     String str1;
     String str2;
-    if (this.this$0.jdField_a_of_type_Bmix.a.a() != 102)
+    if (this.this$0.jdField_a_of_type_Bmnj.a.a() != 102)
     {
       str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_video_save_path");
       str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-      if (this.this$0.jdField_a_of_type_Bmix.a.a("VIDEO_STORY_JUMP_TO_TYPE", 0) == 2) {
+      if (this.this$0.jdField_a_of_type_Bmnj.a.a("VIDEO_STORY_JUMP_TO_TYPE", 0) == 2) {
         bool = true;
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        bmxz.a().a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("widgetinfo"));
+        bncl.a().a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("widgetinfo"));
         String str3 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_camera_material_name");
-        blfg.b("EditVideoStoryButton", "onPostRun---takeSameName=" + str3);
-        bmxz.a().b(str3);
-        bmxz.a().a(this.jdField_a_of_type_Bmxy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bmxy.jdField_a_of_type_Int, str1, str2, true);
+        bljn.b("EditVideoStoryButton", "onPostRun---takeSameName=" + str3);
+        bncl.a().b(str3);
+        bncl.a().a(this.jdField_a_of_type_Bnck.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bnck.jdField_a_of_type_Int, str1, str2, true);
       }
     }
     else
     {
       return;
     }
-    bmlc.a(this.this$0.jdField_a_of_type_Bmkf.getActivity(), str1, str2, bool, "caller_aecamera");
+    bmpo.a(this.this$0.jdField_a_of_type_Bmor.getActivity(), str1, str2, bool, "caller_aecamera");
   }
 }
 

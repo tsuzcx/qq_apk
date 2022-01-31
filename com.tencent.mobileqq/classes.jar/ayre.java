@@ -1,6 +1,15 @@
-public abstract interface ayre
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ayre
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString);
+  ayre(ayrd paramayrd, aync paramaync) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Aync.b(paramView);
+  }
 }
 
 

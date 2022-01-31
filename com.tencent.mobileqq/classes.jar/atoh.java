@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-
-class atoh
-  extends alox
+public class atoh
 {
-  atoh(atof paramatof) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public static String a(int paramInt)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(atof.a(this.a).a())))
+    switch (paramInt)
     {
-      atof.a(atof.a(this.a), 0, String.valueOf(paramObject));
-      if (atof.a(this.a) != null) {
-        atof.a(this.a).finish();
-      }
+    default: 
+      return " Unknow playState ";
+    case 0: 
+      return " IDLE ";
+    case 1: 
+      return " BUFFERING ";
+    case 2: 
+      return " PLAYING ";
+    case 3: 
+      return " PAUSE ";
+    case 4: 
+      return " STOP ";
+    case 5: 
+      return " ERROR_INTERNAL ";
+    case 7: 
+      return " ERROR_FOCUS ";
+    case 6: 
+      return " NETWORK_INTERRUPT ";
     }
+    return " COMPLETION ";
   }
 }
 

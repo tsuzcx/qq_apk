@@ -2,23 +2,23 @@ import java.util.List;
 
 public class leu
 {
-  @atcn(a="codec")
+  @atgw(a="codec")
   public int a;
-  @atcn(a="min_version")
+  @atgw(a="min_version")
   public String a;
-  @atcn(a="disable_sdks")
+  @atgw(a="disable_sdks")
   public List<Integer> a;
-  @atcn(a="upload")
+  @atgw(a="upload")
   public boolean a;
-  @atcn(a="min_sdk")
+  @atgw(a="min_sdk")
   public int b;
-  @atcn(a="expdate")
+  @atgw(a="expdate")
   public String b;
-  @atcn(a="samples")
+  @atgw(a="samples")
   public List<lev> b;
-  @atcn(a="async_min_sdk")
+  @atgw(a="async_min_sdk")
   public int c;
-  @atcn(a="test_ver")
+  @atgw(a="test_ver")
   public int d;
 }
 

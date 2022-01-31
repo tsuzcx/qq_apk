@@ -1,43 +1,50 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-class yyx
-  implements ymm
+public class yyx
 {
-  yyx(yyu paramyyu, String paramString) {}
+  private String a = yyw.b;
+  private String b = "1";
+  private String c = yyw.a;
   
-  public void callback(Bundle paramBundle)
+  public static yyx a(String paramString)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
-    {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
+    if (paramString == null) {
+      return null;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_Yyu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      return;
+      yyx localyyx = new yyx();
+      paramString = new JSONObject(paramString);
+      localyyx.a = paramString.optString("mine_videostory_entrance", yyw.b);
+      localyyx.b = paramString.optString("enable_click_take_picture", "1");
+      localyyx.c = paramString.optString("mine_videostory_drawer_entrance", yyw.a);
+      return localyyx;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
+      paramString.printStackTrace();
     }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
   }
 }
 

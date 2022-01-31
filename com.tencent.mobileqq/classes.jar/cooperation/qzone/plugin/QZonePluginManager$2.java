@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import bjlh;
+import bjpo;
 
 public class QZonePluginManager$2
   implements Runnable
 {
-  public QZonePluginManager$2(bjlh parambjlh) {}
+  public QZonePluginManager$2(bjpo parambjpo) {}
   
   public void run()
   {
-    bjlh.a(this.this$0, false);
+    bjpo.a(this.this$0, false);
   }
 }
 

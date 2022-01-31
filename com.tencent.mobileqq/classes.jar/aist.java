@@ -1,6 +1,20 @@
-public abstract class aist
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+
+class aist
+  implements arrh
 {
-  public abstract void a(int paramInt);
+  aist(aisq paramaisq) {}
+  
+  public void a()
+  {
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+  }
 }
 
 

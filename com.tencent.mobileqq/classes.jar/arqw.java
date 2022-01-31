@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class arqw
-  implements DialogInterface.OnClickListener
+public abstract interface arqw
 {
-  public arqw(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

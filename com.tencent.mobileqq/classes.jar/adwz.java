@@ -1,21 +1,9 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-
 public class adwz
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public adwz(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public volatile long a;
+  public String a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    atwd.a().a(this.a.app, paramBoolean);
-  }
+  protected adwz(adws paramadws) {}
 }
 
 

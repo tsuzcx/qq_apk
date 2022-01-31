@@ -1,12 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class ydv
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public ydv(yds paramyds, View paramView)
+  ydv(ydu paramydu, CertifiedAccountMeta.StUser paramStUser) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + yod.a(this.jdField_a_of_type_Ydu.getExtraTypeInfo()), "clk_shop", 0, 0, new String[0]);
+    ybt.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
   }
 }
 

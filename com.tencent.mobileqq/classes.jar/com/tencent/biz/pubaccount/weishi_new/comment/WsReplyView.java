@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 import NS_KING_SOCIALIZE_META.stMetaComment;
 import NS_KING_SOCIALIZE_META.stMetaPerson;
 import NS_KING_SOCIALIZE_META.stMetaReply;
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,20 +17,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcwd;
-import bdda;
-import bdje;
+import bdam;
+import bdhj;
+import bdnn;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.AppRuntime;
-import xod;
-import yco;
-import ycr;
-import ydc;
-import yde;
+import xsm;
+import ygx;
+import yha;
+import yhl;
+import yhn;
 
 public class WsReplyView
   extends RelativeLayout
@@ -47,10 +47,10 @@ public class WsReplyView
   TextView jdField_a_of_type_AndroidWidgetTextView;
   FeedRichTextView jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView;
   RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  private yde jdField_a_of_type_Yde;
+  private yhn jdField_a_of_type_Yhn;
   private boolean jdField_a_of_type_Boolean;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final String jdField_b_of_type_JavaLangString = alpo.a(2131713792);
+  private final String jdField_b_of_type_JavaLangString = alud.a(2131713804);
   TextView c;
   TextView d;
   
@@ -73,16 +73,16 @@ public class WsReplyView
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131559855, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368694));
+    View localView = LayoutInflater.from(getContext()).inflate(2131559854, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368706));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(18.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375622));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131375620));
-    this.c = ((TextView)localView.findViewById(2131375621));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363684));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131375615));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131375614));
-    this.d = ((TextView)localView.findViewById(2131375616));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375673));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131375671));
+    this.c = ((TextView)localView.findViewById(2131375672));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363686));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131375666));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131375665));
+    this.d = ((TextView)localView.findViewById(2131375667));
     setPadding(0, 0, 0, Utils.dp2px(5.0D));
   }
   
@@ -102,11 +102,11 @@ public class WsReplyView
     switch (paramView.getId())
     {
     default: 
-      if ((((paramView instanceof WsReplyView)) || (paramView.getId() == 2131363684)) && (this.jdField_a_of_type_Yde != null))
+      if ((((paramView instanceof WsReplyView)) || (paramView.getId() == 2131363686)) && (this.jdField_a_of_type_Yhn != null))
       {
         localstMetaComment = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
         localstMetaReply = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply;
-        this.jdField_a_of_type_Yde.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
+        this.jdField_a_of_type_Yhn.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
       }
       break;
     }
@@ -115,13 +115,13 @@ public class WsReplyView
       do
       {
         return;
-      } while ((this.jdField_a_of_type_Yde == null) || (this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply == null));
-      this.jdField_a_of_type_Yde.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.poster);
+      } while ((this.jdField_a_of_type_Yhn == null) || (this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply == null));
+      this.jdField_a_of_type_Yhn.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.poster);
       return;
-    } while (this.jdField_a_of_type_Yde == null);
+    } while (this.jdField_a_of_type_Yhn == null);
     stMetaComment localstMetaComment = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
     stMetaReply localstMetaReply = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply;
-    this.jdField_a_of_type_Yde.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
+    this.jdField_a_of_type_Yhn.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
   }
   
   public boolean onLongClick(View paramView)
@@ -135,10 +135,10 @@ public class WsReplyView
     do
     {
       return bool;
-    } while (this.jdField_a_of_type_Yde == null);
+    } while (this.jdField_a_of_type_Yhn == null);
     stMetaComment localstMetaComment = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
     stMetaReply localstMetaReply = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply;
-    this.jdField_a_of_type_Yde.b(paramView, 8, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
+    this.jdField_a_of_type_Yhn.b(paramView, 8, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, localstMetaReply });
     return true;
   }
   
@@ -151,19 +151,19 @@ public class WsReplyView
     }
     if (paramstMetaReply.poster != null)
     {
-      if ((BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstMetaReply.poster.id)) && (bdje.a(paramstMetaReply.poster.avatar)))
+      if ((BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstMetaReply.poster.id)) && (bdnn.a(paramstMetaReply.poster.avatar)))
       {
         if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(bdda.c(ydc.a(ydc.a(null, 1, paramstMetaReply.poster.id, 0)).a, 50, 50));
+          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(bdhj.c(yhl.a(yhl.a(null, 1, paramstMetaReply.poster.id, 0)).a, 50, 50));
         }
-        xod.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", xod.a(getContext(), 35.0F), xod.a(getContext(), 35.0F), xod.a(getContext(), 18.0F), this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, null);
+        xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", xsm.a(getContext(), 35.0F), xsm.a(getContext(), 35.0F), xsm.a(getContext(), 18.0F), this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, null);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramstMetaReply.poster.nick);
         if (!paramstMetaReply.poster.id.equals(paramString)) {
           break label348;
         }
         if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850164);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850237);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(21.0F), ImmersiveUtils.a(12.0F));
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(ImmersiveUtils.a(2.0F));
@@ -174,10 +174,10 @@ public class WsReplyView
     {
       label241:
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView.setText(paramstMetaReply.wording);
-      this.c.setText(ycr.a(paramstMetaReply.createtime * 1000L));
+      this.c.setText(yha.a(paramstMetaReply.createtime * 1000L));
       this.jdField_a_of_type_Boolean = false;
       paramstMetaComment = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-      if (yco.a()) {
+      if (ygx.a()) {
         break label362;
       }
     }
@@ -187,16 +187,16 @@ public class WsReplyView
     {
       paramstMetaComment.setVisibility(i);
       return;
-      xod.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstMetaReply.poster.avatar, xod.a(getContext(), 22.0F), xod.a(getContext(), 22.0F), xod.a(getContext(), 11.0F), bdda.b(), null);
+      xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstMetaReply.poster.avatar, xsm.a(getContext(), 22.0F), xsm.a(getContext(), 22.0F), xsm.a(getContext(), 11.0F), bdhj.b(), null);
       break;
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       break label241;
     }
   }
   
-  public void setOnCommentElementClickListener(yde paramyde)
+  public void setOnCommentElementClickListener(yhn paramyhn)
   {
-    this.jdField_a_of_type_Yde = paramyde;
+    this.jdField_a_of_type_Yhn = paramyhn;
   }
   
   public void setPosition(int paramInt)

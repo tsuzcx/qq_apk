@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import ywb;
+import zaq;
 
 public class MediaCodecGLFrameFetcher$2
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$2(ywb paramywb) {}
+  public MediaCodecGLFrameFetcher$2(zaq paramzaq) {}
   
   public void run()
   {
-    ywb.b(this.this$0);
+    zaq.b(this.this$0);
   }
 }
 

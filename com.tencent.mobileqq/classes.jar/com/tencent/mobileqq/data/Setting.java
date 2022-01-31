@@ -3,22 +3,22 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apbi;
-import awbv;
-import awdj;
+import apfr;
+import awge;
+import awhs;
 
 public class Setting
-  extends awbv
+  extends awge
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new apbi();
+  public static final Parcelable.Creator<Setting> CREATOR = new apfr();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
   public long headImgTimestamp;
   public short systemHeadID;
-  @awdj
+  @awhs
   public String uin;
   public long updateTimestamp;
   public String url;

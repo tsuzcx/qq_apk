@@ -1,287 +1,429 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningServiceInfo;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.security.MessageDigest;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Picture;
+import android.os.Environment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.util.ScreenShotUtil.1;
+import com.tencent.mobileqq.util.ScreenShotUtil.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.reflect.Method;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bddt
+public final class bddt
 {
-  public static void a(Context paramContext, String paramString, int paramInt)
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static Bitmap a(int paramInt1, int paramInt2)
   {
-    Intent localIntent;
-    if (paramContext != null)
+    try
     {
-      localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
-      if (localIntent != null)
+      Bitmap localBitmap1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      return localBitmap1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      QLog.e("ScreenShotUtil", 1, "createBitmap failed", localOutOfMemoryError1);
+      System.gc();
+      try
       {
-        Bundle localBundle = new Bundle();
-        if ((paramString != null) && (paramString.length() > 0)) {
-          localBundle.putString("platform_Id", paramString);
+        Bitmap localBitmap2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+        return localBitmap2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError2)
+      {
+        QLog.e("ScreenShotUtil", 1, "createBitmap failed again", localOutOfMemoryError2);
+      }
+    }
+    return null;
+  }
+  
+  public static Bitmap a(WebView paramWebView, int paramInt1, int paramInt2)
+  {
+    if ((paramWebView == null) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return null;
+    }
+    Bitmap localBitmap = a(paramInt1, paramInt2);
+    if (localBitmap == null) {
+      return null;
+    }
+    Canvas localCanvas = new Canvas(localBitmap);
+    PaintFlagsDrawFilter localPaintFlagsDrawFilter;
+    float f;
+    if (paramWebView.getX5WebViewExtension() != null)
+    {
+      localPaintFlagsDrawFilter = new PaintFlagsDrawFilter(134, 64);
+      paramInt2 = QbSdk.getTbsVersion(paramWebView.getContext());
+      if ((paramInt2 >= 43000) && (paramInt2 < 43105))
+      {
+        f = paramInt1 / paramWebView.getMeasuredWidth();
+        localCanvas.scale(f, f);
+        localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+        paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
         }
-        if (paramInt > 0) {
-          localBundle.putInt("dest_view", paramInt);
-        }
-        localIntent.putExtras(localBundle);
-        if (paramInt != 9502721) {
-          break label93;
-        }
-        localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
+        localCanvas.setDrawFilter(null);
       }
     }
     for (;;)
     {
-      localIntent.setFlags(402653184);
-      paramContext.startActivity(localIntent);
+      return localBitmap;
+      f = paramInt1 / paramWebView.getContentWidth();
+      localCanvas.scale(f, f);
+      localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+      paramWebView.getX5WebViewExtension().snapshotWholePage(localCanvas, false, false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ScreenShotUtil", 2, "snapshot with snapshotWholePage()");
+      break;
+      f = paramInt1 / paramWebView.getMeasuredWidth();
+      localCanvas.scale(f, f);
+      paramWebView = paramWebView.capturePicture();
+      if (paramWebView != null) {
+        paramWebView.draw(localCanvas);
+      }
+    }
+  }
+  
+  public static String a()
+  {
+    if (CheckPermission.isHasStoragePermission(BaseApplicationImpl.getContext())) {
+      return Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/web_long_shot/";
+    }
+    return BaseApplicationImpl.getContext().getFilesDir() + "/Tencent/MobileQQ/web_long_shot/";
+  }
+  
+  /* Error */
+  public static String a(Bitmap paramBitmap, java.io.File paramFile, String paramString)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload 4
+    //   5: astore_3
+    //   6: aload_0
+    //   7: ifnull +20 -> 27
+    //   10: aload 4
+    //   12: astore_3
+    //   13: aload_1
+    //   14: ifnull +13 -> 27
+    //   17: aload_2
+    //   18: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   21: ifeq +8 -> 29
+    //   24: aload 4
+    //   26: astore_3
+    //   27: aload_3
+    //   28: areturn
+    //   29: aload_1
+    //   30: invokevirtual 175	java/io/File:exists	()Z
+    //   33: ifne +8 -> 41
+    //   36: aload_1
+    //   37: invokevirtual 178	java/io/File:mkdirs	()Z
+    //   40: pop
+    //   41: new 172	java/io/File
+    //   44: dup
+    //   45: aload_1
+    //   46: aload_2
+    //   47: invokespecial 181	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   50: astore_3
+    //   51: new 183	java/io/BufferedOutputStream
+    //   54: dup
+    //   55: new 185	java/io/FileOutputStream
+    //   58: dup
+    //   59: aload_3
+    //   60: invokespecial 188	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   63: invokespecial 191	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   66: astore_2
+    //   67: aload_2
+    //   68: astore_1
+    //   69: aload_0
+    //   70: getstatic 197	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   73: bipush 100
+    //   75: aload_2
+    //   76: invokevirtual 201	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   79: pop
+    //   80: aload_2
+    //   81: ifnull +11 -> 92
+    //   84: aload_2
+    //   85: invokevirtual 206	java/io/OutputStream:flush	()V
+    //   88: aload_2
+    //   89: invokevirtual 209	java/io/OutputStream:close	()V
+    //   92: aload_3
+    //   93: invokevirtual 212	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   96: areturn
+    //   97: astore_0
+    //   98: ldc 24
+    //   100: iconst_1
+    //   101: ldc 214
+    //   103: aload_0
+    //   104: invokestatic 32	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   107: goto -15 -> 92
+    //   110: astore_3
+    //   111: aconst_null
+    //   112: astore_0
+    //   113: aload_0
+    //   114: astore_1
+    //   115: ldc 24
+    //   117: iconst_1
+    //   118: aload_3
+    //   119: iconst_0
+    //   120: anewarray 4	java/lang/Object
+    //   123: invokestatic 217	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   126: ldc 219
+    //   128: astore_3
+    //   129: aload_0
+    //   130: ifnull -103 -> 27
+    //   133: aload_0
+    //   134: invokevirtual 206	java/io/OutputStream:flush	()V
+    //   137: aload_0
+    //   138: invokevirtual 209	java/io/OutputStream:close	()V
+    //   141: ldc 219
+    //   143: areturn
+    //   144: astore_0
+    //   145: ldc 24
+    //   147: iconst_1
+    //   148: ldc 214
+    //   150: aload_0
+    //   151: invokestatic 32	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   154: ldc 219
+    //   156: areturn
+    //   157: astore_0
+    //   158: aconst_null
+    //   159: astore_1
+    //   160: aload_1
+    //   161: ifnull +11 -> 172
+    //   164: aload_1
+    //   165: invokevirtual 206	java/io/OutputStream:flush	()V
+    //   168: aload_1
+    //   169: invokevirtual 209	java/io/OutputStream:close	()V
+    //   172: aload_0
+    //   173: athrow
+    //   174: astore_1
+    //   175: ldc 24
+    //   177: iconst_1
+    //   178: ldc 214
+    //   180: aload_1
+    //   181: invokestatic 32	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   184: goto -12 -> 172
+    //   187: astore_0
+    //   188: goto -28 -> 160
+    //   191: astore_3
+    //   192: aload_2
+    //   193: astore_0
+    //   194: goto -81 -> 113
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	197	0	paramBitmap	Bitmap
+    //   0	197	1	paramFile	java.io.File
+    //   0	197	2	paramString	String
+    //   5	88	3	localObject1	Object
+    //   110	9	3	localThrowable1	java.lang.Throwable
+    //   128	1	3	str	String
+    //   191	1	3	localThrowable2	java.lang.Throwable
+    //   1	24	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   84	92	97	java/io/IOException
+    //   51	67	110	java/lang/Throwable
+    //   133	141	144	java/io/IOException
+    //   51	67	157	finally
+    //   164	172	174	java/io/IOException
+    //   69	80	187	finally
+    //   115	126	187	finally
+    //   69	80	191	java/lang/Throwable
+  }
+  
+  public static <T> void a(WebView paramWebView, bddy<T> parambddy)
+  {
+    QLog.d("ScreenShotUtil", 1, "webViewFragmentScreenLongShot start");
+    if (paramWebView == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, mWebView is null");
+      parambddy.a(new NullPointerException("mWebView is null"));
       return;
-      label93:
-      localIntent.putExtra("big_brother_source_key", "biz_src_safe");
     }
+    Object localObject1 = paramWebView.getContext();
+    if (localObject1 == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, context is null");
+      parambddy.a(new NullPointerException("context is null"));
+      return;
+    }
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    localObject1 = new avzj((Context)localObject1);
+    ((avzj)localObject1).a(alud.a(2131699733));
+    ((avzj)localObject1).a(true);
+    ((avzj)localObject1).a(new bddu(localAtomicBoolean, (avzj)localObject1));
+    ((avzj)localObject1).show();
+    ValueAnimator localValueAnimator1 = ObjectAnimator.ofInt(new int[] { 0, 90 });
+    localValueAnimator1.setDuration(2000L);
+    ValueAnimator localValueAnimator2 = ObjectAnimator.ofInt(new int[] { 90, 99 });
+    localValueAnimator2.setDuration(10000L);
+    Object localObject2 = new bddv((avzj)localObject1);
+    localValueAnimator1.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
+    localValueAnimator2.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
+    localObject2 = new AnimatorSet();
+    ((AnimatorSet)localObject2).playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
+    ((AnimatorSet)localObject2).start();
+    ((avzj)localObject1).setOnDismissListener(new bddw((AnimatorSet)localObject2));
+    a(paramWebView, new bddx(localAtomicBoolean, (avzj)localObject1, parambddy, paramWebView, (AnimatorSet)localObject2));
   }
   
-  public static boolean a(Context paramContext)
+  public static void a(WebView paramWebView, bddz parambddz)
   {
-    boolean bool1 = false;
-    try
+    if ((paramWebView == null) || (parambddz == null)) {}
+    int i;
+    int j;
+    Bitmap localBitmap;
+    do
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 64).signatures;
-      Object localObject = MessageDigest.getInstance("MD5");
-      if ((paramContext != null) && (paramContext.length > 0)) {
-        ((MessageDigest)localObject).update(paramContext[0].toByteArray());
-      }
-      paramContext = ((MessageDigest)localObject).digest();
-      localObject = new char[16];
-      Object tmp58_56 = localObject;
-      tmp58_56[0] = 48;
-      Object tmp63_58 = tmp58_56;
-      tmp63_58[1] = 49;
-      Object tmp68_63 = tmp63_58;
-      tmp68_63[2] = 50;
-      Object tmp73_68 = tmp68_63;
-      tmp73_68[3] = 51;
-      Object tmp78_73 = tmp73_68;
-      tmp78_73[4] = 52;
-      Object tmp83_78 = tmp78_73;
-      tmp83_78[5] = 53;
-      Object tmp88_83 = tmp83_78;
-      tmp88_83[6] = 54;
-      Object tmp94_88 = tmp88_83;
-      tmp94_88[7] = 55;
-      Object tmp100_94 = tmp94_88;
-      tmp100_94[8] = 56;
-      Object tmp106_100 = tmp100_94;
-      tmp106_100[9] = 57;
-      Object tmp112_106 = tmp106_100;
-      tmp112_106[10] = 65;
-      Object tmp118_112 = tmp112_106;
-      tmp118_112[11] = 66;
-      Object tmp124_118 = tmp118_112;
-      tmp124_118[12] = 67;
-      Object tmp130_124 = tmp124_118;
-      tmp130_124[13] = 68;
-      Object tmp136_130 = tmp130_124;
-      tmp136_130[14] = 69;
-      Object tmp142_136 = tmp136_130;
-      tmp142_136[15] = 70;
-      tmp142_136;
-      StringBuilder localStringBuilder = new StringBuilder(paramContext.length * 2);
-      int i = 0;
-      while (i < paramContext.length)
+      do
       {
-        localStringBuilder.append(localObject[((paramContext[i] & 0xF0) >>> 4)]);
-        localStringBuilder.append(localObject[(paramContext[i] & 0xF)]);
-        i += 1;
-      }
-      if (!"00B1208638DE0FCD3E920886D658DAF6".equalsIgnoreCase(localStringBuilder.toString()))
-      {
-        boolean bool2 = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
-        if (!bool2) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    catch (Exception paramContext)
+        return;
+        i = paramWebView.getMeasuredWidth();
+        j = paramWebView.getMeasuredHeight();
+      } while ((i <= 0) || (j <= 0));
+      localBitmap = a(i, j);
+    } while (localBitmap == null);
+    Canvas localCanvas = new Canvas(localBitmap);
+    if (paramWebView.getX5WebViewExtension() != null)
     {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    Object localObject1;
-    if (paramContext != null)
-    {
-      localObject1 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (localObject1 != null)
+      Class[] arrayOfClass;
+      if ((!jdField_a_of_type_Boolean) && (jdField_a_of_type_JavaLangReflectMethod == null))
       {
-        localObject1 = ((List)localObject1).iterator();
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-        } while (!"com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName));
+        arrayOfClass = paramWebView.getX5WebViewExtension().getClass().getInterfaces();
+        j = arrayOfClass.length;
+        i = 0;
       }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((!bool1) && (Build.VERSION.SDK_INT >= 21)) {}
-      boolean bool2;
       for (;;)
       {
-        try
+        for (;;)
         {
-          localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "ps" }).getInputStream()));
-          Object localObject2 = ((BufferedReader)localObject1).readLine();
-          bool2 = bool1;
-          if (localObject2 != null)
+          Class localClass;
+          if (i < j)
           {
-            if (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1) {
-              continue;
+            localClass = arrayOfClass[i];
+            if (!"com.tencent.smtt.export.internal.interfaces.IX5WebView".equals(localClass.getName())) {}
+          }
+          else
+          {
+            try
+            {
+              jdField_a_of_type_JavaLangReflectMethod = localClass.getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
+              if (QLog.isColorLevel()) {
+                QLog.i("ScreenShotUtil", 2, "call snapshotVisibleWithBitmap");
+              }
+              jdField_a_of_type_Boolean = true;
+              try
+              {
+                if (jdField_a_of_type_JavaLangReflectMethod != null) {
+                  jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new ScreenShotUtil.1(parambddz, localBitmap) });
+                }
+                i = 1;
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  i = 0;
+                }
+              }
+              if (i != 0) {
+                break;
+              }
+              localCanvas.setDrawFilter(new PaintFlagsDrawFilter(134, 64));
+              paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
+              if (QLog.isColorLevel()) {
+                QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
+              }
+              localCanvas.setDrawFilter(null);
+              parambddz.a(localBitmap);
+              return;
             }
-            localObject2 = new StringTokenizer((String)localObject2, " ");
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            bool2 = TextUtils.equals(((StringTokenizer)localObject2).nextToken().trim(), "com.tencent.qqpimsecure");
-            if (!bool2) {
-              continue;
+            catch (Exception localException1)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.i("ScreenShotUtil", 2, "call snapshotVisibleWithBitmap failed: " + localException1.getMessage());
+                }
+                jdField_a_of_type_JavaLangReflectMethod = null;
+              }
             }
-            bool2 = true;
           }
-          if ((bool2) || (Build.VERSION.SDK_INT <= 23) || (paramContext == null)) {
-            break;
-          }
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
-          if (paramContext == null) {
-            break;
-          }
-          paramContext = paramContext.iterator();
-          if (!paramContext.hasNext()) {
-            break;
-          }
-          localObject1 = (ActivityManager.RunningServiceInfo)paramContext.next();
-          if ((localObject1 == null) || (((ActivityManager.RunningServiceInfo)localObject1).service == null) || (((ActivityManager.RunningServiceInfo)localObject1).process == null) || (!((ActivityManager.RunningServiceInfo)localObject1).process.contains("com.tencent.qqpimsecure"))) {
-            continue;
-          }
+        }
+        i += 1;
+      }
+    }
+    paramWebView.draw(localCanvas);
+    parambddz.a(localBitmap);
+  }
+  
+  public static <T> boolean a(WebView paramWebView, bddy<T> parambddy)
+  {
+    QLog.d("ScreenShotUtil", 1, "snapshotWholePage start");
+    if (paramWebView == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "snapshotWholePage error, mWebView is null");
+      parambddy.a(new NullPointerException("mWebView is null"));
+    }
+    for (;;)
+    {
+      return false;
+      int i = paramWebView.getMeasuredWidth();
+      int k = paramWebView.getContentWidth();
+      int j = paramWebView.getContentHeight();
+      if ((i <= 0) || (k <= 0) || (j <= 0))
+      {
+        QLog.e("ScreenShotUtil", 1, "measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0");
+        parambddy.a(new IllegalStateException("measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0"));
+        return false;
+      }
+      float f = i / k;
+      j = (int)(j * f);
+      if (j > 20000)
+      {
+        QLog.e("ScreenShotUtil", 1, "height > 20000, out of height limit");
+        parambddy.a(new IllegalStateException(alud.a(2131719539)));
+        return false;
+      }
+      try
+      {
+        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
+        if (localBitmap != null)
+        {
+          Canvas localCanvas = new Canvas(localBitmap);
+          localCanvas.scale(f, f);
+          ThreadManagerV2.executeOnNetWorkThread(new ScreenShotUtil.2(paramWebView, localCanvas, parambddy, localBitmap));
           return true;
         }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
-        bool2 = bool1;
       }
-      return bool2;
-    }
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
+      catch (OutOfMemoryError paramWebView)
       {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("mini");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
+        if (0 != 0) {
+          throw new NullPointerException();
         }
+        QLog.e("ScreenShotUtil", 1, "createBitmap out of memory");
+        parambddy.a(new IllegalStateException(alud.a(2131719539)));
       }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
     }
     return false;
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("minipay");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        int i = paramContext.versionCode;
-        bool1 = bool2;
-        if (i >= 198) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean f(Context paramContext)
-  {
-    return ((a(paramContext)) && (e(paramContext)) && (!c(paramContext))) || (d(paramContext));
   }
 }
 

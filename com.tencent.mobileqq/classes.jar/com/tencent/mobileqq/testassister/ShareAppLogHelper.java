@@ -6,11 +6,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
-import bahn;
-import baho;
-import bahp;
-import bahq;
-import bdcs;
+import balw;
+import balx;
+import baly;
+import balz;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,9 +22,9 @@ import java.util.regex.Pattern;
 
 public class ShareAppLogHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new bahn(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new balw(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private bahq jdField_a_of_type_Bahq;
+  private balz jdField_a_of_type_Balz;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.context) + "/tencent/msflogs/com/tencent/mobileqq/";
   private ArrayList<ShareAppLogHelper.LogFile> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -153,7 +153,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.c);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new bahp(this));
+      localObject = ((File)localObject).listFiles(new baly(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -179,7 +179,7 @@ public class ShareAppLogHelper
   
   private void a(File paramFile, boolean paramBoolean)
   {
-    paramFile = paramFile.listFiles(new baho(this));
+    paramFile = paramFile.listFiles(new balx(this));
     if ((paramFile != null) && (paramFile.length > 0))
     {
       int j = paramFile.length;
@@ -190,7 +190,7 @@ public class ShareAppLogHelper
         if (paramBoolean)
         {
           ShareAppLogHelper.LogFile localLogFile2 = new ShareAppLogHelper.LogFile(a(localLogFile1.getAbsolutePath()));
-          bdcs.a(localLogFile1, localLogFile2);
+          bdhb.a(localLogFile1, localLogFile2);
           this.jdField_a_of_type_JavaUtilArrayList.add(localLogFile2);
         }
         for (;;)
@@ -531,9 +531,9 @@ public class ShareAppLogHelper
     }
   }
   
-  public void a(bahq parambahq)
+  public void a(balz parambalz)
   {
-    this.jdField_a_of_type_Bahq = parambahq;
+    this.jdField_a_of_type_Balz = parambalz;
   }
   
   public void a(boolean paramBoolean)

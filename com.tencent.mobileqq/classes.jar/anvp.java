@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-public final class anvp
-  implements Parcelable.Creator<CardMobileInfo>
+public class anvp
+  implements DialogInterface.OnClickListener
 {
-  public CardMobileInfo a(Parcel paramParcel)
-  {
-    return new CardMobileInfo(paramParcel);
-  }
+  public anvp(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public CardMobileInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new CardMobileInfo[paramInt];
+    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
   }
 }
 

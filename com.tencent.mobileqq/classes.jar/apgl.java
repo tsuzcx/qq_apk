@@ -1,7 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class apgl
+  implements DialogInterface.OnClickListener
 {
-  baps jdField_a_of_type_Baps;
-  bavo jdField_a_of_type_Bavo;
+  apgl(apgd paramapgd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.cancel();
+  }
 }
 
 

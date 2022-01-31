@@ -1,44 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
-import java.lang.ref.WeakReference;
-
 public class asjz
-  extends Handler
 {
-  private WeakReference<ScrollTextView> a;
+  public int a;
+  public int b;
   
-  public asjz(ScrollTextView paramScrollTextView)
+  public asjz(int paramInt1, int paramInt2)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramScrollTextView);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
-    if (localScrollTextView == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (ScrollTextView.a(localScrollTextView) != null)
-    {
-      localScrollTextView.b();
-      ScrollTextView.a(localScrollTextView);
-      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
-        ScrollTextView.a(localScrollTextView, 0);
-      }
-      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
-    }
-    removeMessages(9001);
-    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
+    return "Point{x=" + this.a + ", y=" + this.b + '}';
   }
 }
 

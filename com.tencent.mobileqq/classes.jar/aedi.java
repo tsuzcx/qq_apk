@@ -1,29 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedi
-  implements bhqd
+  implements DialogInterface.OnClickListener
 {
-  public aedi(TroopRequestActivity paramTroopRequestActivity, bhpy parambhpy) {}
+  public aedi(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (bdee.d(BaseApplication.getContext())) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
-    }
-    for (;;)
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694766, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
+    if (this.jdField_a_of_type_Boolean) {
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

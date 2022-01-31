@@ -1,76 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class auni
+  implements aulr
 {
-  public static String a = "";
+  public auni(MultiCardFragment paramMultiCardFragment) {}
   
-  public static Intent a(Context paramContext, AppInterface paramAppInterface, String paramString, boolean paramBoolean)
+  public void a()
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = BaseApplication.getContext();
-        localObject = new Intent((Context)localObject, QQBrowserActivity.class);
-        paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032";
-        if (paramAppInterface != null) {}
-        try
-        {
-          paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032" + "&uin=" + paramAppInterface.getCurrentAccountUin();
-          paramAppInterface = paramContext;
-          if (!TextUtils.isEmpty(paramString)) {
-            paramAppInterface = paramContext + "&guestuin=" + paramString;
-          }
-          if (!paramBoolean) {
-            continue;
-          }
-          paramContext = paramAppInterface + "&ADTAG=GXYY_GUAJIAN";
-          ((Intent)localObject).putExtra("url", paramContext);
-          ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-          return localObject;
-        }
-        catch (Exception paramAppInterface)
-        {
-          paramContext = (Context)localObject;
-        }
-        QLog.e("MusicPendantUtil", 1, "openMusicPendantSettingPage() app is null.");
-        continue;
-      }
-      catch (Exception paramAppInterface)
-      {
-        paramContext = null;
-        continue;
-      }
-      QLog.e("MusicPendantUtil", 1, "getPlayBarIntent() exception", paramAppInterface);
-      return paramContext;
-      paramContext = paramAppInterface + "&ADTAG=GXYY_TOPCELL";
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).a();
     }
   }
   
-  public static String a()
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(a)) {}
-    try
+    if (MultiCardFragment.a(this.a) != null)
     {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
+      MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.a(this.a).setScrollState(2);
+      MultiCardFragment.a(this.a).fling(-paramInt);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
-      }
+  }
+  
+  public boolean a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      return MultiCardFragment.a(this.a).a();
     }
+    return true;
   }
 }
 

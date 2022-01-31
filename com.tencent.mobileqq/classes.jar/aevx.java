@@ -1,14 +1,29 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
 
-class aevx
+public class aevx
+  extends View
 {
-  int jdField_a_of_type_Int;
-  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  aevx(aevw paramaevw, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  aevx(aevw paramaevw) {}
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
+    }
+    return true;
+  }
 }
 
 

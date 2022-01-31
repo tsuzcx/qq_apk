@@ -1,14 +1,22 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.view.View;
 
-class aapo
-  extends AdHttp.Params
+public class aapo
+  extends aapr
 {
-  public int a = -2147483648;
-  
-  public boolean isSuccess()
-  {
-    return (super.isSuccess()) && (this.responseData != null);
-  }
+  public int a;
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

@@ -1,14 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class vuo
-  implements MediaPlayer.OnVideoSizeChangedListener
+public class vuo
+  extends vut<StoryVideoItem>
 {
-  vuo(vuj paramvuj, vuh paramvuh) {}
-  
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public vuo(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_Vuh.a(this.jdField_a_of_type_Vuj, paramInt1, paramInt2);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

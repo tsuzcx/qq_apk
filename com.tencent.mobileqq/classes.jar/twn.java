@@ -1,19 +1,14 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalDynamicFragment;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
 
 public class twn
-  implements Observer<tzm<List<FeedCloudMeta.StFeed>>>
+  implements twi
 {
-  public twn(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  public twn(QCircleBaseFragment paramQCircleBaseFragment) {}
   
-  public void a(@Nullable tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d(QCirclePersonalDynamicFragment.a(), 4, "initViewData:getFeedListRequestRsp");
-    QCirclePersonalDynamicFragment.a(this.a, paramtzm);
+    QLog.i("QCircleBaseFragment", 1, paramBoolean + paramString);
   }
 }
 

@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-
-class zam
-  implements View.OnClickListener
+public abstract interface zam
 {
-  zam(zal paramzal) {}
+  public abstract void a(zan paramzan);
   
-  public void onClick(View paramView)
-  {
-    this.a.b.setClickable(false);
-  }
+  public abstract void b(zan paramzan);
 }
 
 

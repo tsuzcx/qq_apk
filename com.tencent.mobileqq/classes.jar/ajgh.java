@@ -1,11 +1,28 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
 class ajgh
-  extends ajey
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public ImageView c;
+  ajgh(ajgg paramajgg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (akyn.a() != null) {
+      akwd.a();
+    }
+    paramDialogInterface = akwd.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
+  }
 }
 
 

@@ -104,7 +104,7 @@ public class qey
       localObject1 = pxi.a(paramInt, localObject2, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
       if (localObject1 != null)
       {
-        ((View)localObject1).setTag(2131379913, localObject2);
+        ((View)localObject1).setTag(2131379971, localObject2);
         ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (pgd)localObject2, System.currentTimeMillis(), paramInt);
       }
       if (QLog.isColorLevel()) {

@@ -1,6 +1,32 @@
-public abstract interface bjiv
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+
+public class bjiv
+  implements bhtv
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public bjiv(QZoneMsgFragment paramQZoneMsgFragment) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QZoneMsgFragment.a(this.a) != null) {
+      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QZoneMsgFragment.a(this.a) != null) {
+        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      QZoneMsgFragment.a(this.a);
+    }
+  }
 }
 
 

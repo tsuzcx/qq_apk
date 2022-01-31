@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.utils;
 
-import bgwh;
+import bhao;
 
 public class VConsoleLogManager$3
   implements Runnable
 {
-  public VConsoleLogManager$3(bgwh parambgwh, String paramString1, String paramString2) {}
+  public VConsoleLogManager$3(bhao parambhao, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bgwh.a(this.this$0, "javascript:console." + this.a + "(\"" + this.b + "\")");
+    bhao.a(this.this$0, "javascript:console." + this.a + "(\"" + this.b + "\")");
   }
 }
 

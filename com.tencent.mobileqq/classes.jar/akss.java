@@ -1,16 +1,11 @@
-import android.util.Log;
-import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
-import com.tencent.TMG.sdk.AVView;
+import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
+import java.util.Timer;
 
-class akss
-  implements AVRoomMulti.RequestViewListCompleteCallback
+public class akss
 {
-  akss(aksm paramaksm) {}
-  
-  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
-  {
-    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
-  }
+  public int a;
+  public ApolloTicker.NativeDrawTask a;
+  public Timer a;
 }
 
 

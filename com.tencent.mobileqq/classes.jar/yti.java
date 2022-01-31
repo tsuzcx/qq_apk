@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 class yti
-  implements View.OnClickListener
+  implements URLDrawableDownListener
 {
-  yti(yth paramyth, ytk paramytk) {}
+  yti(ytb paramytb) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (ytg.a(yth.class.getName() + "clickFeed")) {
-      return;
-    }
-    yth.a(this.jdField_a_of_type_Yth).a(this.jdField_a_of_type_Ytk);
+    this.a.a(false, "onLoadCancelled");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 

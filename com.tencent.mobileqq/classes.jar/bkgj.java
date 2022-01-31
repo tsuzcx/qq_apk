@@ -1,52 +1,58 @@
-public final class bkgj
-  implements Cloneable
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import org.json.JSONObject;
+
+public class bkgj
+  extends ajin
 {
-  public volatile int a;
-  public long a;
-  public bkgi a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  public String d = "";
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public bkgj()
+  public bkgj(tAdvDesc paramtAdvDesc)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramtAdvDesc);
   }
   
-  public bkgj a()
+  protected void a()
   {
+    super.a();
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
     try
     {
-      bkgj localbkgj = (bkgj)super.clone();
-      return localbkgj;
+      Object localObject = new JSONObject(str);
+      this.c = ((JSONObject)localObject).optString("topText");
+      this.d = ((JSONObject)localObject).optString("bottomText");
+      this.e = ((JSONObject)localObject).optString("textColor");
+      this.f = ((JSONObject)localObject).optString("cartoon");
+      this.g = ((JSONObject)localObject).optString("cartoon_md5");
+      this.h = ((JSONObject)localObject).optString("cartoonNum");
+      localObject = new bkgl(this, null);
+      ((ajio)localObject).a = this.f;
+      ((ajio)localObject).b = this.g;
+      if (!TextUtils.isEmpty(this.f)) {
+        ((ajio)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.f.hashCode())) + ".zip");
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bjqm.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import nrt;
@@ -22,7 +22,7 @@ class ReadInJoyDailyFragment$4
     localorz.b("postset_time", "" + NetConnInfoCenter.getServerTime());
     localorz.b("version", ntd.a);
     localorz.b("os", "1");
-    localorz.b("cmd", bjxj.g());
+    localorz.b("cmd", bkbq.g());
     localorz.b("channel_id", opt.b());
     nrt.a(null, null, this.b, this.b, 0, 0, "" + ReadInJoyDailyFragment.a().b() / 1000L, "", "", localorz.a(), false);
     QLog.d("ReadInJoyDailyFragment", 2, "reportDuringTime time is" + ReadInJoyDailyFragment.a().b() / 1000L);

@@ -1,28 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
 class yyb
-  extends bdvu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  yyb(yxy paramyxy, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  yyb(yya paramyya, yyj paramyyj, View paramView) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambdvv.c + " code = " + parambdvv.jdField_a_of_type_Int);
-    }
-    boolean bool = this.jdField_a_of_type_Yxy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
-    }
-    this.jdField_a_of_type_Yxy.a();
-  }
-  
-  public void onProgress(bdvv parambdvv)
-  {
-    int i = (int)(parambdvv.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
-    }
+    this.jdField_a_of_type_Yyj.a(this.jdField_a_of_type_AndroidViewView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

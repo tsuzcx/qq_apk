@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ammq;
+import amrf;
 import android.content.Context;
 import android.content.Intent;
 import android.text.SpannableString;
@@ -9,11 +9,11 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.TextView;
-import apar;
-import aper;
-import azmj;
-import bddb;
-import bdds;
+import apfa;
+import apja;
+import azqs;
+import bdhk;
+import bdib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -40,7 +40,7 @@ public class MessageForNewGrayTips
         GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)localIterator.next();
         try
         {
-          paramQQAppInterface.setSpan(new aper(new apar(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
+          paramQQAppInterface.setSpan(new apja(new apfa(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
         }
         catch (Exception localException)
         {
@@ -58,13 +58,13 @@ public class MessageForNewGrayTips
     for (;;)
     {
       return;
-      Object localObject = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
+      Object localObject = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
       if (localObject != null) {
-        ((bddb)localObject).c();
+        ((bdhk)localObject).c();
       }
       while ((this.msgtype == -2037) && ((paramView.getContext() instanceof BaseActivity)))
       {
-        azmj.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
+        azqs.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
         return;
         localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
@@ -77,7 +77,7 @@ public class MessageForNewGrayTips
   {
     try
     {
-      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)ammq.a(this.msgData);
+      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)amrf.a(this.msgData);
       if (localGrayTipsInfo != null)
       {
         this.msg = localGrayTipsInfo.text;
@@ -106,7 +106,7 @@ public class MessageForNewGrayTips
     }
     try
     {
-      this.msgData = ammq.a(localGrayTipsInfo);
+      this.msgData = amrf.a(localGrayTipsInfo);
       return;
     }
     catch (Exception localException)

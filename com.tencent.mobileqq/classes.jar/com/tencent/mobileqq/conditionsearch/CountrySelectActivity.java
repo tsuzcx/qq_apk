@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.conditionsearch;
 
-import allj;
-import alpo;
+import alpy;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import aodf;
-import aodg;
-import aodh;
-import bemh;
+import aoho;
+import aohp;
+import aohq;
+import beqq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,11 +27,11 @@ import java.util.List;
 
 public class CountrySelectActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bemh
+  implements View.OnClickListener, beqq
 {
   public static final boolean a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-  aodf jdField_a_of_type_Aodf;
+  aoho jdField_a_of_type_Aoho;
   IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
   PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
   public String a;
@@ -56,11 +56,11 @@ public class CountrySelectActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559422);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131364878));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368211));
-    setTitle(alpo.a(2131702989));
-    Object localObject1 = ((allj)this.app.getManager(59)).a();
+    setContentView(2131559421);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131364880));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368222));
+    setTitle(alud.a(2131703001));
+    Object localObject1 = ((alpy)this.app.getManager(59)).a();
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     this.jdField_a_of_type_JavaUtilList = new ArrayList(((List)localObject1).size() + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".length());
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_country_code");
@@ -73,16 +73,16 @@ public class CountrySelectActivity
     int i;
     if (this.b)
     {
-      paramBundle = getLayoutInflater().inflate(2131559424, null);
-      localObject2 = new aodh(null);
-      ((TextView)paramBundle.findViewById(2131364877)).setText("不限");
-      localObject3 = paramBundle.findViewById(2131364250);
+      paramBundle = getLayoutInflater().inflate(2131559423, null);
+      localObject2 = new aohq(null);
+      ((TextView)paramBundle.findViewById(2131364879)).setText("不限");
+      localObject3 = paramBundle.findViewById(2131364252);
       if (this.jdField_a_of_type_JavaLangString.equals("0"))
       {
         i = 0;
         ((View)localObject3).setVisibility(i);
-        paramBundle.findViewById(2131364876).setVisibility(8);
-        ((aodh)localObject2).jdField_a_of_type_JavaLangString = "0";
+        paramBundle.findViewById(2131364878).setVisibility(8);
+        ((aohq)localObject2).jdField_a_of_type_JavaLangString = "0";
         paramBundle.setTag(localObject2);
         paramBundle.setOnClickListener(this);
         if (jdField_a_of_type_Boolean) {
@@ -93,18 +93,18 @@ public class CountrySelectActivity
     }
     else
     {
-      paramBundle = getLayoutInflater().inflate(2131559424, null);
-      localObject2 = new aodh(null);
-      ((TextView)paramBundle.findViewById(2131364877)).setText("中国");
-      localObject3 = paramBundle.findViewById(2131364250);
+      paramBundle = getLayoutInflater().inflate(2131559423, null);
+      localObject2 = new aohq(null);
+      ((TextView)paramBundle.findViewById(2131364879)).setText("中国");
+      localObject3 = paramBundle.findViewById(2131364252);
       if (!this.jdField_a_of_type_JavaLangString.equals("1")) {
         break label549;
       }
       i = 0;
       label325:
       ((View)localObject3).setVisibility(i);
-      paramBundle.findViewById(2131364876).setVisibility(8);
-      ((aodh)localObject2).jdField_a_of_type_JavaLangString = "1";
+      paramBundle.findViewById(2131364878).setVisibility(8);
+      ((aohq)localObject2).jdField_a_of_type_JavaLangString = "1";
       paramBundle.setTag(localObject2);
       paramBundle.setOnClickListener(this);
       if (jdField_a_of_type_Boolean) {
@@ -147,7 +147,7 @@ public class CountrySelectActivity
             }
           }
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()));
-          paramBundle = new aodg(null);
+          paramBundle = new aohp(null);
           paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
           this.jdField_a_of_type_JavaUtilList.add(paramBundle);
           j = i;
@@ -163,8 +163,8 @@ public class CountrySelectActivity
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(j, j + 1), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()));
       j += 1;
     }
-    this.jdField_a_of_type_Aodf = new aodf(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Aodf);
+    this.jdField_a_of_type_Aoho = new aoho(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Aoho);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(jdField_a_of_type_ArrayOfJavaLangString, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     return true;
@@ -178,10 +178,10 @@ public class CountrySelectActivity
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if ((paramView instanceof aodh))
+    if ((paramView instanceof aohq))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_country_code", ((aodh)paramView).jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_country_code", ((aohq)paramView).jdField_a_of_type_JavaLangString);
       setResult(-1, localIntent);
       finish();
     }

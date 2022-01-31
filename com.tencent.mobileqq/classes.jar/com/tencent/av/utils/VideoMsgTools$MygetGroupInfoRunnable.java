@@ -1,6 +1,6 @@
 package com.tencent.av.utils;
 
-import bdex;
+import bdjg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -22,7 +22,7 @@ class VideoMsgTools$MygetGroupInfoRunnable
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQAppInterface != null) {
-      bdex.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      bdjg.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

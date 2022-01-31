@@ -7,7 +7,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class ntm
-  implements aoga<String>
+  implements aokj<String>
 {
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
@@ -63,20 +63,20 @@ public class ntm
     return this;
   }
   
-  public static ntm a(aogf[] paramArrayOfaogf)
+  public static ntm a(aoko[] paramArrayOfaoko)
   {
     Object localObject = new ntm();
     int i = 0;
     String str;
     for (;;)
     {
-      if (i >= paramArrayOfaogf.length) {
+      if (i >= paramArrayOfaoko.length) {
         return localObject;
       }
-      str = paramArrayOfaogf[i].jdField_a_of_type_JavaLangString;
+      str = paramArrayOfaoko[i].jdField_a_of_type_JavaLangString;
       try
       {
-        ntm localntm = ((ntm)localObject).a((ntm)aogt.a(str, ntm.class), str);
+        ntm localntm = ((ntm)localObject).a((ntm)aolc.a(str, ntm.class), str);
         localObject = localntm;
       }
       catch (QStorageInstantiateException localQStorageInstantiateException)

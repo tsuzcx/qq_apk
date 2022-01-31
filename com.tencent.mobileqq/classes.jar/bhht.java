@@ -1,15 +1,17 @@
-import java.util.Queue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
+import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
 
 class bhht
-  implements RejectedExecutionHandler
+  implements TissueEnv
 {
-  bhht(bhhs parambhhs) {}
+  bhht(bhhs parambhhs, String paramString) {}
   
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  public String getNativeLibDir()
   {
-    bhhs.a(this.a).offer(paramRunnable);
+    if (TissueGlobal.verifyTissueEngine(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return null;
   }
 }
 

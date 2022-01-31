@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bavf;
-import befo;
+import bazo;
+import bejx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
@@ -15,14 +15,14 @@ import myl;
 public class SwiftWebAccelerator$5
   implements Runnable
 {
-  public SwiftWebAccelerator$5(befo parambefo, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$5(bejx parambejx, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs.run cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    bavf.a();
+    bazo.a();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
     myl localmyl = myl.a(false);

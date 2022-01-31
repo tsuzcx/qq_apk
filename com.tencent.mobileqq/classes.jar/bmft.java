@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
 
-class bmft
-  implements DialogInterface.OnClickListener
+public class bmft
+  extends AnimatorListenerAdapter
 {
-  bmft(bmfp parambmfp) {}
+  public bmft(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView begin");
+    }
   }
 }
 

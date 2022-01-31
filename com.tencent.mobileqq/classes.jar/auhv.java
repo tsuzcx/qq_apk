@@ -1,6 +1,26 @@
-public abstract interface auhv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+
+public class auhv
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public auhv(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      aujo.a("0X800A236");
+    }
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      if (augo.c) {
+        aujo.a("0X800A25B");
+      }
+    }
+  }
 }
 
 

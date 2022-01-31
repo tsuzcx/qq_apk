@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agug;
-import aguj;
+import agyv;
+import agyy;
 import java.util.List;
 
 public class StickerRecManager$2
   implements Runnable
 {
-  public StickerRecManager$2(agug paramagug, String paramString, boolean paramBoolean) {}
+  public StickerRecManager$2(agyv paramagyv, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
     String str = this.this$0.b(this.jdField_a_of_type_JavaLangString);
-    agug.a(this.this$0, this.jdField_a_of_type_Boolean, str);
-    if ((agug.a(this.this$0) != null) && (!agug.a(this.this$0).isEmpty())) {
-      agug.a(this.this$0).a(agug.a(this.this$0), str, "999");
+    agyv.a(this.this$0, this.jdField_a_of_type_Boolean, str);
+    if ((agyv.a(this.this$0) != null) && (!agyv.a(this.this$0).isEmpty())) {
+      agyv.a(this.this$0).a(agyv.a(this.this$0), str, "999");
     }
   }
 }

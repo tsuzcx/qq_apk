@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ae.SessionWrap;
-
-public final class bklr
-  implements Parcelable.Creator<SessionWrap>
+public class bklr
 {
-  public SessionWrap a(Parcel paramParcel)
-  {
-    return new SessionWrap(paramParcel);
-  }
-  
-  public SessionWrap[] a(int paramInt)
-  {
-    return new SessionWrap[0];
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
 }
 
 

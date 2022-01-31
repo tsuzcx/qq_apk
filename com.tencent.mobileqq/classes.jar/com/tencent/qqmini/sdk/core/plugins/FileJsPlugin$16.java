@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgho;
-import bgjm;
-import bgkd;
+import bglv;
+import bgnt;
+import bgok;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.io.IOException;
 class FileJsPlugin$16
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, byte[] paramArrayOfByte, bgkd parambgkd, String paramString2, String paramString3, long paramLong) {}
+  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, byte[] paramArrayOfByte, bgok parambgok, String paramString2, String paramString3, long paramLong) {}
   
   public String run()
   {
@@ -21,7 +21,7 @@ class FileJsPlugin$16
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (bgjm.a().a(this.val$filePath) != 2) {
+    if (bgnt.a().a(this.val$filePath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
     Object localObject = this.this$0.mMiniAppInfo;
@@ -29,7 +29,7 @@ class FileJsPlugin$16
     if (localObject != null)
     {
       l1 = ((MiniAppInfo)localObject).usrFileSizeLimit;
-      localObject = bgjm.a();
+      localObject = bgnt.a();
       if (this.val$nativeBufferBytes == null) {
         break label223;
       }
@@ -37,7 +37,7 @@ class FileJsPlugin$16
     label223:
     for (long l2 = this.val$nativeBufferBytes.length;; l2 = this.val$data.length())
     {
-      if (((bgjm)localObject).a(2, l2, this.this$0.mIsMiniGame, l1, this.this$0.mMiniAppInfo, this.this$0.mMiniAppContext.a())) {
+      if (((bgnt)localObject).a(2, l2, this.this$0.mIsMiniGame, l1, this.this$0.mMiniAppInfo, this.this$0.mMiniAppContext.a())) {
         break label235;
       }
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
@@ -45,7 +45,7 @@ class FileJsPlugin$16
       break;
     }
     label235:
-    String str2 = bgjm.a().c(this.val$filePath);
+    String str2 = bgnt.a().c(this.val$filePath);
     if (!TextUtils.isEmpty(str2)) {}
     for (;;)
     {

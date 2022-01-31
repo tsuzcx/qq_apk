@@ -1,22 +1,14 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
 
-public class yfa
-  implements ydr<xzz>
+class yfa
+  implements yem
 {
-  public yfa(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  yfa(yew paramyew) {}
   
-  public void a(yeb paramyeb, xzz paramxzz)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if ((paramyeb.e()) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      paramyeb = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramyeb.b());
-      VSNetworkHelper.a().a(paramyeb, new yfb(this, paramxzz));
-    }
+    this.a.d(paramStFeed);
   }
 }
 

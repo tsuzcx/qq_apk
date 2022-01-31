@@ -1,26 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class uou
-  extends vdz
+public final class uou
 {
-  uou(uor paramuor) {}
+  public StoryVideoItem a;
+  public StoryVideoItem b;
   
-  public void a()
+  public String toString()
   {
-    super.a();
-    uoq.a(this.a.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    wta.a("home_page", "suc_share", 1, paramInt, new String[] { wta.b(this.a.a.a) + "", wta.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    wta.a("home_page", "share_chanel", 1, paramInt, new String[] { wta.b(this.a.a.a) + "", wta.a(this.a.a.a) + "", this.a.a.a.feedId });
+    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
   }
 }
 

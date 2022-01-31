@@ -1,56 +1,24 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acir
-  implements berl
+  extends amco
 {
-  public acir(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public acir(BaseChatPie paramBaseChatPie) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    acju localacju = null;
-    switch (paramInt2)
+    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Acju != null)
-      {
-        this.a.jdField_a_of_type_Acju.c();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_Acju.a());
-      }
-      if (localacju == null) {
-        break;
-      }
-      localacju.a(ChatHistoryFileActivity.a(this.a));
-      localacju.b();
-      this.a.jdField_a_of_type_Acju = localacju;
-      this.a.jdField_a_of_type_Acju.a = this.a;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_Acju.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label326;
-      }
-      this.a.jdField_a_of_type_Acju.e();
       return;
-      localacju = ChatHistoryFileActivity.a(this.a, 0);
-      continue;
-      localacju = ChatHistoryFileActivity.a(this.a, 4);
-      continue;
-      localacju = ChatHistoryFileActivity.a(this.a, 1);
-      azmj.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
-      continue;
-      localacju = ChatHistoryFileActivity.a(this.a, 2);
-      azmj.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
-      continue;
-      localacju = ChatHistoryFileActivity.a(this.a, 3);
-      azmj.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
-    }
-    label326:
-    this.a.jdField_a_of_type_Acju.f();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      }
+    } while ((!paramBoolean) || (paramInt != azjh.a));
+    bdgm.a(this.a.a(), 0, null, this.a.a().getString(2131720135), 2131720137, 2131720136, new acis(this), new acit(this)).show();
   }
 }
 

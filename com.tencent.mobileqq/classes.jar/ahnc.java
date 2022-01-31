@@ -1,21 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Friends;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahnc
-  implements QQPermissionCallback
+public class ahnc
+  extends Handler
 {
-  ahnc(ahna paramahna, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
+  public ahnc(SystemMsgListView paramSystemMsgListView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    bdcd.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ahna.a(this.jdField_a_of_type_Ahna, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131720539);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 

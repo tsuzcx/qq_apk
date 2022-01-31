@@ -1,37 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class auej
-  implements DialogInterface.OnClickListener
 {
-  public auej(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(auec paramauec, MiniAppOptions paramMiniAppOptions)
   {
-    paramInt = auey.a().a();
-    if (1 == paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramauec.a.h });
+    }
+    return true;
+  }
+  
+  auec a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
     {
-      this.a.l();
-      if (this.a.a) {
-        auff.a("0X800A253", 3);
-      }
+    default: 
+      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+    case 0: 
+    case 1: 
+    case 2: 
+    case 4: 
+    case 5: 
+      return null;
     }
-    while (2 != paramInt)
-    {
+    return new bfxp(paramMiniAppActivity, paramString, paramInt);
+  }
+  
+  void a(auec paramauec, MiniAppOptions paramMiniAppOptions)
+  {
+    if (!a(paramauec, paramMiniAppOptions)) {
       return;
-      auff.a("0X800A253", 1);
-      return;
     }
-    if (this.a.d) {
-      auff.a("0X800A244", 2);
+    bdgk.a();
+    paramauec.a();
+  }
+  
+  void a(auef paramauef, @NonNull aued paramaued)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramauef.h });
     }
-    for (;;)
-    {
-      this.a.l();
-      return;
-      auff.a("0X800A244", 1);
-    }
+    paramaued.a(paramauef.f, "MiniAppLauncher", paramauef.h);
   }
 }
 

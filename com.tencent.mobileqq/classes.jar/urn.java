@@ -1,70 +1,24 @@
-import android.os.Build;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class urn
+  extends uro
 {
-  public static urn a;
-  public static urn b;
-  @xnb(a="manufacturer")
   public String a;
-  @xnb(a="model")
-  public String b;
+  public boolean a;
   
-  static
+  public urn(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
-    jdField_a_of_type_Urn = new urn();
-    jdField_b_of_type_Urn = new urn();
-    jdField_b_of_type_Urn.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_b_of_type_Urn.jdField_b_of_type_JavaLangString = Build.MODEL;
-    jdField_a_of_type_Urn.jdField_a_of_type_JavaLangString = "all";
-    jdField_a_of_type_Urn.jdField_b_of_type_JavaLangString = "all";
-  }
-  
-  public boolean a()
-  {
-    if (jdField_a_of_type_Urn.equals(this)) {}
-    while ((jdField_b_of_type_Urn.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Urn.jdField_b_of_type_JavaLangString)))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    super(paramErrorInfo);
+    if (paramPBUInt32Field.get() == 1) {}
+    for (;;)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (urn)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null)
-      {
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
-      }
-      else {
-        while (paramObject.jdField_a_of_type_JavaLangString != null) {
-          return false;
-        }
-      }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_b_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
-    {
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        j = this.jdField_b_of_type_JavaLangString.hashCode();
-      }
-      return i * 31 + j;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      return;
+      bool = false;
     }
   }
 }

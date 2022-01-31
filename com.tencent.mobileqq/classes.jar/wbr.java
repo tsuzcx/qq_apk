@@ -1,18 +1,27 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class wbr
-  implements xrv
+class wbr
+  implements uoa
 {
-  public wbr(StoryPickerFragment paramStoryPickerFragment) {}
+  wbr(wbq paramwbq) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void a(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Whw != null) {
-      this.a.jdField_a_of_type_Whw.a(this.a.jdField_a_of_type_Wcf.a());
-    }
-    return true;
+    wxe.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { wbq.a(this.a).mVid });
+    vls.a(wbq.a(this.a), wbq.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    wxe.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { wbq.a(this.a).mVid, paramErrorMessage.toString() });
+    vls.a(wbq.a(this.a), wbq.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    wxe.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { wbq.a(this.a).mVid });
+    vls.a(wbq.a(this.a), wbq.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }
 

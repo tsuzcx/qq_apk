@@ -1,12 +1,17 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
 
-public final class anjk
-  implements FileFilter
+public class anjk
+  implements DialogInterface.OnClickListener
 {
-  public boolean accept(File paramFile)
+  public anjk(ArkAppDownloadModule.9 param9) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

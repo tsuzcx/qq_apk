@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqsz;
+import aqxi;
 
 public final class FileVideoManager$11
   implements Runnable
@@ -9,7 +9,7 @@ public final class FileVideoManager$11
   
   public void run()
   {
-    aqsz.b(this.a);
+    aqxi.b(this.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import pvy;
 import pwc;
@@ -12,7 +12,7 @@ public class PTSEngineLoader$4
   
   public void run()
   {
-    if (!bdcs.a(pvy.a(this.this$0)))
+    if (!bdhb.a(pvy.a(this.this$0)))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir does not exist.");
       return;
@@ -27,15 +27,15 @@ public class PTSEngineLoader$4
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir version is not valid.");
       return;
     }
-    if (bdcs.a(pvy.b(this.this$0)))
+    if (bdhb.a(pvy.b(this.this$0)))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], delete inner dir, dir = " + pvy.b(this.this$0));
-      bdcs.a(pvy.b(this.this$0));
+      bdhb.a(pvy.b(this.this$0));
     }
     try
     {
-      boolean bool1 = bdcs.d(pvy.a(this.this$0) + "/" + "libpts.so", pvy.b(this.this$0) + "/" + "libpts.so");
-      boolean bool2 = bdcs.d(pvy.a(this.this$0) + "/" + "pts_config.json", pvy.b(this.this$0) + "/" + "pts_config.json");
+      boolean bool1 = bdhb.d(pvy.a(this.this$0) + "/" + "libpts.so", pvy.b(this.this$0) + "/" + "libpts.so");
+      boolean bool2 = bdhb.d(pvy.a(this.this$0) + "/" + "pts_config.json", pvy.b(this.this$0) + "/" + "pts_config.json");
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], copySoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }

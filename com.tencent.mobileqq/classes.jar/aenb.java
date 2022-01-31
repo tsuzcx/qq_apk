@@ -1,42 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aenb
-  implements aivw
+  extends amgd
 {
-  public aenb(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
+  public aenb(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a()
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      Object localObject = paramPathResult + File.separator;
-      localObject = (String)localObject + "aio.png";
-      localObject = SafeBitmapFactory.decodeFile((String)localObject, bdda.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
-      if (localObject != null) {
-        this.a.a.icon = ((Bitmap)localObject);
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    ActivateFriendActivity.b(this.a);
   }
 }
 

@@ -1,9 +1,8 @@
-import android.widget.RelativeLayout;
-
-public class appn
-  extends apow
+public abstract interface appn
 {
-  RelativeLayout[] a;
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

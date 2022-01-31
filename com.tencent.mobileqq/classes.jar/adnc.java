@@ -1,13 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class adnc
+class adnc
   implements DialogInterface.OnClickListener
 {
-  public adnc(QQMapActivity paramQQMapActivity) {}
+  adnc(admx paramadmx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

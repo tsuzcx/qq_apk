@@ -1,30 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class bavg
-  implements EIPClientConnectListener
+public class bavg
 {
-  bavg(bavf parambavf) {}
+  public static bavg a;
   
-  public void connectFailed()
+  public static bavg a()
   {
-    bavf.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectFailed");
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bavg();
+      }
+      return a;
     }
+    finally {}
   }
   
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  public int a()
   {
-    if (paramEIPCConnection != null) {
-      bavf.a(this.a, paramEIPCConnection.procName);
+    return bdin.a(BaseApplication.getContext());
+  }
+  
+  public String a()
+  {
+    try
+    {
+      String str = AppNetConnInfo.getCurrentAPN();
+      return str;
     }
-    bavf.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectSuccess");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    bavf.a(this.a);
   }
 }
 

@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
 public class aeyt
   implements View.OnClickListener
 {
-  public aeyt(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public aeyt(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
-    AIOLongShotHelper.a("0X8009DE9");
+    VoiceTextEditPanel.a(this.a);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mfsdk;
 
-import abqk;
-import abrd;
-import abrf;
-import abrl;
+import abuz;
+import abvs;
+import abvu;
+import abwa;
 import android.app.Application;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -26,49 +26,49 @@ class MagnifierSDK$RunSDKRunnable
     boolean bool2 = false;
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences = MagnifierSDK.a(this.jdField_a_of_type_AndroidAppApplication);
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    MagnifierSDK.jdField_a_of_type_Abrd = abrd.a(this.jdField_a_of_type_AndroidAppApplication.getApplicationContext());
-    abqk.a();
-    boolean bool3 = abqk.a;
+    MagnifierSDK.jdField_a_of_type_Abvs = abvs.a(this.jdField_a_of_type_AndroidAppApplication.getApplicationContext());
+    abuz.a();
+    boolean bool3 = abuz.a;
     boolean bool1;
     if ((this.jdField_a_of_type_Int & 0x1) > 0)
     {
       bool1 = true;
-      abqk.a = bool1 & bool3;
-      bool3 = abqk.b;
+      abuz.a = bool1 & bool3;
+      bool3 = abuz.b;
       if ((this.jdField_a_of_type_Int & 0x2) <= 0) {
         break label242;
       }
       bool1 = true;
       label75:
-      abqk.b = bool1 & bool3;
-      bool3 = abqk.c;
+      abuz.b = bool1 & bool3;
+      bool3 = abuz.c;
       if ((this.jdField_a_of_type_Int & 0x4) <= 0) {
         break label247;
       }
       bool1 = true;
       label96:
-      abqk.c = bool1 & bool3;
-      bool3 = abqk.g;
+      abuz.c = bool1 & bool3;
+      bool3 = abuz.g;
       if ((this.jdField_a_of_type_Int & 0x8) <= 0) {
         break label252;
       }
       bool1 = true;
       label118:
-      abqk.g = bool1 & bool3;
-      bool3 = abqk.h;
+      abuz.g = bool1 & bool3;
+      bool3 = abuz.h;
       if ((this.jdField_a_of_type_Int & 0x10) <= 0) {
         break label257;
       }
       bool1 = true;
       label140:
-      abqk.h = bool1 & bool3;
-      bool3 = abqk.i;
+      abuz.h = bool1 & bool3;
+      bool3 = abuz.i;
       bool1 = bool2;
       if ((this.jdField_a_of_type_Int & 0x20) > 0) {
         bool1 = true;
       }
-      abqk.i = bool3 & bool1;
-      if (abqk.a)
+      abuz.i = bool3 & bool1;
+      if (abuz.a)
       {
         if ((2 != BaseApplicationImpl.sProcessId) && (8 != BaseApplicationImpl.sProcessId)) {
           break label262;
@@ -78,11 +78,11 @@ class MagnifierSDK$RunSDKRunnable
     }
     for (;;)
     {
-      if (abqk.g) {
-        abrl.a().addObserver(MagnifierSDK.a());
+      if (abuz.g) {
+        abwa.a().addObserver(MagnifierSDK.a());
       }
-      abrf.a().addObserver(MagnifierSDK.a());
-      if ((!abqk.b) && (abqk.c)) {}
+      abvu.a().addObserver(MagnifierSDK.a());
+      if ((!abuz.b) && (abuz.c)) {}
       return;
       bool1 = false;
       break;

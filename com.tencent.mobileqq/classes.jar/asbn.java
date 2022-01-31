@@ -1,23 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class asbn
-  implements TextWatcher
+class asbn
+  implements View.OnClickListener
 {
-  public asbn(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  asbn(asbm paramasbm) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
-    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.a.b();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

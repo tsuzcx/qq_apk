@@ -1,15 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 class asqt
-  implements View.OnHoverListener
+  implements DialogInterface.OnClickListener
 {
-  asqt(asqs paramasqs) {}
+  asqt(asqs paramasqs, InputStream paramInputStream) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      asqs.a(this.jdField_a_of_type_Asqs).finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+      }
+    }
   }
 }
 

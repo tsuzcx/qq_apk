@@ -1,32 +1,66 @@
+import android.app.Activity;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bkyk
-  implements View.OnClickListener
+  implements bmeo<blfi>
 {
-  bkyk(bkyj parambkyj, bkyl parambkyl, String paramString) {}
+  bkyk(bkyj parambkyj) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable blfi paramblfi)
   {
-    if (bkyj.a(this.jdField_a_of_type_Bkyj) != this.jdField_a_of_type_Bkyl.getLayoutPosition()) {
-      blen.a().g(this.jdField_a_of_type_JavaLangString);
-    }
-    if (bkyj.a(this.jdField_a_of_type_Bkyj) == -1)
+    if (paramblfi == null) {}
+    label159:
+    do
     {
-      bkyj.a(this.jdField_a_of_type_Bkyj).a(this.jdField_a_of_type_JavaLangString, ((bkxw)bkxv.a.get(0)).jdField_a_of_type_JavaLangString, ((bkxw)bkxv.a.get(0)).b);
-      bkyj.a(this.jdField_a_of_type_Bkyj).a(true, false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkyj.a();
-      bkyj.a(this.jdField_a_of_type_Bkyj, this.jdField_a_of_type_Bkyl.getLayoutPosition());
-      ((bkxu)bkyj.a(this.jdField_a_of_type_Bkyj).get(bkyj.a(this.jdField_a_of_type_Bkyj) - 1)).a(true);
-      this.jdField_a_of_type_Bkyl.a(true);
       return;
-      bkyj.a(this.jdField_a_of_type_Bkyj).a(this.jdField_a_of_type_JavaLangString);
-    }
+      paramblfi = paramblfi.a;
+      if (paramblfi == AECaptureMode.NORMAL)
+      {
+        if (blat.i(bkyj.a(this.a).getIntent()))
+        {
+          bkyj.a(this.a).setImageResource(2130839785);
+          bkyj.a(this.a).setVisibility(0);
+          bkyj.a(this.a).setBackgroundResource(2130837709);
+          bkyj.b(this.a).setVisibility(0);
+          if (!paramblfi.getHasCountDown()) {
+            break label159;
+          }
+          bkyj.c(this.a).setVisibility(8);
+          bkyj.d(this.a).setBackgroundResource(2130837610);
+          bkyj.d(this.a).setVisibility(0);
+          bkyj.a(this.a, 10);
+        }
+        for (;;)
+        {
+          bkyj.e(this.a).setVisibility(8);
+          return;
+          bkyj.a(this.a).setImageResource(2130844133);
+          break;
+          bkyj.c(this.a).setBackgroundResource(2130837609);
+          bkyj.c(this.a).setVisibility(0);
+          bkyj.d(this.a).setVisibility(8);
+        }
+      }
+      if (paramblfi == AECaptureMode.GIF)
+      {
+        bkyj.a(this.a).setImageResource(2130844132);
+        bkyj.a(this.a).setVisibility(0);
+        bkyj.a(this.a).setBackgroundResource(2130837708);
+        bkyj.c(this.a).setBackgroundResource(2130837608);
+        bkyj.b(this.a).setVisibility(8);
+        bkyj.d(this.a).setBackgroundResource(2130837611);
+        bkyj.d(this.a).setVisibility(0);
+        bkyj.a(this.a, 3);
+        bkyj.e(this.a).setVisibility(0);
+        return;
+      }
+    } while (paramblfi != AECaptureMode.PLAY);
+    bkyj.a(this.a).setImageResource(2130844133);
+    bkyj.a(this.a).setVisibility(8);
   }
 }
 

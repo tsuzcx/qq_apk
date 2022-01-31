@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1;
+import com.tencent.mobileqq.data.RecentUser;
+import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import java.util.Comparator;
 
 public class bnct
-  implements Animation.AnimationListener
+  implements Comparator<RecentUser>
 {
-  public bnct(VideoFilterViewPager.1 param1) {}
+  public bnct(ShareToActivity paramShareToActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.a.a.setVisibility(8);
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -96,9 +96,9 @@ public class rmp
         this.jdField_a_of_type_Rmq.a(paramViewGroup);
       }
       return paramViewGroup;
-      paramViewGroup = new rnm(localLayoutInflater.inflate(2131560063, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramViewGroup = new rnm(localLayoutInflater.inflate(2131560062, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       continue;
-      paramViewGroup = new oda(localLayoutInflater.inflate(2131559888, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramViewGroup = new oda(localLayoutInflater.inflate(2131559887, paramViewGroup, false), this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   

@@ -30,7 +30,7 @@ class spr
           if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
           {
             localAndroidInfo = paramBundle.androidInfo;
-            localObject = zbj.a(paramBundle.iconsURL, 16);
+            localObject = zfy.a(paramBundle.iconsURL, 16);
             Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
             if (localAndroidInfo.sourceUrl != null) {
               continue;
@@ -69,7 +69,7 @@ class spr
         this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
         this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1);
       }
-      paramBundle = azqu.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      paramBundle = azvd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
       if (paramBundle != null) {
         continue;
       }

@@ -1,79 +1,19 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
+import java.util.Comparator;
 
-public class awnc
+public final class awnc
+  implements Comparator<PortalManager.TimerConfig>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  
-  private String b()
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    switch (this.jdField_c_of_type_Int)
-    {
-    default: 
-      return "";
-    case 4: 
-      return alpo.a(2131713944);
-    case 5: 
-      return alpo.a(2131713942);
-    case 6: 
-      return alpo.a(2131713940);
-    case 7: 
-      return alpo.a(2131713941);
-    case 8: 
-      return alpo.a(2131713945);
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
+      return 1;
     }
-    return alpo.a(2131713943);
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_b_of_type_Int == 3)
-    {
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("   ");
-        }
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-      }
-      if (this.jdField_c_of_type_Int > 0)
-      {
-        String str = b();
-        if (!TextUtils.isEmpty(str))
-        {
-          if (localStringBuilder.length() > 0) {
-            localStringBuilder.append("   ");
-          }
-          localStringBuilder.append(str);
-        }
-      }
+    if (l < 0L) {
+      return -1;
     }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
+    return 0;
   }
 }
 

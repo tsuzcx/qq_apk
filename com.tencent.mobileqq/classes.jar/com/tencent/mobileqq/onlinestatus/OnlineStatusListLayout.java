@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import awam;
+import awev;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime.Status;
@@ -53,26 +53,26 @@ public class OnlineStatusListLayout
   
   private void a()
   {
-    this.e = aekt.a(12.0F, getResources());
-    this.f = aekt.a(16.0F, getResources());
+    this.e = aepi.a(12.0F, getResources());
+    this.f = aepi.a(16.0F, getResources());
     setPadding(this.e, this.f, this.e, 0);
-    this.c = aekt.a(16.0F, getResources());
-    this.d = aekt.a(20.0F, getResources());
-    this.b = aekt.a(32.0F, getResources());
+    this.c = aepi.a(16.0F, getResources());
+    this.d = aepi.a(20.0F, getResources());
+    this.b = aepi.a(32.0F, getResources());
   }
   
-  private boolean a(awam paramawam1, awam paramawam2)
+  private boolean a(awev paramawev1, awev paramawev2)
   {
-    if ((paramawam1 == null) || (paramawam2 == null) || (paramawam1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramawam2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramawam1.jdField_a_of_type_Long != paramawam2.jdField_a_of_type_Long) {
+    if ((paramawev1 == null) || (paramawev2 == null) || (paramawev1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramawev2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramawev1.jdField_a_of_type_Long != paramawev2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
   }
   
-  public void a(awam paramawam)
+  public void a(awev paramawev)
   {
-    if (paramawam == null) {}
+    if (paramawev == null) {}
     for (;;)
     {
       return;
@@ -84,23 +84,23 @@ public class OnlineStatusListLayout
         if ((localObject instanceof OnlineStatusItemView))
         {
           localObject = (OnlineStatusItemView)localObject;
-          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramawam));
+          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramawev));
         }
         i += 1;
       }
     }
   }
   
-  public void a(List<awam> paramList, View.OnClickListener paramOnClickListener)
+  public void a(List<awev> paramList, View.OnClickListener paramOnClickListener)
   {
     int j = paramList.size();
     int i = 0;
     while (i < j)
     {
-      awam localawam = (awam)paramList.get(i);
+      awev localawev = (awev)paramList.get(i);
       OnlineStatusItemView localOnlineStatusItemView = new OnlineStatusItemView(getContext());
-      localOnlineStatusItemView.a(localawam);
-      localOnlineStatusItemView.setTag(localawam);
+      localOnlineStatusItemView.a(localawev);
+      localOnlineStatusItemView.setTag(localawev);
       localOnlineStatusItemView.setOnClickListener(paramOnClickListener);
       addView(localOnlineStatusItemView);
       i += 1;

@@ -1,10 +1,6 @@
-import java.util.ArrayList;
-
-public class bckv
+public abstract interface bckv
 {
-  public int a;
-  public ArrayList<bckw> a;
-  public ArrayList<bckw> b;
+  public abstract void a(int paramInt);
 }
 
 

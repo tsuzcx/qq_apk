@@ -1,24 +1,9 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class uwl
-  extends QQUIEventReceiver<uvz, uuw>
+  implements uvi
 {
-  public uwl(@NonNull uvz paramuvz)
-  {
-    super(paramuvz);
-  }
+  public void a() {}
   
-  public void a(@NonNull uvz paramuvz, @NonNull uuw paramuuw)
-  {
-    paramuvz.a.a.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uuw.class;
-  }
+  public void b() {}
 }
 
 

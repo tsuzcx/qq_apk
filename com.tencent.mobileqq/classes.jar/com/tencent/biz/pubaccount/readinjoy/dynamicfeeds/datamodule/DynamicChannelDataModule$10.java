@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.qphone.base.util.QLog;
 import ovz;

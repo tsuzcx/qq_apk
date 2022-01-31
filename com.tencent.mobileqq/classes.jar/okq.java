@@ -5,7 +5,7 @@ import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class okq
-  implements bhyr
+  implements bicy
 {
   public okq(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
@@ -16,7 +16,7 @@ public class okq
     {
       if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559057, null));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559056, null));
         this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(ReadInJoyCommentComponentFragment.a(this.a));
         this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b = true;
         this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, 1008, ReadInJoyCommentComponentFragment.a(this.a), ReadInJoyCommentComponentFragment.a(this.a).getTitleBarHeight(), null, null);
@@ -29,7 +29,7 @@ public class okq
     }
     if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559479, null));
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559478, null));
       this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, ReadInJoyCommentComponentFragment.a(this.a), null, this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer);
       this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(ReadInJoyCommentComponentFragment.a(this.a));
     }

@@ -1,37 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.16;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bcet
-  implements DialogInterface.OnClickListener
+  extends bcex<bcdx>
 {
-  public bcet(VisitorTroopCardFragment.16 param16) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcet(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      arys.a(this.a.this$0.getActivity(), true, "action_game_join_group", Long.valueOf(this.a.this$0.getActivity().getIntent().getStringExtra("appid")).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("VisitorTroopCardFragment.Activity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362887));
+    this.c = ((ImageView)paramView.findViewById(2131375740));
+    this.b = ((ImageView)paramView.findViewById(2131364343));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362894));
   }
 }
 

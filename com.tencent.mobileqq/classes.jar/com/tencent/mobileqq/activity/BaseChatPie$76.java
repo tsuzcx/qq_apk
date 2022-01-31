@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import agux;
+import agzm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class BaseChatPie$76
@@ -10,8 +10,8 @@ class BaseChatPie$76
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Agux != null) && (this.a == Long.parseLong(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-      this.this$0.jdField_a_of_type_Agux.a();
+    if ((this.this$0.jdField_a_of_type_Agzm != null) && (this.a == Long.parseLong(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      this.this$0.jdField_a_of_type_Agzm.a();
     }
   }
 }

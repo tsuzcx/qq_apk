@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.os.Bundle;
 
-public class bfas
-  implements DialogInterface.OnClickListener
+public abstract class bfas
 {
-  public bfas(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  protected Bundle a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfas(Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
+    this.a = paramBundle;
   }
 }
 

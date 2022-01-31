@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import asil;
+import asmu;
 import java.util.List;
 import mqq.app.AppRuntime;
 
@@ -14,7 +14,7 @@ public class GameSessionView$1
     if (GameSessionView.a(this.this$0) == null) {
       return;
     }
-    List localList = ((asil)GameSessionView.a(this.this$0).getManager(358)).a();
+    List localList = ((asmu)GameSessionView.a(this.this$0).getManager(358)).a();
     this.this$0.setData(localList);
   }
 }

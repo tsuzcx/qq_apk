@@ -1,9 +1,18 @@
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
 class afst
+  extends afuf
 {
-  int jdField_a_of_type_Int = -1;
-  afsv[] jdField_a_of_type_ArrayOfAfsv;
+  afst(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  afst(afss paramafss) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agdo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

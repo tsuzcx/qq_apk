@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-class amek
-  implements amep
+public abstract interface amek
 {
-  amek(amej paramamej) {}
-  
-  public void a(FullMessageSearchResult paramFullMessageSearchResult)
-  {
-    amej.a(this.a);
-    this.a.notifyObservers(paramFullMessageSearchResult);
-  }
+  public abstract void a(TroopMemberInfo paramTroopMemberInfo);
 }
 
 

@@ -1,12 +1,17 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public abstract interface wmz
+public class wmz
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
+  public static boolean a(QQUserUIItem paramQQUserUIItem)
+  {
+    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
+  }
   
-  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
+  public static boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
+  }
 }
 
 

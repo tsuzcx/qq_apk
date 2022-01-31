@@ -1,33 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ArithmeticCaptureView;
 
-public class bbyh
-  implements TextWatcher
+class bbyh
+  extends xph
 {
-  public bbyh(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  bbyh(bbyg parambbyg, LayoutInflater paramLayoutInflater)
   {
-    if (paramEditable.length() == 0)
-    {
-      this.a.e();
-      this.a.a(false);
-      return;
-    }
-    this.a.jdField_a_of_type_Bbyq.a();
-    this.a.jdField_a_of_type_Bbyq.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
-    this.a.b = 0;
-    this.a.a(true);
-    paramEditable = paramEditable.toString();
-    this.a.b(paramEditable);
+    super(paramLayoutInflater);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
+    int i = localTypedArray.getResourceId(0, -1);
+    localTypedArray.recycle();
+    if (i == 2131363890) {
+      return new ArithmeticCaptureView(paramContext, paramAttributeSet);
+    }
+    return super.a(paramView, paramString, paramContext, paramAttributeSet);
+  }
 }
 
 

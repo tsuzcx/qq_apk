@@ -1,49 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.1;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.2;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.3;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.4;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
 
-public class ampv
+public final class ampv
+  implements Parcelable.Creator<SosoInterface.SosoCell>
 {
-  private static ampv a;
-  
-  public static ampv a()
+  public SosoInterface.SosoCell a(Parcel paramParcel)
   {
-    if (a == null) {
-      a = new ampv();
-    }
-    return a;
+    return new SosoInterface.SosoCell(paramParcel);
   }
   
-  public void a()
+  public SosoInterface.SosoCell[] a(int paramInt)
   {
-    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
-    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    ThreadManager.post(new ARRecordReport.4(this, paramInt), 5, null, false);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    QLog.d("ARRecordReport", 2, String.format("reportRecordSuccess successType=%s videoLength=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-    ThreadManager.post(new ARRecordReport.3(this, paramInt, paramLong), 5, null, false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    ThreadManager.post(new ARRecordReport.2(this, paramBoolean), 5, null, false);
+    return new SosoInterface.SosoCell[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampv
  * JD-Core Version:    0.7.0.1
  */

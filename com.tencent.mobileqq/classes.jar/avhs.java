@@ -1,44 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class avhs
-  extends BaseAdapter
+class avhs
+  implements DialogInterface.OnClickListener
 {
-  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  avhs(avhr paramavhr) {}
   
-  public avhs(List<PicInfo> paramList, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = i * 6;
-    int i = j;
-    while ((i < paramInt.size()) && (i < j + 6))
+    if (!bdin.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
-      i += 1;
+      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, alud.a(2131708649), 0).a();
+      return;
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_Avgk.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    ((avrb)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.e, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j, new avht(this));
   }
 }
 

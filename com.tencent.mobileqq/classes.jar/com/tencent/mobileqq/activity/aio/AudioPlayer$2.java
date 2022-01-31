@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aelc;
+import aepr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +43,7 @@ public class PermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    adky.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class);
+    adpn.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class);
   }
   
   public static void launchForResult(Activity paramActivity, String paramString, int paramInt)
@@ -51,7 +51,7 @@ public class PermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    adky.a(paramActivity, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class, paramInt);
+    adpn.a(paramActivity, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class, paramInt);
   }
   
   public boolean needImmersive()

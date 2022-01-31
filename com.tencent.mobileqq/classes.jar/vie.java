@@ -1,14 +1,40 @@
-import android.content.DialogInterface;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import android.app.Activity;
 
-public class vie
-  extends bdco
+class vie
+  implements vig
 {
-  public vie(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  vie(vic paramvic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(vkn paramvkn)
   {
-    paramDialogInterface.dismiss();
+    vic.a(this.a).c();
+    Activity localActivity = vic.a(this.a).a();
+    if (localActivity == null)
+    {
+      c(paramvkn);
+      return;
+    }
+    vkz.a(localActivity, paramvkn, vic.a(this.a));
+  }
+  
+  public void b(vkn paramvkn)
+  {
+    vic.a(this.a).c();
+    if (vic.a(this.a) != null)
+    {
+      vic.a(this.a).c(paramvkn.a);
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void c(vkn paramvkn)
+  {
+    vic.a(this.a).c();
+    if (vic.a(this.a) != null)
+    {
+      vic.a(this.a).d(paramvkn.a);
+      vic.a(this.a).a();
+    }
   }
 }
 

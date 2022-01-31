@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-class xik
-  implements View.OnClickListener
+public class xik
+  extends xgc
 {
-  xik(xij paramxij, xim paramxim) {}
+  public xik(ElasticImageView paramElasticImageView) {}
   
-  public void onClick(View paramView)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    if (xij.a(this.jdField_a_of_type_Xij) != null) {
-      xij.a(this.jdField_a_of_type_Xij).a((SlideItemInfo)this.jdField_a_of_type_Xim.a.getTag());
-    }
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    wxe.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-
-public final class atli
-  implements Parcelable.Creator<LocationRoom.Venue>
+public class atli
 {
-  public LocationRoom.Venue a(Parcel paramParcel)
-  {
-    return new LocationRoom.Venue(paramParcel);
-  }
-  
-  public LocationRoom.Venue[] a(int paramInt)
-  {
-    return new LocationRoom.Venue[paramInt];
-  }
+  public int a;
+  public long a;
+  public boolean a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
 }
 
 

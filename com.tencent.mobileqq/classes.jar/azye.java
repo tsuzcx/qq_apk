@@ -1,29 +1,61 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.studyroom.utils.PluginUtils.1;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public class azye
+class azye
+  implements aeqh
 {
-  public static Future<?> a(Context paramContext, Bundle paramBundle, boolean paramBoolean, azyf paramazyf)
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  boolean jdField_a_of_type_Boolean;
+  TextView b;
+  
+  private void a(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramBundle.putString("qqVersion", "8.3.3");
-    paramBundle.putString("bizType", "StudyRoom");
-    paramBundle.putString("plugin_id", "StudyRoom");
-    paramBundle.putString("appid", "101854111");
-    paramBundle.putInt("authtype", 1);
-    paramBundle.putInt("isGroupCode", 1);
-    paramBundle.putInt("roomCodeType", 1);
-    paramBundle.putString("uin", localQQAppInterface.c());
-    paramBundle.putBoolean("preload", paramBoolean);
-    paramBundle.putString("fromId", "1");
-    paramBundle.putLong("ts_click_millisecond", System.currentTimeMillis());
-    paramBundle.putBoolean("show_status_bar", true);
-    return alza.a(192).submit(new PluginUtils.1(paramContext, paramBundle, paramazyf));
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
+      }
+    }
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
+    {
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
+      return;
+    }
+  }
+  
+  public void a(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
+      return;
+    }
+    a(false);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    a(paramBoolean);
   }
 }
 

@@ -1,12 +1,22 @@
-class wuy
-  extends ayym
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class wuy
+  extends QQUIEventReceiver<wub, wux>
 {
-  wuy(wus paramwus) {}
-  
-  public void a()
+  public wuy(@NonNull wub paramwub)
   {
-    wsv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.ag_();
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull wux paramwux)
+  {
+    paramwub.a(paramwux);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wux.class;
   }
 }
 

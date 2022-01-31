@@ -1,48 +1,130 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.4.1;
-import cooperation.qzone.share.QZoneShareActivity.4.2;
-import eipc.EIPCClient;
-import java.util.Map;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import cooperation.qzone.util.QZLog;
 
 public class bjnl
-  implements MiniAppCmdInterface
+  extends SparseArray<bjnm>
 {
-  public bjnl(QZoneShareActivity paramQZoneShareActivity) {}
+  private long a;
+  private long b;
+  private long c;
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public bjnl(long paramLong)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    this.a = paramLong;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    if (this.b + this.c > this.a) {
+      if (!paramBoolean) {}
+    }
+    for (;;)
     {
-      String str = paramJSONObject.optString("jump_url");
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).a != null)) {
-        QZoneShareActivity.a(this.a).a.put("xcxFakeLink", str);
+      int i;
+      try
+      {
+        if (paramInt >= size()) {
+          break label150;
+        }
+        i = paramInt;
+        removeAt(i);
+        return;
       }
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        localIndexOutOfBoundsException.printStackTrace();
+        if ((a()) || (size() <= 0)) {
+          continue;
+        }
+        if (!paramBoolean) {
+          break label139;
+        }
+        i = j;
+        removeAt(i);
+        QZLog.e("PieceCacheList", "trimToSize: IndexOutOfBoundsException temp " + (size() - (36 - paramInt)));
+        return;
       }
-      QZoneShareActivity.c(this.a);
-      this.a.runOnUiThread(new QZoneShareActivity.4.1(this));
+      if (paramInt < size())
+      {
+        i = size() - 1;
+      }
+      else
+      {
+        i = size();
+        i -= 36 - paramInt;
+        continue;
+        label139:
+        i = size() - 1;
+        continue;
+        return;
+        label150:
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(int paramInt, bjnm parambjnm)
+  {
+    if (parambjnm != null)
+    {
+      super.put(paramInt, parambjnm);
+      this.b += parambjnm.c();
+    }
+  }
+  
+  public void a(int paramInt, bjnm parambjnm, boolean paramBoolean)
+  {
+    if (parambjnm != null) {}
+    try
+    {
+      if (this.c == 0L)
+      {
+        this.c = parambjnm.c();
+        if (this.a < this.c * 8L) {
+          this.a = (this.c * 8L);
+        }
+      }
+      a(paramInt, paramBoolean);
+      a(paramInt, parambjnm);
       return;
     }
-    long l = -1L;
-    if (paramJSONObject != null)
-    {
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      l = paramJSONObject.optLong("retCode");
+    finally {}
+  }
+  
+  public boolean a()
+  {
+    if (this.c == 0L) {}
+    while (this.a > this.c * 8L) {
+      return false;
     }
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
-    {
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      this.a.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
-      return;
+    return true;
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.b = 0L;
+  }
+  
+  public void remove(int paramInt)
+  {
+    bjnm localbjnm = (bjnm)get(paramInt);
+    if (localbjnm != null) {
+      localbjnm.b();
     }
+    super.remove(paramInt);
+    this.b -= this.c;
+  }
+  
+  public void removeAt(int paramInt)
+  {
+    bjnm localbjnm = (bjnm)valueAt(paramInt);
+    if (localbjnm != null) {
+      localbjnm.b();
+    }
+    super.removeAt(paramInt);
+    this.b -= this.c;
   }
 }
 

@@ -1,12 +1,18 @@
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
+
 public class anir
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public volatile int a;
-  public volatile boolean a;
+  public anir(ArkAppDeviceModule.ObserverMethod.6 param6, bdjz parambdjz) {}
   
-  private anir()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bdjz.findViewById(2131365192)).setImageBitmap(paramBitmap);
+    }
   }
 }
 

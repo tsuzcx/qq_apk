@@ -1,20 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ayfv
-  implements View.OnTouchListener
 {
-  public ayfv(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  private boolean a = true;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static ayfv a(String paramString)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      ayfv localayfv = new ayfv();
+      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
+      for (;;)
+      {
+        localayfv.a = bool;
+        return localayfv;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
   }
 }
 

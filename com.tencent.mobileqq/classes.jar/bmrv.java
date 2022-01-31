@@ -1,27 +1,14 @@
-import android.support.annotation.NonNull;
+import java.io.File;
+import java.io.FileFilter;
 
-public class bmrv
-  implements Comparable
+class bmrv
+  implements FileFilter
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  bmrv(bmru parambmru) {}
   
-  public bmrv(String paramString1, String paramString2, int paramInt, String paramString3)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-  }
-  
-  public int compareTo(@NonNull Object paramObject)
-  {
-    if ((paramObject instanceof bmrv)) {
-      return this.b.compareTo(((bmrv)paramObject).b);
-    }
-    return 0;
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

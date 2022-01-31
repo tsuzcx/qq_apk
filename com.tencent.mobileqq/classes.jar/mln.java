@@ -25,18 +25,17 @@ public class mln
   static
   {
     int[] arrayOfInt1 = { 1 };
-    int[] arrayOfInt2 = { 1, 2 };
-    int[] arrayOfInt3 = { 2, 2 };
-    int[] arrayOfInt4 = { 2, 2, 1 };
-    int[] arrayOfInt5 = { 2, 2, 2 };
+    int[] arrayOfInt2 = { 1, 1 };
+    int[] arrayOfInt3 = { 1, 2 };
+    int[] arrayOfInt4 = { 2, 2 };
+    int[] arrayOfInt5 = { 2, 2, 1 };
     int[] arrayOfInt6 = { 2, 2, 3 };
     int[] arrayOfInt7 = { 2, 3, 3 };
-    int[] arrayOfInt8 = { 3, 3, 2, 2 };
+    int[] arrayOfInt8 = { 3, 3, 3 };
     int[] arrayOfInt9 = { 3, 3, 3, 2 };
     int[] arrayOfInt10 = { 3, 3, 3, 3 };
-    int[] arrayOfInt11 = { 3, 4, 4, 4 };
-    int[] arrayOfInt12 = { 4, 4, 4, 4 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { arrayOfInt1, { 1, 1 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 3, 3, 3 }, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 3, 3, 3, 4 }, { 3, 3, 4, 4 }, arrayOfInt11, arrayOfInt12 };
+    int[] arrayOfInt11 = { 3, 3, 4, 4 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 2, 2, 2 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, { 3, 3, 2, 2 }, arrayOfInt9, arrayOfInt10, { 3, 3, 3, 4 }, arrayOfInt11, { 3, 4, 4, 4 }, { 4, 4, 4, 4 } };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 3, 4, 1, 6, 7, 8, 5, 2 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 4, 5, 1, 8, 9, 12, 6, 2, 13, 10, 14, 15, 11, 7, 3 };
     jdField_a_of_type_Int = jdField_a_of_type_Array2dOfInt.length;

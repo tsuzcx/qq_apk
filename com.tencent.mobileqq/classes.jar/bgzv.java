@@ -1,63 +1,30 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.minigame.ui.GameUIProxy;
 
 public class bgzv
-  extends bgzp
+  implements bhai
 {
-  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
+  public bgzv(GameUIProxy paramGameUIProxy) {}
   
-  public bgzv(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void a()
   {
-    this.a.appid.set(paramString1);
-    this.a.uin.set(paramString2);
-    this.a.set_type.set(paramInt);
-    this.a.item_id.set(paramString3);
-    this.a.busi_info.set(paramString4);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    QMLog.e("UIProxy", "home pressed!");
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(2053, new Object[0]);
   }
   
-  protected String a()
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    return "mini_app_userapp";
+    QMLog.e("UIProxy", "rencent task to front!");
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(2053, new Object[0]);
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void c()
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
-    try
-    {
-      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserAvatarRsp != null) {
-        return new JSONObject();
-      }
-      QMLog.d("SetAvatarRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetUserAvatar";
+    QMLog.e("UIProxy", "screen off");
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(2053, new Object[0]);
   }
 }
 

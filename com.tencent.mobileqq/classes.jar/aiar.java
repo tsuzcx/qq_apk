@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class aiar
-  implements DialogInterface.OnCancelListener
+public class aiar
+  implements DialogInterface.OnClickListener
 {
-  aiar(aiap paramaiap) {}
+  public aiar(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, acnt paramacnt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Acnt.a(true);
+  }
 }
 
 

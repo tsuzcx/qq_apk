@@ -1,11 +1,30 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+
 public class ajni
+  implements Animator.AnimatorListener
 {
-  public static final String a = bduw.a(aljq.aW);
-  public static final String b = aljq.bf;
-  public static final String c = bduw.a(aljq.bg);
-  public static final String d = bayb.a(aljq.aX);
-  public static final String e = aljq.bk;
-  public static final String f = aljq.br;
+  public ajni(LoginView paramLoginView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    LoginView.c(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.c(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

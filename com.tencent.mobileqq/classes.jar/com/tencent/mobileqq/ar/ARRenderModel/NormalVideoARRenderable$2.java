@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amqu;
-import amrp;
+import amvj;
+import amwe;
 
 public class NormalVideoARRenderable$2
   implements Runnable
@@ -10,7 +10,7 @@ public class NormalVideoARRenderable$2
   {
     this.this$0.f();
     if (this.this$0.a != null) {
-      this.this$0.a.b(1, amrp.c(this.this$0) - amrp.d(this.this$0));
+      this.this$0.a.b(1, amwe.c(this.this$0) - amwe.d(this.this$0));
     }
   }
 }

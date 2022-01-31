@@ -1,54 +1,18 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
 
-public class aaox
-  implements ymm
+public final class aaox
+  implements Parcelable.Creator<GdtInterstitialStatus>
 {
-  public void callback(Bundle paramBundle)
+  public GdtInterstitialStatus a(Parcel paramParcel)
   {
-    String str1 = paramBundle.getString("name");
-    String str2 = paramBundle.getString("phone");
-    paramBundle = paramBundle.getString("city");
-    this.jdField_a_of_type_Ymk.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "getUserInfo : name -> " + str1 + ", phone -> " + str2 + ", city -> " + paramBundle);
-    }
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.a))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(str1)) {
-        bool1 = false;
-      }
-    }
-    bool2 = bool1;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.b))
-    {
-      bool2 = bool1;
-      if (TextUtils.isEmpty(str2)) {
-        bool2 = false;
-      }
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {}
-    for (bool1 = false;; bool1 = bool2)
-    {
-      paramBundle = aaow.a(this.jdField_a_of_type_Aaow, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        aaow.a(this.jdField_a_of_type_Aaow, this.jdField_a_of_type_AndroidAppActivity, bool1, paramBundle, this.jdField_a_of_type_Aaoy, this.jdField_a_of_type_JavaUtilList);
-        return;
-      }
-      ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool1, paramBundle));
-      return;
-    }
+    return new GdtInterstitialStatus(paramParcel);
+  }
+  
+  public GdtInterstitialStatus[] a(int paramInt)
+  {
+    return new GdtInterstitialStatus[paramInt];
   }
 }
 

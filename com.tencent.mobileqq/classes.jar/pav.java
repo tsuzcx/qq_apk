@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pav
-  implements bejb
+  implements benk
 {
   public pav(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   

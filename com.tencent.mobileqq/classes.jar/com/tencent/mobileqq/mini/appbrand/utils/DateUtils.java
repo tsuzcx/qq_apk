@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
@@ -104,7 +104,7 @@ public class DateUtils
     }
     SimpleDateFormat localSimpleDateFormat;
     if (paramString.length() >= 10) {
-      if (Pattern.compile(alpo.a(2131703203)).matcher(paramString).matches()) {
+      if (Pattern.compile(alud.a(2131703215)).matcher(paramString).matches()) {
         localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
       }
     }

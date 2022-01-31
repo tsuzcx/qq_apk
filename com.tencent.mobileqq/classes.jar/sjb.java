@@ -1,13 +1,13 @@
 import android.view.View;
 
 class sjb
-  implements bhqd
+  implements bhuk
 {
-  sjb(siw paramsiw, bhpy parambhpy) {}
+  sjb(siw paramsiw, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
+    this.jdField_a_of_type_Bhuf.dismiss();
     switch (paramInt)
     {
     }

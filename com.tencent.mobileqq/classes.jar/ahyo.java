@@ -1,20 +1,69 @@
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ahyo
-  implements View.OnClickListener
+public abstract class ahyo
 {
-  public ahyo(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  protected aiav a;
+  protected FragmentActivity a;
+  protected View a;
+  protected String a;
   
-  public void onClick(View paramView)
+  public ahyo(FragmentActivity paramFragmentActivity)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    if (this.a.d == 11) {
-      azmj.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
-    }
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+  }
+  
+  public abstract int a();
+  
+  public FragmentManager a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+  }
+  
+  protected View a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+  }
+  
+  public BaseActivity a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131376034);
+    f();
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(aiav paramaiav)
+  {
+    this.jdField_a_of_type_Aiav = paramaiav;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Aiav = null;
+  }
+  
+  public void e() {}
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
   }
 }
 

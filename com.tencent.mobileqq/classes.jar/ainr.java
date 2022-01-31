@@ -1,13 +1,19 @@
-class ainr
-  implements bevo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+
+public class ainr
+  implements View.OnClickListener
 {
-  ainr(ainq paramainq, Runnable paramRunnable) {}
+  public ainr(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (this.a.b) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
+    this.a.finish();
+    bdfa.anim(this.a, true, false);
   }
 }
 

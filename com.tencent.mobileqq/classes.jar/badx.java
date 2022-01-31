@@ -1,33 +1,100 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-class badx
-  implements WtTicketPromise
+public class badx
+  extends bado
 {
-  badx(badw parambadw, Runnable paramRunnable) {}
+  private bado jdField_a_of_type_Bado;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private bado[] jdField_a_of_type_ArrayOfBado;
+  private int f;
   
-  public void Done(Ticket paramTicket)
+  public badx(bado... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
+    super(0, 0, 0);
+    this.jdField_a_of_type_ArrayOfBado = paramVarArgs;
+    this.jdField_a_of_type_ArrayOfInt = new int[paramVarArgs.length];
+    int i = 0;
+    int j = 0;
+    if (i < paramVarArgs.length)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_ArrayOfInt[i] = 0;
+      }
+      for (;;)
+      {
+        j += paramVarArgs[i].jdField_c_of_type_Int;
+        i += 1;
+        break;
+        this.jdField_a_of_type_ArrayOfInt[i] = j;
+      }
     }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_c_of_type_Int = j;
+    if (paramVarArgs.length > 0) {
+      this.jdField_a_of_type_Bado = paramVarArgs[this.f];
+    }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    super.a();
+    this.f = 0;
+    if (this.jdField_a_of_type_ArrayOfBado.length > 0) {
+      this.jdField_a_of_type_Bado = this.jdField_a_of_type_ArrayOfBado[this.f];
     }
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  protected void a(int paramInt, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    if ((this.f + 1 < this.jdField_a_of_type_ArrayOfBado.length) && (paramInt > this.jdField_a_of_type_ArrayOfInt[(this.f + 1)]))
+    {
+      this.jdField_a_of_type_Bado.b();
+      bado[] arrayOfbado = this.jdField_a_of_type_ArrayOfBado;
+      i = this.f + 1;
+      this.f = i;
+      this.jdField_a_of_type_Bado = arrayOfbado[i];
+    }
+    this.d = this.jdField_a_of_type_Bado.d;
+    int i = paramInt - this.jdField_a_of_type_ArrayOfInt[this.f];
+    float f1 = i / this.jdField_a_of_type_Bado.jdField_c_of_type_Int;
+    if (this.jdField_a_of_type_Bado.e == 1) {
+      f1 = i * i / (this.jdField_a_of_type_Bado.jdField_c_of_type_Int * this.jdField_a_of_type_Bado.jdField_c_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bado.a(i, f1);
+      if ((this.jdField_a_of_type_Bado.d & 0x1) != 0)
+      {
+        this.jdField_a_of_type_Float = this.jdField_a_of_type_Bado.jdField_a_of_type_Float;
+        this.jdField_b_of_type_Float = this.jdField_a_of_type_Bado.jdField_b_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Bado.d & 0x10) != 0) {
+        this.jdField_b_of_type_Float = this.jdField_a_of_type_Bado.jdField_b_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Bado.d & 0x2) != 0) {
+        this.jdField_c_of_type_Float = this.jdField_a_of_type_Bado.jdField_c_of_type_Float;
+      }
+      if ((this.jdField_a_of_type_Bado.d & 0x4) != 0) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Bado.jdField_a_of_type_Int;
+      }
+      if ((this.jdField_a_of_type_Bado.d & 0x8) != 0) {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bado.jdField_b_of_type_Int;
+      }
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.jdField_a_of_type_Bado.e == 2)
+      {
+        f1 = i / this.jdField_a_of_type_Bado.jdField_c_of_type_Int;
+        f1 *= (2.0F - f1);
+      }
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfBado.length)
+    {
+      this.jdField_a_of_type_ArrayOfInt[i] = ((int)(System.currentTimeMillis() - this.jdField_b_of_type_Long));
+      i += 1;
     }
   }
 }

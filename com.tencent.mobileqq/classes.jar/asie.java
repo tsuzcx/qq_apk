@@ -1,26 +1,27 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
 
 public class asie
-  implements best
+  implements View.OnClickListener
 {
-  public asie(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public asie(CommonTroopListActivity paramCommonTroopListActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 5) || (paramInt == 4))
+    if ((paramView.getTag() instanceof IntimateInfo.CommonTroopInfo))
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
+      paramView = (IntimateInfo.CommonTroopInfo)paramView.getTag();
+      Intent localIntent = aepi.a(new Intent(CommonTroopListActivity.a(this.a), SplashActivity.class), null);
+      localIntent.putExtra("uin", paramView.troopCode);
+      localIntent.putExtra("uintype", 1);
+      localIntent.putExtra("uinname", paramView.troopName);
+      this.a.startActivity(localIntent);
     }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
+    azqs.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.a(this.a), 0, "", "", "", "");
   }
 }
 

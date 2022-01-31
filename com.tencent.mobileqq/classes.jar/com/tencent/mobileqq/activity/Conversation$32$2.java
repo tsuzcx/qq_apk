@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acnh;
-import alpo;
+import acrw;
+import alud;
 import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class Conversation$32$2
   implements Runnable
 {
-  public Conversation$32$2(acnh paramacnh) {}
+  public Conversation$32$2(acrw paramacrw) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a(), 2, alpo.a(2131702981), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.a.a.a(), 2, alud.a(2131702993), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
   }
 }
 

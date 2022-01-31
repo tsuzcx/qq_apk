@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import xzn;
+import ydw;
 
 public class DetailBaseAdapter$6
   implements Runnable
 {
-  public DetailBaseAdapter$6(xzn paramxzn) {}
+  public DetailBaseAdapter$6(ydw paramydw) {}
   
   public void run()
   {

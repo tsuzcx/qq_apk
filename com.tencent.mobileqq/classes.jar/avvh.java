@@ -1,70 +1,31 @@
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OCRHandler.BaseOCRReqBigDataListener.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class avvh
+  implements baug
 {
-  private static boolean jdField_a_of_type_Boolean = true;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public static boolean a()
+  public avvh(avvg paramavvg, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
   {
-    return jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public void onResp(bavf parambavf)
   {
-    if ((a()) && (this.jdField_a_of_type_Int > 0))
-    {
-      int i = (int)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-      i = Math.round(1000.0F * this.jdField_a_of_type_Int / i);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("actType", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("actFps", String.valueOf(i));
-      azmz.a(BaseApplication.getContext()).a(null, "actOcrGestureFps", true, 0L, 0L, localHashMap, null);
-      QLog.d("GestureFps", 1, new Object[] { "report ActOcrGestureFps, type:", Integer.valueOf(this.jdField_b_of_type_Int), " fps:", Integer.valueOf(i) });
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
     }
+    ThreadManager.post(new OCRHandler.BaseOCRReqBigDataListener.1(this, parambavf), 8, null, true);
   }
   
-  public void a(int paramInt)
-  {
-    if (a())
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      long l = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Long = l;
-      this.jdField_b_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void b()
-  {
-    long l;
-    if (a())
-    {
-      l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-      if (l <= 40L) {
-        break label66;
-      }
-      Log.e("GestureFps", "Frame time: " + l);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return;
-      label66:
-      if (l > 20L) {
-        Log.w("GestureFps", "Frame time: " + l);
-      }
-    }
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

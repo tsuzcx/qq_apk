@@ -6,7 +6,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lya
-  implements bevy
+  implements bfah
 {
   public lya(RedPacketShareFragment.3.1 param1) {}
   

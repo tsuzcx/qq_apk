@@ -1,28 +1,84 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public class xxm
-  implements bapx
+  implements View.OnTouchListener
 {
-  public xxm(SubscribeUtils.1 param1) {}
+  protected float a;
+  protected final RecyclerView a;
+  protected xxf a;
+  protected xxg a;
+  protected xxh a;
+  protected xxi a;
+  protected final xxl a;
+  protected xxn a;
   
-  public void onResp(baqw parambaqw)
+  public xxm(RecyclerView paramRecyclerView)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambaqw.c);
-    try
-    {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      ndr.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      bdcs.a(this.a.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (Exception parambaqw)
-    {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambaqw);
-    }
+    this.jdField_a_of_type_Xxh = new xxj();
+    this.jdField_a_of_type_Xxl = new xxl();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xxf = new xxf(this, -2.0F);
+    this.jdField_a_of_type_Xxn = new xxn(this, 3.0F, 1.0F);
+    this.jdField_a_of_type_Xxi = new xxi(this);
+    this.jdField_a_of_type_Xxg = this.jdField_a_of_type_Xxi;
+    b();
+  }
+  
+  public void a(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    if ((paramLayoutManager instanceof LinearLayoutManager))
+    {
+      paramLayoutManager = (LinearLayoutManager)paramLayoutManager;
+      this.jdField_a_of_type_Xxh.a(paramLayoutManager.getOrientation());
+      return;
+    }
+    this.jdField_a_of_type_Xxh.a(1);
+  }
+  
+  protected void a(xxg paramxxg)
+  {
+    xxg localxxg = this.jdField_a_of_type_Xxg;
+    this.jdField_a_of_type_Xxg = paramxxg;
+    this.jdField_a_of_type_Xxg.a(localxxg);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(null);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(0);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      return false;
+    case 2: 
+      return this.jdField_a_of_type_Xxg.a(paramMotionEvent);
+    }
+    return this.jdField_a_of_type_Xxg.b(paramMotionEvent);
+  }
 }
 
 

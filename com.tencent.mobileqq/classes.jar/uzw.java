@@ -1,13 +1,43 @@
-public final class uzw
-  extends ugz
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.Stream;
+
+public class uzw
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
+  
+  public void a(@NonNull uyg paramuyg, vaa paramvaa)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
+        }
+        Stream.of(paramuyg).map(new uyw("MsgTabPreloader")).map(new uyt(null)).subscribe(new uzx(this, paramvaa, paramuyg));
+      }
+    }
+    else {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
+    }
+    Stream.of(paramuyg).map(new uyw("MsgTabPreloader")).subscribe(new uzz(this, paramvaa, paramuyg));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
 }
 
 

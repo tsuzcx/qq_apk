@@ -1,53 +1,36 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
 import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-class bcqd
-  implements ITransactionCallback
+public abstract class bcqd
+  extends Observable
 {
-  bcqd(bcqc parambcqc) {}
+  protected TroopUploadingThread a;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public ArrayList<bcqb> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    if (this.a != null) {
+      return this.a.a();
     }
-    this.a.e();
+    return null;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList);
+  
+  public void a(Observer paramObserver)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onSuccess");
-    }
-    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
-    try
-    {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has()) {
-        this.a.c = paramArrayOfByte.str_fileid.get();
-      }
-      this.a.b = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    super.deleteObserver(paramObserver);
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public void notifyObservers(Object paramObject)
+  {
+    super.setChanged();
+    super.notifyObservers(paramObject);
+  }
 }
 
 

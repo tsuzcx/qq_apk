@@ -1,8 +1,21 @@
-import java.io.File;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
-public abstract interface bgon
+public class bgon
 {
-  public abstract void a(File paramFile);
+  @TargetApi(14)
+  public static void a(View paramView, CharSequence paramCharSequence, String paramString)
+  {
+    if (Build.VERSION.SDK_INT >= 14) {
+      paramView.setAccessibilityDelegate(new bgoo(paramCharSequence, paramString));
+    }
+  }
+  
+  public static void a(View paramView, String paramString)
+  {
+    a(paramView, null, paramString);
+  }
 }
 
 

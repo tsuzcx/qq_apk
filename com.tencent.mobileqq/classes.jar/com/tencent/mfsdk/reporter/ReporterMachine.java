@@ -1,14 +1,14 @@
 package com.tencent.mfsdk.reporter;
 
-import abqk;
-import abqr;
-import abqu;
-import abrg;
-import abri;
-import abrj;
-import abrk;
-import abrn;
-import abry;
+import abuz;
+import abvg;
+import abvj;
+import abvv;
+import abvx;
+import abvy;
+import abvz;
+import abwc;
+import abwn;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -17,8 +17,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import azmz;
-import baqx;
+import azri;
+import bavg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -36,14 +36,14 @@ import org.json.JSONObject;
 public class ReporterMachine
 {
   public static int a;
-  private static abrg jdField_a_of_type_Abrg;
+  private static abvv jdField_a_of_type_Abvv;
   private static ReporterMachine jdField_a_of_type_ComTencentMfsdkReporterReporterMachine;
   private static String jdField_a_of_type_JavaLangString = "";
   private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static Queue<String> jdField_a_of_type_JavaUtilQueue;
   private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private static boolean jdField_a_of_type_Boolean;
-  private static abrg b;
+  private static abvv b;
   
   static
   {
@@ -58,8 +58,8 @@ public class ReporterMachine
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_Abrg = new abrn(localHandlerThread);
-      b = new abri(localHandlerThread);
+      jdField_a_of_type_Abvv = new abwc(localHandlerThread);
+      b = new abvx(localHandlerThread);
     }
     jdField_a_of_type_JavaLangString = a();
   }
@@ -83,8 +83,8 @@ public class ReporterMachine
   
   public static void a(ResultObject paramResultObject)
   {
-    abqu.a(paramResultObject.params);
-    if ((true == paramResultObject.isRealTime) && (1 == baqx.a().a())) {
+    abvj.a(paramResultObject.params);
+    if ((true == paramResultObject.isRealTime) && (1 == bavg.a().a())) {
       try
       {
         c(paramResultObject);
@@ -107,7 +107,7 @@ public class ReporterMachine
   
   private static void c(ResultObject paramResultObject)
   {
-    if (abqr.jdField_a_of_type_Int > abqk.jdField_a_of_type_Int) {}
+    if (abvg.jdField_a_of_type_Int > abuz.jdField_a_of_type_Int) {}
     for (;;)
     {
       return;
@@ -118,22 +118,22 @@ public class ReporterMachine
       ((JSONObject)localObject).put("model", Build.MODEL);
       ((JSONObject)localObject).put("os", Build.VERSION.RELEASE);
       ((JSONObject)localObject).put("rdmuuid", jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("deviceid", abry.a(BaseApplicationImpl.sApplication));
+      ((JSONObject)localObject).put("deviceid", abwn.a(BaseApplicationImpl.sApplication));
       if (BaseApplicationImpl.sProcessId == 1) {}
       try
       {
         if (TextUtils.equals(String.valueOf(paramResultObject.params.get("newplugin")), String.valueOf(102)))
         {
           localObject = new HashMap();
-          azmz.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
+          azri.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
         }
         if ((jdField_a_of_type_Int & 0x1) > 0) {
-          jdField_a_of_type_Abrg.a(paramResultObject, new abrj());
+          jdField_a_of_type_Abvv.a(paramResultObject, new abvy());
         }
         if ((jdField_a_of_type_Int & 0x2) <= 0) {
           continue;
         }
-        b.a(paramResultObject, new abrk());
+        b.a(paramResultObject, new abvz());
         return;
       }
       catch (Exception localException)

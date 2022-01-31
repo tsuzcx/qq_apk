@@ -1,17 +1,64 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.os.Process;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-public abstract interface xlr
+public class xlr
 {
-  public abstract void a();
+  private static int a;
   
-  public abstract void a(int paramInt, View paramView);
+  public static String a(int paramInt)
+  {
+    String str;
+    if (paramInt == 1)
+    {
+      bdhb.c(ulg.e + ".nomedia");
+      str = ulg.e + b(paramInt) + "/";
+    }
+    for (;;)
+    {
+      a(str);
+      return str;
+      str = alof.bo + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
+      bdhb.c(str + ".nomedia");
+    }
+  }
   
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
+  @NonNull
+  public static String a(int paramInt, String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new IllegalArgumentException("folderPath should not be null");
+    }
+    String str = paramString1;
+    if (!paramString1.endsWith("/")) {
+      str = paramString1 + "/";
+    }
+    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
+  }
   
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
+  private static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    boolean bool;
+    if (paramString.isFile())
+    {
+      bool = paramString.delete();
+      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
+    }
+    if (!paramString.exists())
+    {
+      bool = paramString.mkdirs();
+      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
+    }
+  }
   
-  public abstract boolean a(View paramView, int paramInt);
+  private static String b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
+    paramInt = a;
+    a = paramInt + 1;
+    return paramInt;
+  }
 }
 
 

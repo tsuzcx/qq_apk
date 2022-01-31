@@ -1,17 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefy
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aefy(UpgradeActivity paramUpgradeActivity) {}
+  public aefy(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "0");
-    this.a.a();
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
+    }
+    while (paramAnimation != this.b) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

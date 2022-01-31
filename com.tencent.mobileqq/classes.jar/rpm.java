@@ -14,7 +14,7 @@ class rpm
     {
       QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
       rry.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772305);
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772306);
       this.jdField_a_of_type_Rpk.b();
     }
   }

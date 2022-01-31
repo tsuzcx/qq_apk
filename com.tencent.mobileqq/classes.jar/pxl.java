@@ -42,7 +42,7 @@ public abstract class pxl
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
-  bcws jdField_a_of_type_Bcws;
+  bdbb jdField_a_of_type_Bdbb;
   ComponentAccountSummary jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary;
   ComponentComment jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment;
   ComponentContentUgcOriginalHeader jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader;
@@ -71,13 +71,13 @@ public abstract class pxl
   public rqj a;
   boolean jdField_a_of_type_Boolean = false;
   
-  public pxl(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pxl(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FeedItemCell", 2, "FeedItemCell created, class = " + getClass().getSimpleName());
     }
     a(paramContext);
-    a(parambcws);
+    a(parambdbb);
     a(paramrqj);
     a();
   }
@@ -94,7 +94,7 @@ public abstract class pxl
     int i = 0;
     while (i < j)
     {
-      pgd localpgd = (pgd)localListView.getChildAt(i).getTag(2131379913);
+      pgd localpgd = (pgd)localListView.getChildAt(i).getTag(2131379971);
       View localView = localListView.getChildAt(i);
       if ((localpgd != null) && (localView != null) && (localpgd != parampgd) && (parampgd.a().mGroupId == localpgd.a().mGroupId) && (parampgd.a().mGroupId != -1L))
       {
@@ -107,7 +107,7 @@ public abstract class pxl
     paramInt = 0;
     while (paramInt < localArrayList1.size())
     {
-      paramArrayList = (Animation)((View)localArrayList1.get(paramInt)).getTag(2131369009);
+      paramArrayList = (Animation)((View)localArrayList1.get(paramInt)).getTag(2131369027);
       if (paramArrayList == null)
       {
         paramInt += 1;
@@ -160,9 +160,9 @@ public abstract class pxl
     return this;
   }
   
-  public pxl a(bcws parambcws)
+  public pxl a(bdbb parambdbb)
   {
-    this.jdField_a_of_type_Bcws = parambcws;
+    this.jdField_a_of_type_Bdbb = parambdbb;
     return this;
   }
   
@@ -178,10 +178,10 @@ public abstract class pxl
     return this;
   }
   
-  public pxl a(rqj paramrqj, bcws parambcws)
+  public pxl a(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial = new ComponentHeaderNewSocial(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setLogic(paramrqj, parambdbb);
     return this;
   }
   
@@ -216,17 +216,17 @@ public abstract class pxl
     if (ors.a(((pgd)this.jdField_a_of_type_JavaLangObject).a())) {}
     for (;;)
     {
-      bhtq localbhtq = this.jdField_a_of_type_Rqj.a();
-      bhtw localbhtw = this.jdField_a_of_type_Rqj.a();
+      bhxx localbhxx = this.jdField_a_of_type_Rqj.a();
+      bhyd localbhyd = this.jdField_a_of_type_Rqj.a();
       if (bool)
       {
-        if ((localbhtq != null) && (localbhtq.isShowing())) {
-          localbhtq.dismiss();
+        if ((localbhxx != null) && (localbhxx.isShowing())) {
+          localbhxx.dismiss();
         }
-        localbhtw.b((pgq)this.jdField_a_of_type_JavaLangObject, ((AdvertisementInfo)((pgd)this.jdField_a_of_type_JavaLangObject).a()).mAdDislikeInfos);
-        localbhtw.a(paramView, new pxn(this));
-        localbhtw.a(new pxo(this));
-        localbhtw.setOnDismissListener(new pxp(this, localbhtw));
+        localbhyd.b((pgq)this.jdField_a_of_type_JavaLangObject, ((AdvertisementInfo)((pgd)this.jdField_a_of_type_JavaLangObject).a()).mAdDislikeInfos);
+        localbhyd.a(paramView, new pxn(this));
+        localbhyd.a(new pxo(this));
+        localbhyd.setOnDismissListener(new pxp(this, localbhyd));
         label148:
         paramView = this.jdField_a_of_type_Rqj.a();
         if ((paramView != null) && (paramView.b()))
@@ -259,16 +259,16 @@ public abstract class pxl
             this.jdField_a_of_type_Rqj.a().a(paramView, ((pgd)this.jdField_a_of_type_JavaLangObject).a(), ((pgq)this.jdField_a_of_type_JavaLangObject).b, this.jdField_a_of_type_AndroidViewView);
             break label148;
           }
-          if ((localbhtw != null) && (localbhtw.isShowing())) {
-            localbhtw.dismiss();
+          if ((localbhyd != null) && (localbhyd.isShowing())) {
+            localbhyd.dismiss();
           }
-          localbhtq.a((pgq)this.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
-          localbhtq.a(paramView, new pxq(this));
-          localbhtq.setOnDismissListener(new pxr(this, localbhtq));
+          localbhxx.a((pgq)this.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
+          localbhxx.a(paramView, new pxq(this));
+          localbhxx.setOnDismissListener(new pxr(this, localbhxx));
           break label148;
         }
         paramView.put("folder_status", 1);
-        azmj.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", paramView.toString());
+        azqs.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", paramView.toString());
         return;
       }
       catch (Exception paramView)
@@ -285,10 +285,10 @@ public abstract class pxl
     return g().h().i().k().l().n();
   }
   
-  public pxl b(rqj paramrqj, bcws parambcws)
+  public pxl b(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric = new ComponentHeaderPolymeric(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.setLogic(paramrqj, parambdbb);
     return this;
   }
   
@@ -299,28 +299,28 @@ public abstract class pxl
     return g().l().n();
   }
   
-  public pxl c(rqj paramrqj, bcws parambcws)
+  public pxl c(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish = new ComponentHeaderPublish(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.setLogic(paramrqj, parambdbb);
     return this;
   }
   
   public abstract pxl d();
   
-  public pxl d(rqj paramrqj, bcws parambcws)
+  public pxl d(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc = new ComponentHeaderUgc(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.setLogic(paramrqj, parambdbb);
     return this;
   }
   
   public abstract pxl e();
   
-  public pxl e(rqj paramrqj, bcws parambcws)
+  public pxl e(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend = new ComponentHeaderRecommend(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend.setLogic(paramrqj, parambdbb);
     return this;
   }
   
@@ -330,10 +330,10 @@ public abstract class pxl
     return this;
   }
   
-  public pxl f(rqj paramrqj, bcws parambcws)
+  public pxl f(rqj paramrqj, bdbb parambdbb)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend = new ComponentHeaderTopicRecommend(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.setLogic(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.setLogic(paramrqj, parambdbb);
     return this;
   }
   

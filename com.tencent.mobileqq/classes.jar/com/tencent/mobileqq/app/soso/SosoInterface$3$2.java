@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
-import amlc;
-import amle;
+import ampr;
+import ampt;
 
 public class SosoInterface$3$2
   implements Runnable
 {
-  public SosoInterface$3$2(amlc paramamlc, amle paramamle) {}
+  public SosoInterface$3$2(ampr paramampr, ampt paramampt) {}
   
   public void run()
   {
-    if (!amle.access$1500(this.a)) {
+    if (!ampt.access$1500(this.a)) {
       SosoInterface.a(this.a);
     }
   }

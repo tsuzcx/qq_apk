@@ -1,17 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class uez
-  extends unf
+  implements View.OnClickListener
 {
-  public List<qqstory_struct.GpsMsg> a;
+  public uez(QCirclePushRankTopView paramQCirclePushRankTopView) {}
   
-  public uez(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
+  public void onClick(View paramView)
   {
-    super(paramRspCheckBlackList.result);
-    this.a = paramRspCheckBlackList.black_gps_list.get();
+    if ((this.a.a() != null) && (QCirclePushRankTopView.a(this.a) != null) && (QCirclePushRankTopView.a(this.a).size() > QCirclePushRankTopView.a(this.a)) && (QCirclePushRankTopView.a(this.a).get(QCirclePushRankTopView.a(this.a)) != null))
+    {
+      paramView = tqr.a(((QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(QCirclePushRankTopView.a(this.a))).urlInfo.get(), "RankItemUrl");
+      if (bdnn.a(paramView)) {
+        QLog.w("QCirclePushRankTopView", 1, "rank url is empty");
+      }
+      tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 4L);
+      tqs.a(this.a.getContext(), paramView);
+    }
   }
 }
 

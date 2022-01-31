@@ -1,43 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
-public class aizj
+class aizj
+  implements IRedPacket.OnGetSkinListener
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  aizj(aizh paramaizh) {}
   
-  static
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
-  
-  public static String a()
-  {
-    if (!jdField_a_of_type_Boolean)
+    aize localaize = aizg.a(aizh.a(this.a), paramRedPacketInfoBase.skinId);
+    List localList;
+    if (localaize != null)
     {
-      QQAppInterface localQQAppInterface = ajaf.a();
-      if (localQQAppInterface != null) {
-        d = ((aitd)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      localList = aizh.a(this.a).getList();
+      QLog.d("HbSkinLogic", 2, "redl iscache = " + aize.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
+      if ((aize.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localaize))) {
+        break label98;
       }
+      QLog.d("HbSkinLogic", 2, "no add in list...");
     }
-    return d;
-  }
-  
-  public String toString()
-  {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+    label98:
+    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
+      paramRedPacketInfoBase.title = aizh.a();
+    }
+    localaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
+    QLog.d("HbSkinLogic", 2, "redl add to list show!");
+    localList.add(localaize);
+    aize.a(localList);
+    aizh.a(this.a).notifyDataSetChanged();
   }
 }
 

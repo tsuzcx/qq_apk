@@ -1,20 +1,20 @@
 package dov.com.qq.im.editipc;
 
-import bdcs;
-import blym;
+import bdhb;
+import bmcy;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class PeakIpcModuleServer$1
   implements Runnable
 {
-  public PeakIpcModuleServer$1(blym paramblym, String paramString1, String paramString2) {}
+  public PeakIpcModuleServer$1(bmcy parambmcy, String paramString1, String paramString2) {}
   
   public void run()
   {
     String str = ShortVideoUtils.a(this.a, "jpg");
-    if ((!bdcs.b(str)) && (!bdcs.d(this.b, str))) {
-      QLog.e("PeakIpcModuleServer", 2, "copy thumbPath fail, exist: " + bdcs.b(this.b));
+    if ((!bdhb.b(str)) && (!bdhb.d(this.b, str))) {
+      QLog.e("PeakIpcModuleServer", 2, "copy thumbPath fail, exist: " + bdhb.b(this.b));
     }
   }
 }

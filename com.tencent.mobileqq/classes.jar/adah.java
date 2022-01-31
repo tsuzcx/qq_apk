@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.JDHongbaoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adah
-  extends OvershootInterpolator
+public final class adah
+  implements DialogInterface.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public adah(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, awqt paramawqt) {}
   
-  public adah(JDHongbaoActivity paramJDHongbaoActivity) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
-      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
+    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awqt);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

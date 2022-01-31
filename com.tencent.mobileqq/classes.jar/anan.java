@@ -1,33 +1,28 @@
-import android.opengl.GLES20;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class anan
-  extends anat
+class anan
+  implements anac
 {
-  public int a;
-  public int b;
+  anan(anam paramanam) {}
   
-  public anan(int paramInt)
+  public void a(anau paramanau)
   {
-    super(paramInt);
-    this.e = "uniform float uA;\nuniform float uD;\n";
-    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
-  }
-  
-  protected void a()
-  {
-    this.a = GLES20.glGetUniformLocation(this.d, "uA");
-    anax.a("glGetAttribLocation uA");
-    this.b = GLES20.glGetUniformLocation(this.d, "uD");
-    anax.a("glGetAttribLocation uD");
-  }
-  
-  protected void a(anaw paramanaw)
-  {
-    if (paramanaw == null) {
+    anam.f(this.a, false);
+    if (anam.a(this.a)) {
       return;
     }
-    GLES20.glUniform1f(this.a, paramanaw.d);
-    GLES20.glUniform1f(this.b, paramanaw.e);
+    if (anam.a(this.a) != null) {
+      anam.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramanau.jdField_a_of_type_Int + ", imageId = " + paramanau.jdField_a_of_type_JavaLangString);
+    if (anam.a(this.a) != null)
+    {
+      anbm.a(this.a.a.recognitions, anam.a(this.a), paramanau);
+      anam.a(this.a).a(0, anam.a(this.a));
+    }
+    anam.a(this.a, null);
   }
 }
 

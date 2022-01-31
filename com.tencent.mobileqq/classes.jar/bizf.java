@@ -1,50 +1,53 @@
 public class bizf
+  extends bime
 {
-  private static String a;
-  private static String b;
+  public final bimd a;
+  private String d;
   
-  public static String a()
+  public bizf(bize parambize, int paramInt, String paramString)
   {
-    return "V1_AND_SQ_8.3.3_1376_YYB_D";
+    this.jdField_d_of_type_JavaLangString = "noreason";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bimd = new bimd(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Bimd.a = new asta(paramString, "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
   }
   
-  public static String b()
+  protected void a()
   {
-    if (a == null) {
-      a = d();
-    }
-    return a;
+    this.jdField_d_of_type_JavaLangString = "preload:ok:common";
+    bize.a(this.jdField_a_of_type_Bize, this.jdField_a_of_type_Bimd, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
   }
   
-  public static String c()
+  protected boolean a(bimk parambimk)
   {
-    if (b == null) {
-      b = d();
-    }
-    return b;
-  }
-  
-  private static String d()
-  {
-    int i = "V1_AND_SQ_8.3.3_1376_YYB_D".indexOf("_");
-    int k = "V1_AND_SQ_8.3.3_1376_YYB_D".lastIndexOf("_");
-    if (i < 0) {
-      i = 0;
-    }
-    for (;;)
+    boolean bool = bize.a(this.jdField_a_of_type_Bize);
+    if (bool) {}
+    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
     {
-      int j = k;
-      if (k < 0) {
-        j = "V1_AND_SQ_8.3.3_1376_YYB_D".length();
+      this.jdField_d_of_type_JavaLangString = str;
+      if (parambimk != null)
+      {
+        parambimk.jdField_a_of_type_Int = 2;
+        parambimk.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
       }
-      return "V1_AND_SQ_8.3.3_1376_YYB_D".substring(i, j);
-      i += 1;
+      return bool;
     }
+  }
+  
+  protected boolean b(bimk parambimk)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bizf
  * JD-Core Version:    0.7.0.1
  */

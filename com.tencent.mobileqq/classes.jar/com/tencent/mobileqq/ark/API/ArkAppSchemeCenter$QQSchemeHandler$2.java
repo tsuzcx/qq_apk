@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import angw;
-import ball;
+import anlf;
+import bapu;
 import java.util.Map;
 
 public class ArkAppSchemeCenter$QQSchemeHandler$2
   implements Runnable
 {
-  public ArkAppSchemeCenter$QQSchemeHandler$2(angw paramangw, Map paramMap1, Map paramMap2) {}
+  public ArkAppSchemeCenter$QQSchemeHandler$2(anlf paramanlf, Map paramMap1, Map paramMap2) {}
   
   public void run()
   {
-    ball.a(4, this.a, this.b);
+    bapu.a(4, this.a, this.b);
   }
 }
 

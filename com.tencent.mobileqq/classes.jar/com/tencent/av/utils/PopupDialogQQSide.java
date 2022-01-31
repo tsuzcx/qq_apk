@@ -6,8 +6,8 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import mvd;
 import mve;
@@ -16,7 +16,7 @@ import mvf;
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bdfq a = null;
+  public bdjz a = null;
   
   void a()
   {
@@ -42,28 +42,28 @@ public class PopupDialogQQSide
     localObject1 = new mvd(this, (ResultReceiver)localObject2);
     localObject2 = new mve(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131721323;
+      i = 2131721336;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131721323;
+        j = 2131721336;
       }
       for (;;)
       {
-        bdfq localbdfq = bdcd.a(getActivity(), k);
-        localbdfq.setMessage(str2);
-        localbdfq.setTitle(str1);
+        bdjz localbdjz = bdgm.a(getActivity(), k);
+        localbdjz.setMessage(str2);
+        localbdjz.setTitle(str1);
         if (bool1) {
-          localbdfq.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbdjz.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbdfq.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbdjz.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbdfq.setOnDismissListener(new mvf(this));
-        localbdfq.setCancelable(true);
-        localbdfq.show();
-        this.a = localbdfq;
+        localbdjz.setOnDismissListener(new mvf(this));
+        localbdjz.setCancelable(true);
+        localbdjz.show();
+        this.a = localbdjz;
         return;
       }
     }

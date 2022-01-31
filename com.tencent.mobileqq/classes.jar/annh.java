@@ -1,24 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class annh
-  implements CompoundButton.OnCheckedChangeListener
+class annh
+  implements alpg
 {
-  public annh(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  annh(annc paramannc) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    if (!paramBoolean)
     {
-      anfv.a(paramCompoundButton, str1, str2, i);
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
       return;
     }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
   }
 }
 

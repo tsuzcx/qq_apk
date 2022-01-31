@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.content.Context;
+import android.text.InputFilter;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class bmig
-  implements DialogInterface.OnDismissListener
+class bmig
+  extends xfr
 {
-  public bmig(EditVideoGuide paramEditVideoGuide) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  bmig(bmhu parambmhu, Context paramContext)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Bmix.a(5);
+    super(paramContext);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new bmih(this, paramInt, paramInt) });
   }
 }
 

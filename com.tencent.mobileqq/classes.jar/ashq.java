@@ -1,33 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
-class ashq
-  implements View.OnClickListener
+public class ashq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ashq(ashp paramashp, FeedsItemData paramFeedsItemData) {}
+  public ashq(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
-        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Ashp.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
-      }
-    }
-    while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId))
-    {
-      return;
-      paramView = new Intent(this.jdField_a_of_type_Ashp.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-      this.jdField_a_of_type_Ashp.a.startActivity(paramView);
-      return;
-    }
-    asjc.a(this.jdField_a_of_type_Ashp.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
+    ((auad)this.a.a.getManager(303)).a((short)-23166, paramBoolean, true);
+    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 3, 3, "", "", "", "");
   }
 }
 

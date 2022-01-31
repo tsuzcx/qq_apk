@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import alpo;
+import alud;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import usv;
+import uxe;
 
 public class HotRecommendOwner
   extends BaseUIItem
-  implements usv
+  implements uxe
 {
-  public String mName = alpo.a(2131705992);
+  public String mName = alud.a(2131706004);
   public long mRecommendId;
   
   public String getName()

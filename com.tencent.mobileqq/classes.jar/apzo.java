@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
 public class apzo
-  implements DialogInterface.OnClickListener
+  implements ShareActionSheet.OnItemClickListener
 {
-  public apzo(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public apzo(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    String str = "";
-    paramDialogInterface = str;
-    if (ExtendFriendEditFragment.a(this.a) != null)
-    {
-      paramDialogInterface = str;
-      if (ExtendFriendEditFragment.a(this.a).app != null) {
-        paramDialogInterface = ((apwx)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
-      }
-    }
-    aqcq.b(this.a.getActivity(), paramDialogInterface);
+    this.a.a.dismiss();
+    int i = paramActionSheetItem.action;
+    this.a.a(i, paramActionSheetItem);
   }
 }
 

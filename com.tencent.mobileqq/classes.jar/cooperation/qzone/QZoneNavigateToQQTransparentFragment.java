@@ -8,17 +8,17 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Window;
-import apwx;
-import aqcx;
-import aqcz;
-import bdcd;
-import bdfq;
-import bjaf;
-import bjag;
-import bjah;
-import bjai;
-import bjaj;
-import bjak;
+import aqbg;
+import aqhg;
+import aqhi;
+import bdgm;
+import bdjz;
+import bjem;
+import bjen;
+import bjeo;
+import bjep;
+import bjeq;
+import bjer;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -52,9 +52,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
       return;
     }
-    bdfq localbdfq = bdcd.a(paramFragmentActivity, 230);
-    localbdfq.setOnDismissListener(new bjag(paramFragmentActivity));
-    localbdfq.setMessage(paramFragmentActivity.getString(2131699346)).setNegativeButton(paramFragmentActivity.getString(2131699344), new bjai()).setPositiveButton(paramFragmentActivity.getString(2131699345), new bjah(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
+    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
+    localbdjz.setOnDismissListener(new bjen(paramFragmentActivity));
+    localbdjz.setMessage(paramFragmentActivity.getString(2131699358)).setNegativeButton(paramFragmentActivity.getString(2131699356), new bjep()).setPositiveButton(paramFragmentActivity.getString(2131699357), new bjeo(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
   }
   
   private static void b(FragmentActivity paramFragmentActivity)
@@ -64,9 +64,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
       return;
     }
-    bdfq localbdfq = bdcd.a(paramFragmentActivity, 230);
-    localbdfq.setOnDismissListener(new bjaj(paramFragmentActivity));
-    localbdfq.setMessage(paramFragmentActivity.getString(2131699348)).setPositiveButton(paramFragmentActivity.getString(2131699347), new bjak()).show();
+    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
+    localbdjz.setOnDismissListener(new bjeq(paramFragmentActivity));
+    localbdjz.setMessage(paramFragmentActivity.getString(2131699360)).setPositiveButton(paramFragmentActivity.getString(2131699359), new bjer()).show();
   }
   
   private static void b(FragmentActivity paramFragmentActivity, String paramString)
@@ -114,10 +114,10 @@ public class QZoneNavigateToQQTransparentFragment
       try
       {
         localObject = Base64.decode(str4, 0);
-        aqcz.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, new bjaf(this, localFragmentActivity));
+        aqhi.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, new bjem(this, localFragmentActivity));
         localObject = localBundle.getString("extend_friend_campus_algorithm_id");
-        str2 = localBundle.getString("extend_friend_campus_current_tab", apwx.a);
-        aqcx.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
+        str2 = localBundle.getString("extend_friend_campus_current_tab", aqbg.a);
+        aqhg.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
         return;
       }
       catch (Throwable localThrowable)

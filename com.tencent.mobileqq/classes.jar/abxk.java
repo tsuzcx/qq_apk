@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class abxk
-  implements ahcq
+class abxk
+  extends SimpleObserver<auef>
 {
-  public abxk(AddFriendActivity paramAddFriendActivity) {}
+  abxk(abxj paramabxj, abxt paramabxt) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void a(auef paramauef)
   {
-    if (AddFriendActivity.a(this.a))
+    abxt localabxt = this.jdField_a_of_type_Abxt;
+    if (paramauef.c == 1) {}
+    for (int i = 2;; i = 3)
     {
-      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      localabxt.a(paramauef, i);
       return;
     }
-    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    if ((paramError instanceof AppInfoError)) {}
+    for (int i = ((AppInfoError)paramError).type;; i = 0)
+    {
+      this.jdField_a_of_type_Abxt.a(null, i);
+      return;
+    }
   }
 }
 

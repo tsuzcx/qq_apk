@@ -382,7 +382,7 @@ public class lyg
     //   399: invokestatic 241	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   402: astore_2
     //   403: invokestatic 290	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   406: invokestatic 295	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   406: invokestatic 295	azri:a	(Landroid/content/Context;)Lazri;
     //   409: aload_2
     //   410: ldc_w 297
     //   413: iconst_1
@@ -391,7 +391,7 @@ public class lyg
     //   416: aload 5
     //   418: ldc 19
     //   420: iconst_1
-    //   421: invokevirtual 300	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   421: invokevirtual 300	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   424: aload_0
     //   425: aload 4
     //   427: invokespecial 263	lyg:a	(Ljava/lang/String;)V
@@ -1431,7 +1431,7 @@ public class lyg
     //   34: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   40: invokespecial 161	java/io/File:<init>	(Ljava/lang/String;)V
-    //   43: invokestatic 442	xmx:b	(Ljava/io/File;)[B
+    //   43: invokestatic 442	xrg:b	(Ljava/io/File;)[B
     //   46: invokespecial 445	java/io/ByteArrayInputStream:<init>	([B)V
     //   49: astore 5
     //   51: new 447	java/io/ObjectInputStream

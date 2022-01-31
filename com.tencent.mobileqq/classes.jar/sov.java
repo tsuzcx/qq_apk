@@ -32,7 +32,7 @@ public class sov
         if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
           nrt.a("0X800AC62", (String)localObject);
         }
-        while ((bdee.b(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
+        while ((bdin.b(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
         {
           long l = qok.a(localUgcVideo);
           if (l > 0L)

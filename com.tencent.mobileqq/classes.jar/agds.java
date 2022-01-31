@@ -1,17 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 class agds
-  implements DialogInterface.OnClickListener
+  extends aepm
 {
-  agds(agdr paramagdr) {}
+  public ViewGroup a;
+  public AnyScaleTypeImageView a;
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    agdi.W(this.a.a).setResult(8001);
-  }
+  agds(agdo paramagdo) {}
 }
 
 

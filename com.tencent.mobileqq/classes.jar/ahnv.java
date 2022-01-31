@@ -1,13 +1,21 @@
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ahnv
-  implements ahpo
+  extends alpq
 {
-  ahnv(ahnt paramahnt) {}
+  ahnv(ahns paramahns) {}
   
-  public void a()
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    if (paramBoolean)
+    {
+      QQToast.a(ahns.a(this.a), 2131699570, 3000).a();
+      if (ahns.a(this.a) != 23) {
+        this.a.a(true);
+      }
+      return;
+    }
+    QQToast.a(ahns.a(this.a), 2131699569, 0).a();
   }
 }
 

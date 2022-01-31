@@ -10,7 +10,7 @@ public class lgv
   void a(String paramString, boolean paramBoolean)
   {
     QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
-    AudioHelper.c(alpo.a(2131703548) + paramBoolean);
+    AudioHelper.c(alud.a(2131703560) + paramBoolean);
     this.a.remove(paramString);
     this.b.remove(paramString);
   }

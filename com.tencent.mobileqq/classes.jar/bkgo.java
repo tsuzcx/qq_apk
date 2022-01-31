@@ -1,39 +1,8 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
-class bkgo
-  implements INetInfoHandler
+public abstract interface bkgo
 {
-  bkgo(bkgl parambkgl) {}
-  
-  public void onNetMobile2None()
-  {
-    this.a.a(false, false);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.a(false, false);
-  }
+  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import axfe;
+import axjn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendFragment$1
@@ -10,7 +10,7 @@ public class FriendFragment$1
   
   public void run()
   {
-    ((axfe)this.this$0.a.getManager(91)).a();
+    ((axjn)this.this$0.a.getManager(91)).a();
   }
 }
 

@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
-class agdz
-  implements DialogInterface.OnClickListener
+public class agdz
+  implements uns
 {
-  agdz(agdi paramagdi) {}
+  long jdField_a_of_type_Long;
+  agea jdField_a_of_type_Agea;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agdz(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.o();
-    }
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

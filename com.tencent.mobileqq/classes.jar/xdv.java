@@ -1,142 +1,55 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
-class xdv
-  extends LinearLayout
+public class xdv
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
+  public final float a;
+  public final int a;
+  public final PointF a;
+  public final String a;
+  public final float b;
+  public final int b;
+  public final float c;
+  public final int c;
+  public final float d;
+  public final int d;
   
-  public xdv(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public xdv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
     this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.c = (this.jdField_a_of_type_Int / this.b);
-    a();
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  private void a()
+  public xdv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = xee.b(getContext(), 3.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    while (i < this.b)
-    {
-      View localView = LayoutInflater.from(getContext()).inflate(2131561471, null);
-      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
-      ((ImageView)localView.findViewById(2131369801)).setPadding(k, k, k, k);
-      addView(localView);
-      i += 1;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
   }
   
-  private void a(int paramInt)
+  public static xdv a(@NonNull xdv paramxdv)
   {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
-      }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
-      }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
+    return new xdv(paramxdv.jdField_a_of_type_AndroidGraphicsPointF.x, paramxdv.jdField_a_of_type_AndroidGraphicsPointF.y, paramxdv.jdField_a_of_type_Float, paramxdv.jdField_b_of_type_Float, paramxdv.jdField_c_of_type_Float, paramxdv.jdField_d_of_type_Float, paramxdv.jdField_a_of_type_Int, paramxdv.jdField_b_of_type_Int, paramxdv.jdField_a_of_type_JavaLangString, paramxdv.jdField_c_of_type_Int, paramxdv.jdField_d_of_type_Int);
   }
   
-  public void a(xdl paramxdl, int paramInt1, int paramInt2)
+  public String toString()
   {
-    int i = paramInt1 * this.b;
-    label31:
-    Object localObject3;
-    URLImageView localURLImageView;
-    TextView localTextView;
-    Object localObject2;
-    String str;
-    Object localObject1;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = paramxdl.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
-      }
-      localObject3 = getChildAt(paramInt2 - i);
-      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131369801);
-      localTextView = (TextView)((View)localObject3).findViewById(2131369813);
-      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131369811);
-      str = paramxdl.b(paramInt2);
-      localObject1 = paramxdl.a(paramInt2);
-      if (localObject1 != null) {
-        break label137;
-      }
-      wsv.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramxdl.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label137:
-      ((View)localObject3).setContentDescription(str);
-      localTextView.setText(str);
-      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131377387, Integer.valueOf(paramInt2));
-      localObject3 = (Boolean)localURLImageView.getTag(2131377365);
-      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131377396))))
-      {
-        ((ProgressBar)localObject2).setVisibility(4);
-      }
-      else
-      {
-        localURLImageView.setTag(2131377396, localObject1);
-        localURLImageView.setTag(2131377365, Boolean.valueOf(false));
-        ((ProgressBar)localObject2).setVisibility(0);
-        localObject2 = new xdw((String)localObject1, localURLImageView, (ProgressBar)localObject2);
-        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = baul.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = baul.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-        if (((URLDrawable)localObject1).getStatus() == 1) {
-          ((xdw)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-        }
-        localURLImageView.setImageDrawable((Drawable)localObject1);
-      }
-    }
+    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
   }
 }
 

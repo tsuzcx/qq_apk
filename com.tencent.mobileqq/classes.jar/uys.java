@@ -1,15 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import java.util.ArrayList;
 
-public class uys
-  extends ugz
+public abstract interface uys
 {
-  public List<wbm> a;
+  public abstract void a();
   
-  public uys(ErrorMessage paramErrorMessage)
-  {
-    this.a = paramErrorMessage;
-  }
+  public abstract void a(ArrayList<uyg> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract void a(uyg paramuyg, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

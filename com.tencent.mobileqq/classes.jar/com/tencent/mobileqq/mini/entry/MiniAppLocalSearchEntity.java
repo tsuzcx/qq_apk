@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class MiniAppLocalSearchEntity
-  extends awbv
+  extends awge
   implements Serializable
 {
-  @awdj
+  @awhs
   public String appId;
   public String appName;
   public String desc;

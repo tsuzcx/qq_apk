@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +13,13 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity>
   public K mActivity;
   protected PhotoPreviewLogic.IimageAdapterCallback mImageAdapterCallback = null;
   protected PhotoPreviewLogic.IonCheckedChangedCallback mOnCheckedChangedCallback = null;
-  public aimj mPhotoCommonData;
+  public aiqy mPhotoCommonData;
   protected PhotoPreviewBaseData mPhotoPreviewData;
   
   protected PhotoPreviewLogic(K paramK)
   {
     this.mActivity = paramK;
-    this.mPhotoCommonData = aimj.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mPhotoCommonData = aiqy.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
     paramK.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
     this.mPhotoCommonData.addHoldNember();
     this.mPhotoPreviewData = new PhotoPreviewBaseData();

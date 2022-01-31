@@ -1,18 +1,30 @@
-import android.os.Handler;
-import android.text.TextUtils;
-
-class wrm
-  implements wom<wnt>
+public class wrm
 {
-  wrm(wrh paramwrh, String paramString) {}
+  public static ThreadLocal<StringBuilder> a = new wrn();
   
-  public void a(wnt paramwnt)
+  public static String a(Object... paramVarArgs)
   {
-    if ((paramwnt.a != null) && (TextUtils.equals(paramwnt.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
     {
-      wrh.a(this.jdField_a_of_type_Wrh).a = paramwnt.a;
-      wrh.a(this.jdField_a_of_type_Wrh).sendMessage(wrh.a(this.jdField_a_of_type_Wrh).obtainMessage(0, wrh.a(this.jdField_a_of_type_Wrh)));
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
+      }
     }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
   }
 }
 

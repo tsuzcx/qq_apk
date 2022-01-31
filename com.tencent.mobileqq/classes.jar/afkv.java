@@ -1,6 +1,17 @@
-public abstract interface afkv
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+
+class afkv
+  extends aepm
 {
-  public abstract void a();
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

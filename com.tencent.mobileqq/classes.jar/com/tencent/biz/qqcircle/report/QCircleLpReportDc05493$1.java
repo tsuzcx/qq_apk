@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import tye;
-import tym;
-import typ;
+import tzq;
+import tzy;
+import uab;
 
 public final class QCircleLpReportDc05493$1
   implements Runnable
@@ -16,10 +16,10 @@ public final class QCircleLpReportDc05493$1
   
   public void run()
   {
-    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { tym.a("touin", this.jdField_a_of_type_JavaLangString), tym.a("login_time", String.valueOf(this.jdField_a_of_type_Long)), tym.a("login_entrance", String.valueOf(this.jdField_b_of_type_Long)), tym.a("sub_entrance", String.valueOf(this.jdField_c_of_type_Long)), tym.a("thr_entrance", String.valueOf(this.jdField_d_of_type_Long)), tym.a("report_from", "1"), tym.a("ext1", this.jdField_b_of_type_JavaLangString), tym.a("ext2", this.jdField_c_of_type_JavaLangString), tym.a("ext3", this.jdField_d_of_type_JavaLangString), tym.a("ext4", this.e), tym.a("ext5", this.f), tym.a("ext6", this.g) }));
-    ((List)localObject).addAll(tym.a().a());
-    localObject = tym.a(tye.a(), (List)localObject, null, tym.a().a(this.jdField_a_of_type_Int));
-    typ.a().a((QQCircleReport.SingleDcData)localObject, true);
+    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { tzy.a("touin", this.jdField_a_of_type_JavaLangString), tzy.a("login_time", String.valueOf(this.jdField_a_of_type_Long)), tzy.a("login_entrance", String.valueOf(this.jdField_b_of_type_Long)), tzy.a("sub_entrance", String.valueOf(this.jdField_c_of_type_Long)), tzy.a("thr_entrance", String.valueOf(this.jdField_d_of_type_Long)), tzy.a("report_from", "1"), tzy.a("ext1", this.jdField_b_of_type_JavaLangString), tzy.a("ext2", this.jdField_c_of_type_JavaLangString), tzy.a("ext3", this.jdField_d_of_type_JavaLangString), tzy.a("ext4", this.e), tzy.a("ext5", this.f), tzy.a("ext6", this.g) }));
+    ((List)localObject).addAll(tzy.a().a());
+    localObject = tzy.a(tzq.a(), (List)localObject, null, tzy.a().a(this.jdField_a_of_type_Int));
+    uab.a().a((QQCircleReport.SingleDcData)localObject, true);
   }
 }
 

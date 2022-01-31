@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-
-public class ahvx
-  implements DialogInterface.OnClickListener
+public abstract interface ahvx
 {
-  public ahvx(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void d();
 }
 
 

@@ -34,7 +34,7 @@ public class rgl
   
   public void b(rfs paramrfs)
   {
-    if ((rmd.a().a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.jdField_a_of_type_Rjn)) && (bjxj.u(VideoFeedsRecommendFragment.a(this.a))))
+    if ((rmd.a().a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.jdField_a_of_type_Rjn)) && (bkbq.u(VideoFeedsRecommendFragment.a(this.a))))
     {
       int i = VideoFeedsRecommendFragment.a(this.a).c;
       int j = VideoFeedsRecommendFragment.a(this.a).c();
@@ -110,7 +110,7 @@ public class rgl
       VideoFeedsRecommendFragment.a(this.a).e();
       VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a());
       return;
-    } while ((VideoFeedsRecommendFragment.a(this.a).a(paramrfs)) || (VideoFeedsRecommendFragment.a(this.a).c == VideoFeedsRecommendFragment.a(this.a).size() - 1) || ((!VideoFeedsRecommendFragment.g(this.a)) && (bdee.b(VideoFeedsRecommendFragment.a(this.a).getApplication().getApplicationContext()))));
+    } while ((VideoFeedsRecommendFragment.a(this.a).a(paramrfs)) || (VideoFeedsRecommendFragment.a(this.a).c == VideoFeedsRecommendFragment.a(this.a).size() - 1) || ((!VideoFeedsRecommendFragment.g(this.a)) && (bdin.b(VideoFeedsRecommendFragment.a(this.a).getApplication().getApplicationContext()))));
     if (VideoFeedsRecommendFragment.a(this.a).a())
     {
       VideoFeedsRecommendFragment.a(this.a, true);

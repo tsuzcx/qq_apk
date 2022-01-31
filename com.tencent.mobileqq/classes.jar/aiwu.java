@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-class aiwu
-  implements aivw
+final class aiwu
+  implements DialogInterface.OnClickListener
 {
-  aiwu(aiwk paramaiwk, int paramInt) {}
+  aiwu(Activity paramActivity, List paramList1, List paramList2) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_Aiwk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    aiwp.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

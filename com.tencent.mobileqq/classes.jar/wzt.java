@@ -1,16 +1,21 @@
-import android.graphics.PointF;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
-public abstract interface wzt
+public class wzt
+  implements uva<uwr>
 {
-  public abstract void a();
+  wzt(wzs paramwzs) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
-  
-  public abstract boolean a(wzu paramwzu);
-  
-  public abstract void b();
+  public void a(boolean paramBoolean, uwr paramuwr)
+  {
+    wxe.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramuwr != null))
+    {
+      wxe.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramuwr.a));
+      int i = paramuwr.a;
+      wzs.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
+    }
+  }
 }
 
 

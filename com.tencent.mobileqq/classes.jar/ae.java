@@ -13,7 +13,7 @@ public class ae
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      bfdq.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "52", "0", false);
+      bfhz.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "52", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog stay");

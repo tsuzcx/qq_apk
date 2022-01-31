@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adqa
-  implements addq
+  implements axqs
 {
-  public adqa(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public adqa(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void a()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(axqw paramaxqw) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    RegisterPhoneNumActivity.a(this.a).b();
+    if (!paramBoolean)
+    {
+      bdgm.a(this.a, 230, this.a.getString(2131698770), alud.a(2131710746), new adqb(this), null).show();
+      return;
+    }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
   
-  public void b()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
+  public void b() {}
+  
+  public void c() {}
 }
 
 

@@ -1,65 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class bcxp
+class bcxp
+  implements bhuk
 {
-  private bcxr jdField_a_of_type_Bcxr;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  bcxp(bcxl parambcxl) {}
   
-  public bcxp(QQAppInterface paramQQAppInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private bcxr a()
-  {
-    bcxr localbcxr = new bcxr(new bcxq(this));
+    if (this.a.jdField_b_of_type_Boolean) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbcxr);
+      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
     }
-    return localbcxr;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bcxr != null)
+    this.a.jdField_b_of_type_Boolean = true;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Bcxr.a();
-      this.jdField_a_of_type_Bcxr = null;
+    default: 
+      this.a.b(false);
+      this.a.jdField_a_of_type_Int = -1;
+      this.a.jdField_b_of_type_Int = -1;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      }
+      break;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Bcxr == null) {
-      this.jdField_a_of_type_Bcxr = a();
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Bhuf.dismiss();
+      return;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 1;
+      bcxl.a(this.a);
+      continue;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 0;
+      bcxl.a(this.a);
     }
-    this.jdField_a_of_type_Bcxr.a(2, paramString, null, null, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Bcxr == null) {
-      this.jdField_a_of_type_Bcxr = a();
-    }
-    this.jdField_a_of_type_Bcxr.a(3, paramString1, paramString2, paramString3, paramBundle);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_Bcxr == null) {
-      this.jdField_a_of_type_Bcxr = a();
-    }
-    this.jdField_a_of_type_Bcxr.a(1, paramString, null, null, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Bcxr == null) {
-      this.jdField_a_of_type_Bcxr = a();
-    }
-    this.jdField_a_of_type_Bcxr.a(4, paramString, null, null, null);
   }
 }
 

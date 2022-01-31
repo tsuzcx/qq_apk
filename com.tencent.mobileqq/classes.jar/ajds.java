@@ -1,14 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface ajds
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

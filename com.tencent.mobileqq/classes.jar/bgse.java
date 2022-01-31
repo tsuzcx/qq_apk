@@ -1,271 +1,242 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import android.content.Context;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.1;
-import java.util.concurrent.TimeUnit;
+import com.tencent.qqmini.sdk.core.widget.WebViewProgressBar;
 
 public class bgse
 {
-  private static final int jdField_a_of_type_Int = bglq.a("qqminiapp", "mini_game_judge_timing_request_begin_delay", 1000);
-  private static long jdField_a_of_type_Long;
-  private static COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private static bgtb jdField_a_of_type_Bgtb;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static final String jdField_a_of_type_JavaLangString = bglq.a("qqminiapp", "enable_heart_beat_scene_whitelist", "");
-  private static boolean jdField_a_of_type_Boolean;
-  private static final String b = bglq.a("qqminiapp", "enable_heart_beat_appid_whitelist", "");
-  private static final String c = bglq.a("qqminiapp", "enable_heart_beat_via_whitelist", "");
+  private byte jdField_a_of_type_Byte = -1;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bgsg(this);
+  protected WebViewProgressBar a;
+  private boolean jdField_a_of_type_Boolean;
+  private byte jdField_b_of_type_Byte = 6;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 255;
+  private float c;
+  private float d;
+  private float e;
   
-  public static void a()
+  private long a(long paramLong)
   {
-    jdField_a_of_type_Bgtb = null;
+    long l = paramLong;
+    if (paramLong > 30L) {
+      l = 30L;
+    }
+    return l;
   }
   
-  public static void a(Context paramContext, MiniAppInfo paramMiniAppInfo)
+  public byte a()
   {
-    jdField_a_of_type_Boolean = true;
-    ThreadManager.c().postDelayed(new GameGrowthGuardianManager.1(paramMiniAppInfo, paramContext), jdField_a_of_type_Int);
+    return this.jdField_b_of_type_Byte;
   }
   
-  public static void a(bgtb parambgtb)
+  public float a()
   {
-    jdField_a_of_type_Bgtb = parambgtb;
+    return this.e;
   }
   
-  private static boolean a(MiniAppInfo paramMiniAppInfo)
+  public int a()
   {
-    boolean bool2 = false;
-    if (paramMiniAppInfo != null) {}
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void a()
+  {
+    int j = bgsf.a(0).b();
+    int i = j;
+    if (j <= 0) {
+      i = bgsf.a(0).a();
+    }
+    this.c = (20.0F / i);
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Byte = 0;
+    this.e = this.d;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar.setVisibility(0);
+    }
+    e();
+  }
+  
+  public void a(byte paramByte)
+  {
+    switch (paramByte)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Byte == 0);
+      this.jdField_a_of_type_Byte = 0;
+      a();
+      return;
+    case 1: 
+      b();
+      return;
+    }
+    if ((this.jdField_a_of_type_Byte == 0) || (this.jdField_a_of_type_Byte == 1)) {
+      c();
+    }
+    this.jdField_a_of_type_Byte = 2;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(WebViewProgressBar paramWebViewProgressBar)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar = paramWebViewProgressBar;
+  }
+  
+  public void b()
+  {
+    bgsf.a(0).a();
+    int j = bgsf.a(1).b();
+    int i = j;
+    if (j <= 0) {
+      i = bgsf.a(1).a();
+    }
+    this.c = (60.0F / i);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Byte = 2;
+    this.jdField_a_of_type_Byte = 1;
+    e();
+  }
+  
+  public void c()
+  {
+    bgsf.a(1).a();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Byte = 5;
+    this.c = 0.1333333F;
+    if (this.jdField_b_of_type_Float <= 60.0F) {
+      this.c = ((40.0F + (60.0F - this.jdField_b_of_type_Float) * 0.5F) / 300.0F);
+    }
+    for (this.jdField_a_of_type_Float = 0.8166667F;; this.jdField_a_of_type_Float = (245.0F * this.c / (100.0F - this.jdField_b_of_type_Float)))
+    {
+      e();
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_b_of_type_Byte = 6;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.d = ((int)(this.jdField_b_of_type_Float * this.jdField_a_of_type_Int / 100.0F));
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void e()
+  {
+    long l1;
+    if (this.jdField_b_of_type_Byte != 6)
+    {
+      l1 = System.currentTimeMillis();
+      if (this.jdField_b_of_type_Float < 100.0F) {
+        break label66;
+      }
+      d();
+    }
     for (;;)
     {
-      int j;
-      try
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar.invalidate();
+      }
+      return;
+      label66:
+      long l2;
+      float f;
+      switch (this.jdField_b_of_type_Byte)
       {
-        if (paramMiniAppInfo.launchParam == null) {
-          break label260;
-        }
-        i = paramMiniAppInfo.launchParam.scene;
-        if (paramMiniAppInfo != null)
+      default: 
+        break;
+      case 0: 
+        l2 = a(l1 - this.jdField_a_of_type_Long);
+        f = this.jdField_b_of_type_Float;
+        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
+        this.jdField_a_of_type_Long = l1;
+        if (this.jdField_b_of_type_Float >= 20.0F)
         {
-          str1 = paramMiniAppInfo.via;
-          if ((i == 2093) || ("2016_4".equals(str1))) {
-            break label267;
-          }
-          if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-          {
-            arrayOfString = jdField_a_of_type_JavaLangString.split(",");
-            if (arrayOfString != null)
-            {
-              int k = arrayOfString.length;
-              j = 0;
-              if (j < k)
-              {
-                if (i != Integer.parseInt(arrayOfString[j])) {
-                  break label273;
-                }
-                return true;
-              }
-            }
-          }
-          if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null) && (!TextUtils.isEmpty(b)))
-          {
-            arrayOfString = b.split(",");
-            if (arrayOfString != null)
-            {
-              j = arrayOfString.length;
-              i = 0;
-              if (i < j)
-              {
-                String str2 = arrayOfString[i];
-                if (!paramMiniAppInfo.appId.equals(str2)) {
-                  break label280;
-                }
-                return true;
-              }
-            }
-          }
-          bool1 = bool2;
-          if (TextUtils.isEmpty(c)) {
-            break label270;
-          }
-          paramMiniAppInfo = c.split(",");
-          bool1 = bool2;
-          if (paramMiniAppInfo == null) {
-            break label270;
-          }
-          j = paramMiniAppInfo.length;
-          i = 0;
-          bool1 = bool2;
-          if (i >= j) {
-            break label270;
-          }
-          String[] arrayOfString = paramMiniAppInfo[i];
-          if (arrayOfString != null)
-          {
-            bool1 = arrayOfString.equals(str1);
-            if (bool1) {
-              return true;
-            }
-          }
-          i += 1;
-          continue;
+          this.jdField_a_of_type_Long = l1;
+          this.jdField_b_of_type_Byte = 1;
+          this.c /= 5.0F;
         }
-        String str1 = null;
-      }
-      catch (Exception paramMiniAppInfo)
-      {
-        QMLog.e("GameGrowthGuardianManager", "enableHeartBeatForLaunchScene", paramMiniAppInfo);
-        return false;
-      }
-      continue;
-      label260:
-      int i = 9999;
-      continue;
-      label267:
-      boolean bool1 = true;
-      label270:
-      return bool1;
-      label273:
-      j += 1;
-      continue;
-      label280:
-      i += 1;
-    }
-  }
-  
-  public static void b(Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    jdField_a_of_type_Boolean = false;
-    b(paramContext, paramMiniAppInfo, 13);
-    if (jdField_a_of_type_JavaLangRunnable != null)
-    {
-      ThreadManager.c().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-      jdField_a_of_type_JavaLangRunnable = null;
-    }
-    if (jdField_a_of_type_Bgtb != null) {
-      jdField_a_of_type_Bgtb.a();
-    }
-  }
-  
-  private static void b(Context paramContext, MiniAppInfo paramMiniAppInfo, int paramInt)
-  {
-    if ((paramContext == null) || (paramMiniAppInfo == null)) {}
-    do
-    {
-      return;
-      if ((!jdField_a_of_type_Boolean) && ((paramInt == 11) || (paramInt == 12)))
-      {
-        QMLog.e("GameGrowthGuardianManager", "not in foreground, not allowed to send begin or heartbeat protocol");
-        return;
-      }
-    } while (!b(paramMiniAppInfo));
-    String str2 = bgxz.a(paramMiniAppInfo);
-    String str1;
-    int i;
-    label70:
-    int j;
-    label86:
-    int k;
-    label95:
-    ChannelProxy localChannelProxy;
-    long l;
-    if (paramMiniAppInfo.appId != null)
-    {
-      str1 = paramMiniAppInfo.appId;
-      if (!paramMiniAppInfo.isEngineTypeMiniGame()) {
-        break label181;
-      }
-      i = 1;
-      if (paramMiniAppInfo.launchParam == null) {
-        break label186;
-      }
-      j = paramMiniAppInfo.launchParam.scene;
-      if (paramInt != 11) {
-        break label192;
-      }
-      k = 0;
-      localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      l = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-      if (str2 == null) {
-        break label211;
-      }
-      label121:
-      if (paramMiniAppInfo.via == null) {
-        break label218;
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        break;
+      case 1: 
+        l2 = a(l1 - this.jdField_a_of_type_Long);
+        f = this.jdField_b_of_type_Float;
+        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
+        this.jdField_a_of_type_Long = l1;
+        if (this.jdField_b_of_type_Float >= 98.0F)
+        {
+          this.jdField_a_of_type_Long = l1;
+          this.jdField_b_of_type_Byte = 4;
+          this.jdField_b_of_type_Float = 98.0F;
+          this.c = 0.0F;
+        }
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        break;
+      case 2: 
+        l2 = a(l1 - this.jdField_a_of_type_Long);
+        f = this.jdField_b_of_type_Float;
+        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
+        this.jdField_a_of_type_Long = l1;
+        if (this.jdField_b_of_type_Float >= 80.0F)
+        {
+          this.jdField_a_of_type_Long = l1;
+          this.jdField_b_of_type_Byte = 3;
+          this.c /= 20.0F;
+        }
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        break;
+      case 3: 
+        l2 = a(l1 - this.jdField_a_of_type_Long);
+        f = this.jdField_b_of_type_Float;
+        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
+        this.jdField_a_of_type_Long = l1;
+        if (this.jdField_b_of_type_Float >= 98.0F)
+        {
+          this.jdField_a_of_type_Long = l1;
+          this.jdField_b_of_type_Byte = 4;
+          this.c = 0.0F;
+        }
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        break;
+      case 5: 
+        l2 = a(l1 - this.jdField_a_of_type_Long);
+        this.jdField_b_of_type_Float += (float)l2 * this.c;
+        this.jdField_a_of_type_Long = l1;
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (this.e >= this.jdField_a_of_type_Int) {
+            this.e = this.jdField_a_of_type_Int;
+          }
+        }
+        else
+        {
+          this.jdField_b_of_type_Int -= (int)((float)l2 * this.jdField_a_of_type_Float);
+          if (this.jdField_b_of_type_Int <= 0)
+          {
+            d();
+            this.jdField_b_of_type_Int = 0;
+          }
+        }
+        break;
+      case 4: 
+        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
       }
     }
-    label181:
-    label186:
-    label192:
-    label211:
-    label218:
-    for (String str3 = paramMiniAppInfo.via;; str3 = "")
-    {
-      localChannelProxy.JudgeTiming(str1, i, j, paramInt, l, k, str2, 0, str3, paramMiniAppInfo.gameAdsTotalTime, jdField_a_of_type_NS_COMMCOMM$StCommonExt, new bgsf(paramContext, paramMiniAppInfo, paramInt));
-      return;
-      str1 = "";
-      break;
-      i = 0;
-      break label70;
-      j = 0;
-      break label86;
-      k = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - jdField_a_of_type_Long);
-      break label95;
-      str2 = "";
-      break label121;
-    }
-  }
-  
-  private static void b(MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, INTERFACE.GuardInstruction paramGuardInstruction)
-  {
-    if ((paramMiniAppInfo == null) || (paramStJudgeTimingRsp == null)) {
-      return;
-    }
-    ChannelProxy localChannelProxy;
-    String str;
-    int i;
-    if ((paramGuardInstruction != null) && (paramGuardInstruction.type.get() == 7))
-    {
-      paramStJudgeTimingRsp = paramStJudgeTimingRsp.loginTraceId.get();
-      localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      str = paramMiniAppInfo.appId;
-      i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-      if (paramGuardInstruction == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (paramMiniAppInfo = paramGuardInstruction.ruleName.get();; paramMiniAppInfo = "")
-    {
-      localChannelProxy.ReportExecute(str, i, paramStJudgeTimingRsp, paramMiniAppInfo, new bgsg());
-      return;
-      paramStJudgeTimingRsp = paramStJudgeTimingRsp.timingTraceId.get();
-      break;
-    }
-  }
-  
-  private static boolean b(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null)
-    {
-      if (paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      while ((!paramMiniAppInfo.isEngineTypeMiniGame()) && (a(paramMiniAppInfo))) {
-        return true;
-      }
-      return false;
-    }
-    return false;
   }
 }
 

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class acqx
-  extends acrq
+public class acqx
+  extends FlingGestureHandler
 {
-  acqx(acqw paramacqw, int paramInt1, int paramInt2, String paramString)
+  public acqx(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    super(paramacqw.a, paramInt1, paramInt2);
+    super(paramActivity);
   }
   
-  public void onClick(View paramView)
+  public void flingLToR()
   {
-    if (this.jdField_a_of_type_Acqw.a.a != null) {
-      this.jdField_a_of_type_Acqw.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    if (!this.a.a) {
+      super.flingLToR();
     }
   }
 }

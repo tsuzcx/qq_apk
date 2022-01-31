@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.os.Handler;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
 
-public final class avtp
-  implements Parcelable.Creator<TranslateResult>
+public class avtp
+  implements URLDrawable.DownloadListener
 {
-  public TranslateResult a(Parcel paramParcel)
+  avtp(avto paramavto) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    return new TranslateResult(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.2(this));
   }
   
-  public TranslateResult[] a(int paramInt)
+  public void onFileDownloadStarted()
   {
-    return new TranslateResult[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
+    }
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.1(this));
   }
 }
 

@@ -31,7 +31,7 @@ public class qdd
     {
     default: 
       return;
-    case 2131366636: 
+    case 2131366642: 
       i = 0;
       if (i < this.jdField_a_of_type_Qkx.a.size()) {
         if (((RecommendFollowInfo)this.jdField_a_of_type_Qkx.a.get(i)).isFollowed) {

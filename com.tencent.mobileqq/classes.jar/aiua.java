@@ -1,30 +1,18 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import java.util.List;
+import com.tencent.image.Utils;
 
 public class aiua
-  extends FragmentPagerAdapter
+  extends aiub
 {
-  public aiua(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
+  public aiua(String paramString)
   {
-    super(paramFragmentManager);
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
   }
   
-  public int getCount()
+  static boolean a(String paramString)
   {
-    return SendHbMainFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return ((aiub)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return ((aiub)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
+    return Utils.isHeifFile(paramString);
   }
 }
 

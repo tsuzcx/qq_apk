@@ -4,7 +4,7 @@ import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 class ssn
-  extends amni
+  extends amrx
 {
   ssn(ssk paramssk, ssj paramssj) {}
   
@@ -20,7 +20,7 @@ class ssn
     }
     ssk.b(this.jdField_a_of_type_Ssk, this.jdField_a_of_type_Ssj);
     StructLongMessageDownloadProcessor.a(ssk.a(this.jdField_a_of_type_Ssk), this.jdField_a_of_type_Ssj.a);
-    ((bcic)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
+    ((bcml)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
   }
   
   public void a(boolean paramBoolean, Object paramObject)

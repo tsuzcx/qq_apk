@@ -1,55 +1,44 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class beio
-  extends Handler
+class beio
+  implements View.OnClickListener
 {
-  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
-  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
+  beio(beim parambeim) {}
   
-  public beio(ADView paramADView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    paramView = "";
+    Object localObject = Uri.parse(beim.a(this.a).c());
+    try
     {
+      localObject = ((Uri)localObject).getQueryParameter("article_id");
+      paramView = (View)localObject;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      super.handleMessage(paramMessage);
-      do
+      for (;;)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
+        localException.printStackTrace();
       }
-      try
-      {
-        azqd localazqd = (azqd)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
-        i = localazqd.a;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localazqd.n);
-        i *= 1000;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          int i = 5000;
-        }
-      }
-      sendEmptyMessageDelayed(0, i);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
-      continue;
-      removeMessages(0);
+      this.a.f(this.a.jdField_a_of_type_JavaLangString);
+    }
+    localObject = paramView;
+    if (paramView == null) {
+      localObject = "";
+    }
+    azqs.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject, "", "");
+    nrt.a("0X8006A1D", "", "", (String)localObject, "", "");
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.b = true;
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695751, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+      return;
     }
   }
 }

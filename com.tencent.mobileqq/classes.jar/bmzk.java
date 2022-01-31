@@ -1,15 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bmzk
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bmzk
 {
-  bmzk(bmzg parambmzg) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  public abstract void a(String paramString);
 }
 
 

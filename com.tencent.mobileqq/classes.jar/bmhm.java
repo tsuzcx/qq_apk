@@ -1,19 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bmhm
-  extends QQUIEventReceiver<bmhd, bmnp>
+public class bmhm
+  extends uli
 {
-  public bmhm(@NonNull bmhd parambmhd)
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  
+  public bmhm(int paramInt, boolean paramBoolean)
   {
-    super(parambmhd);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(@NonNull bmhd parambmhd, @NonNull bmnp parambmnp) {}
-  
-  public Class acceptEventClass()
+  public int a()
   {
-    return bmnp.class;
+    return this.jdField_a_of_type_Int;
   }
 }
 

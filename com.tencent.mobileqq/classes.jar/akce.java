@@ -1,61 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.List;
 
 public class akce
+  extends ameq
 {
-  private static akce a;
+  public akce(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public static akce a()
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new akce();
-      }
-      return a;
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+      return;
     }
-    finally {}
-  }
-  
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return "folder_weather_arrive";
-    case 1: 
-      return "folder_weather_expose";
-    case 2: 
-      return "folder_weather_click";
-    case 3: 
-      return "aio_news_click";
-    case 4: 
-      return "aio_othercity_click";
-    case 5: 
-      return "aio_page_arrive";
-    }
-    return "aio_search_push";
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + a(paramInt) + "|" + "android";
-    azlj.a(paramQQAppInterface, "dc04698", str);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + str);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      a().a(paramQQAppInterface, 0);
-    }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 

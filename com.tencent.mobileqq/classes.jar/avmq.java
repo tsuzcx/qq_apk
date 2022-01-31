@@ -1,6 +1,12 @@
-public abstract interface avmq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avmq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  avmq(avmf paramavmf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

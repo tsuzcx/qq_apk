@@ -1,28 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
 
-public class atrs
-  implements atrp
+class atrs
+  implements bhuw
 {
-  atrs(atrr paramatrr) {}
+  atrs(atro paramatro, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void a(atrm paramatrm)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
-    }
-    atrr.a(this.a, paramatrm);
-  }
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
-    }
-    if (atrr.a(this.a) != null) {
-      atrr.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    atro.a(this.jdField_a_of_type_Atro, true);
+    atro.a(this.jdField_a_of_type_Atro).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      azqs.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
     }
   }
 }

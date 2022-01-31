@@ -1,8 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public abstract interface ykj
+class ykj
+  implements zac<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
+  ykj(yki paramyki, ykg paramykg) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  {
+    if (this.jdField_a_of_type_Ykg != null) {
+      this.jdField_a_of_type_Ykg.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
+    }
+  }
 }
 
 

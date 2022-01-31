@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.PublicAccountHandler;
@@ -14,7 +14,7 @@ import syb;
 public class PublicAccountChatPie$26
   implements Runnable
 {
-  public PublicAccountChatPie$26(agot paramagot, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$26(agti paramagti, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
@@ -31,8 +31,8 @@ public class PublicAccountChatPie$26
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
     }
-    agot.b(this.this$0, this.a);
-    agot.a(this.this$0).post(new PublicAccountChatPie.26.1(this));
+    agti.b(this.this$0, this.a);
+    agti.a(this.this$0).post(new PublicAccountChatPie.26.1(this));
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
   }
 }

@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-
-public class umw
+public abstract interface umw
 {
-  public static WeakReference<QQAppInterface> a = new WeakReference(null);
-  
-  public static boolean a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
-    if (localQQAppInterface == null) {
-      throw new IllegalStateException(alpo.a(2131714784));
-    }
-    return localQQAppInterface.a().a;
-  }
+  public abstract void a(umu paramumu);
 }
 
 

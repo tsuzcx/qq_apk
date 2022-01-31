@@ -1,86 +1,62 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class ahmb
-  extends amab
+class ahmb
+  extends altm
 {
-  public ahmb(TroopView paramTroopView) {}
+  ahmb(ahma paramahma) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.j();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
     }
-    do
+    if (paramBoolean)
     {
-      do
+      QQToast.a(ahma.a(this.a), alud.a(2131707875), 0).a();
+      ahma.a(this.a, paramLong);
+      this.a.d();
+      return;
+    }
+    QQToast.a(ahma.a(this.a), alud.a(2131707896), 0).a();
+  }
+  
+  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
+    }
+    if (paramBoolean) {
+      this.a.d();
+    }
+  }
+  
+  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
+    }
+    if (paramBoolean)
+    {
+      if ((paramObject instanceof Integer))
       {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.j();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.j();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      TroopView.a(this.a);
-    }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (!paramBoolean) {
-        break label79;
+        paramInt = ((Integer)paramObject).intValue();
+        ahma.a(this.a).put(paramInt, paramArrayOfByte);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.a(101, 800L);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
-      return;
-      label79:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131720325);
+      if (paramArrayList != null) {
+        ahma.a(this.a, ahma.a(this.a) + paramArrayList.size());
+      }
+      this.a.d();
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
     }
   }
 }

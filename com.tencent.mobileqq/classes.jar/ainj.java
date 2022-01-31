@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ainj
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements DialogInterface.OnClickListener
 {
   ainj(aini paramaini) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bnbf.a(this.a.mActivity, paramLocalMediaInfo))
-    {
-      aini.a(this.a, paramLocalMediaInfo);
-      yvu.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
-    }
-    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
+    paramDialogInterface.dismiss();
   }
 }
 

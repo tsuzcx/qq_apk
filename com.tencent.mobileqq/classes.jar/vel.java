@@ -1,63 +1,60 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vel
-  extends vej
+  extends vce
+  implements urr<vfz, vhp>
 {
-  private final String c;
+  protected String a;
+  protected List<String> a;
   
-  private boolean a(vzc paramvzc)
+  public vel(String paramString, List<String> paramList)
   {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramvzc.a(), paramvzc.b(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawColor(-1);
-      localCanvas.drawBitmap(paramvzc.a(), 0.0F, 0.0F, null);
-      bdda.a(bdda.a(localBitmap, 100), new File(this.c));
-      bool = true;
-    }
-    catch (IOException paramvzc)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramvzc, new Object[0]);
-      return false;
-    }
-    catch (OutOfMemoryError paramvzc)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramvzc, new Object[0]);
-    }
-    return bool;
-    return false;
-  }
-  
-  protected void a(Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
-    }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
   }
   
-  protected void a(vzc paramvzc)
+  public void a()
   {
-    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramvzc), 8, null, true);
+    vfz localvfz = new vfz();
+    localvfz.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    urp.a().a(localvfz, this);
+  }
+  
+  public void a(@NonNull vfz paramvfz, @Nullable vhp paramvhp, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramvfz = new vem();
+    if ((paramvhp == null) || (paramErrorMessage.isFail()))
+    {
+      c();
+      umc.a().dispatch(paramvfz);
+      return;
+    }
+    b();
+    paramvhp.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvhp.jdField_a_of_type_JavaUtilList);
+    paramvfz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramvhp = paramvhp.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvhp.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramvhp.next();
+      paramErrorMessage = new wnd(paramErrorMessage.mVid, paramErrorMessage);
+      paramvfz.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+    }
+    umc.a().dispatch(paramvfz);
+  }
+  
+  public String toString()
+  {
+    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

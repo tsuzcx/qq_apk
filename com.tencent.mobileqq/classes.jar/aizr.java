@@ -1,13 +1,41 @@
-import java.util.HashSet;
-import java.util.Set;
+import android.widget.EditText;
 
 public class aizr
+  extends aizb
 {
-  public static final Set<String> a = new HashSet();
+  private int a;
   
-  static
+  public aizr(EditText paramEditText)
   {
-    a.add("SoLoadModule");
+    super(paramEditText);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.toString().contains("."))
+    {
+      localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
+      {
+        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
+      }
+    }
+    paramCharSequence = localCharSequence;
+    if (localCharSequence.toString().trim().substring(0).equals("."))
+    {
+      paramCharSequence = "0" + localCharSequence;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
+    }
+    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
+    }
   }
 }
 

@@ -1,6 +1,18 @@
-public abstract interface wie
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
+
+public class wie
+  extends SimpleParallelObserver
 {
-  public abstract void a(boolean paramBoolean);
+  wie(wib paramwib) {}
+  
+  public void onAllFunctionComplete(boolean paramBoolean)
+  {
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
+  }
 }
 
 

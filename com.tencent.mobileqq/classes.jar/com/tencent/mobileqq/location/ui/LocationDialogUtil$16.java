@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import atmi;
-import atmq;
-import bdcd;
-import bdfq;
+import atqr;
+import atqz;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class LocationDialogUtil$16
@@ -14,8 +14,8 @@ public final class LocationDialogUtil$16
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.a, 230, null, this.a.getResources().getString(2131720141), 2131694951, 2131690648, null, new atmq(this));
-    atmi.a(this.a, localbdfq);
+    bdjz localbdjz = bdgm.a(this.a, 230, null, this.a.getResources().getString(2131720153), 2131694953, 2131690648, null, new atqz(this));
+    atqr.a(this.a, localbdjz);
   }
 }
 

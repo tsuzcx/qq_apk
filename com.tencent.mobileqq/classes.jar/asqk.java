@@ -1,47 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 
 public class asqk
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
 {
-  asro a;
-  public ImageView d;
+  JefsClass.CancelableRunnable a;
   
-  public asqk(HotPicPageView paramHotPicPageView, View paramView, asro paramasro)
+  public asqk(JefsClass.CancelableRunnable paramCancelableRunnable)
   {
-    super(paramView);
-    if (paramasro != null)
-    {
-      this.a = paramasro;
-      this.d = ((ImageView)paramView.findViewById(2131367773));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramasro);
-    }
+    this.a = paramCancelableRunnable;
   }
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.a != null)
-    {
-      this.a.b(paramView, getPosition());
-      bool = true;
-    }
-    return bool;
+    this.a.a = true;
   }
 }
 

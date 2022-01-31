@@ -1,24 +1,29 @@
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Handler;
-import android.view.ViewGroup;
-import cooperation.qzone.contentbox.model.MQMsg;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.LeakHelper.2.1;
 
-public abstract interface bjdg
-  extends bhpo
+public final class bjdg
+  implements View.OnClickListener
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Handler paramHandler);
-  
-  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131706391) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("qzone-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new LeakHelper.2.1(this));
+    }
+  }
 }
 
 

@@ -1,31 +1,76 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import java.util.Iterator;
 import java.util.List;
 
 public class vbs
-  extends une
+  extends vbk
 {
-  public List<wkh> a = new ArrayList();
-  public boolean b;
-  
-  public vbs(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
+  public vbs(ViewGroup paramViewGroup)
   {
-    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
-    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
+    super(paramViewGroup);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    String str = super.a(paramQQUserUIItem);
+    paramQQUserUIItem = str;
+    if (str == null) {
+      paramQQUserUIItem = alud.a(2131713648);
+    }
+    return paramQQUserUIItem;
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131373850, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    c(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, uyg paramuyg)
+  {
+    if ((!TextUtils.isEmpty(paramuyg.j)) && (!paramBoolean))
+    {
+      this.a.setNodeName(paramString, paramuyg.j);
+      return;
+    }
+    super.a(paramString, paramBoolean, paramuyg);
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    super.a(paramuyg);
+    this.a.setDisplayState(2);
+    String str;
+    if (!TextUtils.equals((String)this.a.getTag(2131373850), paramuyg.jdField_a_of_type_JavaLangString))
+    {
+      if ((paramuyg.jdField_a_of_type_JavaUtilList == null) || (paramuyg.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label168;
+      }
+      str = ((uyy)paramuyg.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
+      Iterator localIterator = paramuyg.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        uyy localuyy = (uyy)localIterator.next();
+        if (!localuyy.jdField_a_of_type_Boolean) {
+          str = localuyy.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
     for (;;)
     {
-      this.b = bool;
-      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
-      while (paramRspStoryFeedIdList.hasNext())
-      {
-        wkh localwkh = new wkh((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-        this.a.add(localwkh);
-      }
-      bool = false;
+      wxj.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramuyg.jdField_a_of_type_JavaLangString, "1", "", str });
+      this.a.setTag(2131373850, paramuyg.jdField_a_of_type_JavaLangString);
+      return;
+      continue;
+      label168:
+      str = "";
     }
   }
 }

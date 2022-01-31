@@ -1,36 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import org.json.JSONObject;
 
 public class aanb
-  implements View.OnClickListener
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public aanb(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  public aanb(GdtPreLoader.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
-    {
-      paramView = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    }
-    for (;;)
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
-      return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
-        paramView = "ad is loading";
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
-        paramView = GdtInterstitialFragmentForJS.a(this.a).a();
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
-        paramView = "正在打开插屏";
-      } else {
-        paramView = "打开插屏错误";
-      }
-    }
+    aase.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

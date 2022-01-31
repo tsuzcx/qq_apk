@@ -12,7 +12,7 @@ import com.tencent.widget.AbsListView;
 import mqq.os.MqqHandler;
 
 public class rqu
-  implements bhpo
+  implements bhtv
 {
   double jdField_a_of_type_Double = 0.0D;
   int jdField_a_of_type_Int = 0;
@@ -176,7 +176,7 @@ public class rqu
       default: 
         if (otf.c(this.jdField_a_of_type_Rqj.jdField_c_of_type_Int))
         {
-          abqw.a().a(a(), false);
+          abvl.a().a(a(), false);
           this.jdField_a_of_type_Rqj.jdField_a_of_type_Rxw.b();
           sff.a().c();
           if (QLog.isColorLevel()) {
@@ -226,13 +226,13 @@ public class rqu
       {
         this.jdField_a_of_type_Rqj.jdField_a_of_type_Svj.a(paramAbsListView, paramInt);
         return;
-        abqw.a().a("list_video_kandian", false);
+        abvl.a().a("list_video_kandian", false);
         break;
-        abqw.a().a("list_new_kandian", false);
+        abvl.a().a("list_new_kandian", false);
         break;
-        abqw.a().a("list_subscript", false);
+        abvl.a().a("list_subscript", false);
         break;
-        abqw.a().a("list_kandian_channel_" + this.jdField_a_of_type_Rqj.jdField_c_of_type_Int, false);
+        abvl.a().a("list_kandian_channel_" + this.jdField_a_of_type_Rqj.jdField_c_of_type_Int, false);
         break;
         label485:
         rqj.a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Rqj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition() - rqj.c(), rqj.c());
@@ -251,7 +251,7 @@ public class rqu
           {
           default: 
             if (otf.c(this.jdField_a_of_type_Rqj.jdField_c_of_type_Int)) {
-              abqw.a().a(a());
+              abvl.a().a(a());
             }
             break;
           }
@@ -261,13 +261,13 @@ public class rqu
           this.jdField_a_of_type_Rqj.jdField_a_of_type_Rxw.a();
           rqj.a(this.jdField_a_of_type_Rqj).removeCallbacks(rqj.a(this.jdField_a_of_type_Rqj));
           break;
-          abqw.a().a("list_video_kandian");
+          abvl.a().a("list_video_kandian");
           continue;
-          abqw.a().a("list_new_kandian");
+          abvl.a().a("list_new_kandian");
           continue;
-          abqw.a().a("list_subscript");
+          abvl.a().a("list_subscript");
           continue;
-          abqw.a().a("list_kandian_channel_" + this.jdField_a_of_type_Rqj.jdField_c_of_type_Int);
+          abvl.a().a("list_kandian_channel_" + this.jdField_a_of_type_Rqj.jdField_c_of_type_Int);
         }
         label724:
         if ((paramInt == 2) || (!this.jdField_b_of_type_Boolean)) {

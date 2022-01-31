@@ -1,54 +1,61 @@
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.Method;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
 public class bhel
+  implements bgmc<Boolean>
 {
-  private static final int[] a = { 35, 36 };
-  private static final int[] b = { 26, 27 };
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
+  private bglv jdField_a_of_type_Bglv;
   
-  private static boolean a()
+  public static bhel a(bglv parambglv)
   {
-    return "Meizu".equalsIgnoreCase(Build.MANUFACTURER);
+    bhel localbhel = new bhel();
+    localbhel.jdField_a_of_type_Bglv = parambglv;
+    return localbhel;
   }
   
-  public static boolean a(int paramInt)
+  public Boolean a(bgls parambgls)
   {
-    return a(paramInt, AppLoaderFactory.g().getContext());
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer))
+    {
+      QMLog.d("NativeViewAction", "Page is invalid");
+      return null;
+    }
+    parambgls = (AppBrandPageContainer)parambgls;
+    boolean bool;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      QMLog.e("NativeViewAction", "Unknown action");
+      bool = false;
+    }
+    for (;;)
+    {
+      return Boolean.valueOf(bool);
+      bool = parambgls.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+      continue;
+      bool = parambgls.a(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public static boolean a(int paramInt, Context paramContext)
+  public boolean a(View paramView)
   {
-    if ((!a()) || (Build.VERSION.SDK_INT < 17)) {}
-    do
-    {
-      return false;
-      paramContext = paramContext.getSystemService("appops");
-    } while ((paramContext == null) || (!paramContext.getClass().getSimpleName().equals("AppOpsManager")));
-    try
-    {
-      Method localMethod = paramContext.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-      int i = b[paramInt];
-      if (Build.VERSION.SDK_INT < 19) {
-        i = a[paramInt];
-      }
-      ApplicationInfo localApplicationInfo = AppLoaderFactory.g().getContext().getApplicationInfo();
-      paramInt = ((Integer)localMethod.invoke(paramContext, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
-      QMLog.d("AudioHelper", "isForbidByRubbishMeizu(), result = " + paramInt);
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      QMLog.e("AudioHelper", paramContext.toString());
-    }
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    return ((Boolean)this.jdField_a_of_type_Bglv.a(this)).booleanValue();
+  }
+  
+  public boolean a(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = paramLayoutParams;
+    return ((Boolean)this.jdField_a_of_type_Bglv.a(this)).booleanValue();
   }
 }
 

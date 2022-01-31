@@ -1,57 +1,26 @@
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class aola
+final class aola
+  extends XC_MethodHook
 {
-  public int a = -1;
-  
-  public static aola a(aogf[] paramArrayOfaogf)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    aola localaola = new aola();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    try
     {
-      int j = paramArrayOfaogf.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfaogf[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((aogf)localObject).a;
-          try
-          {
-            a(new JSONObject((String)localObject), localaola);
-            if (QLog.isColorLevel()) {
-              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localaola);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
+      paramMethodHookParam = aokv.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
+        aokv.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
       }
+      return;
     }
-    return localaola;
-  }
-  
-  private static void a(JSONObject paramJSONObject, aola paramaola)
-  {
-    if (paramJSONObject.has("showMode")) {
-      paramaola.a = paramJSONObject.optInt("showMode");
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
     }
-  }
-  
-  public String toString()
-  {
-    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 

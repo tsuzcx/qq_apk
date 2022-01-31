@@ -1,17 +1,14 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 
-public class bjpj
-  implements Printer
+class bjpj
+  implements bjpn
 {
-  public bjpj(QzoneThreadMonitor paramQzoneThreadMonitor) {}
+  bjpj(bjpi parambjpi) {}
   
-  public void println(String paramString)
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
-    }
+    return bjpi.a(this.a, paramPluginRecord);
   }
 }
 

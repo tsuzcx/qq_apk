@@ -1,24 +1,17 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import java.util.ArrayList;
 
-public class awkf
-  extends RecyclerView.ViewHolder
+public abstract class awkf
+  implements awke
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public final void a(int paramInt) {}
   
-  public awkf(CustomCoverFragment paramCustomCoverFragment, View paramView)
-  {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366718));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366708));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167192));
-  }
+  public final void a(int paramInt, ArrayList<awjm> paramArrayList) {}
+  
+  public final void b(int paramInt, awjm paramawjm) {}
+  
+  public final void c(int paramInt, awjm paramawjm) {}
+  
+  public final void d(int paramInt, awjm paramawjm) {}
 }
 
 

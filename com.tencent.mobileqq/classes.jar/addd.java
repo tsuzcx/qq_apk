@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class addd
-  extends avqt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public addd(LoginInfoActivity paramLoginInfoActivity) {}
+  public addd(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131719890), "qqsetting_notify_icon_key", paramBoolean);
+      return;
+    }
   }
 }
 

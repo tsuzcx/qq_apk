@@ -1,19 +1,19 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aajt;
-import aaju;
-import aanp;
+import aaoi;
+import aaoj;
+import aase;
 import com.tencent.ark.open.ArkAppMgr;
 
 public class GdtArkPreDownloadTask$5
   implements Runnable
 {
-  public GdtArkPreDownloadTask$5(aaju paramaaju) {}
+  public GdtArkPreDownloadTask$5(aaoj paramaaoj) {}
   
   public void run()
   {
-    aanp.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { aaju.a(this.this$0).a, aaju.a(this.this$0).b, aaju.a(this.this$0).c }));
-    ArkAppMgr.getInstance().getAppPathByName(aaju.a(this.this$0).a, "", aaju.a(this.this$0).c, null, aaju.a(this.this$0));
+    aase.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { aaoj.a(this.this$0).a, aaoj.a(this.this$0).b, aaoj.a(this.this$0).c }));
+    ArkAppMgr.getInstance().getAppPathByName(aaoj.a(this.this$0).a, "", aaoj.a(this.this$0).c, null, aaoj.a(this.this$0));
   }
 }
 

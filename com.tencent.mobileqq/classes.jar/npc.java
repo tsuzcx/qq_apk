@@ -2,7 +2,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
 final class npc
-  extends amky
+  extends ampn
 {
   npc(String paramString)
   {

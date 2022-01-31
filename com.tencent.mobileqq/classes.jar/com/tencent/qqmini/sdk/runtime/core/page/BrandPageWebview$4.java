@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import bhbi;
-import bhbl;
+import bhfp;
+import bhfs;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 
@@ -12,11 +12,11 @@ public class BrandPageWebview$4
 {
   public void run()
   {
-    AppBrandPage localAppBrandPage = bhbi.a(this.this$0).a();
+    AppBrandPage localAppBrandPage = bhfp.a(this.this$0).a();
     localAppBrandPage.setVisibility(0);
     Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.g().getMiniAppEnv().getContext(), 2130772085);
     localAnimation.setDuration(200L);
-    localAnimation.setAnimationListener(new bhbl(this));
+    localAnimation.setAnimationListener(new bhfs(this));
     localAppBrandPage.startAnimation(localAnimation);
   }
 }

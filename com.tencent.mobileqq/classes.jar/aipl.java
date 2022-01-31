@@ -1,18 +1,22 @@
-import com.tencent.image.Utils;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aipl
-  extends aipm
+class aipl
+  extends nac
 {
-  public aipl(String paramString)
-  {
-    super(paramString);
-    this.a = "PhotoIncompatibleWebp";
-    this.b = "reportGenerateHeif";
-  }
+  aipl(aipk paramaipk, long paramLong) {}
   
-  static boolean a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return Utils.isHeifFile(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    }
+    if ((this.jdField_a_of_type_Aipk.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
+      return;
+    }
+    aipi.b(this.jdField_a_of_type_Aipk.a);
   }
 }
 

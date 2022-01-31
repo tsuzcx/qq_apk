@@ -1,23 +1,15 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
 
-class bmuw
-  implements TextView.OnEditorActionListener
+public class bmuw
+  implements View.OnLayoutChangeListener
 {
-  bmuw(bmuv parambmuv) {}
+  public bmuw(GLTextureView paramGLTextureView) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
-    }
-    return false;
+    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 

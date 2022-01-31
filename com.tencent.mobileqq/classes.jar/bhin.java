@@ -1,112 +1,192 @@
-import android.os.Build;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.SafeReport.LogItem;
-import com.tencent.ims.SafeReport.ReqBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptController.1;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.receiver.WebProcessReceiver;
+import com.tencent.smtt.sdk.QbSdk;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bhin
+  extends bhlt
 {
-  public static int a(int paramInt)
+  private static int jdField_b_of_type_Int = 100;
+  private static int jdField_c_of_type_Int = 110;
+  private static int d = 120;
+  private static int e = 121;
+  private static int f = 122;
+  private static int g = 177;
+  private static int h = 200;
+  private static int i = 220;
+  private static int j = 232;
+  protected Handler a;
+  public boolean a;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean;
+  private final int k = 30000;
+  private int l;
+  
+  public bhin(Context paramContext, bgun parambgun)
   {
-    if (paramInt > 100) {
-      return 2;
-    }
-    return 1;
+    super(paramContext, parambgun);
   }
   
-  public static String a(int paramInt)
+  public static String a()
   {
+    localObject3 = null;
     try
     {
-      localObject = NetConnInfoCenter.GUID;
-      String str2 = bdcb.e();
-      String str3 = bdcb.a(MobileQQ.sMobileQQ);
-      String str4 = bhim.a();
-      String str5 = bhim.b();
-      String str6 = Build.CPU_ABI;
-      String str7 = Build.MODEL;
-      String str8 = Build.MANUFACTURER;
-      bhiq localbhiq = new bhiq();
-      localbhiq.a((byte[])localObject).a(str2).a(str3).a(str4).a(str5).a(str6).a(str7).a(str8);
-      if (paramInt >= 2) {
-        localbhiq.a(bhim.c()).a(AppSetting.a()).a(bdcb.f()).a("").a("");
+      String str = AppLoaderFactory.g().getProcessName();
+      localObject1 = localObject3;
+      if (str.contains(":")) {
+        localObject1 = str.substring(str.indexOf(":") + 1);
       }
-      localObject = localbhiq.toString();
     }
     catch (Throwable localThrowable)
     {
-      do
+      for (;;)
       {
-        Object localObject;
-        localThrowable.printStackTrace();
-        String str1 = ",,,,,,,";
-      } while (paramInt < 2);
+        Object localObject1;
+        QMLog.e("minisdk-start", "getSubProcessName exception!", localThrowable);
+        Object localObject2 = localObject3;
+      }
     }
-    return localObject;
-    return ",,,,,,," + ",,,,";
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    a(paramString, paramInt, 0, 1);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    a(paramString, paramInt1, 0, paramInt2);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QSecRptControllerImpl.a().b(paramString, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface)
-  {
-    SafeReport.ReqBody localReqBody = new SafeReport.ReqBody();
-    SafeReport.LogItem localLogItem = new SafeReport.LogItem();
-    localLogItem.uint32_rpt_id.set(paramInt1);
-    String str = a(a(paramInt1));
-    paramString = str + "," + paramInt2 + "," + paramString;
-    localLogItem.bytes_rpt_data.set(ByteStringMicro.copyFrom(paramString.getBytes()));
-    localReqBody.LogItem_reportdata.add(localLogItem);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSRPT", 2, paramString);
+    localObject3 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject3 = "mini";
     }
-    ThreadManager.post(new QSecRptController.1(paramQQAppInterface, localReqBody), 5, null, true);
+    return localObject3;
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody)
+  public Handler a()
   {
-    if (paramReqBody == null) {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a()
+  {
+    QMLog.i("minisdk-start", "startTbs");
+    int m = QbSdk.getTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+    int n = QbSdk.getTmpDirTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+    QMLog.i("minisdk-start", "tbsVersion=" + m + " tmpDirTbsVersion=" + n + ",data_directory_suffix:" + a());
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("data_directory_suffix", a());
+    QbSdk.initTbsSettings((Map)localObject);
+    this.jdField_a_of_type_Boolean = false;
+    if ((m > 0) || (n > 0))
+    {
+      c();
       return;
     }
-    if (paramQQAppInterface == null) {
-      paramQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (!this.jdField_c_of_type_Boolean)
+    {
+      QMLog.i("minisdk-start", "X5 isn't completed， use system core。");
+      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, WebProcessReceiver.class);
+      ((Intent)localObject).setAction("action_download_tbs");
+      ((Intent)localObject).putExtra("isDownloadForeground", this.jdField_b_of_type_Boolean);
+      ((Intent)localObject).putExtra("fromMiniApp", true);
+      this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
+      c();
+      return;
+    }
+    a().sendEmptyMessageDelayed(7, 30000L);
+    this.l = 0;
+    localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences(this.jdField_a_of_type_AndroidContentContext.getPackageName() + "_preferences", 4);
+    ((SharedPreferences)localObject).edit().remove("tbs_download_complete").commit();
+    ((SharedPreferences)localObject).edit().remove("tbs_download_progress").commit();
+    localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, WebProcessReceiver.class);
+    ((Intent)localObject).setAction("action_download_tbs");
+    ((Intent)localObject).putExtra("isDownloadForeground", this.jdField_b_of_type_Boolean);
+    ((Intent)localObject).putExtra("fromMiniApp", true);
+    this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
+    QMLog.d("minisdk-start", "start WebProcessReceiver isDownloadForeground" + this.jdField_b_of_type_Boolean);
+    a().sendEmptyMessageDelayed(6, 1000L);
+  }
+  
+  public void c()
+  {
+    a().removeMessages(7);
+    super.c();
+  }
+  
+  public void d()
+  {
+    int m = QbSdk.getTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+    int n = QbSdk.getTmpDirTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+    QMLog.d("minisdk-start", "getTbsVersion=" + m + " tmpDirTbsVersion=" + n);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences(this.jdField_a_of_type_AndroidContentContext.getPackageName() + "_preferences", 4);
+    int i1 = ((SharedPreferences)localObject).getInt("tbs_download_complete", -1);
+    QMLog.i("minisdk-start", "tbs download result: " + i1);
+    if (((i1 == j) || (i1 == i)) && ((m > 0) || (n > 0)))
+    {
+      a().removeMessages(6);
+      c();
+    }
+    do
+    {
+      return;
+      if (i1 != -1)
+      {
+        a().removeMessages(6);
+        e();
+        return;
+      }
+      m = ((SharedPreferences)localObject).getInt("tbs_download_progress", 0);
+      QMLog.d("minisdk-start", "tbs download progress " + m);
+      if (m > this.l)
+      {
+        this.l = m;
+        a().removeMessages(7);
+        a().sendEmptyMessageDelayed(7, 30000L);
+        localObject = Message.obtain();
+        ((Message)localObject).what = 3;
+        ((Message)localObject).arg1 = m;
+      }
+    } while (c());
+    a().sendEmptyMessageDelayed(6, 1000L);
+  }
+  
+  public void e()
+  {
+    a().removeMessages(7);
+    if (this.jdField_a_of_type_Boolean) {}
+    QMLog.d("minisdk-start", "TbsAsyncTask failed! Work continue as same as succeed anyway. ");
+    super.c();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      mzy.a(paramQQAppInterface, new bhio(), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
-      return;
+      return false;
+      d();
+      continue;
+      int m = QbSdk.getTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+      int n = QbSdk.getTmpDirTbsVersion(this.jdField_a_of_type_AndroidContentContext);
+      QMLog.d("minisdk-start", "X5安装超时 tbsVersion=" + m + " tmpDirTbsVersion=" + n);
+      if ((m > 0) || (n > 0))
+      {
+        c();
+      }
+      else
+      {
+        this.jdField_a_of_type_Boolean = true;
+        e();
+      }
     }
   }
-  
-  public static void b(String paramString, int paramInt)
-  {
-    a(paramString, paramInt, 0, null);
-  }
-  
-  protected void b(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

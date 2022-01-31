@@ -1,25 +1,43 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class wly
-  extends uhw<wli, uqw>
+  extends QQUIEventReceiver<wlu, wmo>
 {
-  public wly(wli paramwli)
+  public wly(wlu paramwlu)
   {
-    super(paramwli);
+    super(paramwlu);
   }
   
-  public void a(@NonNull wli paramwli, @NonNull uqw paramuqw)
+  public void a(@NonNull wlu paramwlu, @NonNull wmo paramwmo)
   {
-    wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuqw);
-    wli.a(paramwli, paramuqw.a);
+    if (paramwmo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      paramwmo = paramwmo.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0; paramwmo.hasNext(); i = ((MomeriesYearNode)paramwmo.next()).videoCount + i) {}
+      if (i >= 0)
+      {
+        wxe.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
+        wlu.a(paramwlu, i);
+        if (paramwlu.a != null)
+        {
+          paramwlu.a.videoCount = wlu.a(paramwlu);
+          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramwlu), 5, null, false);
+        }
+      }
+    }
   }
   
   public Class acceptEventClass()
   {
-    return uqw.class;
+    return wmo.class;
   }
-  
-  public void b(@NonNull wli paramwli, @NonNull uqw paramuqw) {}
 }
 
 

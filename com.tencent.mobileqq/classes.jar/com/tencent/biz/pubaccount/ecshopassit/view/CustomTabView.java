@@ -17,7 +17,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdje;
+import bdnn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
@@ -39,7 +39,7 @@ import nvd;
 import nve;
 import nvf;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.RedPointInfo;
-import xod;
+import xsm;
 
 public class CustomTabView
   extends FrameLayout
@@ -81,13 +81,13 @@ public class CustomTabView
       localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       paramRelativeLayout.addView(localImageView);
       paramRelativeLayout = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
-      paramRelativeLayout.width = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-      paramRelativeLayout.height = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+      paramRelativeLayout.width = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+      paramRelativeLayout.height = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
       paramRelativeLayout.addRule(14);
-      paramRelativeLayout.topMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+      paramRelativeLayout.topMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
       paramRelativeLayout = URLDrawable.URLDrawableOptions.obtain();
-      paramRelativeLayout.mRequestHeight = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-      paramRelativeLayout.mRequestWidth = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+      paramRelativeLayout.mRequestHeight = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+      paramRelativeLayout.mRequestWidth = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
       paramRelativeLayout = URLDrawable.getDrawable(paramnvb.c, paramRelativeLayout);
       if (paramRelativeLayout != null) {
         localImageView.setImageDrawable(paramRelativeLayout);
@@ -113,7 +113,7 @@ public class CustomTabView
     paramRelativeLayout.height = -2;
     paramRelativeLayout.addRule(1, paramImageView.getId());
     paramRelativeLayout.addRule(10);
-    paramRelativeLayout.topMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+    paramRelativeLayout.topMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
     return localImageView;
   }
   
@@ -129,7 +129,7 @@ public class CustomTabView
   {
     TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     localTextView.setTextColor(Color.parseColor(paramnvb.e));
-    localTextView.setTextSize(1, xod.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
+    localTextView.setTextSize(1, xsm.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
     localTextView.setText(paramnvb.jdField_a_of_type_JavaLangString);
     paramRelativeLayout.addView(localTextView);
     paramRelativeLayout = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
@@ -137,8 +137,8 @@ public class CustomTabView
     paramRelativeLayout.height = -2;
     paramRelativeLayout.addRule(3, paramImageView.getId());
     paramRelativeLayout.addRule(14);
-    paramRelativeLayout.topMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-    paramRelativeLayout.bottomMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+    paramRelativeLayout.topMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+    paramRelativeLayout.bottomMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
     return localTextView;
   }
   
@@ -189,8 +189,8 @@ public class CustomTabView
         if (((ImageView)localObject2).getId() == a(localnvb.jdField_a_of_type_Int))
         {
           Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
           localObject3 = URLDrawable.getDrawable(localnvb.c, (URLDrawable.URLDrawableOptions)localObject3);
           if (localObject3 != null) {
             ((ImageView)localObject2).setImageDrawable((Drawable)localObject3);
@@ -204,19 +204,19 @@ public class CustomTabView
   {
     this.jdField_a_of_type_Int = paramnvb.jdField_a_of_type_Int;
     paramTextView.setTextColor(Color.parseColor(paramnvb.f));
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!bdje.a(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!bdnn.a(this.jdField_a_of_type_JavaLangString))) {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
     }
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
     this.jdField_a_of_type_JavaLangString = paramnvb.e;
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
     paramTextView = URLDrawable.getDrawable(paramnvb.d, (URLDrawable.URLDrawableOptions)localObject);
     if (paramTextView != null) {
       paramImageView.setImageDrawable(paramTextView);
     }
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!bdje.a(this.jdField_b_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!bdnn.a(this.jdField_b_of_type_JavaLangString)))
     {
       localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if (paramTextView != null) {
@@ -244,7 +244,7 @@ public class CustomTabView
       QLog.i("EcshopCustomTabView", 2, "native tab item illegal!");
       return false;
     }
-    if ((paramnvb.jdField_b_of_type_Int == 0) && ((bdje.a(paramnvb.jdField_b_of_type_JavaLangString)) || (!paramnvb.jdField_b_of_type_JavaLangString.startsWith("http")) || (!paramnvb.jdField_b_of_type_JavaLangString.startsWith("https"))))
+    if ((paramnvb.jdField_b_of_type_Int == 0) && ((bdnn.a(paramnvb.jdField_b_of_type_JavaLangString)) || (!paramnvb.jdField_b_of_type_JavaLangString.startsWith("http")) || (!paramnvb.jdField_b_of_type_JavaLangString.startsWith("https"))))
     {
       QLog.i("EcshopCustomTabView", 2, "web tab item illegal!");
       return false;
@@ -259,7 +259,7 @@ public class CustomTabView
       QLog.i("EcshopCustomTabView", 2, "tab item color hex illegal!");
       return false;
     }
-    if ((bdje.a(paramnvb.jdField_a_of_type_JavaLangString)) || (paramnvb.jdField_a_of_type_JavaLangString.trim().length() == 0))
+    if ((bdnn.a(paramnvb.jdField_a_of_type_JavaLangString)) || (paramnvb.jdField_a_of_type_JavaLangString.trim().length() == 0))
     {
       QLog.i("EcshopCustomTabView", 2, "tab item name illegal!");
       return false;
@@ -329,8 +329,8 @@ public class CustomTabView
               this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
               this.jdField_b_of_type_JavaLangString = localnvb.c;
               Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = xod.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = xsm.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
               localObject2 = URLDrawable.getDrawable(localnvb.d, (URLDrawable.URLDrawableOptions)localObject2);
               if (localObject2 != null) {
                 ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);

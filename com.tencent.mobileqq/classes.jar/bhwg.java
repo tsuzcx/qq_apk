@@ -1,48 +1,36 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-public class bhwg
+class bhwg
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private List<bhwf> jdField_a_of_type_JavaUtilList;
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
   
-  public bhwg(List<bhwf> paramList)
+  bhwg(bhwf parambhwf, View paramView, int paramInt1, int paramInt2)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public boolean onPreDraw()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((bhwf)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
-      }
+    this.jdField_a_of_type_Bhwf.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, DynamicGridView.a(this.jdField_a_of_type_Bhwf.a) + bhwf.a(this.jdField_a_of_type_Bhwf));
+    DynamicGridView.b(this.jdField_a_of_type_Bhwf.a, DynamicGridView.b(this.jdField_a_of_type_Bhwf.a) + bhwf.b(this.jdField_a_of_type_Bhwf));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        bhwf localbhwf = (bhwf)this.jdField_a_of_type_JavaUtilList.get(i);
-        localbhwf.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localbhwf.a() >> 1), paramInt);
-        i += 1;
-      }
+    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, this.jdField_a_of_type_Bhwf.a.a(DynamicGridView.a(this.jdField_a_of_type_Bhwf.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bhwf.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bhwf.a).setVisibility(4);
     }
+    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

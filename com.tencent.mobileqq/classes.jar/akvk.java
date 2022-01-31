@@ -1,111 +1,51 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.ui.NativeUIManager.1;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.MessageForApollo;
+import java.util.List;
 
 public class akvk
+  implements akvl
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  public HashMap<String, akvj> a;
+  public void a(int paramInt) {}
   
-  public akvk(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2) {}
   
-  public akvj a(String paramString)
-  {
-    akvc localakvc = null;
-    Object localObject = null;
-    if ("Dialog".equals(paramString))
-    {
-      localakvc = new akvc();
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        break label38;
-      }
-    }
-    label38:
-    for (paramString = localObject;; paramString = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      localakvc.a(paramString);
-      return localakvc;
-    }
-  }
+  public void a(String paramString) {}
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = (akvj)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-          if (localObject != null) {
-            ((akvj)localObject).a();
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
+  public void a(String paramString, int paramInt) {}
   
-  public void a(akvj paramakvj)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (paramakvj != null)) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramakvj.a());
-    }
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = akro.a(this.jdField_a_of_type_Int);
-    if (paramString1 != null)
-    {
-      paramString1 = paramString1.a();
-      if (paramString1 != null) {
-        paramString1.runRenderTask(new NativeUIManager.1(this, paramString1, paramString2, paramString3));
-      }
-    }
-  }
+  public void a(String paramString, int paramInt, long paramLong) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    akvj localakvj;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localakvj = null;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        localakvj = (akvj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      }
-      if (localakvj == null) {
-        break label45;
-      }
-      localakvj.a(paramString2, paramString4, this);
-    }
-    label45:
-    do
-    {
-      do
-      {
-        return;
-      } while ("destroy".equals(paramString3));
-      localakvj = a(paramString1);
-    } while (localakvj == null);
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localakvj);
-    a(paramString1, paramString2, paramString3, paramString4);
-  }
+  public void a(String paramString, int paramInt, List<MessageForApollo> paramList) {}
+  
+  public void a(String paramString, agor paramagor) {}
+  
+  public void a(String paramString, akvn paramakvn) {}
+  
+  public void a(String paramString, List<ApolloGameData> paramList) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong) {}
+  
+  public void b(String paramString) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  public void d(String paramString) {}
+  
+  public void e(String paramString) {}
 }
 
 

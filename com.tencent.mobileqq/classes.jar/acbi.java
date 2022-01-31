@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acbi
-  extends alyr
+  implements View.OnClickListener
 {
-  public acbi(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbi(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void a(boolean paramBoolean, azyv paramazyv)
+  public void onClick(View paramView)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, azyv paramazyv)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void c(boolean paramBoolean, azyv paramazyv)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    if (!awia.a().a(this.a.app, this.a)) {}
+    while ((this.a.b != null) && (this.a.b.isShowing())) {
+      return;
+    }
+    AccountManageActivity.a(this.a);
   }
 }
 

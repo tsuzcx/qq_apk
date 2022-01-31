@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class bcrn
-  implements baaa
+public class bcrn
+  implements bcpo
 {
-  bcrn(bcrm parambcrm) {}
+  public bcrn(RobotPanelLayoutBase paramRobotPanelLayoutBase, bcrq parambcrq) {}
   
-  public void a()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.jdField_a_of_type_Baaa != null) {
-      this.a.a.a.a.jdField_a_of_type_Baaa.a();
-    }
-    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
+    if (paramInt == 0) {}
   }
 }
 

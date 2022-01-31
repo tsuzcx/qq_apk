@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acip;
+import acne;
 import android.os.Message;
-import apvx;
-import bhow;
+import aqag;
+import bhtd;
 
 public class ChatHistoryEmotionView$1
   implements Runnable
 {
-  public ChatHistoryEmotionView$1(acip paramacip) {}
+  public ChatHistoryEmotionView$1(acne paramacne) {}
   
   public void run()
   {
-    Object localObject = acip.a(this.this$0).a(acip.a(this.this$0), acip.a(this.this$0), false);
-    localObject = acip.a(this.this$0).obtainMessage(1, localObject);
-    acip.a(this.this$0).sendMessage((Message)localObject);
+    Object localObject = acne.a(this.this$0).a(acne.a(this.this$0), acne.a(this.this$0), false);
+    localObject = acne.a(this.this$0).obtainMessage(1, localObject);
+    acne.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 

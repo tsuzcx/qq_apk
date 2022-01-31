@@ -1,5 +1,5 @@
 class ncw
-  implements bhqf
+  implements bhum
 {
   ncw(ncv paramncv) {}
   

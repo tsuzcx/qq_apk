@@ -1,36 +1,26 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wrg
-  extends xrg
+  extends QQUIEventReceiver<wrf, uvd>
 {
-  public static final String KEY = "NewDividerSegment";
-  
-  public wrg(Context paramContext)
+  public wrg(wrf paramwrf1, @NonNull wrf paramwrf2)
   {
-    super(paramContext);
+    super(paramwrf2);
   }
   
-  public int a()
+  public void a(@NonNull wrf paramwrf, @NonNull uvd paramuvd)
   {
-    return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
+    }
+    paramwrf.b(paramuvd.a);
   }
   
-  public View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
+  public Class acceptEventClass()
   {
-    return paramwph.a();
-  }
-  
-  public String a()
-  {
-    return "NewDividerSegment";
-  }
-  
-  public wph a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new wph(LayoutInflater.from(this.a).inflate(2131561411, paramViewGroup, false));
+    return uvd.class;
   }
 }
 

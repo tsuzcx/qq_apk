@@ -1,33 +1,42 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 
 public class yje
-  implements bapx
+  implements aocf
 {
-  public yje(AbsSubscribeShareCardView.2 param2) {}
+  public yje(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onResp(baqw parambaqw)
+  public ColorNote getColorNote()
   {
-    if (parambaqw.jdField_a_of_type_Int == 0)
-    {
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
-      AbsSubscribeShareCardView.a(this.a.this$0);
-      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
-        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
-      }
-      return;
+    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
+      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
     }
-    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
+    byte[] arrayOfByte;
+    Object localObject;
+    String str1;
+    String str2;
+    String str3;
+    do
+    {
+      return null;
+      arrayOfByte = yly.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      localObject = new ydo();
+      ((ydo)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
+      ((ydo)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
+      str1 = SubscribeHybirdFragment.a(this.a).id.get();
+      str2 = ((ydo)localObject).c();
+      ((ydo)localObject).d();
+      str3 = ((ydo)localObject).e();
+      localObject = ((ydo)localObject).f();
+    } while (TextUtils.isEmpty(str1));
+    return new aocl().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,30 +1,40 @@
-import java.util.List;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class avof
+class avof
+  implements aoil
 {
-  public static String a;
-  public static List<oidb_0x8dd.NearbyPeople> a;
+  avof(avnl paramavnl, IphonePickerView paramIphonePickerView, bhuf parambhuf) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaLangString = "0";
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing()))
+    {
+      avnl.a(this.jdField_a_of_type_Avnl, this.jdField_a_of_type_Avnl.c, false);
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
   }
   
-  public static String a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static List<oidb_0x8dd.NearbyPeople> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
-  {
-    jdField_a_of_type_JavaUtilList = paramList;
-    jdField_a_of_type_JavaLangString = paramString;
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      {
+        if ((paramInt1 == 0) || (paramInt1 == 1)) {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        }
+        this.jdField_a_of_type_Avnl.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+      return;
+      this.jdField_a_of_type_Avnl.e = paramInt2;
+      continue;
+      this.jdField_a_of_type_Avnl.f = paramInt2;
+      continue;
+      this.jdField_a_of_type_Avnl.g = paramInt2;
+    }
   }
 }
 

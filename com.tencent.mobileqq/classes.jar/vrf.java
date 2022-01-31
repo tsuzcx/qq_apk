@@ -1,72 +1,62 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.view.accessibility.AccessibilityRecordCompat;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class vrf
-  extends AccessibilityDelegateCompat
+class vrf
+  extends umf<vrd, whz>
 {
-  public vrf(XViewPager paramXViewPager) {}
-  
-  private boolean a()
+  vrf(vrd paramvrd)
   {
-    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+    super(paramvrd);
   }
   
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public void a(@NonNull vrd paramvrd, @NonNull whz paramwhz)
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
-    paramView = AccessibilityRecordCompat.obtain();
-    paramView.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
+    if ((!paramwhz.jdField_a_of_type_JavaLangString.equals(vrd.a(paramvrd))) || (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (vrd.a(paramvrd) == null)) {
+      wxe.b("Q.qqstory.player.CommentFloatDialogController", "ignore this comment list event. %s.", paramwhz.toString());
+    }
+    vrm localvrm;
+    do
     {
-      paramView.setItemCount(XViewPager.a(this.a).getCount());
-      paramView.setFromIndex(XViewPager.a(this.a));
-      paramView.setToIndex(XViewPager.a(this.a));
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
+      boolean bool2;
+      boolean bool1;
+      do
       {
-        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
-        return true;
-      }
-      return false;
+        return;
+        wxe.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramwhz.toString());
+        bool2 = paramvrd.a();
+        bool1 = true;
+        if (paramwhz.jdField_a_of_type_Int == 0) {
+          bool1 = false;
+        }
+        vrd.a(paramvrd).a(bool1);
+        vrd.a(paramvrd).a(bool1, paramwhz.b);
+        vrd.a(paramvrd).a(bool1, paramwhz.jdField_a_of_type_Boolean);
+        vrd.a(paramvrd).a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.c, bool1);
+      } while (bool2 != bool1);
+      localvrm = paramvrd.a();
+    } while (localvrm == null);
+    localvrm.a(vrd.a(paramvrd), paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return whz.class;
+  }
+  
+  public void b(@NonNull vrd paramvrd, @NonNull whz paramwhz)
+  {
+    boolean bool2 = paramvrd.a();
+    boolean bool1 = true;
+    if (paramwhz.jdField_a_of_type_Int == 0) {
+      bool1 = false;
     }
-    if (this.a.canScrollHorizontally(-1))
+    if (bool2 == bool1)
     {
-      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
-      return true;
+      paramwhz = paramvrd.a();
+      if (paramwhz != null) {
+        paramwhz.a(vrd.a(paramvrd), false);
+      }
     }
-    return false;
   }
 }
 

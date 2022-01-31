@@ -1,24 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class abtj
-  extends absj
+final class abtj
+  implements Comparator<MessageRecord>
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 7: 
-      SosoInterface.a(new abtm(paramabsf, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
     }
-    for (;;)
-    {
-      return true;
-      SosoInterface.a(new abtl(paramabsf, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
-    }
+    return -1;
   }
 }
 

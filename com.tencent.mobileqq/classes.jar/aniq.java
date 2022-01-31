@@ -1,9 +1,22 @@
-import java.lang.ref.WeakReference;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aniq
+class aniq
+  implements anjs
 {
-  public WeakReference<bavr> a;
-  public boolean a = false;
+  aniq(anii paramanii, long paramLong) {}
+  
+  public void a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
+  }
 }
 
 

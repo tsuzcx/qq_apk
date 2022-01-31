@@ -1,55 +1,35 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
+@TargetApi(14)
 public class xdl
-  extends xdi
 {
-  public List<xdm> a;
-  public boolean a;
-  
-  public xdl(@NonNull String paramString)
+  public static float a(View paramView)
   {
-    super(paramString);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return "LocationFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((xdm)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
     }
-    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+    return paramView.getX();
   }
   
-  public int b()
+  public static void a(View paramView, float paramFloat)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((xdm)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
     }
-    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+    paramView.setAlpha(paramFloat);
   }
   
-  public String toString()
+  public static float b(View paramView)
   {
-    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
-    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
-    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
-    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", isLocating=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getY();
   }
 }
 

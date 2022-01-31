@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class owt
-  extends alsi
+  extends alwx
 {
   public owt(KandianSubscribeManager paramKandianSubscribeManager) {}
   

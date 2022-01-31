@@ -1,9 +1,35 @@
-final class aevv
-  implements aewj<aevu>
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class aevv
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public aevu a(aewg paramaewg)
+  public aevv(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  
+  protected Bitmap a(String... paramVarArgs)
   {
-    return new aevu(paramaewg);
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    {
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

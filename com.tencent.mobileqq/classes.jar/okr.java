@@ -12,27 +12,27 @@ import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class okr
-  implements appt
+  implements apuc
 {
   public okr(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a(appw paramappw)
+  public void a(apuf paramapuf)
   {
-    if ((paramappw instanceof aptm))
+    if ((paramapuf instanceof apxv))
     {
-      paramappw = (aptm)paramappw;
+      paramapuf = (apxv)paramapuf;
       Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramappw.a(localContext, localContext.getResources().getDisplayMetrics().density));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramapuf.a(localContext, localContext.getResources().getDisplayMetrics().density));
       this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       ReadInJoyCommentComponentFragment.a(this.a);
       return;
     }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramappw, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramapuf, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
   }
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
   
-  public boolean a(appw paramappw)
+  public boolean a(apuf paramapuf)
   {
     return true;
   }
@@ -61,7 +61,7 @@ public class okr
     }
   }
   
-  public void b(appw paramappw) {}
+  public void b(apuf paramapuf) {}
   
   public void c() {}
   

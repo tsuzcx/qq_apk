@@ -1,281 +1,243 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ListAdapter;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contacts.view.IndexBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker.4;
+import com.tencent.mobileqq.vas.LzmaUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.lang.reflect.Method;
+import java.io.File;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
 public class bcdk
-  extends PopupWindow
-  implements View.OnClickListener, Animation.AnimationListener, bcdc, bcdt
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private bcdl jdField_a_of_type_Bcdl;
-  private bcds jdField_a_of_type_Bcds;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Drawable b;
+  private static Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  private bcdk(BaseActivity paramBaseActivity, View paramView, int paramInt1, int paramInt2)
+  public bcdk(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    super(paramView, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Bcds = new bcds(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramBaseActivity = (LayerDrawable)paramBaseActivity.getResources().getDrawable(2130837728);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
-    this.b = paramBaseActivity.getDrawable(1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)paramBaseActivity.mutate());
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369125, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  private static View a(bcdk parambcdk, Activity paramActivity, int paramInt)
+  private beaj a()
   {
-    View localView = parambcdk.getContentView();
-    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131364770);
-    int i = aekt.a(60.0F, paramActivity.getResources());
-    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131368212);
-    XListView localXListView = (XListView)localView.findViewById(2131378400);
-    ViewGroup.LayoutParams localLayoutParams = localXListView.getLayoutParams();
-    localXListView.setOverScrollMode(2);
-    if (paramInt == 1) {
-      localIndexBar.setVisibility(8);
-    }
-    for (localLayoutParams.height = -2;; localLayoutParams.height = -1)
-    {
-      localAtPanelTouchController.a(0, 500);
-      localAtPanelTouchController.setAtPanelTouchListener(parambcdk);
-      localAtPanelTouchController.setMode(paramInt);
-      localAtPanelTouchController.setPadding(0, i, 0, 0);
-      localXListView.setLayoutParams(localLayoutParams);
-      return localView;
-      localIndexBar.setVisibility(0);
-      ListAdapter localListAdapter = localXListView.getAdapter();
-      if (((localListAdapter instanceof bcdm)) && (((bcdm)localListAdapter).b() == 1)) {
-        localIndexBar.setVisibility(8);
+    return ((beag)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    return paramContext.getFilesDir().getAbsolutePath() + File.separator + paramString;
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    boolean bool1 = true;
+    int i = paramJSONObject.optInt("code");
+    String str = ncb.b(this.jdField_a_of_type_JavaLangString);
+    boolean bool2;
+    if (!TextUtils.isEmpty(str)) {
+      if (i == 4)
+      {
+        str = str + this.jdField_a_of_type_JavaLangString + ".7z";
+        bool2 = false;
       }
-      i = aekt.a(40.0F, paramActivity.getResources());
     }
-  }
-  
-  public static bcdk a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2)
-  {
-    View localView = LayoutInflater.from(paramBaseActivity).inflate(2131558601, null);
-    bcdk localbcdk = new bcdk(paramBaseActivity, localView, paramInt1, paramInt2);
-    a(localbcdk, paramBaseActivity, 1);
-    localView.findViewById(2131369544).setBackgroundColor(localView.getResources().getColor(2131166876));
-    localView.findViewById(2131362336).setBackgroundColor(localView.getResources().getColor(2131166876));
-    localbcdk.setFocusable(false);
-    localView.setOnClickListener(localbcdk);
-    ((TextView)localView.findViewById(2131362869)).setOnClickListener(localbcdk);
-    ((RelativeLayout)localView.findViewById(2131362870)).setOnClickListener(localbcdk);
-    localbcdk.setInputMethodMode(32);
-    localbcdk.setInputMethodMode(1);
-    localbcdk.setClippingEnabled(false);
-    localbcdk.setOutsideTouchable(true);
-    if (AppSetting.c) {
-      a(localbcdk);
-    }
-    return localbcdk;
-  }
-  
-  public static void a(PopupWindow paramPopupWindow)
-  {
-    int i = 0;
-    if (!AppSetting.c) {}
     for (;;)
     {
+      bcdn localbcdn = new bcdn(this, str, bool2, bool1);
+      if (!TextUtils.isEmpty(str)) {
+        ThreadManager.post(new SoLibraryChecker.4(this, paramJSONObject, str, localbcdn), 8, null, false);
+      }
       return;
-      Method[] arrayOfMethod = PopupWindow.class.getMethods();
-      int j = arrayOfMethod.length;
-      while (i < j)
+      if ((i == 3) || (i == 2))
       {
-        Method localMethod = arrayOfMethod[i];
-        if (localMethod.getName().equals("setTouchModal")) {
-          try
-          {
-            localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
-            return;
+        str = str + this.jdField_a_of_type_JavaLangString + ".zip";
+        bool2 = true;
+        bool1 = false;
+      }
+      else
+      {
+        QLog.e("SoLibraryLoader", 1, "do not know what format, use default zip name!");
+        str = str + this.jdField_a_of_type_JavaLangString + ".zip";
+        bool2 = false;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        bool2 = false;
+        str = null;
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + File.separator + paramString);
+    return (paramContext != null) && (paramContext.exists());
+  }
+  
+  private boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    for (;;)
+    {
+      String str2;
+      File localFile;
+      String str1;
+      Object localObject;
+      try
+      {
+        str2 = this.jdField_a_of_type_JavaLangString;
+        boolean bool = TextUtils.isEmpty(str2);
+        if (bool)
+        {
+          paramBoolean2 = false;
+          return paramBoolean2;
+        }
+        if (TextUtils.isEmpty(ncb.b(str2)))
+        {
+          paramBoolean2 = false;
+          continue;
+        }
+        localFile = new File(paramString);
+        if (!localFile.exists())
+        {
+          if (!QLog.isColorLevel()) {
+            break label583;
           }
-          catch (Exception paramPopupWindow)
-          {
-            paramPopupWindow.printStackTrace();
-            return;
+          QLog.i("SoLibraryLoader", 2, "doUnzipZip: no zip ! : businessId:" + str2);
+          break label583;
+        }
+        long l = System.currentTimeMillis();
+        str1 = localFile.getParent() + File.separator + str2;
+        localObject = BidDownloader.a(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.i("SoLibraryLoader", 2, "fileFormat: " + (String)localObject + ", path: " + paramString);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label368;
+        }
+        if (((String)localObject).equals("zip"))
+        {
+          i = ndr.a(paramString, str1);
+          if (QLog.isColorLevel()) {
+            QLog.i("SoLibraryLoader", 2, "now delete original download offline zip, path: " + paramString);
+          }
+          ndq.b(paramString);
+          if (i <= 0) {
+            break label429;
+          }
+          nbv.a(str2, 13, 0L, i, "lixian_update", "0");
+          if (!QLog.isColorLevel()) {
+            break label578;
+          }
+          QLog.i("SoLibraryLoader", 2, "unZipFolder fail!");
+          paramBoolean1 = false;
+          ndq.a(str1);
+          paramBoolean2 = paramBoolean1;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("SoLibraryLoader", 2, "time of unzip zip：" + (System.currentTimeMillis() - l) + ", isSuccess: " + paramBoolean1);
+          paramBoolean2 = paramBoolean1;
+          continue;
+        }
+        if (!((String)localObject).equals("7z")) {
+          continue;
+        }
+      }
+      finally {}
+      i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
+      continue;
+      label368:
+      QLog.w("SoLibraryLoader", 1, "can not recognize download compress file format, " + paramString);
+      if (paramBoolean1)
+      {
+        i = ndr.a(paramString, str1);
+      }
+      else if (paramBoolean2)
+      {
+        i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
+        continue;
+        label429:
+        paramString = str1 + File.separator + str2 + ".zip";
+        localObject = new File(paramString);
+        str2 = localFile.getParent() + File.separator + str2 + ".zip";
+        if (QLog.isColorLevel()) {
+          QLog.i("SoLibraryLoader", 2, "now move zip file to location: " + str2);
+        }
+        if (((File)localObject).exists())
+        {
+          paramBoolean2 = ((File)localObject).renameTo(new File(str2));
+          paramBoolean1 = paramBoolean2;
+          if (!paramBoolean2) {
+            paramBoolean1 = bdhb.b(paramString, str2);
           }
         }
-        i += 1;
+        else
+        {
+          label578:
+          paramBoolean1 = false;
+          continue;
+          label583:
+          paramBoolean2 = false;
+        }
       }
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    nbv.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      nbv.a = bool;
+      String str = nbv.a(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("SoLibraryLoader", 2, "checkSoUpdate version = " + str);
+      }
+      if ((!new File(ncb.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString + "/" + this.b).exists()) && (!TextUtils.isEmpty(str)) && (!"0".equals(str))) {
+        bdhb.a(ncb.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString);
+      }
+      if (localQQAppInterface != null) {
+        break;
+      }
+      return;
+    }
+    nbv.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new bcdl(this), false);
+  }
+  
+  private void c()
+  {
+    String str = "http://" + this.b + "?_bid=" + this.jdField_a_of_type_JavaLangString;
+    long l = System.currentTimeMillis();
+    if ((!nbv.a(BaseApplicationImpl.getContext(), str, new bcdm(this, l))) && (QLog.isColorLevel())) {
+      QLog.i("SoLibraryLoader", 2, "so file = " + this.b + " transToLocalUrl: return false");
     }
   }
   
   public void a()
   {
-    if (!isShowing()) {
-      getContentView().scrollTo(0, -1000);
+    if (!jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    dismiss();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    View localView = getContentView().findViewById(2131362336);
-    if (localView == null) {
-      return;
-    }
-    localView.setVisibility(paramInt1);
-    ((TextView)localView.findViewById(2131369770)).setText(localView.getResources().getText(paramInt2));
-    if (paramInt2 != 2131689924) {}
-    for (paramInt1 = 0;; paramInt1 = 8)
+    if ((!a(this.jdField_a_of_type_AndroidContentContext, this.b)) || (!((Boolean)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).booleanValue()))
     {
-      getContentView().findViewById(2131362250).setVisibility(paramInt1);
-      return;
+      b();
+      jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = getHeight();
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      paramInt3 = 0;
-      if (!bcds.a) {
-        break label67;
-      }
-    }
-    label67:
-    for (int i = 0;; i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
-    {
-      paramInt2 = paramInt2 - paramInt3 + i;
-      if (paramInt2 != j) {
-        update(0, 0, -1, paramInt2);
-      }
-      a(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt1);
-      return;
-      paramInt3 = this.jdField_a_of_type_AndroidViewView.getHeight();
-      break;
-    }
-  }
-  
-  public void a(bcdl parambcdl)
-  {
-    this.jdField_a_of_type_Bcdl = parambcdl;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369125, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PopupCardDialog", 2, "JSKJSSKSKSKSK+" + paramBoolean);
-      }
-      return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369125, this.b);
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramInt1, paramInt2, -1);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-    {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
-      }
-    }
-  }
-  
-  @TargetApi(16)
-  public void dismiss()
-  {
-    this.jdField_a_of_type_Bcds.a();
-    this.jdField_a_of_type_Bcds.a(null);
-    this.jdField_a_of_type_AndroidViewView = null;
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.dismiss();
-    }
-    while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded()))) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772320);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    }
-    getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PopupCardDialog", 2, "onAnimationEnd");
-    }
-    super.dismiss();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PopupCardDialog", 2, "onAnimationStart");
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131362869) {
-      if (this.jdField_a_of_type_Bcdl != null) {
-        this.jdField_a_of_type_Bcdl.a(paramView);
-      }
-    }
-    while (paramView.getId() == 2131362870) {
-      return;
-    }
-    dismiss();
-  }
-  
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_Bcds.a(this);
-    this.jdField_a_of_type_Bcds.a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

@@ -17,7 +17,7 @@ public class pkf
       localObject2 = BaseApplicationImpl.getApplication().getResources();
       str = ((qno)localObject1).d;
     }
-    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131719051), new Object[] { bjxj.a(((qno)localObject1).b) });; localObject1 = null)
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131719063), new Object[] { bkbq.a(((qno)localObject1).b) });; localObject1 = null)
     {
       localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("participant_title_text", localObject1);

@@ -1,6 +1,6 @@
 public abstract interface bcox
 {
-  public abstract void a(long paramLong);
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

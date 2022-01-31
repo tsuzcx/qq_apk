@@ -1,42 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
-class wga
-  extends uhw<wfn, wel>
+public class wga
+  implements xwe
 {
-  wga(wfn paramwfn)
-  {
-    super(paramwfn);
-  }
+  public wga(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull wfn paramwfn, @NonNull wel paramwel)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    if ((!paramwel.jdField_a_of_type_Boolean) || (!paramwel.jdField_a_of_type_JavaLangString.equals(wfn.a(paramwfn))) || (paramwel.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wfn.a(paramwfn) == null))
-    {
-      wsv.b(this.TAG, "ignore this like list event. %s.", paramwel.toString());
-      return;
+    if (this.a.jdField_a_of_type_Wmf != null) {
+      this.a.jdField_a_of_type_Wmf.a(this.a.jdField_a_of_type_Wgo.a());
     }
-    wsv.a(this.TAG, "receive like list event. %s.", paramwel.toString());
-    boolean bool2 = wfn.a(paramwfn);
-    if (paramwel.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      wfn.a(paramwfn).b(bool1, paramwel.b);
-      wfn.a(paramwfn).b(paramwel.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
-      }
-      paramwfn.a();
-      return;
-    }
+    return true;
   }
-  
-  public Class acceptEventClass()
-  {
-    return wel.class;
-  }
-  
-  public void b(@NonNull wfn paramwfn, @NonNull wel paramwel) {}
 }
 
 

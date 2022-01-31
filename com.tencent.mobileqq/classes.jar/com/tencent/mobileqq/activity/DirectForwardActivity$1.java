@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import badd;
-import bdbt;
+import bahm;
+import bdgc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class DirectForwardActivity$1
@@ -13,13 +13,13 @@ class DirectForwardActivity$1
   
   public void run()
   {
-    String str = ((badd)this.this$0.app.a(122)).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    String str = ((bahm)this.this$0.app.a(122)).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
     if (TextUtils.isEmpty(str))
     {
       this.this$0.finish();
       return;
     }
-    this.this$0.getIntent().putExtra("uinname", bdbt.a(this.this$0.app, str, this.jdField_a_of_type_Int));
+    this.this$0.getIntent().putExtra("uinname", bdgc.a(this.this$0.app, str, this.jdField_a_of_type_Int));
     this.this$0.getIntent().putExtra("uin", str);
     this.this$0.runOnUiThread(new DirectForwardActivity.1.1(this, str));
   }

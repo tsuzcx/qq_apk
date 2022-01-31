@@ -1,17 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
+import org.json.JSONObject;
 
-public class bels
-  implements View.OnClickListener
+public abstract interface bels
+  extends begg
 {
-  public bels(GridListView paramGridListView) {}
+  public abstract long a();
   
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131361808)).intValue();
-    this.a.a.onItemClick(this.a, paramView, i, 0L);
-  }
+  public abstract View a();
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, abwu paramabwu);
+  
+  public abstract void a(JSONObject paramJSONObject);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

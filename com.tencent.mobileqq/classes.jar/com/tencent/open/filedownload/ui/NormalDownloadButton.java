@@ -1,6 +1,6 @@
 package com.tencent.open.filedownload.ui;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -24,15 +24,15 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return alpo.a(2131707978);
+    return alud.a(2131707990);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return alpo.a(2131707979);
+      return alud.a(2131707991);
     }
-    return alpo.a(2131707977);
+    return alud.a(2131707989);
   }
 }
 

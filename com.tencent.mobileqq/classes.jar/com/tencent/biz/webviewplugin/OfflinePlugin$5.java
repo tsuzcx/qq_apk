@@ -2,12 +2,12 @@ package com.tencent.biz.webviewplugin;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import yzu;
+import zej;
 
 public class OfflinePlugin$5
   implements Runnable
 {
-  public OfflinePlugin$5(yzu paramyzu) {}
+  public OfflinePlugin$5(zej paramzej) {}
   
   public void run()
   {

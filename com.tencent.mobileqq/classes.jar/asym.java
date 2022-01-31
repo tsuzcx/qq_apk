@@ -1,45 +1,28 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class asym
+class asym
+  implements URLDrawable.URLDrawableListener
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  asym(asyl paramasyl, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  public static asym a(String paramString1, String paramString2, String paramString3)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    asym localasym = new asym();
-    localasym.jdField_a_of_type_JavaLangString = "2";
-    localasym.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localasym.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localasym.b = paramString1;
-    localasym.c = paramString2;
-    localasym.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localasym.toString());
-    return localasym;
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
   }
   
-  public DownloaderTask a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
   }
   
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public String toString()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    paramURLDrawable = avdr.a(paramURLDrawable);
+    asyl.a(this.jdField_a_of_type_Asyl, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
   }
 }
 

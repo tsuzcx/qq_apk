@@ -1,11 +1,28 @@
-import java.util.Comparator;
-
-final class bdqq
-  implements Comparator<bdqn>
+class bdqq
 {
-  public int a(bdqn parambdqn1, bdqn parambdqn2)
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
+  
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    return parambdqn2.a - parambdqn1.a;
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
+    {
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
+      }
+    }
+    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 

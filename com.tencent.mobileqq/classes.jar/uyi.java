@@ -1,55 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
 
 public class uyi
-  extends ups
+  implements Comparator<uyg>
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public uyi(uyh paramuyh, boolean paramBoolean)
+  public int a(uyg paramuyg1, uyg paramuyg2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String a()
-  {
-    return ume.a("StoryGroupSvc.get_hot_rank_video_list");
-  }
-  
-  public upt a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
-    try
-    {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new uyj(this.jdField_a_of_type_Uyh, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+    if (paramuyg1.c < paramuyg2.c) {
+      return 1;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
+    if (paramuyg1.c > paramuyg2.c) {
+      return -1;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
-    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(uyh.a(this.jdField_a_of_type_Uyh)));
-    localReqGetGroupHotRankVideo.size.set(10);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetGroupHotRankVideo.seq.set(uyh.a(this.jdField_a_of_type_Uyh));
-      if (!TextUtils.isEmpty(uyh.b(this.jdField_a_of_type_Uyh))) {
-        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(uyh.b(this.jdField_a_of_type_Uyh)));
-      }
-    }
-    return localReqGetGroupHotRankVideo.toByteArray();
+    return 0;
   }
 }
 

@@ -1,251 +1,76 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.manager.MonitorManager;
-import cooperation.vip.pb.mobile_monitor_report.ExceptionReport;
-import cooperation.vip.pb.mobile_monitor_report.PkgExceptionReq;
-import cooperation.vip.pb.mobile_monitor_report.PkgRsp;
-import cooperation.vip.pb.mobile_monitor_report.PkgTraceReq;
-import cooperation.vip.pb.mobile_monitor_report.TraceReport;
-import cooperation.vip.pb.mobile_monitor_report.UserCommReport;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import tencent.im.new_year_2014.Unisso.UniSsoServerReq;
-import tencent.im.new_year_2014.Unisso.UniSsoServerReqComm;
-import tencent.im.new_year_2014.Unisso.UniSsoServerRsp;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import cooperation.readinjoy.content.ReadInJoyDataProvider;
 
 public class bkby
-  extends MSFServlet
+  extends SQLiteOpenHelper
 {
-  private static int a()
+  public String a;
+  
+  public bkby(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
   {
-    switch (bdee.b(BaseApplicationImpl.getContext()))
+    super(paramContext, "readinjoy_main_" + paramString, null, 84);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
+    }
+    while (!paramString.equals("feeds_msg_records")) {
+      return;
+    }
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
+  }
+  
+  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    if ("common_records".equalsIgnoreCase(paramString)) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
+    }
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    a(paramSQLiteDatabase, "subscribe_msg_records");
+    a(paramSQLiteDatabase, "notify_msg_records");
+    a(paramSQLiteDatabase, "feeds_msg_records");
+    b(paramSQLiteDatabase, "common_records");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < 80)
     {
-    default: 
-      return 1;
-    case 1: 
-      return 3;
-    case 4: 
-      return 4;
-    case 3: 
-      return 5;
+      paramSQLiteDatabase.execSQL(awhf.a("subscribe_msg_records"));
+      paramSQLiteDatabase.execSQL(awhf.a("notify_msg_records"));
+      a(paramSQLiteDatabase, "subscribe_msg_records");
+      a(paramSQLiteDatabase, "notify_msg_records");
     }
-    return 6;
-  }
-  
-  private static mobile_monitor_report.UserCommReport a()
-  {
-    mobile_monitor_report.UserCommReport localUserCommReport = new mobile_monitor_report.UserCommReport();
-    localUserCommReport.qua.set(String.valueOf(bizf.a()));
-    localUserCommReport.imei.set(String.valueOf(bfin.c()));
-    String str = amkv.b();
-    localUserCommReport.city_code.set(str);
-    localUserCommReport.mobile_type.set(Build.MODEL);
-    localUserCommReport.net_type.set(a());
-    localUserCommReport.from_id.set(2);
-    return localUserCommReport;
-  }
-  
-  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    byte[] arrayOfByte = null;
-    if (paramFromServiceMsg.isSuccess())
+    if (paramInt1 < 81) {
+      a(paramSQLiteDatabase, "feeds_msg_records");
+    }
+    for (;;)
     {
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
-    int i = paramFromServiceMsg.getResultCode();
-    if (i == 1000) {
-      try
-      {
-        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
-        paramFromServiceMsg.mergeFrom(arrayOfByte);
-        long l = paramFromServiceMsg.ret.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
-        }
-        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
-        i = localPkgRsp.ret.get();
-        if (i == 0)
-        {
-          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
-          }
-          notifyObserver(paramIntent, 1000, true, new Bundle(), bkbx.class);
-          return;
-        }
-        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
-        notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-        return;
+      if (paramInt1 < 84) {
+        b(paramSQLiteDatabase, "common_records");
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
-        notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-        return;
+      return;
+      if (paramInt1 < 82) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
       }
-    }
-    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
-    notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-  }
-  
-  public static void a(List<mobile_monitor_report.ExceptionReport> paramList)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    mobile_monitor_report.PkgExceptionReq localPkgExceptionReq = new mobile_monitor_report.PkgExceptionReq();
-    localPkgExceptionReq.exception_report.set(paramList);
-    paramList = a();
-    localPkgExceptionReq.user_comm_report.set(paramList);
-    paramList = new NewIntent(localAppRuntime.getApplication(), bkby.class);
-    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
-    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
-    localUniSsoServerReqComm.platform.set(109L);
-    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.3.3");
-    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
-    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgExceptionReq.toByteArray()));
-    paramList.putExtra("data", bdku.a(localUniSsoServerReq.toByteArray()));
-    paramList.putExtra("cmd", "MobileReport.ExceptionReport");
-    localAppRuntime.startServlet(paramList);
-  }
-  
-  private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    byte[] arrayOfByte = null;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
-    int i = paramFromServiceMsg.getResultCode();
-    if (i == 1000) {
-      try
-      {
-        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
-        paramFromServiceMsg.mergeFrom(arrayOfByte);
-        long l = paramFromServiceMsg.ret.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
-        }
-        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
-        i = localPkgRsp.ret.get();
-        if (i == 0)
-        {
-          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
-          }
-          notifyObserver(paramIntent, 1000, true, new Bundle(), bkbx.class);
-          return;
-        }
-        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
-        notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-        return;
+      if (paramInt1 < 83) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
-        notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-        return;
-      }
-    }
-    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
-    notifyObserver(paramIntent, 1000, false, new Bundle(), bkbx.class);
-  }
-  
-  public static void b(List<mobile_monitor_report.TraceReport> paramList)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    mobile_monitor_report.PkgTraceReq localPkgTraceReq = new mobile_monitor_report.PkgTraceReq();
-    localPkgTraceReq.trace_report.set(paramList);
-    paramList = a();
-    localPkgTraceReq.user_comm_report.set(paramList);
-    paramList = new NewIntent(localAppRuntime.getApplication(), bkby.class);
-    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
-    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
-    localUniSsoServerReqComm.platform.set(109L);
-    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.3.3");
-    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
-    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgTraceReq.toByteArray()));
-    paramList.putExtra("data", bdku.a(localUniSsoServerReq.toByteArray()));
-    paramList.putExtra("cmd", "MobileReport.TraceReport");
-    localAppRuntime.startServlet(paramList);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label157:
-    do
-    {
-      do
-      {
-        return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label157;
-        }
-      }
-      for (String str1 = "";; str1 = "not")
-      {
-        QLog.d("MonitorServlet", 2, str1 + " success");
-        if (!str2.equals("MobileReport.ExceptionReport")) {
-          break;
-        }
-        a(paramIntent, paramFromServiceMsg);
-        return;
-      }
-    } while (!str2.equals("MobileReport.TraceReport"));
-    b(paramIntent, paramFromServiceMsg);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    String str = paramIntent.getStringExtra("cmd");
-    long l = paramIntent.getLongExtra("timeout", 10000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkby
  * JD-Core Version:    0.7.0.1
  */

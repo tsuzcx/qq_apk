@@ -1,199 +1,67 @@
-import android.content.Context;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract class aqnd
+public class aqnd
+  implements bhuk
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected aqnf a;
-  protected QQAppInterface a;
+  public aqnd(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public aqnd(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aqne(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a(aelt paramaelt, boolean paramBoolean)
-  {
-    paramaelt = a(paramaelt);
-    if (paramBoolean) {
-      if (paramaelt != null)
-      {
-        paramaelt.setVisibility(0);
-        paramaelt.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-    }
-    while (paramaelt == null) {
+    if (this.a.jdField_a_of_type_Bhuf == null) {
       return;
     }
-    paramaelt.setVisibility(8);
-    paramaelt.setOnClickListener(null);
-  }
-  
-  protected abstract CircleFileStateView a(aelt paramaelt);
-  
-  public void a(aelt paramaelt, View paramView, ChatMessage paramChatMessage)
-  {
-    a(paramaelt, false);
-    CircleFileStateView localCircleFileStateView;
-    int i;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (a(paramChatMessage))
+    if (paramView != null)
     {
-      localObject = a(paramaelt);
-      if (localObject == null)
+      paramView = this.a.jdField_a_of_type_Bhuf.a(paramInt);
+      if (!TextUtils.isEmpty(paramView))
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-        localCircleFileStateView.setState(2);
-        localCircleFileStateView.setId(2131364175);
-        localCircleFileStateView.setProgressRingWidth(0.0F);
-        localCircleFileStateView.setCenterBgColor(-1);
-        a(paramaelt, localCircleFileStateView);
-        i = aekt.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296295);
-        localLayoutParams.addRule(8, 2131364171);
-        if (paramChatMessage.isSend())
-        {
-          localLayoutParams.addRule(0, 2131364171);
-          localLayoutParams.addRule(1, 0);
-          if ((paramView instanceof ViewGroup)) {
-            ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-          }
-          a(paramaelt, true);
+        if ((!paramView.equals(this.a.getResources().getString(2131691979))) && (!paramView.equals(this.a.getResources().getString(2131691980)))) {
+          break label270;
         }
-      }
-    }
-    while (!b(paramChatMessage))
-    {
-      for (;;)
-      {
-        return;
-        localLayoutParams.addRule(1, 2131364171);
-        localLayoutParams.addRule(0, 0);
-      }
-      ((CircleFileStateView)localObject).setState(2);
-      paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-      if (paramView == null)
-      {
-        i = aekt.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramView = new RelativeLayout.LayoutParams(i, i);
-        if (paramChatMessage.isSend())
-        {
-          paramView.addRule(0, 2131364171);
-          paramView.addRule(1, 0);
+        azqs.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
+        if (!UniformDownloadActivity.a(this.a)) {
+          break label241;
         }
-        for (;;)
-        {
-          ((CircleFileStateView)localObject).setLayoutParams(paramView);
-          break;
-          paramView.addRule(1, 2131364171);
-          paramView.addRule(0, 0);
+        if (!bfoc.g()) {
+          break label231;
         }
-      }
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364171);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364171);
-        paramView.addRule(0, 0);
-      }
-    }
-    Object localObject = a(paramaelt);
-    if (localObject == null)
-    {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-      localCircleFileStateView.setState(1);
-      localCircleFileStateView.setId(2131364175);
-      localCircleFileStateView.setCenterBgColor(-1);
-      a(paramaelt, localCircleFileStateView);
-      localCircleFileStateView.setProgressRingWidth(0.0F);
-      i = aekt.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-      localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296295);
-      localLayoutParams.addRule(8, 2131364171);
-      if (paramChatMessage.isSend())
-      {
-        localLayoutParams.addRule(0, 2131364171);
-        localLayoutParams.addRule(1, 0);
-      }
-      for (;;)
-      {
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
+        bfnj.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
+        paramView = UniformDownloadActivity.a(this.a);
+        UniformDownloadActivity.a(this.a, paramView);
+        paramView = UniformDownloadActivity.a(this.a, paramView);
+        if (QLog.isColorLevel()) {
+          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
         }
-        a(paramaelt, true);
-        return;
-        localLayoutParams.addRule(1, 2131364171);
-        localLayoutParams.addRule(0, 0);
+        UniformDownloadActivity.a(this.a, paramView);
+        UniformDownloadActivity.b(this.a);
+        this.a.finish();
+        this.a.overridePendingTransition(0, 0);
       }
-    }
-    ((CircleFileStateView)localObject).setState(1);
-    paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-    if (paramView == null)
-    {
-      i = aekt.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramView = new RelativeLayout.LayoutParams(i, i);
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364171);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364171);
-        paramView.addRule(0, 0);
-      }
-    }
-    if (paramChatMessage.isSend())
-    {
-      paramView.addRule(0, 2131364171);
-      paramView.addRule(1, 0);
     }
     for (;;)
     {
-      ((CircleFileStateView)localObject).setLayoutParams(paramView);
-      break;
-      paramView.addRule(1, 2131364171);
-      paramView.addRule(0, 0);
+      this.a.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      label231:
+      UniformDownloadActivity.c(this.a);
+      continue;
+      label241:
+      UniformDownloadActivity.b(this.a).setVisibility(0);
+      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
+      continue;
+      label270:
+      if ((paramView.equals(this.a.getResources().getString(2131691978))) || (paramView.equals(this.a.getResources().getString(2131690188))) || (paramView.equals(this.a.getResources().getString(2131690187)))) {
+        UniformDownloadActivity.c(this.a);
+      }
     }
-  }
-  
-  protected abstract void a(aelt paramaelt, CircleFileStateView paramCircleFileStateView);
-  
-  protected void a(View paramView, aelt paramaelt, ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(aqnf paramaqnf)
-  {
-    this.jdField_a_of_type_Aqnf = paramaqnf;
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    return false;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    return false;
   }
 }
 

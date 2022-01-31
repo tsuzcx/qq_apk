@@ -1,13 +1,8 @@
-public class bfnp
+import android.content.ContentValues;
+
+public abstract class bfnp
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public abstract void a(ContentValues paramContentValues);
 }
 
 

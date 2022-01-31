@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import azmj;
+import azqs;
 
 public final class PublicAccountEventReport$11
   implements Runnable
@@ -9,7 +9,7 @@ public final class PublicAccountEventReport$11
   
   public void run()
   {
-    azmj.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
+    azqs.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
   }
 }
 

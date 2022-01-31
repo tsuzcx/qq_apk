@@ -1,28 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class adcf
-  implements Animation.AnimationListener
+public class adcf
+  implements alqc
 {
-  adcf(adce paramadce, boolean paramBoolean) {}
+  public adcf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Boolean) && (adce.a(this.jdField_a_of_type_Adce) != null) && (adce.a(this.jdField_a_of_type_Adce).size() >= 2)) {
-      adce.a(this.jdField_a_of_type_Adce).sendEmptyMessageDelayed(1688002, 1400L);
-    }
-    if (adce.a(this.jdField_a_of_type_Adce) != null)
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      adce.a(this.jdField_a_of_type_Adce).a();
-      adce.a(this.jdField_a_of_type_Adce, null);
+      if (paramBoolean) {
+        break label55;
+      }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131691082, 0).b(this.a.getTitleBarHeight());
     }
+    label55:
+    while (paramInt != 2) {
+      return;
+    }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

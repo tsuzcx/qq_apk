@@ -1,5 +1,5 @@
 class phe
-  extends alvc
+  extends alzr
 {
   phe(phd paramphd) {}
   

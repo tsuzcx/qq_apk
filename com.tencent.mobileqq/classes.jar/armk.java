@@ -1,15 +1,19 @@
-import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class armk
-  implements bevo
+  implements View.OnClickListener
 {
-  armk(armf paramarmf, Activity paramActivity, int paramInt) {}
+  armk(armi paramarmi) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      armf.a(this.jdField_a_of_type_Armf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    if (armi.a(this.a))
+    {
+      armi.a(this.a);
+      return;
     }
+    armi.b(this.a);
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aphn;
-import apho;
+import aplw;
+import aplx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,7 +32,7 @@ public final class ReadInJoyWebRenderEngine$3
     {
       try
       {
-        if (apho.i()) {
+        if (aplx.i()) {
           continue;
         }
         localStringBuilder.append("viola jsc lib not exist");
@@ -46,7 +46,7 @@ public final class ReadInJoyWebRenderEngine$3
         }
         if (System.currentTimeMillis() - l2 > 120000L)
         {
-          apho.a();
+          aplx.a();
           localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
         }
         oxi.a(1);
@@ -61,7 +61,7 @@ public final class ReadInJoyWebRenderEngine$3
         }
         this.jdField_a_of_type_Oxk.onError(oxi.b);
         return;
-        if (aphn.i()) {
+        if (aplw.i()) {
           break label470;
         }
         if (this.jdField_a_of_type_Oxk == null) {
@@ -76,7 +76,7 @@ public final class ReadInJoyWebRenderEngine$3
         if (System.currentTimeMillis() - l2 <= 120000L) {
           continue;
         }
-        aphn.a();
+        aplw.a();
         localSharedPreferences2.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
         oxi.a(2);
         continue;
@@ -96,7 +96,7 @@ public final class ReadInJoyWebRenderEngine$3
       continue;
       label470:
       String str1 = oxo.a();
-      String[] arrayOfString = apho.a;
+      String[] arrayOfString = aplx.a;
       int k = arrayOfString.length;
       int i = 0;
       String str2;
@@ -119,7 +119,7 @@ public final class ReadInJoyWebRenderEngine$3
           oxi.a(1);
         }
       }
-      arrayOfString = aphn.a;
+      arrayOfString = aplw.a;
       k = arrayOfString.length;
       i = j;
       while (i < k)

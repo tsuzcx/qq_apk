@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class aeyp
-  extends alxa
+public class aeyp
+  implements View.OnClickListener
 {
-  aeyp(aeyo paramaeyo) {}
+  public aeyp(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    aeyo.a(this.a).a.b();
-    afbm localafbm = (afbm)aeyo.a(this.a).a(29);
-    if (localafbm != null) {
-      localafbm.f();
+    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
+      QQToast.a(this.a.getContext(), alud.a(2131717251), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298914));
     }
   }
 }

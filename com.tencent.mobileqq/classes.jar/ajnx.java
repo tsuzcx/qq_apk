@@ -1,39 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class ajnx
-  implements xit
+  implements Animation.AnimationListener
 {
-  public ajnx(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ajnx(LoginView.4 param4) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
-    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
-    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
-    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
-      LpReportInfo_pf00064.allReport(585, 15, 8);
-    }
-    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
-    {
-      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
-      if (localObject != null)
-      {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-          ((Bitmap)localObject).recycle();
-        }
-      }
-    }
+    this.a.this$0.c.setVisibility(0);
+    this.a.this$0.c.clearAnimation();
+    this.a.this$0.c.setAnimation(null);
+    this.a.this$0.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,39 +1,29 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
 class txh
-  extends RecyclerView.OnScrollListener
 {
-  txh(txe paramtxe) {}
+  public TextView a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt) {}
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public txh(FrameLayout paramFrameLayout)
   {
-    if ((txe.a(this.a) != null) && ((txe.a(this.a).getLayoutManager() instanceof LinearLayoutManager)))
+    this.a = ((TextView)paramFrameLayout.getChildAt(0));
+  }
+  
+  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, FeedCloudMeta.StFeed paramStFeed)
+  {
+    if (TextUtils.isEmpty(paramStTagInfo.tagName.get()))
     {
-      if (paramInt2 > 0)
-      {
-        paramInt1 = ((LinearLayoutManager)txe.a(this.a).getLayoutManager()).findLastVisibleItemPosition();
-        paramInt2 = txe.a(this.a).getLayoutManager().getItemCount();
-        if (paramInt1 >= paramInt2 - 2) {
-          txe.a(this.a);
-        }
-        if ((paramInt1 == paramInt2 - 1) && (txe.a(this.a).a().a())) {
-          txe.b(this.a);
-        }
-        txe.a(this.a, paramInt1);
-      }
+      this.a.setVisibility(8);
       return;
     }
-    paramInt1 = ((LinearLayoutManager)txe.a(this.a).getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-    if (txe.a(this.a) == 0) {
-      txe.b(this.a);
-    }
-    txe.a(this.a, paramInt1);
+    this.a.setVisibility(0);
+    this.a.setText(txg.a(paramStTagInfo));
+    this.a.setOnClickListener(new txi(this, paramStFeed, paramStTagInfo));
   }
 }
 

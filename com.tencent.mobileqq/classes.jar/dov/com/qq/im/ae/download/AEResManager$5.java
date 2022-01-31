@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import bkwi;
+import blap;
 
 public class AEResManager$5
   implements Runnable
 {
-  public AEResManager$5(bkwi parambkwi, String paramString1, int paramInt, String paramString2) {}
+  public AEResManager$5(blap paramblap, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    bkwi.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    blap.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

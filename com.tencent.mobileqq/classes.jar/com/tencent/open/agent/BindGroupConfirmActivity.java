@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -17,25 +17,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import arys;
-import azmj;
-import bcgo;
-import bcgp;
-import bclo;
-import bdfq;
-import bepp;
-import bexd;
-import beyt;
-import beyu;
-import beyv;
-import beyw;
-import bfdm;
-import bfdo;
-import bfen;
-import bfhg;
-import bfib;
-import bfic;
-import bfik;
+import asdb;
+import azqs;
+import bckx;
+import bcky;
+import bcpx;
+import bdjz;
+import bety;
+import bfbm;
+import bfdc;
+import bfdd;
+import bfde;
+import bfdf;
+import bfhv;
+import bfhx;
+import bfiw;
+import bflp;
+import bfmk;
+import bfml;
+import bfmt;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -60,11 +60,11 @@ import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zcp;
+import zhe;
 
 public class BindGroupConfirmActivity
   extends BaseActivity
-  implements DialogInterface.OnClickListener, View.OnClickListener, bfdo, bfic
+  implements DialogInterface.OnClickListener, View.OnClickListener, bfhx, bfml
 {
   public Resources a;
   protected Bundle a;
@@ -72,13 +72,13 @@ public class BindGroupConfirmActivity
   protected Button a;
   protected ImageView a;
   protected TextView a;
-  bcgo jdField_a_of_type_Bcgo = new beyw(this);
-  public bdfq a;
-  public bepp a;
-  private final bfic jdField_a_of_type_Bfic = new beyt(this);
+  bckx jdField_a_of_type_Bckx = new bfdf(this);
+  public bdjz a;
+  public bety a;
+  private final bfml jdField_a_of_type_Bfml = new bfdc(this);
   public Runnable a;
   protected String a;
-  public zcp a;
+  public zhe a;
   public ImageView b;
   protected TextView b;
   protected String b;
@@ -100,7 +100,7 @@ public class BindGroupConfirmActivity
   
   public BindGroupConfirmActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new beyu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfdd(this);
     this.jdField_a_of_type_JavaLangRunnable = new BindGroupConfirmActivity.5(this);
   }
   
@@ -111,28 +111,28 @@ public class BindGroupConfirmActivity
   
   private void b()
   {
-    Object localObject = findViewById(2131376000);
+    Object localObject = findViewById(2131376053);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ImmersiveUtils.a((View)localObject, true);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368613));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368615));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368644));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368659));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364692));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368624));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368626));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368655));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368670));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364693));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377272));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378348));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377326));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378402));
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      localObject = bfdm.a().a(this.jdField_b_of_type_JavaLangString);
+      localObject = bfhv.a().a(this.jdField_b_of_type_JavaLangString);
       if (localObject != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
       }
     }
     else
     {
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378414));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378468));
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label270;
       }
@@ -148,7 +148,7 @@ public class BindGroupConfirmActivity
         a(Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue());
       }
       return;
-      bfdm.a().a(this.jdField_b_of_type_JavaLangString, this);
+      bfhv.a().a(this.jdField_b_of_type_JavaLangString, this);
       break;
       label270:
       this.jdField_g_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
@@ -189,16 +189,16 @@ public class BindGroupConfirmActivity
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("module", "gc_bind_group_svr");
       ((Bundle)localObject2).putString("method", "bind_existing_group");
-      localObject1 = bclo.a((Bundle)localObject1, (Bundle)localObject2);
+      localObject1 = bcpx.a((Bundle)localObject1, (Bundle)localObject2);
       localBundle.putString("param", (String)localObject1);
-      localBundle.putString("signature", bclo.a((String)localObject1 + "ea779693bfa42c986ad85cda9bdfce45").toUpperCase());
+      localBundle.putString("signature", bcpx.a((String)localObject1 + "ea779693bfa42c986ad85cda9bdfce45").toUpperCase());
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("BUNDLE", localBundle);
       ((HashMap)localObject1).put("CONTEXT", getApplicationContext());
       if (QLog.isColorLevel()) {
         QLog.i("BindGroupConfirmActivity", 2, "bindGroup params = " + localBundle);
       }
-      new bcgp(localStringBuilder.toString(), "GET", this.jdField_a_of_type_Bcgo, 0, null).a((HashMap)localObject1);
+      new bcky(localStringBuilder.toString(), "GET", this.jdField_a_of_type_Bckx, 0, null).a((HashMap)localObject1);
       return;
       ((StringBuilder)localObject2).append("0");
       ((StringBuilder)localObject2).append((String)localObject1);
@@ -214,18 +214,18 @@ public class BindGroupConfirmActivity
     for (Object localObject = "";; localObject = Build.VERSION.RELEASE)
     {
       localGetAppinfoRequest.os.set((String)localObject);
-      localGetAppinfoRequest.qqv.set(bexd.a().d());
+      localGetAppinfoRequest.qqv.set(bfbm.a().d());
       localGetAppinfoRequest.setHasFlag(true);
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
         localGetAppinfoRequest.appUniqueIdentifier.set(this.jdField_d_of_type_JavaLangString);
       }
       localGetAppinfoRequest.referer.set(6);
-      localObject = new NewIntent(this, bfen.class);
+      localObject = new NewIntent(this, bfiw.class);
       ((NewIntent)localObject).setWithouLogin(true);
       ((NewIntent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
       ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
       ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
-      ((NewIntent)localObject).setObserver(new beyv(this));
+      ((NewIntent)localObject).setObserver(new bfde(this));
       super.getAppRuntime().startServlet((NewIntent)localObject);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -240,7 +240,7 @@ public class BindGroupConfirmActivity
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    bfhg.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString1);
+    bflp.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString1);
     this.jdField_a_of_type_AndroidOsHandler.post(new BindGroupConfirmActivity.4(this, paramBitmap));
   }
   
@@ -309,26 +309,26 @@ public class BindGroupConfirmActivity
       QLog.d("BindGroupConfirmActivity", 2, "HttpAsyncTaskCallback exception." + paramException.getMessage());
     }
     if ((paramException instanceof ConnectTimeoutException)) {
-      paramException = bfik.jdField_e_of_type_JavaLangString;
+      paramException = bfmt.jdField_e_of_type_JavaLangString;
     }
     for (;;)
     {
       QQToast.a(this, paramException, 0).a(getTitleBarHeight()).show();
       return;
       if ((paramException instanceof SocketTimeoutException)) {
-        paramException = bfik.jdField_f_of_type_JavaLangString;
+        paramException = bfmt.jdField_f_of_type_JavaLangString;
       } else if ((paramException instanceof MalformedURLException)) {
         paramException = "访问url有误!";
       } else if ((paramException instanceof HttpBaseUtil.HttpStatusException)) {
         paramException = "Http返回码异常!";
       } else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException)) {
-        paramException = bfik.jdField_g_of_type_JavaLangString;
+        paramException = bfmt.jdField_g_of_type_JavaLangString;
       } else if ((paramException instanceof JSONException)) {
-        paramException = bfik.jdField_b_of_type_JavaLangString;
+        paramException = bfmt.jdField_b_of_type_JavaLangString;
       } else if ((paramException instanceof IOException)) {
-        paramException = bfik.jdField_a_of_type_JavaLangString;
+        paramException = bfmt.jdField_a_of_type_JavaLangString;
       } else {
-        paramException = bfik.jdField_d_of_type_JavaLangString;
+        paramException = bfmt.jdField_d_of_type_JavaLangString;
       }
     }
   }
@@ -341,16 +341,16 @@ public class BindGroupConfirmActivity
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Zcp == paramDialogInterface) {
+    if (this.jdField_a_of_type_Zhe == paramDialogInterface) {
       if (paramInt != 0) {}
     }
-    while (this.jdField_a_of_type_Bdfq != paramDialogInterface)
+    while (this.jdField_a_of_type_Bdjz != paramDialogInterface)
     {
       do
       {
         try
         {
-          arys.a(this, true, "action_game_bind_group", Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), 0, "");
+          asdb.a(this, true, "action_game_bind_group", Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), 0, "");
           super.setResult(-1);
           super.finish();
           return;
@@ -382,14 +382,14 @@ public class BindGroupConfirmActivity
     {
     default: 
       return;
-    case 2131364692: 
+    case 2131364693: 
       if ("true".equals(this.jdField_g_of_type_JavaLangString))
       {
         a();
         return;
       }
-      new bfib("http://fusionbase.qq.com/cgi-bin/appstage/mb_bind_qqgroup", "POST", this.jdField_a_of_type_Bfic).a(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Bepp.show();
+      new bfmk("http://fusionbase.qq.com/cgi-bin/appstage/mb_bind_qqgroup", "POST", this.jdField_a_of_type_Bfml).a(this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Bety.show();
       return;
     }
     finish();
@@ -400,14 +400,14 @@ public class BindGroupConfirmActivity
     super.requestWindowFeature(1);
     super.onCreate(paramBundle);
     super.setTheme(2131755151);
-    super.setContentView(2131559811);
+    super.setContentView(2131559810);
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
-    this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
-    this.jdField_a_of_type_Bepp.a(alpo.a(2131701490));
+    this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+    this.jdField_a_of_type_Bety.a(alud.a(2131701502));
     this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
     if (this.jdField_a_of_type_AndroidOsBundle == null)
     {
-      bfhg.e("BindGroupConfirmActivity", "initParams() mParams is null!");
+      bflp.e("BindGroupConfirmActivity", "initParams() mParams is null!");
       return;
     }
     this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("union_name");
@@ -427,11 +427,11 @@ public class BindGroupConfirmActivity
       if (QLog.isColorLevel()) {
         QLog.d("BindGroupConfirmActivity", 2, "bindGroup appid =  guild id = " + this.h + "zone_id = " + this.i + " role id = " + this.j + "  group code= " + this.k + " guild name = " + this.l);
       }
-      azmj.b(this.app, "CliOper", "", "", "0x80084B0", "0x80084B0", 0, 0, "", "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0x80084B0", "0x80084B0", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      new bfib("http://fusionbase.qq.com/cgi-bin/appstage/mb_get_qqgroup_description", "POST", this).a(this.jdField_a_of_type_AndroidOsBundle);
+      new bfmk("http://fusionbase.qq.com/cgi-bin/appstage/mb_get_qqgroup_description", "POST", this).a(this.jdField_a_of_type_AndroidOsBundle);
       b();
       return;
       if (QLog.isColorLevel()) {
@@ -450,7 +450,7 @@ public class BindGroupConfirmActivity
   {
     super.onStart();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690952));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690953));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);

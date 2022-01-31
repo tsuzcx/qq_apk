@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.ipc;
 
 import android.os.RemoteException;
-import bgpo;
+import bgtv;
 import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -9,7 +9,7 @@ import com.tencent.qqmini.sdk.log.QMLog;
 public class AppBrandProxyImpl$3
   implements Runnable
 {
-  public AppBrandProxyImpl$3(bgpo parambgpo, IAppMainService paramIAppMainService, MiniAppInfo paramMiniAppInfo) {}
+  public AppBrandProxyImpl$3(bgtv parambgtv, IAppMainService paramIAppMainService, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {

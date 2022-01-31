@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nku
-  extends amni
+  extends amrx
 {
   public nku(AccountDetailActivity paramAccountDetailActivity) {}
   
@@ -43,13 +43,13 @@ public class nku
       localArrayList.add("find.mp.qq.com");
       localArrayList.add("post.mp.qq.com");
       localArrayList.add("article.mp.qq.com");
-      atda.a("follow", paramObject, localArrayList, null);
+      athj.a("follow", paramObject, localArrayList, null);
       if (this.a.jdField_f_of_type_Boolean)
       {
         if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
         {
           paramObject = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
-          azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "mp_msg_sys_12", "scan_via", 0, 0, paramObject, "", "", this.a.jdField_f_of_type_JavaLangString);
+          azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "mp_msg_sys_12", "scan_via", 0, 0, paramObject, "", "", this.a.jdField_f_of_type_JavaLangString);
         }
       }
       else
@@ -62,7 +62,7 @@ public class nku
         AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_AndroidContentIntent);
         if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
         {
-          azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.d);
+          azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.d);
           if (QLog.isColorLevel()) {
             QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
           }
@@ -99,7 +99,7 @@ public class nku
   
   public void b(Object paramObject)
   {
-    this.a.d(2131695727);
+    this.a.d(2131695729);
   }
   
   public void b(boolean paramBoolean, Object paramObject)

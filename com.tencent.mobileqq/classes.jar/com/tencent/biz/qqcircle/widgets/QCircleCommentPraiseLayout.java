@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -26,15 +26,15 @@ import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StReply;
 import java.util.ArrayList;
 import tra;
-import uac;
-import uad;
-import xod;
-import yej;
-import yel;
+import ucp;
+import ucq;
+import xsm;
+import yiw;
+import yiy;
 
 public class QCircleCommentPraiseLayout
   extends LinearLayout
-  implements View.OnClickListener, yel
+  implements View.OnClickListener, yiy
 {
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -42,11 +42,11 @@ public class QCircleCommentPraiseLayout
   private FeedCloudMeta.StComment jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private FeedCloudMeta.StReply jdField_a_of_type_FeedcloudFeedCloudMeta$StReply;
-  private uad jdField_a_of_type_Uad;
+  private ucq jdField_a_of_type_Ucq;
   private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 2130843541;
+  private int jdField_b_of_type_Int = 2130843556;
   private boolean jdField_b_of_type_Boolean;
-  private int c = 2130843543;
+  private int c = 2130843558;
   
   public QCircleCommentPraiseLayout(Context paramContext)
   {
@@ -71,11 +71,11 @@ public class QCircleCommentPraiseLayout
     setOrientation(0);
     setGravity(16);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = xod.a(getContext(), 3.0F);
+    localLayoutParams.rightMargin = xsm.a(getContext(), 3.0F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(xod.a(getContext(), 15.0F), xod.a(getContext(), 15.0F));
+    localLayoutParams = new LinearLayout.LayoutParams(xsm.a(getContext(), 16.0F), xsm.a(getContext(), 16.0F));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -112,13 +112,6 @@ public class QCircleCommentPraiseLayout
     }
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleCommentPraiseUpdateEvent.class);
-    return localArrayList;
-  }
-  
   public void a(int paramInt, long paramLong)
   {
     if (paramInt == 1) {
@@ -143,7 +136,126 @@ public class QCircleCommentPraiseLayout
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleCommentPraiseUpdateEvent.class);
+    return localArrayList;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    yiw.a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    int k = 1;
+    int j = 1;
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(getContext(), alud.a(2131702558), 0).a();
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramView = new FeedCloudMeta.StLike();
+    int i;
+    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null))
+    {
+      paramView = (FeedCloudMeta.StLike)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.get();
+      if (paramView.status.get() == 0) {
+        i = 3;
+      }
+    }
+    for (;;)
+    {
+      boolean bool;
+      label118:
+      int m;
+      label140:
+      label176:
+      int n;
+      if (this.jdField_a_of_type_Ucq != null)
+      {
+        ucq localucq = this.jdField_a_of_type_Ucq;
+        if (paramView.status.get() == 0)
+        {
+          bool = true;
+          localucq.a(bool);
+        }
+      }
+      else
+      {
+        if (paramView.status.get() != 0) {
+          break label315;
+        }
+        m = 1;
+        if ((this.jdField_a_of_type_Int != 1) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null)) {
+          break label326;
+        }
+        k = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.count.get();
+        if (m != 1) {
+          break label321;
+        }
+        n = k + j;
+        j = k;
+        k = n;
+      }
+      for (;;)
+      {
+        a(m, k);
+        n = paramView.status.get();
+        VSNetworkHelper.a().a(getContext(), new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, paramView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply), new ucp(this, m, k, n, j));
+        return;
+        i = 4;
+        break;
+        if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null)) {
+          break label390;
+        }
+        paramView = (FeedCloudMeta.StLike)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.get();
+        if (paramView.status.get() == 0) {}
+        for (i = 5;; i = 6) {
+          break;
+        }
+        bool = false;
+        break label118;
+        label315:
+        m = 0;
+        break label140;
+        label321:
+        j = -1;
+        break label176;
+        label326:
+        if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply != null))
+        {
+          n = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.count.get();
+          if (m == 1) {}
+          for (j = k;; j = -1)
+          {
+            k = n + j;
+            j = n;
+            break;
+          }
+        }
+        k = 0;
+        j = 0;
+      }
+      label390:
+      i = 0;
+    }
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if (((paramSimpleBaseEvent instanceof QCircleCommentPraiseUpdateEvent)) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (TextUtils.equals(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mFeedId, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())))
     {
@@ -162,118 +274,6 @@ public class QCircleCommentPraiseLayout
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.count.set(paramSimpleBaseEvent.mPraisedNum);
     a(paramSimpleBaseEvent.mPraisedStatus, paramSimpleBaseEvent.mPraisedNum);
-  }
-  
-  protected void onAttachedToWindow()
-  {
-    super.onAttachedToWindow();
-    yej.a().a(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int k = 1;
-    int j = 1;
-    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(getContext(), alpo.a(2131702546), 0).a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    paramView = new FeedCloudMeta.StLike();
-    int i;
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null))
-    {
-      paramView = (FeedCloudMeta.StLike)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.get();
-      if (paramView.status.get() == 0) {
-        i = 3;
-      }
-    }
-    for (;;)
-    {
-      boolean bool;
-      label119:
-      int m;
-      label141:
-      label177:
-      int n;
-      if (this.jdField_a_of_type_Uad != null)
-      {
-        uad localuad = this.jdField_a_of_type_Uad;
-        if (paramView.status.get() == 0)
-        {
-          bool = true;
-          localuad.a(bool);
-        }
-      }
-      else
-      {
-        if (paramView.status.get() != 0) {
-          break label316;
-        }
-        m = 1;
-        if ((this.jdField_a_of_type_Int != 1) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null)) {
-          break label327;
-        }
-        k = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.count.get();
-        if (m != 1) {
-          break label322;
-        }
-        n = k + j;
-        j = k;
-        k = n;
-      }
-      for (;;)
-      {
-        a(m, k);
-        n = paramView.status.get();
-        VSNetworkHelper.a().a(getContext(), new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, paramView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply), new uac(this, m, k, n, j));
-        return;
-        i = 4;
-        break;
-        if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null)) {
-          break label391;
-        }
-        paramView = (FeedCloudMeta.StLike)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.get();
-        if (paramView.status.get() == 0) {}
-        for (i = 5;; i = 6) {
-          break;
-        }
-        bool = false;
-        break label119;
-        label316:
-        m = 0;
-        break label141;
-        label322:
-        j = -1;
-        break label177;
-        label327:
-        if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply != null))
-        {
-          n = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.count.get();
-          if (m == 1) {}
-          for (j = k;; j = -1)
-          {
-            k = n + j;
-            j = n;
-            break;
-          }
-        }
-        k = 0;
-        j = 0;
-      }
-      label391:
-      i = 0;
-    }
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    yej.a().b(this);
   }
   
   public void setData(int paramInt, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
@@ -307,9 +307,9 @@ public class QCircleCommentPraiseLayout
     setVisibility(0);
   }
   
-  public void setOnClickHookListener(uad paramuad)
+  public void setOnClickHookListener(ucq paramucq)
   {
-    this.jdField_a_of_type_Uad = paramuad;
+    this.jdField_a_of_type_Ucq = paramucq;
   }
   
   public void setTouchDelegate(View paramView, int paramInt)

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azmz;
+import azri;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -356,7 +356,7 @@ public class EmojiHomeUiPlugin
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "statistic:openToOncreateGap:" + l1 + "openTogetKeyTimeGap:" + l2 + "bNeedGetKey:" + bool2 + "openToFinishOrErrorGap:" + l3 + "processStep:" + k + "isSuccess:" + bool1 + "errordescription:" + (String)localObject2 + "errorUrl:" + (String)localObject1 + "resultCode:" + j);
       }
-      azmz.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
+      azri.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
       return;
       label498:
       if (j == -12) {

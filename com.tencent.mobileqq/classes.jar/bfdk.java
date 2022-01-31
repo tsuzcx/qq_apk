@@ -1,37 +1,24 @@
-import android.database.Cursor;
-import android.os.Parcel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.BindGroupFragment;
 
-final class bfdk
-  implements bfjh<bfdj>
+public class bfdk
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  public bfdk(BindGroupFragment paramBindGroupFragment, String paramString) {}
   
-  public bfdj a(Cursor paramCursor)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
+    if (paramInt == 1)
+    {
+      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, alud.a(2131701499));
+      ((amdu)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
     }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new bfdj();
-    ((bfdj)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public bfji[] a()
-  {
-    return new bfji[] { new bfji("groupId", "INTEGER UNIQUE"), new bfji("data", "BLOB") };
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

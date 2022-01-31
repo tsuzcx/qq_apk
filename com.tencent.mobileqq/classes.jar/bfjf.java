@@ -1,17 +1,54 @@
-import android.content.Context;
+import com.tencent.open.appcommon.js.DownloadInterface;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfjf
+  implements bfor
 {
-  protected static bfjn a;
+  public bfjf(DownloadInterface paramDownloadInterface, String paramString) {}
   
-  public static bfjn a()
+  public void a(int paramInt, String paramString)
   {
-    return a;
+    bflp.e("DownloadInterface", "innerQueryDownloadInfoByViaInfo ERROR");
   }
   
-  public static void a(Context paramContext)
+  public void a(List<DownloadInfo> paramList)
   {
-    a = bfjn.a(paramContext);
+    bflp.c("DownloadInterface", "innerQueryDownloadInfoByVia onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadActionByVia',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bflp.c("DownloadInterface", "innerQueryDownloadInfoByVia querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aeyh;
+import afcw;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public aeyh a = new aeyh();
+  public afcw a = new afcw();
   
   public boolean doOnCreate(Bundle paramBundle)
   {

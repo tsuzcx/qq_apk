@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bgjd;
-import bgjf;
-import bgkd;
+import bgnk;
+import bgnm;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class BaseJsPluginEngine$1
-  implements bgjf
+  implements bgnm
 {
-  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, bgkd parambgkd) {}
+  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, bgok parambgok) {}
   
   public boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
@@ -17,7 +17,7 @@ class BaseJsPluginEngine$1
     do
     {
       return false;
-      bgjd.a().b(this);
+      bgnk.a().b(this);
     } while ((paramArrayOfString == null) || (paramArrayOfString.length == 0));
     if (paramArrayOfString[0].equals(this.val$systemPermission))
     {

@@ -1,68 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class aref
-  implements anxw
+public abstract class aref
 {
-  private bbpe jdField_a_of_type_Bbpe;
-  private String jdField_a_of_type_JavaLangString;
+  protected final QQAppInterface a;
   
-  public aref(long paramLong, bbpe parambbpe)
+  public aref(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = (paramLong + "");
-    this.jdField_a_of_type_Bbpe = parambbpe;
+    this.a = paramQQAppInterface;
   }
   
-  private String a()
+  protected abstract String a(boolean paramBoolean);
+  
+  protected abstract HashMap<String, String> a();
+  
+  public abstract void a();
+  
+  public void a(areg paramareg, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
   {
-    try
+    paramareg = paramareg.a();
+    paramareg.putAll(paramExcitingTransferOneSlotComplete.getReportData());
+    azri localazri = azri.a(BaseApplication.getContext());
+    String str = this.a.getCurrentAccountUin();
+    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("file_color_note_peerType", 1);
-      localJSONObject.put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("file_color_note_fileName", this.jdField_a_of_type_Bbpe.g);
-      localJSONObject.put("file_color_note_fileSize", this.jdField_a_of_type_Bbpe.c);
-      if (this.jdField_a_of_type_Bbpe.a != null) {
-        localJSONObject.put("file_color_note_file_uuid", this.jdField_a_of_type_Bbpe.a.toString());
-      }
-      for (;;)
-      {
-        localJSONObject.put("file_color_note_file_url", this.jdField_a_of_type_Bbpe.e);
-        localJSONObject.put("file_color_note_busId", this.jdField_a_of_type_Bbpe.h);
-        return localJSONObject.toString();
-        localJSONObject.put("file_color_note_file_uuid", "");
-      }
-      return "";
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      localazri.a(str, "actPDSlot", bool, 0L, 0L, paramareg, "");
+      return;
     }
   }
   
-  public ColorNote getColorNote()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bbpe != null) {}
-    anyc localanyc = new anyc();
-    localanyc.a(17039360);
-    String str = aroo.b(2, this.jdField_a_of_type_Bbpe.e);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    if (a()) {
+      b(paramBoolean);
     }
-    localanyc.a(str);
-    localanyc.b(this.jdField_a_of_type_Bbpe.g);
-    localanyc.c(arof.a(this.jdField_a_of_type_Bbpe.c));
-    int i = arni.a(arni.a(this.jdField_a_of_type_Bbpe.g));
-    localanyc.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localanyc.a(str.getBytes());
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
     }
-    return localanyc.a();
+    azri.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public abstract void b();
+  
+  public void b(boolean paramBoolean)
+  {
+    HashMap localHashMap = b();
+    if (localHashMap != null)
+    {
+      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      azri.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
+    }
   }
 }
 

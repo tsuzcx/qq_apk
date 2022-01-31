@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
-public class acky
-  implements DialogInterface.OnClickListener
+public final class acky
+  implements View.OnClickListener
 {
-  public acky(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
+  public acky(Toast paramToast) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    this.a.cancel();
   }
 }
 

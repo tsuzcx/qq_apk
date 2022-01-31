@@ -13,7 +13,7 @@ public class ReadInJoyChannelViewPagerController$8
     if (this.this$0.a() != 0)
     {
       if (this.a != null) {
-        this.a.findViewById(2131368519).setVisibility(4);
+        this.a.findViewById(2131368530).setVisibility(4);
       }
       if (this.b != null) {
         this.b.setVisibility(0);

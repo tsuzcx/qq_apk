@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.control;
 
-import blnf;
+import blrr;
 
 public class QIMAsyncManager$1
   implements Runnable
 {
-  public QIMAsyncManager$1(blnf paramblnf) {}
+  public QIMAsyncManager$1(blrr paramblrr) {}
   
   public void run()
   {
     this.this$0.c();
-    blnf.a(this.this$0, true);
+    blrr.a(this.this$0, true);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.gpkg;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
@@ -336,7 +336,7 @@ public class GpkgManager
     //   10: areturn
     //   11: ldc 45
     //   13: aload_0
-    //   14: invokestatic 413	arof:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
     //   17: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   20: ifeq +204 -> 224
     //   23: aload_0
@@ -365,12 +365,12 @@ public class GpkgManager
     //   70: invokestatic 424	ndr:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   73: ifne +217 -> 290
     //   76: aload 6
-    //   78: invokestatic 428	bdcs:a	(Ljava/lang/String;)Z
+    //   78: invokestatic 428	bdhb:a	(Ljava/lang/String;)Z
     //   81: ifeq +209 -> 290
     //   84: aload 6
     //   86: iconst_0
     //   87: iconst_0
-    //   88: invokestatic 431	arof:a	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
+    //   88: invokestatic 431	arso:a	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
     //   91: astore 4
     //   93: aload 4
     //   95: ifnull +305 -> 400
@@ -390,13 +390,13 @@ public class GpkgManager
     //   135: ldc 39
     //   137: aload 7
     //   139: invokevirtual 443	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   142: invokestatic 413	arof:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   142: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
     //   145: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   148: ifne +19 -> 167
     //   151: ldc 42
     //   153: aload 7
     //   155: invokevirtual 443	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   158: invokestatic 413	arof:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   158: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
     //   161: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   164: ifeq -51 -> 113
     //   167: aload 7
@@ -407,7 +407,7 @@ public class GpkgManager
     //   177: aload_3
     //   178: astore 4
     //   180: aload_3
-    //   181: invokestatic 428	bdcs:a	(Ljava/lang/String;)Z
+    //   181: invokestatic 428	bdhb:a	(Ljava/lang/String;)Z
     //   184: ifeq +109 -> 293
     //   187: new 96	java/io/File
     //   190: dup
@@ -417,7 +417,7 @@ public class GpkgManager
     //   198: dup
     //   199: aload 5
     //   201: invokespecial 108	java/io/File:<init>	(Ljava/lang/String;)V
-    //   204: invokestatic 447	bdcs:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   204: invokestatic 447	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
     //   207: istore_2
     //   208: aload_3
     //   209: astore 4
@@ -425,11 +425,11 @@ public class GpkgManager
     //   212: ifeq +81 -> 293
     //   215: aload 6
     //   217: iconst_0
-    //   218: invokestatic 449	bdcs:a	(Ljava/lang/String;Z)V
+    //   218: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
     //   221: aload 5
     //   223: astore_3
     //   224: aload_3
-    //   225: invokestatic 450	arof:a	(Ljava/lang/String;)Z
+    //   225: invokestatic 450	arso:a	(Ljava/lang/String;)Z
     //   228: ifeq +153 -> 381
     //   231: aload_3
     //   232: astore 4
@@ -439,7 +439,7 @@ public class GpkgManager
     //   239: ifne +11 -> 250
     //   242: aload_0
     //   243: iconst_0
-    //   244: invokestatic 449	bdcs:a	(Ljava/lang/String;Z)V
+    //   244: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
     //   247: aload_3
     //   248: astore 4
     //   250: ldc 48
@@ -496,7 +496,7 @@ public class GpkgManager
     //   359: invokestatic 463	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   362: aload 6
     //   364: iconst_0
-    //   365: invokestatic 449	bdcs:a	(Ljava/lang/String;Z)V
+    //   365: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
     //   368: iload_1
     //   369: iconst_1
     //   370: iadd
@@ -770,7 +770,7 @@ public class GpkgManager
         return;
       }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent failed, delete folder:" + paramString);
-      bdcs.a(paramString, false);
+      bdhb.a(paramString, false);
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] download gpkg by url1:" + paramMiniAppConfig.config.downloadUrl);
       downloadGpkgByResumableDownloader(paramMiniAppConfig, paramOnInitGpkgListener, paramString, paramBoolean);
       return;
@@ -823,7 +823,7 @@ public class GpkgManager
     {
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg]verType is not online " + paramMiniAppConfig.config.verType + ", delete path " + str);
       if (new File(str).exists()) {
-        bdcs.a(str, false);
+        bdhb.a(str, false);
       }
     }
     paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramOnInitGpkgListener);

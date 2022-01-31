@@ -9,7 +9,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import bcwh;
+import bdaq;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import nmk;
@@ -163,7 +163,7 @@ public class DragFrameLayout
     {
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float);
-      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < bcwh.a(getContext(), 10.0F))) {
+      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < bdaq.a(getContext(), 10.0F))) {
         return false;
       }
       f1 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;

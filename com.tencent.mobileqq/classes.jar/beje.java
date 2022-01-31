@@ -1,9 +1,18 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.widget.BubbleVideoView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface beje
+class beje
+  implements View.OnClickListener
 {
-  public abstract void a(BubbleVideoView paramBubbleVideoView, Canvas paramCanvas);
+  beje(bejc parambejc) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+  }
 }
 
 

@@ -1,58 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-final class akzl
-  extends bdvu
+public abstract interface akzl
 {
-  akzl(String paramString, File paramFile, akzr paramakzr) {}
+  public abstract String a(int paramInt, String paramString);
   
-  public void onDone(bdvv parambdvv)
-  {
-    super.onDone(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambdvv.a());
-    }
-    if (3 == parambdvv.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    while (this.jdField_a_of_type_Akzr == null)
-    {
-      do
-      {
-        try
-        {
-          ndr.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          if (this.jdField_a_of_type_Akzr != null) {
-            this.jdField_a_of_type_Akzr.a(true, 0);
-          }
-          return;
-        }
-        catch (Exception parambdvv)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambdvv.getMessage());
-            }
-          }
-        }
-        catch (OutOfMemoryError parambdvv)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambdvv.getMessage());
-            }
-          }
-        }
-      } while (this.jdField_a_of_type_Akzr == null);
-      this.jdField_a_of_type_Akzr.a(false, 0);
-      return;
-    }
-    this.jdField_a_of_type_Akzr.a(false, 0);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(aksj paramaksj, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

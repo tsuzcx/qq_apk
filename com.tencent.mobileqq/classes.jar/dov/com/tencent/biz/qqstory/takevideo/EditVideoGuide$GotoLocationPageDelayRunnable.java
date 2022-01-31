@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmee;
+import bmiq;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    bmee localbmee = (bmee)this.this$0.a(bmee.class);
-    if (localbmee != null) {
-      localbmee.c();
+    bmiq localbmiq = (bmiq)this.this$0.a(bmiq.class);
+    if (localbmiq != null) {
+      localbmiq.c();
     }
   }
 }

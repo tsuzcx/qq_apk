@@ -1,36 +1,14 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class avhn
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  avhn(avgk paramavgk) {}
+  avhn(avhf paramavhf) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramAnimation == avgk.b(this.a))
-    {
-      avgk.a(this.a).setVisibility(8);
-      avgk.a(this.a).clearAnimation();
-      avgk.a(this.a).setBackgroundResource(2130848587);
-      avgk.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166604));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == avgk.a(this.a))
-    {
-      avgk.a(this.a).setVisibility(0);
-      avgk.a(this.a).setBackgroundResource(2130849987);
-      avgk.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166895));
-    }
+    this.a.a = false;
   }
 }
 

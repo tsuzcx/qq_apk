@@ -1,67 +1,35 @@
-import android.view.View;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.remote.SendMsg;
 
 class bisk
-  implements bhqd
+  implements ServiceConnection
 {
-  bisk(bisi parambisi) {}
+  bisk(bisj parambisj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Bisl == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bisj.a(this.a));
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+    this.a.a = bisg.a(paramIBinder);
+    if (bisj.a(this.a) != null)
     {
-      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-      if (paramInt == 16) {
-        this.a.jdField_a_of_type_Bisl.h();
-      }
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.a = bisj.a(this.a);
+      this.a.b(paramComponentName);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (paramInt == 32)
-      {
-        this.a.jdField_a_of_type_Bisl.a();
-      }
-      else if (paramInt == 1)
-      {
-        this.a.jdField_a_of_type_Bisl.f();
-        bisi.a(this.a);
-      }
-      else if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Bisl.i();
-      }
-      else if (paramInt == 4)
-      {
-        this.a.jdField_a_of_type_Bisl.j();
-      }
-      else if (paramInt == 8)
-      {
-        this.a.jdField_a_of_type_Bisl.g();
-      }
-      else if (paramInt == 64)
-      {
-        this.a.jdField_a_of_type_Bisl.b();
-      }
-      else if (paramInt == 128)
-      {
-        this.a.jdField_a_of_type_Bisl.c();
-      }
-      else if (paramInt == 256)
-      {
-        this.a.jdField_a_of_type_Bisl.d();
-        continue;
-        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
-        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-          this.a.jdField_a_of_type_Bisl.a((String)this.a.b.get(paramInt));
-        }
-      }
+    this.a.a();
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bisj.a(this.a));
     }
+    this.a.a = null;
   }
 }
 

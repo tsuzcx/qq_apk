@@ -1,104 +1,40 @@
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class ased
-  implements alkr
+class ased
+  extends bfzo
 {
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<ahkz> paramArrayList) {}
+  ased(aseb paramaseb) {}
   
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    switch (paramInt)
+    this.a.x();
+    if (aseb.a(this.a) != -1)
     {
+      if ((!paramBoolean) || (paramHashMap == null)) {
+        break label151;
+      }
+      String str = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("url");
+      aseb.a(this.a, paramHashMap);
+      aseb.b(this.a, paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aseb.a(this.a) + " mTroopNotNeedVefifyLink=" + aseb.b(this.a));
+      }
+      if ((str != null) && (str.equals(aseb.c(this.a)))) {
+        aseb.a(this.a);
+      }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
-                    return;
-                  }
-                  a(false, "", null);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
-                    return;
-                  }
-                  a(paramBoolean, "", false);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
-                    return;
-                  }
-                  a(false, "");
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-                    return;
-                  }
-                  a(false, "", -1, -1, -1);
-                  return;
-                  if ((paramBoolean) && ((paramObject instanceof Object[])))
-                  {
-                    a(paramBoolean, (Object[])paramObject);
-                    return;
-                  }
-                  a(false, null);
-                  return;
-                } while (!(paramObject instanceof Object[]));
-                paramObject = (Object[])paramObject;
-              } while (paramObject.length < 2);
-              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
-              return;
-            } while (!(paramObject instanceof Object[]));
-            paramObject = (Object[])paramObject;
-          } while (paramObject.length < 1);
-          a(paramBoolean, ((Long)paramObject[0]).longValue());
-          return;
-        } while (!(paramObject instanceof Object[]));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
+      aseb.a(this.a, -1);
       return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
+      label151:
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131693136), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    }
   }
 }
 

@@ -18,7 +18,7 @@ public class qit
     int i = -1;
     try
     {
-      paramInt = this.jdField_a_of_type_Awbw.a(GuideData.class.getSimpleName(), "source=?", new String[] { String.valueOf(paramInt) });
+      paramInt = this.jdField_a_of_type_Awgf.a(GuideData.class.getSimpleName(), "source=?", new String[] { String.valueOf(paramInt) });
       return paramInt;
     }
     catch (Exception localException)
@@ -46,7 +46,7 @@ public class qit
       {
         return null;
         String str2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-        paramString = this.jdField_a_of_type_Awbw.a(paramString, paramString.getSimpleName(), true, "uin=? and showTime!=0 and business=?", new String[] { str2, str1 }, null, null, "showTime desc", "1");
+        paramString = this.jdField_a_of_type_Awgf.a(paramString, paramString.getSimpleName(), true, "uin=? and showTime!=0 and business=?", new String[] { str2, str1 }, null, null, "showTime desc", "1");
       } while ((paramString == null) || (paramString.size() <= 0));
       return (BaseResData)paramString.get(0);
     }
@@ -60,14 +60,14 @@ public class qit
     }
     int i = (int)(System.currentTimeMillis() / 1000L);
     paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    return this.jdField_a_of_type_Awbw.a(GuideData.class, GuideData.class.getSimpleName(), true, "uin=? and showTime=? and business=? and endTime>? and id=?", new String[] { paramString1, "0", str, String.valueOf(i), paramString2 }, null, null, "seq desc", null);
+    return this.jdField_a_of_type_Awgf.a(GuideData.class, GuideData.class.getSimpleName(), true, "uin=? and showTime=? and business=? and endTime>? and id=?", new String[] { paramString1, "0", str, String.valueOf(i), paramString2 }, null, null, "seq desc", null);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Awbw != null)
+    if (this.jdField_a_of_type_Awgf != null)
     {
-      this.jdField_a_of_type_Awbw.a(GuideData.class);
+      this.jdField_a_of_type_Awgf.a(GuideData.class);
       return;
     }
     QLog.e("ReadInJoyOperationManager", 1, "[clearGuideDataInDatabase] entity manager is null");
@@ -77,7 +77,7 @@ public class qit
   {
     paramBaseResData.isReady = true;
     paramBaseResData.business = paramString;
-    this.jdField_a_of_type_Awbw.b(paramBaseResData);
+    this.jdField_a_of_type_Awgf.b(paramBaseResData);
   }
   
   public void a(String[] paramArrayOfString) {}
@@ -91,12 +91,12 @@ public class qit
   {
     paramBaseResData.showTime = ((int)(System.currentTimeMillis() / 1000L));
     paramBaseResData.setStatus(1000);
-    this.jdField_a_of_type_Awbw.b(paramBaseResData);
+    this.jdField_a_of_type_Awgf.b(paramBaseResData);
   }
   
   public boolean b(String paramString, BaseResData paramBaseResData)
   {
-    return azzp.a(new File(b(paramString, paramBaseResData.id)));
+    return bady.a(new File(b(paramString, paramBaseResData.id)));
   }
   
   public void onDestroy() {}

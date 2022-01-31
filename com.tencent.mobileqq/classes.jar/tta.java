@@ -1,38 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StRecomForward;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StLightInteractInfo;
+import java.util.List;
 
 class tta
-  implements DialogInterface.OnClickListener
+  implements Observer<ubz<List<FeedCloudMeta.StLightInteractInfo>>>
 {
-  tta(tsv paramtsv) {}
+  tta(tsw paramtsw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StLightInteractInfo>> paramubz)
   {
-    if (paramInt == 1)
-    {
-      if (!tsv.a(this.a).a.isRecomFd.get()) {
-        break label118;
-      }
-      paramDialogInterface = new FeedCloudMeta.StFeed();
-      paramDialogInterface.id.set(tsv.a(this.a).a.recomForward.id.get());
-      paramDialogInterface.poster.set(tsv.a(this.a).a.recomForward.poster.get());
-    }
-    for (;;)
-    {
-      String str = paramDialogInterface.id.get();
-      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
-      VSNetworkHelper.a().a(paramDialogInterface, new ttb(this, str));
-      return;
-      label118:
-      paramDialogInterface = tsv.a(this.a).a;
-    }
+    tsw.a(this.a, paramubz);
   }
 }
 

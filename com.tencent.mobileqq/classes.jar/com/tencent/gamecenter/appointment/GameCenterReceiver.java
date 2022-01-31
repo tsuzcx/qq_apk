@@ -1,11 +1,11 @@
 package com.tencent.gamecenter.appointment;
 
-import aacs;
+import aahh;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bkeu;
+import bkjb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class GameCenterReceiver
 {
   static GameCenterReceiver jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver;
   public static boolean a;
-  List<aacs> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<aahh> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   /* Error */
   public static void a()
@@ -113,15 +113,15 @@ public class GameCenterReceiver
     //   122	148	158	java/lang/Throwable
   }
   
-  public static void a(aacs paramaacs)
+  public static void a(aahh paramaahh)
   {
     if (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver == null) {}
-    while ((paramaacs == null) || (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaacs))) {
+    while ((paramaahh == null) || (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaahh))) {
       return;
     }
     synchronized (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList)
     {
-      jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramaacs);
+      jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramaahh);
       return;
     }
   }
@@ -211,7 +211,7 @@ public class GameCenterReceiver
       }
       if ("android.intent.action.SCREEN_OFF".equals(paramContext))
       {
-        bkeu.a().a(false, -1L);
+        bkjb.a().a(false, -1L);
         return;
       }
       if (("android.intent.action.PACKAGE_ADDED".equals(paramContext)) || ("android.intent.action.PACKAGE_REMOVED".equals(paramContext)))

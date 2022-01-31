@@ -1,38 +1,150 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import android.content.Context;
+import android.util.Xml;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlPullParser;
 
 public class anes
-  implements DialogInterface.OnClickListener
+  extends anee
 {
-  public anes(ArkAppDownloadModule.10 param10) {}
+  private static final Object a;
+  public static boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    boolean bool = false;
-    bkel.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
-    aneq.a(this.a.this$0, true);
-    azmj.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
-    if ((paramDialogInterface instanceof bdfq))
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static byte a(String paramString)
+  {
+    return anee.a(1, paramString);
+  }
+  
+  public static Object a()
+  {
+    return jdField_a_of_type_JavaLangObject;
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      if (!((bdfq)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getFilesDir is null");
       }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+      localObject = "";
     }
-    try
+    String str;
+    do
     {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
-      return;
-    }
-    catch (Exception paramDialogInterface)
+      return localObject;
+      str = localObject + "/pddata/prd/" + "qq.android.minidetect.so_v8.2.0";
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getLibDir ,path = " + str);
+    return str;
+  }
+  
+  public static String a(String paramString)
+  {
+    return "lib" + paramString + ".so";
+  }
+  
+  protected static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = true;
+    if ((!anee.a(1, jdField_a_of_type_Boolean, "QMCF_qr")) || (!anee.a(1, jdField_a_of_type_Boolean, "yuvutil")))
     {
-      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
+      }
+      bool = false;
     }
+    return bool;
+  }
+  
+  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    boolean bool = true;
+    XmlPullParser localXmlPullParser = Xml.newPullParser();
+    paramHashMap.clear();
+    for (;;)
+    {
+      try
+      {
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
+      }
+      catch (Exception paramHashMap)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MiniRecog.MiniScanDetectSoLoader", 2, paramString, paramHashMap);
+        bool = false;
+        return bool;
+      }
+      int i = localXmlPullParser.next();
+      break label222;
+      String str = localXmlPullParser.getName();
+      if (str.equalsIgnoreCase("QMCF_qr"))
+      {
+        paramHashMap.put("QMCF_qr", localXmlPullParser.nextText());
+        continue;
+      }
+      else
+      {
+        if (str.equalsIgnoreCase("yuvutil"))
+        {
+          paramHashMap.put("yuvutil", localXmlPullParser.nextText());
+          continue;
+        }
+        if (str.equalsIgnoreCase("QMCF_qr_64"))
+        {
+          paramHashMap.put("QMCF_qr_64", localXmlPullParser.nextText());
+          continue;
+        }
+        if (!str.equalsIgnoreCase("yuvutil_64")) {
+          continue;
+        }
+        paramHashMap.put("yuvutil_64", localXmlPullParser.nextText());
+        continue;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "parseConfig success|config=" + paramHashMap);
+        return true;
+        label222:
+        if (i != 1) {
+          switch (i)
+          {
+          }
+        }
+      }
+    }
+  }
+  
+  public static byte b(String paramString)
+  {
+    return anee.a(1, jdField_a_of_type_Boolean, paramString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return "lib" + paramString + ".so";
+  }
+  
+  public static String c(String paramString)
+  {
+    return anee.a(1, paramString);
   }
 }
 

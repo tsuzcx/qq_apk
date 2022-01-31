@@ -1,37 +1,82 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class apsf
-  extends apov
+public class apsf
 {
-  apns jdField_a_of_type_Apns = new apsh(this);
-  apnv jdField_a_of_type_Apnv = new apsg(this);
-  protected int h = 2;
+  private static apsf jdField_a_of_type_Apsf;
+  ArrayList<WeakReference<apse>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public apsf(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, appt paramappt)
+  public static apsf a()
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramappt);
-    apne.a().a(this.jdField_a_of_type_Apns);
-    apnw.a().a(this.jdField_a_of_type_Apnv);
+    if (jdField_a_of_type_Apsf == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apsf == null) {
+        jdField_a_of_type_Apsf = new apsf();
+      }
+      return jdField_a_of_type_Apsf;
+    }
+    finally {}
   }
   
   public void a()
   {
-    super.a();
-    apne.a().b(this.jdField_a_of_type_Apns);
-    apnw.a().b(this.jdField_a_of_type_Apnv);
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        apse localapse = (apse)((WeakReference)localIterator.next()).get();
+        if (localapse != null) {
+          localapse.a(paramInt);
+        }
+      }
+    }
+  }
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
+  public void a(apse paramapse)
+  {
+    if (paramapse == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramapse) {
+          return;
+        }
+      }
+    }
+    paramapse = new WeakReference(paramapse);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramapse);
+  }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage) {}
+  public void b(apse paramapse)
+  {
+    if (paramapse == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramapse) {
+          localIterator.remove();
+        }
+      }
+    }
+  }
 }
 
 

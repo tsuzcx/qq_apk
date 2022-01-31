@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aljq;
+import alof;
 import android.os.Bundle;
 
 public class qfileJumpIpadActivity
@@ -9,7 +9,7 @@ public class qfileJumpIpadActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = aljq.A;
+    this.a = alof.A;
     return true;
   }
 }

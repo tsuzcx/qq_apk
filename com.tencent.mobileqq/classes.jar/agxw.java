@@ -1,20 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agxw
-  implements MediaPlayer.OnCompletionListener
+public abstract class agxw
+  implements agya
 {
-  public agxw(BlessActivity paramBlessActivity) {}
+  protected QQAppInterface a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public agxw(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
-    }
-    BlessActivity.a(this.a, true);
-    azmj.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return agyv.a(paramQQAppInterface).a(paramString);
   }
 }
 

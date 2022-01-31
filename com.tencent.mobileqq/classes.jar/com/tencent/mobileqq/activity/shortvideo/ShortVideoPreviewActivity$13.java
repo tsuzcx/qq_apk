@@ -8,7 +8,7 @@ class ShortVideoPreviewActivity$13
   public void run()
   {
     ShortVideoPreviewActivity.b(this.this$0);
-    ayyu.b = System.currentTimeMillis();
+    azdd.b = System.currentTimeMillis();
     this.this$0.setResult(-1);
   }
 }

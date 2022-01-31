@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class TroopHandler$1
   implements Runnable
 {
-  public TroopHandler$1(alzf paramalzf) {}
+  public TroopHandler$1(amdu paramamdu) {}
   
   public void run()
   {

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import afgj;
-import apaj;
-import apak;
+import afky;
+import apes;
+import apet;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForFuDai
   extends ChatMessage
-  implements afgj
+  implements afky
 {
   private static final String TAG = "MessageForFuDai";
   public String aioTails = "";
@@ -27,7 +27,7 @@ public class MessageForFuDai
   
   protected void doParse()
   {
-    apaj.a(this.msgData, this);
+    apes.a(this.msgData, this);
   }
   
   public int getState()
@@ -78,7 +78,7 @@ public class MessageForFuDai
   
   public void prewrite()
   {
-    this.msgData = apak.a(this);
+    this.msgData = apet.a(this);
   }
   
   public String toString()
@@ -88,7 +88,7 @@ public class MessageForFuDai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFuDai
  * JD-Core Version:    0.7.0.1
  */

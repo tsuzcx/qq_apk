@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bcli;
+import bcpr;
 
 public class AvatarWallViewPager$RollViewPager
   extends ViewPager
@@ -98,7 +98,7 @@ public class AvatarWallViewPager$RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcli.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bcpr.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -113,7 +113,7 @@ public class AvatarWallViewPager$RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcli.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bcpr.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;

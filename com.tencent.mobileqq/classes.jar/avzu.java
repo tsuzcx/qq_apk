@@ -1,43 +1,54 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-public final class avzu
-  implements appt
+public class avzu
+  implements avzt
 {
-  public avzu(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public void a(Matrix paramMatrix) {}
   
-  public void a(appw paramappw)
-  {
-    if (paramappw != null) {}
-    try
-    {
-      paramappw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
-    }
-    catch (Throwable paramappw) {}
-  }
+  public void a(MotionEvent paramMotionEvent) {}
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
   
-  public boolean a(appw paramappw)
+  public boolean a(MotionEvent paramMotionEvent)
   {
     return false;
   }
   
-  public void b()
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    baiy.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    return false;
   }
   
-  public void b(appw paramappw) {}
+  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
   
-  public void c() {}
+  public void b(MotionEvent paramMotionEvent) {}
   
-  public void d() {}
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
   
-  public void setting() {}
+  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
+  
+  public void c(MotionEvent paramMotionEvent) {}
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

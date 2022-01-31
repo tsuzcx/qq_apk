@@ -1,274 +1,250 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Method;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bjri
 {
-  public static final int a;
-  public static final String a;
-  public static int b = -1;
-  
-  static
+  public static int a(EditText paramEditText, ArrayList<ResultRecord> paramArrayList, List<bjrh> paramList, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "[PhotoAlbum]" + bjri.class.getSimpleName();
-    jdField_a_of_type_Int = a(27);
-  }
-  
-  public static int a(int paramInt)
-  {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    float f = paramInt;
-    return (int)(localDisplayMetrics.density * f + 0.5F);
-  }
-  
-  private static int a(Context paramContext)
-  {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
-    }
-    return i;
-  }
-  
-  public static int a(Context paramContext, Activity paramActivity)
-  {
-    if (b != -1)
+    int i;
+    if (paramArrayList == null)
     {
-      QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "has notchHeight:", Integer.valueOf(b) });
-      return b;
+      i = paramInt;
+      return i;
     }
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.MODEL:", Build.MODEL });
-    if (b(paramContext)) {
-      b = jdField_a_of_type_Int;
+    paramArrayList = paramArrayList.iterator();
+    for (;;)
+    {
+      label15:
+      i = paramInt;
+      if (!paramArrayList.hasNext()) {
+        break;
+      }
+      Object localObject = (ResultRecord)paramArrayList.next();
+      bjrh localbjrh = new bjrh();
+      if (!TextUtils.isEmpty(((ResultRecord)localObject).b)) {}
+      for (localbjrh.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).b;; localbjrh.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).jdField_a_of_type_JavaLangString) {
+        try
+        {
+          long l = Long.valueOf(((ResultRecord)localObject).jdField_a_of_type_JavaLangString).longValue();
+          localbjrh.jdField_a_of_type_Long = l;
+          if ((localbjrh.jdField_a_of_type_JavaLangString == null) || (localbjrh.jdField_a_of_type_Long == 0L)) {
+            break label15;
+          }
+          i = paramInt;
+          if (paramList == null) {
+            break;
+          }
+          paramList.add(localbjrh);
+          localObject = "@" + localbjrh.jdField_a_of_type_JavaLangString + " ";
+          i = paramInt;
+          if (paramInt < ((String)localObject).length()) {
+            i = ((String)localObject).length();
+          }
+          a((String)localObject, paramEditText.getSelectionStart(), paramEditText);
+          paramInt = i;
+        }
+        catch (NumberFormatException localNumberFormatException) {}
+      }
+    }
+  }
+  
+  public static int a(CharSequence paramCharSequence, int paramInt1, int paramInt2, List<bjrh> paramList, int paramInt3, int paramInt4, String paramString)
+  {
+    if ((paramCharSequence == null) || (paramCharSequence.length() <= 1)) {
+      return -1;
+    }
+    int j;
+    int i;
+    if (paramCharSequence.length() > paramInt1)
+    {
+      j = paramInt1 - 1;
+      i = 1;
     }
     for (;;)
     {
-      return b;
-      if (a(paramContext)) {
-        b = 80;
-      } else if (c(paramContext)) {
-        b = a(paramContext)[1];
-      } else if ((d(paramContext)) || (e(paramContext)) || (c())) {
-        b = a(paramContext);
-      } else if (d()) {
-        b = 121;
-      } else if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null)) {
-        b = a(paramActivity.getWindow().getDecorView()).top;
+      if ((j < 0) || (i > paramInt2)) {
+        break label112;
       }
+      if ((paramCharSequence.charAt(j) == '@') && (a(paramCharSequence.toString().substring(j, paramInt1), false, paramList, paramInt3, paramInt4, paramString)))
+      {
+        return j;
+        paramInt1 = paramCharSequence.length();
+        break;
+      }
+      j -= 1;
+      i += 1;
     }
+    label112:
+    return -1;
   }
   
-  @NonNull
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect();
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.VERSION.SDK_INT:", Integer.valueOf(Build.VERSION.SDK_INT) });
-    if (Build.VERSION.SDK_INT >= 23) {
-      try
-      {
-        paramView = bjpx.a(paramView, "getRootWindowInsets", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "insets:", paramView });
-        Object localObject3 = bjpx.a(paramView, "getDisplayCutout", false, null, null);
-        if (localObject3 == null)
-        {
-          QZLog.d(jdField_a_of_type_JavaLangString, 1, "displayCutout == null");
-          return localRect;
-        }
-        paramView = bjpx.a(localObject3, "getSafeInsetTop", false, null, null);
-        Object localObject1 = bjpx.a(localObject3, "getSafeInsetBottom", false, null, null);
-        Object localObject2 = bjpx.a(localObject3, "getSafeInsetLeft", false, null, null);
-        localObject3 = bjpx.a(localObject3, "getSafeInsetRight", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "safeInsetTop:", paramView, " safeInsetBottom:", localObject1, " safeInsetLeft:", localObject2, " safeInsetRight:", localObject3 });
-        if ((localObject2 instanceof Integer)) {
-          localRect.left = ((Integer)localObject2).intValue();
-        }
-        if ((localObject1 instanceof Integer)) {
-          localRect.bottom = ((Integer)localObject1).intValue();
-        }
-        if ((localObject3 instanceof Integer)) {
-          localRect.right = ((Integer)localObject3).intValue();
-        }
-        if ((paramView instanceof Integer))
-        {
-          localRect.top = ((Integer)paramView).intValue();
-          return localRect;
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, paramView, new Object[0]);
-      }
-    }
-    return localRect;
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2)
+  public static SystemEmoticonPanel a(Context paramContext, EditText paramEditText)
   {
     try
     {
-      paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class, String.class }).invoke(paramContext, new Object[] { new String(paramString1), new String(paramString2) });
+      paramContext = new SystemEmoticonPanel(paramContext, new bjrj(paramEditText));
       return paramContext;
     }
-    catch (Exception paramContext)
+    catch (Throwable paramContext)
     {
-      return paramString2;
+      QLog.e("QZoneShareActivity", 1, paramContext.getStackTrace());
     }
-    catch (IllegalArgumentException paramContext) {}
-    return paramString2;
+    return null;
   }
   
-  private static boolean a()
+  public static String a(EditText paramEditText)
   {
-    return Build.MODEL.endsWith("L78011");
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    try
+    if (paramEditText != null)
     {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
-      return paramContext;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize ClassNotFoundException");
-      return arrayOfInt;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize NoSuchMethodException");
-      return arrayOfInt;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize Exception");
-      return arrayOfInt;
-    }
-    finally {}
-    return arrayOfInt;
-  }
-  
-  private static boolean b()
-  {
-    return "GM1910".equals(Build.MODEL);
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    try
-    {
-      paramContext = bjpx.a("android.util.FtFeature", "isFeatureSupport", false, bjrl.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(32) });
-      if ((paramContext instanceof Boolean))
+      if ((paramEditText.getText() instanceof bamz))
       {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
+        bamz localbamz = (bamz)paramEditText.getText();
+        if (localbamz != null) {
+          return localbamz.a();
+        }
+      }
+      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
+        return paramEditText.getEditableText().toString();
       }
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
+    return null;
   }
   
-  private static boolean c()
+  public static String a(EditText paramEditText, List<bjrh> paramList)
   {
-    return (a()) || (b()) || (e()) || ("Pixel 3 XL".equals(Build.MODEL));
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    try
+    if (paramEditText != null)
     {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen ClassNotFoundException");
-      return false;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen NoSuchMethodException");
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen Exception");
-      return false;
-    }
-    finally {}
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    return "FS8010".equals(Build.MODEL);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    paramContext = a(paramContext, "ro.miui.notch", "0");
-    if (paramContext != null) {
-      return paramContext.equals("1");
-    }
-    return false;
-  }
-  
-  private static boolean e()
-  {
-    return "SM-F9000".equals(Build.MODEL);
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    try
-    {
-      paramContext = bjpx.a("smartisanos.api.DisplayUtilsSmt", "isFeatureSupport", false, bjrl.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(1) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
+      paramEditText = a(paramEditText);
+      if (!TextUtils.isEmpty(paramEditText)) {
+        return a(paramEditText, paramList).replaceAll(alud.a(2131706183), alud.a(2131706187)).replaceAll(alud.a(2131706184), "/MM");
       }
     }
-    catch (Exception paramContext)
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    try
     {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
+      String str = Pattern.compile(paramString1, 16).matcher(paramString2).replaceFirst(paramString3);
+      return str;
+    }
+    catch (Exception localException) {}
+    return b(paramString2, paramString1, paramString3);
+  }
+  
+  public static String a(String paramString, List<bjrh> paramList)
+  {
+    return b(paramString, paramList);
+  }
+  
+  public static void a(String paramString, int paramInt, EditText paramEditText)
+  {
+    if ((paramEditText == null) || (TextUtils.isEmpty(paramString)) || (paramInt < 0)) {
+      return;
+    }
+    Editable localEditable = bane.c.newEditable(paramEditText.getText());
+    localEditable.insert(paramInt, paramString);
+    try
+    {
+      paramEditText.setText(localEditable);
+      paramEditText.setSelection(paramString.length() + paramInt);
+      return;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      for (;;)
+      {
+        localEditable.append(" ");
+        paramEditText.setText(localEditable);
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    return (paramInt1 != -1) && (paramInt2 != -1) && (paramString != null) && (paramString.length() > 0);
+  }
+  
+  public static boolean a(String paramString1, boolean paramBoolean, List<bjrh> paramList, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (((a(paramInt1, paramInt2, paramString2)) || (!paramBoolean)) && (paramList != null))
+    {
+      paramInt2 = paramList.size();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        paramString2 = (bjrh)paramList.get(paramInt1);
+        if ((paramString2 != null) && (paramString2.jdField_a_of_type_JavaLangString != null) && (paramString1 != null) && ((paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString)) || (paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString + " "))))
+        {
+          if (paramBoolean) {
+            paramList.remove(paramInt1);
+          }
+          return true;
+        }
+        paramInt1 += 1;
+      }
     }
     return false;
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    int i = paramString1.indexOf(paramString2, 0);
+    if (i == -1) {
+      return paramString1;
+    }
+    paramString1 = new StringBuilder(paramString1);
+    paramString1.replace(i, paramString2.length() + i, paramString3);
+    return paramString1.toString();
+  }
+  
+  public static String b(String paramString, List<bjrh> paramList)
+  {
+    String str;
+    if (paramString == null) {
+      str = null;
+    }
+    do
+    {
+      do
+      {
+        return str;
+        str = paramString;
+      } while (paramList == null);
+      str = paramString;
+    } while (paramList.size() == 0);
+    Iterator localIterator = paramList.iterator();
+    for (;;)
+    {
+      str = paramString;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      bjrh localbjrh = (bjrh)localIterator.next();
+      str = localbjrh.jdField_a_of_type_JavaLangString;
+      paramList = str;
+      if (str == null) {
+        paramList = localbjrh.jdField_a_of_type_Long + "";
+      }
+      paramList = paramList.replace("%", "%25").replace(",", "%2C").replace("}", "%7D");
+      paramList = "@{uin:" + localbjrh.jdField_a_of_type_Long + ",nick:" + paramList + "}";
+      str = "@" + localbjrh.jdField_a_of_type_JavaLangString;
+      if ((!TextUtils.isEmpty(localbjrh.jdField_a_of_type_JavaLangString)) && (paramString.contains(str))) {
+        paramString = a(str, paramString, paramList);
+      }
+    }
   }
 }
 

@@ -1,63 +1,27 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.style.ImageSpan;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysi
-  extends ImageSpan
+class ysi
+  extends ysw
 {
-  private WeakReference<Drawable> a;
-  
-  public ysi(Drawable paramDrawable)
+  ysi(ysb paramysb, ysj paramysj, String paramString1, String paramString2)
   {
-    super(paramDrawable);
+    super(paramysb);
   }
   
-  private Drawable a()
+  public void a(boolean paramBoolean)
   {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
-    }
-    localObject = localDrawable;
-    if (localDrawable == null)
+    if (QLog.isColorLevel())
     {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
     }
-    return localObject;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
-  {
-    paramCharSequence = a();
-    paramCanvas.save();
-    paramInt1 = paramCharSequence.getIntrinsicHeight();
-    paramInt2 = paramPaint.getFontMetricsInt().ascent;
-    paramInt3 = paramPaint.getFontMetricsInt().descent;
-    paramInt4 = paramCharSequence.getBounds().bottom;
-    paramCanvas.translate(paramFloat, ((paramInt1 - paramInt3 + paramInt2) / 2 + (paramInt5 - paramInt4)) / 5);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = a().getBounds();
-    if (paramFontMetricsInt != null)
+    if (paramBoolean)
     {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramFontMetricsInt.ascent = paramPaint.ascent;
-      paramFontMetricsInt.descent = paramPaint.descent;
-      paramFontMetricsInt.top = paramPaint.top;
-      paramFontMetricsInt.bottom = paramPaint.bottom;
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
     }
-    return paramCharSequence.right;
+    this.jdField_a_of_type_Ysj.a(this.b, false, "cmobine auido video done.");
   }
 }
 

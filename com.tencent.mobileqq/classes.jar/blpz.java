@@ -1,30 +1,59 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class blpz
-  implements blqb
 {
-  private File a;
-  
-  public void a()
+  public static String a(long paramLong)
   {
-    try
-    {
-      blqf localblqf = (blqf)blmf.a().c(10);
-      localblqf.a(this.a);
-      localblqf.c();
-      return;
+    int m = 0;
+    long l = paramLong;
+    if (paramLong < 0L) {
+      l = 0L;
     }
-    catch (Throwable localThrowable)
+    String str4 = "";
+    int j = Math.round((float)(l % 3600000L % 60000L) / 1000.0F);
+    int i = (int)(l % 3600000L) / 60000;
+    int k = (int)(l / 3600000L);
+    if (j == 60)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("HumSongRecognizer", 2, "recognize: Failed. info: exception = ", localThrowable);
+      i += 1;
+      j = 0;
     }
-  }
-  
-  public void a(File paramFile)
-  {
-    this.a = paramFile;
+    for (;;)
+    {
+      if (i == 60)
+      {
+        k += 1;
+        i = m;
+      }
+      for (;;)
+      {
+        String str1;
+        String str2;
+        if (j < 10)
+        {
+          str1 = "0" + j;
+          if (i >= 10) {
+            break label249;
+          }
+          str2 = "0" + i;
+          label138:
+          if (k >= 10) {
+            break label273;
+          }
+        }
+        label273:
+        for (String str3 = "0" + k;; str3 = "" + k)
+        {
+          if (k > 0) {
+            str4 = str3 + ":";
+          }
+          return str4 + str2 + ":" + str1;
+          str1 = "" + j;
+          break;
+          label249:
+          str2 = "" + i;
+          break label138;
+        }
+      }
+    }
   }
 }
 

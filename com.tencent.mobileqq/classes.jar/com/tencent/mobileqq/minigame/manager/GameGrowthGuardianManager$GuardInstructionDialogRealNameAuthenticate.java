@@ -17,12 +17,12 @@ class GameGrowthGuardianManager$GuardInstructionDialogRealNameAuthenticate
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
     QLog.d("GameGrowthGuardianManag", 1, "getNegativeDialogAction() called non skipped");
-    return new GameGrowthGuardianManager.DialogAction(2131705503, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131705515, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.1(this));
   }
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131697525, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
+    return new GameGrowthGuardianManager.DialogAction(2131697527, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
   }
   
   protected String getReportSubActionType()

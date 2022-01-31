@@ -1,43 +1,131 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class wcq
-  implements View.OnClickListener
+public class wcq
+  extends BaseAdapter
 {
-  public wcq(wco paramwco, Activity paramActivity, String paramString) {}
+  protected int a;
+  protected Context a;
+  View.OnTouchListener a;
+  protected QQStoryContext a;
+  protected List<QQUserUIItem> a;
+  protected wrj a;
   
-  public void onClick(View paramView)
+  public wcq(Context paramContext, View.OnTouchListener paramOnTouchListener)
   {
-    wsv.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Wco);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Wco.c)) && (ndd.a(this.jdField_a_of_type_Wco.c)))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = QQStoryContext.a();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(List<QQUserUIItem> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    super.notifyDataSetChanged();
+  }
+  
+  public void a(wrj paramwrj)
+  {
+    this.jdField_a_of_type_Wrj = paramwrj;
+  }
+  
+  public void b(List<QQUserUIItem> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i;
+    label39:
+    Object localObject;
+    if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_Wco.c;
-      if (this.jdField_a_of_type_Wco.a != 1) {
-        break label172;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      if (this.jdField_a_of_type_Int == -1)
+      {
+        i = 2131561648;
+        paramView = new wtq(paramView.inflate(i, null));
+        paramViewGroup = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject = (TextView)paramView.a(2131371161);
+        String str = paramViewGroup.getUserIconUrl();
+        if (TextUtils.isEmpty(str)) {
+          break label249;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w("zivonchen", 2, "fillFriendsData userIconUrl = " + str);
+        }
+        vls.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject, str, 13.0F, 2.0F);
+        label127:
+        ((TextView)localObject).setText(vls.a(paramViewGroup));
+        localObject = (ImageView)paramView.a(2131367565);
+        if ((!paramViewGroup.isVip) || (!ndd.a(paramViewGroup.headUrl))) {
+          break label267;
+        }
+        xsm.a((ImageView)localObject, paramViewGroup.headUrl, 38, 38, 1);
       }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
     for (;;)
     {
-      wta.a("hall", "exp", 0, 0, new String[] { "" });
-      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label197;
+      paramView.a = paramViewGroup;
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        paramView.a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       }
-      wta.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
-      return;
-      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
+      paramView.a().setOnClickListener(paramView);
+      if (this.jdField_a_of_type_Wrj != null) {
+        paramView.a(this.jdField_a_of_type_Wrj);
+      }
+      return paramView.a();
+      i = this.jdField_a_of_type_Int;
       break;
-      label172:
-      if ((this.jdField_a_of_type_Wco.a == 2) || (this.jdField_a_of_type_Wco.a != 3)) {}
+      paramView = (wtq)paramView.getTag();
+      break label39;
+      label249:
+      ((TextView)localObject).setCompoundDrawablePadding(0);
+      ((TextView)localObject).setCompoundDrawables(null, null, null, null);
+      break label127;
+      label267:
+      if (!TextUtils.isEmpty(paramViewGroup.qq)) {
+        vls.a((ImageView)localObject, paramViewGroup.qq);
+      } else {
+        ((ImageView)localObject).setImageDrawable(bdhj.a());
+      }
     }
-    label197:
-    wta.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
 }
 

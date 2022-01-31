@@ -1,84 +1,75 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aora
+  extends aokh<aorb>
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
-  
-  public aora()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
+    return 92;
   }
   
   @NonNull
-  public static aora a(String paramString)
+  public aorb a(int paramInt)
   {
-    boolean bool2 = false;
-    aora localaora = new aora();
-    if (TextUtils.isEmpty(paramString)) {
-      return localaora;
+    return new aorb();
+  }
+  
+  @Nullable
+  public aorb a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
     }
-    for (;;)
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
-        {
-          bool1 = true;
-          localaora.jdField_b_of_type_Boolean = bool1;
-          localaora.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localaora.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localaora.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localaora.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
-          }
-          localaora.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localaora.toString());
-          return localaora;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localaora;
-      }
-      boolean bool1 = false;
+      aorb localaorb = new aorb();
+      localaorb.a(paramArrayOfaoko);
+      return localaorb;
+    }
+    return new aorb();
+  }
+  
+  public Class<aorb> a()
+  {
+    return aorb.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
     }
   }
   
-  public String a()
+  public void a(aorb paramaorb)
   {
-    return this.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
+    }
   }
   
-  public String a(String paramString)
+  public int b()
   {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bdne.M(localQQAppInterface.getApp(), str);
+    }
+    return 0;
   }
   
-  public String a(String paramString1, String paramString2)
+  public boolean b()
   {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
+    return false;
   }
   
-  public String b()
+  public boolean c()
   {
-    return this.d;
+    return false;
   }
 }
 

@@ -1,32 +1,31 @@
-class akfq
-  extends bhxd
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
+public class akfq
+  implements Animation.AnimationListener
 {
-  akfq(akfo paramakfo, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public akfq(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramInt = 0;
-    if ((paramArrayOfbhxc == null) || (paramArrayOfbhxc.length <= 0)) {}
-    for (;;)
+    this.a.c.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.c = null;
+    if (this.a.a != null)
     {
-      return;
-      if (paramArrayOfbhxc.length < 0)
-      {
-        paramArrayOfbhxc[0].b = 0;
-        paramArrayOfbhxc[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbhxc.length)
-      {
-        paramArrayOfbhxc[paramInt].b = -1;
-        paramArrayOfbhxc[paramInt].a = -1;
-        paramInt += 1;
-      }
+      this.a.a.a();
+      this.a.a = null;
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

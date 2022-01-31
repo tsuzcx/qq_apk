@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import acng;
+import acrv;
 import android.os.SystemClock;
-import annx;
-import bdjd;
+import ansg;
+import bdnm;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import java.util.ArrayList;
 import java.util.Iterator;
-import uwn;
+import vaw;
 
 public class Conversation$31$1
   implements Runnable
 {
-  public Conversation$31$1(acng paramacng, boolean paramBoolean) {}
+  public Conversation$31$1(acrv paramacrv, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acng.a.d(true);
-    if (this.jdField_a_of_type_Acng.a.g)
+    this.jdField_a_of_type_Acrv.a.d(true);
+    if (this.jdField_a_of_type_Acrv.a.g)
     {
-      Conversation.a(this.jdField_a_of_type_Acng.a, 800L);
+      Conversation.a(this.jdField_a_of_type_Acrv.a, 800L);
       Object localObject;
       label108:
-      annx localannx;
-      if (this.jdField_a_of_type_Acng.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
+      ansg localansg;
+      if (this.jdField_a_of_type_Acrv.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
       {
-        localObject = this.jdField_a_of_type_Acng.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
+        localObject = this.jdField_a_of_type_Acrv.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
         if (this.jdField_a_of_type_Boolean)
         {
           i = 0;
@@ -34,27 +34,27 @@ public class Conversation$31$1
       }
       else
       {
-        if (this.jdField_a_of_type_Acng.a.jdField_a_of_type_Uwn != null)
+        if (this.jdField_a_of_type_Acrv.a.jdField_a_of_type_Vaw != null)
         {
-          localObject = this.jdField_a_of_type_Acng.a.jdField_a_of_type_Uwn;
+          localObject = this.jdField_a_of_type_Acrv.a.jdField_a_of_type_Vaw;
           if (!this.jdField_a_of_type_Boolean) {
             break label185;
           }
           i = 0;
-          ((uwn)localObject).a(i);
+          ((vaw)localObject).a(i);
         }
-        if (this.jdField_a_of_type_Acng.a.jdField_a_of_type_JavaUtilArrayList == null) {
+        if (this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilArrayList == null) {
           break label195;
         }
-        localObject = this.jdField_a_of_type_Acng.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilArrayList.iterator();
         label140:
         do
         {
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localannx = (annx)((Iterator)localObject).next();
-        } while (localannx == null);
+          localansg = (ansg)((Iterator)localObject).next();
+        } while (localansg == null);
         if (!this.jdField_a_of_type_Boolean) {
           break label190;
         }
@@ -63,7 +63,7 @@ public class Conversation$31$1
       label190:
       for (int i = 0;; i = 2)
       {
-        localannx.c(i);
+        localansg.c(i);
         break label140;
         i = 2;
         break;
@@ -72,8 +72,8 @@ public class Conversation$31$1
       }
     }
     label195:
-    if (this.jdField_a_of_type_Acng.a.c > 0L) {
-      bdjd.a("Conversation_PullToRefresh_cbSwitchToUI", SystemClock.uptimeMillis() - this.jdField_a_of_type_Acng.a.c);
+    if (this.jdField_a_of_type_Acrv.a.c > 0L) {
+      bdnm.a("Conversation_PullToRefresh_cbSwitchToUI", SystemClock.uptimeMillis() - this.jdField_a_of_type_Acrv.a.c);
     }
   }
 }

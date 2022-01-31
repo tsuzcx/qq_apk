@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgqv;
+import bgvc;
 
 public class VoIPManager$IdResult
 {
-  @bgqv(a="openId")
+  @bgvc(a="openId")
   public String openId;
-  @bgqv(a="roomId")
+  @bgvc(a="roomId")
   public int roomId;
-  @bgqv(a="tinyId")
+  @bgvc(a="tinyId")
   public long tinyId;
   
   public String toString()

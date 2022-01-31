@@ -1,28 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class avpa
-  extends Handler
+class avpa
+  extends bayj
 {
-  public avpa(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  avpa(avop paramavop) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
+    bass localbass = (bass)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localbass.b != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bavb.a);
+        }
+      } while (avop.a(this.a) == null);
+      avop.a(this.a).a = bavb.a;
+      avop.a(this.a);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    }
+    this.a.a.a();
+    this.a.a.b(alud.a(2131707707));
   }
 }
 

@@ -1,8 +1,8 @@
-import cooperation.qzone.statistic.StatisticCollector;
+import android.content.Context;
 
-public class bjof
+public abstract interface bjof
 {
-  private static final StatisticCollector a = new StatisticCollector();
+  public abstract void a(boolean paramBoolean, Context paramContext, bjog parambjog);
 }
 
 

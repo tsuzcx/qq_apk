@@ -1,96 +1,83 @@
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ahbx
-  implements ruy
 {
-  public ahbx(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @Nullable
+  public String f;
+  @Nullable
+  public String g;
   
-  public void a(String paramString)
+  public ZhituReportMsg.ReqBody a()
   {
-    SearchProtocol.WordItem localWordItem;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.b.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localWordItem = (SearchProtocol.WordItem)localIterator.next();
-      } while (!paramString.equals(localWordItem.word));
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    for (;;)
+    if (this.c == null) {
+      this.c = "";
+    }
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if (this.g == null) {
+      this.g = "";
+    }
+    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
+    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
+    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
+    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
+    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
+    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
+    return localReqBody;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
+    if (this.e != null)
     {
-      if ((localWordItem != null) && (localWordItem.type == 2))
-      {
-        paramString = new Intent(this.a, QQBrowserActivity.class);
-        paramString.putExtra("hide_operation_bar", true);
-        paramString.putExtra("url", localWordItem.jumpUrl);
-        paramString.putExtra("articalChannelId", 14);
-        this.a.startActivity(paramString);
-        if (localWordItem != null)
-        {
-          paramString = "";
-          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
-            break label333;
-          }
-          paramString = "kan";
-        }
+      str = bhqh.a(this.e);
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
+      if (this.f == null) {
+        break label207;
       }
-      for (;;)
-      {
-        if (localWordItem.type != 2) {
-          break label352;
-        }
-        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
-        return;
-        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-          if (!TextUtils.isEmpty(paramString.trim()))
-          {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-            ClassificationSearchActivity.a(this.a, paramString);
-          }
-        }
-        for (;;)
-        {
-          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
-            break label331;
-          }
-          this.a.a(paramString);
-          break;
-          if (this.a.f == ClassificationSearchActivity.d)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
-            ClassificationSearchActivity.a(this.a, paramString);
-          }
-          else
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
-          }
-        }
-        label331:
-        break;
-        label333:
-        if (this.a.f == ClassificationSearchActivity.d) {
-          paramString = "quan";
-        }
+      str = bhqh.a(this.f);
+      label139:
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
+      if (this.g == null) {
+        break label213;
       }
-      label352:
-      nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
-      return;
-      localWordItem = null;
+    }
+    label207:
+    label213:
+    for (String str = bhqh.a(this.g);; str = "null")
+    {
+      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
+      str = "null";
+      break;
+      str = "null";
+      break label139;
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alpo;
+import alud;
 import android.graphics.Color;
 import android.widget.TextView;
 import oed;
@@ -21,7 +21,7 @@ public class VideoFeedsGameAdComManager$1
         rcz.a(this.this$0).J.setTextColor(Color.parseColor("#80000000"));
       }
       rcz.a(this.this$0).J.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      rcz.a(this.this$0).J.setText(alpo.a(2131716597));
+      rcz.a(this.this$0).J.setText(alud.a(2131716609));
       rcz.a(this.this$0).J.setClickable(false);
       rcz.a(this.this$0).J.setClickable(false);
     }

@@ -1,14 +1,17 @@
-import android.animation.ValueAnimator;
-
-public abstract interface bmoo
+public class bmoo
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
-  
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  @xrk(a="tag_type")
+  public int a;
+  @xrk(a="tag_id")
+  public long a;
+  @xrk(a="tag_name")
+  public String a;
+  @xrk(a="join_count")
+  public int b;
+  @xrk(a="tag_desc")
+  public String b;
+  @xrk(a="wording")
+  public String c;
 }
 
 

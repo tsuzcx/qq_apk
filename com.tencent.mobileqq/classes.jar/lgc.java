@@ -351,7 +351,7 @@ public class lgc
   
   int a()
   {
-    if (bdaz.a() == 0)
+    if (bdfi.a() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoServlet", 2, "phone ring mode is slient");
@@ -373,7 +373,7 @@ public class lgc
       if (i > 0)
       {
         localObject = new byte[i];
-        bdlr.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+        bdqa.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
       }
     }
     locallmr = this.a.a();
@@ -443,7 +443,7 @@ public class lgc
     //   27: invokevirtual 412	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
     //   30: iconst_4
     //   31: iload_3
-    //   32: invokestatic 420	bdlr:a	([BI[BII)V
+    //   32: invokestatic 420	bdqa:a	([BI[BII)V
     //   35: new 518	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList
     //   38: dup
     //   39: invokespecial 519	com/tencent/av/ReqGroupVideo$RspGetInvitedMemberList:<init>	()V
@@ -666,7 +666,7 @@ public class lgc
     paramPacket.setTimeout(10000L);
     paramString = paramBundle.getByteArray("vMsg");
     if (paramString != null) {
-      paramPacket.putSendData(bdku.a(paramString));
+      paramPacket.putSendData(bdpd.a(paramString));
     }
   }
   
@@ -708,7 +708,7 @@ public class lgc
     AudioHelper.a("onRsp_group_video_terminate_msg", paramIntent.getExtras());
     int i = paramFromServiceMsg.getWupBuffer().length - 4;
     paramIntent = new byte[i];
-    bdlr.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     try
     {
       paramFromServiceMsg = new ReqGroupVideo.RspGroupVideoTerminate();
@@ -741,7 +741,7 @@ public class lgc
     paramBundle = new ReqGroupVideo.ReqGetInvitedMemberList();
     paramBundle.uint64_group.set(l1);
     paramBundle.uint64_room_id.set(l2);
-    paramPacket.putSendData(bdku.a(paramBundle.toByteArray()));
+    paramPacket.putSendData(bdpd.a(paramBundle.toByteArray()));
   }
   
   void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -798,7 +798,7 @@ public class lgc
                   {
                     i = paramFromServiceMsg.getWupBuffer().length - 4;
                     paramIntent = new byte[i];
-                    bdlr.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+                    bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
                     paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
                     paramFromServiceMsg.mergeFrom(paramIntent);
                     if (paramFromServiceMsg.uint32_result.get() != 0)
@@ -848,7 +848,7 @@ public class lgc
                 {
                   i = paramFromServiceMsg.getWupBuffer().length - 4;
                   paramIntent = new byte[i];
-                  bdlr.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+                  bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
                   paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
                   paramFromServiceMsg.mergeFrom(paramIntent);
                   if (paramFromServiceMsg.uint32_result.get() != 0)
@@ -948,7 +948,7 @@ public class lgc
     paramBundle.uint64_operator.set(l1);
     paramBundle.uint64_group.set(l2);
     paramBundle.uint64_room_id.set(l3);
-    paramPacket.putSendData(bdku.a(paramBundle.toByteArray()));
+    paramPacket.putSendData(bdpd.a(paramBundle.toByteArray()));
   }
   
   public String[] getPreferSSOCommands()
@@ -989,7 +989,7 @@ public class lgc
             {
               QLog.w("VideoServlet", 1, bool + "], currentThread[" + Thread.currentThread().getId() + "]");
               if ("SharpSvr.c2s".equalsIgnoreCase(str)) {
-                azmj.b(null, "CliOper", "", "", "0X80088B1", "0X80088B1", 0, 0, "", "", "", "");
+                azqs.b(null, "CliOper", "", "", "0X80088B1", "0X80088B1", 0, 0, "", "", "", "");
               }
               if (paramIntent == null) {
                 break;
@@ -1026,7 +1026,7 @@ public class lgc
                   }
                   lyg.a().a("eVideoRecvInviteMsg", 3L, paramIntent.msg_seq, ((Long)paramIntent.to_uin.get(0)).longValue(), paramIntent.from_uin, 0);
                   localObject = paramIntent.msg_seq + "-" + paramIntent.msg_uid;
-                  this.a.a(paramIntent.from_uin, (String)localObject, ayvc.a());
+                  this.a.a(paramIntent.from_uin, (String)localObject, ayzl.a());
                   if (this.a.c)
                   {
                     this.a.c = false;
@@ -1211,7 +1211,7 @@ public class lgc
                 {
                   i = paramFromServiceMsg.getWupBuffer().length - 4;
                   paramIntent = new byte[i];
-                  bdlr.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+                  bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
                   paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
                   paramFromServiceMsg.mergeFrom(paramIntent);
                   if (paramFromServiceMsg.uint32_result.get() != 0)
@@ -1307,7 +1307,7 @@ public class lgc
         paramIntent.vMsg = ((Bundle)localObject1).getByteArray("vMsg");
         paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
         return;
-        azmj.b(null, "CliOper", "", "", "0X80088B0", "0X80088B0", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80088B0", "0X80088B0", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("VideoServlet", 2, "=====send sharp SharpSvr.c2s!!!!=====");
         }
@@ -1480,8 +1480,8 @@ public class lgc
         ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
         paramIntent = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
         localObject2 = new byte[paramIntent.length + 4];
-        bdlr.a((byte[])localObject2, 0, paramIntent.length + 4);
-        bdlr.a((byte[])localObject2, 4, paramIntent, paramIntent.length);
+        bdqa.a((byte[])localObject2, 0, paramIntent.length + 4);
+        bdqa.a((byte[])localObject2, 4, paramIntent, paramIntent.length);
         paramPacket.setSSOCommand("OidbSvc.0x625");
         paramPacket.putSendData((byte[])localObject2);
       } while (!QLog.isColorLevel());
@@ -1503,8 +1503,8 @@ public class lgc
       ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
       paramIntent = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
       localObject2 = new byte[paramIntent.length + 4];
-      bdlr.a((byte[])localObject2, 0, paramIntent.length + 4);
-      bdlr.a((byte[])localObject2, 4, paramIntent, paramIntent.length);
+      bdqa.a((byte[])localObject2, 0, paramIntent.length + 4);
+      bdqa.a((byte[])localObject2, 4, paramIntent, paramIntent.length);
       paramPacket.setSSOCommand("OidbSvc.0xa02");
       paramPacket.putSendData((byte[])localObject2);
     } while (!QLog.isColorLevel());
@@ -1537,7 +1537,7 @@ public class lgc
     if (QLog.isColorLevel()) {
       QLog.d("VideoServlet", 2, "onSend with cmd: CMD_QQRTCSVC_ECHO");
     }
-    paramPacket.putSendData(bdku.a(((Bundle)localObject2).getByteArray("vMsg")));
+    paramPacket.putSendData(bdpd.a(((Bundle)localObject2).getByteArray("vMsg")));
     return;
     a("QQRTCSvc.chatroom_get_msg", paramPacket, (Bundle)localObject2);
     return;

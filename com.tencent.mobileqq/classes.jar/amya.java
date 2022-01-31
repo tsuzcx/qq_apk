@@ -1,32 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amya
-  extends amyj
+public abstract interface amya
 {
-  public long a;
-  public amyc a;
-  public amyd a;
+  public abstract void a();
   
-  public amya()
-  {
-    this.jdField_a_of_type_Amyd = new amyd();
-    this.jdField_a_of_type_Amyc = new amyc();
-    a();
-  }
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
-    this.b = 4096L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Amyd.a();
-    this.jdField_a_of_type_Amyc.a();
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public String toString()
-  {
-    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Amyd + ", circleResult = " + this.jdField_a_of_type_Amyc + '}';
-  }
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(ArEffectConfig paramArEffectConfig);
+  
+  public abstract void b();
 }
 
 

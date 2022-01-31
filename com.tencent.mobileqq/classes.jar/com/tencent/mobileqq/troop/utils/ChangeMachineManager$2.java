@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcgi;
+import bckr;
 
 public class ChangeMachineManager$2
   implements Runnable
 {
-  public ChangeMachineManager$2(bcgi parambcgi) {}
+  public ChangeMachineManager$2(bckr parambckr) {}
   
   public void run()
   {
-    bcgi.b(this.this$0);
+    bckr.b(this.this$0);
   }
 }
 

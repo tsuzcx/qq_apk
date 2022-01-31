@@ -1,13 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import java.util.List;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract interface alkq
+public final class alkq
+  implements FilenameFilter
 {
-  public abstract List<String> a(AppInterface paramAppInterface);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alkq
  * JD-Core Version:    0.7.0.1
  */

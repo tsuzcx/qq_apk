@@ -1,6 +1,24 @@
-abstract interface aswx
+public class aswx
+  implements Cloneable
 {
-  public abstract void a(int paramInt, Object... paramVarArgs);
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
+  
+  public aswx(aswm paramaswm, int paramInt, long paramLong)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  protected aswx a()
+  {
+    return (aswx)super.clone();
+  }
 }
 
 

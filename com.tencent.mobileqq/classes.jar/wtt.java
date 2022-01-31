@@ -1,25 +1,31 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wtt
-  implements xfc<Boolean, xfi>
+public class wtt
+  extends QQUIEventReceiver<MystoryListView, uot>
 {
-  wtt(wts paramwts) {}
-  
-  public Void a(Boolean paramBoolean, xfi paramxfi)
+  public wtt(@NonNull MystoryListView paramMystoryListView)
   {
-    if (paramBoolean.booleanValue())
-    {
-      wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramxfi.b.size(), paramxfi.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
+    super(paramMystoryListView);
+  }
+  
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull uot paramuot)
+  {
+    paramMystoryListView.q();
+    paramuot = (wub)paramMystoryListView.a("FeedSegment");
+    if (paramuot != null) {
+      paramuot.j();
     }
-    for (;;)
-    {
-      return null;
-      wsv.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramxfi.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, alpo.a(2131704026) + paramxfi.jdField_a_of_type_Int, 1);
+    paramMystoryListView = (wvq)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uot.class;
   }
 }
 

@@ -22,9 +22,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
-import bdlw;
-import bdlz;
-import bhny;
+import bdqf;
+import bdqi;
+import bhsf;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -35,13 +35,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.os.MqqHandler;
-import zcj;
-import zck;
-import zcl;
-import zcm;
-import zcn;
-import zco;
-import zda;
+import zgy;
+import zgz;
+import zha;
+import zhb;
+import zhc;
+import zhd;
+import zhp;
 
 public class ScannerView
   extends ViewGroup
@@ -60,11 +60,11 @@ public class ScannerView
   String jdField_a_of_type_JavaLangString;
   public StringBuilder a;
   ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private zcl jdField_a_of_type_Zcl;
-  private zcm jdField_a_of_type_Zcm;
-  private zcn jdField_a_of_type_Zcn;
-  private zco jdField_a_of_type_Zco;
-  private zda jdField_a_of_type_Zda;
+  private zha jdField_a_of_type_Zha;
+  private zhb jdField_a_of_type_Zhb;
+  private zhc jdField_a_of_type_Zhc;
+  private zhd jdField_a_of_type_Zhd;
+  private zhp jdField_a_of_type_Zhp;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   public int b;
@@ -102,7 +102,7 @@ public class ScannerView
     this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new zcj(this);
+    this.jdField_b_of_type_AndroidOsHandler = new zgy(this);
     a(paramContext, null);
   }
   
@@ -114,7 +114,7 @@ public class ScannerView
     this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new zcj(this);
+    this.jdField_b_of_type_AndroidOsHandler = new zgy(this);
     a(paramContext, paramAttributeSet);
   }
   
@@ -251,8 +251,8 @@ public class ScannerView
         }
       }
       ((TypedArray)localObject).recycle();
-      this.jdField_a_of_type_Zda = new zda(paramContext);
-      addView(this.jdField_a_of_type_Zda);
+      this.jdField_a_of_type_Zhp = new zhp(paramContext);
+      addView(this.jdField_a_of_type_Zhp);
     }
     if (paramAttributeSet != null) {
       this.jdField_a_of_type_Boolean = paramAttributeSet.getAttributeBooleanValue(0, true);
@@ -267,10 +267,10 @@ public class ScannerView
       {
         localParameters = paramCamera.getParameters();
         localObject = "torch";
-        if (bdlz.j) {
+        if (bdqi.j) {
           continue;
         }
-        localObject = bdlw.a().a(localParameters);
+        localObject = bdqf.a().a(localParameters);
       }
       catch (RuntimeException paramCamera)
       {
@@ -344,15 +344,15 @@ public class ScannerView
             Camera.getCameraInfo(0, (Camera.CameraInfo)localObject1);
             i2 = 0;
             i1 = 1;
-            this.jdField_a_of_type_AndroidHardwareCamera = bhny.a(i2);
+            this.jdField_a_of_type_AndroidHardwareCamera = bhsf.a(i2);
             i3 = ((Camera.CameraInfo)localObject1).orientation;
             i2 = i1;
             i1 = i3;
             break label342;
-            if (bdlz.jdField_a_of_type_Int <= 0) {
+            if (bdqi.jdField_a_of_type_Int <= 0) {
               continue;
             }
-            i3 = bdlz.jdField_a_of_type_Int;
+            i3 = bdqi.jdField_a_of_type_Int;
             this.jdField_c_of_type_Int = i3;
             this.jdField_d_of_type_Int = i2;
             if (QLog.isColorLevel())
@@ -376,7 +376,7 @@ public class ScannerView
         }
         else
         {
-          this.jdField_a_of_type_AndroidHardwareCamera = bhny.a();
+          this.jdField_a_of_type_AndroidHardwareCamera = bhsf.a();
           i2 = 0;
           i1 = 90;
           continue;
@@ -940,9 +940,9 @@ public class ScannerView
   {
     if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Zco);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Zhd);
       this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-      this.jdField_a_of_type_Zco = null;
+      this.jdField_a_of_type_Zhd = null;
     }
   }
   
@@ -954,11 +954,11 @@ public class ScannerView
       return;
       this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
     } while (this.jdField_a_of_type_AndroidHardwareSensorManager == null);
-    if (this.jdField_a_of_type_Zco == null) {
-      this.jdField_a_of_type_Zco = new zco(this);
+    if (this.jdField_a_of_type_Zhd == null) {
+      this.jdField_a_of_type_Zhd = new zhd(this);
     }
     paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Zco, paramContext, 2);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Zhd, paramContext, 2);
   }
   
   public void a(SensorEvent paramSensorEvent)
@@ -1019,8 +1019,8 @@ public class ScannerView
   public void c()
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Zda != null) {
-      this.jdField_a_of_type_Zda.b();
+    if (this.jdField_a_of_type_Zhp != null) {
+      this.jdField_a_of_type_Zhp.b();
     }
     ThreadManager.post(new ScannerView.7(this), 8, null, false);
   }
@@ -1036,7 +1036,7 @@ public class ScannerView
         {
           this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread = new ScannerView.DecodeThread(this, "ScannerDecodeThread");
           this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.start();
-          this.jdField_a_of_type_AndroidOsHandler = new zck(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.getLooper());
+          this.jdField_a_of_type_AndroidOsHandler = new zgz(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.getLooper());
         }
         if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.jdField_a_of_type_Boolean) {
           return;
@@ -1080,9 +1080,9 @@ public class ScannerView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_AndroidViewSurfaceView.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (this.jdField_a_of_type_Zda != null)
+    if (this.jdField_a_of_type_Zhp != null)
     {
-      this.jdField_a_of_type_Zda.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+      this.jdField_a_of_type_Zhp.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
       if (this.m != -1) {
         break label167;
       }
@@ -1106,7 +1106,7 @@ public class ScannerView
       this.jdField_a_of_type_AndroidGraphicsRect = this.jdField_c_of_type_AndroidGraphicsRect;
       this.jdField_c_of_type_AndroidGraphicsRect = localRect;
       this.jdField_b_of_type_AndroidGraphicsRect = null;
-      this.jdField_a_of_type_Zda.a(paramInt3, paramInt4, paramInt1, paramInt2);
+      this.jdField_a_of_type_Zhp.a(paramInt3, paramInt4, paramInt1, paramInt2);
       return;
       label167:
       if ((this.o & 0x3) == 3)
@@ -1150,22 +1150,22 @@ public class ScannerView
     }
   }
   
-  public void setFileDecodeListener(zcl paramzcl)
+  public void setFileDecodeListener(zha paramzha)
   {
     e();
-    this.jdField_a_of_type_Zcl = paramzcl;
+    this.jdField_a_of_type_Zha = paramzha;
   }
   
-  public void setFlashLightListener(zcm paramzcm)
+  public void setFlashLightListener(zhb paramzhb)
   {
     e();
-    this.jdField_a_of_type_Zcm = paramzcm;
+    this.jdField_a_of_type_Zhb = paramzhb;
   }
   
-  public void setScanListener(zcn paramzcn)
+  public void setScanListener(zhc paramzhc)
   {
     e();
-    this.jdField_a_of_type_Zcn = paramzcn;
+    this.jdField_a_of_type_Zhc = paramzhc;
   }
   
   public void setViewFinder(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1178,15 +1178,15 @@ public class ScannerView
     this.n = (paramInt4 - paramInt2);
     this.k = 0;
     this.l = 0;
-    if (this.jdField_a_of_type_Zda == null)
+    if (this.jdField_a_of_type_Zhp == null)
     {
-      this.jdField_a_of_type_Zda = new zda(getContext());
-      addView(this.jdField_a_of_type_Zda);
+      this.jdField_a_of_type_Zhp = new zhp(getContext());
+      addView(this.jdField_a_of_type_Zhp);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Zda.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Zhp.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)

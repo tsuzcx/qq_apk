@@ -1,14 +1,26 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
+
 class aror
-  implements army
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aror(aroq paramaroq) {}
+  aror(aron paramaron) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    cx.b(this.a.a, 0);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((aron.a(this.a).getVisibility() == 0) && (Math.abs(aron.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aron.a(this.a).setAlpha(f);
+      }
+      if ((aron.a(this.a).getVisibility() == 0) && (Math.abs(aron.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aron.a(this.a).setAlpha(f);
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 

@@ -81,12 +81,12 @@ public class opn
   
   public static String a()
   {
-    return (int)Math.ceil(Float.valueOf((float)bdcb.d()).floatValue() / 1024.0F / 1024.0F / 1024.0F) + "";
+    return (int)Math.ceil(Float.valueOf((float)bdgk.d()).floatValue() / 1024.0F / 1024.0F / 1024.0F) + "";
   }
   
   public static String a(Context paramContext)
   {
-    paramContext = bdcb.a(paramContext).a;
+    paramContext = bdgk.a(paramContext).a;
     if (!TextUtils.isEmpty(paramContext))
     {
       if (paramContext.equals("WIFI")) {
@@ -307,7 +307,7 @@ public class opn
     gallery_report.GallerySocialReported localGallerySocialReported = new gallery_report.GallerySocialReported();
     localGallerySocialReported.action.set(paramInt3);
     localGallerySocialReported.phone_type.set(1);
-    localGallerySocialReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    localGallerySocialReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.3.5"));
     localGallerySocialReported.source.set(paramInt4);
     if (!TextUtils.isEmpty(b())) {
       localGallerySocialReported.city.set(ByteStringMicro.copyFromUtf8(b()));
@@ -335,8 +335,8 @@ public class opn
     localReportInfo.mOperation = paramInt1;
     gallery_report.GalleryExpReported localGalleryExpReported = new gallery_report.GalleryExpReported();
     localGalleryExpReported.phone_type.set(1);
-    if (!TextUtils.isEmpty("8.3.3")) {
-      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    if (!TextUtils.isEmpty("8.3.5")) {
+      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.3.5"));
     }
     localGalleryExpReported.source.set(paramInt3);
     if (!TextUtils.isEmpty(a())) {

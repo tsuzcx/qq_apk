@@ -1,50 +1,81 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xqo
-  extends Dialog
+  extends uvc
+  implements urr<vgh, vhs>
 {
-  protected TextView a;
-  protected AnimationPoint a;
+  String jdField_a_of_type_JavaLangString;
+  uvl jdField_a_of_type_Uvl;
+  boolean jdField_a_of_type_Boolean;
+  String b;
   
-  public xqo(Context paramContext)
+  public void a(List<StoryVideoItem> paramList, boolean paramBoolean)
   {
-    super(paramContext, 2131755015);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561498, null);
-    localView.setOnTouchListener(new xqp(this));
-    super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362574));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367412));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(xod.a(paramContext, 25.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new xqq(this, paramContext));
+    if (this.jdField_a_of_type_Uvl == null)
+    {
+      uvd localuvd = new uvd();
+      localuvd.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localuvd.jdField_a_of_type_Boolean = paramBoolean;
+      localuvd.b = true;
+      localuvd.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      localuvd.jdField_a_of_type_Int = paramList.size();
+      umc.a().dispatch(localuvd);
+      return;
+    }
+    this.jdField_a_of_type_Uvl.a(paramList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Uvl = null;
   }
   
-  public void a(String paramString)
+  public void a(@NonNull vgh paramvgh, @Nullable vhs paramvhs, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.singleSync", 2, "onResp code=" + paramErrorMessage.errorCode);
+    }
+    paramvgh = new StoryVideoItem();
+    paramvgh.mVid = this.b;
+    paramvgh.mStoryType = 2;
+    if ((paramvhs != null) && (paramErrorMessage.isSuccess()))
+    {
+      paramvgh = paramvhs.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvgh.hasNext())
+      {
+        paramErrorMessage = (StoryVideoItem)paramvgh.next();
+        if (this.b.equals(paramErrorMessage.mVid)) {
+          if (paramErrorMessage.mErrorCode != 0) {
+            break;
+          }
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        ((umm)uwa.a(28)).a(paramvhs.b);
+        a(paramvhs.jdField_a_of_type_JavaUtilList, false);
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      if (paramvhs == null) {}
+      for (paramvgh = new ArrayList();; paramvgh = paramvhs.jdField_a_of_type_JavaUtilList)
+      {
+        a(paramvgh, false);
+        return;
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean isValidate()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    return false;
   }
 }
 

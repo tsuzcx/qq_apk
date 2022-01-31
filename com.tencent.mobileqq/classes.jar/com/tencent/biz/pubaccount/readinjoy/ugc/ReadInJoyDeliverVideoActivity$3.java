@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import alpo;
-import bdcd;
-import bdfq;
+import alud;
+import bdgm;
+import bdjz;
 import qpe;
 
 public class ReadInJoyDeliverVideoActivity$3
@@ -15,7 +15,7 @@ public class ReadInJoyDeliverVideoActivity$3
     if (ReadInJoyDeliverVideoActivity.b(this.this$0)) {
       return;
     }
-    bdcd.a(this.this$0, 233, alpo.a(2131713284), this.this$0.getString(2131718833), new qpe(this), null).show();
+    bdgm.a(this.this$0, 233, alud.a(2131713296), this.this$0.getString(2131718845), new qpe(this), null).show();
   }
 }
 

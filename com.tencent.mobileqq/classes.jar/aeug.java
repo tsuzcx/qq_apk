@@ -1,17 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
+import android.graphics.drawable.Drawable;
 
 public class aeug
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeug(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
 }
 
 

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class njd
-  extends alox
+  extends altm
 {
   njd(nin paramnin) {}
   

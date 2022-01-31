@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import anhb;
+import anlk;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppYYBDownloadModule$5
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$5(anhb paramanhb, long paramLong, String paramString) {}
+  public ArkAppYYBDownloadModule$5(anlk paramanlk, long paramLong, String paramString) {}
   
   public void run()
   {

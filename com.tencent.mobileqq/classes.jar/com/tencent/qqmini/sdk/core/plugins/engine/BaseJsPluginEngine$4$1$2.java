@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins.engine;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bgmn;
+import bgqu;
 
 class BaseJsPluginEngine$4$1$2
   implements View.OnClickListener

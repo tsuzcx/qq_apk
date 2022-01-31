@@ -4,27 +4,27 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bivh;
-import bivk;
+import bizo;
+import bizr;
 
 public class ReaderSplashImpl$3$1
   implements Runnable
 {
-  public ReaderSplashImpl$3$1(bivk parambivk, View paramView) {}
+  public ReaderSplashImpl$3$1(bizr parambizr, View paramView) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(bivh.a(this.jdField_a_of_type_Bivk.a));
+      RelativeLayout localRelativeLayout = new RelativeLayout(bizo.a(this.jdField_a_of_type_Bizr.a));
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      bivh.a(this.jdField_a_of_type_Bivk.a, localRelativeLayout);
+      bizo.a(this.jdField_a_of_type_Bizr.a, localRelativeLayout);
       return;
     }
-    bivh.a(this.jdField_a_of_type_Bivk.a, bivh.a(this.jdField_a_of_type_Bivk.a));
+    bizo.a(this.jdField_a_of_type_Bizr.a, bizo.a(this.jdField_a_of_type_Bizr.a));
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.av.smallscreen;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdiv;
+import bdne;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -18,7 +18,7 @@ class SmallScreenService$3
     Object localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localObject != null)
     {
-      localObject = bdiv.a(((VideoAppInterface)localObject).getApp()).edit();
+      localObject = bdne.a(((VideoAppInterface)localObject).getApp()).edit();
       if (this.this$0.a.b()) {
         ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.this$0.a.a().K);
       }

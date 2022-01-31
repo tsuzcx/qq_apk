@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
-import wpn;
+import wtw;
 
 public class StoryDownloadView$5$1
   implements Runnable
 {
-  public StoryDownloadView$5$1(wpn paramwpn) {}
+  public StoryDownloadView$5$1(wtw paramwtw) {}
   
   public void run()
   {

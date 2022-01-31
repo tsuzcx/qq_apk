@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bknc
-  implements View.OnClickListener
+public class bknc
+  implements Animation.AnimationListener
 {
-  bknc(bkna parambkna, bkmi parambkmi, int paramInt) {}
+  public bknc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ((bkme)this.jdField_a_of_type_Bkna.a.get()).a(this.jdField_a_of_type_Bkmi.itemView, this.jdField_a_of_type_Int);
+    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import aubu;
-import aucf;
+import augd;
+import augo;
 
 class MsgBackupQRFragment$7
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupQRFragment$7
   
   public void run()
   {
-    aucf.a().a().a(false);
+    augo.a().a().a(false);
   }
 }
 

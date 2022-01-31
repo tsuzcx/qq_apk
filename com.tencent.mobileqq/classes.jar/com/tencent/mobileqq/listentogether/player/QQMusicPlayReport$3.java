@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether.player;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public final class QQMusicPlayReport$3
       localHashMap.put("qqmusicplay_report_key_play_cache", str);
       localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.jdField_a_of_type_Int));
       localHashMap.put("qqmusicplay_report_key_seek_count_per_song", String.valueOf(this.b));
-      azmz.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_count_per_song", true, 0L, 0L, localHashMap, "");
+      azri.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_count_per_song", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel()) {}
       return;
     }

@@ -1,104 +1,92 @@
-import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.1;
-import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bktt
-  extends bkpd
+class bktt
+  implements bmeo<blfi>
 {
-  private AEProviderContainerView a;
+  bktt(bktp parambktp) {}
   
-  public bktt(ViewStub paramViewStub)
+  public void a(@Nullable blfi paramblfi)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.a = ((AEProviderContainerView)paramView.findViewById(2131363158));
-  }
-  
-  public void a(axkr paramaxkr)
-  {
-    a(new BeautyAndFilterPanelViewStubHolder.1(this, paramaxkr));
-  }
-  
-  public void a(bkpa parambkpa, blbm paramblbm)
-  {
-    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambkpa, paramblbm));
-  }
-  
-  public void a(AECaptureMode paramAECaptureMode)
-  {
-    if (!a()) {
+    int i = 1;
+    if (paramblfi == null) {}
+    label305:
+    label336:
+    do
+    {
       return;
-    }
-    this.a.setCaptureMode(paramAECaptureMode);
-  }
-  
-  public void b()
-  {
-    a();
-    this.a.setVisibility(0);
-    this.a.b();
-  }
-  
-  public boolean b()
-  {
-    if (!a()) {
-      return false;
-    }
-    return this.a.b();
-  }
-  
-  public void c()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.a();
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.d();
-  }
-  
-  public void e()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void f()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.c();
-  }
-  
-  public void g()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.g();
-  }
-  
-  public void h()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.h();
+      paramblfi = paramblfi.a;
+      bktp.a(this.a, paramblfi);
+      bljn.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when capture mode change");
+      bktp.a(this.a);
+      bktp.a(this.a).q();
+      if (paramblfi == AECaptureMode.NORMAL) {
+        bktp.a(this.a).c(true);
+      }
+      for (;;)
+      {
+        if (bktp.a(this.a) != null) {
+          bktp.a(this.a).a(paramblfi);
+        }
+        if (paramblfi != AECaptureMode.NORMAL) {
+          break label336;
+        }
+        bktp.a(this.a).setVisibility(0);
+        if (bktp.a(this.a) != null)
+        {
+          if ((!blat.g(bktp.b(this.a).getIntent())) && (!blat.h(bktp.c(this.a).getIntent()))) {
+            break label305;
+          }
+          bktp.a(this.a).setFunctionFlag(bktp.d(this.a).getIntent().getIntExtra("ability_flag", 2));
+        }
+        bktp.a(this.a).setMaxDuration(bktp.a());
+        bktp.a(this.a).a(false);
+        bktp.a(this.a).b(blat.i(bktp.e(this.a).getIntent()));
+        bktp.a(this.a).c(false);
+        if (bktp.b(this.a)) {
+          bktp.a(this.a).setVisibility(0);
+        }
+        bktp.a(this.a).setVisibility(0);
+        if (blat.a(bktp.a(this.a).a())) {
+          break;
+        }
+        bktp.a(this.a).a().b();
+        return;
+        bktp.a(this.a).c(false);
+      }
+      paramblfi = bktp.a(this.a);
+      if (bktp.a(this.a)) {}
+      for (;;)
+      {
+        paramblfi.setFunctionFlag(i);
+        break;
+        i = 3;
+      }
+      if (paramblfi == AECaptureMode.GIF)
+      {
+        bktp.a(this.a).setVisibility(0);
+        bktp.a(this.a).setFunctionFlag(4);
+        bktp.a(this.a).setMaxDuration(bktp.b());
+        bktp.a(this.a).a(true);
+        bktp.a(this.a).c(true);
+        if (bktp.b(this.a)) {
+          bktp.a(this.a).setVisibility(0);
+        }
+        bktp.a(this.a).setVisibility(0);
+        bktp.a(this.a).a();
+        return;
+      }
+    } while (paramblfi != AECaptureMode.PLAY);
+    bktp.a(this.a).setVisibility(8);
+    bktp.a(this.a).setVisibility(8);
+    bktp.a(this.a).setVisibility(8);
+    bktp.a(this.a).setMaterial(null);
   }
 }
 

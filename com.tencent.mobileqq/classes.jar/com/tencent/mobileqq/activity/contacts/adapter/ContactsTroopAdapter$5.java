@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahnd;
+import ahrs;
 
 public class ContactsTroopAdapter$5
   implements Runnable
 {
-  public ContactsTroopAdapter$5(ahnd paramahnd) {}
+  public ContactsTroopAdapter$5(ahrs paramahrs) {}
   
   public void run()
   {
-    ahnd.a(this.this$0);
+    ahrs.a(this.this$0);
   }
 }
 

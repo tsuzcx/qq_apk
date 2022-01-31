@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import asyp;
+import atcy;
 
 public class NowDataReporter$2
   implements Runnable

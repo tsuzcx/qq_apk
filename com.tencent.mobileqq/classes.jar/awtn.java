@@ -1,15 +1,15 @@
-class awtn
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+
+public class awtn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public long a;
-  public bica a;
-  public boolean a;
+  public awtn(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public awtn(bica parambica)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bica = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bica = parambica;
+    StickyNotePublishFragment.a(this.a, paramBoolean);
   }
 }
 

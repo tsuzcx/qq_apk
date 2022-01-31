@@ -1,19 +1,13 @@
-public class batl
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+
+class batl
+  implements ITransCallbackForReport
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
+  batl(batj parambatj) {}
   
-  public String toString()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
+    this.a.a(false, paramInt, paramString1, paramString2);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beed;
+import beim;
 
 class SwiftBrowserScreenShotHandler$6$2
   implements Runnable

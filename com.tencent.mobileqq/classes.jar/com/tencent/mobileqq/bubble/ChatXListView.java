@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
-import aftf;
-import aftg;
+import afxu;
+import afxv;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,10 +15,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ListAdapter;
-import antg;
-import anth;
-import anti;
-import antj;
+import anxp;
+import anxq;
+import anxr;
+import anxs;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
@@ -39,10 +39,10 @@ public class ChatXListView
   private DashPathEffect jdField_a_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(new float[] { 2.0F, 6.0F }, 0.0F);
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private antg jdField_a_of_type_Antg;
-  private anth jdField_a_of_type_Anth;
-  public anti a;
-  private antj jdField_a_of_type_Antj;
+  private anxp jdField_a_of_type_Anxp;
+  private anxq jdField_a_of_type_Anxq;
+  public anxr a;
+  private anxs jdField_a_of_type_Anxs;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -264,7 +264,7 @@ public class ChatXListView
     while (i >= 0)
     {
       View localView = getChildAt(i);
-      if ((localView.getTag() != null) && ((localView.getTag() instanceof aftf)) && (((aftf)localView.getTag()).a()))
+      if ((localView.getTag() != null) && ((localView.getTag() instanceof afxu)) && (((afxu)localView.getTag()).a()))
       {
         Rect localRect = new Rect();
         localView.getGlobalVisibleRect(localRect);
@@ -281,12 +281,12 @@ public class ChatXListView
   {
     int j = 0;
     int k = paramMotionEvent.getAction();
-    if (this.jdField_a_of_type_Antg != null)
+    if (this.jdField_a_of_type_Anxp != null)
     {
       if (k != 0) {
         break label57;
       }
-      if ((this.jdField_a_of_type_Float != -1.0F) || (!this.jdField_a_of_type_Antg.s())) {}
+      if ((this.jdField_a_of_type_Float != -1.0F) || (!this.jdField_a_of_type_Anxp.s())) {}
     }
     for (this.jdField_a_of_type_Float = paramMotionEvent.getY();; this.jdField_a_of_type_Float = -1.0F)
     {
@@ -308,14 +308,14 @@ public class ChatXListView
               i = 1;
             }
           }
-          if ((!aftg.jdField_a_of_type_Boolean) && (i == 0))
+          if ((!afxv.jdField_a_of_type_Boolean) && (i == 0))
           {
-            this.jdField_a_of_type_Antg.aJ();
+            this.jdField_a_of_type_Anxp.aJ();
             this.jdField_a_of_type_Float = -1.0F;
           }
         }
       } while ((k != 1) && (k != 3));
-      this.jdField_a_of_type_Antg.aK();
+      this.jdField_a_of_type_Anxp.aK();
     }
   }
   
@@ -357,23 +357,23 @@ public class ChatXListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Antj != null) && (this.jdField_a_of_type_Antj.a(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Anxs != null) && (this.jdField_a_of_type_Anxs.a(paramMotionEvent))) {
       return true;
     }
     if (paramMotionEvent.getAction() == 2)
     {
-      if (aftg.jdField_a_of_type_Boolean) {
+      if (afxv.jdField_a_of_type_Boolean) {
         return false;
       }
       if (a(paramMotionEvent))
       {
-        aftg.jdField_a_of_type_Boolean = true;
+        afxv.jdField_a_of_type_Boolean = true;
         return false;
       }
     }
     else
     {
-      aftg.jdField_a_of_type_Boolean = false;
+      afxv.jdField_a_of_type_Boolean = false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -388,8 +388,8 @@ public class ChatXListView
       return;
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
       c();
-    } while (this.jdField_a_of_type_Anth == null);
-    this.jdField_a_of_type_Anth.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    } while (this.jdField_a_of_type_Anxq == null);
+    this.jdField_a_of_type_Anxq.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -403,8 +403,8 @@ public class ChatXListView
     {
       return;
       super.onMeasure(paramInt1, paramInt2);
-    } while (this.jdField_a_of_type_Anti == null);
-    this.jdField_a_of_type_Anti.a();
+    } while (this.jdField_a_of_type_Anxr == null);
+    this.jdField_a_of_type_Anxr.a();
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -418,7 +418,7 @@ public class ChatXListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Antj != null) && (this.jdField_a_of_type_Antj.b(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Anxs != null) && (this.jdField_a_of_type_Anxs.b(paramMotionEvent))) {
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -440,19 +440,19 @@ public class ChatXListView
     }
   }
   
-  public void setOnLayoutListener(anth paramanth)
+  public void setOnLayoutListener(anxq paramanxq)
   {
-    this.jdField_a_of_type_Anth = paramanth;
+    this.jdField_a_of_type_Anxq = paramanxq;
   }
   
-  public void setOnMeasureListener(anti paramanti)
+  public void setOnMeasureListener(anxr paramanxr)
   {
-    this.jdField_a_of_type_Anti = paramanti;
+    this.jdField_a_of_type_Anxr = paramanxr;
   }
   
-  public void setOnTouchEventConsumer(antj paramantj)
+  public void setOnTouchEventConsumer(anxs paramanxs)
   {
-    this.jdField_a_of_type_Antj = paramantj;
+    this.jdField_a_of_type_Anxs = paramanxs;
   }
   
   public void setShouldPlayVideo(boolean paramBoolean)
@@ -460,9 +460,9 @@ public class ChatXListView
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public void setShowPanelListener(antg paramantg)
+  public void setShowPanelListener(anxp paramanxp)
   {
-    this.jdField_a_of_type_Antg = paramantg;
+    this.jdField_a_of_type_Anxp = paramanxp;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import baqo;
+import baux;
 
 public class MultiMsgUpProcessor$2
   implements Runnable
 {
-  public MultiMsgUpProcessor$2(baqo parambaqo) {}
+  public MultiMsgUpProcessor$2(baux parambaux) {}
   
   public void run()
   {
-    this.this$0.aS_();
+    this.this$0.aP_();
   }
 }
 

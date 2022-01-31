@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.3.3-1376-3834.apk
+apkFileName: QQ-8.3.5-1392-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -7,6 +7,7 @@ doNotCompress:
 - assets/classes10.dex.MD5
 - assets/classes11.dex.MD5
 - assets/classes12.dex.MD5
+- assets/classes13.dex.MD5
 - assets/classes2.dex.MD5
 - assets/classes3.dex.MD5
 - assets/classes4.dex.MD5
@@ -301,5 +302,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1376'
-  versionName: 8.3.3
+  versionCode: '1392'
+  versionName: 8.3.5

@@ -1,18 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.KingCardInfo;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
+import java.util.ArrayList;
 
-public final class bjgq
-  implements Parcelable.Creator<KingCardInfo>
+public class bjgq
+  implements azeh
 {
-  public KingCardInfo a(Parcel paramParcel)
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public bjgq(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, QQAppInterface paramQQAppInterface, ResultReceiver paramResultReceiver)
   {
-    return new KingCardInfo(paramParcel);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
   }
   
-  public KingCardInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new KingCardInfo[paramInt];
+    VideoEnvironment.a("QzoneVideoSoDownloadModule", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alud.a(2131712900) + paramInt2 + "]");
+        azdh.b(1, paramInt2);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
+      {
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, new bjgr(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver));
+        return;
+      }
+      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alud.a(2131712984) + paramInt1 + "]");
+      azdh.b(1, paramInt1);
+      return;
+    }
+    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, alud.a(2131712875) + paramInt2 + "]");
+    azdh.b(1, paramInt2);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import yiu;
+import ynh;
 
 public class VideoPlayerView$19$2
   implements Runnable
 {
-  public VideoPlayerView$19$2(yiu paramyiu) {}
+  public VideoPlayerView$19$2(ynh paramynh) {}
   
   public void run()
   {

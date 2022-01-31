@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class airi
-  extends beso
+class airi
+  implements View.OnClickListener
 {
-  public airi(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  airi(airh paramairh) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
-    this.a.a(alpo.a(2131713703));
-    if (this.a.jdField_a_of_type_Ajat != null) {
-      this.a.jdField_a_of_type_Ajat.b();
-    }
+    airh.a(this.a);
   }
 }
 

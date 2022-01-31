@@ -10,20 +10,20 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pyv
   extends pxl
 {
-  public pyv(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pyv(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).l().g().n().q().j().h();
+    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).l().g().n().q().j().h();
   }
   
-  public pxl c(rqj paramrqj, bcws parambcws)
+  public pxl c(rqj paramrqj, bdbb parambdbb)
   {
-    super.c(paramrqj, parambcws);
+    super.c(paramrqj, parambdbb);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.b = true;
     return this;
   }
@@ -46,7 +46,7 @@ public class pyv
       localLinearLayout2.setOrientation(1);
       new LinearLayout.LayoutParams(-2, -2);
       localLinearLayout2.addView((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk);
-      localLinearLayout2.setPadding(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLinearLayout2.setPadding(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       localLinearLayout1.addView(localLinearLayout2);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {

@@ -1,30 +1,38 @@
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdkk
-  implements Comparator<String>
+class bdkk
 {
-  public int a(String paramString1, String paramString2)
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  private void a()
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
+      if ((localDrawable instanceof GradientDrawable)) {
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
       }
-      return 1;
     }
-    if (paramString2 != null) {
-      return 1;
+    else
+    {
+      return;
     }
-    return 0;
+    QLog.w("BrandColorManager", 4, "set band border-color fail");
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,20 @@
-import com.tencent.mobileqq.data.CardProfile;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class ayuy
+  extends aytg
 {
-  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
+  private Comparator<aynq> a = new ayuz(this);
+  
+  public ayuy(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    HashSet localHashSet = new HashSet();
-    ArrayList localArrayList = new ArrayList();
-    paramList1 = paramList1.iterator();
-    paramList2 = paramList2.iterator();
-    while (paramList1.hasNext())
-    {
-      CardProfile localCardProfile = (CardProfile)paramList1.next();
-      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
-      localArrayList.add(localCardProfile);
-    }
-    while (paramList2.hasNext())
-    {
-      paramList1 = (CardProfile)paramList2.next();
-      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
-        localArrayList.add(paramList1);
-      }
-    }
-    return localArrayList;
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+  }
+  
+  public Comparator<aynq> a()
+  {
+    return this.a;
   }
 }
 

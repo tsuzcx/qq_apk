@@ -1,7 +1,7 @@
 import com.tencent.qphone.base.util.QLog;
 
 class naj
-  extends alsi
+  extends alwx
 {
   naj(nag paramnag) {}
   

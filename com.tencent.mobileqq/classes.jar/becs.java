@@ -1,17 +1,13 @@
-import android.util.LruCache;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class becs
-  extends LruCache<String, abui>
+final class becs
+  implements View.OnTouchListener
 {
-  public becs(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramInt);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, abui paramabui1, abui paramabui2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramabui1, paramabui2);
-    paramabui1.b();
+    return true;
   }
 }
 

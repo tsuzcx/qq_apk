@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface agyy
 {
-  public abstract void a();
+  public abstract void a(List<agxz> paramList, String paramString1, String paramString2);
 }
 
 

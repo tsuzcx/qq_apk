@@ -1,15 +1,15 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.content.Intent;
-import bgjd;
-import bgje;
+import bgnk;
+import bgnl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class MiniAppProxyImpl$11
-  implements bgje
+  implements bgnl
 {
   MiniAppProxyImpl$11(MiniAppProxyImpl paramMiniAppProxyImpl, AsyncResult paramAsyncResult) {}
   
@@ -40,7 +40,7 @@ class MiniAppProxyImpl$11
         paramIntent.put("latitude", d1);
         paramIntent.put("longitude", d2);
         this.val$asyncResult.onReceiveResult(true, paramIntent);
-        bgjd.a().b(this);
+        bgnk.a().b(this);
         return true;
       }
       catch (JSONException paramIntent)

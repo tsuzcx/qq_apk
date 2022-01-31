@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class aime
-  implements bhpo
 {
-  public aime(NewPhotoListActivity paramNewPhotoListActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      abqw.a().a("list_photo", false);
-      return;
-    }
-    abqw.a().a("list_photo");
-  }
+  public int a;
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContact a;
+  public String a;
+  public Button b;
+  public ImageView b;
+  public TextView b;
+  public Button c;
+  public TextView c;
 }
 
 

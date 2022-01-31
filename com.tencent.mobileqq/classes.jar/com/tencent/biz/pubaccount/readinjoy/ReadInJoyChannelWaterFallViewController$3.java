@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import bjxj;
+import bkbq;
 import nrt;
 import nwu;
 import ors;
@@ -14,10 +14,10 @@ public class ReadInJoyChannelWaterFallViewController$3
   {
     if (nwu.a(this.this$0) == 40677)
     {
-      nrt.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ors.b(nwu.a(this.this$0)), false);
+      nrt.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ors.b(nwu.a(this.this$0)), false);
       return;
     }
-    nrt.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ors.b(nwu.a(this.this$0)), false);
+    nrt.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ors.b(nwu.a(this.this$0)), false);
   }
 }
 

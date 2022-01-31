@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aleh;
+import aliw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigUtils$1
@@ -10,9 +10,9 @@ public final class ApolloConfigUtils$1
   
   public void run()
   {
-    aleh localaleh = (aleh)this.a.getManager(155);
-    if (localaleh.a) {
-      localaleh.a(false);
+    aliw localaliw = (aliw)this.a.getManager(155);
+    if (localaliw.a) {
+      localaliw.a(false);
     }
   }
 }

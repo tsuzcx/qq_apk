@@ -1,46 +1,28 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 class azvq
-  extends URLDrawableDownListener.Adapter
+  extends QIPCModule
 {
-  azvq(azvm paramazvm) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  azvq(azvp paramazvp, String paramString)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
-    }
+    super(paramString);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
+    if ("receipt_set_read".equals(paramString)) {
+      azvp.a(this.a, paramBundle);
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
-    paramView.getLayoutParams().width = i;
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    paramView.requestLayout();
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
+    for (;;)
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
+      }
     }
   }
 }

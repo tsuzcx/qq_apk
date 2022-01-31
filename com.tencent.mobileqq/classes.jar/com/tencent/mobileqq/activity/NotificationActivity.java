@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.activity;
 
-import adfc;
-import adfd;
-import adfe;
-import adff;
-import adfg;
-import adfh;
-import adfi;
-import adfj;
-import adfk;
-import adfl;
-import adfm;
-import adfn;
-import adfo;
-import adfp;
-import adfq;
-import adfr;
-import adfs;
-import adft;
-import adfu;
-import adfv;
-import adfw;
-import adfy;
-import adfz;
-import adga;
-import adgb;
-import adgc;
-import adgd;
-import adge;
-import adgf;
-import adgh;
-import adgi;
-import adgj;
-import adgk;
-import adgl;
-import allq;
-import alpo;
+import adjr;
+import adjs;
+import adjt;
+import adju;
+import adjv;
+import adjw;
+import adjx;
+import adjy;
+import adjz;
+import adka;
+import adkb;
+import adkc;
+import adkd;
+import adke;
+import adkf;
+import adkg;
+import adkh;
+import adki;
+import adkj;
+import adkk;
+import adkl;
+import adkn;
+import adko;
+import adkp;
+import adkq;
+import adkr;
+import adks;
+import adkt;
+import adku;
+import adkw;
+import adkx;
+import adky;
+import adkz;
+import adla;
+import alqf;
+import alud;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Application;
@@ -62,16 +62,16 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import autg;
-import awdr;
-import azmj;
-import azyu;
-import bdcd;
-import bdeo;
-import bdfq;
-import bdiv;
-import bdwj;
-import bepp;
+import auxp;
+import awia;
+import azqs;
+import badd;
+import bdgm;
+import bdix;
+import bdjz;
+import bdne;
+import beas;
+import bety;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.signature.SignatureKickData;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -113,19 +113,19 @@ public class NotificationActivity
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">");
   private static final String jdField_h_of_type_JavaLangString;
   private int jdField_a_of_type_Int;
-  private adgk jdField_a_of_type_Adgk = new adgk(this);
-  private adgl jdField_a_of_type_Adgl = new adgl(this, 1);
+  private adkz jdField_a_of_type_Adkz = new adkz(this);
+  private adla jdField_a_of_type_Adla = new adla(this, 1);
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adgd(this);
-  private bdwj jdField_a_of_type_Bdwj;
-  private bepp jdField_a_of_type_Bepp;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adks(this);
+  private beas jdField_a_of_type_Beas;
+  private bety jdField_a_of_type_Bety;
   String jdField_a_of_type_JavaLangString = "http://fwd.z.qq.com:8080/forward.jsp?bid=906";
   private Constants.LogoutReason jdField_a_of_type_MqqAppConstants$LogoutReason = Constants.LogoutReason.tips;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
-  private adgl jdField_b_of_type_Adgl = new adgl(this, 2);
+  private adla jdField_b_of_type_Adla = new adla(this, 2);
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private final int jdField_c_of_type_Int = 1;
@@ -145,7 +145,7 @@ public class NotificationActivity
   static
   {
     jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(new String[] { "0X800AA2F", "0X800AA30", "0X800AA31", "0X800AA32" }));
-    jdField_h_of_type_JavaLangString = bdeo.c.pattern() + "|" + bdeo.d.pattern();
+    jdField_h_of_type_JavaLangString = bdix.c.pattern() + "|" + bdix.d.pattern();
   }
   
   private Dialog a()
@@ -153,16 +153,16 @@ public class NotificationActivity
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2131559401);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131365246);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131365245);
-    localObject = (TextView)((Window)localObject).findViewById(2131365268);
+    ((Window)localObject).setContentView(2131559400);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131365248);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131365247);
+    localObject = (TextView)((Window)localObject).findViewById(2131365270);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131698730) + "8.3.3" + getString(2131698729));
-    localButton1.setOnClickListener(new adfw(this));
-    localButton2.setOnClickListener(new adfz(this));
+    ((TextView)localObject).setText(getString(2131698742) + "8.3.5" + getString(2131698741));
+    localButton1.setOnClickListener(new adkl(this));
+    localButton2.setOnClickListener(new adko(this));
     return localAlertDialog;
   }
   
@@ -188,9 +188,9 @@ public class NotificationActivity
       {
         QLog.i("NotificationActivity", 1, "myShowDialog: invoked.  throwable: " + localThrowable);
         continue;
-        this.jdField_b_of_type_JavaLangString = getString(2131693468);
-        this.jdField_c_of_type_JavaLangString = getString(2131693469);
-        this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adge(this));
+        this.jdField_b_of_type_JavaLangString = getString(2131693470);
+        this.jdField_c_of_type_JavaLangString = getString(2131693471);
+        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adkt(this));
         continue;
         TextView localTextView = new TextView(this);
         localTextView.setLinksClickable(true);
@@ -204,7 +204,7 @@ public class NotificationActivity
           {
             String str1 = getPackageName();
             localTextView.setText(this.jdField_c_of_type_JavaLangString);
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131700004, new adgf(this, str1), false);
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131700016, new adku(this, str1), false);
             paramInt = 1;
             if (paramInt != 0) {
               break;
@@ -213,7 +213,7 @@ public class NotificationActivity
               break label438;
             }
             localTextView.setText(Html.fromHtml(this.jdField_c_of_type_JavaLangString));
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131692277, new adgh(this));
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131692278, new adkw(this));
           }
           catch (Exception localException3)
           {
@@ -222,7 +222,7 @@ public class NotificationActivity
           paramInt = 0;
           continue;
           label438:
-          localTextView.setText(Html.fromHtml(getString(2131693232)));
+          localTextView.setText(Html.fromHtml(getString(2131693234)));
         }
         try
         {
@@ -236,13 +236,13 @@ public class NotificationActivity
         if (QQPlayerService.a()) {
           sendBroadcast(new Intent("qqplayer_exit_action"));
         }
-        autg.a().d();
-        paramInt = 2131694951;
+        auxp.a().d();
+        paramInt = 2131694953;
         if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-          paramInt = 2131694876;
+          paramInt = 2131694878;
         }
         localObject1 = a(this.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131694951, null, new adgi(this));
+        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131694953, null, new adkx(this));
         if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
           if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
           {
@@ -251,18 +251,18 @@ public class NotificationActivity
           }
           else
           {
-            ((bdfq)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131692831, new adfd(this));
+            ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131692833, new adjs(this));
             localObject1 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
             ((Intent)localObject1).putExtra("kickedUin", this.app.getAccount());
             ((Intent)localObject1).putExtra("msg", this.jdField_c_of_type_JavaLangString);
             ((Intent)localObject1).setPackage("com.tencent.tim");
             sendBroadcast((Intent)localObject1);
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adfe(this));
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adjt(this));
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adff(this));
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adju(this));
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(getString(2131694155)).setMessage(getString(2131719669)).setPositiveButton(getString(2131719671), new adfh(this)).setNegativeButton(getString(2131719668), new adfg(this));
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(getString(2131694157)).setMessage(getString(2131719681)).setPositiveButton(getString(2131719683), new adjw(this)).setNegativeButton(getString(2131719680), new adjv(this));
           }
         }
       }
@@ -270,7 +270,7 @@ public class NotificationActivity
         break label1196;
       }
     }
-    azmj.a(this.app, "dc00898", "", this.jdField_d_of_type_JavaLangString, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.jdField_c_of_type_JavaLangString);
+    azqs.a(this.app, "dc00898", "", this.jdField_d_of_type_JavaLangString, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.jdField_c_of_type_JavaLangString);
     Object localObject1 = getIntent();
     this.jdField_e_of_type_JavaLangString = "";
     this.jdField_d_of_type_Int = 0;
@@ -301,24 +301,24 @@ public class NotificationActivity
       {
         if (paramInt != 0)
         {
-          azmj.a(this.app, "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.jdField_f_of_type_JavaLangString, "");
-          this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694162), getString(2131694161), getString(2131694163), new adfi(this), new adfj(this), new adfk(this));
+          azqs.a(this.app, "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.jdField_f_of_type_JavaLangString, "");
+          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694164), getString(2131694163), getString(2131694165), new adjx(this), new adjy(this), new adjz(this));
           break;
         }
-        this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694165), getString(2131694161), getString(2131694163), new adfl(this), new adfm(this), new adfn(this));
+        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694167), getString(2131694163), getString(2131694165), new adka(this), new adkb(this), new adkc(this));
         break;
         label1196:
         switch (this.jdField_b_of_type_Int)
         {
         default: 
-          this.jdField_a_of_type_AndroidAppDialog = bdcd.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131699731)).setPositiveButton(17039370, new adfp(this));
+          this.jdField_a_of_type_AndroidAppDialog = bdgm.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131699743)).setPositiveButton(17039370, new adke(this));
           break;
         case 41: 
         case 116: 
-          localObject1 = (Long)bdwj.a.get(this.jdField_d_of_type_JavaLangString);
+          localObject1 = (Long)beas.a.get(this.jdField_d_of_type_JavaLangString);
           if ((localObject1 != null) && (System.currentTimeMillis() - ((Long)localObject1).longValue() < 30000L))
           {
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(alpo.a(2131708000)).setMessage(alpo.a(2131707998)).setNegativeButton(alpo.a(2131708007), new adfo(this));
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(alud.a(2131708012)).setMessage(alud.a(2131708010)).setNegativeButton(alud.a(2131708019), new adkd(this));
             break;
           }
           e();
@@ -329,13 +329,13 @@ public class NotificationActivity
           String str3 = ((Bundle)localObject2).getString("dlg_lbutton");
           String str4 = ((Bundle)localObject2).getString("dlg_rbutton");
           localObject2 = ((Bundle)localObject2).getString("dlg_url");
-          this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new adfr(this, (String)localObject2)).setNegativeButton(str3, new adfq(this));
+          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new adkg(this, (String)localObject2)).setNegativeButton(str3, new adkf(this));
           break;
-          localObject1 = getResources().getString(2131694223);
-          str2 = getResources().getString(2131694222);
-          str3 = getResources().getString(2131694219);
-          str4 = getResources().getString(2131694221);
-          Object localObject3 = getResources().getString(2131694220);
+          localObject1 = getResources().getString(2131694225);
+          str2 = getResources().getString(2131694224);
+          str3 = getResources().getString(2131694221);
+          str4 = getResources().getString(2131694223);
+          Object localObject3 = getResources().getString(2131694222);
           localObject2 = new CheckBox(this);
           ((CheckBox)localObject2).setText((CharSequence)localObject3);
           ((CheckBox)localObject2).setTextSize(getResources().getInteger(2131427336));
@@ -343,7 +343,7 @@ public class NotificationActivity
           localObject3 = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0);
           boolean bool = ((SharedPreferences)localObject3).getBoolean("MemoryAlertAutoClear", false);
           ((CheckBox)localObject2).setChecked(bool);
-          this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new adft(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new adfs(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
+          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new adki(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new adkh(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
           break;
           try
           {
@@ -356,17 +356,17 @@ public class NotificationActivity
             paramInt = ((Bundle)localObject3).getInt("dlg_lbtnid", 0);
             int k = ((Bundle)localObject3).getInt("dlg_rbtnid", 0);
             localObject3 = String.format("%d", new Object[] { Integer.valueOf(((Bundle)localObject3).getInt("dlg_seccmd", 0)) });
-            this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle((String)localObject1).setMessage(str2);
+            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2);
             if (this.jdField_a_of_type_AndroidAppDialog == null) {
               break;
             }
             if (!TextUtils.isEmpty(str4)) {
-              ((bdfq)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new adfu(this, (String)localObject2, k, (String)localObject3));
+              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new adkj(this, (String)localObject2, k, (String)localObject3));
             }
             if (!TextUtils.isEmpty(str3)) {
-              ((bdfq)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new adfv(this, paramInt, (String)localObject3));
+              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new adkk(this, paramInt, (String)localObject3));
             }
-            azmj.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
+            azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
           }
           catch (Exception localException2)
           {
@@ -396,7 +396,7 @@ public class NotificationActivity
       try
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("unit", alpo.a(2131708001));
+        localJSONObject.put("unit", alud.a(2131708013));
         localJSONObject.put("userId", this.jdField_d_of_type_JavaLangString);
         localJSONObject.put("openMonth", paramString1);
         localJSONObject.put("offerId", "1450000833");
@@ -507,7 +507,7 @@ public class NotificationActivity
       this.app.setKickIntent(null);
       if (localObject1 != null)
       {
-        bdiv.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
+        bdne.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
         if (paramBoolean)
         {
           new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new NotificationActivity.31(this, (SimpleAccount)localObject1), 500L);
@@ -518,15 +518,15 @@ public class NotificationActivity
       }
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("password", null);
-      if (!awdr.a().a(this.app, this.app.getCurrentAccountUin()))
+      if (!awia.a().a(this.app, this.app.getCurrentAccountUin()))
       {
         this.app.updateSubAccountLogin(this.app.getCurrentAccountUin(), false);
         this.app.getApplication().refreAccountList();
       }
-      localObject3 = (azyu)this.app.getManager(61);
+      localObject3 = (badd)this.app.getManager(61);
       localObject1 = str;
       if (localObject3 != null) {
-        localObject1 = ((azyu)localObject3).a();
+        localObject1 = ((badd)localObject3).a();
       }
       if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
       {
@@ -534,7 +534,7 @@ public class NotificationActivity
         while (((Iterator)localObject1).hasNext())
         {
           str = (String)((Iterator)localObject1).next();
-          if (!awdr.a().a(this.app, str))
+          if (!awia.a().a(this.app, str))
           {
             this.app.updateSubAccountLogin(str, false);
             this.app.getApplication().refreAccountList();
@@ -549,9 +549,9 @@ public class NotificationActivity
   
   private void c()
   {
-    allq localallq = (allq)this.app.a(4);
-    if (localallq != null) {
-      localallq.a();
+    alqf localalqf = (alqf)this.app.a(4);
+    if (localalqf != null) {
+      localalqf.a();
     }
   }
   
@@ -576,11 +576,11 @@ public class NotificationActivity
   
   private void d()
   {
-    int k = this.jdField_a_of_type_Bdwj.b();
-    int m = this.jdField_a_of_type_Bdwj.a();
+    int k = this.jdField_a_of_type_Beas.b();
+    int m = this.jdField_a_of_type_Beas.a();
     if ((m == -1) || (k == -1))
     {
-      QQToast.a(this, alpo.a(2131708011), 0).a();
+      QQToast.a(this, alud.a(2131708023), 0).a();
       finish();
       return;
     }
@@ -605,27 +605,27 @@ public class NotificationActivity
   
   private void g()
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
     }
-    if (!this.jdField_a_of_type_Bepp.isShowing())
+    if (!this.jdField_a_of_type_Bety.isShowing())
     {
-      this.jdField_a_of_type_Bepp.a(alpo.a(2131708002));
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.a(alud.a(2131708014));
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
   private void h()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
   public CharSequence a(String paramString)
   {
     if (paramString == null) {}
-    while (!bdeo.b.matcher(paramString).find()) {
+    while (!bdix.b.matcher(paramString).find()) {
       return paramString;
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
@@ -651,7 +651,7 @@ public class NotificationActivity
     for (;;)
     {
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new adgj((String)localObject, new WeakReference(this)), 0, str.length(), 33);
+      localSpannableString.setSpan(new adky((String)localObject, new WeakReference(this)), 0, str.length(), 33);
       localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
       localSpannableStringBuilder.append(localSpannableString);
       n = 1;
@@ -676,7 +676,7 @@ public class NotificationActivity
           n = m;
         }
         localObject = new SpannableString(str);
-        ((SpannableString)localObject).setSpan(new adgj(str, new WeakReference(this)), 0, str.length(), 33);
+        ((SpannableString)localObject).setSpan(new adky(str, new WeakReference(this)), 0, str.length(), 33);
         ((SpannableString)localObject).setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
         localSpannableStringBuilder.append((CharSequence)localObject);
         k = n;
@@ -713,7 +713,7 @@ public class NotificationActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559399);
+    super.setContentView(2131559398);
     Object localObject = "";
     paramBundle = (Bundle)localObject;
     try
@@ -808,11 +808,11 @@ public class NotificationActivity
         QLog.d("sec_sig_tag", 2, "NotificationActivity:package fail");
         return false;
         ThreadManager.post(new NotificationActivity.2(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
-        this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new adfy(this, paramBundle));
+        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new adkn(this, paramBundle));
         if (!paramBundle.str_left_button.has()) {
           break label648;
         }
-        ((bdfq)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new adgc(this));
+        ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new adkr(this));
         a(false);
         return true;
       }
@@ -859,7 +859,7 @@ public class NotificationActivity
       PatternLockUtils.setFirstEnterAfterLoginState(this, this.app.getAccount(), true);
     }
     label648:
-    this.jdField_a_of_type_Bdwj = new bdwj(this.jdField_d_of_type_JavaLangString);
+    this.jdField_a_of_type_Beas = new beas(this.jdField_d_of_type_JavaLangString);
     a(this.jdField_a_of_type_Int);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.closeNotification"));
     return true;
@@ -902,7 +902,7 @@ public class NotificationActivity
     super.doOnResume();
     a(true);
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      ((bdfq)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131700003, new adfc(this));
+      ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131700015, new adjr(this));
     }
   }
   
@@ -933,19 +933,19 @@ public class NotificationActivity
     default: 
       return true;
     case 1: 
-      this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, getResources().getString(2131693892), getResources().getString(2131693882), getResources().getString(2131693878), this.jdField_a_of_type_Adgl, alpo.a(2131708010), this.jdField_a_of_type_Adgl, this.jdField_a_of_type_Adgk);
+      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693884), getResources().getString(2131693880), this.jdField_a_of_type_Adla, alud.a(2131708022), this.jdField_a_of_type_Adla, this.jdField_a_of_type_Adkz);
       this.jdField_a_of_type_AndroidAppDialog.show();
       return true;
     case 2: 
-      this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, getResources().getString(2131693892), getResources().getString(2131693881), getResources().getString(2131693879), this.jdField_b_of_type_Adgl, getResources().getString(2131693877), this.jdField_b_of_type_Adgl, this.jdField_a_of_type_Adgk);
+      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693883), getResources().getString(2131693881), this.jdField_b_of_type_Adla, getResources().getString(2131693879), this.jdField_b_of_type_Adla, this.jdField_a_of_type_Adkz);
       this.jdField_a_of_type_AndroidAppDialog.show();
       return true;
     case 3: 
       if (this.jdField_b_of_type_Int == 41) {}
-      for (paramMessage = getString(2131695490);; paramMessage = getString(2131695489))
+      for (paramMessage = getString(2131695492);; paramMessage = getString(2131695491))
       {
-        String str = getString(2131695488);
-        this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131695487, new adgb(this)).setPositiveButton(2131695484, new adga(this));
+        String str = getString(2131695490);
+        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131695489, new adkq(this)).setPositiveButton(2131695486, new adkp(this));
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppDialog.show();
         return true;
@@ -955,13 +955,13 @@ public class NotificationActivity
       return true;
     case 5: 
       h();
-      QQToast.a(this, 2, alpo.a(2131708005), 0).b(getTitleBarHeight());
-      bdwj.a.put(this.jdField_d_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
+      QQToast.a(this, 2, alud.a(2131708017), 0).b(getTitleBarHeight());
+      beas.a.put(this.jdField_d_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
       finish();
       return true;
     }
     h();
-    QQToast.a(this, 1, alpo.a(2131708004), 0).b(getTitleBarHeight());
+    QQToast.a(this, 1, alud.a(2131708016), 0).b(getTitleBarHeight());
     finish();
     return true;
   }

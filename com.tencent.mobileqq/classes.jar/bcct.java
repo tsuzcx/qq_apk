@@ -1,6 +1,18 @@
-public abstract interface bcct
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+
+public class bcct
+  implements xwe
 {
-  public abstract void a(bcdr parambcdr);
+  public bcct(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.b(this.a.a.getText().toString());
+    return true;
+  }
 }
 
 

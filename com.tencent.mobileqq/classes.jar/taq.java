@@ -1,7 +1,7 @@
 import android.os.Bundle;
 
 public class taq
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, Bundle paramBundle) {}
   

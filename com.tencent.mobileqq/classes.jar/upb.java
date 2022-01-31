@@ -1,24 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
-public class upb
-  extends upt
+class upb
 {
-  qqstory_service.RspLikeFeed a;
+  private WeakReference<upa> a;
   
-  public upb() {}
-  
-  public upb(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  public upb(upa paramupa)
   {
-    super(paramRspLikeFeed.result);
-    this.a = paramRspLikeFeed;
+    this.a = new WeakReference(paramupa);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString) {}
+  @Nullable
+  public upa a()
+  {
+    return (upa)this.a.get();
+  }
 }
 
 

@@ -1,31 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.6.1;
-import java.util.Map;
-import java.util.UUID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.16;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcjc
-  extends ypu
+  implements DialogInterface.OnClickListener
 {
-  public bcjc(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public bcjc(VisitorTroopCardFragment.16 param16) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean) {}
-    do
+    if (paramInt == 1)
     {
-      do
+      this.a.this$0.a.cancel();
+      return;
+    }
+    try
+    {
+      asdb.a(this.a.this$0.getActivity(), true, "action_game_join_group", Long.valueOf(this.a.this$0.getActivity().getIntent().getStringExtra("appid")).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.getActivity().finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
       {
-        return;
-        paramString = paramBundle.getString("itemKey");
-      } while (paramString == null);
-      paramString = UUID.fromString(paramString);
-      paramBundle = paramBundle.getString("fileId");
-      paramString = (bbnr)this.a.a().b.get(paramString);
-    } while ((paramString == null) || (paramInt1 != 0));
-    ypf.a(this.a.a, this.a.e, paramString.a, paramString.b, TroopFileTransferManager.a(this.a));
-    ThreadManager.executeOnSubThread(new TroopFileTransferManager.6.1(this, paramBundle, paramString));
+        QLog.e("VisitorTroopCardFragment.Activity", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
   }
 }
 

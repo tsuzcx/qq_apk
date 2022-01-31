@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -51,7 +51,7 @@ import rsn;
 import rso;
 import scl;
 import sdn;
-import zbj;
+import zfy;
 
 public class ReadInJoyFastWebBottomSocialViewNew
   extends FrameLayout
@@ -70,14 +70,14 @@ public class ReadInJoyFastWebBottomSocialViewNew
   private HashMap<String, ArrayList<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private oop jdField_a_of_type_Oop;
   pem jdField_a_of_type_Pem = new rsn(this);
-  private zbj jdField_a_of_type_Zbj;
+  private zfy jdField_a_of_type_Zfy;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131713214);
-    jdField_b_of_type_JavaLangString = alpo.a(2131713404);
+    jdField_a_of_type_JavaLangString = alud.a(2131713226);
+    jdField_b_of_type_JavaLangString = alud.a(2131713416);
   }
   
   public ReadInJoyFastWebBottomSocialViewNew(Context paramContext)
@@ -235,7 +235,7 @@ public class ReadInJoyFastWebBottomSocialViewNew
     if ((!this.jdField_a_of_type_Oop.a(paramArticleInfo.innerUniqueID)) && (otd.b()))
     {
       if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = ((ViewStub)paramFastWebActivity.findViewById(2131375252)).inflate();
+        this.jdField_a_of_type_AndroidViewView = ((ViewStub)paramFastWebActivity.findViewById(2131375303)).inflate();
       }
       this.jdField_a_of_type_Oop.a(new rsm(this, paramoot));
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -358,12 +358,12 @@ public class ReadInJoyFastWebBottomSocialViewNew
     }
     if (bool)
     {
-      if (this.jdField_a_of_type_Zbj != null) {
-        this.jdField_a_of_type_Zbj.c();
+      if (this.jdField_a_of_type_Zfy != null) {
+        this.jdField_a_of_type_Zfy.c();
       }
-      this.jdField_a_of_type_Zbj = new zbj((QQAppInterface)ors.a(), paramFastWebActivity);
-      this.jdField_a_of_type_Zbj.a(paramArticleInfo);
-      this.jdField_a_of_type_Zbj.a(paramArticleInfo.mArticleContentUrl, 9, false);
+      this.jdField_a_of_type_Zfy = new zfy((QQAppInterface)ors.a(), paramFastWebActivity);
+      this.jdField_a_of_type_Zfy.a(paramArticleInfo);
+      this.jdField_a_of_type_Zfy.a(paramArticleInfo.mArticleContentUrl, 9, false);
     }
     for (;;)
     {

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import aqxp;
-import arof;
-import awbv;
-import awbw;
-import awbx;
+import arby;
+import arso;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -16,18 +16,18 @@ import java.util.Map;
 public class FileManagerProxy$4
   implements Runnable
 {
-  public FileManagerProxy$4(aqxp paramaqxp, long paramLong, String paramString) {}
+  public FileManagerProxy$4(arby paramarby, long paramLong, String paramString) {}
   
   public void run()
   {
     Object localObject2 = "select * from ( select * from " + FileManagerEntity.tableName() + " where bDelInFM = 0  and nRelatedSessionId = " + this.jdField_a_of_type_Long + "  order by srvTime desc limit " + 2000 + ") ";
-    awbw localawbw = aqxp.a(this.this$0).getEntityManagerFactory().createEntityManager();
-    localObject2 = localawbw.a(FileManagerEntity.class, (String)localObject2, null);
+    awgf localawgf = arby.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    localObject2 = localawgf.a(FileManagerEntity.class, (String)localObject2, null);
     for (;;)
     {
-      synchronized (aqxp.a(this.this$0))
+      synchronized (arby.a(this.this$0))
       {
-        aqxp.a(this.this$0, new HashMap());
+        arby.a(this.this$0, new HashMap());
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder().append("find ZipList file:");
@@ -65,23 +65,23 @@ public class FileManagerProxy$4
           QLog.e("FileManagerProxy<FileAssistant>", 1, ((FileManagerEntity)???).fileName + ": serverPath is empty!");
         }
         ((FileManagerEntity)???).setStatus(1001);
-        localObject1.b((awbv)???);
+        localObject1.b((awge)???);
       }
-      else if (!arof.b(((FileManagerEntity)???).getFilePath()))
+      else if (!arso.b(((FileManagerEntity)???).getFilePath()))
       {
         if (QLog.isDevelopLevel()) {
           QLog.e("FileManagerProxy<FileAssistant>", 1, ((FileManagerEntity)???).fileName + ": file not exist!");
         }
         ((FileManagerEntity)???).setStatus(1001);
-        localObject1.b((awbv)???);
+        localObject1.b((awge)???);
       }
       else
       {
         try
         {
-          synchronized (aqxp.a(this.this$0))
+          synchronized (arby.a(this.this$0))
           {
-            aqxp.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
+            arby.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
           }
         }
         catch (Exception localException)

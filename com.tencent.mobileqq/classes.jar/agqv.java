@@ -1,69 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agqv
-  extends bfvh
+  implements DialogInterface.OnClickListener
 {
-  agqv(agqq paramagqq) {}
+  agqv(agqq paramagqq, boolean paramBoolean, bemp parambemp) {}
   
-  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Aelz.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698539), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
+    this.jdField_a_of_type_Agqq.ab = true;
+    agqq.d(this.jdField_a_of_type_Agqq, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Agqq.aa = true;
+    if ((this.jdField_a_of_type_Bemp.a()) && (!this.jdField_a_of_type_Bemp.b())) {
+      azqs.b(this.jdField_a_of_type_Agqq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698538), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
-        }
-        paramHashMap = this.a.jdField_a_of_type_Bfua.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (paramHashMap != null)
-        {
-          agqq.a(this.a, true);
-          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          agqq.a(this.a).setOnClickListener(null);
-          agqq.b(this.a).setOnClickListener(null);
-          this.a.f.setText(paramHashMap);
-          if (acew.S) {
-            this.a.f.setContentDescription(paramHashMap);
-          }
-          agqq.a(this.a, true);
-          this.a.m();
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          agqq.b(this.a, false);
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
-    }
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

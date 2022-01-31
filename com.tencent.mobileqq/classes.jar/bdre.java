@@ -1,89 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class bdre
 {
-  private static bdre jdField_a_of_type_Bdre;
-  private final String jdField_a_of_type_JavaLangString = "VipLongMsgShareDomainHelper";
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private List<String> b = new CopyOnWriteArrayList();
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public bdre()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static bdre a()
+  public void a(String paramString)
   {
-    if (jdField_a_of_type_Bdre == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bdre == null) {
-        jdField_a_of_type_Bdre = new bdre();
-      }
-      return jdField_a_of_type_Bdre;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(JSONArray paramJSONArray)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
-    }
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramJSONArray.length()) {
-          return;
-        }
-        try
-        {
-          Object localObject = paramJSONArray.getJSONObject(i);
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("domain", "");
-            this.b.add(localObject);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
-          }
-        }
-        i += 1;
-      }
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(String paramString)
+  public void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Object localObject2 = this.b;
-    Object localObject1 = localObject2;
-    if (((List)localObject2).isEmpty()) {
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
-    }
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (paramString.endsWith((String)localObject2))) {
-        return true;
-      }
-    }
-    return false;
+    this.b = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

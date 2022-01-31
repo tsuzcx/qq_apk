@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class axxy
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public axxy(SignTextEditFragment paramSignTextEditFragment) {}
+  public axxy(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "receive videochat in aiogallery");
+      this.a.finish();
+    }
   }
 }
 

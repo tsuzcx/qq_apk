@@ -1,386 +1,169 @@
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.1;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.10;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.2;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.3;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.5;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.6;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.7;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.8;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.9;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Set;
-import java.util.UUID;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
+import java.util.List;
 import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbrw
-  extends Observable
-  implements bbsc, INetInfoHandler
+  implements bckx
 {
-  private static bbrw jdField_a_of_type_Bbrw;
-  private LinkedList<UUID> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<UUID, bbsa> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public boolean a;
-  private LinkedList<bbsa> b = new LinkedList();
+  bbrw(bbru parambbru) {}
   
-  public static bbrw a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    try
-    {
-      if (jdField_a_of_type_Bbrw == null) {
-        jdField_a_of_type_Bbrw = new bbrw();
-      }
-      bbrw localbbrw = jdField_a_of_type_Bbrw;
-      return localbbrw;
-    }
-    finally {}
-  }
-  
-  private String a()
-  {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
-  }
-  
-  private final void a(int paramInt, Object[] paramArrayOfObject)
-  {
-    setChanged();
-    notifyObservers(new Object[] { Integer.valueOf(paramInt), paramArrayOfObject });
-  }
-  
-  private int b(UUID paramUUID, Bundle paramBundle)
-  {
-    paramBundle = this.b.iterator();
-    while (paramBundle.hasNext())
-    {
-      bbsa localbbsa = (bbsa)paramBundle.next();
-      if (paramUUID.equals(localbbsa.a()))
-      {
-        localbbsa.a(0);
-        paramBundle.remove();
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        paramBundle = (bbsa)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-        if (paramBundle == null) {
-          break label153;
-        }
-        paramBundle.a(0);
-        bool1 |= true;
-      }
-      label153:
-      for (;;)
-      {
-        bool2 = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | bool1;
-        if (bool2) {
-          bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramUUID.toString() + "] stopDownload." + a());
-        }
-        c();
-        return 0;
-      }
-    }
-  }
-  
-  private int c(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    if (a(paramItem.Id))
-    {
-      bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramItem.Id.toString() + "] startDownload worker exsited. ");
-      return -4;
-    }
-    if ((paramItem.ProgressTotal > 0L) && (aqzy.a().d()) && (paramItem.ProgressTotal > aqzy.a().d())) {}
-    for (paramBundle = araa.a(paramLong, paramItem, paramBundle, this); paramBundle == null; paramBundle = bbsa.b(paramLong, paramItem, paramBundle, this)) {
-      return -3;
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramItem.Id, paramBundle);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramItem.Id);
-    paramBundle.e();
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramItem.Id.toString() + "] startDownload filePath. " + paramItem.FilePath + a());
-    c();
-    return 0;
-  }
-  
-  private void c()
-  {
-    if (this.b.size() >= 2) {}
-    label78:
+    if (paramJSONObject != null) {}
     for (;;)
     {
-      return;
+      try
+      {
+        if (paramJSONObject.optInt("retcode") == 0) {
+          break label723;
+        }
+        i = paramJSONObject.optInt("ec");
+        if (i == 0) {
+          break label723;
+        }
+        i = 0;
+        if (i == 0)
+        {
+          if ((paramInt == 1000) || (paramInt == 1002))
+          {
+            bbru.e(this.a);
+            this.a.notifyObservers(Integer.valueOf(103));
+            if (paramInt == 1002) {
+              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
+          }
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = paramBundle;
+        paramBundle.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
+        }
+        if (paramInt == 1000)
+        {
+          ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.1(this, paramJSONObject));
+          return;
+        }
+      }
+      finally {}
+      if (paramInt == 1002)
+      {
+        ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.2(this, paramJSONObject));
+        return;
+      }
+      if (paramInt == 1007)
+      {
+        this.a.b = paramJSONObject;
+        bbru.f(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_TROOP_NOTICE, msg = NOTIFY_REMIND_NOTICE");
+        }
+        this.a.notifyObservers(Integer.valueOf(1011));
+        return;
+      }
+      Object localObject;
+      JSONObject localJSONObject;
+      if ((paramInt == 1004) || (paramInt == 1003))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_NOR_NOTICE");
+        }
+        localObject = paramJSONObject.optJSONArray("feeds");
+        paramBundle = paramJSONObject.optJSONArray("inst");
+        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
+        {
+          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+          this.a.b = localJSONObject;
+          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+          paramInt = 1;
+        }
+      }
       for (;;)
       {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label78;
-        }
-        Object localObject = (UUID)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localObject = (bbsa)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        if (localObject != null)
+        i = paramInt;
+        if (paramBundle != null)
         {
-          this.b.add(localObject);
-          if (((bbsa)localObject).a()) {
+          i = paramInt;
+          if (paramBundle.length() > 0)
+          {
+            paramBundle = paramBundle.optJSONObject(0);
+            long l2 = paramBundle.optLong("pubt");
+            long l1 = 0L;
+            if (this.a.b != null) {
+              l1 = this.a.b.optLong("pubt");
+            }
+            i = paramInt;
+            if (l2 > l1)
+            {
+              this.a.b = paramBundle;
+              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+              i = 1;
+            }
+          }
+        }
+        if (i != 0)
+        {
+          bbru.g(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi return. NOTIFY_NOR_NOTICE");
+          }
+          this.a.notifyObservers(Integer.valueOf(1007));
+          return;
+          if ((localObject != null) && (((JSONArray)localObject).length() == 2))
+          {
+            localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+            localObject = ((JSONArray)localObject).optJSONObject(1);
+            if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
+              this.a.b = localJSONObject;
+            }
+            for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
+            {
+              paramInt = 1;
+              break;
+              this.a.b = ((JSONObject)localObject);
+            }
+          }
+        }
+        else
+        {
+          bbru.h(this.a);
+          this.a.notifyObservers(Integer.valueOf(1012));
+          return;
+          if ((paramInt != 1005) && (paramInt != 1006)) {
             break;
           }
-          this.b.remove(localObject);
+          paramJSONObject = bbrl.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramBundle = (List)paramJSONObject[0];
+          paramJSONObject = (List)paramJSONObject[1];
+          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
+          bbru.i(this.a);
+          if (paramInt == 1005)
+          {
+            this.a.notifyObservers(Integer.valueOf(1008));
+            return;
+          }
+          this.a.notifyObservers(Integer.valueOf(1009));
+          return;
         }
+        paramInt = 0;
       }
+      label723:
+      int i = 1;
     }
-  }
-  
-  private int d(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    if (a(paramItem.Id))
-    {
-      bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramItem.Id.toString() + "] startDownloadZipInnerFile worker exsited. ");
-      return -4;
-    }
-    paramBundle = bbsg.a(paramLong, paramItem, paramBundle, this);
-    if (paramBundle == null) {
-      return -3;
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramItem.Id, paramBundle);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramItem.Id);
-    paramBundle.e();
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramItem.Id.toString() + "] startDownloadZipInnerFile filePath. " + paramItem.FilePath + a());
-    c();
-    return 0;
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return -1;
-    }
-    if (paramItem.Id == null) {
-      return -2;
-    }
-    paramItem = bbse.a(paramLong, paramItem);
-    if (paramItem == null) {
-      return -3;
-    }
-    if (!paramItem.a()) {
-      return -5;
-    }
-    return 0;
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    if ((paramLong == 0L) || (paramItem == null))
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "startDownload key param invaild.");
-      return -1;
-    }
-    if (paramItem.Id == null)
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "startDownload item.id null.");
-      return -2;
-    }
-    a(paramLong, paramItem, paramBundle);
-    return 0;
-  }
-  
-  public int a(UUID paramUUID, Bundle paramBundle)
-  {
-    if (paramUUID == null)
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "stopUpload item.id null.");
-      return -2;
-    }
-    bbqt.a(new TroopFileDownloadMgr.6(this, paramUUID, paramBundle), false);
-    return 0;
-  }
-  
-  public void a()
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "init");
-    ThreadManager.getSubThreadHandler().post(new TroopFileDownloadMgr.1(this));
-  }
-  
-  protected void a(int paramInt)
-  {
-    bbrc.b("TroopFileDownloadMgr", bbrc.a, "failAll. reason:" + paramInt);
-    bbqt.a(new TroopFileDownloadMgr.8(this, paramInt), false);
-  }
-  
-  public void a(int paramInt, Set<Long> paramSet)
-  {
-    Iterator localIterator = this.b.iterator();
-    bbsa localbbsa;
-    while (localIterator.hasNext())
-    {
-      localbbsa = (bbsa)localIterator.next();
-      localbbsa.a(paramInt);
-      if (paramSet != null) {
-        paramSet.add(Long.valueOf(localbbsa.a()));
-      }
-    }
-    this.b.clear();
-    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      localbbsa = (bbsa)localIterator.next();
-      localbbsa.a(paramInt);
-      if (paramSet != null) {
-        paramSet.add(Long.valueOf(localbbsa.a()));
-      }
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "stopAllInter");
-  }
-  
-  protected void a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    QQAppInterface localQQAppInterface = bbra.a();
-    if (localQQAppInterface != null) {
-      ypf.a(localQQAppInterface, paramLong, paramItem.BusId, paramItem.FilePath, new bbrx(this, paramItem, localQQAppInterface, paramLong, paramBundle));
-    }
-  }
-  
-  protected final void a(bbpe parambbpe, String paramString1, String paramString2, String paramString3)
-  {
-    QQAppInterface localQQAppInterface = bbra.a();
-    if (localQQAppInterface == null)
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "[" + parambbpe.b + "] addFMEntity fail app=null ");
-      return;
-    }
-    FileManagerEntity localFileManagerEntity = arni.a(parambbpe);
-    localFileManagerEntity.isReaded = true;
-    localFileManagerEntity.peerUin = String.valueOf(parambbpe.b);
-    localFileManagerEntity.peerNick = bdbt.o(localQQAppInterface, localFileManagerEntity.peerUin);
-    localFileManagerEntity.srvTime = (ayvc.a() * 1000L);
-    localFileManagerEntity.setCloudType(3);
-    localFileManagerEntity.bSend = false;
-    localFileManagerEntity.status = 1;
-    localFileManagerEntity.fProgress = 1.0F;
-    localFileManagerEntity.TroopUin = parambbpe.b;
-    localFileManagerEntity.strFileMd5 = paramString1;
-    localFileManagerEntity.strFileSHA = paramString2;
-    localFileManagerEntity.strFileSha3 = paramString3;
-    if ((localFileManagerEntity.nFileType == 0) || (localFileManagerEntity.nFileType == 2))
-    {
-      if (TextUtils.isEmpty(localFileManagerEntity.strFileSha3)) {
-        localFileManagerEntity.strFileSha3 = aqzr.a(arni.b(parambbpe.a));
-      }
-      if ((localFileManagerEntity.fileSize < 104857600L) && (TextUtils.isEmpty(localFileManagerEntity.strFileSHA))) {
-        localFileManagerEntity.strFileSHA = aqzr.a(arni.a(parambbpe.a));
-      }
-    }
-    localFileManagerEntity.str10Md5 = bdcv.a(arni.d(parambbpe.a));
-    try
-    {
-      localFileManagerEntity.localModifyTime = new VFSFile(parambbpe.a).lastModified();
-      label265:
-      localQQAppInterface.a().a(localFileManagerEntity);
-      localFileManagerEntity.status = 1;
-      localQQAppInterface.a().c(localFileManagerEntity);
-      return;
-    }
-    catch (Exception parambbpe)
-    {
-      break label265;
-    }
-  }
-  
-  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbsa parambbsa)
-  {
-    bbqt.a(new TroopFileDownloadMgr.7(this, paramUUID, paramBoolean, paramInt, parambbsa), false);
-  }
-  
-  protected boolean a(UUID paramUUID)
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramUUID.equals(((bbsa)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramUUID);
-  }
-  
-  public int b(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    if ((paramLong == 0L) || (paramItem == null))
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "startDownloadZipInnerFile key param invaild.");
-      return -1;
-    }
-    if (paramItem.Id == null)
-    {
-      bbrc.a("TroopFileDownloadMgr", bbrc.a, "startDownloadZipInnerFile item.id null.");
-      return -2;
-    }
-    bbqt.a(new TroopFileDownloadMgr.5(this, paramLong, paramItem, paramBundle), false);
-    return 0;
-  }
-  
-  public void b()
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "release");
-    ThreadManager.getSubThreadHandler().post(new TroopFileDownloadMgr.2(this));
-    if (Build.VERSION.SDK_INT == 19)
-    {
-      a(2, null);
-      return;
-    }
-    bbqt.a(new TroopFileDownloadMgr.3(this), true);
-  }
-  
-  public void b(UUID paramUUID, boolean paramBoolean, int paramInt, bbsa parambbsa)
-  {
-    this.b.remove(parambbsa);
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "[" + paramUUID.toString() + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    c();
-  }
-  
-  public void onNetMobile2None()
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "onNetMobile2None");
-    a(3);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "onNetMobile2Wifi");
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "onNetNone2Mobile");
-    bbqt.a(new TroopFileDownloadMgr.9(this), false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    bbqt.a(new TroopFileDownloadMgr.10(this), false);
-  }
-  
-  public void onNetWifi2None()
-  {
-    bbrc.c("TroopFileDownloadMgr", bbrc.a, "onNetWifi2None");
-    a(3);
   }
 }
 

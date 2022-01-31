@@ -1,33 +1,21 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.concurrent.CountDownLatch;
 
 class atel
-  implements ymm
+  implements aszl
 {
-  atel(atei paramatei) {}
+  atel(atek paramatek, aszh paramaszh, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
-    {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
-      }
-      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
-    }
+    paramString = new Bundle(this.jdField_a_of_type_Aszh.a().a.getExtras());
+    Bundle localBundle = new Bundle();
+    localBundle.putBundle("data", paramString);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putInt("code", paramInt);
+    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 

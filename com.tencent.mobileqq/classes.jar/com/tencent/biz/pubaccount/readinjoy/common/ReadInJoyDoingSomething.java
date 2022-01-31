@@ -6,9 +6,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.text.TextUtils;
-import azmz;
-import bhpe;
-import bjxj;
+import azri;
+import bhtl;
+import bkbq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -53,7 +53,7 @@ public class ReadInJoyDoingSomething
   
   public static ReadInJoyDoingSomething.AppConfigInfoList a(AppRuntime paramAppRuntime)
   {
-    if (bjxj.a(paramAppRuntime, true, true) == null)
+    if (bkbq.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not get config.");
       return null;
@@ -77,7 +77,7 @@ public class ReadInJoyDoingSomething
   
   private static String a()
   {
-    Object localObject = bjxj.a(ors.a(), true, true);
+    Object localObject = bkbq.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "getLastScanDate failed, can not get config.");
@@ -119,7 +119,7 @@ public class ReadInJoyDoingSomething
   {
     try
     {
-      paramString = bhpe.a(BaseApplicationImpl.getContext(), paramString);
+      paramString = bhtl.a(BaseApplicationImpl.getContext(), paramString);
       if (paramString != null)
       {
         paramString = paramString.versionName;
@@ -204,7 +204,7 @@ public class ReadInJoyDoingSomething
   private static void a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     ord localord = a(paramAppConfigInfo);
-    if ((paramAppConfigInfo == null) || (TextUtils.isEmpty(paramAppConfigInfo.appPackageName)) || (!bhpe.a(BaseApplicationImpl.getContext(), paramAppConfigInfo.appPackageName)))
+    if ((paramAppConfigInfo == null) || (TextUtils.isEmpty(paramAppConfigInfo.appPackageName)) || (!bhtl.a(BaseApplicationImpl.getContext(), paramAppConfigInfo.appPackageName)))
     {
       String str;
       if (QLog.isColorLevel())
@@ -234,7 +234,7 @@ public class ReadInJoyDoingSomething
     if (QLog.isColorLevel()) {
       QLog.d(c, 2, new Object[] { "tagName = ", e, "\n", "reportData = \n", localord.toString(), "uin = ", ors.a(), "\n", "appScanDate = ", g, "\n" });
     }
-    azmz.a(ors.a().getApplication()).a(ors.a(), e, true, 1L, 0L, paramAppConfigInfo, null, false);
+    azri.a(ors.a().getApplication()).a(ors.a(), e, true, 1L, 0L, paramAppConfigInfo, null, false);
   }
   
   private static void a(String paramString, List<ord> paramList, ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
@@ -338,7 +338,7 @@ public class ReadInJoyDoingSomething
         localHashMap.put("appVersion", localord.b);
         localHashMap.put("appUsedDate", localord.c);
         localHashMap.put("uin", ors.a());
-        azmz.a(ors.a().getApplication()).a(ors.a(), paramString, true, 1L, 0L, localHashMap, null, false);
+        azri.a(ors.a().getApplication()).a(ors.a(), paramString, true, 1L, 0L, localHashMap, null, false);
         i += 1;
       }
     }
@@ -346,7 +346,7 @@ public class ReadInJoyDoingSomething
   
   public static void a(AppRuntime paramAppRuntime, ReadInJoyDoingSomething.AppConfigInfoList paramAppConfigInfoList)
   {
-    if (bjxj.a(paramAppRuntime, true, true) == null)
+    if (bkbq.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not update config.");
       return;
@@ -570,7 +570,7 @@ public class ReadInJoyDoingSomething
   
   private static void c()
   {
-    Object localObject = bjxj.a(ors.a(), true, true);
+    Object localObject = bkbq.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "setLastScanDate failed, can not get config.");
@@ -580,7 +580,7 @@ public class ReadInJoyDoingSomething
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putString(b, localSimpleDateFormat.format(localDate));
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
 }
 

@@ -1,39 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
-class agha
-  implements Animation.AnimationListener
+public class agha
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  agha(aggz paramaggz, float paramFloat) {}
+  public agha(PEPanel paramPEPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    awen.a("PhotoListPanel", "DragHandler", " flyOutAnimation End fAnimLayout:" + this.jdField_a_of_type_Aggz.jdField_a_of_type_AndroidWidgetRelativeLayout + ",## dy = " + (this.jdField_a_of_type_Float - this.jdField_a_of_type_Aggz.jdField_a_of_type_Aggy.b));
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aggz.c.getLayoutParams();
-    paramAnimation.topMargin = this.jdField_a_of_type_Aggz.d.topMargin;
-    this.jdField_a_of_type_Aggz.c.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Aggz.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.jdField_a_of_type_Aggz.c.getWidth() / 2, this.jdField_a_of_type_Aggz.c.getHeight() / 2);
-    paramAnimation.addAnimation(this.jdField_a_of_type_Aggz.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.jdField_a_of_type_Aggz.c.startAnimation(paramAnimation);
-    awen.a("PhotoListPanel", "DragHandler", "startReemergeAnimation fAnimLayout:" + this.jdField_a_of_type_Aggz.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    paramAnimation.setAnimationListener(this.jdField_a_of_type_Aggz.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
+    }
+    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
+      PEPanel.a(this.a).setVisibility(0);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    awen.a("PhotoListPanel", "DragHandler", "@#flyOutAnimation, onAnimationStart ");
+    this.a.setListViewVisibile(8);
   }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

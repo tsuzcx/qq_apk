@@ -1,94 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.view.Window;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
-import java.util.Iterator;
-import java.util.List;
-
-public class aaow
+final class aaow
+  implements aaqv
 {
-  private aaoz a(String paramString1, String paramString2, String paramString3, List<bhra> paramList)
+  public aaqx a(aaqw paramaaqw)
   {
-    if (paramList.contains(AuthorizationItem.a))
-    {
-      if (!paramList.contains(AuthorizationItem.b)) {
-        break label57;
-      }
-      label26:
-      if (!paramList.contains(AuthorizationItem.c)) {
-        break label63;
+    String str2 = null;
+    aaqx localaaqx = new aaqx();
+    if (paramaaqw == null) {
+      if (paramaaqw == null) {
+        break label91;
       }
     }
-    for (;;)
+    label91:
+    for (String str1 = paramaaqw.a();; str1 = null)
     {
-      return new aaoz(paramString1, paramString2, paramString3, null);
-      paramString1 = "";
+      if (paramaaqw != null) {
+        str2 = paramaaqw.b();
+      }
+      aase.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaaqx.a) }));
+      return localaaqx;
+      if (!paramaaqw.a()) {
+        break;
+      }
+      aaot.a().a();
+      localaaqx.a = true;
       break;
-      label57:
-      paramString2 = "";
-      break label26;
-      label63:
-      paramString3 = "";
     }
-  }
-  
-  private void a(Activity paramActivity, boolean paramBoolean, aaoz paramaaoz, aaoy paramaaoy, List<bhra> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult: entity -> " + paramaaoz);
-    }
-    if (paramBoolean)
-    {
-      if (a(paramActivity, paramList))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult has authorized, return info direct ");
-        }
-        if (paramaaoy != null)
-        {
-          paramaaoz.a = 0;
-          paramaaoy.a(paramaaoz);
-        }
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult show authorize dialog to authorize user info");
-      }
-      paramActivity = new bhqz(paramActivity, paramaaoz, paramaaoy, paramList);
-      paramaaoz = paramActivity.getWindow();
-      if (paramaaoz != null) {
-        paramaaoz.setWindowAnimations(2131755012);
-      }
-      paramActivity.show();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult get result fail");
-    }
-    if (paramaaoy != null) {
-      paramaaoy.a(aaoz.a());
-    }
-    Toast.makeText(paramActivity, paramActivity.getString(2131690342), 0).show();
-  }
-  
-  private boolean a(Context paramContext, List<bhra> paramList)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext.getApplicationContext());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (!paramContext.getBoolean(((bhra)paramList.next()).b, false))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GdtUserInfoAuthorizationHelper", 2, "checkAuthorize user phone not authorize");
-        }
-        return false;
-      }
-    }
-    return true;
   }
 }
 

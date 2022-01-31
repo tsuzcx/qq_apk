@@ -1,94 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.6.1;
+import java.util.Map;
+import java.util.UUID;
 
-public abstract class bcnl
-  extends bhxa
+public class bcnl
+  extends yuj
 {
-  protected final int a;
-  protected final int[] a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
+  public bcnl(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public bcnl(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    super(paramInt1, paramInt2);
-    this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.b = paramArrayOfInt3;
-    this.c = paramArrayOfInt4;
-  }
-  
-  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((paramObject instanceof Object[]))
+    if (!paramBoolean) {}
+    do
     {
-      paramObject = (Object[])paramObject;
-      if ((paramObject.length != 2) || (!(paramObject[1] instanceof bbnr))) {
-        break label229;
-      }
-    }
-    label90:
-    label229:
-    for (bbnr localbbnr = (bbnr)paramObject[1];; localbbnr = null)
-    {
-      localObject1 = localObject2;
-      if (parambhxc != null)
-      {
-        localObject1 = localObject2;
-        if (parambhxc.jdField_a_of_type_Int >= 0)
-        {
-          localObject1 = localObject2;
-          if (parambhxc.b >= 0)
-          {
-            if (localbbnr != null) {
-              break label90;
-            }
-            localObject1 = localObject2;
-          }
-        }
-      }
       do
       {
-        return localObject1;
-        paramObject = localObject3;
-        if ((parambhxc.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-          paramObject = (SimpleTextView)parambhxc.jdField_a_of_type_AndroidViewView;
-        }
-        localObject1 = paramObject;
-      } while (paramObject == null);
-      paramInt = this.b[parambhxc.b];
-      int i = this.c[parambhxc.b];
-      int j = this.jdField_a_of_type_ArrayOfInt[parambhxc.b];
-      paramObject.setVisibility(0);
-      paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
-      paramObject.setBackgroundResource(i);
-      paramObject.setId(j);
-      paramObject.setTag(localbbnr);
-      paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
-      paramObject.setOnClickListener(paramOnClickListener);
-      parambhxc.c = this.d[parambhxc.jdField_a_of_type_Int];
-      parambhxc.d = this.jdField_a_of_type_Int;
-      return paramObject;
-    }
-  }
-  
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
+        return;
+        paramString = paramBundle.getString("itemKey");
+      } while (paramString == null);
+      paramString = UUID.fromString(paramString);
+      paramBundle = paramBundle.getString("fileId");
+      paramString = (bbsa)this.a.a().b.get(paramString);
+    } while ((paramString == null) || (paramInt1 != 0));
+    ytu.a(this.a.a, this.a.e, paramString.a, paramString.b, TroopFileTransferManager.a(this.a));
+    ThreadManager.executeOnSubThread(new TroopFileTransferManager.6.1(this, paramBundle, paramString));
   }
 }
 

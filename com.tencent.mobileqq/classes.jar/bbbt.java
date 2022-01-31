@@ -1,27 +1,29 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class bbbt
-  implements bhqr
+  extends bbbz
 {
-  public bbbt(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<bawy> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bbbt()
   {
-    if (paramView == null) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bcmu != null) {
-      this.a.jdField_a_of_type_Bcmu.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
+  }
 }
 
 

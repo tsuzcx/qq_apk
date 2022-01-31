@@ -51,8 +51,8 @@ public class cv
       paramViewGroup = (cu)getItem(paramInt);
       if (paramViewGroup.jdField_a_of_type_Int == 1)
       {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559452, null);
-        paramViewGroup = (TextView)paramView.findViewById(2131377566);
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559451, null);
+        paramViewGroup = (TextView)paramView.findViewById(2131377620);
       }
     }
     for (;;)
@@ -65,16 +65,16 @@ public class cv
       return paramView;
       if (paramViewGroup.jdField_a_of_type_Int == 2)
       {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559453, null);
-        View localView = paramView.findViewById(2131364020);
-        paramViewGroup = (TextView)paramView.findViewById(2131364021);
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559452, null);
+        View localView = paramView.findViewById(2131364022);
+        paramViewGroup = (TextView)paramView.findViewById(2131364023);
         localView.setClickable(true);
         localView.setEnabled(true);
         localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         continue;
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558999, null);
-        paramView.findViewById(2131369566).setVisibility(8);
-        paramViewGroup = (TextView)paramView.findViewById(2131369567);
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558998, null);
+        paramView.findViewById(2131369584).setVisibility(8);
+        paramViewGroup = (TextView)paramView.findViewById(2131369585);
         paramViewGroup.setTextSize(19.0F);
         paramViewGroup.setTextColor(-16777216);
       }

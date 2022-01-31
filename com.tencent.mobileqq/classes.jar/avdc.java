@@ -1,55 +1,67 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
+import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class avdc
-  implements auzh
+  implements avdq
 {
-  avdc(avcw paramavcw, VideoData paramVideoData) {}
+  avdc(avdb paramavdb) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Avcw.f(false);
-          this.jdField_a_of_type_Avcw.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = avcw.a(this.jdField_a_of_type_Avcw);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = false;
-          avcw.b(this.jdField_a_of_type_Avcw, false);
-          ((avms)this.jdField_a_of_type_Avcw.a.getManager(263)).b(avcw.a(this.jdField_a_of_type_Avcw), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw) + "  e:" + paramArrayOfByte);
-        return;
-      }
+    boolean bool = true;
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i(avdb.a(this.a), 2, "errorCode:   " + paramInt);
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw));
-    avcw.b(this.jdField_a_of_type_Avcw, false);
+    if (paramArrayOfByte != null) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i(avdb.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (QLog.isColorLevel()) {
+          QLog.i(avdb.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
+        }
+        paramBundle = this.a;
+        if (paramArrayOfByte.is_end.get() == 0) {
+          break label309;
+        }
+      }
+      for (;;)
+      {
+        paramBundle.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+        avdb.a(this.a, paramArrayOfByte);
+        avdb.a(this.a, avdb.a(this.a) + 10);
+        paramBundle = this.a.jdField_a_of_type_Avco;
+        paramInt = i;
+        if (paramArrayOfByte.err_code.has()) {
+          paramInt = paramArrayOfByte.err_code.get();
+        }
+        paramBundle.a(1, paramInt);
+        return;
+        label309:
+        bool = false;
+      }
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

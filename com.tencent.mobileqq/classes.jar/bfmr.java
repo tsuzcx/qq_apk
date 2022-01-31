@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
-
-public final class bfmr
-  implements Parcelable.Creator<VirtualInfo>
+public class bfmr
 {
-  public VirtualInfo a(Parcel paramParcel)
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  
+  public bfmr()
   {
-    return new VirtualInfo(paramParcel);
+    this.jdField_a_of_type_Long = 259200L;
   }
   
-  public VirtualInfo[] a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    return new VirtualInfo[paramInt];
+    paramObject = (bfmr)paramObject;
+    if (paramObject != null) {
+      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

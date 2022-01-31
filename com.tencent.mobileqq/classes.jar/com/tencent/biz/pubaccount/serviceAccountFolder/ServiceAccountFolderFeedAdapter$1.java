@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import azmj;
+import azqs;
 import com.tencent.qphone.base.util.QLog;
 import ssj;
 import ssk;
@@ -21,7 +21,7 @@ public class ServiceAccountFolderFeedAdapter$1
         if (this.a.jdField_a_of_type_JavaLangCharSequence == null) {}
         for (String str1 = "";; str1 = this.a.jdField_a_of_type_JavaLangCharSequence.toString())
         {
-          azmj.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
+          azqs.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
           return;
         }
       }

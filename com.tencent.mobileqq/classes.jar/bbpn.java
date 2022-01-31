@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import java.util.List;
 
-class bbpn
-  implements Comparator<MessageRecord>
+public class bbpn
 {
-  bbpn(bbpm parambbpm) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  public int a;
+  public List<Integer> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

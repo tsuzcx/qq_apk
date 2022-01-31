@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public abstract interface aemf
+public class aemf
+  extends bhry
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public aemf(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_f_of_type_Boolean = true;
+  }
 }
 
 

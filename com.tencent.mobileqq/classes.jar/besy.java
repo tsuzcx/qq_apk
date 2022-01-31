@@ -1,22 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class besy
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public besy(FloatingScreenContainer paramFloatingScreenContainer) {}
+  public besy(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    paramAnimator.removeAllListeners();
+    QLog.d("ProfileCardMoreInfoView", 4, "qqCircleWriteEntrance onClick");
+    paramView = new Intent();
+    paramView.putExtra("key_is_publish", true);
+    paramView.putExtra("key_jump_from", "5");
+    tqs.a(this.a.a, paramView);
+    tzv.a("", 3, 2L, 2L);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

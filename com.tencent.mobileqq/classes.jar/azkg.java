@@ -1,19 +1,22 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-public class azkg
-  extends SQLiteOpenHelper
+class azkg
 {
-  public azkg(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
+  
+  private azkg()
   {
-    super(paramContext, paramString, null, paramInt);
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+  }
 }
 
 

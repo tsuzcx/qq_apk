@@ -1,27 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class yjh
-  extends ahcr
+  implements View.OnClickListener
 {
-  public yjh(Context paramContext, String paramString)
-  {
-    super(paramContext, paramString);
-  }
+  public yjh(SubscribeHybirdFragment paramSubscribeHybirdFragment, ydo paramydo) {}
   
-  protected void onCreate(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 17;
-    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131298994);
-    paramBundle.setAttributes(localLayoutParams);
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Ydo);
   }
 }
 

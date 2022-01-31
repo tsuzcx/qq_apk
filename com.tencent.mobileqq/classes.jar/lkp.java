@@ -56,7 +56,7 @@ public class lkp
           int i = 0;
           while (i < paramString.length())
           {
-            PendantItem localPendantItem = (PendantItem)bcyj.a((JSONObject)paramString.get(i), (Class)localObject);
+            PendantItem localPendantItem = (PendantItem)bdcs.a((JSONObject)paramString.get(i), (Class)localObject);
             if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
             {
               int k = localPendantItem.getPlatform();
@@ -85,7 +85,7 @@ public class lkp
   
   public static void a()
   {
-    bdiv.b(jdField_a_of_type_Int, b);
+    bdne.b(jdField_a_of_type_Int, b);
     lek.c("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
   }
   
@@ -96,7 +96,7 @@ public class lkp
   
   public static void b()
   {
-    bdiv.c();
+    bdne.c();
     lek.c("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
   }
   
@@ -141,13 +141,13 @@ public class lkp
     try
     {
       localHashMap = new HashMap();
-      bool = bdiv.b();
-      arrayOfInt = bdiv.b();
-      l2 = bdiv.b();
+      bool = bdne.b();
+      arrayOfInt = bdne.b();
+      l2 = bdne.b();
       if ((!bool) && (arrayOfInt[1] <= 0))
       {
-        axjt.a().b(false);
-        bdiv.d();
+        axoc.a().b(false);
+        bdne.d();
       }
       if (l2 <= 0L) {
         break label380;

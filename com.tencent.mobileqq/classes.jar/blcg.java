@@ -1,15 +1,15 @@
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class blcg
-  implements bmac<Boolean>
+  extends RecyclerView.OnScrollListener
 {
-  blcg(blcc paramblcc) {}
+  blcg(blcf paramblcf) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramBoolean.booleanValue()) {
-      blcc.a(this.a).d();
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    blcf.a(this.a).notifyDataSetChanged();
   }
 }
 

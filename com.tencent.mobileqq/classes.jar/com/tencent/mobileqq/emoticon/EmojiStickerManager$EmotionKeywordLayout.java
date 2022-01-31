@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import apuk;
+import apyt;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.qphone.base.util.QLog;
@@ -44,11 +44,11 @@ public class EmojiStickerManager$EmotionKeywordLayout
         if ((!this.b) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c instanceof TopGestureLayout)))
         {
           Object localObject = ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureDetector();
-          if ((localObject instanceof apuk))
+          if ((localObject instanceof apyt))
           {
-            localObject = (apuk)localObject;
-            ((apuk)localObject).a = paramMotionEvent.getRawX();
-            ((apuk)localObject).b = paramMotionEvent.getRawY();
+            localObject = (apyt)localObject;
+            ((apyt)localObject).a = paramMotionEvent.getRawX();
+            ((apyt)localObject).b = paramMotionEvent.getRawY();
             this.b = true;
           }
         }

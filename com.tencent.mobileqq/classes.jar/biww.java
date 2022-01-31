@@ -1,15 +1,27 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
 public class biww
-  implements View.OnClickListener
+  extends biwp
 {
-  public biww(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public biww(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, biws parambiws, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  {
+    super(paramActivity, parambiws, paramInt1, paramInt2, paramAppRuntime);
+  }
   
   public void onClick(View paramView)
   {
-    ForceUserUpdateActivity.a(this.a);
+    if (LocationDetailActivity.a(this.a))
+    {
+      bivs.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
+      }
+    }
+    super.onClick(paramView);
   }
 }
 

@@ -1,22 +1,6 @@
 public abstract interface bnig
 {
-  public abstract void D();
-  
-  public abstract void E();
-  
-  public abstract void F();
-  
-  public abstract void G();
-  
-  public abstract void H();
-  
-  public abstract boolean d();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void q();
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

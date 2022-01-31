@@ -1,43 +1,106 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
 public class apsm
+  implements Handler.Callback
 {
-  public int a;
-  public EmoticonPackage a;
-  public int b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private apsn jdField_a_of_type_Apsn;
+  protected ArrayList<Integer> a;
+  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   
-  public apsm(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
+  public apsm(apsn paramapsn)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+    this.jdField_a_of_type_Apsn = paramapsn;
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if (this == paramObject) {}
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        b();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+        }
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  protected void b()
+  {
+    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      return true;
-      if (!(paramObject instanceof apsm)) {
-        return false;
+      return false;
+    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          break label162;
+        }
+        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (i <= -1) {
+          break;
+        }
+        if (this.jdField_a_of_type_Apsn != null) {
+          this.jdField_a_of_type_Apsn.a(i);
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
+          return false;
+        }
       }
-      paramObject = (apsm)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      if (!QLog.isColorLevel()) {
         break;
       }
-    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
-    return false;
-    return false;
-  }
-  
-  public String toString()
-  {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
+      return false;
+      label162:
+      int i = -1;
     }
-    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
   }
 }
 

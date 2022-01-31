@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class QQARSession$18$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131710525), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131710537), 1).a();
   }
 }
 

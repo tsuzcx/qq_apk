@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class atiu
-  implements DialogInterface.OnClickListener
+class atiu
+  implements yrb
 {
-  public atiu(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  atiu(atir paramatir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    int i = paramBundle.getInt("state", 0);
+    int j = paramBundle.getInt("percentage", 0);
+    long l = paramBundle.getLong("errCode", 0L);
+    try
+    {
+      paramBundle = new JSONObject();
+      paramBundle.put("state", i);
+      paramBundle.put("percentage", j);
+      paramBundle.put("errCode", l);
+      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
+      }
+      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
+    }
   }
 }
 

@@ -10,16 +10,16 @@ import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
-import bghn;
-import bgjm;
-import bgkd;
-import bgki;
-import bhfx;
-import bhfz;
-import bhga;
-import bhgb;
-import bhgc;
-import bhgd;
+import bglu;
+import bgnt;
+import bgok;
+import bgop;
+import bhke;
+import bhkg;
+import bhkh;
+import bhki;
+import bhkj;
+import bhkk;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -36,11 +36,11 @@ public class MiniAppCamera
   private static String jdField_a_of_type_JavaLangString;
   private static final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
   public static int b;
-  private static WeakReference<bghn> b;
+  private static WeakReference<bglu> b;
   private static volatile boolean jdField_d_of_type_Boolean;
   private static int e;
-  private bhfx jdField_a_of_type_Bhfx;
-  protected WeakReference<bghn> a;
+  private bhke jdField_a_of_type_Bhke;
+  protected WeakReference<bglu> a;
   private int c;
   private int jdField_d_of_type_Int;
   
@@ -50,10 +50,10 @@ public class MiniAppCamera
     jdField_b_of_type_Int = 240;
   }
   
-  public MiniAppCamera(Context paramContext, bghn parambghn)
+  public MiniAppCamera(Context paramContext, bglu parambglu)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambghn);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambglu);
     Log.i("MiniAppCamera", "MiniAppCamera: " + Build.BRAND + " " + Build.MODEL);
   }
   
@@ -70,7 +70,7 @@ public class MiniAppCamera
     {
       return null;
       Log.i("MiniAppCamera", "saveVideoThumbImg: " + ((File)localObject).length());
-      paramString = bgjm.a().b("jpg");
+      paramString = bgnt.a().b("jpg");
       localObject = a(((File)localObject).getAbsolutePath());
     } while (localObject == null);
     b((Bitmap)localObject, new File(paramString), "");
@@ -78,29 +78,29 @@ public class MiniAppCamera
     return paramString;
   }
   
-  private void a(String paramString, bgkd parambgkd)
+  private void a(String paramString, bgok parambgok)
   {
     Log.i("MiniAppCamera", "reportRecordAns: " + paramString);
-    ThreadManager.a(new MiniAppCamera.5(this, paramString, parambgkd), 16, null, true);
+    ThreadManager.a(new MiniAppCamera.5(this, paramString, parambgok), 16, null, true);
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, bgkd parambgkd) {}
+  private void a(String paramString1, String paramString2, String paramString3, bgok parambgok) {}
   
-  private void a(String paramString, boolean paramBoolean, bhgd parambhgd)
+  private void a(String paramString, boolean paramBoolean, bhkk parambhkk)
   {
-    if (parambhgd == null) {
+    if (parambhkk == null) {
       return;
     }
     Log.i("MiniAppCamera", "nativeTakePhoto: ");
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, new bhga(this, paramBoolean, paramString, parambhgd));
+      this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, new bhkh(this, paramBoolean, paramString, parambhkk));
       return;
     }
     catch (Exception paramString)
     {
       Log.e("MiniAppCamera", "nativeTakePhoto: ", paramString);
-      parambhgd.a(null);
+      parambhkk.a(null);
     }
   }
   
@@ -146,7 +146,7 @@ public class MiniAppCamera
     //   61: getstatic 24	com/tencent/qqmini/sdk/runtime/widget/camera/MiniAppCamera:jdField_a_of_type_Int	I
     //   64: getstatic 26	com/tencent/qqmini/sdk/runtime/widget/camera/MiniAppCamera:jdField_b_of_type_Int	I
     //   67: iload_3
-    //   68: invokestatic 227	bgkx:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   68: invokestatic 227	bgpe:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   71: astore_0
     //   72: aload 5
     //   74: ifnull +8 -> 82
@@ -199,10 +199,10 @@ public class MiniAppCamera
     //   84	92	123	finally
   }
   
-  private void b(String paramString, bgkd parambgkd)
+  private void b(String paramString, bgok parambgok)
   {
     int m = 0;
-    String str = bgjm.a().b("mp4");
+    String str = bgnt.a().b("mp4");
     int k = getWidth();
     int n = getHeight();
     int j = this.jdField_a_of_type_AndroidHardwareCamera$Size.height;
@@ -216,7 +216,7 @@ public class MiniAppCamera
     for (;;)
     {
       Log.i("MiniAppCamera", "startCrop: " + paramString);
-      a("-y -i " + paramString + " -strict -2 -vcodec libx264 -preset ultrafast -vf crop=" + j + ":" + i + ":" + m + ":" + k + " " + str, str, paramString, parambgkd);
+      a("-y -i " + paramString + " -strict -2 -vcodec libx264 -preset ultrafast -vf crop=" + j + ":" + i + ":" + m + ":" + k + " " + str, str, paramString, parambgok);
       return;
       k *= i / n;
       m = (j - k) / 2;
@@ -231,7 +231,7 @@ public class MiniAppCamera
     do
     {
       return;
-      jdField_a_of_type_JavaLangString = bgjm.a().b("mp4");
+      jdField_a_of_type_JavaLangString = bgnt.a().b("mp4");
     } while (jdField_a_of_type_JavaLangString == null);
     Log.i("MiniAppCamera", "nativeStartRecord: " + jdField_a_of_type_JavaLangString);
     try
@@ -310,17 +310,17 @@ public class MiniAppCamera
     }
   }
   
-  public void a(bgkd parambgkd)
+  public void a(bgok parambgok)
   {
     if (jdField_d_of_type_Boolean) {
       return;
     }
     jdField_d_of_type_Boolean = true;
-    jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambgkd.a);
-    e = parambgkd.jdField_b_of_type_Int;
+    jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambgok.a);
+    e = parambgok.jdField_b_of_type_Int;
     jdField_a_of_type_AndroidMediaMediaRecorder = new MediaRecorder();
-    jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new bhgb(this, parambgkd));
-    jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new bhgc(this, parambgkd));
+    jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new bhki(this, parambgok));
+    jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new bhkj(this, parambgok));
     try
     {
       g();
@@ -329,7 +329,7 @@ public class MiniAppCamera
     catch (Exception localException)
     {
       Log.w("MiniAppCamera", "startRecord: ", localException);
-      parambgkd.b();
+      parambgok.b();
       jdField_d_of_type_Boolean = false;
     }
     try
@@ -339,7 +339,7 @@ public class MiniAppCamera
       jdField_a_of_type_AndroidMediaMediaRecorder = null;
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
       for (;;)
       {
@@ -348,17 +348,17 @@ public class MiniAppCamera
     }
   }
   
-  public void a(bgkd parambgkd, String paramString)
+  public void a(bgok parambgok, String paramString)
   {
-    a(paramString, true, new bhfz(this, parambgkd));
+    a(paramString, true, new bhkg(this, parambgok));
   }
   
   public void a(String paramString)
   {
     if ((this.jdField_a_of_type_JavaLangInteger == null) && (this.jdField_b_of_type_JavaLangInteger == null))
     {
-      if (this.jdField_a_of_type_Bhfx != null) {
-        this.jdField_a_of_type_Bhfx.onStartPreview(false);
+      if (this.jdField_a_of_type_Bhke != null) {
+        this.jdField_a_of_type_Bhke.onStartPreview(false);
       }
       return;
     }
@@ -372,20 +372,20 @@ public class MiniAppCamera
         a(this.jdField_a_of_type_JavaLangInteger.intValue());
         setCameraSize(this.jdField_a_of_type_AndroidHardwareCamera$Size);
         b();
-        if (this.jdField_a_of_type_Bhfx == null) {
+        if (this.jdField_a_of_type_Bhke == null) {
           break;
         }
-        this.jdField_a_of_type_Bhfx.onStartPreview(true);
+        this.jdField_a_of_type_Bhke.onStartPreview(true);
         return;
       }
       catch (Exception paramString)
       {
         Log.w("MiniAppCamera", "openCamera: ", paramString);
       }
-      if (this.jdField_a_of_type_Bhfx == null) {
+      if (this.jdField_a_of_type_Bhke == null) {
         break;
       }
-      this.jdField_a_of_type_Bhfx.onStartPreview(false);
+      this.jdField_a_of_type_Bhke.onStartPreview(false);
       return;
       label119:
       if ((!"back".equals(paramString)) || (this.jdField_b_of_type_JavaLangInteger == null)) {
@@ -405,14 +405,14 @@ public class MiniAppCamera
   public void a(boolean paramBoolean)
   {
     Log.i("MiniAppCamera", "stopPreview: ");
-    bghn localbghn;
+    bglu localbglu;
     if (jdField_d_of_type_Boolean)
     {
       jdField_d_of_type_Boolean = false;
-      localbghn = (bghn)jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localbghn != null)
+      localbglu = (bglu)jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (localbglu != null)
       {
-        localObject = bgki.b("operateCamera", null);
+        localObject = bgop.b("operateCamera", null);
         if (localObject == null) {
           break label83;
         }
@@ -421,7 +421,7 @@ public class MiniAppCamera
     label83:
     for (Object localObject = ((JSONObject)localObject).toString();; localObject = "")
     {
-      localbghn.a(e, (String)localObject);
+      localbglu.a(e, (String)localObject);
       jdField_b_of_type_JavaLangRefWeakReference.clear();
       h();
       c();
@@ -449,7 +449,7 @@ public class MiniAppCamera
     super.b();
   }
   
-  public void b(bgkd parambgkd)
+  public void b(bgok parambgok)
   {
     Log.i("MiniAppCamera", "stopRecord: " + jdField_d_of_type_Boolean + " " + a());
     if (!jdField_d_of_type_Boolean) {
@@ -459,10 +459,10 @@ public class MiniAppCamera
     h();
     if (this.jdField_a_of_type_AndroidHardwareCamera$Size.width * getWidth() == this.jdField_a_of_type_AndroidHardwareCamera$Size.height * getHeight())
     {
-      a(jdField_a_of_type_JavaLangString, parambgkd);
+      a(jdField_a_of_type_JavaLangString, parambgok);
       return;
     }
-    b(jdField_a_of_type_JavaLangString, parambgkd);
+    b(jdField_a_of_type_JavaLangString, parambgok);
   }
   
   public void f()
@@ -492,9 +492,9 @@ public class MiniAppCamera
     this.c = paramInt;
   }
   
-  public void setCameraSurfaceCallBack(bhfx parambhfx)
+  public void setCameraSurfaceCallBack(bhke parambhke)
   {
-    this.jdField_a_of_type_Bhfx = parambhfx;
+    this.jdField_a_of_type_Bhke = parambhke;
   }
   
   public void setWebviewId(int paramInt)

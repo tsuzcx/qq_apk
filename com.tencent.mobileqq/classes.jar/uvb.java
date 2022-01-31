@@ -1,79 +1,63 @@
-import android.os.Build;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-
 public class uvb
-  extends unk
+  implements uvi
 {
-  static final String a;
-  static boolean b;
-  public boolean a;
-  public String b;
-  public int c;
-  public String c;
+  public final uuz[] a = new uuz[2];
   
-  static
+  private void a(uuz paramuuz, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = ume.a("StoryTabSvc.startpage_feeds_list_725");
+    this.a[paramInt] = paramuuz;
   }
   
-  public String a()
+  public <T extends uuz> T a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
-    try
+    uuz localuuz = this.a[paramInt];
+    if (localuuz == null) {}
+    for (;;)
     {
-      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
-      return new uvc(localRspMsgTabNodeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      synchronized (this.a)
       {
-        paramArrayOfByte.printStackTrace();
+        localuuz = this.a[paramInt];
+        if (localuuz == null) {
+          break label80;
+        }
+        return localuuz;
+        a(localuuz, paramInt);
+        if (localuuz != null) {
+          localuuz.b();
+        }
+        return localuuz;
+      }
+      Object localObject2 = new uwo();
+      continue;
+      localObject2 = new uus();
+      continue;
+      return localObject2;
+      label80:
+      switch (paramInt)
+      {
       }
     }
   }
   
-  protected byte[] a()
+  public void a()
   {
-    if (jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
-    }
-    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.version.set(4);
-    Long localLong = xnd.a();
-    if (localLong != null) {
-      localReqMsgTabNodeList.adcode.set(localLong.longValue());
-    }
-    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
-    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
-    return localReqMsgTabNodeList.toByteArray();
+    wxe.b("DataProviderManager", "onInit");
   }
   
-  public String toString()
+  public void b()
   {
-    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
+    wxe.b("DataProviderManager", "onDestroy");
+    uuz[] arrayOfuuz = this.a;
+    int j = arrayOfuuz.length;
+    int i = 0;
+    while (i < j)
+    {
+      uuz localuuz = arrayOfuuz[i];
+      if (localuuz != null) {
+        localuuz.c();
+      }
+      i += 1;
+    }
   }
 }
 

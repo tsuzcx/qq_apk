@@ -1,36 +1,54 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import tencent.im.group.nearbybanner.nearbybanner.Banners;
+import tencent.im.group.nearbybanner.nearbybanner.RspBody;
 
-public class yrs
-  implements aaip
+class yrs
+  implements BusinessObserver
 {
-  public yrs(TroopGiftPanel paramTroopGiftPanel) {}
+  yrs(yrr paramyrr, Bundle paramBundle) {}
   
-  public void a(GdtAd paramGdtAd)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
-    TroopGiftPanel.a(this.a, paramGdtAd);
-  }
-  
-  public void a(GdtAd paramGdtAd, aaio paramaaio)
-  {
-    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramaaio.a());
-  }
-  
-  public void b(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdImpression");
-  }
-  
-  public void c(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdClicked");
-  }
-  
-  public void d(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdClosed");
+    this.jdField_a_of_type_AndroidOsBundle.remove("data");
+    if (!paramBoolean)
+    {
+      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramBundle);
+      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
+      {
+        this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
+      if (!paramBundle.rpt_banner_info.has())
+      {
+        this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
+    this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

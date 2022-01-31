@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
-import cooperation.qwallet.plugin.FakeUrl.FakeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class aejg
-  implements FakeUrl.FakeListener
+class aejg
+  implements DialogInterface.OnClickListener
 {
-  public aejg(QQNotifySettingBaseFragment.2.1 param1) {}
+  aejg(aeje paramaeje, bdjz parambdjz) {}
   
-  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onClickUrl(String paramString)
-  {
-    return false;
+    azqs.b(this.jdField_a_of_type_Aeje.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aeje.a.a, "", "", "");
+    this.jdField_a_of_type_Bdjz.cancel();
   }
 }
 

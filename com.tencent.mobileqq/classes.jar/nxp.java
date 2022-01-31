@@ -33,7 +33,7 @@ public class nxp
   {
     try
     {
-      String str = (String)bjxj.a("readinjoy_follow_subscribed_list_data_key", "");
+      String str = (String)bkbq.a("readinjoy_follow_subscribed_list_data_key", "");
       if (!TextUtils.isEmpty(str)) {
         a(new JSONObject(str));
       }
@@ -68,7 +68,7 @@ public class nxp
             if (localContainer == null) {
               break;
             }
-            localContainer.setBackgroundResource(2130841380);
+            localContainer.setBackgroundResource(2130841381);
             this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localContainer, -1, -1);
             this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = localContainer;

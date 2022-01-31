@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emoticon;
 
-import apoa;
-import apod;
+import apsj;
+import apsm;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQSysAndEmojiResReloader$1
   implements Runnable
 {
-  public QQSysAndEmojiResReloader$1(apod paramapod) {}
+  public QQSysAndEmojiResReloader$1(apsm paramapsm) {}
   
   public void run()
   {
-    if (apoa.a() != null)
+    if (apsj.a() != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSysAndEmojiResReloader", 2, "trigger downloadEmoticonRes");
       }
-      apoa.a().a();
+      apsj.a().a();
     }
   }
 }

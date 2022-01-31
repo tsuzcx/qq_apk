@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import arhz;
-import arjw;
+import armi;
+import arof;
 
 public class MusicFilePresenter$3
   implements Runnable
 {
-  public MusicFilePresenter$3(arhz paramarhz, String paramString, int paramInt) {}
+  public MusicFilePresenter$3(armi paramarmi, String paramString, int paramInt) {}
   
   public void run()
   {

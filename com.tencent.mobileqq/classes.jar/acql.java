@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class acql
-  implements Comparator<acqj>
+  extends bdul
 {
-  private acql(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public acql(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public int a(acqj paramacqj1, acqj paramacqj2)
+  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
   {
-    return paramacqj1.c.compareToIgnoreCase(paramacqj2.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(true);
+    }
   }
 }
 

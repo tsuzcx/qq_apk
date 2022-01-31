@@ -3,7 +3,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class rpg
-  implements bhtl
+  implements bhxs
 {
   public rpg(ChannelClassificationListView paramChannelClassificationListView) {}
   

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqnl;
+import aqru;
 
 public class FMObserver$1
   implements Runnable
 {
-  public FMObserver$1(aqnl paramaqnl, Object paramObject) {}
+  public FMObserver$1(aqru paramaqru, Object paramObject) {}
   
   public void run()
   {
-    aqnl.a(this.this$0, this.a);
+    aqru.a(this.this$0, this.a);
   }
 }
 

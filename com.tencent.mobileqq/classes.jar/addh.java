@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
 public class addh
-  implements addq
+  extends baot
 {
-  public addh(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  WeakReference<adyd> a;
+  WeakReference<View> b;
   
-  public void a()
+  addh(adyd paramadyd, View paramView)
   {
-    LoginPhoneNumActivity.a(this.a);
+    this.a = new WeakReference(paramadyd);
+    this.b = new WeakReference(paramView);
   }
   
-  public void b()
+  public boolean a(int paramInt)
   {
-    LoginPhoneNumActivity.a(this.a);
+    adyd localadyd = (adyd)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localadyd != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localadyd, localView));
+    }
+    return super.a(paramInt);
   }
 }
 

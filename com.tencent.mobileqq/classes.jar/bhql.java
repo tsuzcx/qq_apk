@@ -1,126 +1,124 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.util.List;
+import android.util.Pair;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public class bhql
+public abstract class bhql
 {
-  public static Dialog a(Context paramContext, View paramView)
+  private static int a(ByteBuffer paramByteBuffer)
   {
-    return a(paramContext, paramView, -1, null);
-  }
-  
-  public static Dialog a(Context paramContext, View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    paramContext = bhpy.a(paramContext, paramInt, paramLayoutParams);
-    paramContext.a(paramView, null);
-    return paramContext;
-  }
-  
-  public static bhpy a(Context paramContext, bhpy parambhpy, List<bhpx> paramList, bhqd parambhqd)
-  {
-    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    int i;
-    if (parambhpy == null)
-    {
-      parambhpy = (bhpy)a(paramContext, null);
-      i = 0;
-      label35:
-      if (i >= paramList.size()) {
-        break label116;
-      }
-      paramContext = (bhpx)paramList.get(i);
-      if (paramContext.d == 0)
-      {
-        if (paramContext.a != 1) {
-          break label99;
-        }
-        parambhpy.a(paramContext, 1);
-      }
-    }
+    a(paramByteBuffer);
+    int j = paramByteBuffer.capacity();
+    if (j < 22) {}
     for (;;)
     {
-      i += 1;
-      break label35;
-      parambhpy.c();
-      parambhpy.a();
-      break;
-      label99:
-      if (paramContext.a == 2) {
-        parambhpy.a(paramContext, 3);
+      return -1;
+      int k = Math.min(j - 22, 65535);
+      int i = 0;
+      while (i < k)
+      {
+        int m = j - 22 - i;
+        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+          return m;
+        }
+        i += 1;
       }
     }
-    label116:
-    parambhpy.a(parambhqd);
-    return parambhpy;
   }
   
-  public static bhpy a(Context paramContext, List<bhpx> paramList, bhqd parambhqd)
+  private static int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    return a(paramContext, null, paramList, parambhqd);
+    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
   }
   
-  public static String a(Context paramContext, int paramInt)
+  public static long a(ByteBuffer paramByteBuffer)
   {
-    if (paramContext == null) {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 16);
+  }
+  
+  private static long a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+  }
+  
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
+  {
+    Object localObject;
+    if (paramRandomAccessFile.length() < 22L) {
+      localObject = null;
+    }
+    Pair localPair;
+    do
+    {
+      return localObject;
+      localPair = a(paramRandomAccessFile, 0);
+      localObject = localPair;
+    } while (localPair != null);
+    return a(paramRandomAccessFile, 65535);
+  }
+  
+  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 65535)) {
+      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
+    }
+    long l = paramRandomAccessFile.length();
+    if (l < 22L) {}
+    ByteBuffer localByteBuffer;
+    do
+    {
       return null;
-    }
-    return paramContext.getString(paramInt);
+      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
+      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+      l -= localByteBuffer.capacity();
+      paramRandomAccessFile.seek(l);
+      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
+      paramInt = a(localByteBuffer);
+    } while (paramInt == -1);
+    localByteBuffer.position(paramInt);
+    paramRandomAccessFile = localByteBuffer.slice();
+    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
+    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
   }
   
-  public static void a(Activity paramActivity, bhpy parambhpy)
+  private static void a(ByteBuffer paramByteBuffer)
   {
-    if ((paramActivity == null) || (parambhpy == null)) {
-      return;
+    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
+      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
     }
-    try
-    {
-      if (!paramActivity.isFinishing())
-      {
-        parambhpy.show();
-        return;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "showActionSheet when activity(" + paramActivity + ") is finish!");
   }
   
-  public static Dialog b(Context paramContext, View paramView)
+  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
   {
-    paramContext = bhpy.b(paramContext);
-    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
-    return paramContext;
+    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
+      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
+    }
+    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
   }
   
-  public static void b(Activity paramActivity, bhpy parambhpy)
+  static void a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    if ((paramActivity == null) || (parambhpy == null)) {
-      return;
-    }
-    try
+    a(paramByteBuffer);
+    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
+  }
+  
+  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
+  {
+    paramLong -= 20L;
+    if (paramLong < 0L) {}
+    do
     {
-      if (!paramActivity.isFinishing())
-      {
-        parambhpy.dismiss();
-        return;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "dismissActionSheet when activity(" + paramActivity + ") is finish!");
+      return false;
+      paramRandomAccessFile.seek(paramLong);
+    } while (paramRandomAccessFile.readInt() != 1347094023);
+    return true;
+  }
+  
+  public static long b(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 12);
   }
 }
 

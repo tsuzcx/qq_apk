@@ -21,7 +21,7 @@ public class qwy
   implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, roc
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new qwz(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)LayoutInflater.from(BaseApplication.getContext()).inflate(2131559879, null, false);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)LayoutInflater.from(BaseApplication.getContext()).inflate(2131559878, null, false);
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
@@ -58,11 +58,11 @@ public class qwy
     default: 
       return;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130842823));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130842836));
       this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(1));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130842822));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130842835));
     this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(2));
   }
   
@@ -84,14 +84,14 @@ public class qwy
   
   private void n()
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376271));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379746));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372057));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379596));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379748));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379616));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364889));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378985));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376325));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379804));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372077));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379654));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379806));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379674));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364891));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379043));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(this);

@@ -1,15 +1,10 @@
-public class amyb
+public abstract interface amyb
 {
-  public float a;
-  public boolean a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public amyb()
-  {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void k_(int paramInt);
 }
 
 

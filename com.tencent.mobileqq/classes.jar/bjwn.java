@@ -1,41 +1,101 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.PopupWindow;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjwn
-  extends PopupWindow
+  extends bjxz
 {
-  private WeakReference<Context> a;
-  
-  public bjwn(Context paramContext)
+  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    super(paramContext);
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public void showAsDropDown(View paramView)
-  {
-    if (this.a.get() == null) {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
+    do
+    {
+      return;
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+      paramWebViewPlugin = paramArrayOfString.optString("host");
+      paramArrayOfString = paramArrayOfString.optString("callback");
+      if (TextUtils.isEmpty(paramArrayOfString))
+      {
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
+        return;
+      }
+    }
+    catch (JSONException paramWebViewPlugin)
+    {
+      paramWebViewPlugin.printStackTrace();
       return;
     }
-    super.showAsDropDown(paramView);
-  }
-  
-  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
-  {
-    if (this.a.get() == null) {
+    if (TextUtils.isEmpty(paramWebViewPlugin))
+    {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
       return;
     }
-    super.showAsDropDown(paramView, paramInt1, paramInt2);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
   }
   
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  private void a(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.get() == null) {
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
     }
-    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    for (;;)
+    {
+      return;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("host_ip", paramString2);
+        paramString2 = localJSONObject.toString();
+        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
+        {
+          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
+      }
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
+      return false;
+    }
+    a(this.a, paramVarArgs);
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 8589934595L) && (paramMap != null))
+    {
+      paramString = paramMap.get("errorCode");
+      if ((paramString != null) && ((paramString instanceof Integer)))
+      {
+        int i = ((Integer)paramString).intValue();
+        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
+      }
+    }
+    return false;
   }
 }
 

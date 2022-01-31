@@ -1,24 +1,11 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-
 class blbf
-  implements bmac<Boolean>
+  implements blcv
 {
-  blbf(blbc paramblbc) {}
+  blbf(blbe paramblbe) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(blag paramblag)
   {
-    if (paramBoolean == null) {}
-    while (!blbc.b(this.a)) {
-      return;
-    }
-    View localView = blbc.a(this.a);
-    if ((paramBoolean.booleanValue()) && (blbc.b(this.a))) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    blbe.a(this.a, paramblag);
   }
 }
 

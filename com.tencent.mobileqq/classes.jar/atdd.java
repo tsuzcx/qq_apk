@@ -1,103 +1,140 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.Appconf.AppConfResponse;
-import face.qqlogin.Appconf.Wording;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class atdd
-  extends avqt
+public class atdd
+  extends WebViewPlugin
 {
-  atdd(int paramInt, BusinessObserver paramBusinessObserver) {}
+  private int jdField_a_of_type_Int;
+  private yqz jdField_a_of_type_Yqz;
+  final yrb jdField_a_of_type_Yrb = new atde(this);
+  private int b;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public atdd()
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
+    this.mPluginNameSpace = "nowlive";
   }
   
-  public void a(byte[] paramArrayOfByte)
+  private void a(int paramInt1, int paramInt2)
   {
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      Object localObject2;
-      int i;
-      String str1;
-      String str2;
-      int j;
-      String str3;
-      String str4;
-      try
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("progress", paramInt2);
+      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errcode", paramInt);
+      localJSONObject.put("desc", paramString);
+      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+    }
+    if ((this.jdField_a_of_type_Yqz == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
+    label318:
+    do
+    {
+      return false;
+      if ("getPluginInfo".equals(paramString3))
       {
-        localObject2 = new Appconf.AppConfResponse();
-        ((Appconf.AppConfResponse)localObject2).mergeFrom(paramArrayOfByte);
-        localObject1 = ((Appconf.AppConfResponse)localObject2).AppName.get();
-        i = ((Appconf.AppConfResponse)localObject2).Mode.get();
-        str1 = ((Appconf.AppConfResponse)localObject2).ColorSeq.get().toStringUtf8();
-        str2 = ((Appconf.AppConfResponse)localObject2).Session.get();
-        j = ((Appconf.AppConfResponse)localObject2).Ret.get();
-        str3 = ((Appconf.AppConfResponse)localObject2).ErrMsg.get();
-        str4 = ((Appconf.AppConfResponse)localObject2).ActionSeq.get().toStringUtf8();
-        if (!QLog.isDevelopLevel()) {
-          break label396;
-        }
-        paramArrayOfByte = ((Appconf.AppConfResponse)localObject2).Debug.get();
-        Object localObject3 = ((Appconf.AppConfResponse)localObject2).Wordings.get();
-        localObject2 = new ArrayList(3);
-        if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+        this.jdField_a_of_type_Yqz.i();
+        a(this.jdField_a_of_type_Int, this.b);
+      }
+      for (;;)
+      {
+        return true;
+        if ("openRoom".equals(paramString3))
         {
-          localObject3 = ((List)localObject3).iterator();
-          if (!((Iterator)localObject3).hasNext()) {
-            break label267;
+          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+            break;
           }
-          Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject3).next();
-          ((List)localObject2).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
+          }
+          paramJsBridgeListener = paramVarArgs[0];
+          if (TextUtils.isEmpty(paramJsBridgeListener)) {
+            break;
+          }
+          this.jdField_a_of_type_Yqz.a(Long.valueOf(paramJsBridgeListener).longValue());
           continue;
         }
-        if (!QLog.isColorLevel()) {
-          break label267;
+        if ("install".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            paramJsBridgeListener = paramVarArgs[0];
+          }
+          for (;;)
+          {
+            try
+            {
+              i = Integer.valueOf(paramJsBridgeListener).intValue();
+              paramJsBridgeListener = this.jdField_a_of_type_Yqz;
+              if (i == 1) {
+                bool = true;
+              }
+              paramJsBridgeListener.b(bool);
+            }
+            catch (NumberFormatException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+            int i = 0;
+          }
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramArrayOfByte);
+        if (!"preload".equals(paramString3)) {
+          break label318;
         }
-        return;
+        this.jdField_a_of_type_Yqz.g();
       }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject1);
-      label267:
-      Object localObject1 = new FaceDetectForThirdPartyManager.AppConf((String)localObject1, (List)localObject2, i);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).colorSequence = str1;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).actionReq = atdc.a(str4);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).session = str2;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).ret = j;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).errMsg = str3;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).debug = paramArrayOfByte;
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putInt("app_id", this.jdField_a_of_type_Int);
-      paramArrayOfByte.putSerializable("FaceRecognition.AppConf", (Serializable)localObject1);
-      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, paramArrayOfByte);
-      if ((QLog.isColorLevel()) && (QLog.isColorLevel()))
-      {
-        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject1 });
-        return;
-        label396:
-        paramArrayOfByte = null;
-      }
+    } while (!QLog.isColorLevel());
+    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_Yqz = yqz.a();
+    this.jdField_a_of_type_Yqz.a();
+    this.jdField_a_of_type_Yqz.h(this.jdField_a_of_type_Yrb);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Yqz != null)
+    {
+      this.jdField_a_of_type_Yqz.b();
+      this.jdField_a_of_type_Yqz.h();
     }
   }
 }

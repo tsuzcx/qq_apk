@@ -1,107 +1,48 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import java.util.Collection;
+import java.util.Map;
 
 public class avmd
-  extends BaseAdapter
+  extends AvatarWallPagerAdapter<PicInfo>
 {
-  private int jdField_a_of_type_Int;
-  private avmf jdField_a_of_type_Avmf;
-  private List<avnv> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected LinearLayout.LayoutParams a;
   
-  public void a(avmf paramavmf)
+  public View a(int paramInt, PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_Avmf = paramavmf;
+    return this.jdField_a_of_type_Avkt.a(paramInt, paramPicInfo);
   }
   
-  public void a(List<avnv> paramList)
+  public View a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561076, paramViewGroup, false);
-    avnv localavnv = (avnv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = localavnv.a;
-    paramView = (View)localObject;
-    if (localObject != null)
+    View localView = new View(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
-      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 11.0F), xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 1.0F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = xsm.a(this.jdField_a_of_type_Avkt.jdField_a_of_type_AndroidContentContext, 2.0F);
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
-    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject = localavnv.b;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (paramBoolean)
     {
-      localSpannableStringBuilder.append(" 回复 ");
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
-      }
-      localSpannableStringBuilder.append(paramView);
-      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
+      localView.setBackgroundColor(-1);
+      return localView;
     }
-    localSpannableStringBuilder.append("：").append(localavnv.c);
-    paramView = localTextView.getPaint();
-    localObject = new ArrayList();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = (xod.a(localTextView.getContext()) - xod.a(localTextView.getContext(), 85.0F));
-    }
-    paramInt = 0;
-    while (paramInt < localSpannableStringBuilder.length())
-    {
-      int j = i;
-      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
-      {
-        ((List)localObject).add(Integer.valueOf(paramInt - 1));
-        j = paramInt;
-      }
-      paramInt += 1;
-      i = j;
-    }
-    paramView = ((List)localObject).iterator();
-    while (paramView.hasNext())
-    {
-      localObject = (Integer)paramView.next();
-      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
-        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
-      }
-    }
-    localTextView.setText(localSpannableStringBuilder);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localTextView.setOnClickListener(new avme(this, paramViewGroup));
-    return localTextView;
+    localView.setBackgroundColor(1728053247);
+    return localView;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Avkt.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+  }
+  
+  public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
+  {
+    return this.jdField_a_of_type_Avkt.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(paramPicInfo1, paramPicInfo2);
   }
 }
 

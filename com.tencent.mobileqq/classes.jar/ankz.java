@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class ankz
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public afds a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<aguo> b;
-  public String c;
-  public String d;
-  
-  ankz(afds paramafds, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    a(paramafds, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
-  }
-  
-  void a(afds paramafds, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
-  {
-    this.jdField_a_of_type_Afds = paramafds;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    }
+    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
   }
 }
 

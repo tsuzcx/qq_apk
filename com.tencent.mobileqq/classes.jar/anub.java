@@ -1,36 +1,56 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
-class anub
-  implements bhqd
+public class anub
 {
-  anub(anua paramanua, Context paramContext, bhpy parambhpy) {}
+  public int a;
+  public long a;
+  public ArrayList<anuc> a;
+  public long b;
   
-  public void OnClick(View paramView, int paramInt)
+  public static anub a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
-    switch (paramInt)
-    {
+    Object localObject;
+    if (paramOneUinHeadInfo == null) {
+      localObject = null;
     }
-    for (;;)
+    anub localanub;
+    do
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      do
-      {
-        return;
-        paramView = this.jdField_a_of_type_Anua.b + this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangString;
-      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        azmj.b((QQAppInterface)this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangString, "");
+      return localObject;
+      localanub = new anub();
+      if (paramOneUinHeadInfo.uint64_uin.has()) {
+        localanub.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+      }
+      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
+        localanub.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      }
+      localanub.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+      localObject = localanub;
+    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
+    localanub.jdField_a_of_type_JavaUtilArrayList = anuc.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    return localanub;
+  }
+  
+  public static ArrayList<anub> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      anub localanub = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+      if (localanub != null) {
+        localArrayList.add(localanub);
       }
     }
+    return localArrayList;
   }
 }
 

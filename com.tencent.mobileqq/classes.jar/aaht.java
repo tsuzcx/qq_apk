@@ -1,28 +1,24 @@
-import android.content.Context;
-import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.gamecenter.common.util.ReportInfoManager;
 
 public class aaht
-  implements AdProgressDialogAdapter
+  extends Handler
 {
-  private bepp a;
+  public aaht(ReportInfoManager paramReportInfoManager, long paramLong) {}
   
-  public void dismiss()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a != null) && (this.a.isShowing()))
+    super.handleMessage(paramMessage);
+    if (paramMessage == null) {
+      return;
+    }
+    switch (paramMessage.what)
     {
-      this.a.dismiss();
-      this.a = null;
+    default: 
+      return;
     }
-  }
-  
-  public void show(Context paramContext, int paramInt)
-  {
-    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
-      this.a = new bepp(paramContext, paramInt);
-    }
-    if (this.a != null) {
-      this.a.show();
-    }
+    aaia.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 

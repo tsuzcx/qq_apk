@@ -1,158 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aixo
-  implements IRedPacket
+  extends BroadcastReceiver
 {
-  public aixo()
-  {
-    aiwh.a().a();
-  }
+  private aixo(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public JSONObject getPopAd(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aiwh.a().a();
-    Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putInt("key_func", 4);
-    ((Bundle)localObject1).putInt("key_skin_id", paramInt1);
-    ((Bundle)localObject1).putInt("key_channel", paramInt2);
-    localObject2 = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject1);
-    if ((localObject2 != null) && (((EIPCResult)localObject2).isSuccess()))
+    if ((!"troop_hblist_broadcast_action".equals(paramIntent.getAction())) || (!TroopUnAccalimedRedPacketList.b(this.a))) {}
+    do
     {
-      localObject1 = ((EIPCResult)localObject2).data.getString("pop_ad_tips");
-      String str = ((EIPCResult)localObject2).data.getString("pop_ad_url");
-      paramInt1 = ((EIPCResult)localObject2).data.getInt("pop_ad_url_type");
-      try
+      int i;
+      do
       {
-        localObject2 = new JSONObject();
-        return null;
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
+        do
         {
-          ((JSONObject)localObject2).putOpt("pop_ad_tips", localObject1);
-          ((JSONObject)localObject2).putOpt("pop_ad_url", str);
-          ((JSONObject)localObject2).putOpt("pop_ad_url_type", Integer.valueOf(paramInt1));
-          return localObject2;
-        }
-        catch (JSONException localJSONException2)
-        {
-          return localObject2;
-        }
-        localJSONException1 = localJSONException1;
-        return null;
+          return;
+          i = paramIntent.getIntExtra("result_code", 0);
+          int j = paramIntent.getIntExtra("grap_hb_state", 0);
+          paramContext = paramIntent.getStringExtra("listid");
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopUnAccalimedRedPacketList.b(), 2, "RedPacketRefreshReceiver|resultCode:" + i + "|listId: " + paramContext + "|grabHbState: " + j);
+          }
+          if (i != -20180322) {
+            break;
+          }
+          if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+            TroopUnAccalimedRedPacketList.b(this.a).setVisibility(8);
+          }
+        } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+        return;
+      } while (i != -20180323);
+      if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+        TroopUnAccalimedRedPacketList.b(this.a).setVisibility(0);
       }
-    }
-  }
-  
-  public List<String> getReadyResList()
-  {
-    return null;
-  }
-  
-  public void getSkin(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
-  {
-    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "getSkin | skinId = " + paramRedPacketInfoBase.skinId + ",skinType=" + paramRedPacketInfoBase.skinType);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 1);
-    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    localBundle.putParcelable("key_callback", aivz.a(new RedPacketProxy.1(this, null, paramOnGetSkinListener)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
-  }
-  
-  public JSONObject getTail(int paramInt1, int paramInt2)
-  {
-    return null;
-  }
-  
-  public void getVoiceRateRes(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
-  {
-    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 5);
-    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    localBundle.putParcelable("key_callback", aivz.a(new RedPacketProxy.2(this, null, paramOnGetSkinListener)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
-  }
-  
-  public boolean isRiskSwitchOpen()
-  {
-    aiwh.a().a();
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("key_func", 2);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = ((EIPCResult)localObject).data.getBoolean("key_is_risk_switch_open");
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
       }
-    }
-    return bool1;
+    } while ((TroopUnAccalimedRedPacketList.a(this.a) == null) || (TextUtils.isEmpty(paramContext)));
+    TroopUnAccalimedRedPacketList.a(this.a).a(paramContext);
+    aizw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a), paramContext);
   }
-  
-  public void onActiveAccount() {}
-  
-  public boolean onGetThemeConfig(int paramInt)
-  {
-    aiwh.a().a();
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("key_func", 6);
-    ((Bundle)localObject).putInt("theme_id", paramInt);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = ((EIPCResult)localObject).data.getBoolean("key_theme_exist");
-      }
-    }
-    return bool1;
-  }
-  
-  public void onUpdate(int paramInt) {}
-  
-  public void registRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
-  
-  public void reqGroupAvailableList(String paramString, int paramInt, IRedPacket.OnGetAvailableListListener paramOnGetAvailableListListener) {}
-  
-  public void requestRedPacketSkinList()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_func", 3);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
-  }
-  
-  public void requestRedPacketSkinList(String paramString1, String paramString2, int paramInt) {}
-  
-  public void setSelectedSkin(int paramInt, BusinessObserver paramBusinessObserver) {}
-  
-  public void unregistRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
 }
 
 

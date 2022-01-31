@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import aljq;
+import alof;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdcs;
-import bduw;
-import bfhh;
+import bdhb;
+import bdzf;
+import bflq;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,7 +20,7 @@ public final class ViolaAccessHelper$6
   
   public void run()
   {
-    String str = bduw.a(aljq.cD + bfhh.a(this.jdField_a_of_type_JavaLangString) + ".js");
+    String str = bdzf.a(alof.cD + bflq.a(this.jdField_a_of_type_JavaLangString) + ".js");
     if (TextUtils.isEmpty(str)) {
       if (QLog.isColorLevel()) {
         QLog.e("ViolaAccessHelper", 2, "loadJSFromNet [url:" + this.jdField_a_of_type_JavaLangString + "] get localPath error, download cancel");
@@ -35,7 +35,7 @@ public final class ViolaAccessHelper$6
           QLog.d("ViolaAccessHelper", 2, "loadJSFromNet [ url:" + this.jdField_a_of_type_JavaLangString + "] Download to " + str);
         }
         if (new File(str).exists()) {
-          bdcs.d(str);
+          bdhb.d(str);
         }
         boolean bool = HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(str));
         if (QLog.isColorLevel()) {
@@ -47,7 +47,7 @@ public final class ViolaAccessHelper$6
           if (this.jdField_a_of_type_Srg != null) {
             new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.6.1(this, str), 0L);
           }
-          if (TextUtils.isEmpty(bdcs.b(new File(str))))
+          if (TextUtils.isEmpty(bdhb.b(new File(str))))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ViolaAccessHelper", 2, "loadJSFromNet download isSucc but readFileToString is null");

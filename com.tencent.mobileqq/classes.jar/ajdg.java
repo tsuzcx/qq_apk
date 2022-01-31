@@ -1,79 +1,29 @@
-import android.content.Intent;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class ajdg
-  implements ajdh
+public class ajdg
+  implements OnCompositionLoadedListener
 {
-  private ajdj jdField_a_of_type_Ajdj;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public ajdg(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public ajdg(String paramString, QQAppInterface paramQQAppInterface)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(@Nullable ajdj paramajdj)
-  {
-    this.jdField_a_of_type_Ajdj = paramajdj;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Ajdj == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-  }
-  
-  public void onEnter()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    Intent localIntent;
-    if (BaseActivity.sTopActivity != null)
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.addFlags(268435456);
-    }
-    for (;;)
-    {
-      try
-      {
-        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
-        ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
-        return;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-      }
+      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
+      aivo.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
     }
   }
-  
-  public void onOverride() {}
 }
 
 

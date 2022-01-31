@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import org.json.JSONObject;
 
-public class abwu
-  implements View.OnClickListener
+public abstract interface abwu
 {
-  public abwu(AccountManageActivity paramAccountManageActivity) {}
+  public abstract void onComplete();
   
-  public void onClick(View paramView)
-  {
-    this.a.h();
-  }
+  public abstract void onFailure(int paramInt, String paramString);
+  
+  public abstract void onPermission(int paramInt);
+  
+  public abstract void onSuccess(JSONObject paramJSONObject);
+  
+  public abstract void onTrigger(JSONObject paramJSONObject);
 }
 
 

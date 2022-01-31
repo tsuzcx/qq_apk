@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import asyn;
-import asyo;
+import atcw;
+import atcx;
 import java.io.IOException;
 
 public final class LogUploadUtil$1
@@ -15,9 +15,9 @@ public final class LogUploadUtil$1
     try
     {
       long l = System.currentTimeMillis();
-      asyo.a(asyo.a(), asyo.b());
+      atcx.a(atcx.a(), atcx.b());
       Log.i("FileUtil", "compress time " + (System.currentTimeMillis() - l));
-      asyn.a(this.a, asyo.b());
+      atcw.a(this.a, atcx.b());
       return;
     }
     catch (IOException localIOException)

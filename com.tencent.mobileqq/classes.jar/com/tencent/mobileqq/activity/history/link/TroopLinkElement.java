@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.history.link;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import awbv;
+import awge;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,7 +14,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class TroopLinkElement
-  extends awbv
+  extends awge
   implements Serializable
 {
   private static final String TAG = "TroopLinkElement";

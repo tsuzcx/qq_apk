@@ -1,24 +1,41 @@
-import android.support.v4.app.FragmentActivity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvm
-  extends ahvn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final int[] a = { 2131690782, 2131690787, 2131690784, 2131690785, 2131690789, 2131690786, 2131690783 };
-  public static final int[] b = { 2131364147, 2131364152, 2131364149, 2131364150, 2131364153, 2131364151, 2131364148 };
+  public ahvm(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public ahvm(FragmentActivity paramFragmentActivity)
+  public void onGlobalLayout()
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      this.a.b(this.a.e);
+      this.a.c(this.a.e);
+      View localView = this.a.a.getChildAt(this.a.e);
+      if (localView != null)
+      {
+        this.a.h = localView.getLeft();
+        if (localView.getMeasuredWidth() == 0)
+        {
+          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
+          if (QLog.isColorLevel()) {
+            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
+          }
+        }
+        this.a.invalidate();
+      }
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

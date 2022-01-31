@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqpu;
+import aqud;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class QFileConfigManager$1
   implements Runnable
 {
-  public QFileConfigManager$1(aqpu paramaqpu, HashMap paramHashMap) {}
+  public QFileConfigManager$1(aqud paramaqud, HashMap paramHashMap) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      aqpu.a(this.this$0).clear();
-      aqpu.a(this.this$0).putAll(this.a);
+      aqud.a(this.this$0).clear();
+      aqud.a(this.this$0).putAll(this.a);
       QLog.i("QFileConfigManager", 1, "setFileDownloadConfig: set download config. ");
     }
   }

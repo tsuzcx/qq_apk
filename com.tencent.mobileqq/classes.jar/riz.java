@@ -3,7 +3,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
 class riz
-  extends bhnr
+  extends bhry
 {
   riz(riw paramriw, AlphaAnimation paramAlphaAnimation) {}
   

@@ -1,22 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
-public final class acge
-  implements DialogInterface.OnClickListener
+public class acge
+  extends avvc
 {
-  public acge(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
+  public acge(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    AuthDevActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

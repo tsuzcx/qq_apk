@@ -1,87 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vuw
-  extends vox
 {
-  public vuw(vuu paramvuu) {}
+  unz jdField_a_of_type_Unz;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  private vuw(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public unz a()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
-      }
+    if (this.jdField_a_of_type_Unz == null) {
+      this.jdField_a_of_type_Unz = new unz();
     }
+    return this.jdField_a_of_type_Unz;
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  public void a()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).a(paramBundle1, paramBundle2);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).c();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).d();
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).e();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public void g()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vno)localIterator.next()).g();
-      }
+    if (this.jdField_a_of_type_Unz != null) {
+      this.jdField_a_of_type_Unz.a();
     }
   }
 }

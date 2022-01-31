@@ -1,6 +1,6 @@
-class bksu
+public abstract interface bksu
 {
-  public CharSequence a;
+  public abstract void a(String paramString);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bark;
+import bavt;
 
 class AudioPanel$1
   implements Runnable
@@ -9,7 +9,7 @@ class AudioPanel$1
   
   public void run()
   {
-    bark.c(this.a);
+    bavt.c(this.a);
   }
 }
 

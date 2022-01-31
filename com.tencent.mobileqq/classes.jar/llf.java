@@ -63,7 +63,7 @@ public class llf
   public boolean a(int paramInt, String paramString)
   {
     if (!this.jdField_a_of_type_Boolean) {
-      bfrq.a().postDelayed(new SupportFace.1(this), 1100L);
+      bfvz.a().postDelayed(new SupportFace.1(this), 1100L);
     }
     lek.c("SupportFace", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
     if (paramString != null)
@@ -163,7 +163,7 @@ public class llf
   public void b()
   {
     boolean bool2 = llg.b();
-    if (ayzn.a(BaseApplicationImpl.getContext()) == 1) {}
+    if (azdw.a(BaseApplicationImpl.getContext()) == 1) {}
     boolean bool3;
     boolean bool4;
     boolean bool5;

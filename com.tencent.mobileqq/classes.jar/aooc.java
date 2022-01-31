@@ -3,11 +3,11 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aooc
-  extends aofy<aoob>
+  extends aokh<aoob>
 {
   public int a()
   {
-    return 158;
+    return 598;
   }
   
   @NonNull
@@ -17,17 +17,12 @@ public class aooc
   }
   
   @Nullable
-  public aoob a(aogf[] paramArrayOfaogf)
+  public aoob a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
-    {
-      aoob localaoob = aoob.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaoob;
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
     }
-    return null;
+    return aoob.a(paramArrayOfaoko);
   }
   
   public Class<aoob> a()
@@ -35,18 +30,16 @@ public class aooc
     return aoob.class;
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
   
   public void a(aoob paramaoob)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaoob.toString());
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public int b()

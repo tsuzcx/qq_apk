@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 import java.util.Comparator;
 
-public class altq
-  implements Comparator<PhoneContact>
+class altq
+  implements Comparator<SpecialCareInfo>
 {
-  public altq(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  altq(alto paramalto) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  private String a(SpecialCareInfo paramSpecialCareInfo)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
+    if (localFriends == null) {
+      return paramSpecialCareInfo.uin;
+    }
+    return bdgc.a(localFriends) + localFriends.uin;
+  }
+  
+  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  {
+    return alqj.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
   }
 }
 

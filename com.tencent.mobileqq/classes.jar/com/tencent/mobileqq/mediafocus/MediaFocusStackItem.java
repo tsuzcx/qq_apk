@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mediafocus;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atxs;
+import aucb;
 
 public class MediaFocusStackItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new atxs();
+  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new aucb();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

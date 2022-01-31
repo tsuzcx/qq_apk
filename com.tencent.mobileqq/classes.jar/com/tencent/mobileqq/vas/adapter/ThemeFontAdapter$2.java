@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vas.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azib;
-import bdrp;
+import azmk;
+import bdvy;
 import com.etrump.mixlayout.ETEngine;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ public final class ThemeFontAdapter$2
     if (!new File((String)localObject1).exists())
     {
       QLog.d("ThemeFontAdapter", 1, "switchFont  fontPath not exists:" + this.a);
-      bdrp.c(this.a, this.b);
+      bdvy.c(this.a, this.b);
       return;
     }
     Object localObject2;
@@ -32,11 +32,11 @@ public final class ThemeFontAdapter$2
     {
       if (!ETEngine.isSOLoaded.get())
       {
-        bdrp.c(this.a, this.b);
+        bdvy.c(this.a, this.b);
         return;
       }
       localObject2 = fx.b(this.a, this.b);
-      if (bdrp.a((String)localObject1, (String)localObject2)) {
+      if (bdvy.a((String)localObject1, (String)localObject2)) {
         localObject1 = localObject2;
       }
     }
@@ -51,19 +51,19 @@ public final class ThemeFontAdapter$2
         QLog.e("ThemeFontAdapter", 1, "switchFont  context is null");
         return;
       }
-      if (azib.b())
+      if (azmk.b())
       {
-        bdrp.a((Context)localObject2, (String)localObject1);
+        bdvy.a((Context)localObject2, (String)localObject1);
         return;
       }
       if (!TextHook.getInstance().switchFont((Context)localObject2, (String)localObject1)) {
         break;
       }
-      bdrp.a(this.a);
-      if (bdrp.a() != null)
+      bdvy.a(this.a);
+      if (bdvy.a() != null)
       {
-        bdrp.a().c();
-        bdrp.a(null);
+        bdvy.a().c();
+        bdvy.a(null);
       }
       QLog.e("ThemeFontAdapter", 2, "switchFont  success:" + this.a + " type:" + this.b);
       TextHook.saveLastPath((Context)localObject2, (String)localObject1);

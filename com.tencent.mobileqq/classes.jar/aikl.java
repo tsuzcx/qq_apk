@@ -1,404 +1,59 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.4;
-import com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.5;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.security.MessageDigest;
+import java.io.File;
 
 public class aikl
+  extends bead
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  bdfq jdField_a_of_type_Bdfq = null;
-  protected bepp a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SDKAvatarSettingManager.4(this);
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  protected bdfq b;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SDKAvatarSettingManager.5(this);
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  protected bdfq c;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private String e;
-  private String f;
+  public aikl(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public aikl(Activity paramActivity)
+  public void onDone(beae parambeae)
   {
+    super.onDone(parambeae);
     if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, " onCreate ");
+      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + parambeae.a() + ",errCode=" + parambeae.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-  }
-  
-  private void a(Activity paramActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "sdk_share:sdk callback=" + paramBoolean1 + " appid=" + paramLong);
-    }
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (paramBoolean2) {
-      localIntent.putExtra("stay_back_stack", true);
-    }
-    if (paramBoolean1) {
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(paramLong), "sdkSetAvatar" })));
-    }
-    for (;;)
+    int i = parambeae.jdField_a_of_type_JavaLangString.indexOf("?");
+    String str;
+    if (i == -1)
     {
-      if (paramActivity.getIntent() != null) {
-        localIntent.setPackage(this.jdField_c_of_type_JavaLangString);
+      str = parambeae.jdField_a_of_type_JavaLangString;
+      if (!bdfp.jdField_a_of_type_JavaLangString.equals(str)) {
+        break label290;
       }
-      try
-      {
-        paramActivity.startActivity(localIntent);
-        return;
+      if ((parambeae.jdField_a_of_type_Int != 0) || (parambeae.f != 200)) {
+        break label237;
       }
-      catch (ActivityNotFoundException paramActivity) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      str = bdfp.b + "/icon.zip";
+      localFile = new File(bdfp.c);
+      if (beag.a(new File(str), localFile, false)) {
+        break label215;
       }
-      QLog.d("SDKAvatarSettingManager", 2, paramActivity.getMessage());
-      return;
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(paramLong), "sdkSetAvatar" })));
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
+      }
+      bdhb.a(bdfp.b);
     }
-  }
-  
-  private void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, "-->openPhotoEdit--path = " + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = bcyw.b(this.jdField_a_of_type_AndroidAppActivity);
-      localIntent = new Intent();
-      localIntent.setFlags(603979776);
-      localIntent.putExtra("Business_Origin", 100);
-      localIntent.putExtra("FROM_WHERE", "FROM_SDK_AVATAR_SET_IMAGE");
-      PhotoUtils.a(localIntent, this.jdField_a_of_type_AndroidAppActivity, FriendProfileCardActivity.class.getName(), i, i, 1080, 1080, paramString, bcyw.a(), 1035);
-      this.jdField_d_of_type_Boolean = true;
-    }
+    label215:
+    label237:
     while (!QLog.isColorLevel())
     {
-      int i;
-      Intent localIntent;
+      File localFile;
       return;
-    }
-    QLog.d("SDKAvatarSettingManager", 2, "set from sdk path null");
-  }
-  
-  private void g()
-  {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131719909) + this.jdField_b_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      try
-      {
-        localObject1 = this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo(this.jdField_c_of_type_JavaLangString, 64);
-        if (localObject1 == null) {
-          break label317;
-        }
-        localObject1 = ((PackageInfo)localObject1).signatures;
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break label317;
-        }
-        localObject3 = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject3).update(localObject1[0].toByteArray());
-        localObject1 = bdcv.a(((MessageDigest)localObject3).digest());
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          Object localObject1 = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-          ((bdfq)localObject1).setMessage(alpo.a(2131713971));
-          ((bdfq)localObject1).setNegativeButton(2131690648, new aikm(this));
-          ((bdfq)localObject1).setCancelable(false);
-          ((bdfq)localObject1).show();
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Object localObject2;
-          QLog.e("SDKAvatarSettingManager", 1, "show invalid param dialog, exception=", localException2);
-          return;
-        }
-        localException1 = localException1;
-        QLog.e("SDKAvatarSettingManager", 1, "check, get signature exception=", localException1);
-        localObject2 = null;
-        continue;
-      }
+      str = parambeae.jdField_a_of_type_JavaLangString.substring(0, i);
+      break;
+      AvatarPendantActivity.b(this.a);
+      this.a.a.sendEmptyMessage(1000);
+      return;
       if (QLog.isColorLevel()) {
-        QLog.d("SDKAvatarSettingManager", 2, "checkApiPermission api, mShareAppId=" + this.jdField_d_of_type_JavaLangString + ", mPkgName=" + this.jdField_c_of_type_JavaLangString + ",signature=" + (String)localObject1 + ",mSdkVerdion=" + this.f);
+        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
       }
-      if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-        break;
-      }
-      QLog.e("SDKAvatarSettingManager", 1, new Object[] { "check, invalid param, mShareAppId=", this.jdField_d_of_type_JavaLangString, ", pkgName=", this.jdField_c_of_type_JavaLangString, ", signature=", localObject1 });
-      QLog.e("SDKAvatarSettingManager", 1, "check, pkgName null");
-      label317:
-      localObject2 = null;
-    }
-    absn.a();
-    Object localObject3 = new Bundle();
-    ((Bundle)localObject3).putString("sdkVersion", this.f);
-    ((Bundle)localObject3).putString("pkgName", this.jdField_c_of_type_JavaLangString);
-    ((Bundle)localObject3).putString("signature", localException2);
-    a(2131720053);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-    absn.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_d_of_type_JavaLangString, (Bundle)localObject3).a("sdk_avatar_edit", null, new aikn(this, str));
-  }
-  
-  private void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, " checkJumpAction mShareAppId = " + this.jdField_d_of_type_JavaLangString + "， mShareOpenId =" + this.e);
-    }
-    if (!bdee.d(BaseApplicationImpl.getContext()))
-    {
-      a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
-      b();
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+      bdhb.a(bdfp.b);
       return;
     }
-    if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (TextUtils.isEmpty(this.e)))
-    {
-      d();
-      b(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    OpenID localOpenID = localQQAppInterface.a().a(this.jdField_d_of_type_JavaLangString);
-    if (localOpenID == null)
-    {
-      a(2131720053);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 8000L);
-      try
-      {
-        long l = Long.parseLong(localQQAppInterface.getCurrentAccountUin());
-        localQQAppInterface.a().a(l, this.e, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), new aiko(this));
-        return;
-      }
-      catch (Exception localException)
-      {
-        return;
-      }
-    }
-    if (!this.e.equals(localOpenID.openID))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("SDKAvatarSettingManager", 2, "-->preForward--openid doesn't equal current local openid");
-      }
-      e();
-      return;
-    }
-    d();
-    b(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a()
-  {
-    g();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
-    }
-    this.jdField_a_of_type_Bepp.c(paramInt);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      this.jdField_a_of_type_Bepp.show();
-    }
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, " onActivityResult resultCode = " + paramInt);
-    }
-    if (paramInt == -1) {
-      if (paramIntent.getBooleanExtra("key_from_sdk_set_avatar_result", false))
-      {
-        this.jdField_c_of_type_Boolean = true;
-        a(this.jdField_b_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_Boolean = false;
-      return;
-      this.jdField_c_of_type_Boolean = false;
-      a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
-      b();
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
-      continue;
-      if (paramInt == 0)
-      {
-        paramIntent = new Intent();
-        this.jdField_a_of_type_AndroidAppActivity.setResult(0, paramIntent);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-        this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-    }
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    paramIntent = paramIntent.getBundleExtra("profile_extres");
-    if (paramIntent != null)
-    {
-      this.jdField_a_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_path", null);
-      this.jdField_b_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_appname", null);
-      this.jdField_d_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_share_id", null);
-      this.e = paramIntent.getString("key_from_sdk_set_avatar_open_id", null);
-      this.jdField_c_of_type_JavaLangString = paramIntent.getString("pkg_name", null);
-      this.f = paramIntent.getString("sdk_version");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, " initParam ");
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Bdfq != null) && (!this.jdField_a_of_type_Bdfq.isShowing()))
-    {
-      this.jdField_a_of_type_Bdfq.show();
-      return;
-    }
-    this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_a_of_type_Bdfq.setTitle(alpo.a(2131713973));
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131719909);
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131719910);
-    if (paramString != null) {}
-    for (paramString = (String)localObject + paramString;; paramString = (String)localObject)
-    {
-      localObject = new aikp(this, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Bdfq.setPositiveButton(str, (DialogInterface.OnClickListener)localObject);
-      this.jdField_a_of_type_Bdfq.setNegativeButton(paramString, (DialogInterface.OnClickListener)localObject);
-      this.jdField_a_of_type_Bdfq.setOnKeyListener(new aikq(this));
-      this.jdField_a_of_type_Bdfq.show();
-      return;
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_c_of_type_Bdfq != null) {
-      this.jdField_c_of_type_Bdfq.dismiss();
-    }
-    this.jdField_b_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_Bdfq.setMessage(paramString1);
-    paramString1 = new aiks(this);
-    this.jdField_b_of_type_Bdfq.setNegativeButton(paramString2, paramString1);
-    this.jdField_b_of_type_Bdfq.show();
-  }
-  
-  protected void b()
-  {
-    Intent localIntent = new Intent();
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  public void b(Intent paramIntent)
-  {
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      f();
-      a(paramIntent);
-      a();
-      return;
-    }
-    a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
-    b();
-    this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SDKAvatarSettingManager", 2, " gotoConversation isSuccess = " + this.jdField_c_of_type_Boolean);
-    }
-    if (this.jdField_c_of_type_Boolean)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setClass(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      localIntent.setAction("com.tencent.mobileqq.action.MAINACTIVITY");
-      localIntent.setFlags(67108864);
-      localIntent.putExtra("tab_index", MainFragment.b);
-      localIntent.putExtra("fragment_id", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
-    }
-  }
-  
-  protected void e()
-  {
-    if (this.jdField_b_of_type_Bdfq != null)
-    {
-      if (!this.jdField_b_of_type_Bdfq.isShowing()) {
-        this.jdField_b_of_type_Bdfq.show();
-      }
-      return;
-    }
-    this.jdField_b_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_Bdfq.setMessage(alpo.a(2131713972));
-    this.jdField_b_of_type_Bdfq.setTitle(2131692310);
-    aikr localaikr = new aikr(this);
-    this.jdField_b_of_type_Bdfq.setNegativeButton(2131690648, localaikr);
-    this.jdField_b_of_type_Bdfq.setPositiveButton(2131719919, localaikr);
-    this.jdField_b_of_type_Bdfq.show();
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Bdfq != null) {
-      this.jdField_a_of_type_Bdfq.dismiss();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    label290:
+    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + parambeae.jdField_a_of_type_JavaLangString + ",errCode:" + parambeae.jdField_a_of_type_Int + ",httpCode:" + parambeae.f);
   }
 }
 

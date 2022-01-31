@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class rwz
-  implements bhvv
+  implements biac
 {
   public rwz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   

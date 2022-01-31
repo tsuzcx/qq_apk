@@ -1,63 +1,53 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aqut
-  extends aquk
+  extends aqvc
 {
-  public aqut(aqug paramaqug)
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  
+  aqut(aque paramaque, MessageRecord paramMessageRecord)
   {
-    super(paramaqug);
+    super(paramaque);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  protected String a()
-  {
-    return "StateExcepInvalidWhenChangeToOff";
-  }
+  void a(String paramString, int paramInt) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  void a(String paramString, int paramInt, aqva paramaqva)
   {
-    b(paramInt1, paramInt2);
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 11);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadingWhenChangeToOff)");
-    this.jdField_a_of_type_Aquk = new aqvk(this.jdField_a_of_type_Aqug);
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ("1".equals(this.g))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    aqug.b(this.jdField_a_of_type_Aqug, 9, 12);
-    aqug.c(this.jdField_a_of_type_Aqug, 9, 12);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateExcepInvalidWhenRecv)");
-    this.jdField_a_of_type_Aquk = new aquv(this.jdField_a_of_type_Aqug);
-    return true;
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
+      }
+      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
+      return;
     }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((arni.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    localFileManagerEntity.setCloudType(1);
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 13);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 13);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadoneWhenChangeToOff)");
-    this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Aquk = new aqvn(this.jdField_a_of_type_Aqug);
-    return true;
+    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aquu(this, paramString, paramaqva));
   }
 }
 

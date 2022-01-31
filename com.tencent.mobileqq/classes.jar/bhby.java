@@ -1,57 +1,47 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.1;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.2;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 public class bhby
 {
-  private bhbz jdField_a_of_type_Bhbz;
-  private final ConcurrentLinkedQueue<AppBrandPage> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  
-  public bhby(bgho parambgho)
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    this.jdField_a_of_type_Bhbz = new bhbz(parambgho);
+    bhch.a().a().post(new MiniProgramLpReportDC04266.1(paramInt1, paramMiniAppInfo, paramInt2, paramString2, paramLong2, paramLong1, paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10));
   }
   
-  public bhbz a()
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    return this.jdField_a_of_type_Bhbz;
+    bhch.a().a().post(new MiniProgramLpReportDC04266.2(paramMiniAppInfo, paramString1, paramString2, paramInt, paramLong1, paramLong2, paramString3, paramString4, paramString5, paramString6, paramString7));
   }
   
-  public AppBrandPage a(bgho parambgho, AppBrandPageContainer paramAppBrandPageContainer)
+  private static boolean b(int paramInt)
   {
-    QMLog.d("AppBrandPagePool", "mBrandPageList size : " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-    AppBrandPage localAppBrandPage = (AppBrandPage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    if (localAppBrandPage == null)
-    {
-      QMLog.i("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
-      return new AppBrandPage(parambgho, paramAppBrandPageContainer);
+    return (paramInt == 20) || (paramInt == 22) || (paramInt == 605) || (paramInt == 1011) || (paramInt == 1024) || (paramInt == 1028);
+  }
+  
+  private static int c()
+  {
+    return 3;
+  }
+  
+  private static int d()
+  {
+    return 14;
+  }
+  
+  private static int e()
+  {
+    return 13;
+  }
+  
+  private static int f()
+  {
+    if (QUAUtil.isQQApp()) {
+      return c();
     }
-    QMLog.i("AppBrandPagePool", "getAppBrandPage from cache.");
-    return localAppBrandPage;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    }
-    if (this.jdField_a_of_type_Bhbz != null) {
-      this.jdField_a_of_type_Bhbz.a();
-    }
-  }
-  
-  public void a(bgho parambgho, AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) || (parambgho == null)) {}
-    do
-    {
-      return;
-      QMLog.d("AppBrandPagePool", "preLoadAppBrandPage");
-      parambgho = new AppBrandPage(parambgho, paramAppBrandPageContainer);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambgho);
-    } while (this.jdField_a_of_type_Bhbz == null);
-    this.jdField_a_of_type_Bhbz.a(paramAppBrandPageContainer);
+    return e();
   }
 }
 

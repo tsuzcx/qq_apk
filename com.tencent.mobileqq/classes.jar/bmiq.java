@@ -1,19 +1,34 @@
-public class bmiq
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public abstract interface bmiq
+  extends bmni
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  public abstract int a();
   
-  public bmiq(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
-  {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
-  }
+  public abstract Bitmap a();
+  
+  public abstract Bitmap a(int paramInt, boolean paramBoolean);
+  
+  @NonNull
+  public abstract DoodleLayout a();
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean g_();
 }
 
 

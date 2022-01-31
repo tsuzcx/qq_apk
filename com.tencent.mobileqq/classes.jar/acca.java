@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class acca
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements beua
 {
-  public acca(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
+  public acca(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  
+  public void a()
+  {
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
+  }
 }
 
 

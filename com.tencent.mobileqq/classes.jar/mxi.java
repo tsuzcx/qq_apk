@@ -53,7 +53,7 @@ public abstract class mxi
   protected boolean a(String paramString, mxk parammxk)
   {
     long l = new File(paramString).length();
-    String str = amvj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    String str = amzy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     if (l == 0L)
     {
       parammxk.a(-10001, str, "", null);
@@ -65,7 +65,7 @@ public abstract class mxi
       parammxk.a(-10003, str, "", null);
       return false;
     }
-    byte[] arrayOfByte = amvj.a(paramString);
+    byte[] arrayOfByte = amzy.a(paramString);
     if ((arrayOfByte == null) || (arrayOfByte.length == 0))
     {
       parammxk.a(-10002, str, "", null);

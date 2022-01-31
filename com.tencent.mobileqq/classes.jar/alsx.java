@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class alsx
-  extends amky
+public class alsx
+  implements View.OnClickListener
 {
-  alsx(String paramString, ToServiceMsg paramToServiceMsg)
-  {
-    super(paramString);
-  }
+  public alsx(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      this.a.notify();
-      return;
+    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
+      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
     }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

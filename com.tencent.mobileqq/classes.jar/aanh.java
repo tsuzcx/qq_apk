@@ -1,36 +1,61 @@
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
-class aanh
-  implements aaif
+public class aanh
 {
-  aanh(aang paramaang) {}
+  private aanj jdField_a_of_type_Aanj;
+  private aanq jdField_a_of_type_Aanq;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
   
-  public void onResponse(aaie paramaaie)
+  public static aani a(Context paramContext)
   {
-    if ((paramaaie == null) || (paramaaie.a() == null) || (aang.a(this.a) == null) || (aang.a(this.a).get() == null)) {
-      return;
-    }
-    String str = (String)aang.a(this.a).get(paramaaie);
-    aang.a(this.a).remove(paramaaie);
-    Object localObject1 = aano.a(paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    Object localObject2 = aano.a(paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    paramaaie = new JSONObject();
-    try
+    return new aani(paramContext);
+  }
+  
+  public GdtAdBoxData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aanj = new aanp(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Aanj.a(this);
+    this.jdField_a_of_type_Aanj.show();
+  }
+  
+  void a(aanq paramaanq)
+  {
+    this.jdField_a_of_type_Aanq = paramaanq;
+  }
+  
+  void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  void a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aanj != null) && (this.jdField_a_of_type_Aanj.isShowing()))
     {
-      paramaaie.put("request", localObject1);
-      paramaaie.put("response", localObject2);
-      ((aamm)aang.a(this.a).get()).callJs(str, new String[] { paramaaie.toString() });
-      return;
+      this.jdField_a_of_type_Aanj.dismiss();
+      this.jdField_a_of_type_Aanj = null;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    this.jdField_a_of_type_Aanq = null;
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Aanq != null) {
+      this.jdField_a_of_type_Aanq.onDismiss();
     }
   }
 }

@@ -1,18 +1,35 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
-class uqb
-  implements View.OnLongClickListener
+public class uqb
+  extends SimpleObserver<ErrorMessage>
 {
-  uqb(upz paramupz, upy paramupy) {}
+  private uqb(BasePublishTask paramBasePublishTask) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    int i = this.jdField_a_of_type_Upy.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Upz.a.b(this.jdField_a_of_type_Upy.itemView, i);
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
     }
-    return true;
+    this.a.a(paramErrorMessage);
+  }
+  
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
+    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

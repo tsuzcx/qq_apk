@@ -310,7 +310,7 @@ public class ProteusItemView
   public TemplateBean a()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
-      return (TemplateBean)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getTag(2131375288);
+      return (TemplateBean)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getTag(2131375339);
     }
     return null;
   }
@@ -336,7 +336,7 @@ public class ProteusItemView
     localObject = new RelativeLayout.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
     paramContainer.setId(1);
-    setBackgroundColor(getResources().getColor(2131167138));
+    setBackgroundColor(getResources().getColor(2131167140));
     addView(paramContainer, (ViewGroup.LayoutParams)localObject);
   }
   
@@ -424,7 +424,7 @@ public class ProteusItemView
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setTag(2131375288, paramTemplateBean);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setTag(2131375339, paramTemplateBean);
       setPressed(false);
       return;
     }

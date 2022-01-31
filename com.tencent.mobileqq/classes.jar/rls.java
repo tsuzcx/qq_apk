@@ -20,7 +20,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 public class rls
   extends VideoFeedsLazyLoadDelegate
 {
-  private static final String jdField_c_of_type_JavaLangString = alpo.a(2131717302);
+  private static final String jdField_c_of_type_JavaLangString = alud.a(2131717314);
   private WeishiRedDotInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo;
   private oye jdField_a_of_type_Oye = (oye)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(274);
   private boolean jdField_c_of_type_Boolean;
@@ -57,7 +57,7 @@ public class rls
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842777);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842790);
       return;
     }
     super.a(paramInt);
@@ -88,8 +88,8 @@ public class rls
   public void b()
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((int)bdcb.k());
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)bdcb.l());
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((int)bdgk.k());
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)bdgk.l());
     ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131165307));
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;

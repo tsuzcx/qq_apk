@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.soload.config;
 
-import aziy;
+import aznh;
 
 public class SoLoadConfProcessor$1
   implements Runnable
 {
-  public SoLoadConfProcessor$1(aziy paramaziy) {}
+  public SoLoadConfProcessor$1(aznh paramaznh) {}
   
   public void run()
   {
-    aziy.a(this.this$0, -1);
+    aznh.a(this.this$0, -1);
   }
 }
 

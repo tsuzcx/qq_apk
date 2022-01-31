@@ -1,35 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
+import java.util.Comparator;
 
-class autn
-  extends beif
+final class autn
+  implements Comparator<String>
 {
-  autn(autj paramautj) {}
-  
-  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  public int a(String paramString1, String paramString2)
   {
-    switch (paramMsgBody.uint32_msg_type.get())
-    {
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
     }
-    do
+    while (paramString1 != null)
     {
-      return;
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
-      return;
-      QQToast.a(this.a.a, alpo.a(2131705446), 0).a();
-      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
-    paramMsgBody = (QQAppInterface)paramMsgBody;
-    bdiv.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

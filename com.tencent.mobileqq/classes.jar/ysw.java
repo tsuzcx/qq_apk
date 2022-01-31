@@ -1,18 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.PopupMenu.1.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ysw
-  implements View.OnClickListener
+  implements xtk
 {
-  ysw(ysv paramysv, String paramString, int paramInt) {}
+  ysw(ysb paramysb) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean) {}
+  
+  public void onFailure(String paramString)
   {
-    if (this.jdField_a_of_type_Ysv.a != null) {
-      this.jdField_a_of_type_Ysv.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
     }
-    paramView.post(new PopupMenu.1.1(this));
+  }
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    a(true);
   }
 }
 

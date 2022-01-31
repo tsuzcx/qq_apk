@@ -1,6 +1,16 @@
-public abstract interface bldl
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bldl
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString);
+  bldl(bldk parambldk) {}
+  
+  public void onClick(View paramView)
+  {
+    bldk.a(this.a).finish();
+  }
 }
 
 

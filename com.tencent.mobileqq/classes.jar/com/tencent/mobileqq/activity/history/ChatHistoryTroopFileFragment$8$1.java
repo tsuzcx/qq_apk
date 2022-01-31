@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahwt;
+import aibi;
 
 public class ChatHistoryTroopFileFragment$8$1
   implements Runnable
 {
-  public ChatHistoryTroopFileFragment$8$1(ahwt paramahwt, int paramInt) {}
+  public ChatHistoryTroopFileFragment$8$1(aibi paramaibi, int paramInt) {}
   
   public void run()
   {
-    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Ahwt.a, this.jdField_a_of_type_Int);
-    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Ahwt.a);
+    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Aibi.a, this.jdField_a_of_type_Int);
+    ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_Aibi.a);
   }
 }
 

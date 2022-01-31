@@ -1,26 +1,41 @@
-import com.tencent.mobileqq.confess.ConfessMsgListFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 
 public class aoeo
-  extends aoeq
+  implements View.OnClickListener
 {
-  public aoeo(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  public aoeo(HistoryFormItem paramHistoryFormItem) {}
   
-  public void a(aoeh paramaoeh)
+  public void onClick(View paramView)
   {
-    ConfessMsgListFragment.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (aoca.a())
+    {
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label112;
+        }
+      }
     }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      return;
+      aocr.a(paramView.getContext());
+      i = 0;
+      break;
+      label112:
+      bool = false;
     }
   }
 }

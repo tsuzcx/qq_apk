@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import avyo;
-import avyu;
+import awcx;
+import awdd;
 
 public class AccountPanel$15$1
   implements Runnable
 {
-  public AccountPanel$15$1(avyu paramavyu) {}
+  public AccountPanel$15$1(awdd paramawdd) {}
   
   public void run()
   {
-    avyo.a(this.a.a);
+    awcx.a(this.a.a);
   }
 }
 

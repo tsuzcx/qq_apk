@@ -1,20 +1,24 @@
-import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import mqq.app.QQPermissionCallback;
 
-public final class bjyh
-  implements bimm
+class bjyh
+  implements QQPermissionCallback
 {
-  public bjyh(Activity paramActivity) {}
+  bjyh(bjyg parambjyg) {}
   
-  public void a(boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
+    bdgm.b(this.a.a.mRuntime.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bjyg.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjyh
  * JD-Core Version:    0.7.0.1
  */

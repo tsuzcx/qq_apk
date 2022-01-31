@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 
-public class anrg
-  implements DialogInterface.OnClickListener
+class anrg
+  implements alpg
 {
-  public anrg(JumpConfirmFragment paramJumpConfirmFragment) {}
+  anrg(anre paramanre, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
+    }
   }
 }
 

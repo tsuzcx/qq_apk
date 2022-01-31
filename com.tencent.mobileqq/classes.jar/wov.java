@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class wov
-  implements DialogInterface.OnClickListener
+public class wov
 {
-  wov(wou paramwou) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a(false, true, 12, null);
-    wta.a("home_page", "guide_open", 0, 0, new String[0]);
-  }
+  public List<woq> a = new ArrayList(0);
+  public boolean a;
+  public boolean b;
 }
 
 

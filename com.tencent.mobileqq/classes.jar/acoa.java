@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation.50.1;
-import com.tencent.util.Pair;
-
-public class acoa
-  implements DialogInterface.OnClickListener
+class acoa
+  extends aqru
 {
-  public acoa(Conversation.50.1 param1, azyl paramazyl, Pair paramPair) {}
+  acoa(acnu paramacnu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Azyl.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

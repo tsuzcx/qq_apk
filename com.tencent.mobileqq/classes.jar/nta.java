@@ -1,7 +1,7 @@
 import android.os.Bundle;
 
 public class nta
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, Bundle paramBundle) {}
   

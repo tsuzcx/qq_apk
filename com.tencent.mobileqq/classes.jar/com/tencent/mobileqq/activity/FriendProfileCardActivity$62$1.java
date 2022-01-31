@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acwj;
+import aday;
 
 public class FriendProfileCardActivity$62$1
   implements Runnable
 {
-  public FriendProfileCardActivity$62$1(acwj paramacwj) {}
+  public FriendProfileCardActivity$62$1(aday paramaday) {}
   
   public void run()
   {

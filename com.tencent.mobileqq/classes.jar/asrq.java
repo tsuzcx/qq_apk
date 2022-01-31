@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
-import com.tencent.qphone.base.util.QLog;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
 public class asrq
-  implements DialogInterface.OnClickListener
+  extends amcd
 {
-  public asrq(PresenceInterfaceImpl.10 param10) {}
+  private WeakReference<BaseChatPie> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asrq(BaseChatPie paramBaseChatPie)
   {
-    QLog.d("PresenceInterfaceImpl", 2, "user click button");
+    this.a = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      asrm.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
+    }
+  }
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      asrm.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+    }
   }
 }
 

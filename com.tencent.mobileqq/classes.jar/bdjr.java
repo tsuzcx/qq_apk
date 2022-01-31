@@ -1,14 +1,21 @@
-import java.util.concurrent.ThreadFactory;
-
 class bdjr
-  implements ThreadFactory
+  implements afil
 {
-  public Thread newThread(Runnable paramRunnable)
+  bdjr(bdjq parambdjq) {}
+  
+  public boolean a(afii paramafii)
   {
-    bdjq.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + bdjq.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    if (this.a.isShowing())
+    {
+      this.a.dismiss();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(afii paramafii, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

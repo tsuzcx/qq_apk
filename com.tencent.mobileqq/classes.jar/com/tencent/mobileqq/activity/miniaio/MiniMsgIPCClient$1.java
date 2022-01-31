@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import atbj;
+import atfs;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniMsgIPCClient$1
@@ -10,7 +10,7 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    atbj.a().a(BaseApplicationImpl.getContext());
+    atfs.a().a(BaseApplicationImpl.getContext());
   }
 }
 

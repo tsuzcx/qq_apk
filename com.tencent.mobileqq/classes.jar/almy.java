@@ -1,35 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.36.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class almy
+  implements akoj
 {
-  public static String a(String paramString)
+  public almy(ApolloPanel paramApolloPanel) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    String str2 = "";
-    String str1 = str2;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = paramString.lastIndexOf("diydoutu@");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring(i, paramString.length());
-      }
-    }
-    paramString = str1;
-    if (!TextUtils.isEmpty(str1))
-    {
-      i = str1.lastIndexOf(".");
-      paramString = str1;
-      if (i >= 0) {
-        paramString = str1.substring(0, i);
-      }
-    }
-    return paramString;
+    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
+    this.a.post(new ApolloPanel.36.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almy
  * JD-Core Version:    0.7.0.1
  */

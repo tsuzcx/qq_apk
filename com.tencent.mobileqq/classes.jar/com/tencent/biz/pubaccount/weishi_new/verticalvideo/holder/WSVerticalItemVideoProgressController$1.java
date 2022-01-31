@@ -15,7 +15,7 @@ public class WSVerticalItemVideoProgressController$1
     try
     {
       if (tne.a(this.this$0) != null) {
-        tne.a(this.this$0).setThumb(tne.a(this.this$0).getDrawable(2130841467));
+        tne.a(this.this$0).setThumb(tne.a(this.this$0).getDrawable(2130841468));
       }
       return;
     }

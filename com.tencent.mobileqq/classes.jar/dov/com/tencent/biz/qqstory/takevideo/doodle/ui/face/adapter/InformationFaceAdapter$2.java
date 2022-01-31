@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import bdcs;
-import bmsc;
+import bdhb;
+import bmwo;
 import java.io.File;
 
 public class InformationFaceAdapter$2
   implements Runnable
 {
-  public InformationFaceAdapter$2(bmsc parambmsc, String paramString) {}
+  public InformationFaceAdapter$2(bmwo parambmwo, String paramString) {}
   
   public void run()
   {
-    bdcs.a(new File(this.a).getParentFile().getParentFile().getPath(), false);
+    bdhb.a(new File(this.a).getParentFile().getParentFile().getPath(), false);
   }
 }
 

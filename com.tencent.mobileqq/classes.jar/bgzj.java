@@ -1,79 +1,41 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
 
+@bglp(a="GameRuntimeCreateTask")
 public class bgzj
-  extends bgzp
+  extends bhlw
 {
-  private CloudStorage.StGetUserInteractiveStorageReq a = new CloudStorage.StGetUserInteractiveStorageReq();
+  private bgxq a;
   
-  public bgzj(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString)
+  public bgzj(Context paramContext, bgun parambgun)
   {
-    if (paramStCommonExt != null) {
-      this.a.ext.set(paramStCommonExt);
-    }
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    super(paramContext, parambgun);
+  }
+  
+  public bgxq a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
     {
-      paramStCommonExt = paramArrayOfString[i];
-      this.a.keyList.add(paramStCommonExt);
-      i += 1;
+      c();
+      return;
     }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = new CloudStorage.StGetUserInteractiveStorageRsp();
     try
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetUserInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetUserInteractiveStorageRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGetUserInteractiveStorageRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail.rsp = null");
-      return null;
+      this.a = new bgxq();
+      this.a.a(a());
+      c();
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+      QMLog.e("GameRuntimeCreateTask", "Failed execute GameRuntimeCreateTask", localThrowable);
+      e();
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserInteractiveStorage";
   }
 }
 

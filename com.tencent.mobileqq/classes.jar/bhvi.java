@@ -1,28 +1,60 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.AutoVerticalScrollTextView;
 
 public class bhvi
-  implements View.OnTouchListener
+  extends Animation
 {
-  public bhvi(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhvi(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramMotionEvent.getAction() == 1)
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_Bhsq == null) || (!this.a.jdField_a_of_type_Bhsq.a(this.a, paramView, i, this.a.jdField_a_of_type_Bhvk.getGroupId(i)))) {
-          this.a.b(i);
-        }
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    return true;
+    for (;;)
+    {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
+      return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
   }
 }
 

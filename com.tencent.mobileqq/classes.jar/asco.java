@@ -1,26 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class asco
-  implements CompoundButton.OnCheckedChangeListener
+class asco
+  implements awkh
 {
-  public asco(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  asco(ascn paramascn, long paramLong) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    int i = 1;
-    bhnu.a(true, paramBoolean);
-    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      azmj.b(null, "CliOper", "", paramCompoundButton, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
-      return;
-      i = 0;
+    return null;
+  }
+  
+  public void a(awki paramawki)
+  {
+    if (paramawki != null) {
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "upCallBack updateMsg info =" + paramawki);
     }
+  }
+  
+  public void b(awki paramawki)
+  {
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramawki });
+    ascn.a(this.jdField_a_of_type_Ascn, paramawki, this.jdField_a_of_type_Long);
   }
 }
 

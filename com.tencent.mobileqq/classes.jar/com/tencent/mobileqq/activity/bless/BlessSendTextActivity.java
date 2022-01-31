@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import agyc;
+import ahcr;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -25,7 +25,7 @@ public class BlessSendTextActivity
   implements TextWatcher, View.OnClickListener
 {
   int jdField_a_of_type_Int = 0;
-  private agyc jdField_a_of_type_Agyc;
+  private ahcr jdField_a_of_type_Ahcr;
   View jdField_a_of_type_AndroidViewView;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   protected RelativeLayout a;
@@ -41,13 +41,13 @@ public class BlessSendTextActivity
   
   private void b()
   {
-    ((ImmersiveTitleBar2)findViewById(2131377976)).setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377884);
+    ((ImmersiveTitleBar2)findViewById(2131378030)).setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377938);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165341));
-    findViewById(2131368644).setOnClickListener(this);
-    findViewById(2131364099).setOnClickListener(this);
-    findViewById(2131363703).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365600));
+    findViewById(2131368655).setOnClickListener(this);
+    findViewById(2131364101).setOnClickListener(this);
+    findViewById(2131363705).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365602));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
@@ -64,13 +64,13 @@ public class BlessSendTextActivity
     {
       String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       this.jdField_a_of_type_JavaUtilArrayList.set(this.jdField_a_of_type_Int, str);
-      this.jdField_a_of_type_Agyc.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
+      this.jdField_a_of_type_Ahcr.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
     }
   }
   
   public void a()
   {
-    azmj.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
     finish();
     overridePendingTransition(2130771997, 2130772001);
   }
@@ -87,8 +87,8 @@ public class BlessSendTextActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     super.setContentView(2131558681);
-    this.jdField_a_of_type_Agyc = ((agyc)this.app.getManager(138));
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Agyc.b();
+    this.jdField_a_of_type_Ahcr = ((ahcr)this.app.getManager(138));
+    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Ahcr.b();
     b();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromoutweb", false);
     return true;
@@ -105,7 +105,7 @@ public class BlessSendTextActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131364099: 
+    case 2131364101: 
       do
       {
         return;
@@ -117,7 +117,7 @@ public class BlessSendTextActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
         return;
       }
-    case 2131363703: 
+    case 2131363705: 
       paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       if (paramView.equals(""))
       {
@@ -131,7 +131,7 @@ public class BlessSendTextActivity
       localIntent.putExtra("param_only_friends", true);
       localIntent.putExtra("param_donot_need_contacts", true);
       localIntent.putExtra("param_title", getString(2131690565));
-      localIntent.putExtra("param_done_button_wording", getString(2131691088));
+      localIntent.putExtra("param_done_button_wording", getString(2131691089));
       localIntent.putExtra("param_exit_animation", 1);
       localIntent.putExtra("param_blesstype", 1);
       localIntent.putExtra("param_blessword_content", paramView);
@@ -141,7 +141,7 @@ public class BlessSendTextActivity
       if (this.jdField_a_of_type_Boolean) {}
       for (;;)
       {
-        azmj.b(paramView, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
+        azqs.b(paramView, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
         return;
         i = 0;
       }

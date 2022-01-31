@@ -1,42 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class adwl
-  extends Handler
+  implements TextWatcher
 {
-  public adwl(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
+  public adwl(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramLooper);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramEditable);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131366676);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
-      return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bksk;
-import bksr;
-import bkss;
+import bkwr;
+import bkwy;
+import bkwz;
 import java.util.List;
 
 public class AEVideoStoryDashboardPart$7$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$7$1(bksr parambksr, List paramList) {}
+  public AEVideoStoryDashboardPart$7$1(bkwy parambkwy, List paramList) {}
   
   public void run()
   {
-    bksk.a(this.jdField_a_of_type_Bksr.a).a(this.jdField_a_of_type_JavaUtilList);
+    bkwr.a(this.jdField_a_of_type_Bkwy.a).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

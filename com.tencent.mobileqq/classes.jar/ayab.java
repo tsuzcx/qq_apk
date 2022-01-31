@@ -1,15 +1,7 @@
-public class ayab
+class ayab
+  implements ayan
 {
-  public String a;
-  public String b;
-  
-  public ayab() {}
-  
-  public ayab(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  ayab(ayaa paramayaa) {}
 }
 
 

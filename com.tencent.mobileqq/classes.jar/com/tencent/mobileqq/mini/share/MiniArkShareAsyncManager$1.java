@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.share;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -20,10 +20,10 @@ final class MiniArkShareAsyncManager$1
       localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
       if (localObject != null)
       {
-        awbv localawbv = ((awbw)localObject).a(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
-        if (localawbv != null)
+        awge localawge = ((awgf)localObject).a(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
+        if (localawge != null)
         {
-          if (!((awbw)localObject).b(localawbv)) {
+          if (!((awgf)localObject).b(localawge)) {
             break label90;
           }
           QLog.d("MiniArkShareAsyncManage", 2, "removeArkShareLocalImageDatabaseEntity: remove record for " + this.val$filePath);

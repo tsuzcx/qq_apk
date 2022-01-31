@@ -11,25 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import beeh;
-import beey;
-import befb;
+import beiq;
+import bejh;
+import bejk;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import ndq;
-import vxq;
-import vxr;
-import wsv;
+import wbz;
+import wca;
+import wxe;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
 {
   public BroadcastReceiver a;
-  public vxr a;
+  public wca a;
   
   public StoryPlayerWebFragment()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vxq(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new wbz(this);
   }
   
   public static Intent a(Activity paramActivity, String paramString)
@@ -49,28 +49,28 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
-  public void a(vxr paramvxr)
+  public void a(wca paramwca)
   {
-    this.jdField_a_of_type_Vxr = paramvxr;
+    this.jdField_a_of_type_Wca = paramwca;
   }
   
   public boolean a()
   {
-    wsv.b("StoryPlayerWebFragment", "showPreview()");
+    wxe.b("StoryPlayerWebFragment", "showPreview()");
     ndq.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_Beey.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Befb.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D);
+    this.jdField_a_of_type_Bejh.a(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Bejk.c = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D);
     this.p = true;
     this.q = false;
     G();
-    wsv.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.jdField_a_of_type_Beey.c = true;
-    this.jdField_a_of_type_Beey.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
+    wxe.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    this.jdField_a_of_type_Bejh.c = true;
+    this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Beey.a(this.g);
-    this.jdField_a_of_type_Beey.b = false;
+    this.jdField_a_of_type_Bejh.a(this.g);
+    this.jdField_a_of_type_Bejh.b = false;
     ndq.b("Web_qqbrowser_ShowPreview");
     return true;
   }
@@ -78,7 +78,7 @@ public class StoryPlayerWebFragment
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_Beeh.a("web_view_long_click", false);
+    this.jdField_a_of_type_Beiq.a("web_view_long_click", false);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -93,20 +93,20 @@ public class StoryPlayerWebFragment
   public void onDestroy()
   {
     super.onDestroy();
-    wsv.b("StoryPlayerWebFragment", "onDestroy()");
+    wxe.b("StoryPlayerWebFragment", "onDestroy()");
     getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
   public void onPause()
   {
     super.onPause();
-    wsv.b("StoryPlayerWebFragment", "onPause()");
+    wxe.b("StoryPlayerWebFragment", "onPause()");
   }
   
   public void onResume()
   {
     super.onResume();
-    wsv.b("StoryPlayerWebFragment", "onResume()");
+    wxe.b("StoryPlayerWebFragment", "onResume()");
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity != null)
     {

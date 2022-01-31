@@ -1,54 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
 import java.util.ArrayList;
 
 public class acdo
-  implements aggr
+  extends alrl
 {
-  public acdo(BaseChatPie paramBaseChatPie) {}
+  public acdo(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a(Intent paramIntent)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    ((afaz)this.a.jdField_a_of_type_Afag.a(7)).a(this.a.hashCode(), paramIntent);
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
+    }
   }
   
-  public boolean a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = ((afaz)this.a.jdField_a_of_type_Afag.a(7)).a(this.a.hashCode());
-    int i = paramInt;
-    if (localObject != null)
-    {
-      i = paramInt;
-      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
-      {
-        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-        i = paramInt;
-        if (localObject != null) {
-          i = ((ArrayList)localObject).size();
-        }
-      }
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
     }
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.K))
-    {
-      boolean bool = nav.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 4)) {}
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label179;
-      }
-    }
-    label179:
-    for (localObject = agci.m;; localObject = agci.l)
-    {
-      localPanelIconLinearLayout.a((int[])localObject, i);
-      if ((i > 0) && (!this.a.B())) {
-        this.a.a(true);
-      }
-      return false;
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
     }
   }
 }

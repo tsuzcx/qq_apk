@@ -1,25 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
-
-public final class alxy
-  implements Parcelable.Creator<ShieldOperationItem>
+public class alxy
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
-  
-  public ShieldOperationItem[] a(int paramInt)
-  {
-    return null;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
 }
 
 

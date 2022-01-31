@@ -5,13 +5,13 @@ import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivit
 import com.tencent.mobileqq.data.EqqDetail;
 
 public class ngn
-  implements bhqd
+  implements bhuk
 {
-  public ngn(EqqAccountDetailActivity paramEqqAccountDetailActivity, bhpy parambhpy, String paramString) {}
+  public ngn(EqqAccountDetailActivity paramEqqAccountDetailActivity, bhuf parambhuf, String paramString) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
+    this.jdField_a_of_type_Bhuf.dismiss();
     switch (paramInt)
     {
     default: 

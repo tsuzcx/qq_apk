@@ -1,19 +1,23 @@
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class bngc
-  extends bmix
+class bngc
+  implements View.OnClickListener
 {
-  public bngc(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  bngc(bngb parambngb) {}
   
-  protected void c()
+  public void onClick(View paramView)
   {
-    super.c();
-    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
+    wxj.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
+    if (!this.a.a().g())
     {
-      azpr localazpr = new azpr();
-      localazpr.d = "0X800903D";
-      azmf.a(null, localazpr);
+      bngb.a(this.a);
+      return;
     }
+    this.a.a().f(false);
+    bngb.a(this.a).setSelected(false);
+    this.a.a().d(3003);
   }
 }
 

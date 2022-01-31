@@ -129,7 +129,7 @@ public class sdn
           i = 1;
           localJSONObject.put("network_type", i);
           localJSONObject.put("os", "1");
-          localJSONObject.put("version", "8.3.3".replace(".", ""));
+          localJSONObject.put("version", "8.3.5".replace(".", ""));
           localJSONObject.put("imei", ors.f());
           localJSONObject.put("imsi", ors.g());
           localJSONObject.put("rcmInfo", paramJSONObject.optString("rcmInfo"));
@@ -500,7 +500,7 @@ public class sdn
     paramList.put("videoCount", "" + j);
     paramList.put("textCount", "-1");
     paramList.put("param_uin", ors.a());
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebItemCount", true, 0L, 0L, paramList, null);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebItemCount", true, 0L, 0L, paramList, null);
   }
   
   public static void a(ArticleInfo paramArticleInfo, orz paramorz)
@@ -663,7 +663,7 @@ public class sdn
           if (!paramJSONObject1.has("kdschSessionId")) {
             paramJSONObject1.put("kdschSessionId", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin() + System.currentTimeMillis());
           }
-          aynt.a(null, new ReportModelDC02528().module("all_search").action("clk_jingtan_list").obj1("2049").ver2("kandian").ver4(paramJSONObject2.getString("searchWord")).ver6(localJSONObject1.getString("articleRowKey")).ver7("{\"scroe\":\"" + paramJSONObject2.getString("score") + "\",\"title\":\"" + localJSONObject1.getString("articleTitle") + "\",\"position\":\"" + paramJSONObject2.getString("position") + "\"}").session_id(paramJSONObject1.getString("kdschSessionId")));
+          aysc.a(null, new ReportModelDC02528().module("all_search").action("clk_jingtan_list").obj1("2049").ver2("kandian").ver4(paramJSONObject2.getString("searchWord")).ver6(localJSONObject1.getString("articleRowKey")).ver7("{\"scroe\":\"" + paramJSONObject2.getString("score") + "\",\"title\":\"" + localJSONObject1.getString("articleTitle") + "\",\"position\":\"" + paramJSONObject2.getString("position") + "\"}").session_id(paramJSONObject1.getString("kdschSessionId")));
           return;
         }
         catch (Exception paramString) {}
@@ -738,7 +738,7 @@ public class sdn
             if (!paramJSONObject.has("kdschSessionId")) {
               paramJSONObject.put("kdschSessionId", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin() + System.currentTimeMillis());
             }
-            aynt.a(null, new ReportModelDC02528().module("all_search").action("exp_jingtan_list").obj1("2049").ver2("kandian").ver4(str).ver6(localJSONObject.getString("articleRowKey")).ver7("{\"title\":\"" + localJSONObject.getString("articleTitle") + "\"}").session_id(paramJSONObject.getString("kdschSessionId")));
+            aysc.a(null, new ReportModelDC02528().module("all_search").action("exp_jingtan_list").obj1("2049").ver2("kandian").ver4(str).ver6(localJSONObject.getString("articleRowKey")).ver7("{\"title\":\"" + localJSONObject.getString("articleTitle") + "\"}").session_id(paramJSONObject.getString("kdschSessionId")));
             return;
           }
         }

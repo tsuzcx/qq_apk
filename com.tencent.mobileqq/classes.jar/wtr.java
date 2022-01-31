@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public final class wtr
-  implements Parcelable.Creator<EditLocalPhotoSource>
+public abstract interface wtr
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  public abstract StoryInputBarView a();
   
-  public EditLocalPhotoSource[] a(int paramInt)
-  {
-    return new EditLocalPhotoSource[paramInt];
-  }
+  public abstract xvp a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

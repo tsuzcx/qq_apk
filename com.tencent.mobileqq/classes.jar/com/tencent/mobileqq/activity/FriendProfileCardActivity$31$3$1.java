@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import acvc;
-import acvf;
-import awmk;
-import azmj;
+import aczr;
+import aczu;
+import awqt;
+import azqs;
 
 public class FriendProfileCardActivity$31$3$1
   implements Runnable
 {
-  public FriendProfileCardActivity$31$3$1(acvf paramacvf) {}
+  public FriendProfileCardActivity$31$3$1(aczu paramaczu) {}
   
   public void run()
   {
-    azmj.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
+    azqs.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
   }
 }
 

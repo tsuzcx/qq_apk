@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import aswa;
+import ataj;
 import java.util.List;
 
 class GroupVideoManager$7$1
@@ -10,11 +10,11 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    aswa localaswa = this.this$0.a;
+    ataj localataj = this.this$0.a;
     if ((this.a != null) && (this.a.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localaswa.a(bool);
+      localataj.a(bool);
       return;
     }
   }

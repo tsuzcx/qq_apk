@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agkt;
+import agpi;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class DiscussChatPie$6
   implements Runnable
 {
-  public DiscussChatPie$6(agkt paramagkt) {}
+  public DiscussChatPie$6(agpi paramagpi) {}
   
   public void run()
   {

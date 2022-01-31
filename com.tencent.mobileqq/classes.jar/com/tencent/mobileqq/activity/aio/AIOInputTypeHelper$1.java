@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeki;
+import aeox;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ public final class AIOInputTypeHelper$1
   
   public void run()
   {
-    aeki.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
+    aeox.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
   }
 }
 

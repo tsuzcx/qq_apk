@@ -1,42 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
 
-public class aeaz
-  extends nac
+public final class aeaz
+  extends FlingGestureHandler
 {
-  public aeaz(TroopMemberListActivity.20 param20) {}
+  private WeakReference<TextPreviewActivity> b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private aeaz(TextPreviewActivity paramTextPreviewActivity)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
+    super(paramTextPreviewActivity);
+    this.b = new WeakReference(paramTextPreviewActivity);
+  }
+  
+  public void flingLToR()
+  {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    int i;
+    if (localTextPreviewActivity != null) {
+      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
+        i = 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        super.flingLToR();
+      }
+      return;
+      i = 0;
+      continue;
+      i = 0;
+    }
   }
 }
 

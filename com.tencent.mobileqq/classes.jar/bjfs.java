@@ -1,7 +1,16 @@
-public class bjfs
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+class bjfs
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public int a;
-  public String a;
+  bjfs(bjfr parambjfr) {}
+  
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
 }
 
 

@@ -1,23 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public class advg
-  implements DialogInterface.OnClickListener
+class advg
+  implements Animation.AnimationListener
 {
-  public advg(SubAccountUgActivity paramSubAccountUgActivity, azyl paramazyl, Pair paramPair) {}
+  advg(advf paramadvf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Azyl.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!azyl.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      azyk.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.a.b.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

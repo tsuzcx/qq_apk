@@ -60,7 +60,7 @@ public class GifView
   private static Drawable a()
   {
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841377);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841378);
     }
     return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }

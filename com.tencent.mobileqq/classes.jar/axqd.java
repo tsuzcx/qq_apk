@@ -1,11 +1,6 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
-
-public abstract interface axqd
+class axqd
 {
-  public abstract GLSurfaceView.EGLConfigChooser a();
-  
-  public abstract GLSurfaceView.EGLContextFactory a();
+  private static axpz a = new axpz(null);
 }
 
 

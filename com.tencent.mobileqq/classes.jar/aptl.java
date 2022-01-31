@@ -1,29 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aptl
+class aptl
+  implements View.OnClickListener
 {
-  private ArrayList<View> a = new ArrayList();
+  aptl(aptg paramaptg, IPSiteModel.Video paramVideo, String paramString1, String paramString2) {}
   
-  public View a()
+  public void onClick(View paramView)
   {
-    if (this.a.size() > 0) {
-      return (View)this.a.remove(0);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a.size() >= 3) {
-      return;
-    }
-    this.a.add(paramView);
+    paramView = new Intent(this.jdField_a_of_type_Aptg.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Aptg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Video.redirectUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_movieclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

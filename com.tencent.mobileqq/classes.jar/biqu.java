@@ -1,6 +1,8 @@
+import android.content.Context;
+
 public abstract interface biqu
 {
-  public abstract void b(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean, Context paramContext, biqw parambiqw);
 }
 
 

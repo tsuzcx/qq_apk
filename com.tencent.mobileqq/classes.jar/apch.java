@@ -1,21 +1,6 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-
-public class apch
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface apch
 {
-  public apch(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      apde.a().c();
-      return;
-    }
-    apde.a().d();
-  }
+  public abstract void a(apbq paramapbq);
 }
 
 

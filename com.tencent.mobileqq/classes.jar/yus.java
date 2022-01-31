@@ -1,27 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
 public class yus
 {
-  String a = "";
+  public static int a;
+  public static int b;
+  String a;
+  public boolean a;
+  String b;
+  public int c;
+  String c;
+  public int d;
   
-  public static yus a(String paramString)
+  static
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
-      }
-      return null;
-    }
-    yus localyus = new yus();
-    localyus.a(paramString);
-    return localyus;
+    jdField_b_of_type_Int = 1;
   }
   
-  public void a(String paramString)
+  public yus(String paramString1, String paramString2, String paramString3)
   {
-    this.a = paramString;
+    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
   }
 }
 

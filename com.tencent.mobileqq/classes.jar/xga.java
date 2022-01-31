@@ -1,12 +1,34 @@
-public abstract interface xga
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+
+final class xga
+  implements Animator.AnimatorListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  xga(xgb paramxgb, ValueAnimator paramValueAnimator) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Xgb != null) {
+      this.jdField_a_of_type_Xgb.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Xgb != null) {
+      this.jdField_a_of_type_Xgb.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
   
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Xgb != null) {
+      this.jdField_a_of_type_Xgb.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
 }
 
 

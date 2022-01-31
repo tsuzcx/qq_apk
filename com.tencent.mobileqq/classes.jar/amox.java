@@ -1,22 +1,22 @@
-public class amox
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+
+class amox
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public long b;
+  amox(amow paramamow, ArkViewModel paramArkViewModel) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
-    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", nEndTime=").append(this.b);
-    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amox
  * JD-Core Version:    0.7.0.1
  */

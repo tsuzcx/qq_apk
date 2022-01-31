@@ -1,18 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class ahcg
-  implements MessageQueue.IdleHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ahcg(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public ahcg(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
   
-  public boolean queueIdle()
+  public void onGlobalLayout()
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
+    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
   }
 }
 

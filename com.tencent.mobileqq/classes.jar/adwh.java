@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class adwh
-  implements anuf
+  implements akkc
 {
-  public adwh(TextPreviewActivity paramTextPreviewActivity) {}
+  public adwh(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
+  public void a()
   {
-    anua.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = bdnm.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
-    {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
-      return;
-    }
-    this.a.jdField_a_of_type_JavaLangCharSequence = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(List<MayKnowRecommend> paramList) {}
+  
+  public void b()
+  {
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
   }
 }
 

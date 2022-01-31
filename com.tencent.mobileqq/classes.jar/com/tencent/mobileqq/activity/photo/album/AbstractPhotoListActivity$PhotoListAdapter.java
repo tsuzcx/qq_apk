@@ -35,7 +35,7 @@ public class AbstractPhotoListActivity$PhotoListAdapter
   {
     this.mInflater = paramAbstractPhotoListActivity.getLayoutInflater();
     this.mResources = paramAbstractPhotoListActivity.getResources();
-    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847294);
+    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847367);
   }
   
   public int getCount()

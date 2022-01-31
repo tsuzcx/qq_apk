@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bjmn;
-import bjmp;
+import bjqu;
+import bjqw;
 
 class QzoneWebMusicJsPlugin$17
   implements Runnable
@@ -10,7 +10,7 @@ class QzoneWebMusicJsPlugin$17
   
   public void run()
   {
-    bjmn.a().a().d();
+    bjqu.a().a().d();
   }
 }
 

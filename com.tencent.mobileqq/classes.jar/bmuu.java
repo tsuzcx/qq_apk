@@ -1,6 +1,8 @@
-public abstract interface bmuu
+import android.view.MotionEvent;
+
+public abstract class bmuu
 {
-  public abstract void b(float paramFloat);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

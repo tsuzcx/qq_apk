@@ -1,18 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ajnz
   implements DialogInterface.OnClickListener
 {
-  public ajnz(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ajnz(LoginView paramLoginView) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LpReportInfo_pf00064.allReport(680, 1, 2);
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
-    this.a.a();
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
   }
 }
 

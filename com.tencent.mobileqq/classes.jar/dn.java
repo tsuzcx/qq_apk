@@ -27,7 +27,7 @@ class dn
       int i = DataLineMsgRecord.getDevTypeBySeId(paramView.a.a);
       localObject = dm.a(this.a).a().a(i).a(paramView.a.a);
     } while (localObject == null);
-    paramView = arni.a((DataLineMsgRecord)localObject);
+    paramView = arrr.a((DataLineMsgRecord)localObject);
     ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
     localForwardFileInfo.b(10009);
     localForwardFileInfo.d(6);

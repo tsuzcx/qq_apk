@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acst
-  implements akeo
+  implements DialogInterface.OnDismissListener
 {
-  public acst(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public acst(Conversation paramConversation) {}
   
-  public void a(View paramView)
-  {
-    if (ForwardFriendListActivity.a(this.a))
-    {
-      ForwardFriendListActivity.b(this.a, paramView);
-      return;
-    }
-    ForwardFriendListActivity.c(this.a, paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,15 +1,78 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ahwb
-  implements DialogInterface.OnClickListener
+class ahwb
+  extends BaseAdapter
 {
-  public ahwb(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, acje paramacje) {}
+  private ahwb(ahvz paramahvz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_Acje.a(false);
+    return 6;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(ahvz.a(this.a)).inflate(2131562758, null);
+    }
+    int j;
+    int i;
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      j = 2130838913;
+      i = 2131720043;
+      paramInt = 2131720606;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131362695);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131362707);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.c) {
+        paramViewGroup.setContentDescription(ahvz.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131720058;
+      j = 2130838917;
+      paramInt = 2131720622;
+      continue;
+      i = 2131720060;
+      j = 2130838918;
+      paramInt = 2131720623;
+      continue;
+      i = 2131720066;
+      j = 2130838921;
+      paramInt = 2131720630;
+      continue;
+      i = 2131720055;
+      j = 2130838915;
+      paramInt = 2131720613;
+      continue;
+      paramInt = 2131717586;
+      i = 2131717586;
+      j = 2130842105;
+    }
   }
 }
 

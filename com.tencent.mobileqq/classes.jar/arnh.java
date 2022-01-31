@@ -1,21 +1,32 @@
-public class arnh
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+
+class arnh
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
+  arnh(arnb paramarnb) {}
   
-  public arnh()
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "share_file";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
+    if (paramInt == -2) {
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
+        arnb.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
+      arnb.b(this.a);
+      return;
+    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
+    arnb.a(this.a);
   }
 }
 

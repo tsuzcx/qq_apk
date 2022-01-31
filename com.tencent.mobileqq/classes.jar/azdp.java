@@ -1,11 +1,17 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
-public class azdp
+class azdp
+  implements azeq
 {
-  public azda a;
-  public AtomicBoolean a = new AtomicBoolean(false);
-  public azda b;
-  public azda c;
+  azdp(azdo paramazdo) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, azej paramazej) {}
+  
+  public void a(int paramInt, ArrayList<azej> paramArrayList) {}
+  
+  public void b(int paramInt, azej paramazej) {}
 }
 
 

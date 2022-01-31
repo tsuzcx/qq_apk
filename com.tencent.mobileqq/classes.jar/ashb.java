@@ -1,21 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
-class ashb
-  extends AnimatorListenerAdapter
+public class ashb
+  extends amcd
 {
-  ashb(asgx paramasgx) {}
+  public ashb(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.d.setVisibility(8);
-    this.a.a.setVisibility(8);
-    this.a.a.setFocusable(false);
-    asgx.a(this.a).sendEmptyMessage(3);
+    QQSettingChatOperationFragment.a(this.a);
   }
 }
 

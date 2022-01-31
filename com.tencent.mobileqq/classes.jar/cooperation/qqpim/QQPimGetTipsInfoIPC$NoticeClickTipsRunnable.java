@@ -1,8 +1,8 @@
 package cooperation.qqpim;
 
 import android.os.Bundle;
-import bitz;
-import biue;
+import biyg;
+import biyl;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
@@ -15,8 +15,8 @@ public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(bitz.r, 3);
-      QIPCServerHelper.getInstance().callClient(bitz.b, bitz.c, bitz.e, localBundle, new biue(this));
+      localBundle.putInt(biyg.r, 3);
+      QIPCServerHelper.getInstance().callClient(biyg.b, biyg.c, biyg.e, localBundle, new biyl(this));
       return;
     }
     catch (Throwable localThrowable)

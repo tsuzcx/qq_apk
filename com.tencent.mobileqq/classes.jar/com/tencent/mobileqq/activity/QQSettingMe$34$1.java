@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adoc;
+import adsr;
 
 public class QQSettingMe$34$1
   implements Runnable
 {
-  public QQSettingMe$34$1(adoc paramadoc) {}
+  public QQSettingMe$34$1(adsr paramadsr) {}
   
   public void run()
   {

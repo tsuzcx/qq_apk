@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import blwn;
+import bmaz;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMLoadingViewWithRetry
@@ -63,7 +63,7 @@ public class QIMLoadingViewWithRetry
     super.b();
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.e = 2130844138;
+    this.e = 2130844210;
     a(this.e);
   }
   
@@ -93,9 +93,9 @@ public class QIMLoadingViewWithRetry
       this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f);
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
     } while (!this.jdField_c_of_type_Boolean);
-    if ((this.jdField_b_of_type_Long != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Blwn != null))
+    if ((this.jdField_b_of_type_Long != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bmaz != null))
     {
-      setProgress(Math.round(this.jdField_a_of_type_Blwn.a() * (float)this.jdField_a_of_type_Long));
+      setProgress(Math.round(this.jdField_a_of_type_Bmaz.a() * (float)this.jdField_a_of_type_Long));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -103,7 +103,7 @@ public class QIMLoadingViewWithRetry
   
   public void setProgress(long paramLong)
   {
-    if ((paramLong == 0L) && (this.jdField_a_of_type_Blwn != null) && (this.jdField_a_of_type_Blwn.a == 3))
+    if ((paramLong == 0L) && (this.jdField_a_of_type_Bmaz != null) && (this.jdField_a_of_type_Bmaz.a == 3))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMLoadingViewWithRetry", 2, "progress=" + paramLong);

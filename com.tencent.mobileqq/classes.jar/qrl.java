@@ -7,7 +7,7 @@ import android.widget.ImageView.ScaleType;
 import java.util.List;
 
 public class qrl
-  extends bhzz<qrw, qrm>
+  extends bieg<qrw, qrm>
 {
   public qrl(Context paramContext, List<qrw> paramList)
   {

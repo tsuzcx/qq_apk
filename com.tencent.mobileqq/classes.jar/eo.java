@@ -18,7 +18,7 @@ class eo
     Object localObject = (PrinterItemMsgRecord)((ef)paramView.getTag()).a();
     if (localObject != null)
     {
-      paramView = arni.a((PrinterItemMsgRecord)localObject);
+      paramView = arrr.a((PrinterItemMsgRecord)localObject);
       ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
       localForwardFileInfo.b(10009);
       localForwardFileInfo.d(6);

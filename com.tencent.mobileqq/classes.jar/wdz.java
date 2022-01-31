@@ -1,42 +1,68 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 class wdz
-  implements uni<wem, wen>
+  implements URLDrawable.URLDrawableListener
 {
-  wdz(wdy paramwdy, JobContext paramJobContext, String paramString) {}
+  private final int jdField_a_of_type_Int;
+  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
   
-  public void a(@NonNull wem paramwem, @Nullable wen paramwen, @NonNull ErrorMessage paramErrorMessage)
+  public wdz(wdy paramwdy, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    wxe.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramURLDrawable = (HashSet)wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable != null)
     {
-      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
-    }
-    if ((paramwen == null) || (paramErrorMessage.isFail()))
-    {
-      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      wdy.a(this.jdField_a_of_type_Wdy, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Wdy.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((urd)urr.a(15)).a(paramwen.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramwem = new wdu(bool, paramwen.a, paramwen.b, paramwen.c);
-      try
-      {
-        wdy.a(this.jdField_a_of_type_Wdy, paramwem);
-        return;
+      paramURLDrawable = paramURLDrawable.iterator();
+      while (paramURLDrawable.hasNext()) {
+        ((wec)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
       }
-      catch (NullPointerException paramwem)
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    wxe.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = wdy.a(this.jdField_a_of_type_Wdy, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    if (localBitmap != null)
+    {
+      paramURLDrawable = (HashSet)wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_JavaLangString);
+      if (paramURLDrawable != null)
       {
-        wsv.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramwem);
-        wdy.b(this.jdField_a_of_type_Wdy, new ErrorMessage());
-        return;
+        paramURLDrawable = paramURLDrawable.iterator();
+        while (paramURLDrawable.hasNext()) {
+          ((wec)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        }
       }
+    }
+    else
+    {
+      wxe.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
     }
   }
 }

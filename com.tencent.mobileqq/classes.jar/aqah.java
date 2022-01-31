@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
 import java.util.List;
 
-public class aqah
-  extends apxc
+public abstract class aqah
 {
-  public aqah(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public abstract int a();
   
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<apyo> paramList, apyb paramapyb)
+  public abstract List<aqae> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(aqai paramaqai, aqae paramaqae, boolean paramBoolean)
   {
-    if (this.a.b != paramLong) {
-      return;
-    }
-    try
-    {
-      ExtendFriendSearchFragment.a(this.a, 1);
-      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramapyb);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
-    }
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramaqai, paramaqae), 64, null, true);
   }
+  
+  public abstract boolean a();
 }
 
 

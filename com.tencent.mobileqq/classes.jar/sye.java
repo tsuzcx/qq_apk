@@ -19,7 +19,7 @@ final class sye
       do
       {
         return;
-        arys.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+        asdb.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
       } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
       this.jdField_a_of_type_AndroidAppActivity.setResult(0);
       this.jdField_a_of_type_AndroidAppActivity.finish();

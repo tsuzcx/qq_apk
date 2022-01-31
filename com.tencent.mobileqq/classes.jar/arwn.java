@@ -1,39 +1,27 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import mqq.os.MqqHandler;
 
 class arwn
-  implements View.OnClickListener
+  implements afjs
 {
-  arwn(arwl paramarwl, DialogInterface.OnClickListener paramOnClickListener) {}
+  arwn(arwl paramarwl, arwo paramarwo, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Arwl.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Arwl, 1);
-    }
-    if (arwl.a(this.jdField_a_of_type_Arwl))
+    FlashChatTextEffectView.a(this.jdField_a_of_type_Arwo);
+    Message localMessage = Message.obtain();
+    localMessage.obj = this.jdField_a_of_type_Arwo;
+    localMessage.what = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
     {
-      arwl.a(this.jdField_a_of_type_Arwl).removeView(arwl.a(this.jdField_a_of_type_Arwl));
-      arwl.a(this.jdField_a_of_type_Arwl, false);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Arwl.isShowing()) {
-        this.jdField_a_of_type_Arwl.dismiss();
-      }
+      arwl.a(this.jdField_a_of_type_Arwl).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
       return;
     }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
-    }
+    arwl.a(this.jdField_a_of_type_Arwl).sendMessageDelayed(localMessage, 7000L);
   }
+  
+  public void b() {}
 }
 
 

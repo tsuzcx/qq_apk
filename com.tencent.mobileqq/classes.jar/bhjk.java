@@ -1,8 +1,21 @@
-public abstract interface bhjk
+import android.content.Intent;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+
+class bhjk
+  implements bgnl
 {
-  public abstract void a();
+  bhjk(bhje parambhje) {}
   
-  public abstract void b();
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 2019)
+    {
+      this.a.a.a(paramInt1, paramInt2, paramIntent);
+      bgnk.a().b(this);
+      return true;
+    }
+    return false;
+  }
 }
 
 

@@ -1,15 +1,24 @@
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.2;
-import java.io.File;
-import java.util.Comparator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class ygr
-  implements Comparator<File>
+class ygr
+  implements View.OnClickListener
 {
-  public ygr(AnimationDrawableFactory.2 param2) {}
+  ygr(ygq paramygq, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    paramView = (ClipboardManager)ygg.c(this.jdField_a_of_type_Ygq.a).getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
+      ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
+    }
   }
 }
 

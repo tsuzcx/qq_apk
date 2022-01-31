@@ -1,56 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-class ajfy
-  implements BusinessObserver
+public class ajfy
+  implements bhuk
 {
-  ajfy(ajfx paramajfx, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  public ajfy(AppletsFolderManager.2 param2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean) + ", uin: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    }
-    if (!paramBoolean)
-    {
-      ajfx.a(this.jdField_a_of_type_Ajfx, 2131695727);
+    if (ajfv.a(this.a.this$0)) {
       return;
+    }
+    ajfv.a(this.a.this$0, true);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentPubAccHelper", 2, "unfollow success");
-          }
-          ajfx.a(this.jdField_a_of_type_Ajfx, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-          ((bcic)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-          ajfx.b(this.jdField_a_of_type_Ajfx, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        continue;
-      }
-      ajfx.a(this.jdField_a_of_type_Ajfx);
+      ajfv.a(this.a.this$0).dismiss();
       return;
-      ajfx.b(this.jdField_a_of_type_Ajfx, 2131695727);
+      paramView = new ArrayList();
+      amsd localamsd = new amsd();
+      localamsd.a(Integer.valueOf(this.a.a).intValue());
+      localamsd.a(Integer.valueOf(this.a.b).intValue());
+      localamsd.b(0);
+      paramView.add(localamsd.a());
+      ajfv.a(this.a.this$0).a(paramView);
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131701000), 0).a();
     }
   }
 }

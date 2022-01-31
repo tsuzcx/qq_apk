@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import bjel;
+import bjis;
 import cooperation.qzone.contentbox.model.MQMsg;
 
 class QZoneMsgFragment$8

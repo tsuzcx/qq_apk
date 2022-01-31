@@ -1,29 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acam
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnTouchListener
 {
-  public acam(AssistantSettingActivity paramAssistantSettingActivity, SharedPreferences paramSharedPreferences, String paramString) {}
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new acan(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public acam(AccountManageActivity paramAccountManageActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sticker_switch_" + this.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-    if ((paramBoolean) && (EmojiStickerManager.a())) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      EmojiStickerManager.e = paramBoolean;
-      if (EmojiStickerManager.e) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.c(), "Stick", "ClickSwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      }
-      return;
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
     }
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
+    }
+    return false;
   }
 }
 

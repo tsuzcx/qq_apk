@@ -1,23 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class afzk
-  implements ujj
+final class afzk
+  extends azer
 {
-  long jdField_a_of_type_Long;
-  afzl jdField_a_of_type_Afzl;
-  String jdField_a_of_type_JavaLangString;
+  afzk(MessageForShortVideo paramMessageForShortVideo, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView) {}
   
-  public afzk(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  public void a(int paramInt) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void a(int paramInt, azej paramazej)
   {
-    if (!paramString1.equals(this.a)) {}
+    if (paramazej.jdField_a_of_type_Int == 0)
+    {
+      paramazej = (awir)paramazej.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = paramazej.b;
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
+      afzh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
+      return;
+    }
+    QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
   }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

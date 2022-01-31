@@ -1,12 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 
 class tsy
-  implements DialogInterface.OnDismissListener
+  implements ubh
 {
-  tsy(tsv paramtsv) {}
+  tsy(tsw paramtsw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a()
+  {
+    tsw.a(this.a).a().scrollToPosition(0);
+    tsw.a(this.a).a().e();
+    tsw.a(this.a).clearData();
+    tzs.a(75, 2, tsw.a(this.a));
+    QLog.d("QCirclePolyListPart", 3, "dismiss");
+  }
 }
 
 

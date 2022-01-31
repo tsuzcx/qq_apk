@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.richstatus.SignatureFontView;
 
-class aycw
-  implements View.OnClickListener
+public class aycw
+  extends fu
 {
-  aycw(aycv paramaycv) {}
+  public aycw(SignatureFontView paramSignatureFontView) {}
   
-  public void onClick(View paramView)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    aycv.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
+    if ((SignatureFontView.a(this.a) < 0) || (SignatureFontView.b(this.a) < SignatureFontView.a(this.a)))
+    {
+      this.a.a.shouldStartAnimation = true;
+      this.a.a.startAnimation(false, false);
+      if (SignatureFontView.a(this.a) > 0) {
+        SignatureFontView.c(this.a);
+      }
+    }
   }
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

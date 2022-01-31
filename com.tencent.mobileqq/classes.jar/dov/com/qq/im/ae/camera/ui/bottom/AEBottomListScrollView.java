@@ -9,24 +9,24 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
-import bkqq;
-import bkrd;
-import bkri;
-import bkrj;
-import bkrk;
-import bkrl;
-import bkrm;
-import bkro;
-import bkvu;
-import yug;
+import bkux;
+import bkvk;
+import bkvp;
+import bkvq;
+import bkvr;
+import bkvs;
+import bkvt;
+import bkvv;
+import blab;
+import yyv;
 
 public class AEBottomListScrollView
   extends RecyclerView
 {
   private static final String jdField_a_of_type_JavaLangString = AEBottomListScrollView.class.getSimpleName();
-  private bkrd jdField_a_of_type_Bkrd;
-  private bkrj jdField_a_of_type_Bkrj;
-  private bkrk jdField_a_of_type_Bkrk;
+  private bkvk jdField_a_of_type_Bkvk;
+  private bkvq jdField_a_of_type_Bkvq;
+  private bkvr jdField_a_of_type_Bkvr;
   private boolean jdField_a_of_type_Boolean;
   
   public AEBottomListScrollView(Context paramContext)
@@ -49,24 +49,24 @@ public class AEBottomListScrollView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bkrj == null) {
+    if (this.jdField_a_of_type_Bkvq == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Bkrd.b();
+    int i = this.jdField_a_of_type_Bkvk.b();
     c(a(i), i);
   }
   
   private void a(float paramFloat, int paramInt1, int paramInt2, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (this.jdField_a_of_type_Bkrk != null) {
-      this.jdField_a_of_type_Bkrk.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
+    if (this.jdField_a_of_type_Bkvr != null) {
+      this.jdField_a_of_type_Bkvr.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
     }
   }
   
   private void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkrk != null) {
-      this.jdField_a_of_type_Bkrk.c(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bkvr != null) {
+      this.jdField_a_of_type_Bkvr.c(paramViewHolder, paramInt);
     }
   }
   
@@ -76,57 +76,57 @@ public class AEBottomListScrollView
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bkrd = new bkrd(getContext(), new bkrl(this, null), new bkro());
-      setLayoutManager(this.jdField_a_of_type_Bkrd);
+      this.jdField_a_of_type_Bkvk = new bkvk(getContext(), new bkvs(this, null), new bkvv());
+      setLayoutManager(this.jdField_a_of_type_Bkvk);
       return;
     }
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkrj != null) {
-      this.jdField_a_of_type_Bkrj.a(paramViewHolder, true);
+    if (this.jdField_a_of_type_Bkvq != null) {
+      this.jdField_a_of_type_Bkvq.a(paramViewHolder, true);
     }
-    if (this.jdField_a_of_type_Bkrk != null) {
-      this.jdField_a_of_type_Bkrk.b(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bkvr != null) {
+      this.jdField_a_of_type_Bkvr.b(paramViewHolder, paramInt);
     }
   }
   
   private void c(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkrj != null) {
-      this.jdField_a_of_type_Bkrj.a(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bkvq != null) {
+      this.jdField_a_of_type_Bkvq.a(paramViewHolder, paramInt);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Bkrd.b();
+    return this.jdField_a_of_type_Bkvk.b();
   }
   
   @Nullable
   public RecyclerView.ViewHolder a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Bkrd.findViewByPosition(paramInt);
+    View localView = this.jdField_a_of_type_Bkvk.findViewByPosition(paramInt);
     if (localView != null) {
       return getChildViewHolder(localView);
     }
     return null;
   }
   
-  public void a(int paramInt, bkvu parambkvu)
+  public void a(int paramInt, blab paramblab)
   {
-    bkqq localbkqq = (bkqq)a(this.jdField_a_of_type_Bkrd.b());
-    if (localbkqq != null) {
-      localbkqq.a(4);
+    bkux localbkux = (bkux)a(this.jdField_a_of_type_Bkvk.b());
+    if (localbkux != null) {
+      localbkux.a(4);
     }
-    localbkqq = (bkqq)a(paramInt);
-    if (localbkqq != null)
+    localbkux = (bkux)a(paramInt);
+    if (localbkux != null)
     {
-      localbkqq.b(parambkvu);
-      localbkqq.a(3);
-      if ((parambkvu != null) && (parambkvu.d)) {
-        localbkqq.a(2);
+      localbkux.b(paramblab);
+      localbkux.a(3);
+      if ((paramblab != null) && (paramblab.d)) {
+        localbkux.a(2);
       }
       scrollToPosition(paramInt);
     }
@@ -137,17 +137,17 @@ public class AEBottomListScrollView
     boolean bool = super.fling(paramInt1, paramInt2);
     if (bool)
     {
-      this.jdField_a_of_type_Bkrd.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_Bkvk.a(paramInt1, paramInt2);
       return bool;
     }
-    this.jdField_a_of_type_Bkrd.c();
+    this.jdField_a_of_type_Bkvk.c();
     return bool;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Bkrd.a(null);
+    this.jdField_a_of_type_Bkvk.a(null);
   }
   
   public void setClampTransformProgressAfter(@IntRange(from=1L) int paramInt)
@@ -155,29 +155,29 @@ public class AEBottomListScrollView
     if (paramInt <= 1) {
       throw new IllegalArgumentException("must be >= 1");
     }
-    this.jdField_a_of_type_Bkrd.c(paramInt);
+    this.jdField_a_of_type_Bkvk.c(paramInt);
   }
   
-  public void setItemTransformer(yug paramyug)
+  public void setItemTransformer(yyv paramyyv)
   {
-    this.jdField_a_of_type_Bkrd.a(paramyug);
+    this.jdField_a_of_type_Bkvk.a(paramyyv);
   }
   
   public void setItemTransitionTimeMillis(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_a_of_type_Bkrd.a(paramInt);
+    this.jdField_a_of_type_Bkvk.a(paramInt);
   }
   
-  public void setLayoutCallback(bkri parambkri)
+  public void setLayoutCallback(bkvp parambkvp)
   {
-    if (this.jdField_a_of_type_Bkrd != null) {
-      this.jdField_a_of_type_Bkrd.a(parambkri);
+    if (this.jdField_a_of_type_Bkvk != null) {
+      this.jdField_a_of_type_Bkvk.a(parambkvp);
     }
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((paramLayoutManager instanceof bkrd))
+    if ((paramLayoutManager instanceof bkvk))
     {
       super.setLayoutManager(paramLayoutManager);
       return;
@@ -187,17 +187,17 @@ public class AEBottomListScrollView
   
   public void setOffscreenItems(int paramInt)
   {
-    this.jdField_a_of_type_Bkrd.b(paramInt);
+    this.jdField_a_of_type_Bkvk.b(paramInt);
   }
   
-  public void setOnItemChangedListener(@NonNull bkrj<?> parambkrj)
+  public void setOnItemChangedListener(@NonNull bkvq<?> parambkvq)
   {
-    this.jdField_a_of_type_Bkrj = parambkrj;
+    this.jdField_a_of_type_Bkvq = parambkvq;
   }
   
-  public void setOrientation(bkrm parambkrm)
+  public void setOrientation(bkvt parambkvt)
   {
-    this.jdField_a_of_type_Bkrd.a(parambkrm);
+    this.jdField_a_of_type_Bkvk.a(parambkvt);
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
@@ -206,19 +206,19 @@ public class AEBottomListScrollView
     setOverScrollMode(2);
   }
   
-  public void setScrollStateChangeListener(@NonNull bkrk<?> parambkrk)
+  public void setScrollStateChangeListener(@NonNull bkvr<?> parambkvr)
   {
-    this.jdField_a_of_type_Bkrk = parambkrk;
+    this.jdField_a_of_type_Bkvr = parambkvr;
   }
   
   public void setSlideOnFling(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bkrd.a(paramBoolean);
+    this.jdField_a_of_type_Bkvk.a(paramBoolean);
   }
   
   public void setSlideOnFlingThreshold(int paramInt)
   {
-    this.jdField_a_of_type_Bkrd.d(paramInt);
+    this.jdField_a_of_type_Bkvk.d(paramInt);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
 import android.os.Handler;
-import bgkd;
+import bgok;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class DataJsPlugin$13
   implements AsyncResult
 {
-  DataJsPlugin$13(DataJsPlugin paramDataJsPlugin, bgkd parambgkd, Handler paramHandler) {}
+  DataJsPlugin$13(DataJsPlugin paramDataJsPlugin, bgok parambgok, Handler paramHandler) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

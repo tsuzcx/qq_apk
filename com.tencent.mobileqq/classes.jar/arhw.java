@@ -1,27 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-class arhw
-  implements View.OnClickListener
+public abstract interface arhw
 {
-  arhw(arhu paramarhu) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
-    {
-      i = aroo.b(this.a.a.e());
-      azmj.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    while ((i != 1) || (this.a.a.a() == null)) {
-      return;
-    }
-    this.a.a.a().a();
-  }
+  public abstract RelativeLayout a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract ForwardFileInfo a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract Activity getActivity();
 }
 
 

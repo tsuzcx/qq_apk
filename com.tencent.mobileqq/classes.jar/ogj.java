@@ -29,7 +29,7 @@ public class ogj
     if (localReadInJoyArticleBottomVideoView == null) {
       return false;
     }
-    return bdee.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
+    return bdin.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 

@@ -1,18 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 public class adnt
-  implements axxi
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public adnt(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
-    }
+    return false;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

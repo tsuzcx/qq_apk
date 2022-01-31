@@ -1,16 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
 
 public class twt
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  QCircleContentImage jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage;
+  public twt(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public twt(tws paramtws, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage = ((QCircleContentImage)paramView);
+    tzv.a("", 22, 13L);
+    yiw.a().a(new QCircleSelectTabEvent(6));
   }
 }
 

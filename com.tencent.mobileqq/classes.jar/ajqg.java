@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class ajqg
-  implements Parcelable.Creator<PacmanParcelItem>
+class ajqg
+  extends hp
 {
-  public PacmanParcelItem a(Parcel paramParcel)
-  {
-    return new PacmanParcelItem(paramParcel);
-  }
+  private ajqg(ajqe paramajqe) {}
   
-  public PacmanParcelItem[] a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    return new PacmanParcelItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((ajqe.a(this.a) != null) && (ajqe.a(this.a).hasMessages(paramInt))) {
+      ajqe.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
   }
 }
 

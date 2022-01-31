@@ -1,19 +1,30 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class akdp
+  extends BroadcastReceiver
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
+  public akdp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public akdp(akdo paramakdo) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    {
+      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
+        this.a.k = true;
+      }
+      this.a.j();
+    }
+  }
 }
 
 

@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
 public class ajwy
-  extends aljr
 {
-  public ajwy(TroopDiscussionTroop paramTroopDiscussionTroop) {}
-  
-  protected void a(int paramInt)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
+      if (ajwx.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        ajwx.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          ajwx.b = false;
+        }
+        return localByteBuffer2;
       }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
+    }
   }
 }
 

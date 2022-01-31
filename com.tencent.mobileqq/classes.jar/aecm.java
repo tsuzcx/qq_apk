@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public final class aecm
-  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
+public class aecm
+  implements View.OnClickListener
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
+  public aecm(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
   }
 }
 

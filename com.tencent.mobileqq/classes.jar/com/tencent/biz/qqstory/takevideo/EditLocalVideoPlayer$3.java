@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import wts;
+import wyb;
 
 public class EditLocalVideoPlayer$3
   implements Runnable
 {
-  public EditLocalVideoPlayer$3(wts paramwts) {}
+  public EditLocalVideoPlayer$3(wyb paramwyb) {}
   
   public void run()
   {

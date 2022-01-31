@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import ahqq;
-import ahqr;
-import ahqs;
-import ahqt;
-import ahqz;
+import ahvf;
+import ahvg;
+import ahvh;
+import ahvi;
+import ahvo;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import bhoe;
+import bhsl;
 
 public class SimpleCheckableSlidingIndicator
   extends SimpleSlidingIndicator
@@ -21,10 +21,10 @@ public class SimpleCheckableSlidingIndicator
   public static int b = 1;
   public static int c = 2;
   public static int d = 1;
-  private ahqs jdField_a_of_type_Ahqs;
-  ahqt jdField_a_of_type_Ahqt;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ahqr(this);
-  private bhoe jdField_a_of_type_Bhoe;
+  private ahvh jdField_a_of_type_Ahvh;
+  ahvi jdField_a_of_type_Ahvi;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ahvg(this);
+  private bhsl jdField_a_of_type_Bhsl;
   private int i = -9999999;
   private int j = jdField_a_of_type_Int;
   
@@ -53,7 +53,7 @@ public class SimpleCheckableSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new ahqq(this));
+        ((ValueAnimator)localObject).addUpdateListener(new ahvf(this));
         ((ValueAnimator)localObject).start();
       }
       while (localView == null) {
@@ -78,12 +78,12 @@ public class SimpleCheckableSlidingIndicator
       if (paramBoolean1)
       {
         a();
-        if ((this.jdField_a_of_type_Ahqz != null) && (paramInt >= 0)) {
-          this.jdField_a_of_type_Ahqz.a(paramInt, paramBoolean2);
+        if ((this.jdField_a_of_type_Ahvo != null) && (paramInt >= 0)) {
+          this.jdField_a_of_type_Ahvo.a(paramInt, paramBoolean2);
         }
       }
     }
-    while ((this.e != paramInt) || (this.jdField_a_of_type_Ahqt == null) || (paramInt < 0)) {
+    while ((this.e != paramInt) || (this.jdField_a_of_type_Ahvi == null) || (paramInt < 0)) {
       for (;;)
       {
         return;
@@ -94,7 +94,7 @@ public class SimpleCheckableSlidingIndicator
         invalidate();
       }
     }
-    this.jdField_a_of_type_Ahqt.a(paramInt);
+    this.jdField_a_of_type_Ahvi.a(paramInt);
   }
   
   public int[] a()
@@ -116,31 +116,31 @@ public class SimpleCheckableSlidingIndicator
     {
       return super.onTouchEvent(paramMotionEvent);
       this.j = b;
-      if (this.jdField_a_of_type_Ahqs != null) {
-        this.jdField_a_of_type_Ahqs.a(this.j);
+      if (this.jdField_a_of_type_Ahvh != null) {
+        this.jdField_a_of_type_Ahvh.a(this.j);
       }
-      if (this.jdField_a_of_type_Bhoe != null)
+      if (this.jdField_a_of_type_Bhsl != null)
       {
-        this.jdField_a_of_type_Bhoe.removeMessages(d);
+        this.jdField_a_of_type_Bhsl.removeMessages(d);
         continue;
-        if (this.jdField_a_of_type_Bhoe != null) {
-          this.jdField_a_of_type_Bhoe.sendEmptyMessage(d);
+        if (this.jdField_a_of_type_Bhsl != null) {
+          this.jdField_a_of_type_Bhsl.sendEmptyMessage(d);
         }
       }
     }
   }
   
-  public void setOnRepeatClickListener(ahqt paramahqt)
+  public void setOnRepeatClickListener(ahvi paramahvi)
   {
-    this.jdField_a_of_type_Ahqt = paramahqt;
+    this.jdField_a_of_type_Ahvi = paramahvi;
   }
   
-  public void setScrollViewListener(ahqs paramahqs)
+  public void setScrollViewListener(ahvh paramahvh)
   {
-    if (this.jdField_a_of_type_Bhoe == null) {
-      this.jdField_a_of_type_Bhoe = new bhoe(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    if (this.jdField_a_of_type_Bhsl == null) {
+      this.jdField_a_of_type_Bhsl = new bhsl(this.jdField_a_of_type_AndroidOsHandler$Callback);
     }
-    this.jdField_a_of_type_Ahqs = paramahqs;
+    this.jdField_a_of_type_Ahvh = paramahvh;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import agtk;
-import agua;
-import agug;
-import amfe;
-import amff;
-import amfg;
+import agxz;
+import agyp;
+import agyv;
+import amjt;
+import amju;
+import amjv;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,7 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azmj;
+import azqs;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -39,15 +39,15 @@ public class AIOIceBreakView
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private amfg jdField_a_of_type_Amfg;
+  private amjv jdField_a_of_type_Amjv;
   private Context jdField_a_of_type_AndroidContentContext;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amfe(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amjt(this);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private CustomImgView jdField_a_of_type_ComTencentWidgetCustomImgView;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amff(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amju(this);
   private CustomImgView jdField_b_of_type_ComTencentWidgetCustomImgView;
   private CustomImgView c;
   
@@ -66,47 +66,47 @@ public class AIOIceBreakView
   }
   
   @NotNull
-  private URLDrawable.URLDrawableOptions a(agtk paramagtk)
+  private URLDrawable.URLDrawableOptions a(agxz paramagxz)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramagtk.a();
-    paramagtk = localURLDrawableOptions;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramagxz.a();
+    paramagxz = localURLDrawableOptions;
     if (localURLDrawableOptions == null) {
-      paramagtk = URLDrawable.URLDrawableOptions.obtain();
+      paramagxz = URLDrawable.URLDrawableOptions.obtain();
     }
-    paramagtk.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    paramagtk.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    paramagtk.mPlayGifImage = true;
-    return paramagtk;
+    paramagxz.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramagxz.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramagxz.mPlayGifImage = true;
+    return paramagxz;
   }
   
   private void a()
   {
     View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558588, this);
-    ((TextView)localView.findViewById(2131379162)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)localView.findViewById(2131368185));
-    this.jdField_b_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)localView.findViewById(2131368186));
-    this.c = ((CustomImgView)localView.findViewById(2131368189));
+    ((TextView)localView.findViewById(2131379220)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)localView.findViewById(2131368196));
+    this.jdField_b_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)localView.findViewById(2131368197));
+    this.c = ((CustomImgView)localView.findViewById(2131368200));
     this.jdField_a_of_type_ComTencentWidgetCustomImgView.setScaleType(ImageView.ScaleType.FIT_XY);
     this.jdField_b_of_type_ComTencentWidgetCustomImgView.setScaleType(ImageView.ScaleType.FIT_XY);
     this.c.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838179);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838180);
     this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 6.0F));
   }
   
-  private void a(agtk paramagtk)
+  private void a(agxz paramagxz)
   {
     if (QLog.isColorLevel()) {
       QLog.d("IceBreak.HotPic", 2, "sendPic");
     }
-    if (paramagtk == null) {}
+    if (paramagxz == null) {}
     do
     {
       return;
-      paramagtk = (agua)paramagtk;
-      agug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramagtk.d());
+      paramagxz = (agyp)paramagxz;
+      agyv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramagxz.d());
       Intent localIntent = new Intent();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramagtk.l());
+      localArrayList.add(paramagxz.l());
       localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
       localIntent.putExtra("PicContants.NEED_COMPRESS", false);
       localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
@@ -117,38 +117,38 @@ public class AIOIceBreakView
       localIntent.putExtra("send_in_background", true);
       localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
       localIntent.putExtra("PicContants.NEED_COMPRESS", false);
-      localIntent.putExtra("quick_send_original_md5", paramagtk.b());
-      localIntent.putExtra("quick_send_original_size", paramagtk.a());
-      localIntent.putExtra("quick_send_thumb_md5", paramagtk.f());
+      localIntent.putExtra("quick_send_original_md5", paramagxz.b());
+      localIntent.putExtra("quick_send_original_size", paramagxz.a());
+      localIntent.putExtra("quick_send_thumb_md5", paramagxz.f());
       localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1047);
       localIntent.putExtra("HOT_PIC_HAS_EXTRA", true);
       ThreadManager.post(new SendPhotoTask(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localIntent, null), 8, null, false);
-      paramagtk = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramagtk == null);
-    paramagtk.sendMessage(paramagtk.obtainMessage(92));
+      paramagxz = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramagxz == null);
+    paramagxz.sendMessage(paramagxz.obtainMessage(92));
   }
   
-  private void a(CustomImgView paramCustomImgView, agtk paramagtk)
+  private void a(CustomImgView paramCustomImgView, agxz paramagxz)
   {
-    paramCustomImgView.setBackgroundDrawable(getResources().getDrawable(2130844582));
-    if (paramagtk == null)
+    paramCustomImgView.setBackgroundDrawable(getResources().getDrawable(2130844654));
+    if (paramagxz == null)
     {
       paramCustomImgView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return;
     }
-    Object localObject = paramagtk.a();
+    Object localObject = paramagxz.a();
     if (localObject == null)
     {
       paramCustomImgView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return;
     }
-    localObject = paramagtk.a((URL)localObject, a(paramagtk));
-    paramCustomImgView.setTag(paramagtk);
+    localObject = paramagxz.a((URL)localObject, a(paramagxz));
+    paramCustomImgView.setTag(paramagxz);
     paramCustomImgView.setImageDrawable((Drawable)localObject);
     paramCustomImgView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
   }
   
-  public void a(BaseChatPie paramBaseChatPie, List<agtk> paramList)
+  public void a(BaseChatPie paramBaseChatPie, List<agxz> paramList)
   {
     int i = 1;
     if ((paramList == null) || (paramList.size() < 3)) {}
@@ -158,22 +158,22 @@ public class AIOIceBreakView
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
-      a(this.jdField_a_of_type_ComTencentWidgetCustomImgView, (agtk)paramList.get(0));
-      a(this.jdField_b_of_type_ComTencentWidgetCustomImgView, (agtk)paramList.get(1));
-      a(this.c, (agtk)paramList.get(2));
+      a(this.jdField_a_of_type_ComTencentWidgetCustomImgView, (agxz)paramList.get(0));
+      a(this.jdField_b_of_type_ComTencentWidgetCustomImgView, (agxz)paramList.get(1));
+      a(this.c, (agxz)paramList.get(2));
     } while (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1044);
     if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {}
     for (;;)
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A4CA", "0X800A4CA", i, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A4CA", "0X800A4CA", i, 0, "", "", "", "");
       return;
       i = 2;
     }
   }
   
-  public void setOnIceImageClickListener(amfg paramamfg)
+  public void setOnIceImageClickListener(amjv paramamjv)
   {
-    this.jdField_a_of_type_Amfg = paramamfg;
+    this.jdField_a_of_type_Amjv = paramamjv;
   }
 }
 

@@ -33,7 +33,7 @@ class mbx
     }
     for (;;)
     {
-      azmj.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
       if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
         break;
       }

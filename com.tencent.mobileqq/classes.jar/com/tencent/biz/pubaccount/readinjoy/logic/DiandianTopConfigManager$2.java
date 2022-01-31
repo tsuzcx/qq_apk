@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
-import bdcs;
-import bhot;
+import bdhb;
+import bhta;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +17,7 @@ public class DiandianTopConfigManager$2
     synchronized (this.this$0.a)
     {
       AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bhot.a(new DiandianTopConfigManager.2.1(this, bdcs.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
+      bhta.a(new DiandianTopConfigManager.2.1(this, bdhb.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
       return;
     }
   }

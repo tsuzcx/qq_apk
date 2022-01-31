@@ -47,11 +47,11 @@ public class qpt
     }
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560091, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560090, paramViewGroup, false);
       paramViewGroup = new qpu();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375991));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368782));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378845));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376044));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368796));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378902));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -61,7 +61,7 @@ public class qpt
         long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
         paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
         paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131375287, Integer.valueOf(paramInt));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131375338, Integer.valueOf(paramInt));
         paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       }
       return paramView;
@@ -84,8 +84,8 @@ public class qpt
       do
       {
         return;
-      } while (paramView.getTag(2131375287) == null);
-      i = ((Integer)paramView.getTag(2131375287)).intValue();
+      } while (paramView.getTag(2131375338) == null);
+      i = ((Integer)paramView.getTag(2131375338)).intValue();
     } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i));
     olt.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
   }

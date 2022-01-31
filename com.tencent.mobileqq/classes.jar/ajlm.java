@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
-public class ajlm
+public abstract interface ajlm
 {
-  public static <T extends ajll> T a(FlowActivity paramFlowActivity, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new ajln(paramFlowActivity);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

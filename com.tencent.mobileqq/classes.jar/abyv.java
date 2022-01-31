@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class abyv
-  implements alkr
+  extends abwy
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public abyv(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
+    switch (paramInt)
     {
-      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
-      return;
+    default: 
+      return false;
+    case 31: 
+      acab.a(paramabwu, null);
     }
-    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
+    for (;;)
+    {
+      return true;
+      acab.a(paramabwu, null);
+      continue;
+      acab.a(paramabwu, null);
+    }
   }
 }
 

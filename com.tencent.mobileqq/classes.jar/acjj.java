@@ -1,36 +1,84 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.qphone.base.util.QLog;
 
-class acjj
-  implements army
+public class acjj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  acjj(acji paramacji, FileManagerEntity paramFileManagerEntity) {}
+  public acjj(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Acji.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    allz localallz;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localallz = (allz)this.jdField_a_of_type_Acji.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localallz.a(localArrayList));
-    armz.a(2131692744);
-    return;
-    this.jdField_a_of_type_Acji.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.a(paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  public void b() {}
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return super.onDown(paramMotionEvent);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    super.onLongPress(paramMotionEvent);
+    ((affl)this.a.a(26)).a();
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
+    }
+    do
+    {
+      return false;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      {
+        paramMotionEvent1 = new int[2];
+        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
+        int i = paramMotionEvent1[1];
+        if (BaseChatPie.g(this.a) == i)
+        {
+          this.a.w(1);
+          BaseChatPie.a(this.a, Boolean.valueOf(true));
+          BaseChatPie.e(this.a, -1);
+        }
+        BaseChatPie.e(this.a, i);
+      }
+      if (BaseChatPie.a(this.a)) {
+        this.a.i(true);
+      }
+    } while (paramFloat2 >= 0.0F);
+    this.a.H = false;
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
+    }
+    this.a.j(false);
+    this.a.i(true);
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (anxw)this.a.a(50);
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(true);
+    }
+    this.a.j(false);
+    this.a.i(true);
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(false);
+    }
+    return false;
+  }
 }
 
 

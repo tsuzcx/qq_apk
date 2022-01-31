@@ -1,8 +1,13 @@
-public abstract interface bmsa
+import java.io.File;
+import java.io.FilenameFilter;
+
+final class bmsa
+  implements FilenameFilter
 {
-  public abstract int a();
-  
-  public abstract bmrj a(int paramInt);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+  }
 }
 
 

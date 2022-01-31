@@ -1,12 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
 
-final class apee
-  extends nab
+public final class apee
+  implements Parcelable.Creator
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public IPSiteModel.GameRich a(Parcel paramParcel)
   {
-    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
+    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
+    localGameRich.anchorFaceUrl = paramParcel.readString();
+    localGameRich.anchorId = paramParcel.readString();
+    localGameRich.anchorName = paramParcel.readString();
+    localGameRich.coverUrl = paramParcel.readString();
+    localGameRich.online = paramParcel.readString();
+    localGameRich.title = paramParcel.readString();
+    localGameRich.richJumpUrl = paramParcel.readString();
+    return localGameRich;
+  }
+  
+  public IPSiteModel.GameRich[] a(int paramInt)
+  {
+    return new IPSiteModel.GameRich[paramInt];
   }
 }
 

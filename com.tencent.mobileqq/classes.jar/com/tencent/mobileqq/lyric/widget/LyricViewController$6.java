@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import atsv;
+import atxe;
 
 public class LyricViewController$6
   implements Runnable
@@ -9,7 +9,7 @@ public class LyricViewController$6
   {
     this.this$0.a.a(this.a);
     this.this$0.a.a();
-    atsv.a(this.this$0).b(this.this$0.a.a());
+    atxe.a(this.this$0).b(this.this$0.a.a());
   }
 }
 

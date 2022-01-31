@@ -1,43 +1,40 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajzq
-  implements SurfaceHolder.Callback
+  extends awhw
 {
-  public ajzq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ajzq(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
-    }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
     }
-    if (this.a.jdField_a_of_type_Bdvb != null) {
-      this.a.jdField_a_of_type_Bdvb.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    PhoneContactTabView.a(this.a);
   }
 }
 

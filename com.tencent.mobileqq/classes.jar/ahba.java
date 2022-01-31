@@ -1,24 +1,65 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahba
-  extends amky
+public class ahba
+  implements ahan
 {
-  ahba(ahaz paramahaz, String paramString)
+  ahap jdField_a_of_type_Ahap;
+  private Context jdField_a_of_type_AndroidContentContext;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  
+  public ahba(QQAppInterface paramQQAppInterface, ahap paramahap, Context paramContext, String paramString, View.OnClickListener paramOnClickListener)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ahap = paramahap;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
-    }
-    if (paramInt != 0) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
-    }
-    this.a.a.a.a.a(false);
+    return 36;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558694, null);
+    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131363878);
+    TextView localTextView = (TextView)paramVarArgs.findViewById(2131363879);
+    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131363877);
+    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695434));
+    localImageView1.setImageResource(2130844442);
+    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695434));
+    paramVarArgs.setOnClickListener(new ahbb(this));
+    localImageView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 10;
   }
 }
 

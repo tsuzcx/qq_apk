@@ -1,19 +1,30 @@
-import android.support.annotation.Nullable;
-import java.io.File;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vpi
-  extends ugz
+  extends vpa<HotRecommendFeedPlayInfo>
 {
-  @Nullable
-  public final File a;
-  public final String a;
-  public final boolean a;
-  
-  public vpi(String paramString, boolean paramBoolean, File paramFile)
+  public vpi(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    super(paramHotRecommendFeedPlayInfo);
+  }
+  
+  public woq a(String paramString)
+  {
+    paramString = new woq(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  {
+    ArrayList localArrayList = new ArrayList();
+    vpb localvpb = new vpb(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new woq(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localvpb.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    localArrayList.add(localvpb);
+    paramvps.a(new ErrorMessage(), localArrayList, true);
   }
 }
 

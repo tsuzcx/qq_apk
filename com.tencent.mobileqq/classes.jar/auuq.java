@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class auuq
-  implements QQPermissionCallback
+  implements BusinessObserver
 {
-  public auuq(GameRoomTransActivity paramGameRoomTransActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQToast.a(this.a, alpo.a(2131705443), 0).a();
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
-  }
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

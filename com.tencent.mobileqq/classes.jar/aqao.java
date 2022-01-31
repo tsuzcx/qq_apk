@@ -1,151 +1,44 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class aqao
-  implements Handler.Callback
+  extends aqah
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private bhoe jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getFileThreadLooper(), this);
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  WeakReference<aqap> b;
+  public apmi a;
   
-  public aqao(QQAppInterface paramQQAppInterface, int paramInt)
+  public aqao(QQAppInterface paramQQAppInterface, aqan paramaqan)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
-    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
-  }
-  
-  private void b()
-  {
-    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (??? == null) {}
-    do
+    if ((paramaqan.a instanceof aptr)) {}
+    for (int i = 333;; i = 149)
     {
-      return;
-      ??? = bdcs.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((QQAppInterface)???).getCurrentAccountUin() }));
-    } while (this.jdField_a_of_type_Boolean);
-    if ((??? != null) && ((??? instanceof List))) {}
-    for (??? = (List)???;; ??? = null)
-    {
-      Object localObject2 = ???;
-      if (??? == null) {
-        localObject2 = new ArrayList();
-      }
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          break label201;
-        }
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
-        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        }
-      }
-      this.jdField_a_of_type_Boolean = true;
-      label201:
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
-          break;
-        }
-        ((aqap)this.b.get()).b();
-        return;
-      }
-    }
-  }
-  
-  private void c()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    bdcs.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Boolean = true;
-      if ((this.b != null) && (this.b.get() != null)) {
-        ((aqap)this.b.get()).b();
-      }
-      if (!this.jdField_a_of_type_Bhoe.hasMessages(0)) {
-        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(0, 300L);
-      }
+      this.a = ((apmi)paramQQAppInterface.getManager(i));
       return;
     }
   }
   
-  public void a(aqap paramaqap)
+  public int a()
   {
-    if (paramaqap != null)
-    {
-      this.b = new WeakReference(paramaqap);
-      return;
-    }
-    this.b = null;
+    return 2;
   }
   
-  public void a(String paramString)
+  public List<aqae> a(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      if (!this.jdField_a_of_type_Boolean) {
-        b();
-      }
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
-          this.jdField_a_of_type_JavaUtilList.remove(paramString);
-        }
-        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
-        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        }
-        if ((this.b != null) && (this.b.get() != null)) {
-          ((aqap)this.b.get()).b();
-        }
-        if (this.jdField_a_of_type_Bhoe.hasMessages(0)) {
-          continue;
-        }
-        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(0, 300L);
-        return;
-      }
+    Object localObject = this.a.b();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new aqan((apuf)((Iterator)localObject).next()));
     }
+    return localArrayList;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public boolean a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      c();
-    }
+    return false;
   }
 }
 

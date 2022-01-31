@@ -1,6 +1,6 @@
-class agge
+public abstract interface agge
 {
-  private static final aggc a = new aggc(null);
+  public abstract void a();
 }
 
 

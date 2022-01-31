@@ -2,7 +2,7 @@ package com.tencent.mobileqq.ark.API;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anfv;
+import anke;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ArkAppModuleReg$ModuleQQ$17
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$17(anfv paramanfv, int paramInt, ArrayList paramArrayList) {}
+  public ArkAppModuleReg$ModuleQQ$17(anke paramanke, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {

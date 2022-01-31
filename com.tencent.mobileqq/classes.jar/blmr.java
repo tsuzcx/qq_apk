@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-class blmr
-  implements DialogInterface.OnClickListener
+public class blmr
+  implements blnb
 {
-  blmr(blmo paramblmo) {}
+  public blmr(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    AEEditorImageEditFragment.a(this.a, paramInt);
+  }
 }
 
 

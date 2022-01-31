@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -28,9 +28,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return alpo.a(2131709123) + swy.a(this.app, getApplicationContext());
+      return alud.a(2131709135) + swy.a(this.app, getApplicationContext());
     }
-    return alpo.a(2131709181);
+    return alud.a(2131709193);
   }
 }
 

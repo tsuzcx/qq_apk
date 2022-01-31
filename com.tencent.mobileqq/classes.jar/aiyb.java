@@ -1,10 +1,19 @@
-public abstract interface aiyb
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+
+public class aiyb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aiyb(LingHbFragment paramLingHbFragment) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(View paramView)
+  {
+    this.a.c.clearFocus();
+    LingHbFragment.a(this.a).a();
+  }
 }
 
 

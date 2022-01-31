@@ -1,21 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class ajti
-  implements View.OnTouchListener
+public abstract interface ajti
 {
-  ajti(ajth paramajth) {}
+  public abstract xkl a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      ajth.a(this.a).x = ((int)paramMotionEvent.getRawX());
-      ajth.a(this.a).y = ((int)paramMotionEvent.getRawY());
-    }
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(xkl paramxkl);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
 }
 
 

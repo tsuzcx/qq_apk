@@ -15,7 +15,7 @@ public class ComponentSocialOperation$1$1
   {
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845842);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845915);
       if (this.a.a.jdField_a_of_type_Int > 0)
       {
         this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
@@ -30,7 +30,7 @@ public class ComponentSocialOperation$1$1
     {
       this.a.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.a.a.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
       return;
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845845);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845918);
       this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
       if (this.a.a.jdField_a_of_type_Int > 0) {
         this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
@@ -42,7 +42,7 @@ public class ComponentSocialOperation$1$1
         }
         QLog.d("ComponentSocialOperation", 2, "revert upvote to false, set num:" + ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
         break;
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131719076);
+        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131719088);
       }
     }
   }

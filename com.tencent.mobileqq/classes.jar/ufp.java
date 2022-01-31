@@ -1,23 +1,20 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
+
 public class ufp
-  extends ufn
+  implements Animation.AnimationListener
 {
-  public int d = -1;
-  public int e = -1;
+  public ufp(QCircleRockeyPopupView paramQCircleRockeyPopupView, View paramView) {}
   
-  public ufp() {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public ufp(uea paramuea)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super(paramuea);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
-    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
-    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
-    localStringBuilder.append("] ");
-    return localStringBuilder.toString() + super.toString();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

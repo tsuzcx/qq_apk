@@ -1,58 +1,51 @@
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.ArrayList;
 
 class agpl
-  extends amni
+  extends alrl
 {
-  agpl(agot paramagot, String paramString) {}
+  agpl(agpi paramagpi) {}
   
-  public int a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if ((i != -1) && (paramBoolean))
     {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Agot.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
+        this.a.b(false, false);
       }
-      agot.a(this.jdField_a_of_type_Agot, agot.a(this.jdField_a_of_type_Agot));
-      nrt.a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      ((bcic)this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      agot.b(this.jdField_a_of_type_Agot, false);
-      if ((this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.appid.get() + ""))) {
-        this.jdField_a_of_type_Agot.b(1);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      {
+        paramObject = ((alrk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((paramObject != null) && (paramObject.discussionName != null))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramObject.discussionName;
+          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramObject.uin, this.a.e);
+        }
       }
     }
-    else
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
     {
-      return;
+      paramString = ((alrk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramString.discussionName;
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramString.uin, this.a.e);
+      }
     }
-    this.jdField_a_of_type_Agot.c(this.jdField_a_of_type_Agot.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Agot.B(2131695727);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    agot.c(this.jdField_a_of_type_Agot);
-    if (agot.d(this.jdField_a_of_type_Agot) == 0) {
-      this.jdField_a_of_type_Agot.bs();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      this.a.I();
     }
   }
 }

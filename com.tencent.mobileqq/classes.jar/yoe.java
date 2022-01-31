@@ -1,19 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
 
 class yoe
-  extends yoh
+  implements DialogInterface.OnDismissListener
 {
-  yoe(ynx paramynx, ynu paramynu, String paramString)
-  {
-    super(paramynx.a);
-  }
+  yoe(yod paramyod) {}
   
-  public void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
-    }
-    this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    yiw.a().a(new SharePanelShowStateEvent(false));
   }
 }
 

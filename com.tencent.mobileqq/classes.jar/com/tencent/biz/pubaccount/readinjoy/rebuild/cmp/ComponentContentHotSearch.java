@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aomp;
-import aomq;
-import baul;
+import aoqy;
+import aoqz;
+import bayu;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -52,7 +52,7 @@ public class ComponentContentHotSearch
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559950, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559949, this, true);
   }
   
   public void a(Context paramContext)
@@ -62,10 +62,10 @@ public class ComponentContentHotSearch
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367767));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377925));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371222));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367766));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367777));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377979));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371241));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367776));
     this.jdField_a_of_type_Qcl = new qcl(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Qcl);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new qck(this));
@@ -87,7 +87,7 @@ public class ComponentContentHotSearch
     if ((paramObject != null) && (paramObject.a != null) && (paramObject.a.size() > 0))
     {
       this.jdField_a_of_type_Qcl.a(paramObject.a);
-      paramObject = aomq.a();
+      paramObject = aoqz.a();
       if ((paramObject == null) || (TextUtils.isEmpty(paramObject.b))) {
         break label191;
       }
@@ -95,7 +95,7 @@ public class ComponentContentHotSearch
     label191:
     for (paramObject = paramObject.b;; paramObject = "http://pub.idqqimg.com/pc/misc/files/20180903/eddc885537fc4606a66c93a06854511b.png")
     {
-      Drawable localDrawable = baul.a;
+      Drawable localDrawable = bayu.a;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;

@@ -1,58 +1,55 @@
+import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import java.util.ArrayList;
+import android.text.TextUtils;
 import java.util.Iterator;
 import java.util.List;
 
 public class vae
-  extends uxw
-  implements uni<vci, vdr>
 {
-  public static int a = 20;
-  private long c;
-  
-  public vci a(int paramInt, ArrayList<uri> paramArrayList)
+  public static int a(long paramLong1, long paramLong2)
   {
-    if (paramArrayList.size() > a) {
-      wsv.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
+    if (paramLong1 < paramLong2) {
+      return -1;
     }
-    vci localvci = new vci();
-    localvci.c = paramInt;
-    localvci.a = paramArrayList;
-    ung.a().a(localvci, this);
-    this.c = System.currentTimeMillis();
-    return localvci;
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
   }
   
-  public void a(@NonNull vci paramvci, @Nullable vdr paramvdr, @NonNull ErrorMessage paramErrorMessage)
+  public static uyg a(@NonNull List<uyg> paramList1, @NonNull List<uyg> paramList2, @NonNull String paramString)
   {
-    urh localurh = (urh)urr.a(13);
-    if ((paramvdr == null) || (paramErrorMessage.isFail()))
+    paramList2.clear();
+    uyg localuyg = null;
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = localuyg;
+    if (localIterator.hasNext())
     {
-      wsv.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramvdr = paramvci.a.iterator();
+      localuyg = (uyg)localIterator.next();
+      if (a(localuyg)) {
+        paramList2.add(localuyg);
+      }
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localuyg.jdField_a_of_type_JavaLangString))) {
+        break label76;
+      }
+      paramList1 = localuyg;
     }
-    while (paramvdr.hasNext())
+    label76:
+    for (;;)
     {
-      localurh.a((uri)paramvdr.next(), false);
-      continue;
-      localurh.a(paramvdr.a);
-      wsv.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramvdr.a.size()), Integer.valueOf(paramvci.a.size()) });
-      paramErrorMessage = paramvci.a.iterator();
-      while (paramErrorMessage.hasNext())
-      {
-        uri localuri = (uri)paramErrorMessage.next();
-        if (!paramvdr.a.contains(localuri)) {
-          localurh.a(localuri, false);
-        }
-      }
-      if (paramvci.a.size() > paramvdr.a.size()) {
-        wta.b("home_page", "batch_watch_video", 0, paramvci.a.size() - paramvdr.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), wta.a(BaseApplication.getContext()) });
-      }
+      break;
+      return paramList1;
     }
-    localurh.a(paramvci);
+  }
+  
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT > 19;
+  }
+  
+  public static boolean a(uyg paramuyg)
+  {
+    return (paramuyg.jdField_a_of_type_Int == 5) || (paramuyg.jdField_a_of_type_Int == 6) || (paramuyg.jdField_a_of_type_Int == 7) || (paramuyg.jdField_a_of_type_Int == 8) || (paramuyg.jdField_a_of_type_Int == 9) || (paramuyg.jdField_a_of_type_Int == 12) || (paramuyg.jdField_a_of_type_Int == 13);
   }
 }
 

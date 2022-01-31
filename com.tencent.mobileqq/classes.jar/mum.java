@@ -24,10 +24,10 @@ public class mum
     if (QLog.isColorLevel()) {
       QLog.i("ImageUtil", 2, "[image early] trigger early download");
     }
-    paramQQAppInterface = (apgj)paramQQAppInterface.getManager(77);
+    paramQQAppInterface = (apks)paramQQAppInterface.getManager(77);
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = (aphi)paramQQAppInterface.a("qq.android.qav.image2");
+      paramQQAppInterface = (aplr)paramQQAppInterface.a("qq.android.qav.image2");
       if (paramQQAppInterface != null) {
         paramQQAppInterface.a(false);
       }

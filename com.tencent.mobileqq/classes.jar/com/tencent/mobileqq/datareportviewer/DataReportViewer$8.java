@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import apde;
+import aphn;
 
 class DataReportViewer$8
   implements Runnable
@@ -9,8 +9,8 @@ class DataReportViewer$8
   
   public void run()
   {
-    if (apde.a) {
-      apde.a().b();
+    if (aphn.a) {
+      aphn.a().b();
     }
   }
 }

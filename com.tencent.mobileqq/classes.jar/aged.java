@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class aged
-  implements DialogInterface.OnClickListener
+public class aged
+  extends aeqi
 {
-  aged(ageb paramageb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public BubbleImageView a;
+  public TextView b;
 }
 
 

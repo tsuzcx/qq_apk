@@ -1,49 +1,9 @@
-import NS_QZONE_MQMSG.QzoneMessageReq;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
-
-public class bjez
-  extends bizh
+final class bjez
+  extends atxa<bjey, Void>
 {
-  private int a;
-  public JceStruct a;
-  
-  public bjez(long paramLong1, String paramString, long paramLong2, int paramInt)
+  protected bjey a(Void paramVoid)
   {
-    QzoneMessageReq localQzoneMessageReq = new QzoneMessageReq();
-    localQzoneMessageReq.uin = paramLong1;
-    localQzoneMessageReq.trace_info = paramString;
-    localQzoneMessageReq.num = paramLong2;
-    localQzoneMessageReq.ext = new HashMap();
-    localQzoneMessageReq.ext.put("qua", bizf.a());
-    localQzoneMessageReq.scence = paramInt;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localQzoneMessageReq;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.GetNewMQmsg";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return "GetNewMQmsg";
+    return new bjey(null);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amou;
-import azmj;
+import amtj;
+import azqs;
 
 public class ARTransferDoorLogicManager$3
   implements Runnable
 {
-  public ARTransferDoorLogicManager$3(amou paramamou) {}
+  public ARTransferDoorLogicManager$3(amtj paramamtj) {}
   
   public void run()
   {
-    azmj.b(null, "dc00898", "", "", "0X80098C9", "0X80098C9", 0, 0, amou.a(this.this$0), "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X80098C9", "0X80098C9", 0, 0, amtj.a(this.this$0), "", "", "");
   }
 }
 

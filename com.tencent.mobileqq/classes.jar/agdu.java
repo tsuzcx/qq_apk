@@ -1,34 +1,21 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.util.Locale;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
 
 class agdu
-  implements agdd
+  implements View.OnClickListener
 {
-  agdu(agdi paramagdi) {}
+  agdu(agdt paramagdt, AppGuideTipsConfig paramAppGuideTipsConfig) {}
   
-  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Ages.a() != null) && ((this.a.jdField_a_of_type_Ages.a().a instanceof AIOImageData)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Ages.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
-      {
-        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
-          break label127;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, agdi.am(this.a).getString(2131695500), new Object[] { arof.a(localAIOImageData.jdField_h_of_type_Long) }));
-      }
-    }
-    for (;;)
-    {
-      this.a.c(true);
-      return;
-      label127:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695497);
-    }
+    paramView = new Intent(this.jdField_a_of_type_Agdt.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
+    this.jdField_a_of_type_Agdt.a.startActivity(paramView);
+    azqs.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
   }
 }
 

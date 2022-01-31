@@ -1,10 +1,27 @@
-import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
 
 public class asfb
+  implements View.OnClickListener
 {
-  public static boolean a()
+  public asfb(AppletsSettingFragment paramAppletsSettingFragment) {}
+  
+  public void onClick(View paramView)
   {
-    return Build.VERSION.SDK_INT >= 11;
+    if (AppletsSettingFragment.a(this.a))
+    {
+      this.a.a();
+      return;
+    }
+    paramView = this.a;
+    if (!AppletsSettingFragment.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      AppletsSettingFragment.a(paramView, bool);
+      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+      return;
+    }
   }
 }
 

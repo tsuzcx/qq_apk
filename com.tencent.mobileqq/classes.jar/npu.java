@@ -2,7 +2,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class npu
-  implements alkr
+  implements alpg
 {
   public void a(tpr paramtpr) {}
   

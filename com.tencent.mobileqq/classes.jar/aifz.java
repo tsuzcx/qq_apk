@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aifz
-  implements DialogInterface.OnClickListener
+class aifz
+  implements alxx
 {
-  public aifz(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  aifz(aiez paramaiez) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void al_() {}
+  
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    ((alxr)this.a.a.app.getManager(34)).d();
+  }
+  
+  public void j_(int paramInt)
+  {
+    this.a.f();
   }
 }
 

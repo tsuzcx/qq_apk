@@ -75,7 +75,7 @@ public class oje
       if (paramView == null)
       {
         paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(aekt.a(2.0F, (Resources)localObject1), aekt.a(100.0F, (Resources)localObject1)));
+        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(aepi.a(2.0F, (Resources)localObject1), aepi.a(100.0F, (Resources)localObject1)));
       }
     }
     ojg localojg;
@@ -87,7 +87,7 @@ public class oje
       }
       localojg = new ojg(null);
       paramView = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(aekt.a(100.0F, (Resources)localObject1), aekt.a(100.0F, (Resources)localObject1)));
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(aepi.a(100.0F, (Resources)localObject1), aepi.a(100.0F, (Resources)localObject1)));
       paramViewGroup = new BubbleImageView(this.jdField_a_of_type_AndroidContentContext);
       paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
       paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -104,7 +104,7 @@ public class oje
       paramView.addView(paramViewGroup);
       paramViewGroup = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).setMargins(aekt.a(9.0F, (Resources)localObject1), aekt.a(6.0F, (Resources)localObject1), aekt.a(9.0F, (Resources)localObject1), 0);
+      ((RelativeLayout.LayoutParams)localObject2).setMargins(aepi.a(9.0F, (Resources)localObject1), aepi.a(6.0F, (Resources)localObject1), aepi.a(9.0F, (Resources)localObject1), 0);
       paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       paramViewGroup.setTextColor(-1);
       paramViewGroup.setTextSize(14.0F);
@@ -115,13 +115,13 @@ public class oje
       paramView.addView(paramViewGroup);
       paramViewGroup = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject2).setMargins(aekt.a(8.0F, (Resources)localObject1), 0, 0, aekt.a(8.0F, (Resources)localObject1));
+      ((RelativeLayout.LayoutParams)localObject2).setMargins(aepi.a(8.0F, (Resources)localObject1), 0, 0, aepi.a(8.0F, (Resources)localObject1));
       ((RelativeLayout.LayoutParams)localObject2).addRule(12);
       paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      paramViewGroup.setPadding(aekt.a(5.0F, (Resources)localObject1), 0, aekt.a(5.0F, (Resources)localObject1), 0);
+      paramViewGroup.setPadding(aepi.a(5.0F, (Resources)localObject1), 0, aepi.a(5.0F, (Resources)localObject1), 0);
       paramViewGroup.setTextColor(-7745469);
       paramViewGroup.setTextSize(11.0F);
-      paramViewGroup.setBackgroundResource(2130842632);
+      paramViewGroup.setBackgroundResource(2130842645);
       localojg.jdField_b_of_type_AndroidWidgetTextView = paramViewGroup;
       paramView.addView(paramViewGroup);
       paramView.setTag(localojg);

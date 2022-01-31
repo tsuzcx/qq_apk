@@ -1,56 +1,26 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.text.TextUtils;
 
 public class baaf
-  extends baaj
 {
-  private Paint a;
-  private String b = "";
-  private int g = 20;
-  private int h = -1;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public baaf(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
+  public baaf(baae parambaae, azwj paramazwj)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    e(paramInt1);
-    f(paramInt2);
-    a(paramSpriteGLView, paramString);
-  }
-  
-  public void a(SpriteGLView paramSpriteGLView, String paramString)
-  {
-    if (paramString.equals(this.b)) {
+    if (paramazwj == null) {
       return;
     }
-    this.b = paramString;
-    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(paramString);
-    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
-    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Baam != null) {
-      this.jdField_a_of_type_Baam.c();
+    this.jdField_a_of_type_JavaLangString = paramazwj.a("c");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = paramazwj.a("r");
     }
-    this.jdField_a_of_type_Baam = new baam(paramSpriteGLView, paramString);
-    g();
-    f();
+    this.b = azah.a(azvd.a(paramazwj), false);
   }
   
-  public void e(int paramInt)
+  public baaf(baae parambaae, String paramString1, String paramString2)
   {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-  }
-  
-  public void f(int paramInt)
-  {
-    this.g = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

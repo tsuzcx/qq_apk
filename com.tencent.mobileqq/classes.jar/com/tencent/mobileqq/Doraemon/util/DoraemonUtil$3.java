@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import absf;
+import abwu;
 import org.json.JSONObject;
 
 public final class DoraemonUtil$3
   implements Runnable
 {
-  public DoraemonUtil$3(absf paramabsf, JSONObject paramJSONObject) {}
+  public DoraemonUtil$3(abwu paramabwu, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Absf.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Abwu.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

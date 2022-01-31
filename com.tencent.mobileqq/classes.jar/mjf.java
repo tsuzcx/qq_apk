@@ -34,7 +34,7 @@ public class mjf
         paramView.putExtra("hide_operation_bar", true);
         paramView.putExtra("isShowAd", false);
         this.a.startActivity(paramView);
-        azmj.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_member", "Clk_people", 0, 0, "" + this.a.jdField_a_of_type_ComTencentAvVideoController.a, "" + this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "", "");
+        azqs.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_member", "Clk_people", 0, 0, "" + this.a.jdField_a_of_type_ComTencentAvVideoController.a, "" + this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "", "");
         return;
       }
     }

@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vtd
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class vtd
+  implements DialogInterface.OnClickListener
 {
-  vtd(vsv paramvsv) {}
+  vtd(vtc paramvtc) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,50 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.widget.XListView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class ahbb
-  implements ahar
+class ahbb
+  implements View.OnClickListener
 {
-  public ahbb(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  private long jdField_a_of_type_Long;
   
-  public void a(boolean paramBoolean, int paramInt)
+  ahbb(ahba paramahba) {}
+  
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
-      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
-    }
-    if (paramBoolean)
-    {
-      if (paramInt <= 0) {
-        break label73;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    }
-    label73:
-    Object localObject;
-    do
-    {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {
       return;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
-      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689704);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689710);
-      this.a.c.setText(2131689705);
-      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.c.setOnClickListener(new ahbc(this));
-      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
-    ((ViewGroup)localObject).setBackgroundResource(2130839216);
+    }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Ahba.jdField_a_of_type_Ahap.a();
+    paramView = new Intent(ahba.a(this.jdField_a_of_type_Ahba), QQBrowserActivity.class);
+    paramView.putExtra("hide_left_button", false);
+    paramView.putExtra("show_right_close_button", false);
+    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+    String str = bdtg.a(ahba.a(this.jdField_a_of_type_Ahba), "call", "mvip.gongneng.anroid.individuation.web");
+    VasWebviewUtil.openQQBrowserWithoutAD(ahba.a(this.jdField_a_of_type_Ahba), str, 524288L, paramView, false, -1);
+    VipUtils.a(this.jdField_a_of_type_Ahba.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
+    paramView = this.jdField_a_of_type_Ahba.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_Ahba.jdField_a_of_type_JavaLangString, 4);
+    paramView.commit();
   }
 }
 

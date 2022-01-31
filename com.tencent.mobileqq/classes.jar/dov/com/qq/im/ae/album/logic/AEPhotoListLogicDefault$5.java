@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bkml;
-import bknd;
+import bkqs;
+import bkrk;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicDefault$5
@@ -9,8 +9,8 @@ public class AEPhotoListLogicDefault$5
 {
   public void run()
   {
-    if (((bkml)this.this$0.a.get()).a == null) {
-      ((bkml)this.this$0.a.get()).e();
+    if (((bkqs)this.this$0.a.get()).a == null) {
+      ((bkqs)this.this$0.a.get()).e();
     }
   }
 }

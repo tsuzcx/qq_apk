@@ -207,10 +207,10 @@ public class nxu
     a(paramIntent, localBundle);
     localBundle.putInt("RETURN_SCENE", paramIntent.getIntExtra("return_scene", 0));
     localBundle.putInt("REPORT_VIDEO_FEEDS_CHANNEL_ID", a(paramIntent));
-    if ((paramInt != 1) || (bjxq.a(localBundle))) {
+    if ((paramInt != 1) || (bkbx.a(localBundle))) {
       opt.a(32);
     }
-    bjxq.a(paramActivity, 3, paramInt, localBundle, a(paramIntent));
+    bkbx.a(paramActivity, 3, paramInt, localBundle, a(paramIntent));
     QLog.d("ReadInJoyActivityHelper", 1, "jumpFloatingWindow: rowKey:" + str);
   }
   
@@ -341,7 +341,7 @@ public class nxu
   {
     Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
     localIntent.putExtra("channel_id", 56);
-    localIntent.putExtra("channel_name", alpo.a(2131713397));
+    localIntent.putExtra("channel_name", alud.a(2131713409));
     localIntent.putExtra("channel_type", 3);
     localIntent.putExtra("channel_from", 1);
     localIntent.putExtra("is_channel_activity", true);
@@ -497,7 +497,7 @@ public class nxu
     localIntent.putExtra("big_brother_source_key", ors.f(paramInt));
     localIntent.putExtra("launch_app_time", System.currentTimeMillis());
     paramString1 = new nxv(new WeakReference(paramContext), paramBoolean, paramString2, paramString1);
-    jdField_a_of_type_Int = anrt.a().a(paramString1);
+    jdField_a_of_type_Int = anwc.a().a(paramString1);
     localIntent.putExtra("key_callback_id", jdField_a_of_type_Int);
     paramContext.startActivity(localIntent);
   }
@@ -519,7 +519,7 @@ public class nxu
     label572:
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = bdem.a(paramContext, (String)localObject);
+      boolean bool2 = bdiv.a(paramContext, (String)localObject);
       str1 = (String)paramHashMap.get("defaultURL");
       paramHashMap = (String)paramHashMap.get("channelID");
       if ((!TextUtils.isEmpty(paramHashMap)) && (TextUtils.isDigitsOnly(paramHashMap))) {}
@@ -677,18 +677,18 @@ public class nxu
     if (paramInt2 != -1) {
       localIntent.putExtra("tab_tab_index", paramInt2);
     }
-    if (bjxj.c(paramQQAppInterface)) {}
+    if (bkbq.c(paramQQAppInterface)) {}
     for (localIntent = new Intent(paramContext, ReadInJoySettingActivity.class);; localIntent = a(paramContext, paramInt1))
     {
       if (paramBundle != null) {
         localIntent.putExtras(paramBundle);
       }
       paramContext.startActivity(localIntent);
-      if ((paramInt2 == 0) && (!bjxj.k())) {
+      if ((paramInt2 == 0) && (!bkbq.k())) {
         ((KandianMergeManager)paramQQAppInterface.getManager(162)).g();
       }
       return;
-      if (!bjxj.k()) {
+      if (!bkbq.k()) {
         break;
       }
     }
@@ -786,7 +786,7 @@ public class nxu
           localArticleInfo.innerUniqueID = str3;
         }
         if (str2 != null) {
-          localArticleInfo.mArticleContentUrl = new String(bdbi.decode(str2, 0));
+          localArticleInfo.mArticleContentUrl = new String(bdfr.decode(str2, 0));
         }
         if (localObject != null) {
           localArticleInfo.mStrategyId = Integer.valueOf((String)localObject).intValue();
@@ -1025,7 +1025,7 @@ public class nxu
         }
         paramContext = (String)paramHashMap.get("requestData");
         if (!TextUtils.isEmpty(paramContext)) {
-          bjxj.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + str1, paramContext);
+          bkbq.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + str1, paramContext);
         }
         localStringBuilder.append(str1);
         localStringBuilder.append(str2);

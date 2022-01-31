@@ -1,32 +1,32 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import baps;
-import bapv;
-import baqx;
-import bdee;
+import baub;
+import baue;
+import bavg;
+import bdin;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import yxj;
-import yxk;
+import zby;
+import zbz;
 
 public class EditVideoSmartMusicPart$1
   implements Runnable
 {
-  public EditVideoSmartMusicPart$1(yxj paramyxj) {}
+  public EditVideoSmartMusicPart$1(zby paramzby) {}
   
   public void run()
   {
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = new yxk(this);
-    localbaps.jdField_a_of_type_JavaLangString = yxj.a(this.this$0);
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.jdField_c_of_type_JavaLangString = yxj.a(this.this$0).getPath();
-    localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = new zbz(this);
+    localbaub.jdField_a_of_type_JavaLangString = zby.a(this.this$0);
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_c_of_type_JavaLangString = zby.a(this.this$0).getPath();
+    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
     QQStoryContext.a();
-    QQStoryContext.a().getNetEngine(0).a(localbaps);
-    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + yxj.a(this.this$0));
+    QQStoryContext.a().getNetEngine(0).a(localbaub);
+    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + zby.a(this.this$0));
   }
 }
 

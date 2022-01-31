@@ -1,13 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class aybx
-  implements View.OnClickListener
+public class aybx
 {
-  public void onClick(View paramView)
-  {
-    aybw.a(paramView.getContext(), (String)paramView.getTag());
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

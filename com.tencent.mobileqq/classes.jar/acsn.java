@@ -1,18 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acsn
-  implements View.OnClickListener
+class acsn
+  implements DialogInterface.OnClickListener
 {
-  public acsn(ForceLogoutActivity paramForceLogoutActivity) {}
+  acsn(acsl paramacsl) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    paramDialogInterface.dismiss();
   }
 }
 

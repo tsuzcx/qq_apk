@@ -3,10 +3,10 @@ package com.tencent.qqmini.sdk.runtime.plugin;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bgho;
-import bgie;
-import bgkd;
-import bhab;
+import bglv;
+import bgml;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.runtime.widget.media.CoverPusherView;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
@@ -16,21 +16,21 @@ import org.json.JSONObject;
 class LivePusherJsPlugin$1
   implements Runnable
 {
-  LivePusherJsPlugin$1(LivePusherJsPlugin paramLivePusherJsPlugin, JSONObject paramJSONObject1, int paramInt, bgkd parambgkd, JSONObject paramJSONObject2) {}
+  LivePusherJsPlugin$1(LivePusherJsPlugin paramLivePusherJsPlugin, JSONObject paramJSONObject1, int paramInt, bgok parambgok, JSONObject paramJSONObject2) {}
   
   public void run()
   {
     Log.i("LivePusherJsPlugin", "insertLivePusher: " + this.val$jsonObject);
-    Object localObject2 = bhab.a(LivePusherJsPlugin.access$000(this.this$0)).a(this.val$livePusherId);
+    Object localObject2 = bhei.a(LivePusherJsPlugin.access$000(this.this$0)).a(this.val$livePusherId);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new CoverPusherView(LivePusherJsPlugin.access$100(this.this$0));
       ((CoverPusherView)localObject1).setAtyRef(new WeakReference(LivePusherJsPlugin.access$200(this.this$0).a()));
       ((CoverPusherView)localObject1).setData(this.val$jsonObject.optString("data"));
-      ((CoverPusherView)localObject1).setPageWebviewId(bgie.a(LivePusherJsPlugin.access$300(this.this$0)).a());
+      ((CoverPusherView)localObject1).setPageWebviewId(bgml.a(LivePusherJsPlugin.access$300(this.this$0)).a());
       ((CoverPusherView)localObject1).setLivePusherId(this.val$livePusherId);
-      bhab.a(LivePusherJsPlugin.access$400(this.this$0)).a(0, this.val$livePusherId, (CoverView)localObject1, false);
+      bhei.a(LivePusherJsPlugin.access$400(this.this$0)).a(0, this.val$livePusherId, (CoverView)localObject1, false);
     }
     if ((localObject1 instanceof CoverPusherView))
     {

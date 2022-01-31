@@ -1,24 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
-
 public class bfaw
-  implements bfbo
 {
-  public bfaw(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(long paramLong)
+  public bfaw() {}
+  
+  public bfaw(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
-    if (!bdee.g(BaseApplicationImpl.getApplication()))
-    {
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bfnj);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
   }
 }
 

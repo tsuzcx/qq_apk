@@ -1,34 +1,65 @@
-import android.annotation.SuppressLint;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.BaseFragment;
 
-@SuppressLint({"NewApi"})
 public class ashu
-  extends ViewOutlineProvider
 {
   public int a;
-  public int b;
-  public int c;
-  public int d;
+  public View.OnClickListener a;
+  public BaseFragment a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
+  public boolean c = false;
+  public String d;
+  public String e;
   
-  public ashu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public ashu(BaseFragment paramBaseFragment)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public ashu a(View.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public ashu a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public ashu a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
     }
-    paramView.getGlobalVisibleRect(new Rect());
-    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public ashu b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public ashu b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

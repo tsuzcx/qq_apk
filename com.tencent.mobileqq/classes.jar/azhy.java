@@ -1,16 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class azhy
-  extends bakk
+public class azhy
 {
-  azhy(azhx paramazhx) {}
-  
-  public boolean a(int paramInt)
-  {
-    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
-    azhx.a(this.a, azhx.a(this.a), -2147483648, azhx.b(this.a), -2147483648, null, -2147483648);
-    return super.a(paramInt);
-  }
+  public azhj a;
+  public AtomicBoolean a = new AtomicBoolean(false);
+  public azhj b;
+  public azhj c;
 }
 
 

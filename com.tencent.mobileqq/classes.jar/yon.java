@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.ImageLoader.Options;
 
-class yon
-  implements DialogInterface.OnDismissListener
+public class yon
+  implements ImageLoader.ImageLoadListener
 {
-  yon(yom paramyom) {}
+  public yon(CommodityItemView paramCommodityItemView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
+  
+  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
+  
+  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    this.a.a.deleteObserver(this.a);
+    if (CommodityItemView.a(this.a) != null) {
+      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
+    }
   }
+  
+  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 

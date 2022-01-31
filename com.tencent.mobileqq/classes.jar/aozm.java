@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.AutoReplyText;
+import java.util.List;
 
-public final class aozm
-  implements Parcelable.Creator<AutoReplyText>
+public abstract interface aozm
 {
-  public AutoReplyText a(Parcel paramParcel)
-  {
-    return new AutoReplyText(paramParcel);
-  }
+  public abstract int a();
   
-  public AutoReplyText[] a(int paramInt)
-  {
-    return new AutoReplyText[paramInt];
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozm
  * JD-Core Version:    0.7.0.1
  */

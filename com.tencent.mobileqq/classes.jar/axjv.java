@@ -1,40 +1,43 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import org.json.JSONObject;
 
-class axjv
-  implements bapx
+public class axjv
 {
-  axjv(axjt paramaxjt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onResp(baqw parambaqw)
+  public static axjv a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambaqw.c);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Axjt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    axjv localaxjv = new axjv();
     try
     {
-      ndr.a(new File(axjt.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), axjt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Axjt.a != null) {
-        this.jdField_a_of_type_Axjt.a.a();
-      }
-      return;
+      paramString = new JSONObject(paramString);
+      localaxjv.jdField_a_of_type_Int = paramString.optInt("animationType");
+      localaxjv.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
+      localaxjv.b = paramString.optString("giftZipUrl", null);
+      localaxjv.c = paramString.optString("giftParticleUrl", null);
+      localaxjv.d = paramString.optString("lottieUrl", null);
+      return localaxjv;
     }
-    catch (IOException parambaqw)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          parambaqw.printStackTrace();
-        }
-      }
+      paramString.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
     }
+    return localaxjv;
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public String toString()
+  {
+    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
+  }
 }
 
 

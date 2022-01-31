@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-
-public class bffz
-  implements View.OnClickListener
+public abstract interface bffz
 {
-  public bffz(CommonTitleBar paramCommonTitleBar) {}
-  
-  public void onClick(View paramView)
-  {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
-    }
-  }
+  public abstract void a();
 }
 
 

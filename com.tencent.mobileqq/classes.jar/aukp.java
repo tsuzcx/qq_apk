@@ -1,10 +1,27 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-public abstract interface aukp
+public class aukp
+  implements aulr
 {
-  public abstract void a(auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq);
+  public aukp(MultiAIOFragment paramMultiAIOFragment) {}
+  
+  public void a()
+  {
+    MultiAIOFragment.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    MultiAIOFragment.a(this.a).setScrollState(2);
+    MultiAIOFragment.a(this.a).fling(-paramInt);
+  }
+  
+  public boolean a()
+  {
+    return MultiAIOFragment.a(this.a).a();
+  }
 }
 
 

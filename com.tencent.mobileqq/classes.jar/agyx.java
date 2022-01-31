@@ -1,131 +1,102 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.format.DateUtils;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.io.File;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class agyx
+class agyx
+  implements baug
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  agyx(agyv paramagyv, String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public static agyx a(SharedPreferences paramSharedPreferences, int paramInt)
+  public void onResp(bavf parambavf)
   {
-    String str2 = "bless_uin_list";
-    String str1 = "bless_uin_list_time_millis";
-    if (paramInt == 2)
-    {
-      str2 = "web_uin_list";
-      str1 = "web_uin_list_time_millis";
-    }
-    agyx localagyx = new agyx();
-    localagyx.jdField_a_of_type_Long = paramSharedPreferences.getLong(str1, 0L);
-    if (DateUtils.isToday(localagyx.jdField_a_of_type_Long)) {
-      try
-      {
-        paramSharedPreferences = paramSharedPreferences.getString(str2, "[]");
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "read uin list from mode=" + paramInt + " ,SP=" + paramSharedPreferences);
-        }
-        paramSharedPreferences = new JSONArray(paramSharedPreferences);
-        paramInt = 0;
-        while (paramInt + 1 < paramSharedPreferences.length())
-        {
-          localagyx.a(paramSharedPreferences.getString(paramInt), paramSharedPreferences.getInt(paramInt + 1));
-          paramInt += 2;
-          continue;
-          localagyx.jdField_a_of_type_Long = System.currentTimeMillis();
-        }
-      }
-      catch (Exception paramSharedPreferences)
-      {
-        paramSharedPreferences.printStackTrace();
-        return null;
-      }
-    }
-    return localagyx;
-  }
-  
-  public static void a(SharedPreferences paramSharedPreferences, agyx paramagyx, int paramInt)
-  {
-    paramagyx.a();
-    Object localObject = new JSONArray();
-    Iterator localIterator = paramagyx.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ((JSONArray)localObject).put(localEntry.getKey());
-      ((JSONArray)localObject).put(localEntry.getValue());
-    }
-    paramSharedPreferences = paramSharedPreferences.edit();
-    localObject = ((JSONArray)localObject).toString();
     if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "save uin list to SP=" + (String)localObject);
+      QLog.i("StickerRecManager", 2, "onResp resultcode: " + parambavf.c + " threadid=" + Thread.currentThread().getId());
     }
-    if (paramInt == 2)
+    long l1;
+    if ((parambavf.c == 200) && (agyv.a(this.jdField_a_of_type_Agyv, agyv.a(this.jdField_a_of_type_Agyv), agyv.b(this.jdField_a_of_type_Agyv), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
     {
-      paramSharedPreferences.putString("web_uin_list", (String)localObject);
-      paramSharedPreferences.putLong("web_uin_list_time_millis", paramagyx.jdField_a_of_type_Long);
+      if (!agyv.b(this.jdField_a_of_type_Agyv).exists()) {
+        break label423;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecManager", 2, "pull words success");
+      }
+      l1 = 0L;
     }
     for (;;)
     {
-      paramSharedPreferences.commit();
-      return;
-      paramSharedPreferences.putString("bless_uin_list", (String)localObject);
-      paramSharedPreferences.putLong("bless_uin_list_time_millis", paramagyx.jdField_a_of_type_Long);
+      int i;
+      try
+      {
+        long l2 = SystemClock.elapsedRealtime();
+        l1 = l2;
+        Object localObject = new JSONObject(bdhb.b(agyv.b(this.jdField_a_of_type_Agyv)));
+        l1 = l2;
+        parambavf = ((JSONObject)localObject).optString("version", null);
+        l1 = l2;
+        localObject = ((JSONObject)localObject).optJSONArray("words");
+        l1 = l2;
+        BloomFilter localBloomFilter = new BloomFilter();
+        l1 = l2;
+        localBloomFilter.version = parambavf;
+        i = 0;
+        l1 = l2;
+        if (i < ((JSONArray)localObject).length())
+        {
+          l1 = l2;
+          parambavf = ((JSONArray)localObject).optString(i);
+          l1 = l2;
+          if (TextUtils.isEmpty(parambavf)) {
+            break label438;
+          }
+          l1 = l2;
+          localBloomFilter.add(parambavf);
+          break label438;
+        }
+        l1 = l2;
+        bdhb.d(agyv.c(this.jdField_a_of_type_Agyv).getAbsolutePath());
+        l1 = l2;
+        agyv.a(this.jdField_a_of_type_Agyv, agyv.c(this.jdField_a_of_type_Agyv).getAbsolutePath(), localBloomFilter);
+        l1 = l2;
+        bdhb.d(agyv.b(this.jdField_a_of_type_Agyv).getAbsolutePath());
+        l1 = l2;
+        bdne.d(agyv.a(this.jdField_a_of_type_Agyv).getApp(), "words_version_key805_gray_one", agyv.a(this.jdField_a_of_type_Agyv).c(), this.b);
+        l1 = l2;
+        this.jdField_a_of_type_Agyv.b();
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          l1 = l2;
+          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
+        }
+        return;
+      }
+      catch (Exception parambavf)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
+        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
+        return;
+      }
+      label423:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
+        return;
+        label438:
+        i += 1;
+      }
     }
   }
   
-  private void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Int += paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.size();
-  }
-  
-  public void a()
-  {
-    if (!DateUtils.isToday(this.jdField_a_of_type_Long)) {
-      b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue() + 1));
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

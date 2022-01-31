@@ -1,25 +1,127 @@
+import android.content.Context;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class apvq
-  implements View.OnClickListener
+public abstract class apvq
+  extends apvz
 {
-  apvq(apvp paramapvp, String paramString) {}
+  private static apvs a;
+  public int a;
+  protected Context a;
+  protected SparseArray<View> a;
   
-  public void onClick(View paramView)
+  public apvq(Context paramContext, int paramInt1, int paramInt2)
   {
-    if (apvp.a(this.jdField_a_of_type_Apvp).a(this.jdField_a_of_type_JavaLangString) == null) {
-      return;
+    super(paramInt1);
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context MUST NOT be null!!!");
     }
-    boolean bool = apvp.a(this.jdField_a_of_type_Apvp).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apvp.jdField_a_of_type_Int, this.jdField_a_of_type_Apvp.jdField_a_of_type_JavaUtilList);
-    String str = apvp.a(this.jdField_a_of_type_Apvp) + "";
-    if (bool) {}
-    for (paramView = "1";; paramView = "2")
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  private boolean a(int paramInt)
+  {
+    switch (paramInt)
     {
-      azmj.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str, paramView, "", "");
-      this.jdField_a_of_type_Apvp.notifyDataSetChanged();
-      return;
+    default: 
+      return false;
     }
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Apvs != null)
+    {
+      jdField_a_of_type_Apvs.a();
+      jdField_a_of_type_Apvs = null;
+    }
+  }
+  
+  protected abstract int a(int paramInt);
+  
+  protected View a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
+    }
+    long l = System.currentTimeMillis();
+    Object localObject;
+    switch (paramInt)
+    {
+    default: 
+      localObject = null;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
+      }
+      return localObject;
+      localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContext = null;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
+    View localView;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        } while (localView == null);
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        paramInt = a(paramInt);
+      } while (!a(paramInt));
+      if (jdField_a_of_type_Apvs == null) {
+        jdField_a_of_type_Apvs = new apvs();
+      }
+    } while (jdField_a_of_type_Apvs.a(paramInt, localView));
+  }
+  
+  protected abstract void a(View paramView, int paramInt);
+  
+  public View b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
+    }
+    int i = a(paramInt);
+    View localView1 = null;
+    if (jdField_a_of_type_Apvs != null) {
+      localView1 = jdField_a_of_type_Apvs.a(i);
+    }
+    View localView2 = localView1;
+    if (localView1 == null) {
+      localView2 = a(i);
+    }
+    if (localView2 != null)
+    {
+      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView2);
+      a(localView2, paramInt);
+    }
+    return localView2;
   }
 }
 

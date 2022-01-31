@@ -1,28 +1,8 @@
-import android.opengl.EGLContext;
-
-public class azgf
+public abstract interface azgf
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public azhb a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
   
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
-  }
-  
-  public void a(EGLContext paramEGLContext)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      return;
-    }
-  }
+  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
 }
 
 

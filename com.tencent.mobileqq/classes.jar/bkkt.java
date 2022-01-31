@@ -1,9 +1,12 @@
-import java.io.File;
+import com.tencent.weiyun.utils.Singleton;
 
-public class bkkt
+final class bkkt
+  extends Singleton<bkks, Void>
 {
-  public static final String a = bkla.c + "/app_lib/qq_filter" + File.separator;
-  public static final String b = a + "final_ptu_res_file" + File.separator;
+  protected bkks a(Void paramVoid)
+  {
+    return new bkks(null);
+  }
 }
 
 

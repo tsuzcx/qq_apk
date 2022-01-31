@@ -1,19 +1,41 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class actx
-  implements acts
+  extends BroadcastReceiver
 {
-  public actx(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public actx(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void a(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ForwardTroopListFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bdao.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import alkr;
+import alpg;
 
 public class MiniAppEntryObserver
-  implements alkr
+  implements alpg
 {
   public void onMiniAppEntryChanged() {}
   

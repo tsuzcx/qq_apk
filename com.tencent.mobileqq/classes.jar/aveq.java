@@ -1,13 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class aveq
-  extends RecyclerView.ViewHolder
+public abstract interface aveq
 {
-  public aveq(View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
 }
 
 

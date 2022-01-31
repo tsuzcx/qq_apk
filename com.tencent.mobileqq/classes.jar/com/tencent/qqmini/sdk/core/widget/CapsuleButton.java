@@ -14,10 +14,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bghr;
-import bgkk;
-import bglq;
-import bgmq;
+import bgly;
+import bgor;
+import bgpx;
+import bgqx;
 import com.tencent.qqmini.sdk.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -29,15 +29,15 @@ public class CapsuleButton
   extends RelativeLayout
   implements Handler.Callback, View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = bglq.a("qqminiapp", "closebutton", null);
+  private static final String jdField_a_of_type_JavaLangString = bgpx.a("qqminiapp", "closebutton", null);
   private static int jdField_b_of_type_Int;
-  private static final String jdField_b_of_type_JavaLangString = bglq.a("qqminiapp", "closebuttondark", null);
+  private static final String jdField_b_of_type_JavaLangString = bgpx.a("qqminiapp", "closebuttondark", null);
   public int a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgmq jdField_a_of_type_Bgmq;
+  private bgqx jdField_a_of_type_Bgqx;
   public HashMap<String, Integer> a;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -59,28 +59,28 @@ public class CapsuleButton
   private View a()
   {
     Object localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131370574);
+    ((ImageView)localObject).setId(2131370593);
     ((ImageView)localObject).setContentDescription("更多");
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(a(40.0F), a(30.0F));
     localLayoutParams.addRule(9, -1);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131370572);
+    ((ImageView)localObject).setId(2131370591);
     ((ImageView)localObject).setContentDescription("关闭");
     localLayoutParams = new RelativeLayout.LayoutParams(a(40.0F), a(30.0F));
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131370574);
+    localLayoutParams.addRule(1, 2131370593);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
-    ((View)localObject).setId(2131370573);
+    ((View)localObject).setId(2131370592);
     localLayoutParams = new RelativeLayout.LayoutParams(a(0.5F), a(18.0F));
     localLayoutParams.addRule(13, -1);
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131370575);
+    ((TextView)localObject).setId(2131370594);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, a(19.0F));
     localLayoutParams.leftMargin = a(21.5F);
     localLayoutParams.topMargin = a(-9.5F);
@@ -92,7 +92,7 @@ public class CapsuleButton
   {
     ImageView localImageView = ((KingCardProxy)AppLoaderFactory.g().getProxyManager().get(KingCardProxy.class)).getCapsuleButtonMoreView(getContext());
     if (localImageView == null) {
-      return (ImageView)findViewById(2131370574);
+      return (ImageView)findViewById(2131370593);
     }
     addView(localImageView);
     return localImageView;
@@ -103,19 +103,19 @@ public class CapsuleButton
     setClipChildren(false);
     a();
     this.jdField_a_of_type_AndroidWidgetImageView = b();
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370572));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370575));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370573);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370591));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370594));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370592);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840962);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840956);
-    this.c = getResources().getDrawable(2130840959);
-    this.d = getResources().getDrawable(2130840953);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840963);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840957);
+    this.c = getResources().getDrawable(2130840960);
+    this.d = getResources().getDrawable(2130840954);
     if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)))
     {
       MiniAppProxy localMiniAppProxy = (MiniAppProxy)AppLoaderFactory.g().getProxyManager().get(MiniAppProxy.class);
@@ -129,15 +129,15 @@ public class CapsuleButton
     return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  public CapsuleButton a(bgmq parambgmq)
+  public CapsuleButton a(bgqx parambgqx)
   {
-    this.jdField_a_of_type_Bgmq = parambgmq;
+    this.jdField_a_of_type_Bgqx = parambgqx;
     return this;
   }
   
   public void a()
   {
-    bgkk.a(new CapsuleButton.1(this));
+    bgor.a(new CapsuleButton.1(this));
   }
   
   public void a(int paramInt)
@@ -166,14 +166,14 @@ public class CapsuleButton
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
-      if (this.jdField_a_of_type_Bgmq != null) {
-        this.jdField_a_of_type_Bgmq.b();
+      if (this.jdField_a_of_type_Bgqx != null) {
+        this.jdField_a_of_type_Bgqx.b();
       }
     }
-    while ((paramView != this.jdField_b_of_type_AndroidWidgetImageView) || (this.jdField_a_of_type_Bgmq == null)) {
+    while ((paramView != this.jdField_b_of_type_AndroidWidgetImageView) || (this.jdField_a_of_type_Bgqx == null)) {
       return;
     }
-    this.jdField_a_of_type_Bgmq.a();
+    this.jdField_a_of_type_Bgqx.a();
   }
   
   public void setUnReadCount(int paramInt, boolean paramBoolean)

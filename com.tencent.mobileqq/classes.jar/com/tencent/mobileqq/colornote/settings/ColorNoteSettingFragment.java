@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.settings;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,17 +16,17 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anxn;
-import anyg;
-import anyh;
-import anzr;
-import anzv;
-import anzy;
-import anzz;
-import aoaa;
-import aoah;
-import aroo;
-import azmj;
+import aobw;
+import aocp;
+import aocq;
+import aoea;
+import aoee;
+import aoeh;
+import aoei;
+import aoej;
+import aoeq;
+import arsx;
+import azqs;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -51,14 +51,14 @@ public class ColorNoteSettingFragment
   
   private SparseArray<List<ColorNote>> a()
   {
-    Object localObject1 = anzv.a;
+    Object localObject1 = aoee.a;
     SparseArray localSparseArray = new SparseArray(localObject1.length);
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       int k = localObject1[i];
-      localSparseArray.put(k, anzv.a(k));
+      localSparseArray.put(k, aoee.a(k));
       i += 1;
     }
     List localList = (List)localSparseArray.get(17039360);
@@ -67,13 +67,13 @@ public class ColorNoteSettingFragment
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (ColorNote)((Iterator)localObject2).next();
-      if (aroo.a(((ColorNote)localObject3).getSubType()) == 4) {
+      if (arsx.a(((ColorNote)localObject3).getSubType()) == 4) {
         ((List)localObject1).add(localObject3);
       }
     }
     localList.removeAll((Collection)localObject1);
-    localList = anzv.a(16908288);
-    localObject2 = anzv.a(16908290);
+    localList = aoee.a(16908288);
+    localObject2 = aoee.a(16908290);
     Object localObject3 = (List)localSparseArray.get(17104896);
     if ((localList != null) && (localList.size() > 0)) {
       ((List)localObject3).addAll(localList);
@@ -84,43 +84,43 @@ public class ColorNoteSettingFragment
     if (((List)localObject1).size() > 0) {
       ((List)localObject3).addAll((Collection)localObject1);
     }
-    Collections.sort((List)localObject3, new anzz(this));
+    Collections.sort((List)localObject3, new aoei(this));
     return localSparseArray;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer = ((SettingSectionContainer)this.mContentView.findViewById(2131364470));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer = ((SettingSectionContainer)this.mContentView.findViewById(2131364472));
     this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer.removeAllViews();
     SparseArray localSparseArray = a();
-    int[] arrayOfInt = anzv.a;
+    int[] arrayOfInt = aoee.a;
     int j = arrayOfInt.length;
     int i = 0;
     if (i < j)
     {
       int k = arrayOfInt[i];
-      Object localObject1 = anzv.a(k);
-      if ((localObject1 == null) || (TextUtils.isEmpty(((aoah)localObject1).a()))) {}
+      Object localObject1 = aoee.a(k);
+      if ((localObject1 == null) || (TextUtils.isEmpty(((aoeq)localObject1).a()))) {}
       for (;;)
       {
         i += 1;
         break;
-        Object localObject2 = anzv.a((List)localSparseArray.get(k));
+        Object localObject2 = aoee.a((List)localSparseArray.get(k));
         ColorNoteSettingBaseSection localColorNoteSettingBaseSection = new ColorNoteSettingBaseSection(this.jdField_a_of_type_AndroidAppActivity);
-        anzr localanzr = new anzr();
-        localColorNoteSettingBaseSection.setAdapter(localanzr);
-        localanzr.a((List)localObject2, k);
+        aoea localaoea = new aoea();
+        localColorNoteSettingBaseSection.setAdapter(localaoea);
+        localaoea.a((List)localObject2, k);
         localObject2 = new LinearLayout.LayoutParams(-1, -2);
         ((LinearLayout.LayoutParams)localObject2).bottomMargin = this.mContentView.getContext().getResources().getDimensionPixelSize(2131298702);
-        localColorNoteSettingBaseSection.setHeaderOnClickListener(new anzy(this, (aoah)localObject1, k));
-        localObject1 = ((aoah)localObject1).a();
+        localColorNoteSettingBaseSection.setHeaderOnClickListener(new aoeh(this, (aoeq)localObject1, k));
+        localObject1 = ((aoeq)localObject1).a();
         localColorNoteSettingBaseSection.setHeaderTitle((CharSequence)localObject1);
         localColorNoteSettingBaseSection.setContentDescription((CharSequence)localObject1);
         this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer.addView(localColorNoteSettingBaseSection, (ViewGroup.LayoutParams)localObject2);
-        anzv.a(k);
+        aoee.a(k);
       }
     }
-    setTitle(getString(2131690931));
+    setTitle(getString(2131690932));
   }
   
   public static void a(Context paramContext, Class<? extends ColorNoteSettingFragment> paramClass, Bundle paramBundle)
@@ -151,12 +151,12 @@ public class ColorNoteSettingFragment
       break;
       paramContext = "";
       break label42;
-      azmj.b(null, "dc00898", "", "", "0X800AA7E", "0X800AA7E", paramBundle.getInt("start_from", 1), 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800AA7E", "0X800AA7E", paramBundle.getInt("start_from", 1), 0, "", "", "", "");
       paramBundle = new Intent();
       paramBundle.addFlags(268435456);
       paramBundle.addFlags(536870912);
       paramBundle.addFlags(67108864);
-      adky.a(paramContext, paramBundle, PublicFragmentActivity.class, paramClass);
+      adpn.a(paramContext, paramBundle, PublicFragmentActivity.class, paramClass);
     } while (!QLog.isColorLevel());
     QLog.d("ColorNoteSettingFragment", 0, "start fragment: " + paramClass.getName());
   }
@@ -164,21 +164,21 @@ public class ColorNoteSettingFragment
   private void b()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    anyg localanyg = anyh.a();
-    if ((localanyg != null) && (localanyg.a())) {}
+    aocp localaocp = aocq.a();
+    if ((localaocp != null) && (localaocp.a())) {}
     for (int i = 1;; i = 0)
     {
-      if ((anxn.a(localQQAppInterface)) && (i != 0)) {}
+      if ((aobw.a(localQQAppInterface)) && (i != 0)) {}
       for (boolean bool = true;; bool = false)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131364466));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364467));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131364468));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364469));
         if (i != 0)
         {
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aoaa(this, localQQAppInterface));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aoej(this, localQQAppInterface));
         }
         return;
       }
@@ -194,7 +194,7 @@ public class ColorNoteSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131558849;
+    return 2131558848;
   }
   
   public void onAttach(Activity paramActivity)

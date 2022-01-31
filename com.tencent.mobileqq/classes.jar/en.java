@@ -20,7 +20,7 @@ public class en
   extends ev
 {
   public static String a;
-  allz jdField_a_of_type_Allz = null;
+  alqo jdField_a_of_type_Alqo = null;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eo(this);
   public View.OnLongClickListener a;
@@ -32,24 +32,24 @@ public class en
     jdField_a_of_type_JavaLangString = "dataline.PrinterSessionAdapter";
   }
   
-  public en(PrinterActivity paramPrinterActivity, allz paramallz)
+  public en(PrinterActivity paramPrinterActivity, alqo paramalqo)
   {
     this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new eq(this);
-    this.jdField_a_of_type_Allz = paramallz;
+    this.jdField_a_of_type_Alqo = paramalqo;
     this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity = paramPrinterActivity;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramPrinterActivity);
-    this.jdField_a_of_type_Allz.a.b();
+    this.jdField_a_of_type_Alqo.a.b();
     b();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Allz.a.a.size();
+    return this.jdField_a_of_type_Alqo.a.a.size();
   }
   
   public long a(int paramInt)
   {
-    return ((PrinterItemMsgRecord)this.jdField_a_of_type_Allz.a.a.get(paramInt)).time;
+    return ((PrinterItemMsgRecord)this.jdField_a_of_type_Alqo.a.a.get(paramInt)).time;
   }
   
   protected boolean a(View paramView)
@@ -57,7 +57,7 @@ public class en
     if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
       return true;
     }
-    bdkz localbdkz = new bdkz();
+    bdpi localbdpi = new bdpi();
     paramView = (ef)paramView.getTag();
     Object localObject1 = (PrinterItemMsgRecord)paramView.a();
     if (localObject1 != null)
@@ -72,27 +72,27 @@ public class en
       return false;
     }
     Object localObject2 = ((RelativeLayout)localObject2).getContext();
-    localbdkz.a(2131365075, ((Context)localObject2).getString(2131694011));
+    localbdpi.a(2131365077, ((Context)localObject2).getString(2131694013));
     localObject1 = new er(this, (PrinterItemMsgRecord)localObject1, (Context)localObject2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdbk.a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout, localbdkz, (View.OnClickListener)localObject1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout, localbdpi, (View.OnClickListener)localObject1);
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ep(this));
     return true;
   }
   
   public long b(int paramInt)
   {
-    return ((PrinterItemMsgRecord)this.jdField_a_of_type_Allz.a.a.get(paramInt)).uniseq;
+    return ((PrinterItemMsgRecord)this.jdField_a_of_type_Alqo.a.a.get(paramInt)).uniseq;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Allz.a.a.size();
+    return this.jdField_a_of_type_Alqo.a.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Allz.a.a.size() > paramInt) {
-      this.jdField_a_of_type_Allz.a.a.get(paramInt);
+    if (this.jdField_a_of_type_Alqo.a.a.size() > paramInt) {
+      this.jdField_a_of_type_Alqo.a.a.get(paramInt);
     }
     return null;
   }
@@ -104,8 +104,8 @@ public class en
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Allz.a.a.size() > paramInt) {}
-    for (paramViewGroup = (PrinterItemMsgRecord)this.jdField_a_of_type_Allz.a.a.get(paramInt);; paramViewGroup = null)
+    if (this.jdField_a_of_type_Alqo.a.a.size() > paramInt) {}
+    for (paramViewGroup = (PrinterItemMsgRecord)this.jdField_a_of_type_Alqo.a.a.get(paramInt);; paramViewGroup = null)
     {
       if (paramViewGroup == null) {
         return null;
@@ -115,36 +115,36 @@ public class en
       int i;
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558983, null);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558982, null);
         localef = new ef();
-        localef.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370783));
+        localef.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370802));
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localef);
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
         localef.jdField_a_of_type_AndroidWidgetRelativeLayout.setAddStatesFromChildren(true);
-        localef.b((TextView)paramView.findViewById(2131376954));
-        localObject = (RelativeLayout)paramView.findViewById(2131366324);
+        localef.b((TextView)paramView.findViewById(2131377008));
+        localObject = (RelativeLayout)paramView.findViewById(2131366326);
         localef.a().jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject);
-        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366300));
-        localef.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366337));
-        localef.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366312));
-        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130850064);
+        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366302));
+        localef.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366339));
+        localef.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366314));
+        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130850137);
         localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localef.a((TextView)paramView.findViewById(2131365006));
+        localef.a((TextView)paramView.findViewById(2131365008));
         paramView.setTag(localef);
         localef.a(paramViewGroup);
         localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localObject = arof.a(paramViewGroup.filename);
+        localObject = arso.a(paramViewGroup.filename);
         if (localObject != null) {
           break label641;
         }
-        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130843909);
+        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130843981);
         localObject = paramViewGroup.filename;
         i = paramViewGroup.filename.lastIndexOf("/");
         if (i >= 0) {
-          localObject = arni.d(paramViewGroup.filename.substring(i + 1));
+          localObject = arrr.d(paramViewGroup.filename.substring(i + 1));
         }
         localef.a().jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
         switch (paramViewGroup.status)
@@ -155,10 +155,10 @@ public class en
       {
         if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity.app))
         {
-          localObject = (apgf)this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity.a.getTag(2131361805);
+          localObject = (apko)this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity.a.getTag(2131361805);
           if (localObject != null)
           {
-            i = aemb.a(((apgf)localObject).getBitmap());
+            i = aeqq.a(((apko)localObject).getBitmap());
             localef.a().setTextColor(ColorStateList.valueOf(i));
           }
         }
@@ -168,18 +168,18 @@ public class en
         if (!a(paramViewGroup.uniseq)) {
           break label893;
         }
-        paramViewGroup = bdjj.a(this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity, 3, paramViewGroup.time * 1000L);
+        paramViewGroup = bdns.a(this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity, 3, paramViewGroup.time * 1000L);
         localef.a().setVisibility(0);
         localef.a().setText(paramViewGroup);
         return paramView;
         localef = (ef)paramView.getTag();
         break;
         label641:
-        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(arni.b((String)localObject));
-        switch (arni.a((String)localObject))
+        localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(arrr.b((String)localObject));
+        switch (arrr.a((String)localObject))
         {
         default: 
-          i = arni.b((String)localObject);
+          i = arrr.b((String)localObject);
           if (i == 0) {
             break;
           }
@@ -190,20 +190,20 @@ public class en
           localef.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramViewGroup.filename);
           break;
           localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-          localef.b().setText(2131691423);
+          localef.b().setText(2131691424);
           continue;
           localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
           localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(paramViewGroup.progress * 100.0D));
-          localef.b().setText(2131691424);
+          localef.b().setText(2131691425);
+          continue;
+          localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+          localef.b().setText(2131691427);
           continue;
           localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
           localef.b().setText(2131691426);
           continue;
           localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-          localef.b().setText(2131691425);
-          continue;
-          localef.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-          localef.b().setText(2131691427);
+          localef.b().setText(2131691428);
         }
       }
       label893:

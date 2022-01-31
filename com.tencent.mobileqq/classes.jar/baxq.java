@@ -1,40 +1,22 @@
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+
 public class baxq
+  extends alwx
 {
-  public int c = -1;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public String g;
-  public String h;
+  public baxq(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public baxq()
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
   {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" errCode:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append(" errStr:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" reason:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" succCnt:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(" failCnt");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(" isSendByQuickHttp");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
-    localStringBuilder.append(" isAllowRetry");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
-    return localStringBuilder.toString();
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    bdif.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
+    this.a.a(this.a.c, false, paramBoolean, paramalwy);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

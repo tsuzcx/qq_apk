@@ -1,26 +1,45 @@
-import android.text.Spanned;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class blue
-  extends bmok
+final class blue
+  implements xtk
 {
-  blue(blud paramblud, int paramInt)
-  {
-    super(paramInt);
-  }
+  blue(String paramString, blur paramblur) {}
   
-  public int a(CharSequence paramCharSequence)
+  public void onFailure(String paramString)
   {
-    if (this.jdField_a_of_type_Blud.b() == 0) {
-      return super.a(paramCharSequence);
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
     }
-    return 0;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onFinish(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blud.b() == 0) {}
-    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Blur != null) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Blur.a(localFile);
+      this.jdField_a_of_type_Blur.c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
     }
   }
 }

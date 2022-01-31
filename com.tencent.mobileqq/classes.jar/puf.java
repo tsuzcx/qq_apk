@@ -8,7 +8,7 @@ import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.Proteu
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
 public class puf
-  extends bial
+  extends bies
   implements ptu
 {
   private int jdField_a_of_type_Int = 20;

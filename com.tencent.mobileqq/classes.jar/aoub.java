@@ -1,46 +1,18 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aoub
+class aoub
+  implements aoth
 {
-  private boolean a;
+  aoub(aotz paramaotz) {}
   
-  public static aoub a(aogf[] paramArrayOfaogf)
+  public void a(Context paramContext)
   {
-    boolean bool = true;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
-    {
-      paramArrayOfaogf = null;
-      return paramArrayOfaogf;
+    paramContext = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramContext, aotz.a(this.a));
+    if (paramContext != null) {
+      paramContext.c();
     }
-    aoub localaoub = new aoub();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].a);
-        paramArrayOfaogf = localaoub;
-        if (!localJSONObject.has("SendAsTxDoc")) {
-          break;
-        }
-        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
-        {
-          localaoub.a = bool;
-          return localaoub;
-        }
-      }
-      catch (JSONException paramArrayOfaogf)
-      {
-        paramArrayOfaogf.printStackTrace();
-        return localaoub;
-      }
-      bool = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
   }
 }
 

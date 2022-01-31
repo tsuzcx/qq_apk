@@ -1,32 +1,17 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class adqb
-  extends MqqHandler
+class adqb
+  implements DialogInterface.OnClickListener
 {
-  public adqb(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  adqb(adqa paramadqa) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, alud.a(2131710755));
+    this.a.a.finish();
   }
 }
 

@@ -1,63 +1,39 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupDynamicEntrancePicture;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adxr
-  extends naa
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adxr(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public adxr(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    boolean bool = true;
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!bdin.d(this.a.getActivity())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get error:" + paramInt);
-      }
-      paramArrayOfByte = null;
-    }
-    for (;;)
-    {
-      return paramArrayOfByte;
-      try
+      this.a.a(2131694832, 0);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      if (!paramBoolean)
       {
-        qqstory_group.RspGetGroupDynamicEntrancePicture localRspGetGroupDynamicEntrancePicture = new qqstory_group.RspGetGroupDynamicEntrancePicture();
-        localRspGetGroupDynamicEntrancePicture.mergeFrom(paramArrayOfByte);
-        paramBundle = (qqstory_struct.ErrorInfo)localRspGetGroupDynamicEntrancePicture.result.get();
-        paramArrayOfByte = paramBundle;
-        if (localRspGetGroupDynamicEntrancePicture.cover_url.has())
-        {
-          paramArrayOfByte = localRspGetGroupDynamicEntrancePicture.cover_url.get().toStringUtf8();
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + ": picUrl is Empty");
-            }
-          }
-          else
-          {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            xod.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramArrayOfByte, 68, 68, 4, xod.b, "TroopStorySnap");
-            return paramBundle;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get exception:" + paramArrayOfByte.getMessage());
-        }
-        return null;
+        paramBoolean = bool;
+        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
       }
     }
-    return null;
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      if (paramCompoundButton == this.a.a.a())
+      {
+        this.a.app.f(paramBoolean, true);
+        return;
+      }
+    } while (paramCompoundButton != this.a.b.a());
+    this.a.app.g(paramBoolean, true);
   }
 }
 

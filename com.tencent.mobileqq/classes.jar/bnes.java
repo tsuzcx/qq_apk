@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class bnes
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bnes(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bnes(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.s();
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.a();
   }
 }
 

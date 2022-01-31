@@ -1,16 +1,21 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class achx
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public achx(ChatHistory paramChatHistory) {}
+  public achx(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    if ("//findcrash".equals(this.a.a.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
+    }
+    return true;
   }
 }
 

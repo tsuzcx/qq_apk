@@ -1,27 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class agnk
-  implements bhuy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  agnk(agmy paramagmy) {}
+  agnk(agnj paramagnj) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onGlobalLayout()
   {
-    agmy.a(this.a).setPullType(0);
-    agmy.a(this.a).c(agmy.i);
-    agmy.a(this.a, 0, this.a.a.a());
+    if (this.a.T)
+    {
+      this.a.T = false;
+      agnj.a(this.a).sendEmptyMessageDelayed(23, 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, " doOnCreate_initUI onGlobalLayout");
+      }
+    }
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

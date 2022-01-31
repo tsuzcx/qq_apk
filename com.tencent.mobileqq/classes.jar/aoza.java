@@ -1,20 +1,73 @@
-public class aoza
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public final class aoza
+  extends aokh<aoyz>
 {
-  private long a;
-  
-  public long a()
+  public static void b()
   {
-    return this.a;
+    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
+    aoyz.a(false, (aoyz)aoks.a().a(501));
   }
   
-  public void a(long paramLong)
+  public int a()
   {
-    this.a = paramLong;
+    return 501;
+  }
+  
+  @NonNull
+  public aoyz a(int paramInt)
+  {
+    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new aoyz();
+  }
+  
+  @Nullable
+  public aoyz a(aoko[] paramArrayOfaoko)
+  {
+    return aoyz.a(paramArrayOfaoko);
+  }
+  
+  public Class<aoyz> a()
+  {
+    return aoyz.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public void a(aoyz paramaoyz)
+  {
+    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
+    aoyz.a(true, paramaoyz);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoza
  * JD-Core Version:    0.7.0.1
  */

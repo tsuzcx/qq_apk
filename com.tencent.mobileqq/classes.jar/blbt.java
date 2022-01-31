@@ -1,12 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-class blbt
-  implements DialogInterface.OnClickListener
+public class blbt
 {
-  blbt(blbs paramblbs) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b = 6;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public blbt()
+  {
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public blbt(List<String> paramList, String paramString, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramJSONObject != null)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    this.jdField_a_of_type_Int = 3;
+    this.b = 6;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangString != null) {}
+      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
+      {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
+        this.b = paramJSONObject.getInt("pendantNum");
+        return;
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
 }
 
 

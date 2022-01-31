@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ojb
-  implements bhqp
+  implements bhuw
 {
   public static int a;
   public static int b = 1;
@@ -88,21 +88,21 @@ public class ojb
   
   void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramContext).inflate(2131558754, null, false));
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364735);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131380189));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramContext).inflate(2131558753, null, false));
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364736);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131380247));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(aekt.a(6.0F, paramContext.getResources()));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(aepi.a(6.0F, paramContext.getResources()));
     this.jdField_a_of_type_Oiz = new oiz(paramContext, this.jdField_a_of_type_JavaUtilArrayList, this.c);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Oiz);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
     if (this.c == 56)
     {
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnTouchListener(new ojd(this, paramContext));
-      localLinearLayout.setPadding(0, (int)bdcq.a(paramContext, 2.0F), 0, (int)bdcq.a(paramContext, 2.0F));
+      localLinearLayout.setPadding(0, (int)bdgz.a(paramContext, 2.0F), 0, (int)bdgz.a(paramContext, 2.0F));
     }
     if (this.c == 41523) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, aekt.a(10.0F, paramContext.getResources()), 0, 0);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, aepi.a(10.0F, paramContext.getResources()), 0, 0);
     }
   }
   

@@ -1,180 +1,67 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.PorterDuff.Mode;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.QLog;
+import dalvik.system.DexClassLoader;
+import java.io.File;
 
-public class zcs
-  extends Dialog
+class zcs
+  implements nbt
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private zcv jdField_a_of_type_Zcv;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
+  zcs(zcr paramzcr, long paramLong, Context paramContext, boolean paramBoolean, nbt paramnbt) {}
   
-  public zcs(Context paramContext)
+  public void loaded(int paramInt, String paramString)
   {
-    super(paramContext, 2131755801);
-    super.setContentView(2131559087);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377895);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377890);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365220));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365226));
-    this.c = ((TextView)super.findViewById(2131377893));
-    ((ImageView)super.findViewById(2131377894)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
-    this.d = ((TextView)super.findViewById(2131377888));
-    ((ImageView)super.findViewById(2131377889)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
-    this.e = ((TextView)super.findViewById(2131377128));
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    int j = 8;
-    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
-    Object localObject;
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = this.jdField_b_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label126;
-      }
-      i = 8;
-      label65:
-      ((View)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label131;
-      }
-      i = 0;
-      label86:
-      ((View)localObject).setVisibility(i);
-      localObject = this.e;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label137;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    label131:
-    label137:
-    for (int i = j;; i = 0)
-    {
-      ((TextView)localObject).setVisibility(i);
-      return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label126:
-      i = 0;
-      break label65;
-      i = 8;
-      break label86;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.d != null) {
-      this.d.setText(paramInt);
-    }
-  }
-  
-  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zct(this, paramOnClickListener));
-  }
-  
-  public void a(zcv paramzcv)
-  {
-    this.jdField_a_of_type_Zcv = paramzcv;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != null)
-    {
-      if (paramInt != 0) {
-        this.e.setText(paramInt);
-      }
-    }
-    else {
-      return;
-    }
-    this.e.setText("");
-  }
-  
-  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      b(false);
-      return;
-    }
-    b(true);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new zcu(this, paramOnClickListener));
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.c != null) {
-      this.c.setText(paramInt);
-    }
-  }
-  
-  public void dismiss()
-  {
+    this.jdField_a_of_type_Zcr.d = nbv.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString);
+    String str = ncb.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Zcr.b;
     try
     {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void onBackPressed()
-  {
-    QLog.i("ShareResultDialog", 2, "onBackPressed");
-    super.onBackPressed();
-    zcv localzcv;
-    if (this.jdField_a_of_type_Zcv != null)
-    {
-      localzcv = this.jdField_a_of_type_Zcv;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-        break label44;
+      Object localObject = new File(this.jdField_a_of_type_Zcr.c);
+      if (!this.jdField_a_of_type_Zcr.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Zcr.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Zcr.d))
+      {
+        if (!((File)localObject).exists()) {
+          break label379;
+        }
+        bdhb.a(((File)localObject).getAbsolutePath());
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Zcr.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString), nbv.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString)).commit();
+        ((File)localObject).mkdirs();
       }
-    }
-    label44:
-    for (boolean bool = true;; bool = false)
-    {
-      localzcv.a(bool);
+      for (;;)
+      {
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zcr.b).getCanonicalPath();
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Zcr.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_Zcm = new zcm(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Nbt == null) {
+          break;
+        }
+        this.jdField_a_of_type_Nbt.loaded(paramInt, paramString);
+        return;
+        label379:
+        ((File)localObject).mkdirs();
+      }
       return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcs
  * JD-Core Version:    0.7.0.1
  */

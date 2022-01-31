@@ -1,15 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class wzj
-  implements ValueAnimator.AnimatorUpdateListener
+  extends QQUIEventReceiver<wzb, xfd>
 {
-  wzj(wzi paramwzi) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public wzj(@NonNull wzb paramwzb)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.g();
+    super(paramwzb);
+  }
+  
+  public void a(@NonNull wzb paramwzb, @NonNull xfd paramxfd)
+  {
+    wzl localwzl = paramwzb.a;
+    if (localwzl != null) {
+      localwzl.a(paramwzb.a());
+    }
+    for (;;)
+    {
+      wxj.b("edit_video", "face_list_success", 0, paramxfd.a.errorCode, new String[0]);
+      return;
+      wxe.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xfd.class;
   }
 }
 

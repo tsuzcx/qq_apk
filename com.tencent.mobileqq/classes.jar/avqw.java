@@ -1,10 +1,31 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+
 public class avqw
+  implements URLDrawable.URLDrawableListener
 {
-  public String a = "auto";
+  public avqw(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public String toString()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return "ARCloudReqOcrInfo{language = " + this.a + '}';
+    if (NearbyMomentFragment.a(this.a) == 0) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 0)
+    {
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+    }
   }
 }
 

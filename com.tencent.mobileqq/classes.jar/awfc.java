@@ -1,189 +1,28 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.pic.CompressInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.UUID;
+import android.support.annotation.NonNull;
 
 public class awfc
-  implements Comparable<awfc>
 {
   public int a;
-  public agfz a;
-  public aweu a;
-  public awew a;
-  public awfl a;
-  public awfv a;
-  public MessageForPic a;
-  public PicMessageExtraData a;
-  public CompressInfo a;
   public String a;
-  public ArrayList<awew> a;
+  public boolean a;
   public int b;
   public String b;
+  public boolean b;
   public int c;
+  public String c;
   public int d;
-  public int e = 1;
-  public int f = this.e;
   
   public awfc()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = a();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public static String a()
+  @NonNull
+  public String toString()
   {
-    return "__" + UUID.randomUUID().toString();
-  }
-  
-  public int a(awfc paramawfc)
-  {
-    if (this.e < paramawfc.e) {
-      return -1;
-    }
-    if (this.e > paramawfc.e) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public void a(awfv paramawfv)
-  {
-    this.jdField_a_of_type_Awfv = paramawfv;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    }
-    if (this.jdField_a_of_type_Awfl != null) {
-      this.jdField_a_of_type_Awfl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    }
-    if (this.jdField_a_of_type_Aweu != null) {
-      this.jdField_a_of_type_Aweu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public void a(ArrayList<awew> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
-    {
-      awen.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "fwInfoList is empty");
-      return;
-    }
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      awew localawew = (awew)localIterator.next();
-      if (localawew != null)
-      {
-        if (localawew.jdField_a_of_type_Awfl != null)
-        {
-          localawew.jdField_a_of_type_Awfl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          localawew.jdField_a_of_type_Awfl.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        }
-        if (localawew.jdField_a_of_type_Aweu != null)
-        {
-          localawew.jdField_a_of_type_Aweu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          localawew.jdField_a_of_type_Aweu.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_JavaLangString = awen.a(((awew)paramArrayList.get(0)).jdField_a_of_type_Awfl.jdField_b_of_type_Int, 2, 1);
-  }
-  
-  public boolean a(awew paramawew)
-  {
-    if (paramawew == null)
-    {
-      awen.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "forwardInfo == null");
-      return false;
-    }
-    if (paramawew.jdField_a_of_type_Awfl != null)
-    {
-      paramawew.jdField_a_of_type_Awfl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramawew.jdField_a_of_type_Awfl.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    }
-    if (paramawew.jdField_a_of_type_Aweu != null)
-    {
-      paramawew.jdField_a_of_type_Aweu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramawew.jdField_a_of_type_Aweu.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    }
-    this.jdField_a_of_type_Awew = paramawew;
-    int i = -1;
-    if (paramawew.jdField_a_of_type_Awfl != null) {
-      i = paramawew.jdField_a_of_type_Awfl.jdField_b_of_type_Int;
-    }
-    this.jdField_b_of_type_JavaLangString = awen.a(i, 2, 1);
-    return true;
-  }
-  
-  public boolean a(awfl paramawfl)
-  {
-    if (paramawfl == null)
-    {
-      awen.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "upInfo == null");
-      return false;
-    }
-    paramawfl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramawfl.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Awfl = paramawfl;
-    this.jdField_b_of_type_JavaLangString = awen.a(this.jdField_a_of_type_Awfl.jdField_b_of_type_Int, 1, 1);
-    return true;
-  }
-  
-  public boolean a(MessageForPic paramMessageForPic, aweu paramaweu)
-  {
-    if (paramaweu == null)
-    {
-      awen.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "downInfo == null");
-      return false;
-    }
-    paramaweu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramaweu.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    paramaweu.c = paramMessageForPic.time;
-    paramaweu.d = paramMessageForPic.bEnableEnc;
-    this.jdField_a_of_type_Aweu = paramaweu;
-    int i;
-    if (this.jdField_a_of_type_Int == 5)
-    {
-      this.jdField_a_of_type_Aweu.e = "chatthumb";
-      i = 65537;
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_JavaLangString = awen.a(this.jdField_a_of_type_Aweu.jdField_b_of_type_Int, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-      return true;
-      if (this.jdField_a_of_type_Int == 7)
-      {
-        i = 131075;
-        this.jdField_a_of_type_Aweu.e = "chatraw";
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Int == 6) {
-          this.jdField_a_of_type_Aweu.e = "chatimg";
-        }
-        i = 1;
-      }
-    }
-  }
-  
-  public boolean a(CompressInfo paramCompressInfo)
-  {
-    if (paramCompressInfo == null) {}
-    do
-    {
-      return false;
-      paramCompressInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    } while (paramCompressInfo.c == null);
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
-    return true;
+    return "MusicStatus[needConvert:" + this.jdField_a_of_type_Boolean + ", , songId:" + this.jdField_a_of_type_JavaLangString + ", songName:" + this.jdField_b_of_type_JavaLangString + ", songType:" + this.jdField_a_of_type_Int + ", singerName:" + this.jdField_c_of_type_JavaLangString + ", remainTime:" + this.jdField_b_of_type_Int + ", sourceType:" + this.jdField_c_of_type_Int + ", pauseFlag:" + this.jdField_b_of_type_Boolean + ", duration:" + this.d;
   }
 }
 

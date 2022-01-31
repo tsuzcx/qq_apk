@@ -1,17 +1,13 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-final class bait
-  extends Editable.Factory
+public class bait
+  extends altm
 {
-  bait(int paramInt) {}
+  public bait(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramCharSequence instanceof baiq)) {
-      return (Editable)paramCharSequence;
-    }
-    return new baiq(paramCharSequence, 3, this.a);
+    this.a.a.a(paramString);
   }
 }
 

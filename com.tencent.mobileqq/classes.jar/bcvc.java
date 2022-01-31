@@ -1,27 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
-
-final class bcvc
-  implements DownloadParams.DecodeHandler
+public abstract interface bcvc
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      return bdda.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bdda.c(paramBitmap, 50, 50);
-  }
+  public abstract void a();
 }
 
 

@@ -82,22 +82,22 @@ class nip
           }
           if (paramnpo.jdField_c_of_type_Int == 2)
           {
-            yqb.b((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yqd(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a));
+            yuq.b((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a));
             return;
           }
           if (paramnpo.jdField_c_of_type_Int == 17)
           {
-            yqb.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yqd(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a));
+            yuq.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a));
             return;
           }
           if (paramnpo.jdField_c_of_type_Int == 19)
           {
-            yqb.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yqd(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a), 9);
+            yuq.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a), 9);
             return;
           }
           if (paramnpo.jdField_c_of_type_Int == 18)
           {
-            yqb.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yqd(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a), 10);
+            yuq.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.a), 10);
             return;
           }
         } while (paramnpo.jdField_c_of_type_Int == 21);

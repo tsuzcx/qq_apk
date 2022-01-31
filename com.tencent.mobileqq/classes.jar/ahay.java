@@ -1,21 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class ahay
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ahay(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  public ahay(VideoStatusTipsBar paramVideoStatusTipsBar) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
+    mtq.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
-    this.a.getActivity().requestPermissions(new ahaz(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
 }
 

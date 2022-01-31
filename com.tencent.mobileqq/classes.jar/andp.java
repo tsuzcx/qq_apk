@@ -1,36 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
 
-public class andp
-  implements View.OnTouchListener
+final class andp
+  implements FileFilter
 {
-  public andp(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean accept(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
-    }
-    long l = System.currentTimeMillis();
-    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
-      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
-    }
-    do
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      return false;
-      ScanEntryProviderContainerView.a(this.a, l);
-      switch (paramMotionEvent.getAction())
+      int i = 3;
+      while (i < paramFile.length())
       {
-      default: 
-        return false;
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
       }
-      paramView = (Integer)paramView.getTag();
-      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new andq(this, paramView));
-    } while (paramView.intValue() != 2);
-    azmj.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+      return true;
+    }
     return false;
   }
 }

@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.base.preload;
 
 import android.annotation.TargetApi;
 import java.util.LinkedList;
-import uja;
-import wsv;
+import unj;
+import wxe;
 
 @TargetApi(14)
 public class PreloadQueue
-  extends LinkedList<uja>
+  extends LinkedList<unj>
 {
   public static final String TAG = "Q.qqstory.download.preload.PreloadQueue";
   private final Object dataSafeLock = new Object();
   private int mQueueId;
   private final Object notEmptyLock = new Object();
   
-  public void addTask(uja paramuja, boolean paramBoolean)
+  public void addTask(unj paramunj, boolean paramBoolean)
   {
     localObject = this.dataSafeLock;
     if (paramBoolean) {}
@@ -22,12 +22,12 @@ public class PreloadQueue
     {
       try
       {
-        addFirst(paramuja);
+        addFirst(paramunj);
         releaseBlock();
         return;
       }
       finally {}
-      add(paramuja);
+      add(paramunj);
     }
   }
   
@@ -40,17 +40,17 @@ public class PreloadQueue
     }
   }
   
-  public uja getFirstAndBlockIfLowestPriority()
+  public unj getFirstAndBlockIfLowestPriority()
   {
     try
     {
-      uja localuja = pollFirst();
-      ??? = localuja;
+      unj localunj = pollFirst();
+      ??? = localunj;
       if (this.mQueueId == 2)
       {
-        ??? = localuja;
-        if (localuja == null) {
-          wsv.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
+        ??? = localunj;
+        if (localunj == null) {
+          wxe.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
         }
       }
       synchronized (this.notEmptyLock)
@@ -63,7 +63,7 @@ public class PreloadQueue
     }
     catch (InterruptedException localInterruptedException)
     {
-      wsv.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
+      wxe.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
     }
   }
   
@@ -88,12 +88,12 @@ public class PreloadQueue
     }
   }
   
-  public uja pollFirst()
+  public unj pollFirst()
   {
     synchronized (this.dataSafeLock)
     {
-      uja localuja = (uja)super.pollFirst();
-      return localuja;
+      unj localunj = (unj)super.pollFirst();
+      return localunj;
     }
   }
   
@@ -101,7 +101,7 @@ public class PreloadQueue
   {
     synchronized (this.notEmptyLock)
     {
-      wsv.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
+      wxe.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
       this.notEmptyLock.notifyAll();
       return;
     }

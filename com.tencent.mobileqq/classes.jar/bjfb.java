@@ -1,27 +1,66 @@
-import java.util.LinkedList;
-import java.util.List;
+import android.os.FileObserver;
+import android.os.Handler;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class bjfb
+class bjfb
+  extends FileObserver
 {
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final List<Integer> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private Object b;
-  
-  public bjfb(bjfb parambjfb, Object paramObject)
+  bjfb(bjey parambjey, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = parambjfb.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = parambjfb.jdField_a_of_type_Boolean;
-    this.b = this.jdField_a_of_type_JavaLangObject;
+    super(paramString, paramInt);
   }
   
-  private bjfb(Object paramObject)
+  public void onEvent(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = true;
-    this.b = this.jdField_a_of_type_JavaLangObject;
+    if (!"qzone_startup_monitor".equals(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
+      }
+      return;
+    }
+    switch (paramInt & 0xFFF)
+    {
+    default: 
+      return;
+    case 256: 
+      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
+      bjey.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
+      }
+      bjey.a(this.a).sendEmptyMessageDelayed(1, paramInt);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
+    }
+    bjey.a(this.a).removeMessages(1);
+    paramString = bjey.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
+    if (paramString != null) {}
+    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
+    {
+      bjey.a(this.a, true);
+      bjey.a(this.a, paramInt, bjey.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
+      LocalMultiProcConfig.putInt("key_recovery_count", 0);
+      return;
+    }
+  }
+  
+  public void startWatching()
+  {
+    super.startWatching();
+    QLog.i("QZoneStartupMonitor", 1, "startWatching");
+  }
+  
+  public void stopWatching()
+  {
+    super.stopWatching();
+    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
   }
 }
 

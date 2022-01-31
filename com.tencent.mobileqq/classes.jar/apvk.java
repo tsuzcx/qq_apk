@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
 
 public class apvk
-  implements aubp<EmoticonPackage>
+  implements beei
 {
-  public apvk(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  public apvk(EmoticonPanelMallHelper.3 param3) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(boolean paramBoolean)
   {
-    if (paramEmoticonPackage == null)
-    {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7);
-      return;
+    if (paramBoolean) {
+      this.a.this$0.a.a.a();
     }
-    afqr.a(7, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
   }
 }
 

@@ -1,29 +1,80 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahax
-  implements View.OnTouchListener
+  implements ahan, View.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
+  public static String a;
+  private ahap jdField_a_of_type_Ahap;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public ahax(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    if (paramMotionEvent.getAction() == 0)
+    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
+  }
+  
+  public ahax(QQAppInterface paramQQAppInterface, Context paramContext, ahap paramahap)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ahap = paramahap;
+  }
+  
+  public int a()
+  {
+    return 25;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558623, null);
+    paramVarArgs.setOnClickListener(this);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 21;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    default: 
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
     }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", jdField_a_of_type_JavaLangString + this.b + "&from=aio");
+    paramView.putExtra("hide_operation_bar", true);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.b, 3);
+    this.jdField_a_of_type_Ahap.a();
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
   }
 }
 

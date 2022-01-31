@@ -1,21 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class uuu
-  implements almm
+  implements urr<vfo, vhi>
 {
-  uuu(uur paramuur) {}
+  uuu(uus paramuus) {}
   
-  public void a(boolean paramBoolean)
+  public void a(@NonNull vfo paramvfo, @Nullable vhi paramvhi, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    wxe.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvhi != null))
     {
-      if (localObject != null) {
-        ((uhk)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
-      }
+      wxe.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramvhi.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new uuv(paramvhi.a, paramvhi.c, paramvhi.d, paramvhi.e, paramvhi.f, paramvfo.d, paramvfo.e);
+      this.a.a("country", paramvhi.a);
+      this.a.a("province", paramvhi.c);
+      this.a.a("city", paramvhi.d);
+      this.a.a("district", paramvhi.e);
+      this.a.a("street", paramvhi.f);
+      this.a.a("longitude", paramvfo.d);
+      this.a.a("latitude", paramvfo.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
       return;
+      wxe.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramvfo });
+      this.a.a(false, null);
     }
   }
 }

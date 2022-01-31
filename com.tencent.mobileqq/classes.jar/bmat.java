@@ -1,16 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bmat
+final class bmat
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract Activity a();
+  float jdField_a_of_type_Float = 1.0F;
+  final View jdField_a_of_type_AndroidViewView;
   
-  public abstract SessionInfo a();
+  bmat(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
   
-  public abstract QQAppInterface a();
-  
-  public abstract boolean a();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    }
+  }
 }
 
 

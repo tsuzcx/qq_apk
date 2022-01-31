@@ -1,22 +1,16 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
+import android.content.Context;
 
-public class anlx
-  extends anma
+public abstract interface anlx
 {
-  public anlx(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public abstract void attachArkView(anoq paramanoq, anou paramanou, int paramInt);
   
-  public void a(int paramInt)
-  {
-    if (ArkIDESettingFragment.a(this.a) != null)
-    {
-      TextView localTextView = ArkIDESettingFragment.a(this.a);
-      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
-    }
-  }
+  public abstract void clickTail(anou paramanou, afiv paramafiv, Context paramContext);
+  
+  public abstract void destroyContainerByRemove();
+  
+  public abstract anlx extendArkCardByOpen(afii paramafii, String paramString1, String paramString2);
+  
+  public abstract String[] getArkAppNameAndPath();
 }
 
 

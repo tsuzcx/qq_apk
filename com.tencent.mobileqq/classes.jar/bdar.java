@@ -1,526 +1,267 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.AbstractVideoImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.data.DynamicAvatar;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ljava.lang.String;>;
-import java.util.Map;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bdar
-  extends QAlbumUtil
 {
-  private static long a;
-  public static final int[] a;
+  public static long a;
+  public static Object a;
+  public static int[] a;
+  public static boolean b;
+  public int a;
+  public Drawable a;
+  public anug a;
+  public URLDrawable a;
+  public String a;
+  public WeakReference<DynamicAvatarView> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<bdar> b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public boolean g;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 3000, 1 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2, 3, 5, 0, 4, 6, 1 };
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  public static float a()
+  public bdar()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "photoGroupListImageCropSpaceRatio", 0.25F);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static int a()
+  public bdar(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bdbl parambdbl, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
   {
-    return QzoneConfig.getInstance().getConfig("MiniVideo", "MaxSelectVideoNum", 50);
-  }
-  
-  public static int a(List<String> paramList, int paramInt, Map<String, LocalMediaInfo> paramMap1, boolean paramBoolean, Map<String, LocalMediaInfo> paramMap2)
-  {
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_Boolean = true;
+    a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
+    if ((paramAppInterface instanceof QQAppInterface)) {}
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdbm(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdcx(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4))
     {
-      String str = (String)localIterator.next();
-      paramList = null;
-      if (paramMap2 != null) {
-        paramList = (LocalMediaInfo)paramMap2.get(str);
-      }
-      Object localObject = paramList;
-      if (paramList == null)
-      {
-        localObject = paramList;
-        if (paramMap1 != null) {
-          localObject = (LocalMediaInfo)paramMap1.get(str);
-        }
-      }
-      if ((localObject == null) || (getMediaType((LocalMediaInfo)localObject) != 1))
-      {
-        long l = new File(str).length();
-        if (l <= paramInt) {
-          break label148;
-        }
-        azmz.a(BaseApplicationImpl.getApplication()).a(null, "sendQualityPicLimit", true, paramInt, l, null, "");
-        i += 1;
-      }
-    }
-    label148:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public static int a(List<String> paramList, long paramLong, Map<String, LocalMediaInfo> paramMap1, boolean paramBoolean, Map<String, LocalMediaInfo> paramMap2)
-  {
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      paramList = null;
-      if (paramMap2 != null) {
-        paramList = (LocalMediaInfo)paramMap2.get(str);
-      }
-      Object localObject = paramList;
-      if (paramList == null)
-      {
-        localObject = paramList;
-        if (paramMap1 != null) {
-          localObject = (LocalMediaInfo)paramMap1.get(str);
-        }
-      }
-      if ((localObject == null) || (getMediaType((LocalMediaInfo)localObject) == 1))
-      {
-        if (new File(str).length() <= paramLong) {
-          break label123;
-        }
-        i += 1;
-      }
-    }
-    label123:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public static int a(List<String> paramList, Map<String, LocalMediaInfo> paramMap1, boolean paramBoolean, HashMap<String, PhotoSendParams> paramHashMap, Map<String, LocalMediaInfo> paramMap2)
-  {
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      long l;
-      if ((paramHashMap != null) && (NetworkUtils.isNetworkUrl(str))) {
-        if (paramHashMap.get(str) != null) {
-          l = ((PhotoSendParams)paramHashMap.get(str)).fileSize;
-        }
-      }
-      for (;;)
-      {
-        i = (int)(i + l);
-        if (QLog.isColorLevel()) {
-          QLog.d("_photo", 2, "setQualityTextViewText, path:" + str + ",len:" + l);
-        }
-        break;
-        QLog.w("_photo", 1, "mSelectedSendParams.get(p) == null path:" + str);
-        l = 0L;
-        continue;
-        paramList = null;
-        if (paramMap2 != null) {
-          paramList = (LocalMediaInfo)paramMap2.get(str);
-        }
-        if ((paramList == null) && (paramMap1 != null)) {
-          paramList = (LocalMediaInfo)paramMap1.get(str);
-        }
-        l = new File(str).length();
-      }
-    }
-    return i;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("album_file", 0).getString("album_key_id", null);
-  }
-  
-  public static String a(List<String> paramList)
-  {
-    Object localObject1 = new StringBuilder("_data");
-    ((StringBuilder)localObject1).append(" IS NOT NULL AND ");
-    ((StringBuilder)localObject1).append("_size");
-    ((StringBuilder)localObject1).append(" > 0 ");
-    Object localObject2 = localObject1;
-    if (paramList != null)
-    {
-      localObject2 = localObject1;
-      if (paramList.size() > 0)
-      {
-        ((StringBuilder)localObject1).append(" AND (");
-        localObject2 = paramList.iterator();
-        paramList = (List<String>)localObject1;
-        int i = 1;
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject1 = (String)((Iterator)localObject2).next();
-          if (i == 0) {
-            paramList.append(" OR ");
-          }
-          for (;;)
-          {
-            paramList.append(" ( ");
-            paramList = a("bucket_id", paramList, (String)localObject1);
-            paramList.append(" ) ");
-            break;
-            i = 0;
-          }
-        }
-        paramList.append(" ) ");
-        localObject2 = paramList;
-      }
-    }
-    return ((StringBuilder)localObject2).toString();
-  }
-  
-  private static StringBuilder a(String paramString1, StringBuilder paramStringBuilder, String paramString2)
-  {
-    paramStringBuilder.append(paramString1);
-    paramStringBuilder.append(" = ");
-    paramStringBuilder.append(paramString2);
-    return paramStringBuilder;
-  }
-  
-  public static List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter)
-  {
-    return queryRecentImages(paramContext, paramInt1, paramInt2, paramMediaFileFilter, false, 0, null, false);
-  }
-  
-  /* Error */
-  public static List<LocalMediaInfo> a(Context paramContext, int paramInt, List<String> paramList, MediaFileFilter paramMediaFileFilter)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 207	java/util/ArrayList
-    //   6: dup
-    //   7: invokespecial 208	java/util/ArrayList:<init>	()V
-    //   10: astore 5
-    //   12: aload_2
-    //   13: invokestatic 210	bdar:a	(Ljava/util/List;)Ljava/lang/String;
-    //   16: astore_2
-    //   17: getstatic 216	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   20: invokevirtual 222	android/net/Uri:buildUpon	()Landroid/net/Uri$Builder;
-    //   23: astore 6
-    //   25: aload 6
-    //   27: ldc 224
-    //   29: iload_1
-    //   30: invokestatic 228	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   33: invokevirtual 234	android/net/Uri$Builder:appendQueryParameter	(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
-    //   36: pop
-    //   37: aload 6
-    //   39: invokevirtual 238	android/net/Uri$Builder:build	()Landroid/net/Uri;
-    //   42: astore 6
-    //   44: aload_0
-    //   45: invokevirtual 242	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   48: aload 6
-    //   50: getstatic 246	bdar:columns	[Ljava/lang/String;
-    //   53: aload_2
-    //   54: aconst_null
-    //   55: ldc 248
-    //   57: invokevirtual 254	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   60: astore_0
-    //   61: aload_0
-    //   62: aload 5
-    //   64: iconst_0
-    //   65: iload_1
-    //   66: iconst_0
-    //   67: aload_3
-    //   68: aconst_null
-    //   69: iconst_0
-    //   70: invokestatic 258	bdar:getImageList	(Landroid/database/Cursor;Ljava/util/List;IIZLcom/tencent/mobileqq/activity/photo/MediaFileFilter;Ljava/util/ArrayList;Z)V
-    //   73: aload_0
-    //   74: ifnull +9 -> 83
-    //   77: aload_0
-    //   78: invokeinterface 263 1 0
-    //   83: aload 5
-    //   85: areturn
-    //   86: astore_2
-    //   87: aconst_null
-    //   88: astore_0
-    //   89: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   92: ifeq +15 -> 107
-    //   95: ldc_w 265
-    //   98: iconst_2
-    //   99: aload_2
-    //   100: invokevirtual 268	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   103: aload_2
-    //   104: invokestatic 271	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   107: aload_0
-    //   108: ifnull -25 -> 83
-    //   111: aload_0
-    //   112: invokeinterface 263 1 0
-    //   117: aload 5
-    //   119: areturn
-    //   120: astore_0
-    //   121: aload 4
-    //   123: astore_2
-    //   124: aload_2
-    //   125: ifnull +9 -> 134
-    //   128: aload_2
-    //   129: invokeinterface 263 1 0
-    //   134: aload_0
-    //   135: athrow
-    //   136: astore_3
-    //   137: aload_0
-    //   138: astore_2
-    //   139: aload_3
-    //   140: astore_0
-    //   141: goto -17 -> 124
-    //   144: astore_3
-    //   145: aload_0
-    //   146: astore_2
-    //   147: aload_3
-    //   148: astore_0
-    //   149: goto -25 -> 124
-    //   152: astore_2
-    //   153: goto -64 -> 89
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	156	0	paramContext	Context
-    //   0	156	1	paramInt	int
-    //   0	156	2	paramList	List<String>
-    //   0	156	3	paramMediaFileFilter	MediaFileFilter
-    //   1	121	4	localObject1	Object
-    //   10	108	5	localArrayList	java.util.ArrayList
-    //   23	26	6	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   44	61	86	java/lang/Exception
-    //   44	61	120	finally
-    //   61	73	136	finally
-    //   89	107	144	finally
-    //   61	73	152	java/lang/Exception
-  }
-  
-  public static void a() {}
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    azmj.b(null, "CliOper", "", "", "0X8009E99", "0X8009E99", 0, 0, paramInt1 + "", paramInt2 + "", "", "");
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    if (paramIntent.getBooleanExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false))
-    {
-      String str = paramIntent.getStringExtra("ALBUM_ID");
-      paramIntent = paramIntent.getStringExtra("PhotoConst.LAST_ALBUMPATH");
-      if ((paramIntent != null) && (str != null))
-      {
-        sLastAlbumPath = paramIntent;
-        sLastAlbumRecordTime = System.currentTimeMillis();
-      }
-    }
-  }
-  
-  public static void a(Intent paramIntent, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      paramIntent.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", paramBoolean);
-      paramIntent.putExtra("ALBUM_ID", paramString1);
-      paramIntent.putExtra("PhotoConst.LAST_ALBUMPATH", paramString2);
-    }
-  }
-  
-  public static void a(TextView paramTextView, List<String> paramList, Map<String, LocalMediaInfo> paramMap1, boolean paramBoolean, Activity paramActivity, HashMap<String, PhotoSendParams> paramHashMap, Map<String, LocalMediaInfo> paramMap2)
-  {
-    Iterator localIterator = paramList.iterator();
-    label254:
-    label255:
-    for (;;)
-    {
-      LocalMediaInfo localLocalMediaInfo;
-      if (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (NetworkUtils.isNetworkUrl(str)) {
-          continue;
-        }
-        localLocalMediaInfo = null;
-        if (paramMap2 != null) {
-          localLocalMediaInfo = (LocalMediaInfo)paramMap2.get(str);
-        }
-        if ((localLocalMediaInfo != null) || (paramMap1 == null)) {
-          break label254;
-        }
-        localLocalMediaInfo = (LocalMediaInfo)paramMap1.get(str);
-      }
-      for (;;)
-      {
-        if ((localLocalMediaInfo == null) || (getMediaType(localLocalMediaInfo) != 1)) {
-          break label255;
-        }
-        break;
-        int i = a(paramList, paramMap1, paramBoolean, paramHashMap, paramMap2);
-        if (i == 0) {
-          paramTextView.setVisibility(4);
-        }
-        do
-        {
-          return;
-          paramMap1 = PhotoUtils.a(paramActivity, i);
-          if (paramMap1.equals("0"))
-          {
-            paramMap1 = "(999K)";
-            paramTextView.setVisibility(4);
-          }
-          for (;;)
-          {
-            int j = paramMap1.length();
-            i = 0;
-            while (i < 6 - j)
-            {
-              paramMap1 = paramMap1 + " ";
-              i += 1;
-            }
-            paramMap1 = "(" + paramMap1 + ")";
-            paramTextView.setVisibility(0);
-          }
-          paramTextView.setText(paramMap1);
-        } while (!paramList.isEmpty());
-        paramTextView.setVisibility(4);
-        return;
-      }
-    }
-  }
-  
-  public static void a(LocalMediaInfo paramLocalMediaInfo, String paramString)
-  {
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramString, localOptions);
-      paramLocalMediaInfo.mediaHeight = localOptions.outHeight;
-      paramLocalMediaInfo.mediaWidth = localOptions.outWidth;
-      paramLocalMediaInfo.mMimeType = localOptions.outMimeType;
-      paramLocalMediaInfo.addedDate = System.currentTimeMillis();
-      paramLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-      paramLocalMediaInfo.path = paramString;
-      paramLocalMediaInfo.panoramaPhotoType = 3;
-      paramLocalMediaInfo.fileSize = new File(paramString).length();
+      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
+      a(paramBoolean4, null);
       return;
     }
-    catch (Exception paramLocalMediaInfo)
+  }
+  
+  public bdar(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean1, DynamicAvatar paramDynamicAvatar, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 0, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
+    a(paramBoolean3, paramDynamicAvatar);
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.e("AlbumUtil", 2, "decode image error", paramLocalMediaInfo);
+      jdField_b_of_type_Boolean = true;
+      AbstractVideoImage.pauseAll();
+      paramAppInterface = (anug)paramAppInterface.getManager(180);
+      if (paramAppInterface != null)
+      {
+        paramAppInterface.d();
+        ThreadManager.getSubThreadHandler().removeCallbacks(paramAppInterface.a);
+      }
+      return;
     }
   }
   
-  public static boolean a(int paramInt)
+  public static void b(AppInterface paramAppInterface)
   {
-    boolean bool2 = false;
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
+    int i;
+    if (jdField_a_of_type_Long <= 0L)
+    {
+      i = bdgk.b();
+      if (i < 8) {
+        break label50;
+      }
+      jdField_a_of_type_Long = 100L;
+    }
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramInt == arrayOfInt[i]) {
-          bool1 = true;
-        }
+      paramAppInterface = (anug)paramAppInterface.getManager(180);
+      ThreadManager.getSubThreadHandler().postDelayed(paramAppInterface.a, jdField_a_of_type_Long);
+      return;
+      label50:
+      if (i >= 4) {
+        jdField_a_of_type_Long = 200L;
+      } else if (i >= 3) {
+        jdField_a_of_type_Long = 400L;
+      } else if (i >= 2) {
+        jdField_a_of_type_Long = 800L;
+      } else {
+        jdField_a_of_type_Long = 1000L;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
   }
   
-  public static boolean a(Context paramContext, int paramInt, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public Drawable a()
   {
-    boolean bool = true;
-    if ((paramLocalMediaInfo != null) && (getMediaType(paramLocalMediaInfo) == 1)) {
-      if (!paramBoolean) {
-        break label222;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
+        return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      }
+      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public void a()
+  {
+    if (!b()) {}
+    while (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+      return;
+    }
+    ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+  }
+  
+  public void a(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, DynamicAvatar paramDynamicAvatar, boolean paramBoolean5)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.jdField_d_of_type_Boolean = paramBoolean3;
+    this.jdField_c_of_type_Boolean = paramBoolean4;
+    this.g = paramBoolean2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (paramInt2 == 200)
+    {
+      this.jdField_c_of_type_Int = 17;
+      if (paramInt1 != 32) {
+        break label144;
       }
     }
-    label222:
-    for (int i = b();; i = a())
+    label144:
+    for (this.jdField_b_of_type_Int = 18;; this.jdField_b_of_type_Int = 17)
     {
-      paramBoolean = bool;
-      if (paramInt >= i)
-      {
-        if (System.currentTimeMillis() - jdField_a_of_type_Long > 2000L)
-        {
-          QQToast.a(paramContext, alpo.a(2131700589) + i + alpo.a(2131700590), 0).a();
-          jdField_a_of_type_Long = System.currentTimeMillis();
-        }
-        paramBoolean = false;
+      this.jdField_d_of_type_Int = paramInt3;
+      this.f = paramBoolean1;
+      this.jdField_b_of_type_JavaLangString = "";
+      this.jdField_c_of_type_JavaLangString = "";
+      this.jdField_e_of_type_Boolean = false;
+      this.jdField_d_of_type_JavaLangString = anug.b(paramInt1, paramInt2, paramString, paramInt3);
+      if (!paramBoolean5) {
+        this.jdField_a_of_type_ComTencentImageURLDrawable = null;
       }
-      long l = bizm.b();
-      if (paramLocalMediaInfo.fileSize > l)
-      {
-        QQToast.a(paramContext, alpo.a(2131700588) + (float)l / 1024.0F / 1024.0F / 1024.0F + "G的视频", 0).a();
-        paramBoolean = false;
+      this.jdField_a_of_type_Anug = ((anug)paramAppInterface.getManager(180));
+      return;
+      this.jdField_c_of_type_Int = 18;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean, DynamicAvatar paramDynamicAvatar)
+  {
+    this.jdField_a_of_type_Anug.a(this);
+    if ((paramBoolean) && (this.jdField_a_of_type_Anug.a(this.jdField_e_of_type_Int)))
+    {
+      paramBoolean = true;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Boolean) {
+        break label46;
       }
-      if (paramLocalMediaInfo.mDuration <= 601000L) {
+    }
+    label46:
+    do
+    {
+      do
+      {
+        return;
+        paramBoolean = false;
         break;
+      } while ((!this.g) && (!bdin.h(BaseApplicationImpl.getContext())) && (this.jdField_d_of_type_Boolean));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "getDynamicAvatar uin: " + this.jdField_a_of_type_JavaLangString + " source: " + this.jdField_e_of_type_Int);
       }
-      QQToast.a(paramContext, alpo.a(2131700587) + 10L + alpo.a(2131700591), 0).a();
+      if ((this.g) || (paramDynamicAvatar == null))
+      {
+        this.jdField_a_of_type_Anug.b(this);
+        return;
+      }
+      if (paramDynamicAvatar != null)
+      {
+        this.jdField_b_of_type_JavaLangString = anug.a(this.jdField_b_of_type_Int, this.jdField_d_of_type_Int, paramDynamicAvatar);
+        this.jdField_c_of_type_JavaLangString = anug.a(this.jdField_b_of_type_Int, 640, paramDynamicAvatar);
+        if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
+        {
+          this.jdField_b_of_type_JavaLangString = anug.a(17, this.jdField_d_of_type_Int, paramDynamicAvatar);
+          this.jdField_c_of_type_JavaLangString = anug.a(17, 640, paramDynamicAvatar);
+        }
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          this.jdField_e_of_type_Boolean = true;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, "initValue url: " + this.jdField_b_of_type_JavaLangString);
+        }
+      }
+    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_Anug.b(this);
+  }
+  
+  public boolean a()
+  {
+    return a() == this.jdField_a_of_type_ComTencentImageURLDrawable;
+  }
+  
+  public boolean a(URLDrawable paramURLDrawable)
+  {
+    if (!b()) {
       return false;
     }
-    return paramBoolean;
-  }
-  
-  public static boolean a(List<String> paramList, Activity paramActivity, int paramInt)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() >= paramInt))
+    if (this.jdField_b_of_type_JavaLangString.equals(((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString))
     {
-      QQToast.a(paramActivity, String.format(paramActivity.getResources().getString(2131719273), new Object[] { Integer.valueOf(paramInt) }), 0).b(paramActivity.getResources().getDimensionPixelSize(2131298914));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.dynamicAvatar", 2, "setVideoDrawable url equals currentUrl");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.dynamicAvatar", 2, "truly setVideoDrawable");
+    }
+    ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    if (!jdField_b_of_type_Boolean)
+    {
+      a();
       return true;
     }
     return false;
   }
   
-  public static int b()
+  public boolean b()
   {
-    return QzoneConfig.getInstance().getConfig("MiniVideo", "ShuoShuoMaxSelectVideoNum", 10);
-  }
-  
-  public static String b(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("album_file", 0).getString("album_key_name", null);
-  }
-  
-  public static void b()
-  {
-    sLastAlbumPhotoCountMap.clear();
-    sLastAlbumPath = null;
-    sLastAlbumRecordTime = 0L;
-    sLastAlbumId = null;
-    sLastAlbumName = null;
-  }
-  
-  public static void c()
-  {
-    azmj.b(null, "CliOper", "", "", "0X8009E98", "0X8009E98", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
+      return false;
+    }
+    DynamicAvatarView localDynamicAvatarView = (DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localDynamicAvatarView.jdField_a_of_type_Bdar != this)
+    {
+      QLog.e("Q.dynamicAvatar", 1, "mDynamicFaceDrawable is changed : " + this + " " + localDynamicAvatarView.jdField_a_of_type_Bdar);
+      return false;
+    }
+    return true;
   }
 }
 

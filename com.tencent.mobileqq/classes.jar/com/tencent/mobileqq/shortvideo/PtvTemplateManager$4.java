@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azgk;
+import azkt;
 import java.util.ArrayList;
 
 class PtvTemplateManager$4
@@ -10,7 +10,7 @@ class PtvTemplateManager$4
   
   public void run()
   {
-    if (azgk.c()) {
+    if (azkt.c()) {
       this.this$0.a(this.a);
     }
   }

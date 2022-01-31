@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 
 class StorageJsPlugin$7
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, bgkd parambgkd) {}
+  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, bgok parambgok) {}
   
   public String run()
   {

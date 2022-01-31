@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
 
-final class auuy
-  implements DialogInterface.OnClickListener
+class auuy
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  auuy(auuw paramauuw) {}
+  
+  public void onClick(View paramView)
+  {
+    auva localauva = (auva)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.onItemClick(null, paramView, localauva.a, localauva.a);
+    }
+  }
 }
 
 

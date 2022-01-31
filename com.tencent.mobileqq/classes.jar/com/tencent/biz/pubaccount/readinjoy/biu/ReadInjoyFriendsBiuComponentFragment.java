@@ -11,8 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdbi;
-import bhqp;
+import bdfr;
+import bhuw;
 import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class ReadInjoyFriendsBiuComponentFragment
   public View.OnClickListener a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhqp jdField_a_of_type_Bhqp = new oie(this);
+  bhuw jdField_a_of_type_Bhuw = new oie(this);
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   public ArrayList<MultiBiuSameContent> a;
@@ -51,12 +51,12 @@ public class ReadInjoyFriendsBiuComponentFragment
   
   private String a(long paramLong)
   {
-    return oqu.k + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    return oqu.k + bdfr.encodeToString(String.valueOf(paramLong).getBytes(), 2);
   }
   
   private String a(long paramLong1, int paramInt, long paramLong2)
   {
-    String str2 = oqu.e.replace("uin=", "uin=" + bdbi.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
+    String str2 = oqu.e.replace("uin=", "uin=" + bdfr.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
     String str1 = str2;
     if (str2.contains("&feedstype=")) {
       str1 = str2.replace("&feedstype=", "&feedstype=" + paramInt);
@@ -132,18 +132,18 @@ public class ReadInjoyFriendsBiuComponentFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560038, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366957));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131366884));
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167138);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560037, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366967));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131366894));
+    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167140);
     this.jdField_a_of_type_ComTencentWidgetListView.setOverScrollMode(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364325));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364327));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     paramLayoutInflater.findViewById(2131363026).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     paramViewGroup = (LinearLayout)paramLayoutInflater.findViewById(2131362565);
     paramBundle = new oif(this, getActivity(), this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("Biu列表");
     }

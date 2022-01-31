@@ -1,19 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class aybp
-  implements aybi
+public abstract interface aybp
 {
-  public aybp(ScreenShotFragment paramScreenShotFragment) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
-    }
-    ScreenShotFragment.a(this.a, paramInt);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aepy;
-import aeqr;
-import aequ;
+import aeun;
+import aevg;
+import aevj;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import bhou;
+import bhtb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -15,23 +15,23 @@ import mqq.app.MainService;
 
 @TargetApi(11)
 public class FloorJumperSet
-  extends aepy
+  extends aeun
 {
   @SuppressLint({"NewApi"})
   public static final long a;
   public static final int b;
   FloorJumperSet.Animator jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator;
-  ArrayList<aeqr> jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
+  ArrayList<aevg> jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
   private long b;
   
   static
   {
     long l;
-    if (bhou.e())
+    if (bhtb.e())
     {
       l = ValueAnimator.getFrameDelay();
       jdField_a_of_type_Long = l;
-      if (!bhou.e()) {
+      if (!bhtb.e()) {
         break label35;
       }
     }
@@ -55,9 +55,9 @@ public class FloorJumperSet
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      aeqr localaeqr = (aeqr)localIterator.next();
-      localaeqr.j += paramInt;
-      localaeqr.h += paramInt;
+      aevg localaevg = (aevg)localIterator.next();
+      localaevg.j += paramInt;
+      localaevg.h += paramInt;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.offsetChildrenTopAndBottom(paramInt);
   }
@@ -73,7 +73,7 @@ public class FloorJumperSet
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      if (((aeqr)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
+      if (((aevg)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
         bool = true;
       }
       for (;;)
@@ -116,13 +116,13 @@ public class FloorJumperSet
       {
         if (i != 0)
         {
-          aeqr localaeqr = new aeqr(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+          aevg localaevg = new aevg(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
           if ((paramVarArgs != null) && (paramVarArgs.length >= 3)) {
-            localaeqr.c = ((Integer)paramVarArgs[2]).intValue();
+            localaevg.c = ((Integer)paramVarArgs[2]).intValue();
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(localaeqr);
+          this.jdField_a_of_type_JavaUtilArrayList.add(localaevg);
           if (paramVarArgs != null) {
-            localaeqr.a(paramVarArgs);
+            localaevg.a(paramVarArgs);
           }
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator == null)
@@ -149,7 +149,7 @@ public class FloorJumperSet
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (((aeqr)localIterator.next()).a(false)) {
+      if (((aevg)localIterator.next()).a(false)) {
         i = 1;
       }
       for (;;)

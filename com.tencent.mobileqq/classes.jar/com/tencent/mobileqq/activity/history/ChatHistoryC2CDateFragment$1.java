@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import alsl;
+import alxa;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,7 +25,7 @@ class ChatHistoryC2CDateFragment$1
     localCalendar.setTimeInMillis(((CalendarDay)localObject1).getTimeInMillis());
     localObject1 = Calendar.getInstance();
     ((Calendar)localObject1).setTimeInMillis(((CalendarDay)localObject2).getTimeInMillis());
-    localObject2 = ((alsl)this.this$0.getActivity().app.getManager(92)).b(localCalendar, (Calendar)localObject1);
+    localObject2 = ((alxa)this.this$0.getActivity().app.getManager(92)).b(localCalendar, (Calendar)localObject1);
     i = 0;
     localCalendar = (Calendar)localCalendar.clone();
     ArrayList localArrayList = new ArrayList(31);

@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface bgog
-{
-  public abstract void OnClick(View paramView, int paramInt);
-}
+class bgog {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

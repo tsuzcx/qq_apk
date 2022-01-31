@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import azmj;
+import azqs;
 import ssp;
 
 class Conversation$7
@@ -11,7 +11,7 @@ class Conversation$7
   public void run()
   {
     long l = ssp.a().a();
-    azmj.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    azqs.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 

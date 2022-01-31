@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class aqlg
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aqlg(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public aqlg(FMActivity paramFMActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.h();
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

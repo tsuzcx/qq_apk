@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView
 import com.tencent.widget.AbsListView;
 
 public class sii
-  implements bhpo
+  implements bhtv
 {
   private int jdField_a_of_type_Int = -1;
   private int b = -1;

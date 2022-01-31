@@ -1,15 +1,51 @@
-import android.support.annotation.NonNull;
-import android.view.Surface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface axqf
+public class axqf
+  extends AnimatorListenerAdapter
 {
-  public abstract Surface a();
+  public axqf(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public abstract void a();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+    }
+  }
   
-  public abstract void a(@NonNull axpr paramaxpr, boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
+    {
+      this.a.a.set(true);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
+      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
+    }
+    for (;;)
+    {
+      this.a.b.set(false);
+      return;
+      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
+      CameraCaptureButtonLayout.a(this.a);
+      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    }
+  }
   
-  public abstract void b();
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
+    }
+  }
 }
 
 

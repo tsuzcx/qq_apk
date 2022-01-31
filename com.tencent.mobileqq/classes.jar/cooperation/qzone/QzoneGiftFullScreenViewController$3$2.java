@@ -1,29 +1,29 @@
 package cooperation.qzone;
 
 import android.view.View;
-import bjbf;
-import bjbh;
-import bjbi;
-import bjbj;
+import bjfm;
+import bjfo;
+import bjfp;
+import bjfq;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
 public class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bjbh parambjbh) {}
+  public QzoneGiftFullScreenViewController$3$2(bjfo parambjfo) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Bjbf.a).setBackgroundColor(0);
-    bjbf.a(this.a.jdField_a_of_type_Bjbf);
-    this.a.jdField_a_of_type_Bjbi.a();
-    if (bjbf.a(this.a.jdField_a_of_type_Bjbf).size() > 0)
+    ((View)this.a.jdField_a_of_type_Bjfm.a).setBackgroundColor(0);
+    bjfm.a(this.a.jdField_a_of_type_Bjfm);
+    this.a.jdField_a_of_type_Bjfp.a();
+    if (bjfm.a(this.a.jdField_a_of_type_Bjfm).size() > 0)
     {
-      bjbj localbjbj = (bjbj)bjbf.a(this.a.jdField_a_of_type_Bjbf).get(0);
-      this.a.jdField_a_of_type_Bjbf.a(localbjbj.jdField_a_of_type_JavaLangString, localbjbj.b, localbjbj.jdField_a_of_type_Boolean, localbjbj.jdField_a_of_type_Bjbi);
-      bjbf.a(this.a.jdField_a_of_type_Bjbf).remove(localbjbj);
+      bjfq localbjfq = (bjfq)bjfm.a(this.a.jdField_a_of_type_Bjfm).get(0);
+      this.a.jdField_a_of_type_Bjfm.a(localbjfq.jdField_a_of_type_JavaLangString, localbjfq.b, localbjfq.jdField_a_of_type_Boolean, localbjfq.jdField_a_of_type_Bjfp);
+      bjfm.a(this.a.jdField_a_of_type_Bjfm).remove(localbjfq);
     }
   }
 }

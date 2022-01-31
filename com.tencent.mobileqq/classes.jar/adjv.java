@@ -1,27 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adjv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adjv(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public adjv(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.getIntent().getStringExtra("uin");
-    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
-    {
-      ProfileLabelEditorActivity.a(this.a);
-      azmj.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adjv
  * JD-Core Version:    0.7.0.1
  */

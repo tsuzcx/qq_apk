@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 public class aysr
-  extends aysb
 {
-  public LinearLayout a;
-  public TextView a;
+  public int a;
   
-  public aysr(ViewGroup paramViewGroup, int paramInt)
+  public aysr(int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    this.a = paramInt;
   }
   
-  protected void a()
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131378985));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362832));
+    return this.a;
   }
 }
 

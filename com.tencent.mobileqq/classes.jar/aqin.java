@@ -1,100 +1,196 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.4;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.wiget.FrameAnimationDrawable.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import mqq.os.MqqHandler;
 
+@Deprecated
 public class aqin
-  implements bfka
+  extends Drawable
+  implements Handler.Callback
 {
-  public aqin(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 1000L;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public aqin()
   {
-    if ("1101070898".equals(paramString1))
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  }
+  
+  private void c()
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
     {
-      paramString1 = UniformDownloadActivity.a(this.a);
-      UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int];
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      localObject = aqhh.a((String)localObject, localOptions);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+        ThreadManager.getUIHandler().post(new FrameAnimationDrawable.1(this));
       }
-      UniformDownloadActivity.a(this.a, paramString1);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      return;
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    catch (Exception localException)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      QLog.e("FrameAnimationDrawable", 2, "updateCurBitmap fail.", localException);
     }
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    if (!this.jdField_b_of_type_Boolean)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
     }
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
-    }
-    azmj.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
-    this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_Long = paramLong;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
-      }
-      if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
-        this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
+      i = 0;
+      this.jdField_b_of_type_Int = i;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label43;
       }
     }
+    label43:
+    for (paramLong = 0L;; paramLong = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Long = paramLong;
+      return;
+      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      break;
+    }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void a(boolean paramBoolean)
   {
-    this.a.runOnUiThread(new UniformDownloadActivity.10.1(this));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public void a(String[] paramArrayOfString)
+  {
+    int i = 0;
+    b();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    {
+      this.jdField_b_of_type_Int = i;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (long l = 0L;; l = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Long = l;
+      c();
+      return;
+      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      break;
+    }
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((paramCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Int %= this.jdField_b_of_type_Int;
+      }
+      if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
+      {
+        long l1 = System.currentTimeMillis();
+        c();
+        if (this.jdField_b_of_type_Boolean)
+        {
+          long l2 = System.currentTimeMillis();
+          l1 = Math.max(this.jdField_b_of_type_Long - (l2 - l1), 0L);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, l1);
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+  }
 }
 
 

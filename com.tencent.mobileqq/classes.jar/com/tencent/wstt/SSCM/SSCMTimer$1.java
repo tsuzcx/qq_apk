@@ -1,8 +1,8 @@
 package com.tencent.wstt.SSCM;
 
-import bicb;
-import bicc;
-import bicd;
+import bigi;
+import bigj;
+import bigk;
 import java.util.TimerTask;
 
 public class SSCMTimer$1
@@ -12,34 +12,34 @@ public class SSCMTimer$1
   {
     long l;
     int i;
-    if (bicb.a(this.this$0))
+    if (bigi.a(this.this$0))
     {
-      l = Long.parseLong(bicd.a());
+      l = Long.parseLong(bigk.a());
       if (l == -1L)
       {
-        bicb.a(this.this$0, false);
+        bigi.a(this.this$0, false);
         i = 0;
       }
     }
     for (;;)
     {
       if (i > 0) {
-        bicb.a(this.this$0, 0);
+        bigi.a(this.this$0, 0);
       }
       do
       {
         do
         {
           return;
-          i = (int)(l - bicb.a(this.this$0));
-          bicb.a(this.this$0, l);
+          i = (int)(l - bigi.a(this.this$0));
+          bigi.a(this.this$0, l);
           break;
-          bicb.a(this.this$0, bicb.a(this.this$0) + bicb.b(this.this$0));
-        } while (bicb.a(this.this$0) < 120000);
-        bicb.b(this.this$0, 1);
+          bigi.a(this.this$0, bigi.a(this.this$0) + bigi.b(this.this$0));
+        } while (bigi.a(this.this$0) < 120000);
+        bigi.b(this.this$0, 1);
         cancel();
-      } while (bicb.a(this.this$0) == null);
-      bicb.a(this.this$0).b(bicb.a(this.this$0));
+      } while (bigi.a(this.this$0) == null);
+      bigi.a(this.this$0).b(bigi.a(this.this$0));
       return;
       i = 0;
     }

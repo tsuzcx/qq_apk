@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.text.TextUtils;
-import arni;
-import baet;
-import bbnr;
-import bcjc;
+import arrr;
+import bajc;
+import bbsa;
+import bcnl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -13,24 +13,24 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopFileTransferManager$6$1
   implements Runnable
 {
-  public TroopFileTransferManager$6$1(bcjc parambcjc, String paramString, bbnr parambbnr) {}
+  public TroopFileTransferManager$6$1(bcnl parambcnl, String paramString, bbsa parambbsa) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bbnr.b)) {
-      str = this.jdField_a_of_type_Bbnr.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bbsa.b)) {
+      str = this.jdField_a_of_type_Bbsa.b;
     }
-    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)this.jdField_a_of_type_Bcjc.a.a.a().a(String.valueOf(this.jdField_a_of_type_Bcjc.a.e), 1, str);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Bcjc.a.a;
+    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)this.jdField_a_of_type_Bcnl.a.a.a().a(String.valueOf(this.jdField_a_of_type_Bcnl.a.e), 1, str);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Bcnl.a.a;
     if (localMessageForTroopFile != null)
     {
       str = localMessageForTroopFile.fileName;
-      long l = arni.a(localQQAppInterface, str);
+      long l = arrr.a(localQQAppInterface, str);
       if ((localMessageForTroopFile == null) || (localMessageForTroopFile.fileSize > l)) {
         break label138;
       }
-      ((baet)this.jdField_a_of_type_Bcjc.a.a.getManager(272)).a(localMessageForTroopFile);
+      ((bajc)this.jdField_a_of_type_Bcnl.a.a.getManager(272)).a(localMessageForTroopFile);
     }
     label138:
     while (!QLog.isColorLevel())
@@ -39,7 +39,7 @@ public class TroopFileTransferManager$6$1
       str = "";
       break;
     }
-    QLog.e("AIOMessageSpreadManager", 1, "can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bcjc.a.e + "], id:" + this.jdField_a_of_type_Bbnr.b);
+    QLog.e("AIOMessageSpreadManager", 1, "can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bcnl.a.e + "], id:" + this.jdField_a_of_type_Bbsa.b);
   }
 }
 

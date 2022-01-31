@@ -1,35 +1,32 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkf
-  extends alvc
+  implements DialogInterface.OnClickListener
 {
-  public adkf(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adkf(NotificationActivity paramNotificationActivity) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      this.a.c();
+    try
+    {
+      azqs.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
+      return;
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkf
  * JD-Core Version:    0.7.0.1
  */

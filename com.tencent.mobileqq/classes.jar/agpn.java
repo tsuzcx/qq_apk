@@ -1,14 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class agpn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agpn(agot paramagot) {}
+  agpn(agpm paramagpm, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView.setVisibility(8);
+    paramDialogInterface = aepi.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
+    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Agpm.a.a.a);
+    paramDialogInterface.putExtra("uintype", 3000);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

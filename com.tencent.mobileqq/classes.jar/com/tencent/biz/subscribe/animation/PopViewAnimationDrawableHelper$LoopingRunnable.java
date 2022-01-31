@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.animation;
 
 import android.graphics.drawable.AnimationDrawable;
 import mqq.util.WeakReference;
-import xyy;
+import ydh;
 
 class PopViewAnimationDrawableHelper$LoopingRunnable
   implements Runnable
@@ -17,16 +17,16 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
   public void run()
   {
     Object localObject = (PopViewAnimationDrawableHelper)this.a.get();
-    xyy localxyy;
+    ydh localydh;
     if (localObject != null)
     {
-      localxyy = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
-      if (localxyy != null)
+      localydh = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
+      if (localydh != null)
       {
         if (PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject) <= 0) {
           break label38;
         }
-        localxyy.a();
+        localydh.a();
       }
     }
     return;
@@ -34,10 +34,10 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
     localObject = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
     if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
     {
-      localxyy.b();
+      localydh.b();
       return;
     }
-    localxyy.a();
+    localydh.a();
   }
 }
 

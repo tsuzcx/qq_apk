@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import alpo;
+import alud;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Card;
@@ -15,7 +15,7 @@ class ShowExternalTroopListActivity$3$1
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.a.setText(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alpo.a(2131714478));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alud.a(2131714490));
     }
     do
     {
@@ -23,19 +23,19 @@ class ShowExternalTroopListActivity$3$1
       do
       {
         return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alpo.a(2131714477));
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alud.a(2131714489));
         if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.b == null) {
           break;
         }
         localTroopMemberCard = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.b, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.jdField_a_of_type_JavaLangString);
       } while (localTroopMemberCard == null);
       if (localTroopMemberCard.sex == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alpo.a(2131714479));
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alud.a(2131714491));
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.a.setText(localTroopMemberCard.nick);
       return;
     } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender != 1));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alpo.a(2131714480));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(alud.a(2131714492));
   }
 }
 

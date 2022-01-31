@@ -1,18 +1,13 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 class yaf
-  implements View.OnClickListener
+  extends yaj
 {
-  yaf(yae paramyae, CertifiedAccountMeta.StFeed paramStFeed) {}
+  yaf(yae paramyae) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (((this.jdField_a_of_type_Yae.itemView instanceof RelativeFeedItemView)) && (xzz.a(this.jdField_a_of_type_Yae.a) != null)) {
-      xzz.a(this.jdField_a_of_type_Yae.a).a(this.jdField_a_of_type_Yae.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    }
+    ScannerActivity.a(this.a.a).b();
   }
 }
 

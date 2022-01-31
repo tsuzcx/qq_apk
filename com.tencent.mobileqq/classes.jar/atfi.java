@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.content.DialogInterface.OnClickListener;
 
-public class atfi
-  implements DialogInterface.OnCancelListener
+class atfi
+  implements DialogInterface.OnClickListener
 {
-  public atfi(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  atfi(atfg paramatfg, bdjz parambdjz) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

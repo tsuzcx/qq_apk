@@ -1,98 +1,134 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
-import com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
-
-public class arsu
-  extends arsl
+public abstract interface arsu
 {
-  public static final AtomicInteger a;
-  private Map<Integer, MethodChannel.Result> a;
+  public abstract void A();
   
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
+  public abstract void B();
   
-  public arsu(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    super(paramString, paramBinaryMessenger);
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  public abstract void C();
   
-  private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
-  {
-    if ((paramRequestPacket == null) || (paramResult == null)) {
-      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
-    }
-    int i;
-    do
-    {
-      return;
-      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
-      localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
-      localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
-      localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
-      localToServiceMsg.putWupBuffer(paramRequestPacket.body);
-      paramResult = new NewIntent(a().getApplication(), arst.class);
-      paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-      a().startServlet(paramResult);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
-  }
+  public abstract void D();
   
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new arsv(this);
-  }
+  public abstract void E();
   
-  public MethodCodec a()
-  {
-    return arsw.a;
-  }
+  public abstract void F();
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramToServiceMsg == null)
-    {
-      QLog.d("QFlutter.SSOChannel", 1, "onReceive, request is null");
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = paramToServiceMsg.extraData.getLong("REQUEST_TIME");
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
-    }
-    byte[] arrayOfByte = paramFromServiceMsg.getWupBuffer();
-    ResponsePacket localResponsePacket = new ResponsePacket();
-    localResponsePacket.isSuc = Boolean.valueOf(paramFromServiceMsg.isSuccess());
-    localResponsePacket.errCode = Integer.valueOf(paramFromServiceMsg.getResultCode());
-    localResponsePacket.body = arrayOfByte;
-    int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
-    paramFromServiceMsg = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-    a(paramToServiceMsg.getServiceCmd(), localResponsePacket, paramFromServiceMsg);
-  }
+  public abstract void G();
   
-  public void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
-  {
-    ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
-  }
+  public abstract void H();
+  
+  public abstract void I();
+  
+  public abstract void J();
+  
+  public abstract void K();
+  
+  public abstract void L();
+  
+  public abstract void M();
+  
+  public abstract void N();
+  
+  public abstract void O();
+  
+  public abstract void P();
+  
+  public abstract void Q();
+  
+  public abstract void R();
+  
+  public abstract void S();
+  
+  public abstract void T();
+  
+  public abstract void U();
+  
+  public abstract void V();
+  
+  public abstract void W();
+  
+  public abstract void X();
+  
+  public abstract void Y();
+  
+  public abstract void Z();
+  
+  public abstract void a();
+  
+  public abstract void aa();
+  
+  public abstract void ab();
+  
+  public abstract void ac();
+  
+  public abstract void ad();
+  
+  public abstract void ae();
+  
+  public abstract void af();
+  
+  public abstract void ag();
+  
+  public abstract void ah();
+  
+  public abstract void ai();
+  
+  public abstract void aj();
+  
+  public abstract void ak();
+  
+  public abstract void al();
+  
+  public abstract void am();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void v();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

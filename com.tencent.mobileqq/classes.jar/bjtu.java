@@ -1,13 +1,32 @@
-import java.util.HashMap;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
-public class bjtu
+class bjtu
+  implements ModuleDownloadListener
 {
-  public String a;
-  public HashMap<String, String> a;
+  bjtu(bjts parambjts) {}
   
-  public bjtu(bjtt parambjtt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (!paramString.equals("pictureMarkerSo.zip")) {}
+    do
+    {
+      return;
+      localObject = bjts.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    } while (!paramString.exists());
+    Object localObject = new File((String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    bjtz.b(paramString, (File)localObject);
   }
 }
 

@@ -1,206 +1,38 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URLEncoder;
-
 public class xuc
 {
-  public static int a(QQAppInterface paramQQAppInterface, Activity paramActivity, xty paramxty, String paramString, Bundle paramBundle)
-  {
-    if ((paramxty == null) || (paramxty.a() == 0))
-    {
-      a(paramQQAppInterface, paramActivity, paramString);
-      return 0;
-    }
-    for (;;)
-    {
-      try
-      {
-        switch (paramxty.c)
-        {
-        case 4: 
-        case 5: 
-        case 7: 
-        case 8: 
-        case 9: 
-          a(paramQQAppInterface, paramActivity, paramString);
-          return 0;
-        }
-      }
-      catch (Exception paramxty)
-      {
-        String str2;
-        String str3;
-        String str1;
-        Uri localUri;
-        a(paramQQAppInterface, paramActivity, paramString);
-        return 0;
-      }
-      a(paramQQAppInterface, paramActivity, paramxty.a().a() + "", paramBundle.getBoolean("issupportwpa", false));
-      return 1;
-      str2 = "";
-      str3 = paramBundle.getString("authSig");
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localUri = Uri.parse(paramString);
-        str1 = str2;
-        if (localUri != null)
-        {
-          str1 = str2;
-          if (localUri.isHierarchical()) {
-            str1 = localUri.getQueryParameter("jump_from");
-          }
-        }
-      }
-      a(paramQQAppInterface, paramActivity, paramxty.a().a() + "", str1, paramBundle.getString("authKey"), str3);
-      return 2;
-      a(paramQQAppInterface, paramActivity, paramxty.a().a() + "", paramBundle);
-      return 3;
-      a(paramActivity, paramxty);
-      return paramxty.c;
-      a(paramQQAppInterface, paramActivity, sus.a(paramxty.a().a()), paramBundle);
-      return 10;
-    }
-  }
+  private static final double[] a = { 8.524682068201687E-011D, 2.596660054649741E-009D, 7.968999456864018E-008D, 1.990671040966775E-006D, 4.0312469446528E-005D, 0.0006449987160622426D, 0.007901234576193059D, 0.07111111110920705D, 0.4444444444447249D, 1.777777777777753D, 4.000000000000001D, 4.0D, 1.0D, 1.15209191303772E-010D, 2.228761301361099E-009D, 8.190395193069459E-008D, 1.982156063161155E-006D, 4.033546194091013E-005D, 0.0006449533097443221D, 0.007901301261146751D, 0.07111103816087556D, 0.444444503190627D, 1.777777743914645D, 4.000000013233794D, 3.999999996856901D, 1.00000000034267D, 1.547687078051524E-010D, 1.268500421473298E-009D, 9.277686185111423E-008D, 1.906307010937904E-006D, 4.069800438991794E-005D, 0.0006437044724429807D, 0.007904474945844498D, 0.07110505241174936D, 0.4444528064092476D, 1.777769493443211D, 4.000005580882401D, 3.999997708116574D, 1.000000433394932D, 2.067520062500679E-010D, -6.168955470512568E-010D, 1.243676591540157E-007D, 1.583042940352061E-006D, 4.294722756077659E-005D, 0.0006324986166507344D, 0.007945447284095393D, 0.07099432778566187D, 0.44467219586283D, 1.777458818225538D, 4.000303898625272D, 3.999823386914206D, 1.000047293296129D, 2.747568479498271E-010D, -3.899147207652133E-009D, 1.973017048397605E-007D, 5.965153156196767E-007D, 5.199297147474899E-005D, 0.0005732733867543377D, 0.008229314383653041D, 0.06999093485872804D, 0.4472676429272399D, 1.772668517001409D, 4.00629078637127D, 3.995275070048785D, 1.001635434665418D };
+  private static final double[] b = { 6.785236714494553E-008D, 4.626606138282183E-007D, 6.970313581235407E-006D, 7.663766346295323E-005D, 0.0007911351522261269D, 0.007340120473110381D, 0.06067711495866884D, 0.4399494141165157D, 2.742001709766175D, 14.28966192174086D, 59.820609640320711D, 188.7899868119915D, 399.8731367825601D, 427.5641157218048D, 1.80420978748911E-007D, 1.227716431204464E-006D, 1.848439322147427E-005D, 0.0002029399590009131D, 0.002091853985024621D, 0.01937531565403395D, 0.1598586901676719D, 1.156526052742064D, 7.189634122420607D, 37.354773811947481D, 155.80993164266269D, 489.52113711585412D, 1030.9147225169565D, 1093.5883545113747D, 4.801730561318749E-007D, 3.26131784391238E-006D, 4.907313750816616E-005D, 0.0005380650667648759D, 0.005538791829105187D, 0.05122371748878655D, 0.4219029862136792D, 3.046362598735735D, 18.895299447327734D, 97.915189029455462D, 407.13940115493494D, 1274.3088990480583D, 2670.9883037012546D, 2815.7166284662544D, 1.278992633842462E-006D, 8.671826306760492E-006D, 0.0001304150882129993D, 0.001428224737372748D, 0.01468407063576879D, 0.1356140319040419D, 1.115259258597739D, 8.038708855946538D, 49.761318895895478D, 257.26842323135293D, 1066.8543146269567D, 3328.3874581009636D, 6948.8586598121638D, 7288.489339821248D, 3.409350368197033E-006D, 2.307902520310338E-005D, 0.0003469137328390183D, 0.003794994977222908D, 0.03897420967794561D, 0.3594948380414879D, 2.952287889353953D, 21.246564609514287D, 131.28727387146174D, 677.38107093296674D, 2802.3724744545048D, 8718.5731420798256D, 18141.348781638833D, 18948.925349296307D };
+  private static final double[] c = { 2.55686786764527E-015D, 3.039395379230592E-014D, 6.334375199109484E-013D, 1.504129801183301E-011D, 4.456943691855654E-010D, 1.746393051427168E-008D, 1.005922401107985E-006D, 0.0001072983894508858D, 0.05150322693642528D, 5.252796399171156E-015D, 7.202118481421006E-015D, 7.25614212299048E-013D, 1.482312146673104E-011D, 4.460267045037625E-010D, 1.746360006178868E-008D, 1.005922609132235E-006D, 0.0001072983893754511D, 0.0515032269364373D, 1.336591735935807E-014D, -1.293264306588855E-013D, 1.74501994479056E-012D, 1.041905120905698E-011D, 4.580478819805983E-010D, 1.744240545007355E-008D, 1.005946145328129E-006D, 0.0001072983743450016D, 0.05150322694065845D, 5.377161147735231E-014D, -1.139619300641373E-012D, 1.285864133522165E-011D, -5.980208600457006E-011D, 7.366689430592951E-010D, 1.673183715073036E-008D, 1.007083143581213E-006D, 0.0001072973311120371D, 0.0515032273607263D, 3.781949208485893E-014D, -4.860049688858804E-013D, 1.689835050481722E-012D, 4.588462432752426E-011D, 1.252161596337751E-010D, 1.895965843775473E-008D, 1.002071671056135E-006D, 0.0001073037119856928D, 0.05150322383300231D };
   
-  private static String a(String paramString)
+  public static double a(double paramDouble)
   {
-    if ((paramString == null) || ("".equals(paramString)) || (paramString.length() == 0)) {
-      return null;
-    }
-    try
+    paramDouble = Math.abs(paramDouble);
+    if (paramDouble < 8.5D)
     {
-      paramString = new String(bdbi.decode(paramString, 0));
-      return paramString;
+      paramDouble = paramDouble * paramDouble * 0.0625D;
+      i = (int)paramDouble * 13;
+      return paramDouble * (((((((((((a[i] * paramDouble + a[(i + 1)]) * paramDouble + a[(i + 2)]) * paramDouble + a[(i + 3)]) * paramDouble + a[(i + 4)]) * paramDouble + a[(i + 5)]) * paramDouble + a[(i + 6)]) * paramDouble + a[(i + 7)]) * paramDouble + a[(i + 8)]) * paramDouble + a[(i + 9)]) * paramDouble + a[(i + 10)]) * paramDouble + a[(i + 11)]) + a[(i + 12)];
     }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private static void a(Context paramContext, xty paramxty)
-  {
-    ndv.a(paramContext, null, String.valueOf(paramxty.a().a()), false, 1, true, -1);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
-    paramString = 1024 + "https://qm.qq.com/cgi-bin/result" + "?p=a&v=" + bdcb.c() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
-    paramQQAppInterface.putExtra("title", paramActivity.getString(2131719395));
-    paramQQAppInterface.putExtra("url", paramString);
-    paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
-    if (paramActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
+    if (paramDouble < 12.5D)
     {
-      paramActivity.startActivityForResult(paramQQAppInterface, 2);
-      return;
+      i = (int)paramDouble;
+      paramDouble -= i;
+      i = (i - 8) * 14;
+      return paramDouble * ((((((((((((b[i] * paramDouble + b[(i + 1)]) * paramDouble + b[(i + 2)]) * paramDouble + b[(i + 3)]) * paramDouble + b[(i + 4)]) * paramDouble + b[(i + 5)]) * paramDouble + b[(i + 6)]) * paramDouble + b[(i + 7)]) * paramDouble + b[(i + 8)]) * paramDouble + b[(i + 9)]) * paramDouble + b[(i + 10)]) * paramDouble + b[(i + 11)]) * paramDouble + b[(i + 12)]) + b[(i + 13)];
     }
-    paramActivity.startActivity(paramQQAppInterface);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, int paramInt)
-  {
-    paramQQAppInterface = new Intent(paramActivity, QRCardActivity.class);
-    paramQQAppInterface.putExtra("CARDMODE", paramInt);
-    paramQQAppInterface.putExtra("QRCARDSTR", paramString);
-    paramActivity.startActivity(paramQQAppInterface);
-  }
-  
-  private static final void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent();
-    if (paramBundle != null)
-    {
-      String str = paramBundle.getString("extvalue");
-      paramBundle = paramBundle.getString("exttype");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle)))
-      {
-        localIntent.putExtra("extvalue", str);
-        localIntent.putExtra("exttype", paramBundle);
-      }
-    }
-    localIntent.putExtra("source", 1);
-    syb.a(localIntent, paramQQAppInterface, paramActivity, paramString, -1);
-    PublicAccountHandler.a(paramQQAppInterface, paramString, "Pb_account_lifeservice", "mp_msg_sys_1", "scan");
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("src_type", "internal");
-    localBundle.putString("version", "1");
-    localBundle.putString("callback_type", "scheme");
-    localBundle.putString("callback_name", "open_card");
-    localBundle.putString("uin", paramString1);
-    localBundle.putString("card_type", "group");
-    localBundle.putString("authKey", paramString3);
-    localBundle.putString("authSig", paramString4);
-    localBundle.putString("from", "qrcode");
-    if (!TextUtils.isEmpty(bddb.i)) {
-      localBundle.putString("appid", bddb.i);
-    }
-    if (!TextUtils.isEmpty(bddb.j)) {
-      localBundle.putString("openid", a(bddb.j));
-    }
-    bddb.i = null;
-    bddb.j = null;
-    paramString1 = paramString2;
-    if (bdje.a(paramString2))
-    {
-      if (!(paramActivity instanceof ScannerActivity)) {
-        break label219;
-      }
-      paramString1 = "ScannerActivity";
-    }
-    for (;;)
-    {
-      localBundle.putString("jump_from", paramString1);
-      paramQQAppInterface = bdds.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + ndd.a(localBundle)).toString());
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.c();
-      }
-      return;
-      label219:
-      paramString1 = paramString2;
-      if ((paramActivity instanceof QRJumpActivity)) {
-        if (paramActivity.getIntent().getBooleanExtra("fromQrcode", false)) {
-          paramString1 = "ScannerActivity";
-        } else {
-          paramString1 = "QRJumpActivity";
-        }
-      }
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("src_type", "internal");
-    localBundle.putString("version", "1");
-    localBundle.putString("callback_type", "scheme");
-    localBundle.putString("callback_name", "open_card");
-    localBundle.putString("uin", paramString);
-    if (paramBoolean) {}
-    for (paramString = "1";; paramString = "0")
-    {
-      localBundle.putString("wpa", paramString);
-      paramQQAppInterface = bdds.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + ndd.a(localBundle)).toString());
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.b();
-        paramQQAppInterface.c();
-      }
-      return;
-    }
+    double d1 = 60.0D / paramDouble;
+    int i = (int)d1 * 9;
+    double d2 = c[i];
+    double d3 = c[(i + 1)];
+    double d4 = c[(i + 2)];
+    double d5 = c[(i + 3)];
+    double d6 = c[(i + 4)];
+    double d7 = c[(i + 5)];
+    double d8 = c[(i + 6)];
+    double d9 = c[(i + 7)];
+    double d10 = c[(i + 8)];
+    double d11 = Math.sqrt(d1);
+    return Math.exp(paramDouble) * (d11 * (d10 + (((((((d2 * d1 + d3) * d1 + d4) * d1 + d5) * d1 + d6) * d1 + d7) * d1 + d8) * d1 + d9) * d1));
   }
 }
 

@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class asch
-  extends amle
+class asch
+  implements View.OnClickListener
 {
-  public asch(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  asch(ascg paramascg) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, alpo.a(2131708051), 1).a();
-      this.a.f();
+    if (this.a.a == null) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    this.a.a(paramSosoLbsInfo);
+    this.a.a.hideSoftInputFromWindow();
+    ascg.a(this.a, ascg.a(this.a).uniseq);
+    this.a.D();
   }
 }
 

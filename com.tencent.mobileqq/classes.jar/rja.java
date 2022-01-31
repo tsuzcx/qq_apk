@@ -53,7 +53,7 @@ public class rja
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
     this.jdField_a_of_type_Rje = paramrje;
-    this.jdField_a_of_type_AndroidOsHandler = new bhow(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bhtd(this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     paramActivity = ors.a();
     if ((paramActivity != null) && ((paramActivity instanceof QQAppInterface)))
@@ -210,7 +210,7 @@ public class rja
   {
     boolean bool = true;
     this.jdField_b_of_type_Boolean = true;
-    if (!bdee.h(this.jdField_a_of_type_AndroidContentContext))
+    if (!bdin.h(this.jdField_a_of_type_AndroidContentContext))
     {
       this.jdField_c_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {

@@ -1,30 +1,36 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class bdfy
-  implements View.OnClickListener
+public class bdfy
+  extends bdfx
 {
-  bdfy(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  public String b;
+  public List<Integer> b;
+  public String c;
+  public List<Integer> c;
+  public String d;
+  public List<Integer> d;
   
-  public void onClick(View paramView)
+  public bdfx a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 1);
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_Bdfq.isShowing()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bdfq.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    bdfx localbdfx = new bdfx();
+    localbdfx.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbdfx.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
+    localbdfx.jdField_a_of_type_Int = 1;
+    return localbdfx;
+  }
+  
+  public bdfx b()
+  {
+    bdfx localbdfx = new bdfx();
+    localbdfx.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    localbdfx.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+    localbdfx.jdField_a_of_type_Int = 2;
+    return localbdfx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ import com.tencent.av.share.AVSchema;
 import com.tencent.qphone.base.util.QLog;
 
 public class mar
-  implements acgy
+  implements acln
 {
   public mar(AVSchema paramAVSchema, long paramLong) {}
   

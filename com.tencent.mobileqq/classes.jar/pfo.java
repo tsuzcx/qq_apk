@@ -86,16 +86,16 @@ public class pfo
     jdField_a_of_type_JavaLangString = pfo.class.getSimpleName();
   }
   
-  public pfo(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfo(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     b();
   }
   
   private long a(int paramInt)
   {
-    int i = bewy.a(null);
-    Object localObject = bjxj.f(ors.a());
+    int i = bfbh.a(null);
+    Object localObject = bkbq.f(ors.a());
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     do
     {
@@ -192,8 +192,8 @@ public class pfo
         paramToServiceMsg.put("param_uin", ors.a());
         paramToServiceMsg.put("param_retCode", k + "");
         paramToServiceMsg.put("param_succ", String.valueOf(bool1));
-        paramToServiceMsg.put("param_netType", bewy.a(null) + "");
-        azmz.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebCost", bool1, l, 0L, paramToServiceMsg, null);
+        paramToServiceMsg.put("param_netType", bfbh.a(null) + "");
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "actKandianFastWebCost", bool1, l, 0L, paramToServiceMsg, null);
         return;
         label518:
         if ((paramToServiceMsg != null) && (this.b.containsKey(str)))
@@ -289,7 +289,7 @@ public class pfo
         }
         localObject1 = new oidb_cmd0xad6.ReqBody();
         Object localObject2 = new oidb_cmd0xad6.Client();
-        ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+        ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
         ((oidb_cmd0xad6.Client)localObject2).uint32_type.set(1);
         ((oidb_cmd0xad6.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
         localObject2 = new oidb_cmd0xad6.ReqArticle();
@@ -436,14 +436,14 @@ public class pfo
   {
     Object localObject1 = new oidb_cmd0xb54.ReqBody();
     Object localObject2 = new oidb_cmd0xb54.Client();
-    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
     ((oidb_cmd0xb54.Client)localObject2).uint32_type.set(1);
     ((oidb_cmd0xb54.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
     localObject2 = new oidb_cmd0xb54.ReqOption();
     ((oidb_cmd0xb54.ReqOption)localObject2).uint32_need_fusion_biu_info.set(1);
     ((oidb_cmd0xb54.ReqOption)localObject2).uint32_like_count.set(1);
     ((oidb_cmd0xb54.ReqOption)localObject2).uint32_is_like.set(1);
-    if (bjxj.n(this.jdField_a_of_type_ComTencentCommonAppAppInterface) != 1) {
+    if (bkbq.n(this.jdField_a_of_type_ComTencentCommonAppAppInterface) != 1) {
       ((oidb_cmd0xb54.ReqOption)localObject2).uint32_biu_count.set(1);
     }
     ((oidb_cmd0xb54.ReqOption)localObject2).uint32_related_search_size.set(6);
@@ -552,7 +552,7 @@ public class pfo
   {
     oidb_cmd0xad7.ReqBody localReqBody = new oidb_cmd0xad7.ReqBody();
     Object localObject = new oidb_cmd0xad7.Client();
-    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
     ((oidb_cmd0xad7.Client)localObject).uint32_type.set(1);
     localReqBody.msg_client.set((MessageMicro)localObject);
     localObject = new oidb_cmd0xad7.ReqArticle();

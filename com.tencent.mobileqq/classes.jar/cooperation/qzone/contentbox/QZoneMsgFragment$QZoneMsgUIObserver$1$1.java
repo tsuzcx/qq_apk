@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import bjeq;
+import bjix;
 
 class QZoneMsgFragment$QZoneMsgUIObserver$1$1
   implements Runnable

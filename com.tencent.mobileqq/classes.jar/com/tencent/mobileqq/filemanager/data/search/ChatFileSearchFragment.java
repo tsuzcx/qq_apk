@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aqye;
-import ayfe;
-import aypx;
+import arcn;
+import ayjn;
+import ayug;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +30,12 @@ public class ChatFileSearchFragment
     this.jdField_a_of_type_JavaLangRunnable = new ChatFileSearchFragment.1(this);
   }
   
-  public ayfe a()
+  public ayjn a()
   {
-    return new aqye(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new arcn(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public aypx a()
+  public ayug a()
   {
     ChatFileManagerSearchEngine localChatFileManagerSearchEngine = new ChatFileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
     if (this.jdField_a_of_type_Int == 1)
@@ -86,11 +86,11 @@ public class ChatFileSearchFragment
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViewsInLayout();
       paramViewGroup = new TextView(getActivity());
-      paramViewGroup.setText(alpo.a(2131701958));
+      paramViewGroup.setText(alud.a(2131701970));
       paramViewGroup.setSingleLine(true);
       paramViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
       paramViewGroup.setTextSize(1, 15.0F);
-      paramViewGroup.setTextColor(getResources().getColor(2131166981));
+      paramViewGroup.setTextColor(getResources().getColor(2131166983));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
     }
     return paramLayoutInflater;

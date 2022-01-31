@@ -1,17 +1,29 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqfn
+class aqfn
   implements DialogInterface.OnClickListener
 {
-  public aqfn(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  aqfn(aqfk paramaqfk, Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    if (this.jdField_a_of_type_AndroidContentContext != null) {}
+    try
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", aqfk.a(this.jdField_a_of_type_Aqfk));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + aqfk.a(this.jdField_a_of_type_Aqfk));
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

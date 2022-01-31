@@ -1,106 +1,140 @@
-import QC.LoginInfo;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.common.app.AppInterface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.TicketManager;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import mqq.os.MqqHandler;
 
 public class bdwc
+  implements bdup<String>
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, JceStruct> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private String b;
-  private String c = "req";
-  private String d = "rsp";
+  private static IdleGetDynamic a;
+  private static final Drawable b;
+  public int a;
+  public long a;
+  public Drawable a;
+  public String a;
+  public WeakReference<VasAvatar> a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public bdwc(String paramString1, String paramString2)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    if (!allh.a().containsKey(paramString2)) {
-      allh.a(paramString2, new int[] { 13 });
-    }
+    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
+    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
   }
   
-  public bdwc(String paramString1, String paramString2, String paramString3, String paramString4)
+  public bdwc(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    if (!allh.a().containsKey(paramString2)) {
-      allh.a(paramString2, new int[] { 13 });
-    }
-    this.c = paramString3;
-    this.d = paramString4;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static LoginInfo a()
+  public bdwc(String paramString1, int paramInt, String paramString2, long paramLong)
   {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(VasAvatar paramVasAvatar)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
+    if (this.jdField_b_of_type_Int == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
+      }
+      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
+      return;
+    }
+    a(false);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
+      a(true);
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        if (paramString == null)
+        {
+          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
+          return;
+        }
+      } while ((this.jdField_b_of_type_Int == -1) && (bdom.a()));
+      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bdwc != this));
     try
     {
-      Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject == null) {
-        return null;
+      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseApngImage = true;
+      localURLDrawableOptions.mUseMemoryCache = true;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
+      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
+      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
+      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
+      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bdwc != this)) {}
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      } while (!(localObject1 instanceof QQAppInterface));
+      localObject2 = (QQAppInterface)localObject1;
+      localObject1 = ((bduj)((QQAppInterface)localObject2).getManager(235)).a;
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
+        return;
       }
-      String str = ((AppInterface)localObject).getCurrentAccountUin();
-      localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
-      LoginInfo localLoginInfo = new LoginInfo();
-      localLoginInfo.lUin = Long.parseLong(str);
-      localLoginInfo.iKeyType = 1;
-      localLoginInfo.sSKey = ((String)localObject);
-      localLoginInfo.iOpplat = 2;
-      localLoginInfo.sClientVer = bdcb.c();
-      return localLoginInfo;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("JceProtocol", 1, localException, new Object[0]);
-    }
-    return null;
-  }
-  
-  public static String a(ToServiceMsg paramToServiceMsg)
-  {
-    return paramToServiceMsg.getServiceCmd() + "_" + paramToServiceMsg.extraData.get(alkj.SEQ_KEY);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = a(paramToServiceMsg);
-    ayud.a(paramToServiceMsg);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramToServiceMsg))
-    {
-      paramFromServiceMsg = (JceStruct)this.jdField_a_of_type_JavaUtilHashMap.get(paramToServiceMsg);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramToServiceMsg);
-      return paramUniPacket.getByClass(this.d, paramFromServiceMsg);
-    }
-    return null;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, int paramInt)
-  {
-    paramUniPacket.setServantName(this.b);
-    paramUniPacket.setFuncName(paramToServiceMsg.extraData.getString("funcName"));
-    paramUniPacket.setRequestId(paramInt);
-    paramUniPacket.put(this.c, paramToServiceMsg.extraData.get("req"));
-  }
-  
-  public void a(String paramString, JceStruct paramJceStruct1, JceStruct paramJceStruct2, alkr paramalkr, boolean paramBoolean)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramalkr = ((alxl)localQQAppInterface.a(13)).createToServiceMsg(this.jdField_a_of_type_JavaLangString, paramalkr, paramBoolean);
-    String str = a(paramalkr);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramJceStruct2);
-    ayud.a(this, str);
-    paramalkr.extraData.putSerializable("req", paramJceStruct1);
-    paramalkr.extraData.putString("funcName", paramString);
-    localQQAppInterface.sendToService(paramalkr);
+      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
+      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
+      {
+        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+        return;
+      }
+    } while (((ExtensionInfo)localObject2).faceId <= 0);
+    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
   }
 }
 

@@ -16,7 +16,7 @@ class ryy
     RIJRedPacketManager.a().a(this.a.a.this$0, 5, FastWebActivity.c(this.a.a.this$0), FastWebActivity.a(this.a.a.this$0).innerUniqueID, new ryz(this), false, null);
     paramView = new orz();
     orz localorz = paramView.a("rowkey", FastWebActivity.a(this.a.a.this$0).innerUniqueID).a("content_type", Integer.valueOf(2));
-    if (bdee.h(BaseApplicationImpl.getContext())) {}
+    if (bdin.h(BaseApplicationImpl.getContext())) {}
     for (int i = 2;; i = 1)
     {
       localorz.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", ors.f());

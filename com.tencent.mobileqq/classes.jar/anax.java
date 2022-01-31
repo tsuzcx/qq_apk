@@ -1,102 +1,76 @@
-import android.opengl.GLES20;
-import android.util.Log;
-import com.tencent.qphone.base.util.QLog;
-
 public class anax
+  extends anbn
 {
-  public static final String a;
-  public static final float[] a;
-  public static String b;
-  public static String c;
-  public static String d;
+  public int a;
+  public String a;
+  public anay[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  static
+  public anax()
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131706331);
-    b = "    //抠像逻辑片段\n";
-    c = "    //用户定义，抠像后逻辑片段\n";
-    d = "}\n";
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAnay = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  public static int a(int paramInt, String paramString)
+  public static boolean a(anax paramanax)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramanax != null)
     {
-      Log.e("KeyingUtil", "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
-    }
-    return i;
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    a("glCreateProgram");
-    if (k == 0) {
-      Log.e("KeyingUtil", "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
-    {
-      Log.e("KeyingUtil", "Could not link program:" + GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
-    }
-    return k;
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        throw new IllegalArgumentException("invalid textureType!");
-      }
-      break;
-    case 1: 
-      return "#define TEXTURE_TYPE_OES\n";
-    case 2: 
-      return "#define TEXTURE_TYPE_SAMPLER2D\n";
-    case 3: 
-      return "#define TEXTURE_TYPE_Y_U_V\n";
-    case 4: 
-      return "#define TEXTURE_TYPE_Y_UV\n";
-    }
-    return "";
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      int i = GLES20.glGetError();
-      if (i != 0) {
-        Log.e("KeyingUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+      bool1 = bool2;
+      if (paramanax.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramanax.b == 0)
+        {
+          bool1 = bool2;
+          if (paramanax.jdField_a_of_type_ArrayOfAnay != null)
+          {
+            bool1 = bool2;
+            if (paramanax.jdField_a_of_type_ArrayOfAnay[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramanax.jdField_a_of_type_ArrayOfAnay[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfAnay != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfAnay.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAnay[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

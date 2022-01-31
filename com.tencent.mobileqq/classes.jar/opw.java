@@ -72,7 +72,7 @@ public class opw
     do
     {
       return;
-      localObject = ((QQAppInterface)localObject).a().b(aljq.aR, 1008);
+      localObject = ((QQAppInterface)localObject).a().b(alof.aR, 1008);
     } while ((localObject == null) || (((MessageRecord)localObject).isread) || (((MessageRecord)localObject).extLong != 1));
     ThreadManager.post(new KandianSubscribeReportUtils.1((MessageRecord)localObject), 8, null, false);
     a("0X80093FF", (MessageRecord)localObject);
@@ -88,7 +88,7 @@ public class opw
   {
     int k = 1;
     String str3 = a(paramMessageRecord);
-    String str4 = syb.a(aljq.aR) + "";
+    String str4 = syb.a(alof.aR) + "";
     Object localObject3 = KandianRedDotInfo.createRedDotFromMessageRecord(paramMessageRecord, "kandian_dt_red_dot_info");
     Object localObject1;
     String str1;
@@ -116,7 +116,7 @@ public class opw
         }
       }
       int i;
-      if (syb.b(aljq.aR) > 0)
+      if (syb.b(alof.aR) > 0)
       {
         i = 1;
         label200:
@@ -173,7 +173,7 @@ public class opw
     if (localObject == null) {
       return localHashMap;
     }
-    localObject = ((QQAppInterface)localObject).a().b(aljq.aR, 1008);
+    localObject = ((QQAppInterface)localObject).a().b(alof.aR, 1008);
     if (localObject == null) {
       return localHashMap;
     }

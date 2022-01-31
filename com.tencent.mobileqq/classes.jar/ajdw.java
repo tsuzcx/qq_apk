@@ -1,20 +1,23 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class ajdw
-  extends ajev
+class ajdw
+  implements azmw
 {
-  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
+  ajdw(ajdv paramajdv, ajdx paramajdx) {}
+  
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    paramObject = new View(paramContext);
-    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
-    paramObject.setMinimumHeight(bcwh.a(paramContext, 20.0F));
-    paramObject.setMinimumWidth((int)bdcb.g());
-    return paramObject;
+    if (paramInt == 0)
+    {
+      ajdv.a(this.jdField_a_of_type_Ajdv, true);
+      if (this.jdField_a_of_type_Ajdx != null) {
+        this.jdField_a_of_type_Ajdx.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Ajdx == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ajdx.a(false);
   }
 }
 

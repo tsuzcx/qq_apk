@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.text.Editable;
+import android.util.SparseArray;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.IdiomHbBundleInfo;
+import java.util.List;
 
 public class aiyx
-  implements DialogInterface.OnClickListener
+  implements aiyz
 {
-  public aiyx(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public aiyx(WordChainHbFragment paramWordChainHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, List<String> paramList)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
-    }
+    paramList = WordChainHbFragment.a(this.a, true);
+    this.a.c.setText(paramList);
+    WordChainHbFragment.a(this.a).put(WordChainHbFragment.a(this.a).currSelectedSubChannel, paramList);
+    this.a.c.setSelection(this.a.c.getText().length());
   }
 }
 

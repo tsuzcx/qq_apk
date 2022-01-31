@@ -1,20 +1,48 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class wex
-  implements TextView.OnEditorActionListener
+public class wex
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vep>
 {
-  wex(wew paramwew) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public wex(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (paramInt == 4)
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vep paramvep)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    wfk localwfk;
+    Object localObject1;
+    do
     {
-      this.a.d();
-      return true;
-    }
-    return false;
+      return;
+      Object localObject2 = null;
+      localwfk = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramvep.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((uvh)uwa.a(25)).a((HotSortVideoEntry)localObject1);
+    localwfk.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vep.class;
   }
 }
 

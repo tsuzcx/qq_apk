@@ -36,7 +36,7 @@ public class mic
       if (this.a.jdField_e_of_type_Boolean) {
         i = 4;
       }
-      azmb.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
+      azqk.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
       this.a.x();
       this.a.q(paramLong1);
       this.a.jdField_a_of_type_Mvw.c(true);
@@ -114,7 +114,7 @@ public class mic
     label257:
     for (int i = j;; i = 3)
     {
-      azmb.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
+      azqk.a(i, this.a.jdField_a_of_type_ComTencentAvVideoController.d() + "");
       this.a.x();
       this.a.q(paramLong1);
       this.a.jdField_a_of_type_Mvw.c(true);

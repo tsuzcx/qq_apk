@@ -1,42 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Map;
 
-class ybp
-  implements yvn<CertifiedAccountRead.StGetCommentListRsp>
+final class ybp
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
-  ybp(ybg paramybg, CertifiedAccountMeta.StFeed paramStFeed, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetCommentListRsp paramStGetCommentListRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    ybg.a(this.jdField_a_of_type_Ybg, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), true);
-    if (paramStGetCommentListRsp == null)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      QLog.d(ybg.a(), 1, "getCommentSize: rsp is null");
+      if (paramStGetMainPageRsp != null) {
+        ybo.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      }
+    }
+    else {
       return;
     }
-    if (ybg.a(this.jdField_a_of_type_Ybg).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
-    {
-      QLog.d(ybg.a(), 2, "getCommentSize:" + paramStGetCommentListRsp.vecComment.size() + ", attachInfo:" + paramStGetCommentListRsp.extInfo.attachInfo.get() + "isFinish：" + paramStGetCommentListRsp.isFinish.get());
-      ((ArrayList)ybg.a(this.jdField_a_of_type_Ybg).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(this.jdField_a_of_type_Ybg.a(paramStGetCommentListRsp.vecComment.get(), this.jdField_a_of_type_JavaLangString));
-    }
-    ybg localybg = this.jdField_a_of_type_Ybg;
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-    COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
-    if (paramStGetCommentListRsp.isFinish.get() == 0) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ybg.a(localybg, str, localStCommonExt, paramBoolean, true);
-      uht.a().dispatch(this.jdField_a_of_type_Ybg.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_Ybg.hashCode()), this.jdField_a_of_type_JavaLangString }));
-      return;
-    }
+    QLog.w(ybo.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 

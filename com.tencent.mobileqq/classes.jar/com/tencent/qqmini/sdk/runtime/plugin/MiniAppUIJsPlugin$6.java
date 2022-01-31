@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class MiniAppUIJsPlugin$6
   implements Runnable
 {
-  MiniAppUIJsPlugin$6(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgkd parambgkd) {}
+  MiniAppUIJsPlugin$6(MiniAppUIJsPlugin paramMiniAppUIJsPlugin, bgok parambgok) {}
   
   public void run()
   {

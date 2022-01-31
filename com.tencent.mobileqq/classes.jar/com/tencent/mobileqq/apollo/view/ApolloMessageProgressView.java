@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -21,10 +21,10 @@ public class ApolloMessageProgressView
   {
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    localPaint.setTextSize(aekt.a(15.0F, getResources()));
+    localPaint.setTextSize(aepi.a(15.0F, getResources()));
     localPaint.setColor(-1);
     localPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(alpo.a(2131700837), this.a, getHeight() - aekt.a(25.0F, getResources()), localPaint);
+    paramCanvas.drawText(alud.a(2131700849), this.a, getHeight() - aepi.a(25.0F, getResources()), localPaint);
   }
   
   @TargetApi(11)
@@ -33,7 +33,7 @@ public class ApolloMessageProgressView
     if (this.d == 1)
     {
       d();
-      this.b -= aekt.a(7.0F, getResources());
+      this.b -= aepi.a(7.0F, getResources());
       this.f = -822083584;
       b(paramCanvas);
       c(paramCanvas);

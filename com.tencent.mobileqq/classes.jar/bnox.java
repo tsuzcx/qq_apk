@@ -1,10 +1,20 @@
-public abstract interface bnox
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+
+public class bnox
+  extends Handler
 {
-  public abstract void c();
+  public bnox(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void d();
-  
-  public abstract void i();
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 

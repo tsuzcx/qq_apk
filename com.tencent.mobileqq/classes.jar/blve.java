@@ -1,136 +1,36 @@
-import android.content.res.AssetManager;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.util.QIMFileUtils.1;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import java.util.List;
 
 public class blve
 {
-  public static File a()
+  public static blrs a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getCacheDir();
+    return new blto(Integer.valueOf(paramString).intValue());
   }
   
-  public static String a(File paramFile, String paramString)
+  public static blrs a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    paramFile = new File(paramFile + File.separator + paramString);
-    if (paramFile.exists())
-    {
-      paramFile = bdcs.a(paramFile);
-      if ((paramFile == null) || (paramFile.length <= 0)) {
-        return null;
-      }
-      if (Build.VERSION.SDK_INT <= 8) {
-        return new String(paramFile);
-      }
-      try
-      {
-        paramFile = new String(paramFile, "UTF-8");
-        return paramFile;
-      }
-      catch (UnsupportedEncodingException paramFile)
-      {
-        if (QLog.isDevelopLevel()) {
-          paramFile.printStackTrace();
-        }
-        return null;
-      }
+    bmvv localbmvv = ((blvi)blqr.a(4)).a(paramString2);
+    if ((localbmvv instanceof bmwf)) {
+      return new blvb((bmwf)localbmvv, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
     }
-    return "";
+    if ((localbmvv instanceof bmwc)) {
+      return new blva((bmwc)localbmvv, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    }
+    if ((localbmvv instanceof bmvw)) {
+      return new blux((bmvw)localbmvv, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    }
+    return null;
   }
   
-  public static String a(String paramString)
+  public static blrs a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    String str1 = "";
-    Object localObject2 = null;
-    Object localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        paramString = BaseApplication.getContext().getAssets().open(paramString);
-        localObject1 = paramString;
-        localObject2 = paramString;
-        String str2 = ndq.a(paramString);
-        localObject1 = str2;
-        localObject2 = localObject1;
-      }
-      catch (IOException paramString)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramString.printStackTrace();
-        localObject2 = str1;
-        if (localObject1 == null) {
-          continue;
-        }
-        try
-        {
-          ((InputStream)localObject1).close();
-          return "";
-        }
-        catch (Exception paramString)
-        {
-          localObject2 = str1;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString.printStackTrace();
-        return "";
-      }
-      finally
-      {
-        if (localObject2 == null) {
-          break label113;
-        }
-      }
-      try
-      {
-        paramString.close();
-        localObject2 = localObject1;
-      }
-      catch (Exception paramString)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString.printStackTrace();
-        return localObject1;
-      }
-    }
-    return localObject2;
-    try
-    {
-      ((InputStream)localObject2).close();
-      label113:
-      throw paramString;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-      }
-    }
+    return new blxc(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
   }
   
-  public static void a(File paramFile, String paramString1, String paramString2)
+  public static blrs b(String paramString)
   {
-    ThreadManager.getFileThreadHandler().post(new QIMFileUtils.1(paramFile, paramString1, paramString2));
+    return new blvf(paramString);
   }
 }
 

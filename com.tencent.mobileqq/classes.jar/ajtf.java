@@ -1,12 +1,20 @@
-public final class ajtf
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+
+public class ajtf
+  implements xkb
 {
-  public final int a;
-  public final int b;
+  public ajtf(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  ajtf(int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void a(xkl paramxkl)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a.b(paramxkl);
+  }
+  
+  public void b()
+  {
+    this.a.a();
   }
 }
 

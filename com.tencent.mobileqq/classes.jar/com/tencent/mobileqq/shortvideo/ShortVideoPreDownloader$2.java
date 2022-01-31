@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayzf;
+import azdo;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShortVideoPreDownloader$2
   implements Runnable
 {
-  public ShortVideoPreDownloader$2(ayzf paramayzf) {}
+  public ShortVideoPreDownloader$2(azdo paramazdo) {}
   
   public void run()
   {
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      ayzf.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
+      azdo.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
     }
   }
 }

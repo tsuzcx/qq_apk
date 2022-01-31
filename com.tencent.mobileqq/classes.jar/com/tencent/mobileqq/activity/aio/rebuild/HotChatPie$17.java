@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agmy;
-import alpu;
-import bcco;
+import agrn;
+import aluj;
+import bcgx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 
 public class HotChatPie$17
   implements Runnable
 {
-  public HotChatPie$17(agmy paramagmy, HotChatInfo paramHotChatInfo) {}
+  public HotChatPie$17(agrn paramagrn, HotChatInfo paramHotChatInfo) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bcco == null) {
-      this.this$0.jdField_a_of_type_Bcco = new bcco(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, agmy.b(this.this$0), agmy.b(this.this$0), this.this$0.jdField_a_of_type_Bblx, this.this$0.V, null);
+    if (this.this$0.jdField_a_of_type_Bcgx == null) {
+      this.this$0.jdField_a_of_type_Bcgx = new bcgx(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, agrn.b(this.this$0), agrn.b(this.this$0), this.this$0.jdField_a_of_type_Bbqg, this.this$0.V, null);
     }
-    alpu localalpu = (alpu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35);
+    aluj localaluj = (aluj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35);
     if (this.a.userCreate == 1) {
-      localalpu.a(this.a.troopUin);
+      localaluj.a(this.a.troopUin);
     }
     while (this.a.uuid == null) {
       return;
     }
-    localalpu.a(this.a.uuid.getBytes(), this.a.troopUin);
+    localaluj.a(this.a.uuid.getBytes(), this.a.troopUin);
   }
 }
 

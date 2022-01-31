@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
-import baux;
+import bazg;
 import java.net.URL;
 
 public class VideoDecoder
-  implements baux
+  implements bazg
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

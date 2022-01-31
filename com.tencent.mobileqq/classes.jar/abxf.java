@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class abxf
-  implements DialogInterface.OnClickListener
+  implements abxt
 {
   abxf(abxe paramabxe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(auef paramauef, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a = paramauef;
+    abxe.a(this.a, paramInt);
   }
 }
 

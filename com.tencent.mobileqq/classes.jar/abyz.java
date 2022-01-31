@@ -1,32 +1,72 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class abyz
-  extends almw
+  implements abwu
 {
-  public abyz(AddRequestActivity paramAddRequestActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public abyz(CustomWebView paramCustomWebView, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("__nativeAPICallID__");
+  }
+  
+  public void onComplete()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
+      }
     }
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onFailure(int paramInt, String paramString)
   {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
+      }
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onPermission(int paramInt)
   {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
+      }
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
+      }
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+      }
     }
   }
 }

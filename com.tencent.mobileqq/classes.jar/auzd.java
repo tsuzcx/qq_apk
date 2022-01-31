@@ -1,15 +1,15 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 class auzd
-  extends nab
+  implements DialogInterface.OnClickListener
 {
-  auzd(auza paramauza, auzh paramauzh) {}
+  auzd(auzb paramauzb) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Auzh != null) {
-      this.jdField_a_of_type_Auzh.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    this.a.a.a.dismiss();
   }
 }
 

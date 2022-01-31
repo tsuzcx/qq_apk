@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import bgox;
+import bgte;
 
 public class MiniAppVideoPlayer$8$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$8$1(bgox parambgox) {}
+  public MiniAppVideoPlayer$8$1(bgte parambgte) {}
   
   public void run()
   {

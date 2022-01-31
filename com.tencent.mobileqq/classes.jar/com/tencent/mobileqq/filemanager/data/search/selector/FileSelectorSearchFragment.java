@@ -7,33 +7,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqyo;
-import aqyt;
-import arqj;
-import ayfe;
-import ayjl;
-import aypx;
+import arcx;
+import ardc;
+import arus;
+import ayjn;
+import aynu;
+import ayug;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
 public class FileSelectorSearchFragment
-  extends BaseSearchFragment<ayjl>
-  implements aqyo
+  extends BaseSearchFragment<aynu>
+  implements arcx
 {
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aqyt jdField_a_of_type_Aqyt;
-  private arqj jdField_a_of_type_Arqj;
+  private ardc jdField_a_of_type_Ardc;
+  private arus jdField_a_of_type_Arus;
   private FileSelectorSearchEngine jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine;
   
-  public ayfe a()
+  public ayjn a()
   {
-    this.jdField_a_of_type_Aqyt = new aqyt(this);
-    return this.jdField_a_of_type_Aqyt;
+    this.jdField_a_of_type_Ardc = new ardc(this);
+    return this.jdField_a_of_type_Ardc;
   }
   
-  public aypx a()
+  public ayug a()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine = new FileSelectorSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine.a(this.jdField_a_of_type_AndroidOsBundle);
@@ -44,19 +44,19 @@ public class FileSelectorSearchFragment
   {
     String str = "";
     if (this.jdField_a_of_type_Int == 16) {
-      str = getActivity().getString(2131692517);
+      str = getActivity().getString(2131692518);
     }
     do
     {
       return str;
       if (this.jdField_a_of_type_Int == 17) {
-        return getActivity().getString(2131692500);
+        return getActivity().getString(2131692501);
       }
       if (this.jdField_a_of_type_Int == 18) {
-        return getActivity().getString(2131692476);
+        return getActivity().getString(2131692477);
       }
     } while (this.jdField_a_of_type_Int != 19);
-    return getActivity().getString(2131692575);
+    return getActivity().getString(2131692576);
   }
   
   public void a(int paramInt)
@@ -77,31 +77,31 @@ public class FileSelectorSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367555).setVisibility(8);
-    paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375671);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131367565).setVisibility(8);
+    paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375722);
     paramBundle = new QFileSendBottomView(paramLayoutInflater.getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     paramViewGroup.addView(paramBundle, localLayoutParams);
     paramBundle.a(this.jdField_a_of_type_ComTencentWidgetListView);
-    this.jdField_a_of_type_Arqj = arqj.a(getActivity().app, getActivity(), paramBundle, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_Arqj.a(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_Arqj.b();
+    this.jdField_a_of_type_Arus = arus.a(getActivity().app, getActivity(), paramBundle, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Arus.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Arus.b();
     return paramLayoutInflater;
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Arqj != null) {
-      this.jdField_a_of_type_Arqj.a();
+    if (this.jdField_a_of_type_Arus != null) {
+      this.jdField_a_of_type_Arus.a();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_Arqj.a();
+    this.jdField_a_of_type_Arus.a();
   }
 }
 

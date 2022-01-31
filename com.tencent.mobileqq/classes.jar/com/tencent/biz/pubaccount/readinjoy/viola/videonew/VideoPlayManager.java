@@ -124,7 +124,7 @@ public class VideoPlayManager
         return;
       }
       paramsqh.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      ((View)localObject).setId(2131375243);
+      ((View)localObject).setId(2131375294);
       paramsqh.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
       sqh.a(paramsqh).a((IVideoViewBase)localObject);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();

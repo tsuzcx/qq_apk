@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bmzu;
-import bmzw;
+import bneg;
+import bnei;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(bmzw parambmzw) {}
+  public EditVideoTagPresenter$2$1(bnei parambnei) {}
   
   public void run()
   {
-    bmzu.a(bmzu.a(this.a.a), bmzu.a(this.a.a));
+    bneg.a(bneg.a(this.a.a), bneg.a(this.a.a));
   }
 }
 

@@ -28,8 +28,8 @@ import org.json.JSONObject;
 
 public class scx
 {
-  private bepp jdField_a_of_type_Bepp;
-  private bevy jdField_a_of_type_Bevy;
+  private bety jdField_a_of_type_Bety;
+  private bfah jdField_a_of_type_Bfah;
   private final String jdField_a_of_type_JavaLangString = scx.class.getSimpleName();
   private String b;
   
@@ -40,8 +40,8 @@ public class scx
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(paramActivity);
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(paramActivity);
     }
   }
   
@@ -85,24 +85,24 @@ public class scx
   
   private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_Bevy != null) {
+    if (this.jdField_a_of_type_Bfah != null) {
       return;
     }
-    this.jdField_a_of_type_Bevy = new scy(this, paramArticleInfo, paramInt);
-    WXShareHelper.a().a(this.jdField_a_of_type_Bevy);
+    this.jdField_a_of_type_Bfah = new scy(this, paramArticleInfo, paramInt);
+    WXShareHelper.a().a(this.jdField_a_of_type_Bfah);
   }
   
   public static boolean a()
   {
-    return TextUtils.equals("1", (CharSequence)bjxj.a("kandian_daily_fast_web_bottom_share", "0"));
+    return TextUtils.equals("1", (CharSequence)bkbq.a("kandian_daily_fast_web_bottom_share", "0"));
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bevy != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_Bevy);
+    if (this.jdField_a_of_type_Bfah != null) {
+      WXShareHelper.a().b(this.jdField_a_of_type_Bfah);
     }
-    this.jdField_a_of_type_Bepp = null;
+    this.jdField_a_of_type_Bety = null;
   }
   
   void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
@@ -145,7 +145,7 @@ public class scx
       localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
       localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
       localIntent.putExtra("image_url_remote", paramString4);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696873, new Object[] { str }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696875, new Object[] { str }));
       localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
       if (paramJSONObject.has("contentAction")) {
         localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
@@ -200,13 +200,13 @@ public class scx
       if (paramJSONObject != null)
       {
         a(paramActivity);
-        if (!this.jdField_a_of_type_Bepp.isShowing())
+        if (!this.jdField_a_of_type_Bety.isShowing())
         {
-          this.jdField_a_of_type_Bepp.c(2131694217);
-          this.jdField_a_of_type_Bepp.show();
+          this.jdField_a_of_type_Bety.c(2131694219);
+          this.jdField_a_of_type_Bety.show();
         }
         localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        zbj.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new scz(this, localIntent, paramActivity));
+        zfy.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new scz(this, localIntent, paramActivity));
       }
       return;
       localIntent.putExtra("isWebCompShare", true);
@@ -223,13 +223,13 @@ public class scx
     }
     label807:
     a(paramActivity);
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
     {
       l = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
       }
-      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
     }
     paramString1 = paramJSONObject.optString("puin", null);
     if (paramString1 == null) {
@@ -274,9 +274,9 @@ public class scx
         }
         for (;;)
         {
-          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131700022)))
+          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131700034)))
           {
-            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131700022));
+            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131700034));
             if (bool)
             {
               paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
@@ -299,7 +299,7 @@ public class scx
           }
           for (;;)
           {
-            paramJSONObject = azqu.a(localIntent.getExtras());
+            paramJSONObject = azvd.a(localIntent.getExtras());
             if (paramJSONObject != null) {
               break label1726;
             }
@@ -386,7 +386,7 @@ public class scx
             }
             else
             {
-              localIntent.putExtra("app_name", paramActivity.getString(2131696889));
+              localIntent.putExtra("app_name", paramActivity.getString(2131696891));
             }
           }
           localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
@@ -457,11 +457,11 @@ public class scx
           paramString1.putStringArrayList("image_url", paramString3);
           paramString1.putLong("req_share_id", 0L);
           paramString1.putInt("iUrlInfoFrm", 1);
-          paramString1.putLong("share_begin_time", beei.b);
-          if (bjao.a((QQAppInterface)localAppInterface, paramActivity, paramString1, null, 1)) {
+          paramString1.putLong("share_begin_time", beir.b);
+          if (bjev.a((QQAppInterface)localAppInterface, paramActivity, paramString1, null, 1)) {
             break;
           }
-          xxb.a(1, 2131689512);
+          ybk.a(1, 2131689512);
           sdn.b(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 2, -1, false, false);
           return;
         }
@@ -483,15 +483,15 @@ public class scx
     for (int i = 3;; i = 4)
     {
       if (!WXShareHelper.a().a()) {
-        paramInt = 2131721478;
+        paramInt = 2131721491;
       }
       while (paramInt != -1)
       {
-        xxb.a(0, paramInt);
+        ybk.a(0, paramInt);
         return;
         paramInt = j;
         if (!WXShareHelper.a().b()) {
-          paramInt = 2131721479;
+          paramInt = 2131721492;
         }
       }
       a(paramArticleInfo, i);
@@ -502,8 +502,8 @@ public class scx
         return;
       }
       a(paramActivity);
-      this.jdField_a_of_type_Bepp.c(2131694217);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.c(2131694219);
+      this.jdField_a_of_type_Bety.show();
       ThreadManager.post(new FastWebShareUtils.4(this, str1, bool, paramString3, localAppInterface, paramArticleInfo), 8, null, false);
       return;
       label928:
@@ -521,7 +521,7 @@ public class scx
             if (QLog.isColorLevel()) {
               QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
             }
-            QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+            QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
             return;
           }
           if (QLog.isColorLevel()) {
@@ -544,7 +544,7 @@ public class scx
             for (;;)
             {
               paramArticleInfo = paramArticleInfo;
-              QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+              QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
               paramArticleInfo.printStackTrace();
             }
           }

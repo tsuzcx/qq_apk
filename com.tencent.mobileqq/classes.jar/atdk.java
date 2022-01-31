@@ -1,37 +1,14 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
 
 class atdk
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  implements CustomizedShareForQQ
 {
-  atdk(atdj paramatdj, String paramString) {}
+  atdk(atdh paramatdh) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void shareToQQ(Bundle paramBundle)
   {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
-    }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
-    {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Atdj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Atdj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+    ateg.a().c(paramBundle);
   }
 }
 

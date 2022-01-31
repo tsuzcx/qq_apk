@@ -1,31 +1,11 @@
-import com.tencent.open.appcommon.JsWebWorker;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bfem
 {
-  public Class a;
-  public String a;
-  public Map<Integer, Object> a;
-  public Map<String, Method> b = new HashMap();
-  
-  public bfem(JsWebWorker paramJsWebWorker)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
-    }
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
 }
 
 

@@ -1,8 +1,6 @@
-import android.view.MotionEvent;
-
-public abstract interface bhsy
+public abstract interface bhsy<T>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(T paramT);
 }
 
 

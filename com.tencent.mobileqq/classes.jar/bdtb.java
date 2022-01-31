@@ -1,16 +1,14 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
-
-class bdtb
-  implements bdsw
+public class bdtb
 {
-  bdtb(bdta parambdta) {}
-  
-  public void a(Drawable paramDrawable)
-  {
-    QLog.i("VipWallpaper", 1, "mView#draw");
-    bdta.a(this.a).a(paramDrawable);
-  }
+  public static int b = 2;
+  public static int c = 1;
+  public int a;
+  public bdsy a;
+  public String a;
+  public bdsy b;
+  public bdsy c;
+  public int d;
+  public int e;
 }
 
 

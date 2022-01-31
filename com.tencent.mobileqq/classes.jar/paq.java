@@ -5,7 +5,7 @@ import com.tencent.widget.AdapterView;
 import java.util.List;
 
 public class paq
-  implements bhqp
+  implements bhuw
 {
   public paq(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   

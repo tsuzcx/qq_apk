@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aoxe;
-import aoxf;
-import aoxh;
+import apbn;
+import apbo;
+import apbq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.List;
 public class DanmakuMeasureManager$2
   implements Runnable
 {
-  public DanmakuMeasureManager$2(aoxe paramaoxe, List paramList, aoxf paramaoxf) {}
+  public DanmakuMeasureManager$2(apbn paramapbn, List paramList, apbo paramapbo) {}
   
   public void run()
   {
     Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
     while (localIterator.hasNext())
     {
-      aoxh localaoxh = (aoxh)localIterator.next();
-      aoxe.a(aoxe.a(this.this$0), localaoxh);
-      if (this.jdField_a_of_type_Aoxf != null) {
-        this.jdField_a_of_type_Aoxf.a(localaoxh);
+      apbq localapbq = (apbq)localIterator.next();
+      apbn.a(apbn.a(this.this$0), localapbq);
+      if (this.jdField_a_of_type_Apbo != null) {
+        this.jdField_a_of_type_Apbo.a(localapbq);
       }
     }
   }

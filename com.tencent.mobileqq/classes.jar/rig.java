@@ -45,7 +45,7 @@ public class rig
   
   public rig(QQAppInterface paramQQAppInterface, Activity paramActivity, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
   {
-    this.jdField_a_of_type_Int = aekt.a(2.0F, paramActivity.getResources());
+    this.jdField_a_of_type_Int = aepi.a(2.0F, paramActivity.getResources());
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_Ocs = new ocs();
     this.jdField_a_of_type_Ocs.a(paramQQAppInterface, paramActivity, paramVideoFeedsRecyclerView);
@@ -77,20 +77,20 @@ public class rig
     Object localObject;
     if ((paramrbt.u == null) && ((paramrbt instanceof rbs)))
     {
-      paramrbt.u = ((ViewGroup)((ViewStub)((rbs)paramrbt).p.findViewById(2131379627)).inflate());
-      int i = aekt.a(4.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      paramrbt.u = ((ViewGroup)((ViewStub)((rbs)paramrbt).p.findViewById(2131379685)).inflate());
+      int i = aepi.a(4.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
       paramrbt.u.setPadding(i, i, i, i);
       localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setCornerRadius(aekt.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+      ((GradientDrawable)localObject).setCornerRadius(aepi.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
       ((GradientDrawable)localObject).setColor(Color.parseColor("#99242424"));
       paramrbt.u.setBackgroundDrawable((Drawable)localObject);
-      paramrbt.h = ((URLImageView)paramrbt.u.findViewById(2131367614));
-      paramrbt.P = ((TextView)paramrbt.u.findViewById(2131367621));
-      paramrbt.Q = ((TextView)paramrbt.u.findViewById(2131367620));
-      paramrbt.jdField_v_of_type_AndroidViewView = paramrbt.u.findViewById(2131369651);
-      paramrbt.jdField_w_of_type_AndroidViewView = paramrbt.u.findViewById(2131367619);
-      paramrbt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView = ((ReadInjoyHeaderAdDownloadView)paramrbt.u.findViewById(2131367611));
-      paramrbt.x = paramrbt.u.findViewById(2131367613);
+      paramrbt.h = ((URLImageView)paramrbt.u.findViewById(2131367624));
+      paramrbt.P = ((TextView)paramrbt.u.findViewById(2131367631));
+      paramrbt.Q = ((TextView)paramrbt.u.findViewById(2131367630));
+      paramrbt.jdField_v_of_type_AndroidViewView = paramrbt.u.findViewById(2131369668);
+      paramrbt.jdField_w_of_type_AndroidViewView = paramrbt.u.findViewById(2131367629);
+      paramrbt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView = ((ReadInjoyHeaderAdDownloadView)paramrbt.u.findViewById(2131367621));
+      paramrbt.x = paramrbt.u.findViewById(2131367623);
     }
     if (paramrbt.u != null)
     {
@@ -137,14 +137,14 @@ public class rig
             localURLDrawableOptions.mUseMemoryCache = false;
           }
           localURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-          localURLDrawableOptions.mRequestWidth = aekt.a(paramInt2, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          localURLDrawableOptions.mRequestHeight = aekt.a(paramInt2, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          localURLDrawable.setTag(bcuq.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, paramInt1));
+          localURLDrawableOptions.mRequestWidth = aepi.a(paramInt2, this.jdField_a_of_type_AndroidAppActivity.getResources());
+          localURLDrawableOptions.mRequestHeight = aepi.a(paramInt2, this.jdField_a_of_type_AndroidAppActivity.getResources());
+          localURLDrawable.setTag(bcyz.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, paramInt1));
           if (paramInt3 != 0) {
             continue;
           }
           localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 1 });
-          localURLDrawable.setDecodeHandler(bcuq.j);
+          localURLDrawable.setDecodeHandler(bcyz.j);
         }
         catch (Exception paramURLImageView)
         {
@@ -154,7 +154,7 @@ public class rig
           }
           QLog.d("VideoFeedsSoftAdBarController", 2, "后台下发的url格式有问题：" + paramString);
           return;
-          localURLDrawable.setDecodeHandler(bcuq.i);
+          localURLDrawable.setDecodeHandler(bcyz.i);
           continue;
         }
         paramURLImageView.setImageDrawable(localURLDrawable);
@@ -163,7 +163,7 @@ public class rig
           continue;
         }
         localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 3 });
-        localURLDrawable.setDecodeHandler(bcuq.j);
+        localURLDrawable.setDecodeHandler(bcyz.j);
       }
     }
   }
@@ -196,9 +196,9 @@ public class rig
         label73:
         ((TextView)localObject).setVisibility(j);
       }
-      if ((i != 0) && (paramrbt.t != null) && (paramrbt.t.findViewById(2131367567) != null))
+      if ((i != 0) && (paramrbt.t != null) && (paramrbt.t.findViewById(2131367577) != null))
       {
-        localObject = paramrbt.t.findViewById(2131367567);
+        localObject = paramrbt.t.findViewById(2131367577);
         if (!paramBoolean) {
           break label172;
         }
@@ -285,7 +285,7 @@ public class rig
       return;
     }
     Object localObject = this.jdField_a_of_type_Rbt.u.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = aekt.a(26.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    ((ViewGroup.LayoutParams)localObject).height = aepi.a(26.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     ((ViewGroup.LayoutParams)localObject).width = -2;
     this.jdField_a_of_type_Rbt.u.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_Rbt.Q.setVisibility(8);
@@ -293,14 +293,14 @@ public class rig
     this.jdField_a_of_type_Rbt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView.setVisibility(8);
     this.jdField_a_of_type_Rbt.x.setVisibility(8);
     localObject = this.jdField_a_of_type_Rbt.h.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = aekt.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    ((ViewGroup.LayoutParams)localObject).height = aekt.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    ((ViewGroup.LayoutParams)localObject).width = aepi.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    ((ViewGroup.LayoutParams)localObject).height = aepi.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     this.jdField_a_of_type_Rbt.h.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewView.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = -2;
     this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_Rbt.Q.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).topMargin = aekt.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    ((LinearLayout.LayoutParams)localObject).topMargin = aepi.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     this.jdField_a_of_type_Rbt.Q.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
@@ -317,29 +317,29 @@ public class rig
       {
         if ((paramrbt.u == null) && ((paramrbt instanceof rbs)))
         {
-          paramrbt.u = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379627)).inflate());
+          paramrbt.u = ((ViewGroup)((ViewStub)paramrbt.p.findViewById(2131379685)).inflate());
           localObject1 = new GradientDrawable();
-          ((GradientDrawable)localObject1).setCornerRadius(aekt.a(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+          ((GradientDrawable)localObject1).setCornerRadius(aepi.a(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
           ((GradientDrawable)localObject1).setColor(Color.parseColor("#E6FFFFFF"));
-          paramrbt.jdField_v_of_type_AndroidViewViewGroup = ((LinearLayout)paramrbt.u.findViewById(2131379629));
+          paramrbt.jdField_v_of_type_AndroidViewViewGroup = ((LinearLayout)paramrbt.u.findViewById(2131379687));
           paramrbt.jdField_v_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject1);
           paramrbt.jdField_v_of_type_AndroidViewViewGroup.setVisibility(0);
-          paramrbt.i = ((URLImageView)paramrbt.u.findViewById(2131367617));
-          paramrbt.j = ((URLImageView)paramrbt.u.findViewById(2131367616));
-          paramrbt.R = ((TextView)paramrbt.u.findViewById(2131367615));
+          paramrbt.i = ((URLImageView)paramrbt.u.findViewById(2131367627));
+          paramrbt.j = ((URLImageView)paramrbt.u.findViewById(2131367626));
+          paramrbt.R = ((TextView)paramrbt.u.findViewById(2131367625));
           paramrbt.S = ((TextView)paramrbt.u.findViewById(2131361964));
           paramrbt.T = ((TextView)paramrbt.u.findViewById(2131361961));
           paramrbt.U = ((TextView)paramrbt.u.findViewById(2131361963));
           paramrbt.m = ((ImageView)paramrbt.u.findViewById(2131361960));
           localObject2 = new GradientDrawable();
-          ((GradientDrawable)localObject2).setCornerRadius(aekt.a(12.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+          ((GradientDrawable)localObject2).setCornerRadius(aepi.a(12.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
           ((GradientDrawable)localObject2).setColor(Color.parseColor("#12B7F5"));
           paramrbt.jdField_a_of_type_AndroidWidgetButton = ((Button)paramrbt.u.findViewById(2131361959));
           paramrbt.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable((Drawable)localObject2);
-          paramrbt.b = ((ReadInjoyHeaderAdDownloadView)paramrbt.u.findViewById(2131367612));
+          paramrbt.b = ((ReadInjoyHeaderAdDownloadView)paramrbt.u.findViewById(2131367622));
           paramrbt.jdField_w_of_type_AndroidViewViewGroup = ((ViewGroup)paramrbt.u.findViewById(2131361962));
           paramrbt.jdField_w_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject1);
-          paramrbt.y = paramrbt.u.findViewById(2131367618);
+          paramrbt.y = paramrbt.u.findViewById(2131367628);
         }
         if (paramrbt.u == null) {
           break;
@@ -352,8 +352,8 @@ public class rig
         c();
         if (a() == 0)
         {
-          a(paramrbt.i, (String)localObject1, aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, 0);
-          a(paramrbt.j, (String)localObject1, aekt.a(5.2F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 75, 1);
+          a(paramrbt.i, (String)localObject1, aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, 0);
+          a(paramrbt.j, (String)localObject1, aepi.a(5.2F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 75, 1);
           paramrbt.y.setVisibility(4);
           a(a(), paramrbt);
           if (a() == null) {
@@ -394,8 +394,8 @@ public class rig
         }
         else
         {
-          a(paramrbt.i, (String)localObject1, aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, -1);
-          a(paramrbt.j, (String)localObject1, aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, -1);
+          a(paramrbt.i, (String)localObject1, aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, -1);
+          a(paramrbt.j, (String)localObject1, aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, -1);
           paramrbt.y.setVisibility(0);
           continue;
         }
@@ -428,17 +428,17 @@ public class rig
     }
     this.jdField_a_of_type_Rbt.j.setVisibility(8);
     Object localObject = new GradientDrawable();
-    ((GradientDrawable)localObject).setCornerRadius(aekt.a(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+    ((GradientDrawable)localObject).setCornerRadius(aepi.a(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
     ((GradientDrawable)localObject).setColor(Color.parseColor("#E6FFFFFF"));
     this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject);
     this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewViewGroup.setVisibility(0);
     localObject = this.jdField_a_of_type_Rbt.u.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).height = -2;
     ((ViewGroup.LayoutParams)localObject).width = -2;
-    int i = aekt.a(4.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    int i = aepi.a(4.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     this.jdField_a_of_type_Rbt.u.setPadding(0, i, 0, i);
     this.jdField_a_of_type_Rbt.u.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    a(this.jdField_a_of_type_Rbt.i, str, aekt.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, 0);
+    a(this.jdField_a_of_type_Rbt.i, str, aepi.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 72, 0);
     a(this.jdField_a_of_type_Rbt, true);
   }
   
@@ -466,12 +466,12 @@ public class rig
     int m = localLayoutParams1.width;
     int n = localLayoutParams1.height;
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    int i1 = aekt.a(41.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i2 = aekt.a(197.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i3 = aekt.a(33.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    int i1 = aepi.a(41.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    int i2 = aepi.a(197.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+    int i3 = aepi.a(33.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     int i4 = this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewView.getMeasuredWidth();
     if (a() == 1) {}
-    for (int i = aekt.a(123.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - i4;; i = aekt.a(140.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - i4)
+    for (int i = aepi.a(123.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - i4;; i = aepi.a(140.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - i4)
     {
       ViewGroup.LayoutParams localLayoutParams2 = this.jdField_a_of_type_Rbt.jdField_v_of_type_AndroidViewView.getLayoutParams();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new rik(this, localLayoutParams, j, i2 - j, k, i1 - k, localLayoutParams1, m, i3 - n, n, localLayoutParams2, i4, i));
@@ -518,29 +518,29 @@ public class rig
     {
       paramrbt.i.setPadding(0, 0, 0, 0);
       paramrbt.j.setPadding(0, 0, 0, 0);
-      localLayoutParams.height = aekt.a(75.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams.width = aekt.a(246.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams1.bottomMargin = aekt.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams1.topMargin = aekt.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams2.rightMargin = aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams2.leftMargin = aekt.a(0.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.height = aepi.a(75.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.width = aepi.a(246.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams1.bottomMargin = aepi.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams1.topMargin = aepi.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams2.rightMargin = aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams2.leftMargin = aepi.a(0.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     }
-    for (localLayoutParams3.topMargin = aekt.a(7.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());; localLayoutParams3.topMargin = aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()))
+    for (localLayoutParams3.topMargin = aepi.a(7.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());; localLayoutParams3.topMargin = aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()))
     {
       paramrbt.S.setLayoutParams(localLayoutParams3);
       paramrbt.j.setLayoutParams(localLayoutParams2);
       paramrbt.jdField_w_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
       paramrbt.R.setLayoutParams(localLayoutParams1);
       return;
-      paramInt = aekt.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      paramInt = aepi.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
       paramrbt.i.setPadding(paramInt, paramInt, paramInt, paramInt);
       paramrbt.j.setPadding(paramInt, paramInt, paramInt, paramInt);
-      localLayoutParams.height = aekt.a(68.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams.width = aekt.a(225.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams1.topMargin = aekt.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams1.bottomMargin = aekt.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams2.rightMargin = aekt.a(-2.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      localLayoutParams2.leftMargin = aekt.a(-3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.height = aepi.a(68.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams.width = aepi.a(225.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams1.topMargin = aepi.a(1.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams1.bottomMargin = aepi.a(3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams2.rightMargin = aepi.a(-2.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localLayoutParams2.leftMargin = aepi.a(-3.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
     }
   }
   

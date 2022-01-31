@@ -7,19 +7,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
-import bdee;
-import bivo;
-import biwg;
-import biwt;
-import biwu;
-import biwv;
-import biww;
-import biwx;
-import bixc;
-import bixe;
-import bixs;
-import bixv;
-import bixw;
+import bdin;
+import bizv;
+import bjan;
+import bjba;
+import bjbb;
+import bjbc;
+import bjbd;
+import bjbe;
+import bjbj;
+import bjbl;
+import bjbz;
+import bjcc;
+import bjcd;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.qqreader.net.BusinessTask;
 import cooperation.qqreader.view.FrameLoading;
@@ -32,12 +32,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private biwg jdField_a_of_type_Biwg = new biwt(this);
-  private bixs jdField_a_of_type_Bixs;
+  private bjan jdField_a_of_type_Bjan = new bjba(this);
+  private bjbz jdField_a_of_type_Bjbz;
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
   private boolean jdField_a_of_type_Boolean;
-  private biwg b = new biwu(this);
-  private biwg c = new biwv(this);
+  private bjan b = new bjbb(this);
+  private bjan c = new bjbc(this);
   
   private void a()
   {
@@ -54,38 +54,38 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bixe.a("ForceUserUpdateActivity", paramString);
+    bjbl.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
   private void b()
   {
-    if (!bdee.a()) {
+    if (!bdin.a()) {
       b("网络连接异常，请检查网络后重试");
     }
     do
     {
       return;
-      if (!bivo.a()) {
+      if (!bizv.a()) {
         c();
       }
-    } while (bixc.d(this));
+    } while (bjbj.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bixe.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      bjbl.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bixs == null) {
-        this.jdField_a_of_type_Bixs = new bixv(this).a(paramString).a("退出", new biwx(this)).b("重试", new biww(this)).a();
+      if (this.jdField_a_of_type_Bjbz == null) {
+        this.jdField_a_of_type_Bjbz = new bjcc(this).a(paramString).a("退出", new bjbe(this)).b("重试", new bjbd(this)).a();
       }
-    } while (this.jdField_a_of_type_Bixs.isShowing());
-    this.jdField_a_of_type_Bixs.show();
+    } while (this.jdField_a_of_type_Bjbz.isShowing());
+    this.jdField_a_of_type_Bjbz.show();
   }
   
   private void c()
@@ -104,12 +104,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bixw.a(bixw.a, this.jdField_a_of_type_Biwg);
+    bjcd.a(bjcd.a, this.jdField_a_of_type_Bjan);
   }
   
   private void f()
   {
-    bixc.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    bjbj.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -117,7 +117,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bivo.a()) && (bixc.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (bizv.a()) && (bjbj.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -153,16 +153,16 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bixe.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bjbl.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bixs != null) && (this.jdField_a_of_type_Bixs.isShowing()))
+    if ((this.jdField_a_of_type_Bjbz != null) && (this.jdField_a_of_type_Bjbz.isShowing()))
     {
-      this.jdField_a_of_type_Bixs.dismiss();
-      this.jdField_a_of_type_Bixs = null;
+      this.jdField_a_of_type_Bjbz.dismiss();
+      this.jdField_a_of_type_Bjbz = null;
     }
   }
 }

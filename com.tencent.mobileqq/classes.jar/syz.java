@@ -8,22 +8,22 @@ public class syz
 {
   public static int a()
   {
-    return ((Integer)bjxj.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
+    return ((Integer)bkbq.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
   }
   
   public static void a(int paramInt)
   {
-    bjxj.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
+    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
   }
   
   public static void a(Context paramContext, int paramInt, Runnable paramRunnable)
   {
     int k = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
-    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131719077));
+    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131719089));
     int j = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_interval", 1);
-    int i = ((Integer)bjxj.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
-    long l1 = ((Long)bjxj.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
-    int m = ((Integer)bjxj.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
+    int i = ((Integer)bkbq.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
+    long l1 = ((Long)bkbq.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
+    int m = ((Integer)bkbq.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
     long l2;
     if ((k == 1) && (m == 1))
     {
@@ -38,14 +38,14 @@ public class syz
     {
       if ((1 << paramInt & i) == 0)
       {
-        bjxj.a("readinjoy_user_data_time", Long.valueOf(l2));
-        bjxj.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
-        bdfq localbdfq = bdcd.a(paramContext, 230);
-        localbdfq.setTitle(null);
-        localbdfq.setMessage(str);
-        localbdfq.setPositiveButton(paramContext.getString(2131721440), new sza(paramInt, j, paramRunnable));
-        localbdfq.setNegativeButton(paramContext.getString(2131721449), new szb(paramInt, j, paramRunnable));
-        localbdfq.show();
+        bkbq.a("readinjoy_user_data_time", Long.valueOf(l2));
+        bkbq.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
+        bdjz localbdjz = bdgm.a(paramContext, 230);
+        localbdjz.setTitle(null);
+        localbdjz.setMessage(str);
+        localbdjz.setPositiveButton(paramContext.getString(2131721453), new sza(paramInt, j, paramRunnable));
+        localbdjz.setNegativeButton(paramContext.getString(2131721462), new szb(paramInt, j, paramRunnable));
+        localbdjz.show();
         paramContext = new JSONObject();
         if (paramInt == 1) {
           paramInt = 0;

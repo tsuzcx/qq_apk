@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.registerGuideLogin;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bngs;
+import bnle;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -23,10 +23,10 @@ class LoginView$16
       LoginView.a(this.this$0).setVisibility(8);
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131369160);
-    localLayoutParams.addRule(5, 2131369160);
+    localLayoutParams.addRule(7, 2131369178);
+    localLayoutParams.addRule(5, 2131369178);
     localLayoutParams.setMargins(0, (int)(13.0F * LoginView.a(this.this$0) + 0.5F), 0, 0);
-    localLayoutParams.addRule(3, 2131369825);
+    localLayoutParams.addRule(3, 2131369844);
     this.this$0.b.setLayoutParams(localLayoutParams);
     int j = (int)(35.0F * LoginView.a(this.this$0));
     int k = LoginView.a(this.this$0) - j;
@@ -51,7 +51,7 @@ class LoginView$16
         if (LoginView.a(this.this$0).isRunning()) {
           LoginView.a(this.this$0).cancel();
         }
-        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bngs.a()))) {
+        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bnle.a()))) {
           break label655;
         }
       }

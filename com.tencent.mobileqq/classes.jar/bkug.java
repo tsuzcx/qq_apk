@@ -1,23 +1,18 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-
-class bkug
-  implements bmac<Boolean>
+public class bkug
 {
-  bkug(bkuc parambkuc) {}
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public bkug()
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    View localView = bkuc.f(this.a);
-    if (paramBoolean.booleanValue()) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = alud.a(2131716219);
+    this.jdField_b_of_type_JavaLangString = alud.a(2131716221);
+    this.jdField_a_of_type_Double = 0.8D;
   }
 }
 

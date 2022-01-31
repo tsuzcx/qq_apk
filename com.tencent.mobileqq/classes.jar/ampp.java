@@ -1,79 +1,20 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class ampp
-  extends ampg
+public final class ampp
+  extends ampn
 {
-  static PromotionConfigInfo b;
-  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
-  
-  public ampp(AppInterface paramAppInterface)
+  public ampp(String paramString, boolean paramBoolean)
   {
-    super(paramAppInterface);
-    a(paramAppInterface);
-    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+    super(paramString, paramBoolean);
   }
   
-  public void a(AppInterface paramAppInterface, ampi paramampi)
-  {
-    if (a("snycGetConfig", paramAppInterface, paramampi)) {
-      return;
-    }
-    paramampi.a(a());
-  }
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    super.a(paramPromotionConfigInfo);
-    try
-    {
-      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
-      return;
-    }
-    finally {}
-  }
-  
-  boolean a(AppInterface paramAppInterface)
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new ampq(this), localIntentFilter) != null;
-  }
-  
-  void b(AppInterface paramAppInterface) {}
-  
-  void b(String paramString)
-  {
-    try
-    {
-      paramString = bdkx.a(this.jdField_b_of_type_JavaLangString, paramString);
-      a(paramString);
-      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
-  }
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampp
  * JD-Core Version:    0.7.0.1
  */

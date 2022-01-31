@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aabn;
-import acgy;
-import adap;
-import adaq;
-import adar;
-import adas;
-import adau;
-import adav;
-import aekt;
-import alpo;
-import alwf;
-import alzf;
-import ammv;
+import aagc;
+import acln;
+import adfe;
+import adff;
+import adfg;
+import adfh;
+import adfj;
+import adfk;
+import aepi;
+import alud;
+import amau;
+import amdu;
+import amrk;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -44,34 +44,34 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import anxn;
-import apwo;
-import apwu;
-import arng;
-import arni;
-import arvo;
-import asmg;
-import asmj;
-import asnb;
-import auux;
-import awuv;
-import awux;
-import awuz;
-import azmz;
-import bcgs;
-import bdbi;
-import bdcv;
-import bddb;
-import bddr;
-import bdds;
-import bddu;
-import bdee;
-import bdje;
-import bfhq;
-import bhoe;
-import bhou;
-import bioj;
-import birl;
+import aobw;
+import aqax;
+import aqbd;
+import arrp;
+import arrr;
+import arzx;
+import asqp;
+import asqs;
+import asrk;
+import auzg;
+import awze;
+import awzg;
+import awzi;
+import azri;
+import bclb;
+import bdfr;
+import bdhe;
+import bdhk;
+import bdia;
+import bdib;
+import bdid;
+import bdin;
+import bdnn;
+import bflz;
+import bhsl;
+import bhtb;
+import bisq;
+import bivs;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -119,13 +119,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import owy;
 import sno;
-import xlb;
-import ylr;
-import zpa;
+import xpk;
+import yqg;
+import ztp;
 
 public class JumpActivity
   extends BaseActivity
-  implements DialogInterface.OnDismissListener, Handler.Callback, asnb
+  implements DialogInterface.OnDismissListener, Handler.Callback, asrk
 {
   private static int jdField_a_of_type_Int = -1;
   private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
@@ -133,14 +133,14 @@ public class JumpActivity
   private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "mqq", "mqqapi", "mqqmdpass", "mqqwpa", "mqqopensdkapi", "mqqflyticket", "wtloginmqq", "imto", "mqqtribe", "mqqvoipivr", "mqqverifycode", "mqqdevlock", "qapp", "qqwifi", "mqqconnect", "qqstory", "mqqconferenceflyticket", "mqqavshare" };
   public static boolean b;
   private static volatile boolean g;
-  private alwf jdField_a_of_type_Alwf;
+  private amau jdField_a_of_type_Amau;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Intent jdField_a_of_type_AndroidContentIntent;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bddu jdField_a_of_type_Bddu;
+  private bdid jdField_a_of_type_Bdid;
   private String jdField_a_of_type_JavaLangString;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adap(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adfe(this);
   protected final MqqHandler a;
   private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver;
   private Intent jdField_b_of_type_AndroidContentIntent;
@@ -155,7 +155,7 @@ public class JumpActivity
   
   public JumpActivity()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this, true);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this, true);
   }
   
   private Uri a(Uri paramUri)
@@ -264,7 +264,7 @@ public class JumpActivity
     }
     try
     {
-      paramString = new String(bdbi.decode(paramString, 0));
+      paramString = new String(bdfr.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}
@@ -312,10 +312,10 @@ public class JumpActivity
       }
       if ((bool2) && (bool1))
       {
-        localObject = azmz.a(BaseApplication.getContext());
+        localObject = azri.a(BaseApplication.getContext());
         HashMap localHashMap = new HashMap();
         localHashMap.put("URL", str);
-        ((azmz)localObject).a("", "JA_ILLEGAL", true, 0L, 0L, localHashMap, "");
+        ((azri)localObject).a("", "JA_ILLEGAL", true, 0L, 0L, localHashMap, "");
         paramIntent.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
       }
     }
@@ -331,9 +331,9 @@ public class JumpActivity
         this.jdField_a_of_type_AndroidOsHandlerThread.start();
         this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
       }
-      asmg localasmg = new asmg(this, this);
+      asqp localasqp = new asqp(this, this);
       h();
-      this.jdField_b_of_type_MqqOsMqqHandler.post(new JumpActivity.10(this, localasmg, paramIntent, paramInt));
+      this.jdField_b_of_type_MqqOsMqqHandler.post(new JumpActivity.10(this, localasqp, paramIntent, paramInt));
       return;
     }
     finally {}
@@ -356,7 +356,7 @@ public class JumpActivity
         if (!"9971".equals(localObject)) {
           break label55;
         }
-        aabn.a(this.app, this, null, "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html?from=2", null);
+        aagc.a(this.app, this, null, "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html?from=2", null);
       }
     }
     for (;;)
@@ -364,27 +364,27 @@ public class JumpActivity
       finish();
       return;
       label55:
-      zpa localzpa = (zpa)this.app.a(51);
-      DeviceInfo localDeviceInfo = localzpa.a(Long.parseLong((String)localObject));
+      ztp localztp = (ztp)this.app.a(51);
+      DeviceInfo localDeviceInfo = localztp.a(Long.parseLong((String)localObject));
       if ((localDeviceInfo != null) && (((String)localObject).equals(String.valueOf(localDeviceInfo.din))))
       {
-        localzpa.a(this, localDeviceInfo, false, null);
+        localztp.a(this, localDeviceInfo, false, null);
       }
       else if (!TextUtils.isEmpty(paramBundle))
       {
         localObject = new Intent();
         ((Intent)localObject).setClass(this, QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", paramBundle);
-        ((Intent)localObject).putExtra("title", alpo.a(2131706276));
+        ((Intent)localObject).putExtra("title", alud.a(2131706288));
         ((Intent)localObject).putExtra("webStyle", "noBottomBar");
         ((Intent)localObject).putExtra("hide_more_button", true);
-        ((Intent)localObject).putExtra("selfSet_leftViewText", alpo.a(2131706284));
-        ((Intent)localObject).putExtra("leftViewText", alpo.a(2131706282));
+        ((Intent)localObject).putExtra("selfSet_leftViewText", alud.a(2131706296));
+        ((Intent)localObject).putExtra("leftViewText", alud.a(2131706294));
         startActivity((Intent)localObject);
       }
       else
       {
-        bfhq.a().a(alpo.a(2131706281));
+        bflz.a().a(alud.a(2131706293));
       }
     }
   }
@@ -496,7 +496,7 @@ public class JumpActivity
       for (;;)
       {
         if ((localObject1 != null) && (k == 1023) && (((MiniAppConfig)localObject1).config.isEngineTypeMiniGame())) {
-          anxn.a(false, 0);
+          aobw.a(false, 0);
         }
         if (localObject1 != null) {
           MiniAppController.startApp(this, (MiniAppConfig)localObject1, null);
@@ -546,30 +546,30 @@ public class JumpActivity
         if ((localObject instanceof InviteToGroupInfo))
         {
           localObject = (InviteToGroupInfo)localObject;
-          alzf localalzf = (alzf)this.app.a(20);
+          amdu localamdu = (amdu)this.app.a(20);
           if ((paramBoolean) && (localObject != null) && (!TextUtils.isEmpty(paramIntent)))
           {
             ((InviteToGroupInfo)localObject).jdField_a_of_type_Int = j;
             ((InviteToGroupInfo)localObject).jdField_c_of_type_JavaLangString = paramIntent;
-            localalzf.a((InviteToGroupInfo)localObject);
+            localamdu.a((InviteToGroupInfo)localObject);
           }
           else
           {
-            localalzf.notifyUI(6, false, new Object[] { Integer.valueOf(8), Integer.valueOf(-1) });
+            localamdu.notifyUI(6, false, new Object[] { Integer.valueOf(8), Integer.valueOf(-1) });
             continue;
             if ((localObject instanceof JoinGroupInfo))
             {
               localObject = (JoinGroupInfo)localObject;
-              localalzf = (alzf)this.app.a(20);
+              localamdu = (amdu)this.app.a(20);
               if ((paramBoolean) && (localObject != null) && (!TextUtils.isEmpty(paramIntent)))
               {
                 ((JoinGroupInfo)localObject).b = j;
                 ((JoinGroupInfo)localObject).f = paramIntent;
-                localalzf.a((JoinGroupInfo)localObject);
+                localamdu.a((JoinGroupInfo)localObject);
               }
               else
               {
-                localalzf.notifyUI(6, false, new Object[] { Integer.valueOf(1), Integer.valueOf(-1) });
+                localamdu.notifyUI(6, false, new Object[] { Integer.valueOf(1), Integer.valueOf(-1) });
                 continue;
                 paramIntent = null;
               }
@@ -602,10 +602,10 @@ public class JumpActivity
       }
       jdField_b_of_type_Boolean = false;
       localObject = ((Intent)localObject).getDataString();
-      localObject = bdds.a(this.app, this, (String)localObject);
-      ((bddb)localObject).a(paramString);
-      ((bddb)localObject).b(this.jdField_d_of_type_JavaLangString);
-    } while (!((bddb)localObject).c());
+      localObject = bdib.a(this.app, this, (String)localObject);
+      ((bdhk)localObject).a(paramString);
+      ((bdhk)localObject).b(this.jdField_d_of_type_JavaLangString);
+    } while (!((bdhk)localObject).c());
     finish();
   }
   
@@ -655,7 +655,7 @@ public class JumpActivity
       if (paramIntent == null) {
         break;
       }
-      bool = asmj.a(paramIntent, this);
+      bool = asqs.a(paramIntent, this);
       QLog.d("JumpAction", 1, new Object[] { "system share.doShareCheckNeedSDPermission() canReadFromUri=", Boolean.valueOf(bool) });
       if (bool) {
         continue;
@@ -672,10 +672,10 @@ public class JumpActivity
     }
   }
   
-  private boolean a(bddb parambddb)
+  private boolean a(bdhk parambdhk)
   {
-    if ((parambddb == null) || (parambddb.jdField_a_of_type_JavaUtilHashMap == null)) {}
-    while ((!MiniProgramOpenSdkUtil.isSharingMiniProgram(parambddb.jdField_a_of_type_JavaUtilHashMap)) || (parambddb.jdField_c_of_type_JavaLangString.equals("to_qzone"))) {
+    if ((parambdhk == null) || (parambdhk.jdField_a_of_type_JavaUtilHashMap == null)) {}
+    while ((!MiniProgramOpenSdkUtil.isSharingMiniProgram(parambdhk.jdField_a_of_type_JavaUtilHashMap)) || (parambdhk.jdField_c_of_type_JavaLangString.equals("to_qzone"))) {
       return false;
     }
     return true;
@@ -709,7 +709,7 @@ public class JumpActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adaq(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adff(this);
       IntentFilter localIntentFilter = new IntentFilter("ShareToQZoneAndFinishTheLastActivity");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -786,15 +786,15 @@ public class JumpActivity
     }
     jdField_a_of_type_Boolean = false;
     localObject = ((Intent)localObject).getDataString();
-    localObject = bdds.a(this.app, this, (String)localObject);
-    ((bddb)localObject).a(paramString);
-    ((bddb)localObject).c();
+    localObject = bdib.a(this.app, this, (String)localObject);
+    ((bdhk)localObject).a(paramString);
+    ((bdhk)localObject).c();
     finish();
   }
   
-  private boolean b(bddb parambddb)
+  private boolean b(bdhk parambdhk)
   {
-    if (parambddb == null) {}
+    if (parambdhk == null) {}
     String str2;
     String str1;
     do
@@ -802,9 +802,9 @@ public class JumpActivity
       do
       {
         return false;
-      } while (TextUtils.isEmpty(parambddb.b("share_id")));
-      str2 = parambddb.b("req_type");
-      str1 = parambddb.b("cflag");
+      } while (TextUtils.isEmpty(parambdhk.b("share_id")));
+      str2 = parambdhk.b("req_type");
+      str1 = parambdhk.b("cflag");
     } while (TextUtils.isEmpty(str2));
     for (;;)
     {
@@ -817,7 +817,7 @@ public class JumpActivity
             break label207;
           }
           i = Integer.valueOf(str2).intValue();
-          if (((i == 3) || (i == 4)) && ("qzone".equals(parambddb.jdField_b_of_type_JavaLangString)) && ("publish".equals(parambddb.jdField_c_of_type_JavaLangString)))
+          if (((i == 3) || (i == 4)) && ("qzone".equals(parambdhk.jdField_b_of_type_JavaLangString)) && ("publish".equals(parambdhk.jdField_c_of_type_JavaLangString)))
           {
             QLog.i("JumpAction", 1, "ShareShuoshuoOrVideoToQZone and the JumpActivity has not finish.");
             return true;
@@ -834,10 +834,10 @@ public class JumpActivity
         }
         try
         {
-          parambddb = a(str1);
-          if (!TextUtils.isEmpty(parambddb))
+          parambdhk = a(str1);
+          if (!TextUtils.isEmpty(parambdhk))
           {
-            j = Integer.valueOf(parambddb).intValue();
+            j = Integer.valueOf(parambdhk).intValue();
             if ((i != 5) || ((j & 0x1) == 0)) {
               break;
             }
@@ -845,11 +845,11 @@ public class JumpActivity
             return true;
           }
         }
-        catch (NumberFormatException parambddb)
+        catch (NumberFormatException parambdhk)
         {
           for (;;)
           {
-            QLog.d("JumpAction", 1, "needToStartQZoneProcess catch NumberFormatException. ", parambddb);
+            QLog.d("JumpAction", 1, "needToStartQZoneProcess catch NumberFormatException. ", parambdhk);
             int j = 0;
           }
         }
@@ -869,8 +869,8 @@ public class JumpActivity
   
   private void c()
   {
-    arni.a(this);
-    arng.a("0X8005533");
+    arrr.a(this);
+    arrp.a("0X8005533");
     finish();
   }
   
@@ -903,12 +903,12 @@ public class JumpActivity
       return;
     }
     HashMap localHashMap = new HashMap();
-    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShare", true, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShare", true, 0L, 0L, localHashMap, "");
     boolean bool = a(localIntent);
     QLog.d("JumpAction", 1, new Object[] { "system share.doShare needGrantSDPermission=", Boolean.valueOf(bool) });
     if ((bool) && (Build.VERSION.SDK_INT >= 23))
     {
-      ammv.a(this, 3, new adas(this, paramBoolean));
+      amrk.a(this, 3, new adfh(this, paramBoolean));
       return;
     }
     d(paramBoolean);
@@ -975,14 +975,14 @@ public class JumpActivity
     {
       int i = a(localBundle);
       if (i == 4) {
-        birl.a(this, 2131698472, 1);
+        bivs.a(this, 2131698484, 1);
       }
       for (;;)
       {
         finish();
         return;
         if (i != 0) {
-          birl.a(this, 2131698468, 1);
+          bivs.a(this, 2131698480, 1);
         }
       }
     }
@@ -993,8 +993,8 @@ public class JumpActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Alwf == null) {
-        this.jdField_a_of_type_Alwf = new alwf(this.app.getAccount());
+      if (this.jdField_a_of_type_Amau == null) {
+        this.jdField_a_of_type_Amau = new amau(this.app.getAccount());
       }
       startActivityForResult(new Intent(this, QQMapActivity.class).putExtra("uin", this.app.getAccount()), 18);
       return;
@@ -1094,8 +1094,8 @@ public class JumpActivity
   {
     try
     {
-      setContentView(2131560983);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)findViewById(2131368996));
+      setContentView(2131561001);
+      this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)findViewById(2131369014));
       return;
     }
     catch (Throwable localThrowable)
@@ -1149,7 +1149,7 @@ public class JumpActivity
         return;
       }
     }
-    bioj.a(this, 7, null);
+    bisq.a(this, 7, null);
     finish();
   }
   
@@ -1160,11 +1160,11 @@ public class JumpActivity
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "reportJumpArguments action=" + str + "; data=" + paramIntent);
     }
-    azmz localazmz = azmz.a(BaseApplication.getContext());
+    azri localazri = azri.a(BaseApplication.getContext());
     HashMap localHashMap = new HashMap();
     localHashMap.put("action", str);
     localHashMap.put("data", paramIntent);
-    localazmz.a("", "JA_ARGUMENTS", true, 0L, 0L, localHashMap, "");
+    localazri.a("", "JA_ARGUMENTS", true, 0L, 0L, localHashMap, "");
   }
   
   private void k(Intent paramIntent)
@@ -1173,7 +1173,7 @@ public class JumpActivity
     Object localObject1;
     if (localObject2 != null)
     {
-      localObject1 = new String(bdbi.decode(((Uri)localObject2).getQueryParameter("param"), 0));
+      localObject1 = new String(bdfr.decode(((Uri)localObject2).getQueryParameter("param"), 0));
       paramIntent = ((Uri)localObject2).getQueryParameter("appname");
       ((Uri)localObject2).getQueryParameter("src_type");
       ((Uri)localObject2).getQueryParameter("version");
@@ -1297,7 +1297,7 @@ public class JumpActivity
         localHashMap = new HashMap();
         localHashMap.put("src_type", "app");
         localHashMap.put("version", "1");
-        localHashMap.put("cflag", bdbi.encodeToString("1".getBytes(), 0));
+        localHashMap.put("cflag", bdfr.encodeToString("1".getBytes(), 0));
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject1 = "";
@@ -1308,7 +1308,7 @@ public class JumpActivity
           if (paramBundle.containsKey("android.intent.extra.STREAM")) {
             continue;
           }
-          localHashMap.put("req_type", bdbi.encodeToString("6".getBytes(), 0));
+          localHashMap.put("req_type", bdfr.encodeToString("6".getBytes(), 0));
           if (TextUtils.isEmpty(str4))
           {
             paramBundle = "";
@@ -1334,10 +1334,10 @@ public class JumpActivity
         }
         else
         {
-          localObject1 = bdbi.encodeToString(((String)localObject1).getBytes(), 0);
+          localObject1 = bdfr.encodeToString(((String)localObject1).getBytes(), 0);
           continue;
         }
-        paramBundle = bdbi.encodeToString(str4.getBytes(), 0);
+        paramBundle = bdfr.encodeToString(str4.getBytes(), 0);
         continue;
         if (localObject3 == null) {
           continue;
@@ -1360,7 +1360,7 @@ public class JumpActivity
               QLog.d("qqfav|QfavJumpActivity", 2, "startSystemShareToQQFav|text, extra_stream, empty");
               break label1255;
             }
-            localHashMap.put("req_type", bdbi.encodeToString("6".getBytes(), 0));
+            localHashMap.put("req_type", bdfr.encodeToString("6".getBytes(), 0));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
               continue;
             }
@@ -1386,7 +1386,7 @@ public class JumpActivity
         {
           paramBundle.close();
           return 1;
-          paramBundle = bdbi.encodeToString(localException1.getBytes(), 0);
+          paramBundle = bdfr.encodeToString(localException1.getBytes(), 0);
         }
         catch (IOException paramBundle)
         {
@@ -1405,7 +1405,7 @@ public class JumpActivity
         return 1;
       }
       label598:
-      localHashMap.put("req_type", bdbi.encodeToString("5".getBytes(), 0));
+      localHashMap.put("req_type", bdfr.encodeToString("5".getBytes(), 0));
       if (getIntent().getAction().equals("android.intent.action.SEND"))
       {
         paramBundle = paramBundle.get("android.intent.extra.STREAM");
@@ -1428,7 +1428,7 @@ public class JumpActivity
         paramBundle = Uri.parse((String)paramBundle);
         break label1259;
         label708:
-        paramBundle = arvo.a(this, paramBundle);
+        paramBundle = arzx.a(this, paramBundle);
         if ((TextUtils.isEmpty(paramBundle)) || (!new File(paramBundle).exists()))
         {
           if (QLog.isColorLevel()) {
@@ -1439,7 +1439,7 @@ public class JumpActivity
         try
         {
           String str1 = URLEncoder.encode(paramBundle, "UTF-8");
-          localHashMap.put("file_data", bdbi.encodeToString(str1.getBytes(), 0));
+          localHashMap.put("file_data", bdfr.encodeToString(str1.getBytes(), 0));
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException1)
         {
@@ -1474,7 +1474,7 @@ public class JumpActivity
       {
         if (i < paramBundle.size())
         {
-          str2 = arvo.a(this, (Uri)paramBundle.get(i));
+          str2 = arzx.a(this, (Uri)paramBundle.get(i));
           if (!TextUtils.isEmpty(str2))
           {
             bool = new File(str2).exists();
@@ -1515,7 +1515,7 @@ public class JumpActivity
       }
       else
       {
-        localHashMap.put("file_data", bdbi.encodeToString(paramBundle.getBytes(), 0));
+        localHashMap.put("file_data", bdfr.encodeToString(paramBundle.getBytes(), 0));
         break;
         label1140:
         if (!QLog.isColorLevel()) {
@@ -1524,7 +1524,7 @@ public class JumpActivity
         QLog.d("qqfav|QfavJumpActivity", 2, "startSystemShareToQQFav|unknown type. type=" + str5);
         break label1284;
         label1177:
-        paramBundle = bdds.a(this.app, this, paramBundle.toString());
+        paramBundle = bdib.a(this.app, this, paramBundle.toString());
         if (paramBundle == null)
         {
           if (!QLog.isColorLevel()) {
@@ -1573,7 +1573,7 @@ public class JumpActivity
   {
     if (this.jdField_b_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new adar(this);
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new adfg(this);
       IntentFilter localIntentFilter = new IntentFilter("BroadcastReceiverFinishActivity");
       registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -1583,8 +1583,8 @@ public class JumpActivity
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    apwo localapwo = apwo.a();
-    if ((localapwo != null) && (localapwo.a() == apwo.c))
+    aqax localaqax = aqax.a();
+    if ((localaqax != null) && (localaqax.a() == aqax.c))
     {
       localIntent = new Intent();
       localIntent.setAction("mqq.intent.action.DEVLOCK_ROAM");
@@ -1592,7 +1592,7 @@ public class JumpActivity
         if (paramDevlockInfo.DevSetup == 1)
         {
           localIntent.putExtra("auth_dev_open", bool1);
-          localIntent.putExtra("guardphone_state", localapwo.a());
+          localIntent.putExtra("guardphone_state", localaqax.a());
           if (paramDevlockInfo == null) {
             break label122;
           }
@@ -1701,7 +1701,7 @@ public class JumpActivity
   {
     try
     {
-      if (!bddr.a(this, true))
+      if (!bdia.a(this, true))
       {
         super.finish();
         return true;
@@ -1751,8 +1751,8 @@ public class JumpActivity
             }
             finish();
             return;
-            if (this.jdField_a_of_type_Alwf != null) {
-              this.jdField_a_of_type_Alwf = null;
+            if (this.jdField_a_of_type_Amau != null) {
+              this.jdField_a_of_type_Amau = null;
             }
             localObject1 = localObject2;
             if (paramIntent != null) {
@@ -1785,8 +1785,8 @@ public class JumpActivity
           }
           paramIntent = paramIntent.getStringExtra("roomId");
         } while (paramIntent == null);
-        localObject1 = new adau(this);
-      } while (!ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, (acgy)localObject1, null));
+        localObject1 = new adfj(this);
+      } while (!ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, (acln)localObject1, null));
       finish();
       return;
       finish();
@@ -1831,8 +1831,8 @@ public class JumpActivity
       QLog.d("JumpAction", 1, "JumpActivity doOnCreate()");
       localIntent = getIntent();
       j(localIntent);
-      this.jdField_a_of_type_Bddu = new bddu();
-      this.jdField_a_of_type_Bddu.a(this.app, this, localIntent);
+      this.jdField_a_of_type_Bdid = new bdid();
+      this.jdField_a_of_type_Bdid.a(this.app, this, localIntent);
       if ((localIntent != null) && (("com.tencent.apollo.SHORT_CUT".equals(localIntent.getAction())) || (localIntent.getBooleanExtra("jump_cm_game", false))))
       {
         if (!this.app.isLogin())
@@ -1846,14 +1846,14 @@ public class JumpActivity
         }
         if (localIntent.getBooleanExtra("jump_game_city", false))
         {
-          ApolloGameUtil.a(this.app, new adav(this, 0, null));
+          ApolloGameUtil.a(this.app, new adfk(this, 0, null));
           return false;
         }
         if (localIntent.getBooleanExtra("jump_cm_game", false))
         {
           i = localIntent.getIntExtra("jump_cm_game_id", -1);
           paramBundle = localIntent.getStringExtra("jump_cm_extendinfo");
-          ApolloGameUtil.a(this.app, new adav(this, i, paramBundle));
+          ApolloGameUtil.a(this.app, new adfk(this, i, paramBundle));
           return false;
         }
       }
@@ -1872,7 +1872,7 @@ public class JumpActivity
             paramBundle = localIntent.getDataString();
             if (!TextUtils.isEmpty(paramBundle))
             {
-              paramBundle = bdds.a(this.app, this, paramBundle);
+              paramBundle = bdib.a(this.app, this, paramBundle);
               if (paramBundle != null) {
                 paramBundle.b();
               }
@@ -1912,7 +1912,7 @@ public class JumpActivity
     if ((localIntent != null) && ("from_webtool_launchshortvideo".equals(localIntent.getAction())))
     {
       paramBundle = localIntent.getExtras();
-      xlb.a().b(this, paramBundle);
+      xpk.a().b(this, paramBundle);
       finish();
       return false;
     }
@@ -1936,14 +1936,14 @@ public class JumpActivity
     }
     if ((localIntent != null) && ("thridapp".equals(localIntent.getStringExtra("share_from"))))
     {
-      if (!ylr.a().a(String.valueOf(Long.valueOf(localIntent.getLongExtra("req_share_id", 0L)))))
+      if (!yqg.a().a(String.valueOf(Long.valueOf(localIntent.getLongExtra("req_share_id", 0L)))))
       {
         super.finish();
         return false;
       }
       paramBundle = new Intent(this, SplashActivity.class);
       paramBundle.putExtras(localIntent.getExtras());
-      startActivity(aekt.a(paramBundle, null));
+      startActivity(aepi.a(paramBundle, null));
       return false;
     }
     if ((localIntent != null) && (((!TextUtils.isEmpty(localIntent.getAction())) && (localIntent.getAction().equals("android.intent.action.MAIN")) && (localIntent.getBooleanExtra("_is_from_qlink_shortcut", false))) || (localIntent.getBooleanExtra("_goto_qlink_when_login_suc_", false))))
@@ -2018,30 +2018,30 @@ public class JumpActivity
       {
         localObject2 = paramBundle.getQueryParameter("jumpaction");
         QLog.d("JumpAction", 1, String.format("mqqaudioassistant Jump args host = %s, \nPath = %s, \ntype = %s \nEXTRA_TEXT = %s", new Object[] { paramBundle.getHost(), paramBundle.getPath(), paramBundle.getQueryParameter("type"), localIntent.getStringExtra("android.intent.extra.TEXT") }));
-        localObject1 = (awuz)this.app.getManager(352);
+        localObject1 = (awzi)this.app.getManager(352);
         paramBundle = paramBundle.getHost();
-        if (((awuz)localObject1).a(paramBundle))
+        if (((awzi)localObject1).a(paramBundle))
         {
-          localObject1 = ((awuz)localObject1).a((String)localObject2);
+          localObject1 = ((awzi)localObject1).a((String)localObject2);
           if (localObject1 != null)
           {
-            if (((awuv)localObject1).jdField_a_of_type_JavaUtilHashMap.size() > 0)
+            if (((awze)localObject1).jdField_a_of_type_JavaUtilHashMap.size() > 0)
             {
-              localObject2 = ((awuv)localObject1).jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+              localObject2 = ((awze)localObject1).jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
               while (((Iterator)localObject2).hasNext())
               {
                 localObject3 = (String)((Iterator)localObject2).next();
                 if (localIntent.hasExtra((String)localObject3))
                 {
                   localObject4 = localIntent.getStringExtra((String)localObject3);
-                  if (!bdje.a((String)localObject4)) {
-                    ((awuv)localObject1).jdField_a_of_type_JavaUtilHashMap.put(localObject3, localObject4);
+                  if (!bdnn.a((String)localObject4)) {
+                    ((awze)localObject1).jdField_a_of_type_JavaUtilHashMap.put(localObject3, localObject4);
                   }
                 }
               }
             }
-            ((awuv)localObject1).g = paramBundle;
-            ((awuv)localObject1).a(this);
+            ((awze)localObject1).g = paramBundle;
+            ((awze)localObject1).a(this);
           }
         }
       }
@@ -2049,12 +2049,12 @@ public class JumpActivity
       {
         finish();
         return false;
-        awux.a(paramBundle, (String)localObject2, 2);
+        awzg.a(paramBundle, (String)localObject2, 2);
         QLog.d("JumpAction", 1, "mqqaudioassistant Jump item = null");
         continue;
-        awux.a(paramBundle, "", 1);
+        awzg.a(paramBundle, "", 1);
         continue;
-        awux.a("", "", 101);
+        awzg.a("", "", 101);
       }
     }
     if ((Build.VERSION.SDK_INT >= 10) && (localIntent != null))
@@ -2150,7 +2150,7 @@ public class JumpActivity
                 ((MessageDigest)localObject2).update(localObject7[0].toByteArray());
                 localObject3 = localObject5;
                 paramBundle = (Bundle)localObject1;
-                localObject2 = bdcv.a(((MessageDigest)localObject2).digest());
+                localObject2 = bdhe.a(((MessageDigest)localObject2).digest());
                 if (localObject2 != null) {
                   continue;
                 }
@@ -2172,7 +2172,7 @@ public class JumpActivity
         if (paramBundle == null)
         {
           localObject1 = getIntent().getStringExtra("pkg_name");
-          paramBundle = azmz.a(BaseApplication.getContext());
+          paramBundle = azri.a(BaseApplication.getContext());
           localObject3 = new HashMap();
           ((HashMap)localObject3).put("osVersion", Build.VERSION.RELEASE);
           ((HashMap)localObject3).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
@@ -2184,15 +2184,15 @@ public class JumpActivity
         if (QLog.isColorLevel()) {
           QLog.d("JumpAction", 2, "jump url:" + str2);
         }
-        localObject3 = bdds.a(this.app, this, str2);
+        localObject3 = bdib.a(this.app, this, str2);
         if (("webview".equals(str3)) && (localObject3 != null)) {
-          ((bddb)localObject3).a(str3);
+          ((bdhk)localObject3).a(str3);
         }
         if (localObject3 == null) {
           continue;
         }
-        ((bddb)localObject3).jdField_a_of_type_Boolean = true;
-        if ((!((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("qqidentifier")) || (localObject1 != null)) {
+        ((bdhk)localObject3).jdField_a_of_type_Boolean = true;
+        if ((!((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("qqidentifier")) || (localObject1 != null)) {
           continue;
         }
         QLog.e("JumpAction", 1, "can not get caller");
@@ -2211,10 +2211,10 @@ public class JumpActivity
       i += 1;
       paramBundle = (Bundle)localObject1;
     }
-    if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("puzzle_verify_code")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null))
+    if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("puzzle_verify_code")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null))
     {
       paramBundle = new Intent(getIntent());
-      if (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("PUZZLEVERIFYCODE"))
+      if (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("PUZZLEVERIFYCODE"))
       {
         paramBundle.setClass(this, QQBrowserActivity.class);
         super.startActivity(paramBundle);
@@ -2223,27 +2223,27 @@ public class JumpActivity
       {
         super.finish();
         return false;
-        if (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("VERIFYCODE"))
+        if (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("VERIFYCODE"))
         {
           paramBundle.setClass(this, VerifyCodeActivity.class);
           super.startActivity(paramBundle);
         }
-        else if (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("DEVLOCK_CODE"))
+        else if (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("DEVLOCK_CODE"))
         {
           paramBundle.setClass(this, AuthDevUgActivity.class);
           super.startActivity(paramBundle);
         }
-        else if (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("GATEVERIFY"))
+        else if (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("GATEVERIFY"))
         {
           PublicFragmentActivity.a(this, paramBundle, NewAuthDevUgFragment.class);
         }
       }
     }
     boolean bool = true;
-    if (((((bddb)localObject3).jdField_b_of_type_JavaLangString == null) || (!((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("ptlogin")) || (((bddb)localObject3).jdField_c_of_type_JavaLangString == null) || (!((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("qlogin"))) && ((((bddb)localObject3).jdField_b_of_type_JavaLangString == null) || (!((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("qqreg")))) {
-      if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && ("invite_register".equals(((bddb)localObject3).jdField_c_of_type_JavaLangString)))
+    if (((((bdhk)localObject3).jdField_b_of_type_JavaLangString == null) || (!((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("ptlogin")) || (((bdhk)localObject3).jdField_c_of_type_JavaLangString == null) || (!((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("qlogin"))) && ((((bdhk)localObject3).jdField_b_of_type_JavaLangString == null) || (!((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("qqreg")))) {
+      if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && ("invite_register".equals(((bdhk)localObject3).jdField_c_of_type_JavaLangString)))
       {
-        break label3741;
+        break label3747;
         if ((str2.startsWith("mqqwpa://im")) || (str2.startsWith("mqqwpaopenid://im")))
         {
           b(true, str3, true);
@@ -2263,15 +2263,15 @@ public class JumpActivity
           {
             localObject2 = new StringBuilder().append(str2);
             if (str2.indexOf("?") <= -1) {
-              break label3748;
+              break label3754;
             }
           }
         }
       }
     }
-    label3741:
-    label3746:
-    label3748:
+    label3747:
+    label3752:
+    label3754:
     String str1;
     for (Object localObject1 = "&";; str1 = "?")
     {
@@ -2282,7 +2282,7 @@ public class JumpActivity
       ((Intent)localObject2).putExtra("pkg_name", paramBundle);
       ((Intent)localObject2).putExtras((Intent)localObject2);
       ((Intent)localObject2).setFlags(268435456);
-      if (bhou.e()) {
+      if (bhtb.e()) {
         ((Intent)localObject2).addFlags(32768);
       }
       startActivity((Intent)localObject2);
@@ -2291,11 +2291,11 @@ public class JumpActivity
         if (QLog.isColorLevel()) {
           QLog.d("JumpAction", 2, "JumpActivity is finish");
         }
-        if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null)) {
+        if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null)) {
           break;
         }
         finish();
-        break label3746;
+        break label3752;
         if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)) && (!PatternLockUtils.isOpenQWalletLockWhenJumpToQWallet(this, this.app, str2)))
         {
           QLog.d("JumpAction", 1, new Object[] { "to GesturePWDUnlockActivity pkgName=", paramBundle });
@@ -2307,31 +2307,31 @@ public class JumpActivity
         }
         else
         {
-          if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("devlock")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("open")))
+          if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("devlock")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("open")))
           {
-            if (!bdee.d(this))
+            if (!bdin.d(this))
             {
-              QQToast.a(this, getString(2131692397), 0).b(getTitleBarHeight());
-              break label3756;
+              QQToast.a(this, getString(2131692398), 0).b(getTitleBarHeight());
+              break label3762;
             }
-            apwu.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
-            break label3756;
+            aqbd.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
+            break label3762;
           }
-          if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("gvideo")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("open_plugin")))
+          if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("gvideo")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("open_plugin")))
           {
             mtz.a(this.app, this, localIntent, 1);
             finish();
             return false;
           }
-          if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("nearby_videochat")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("open_plugin")))
+          if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("nearby_videochat")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("open_plugin")))
           {
-            paramBundle = (bcgs)this.app.getManager(224);
+            paramBundle = (bclb)this.app.getManager(224);
             NearbyVideoChatProxyActivity.a(this.app, this, localIntent, paramBundle.a(), null, 123987);
             return false;
           }
-          if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("qwerewolf")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("enterHomePage")))
+          if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("qwerewolf")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("enterHomePage")))
           {
-            auux.a(this, 16);
+            auzg.a(this, 16);
             finish();
             return false;
           }
@@ -2342,57 +2342,61 @@ public class JumpActivity
               localObject1 = localIntent.getStringExtra("url_app_info");
             }
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              ((bddb)localObject3).a("url_app_info", (String)localObject1);
+              ((bdhk)localObject3).a("url_app_info", (String)localObject1);
             }
           }
-          ((bddb)localObject3).b(paramBundle);
-          ((bddb)localObject3).c((String)localObject2);
-          if ((((bddb)localObject3).jdField_b_of_type_JavaLangString != null) && (((bddb)localObject3).jdField_c_of_type_JavaLangString != null)) {
-            ((bddb)localObject3).a(this);
+          ((bdhk)localObject3).b(paramBundle);
+          ((bdhk)localObject3).c((String)localObject2);
+          if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString != null) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString != null)) {
+            ((bdhk)localObject3).a(this);
           }
-          bool = ((bddb)localObject3).c();
+          bool = ((bdhk)localObject3).c();
         }
       }
-      if ((((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("gav")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("request")))
+      if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("gav")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("request")))
       {
-        if ((!"0".equals(((bddb)localObject3).b("relation_id"))) && (bool)) {
+        if ((!"0".equals(((bdhk)localObject3).b("relation_id"))) && (bool)) {
           finish();
         }
       }
-      else if ((("videochat".equals(((bddb)localObject3).jdField_b_of_type_JavaLangString)) && ("request".equals(((bddb)localObject3).jdField_c_of_type_JavaLangString))) || (("randomavchat".equals(((bddb)localObject3).jdField_b_of_type_JavaLangString)) && ("request".equals(((bddb)localObject3).jdField_c_of_type_JavaLangString))))
-      {
-        if (bool) {
-          finish();
-        }
-      }
-      else if ((((bddb)localObject3).jdField_b_of_type_JavaLangString.equals("wallet")) && (((bddb)localObject3).jdField_c_of_type_JavaLangString.equals("modify_pass")))
+      else if ((("videochat".equals(((bdhk)localObject3).jdField_b_of_type_JavaLangString)) && ("request".equals(((bdhk)localObject3).jdField_c_of_type_JavaLangString))) || (("randomavchat".equals(((bdhk)localObject3).jdField_b_of_type_JavaLangString)) && ("request".equals(((bdhk)localObject3).jdField_c_of_type_JavaLangString))))
       {
         if (bool) {
           finish();
         }
       }
-      else if (((bddb)localObject3).g())
+      else if ((((bdhk)localObject3).jdField_b_of_type_JavaLangString.equals("wallet")) && (((bdhk)localObject3).jdField_c_of_type_JavaLangString.equals("modify_pass")))
       {
         if (bool) {
           finish();
         }
       }
-      else if (a((bddb)localObject3))
+      else if (((bdhk)localObject3).g())
+      {
+        if (bool) {
+          finish();
+        }
+      }
+      else if (a((bdhk)localObject3))
       {
         QLog.d("JumpAction", 1, "asynShareJumpAction wait for finishing");
       }
-      else if (!b((bddb)localObject3))
+      else if (!b((bdhk)localObject3))
       {
-        if (((bddb)localObject3).jdField_b_of_type_Boolean) {
+        if (((bdhk)localObject3).jdField_b_of_type_Boolean)
+        {
           finish();
-        } else if (QLog.isColorLevel()) {
+          overridePendingTransition(0, 0);
+        }
+        else if (QLog.isColorLevel())
+        {
           QLog.d("JumpAction", 2, "wait for finishing");
         }
       }
       else
       {
         b();
-        break label3746;
+        break label3752;
         paramBundle = getIntent().getStringExtra("action");
         if (paramBundle == null)
         {
@@ -2408,16 +2412,16 @@ public class JumpActivity
         }
         while (this.jdField_c_of_type_Boolean)
         {
-          break label3758;
+          break label3764;
           if ("select_location".equals(paramBundle)) {
             this.jdField_d_of_type_Boolean = true;
           }
         }
         if (!this.jdField_d_of_type_Boolean) {
-          break label3758;
+          break label3764;
         }
         e();
-        break label3758;
+        break label3764;
         paramBundle = (Bundle)localObject1;
         break label2609;
         i = 1;
@@ -2425,9 +2429,9 @@ public class JumpActivity
       }
       return false;
     }
-    label3756:
+    label3762:
     return false;
-    label3758:
+    label3764:
     return false;
   }
   
@@ -2451,10 +2455,10 @@ public class JumpActivity
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (this.jdField_a_of_type_Bddu != null)
+    if (this.jdField_a_of_type_Bdid != null)
     {
-      this.jdField_a_of_type_Bddu.a(null);
-      this.jdField_a_of_type_Bddu = null;
+      this.jdField_a_of_type_Bdid.a(null);
+      this.jdField_a_of_type_Bdid = null;
     }
   }
   
@@ -2520,7 +2524,7 @@ public class JumpActivity
       return true;
       try
       {
-        boolean bool = bddr.a(this);
+        boolean bool = bdia.a(this);
         if (bool) {}
       }
       catch (Throwable localThrowable)
@@ -2535,10 +2539,10 @@ public class JumpActivity
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
-    if (this.jdField_a_of_type_Bddu != null)
+    if (this.jdField_a_of_type_Bdid != null)
     {
-      this.jdField_a_of_type_Bddu.a(paramIntent);
-      this.jdField_a_of_type_Bddu = null;
+      this.jdField_a_of_type_Bdid.a(paramIntent);
+      this.jdField_a_of_type_Bdid = null;
     }
   }
 }

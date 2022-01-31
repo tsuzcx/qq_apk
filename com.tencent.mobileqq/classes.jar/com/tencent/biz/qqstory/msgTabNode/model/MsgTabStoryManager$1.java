@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import java.util.ArrayList;
-import uuq;
+import uyz;
 
 public class MsgTabStoryManager$1
   implements Runnable
 {
-  public MsgTabStoryManager$1(uuq paramuuq, ArrayList paramArrayList, boolean paramBoolean) {}
+  public MsgTabStoryManager$1(uyz paramuyz, ArrayList paramArrayList, boolean paramBoolean) {}
   
   public void run()
   {
-    uuq.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
+    uyz.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 

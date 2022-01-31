@@ -1,60 +1,55 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import com.tencent.open.appcommon.js.DownloadInterface;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfje
-  extends SQLiteOpenHelper
+  implements bfor
 {
-  protected static bfje a;
-  protected String a;
-  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
-  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  public bfje(DownloadInterface paramDownloadInterface, String paramString) {}
   
-  protected bfje(Context paramContext)
+  public void a(int paramInt, String paramString)
   {
-    super(paramContext, "open_report.db", null, 3);
-    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+    bflp.e("DownloadInterface", "innerQueryDownloadInfo ERROR");
   }
   
-  public static bfje a(Context paramContext)
+  public void a(List<DownloadInfo> paramList)
   {
-    try
+    bflp.c("DownloadInterface", "innerQueryDownloadInfo onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      if (jdField_a_of_type_Bfje == null) {
-        jdField_a_of_type_Bfje = new bfje(paramContext);
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
-      paramContext = jdField_a_of_type_Bfje;
-      return paramContext;
     }
-    finally {}
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    bfhg.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
-    bfhg.b("opensdk", "sql2:" + this.b);
-    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
-    paramSQLiteDatabase.execSQL(this.b);
-    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
-    paramSQLiteDatabase.execSQL(this.c);
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bflp.c("DownloadInterface", "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
   }
 }
 

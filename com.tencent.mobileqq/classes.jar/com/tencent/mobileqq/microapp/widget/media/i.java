@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.widget.media;
 
 import android.content.Context;
 import android.content.Intent;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.c.a.a;
@@ -15,7 +15,7 @@ final class i
   public void a(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bdje.a(paramContext)) {}
+    if (bdnn.a(paramContext)) {}
     do
     {
       do

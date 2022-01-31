@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import bhow;
+import bhtd;
 import sdp;
 import syq;
 

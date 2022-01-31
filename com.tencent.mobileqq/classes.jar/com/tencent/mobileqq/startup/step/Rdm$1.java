@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aarp;
-import aarq;
+import aawe;
+import aawf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QFixApplicationImpl;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
@@ -13,9 +13,9 @@ class Rdm$1
   
   public void run()
   {
-    aarp localaarp = aarq.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localaarp != null) && (localaarp.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localaarp.b(), 0);
+    aawe localaawe = aawf.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localaawe != null) && (localaawe.a(BaseApplicationImpl.sApplication, true))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localaawe.b(), 0);
     }
     QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
   }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import alpo;
-import awne;
-import azmj;
-import bdbk;
-import bdkz;
+import alud;
+import awrn;
+import azqs;
+import bdft;
+import bdpi;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ProfileCardMoreInfoView$17
@@ -17,18 +17,18 @@ class ProfileCardMoreInfoView$17
     int i;
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()))
     {
-      i = awne.a().a(ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.b(this.this$0), ProfileCardMoreInfoView.c(this.this$0), ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.b(this.this$0));
+      i = awrn.a().a(ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.b(this.this$0), ProfileCardMoreInfoView.c(this.this$0), ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.b(this.this$0));
       if (i != -2147483648) {}
     }
     else
     {
       return;
     }
-    bdkz localbdkz = new bdkz();
-    localbdkz.a(0, alpo.a(2131708867), 0);
-    bdbk.a(ProfileCardMoreInfoView.a(this.this$0), 0 - i, 0, localbdkz);
-    awne.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    azmj.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
+    bdpi localbdpi = new bdpi();
+    localbdpi.a(0, alud.a(2131708879), 0);
+    bdft.a(ProfileCardMoreInfoView.a(this.this$0), 0 - i, 0, localbdpi);
+    awrn.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    azqs.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

@@ -24,14 +24,14 @@ public class mdv
           if (!this.a.a.a().j) {
             break label210;
           }
-          azmj.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
         }
         if (this.a.g)
         {
           if (!this.a.a.a().j) {
             break label424;
           }
-          azmj.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
         }
       }
     }
@@ -44,7 +44,7 @@ public class mdv
       lfh.a = "1";
       return;
       label210:
-      azmj.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
       break;
       label237:
       if (this.a.d != 1) {
@@ -54,10 +54,10 @@ public class mdv
       {
         if (this.a.a.a().C == 10)
         {
-          azmj.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
           break;
         }
-        azmj.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
         break;
       }
       if (!this.a.a.a().k) {
@@ -65,13 +65,13 @@ public class mdv
       }
       if (this.a.a.a().C == 10)
       {
-        azmj.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
         break;
       }
-      azmj.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
       break;
       label424:
-      azmj.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
     }
   }
 }

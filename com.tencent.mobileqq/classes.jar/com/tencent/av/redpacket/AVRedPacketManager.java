@@ -8,8 +8,8 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import azmz;
-import bdcs;
+import azri;
+import bdhb;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.redpacket.ui.RedPacketShareFragment;
 import com.tencent.av.service.AVRedPacketConfig;
@@ -360,7 +360,7 @@ public class AVRedPacketManager
     if (QLog.isColorLevel()) {
       QLog.d("AVRedPacketManager", 2, "deleteLocalExpressionImg");
     }
-    bdcs.a(jdField_b_of_type_JavaLangString);
+    bdhb.a(jdField_b_of_type_JavaLangString);
   }
   
   private boolean e()
@@ -1022,7 +1022,7 @@ public class AVRedPacketManager
           a(true, 1020, 0L, null);
         }
       }
-      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketSendRedSuc", true, 0L, 0L, null, "");
+      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketSendRedSuc", true, 0L, 0L, null, "");
     }
   }
   
@@ -1290,7 +1290,7 @@ public class AVRedPacketManager
           a(false, 1018, 1500L, Boolean.valueOf(true));
           localObject1 = new HashMap();
           ((HashMap)localObject1).put("succRate", String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.syncSuccEmojiId.size() * 1.0F / jdField_f_of_type_Int) }));
-          azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketEmojiSyncSuccRate", true, 0L, 0L, (HashMap)localObject1, "");
+          azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketEmojiSyncSuccRate", true, 0L, 0L, (HashMap)localObject1, "");
           return;
           paramInt = 1;
         }
@@ -1442,7 +1442,7 @@ public class AVRedPacketManager
         {
           localObject = new HashMap();
           ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
-          azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketLocalExp", false, 0L, 0L, (HashMap)localObject, "");
+          azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketLocalExp", false, 0L, 0L, (HashMap)localObject, "");
         }
       }
       if (bool1)

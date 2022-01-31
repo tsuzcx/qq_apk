@@ -192,7 +192,7 @@ public class rdm
   
   public static int a(AppRuntime paramAppRuntime)
   {
-    if (bjxj.b(paramAppRuntime, "VIDEO_FEEDS_SOFT_AD_LOCAL_CONFIG_DATE")) {
+    if (bkbq.b(paramAppRuntime, "VIDEO_FEEDS_SOFT_AD_LOCAL_CONFIG_DATE")) {
       return b(paramAppRuntime);
     }
     return 0;
@@ -263,7 +263,7 @@ public class rdm
     if (paramView.getVisibility() == paramInt1) {
       return localObjectAnimator2;
     }
-    if (!bhou.e())
+    if (!bhtb.e())
     {
       a(paramView, paramInt1, paramInt2);
       return null;
@@ -286,7 +286,7 @@ public class rdm
       if (!paramBoolean) {
         break;
       }
-      paramView.setTag(2131375194, localObjectAnimator1);
+      paramView.setTag(2131375245, localObjectAnimator1);
       return localObjectAnimator1;
       if ((paramInt1 == 8) || (paramInt1 == 4))
       {
@@ -306,7 +306,7 @@ public class rdm
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(aekt.a(3.0F, paramContext.getResources()));
+    localGradientDrawable.setCornerRadius(aepi.a(3.0F, paramContext.getResources()));
     localGradientDrawable.setColor(-1728053248);
     localGradientDrawable.setStroke(1, 0);
     return localGradientDrawable;
@@ -435,7 +435,7 @@ public class rdm
     if (paramInt == 0) {
       return "";
     }
-    return f(paramInt) + alpo.a(2131716540);
+    return f(paramInt) + alud.a(2131716552);
   }
   
   public static String a(int paramInt, String paramString)
@@ -470,7 +470,7 @@ public class rdm
   
   public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return bfhi.d(paramQQAppInterface.getCurrentAccountUin() + "_" + paramString + "_" + System.currentTimeMillis());
+    return bflr.d(paramQQAppInterface.getCurrentAccountUin() + "_" + paramString + "_" + System.currentTimeMillis());
   }
   
   public static String a(String paramString)
@@ -697,7 +697,7 @@ public class rdm
   
   public static void a(Context paramContext, TextView paramTextView)
   {
-    a(paramContext, paramTextView, alpo.a(2131716586), alpo.a(2131716591), bdvr.a("kandian"), null);
+    a(paramContext, paramTextView, alud.a(2131716598), alud.a(2131716603), beaa.a("kandian"), null);
   }
   
   public static void a(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, View.OnClickListener paramOnClickListener)
@@ -747,7 +747,7 @@ public class rdm
           QLog.e("VideoFeedsHelper", 2, "resolveUrlJumpInfo: checkAppPackage failure");
           return;
         }
-        if (bdem.a(paramContext, paramUrlJumpInfo.jdField_b_of_type_JavaLangString)) {
+        if (bdiv.a(paramContext, paramUrlJumpInfo.jdField_b_of_type_JavaLangString)) {
           a(paramContext, paramUrlJumpInfo.jdField_c_of_type_JavaLangString);
         } else if ((!Achilles.a(paramUrlJumpInfo.jdField_b_of_type_JavaLangString, true)) && (!TextUtils.isEmpty(paramUrlJumpInfo.jdField_a_of_type_JavaLangString))) {
           ors.a(paramContext, paramUrlJumpInfo.jdField_a_of_type_JavaLangString);
@@ -792,10 +792,10 @@ public class rdm
       localTextView.setTextSize(2, 14.0F);
       localTextView.setGravity(17);
       localTextView.setBackgroundDrawable(a(paramContext));
-      int i = aekt.a(16.0F, paramContext.getResources());
+      int i = aepi.a(16.0F, paramContext.getResources());
       localTextView.setPadding(i, 0, i, 0);
       paramString = new Dialog(paramContext, 2131755317);
-      paramString.setContentView(localTextView, new ViewGroup.LayoutParams(-2, bcwh.a(paramContext, 40.0F)));
+      paramString.setContentView(localTextView, new ViewGroup.LayoutParams(-2, bdaq.a(paramContext, 40.0F)));
       paramString.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       paramString.setCanceledOnTouchOutside(false);
       paramContext = paramString.getWindow().getAttributes();
@@ -824,7 +824,7 @@ public class rdm
   public static void a(View paramView)
   {
     paramView.clearAnimation();
-    paramView = paramView.getTag(2131375194);
+    paramView = paramView.getTag(2131375245);
     if ((paramView instanceof ObjectAnimator)) {
       ((ObjectAnimator)paramView).cancel();
     }
@@ -885,7 +885,7 @@ public class rdm
       {
         return;
       } while (paramView.getVisibility() == paramInt2);
-      if (!bhou.e())
+      if (!bhtb.e())
       {
         paramView.setVisibility(paramInt2);
         return;
@@ -947,8 +947,8 @@ public class rdm
     ((FrameLayout.LayoutParams)paramView2.getLayoutParams()).gravity = 85;
     paramArrayOfInt = ValueAnimator.ofObject(new qzf(), new Object[] { new Point(paramView2.getWidth(), paramView2.getHeight()), new Point(paramArrayOfInt[0], paramArrayOfInt[1]) });
     paramArrayOfInt.addUpdateListener(new rdw(paramView2, paramView1));
-    paramView1 = ObjectAnimator.ofFloat(paramView2, "translationX", new float[] { paramView2.getTranslationX(), -bdkf.a(6.0F) });
-    paramView2 = ObjectAnimator.ofFloat(paramView2, "translationY", new float[] { paramView2.getTranslationY(), -bdkf.a(60.0F) });
+    paramView1 = ObjectAnimator.ofFloat(paramView2, "translationX", new float[] { paramView2.getTranslationX(), -bdoo.a(6.0F) });
+    paramView2 = ObjectAnimator.ofFloat(paramView2, "translationY", new float[] { paramView2.getTranslationY(), -bdoo.a(60.0F) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { paramArrayOfInt, paramView1, paramView2 });
     if (paramAnimatorListener != null) {
@@ -963,7 +963,7 @@ public class rdm
     if ((("sm-g9650".equalsIgnoreCase(Build.DEVICE)) || ("star2qltezc".equalsIgnoreCase(Build.PRODUCT))) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
       paramViewGroup = (ViewGroup.MarginLayoutParams)paramViewGroup.getLayoutParams();
-      paramViewGroup.bottomMargin += bdkf.a(20.0F);
+      paramViewGroup.bottomMargin += bdoo.a(20.0F);
     }
   }
   
@@ -974,7 +974,7 @@ public class rdm
     }
     int i = paramViewGroup2.getWidth();
     int j = paramViewGroup2.getHeight();
-    ValueAnimator localValueAnimator = ValueAnimator.ofObject(new qzf(), new Object[] { new Point(0, 0), new Point((int)bdcb.i() - i, (int)bdcb.j() - j) });
+    ValueAnimator localValueAnimator = ValueAnimator.ofObject(new qzf(), new Object[] { new Point(0, 0), new Point((int)bdgk.i() - i, (int)bdgk.j() - j) });
     localValueAnimator.addUpdateListener(new rdu(paramViewGroup2, i, j));
     paramViewGroup2 = ValueAnimator.ofObject(new qzf(), new Object[] { new Point(paramLayoutParams.x, paramLayoutParams.y), new Point(0, 0) });
     paramViewGroup2.addUpdateListener(new rdv(paramWindowManager, paramViewGroup1, paramLayoutParams));
@@ -1035,7 +1035,7 @@ public class rdm
   
   public static void a(TextView paramTextView, rjn paramrjn, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    bjxj.i(ors.a());
+    bkbq.i(ors.a());
     if (paramTextView != null) {
       paramTextView.setVisibility(8);
     }
@@ -1171,13 +1171,13 @@ public class rdm
   
   public static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    bjxj.x(paramAppRuntime, paramInt);
+    bkbq.x(paramAppRuntime, paramInt);
   }
   
   public static void a(AppRuntime paramAppRuntime, Activity paramActivity)
   {
     if (pej.a(paramActivity, true)) {
-      bdcd.a(paramActivity, 230, paramActivity.getString(2131719084), paramActivity.getString(2131719083), 2131690648, 2131719082, new rdr(), null).setMessageCount(null).show();
+      bdgm.a(paramActivity, 230, paramActivity.getString(2131719096), paramActivity.getString(2131719095), 2131690648, 2131719094, new rdr(), null).setMessageCount(null).show();
     }
   }
   
@@ -1225,7 +1225,7 @@ public class rdm
         return true;
       }
     }
-    else if ((i == 2) && (ors.a(paramBaseArticleInfo.bytes_jump_bundle)) && (bdem.a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_bundle))))
+    else if ((i == 2) && (ors.a(paramBaseArticleInfo.bytes_jump_bundle)) && (bdiv.a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_bundle))))
     {
       a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_schema));
       return true;
@@ -1459,7 +1459,7 @@ public class rdm
   
   private static int b(AppRuntime paramAppRuntime)
   {
-    return bjxj.G(paramAppRuntime);
+    return bkbq.G(paramAppRuntime);
   }
   
   public static String b(int paramInt)
@@ -1467,7 +1467,7 @@ public class rdm
     if (paramInt == 0) {
       return "";
     }
-    return f(paramInt) + alpo.a(2131716585);
+    return f(paramInt) + alud.a(2131716597);
   }
   
   public static String b(long paramLong)
@@ -1593,7 +1593,7 @@ public class rdm
       if ((Build.VERSION.SDK_INT <= 21) || (Build.VERSION.SDK_INT > 23)) {
         break;
       }
-    } while (bdcb.d() <= -2147483648L);
+    } while (bdgk.d() <= -2147483648L);
     return true;
     return true;
   }
@@ -1615,7 +1615,7 @@ public class rdm
     }
     else if (i == 2)
     {
-      if ((ors.a(paramBaseArticleInfo.bytes_jump_bundle)) && (bdem.a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_bundle))))
+      if ((ors.a(paramBaseArticleInfo.bytes_jump_bundle)) && (bdiv.a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_bundle))))
       {
         a(paramActivity, ors.a(paramBaseArticleInfo.bytes_jump_schema));
         return true;
@@ -1785,9 +1785,9 @@ public class rdm
   public static String c(long paramLong)
   {
     if (paramLong <= 0L) {
-      return alpo.a(2131716604);
+      return alud.a(2131716616);
     }
-    return b(paramLong) + alpo.a(2131716600);
+    return b(paramLong) + alud.a(2131716612);
   }
   
   public static boolean c()
@@ -1906,14 +1906,14 @@ public class rdm
         if (jdField_d_of_type_JavaTextDecimalFormat == null) {
           jdField_d_of_type_JavaTextDecimalFormat = new DecimalFormat("##");
         }
-        return jdField_d_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alpo.a(2131716552);
+        return jdField_d_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alud.a(2131716564);
       }
       if (paramInt >= 10000)
       {
         if (jdField_c_of_type_JavaTextDecimalFormat == null) {
           jdField_c_of_type_JavaTextDecimalFormat = new DecimalFormat("##.#");
         }
-        return jdField_c_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alpo.a(2131716532);
+        return jdField_c_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alud.a(2131716544);
       }
     } while (paramInt <= 0);
     return paramInt + "";
@@ -1954,13 +1954,13 @@ public class rdm
       jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("###.#");
     }
     if (paramInt >= 100000000) {
-      str = jdField_a_of_type_JavaTextDecimalFormat.format(paramInt / 100000000.0D) + alpo.a(2131716579);
+      str = jdField_a_of_type_JavaTextDecimalFormat.format(paramInt / 100000000.0D) + alud.a(2131716591);
     }
     do
     {
       return str;
       if (paramInt >= 10000) {
-        return jdField_a_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alpo.a(2131716577);
+        return jdField_a_of_type_JavaTextDecimalFormat.format(paramInt / 10000.0D) + alud.a(2131716589);
       }
     } while (paramInt < 0);
     return paramInt + "";

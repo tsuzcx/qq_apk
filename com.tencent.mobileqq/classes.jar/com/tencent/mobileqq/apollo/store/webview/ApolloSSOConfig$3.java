@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import bdvv;
-import bdvx;
+import beae;
+import beag;
 
 public final class ApolloSSOConfig$3
   implements Runnable
 {
-  public ApolloSSOConfig$3(bdvv parambdvv) {}
+  public ApolloSSOConfig$3(beae parambeae) {}
   
   public void run()
   {
-    bdvx.a(this.a, null);
+    beag.a(this.a, null);
   }
 }
 

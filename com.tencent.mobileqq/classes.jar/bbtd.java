@@ -1,45 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
-import java.util.UUID;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class bbtd
-  extends ypu
+  extends aqxd
 {
-  bbtd(bbtc parambbtc) {}
+  long jdField_a_of_type_Long;
+  alpa jdField_a_of_type_Alpa = null;
+  bbtn jdField_a_of_type_Bbtn;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public bbtd(QQAppInterface paramQQAppInterface, long paramLong, bbtn parambbtn)
   {
-    if (!paramBoolean) {}
-    do
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bbtn = parambbtn;
+    this.jdField_a_of_type_Long = paramLong;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Alpa = new bbte(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alpa);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public boolean a()
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Bbtn.a != null) {
+      localTroopFileTransferManager.e(this.jdField_a_of_type_Bbtn.a);
+    }
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramString = paramBundle.getString("itemKey");
-        } while (paramString == null);
-        paramString = UUID.fromString(paramString);
-      } while (!paramString.equals(this.a.a()));
-      bbrc.c("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
-      paramBundle = paramBundle.getString("fileId");
-      bcil localbcil = bbra.a(this.a.d);
-      if (localbcil == null)
-      {
-        bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
-        return;
-      }
-      paramString = localbcil.a(paramString);
-      if (paramString == null)
-      {
-        bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
-        return;
-      }
-    } while (paramInt1 != 0);
-    bbrc.c("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
-    ypf.a(bbra.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Ypo);
-    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+      return true;
+      localTroopFileTransferManager.a(this.jdField_a_of_type_Bbtn.e, this.jdField_a_of_type_Bbtn.g, this.jdField_a_of_type_Bbtn.h);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Alpa != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alpa);
+    }
   }
 }
 

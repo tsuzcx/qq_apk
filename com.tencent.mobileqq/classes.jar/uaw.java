@@ -1,12 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class uaw
-  implements DialogInterface.OnClickListener
+public abstract interface uaw
 {
-  uaw(uau paramuau) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
 }
 
 

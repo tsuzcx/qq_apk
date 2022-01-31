@@ -1,21 +1,42 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import java.lang.reflect.Field;
 
 public class avtk
+  extends Scroller
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public String toString()
+  public avtk(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
-    return localStringBuilder.toString();
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
 }
 

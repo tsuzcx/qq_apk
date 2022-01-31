@@ -6,8 +6,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
-import aoev;
-import becq;
+import aoje;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -44,23 +44,23 @@ public class ConfessPlugin$5
       ConfessPlugin.a(this.this$0, false);
       return;
     }
-    Bitmap localBitmap = aoev.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+    Bitmap localBitmap = aoje.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
     if ((this.jdField_b_of_type_Int == 0) && (localBitmap != null)) {}
-    for (Object localObject2 = aoev.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
+    for (Object localObject2 = aoje.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
     {
       if ((localBitmap == null) || ((this.jdField_b_of_type_Int == 0) && (localObject2 == null)))
       {
         ConfessPlugin.a(this.this$0);
         ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 0, 2131720019);
+        ConfessPlugin.a(this.this$0, 0, 2131720031);
         return;
       }
-      String str3 = aoev.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
+      String str3 = aoje.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
       String str1 = this.jdField_c_of_type_JavaLangString;
       if (this.jdField_b_of_type_Int == 0)
       {
-        localObject1 = aoev.a(str3, this.this$0.mRuntime.a());
-        localObject2 = aoev.a(aoev.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
+        localObject1 = aoje.a(str3, this.this$0.mRuntime.a());
+        localObject2 = aoje.a(aoje.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject3 = ((String)localObject2).replace("http://qqadapt.qpic.cn/qqshare/", "");
@@ -73,7 +73,7 @@ public class ConfessPlugin$5
         {
           ConfessPlugin.a(this.this$0);
           ConfessPlugin.a(this.this$0, false);
-          ConfessPlugin.a(this.this$0, 1, 2131696944);
+          ConfessPlugin.a(this.this$0, 1, 2131696946);
           return;
         }
         localObject2 = this.jdField_d_of_type_JavaLangString;

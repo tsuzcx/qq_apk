@@ -1,15 +1,15 @@
 package com.tencent.open.appstore.dl;
 
-import bfgi;
-import bfhg;
-import bflh;
+import bfkr;
+import bflp;
+import bfpq;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManagerV2$16
   implements Runnable
 {
-  public DownloadManagerV2$16(bfgi parambfgi, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$16(bfkr parambfkr, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,13 +19,13 @@ public class DownloadManagerV2$16
       if (localTMAssistantDownloadTaskInfo != null)
       {
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        bflh.a().a(this.a);
+        bfpq.a().a(this.a);
       }
       return;
     }
     catch (Exception localException)
     {
-      bfhg.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bflp.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }

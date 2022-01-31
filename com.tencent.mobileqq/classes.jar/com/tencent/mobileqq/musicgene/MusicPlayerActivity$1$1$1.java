@@ -2,19 +2,19 @@ package com.tencent.mobileqq.musicgene;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import aund;
-import aunj;
-import aunk;
-import auns;
+import aurm;
+import aurs;
+import aurt;
+import ausb;
 
 public class MusicPlayerActivity$1$1$1
   implements Runnable
 {
-  public MusicPlayerActivity$1$1$1(aunk paramaunk, int paramInt) {}
+  public MusicPlayerActivity$1$1$1(aurt paramaurt, int paramInt) {}
   
   public void run()
   {
-    Object localObject = aund.a(this.jdField_a_of_type_Aunk.jdField_a_of_type_Auns.c);
+    Object localObject = aurm.a(this.jdField_a_of_type_Aurt.jdField_a_of_type_Ausb.c);
     if (localObject != null)
     {
       int i = ((Bitmap)localObject).getWidth();
@@ -24,7 +24,7 @@ public class MusicPlayerActivity$1$1$1
         double d = Math.sqrt(8000.0D / (i * j));
         Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
         ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aunk.jdField_a_of_type_Aunj.a), 55);
+        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aurt.jdField_a_of_type_Aurs.a), 55);
         ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
         ((Message)localObject).obj = localBitmap;
         ((Message)localObject).sendToTarget();

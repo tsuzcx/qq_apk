@@ -9,7 +9,7 @@ public class pqd
 {
   private static String a(String paramString)
   {
-    paramString = bdds.a(ors.a(), BaseApplicationImpl.getContext(), paramString);
+    paramString = bdib.a(ors.a(), BaseApplicationImpl.getContext(), paramString);
     if (paramString != null)
     {
       paramString = paramString.a;
@@ -74,10 +74,10 @@ public class pqd
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = bdds.a(ors.a(), BaseApplicationImpl.getContext(), paramString);
+      Object localObject = bdib.a(ors.a(), BaseApplicationImpl.getContext(), paramString);
       if (localObject != null)
       {
-        localObject = ((bddb)localObject).a;
+        localObject = ((bdhk)localObject).a;
         if ((localObject != null) && ("6".equals((String)((Map)localObject).get("target"))) && (((Map)localObject).containsKey("v_url_base64"))) {
           return true;
         }

@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adkd(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adkd(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkd
  * JD-Core Version:    0.7.0.1
  */

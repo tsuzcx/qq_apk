@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import alpo;
-import bczp;
+import alud;
+import bddy;
 
 class ScreenShotUtil$2$3
   implements Runnable
@@ -10,7 +10,7 @@ class ScreenShotUtil$2$3
   
   public void run()
   {
-    this.this$0.a.a(new IllegalStateException(alpo.a(2131719527)));
+    this.this$0.a.a(new IllegalStateException(alud.a(2131719539)));
   }
 }
 

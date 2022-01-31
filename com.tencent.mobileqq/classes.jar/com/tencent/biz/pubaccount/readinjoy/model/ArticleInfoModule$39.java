@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
-import awbw;
-import awby;
+import awgf;
+import awgh;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -22,8 +22,8 @@ public class ArticleInfoModule$39
   
   public void run()
   {
-    awby localawby = this.this$0.jdField_a_of_type_Awbw.a();
-    localawby.a();
+    awgh localawgh = this.this$0.jdField_a_of_type_Awgf.a();
+    localawgh.a();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
     int j;
@@ -98,7 +98,7 @@ public class ArticleInfoModule$39
       if ((this.jdField_a_of_type_Boolean) && (localObject1 != null) && (((ArticleInfo)localObject1).mSocialFeedInfo != null) && (((ArticleInfo)localObject1).publishUin != 0L))
       {
         localObject2 = "publishUin = " + ((ArticleInfo)localObject1).publishUin;
-        localObject2 = this.this$0.jdField_a_of_type_Awbw.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
+        localObject2 = this.this$0.jdField_a_of_type_Awgf.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
         if (localObject2 == null)
         {
           QLog.d("ArticleInfoModule", 1, "no soical feeds to update article.publishUin:" + ((ArticleInfo)localObject1).publishUin);
@@ -135,8 +135,8 @@ public class ArticleInfoModule$39
     if ((i != 0) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ArticleInfoModule.39.1(this));
     }
-    localawby.c();
-    localawby.b();
+    localawgh.c();
+    localawgh.b();
     this.this$0.h();
   }
 }

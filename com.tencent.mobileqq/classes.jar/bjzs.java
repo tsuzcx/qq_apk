@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.vip.ad.TianshuAdManager.1.1;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import mqq.os.MqqHandler;
+import mqq.app.QQPermissionCallback;
 
-public class bjzs
-  implements bkch
+class bjzs
+  implements QQPermissionCallback
 {
-  bjzs(bjzr parambjzr) {}
+  bjzs(bjzq parambjzq, int paramInt) {}
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramBoolean) && (paramGetAdsRsp != null)) {
-      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
-    }
+    bdgm.b(this.jdField_a_of_type_Bjzq.mRuntime.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bjzq.a(this.jdField_a_of_type_Bjzq, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjzs
  * JD-Core Version:    0.7.0.1
  */

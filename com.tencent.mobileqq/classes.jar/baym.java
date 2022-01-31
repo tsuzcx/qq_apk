@@ -1,54 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-
 public class baym
-  implements View.OnClickListener
 {
-  public baym(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public long a;
+  public String a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.b))
-    {
-      if (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) {
-        break label125;
-      }
-      this.a.a(200);
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      this.a.c = true;
-      paramView = (bazi)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      if ((paramView instanceof bazh))
-      {
-        paramView = ((bazh)paramView).a;
-        this.a.a(paramView, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      }
-    }
-    return;
-    label125:
-    if (this.a.b)
-    {
-      paramView = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent();
-      if (paramView != null)
-      {
-        ((ViewGroup)paramView).removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      }
-      paramView = (bazi)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      this.a.a(paramView);
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      return;
-      this.a.b(200);
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.b((bazi)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
-      this.a.jdField_a_of_type_Long = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mAppShareID:" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mShareUrl:" + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

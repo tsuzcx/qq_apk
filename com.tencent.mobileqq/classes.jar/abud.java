@@ -1,23 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Iterator;
-
-final class abud
-  extends BroadcastReceiver
+public class abud
+  implements abuc
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private abtt<abub> a = new abtu();
+  
+  public abub a(int paramInt)
   {
-    Iterator localIterator = abuc.a().iterator();
-    while (localIterator.hasNext())
-    {
-      abuc localabuc = (abuc)((WeakReference)localIterator.next()).get();
-      if (localabuc != null) {
-        localabuc.a(paramContext, paramIntent);
-      }
-    }
+    return (abub)this.a.a(paramInt);
   }
 }
 

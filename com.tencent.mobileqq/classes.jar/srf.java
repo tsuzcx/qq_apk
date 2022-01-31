@@ -22,7 +22,7 @@ public class srf
     }
     try
     {
-      paramView.put("navigationBarHeight", bdkf.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
+      paramView.put("navigationBarHeight", bdoo.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
       ViolaBaseView.a(this.a).updateInstance(paramView.toString());
       return;
     }

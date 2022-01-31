@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class acog
-  implements azwv
+public abstract interface acog
 {
-  public acog(Conversation paramConversation) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
+  public abstract void a(agkf paramagkf);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(agkf paramagkf);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 

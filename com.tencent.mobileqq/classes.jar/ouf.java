@@ -26,7 +26,7 @@ public class ouf
         String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)localMap.get(str1);
         if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
-          bjxj.c(Integer.parseInt(str2));
+          bkbq.c(Integer.parseInt(str2));
         }
       }
       return true;
@@ -40,7 +40,7 @@ public class ouf
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.c(0);
+    bkbq.c(0);
   }
 }
 

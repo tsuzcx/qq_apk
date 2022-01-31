@@ -36,19 +36,19 @@ public class piy
   {
     long l = System.currentTimeMillis();
     QLog.d("FeedsPreloadHelper", 1, new Object[] { "enterKDTab, time = ", Long.valueOf(l) });
-    bjxj.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(l));
+    bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(l));
   }
   
   public static void a(long paramLong, boolean paramBoolean) {}
   
   public static boolean a()
   {
-    if (!bjxj.i())
+    if (!bkbq.i())
     {
       QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, not independent kd tab.");
       return false;
     }
-    if (!((Boolean)bjxj.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
     {
       QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, switch is off.");
       return false;
@@ -85,24 +85,24 @@ public class piy
   
   public static boolean a(boolean paramBoolean)
   {
-    if (!bjxj.i())
+    if (!bkbq.i())
     {
       QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload : NO, not independent kd tab.");
       return false;
     }
-    if (!((Boolean)bjxj.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
     {
       QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, switch is off.");
       return false;
     }
-    long l1 = ((Long)bjxj.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(-1L))).longValue();
+    long l1 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(-1L))).longValue();
     if (l1 == -1L)
     {
       QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, have not entered kd yet.");
       return false;
     }
     long l2 = System.currentTimeMillis();
-    long l3 = ((Long)bjxj.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(90L))).longValue();
+    long l3 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(90L))).longValue();
     long l4 = (l2 - l1) / 1000L / 60L / 60L / 24L;
     QLog.d("FeedsPreloadHelper", 1, new Object[] { "have left kd for ", Long.valueOf((l2 - l1) / 1000L / 60L), " minute(s), ", Long.valueOf(l4), " day(s), config days = ", Long.valueOf(l3) });
     if (l4 > l3)
@@ -115,11 +115,11 @@ public class piy
       QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES, red point preload.");
       return true;
     }
-    l2 = ((Long)bjxj.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(-1L))).longValue();
+    l2 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(-1L))).longValue();
     if (l2 != -1L)
     {
       l3 = System.currentTimeMillis();
-      l1 = ((Long)bjxj.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(30L))).longValue();
+      l1 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(30L))).longValue();
       l2 = (l3 - l2) / 1000L / 60L;
       QLog.d("FeedsPreloadHelper", 1, new Object[] { "it has been ", Long.valueOf(l2), " minute(s) since last feeds preload, config minutes = ", Long.valueOf(l1) });
       if (l2 < l1)
@@ -136,7 +136,7 @@ public class piy
   {
     long l = System.currentTimeMillis();
     QLog.d("FeedsPreloadHelper", 1, new Object[] { "preload succeed, time = ", Long.valueOf(l) });
-    bjxj.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(l));
+    bkbq.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(l));
   }
   
   public static boolean b()

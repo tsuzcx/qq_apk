@@ -1,7 +1,7 @@
 package com.tencent.mfsdk.LeakInspector;
 
-import abqn;
-import abqq;
+import abvc;
+import abvf;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -64,7 +64,7 @@ class LeakInspector$InspectorRunner
     {
       Object localObject1 = LeakInspector.a(this.this$0).a(this.jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectUUID.toString());
       Object localObject2 = this.jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectUUID.toString();
-      Object[] arrayOfObject = abqn.b((String)localObject2);
+      Object[] arrayOfObject = abvc.b((String)localObject2);
       Object localObject3 = (Boolean)arrayOfObject[0];
       String str = "";
       if (((Boolean)localObject3).booleanValue())
@@ -74,7 +74,7 @@ class LeakInspector$InspectorRunner
         if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
           ((List)localObject3).addAll((Collection)localObject1);
         }
-        localObject1 = abqn.a((List)localObject3, (String)localObject2);
+        localObject1 = abvc.a((List)localObject3, (String)localObject2);
         localObject3 = (Boolean)localObject1[0];
         str = (String)localObject1[1];
         localObject2 = localObject3;

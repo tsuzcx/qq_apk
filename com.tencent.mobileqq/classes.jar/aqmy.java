@@ -1,44 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aqmy
-  extends aroh
+  implements View.OnClickListener
 {
-  public aqmy(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
+  public aqmy(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

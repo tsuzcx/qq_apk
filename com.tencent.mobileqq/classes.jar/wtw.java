@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
 
-public final class wtw
-  implements Parcelable.Creator<EditLocalVideoSource>
+public class wtw
+  extends AnimatorListenerAdapter
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new EditLocalVideoSource(paramParcel);
-  }
-  
-  public EditLocalVideoSource[] a(int paramInt)
-  {
-    return new EditLocalVideoSource[paramInt];
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    }
   }
 }
 

@@ -1,20 +1,20 @@
 package dov.com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import bmve;
-import bmvh;
-import bmvi;
-import bmvj;
-import bmvl;
+import bmzq;
+import bmzt;
+import bmzu;
+import bmzv;
+import bmzx;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$2
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$2(bmvh parambmvh, bmvl parambmvl, bmvj parambmvj) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$2(bmzt parambmzt, bmzx parambmzx, bmzv parambmzv) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bmvl.a.a != null) {
-      this.jdField_a_of_type_Bmvl.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bmvj);
+    if (this.jdField_a_of_type_Bmzx.a.a != null) {
+      this.jdField_a_of_type_Bmzx.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bmzv);
     }
   }
 }

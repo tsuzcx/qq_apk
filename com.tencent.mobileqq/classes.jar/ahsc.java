@@ -1,12 +1,16 @@
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
+
 class ahsc
-  implements ahsf
+  extends akit
 {
-  ahsc(ahrz paramahrz) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ahrz.a(this.a, paramInt1, paramInt2);
-  }
+  public Button a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

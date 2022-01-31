@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import beey;
+import bejh;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 import nya;
 
@@ -15,8 +15,8 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Beey.c != null)) {
-      this.this$0.jdField_a_of_type_Beey.c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Bejh.c != null)) {
+      this.this$0.jdField_a_of_type_Bejh.c.setBackgroundColor(-1);
     }
     if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null)
     {

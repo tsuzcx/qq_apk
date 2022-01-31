@@ -1,39 +1,30 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uox
-  extends upo
+  extends QQUIEventReceiver<uom, upp>
 {
-  public static final String a;
-  public static final String b = ume.a("StorySvc.like_feed");
-  protected upc a;
-  private boolean a;
-  protected String c;
-  
-  static
+  public uox(@NonNull uom paramuom)
   {
-    jdField_a_of_type_JavaLangString = ume.a("StorySvc.feed_like_list_715");
+    super(paramuom);
   }
   
-  public uox(upc paramupc, boolean paramBoolean)
+  public void a(@NonNull uom paramuom, @NonNull upp paramupp)
   {
-    this.jdField_a_of_type_Upc = paramupc;
-    this.c = this.jdField_a_of_type_Upc.a.feedId;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramupp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      wxe.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramupp.jdField_a_of_type_JavaLangString, paramupp.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramuom, paramupp), 0);
+    }
   }
   
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
+  public Class acceptEventClass()
   {
-    upq.a().a(new upa(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new upb());
-  }
-  
-  public void a()
-  {
-    a(this.c, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    upq.a().a(new uoy(this, paramString, paramBoolean), new uoz(this));
+    return upp.class;
   }
 }
 

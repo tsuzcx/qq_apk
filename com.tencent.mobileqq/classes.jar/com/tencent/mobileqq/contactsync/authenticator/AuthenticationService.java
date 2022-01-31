@@ -3,12 +3,12 @@ package com.tencent.mobileqq.contactsync.authenticator;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import aowc;
+import apal;
 
 public class AuthenticationService
   extends Service
 {
-  private aowc a;
+  private apal a;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -18,7 +18,7 @@ public class AuthenticationService
   public void onCreate()
   {
     super.onCreate();
-    this.a = new aowc(this);
+    this.a = new apal(this);
   }
   
   public void onDestroy() {}

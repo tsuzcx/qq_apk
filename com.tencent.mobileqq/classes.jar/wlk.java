@@ -1,50 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
-final class wlk
-  implements uni<vai, vaj>
+public class wlk
 {
-  wlk(wmg paramwmg) {}
+  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public void a(@NonNull vai paramvai, @Nullable vaj paramvaj, @NonNull ErrorMessage paramErrorMessage)
+  public wlk(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
   {
-    wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
-    if (paramvaj == null)
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
+  }
+  
+  public wlk(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
+    try
     {
-      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
-      new vaj(paramErrorMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramErrorMessage.isFail()) {
-          wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
-        }
-      } while ((paramvaj.jdField_a_of_type_JavaUtilList == null) || (paramvaj.jdField_a_of_type_JavaUtilList.isEmpty()));
-      paramvai = (uqo)urr.a(17);
-      paramvaj = (vak)paramvaj.jdField_a_of_type_JavaUtilList.get(0);
-    } while (paramvaj.jdField_a_of_type_JavaUtilList == null);
-    wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramvaj.jdField_a_of_type_JavaLangString, Integer.valueOf(paramvaj.jdField_a_of_type_Int), Integer.valueOf(paramvaj.jdField_a_of_type_JavaUtilList.size()) });
-    paramvai.a(paramvaj.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
-    paramvai = new wdq(paramErrorMessage, paramvaj.jdField_a_of_type_JavaLangString, 1);
-    paramvai.jdField_a_of_type_JavaUtilList = paramvaj.jdField_a_of_type_JavaUtilList;
-    paramvai.c = true;
-    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramvai.jdField_a_of_type_Boolean = bool;
-      paramvai.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
-      paramvai.jdField_b_of_type_Int = paramvaj.jdField_a_of_type_Int;
-      uht.a().dispatch(paramvai);
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
       return;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 

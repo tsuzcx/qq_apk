@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnp;
+import agse;
 
 class LimitChatPie$6$1
   implements Runnable
@@ -9,8 +9,8 @@ class LimitChatPie$6$1
   
   public void run()
   {
-    if (agnp.b(this.a.this$0)) {
-      agnp.b(this.a.this$0);
+    if (agse.b(this.a.this$0)) {
+      agse.b(this.a.this$0);
     }
   }
 }

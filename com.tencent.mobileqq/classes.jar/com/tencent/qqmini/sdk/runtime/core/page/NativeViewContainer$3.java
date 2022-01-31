@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
-import bgid;
-import bhcq;
+import bgmk;
+import bhgx;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class NativeViewContainer$3
   implements Runnable
 {
-  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bgid parambgid) {}
+  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bgmk parambgmk) {}
   
   public void run()
   {

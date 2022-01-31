@@ -1,18 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.graphics.Bitmap;
 
-public class baze
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface baze
 {
-  public baze(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
-  }
+  public abstract Bitmap a(Bitmap paramBitmap);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.text.TextUtils;
-import becq;
+import begz;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;

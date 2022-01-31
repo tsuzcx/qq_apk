@@ -1,7 +1,7 @@
 import android.os.Bundle;
 
 class szj
-  implements ymm
+  implements yrb
 {
   szj(szi paramszi, szh paramszh) {}
   

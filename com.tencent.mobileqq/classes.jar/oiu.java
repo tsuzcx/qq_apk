@@ -5,17 +5,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class oiu
-  extends bmgo
+  extends bmla
 {
-  public oiu(@NonNull bmix parambmix, long paramLong)
+  public oiu(@NonNull bmnj parambmnj, long paramLong)
   {
-    super(parambmix, paramLong);
+    super(parambmnj, paramLong);
   }
   
   private void j()
   {
-    ((ImageView)a(2131378116)).setVisibility(8);
-    ((TextView)a(2131364829)).setText(alpo.a(2131713240));
+    ((ImageView)a(2131378170)).setVisibility(8);
+    ((TextView)a(2131364830)).setText(alud.a(2131713252));
   }
   
   public void a()

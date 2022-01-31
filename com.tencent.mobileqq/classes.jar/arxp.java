@@ -1,42 +1,39 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 class arxp
-  extends arxq
 {
-  public ImageView a;
-  public TextView a;
+  public int a;
+  private long a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
+  private long d;
   
-  public arxp(View paramView)
+  private arxp()
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = arxj.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368169));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379141));
-    paramView.setTag(this);
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void a(String paramString1, String paramString2, bcws parambcws)
+  public void a()
   {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new baig((CharSequence)localObject, 2));
-    localObject = parambcws.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
-    {
-      localObject = bdda.a();
-      paramString2 = (String)localObject;
-      if (!parambcws.a())
-      {
-        parambcws.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = System.currentTimeMillis();
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.d = (System.currentTimeMillis() - this.c);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
   }
 }
 

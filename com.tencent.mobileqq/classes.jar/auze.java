@@ -1,19 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
-class auze
-  extends nab
+public class auze
+  implements DialogInterface.OnDismissListener
 {
-  auze(auza paramauza, String paramString, auzh paramauzh) {}
+  public auze(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt != 0) {
-      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Auzh != null) {
-      this.jdField_a_of_type_Auzh.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    this.a.finish();
   }
 }
 

@@ -1,24 +1,22 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-class aydg
-  implements GifDrawable.OnGIFPlayOnceListener
+public class aydg
+  implements View.OnLayoutChangeListener
 {
-  aydg(aydf paramaydf, AbstractGifImage paramAbstractGifImage) {}
+  public aydg(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onPlayOnce()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
-    AbstractGifImage.pauseAll();
-    if (this.jdField_a_of_type_Aydf.jdField_a_of_type_Aydh != null) {
-      this.jdField_a_of_type_Aydf.jdField_a_of_type_Aydh.b();
+    if ((paramInt2 < paramInt6) && (this.a.a != null))
+    {
+      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
+      paramInt3 = this.a.a.getHeight();
+      if (paramInt1 + paramInt3 > paramInt2) {
+        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
+      }
     }
-    if (this.jdField_a_of_type_Aydf.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
-      return;
-    }
-    ((URLImageView)this.jdField_a_of_type_Aydf.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
   }
 }
 

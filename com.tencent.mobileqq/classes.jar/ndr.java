@@ -228,7 +228,7 @@ public class ndr
     //   439: aload 7
     //   441: invokespecial 165	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   444: invokespecial 168	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   447: invokestatic 173	bjrc:a	(Ljava/io/OutputStream;)Lbjrc;
+    //   447: invokestatic 173	bjvj:a	(Ljava/io/OutputStream;)Lbjvj;
     //   450: astore 7
     //   452: aload 12
     //   454: invokevirtual 177	java/util/zip/ZipEntry:getSize	()J
@@ -519,7 +519,7 @@ public class ndr
     byte[] arrayOfByte = new byte[8192];
     try
     {
-      paramFile = bjrc.a(new FileOutputStream(paramFile));
+      paramFile = bjvj.a(new FileOutputStream(paramFile));
       for (;;)
       {
         localFile = paramFile;
@@ -691,7 +691,7 @@ public class ndr
     //   228: dup
     //   229: aload_0
     //   230: invokespecial 165	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   233: invokestatic 173	bjrc:a	(Ljava/io/OutputStream;)Lbjrc;
+    //   233: invokestatic 173	bjvj:a	(Ljava/io/OutputStream;)Lbjvj;
     //   236: astore_0
     //   237: aload 5
     //   239: aload 4

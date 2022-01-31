@@ -1,6 +1,15 @@
-public abstract class upo
+public class upo
+  extends uli
 {
-  public abstract void a();
+  public String a;
+  public String b;
+  
+  public upo(upl paramupl) {}
+  
+  public String toString()
+  {
+    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '\'' + ", videoUrl='" + this.b + '\'' + '}';
+  }
 }
 
 

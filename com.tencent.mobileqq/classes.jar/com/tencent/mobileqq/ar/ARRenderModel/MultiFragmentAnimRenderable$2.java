@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amqs;
-import amro;
+import amvh;
+import amwd;
 
 public class MultiFragmentAnimRenderable$2
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$2(amro paramamro, amqs paramamqs) {}
+  public MultiFragmentAnimRenderable$2(amwd paramamwd, amvh paramamvh) {}
   
   public void run()
   {

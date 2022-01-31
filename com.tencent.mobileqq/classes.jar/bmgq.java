@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bmgq
-  implements View.OnClickListener
+public abstract interface bmgq
 {
-  bmgq(bmgo parambmgo, int paramInt) {}
+  public abstract void i();
   
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Bmgo.a.jdField_a_of_type_Bmkf != null) && (this.jdField_a_of_type_Bmgo.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
-      this.jdField_a_of_type_Bmgo.a.a(this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

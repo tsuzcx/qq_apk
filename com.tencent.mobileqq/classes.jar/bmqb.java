@@ -1,208 +1,145 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.PointF;
 import android.graphics.Rect;
-import android.os.Message;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmqb
-  implements bmmx<bmmw>
+  extends bmyj
 {
-  private final int jdField_a_of_type_Int = bmtu.b(DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout), 40.0F);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public int a;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  RectF jdField_a_of_type_AndroidGraphicsRectF;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  public String a;
+  int jdField_b_of_type_Int;
+  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
   
-  private bmqb(DoodleLayout paramDoodleLayout) {}
-  
-  public boolean a(bmmw parambmmw, MotionEvent paramMotionEvent)
+  public bmqb(bmqa parambmqa, @NonNull String paramString1, @NonNull Drawable paramDrawable, @NonNull String paramString2, @NonNull String paramString3, @NonNull bmqd parambmqd)
   {
-    boolean bool = true;
-    if ((parambmmw instanceof bmlu)) {
-      localRect = new Rect();
-    }
-    for (Rect localRect = ((bmlu)parambmmw).a(localRect);; localRect = null)
+    super(parambmqd.jdField_a_of_type_AndroidGraphicsPointF, parambmqd.jdField_a_of_type_Float, parambmqd.jdField_b_of_type_Float, parambmqd.jdField_c_of_type_Float, parambmqd.jdField_d_of_type_Float, parambmqd.jdField_a_of_type_Int, parambmqd.jdField_b_of_type_Int, false);
+    this.jdField_a_of_type_Int = parambmqd.jdField_c_of_type_Int;
+    try
     {
-      if (bngs.b()) {}
-      for (float f1 = bngs.e;; f1 = 0.0F)
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambmqa.jdField_a_of_type_AndroidContentContext.getResources(), 2130845949);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambmqa.jdField_a_of_type_AndroidContentContext.getResources(), 2130845950);
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)this.u, (int)this.v);
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      this.jdField_c_of_type_JavaLangString = paramString3;
+      this.jdField_b_of_type_Int = parambmqd.e;
+      this.jdField_c_of_type_Int = parambmqd.jdField_d_of_type_Int;
+      return;
+    }
+    catch (OutOfMemoryError parambmqa)
+    {
+      for (;;)
       {
-        float f2 = f1;
-        if (bhzc.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext())) {
-          f2 = f1 + bhzc.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext());
-        }
-        f1 = paramMotionEvent.getX();
-        float f3 = paramMotionEvent.getY();
-        int i = (int)Math.abs(f3 - DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
-        int j;
-        int k;
-        int m;
-        switch (paramMotionEvent.getAction() & 0xFF)
-        {
-        case 3: 
-        case 4: 
-        default: 
-        case 0: 
-        case 2: 
-        case 5: 
-        case 6: 
-          do
-          {
-            return false;
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-            if (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
-              bmlh.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-            }
-            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-            parambmmw = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmmw.top -= this.jdField_a_of_type_Int;
-            parambmmw = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmmw.bottom += this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getGlobalVisibleRect(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(4);
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, (int)f3);
-            this.jdField_a_of_type_Boolean = false;
-            return false;
-          } while ((i <= DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (this.jdField_a_of_type_AndroidGraphicsRect == null));
-          if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e()))
-          {
-            i = (int)f1;
-            j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
-            k = (int)f3;
-            m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-            if ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2)))
-            {
-              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-              this.jdField_a_of_type_Boolean = true;
-            }
-          }
-          for (;;)
-          {
-            this.b = true;
-            return false;
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-            this.jdField_a_of_type_Boolean = false;
-            continue;
-            if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f3)) && (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)))
-            {
-              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-              this.jdField_a_of_type_Boolean = true;
-            }
-            else
-            {
-              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-              this.jdField_a_of_type_Boolean = false;
-            }
-          }
-        }
-        if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e())))
-        {
-          i = (int)f1;
-          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
-          k = (int)f3;
-          m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-          if ((DoodleLayout.e(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2))))
-          {
-            if ((parambmmw instanceof bmlu))
-            {
-              wsv.b("DoodleLayout", "remove face.");
-              ((bmlu)parambmmw).c();
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, 0.0F, 0, 0, null, false, 0);
-              if (QLog.isColorLevel()) {
-                QLog.d("DoodleLayout", 2, "delete face, disable guideline");
-              }
-              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.r();
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.f();
-            }
-          }
-          else
-          {
-            label710:
-            if ((!DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (DoodleLayout.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (!(parambmmw instanceof bmls))) {
-              break label1149;
-            }
-            parambmmw = (bmls)parambmmw;
-            paramMotionEvent = parambmmw.jdField_a_of_type_Bmly;
-            if ((!parambmmw.jdField_a_of_type_Bmtw.a(paramMotionEvent, f1, f3, false)) || (parambmmw.jdField_a_of_type_Boolean) || (!paramMotionEvent.b) || (paramMotionEvent.c)) {
-              break label1149;
-            }
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(paramMotionEvent);
-          }
-        }
-        label854:
-        label1143:
-        label1149:
-        for (i = 1;; i = 0)
-        {
-          if (i == 0)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.n();
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(0);
-          }
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-          if ((DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) == null) && (DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) != null))
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, false, false, false);
-            if ((!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b) || (!this.b)) {
-              break label1143;
-            }
-          }
-          for (;;)
-          {
-            DoodleLayout.d(bool);
-            this.b = false;
-            return false;
-            if ((parambmmw instanceof bmmk))
-            {
-              wsv.b("DoodleLayout", "editpic remove text.");
-              ((bmmk)parambmmw).h();
-              parambmmw.d(false);
-              break;
-            }
-            if (!(parambmmw instanceof bmmi)) {
-              break;
-            }
-            paramMotionEvent = ((bmmi)parambmmw).a();
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, paramMotionEvent);
-            ((bmmi)parambmmw).c();
-            break;
-            if ((paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f3)) || (!this.jdField_a_of_type_Boolean)) {
-              break label710;
-            }
-            if ((parambmmw instanceof bmmk))
-            {
-              wsv.b("DoodleLayout", "remove text.");
-              ((bmmk)parambmmw).h();
-              parambmmw.d(false);
-            }
-            for (;;)
-            {
-              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.r();
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.f();
-              break;
-              if ((parambmmw instanceof bmlu))
-              {
-                wsv.b("DoodleLayout", "remove face.");
-                ((bmlu)parambmmw).c();
-              }
-              else if ((parambmmw instanceof bmmi))
-              {
-                paramMotionEvent = ((bmmi)parambmmw).a();
-                DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, paramMotionEvent);
-                this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(((bmmi)parambmmw).a(), 0);
-                ((bmmi)parambmmw).c();
-              }
-            }
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout).a.a(Message.obtain(null, 17, 0, 0, new bmiq(false, false, false, false, true)));
-            break label854;
-            bool = false;
-          }
-        }
+        wxe.c(bmqa.jdField_a_of_type_JavaLangString, "BitmapFactory.decodeResource outOfMemoryError : %s.", parambmqa);
       }
+    }
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("u", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("n", this.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("o", this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Int != 0) {
+          continue;
+        }
+        i = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.x + this.s - this.u / 2.0F) / this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidGraphicsRect.width() * 1000.0F);
+        int j = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.y + this.t) / this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidGraphicsRect.height() * 1000.0F);
+        localJSONObject.put("x", i);
+        localJSONObject.put("y", j);
+      }
+      catch (JSONException localJSONException)
+      {
+        int i;
+        float f1;
+        float f2;
+        float f3;
+        localJSONException.printStackTrace();
+        continue;
+      }
+      wxe.c(bmqa.jdField_a_of_type_JavaLangString, "AtItem toJsonObject:" + localJSONObject.toString());
+      return localJSONObject;
+      f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
+      f2 = this.s;
+      f3 = this.u / 2.0F;
+      i = this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidGraphicsRect.width();
+      i = (int)((f1 + f2 + f3) / i * 1000.0F);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    wxe.c(bmqa.jdField_a_of_type_JavaLangString, "AtItem draw start.");
+    paramCanvas.save();
+    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+    NinePatch localNinePatch;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      localNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
+      localNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect);
+      paramCanvas.restore();
+      paramCanvas.save();
+      float f2 = (this.v - this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F;
+      if (this.jdField_a_of_type_Int != 0) {
+        break label344;
+      }
+      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+      f1 = aepi.a(10.0F, this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidContentContext.getResources());
+      label136:
+      paramCanvas.translate(f1, f2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+      paramCanvas.save();
+      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+      if (this.jdField_a_of_type_Int != 0) {
+        break label383;
+      }
+    }
+    label344:
+    label383:
+    for (float f1 = aepi.a(36.0F, this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidContentContext.getResources());; f1 = aepi.a(8.0F, this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidContentContext.getResources()))
+    {
+      this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
+      int i = (int)this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+      paramCanvas.translate(f1, (this.v - this.jdField_a_of_type_AndroidTextStaticLayout.getHeight()) / 2.0F);
+      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      paramCanvas.restore();
+      wxe.c(bmqa.jdField_a_of_type_JavaLangString, "AtItem draw end.");
+      return;
+      localNinePatch = new NinePatch(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
+      break;
+      paramCanvas.translate(this.u / 2.0F, -this.v / 2.0F);
+      f1 = -aepi.a(30.0F, this.jdField_a_of_type_Bmqa.jdField_a_of_type_AndroidContentContext.getResources());
+      break label136;
     }
   }
 }

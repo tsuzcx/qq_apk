@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import afgh;
+import afkw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import apga;
-import apgb;
-import apgd;
-import bcxb;
-import bdda;
+import apkj;
+import apkk;
+import apkm;
+import bdbk;
+import bdhj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,13 +27,13 @@ import mqq.os.MqqHandler;
 
 public class ComboEggView
   extends RelativeLayout
-  implements afgh
+  implements afkw
 {
   public static final float[] a;
   public static final int[] a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public apga a;
-  private apgd jdField_a_of_type_Apgd;
+  public apkj a;
+  private apkm jdField_a_of_type_Apkm;
   CustomFrameAnimationDrawable jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -72,10 +72,10 @@ public class ComboEggView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Apgd != null)
+    if (this.jdField_a_of_type_Apkm != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.j();
-      this.jdField_a_of_type_Apgd.a(this);
+      this.jdField_a_of_type_Apkm.a(this);
     }
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
   }
@@ -94,22 +94,22 @@ public class ComboEggView
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
   }
   
-  public void a(apgd paramapgd, QQAppInterface paramQQAppInterface)
+  public void a(apkm paramapkm, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.b = ((ImageView)findViewById(2131362264));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362263));
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getFileThreadLooper());
-    this.jdField_a_of_type_Apgd = paramapgd;
-    this.jdField_a_of_type_Apga = new apga(null, 0);
+    this.jdField_a_of_type_Apkm = paramapkm;
+    this.jdField_a_of_type_Apkj = new apkj(null, 0);
   }
   
-  public boolean a(apga paramapga)
+  public boolean a(apkj paramapkj)
   {
-    this.jdField_a_of_type_Apga = paramapga;
+    this.jdField_a_of_type_Apkj = paramapkj;
     int i = 0;
     if (i < jdField_a_of_type_ArrayOfInt.length) {
-      if (paramapga.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[i]) {}
+      if (paramapkj.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[i]) {}
     }
     for (;;)
     {
@@ -119,8 +119,8 @@ public class ComboEggView
         return false;
         i += 1;
         break;
-        if ((!TextUtils.isEmpty(paramapga.jdField_a_of_type_JavaLangString)) && (this.b.getVisibility() == 0)) {
-          this.b.setImageDrawable(bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramapga.jdField_a_of_type_JavaLangString));
+        if ((!TextUtils.isEmpty(paramapkj.jdField_a_of_type_JavaLangString)) && (this.b.getVisibility() == 0)) {
+          this.b.setImageDrawable(bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramapkj.jdField_a_of_type_JavaLangString));
         }
         int j = getContext().getResources().getDisplayMetrics().widthPixels;
         int k = getContext().getResources().getDisplayMetrics().heightPixels;
@@ -129,20 +129,20 @@ public class ComboEggView
         localLayoutParams.setMargins((int)(jdField_a_of_type_ArrayOfFloat[i] * f), 0, 0, 0);
         localLayoutParams.width = ((int)(j * 0.1573333F));
         localLayoutParams.height = ((int)(j * 0.1573333F));
-        File[] arrayOfFile = apgb.a(paramapga.jdField_a_of_type_Int);
+        File[] arrayOfFile = apkk.a(paramapkj.jdField_a_of_type_Int);
         if (arrayOfFile != null)
         {
-          paramapga = new BitmapFactory.Options();
-          paramapga.inSampleSize = 1;
-          paramapga.inMutable = true;
+          paramapkj = new BitmapFactory.Options();
+          paramapkj.inSampleSize = 1;
+          paramapkj.inMutable = true;
           String str = arrayOfFile[0].getAbsolutePath();
           localLayoutParams = null;
           try
           {
-            paramapga = bdda.a(str, paramapga);
-            if (paramapga != null)
+            paramapkj = bdhj.a(str, paramapkj);
+            if (paramapkj != null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(BaseApplicationImpl.getContext().getResources(), paramapga, this.jdField_a_of_type_MqqOsMqqHandler);
+              this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(BaseApplicationImpl.getContext().getResources(), paramapkj, this.jdField_a_of_type_MqqOsMqqHandler);
               i = 1;
               while (i < arrayOfFile.length)
               {
@@ -151,15 +151,15 @@ public class ComboEggView
               }
             }
           }
-          catch (OutOfMemoryError paramapga)
+          catch (OutOfMemoryError paramapkj)
           {
             for (;;)
             {
-              paramapga = localLayoutParams;
+              paramapkj = localLayoutParams;
               if (QLog.isColorLevel())
               {
                 QLog.d("ComboUIManager", 2, " ComboEggView play first bmp oom");
-                paramapga = localLayoutParams;
+                paramapkj = localLayoutParams;
               }
             }
           }

@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.support;
 
-import yvv;
-import yvx;
+import zak;
+import zam;
 
 public class VideoStoryPicToVideo$1
   implements Runnable
 {
-  public VideoStoryPicToVideo$1(yvv paramyvv, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, yvx paramyvx) {}
+  public VideoStoryPicToVideo$1(zak paramzak, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, zam paramzam) {}
   
   public void run()
   {
-    yvv.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Yvx);
+    zak.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Zam);
   }
 }
 

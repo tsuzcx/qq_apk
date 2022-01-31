@@ -21,7 +21,7 @@ class nio
       paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
     }
     ((BaseActivity)this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramView);
-    azmj.b(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, "", "", "");
+    azqs.b(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, "", "", "");
     nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }

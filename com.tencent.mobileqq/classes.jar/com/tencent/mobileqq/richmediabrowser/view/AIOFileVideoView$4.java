@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import axvm;
+import axzv;
 
 public class AIOFileVideoView$4
   implements Runnable
 {
-  public AIOFileVideoView$4(axvm paramaxvm) {}
+  public AIOFileVideoView$4(axzv paramaxzv) {}
   
   public void run()
   {

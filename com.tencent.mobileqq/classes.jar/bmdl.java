@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.annotation.NonNull;
 
-class bmdl
-  implements Animation.AnimationListener
+public class bmdl
+  implements Comparable<bmdl>
 {
-  bmdl(bmdi parambmdi) {}
+  public static final bmdl a;
+  public static final bmdl b = new bmdl(1);
+  public static final bmdl c = new bmdl(2);
+  public static final bmdl d = new bmdl(3);
+  public static final bmdl e = new bmdl(4);
+  public final int a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    bmdi.b(this.a).setVisibility(8);
+    jdField_a_of_type_Bmdl = new bmdl(0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public bmdl(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a(@NonNull bmdl parambmdl)
+  {
+    return this.jdField_a_of_type_Int - parambmdl.jdField_a_of_type_Int;
+  }
+  
+  public boolean a(@NonNull bmdl parambmdl)
+  {
+    return a(parambmdl) >= 0;
+  }
 }
 
 

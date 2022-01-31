@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.8;
 
-public abstract interface ankq
+public class ankq
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public abstract void b(ArrayList<anjz> paramArrayList);
+  public ankq(ArkAppModuleReg.ModuleQQ.8 param8, bdjz parambdjz) {}
+  
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bdjz.findViewById(2131365192)).setImageBitmap(paramBitmap);
+    }
+  }
 }
 
 

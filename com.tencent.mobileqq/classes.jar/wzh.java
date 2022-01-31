@@ -1,29 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
 class wzh
-  implements Animator.AnimatorListener
+  extends azcv
 {
-  wzh(wzf paramwzf) {}
+  wzh(wzb paramwzb) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.ad_();
   }
 }
 

@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
 public class anhu
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anhu(anhr paramanhr) {}
+  public anhu(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((anhr.a(this.a) == null) || (anhr.a(this.a).size() <= 0) || (anhr.a(this.a) >= anhr.a(this.a).size()) || (anhr.a(this.a).get(anhr.a(this.a)) == null)) {
-      return;
-    }
-    paramView = ((afds)anhr.a(this.a).get(anhr.a(this.a))).getAppName();
-    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
+    auew.b = paramBoolean;
   }
 }
 

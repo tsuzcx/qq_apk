@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class FeedIdListEntry
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String feedId;
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acyv;
+import addk;
 
 public class GesturePWDCreateActivity$2$3
   implements Runnable
 {
-  public GesturePWDCreateActivity$2$3(acyv paramacyv) {}
+  public GesturePWDCreateActivity$2$3(addk paramaddk) {}
   
   public void run()
   {

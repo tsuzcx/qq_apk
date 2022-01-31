@@ -1,11 +1,10 @@
-import android.support.annotation.NonNull;
-import java.util.List;
-
 public abstract interface bksv
 {
-  public abstract void a(@NonNull List<bksh> paramList, @NonNull List<bksg> paramList1);
+  public abstract void a(String paramString, float paramFloat);
   
-  public abstract void x();
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
 }
 
 

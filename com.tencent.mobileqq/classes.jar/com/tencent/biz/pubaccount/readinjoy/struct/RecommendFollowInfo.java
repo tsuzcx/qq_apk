@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import awbv;
+import awge;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -14,7 +14,7 @@ import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
 import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
 public class RecommendFollowInfo
-  extends awbv
+  extends awge
   implements Parcelable
 {
   public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new qlr();

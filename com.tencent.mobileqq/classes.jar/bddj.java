@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
-
 class bddj
-  extends aupr
 {
-  bddj(bddb parambddb, long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
-      bcyw.a((BaseActivity)this.jdField_a_of_type_Bddb.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bddj
  * JD-Core Version:    0.7.0.1
  */

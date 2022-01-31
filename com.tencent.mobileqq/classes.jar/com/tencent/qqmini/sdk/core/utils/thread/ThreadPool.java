@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bgme;
-import bgmf;
-import bgmg;
+import bgql;
+import bgqm;
+import bgqn;
 
 public class ThreadPool
 {
-  public static final bgme a = new bgmf(null);
-  bgmg a;
-  bgmg b;
+  public static final bgql a = new bgqm(null);
+  bgqn a;
+  bgqn b;
 }
 
 

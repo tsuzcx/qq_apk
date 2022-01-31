@@ -1,57 +1,17 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetCodeReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bgyx
-  extends bgzp
+final class bgyx
+  implements DialogInterface.OnClickListener
 {
-  private INTERFACE.StGetCodeReq a = new INTERFACE.StGetCodeReq();
+  bgyx(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bgyx(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    paramDialogInterface.dismiss();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
     }
-    INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
-    try
-    {
-      localStGetCodeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetCodeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("code", localStGetCodeRsp.code.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetCode";
   }
 }
 

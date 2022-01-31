@@ -1,36 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class alxc
-  extends Handler
+public abstract interface alxc
 {
-  alxc(alxb paramalxb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(alxc paramalxc);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.b();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(alxb.a(this.a)), " ,devStatus:", Integer.valueOf(alxb.b(this.a)), " ,clientType:", Long.valueOf(alxb.a(this.a)), " ,appid:", Long.valueOf(alxb.b(this.a)) });
-      }
-      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(alxb.b(this.a)) });
-    } while (alxb.b(this.a) != 0);
-    if (!this.a.a.hasMessages(101)) {
-      this.a.a.sendEmptyMessageDelayed(101, 3000L);
-    }
-    bcys.a(false);
-  }
+  public abstract void a(boolean paramBoolean, Object paramObject);
+  
+  public abstract void b(int paramInt1, int paramInt2, Object paramObject);
 }
 
 

@@ -1,16 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
 import android.os.Bundle;
-import bjmn;
-import bjmp;
-import bjul;
+import bjqu;
+import bjqw;
+import bjys;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class QzoneRecommedPhotoJsPlugin$5
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$5(bjul parambjul, String paramString) {}
+  public QzoneRecommedPhotoJsPlugin$5(bjys parambjys, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class QzoneRecommedPhotoJsPlugin$5
       JSONObject localJSONObject = new JSONObject(this.a);
       Bundle localBundle = new Bundle();
       localBundle.putInt("status", localJSONObject.optInt("status"));
-      bjmn.a().a().c(localBundle);
+      bjqu.a().a().c(localBundle);
       return;
     }
     catch (Throwable localThrowable)

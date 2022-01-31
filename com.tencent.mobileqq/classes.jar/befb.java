@@ -1,61 +1,34 @@
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class befb
+class befb
+  implements nae
 {
-  public boolean A;
-  public boolean B;
-  public boolean C;
-  public boolean D;
-  public boolean E;
-  public boolean F;
-  public boolean G;
-  public boolean H;
-  public int a;
-  public long a;
-  public WebViewTitleStyle a;
-  public Boolean a;
-  public String a;
-  public JSONObject a;
-  public boolean a;
-  public int b = -1;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o;
-  public boolean p;
-  public boolean q;
-  public boolean r;
-  public boolean s;
-  public boolean t;
-  public boolean u;
-  public boolean v;
-  public boolean w;
-  public boolean x;
-  public boolean y;
-  public boolean z;
+  befb(beez parambeez) {}
   
-  public befb()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = 4L;
-    this.jdField_c_of_type_Long = 5L;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_c_of_type_Int = 50;
+    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (paramBoolean) {
+      if (this.a.a)
+      {
+        if ((localObject != null) && ((localObject instanceof bels))) {
+          ((bels)localObject).a(true, 1, 2131691532);
+        }
+      }
+      else {
+        beez.a(this.a);
+      }
+    }
+    while ((localObject == null) || (!(localObject instanceof bels))) {
+      for (;;)
+      {
+        return;
+        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691532, 1);
+        ((QQToast)localObject).b(((QQToast)localObject).c());
+      }
+    }
+    ((bels)localObject).a(false, 0, 0);
   }
 }
 

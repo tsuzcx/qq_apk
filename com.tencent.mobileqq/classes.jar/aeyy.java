@@ -1,16 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-public class aeyy
-  implements View.OnClickListener
+class aeyy
+  implements View.OnTouchListener
 {
-  public aeyy(AIOLongShotHelper paramAIOLongShotHelper) {}
+  aeyy(aeyx paramaeyx) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AIOLongShotHelper.b(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DE7");
+    aeyx.a(this.a).a(paramMotionEvent);
+    return true;
   }
 }
 

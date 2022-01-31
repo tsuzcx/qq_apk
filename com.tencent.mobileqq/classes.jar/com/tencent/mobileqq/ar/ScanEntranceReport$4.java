@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import amud;
-import azmz;
+import amys;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$4
   implements Runnable
 {
-  public ScanEntranceReport$4(amud paramamud, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
+  public ScanEntranceReport$4(amys paramamys, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ScanEntranceReport$4
     localHashMap.put("first_select_time", String.valueOf(this.b));
     localHashMap.put("first_upload_delay", String.valueOf(this.c));
     localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    azmz.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
   }
 }
 

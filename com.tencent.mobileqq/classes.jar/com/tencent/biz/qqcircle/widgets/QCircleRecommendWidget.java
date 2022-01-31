@@ -2,7 +2,6 @@ package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
@@ -13,12 +12,14 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StDittoFeed;
 import feedcloud.FeedCloudMeta.StFeed;
 import qqcircle.QQCircleDitto.StItemContainer;
-import ucm;
-import ucn;
-import uco;
+import ufh;
+import ufi;
+import ufj;
+import yip;
 
 public class QCircleRecommendWidget
   extends BaseWidgetView
@@ -29,7 +30,7 @@ public class QCircleRecommendWidget
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ReportExtraTypeInfo jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo = new ReportExtraTypeInfo();
   private QQCircleDitto.StItemContainer jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer;
-  private uco jdField_a_of_type_Uco;
+  private ufj jdField_a_of_type_Ufj;
   
   public QCircleRecommendWidget(@NonNull Context paramContext, int paramInt)
   {
@@ -38,24 +39,26 @@ public class QCircleRecommendWidget
   
   public int a()
   {
-    return 2131560543;
+    return 2131560545;
   }
   
   public void a(Context paramContext, View paramView)
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372526));
-      ucm localucm = new ucm(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(localucm);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372514));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localucm);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131372524));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new LinearLayoutManager(paramContext, 0, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372551));
+      ufh localufh = new ufh(this);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(localufh);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372536));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localufh);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131372549));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yip(paramContext, 0, false);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-      this.jdField_a_of_type_Uco = new uco();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Uco);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ucn(this));
+      this.jdField_a_of_type_Ufj = new ufj(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ufj);
+      this.jdField_a_of_type_Ufj.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+      this.jdField_a_of_type_Ufj.a(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ufi(this));
     }
   }
   
@@ -66,7 +69,7 @@ public class QCircleRecommendWidget
   {
     FeedCloudMeta.StFeed localStFeed;
     FeedCloudMeta.StDittoFeed localStDittoFeed;
-    if (((paramObject instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Uco != null))
+    if (((paramObject instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Ufj != null))
     {
       localStFeed = (FeedCloudMeta.StFeed)paramObject;
       localStDittoFeed = ((FeedCloudMeta.StFeed)localStFeed.get()).dittoFeed;
@@ -78,12 +81,16 @@ public class QCircleRecommendWidget
     try
     {
       this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.mergeFrom(localStDittoFeed.dittoData.get().toByteArray());
-      if (this.jdField_a_of_type_Uco != null) {
-        this.jdField_a_of_type_Uco.a(localStFeed, paramInt, this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.get());
+      if (this.jdField_a_of_type_Ufj != null) {
+        this.jdField_a_of_type_Ufj.a(localStFeed, paramInt, this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.get());
       }
+      QLog.d("QCircleRecommendWidget", 1, new Object[] { "bind dittoFeed pos:", Integer.valueOf(paramInt), ",item size:", Integer.valueOf(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.size()) });
       return;
     }
-    catch (Exception paramObject) {}
+    catch (Exception paramObject)
+    {
+      QLog.e("QCircleRecommendWidget", 1, new Object[] { "bindData Exception:", paramObject.toString() });
+    }
   }
 }
 

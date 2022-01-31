@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import acsh;
-import alnq;
+import acww;
+import alsf;
 import com.tencent.widget.ListView;
 
 public class FontSettingActivity$AioListAdapter$1
   implements Runnable
 {
-  public FontSettingActivity$AioListAdapter$1(acsh paramacsh) {}
+  public FontSettingActivity$AioListAdapter$1(acww paramacww) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acsh.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
-    this.jdField_a_of_type_Acsh.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acsh.a.jdField_a_of_type_Acsh);
-    alnq.a(this.jdField_a_of_type_Acsh.a);
+    this.jdField_a_of_type_Acww.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+    this.jdField_a_of_type_Acww.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acww.a.jdField_a_of_type_Acww);
+    alsf.a(this.jdField_a_of_type_Acww.a);
   }
 }
 

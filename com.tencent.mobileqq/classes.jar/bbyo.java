@@ -1,20 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class bbyo
-  implements View.OnClickListener
+class bbyo
+  implements urr<bbyq, uro>
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  bbyo(bbyn parambbyn) {}
   
-  protected bbyo(bbym parambbym) {}
-  
-  public void onClick(View paramView)
+  public void a(@NonNull bbyq parambbyq, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_Bbym.a != null) {
-      this.jdField_a_of_type_Bbym.a.a(paramView, this.jdField_a_of_type_Int);
+    if (paramErrorMessage.isFail())
+    {
+      wxe.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
+      bbyn.a(this.a, paramErrorMessage);
+      return;
     }
+    if (paramuro.a == 0)
+    {
+      parambbyq = new bbyr();
+      parambbyq.a = bbyn.a(this.a);
+      parambbyq.b = bbyn.a(this.a).b;
+      bbyn.a(this.a, parambbyq);
+      return;
+    }
+    wxe.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramuro.b);
+    bbyn.b(this.a, new ErrorMessage(paramuro.a, paramuro.b));
   }
 }
 

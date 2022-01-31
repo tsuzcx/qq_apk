@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.b;
 
-import bdje;
+import bdnn;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +25,7 @@ public final class d
     e locale;
     if ((this.c != null) && (this.c.a()))
     {
-      if (!bdje.a(this.c.f))
+      if (!bdnn.a(this.c.f))
       {
         if (this.c.d == null) {
           this.c.d = new HashMap();

@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-class arro
-  implements DialogInterface.OnClickListener
+public class arro
+  implements Comparator<FileInfo>
 {
-  arro(arrk paramarrk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (paramInt == 1) {
-      this.a.a.c();
+    if (paramFileInfo1.c())
+    {
+      if (!paramFileInfo2.c()) {
+        return -1000;
+      }
     }
-    paramDialogInterface.dismiss();
+    else if (paramFileInfo2.c()) {
+      return 1000;
+    }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

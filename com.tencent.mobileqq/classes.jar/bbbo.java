@@ -1,35 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-
-class bbbo
-  extends BroadcastReceiver
+public class bbbo
+  extends bbbz
 {
-  bbbo(bbbm parambbbm) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = false;
+  public String c;
+  public String d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbbo()
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
-    {
-    default: 
-      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      bbbm.a(this.a, bbbm.a(this.a).troopUin, 1);
-      return;
-    }
-    bbbm.a(this.a, bbbm.a(this.a).troopUin, 3);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mResid:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 

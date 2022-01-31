@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import bbwx;
-import bbwy;
+import bcbg;
+import bcbh;
 
 public class InputMethodGuard
   extends View
 {
   private int jdField_a_of_type_Int = 0;
-  private bbwx jdField_a_of_type_Bbwx = null;
+  private bcbg jdField_a_of_type_Bcbg = null;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
   
@@ -28,7 +28,7 @@ public class InputMethodGuard
   public InputMethodGuard(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bbwy(this, null));
+    getViewTreeObserver().addOnGlobalLayoutListener(new bcbh(this, null));
   }
   
   public boolean a()
@@ -36,9 +36,9 @@ public class InputMethodGuard
     return this.b;
   }
   
-  public void setOnInputMethodChangeListener(bbwx parambbwx)
+  public void setOnInputMethodChangeListener(bcbg parambcbg)
   {
-    this.jdField_a_of_type_Bbwx = parambbwx;
+    this.jdField_a_of_type_Bcbg = parambcbg;
   }
 }
 

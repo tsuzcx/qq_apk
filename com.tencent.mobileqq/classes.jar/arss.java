@@ -1,82 +1,14 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-
-public abstract class arss
-  implements MethodChannel.MethodCallHandler
+public abstract interface arss
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3);
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4);
   
-  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
+  public abstract String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3);
   
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
   
-  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
-  {
-    String str = paramMethodCall.method;
-    if ("setSpecialCare".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
-      return;
-    }
-    if ("setQzoneNotify".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
-      return;
-    }
-    if ("getSCFSwitchs".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("getSpecialRing".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("openSpecialRingMall".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("onPageShowReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellShowReport".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellClickReport".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onSpecialCareSwitchReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4);
 }
 
 

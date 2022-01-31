@@ -1,26 +1,33 @@
-import android.util.Property;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
 class bmyy
-  extends Property<bmyp, Integer>
+  implements DialogInterface.OnClickListener
 {
-  bmyy(bmyp parambmyp, Class paramClass, String paramString)
+  static
   {
-    super(paramClass, paramString);
+    if (!bmyx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  public Integer a(bmyp parambmyp)
-  {
-    if (parambmyp != null) {
-      return Integer.valueOf(bmyp.d(parambmyp));
-    }
-    return Integer.valueOf(0);
-  }
+  bmyy(bmyx parambmyx) {}
   
-  public void a(bmyp parambmyp, Integer paramInteger)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambmyp != null) {
-      bmyp.d(parambmyp, paramInteger.intValue());
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Bundle();
+    bmrg localbmrg = this.jdField_a_of_type_Bmyx.a().a;
+    if ((!jdField_a_of_type_Boolean) && (localbmrg == null)) {
+      throw new AssertionError();
     }
+    bmou.a(paramDialogInterface, localbmrg);
+    paramDialogInterface.putInt("interact_type", bmyx.a(this.jdField_a_of_type_Bmyx));
+    this.jdField_a_of_type_Bmyx.a.a(38, paramDialogInterface);
   }
 }
 

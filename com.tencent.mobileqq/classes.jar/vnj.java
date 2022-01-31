@@ -1,63 +1,23 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
 
 public class vnj
-  extends wna
+  extends wrj
 {
-  public vnj(vng paramvng) {}
+  public vnj(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(vng.a(this.a)).size())) {}
-    do
+    if ((paramObject instanceof QQUserUIItem))
     {
-      return;
-      paramObject = (CommentEntry)this.a.a.a(vng.a(this.a)).get(paramInt);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
-      }
-    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-    ume.a(paramView.getContext(), 12, paramObject.authorUnionId);
-    return;
-    if (vng.a(this.a) != null) {
-      vng.a(this.a).a(paramObject, paramInt, vng.a(this.a).a());
-    }
-    vng.a(this.a).a(vng.a(this.a).a());
-  }
-  
-  public void b(int paramInt, View paramView, Object paramObject, wph paramwph)
-  {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(vng.a(this.a)).size())) {
-      return;
-    }
-    paramObject = (CommentEntry)this.a.a.a(vng.a(this.a)).get(paramInt);
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131364541: 
-      paramView = vng.a(this.a).a();
-      if ((paramView != null) && (paramView.a != null)) {
-        if (!paramView.a.getOwner().isMe()) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramView = "2";; paramView = "1")
-      {
-        wta.a("home_page", "press_reply", 0, 0, new String[] { paramView, wta.a(vng.a(this.a)) });
-        if (vng.a(this.a) == null) {
-          break;
-        }
-        vng.a(this.a).b(paramObject, paramInt, vng.a(this.a).a());
-        return;
+      paramView = (QQUserUIItem)paramObject;
+      uqn.a(this.a, 10, paramView.uid);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
+        wxj.a("home_page", "clk_head_list", wxj.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", wxj.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
       }
     }
-    vng.a(this.a).a(vng.a(this.a).a());
   }
 }
 

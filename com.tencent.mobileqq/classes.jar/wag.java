@@ -1,26 +1,48 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.lang.ref.WeakReference;
 
 public class wag
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uyk>
+  extends QQUIEventReceiver<wad, vtr>
 {
-  public wag(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  private WeakReference<vzk> a;
+  
+  public wag(@NonNull wad paramwad)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwad);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uyk paramuyk)
+  public void a(vzk paramvzk)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
-      return;
+    this.a = new WeakReference(paramvzk);
+  }
+  
+  public void a(@NonNull wad paramwad, @NonNull vtr paramvtr)
+  {
+    if (paramvtr.jdField_a_of_type_Boolean) {
+      if ((paramvtr.jdField_a_of_type_JavaLangString != null) && (this.a != null))
+      {
+        paramwad = (vzk)this.a.get();
+        if (paramwad != null) {
+          paramwad.b(paramvtr.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramuyk);
+    do
+    {
+      do
+      {
+        return;
+        wxe.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramvtr.jdField_a_of_type_JavaLangString });
+      } while (this.a == null);
+      paramwad = (vzk)this.a.get();
+    } while (paramwad == null);
+    paramwad.d();
   }
   
   public Class acceptEventClass()
   {
-    return uyk.class;
+    return vtr.class;
   }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:paddingRight="10.0dip" android:layout_width="60.0dip" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.aeeditor.view.ClipThumbnailImageView android:id="@id/mpr" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+    <dov.com.qq.im.aeeditor.view.ClipThumbnailImageView android:id="@id/mr_" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
 </LinearLayout>

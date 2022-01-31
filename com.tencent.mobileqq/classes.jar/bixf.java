@@ -1,29 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
 public class bixf
+  implements DialogInterface.OnClickListener
 {
-  @Nullable
-  public static Activity a(Context paramContext)
+  public bixf(QfavJumpActivity paramQfavJumpActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramContext instanceof Activity)) {
-      return (Activity)paramContext;
-    }
-    if ((paramContext instanceof ContextWrapper))
-    {
-      paramContext = (ContextWrapper)paramContext;
-      if ((paramContext.getBaseContext() instanceof Activity)) {
-        return (Activity)paramContext.getBaseContext();
-      }
-    }
-    return null;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bixf
  * JD-Core Version:    0.7.0.1
  */

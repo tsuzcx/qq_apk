@@ -1,21 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.ttpic.openapi.filter.MaterialLoadFinishListener;
 
-public class bktd
-  extends RecyclerView.ViewHolder
+class bktd
+  implements MaterialLoadFinishListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  bktd(bktc parambktc) {}
   
-  public bktd(View paramView)
+  public void onLoadFinish(long paramLong)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-    this.b = ((ImageView)paramView.findViewById(2131368195));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366356));
+    bliu.a().a(bktc.a(this.a), paramLong);
   }
 }
 

@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rzn
-  extends anxq
+  extends aobz
 {
   public rzn(FastWebActivity paramFastWebActivity) {}
   

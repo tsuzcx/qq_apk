@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troopshare;
 
-import bctc;
-import bctm;
+import bcxl;
+import bcxv;
 
 public class TroopShareUtility$10
   implements Runnable
 {
-  public TroopShareUtility$10(bctc parambctc, bctm parambctm) {}
+  public TroopShareUtility$10(bcxl parambcxl, bcxv parambcxv) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbctc;
-    //   4: getfield 28	bctc:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbcxl;
+    //   4: getfield 28	bcxl:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
     //   7: invokevirtual 34	com/tencent/mobileqq/app/BaseActivity:getAppRuntime	()Lmqq/app/AppRuntime;
     //   10: checkcast 36	com/tencent/mobileqq/app/QQAppInterface
     //   13: astore 8
@@ -31,8 +31,8 @@ public class TroopShareUtility$10
     //   40: invokevirtual 40	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   43: checkcast 52	com/tencent/mobileqq/app/TroopManager
     //   46: aload_0
-    //   47: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbctc;
-    //   50: getfield 55	bctc:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   47: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbcxl;
+    //   50: getfield 55	bcxl:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   53: getfield 61	com/tencent/mobileqq/troopinfo/TroopInfoData:troopUin	Ljava/lang/String;
     //   56: invokevirtual 65	com/tencent/mobileqq/app/TroopManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopInfo;
     //   59: astore 4
@@ -47,9 +47,9 @@ public class TroopShareUtility$10
     //   80: iconst_1
     //   81: iload_1
     //   82: if_icmpne +487 -> 569
-    //   85: invokestatic 82	bdag:a	()Z
+    //   85: invokestatic 82	bdep:a	()Z
     //   88: ifeq +305 -> 393
-    //   91: getstatic 87	aljq:bJ	Ljava/lang/String;
+    //   91: getstatic 87	alof:bJ	Ljava/lang/String;
     //   94: astore 4
     //   96: new 89	java/lang/StringBuilder
     //   99: dup
@@ -82,7 +82,7 @@ public class TroopShareUtility$10
     //   162: astore 6
     //   164: aload 6
     //   166: astore 5
-    //   168: invokestatic 125	bdda:c	()Landroid/graphics/drawable/Drawable;
+    //   168: invokestatic 125	bdhj:c	()Landroid/graphics/drawable/Drawable;
     //   171: checkcast 127	android/graphics/drawable/BitmapDrawable
     //   174: invokevirtual 131	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
     //   177: getstatic 137	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
@@ -105,8 +105,8 @@ public class TroopShareUtility$10
     //   213: aload 8
     //   215: bipush 113
     //   217: aload_0
-    //   218: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbctc;
-    //   221: getfield 55	bctc:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   218: getfield 14	com/tencent/mobileqq/troopshare/TroopShareUtility$10:this$0	Lbcxl;
+    //   221: getfield 55	bcxl:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   224: getfield 61	com/tencent/mobileqq/troopinfo/TroopInfoData:troopUin	Ljava/lang/String;
     //   227: iconst_0
     //   228: invokevirtual 154	com/tencent/mobileqq/app/QQAppInterface:a	(ILjava/lang/String;I)Ljava/lang/String;
@@ -135,7 +135,7 @@ public class TroopShareUtility$10
     //   277: invokevirtual 161	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   280: aload 9
     //   282: ldc 163
-    //   284: invokestatic 168	bjao:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
+    //   284: invokestatic 168	bjev:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
     //   287: astore 4
     //   289: aload 4
     //   291: ifnull +250 -> 541

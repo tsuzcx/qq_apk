@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import anfv;
+import anke;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ArkAppModuleReg$ModuleQQ$21
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$21(anfv paramanfv, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$21(anke paramanke, String paramString) {}
   
   public void run()
   {

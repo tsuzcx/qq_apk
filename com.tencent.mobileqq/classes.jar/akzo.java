@@ -1,6 +1,28 @@
-public abstract interface akzo
+public class akzo
+  implements alpg
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
+  }
 }
 
 

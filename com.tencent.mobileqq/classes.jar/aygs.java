@@ -1,99 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
-import com.tencent.smtt.sdk.WebView;
-import java.net.URLDecoder;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import java.lang.ref.WeakReference;
 
 public class aygs
-  extends aygt
 {
-  public aygs(KDSearchResultFragment paramKDSearchResultFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  int jdField_a_of_type_Int;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
+  public WeakReference<aygt> b;
+  
+  public aygs(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, aygt paramaygt)
   {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaygt);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public View a()
   {
-    super.onPageFinished(paramWebView, paramString);
-    if ((KDSearchResultFragment.a(this.a) != null) && (KDSearchResultFragment.a(this.a).b() != 2)) {
-      KDSearchResultFragment.a(this.a).a((byte)2);
-    }
-    this.a.a.setVisibility(8);
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public aygt a()
   {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if ((KDSearchResultFragment.a(this.a) != null) && (KDSearchResultFragment.a(this.a).b() != 0)) {
-      KDSearchResultFragment.a(this.a).a((byte)0);
-    }
-    this.a.a.setVisibility(0);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    int i = 0;
-    Log.d("KDSearchResultFragment", "shouldOverrideUrlLoading: ");
-    Object localObject1;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject1 = paramString.split("\\?");
-      if ((localObject1.length == 2) && (!TextUtils.isEmpty(localObject1[1])))
-      {
-        localObject1 = localObject1[1].split("#");
-        if ((localObject1.length == 2) && (!TextUtils.isEmpty(localObject1[0])))
-        {
-          localObject1 = localObject1[0].split("=");
-          if (localObject1.length % 2 != 0) {}
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i + 1 < localObject1.length)
-      {
-        if (("p".equals(localObject1[i])) && (!TextUtils.isEmpty(localObject1[(i + 1)]))) {
-          try
-          {
-            Object localObject2 = new JSONObject(URLDecoder.decode(localObject1[(i + 1)]));
-            if (!((JSONObject)localObject2).has("url")) {
-              break label240;
-            }
-            String str = ((JSONObject)localObject2).getString("url");
-            if (!ayrd.d(str)) {
-              break label240;
-            }
-            localObject2 = ayrd.a(str);
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label240;
-            }
-            localObject1 = bhos.a(str, "searchbox", "native");
-            KDSearchResultFragment.a(this.a).setText((CharSequence)localObject2);
-            KDSearchResultFragment.a(this.a, (String)localObject2);
-            this.mWebview.loadUrl((String)localObject1);
-            return true;
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-      else {
-        return super.shouldOverrideUrlLoading(paramWebView, paramString);
-      }
-      label240:
-      i += 2;
-    }
+    return (aygt)this.jdField_b_of_type_JavaLangRefWeakReference.get();
   }
 }
 

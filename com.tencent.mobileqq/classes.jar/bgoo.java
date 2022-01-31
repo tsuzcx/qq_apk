@@ -1,50 +1,19 @@
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnInfoListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-public class bgoo
-  implements VideoPlayerProxy.OnInfoListener
+final class bgoo
+  extends View.AccessibilityDelegate
 {
-  public bgoo(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  bgoo(CharSequence paramCharSequence, String paramString) {}
   
-  public boolean onInfo(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    QMLog.i("MiniAppVideoPlayer", "onInfo: " + paramInt1 + " " + paramInt1);
-    switch (paramInt1)
-    {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
-    for (;;)
-    {
-      return false;
-      QMLog.d("MiniAppVideoPlayer", "video player PLAYER_INFO_START_BUFFERING--------------");
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Bghn.a("onVideoLoadStart", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadStart = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-      continue;
-      QMLog.d("MiniAppVideoPlayer", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Bghn.a("onVideoLoadedData", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadedData = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
+    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 

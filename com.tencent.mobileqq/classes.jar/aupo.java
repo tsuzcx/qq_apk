@@ -1,258 +1,177 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Proxy;
-import android.net.Uri;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.myapp.net.HttpResponseException;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.InetSocketAddress;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class aupo
+  extends auow
 {
-  private static final Uri a;
-  public static ThreadSafeClientConnManager a;
+  private static final String a;
   
   static
   {
-    jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
+    jdField_a_of_type_JavaLangString = alud.a(2131708548);
   }
   
-  private static aupp a()
+  public aupo(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = BaseApplication.getContext();
-    aupp localaupp = new aupp();
-    try
-    {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localObject1 = ((Context)localObject1).getContentResolver().query(jdField_a_of_type_AndroidNetUri, null, null, null, null);
-        ((Cursor)localObject1).moveToFirst();
-        str1 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("proxy"));
-        if (str1 != null) {
-          str1.toLowerCase();
-        }
-        str2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("port"));
-        str3 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("apn"));
-        if (str3 != null) {
-          str3.toLowerCase();
-        }
-        ((Cursor)localObject1).close();
-        if ((str3 != null) && (str3.startsWith("ctwap"))) {
-          if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-          {
-            localaupp.jdField_a_of_type_JavaLangString = str1;
-            localaupp.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
-          }
-          else
-          {
-            localaupp.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localaupp.jdField_a_of_type_Int = 80;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return localaupp;
-      }
-      if ((str3 != null) && (str3.startsWith("cmwap")))
-      {
-        if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-        {
-          localaupp.jdField_a_of_type_JavaLangString = str1;
-          localaupp.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
-        }
-        else
-        {
-          localaupp.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localaupp.jdField_a_of_type_Int = 80;
-        }
-      }
-      else if ((str3 != null) && (str3.startsWith("uniwap"))) {
-        if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-        {
-          localaupp.jdField_a_of_type_JavaLangString = str1;
-          localaupp.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
-        }
-        else
-        {
-          localaupp.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localaupp.jdField_a_of_type_Int = 80;
-        }
-      }
-      return localaupp;
-    }
-    finally {}
-    return localaupp;
+    super(paramQQAppInterface);
   }
   
-  public static InetSocketAddress a()
+  private void a(aupm paramaupm, MessageRecord paramMessageRecord, ArrayList<awjf> paramArrayList, ArrayList<MessageRecord> paramArrayList1, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    Object localObject2 = null;
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    String str;
-    int i;
-    if (localBaseApplication == null)
+    if ((paramMessageRecord instanceof MessageForPic))
     {
-      str = Proxy.getDefaultHost();
-      i = Proxy.getDefaultPort();
-    }
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (str != null)
-      {
-        localObject1 = localObject2;
-        if (str.trim().length() > 0) {
-          localObject1 = new InetSocketAddress(str, i);
-        }
+      paramaupm = awjb.a(7, (MessageForPic)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      if (paramaupm != null) {
+        paramArrayList.add(paramaupm);
       }
+    }
+    label47:
+    label224:
+    do
+    {
       do
       {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (!AppNetConnInfo.isMobileConn());
-      str = Proxy.getHost(localBaseApplication);
-      int j = Proxy.getPort(localBaseApplication);
-      if ((str != null) && (str.trim().length() != 0))
-      {
-        i = j;
-        if (j > 0) {}
-      }
-      else
-      {
-        str = Proxy.getDefaultHost();
-        j = Proxy.getDefaultPort();
-        if ((str != null) && (str.trim().length() != 0))
+        do
         {
-          i = j;
-          if (j > 0) {}
-        }
-        else
-        {
-          localObject1 = a();
-          str = ((aupp)localObject1).jdField_a_of_type_JavaLangString;
-          i = ((aupp)localObject1).jdField_a_of_type_Int;
-        }
-      }
+          Object localObject;
+          do
+          {
+            do
+            {
+              paramArrayList1.add(paramMessageRecord);
+              break label47;
+              break label47;
+              break label47;
+              break label47;
+              for (;;)
+              {
+                return;
+                if (QLog.isColorLevel())
+                {
+                  QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
+                  return;
+                  if ((paramMessageRecord instanceof MessageForMixedMsg))
+                  {
+                    paramaupm = awjb.a(7, (MessageForMixedMsg)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+                    if (paramaupm != null)
+                    {
+                      paramArrayList.addAll(paramaupm);
+                      paramArrayList1.add(paramMessageRecord);
+                      return;
+                    }
+                    if (!QLog.isColorLevel()) {
+                      break;
+                    }
+                    QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfos from MessageForMixedMsg failed");
+                    return;
+                  }
+                  if (paramMessageRecord.msgtype != -1036) {
+                    break label224;
+                  }
+                  paramaupm = ((MessageForLongMsg)paramMessageRecord).longMsgFragmentList.iterator();
+                  while (paramaupm.hasNext())
+                  {
+                    localObject = (MessageRecord)paramaupm.next();
+                    if ((localObject instanceof MessageForMixedMsg))
+                    {
+                      localObject = awjb.a(7, (MessageForMixedMsg)localObject, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+                      if (localObject != null)
+                      {
+                        paramArrayList.addAll((Collection)localObject);
+                        paramArrayList1.add(paramMessageRecord);
+                      }
+                    }
+                  }
+                }
+              }
+              if (!(paramMessageRecord instanceof MessageForStructing)) {
+                break;
+              }
+              paramaupm = ((MessageForStructing)paramMessageRecord).structingMsg;
+            } while ((paramaupm == null) || (!(paramaupm instanceof StructMsgForImageShare)));
+            localObject = ((StructMsgForImageShare)paramaupm).getFirstImageElement();
+          } while (localObject == null);
+          if (((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)
+          {
+            if (((azwy)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
+              ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = ((StructMsgForImageShare)paramaupm);
+            }
+            ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((azwy)localObject).a();
+          }
+          paramaupm = awjb.a(7, ((azwy)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramInt2, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+          if (paramaupm != null)
+          {
+            paramArrayList.add(paramaupm);
+            paramArrayList1.add(paramMessageRecord);
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
+        return;
+      } while (!(paramMessageRecord instanceof MessageForReplyText));
+      paramMessageRecord = ((MessageForReplyText)paramMessageRecord).getSourceMessage();
+    } while ((paramMessageRecord == null) || ((!(paramMessageRecord instanceof MessageForPic)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForStructing)) && (paramMessageRecord.msgtype != -1036)));
+    if (QLog.isColorLevel()) {
+      QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg] MessageForReplyText add to list");
+    }
+    if (paramaupm.b == 2) {}
+    for (paramInt1 = 0;; paramInt1 = paramMessageRecord.istroop)
+    {
+      a(paramaupm, paramMessageRecord, paramArrayList, paramArrayList1, paramInt1, paramMessageRecord.selfuin, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      return;
     }
   }
   
-  public static HttpEntity a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, ArrayList<awjf> paramArrayList1, int paramInt, aupm paramaupm, auoz paramauoz)
   {
-    BasicHttpParams localBasicHttpParams = new BasicHttpParams();
-    HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, 15000);
-    HttpConnectionParams.setSoTimeout(localBasicHttpParams, 30000);
-    if (paramString2.equals("POST"))
-    {
-      paramString1 = new HttpPost(paramString1);
-      paramArrayOfByte = new ByteArrayEntity(paramArrayOfByte);
-      ((HttpPost)paramString1).setEntity(paramArrayOfByte);
-      paramArrayOfByte = paramString1;
-    }
-    int j;
-    int i;
-    while (paramArrayOfBasicHeader != null)
-    {
-      j = paramArrayOfBasicHeader.length;
-      i = 0;
-      while (i < j)
-      {
-        paramArrayOfByte.addHeader(paramArrayOfBasicHeader[i]);
-        i += 1;
-      }
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte = new HttpGet(paramString1 + "?" + new String(paramArrayOfByte));
-      } else {
-        paramArrayOfByte = new HttpGet(paramString1);
-      }
-    }
-    if (jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager == null)
-    {
-      paramString1 = new SchemeRegistry();
-      paramString1.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-      paramString1.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-      jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = new ThreadSafeClientConnManager(localBasicHttpParams, paramString1);
-    }
-    paramString2 = new DefaultHttpClient(jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager, localBasicHttpParams);
-    if (a() != null)
-    {
-      Proxy.getDefaultHost();
-      Proxy.getDefaultPort();
-      paramArrayOfBasicHeader = BaseApplication.getContext();
-      if (paramArrayOfBasicHeader != null) {
-        break label363;
-      }
-      paramString1 = Proxy.getDefaultHost();
-      i = Proxy.getDefaultPort();
-    }
-    for (;;)
-    {
-      if ((paramString1 != null) && (paramString1.trim().length() != 0))
-      {
-        j = i;
-        if (i > 0) {}
-      }
-      else
-      {
-        paramArrayOfBasicHeader = a();
-        paramString1 = paramArrayOfBasicHeader.jdField_a_of_type_JavaLangString;
-        j = paramArrayOfBasicHeader.jdField_a_of_type_Int;
-      }
-      paramString1 = new HttpHost(paramString1, j);
-      paramString2.getParams().setParameter("http.route.default-proxy", paramString1);
-      paramString1 = paramString2.execute(paramArrayOfByte);
-      i = paramString1.getStatusLine().getStatusCode();
-      if (i == 200) {
-        break;
-      }
-      throw new HttpResponseException(i);
-      label363:
-      paramString1 = Proxy.getHost(paramArrayOfBasicHeader);
-      j = Proxy.getPort(paramArrayOfBasicHeader);
-      if ((paramString1 != null) && (paramString1.trim().length() != 0))
-      {
-        i = j;
-        if (j > 0) {}
-      }
-      else
-      {
-        paramString1 = Proxy.getDefaultHost();
-        i = Proxy.getDefaultPort();
-      }
-    }
-    return paramString1.getEntity();
+    awjl localawjl = awjb.a(8, 7);
+    localawjl.a(paramArrayList1);
+    localawjl.a(new aupp(this, paramArrayList, paramHashMap, paramMessageRecord, paramauoz, paramaupm));
+    awjb.a(localawjl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public static byte[] a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
+  public void a(aupm paramaupm, HashMap<String, ArrayList<MessageRecord>> paramHashMap, auoz paramauoz)
   {
-    paramString1 = a(paramString1, paramArrayOfByte, paramString2, paramArrayOfBasicHeader);
-    paramArrayOfByte = EntityUtils.toByteArray(paramString1);
-    paramString1.consumeContent();
-    return paramArrayOfByte;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (paramaupm.b == 2) {}
+    for (int i = 0;; i = paramaupm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+    {
+      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+      String str2 = paramaupm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      int j = paramaupm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      Iterator localIterator1 = paramHashMap.keySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((ArrayList)paramHashMap.get((String)localIterator1.next())).iterator();
+        while (localIterator2.hasNext()) {
+          a(paramaupm, (MessageRecord)localIterator2.next(), localArrayList1, localArrayList2, i, str1, str2, j);
+        }
+      }
+    }
+    if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]Upload pictures, count is [" + localArrayList1.size() + "], goto requestUploadPics");
+      }
+      a(paramHashMap, paramaupm.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, localArrayList2, localArrayList1, paramaupm.b, paramaupm, paramauoz);
+      return;
+    }
+    paramauoz.a(0, 1, paramaupm);
   }
 }
 

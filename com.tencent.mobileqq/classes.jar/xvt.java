@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.view.View;
 
-public class xvt
-  implements DialogInterface.OnClickListener
+public abstract interface xvt
 {
-  public xvt(QRLoginMgrActivity paramQRLoginMgrActivity, xwv paramxwv) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Xwv.a);
-    azmj.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Xwv.c, 0, "", "", "", "");
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

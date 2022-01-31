@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import bjav;
+import bjfc;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class QZoneTopGestureLayout
@@ -39,7 +39,7 @@ public class QZoneTopGestureLayout
   {
     a = true;
     b = true;
-    this.mTopGestureDetector = new GestureDetector(paramContext, new bjav(this, paramContext), new Handler(Looper.getMainLooper()));
+    this.mTopGestureDetector = new GestureDetector(paramContext, new bjfc(this, paramContext), new Handler(Looper.getMainLooper()));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)

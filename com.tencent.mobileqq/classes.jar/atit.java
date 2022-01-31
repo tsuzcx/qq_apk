@@ -1,23 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class atit
-  implements DialogInterface.OnClickListener
+class atit
+  implements yrb
 {
-  public atit(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  atit(atir paramatir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
+    int i = paramBundle.getInt("state", 0);
+    String str = paramBundle.getString("version");
+    long l = paramBundle.getLong("size", 0L);
+    try
     {
-      ListenTogetherOverlayFragment.a(this.a, true);
+      paramBundle = new JSONObject();
+      paramBundle.put("status", i);
+      paramBundle.put("versionCode", str);
+      paramBundle.put("fileSize", l);
+      this.a.callJs(this.a.f, new String[] { paramBundle.toString() });
       return;
     }
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    catch (Exception paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      this.a.callJs(this.a.f, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
+    }
   }
 }
 

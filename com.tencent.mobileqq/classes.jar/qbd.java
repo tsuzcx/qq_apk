@@ -18,15 +18,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qbd
   extends pxv
 {
-  public qbd(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qbd(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).f().g().h().q().l().n();
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).f().g().h().q().l().n();
   }
   
   public pxl d()
@@ -44,15 +44,15 @@ public class qbd
     {
       RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       Object localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aepi.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       ((LinearLayout.LayoutParams)localObject).gravity = 1;
       localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = new RelativeLayout.LayoutParams(-1, aekt.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localObject = new RelativeLayout.LayoutParams(-1, aepi.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((ComponentContentBig)this.jdField_a_of_type_Pxk).setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(-1, aekt.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
+      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(-1, aepi.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
       ((ImageView)localObject).setBackgroundColor(Color.parseColor("#66000000"));
       localRelativeLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
       localRelativeLayout.addView((View)localObject);

@@ -1,34 +1,43 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class altt
-  implements Comparator<PhoneContact>
+  extends baqn
 {
-  public altt(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
+    {
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = alof.bi;
+      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
+      }
+      if (beag.a(new beae(paramOutputStream, paramDownloadParams), null) == 0) {
+        return paramDownloadParams;
+      }
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
+    return null;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
+    if (paramURLDrawableHandler != null)
+    {
+      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
+      float f = paramDownloadParams.mGifRoundCorner;
+      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
+        return new bdti(paramFile, true, f, 3);
+      }
     }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
+    return null;
   }
 }
 

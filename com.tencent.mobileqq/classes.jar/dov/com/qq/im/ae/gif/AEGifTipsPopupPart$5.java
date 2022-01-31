@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif;
 
-import bkxe;
+import blbl;
 
 public class AEGifTipsPopupPart$5
   implements Runnable
 {
-  public AEGifTipsPopupPart$5(bkxe parambkxe) {}
+  public AEGifTipsPopupPart$5(blbl paramblbl) {}
   
   public void run()
   {
-    if (!bkxe.a(this.this$0)) {
-      bkxe.a(this.this$0, true, true);
+    if (!blbl.a(this.this$0)) {
+      blbl.a(this.this$0, true, true);
     }
   }
 }

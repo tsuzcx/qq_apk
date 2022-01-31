@@ -1,65 +1,107 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.util.SparseArray;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anrx
-  implements BusinessObserver
 {
-  private static anrx jdField_a_of_type_Anrx;
-  private int jdField_a_of_type_Int;
-  private final SparseArray<anrw> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public long a;
+  public String a;
+  public ArrayList<anrw> a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public static anrx a()
+  public JSONObject a()
   {
-    if (jdField_a_of_type_Anrx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Anrx == null) {
-        jdField_a_of_type_Anrx = new anrx();
-      }
-      return jdField_a_of_type_Anrx;
-    }
-    finally {}
-  }
-  
-  public int a(Context paramContext, anre paramanre)
-  {
-    return a(new anrw(paramContext, paramanre));
-  }
-  
-  public int a(Context paramContext, anrj paramanrj)
-  {
-    return a(new anrw(paramContext, paramanrj));
-  }
-  
-  public int a(anrw paramanrw)
-  {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, paramanrw);
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("req_id");
-    anrw localanrw = (anrw)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    switch (paramInt)
-    {
-    }
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-      return;
-      localanrw.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
+      try
+      {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          Object localObject = this.jdField_a_of_type_JavaLangString;
+          localJSONObject.put("uin", localObject);
+          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+            break label285;
+          }
+          localObject = this.jdField_b_of_type_JavaLangString;
+          localJSONObject.put("phone", localObject);
+          if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+            break label291;
+          }
+          localObject = this.jdField_c_of_type_JavaLangString;
+          localJSONObject.put("os", localObject);
+          if (TextUtils.isEmpty(this.d)) {
+            break label297;
+          }
+          localObject = this.d;
+          localJSONObject.put("qqver", localObject);
+          if (TextUtils.isEmpty(this.e)) {
+            break label303;
+          }
+          localObject = this.e;
+          localJSONObject.put("scene", localObject);
+          if (TextUtils.isEmpty(this.f)) {
+            break label309;
+          }
+          localObject = this.f;
+          localJSONObject.put("startEvt", localObject);
+          if (TextUtils.isEmpty(this.g)) {
+            break label315;
+          }
+          localObject = this.g;
+          localJSONObject.put("endEvt", localObject);
+          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
+          localJSONObject.put("endTime", this.jdField_b_of_type_Long);
+          localJSONObject.put("costTime", this.jdField_c_of_type_Long);
+          localObject = new JSONArray();
+          if (this.jdField_a_of_type_JavaUtilArrayList != null)
+          {
+            int i = 0;
+            if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+            {
+              ((JSONArray)localObject).put(i, ((anrw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+              i += 1;
+              continue;
+            }
+          }
+          localJSONObject.put("evtlist", localObject);
+          return localJSONObject;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ArkVipReportScene", 1, "getJsonObject()", localJSONException);
+        return localJSONObject;
+      }
+      String str = "";
       continue;
-      localanrw.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
+      label285:
+      str = "";
+      continue;
+      label291:
+      str = "";
+      continue;
+      label297:
+      str = "";
+      continue;
+      label303:
+      str = "";
+      continue;
+      label309:
+      str = "";
+      continue;
+      label315:
+      str = "";
     }
   }
 }

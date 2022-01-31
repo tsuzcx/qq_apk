@@ -3,7 +3,7 @@ import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
 public class nfq
-  implements bejd
+  implements benm
 {
   public nfq(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   

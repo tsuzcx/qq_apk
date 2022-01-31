@@ -1,28 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
 
 public class apzb
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public apzb(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
+  public apzb(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidViewView.postInvalidate();
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidViewView.postInvalidate();
-      }
+    if (this.a.a != null) {
+      this.a.a.c();
     }
   }
 }

@@ -1,17 +1,19 @@
-import com.tribe.async.dispatch.Dispatcher;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 
-class voc
-  extends vox
+public abstract interface voc
 {
-  voc(vob paramvob) {}
+  public abstract Context a();
   
-  public void g()
-  {
-    super.g();
-    vob.a(this.a, false);
-    uht.a().unRegisterSubscriber(vob.a(this.a));
-    uht.a().unRegisterSubscriber(vob.a(this.a));
-  }
+  public abstract View a();
+  
+  public abstract void finish();
+  
+  public abstract Activity getActivity();
+  
+  public abstract void startActivity(Intent paramIntent);
 }
 
 

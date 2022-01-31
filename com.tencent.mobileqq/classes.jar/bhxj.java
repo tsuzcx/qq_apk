@@ -1,18 +1,33 @@
-import java.util.Formatter;
+import android.graphics.Matrix;
+import android.view.ViewDebug.ExportedProperty;
 
-public final class bhxj
-  implements bhxk
+public class bhxj
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  @ViewDebug.ExportedProperty
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  @ViewDebug.ExportedProperty
+  public float b;
+  private boolean b;
+  @ViewDebug.ExportedProperty
+  public float c = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float d = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float e = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float f = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float g = 0.0F;
   
-  public String a(int paramInt)
+  public bhxj()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

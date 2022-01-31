@@ -1,45 +1,28 @@
-import android.text.Spanned;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class blsm
-  extends bmok
+public class blsm
+  extends QQUIEventReceiver<blsj, uow>
 {
-  blsm(blsl paramblsl, int paramInt)
+  boolean a = false;
+  
+  public blsm(@NonNull blsj paramblsj)
   {
-    super(paramInt);
+    super(paramblsj);
   }
   
-  public int a(CharSequence paramCharSequence)
+  public void a(@NonNull blsj paramblsj, @NonNull uow paramuow)
   {
-    return 0;
+    if (!this.a)
+    {
+      paramblsj.b();
+      this.a = true;
+    }
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public Class acceptEventClass()
   {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
-    {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
-    }
-    label92:
-    for (;;)
-    {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
-      {
-        return paramCharSequence;
-        i = 0;
-        break;
-      }
-      return paramSpanned;
-    }
+    return uow.class;
   }
 }
 

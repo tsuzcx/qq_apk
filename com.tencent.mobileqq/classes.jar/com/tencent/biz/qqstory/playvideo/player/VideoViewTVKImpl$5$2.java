@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import vrw;
-import vsv;
-import vta;
+import vwf;
+import vxe;
+import vxj;
 
 public class VideoViewTVKImpl$5$2
   implements Runnable
 {
-  public VideoViewTVKImpl$5$2(vta paramvta) {}
+  public VideoViewTVKImpl$5$2(vxj paramvxj) {}
   
   public void run()
   {

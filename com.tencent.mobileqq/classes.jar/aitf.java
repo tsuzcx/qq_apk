@@ -1,37 +1,32 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 class aitf
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  aitf(aitd paramaitd) {}
+  aitf(aite paramaite) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 17)
+    if (aite.a(this.a))
     {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
-      }
+      QLog.d("PhotoPreviewLogicAEPlay", 2, "need more pic.");
+      aite.a(this.a, String.format(((NewPhotoPreviewActivity)this.a.mActivity).getString(2131689821), new Object[] { Integer.valueOf(aite.a(this.a).maxSelectNum) }));
+      return;
     }
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", aite.b(this.a).selectedPhotoList);
+    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+    paramView.putExtra("pic_result_back_type", 0);
+    AETemplateInfoFragment.a(this.a.mActivity, paramView);
+    bliu.a().D();
+    ((NewPhotoPreviewActivity)this.a.mActivity).finish();
   }
 }
 

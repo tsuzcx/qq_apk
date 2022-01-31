@@ -1,46 +1,9 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import kotlin.Metadata;
 
-public class baas
-  implements MediaPlayer.OnPreparedListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeRadioGroup$OnCheckChangeListener;", "", "onModeCheckedChanged", "", "curType", "", "oldType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface baas
 {
-  private WeakReference<VideoSprite> a;
-  
-  private baas(VideoSprite paramVideoSprite)
-  {
-    this.a = new WeakReference(paramVideoSprite);
-  }
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramMediaPlayer.n = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-          paramMediaPlayer.o = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-          paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          paramMediaPlayer.g = true;
-          if (paramMediaPlayer.jdField_a_of_type_Baar != null)
-          {
-            paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.postDelayed(paramMediaPlayer, 33L);
-            return;
-          }
-        }
-        catch (Exception paramMediaPlayer) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(paramMediaPlayer));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

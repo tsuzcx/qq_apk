@@ -1,19 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.11.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class ariv
-  implements TVK_IMediaPlayer.OnCaptureImageListener
+  extends ariu
 {
-  ariv(aris paramaris) {}
-  
-  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2) {}
-  
-  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  public ariv(arhz paramarhz)
   {
-    ThreadManagerV2.executeOnSubThread(new VideoFilePresenter.11.1(this, paramBitmap));
+    super(paramarhz);
+  }
+  
+  public boolean a(String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {
+      return false;
+    }
+    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
   }
 }
 

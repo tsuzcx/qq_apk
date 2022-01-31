@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.view.View;
-import bhpy;
-import bhqd;
+import bhuf;
+import bhuk;
 import com.tencent.qphone.base.util.QLog;
 
 class ContactJsPlugin$2$1
-  implements bhqd
+  implements bhuk
 {
-  ContactJsPlugin$2$1(ContactJsPlugin.2 param2, bhpy parambhpy) {}
+  ContactJsPlugin$2$1(ContactJsPlugin.2 param2, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {

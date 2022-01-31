@@ -1,25 +1,22 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-class bdgr
-  implements apux
+final class bdgr
+  implements DialogInterface.OnClickListener
 {
-  bdgr(bdgl parambdgl) {}
+  bdgr(Activity paramActivity) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    if (paramInt == 1)
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bdgl.a(this.a);
-      return true;
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
-    return false;
   }
 }
 

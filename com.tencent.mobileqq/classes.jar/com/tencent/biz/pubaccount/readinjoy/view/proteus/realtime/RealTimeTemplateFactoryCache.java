@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime;
 
 import android.content.Context;
-import bjxj;
+import bkbq;
 import com.tencent.commonsdk.cache.QQHashMap;
 import sgc;
 import sgf;
@@ -30,7 +30,7 @@ public class RealTimeTemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bjxj.p()) {
+    if (!bkbq.p()) {
       clear();
     }
   }

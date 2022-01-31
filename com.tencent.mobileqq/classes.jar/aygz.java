@@ -1,56 +1,76 @@
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.SearchHistory;
 
-public abstract class aygz
-  extends ayjm
+public class aygz
+  extends ayhr
 {
-  protected QQAppInterface a;
-  protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
+  private SearchHistory a;
   
-  public aygz(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public aygz(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
+    this.a = paramSearchHistory;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.d == null) {
-      this.d = ayrd.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    return this.d;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence d()
+  public Drawable a()
   {
     return null;
   }
   
-  public abstract CharSequence e();
+  public SearchHistory a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.extralInfo;
+  }
+  
+  public void a(String paramString) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    switch (this.a.type)
+    {
+    default: 
+    case 3000: 
+    case 1: 
+    case 1006: 
+    case 56938: 
+    case 1008: 
+      do
+      {
+        return 1;
+        return 101;
+        return 4;
+        return 11;
+      } while (!TextUtils.equals(this.a.uin, alof.az));
+      return 110;
+    }
+    return 111;
+  }
+  
+  public String c()
+  {
+    return this.a.displayName;
+  }
+  
+  public String d()
+  {
+    return this.a.uin;
+  }
 }
 
 

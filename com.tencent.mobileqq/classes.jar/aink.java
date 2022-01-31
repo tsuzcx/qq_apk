@@ -1,32 +1,48 @@
-import android.content.Intent;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aink
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements DialogInterface.OnClickListener
 {
-  aink(aini paramaini, Intent paramIntent, ArrayList paramArrayList) {}
+  aink(aini paramaini) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bnbf.a(this.jdField_a_of_type_Aini.mActivity, paramLocalMediaInfo))
+    if (this.a.a.jdField_a_of_type_Int == 2) {
+      this.a.a.a("0X8005B8A", 1);
+    }
+    for (;;)
     {
-      if ((aini.a(this.jdField_a_of_type_Aini) != null) && (paramLocalMediaInfo.mDuration > aini.a(this.jdField_a_of_type_Aini).videoDurationLimit))
-      {
-        ((NewPhotoListActivity)this.jdField_a_of_type_Aini.mActivity).cancleProgressDailog();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.a(this.jdField_a_of_type_Aini.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-        return;
+      paramDialogInterface.dismiss();
+      if (bdin.d(this.a.a)) {
+        break;
       }
-      new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration).a(new ainl(this, paramLocalMediaInfo));
-      yvu.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
+      this.a.a.b(2131694831);
+      return;
+      if (this.a.a.jdField_a_of_type_Int == 6) {
+        this.a.a.a("0X8005B8A", 2);
+      } else if (this.a.a.jdField_a_of_type_Int == 7) {
+        this.a.a.a("0X8005B8A", 3);
+      }
+    }
+    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
+    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
+    {
+      this.a.a.setResult(0);
+      this.a.a.finish();
       return;
     }
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aini.mActivity).cancleProgressDailog();
+    if (this.a.a.b == null)
+    {
+      this.a.a.b = new ainl(this);
+      this.a.a.app.registObserver(this.a.a.b);
+    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
+    this.a.a.a(2131719785, 300L, true);
   }
 }
 

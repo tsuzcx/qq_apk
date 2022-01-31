@@ -11,7 +11,7 @@ class CommonRecordSoundPanel$9
   public void run()
   {
     this.this$0.b();
-    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698846), 0).a();
+    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698858), 0).a();
   }
 }
 

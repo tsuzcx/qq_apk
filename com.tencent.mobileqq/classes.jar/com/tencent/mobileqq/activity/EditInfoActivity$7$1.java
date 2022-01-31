@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import acrk;
+import acvz;
 import android.graphics.Color;
 import android.widget.TextView;
 
 public class EditInfoActivity$7$1
   implements Runnable
 {
-  public EditInfoActivity$7$1(acrk paramacrk) {}
+  public EditInfoActivity$7$1(acvz paramacvz) {}
   
   public void run()
   {

@@ -1,25 +1,6 @@
-import java.util.Comparator;
-
-class axqu
-  implements Comparator<axpr>
+public abstract interface axqu
 {
-  axqu(axqs paramaxqs) {}
-  
-  public int a(axpr paramaxpr1, axpr paramaxpr2)
-  {
-    if (paramaxpr2.b() > paramaxpr1.b()) {}
-    do
-    {
-      return -1;
-      if (paramaxpr2.b() < paramaxpr1.b()) {
-        return 1;
-      }
-    } while (paramaxpr2.a() > paramaxpr1.a());
-    if (paramaxpr2.a() == paramaxpr1.a()) {
-      return 0;
-    }
-    return 1;
-  }
+  public abstract void a();
 }
 
 

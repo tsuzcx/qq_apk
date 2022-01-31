@@ -2,7 +2,7 @@ import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 class mle
-  implements xwi
+  implements yar
 {
   mle(mld parammld, Activity paramActivity, long paramLong) {}
   

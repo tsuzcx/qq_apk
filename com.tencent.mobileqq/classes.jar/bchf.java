@@ -1,12 +1,25 @@
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class bchf
   implements View.OnClickListener
 {
-  bchf(bche parambche) {}
+  bchf(bchd parambchd) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    paramView = new Bundle();
+    paramView.putString(bdun.e, alud.a(2131700607));
+    paramView.putString(bdun.f, "CJCLUBT");
+    paramView.putString(bdun.d, "1450000516");
+    paramView.putInt(bdun.b, 3);
+    paramView.putString(bdun.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    paramView.putString(bdun.g, "svip");
+    paramView.putString(bdun.a, bchd.a(this.a).getCurrentAccountUin());
+    bdun.a(bchd.a(this.a), bchd.a(this.a), paramView);
+  }
 }
 
 

@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class avfq
-  implements awoj
+  implements View.OnTouchListener
 {
-  public avfq(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  public avfq(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public void a(int paramInt1, awoi paramawoi, int paramInt2, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
-    }
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 

@@ -1,8 +1,19 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aikb
+public class aikb
+  extends aijq
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public aikb(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  {
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForNearby";
+  }
 }
 
 

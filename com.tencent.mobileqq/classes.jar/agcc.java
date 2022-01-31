@@ -1,21 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 class agcc
-  implements Animation.AnimationListener
+  extends aeqi
 {
-  agcc(agcb paramagcb) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  View d;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (agcb.a(this.a) != null) {
-      agcb.a(this.a).b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  agcc(agca paramagca) {}
 }
 
 

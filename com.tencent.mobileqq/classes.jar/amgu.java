@@ -1,42 +1,15 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
-
 public class amgu
 {
-  public static final HashSet<amgu> a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  public void a() {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
-  
-  public amgu(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PushMsg0x210_c7Info{");
-    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
   }
 }
 

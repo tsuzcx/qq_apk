@@ -1,96 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class abua
-  implements DialogInterface.OnCancelListener, bhqd, bhqf
+public class abua
+  implements abtz
 {
-  absf jdField_a_of_type_Absf;
-  bhpy jdField_a_of_type_Bhpy;
+  private abtt<abty> a = new abtu();
   
-  public abua(bhpy parambhpy, absf paramabsf)
+  public abty a(int paramInt)
   {
-    this.jdField_a_of_type_Bhpy = parambhpy;
-    this.jdField_a_of_type_Absf = paramabsf;
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("cancel", false);
-      paramView.put("tapIndex", paramInt);
-      abvm.a(this.jdField_a_of_type_Absf, paramView);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      String str = paramView.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
-      }
-      absf localabsf = this.jdField_a_of_type_Absf;
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      abvm.a(localabsf, -2, paramView);
-    }
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("cancel", true);
-      paramDialogInterface.put("tapIndex", -1);
-      abvm.a(this.jdField_a_of_type_Absf, paramDialogInterface);
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      String str = paramDialogInterface.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
-      }
-      absf localabsf = this.jdField_a_of_type_Absf;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      abvm.a(localabsf, -2, paramDialogInterface);
-    }
-  }
-  
-  public void onDismiss()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("cancel", true);
-      localJSONObject.put("tapIndex", -1);
-      abvm.a(this.jdField_a_of_type_Absf, localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      String str = localJSONException.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
-      }
-      absf localabsf = this.jdField_a_of_type_Absf;
-      Object localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      abvm.a(localabsf, -2, (String)localObject);
-    }
+    return (abty)this.a.a(paramInt);
   }
 }
 

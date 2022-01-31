@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.utils;
 
-import bamp;
-import batw;
-import baua;
-import baub;
-import bdje;
-import bexd;
+import baqy;
+import bayf;
+import bayj;
+import bayk;
+import bdnn;
+import bfbm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -26,7 +26,7 @@ public class ReportLogUtil
   
   public static void compressAndUploadLog(String paramString)
   {
-    if (bdje.a(paramString)) {
+    if (bdnn.a(paramString)) {
       return;
     }
     ThreadManagerV2.executeOnFileThread(new ReportLogUtil.2(MiniLog.getMiniLogFolderPath(paramString), paramString));
@@ -37,30 +37,30 @@ public class ReportLogUtil
     if (!new File(paramString).exists()) {
       QLog.d("ReportLogUtil", 2, "file not exist. ");
     }
-    baub localbaub;
+    bayk localbayk;
     do
     {
       return;
-      localbaub = new baub();
-      localbaub.jdField_a_of_type_Boolean = true;
-      localbaub.i = paramString;
-      localbaub.jdField_c_of_type_Int = 65;
-      localbaub.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-      localbaub.jdField_c_of_type_JavaLangString = "0";
-      localbaub.jdField_b_of_type_JavaLangString = String.valueOf(bexd.a().a());
-      localbaub.jdField_b_of_type_Int = 24;
-      localbaub.jdField_a_of_type_JavaLangString = "miniAppUserLog";
+      localbayk = new bayk();
+      localbayk.jdField_a_of_type_Boolean = true;
+      localbayk.i = paramString;
+      localbayk.jdField_c_of_type_Int = 65;
+      localbayk.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+      localbayk.jdField_c_of_type_JavaLangString = "0";
+      localbayk.jdField_b_of_type_JavaLangString = String.valueOf(bfbm.a().a());
+      localbayk.jdField_b_of_type_Int = 24;
+      localbayk.jdField_a_of_type_JavaLangString = "miniAppUserLog";
       paramString = new Bdh_extinfo.CommFileExtReq();
       paramString.uint32_action_type.set(0);
       paramString.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString() + ".zip"));
-      localbaub.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
+      localbayk.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
       paramString = BaseApplicationImpl.getApplication().getRuntime();
     } while (!(paramString instanceof QQAppInterface));
     paramString = (QQAppInterface)paramString;
     paramUploadLogListener = new ReportLogUtil.MiniAppTransHandler(ThreadManagerV2.getFileThreadLooper(), paramUploadLogListener);
-    paramUploadLogListener.addFilter(new Class[] { bamp.class });
+    paramUploadLogListener.addFilter(new Class[] { baqy.class });
     paramString.a().a(paramUploadLogListener);
-    paramString.a().a(localbaub);
+    paramString.a().a(localbayk);
   }
   
   public static void uploadLogAndReport(String paramString1, String paramString2)

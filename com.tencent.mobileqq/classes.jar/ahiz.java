@@ -1,16 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class ahiz
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ahiz(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  public ahiz(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.getActivity().finish();
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

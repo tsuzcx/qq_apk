@@ -13,7 +13,7 @@ public class ldv
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    aanp.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
+    aase.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
     switch (paramInt)
     {
     }

@@ -1,28 +1,58 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import mqq.os.MqqHandler;
 
 public class wil
-  extends QQUIEventReceiver<wij, uqv>
 {
-  public wil(@NonNull wij paramwij)
+  private Stream<wiq> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  private String jdField_a_of_type_JavaLangString;
+  private wio jdField_a_of_type_Wio;
+  private wiq jdField_a_of_type_Wiq = new wiq();
+  public boolean a;
+  private boolean b = true;
+  
+  public wil(@NonNull String paramString, @NonNull wio paramwio, boolean paramBoolean)
   {
-    super(paramwij);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Wio = paramwio;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(@NonNull wij paramwij, @NonNull uqv paramuqv)
+  private void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
-    if (paramuqv.a)
-    {
-      wsv.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramuqv);
-      wij.a(paramwij).a.h();
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramwiq, paramBoolean, paramErrorMessage));
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new wim(this, this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wib());
+    }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new wip(this));
   }
   
-  public Class acceptEventClass()
+  public void c()
   {
-    return uqv.class;
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    }
   }
 }
 

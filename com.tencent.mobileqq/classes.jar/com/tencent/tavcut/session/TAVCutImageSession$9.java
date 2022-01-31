@@ -3,20 +3,16 @@ package com.tencent.tavcut.session;
 import android.util.SparseArray;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
-import java.util.HashMap;
 import java.util.List;
 
 class TAVCutImageSession$9
   implements Runnable
 {
-  TAVCutImageSession$9(TAVCutImageSession paramTAVCutImageSession, int paramInt1, String paramString, float paramFloat1, HashMap paramHashMap, int paramInt2, float paramFloat2) {}
+  TAVCutImageSession$9(TAVCutImageSession paramTAVCutImageSession, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.this$0.setAEKitAIFilter((MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$lutPath, this.val$lutStrength, this.val$adjustParams, this.val$smoothLevel, this.val$glowAlpha, 0L, ((MediaClipModel)((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
+    TAVCutImageSession.access$400(this.this$0, (MediaModel)this.this$0.mediaModels.get(this.val$index), (VideoRenderChainManager)this.this$0.renderChainManagers.get(this.val$index), this.val$overlayImgPath);
     this.this$0.render(this.val$index);
   }
 }

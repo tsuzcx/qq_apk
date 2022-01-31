@@ -5,7 +5,7 @@ import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.util.ArrayList;
 
 public class oiq
-  implements ayzw, ayzy
+  implements azef, azeh
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -18,7 +18,7 @@ public class oiq
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (azgk.a(paramContext) != 0) {}
+    if (azkt.a(paramContext) != 0) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -88,7 +88,7 @@ public class oiq
     if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
     {
       ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-      if (azgk.a(VideoEnvironment.a()) == 2)
+      if (azkt.a(VideoEnvironment.a()) == 2)
       {
         ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
         paramInt1 = k;

@@ -1,37 +1,8 @@
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
-
-final class bhqy
-  extends ClickableSpan
+public class bhqy
 {
-  private WeakReference<Context> a;
+  public long a;
   
-  private bhqy(Context paramContext)
-  {
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public void onClick(@NonNull View paramView)
-  {
-    paramView = (Context)this.a.get();
-    if (paramView != null)
-    {
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://support.qq.com/product/36028");
-      paramView.startActivity(localIntent);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-  }
+  public bhqy(bhqx parambhqx) {}
 }
 
 

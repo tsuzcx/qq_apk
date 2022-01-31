@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+
 public abstract interface bkrf
 {
-  public abstract int a();
+  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
 }
 
 

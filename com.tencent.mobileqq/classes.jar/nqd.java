@@ -19,9 +19,9 @@ public class nqd
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localRelativeLayout.addView(PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), localLayoutParams);
       }
-      int i = xee.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 16.0F);
+      int i = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 16.0F);
       int j = localRelativeLayout.getHeight();
-      int k = xee.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 78.0F);
+      int k = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 78.0F);
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), i, j - k - i, false, false, paramString, 2147483647);
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, true);
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, paramInt);

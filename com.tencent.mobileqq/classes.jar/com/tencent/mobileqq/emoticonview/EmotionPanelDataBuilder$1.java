@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apsk;
-import apsl;
+import apwt;
+import apwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class EmotionPanelDataBuilder$1
   implements Runnable
 {
-  public EmotionPanelDataBuilder$1(apsk paramapsk, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, apsl paramapsl) {}
+  public EmotionPanelDataBuilder$1(apwt paramapwt, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, apwu paramapwu) {}
   
   public void run()
   {

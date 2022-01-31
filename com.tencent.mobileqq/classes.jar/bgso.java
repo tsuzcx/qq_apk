@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-class bgso
-  implements DialogInterface.OnClickListener
+public abstract interface bgso
 {
-  bgso(bgsn parambgsn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(View paramView, int paramInt, String paramString);
 }
 
 

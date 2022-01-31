@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import adiy;
-import alxt;
-import alxu;
+import adnn;
+import amci;
+import amcj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import bdee;
+import bdin;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
@@ -18,22 +18,22 @@ public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private alxu jdField_a_of_type_Alxu = new adiy(this);
+  private amcj jdField_a_of_type_Amcj = new adnn(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561127);
-    setTitle(getString(2131695166));
-    setContentBackgroundResource(2130838591);
-    this.leftView.setText(2131699786);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371746));
+    super.setContentView(2131561145);
+    setTitle(getString(2131695168));
+    setContentBackgroundResource(2130838592);
+    this.leftView.setText(2131699798);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371766));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_Alxu);
+    addObserver(this.jdField_a_of_type_Amcj);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -47,7 +47,7 @@ public class PhoneUnityPhoneLoginActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Alxu);
+    removeObserver(this.jdField_a_of_type_Amcj);
     super.doOnDestroy();
   }
   
@@ -73,10 +73,10 @@ public class PhoneUnityPhoneLoginActivity
       bool = false;
       paramCompoundButton.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (bdee.d(this)) {
+      if (bdin.d(this)) {
         break label81;
       }
-      QQToast.a(this, getString(2131692397), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692398), 0).b(getTitleBarHeight());
     }
     label76:
     label81:
@@ -85,7 +85,7 @@ public class PhoneUnityPhoneLoginActivity
       return;
       bool = true;
       break;
-      paramCompoundButton = (alxt)this.app.a(34);
+      paramCompoundButton = (amci)this.app.a(34);
     } while ((paramCompoundButton == null) || (this.jdField_a_of_type_ArrayOfByte == null));
     if (paramBoolean)
     {

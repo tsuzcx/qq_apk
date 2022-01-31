@@ -1,20 +1,20 @@
 package com.tencent.biz.qqcircle.comment;
 
 import android.widget.ListView;
-import tuk;
+import tuz;
 
 public class QCircleCommentPanelView$12
   implements Runnable
 {
-  public QCircleCommentPanelView$12(tuk paramtuk) {}
+  public QCircleCommentPanelView$12(tuz paramtuz) {}
   
   public void run()
   {
-    tuk.b(this.this$0);
+    tuz.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }
-    tuk.a(this.this$0, false);
+    tuz.a(this.this$0, false);
   }
 }
 

@@ -1,59 +1,26 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-
-public abstract class amvh
-  extends Binder
-  implements amvg
+public abstract interface amvh
 {
-  public amvh()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static amvg a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof amvg))) {
-      return (amvg)localIInterface;
-    }
-    return new amvi(paramIBinder);
-  }
+  public abstract void a(amvp paramamvp);
   
-  public IBinder asBinder()
-  {
-    return this;
-  }
+  public abstract int b();
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
-  }
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

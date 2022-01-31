@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import ahqn;
+import ahvc;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqla;
+import aqpj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
@@ -22,7 +22,7 @@ import mqq.os.MqqHandler;
 
 public class QfileBaseTabView
   extends RelativeLayout
-  implements ahqn, aqla
+  implements ahvc, aqpj
 {
   View a;
   public QQAppInterface a;

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.content.Context;
 import android.widget.FrameLayout;
-import bepp;
+import bety;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.appbrand.a;
@@ -49,11 +49,11 @@ public final class AppBrandPageContainer
   private void executeDownSubPack(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    bepp localbepp = new bepp(getContext());
-    localbepp.a("正在加载模块...");
-    localbepp.setCancelable(false);
-    localbepp.show();
-    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbepp));
+    bety localbety = new bety(getContext());
+    localbety.a("正在加载模块...");
+    localbety.setCancelable(false);
+    localbety.show();
+    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbety));
   }
   
   private boolean isUrlResReady(String paramString)

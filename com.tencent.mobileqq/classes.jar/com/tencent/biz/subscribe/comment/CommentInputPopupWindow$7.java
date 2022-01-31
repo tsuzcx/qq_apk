@@ -2,16 +2,16 @@ package com.tencent.biz.subscribe.comment;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import ybu;
+import ygd;
 
 public class CommentInputPopupWindow$7
   implements Runnable
 {
-  public CommentInputPopupWindow$7(ybu paramybu, View paramView) {}
+  public CommentInputPopupWindow$7(ygd paramygd, View paramView) {}
   
   public void run()
   {
-    ybu.a(this.this$0).showSoftInput(this.a, 1);
+    ygd.a(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

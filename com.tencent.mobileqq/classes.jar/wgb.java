@@ -1,30 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class wgb
-  extends QQUIEventReceiver<wfn, usb>
+  implements DialogInterface.OnClickListener
 {
-  public wgb(@NonNull wfn paramwfn)
-  {
-    super(paramwfn);
-  }
+  public wgb(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull wfn paramwfn, @NonNull usb paramusb)
-  {
-    if (wfn.a(paramwfn) == null)
-    {
-      wsv.b(this.TAG, "ignore this troop nick name change event. %s.", paramusb.toString());
-      return;
-    }
-    wsv.a(this.TAG, "receive troop nick name change event. %s.", paramusb.toString());
-    wfn.a(paramwfn).c();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return usb.class;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

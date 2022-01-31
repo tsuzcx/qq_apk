@@ -1,18 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ahqv
   implements View.OnClickListener
 {
-  public ahqv(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  public ahqv(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator) != null)) {
-      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    if ((paramView.getTag() instanceof ahpn))
+    {
+      paramView = (ahpn)paramView.getTag();
+      if ((paramView != null) && (ahqz.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramView.b))) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+    else
+    {
+      return;
+    }
+    ahqz.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramView.b, false);
+    String str = this.a.getString(2131699971);
+    paramView.a.setText(str);
+    paramView.a.setClickable(false);
+    paramView.a.setBackgroundDrawable(null);
+    paramView.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755951);
+    ahqz.a(paramView.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
+    azqs.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
   }
 }
 

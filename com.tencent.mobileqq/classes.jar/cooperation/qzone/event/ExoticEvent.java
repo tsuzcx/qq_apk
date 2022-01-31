@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjfa;
-import bjfb;
+import bjjh;
+import bjji;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class ExoticEvent
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bjfa();
+  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bjjh();
   private static final String TAG = "ExoticEvent";
   private static final int TYPE_BYTE_ARRAY = 5;
   private static final int TYPE_CHAR_ARRAY = 6;
@@ -87,12 +87,12 @@ public class ExoticEvent
     }
   }
   
-  private ExoticEvent(bjfb parambjfb, int paramInt, String paramString)
+  private ExoticEvent(bjji parambjji, int paramInt, String paramString)
   {
-    this.mTypes = bjfb.a(parambjfb);
+    this.mTypes = bjji.a(parambjji);
     this.what = paramInt;
     this.sourceName = paramString;
-    this.param = bjfb.a(parambjfb);
+    this.param = bjji.a(parambjji);
   }
   
   private static Object foreachReadFromParcel(Parcel paramParcel, List<Integer> paramList, ClassLoader paramClassLoader)
@@ -297,17 +297,17 @@ public class ExoticEvent
     }
   }
   
-  private static boolean foreachType(bjfb parambjfb)
+  private static boolean foreachType(bjji parambjji)
   {
-    int i = getType(bjfb.b(parambjfb));
-    bjfb.a(parambjfb).add(Integer.valueOf(i));
+    int i = getType(bjji.b(parambjji));
+    bjji.a(parambjji).add(Integer.valueOf(i));
     switch (i)
     {
     }
     for (;;)
     {
-      return bjfb.a(parambjfb);
-      Object localObject1 = (Object[])bjfb.b(parambjfb);
+      return bjji.a(parambjji);
+      Object localObject1 = (Object[])bjji.b(parambjji);
       Object localObject2 = new Object[localObject1.length];
       i = 0;
       Object localObject3;
@@ -316,19 +316,19 @@ public class ExoticEvent
         if (i >= localObject1.length) {
           break label147;
         }
-        localObject3 = new bjfb(parambjfb, localObject1[i]);
-        if (!foreachType((bjfb)localObject3))
+        localObject3 = new bjji(parambjji, localObject1[i]);
+        if (!foreachType((bjji)localObject3))
         {
-          bjfb.a(parambjfb, false);
+          bjji.a(parambjji, false);
           break;
         }
-        localObject2[i] = bjfb.a((bjfb)localObject3);
+        localObject2[i] = bjji.a((bjji)localObject3);
         i += 1;
       }
       label147:
-      bjfb.a(parambjfb, localObject2);
+      bjji.a(parambjji, localObject2);
       continue;
-      localObject2 = (List)bjfb.b(parambjfb);
+      localObject2 = (List)bjji.b(parambjji);
       localObject1 = new ArrayList(((List)localObject2).size());
       localObject2 = ((List)localObject2).iterator();
       for (;;)
@@ -336,18 +336,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label242;
         }
-        localObject3 = new bjfb(parambjfb, ((Iterator)localObject2).next());
-        if (!foreachType((bjfb)localObject3))
+        localObject3 = new bjji(parambjji, ((Iterator)localObject2).next());
+        if (!foreachType((bjji)localObject3))
         {
-          bjfb.a(parambjfb, false);
+          bjji.a(parambjji, false);
           break;
         }
-        ((List)localObject1).add(bjfb.a((bjfb)localObject3));
+        ((List)localObject1).add(bjji.a((bjji)localObject3));
       }
       label242:
-      bjfb.a(parambjfb, localObject1);
+      bjji.a(parambjji, localObject1);
       continue;
-      localObject2 = (Set)bjfb.b(parambjfb);
+      localObject2 = (Set)bjji.b(parambjji);
       localObject1 = new LinkedHashSet();
       localObject2 = ((Set)localObject2).iterator();
       for (;;)
@@ -355,18 +355,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label331;
         }
-        localObject3 = new bjfb(parambjfb, ((Iterator)localObject2).next());
-        if (!foreachType((bjfb)localObject3))
+        localObject3 = new bjji(parambjji, ((Iterator)localObject2).next());
+        if (!foreachType((bjji)localObject3))
         {
-          bjfb.a(parambjfb, false);
+          bjji.a(parambjji, false);
           break;
         }
-        ((Set)localObject1).add(bjfb.a((bjfb)localObject3));
+        ((Set)localObject1).add(bjji.a((bjji)localObject3));
       }
       label331:
-      bjfb.a(parambjfb, localObject1);
+      bjji.a(parambjji, localObject1);
       continue;
-      localObject2 = (Map)bjfb.b(parambjfb);
+      localObject2 = (Map)bjji.b(parambjji);
       localObject1 = new LinkedHashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       for (;;)
@@ -379,20 +379,20 @@ public class ExoticEvent
         localObject4 = ((Map.Entry)localObject4).getValue();
         if ((localObject3 != null) && (localObject4 != null))
         {
-          localObject3 = new bjfb(parambjfb, localObject3);
-          localObject4 = new bjfb(parambjfb, localObject4);
-          if ((!foreachType((bjfb)localObject3)) || (!foreachType((bjfb)localObject4)))
+          localObject3 = new bjji(parambjji, localObject3);
+          localObject4 = new bjji(parambjji, localObject4);
+          if ((!foreachType((bjji)localObject3)) || (!foreachType((bjji)localObject4)))
           {
-            bjfb.a(parambjfb, false);
+            bjji.a(parambjji, false);
             break;
           }
-          ((Map)localObject1).put(bjfb.a((bjfb)localObject3), bjfb.a((bjfb)localObject4));
+          ((Map)localObject1).put(bjji.a((bjji)localObject3), bjji.a((bjji)localObject4));
         }
       }
       label485:
-      bjfb.a(parambjfb, localObject1);
+      bjji.a(parambjji, localObject1);
       continue;
-      bjfb.a(parambjfb, false);
+      bjji.a(parambjji, false);
     }
   }
   
@@ -621,7 +621,7 @@ public class ExoticEvent
     for (;;)
     {
       return null;
-      paramObject = new bjfb(paramObject, null);
+      paramObject = new bjji(paramObject, null);
       try
       {
         bool = foreachType(paramObject);

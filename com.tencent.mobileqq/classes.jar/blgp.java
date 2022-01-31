@@ -1,15 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.graphics.Bitmap;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
 
 public class blgp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements blic
 {
-  public blgp(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public blgp(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    AETakeFacePhotoPreviewFragment.a(bkzt.a(this.a.getActivity(), paramBitmap));
   }
 }
 

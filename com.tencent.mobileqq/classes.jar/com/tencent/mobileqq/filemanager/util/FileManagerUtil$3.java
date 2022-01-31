@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import armo;
-import bdcs;
+import arqx;
+import bdhb;
 import java.io.File;
 
 public final class FileManagerUtil$3
@@ -9,17 +9,17 @@ public final class FileManagerUtil$3
 {
   public void run()
   {
-    Object localObject2 = armo.a().b();
-    Object localObject1 = armo.a().c();
+    Object localObject2 = arqx.a().b();
+    Object localObject1 = arqx.a().c();
     File localFile = new File((String)localObject2);
-    if (!bdcs.a((String)localObject2)) {
+    if (!bdhb.a((String)localObject2)) {
       localFile.mkdirs();
     }
     localObject2 = new File((String)localObject1);
-    if (!bdcs.a((String)localObject1)) {
+    if (!bdhb.a((String)localObject1)) {
       ((File)localObject2).mkdirs();
     }
-    localObject1 = new File(armo.a().b() + ".nomedia");
+    localObject1 = new File(arqx.a().b() + ".nomedia");
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import biyt;
+import bjda;
 
 public class LbsDataV2$GeoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GeoInfo> CREATOR = new biyt();
+  public static final Parcelable.Creator<GeoInfo> CREATOR = new bjda();
   public String address;
   public LbsDataV2.GpsInfo gpsInfo;
   public int iDistrictCode;

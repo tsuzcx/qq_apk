@@ -1,40 +1,45 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
 public class ahpg
-  extends alkl
+  implements View.OnClickListener
 {
-  public ahpg(TroopFragment paramTroopFragment) {}
+  public ahpg(TroopActivity paramTroopActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == 0)
+    boolean bool = false;
+    switch (paramView.getId())
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
-    }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, alpo.a(2131715765), 0).a();
-      do
+    default: 
+      this.a.b();
+      return;
+    case 2131368624: 
+    case 2131368979: 
+    case 2131378616: 
+      if (this.a.a != null)
       {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, alpo.a(2131715764), 0).a();
+        paramView = new Intent();
+        if (!this.a.a.isEmpty()) {
+          bool = true;
+        }
+        paramView.putExtra("isDataChanged", bool);
+        this.a.setResult(-1, paramView);
+      }
+      this.a.onBackPressed();
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131695085);
+    azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
+    if (this.a.a())
+    {
+      this.a.b();
+      return;
     }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+    azqs.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
+    this.a.a();
   }
 }
 

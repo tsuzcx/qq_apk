@@ -1,64 +1,34 @@
-import VIP.AIOKeyWordReq;
-import VIP.AIOSendReq;
-import VIP.AIOSendRes;
 import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ayua
-  extends zdf
+  extends ayuf
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public ayua(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
   {
-    if ((amas.a.equals(paramToServiceMsg.getServiceCmd())) || (amas.b.equals(paramToServiceMsg.getServiceCmd())))
-    {
-      if (paramFromServiceMsg == null) {
-        return null;
-      }
-      paramToServiceMsg = new UniPacket(true);
-      try
-      {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
-    }
+    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
+  }
+  
+  public aynt a(List<aynu> paramList, String paramString)
+  {
     return null;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public List<aynt> a(ayuu paramayuu)
   {
-    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
-    if (amas.a.equals(paramToServiceMsg.getServiceCmd()))
-    {
-      paramUniPacket.setFuncName("CheckPopGrayStips");
-      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    if (paramayuu.jdField_a_of_type_AndroidOsBundle == null) {
+      paramayuu.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    for (;;)
-    {
-      return true;
-      if (amas.b.equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setFuncName("getUserKeyWordStips");
-        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
-      }
-    }
-  }
-  
-  public String[] a()
-  {
-    return new String[] { "AIOSendSvc" };
+    ArrayList localArrayList = new ArrayList();
+    paramayuu = new aynj(paramayuu.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new aynb(paramayuu));
+    localArrayList.add(paramayuu);
+    ayvl.a(0);
+    return localArrayList;
   }
 }
 

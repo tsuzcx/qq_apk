@@ -2,10 +2,10 @@ package com.tencent.mobileqq.fragment;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import aubt;
-import aude;
-import auey;
-import aufh;
+import augc;
+import auhn;
+import aujh;
+import aujq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
@@ -40,18 +40,18 @@ class MsgBackupSettingFragment$8
     MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
     int i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup", 2, "after start called with ret = " + i + ", ipv4 = " + aufh.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", udpport = " + MsgBackupSettingFragment.a(this.this$0).port + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0).port);
+      QLog.d("MsgBackup", 2, "after start called with ret = " + i + ", ipv4 = " + aujq.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", udpport = " + MsgBackupSettingFragment.a(this.this$0).port + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0).port);
     }
-    localObject = new aude();
-    ((aude)localObject).c(MsgBackupSettingFragment.a(this.this$0)[1]);
-    ((aude)localObject).b(MsgBackupSettingFragment.a(this.this$0)[0]);
+    localObject = new auhn();
+    ((auhn)localObject).c(MsgBackupSettingFragment.a(this.this$0)[1]);
+    ((auhn)localObject).b(MsgBackupSettingFragment.a(this.this$0)[0]);
     ArrayList localArrayList = new ArrayList(2);
-    ((aude)localObject).a(aufh.a(auey.a().b().ipv4));
-    localArrayList.add(Integer.valueOf(auey.a().b().port));
-    localArrayList.add(Integer.valueOf(auey.a().a().port));
-    ((aude)localObject).a(localArrayList);
-    localObject = ((aude)localObject).a();
-    ((aubt)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(162)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
+    ((auhn)localObject).a(aujq.a(aujh.a().b().ipv4));
+    localArrayList.add(Integer.valueOf(aujh.a().b().port));
+    localArrayList.add(Integer.valueOf(aujh.a().a().port));
+    ((auhn)localObject).a(localArrayList);
+    localObject = ((auhn)localObject).a();
+    ((augc)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(162)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
   }
 }
 

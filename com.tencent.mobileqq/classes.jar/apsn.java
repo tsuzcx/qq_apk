@@ -1,10 +1,6 @@
 public abstract interface apsn
 {
-  public abstract boolean c();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract void a(int paramInt);
 }
 
 

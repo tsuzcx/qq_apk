@@ -7,7 +7,7 @@ final class tan
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    bfkb.a().a(tam.a());
+    bfok.a().a(tam.a());
   }
 }
 

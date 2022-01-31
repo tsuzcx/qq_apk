@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aikc;
+import aior;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.SparseArray;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import baul;
+import bayu;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class AbstractPhotoPreviewActivity$ImageAdapter
   extends BaseAdapter
-  implements aikc
+  implements aior
 {
   Bitmap mBitmap;
   URLDrawable mRawDrawable;
@@ -110,7 +110,7 @@ public class AbstractPhotoPreviewActivity$ImageAdapter
         paramView = URLDrawable.URLDrawableOptions.obtain();
         paramView.mRequestWidth = paramViewGroup.getWidth();
         paramView.mRequestHeight = paramViewGroup.getHeight();
-        paramView.mLoadingDrawable = baul.a;
+        paramView.mLoadingDrawable = bayu.a;
         paramView.mPlayGifImage = true;
         paramViewGroup = this.this$0.getFileUrl(localFile);
         if (paramViewGroup != null)

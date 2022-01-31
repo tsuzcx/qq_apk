@@ -1,25 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 
 class wda
-  extends SimpleObserver<Void>
+  extends nac
 {
-  wda(wcy paramwcy, wdc paramwdc) {}
+  wda(wcv paramwcv, boolean paramBoolean) {}
   
-  public void a(Void paramVoid)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super.onNext(paramVoid);
-    wsv.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_Wcy.a = 2;
-    this.jdField_a_of_type_Wdc.a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wsv.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_Wcy.a = -1;
-    this.jdField_a_of_type_Wdc.b();
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(7, bool);
+        this.a.a(0, this.a.a.getString(2131721096));
+        return;
+      }
+    }
+    ((uvt)uwa.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
 }
 

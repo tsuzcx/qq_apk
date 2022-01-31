@@ -1,43 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class whc
+  extends avvb
 {
-  private qqstory_struct.NormalCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  public whc(QQStoryMainController paramQQStoryMainController) {}
   
-  public whc(qqstory_struct.NormalCardInfo paramNormalCardInfo)
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = paramNormalCardInfo;
-  }
-  
-  public whc(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = new qqstory_struct.NormalCardInfo();
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    wvn localwvn;
+    do
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.mergeFrom(paramArrayOfByte);
       return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
-  
-  public CardItem.CardVideoInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.size() == 0) {
-        return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.get(0));
-    }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+      paramObject = ((nan)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + nan.a(paramObject));
+      }
+      localwvn = (wvn)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localwvn == null);
+    localwvn.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
   }
 }
 

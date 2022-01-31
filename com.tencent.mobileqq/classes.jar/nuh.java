@@ -31,7 +31,7 @@ public class nuh
       int i;
       try
       {
-        boolean bool = bdje.a(paramString);
+        boolean bool = bdnn.a(paramString);
         if (bool) {
           return false;
         }
@@ -40,22 +40,22 @@ public class nuh
           paramString = new JSONObject(paramString);
           if (paramString.has("menus"))
           {
-            paramTextView.setBackgroundResource(2130846575);
+            paramTextView.setBackgroundResource(2130846648);
             paramTextView.setVisibility(0);
-            paramTextView.setText(alpo.a(2131703994));
-            localObject1 = paramContext.getResources().getDrawable(2130846578);
+            paramTextView.setText(alud.a(2131704006));
+            localObject1 = paramContext.getResources().getDrawable(2130846651);
             ((Drawable)localObject1).setBounds(0, 0, 24, 16);
             paramTextView.setCompoundDrawables(null, null, (Drawable)localObject1, null);
-            i = xod.a(paramContext, 6.0F);
+            i = xsm.a(paramContext, 6.0F);
             paramTextView.setPadding(i, 0, i, 0);
-            paramTextView.setCompoundDrawablePadding(xod.a(paramContext, 2.0F));
+            paramTextView.setCompoundDrawablePadding(xsm.a(paramContext, 2.0F));
             paramTextView.setSingleLine(true);
             paramTextView.setGravity(17);
             paramTextView.setEllipsize(TextUtils.TruncateAt.END);
             paramTextView.setTextColor(Color.rgb(187, 187, 187));
             paramTextView.setTextSize(2, 12.0F);
-            localObject1 = LayoutInflater.from(paramContext).inflate(2131559447, null);
-            LinearLayout localLinearLayout = (LinearLayout)((View)localObject1).findViewById(2131369614);
+            localObject1 = LayoutInflater.from(paramContext).inflate(2131559446, null);
+            LinearLayout localLinearLayout = (LinearLayout)((View)localObject1).findViewById(2131369632);
             paramString = paramString.optJSONArray("menus");
             if ((paramString == null) || (paramString.length() <= 0)) {
               break;
@@ -73,21 +73,21 @@ public class nuh
               localLinearLayout.addView((View)localObject3);
               Object localObject4 = (LinearLayout.LayoutParams)((LinearLayout)localObject3).getLayoutParams();
               ((LinearLayout.LayoutParams)localObject4).width = -1;
-              ((LinearLayout.LayoutParams)localObject4).height = xod.a(paramContext, 50.0F);
+              ((LinearLayout.LayoutParams)localObject4).height = xsm.a(paramContext, 50.0F);
               ((LinearLayout)localObject3).setOrientation(0);
               ((LinearLayout)localObject3).setGravity(16);
               localObject4 = new ImageView(paramContext);
               ((LinearLayout)localObject3).addView((View)localObject4);
               Object localObject5 = (LinearLayout.LayoutParams)((ImageView)localObject4).getLayoutParams();
-              ((LinearLayout.LayoutParams)localObject5).width = xod.a(paramContext, 20.0F);
-              ((LinearLayout.LayoutParams)localObject5).height = xod.a(paramContext, 18.0F);
-              ((LinearLayout.LayoutParams)localObject5).leftMargin = xod.a(paramContext, 15.0F);
+              ((LinearLayout.LayoutParams)localObject5).width = xsm.a(paramContext, 20.0F);
+              ((LinearLayout.LayoutParams)localObject5).height = xsm.a(paramContext, 18.0F);
+              ((LinearLayout.LayoutParams)localObject5).leftMargin = xsm.a(paramContext, 15.0F);
               localObject5 = ((JSONObject)localObject2).optString("icon_url", "");
-              if (!bdje.a((String)localObject5))
+              if (!bdnn.a((String)localObject5))
               {
                 URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-                localURLDrawableOptions.mRequestHeight = xod.a(paramContext, 20.0F);
-                localURLDrawableOptions.mRequestWidth = xod.a(paramContext, 18.0F);
+                localURLDrawableOptions.mRequestHeight = xsm.a(paramContext, 20.0F);
+                localURLDrawableOptions.mRequestWidth = xsm.a(paramContext, 18.0F);
                 localObject5 = URLDrawable.getDrawable((String)localObject5, localURLDrawableOptions);
                 if (localObject5 != null) {
                   ((ImageView)localObject4).setImageDrawable((Drawable)localObject5);
@@ -98,7 +98,7 @@ public class nuh
               localObject3 = (LinearLayout.LayoutParams)((TextView)localObject4).getLayoutParams();
               ((LinearLayout.LayoutParams)localObject3).width = -1;
               ((LinearLayout.LayoutParams)localObject3).height = -2;
-              ((LinearLayout.LayoutParams)localObject3).leftMargin = xod.a(paramContext, 10.0F);
+              ((LinearLayout.LayoutParams)localObject3).leftMargin = xsm.a(paramContext, 10.0F);
               ((TextView)localObject4).setText(((JSONObject)localObject2).optString("title"));
               ((TextView)localObject4).setTextColor(Color.parseColor("#000000"));
               ((TextView)localObject4).setTextSize(16.0F);
@@ -109,7 +109,7 @@ public class nuh
               localLinearLayout.addView((View)localObject2);
               localObject3 = (LinearLayout.LayoutParams)((View)localObject2).getLayoutParams();
               ((LinearLayout.LayoutParams)localObject3).width = -2;
-              ((LinearLayout.LayoutParams)localObject3).height = xod.a(paramContext, 1.0F);
+              ((LinearLayout.LayoutParams)localObject3).height = xsm.a(paramContext, 1.0F);
               ((View)localObject2).setBackgroundColor(Color.parseColor("#E0E0E0"));
             }
           }

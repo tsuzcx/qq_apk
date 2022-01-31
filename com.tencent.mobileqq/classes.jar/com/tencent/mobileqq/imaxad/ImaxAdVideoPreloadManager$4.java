@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.imaxad;
 
-import astw;
+import asyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import nrc;
 
 public class ImaxAdVideoPreloadManager$4
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$4(astw paramastw, QQAppInterface paramQQAppInterface) {}
+  public ImaxAdVideoPreloadManager$4(asyf paramasyf, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

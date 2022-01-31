@@ -1,35 +1,17 @@
-import android.app.Dialog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.ImageView;
 
-public class ahxw
-  implements Animation.AnimationListener
+class ahxw
+  extends RecyclerView.ViewHolder
 {
-  public ahxw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  ahxw(ahxv paramahxv, View paramView)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376974));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

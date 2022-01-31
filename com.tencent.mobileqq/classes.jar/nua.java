@@ -20,7 +20,7 @@ import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
 import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
 public class nua
-  extends alko
+  extends alpd
 {
   public nua(QQAppInterface paramQQAppInterface)
   {
@@ -206,7 +206,7 @@ public class nua
     this.app.startServlet(paramString);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return nub.class;
   }

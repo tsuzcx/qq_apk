@@ -14,10 +14,10 @@ import mqq.manager.Manager;
 public abstract class qir
   implements Manager
 {
-  protected awbw a;
-  protected bdwa a;
+  protected awgf a;
+  protected beaj a;
   protected AppInterface a;
-  protected ArrayList<bdvu> a;
+  protected ArrayList<bead> a;
   protected HashMap<String, String> a;
   protected ConcurrentHashMap<String, String> a;
   
@@ -27,13 +27,13 @@ public abstract class qir
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bdwa = ((bdvx)paramAppInterface.getManager(47)).a(1);
-    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Beaj = ((beag)paramAppInterface.getManager(47)).a(1);
+    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
   public String a(String paramString)
   {
-    String str2 = bduw.a(aljq.aX + ".readInjoy/resource/");
+    String str2 = bdzf.a(alof.aX + ".readInjoy/resource/");
     String str1 = str2;
     if (!TextUtils.isEmpty(paramString)) {
       str1 = str2 + paramString + "/";
@@ -43,12 +43,12 @@ public abstract class qir
   
   public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
   
-  public void a(bdvu parambdvu)
+  public void a(bead parambead)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambdvu);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambead);
   }
   
-  public void a(String paramString, bdvv parambdvv) {}
+  public void a(String paramString, beae parambeae) {}
   
   public void a(String paramString, BaseResData paramBaseResData) {}
   
@@ -64,7 +64,7 @@ public abstract class qir
       QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide: id = " + (String)localObject);
     }
     String str = b(paramString, (String)localObject);
-    if (azzp.a(new File(str)))
+    if (bady.a(new File(str)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("readinjoy", 4, "isAnimationPackageValid");
@@ -83,7 +83,7 @@ public abstract class qir
       QLog.d("readinjoy", 4, "mDownloadingRes _");
       return false;
       if (!(paramBaseResData instanceof MaterialData)) {
-        bdcs.a(str);
+        bdhb.a(str);
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString + "_" + (String)localObject, paramBaseResData.url);
       str = str + ".zip";
@@ -91,10 +91,10 @@ public abstract class qir
       Bundle localBundle = new Bundle();
       localBundle.putString("resId", (String)localObject);
       localBundle.putString("prefix", paramString);
-      localObject = new bdvv(paramBaseResData.url, localFile);
-      ((bdvv)localObject).b = paramInt;
-      ((bdvv)localObject).d = 60L;
-      this.jdField_a_of_type_Bdwa.a((bdvv)localObject, new qis(this, str, paramBaseResData, paramString), localBundle);
+      localObject = new beae(paramBaseResData.url, localFile);
+      ((beae)localObject).b = paramInt;
+      ((beae)localObject).d = 60L;
+      this.jdField_a_of_type_Beaj.a((beae)localObject, new qis(this, str, paramBaseResData, paramString), localBundle);
     } while (!QLog.isColorLevel());
     QLog.d("readinjoy", 4, "startDownload");
     return false;
@@ -115,9 +115,9 @@ public abstract class qir
     this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public void b(bdvu parambdvu)
+  public void b(bead parambead)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(parambdvu);
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parambead);
   }
   
   public abstract void b(String paramString, BaseResData paramBaseResData);
@@ -131,7 +131,7 @@ public abstract class qir
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Awbw.a();
+    this.jdField_a_of_type_Awgf.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     b();
   }

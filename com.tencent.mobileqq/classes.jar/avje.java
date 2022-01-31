@@ -1,25 +1,32 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-class avje
-  implements View.OnClickListener
+public class avje
+  extends zje
 {
-  avje(avjc paramavjc) {}
+  public avje(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public zil a(Activity paramActivity, zir paramzir)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694713), 0).a();
-      return;
-    }
-    avjc.c(this.a);
+    return super.a(paramActivity, paramzir);
+  }
+  
+  public zin a(Activity paramActivity, zir paramzir)
+  {
+    return new avjg((PicBrowserActivity)paramActivity, paramzir);
+  }
+  
+  public zir a(Activity paramActivity)
+  {
+    paramActivity = new avjp(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public zis a(Activity paramActivity, zir paramzir)
+  {
+    return null;
   }
 }
 

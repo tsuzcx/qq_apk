@@ -1,18 +1,18 @@
 package common.config.service;
 
-import bihh;
+import bilo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import zds;
+import zih;
 
 public class QzoneConfig$2$1
   implements Runnable
 {
-  public QzoneConfig$2$1(bihh parambihh, boolean paramBoolean) {}
+  public QzoneConfig$2$1(bilo parambilo, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = zds.b();
+    String str = zih.b();
     if (QLog.isColorLevel()) {
       QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.jdField_a_of_type_Boolean);
     }
@@ -21,7 +21,7 @@ public class QzoneConfig$2$1
       QzoneConfig.getInstance().clearConfigs();
       QzoneConfig.getInstance().loadAllConfigs();
     }
-    QzoneConfig.access$000(this.jdField_a_of_type_Bihh.a);
+    QzoneConfig.access$000(this.jdField_a_of_type_Bilo.a);
   }
 }
 

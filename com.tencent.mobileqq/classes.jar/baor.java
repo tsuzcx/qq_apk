@@ -1,109 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.WeakReference;
 
 class baor
-  implements BusinessObserver
+  extends Handler
 {
-  baor(baoq parambaoq) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  baor(baoq parambaoq, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - baoo.b(this.a.b)));
-    }
-    int j = -1;
-    paramInt = j;
-    int i;
-    if (paramBoolean) {
-      i = j;
-    }
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Activity localActivity;
+    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      paramInt = j;
-      if (paramBundle != null)
-      {
-        i = j;
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-        i = j;
-        localGetAppinfoResponse.mergeFrom(paramBundle);
-        i = j;
-        j = localGetAppinfoResponse.ret.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + j);
-        }
-        paramInt = j;
-        if (j == 0)
-        {
-          i = j;
-          baoo.a(this.a.b).d = zbj.a(localGetAppinfoResponse.iconsURL, 16);
-          i = j;
-          baoo.a(this.a.b).e = zbj.a(localGetAppinfoResponse.iconsURL, 100);
-          i = j;
-          if (localGetAppinfoResponse.androidInfo != null)
-          {
-            i = j;
-            paramBundle = localGetAppinfoResponse.androidInfo;
-            i = j;
-            if (paramBundle.packName.has())
-            {
-              i = j;
-              baoo.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
-            }
-            i = j;
-            if (paramBundle.messagetail.has())
-            {
-              i = j;
-              baoo.a(this.a.b).b = paramBundle.messagetail.get();
-            }
-            i = j;
-            if (paramBundle.sourceUrl.has())
-            {
-              i = j;
-              if (baoo.a(this.a.b) != Long.parseLong("1103584836"))
-              {
-                i = j;
-                baoo.a(this.a.b).c = paramBundle.sourceUrl.get();
-              }
-            }
-          }
-          i = j;
-          baoo.a(this.a.b).jdField_a_of_type_Int = 1;
-          i = j;
-          baoq.a(this.a);
-          paramInt = j;
-        }
+      localActivity = null;
+      if (localActivity != null) {
+        break label75;
       }
+      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
     }
-    catch (Exception paramBundle)
+    label75:
+    do
     {
-      for (;;)
-      {
-        paramInt = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
-          paramInt = i;
-        }
-      }
-      baoq.a(this.a).set(true);
-      this.a.b();
-    }
-    if ((baoo.a(this.a.b).jdField_a_of_type_Int != 1) && (baoq.a(this.a) < 2) && (paramInt != 110507) && (paramInt != 110401))
-    {
-      baoq.b(this.a);
-      this.a.d();
       return;
-    }
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      break;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())));
+    this.a.jdField_a_of_type_Bety = new bety(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
+    this.a.jdField_a_of_type_Bety.setCancelable(true);
+    this.a.jdField_a_of_type_Bety.c(2131720527);
+    this.a.jdField_a_of_type_Bety.show();
+    return;
+    this.a.c();
+    QQToast.a(localActivity, alud.a(2131715318), 4000).a();
   }
 }
 

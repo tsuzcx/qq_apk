@@ -1,14 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class wvx
-  implements View.OnClickListener
+  implements xsr<wsl>
 {
-  wvx(wvv paramwvv) {}
+  wvx(wvq paramwvq) {}
   
-  public void onClick(View paramView)
+  public wsl a()
   {
-    this.a.a.a(0);
+    return new wsl(null);
   }
 }
 

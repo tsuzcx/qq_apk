@@ -1,74 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class agty
-  extends aofy<agtx>
+class agty
+  implements bckx
 {
-  public int a()
-  {
-    return 410;
-  }
+  agty(agti paramagti) {}
   
-  @NonNull
-  public agtx a(int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return new agtx();
-  }
-  
-  @Nullable
-  public agtx a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      agtx localagtx = agtx.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localagtx;
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
     }
-    return null;
-  }
-  
-  public Class<agtx> a()
-  {
-    return agtx.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(agtx paramagtx)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str = ((QQAppInterface)localObject).c();
-      agug.a(BaseApplicationImpl.getApplication(), str, paramagtx.a());
-      agug.a((QQAppInterface)localObject, paramagtx.a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramJSONObject = (bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

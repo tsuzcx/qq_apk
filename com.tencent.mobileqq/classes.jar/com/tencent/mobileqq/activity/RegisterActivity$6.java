@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class RegisterActivity$6
   implements Runnable

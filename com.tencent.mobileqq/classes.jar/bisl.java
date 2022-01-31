@@ -1,26 +1,19 @@
-public abstract interface bisl
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
+
+public final class bisl
+  implements Parcelable.Creator<SendMsg>
 {
-  public abstract void a();
+  public SendMsg a(Parcel paramParcel)
+  {
+    return new SendMsg(paramParcel);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
+  }
 }
 
 

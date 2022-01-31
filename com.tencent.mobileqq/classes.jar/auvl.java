@@ -1,8 +1,13 @@
-import java.util.List;
-
-public abstract interface auvl
+public class auvl
 {
-  public abstract void a(List<auvm> paramList, boolean paramBoolean);
+  public int a;
+  public String a;
+  
+  public auvl(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

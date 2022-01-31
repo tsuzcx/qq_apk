@@ -1,285 +1,137 @@
-import Wallet.ReqWalletConfig;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.AlbumListLogic;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogic;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogic;
 
 public class aitd
-  implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  private volatile long jdField_a_of_type_Long = -1L;
-  private final QWalletConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public aitd(QQAppInterface paramQQAppInterface)
+  public static AlbumListLogic a(int paramInt, AlbumListFragment paramAlbumListFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigManager", 2, "QWalletConfigManager init");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig = QWalletConfig.readConfig(paramQQAppInterface);
-  }
-  
-  private void a(long paramLong, aitg paramaitg, String paramString, Map<String, String> paramMap)
-  {
-    if (a())
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo = 0L;
-      QLog.i("QWalletConfigManager", 2, "replace install:" + AppSetting.a());
+    default: 
+      return new aiqq(paramAlbumListFragment);
+    case 1: 
+      return new airt(paramAlbumListFragment);
+    case 7: 
+      return new airv(paramAlbumListFragment);
+    case 4: 
+      return new airu(paramAlbumListFragment);
+    case 3: 
+      return new anqo(paramAlbumListFragment);
     }
-    long l1;
-    if (paramLong == 0L)
+    return new airw(paramAlbumListFragment);
+  }
+  
+  public static PhotoListLogic a(int paramInt, NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    switch (paramInt)
     {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label191;
-      }
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    case 21: 
+    case 22: 
+    case 31: 
+    case 32: 
+    case 33: 
+    case 34: 
+    case 35: 
+    case 36: 
+    case 37: 
+    case 38: 
+    case 39: 
+    case 42: 
+    default: 
+      return new aira(paramNewPhotoListActivity);
+    case 1: 
+      return new aise(paramNewPhotoListActivity);
+    case 7: 
+      return new aisq(paramNewPhotoListActivity);
+    case 4: 
+      return new aism(paramNewPhotoListActivity);
+    case 30: 
+      return new aisn(paramNewPhotoListActivity);
+    case 3: 
+      return new anqu(paramNewPhotoListActivity);
+    case 2: 
+      return new aisj(paramNewPhotoListActivity);
+    case 23: 
+      return new aisd(paramNewPhotoListActivity);
+    case 26: 
+      return new airx(paramNewPhotoListActivity);
+    case 29: 
+      return new aisc(paramNewPhotoListActivity);
+    case 24: 
+      return new aisy(paramNewPhotoListActivity);
+    case 25: 
+      return new aisu(paramNewPhotoListActivity);
+    case 28: 
+      return new aitc(paramNewPhotoListActivity);
+    case 27: 
+      return new aisx(paramNewPhotoListActivity);
+    case 40: 
+      return new aisf(paramNewPhotoListActivity);
+    case 41: 
+      return new aita(paramNewPhotoListActivity);
+    case 43: 
+      return new aisk(paramNewPhotoListActivity);
+    case 44: 
+      return new aisp(paramNewPhotoListActivity);
+    case 45: 
+      return new aisw(paramNewPhotoListActivity);
+    case 46: 
+      return new aisl(paramNewPhotoListActivity);
     }
-    label191:
-    for (long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();; l2 = 0L)
+    return new aitb(paramNewPhotoListActivity);
+  }
+  
+  public static PhotoPreviewLogic a(int paramInt, NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  {
+    switch (paramInt)
     {
-      ReqWalletConfig localReqWalletConfig = ReqWalletConfig.createReq(paramLong, l2, l1, paramString, paramMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "realGetConfig:" + paramLong + "|" + paramaitg + "|" + paramString + "|" + paramMap + "|" + localReqWalletConfig);
-      }
-      aiqs.a(localReqWalletConfig, new aite(this, paramLong, paramaitg, new WeakReference(this)), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-      l1 = 0L;
-      break;
+    default: 
+      return new airj(paramNewPhotoPreviewActivity);
+    case 1: 
+      return new aitg(paramNewPhotoPreviewActivity);
+    case 7: 
+      return new aits(paramNewPhotoPreviewActivity);
+    case 2: 
+      return new aitp(paramNewPhotoPreviewActivity);
+    case 23: 
+      return new aite(paramNewPhotoPreviewActivity);
+    case 24: 
+      return new aity(paramNewPhotoPreviewActivity);
+    case 25: 
+      return new aitt(paramNewPhotoPreviewActivity);
+    case 3: 
+      return new anqw(paramNewPhotoPreviewActivity);
+    case 28: 
+      return new aitz(paramNewPhotoPreviewActivity);
+    case 40: 
+      return new aito(paramNewPhotoPreviewActivity);
+    case 42: 
+      return new aitl(paramNewPhotoPreviewActivity);
+    case 45: 
+      return new aitx(paramNewPhotoPreviewActivity);
+    case 50: 
+      return new aitr(paramNewPhotoPreviewActivity);
     }
-  }
-  
-  public static void a(String paramString, aith paramaith)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      ((aitd)localAppRuntime.getManager(245)).c(paramString, paramaith);
-      return;
-    }
-    aizx.a(paramString, paramaith);
-  }
-  
-  public static void b(String paramString, aith paramaith)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      ((aitd)localAppRuntime.getManager(245)).d(paramString, paramaith);
-      return;
-    }
-    aizx.b(paramString, paramaith);
-  }
-  
-  public int a(String paramString, int paramInt, String... paramVarArgs)
-  {
-    return aita.a(a(paramString), paramInt, paramVarArgs);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.lastReqTime;
-  }
-  
-  public aitb a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getConfigInfo(paramString);
-  }
-  
-  public String a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getConfig(paramString);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    Object localObject1 = null;
-    Object localObject2 = a(paramString1);
-    paramString1 = localObject1;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    try
-    {
-      localObject2 = new JSONObject((String)localObject2);
-      paramString1 = localObject1;
-      if (localObject2 != null)
-      {
-        paramString1 = localObject1;
-        if (((JSONObject)localObject2).has(paramString2)) {
-          paramString1 = ((JSONObject)localObject2).optString(paramString2);
-        }
-      }
-      return paramString1;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String a(String paramString1, String paramString2, String... paramVarArgs)
-  {
-    return aita.a(a(paramString1), paramString2, paramVarArgs);
-  }
-  
-  public JSONArray a(String paramString, String... paramVarArgs)
-  {
-    return aita.a(a(paramString), paramVarArgs);
-  }
-  
-  public JSONObject a(String paramString)
-  {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getParsedConfig(paramString);
-    if ((paramString instanceof JSONObject)) {
-      return (JSONObject)paramString;
-    }
-    return null;
-  }
-  
-  public JSONObject a(String paramString, String... paramVarArgs)
-  {
-    return aita.a(a(paramString), paramVarArgs);
-  }
-  
-  public void a()
-  {
-    ThreadManager.executeOnSubThread(new QWalletConfigManager.1(this, new WeakReference(this)));
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getValidReqOcca(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigManager", 2, "tryGetConfig:" + paramInt + "|" + i + "|" + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig);
-    }
-    if (i != -1)
-    {
-      if (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long) <= 60000L) {
-        break label90;
-      }
-      b(i);
-    }
-    label90:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QWalletConfigManager", 2, "tryGetConfig too frequently to req");
-  }
-  
-  public void a(Map<String, String> paramMap)
-  {
-    if (paramMap == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "setConfig params is null");
-      }
-    }
-    do
-    {
-      return;
-      paramMap = ReqWalletConfig.createReq(0L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo, null, paramMap);
-      aiqs.a(paramMap, 1, new aitf(this));
-    } while (!QLog.isColorLevel());
-    QLog.d("QWalletConfigManager", 2, "setConfig:" + paramMap);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.isVersionUpdate();
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Object localObject;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject = a("pub_acc", "pay_puin_list");
-      bool1 = bool2;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    try
-    {
-      localObject = new JSONArray((String)localObject);
-      bool1 = bool2;
-      int i;
-      if (localObject != null) {
-        i = 0;
-      }
-      for (;;)
-      {
-        bool1 = bool2;
-        if (i < ((JSONArray)localObject).length())
-        {
-          bool1 = paramString.equals("" + ((JSONArray)localObject).get(i));
-          if (bool1) {
-            bool1 = true;
-          }
-        }
-        else
-        {
-          return bool1;
-        }
-        i += 1;
-      }
-      return false;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("req_when", paramInt + "");
-    try
-    {
-      String str = ((aixa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(273)).a();
-      if (!TextUtils.isEmpty(str)) {
-        localHashMap.put("redPoint", str);
-      }
-      a(0L, null, null, localHashMap);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
-  
-  public void c(String paramString, aith paramaith)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.addUpdateListener(paramString, paramaith);
-  }
-  
-  public void d(String paramString, aith paramaith)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.removeUpdateListener(paramString, paramaith);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.onDestroy();
+    return new airh(paramNewPhotoPreviewActivity);
   }
 }
 

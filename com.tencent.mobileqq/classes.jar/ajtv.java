@@ -1,67 +1,113 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ajtv
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.argb(64, 125, 113, 30);
-  private static final int d = Color.rgb(162, 116, 4);
-  private static final int e = Color.argb(64, 213, 185, 118);
-  public int a = 0;
+  ajtw jdField_a_of_type_Ajtw;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  ArrayList<ajtw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  private ajtm a(View paramView)
+  int a(ajtw paramajtw, boolean paramBoolean)
   {
-    if (paramView == null) {}
+    int i = 1;
+    if (paramajtw == null) {}
+    int j;
     do
     {
-      return null;
-      if ((paramView.getParent() instanceof ajtm)) {
-        return (ajtm)paramView.getParent();
-      }
-    } while (!(paramView instanceof ajtm));
-    return (ajtm)paramView;
+      do
+      {
+        return i;
+        paramajtw.jdField_a_of_type_Boolean = true;
+        j = paramajtw.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
+        if ((j == 3) && (paramajtw.jdField_c_of_type_JavaLangString != null) && (paramBoolean))
+        {
+          bdhb.d(paramajtw.jdField_c_of_type_JavaLangString);
+          paramajtw.jdField_c_of_type_JavaLangString = null;
+          return j;
+        }
+        i = j;
+      } while (j != 6);
+      i = j;
+    } while (paramajtw.jdField_b_of_type_JavaLangString == null);
+    bdhb.d(paramajtw.jdField_b_of_type_JavaLangString);
+    paramajtw.jdField_b_of_type_JavaLangString = null;
+    return j;
   }
   
-  void a(View paramView, ajte paramajte)
+  public ajtw a()
   {
-    ajtm localajtm = a(paramView);
-    if (localajtm == null) {}
-    ajto localajto;
-    do
-    {
-      return;
-      localajto = localajtm.delegate();
-    } while ((localajto == null) || (!localajto.b()) || (localajtm.hasSelected()));
-    if (this.a == 2)
-    {
-      localajto.c(d);
-      localajto.b(e);
+    return this.jdField_a_of_type_Ajtw;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ajtw != null) {
+      this.jdField_a_of_type_Ajtw.jdField_b_of_type_Boolean = false;
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localajto.a(paramajte);
-      localajtm.doSelecting(null);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Ajtw);
+      this.jdField_a_of_type_Ajtw = null;
       return;
-      if (this.a == 1)
-      {
-        localajto.c(b);
-        localajto.b(c);
-      }
-      else
-      {
-        paramView = paramView.getResources();
-        int i = paramView.getColorStateList(2131166878).getDefaultColor();
-        int j = paramView.getColorStateList(2131166880).getDefaultColor();
-        localajto.c(i);
-        localajto.b(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
-        }
-      }
     }
+  }
+  
+  public void a(String paramString, float paramFloat, int paramInt)
+  {
+    a(paramString, paramFloat, paramInt, 0);
+  }
+  
+  public void a(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Ajtw != null) {
+      this.jdField_a_of_type_Ajtw.jdField_b_of_type_Boolean = true;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Ajtw);
+      this.jdField_a_of_type_Ajtw = null;
+      b(paramString, paramFloat, paramInt1, paramInt2);
+      return;
+    }
+  }
+  
+  void b()
+  {
+    ajtw localajtw = null;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localajtw = (ajtw)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      }
+      if ((localajtw == null) || (a(localajtw, localajtw.jdField_b_of_type_Boolean) != 2)) {}
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localajtw);
+      return;
+      localObject1 = finally;
+      throw localObject1;
+    }
+  }
+  
+  void b(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  {
+    ajtw localajtw = new ajtw(this);
+    localajtw.jdField_a_of_type_Boolean = false;
+    localajtw.jdField_a_of_type_JavaLangString = paramString;
+    localajtw.jdField_a_of_type_Int = paramInt1;
+    localajtw.jdField_c_of_type_Int = paramInt2;
+    paramInt2 = (int)(localajtw.jdField_a_of_type_Int / paramFloat);
+    paramInt1 = paramInt2;
+    if (paramInt2 % 2 > 0) {
+      paramInt1 = paramInt2 - 1;
+    }
+    localajtw.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Ajtw = localajtw;
+    localajtw.jdField_a_of_type_Ajtx.jdField_a_of_type_Ajtw = localajtw;
+    localajtw.jdField_a_of_type_Ajtx.execute(new Void[0]);
   }
 }
 

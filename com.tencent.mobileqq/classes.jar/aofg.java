@@ -1,89 +1,23 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import android.graphics.Point;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class aofg
+public abstract interface aofg
 {
-  public float a;
-  public int a;
-  public String a;
-  public ArrayList<Pair<String, Float>> a;
-  Set<Integer> a;
-  public boolean a;
-  public int b;
-  public int c = 36;
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public aofg(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = aoey.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Float = aoey.a(paramString);
-    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.c = a(this.b);
-    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
-      if (this.b % 2 != 0) {
-        break label172;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
-      }
-      return;
-      label172:
-      i = 0;
-    }
-  }
+  public abstract void a(Point paramPoint, int paramInt);
   
-  private int a(int paramInt)
-  {
-    if (paramInt <= 2) {
-      paramInt = aoey.a.nextInt(8) - 4 + 74;
-    }
-    for (;;)
-    {
-      return paramInt / 4 * 4;
-      if (paramInt <= 4) {
-        paramInt = aoey.a.nextInt(8) - 4 + 70;
-      } else if (paramInt <= 6) {
-        paramInt = aoey.a.nextInt(8) - 4 + 66;
-      } else if (paramInt <= 8) {
-        paramInt = aoey.a.nextInt(8) - 4 + 62;
-      } else {
-        paramInt = aoey.a.nextInt(8) - 4 + 60;
-      }
-    }
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b % 3 != 0) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
-      }
-      return;
-    }
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
+  
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 

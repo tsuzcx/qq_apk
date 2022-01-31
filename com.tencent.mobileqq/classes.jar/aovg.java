@@ -1,78 +1,48 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aovg
+  extends aouf<aovf>
 {
-  private static aofr a;
-  private static aofr b;
-  public String a;
-  public String b;
-  private aofr c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public aovg()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    return 76;
   }
   
-  public void a()
+  @NonNull
+  public aovf a()
   {
-    if (this.e.equals("LOCAL")) {
-      if (!this.f.equals("1")) {}
-    }
-    label24:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label24;
-              break label24;
-              break label24;
-              do
-              {
-                return;
-              } while ((this.f.equals("2")) || (this.f.equals("4")) || (this.f.equals("5")) || (this.f.equals("6")) || (!this.f.equals("7")));
-              return;
-            } while ((this.e.equals("WAP")) || (this.e.equals("TMTWAP")) || (this.e.equals("WAPI")) || (this.e.equals("TMTWAPI")) || (this.e.equals("VOICECALL")));
-            if (!this.e.equals("QQMSG")) {
-              break;
-            }
-          } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
-          return;
-        } while ((this.e.equals("AUTOQQMSG")) || (this.e.equals("HTTP")) || (this.e.equals("AUTOSMS")));
-        if (!this.e.equals("USERSMS")) {
-          break;
-        }
-      } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
-      return;
-    } while (!this.e.equals("RESET"));
+    return new aovf();
   }
   
-  public void a(boolean paramBoolean)
+  @NonNull
+  public aovf a(aoko[] paramArrayOfaoko)
   {
-    aofr[] arrayOfaofr = new aofr[2];
-    if ((this.d != null) && (!this.e.equals("")))
-    {
-      if (this.jdField_c_of_type_Aofr == null) {
-        this.jdField_c_of_type_Aofr = new aofr(this.d, 1, 1);
-      }
-      arrayOfaofr[0] = this.jdField_c_of_type_Aofr;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    bdzy.a().a(localQQAppInterface.getApplication(), paramArrayOfaoko, localQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaoko);
     }
-    if (paramBoolean)
-    {
-      arrayOfaofr[1] = jdField_b_of_type_Aofr;
-      return;
-    }
-    arrayOfaofr[1] = jdField_a_of_type_Aofr;
+    return new aovf();
+  }
+  
+  public Class<aovf> a()
+  {
+    return aovf.class;
+  }
+  
+  @NonNull
+  public aovf b()
+  {
+    return new aovf();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

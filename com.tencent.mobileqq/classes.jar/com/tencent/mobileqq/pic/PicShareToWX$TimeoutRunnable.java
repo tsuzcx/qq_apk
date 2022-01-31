@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import awfe;
-import batw;
+import awjn;
+import bayf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import eipc.EIPCResult;
 

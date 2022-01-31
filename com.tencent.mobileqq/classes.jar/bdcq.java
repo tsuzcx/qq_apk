@@ -1,44 +1,83 @@
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class bdcq
+  extends AsyncTask<Object, Void, Drawable>
 {
-  public static float a(Context paramContext, float paramFloat)
+  private Object jdField_a_of_type_JavaLangObject;
+  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  private View a()
   {
-    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (this == bdco.a(this.jdField_a_of_type_Bdco, localView)) {
+      return localView;
+    }
+    return null;
   }
   
-  @SuppressLint({"NewApi"})
-  public static int a(Context paramContext)
+  public Drawable a(Object... paramVarArgs)
   {
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 11) {
-      i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
-    }
-    int j = (int)paramContext.getResources().getDimension(17104896);
-    if (QLog.isColorLevel()) {
-      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
-    }
-    return Math.max(i, j);
-  }
-  
-  public static int a(TextView paramTextView, int paramInt)
-  {
-    if ((paramTextView != null) && (paramTextView.getText() != null) && (paramInt > 0))
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
+    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
+    bdcm localbdcm = (bdcm)paramVarArgs[1];
+    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
+    if (((bdco.a(this.jdField_a_of_type_Bdco) == null) || (isCancelled()) || (a() == null) || (bdco.a(this.jdField_a_of_type_Bdco))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!bdco.a(this.jdField_a_of_type_Bdco)))) {}
+    for (;;)
     {
-      TextPaint localTextPaint = paramTextView.getPaint();
-      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
+      try
+      {
+        paramVarArgs = localbdcm.a();
+        if ((bdco.a(this.jdField_a_of_type_Bdco) != null) && (paramVarArgs != null)) {
+          bdco.a(this.jdField_a_of_type_Bdco).a(str, paramVarArgs);
+        }
+        return paramVarArgs;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        if (bdco.a(this.jdField_a_of_type_Bdco) != null) {
+          bdco.a(this.jdField_a_of_type_Bdco).a();
+        }
+        System.gc();
+        Thread.yield();
+        try
+        {
+          paramVarArgs = localbdcm.a();
+        }
+        catch (OutOfMemoryError paramVarArgs)
+        {
+          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
+        }
+      }
+      paramVarArgs = null;
     }
-    return -1;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    View localView = a();
+    bdcr localbdcr = (bdcr)bdco.a(this.jdField_a_of_type_Bdco).remove(localView);
+    if ((isCancelled()) || (bdco.a(this.jdField_a_of_type_Bdco))) {
+      paramDrawable = null;
+    }
+    if (localView != null)
+    {
+      if (paramDrawable != null) {
+        break label72;
+      }
+      if ((localbdcr != null) && (localbdcr.a != null)) {
+        localbdcr.a.a(localView, null);
+      }
+    }
+    return;
+    label72:
+    bdco.a(this.jdField_a_of_type_Bdco, this.jdField_a_of_type_Boolean, localView, paramDrawable, localbdcr);
   }
 }
 

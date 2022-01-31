@@ -1,23 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class aifg
-  extends alox
+  implements DialogInterface.OnCancelListener
 {
-  aifg(aifb paramaifb) {}
+  aifg(aife paramaife) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
-      this.a.f();
-    }
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.f();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

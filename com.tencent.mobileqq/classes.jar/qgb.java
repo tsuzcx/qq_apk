@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 class qgb
-  implements bhpo
+  implements bhtv
 {
   int jdField_a_of_type_Int = 0;
   View jdField_a_of_type_AndroidViewView = null;
@@ -21,10 +21,10 @@ class qgb
     int j;
     label84:
     PressEffectImageView localPressEffectImageView;
-    if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) != null) && ("RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTag(2131369558))))
+    if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) != null) && ("RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTag(2131369576))))
     {
       i = 1;
-      if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) == null) || (!"RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTag(2131369558)))) {
+      if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) == null) || (!"RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTag(2131369576)))) {
         break label260;
       }
       j = 1;
@@ -32,7 +32,7 @@ class qgb
         break label265;
       }
       QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 1");
-      localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).findViewById(2131375193);
+      localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).findViewById(2131375244);
       qga.a(this.jdField_a_of_type_Qga, localPressEffectImageView);
       qga.a(this.jdField_a_of_type_Qga, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
     }
@@ -56,7 +56,7 @@ class qgb
       if (((this.jdField_b_of_type_AndroidViewView == null) || ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1)) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) != null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTop() > this.jdField_b_of_type_Int))) && (j != 0))
       {
         QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 2");
-        localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).findViewById(2131375193);
+        localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).findViewById(2131375244);
         qga.a(this.jdField_a_of_type_Qga, localPressEffectImageView);
         qga.a(this.jdField_a_of_type_Qga, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       }

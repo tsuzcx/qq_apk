@@ -45,9 +45,9 @@ public class naq
       }
       paramSosoLbsInfo = new userinfo.AppInfo();
       paramSosoLbsInfo.plat_type.set(2);
-      paramSosoLbsInfo.str_app_version.set(bdcb.c());
+      paramSosoLbsInfo.str_app_version.set(bdgk.c());
       localUserInfo.app_info.set(paramSosoLbsInfo);
-      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
       paramSosoLbsInfo = (TicketManager)this.a.getManager(2);
       localObject = this.a.getAccount();
       if (!TextUtils.isEmpty(paramSosoLbsInfo.getSkey((String)localObject))) {

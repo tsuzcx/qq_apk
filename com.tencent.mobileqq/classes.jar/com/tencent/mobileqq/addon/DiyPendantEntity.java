@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.pendant.DiyAddonUser.UserStickerInfo;
@@ -16,14 +16,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DiyPendantEntity
-  extends awbv
+  extends awge
 {
   public int borderId;
   public int diyId;
-  @awdg
+  @awhp
   public ArrayList<DiyPendantSticker> stickerList;
   public byte[] stickers;
-  @awdj
+  @awhs
   public String uinAndDiyId;
   public long updateTs;
   

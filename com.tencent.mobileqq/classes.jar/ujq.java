@@ -1,100 +1,138 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.1;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.2;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.3;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.4;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.5;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.6;
-import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.7;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 
 public class ujq
-  implements uit
+  extends ujo<ujy>
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private Map<String, uja> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private uir jdField_a_of_type_Uir = new uir();
-  private Handler b = new Handler(Looper.getMainLooper());
-  
-  private void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, ujr paramujr)
+  public ujq()
   {
-    if (paramujr == null) {
-      return;
-    }
-    this.b.post(new StorySingleFileDownloader.7(this, paramujr, paramString, paramInt, paramErrorMessage));
+    a(new ujy());
   }
   
-  private void a(String paramString, int paramInt, ujr paramujr)
+  private List<uiz> a(ukb paramukb, int paramInt1, int paramInt2)
   {
-    if (paramujr == null) {
-      return;
-    }
-    this.b.post(new StorySingleFileDownloader.5(this, paramujr, paramString, paramInt));
-  }
-  
-  private void b(String paramString, int paramInt, ujr paramujr)
-  {
-    if (paramujr == null) {
-      return;
-    }
-    this.b.post(new StorySingleFileDownloader.6(this, paramujr, paramString, paramInt));
-  }
-  
-  private void b(uja paramuja, ErrorMessage paramErrorMessage)
-  {
-    int i = 1;
-    wsv.d("Q.qqstory.download:StorySingleFileDownloader", "on download resp , key: %s , error: %d", new Object[] { paramuja.jdField_a_of_type_JavaLangString, Integer.valueOf(paramErrorMessage.errorCode) });
-    if (paramErrorMessage.errorCode == 0)
+    if (((paramInt1 != -1) && (paramukb.jdField_a_of_type_Ukc.jdField_a_of_type_Int >= paramInt1)) || (paramukb.jdField_a_of_type_JavaUtilList.size() <= 0))
     {
-      if (i == 0) {
-        break label147;
+      if (paramukb.a() >= ((ujy)a()).b)
+      {
+        localObject1 = new uiz(((ujy)a()).jdField_a_of_type_Int);
+        ((uiz)localObject1).a(this.a);
+        ((uiz)localObject1).d = paramukb.jdField_a_of_type_Ukc.jdField_a_of_type_JavaLangString;
+        ((uiz)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+        localObject2 = paramukb.a().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (ukb)((Iterator)localObject2).next();
+          ((uiz)localObject1).jdField_a_of_type_JavaUtilList.add(((ukb)localObject3).jdField_a_of_type_Ukc.jdField_a_of_type_JavaLangString);
+        }
+        paramukb.a();
+        wxe.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find leaf album=%s", localObject1);
+        paramukb = new ArrayList(1);
+        paramukb.add(localObject1);
+        return paramukb;
       }
-      paramuja.jdField_b_of_type_Int = 3;
-      ((uid)urr.a(28)).b(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int);
-      paramErrorMessage = ((uro)urr.a(5)).a(paramuja.jdField_b_of_type_JavaLangString);
-      if (paramErrorMessage != null) {
-        ujb.a(paramErrorMessage, paramuja.e, paramuja.jdField_a_of_type_Int, wta.a(BaseApplicationImpl.getContext()));
+      return null;
+    }
+    Object localObject1 = new ArrayList();
+    Object localObject2 = new ArrayList();
+    Object localObject3 = paramukb.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    Object localObject4;
+    Object localObject5;
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (ukb)((Iterator)localObject3).next();
+      localObject5 = a((ukb)localObject4, paramInt1, paramInt2);
+      if ((localObject5 != null) && (((List)localObject5).size() > 0)) {
+        ((List)localObject1).addAll((Collection)localObject5);
       }
-      paramErrorMessage = paramuja.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-      if ((paramErrorMessage != null) && ((paramErrorMessage instanceof ujr))) {
-        a(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, (ujr)paramErrorMessage);
+      for (;;)
+      {
+        break;
+        ((ArrayList)localObject2).add(localObject4);
+        i = ((ukb)localObject4).a() + i;
       }
     }
-    label147:
-    Object localObject;
-    do
+    if ((((ArrayList)localObject2).size() > 0) && (i >= ((ujy)a()).b) && (paramukb.jdField_a_of_type_Ukc.jdField_a_of_type_Int >= paramInt2))
     {
-      return;
-      i = 0;
-      break;
-      localObject = paramuja.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-    } while ((localObject == null) || (!(localObject instanceof ujr)));
-    a(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, paramErrorMessage, (ujr)localObject);
+      localObject3 = new uiz(((ujy)a()).jdField_a_of_type_Int);
+      ((uiz)localObject3).a(this.a);
+      ((uiz)localObject3).d = paramukb.jdField_a_of_type_Ukc.jdField_a_of_type_JavaLangString;
+      ((uiz)localObject3).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = ((ukb)((Iterator)localObject2).next()).a().iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (ukb)((Iterator)localObject4).next();
+          ((uiz)localObject3).jdField_a_of_type_JavaUtilList.add(((ukb)localObject5).jdField_a_of_type_Ukc.jdField_a_of_type_JavaLangString);
+        }
+      }
+      paramukb.a();
+      wxe.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find children album=%s", localObject3);
+      ((List)localObject1).add(localObject3);
+    }
+    return localObject1;
   }
   
-  public void a()
+  private uka a(HashMap<String, List<uja>> paramHashMap)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new StorySingleFileDownloader.1(this));
+    paramHashMap = new uka(paramHashMap);
+    paramHashMap.a();
+    return paramHashMap;
   }
   
-  public void a(String paramString, int paramInt)
+  protected List<uiz> a(List<uja> paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new StorySingleFileDownloader.3(this, paramString, paramInt));
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean, ujr paramujr)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new StorySingleFileDownloader.2(this, paramString, paramInt, paramujr, paramBoolean));
-  }
-  
-  public void a(uja paramuja, ErrorMessage paramErrorMessage)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new StorySingleFileDownloader.4(this, paramuja, paramErrorMessage));
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject1;
+    Object localObject2;
+    while (paramList.hasNext())
+    {
+      localObject1 = (uja)paramList.next();
+      if (localHashMap.containsKey(((uja)localObject1).c))
+      {
+        ((List)localHashMap.get(((uja)localObject1).c)).add(localObject1);
+      }
+      else
+      {
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(localObject1);
+        localHashMap.put(((uja)localObject1).c, localObject2);
+      }
+    }
+    paramList = a(localHashMap);
+    wxe.b("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "start findAlbums node=%s, minGatherLevel=%d, maxGatherLevel=%s", paramList.a(), Integer.valueOf(((ujy)a()).d), Integer.valueOf(((ujy)a()).e));
+    paramList = a(paramList.a(), ((ujy)a()).d, ((ujy)a()).e);
+    if (paramList != null)
+    {
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (uiz)((Iterator)localObject1).next();
+        if ((((uiz)localObject2).jdField_a_of_type_JavaUtilList == null) || (((uiz)localObject2).jdField_a_of_type_JavaUtilList.size() == 0))
+        {
+          wxe.e("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "check why? album:" + localObject2);
+          xqq.a("check why? album:", new Object[0]);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator = ((uiz)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext()) {
+            localArrayList.addAll((Collection)localHashMap.get((String)localIterator.next()));
+          }
+          ((uiz)localObject2).a(localArrayList);
+          ((uiz)localObject2).a(a());
+        }
+      }
+    }
+    return paramList;
   }
 }
 

@@ -1,57 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import org.json.JSONObject;
 
 class bkdn
-  implements AdapterView.OnItemClickListener
+  implements bkdo
 {
-  bkdn(bkdm parambkdm, bkdd parambkdd) {}
+  bkdn(bkdm parambkdm) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Bkdd != null)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Bkdd.dismiss();
-      if ((this.jdField_a_of_type_Bkdd.a != null) && (paramInt < this.jdField_a_of_type_Bkdd.a.size()))
+      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bkdk.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      try
       {
-        paramAdapterView = (bkdj)this.jdField_a_of_type_Bkdd.a.get(paramInt);
-        if (paramAdapterView.a != 1) {
-          break label130;
-        }
-        if ((!TextUtils.isEmpty(paramAdapterView.c)) && (bkdl.a(this.jdField_a_of_type_Bkdm.a) != null))
-        {
-          paramView = new Intent(bkdl.a(this.jdField_a_of_type_Bkdm.a), QQBrowserActivity.class);
-          paramView.putExtra("url", paramAdapterView.c);
-          bkdl.a(this.jdField_a_of_type_Bkdm.a).startActivity(paramView);
-        }
+        localJSONObject.put("result", 0);
+        localJSONObject.put("progress", 1.0D);
+        localJSONObject.put("coverurl", paramString);
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bkdk.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
+        return;
       }
     }
-    label130:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramAdapterView.a != 2);
-      if (bkdl.a(this.jdField_a_of_type_Bkdm.a) != null)
-      {
-        if (!TextUtils.isEmpty(bkdl.a(this.jdField_a_of_type_Bkdm.a).f))
-        {
-          paramAdapterView = bkdl.a(this.jdField_a_of_type_Bkdm.a).f.replace("__ACT_TYPE__", "2001");
-          this.jdField_a_of_type_Bkdm.a.a(paramAdapterView);
-        }
-        if (bkdl.a(this.jdField_a_of_type_Bkdm.a) != null) {
-          this.jdField_a_of_type_Bkdm.a.a(3, bkdl.a(this.jdField_a_of_type_Bkdm.a).a, bkdl.a(this.jdField_a_of_type_Bkdm.a) + 1);
-        }
-      }
-    } while (this.jdField_a_of_type_Bkdm.a.a == null);
-    this.jdField_a_of_type_Bkdm.a.a.a();
+    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
+    this.a.b(-1);
   }
 }
 

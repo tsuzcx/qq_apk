@@ -1,77 +1,52 @@
-import android.text.TextUtils;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class vfy
+public class vfy
+  extends urt<vho>
 {
-  public ConcurrentHashMap<String, Object> a;
-  public vfz a;
-  public boolean a;
-  public final String b;
-  public boolean b;
+  private final String a;
+  public List<String> a;
   
   public vfy()
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.share" + getClass().getSimpleName());
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.datacard_batch_get_video_info");
   }
   
-  public <T> T a(String paramString)
+  public String a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
+    try
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      wsv.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), xmv.a(7));
-      return localObject;
+      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
+      return new vho(localRspBatchGetVideoInfo);
     }
-    wsv.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result null, stack = %s", String.valueOf(paramString), xmv.a(7));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
+    }
     return null;
   }
   
-  public final vfy a(boolean paramBoolean1, boolean paramBoolean2)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    return this;
-  }
-  
-  public abstract void a();
-  
-  public void a(String paramString, Object paramObject)
-  {
-    wsv.a(this.jdField_b_of_type_JavaLangString, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), xmv.a(7));
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramObject);
+    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-  }
-  
-  protected abstract void a(Map<String, Object> paramMap);
-  
-  public final void a(boolean paramBoolean)
-  {
-    wsv.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), xmv.a(7));
-    if (this.jdField_a_of_type_Vfz != null) {
-      this.jdField_a_of_type_Vfz.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected final void b(boolean paramBoolean)
-  {
-    wsv.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), xmv.a(7));
-    if (this.jdField_a_of_type_Vfz != null) {
-      this.jdField_a_of_type_Vfz.a(paramBoolean);
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
+    return localReqBatchGetVideoInfo.toByteArray();
   }
 }
 

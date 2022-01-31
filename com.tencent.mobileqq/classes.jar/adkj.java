@@ -1,58 +1,113 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class adkj
-  implements Comparator<adkq>
+  implements DialogInterface.OnClickListener
 {
-  public adkj(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adkj(NotificationActivity paramNotificationActivity, String paramString1, int paramInt, String paramString2) {}
   
-  public int a(adkq paramadkq1, adkq paramadkq2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramadkq1 = paramadkq1.a.name;
-    paramadkq2 = paramadkq2.a.name;
-    if ((paramadkq1 == null) && (paramadkq2 == null)) {}
-    int j;
-    int k;
-    do
+    try
     {
-      return 0;
-      if ((paramadkq1 == null) && (paramadkq2 != null)) {
-        return -1;
-      }
-      if ((paramadkq1 != null) && (paramadkq2 == null)) {
-        return 1;
-      }
-      j = paramadkq1.length();
-      k = paramadkq2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
+      Object localObject;
+      String str;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        char c1 = paramadkq1.charAt(i);
-        char c2 = paramadkq2.charAt(i);
-        if (c1 != c2)
-        {
-          paramadkq1 = ChnToSpell.a(c1, i);
-          paramadkq2 = ChnToSpell.a(c2, i);
-          if (paramadkq1.jdField_a_of_type_Int == paramadkq2.jdField_a_of_type_Int) {
-            return paramadkq1.jdField_a_of_type_JavaLangString.compareTo(paramadkq2.jdField_a_of_type_JavaLangString);
-          }
-          return paramadkq1.jdField_a_of_type_Int - paramadkq2.jdField_a_of_type_Int;
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.getCurrentAccountUin();
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("uin", paramDialogInterface);
+        str = this.jdField_a_of_type_JavaLangString;
+        if (str.indexOf("?") != -1) {
+          break label203;
         }
-        i += 1;
+        paramDialogInterface = str + "?uin=" + paramDialogInterface;
       }
-      if (j < k) {
-        return -1;
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("url", paramDialogInterface);
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity((Intent)localObject);
+        try
+        {
+          paramDialogInterface = new AlertReport.ButtonAction();
+          paramDialogInterface.uint32_cmd.set(1);
+          paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+          paramDialogInterface.str_package_name.set(bhmt.c());
+          paramDialogInterface.uint32_app_id.set(AppSetting.a());
+          mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+          azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+          return;
+          label203:
+          paramDialogInterface = str + "&uin=" + paramDialogInterface;
+        }
+        catch (Exception paramDialogInterface)
+        {
+          for (;;)
+          {
+            paramDialogInterface.printStackTrace();
+          }
+        }
       }
-    } while (j <= k);
-    return 1;
+      try
+      {
+        localObject = new AlertReport.ButtonAction();
+        ((AlertReport.ButtonAction)localObject).uint32_cmd.set(1);
+        ((AlertReport.ButtonAction)localObject).uint32_button_id.set(this.jdField_a_of_type_Int);
+        ((AlertReport.ButtonAction)localObject).str_package_name.set(bhmt.c());
+        ((AlertReport.ButtonAction)localObject).uint32_app_id.set(AppSetting.a());
+        mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, ((AlertReport.ButtonAction)localObject).toByteArray(), 34, "SecuritySvc.AlertReport");
+        azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        throw paramDialogInterface;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface = paramDialogInterface;
+      paramDialogInterface.printStackTrace();
+      try
+      {
+        paramDialogInterface = new AlertReport.ButtonAction();
+        paramDialogInterface.uint32_cmd.set(1);
+        paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+        paramDialogInterface.str_package_name.set(bhmt.c());
+        paramDialogInterface.uint32_app_id.set(AppSetting.a());
+        mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+        azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          paramDialogInterface.printStackTrace();
+        }
+      }
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkj
  * JD-Core Version:    0.7.0.1
  */

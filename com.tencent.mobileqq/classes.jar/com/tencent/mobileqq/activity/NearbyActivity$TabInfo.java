@@ -50,7 +50,7 @@ public class NearbyActivity$TabInfo
   
   public String getTabTag()
   {
-    return "android:switcher:" + 2131380045 + ":" + this.tabIndex;
+    return "android:switcher:" + 2131380103 + ":" + this.tabIndex;
   }
   
   public String toJson()

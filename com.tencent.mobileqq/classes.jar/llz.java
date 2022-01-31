@@ -57,7 +57,7 @@ public class llz
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
     this.jdField_c_of_type_Boolean = muz.f(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_d_of_type_Boolean = muz.c();
-    this.jdField_e_of_type_Int = bdcb.a();
+    this.jdField_e_of_type_Int = bdgk.a();
     this.jdField_a_of_type_JavaLangString = Build.MODEL;
     this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
     jdField_a_of_type_Lmb.jdField_b_of_type_Int = -1;
@@ -466,12 +466,12 @@ public class llz
   protected int a()
   {
     int n;
-    if (!bdlz.h)
+    if (!bdqi.h)
     {
       if (AudioHelper.e()) {
-        QLog.w("AndroidCamera", 1, "GetNumberOfCamera, hardcode[" + bdlw.a().a() + "]");
+        QLog.w("AndroidCamera", 1, "GetNumberOfCamera, hardcode[" + bdqf.a().a() + "]");
       }
-      n = bdlw.a().a();
+      n = bdqf.a().a();
     }
     do
     {

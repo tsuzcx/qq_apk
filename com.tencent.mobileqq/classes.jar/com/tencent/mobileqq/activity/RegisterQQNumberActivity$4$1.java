@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adqi;
+import adux;
 
 public class RegisterQQNumberActivity$4$1
   implements Runnable
 {
-  public RegisterQQNumberActivity$4$1(adqi paramadqi) {}
+  public RegisterQQNumberActivity$4$1(adux paramadux) {}
   
   public void run()
   {
-    this.a.a.a(2131717515, 1);
+    this.a.a.a(2131717527, 1);
   }
 }
 

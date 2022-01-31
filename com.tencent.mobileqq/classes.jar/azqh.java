@@ -1,110 +1,156 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.report.IMTAReporter;
+import com.tencent.mobileqq.msf.sdk.report.MTAReportManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.stat.StatConfig;
+import com.tencent.stat.StatReportStrategy;
+import com.tencent.stat.StatServiceImpl;
+import com.tencent.stat.StatSpecifyReportedInfo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Properties;
 
 public class azqh
-  extends azqq
+  implements IMTAReporter
 {
-  public azqh(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
+  private static volatile azqh jdField_a_of_type_Azqh;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private StatSpecifyReportedInfo jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo = new StatSpecifyReportedInfo();
+  private volatile String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  private azqh(Context paramContext)
   {
-    super(paramQQAppInterface, paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_Boolean = azqc.a(this.jdField_a_of_type_AndroidContentContext, true);
   }
   
-  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
+  public static azqh a(Context paramContext)
   {
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    paramString2 = new Bundle();
-    paramString2.putString("packageName", paramString1);
-    paramString2.putString("appId", paramLong + "");
-    paramString2.putString("big_brother_source_key", "biz_src_jc_aio");
-    bfei.b(paramActivity, paramString2);
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
-    localIntent.putExtra("url", paramString);
-    syb.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.message, localIntent, paramString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString, "", "", "");
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
-    }
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
-    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
+    if (jdField_a_of_type_Azqh == null) {}
     try
     {
-      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
-      {
-        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
-        if (paramString2 == null) {
-          return false;
-        }
-        paramString2.putExtra("big_brother_source_key", "biz_src_jc_aio");
-        paramString2.addFlags(67108864);
-        if (!TextUtils.isEmpty(paramString1[1])) {
-          paramString2.setData(Uri.parse(paramString1[1]));
-        }
-        try
-        {
-          paramString3 = (alyh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(23);
-          paramString2.putExtra("report_open_type", "structmsg_source");
-          paramString2.putExtra("report_url", "");
-          paramString2.putExtra("report_from", "1");
-          paramString2.putExtra("report_click_origin", "AIOTail");
-          paramString2.putExtra("report_class_name", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
-          paramString3.b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
-            }
-            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-          }
-        }
+      if (jdField_a_of_type_Azqh == null) {
+        jdField_a_of_type_Azqh = new azqh(paramContext);
       }
-      return false;
+      return jdField_a_of_type_Azqh;
     }
-    catch (PackageManager.NameNotFoundException paramString1)
+    finally {}
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    StatConfig.setStatSendStrategy(StatReportStrategy.PERIOD);
+    StatConfig.setSendPeriodMinutes(30);
+    StatConfig.setEnableSmartReporting(true);
+    StatConfig.setStatReportUrl("http://sngmta.qq.com:80/mstat/report/");
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, paramString1.getMessage());
+      StatConfig.setCustomUserId(this.jdField_a_of_type_AndroidContentContext, str);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+        StatServiceImpl.reportQQ(this.jdField_a_of_type_AndroidContentContext, str, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+        localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(localObject instanceof QQAppInterface)) {
+          break label175;
+        }
       }
     }
+    label175:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      Date localDate = new Date(NetConnInfoCenter.getServerTimeMillis());
+      azqs.b((QQAppInterface)localObject, "dc00898", "", "", "0X80075F3", "0X80075F3", 0, 0, new SimpleDateFormat("yyyyMMdd", Locale.US).format(localDate), "", "", "");
+      MTAReportManager.setMTAReporter(jdField_a_of_type_Azqh);
+      if (QLog.isColorLevel()) {
+        QLog.d("MTAReportController", 2, "calledBeforeStat:" + str + ", " + paramBoolean);
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    StatConfig.setDebugEnable(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    StatConfig.setMTAPreferencesFileName(paramString);
+  }
+  
+  public void initMtaConfig(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setAppKey(paramString2);
+    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setInstallChannel(paramString1);
+    StatConfig.setEnableConcurrentProcess(true);
+    StatConfig.setAutoExceptionCaught(false);
+    StatServiceImpl.setContext(this.jdField_a_of_type_AndroidContentContext);
+    b(false);
+  }
+  
+  public boolean isMtaSupported()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void reportKVEvent(String paramString, Properties paramProperties)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " \n\t\t" + paramProperties);
+    }
+    b(true);
+    StatServiceImpl.trackCustomKVEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+  }
+  
+  public void reportTimeKVEvent(String paramString, Properties paramProperties, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " " + paramInt + "\n\t\t" + paramProperties);
+    }
+    b(true);
+    StatServiceImpl.trackCustomKVTimeIntervalEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, paramInt, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+  }
+  
+  public void trackBeginPage(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "trackBeginPage " + paramString);
+    }
+    b(true);
+    StatServiceImpl.trackBeginPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+  }
+  
+  public void trackEndPage(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MTAReportController", 2, "trackEndPage " + paramString);
+    }
+    b(true);
+    StatServiceImpl.trackEndPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
   }
 }
 

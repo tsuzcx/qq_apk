@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
-import alpo;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -31,7 +31,7 @@ public class AdData
   public String I;
   public String J;
   public String K;
-  public String L = alpo.a(2131700195);
+  public String L = alud.a(2131700207);
   public String M;
   public String N;
   public String O;

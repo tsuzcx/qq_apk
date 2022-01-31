@@ -1,10 +1,20 @@
-import android.graphics.Paint;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
 
-public abstract interface axmv
+public class axmv
+  implements View.OnClickListener
 {
-  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public axmv(IosTimepicker paramIosTimepicker) {}
   
-  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
+  public void onClick(View paramView)
+  {
+    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    {
+      IosTimepicker.a(this.a).dismiss();
+      IosTimepicker.a(this.a, null);
+    }
+  }
 }
 
 

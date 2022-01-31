@@ -1,15 +1,9 @@
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+
 public class bmvi
+  extends bmuy
 {
-  public int a;
-  public bmve<Boolean, bmvj> a;
-  public String a;
-  public boolean a;
-  public int b;
-  public bmve<Boolean, bmvk> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
+  public bmvi(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

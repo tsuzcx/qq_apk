@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.contact.addcontact;
 
 import android.os.Handler;
 import android.os.Message;
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ class ClassificationSearchActivity$13
   
   public void run()
   {
-    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = localawbw.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = localawgf.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Object localObject1;
     if (localObject2 != null)
     {
@@ -28,7 +28,7 @@ class ClassificationSearchActivity$13
       {
         localObject1 = (ReadInJoySearchHistoryEntity)localIterator.next();
         if (((ReadInJoySearchHistoryEntity)localObject1).keyWord.equals(this.a)) {
-          localawbw.b((awbv)localObject1);
+          localawgf.b((awge)localObject1);
         }
       }
     }
@@ -39,7 +39,7 @@ class ClassificationSearchActivity$13
       }
       if (((List)localObject2).size() == 20)
       {
-        localawbw.b((awbv)((List)localObject2).get(((List)localObject2).size() - 1));
+        localawgf.b((awge)((List)localObject2).get(((List)localObject2).size() - 1));
         ((List)localObject2).remove(((List)localObject2).size() - 1);
       }
       for (localObject1 = localObject2;; localObject1 = new ArrayList())
@@ -47,9 +47,9 @@ class ClassificationSearchActivity$13
         localObject2 = new ReadInJoySearchHistoryEntity();
         ((ReadInJoySearchHistoryEntity)localObject2).keyWord = this.a;
         ((ReadInJoySearchHistoryEntity)localObject2).timestamp = System.currentTimeMillis();
-        localawbw.a((awbv)localObject2);
+        localawgf.a((awge)localObject2);
         ((List)localObject1).add(0, localObject2);
-        localawbw.a();
+        localawgf.a();
         localObject2 = this.this$0.a.obtainMessage(1);
         ((Message)localObject2).obj = localObject1;
         this.this$0.a.sendMessage((Message)localObject2);

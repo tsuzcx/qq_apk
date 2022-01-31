@@ -1,11 +1,8 @@
-class aerc
+public class aerc
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public aerc(aera paramaera, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 

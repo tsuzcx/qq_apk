@@ -1,19 +1,7 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
-
-public class bmbg
-  extends AnimatorListenerAdapter
+public abstract interface bmbg
+  extends axsb
 {
-  public bmbg(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.setTranslationY(0.0F);
-    this.a.j();
-    athi.b();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

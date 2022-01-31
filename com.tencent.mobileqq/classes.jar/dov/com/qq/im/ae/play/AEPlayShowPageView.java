@@ -10,66 +10,66 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bdkf;
-import bkle;
-import bkvu;
-import blbm;
-import blbs;
-import blbv;
-import blca;
-import blcb;
-import blen;
-import bler;
-import blfg;
+import bdoo;
+import bkpl;
+import blab;
+import blft;
+import blfz;
+import blgc;
+import blgh;
+import blgi;
+import bliu;
+import bliy;
+import bljn;
 import java.util.List;
 
 public class AEPlayShowPageView
   extends FrameLayout
 {
-  private static final blbv jdField_a_of_type_Blbv = a(1);
-  private static final blbv b = a(2);
+  private static final blgc jdField_a_of_type_Blgc = a(1);
+  private static final blgc b = a(2);
   private int jdField_a_of_type_Int = 2;
   private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private blbm jdField_a_of_type_Blbm;
-  private blbs jdField_a_of_type_Blbs;
-  private List<bkvu> jdField_a_of_type_JavaUtilList;
+  private blft jdField_a_of_type_Blft;
+  private blfz jdField_a_of_type_Blfz;
+  private List<blab> jdField_a_of_type_JavaUtilList;
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull blbm paramblbm, int paramInt2, @NonNull List<bkvu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull blft paramblft, int paramInt2, @NonNull List<blab> paramList)
   {
     super(paramContext, paramAttributeSet, paramInt1);
-    a(paramblbm, paramInt2, paramList);
+    a(paramblft, paramInt2, paramList);
     a(paramContext);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull blbm paramblbm, int paramInt, @NonNull List<bkvu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull blft paramblft, int paramInt, @NonNull List<blab> paramList)
   {
-    this(paramContext, paramAttributeSet, 0, paramblbm, paramInt, paramList);
+    this(paramContext, paramAttributeSet, 0, paramblft, paramInt, paramList);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull blbm paramblbm, int paramInt, @NonNull List<bkvu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull blft paramblft, int paramInt, @NonNull List<blab> paramList)
   {
-    this(paramContext, null, paramblbm, paramInt, paramList);
+    this(paramContext, null, paramblft, paramInt, paramList);
   }
   
-  private static blbv a(int paramInt)
+  private static blgc a(int paramInt)
   {
-    int j = bdkf.a(10.0F);
-    int k = bdkf.a(4.0F);
+    int j = bdoo.a(10.0F);
+    int k = bdoo.a(4.0F);
     int m = (int)(k * 0.96F);
     if (paramInt == 1) {}
-    for (int i = bdkf.a() - j * 2 - k * 2;; i = (bdkf.a() - j * 2 - k * 4) / 2)
+    for (int i = bdoo.a() - j * 2 - k * 2;; i = (bdoo.a() - j * 2 - k * 4) / 2)
     {
       int n = (int)(i * 0.96F * 59.0F / 34.0F);
-      blbv localblbv = new blbv();
-      localblbv.jdField_a_of_type_Int = (i + k * 2);
-      localblbv.b = (m * 2 + n);
-      localblbv.c = k;
-      localblbv.d = m;
+      blgc localblgc = new blgc();
+      localblgc.jdField_a_of_type_Int = (i + k * 2);
+      localblgc.b = (m * 2 + n);
+      localblgc.c = k;
+      localblgc.d = m;
       if (paramInt == 1) {
-        localblbv.d = j;
+        localblgc.d = j;
       }
-      return localblbv;
+      return localblgc;
     }
   }
   
@@ -77,8 +77,8 @@ public class AEPlayShowPageView
   {
     LayoutInflater.from(paramContext).inflate(2131558521, this, true);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131362192));
-    blfg.a("AEPlayShowPart", "rv toString " + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new blca(this));
+    bljn.a("AEPlayShowPart", "rv toString " + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new blgh(this));
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 1, 1, false);
@@ -88,11 +88,11 @@ public class AEPlayShowPageView
       }
     }
     label198:
-    for (blbv localblbv = new blbv(jdField_a_of_type_Blbv);; localblbv = new blbv(b))
+    for (blgc localblgc = new blgc(jdField_a_of_type_Blgc);; localblgc = new blgc(b))
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new blcb(this, localblbv));
-      this.jdField_a_of_type_Blbs = new blbs(paramContext, this.jdField_a_of_type_Blbm, localblbv, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Blbs);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new blgi(this, localblgc));
+      this.jdField_a_of_type_Blfz = new blfz(paramContext, this.jdField_a_of_type_Blft, localblgc, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Blfz);
       a(this.jdField_a_of_type_JavaUtilList);
       return;
       this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 2, 1, false);
@@ -100,33 +100,33 @@ public class AEPlayShowPageView
     }
   }
   
-  private void a(@NonNull blbm paramblbm, int paramInt, @NonNull List<bkvu> paramList)
+  private void a(@NonNull blft paramblft, int paramInt, @NonNull List<blab> paramList)
   {
-    this.jdField_a_of_type_Blbm = paramblbm;
+    this.jdField_a_of_type_Blft = paramblft;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Blbm == null) {}
+    if (this.jdField_a_of_type_Blft == null) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = this.jdField_a_of_type_Blbm.a(65537, new Object[0]);
-      } while (!(localObject instanceof bkle));
-      localObject = (bkle)localObject;
-    } while ((((bkle)localObject).a() == null) || (((bkle)localObject).a().getIntent() == null));
-    ((bkle)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-    ((bkle)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+        localObject = this.jdField_a_of_type_Blft.a(65537, new Object[0]);
+      } while (!(localObject instanceof bkpl));
+      localObject = (bkpl)localObject;
+    } while ((((bkpl)localObject).a() == null) || (((bkpl)localObject).a().getIntent() == null));
+    ((bkpl)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+    ((bkpl)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Blbs.a();
+    this.jdField_a_of_type_Blfz.a();
   }
   
   public void a(int paramInt)
@@ -136,15 +136,15 @@ public class AEPlayShowPageView
       if (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager != null) {
         this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
       }
-      blfg.a("AEPlayShowPart", "out........" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
+      bljn.a("AEPlayShowPart", "out........" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new AEPlayShowPageView.3(this, paramInt));
     }
   }
   
-  public void a(@NonNull List<bkvu> paramList)
+  public void a(@NonNull List<blab> paramList)
   {
-    if (this.jdField_a_of_type_Blbs != null) {
-      this.jdField_a_of_type_Blbs.a(paramList);
+    if (this.jdField_a_of_type_Blfz != null) {
+      this.jdField_a_of_type_Blfz.a(paramList);
     }
   }
   
@@ -158,10 +158,10 @@ public class AEPlayShowPageView
       return;
       while ((i < this.jdField_a_of_type_JavaUtilList.size()) && (i <= j))
       {
-        bkvu localbkvu = (bkvu)this.jdField_a_of_type_JavaUtilList.get(i);
-        bler.a().c(localbkvu.f);
-        bler.a().b(i + 1);
-        blen.a().f(localbkvu.a);
+        blab localblab = (blab)this.jdField_a_of_type_JavaUtilList.get(i);
+        bliy.a().c(localblab.f);
+        bliy.a().b(i + 1);
+        bliu.a().f(localblab.a);
         i += 1;
       }
     }
@@ -179,14 +179,14 @@ public class AEPlayShowPageView
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(null);
     }
-    if (this.jdField_a_of_type_Blbs != null) {
-      this.jdField_a_of_type_Blbs.b();
+    if (this.jdField_a_of_type_Blfz != null) {
+      this.jdField_a_of_type_Blfz.b();
     }
   }
   
   public void setTabId(String paramString)
   {
-    this.jdField_a_of_type_Blbs.a(paramString);
+    this.jdField_a_of_type_Blfz.a(paramString);
   }
 }
 

@@ -1,26 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class andg
-  implements View.OnTouchListener
+public abstract interface andg
 {
-  public andg(QRScanEntryView paramQRScanEntryView) {}
+  public abstract void a(int paramInt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

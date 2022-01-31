@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import tzr;
-import tzs;
+import uce;
+import ucf;
 
 public class QCircleBaseInputPopupWindow$1$1
   implements Runnable
 {
-  public QCircleBaseInputPopupWindow$1$1(tzs paramtzs) {}
+  public QCircleBaseInputPopupWindow$1$1(ucf paramucf) {}
   
   public void run()
   {

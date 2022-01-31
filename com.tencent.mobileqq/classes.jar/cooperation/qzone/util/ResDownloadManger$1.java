@@ -1,13 +1,13 @@
 package cooperation.qzone.util;
 
 import android.graphics.BitmapFactory.Options;
-import bjrd;
-import bjrf;
+import bjvk;
+import bjvm;
 
 public class ResDownloadManger$1
   implements Runnable
 {
-  public ResDownloadManger$1(bjrd parambjrd, int paramInt, String paramString, bjrf parambjrf, BitmapFactory.Options paramOptions) {}
+  public ResDownloadManger$1(bjvk parambjvk, int paramInt, String paramString, bjvm parambjvm, BitmapFactory.Options paramOptions) {}
   
   /* Error */
   public void run()
@@ -17,7 +17,7 @@ public class ResDownloadManger$1
     //   1: astore_3
     //   2: aconst_null
     //   3: astore_2
-    //   4: invokestatic 39	bjrd:a	()[Ljava/lang/String;
+    //   4: invokestatic 39	bjvk:a	()[Ljava/lang/String;
     //   7: aload_0
     //   8: getfield 19	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Int	I
     //   11: aaload
@@ -25,16 +25,16 @@ public class ResDownloadManger$1
     //   13: aload_1
     //   14: aload_0
     //   15: getfield 21	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   18: invokestatic 42	bjrd:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   18: invokestatic 42	bjvk:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   21: astore 4
     //   23: aload 4
-    //   25: invokestatic 45	bjrd:a	(Ljava/io/File;)Z
+    //   25: invokestatic 45	bjvk:a	(Ljava/io/File;)Z
     //   28: ifeq +207 -> 235
     //   31: aload_0
     //   32: monitorenter
     //   33: aload_0
-    //   34: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjrd;
-    //   37: invokestatic 48	bjrd:a	(Lbjrd;)Landroid/support/v4/util/LruCache;
+    //   34: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjvk;
+    //   37: invokestatic 48	bjvk:a	(Lbjvk;)Landroid/support/v4/util/LruCache;
     //   40: new 50	java/lang/StringBuilder
     //   43: dup
     //   44: invokespecial 51	java/lang/StringBuilder:<init>	()V
@@ -53,10 +53,10 @@ public class ResDownloadManger$1
     //   76: aload_1
     //   77: ifnull +31 -> 108
     //   80: aload_0
-    //   81: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjrf	Lbjrf;
+    //   81: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjvm	Lbjvm;
     //   84: ifnull +21 -> 105
     //   87: aload_0
-    //   88: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjrf	Lbjrf;
+    //   88: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjvm	Lbjvm;
     //   91: aload_0
     //   92: getfield 19	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Int	I
     //   95: aload_0
@@ -70,7 +70,7 @@ public class ResDownloadManger$1
     //   110: invokevirtual 82	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   113: aload_0
     //   114: getfield 25	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   117: invokestatic 85	bjrd:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   117: invokestatic 85	bjvk:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   120: astore_2
     //   121: aload_2
     //   122: astore_1
@@ -79,8 +79,8 @@ public class ResDownloadManger$1
     //   125: aload_1
     //   126: ifnull -19 -> 107
     //   129: aload_0
-    //   130: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjrd;
-    //   133: invokestatic 48	bjrd:a	(Lbjrd;)Landroid/support/v4/util/LruCache;
+    //   130: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjvk;
+    //   133: invokestatic 48	bjvk:a	(Lbjvk;)Landroid/support/v4/util/LruCache;
     //   136: new 50	java/lang/StringBuilder
     //   139: dup
     //   140: invokespecial 51	java/lang/StringBuilder:<init>	()V
@@ -97,10 +97,10 @@ public class ResDownloadManger$1
     //   166: invokevirtual 89	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   169: pop
     //   170: aload_0
-    //   171: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjrf	Lbjrf;
+    //   171: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjvm	Lbjvm;
     //   174: ifnull -67 -> 107
     //   177: aload_0
-    //   178: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjrf	Lbjrf;
+    //   178: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjvm	Lbjvm;
     //   181: aload_0
     //   182: getfield 19	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Int	I
     //   185: aload_0
@@ -134,26 +134,26 @@ public class ResDownloadManger$1
     //   229: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   232: goto -109 -> 123
     //   235: aload_0
-    //   236: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjrd;
+    //   236: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjvk;
     //   239: aload_1
     //   240: aload_0
     //   241: getfield 19	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Int	I
     //   244: aload_0
     //   245: getfield 21	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   248: aload_0
-    //   249: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjrf	Lbjrf;
-    //   252: invokestatic 102	bjrd:a	(Lbjrd;Ljava/lang/String;ILjava/lang/String;Lbjrf;)Lbjrg;
+    //   249: getfield 23	cooperation/qzone/util/ResDownloadManger$1:jdField_a_of_type_Bjvm	Lbjvm;
+    //   252: invokestatic 102	bjvk:a	(Lbjvk;Ljava/lang/String;ILjava/lang/String;Lbjvm;)Lbjvn;
     //   255: astore_2
     //   256: aload_0
-    //   257: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjrd;
+    //   257: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjvk;
     //   260: aload_1
     //   261: aload_2
-    //   262: invokestatic 105	bjrd:a	(Lbjrd;Ljava/lang/String;Lbjrg;)Z
+    //   262: invokestatic 105	bjvk:a	(Lbjvk;Ljava/lang/String;Lbjvn;)Z
     //   265: ifeq -158 -> 107
     //   268: aload_0
-    //   269: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjrd;
+    //   269: getfield 17	cooperation/qzone/util/ResDownloadManger$1:this$0	Lbjvk;
     //   272: aload_2
-    //   273: invokestatic 108	bjrd:a	(Lbjrd;Lbjrg;)V
+    //   273: invokestatic 108	bjvk:a	(Lbjvk;Lbjvn;)V
     //   276: return
     //   277: astore_2
     //   278: goto -56 -> 222
@@ -167,7 +167,7 @@ public class ResDownloadManger$1
     //   221	40	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
     //   3	202	2	localObject3	Object
     //   219	7	2	localException1	java.lang.Exception
-    //   255	18	2	localbjrg	bjrg
+    //   255	18	2	localbjvn	bjvn
     //   277	1	2	localException2	java.lang.Exception
     //   281	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
     //   1	1	3	localObject4	Object

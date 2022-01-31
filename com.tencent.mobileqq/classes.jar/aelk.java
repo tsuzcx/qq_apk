@@ -1,45 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
 public class aelk
-  implements apnp
+  extends awuk
 {
-  public aelk(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(View paramView)
+  public aelk(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
   {
-    String str = bdox.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if ((localViewParent instanceof ChatXListView)) {
-      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
-    }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
       return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

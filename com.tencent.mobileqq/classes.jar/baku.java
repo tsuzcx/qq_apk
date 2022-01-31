@@ -1,42 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qq.effect.IQEffect;
-import com.tencent.qq.effect.IQEffectLoad;
-import com.tencent.qq.effect.engine.QEffectData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class baku
-  implements IQEffectLoad
+  implements biab
 {
-  public void load(Context paramContext, IQEffect paramIQEffect, QEffectData paramQEffectData)
+  public baku(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  
+  public void a(biaa parambiaa)
   {
-    switch (paramQEffectData.resType)
+    int i;
+    switch (parambiaa.a)
     {
-    case 2: 
+    case 2131364364: 
     default: 
-      return;
-    case 1: 
-      loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
-      return;
+      i = 0;
     }
-    loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
-  }
-  
-  public void loadFromAsset(Context paramContext, IQEffect paramIQEffect, String paramString) {}
-  
-  public void loadFromFile(Context paramContext, IQEffect paramIQEffect, String paramString)
-  {
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    paramContext.mLoadingDrawable = baul.a;
-    paramContext.mFailedDrawable = baul.a;
-    paramIQEffect.complete(URLDrawable.getFileDrawable(paramString, paramContext));
-  }
-  
-  public void loadFromResource(Context paramContext, IQEffect paramIQEffect, int paramInt)
-  {
-    if (paramContext != null) {
-      paramIQEffect.complete(paramContext.getResources().getDrawable(paramInt));
+    for (;;)
+    {
+      azqs.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
+      return;
+      baic.a(this.a.app, "0X800993B");
+      baic.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 1;
+      continue;
+      baic.a(this.a.app, "0X800993C");
+      baic.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 2;
+      continue;
+      baic.a(this.a.app, "0X800993C");
+      baic.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 3;
     }
   }
 }

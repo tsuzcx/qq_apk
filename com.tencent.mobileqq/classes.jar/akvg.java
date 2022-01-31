@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
-class akvg
-  implements DialogInterface.OnKeyListener
+public abstract interface akvg
 {
-  akvg(akvc paramakvc, akvk paramakvk) {}
+  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 4) && (this.jdField_a_of_type_Akvk != null)) {
-      this.jdField_a_of_type_Akvk.a(this.jdField_a_of_type_Akvc.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
-    }
-    return true;
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

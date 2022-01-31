@@ -1,219 +1,171 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.lang.ref.WeakReference;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajtg
-  implements afal, ajtk
+public class ajtg
+  extends Handler
 {
-  private static final int jdField_a_of_type_Int = bdkf.b(50.0F);
-  private static int jdField_b_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private final WeakReference<Fragment> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
-  private int e = -1;
+  public ajtg(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public ajtg(Fragment paramFragment)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFragment);
-    if (jdField_b_of_type_Int == -1)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      int i = ViewConfiguration.get(paramFragment.getActivity()).getScaledTouchSlop();
-      jdField_b_of_type_Int = i * i;
-    }
-  }
-  
-  private void a(View paramView, Fragment paramFragment)
-  {
-    ajsx localajsx = ajsx.a();
-    if ((localajsx.c()) && (!localajsx.a()))
-    {
-      View localView = localajsx.a();
-      if (localView != null)
-      {
-        localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-        if (this.jdField_a_of_type_ArrayOfInt[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() >= jdField_a_of_type_Int + ImmersiveUtils.c) {
-          break label76;
-        }
-        localajsx.d();
-      }
-    }
-    return;
-    label76:
-    if (paramView != null)
-    {
-      int i = this.jdField_a_of_type_ArrayOfInt[1];
-      paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      if (i > this.jdField_a_of_type_ArrayOfInt[1])
-      {
-        localajsx.d();
-        return;
-      }
-      localajsx.a(paramView);
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      paramView = new DisplayMetrics();
-      paramFragment.getActivity().getWindowManager().getDefaultDisplay().getRealMetrics(paramView);
-      localajsx.d(paramView.heightPixels);
-      return;
-    }
-    localajsx.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject2 = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject1 = null;
-    if ((localObject2 instanceof ChatHistoryC2CAllFragment)) {
-      localObject1 = ((ChatHistoryC2CAllFragment)localObject2).jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistoryTimeLineContainer;
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    case 4: 
+    case 5: 
+    case 10: 
+    default: 
+    case 1: 
+    case 2: 
       do
       {
         do
         {
           return;
-          localObject2 = ajsx.a();
-          ((ajsx)localObject2).a(this);
-          this.jdField_b_of_type_Boolean = true;
-        } while ((((ajsx)localObject2).a() == null) || (!((ajsx)localObject2).c()) || (((ajsx)localObject2).a()));
-        ((ajsx)localObject2).a((View)localObject1);
-        return;
-        ajsx.a().b(this);
-        this.jdField_b_of_type_Boolean = false;
-        return;
-        localObject1 = ajsx.a();
-      } while (!((ajto)localObject1).c());
-      ((ajto)localObject1).d();
-      return;
-      a((View)localObject1, (Fragment)localObject2);
-      return;
-      localObject1 = ajsx.a();
-    } while ((((ajsx)localObject1).a() == null) || (!((ajsx)localObject1).c()) || (!((ajsx)localObject1).a()));
-    ((ajsx)localObject1).b();
-  }
-  
-  public void a(@NonNull ajto paramajto)
-  {
-    boolean bool = paramajto.c();
-    paramajto = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramajto instanceof ChatHistoryC2CAllFragment)) {
-      paramajto = ((ChatHistoryC2CAllFragment)paramajto).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-    }
-    for (;;)
-    {
-      if (paramajto != null) {
-        paramajto.requestDisallowInterceptTouchEvent(bool);
-      }
-      return;
-      if ((paramajto instanceof ChatHistoryTroopAllFragment)) {
-        paramajto = ((ChatHistoryTroopAllFragment)paramajto).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-      } else if ((paramajto instanceof ChatHistoryBubbleListForTroopFragment)) {
-        paramajto = ((ChatHistoryBubbleListForTroopFragment)paramajto).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-      } else {
-        paramajto = null;
-      }
-    }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    boolean bool = true;
-    ajsx localajsx = ajsx.a();
-    if ((!localajsx.c()) || (!this.jdField_b_of_type_Boolean)) {}
-    int i;
-    label102:
-    do
-    {
-      do
-      {
-        int j;
-        int k;
-        do
-        {
-          return;
-          i = paramMotionEvent.getAction();
-          j = (int)paramMotionEvent.getRawX();
-          k = (int)paramMotionEvent.getRawY();
-          if (i == 0)
+          this.a.b();
+          if (this.a.jdField_a_of_type_Xki != null)
           {
-            if (!localajsx.a(j, k))
-            {
-              this.jdField_a_of_type_Boolean = bool;
-              this.jdField_a_of_type_Long = localajsx.jdField_a_of_type_Long;
-              if (!this.jdField_a_of_type_Boolean) {
-                break label102;
-              }
-              this.d = j;
-            }
-            for (this.e = k;; this.e = -1)
-            {
-              this.c = 0;
-              return;
-              bool = false;
-              break;
-              this.d = -1;
-            }
+            this.a.jdField_a_of_type_Xki.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+            this.a.jdField_a_of_type_Xki.notifyDataSetChanged();
           }
-          if (i != 2) {
+          paramMessage = this.a.jdField_a_of_type_Ajti.a();
+          if (this.a.jdField_a_of_type_Xki != null) {
+            this.a.jdField_a_of_type_Xki.a(paramMessage);
+          }
+          if (paramMessage == null) {
             break;
           }
-        } while ((!this.jdField_a_of_type_Boolean) || (Math.pow(this.d - j, 2.0D) + Math.pow(this.e - k, 2.0D) <= jdField_b_of_type_Int));
-        this.c = 2;
+          if (paramMessage.jdField_b_of_type_Int == 0)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+            return;
+          }
+          if (paramMessage.jdField_b_of_type_Int == 1)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramMessage.g))
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+            return;
+          }
+        } while (!this.a.jdField_a_of_type_Boolean);
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.a(paramMessage);
+        return;
+        if (!this.a.jdField_a_of_type_Ajti.c())
+        {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+          return;
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+        return;
+        this.a.b();
+        paramMessage = this.a.jdField_a_of_type_Ajti.a();
+        if (paramMessage != null) {
+          break;
+        }
       } while (!QLog.isColorLevel());
-      QLog.d("ChatPieSelectableHelper", 0, "detect scrolling.");
+      QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music is NULL!!!!!");
       return;
-    } while (((i != 1) && (i != 3)) || (!this.jdField_a_of_type_Boolean));
-    if (this.c == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatPieSelectableHelper", 0, "detect taping.");
+      if (paramMessage.g == null)
+      {
+        QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music.download_path is NULL!!!!!");
+        return;
       }
-      long l = localajsx.jdField_a_of_type_Long;
-      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
-        break label281;
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
       }
-      if (this.jdField_a_of_type_Long == l) {
-        localajsx.d();
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
       }
-    }
-    for (;;)
-    {
-      this.c = 1;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = -1L;
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ajti.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      MusicHorizontalSeekView.a((this.a.a() + 500) / 1000, this.a.getContext().getResources().getDisplayMetrics().widthPixels - bdoo.a(8.0F));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
       return;
-      label281:
-      localajsx.d();
+    case 11: 
+      this.a.b();
+      paramMessage = this.a.jdField_a_of_type_Xkl;
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
+      }
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
+      }
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ajti.a(paramMessage);
+      this.a.jdField_a_of_type_Ajti.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
+      return;
+    case 3: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ajti.a(xkl.jdField_a_of_type_Xkl);
+      this.a.jdField_a_of_type_Ajti.a(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131708255));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    case 6: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ajti.a(xkl.jdField_b_of_type_Xkl);
+      this.a.jdField_a_of_type_Ajti.a(1);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131708254));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      P2VEditMusicDialog.a(this.a);
+      return;
+    case 7: 
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(this.a.getContext(), paramMessage, 0).a();
+      return;
+    case 8: 
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setPlayedPosition(this.a.jdField_b_of_type_Int);
+      return;
+    case 9: 
+      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg1);
+      return;
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 4, 8, 10, 14, 12, 13 };
+    paramMessage = (xkl)paramMessage.obj;
+    this.a.b(paramMessage);
   }
 }
 

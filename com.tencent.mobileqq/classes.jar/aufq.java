@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class aufq
-  implements DialogInterface.OnClickListener
+  implements aufz<Pair<String, Integer>, EmoticonPackage>
 {
-  aufq(aufi paramaufi) {}
+  aufq(aufn paramaufn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    paramDialogInterface.dismiss();
+    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 

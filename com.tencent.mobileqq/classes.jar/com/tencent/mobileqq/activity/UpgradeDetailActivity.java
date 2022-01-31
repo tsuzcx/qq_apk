@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aegg;
-import aegh;
-import aegi;
-import alnq;
-import alpo;
-import amlp;
-import amls;
-import amlu;
+import aekv;
+import aekw;
+import aekx;
+import alsf;
+import alud;
+import amqe;
+import amqh;
+import amqj;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -26,13 +26,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import atck;
-import azmj;
-import bdcd;
-import bdfq;
-import bfko;
-import bhoe;
-import bizm;
+import atgt;
+import azqs;
+import bdgm;
+import bdjz;
+import bfox;
+import bhsl;
+import bjdt;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
@@ -45,13 +45,13 @@ import protocol.KQQConfig.UpgradeInfo;
 @SuppressLint({"SetJavaScriptEnabled"})
 public class UpgradeDetailActivity
   extends IphoneTitleBarActivity
-  implements amls, Handler.Callback
+  implements amqh, Handler.Callback
 {
   private long jdField_a_of_type_Long;
   private View jdField_a_of_type_AndroidViewView;
   public ProgressBar a;
-  private atck jdField_a_of_type_Atck;
-  bhoe jdField_a_of_type_Bhoe;
+  private atgt jdField_a_of_type_Atgt;
+  bhsl jdField_a_of_type_Bhsl;
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
   public WebView a;
   private String jdField_a_of_type_JavaLangString;
@@ -200,19 +200,19 @@ public class UpgradeDetailActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378438);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378492);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131378440));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131378494));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
-    localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + bizm.a());
+    localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + bjdt.a());
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setGeolocationEnabled(true);
     localWebSettings.setCacheMode(2);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new aegi(this, null));
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new aegh(this, null));
-    this.jdField_a_of_type_Atck = new atck();
-    this.jdField_a_of_type_Atck.a(new UpgradeDetailActivity.JsCover(this), "qqupgrade");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131378441));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new aekx(this, null));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new aekw(this, null));
+    this.jdField_a_of_type_Atgt = new atgt();
+    this.jdField_a_of_type_Atgt.a(new UpgradeDetailActivity.JsCover(this), "qqupgrade");
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131378495));
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -231,55 +231,55 @@ public class UpgradeDetailActivity
             return;
             if (paramInt2 == 1)
             {
-              azmj.b(null, "dc00898", "", "", "0X800AB96", "0X800AB96", 0, 0, "", "", "", "");
+              azqs.b(null, "dc00898", "", "", "0X800AB96", "0X800AB96", 0, 0, "", "", "", "");
               return;
             }
             if (paramInt2 == 2)
             {
-              azmj.b(null, "dc00898", "", "", "0X800AB97", "0X800AB97", 0, 0, "", "", "", "");
+              azqs.b(null, "dc00898", "", "", "0X800AB97", "0X800AB97", 0, 0, "", "", "", "");
               return;
             }
           } while (paramInt2 != 3);
-          azmj.b(null, "dc00898", "", "", "0X800AB98", "0X800AB98", 0, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800AB98", "0X800AB98", 0, 0, "", "", "", "");
           return;
           if (paramInt2 == 1)
           {
-            azmj.b(null, "dc00898", "", "", "0X800AB99", "0X800AB99", 0, 0, "", "", "", "");
+            azqs.b(null, "dc00898", "", "", "0X800AB99", "0X800AB99", 0, 0, "", "", "", "");
             return;
           }
           if (paramInt2 == 2)
           {
-            azmj.b(null, "dc00898", "", "", "0X800AB9A", "0X800AB9A", 0, 0, "", "", "", "");
+            azqs.b(null, "dc00898", "", "", "0X800AB9A", "0X800AB9A", 0, 0, "", "", "", "");
             return;
           }
         } while (paramInt2 != 3);
-        azmj.b(null, "dc00898", "", "", "0X800AB9B", "0X800AB9B", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800AB9B", "0X800AB9B", 0, 0, "", "", "", "");
         return;
         if (paramInt2 == 1)
         {
-          azmj.b(null, "dc00898", "", "", "0X800AB9C", "0X800AB9C", 0, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800AB9C", "0X800AB9C", 0, 0, "", "", "", "");
           return;
         }
         if (paramInt2 == 2)
         {
-          azmj.b(null, "dc00898", "", "", "0X800AB9D", "0X800AB9D", 0, 0, "", "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800AB9D", "0X800AB9D", 0, 0, "", "", "", "");
           return;
         }
       } while (paramInt2 != 3);
-      azmj.b(null, "dc00898", "", "", "0X800AB9E", "0X800AB9E", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800AB9E", "0X800AB9E", 0, 0, "", "", "", "");
       return;
       if (paramInt2 == 1)
       {
-        azmj.b(null, "dc00898", "", "", "0X800AB9F", "0X800AB9F", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800AB9F", "0X800AB9F", 0, 0, "", "", "", "");
         return;
       }
       if (paramInt2 == 2)
       {
-        azmj.b(null, "dc00898", "", "", "0X800ABA0", "0X800ABA0", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800ABA0", "0X800ABA0", 0, 0, "", "", "", "");
         return;
       }
     } while (paramInt2 != 3);
-    azmj.b(null, "dc00898", "", "", "0X800ABA1", "0X800ABA1", 0, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800ABA1", "0X800ABA1", 0, 0, "", "", "", "");
   }
   
   public static void a(Activity paramActivity, UpgradeDetailWrapper paramUpgradeDetailWrapper, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -449,7 +449,7 @@ public class UpgradeDetailActivity
       for (str1 = "null";; str1 = "iIncrementUpgrade==1")
       {
         QLog.d("UpgradeDetailActivity", 2, str1);
-        amlp.a().b(false);
+        amqe.a().b(false);
         return;
       }
     }
@@ -460,35 +460,35 @@ public class UpgradeDetailActivity
     if (i != 0)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_Bhoe.obtainMessage(100, 0, 0).sendToTarget();
+        this.jdField_a_of_type_Bhsl.obtainMessage(100, 0, 0).sendToTarget();
       }
-      localObject = bdcd.a(this, 230);
-      aegg localaegg = new aegg(this, i);
+      localObject = bdgm.a(this, 230);
+      aekv localaekv = new aekv(this, i);
       str1 = "";
       switch (i)
       {
       }
       for (;;)
       {
-        String str2 = getString(2131691717, new Object[] { str1 });
-        str1 = getString(2131691715, new Object[] { str1 });
-        ((bdfq)localObject).setMessage(str2);
-        ((bdfq)localObject).setTitle(2131691719);
-        ((bdfq)localObject).setNegativeButton(2131691714, localaegg);
-        ((bdfq)localObject).setPositiveButton(str1, getResources().getColor(2131165332), localaegg);
-        ((bdfq)localObject).show();
+        String str2 = getString(2131691718, new Object[] { str1 });
+        str1 = getString(2131691716, new Object[] { str1 });
+        ((bdjz)localObject).setMessage(str2);
+        ((bdjz)localObject).setTitle(2131691720);
+        ((bdjz)localObject).setNegativeButton(2131691715, localaekv);
+        ((bdjz)localObject).setPositiveButton(str1, getResources().getColor(2131165332), localaekv);
+        ((bdjz)localObject).show();
         a(i, 1);
         return;
+        str1 = getString(2131691722);
+        continue;
         str1 = getString(2131691721);
         continue;
-        str1 = getString(2131691720);
+        str1 = getString(2131691719);
         continue;
-        str1 = getString(2131691718);
-        continue;
-        str1 = getString(2131691716);
+        str1 = getString(2131691717);
       }
     }
-    amlp.a().b(false);
+    amqe.a().b(false);
   }
   
   void a(int paramInt)
@@ -502,10 +502,10 @@ public class UpgradeDetailActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:onDownloadStateChanged(" + paramInt + ")");
   }
   
-  public void a(int paramInt, amlp paramamlp)
+  public void a(int paramInt, amqe paramamqe)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bhoe.obtainMessage(100, paramInt, 0).sendToTarget();
+      this.jdField_a_of_type_Bhsl.obtainMessage(100, paramInt, 0).sendToTarget();
     }
   }
   
@@ -550,10 +550,10 @@ public class UpgradeDetailActivity
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bhoe != null)
+      if (this.jdField_a_of_type_Bhsl != null)
       {
-        this.jdField_a_of_type_Bhoe.removeMessages(100);
-        this.jdField_a_of_type_Bhoe.removeMessages(101);
+        this.jdField_a_of_type_Bhsl.removeMessages(100);
+        this.jdField_a_of_type_Bhsl.removeMessages(101);
       }
       if (this.jdField_a_of_type_ComTencentSmttSdkWebView == null) {}
     }
@@ -605,34 +605,34 @@ public class UpgradeDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = amlp.a().a();
+    paramBundle = amqe.a().a();
     if ((paramBundle == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType <= 0))
     {
       finish();
       return;
     }
-    super.setContentView(2131562773);
+    super.setContentView(2131562791);
     removeWebViewLayerType();
     Intent localIntent = getIntent();
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = ((UpgradeDetailWrapper)localIntent.getParcelableExtra("detail_wrapper"));
     this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("is_anim", true);
-    amlp.a().a(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amlu != null)
+    amqe.a().a(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amqj != null)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amlu.jdField_b_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amlu.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amlu.jdField_a_of_type_Long;
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amqj.jdField_b_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amqj.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_Amqj.jdField_a_of_type_Long;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 4)) {
       this.jdField_a_of_type_Long = Math.min(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.patchsize);
     }
-    String str1 = alpo.a(2131716304);
+    String str1 = alud.a(2131716316);
     paramBundle = null;
     String str2;
     if (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)
     {
       paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL;
-      str2 = "fontSetting=" + alnq.a();
+      str2 = "fontSetting=" + alsf.a();
       if (!paramBundle.endsWith("?")) {
         break label332;
       }
@@ -640,9 +640,9 @@ public class UpgradeDetailActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhoe = new bhoe(this);
+      this.jdField_a_of_type_Bhsl = new bhsl(this);
       if (localIntent.getBooleanExtra("download_right_now", false)) {
-        this.jdField_a_of_type_Bhoe.sendEmptyMessageAtTime(101, 1500L);
+        this.jdField_a_of_type_Bhsl.sendEmptyMessageAtTime(101, 1500L);
       }
       b(str1);
       a();
@@ -665,10 +665,10 @@ public class UpgradeDetailActivity
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bhoe != null)
+      if (this.jdField_a_of_type_Bhsl != null)
       {
-        this.jdField_a_of_type_Bhoe.removeMessages(100);
-        this.jdField_a_of_type_Bhoe.removeMessages(101);
+        this.jdField_a_of_type_Bhsl.removeMessages(100);
+        this.jdField_a_of_type_Bhsl.removeMessages(101);
       }
       if (this.jdField_a_of_type_ComTencentSmttSdkWebView == null) {}
     }
@@ -676,7 +676,7 @@ public class UpgradeDetailActivity
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:onDestroy()");
       label54:
-      amlp.a().b(this);
+      amqe.a().b(this);
       super.onDestroy();
       return;
     }
@@ -689,7 +689,7 @@ public class UpgradeDetailActivity
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Atck.a("qqupgrade");
+    this.jdField_a_of_type_Atgt.a("qqupgrade");
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
@@ -719,11 +719,11 @@ public class UpgradeDetailActivity
   public void onResume()
   {
     super.onResume();
-    bfko.a().a(this);
+    bfox.a().a(this);
     try
     {
       if (this.jdField_a_of_type_Boolean) {
-        a(amlp.a().a());
+        a(amqe.a().a());
       }
       return;
     }

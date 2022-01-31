@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajaf;
+import ajeu;
 import android.text.TextUtils;
 import java.io.Serializable;
 
@@ -38,7 +38,7 @@ public class PreloadManager$PathResult
     if ((TextUtils.isEmpty(this.filePath)) || (TextUtils.isEmpty(this.folderPath))) {
       return false;
     }
-    ajaf.a(this.folderPath);
+    ajeu.a(this.folderPath);
     return PreloadResource.unzipAtomically(this.filePath, this.folderPath);
   }
   

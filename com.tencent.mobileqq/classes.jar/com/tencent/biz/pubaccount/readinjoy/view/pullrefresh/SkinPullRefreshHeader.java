@@ -17,11 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import yst;
+import yxi;
 
 public class SkinPullRefreshHeader
   extends RelativeLayout
-  implements yst
+  implements yxi
 {
   int jdField_a_of_type_Int = Color.parseColor("#f7f7f7");
   public long a;
@@ -108,11 +108,11 @@ public class SkinPullRefreshHeader
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
-      localDrawable = getResources().getDrawable(2130848955);
+      localDrawable = getResources().getDrawable(2130849028);
       continue;
-      localDrawable = getResources().getDrawable(2130848953);
+      localDrawable = getResources().getDrawable(2130849026);
       continue;
-      localDrawable = getResources().getDrawable(2130848954);
+      localDrawable = getResources().getDrawable(2130849027);
     }
   }
   
@@ -152,7 +152,7 @@ public class SkinPullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void aw_()
+  public void at_()
   {
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
     {
@@ -163,7 +163,7 @@ public class SkinPullRefreshHeader
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720330);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720342);
   }
   
   public void c(long paramLong)
@@ -177,12 +177,12 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364770));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375537));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375538));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375536));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375533);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131375539);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364771));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375588));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375589));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375587));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375584);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131375590);
     c(0L);
   }
   

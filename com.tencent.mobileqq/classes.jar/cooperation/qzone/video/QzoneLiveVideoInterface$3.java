@@ -1,13 +1,13 @@
 package cooperation.qzone.video;
 
-import befq;
-import bjwd;
+import bejz;
+import bkak;
 import com.tencent.qphone.base.util.QLog;
 
 final class QzoneLiveVideoInterface$3
   implements Runnable
 {
-  QzoneLiveVideoInterface$3(bjwd parambjwd) {}
+  QzoneLiveVideoInterface$3(bkak parambkak) {}
   
   public void run()
   {
@@ -21,10 +21,10 @@ final class QzoneLiveVideoInterface$3
         if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
           break;
         }
-        if (!befq.a())
+        if (!bejz.a())
         {
           long l = System.currentTimeMillis();
-          befq.b();
+          bejz.b();
           QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
           if (this.a == null) {
             break;

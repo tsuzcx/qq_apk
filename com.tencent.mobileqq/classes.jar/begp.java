@@ -1,20 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class begp
-  implements begr
+  extends ampt
 {
-  public begp(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
-  
-  public void a(String paramString)
+  public begp(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

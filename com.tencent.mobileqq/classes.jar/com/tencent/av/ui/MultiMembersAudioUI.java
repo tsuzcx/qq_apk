@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
@@ -48,7 +48,7 @@ public class MultiMembersAudioUI
   mhl jdField_a_of_type_Mhl;
   public muo a;
   public boolean a;
-  final int[] jdField_a_of_type_ArrayOfInt = { 2131370116, 2131370117, 2131370118, 2131370119, 2131370120, 2131370121, 2131370122, 2131370123 };
+  final int[] jdField_a_of_type_ArrayOfInt = { 2131370135, 2131370136, 2131370137, 2131370138, 2131370139, 2131370140, 2131370141, 2131370142 };
   public int b;
   public boolean b;
   
@@ -261,8 +261,8 @@ public class MultiMembersAudioUI
   public mhp a(View paramView)
   {
     mhp localmhp = new mhp();
-    localmhp.d = ((ImageView)paramView.findViewById(2131372630));
-    localmhp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372646));
+    localmhp.d = ((ImageView)paramView.findViewById(2131372656));
+    localmhp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372672));
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().E == 7) {
       localmhp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     }
@@ -279,20 +279,20 @@ public class MultiMembersAudioUI
     {
       if (bool)
       {
-        localmhp.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372649));
-        int i = aekt.a(15.0F, getResources());
+        localmhp.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372675));
+        int i = aepi.a(15.0F, getResources());
         GradientDrawable localGradientDrawable = new GradientDrawable();
         localGradientDrawable.setShape(1);
         localGradientDrawable.setColor(Color.parseColor("#4C000000"));
         localGradientDrawable.setSize(i, i);
         localmhp.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(localGradientDrawable);
       }
-      localmhp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372648));
-      localmhp.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372636));
-      localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372632));
-      localmhp.e = ((ImageView)paramView.findViewById(2131372645));
-      localmhp.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372783));
-      localmhp.f = ((ImageView)paramView.findViewById(2131372631));
+      localmhp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372674));
+      localmhp.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372662));
+      localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372658));
+      localmhp.e = ((ImageView)paramView.findViewById(2131372671));
+      localmhp.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372809));
+      localmhp.f = ((ImageView)paramView.findViewById(2131372657));
       return localmhp;
       label261:
       localmhp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#445a6c"));
@@ -482,11 +482,11 @@ public class MultiMembersAudioUI
                 ((mhp)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
                 a(((mhp)localObject).jdField_b_of_type_AndroidWidgetImageView, 8);
                 break label332;
-                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841555);
+                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841568);
                 continue;
-                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841559);
+                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841572);
                 continue;
-                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841557);
+                ((mhp)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841570);
               }
             }
           }
@@ -510,16 +510,16 @@ public class MultiMembersAudioUI
     do
     {
       return;
-      localView1 = paramView.findViewById(2131364486);
-      localView2 = paramView.findViewById(2131364487);
-      localView3 = paramView.findViewById(2131370116);
-      localView4 = paramView.findViewById(2131370117);
-      localView5 = paramView.findViewById(2131370118);
-      localView6 = paramView.findViewById(2131370119);
-      localView7 = paramView.findViewById(2131370120);
-      localView8 = paramView.findViewById(2131370121);
-      localView9 = paramView.findViewById(2131370122);
-      paramView = paramView.findViewById(2131370123);
+      localView1 = paramView.findViewById(2131364488);
+      localView2 = paramView.findViewById(2131364489);
+      localView3 = paramView.findViewById(2131370135);
+      localView4 = paramView.findViewById(2131370136);
+      localView5 = paramView.findViewById(2131370137);
+      localView6 = paramView.findViewById(2131370138);
+      localView7 = paramView.findViewById(2131370139);
+      localView8 = paramView.findViewById(2131370140);
+      localView9 = paramView.findViewById(2131370141);
+      paramView = paramView.findViewById(2131370142);
     } while ((localView1 == null) || (localView2 == null) || (localView3 == null) || (localView4 == null) || (localView5 == null) || (localView6 == null) || (localView7 == null) || (localView8 == null) || (localView9 == null) || (paramView == null));
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView1.getLayoutParams();
     switch (paramInt)

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import bdbi;
+import bdfr;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -42,7 +42,7 @@ public class ArticleCommentModule
     }
     try
     {
-      paramString = new String(bdbi.decode(str, 0));
+      paramString = new String(bdfr.decode(str, 0));
       localObject = paramString;
       QLog.d("ArticleCommentModule", 2, "buildFeedsOutsideComment commentVal " + paramString);
       localObject = paramString;

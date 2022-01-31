@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azyu;
-import bcxb;
-import bdbt;
-import bdje;
+import badd;
+import bdbk;
+import bdgc;
+import bdnn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -38,13 +38,13 @@ class AccountManageActivity$14
         }
         if ((!AccountManageActivity.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) == null))
         {
-          bcxb localbcxb = bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
-          String str2 = bdbt.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          localObject2 = (azyu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
+          bdbk localbdbk = bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+          String str2 = bdgc.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          localObject2 = (badd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
           if (localObject2 == null) {
             break label398;
           }
-          localObject2 = ((azyu)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          localObject2 = ((badd)localObject2).a(this.jdField_a_of_type_JavaLangString);
           String str1;
           if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
           {
@@ -66,18 +66,18 @@ class AccountManageActivity$14
           }
           else
           {
-            str1 = bdbt.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            str1 = bdgc.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
           }
           if ((TextUtils.isEmpty(str1)) || (this.b.equals(str1)) || (str1.equals(this.jdField_a_of_type_JavaLangString))) {
             break label393;
           }
-          if ((localbcxb instanceof bcxb)) {
-            ((bcxb)localbcxb).a(false);
+          if ((localbdbk instanceof bdbk)) {
+            ((bdbk)localbdbk).a(false);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), bdje.e(this.jdField_a_of_type_JavaLangString), str1 }));
+            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), bdnn.e(this.jdField_a_of_type_JavaLangString), str1 }));
           }
-          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localbcxb));
+          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localbdbk));
           return;
         }
       }
@@ -87,7 +87,7 @@ class AccountManageActivity$14
         return;
       }
       Bitmap localBitmap = (Bitmap)AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+      bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
       Object localObject1 = null;
       continue;
       label372:

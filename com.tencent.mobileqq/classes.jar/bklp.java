@@ -1,8 +1,7 @@
-public class bklp
-  extends bmag
+final class bklp
+  implements bdpy
 {
-  public final bmab<bktt> a = new bmab();
-  public final bmab<bkph> b = new bmab();
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

@@ -1,53 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-class vwx
-  implements DialogInterface.OnClickListener
+public class vwx
+  implements vyl
 {
-  vwx(vwo paramvwo, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, wkv paramwkv) {}
+  public vwx(TextureVideoView paramTextureVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
     }
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
     }
-    this.jdField_a_of_type_Vwo.a("");
-    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
-    {
-      ((ukd)urr.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      paramDialogInterface = new uqw(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramDialogInterface.a == 0L) {
-        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
-      uht.a().dispatch(paramDialogInterface);
+    if ((this.a.jdField_a_of_type_Vyl != null) && (this.a.jdField_a_of_type_Vyl.a(paramvyi, paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
     }
-    for (;;)
+    this.a.getContext().getResources();
+    if (paramInt1 == 200) {}
+    for (paramInt1 = 17039381;; paramInt1 = 17039377)
     {
-      wta.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
-      {
-        ((xlf)vhj.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new vwy(this));
+      paramvyi = TextureVideoView.a(this.a);
+      if (paramvyi == null) {
+        break;
       }
-      else
-      {
-        this.jdField_a_of_type_Wkv.a(this.jdField_a_of_type_Vwo.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.jdField_a_of_type_Wkv.a(this.jdField_a_of_type_Vwo.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        new uyc().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      }
+      new AlertDialog.Builder(paramvyi).setMessage(paramInt1).setPositiveButton(17039376, new vwy(this)).setCancelable(false).show();
+      return true;
     }
   }
 }

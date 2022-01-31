@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmjf;
+import bmnr;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import wsv;
+import wxe;
 
 public class EditVideoPlayer$6
   implements Runnable
 {
-  public EditVideoPlayer$6(bmjf parambmjf, int paramInt) {}
+  public EditVideoPlayer$6(bmnr parambmnr, int paramInt) {}
   
   public void run()
   {
-    wsv.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.a));
+    wxe.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.a));
     VideoSourceHelper.nativeSetPlayMode(this.a);
   }
 }

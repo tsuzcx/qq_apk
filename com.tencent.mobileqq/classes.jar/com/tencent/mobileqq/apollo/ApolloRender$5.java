@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import akml;
-import albu;
-import bdcb;
+import akra;
+import algj;
+import bdgk;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$5
@@ -17,14 +17,14 @@ class ApolloRender$5
   
   public void run()
   {
-    if ((ApolloRender.getRenderViewByThreadId() instanceof akml)) {}
-    for (int i = ((akml)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
+    if ((ApolloRender.getRenderViewByThreadId() instanceof akra)) {}
+    for (int i = ((akra)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
     {
       int j = i;
       if (i == 0) {
-        j = (int)bdcb.j();
+        j = (int)bdgk.j();
       }
-      String str = albu.b(this.a, this.b, j);
+      String str = algj.b(this.a, this.b, j);
       ApolloRender.access$300(this.this$0).a(str);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ApolloRender", 2, new Object[] { "addOnCommonScript:", str });

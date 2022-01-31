@@ -10,8 +10,8 @@ public class lqh
   {
     if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372730, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372731, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372756, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372757, false);
     }
   }
   

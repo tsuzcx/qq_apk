@@ -1,14 +1,10 @@
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.view.View;
 
-public class bibb
-  extends ThreadLocal<Boolean>
+public abstract interface bibb
 {
-  public bibb(XRecyclerView paramXRecyclerView) {}
+  public abstract void a(View paramView);
   
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void b(View paramView);
 }
 
 

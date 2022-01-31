@@ -1,11 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
-
-public abstract interface vll
+class vll
+  implements vcd
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<vld> paramList);
+  vll(vlj paramvlj, vcc paramvcc) {}
   
-  public abstract void a(List<vle> paramList, boolean paramBoolean);
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Vcc.a();
+    this.jdField_a_of_type_Vlj.c();
+  }
 }
 
 

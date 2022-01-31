@@ -1,10 +1,15 @@
-public abstract interface azhq
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+
+class azhq
+  implements Camera.AutoFocusCallback
 {
-  public abstract void ae_();
+  azhq(azho paramazho, azht paramazht) {}
   
-  public abstract void f();
-  
-  public abstract void g();
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  {
+    this.jdField_a_of_type_Azht.a(paramBoolean, false);
+  }
 }
 
 

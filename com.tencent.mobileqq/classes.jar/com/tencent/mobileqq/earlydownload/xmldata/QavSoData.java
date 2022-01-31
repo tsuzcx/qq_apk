@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphj;
+import apls;
 
 public class QavSoData
   extends QavSoDataBase
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + aphj.e();
+    return "preload_" + apls.e();
   }
   
   public String getStrResName()
   {
-    return aphj.e();
+    return apls.e();
   }
 }
 

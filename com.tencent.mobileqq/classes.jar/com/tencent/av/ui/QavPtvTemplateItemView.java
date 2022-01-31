@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcuq;
+import bcyz;
 import com.tencent.av.funchat.AVListImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -68,19 +68,19 @@ public class QavPtvTemplateItemView
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559633, this);
-    int k = getResources().getColor(2131166901);
+    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559632, this);
+    int k = getResources().getColor(2131166903);
     int j;
     if (!this.jdField_a_of_type_Boolean) {
       j = getResources().getColor(2131165332);
     }
-    for (int i = 2130845529;; i = 2130845530)
+    for (int i = 2130845601;; i = 2130845602)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372771));
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131372608));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372604));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131372611));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372610));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372797));
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131372634));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372630));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131372637));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372636));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
       b(paramInt1, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(1.6F);
@@ -151,7 +151,7 @@ public class QavPtvTemplateItemView
       {
         parammkh.setText(parammkj);
         return;
-        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130849999);
+        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130850072);
         break;
         if (TextUtils.isEmpty(parammkj.b)) {
           break;
@@ -167,9 +167,9 @@ public class QavPtvTemplateItemView
         parammkh.mFailedDrawable = localGradientDrawable;
         parammkh.mLoadingDrawable = localGradientDrawable;
         parammkh = URLDrawable.getDrawable(parammkj.b, parammkh);
-        parammkh.setTag(bcuq.a(paramInt, paramInt));
+        parammkh.setTag(bcyz.a(paramInt, paramInt));
         if (paramBoolean2) {
-          parammkh.setDecodeHandler(bcuq.a);
+          parammkh.setDecodeHandler(bcyz.a);
         }
         this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammkh);
         break;
@@ -215,7 +215,7 @@ public class QavPtvTemplateItemView
   
   public void b(int paramInt1, int paramInt2)
   {
-    View localView = findViewById(2131372772);
+    View localView = findViewById(2131372798);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;

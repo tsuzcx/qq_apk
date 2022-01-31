@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aanp;
-import bfgi;
+import aase;
+import bfkr;
 
 final class GdtMvDownloadBtnManager$2
   implements Runnable
@@ -10,8 +10,8 @@ final class GdtMvDownloadBtnManager$2
   
   public void run()
   {
-    if (bfgi.a().a(this.a) == null) {
-      aanp.a("GdtMvDownloadBtnManager", "run: taskInfoFromSDK == null");
+    if (bfkr.a().a(this.a) == null) {
+      aase.a("GdtMvDownloadBtnManager", "run: taskInfoFromSDK == null");
     }
   }
 }

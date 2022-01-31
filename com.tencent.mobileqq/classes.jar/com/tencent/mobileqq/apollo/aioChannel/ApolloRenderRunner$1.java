@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import akne;
-import akni;
+import akrt;
+import akrx;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloRenderRunner$1
   extends IApolloRunnableTask
 {
-  public ApolloRenderRunner$1(akne paramakne, akni paramakni, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
+  public ApolloRenderRunner$1(akrt paramakrt, akrx paramakrx, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
   
   public String a()
   {
@@ -17,9 +17,9 @@ public class ApolloRenderRunner$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Akni != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_Akni.getRuntimeState()))
+    if ((this.jdField_a_of_type_Akrx != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_Akrx.getRuntimeState()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_Akni.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_Akrx.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
       if (QLog.isColorLevel()) {
         QLog.d("apollochannel_JsRenderRunner", 2, "apolloSurfaceView.queueEvent mNativeSSOReqMgr.callbackEngine cmd:" + this.jdField_a_of_type_JavaLangString);
       }

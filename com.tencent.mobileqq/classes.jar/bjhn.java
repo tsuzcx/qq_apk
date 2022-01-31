@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.ViewGroup;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-public final class bjhn
-  implements Parcelable.Creator<BroadcastUrl>
+public abstract interface bjhn
+  extends bhtv
 {
-  public BroadcastUrl a(Parcel paramParcel)
-  {
-    return new BroadcastUrl(paramParcel);
-  }
+  public abstract void a();
   
-  public BroadcastUrl[] a(int paramInt)
-  {
-    return new BroadcastUrl[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Handler paramHandler);
+  
+  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

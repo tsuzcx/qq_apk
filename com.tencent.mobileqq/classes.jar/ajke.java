@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajke
-  implements DialogInterface.OnClickListener
+class ajke
+  implements View.OnTouchListener
 {
-  public ajke(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ajke(ajkd paramajkd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

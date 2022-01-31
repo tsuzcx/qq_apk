@@ -30,7 +30,7 @@ public class qqa
       ReadInJoyUgcSearchTopicFragment.a(this.a, false);
       QLog.d("ReadInJoyUgcSearchTopicFragment", 1, "handle0xc16CreateTopic, topicID:" + paramLong + "  topicUrl:" + paramString + " result:" + paramInt);
       return;
-      this.a.a(1, this.a.getString(2131718798));
+      this.a.a(1, this.a.getString(2131718810));
     }
   }
 }

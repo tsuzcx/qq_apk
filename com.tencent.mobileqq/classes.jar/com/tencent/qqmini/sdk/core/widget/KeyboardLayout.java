@@ -37,18 +37,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 2.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694342);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694344);
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840886);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840887);
     this.jdField_a_of_type_AndroidWidgetButton.setMinHeight(0);
     this.jdField_a_of_type_AndroidWidgetButton.setMinimumHeight(0);
     this.jdField_a_of_type_AndroidWidgetButton.setPadding(DisplayUtil.dip2px(getContext(), 10.0F), DisplayUtil.dip2px(getContext(), 5.0F), DisplayUtil.dip2px(getContext(), 10.0F), DisplayUtil.dip2px(getContext(), 5.0F));
     addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131370564);
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131370583);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.jdField_a_of_type_AndroidWidgetButton.getId());
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 4.0F);
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundResource(2130840889);
+    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundResource(2130840890);
     addView(this.jdField_a_of_type_AndroidWidgetEditText, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DisplayUtil.dip2px(getContext(), 5.0F), 0, DisplayUtil.dip2px(getContext(), 2.0F));
@@ -90,11 +90,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = getResources().getText(2131694342);
+          paramString = getResources().getText(2131694344);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = getResources().getText(2131694344);
+            paramString = getResources().getText(2131694346);
             this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -115,20 +115,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = getResources().getText(2131694343);
+              paramString = getResources().getText(2131694345);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = getResources().getText(2131694341);
+              paramString = getResources().getText(2131694343);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = getResources().getText(2131694340);
+            paramString = getResources().getText(2131694342);
             continue;
           }
           this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[0]);

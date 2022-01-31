@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class ReadInJoySearchHistoryEntity
-  extends awbv
+  extends awge
 {
   public int id;
   public String keyWord;

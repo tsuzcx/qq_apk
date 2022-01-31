@@ -1,430 +1,517 @@
-import android.graphics.RectF;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchDetail;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSkuItem;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.Rectangle;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyk
-  extends amwq
-  implements amws
+  implements Handler.Callback
 {
-  public static final String a;
-  public int a;
-  public long a;
-  public amyn a;
-  public amyq a;
-  public amyr[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = alpo.a(2131701100);
-  }
+  private int jdField_a_of_type_Int = -1;
+  public amya a;
+  public amyb a;
+  private amyc jdField_a_of_type_Amyc;
+  public amyd a;
+  public amzg a;
+  public amzj a;
+  public amzp a;
+  public amzs a;
+  private amzv jdField_a_of_type_Amzv = new amyp(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  public ServiceConnection a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RemoteArConfigManager");
+  public ARCommonConfigInfo a;
+  public ArConfigInfo a;
+  public ArEffectConfig a;
+  public boolean a;
+  volatile boolean b = false;
+  boolean c = false;
   
   public amyk()
   {
-    super(2, 0);
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentServiceConnection = new amyl(this);
+    this.jdField_a_of_type_Amzs = new amym(this);
+    this.jdField_a_of_type_Amzj = new amyn(this);
+    this.jdField_a_of_type_Amzp = new amyo(this);
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
   
-  public static amyn a(JDSearch.JdSearchRsp paramJdSearchRsp)
+  public ARCommonConfigInfo a()
   {
-    int j = -1;
-    float f2 = 0.0F;
-    amyn localamyn = new amyn();
-    int i;
     Object localObject1;
-    label57:
-    label106:
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    }
     Object localObject2;
-    label132:
-    label158:
-    float f1;
-    label212:
-    label243:
-    amym localamym;
-    if (paramJdSearchRsp.jd_search_errorcode.has())
-    {
-      i = paramJdSearchRsp.jd_search_errorcode.get();
-      localamyn.jdField_a_of_type_Int = i;
-      if (!paramJdSearchRsp.jd_search_errormsg.has()) {
-        break label633;
-      }
-      localObject1 = paramJdSearchRsp.jd_search_errormsg.get();
-      localamyn.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      if (!paramJdSearchRsp.jd_search_detail.has()) {
-        break label707;
-      }
-      localObject1 = (JDSearch.JdSearchDetail)paramJdSearchRsp.jd_search_detail.get();
-      if (!((JDSearch.JdSearchDetail)localObject1).errorcode.has()) {
-        break label640;
-      }
-      i = ((JDSearch.JdSearchDetail)localObject1).errorcode.get();
-      localamyn.jdField_b_of_type_Int = i;
-      if (!((JDSearch.JdSearchDetail)localObject1).errormsg.has()) {
-        break label645;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).errormsg.get();
-      localamyn.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_more_url.has()) {
-        break label651;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_more_url.get();
-      localamyn.d = paramJdSearchRsp;
-      if (((JDSearch.JdSearchDetail)localObject1).rectangle.has())
-      {
-        paramJdSearchRsp = (JDSearch.Rectangle)((JDSearch.JdSearchDetail)localObject1).rectangle.get();
-        localObject2 = localamyn.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.left.has()) {
-          break label657;
-        }
-        f1 = paramJdSearchRsp.left.get();
-        ((RectF)localObject2).left = f1;
-        localObject2 = localamyn.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.top.has()) {
-          break label662;
-        }
-        f1 = paramJdSearchRsp.top.get();
-        ((RectF)localObject2).top = f1;
-        localObject2 = localamyn.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.right.has()) {
-          break label667;
-        }
-        f1 = paramJdSearchRsp.right.get();
-        label274:
-        ((RectF)localObject2).right = f1;
-        localObject2 = localamyn.jdField_a_of_type_AndroidGraphicsRectF;
-        f1 = f2;
-        if (paramJdSearchRsp.bottom.has()) {
-          f1 = paramJdSearchRsp.bottom.get();
-        }
-        ((RectF)localObject2).bottom = f1;
-        i = j;
-        if (paramJdSearchRsp.is_user_rectangle.has()) {
-          i = paramJdSearchRsp.is_user_rectangle.get();
-        }
-        localamyn.c = i;
-      }
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_sku_item.has()) {
-        break label672;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_sku_item.get();
-      label360:
-      if ((paramJdSearchRsp != null) && (!paramJdSearchRsp.isEmpty())) {
-        localamyn.jdField_a_of_type_ArrayOfAmym = new amym[paramJdSearchRsp.size()];
-      }
-      if ((paramJdSearchRsp == null) || (paramJdSearchRsp.size() <= 0)) {
-        break label707;
-      }
-      localObject1 = paramJdSearchRsp.iterator();
-      i = 0;
-      label410:
-      if (!((Iterator)localObject1).hasNext()) {
-        break label707;
-      }
-      localObject2 = (JDSearch.JdSkuItem)((Iterator)localObject1).next();
-      localamyn.jdField_a_of_type_ArrayOfAmym[i] = new amym();
-      localamym = localamyn.jdField_a_of_type_ArrayOfAmym[i];
-      if (!((JDSearch.JdSkuItem)localObject2).detail_url.has()) {
-        break label677;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).detail_url.get();
-      label475:
-      localamym.jdField_a_of_type_JavaLangString = paramJdSearchRsp;
-      localamym = localamyn.jdField_a_of_type_ArrayOfAmym[i];
-      if (!((JDSearch.JdSkuItem)localObject2).image_url.has()) {
-        break label683;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).image_url.get();
-      label510:
-      localamym.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      localamym = localamyn.jdField_a_of_type_ArrayOfAmym[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_id.has()) {
-        break label689;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_id.get();
-      label545:
-      localamym.c = paramJdSearchRsp;
-      localamym = localamyn.jdField_a_of_type_ArrayOfAmym[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_name.has()) {
-        break label695;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_name.get();
-      label580:
-      localamym.d = paramJdSearchRsp;
-      localamym = localamyn.jdField_a_of_type_ArrayOfAmym[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_price.has()) {
-        break label701;
-      }
-    }
-    label640:
-    label645:
-    label651:
-    label657:
-    label662:
-    label667:
-    label672:
-    label677:
-    label683:
-    label689:
-    label695:
-    label701:
-    for (paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_price.get();; paramJdSearchRsp = "")
-    {
-      localamym.e = paramJdSearchRsp;
-      i += 1;
-      break label410;
-      i = -1;
-      break;
-      label633:
-      localObject1 = "";
-      break label57;
-      i = -1;
-      break label106;
-      paramJdSearchRsp = "";
-      break label132;
-      paramJdSearchRsp = "";
-      break label158;
-      f1 = 0.0F;
-      break label212;
-      f1 = 0.0F;
-      break label243;
-      f1 = 0.0F;
-      break label274;
-      paramJdSearchRsp = null;
-      break label360;
-      paramJdSearchRsp = "";
-      break label475;
-      paramJdSearchRsp = "";
-      break label510;
-      paramJdSearchRsp = "";
-      break label545;
-      paramJdSearchRsp = "";
-      break label580;
-    }
-    label707:
-    return localamyn;
-  }
-  
-  private amyp a()
-  {
-    boolean bool2 = false;
-    if (c())
-    {
-      amyp localamyp = new amyp();
-      amys localamys = a();
-      if (localamys == null) {
-        return null;
-      }
-      if (this.jdField_a_of_type_Amyq != null)
-      {
-        localamyp.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Amyq.jdField_a_of_type_Int, this.jdField_a_of_type_Amyq.c, this.jdField_a_of_type_Amyq.jdField_b_of_type_Int, this.jdField_a_of_type_Amyq.d);
-        if (!localamys.jdField_b_of_type_Boolean) {
-          break label127;
-        }
-        localamyp.jdField_a_of_type_JavaLangString = localamys.jdField_a_of_type_JavaLangString;
-        localamyp.jdField_a_of_type_Boolean = false;
-        localamyp.jdField_a_of_type_Double = localamys.jdField_a_of_type_Double;
-      }
-      for (;;)
-      {
-        return localamyp;
-        localamyp.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-        break;
-        label127:
-        localamyp.jdField_a_of_type_JavaLangString = localamys.jdField_a_of_type_Amyo.jdField_a_of_type_JavaLangString;
-        boolean bool1 = bool2;
-        if (localamys.jdField_a_of_type_ArrayOfByte != null)
-        {
-          bool1 = bool2;
-          if (localamys.jdField_a_of_type_ArrayOfByte.length > 20) {
-            bool1 = true;
-          }
-        }
-        localamyp.jdField_a_of_type_Boolean = bool1;
-        localamyp.jdField_a_of_type_Double = localamys.jdField_a_of_type_Double;
-        localamyp.jdField_a_of_type_ArrayOfByte = localamys.jdField_a_of_type_ArrayOfByte;
-        localamyp.jdField_b_of_type_JavaLangString = localamys.d;
-        localamyp.c = localamys.e;
-        localamyp.d = localamys.f;
-        localamyp.jdField_b_of_type_Boolean = localamys.jdField_a_of_type_Boolean;
-      }
-    }
-    return null;
-  }
-  
-  private amys a()
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (!c()) {}
     do
     {
       do
       {
-        return localObject2;
-        int i = 0;
-        while (i < this.jdField_a_of_type_ArrayOfAmyr.length)
+        return localObject1;
+        localObject2 = null;
+        localObject1 = null;
+      } while (this.jdField_a_of_type_Amzg == null);
+      try
+      {
+        localObject1 = this.jdField_a_of_type_Amzg.a();
+        localObject2 = localObject1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          int j = 0;
-          while ((this.jdField_a_of_type_ArrayOfAmyr[i].jdField_a_of_type_ArrayOfAmys != null) && (j < this.jdField_a_of_type_ArrayOfAmyr[i].jdField_a_of_type_ArrayOfAmys.length))
+          QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
+        }
+      }
+      localObject1 = localObject2;
+    } while (!QLog.isColorLevel());
+    QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject2 }));
+    return localObject2;
+  }
+  
+  public ArConfigInfo a()
+  {
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+    }
+    for (;;)
+    {
+      return localObject2;
+      localObject2 = null;
+      Object localObject1 = localObject2;
+      if (this.jdField_a_of_type_Amzg != null) {}
+      try
+      {
+        localObject1 = this.jdField_a_of_type_Amzg.a();
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|info=" + localObject1);
+        return localObject1;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
           {
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1;
-              if (this.jdField_a_of_type_ArrayOfAmyr[i].jdField_a_of_type_ArrayOfAmys[j].jdField_a_of_type_Double >= ((amys)localObject1).jdField_a_of_type_Double) {}
-            }
-            else
-            {
-              localObject2 = this.jdField_a_of_type_ArrayOfAmyr[i].jdField_a_of_type_ArrayOfAmys[i];
-            }
-            j += 1;
+            QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|RemoteException e= " + localRemoteException);
             localObject1 = localObject2;
           }
-          i += 1;
         }
-        localObject2 = localObject1;
-      } while (localObject1 != null);
-      localObject2 = localObject1;
-    } while (this.jdField_a_of_type_ArrayOfAmyr.length != 1);
-    localObject1 = new amys();
-    ((amys)localObject1).jdField_b_of_type_Boolean = true;
-    ((amys)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfAmyr[0].jdField_a_of_type_JavaLangString;
-    ((amys)localObject1).jdField_a_of_type_Double = this.jdField_a_of_type_ArrayOfAmyr[0].jdField_a_of_type_Double;
-    ((amys)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfAmyr[0].jdField_a_of_type_JavaLangString;
-    ((amys)localObject1).c = 0;
-    ((amys)localObject1).g = "";
-    return localObject1;
-  }
-  
-  public int a()
-  {
-    if (!a()) {
-      return -1;
-    }
-    if (c())
-    {
-      amys localamys = a();
-      if ((localamys != null) && (localamys.jdField_a_of_type_ArrayOfByte != null) && (localamys.jdField_a_of_type_ArrayOfByte.length > 20)) {
-        return 1;
       }
     }
-    return 0;
   }
   
-  public amyl a()
+  public ArEffectConfig a()
   {
-    amyl localamyl = new amyl();
-    localamyl.jdField_a_of_type_Boolean = true;
-    localamyl.jdField_a_of_type_Amyn = this.jdField_a_of_type_Amyn;
-    localamyl.jdField_a_of_type_Amyp = a();
-    localamyl.c = false;
-    return localamyl;
-  }
-  
-  public String a()
-  {
-    amys localamys = a();
-    if (localamys == null) {
-      return "";
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
     }
-    return localamys.g;
+    for (;;)
+    {
+      return localObject2;
+      Object localObject3 = null;
+      localObject2 = null;
+      if (this.jdField_a_of_type_Amzg == null) {
+        continue;
+      }
+      try
+      {
+        localObject1 = this.jdField_a_of_type_Amzg.a();
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|info=" + localObject1);
+        return localObject1;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        for (;;)
+        {
+          Object localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|RemoteException e= " + localRemoteException);
+            localObject1 = localObject3;
+          }
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      b();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if ((!this.b) || (this.jdField_a_of_type_AndroidContentContext != null)) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+      this.b = false;
+      this.jdField_a_of_type_AndroidContentContext = null;
+      this.jdField_a_of_type_Amya = null;
+      this.jdField_a_of_type_Amyb = null;
+      this.jdField_a_of_type_Amyc = null;
+      this.jdField_a_of_type_Amyd = null;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Amzg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources type " + paramInt);
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_Amzg.a(paramInt);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources|RemoteException e= " + localRemoteException);
+    }
+  }
+  
+  public void a(Context paramContext, amya paramamya, amyd paramamyd)
+  {
+    a(paramContext, false, paramamya, null, null, paramamyd);
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean, amya paramamya, amyb paramamyb, amyc paramamyc, amyd paramamyd)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramBoolean;
+    paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, ArConfigService.class);
+    this.jdField_a_of_type_AndroidContentContext.bindService(paramContext, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    this.b = true;
+    if (paramamya != null) {
+      this.jdField_a_of_type_Amya = paramamya;
+    }
+    if (paramamyb != null) {
+      this.jdField_a_of_type_Amyb = paramamyb;
+    }
+    this.jdField_a_of_type_Amyc = paramamyc;
+    this.jdField_a_of_type_Amyd = paramamyd;
   }
   
   public boolean a()
   {
-    return c();
-  }
-  
-  public boolean a(amyk paramamyk)
-  {
-    if (paramamyk == null) {}
-    amys localamys;
-    do
+    boolean bool2 = false;
+    boolean bool3 = false;
+    if (this.jdField_a_of_type_Amzg != null) {}
+    try
     {
-      return false;
-      paramamyk = paramamyk.a();
-      localamys = a();
-    } while ((paramamyk == null) || (localamys == null) || (!paramamyk.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localamys.jdField_a_of_type_JavaLangString)));
-    return true;
+      bool1 = this.jdField_a_of_type_Amzg.a();
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady " + bool1);
+        bool2 = bool1;
+      }
+      return bool2;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        boolean bool1 = bool3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady|RemoteException e= " + localRemoteException);
+          bool1 = bool3;
+        }
+      }
+    }
   }
   
-  public byte[] a()
+  public void b()
   {
-    amyp localamyp = a();
-    if ((localamyp != null) && (localamyp.jdField_a_of_type_Boolean)) {
-      return localamyp.jdField_a_of_type_ArrayOfByte;
+    if (this.jdField_a_of_type_Amzg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
+      }
     }
-    return null;
+    try
+    {
+      this.jdField_a_of_type_Amzg.b();
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload|RemoteException e= " + localRemoteException);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onToolScannerActivityStateChanged state:" + paramInt + "  mConfigManager:" + this.jdField_a_of_type_Amzg);
+    }
+    if (this.jdField_a_of_type_Amzg != null) {
+      try
+      {
+        this.jdField_a_of_type_Amzg.c(paramInt);
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+        return;
+      }
+    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Amyn != null) && (this.jdField_a_of_type_Amyn.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Amyn.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_Amyn.jdField_a_of_type_ArrayOfAmym != null) && (this.jdField_a_of_type_Amyn.jdField_a_of_type_ArrayOfAmym.length > 0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Amzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Amzg.c();
+      return bool1;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Amzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Amzg.c();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.jdField_a_of_type_Amzg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource type " + paramInt);
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_Amzg.b(paramInt);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource|RemoteException e= " + localRemoteException);
+    }
   }
   
   public boolean c()
   {
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Int == 0)
+    boolean bool3 = false;
+    if (this.jdField_a_of_type_Amzg != null) {}
+    try
     {
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Int == 0)
+      bool1 = this.jdField_a_of_type_Amzg.b();
+      bool2 = bool1;
+      if (QLog.isColorLevel())
       {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfAmyr != null)
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady " + bool1);
+        bool2 = bool1;
+      }
+      return bool2;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        boolean bool1 = bool3;
+        if (QLog.isColorLevel())
         {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ArrayOfAmyr.length > 0)
-          {
-            bool1 = bool2;
-            if (!this.jdField_a_of_type_ArrayOfAmyr[0].jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString)) {
-              bool1 = true;
-            }
-          }
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady|RemoteException e= " + localRemoteException);
+          bool1 = bool3;
         }
       }
     }
-    return bool1;
   }
   
-  public boolean d()
+  public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    amys localamys = a();
-    if (localamys == null) {
-      return false;
-    }
-    if (localamys.c == 1) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      return bool;
-      bool = false;
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (c()) {
-      localStringBuilder.append("\n {migObjectClassifyResult:" + this.jdField_a_of_type_ArrayOfAmyr[0].toString() + "} \n");
-    }
-    if (b()) {
-      localStringBuilder.append("\n {jdSearchResult:" + this.jdField_a_of_type_Amyn.toString() + "}\n");
-    }
-    return localStringBuilder.toString();
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            for (;;)
+                            {
+                              return false;
+                              if (this.jdField_a_of_type_Amya != null)
+                              {
+                                this.jdField_a_of_type_Amya.a();
+                                return false;
+                                if (this.jdField_a_of_type_Amya != null)
+                                {
+                                  paramMessage = paramMessage.obj;
+                                  if ((paramMessage instanceof ArConfigInfo))
+                                  {
+                                    this.jdField_a_of_type_Amya.a((ArConfigInfo)paramMessage);
+                                    return false;
+                                    if (this.jdField_a_of_type_Amya != null)
+                                    {
+                                      paramMessage = paramMessage.obj;
+                                      if ((paramMessage instanceof ArEffectConfig))
+                                      {
+                                        this.jdField_a_of_type_Amya.a((ArEffectConfig)paramMessage);
+                                        return false;
+                                        if (this.jdField_a_of_type_Amya != null) {
+                                          try
+                                          {
+                                            if ((paramMessage.obj instanceof ARCommonConfigInfo))
+                                            {
+                                              this.jdField_a_of_type_Amya.a((ARCommonConfigInfo)paramMessage.obj);
+                                              return false;
+                                            }
+                                          }
+                                          catch (Exception paramMessage)
+                                          {
+                                            QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
+                                            return false;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          } while (this.jdField_a_of_type_Amya == null);
+                          this.jdField_a_of_type_Amya.b();
+                          this.jdField_a_of_type_Boolean = false;
+                          return false;
+                        } while (this.jdField_a_of_type_Amya == null);
+                        i = paramMessage.arg1;
+                        j = paramMessage.arg2;
+                        this.jdField_a_of_type_Amya.a(i, j);
+                        return false;
+                      } while ((this.jdField_a_of_type_Amya == null) || (!(paramMessage.obj instanceof Integer)));
+                      this.jdField_a_of_type_Amya.a(((Integer)paramMessage.obj).intValue());
+                      this.jdField_a_of_type_Boolean = false;
+                      return false;
+                    } while (this.jdField_a_of_type_Amyb == null);
+                    i = paramMessage.arg1;
+                    this.jdField_a_of_type_Amyb.k_(i);
+                    return false;
+                  } while (this.jdField_a_of_type_Amyb == null);
+                  i = paramMessage.arg1;
+                  j = paramMessage.arg2;
+                  this.jdField_a_of_type_Amyb.a(i, j);
+                  return false;
+                } while (this.jdField_a_of_type_Amyb == null);
+                i = paramMessage.arg1;
+                j = paramMessage.arg2;
+                this.jdField_a_of_type_Amyb.b(i, j);
+                return false;
+              } while (this.jdField_a_of_type_Amyc == null);
+              this.jdField_a_of_type_Amyc.c();
+              return false;
+            } while (this.jdField_a_of_type_Amyc == null);
+            this.jdField_a_of_type_Amyc.d();
+            return false;
+          } while (this.jdField_a_of_type_Amyc == null);
+          this.jdField_a_of_type_Amyc.b(paramMessage.arg1);
+          return false;
+        } while (this.jdField_a_of_type_Amyd == null);
+        i = paramMessage.arg1;
+        this.jdField_a_of_type_Amyd.a(i);
+        return false;
+      } while (this.jdField_a_of_type_Amyd == null);
+      i = paramMessage.arg1;
+      j = paramMessage.arg2;
+      this.jdField_a_of_type_Amyd.a(i, j);
+      return false;
+    } while (this.jdField_a_of_type_Amyd == null);
+    int i = paramMessage.arg1;
+    int j = paramMessage.arg2;
+    this.jdField_a_of_type_Amyd.b(i, j);
+    return false;
   }
 }
 

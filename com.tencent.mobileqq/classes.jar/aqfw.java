@@ -1,37 +1,53 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aqfw
-  implements Animation.AnimationListener
+public class aqfw
+  extends Handler
 {
-  aqfw(aqfv paramaqfv, aqgn paramaqgn1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, aqgn paramaqgn2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
+  public static int a;
+  public static int b = 2;
+  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aqfv.a).b(this.jdField_b_of_type_Aqgn, this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
+    jdField_a_of_type_Int = 1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public aqfw(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Aqgn.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == jdField_a_of_type_Int)
+    {
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
+      {
+        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
+        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
+      }
     }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Aqfv.jdField_b_of_type_Int;
-    double d1 = d2;
-    if (this.jdField_a_of_type_Boolean) {
-      d1 = 180.0D - d2;
-    }
-    this.jdField_a_of_type_Aqfv.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Aqgn.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
-    }
-    this.jdField_a_of_type_Aqfv.a(2, this.jdField_b_of_type_Boolean);
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramMessage.what != b);
+        paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (paramMessage == null);
+      ExtendFriendLimitChatMatchFragment.b(paramMessage);
+      paramMessage = paramMessage.getActivity();
+    } while (paramMessage == null);
+    paramMessage.finish();
   }
 }
 

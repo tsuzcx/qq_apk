@@ -1,99 +1,32 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class amtw
-  implements ServiceConnection
+  implements bdnp
 {
-  amtw(amtv paramamtv) {}
+  amtw(amtv paramamtv, AppInterface paramAppInterface, String paramString, amtx paramamtx) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(boolean paramBoolean, ArrayList<bdno> paramArrayList)
   {
-    this.a.jdField_a_of_type_Amur = amus.a(paramIBinder);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Amur);
-    }
-    if (this.a.jdField_a_of_type_Amur != null) {}
-    try
+    paramArrayList = (amud)paramArrayList.get(0);
+    if ((amtv.a(this.jdField_a_of_type_Amtv) != null) && (amtv.a(this.jdField_a_of_type_Amtv) == paramArrayList))
     {
-      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amvd);
-      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amuu);
-      this.a.jdField_a_of_type_Amur.a(amtv.a(this.a));
-      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amva);
-      if (amtv.a(this.a) != -1) {
-        this.a.jdField_a_of_type_Amur.c(amtv.a(this.a));
-      }
-      if (amtv.a(this.a) != null) {
-        amtv.a(this.a).sendEmptyMessage(0);
-      }
-      if (this.a.c)
+      QLog.w(this.jdField_a_of_type_Amtv.jdField_a_of_type_JavaLangString, 1, "异步加载config返回, bsuc[" + paramBoolean + "], TAG[" + paramArrayList.TAG + "], isEnableFromLocal[" + amtu.c() + "], config[" + paramArrayList.a + "]");
+      if (paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (amtv.a(this.a) != null))
-        {
-          paramComponentName = Message.obtain();
-          paramComponentName.what = 1;
-          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-          amtv.a(this.a).sendMessage(paramComponentName);
-        }
+        this.jdField_a_of_type_Amtv.a(paramArrayList.a);
+        this.jdField_a_of_type_Amtv.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (amtv.a(this.a) != null))
-      {
-        paramComponentName = Message.obtain();
-        paramComponentName.what = 2;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-        amtv.a(this.a).sendMessage(paramComponentName);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (amtv.a(this.a) != null))
-      {
-        paramComponentName = Message.obtain();
-        paramComponentName.what = 9;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-        amtv.a(this.a).sendMessage(paramComponentName);
+      amtv.a(this.jdField_a_of_type_Amtv, null);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Amtx != null) {
+        this.jdField_a_of_type_Amtx.a(this.jdField_a_of_type_Amtv.a());
       }
       return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
-        }
-      }
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (this.a.jdField_a_of_type_Amur != null) {}
-    try
-    {
-      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amvd);
-      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amuu);
-      this.a.jdField_a_of_type_Amur.b(amtv.a(this.a));
-      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amva);
-      this.a.jdField_a_of_type_Amur = null;
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
-        }
-      }
+      QLog.w(this.jdField_a_of_type_Amtv.jdField_a_of_type_JavaLangString, 1, "异步加载config返回[" + this.jdField_a_of_type_JavaLangString + "], 但原请求取消了");
     }
   }
 }

@@ -1,27 +1,86 @@
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.4.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import mqq.os.MqqHandler;
 
 public class acbg
   implements View.OnClickListener
 {
-  public acbg(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbg(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    if (paramView.getParent() == null) {}
-    do
+    if (!this.a.b) {
+      return;
+    }
+    paramView = this.a;
+    boolean bool;
+    label102:
+    int i;
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      do
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label214;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692682);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166983));
+      if (AccountManageActivity.a(this.a) != null)
       {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      azmj.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = 0;
+      label173:
+      if (i >= j) {
+        break label321;
+      }
+      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if ((paramView != null) && (paramView.getTag() != null)) {
+        break label274;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label173;
+      bool = false;
+      break;
+      label214:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131692017);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166911));
+      break label102;
+      label274:
+      paramView = paramView.findViewById(2131370980);
+      if (paramView != null)
+      {
+        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
+        paramView.setLayoutParams(localLayoutParams);
+      }
+    }
+    label321:
+    this.a.b();
+    this.a.a(this.a.jdField_a_of_type_Boolean);
+    this.a.b = false;
+    AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.4.1(this), 400L);
   }
 }
 

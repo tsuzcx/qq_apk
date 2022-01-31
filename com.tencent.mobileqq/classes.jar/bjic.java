@@ -1,15 +1,43 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class bjic
-  implements ModuleDownloadListener
+class bjic
+  implements ThreadPool.Job<Object>
 {
-  public void onDownloadCanceled(String paramString) {}
+  bjic(bjib parambjib, boolean paramBoolean) {}
   
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString) {}
+  public Object run(ThreadPool.JobContext paramJobContext)
+  {
+    paramJobContext.setMode(1);
+    paramJobContext = bjib.a(this.jdField_a_of_type_Bjib).a();
+    if (paramJobContext != null)
+    {
+      paramJobContext = paramJobContext.iterator();
+      while (paramJobContext.hasNext())
+      {
+        bjhz localbjhz = (bjhz)paramJobContext.next();
+        int j = localbjhz.a(this.jdField_a_of_type_Boolean);
+        String str = localbjhz.a();
+        int i = bjib.a(this.jdField_a_of_type_Bjib, str);
+        j = bjib.a(this.jdField_a_of_type_Bjib, j, i);
+        this.jdField_a_of_type_Bjib.a(i, j, str);
+        QLog.w("CacheManager", 1, "onLowStorage clear cache service:" + localbjhz + ": remain=" + j);
+      }
+      if (bjib.a(bjhx.p()))
+      {
+        bjhx.a(false);
+        if (bjib.a(bjhx.p()))
+        {
+          bjhx.a(true);
+          bjib.a(this.jdField_a_of_type_Bjib);
+        }
+      }
+    }
+    return null;
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import alpo;
-import amnv;
-import amsb;
-import amsq;
-import amwd;
+import alud;
+import amsk;
+import amwq;
+import amxf;
+import anam;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avqz;
-import bepp;
+import avvi;
+import bety;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +27,7 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bepp a;
+  private bety a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
@@ -44,10 +44,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = avqz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = avvi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = amwd.a();
+      boolean bool2 = anam.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -55,16 +55,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((amnv)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((amsk)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      amsq localamsq = new amsq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!amsb.a()) {
-        localamsq.a(localArrayList, (ArrayList)localObject, "arcloud");
+      amxf localamxf = new amxf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!amwq.a()) {
+        localamxf.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -82,7 +82,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((avqz)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+        localObject = ((avvi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -93,18 +93,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
-    this.b = ((TextView)findViewById(2131368659));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
+    this.b = ((TextView)findViewById(2131368670));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131377898);
+      View localView = findViewById(2131377952);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.c) {
-      findViewById(2131368613).setContentDescription(alpo.a(2131713887));
+      findViewById(2131368624).setContentDescription(alud.a(2131713899));
     }
   }
   
@@ -123,8 +123,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bepp != null) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if (this.jdField_a_of_type_Bety != null) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   

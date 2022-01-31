@@ -1,39 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import com.tencent.qqmini.sdk.runtime.widget.CanvasView;
 
-final class bhja
-  extends bhje
+public class bhja
 {
-  bhja(bhiz parambhiz)
-  {
-    super(null);
-  }
+  public float a;
+  public int a;
+  public float b;
+  public float c;
   
-  public boolean a(String paramString, bhjx parambhjx)
-  {
-    if (this.a.size() >= this.a.maxSize())
-    {
-      bhiz.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
-      }
-      return false;
-    }
-    if (parambhjx.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambhjx.toString() }));
-      }
-      this.a.put(paramString, parambhjx);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambhjx.toString() }));
-      }
-    }
-  }
+  public bhja(CanvasView paramCanvasView) {}
 }
 
 

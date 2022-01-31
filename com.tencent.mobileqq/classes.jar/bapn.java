@@ -1,20 +1,9 @@
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HttpContext;
+import android.os.Bundle;
 
-public class bapn
-  extends DefaultHttpClient
+public final class bapn
 {
-  public bapn(ClientConnectionManager paramClientConnectionManager, HttpParams paramHttpParams)
-  {
-    super(paramClientConnectionManager, null);
-  }
-  
-  public HttpContext createHttpContext()
-  {
-    return super.createHttpContext();
-  }
+  public final Bundle a = new Bundle();
+  public Object a;
 }
 
 

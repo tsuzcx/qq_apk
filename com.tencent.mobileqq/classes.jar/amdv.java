@@ -1,31 +1,34 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class amdv
-  implements bapw
+class amdv
+  extends nac
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  amdv(amdu paramamdu) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    do
+    if (paramInt == 0)
     {
-      do
+      paramBundle = new oidb_0x496.RspBody();
+      try
       {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        amdu.a(this.a, paramBundle);
+        amdu.b(this.a, paramBundle);
+        amdu.c(this.a, paramBundle);
         return;
-      } while (!(parambaqv instanceof baps));
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
-      {
-        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambaqw);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
+    }
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 

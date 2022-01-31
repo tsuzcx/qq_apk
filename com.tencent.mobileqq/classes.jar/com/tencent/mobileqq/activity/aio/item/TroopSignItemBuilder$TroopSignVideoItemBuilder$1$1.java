@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agau;
-import agav;
-import agba;
+import agfj;
+import agfk;
+import agfp;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class TroopSignItemBuilder$TroopSignVideoItemBuilder$1$1
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$1$1(agav paramagav) {}
+  public TroopSignItemBuilder$TroopSignVideoItemBuilder$1$1(agfk paramagfk) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_Agau.a != null) && (!this.a.jdField_a_of_type_Agau.a.am)) {
-      this.a.jdField_a_of_type_Agba.a.m();
+    if ((this.a.jdField_a_of_type_Agfj.a != null) && (!this.a.jdField_a_of_type_Agfj.a.am)) {
+      this.a.jdField_a_of_type_Agfp.a.m();
     }
   }
 }

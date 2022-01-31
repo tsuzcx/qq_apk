@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class MiniAppInfoEntity
-  extends awbv
+  extends awge
 {
   public static final String TAG = "MiniAppInfoEntity";
-  @awdj
+  @awhs
   public String appId;
   public byte[] appInfo;
   public long timeStamp;

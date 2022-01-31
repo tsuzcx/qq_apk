@@ -1,33 +1,38 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.qphone.base.util.QLog;
 
 public class anur
-  extends alox
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public anur(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public anur(DynamicAvatarView paramDynamicAvatarView) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onPlayRepeat(int paramInt)
   {
-    if ((paramBoolean) && (paramString != null))
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
+    }
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
+      return;
+    }
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
     {
-      String str = bdbt.c(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.c.getChildCount())
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
       {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof anva)) && (paramString.equals(((anva)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131371127);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Anug.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
         }
-        i += 1;
       }
     }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
 }
 

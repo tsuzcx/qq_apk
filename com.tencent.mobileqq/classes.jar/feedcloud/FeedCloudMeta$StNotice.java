@@ -17,13 +17,14 @@ public final class FeedCloudMeta$StNotice
   public final PBUInt64Field createTime = PBField.initUInt64(0L);
   public FeedCloudMeta.StFeed feed = new FeedCloudMeta.StFeed();
   public final PBStringField feedId = PBField.initString("");
+  public final PBStringField message = PBField.initString("");
   public final PBUInt32Field noticeType = PBField.initUInt32(0);
   public FeedCloudMeta.StOperation operation = new FeedCloudMeta.StOperation();
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro }, StNotice.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "" }, StNotice.class);
   }
 }
 

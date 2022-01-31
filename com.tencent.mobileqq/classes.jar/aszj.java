@@ -1,59 +1,62 @@
-import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
 class aszj
-  implements absf
+  implements BusinessObserver
 {
-  aszj(asyy paramasyy, WeakReference paramWeakReference, Bundle paramBundle) {}
+  aszj(aszh paramaszh, aszl paramaszl, String paramString) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131703956), 0).a();
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131703957), 0).a();
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    try
+    new Bundle();
+    paramBundle = paramBundle.getByteArray("data");
+    if (paramBundle == null)
     {
-      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
-      this.jdField_a_of_type_Asyy.b = paramJSONObject.optString("access_token");
-      this.jdField_a_of_type_Asyy.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
-      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Asyy.b);
-      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Asyy.jdField_a_of_type_JavaLangString);
-      asyy.a(this.jdField_a_of_type_Asyy);
-      this.jdField_a_of_type_Asyy.jdField_a_of_type_Aszs.a(this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Aszl.a(this.jdField_a_of_type_JavaLangString, false, -10002);
       return;
     }
-    catch (Throwable paramJSONObject)
+    FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
+    try
     {
-      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
+      localAuthorizeResponse.mergeFrom(paramBundle);
+      if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
+      {
+        if (localAuthorizeResponse.access_token.has()) {
+          this.jdField_a_of_type_Aszh.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
+        }
+        if (localAuthorizeResponse.openid.has()) {
+          this.jdField_a_of_type_Aszh.a.b = localAuthorizeResponse.openid.get();
+        }
+        if (localAuthorizeResponse.pay_token.has()) {
+          this.jdField_a_of_type_Aszh.a.c = localAuthorizeResponse.pay_token.get();
+        }
+        this.jdField_a_of_type_Aszh.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Aszl.a(this.jdField_a_of_type_JavaLangString, true, 0);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Aszl.a(this.jdField_a_of_type_JavaLangString, false, -10003);
+      paramBundle.printStackTrace();
+      return;
+    }
+    QLog.e("XProxy", 2, "获取票据失败");
+    try
+    {
+      this.jdField_a_of_type_Aszl.a(this.jdField_a_of_type_JavaLangString, false, Integer.parseInt(localAuthorizeResponse.ret.get()));
+      return;
+    }
+    catch (NumberFormatException paramBundle)
+    {
+      this.jdField_a_of_type_Aszl.a(this.jdField_a_of_type_JavaLangString, false, 0);
+      QLog.e("XProxy", 2, "获取票据错误码不为int");
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

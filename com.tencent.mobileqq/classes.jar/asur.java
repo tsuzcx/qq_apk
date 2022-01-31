@@ -1,18 +1,22 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 class asur
-  implements Callable<File>
+  implements Animation.AnimationListener
 {
   asur(asuq paramasuq) {}
   
-  public File a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (asuq.a(this.a).exists()) {
-      return asuq.a(this.a);
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
     }
-    return null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

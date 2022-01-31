@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aipw;
+import aiul;
 import android.text.TextUtils;
-import aova;
-import bdiv;
+import aozj;
+import bdne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -17,15 +17,15 @@ import org.json.JSONObject;
 public class ConfigServlet$12
   implements Runnable
 {
-  public ConfigServlet$12(aova paramaova, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$12(aozj paramaozj, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     int n = 0;
     QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    aipw localaipw = (aipw)localQQAppInterface.getManager(125);
+    aiul localaiul = (aiul)localQQAppInterface.getManager(125);
     HashSet localHashSet = new HashSet();
-    int j = bdiv.G(localQQAppInterface.getApp(), aova.a);
+    int j = bdne.G(localQQAppInterface.getApp(), aozj.a);
     int i = this.a.version.get();
     if (i != j) {
       if (i == j) {
@@ -99,8 +99,8 @@ public class ConfigServlet$12
       {
         try
         {
-          bdiv.o(localQQAppInterface.getApp(), aova.a, m);
-          localaipw.a(localHashSet);
+          bdne.o(localQQAppInterface.getApp(), aozj.a, m);
+          localaiul.a(localHashSet);
           i = 1;
         }
         catch (Exception localException1)
@@ -114,7 +114,7 @@ public class ConfigServlet$12
           continue;
         }
         if (i == 0) {
-          localaipw.f();
+          localaiul.f();
         }
         return;
         if (QLog.isColorLevel()) {

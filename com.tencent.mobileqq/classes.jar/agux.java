@@ -1,166 +1,42 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.1;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import mqq.os.MqqHandler;
+import mqq.observer.BusinessObserver;
 
-public class agux
-  implements agvy
+class agux
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int = 0;
-  private agwa jdField_a_of_type_Agwa;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
+  agux(agti paramagti) {}
   
-  public agux(QQAppInterface paramQQAppInterface, agwa paramagwa, Context paramContext, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Agwa = paramagwa;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public int a()
-  {
-    return 50;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561653, null);
-    TextView localTextView = (TextView)localView.findViewById(2131362407);
-    String str = (String)paramVarArgs[0];
-    int i = ((Integer)paramVarArgs[1]).intValue();
-    localTextView.setText(str);
-    localView.setOnClickListener(new aguy(this, i));
-    return localView;
-  }
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "check() : ");
+      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FraudTipsBar", 2, "mAntiFraudTips is showing or has shown");
-        return;
-      }
+    if (paramBoolean) {
       try
       {
-        l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (l == 0L) {
-          continue;
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
         }
-        if (!this.jdField_a_of_type_Boolean)
+        if (paramInt == 0)
         {
-          this.jdField_a_of_type_Boolean = true;
-          if (akiv.a().a(l))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("FraudTipsBar", 2, "uin cache is out of date, update it! ");
-            }
-            ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a("OidbSvc.0x476_146", (int)l, 146);
-          }
-        }
-        int i = akiv.a().a(l);
-        if (i == 0) {
-          continue;
-        }
-        bdat.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SecWarningCfg");
-        Object localObject = (Bundle)bdat.a().a("SecWarningCfg", "BannerWording", 146, i);
-        if (localObject != null)
-        {
-          localObject = ((Bundle)localObject).getString("BannerWording");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            continue;
-          }
-          if (!this.jdField_a_of_type_Agwa.a(this, new Object[] { localObject, Integer.valueOf(i) })) {
-            continue;
-          }
-          this.jdField_a_of_type_Int = 1;
-          azmj.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "banner", "display", i, 0, "", "", "", "");
-          Timer localTimer = new Timer();
-          FraudTipsBar.1 local1 = new FraudTipsBar.1(this);
-          localObject = (Bundle)bdat.a().a("SecWarningCfg", "BannerTTL", 146, i);
-          if (localObject != null)
-          {
-            localObject = ((Bundle)localObject).getString("BannerTTL");
-            try
-            {
-              i = Integer.parseInt((String)localObject);
-              l = i;
-            }
-            catch (Throwable localThrowable2)
-            {
-              for (;;)
-              {
-                localThrowable2.printStackTrace();
-                l = 15L;
-              }
-            }
-            l *= 1000L;
-            if (l <= 0L) {
-              continue;
-            }
-            localTimer.schedule(local1, l);
-            return;
-          }
+          this.a.ap = true;
+          this.a.bH();
+          this.a.bs();
+          return;
         }
       }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          localThrowable1.printStackTrace();
-          long l = 0L;
-          continue;
-          String str = "0";
-          continue;
-          str = null;
-        }
-      }
+      catch (Exception paramBundle) {}
     }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
+    this.a.B(2131695729);
+    this.a.bs();
   }
 }
 

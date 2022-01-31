@@ -2,16 +2,16 @@ package com.tencent.mobileqq.loginwelcome;
 
 import android.net.ConnectivityManager;
 import android.net.ConnectivityManager.NetworkCallback;
-import atrb;
+import atvk;
 
 public final class GateWayVerifyMobileHelper$4
   implements Runnable
 {
-  public GateWayVerifyMobileHelper$4(atrb paramatrb, ConnectivityManager paramConnectivityManager, ConnectivityManager.NetworkCallback paramNetworkCallback) {}
+  public GateWayVerifyMobileHelper$4(atvk paramatvk, ConnectivityManager paramConnectivityManager, ConnectivityManager.NetworkCallback paramNetworkCallback) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atrb.a(new Exception("change network to mobile timeout"));
+    this.jdField_a_of_type_Atvk.a(new Exception("change network to mobile timeout"));
     this.jdField_a_of_type_AndroidNetConnectivityManager.unregisterNetworkCallback(this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback);
   }
 }

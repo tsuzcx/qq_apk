@@ -73,7 +73,7 @@ public class lkm
           Object localObject1 = str.split("\\|");
           if ((localObject1 != null) && (localObject1.length >= 3))
           {
-            j = asqw.a(localObject1[0], 0);
+            j = asvf.a(localObject1[0], 0);
             localObject3 = localObject1[1];
             i = j;
           }
@@ -99,9 +99,9 @@ public class lkm
                   break label615;
                 }
                 i = j;
-                m = asqw.a(localObject4[0], 0);
+                m = asvf.a(localObject4[0], 0);
                 i = j;
-                n = asqw.a(localObject4[1], 0);
+                n = asvf.a(localObject4[1], 0);
                 label204:
                 if ((m <= 0) || (n <= 0)) {
                   break label623;
@@ -112,7 +112,7 @@ public class lkm
               }
             }
             i = j;
-            k = asqw.a(localObject1[2], 3);
+            k = asvf.a(localObject1[2], 3);
             i = j;
             label249:
             if (localArrayList.size() == 0)
@@ -137,7 +137,7 @@ public class lkm
           if ((localObject1 == null) || (localObject1.length != 1)) {
             continue;
           }
-          j = asqw.a(localObject1[0], 0);
+          j = asvf.a(localObject1[0], 0);
           i = j;
           QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
           k = i1;
@@ -164,7 +164,7 @@ public class lkm
           continue;
           if ((localException1 != null) && (localException1.length == 2))
           {
-            j = asqw.a(localException1[0], 0);
+            j = asvf.a(localException1[0], 0);
             localObject2 = localException1[1];
             i = j;
             if (!TextUtils.isEmpty((CharSequence)localObject2))
@@ -193,9 +193,9 @@ public class lkm
         if (localObject3.length >= 2)
         {
           i = j;
-          m = asqw.a(localObject3[0], 0);
+          m = asvf.a(localObject3[0], 0);
           i = j;
-          n = asqw.a(localObject3[1], 0);
+          n = asvf.a(localObject3[1], 0);
           if ((m <= 0) || (n <= 0)) {
             break label630;
           }

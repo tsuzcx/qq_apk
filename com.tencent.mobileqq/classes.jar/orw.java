@@ -1,5 +1,5 @@
 final class orw
-  implements bhvv
+  implements biac
 {
   public void a() {}
 }

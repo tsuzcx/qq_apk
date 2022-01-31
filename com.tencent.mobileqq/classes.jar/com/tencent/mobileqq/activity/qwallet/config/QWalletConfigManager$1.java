@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
-import aitd;
+import aixs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QWalletConfigManager$1
   implements Runnable
 {
-  public QWalletConfigManager$1(aitd paramaitd, WeakReference paramWeakReference) {}
+  public QWalletConfigManager$1(aixs paramaixs, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    aitd localaitd = (aitd)this.a.get();
-    if (localaitd != null)
+    aixs localaixs = (aixs)this.a.get();
+    if (localaixs != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
       }
-      localaitd.a(aitd.a(this.this$0));
+      localaixs.a(aixs.a(this.this$0));
     }
   }
 }

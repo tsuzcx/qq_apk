@@ -1,182 +1,103 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.text.style.DynamicDrawableSpan;
-import android.view.View.MeasureSpec;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bcek
-  extends DynamicDrawableSpan
+  extends JobSegment<bced, bced>
 {
-  private static String c;
-  public int a;
-  public long a;
-  protected Context a;
-  public Drawable a;
-  protected View.OnClickListener a;
-  public String a;
-  protected int b;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
+  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public bcek(XMediaEditor paramXMediaEditor)
   {
-    jdField_c_of_type_JavaLangString = "startPos";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
   }
   
-  private bcek(Context paramContext, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, int paramInt, Paint paramPaint, View.OnClickListener paramOnClickListener)
+  protected void a(JobContext paramJobContext, bced parambced)
   {
-    super(0);
-    this.jdField_a_of_type_Long = paramSourceMsgInfo.mSourceMsgSeq;
-    this.jdField_a_of_type_JavaLangString = paramSourceMsgInfo.mSourceMsgText;
-    this.jdField_b_of_type_Long = paramSourceMsgInfo.mSourceMsgSenderUin;
-    this.jdField_c_of_type_Long = paramSourceMsgInfo.mSourceMsgTime;
-    this.jdField_a_of_type_Int = paramSourceMsgInfo.mSourceSummaryFlag;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.d = paramSourceMsgInfo.origUid;
-    this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_Long, paramSourceMsgInfo.mAtInfoStr);
-    a(paramOnClickListener);
-    a(paramPaint);
-  }
-  
-  public static bcek a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, int paramInt, Paint paramPaint, View.OnClickListener paramOnClickListener)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSourceMsgInfo == null) || (paramInt <= 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReplyedMessageSpan", 2, "create reply message span failed: source=" + paramSourceMsgInfo + ", width=" + paramInt);
-      }
-      return null;
+    bcej localbcej = (bcej)parambced;
+    if (QLog.isColorLevel()) {
+      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localbcej.jdField_g_of_type_Int) });
     }
-    return new bcek(paramContext, paramSourceMsgInfo, paramInt, paramPaint, paramOnClickListener);
-  }
-  
-  public static String a(long paramLong, String paramString)
-  {
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    try
-    {
-      Object localObject = new JSONArray(paramString);
-      JSONArray localJSONArray = new JSONArray();
-      int i = 0;
-      for (;;)
-      {
-        if (i < ((JSONArray)localObject).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          if (i == 0)
-          {
-            if (localJSONObject.optLong("uin") == paramLong) {
-              j = localJSONObject.optInt(jdField_c_of_type_JavaLangString);
-            } else {
-              localJSONArray.put(localJSONObject);
-            }
-          }
-          else
-          {
-            int k = localJSONObject.optInt(jdField_c_of_type_JavaLangString, 0);
-            if (k > j) {
-              localJSONObject.put(jdField_c_of_type_JavaLangString, k - j);
-            }
-            localJSONArray.put(localJSONObject);
-          }
-        }
-        else
-        {
-          if (localJSONArray.length() == 0) {
-            return null;
-          }
-          localObject = localJSONArray.toString();
-          return localObject;
-        }
-        i += 1;
-      }
-      return paramString;
-    }
-    catch (JSONException localJSONException) {}
-  }
-  
-  private void a(Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramPaint = new SpannableStringBuilder();
-        paramPaint.append(bdnm.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, ChatTextSizeSettingActivity.a(), null, 7));
-        localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        ((TextView)localObject).setSingleLine();
-        ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject).setBackgroundDrawable(((TextView)localObject).getResources().getDrawable(2130838146));
-        ((TextView)localObject).setGravity(16);
-        i = ((TextView)localObject).getResources().getColor(2131166995);
-        ((TextView)localObject).setTextColor(Color.argb(230, (0xFF0000 & i) >> 16, (0xFF00 & i) >> 8, i & 0xFF));
-        ((TextView)localObject).setText(paramPaint);
-        ((TextView)localObject).setTextSize(1, 13.0F);
-        i = (int)bdcq.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-        j = (int)bdcq.a(this.jdField_a_of_type_AndroidContentContext, 23.0F);
-        ((TextView)localObject).setPadding(i, 0, i, 0);
-        ((TextView)localObject).setMaxWidth(this.jdField_b_of_type_Int);
-        ((TextView)localObject).setWidth(this.jdField_b_of_type_Int);
-        ((TextView)localObject).setHeight(j);
-        ((TextView)localObject).setTypeface(gj.a(Long.toString(this.jdField_b_of_type_Long)));
-        ((TextView)localObject).measure(this.jdField_b_of_type_Int, View.MeasureSpec.makeMeasureSpec(0, 0));
-        ((TextView)localObject).layout(0, 0, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getMeasuredHeight());
-        ((TextView)localObject).setDrawingCacheEnabled(true);
-        paramPaint = ((TextView)localObject).getDrawingCache();
-      } while (paramPaint == null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramPaint);
-    } while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null);
-    int i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = paramPaint.getWidth();
-    if (i > 0) {}
+    String str = bced.b();
+    XMediaEditor localXMediaEditor;
+    int i;
     for (;;)
     {
-      ((Drawable)localObject).setBounds(0, 0, j, i);
-      return;
-      i = 0;
+      try
+      {
+        localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localXMediaEditor == null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localbcej.f });
+        }
+        str = bdzf.a(str + localbcej.f.substring(localbcej.f.lastIndexOf("/") + 1, localbcej.f.lastIndexOf(".")) + System.currentTimeMillis() + arso.a(localbcej.f));
+        i = bkcy.a(localXMediaEditor.getContext(), localbcej.f, str);
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
+        }
+        if (i != 1) {
+          break label414;
+        }
+        str = localbcej.f;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        label217:
+        QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
+        URLDrawable.clearMemoryCache();
+        System.gc();
+        if (this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        a(paramJobContext, parambced);
+        return;
+        notifyError(new Error("-200"));
+        return;
+        notifyError(new Error("0"));
+        return;
+        notifyError(new Error("-1"));
+        return;
+      }
+      if (arso.b(str))
+      {
+        if (arso.a(str) > 104857600L)
+        {
+          notifyError(new Error("200"));
+          return;
+        }
+        localbcej.jdField_g_of_type_JavaLangString = str;
+        ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localbcej, localXMediaEditor));
+        if (isCanceled()) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localbcej.jdField_g_of_type_JavaLangString, ", info status=", Integer.valueOf(localbcej.jdField_g_of_type_Int) });
+        }
+        notifyResult(localbcej);
+        return;
+      }
+      label414:
+      if (i != 0) {
+        if (i != 1) {
+          break label217;
+        }
+      }
     }
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void onCancel()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(TextView paramTextView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramTextView);
-    }
-  }
-  
-  public Drawable getDrawable()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    notifyError(new Error("c_2001"));
   }
 }
 

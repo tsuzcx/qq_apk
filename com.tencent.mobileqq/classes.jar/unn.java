@@ -1,22 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
 
-public class unn
-  extends Job<Object, Object, Object>
+public abstract interface unn
 {
-  public unn(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, unk paramunk)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, unj paramunj);
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_Unk.a().a(880001, "no network", null);
-    return null;
-  }
+  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj);
+  
+  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj);
+  
+  public abstract void a(String paramString, int paramInt, unj paramunj);
+  
+  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj);
+  
+  public abstract void b(String paramString, int paramInt, unj paramunj);
 }
 
 

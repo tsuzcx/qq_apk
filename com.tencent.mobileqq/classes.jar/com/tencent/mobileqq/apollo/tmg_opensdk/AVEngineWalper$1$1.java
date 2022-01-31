@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
-import alce;
-import alcf;
-import alcm;
+import algt;
+import algu;
+import alhb;
 
 public class AVEngineWalper$1$1
   implements Runnable
 {
-  public AVEngineWalper$1$1(alcf paramalcf) {}
+  public AVEngineWalper$1$1(algu paramalgu) {}
   
   public void run()
   {
-    alcm.a(this.a.a.a).a(alce.a(this.a.a));
+    alhb.a(this.a.a.a).a(algt.a(this.a.a));
   }
 }
 

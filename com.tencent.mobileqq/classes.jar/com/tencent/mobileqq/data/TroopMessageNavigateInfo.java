@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class TroopMessageNavigateInfo
-  extends awbv
+  extends awge
 {
   public static int STATUS_ADD = 1;
   public static int STATUS_DELETE = 3;

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import betw;
+import beyf;
 
 public class FloatingWatchTogetherWrapper$3
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$3(betw parambetw, int paramInt) {}
+  public FloatingWatchTogetherWrapper$3(beyf parambeyf, int paramInt) {}
   
   public void run()
   {
-    betw.a(this.this$0, this.a);
+    beyf.a(this.this$0, this.a);
     this.this$0.e();
   }
 }

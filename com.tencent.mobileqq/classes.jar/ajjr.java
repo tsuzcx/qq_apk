@@ -1,18 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-@TargetApi(11)
-public class ajjr
-  implements Animator.AnimatorListener
+final class ajjr
+  implements Animation.AnimationListener
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
+  ajjr(View paramView, Animation paramAnimation) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

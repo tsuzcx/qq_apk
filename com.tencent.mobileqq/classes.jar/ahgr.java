@@ -1,32 +1,56 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class ahgr
-  extends ahha
+  implements TextView.OnEditorActionListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public String b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public String c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public String d;
-  public View e;
-  public ImageView e;
-  public TextView e;
-  public String e;
-  public TextView f;
-  public TextView g;
+  public ahgr(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (!TextUtils.isEmpty(paramTextView)) {
+        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
+        {
+          this.a.a(paramTextView);
+          nrt.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+          ClassificationSearchActivity.a(this.a, paramTextView);
+        }
+      }
+      for (;;)
+      {
+        return true;
+        if (this.a.f == ClassificationSearchActivity.d)
+        {
+          nrt.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
+          ClassificationSearchActivity.a(this.a, paramTextView);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+          continue;
+          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+          {
+            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
+            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, alud.a(2131702310))) && (!TextUtils.equals(paramTextView, alud.a(2131702325))))
+            {
+              this.a.a(paramTextView);
+              nrt.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+              ClassificationSearchActivity.a(this.a, paramTextView);
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
 
 

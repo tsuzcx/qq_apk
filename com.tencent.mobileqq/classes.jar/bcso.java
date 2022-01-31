@@ -1,45 +1,44 @@
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.StrikethroughSpan;
-import android.util.SparseArray;
-import android.widget.Button;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class bcso
-  extends bcjt
 {
-  public bcso(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  public static final int[] a;
+  public static final int[] b = { 2130839330, 2130839330, 2130839329 };
+  public static final int[] c = { 2131378532, 2131378533, 2131378531 };
+  protected bibh a;
   
-  public void a(SparseArray<bckg> paramSparseArray)
+  static
   {
-    int j = 0;
-    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
-    Object localObject = (bckg)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if (localObject != null)
-    {
-      paramSparseArray = ((bckg)localObject).a;
-      if (localObject == null) {
-        break label120;
-      }
-      localObject = ((bckg)localObject).b;
-      label55:
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label126;
-      }
-      j = paramSparseArray.indexOf((String)localObject);
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131697973, 2131697974, 2131697972 };
+  }
+  
+  public final View a(Context paramContext, int paramInt, bibi parambibi)
+  {
+    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
+    if (this.jdField_a_of_type_Bibh == null) {
+      this.jdField_a_of_type_Bibh = a(paramContext);
     }
-    label120:
-    label126:
-    for (int i = ((String)localObject).length() + j;; i = 0)
-    {
-      paramSparseArray = new SpannableString(paramSparseArray);
-      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
-      return;
-      paramSparseArray = "30金豆秀一下";
-      break;
-      localObject = null;
-      break label55;
+    return this.jdField_a_of_type_Bibh.a(paramContext, localView, parambibi, -1);
+  }
+  
+  public bibh a(Context paramContext)
+  {
+    int i = paramContext.getResources().getDimensionPixelSize(2131298631);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298632);
+    paramContext = c;
+    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt2 = b;
+    return new bcsp(this, 3, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  public void a(Context paramContext, View paramView, Object paramObject, bibi parambibi, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bibh != null) {
+      this.jdField_a_of_type_Bibh.a(paramContext, paramView, 0, paramObject, parambibi, paramOnClickListener);
     }
   }
 }

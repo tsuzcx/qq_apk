@@ -1,81 +1,63 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.Foreground;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anrw
-  implements anre, anrj
 {
-  @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, String> a;
+  public boolean a;
+  public long b;
+  public long c;
+  public long d;
   
-  anrw(Context paramContext, @Nullable anre paramanre)
+  public JSONObject a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramanre;
-  }
-  
-  anrw(Context paramContext, @Nullable anrj paramanrj)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramanrj;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof anrj)) {
-      ((anrj)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof anre)) {
-      ((anre)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof anre)) {
-      return ((anre)this.jdField_a_of_type_JavaLangObject).a();
-    }
-    return false;
-  }
-  
-  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-    a(paramBoolean, paramInt1, paramInt2, paramString);
-  }
-  
-  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
-    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    if (((this.jdField_a_of_type_JavaLangObject instanceof anre)) && (!((anre)this.jdField_a_of_type_JavaLangObject).a())) {}
-    Context localContext;
-    do
+    JSONObject localJSONObject = new JSONObject();
+    String str;
+    for (;;)
     {
-      return;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
-    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString2);
-    if ((localContext instanceof Activity)) {}
-    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
-    {
-      localIntent.addFlags(268435456);
-      localContext.startActivity(localIntent);
-      return;
+      try
+      {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          Object localObject = this.jdField_a_of_type_JavaLangString;
+          localJSONObject.put("evt", localObject);
+          localJSONObject.put("index", this.jdField_a_of_type_Int);
+          localJSONObject.put("result", this.jdField_a_of_type_Boolean);
+          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
+          localJSONObject.put("endTime", this.b);
+          localJSONObject.put("costTime", this.c);
+          localJSONObject.put("net", this.d);
+          localObject = new JSONObject();
+          if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+            break;
+          }
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+        }
+        str = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ArkVipReportItem", 1, "getJsonObject()", localJSONException);
+        return localJSONObject;
+      }
     }
-    paramString1.startActivity(localIntent);
+    localJSONObject.put("param", str);
+    return localJSONObject;
   }
 }
 

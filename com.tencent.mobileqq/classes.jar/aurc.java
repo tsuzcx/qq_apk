@@ -1,13 +1,12 @@
-public class aurc
+import com.tencent.mobileqq.music.SongInfo;
+
+public abstract interface aurc
 {
-  public int a;
-  public String a;
+  public abstract String getToken();
   
-  public aurc(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  
+  public abstract void onPlayStateChanged(int paramInt);
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.data;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
-import azmj;
-import bbmy;
+import azqs;
+import bbrh;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -13,7 +13,7 @@ import syb;
 public class TroopEntranceBar$2
   implements Runnable
 {
-  public TroopEntranceBar$2(bbmy parambbmy) {}
+  public TroopEntranceBar$2(bbrh parambbrh) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class TroopEntranceBar$2
       {
         localObject1 = localObject4;
         localObject2 = localObject3;
-        if (((String)localObject4).endsWith(alpo.a(2131715686)))
+        if (((String)localObject4).endsWith(alud.a(2131715698)))
         {
           localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
           localObject2 = localObject3;
@@ -41,7 +41,7 @@ public class TroopEntranceBar$2
     Object localObject3 = new Intent(this.this$0.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
     ((Intent)localObject3).putExtra("url", (String)localObject1);
     this.this$0.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    azqs.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
   }
 }
 

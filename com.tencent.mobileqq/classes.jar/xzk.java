@@ -1,24 +1,25 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-class xzk
-  extends RecyclerView.ViewHolder
+public class xzk
+  implements Comparator<String>
 {
-  public xzk(xzg paramxzg, View paramView)
-  {
-    super(paramView);
-  }
+  public xzk(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    if ((this.itemView instanceof BlankRecommendItemView))
-    {
-      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
-      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.a());
-      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
+    while (paramString1 != null) {
+      return i;
+    }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

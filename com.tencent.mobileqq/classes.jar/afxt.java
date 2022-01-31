@@ -1,23 +1,38 @@
-import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.Toast;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afxt
-  implements View.OnClickListener
+class afxt
+  implements bhuk
 {
-  public afxt(StructingMsgItemBuilder paramStructingMsgItemBuilder, TextView paramTextView, ChatMessage paramChatMessage, String paramString) {}
+  afxt(afxr paramafxr, MessageForPtt paramMessageForPtt, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+    acjm.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = acjm.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
+    {
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      ((MessageForPtt)paramView).isResend = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      acjm.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_Afxr.b();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
-    StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-    StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "", "0X8006512", "0X8006512", 0, 0, "", "" + this.jdField_a_of_type_JavaLangString, "", "");
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        Toast.makeText(this.jdField_a_of_type_Afxr.jdField_a_of_type_AndroidContentContext, paramView.getMessage(), 0).show();
+      }
+    }
   }
 }
 

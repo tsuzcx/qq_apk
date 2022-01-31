@@ -8,6 +8,7 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.style.ImageSpan;
+import androidx.annotation.NonNull;
 
 public class VerticalCenterImageSpan
   extends ImageSpan
@@ -18,6 +19,11 @@ public class VerticalCenterImageSpan
   public VerticalCenterImageSpan(Context paramContext, Bitmap paramBitmap)
   {
     super(paramContext, paramBitmap);
+  }
+  
+  public VerticalCenterImageSpan(@NonNull Drawable paramDrawable)
+  {
+    super(paramDrawable);
   }
   
   public VerticalCenterImageSpan(Drawable paramDrawable, int paramInt)

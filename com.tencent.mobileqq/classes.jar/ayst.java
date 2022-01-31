@@ -1,31 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.Context;
+import com.tencent.image.AbstractGifImage;
 
 public class ayst
-  extends aysb
+  extends ayss
 {
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
-  
-  public ayst(ViewGroup paramViewGroup, int paramInt)
+  protected aysq a(Context paramContext)
   {
-    super(paramViewGroup, paramInt);
+    return new ayxf(this, paramContext);
   }
   
-  protected void a()
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131377925));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366395));
-    this.b = ((TextView)localView.findViewById(2131370743));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370718));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376261));
+    super.a(paramString1, paramString2, paramString3);
+    paramString1 = a();
+    if (paramString1 != null) {
+      paramString1.e();
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void c()
+  {
+    super.c();
+    AbstractGifImage.resumeAll();
   }
 }
 

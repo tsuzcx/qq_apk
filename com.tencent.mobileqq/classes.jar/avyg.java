@@ -1,16 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.app.Activity;
+import android.text.Editable;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class avyg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements avyb
 {
-  public avyg(ScanIconAnimateView paramScanIconAnimateView) {}
+  public avyg(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Activity a()
   {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    return this.a;
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null) {
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      return;
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Avyh.a(paramBoolean);
   }
 }
 

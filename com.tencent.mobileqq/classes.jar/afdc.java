@@ -1,132 +1,160 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.helper.AIOEmoticonGuideHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.os.MqqHandler;
 
-class afdc
-  implements View.OnClickListener
+public class afdc
+  implements afez, affa, Handler.Callback, View.OnClickListener
 {
-  afdc(afdb paramafdb) {}
+  private aoqv jdField_a_of_type_Aoqv;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private EmoticonGuideBubbleView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void onClick(View paramView)
+  public afdc(BaseChatPie paramBaseChatPie)
   {
-    if ((!afdb.a(this.a)) || (this.a.a()) || (System.currentTimeMillis() - afdb.a(this.a) < 600L)) {}
-    MessageForApollo localMessageForApollo;
-    Object localObject;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
+  }
+  
+  private void a(aoqv paramaoqv)
+  {
+    if (paramaoqv == null) {}
+    String str;
+    boolean bool;
     do
     {
       do
       {
-        do
-        {
-          return;
-          afdb.a(this.a, System.currentTimeMillis());
-          localMessageForApollo = (MessageForApollo)((afeg)aekt.a(paramView)).a;
-          if (localMessageForApollo == null)
-          {
-            QLog.e("ApolloGameItemBuilder", 1, "errInfo->mr is null.");
-            return;
-          }
-          QLog.i("ApolloGameItemBuilder", 1, "click game msg game staus: " + localMessageForApollo.gameStatus + ", msgType:" + localMessageForApollo.msgType + ",gameId:" + localMessageForApollo.gameId + ",roomId:" + localMessageForApollo.roomId);
-          if ((localMessageForApollo.mApolloMessage == null) || (localMessageForApollo.mApolloMessage.id == 99999))
-          {
-            QQToast.a(paramView.getContext(), alpo.a(2131700712), 0).a();
-            return;
-          }
-          if (!ApolloEngine.a())
-          {
-            QLog.w("ApolloGameItemBuilder", 1, "apollo lib NOT loaded, click game return.");
-            return;
-          }
-        } while ((!(this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) || (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() == null));
-        paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      localObject = (akji)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-    } while (localObject == null);
-    int i;
-    if (localMessageForApollo.gameStatus == 1) {
-      i = 0;
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!a(paramaoqv)) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "realShowGuideBubble start.");
+      }
+      this.jdField_a_of_type_Aoqv = paramaoqv;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble  emoticonGuideBubbleView is new create.");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView = new EmoticonGuideBubbleView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
+      }
+      str = paramaoqv.a.a;
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        str = paramaoqv.a.b;
+      }
+      bool = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, str, paramaoqv.a.e, paramaoqv.a.f, bool));
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4C", "0X800AD4C", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.setOnClickListener(this);
+    bdne.a("key_show_emoticon_guide", Boolean.valueOf(false));
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 3000L);
+  }
+  
+  private boolean a(aoqv paramaoqv)
+  {
+    if (paramaoqv == null) {
+      return false;
     }
+    if ((((Boolean)bdne.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) && (paramaoqv.a.b())) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void a()
+  {
+    if (!((Boolean)bdne.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) {
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new AIOEmoticonGuideHelper.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 9: 
+    case 10: 
+    default: 
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 8, 11 };
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "removeGuideBubble ");
+      }
+      this.jdField_a_of_type_Aoqv = null;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      b();
+    }
+    while (paramMessage.what != 2) {
+      return true;
+    }
+    a((aoqv)paramMessage.obj);
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null) || (this.jdField_a_of_type_Aoqv == null)) {}
     for (;;)
     {
-      int k = ((akji)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      paramView = paramView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      int m = ApolloUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localMessageForApollo.playerList == null) {}
-      for (int j = 0;; j = localMessageForApollo.playerList.size())
-      {
-        VipUtils.a(paramView, "cmshow", "Apollo", "clk_game_msg", m, j, new String[] { Integer.toString(localMessageForApollo.gameId), Integer.toString(i), Integer.toString(k), Long.toString(localMessageForApollo.roomId) });
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1036) {
-          break label734;
-        }
-        paramView = ApolloUtil.b(localMessageForApollo);
-        if ((NetConnInfoCenter.getServerTimeMillis() / 1000L >= localMessageForApollo.time + 60L) || (localMessageForApollo.gameStatus != 0) || (TextUtils.isEmpty(paramView))) {
-          break label724;
-        }
-        QLog.i("ApolloGameItemBuilder", 1, "UIN_TYPE_CMGAME_TEMP start robot game");
-        localObject = new CmGameStartChecker.StartCheckParam(localMessageForApollo.gameId, true, "message", localMessageForApollo.roomId, 7, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 318001, localMessageForApollo.gameName);
-        ((CmGameStartChecker.StartCheckParam)localObject).extendJson = localMessageForApollo.extendJson;
-        ((CmGameStartChecker.StartCheckParam)localObject).disableMinGame = true;
-        ((CmGameStartChecker.StartCheckParam)localObject).mRobotOpenId = paramView;
-        ((CmGameStartChecker.StartCheckParam)localObject).mTempAIOUin = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        ((CmGameStartChecker.StartCheckParam)localObject).mTempAIONickName = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-        ApolloGameUtil.a(this.a.jdField_a_of_type_AndroidContentContext, (CmGameStartChecker.StartCheckParam)localObject);
-        akqq.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageForApollo.gameId, localMessageForApollo.roomId);
-        return;
-        if (localMessageForApollo.gameStatus == 3)
-        {
-          i = 1;
-          break;
-        }
-        if ((localMessageForApollo.gameStatus != 7) && (localMessageForApollo.gameStatus != 4) && (localMessageForApollo.gameStatus != 5) && (localMessageForApollo.gameStatus != 6)) {
-          break label904;
-        }
-        i = 2;
-        break;
-      }
-      label724:
-      QLog.i("ApolloGameItemBuilder", 1, "UIN_TYPE_CMGAME_TEMP onClickGameView but dispatch to ark");
       return;
-      label734:
-      if (localMessageForApollo.msgType == 4)
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      int i = this.jdField_a_of_type_Aoqv.a.c;
+      int k = this.jdField_a_of_type_Aoqv.a.d;
+      if (k == 1)
       {
-        i = 201;
-        j = localMessageForApollo.mGameMode;
-        paramView = new CmGameStartChecker.StartCheckParam(localMessageForApollo.gameId, localMessageForApollo.isSend(), "message", localMessageForApollo.roomId, 1, j, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, i, localMessageForApollo.gameName);
-        if (localMessageForApollo.msgType != 4) {
-          break label896;
+        i = apsp.b(i);
+        if (!apsp.c(i)) {}
+      }
+      else
+      {
+        while (i != -1)
+        {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4D", "0X800AD4D", 0, 0, "", "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a(k, i);
+          return;
+          if (k == 2)
+          {
+            int j = apsi.b(i);
+            i = j;
+            if (apsi.a(j)) {}
+          }
+          else
+          {
+            i = -1;
+          }
         }
-        paramView.launchNewGame = true;
       }
-      for (;;)
-      {
-        paramView.mSendMsgUin = localMessageForApollo.senderuin;
-        paramView.msgGameStatus = localMessageForApollo.gameStatus;
-        paramView.extendJson = localMessageForApollo.gameExtendJson;
-        ApolloGameUtil.a(this.a.jdField_a_of_type_AndroidContentContext, paramView);
-        return;
-        i = 200;
-        break;
-        label896:
-        paramView.showAlertTips = true;
-      }
-      label904:
-      i = 0;
     }
   }
 }

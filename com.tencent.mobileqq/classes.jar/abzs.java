@@ -1,153 +1,29 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.AssistantSettingActivity.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.HeightAdaptableListView;
-import java.util.Locale;
-import java.util.Map;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abzs
-  extends allb
+  extends abzv
 {
-  public abzs(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public abzs(TestAppFragment paramTestAppFragment, EditText paramEditText, JSONObject paramJSONObject)
   {
-    if ((paramBoolean1) && (!this.a.isFinishing())) {
-      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
-    }
+    super(paramEditText);
   }
   
-  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (AssistantSettingActivity.a(this.a) != null) && (this.a.jdField_a_of_type_Acar != null) && (this.a.jdField_a_of_type_Acar.a(paramArrayOfShort)))
+    super.onSuccess(paramJSONObject);
+    try
     {
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, "onGetCommonSwitchFromDetailInfo");
-      }
-      AssistantSettingActivity.a(this.a).a();
-    }
-  }
-  
-  protected void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onGetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
-    }
-    AssistantSettingActivity localAssistantSettingActivity;
-    if (paramBoolean)
-    {
-      localAssistantSettingActivity = this.a;
-      if (this.a.jdField_a_of_type_Ahpq.c()) {
-        break label81;
-      }
-    }
-    label81:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Abwx.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new abzv(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
       return;
     }
-  }
-  
-  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.a.isFinishing()) {
-      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
-    }
-  }
-  
-  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
-  {
-    boolean bool2 = true;
-    if (this.a.jdField_a_of_type_Acar == null) {}
-    for (ahpl localahpl = null; localahpl == null; localahpl = this.a.jdField_a_of_type_Acar.a(paramShort1)) {
-      return;
-    }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
-    }
-    boolean bool1;
-    if (paramShort2 == 1)
+    catch (JSONException paramJSONObject)
     {
-      bool1 = true;
-      label91:
-      if ((paramBoolean) || (bool1 != localahpl.e)) {
-        break label148;
-      }
-      if (localahpl.e) {
-        break label150;
-      }
-    }
-    label148:
-    label150:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      localahpl.e = paramBoolean;
-      this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingActivity.1.1(this, bool1));
-      return;
-      bool1 = false;
-      break label91;
-      break;
-    }
-  }
-  
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    boolean bool = true;
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onSetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
-    }
-    AssistantSettingActivity localAssistantSettingActivity;
-    if (!paramBoolean)
-    {
-      AssistantSettingActivity.a(this.a, 2131719872, 1);
-      localAssistantSettingActivity = this.a;
-      if (this.a.jdField_a_of_type_Ahpq.c()) {
-        break label95;
-      }
-    }
-    label95:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
-      return;
-    }
-  }
-  
-  protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((this.a.isFinishing()) || (this.a.app == null)) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      AssistantSettingActivity.a(this.a, 2131719872, 1);
-      AssistantSettingActivity.a(this.a, agug.a(this.a.app).b(), AssistantSettingActivity.a(this.a));
-      return;
-    }
-    AssistantSettingActivity.a(this.a, paramBoolean2, AssistantSettingActivity.a(this.a));
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {}
-    for (String str = "1";; str = "2")
-    {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, str, "", "", "");
-      return;
-    }
-  }
-  
-  protected void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
-  {
-    if (!paramBoolean)
-    {
-      QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131701150), 0).b(this.a.getTitleBarHeight());
-      paramBoolean = ((Boolean)paramObject).booleanValue();
-      AssistantSettingActivity.a(this.a, true);
-      this.a.e.setChecked(paramBoolean);
-      AssistantSettingActivity.a(this.a, paramBoolean);
-      AssistantSettingActivity.a(this.a, false);
+      paramJSONObject.printStackTrace();
     }
   }
 }

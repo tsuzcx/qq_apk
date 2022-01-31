@@ -1,6 +1,29 @@
-public abstract interface bedx
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import cooperation.liveroom.LiveRoomGiftCallback;
+
+class bedx
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(String paramString);
+  bedx(bedw parambedw) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (bedw.a(this.a)) {
+      this.a.a.start();
+    }
+    for (;;)
+    {
+      if (bedw.a(this.a) != null) {
+        bedw.a(this.a).onCall(7, "");
+      }
+      return;
+      bedw.a(this.a, false);
+      if (bedw.a(this.a) != null) {
+        bedw.a(this.a).onCompletion(this.a.a);
+      }
+    }
+  }
 }
 
 

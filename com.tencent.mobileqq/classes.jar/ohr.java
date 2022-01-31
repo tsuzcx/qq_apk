@@ -1,5 +1,5 @@
 public class ohr
-  extends baiq
+  extends bamz
 {
   public ohr(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
@@ -9,24 +9,24 @@ public class ohr
   public int a()
   {
     int j = 0;
-    bain[] arrayOfbain = (bain[])getSpans(0, super.length(), bain.class);
-    if ((arrayOfbain == null) || (arrayOfbain.length <= 0)) {
+    bamw[] arrayOfbamw = (bamw[])getSpans(0, super.length(), bamw.class);
+    if ((arrayOfbamw == null) || (arrayOfbamw.length <= 0)) {
       return super.length();
     }
-    int k = arrayOfbain.length;
+    int k = arrayOfbamw.length;
     int i = 0;
     if (i < k)
     {
-      bain localbain = arrayOfbain[i];
-      switch (localbain.c)
+      bamw localbamw = arrayOfbamw[i];
+      switch (localbamw.c)
       {
       }
       for (;;)
       {
         i += 1;
         break;
-        int m = getSpanStart(localbain);
-        j += getSpanEnd(localbain) - m - 1;
+        int m = getSpanStart(localbamw);
+        j += getSpanEnd(localbamw) - m - 1;
       }
     }
     return super.length() - j;

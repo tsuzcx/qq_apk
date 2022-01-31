@@ -46,7 +46,7 @@ public class qxk
     if (paramInt1 <= paramInt2)
     {
       i = oqu.c;
-      paramInt1 = bjxj.w(BaseApplicationImpl.getApplication().getRuntime());
+      paramInt1 = bkbq.w(BaseApplicationImpl.getApplication().getRuntime());
       if (paramInt1 <= 0) {
         break label80;
       }
@@ -77,16 +77,16 @@ public class qxk
   {
     HashMap localHashMap = new HashMap();
     String str2 = ShortVideoUtils.c(paramString, paramString.substring(paramString.lastIndexOf(".") + 1));
-    azgw localazgw = ShortVideoTrimmer.a(paramString);
+    azlf localazlf = ShortVideoTrimmer.a(paramString);
     long l1;
     int i;
-    if ((localazgw != null) && (localazgw.jdField_a_of_type_Boolean))
+    if ((localazlf != null) && (localazlf.jdField_a_of_type_Boolean))
     {
       l1 = new File(paramString).length();
-      i = a(localazgw.jdField_a_of_type_Int, localazgw.jdField_b_of_type_Int);
-      if ((l1 <= 52428800L) && (i > 0) && (localazgw.jdField_b_of_type_Long * 1024L / i < 1.3D))
+      i = a(localazlf.jdField_a_of_type_Int, localazlf.jdField_b_of_type_Int);
+      if ((l1 <= 52428800L) && (i > 0) && (localazlf.jdField_b_of_type_Long * 1024L / i < 1.3D))
       {
-        localazgw.jdField_a_of_type_Boolean = false;
+        localazlf.jdField_a_of_type_Boolean = false;
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, fileSize:" + l1 + ", no need compress!");
         }
@@ -95,7 +95,7 @@ public class qxk
     Object localObject1;
     Object localObject2;
     long l2;
-    if ((localazgw != null) && (localazgw.jdField_a_of_type_Boolean)) {
+    if ((localazlf != null) && (localazlf.jdField_a_of_type_Boolean)) {
       if (Build.VERSION.SDK_INT >= 18)
       {
         localObject1 = new MediaMetadataRetriever();
@@ -110,7 +110,7 @@ public class qxk
       try
       {
         l1 = Long.parseLong((String)localObject2);
-        i = azct.a(paramContext);
+        i = azhc.a(paramContext);
         if (((i & 0x1) > 0) && ((i & 0x2) > 0))
         {
           bool = true;
@@ -124,8 +124,8 @@ public class qxk
             QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: Try to compress using MediaCodec");
           }
           localObject1 = new File(paramString);
-          localObject2 = new qxl(this, str2, (int)(localazgw.jdField_b_of_type_Long * 1024L), (int)localazgw.jdField_a_of_type_Long, 0L, l1);
-          if ((!new azhl().a((File)localObject1, (azhm)localObject2, true)) || (((qxl)localObject2).a != null)) {
+          localObject2 = new qxl(this, str2, (int)(localazlf.jdField_b_of_type_Long * 1024L), (int)localazlf.jdField_a_of_type_Long, 0L, l1);
+          if ((!new azlu().a((File)localObject1, (azlv)localObject2, true)) || (((qxl)localObject2).a != null)) {
             continue;
           }
           if (QLog.isColorLevel()) {
@@ -149,18 +149,18 @@ public class qxk
           }
           localHashMap.put("outputPath", localObject1);
           localHashMap.put("ret", String.valueOf(i));
-          if (localazgw != null)
+          if (localazlf != null)
           {
             j = 0;
-            if ((!"90".equals(localazgw.jdField_a_of_type_JavaLangString)) && (!"270".equals(localazgw.jdField_a_of_type_JavaLangString))) {
+            if ((!"90".equals(localazlf.jdField_a_of_type_JavaLangString)) && (!"270".equals(localazlf.jdField_a_of_type_JavaLangString))) {
               break label585;
             }
             i = 1;
             if (i == 0) {
               break label647;
             }
-            localHashMap.put("outWidth", String.valueOf(localazgw.d));
-            localHashMap.put("outHeight", String.valueOf(localazgw.c));
+            localHashMap.put("outWidth", String.valueOf(localazlf.d));
+            localHashMap.put("outHeight", String.valueOf(localazlf.c));
           }
           return localHashMap;
         }
@@ -184,14 +184,14 @@ public class qxk
       int j = -1;
       continue;
       String str1;
-      if ((localazgw != null) && (!localazgw.jdField_a_of_type_Boolean))
+      if ((localazlf != null) && (!localazlf.jdField_a_of_type_Boolean))
       {
         i = 0;
         str1 = paramString;
         continue;
         label585:
         i = j;
-        if ("0".equals(localazgw.jdField_a_of_type_JavaLangString))
+        if ("0".equals(localazlf.jdField_a_of_type_JavaLangString))
         {
           paramString = ShortVideoTrimmer.a(paramString);
           i = j;
@@ -209,8 +209,8 @@ public class qxk
                 i = 1;
                 continue;
                 label647:
-                localHashMap.put("outWidth", String.valueOf(localazgw.c));
-                localHashMap.put("outHeight", String.valueOf(localazgw.d));
+                localHashMap.put("outWidth", String.valueOf(localazlf.c));
+                localHashMap.put("outHeight", String.valueOf(localazlf.d));
                 return localHashMap;
               }
             }
@@ -233,12 +233,12 @@ public class qxk
     localHashMap.put("video_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
     localHashMap.put("source_video_bitrate", this.jdField_c_of_type_JavaLangLong.toString());
     localHashMap.put("target_video_bitrate", this.jdField_d_of_type_JavaLangLong.toString());
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = ors.a();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyDeliverVideoCompressVideo", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyDeliverVideoCompressVideo", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
       return;
     }
   }
@@ -260,10 +260,10 @@ public class qxk
     Object localObject = ShortVideoTrimmer.a(this.jdField_a_of_type_JavaLangString);
     if (localObject != null)
     {
-      i = a(((azgw)localObject).jdField_a_of_type_Int, ((azgw)localObject).jdField_b_of_type_Int);
-      this.jdField_c_of_type_JavaLangLong = Long.valueOf(((azgw)localObject).jdField_b_of_type_Long);
+      i = a(((azlf)localObject).jdField_a_of_type_Int, ((azlf)localObject).jdField_b_of_type_Int);
+      this.jdField_c_of_type_JavaLangLong = Long.valueOf(((azlf)localObject).jdField_b_of_type_Long);
       this.jdField_d_of_type_JavaLangLong = Long.valueOf(i);
-      if ((i <= 0) || (((azgw)localObject).jdField_b_of_type_Long * 1024L / i <= 1.3D)) {}
+      if ((i <= 0) || (((azlf)localObject).jdField_b_of_type_Long * 1024L / i <= 1.3D)) {}
     }
     for (int i = 1;; i = 0)
     {
@@ -276,9 +276,9 @@ public class qxk
         if (localObject != null)
         {
           i = j;
-          if (!"90".equals(((azgw)localObject).jdField_a_of_type_JavaLangString))
+          if (!"90".equals(((azlf)localObject).jdField_a_of_type_JavaLangString))
           {
-            if (!"270".equals(((azgw)localObject).jdField_a_of_type_JavaLangString)) {
+            if (!"270".equals(((azlf)localObject).jdField_a_of_type_JavaLangString)) {
               break label289;
             }
             i = j;
@@ -286,13 +286,13 @@ public class qxk
           if (i == 0) {
             break label343;
           }
-          this.jdField_a_of_type_Int = ((azgw)localObject).jdField_b_of_type_Int;
+          this.jdField_a_of_type_Int = ((azlf)localObject).jdField_b_of_type_Int;
         }
-        for (this.jdField_b_of_type_Int = ((azgw)localObject).jdField_a_of_type_Int;; this.jdField_b_of_type_Int = ((azgw)localObject).jdField_b_of_type_Int)
+        for (this.jdField_b_of_type_Int = ((azlf)localObject).jdField_a_of_type_Int;; this.jdField_b_of_type_Int = ((azlf)localObject).jdField_b_of_type_Int)
         {
           return Integer.valueOf(0);
           label289:
-          if ("0".equals(((azgw)localObject).jdField_a_of_type_JavaLangString))
+          if ("0".equals(((azlf)localObject).jdField_a_of_type_JavaLangString))
           {
             paramVarArgs = ShortVideoTrimmer.a(paramVarArgs);
             if ((paramVarArgs != null) && (paramVarArgs.length == 5))
@@ -310,10 +310,10 @@ public class qxk
           i = 0;
           break;
           label343:
-          this.jdField_a_of_type_Int = ((azgw)localObject).jdField_a_of_type_Int;
+          this.jdField_a_of_type_Int = ((azlf)localObject).jdField_a_of_type_Int;
         }
       }
-      localObject = new File(aljq.aX + "shortvideo");
+      localObject = new File(alof.aX + "shortvideo");
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
       }

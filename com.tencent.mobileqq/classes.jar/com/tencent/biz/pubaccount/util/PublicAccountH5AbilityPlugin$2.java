@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import awga;
-import azmj;
-import bdje;
+import awkj;
+import azqs;
+import bdnn;
 import com.tencent.mobileqq.pic.CompressInfo;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -19,9 +19,9 @@ public class PublicAccountH5AbilityPlugin$2
   {
     CompressInfo localCompressInfo = new CompressInfo(this.this$0.n, 0);
     localCompressInfo.f = 0;
-    awga.a(localCompressInfo);
+    awkj.a(localCompressInfo);
     String str;
-    if (!bdje.a(localCompressInfo.e))
+    if (!bdnn.a(localCompressInfo.e))
     {
       str = "mqqpa://resourceid/" + this.this$0.p;
       sxe.b.put(str, localCompressInfo.e);
@@ -36,7 +36,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
         this.this$0.n = "";
         this.this$0.o = "";
         this.this$0.p = "";
@@ -53,7 +53,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
       }
       catch (JSONException localJSONException2)
       {

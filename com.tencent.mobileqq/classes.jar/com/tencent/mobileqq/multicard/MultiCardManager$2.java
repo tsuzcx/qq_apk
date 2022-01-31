@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import aujf;
-import aujg;
+import auno;
+import aunp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$2
   implements Runnable
 {
-  public MultiCardManager$2(aujf paramaujf, long paramLong, ArrayList paramArrayList, aujg paramaujg) {}
+  public MultiCardManager$2(auno paramauno, long paramLong, ArrayList paramArrayList, aunp paramaunp) {}
   
   public void run()
   {

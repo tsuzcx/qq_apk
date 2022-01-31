@@ -1,27 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-final class bdcn
-  implements DialogInterface.OnClickListener
+public abstract interface bdcn
 {
-  bdcn(Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
-    }
-  }
+  public abstract void a(View paramView, Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcn
  * JD-Core Version:    0.7.0.1
  */

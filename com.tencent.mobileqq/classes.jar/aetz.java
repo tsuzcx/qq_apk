@@ -1,49 +1,65 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aetz
-  implements CompoundButton.OnCheckedChangeListener
+final class aetz
+  extends AsyncTask<Void, Void, ImageInfo>
 {
-  public aetz(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  aetz(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected ImageInfo a(Void... paramVarArgs)
   {
-    if (paramBoolean)
+    bdhj.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "sessionInfo.handleScreenPhoto");
+    String str = bdhj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramVarArgs = new ImageInfo();
+    bdhj.a(paramVarArgs, "compress_start", "sessionInfo.handleScreenPhoto");
+    bdhj.a(3, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, str, true, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    if (!bdhb.b(paramVarArgs.b)) {
+      return null;
+    }
+    try
     {
-      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bdje.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
-        this.a.setSendEnable(true);
-      }
-      if (VoiceTextEditPanel.a(this.a) != null) {
-        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
-      }
-      VoiceTextEditPanel.a(this.a).setText(2131719770);
-      if (this.a.a())
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      aips.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return paramVarArgs;
+    }
+    catch (Exception localException) {}
+    return paramVarArgs;
+  }
+  
+  protected void a(ImageInfo paramImageInfo)
+  {
+    if (paramImageInfo != null)
+    {
+      Object localObject = new awjv();
+      ((awjv)localObject).a(paramImageInfo.b);
+      ((awjv)localObject).d(1027);
+      ((awjv)localObject).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramImageInfo.h == 2) {}
+      for (int i = baye.e;; i = baye.d)
       {
-        azmj.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
+        ((awjv)localObject).c(i);
+        ((awjv)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        ((awjv)localObject).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((awjv)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        awjl localawjl = awjb.a(2, 1027);
+        localawjl.a(((awjv)localObject).a());
+        awjb.a(localawjl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramImageInfo);
+        bdhj.a(this.jdField_a_of_type_AndroidContentContext, (List)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         return;
       }
-      azmj.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
-      return;
     }
-    if (VoiceTextEditPanel.a(this.a) != null) {
-      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
-    }
-    VoiceTextEditPanel.a(this.a).setText(2131719768);
-    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bdje.a(VoiceTextEditPanel.a(this.a)))) {
-      this.a.setSendEnable(false);
-    }
-    if (this.a.a())
-    {
-      azmj.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
-      return;
-    }
-    azmj.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
+    bdhj.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepared_failed", "sessionInfo.handleScreenPhoto");
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695345), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
   }
 }
 

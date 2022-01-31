@@ -1,7 +1,4 @@
-public abstract interface ydl
-{
-  public abstract void a(int paramInt);
-}
+public abstract interface ydl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

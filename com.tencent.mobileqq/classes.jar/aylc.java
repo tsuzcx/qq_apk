@@ -1,91 +1,90 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
 
 public class aylc
-  implements Manager
+  extends beej
+  implements befh
 {
-  private aykx jdField_a_of_type_Aykx = new aykx("Cahce_");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public aylc(QQAppInterface paramQQAppInterface)
+  public aylc(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public ArrayList<ayla> a(String paramString)
-  {
-    if (this.jdField_a_of_type_Aykx != null)
-    {
-      paramString = this.jdField_a_of_type_Aykx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if ((paramString != null) && (paramString.size() > 10))
-      {
-        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
-        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
-        return localArrayList;
-      }
-      return paramString;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
-    return null;
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aykx != null)
-    {
-      this.jdField_a_of_type_Aykx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QLog.d("MostUsedSearchResultManager", 2, "init");
-      return;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
-    for (String str = paramString2;; str = paramString1)
-    {
-      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
-      int i = aykw.a(paramInt);
-      if (!a(i)) {
-        break;
-      }
-      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
-      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
-      return;
-      paramString2 = "";
-    }
-  }
-  
-  boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+    super.doOnResume();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Aykx != null) {
-      this.jdField_a_of_type_Aykx.a();
-    }
+    super.doOnPause();
   }
   
-  public void onDestroy()
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
-    b();
-    this.jdField_a_of_type_Aykx = null;
-    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
+    super.bindJavaScript(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("KDSearchResultBuilder", 2, "[bindJavaScript]");
+    }
+    paramArrayList.add(new sxe());
+    paramArrayList.add(new atid());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new athd());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
   }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+    this.mWebview.setWebViewClient(new ayld(this, this.mWebview.getPluginEngine()));
+  }
+  
+  public void c()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

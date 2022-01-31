@@ -1,28 +1,6 @@
-import dov.com.qq.im.ae.mode.AECaptureMode;
-
-class bklk
-  implements bktm
+public abstract interface bklk
 {
-  bklk(bkle parambkle) {}
-  
-  public void a()
-  {
-    bkle.a(this.a).a(null);
-  }
-  
-  public void a(bkvu parambkvu)
-  {
-    if (bkle.b(this.a) == AECaptureMode.NORMAL)
-    {
-      bkle.a(this.a).a(parambkvu);
-      return;
-    }
-    blfg.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
 }
 
 

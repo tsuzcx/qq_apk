@@ -8,12 +8,12 @@ public class mml
   public static final String a;
   private final int jdField_a_of_type_Int = 15;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bhod<mgp> jdField_a_of_type_Bhod;
+  private bhsk<mgp> jdField_a_of_type_Bhsk;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private lum jdField_a_of_type_Lum;
   private int jdField_b_of_type_Int = 1000;
-  private bhod<mgp> jdField_b_of_type_Bhod;
-  private bhod<mgp> c;
+  private bhsk<mgp> jdField_b_of_type_Bhsk;
+  private bhsk<mgp> c;
   
   static
   {
@@ -25,9 +25,9 @@ public class mml
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_Lum = paramlum;
-    this.jdField_a_of_type_Bhod = new bhod(15);
-    this.jdField_b_of_type_Bhod = new bhod(15);
-    this.c = new bhod(15);
+    this.jdField_a_of_type_Bhsk = new bhsk(15);
+    this.jdField_b_of_type_Bhsk = new bhsk(15);
+    this.c = new bhsk(15);
   }
   
   private boolean a(ArrayList<moa> paramArrayList, long paramLong)
@@ -44,7 +44,7 @@ public class mml
   public mgp a(long paramLong)
   {
     boolean bool2 = false;
-    Object localObject2 = (mgp)this.jdField_a_of_type_Bhod.a(paramLong);
+    Object localObject2 = (mgp)this.jdField_a_of_type_Bhsk.a(paramLong);
     Object localObject1 = localObject2;
     boolean bool1;
     if (localObject2 == null)
@@ -59,7 +59,7 @@ public class mml
         {
           i = this.c.a() - 1;
           localObject1 = (mgp)this.c.a(i);
-          this.jdField_a_of_type_Bhod.a(paramLong, localObject1);
+          this.jdField_a_of_type_Bhsk.a(paramLong, localObject1);
           this.c.a(i);
         }
         localObject2 = localObject1;
@@ -67,7 +67,7 @@ public class mml
         if (localObject1 == null)
         {
           localObject2 = new mgp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.format("%s_%s", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(1000) }), 0L, false);
-          ((mgp)localObject2).a(2130841796, 2130841795);
+          ((mgp)localObject2).a(2130841809, 2130841808);
           ((mgp)localObject2).a(String.valueOf(paramLong), 0);
           ((mgp)localObject2).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
           ((mgp)localObject2).a(true);
@@ -80,7 +80,7 @@ public class mml
           ((mgp)localObject2).k(-1);
           ((mgp)localObject2).g(true);
           ((mgp)localObject2).a(1);
-          this.jdField_a_of_type_Bhod.a(paramLong, localObject2);
+          this.jdField_a_of_type_Bhsk.a(paramLong, localObject2);
           this.jdField_a_of_type_Lum.a((luj)localObject2);
           bool1 = bool2;
         }
@@ -97,33 +97,33 @@ public class mml
   
   public void a(ArrayList<moa> paramArrayList)
   {
-    int j = this.jdField_a_of_type_Bhod.a();
+    int j = this.jdField_a_of_type_Bhsk.a();
     if (j <= 0) {
       return;
     }
     int i = 0;
     if (i < j)
     {
-      long l = this.jdField_a_of_type_Bhod.a(i);
-      mgp localmgp = (mgp)this.jdField_a_of_type_Bhod.a(i);
+      long l = this.jdField_a_of_type_Bhsk.a(i);
+      mgp localmgp = (mgp)this.jdField_a_of_type_Bhsk.a(i);
       if (a(paramArrayList, l)) {
-        this.jdField_b_of_type_Bhod.a(l, localmgp);
+        this.jdField_b_of_type_Bhsk.a(l, localmgp);
       }
       for (;;)
       {
         i += 1;
         break;
-        if (this.c.a() + this.jdField_a_of_type_Bhod.a() < 15) {
+        if (this.c.a() + this.jdField_a_of_type_Bhsk.a() < 15) {
           this.c.a(l, localmgp);
         } else {
           this.jdField_a_of_type_Lum.a(localmgp);
         }
       }
     }
-    paramArrayList = this.jdField_a_of_type_Bhod;
-    this.jdField_a_of_type_Bhod = this.jdField_b_of_type_Bhod;
-    this.jdField_b_of_type_Bhod = paramArrayList;
-    this.jdField_b_of_type_Bhod.a();
+    paramArrayList = this.jdField_a_of_type_Bhsk;
+    this.jdField_a_of_type_Bhsk = this.jdField_b_of_type_Bhsk;
+    this.jdField_b_of_type_Bhsk = paramArrayList;
+    this.jdField_b_of_type_Bhsk.a();
   }
 }
 

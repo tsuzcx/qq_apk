@@ -1,9 +1,23 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class aflh
-  extends aelt
+class aflh
+  implements bhuk
 {
-  public HiBoomTextView a;
+  aflh(aflg paramaflg, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Aflg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

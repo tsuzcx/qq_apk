@@ -1,59 +1,72 @@
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.mobileqq.widget.QQTabHost;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class adir
-  implements bhqd
+  implements bett
 {
-  public adir(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, String paramString1, String paramString2, bhpy parambhpy) {}
+  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void OnClick(View paramView, int paramInt)
+  public adir(MainFragment paramMainFragment) {}
+  
+  private void a(View paramView, ArrayList<View> paramArrayList)
   {
-    paramView = paramView.getContext();
-    switch (paramInt)
+    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
+    for (;;)
     {
-    default: 
       return;
-    case 0: 
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC8", "0X8009EC8", 0, 0, "", "", "", "");
-      if (!bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
+      paramView = (ViewGroup)paramView;
+      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
+        paramArrayList.add(paramView);
+      }
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getString(2131692397), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
-        return;
+        a(paramView.getChildAt(i), paramArrayList);
+        i += 1;
       }
-      paramView = (alxt)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app.a(34);
-      if (paramView != null) {
-        paramView.a(3, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-      PhoneUnityBindInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131719773, 1000L, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
-      return;
-    case 1: 
-      if (!bdee.d(paramView))
-      {
-        PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131694829);
-        return;
-      }
-      paramView = new Intent(paramView, BindNumberActivity.class);
-      paramView.putExtra("cmd_param_is_from_uni", true);
-      paramView.putExtra("cmd_param_is_from_change_bind", true);
-      paramView.putExtra("kNeedUnbind", true);
-      paramView.putExtra("kUnityOther", true);
-      paramView.putExtra("kSrouce", this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.startActivityForResult(paramView, 1004);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC9", "0X8009EC9", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bhpy.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
-      return;
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009ECA", "0X8009ECA", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhpy.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentView();
+    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new ArrayList();
+      a(localView, (ArrayList)localObject1);
+      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
+    }
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (View)((Iterator)localObject1).next();
+      if ((localObject2 instanceof FPSXListView)) {
+        ((FPSXListView)localObject2).b(paramBoolean);
+      } else if ((localObject2 instanceof FPSSwipListView)) {
+        ((FPSSwipListView)localObject2).a(paramBoolean);
+      }
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    a(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    a(true);
   }
 }
 

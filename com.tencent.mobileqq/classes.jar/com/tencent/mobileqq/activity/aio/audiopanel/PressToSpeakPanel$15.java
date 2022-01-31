@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -45,20 +45,20 @@ class PressToSpeakPanel$15
     }
     Object localObject = PressToSpeakPanel.a(this.this$0).a();
     int i = PressToSpeakPanel.a(this.this$0).a().getTitleBarHeight();
-    bark.a = SystemClock.uptimeMillis();
+    bavt.a = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      QQToast.a(BaseApplication.getContext(), 2131693701, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131693703, 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).n())
     {
-      QQToast.a(BaseApplication.getContext(), alpo.a(2131708790), 0).b(i);
+      QQToast.a(BaseApplication.getContext(), alud.a(2131708802), 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).c())
     {
-      QQToast.a(BaseApplication.getContext(), 2131695680, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131695682, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))

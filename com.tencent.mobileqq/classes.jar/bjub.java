@@ -1,8 +1,6 @@
 public abstract interface bjub
 {
-  public abstract void aL();
-  
-  public abstract void aM();
+  public abstract void a(int paramInt);
 }
 
 

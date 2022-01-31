@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
-import awbw;
-import awbx;
-import awmr;
+import alto;
+import awgf;
+import awgg;
+import awra;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.QZoneCover;
@@ -15,7 +15,7 @@ class FriendProfileCardActivity$54
   
   public void run()
   {
-    Object localObject = ((aloz)this.this$0.app.getManager(51)).b(this.this$0.app.getCurrentAccountUin());
+    Object localObject = ((alto)this.this$0.app.getManager(51)).b(this.this$0.app.getCurrentAccountUin());
     if (localObject == null) {
       this.this$0.i = "-1";
     }
@@ -23,7 +23,7 @@ class FriendProfileCardActivity$54
     {
       this.this$0.i = "-1";
       return;
-      if (((Card)localObject).lCurrentStyleId == awmr.a)
+      if (((Card)localObject).lCurrentStyleId == awra.a)
       {
         localObject = (QZoneCover)this.this$0.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.this$0.app.getCurrentAccountUin());
         if (localObject != null) {

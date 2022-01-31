@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import aqyo;
-import aqzg;
+import arcx;
+import ardp;
 
 public class TroopFileSearchEngine$1
   implements Runnable
 {
-  public TroopFileSearchEngine$1(aqzg paramaqzg) {}
+  public TroopFileSearchEngine$1(ardp paramardp) {}
   
   public void run()
   {
-    if (!aqzg.a(this.this$0)) {
+    if (!ardp.a(this.this$0)) {
       return;
     }
-    aqzg.a(this.this$0);
-    aqzg.a(this.this$0, aqzg.a(this.this$0).b());
-    aqzg.a(this.this$0, aqzg.a(this.this$0));
+    ardp.a(this.this$0);
+    ardp.a(this.this$0, ardp.a(this.this$0).b());
+    ardp.a(this.this$0, ardp.a(this.this$0));
   }
 }
 

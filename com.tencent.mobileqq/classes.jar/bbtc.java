@@ -1,66 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import java.util.List;
 
-public class bbtc
+public abstract interface bbtc
 {
-  public TroopFileTransferManager.Item a;
-  public String a;
-  ypo jdField_a_of_type_Ypo = new bbte(this);
-  ypu jdField_a_of_type_Ypu = new bbtd(this);
-  public long d;
+  public abstract void a(int paramInt);
   
-  protected bbtc(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    this.d = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
-  }
+  public abstract void a(bbsa parambbsa);
   
-  public static bbtc a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (paramLong == 0L)
-    {
-      bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "getSender. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "getSender. item=null");
-      return null;
-    }
-    if (paramItem.Id == null) {
-      bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "getSender. item.id=null");
-    }
-    return new bbtc(paramLong, paramItem);
-  }
+  public abstract void a(bbsa parambbsa, String paramString);
   
-  public long a()
-  {
-    return this.d;
-  }
+  public abstract void a(List<bbsa> paramList, boolean paramBoolean, String paramString, long paramLong);
   
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
+  public abstract void b(bbsa parambbsa);
   
-  public void j()
-  {
-    QQAppInterface localQQAppInterface = bbra.a();
-    if (localQQAppInterface == null)
-    {
-      bbrc.a("TroopFileUploadFeedsSender", bbrc.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
-      return;
-    }
-    bbrc.c("TroopFileUploadFeedsSender", bbrc.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    ypf.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Ypu);
-  }
+  public abstract void c(bbsa parambbsa);
+  
+  public abstract void d(bbsa parambbsa);
+  
+  public abstract void e(bbsa parambbsa);
 }
 
 

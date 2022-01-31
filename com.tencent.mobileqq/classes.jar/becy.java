@@ -1,18 +1,7 @@
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class becy
-  extends beda
+public class becy
+  implements alpg
 {
-  becy(becv parambecv)
-  {
-    super(parambecv);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

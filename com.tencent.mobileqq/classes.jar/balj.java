@@ -1,20 +1,43 @@
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.aio.media.aio_media.RspLatestPlayingState;
 
-public abstract interface balj
+public class balj
+  extends bajx
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  protected int a;
   
-  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  public balj(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  {
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Int = 0;
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(String paramString, int paramInt);
+  public View a(int paramInt1, baky parambaky, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559171, null);
+      parambaky = new ball(null);
+      parambaky.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367367));
+      parambaky.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367368));
+      paramView.setTag(parambaky);
+    }
+    for (;;)
+    {
+      parambaky.jdField_a_of_type_AndroidWidgetTextView.setText(2131693321);
+      parambaky.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840075);
+      return paramView;
+      parambaky = (ball)paramView.getTag();
+    }
+  }
 }
 
 

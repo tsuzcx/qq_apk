@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.studyroom.webview;
 
-import awbx;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -23,7 +23,7 @@ public class StudyRoomAppInterface
     return getAccount();
   }
   
-  public awbx getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     return null;
   }

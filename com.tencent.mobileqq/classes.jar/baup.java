@@ -1,20 +1,18 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
-
-public class baup
-  extends NativeGifImage
+class baup
+  extends alwx
 {
-  public baup(bauo parambauo, File paramFile, boolean paramBoolean, float paramFloat)
-  {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-  }
+  baup(bauo parambauo) {}
   
-  public void executeNewTask()
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
   {
-    if (this.mCurrentFrameIndex >= 1) {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalwy);
+    if (paramBoolean)
+    {
+      this.a.e();
       return;
     }
-    super.executeNewTask();
+    this.a.d();
   }
 }
 

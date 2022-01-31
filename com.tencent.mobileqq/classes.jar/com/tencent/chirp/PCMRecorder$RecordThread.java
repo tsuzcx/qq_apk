@@ -41,14 +41,14 @@ class PCMRecorder$RecordThread
     //   51: if_icmpeq +60 -> 111
     //   54: aload_0
     //   55: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   58: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzdb;
+    //   58: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzhq;
     //   61: iconst_m1
     //   62: invokeinterface 61 2 0
     //   67: aload_0
     //   68: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   71: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   74: iconst_0
-    //   75: invokestatic 69	bdaz:a	(Landroid/content/Context;Z)Z
+    //   75: invokestatic 69	bdfi:a	(Landroid/content/Context;Z)Z
     //   78: pop
     //   79: aload_3
     //   80: ifnull +7 -> 87
@@ -70,7 +70,7 @@ class PCMRecorder$RecordThread
     //   112: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   115: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   118: iconst_1
-    //   119: invokestatic 69	bdaz:a	(Landroid/content/Context;Z)Z
+    //   119: invokestatic 69	bdfi:a	(Landroid/content/Context;Z)Z
     //   122: pop
     //   123: aload_3
     //   124: invokevirtual 80	android/media/AudioRecord:startRecording	()V
@@ -105,7 +105,7 @@ class PCMRecorder$RecordThread
     //   176: if_icmpne -36 -> 140
     //   179: aload_0
     //   180: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   183: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzdb;
+    //   183: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzhq;
     //   186: aload 4
     //   188: invokeinterface 90 2 0
     //   193: iconst_0
@@ -115,7 +115,7 @@ class PCMRecorder$RecordThread
     //   199: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   202: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   205: iconst_0
-    //   206: invokestatic 69	bdaz:a	(Landroid/content/Context;Z)Z
+    //   206: invokestatic 69	bdfi:a	(Landroid/content/Context;Z)Z
     //   209: pop
     //   210: aload_3
     //   211: ifnull +7 -> 218
@@ -145,18 +145,18 @@ class PCMRecorder$RecordThread
     //   259: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   262: aload_0
     //   263: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   266: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzdb;
+    //   266: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzhq;
     //   269: ifnull +17 -> 286
     //   272: aload_0
     //   273: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   276: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzdb;
+    //   276: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lzhq;
     //   279: bipush 254
     //   281: invokeinterface 61 2 0
     //   286: aload_0
     //   287: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   290: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   293: iconst_0
-    //   294: invokestatic 69	bdaz:a	(Landroid/content/Context;Z)Z
+    //   294: invokestatic 69	bdfi:a	(Landroid/content/Context;Z)Z
     //   297: pop
     //   298: aload_3
     //   299: ifnull +7 -> 306
@@ -181,7 +181,7 @@ class PCMRecorder$RecordThread
     //   335: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   338: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   341: iconst_0
-    //   342: invokestatic 69	bdaz:a	(Landroid/content/Context;Z)Z
+    //   342: invokestatic 69	bdfi:a	(Landroid/content/Context;Z)Z
     //   345: pop
     //   346: aload_3
     //   347: ifnull +7 -> 354

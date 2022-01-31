@@ -1,14 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class awpg
-  implements apqa
+public class awpg
+  extends altm
 {
-  public List<apsm> a(boolean paramBoolean1, boolean paramBoolean2)
+  public awpg(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new apsm(7, 7, null));
-    return localArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    }
+    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    {
+      PersonalityLabelGalleryActivity.a(this.a, bdgc.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
+        PersonalityLabelGalleryActivity.d(this.a);
+      }
+    }
   }
 }
 

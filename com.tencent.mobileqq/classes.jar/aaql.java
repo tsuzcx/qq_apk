@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aaql
-  implements View.OnClickListener
+class aaql
+  extends BroadcastReceiver
 {
-  public aaql(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
+  private aaql(aaqj paramaaqj) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
+    if (i == 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aase.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
+      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (aaqj.a(this.a) != null)) {
+        aaqj.a(this.a).a(new Object[0]);
+      }
+      return;
     }
   }
 }

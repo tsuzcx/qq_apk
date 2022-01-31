@@ -1,33 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class awpl
-  extends RecyclerView.OnScrollListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public awpl(StickyNoteShopLayout paramStickyNoteShopLayout) {}
+  public awpl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0)
-    {
-      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
-      int i = 0;
-      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
-      {
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
-        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
-        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
-      }
-      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
-      {
-        this.a.a(true);
-        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
-      }
-    }
+    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

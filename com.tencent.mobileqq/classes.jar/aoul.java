@@ -1,59 +1,49 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aoul
+  extends aouf<aoui>
 {
-  private String a = "";
-  private String b = "";
-  
-  public static aoul a(aogf[] paramArrayOfaogf)
+  @NonNull
+  public static aoui c()
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      paramArrayOfaogf = null;
+    aoui localaoui2 = (aoui)aoks.a().a(541);
+    aoui localaoui1 = localaoui2;
+    if (localaoui2 == null) {
+      localaoui1 = aoui.a();
     }
-    aoul localaoul;
-    for (;;)
-    {
-      return paramArrayOfaogf;
-      localaoul = new aoul();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].a);
-        if (localJSONObject.has("AndroidDrawerJumpURL"))
-        {
-          localaoul.a = localJSONObject.getString("AndroidDrawerJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localaoul.a);
-          }
-        }
-        paramArrayOfaogf = localaoul;
-        if (localJSONObject.has("AndroidAioJumpURL"))
-        {
-          localaoul.b = localJSONObject.getString("AndroidAioJumpURL");
-          paramArrayOfaogf = localaoul;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localaoul.b);
-            return localaoul;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfaogf)
-      {
-        paramArrayOfaogf.printStackTrace();
-      }
-    }
-    return localaoul;
+    return localaoui1;
   }
   
-  public String a()
+  public int a()
   {
-    if (TextUtils.isEmpty(this.a)) {
-      return null;
+    return 541;
+  }
+  
+  @NonNull
+  public aoui a()
+  {
+    return aoui.a();
+  }
+  
+  @NonNull
+  public aoui a(@NonNull aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaoko[0].a);
     }
-    return this.a;
+    return aoui.a(paramArrayOfaoko[0].a);
+  }
+  
+  public Class<aoui> a()
+  {
+    return aoui.class;
+  }
+  
+  @NonNull
+  public aoui b()
+  {
+    return aoui.a();
   }
 }
 

@@ -1,76 +1,83 @@
-import android.media.MediaFormat;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import java.io.File;
+import java.net.URI;
 
 public class xiy
-  extends alko
+  extends xit<xiw>
 {
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  ImageView a;
   
-  public xiy(AppInterface paramAppInterface)
+  private xiy(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramAppInterface);
+    super(paramContext, paramViewGroup);
   }
   
-  public MediaFormat a()
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
+    paramViewGroup = new RelativeLayout(paramContext);
+    paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.a = new ImageView(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramViewGroup.addView(this.a);
+    return paramViewGroup;
   }
   
-  public LocalMediaInfo a(String paramString)
+  public void a(xiw paramxiw, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    super.a(paramxiw, paramInt);
+    Object localObject = paramxiw.a.a;
+    if ((localObject != null) && (localObject.length > 0))
+    {
+      localObject = localObject[0];
+      if ((localObject != null) && (((uwx)localObject).jdField_a_of_type_Int == 1))
+      {
+        localObject = ((uwx)localObject).jdField_a_of_type_Uww;
+        if (localObject != null)
+        {
+          float f = xcp.a(this.a.getResources()) / ((uww)localObject).d;
+          paramxiw = new File(paramxiw.c, ((uww)localObject).jdField_a_of_type_JavaLangString);
+          xer.a().a(this.a.getContext(), this.a, paramxiw.toURI().toString(), (int)(((uww)localObject).b * f), (int)(((uww)localObject).c * f), null);
+          paramxiw = new RelativeLayout.LayoutParams((int)(((uww)localObject).b * f), (int)(((uww)localObject).c * f));
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x1) != 0) {
+            paramxiw.addRule(9);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x2) != 0) {
+            paramxiw.addRule(10);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x4) != 0) {
+            paramxiw.addRule(11);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x8) != 0) {
+            paramxiw.addRule(12);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x10) != 0) {
+            paramxiw.addRule(14);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x20) != 0) {
+            paramxiw.addRule(15);
+          }
+          if ((((uww)localObject).jdField_a_of_type_Int & 0x40) != 0) {
+            paramxiw.addRule(13);
+          }
+          if ((((uww)localObject).jdField_a_of_type_ArrayOfInt != null) && (((uww)localObject).jdField_a_of_type_ArrayOfInt.length >= 4))
+          {
+            paramxiw.leftMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[0] * f));
+            paramxiw.topMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[1] * f));
+            paramxiw.rightMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[2] * f));
+            paramxiw.bottomMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[3] * f));
+          }
+          this.a.setLayoutParams(paramxiw);
+        }
+      }
     }
-    return null;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
-    }
-  }
-  
-  public void a(MediaFormat paramMediaFormat)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
-  }
-  
-  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

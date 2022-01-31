@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import alza;
+import amdp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import arcq;
-import arcr;
-import arcs;
-import arct;
-import arcu;
-import arcv;
-import arcw;
-import arcx;
-import azmj;
-import baps;
-import bapv;
-import bapw;
-import baqy;
-import bash;
-import bdee;
+import argz;
+import arha;
+import arhb;
+import arhc;
+import arhd;
+import arhe;
+import arhf;
+import arhg;
+import azqs;
+import baub;
+import baue;
+import bauf;
+import bavh;
+import bawq;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kwstudio.office.base.IGlobal;
 import com.tencent.kwstudio.office.base.ILog;
@@ -46,25 +46,25 @@ import mqq.os.MqqHandler;
 public final class TdsReaderGlobal
   implements IHostInterface
 {
-  private static final bash jdField_a_of_type_Bash = new bash();
+  private static final bawq jdField_a_of_type_Bawq = new bawq();
   private static final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static volatile boolean jdField_a_of_type_Boolean;
   private static volatile boolean jdField_b_of_type_Boolean;
   private static volatile boolean c;
-  private volatile bapv jdField_a_of_type_Bapv;
-  private volatile bapw jdField_a_of_type_Bapw;
+  private volatile baue jdField_a_of_type_Baue;
+  private volatile bauf jdField_a_of_type_Bauf;
   private final BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   private volatile Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
   private volatile Executor jdField_b_of_type_JavaUtilConcurrentExecutor;
   
   static
   {
-    bash localbash = jdField_a_of_type_Bash;
-    localbash.d /= 2;
-    localbash = jdField_a_of_type_Bash;
-    localbash.e /= 2;
-    localbash = jdField_a_of_type_Bash;
-    localbash.f /= 2;
+    bawq localbawq = jdField_a_of_type_Bawq;
+    localbawq.d /= 2;
+    localbawq = jdField_a_of_type_Bawq;
+    localbawq.e /= 2;
+    localbawq = jdField_a_of_type_Bawq;
+    localbawq.f /= 2;
   }
   
   private TdsReaderGlobal(BaseApplicationImpl paramBaseApplicationImpl)
@@ -72,31 +72,31 @@ public final class TdsReaderGlobal
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
   }
   
-  private bapv a()
+  private baue a()
   {
     try
     {
-      if (this.jdField_a_of_type_Bapv == null)
+      if (this.jdField_a_of_type_Baue == null)
       {
-        localObject1 = new HttpCommunicator(new arcs(null), 128);
+        localObject1 = new HttpCommunicator(new arhb(null), 128);
         ((HttpCommunicator)localObject1).a();
-        this.jdField_a_of_type_Bapv = new baqy((HttpCommunicator)localObject1, true);
+        this.jdField_a_of_type_Baue = new bavh((HttpCommunicator)localObject1, true);
       }
-      Object localObject1 = this.jdField_a_of_type_Bapv;
+      Object localObject1 = this.jdField_a_of_type_Baue;
       return localObject1;
     }
     finally {}
   }
   
-  private bapw a()
+  private bauf a()
   {
     try
     {
-      if (this.jdField_a_of_type_Bapw == null) {
-        this.jdField_a_of_type_Bapw = new arcq(null);
+      if (this.jdField_a_of_type_Bauf == null) {
+        this.jdField_a_of_type_Bauf = new argz(null);
       }
-      bapw localbapw = this.jdField_a_of_type_Bapw;
-      return localbapw;
+      bauf localbauf = this.jdField_a_of_type_Bauf;
+      return localbauf;
     }
     finally {}
   }
@@ -111,7 +111,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = alza.a(64);
+        this.jdField_a_of_type_JavaUtilConcurrentExecutor = amdp.a(64);
       }
       Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -213,7 +213,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_b_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor = alza.a(128);
+        this.jdField_b_of_type_JavaUtilConcurrentExecutor = amdp.a(128);
       }
       Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -250,13 +250,13 @@ public final class TdsReaderGlobal
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
       str2 = (String)paramArrayOfObject[2];
       localObject = (IHostInterface.IHttpListener)paramArrayOfObject[3];
-      if (bdee.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (bdin.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (localObject == null);
     ((IHostInterface.IHttpListener)localObject).onResponse(9004, null);
     return;
-    paramArrayOfObject = new baps();
+    paramArrayOfObject = new baub();
     paramArrayOfObject.jdField_a_of_type_JavaLangString = str1;
     if (bool) {
       i = 1;
@@ -265,7 +265,7 @@ public final class TdsReaderGlobal
     paramArrayOfObject.e = 1;
     paramArrayOfObject.o = true;
     paramArrayOfObject.jdField_c_of_type_Long = 5000L;
-    paramArrayOfObject.jdField_a_of_type_Bapx = new arcv(str1, (IHostInterface.IHttpListener)localObject, null);
+    paramArrayOfObject.jdField_a_of_type_Baug = new arhe(str1, (IHostInterface.IHttpListener)localObject, null);
     Object localObject = getUserId();
     String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
     localObject = "uin=" + (String)localObject + ";skey=" + str3;
@@ -291,22 +291,22 @@ public final class TdsReaderGlobal
       str2 = (String)paramArrayOfObject[1];
       str3 = (String)paramArrayOfObject[2];
       paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (bdee.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (bdin.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (paramArrayOfObject == null);
     paramArrayOfObject.onDownloadFinished(str1, false, 9004);
     return;
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_JavaLangString = str2;
-    localbaps.jdField_c_of_type_JavaLangString = str3;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.e = 1;
-    localbaps.o = true;
-    localbaps.jdField_a_of_type_Bash = jdField_a_of_type_Bash.a();
-    localbaps.jdField_a_of_type_Bapw = a();
-    localbaps.jdField_a_of_type_Bapx = new arcu(str1, paramArrayOfObject, null);
-    a().a(localbaps);
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_JavaLangString = str2;
+    localbaub.jdField_c_of_type_JavaLangString = str3;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.e = 1;
+    localbaub.o = true;
+    localbaub.jdField_a_of_type_Bawq = jdField_a_of_type_Bawq.a();
+    localbaub.jdField_a_of_type_Bauf = a();
+    localbaub.jdField_a_of_type_Baug = new arhd(str1, paramArrayOfObject, null);
+    a().a(localbaub);
   }
   
   public void commitPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -321,12 +321,12 @@ public final class TdsReaderGlobal
   
   public IGlobal createGlobal()
   {
-    return new arcr(this, null);
+    return new arha(this, null);
   }
   
   public ILog createLog()
   {
-    return new arct(null);
+    return new arhc(null);
   }
   
   public Object createRecyclerView(Context paramContext)
@@ -342,12 +342,12 @@ public final class TdsReaderGlobal
       ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
       if (paramIWebClient != null)
       {
-        localProtectedWebView.setWebChromeClient(new arcw(paramIWebClient, null));
+        localProtectedWebView.setWebChromeClient(new arhf(paramIWebClient, null));
         localObject = paramContext;
         if (paramContext == null) {
           localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
         }
-        localProtectedWebView.setWebViewClient(new arcx((Context)localObject, paramIWebClient, null));
+        localProtectedWebView.setWebViewClient(new arhg((Context)localObject, paramIWebClient, null));
       }
       paramContext = localProtectedWebView.getX5WebViewExtension();
       if (paramContext != null)
@@ -404,7 +404,7 @@ public final class TdsReaderGlobal
     }
     for (;;)
     {
-      azmj.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
+      azqs.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
       return;
     }
   }

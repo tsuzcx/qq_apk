@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.minigame.task;
 
 import android.os.Bundle;
-import bgpn;
-import bgvg;
-import bgvh;
-import bgwc;
+import bgtu;
+import bgzn;
+import bgzo;
+import bhaj;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InstalledEngineLoadTask$1
   implements Runnable
 {
-  public InstalledEngineLoadTask$1(bgvg parambgvg) {}
+  public InstalledEngineLoadTask$1(bgzn parambgzn) {}
   
   public void run()
   {
-    bgwc.a().i(bgvg.a(this.this$0), "[MiniEng]rebindChannelIfNecessary ackCount:" + bgvg.a(this.this$0).get());
-    if (bgvg.a(this.this$0).get() < 1)
+    bhaj.a().i(bgzn.a(this.this$0), "[MiniEng]rebindChannelIfNecessary ackCount:" + bgzn.a(this.this$0).get());
+    if (bgzn.a(this.this$0).get() < 1)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("bundle_key_app_type", 1);
-      bgpn.a().a("cmd_rebind_engine_channel", localBundle, new bgvh(this));
+      bgtu.a().a("cmd_rebind_engine_channel", localBundle, new bgzo(this));
     }
   }
 }

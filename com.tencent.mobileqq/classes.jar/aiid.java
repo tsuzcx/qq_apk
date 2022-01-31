@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aiid
-  implements DialogInterface.OnDismissListener
+class aiid
+  implements View.OnClickListener
 {
-  public aiid(DialogBaseActivity paramDialogBaseActivity) {}
+  aiid(aihy paramaihy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
-    }
-    this.a.a = null;
+    aihy.a(this.a, paramView);
+    this.a.dismiss();
   }
 }
 

@@ -41,7 +41,7 @@ public class ScreenShareFloatingWindowService
     try
     {
       LayoutInflater localLayoutInflater = (LayoutInflater)getSystemService("layout_inflater");
-      this.jdField_a_of_type_ComTencentAvScreenshareFloatingwindowScreenShareFloatingRelativeLayout = ((ScreenShareFloatingRelativeLayout)localLayoutInflater.inflate(2131559630, null));
+      this.jdField_a_of_type_ComTencentAvScreenshareFloatingwindowScreenShareFloatingRelativeLayout = ((ScreenShareFloatingRelativeLayout)localLayoutInflater.inflate(2131559629, null));
       this.jdField_a_of_type_ComTencentAvScreenshareFloatingwindowScreenShareFloatingRelativeLayout.setFloatListener(this);
       this.jdField_a_of_type_Lyn = new lyn(this, this.jdField_a_of_type_ComTencentAvScreenshareFloatingwindowScreenShareFloatingRelativeLayout);
       a(this.jdField_a_of_type_Lyn.a());

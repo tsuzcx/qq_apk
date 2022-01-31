@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjmk;
+import bjqr;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new bjmk();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new bjqr();
   public static final String SSOSEQ_KEY = "_ssoSeqKey";
   private static final String tag = "RecvMsg";
   public Bundle extraData = new Bundle();

@@ -1,33 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
 class ahfo
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
+  ahfo(ahfn paramahfn) {}
   
-  ahfo(ahfm paramahfm) {}
-  
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.jdField_a_of_type_Ahfm.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
-    {
-      ahfp.a().b(ahfm.a(this.jdField_a_of_type_Ahfm), str);
-      this.jdField_a_of_type_Ahfm.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
     }
-    while ((paramView != this.jdField_a_of_type_AndroidViewView) || (ahfm.a(this.jdField_a_of_type_Ahfm) == null)) {
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (ampk.a("recommend_troop") == null)
+    {
+      ampk.a(new ahfp(this, "recommend_troop"));
       return;
     }
-    ahfm.a(this.jdField_a_of_type_Ahfm).a(str);
+    this.a.a.jdField_a_of_type_Ahfe.a(false);
   }
 }
 

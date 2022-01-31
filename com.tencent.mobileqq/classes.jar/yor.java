@@ -1,49 +1,23 @@
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
 class yor
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  yor(yom paramyom, DisplayMetrics paramDisplayMetrics) {}
+  yor(yoq paramyoq, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Yom.c = false;
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Yom.c = false;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    float f1 = paramURLDrawable.getIntrinsicHeight();
-    float f2 = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable = this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = 0;
-    if (f2 != 0.0F) {
-      if (f1 <= bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
-        break label109;
-      }
-    }
-    label109:
-    for (i = (int)bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
+    if (this.jdField_a_of_type_Int < yoq.a(this.jdField_a_of_type_Yoq).size())
     {
-      if (i > 0)
-      {
-        paramURLDrawable.height = i;
-        this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
+      yoq.b(this.jdField_a_of_type_Yoq).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Yoq.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Yoq.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Yoq.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Yoq.a).a(yoq.c(this.jdField_a_of_type_Yoq).size());
       }
-      return;
     }
   }
 }

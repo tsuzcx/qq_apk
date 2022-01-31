@@ -1,19 +1,29 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class vok
-  implements vrk
+public final class vok
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public final ViewPager.PageTransformer a;
-  
-  public vok(ViewPager.PageTransformer paramPageTransformer)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.a = paramPageTransformer;
+    synchronized ()
+    {
+      voo localvoo = voi.a();
+      voi.a().post(new TVKPreloader.2.2(this, localvoo, paramString1, paramInt, paramString2));
+      return;
+    }
   }
   
-  public void a(View paramView, float paramFloat)
+  public void onPreLoadSucess(String arg1, String paramString2)
   {
-    this.a.transformPage(paramView, paramFloat);
+    synchronized ()
+    {
+      paramString2 = voi.a();
+      voi.a().post(new TVKPreloader.2.1(this, paramString2));
+      return;
+    }
   }
 }
 

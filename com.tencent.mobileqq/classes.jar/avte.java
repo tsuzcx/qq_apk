@@ -1,22 +1,38 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.view.View.OnTouchListener;
 
-public class avte
-  implements View.OnClickListener
+class avte
+  implements View.OnTouchListener
 {
-  public avte(ScanOcrActivity paramScanOcrActivity) {}
+  private avte(avtc paramavtc) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
-    {
-      ScanOcrActivity.a(this.a).a();
-      ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
-      return;
+    boolean bool3 = true;
+    boolean bool2 = false;
+    int i = paramMotionEvent.getAction();
+    Object localObject = this.a;
+    boolean bool1 = bool3;
+    if (i != 1) {
+      if (i != 3) {
+        break label105;
+      }
     }
-    this.a.finish();
+    label105:
+    for (bool1 = bool3;; bool1 = false)
+    {
+      ((avtc)localObject).b = bool1;
+      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
+        this.a.a();
+      }
+      localObject = this.a.jdField_a_of_type_Avtb.a();
+      bool1 = bool2;
+      if (localObject != null) {
+        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
+      }
+      return bool1;
+    }
   }
 }
 

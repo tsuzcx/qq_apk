@@ -70,7 +70,7 @@ public class orz
       if (this.g)
       {
         localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+        if (bkbq.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
           break label286;
         }
       }
@@ -140,7 +140,7 @@ public class orz
     }
     catch (JSONException localJSONException)
     {
-      aekt.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramLong));
+      aepi.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramLong));
     }
     return this;
   }
@@ -154,7 +154,7 @@ public class orz
     }
     catch (JSONException localJSONException)
     {
-      aekt.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramObject));
+      aepi.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramObject));
     }
     return this;
   }
@@ -178,7 +178,7 @@ public class orz
       }
       catch (JSONException localJSONException)
       {
-        aekt.a("ReadInJoyUtils", "", new IllegalArgumentException(str + " : " + localObject));
+        aepi.a("ReadInJoyUtils", "", new IllegalArgumentException(str + " : " + localObject));
       }
     }
     return this;
@@ -228,7 +228,7 @@ public class orz
     }
     catch (JSONException localJSONException)
     {
-      aekt.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramInt));
+      aepi.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramInt));
     }
     return this;
   }
@@ -242,7 +242,7 @@ public class orz
     }
     catch (JSONException localJSONException)
     {
-      aekt.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString1 + " : " + paramString2));
+      aepi.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString1 + " : " + paramString2));
     }
     return this;
   }
@@ -422,7 +422,7 @@ public class orz
   public orz l()
   {
     JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (bdee.h(null)) {}
+    if (bdin.h(null)) {}
     for (int j = 2;; j = 1)
     {
       localJSONObject.put("network_type", j);

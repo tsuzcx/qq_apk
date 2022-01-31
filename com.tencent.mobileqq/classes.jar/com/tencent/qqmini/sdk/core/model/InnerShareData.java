@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.model;
 
 import android.app.Activity;
-import bgjo;
+import bgnv;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
@@ -46,12 +46,12 @@ public class InnerShareData
   
   public void a()
   {
-    bgjo.a().a(this);
+    bgnv.a().a(this);
   }
   
   public void b()
   {
-    bgjo.a().c(this);
+    bgnv.a().c(this);
   }
 }
 

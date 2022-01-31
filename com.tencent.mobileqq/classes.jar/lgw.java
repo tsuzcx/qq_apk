@@ -3,13 +3,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class lgw
-  implements bapx
+  implements baug
 {
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
     boolean bool = false;
-    String str1 = (String)parambaqw.jdField_a_of_type_Baqv.a();
-    if (parambaqw.jdField_a_of_type_Int == 0) {
+    String str1 = (String)parambavf.jdField_a_of_type_Bave.a();
+    if (parambavf.jdField_a_of_type_Int == 0) {
       bool = true;
     }
     try
@@ -23,7 +23,7 @@ public class lgw
       }
       if (!bool)
       {
-        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + parambaqw.jdField_a_of_type_Int + "]");
+        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + parambavf.jdField_a_of_type_Int + "]");
         return;
       }
     }
@@ -31,19 +31,19 @@ public class lgw
     try
     {
       String str2 = DeviceCapabilityExamination.b(str1);
-      bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, str2, false);
-      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-      parambaqw = new File(DeviceCapabilityExamination.a(str1));
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + parambaqw.exists() + "]");
+      bdhb.a(parambavf.jdField_a_of_type_Bave.c, str2, false);
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      parambavf = new File(DeviceCapabilityExamination.a(str1));
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + parambavf.exists() + "]");
       return;
     }
-    catch (Exception parambaqw)
+    catch (Exception parambavf)
     {
       QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

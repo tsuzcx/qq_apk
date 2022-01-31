@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bjyv;
+import bkdc;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$3
@@ -8,7 +8,7 @@ public class TroopHWFileDownloadManager$3
 {
   public void run()
   {
-    bjyv.a(this.this$0).cancelDownloadTask(this.a);
+    bkdc.a(this.this$0).cancelDownloadTask(this.a);
   }
 }
 

@@ -1,19 +1,8 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-
-public class becn
+public abstract interface becn
 {
-  public static final WebAccelerateHelper.CommonJsPluginFactory a = new beco();
+  public abstract void a(int paramInt, String paramString);
   
-  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
-  {
-    switch (paramIntent.getIntExtra("web_view_module_from", -1))
-    {
-    default: 
-      return null;
-    }
-    return a;
-  }
+  public abstract void a(bece parambece);
 }
 
 

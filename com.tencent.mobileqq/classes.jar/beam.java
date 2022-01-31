@@ -1,151 +1,136 @@
-import android.os.Bundle;
-import android.util.LruCache;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraper.1;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xbcb.CheckUrlRsp;
-import tencent.im.oidb.oidb_0xbcb.RspBody;
-import tencent.im.oidb.oidb_0xbcb.UrlCheckResult;
+import com.tencent.util.Pair;
+import dualsim.common.OrderCheckResult;
+import mqq.os.MqqHandler;
 
-class beam
-  extends nac
+public class beam
 {
-  beam(beai parambeai, beao parambeao, int paramInt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static SharedPreferences a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive 0xbcb_0 code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    return BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_sdk", 4);
+  }
+  
+  protected static Pair<Boolean, Integer> a()
+  {
+    SharedPreferences localSharedPreferences = a();
+    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
+  }
+  
+  protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
+  {
+    Object localObject = a();
+    boolean bool;
+    int j;
+    int i;
+    if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
     {
-      if (!QLog.isColorLevel()) {
-        break label626;
+      localObject = ((SharedPreferences)localObject).edit().putInt("kingCardProduct", paramOrderCheckResult.product);
+      if (paramOrderCheckResult.kingcard > 0)
+      {
+        bool = true;
+        ((SharedPreferences.Editor)localObject).putBoolean("kingCard", bool).apply();
       }
-      if (paramArrayOfByte == null) {
-        break label620;
+    }
+    else
+    {
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
+      j = paramString.getInt("kingCardSdk", -1);
+      if (paramOrderCheckResult.kingcard != 0) {
+        break label163;
       }
+      i = -1;
     }
     for (;;)
     {
-      Object localObject;
-      try
+      if (j == i) {
+        break label195;
+      }
+      paramString.edit().putInt("kingCardSdk", i).putInt("toast_version", 0).putInt("popup_version_v2", 0).commit();
+      return true;
+      bool = false;
+      break;
+      label163:
+      if (paramOrderCheckResult.kingcard == 1)
       {
-        paramBundle = ((oidb_0xbcb.RspBody)new oidb_0xbcb.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("urlSecMgr", 2, paramArrayOfByte);
-          paramArrayOfByte = null;
-          if (this.jdField_a_of_type_Beao != null)
-          {
-            paramBundle = new Bundle();
-            if ((this.jdField_a_of_type_Int == 1) && (paramArrayOfByte != null))
-            {
-              paramBundle.putInt("result", paramArrayOfByte.jdField_a_of_type_Int);
-              paramBundle.putInt("jumpResult", paramArrayOfByte.jdField_b_of_type_Int);
-              paramBundle.putString("jumpUrl", paramArrayOfByte.jdField_a_of_type_JavaLangString);
-              paramBundle.putInt("level", paramArrayOfByte.c);
-              paramBundle.putInt("subLevel", paramArrayOfByte.d);
-              paramBundle.putInt("umrType", paramArrayOfByte.e);
-              paramBundle.putInt("retFrom", paramArrayOfByte.f);
-              paramBundle.putLong("operationBit", paramArrayOfByte.jdField_b_of_type_Long);
-            }
-            this.jdField_a_of_type_Beao.a(paramBundle);
-          }
-          return;
+        if (paramOrderCheckResult.product == 90155946) {
+          i = 2;
+        } else {
+          i = 1;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      oidb_0xbcb.RspBody localRspBody = new oidb_0xbcb.RspBody();
-      for (;;)
-      {
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.i("urlSecMgr", 2, "parse 0xbcb_0 result msg=" + localRspBody.wording.get() + ", count=" + localRspBody.check_url_rsp.results.size());
-          }
-          l1 = NetConnInfoCenter.getServerTimeMillis();
-          l2 = localRspBody.check_url_rsp.next_req_duration.get();
-          int i = localRspBody.check_url_rsp.results.size();
-          paramArrayOfByte = null;
-          paramInt = 0;
-          if (paramInt < i) {
-            paramBundle = paramArrayOfByte;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-        {
-          long l1;
-          long l2;
-          oidb_0xbcb.UrlCheckResult localUrlCheckResult;
-          String str;
-          paramBundle = null;
-        }
-        try
-        {
-          localUrlCheckResult = (oidb_0xbcb.UrlCheckResult)localRspBody.check_url_rsp.results.get(paramInt);
-          paramBundle = paramArrayOfByte;
-          str = localUrlCheckResult.url.get();
-          paramBundle = paramArrayOfByte;
-          localObject = new bean(null);
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).jdField_a_of_type_Long = (l2 * 1000L + l1);
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).jdField_a_of_type_Int = localUrlCheckResult.result.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).jdField_b_of_type_Int = localUrlCheckResult.jump_result.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).jdField_a_of_type_JavaLangString = localUrlCheckResult.jump_url.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).c = localUrlCheckResult.uint32_level.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).d = localUrlCheckResult.uint32_sub_level.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).e = localUrlCheckResult.uint32_umrtype.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).f = localUrlCheckResult.ret_from.get();
-          paramBundle = paramArrayOfByte;
-          ((bean)localObject).jdField_b_of_type_Long = localUrlCheckResult.operation_bit.get();
-          if (paramInt == 0) {
-            paramArrayOfByte = (byte[])localObject;
-          }
-          paramBundle = paramArrayOfByte;
-          this.jdField_a_of_type_Beai.a.put(str, localObject);
-          paramInt += 1;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-        {
-          label592:
-          break label592;
-        }
-      }
-      continue;
-      paramArrayOfByte = paramBundle;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("urlSecMgr", 2, "parse error", localInvalidProtocolBufferMicroException1);
-        paramArrayOfByte = paramBundle;
-        continue;
-        label620:
-        paramBundle = "";
-        continue;
-        label626:
-        paramArrayOfByte = null;
+      else {
+        i = 0;
       }
     }
+    label195:
+    return false;
+  }
+  
+  protected static boolean c()
+  {
+    return a().getBoolean("supportActivationView", false);
+  }
+  
+  String a()
+  {
+    return "KC.KCWraper";
+  }
+  
+  void a(ViewGroup paramViewGroup) {}
+  
+  void a(beaw parambeaw, boolean paramBoolean)
+  {
+    if (parambeaw != null)
+    {
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraper.1(this, parambeaw));
+      }
+    }
+    else {
+      return;
+    }
+    parambeaw.a(false, false, 0);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : disable kingcard");
+  }
+  
+  public final void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a(), 2, paramString);
+    }
+  }
+  
+  boolean a()
+  {
+    a("isReady : disable kingcard");
+    return false;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  boolean b()
+  {
+    return false;
   }
 }
 

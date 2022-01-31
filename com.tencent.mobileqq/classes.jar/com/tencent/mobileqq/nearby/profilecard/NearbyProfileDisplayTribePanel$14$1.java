@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aups;
-import aupt;
-import avhw;
-import avic;
+import auub;
+import auuc;
+import avmf;
+import avml;
 
 public class NearbyProfileDisplayTribePanel$14$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$14$1(avic paramavic, aups paramaups) {}
+  public NearbyProfileDisplayTribePanel$14$1(avml paramavml, auub paramauub) {}
   
   public void run()
   {
-    aupt.a(this.jdField_a_of_type_Avic.a.a.getAppInterface(), this.jdField_a_of_type_Aups);
+    auuc.a(this.jdField_a_of_type_Avml.a.a.getAppInterface(), this.jdField_a_of_type_Auub);
   }
 }
 

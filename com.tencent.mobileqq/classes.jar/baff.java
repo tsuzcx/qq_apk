@@ -1,151 +1,69 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.1;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.2;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.3;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class baff
-  implements Manager
+  extends bafe
+  implements badl<SpriteNativeView>
 {
-  private int jdField_a_of_type_Int = -1;
-  public long a;
-  private baex jdField_a_of_type_Baex;
-  private bafd jdField_a_of_type_Bafd;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Bitmap a;
+  protected ImageView a;
   
-  public baff(QQAppInterface paramQQAppInterface)
+  public baff(SpriteNativeView paramSpriteNativeView)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bafd = new bafd(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_AndroidWidgetImageView = a();
   }
   
-  private void a(DataLineMsgRecord paramDataLineMsgRecord, String paramString1, String paramString2, String paramString3, aota paramaota)
+  protected ImageView a()
   {
-    if (!this.jdField_a_of_type_Bafd.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "last insert time less");
-      }
-      return;
-    }
-    if (QLog.isDebugVersion()) {
-      QLog.i("DataLineMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
-    }
-    this.jdField_a_of_type_Bafd.a(paramDataLineMsgRecord);
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new DataLineMessageSpreadManager.2(this, paramDataLineMsgRecord, paramString1, paramaota, paramString2, paramString3), 1000L);
+    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
   }
   
-  private boolean a(DataLineMsgRecord paramDataLineMsgRecord)
+  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
   {
-    int i = this.jdField_a_of_type_Bafd.a();
-    int j = aotb.a().a();
-    if (j == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "config is max: 0, return");
-      }
-    }
-    do
-    {
-      return false;
-      if (i <= j) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DataLineMessageSpreadManager", 1, "file count over[" + i + "], return");
-    return false;
-    return true;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
   }
   
-  public void a(aosy paramaosy)
+  public boolean c()
   {
-    this.jdField_a_of_type_Bafd.a(paramaosy);
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    boolean bool = super.c();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      a(this.jdField_a_of_type_Badn);
+      float f1 = this.jdField_a_of_type_Badn.a;
+      float f2 = b();
+      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      float f4 = this.f;
+      float f5 = this.jdField_a_of_type_Badn.b;
+      float f6 = b();
+      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
   }
   
-  public void a(DataLineMsgRecord paramDataLineMsgRecord)
+  public void d()
   {
-    if (QLog.isDebugVersion())
-    {
-      QLog.i("DataLineMessageSpreadManager", 4, "ready to post to SubThread Process， msgUid[" + paramDataLineMsgRecord.msgUid + "], hashCode:" + paramDataLineMsgRecord.hashCode());
-      if (paramDataLineMsgRecord.msgUid == 0L) {
-        arni.a();
-      }
-    }
-    ThreadManager.executeOnSubThread(new DataLineMessageSpreadManager.1(this, paramDataLineMsgRecord));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
-  
-  public void a(DataLineMsgRecord paramDataLineMsgRecord, Context paramContext)
-  {
-    paramDataLineMsgRecord = paramDataLineMsgRecord.getExtInfoFromExtStr("tim_aio_file_msg_uiniseq");
-    try
-    {
-      l = Long.parseLong(paramDataLineMsgRecord);
-      i = DataLineMsgRecord.getDevTypeBySeId(l);
-      paramDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(l);
-      if (paramDataLineMsgRecord == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DataLineMessageSpreadManager", 1, "garyTips not find fileMsg");
-        }
-        return;
-      }
-    }
-    catch (Exception paramDataLineMsgRecord)
-    {
-      long l;
-      int i;
-      for (;;)
-      {
-        QLog.e("DataLineMessageSpreadManager", 1, paramDataLineMsgRecord.toString());
-        l = 0L;
-      }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80098F8", "0X80098F8", 0, 0, "", "", "", "");
-      paramDataLineMsgRecord = paramDataLineMsgRecord.trans2Entity();
-      if (paramDataLineMsgRecord == null)
-      {
-        QLog.e("DataLineMessageSpreadManager", 1, "query Entity is nyll!!!, uniseq[" + l + "]");
-        return;
-      }
-      bacb.a(paramDataLineMsgRecord, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, i);
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramMessageRecord == null)
-    {
-      QLog.e("DataLineMessageSpreadManager", 1, arni.a());
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DataLineMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
-    }
-    ThreadManager.getUIHandler().postDelayed(new DataLineMessageSpreadManager.3(this), 1000L);
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.jdField_a_of_type_Long + "],lstCache size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy() {}
 }
 
 

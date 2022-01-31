@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
 
 public class adef
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adef(MainFragment paramMainFragment) {}
+  public adef(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    {
+      azqs.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      return;
     }
+    azqs.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
   }
 }
 

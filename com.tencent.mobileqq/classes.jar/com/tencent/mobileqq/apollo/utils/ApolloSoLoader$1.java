@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alda;
-import alfz;
+import alhp;
+import alko;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -13,68 +13,68 @@ public final class ApolloSoLoader$1
     long l1 = System.currentTimeMillis();
     try
     {
-      alfz.b();
-      if (alfz.c())
+      alko.b();
+      if (alko.c())
       {
         QLog.i("ApolloSoLoader", 1, "User is doing reinstall operation. Stop loading this time.");
-        alfz.b(1);
+        alko.b(1);
         return;
       }
-      if (!alfz.a(0))
+      if (!alko.a(0))
       {
         QLog.w("ApolloSoLoader", 1, "fail to copy jsc.");
-        alfz.b(0);
+        alko.b(0);
         return;
       }
-      if (!alfz.a(1))
+      if (!alko.a(1))
       {
         QLog.w("ApolloSoLoader", 1, "fail to copy sava.");
-        alfz.b(1);
+        alko.b(1);
         return;
       }
-      boolean bool1 = alfz.d();
-      boolean bool2 = alfz.e();
+      boolean bool1 = alko.d();
+      boolean bool2 = alko.e();
       if ((!bool1) || (!bool2))
       {
         if (!bool1)
         {
-          if (alfz.f()) {
-            alda.a(10, 100, new Object[] { "sava is not exist" });
+          if (alko.f()) {
+            alhp.a(10, 100, new Object[] { "sava is not exist" });
           }
-          alfz.b(1);
+          alko.b(1);
         }
         if (!bool2)
         {
-          if (alfz.f()) {
-            alda.a(10, 100, new Object[] { "jsc is not exist" });
+          if (alko.f()) {
+            alhp.a(10, 100, new Object[] { "jsc is not exist" });
           }
-          alfz.b(0);
+          alko.b(0);
         }
         return;
       }
-      if (!alfz.g())
+      if (!alko.g())
       {
         QLog.w("ApolloSoLoader", 1, "[main loader], FAIL to read script.");
         return;
       }
-      if (alfz.f())
+      if (alko.f())
       {
-        alda.a(10, 100, 0, new Object[] { "so is complete" });
-        alda.a(10, 300);
+        alhp.a(10, 100, 0, new Object[] { "so is complete" });
+        alhp.a(10, 300);
       }
-      if (!alfz.h())
+      if (!alko.h())
       {
         QLog.w("ApolloSoLoader", 1, "[main loader], FAIL to load so.");
         return;
       }
-      alfz.a(true);
-      alfz.a(0);
-      alfz.c();
-      alfz.d();
-      if (alfz.f())
+      alko.a(true);
+      alko.a(0);
+      alko.c();
+      alko.d();
+      if (alko.f())
       {
-        alda.b(10);
-        alda.a(10, false);
+        alhp.b(10);
+        alhp.a(10, false);
       }
       QLog.i("ApolloSoLoader", 1, "[main loader], SUCCEED to load script and so.");
       return;
@@ -82,18 +82,18 @@ public final class ApolloSoLoader$1
     catch (Throwable localThrowable)
     {
       QLog.e("ApolloSoLoader", 1, "[main loader]," + localThrowable);
-      alfz.a(1);
+      alko.a(1);
       return;
     }
     finally
     {
       long l2;
-      if (alfz.i())
+      if (alko.i())
       {
         l2 = System.currentTimeMillis();
         QLog.i("ApolloSoLoader", 1, "[main loader], cost:" + (l2 - l1));
       }
-      alfz.a().set(false);
+      alko.a().set(false);
     }
   }
 }

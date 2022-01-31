@@ -1,10 +1,4 @@
-import java.io.File;
-
-public class blfw
-{
-  public static final String a = bklb.b + File.separator + "ae_editor";
-  public static final String b = a + File.separator + "bgm";
-}
+class blfw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

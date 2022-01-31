@@ -1,16 +1,20 @@
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import java.util.Comparator;
 
-class ajqq
-  implements Comparator<axkn>
+public class ajqq
+  implements Comparator<ajsu>
 {
-  ajqq(ajqp paramajqp) {}
+  public ajqq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(axkn paramaxkn1, axkn paramaxkn2)
+  public int a(ajsu paramajsu1, ajsu paramajsu2)
   {
-    if ((paramaxkn1 != null) && (paramaxkn2 != null)) {
-      return paramaxkn1.b - paramaxkn2.b;
+    if ((paramajsu1.a < paramajsu2.a) || ((paramajsu1.a == paramajsu2.a) && (paramajsu1.b < paramajsu2.b))) {
+      return -1;
     }
-    return -1;
+    if ((paramajsu1.a != paramajsu2.a) || (paramajsu1.b != paramajsu2.b)) {
+      return 1;
+    }
+    return 0;
   }
 }
 

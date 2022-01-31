@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bnfw
-  implements DialogInterface.OnClickListener
+class bnfw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bnfw(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  bnfw(bnfv parambnfv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    bnfv.a(this.a).f = paramBoolean;
   }
 }
 

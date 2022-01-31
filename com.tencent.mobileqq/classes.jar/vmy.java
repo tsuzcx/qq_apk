@@ -1,20 +1,30 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class vmy
-  extends JobSegment<weh, weh>
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public vmy(vmu paramvmu) {}
+  public vmy(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  protected void a(JobContext paramJobContext, weh paramweh)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramweh.a(vmu.a(this.a).a(paramweh.a.feedId, true), true, true);
-    if (paramweh.a()) {
-      paramweh.a(vmu.a(this.a).a(vmu.a(this.a), false), true, false);
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    {
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
+        this.a.a.dismiss();
+      }
     }
-    wsv.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", vmu.a(this.a).toString());
-    notifyResult(paramweh);
+    return false;
   }
 }
 

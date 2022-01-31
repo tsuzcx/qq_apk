@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.video;
 
-import aapa;
+import aatp;
 import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -36,7 +36,7 @@ class GdtVideoCommonView$7
       {
         GdtVideoCommonView.a(this.this$0).setProgress(i);
         GdtVideoCommonView.b(this.this$0).setProgress(i);
-        GdtVideoCommonView.c(this.this$0).setText(aapa.a(l1));
+        GdtVideoCommonView.c(this.this$0).setText(aatp.a(l1));
       }
       GdtVideoCommonView.a(this.this$0).postDelayed(this, 50L);
       return;

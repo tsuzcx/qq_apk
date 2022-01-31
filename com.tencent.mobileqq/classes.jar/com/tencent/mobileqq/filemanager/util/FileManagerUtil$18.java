@@ -6,11 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Build.VERSION;
-import arni;
-import bdcq;
-import bdhy;
-import bdlw;
-import bdlz;
+import arrr;
+import bdgz;
+import bdmh;
+import bdqf;
+import bdqi;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -29,25 +29,25 @@ public final class FileManagerUtil$18
       ((BitmapFactory.Options)localObject1).inSampleSize = 1;
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
       Object localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int, (BitmapFactory.Options)localObject1);
-      int i = bdcq.a(this.jdField_a_of_type_AndroidContentContext);
+      int i = bdgz.a(this.jdField_a_of_type_AndroidContentContext);
       localObject1 = localObject2;
       if (((Bitmap)localObject2).getWidth() != i) {
-        if (bdlz.c) {
+        if (bdqi.c) {
           break label158;
         }
       }
       label158:
-      for (localObject1 = bdlw.a().a((Bitmap)localObject2, i); Build.VERSION.SDK_INT < 26; localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, i, false))
+      for (localObject1 = bdqf.a().a((Bitmap)localObject2, i); Build.VERSION.SDK_INT < 26; localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, i, false))
       {
         localObject2 = new Intent("android.intent.action.MAIN");
         ((Intent)localObject2).addCategory("android.intent.category.LAUNCHER");
         ((Intent)localObject2).putExtra(this.jdField_a_of_type_JavaLangString, true);
         ((Intent)localObject2).setClassName(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class.getName());
         ((Intent)localObject2).setFlags(337641472);
-        bdhy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
+        bdmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
         return;
       }
-      arni.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      arrr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
       return;
     }
     catch (Exception localException) {}

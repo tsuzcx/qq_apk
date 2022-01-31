@@ -1,21 +1,10 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
 
-class bctj
-  implements bctm
+public abstract interface bctj
 {
-  bctj(bctc parambctc) {}
+  public abstract void a(View paramView);
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bctc.e(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131716163), 0).a();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

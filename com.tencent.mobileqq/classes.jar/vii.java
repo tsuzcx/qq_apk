@@ -1,19 +1,33 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class vii
-  implements ViewPager.OnPageChangeListener
+public class vii
+  implements vih
 {
-  vii(vig paramvig) {}
+  public void a() {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(int paramInt)
   {
-    this.a.a.setSelectedTab(paramInt, true);
+    if (paramInt == 6) {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131690089, 0).a();
+    }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    QQToast.a(BaseApplication.getContext(), alud.a(2131708236), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 

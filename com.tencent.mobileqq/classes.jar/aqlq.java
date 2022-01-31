@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class aqlq
-  implements DialogInterface.OnDismissListener
+  implements artl
 {
-  public aqlq(QfileLocalFileAppTabView.1.1 param1) {}
+  public aqlq(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      FilePreviewActivity.a(this.a, bagk.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720692), false));
+      return;
+    }
+    bagk.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+  }
+  
+  public void a(ImageView paramImageView) {}
 }
 
 

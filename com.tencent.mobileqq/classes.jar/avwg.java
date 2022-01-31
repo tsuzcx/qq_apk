@@ -1,31 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-final class avwg
-  implements bapw
+public class avwg
+  extends banl
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  public avwg(OCRResultActivity paramOCRResultActivity) {}
+  
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    do
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      do
-      {
-        return;
-      } while (!(parambaqv instanceof baps));
-      parambaqv = (baps)parambaqv;
-      parambaqv.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
-      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
-      {
-        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("OlympicResources", 2, "IBreakDownFix, " + parambaqw);
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708218), 0).a();
   }
 }
 

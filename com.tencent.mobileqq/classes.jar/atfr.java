@@ -1,39 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class atfr
-  implements ymm
+final class atfr
+  implements EIPCResultCallback
 {
-  atfr(atfq paramatfq, String paramString) {}
-  
-  public void callback(Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
-    {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Atfq.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Atfq.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Atfq.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Atfq.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
     }
-    label120:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

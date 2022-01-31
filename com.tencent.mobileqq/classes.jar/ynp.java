@@ -1,17 +1,23 @@
-import com.tencent.biz.troop.VideoCombineHelper.4;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
 
 public class ynp
-  extends yol
+  implements View.OnClickListener
 {
-  public ynp(VideoCombineHelper.4 param4)
-  {
-    super(param4.this$0);
-  }
+  public ynp(VideoPlayerView paramVideoPlayerView) {}
   
-  public void b(yok paramyok)
+  public void onClick(View paramView)
   {
-    QLog.d(".troop.VideoCombineHelper", 2, "");
+    if (yxv.a("mLLSkipForwardWrapper", 500L))
+    {
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.c(this.a)), 0, 1, true);
+      if (VideoPlayerView.a(this.a) != null) {
+        this.a.a(VideoPlayerView.a(this.a).a() + 10000L);
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import arni;
+import arrr;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -21,7 +21,7 @@ class QfileLocalFilePicTabView$3
     if (((List)localObject).contains(this.a) == true) {
       return;
     }
-    int j = arni.a((List)localObject, this.a.b());
+    int j = arrr.a((List)localObject, this.a.b());
     int i = j;
     if (j < 0) {
       i = 0;

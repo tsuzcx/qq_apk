@@ -1,41 +1,15 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afel
-  implements ArkViewImplement.LoadCallback
+  implements DialogInterface.OnClickListener
 {
-  afel(afek paramafek, MessageForArkApp paramMessageForArkApp, afeg paramafeg) {}
+  afel(afek paramafek, boolean paramBoolean) {}
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    onLoadState(paramInt1);
-  }
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
-    float f = anjs.a();
-    int i = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-    int j = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-    localObject = this.jdField_a_of_type_Afeg.a.getLayoutParams();
-    StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
-    localStringBuilder.append(i).append(",").append(j).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(afek.a(this.jdField_a_of_type_Afek)).append(", load state=").append(paramInt).append(", app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
-    QLog.i("ArkAppItemBuilder", 1, localStringBuilder.toString());
-    if ((anjs.a) && (paramInt == 1) && (Math.abs(((ViewGroup.LayoutParams)localObject).width - afek.a(this.jdField_a_of_type_Afek)) > 5))
-    {
-      QLog.d("ArkAppItemBuilder", 1, new Object[] { "ArkFold.onLoadFinish setViewRect(", Integer.valueOf(afek.a(this.jdField_a_of_type_Afek)), ",", Integer.valueOf(j), ")" });
-      this.jdField_a_of_type_Afeg.a.setFixSize(afek.a(this.jdField_a_of_type_Afek), -1);
-      this.jdField_a_of_type_Afeg.a.setMaxSize(afek.a(this.jdField_a_of_type_Afek), -1);
-      this.jdField_a_of_type_Afeg.a.setMinSize(afek.a(this.jdField_a_of_type_Afek), -1);
-      this.jdField_a_of_type_Afeg.a.setViewRect(afek.a(this.jdField_a_of_type_Afek), j);
+    if (this.jdField_a_of_type_Boolean) {
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

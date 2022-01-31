@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-final class agbw
-  implements DialogInterface.OnClickListener
+public class agbw
+  implements Animator.AnimatorListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agbw(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.jdField_a_of_type_Agbz.b.start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

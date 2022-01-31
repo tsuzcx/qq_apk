@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aczx
-  implements View.OnClickListener
+class aczx
+  implements DialogInterface.OnClickListener
 {
-  public aczx(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  aczx(aczv paramaczv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    paramView = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

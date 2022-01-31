@@ -1,8 +1,14 @@
-import android.os.Bundle;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
 
-public abstract interface bjmq
+class bjmq
 {
-  public abstract void onWebEvent(String paramString, Bundle paramBundle);
+  long jdField_a_of_type_Long;
+  bjmm jdField_a_of_type_Bjmm;
+  ModuleDownloadListener jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener;
+  Object jdField_a_of_type_JavaLangObject;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
 }
 
 

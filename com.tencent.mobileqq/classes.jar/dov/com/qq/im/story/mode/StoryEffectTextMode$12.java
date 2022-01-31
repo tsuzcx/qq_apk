@@ -1,32 +1,32 @@
 package dov.com.qq.im.story.mode;
 
 import android.os.Handler;
-import bmdi;
+import bmhu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import org.json.JSONObject;
-import wsv;
+import wxe;
 
 public class StoryEffectTextMode$12
   implements Runnable
 {
-  public StoryEffectTextMode$12(bmdi parambmdi, JSONObject paramJSONObject) {}
+  public StoryEffectTextMode$12(bmhu parambmhu, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    boolean bool = bmdi.a(this.this$0, "qg_InitConfig", this.a.toString());
-    bmdi.c(this.this$0, false);
-    bmdi.a(this.this$0, bmdi.a(this.this$0), bmdi.a(this.this$0), bmdi.c(this.this$0), bmdi.d(this.this$0), 27, null);
+    boolean bool = bmhu.a(this.this$0, "qg_InitConfig", this.a.toString());
+    bmhu.c(this.this$0, false);
+    bmhu.a(this.this$0, bmhu.a(this.this$0), bmhu.a(this.this$0), bmhu.c(this.this$0), bmhu.d(this.this$0), 27, null);
     if (bool)
     {
-      if (bmdi.c(this.this$0))
+      if (bmhu.c(this.this$0))
       {
-        bmdi.d(this.this$0, false);
+        bmhu.d(this.this$0, false);
         ThreadManagerV2.getUIHandlerV2().postDelayed(new StoryEffectTextMode.12.1(this), 600L);
       }
       return;
     }
-    bmdi.b(this.this$0, 27);
-    wsv.b("StoryEffectTextMode", "这里没有注册EVENT_NAME_QG_INIT_CONFIG");
+    bmhu.b(this.this$0, 27);
+    wxe.b("StoryEffectTextMode", "这里没有注册EVENT_NAME_QG_INIT_CONFIG");
   }
 }
 

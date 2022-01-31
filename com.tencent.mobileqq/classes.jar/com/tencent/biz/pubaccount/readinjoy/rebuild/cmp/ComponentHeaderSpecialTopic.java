@@ -145,7 +145,7 @@ public class ComponentHeaderSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559970, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559969, this, true);
   }
   
   public void a()
@@ -159,8 +159,8 @@ public class ComponentHeaderSpecialTopic
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131375221));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375212));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131375272));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375263));
   }
   
   public void a(Object paramObject)

@@ -1,98 +1,46 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.View.DragShadowBuilder;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class avpi
-  extends Dialog
+@TargetApi(11)
+class avpi
+  extends View.DragShadowBuilder
 {
-  protected View.OnClickListener a;
-  protected ImageView a;
-  protected LinearLayout a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected TextView b;
+  public int a;
   
-  public avpi(Context paramContext)
+  public avpi(avop paramavop, View paramView)
   {
-    super(paramContext, 2131755801);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new avpj(this);
-    a();
+    super(paramView);
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Avop.a.f * 1.4D));
   }
   
-  private void a()
+  public void onDrawShadow(Canvas paramCanvas)
   {
-    setContentView(2131558937);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367537));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377884));
-    this.b = ((TextView)findViewById(2131370016));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363407));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368074));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131707504));
+    getView().setDrawingCacheEnabled(false);
+    getView().setDrawingCacheEnabled(true);
+    Object localObject = new Paint();
+    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
+    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
+    localObject = getView().getDrawingCache();
+    Matrix localMatrix = new Matrix();
+    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
+    localMatrix.postScale(f, f);
+    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
   }
   
-  public avpi a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView, paramLayoutParams);
-    return this;
-  }
-  
-  public avpi a(avpd paramavpd)
-  {
-    Button localButton = new Button(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = xod.a(getContext(), 10.0F);
-    Object localObject;
-    if (paramavpd.jdField_a_of_type_JavaLangString != null)
-    {
-      localObject = paramavpd.jdField_a_of_type_JavaLangString;
-      localButton.setText((CharSequence)localObject);
-      localButton.setTextSize(20.0F);
-      if (paramavpd.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label134;
-      }
-      localObject = paramavpd.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      label76:
-      localButton.setBackgroundDrawable((Drawable)localObject);
-      if (paramavpd.jdField_a_of_type_Int == -1) {
-        break label150;
-      }
-    }
-    label134:
-    label150:
-    for (int i = paramavpd.jdField_a_of_type_Int;; i = -1)
-    {
-      localButton.setTextColor(i);
-      localButton.setOnClickListener(new avpk(this, paramavpd));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, localLayoutParams);
-      return this;
-      localObject = "";
-      break;
-      localObject = getContext().getResources().getDrawable(2130839107);
-      break label76;
-    }
-  }
-  
-  public avpi a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    return this;
-  }
-  
-  public avpi b(CharSequence paramCharSequence)
-  {
-    this.b.setText(paramCharSequence);
-    return this;
+    int i = this.jdField_a_of_type_Int + 20;
+    int j = this.jdField_a_of_type_Int + 20;
+    paramPoint1.set(i, j);
+    paramPoint2.set(i / 2, j / 2);
   }
 }
 

@@ -1,18 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import java.util.Comparator;
 
-public class akyq
-  extends aphy
+class akyq
+  implements Comparator<akys>
 {
-  public akyq(ApolloGameActivity paramApolloGameActivity) {}
+  akyq(akyp paramakyp) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public int a(akys paramakys1, akys paramakys2)
+  {
+    if (paramakys1.a == paramakys2.a) {
+      return 0;
+    }
+    if (paramakys1.a > paramakys2.a) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

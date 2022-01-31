@@ -1,15 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import java.util.Iterator;
+import java.util.List;
 
 public class axrz
-  extends axrx
+  implements Animator.AnimatorListener
 {
-  private static String a = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230752);
+  public axrz(ProviderContainerView paramProviderContainerView) {}
   
-  public axrz()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", a);
-    this.mFilterType = 7;
+    this.a.c.setVisibility(8);
+    paramAnimator = ProviderContainerView.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.a();
+    }
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      paramAnimator = ProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((axsb)paramAnimator.next()).a();
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).b();
+    }
   }
 }
 

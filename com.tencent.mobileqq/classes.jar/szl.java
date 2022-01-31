@@ -870,22 +870,22 @@ public class szl
       return;
       if ((paramParams == null) || (paramLong == -2147483648L))
       {
-        aanp.d("ReadinJoyActionUtil", " enterTimeMillis:" + paramLong + " gdtParams:" + paramParams);
+        aase.d("ReadinJoyActionUtil", " enterTimeMillis:" + paramLong + " gdtParams:" + paramParams);
         return;
       }
     } while ((paramInt != 0) && (paramInt != 3) && (paramInt != 56) && (paramInt != 2));
     long l = SystemClock.elapsedRealtime();
-    aanp.b("ReadinJoyActionUtil", String.format("leave %d", new Object[] { Long.valueOf(l) }));
+    aase.b("ReadinJoyActionUtil", String.format("leave %d", new Object[] { Long.valueOf(l) }));
     if (paramLong == -2147483648L) {
-      aanp.d("ReadinJoyActionUtil", "leave error");
+      aase.d("ReadinJoyActionUtil", "leave error");
     }
     paramLong = l - paramLong;
-    aanp.b("ReadinJoyActionUtil", String.format("dwell %d", new Object[] { Long.valueOf(paramLong) }));
-    aanu localaanu = new aanu();
-    localaanu.jdField_a_of_type_ComTencentAdTangramAd = paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-    localaanu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
-    localaanu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
-    aant.a(localaanu);
+    aase.b("ReadinJoyActionUtil", String.format("dwell %d", new Object[] { Long.valueOf(paramLong) }));
+    aasj localaasj = new aasj();
+    localaasj.jdField_a_of_type_ComTencentAdTangramAd = paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+    localaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
+    localaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
+    aasi.a(localaasj);
   }
   
   public static void a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo)
@@ -950,7 +950,7 @@ public class szl
     if (AdvertisementInfo.isAppAdvertisementInfo(paramAdvertisementInfo))
     {
       paramobg = Uri.parse((String)localObject).buildUpon();
-      if ((bdee.b(BaseApplicationImpl.getApplication()) != 1) || (paramInt == 0)) {
+      if ((bdin.b(BaseApplicationImpl.getApplication()) != 1) || (paramInt == 0)) {
         break label354;
       }
       paramobg.appendQueryParameter("autodownload", "1");
@@ -1030,7 +1030,7 @@ public class szl
     if (AdvertisementInfo.isAppAdvertisementInfo(paramAdvertisementInfo))
     {
       paramobg = Uri.parse((String)localObject).buildUpon();
-      if ((bdee.b(BaseApplicationImpl.getApplication()) != 1) || (paramInt == 0)) {
+      if ((bdin.b(BaseApplicationImpl.getApplication()) != 1) || (paramInt == 0)) {
         break label373;
       }
       paramobg.appendQueryParameter("autodownload", "1");
@@ -1099,12 +1099,12 @@ public class szl
       if ((!rqj.i(paramArticleInfo)) && (!rqj.b(paramArticleInfo)) && (!rqj.j(paramArticleInfo)) && (!rqj.k(paramArticleInfo))) {
         break label635;
       }
-      nrt.a(null, "CliOper", "", String.valueOf(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long), (String)localObject3, (String)localObject3, 0, 0, Long.toString(paramArticleInfo.mFeedId), paramArticleInfo.businessId + "", Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdee.h(paramActivity), String.valueOf(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long), paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo), false);
+      nrt.a(null, "CliOper", "", String.valueOf(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long), (String)localObject3, (String)localObject3, 0, 0, Long.toString(paramArticleInfo.mFeedId), paramArticleInfo.businessId + "", Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdin.h(paramActivity), String.valueOf(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long), paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo), false);
     }
     Object localObject1;
     for (;;)
     {
-      nrt.a((String)localObject3, paramArticleInfo.mSubscribeID, Long.toString(paramArticleInfo.mFeedId), Long.toString(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdee.h(paramActivity), (String)localObject2, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo));
+      nrt.a((String)localObject3, paramArticleInfo.mSubscribeID, Long.toString(paramArticleInfo.mFeedId), Long.toString(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdin.h(paramActivity), (String)localObject2, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo));
       paramrqj = new ArrayList();
       localObject1 = new ReportInfo();
       ((ReportInfo)localObject1).mUin = ors.a();
@@ -1149,7 +1149,7 @@ public class szl
       k = 56;
       break label45;
       label635:
-      localObject1 = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdee.h(paramActivity), (String)localObject2, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo);
+      localObject1 = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdin.h(paramActivity), (String)localObject2, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), k, paramArticleInfo);
       paramrqj = (rqj)localObject1;
       if (paramInt == 0) {
         paramrqj = ntd.a(k, (String)ntd.a.get(ReadInJoyChannelActivity.class), (String)localObject1);
@@ -1225,7 +1225,7 @@ public class szl
         if (AdvertisementInfo.isAppAdvertisementInfo(paramArticleInfo))
         {
           paramobg = paramrqj;
-          if (bdee.h(null)) {
+          if (bdin.h(null)) {
             if (!paramrqj.contains("?")) {
               break label342;
             }
@@ -1361,7 +1361,7 @@ public class szl
   {
     try
     {
-      betl.a(paramContext, 7);
+      bexu.a(paramContext, 7);
       return;
     }
     catch (Exception paramContext)
@@ -1471,7 +1471,7 @@ public class szl
     try
     {
       Object localObject = Uri.parse(paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForLandingPage()).buildUpon();
-      if ((bdee.b(BaseApplicationImpl.getContext())) && (oed.a(paramAdvertisementInfo.mAdExtInfo)) && (paramobg.jdField_c_of_type_Boolean))
+      if ((bdin.b(BaseApplicationImpl.getContext())) && (oed.a(paramAdvertisementInfo.mAdExtInfo)) && (paramobg.jdField_c_of_type_Boolean))
       {
         int i = 0;
         if (((Uri.Builder)localObject).build().getQueryParameter("autodownload") == null)
@@ -1498,7 +1498,7 @@ public class szl
       if ((paramParams.jdField_a_of_type_Boolean) && (!a(paramParams)))
       {
         localObject = Uri.parse(paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForClick()).buildUpon();
-        if ((bdee.b(BaseApplicationImpl.getContext())) && (oed.a(paramAdvertisementInfo.mAdExtInfo)) && (paramobg.jdField_c_of_type_Boolean) && (((Uri.Builder)localObject).build().getQueryParameter("_autodownload") == null))
+        if ((bdin.b(BaseApplicationImpl.getContext())) && (oed.a(paramAdvertisementInfo.mAdExtInfo)) && (paramobg.jdField_c_of_type_Boolean) && (((Uri.Builder)localObject).build().getQueryParameter("_autodownload") == null))
         {
           ((Uri.Builder)localObject).appendQueryParameter("_autodownload", "1");
           paramAdvertisementInfo = ((Uri.Builder)localObject).toString();
@@ -1869,7 +1869,7 @@ public class szl
     {
       String str1 = ors.d(paramArticleInfo);
       String str2 = szp.b(paramInt);
-      nrt.a(null, "CliOper", "", paramArticleInfo.mSubscribeID, str2, str2, 0, 0, Long.toString(paramArticleInfo.mFeedId), Long.toString(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdee.h(paramContext), str1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), paramArticleInfo), false);
+      nrt.a(null, "CliOper", "", paramArticleInfo.mSubscribeID, str2, str2, 0, 0, Long.toString(paramArticleInfo.mFeedId), Long.toString(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramInt, i, j, bdin.h(paramContext), str1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), paramArticleInfo), false);
       return;
       i = 0;
       break;

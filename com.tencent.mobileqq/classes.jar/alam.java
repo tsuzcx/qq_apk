@@ -1,6 +1,15 @@
-public abstract interface alam
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class alam
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  alam(alaj paramalaj) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    alaj.a(this.a);
+  }
 }
 
 

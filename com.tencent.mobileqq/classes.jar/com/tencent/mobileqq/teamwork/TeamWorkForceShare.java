@@ -6,15 +6,15 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import arum;
-import azqu;
-import babm;
-import badt;
-import bame;
-import becq;
-import bepp;
-import bizm;
-import bizt;
+import aryv;
+import azvd;
+import bafv;
+import baic;
+import baqn;
+import begz;
+import bety;
+import bjdt;
+import bjea;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
@@ -34,14 +34,14 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import zbj;
+import zfy;
 
 public class TeamWorkForceShare
-  implements DialogInterface.OnCancelListener, babm, ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnCancelListener, bafv, ShareActionSheet.OnItemClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = TeamWorkForceShare.class.getSimpleName();
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private bepp jdField_a_of_type_Bepp;
+  private bety jdField_a_of_type_Bety;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
   private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
@@ -75,8 +75,8 @@ public class TeamWorkForceShare
   
   public void a()
   {
-    this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Bety.show();
     b();
   }
   
@@ -128,27 +128,27 @@ public class TeamWorkForceShare
       paramActionSheetItem = new Bundle();
       paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
       paramActionSheetItem.putString("pluginName", "web_share");
-      paramActionSheetItem.putString("struct_share_key_source_icon", badt.d);
-      paramActionSheetItem.putString("app_name", ((zbj)localObject).f());
+      paramActionSheetItem.putString("struct_share_key_source_icon", baic.d);
+      paramActionSheetItem.putString("app_name", ((zfy)localObject).f());
       paramActionSheetItem.putString("struct_share_key_source_action", "web");
-      paramActionSheetItem.putString("struct_share_key_source_url", badt.b);
-      String str = ((zbj)localObject).b();
-      paramActionSheetItem.putString("detail_url", ((zbj)localObject).a());
+      paramActionSheetItem.putString("struct_share_key_source_url", baic.b);
+      String str = ((zfy)localObject).b();
+      paramActionSheetItem.putString("detail_url", ((zfy)localObject).a());
       paramActionSheetItem.putString("title", str);
-      paramActionSheetItem.putString("desc", ((zbj)localObject).c());
+      paramActionSheetItem.putString("desc", ((zfy)localObject).c());
       paramActionSheetItem.putString("struct_share_key_content_action", "web");
       paramActionSheetItem.putInt("forward_type", 1001);
-      paramActionSheetItem.putString("image_url_remote", ((zbj)localObject).d());
+      paramActionSheetItem.putString("image_url_remote", ((zfy)localObject).d());
       paramActionSheetItem.putInt("emoInputType", 2);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + str + ", desc = " + ((zbj)localObject).c() + ", url = " + ((zbj)localObject).a());
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + str + ", desc = " + ((zfy)localObject).c() + ", url = " + ((zfy)localObject).a());
       paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
       paramActionSheetItem.putBoolean("k_back", true);
-      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696873, new Object[] { str }));
-      paramActionSheetItem.putByteArray("stuctmsg_bytes", azqu.a(paramActionSheetItem).getBytes());
+      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696875, new Object[] { str }));
+      paramActionSheetItem.putByteArray("stuctmsg_bytes", azvd.a(paramActionSheetItem).getBytes());
       localObject = new Intent();
       ((Intent)localObject).putExtras(paramActionSheetItem);
       ((Intent)localObject).putExtras(paramShareActionSheet);
-      arum.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, ForwardRecentTranslucentActivity.class, 34322, -1, "");
+      aryv.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, ForwardRecentTranslucentActivity.class, 34322, -1, "");
       return;
     case 2: 
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
@@ -167,10 +167,10 @@ public class TeamWorkForceShare
       paramActionSheetItem = new Bundle();
       paramActionSheetItem.putBoolean("key_flag_from_plugin", true);
       paramActionSheetItem.putString("pluginName", "web_share");
-      paramActionSheetItem.putString("struct_share_key_source_icon", badt.d);
+      paramActionSheetItem.putString("struct_share_key_source_icon", baic.d);
       paramActionSheetItem.putString("app_name", paramShareActionSheet.f());
       paramActionSheetItem.putString("struct_share_key_source_action", "web");
-      paramActionSheetItem.putString("struct_share_key_source_url", badt.b);
+      paramActionSheetItem.putString("struct_share_key_source_url", baic.b);
       localObject = paramShareActionSheet.b();
       paramActionSheetItem.putString("detail_url", paramShareActionSheet.a());
       paramActionSheetItem.putString("title", (String)localObject);
@@ -182,22 +182,22 @@ public class TeamWorkForceShare
       QLog.d(jdField_a_of_type_JavaLangString, 1, "title = " + (String)localObject + ", desc = " + paramShareActionSheet.c() + ", url = " + paramShareActionSheet.a());
       paramActionSheetItem.putString("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
       paramActionSheetItem.putBoolean("k_back", true);
-      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696873, new Object[] { localObject }));
-      paramActionSheetItem.putByteArray("stuctmsg_bytes", azqu.a(paramActionSheetItem).getBytes());
+      paramActionSheetItem.putString("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131696875, new Object[] { localObject }));
+      paramActionSheetItem.putByteArray("stuctmsg_bytes", azvd.a(paramActionSheetItem).getBytes());
       paramShareActionSheet = new Intent();
       paramShareActionSheet.putExtras(paramActionSheetItem);
-      arum.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, 34322);
+      aryv.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, 34322);
       return;
     case 3: 
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(0), "ok" }) });
-      paramActionSheetItem = bame.d(this.b);
-      paramShareActionSheet = bizt.a();
+      paramActionSheetItem = baqn.d(this.b);
+      paramShareActionSheet = bjea.a();
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
       {
         paramShareActionSheet.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
         paramShareActionSheet.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getDisplayName(0, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
       }
-      bizm.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, paramActionSheetItem, BaseApplication.getContext().getString(2131692302), "", 34356);
+      bjdt.a(this.jdField_a_of_type_AndroidAppActivity, paramShareActionSheet, paramActionSheetItem, BaseApplication.getContext().getString(2131692303), "", 34356);
       return;
     }
     boolean bool;
@@ -214,7 +214,7 @@ public class TeamWorkForceShare
       if (WXShareHelper.a().a()) {
         break label1168;
       }
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131721478, 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131721491, 1).a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "wx not installed");
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(1), "wx not installed" }) });
       return;
@@ -224,7 +224,7 @@ public class TeamWorkForceShare
     label1168:
     if (!WXShareHelper.a().b())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131721479, 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131721492, 1).a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "wx version too low");
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.c, new String[] { String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(2), "wx version too low" }) });
       return;

@@ -1,24 +1,20 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class bmnl
-  extends bmns
+  extends SimpleJob<Object>
 {
-  bmnl(bmni parambmni, DoodleEmojiItem paramDoodleEmojiItem)
+  bmnl(bmnj parambmnj, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    super(paramDoodleEmojiItem);
+    super(paramString1);
   }
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.onResult(???);
-    wsv.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
-      return;
-    }
+    wxj.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

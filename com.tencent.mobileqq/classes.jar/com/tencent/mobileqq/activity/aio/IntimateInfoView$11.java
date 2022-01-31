@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aenv;
+import aesk;
 import com.tencent.image.URLDrawable;
 
 public class IntimateInfoView$11
   implements Runnable
 {
-  public IntimateInfoView$11(aenv paramaenv) {}
+  public IntimateInfoView$11(aesk paramaesk) {}
   
   public void run()
   {
-    if (aenv.a(this.this$0).getStatus() == 0)
+    if (aesk.a(this.this$0).getStatus() == 0)
     {
-      aenv.a(this.this$0).downloadImediatly();
+      aesk.a(this.this$0).downloadImediatly();
       return;
     }
-    aenv.a(this.this$0).restartDownload();
+    aesk.a(this.this$0).restartDownload();
   }
 }
 

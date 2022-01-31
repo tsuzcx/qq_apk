@@ -1,65 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Calendar;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wnr
-  implements woq
+  extends QQUIEventReceiver<wno, vsu>
 {
-  protected wnt a;
-  protected wor a;
-  protected wos a;
-  
-  public Object a()
+  public wnr(@NonNull wno paramwno)
   {
-    return this.jdField_a_of_type_Wnt;
+    super(paramwno);
   }
   
-  public String a()
+  public void a(@NonNull wno paramwno, @NonNull vsu paramvsu)
   {
-    return getClass().getSimpleName();
+    wxe.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramvsu.jdField_a_of_type_Vpm, paramvsu.b);
+    if ((wno.a(paramwno).equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vpx)))
+    {
+      woq localwoq = ((vpx)paramvsu.jdField_a_of_type_Vpm).a;
+      if (localwoq != null) {
+        paramwno.a(localwoq.jdField_a_of_type_JavaLangString, paramvsu.b, true);
+      }
+    }
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    wsv.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(wor paramwor)
-  {
-    this.jdField_a_of_type_Wor = paramwor;
-  }
-  
-  public void a(wos paramwos)
-  {
-    this.jdField_a_of_type_Wos = paramwos;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  protected void d()
-  {
-    String str = ume.a("StorySvc.homepage_my_day_710");
-    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l);
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_Wnt = new wnt();
-    ung.a().a(new vaq(str, localReqTodayStoryVidList, null), new wns(this, localReqTodayStoryVidList, str));
+    return vsu.class;
   }
 }
 

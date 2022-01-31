@@ -1,14 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.observer.BusinessObserver;
 
 class asxo
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  asxo(asxl paramasxl) {}
+  asxo(asxn paramasxn, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    asxg.a(this.a.a, false);
+    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
+    {
+      paramInt = paramBundle.getInt("app_id", 0);
+      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
+      if (paramInt == 0) {
+        return;
+      }
+      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
+      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
+      }
+      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
+      return;
+    }
+    if (paramInt != 15)
+    {
+      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      if (paramInt != 17) {
+        break label186;
+      }
+      if (paramBundle != null) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramBundle = "1";; paramBundle = "2")
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
+      return;
+      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      break;
+    }
+    label186:
+    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
 }
 

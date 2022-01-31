@@ -1,22 +1,25 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-@TargetApi(11)
-public class bmol
+class bmol
+  implements bhtv
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bmoo parambmoo)
+  int jdField_a_of_type_Int = 0;
+  
+  bmol(bmoj parambmoj) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambmoo, paramLong);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
   }
   
-  private static ValueAnimator a(ValueAnimator paramValueAnimator, bmoo parambmoo, long paramLong)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new bmom(parambmoo));
-    paramValueAnimator.addListener(new bmon(parambmoo, paramValueAnimator));
-    paramValueAnimator.setDuration(paramLong);
-    return paramValueAnimator;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).a().size()) && (!bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).a()))
+    {
+      paramAbsListView = bmoj.a(this.jdField_a_of_type_Bmoj);
+      bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).b(paramAbsListView);
+    }
   }
 }
 

@@ -1,13 +1,15 @@
-import java.util.List;
+import android.os.Build;
 
-public abstract interface anae
-  extends amzx
+public class anae
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<amzu> paramList, long paramLong);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public static boolean a(String paramString)
+  {
+    if (bdnn.a(paramString)) {}
+    while (!("" + Build.MANUFACTURER).equalsIgnoreCase(paramString)) {
+      return false;
+    }
+    return true;
+  }
 }
 
 

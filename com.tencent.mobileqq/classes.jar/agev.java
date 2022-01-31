@@ -1,16 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agev
-  implements DialogInterface.OnClickListener
+public class agev
+  extends agem
 {
-  agev(ageu paramageu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agev(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    paramDialogInterface.dismiss();
-    aget.j(this.a.a).setResult(8001);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+  }
+  
+  public aeqi a()
+  {
+    return new agex(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562755, paramBaseChatItemLayout, false);
   }
 }
 

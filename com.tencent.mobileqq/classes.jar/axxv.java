@@ -1,17 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
 
-public class axxv
-  implements View.OnTouchListener
+public final class axxv
+  implements Parcelable.Creator<AIOBrowserBaseData>
 {
-  public axxv(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public AIOBrowserBaseData a(Parcel paramParcel)
   {
-    bhoc.b(paramView);
-    return false;
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIOBrowserBaseData.a((String)localObject);
+      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIOBrowserBaseData[] a(int paramInt)
+  {
+    return new AIOBrowserBaseData[paramInt];
   }
 }
 

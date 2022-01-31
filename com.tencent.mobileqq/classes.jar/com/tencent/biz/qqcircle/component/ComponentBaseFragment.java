@@ -21,9 +21,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import tvg;
-import tvn;
-import tyz;
+import tvv;
+import tvx;
+import ubk;
 
 public abstract class ComponentBaseFragment
   extends PublicBaseFragment
@@ -33,7 +33,7 @@ public abstract class ComponentBaseFragment
   private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
   private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
   public View a;
-  private tvn jdField_a_of_type_Tvn;
+  private tvx jdField_a_of_type_Tvx;
   
   static
   {
@@ -42,41 +42,41 @@ public abstract class ComponentBaseFragment
   
   protected abstract int a();
   
-  protected abstract List<tvg> a();
+  protected abstract List<tvv> a();
   
-  public tvn a()
+  public tvx a()
   {
-    return this.jdField_a_of_type_Tvn;
+    return this.jdField_a_of_type_Tvx;
   }
   
-  public <T extends tyz> T a(ComponentBaseFragment paramComponentBaseFragment, String paramString, Class<T> paramClass)
+  public <T extends ubk> T a(ComponentBaseFragment paramComponentBaseFragment, String paramString, Class<T> paramClass)
   {
     ViewModelProvider localViewModelProvider = new ViewModelProvider(paramComponentBaseFragment, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
     if (paramString == null) {}
     for (paramString = "android.arch.lifecycle.ViewModelProvider.DefaultKey";; paramString = paramString + paramClass.getCanonicalName())
     {
-      paramString = (tyz)localViewModelProvider.get(paramString, paramClass);
+      paramString = (ubk)localViewModelProvider.get(paramString, paramClass);
       paramString.a(paramComponentBaseFragment.getActivity().hashCode());
       return paramString;
     }
   }
   
-  public <T extends tyz> T a(Class<T> paramClass)
+  public <T extends ubk> T a(Class<T> paramClass)
   {
     return a(null, paramClass);
   }
   
-  public <T extends tyz> T a(String paramString, Class<T> paramClass)
+  public <T extends ubk> T a(String paramString, Class<T> paramClass)
   {
     return a(this, paramString, paramClass);
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Tvn != null)
+    if (this.jdField_a_of_type_Tvx != null)
     {
-      this.jdField_a_of_type_Tvn.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Tvn.onActivityCreated(getActivity(), paramBundle);
+      this.jdField_a_of_type_Tvx.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Tvx.onActivityCreated(getActivity(), paramBundle);
     }
   }
   
@@ -100,8 +100,8 @@ public abstract class ComponentBaseFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Tvn != null) {
-      this.jdField_a_of_type_Tvn.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Tvx != null) {
+      this.jdField_a_of_type_Tvx.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -116,8 +116,8 @@ public abstract class ComponentBaseFragment
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.jdField_a_of_type_Tvn != null) {
-      this.jdField_a_of_type_Tvn.a(paramConfiguration);
+    if (this.jdField_a_of_type_Tvx != null) {
+      this.jdField_a_of_type_Tvx.a(paramConfiguration);
     }
   }
   
@@ -125,8 +125,8 @@ public abstract class ComponentBaseFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    this.jdField_a_of_type_Tvn = new tvn(this, getView());
-    this.jdField_a_of_type_Tvn.a(a());
+    this.jdField_a_of_type_Tvx = new tvx(this, getView());
+    this.jdField_a_of_type_Tvx.a(a());
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
@@ -162,7 +162,7 @@ public abstract class ComponentBaseFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-      this.jdField_a_of_type_Tvn.onActivityDestroyed(getActivity());
+      this.jdField_a_of_type_Tvx.onActivityDestroyed(getActivity());
       if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) {
         this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
       }
@@ -183,7 +183,7 @@ public abstract class ComponentBaseFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-      this.jdField_a_of_type_Tvn.onActivityPaused(getActivity());
+      this.jdField_a_of_type_Tvx.onActivityPaused(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -198,7 +198,7 @@ public abstract class ComponentBaseFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-      this.jdField_a_of_type_Tvn.onActivityResumed(getActivity());
+      this.jdField_a_of_type_Tvx.onActivityResumed(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -213,7 +213,7 @@ public abstract class ComponentBaseFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      this.jdField_a_of_type_Tvn.onActivityStarted(getActivity());
+      this.jdField_a_of_type_Tvx.onActivityStarted(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -228,7 +228,7 @@ public abstract class ComponentBaseFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      this.jdField_a_of_type_Tvn.onActivityStopped(getActivity());
+      this.jdField_a_of_type_Tvx.onActivityStopped(getActivity());
       return;
     }
     catch (Throwable localThrowable)

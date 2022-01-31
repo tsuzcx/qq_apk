@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import ahab;
+import aheq;
 import android.database.Cursor;
 import android.text.TextUtils;
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
 public class Friends
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -64,9 +64,9 @@ public class Friends
   public int cNewLoverDiamondFlag;
   public byte cSpecialFlag;
   public String customModel = "";
-  @awdg
+  @awhp
   public String customOnlineStatus;
-  @awdg
+  @awhp
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
@@ -102,7 +102,7 @@ public class Friends
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
   public int nameplateVipType;
-  @awdg
+  @awhp
   public int netTypeIconId;
   public int qqVipInfo;
   public String recommReason;
@@ -110,7 +110,7 @@ public class Friends
   public String remark;
   @Deprecated
   public byte[] richBuffer;
-  @awdg
+  @awhp
   @Deprecated
   public RichStatus richStatus;
   @Deprecated
@@ -120,12 +120,12 @@ public class Friends
   public String signature;
   public String singerName;
   public String smartRemark;
-  @awdg
+  @awhp
   public int songDuration;
   public long songEndTime;
   public String songId;
   public String songName;
-  @awdg
+  @awhp
   public int songPauseRemainTime;
   public int songSourceType;
   @Deprecated
@@ -135,13 +135,13 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @awdg
+  @awhp
   public String strTermDesc;
   public int superQqInfo;
   public int superVipInfo;
   public int superVipTemplateId;
   public long uExtOnlineStatus;
-  @awdj
+  @awhs
   public String uin;
   
   public static boolean isValidUin(long paramLong)
@@ -293,7 +293,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    ahab localahab = ahab.a();
+    aheq localaheq = aheq.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -304,9 +304,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localahab.a(this.iTermType, 1));
+      } while (1 != localaheq.a(this.iTermType, 1));
     }
-    if (1 != localahab.a(this.iTermType, 1)) {
+    if (1 != localaheq.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

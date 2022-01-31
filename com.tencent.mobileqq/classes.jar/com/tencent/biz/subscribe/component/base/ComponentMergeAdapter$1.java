@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.component.base;
 
 import java.util.ArrayList;
-import ydp;
-import yds;
+import yhy;
+import yib;
 
 public class ComponentMergeAdapter$1
   implements Runnable
 {
-  public ComponentMergeAdapter$1(yds paramyds, ydp paramydp) {}
+  public ComponentMergeAdapter$1(yib paramyib, yhy paramyhy) {}
   
   public void run()
   {
@@ -15,8 +15,8 @@ public class ComponentMergeAdapter$1
     {
       this.a.onDetachedFromRecyclerView(this.this$0.a().a());
       this.this$0.b(this.a);
-      this.this$0.a.remove(this.a);
-      yds.a(this.this$0, this.a, 2);
+      this.this$0.mDataList.remove(this.a);
+      yib.a(this.this$0, this.a, 2);
       this.this$0.notifyDataSetChanged();
       return;
     }

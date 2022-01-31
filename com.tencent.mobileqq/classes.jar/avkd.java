@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class avkd
-  implements DialogInterface.OnClickListener
+public class avkd
+  extends aluu
 {
-  avkd(avjc paramavjc, bdfq parambdfq) {}
+  public avkd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_Bdfq.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
     }
-    while (paramInt != 0) {
-      return;
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
+    {
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
     }
   }
 }

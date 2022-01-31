@@ -1,9 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.content.pm.ResolveInfo;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import java.util.List;
 
 public abstract interface asql
 {
-  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
+  public abstract void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.imcore.message;
 
-import abof;
-import alzf;
+import absu;
+import amdu;
 
 public class C2CMessageProcessor$2
   implements Runnable
 {
-  public C2CMessageProcessor$2(abof paramabof, alzf paramalzf, String paramString) {}
+  public C2CMessageProcessor$2(absu paramabsu, amdu paramamdu, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alzf.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    this.jdField_a_of_type_Amdu.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

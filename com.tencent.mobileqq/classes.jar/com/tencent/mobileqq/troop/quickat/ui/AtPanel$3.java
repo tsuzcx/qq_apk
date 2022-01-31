@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import bccy;
+import bchh;
 
 public class AtPanel$3
   implements Runnable
 {
-  public AtPanel$3(bccy parambccy) {}
+  public AtPanel$3(bchh parambchh) {}
   
   public void run()
   {

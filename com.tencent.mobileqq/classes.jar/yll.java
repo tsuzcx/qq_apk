@@ -1,26 +1,43 @@
-import android.view.View;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
 
 public class yll
-  implements bhqd
 {
-  public yll(FollowTextView paramFollowTextView, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(Context paramContext, int paramInt, yls paramyls)
   {
-    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
-      return;
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(String.format(paramContext.getString(2131720504), new Object[] { Integer.valueOf(paramInt) }));
+    localbhuf.b(2131720503);
+    localbhuf.c(2131690648);
+    localbhuf.a(new ylp(paramyls, localbhuf));
+    localbhuf.a(new ylq(paramyls, localbhuf));
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
-    switch (paramInt)
-    {
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  {
+    a(paramContext, null, paramStFeed, paramyls, paramylr);
+  }
+  
+  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  {
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(paramContext.getString(2131720505));
+    localbhuf.a(2131720506, 3);
+    localbhuf.c(2131690648);
+    localbhuf.a(new ylm(localbhuf, paramylr));
+    localbhuf.a(new yln(paramStUser, paramStFeed, paramyls, paramylr, localbhuf));
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
-    }
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, yls paramyls, ylr paramylr)
+  {
+    a(paramContext, paramStUser, null, paramyls, paramylr);
   }
 }
 

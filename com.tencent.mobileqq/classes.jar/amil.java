@@ -1,24 +1,39 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class amil
-  implements View.OnClickListener
+public class amil
+  extends alwx
 {
-  amil(amij paramamij) {}
+  public amil(QQComicStep paramQQComicStep) {}
   
-  public void onClick(View paramView)
+  public void a(List<MessageRecord> paramList)
   {
-    azmj.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
-    azmj.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
-    paramView = PreferenceManager.getDefaultSharedPreferences(amij.a(this.a));
-    int i = paramView.getInt("push_msg_notify_cancle", 0);
-    paramView = paramView.edit();
-    paramView.putInt("push_msg_notify_cancle", i + 1);
-    paramView.commit();
-    this.a.dismiss();
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = azvd.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
+        {
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              binc.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], agiy.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
+      }
+    }
   }
 }
 

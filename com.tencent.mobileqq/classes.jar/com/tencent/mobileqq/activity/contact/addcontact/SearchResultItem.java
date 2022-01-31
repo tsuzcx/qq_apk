@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aheb;
+import ahiq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +14,7 @@ import com.tencent.pb.addcontacts.AccountSearchPb.record;
 public class SearchResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchResultItem> CREATOR = new aheb();
+  public static final Parcelable.Creator<SearchResultItem> CREATOR = new ahiq();
   public byte a;
   public int a;
   public long a;

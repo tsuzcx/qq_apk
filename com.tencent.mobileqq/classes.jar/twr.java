@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 
-class twr
-  implements View.OnClickListener
+public class twr
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  twr(twq paramtwq, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StTagInfo paramStTagInfo) {}
+  public twr(QCircleBaseTabFragment paramQCircleBaseTabFragment, RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public boolean onPreDraw()
   {
-    tyk.a(16, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, 0);
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() > 0)
+    {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBaseTabFragment.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, this.b);
+      return true;
+    }
+    return false;
   }
 }
 

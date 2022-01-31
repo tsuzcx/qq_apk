@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now;
 
 import android.app.Activity;
-import avek;
+import avit;
 
 class StoryPlayController$9
   implements Runnable

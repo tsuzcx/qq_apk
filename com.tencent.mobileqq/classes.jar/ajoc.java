@@ -1,10 +1,22 @@
-public abstract interface ajoc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+
+public class ajoc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(int paramInt);
+  public ajoc(LoginView paramLoginView) {}
   
-  public abstract void c(String paramString);
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    azqs.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

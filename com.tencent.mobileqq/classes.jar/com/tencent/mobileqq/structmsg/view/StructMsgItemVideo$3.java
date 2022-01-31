@@ -3,25 +3,25 @@ package com.tencent.mobileqq.structmsg.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import azqn;
-import azvm;
-import azvu;
+import azuw;
+import azzv;
+import baad;
 
 public class StructMsgItemVideo$3
   implements Runnable
 {
-  public StructMsgItemVideo$3(azvm paramazvm, Context paramContext, View paramView) {}
+  public StructMsgItemVideo$3(azzv paramazzv, Context paramContext, View paramView) {}
   
   public void run()
   {
-    String str = azqn.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.R, azvm.a(this.this$0));
+    String str = azuw.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.R, azzv.a(this.this$0));
     this.this$0.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
     if (!TextUtils.isEmpty(str))
     {
-      azvm.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
+      azzv.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
       return;
     }
-    azvm.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
+    azzv.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

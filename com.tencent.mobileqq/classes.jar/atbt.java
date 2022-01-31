@@ -1,9 +1,16 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class atbt
-  implements atav
+  implements DialogInterface.OnDismissListener
 {
-  atbt(atbq paramatbq) {}
+  atbt(atbs paramatbs) {}
   
-  public void a(int paramInt, String paramString) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    atbp.a(this.a.a).finish();
+  }
 }
 
 

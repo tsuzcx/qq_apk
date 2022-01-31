@@ -1,22 +1,12 @@
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-class yhx
-  extends alvc
+public class yhx
+  extends RecyclerView.ViewHolder
 {
-  WeakReference<yhz> a;
-  
-  public yhx(yhz paramyhz)
+  public yhx(yhw paramyhw, View paramView)
   {
-    this.a = new WeakReference(paramyhz);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    yhz localyhz = (yhz)this.a.get();
-    if (localyhz != null) {
-      localyhz.a(paramBoolean, paramString, false);
-    }
+    super(paramView);
   }
 }
 

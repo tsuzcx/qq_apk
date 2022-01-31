@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-
-public class aqik
-  extends aqnl
+public abstract interface aqik
 {
-  public aqik(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  public abstract void a(String paramString, int paramInt);
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void b();
 }
 
 

@@ -1,65 +1,69 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agwl
-  implements agvy
+  extends BroadcastReceiver
 {
-  agwa jdField_a_of_type_Agwa;
-  private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
+  public agwl(TroopChatPie paramTroopChatPie) {}
   
-  public agwl(QQAppInterface paramQQAppInterface, agwa paramagwa, Context paramContext, String paramString, View.OnClickListener paramOnClickListener)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Agwa = paramagwa;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 36;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558694, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131363876);
-    TextView localTextView = (TextView)paramVarArgs.findViewById(2131363877);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131363875);
-    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695432));
-    localImageView1.setImageResource(2130844370);
-    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695432));
-    paramVarArgs.setOnClickListener(new agwm(this));
-    localImageView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 10;
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
+    {
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        label41:
+        Object localObject = new JSONObject(paramContext);
+        paramContext = ((JSONObject)localObject).optString("groupCode");
+        if (TextUtils.equals(paramContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          paramIntent = ((JSONObject)localObject).optString("content");
+          String str1 = ((JSONObject)localObject).optString("source");
+          int i = ((JSONObject)localObject).optInt("rankId", 333);
+          String str2 = ((JSONObject)localObject).optString("nickName");
+          String str3 = ((JSONObject)localObject).optString("uin");
+          String str4 = ((JSONObject)localObject).optString("course");
+          localObject = ((JSONObject)localObject).optString("name");
+          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+          {
+            ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str3, str2, i, str4, (String)localObject);
+            if (this.a.jdField_a_of_type_Agzw != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
+              }
+              this.a.jdField_a_of_type_Agzw.a(TroopChatPie.a(this.a), false);
+            }
+            if (TroopChatPie.a(this.a) != null) {
+              TroopChatPie.a(this.a).a(i);
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
+            return;
+          }
+        }
+      }
+      catch (JSONException paramContext) {}
+    }
   }
 }
 

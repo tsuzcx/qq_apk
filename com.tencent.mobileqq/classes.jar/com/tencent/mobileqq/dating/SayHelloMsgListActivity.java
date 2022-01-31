@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.dating;
 
-import abol;
-import aljq;
+import abta;
+import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apds;
-import apen;
-import ause;
+import apib;
+import apiw;
+import auwn;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,11 +27,11 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  ause a;
+  auwn a;
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_Ause = new apen(this);
+    this.jdField_a_of_type_Auwn = new apiw(this);
   }
   
   protected List<RecentBaseData> a(List<MessageRecord> paramList)
@@ -93,7 +93,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (apds.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (apib.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -103,7 +103,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (apds.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (apib.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -127,20 +127,20 @@ public class SayHelloMsgListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131699480);
-    this.app.addObserver(this.jdField_a_of_type_Ause, true);
+    super.setTitle(2131699492);
+    this.app.addObserver(this.jdField_a_of_type_Auwn, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Ause);
+    removeObserver(this.jdField_a_of_type_Auwn);
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Int == 1001) && (aljq.aj.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Int == 1001) && (alof.aj.equals(this.jdField_a_of_type_JavaLangString)))
     {
       this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
       this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);

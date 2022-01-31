@@ -1,34 +1,16 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public abstract interface agtk
-  extends agtj
+class agtk
+  implements DialogInterface.OnClickListener
 {
-  public abstract URLDrawable.URLDrawableOptions a();
+  agtk(agtj paramagtj, int paramInt) {}
   
-  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
-  
-  public abstract String a();
-  
-  public abstract URL a();
-  
-  public abstract void a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract boolean c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Agtj.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
+  }
 }
 
 

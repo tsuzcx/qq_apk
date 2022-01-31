@@ -1,55 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wem
-  extends unk<vcy>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vcv>
 {
-  public String a;
-  public boolean a;
-  public int c = -1;
-  
-  public String a()
+  public wem(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    return ume.a("StorySvc.feed_like_list_715");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vcv paramvcv)
   {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new wen(localRspFeedLikeList);
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramvcv.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if ((paramvcv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      wsv.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
       }
-      return localReqFeedLikeList.toByteArray();
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
     }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvcv);
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
+    return vcv.class;
   }
 }
 

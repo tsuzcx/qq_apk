@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
 public class xvu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xvu(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  public xvu(InnerListView paramInnerListView, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
+      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

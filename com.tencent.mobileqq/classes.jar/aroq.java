@@ -1,15 +1,15 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class aroq
-  extends da
+class aroq
+  implements View.OnClickListener
 {
-  aroq(Context paramContext) {}
+  aroq(aron paramaron) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramAsyncTask, paramInt);
-    cx.a(this.a, paramAsyncTask, paramInt, new aror(this));
+    this.a.a.finish();
   }
 }
 

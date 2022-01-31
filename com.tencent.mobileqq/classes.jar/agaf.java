@@ -1,29 +1,15 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-public class agaf
-  extends afzx
+class agaf
+  implements DialogInterface.OnClickListener
 {
-  public agaf(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
+  agaf(agad paramagad, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public aelt a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new agah(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562736, paramBaseChatItemLayout, false);
+    acjm.a(this.jdField_a_of_type_Agad.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agad.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agad.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

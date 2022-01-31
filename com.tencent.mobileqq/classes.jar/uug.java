@@ -1,48 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-class uug
-  extends SimpleObserver<List<vhg>>
+public abstract interface uug
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  uug(uuc paramuuc) {}
-  
-  public void a(List<vhg> paramList)
-  {
-    wsv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
-    super.onNext(paramList);
-    int i = 0;
-    while (i < paramList.size())
-    {
-      vhg localvhg = (vhg)paramList.get(i);
-      if (!localvhg.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localvhg.b);
-      }
-      i += 1;
-    }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-  }
-  
-  public void onComplete()
-  {
-    wsv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
-    super.onComplete();
-    this.jdField_a_of_type_Uuc.a(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    wsv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
-    super.onError(paramError);
-    this.jdField_a_of_type_Uuc.a(this.jdField_a_of_type_JavaUtilArrayList);
-  }
+  public abstract void b(View paramView, int paramInt);
 }
 
 

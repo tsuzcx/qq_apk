@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aqsc;
-import aqse;
-import aqzr;
-import arni;
-import arnz;
+import aqwl;
+import aqwn;
+import area;
+import arrr;
+import arsi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -17,15 +17,15 @@ class FileManagerUtil$21$1$1
   public void run()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = aqzr.a(arni.b(str));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = area.a(arrr.b(str));
     QLog.i("CHECK_FILE_EXISTED", 1, "find exsited file, set file download sucessed!");
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType = 3;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 11, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), "" }, 0, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_Arnz != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_Arnz.a(true);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_Arsi != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$21$1.this$0.jdField_a_of_type_Arsi.a(true);
     }
   }
 }

@@ -1,18 +1,15 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class yqw
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public yqw(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public yqw(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramJSONObject.optString("icon");
-    this.b = paramJSONObject.optString("iconGrid");
-    this.c = paramJSONObject.optString("jumpUrl");
-    this.d = paramJSONObject.optString("iconLoveGrid");
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

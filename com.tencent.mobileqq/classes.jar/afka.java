@@ -1,9 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+
 class afka
-  implements bhqf
+  implements DialogInterface.OnClickListener
 {
-  afka(afjx paramafjx) {}
+  afka(afjw paramafjw, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = (MessageForArkFlashChat)azaf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+      }
+    }
+    while (this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
+    {
+      return;
+      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+    }
+    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
+    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import atwd;
+import auam;
 
 class TroopAssisSettingActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ class TroopAssisSettingActivity$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilMap = atwd.a().a(this.this$0.app, this.this$0.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_JavaUtilMap = auam.a().a(this.this$0.app, this.this$0.jdField_a_of_type_JavaUtilList);
     this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }

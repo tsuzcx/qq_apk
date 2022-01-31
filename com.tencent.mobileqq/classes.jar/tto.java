@@ -1,32 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class tto
-  implements bhqd
+  implements bfah
 {
-  tto(ttn paramttn, bhpy parambhpy) {}
+  tto(ttl paramttl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    if (!ytg.a("showEnterAuthActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if ((ttl.a(this.a) == null) || (!ttl.a(this.a).equals(paramBaseResp.transaction))) {
       return;
-      if (ttn.a(this.jdField_a_of_type_Ttn) != null)
-      {
-        tqs.a(this.jdField_a_of_type_Ttn.a(), tqr.a(ttn.a(this.jdField_a_of_type_Ttn).a.urlInfo.get(), "authSchoolUrl"));
-        continue;
-        if (ttn.a(this.jdField_a_of_type_Ttn) != null) {
-          tqs.a(this.jdField_a_of_type_Ttn.a(), tqr.a(ttn.a(this.jdField_a_of_type_Ttn).a.urlInfo.get(), "authCampanyUrl"));
-        }
-      }
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(this.a.a(), 1, alud.a(2131715039), 0).a();
+      return;
+    }
+    QQToast.a(this.a.a(), 2, alud.a(2131715041), 0).a();
   }
 }
 

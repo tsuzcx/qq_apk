@@ -1,20 +1,19 @@
-import java.util.ArrayList;
-
 public class uye
-  extends ugz
 {
-  public final int a;
-  public ArrayList<uyd> a;
+  public final long a;
+  public final uyc a;
+  public final long b;
   
-  public uye(int paramInt)
+  public uye(uyc paramuyc, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Uyc = paramuyc;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
   public String toString()
   {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
+    return "Progress{intput=" + this.jdField_a_of_type_Uyc + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 

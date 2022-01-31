@@ -1,29 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class wfz
-  extends QQUIEventReceiver<wfn, uzc>
+  implements xwi
 {
-  public wfz(@NonNull wfn paramwfn)
-  {
-    super(paramwfn);
-  }
+  public wfz(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull wfn paramwfn, @NonNull uzc paramuzc)
+  public void a()
   {
-    if (wfn.a(paramwfn) == null)
-    {
-      wsv.b(this.TAG, "ignore this user info event. %s.", paramuzc.toString());
-      return;
+    if (this.a.a != null) {
+      this.a.a.d();
     }
-    wsv.a(this.TAG, "receive user info event. %s.", paramuzc.toString());
-    wfn.a(paramwfn).c();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
   }
 }
 

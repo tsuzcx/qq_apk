@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import amrz;
-import amxp;
-import anbo;
+import amwo;
+import anby;
+import anfx;
 
 public class QQARSession$21
   implements Runnable
 {
-  public QQARSession$21(anbo paramanbo, int paramInt) {}
+  public QQARSession$21(anfx paramanfx, int paramInt) {}
   
   public void run()
   {
-    if ((anbo.b(this.this$0)) && (this.this$0.a == 2) && (anbo.a(this.this$0) != null))
+    if ((anfx.b(this.this$0)) && (this.this$0.a == 2) && (anfx.a(this.this$0) != null))
     {
-      amrz localamrz = new amrz(anbo.a(this.this$0));
-      anbo.a(this.this$0).a(0, localamrz, this.a);
+      amwo localamwo = new amwo(anfx.a(this.this$0));
+      anfx.a(this.this$0).a(0, localamwo, this.a);
     }
   }
 }

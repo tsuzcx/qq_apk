@@ -1,11 +1,8 @@
-import android.content.DialogInterface;
+import android.os.Handler;
 
-public abstract interface ydf
-{
-  public abstract void a(DialogInterface paramDialogInterface);
-  
-  public abstract void j();
-}
+public class ydf
+  extends Handler
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

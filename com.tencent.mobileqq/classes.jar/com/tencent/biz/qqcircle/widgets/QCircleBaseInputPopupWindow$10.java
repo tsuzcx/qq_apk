@@ -1,18 +1,17 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import android.widget.ImageButton;
-import tzr;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import uce;
 
 public class QCircleBaseInputPopupWindow$10
   implements Runnable
 {
-  public QCircleBaseInputPopupWindow$10(tzr paramtzr) {}
+  public QCircleBaseInputPopupWindow$10(uce paramuce, View paramView) {}
   
   public void run()
   {
-    tzr.b(this.this$0);
-    tzr.a(this.this$0).setVisibility(0);
-    tzr.b(this.this$0).setVisibility(8);
+    uce.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
   }
 }
 

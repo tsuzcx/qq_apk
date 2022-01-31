@@ -11,7 +11,7 @@ class ListenTogetherPlayFragment$5$1
   public void run()
   {
     if ((this.a.this$0.getActivity() != null) && (!this.a.this$0.getActivity().isFinishing())) {
-      QQToast.a(this.a.this$0.getActivity(), 2131694635, 1).a();
+      QQToast.a(this.a.this$0.getActivity(), 2131694637, 1).a();
     }
   }
 }

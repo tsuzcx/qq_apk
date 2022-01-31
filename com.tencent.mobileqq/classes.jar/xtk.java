@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class xtk
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface xtk
 {
-  public xtk(RotateCircleImageView paramRotateCircleImageView) {}
+  public abstract void onFailure(String paramString);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
-  }
+  public abstract void onFinish(boolean paramBoolean);
+  
+  public abstract void onProgress(String paramString);
+  
+  public abstract void onStart();
+  
+  public abstract void onSuccess(String paramString);
 }
 
 

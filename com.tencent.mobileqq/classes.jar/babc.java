@@ -1,25 +1,46 @@
-public class babc
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public final class babc
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  public int a;
+  public boolean a;
   
-  public boolean equals(Object paramObject)
+  public static babc a(aoko[] paramArrayOfaoko)
   {
-    return this.b.equals(((babc)paramObject).b);
+    babc localbabc = new babc();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      int i = 0;
+      for (;;)
+      {
+        if (i < paramArrayOfaoko.length)
+        {
+          String str = paramArrayOfaoko[i].a;
+          try
+          {
+            localbabc.jdField_a_of_type_Int = new JSONObject(str).optInt("ConfigEnableStudyMode");
+            localbabc.jdField_a_of_type_Boolean = true;
+            babd.c(a(localbabc));
+            QLog.i("StudyModeConfigProcessor", 1, "[study mode config], mGraySwitch:" + localbabc.jdField_a_of_type_Int);
+            i += 1;
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              QLog.e("StudyModeConfigProcessor", 1, localThrowable, new Object[0]);
+            }
+          }
+        }
+      }
+    }
+    return localbabc;
   }
   
-  public int hashCode()
+  public static boolean a(babc parambabc)
   {
-    return super.hashCode();
+    return parambabc.jdField_a_of_type_Int == 1;
   }
 }
 

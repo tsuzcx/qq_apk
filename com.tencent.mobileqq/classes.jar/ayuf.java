@@ -1,33 +1,108 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.ArrayList;
-import protocol.KQQConfig.GetResourceReqInfo;
+import java.util.List;
 
-public class ayuf
+public abstract class ayuf
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public int a;
+  public long a;
+  public final ayug a;
+  public String a;
+  public int b;
+  
+  public ayuf(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    GetResourceReqInfo localGetResourceReqInfo = new GetResourceReqInfo();
-    localGetResourceReqInfo.uiResID = 0L;
-    localGetResourceReqInfo.strPkgName = paramString2;
-    localGetResourceReqInfo.uiCurVer = 0L;
-    localGetResourceReqInfo.sResType = 4;
-    localGetResourceReqInfo.sLanType = 0;
-    localGetResourceReqInfo.sReqType = 1;
-    localArrayList.add(localGetResourceReqInfo);
-    a(paramQQAppInterface, paramString1, localArrayList);
+    this.jdField_a_of_type_Ayug = paramayug;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<GetResourceReqInfo> paramArrayList)
+  protected abstract aynt a(List<aynu> paramList, String paramString);
+  
+  public List<aynt> a(ayuu paramayuu)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      paramString = new ToServiceMsg("mobileqq.service", paramString, "ResourceConfig.GetResourceReq");
-      paramString.extraData.putSerializable("getResourceReqInfos", paramArrayList);
-      paramQQAppInterface.sendToService(paramString);
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    if (paramayuu.jdField_a_of_type_AndroidOsBundle == null) {
+      paramayuu.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
+    paramayuu.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
+    ArrayList localArrayList = new ArrayList();
+    List localList = this.jdField_a_of_type_Ayug.a(paramayuu);
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      aynt localaynt = a(localList, paramayuu.jdField_a_of_type_JavaLangString);
+      if (((localaynt instanceof ayne)) && (localaynt.a() != null) && (localaynt.a().size() > 0)) {
+        paramayuu.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+      }
+      boolean bool1;
+      if (localaynt != null)
+      {
+        bool1 = bool2;
+        if (localaynt.a() != null)
+        {
+          bool1 = bool2;
+          if (localaynt.a().size() > localaynt.a()) {
+            bool1 = true;
+          }
+        }
+        if (!(localaynt instanceof biwb)) {
+          break label385;
+        }
+      }
+      for (;;)
+      {
+        localArrayList.add(localaynt);
+        localaynt = b(localList, paramayuu.jdField_a_of_type_JavaLangString);
+        if (((localaynt instanceof ayne)) && (localaynt.a() != null) && (localaynt.a().size() > 0)) {
+          paramayuu.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+        }
+        if (localaynt != null)
+        {
+          localArrayList.add(new aynb(localaynt));
+          localArrayList.add(localaynt);
+        }
+        localaynt = c(localList, paramayuu.jdField_a_of_type_JavaLangString);
+        if (((localaynt instanceof ayng)) && (localaynt.a() != null) && (localaynt.a().size() > 0)) {
+          paramayuu.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+        }
+        if (localaynt != null)
+        {
+          localArrayList.add(new aynb(localaynt));
+          localArrayList.add(localaynt);
+        }
+        this.jdField_a_of_type_Int = localList.size();
+        return localArrayList;
+        label385:
+        if ((localaynt instanceof arcw)) {
+          localArrayList.add(new aynb(localaynt, alud.a(2131705775), bool1));
+        } else if (bdpr.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
+          localArrayList.add(new aynb(localaynt, localaynt.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
+        } else if ((localaynt instanceof aynm)) {
+          localArrayList.add(new aynb(localaynt, alud.a(2131705755), true));
+        } else if ((localaynt instanceof ayni)) {
+          localArrayList.add(new aynb(localaynt, localaynt.a(), bool1));
+        } else if ((localaynt instanceof aylm)) {
+          localArrayList.add(new aynb(localaynt, alud.a(2131705763), bool1));
+        } else {
+          localArrayList.add(new aynb(localaynt));
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = 0;
+    return localArrayList;
+  }
+  
+  protected aynt b(List<aynu> paramList, String paramString)
+  {
+    return null;
+  }
+  
+  protected aynt c(List<aynu> paramList, String paramString)
+  {
+    return null;
   }
 }
 

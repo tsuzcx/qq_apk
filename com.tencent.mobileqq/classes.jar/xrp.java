@@ -1,31 +1,17 @@
-import java.util.List;
-
-public abstract class xrp<T>
+public class xrp
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
-  
-  public xrp(int paramInt, List<T> paramList)
+  public static long a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public abstract void a(int paramInt, T paramT, wph paramwph);
-  
-  public void a(int paramInt, wph paramwph)
-  {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramwph);
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      return l;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      wxe.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
+    }
+    return paramLong;
   }
 }
 

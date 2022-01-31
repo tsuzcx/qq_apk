@@ -1,8 +1,8 @@
 package cooperation.qqfav;
 
-import abqn;
-import birb;
-import birc;
+import abvc;
+import bivi;
+import bivj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -13,16 +13,16 @@ import org.json.JSONObject;
 public class QfavLeakHelper$2$1
   implements Runnable
 {
-  public QfavLeakHelper$2$1(birc parambirc) {}
+  public QfavLeakHelper$2$1(bivj parambivj) {}
   
   public void run()
   {
-    Object localObject1 = abqn.a("mobile_Qfav_leak");
+    Object localObject1 = abvc.a("mobile_Qfav_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      birb.a((String)localObject2);
+      bivi.a((String)localObject2);
     }
     try
     {

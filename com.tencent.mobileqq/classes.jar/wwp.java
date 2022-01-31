@@ -1,34 +1,17 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-class wwp
-  extends SimpleObserver<Bitmap>
+public class wwp
+  implements bhxq
 {
-  wwp(wwo paramwwo) {}
+  public wwp(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        wsv.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
     }
-    else {
-      return;
-    }
-    wsv.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wsv.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    wxe.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 

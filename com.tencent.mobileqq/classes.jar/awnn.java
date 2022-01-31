@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.text.TextUtils;
 
 public class awnn
-  implements DialogInterface.OnClickListener
 {
-  public awnn(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a()
   {
-    this.a.e();
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
+    localStringBuilder.append("businessId=").append(this.a);
+    localStringBuilder.append(", name=").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

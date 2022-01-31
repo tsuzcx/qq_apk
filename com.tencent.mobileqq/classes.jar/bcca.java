@@ -1,64 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-class bcca
-  implements View.OnTouchListener
+public class bcca
+  implements DialogInterface.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  public bcca(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
   
-  bcca(bcby parambcby) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bcby.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof aupa))) {}
-    for (paramMotionEvent = (aupa)paramView.getTag();; paramMotionEvent = null)
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
+    QQAppInterface localQQAppInterface;
+    String str1;
+    String str2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      switch (i)
-      {
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bcea.f;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bcea.f;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
+        break label108;
       }
-      for (;;)
-      {
-        return true;
-        if (paramMotionEvent != null)
-        {
-          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
-        }
-        else
-        {
-          paramView.setAlpha(0.5F);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          }
-          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-          {
-            return true;
-            paramView.setAlpha(1.0F);
-          }
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          azmj.b(this.jdField_a_of_type_Bcby.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Bcby.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
-          paramView = bckj.a().a(this.jdField_a_of_type_Bcby.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bcby.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramMotionEvent = new Intent(this.jdField_a_of_type_Bcby.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-          paramMotionEvent.putExtra("url", paramView);
-          this.jdField_a_of_type_Bcby.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
-      }
+    }
+    label108:
+    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
+    {
+      bdes.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
+      return;
     }
   }
 }

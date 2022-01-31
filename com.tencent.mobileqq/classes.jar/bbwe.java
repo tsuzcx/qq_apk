@@ -1,39 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class bbwe
-  extends BroadcastReceiver
+public abstract interface bbwe
 {
-  public bbwe(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (this.a.a != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
-      }
-      this.a.a.b(102);
-    }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
-      return;
-    }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
-    }
-    this.a.a.b(102);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void d();
 }
 
 

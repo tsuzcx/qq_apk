@@ -23,6 +23,7 @@ public class QCircleFeedEvent
   extends SimpleBaseEvent
 {
   public static final int STATE_COMPLETE = 2;
+  public static final int STATE_COMPOSITE_SUCCESS = 5;
   public static final int STATE_CREATE = 1;
   public static final int STATE_DELETE = 3;
   public static final int STATE_INIT_FAKE_DATA = 4;

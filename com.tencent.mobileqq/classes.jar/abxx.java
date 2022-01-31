@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class abxx
-  implements DialogInterface.OnDismissListener
+class abxx
+  extends nac
 {
-  public abxx(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  abxx(abxv paramabxv, abyh paramabyh, JSONObject paramJSONObject, abwu paramabwu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.i(abxv.a, 2, "onResult appid=" + abxv.b(this.jdField_a_of_type_Abxv).a + ", openid=" + this.jdField_a_of_type_Abyh.a + ", openkey=" + this.jdField_a_of_type_Abyh.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      acab.a(this.jdField_a_of_type_Abwu, paramInt, "reportScore result error, try again");
+      return;
+    }
+    acab.a(this.jdField_a_of_type_Abwu, abww.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

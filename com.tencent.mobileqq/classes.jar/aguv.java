@@ -1,18 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
 class aguv
-  implements View.OnClickListener
+  extends bfzo
 {
-  aguv(aguu paramaguu) {}
+  aguv(agti paramagti) {}
   
-  public void onClick(View paramView)
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    aguu.a(this.a).a();
-    ChatActivityUtils.a(aguu.a(this.a), aguu.a(this.a), aguu.a(this.a).jdField_a_of_type_Int, aguu.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    azmj.b(aguu.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    if ((!paramBoolean) || (paramHashMap == null))
+    {
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.ao = true;
+    this.a.bH();
+    if ((agti.a(this.a) != null) && (agti.a(this.a).isShowing())) {
+      agti.a(this.a).dismiss();
+    }
+    this.a.bI();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bH();
+    this.a.bI();
   }
 }
 

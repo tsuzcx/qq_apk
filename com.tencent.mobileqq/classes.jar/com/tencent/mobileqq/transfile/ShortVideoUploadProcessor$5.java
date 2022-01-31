@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import azmz;
+import azri;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -30,7 +30,7 @@ class ShortVideoUploadProcessor$5
     ((HashMap)localObject).put("param_videoLen", localFile.length() + "");
     DecimalFormat localDecimalFormat = new DecimalFormat("##.000");
     ((HashMap)localObject).put("param_moovPosition", localDecimalFormat.format(l2 * 1.0D / localFile.length()) + "");
-    azmz.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
+    azri.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
   }
 }
 

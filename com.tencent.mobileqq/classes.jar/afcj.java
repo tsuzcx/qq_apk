@@ -1,40 +1,72 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class afcj
-  implements afcm
+  implements bepk
 {
-  afcj(afci paramafci) {}
+  afcj(afcg paramafcg) {}
   
-  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public void a(int paramInt)
   {
-    int j;
-    int i;
-    if (afci.a(this.a) != null)
-    {
-      j = afci.a(this.a).getChildCount();
-      if (j > 0) {
-        i = 0;
-      }
+    if ((!afcg.a(this.a)) && (paramInt == 1)) {
+      this.a.a();
     }
-    for (;;)
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    if (afcg.a(this.a)) {
+      this.a.a(paramInt, paramFloat);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    afcg.a(this.a);
+    if (afcg.a(this.a)) {
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void f()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
+    }
+    if (afcg.a(this.a)) {
+      this.a.f();
+    }
+    if (!alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    for (int i = 1;; i = 0)
     {
-      if (i < j)
-      {
-        paramView = afci.a(this.a).getChildAt(i).getTag();
-        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
-          afci.a(this.a).removeViewAt(i);
-        }
+      if (i != 0) {
+        alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
       }
-      else
-      {
-        if (afci.a(this.a).getChildCount() <= 0) {
-          afci.a(this.a).setVisibility(8);
-        }
-        return;
-      }
-      i += 1;
+      return;
+    }
+  }
+  
+  public void g()
+  {
+    if (afcg.a(this.a)) {
+      this.a.g();
+    }
+  }
+  
+  public void h()
+  {
+    if (afcg.a(this.a)) {
+      this.a.h();
+    }
+  }
+  
+  public void i()
+  {
+    afcg.b(this.a);
+    if (afcg.a(this.a)) {
+      this.a.i();
+    }
+    if (alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
     }
   }
 }

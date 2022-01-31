@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgkd;
-import bgkz;
+import bgok;
+import bgpg;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class PayJsPlugin$9
   implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
+  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, bgok parambgok) {}
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
@@ -21,7 +21,7 @@ class PayJsPlugin$9
     {
       localJSONObject.put("resultCode", paramPayResponse.getResultCode());
       String str = paramPayResponse.getExtendInfo();
-      if ((!TextUtils.isEmpty(str)) && (bgkz.a(str))) {
+      if ((!TextUtils.isEmpty(str)) && (bgpg.a(str))) {
         localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
       }
       label58:

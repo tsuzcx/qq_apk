@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqa;
-import amqd;
+import amup;
+import amus;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARVideoRecordUIControllerImpl$1
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$1(amqa paramamqa) {}
+  public ARVideoRecordUIControllerImpl$1(amup paramamup) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ARVideoRecordUIControllerImpl$1
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
-      if (amqa.a(this.this$0) == null) {
+      if (amup.a(this.this$0) == null) {
         break label81;
       }
     }
@@ -23,10 +23,10 @@ public class ARVideoRecordUIControllerImpl$1
     for (boolean bool = true;; bool = false)
     {
       QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
-      if (amqa.a(this.this$0) != null)
+      if (amup.a(this.this$0) != null)
       {
-        amqa.a(this.this$0).a();
-        amqa.a(this.this$0).a(0);
+        amup.a(this.this$0).a();
+        amup.a(this.this$0).a(0);
       }
       return;
     }

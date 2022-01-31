@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-class ahvd
-  implements View.OnClickListener
+public abstract interface ahvd
 {
-  ahvd(ahvc paramahvc, ahvf paramahvf) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = String.valueOf(this.jdField_a_of_type_Ahvf.a.getText());
-    ahvc.a(this.jdField_a_of_type_Ahvc, paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

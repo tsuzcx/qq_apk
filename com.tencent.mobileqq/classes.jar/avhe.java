@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
 class avhe
-  implements View.OnClickListener
+  implements avcg
 {
-  avhe(avgk paramavgk) {}
+  avhe(avhb paramavhb) {}
   
-  public void onClick(View paramView)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    if (!this.a.a.onBackEvent())
+    if (avhb.a(this.a) != null)
     {
-      this.a.a.finish();
-      this.a.a.b(false);
+      if (paramInt == 0)
+      {
+        avhb.a(this.a).b(paramComment);
+        avhb.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696851));
+        azqs.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
+      }
     }
+    else {
+      return;
+    }
+    avhb.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696850));
   }
 }
 

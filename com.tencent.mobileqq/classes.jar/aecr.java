@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class aecr
-  extends allb
+class aecr
+  implements DialogInterface.OnClickListener
 {
-  public aecr(TroopRequestActivity paramTroopRequestActivity) {}
+  aecr(aecq paramaecq, bdjz parambdjz) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
-    }
-    if (paramObject == null) {}
-    Card localCard;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+    azqs.b(this.jdField_a_of_type_Aecq.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Aecq.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Aecq.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Aecq.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bdjz.cancel();
   }
 }
 

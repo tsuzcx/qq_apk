@@ -3,7 +3,7 @@ import android.view.animation.Animation;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class npw
-  extends bhnr
+  extends bhry
 {
   public npw(PublicAccountBrowser paramPublicAccountBrowser, boolean paramBoolean, View paramView) {}
   

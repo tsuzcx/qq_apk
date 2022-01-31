@@ -1,8 +1,12 @@
-import android.view.View;
-
-public abstract interface blby
+class blby
 {
-  public abstract void a(View paramView, bkvu parambkvu, int paramInt);
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
+  
+  blby(blbx paramblbx) {}
 }
 
 

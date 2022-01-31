@@ -1,20 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class wwa
-  extends Handler
+class wwa
+  extends ulw
 {
-  public wwa(EditVideoMusic paramEditVideoMusic) {}
+  wwa(wvq paramwvq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    switch (paramMessage.what)
+    if ((wvq.a(this.a) == null) || (wvq.a(this.a).a == null))
     {
+      wxe.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
+    }
+    String str = wvq.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      wxe.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
     default: 
       return;
     }
-    this.a.b();
+    this.a.a(new wsz[] { new wsu(wsc.a(str)), (wsz)this.a.b.a(), new wst(new wwb(this, str)) });
   }
 }
 

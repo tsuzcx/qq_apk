@@ -1,45 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class aivp
-  extends bdvu
+  implements OnCompositionLoadedListener
 {
-  public aivp(PreloadManager paramPreloadManager, aivs paramaivs) {}
+  public aivp(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void onDoneFile(bdvv parambdvv)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    int i = -5;
-    super.onDoneFile(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + parambdvv.jdField_a_of_type_JavaLangString + "|" + parambdvv.jdField_a_of_type_Int);
-    }
-    Object localObject = parambdvv.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (parambdvv.jdField_a_of_type_Int == 0)
-    {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
-    {
-      this.jdField_a_of_type_Aivs.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambdvv.jdField_a_of_type_JavaUtilMap.get(parambdvv.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
-      return;
-      if (parambdvv.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.a.d.setImageDrawable(localLottieDrawable);
   }
 }
 

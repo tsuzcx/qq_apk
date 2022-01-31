@@ -1,6 +1,12 @@
-class aete
+public abstract interface aete
 {
-  private static final aetb a = new aetb(null);
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
 }
 
 

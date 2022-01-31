@@ -12,7 +12,7 @@ class ogb
   {
     if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aekt.a(140.5F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(140.5F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
       ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
     }
@@ -22,7 +22,7 @@ class ogb
   {
     if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aekt.a(40.0F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(40.0F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
       ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
     }

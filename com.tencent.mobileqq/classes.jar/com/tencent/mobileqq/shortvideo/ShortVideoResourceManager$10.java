@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayzw;
+import azef;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 final class ShortVideoResourceManager$10
   implements Runnable
 {
-  ShortVideoResourceManager$10(QQAppInterface paramQQAppInterface, List paramList, ayzw paramayzw, String paramString) {}
+  ShortVideoResourceManager$10(QQAppInterface paramQQAppInterface, List paramList, azef paramazef, String paramString) {}
   
   public void run()
   {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ayzw, this.jdField_a_of_type_JavaLangString);
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Azef, this.jdField_a_of_type_JavaLangString);
   }
 }
 

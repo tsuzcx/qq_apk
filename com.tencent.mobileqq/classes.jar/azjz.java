@@ -1,44 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class azjz
-  implements JpegExifReader.JpegExifReaderInterface
 {
-  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
-  
-  public boolean readEnableFromDPC()
+  public static long a()
   {
-    try
+    return b(1) - c(1);
+  }
+  
+  public static long a(int paramInt)
+  {
+    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
+    switch (paramInt)
     {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length >= 9)
-        {
-          int i = Integer.parseInt(localObject[8]);
-          if (i != 1) {
-            break label81;
-          }
-        }
-      }
+    case 0: 
+    default: 
+      return l;
+    case 1: 
+      return l / 1024L;
     }
-    catch (Exception localException)
+    return l / 1048576L;
+  }
+  
+  private static long b(int paramInt)
+  {
+    switch (paramInt)
     {
-      label81:
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JpegExifReader", 2, "read dpc", localException);
+    default: 
+      return Runtime.getRuntime().totalMemory();
+    case 0: 
+      return Runtime.getRuntime().totalMemory();
+    case 1: 
+      return Runtime.getRuntime().totalMemory() / 1024L;
     }
-    return true;
-    return false;
-    return true;
+    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
+  }
+  
+  private static long c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return Runtime.getRuntime().freeMemory();
+    case 0: 
+      return Runtime.getRuntime().freeMemory();
+    case 1: 
+      return Runtime.getRuntime().freeMemory() / 1024L;
+    }
+    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
   }
 }
 

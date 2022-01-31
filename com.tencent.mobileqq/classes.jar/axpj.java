@@ -1,49 +1,26 @@
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
 import com.tencent.qphone.base.util.QLog;
 
-class axpj
-  implements axrl
+final class axpj
+  implements bdoh<Float>
 {
-  axpj(axpi paramaxpi, int[] paramArrayOfInt) {}
+  axpj(View paramView) {}
   
-  public void a()
+  @TargetApi(11)
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
-  }
-  
-  public void a(String arg1)
-  {
-    wta.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (axpi.a(this.jdField_a_of_type_Axpi))
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
     {
-      axpi.a(this.jdField_a_of_type_Axpi, true);
-      axpi.a(this.jdField_a_of_type_Axpi).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
     }
   }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
-    }
-    for (;;)
-    {
-      wta.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      wsv.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      axpi.a(this.jdField_a_of_type_Axpi, paramInt);
-      synchronized (axpi.a(this.jdField_a_of_type_Axpi))
-      {
-        axpi.a(this.jdField_a_of_type_Axpi, true);
-        axpi.a(this.jdField_a_of_type_Axpi).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
-      }
-    }
-  }
-  
-  public void b() {}
 }
 
 

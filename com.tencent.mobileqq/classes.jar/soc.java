@@ -7,7 +7,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 public class soc
-  implements bfka
+  implements bfoj
 {
   public soc(BridgeModule paramBridgeModule, String paramString1, String paramString2) {}
   

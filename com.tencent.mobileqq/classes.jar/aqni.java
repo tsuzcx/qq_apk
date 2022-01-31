@@ -1,157 +1,206 @@
-import android.app.Activity;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.SingleLineTextView;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-public class aqni
-  extends aqnd
+public abstract class aqni
+  extends bhzv
 {
-  public aqni(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  protected Context a;
+  protected aqnm a;
+  private ExpandableListView jdField_a_of_type_ComTencentWidgetExpandableListView;
+  Object jdField_a_of_type_JavaLangObject;
+  LinkedHashMap<String, List<Object>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
-  protected CircleFileStateView a(aelt paramaelt)
+  public aqni(Context paramContext, Object paramObject)
   {
-    if (paramaelt == null) {}
-    while (!(paramaelt instanceof aftl)) {
-      return null;
+    if (paramObject != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
     }
-    return ((aftl)paramaelt).a;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected void a(aelt paramaelt, CircleFileStateView paramCircleFileStateView)
+  public int a()
   {
-    if (paramaelt == null) {}
-    while (!(paramaelt instanceof aftl)) {
-      return;
-    }
-    ((aftl)paramaelt).a = paramCircleFileStateView;
+    return 2131558878;
   }
   
-  protected void a(View paramView, aelt paramaelt, ChatMessage paramChatMessage, int paramInt)
+  String a(int paramInt)
   {
-    if (paramChatMessage == null) {}
-    do
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      do
-      {
-        do
-        {
-          TroopFileTransferManager localTroopFileTransferManager;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  QLog.i("TroopFileBubbleDownloadHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-                } while (paramInt == -1);
-                paramView = (MessageForTroopFile)paramChatMessage;
-                localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramChatMessage.frienduin));
-              } while (localTroopFileTransferManager == null);
-              paramaelt = bcjk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
-            } while (paramaelt == null);
-            int i = bdee.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-            if (paramInt != 0) {
-              break;
-            }
-            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
-            if (i == 0)
-            {
-              bcig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131698040));
-              return;
-            }
-          } while (paramaelt.b != 8);
-          localTroopFileTransferManager.d(paramaelt.jdField_a_of_type_JavaUtilUUID);
-          return;
-        } while (paramInt != 1);
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
-        paramChatMessage = new bboe(Long.parseLong(paramChatMessage.frienduin), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
-        if ((paramaelt.b != 10) && (paramaelt.b != 9)) {
-          break;
-        }
-      } while (paramaelt.jdField_a_of_type_JavaUtilUUID == null);
-      paramChatMessage.b(paramaelt.jdField_a_of_type_JavaUtilUUID);
-      return;
-      if (paramaelt.b == 7)
-      {
-        paramChatMessage.a(paramView.url, paramaelt.g, paramaelt.c, paramaelt.h);
-        return;
+      str = (String)localIterator.next();
+      if (i == paramInt) {
+        return str;
       }
-    } while ((paramaelt.b != 6) || (bdcs.b(paramaelt.jdField_a_of_type_JavaLangString)));
-    paramChatMessage.a(paramView.url, paramaelt.g, paramaelt.c, paramaelt.h);
+      i += 1;
+    }
+    String str = null;
+    return str;
   }
   
-  protected boolean a(ChatMessage paramChatMessage)
+  protected List<Object> a(int paramInt)
   {
-    if (paramChatMessage == null) {}
-    bbpe localbbpe;
-    do
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      do
-      {
-        int i;
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (!(paramChatMessage instanceof MessageForTroopFile));
-            paramChatMessage = (MessageForTroopFile)paramChatMessage;
-            localbbpe = bcjk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-          } while ((localbbpe == null) || ((paramChatMessage.lastTime != 0L) && (paramChatMessage.lastTime <= NetConnInfoCenter.getServerTime())));
-          i = arni.a(localbbpe.g);
-        } while ((i == 0) || (i == 2));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileBubbleDownloadHandler", 1, "needShowDownloadIcon: current file status[" + localbbpe.b + "]");
-        }
-        if ((localbbpe.b != 10) && (localbbpe.b != 9) && (localbbpe.b != 7)) {
-          break;
-        }
-      } while (bdcs.b(localbbpe.jdField_a_of_type_JavaLangString));
-      return true;
-    } while ((localbbpe.b != 6) || (bdcs.b(localbbpe.jdField_a_of_type_JavaLangString)));
+      String str = (String)localIterator.next();
+      if (i != paramInt) {
+        i += 1;
+      } else {
+        return (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      }
+    }
+    return null;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    aqnn localaqnn = (aqnn)paramView.getTag();
+    if (localaqnn == null)
+    {
+      localaqnn = new aqnn();
+      localaqnn.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367351));
+      paramView.findViewById(2131364710).setVisibility(8);
+      paramView.findViewById(2131368868).setVisibility(8);
+      localaqnn.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368775));
+      paramView.setTag(localaqnn);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new aqnl(this, paramInt));
+      localaqnn.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramInt));
+      paramView = (String)getGroup(paramInt);
+      localaqnn.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
+      localaqnn.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      return;
+    }
+  }
+  
+  public void a(aqnm paramaqnm)
+  {
+    this.jdField_a_of_type_Aqnm = paramaqnm;
+  }
+  
+  public void a(ExpandableListView paramExpandableListView)
+  {
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    List localList = a(paramInt1);
+    if ((localList != null) && (localList.size() > 0) && (paramInt2 < localList.size())) {
+      return localList.get(paramInt2);
+    }
+    return null;
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    return paramInt2;
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    List localList = a(paramInt);
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return a(paramInt);
+  }
+  
+  public int getGroupCount()
+  {
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size();
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = (aqnn)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      paramViewGroup.setOnClickListener(new aqnj(this, paramInt));
+      if (AppSetting.c) {
+        paramViewGroup.setAccessibilityDelegate(new xye(paramViewGroup, new aqnk(this, paramInt)));
+      }
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+      localObject = (String)getGroup(paramInt);
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject);
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558878, paramViewGroup, false);
+      paramView = new aqnn();
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131367351));
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131368775));
+      paramViewGroup.findViewById(2131364710).setVisibility(8);
+      paramViewGroup.findViewById(2131368868).setVisibility(8);
+      paramViewGroup.setTag(paramView);
+    }
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
     return true;
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public void onGroupCollapsed(int paramInt)
   {
-    boolean bool = true;
-    if (paramChatMessage == null) {}
-    int i;
-    do
+    super.onGroupCollapsed(paramInt);
+    if (AppSetting.c)
     {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bcjk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      } while (paramChatMessage == null);
-      i = arni.a(paramChatMessage.g);
-    } while ((i == 0) || (i == 2));
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileBubbleDownloadHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
+      String str = (String)getGroup(paramInt);
+      QQAppInterface.f(str + alud.a(2131710000));
     }
-    if (paramChatMessage.b == 8) {}
-    for (;;)
+  }
+  
+  public void onGroupExpanded(int paramInt)
+  {
+    super.onGroupExpanded(paramInt);
+    if (AppSetting.c)
     {
-      return bool;
-      bool = false;
+      String str = (String)getGroup(paramInt);
+      QQAppInterface.f(str + alud.a(2131710020));
     }
   }
 }

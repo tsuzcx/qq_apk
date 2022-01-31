@@ -1,13 +1,37 @@
-import android.view.animation.Transformation;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bebl
-  implements bdjy<Integer>
+public class bebl
+  implements DownloadParams.DecodeHandler
 {
-  bebl(bebk parambebk) {}
+  private int a;
+  private int b;
   
-  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  @Deprecated
+  public bebl() {}
+  
+  public bebl(int paramInt1, int paramInt2)
   {
-    this.a.b(paramInteger.intValue());
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  @Deprecated
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    return bdmj.a(paramBitmap, this.a, this.b);
+  }
+  
+  public String toString()
+  {
+    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 

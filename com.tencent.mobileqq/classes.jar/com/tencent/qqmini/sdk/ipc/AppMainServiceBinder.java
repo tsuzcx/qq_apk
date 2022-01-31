@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.ipc;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bgpr;
+import bgty;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService.Stub;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
@@ -76,7 +76,7 @@ public class AppMainServiceBinder
   
   public void sendCmd(String paramString1, String paramString2, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    bgpr.a().a(paramString1, paramBundle, paramMiniCmdCallback);
+    bgty.a().a(paramString1, paramBundle, paramMiniCmdCallback);
   }
   
   public void startMiniApp(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)

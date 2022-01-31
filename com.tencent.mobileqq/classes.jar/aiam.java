@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class aiam
-  extends alls
+public class aiam
+  implements DialogInterface.OnClickListener
 {
-  aiam(aiak paramaiak) {}
+  public aiam(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
-  {
-    aiak.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

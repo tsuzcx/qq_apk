@@ -1,189 +1,94 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.os.Bundle;
+import android.graphics.PorterDuff.Mode;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tribe.async.dispatch.Dispatcher;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.TimeZone;
 
-public class vot
-  extends voq
+class vot
 {
-  public final int a;
-  public ArrayList<WeakReference<vow>> a;
-  protected ConcurrentHashMap<String, Boolean> a;
-  public voy a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoCoverImgBorder jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder;
+  private String jdField_a_of_type_JavaLangString;
   
-  public vot(voy paramvoy)
+  public vot(vos paramvos, View paramView)
   {
-    super(paramvoy);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Voy = paramvoy;
-    paramvoy = this.jdField_a_of_type_Voy.a().mBundle.getStringArrayList("EXTRA_VIDEO_ID_LIST");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Voy.a().mBundle.getInt("EXTRA_INT_MAX_SELECT_COUNT", 10);
-    if (paramvoy != null)
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder = ((VideoCoverImgBorder)paramView.findViewById(2131363356));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377847));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setOnClickListener(new vou(this, paramvos));
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      paramvoy = paramvoy.iterator();
-      while (paramvoy.hasNext())
+      xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Vos.a), VideoCoverListBar.a(this.jdField_a_of_type_Vos.a), VideoCoverListBar.c(this.jdField_a_of_type_Vos.a), VideoCoverListBar.d(this.jdField_a_of_type_Vos.a), "VideoCoverList");
+      return;
+    }
+    xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Vos.a), VideoCoverListBar.b(this.jdField_a_of_type_Vos.a), VideoCoverListBar.c(this.jdField_a_of_type_Vos.a), VideoCoverListBar.d(this.jdField_a_of_type_Vos.a), "VideoCoverList");
+  }
+  
+  public void a(int paramInt)
+  {
+    wxe.a("Q.qqstory.player:VideoCoverListBar", "bindView, position=%d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Vos.a(paramInt);
+    Object localObject = VideoCoverListBar.a(this.jdField_a_of_type_Vos.a).b(this.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      localObject = new StoryVideoItem();
+      ((StoryVideoItem)localObject).mVid = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(((StoryVideoItem)localObject).getThumbUrl()))
       {
-        String str = (String)paramvoy.next();
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Boolean.valueOf(true));
+        a(xsj.a(((StoryVideoItem)localObject).getThumbUrl()), paramInt);
+        if (!((StoryVideoItem)localObject).isUploadFail()) {
+          break label177;
         }
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(0);
       }
-    }
-  }
-  
-  public void a()
-  {
-    vov localvov = new vov();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      String str = (String)localEntry.getKey();
-      if (((Boolean)localEntry.getValue()).booleanValue()) {
-        localArrayList.add(str);
-      }
-    }
-    localvov.jdField_a_of_type_Boolean = true;
-    localvov.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    wsv.b("SelectVideoPlayerStrategy", "onPagerItemClick onClick complete: " + localvov.jdField_a_of_type_JavaUtilArrayList.toString());
-    uht.a().dispatch(localvov);
-    this.jdField_a_of_type_Voy.a().finish();
-  }
-  
-  public void a(vow paramvow)
-  {
-    super.a(paramvow);
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramvow));
-  }
-  
-  @SuppressLint({"SetTextI18n"})
-  public void a(vow paramvow, int paramInt1, int paramInt2, vpk paramvpk)
-  {
-    super.a(paramvow, paramInt1, paramInt2, paramvpk);
-    paramvpk = paramvpk.a;
-    if (TextUtils.isEmpty(paramvpk)) {
-      return;
-    }
-    ImageView localImageView = (ImageView)paramvow.jdField_a_of_type_AndroidViewView.findViewById(2131368009);
-    localImageView.setVisibility(0);
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramvpk)) && (((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramvpk)).booleanValue()))
-    {
-      localImageView.setImageResource(2130844268);
-      paramvpk = (TextView)paramvow.jdField_a_of_type_AndroidViewView.findViewById(2131377715);
-      paramvpk.setVisibility(0);
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label155;
-      }
-      paramvow = alpo.a(2131714155);
-      label118:
-      paramvpk.setText(paramvow);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label192;
-      }
-    }
-    label155:
-    label192:
-    for (boolean bool = true;; bool = false)
-    {
-      paramvpk.setEnabled(bool);
-      return;
-      localImageView.setImageResource(2130845223);
-      break;
-      paramvow = alpo.a(2131714158) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-      break label118;
-    }
-  }
-  
-  public void a(vow paramvow, View paramView)
-  {
-    super.a(paramvow, paramView);
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131368009: 
-      paramvow = paramvow.jdField_a_of_type_Vpk.a;
-      xmh.a(paramvow);
-      label87:
-      TextView localTextView;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramvow))
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramvow);
-        ((ImageView)paramView).setImageResource(2130845223);
-        paramView = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
-        {
-          if (!paramView.hasNext()) {
-            break;
-          }
-          paramvow = (vow)((WeakReference)paramView.next()).get();
-        } while (paramvow == null);
-        localTextView = (TextView)paramvow.jdField_a_of_type_AndroidViewView.findViewById(2131377715);
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-          break label285;
+        if ((!VideoCoverListBar.a(this.jdField_a_of_type_Vos.a).a()) && (!VideoCoverListBar.a(this.jdField_a_of_type_Vos.a).b())) {
+          break label246;
         }
-        paramvow = alpo.a(2131714157);
-        label147:
-        localTextView.setText(paramvow);
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-          break label323;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.clearColorFilter();
+        return;
+        a(xsj.a(wxb.a(((StoryVideoItem)localObject).mVideoLocalThumbnailPath)), paramInt);
+        break;
+        label177:
+        if (TextUtils.isEmpty(VideoCoverListBar.a(this.jdField_a_of_type_Vos.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        } else if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, VideoCoverListBar.a(this.jdField_a_of_type_Vos.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(1);
+        } else {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
         }
       }
-      label285:
-      label323:
+      label246:
+      if ((vls.b((StoryVideoItem)localObject)) || (((StoryVideoItem)localObject).mErrorCode != 0))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+      }
+      long l2 = ((StoryVideoItem)localObject).mCreateTime;
+      long l1;
+      if (((StoryVideoItem)localObject).mTimeZoneOffsetMillis != 2147483647L) {
+        l1 = ((StoryVideoItem)localObject).mTimeZoneOffsetMillis;
+      }
       for (boolean bool = true;; bool = false)
       {
-        localTextView.setEnabled(bool);
-        break label87;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= this.jdField_a_of_type_Int)
-        {
-          paramvow = bdcd.a(this.jdField_a_of_type_Voy.a(), 230);
-          paramvow.setMessage(String.format(alpo.a(2131714160), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), ugx.a }));
-          paramvow.setPositiveButton(alpo.a(2131714154), new vou(this));
-          paramvow.show();
-          return;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramvow, Boolean.valueOf(true));
-        ((ImageView)paramView).setImageResource(2130844268);
-        break;
-        paramvow = alpo.a(2131714153) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-        break label147;
+        localObject = wrl.a(l2, l1, bool, false, true);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+        l1 = TimeZone.getDefault().getRawOffset();
       }
-    }
-    a();
-  }
-  
-  public void a(vow paramvow, boolean paramBoolean)
-  {
-    TextView localTextView = (TextView)paramvow.jdField_a_of_type_AndroidViewView.findViewById(2131377715);
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-    {
-      paramvow = alpo.a(2131714156);
-      localTextView.setText(paramvow);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label91;
-      }
-    }
-    label91:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localTextView.setEnabled(paramBoolean);
-      return;
-      paramvow = alpo.a(2131714159) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-      break;
     }
   }
 }

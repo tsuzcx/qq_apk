@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfr;
 
 public class ArVideoResourceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new anbi();
+  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new anfr();
   public int a;
   public long a;
   public String a;

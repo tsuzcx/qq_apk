@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.recite.data;
 
-import amsl;
+import amxa;
 import android.text.TextUtils;
-import bcyk;
-import bcym;
+import bdct;
+import bdcv;
 import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -14,23 +14,23 @@ import java.util.List;
 public class ParagraphInfo
   implements Serializable
 {
-  @bcyk(a="con_py_tone_mark")
+  @bdct(a="con_py_tone_mark")
   public String con_py_tone_mark;
-  @bcyk(a="content_html")
+  @bdct(a="content_html")
   public String content_html;
-  @bcyk(a="content_pinyin")
+  @bdct(a="content_pinyin")
   public String content_pinyin;
-  @bcym
+  @bdcv
   private String[] mContents;
-  @bcym
+  @bdcv
   private String[] mDisplayPinyins;
-  @bcym
+  @bdcv
   private String[] mOriginalPinyins;
-  @bcym
+  @bdcv
   public int paragraphPos = -1;
-  @bcyk(a="pid")
+  @bdct(a="pid")
   public int pid;
-  @bcym
+  @bdcv
   public List<WordInfo> wordList;
   
   public String[] generateOrGetContents()
@@ -42,7 +42,7 @@ public class ParagraphInfo
     if (TextUtils.isEmpty(this.content_html)) {
       return new String[0];
     }
-    this.content_html = amsl.a(this.content_html.trim()).replace("​", "");
+    this.content_html = amxa.a(this.content_html.trim()).replace("​", "");
     this.mContents = new String[this.content_html.length()];
     while (i < this.content_html.length())
     {

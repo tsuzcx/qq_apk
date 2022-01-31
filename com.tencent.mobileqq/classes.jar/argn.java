@@ -1,21 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class argn
-  extends alsi
+  implements DialogInterface.OnClickListener
 {
-  argn(argh paramargh) {}
+  argn(argk paramargk) {}
   
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0)
-    {
-      if (argh.b(this.a)) {
-        armz.a(2131694531);
-      }
-      argh.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

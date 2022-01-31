@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import vjl;
-import wsv;
+import vnu;
+import wxe;
 
 public class StoryPlayerImpl$4
   implements Runnable
 {
-  public StoryPlayerImpl$4(vjl paramvjl) {}
+  public StoryPlayerImpl$4(vnu paramvnu) {}
   
   public void run()
   {
-    wsv.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
-    vjl.b(this.this$0);
+    wxe.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
+    vnu.b(this.this$0);
   }
 }
 

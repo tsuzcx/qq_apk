@@ -43,16 +43,16 @@ public class ReadInJoyVideoSearchTagFragment
   
   private void b()
   {
-    getView().findViewById(2131363808).setOnClickListener(new qqk(this));
+    getView().findViewById(2131363810).setOnClickListener(new qqk(this));
   }
   
   private void c()
   {
-    ListView localListView = (ListView)getView().findViewById(2131369561);
+    ListView localListView = (ListView)getView().findViewById(2131369579);
     View localView = new View(getActivity());
     localView.setBackgroundColor(Color.argb(102, 0, 0, 0));
     localListView.setEmptyView(localView);
-    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560139, new ArrayList());
+    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560138, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
     localListView.setOnItemClickListener(new qql(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
@@ -60,7 +60,7 @@ public class ReadInJoyVideoSearchTagFragment
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131377389));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131377443));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new qqm(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
@@ -86,7 +86,7 @@ public class ReadInJoyVideoSearchTagFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131560138, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131560137, paramViewGroup, false);
   }
   
   public void onDestroy()

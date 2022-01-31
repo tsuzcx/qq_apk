@@ -1,10 +1,13 @@
-import com.tencent.image.URLImageView;
-
-class bcny
+public class bcny
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public long a;
+  public boolean a;
   
-  bcny(bcnx parambcnx) {}
+  public bcny(boolean paramBoolean, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

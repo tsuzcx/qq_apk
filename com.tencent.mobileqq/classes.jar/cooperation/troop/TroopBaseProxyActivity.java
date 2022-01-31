@@ -1,6 +1,6 @@
 package cooperation.troop;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -24,9 +24,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559438);
+          paramActivity.setContentView(2131559437);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131371874)).setText(alpo.a(2131715634));
+          ((TextView)paramActivity.findViewById(2131371894)).setText(alud.a(2131715646));
           localActivity = paramActivity;
           return localActivity;
         }

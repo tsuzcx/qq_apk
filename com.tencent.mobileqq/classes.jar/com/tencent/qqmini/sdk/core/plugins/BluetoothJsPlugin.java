@@ -15,9 +15,9 @@ import android.os.ParcelUuid;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.SparseArray;
-import bgho;
-import bgjd;
-import bgkd;
+import bglv;
+import bgnk;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -100,18 +100,18 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void closeBLEConnection(bgkd parambgkd)
+  private void closeBLEConnection(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).getString("deviceId");
+      String str = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).getString("deviceId");
       if ((this.mBluetoothAdapter == null) || (TextUtils.isEmpty(str))) {
         throw new Exception("closeBLEConnection fail, mBluetoothAdapter=" + this.mBluetoothAdapter + ",deviceId=" + str);
       }
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     BluetoothJsPlugin.BluetoothDeviceExtend localBluetoothDeviceExtend = findBluetoothDeviceExtend(localException);
@@ -125,34 +125,34 @@ public class BluetoothJsPlugin
     {
       throw new Exception("closeBLEConnection fail! deviceExtend=" + localBluetoothDeviceExtend + ",disconnect=" + bool);
     }
-    parambgkd.a();
+    parambgok.a();
   }
   
   @TargetApi(18)
-  private void closeBluetoothAdapter(bgkd parambgkd)
+  private void closeBluetoothAdapter(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "closeBluetoothAdapter callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "closeBluetoothAdapter callbackId=" + parambgok.jdField_b_of_type_Int);
     try
     {
       closeAdapter();
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      parambgkd.b();
+      parambgok.b();
     }
   }
   
   @TargetApi(18)
-  private void createBLEConnection(bgkd parambgkd)
+  private void createBLEConnection(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "createBLEConnection jsonParams=" + parambgkd.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "createBLEConnection jsonParams=" + parambgok.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgok.jdField_b_of_type_Int);
     long l;
     try
     {
-      Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       String str = ((JSONObject)localObject1).getString("deviceId");
       l = ((JSONObject)localObject1).optLong("timeout", 0L);
       Object localObject2 = null;
@@ -172,11 +172,11 @@ public class BluetoothJsPlugin
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     label172:
-    localException.connectGatt(this.mActivity, false, l, parambgkd.jdField_b_of_type_Int);
+    localException.connectGatt(this.mActivity, false, l, parambgok.jdField_b_of_type_Int);
   }
   
   private static byte[] extractBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -195,12 +195,12 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void getBLEDeviceCharacteristics(bgkd parambgkd)
+  private void getBLEDeviceCharacteristics(bgok parambgok)
   {
     Object localObject4;
     try
     {
-      Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       localObject3 = ((JSONObject)localObject1).getString("deviceId");
       localObject4 = ((JSONObject)localObject1).getString("serviceId");
       localObject2 = null;
@@ -225,7 +225,7 @@ public class BluetoothJsPlugin
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     label147:
@@ -283,7 +283,7 @@ public class BluetoothJsPlugin
       break;
       QMLog.d("BluetoothJsPlugin", "getBLEDeviceCharacteristics characteristics=" + localJSONArray.toString());
       ((JSONObject)localObject3).put("characteristics", localJSONArray);
-      parambgkd.a((JSONObject)localObject3);
+      parambgok.a((JSONObject)localObject3);
       return;
       bool = false;
       break label298;
@@ -295,11 +295,11 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void getBLEDeviceServices(bgkd parambgkd)
+  private void getBLEDeviceServices(bgok parambgok)
   {
     try
     {
-      String str = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).getString("deviceId");
+      String str = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).getString("deviceId");
       Object localObject2 = null;
       Object localObject1 = localObject2;
       if (this.mBluetoothAdapter != null)
@@ -317,16 +317,16 @@ public class BluetoothJsPlugin
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     label108:
-    localException.getServices(parambgkd);
+    localException.getServices(parambgok);
   }
   
-  private void getBluetoothAdapterState(bgkd parambgkd)
+  private void getBluetoothAdapterState(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "getBluetoothAdapterState callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "getBluetoothAdapterState callbackId=" + parambgok.jdField_b_of_type_Int);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -336,17 +336,17 @@ public class BluetoothJsPlugin
     }
     catch (Exception localException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     localException.put("available", this.mBluetoothAdapter.isEnabled());
     localException.put("discovering", BluetoothJsPlugin.BLEScan.access$300(this.bleScan));
-    parambgkd.a();
+    parambgok.a();
   }
   
-  private void getBluetoothDevices(bgkd parambgkd)
+  private void getBluetoothDevices(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "getBluetoothDevices callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "getBluetoothDevices callbackId=" + parambgok.jdField_b_of_type_Int);
     JSONArray localJSONArray;
     try
     {
@@ -362,25 +362,25 @@ public class BluetoothJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     localJSONObject2.put("devices", localJSONArray);
-    parambgkd.a(localJSONObject2);
+    parambgok.a(localJSONObject2);
   }
   
   @TargetApi(18)
-  private void getConnectedBluetoothDevices(bgkd parambgkd)
+  private void getConnectedBluetoothDevices(bgok parambgok)
   {
     int j = 0;
-    QMLog.d("BluetoothJsPlugin", "getConnectedBluetoothDevices jsonParams=" + parambgkd.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "getConnectedBluetoothDevices jsonParams=" + parambgok.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgok.jdField_b_of_type_Int);
     Object localObject2;
     int i;
     for (;;)
     {
       try
       {
-        localObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optJSONArray("services");
+        localObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString).optJSONArray("services");
         JSONArray localJSONArray = new JSONArray();
         if (localObject2 != null)
         {
@@ -393,7 +393,7 @@ public class BluetoothJsPlugin
       }
       catch (Exception localException)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
       i = 0;
@@ -425,7 +425,7 @@ public class BluetoothJsPlugin
         }
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("devices", localException);
-        parambgkd.a((JSONObject)localObject1);
+        parambgok.a((JSONObject)localObject1);
         return;
       }
       j += 1;
@@ -433,7 +433,7 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void notifyBLECharacteristicValueChange(bgkd parambgkd)
+  private void notifyBLECharacteristicValueChange(bgok parambgok)
   {
     label204:
     label337:
@@ -444,7 +444,7 @@ public class BluetoothJsPlugin
       String str;
       try
       {
-        Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        Object localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         localObject3 = ((JSONObject)localObject1).getString("deviceId");
         localObject2 = ((JSONObject)localObject1).getString("serviceId");
         str = ((JSONObject)localObject1).getString("characteristicId");
@@ -482,7 +482,7 @@ public class BluetoothJsPlugin
       }
       catch (Exception localException)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
       Iterator localIterator = localException.services.iterator();
@@ -505,7 +505,7 @@ public class BluetoothJsPlugin
       {
         if (bool)
         {
-          parambgkd.a();
+          parambgok.a();
           return;
         }
         throw new RuntimeException("notifyBLECharacteristicValueChange fail!");
@@ -622,7 +622,7 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void readBLECharacteristicValue(bgkd parambgkd)
+  private void readBLECharacteristicValue(bgok parambgok)
   {
     JSONObject localJSONObject = new JSONObject();
     Object localObject2;
@@ -630,7 +630,7 @@ public class BluetoothJsPlugin
     int i;
     try
     {
-      localObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      localObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       localObject1 = ((JSONObject)localObject2).getString("deviceId");
       String str = ((JSONObject)localObject2).getString("serviceId");
       localObject2 = ((JSONObject)localObject2).getString("characteristicId");
@@ -645,7 +645,7 @@ public class BluetoothJsPlugin
     }
     if (i == 0)
     {
-      parambgkd.a(localJSONObject);
+      parambgok.a(localJSONObject);
       return;
       label145:
       if (!this.isSupportBlueTooth) {
@@ -698,7 +698,7 @@ public class BluetoothJsPlugin
           {
             i = ((BluetoothJsPlugin.BluetoothDeviceExtend)localObject1).readCharacteristic(localBluetoothGattCharacteristic);
             break;
-            parambgkd.a(localJSONObject, null);
+            parambgok.a(localJSONObject, null);
             return;
             localBluetoothGattCharacteristic = null;
           }
@@ -720,14 +720,14 @@ public class BluetoothJsPlugin
     }
   }
   
-  private void startBluetoothDevicesDiscovery(bgkd parambgkd)
+  private void startBluetoothDevicesDiscovery(bgok parambgok)
   {
     long l1 = 500L;
     int i = 0;
-    QMLog.d("BluetoothJsPlugin", "startBluetoothDevicesDiscovery jsonParams=" + parambgkd.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "startBluetoothDevicesDiscovery jsonParams=" + parambgok.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgok.jdField_b_of_type_Int);
     if ((this.mBluetoothAdapter == null) || (BluetoothJsPlugin.BLEScan.access$300(this.bleScan)))
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     for (;;)
@@ -735,7 +735,7 @@ public class BluetoothJsPlugin
       long l2;
       try
       {
-        Object localObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        Object localObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         Object localObject1 = ((JSONObject)localObject2).optJSONArray("services");
         boolean bool = ((JSONObject)localObject2).optBoolean("allowDuplicatesKey", false);
         l2 = ((JSONObject)localObject2).optLong("interval", 0L);
@@ -759,20 +759,20 @@ public class BluetoothJsPlugin
           {
             ((JSONObject)localObject1).put("available", this.mBluetoothAdapter.isEnabled());
             ((JSONObject)localObject1).put("discovering", BluetoothJsPlugin.BLEScan.access$300(this.bleScan));
-            parambgkd.a((JSONObject)localObject1);
+            parambgok.a((JSONObject)localObject1);
             return;
           }
           catch (JSONException localJSONException)
           {
-            parambgkd.b();
+            parambgok.b();
             return;
           }
         }
-        parambgkd.b();
+        parambgok.b();
       }
       catch (Exception localException)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
       return;
@@ -784,16 +784,16 @@ public class BluetoothJsPlugin
     }
   }
   
-  private void stopBluetoothDevicesDiscovery(bgkd parambgkd)
+  private void stopBluetoothDevicesDiscovery(bgok parambgok)
   {
-    QMLog.d("BluetoothJsPlugin", "stopBluetoothDevicesDiscovery callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "stopBluetoothDevicesDiscovery callbackId=" + parambgok.jdField_b_of_type_Int);
     if (this.mBluetoothAdapter == null)
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     this.bleScan.stopDiscovery("stopBluetoothDevicesDiscovery");
-    parambgkd.a();
+    parambgok.a();
   }
   
   private void unregisterBluetoothStateReceiver()
@@ -807,7 +807,7 @@ public class BluetoothJsPlugin
   }
   
   @TargetApi(18)
-  private void writeBLECharacteristicValue(bgkd parambgkd)
+  private void writeBLECharacteristicValue(bgok parambgok)
   {
     label205:
     label349:
@@ -819,7 +819,7 @@ public class BluetoothJsPlugin
       String str2;
       try
       {
-        Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        Object localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         localObject3 = ((JSONObject)localObject1).getString("deviceId");
         localObject2 = ((JSONObject)localObject1).getString("serviceId");
         str1 = ((JSONObject)localObject1).getString("characteristicId");
@@ -857,7 +857,7 @@ public class BluetoothJsPlugin
       }
       catch (Exception localException)
       {
-        parambgkd.b();
+        parambgok.b();
         return;
       }
       Iterator localIterator = localException.services.iterator();
@@ -880,7 +880,7 @@ public class BluetoothJsPlugin
       {
         if (bool)
         {
-          parambgkd.a();
+          parambgok.a();
           return;
         }
         throw new RuntimeException("writeBLECharacteristicValue fail!");
@@ -888,10 +888,10 @@ public class BluetoothJsPlugin
     }
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
-    this.mActivity = parambgho.a();
+    super.onCreate(parambglv);
+    this.mActivity = parambglv.a();
   }
   
   public void onDestroy()
@@ -907,30 +907,30 @@ public class BluetoothJsPlugin
     }
   }
   
-  public void openBluetoothAdapter(bgkd parambgkd)
+  public void openBluetoothAdapter(bgok parambgok)
   {
     if (this.mActivity == null)
     {
-      QMLog.d("BluetoothJsPlugin", "Failed to openBluetoothAdapter. Activity is null. callbackId=" + parambgkd.jdField_b_of_type_Int);
+      QMLog.d("BluetoothJsPlugin", "Failed to openBluetoothAdapter. Activity is null. callbackId=" + parambgok.jdField_b_of_type_Int);
       return;
     }
-    QMLog.d("BluetoothJsPlugin", "openBluetoothAdapter callbackId=" + parambgkd.jdField_b_of_type_Int);
+    QMLog.d("BluetoothJsPlugin", "openBluetoothAdapter callbackId=" + parambgok.jdField_b_of_type_Int);
     this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if ((!this.mActivity.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le")) || (this.mBluetoothAdapter == null) || (this.isSettingBlueTooth))
     {
-      parambgkd.b();
+      parambgok.b();
       return;
     }
     registerBluetoothStateReceiver();
     if (this.mBluetoothAdapter.isEnabled())
     {
-      parambgkd.a();
+      parambgok.a();
       return;
     }
     this.isSettingBlueTooth = true;
-    bgjd.a().a(new BluetoothJsPlugin.1(this, parambgkd));
-    parambgkd = new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE");
-    this.mActivity.startActivityForResult(parambgkd, 6);
+    bgnk.a().a(new BluetoothJsPlugin.1(this, parambgok));
+    parambgok = new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE");
+    this.mActivity.startActivityForResult(parambgok, 6);
   }
 }
 

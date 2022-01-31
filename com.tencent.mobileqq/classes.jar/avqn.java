@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
-public class avqn
-  extends avqe
+class avqn
+  implements View.OnClickListener
 {
-  public PhoneContactAdd a;
+  avqn(avqm paramavqm, ViewGroup paramViewGroup) {}
   
-  public avqn(PhoneContactAdd paramPhoneContactAdd)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
-    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (avqm.a(this.jdField_a_of_type_Avqm) != null) {
+      avqm.a(this.jdField_a_of_type_Avqm).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    }
   }
 }
 

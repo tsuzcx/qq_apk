@@ -1,8 +1,16 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-public abstract interface xke
+public class xke
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(@NonNull xkl paramxkl);
+  public xke(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

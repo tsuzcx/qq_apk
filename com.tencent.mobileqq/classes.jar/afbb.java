@@ -1,117 +1,102 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-
 public class afbb
-  implements afal, Handler.Callback
+  implements afax
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public static final afay<afbb> a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
   
-  public afbb(BaseChatPie paramBaseChatPie)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    jdField_a_of_type_Afay = new afbc();
   }
   
-  private ChatMessage a()
+  public afbb() {}
+  
+  public afbb(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aelz.a();
-    Iterator localIterator = localList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("vip_ptt.helper", 1, "SHOW_FIRST:" + localChatMessage.msgtype);
-      }
-      if (localChatMessage.msgtype != -2002) {
-        break label123;
-      }
-      QLog.e("vip_ptt.helper", 1, "SHOW_FIRST find the ptt msg");
-      i = 1;
-    }
-    label123:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        return (ChatMessage)localList.get(localList.size() - 1);
-      }
-      return null;
+    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public afbb(afav paramafav)
+  {
+    paramafav.a();
+    this.jdField_a_of_type_Float = paramafav.a();
+    this.b = paramafav.a();
+    this.c = paramafav.a();
+    this.jdField_a_of_type_Long = paramafav.a();
+  }
+  
+  public afbb(afbb paramafbb)
+  {
+    if (paramafbb != null) {
+      a(paramafbb.a(), paramafbb.b(), paramafbb.c(), 0L);
     }
   }
   
-  private void a(ChatMessage paramChatMessage, String paramString)
+  public float a()
   {
-    paramString = new aslp(paramChatMessage.frienduin, paramChatMessage.selfuin, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, -5020, 655392, paramChatMessage.time);
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    if (paramChatMessage.istroop == 1) {
-      localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
-    }
-    localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    aslq.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
-    QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
+    return this.jdField_a_of_type_Float;
   }
   
-  private boolean a()
+  public long a()
   {
-    if ((aoqj.c().a <= 1) && (aftg.d)) {
-      return !bdwk.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false);
-    }
-    return false;
+    return this.jdField_a_of_type_Long;
   }
   
-  public void a(int paramInt)
+  public void a(float paramFloat)
   {
-    switch (paramInt)
-    {
-    case 7: 
-    case 8: 
-    default: 
-    case 5: 
-    case 6: 
-      do
-      {
-        return;
-        QLog.e("vip_ptt.helper", 1, "SHOW_FIRST_BEGIN");
-        return;
-      } while (!a());
-      QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
-      ChatMessage localChatMessage = a();
-      if (localChatMessage == null)
-      {
-        QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
-        return;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(10102, localChatMessage));
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public int[] a()
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return new int[] { 5, 6, 9 };
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    paramMessage = (ChatMessage)paramMessage.obj;
-    if (aoqj.c().a <= 1)
-    {
-      a(paramMessage, alpo.a(2131709091));
-      bdwk.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", true);
-    }
-    return true;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(afav paramafav, int paramInt)
+  {
+    paramafav.a(1);
+    paramafav.a(this.jdField_a_of_type_Float);
+    paramafav.a(this.b);
+    paramafav.a(this.c);
+    paramafav.a(this.jdField_a_of_type_Long);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float *= paramFloat;
+    this.b *= paramFloat;
+    this.c *= paramFloat;
   }
 }
 

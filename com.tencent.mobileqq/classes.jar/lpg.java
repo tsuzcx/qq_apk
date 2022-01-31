@@ -51,7 +51,7 @@ public class lpg
     do
     {
       return false;
-      if (bdcs.a(paramloy)) {
+      if (bdhb.a(paramloy)) {
         break;
       }
     } while (!QLog.isDevelopLevel());

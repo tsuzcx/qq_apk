@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import amii;
-import awbv;
-import awdg;
+import ammx;
+import awge;
+import awhp;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 
@@ -17,10 +17,10 @@ public class QQMessageFacade$Message
   public long fileSize = -1L;
   public int fileType = -1;
   public boolean hasReply;
-  @awdg
+  @awhp
   public boolean isCacheValid = true;
   public MessageRecord lastMsg;
-  public ArrayList<amii> msgInfoList;
+  public ArrayList<ammx> msgInfoList;
   public String nickName;
   public String pttUrl;
   public long shareAppID;
@@ -34,7 +34,7 @@ public class QQMessageFacade$Message
     this.fileType = -1;
   }
   
-  public Class<? extends awbv> getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return Message.class;
   }

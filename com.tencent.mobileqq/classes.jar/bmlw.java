@@ -1,15 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Message;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 class bmlw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bmlw(bmlv parambmlv) {}
+  bmlw(bmlp parambmlp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getViewTreeObserver().removeGlobalOnLayoutListener(bmlp.a(this.a));
+    this.a.jdField_a_of_type_Bmnj.a(Message.obtain(null, 20));
   }
 }
 

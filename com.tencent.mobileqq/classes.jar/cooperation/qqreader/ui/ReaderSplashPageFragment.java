@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bivh;
-import bixe;
+import bizo;
+import bjbl;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class ReaderSplashPageFragment
   extends WebViewFragment
 {
-  private bivh a;
+  private bizo a;
   
   private ViewGroup a(Context paramContext)
   {
@@ -44,9 +44,9 @@ public class ReaderSplashPageFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bixe.e("ReaderSplashPageFragment", "onCreate");
+    bjbl.e("ReaderSplashPageFragment", "onCreate");
     paramBundle = getActivity();
-    this.a = new bivh(paramBundle);
+    this.a = new bizo(paramBundle);
     Intent localIntent = a();
     if ((localIntent != null) && (localIntent.getExtras() != null))
     {
@@ -56,7 +56,7 @@ public class ReaderSplashPageFragment
       return;
     }
     paramBundle.finish();
-    bixe.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
+    bjbl.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -70,7 +70,7 @@ public class ReaderSplashPageFragment
   
   public void onDestroy()
   {
-    bixe.e("ReaderSplashPageFragment", "onDestroy");
+    bjbl.e("ReaderSplashPageFragment", "onDestroy");
     if (this.a != null) {
       this.a.b();
     }

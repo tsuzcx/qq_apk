@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
@@ -18,17 +18,17 @@ import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
 
 public class TopBannerInfo
-  extends awbv
+  extends awge
 {
   private static final String TAG = "TopBannerInfo";
-  @awdg
+  @awhp
   public final List<qng> dynamicItems = new ArrayList();
-  @awdg
+  @awhp
   public final List<qnf> items = new ArrayList();
   public byte[] itemsByte;
   public int mChannelId = -1;
   public String mCookie;
-  @awdg
+  @awhp
   public qni moreChannelItem;
   
   public void addDynamicItem(qng paramqng)

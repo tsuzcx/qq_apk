@@ -1,19 +1,14 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ygh
-  implements ViewTreeObserver.OnPreDrawListener
+  implements View.OnClickListener
 {
   ygh(ygg paramygg) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    ygg.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    ygg.a(this.a, ygg.a(this.a).getLeft(), ygg.a(this.a).getTop(), ygg.a(this.a).getWidth(), ygg.a(this.a).getHeight());
-    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + ygg.a(this.a).getLeft(), ",top:", Integer.valueOf(ygg.a(this.a).getTop()), ",width:", Integer.valueOf(ygg.a(this.a).getWidth()), ",height:", Integer.valueOf(ygg.a(this.a).getHeight()) });
-    return true;
+    ygg.a(this.a);
   }
 }
 

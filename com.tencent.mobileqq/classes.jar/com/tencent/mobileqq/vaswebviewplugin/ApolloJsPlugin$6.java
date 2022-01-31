@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alep;
-import aliq;
+import alje;
+import alnf;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import becq;
+import begz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.VipUtils;
 
@@ -16,10 +16,10 @@ class ApolloJsPlugin$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new aliq();
+    paramDialogInterface = new alnf();
     paramDialogInterface.a = this.val$gameId;
     paramDialogInterface.c = this.val$gameMode;
-    alep.a(paramDialogInterface, this.this$0.mRuntime.a(), 2);
+    alje.a(paramDialogInterface, this.this$0.mRuntime.a(), 2);
     if ((this.val$activity instanceof BaseActivity)) {
       VipUtils.a(((BaseActivity)this.val$activity).getAppInterface(), "cmshow", "Apollo", "game_alert_join", 3, 0, new String[0]);
     }

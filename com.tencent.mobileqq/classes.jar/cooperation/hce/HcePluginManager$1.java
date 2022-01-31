@@ -1,12 +1,12 @@
 package cooperation.hce;
 
-import bilu;
+import biqb;
 import java.util.HashSet;
 
 public class HcePluginManager$1
   extends HashSet<String>
 {
-  public HcePluginManager$1(bilu parambilu)
+  public HcePluginManager$1(biqb parambiqb)
   {
     add("A000000632010105");
     add("A000000632010106");

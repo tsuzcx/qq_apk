@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class abtw
-  implements View.OnClickListener
+public abstract interface abtw
 {
-  abtw(abtt paramabtt) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.jdField_a_of_type_Absi.d();
-    abvm.a(this.a.jdField_a_of_type_Absf, 4);
-  }
+  public abstract abtv a(int paramInt);
 }
 
 

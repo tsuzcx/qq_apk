@@ -1,41 +1,40 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-
 public class bbbz
-  extends AsyncTask<Void, Void, String>
 {
-  public bbbz(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public int c = -1;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public String g;
+  public String h;
   
-  protected String a(Void... paramVarArgs)
+  public bbbz()
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bdda.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695349) + " " + paramVarArgs;
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695348);
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = true;
   }
   
-  protected void a(String paramString)
+  public String toString()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" errCode:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" errStr:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" reason:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" succCnt:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(" failCnt");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" isSendByQuickHttp");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(" isAllowRetry");
+    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

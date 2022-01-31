@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bdcb;
-import bfin;
-import bizf;
+import bdgk;
+import bfmw;
+import bjdm;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.ROMUtil;
@@ -17,7 +17,7 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import tjx;
 import tlv;
-import xoo;
+import xsx;
 
 public class WSStatisticsBaseCollector
 {
@@ -69,9 +69,9 @@ public class WSStatisticsBaseCollector
   {
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
-    localHashMap.put("imsi", bdcb.b());
-    localHashMap.put("imei", bfin.c());
-    localHashMap.put("mac", bfin.a());
+    localHashMap.put("imsi", bdgk.b());
+    localHashMap.put("imei", bfmw.c());
+    localHashMap.put("mac", bfmw.a());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
@@ -85,10 +85,10 @@ public class WSStatisticsBaseCollector
     localHashMap.put("session_id", WSPublicAccReport.getInstance().getSessionId());
     localHashMap.put("session_stamp", WSPublicAccReport.getInstance().getSessionStamp());
     localHashMap.put("sop_name", getSopName());
-    localHashMap.put("qua", bizf.a());
-    localHashMap.put("android_id", bdcb.f());
+    localHashMap.put("qua", bjdm.a());
+    localHashMap.put("android_id", bdgk.f());
     localHashMap.put("qq", tlv.a().getAccount());
-    if (xoo.a(BaseApplicationImpl.getApplication())) {}
+    if (xsx.a(BaseApplicationImpl.getApplication())) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("if_install_weishi", str);

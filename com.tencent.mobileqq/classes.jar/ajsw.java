@@ -1,31 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajsw
-  extends ajte
+class ajsw
+  implements baug
 {
-  protected final BaseChatPie a;
+  ajsw(ajsv paramajsv) {}
   
-  public ajsw(BaseChatPie paramBaseChatPie)
+  public void onResp(bavf parambavf)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  void a(bdkz parambdkz, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((parambdkz != null) && (parambdkz.a() > 0))
+    Object localObject = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
+    if (parambavf.jdField_a_of_type_Int != 0) {
+      lek.c("VideoFilterTools", "download file failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
     {
-      if (this.a == null) {
-        break label43;
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
+      {
+        lek.c("VideoFilterTools", "download file failed: md5 is not match.");
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        return;
       }
-      if (this.a.g() < 8) {
-        a(paramView, paramInt1, paramInt2, parambdkz, paramInt3, false);
+      lek.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = ajsv.b;
+        bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+        if ((ajsv.a(this.a).decrementAndGet() == 0) && (ajsv.a(this.a) != null))
+        {
+          ajsv.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambavf)
+      {
+        parambavf.printStackTrace();
+        lek.c("VideoFilterTools", "unzip file failed.");
       }
     }
-    return;
-    label43:
-    a(paramView, paramInt1, paramInt2, parambdkz, paramInt3, false);
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
-
-public class adpo
-  implements DialogInterface.OnClickListener
+public abstract interface adpo
 {
-  public adpo(RegisterActivity paramRegisterActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onBackPressed();
 }
 
 

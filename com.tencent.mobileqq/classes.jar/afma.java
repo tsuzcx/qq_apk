@@ -1,21 +1,22 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-final class afma
-  implements afpr
+class afma
+  implements arrh
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afma(aflw paramaflw, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    paramQQAppInterface = (MessageForDeviceFile)paramChatMessage;
-    if (paramQQAppInterface.nFileMsgType == 2) {
-      return 36;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aflw.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
     }
-    if (paramQQAppInterface.nFileMsgType == 1) {
-      return 37;
-    }
-    return -1;
+    this.jdField_a_of_type_Aflw.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

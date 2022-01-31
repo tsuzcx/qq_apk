@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agvn
-  implements View.OnAttachStateChangeListener
+public class agvn
+  extends amcd
 {
-  agvn(agvm paramagvm) {}
+  public agvn(TroopChatPie paramTroopChatPie) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    if (agvm.a(this.a) != null) {
-      agvm.a(this.a).d();
-    }
-    if (agvm.a(this.a) != null)
+    if (paramBoolean)
     {
-      agvm.a(this.a).c();
-      agvm.a(this.a, null);
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext, this.a, TroopChatPie.b(this.a));
+      return;
     }
-    agvm.a(this.a).removeOnAttachStateChangeListener(this);
+    QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString }));
   }
 }
 

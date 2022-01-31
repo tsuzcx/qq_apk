@@ -1,10 +1,19 @@
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
-abstract interface agxq
+public class agxq
+  implements agxs
 {
-  public abstract File a(String paramString);
+  public agxq(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
   
-  public abstract String c();
+  public void a(View paramView)
+  {
+    if ((paramView.getTag() instanceof Integer))
+    {
+      paramView = (Integer)paramView.getTag();
+      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
+    }
+  }
 }
 
 

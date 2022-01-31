@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import aypx;
+import ayug;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 

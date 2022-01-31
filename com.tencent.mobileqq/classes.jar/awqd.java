@@ -1,25 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
 
-class awqd
-  extends awpy
+public final class awqd
+  implements Parcelable.Creator<PersonalityLabelZan>
 {
-  awqd(awqc paramawqc, long paramLong)
+  public PersonalityLabelZan a(Parcel paramParcel)
   {
-    super(paramLong);
+    return new PersonalityLabelZan(paramParcel);
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public PersonalityLabelZan[] a(int paramInt)
   {
-    paramUploadImageSize = awpx.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    return new PersonalityLabelZan[paramInt];
   }
 }
 

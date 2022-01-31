@@ -1,13 +1,32 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class blih
-  implements blip
+class blih
+  implements blan
 {
-  public blih(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void a(int paramInt)
+  public void a(blab paramblab, int paramInt)
   {
-    AEEditorImageEditFragment.a(this.a, paramInt);
+    if (paramInt <= 1) {
+      return;
+    }
+    blig.a().a(paramblab.a, paramInt);
+  }
+  
+  public void a(blab paramblab, boolean paramBoolean)
+  {
+    if (paramblab == null) {
+      return;
+    }
+    paramblab.e = false;
+    if (paramBoolean) {
+      paramblab.d = true;
+    }
+    for (;;)
+    {
+      blig.a().a(paramblab, paramBoolean);
+      blig.a(blig.a(), paramblab.a);
+      return;
+      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + paramblab.a);
+    }
   }
 }
 

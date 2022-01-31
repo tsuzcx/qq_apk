@@ -1,90 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleCertifiedDialogView;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
 public class trx
-  extends tvg
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QCircleCertifiedDialogView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView;
-  private trv jdField_a_of_type_Trv;
-  private boolean jdField_a_of_type_Boolean;
+  public FeedCloudMeta.StComment a;
+  public FeedCloudMeta.StFeed a;
+  public FeedCloudMeta.StReply a;
   
-  private void a()
+  public trx(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new try(this));
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null) {
-        break label98;
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView = new QCircleCertifiedDialogView(a());
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.setCertifiedListener(new trz(this));
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      return;
-      label98:
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      }
-    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
   }
   
-  private void a(String paramString)
+  public trx(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
   {
-    tqs.a(a(), paramString);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373124));
-    if (this.jdField_a_of_type_AndroidViewViewStub != null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373133));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373132));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    super.a(paramString, paramObject);
-    if ("tag_cetrified_part_show".equals(paramString)) {
-      a();
-    }
-    while (!"tag_cetrified_part_show_gone".equals(paramString)) {
-      return;
-    }
-    b();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
   }
 }
 

@@ -1,137 +1,38 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class wkh
+public final class wkh
+  extends QQUIEventReceiver<wjw, uwf>
 {
-  public final int a;
-  public long a;
-  public final String a;
-  public final boolean a;
-  public int b;
-  public final String b;
-  public boolean b;
-  public final String c;
-  
-  public wkh(qqstory_struct.FeedSeqInfo paramFeedSeqInfo)
+  public wkh(@NonNull wjw paramwjw)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramFeedSeqInfo.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
-    this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
-    this.c = String.valueOf(paramFeedSeqInfo.date.get());
-    if (paramFeedSeqInfo.is_playable.has()) {
-      if (paramFeedSeqInfo.is_playable.get() != 1) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      try
-      {
-        for (;;)
-        {
-          if (!TextUtils.isEmpty(this.c)) {
-            this.jdField_a_of_type_Long = wkp.a().parse(this.c).getTime();
-          }
-          xmh.a(this.jdField_a_of_type_JavaLangString);
-          return;
-          bool = false;
-          break;
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      catch (Exception paramFeedSeqInfo)
-      {
-        for (;;)
-        {
-          wsv.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
-        }
-      }
-    }
+    super(paramwjw);
   }
   
-  public wkh(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
+  public void a(@NonNull wjw paramwjw, @NonNull uwf paramuwf)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = true;
-    try
-    {
-      if (!TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_Long = wkp.a().parse(this.c).getTime();
-      }
-      xmh.a(paramString1);
-      return;
+    if (wjw.a(paramwjw) == null) {
+      wxe.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramuwf.toString());
     }
-    catch (ParseException paramString2)
+    do
     {
-      for (;;)
+      do
       {
-        wsv.c("Q.qqstory.home", "parse date", paramString2);
-      }
-    }
+        return;
+      } while (!paramuwf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      wxe.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramuwf.toString());
+      paramuwf = (vfl)paramuwf.jdField_a_of_type_JavaUtilMap.get(wjw.a(paramwjw));
+    } while (paramuwf == null);
+    paramuwf = ((uwd)uwa.a(27)).a(wjw.a(paramwjw).a(), paramuwf.a);
+    wjw.a(paramwjw).b(paramuwf, true);
+    paramwjw.a();
   }
   
-  public static int a(List<wkh> paramList, String paramString)
+  public Class acceptEventClass()
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      if (((wkh)paramList.next()).jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  public qqstory_struct.FeedSeqInfo a()
-  {
-    qqstory_struct.FeedSeqInfo localFeedSeqInfo = new qqstory_struct.FeedSeqInfo();
-    localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localFeedSeqInfo.seq.set(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    try
-    {
-      Integer localInteger1 = Integer.valueOf(wkp.a().format(new Date(NetConnInfoCenter.getServerTimeMillis())));
-      localFeedSeqInfo.date.set(localInteger1.intValue());
-      return localFeedSeqInfo;
-    }
-    catch (Exception localException1)
-    {
-      wsv.b("FeedIdListSeqInfo", "exception ", localException1);
-      try
-      {
-        Integer localInteger2 = Integer.valueOf(wkp.a().format(new Date()));
-        localFeedSeqInfo.date.set(localInteger2.intValue());
-        return localFeedSeqInfo;
-      }
-      catch (Exception localException2)
-      {
-        wsv.b("FeedIdListSeqInfo", "exception ", localException2);
-      }
-    }
-    return localFeedSeqInfo;
-  }
-  
-  public String toString()
-  {
-    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + '}';
+    return uwf.class;
   }
 }
 

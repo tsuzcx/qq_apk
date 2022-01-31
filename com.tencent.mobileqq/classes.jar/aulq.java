@@ -1,23 +1,13 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class aulq
-{
-  public static void a(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131719309), 0).a();
-  }
-  
-  public static void b(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131719304), 0).a();
-  }
-  
-  public static void c(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131719321), 0).a();
-  }
-}
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface aulq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

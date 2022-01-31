@@ -1,14 +1,10 @@
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
-
-class bkqb
-  implements bkqj
+public abstract interface bkqb
 {
-  bkqb(bkqa parambkqa) {}
+  public abstract void a(float paramFloat);
   
-  public void a(int paramInt, AEFilterManager paramAEFilterManager)
-  {
-    this.a.a(paramInt, paramAEFilterManager);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

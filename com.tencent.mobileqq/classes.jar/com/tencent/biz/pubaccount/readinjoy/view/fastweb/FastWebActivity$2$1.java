@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import bdcb;
+import bdgk;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
-import xee;
+import xin;
 
 class FastWebActivity$2$1
   implements Runnable
@@ -12,11 +12,11 @@ class FastWebActivity$2$1
   
   public void run()
   {
-    long l1 = bdcb.k();
+    long l1 = bdgk.k();
     long l2 = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0).getWidth();
-    long l3 = xee.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0, 10.0F);
+    long l3 = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0, 10.0F);
     int i = this.jdField_a_of_type_ArrayOfInt[1];
-    int j = xee.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0, 5.0F);
+    int j = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0, 5.0F);
     FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0, FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity$2.this$0), (int)(l1 - l2 - l3), i + j, true, true, RIJRedPacketManager.a().c(), RIJRedPacketManager.a().h());
   }
 }

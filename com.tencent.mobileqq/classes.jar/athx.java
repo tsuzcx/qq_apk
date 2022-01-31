@@ -1,41 +1,37 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class athx
-  extends amab
+  implements QQPermissionCallback
 {
-  public athx(ListenTogetherManager paramListenTogetherManager) {}
+  public athx(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i("ListenTogether.Manager", 1, "onTroopManagerSuccess result: " + paramInt2 + " troopUin: " + paramString);
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
-    {
-      String str = atii.a(1, paramString);
-      if (ListenTogetherManager.a(this.a).equals(str))
-      {
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-        athl.a(ListenTogetherManager.a(this.a), paramString, false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(1, paramString, false);
-      }
-    }
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
-  protected void b(String paramString, int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i("ListenTogether.Manager", 1, "onPassiveExit troopUin: " + paramString);
-    String str = atii.a(1, paramString);
-    if (ListenTogetherManager.a(this.a).equals(str))
+    try
     {
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-      athl.a(ListenTogetherManager.a(this.a), paramString, false);
-      this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-      this.a.a(1, paramString, false);
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      return;
+    }
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
     }
   }
 }

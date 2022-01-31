@@ -1,21 +1,21 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import bgpn;
-import bgyg;
+import bgtu;
+import bhcn;
 
 public final class SDKMiniProgramLpReportDC04239$14
   implements Runnable
 {
   public void run()
   {
-    if (bgyg.a() != null)
+    if (bhcn.a() != null)
     {
       Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", bgyg.a());
-      localBundle.putLong("add_duration_ms", bgyg.a());
-      bgpn.a().a("record_duration", localBundle, null);
-      bgyg.b();
+      localBundle.putParcelable("app_config", bhcn.a());
+      localBundle.putLong("add_duration_ms", bhcn.a());
+      bgtu.a().a("record_duration", localBundle, null);
+      bhcn.b();
     }
   }
 }

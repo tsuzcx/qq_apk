@@ -1,45 +1,23 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.content.res.Resources;
+import android.os.Handler;
 
-class apbc
-  extends SQLiteCursor
+public abstract interface apbc
 {
-  apbc(apbb paramapbb, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
-  {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
-  }
+  public abstract Resources a();
   
-  public byte[] getBlob(int paramInt)
-  {
-    byte[] arrayOfByte2 = super.getBlob(paramInt);
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (this.a.a.isNeedEncry()) {
-      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
-    }
-    return arrayOfByte1;
-  }
+  public abstract Handler a();
   
-  public String getString(int paramInt)
-  {
-    String str2 = super.getString(paramInt);
-    String str1 = str2;
-    if (this.a.a.isNeedEncry()) {}
-    try
-    {
-      str1 = SecurityUtile.b(str2);
-      return str1;
-    }
-    catch (Exception localException) {}
-    return str2;
-  }
+  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbc
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.AdapterView.OnItemClickListener;
-import bcwh;
+import bdaq;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import java.util.ArrayList;
 import rpg;
@@ -35,7 +35,7 @@ public class ChannelClassificationListView<T extends rpj>
   {
     this.jdField_a_of_type_Rph = new rph(this, null);
     setAdapter(this.jdField_a_of_type_Rph);
-    setDividerWidth(bcwh.a(getContext(), 10.0F));
+    setDividerWidth(bdaq.a(getContext(), 10.0F));
     setOnScrollStateChangedListener(new rpg(this));
   }
   

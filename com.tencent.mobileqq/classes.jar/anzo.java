@@ -1,12 +1,19 @@
 import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
 public class anzo
-  extends anzl
+  implements bhuw
 {
-  public void a(anzb paramanzb, int paramInt, boolean paramBoolean)
+  public anzo(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramanzb, paramInt, paramBoolean);
-    paramanzb.b.setBackgroundResource(2130839072);
+    if (!this.a.isFinishing())
+    {
+      this.a.overridePendingTransition(0, 2130772345);
+      this.a.finish();
+    }
   }
 }
 

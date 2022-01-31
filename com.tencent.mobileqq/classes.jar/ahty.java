@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
 public class ahty
-  implements View.OnClickListener
+  extends alwx
 {
-  public ahty(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  public ahty(TroopFragment paramTroopFragment) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    azmj.b(this.a.a, "dc00898", "", "", "0X800A16A", "0X800A16A", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", "");
-    badt.a(this.a.getActivity(), "s_qq_history_tab", 1121);
+    this.a.h();
   }
 }
 

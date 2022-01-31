@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahtp;
-import ahtq;
-import ahtr;
-import ahtz;
-import ahwg;
-import ahze;
-import ahzt;
-import ahzw;
-import ajtg;
+import ahye;
+import ahyf;
+import ahyg;
+import ahyo;
+import aiav;
+import aidt;
+import aiei;
+import aiel;
+import ajxv;
 import android.app.Dialog;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -20,8 +20,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -31,16 +31,16 @@ public abstract class ChatHistoryBaseFragment
   extends Fragment
 {
   private int jdField_a_of_type_Int;
-  protected ahtz a;
-  ahwg jdField_a_of_type_Ahwg = new ahtr(this);
-  public ahze a;
-  public ahzt a;
-  ahzw jdField_a_of_type_Ahzw = new ahtq(this);
-  public ajtg a;
+  protected ahyo a;
+  aiav jdField_a_of_type_Aiav = new ahyg(this);
+  public aidt a;
+  public aiei a;
+  aiel jdField_a_of_type_Aiel = new ahyf(this);
+  public ajxv a;
   Dialog jdField_a_of_type_AndroidAppDialog;
   protected Handler a;
   protected View a;
-  bdfq jdField_a_of_type_Bdfq;
+  bdjz jdField_a_of_type_Bdjz;
   protected ChatHistoryBaseFragment.ProgressView a;
   public BaseActivity a;
   public QQAppInterface a;
@@ -73,9 +73,9 @@ public abstract class ChatHistoryBaseFragment
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(ahtz paramahtz)
+  public void a(ahyo paramahyo)
   {
-    this.jdField_a_of_type_Ahtz = paramahtz;
+    this.jdField_a_of_type_Ahyo = paramahyo;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -153,23 +153,23 @@ public abstract class ChatHistoryBaseFragment
   
   public void c(String paramString)
   {
-    if (this.jdField_a_of_type_Bdfq == null)
+    if (this.jdField_a_of_type_Bdjz == null)
     {
-      this.jdField_a_of_type_Bdfq = bdcd.a(getActivity(), 230);
-      this.jdField_a_of_type_Bdfq.setNegativeButton(2131720083, new ahtp(this));
+      this.jdField_a_of_type_Bdjz = bdgm.a(getActivity(), 230);
+      this.jdField_a_of_type_Bdjz.setNegativeButton(2131720095, new ahye(this));
     }
-    if (!this.jdField_a_of_type_Bdfq.isShowing()) {
-      this.jdField_a_of_type_Bdfq.setMessage(paramString);
+    if (!this.jdField_a_of_type_Bdjz.isShowing()) {
+      this.jdField_a_of_type_Bdjz.setMessage(paramString);
     }
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_Bdfq.show();
+        this.jdField_a_of_type_Bdjz.show();
         return;
       }
       catch (Throwable paramString) {}
-      this.jdField_a_of_type_Bdfq.dismiss();
+      this.jdField_a_of_type_Bdjz.dismiss();
     }
   }
   
@@ -180,37 +180,37 @@ public abstract class ChatHistoryBaseFragment
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(4));
-    this.jdField_a_of_type_Ahzt.a(localArrayList);
+    this.jdField_a_of_type_Aiei.a(localArrayList);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_Ahtz.a(this.jdField_a_of_type_Ahwg);
-    this.jdField_a_of_type_Ahtz.a(c());
-    this.jdField_a_of_type_Ahtz.a(true);
-    this.jdField_a_of_type_Ajtg.a(4);
+    this.jdField_a_of_type_Ahyo.a(this.jdField_a_of_type_Aiav);
+    this.jdField_a_of_type_Ahyo.a(c());
+    this.jdField_a_of_type_Ahyo.a(true);
+    this.jdField_a_of_type_Ajxv.a(4);
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Ahzt != null) {
-      this.jdField_a_of_type_Ahzt.b();
+    if (this.jdField_a_of_type_Aiei != null) {
+      this.jdField_a_of_type_Aiei.b();
     }
-    this.jdField_a_of_type_Ajtg.a(8);
+    this.jdField_a_of_type_Ajxv.a(8);
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Ahzt != null) {
-      this.jdField_a_of_type_Ahzt.b();
+    if (this.jdField_a_of_type_Aiei != null) {
+      this.jdField_a_of_type_Aiei.b();
     }
     c();
   }
   
   public void h()
   {
-    this.jdField_a_of_type_Ahze.a();
-    this.jdField_a_of_type_Ahtz.e();
+    this.jdField_a_of_type_Aidt.a();
+    this.jdField_a_of_type_Ahyo.e();
     this.c = false;
   }
   
@@ -220,9 +220,9 @@ public abstract class ChatHistoryBaseFragment
     {
       this.jdField_a_of_type_AndroidAppDialog = new Dialog(getActivity(), 2131755801);
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559438);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559437);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371874);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894);
     localTextView.setText(localTextView.getResources().getString(2131689979));
     if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {}
     try
@@ -252,8 +252,8 @@ public abstract class ChatHistoryBaseFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Ahze = new ahze();
-    this.jdField_a_of_type_Ajtg = new ajtg(this);
+    this.jdField_a_of_type_Aidt = new aidt();
+    this.jdField_a_of_type_Ajxv = new ajxv(this);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -271,8 +271,8 @@ public abstract class ChatHistoryBaseFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_Ahzt = new ahzt(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (ViewGroup)getView());
-    this.jdField_a_of_type_Ahzt.a(this.jdField_a_of_type_Ahzw);
+    this.jdField_a_of_type_Aiei = new aiei(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (ViewGroup)getView());
+    this.jdField_a_of_type_Aiei.a(this.jdField_a_of_type_Aiel);
     d();
   }
   

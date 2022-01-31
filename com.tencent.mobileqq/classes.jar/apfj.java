@@ -1,23 +1,7 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
-
-public final class apfj
-  implements Parcelable.Creator<DoutuData>
-{
-  public DoutuData a(Parcel paramParcel)
-  {
-    return new DoutuData(paramParcel);
-  }
-  
-  public DoutuData[] a(int paramInt)
-  {
-    return new DoutuData[paramInt];
-  }
-}
+public class apfj {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apfj
  * JD-Core Version:    0.7.0.1
  */

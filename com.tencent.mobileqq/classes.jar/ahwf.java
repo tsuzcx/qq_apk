@@ -1,38 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahwf
-  extends ahvn
+  extends bhry
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364147 };
+  public ahwf(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690782 };
-  }
-  
-  public ahwf(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
+    this.a.a(true);
+    EmoticonGroupStoreFragment.a(this.a, false);
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
   }
 }
 

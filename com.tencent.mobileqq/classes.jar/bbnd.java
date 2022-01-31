@@ -1,44 +1,15 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.ListView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 
-public class bbnd
-  extends bbnf
+class bbnd
+  implements bbor
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  bbnd(bbnb parambbnb) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 18;
-    try
-    {
-      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + alpo.a(2131715689) + paramJSONObject.getString("photo_num") + alpo.a(2131715691));
-      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          if (localJSONObject.getInt("type") == 3) {
-            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
-          }
-        }
-        else
-        {
-          return localTroopFeedItem;
-        }
-        i += 1;
-      }
-      return null;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+    if ((paramBoolean) && (paramInt > 0)) {
+      this.a.a.a.a.smoothScrollBy(paramInt, 200);
     }
   }
 }

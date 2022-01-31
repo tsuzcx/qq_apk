@@ -14,7 +14,7 @@ public class tbv
 {
   private static int jdField_a_of_type_Int;
   private static volatile tbv jdField_a_of_type_Tbv;
-  private absi jdField_a_of_type_Absi;
+  private abwx jdField_a_of_type_Abwx;
   private Map<Long, tbx> jdField_a_of_type_JavaUtilMap = new HashMap();
   private volatile boolean jdField_a_of_type_Boolean;
   
@@ -65,8 +65,8 @@ public class tbv
     if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramJSONObject))) {
       this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(tlv.a()), new tbx(str, paramJSONObject));
     }
-    str = bhoo.a(str, tlv.a());
-    paramJSONObject = bhoo.a(paramJSONObject, tlv.a());
+    str = bhsv.a(str, tlv.a());
+    paramJSONObject = bhsv.a(paramJSONObject, tlv.a());
     LocalMultiProcConfig.putString4Uin("key_qq_connect_open_id", str, tlv.a());
     LocalMultiProcConfig.putString4Uin("key_qq_connect_access_token", paramJSONObject, tlv.a());
     LocalMultiProcConfig.putLong4Uin("key_qq_connect_auth_time", System.currentTimeMillis(), tlv.a());
@@ -95,8 +95,8 @@ public class tbv
         {
           localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
           String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
-          String str2 = bhoo.b((String)localObject1, tlv.a());
-          String str3 = bhoo.b(str1, tlv.a());
+          String str2 = bhsv.b((String)localObject1, tlv.a());
+          String str3 = bhsv.b(str1, tlv.a());
           tlo.f("weishi-828", "use sp openId and accessToken encrypted:" + (String)localObject1 + " , " + str1 + ", decrypt:" + str2 + " , " + str3);
           if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
             this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(tlv.a()), new tbx(str2, str3));
@@ -114,10 +114,10 @@ public class tbv
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      absn.a();
-      this.jdField_a_of_type_Absi = absn.a(a(), 6, String.valueOf(1101083114));
-      if (this.jdField_a_of_type_Absi != null) {
-        this.jdField_a_of_type_Absi.a("loginSilent", null, new tbw(this));
+      abxc.a();
+      this.jdField_a_of_type_Abwx = abxc.a(a(), 6, String.valueOf(1101083114));
+      if (this.jdField_a_of_type_Abwx != null) {
+        this.jdField_a_of_type_Abwx.a("loginSilent", null, new tbw(this));
       }
     }
   }

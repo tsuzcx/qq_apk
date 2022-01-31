@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bbdb
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public bbdb(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public bbdb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+    }
+    return false;
+  }
 }
 
 

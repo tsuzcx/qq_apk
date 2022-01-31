@@ -1,31 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class artk
+final class artk
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
+  artk(QQAppInterface paramQQAppInterface, String paramString, artl paramartl, aoxm paramaoxm) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
-    boolean bool = asot.a("com.tencent.mobileqq:tool");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
-    localIntent.putExtra("preload_process", bool);
-    if (paramMap != null)
-    {
-      paramString = new BoostFlutterActivity.SerializableMap();
-      paramString.setMap(paramMap);
-      localIntent.putExtra("params", paramString);
-    }
-    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
+    this.jdField_a_of_type_Artl.a(this.jdField_a_of_type_Aoxm.b());
   }
 }
 

@@ -1,20 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vds
-  extends unf
+  extends QQUIEventReceiver<vdq, vdp>
 {
-  public int b;
-  
-  public vds(qqstory_service.RspWatchVideo paramRspWatchVideo)
+  public vds(vdq paramvdq)
   {
-    super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
+    super(paramvdq);
   }
   
-  public String toString()
+  public void a(@NonNull vdq paramvdq, @NonNull vdp paramvdp)
   {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+    if (paramvdq.a()) {}
+    do
+    {
+      return;
+      if (paramvdp.jdField_a_of_type_Boolean)
+      {
+        vdq.a(paramvdq);
+        return;
+      }
+      if ((paramvdp.a() != null) && (!paramvdp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramvdp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    vdq.a(paramvdq);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdp.class;
   }
 }
 

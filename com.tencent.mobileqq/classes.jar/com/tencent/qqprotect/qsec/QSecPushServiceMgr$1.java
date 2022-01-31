@@ -1,18 +1,18 @@
 package com.tencent.qqprotect.qsec;
 
-import bhkw;
-import bhky;
+import bhpd;
+import bhpf;
 
 public class QSecPushServiceMgr$1
   implements Runnable
 {
-  public QSecPushServiceMgr$1(bhkw parambhkw, byte[] paramArrayOfByte) {}
+  public QSecPushServiceMgr$1(bhpd parambhpd, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    bhky localbhky = bhkw.a(this.this$0, this.a);
-    if (localbhky != null) {
-      bhkw.a(this.this$0, localbhky);
+    bhpf localbhpf = bhpd.a(this.this$0, this.a);
+    if (localbhpf != null) {
+      bhpd.a(this.this$0, localbhpf);
     }
   }
 }

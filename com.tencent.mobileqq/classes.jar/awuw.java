@@ -1,17 +1,6 @@
-public class awuw
+public abstract interface awuw
 {
-  public static awuv a(String paramString)
-  {
-    if (bdje.a(paramString)) {
-      return new awuv();
-    }
-    if ((paramString.equalsIgnoreCase("qinterest")) || (paramString.equalsIgnoreCase("bodong")) || (paramString.equalsIgnoreCase("qqgame"))) {}
-    for (Object localObject = new awuy();; localObject = new awuv())
-    {
-      ((awuv)localObject).f = paramString;
-      return localObject;
-    }
-  }
+  public abstract void a();
 }
 
 

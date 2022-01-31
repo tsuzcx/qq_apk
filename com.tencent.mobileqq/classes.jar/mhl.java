@@ -61,18 +61,18 @@ public class mhl
       if (QLog.isColorLevel()) {}
       return null;
     }
-    View localView1 = View.inflate(paramViewGroup.getContext(), 2131559597, null);
+    View localView1 = View.inflate(paramViewGroup.getContext(), 2131559596, null);
     Object localObject1;
     if (AudioHelper.a(0) == 1)
     {
       localView1.setBackgroundColor(2130706687);
       localView1.addOnLayoutChangeListener(new mhm(this));
-      if (paramViewGroup.getTag(2131368010) == null)
+      if (paramViewGroup.getTag(2131368021) == null)
       {
         paramViewGroup.setBackgroundColor(-553615360);
         localObject1 = new mhn(this);
         paramViewGroup.addOnLayoutChangeListener((View.OnLayoutChangeListener)localObject1);
-        paramViewGroup.setTag(2131368010, localObject1);
+        paramViewGroup.setTag(2131368021, localObject1);
       }
     }
     if (paramInt == getCount() - 1) {}
@@ -131,7 +131,7 @@ public class mhl
           localmhq.jdField_a_of_type_JavaLangString = ((lfu)localObject2).jdField_b_of_type_JavaLangString;
           label417:
           if ((((String)localObject1).equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) && (localmhq.jdField_a_of_type_JavaLangString != null)) {
-            localmhq.jdField_a_of_type_JavaLangString += this.a.getResources().getString(2131696198);
+            localmhq.jdField_a_of_type_JavaLangString += this.a.getResources().getString(2131696200);
           }
         }
         label481:
@@ -152,13 +152,13 @@ public class mhl
         {
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          localObject1 = BitmapFactory.decodeResource(this.a.getResources(), 2130841863, (BitmapFactory.Options)localObject2);
+          localObject1 = BitmapFactory.decodeResource(this.a.getResources(), 2130841876, (BitmapFactory.Options)localObject2);
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
         }
       }
       try
       {
-        localObject2 = BitmapFactory.decodeResource(this.a.getResources(), 2130841863, (BitmapFactory.Options)localObject2);
+        localObject2 = BitmapFactory.decodeResource(this.a.getResources(), 2130841876, (BitmapFactory.Options)localObject2);
         localObject1 = localObject2;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -182,7 +182,7 @@ public class mhl
         ((GradientDrawable)localObject1).setShape(1);
         ((GradientDrawable)localObject1).setColor(Color.parseColor("#4C000000"));
         localmhp.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-        localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView2.findViewById(2131372632));
+        localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView2.findViewById(2131372658));
         localObject1 = new StringBuilder("");
         ((StringBuilder)localObject1).append(this.a.jdField_a_of_type_JavaUtilArrayList.size() - 8 + 1);
         ((StringBuilder)localObject1).append("+");
@@ -191,7 +191,7 @@ public class mhl
         localmhp.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         localmhp.jdField_a_of_type_AndroidWidgetTextView.setText("");
         localmhp.jdField_c_of_type_Boolean = true;
-        localView2.setContentDescription(this.a.getResources().getString(2131693344));
+        localView2.setContentDescription(this.a.getResources().getString(2131693346));
         break;
         label856:
         localmhq.jdField_a_of_type_JavaLangString = ((lfu)localObject2).jdField_a_of_type_JavaLangString;
@@ -222,12 +222,12 @@ public class mhl
         if (localObject2 == null) {
           break label1122;
         }
-        localmhq.jdField_b_of_type_JavaLangString = bdbt.a((String)localObject2);
+        localmhq.jdField_b_of_type_JavaLangString = bdgc.a((String)localObject2);
         localmhq.jdField_a_of_type_JavaLangString = ((String)localObject2);
       }
       for (;;)
       {
-        localmhq.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)this.a.getResources().getDrawable(2130841774)).getBitmap();
+        localmhq.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)this.a.getResources().getDrawable(2130841787)).getBitmap();
         localmhq.jdField_d_of_type_Boolean = true;
         break;
         localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(l, this.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
@@ -241,7 +241,7 @@ public class mhl
           QLog.d("MemberPagerAdapter", 2, "getView --> can not get Open Id. PhoneInfo = " + ((AVPhoneUserInfo)localObject1).toString());
         }
         localmhq.jdField_b_of_type_JavaLangString = null;
-        localmhq.jdField_a_of_type_JavaLangString = this.a.getResources().getString(2131693345);
+        localmhq.jdField_a_of_type_JavaLangString = this.a.getResources().getString(2131693347);
       }
       label1217:
       if (this.a.jdField_a_of_type_Int == 7) {
@@ -278,7 +278,7 @@ public class mhl
           }
           localmhp.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
           localmhp.jdField_b_of_type_AndroidWidgetTextView.setText(localmhq.jdField_b_of_type_JavaLangString);
-          localObject1 = ((BitmapDrawable)this.a.getResources().getDrawable(2130841731)).getBitmap();
+          localObject1 = ((BitmapDrawable)this.a.getResources().getDrawable(2130841744)).getBitmap();
           localmhp.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
           label1513:
           if (((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 1) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C == 10)) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 2) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 7))
@@ -329,16 +329,16 @@ public class mhl
         if ((localObject1 == null) || (!(localObject1 instanceof BitmapDrawable))) {
           break;
         }
-        localObject1 = bdda.a(((BitmapDrawable)localObject1).getBitmap(), true);
+        localObject1 = bdhj.a(((BitmapDrawable)localObject1).getBitmap(), true);
         localmhp.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
         break;
-        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841555);
+        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841568);
         break label1276;
-        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841559);
+        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841572);
         break label1276;
-        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841557);
+        localmhp.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841570);
         break label1276;
-        localmhp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167192));
+        localmhp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167194));
         break label1338;
         label1965:
         if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 7) && (localmhp.jdField_a_of_type_AndroidWidgetTextView.isShown())) {
@@ -352,7 +352,7 @@ public class mhl
         break label1513;
         label2048:
         localmhp.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        localmhp.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130840084);
+        localmhp.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130840085);
         break label1513;
         label2072:
         if (localmhp.e.getVisibility() != 0) {

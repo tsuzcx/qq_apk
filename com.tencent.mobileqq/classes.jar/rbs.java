@@ -54,18 +54,18 @@ public class rbs
   public rbs(View paramView)
   {
     super(paramView, 2);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131368324));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup = ((VideoFeedsTopicViewGroup)paramView.findViewById(2131379719));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367568));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131368335));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup = ((VideoFeedsTopicViewGroup)paramView.findViewById(2131379777));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367578));
     this.jdField_b_of_type_AndroidViewView = VideoFeedsAccessibilityHelper.a(paramView);
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363038));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379713));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369843));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131367564));
-    this.c = ((KandianUrlImageView)paramView.findViewById(2131367581));
-    this.e = paramView.findViewById(2131367582);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379644);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView = ((RIJRedPacketPopupView)paramView.findViewById(2131379641));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379771));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369862));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131367574));
+    this.c = ((KandianUrlImageView)paramView.findViewById(2131367591));
+    this.e = paramView.findViewById(2131367592);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379702);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView = ((RIJRedPacketPopupView)paramView.findViewById(2131379699));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.b(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.a(false);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView != null)
@@ -94,9 +94,9 @@ public class rbs
       if (!bool) {
         break label86;
       }
-      localViewStub1 = (ViewStub)paramView.findViewById(2131379659);
-      localViewStub2 = (ViewStub)paramView.findViewById(2131379651);
-      ((ViewStub)paramView.findViewById(2131379657)).inflate();
+      localViewStub1 = (ViewStub)paramView.findViewById(2131379717);
+      localViewStub2 = (ViewStub)paramView.findViewById(2131379709);
+      ((ViewStub)paramView.findViewById(2131379715)).inflate();
       localViewStub1.inflate();
       localViewStub2.inflate();
     }
@@ -108,9 +108,9 @@ public class rbs
       bool = false;
       break;
       label86:
-      localViewStub1 = (ViewStub)paramView.findViewById(2131379655);
-      localViewStub2 = (ViewStub)paramView.findViewById(2131379653);
-      ((ViewStub)paramView.findViewById(2131379656)).inflate();
+      localViewStub1 = (ViewStub)paramView.findViewById(2131379713);
+      localViewStub2 = (ViewStub)paramView.findViewById(2131379711);
+      ((ViewStub)paramView.findViewById(2131379714)).inflate();
       localViewStub1.inflate();
       localViewStub2.inflate();
     }

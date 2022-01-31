@@ -1,17 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import java.util.concurrent.Callable;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class atai
-  implements Callable<asux>
+class atai
+  implements INetEventHandler
 {
-  public atai(ODLoadingActivity paramODLoadingActivity, String paramString) {}
+  atai(atad paramatad) {}
   
-  public asux a()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return asvg.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
+    if (atad.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + atad.a(this.a).e);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 

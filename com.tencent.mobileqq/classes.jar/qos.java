@@ -20,7 +20,7 @@ public class qos
     ReadInJoyDeliverUGCActivity.c(this.a, paramInt1);
     if (paramInt1 == 0)
     {
-      ReadInJoyDeliverUGCActivity.d(this.a, 2, this.a.getString(2131718853));
+      ReadInJoyDeliverUGCActivity.d(this.a, 2, this.a.getString(2131718865));
       ReadInJoyDeliverUGCActivity.d(this.a, -1);
       ReadInJoyDeliverUGCActivity.g(this.a, true);
     }
@@ -33,7 +33,7 @@ public class qos
       if (paramString2 == null) {
         paramString1 = "";
       }
-      ReadInJoyDeliverUGCActivity.a(this.a).put("comment", new String(bdbi.encode(paramString1.getBytes(), 0)));
+      ReadInJoyDeliverUGCActivity.a(this.a).put("comment", new String(bdfr.encode(paramString1.getBytes(), 0)));
       if (ReadInJoyDeliverUGCActivity.e(this.a) != 12) {
         break label452;
       }

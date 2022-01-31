@@ -1,88 +1,39 @@
-import android.content.Context;
+import android.view.View;
 
 public class xrt
+  extends xrx
 {
-  protected int a;
-  Context a;
-  protected biah a;
-  protected xrv a;
-  protected boolean a;
+  public int a;
   
-  public xrt(biah parambiah, Context paramContext)
+  public xrt(xsc paramxsc, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Biah = parambiah;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramxsc, paramView);
+    this.a = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    wxe.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
+    return this.a;
   }
   
-  public void a(xrv paramxrv)
+  public CharSequence a()
   {
-    this.jdField_a_of_type_Xrv = paramxrv;
-    if (paramxrv != null)
-    {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_Biah.setOnClickListener(new xru(this));
+    wxe.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
   }
   
-  public void a(boolean paramBoolean)
+  public void a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Biah.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Biah.a(0);
+    wxe.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_Biah.a(5);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_Biah.a(i);
-      if ((!this.jdField_a_of_type_Biah.b(i)) || (this.jdField_a_of_type_Xrv == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Xrv.a();
-      return;
-    }
-  }
+  public void a(boolean paramBoolean) {}
   
-  public void b(boolean paramBoolean)
+  public CharSequence b()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Biah.a() == 0) || (!this.jdField_a_of_type_Biah.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_Xrv != null) {
-        bool = this.jdField_a_of_type_Xrv.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_Biah.a(2);
+    wxe.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
   }
 }
 

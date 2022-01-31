@@ -1,11 +1,16 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
 
-public abstract interface bkrj<T extends RecyclerView.ViewHolder>
+class bkrj
+  implements View.OnClickListener
 {
-  public abstract void a(@Nullable T paramT, int paramInt);
+  bkrj(bkrh parambkrh, bkqp parambkqp, int paramInt) {}
   
-  public abstract void a(@Nullable T paramT, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    ((bkql)this.jdField_a_of_type_Bkrh.a.get()).a(this.jdField_a_of_type_Bkqp.itemView, this.jdField_a_of_type_Int);
+  }
 }
 
 

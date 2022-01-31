@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import acfb;
-import amhm;
+import acjq;
+import ammb;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,11 +10,11 @@ import java.util.ArrayList;
 class QQMessageFacade$5
   implements Runnable
 {
-  QQMessageFacade$5(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, acfb paramacfb) {}
+  QQMessageFacade$5(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, acjq paramacjq) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Acfb);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Acjq);
   }
 }
 

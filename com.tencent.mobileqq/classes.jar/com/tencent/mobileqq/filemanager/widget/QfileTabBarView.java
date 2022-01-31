@@ -9,9 +9,9 @@ import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import arqy;
-import azmj;
-import berl;
+import arvh;
+import azqs;
+import bevu;
 import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
@@ -34,7 +34,7 @@ public class QfileTabBarView
   public int a;
   HorizontalScrollView jdField_a_of_type_AndroidWidgetHorizontalScrollView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private berl jdField_a_of_type_Berl = new arqy(this);
+  private bevu jdField_a_of_type_Bevu = new arvh(this);
   HeaderScrollView jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView = null;
   public BaseFileAssistantActivity a;
   QfileBaseTabView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileBaseTabView = null;
@@ -58,13 +58,13 @@ public class QfileTabBarView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = null;
     this.jdField_c_of_type_JavaUtilHashMap = new LinkedHashMap();
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560646, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560664, this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131367728));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131367738));
     this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getParent().requestDisallowInterceptTouchEvent(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131377295));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377297));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setOnTabChangeListener(this.jdField_a_of_type_Berl);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131377349));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377351));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setOnTabChangeListener(this.jdField_a_of_type_Bevu);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setBackgroundDrawable(null);
   }
   
@@ -83,38 +83,38 @@ public class QfileTabBarView
         case 3: 
           if (this.jdField_c_of_type_Int == 1)
           {
-            azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A071", "0X800A071", 0, 0, "", "", "", "");
+            azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A071", "0X800A071", 0, 0, "", "", "", "");
             return;
           }
           break;
         case 1118: 
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB4", "0x8009DB4", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB4", "0x8009DB4", 0, 0, "", "", "", "");
           return;
         case 1111: 
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DAE", "0x8009DAE", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DAE", "0x8009DAE", 0, 0, "", "", "", "");
           return;
         case 1119: 
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB0", "0x8009DB0", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB0", "0x8009DB0", 0, 0, "", "", "", "");
           return;
         case 1110: 
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB2", "0x8009DB2", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB2", "0x8009DB2", 0, 0, "", "", "", "");
           return;
         case 1114: 
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB6", "0x8009DB6", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB6", "0x8009DB6", 0, 0, "", "", "", "");
           return;
         }
       } while (this.jdField_c_of_type_Int != 2);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A081", "0X800A081", 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A081", "0X800A081", 0, 0, "", "", "", "");
       return;
       if (this.jdField_c_of_type_Int == 1)
       {
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A079", "0X800A079", 0, 0, "", "", "", "");
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A079", "0X800A079", 0, 0, "", "", "", "");
         return;
       }
     } while (this.jdField_c_of_type_Int != 2);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
     return;
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
   }
   
   public int a()
@@ -153,13 +153,13 @@ public class QfileTabBarView
     //   46: invokespecial 173	java/util/ArrayList:<init>	()V
     //   49: astore 6
     //   51: aload 6
-    //   53: new 175	arqz
+    //   53: new 175	arvi
     //   56: dup
     //   57: aload_0
     //   58: new 177	java/lang/StringBuilder
     //   61: dup
     //   62: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   65: getstatic 183	aljq:aW	Ljava/lang/String;
+    //   65: getstatic 183	alof:aW	Ljava/lang/String;
     //   68: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: ldc 189
     //   73: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -167,17 +167,17 @@ public class QfileTabBarView
     //   79: iconst_0
     //   80: iconst_0
     //   81: iconst_1
-    //   82: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   82: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   85: invokeinterface 201 2 0
     //   90: pop
     //   91: aload 6
-    //   93: new 175	arqz
+    //   93: new 175	arvi
     //   96: dup
     //   97: aload_0
     //   98: new 177	java/lang/StringBuilder
     //   101: dup
     //   102: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   105: getstatic 183	aljq:aW	Ljava/lang/String;
+    //   105: getstatic 183	alof:aW	Ljava/lang/String;
     //   108: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: ldc 203
     //   113: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -185,7 +185,7 @@ public class QfileTabBarView
     //   119: iconst_0
     //   120: iconst_0
     //   121: iconst_1
-    //   122: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   122: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   125: invokeinterface 201 2 0
     //   130: pop
     //   131: new 172	java/util/ArrayList
@@ -193,15 +193,15 @@ public class QfileTabBarView
     //   135: invokespecial 173	java/util/ArrayList:<init>	()V
     //   138: astore 7
     //   140: aload 7
-    //   142: new 175	arqz
+    //   142: new 175	arvi
     //   145: dup
     //   146: aload_0
-    //   147: invokestatic 208	armo:a	()Larmo;
-    //   150: invokevirtual 210	armo:b	()Ljava/lang/String;
+    //   147: invokestatic 208	arqx:a	()Larqx;
+    //   150: invokevirtual 210	arqx:b	()Ljava/lang/String;
     //   153: iconst_0
     //   154: iconst_0
     //   155: iconst_1
-    //   156: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   156: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   159: invokeinterface 201 2 0
     //   164: pop
     //   165: aload_0
@@ -224,8 +224,8 @@ public class QfileTabBarView
     //   202: new 177	java/lang/StringBuilder
     //   205: dup
     //   206: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   209: getstatic 226	aljq:aX	Ljava/lang/String;
-    //   212: invokestatic 231	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   209: getstatic 226	alof:aX	Ljava/lang/String;
+    //   212: invokestatic 231	bdzf:a	(Ljava/lang/String;)Ljava/lang/String;
     //   215: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   218: ldc 233
     //   220: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -453,7 +453,7 @@ public class QfileTabBarView
     //   965: new 314	com/tencent/util/Pair
     //   968: dup
     //   969: ldc_w 315
-    //   972: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   972: invokestatic 320	alud:a	(I)Ljava/lang/String;
     //   975: iconst_5
     //   976: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   979: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -476,14 +476,14 @@ public class QfileTabBarView
     //   1019: iload_3
     //   1020: ifeq +24 -> 1044
     //   1023: aload 7
-    //   1025: new 175	arqz
+    //   1025: new 175	arvi
     //   1028: dup
     //   1029: aload_0
     //   1030: aload 8
     //   1032: iconst_1
     //   1033: iconst_1
     //   1034: iconst_1
-    //   1035: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1035: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   1038: invokeinterface 201 2 0
     //   1043: pop
     //   1044: new 331	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelPicTabView
@@ -516,7 +516,7 @@ public class QfileTabBarView
     //   1102: new 314	com/tencent/util/Pair
     //   1105: dup
     //   1106: ldc_w 336
-    //   1109: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   1109: invokestatic 320	alud:a	(I)Ljava/lang/String;
     //   1112: iconst_3
     //   1113: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1116: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -526,26 +526,26 @@ public class QfileTabBarView
     //   1126: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
     //   1129: goto -641 -> 488
     //   1132: aload 7
-    //   1134: new 175	arqz
+    //   1134: new 175	arvi
     //   1137: dup
     //   1138: aload_0
-    //   1139: invokestatic 208	armo:a	()Larmo;
-    //   1142: invokevirtual 338	armo:c	()Ljava/lang/String;
+    //   1139: invokestatic 208	arqx:a	()Larqx;
+    //   1142: invokevirtual 338	arqx:c	()Ljava/lang/String;
     //   1145: iconst_1
     //   1146: iconst_0
     //   1147: iconst_0
-    //   1148: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1148: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   1151: invokeinterface 201 2 0
     //   1156: pop
     //   1157: aload 7
-    //   1159: new 175	arqz
+    //   1159: new 175	arvi
     //   1162: dup
     //   1163: aload_0
     //   1164: new 177	java/lang/StringBuilder
     //   1167: dup
     //   1168: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   1171: invokestatic 208	armo:a	()Larmo;
-    //   1174: invokevirtual 210	armo:b	()Ljava/lang/String;
+    //   1171: invokestatic 208	arqx:a	()Larqx;
+    //   1174: invokevirtual 210	arqx:b	()Ljava/lang/String;
     //   1177: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1180: ldc_w 340
     //   1183: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -553,7 +553,7 @@ public class QfileTabBarView
     //   1189: iconst_1
     //   1190: iconst_0
     //   1191: iconst_0
-    //   1192: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1192: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   1195: invokeinterface 201 2 0
     //   1200: pop
     //   1201: new 312	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
@@ -564,7 +564,7 @@ public class QfileTabBarView
     //   1211: new 314	com/tencent/util/Pair
     //   1214: dup
     //   1215: ldc_w 341
-    //   1218: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   1218: invokestatic 320	alud:a	(I)Ljava/lang/String;
     //   1221: bipush 11
     //   1223: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1226: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -588,14 +588,14 @@ public class QfileTabBarView
     //   1267: iload_3
     //   1268: ifeq +24 -> 1292
     //   1271: aload 7
-    //   1273: new 175	arqz
+    //   1273: new 175	arvi
     //   1276: dup
     //   1277: aload_0
     //   1278: aload 9
     //   1280: iconst_0
     //   1281: iconst_1
     //   1282: iconst_1
-    //   1283: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1283: invokespecial 196	arvi:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   1286: invokeinterface 201 2 0
     //   1291: pop
     //   1292: new 348	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelMediaTabView

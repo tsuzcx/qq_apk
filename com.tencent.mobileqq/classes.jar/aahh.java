@@ -1,24 +1,12 @@
-import android.view.View;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
-import com.tencent.ark.ArkViewImplement.InputCallback;
+import cooperation.wadl.ipc.WadlResult;
 
-class aahh
-  implements ArkViewImplement.InputCallback
+public abstract interface aahh
 {
-  aahh(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
+  public abstract void a(WadlResult paramWadlResult);
   
-  public void onFocusChanged(View paramView, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
-    }
-  }
+  public abstract void b(WadlResult paramWadlResult);
   
-  public void onHideMenu(View paramView) {}
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public abstract void c(WadlResult paramWadlResult);
 }
 
 

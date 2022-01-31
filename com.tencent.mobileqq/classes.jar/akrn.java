@@ -1,6 +1,15 @@
-class akrn
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
+
+public class akrn
+  implements Comparator<akrq>
 {
-  private static akrg a = new akrg("cm_game_module");
+  public akrn(ApolloCmdChannel paramApolloCmdChannel) {}
+  
+  public int a(akrq paramakrq1, akrq paramakrq2)
+  {
+    return paramakrq1.a() - paramakrq2.a();
+  }
 }
 
 

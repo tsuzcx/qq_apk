@@ -1,8 +1,29 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
-public abstract interface bhzu
+public class bhzu
+  implements View.OnTouchListener
 {
-  public abstract void a(View paramView1, View paramView2, int paramInt1, int paramInt2);
+  public bhzu(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
+    }
+    return true;
+  }
 }
 
 

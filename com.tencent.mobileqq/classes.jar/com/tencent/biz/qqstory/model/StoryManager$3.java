@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import uro;
+import uvx;
 
 public class StoryManager$3
   implements Runnable
 {
-  public StoryManager$3(uro paramuro, String paramString) {}
+  public StoryManager$3(uvx paramuvx, String paramString) {}
   
   public void run()
   {

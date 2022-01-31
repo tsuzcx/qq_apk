@@ -6,32 +6,32 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 public final class nyo
-  implements aubq<apud, char[]>
+  implements aufz<apym, char[]>
 {
-  public char[] a(apud paramapud)
+  public char[] a(apym paramapym)
   {
     try
     {
-      int i = Integer.parseInt(paramapud.a.eId);
-      int j = Integer.parseInt(paramapud.a.epId);
-      Object localObject = apih.a(j, i);
-      paramapud = new char[5];
-      paramapud[0] = 20;
-      paramapud[1] = localObject[3];
-      paramapud[2] = localObject[2];
-      paramapud[3] = localObject[1];
-      paramapud[4] = localObject[0];
+      int i = Integer.parseInt(paramapym.a.eId);
+      int j = Integer.parseInt(paramapym.a.epId);
+      Object localObject = apmq.a(j, i);
+      paramapym = new char[5];
+      paramapym[0] = 20;
+      paramapym[1] = localObject[3];
+      paramapym[2] = localObject[2];
+      paramapym[3] = localObject[1];
+      paramapym[4] = localObject[0];
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = ((aube)((AppRuntime)localObject).getManager(14)).a(String.valueOf(j));
+        localObject = ((aufn)((AppRuntime)localObject).getManager(14)).a(String.valueOf(j));
         if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
-          paramapud[1] = 511;
+          paramapym[1] = 511;
         }
       }
-      return paramapud;
+      return paramapym;
     }
-    catch (NumberFormatException paramapud)
+    catch (NumberFormatException paramapym)
     {
       QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
     }

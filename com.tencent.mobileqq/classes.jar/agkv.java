@@ -1,23 +1,74 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.downloader.GalleryDecoder;
+import com.tencent.widget.Gallery;
+import java.io.File;
+import java.util.HashMap;
 
-class agkv
-  implements View.OnClickListener
+public class agkv
+  extends GalleryDecoder
 {
-  agkv(agkt paramagkt, String paramString) {}
+  private BaseApplicationImpl a;
   
-  public void onClick(View paramView)
+  public agkv(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if ((agkt.a(this.jdField_a_of_type_Agkt) != null) && (agkt.a(this.jdField_a_of_type_Agkt).isShowing())) {
-      agkt.a(this.jdField_a_of_type_Agkt).dismiss();
+    super(BaseApplicationImpl.getContext());
+    this.a = paramBaseApplicationImpl;
+  }
+  
+  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    int i = 0;
+    if (paramDownloadParams.tag != null) {
+      i = ((Integer)paramDownloadParams.tag).intValue();
     }
-    if ((this.jdField_a_of_type_Agkt.a != null) && (this.jdField_a_of_type_Agkt.a.isShowing()))
+    if (i == 3)
     {
-      this.jdField_a_of_type_Agkt.a.dismiss();
-      this.jdField_a_of_type_Agkt.a = null;
+      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
+      int j = paramURLDrawableHandler.getWidth();
+      i = paramURLDrawableHandler.getHeight();
+      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
+      j = (int)(j * f);
+      i = (int)(i * f);
+      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
     }
-    agkt.a(this.jdField_a_of_type_Agkt, this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
+  
+  public String getLogTag()
+  {
+    return "PEAK";
+  }
+  
+  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
+  {
+    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
+    {
+      HashMap localHashMap = paramSafeDecodeOption.getInfo();
+      localHashMap.put("from", "GalleryDecoder");
+      azri.a(BaseApplicationImpl.getApplication()).a(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
+    }
+  }
+  
+  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
+  {
+    try
+    {
+      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
+      return localRoundRectBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return new RoundRectBitmap(paramBitmap, 12.0F);
+  }
+  
+  public boolean useJpegTurbo()
+  {
+    return awkr.b();
   }
 }
 

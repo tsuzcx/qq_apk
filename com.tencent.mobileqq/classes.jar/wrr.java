@@ -1,32 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import java.lang.ref.WeakReference;
 
-class wrr
-  extends uhn
+final class wrr
+  implements wtb
 {
-  wrr(wrh paramwrh) {}
+  wrr(WeakReference paramWeakReference) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(String paramString)
   {
-    if ((wrh.a(this.a) == null) || (wrh.a(this.a).a == null))
-    {
-      wsv.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
+    paramString = (wrt)this.a.get();
+    if (paramString != null) {
+      paramString.a(Integer.valueOf(((Integer)((uvt)uwa.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
     }
-    String str = wrh.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      wsv.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new woq[] { new wol(wnt.a(str)), (woq)this.a.b.a(), new wok(new wrs(this, str)) });
   }
 }
 

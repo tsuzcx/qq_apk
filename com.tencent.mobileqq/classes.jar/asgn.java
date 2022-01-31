@@ -1,28 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class asgn
-  implements View.OnClickListener
+public class asgn
+  implements yxr
 {
-  asgn(asgl paramasgl, String paramString) {}
+  public asgn(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Asgl.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
+    }
+    this.a.g();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
+    if (localSosoLbsInfo == null) {
+      localSosoLbsInfo = SosoInterface.b();
     }
     for (;;)
     {
-      aact.a(akro.a(), "769", "205647", this.jdField_a_of_type_Asgl.jdField_a_of_type_Asfu.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
+      if (localSosoLbsInfo != null) {
+        ((alxp)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
       return;
-      paramView = new Intent(this.jdField_a_of_type_Asgl.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Asgl.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
   }
 }

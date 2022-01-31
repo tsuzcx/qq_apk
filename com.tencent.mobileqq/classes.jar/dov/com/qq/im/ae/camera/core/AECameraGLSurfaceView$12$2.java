@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import axlk;
-import bkob;
+import axpt;
+import bksi;
 
 public class AECameraGLSurfaceView$12$2
   implements Runnable
@@ -11,7 +11,7 @@ public class AECameraGLSurfaceView$12$2
   
   public void run()
   {
-    new axlk((Activity)this.a.this$0.getContext(), new bkob(this)).a();
+    new axpt((Activity)this.a.this$0.getContext(), new bksi(this)).a();
   }
 }
 

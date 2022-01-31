@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bkxq;
-import blaq;
+import blbx;
+import blex;
 
 public class PngsCreator$3
   implements Runnable
 {
-  public PngsCreator$3(blaq paramblaq, String paramString) {}
+  public PngsCreator$3(blex paramblex, String paramString) {}
   
   public void run()
   {
-    if (blaq.a(this.this$0) != null) {
-      blaq.a(this.this$0).a(this.a);
+    if (blex.a(this.this$0) != null) {
+      blex.a(this.this$0).a(this.a);
     }
   }
 }

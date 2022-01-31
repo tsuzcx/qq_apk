@@ -46,7 +46,7 @@ public class rkd
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private bhpy jdField_a_of_type_Bhpy;
+  private bhuf jdField_a_of_type_Bhuf;
   private KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicKandianFavoriteBroadcastReceiver;
   private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
@@ -74,9 +74,9 @@ public class rkd
   
   private Intent a(Bundle paramBundle)
   {
-    Object localObject = (StructMsgForGeneralShare)azqu.a(paramBundle.getByteArray("STRUCT_MSG_BYTES"));
-    if ((!TextUtils.isEmpty(((StructMsgForGeneralShare)localObject).mMsgBrief)) && (((StructMsgForGeneralShare)localObject).mMsgBrief.indexOf(alpo.a(2131716755)) == -1)) {
-      ((StructMsgForGeneralShare)localObject).mMsgBrief = (alpo.a(2131716750) + ((StructMsgForGeneralShare)localObject).mMsgBrief);
+    Object localObject = (StructMsgForGeneralShare)azvd.a(paramBundle.getByteArray("STRUCT_MSG_BYTES"));
+    if ((!TextUtils.isEmpty(((StructMsgForGeneralShare)localObject).mMsgBrief)) && (((StructMsgForGeneralShare)localObject).mMsgBrief.indexOf(alud.a(2131716767)) == -1)) {
+      ((StructMsgForGeneralShare)localObject).mMsgBrief = (alud.a(2131716762) + ((StructMsgForGeneralShare)localObject).mMsgBrief);
     }
     swn.a((StructMsgForGeneralShare)localObject);
     int i = paramBundle.getInt("VIDEO_ARTICLE_BUSITYPE", -1);
@@ -156,7 +156,7 @@ public class rkd
   private void a(Bundle paramBundle)
   {
     paramBundle = a(paramBundle);
-    arum.a(this.jdField_a_of_type_AndroidAppActivity, paramBundle, 21);
+    aryv.a(this.jdField_a_of_type_AndroidAppActivity, paramBundle, 21);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -167,14 +167,14 @@ public class rkd
     paramString2 = this.jdField_a_of_type_AndroidAppActivity;
     Object localObject = new String[9];
     localObject[0] = "这个视频不错 ~\\(≧▽≦)/~";
-    localObject[1] = alpo.a(2131716769);
-    localObject[2] = alpo.a(2131716767);
-    localObject[3] = alpo.a(2131716764);
-    localObject[4] = alpo.a(2131716740);
-    localObject[5] = alpo.a(2131716760);
-    localObject[6] = alpo.a(2131716768);
-    localObject[7] = alpo.a(2131716771);
-    localObject[8] = alpo.a(2131716775);
+    localObject[1] = alud.a(2131716781);
+    localObject[2] = alud.a(2131716779);
+    localObject[3] = alud.a(2131716776);
+    localObject[4] = alud.a(2131716752);
+    localObject[5] = alud.a(2131716772);
+    localObject[6] = alud.a(2131716780);
+    localObject[7] = alud.a(2131716783);
+    localObject[8] = alud.a(2131716787);
     localObject = localObject[new java.util.Random().nextInt(localObject.length)];
     paramString1 = "#QQ看点#" + (String)localObject + "【" + paramString1 + "】";
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
@@ -182,7 +182,7 @@ public class rkd
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "shareMsgToSina empty title or share_url");
       }
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720019, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720031, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
     }
     for (;;)
     {
@@ -214,7 +214,7 @@ public class rkd
         for (;;)
         {
           paramString1 = paramString1;
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720019, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131720031, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
           paramString1.printStackTrace();
         }
       }
@@ -447,7 +447,7 @@ public class rkd
             {
               for (;;)
               {
-                xxb.a(1, 2131695731);
+                ybk.a(1, 2131695733);
               }
             }
           }
@@ -467,7 +467,7 @@ public class rkd
             ((ArrayList)localObject5).add(localObject2);
             ((Bundle)localObject4).putStringArrayList("image_url", (ArrayList)localObject5);
             ((Bundle)localObject4).putLong("req_share_id", 0L);
-            bjao.a(a(), this.jdField_a_of_type_AndroidAppActivity, (Bundle)localObject4, null);
+            bjev.a(a(), this.jdField_a_of_type_AndroidAppActivity, (Bundle)localObject4, null);
             i = 1;
             break;
           }
@@ -475,9 +475,9 @@ public class rkd
         Object localObject7;
         if (paramInt == 12)
         {
-          if (!bdee.g(this.jdField_a_of_type_AndroidContentContext))
+          if (!bdin.g(this.jdField_a_of_type_AndroidContentContext))
           {
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, alpo.a(2131716749), 0).a();
+            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, alud.a(2131716761), 0).a();
             return true;
           }
           rdm.a(a(), this.jdField_a_of_type_AndroidAppActivity);
@@ -578,24 +578,24 @@ public class rkd
             ((JSONObject)localObject2).put("source", 1);
             if ((localBaseArticleInfo.mDislikeInfos != null) && (localBaseArticleInfo.mDislikeInfos.size() > 0))
             {
-              this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(this.jdField_a_of_type_AndroidAppActivity, null));
+              this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this.jdField_a_of_type_AndroidAppActivity, null));
               localObject4 = new rkg(this);
-              this.jdField_a_of_type_Bhpy.a((bhqg)localObject4);
+              this.jdField_a_of_type_Bhuf.a((bhun)localObject4);
               localObject4 = new ReadInJoyDisLikeDialogView(this.jdField_a_of_type_AndroidContentContext);
               ((ReadInJoyDisLikeDialogView)localObject4).setOnUninterestConfirmListener(new rkh(this, localBaseArticleInfo, (JSONObject)localObject2));
               ((ReadInJoyDisLikeDialogView)localObject4).setUninterestData(localBaseArticleInfo.mDislikeInfos);
-              this.jdField_a_of_type_Bhpy.a((View)localObject4, null);
+              this.jdField_a_of_type_Bhuf.a((View)localObject4, null);
               try
               {
-                if (!this.jdField_a_of_type_Bhpy.isShowing())
+                if (!this.jdField_a_of_type_Bhuf.isShowing())
                 {
-                  if ((bhou.g()) && (!ShortVideoUtils.c()))
+                  if ((bhtb.g()) && (!ShortVideoUtils.c()))
                   {
-                    this.jdField_a_of_type_Bhpy.getWindow().setFlags(8, 8);
-                    this.jdField_a_of_type_Bhpy.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-                    this.jdField_a_of_type_Bhpy.setOnShowListener(new rkj(this));
+                    this.jdField_a_of_type_Bhuf.getWindow().setFlags(8, 8);
+                    this.jdField_a_of_type_Bhuf.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
+                    this.jdField_a_of_type_Bhuf.setOnShowListener(new rkj(this));
                   }
-                  this.jdField_a_of_type_Bhpy.show();
+                  this.jdField_a_of_type_Bhuf.show();
                   nrt.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new ron(ntd.a(null, null, null, null, (JSONObject)localObject2)).h(localBaseArticleInfo.innerUniqueID).a().a(), false);
                 }
               }
@@ -631,7 +631,7 @@ public class rkd
           if (TextUtils.isEmpty(localBaseArticleInfo.getSubscribeUin())) {
             break label2186;
           }
-          str1 = oqu.g + bdbi.encodeToString(localBaseArticleInfo.getSubscribeUin().getBytes(), 2);
+          str1 = oqu.g + bdfr.encodeToString(localBaseArticleInfo.getSubscribeUin().getBytes(), 2);
           ors.a(this.jdField_a_of_type_AndroidContentContext, str1);
           i = 3;
           break;
@@ -639,7 +639,7 @@ public class rkd
         if ((TextUtils.isEmpty(localBaseArticleInfo.getSubscribeUin())) || (localBaseArticleInfo.getSubscribeUin().equals("16888"))) {
           break label2186;
         }
-        str1 = oqu.k + bdbi.encodeToString(localBaseArticleInfo.getSubscribeUin().getBytes(), 2);
+        str1 = oqu.k + bdfr.encodeToString(localBaseArticleInfo.getSubscribeUin().getBytes(), 2);
         ors.a(this.jdField_a_of_type_AndroidContentContext, str1);
         i = 3;
         break;
@@ -660,7 +660,7 @@ public class rkd
   {
     List localList = syq.a();
     ArrayList localArrayList = new ArrayList();
-    if (bjxj.d()) {
+    if (bkbq.d()) {
       localArrayList.add(Integer.valueOf(24));
     }
     localArrayList.add(Integer.valueOf(12));

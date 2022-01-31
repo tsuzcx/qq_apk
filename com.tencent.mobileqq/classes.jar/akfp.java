@@ -1,14 +1,13 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class akfp
-  implements Comparator<avqe>
+public class akfp
+  implements View.OnClickListener
 {
-  akfp(akfo paramakfo) {}
+  public akfp(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public int a(avqe paramavqe1, avqe paramavqe2)
-  {
-    return (int)(paramavqe2.a - paramavqe1.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,17 +1,18 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StUser;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
 
-public class uai
-  implements tzq
+public final class uai
+  implements Parcelable.Creator<QCircleWebViewTitleStyle>
 {
-  public uai(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
-  
-  public void a()
+  public QCircleWebViewTitleStyle a(Parcel paramParcel)
   {
-    tyg.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get());
+    return new QCircleWebViewTitleStyle(paramParcel);
+  }
+  
+  public QCircleWebViewTitleStyle[] a(int paramInt)
+  {
+    return new QCircleWebViewTitleStyle[paramInt];
   }
 }
 

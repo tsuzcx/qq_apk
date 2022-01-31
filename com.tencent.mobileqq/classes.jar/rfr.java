@@ -79,7 +79,7 @@ public class rfr
         try
         {
           localObject = new URL(paramosl.jdField_a_of_type_JavaLangString).getHost();
-          paramosl = bavf.a().a((String)localObject, 1006);
+          paramosl = bazo.a().a((String)localObject, 1006);
           qlq localqlq = VideoFeedsPlayManager.PlayStartVideoRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable).jdField_a_of_type_Qlq;
           if (paramosl != null) {
             break label730;

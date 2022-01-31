@@ -67,7 +67,7 @@ public class tfk
   
   private tfk(ViewGroup paramViewGroup, tbb paramtbb)
   {
-    super(paramViewGroup, 2131560221);
+    super(paramViewGroup, 2131560220);
     this.jdField_a_of_type_Tbb = paramtbb;
     e();
     f();
@@ -156,7 +156,7 @@ public class tfk
       paramTextView.a().a(this.jdField_a_of_type_UserGrowthStFeed.feed, paramstSimpleComment);
       paramstSimpleComment = tlf.a("weishi://profile?person_id=" + paramstSimpleComment.posterId, 701);
       i1 = 1000002;
-      if (!xoo.a(a())) {
+      if (!xsx.a(a())) {
         break label308;
       }
       i1 = 1000003;
@@ -299,7 +299,7 @@ public class tfk
     }
     for (;;)
     {
-      paramArrayList = tlf.a(2131693790, new Object[] { Integer.valueOf(this.jdField_a_of_type_UserGrowthStFeed.feed.total_comment_num) });
+      paramArrayList = tlf.a(2131693792, new Object[] { Integer.valueOf(this.jdField_a_of_type_UserGrowthStFeed.feed.total_comment_num) });
       this.o.setText(paramArrayList);
       this.o.setVisibility(0);
       return;
@@ -350,7 +350,7 @@ public class tfk
   
   private void b(String paramString)
   {
-    if (xoo.a(a()))
+    if (xsx.a(a()))
     {
       a(paramString, tjw.c);
       return;
@@ -398,28 +398,28 @@ public class tfk
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)b(2131368479));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131368492));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131368495));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)b(2131368496));
-    this.d = ((TextView)b(2131368502));
-    this.e = ((TextView)b(2131368488));
-    this.f = ((TextView)b(2131368491));
-    this.g = ((TextView)b(2131368490));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368489));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)b(2131368503));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)b(2131368487));
-    this.h = ((TextView)b(2131368498));
-    this.i = ((TextView)b(2131368500));
-    this.j = ((TextView)b(2131368499));
-    this.k = ((TextView)b(2131368480));
-    this.l = ((TextView)b(2131368493));
-    this.p = ((TextView)b(2131368494));
-    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368484));
-    this.jdField_c_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368485));
-    this.m = ((TextView)b(2131368482));
-    this.n = ((TextView)b(2131368483));
-    this.o = ((TextView)b(2131368486));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)b(2131368490));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131368503));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131368506));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)b(2131368507));
+    this.d = ((TextView)b(2131368513));
+    this.e = ((TextView)b(2131368499));
+    this.f = ((TextView)b(2131368502));
+    this.g = ((TextView)b(2131368501));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368500));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)b(2131368514));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)b(2131368498));
+    this.h = ((TextView)b(2131368509));
+    this.i = ((TextView)b(2131368511));
+    this.j = ((TextView)b(2131368510));
+    this.k = ((TextView)b(2131368491));
+    this.l = ((TextView)b(2131368504));
+    this.p = ((TextView)b(2131368505));
+    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368495));
+    this.jdField_c_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)b(2131368496));
+    this.m = ((TextView)b(2131368493));
+    this.n = ((TextView)b(2131368494));
+    this.o = ((TextView)b(2131368497));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -475,7 +475,7 @@ public class tfk
   {
     if (!ndk.a(a()))
     {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
       return;
     }
     if ((this.jdField_a_of_type_UserGrowthStFeed == null) || (this.jdField_a_of_type_UserGrowthStFeed.feed == null) || (this.jdField_a_of_type_UserGrowthStFeed.feed.poster == null))
@@ -510,7 +510,7 @@ public class tfk
   {
     this.jdField_a_of_type_Tbb.a().remove(this.jdField_a_of_type_UserGrowthStFeed);
     this.jdField_a_of_type_Tbb.notifyItemRemoved(getAdapterPosition());
-    bfhq.a().a(2131721468);
+    bflz.a().a(2131721481);
   }
   
   private void l()
@@ -574,7 +574,7 @@ public class tfk
     }
     paramstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStFeed.feed;
     paramstSimpleMetaFeed.total_comment_num += 1;
-    paramstSimpleMetaFeed = tlf.a(2131693790, new Object[] { Integer.valueOf(this.jdField_a_of_type_UserGrowthStFeed.feed.total_comment_num) });
+    paramstSimpleMetaFeed = tlf.a(2131693792, new Object[] { Integer.valueOf(this.jdField_a_of_type_UserGrowthStFeed.feed.total_comment_num) });
     tlo.d("comment", "updateCommentSize, comment size: " + this.jdField_a_of_type_UserGrowthStFeed.feed.total_comment_num);
     this.o.setText(paramstSimpleMetaFeed);
   }
@@ -658,28 +658,28 @@ public class tfk
     {
       switch (paramView.getId())
       {
-      case 2131368481: 
-      case 2131368487: 
-      case 2131368489: 
-      case 2131368497: 
-      default: 
-      case 2131368479: 
       case 2131368492: 
-      case 2131368495: 
-      case 2131368496: 
-      case 2131368490: 
-      case 2131368491: 
-      case 2131368488: 
       case 2131368498: 
       case 2131368500: 
+      case 2131368508: 
+      default: 
+      case 2131368490: 
+      case 2131368503: 
+      case 2131368506: 
+      case 2131368507: 
+      case 2131368501: 
+      case 2131368502: 
       case 2131368499: 
-      case 2131368480: 
+      case 2131368509: 
+      case 2131368511: 
+      case 2131368510: 
+      case 2131368491: 
+      case 2131368504: 
+      case 2131368505: 
+      case 2131368495: 
+      case 2131368496: 
       case 2131368493: 
       case 2131368494: 
-      case 2131368484: 
-      case 2131368485: 
-      case 2131368482: 
-      case 2131368483: 
         do
         {
           do

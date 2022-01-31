@@ -1,14 +1,10 @@
-import android.widget.TextView;
+import android.view.View;
 
-class wrj
-  implements ukr
+public abstract class wrj
 {
-  wrj(wrh paramwrh, TextView paramTextView) {}
+  public abstract void a(int paramInt, View paramView, Object paramObject, wtq paramwtq);
   
-  public void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707902) + paramInt + "%");
-  }
+  public void b(int paramInt, View paramView, Object paramObject, wtq paramwtq) {}
 }
 
 

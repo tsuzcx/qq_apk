@@ -1,7 +1,25 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
+
 public class bkcr
+  extends Handler
 {
-  public static final int a = (int)(40.0F * bdkf.a());
-  public static final int b = (int)(24.0F * bdkf.a());
+  public bkcr(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((bkcu)paramMessage.obj).a(paramMessage.arg1);
+  }
 }
 
 

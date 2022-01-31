@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bfap
-  implements View.OnClickListener
+final class bfap
+  extends BroadcastReceiver
 {
-  public bfap(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
-      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
-    {
-      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
-        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
-      }
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
       return;
-      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
     }
+    bfam.a(paramIntent.getStringExtra("account"));
+    bfam.b(bfam.a());
   }
 }
 

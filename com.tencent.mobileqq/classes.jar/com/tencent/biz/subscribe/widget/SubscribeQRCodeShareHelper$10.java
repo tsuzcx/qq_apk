@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.widget;
 
-import bdcs;
-import yjk;
+import bdhb;
+import ynx;
 
 public class SubscribeQRCodeShareHelper$10
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$10(yjk paramyjk) {}
+  public SubscribeQRCodeShareHelper$10(ynx paramynx) {}
   
   public void run()
   {
-    bdcs.a(yjk.a, true);
+    bdhb.a(ynx.a, true);
   }
 }
 

@@ -1,6 +1,20 @@
-public abstract interface bhkm
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.log.QMLog;
+
+class bhkm
+  implements bgpq
 {
-  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
+  bhkm(bhkl parambhkl) {}
+  
+  public void a(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    QMLog.i("MiniAppAudioPlayer", "onReceiveListener:" + paramContext);
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) && (this.a.a())) {
+      this.a.b();
+    }
+  }
 }
 
 

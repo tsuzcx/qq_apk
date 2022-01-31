@@ -3,11 +3,11 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoog
-  extends aofy<aoof>
+  extends aokh<aoof>
 {
   public int a()
   {
-    return 207;
+    return 575;
   }
   
   @NonNull
@@ -17,15 +17,18 @@ public class aoog
   }
   
   @Nullable
-  public aoof a(aogf[] paramArrayOfaogf)
+  public aoof a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      aoof localaoof = aoof.a(paramArrayOfaogf[0].a);
+      aoof localaoof = aoof.a(paramArrayOfaoko[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaogf[0].a);
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
       return localaoof;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
     }
     return null;
   }
@@ -35,22 +38,25 @@ public class aoog
     return aoof.class;
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
   
   public void a(aoof paramaoof)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramaoof.toString());
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramaoof.toString());
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

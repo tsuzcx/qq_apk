@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
-import urr;
-import usd;
-import whl;
-import wjd;
+import uwa;
+import uwm;
+import wlu;
+import wnm;
 
 public class MemoriesProfileSegment$1
   implements Runnable
 {
-  public MemoriesProfileSegment$1(wjd paramwjd) {}
+  public MemoriesProfileSegment$1(wnm paramwnm) {}
   
   public void run()
   {
-    ((usd)urr.a(2)).a(wjd.a(this.this$0).a);
+    ((uwm)uwa.a(2)).a(wnm.a(this.this$0).a);
   }
 }
 

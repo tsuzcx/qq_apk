@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bmzu;
-import bmzv;
+import bneg;
+import bneh;
 import java.util.ArrayList;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(bmzv parambmzv, ArrayList paramArrayList) {}
+  public EditVideoTagPresenter$1$1(bneh parambneh, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bmzu.a(bmzu.a(this.jdField_a_of_type_Bmzv.a), this.jdField_a_of_type_JavaUtilArrayList);
+    bneg.a(bneg.a(this.jdField_a_of_type_Bneh.a), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

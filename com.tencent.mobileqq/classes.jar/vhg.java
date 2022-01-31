@@ -1,56 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vhg
+  extends uro
 {
-  public long a;
-  public StoryVideoItem a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public List<uxd> a = new ArrayList();
   
-  public JSONObject a()
+  public vhg(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
   {
-    try
+    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
-      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
+      while (paramRspGetBatchFeedFeature.hasNext())
+      {
+        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
+        uxd localuxd = new uxd();
+        localuxd.a(localFeedFeature);
+        this.a.add(localuxd);
+      }
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a(@NonNull JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
-      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  public String toString()
-  {
-    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

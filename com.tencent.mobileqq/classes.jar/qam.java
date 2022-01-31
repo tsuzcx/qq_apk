@@ -4,9 +4,9 @@ import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVid
 public class qam
   extends qae
 {
-  public qam(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qam(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl g()

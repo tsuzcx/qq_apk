@@ -1,19 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import MQQ.PayRuleCfg;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLEncoder;
 
-class adsg
-  implements DialogInterface.OnClickListener
+public class adsg
+  implements View.OnClickListener
 {
-  adsg(adsd paramadsd) {}
+  public adsg(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (QQSettingMe.a(this.a) == null) {
+      return;
+    }
+    if (QQSettingMe.a(this.a).clickHide == 1)
     {
-      this.a.jdField_a_of_type_Bdfq.cancel();
-      this.a.b = true;
-      adsd.a(this.a);
-      this.a.b();
+      QQSettingMe.a(this.a).enable = 0;
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler click clear enable");
+      amfs.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), QQSettingMe.a(this.a));
+    }
+    azqs.b(null, "dc00898", "", "", "", "0X800A633", amfs.a(QQSettingMe.a(this.a)), 1, 0, "1", QQSettingMe.a(this.a).advId, "", "");
+    amfs.a(102, QQSettingMe.a(this.a).advId);
+    if (!TextUtils.isEmpty(QQSettingMe.a(this.a).iconJumpUrl))
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler click iconJumpUrl: " + QQSettingMe.a(this.a).iconJumpUrl);
+      paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+      paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+      paramView.putExtra("url", QQSettingMe.a(this.a).iconJumpUrl);
+      paramView.putExtra("isShowAd", false);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+      return;
+    }
+    switch (QQSettingMe.a(this.a).clubType)
+    {
+    default: 
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler unknown clubType=" + QQSettingMe.a(this.a).clubType);
+      return;
+    }
+    for (int i = 11;; i = 12)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler click type: " + QQSettingMe.a(this.a).clubType);
+      paramView = URLEncoder.encode("jsbridge://vipclub/paySuccess?p={\"type\":" + i + "}");
+      bdun.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQSettingMe.a(this.a).aid, "CJCLUBT", 3, false, false, "", paramView, true, true);
+      return;
     }
   }
 }

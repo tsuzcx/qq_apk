@@ -1,45 +1,12 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.animation.Interpolator;
 
-public class biag
-  extends GridLayoutManager.SpanSizeLookup
+public final class biag
+  implements Interpolator
 {
-  private GridLayoutManager.SpanSizeLookup jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup;
-  private final GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private final biau jdField_a_of_type_Biau;
-  
-  public biag(biau parambiau, GridLayoutManager paramGridLayoutManager)
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_Biau = parambiau;
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = paramGridLayoutManager;
-  }
-  
-  public void a(GridLayoutManager.SpanSizeLookup paramSpanSizeLookup)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup = paramSpanSizeLookup;
-  }
-  
-  public int getSpanSize(int paramInt)
-  {
-    int j = 1;
-    int i;
-    if ((this.jdField_a_of_type_Biau.a(paramInt)) || (this.jdField_a_of_type_Biau.b(paramInt)))
-    {
-      i = 1;
-      if (i == 0) {
-        break label45;
-      }
-      i = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
-    }
-    label45:
-    do
-    {
-      return i;
-      i = 0;
-      break;
-      i = j;
-    } while (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup == null);
-    return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup.getSpanSize(paramInt - this.jdField_a_of_type_Biau.a());
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

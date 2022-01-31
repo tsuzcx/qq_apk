@@ -1,13 +1,17 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface blze
+public class blze
 {
-  int a();
+  String a = "";
+  String b = "";
+  String c = "";
+  
+  public blze() {}
+  
+  public blze(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

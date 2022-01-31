@@ -1,24 +1,35 @@
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.3;
+import com.tencent.qphone.base.util.QLog;
 
-class atxp
-  extends Handler
+public class atxp
+  extends bead
 {
-  atxp(atxo paramatxo, Looper paramLooper, atxn paramatxn)
-  {
-    super(paramLooper);
-  }
+  public atxp(PngFrameManager.3 param3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(beae parambeae)
   {
-    synchronized (atxn.a(this.jdField_a_of_type_Atxo.jdField_a_of_type_Atxn))
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
+    }
+    synchronized (this.a.this$0)
     {
-      atxr localatxr = atxn.a(this.jdField_a_of_type_Atxo.jdField_a_of_type_Atxn, (String)paramMessage.obj);
-      if (localatxr != null) {
-        localatxr.a(paramMessage.what);
+      if (this.a.this$0.a != null)
+      {
+        if (parambeae.a() != 3) {
+          this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_Atxt).sendToTarget();
+        }
       }
-      return;
+      else {
+        return;
+      }
+      parambeae = atxv.a(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Atxt.a = parambeae;
+      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_Atxt).sendToTarget();
+      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, parambeae);
     }
   }
 }

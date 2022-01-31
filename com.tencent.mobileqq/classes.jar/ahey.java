@@ -1,16 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
-public class ahey
-  implements View.OnClickListener
+class ahey
+  implements bhtv
 {
-  public ahey(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
+  ahey(ahex paramahex) {}
   
-  public void onClick(View paramView)
+  private boolean a(AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.d();
+    }
   }
 }
 

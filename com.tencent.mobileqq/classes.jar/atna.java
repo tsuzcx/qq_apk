@@ -1,58 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForLocationShare;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class atna
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  private MessageForLocationShare a;
-  public boolean a;
+  public atna(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atnw paramatnw) {}
   
-  public atna()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageModule", 2, new Object[] { "realClick: invoked. 屏蔽消息双击事件 messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
+    this.jdField_a_of_type_Atnw.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    LocationShareFragment.a(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.frienduin, 2);
-    azmj.b(null, "CliOper", "", "", "0X800A766", "0X800A766", 0, 0, "", "0", "0", "");
-  }
-  
-  public void a(MessageForLocationShare paramMessageForLocationShare)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare = paramMessageForLocationShare;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. ", " v: ", paramView, " messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. disable click in chat history", " v: ", paramView });
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!ytg.a("LocationMessageModule")) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. 屏蔽消息双击事件", " v: ", paramView });
-      return;
-    } while ((BaseActivity.sTopActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.isSharingLocation));
-    a();
   }
 }
 

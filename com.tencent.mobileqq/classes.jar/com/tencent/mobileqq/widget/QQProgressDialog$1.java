@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.widget;
 
 import android.graphics.drawable.Animatable;
-import bepp;
+import bety;
 
 public class QQProgressDialog$1
   implements Runnable
 {
-  public QQProgressDialog$1(bepp parambepp) {}
+  public QQProgressDialog$1(bety parambety) {}
   
   public void run()
   {
-    bepp.a(this.this$0).start();
+    bety.a(this.this$0).start();
   }
 }
 

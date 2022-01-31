@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import mqq.os.MqqHandler;
 
 public class adhv
-  extends alox
+  extends MqqHandler
 {
-  public adhv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adhv(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2014: 
+      this.a.finish();
+      return;
     }
-  }
-  
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      this.a.a(2131719872, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    this.a.finish();
   }
 }
 

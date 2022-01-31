@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgho;
-import bgiy;
-import bgkd;
-import bgte;
+import bglv;
+import bgnf;
+import bgok;
+import bgxl;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,16 +14,16 @@ import org.json.JSONObject;
 class InternalJSPlugin$1
   implements Runnable
 {
-  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, bgkd parambgkd) {}
+  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, bgok parambgok) {}
   
   public void run()
   {
-    Object localObject2 = bgiy.a(this.this$0.mContext, String.valueOf(bgte.a().a()), this.this$0.mMiniAppContext.a().appId);
+    Object localObject2 = bgnf.a(this.this$0.mContext, String.valueOf(bgxl.a().a()), this.this$0.mMiniAppContext.a().appId);
     String[] arrayOfString;
     if (localObject2 != null)
     {
-      arrayOfString = ((bgiy)localObject2).a("");
-      ((bgiy)localObject2).a();
+      arrayOfString = ((bgnf)localObject2).a("");
+      ((bgnf)localObject2).a();
     }
     for (;;)
     {

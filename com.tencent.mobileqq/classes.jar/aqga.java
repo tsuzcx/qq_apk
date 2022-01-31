@@ -1,29 +1,45 @@
-import android.view.animation.Interpolator;
+import com.tencent.qphone.base.util.QLog;
 
-class aqga
-  implements Interpolator
+public class aqga
 {
-  aqga(aqfv paramaqfv) {}
+  public int a;
+  protected aqfk a;
+  protected aqfz a;
   
-  public float getInterpolation(float paramFloat)
+  public aqga(aqfz paramaqfz, aqfk paramaqfk)
   {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Aqfk = paramaqfk;
+    this.jdField_a_of_type_Aqfz = paramaqfz;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
     }
-    float f = paramFloat * 2.0F;
-    if (f >= 2.0F) {
-      return 1.0F;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
     }
-    paramFloat = 0.45F / 4.0F;
-    if (f < 1.0F)
-    {
-      f -= 1.0F;
-      d = Math.pow(2.0D, 10.0F * f);
-      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
     }
-    f -= 1.0F;
-    double d = Math.pow(2.0D, -10.0F * f);
-    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 

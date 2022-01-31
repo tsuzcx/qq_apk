@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.widget.TextView;
 
-public class aggm
-  implements DialogInterface.OnClickListener
+class aggm
+  extends aeqi
 {
-  public aggm(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
+  aggm(aggj paramaggj) {}
 }
 
 

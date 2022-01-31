@@ -1,59 +1,22 @@
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgym
-  extends bgzp
+final class bgym
+  implements bgyt
 {
-  private byte[] a;
+  bgym(bgyt parambgyt) {}
   
-  public bgym(byte[] paramArrayOfByte)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    this.a = paramArrayOfByte;
-  }
-  
-  protected String a()
-  {
-    return "mini_app_report_transfer";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (this.a != null) {
+      this.a.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new APP_REPORT_TRANSFER.StDataReportRsp();
-      paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      int i = paramArrayOfByte.ret.get();
-      if (i == 0) {
-        return new JSONObject();
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
   }
   
-  public byte[] a()
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
-    return this.a;
-  }
-  
-  protected String b()
-  {
-    return "DataReport";
+    if (this.a != null) {
+      this.a.onInitGpkgInfo(paramInt, parambgyu, paramString);
+    }
   }
 }
 

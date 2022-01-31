@@ -1,20 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
-public class apea
-  implements auzh
+public final class apea
+  implements Parcelable.Creator
 {
-  public apea(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
-    }
-    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
+  }
+  
+  public IPSiteModel.Book[] a(int paramInt)
+  {
+    return new IPSiteModel.Book[paramInt];
   }
 }
 

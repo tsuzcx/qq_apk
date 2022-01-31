@@ -1,14 +1,48 @@
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+
 public class bfgy
-  extends bfha
+  extends Handler
 {
-  public static bfgy a()
+  public bfgy(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    return new bfgy();
+    super(paramLooper);
   }
   
-  public String a()
+  public void handleMessage(Message paramMessage)
   {
-    return b() + "|" + c();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = (Bitmap)paramMessage.obj;
+          } while (paramMessage == null);
+          this.a.a.a("", "", paramMessage, true);
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        this.a.a.a("", paramMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      this.a.a.setAppType(paramMessage);
+      return;
+    } while (this.a.a.a == null);
+    this.a.a.a.d();
   }
 }
 

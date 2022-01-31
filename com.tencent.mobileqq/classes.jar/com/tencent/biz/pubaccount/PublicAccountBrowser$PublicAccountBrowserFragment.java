@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount;
 
-import aiqg;
-import alpo;
-import alyh;
+import aiuv;
+import alud;
+import amcw;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,16 +16,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azmj;
-import bdcd;
-import bdcq;
-import bdee;
-import bdfq;
-import bebk;
-import bedf;
-import beei;
-import beey;
-import befb;
+import azqs;
+import bdgm;
+import bdgz;
+import bdin;
+import bdjz;
+import beft;
+import beho;
+import beir;
+import bejh;
+import bejk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,7 +41,7 @@ import nqm;
 import nqn;
 import nrt;
 import syb;
-import xxb;
+import ybk;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment
   extends WebViewFragment
@@ -123,44 +123,44 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       } while (paramString.startsWith("https://"));
       localObject1 = localObject2;
     } while (paramString.indexOf("://") == -1);
-    return "即将离开\"QQ\"\r\n打开" + alpo.a(2131709165);
+    return "即将离开\"QQ\"\r\n打开" + alud.a(2131709177);
   }
   
   private void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!bdee.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-      QQToast.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131694764, 0).b(super.b());
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!bdin.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
+      QQToast.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131694766, 0).b(super.b());
     }
-    if (!this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.jdField_a_of_type_Boolean)
     {
       paramBundle = this.jdField_a_of_type_AndroidOsBundle.getString("assignBackText");
       if (!TextUtils.isEmpty(paramBundle)) {
-        this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
+        this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
       }
       if (this.c) {
         break label201;
       }
-      this.jdField_a_of_type_Bebk.c.setText("");
-      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840105);
-      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131692824));
+      this.jdField_a_of_type_Beft.c.setText("");
+      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840106);
+      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131692826));
     }
     for (;;)
     {
       if (this.jdField_a_of_type_Int == 1001)
       {
-        this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_Bebk.c.setText(alpo.a(2131709121));
-        this.jdField_a_of_type_Bebk.c.setOnClickListener(this);
-        this.jdField_a_of_type_Bebk.c.setVisibility(0);
+        this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_Beft.c.setText(alud.a(2131709133));
+        this.jdField_a_of_type_Beft.c.setOnClickListener(this);
+        this.jdField_a_of_type_Beft.c.setVisibility(0);
       }
       return;
       label201:
-      this.jdField_a_of_type_Bebk.c.setVisibility(8);
-      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = (int)bdcq.a(BaseApplicationImpl.getApplication(), 8.0F);
-      if (this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
+      this.jdField_a_of_type_Beft.c.setVisibility(8);
+      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      int i = (int)bdgz.a(BaseApplicationImpl.getApplication(), 8.0F);
+      if (this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
       }
     }
   }
@@ -204,8 +204,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     }
     try
     {
-      this.jdField_a_of_type_Befb.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
-      this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.jdField_a_of_type_Long = this.jdField_a_of_type_Befb.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Bejk.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.jdField_a_of_type_Long = this.jdField_a_of_type_Bejk.jdField_a_of_type_Long;
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("call_from");
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("call_from");
       this.i = this.jdField_a_of_type_AndroidOsBundle.getString("puin");
@@ -255,8 +255,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
           bool1 = true;
         }
         this.c = bool1;
-        localObject1 = (beei)this.jdField_a_of_type_Bedf.a(4);
-        if ((!this.c) && ((this.jdField_a_of_type_Befb.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((beei)localObject1).a())) {
+        localObject1 = (beir)this.jdField_a_of_type_Beho.a(4);
+        if ((!this.c) && ((this.jdField_a_of_type_Bejk.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((beir)localObject1).a())) {
           this.c = true;
         }
         localObject1 = localObject2;
@@ -296,20 +296,20 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.jdField_a_of_type_Boolean))
     {
       nqk localnqk = new nqk(this);
-      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnqk);
-      this.jdField_a_of_type_Bebk.c.setText(2131692039);
-      this.jdField_a_of_type_Bebk.c.setOnClickListener(localnqk);
+      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnqk);
+      this.jdField_a_of_type_Beft.c.setText(2131692040);
+      this.jdField_a_of_type_Beft.c.setOnClickListener(localnqk);
     }
     a(paramBundle);
     return i;
   }
   
-  public bedf a()
+  public beho a()
   {
-    return new bedf(this, 127, new nql(this));
+    return new beho(this, 127, new nql(this));
   }
   
   public String a()
@@ -347,7 +347,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       {
         localException.printStackTrace();
       }
-      azmj.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
+      azqs.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
     }
     localObject3 = localObject1;
     if (localObject1 == null) {
@@ -373,7 +373,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       if (localActivityInfo != null) {
         paramUri = localActivityInfo.packageName;
       }
-      alyh.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
+      amcw.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
       paramContext.startActivity(localIntent);
       return;
     }
@@ -387,7 +387,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     try
     {
-      paramContext = bdcd.a(paramContext, 230, null, paramString3, alpo.a(2131709163), alpo.a(2131709142), new nqm(this, paramContext, paramUri, paramString1, paramString4), new nqn(this, paramString4));
+      paramContext = bdgm.a(paramContext, 230, null, paramString3, alud.a(2131709175), alud.a(2131709154), new nqm(this, paramContext, paramUri, paramString1, paramString4), new nqn(this, paramString4));
       paramContext.show();
       paramContext.setCancelable(false);
       return;
@@ -403,19 +403,19 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     paramDialogInterface.dismiss();
     if (!paramBoolean) {
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-        azmj.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
+        azqs.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
       }
     }
     while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       return;
     }
-    azmj.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
+    azqs.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == -8) {
-      xxb.a(1, 2131695722);
+      ybk.a(1, 2131695724);
     }
     super.a(paramWebView, paramInt, paramString1, paramString2);
   }
@@ -448,7 +448,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L) || (this.jdField_a_of_type_Myl.a(paramWebView.getUrl(), str).booleanValue())))
     {
       long l = System.currentTimeMillis();
-      boolean bool = aiqg.a().a(paramString, this);
+      boolean bool = aiuv.a().a(paramString, this);
       QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool + " cost:" + (System.currentTimeMillis() - l) + " ms.");
       if (!bool) {}
     }

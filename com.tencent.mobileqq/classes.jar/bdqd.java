@@ -1,71 +1,37 @@
-import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class bdqd
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static boolean a()
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      bdpx localbdpx = (bdpx)((QQAppInterface)super.getAppRuntime()).a(71);
-      if (localbdpx != null) {
-        localbdpx.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
-    }
+    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
-      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    boolean bool1 = false;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      bdlr.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+    boolean bool2;
+    if (!bool1) {
+      bool2 = bool1;
     }
+    do
+    {
+      do
+      {
+        return bool2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
+        }
+        bool2 = bool1;
+      } while (!bool1);
+      bool2 = bool1;
+    } while (TextUtils.isEmpty(paramString3));
+    return paramString3.equalsIgnoreCase(Build.MODEL);
   }
 }
 

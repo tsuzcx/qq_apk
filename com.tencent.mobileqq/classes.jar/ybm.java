@@ -1,20 +1,76 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.res.Resources;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-class ybm
-  implements yvn<CertifiedAccountWrite.StDoReplyRsp>
+public class ybm
 {
-  ybm(ybg paramybg, CertifiedAccountMeta.StReply paramStReply, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    if ((paramStDoReplyRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply != null)) {
-      paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846162);
+    if (paramURLImageView.getLayoutParams() != null)
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
     }
-    uht.a().dispatch(this.jdField_a_of_type_Ybg.a(new Object[] { Integer.valueOf(6), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, Integer.valueOf(this.jdField_a_of_type_Ybg.hashCode()) }));
+    return localURLDrawableOptions;
+  }
+  
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
+  {
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    try
+    {
+      localURLDrawableOptions = a(paramURLImageView);
+      if (paramBoolean) {}
+      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
+      {
+        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841309);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
 }
 

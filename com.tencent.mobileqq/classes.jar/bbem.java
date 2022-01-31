@@ -1,11 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import java.util.ArrayList;
 
-class bbem
+public abstract interface bbem
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageView b;
+  public abstract void a(int paramInt, String paramString, ArrayList<bbej> paramArrayList);
 }
 
 

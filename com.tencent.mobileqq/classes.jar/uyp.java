@@ -1,60 +1,47 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-final class uyp
-  implements uni<vbt, vdh>
+class uyp
+  extends SimpleObserver<List<vlp>>
 {
-  uyp(List paramList) {}
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(@NonNull vbt paramvbt, @Nullable vdh paramvdh, @NonNull ErrorMessage paramErrorMessage)
+  uyp(uyl paramuyl) {}
+  
+  public void a(List<vlp> paramList)
   {
-    wsv.b("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond");
-    uyq localuyq = new uyq();
-    localuyq.jdField_a_of_type_JavaUtilList = new ArrayList(paramvbt.jdField_a_of_type_JavaUtilList);
-    localuyq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramvdh == null))
+    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
     {
-      wsv.c("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: get story player tag info failed, error:%s", paramErrorMessage);
-      uht.a().dispatch(localuyq);
-      return;
-    }
-    wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, vid list:%s, response list:%s", this.jdField_a_of_type_JavaUtilList, paramvdh.jdField_a_of_type_JavaUtilList);
-    paramErrorMessage = (uro)urr.a(5);
-    paramvbt = paramvbt.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramvbt.hasNext())
-    {
-      Object localObject = (String)paramvbt.next();
-      StoryVideoItem localStoryVideoItem = paramErrorMessage.a((String)localObject);
-      localObject = uyo.a((String)localObject, paramvdh.jdField_a_of_type_JavaUtilList);
-      if (localStoryVideoItem != null)
-      {
-        if (localObject == null)
-        {
-          localStoryVideoItem.mTagInfoBase = null;
-          localStoryVideoItem.mCompInfoBase = null;
-          localStoryVideoItem.mOALinkInfoJson = null;
-        }
-        for (localStoryVideoItem.mOALinkInfo = null;; localStoryVideoItem.mOALinkInfo = utg.a(localStoryVideoItem.mOALinkInfoJson))
-        {
-          if (localStoryVideoItem.mTagInfoBase != null) {
-            localStoryVideoItem.mTagInfoBase.b = System.currentTimeMillis();
-          }
-          paramErrorMessage.a(localStoryVideoItem);
-          break;
-          localStoryVideoItem.mTagInfoBase = ((vbu)localObject).jdField_a_of_type_Xjw;
-          localStoryVideoItem.mCompInfoBase = ((vbu)localObject).jdField_a_of_type_Xjo;
-          localStoryVideoItem.mOALinkInfoJson = ((vbu)localObject).b;
-        }
+      vlp localvlp = (vlp)paramList.get(i);
+      if (!localvlp.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localvlp.b);
       }
+      i += 1;
     }
-    localuyq.b = new ArrayList(paramvdh.jdField_a_of_type_JavaUtilList);
-    uht.a().dispatch(localuyq);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Uyl.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Uyl.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

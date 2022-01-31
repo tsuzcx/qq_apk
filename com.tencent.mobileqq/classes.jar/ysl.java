@@ -1,19 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.io.File;
+import java.util.ArrayList;
 
-class ysl
-  implements ValueAnimator.AnimatorUpdateListener
+public class ysl
 {
-  ysl(ysj paramysj, Container paramContainer) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public ArrayList<String> a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public ArrayList<String> b;
+  boolean b;
+  public String c;
+  public ArrayList<File> c = new ArrayList();
+  public String d;
+  public String e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ysl(ysb paramysb)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
-    localLayoutParams.topMargin = paramValueAnimator.intValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

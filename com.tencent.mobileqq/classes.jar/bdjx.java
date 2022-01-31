@@ -1,13 +1,30 @@
-import android.graphics.PointF;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-final class bdjx
-  implements bdjz<PointF>
+public class bdjx
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public float a;
+  public SessionInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e = "";
+  
+  public bdjx(Bundle paramBundle)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.b = paramBundle.getString("appView");
+    this.c = paramBundle.getString("appMinVersion");
+    this.d = paramBundle.getString("metaData");
+    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    paramBundle = paramBundle.getString("troopUin");
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
+    }
   }
 }
 

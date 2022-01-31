@@ -1,11 +1,8 @@
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.view.View;
 
-public class ayfd
+public abstract interface ayfd
 {
-  public volatile long a;
-  public volatile String a;
-  
-  public ayfd(UniteSearchActivity paramUniteSearchActivity) {}
+  public abstract void a(View paramView, int paramInt, ayfc paramayfc);
 }
 
 

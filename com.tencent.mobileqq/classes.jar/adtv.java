@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class adtv
-  implements baji
+public class adtv
+  extends MqqHandler
 {
-  adtv(adtu paramadtu) {}
+  public adtv(RegisterActivity paramRegisterActivity) {}
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public void handleMessage(Message paramMessage)
   {
-    adto.a(this.a.jdField_a_of_type_Adtr.a).b();
-    adtr.a(this.a.jdField_a_of_type_Adtr, this.a.jdField_a_of_type_Int);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterActivity.b(this.a, paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
   }
 }
 

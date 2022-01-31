@@ -1,69 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.Layout.Alignment;
+import android.text.Spanned;
+import android.text.StaticLayout;
+import android.text.TextUtils;
 
-public class blyo
-  implements bmaj
+class blyo
+  extends bmsw
 {
-  private static blyo jdField_a_of_type_Blyo = new blyo();
-  private static final String jdField_a_of_type_JavaLangString = blyo.class.getSimpleName();
-  private HashMap<String, bmag> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, AtomicInteger> b = new HashMap();
-  
-  public static blyo a()
+  blyo(blym paramblym, int paramInt)
   {
-    return jdField_a_of_type_Blyo;
+    super(paramInt);
   }
   
-  @NonNull
-  public <T extends bmag> T a(@NonNull Class<T> paramClass)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (blyn.class.isAssignableFrom(paramClass))
+    String str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    String str2 = bcnt.b(str1);
+    Object localObject = this.jdField_a_of_type_Blym.a(str2);
+    localObject = this.jdField_a_of_type_Blym.a((String)localObject);
+    localObject = this.jdField_a_of_type_Blym.a((String[])localObject);
+    if (blyu.a((CharSequence)localObject, 0, ((CharSequence)localObject).length(), this.jdField_a_of_type_Blym.a, this.jdField_a_of_type_Blym.b, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
     {
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass.getName())) {}
-      try
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.getName(), paramClass.newInstance());
-        this.b.put(paramClass.getName(), new AtomicInteger(0));
-        AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramClass.getName());
-        if (localAtomicInteger != null)
-        {
-          localAtomicInteger.incrementAndGet();
-          QLog.d(jdField_a_of_type_JavaLangString, 1, paramClass.getName() + " has created and ref = " + localAtomicInteger.get());
-        }
-        return (bmag)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass.getName());
+      if (!TextUtils.equals("", paramCharSequence)) {
+        a();
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        for (;;)
-        {
-          localInstantiationException.printStackTrace();
-        }
-      }
+      return "";
     }
-    throw new RuntimeException("Cannot create non global view model " + paramClass.getName() + " by GlobalViewModelFactory");
-  }
-  
-  public void a(bmag parambmag)
-  {
-    if ((parambmag instanceof blyn))
-    {
-      AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(parambmag.getClass().getName());
-      if ((localAtomicInteger != null) && (localAtomicInteger.decrementAndGet() == 0))
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(parambmag.getClass().getName());
-        this.b.remove(parambmag.getClass().getName());
-        QLog.d(jdField_a_of_type_JavaLangString, 1, parambmag.getClass().getName() + " has removed");
-      }
-    }
+    this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.common.NoticeParam;
+import java.util.Comparator;
 
-public final class bflt
-  implements Parcelable.Creator<NoticeParam>
+class bflt
+  implements Comparator<String>
 {
-  public NoticeParam a(Parcel paramParcel)
+  public int a(String paramString1, String paramString2)
   {
-    return new NoticeParam(paramParcel);
-  }
-  
-  public NoticeParam[] a(int paramInt)
-  {
-    return new NoticeParam[paramInt];
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bflt
  * JD-Core Version:    0.7.0.1
  */

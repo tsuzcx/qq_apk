@@ -21,7 +21,7 @@ public class ovf
     paramString1 = localObject;
     if (paramString2 != null)
     {
-      paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+      paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
       paramString1 = new ProteusItemView(paramVafContext.getContext());
       paramString1.a(paramString2);
     }
@@ -36,7 +36,7 @@ public class ovf
     paramString = localObject;
     if (paramJSONObject != null)
     {
-      paramJSONObject.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+      paramJSONObject.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
       paramString = new ProteusItemView(paramVafContext.getContext());
       paramString.a(paramJSONObject);
     }
@@ -128,13 +128,13 @@ public class ovf
       paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
       if (paramString2 != null)
       {
-        paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841380));
+        paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
         paramProteusItemView.d();
         paramProteusItemView.a(paramString2);
       }
     }
     paramProteusItemView = paramProteusItemView.a();
-    paramProteusItemView.setTag(2131375288, paramString1);
+    paramProteusItemView.setTag(2131375339, paramString1);
     if (paramString1 != null) {
       opy.a(paramProteusItemView, localTemplateBean, paramString1);
     }

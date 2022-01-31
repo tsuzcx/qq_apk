@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import aris;
-import ariu;
+import arnb;
+import arnd;
 
 class VideoFilePresenter$10$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class VideoFilePresenter$10$1$1
   
   public void run()
   {
-    aris.a(this.a.a.a);
+    arnb.a(this.a.a.a);
   }
 }
 

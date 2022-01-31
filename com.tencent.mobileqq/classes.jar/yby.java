@@ -1,14 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
 
-class yby
-  implements View.OnClickListener
+public class yby
 {
-  yby(ybx paramybx) {}
+  private long jdField_a_of_type_Long;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private yca jdField_a_of_type_Yca;
   
-  public void onClick(View paramView)
+  public COMM.StCommonExt a()
   {
-    ybx.a(this.a);
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
+    VSNetworkHelper.a().a(paramString, new ybz(this));
+  }
+  
+  public void a(yca paramyca)
+  {
+    this.jdField_a_of_type_Yca = paramyca;
   }
 }
 

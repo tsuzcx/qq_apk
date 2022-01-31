@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import amtc;
+import amxr;
 
 public final class FaceScanDownloadManager$1
   implements Runnable
 {
-  public FaceScanDownloadManager$1(amtc paramamtc, int paramInt1, int paramInt2) {}
+  public FaceScanDownloadManager$1(amxr paramamxr, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amtc != null) {
-      this.jdField_a_of_type_Amtc.a(this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_Amxr != null) {
+      this.jdField_a_of_type_Amxr.a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

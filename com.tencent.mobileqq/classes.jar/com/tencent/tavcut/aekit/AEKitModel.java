@@ -11,6 +11,7 @@ public class AEKitModel
   private String lutPath;
   private long mDuration = 2147483647L;
   private long mStartTime = 0L;
+  private String overlayImgPath;
   private int smoothLevel = 0;
   
   public HashMap<String, String> getAdjustParams()
@@ -36,6 +37,11 @@ public class AEKitModel
   public String getLutPath()
   {
     return this.lutPath;
+  }
+  
+  public String getOverlayImgPath()
+  {
+    return this.overlayImgPath;
   }
   
   public int getSmoothLevel()
@@ -81,6 +87,11 @@ public class AEKitModel
   public void setLutPath(String paramString)
   {
     this.lutPath = paramString;
+  }
+  
+  public void setOverlayImagePath(String paramString)
+  {
+    this.overlayImgPath = paramString;
   }
   
   public void setSmoothLevel(int paramInt)

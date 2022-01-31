@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.text.TextUtils;
-import bdiv;
-import bjxj;
+import bdne;
+import bkbq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import nrt;
@@ -29,7 +29,7 @@ class ReadInJoyListViewGroup$31
     }
     label357:
     label376:
-    for (boolean bool = bdiv.v(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
+    for (boolean bool = bdne.v(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
     {
       if ((this.this$0.getContext() instanceof BaseActivity)) {}
       for (Object localObject1 = ((qja)((BaseActivity)this.this$0.getContext()).app.getManager(261)).a();; localObject1 = "0")
@@ -66,7 +66,7 @@ class ReadInJoyListViewGroup$31
         {
           if (this.this$0.a == 40677)
           {
-            nrt.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bjxj.a("default_feeds_proteus_offline_bid"), "", "", ors.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
+            nrt.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", ors.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
             nrt.a("0X8009294", "", "", "", "", ors.b(this.this$0.a));
           }
           if (this.this$0.a == 56) {

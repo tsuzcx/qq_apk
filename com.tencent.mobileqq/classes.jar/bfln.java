@@ -1,287 +1,96 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import java.util.concurrent.ConcurrentHashMap;
+import android.util.Base64;
+import com.tencent.open.base.img.ImageCache;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 public class bfln
 {
-  protected static bfln a;
-  protected bflp a;
-  protected QQNotificationManager a;
-  protected final ConcurrentHashMap<String, bflo> a;
-  
-  protected bfln()
+  public static Bitmap a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
-  }
-  
-  private int a(String paramString)
-  {
-    bfhg.b("AppNotificationManager", ">genNextNotificationId key:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return 378;
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    int i = Math.abs(paramString.hashCode()) % 99;
-    bfhg.b("AppNotificationManager", ">genNextNotificationId mod:" + i);
-    i += 378;
-    bfhg.b("AppNotificationManager", ">genNextNotificationId id:" + i);
-    return i;
-  }
-  
-  public static bfln a()
-  {
-    if (jdField_a_of_type_Bfln == null) {
-      jdField_a_of_type_Bfln = new bfln();
-    }
-    return jdField_a_of_type_Bfln;
-  }
-  
-  public int a(String paramString1, int paramInt, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)))
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (paramDrawable.getOpacity() != -1) {}
+    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
     {
-      bfhg.e("AppNotificationManager", ">getNotificationId param error, return invalid id.");
-      return -1;
-    }
-    bfhg.b("AppNotificationManager", ">getNotificationId " + paramString1 + ", " + paramString2);
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      str = paramString2;
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
-    {
-      paramString1 = new bflo(this);
-      paramString1.jdField_a_of_type_JavaLangString = str;
-      paramString1.jdField_a_of_type_Int = a(str);
-      paramString1.jdField_b_of_type_Int = paramInt;
-      paramString1.jdField_b_of_type_JavaLangString = paramString2;
-      paramString1.jdField_a_of_type_Long = (System.currentTimeMillis() + paramString1.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString1);
-    }
-    return ((bflo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).jdField_a_of_type_Int;
-  }
-  
-  public long a(String paramString1, int paramInt, String paramString2)
-  {
-    bfhg.b("AppNotificationManager", ">getNotificationWhen " + paramString1 + ", " + paramString2);
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
-    {
-      bflo localbflo = new bflo(this);
-      localbflo.jdField_a_of_type_JavaLangString = paramString1;
-      localbflo.jdField_a_of_type_Int = a(paramString1);
-      localbflo.jdField_b_of_type_Int = paramInt;
-      localbflo.jdField_b_of_type_JavaLangString = paramString2;
-      localbflo.jdField_a_of_type_Long = (System.currentTimeMillis() + localbflo.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localbflo);
-    }
-    return ((bflo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1)).jdField_a_of_type_Long;
-  }
-  
-  public Notification a(NoticeParam paramNoticeParam)
-  {
-    if ((bexd.a().a() == null) || (paramNoticeParam == null))
-    {
-      bfhg.e("AppNotificationManager", "getNotification context == null");
-      return null;
-    }
-    Notification localNotification = new Notification();
-    localNotification.tickerText = paramNoticeParam.jdField_b_of_type_JavaLangString;
-    localNotification.when = paramNoticeParam.jdField_a_of_type_Long;
-    RemoteViews localRemoteViews = new RemoteViews(bexd.a().a().getPackageName(), 2131559518);
-    Object localObject = bflr.a(1, paramNoticeParam);
-    a(localRemoteViews);
-    localRemoteViews.setInt(2131371267, "setBackgroundColor", -1);
-    localRemoteViews.setInt(2131371269, "setTextColor", -16777216);
-    localRemoteViews.setInt(2131371263, "setTextColor", -12303292);
-    localRemoteViews.setInt(2131371259, "setTextColor", -12303292);
-    localRemoteViews.setTextViewText(2131371269, bfhm.a(paramNoticeParam.jdField_b_of_type_JavaLangString, 18, true, true));
-    if (paramNoticeParam.jdField_b_of_type_Int == 1)
-    {
-      localNotification.icon = 2130843908;
-      localRemoteViews.setImageViewResource(2131371260, 2130843904);
-      localRemoteViews.setViewVisibility(2131371259, 8);
-      localRemoteViews.setViewVisibility(2131371255, 0);
-      if (Build.VERSION.SDK_INT > 10) {
-        localRemoteViews.setOnClickPendingIntent(2131371267, (PendingIntent)localObject);
-      }
-    }
-    for (;;)
-    {
-      localNotification.contentView = localRemoteViews;
-      QQNotificationManager.addChannelIfNeed(localNotification, "CHANNEL_ID_HIDE_BADGE");
-      return localNotification;
-      localNotification.contentIntent = ((PendingIntent)localObject);
-      continue;
-      if ((paramNoticeParam.jdField_b_of_type_Int == 0) || (paramNoticeParam.jdField_b_of_type_Int == 2) || (paramNoticeParam.jdField_b_of_type_Int == 3))
-      {
-        localNotification.icon = 2130843908;
-        if (paramNoticeParam.jdField_b_of_type_Int == 0)
-        {
-          localRemoteViews.setTextViewText(2131371259, bexd.a().a().getString(2131694871));
-          localNotification.flags |= 0x10;
-          localNotification.defaults |= 0x1;
-          localNotification.defaults |= 0x4;
-          localRemoteViews.setImageViewResource(2131371260, 2130843904);
-        }
-        if (paramNoticeParam.jdField_b_of_type_Int == 2)
-        {
-          localRemoteViews.setTextViewText(2131371259, bexd.a().a().getString(2131694874));
-          localObject = bfij.a(paramNoticeParam.d);
-          if (localObject != null) {
-            localRemoteViews.setImageViewBitmap(2131371260, (Bitmap)localObject);
-          }
-          localNotification.flags |= 0x10;
-          localNotification.defaults |= 0x1;
-          localNotification.defaults |= 0x4;
-          localObject = bflr.a(6, paramNoticeParam);
-        }
-        if (paramNoticeParam.jdField_b_of_type_Int == 3)
-        {
-          localRemoteViews.setTextViewText(2131371259, bexd.a().a().getString(2131694871));
-          localObject = bflr.a(4, paramNoticeParam);
-          Bitmap localBitmap = bfhe.a(paramNoticeParam.jdField_a_of_type_JavaLangString);
-          if (localBitmap == null) {
-            break label476;
-          }
-          localRemoteViews.setImageViewBitmap(2131371260, localBitmap);
-        }
-        for (;;)
-        {
-          if (paramNoticeParam.jdField_b_of_type_Int == 0)
-          {
-            if (Build.VERSION.SDK_INT > 10)
-            {
-              localRemoteViews.setOnClickPendingIntent(2131371267, (PendingIntent)localObject);
-              break;
-              label476:
-              bfhg.b("AppNotificationManager", ">>download icon fail,so we use default notification icon");
-              localRemoteViews.setImageViewResource(2131371260, 2130843904);
-              continue;
-            }
-            localNotification.contentIntent = ((PendingIntent)localObject);
-            break;
-          }
-        }
-        localNotification.contentIntent = ((PendingIntent)localObject);
-      }
-      else if (paramNoticeParam.jdField_b_of_type_Int == 4)
-      {
-        localNotification.icon = 2130843908;
-        localRemoteViews.setImageViewResource(2131371260, 2130843904);
-        localRemoteViews.setTextViewText(2131371259, bexd.a().a().getString(2131694870));
-        localRemoteViews.setViewVisibility(2131371259, 0);
-        localRemoteViews.setViewVisibility(2131371255, 8);
-        paramNoticeParam = bflr.a(5, paramNoticeParam);
-        localNotification.flags |= 0x10;
-        localNotification.contentIntent = paramNoticeParam;
-      }
-      else
-      {
-        localNotification.icon = 2130841517;
-        localRemoteViews.setImageViewResource(2131371260, 2130841518);
-        localRemoteViews.setTextViewText(2131371259, paramNoticeParam.c);
-        localNotification.contentIntent = ((PendingIntent)localObject);
-      }
+      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      paramDrawable.draw(localCanvas);
+      return localObject;
     }
   }
   
-  public ConcurrentHashMap<String, bflo> a()
+  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  }
-  
-  public void a(int paramInt, Notification paramNotification)
-  {
-    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {}
-    try
-    {
-      bhnv.a(bexd.a().a(), 0, paramNotification);
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("AppNotificationManagernotify2", paramInt, paramNotification);
-      return;
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    catch (Exception paramNotification)
+    if (paramDrawable.getOpacity() != -1) {}
+    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
     {
-      bfhg.c("AppNotificationManager", "notify>>>", paramNotification);
+      localObject = Bitmap.createBitmap(paramInt1, paramInt2, (Bitmap.Config)localObject);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
+      paramDrawable.draw(localCanvas);
+      return localObject;
     }
   }
   
-  public void a(RemoteViews paramRemoteViews)
+  public static Bitmap a(String paramString)
   {
-    if ((this.jdField_a_of_type_Bflp == null) || (this.jdField_a_of_type_Bflp.a() == null)) {
-      this.jdField_a_of_type_Bflp = new bflp(this, bexd.a().a());
+    String str1 = a(paramString, 100);
+    String str2 = ImageCache.a("app", str1);
+    bflp.b("ImageUtil", "100_url:" + str1 + " icon_path=" + str2);
+    if (new File(str2).exists()) {
+      return bfll.a(str2, 72, 72, false);
     }
-    bfhg.b("notificationtest", "title color:" + this.jdField_a_of_type_Bflp.b());
-    if (this.jdField_a_of_type_Bflp.b() != null) {
-      paramRemoteViews.setTextColor(2131371269, this.jdField_a_of_type_Bflp.b().intValue());
+    paramString = a(paramString, 75);
+    str1 = ImageCache.a("app", paramString);
+    bflp.b("ImageUtil", "75_url:" + paramString + " icon_path=" + str1);
+    if (new File(str1).exists()) {
+      return bfll.a(str1, 72, 72, false);
     }
-    bfhg.b("notificationtest", "text color:" + this.jdField_a_of_type_Bflp.a());
-    if (this.jdField_a_of_type_Bflp.a() != null) {
-      paramRemoteViews.setTextColor(2131371259, this.jdField_a_of_type_Bflp.a().intValue());
-    }
-    if (this.jdField_a_of_type_Bflp.a() != null) {
-      paramRemoteViews.setTextColor(2131371263, this.jdField_a_of_type_Bflp.a().intValue());
-    }
-    bfhg.b("notificationtest", "text size:" + this.jdField_a_of_type_Bflp.a());
-    if (this.jdField_a_of_type_Bflp.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131371259, "setTextSize", this.jdField_a_of_type_Bflp.a());
-    }
-    if (this.jdField_a_of_type_Bflp.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131371263, "setTextSize", this.jdField_a_of_type_Bflp.a());
-    }
-    if (this.jdField_a_of_type_Bflp.b() > 0.0F) {
-      paramRemoteViews.setFloat(2131371269, "setTextSize", this.jdField_a_of_type_Bflp.b());
-    }
-    ApplicationInfo localApplicationInfo = bexd.a().a().getApplicationInfo();
-    if ((localApplicationInfo != null) && (localApplicationInfo.targetSdkVersion < 10) && (Build.VERSION.SDK_INT > 10)) {}
-    try
-    {
-      int i = this.jdField_a_of_type_Bflp.b().intValue();
-      paramRemoteViews.setInt(2131371267, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
-      return;
-    }
-    catch (Exception paramRemoteViews) {}
+    return null;
   }
   
-  public void a(NoticeParam paramNoticeParam)
+  @TargetApi(8)
+  public static String a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
-    {
-      Notification localNotification = a(paramNoticeParam);
-      if (localNotification != null)
-      {
-        bhnv.a(bexd.a().a(), 0, localNotification);
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("AppNotificationManagernotify1", a(paramNoticeParam.f, paramNoticeParam.jdField_b_of_type_Int, paramNoticeParam.jdField_a_of_type_JavaLangString), localNotification);
-      }
+    if (Build.VERSION.SDK_INT <= 7) {
+      return "";
     }
+    paramDrawable = a(paramDrawable);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramDrawable.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    return Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 0);
   }
   
-  public void a(String paramString)
+  public static String a(String paramString, int paramInt)
   {
-    bfhg.a("AppNotificationManager", "cancelBySendTime:" + paramString);
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null))
-    {
-      bflo localbflo = (bflo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localbflo != null) {
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("AppNotificationManager_cancelBySendTime", localbflo.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if (paramString == null) {
+      return "";
     }
+    String str = "00000000" + paramString;
+    str = str.substring(str.length() - 8);
+    paramString = String.format("http://i.gtimg.cn/open/app_icon/%s/%s/%s/%s/%s_%d_m.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString, Integer.valueOf(paramInt) });
+    bflp.b("opensdk", ">>iconUrl=" + paramString);
+    return paramString;
   }
   
-  public void b(String paramString)
+  public static Bitmap b(Drawable paramDrawable)
   {
-    bfhg.a("AppNotificationManager", "cancelBySendTime:" + paramString);
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("AppNotificationManager_cancelNotRemoveId", ((bflo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).jdField_a_of_type_Int);
-    }
+    return a(paramDrawable);
   }
 }
 

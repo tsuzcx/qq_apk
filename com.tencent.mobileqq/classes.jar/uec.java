@@ -1,19 +1,8 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-class uec
-  extends SimpleJob<Void>
+public abstract interface uec
 {
-  uec(ueb paramueb) {}
+  public abstract void a();
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    ueb.a(this.a);
-    ueb.a(this.a, false);
-    return null;
-  }
+  public abstract void b();
 }
 
 

@@ -1,28 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2.2.1;
 
 public class ajmy
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  public ajmy(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ajmy(CareNotificationBar.2 param2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    ajlj.a("", "0X8007C05", this.a.c + "", "", "", "");
+    this.a.a.post(new CareNotificationBar.2.2.1(this));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,51 +1,10 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
-
-public class aevr
-  implements aevi
+class aevr
 {
-  public aevr(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public aevr(aevp paramaevp, String paramString)
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = aevh.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
-  }
-  
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
-  {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = aevh.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,23 +1,13 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
 
-final class arnt
-  extends ClickableSpan
+class arnt
+  implements arsg
 {
-  arnt(arnx paramarnx) {}
+  arnt(arnq paramarnq) {}
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
   }
 }
 

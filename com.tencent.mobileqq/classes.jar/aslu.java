@@ -1,22 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class aslu
-  implements asmc
 {
-  public aslu(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
-    }
-    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
+    return "TaskInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", packageName=" + this.jdField_b_of_type_JavaLangString + ", appName=" + this.e + ", taskStatus=" + this.d + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.l + '\'' + ", createTime=" + this.c + ", apkChannel=" + this.g + '}';
   }
 }
 

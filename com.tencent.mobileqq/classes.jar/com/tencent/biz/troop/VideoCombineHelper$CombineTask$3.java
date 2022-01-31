@@ -1,12 +1,12 @@
 package com.tencent.biz.troop;
 
 import java.util.ArrayList;
-import ynx;
+import ysm;
 
 public class VideoCombineHelper$CombineTask$3
   extends ArrayList<Object>
 {
-  public VideoCombineHelper$CombineTask$3(ynx paramynx, String paramString1, String paramString2)
+  public VideoCombineHelper$CombineTask$3(ysm paramysm, String paramString1, String paramString2)
   {
     add(this.val$inputPath);
     add(this.val$tsFilePath);

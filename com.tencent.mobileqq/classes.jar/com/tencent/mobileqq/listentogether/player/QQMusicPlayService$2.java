@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.listentogether.player;
 
 import android.content.IntentFilter;
-import atkk;
-import bdee;
+import atot;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,8 +25,8 @@ class QQMusicPlayService$2
     try
     {
       BaseApplicationImpl.getContext().registerReceiver(QQMusicPlayService.a(this.this$0), localIntentFilter);
-      QQMusicPlayService.a(bdee.g(this.this$0.getApplicationContext()));
-      QQMusicPlayService.a(this.this$0, new atkk(this.this$0));
+      QQMusicPlayService.a(bdin.g(this.this$0.getApplicationContext()));
+      QQMusicPlayService.a(this.this$0, new atot(this.this$0));
       AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), QQMusicPlayService.a(this.this$0));
     }
     catch (Exception localException)

@@ -9,7 +9,7 @@ public class qrc
   
   public void a()
   {
-    Toast.makeText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a, 2131719047, 1).show();
+    Toast.makeText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a, 2131719059, 1).show();
   }
   
   public void a(@NotNull String paramString)

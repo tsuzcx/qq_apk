@@ -23,7 +23,6 @@ import mqq.util.WeakReference;
 
 public class tqt
 {
-  private static final String jdField_a_of_type_JavaLangString = tqt.class.getSimpleName();
   private static volatile tqt jdField_a_of_type_Tqt;
   private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
@@ -51,7 +50,7 @@ public class tqt
   
   public void a()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "release");
+    QLog.d("QCirclePopupWindowHelper", 1, "release");
     if (this.jdField_a_of_type_AndroidOsCountDownTimer != null)
     {
       this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
@@ -86,46 +85,46 @@ public class tqt
     {
       a();
       TextView localTextView = new TextView(paramContext);
-      localTextView.setTextColor(paramContext.getResources().getColor(2131167192));
-      localTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130843681));
-      localTextView.setPadding(xee.b(paramContext, 12.0F), xee.b(paramContext, 8.0F), xee.b(paramContext, 12.0F), xee.b(paramContext, 8.0F));
+      localTextView.setTextColor(paramContext.getResources().getColor(2131167194));
+      localTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130843751));
+      localTextView.setPadding(xin.b(paramContext, 12.0F), xin.b(paramContext, 8.0F), xin.b(paramContext, 12.0F), xin.b(paramContext, 8.0F));
       localTextView.setText(paramString);
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localTextView, -2, -2);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(localTextView, 17, 0, 0);
-      this.jdField_a_of_type_AndroidOsCountDownTimer = new tqu(this, 3000L, 3000L);
+      this.jdField_a_of_type_AndroidOsCountDownTimer = new tqu(this, 3000L, 3000L, paramContext);
       this.jdField_a_of_type_AndroidOsCountDownTimer.start();
       return;
     }
     catch (Exception paramContext)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "showRecommendAnimation error" + paramContext.getMessage());
+      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
       paramContext.printStackTrace();
     }
   }
   
-  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, tqy paramtqy, bhrf parambhrf)
+  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, tqy paramtqy, bhvm parambhvm)
   {
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramtqy);
-    paramtqy = new bdkz();
+    paramtqy = new bdpi();
     if (tra.a(paramStFeed.poster.id.get()))
     {
       if (paramStComment.typeFlag.get() != 0) {
         break label221;
       }
-      paramtqy.a(2131373169, BaseApplicationImpl.getContext().getString(2131698338));
+      paramtqy.a(2131373204, BaseApplicationImpl.getContext().getString(2131698347));
     }
     for (;;)
     {
-      paramtqy.a(2131373166, BaseApplicationImpl.getContext().getString(2131698335));
+      paramtqy.a(2131373201, BaseApplicationImpl.getContext().getString(2131698344));
       if ((tra.a(paramStFeed.poster.id.get())) || (tra.a((FeedCloudMeta.StUser)paramStComment.postUser.get()))) {
-        paramtqy.a(2131373167, BaseApplicationImpl.getContext().getString(2131698336));
+        paramtqy.a(2131373202, BaseApplicationImpl.getContext().getString(2131698345));
       }
       paramStFeed = new tqw(this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdbk.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhrf);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdft.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhvm);
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
@@ -133,23 +132,23 @@ public class tqt
       return;
       label221:
       if (paramStComment.typeFlag.get() == 1) {
-        paramtqy.a(2131373165, BaseApplicationImpl.getContext().getString(2131698334));
+        paramtqy.a(2131373200, BaseApplicationImpl.getContext().getString(2131698343));
       }
     }
   }
   
-  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StReply paramStReply, tqy paramtqy, bhrf parambhrf)
+  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StReply paramStReply, tqy paramtqy, bhvm parambhvm)
   {
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramtqy);
-    paramtqy = new bdkz();
-    paramtqy.a(2131373166, BaseApplicationImpl.getContext().getString(2131698335));
+    paramtqy = new bdpi();
+    paramtqy.a(2131373201, BaseApplicationImpl.getContext().getString(2131698344));
     if ((tra.a(paramStFeed.poster.id.get())) || (tra.a((FeedCloudMeta.StUser)paramStReply.postUser.get()))) {
-      paramtqy.a(2131373167, BaseApplicationImpl.getContext().getString(2131698336));
+      paramtqy.a(2131373202, BaseApplicationImpl.getContext().getString(2131698345));
     }
     paramStFeed = new tqx(this);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdbk.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhrf);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdft.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhvm);
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
@@ -184,18 +183,18 @@ public class tqt
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
       paramContext = new int[2];
       paramView.getLocationOnScreen(paramContext);
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "popupWidth" + i + " popupHeight" + j);
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "location x:" + paramContext[0] + "    loacation y:" + paramContext[1]);
+      QLog.i("QCirclePopupWindowHelper", 1, "popupWidth" + i + " popupHeight" + j);
+      QLog.i("QCirclePopupWindowHelper", 1, "location x:" + paramContext[0] + "    loacation y:" + paramContext[1]);
       int k = paramView.getWidth() / 2;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 8388661, xee.b(paramView.getContext(), 10.0F), paramContext[1] - j);
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "x:" + (paramContext[0] + paramView.getWidth() / 2 - i / 2) + "    y:" + (paramContext[1] - j));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 8388661, xin.b(paramView.getContext(), 10.0F), paramContext[1] - j);
+      QLog.i("QCirclePopupWindowHelper", 1, "x:" + (paramContext[0] + paramView.getWidth() / 2 - i / 2) + "    y:" + (paramContext[1] - j));
       this.jdField_a_of_type_AndroidOsCountDownTimer = new tqv(this, 3000L, 3000L);
       this.jdField_a_of_type_AndroidOsCountDownTimer.start();
       return true;
     }
     catch (Exception paramContext)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "showRecommendAnimation error" + paramContext.getMessage());
+      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
       paramContext.printStackTrace();
     }
     return false;

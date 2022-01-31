@@ -1,38 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.Context;
+import android.view.View;
 
-public class ymj
-  implements BusinessObserver
+final class ymj
+  implements bhuk
 {
-  public ymj(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  ymj(Context paramContext, String paramString, ymm paramymm, bhuf parambhuf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
+    if (ymg.a()) {
       return;
     }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
+    ymg.a(true);
+    switch (paramInt)
     {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
+    for (;;)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      ymg.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ymm);
     }
   }
 }

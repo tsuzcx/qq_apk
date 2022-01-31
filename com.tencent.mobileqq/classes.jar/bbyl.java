@@ -1,43 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import android.text.TextUtils;
 
 public class bbyl
-  implements bhqd
 {
-  public bbyl(SearchReciteArticleFragment paramSearchReciteArticleFragment, bhpy parambhpy, bbyp parambbyp, int paramInt) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void OnClick(View paramView, int paramInt)
+  public bbyl()
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    int i = paramInt;
-    if (this.jdField_a_of_type_Bbyp.jdField_a_of_type_Int == 2) {
-      i = paramInt + 1;
+    this.jdField_a_of_type_JavaLangString = "default";
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
+    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
+      return false;
     }
-    switch (i)
-    {
-    default: 
-      return;
-    case 0: 
-      SelectReciteParagraphFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbyp.c, SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment));
-      bdaj.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bbyp.jdField_a_of_type_Int) });
-      return;
-    }
-    bdaj.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "1", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bbyp.jdField_a_of_type_Int) });
-    bdaj.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bbyp.jdField_a_of_type_Int) });
-    try
-    {
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment, bbzr.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbyp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbyp.c, null));
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 

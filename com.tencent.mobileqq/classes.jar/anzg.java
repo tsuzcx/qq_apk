@@ -1,18 +1,16 @@
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anzg
-  implements anza
+public class anzg
+  implements View.OnClickListener
 {
-  anzg(anzc paramanzc) {}
+  public anzg(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    anzc.a(this.a, anzc.a(this.a).inflate());
-    anzc.a(this.a).setOnClickListener(new anzh(this));
-    ((TextView)anzc.a(this.a).findViewById(2131365254)).setOnClickListener(new anzi(this));
-    azmj.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
+    paramView = (anzj)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 

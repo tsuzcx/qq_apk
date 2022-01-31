@@ -24,7 +24,7 @@ public class oub
         String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)paramString.get(str1);
         if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
-          bjxj.j(Integer.parseInt(str2));
+          bkbq.j(Integer.parseInt(str2));
         }
       }
       return true;
@@ -38,7 +38,7 @@ public class oub
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.j(2);
+    bkbq.j(2);
   }
 }
 

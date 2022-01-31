@@ -48,7 +48,7 @@ public class tnh
   
   protected int b()
   {
-    return 2131559877;
+    return 2131559876;
   }
   
   protected void b() {}
@@ -62,7 +62,7 @@ public class tnh
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379517));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379575));
   }
 }
 

@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class whf
-  implements DialogInterface.OnDismissListener
+public abstract interface whf
 {
-  whf(whe paramwhe) {}
+  public abstract View a();
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

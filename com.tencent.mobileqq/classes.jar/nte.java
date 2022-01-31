@@ -60,12 +60,12 @@ public class nte
       {
         int i;
         if (!WXShareHelper.a().a()) {
-          i = 2131721478;
+          i = 2131721491;
         }
         for (;;)
         {
           if (i != -1) {
-            xxb.a(0, i);
+            ybk.a(0, i);
           }
           for (;;)
           {
@@ -76,7 +76,7 @@ public class nte
             if (WXShareHelper.a().b()) {
               break label274;
             }
-            i = 2131721479;
+            i = 2131721492;
             break;
             paramString2 = String.valueOf(System.currentTimeMillis());
             paramsyx = new ntf(paramString2, paramsyx);
@@ -87,7 +87,7 @@ public class nte
             WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
           }
           label178:
-          if (bjxj.t(ors.a()) == 1)
+          if (bkbq.t(ors.a()) == 1)
           {
             paramString4 = WXShareHelper.a();
             paramBitmap = a(paramBitmap);

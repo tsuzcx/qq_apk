@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.monitor.common;
 import android.annotation.TargetApi;
 import android.os.Handler;
 import android.view.Choreographer;
-import bgwx;
+import bhbe;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(bgwx parambgwx) {}
+  public FPSCalculator$2(bhbe parambhbe) {}
   
   @TargetApi(16)
   public void run()
@@ -18,11 +18,11 @@ public class FPSCalculator$2
     {
       try
       {
-        if (bgwx.a(this.this$0) == null) {
+        if (bhbe.a(this.this$0) == null) {
           continue;
         }
-        bgwx.a(this.this$0).removeFrameCallback(bgwx.a(this.this$0));
-        bgwx.a(this.this$0).postFrameCallback(bgwx.a(this.this$0));
+        bhbe.a(this.this$0).removeFrameCallback(bhbe.a(this.this$0));
+        bhbe.a(this.this$0).postFrameCallback(bhbe.a(this.this$0));
       }
       catch (Exception localException)
       {
@@ -32,9 +32,9 @@ public class FPSCalculator$2
         QMLog.d("FPSCalculator", "Choreographer.getInstance", localException);
         continue;
       }
-      bgwx.a(this.this$0).removeCallbacks(bgwx.a(this.this$0));
+      bhbe.a(this.this$0).removeCallbacks(bhbe.a(this.this$0));
       return;
-      bgwx.a(this.this$0, Choreographer.getInstance());
+      bhbe.a(this.this$0, Choreographer.getInstance());
     }
   }
 }

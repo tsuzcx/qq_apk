@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adix
-  extends awdn
+public class adix
+  implements View.OnClickListener
 {
-  adix(adiw paramadiw) {}
-  
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      ((alud)this.a.a.a.app.getManager(102)).a(null);
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
+    MainFragment.b(true);
+    paramView = (ViewGroup)paramView.getParent();
+    if (!MainFragment.a()) {
+      paramView.callOnClick();
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bgid;
+import bgmk;
 import org.json.JSONObject;
 
 class NativeViewContainer$8
   implements Runnable
 {
-  NativeViewContainer$8(NativeViewContainer paramNativeViewContainer, int paramInt, bgid parambgid, JSONObject paramJSONObject) {}
+  NativeViewContainer$8(NativeViewContainer paramNativeViewContainer, int paramInt, bgmk parambgmk, JSONObject paramJSONObject) {}
   
   public void run()
   {
     this.this$0.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bgid.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Bgmk.a(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

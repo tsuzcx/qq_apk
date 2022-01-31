@@ -1,23 +1,61 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import mqq.observer.BusinessObserver;
 
-class aury
-  implements bcwt
+public class aury
+  implements BusinessObserver
 {
-  aury(auru paramauru) {}
+  public aury(MusicPlayerActivity paramMusicPlayerActivity, Intent paramIntent) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    synchronized (this.a.a)
+    if (paramBoolean) {}
+    try
     {
-      if (this.a.a.contains(paramString))
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
+      {
+        paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+        {
+          GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
+          localObject = zfy.a(paramBundle.iconsURL, 16);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
+          Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+          paramBundle = (Bundle)localObject;
+          if (localObject == null) {
+            paramBundle = "";
+          }
+          localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
+        }
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+          QLog.d("MusicPlayerActivity", 2, paramBundle.getMessage());
         }
-        this.a.a.remove(paramString);
-        auru.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
+      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
+    }
+    paramBundle = azvd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    if (paramBundle == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicPlayerActivity", 2, "build struct msg fail");
       }
       return;
     }

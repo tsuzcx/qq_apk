@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agoj;
-import awbw;
-import awbx;
+import agsy;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.NearbyPeopleCard;
 public class NearbyChatPie$2
   implements Runnable
 {
-  public NearbyChatPie$2(agoj paramagoj) {}
+  public NearbyChatPie$2(agsy paramagsy) {}
   
   public void run()
   {

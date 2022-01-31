@@ -7,9 +7,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import ygq;
-import ygt;
-import ygu;
+import yld;
+import ylg;
+import ylh;
 
 public class AnimationDrawableFactory$4
   implements Runnable
@@ -21,13 +21,13 @@ public class AnimationDrawableFactory$4
     if (this.jdField_a_of_type_Boolean)
     {
       localObject1 = localObject2;
-      if (ygq.b(this.this$0) != null)
+      if (yld.b(this.this$0) != null)
       {
         localObject1 = localObject2;
-        if (ygq.b(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
+        if (yld.b(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
         {
           QLog.i("AnimationDrawableFactory", 2, "animationDrawable use cache" + this.jdField_a_of_type_JavaLangString);
-          localObject1 = (QQAnimationDrawable)ygq.b(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+          localObject1 = (QQAnimationDrawable)yld.b(this.this$0).get(this.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -49,7 +49,7 @@ public class AnimationDrawableFactory$4
             localObject2 = localObject1;
             if (localObject3.length > 0)
             {
-              Arrays.sort((Object[])localObject3, new ygt(this));
+              Arrays.sort((Object[])localObject3, new ylg(this));
               int i = this.jdField_a_of_type_Int / localObject3.length;
               QLog.i("AnimationDrawableFactory", 2, "createFromDirectory perDuration=" + i);
               localObject1 = new ArrayList();
@@ -62,22 +62,22 @@ public class AnimationDrawableFactory$4
               }
               localObject2 = new QQAnimationDrawable();
               ((QQAnimationDrawable)localObject2).a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]));
-              ygq.b(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject2);
+              yld.b(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject2);
             }
           }
         }
       }
     }
-    if (this.jdField_a_of_type_Ygu != null)
+    if (this.jdField_a_of_type_Ylh != null)
     {
       if (localObject2 != null) {
-        this.jdField_a_of_type_Ygu.a((QQAnimationDrawable)localObject2);
+        this.jdField_a_of_type_Ylh.a((QQAnimationDrawable)localObject2);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Ygu.a();
+    this.jdField_a_of_type_Ylh.a();
   }
 }
 

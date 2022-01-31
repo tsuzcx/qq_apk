@@ -1,99 +1,127 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class abum
 {
-  WeakReference<CustomWebView> a;
-  WeakReference<AppInterface> b;
-  WeakReference<Activity> c;
-  WeakReference<bebx> d = null;
-  WeakReference<WebViewFragment> e = null;
+  private static abum jdField_a_of_type_Abum;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public String a;
+  private ArrayList<abut> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public abum(Activity paramActivity)
+  private abum()
   {
-    this.c = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public Activity a()
+  private abum(Context paramContext)
   {
-    return (Activity)this.c.get();
-  }
-  
-  public bebx a()
-  {
-    Activity localActivity;
-    if (this.d == null)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramContext = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("PATCH_LIST", "").split(";");
+    int j = paramContext.length;
+    while (i < j)
     {
-      localActivity = a();
-      if (!(localActivity instanceof bebx)) {
-        break label45;
+      Object localObject = paramContext[i];
+      if (!((String)localObject).equals(""))
+      {
+        localObject = new abut(this.jdField_a_of_type_AndroidContentSharedPreferences, (String)localObject);
+        abui.a("KingKongMainConfig", "--> " + localObject);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      }
+      i += 1;
+    }
+  }
+  
+  public static abum a(Context paramContext)
+  {
+    if (jdField_a_of_type_Abum != null) {
+      return jdField_a_of_type_Abum;
+    }
+    try
+    {
+      if (jdField_a_of_type_Abum != null)
+      {
+        paramContext = jdField_a_of_type_Abum;
+        return paramContext;
       }
     }
-    label45:
-    for (this.d = new WeakReference((bebx)localActivity);; this.d = new WeakReference(a())) {
-      return (bebx)this.d.get();
-    }
+    finally {}
+    jdField_a_of_type_Abum = new abum(paramContext);
+    paramContext = jdField_a_of_type_Abum;
+    return paramContext;
   }
   
-  public CustomWebView a()
+  private void a()
   {
-    WebViewFragment localWebViewFragment;
-    if (this.a == null)
-    {
-      localWebViewFragment = a();
-      if (localWebViewFragment == null) {
-        break label42;
-      }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    abut localabut;
+    for (String str = ""; localIterator.hasNext(); str = str + localabut.jdField_a_of_type_JavaLangString + ";") {
+      localabut = (abut)localIterator.next();
     }
-    label42:
-    for (this.a = new WeakReference(localWebViewFragment.getWebView());; this.a = new WeakReference(null)) {
-      return (CustomWebView)this.a.get();
-    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("PATCH_LIST", str);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
   
-  public AppInterface a()
+  public abut a(String paramString)
   {
-    AppRuntime localAppRuntime;
-    if (this.b == null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localAppRuntime instanceof ToolAppRuntime)) {
-        break label52;
+      abut localabut = (abut)localIterator.next();
+      if (localabut.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localabut;
       }
-      this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
+    }
+    return null;
+  }
+  
+  public ArrayList<abut> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(abut paramabut)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (!((abut)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramabut.jdField_a_of_type_JavaLangString)) {}
     }
     for (;;)
     {
-      return (AppInterface)this.b.get();
-      label52:
-      if ((localAppRuntime instanceof AppInterface)) {
-        this.b = new WeakReference((AppInterface)localAppRuntime);
-      } else {
-        this.b = new WeakReference(null);
+      if (i != -1) {
+        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramabut);
       }
+      for (;;)
+      {
+        paramabut.b(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
+        return;
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramabut);
+        a();
+      }
+      i = -1;
     }
   }
   
-  public WebViewFragment a()
+  public void a(String paramString)
   {
-    Activity localActivity;
-    if (this.e == null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localActivity = a();
-      if (!(localActivity instanceof bebt)) {
-        break label50;
+      abut localabut = (abut)localIterator.next();
+      if (localabut.jdField_a_of_type_JavaLangString.equals(paramString))
+      {
+        localabut.a(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(localabut);
       }
     }
-    label50:
-    for (this.e = new WeakReference(((bebt)localActivity).b());; this.e = new WeakReference(null)) {
-      return (WebViewFragment)this.e.get();
-    }
+    a();
   }
 }
 

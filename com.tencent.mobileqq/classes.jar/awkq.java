@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.mobileqq.pic.CompressInfo;
 
 public class awkq
+  extends awkp
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  baub jdField_a_of_type_Baub;
-  public PersonalityLabelPhoto a;
-  public int b = 0;
-  public int c = 0;
+  awkq(CompressInfo paramCompressInfo)
+  {
+    super(paramCompressInfo);
+  }
   
-  awkq(awkp paramawkp) {}
+  protected int a()
+  {
+    int i = 85;
+    if (this.a.g == 2)
+    {
+      i = 100;
+      return i;
+    }
+    switch (this.a.h)
+    {
+    case 4: 
+    case 2: 
+    case 3: 
+    default: 
+      return 85;
+    }
+    return 90;
+  }
 }
 
 

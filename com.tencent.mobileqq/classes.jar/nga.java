@@ -27,7 +27,7 @@ public class nga
   public static boolean c;
   public char a;
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  protected bcgo a;
+  protected bckx a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public String a;
   HashMap<String, ngc> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -40,7 +40,7 @@ public class nga
   
   static
   {
-    if (wnh.a()) {}
+    if (wrq.a()) {}
     for (int i = 3050;; i = 6282)
     {
       jdField_a_of_type_Int = i;
@@ -55,7 +55,7 @@ public class nga
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Char = '0';
-    this.jdField_a_of_type_Bcgo = new ngb(this);
+    this.jdField_a_of_type_Bckx = new ngb(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("now_msg_sp" + paramQQAppInterface.getCurrentAccountUin(), 0);
     a();
@@ -136,7 +136,7 @@ public class nga
       if (!this.jdField_a_of_type_Boolean) {
         break;
       }
-      aiab.jdField_a_of_type_Int |= 0x2;
+      aieq.jdField_a_of_type_Int |= 0x2;
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n) {
         break;
       }
@@ -206,7 +206,7 @@ public class nga
     paramString2.put("BUNDLE", paramString1);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
     paramString2.put("CONTEXT", MobileQQ.getContext());
-    new bcgn("http://now.qq.com/cgi-bin/now/web/room/get_live_room_url", "GET", this.jdField_a_of_type_Bcgo, 1001, localBundle, true).execute(new HashMap[] { paramString2 });
+    new bckw("http://now.qq.com/cgi-bin/now/web/room/get_live_room_url", "GET", this.jdField_a_of_type_Bckx, 1001, localBundle, true).execute(new HashMap[] { paramString2 });
   }
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, boolean paramBoolean)
@@ -238,7 +238,7 @@ public class nga
     paramString2.put("BUNDLE", paramString1);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
     paramString2.put("CONTEXT", MobileQQ.getContext());
-    new bcgn("http://now.qq.com/cgi-bin/now/web/room/check_live_stat", "GET", this.jdField_a_of_type_Bcgo, 1003, localBundle, true).execute(new HashMap[] { paramString2 });
+    new bckw("http://now.qq.com/cgi-bin/now/web/room/check_live_stat", "GET", this.jdField_a_of_type_Bckx, 1003, localBundle, true).execute(new HashMap[] { paramString2 });
   }
   
   public void a(Integer[] paramArrayOfInteger)
@@ -301,7 +301,7 @@ public class nga
       for (bool = false;; bool = true)
       {
         this.jdField_a_of_type_Boolean = bool;
-        aiab.jdField_a_of_type_Int |= 0x2;
+        aieq.jdField_a_of_type_Int |= 0x2;
         if (QLog.isColorLevel()) {
           QLog.i("Q.qqstory.fourTab", 2, "userChange mNowTabShowState=" + this.jdField_b_of_type_Int + " result:" + localObject1 + "  plan=" + c1);
         }
@@ -338,7 +338,7 @@ public class nga
     {
       this.jdField_a_of_type_Boolean = bool;
       if (this.jdField_a_of_type_Boolean) {
-        aiab.jdField_a_of_type_Int |= 0x2;
+        aieq.jdField_a_of_type_Int |= 0x2;
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -352,7 +352,7 @@ public class nga
   
   public boolean a()
   {
-    if (uhl.i())
+    if (ulu.i())
     {
       int j = a().charAt(2);
       if ((jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {}
@@ -386,7 +386,7 @@ public class nga
     while (!a()) {
       return false;
     }
-    Iterator localIterator = ((axho)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a().iterator();
+    Iterator localIterator = ((axlx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a().iterator();
     while (localIterator.hasNext())
     {
       BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator.next();

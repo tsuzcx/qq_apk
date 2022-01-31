@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import xhp;
+import xly;
 
 public class RMWServiceProxy$2
   implements Runnable
 {
-  public RMWServiceProxy$2(xhp paramxhp) {}
+  public RMWServiceProxy$2(xly paramxly) {}
   
   public void run()
   {

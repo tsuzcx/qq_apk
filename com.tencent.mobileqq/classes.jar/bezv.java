@@ -1,36 +1,12 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
 
-public class bezv
-  implements bhqp
+final class bezv
+  implements TMSDKCustomConfig.IInstaller
 {
-  public bezv(FriendChooser paramFriendChooser) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean installApp(Context paramContext, String paramString)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bfdi.a(paramAdapterView.a))) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bfdi.c() >= this.a.jdField_a_of_type_Int)
-    {
-      this.a.h();
-      return;
-    }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_Bfdi.a(paramAdapterView.a);
-    this.a.e();
-    paramView.g();
-    this.a.b(false);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    return bfms.a(paramContext, paramString, "biz_src_wifi");
   }
 }
 

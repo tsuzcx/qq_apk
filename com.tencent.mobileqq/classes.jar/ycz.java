@@ -1,10 +1,14 @@
-import android.widget.ImageView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import java.util.List;
 
-class ycz
+public abstract interface ycz
+  extends ybx<ycy>
 {
-  public ImageView a;
+  public abstract void a();
   
-  private ycz(ycx paramycx) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList, boolean paramBoolean);
 }
 
 

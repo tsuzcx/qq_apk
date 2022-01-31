@@ -32,7 +32,7 @@ public class pwe
   public void a(String paramString)
   {
     QLog.i("PTSSoLoader", 1, "[load], name = " + paramString);
-    azip.a().a(paramString, new pwf(this, paramString));
+    azmy.a().a(paramString, new pwf(this, paramString));
   }
   
   public boolean a()

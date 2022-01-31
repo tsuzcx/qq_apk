@@ -1,85 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class aoud
+class aoud
+  implements aoth
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  aoud(aotz paramaotz) {}
   
-  public static aoud a(aogf[] paramArrayOfaogf)
+  public void a(Context paramContext)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      paramArrayOfaogf = null;
-    }
-    aoud localaoud;
-    for (;;)
+    try
     {
-      return paramArrayOfaogf;
-      localaoud = new aoud();
+      Intent localIntent;
+      if (new JSONObject(aotz.a(this.a)).getInt("showlocalfile") == 1)
+      {
+        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
+        if (localIntent != null) {}
+      }
+      else
+      {
+        return;
+      }
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].a);
-        if (localJSONObject.has("flag"))
-        {
-          localaoud.d = localJSONObject.getInt("flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localaoud.d);
-          }
-        }
-        if (localJSONObject.has("showCount"))
-        {
-          localaoud.c = localJSONObject.getInt("showCount");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localaoud.c);
-          }
-        }
-        if (localJSONObject.has("groupFlag"))
-        {
-          localaoud.b = localJSONObject.getInt("groupFlag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localaoud.b);
-          }
-        }
-        paramArrayOfaogf = localaoud;
-        if (localJSONObject.has("groupShowCount"))
-        {
-          localaoud.a = localJSONObject.getInt("groupShowCount");
-          paramArrayOfaogf = localaoud;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localaoud.a);
-            return localaoud;
-          }
-        }
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("category", 23);
+        localIntent.putExtra("bundle", localBundle);
+        localIntent.putExtra("localSdCardfile", 0);
+        paramContext.startActivity(localIntent);
+        return;
       }
-      catch (Exception paramArrayOfaogf)
+      catch (Exception paramContext)
       {
-        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfaogf.toString());
+        paramContext.printStackTrace();
+        return;
       }
+      return;
     }
-    return localaoud;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 

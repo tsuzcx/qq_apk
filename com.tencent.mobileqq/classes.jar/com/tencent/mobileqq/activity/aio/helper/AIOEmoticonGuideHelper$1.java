@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aeyn;
+import afdc;
 import android.os.Message;
-import aogj;
-import aomm;
+import aoks;
+import aoqv;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class AIOEmoticonGuideHelper$1
   implements Runnable
 {
-  public AIOEmoticonGuideHelper$1(aeyn paramaeyn) {}
+  public AIOEmoticonGuideHelper$1(afdc paramafdc) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble start loadConObj.");
     }
-    aomm localaomm = (aomm)aogj.a().a(545);
+    aoqv localaoqv = (aoqv)aoks.a().a(545);
     Message localMessage = Message.obtain();
     localMessage.what = 2;
-    localMessage.obj = localaomm;
-    aeyn.a(this.this$0).sendMessage(localMessage);
+    localMessage.obj = localaoqv;
+    afdc.a(this.this$0).sendMessage(localMessage);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import azib;
+import azmk;
 
 class GeneralSettingActivity$16
   implements Runnable
@@ -10,10 +10,10 @@ class GeneralSettingActivity$16
   public void run()
   {
     if (this.this$0.isFinishing()) {}
-    while ((!azib.b()) || (this.this$0.a())) {
+    while ((!azmk.b()) || (this.this$0.a())) {
       return;
     }
-    this.this$0.a(true, azib.c());
+    this.this$0.a(true, azmk.c());
   }
 }
 

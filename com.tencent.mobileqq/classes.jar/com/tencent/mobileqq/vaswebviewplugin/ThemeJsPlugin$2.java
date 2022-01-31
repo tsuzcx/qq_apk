@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aphy;
-import apic;
-import bakr;
+import apmh;
+import apml;
+import bapa;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$2
-  implements bakr
+  implements bapa
 {
   ThemeJsPlugin$2(ThemeJsPlugin paramThemeJsPlugin) {}
   
@@ -23,7 +23,7 @@ class ThemeJsPlugin$2
   
   public void downloadBgPic(String paramString, Bundle paramBundle)
   {
-    paramString = apic.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
+    paramString = apml.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
     this.this$0.sendRemoteReq(paramString, false, true);
   }
   

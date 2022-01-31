@@ -1,11 +1,29 @@
-class bkwy
-  implements bkyo
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
+
+public class bkwy
+  implements bmeo<bkwp>
 {
-  bkwy(bkwx parambkwx) {}
+  bkwy(bkwr parambkwr) {}
   
-  public void a(bkvz parambkvz)
+  public void a(@Nullable bkwp parambkwp)
   {
-    bkwx.a(this.a, parambkvz);
+    Object localObject = bkwl.a(parambkwp);
+    parambkwp = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bkwp localbkwp = (bkwp)((Iterator)localObject).next();
+      bkxb localbkxb = new bkxb(null);
+      localbkxb.a = bkxd.a(localbkwp);
+      parambkwp.add(localbkxb);
+    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambkwp));
   }
 }
 

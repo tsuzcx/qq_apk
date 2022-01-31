@@ -1,60 +1,42 @@
-import com.tencent.commonsdk.util.notification.NotificationLimiter;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
-public class bhpa
-  implements NotificationLimiter
+class bhpa
+  extends Handler
 {
-  private boolean a(int paramInt)
+  public bhpa(bhou parambhou, Looper paramLooper)
   {
-    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
+    super(paramLooper);
   }
   
-  public boolean shouldNotify(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (a(paramInt)) {
-      return true;
-    }
-    boolean bool1;
-    if (aieq.a().a())
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NotificationLimiterImpl", 2, "MINI PROC FORE");
-      }
-      bool1 = false;
     }
-    for (;;)
+    do
     {
-      boolean bool2 = bool1;
-      if (bool1) {
-        if (azwu.a(paramInt)) {
-          break label105;
-        }
-      }
-      label105:
-      for (bool2 = true;; bool2 = false)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
-        }
-        return bool2;
-        if (!MiniChatActivity.a()) {
-          break label110;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
-        }
-        bool1 = false;
-        break;
-      }
-      label110:
-      bool1 = true;
-    }
+        return;
+        bhou.a(this.a);
+        return;
+      } while (paramMessage.obj == null);
+      bhou.a(this.a, (List)paramMessage.obj);
+      return;
+      bhou.b(this.a);
+      return;
+      bhou.c(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    bhou.a(this.a, (bhoy)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpa
  * JD-Core Version:    0.7.0.1
  */

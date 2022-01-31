@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class agwg
-  implements View.OnClickListener
+public class agwg
+  implements bcpo
 {
-  agwg(agwf paramagwf) {}
+  public agwg(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    QQAppInterface localQQAppInterface;
-    String str;
-    if (this.a.a())
-    {
-      atwd.a().a(agwf.a(this.a), agwf.a(this.a).a);
-      agwf.a(this.a).a();
-      localQQAppInterface = agwf.a(this.a);
-      str = agwf.a(this.a).a;
-      if (agwf.a(this.a).b(agwf.a(this.a).a) != 3) {
-        break label112;
-      }
-    }
-    label112:
-    for (paramView = "1";; paramView = "0")
-    {
-      azmj.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
-      return;
-    }
+    if (paramInt == 0) {}
   }
 }
 

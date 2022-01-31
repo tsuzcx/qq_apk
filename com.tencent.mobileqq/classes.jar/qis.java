@@ -9,33 +9,33 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 class qis
-  extends bdvu
+  extends bead
 {
   qis(qir paramqir, String paramString1, BaseResData paramBaseResData, String paramString2) {}
   
-  public void onCancel(bdvv parambdvv)
+  public void onCancel(beae parambeae)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((bdvu)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onCancel(parambdvv);
+      ((bead)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onCancel(parambeae);
       i += 1;
     }
-    String str = parambdvv.a().getString("resId");
+    String str = parambeae.a().getString("resId");
     this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilHashMap.remove(this.b + "_" + str);
-    super.onCancel(parambdvv);
-    this.jdField_a_of_type_Qir.a("onCancel", parambdvv);
+    super.onCancel(parambeae);
+    this.jdField_a_of_type_Qir.a("onCancel", parambeae);
     if (QLog.isColorLevel()) {
       QLog.d("readinjoy", 4, "mDownloader onCancel");
     }
   }
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    Object localObject = parambdvv.a();
+    Object localObject = parambeae.a();
     String str1 = ((Bundle)localObject).getString("resId");
     String str2 = ((Bundle)localObject).getString("prefix");
-    if (parambdvv.jdField_a_of_type_Int == 0)
+    if (parambeae.jdField_a_of_type_Int == 0)
     {
       localObject = new File(this.jdField_a_of_type_JavaLangString);
       if (!((File)localObject).exists()) {}
@@ -48,19 +48,19 @@ class qis
         {
           if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData))
           {
-            if (!((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData).res_md5.equals(bdcs.c(((File)localObject).getPath()).toLowerCase()))
+            if (!((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData).res_md5.equals(bdhb.c(((File)localObject).getPath()).toLowerCase()))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("ReadInJoyBaseResManager", 2, "MaterialData check file md5  failed: id = " + str1);
               }
-              if ((!bdcs.d(((File)localObject).getPath())) && (QLog.isColorLevel())) {
+              if ((!bdhb.d(((File)localObject).getPath())) && (QLog.isColorLevel())) {
                 QLog.d("ReadInJoyBaseResManager", 2, "MaterialData deleteFile file   failed: id = " + str1);
               }
               ocx.a((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData, false, "check file md5 failed");
               return;
             }
-            bdcs.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qir.b(str2, str1), false);
-            this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(parambdvv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Qir.b(str2, str1));
+            bdhb.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qir.b(str2, str1), false);
+            this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(parambeae.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Qir.b(str2, str1));
             this.jdField_a_of_type_Qir.a(this.jdField_a_of_type_Qir.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
             ((File)localObject).delete();
             this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilHashMap.remove(str2 + "_" + str1);
@@ -69,30 +69,30 @@ class qis
             if (i >= this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.size()) {
               break;
             }
-            ((bdvu)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onDone(parambdvv);
+            ((bead)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onDone(parambeae);
             i += 1;
             continue;
           }
-          bdcs.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qir.a(str2), false);
+          bdhb.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qir.a(str2), false);
           continue;
           try
           {
-            bdcs.b(this.jdField_a_of_type_Qir.b(str2, str1));
-            if (!bdcs.a((String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambdvv.jdField_a_of_type_JavaLangString))) {
+            bdhb.b(this.jdField_a_of_type_Qir.b(str2, str1));
+            if (!bdhb.a((String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambeae.jdField_a_of_type_JavaLangString))) {
               continue;
             }
-            bdcs.a((String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambdvv.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Qir.b(str2, str1), false);
+            bdhb.a((String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambeae.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Qir.b(str2, str1), false);
             if (!QLog.isColorLevel()) {
               continue;
             }
-            QLog.d("ReadInJoyBaseResManager", 2, "it is the same url copy to another dir path from: " + (String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambdvv.jdField_a_of_type_JavaLangString) + " to :" + this.jdField_a_of_type_Qir.b(str2, str1));
+            QLog.d("ReadInJoyBaseResManager", 2, "it is the same url copy to another dir path from: " + (String)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambeae.jdField_a_of_type_JavaLangString) + " to :" + this.jdField_a_of_type_Qir.b(str2, str1));
           }
           catch (Exception localException) {}
         }
-        catch (Exception parambdvv)
+        catch (Exception parambeae)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(parambdvv));
+            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(parambeae));
           }
           return;
         }
@@ -109,40 +109,40 @@ class qis
           }
         }
       }
-      this.jdField_a_of_type_Qir.a("onDone", parambdvv);
-      int i = parambdvv.jdField_a_of_type_Int;
-      long l1 = parambdvv.h;
-      long l2 = parambdvv.g;
+      this.jdField_a_of_type_Qir.a("onDone", parambeae);
+      int i = parambeae.jdField_a_of_type_Int;
+      long l1 = parambeae.h;
+      long l2 = parambeae.g;
       this.jdField_a_of_type_Qir.a(new String[] { String.valueOf(i), str1, String.valueOf(l1 - l2) });
     } while (!QLog.isColorLevel());
     QLog.d("readinjoy", 4, "mDownloader downLoadFinish");
   }
   
-  public void onProgress(bdvv parambdvv)
+  public void onProgress(beae parambeae)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((bdvu)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onProgress(parambdvv);
+      ((bead)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onProgress(parambeae);
       i += 1;
     }
-    super.onProgress(parambdvv);
-    this.jdField_a_of_type_Qir.a("onProgress", parambdvv);
+    super.onProgress(parambeae);
+    this.jdField_a_of_type_Qir.a("onProgress", parambeae);
   }
   
-  public boolean onStart(bdvv parambdvv)
+  public boolean onStart(beae parambeae)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((bdvu)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onStart(parambdvv);
+      ((bead)this.jdField_a_of_type_Qir.jdField_a_of_type_JavaUtilArrayList.get(i)).onStart(parambeae);
       i += 1;
     }
-    this.jdField_a_of_type_Qir.a("onStart", parambdvv);
+    this.jdField_a_of_type_Qir.a("onStart", parambeae);
     if (QLog.isColorLevel()) {
       QLog.d("readinjoy", 4, "mDownloader onStart");
     }
-    return super.onStart(parambdvv);
+    return super.onStart(parambeae);
   }
 }
 

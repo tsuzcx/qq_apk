@@ -17,7 +17,7 @@ public class mip
       return;
     }
     QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
-    mtq.b(bdee.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().C);
+    mtq.b(bdin.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().C);
     this.a.e();
     this.a.jdField_a_of_type_ComTencentAvVideoController.a().ap = true;
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqx;
+import agvm;
 
 class TroopChatPie$12$2$1
   implements Runnable

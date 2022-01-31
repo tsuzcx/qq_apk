@@ -1,17 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class ycn
-  implements View.OnClickListener
+public class ycn
+  implements ylr
 {
-  ycn(ych paramych, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public ycn(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    ybx.a(this.jdField_a_of_type_Ych.a, ybx.a(this.jdField_a_of_type_Ych.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    ybx.a(this.jdField_a_of_type_Ych.a).dismiss();
+    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      zaj.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+      return;
+    }
   }
 }
 

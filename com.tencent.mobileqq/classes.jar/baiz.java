@@ -1,8 +1,18 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public abstract interface baiz
+class baiz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Drawable paramDrawable);
+  baiz(baix parambaix) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a.b == 1) {
+      azqs.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

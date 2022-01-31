@@ -11,7 +11,7 @@ public class mfj
   private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity;
   public Runnable a;
   private int b;
-  private int c = 2130841842;
+  private int c = 2130841855;
   
   private mfj()
   {
@@ -20,7 +20,7 @@ public class mfj
   
   public void a()
   {
-    this.c = 2130841842;
+    this.c = 2130841855;
     this.jdField_a_of_type_Int = 0;
     this.b = 0;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
@@ -49,7 +49,7 @@ public class mfj
   {
     QLog.w("RecordInfo", 1, "onClick_Record, start, seq[" + paramLong + "]");
     this.jdField_a_of_type_Int = 1;
-    this.c = 2130841845;
+    this.c = 2130841858;
     this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }

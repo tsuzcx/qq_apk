@@ -1,33 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class avfe
-  implements URLDrawableDownListener
+public class avfe
+  implements View.OnTouchListener
 {
-  avfe(avfd paramavfd, avff paramavff, int paramInt) {}
+  public avfe(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int, false);
-    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 10000)) {
-      this.jdField_a_of_type_Avff.b(this.jdField_a_of_type_Int, paramInt / 100);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int);
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

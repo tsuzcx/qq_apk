@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.List;
 import pge;

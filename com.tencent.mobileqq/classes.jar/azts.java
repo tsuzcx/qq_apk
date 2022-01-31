@@ -1,19 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.qapmsdk.base.reporter.proxy.QAPMUploadProxy;
+import com.tencent.qapmsdk.base.reporter.uploaddata.data.ResultObject;
+import com.tencent.qapmsdk.common.reporter.BaseJsonObject;
+import com.tencent.qapmsdk.common.reporter.IReporter.ReportResultCallback;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 class azts
+  extends QAPMUploadProxy
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  String c;
+  azts(aztr paramaztr) {}
   
-  azts(aztq paramaztq) {}
+  public boolean report(@NotNull BaseJsonObject paramBaseJsonObject, @Nullable IReporter.ReportResultCallback paramReportResultCallback)
+  {
+    if ((paramBaseJsonObject instanceof ResultObject)) {}
+    return super.report(paramBaseJsonObject, paramReportResultCallback);
+  }
 }
 
 

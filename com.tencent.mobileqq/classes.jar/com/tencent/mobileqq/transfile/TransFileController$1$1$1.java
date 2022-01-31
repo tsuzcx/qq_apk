@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import batx;
+import bayg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TransFileController$1$1$1
   implements Runnable
 {
-  public TransFileController$1$1$1(batx parambatx) {}
+  public TransFileController$1$1$1(bayg parambayg) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131718590, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131718602, 0).a();
   }
 }
 

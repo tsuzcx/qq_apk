@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.view.View;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.widget.AdapterView;
+import java.util.Iterator;
+import java.util.List;
 
 public class bfft
-  implements DialogInterface.OnClickListener
+  implements bhuw
 {
-  public bfft(DownloadNativeApi.1 param1) {}
+  public bfft(OpenCardContainer paramOpenCardContainer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bffi.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    bffs.a(this.a.this$0).a(this.a.jdField_a_of_type_Bffx);
-    paramDialogInterface.dismiss();
+    paramAdapterView = bfga.a(this.a.jdField_a_of_type_Bfga).iterator();
+    while (paramAdapterView.hasNext()) {
+      ((bfgd)paramAdapterView.next()).a = false;
+    }
+    ((bfgd)bfga.a(this.a.jdField_a_of_type_Bfga).get(paramInt)).a = true;
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+    this.a.jdField_a_of_type_Bfga.notifyDataSetChanged();
   }
 }
 

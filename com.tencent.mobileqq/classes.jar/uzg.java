@@ -1,25 +1,58 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class uzg
-  extends ugz
+  extends urt
 {
-  private vdn a;
-  public boolean a;
+  public static String a = uqn.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
   
-  public uzg(ErrorMessage paramErrorMessage)
+  public uzg(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.c = paramString;
   }
   
-  public uzg(boolean paramBoolean)
+  public String a()
   {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return a;
   }
   
-  public vdn a()
+  public uro a(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_Vdn;
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
+    {
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new uzh(localRspCheckActivity);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    wxe.a("MsgTabCheckActiveRequest", "client version=%s", "8.3.5");
+    localReqCheckActivity.version.set("8.3.5");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 

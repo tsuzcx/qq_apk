@@ -1,52 +1,70 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troop.utils.VideoAnimationUtils.2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bcqe
-  implements View.OnTouchListener
 {
-  public bcqe(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
+  private static final String a = alof.aX + ".troop/anim_video/";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(beag parambeag, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, baej parambaej)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (parambeag == null) {}
+    Object localObject;
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
-      paramMotionEvent.setDuration(100L);
-      paramMotionEvent.setAnimationListener(new bcqf(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
-      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
-      Object localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setShape(1);
-      ((GradientDrawable)localObject).setCornerRadius(bcwh.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
-      ((GradientDrawable)localObject).setAlpha(192);
-      paramMotionEvent.setImageDrawable((Drawable)localObject);
-      localObject = new RelativeLayout.LayoutParams(bcwh.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), bcwh.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
-      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
-      ((ScaleAnimation)localObject).setDuration(150L);
-      ((ScaleAnimation)localObject).setAnimationListener(new bcqg(this, paramMotionEvent));
-      paramMotionEvent.startAnimation((Animation)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
+      return;
+      paramSpriteVideoView = new WeakReference(paramSpriteVideoView);
+      paramString1 = new File(a + paramString1);
+      if (paramString1.exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoAnimationUtils", 2, "res exists, return:" + paramString1.getAbsolutePath());
+        }
+        b(paramSpriteVideoView, paramString1.getAbsolutePath(), parambaej);
+        return;
+      }
+      parambeag = parambeag.a(1);
+      localObject = new File(a);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      paramString2 = new beae(paramString2, paramString1);
+      paramString2.b = 2;
+      localObject = new Bundle();
+    } while (parambeag == null);
+    parambeag.a(paramString2, new bcqf(paramSpriteVideoView, paramString1, parambaej), (Bundle)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, null, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, baej parambaej)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    a((beag)paramQQAppInterface.getManager(47), paramString1, paramString2, paramSpriteVideoView, parambaej);
+  }
+  
+  private static void b(WeakReference<SpriteVideoView> paramWeakReference, String paramString, baej parambaej)
+  {
+    if (paramWeakReference != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoAnimationUtils", 2, "playVideoAnim");
+      }
+      if ((SpriteVideoView)paramWeakReference.get() != null) {
+        ThreadManager.getUIHandler().post(new VideoAnimationUtils.2(paramWeakReference, paramString, parambaej));
       }
     }
-    return true;
   }
 }
 

@@ -1,167 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.component.network.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bjds
+  extends QzoneExternalRequest
 {
-  private int jdField_a_of_type_Int;
-  private bjdt jdField_a_of_type_Bjdt;
-  private final String jdField_a_of_type_JavaLangString;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private int b;
-  private int c;
+  public JceStruct a;
   
-  public bjds(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public bjds(long paramLong1, long paramLong2, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new NullPointerException("file cache: name can NOT be empty!");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
+    localmobile_sub_get_photo_wall_req.uin = paramLong1;
+    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
+    this.a = localmobile_sub_get_photo_wall_req;
   }
   
-  private void a()
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 5) {}
-    String str;
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          str = a();
-        } while (TextUtils.isEmpty(str));
-        for (localObject = new File(str); !((File)localObject).exists(); localObject = ((File)localObject).getParentFile()) {}
-      } while (!bjdu.a(((File)localObject).getAbsolutePath()));
-      localObject = this.jdField_a_of_type_Bjdt;
-    } while (localObject == null);
-    if (!bjdq.a(str)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((bjdt)localObject).a(this, bool);
-      return;
-    }
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    return (paramFile != null) && (paramFile.exists()) && (paramFile.isFile());
-  }
-  
-  private File b(String paramString)
-  {
-    paramString = a(paramString);
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramArrayOfByte == null) {
       return null;
     }
-    paramString = new File(paramString);
-    if (a(paramString)) {
-      FileUtils.delete(paramString);
-    }
-    try
-    {
-      paramString.createNewFile();
-      return paramString;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.e("CacheManager", 1, "", localIOException);
-    }
-    return paramString;
+    return decode(paramArrayOfByte, "getPhotoWall");
   }
   
-  public int a(boolean paramBoolean)
+  public String getCmdString()
   {
-    if (paramBoolean) {
-      return this.jdField_a_of_type_Int;
-    }
-    return this.b;
+    return "QzoneNewService.getPhotoWall";
   }
   
-  public File a(String paramString)
+  public JceStruct getReq()
   {
-    return a(paramString, false);
+    return this.a;
   }
   
-  public File a(String paramString, boolean paramBoolean)
+  public String uniKey()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str = a(paramString);
-    Object localObject;
-    if (str == null)
-    {
-      localObject = null;
-      if (!a((File)localObject)) {
-        break label59;
-      }
-      a(str, false);
-      label37:
-      if (!a((File)localObject)) {
-        break label92;
-      }
-    }
-    for (;;)
-    {
-      return localObject;
-      localObject = new File(str);
-      break;
-      label59:
-      if (!paramBoolean) {
-        break label37;
-      }
-      paramString = b(paramString);
-      localObject = paramString;
-      if (!a(paramString)) {
-        break label37;
-      }
-      a(paramString.getAbsolutePath(), true);
-      localObject = paramString;
-      break label37;
-      label92:
-      localObject = null;
-    }
-  }
-  
-  public String a()
-  {
-    return bjdq.a(this.jdField_a_of_type_JavaLangString, this.c);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str = a();
-    if (TextUtils.isEmpty(str)) {
-      return "";
-    }
-    return str + File.separator + paramString;
-  }
-  
-  public void a(bjdt parambjdt)
-  {
-    this.jdField_a_of_type_Bjdt = parambjdt;
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    File localFile = new File(paramString);
-    if ((localFile.exists()) && (!localFile.setLastModified(System.currentTimeMillis())) && (QLog.isDevelopLevel())) {
-      QLog.w("FileCacheService", 2, "更新缓存文件的lru文件时间失败. path=" + paramString);
-    }
-    a();
+    return "getPhotoWall";
   }
 }
 

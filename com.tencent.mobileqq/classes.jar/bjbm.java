@@ -1,17 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudWrite.StDoFollowRsp;
-import java.util.concurrent.CountDownLatch;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
 
-class bjbm
-  implements yvn<FeedCloudWrite.StDoFollowRsp>
+public class bjbm
 {
-  bjbm(bjbk parambjbk, boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  @Nullable
+  public static Activity a(Context paramContext)
   {
-    QLog.i("QzoneIPCModule", 1, "flow qq circle resp " + paramBoolean + " " + paramLong + " " + paramString);
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    if ((paramContext instanceof Activity)) {
+      return (Activity)paramContext;
+    }
+    if ((paramContext instanceof ContextWrapper))
+    {
+      paramContext = (ContextWrapper)paramContext;
+      if ((paramContext.getBaseContext() instanceof Activity)) {
+        return (Activity)paramContext.getBaseContext();
+      }
+    }
+    return null;
   }
 }
 

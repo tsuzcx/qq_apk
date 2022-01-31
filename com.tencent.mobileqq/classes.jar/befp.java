@@ -1,73 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.webviewplugin.Hole;
 
 class befp
-  implements befg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  befp(befo parambefo) {}
+  befp(befo parambefo, View paramView, DisplayMetrics paramDisplayMetrics) {}
   
-  public int a(Bundle paramBundle)
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
-        }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
-      }
-      if (!beep.s)
-      {
-        beep.s = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          beep.U = WebProcessReceiver.b - WebProcessReceiver.a;
-          beep.V = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)beep.U;
-          int j = (int)beep.V;
-          QLog.i("WebLog_SwiftWebAccelerator", 1, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
-        }
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (beep.t);
-    beep.t = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-    {
-      beep.W = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "WebProcessReceiver.onReceive cost: " + beep.U + "ms, complete preload cost: " + beep.W + "ms.");
+      this.jdField_a_of_type_Befo.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
+      this.jdField_a_of_type_Befo.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
+      return;
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
   }
 }
 

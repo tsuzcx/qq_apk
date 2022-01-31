@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahwd
-  extends aqnl
+  implements View.OnClickListener
 {
-  private ahwd(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public ahwd(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void onClick(View paramView)
   {
-    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    paramView = this.a.a.iterator();
+    while (paramView.hasNext()) {
+      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
     }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bkev.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
+    this.a.a(true);
+    this.a.resetLeftButton();
   }
 }
 

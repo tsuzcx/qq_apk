@@ -1,28 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class yob
-  implements ynu
+  extends syt
 {
-  yob(yny paramyny, long paramLong) {}
+  yob(ynx paramynx) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  protected boolean a(Integer paramInteger)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if ((ynx.a(this.a) == null) || (ynx.a(this.a) == null)) {
+      return false;
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    switch (paramInteger.intValue())
     {
-      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynw.e = paramString1;
-      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.a.b(this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx);
-      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.b();
-      return;
     }
-    this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.d = paramString2;
-    this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.a.a(this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx);
+    for (;;)
+    {
+      return super.a(paramInteger);
+      ynx.a(this.a);
+      if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+      {
+        zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+        continue;
+        ynx.b(this.a);
+        if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+        {
+          zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+          continue;
+          ynx.a(this.a, 0);
+          if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+          {
+            zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+            continue;
+            ynx.a(this.a, 1);
+            if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+            {
+              zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+              continue;
+              ynx.c(this.a);
+              if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null)) {
+                zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

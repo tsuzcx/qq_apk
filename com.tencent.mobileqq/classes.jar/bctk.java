@@ -1,20 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Interpolator;
 
-class bctk
-  implements bctm
+public class bctk
+  implements Interpolator
 {
-  bctk(bctc parambctc) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public float getInterpolation(float paramFloat)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bctc.d(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131716166), 0).a();
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

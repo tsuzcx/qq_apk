@@ -1,128 +1,64 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.TextUtils;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
-import java.util.List;
 
 public class xwp
-  extends BaseAdapter
+  extends Dialog
 {
-  private List<xwv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xwt jdField_a_of_type_Xwt;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean jdField_a_of_type_Boolean;
   
-  public List<xwv> a()
+  public xwp(Context paramContext)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    super(paramContext);
+    super.requestWindowFeature(1);
+    super.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561403, null);
+    super.setCanceledOnTouchOutside(true);
+    super.setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367394));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367392));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367423));
+    paramContext = new ScaleAnimation(1.0F, 1.6F, 1.0F, 1.6F, 1, 0.5F, 1, 0.5F);
+    paramContext.setDuration(1000L);
+    paramContext.setRepeatCount(-1);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.8F, 0.0F);
+    localAlphaAnimation.setDuration(1000L);
+    localAlphaAnimation.setRepeatCount(-1);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.addAnimation(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new xwq(this));
   }
   
-  public void a(List<xwv> paramList)
+  private void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(xwt paramxwt)
-  {
-    this.jdField_a_of_type_Xwt = paramxwt;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    return null;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localAlphaAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
+    localAlphaAnimation.setAnimationListener(new xwr(this));
   }
   
-  public long getItemId(int paramInt)
+  public void a(String paramString)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    xwv localxwv = (xwv)getItem(paramInt);
-    Object localObject;
-    if (localxwv == null) {
-      localObject = paramView;
-    }
-    label98:
-    label104:
-    do
-    {
-      return localObject;
-      if (paramView == null)
-      {
-        paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560238, null);
-        paramViewGroup = new xwu(paramView);
-        paramView.setTag(paramViewGroup);
-        localObject = new GradientDrawable();
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          ((GradientDrawable)localObject).setColor(-16777216);
-          if (!azib.b()) {
-            break label261;
-          }
-          ((GradientDrawable)localObject).setCornerRadius(bdkf.b(16.0F));
-          paramView.setBackgroundDrawable((Drawable)localObject);
-          paramView.setOnTouchListener(new xwq(this, paramView.getBackground(), localxwv));
-          paramViewGroup.c.setOnClickListener(new xwr(this, localxwv));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new xws(this, localxwv));
-          localObject = paramView.getContext().getString(2131717599, new Object[] { localxwv.a, localxwv.jdField_b_of_type_JavaLangString });
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-          if (!TextUtils.isEmpty(localxwv.c)) {
-            break label286;
-          }
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        if (localxwv.jdField_b_of_type_Int != 1) {
-          break label321;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846472);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        return paramView;
-        ((GradientDrawable)localObject).setColor(paramView.getResources().getColor(2131167058));
-        break;
-        ((GradientDrawable)localObject).setCornerRadius(bdkf.b(40.0F));
-        break label98;
-        paramViewGroup = (xwu)paramView.getTag();
-        break label104;
-        localObject = paramView.getContext().getString(2131717600, new Object[] { localxwv.c });
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-      if (localxwv.jdField_b_of_type_Int == 2)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846471);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        return paramView;
-      }
-      localObject = paramView;
-    } while (localxwv.jdField_b_of_type_Int != 3);
-    label261:
-    label286:
-    label321:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846473);
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    return paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
 }
 

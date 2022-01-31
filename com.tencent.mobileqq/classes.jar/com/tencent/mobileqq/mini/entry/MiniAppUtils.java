@@ -22,16 +22,16 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
-import aokc;
-import aokd;
-import bcuq;
-import bdje;
-import bdkf;
-import begf;
-import begg;
-import bfhi;
-import bkci;
-import bkcj;
+import aool;
+import aoom;
+import bcyz;
+import bdnn;
+import bdoo;
+import beko;
+import bekp;
+import bflr;
+import bkgp;
+import bkgq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -178,7 +178,7 @@ public class MiniAppUtils
   
   public static boolean checkNavigationAppIdListForMiniGame(String paramString, MiniGamePkg paramMiniGamePkg)
   {
-    if ((bdje.a(paramString)) || (paramMiniGamePkg == null)) {}
+    if ((bdnn.a(paramString)) || (paramMiniGamePkg == null)) {}
     for (;;)
     {
       return false;
@@ -220,9 +220,9 @@ public class MiniAppUtils
       l1 = localSharedPreferences.getLong("key_update_miniapp_time", 0L);
       l2 = System.currentTimeMillis();
       i = 60;
-      aokc localaokc = aokd.a();
-      if (localaokc != null) {
-        i = localaokc.a();
+      aool localaool = aoom.a();
+      if (localaool != null) {
+        i = localaool.a();
       }
     } while (l2 - l1 <= i * 60 * 1000);
     ((MiniAppUserAppInfoListManager)localAppInterface.getManager(309)).sendUserAppListRequest(Long.valueOf(localAppInterface.getCurrentAccountUin()).longValue(), 20L);
@@ -351,25 +351,25 @@ public class MiniAppUtils
       QLog.e("MiniAppUtils", 2, new Object[] { "fetchWnsCgiCacheData ", " invalid url " + paramString3 });
       return;
     }
-    begg localbegg = new begg();
-    localbegg.jdField_a_of_type_JavaLangString = paramString3;
-    localbegg.b = "GET";
-    localbegg.jdField_a_of_type_Boolean = false;
-    localbegg.jdField_a_of_type_Int = 0;
-    localbegg.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    begf.a().a(localbegg, new MiniAppUtils.5(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
+    bekp localbekp = new bekp();
+    localbekp.jdField_a_of_type_JavaLangString = paramString3;
+    localbekp.b = "GET";
+    localbekp.jdField_a_of_type_Boolean = false;
+    localbekp.jdField_a_of_type_Int = 0;
+    localbekp.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
+    beko.a().a(localbekp, new MiniAppUtils.5(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
   }
   
   public static void fetchWnsCgiPreCacheData(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     QLog.d("MiniAppUtils", 1, "--- prefetch cache data appid:" + paramString1 + "  requestUrl" + paramString2 + "  path:" + paramString3);
-    paramContext = new begg();
+    paramContext = new bekp();
     paramContext.jdField_a_of_type_JavaLangString = paramString2;
     paramContext.b = "GET";
     paramContext.jdField_a_of_type_Boolean = false;
     paramContext.jdField_a_of_type_Int = 0;
     paramContext.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    begf.a().a(paramContext, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
+    beko.a().a(paramContext, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
   }
   
   public static AppInterface getAppInterface()
@@ -517,13 +517,13 @@ public class MiniAppUtils
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    int i = bdkf.b(48.0F);
+    int i = bdoo.b(48.0F);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     if (paramBoolean)
     {
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130840897);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130840897);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130840898);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130840898);
     }
     label118:
     do
@@ -537,8 +537,8 @@ public class MiniAppUtils
       {
         try
         {
-          paramContext.setTag(bcuq.b(i, i, bdkf.b(9.0F)));
-          paramContext.setDecodeHandler(bcuq.i);
+          paramContext.setTag(bcyz.b(i, i, bdoo.b(9.0F)));
+          paramContext.setDecodeHandler(bcyz.i);
           localObject = paramContext;
           if (paramContext.getStatus() == 2)
           {
@@ -565,7 +565,7 @@ public class MiniAppUtils
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    paramInt2 = bdkf.b(paramInt2);
+    paramInt2 = bdoo.b(paramInt2);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt2;
     if (paramBoolean)
@@ -585,8 +585,8 @@ public class MiniAppUtils
       {
         try
         {
-          paramContext.setTag(bcuq.b(paramInt2, paramInt2, bdkf.b(9.0F)));
-          paramContext.setDecodeHandler(bcuq.i);
+          paramContext.setTag(bcyz.b(paramInt2, paramInt2, bdoo.b(9.0F)));
+          paramContext.setDecodeHandler(bcyz.i);
           localObject = paramContext;
           return localObject;
         }
@@ -608,8 +608,8 @@ public class MiniAppUtils
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    paramInt2 = bdkf.b(paramInt2);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bdkf.b(paramInt3);
+    paramInt2 = bdoo.b(paramInt2);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bdoo.b(paramInt3);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt2;
     if (paramBoolean)
     {
@@ -808,7 +808,7 @@ public class MiniAppUtils
       try
       {
         Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("keyMiniGamePayEnv", 4).getString("keyMiniGamePayEnvAppidVertype", "");
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(bfhi.b(paramString))))
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(bflr.b(paramString))))
         {
           localObject = paramString.split("_");
           if (localObject.length > 1)
@@ -840,22 +840,22 @@ public class MiniAppUtils
   
   public static void miniAppTianShuReport(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    bkcj localbkcj = new bkcj();
+    bkgq localbkgq = new bkgq();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbkcj.b = (str + "_" + l);
-    localbkcj.jdField_a_of_type_Int = 1;
-    localbkcj.jdField_e_of_type_JavaLangString = paramString1;
-    localbkcj.f = paramString2;
-    localbkcj.g = paramString3;
-    localbkcj.d = paramInt;
-    localbkcj.jdField_e_of_type_Int = 1;
-    localbkcj.jdField_a_of_type_Long = l;
-    bkci.a().a(localbkcj);
+    localbkgq.b = (str + "_" + l);
+    localbkgq.jdField_a_of_type_Int = 1;
+    localbkgq.jdField_e_of_type_JavaLangString = paramString1;
+    localbkgq.f = paramString2;
+    localbkgq.g = paramString3;
+    localbkgq.d = paramInt;
+    localbkgq.jdField_e_of_type_Int = 1;
+    localbkgq.jdField_a_of_type_Long = l;
+    bkgp.a().a(localbkgq);
     if (QLog.isColorLevel()) {
       QLog.i("MiniAppUtils", 2, "tianShuReport, report itemId: " + paramString3);
     }
@@ -881,7 +881,7 @@ public class MiniAppUtils
   
   public static void notifyUpdateHongBaoRes()
   {
-    if (aokd.g())
+    if (aoom.g())
     {
       BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, 103, true, null);
       return;
@@ -1033,16 +1033,16 @@ public class MiniAppUtils
             }
           }
         }
-        localObject1 = new begg();
-        ((begg)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("url");
-        ((begg)localObject1).c = paramString1.toString();
-        ((begg)localObject1).jdField_a_of_type_Int = i;
-        ((begg)localObject1).jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        ((begg)localObject1).b = ((JSONObject)localObject2).optString("method", "GET");
-        ((begg)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optString("responseType").equals("base64");
-        ((begg)localObject1).d = null;
+        localObject1 = new bekp();
+        ((bekp)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("url");
+        ((bekp)localObject1).c = paramString1.toString();
+        ((bekp)localObject1).jdField_a_of_type_Int = i;
+        ((bekp)localObject1).jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
+        ((bekp)localObject1).b = ((JSONObject)localObject2).optString("method", "GET");
+        ((bekp)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optString("responseType").equals("base64");
+        ((bekp)localObject1).d = null;
         bool = ((JSONObject)localObject2).optString("dataType").equalsIgnoreCase("json");
-        if (TextUtils.isEmpty(((begg)localObject1).jdField_a_of_type_JavaLangString))
+        if (TextUtils.isEmpty(((bekp)localObject1).jdField_a_of_type_JavaLangString))
         {
           paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "empty url", paramInt);
           return;
@@ -1061,30 +1061,30 @@ public class MiniAppUtils
           break label353;
         }
       }
-      for (((begg)localObject1).d = ((String)paramString1); TextUtils.isEmpty(((begg)localObject1).b); ((begg)localObject1).d = paramString1.toString())
+      for (((bekp)localObject1).d = ((String)paramString1); TextUtils.isEmpty(((bekp)localObject1).b); ((bekp)localObject1).d = paramString1.toString())
       {
         paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "wrong method", paramInt);
         return;
       }
-      if (("get".equalsIgnoreCase(((begg)localObject1).b)) || ("post".equalsIgnoreCase(((begg)localObject1).b)))
+      if (("get".equalsIgnoreCase(((bekp)localObject1).b)) || ("post".equalsIgnoreCase(((bekp)localObject1).b)))
       {
-        ((begg)localObject1).b = ((begg)localObject1).b.toUpperCase();
-        if ("post".equalsIgnoreCase(((begg)localObject1).b)) {
-          ((begg)localObject1).jdField_e_of_type_JavaLangString = "application/json";
+        ((bekp)localObject1).b = ((bekp)localObject1).b.toUpperCase();
+        if ("post".equalsIgnoreCase(((bekp)localObject1).b)) {
+          ((bekp)localObject1).jdField_e_of_type_JavaLangString = "application/json";
         }
         i = -1;
       }
       try
       {
         paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject2 = localTicketManager.getPskey(paramString1, myl.a().d(SwiftBrowserCookieMonster.b(((begg)localObject1).jdField_a_of_type_JavaLangString)));
+        localObject2 = localTicketManager.getPskey(paramString1, myl.a().d(SwiftBrowserCookieMonster.b(((bekp)localObject1).jdField_a_of_type_JavaLangString)));
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           i = getGTK((String)localObject2);
         }
         j = i;
         if (i == -1)
         {
-          localObject2 = SwiftBrowserCookieMonster.c(((begg)localObject1).jdField_a_of_type_JavaLangString);
+          localObject2 = SwiftBrowserCookieMonster.c(((bekp)localObject1).jdField_a_of_type_JavaLangString);
           j = i;
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
@@ -1133,12 +1133,12 @@ public class MiniAppUtils
         {
           QLog.e("MiniAppUtils", 1, "get gtk fail.", paramString1);
           continue;
-          if ("post".equalsIgnoreCase(((begg)localObject1).b))
+          if ("post".equalsIgnoreCase(((bekp)localObject1).b))
           {
-            if (((begg)localObject1).jdField_a_of_type_JavaLangString.contains("?")) {}
-            for (((begg)localObject1).jdField_a_of_type_JavaLangString = (((begg)localObject1).jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); ((begg)localObject1).jdField_a_of_type_JavaLangString = (((begg)localObject1).jdField_a_of_type_JavaLangString + "?g_tk=" + i))
+            if (((bekp)localObject1).jdField_a_of_type_JavaLangString.contains("?")) {}
+            for (((bekp)localObject1).jdField_a_of_type_JavaLangString = (((bekp)localObject1).jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); ((bekp)localObject1).jdField_a_of_type_JavaLangString = (((bekp)localObject1).jdField_a_of_type_JavaLangString + "?g_tk=" + i))
             {
-              QLog.d("MiniAppUtils", 2, "url : " + ((begg)localObject1).jdField_a_of_type_JavaLangString);
+              QLog.d("MiniAppUtils", 2, "url : " + ((bekp)localObject1).jdField_a_of_type_JavaLangString);
               break;
             }
             QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  fail");
@@ -1159,20 +1159,20 @@ public class MiniAppUtils
       }
       if (i != -1)
       {
-        if (!"get".equalsIgnoreCase(((begg)localObject1).b)) {
+        if (!"get".equalsIgnoreCase(((bekp)localObject1).b)) {
           break label867;
         }
-        if (!TextUtils.isEmpty(((begg)localObject1).d)) {
+        if (!TextUtils.isEmpty(((bekp)localObject1).d)) {
           break label816;
         }
       }
-      for (((begg)localObject1).d = ("g_tk=" + i);; ((begg)localObject1).d = (((begg)localObject1).d + "&g_tk=" + i))
+      for (((bekp)localObject1).d = ("g_tk=" + i);; ((bekp)localObject1).d = (((bekp)localObject1).d + "&g_tk=" + i))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MiniAppUtils", 2, "wns body : " + ((begg)localObject1).d);
+          QLog.d("MiniAppUtils", 2, "wns body : " + ((bekp)localObject1).d);
         }
         paramString1 = new MiniAppUtils.7(ThreadManagerV2.getSubThreadLooper(), bool, paramBaseJsPluginEngine, paramJsRuntime, paramString2, paramInt);
-        if (!begf.a().a((begg)localObject1, paramString1, getCookie(((begg)localObject1).jdField_a_of_type_JavaLangString))) {
+        if (!beko.a().a((bekp)localObject1, paramString1, getCookie(((bekp)localObject1).jdField_a_of_type_JavaLangString))) {
           break;
         }
         QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
@@ -1190,25 +1190,25 @@ public class MiniAppUtils
     }
     TicketManager localTicketManager;
     Object localObject1;
-    begg localbegg;
+    bekp localbekp;
     boolean bool;
     try
     {
       localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       localObject1 = paramJSONObject.optJSONObject("header");
-      localbegg = new begg();
-      localbegg.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+      localbekp = new bekp();
+      localbekp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
       if (localObject1 == null) {}
       for (localObject1 = "{}";; localObject1 = ((JSONObject)localObject1).toString())
       {
-        localbegg.c = ((String)localObject1);
-        localbegg.jdField_a_of_type_Int = 60000;
-        localbegg.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        localbegg.b = paramJSONObject.optString("method", "GET");
-        localbegg.jdField_a_of_type_Boolean = paramJSONObject.optString("responseType").equals("base64");
-        localbegg.d = null;
+        localbekp.c = ((String)localObject1);
+        localbekp.jdField_a_of_type_Int = 60000;
+        localbekp.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
+        localbekp.b = paramJSONObject.optString("method", "GET");
+        localbekp.jdField_a_of_type_Boolean = paramJSONObject.optString("responseType").equals("base64");
+        localbekp.d = null;
         bool = paramJSONObject.optString("dataType").equalsIgnoreCase("json");
-        if (!TextUtils.isEmpty(localbegg.jdField_a_of_type_JavaLangString)) {
+        if (!TextUtils.isEmpty(localbekp.jdField_a_of_type_JavaLangString)) {
           break;
         }
         paramAsyncResult.onReceiveResult(false, null);
@@ -1220,14 +1220,14 @@ public class MiniAppUtils
         if (!(paramJSONObject instanceof String)) {
           break label231;
         }
-        localbegg.d = ((String)paramJSONObject);
+        localbekp.d = ((String)paramJSONObject);
       }
-      while (TextUtils.isEmpty(localbegg.b))
+      while (TextUtils.isEmpty(localbekp.b))
       {
         paramAsyncResult.onReceiveResult(false, null);
         return false;
         label231:
-        localbegg.d = paramJSONObject.toString();
+        localbekp.d = paramJSONObject.toString();
         continue;
         return false;
       }
@@ -1240,25 +1240,25 @@ public class MiniAppUtils
     for (;;)
     {
       int i;
-      if (("get".equalsIgnoreCase(localbegg.b)) || ("post".equalsIgnoreCase(localbegg.b)))
+      if (("get".equalsIgnoreCase(localbekp.b)) || ("post".equalsIgnoreCase(localbekp.b)))
       {
-        localbegg.b = localbegg.b.toUpperCase();
-        if ("post".equalsIgnoreCase(localbegg.b)) {
-          localbegg.jdField_e_of_type_JavaLangString = "application/json";
+        localbekp.b = localbekp.b.toUpperCase();
+        if ("post".equalsIgnoreCase(localbekp.b)) {
+          localbekp.jdField_e_of_type_JavaLangString = "application/json";
         }
         i = -1;
       }
       try
       {
         paramJSONObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject1 = localTicketManager.getPskey(paramJSONObject, myl.a().d(SwiftBrowserCookieMonster.b(localbegg.jdField_a_of_type_JavaLangString)));
+        localObject1 = localTicketManager.getPskey(paramJSONObject, myl.a().d(SwiftBrowserCookieMonster.b(localbekp.jdField_a_of_type_JavaLangString)));
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           i = getGTK((String)localObject1);
         }
         j = i;
         if (i == -1)
         {
-          localObject1 = SwiftBrowserCookieMonster.c(localbegg.jdField_a_of_type_JavaLangString);
+          localObject1 = SwiftBrowserCookieMonster.c(localbekp.jdField_a_of_type_JavaLangString);
           j = i;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -1301,21 +1301,21 @@ public class MiniAppUtils
           i = getGTK(localTicketManager.getSkey(paramJSONObject));
           if (i != -1)
           {
-            if (!"get".equalsIgnoreCase(localbegg.b)) {
+            if (!"get".equalsIgnoreCase(localbekp.b)) {
               break label735;
             }
-            if (!TextUtils.isEmpty(localbegg.d)) {
+            if (!TextUtils.isEmpty(localbekp.d)) {
               break label685;
             }
           }
           label685:
-          for (localbegg.d = ("g_tk=" + i);; localbegg.d = (localbegg.d + "&g_tk=" + i))
+          for (localbekp.d = ("g_tk=" + i);; localbekp.d = (localbekp.d + "&g_tk=" + i))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("MiniAppUtils", 2, "wns body : " + localbegg.d);
+              QLog.d("MiniAppUtils", 2, "wns body : " + localbekp.d);
             }
             paramJSONObject = new MiniAppUtils.6(ThreadManagerV2.getSubThreadLooper(), bool, paramAsyncResult);
-            if (!begf.a().a(localbegg, paramJSONObject, getCookie(localbegg.jdField_a_of_type_JavaLangString))) {
+            if (!beko.a().a(localbekp, paramJSONObject, getCookie(localbekp.jdField_a_of_type_JavaLangString))) {
               break;
             }
             QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
@@ -1334,12 +1334,12 @@ public class MiniAppUtils
             QLog.e("MiniAppUtils", 1, "get gtk fail.", paramJSONObject);
             continue;
             label735:
-            if ("post".equalsIgnoreCase(localbegg.b))
+            if ("post".equalsIgnoreCase(localbekp.b))
             {
-              if (localbegg.jdField_a_of_type_JavaLangString.contains("?")) {}
-              for (localbegg.jdField_a_of_type_JavaLangString = (localbegg.jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); localbegg.jdField_a_of_type_JavaLangString = (localbegg.jdField_a_of_type_JavaLangString + "?g_tk=" + i))
+              if (localbekp.jdField_a_of_type_JavaLangString.contains("?")) {}
+              for (localbekp.jdField_a_of_type_JavaLangString = (localbekp.jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); localbekp.jdField_a_of_type_JavaLangString = (localbekp.jdField_a_of_type_JavaLangString + "?g_tk=" + i))
               {
-                QLog.d("MiniAppUtils", 2, "url : " + localbegg.jdField_a_of_type_JavaLangString);
+                QLog.d("MiniAppUtils", 2, "url : " + localbekp.jdField_a_of_type_JavaLangString);
                 break;
               }
               QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  fail");
@@ -1395,7 +1395,7 @@ public class MiniAppUtils
   {
     paramMiniAppInfo.recommend = 0;
     paramMiniAppInfo.extendData = null;
-    if (aokd.g()) {
+    if (aoom.g()) {
       DesktopDataManager.recordMiniAppStart(paramMiniAppInfo);
     }
     for (;;)

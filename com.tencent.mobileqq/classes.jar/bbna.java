@@ -1,16 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class bbna
-  implements bcgo
+  implements View.OnTouchListener
 {
-  bbna(bbmz parambbmz, bcic parambcic, int paramInt) {}
+  bbna(bbmz parambbmz) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_Bcic.a(this.jdField_a_of_type_Bbmz.a.a.a, 0, this.jdField_a_of_type_Int);
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
     }
   }
 }

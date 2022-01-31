@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import alpo;
-import apcm;
-import apcn;
-import apde;
+import alud;
+import apgv;
+import apgw;
+import aphn;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 public class DataReportSettingFragment$4$1
   implements Runnable
 {
-  public DataReportSettingFragment$4$1(apcm paramapcm, ArrayList paramArrayList) {}
+  public DataReportSettingFragment$4$1(apgv paramapgv, ArrayList paramArrayList) {}
   
   public void run()
   {
-    apde.a().a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Apcm.a.a.notifyDataSetChanged();
-    QQToast.a(this.jdField_a_of_type_Apcm.a.getActivity(), alpo.a(2131703150), 0).a();
+    aphn.a().a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Apgv.a.a.notifyDataSetChanged();
+    QQToast.a(this.jdField_a_of_type_Apgv.a.getActivity(), alud.a(2131703162), 0).a();
   }
 }
 

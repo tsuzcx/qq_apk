@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class asgv
-  implements View.OnClickListener
+public class asgv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  asgv(asgq paramasgq) {}
+  public asgv(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    asgq.d(this.a);
-    this.a.a(true);
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695482), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      return;
+    }
   }
 }
 

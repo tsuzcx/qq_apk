@@ -1,42 +1,83 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class adxz
-  implements DialogInterface.OnClickListener
+  extends alpq
 {
-  public adxz(TroopDisbandActivity paramTroopDisbandActivity, bdfq parambdfq) {}
+  public adxz(ShowReactiveActivity paramShowReactiveActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beps == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beps = new beps(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-    }
-    if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    Object localObject;
+    Switch localSwitch;
+    if ((paramBoolean1) && (!this.a.isFinishing()))
     {
-      paramDialogInterface = (alzf)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
-      if (paramDialogInterface != null)
+      localObject = this.a;
+      localSwitch = this.a.a.a();
+      if (paramBoolean2) {
+        break label117;
+      }
+    }
+    label117:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject, localSwitch, paramBoolean1);
+      if (QLog.isColorLevel())
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
-        {
-          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
-          localTroopDisbandActivity.b |= 0x1;
-          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beps.b(0, 2131692292, 1000);
+        localObject = ((alto)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
+        QLog.d("interactive", 2, " ShowReactiveActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + ((Card)localObject).allowCalInteractive);
+      }
+      return;
+    }
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    Object localObject1;
+    Object localObject2;
+    boolean bool1;
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719884), 3000).b(this.a.getTitleBarHeight());
+      localObject1 = this.a;
+      localObject2 = this.a.a.a();
+      if (this.a.a.a().isChecked()) {
+        break label217;
+      }
+      bool1 = true;
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject1, (CompoundButton)localObject2, bool1);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays isSuccess false= ");
       }
     }
-    for (;;)
+    Switch localSwitch;
+    if ((paramBoolean) && (!this.a.isFinishing()))
     {
-      if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-        this.jdField_a_of_type_Bdfq.cancel();
+      localObject1 = ((alto)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
+      localObject2 = this.a;
+      localSwitch = this.a.a.a();
+      if (((Card)localObject1).allowCalInteractive) {
+        break label222;
       }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+    }
+    label217:
+    label222:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject2, localSwitch, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays allowCalInteractive= " + ((Card)localObject1).allowCalInteractive);
+      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beps.b(2, 2131692288, 1500);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Beps.b(2, 2131694829, 1500);
+      bool1 = false;
+      break;
     }
   }
 }

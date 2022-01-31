@@ -1,30 +1,18 @@
-public class aewv
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+
+class aewv
+  implements badp
 {
-  public float a;
-  public long a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  aewv(aewu paramaewu) {}
   
-  aewv()
+  public void a()
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(aewv paramaewv)
-  {
-    this.jdField_a_of_type_Float = paramaewv.jdField_a_of_type_Float;
-    this.b = paramaewv.b;
-    this.c = paramaewv.c;
-    this.jdField_a_of_type_Long = paramaewv.jdField_a_of_type_Long;
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
+    int k = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
+    badx localbadx = new badx(new bado[] { new bads(450, i, j, i, k), new bads(450, i, k, i, j) });
+    localbadx.a = true;
+    this.a.a.jdField_a_of_type_Baes.a(new bado[] { localbadx });
   }
 }
 

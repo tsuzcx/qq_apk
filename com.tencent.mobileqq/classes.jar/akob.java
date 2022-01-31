@@ -1,21 +1,17 @@
-public class akob
+import com.tencent.mobileqq.DrawerPushItem;
+import java.util.Comparator;
+
+class akob
+  implements Comparator<DrawerPushItem>
 {
-  public float a;
-  public float b;
-  public float c;
+  akob(aknx paramaknx) {}
   
-  public akob(float paramFloat1, float paramFloat2, float paramFloat3)
+  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
+    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
+      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    }
+    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
 }
 

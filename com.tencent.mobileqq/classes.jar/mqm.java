@@ -13,8 +13,8 @@ public class mqm
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("recode_thread");
-  private axqz jdField_a_of_type_Axqz;
-  private axra jdField_a_of_type_Axra;
+  private axvi jdField_a_of_type_Axvi;
+  private axvj jdField_a_of_type_Axvj;
   private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
   private String jdField_a_of_type_JavaLangString;
   private mqh jdField_a_of_type_Mqh;
@@ -30,13 +30,13 @@ public class mqm
     this.jdField_a_of_type_AndroidOsHandlerThread.setPriority(10);
     this.jdField_a_of_type_Mqn = new mqn(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     this.jdField_a_of_type_Mqh = new mqh(this);
-    this.jdField_a_of_type_Axra = new axra();
+    this.jdField_a_of_type_Axvj = new axvj();
   }
   
-  private void a(axqz paramaxqz)
+  private void a(axvi paramaxvi)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("QavVideoAudioRecorder", 2, "handleStartRecording EGLContext = " + paramaxqz.a());
+      QLog.w("QavVideoAudioRecorder", 2, "handleStartRecording EGLContext = " + paramaxvi.a());
     }
     if (this.jdField_a_of_type_Boolean) {
       c();
@@ -46,12 +46,12 @@ public class mqm
     this.b = -1L;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-    this.jdField_a_of_type_Axqz = paramaxqz;
-    this.jdField_a_of_type_JavaLangString = paramaxqz.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Axvi = paramaxvi;
+    this.jdField_a_of_type_JavaLangString = paramaxvi.jdField_a_of_type_JavaLangString;
     try
     {
-      this.jdField_a_of_type_Mqh.a(paramaxqz);
-      this.jdField_a_of_type_Axra.a(paramaxqz, this.jdField_a_of_type_Mqh.a());
+      this.jdField_a_of_type_Mqh.a(paramaxvi);
+      this.jdField_a_of_type_Axvj.a(paramaxvi, this.jdField_a_of_type_Mqh.a());
       if (this.jdField_a_of_type_Mqi != null) {
         this.jdField_a_of_type_Mqi.g();
       }
@@ -61,7 +61,7 @@ public class mqm
     {
       localThrowable.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.w("QavVideoAudioRecorder", 2, "handleStartRecording: exception at start. encodeConfig = " + paramaxqz);
+        QLog.w("QavVideoAudioRecorder", 2, "handleStartRecording: exception at start. encodeConfig = " + paramaxvi);
       }
       if (this.jdField_a_of_type_Mqi != null) {
         this.jdField_a_of_type_Mqi.a(1, localThrowable);
@@ -97,7 +97,7 @@ public class mqm
         try
         {
           this.jdField_a_of_type_Mqh.a();
-          this.jdField_a_of_type_Axra.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong - this.jdField_a_of_type_Long);
+          this.jdField_a_of_type_Axvj.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong - this.jdField_a_of_type_Long);
           if (this.jdField_a_of_type_Mqi != null)
           {
             this.jdField_a_of_type_Mqi.h();
@@ -107,13 +107,13 @@ public class mqm
         catch (Exception paramArrayOfFloat1)
         {
           if (QLog.isColorLevel()) {
-            QLog.e("QavVideoAudioRecorder", 2, "videoFrameAvailable: exception. config = " + this.jdField_a_of_type_Axqz);
+            QLog.e("QavVideoAudioRecorder", 2, "videoFrameAvailable: exception. config = " + this.jdField_a_of_type_Axvi);
           }
           if (this.jdField_a_of_type_Mqi != null) {
             this.jdField_a_of_type_Mqi.a(2, paramArrayOfFloat1);
           }
           this.jdField_a_of_type_Mqh.c();
-          this.jdField_a_of_type_Axra.a();
+          this.jdField_a_of_type_Axvj.a();
           this.jdField_a_of_type_Boolean = false;
         }
       }
@@ -132,7 +132,7 @@ public class mqm
         b(this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray(), this.c);
         this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
         this.jdField_a_of_type_Mqh.b();
-        this.jdField_a_of_type_Axra.a();
+        this.jdField_a_of_type_Axvj.a();
         this.jdField_a_of_type_Boolean = false;
         if (this.jdField_a_of_type_Mqi != null)
         {
@@ -144,13 +144,13 @@ public class mqm
       catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("QavVideoAudioRecorder", 2, "handleStopRecording: exception. config = " + this.jdField_a_of_type_Axqz);
+          QLog.e("QavVideoAudioRecorder", 2, "handleStopRecording: exception. config = " + this.jdField_a_of_type_Axvi);
         }
         if (this.jdField_a_of_type_Mqi != null) {
           this.jdField_a_of_type_Mqi.a(4, localException);
         }
         this.jdField_a_of_type_Mqh.c();
-        this.jdField_a_of_type_Axra.a();
+        this.jdField_a_of_type_Axvj.a();
         this.jdField_a_of_type_Boolean = false;
         return;
       }
@@ -177,14 +177,14 @@ public class mqm
     this.jdField_a_of_type_Mqn.sendMessage(localMessage);
   }
   
-  public void a(axqz paramaxqz, mqi parammqi)
+  public void a(axvi paramaxvi, mqi parammqi)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("QavVideoAudioRecorder", 2, "startRecording EGLContext = " + paramaxqz.a() + ", config=" + paramaxqz);
+      QLog.w("QavVideoAudioRecorder", 2, "startRecording EGLContext = " + paramaxvi.a() + ", config=" + paramaxvi);
     }
     this.jdField_a_of_type_Mqi = parammqi;
     parammqi = Message.obtain();
-    parammqi.obj = paramaxqz;
+    parammqi.obj = paramaxvi;
     parammqi.what = 0;
     this.jdField_a_of_type_Mqn.sendMessage(parammqi);
   }
@@ -249,9 +249,9 @@ public class mqm
   {
     mqn localmqn = this.jdField_a_of_type_Mqn;
     HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
-    axra localaxra = this.jdField_a_of_type_Axra;
+    axvj localaxvj = this.jdField_a_of_type_Axvj;
     if (localHandlerThread != null) {
-      localmqn.post(new QavVideoAudioRecorder.1(this, localaxra, localHandlerThread));
+      localmqn.post(new QavVideoAudioRecorder.1(this, localaxvj, localHandlerThread));
     }
   }
   

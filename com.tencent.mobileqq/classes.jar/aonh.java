@@ -1,31 +1,34 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aonh
 {
-  public String a = "";
+  public int a;
   
   public static aonh a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (paramString == null) {}
     do
     {
       return null;
       try
       {
         aonh localaonh = new aonh();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("contents")) {
-          localaonh.a = paramString.getJSONArray("contents").toString();
-        }
+        localaonh.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
+        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localaonh.toString());
         return localaonh;
       }
       catch (Exception paramString) {}
     } while (!QLog.isColorLevel());
-    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

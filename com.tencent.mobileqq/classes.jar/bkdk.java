@@ -1,15 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class bkdk
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public bkdj a;
+  public String a;
+  public String b;
+  public String c;
   
-  public bkdk(bkdd parambkdd) {}
+  public bkdk(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

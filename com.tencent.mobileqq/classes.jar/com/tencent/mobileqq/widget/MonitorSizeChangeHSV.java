@@ -7,12 +7,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
-import bemq;
+import beqz;
 
 public class MonitorSizeChangeHSV
   extends HorizontalScrollView
 {
-  private bemq a;
+  private beqz a;
   
   public MonitorSizeChangeHSV(Context paramContext)
   {
@@ -75,9 +75,9 @@ public class MonitorSizeChangeHSV
     }
   }
   
-  public void setOnSizeChangeCallback(bemq parambemq)
+  public void setOnSizeChangeCallback(beqz parambeqz)
   {
-    this.a = parambemq;
+    this.a = parambeqz;
   }
   
   public void setOverScrollMode(int paramInt)

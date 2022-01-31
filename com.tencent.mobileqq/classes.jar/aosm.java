@@ -1,64 +1,102 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aosm
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d = "";
   
-  public static aosm a(aogf[] paramArrayOfaogf)
+  public aosm()
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
-      paramArrayOfaogf = null;
-    }
-    aosm localaosm;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "0";
+  }
+  
+  public static aosm a(String paramString)
+  {
+    if (paramString == null) {}
     for (;;)
     {
-      return paramArrayOfaogf;
-      localaosm = new aosm();
+      return null;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
+        aosm localaosm = new aosm();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("wvShouldReportPerf"))
         {
-          localaosm.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localaosm.jdField_a_of_type_JavaLangString);
-          }
-        }
-        paramArrayOfaogf = localaosm;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localaosm.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfaogf = localaosm;
-          if (QLog.isColorLevel())
+          if (paramString.optInt("wvShouldReportPerf") == 1)
           {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localaosm.jdField_a_of_type_Boolean);
-            return localaosm;
+            bool = true;
+            localaosm.jdField_a_of_type_Boolean = bool;
           }
         }
+        else
+        {
+          if (paramString.has("wvShouldReportJsapiCall"))
+          {
+            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
+              break label212;
+            }
+            bool = true;
+            label70:
+            localaosm.jdField_b_of_type_Boolean = bool;
+          }
+          if (paramString.has("wvShouldReportOpenapiCall")) {
+            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
+              break label217;
+            }
+          }
+        }
+        label212:
+        label217:
+        for (boolean bool = true;; bool = false)
+        {
+          localaosm.jdField_c_of_type_Boolean = bool;
+          if (paramString.has("wvPerformanceRate")) {
+            localaosm.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
+          }
+          if (paramString.has("wvJsapiCallRate")) {
+            localaosm.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
+          }
+          if (paramString.has("wvSchemeRate")) {
+            localaosm.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
+          }
+          if (paramString.has("recogniseText")) {
+            localaosm.d = paramString.optString("recogniseText");
+          }
+          QLog.d("ConfBean", 2, "confBean = " + localaosm.toString());
+          return localaosm;
+          bool = false;
+          break;
+          bool = false;
+          break label70;
+        }
+        if (!QLog.isColorLevel()) {}
       }
-      catch (JSONException paramArrayOfaogf)
-      {
-        paramArrayOfaogf.printStackTrace();
-      }
+      catch (Exception paramString) {}
     }
-    return localaosm;
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public String a()
+  public String toString()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" recogniseText:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

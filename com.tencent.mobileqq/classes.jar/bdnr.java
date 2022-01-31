@@ -1,10 +1,6 @@
-import android.text.SpannableString;
-
-class bdnr
+public abstract interface bdnr
 {
-  int jdField_a_of_type_Int;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  int b;
+  public abstract void a(int paramInt);
 }
 
 

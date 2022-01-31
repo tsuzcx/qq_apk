@@ -1,32 +1,12 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import java.util.List;
-
-class azim
-  implements azin
+final class azim
+  extends azio
 {
-  azim(azil paramazil, int paramInt, azij paramazij, azin paramazin) {}
-  
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public double a(int paramInt1, int paramInt2)
   {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, azil.a(this.jdField_a_of_type_Azil));
-    azil.a(this.jdField_a_of_type_Azil, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Azij.a.size() - 1) {
-        if (this.jdField_a_of_type_Azin != null) {
-          this.jdField_a_of_type_Azin.a(paramInt, paramLoadExtResult);
-        }
-      }
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
     }
-    do
-    {
-      return;
-      azil.a(this.jdField_a_of_type_Azil, this.jdField_a_of_type_Azij, this.jdField_a_of_type_Azin, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Azin == null);
-    this.jdField_a_of_type_Azin.a(paramInt, paramLoadExtResult);
+    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 

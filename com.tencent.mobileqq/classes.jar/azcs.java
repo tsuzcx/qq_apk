@@ -1,45 +1,51 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+
 public class azcs
+  implements baug
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  public azcs(PtvTemplateManager.15 param15) {}
   
-  public long a(float paramFloat)
+  public void onResp(bavf parambavf)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + parambavf.c);
     }
-    return paramLong * 1000L;
+    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
+    if (this.a.a.doodleUsable) {}
+    try
+    {
+      ndr.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
+      if (parambavf.jdField_a_of_type_Int == 0)
+      {
+        Object localObject = this.a.this$0.a();
+        if (localObject != null)
+        {
+          localObject = (bbaa)((QQAppInterface)localObject).getManager(193);
+          if (((bbaa)localObject).a()) {
+            ((bbaa)localObject).a(this.a.a.doodleUrl, parambavf.jdField_a_of_type_Long);
+          }
+        }
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
+    }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

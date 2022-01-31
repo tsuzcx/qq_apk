@@ -2,9 +2,9 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import arwy;
-import arwz;
-import bdfq;
+import asbh;
+import asbi;
+import bdjz;
 
 public class ForwardPhotoOption$3
   implements Runnable
@@ -24,7 +24,7 @@ public class ForwardPhotoOption$3
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new arwy(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new asbh(this));
   }
 }
 

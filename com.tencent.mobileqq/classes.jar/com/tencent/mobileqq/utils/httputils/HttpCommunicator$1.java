@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bdlm;
-import bdlo;
+import bdpv;
+import bdpx;
 
 class HttpCommunicator$1
   implements Runnable
 {
-  HttpCommunicator$1(HttpCommunicator paramHttpCommunicator, bdlo parambdlo, bdlm parambdlm) {}
+  HttpCommunicator$1(HttpCommunicator paramHttpCommunicator, bdpx parambdpx, bdpv parambdpv) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Bdlo, this.jdField_a_of_type_Bdlm);
+    this.this$0.a(this.jdField_a_of_type_Bdpx, this.jdField_a_of_type_Bdpv);
   }
 }
 

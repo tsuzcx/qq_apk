@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class arjj
-  implements View.OnClickListener
+  implements arrh
 {
-  arjj(arjh paramarjh) {}
+  arjj(arji paramarji) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    arni.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arfz.d());
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
   }
+  
+  public void b() {}
 }
 
 

@@ -1,96 +1,91 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.PluginInfo;
 
-public class birt
-  extends aynd
+class birt
+  extends OnPluginInstallListener.Stub
 {
-  private BitmapFactory.Options a = new BitmapFactory.Options();
+  long jdField_a_of_type_Long = 0L;
+  private birr jdField_a_of_type_Birr;
   
-  public birt(bcws parambcws)
+  public birt(birn parambirn, birr parambirr)
   {
-    super(parambcws);
+    this.jdField_a_of_type_Birr = parambirr;
   }
   
-  public void a(ayjl paramayjl, ayru paramayru)
+  public void onInstallBegin(String paramString)
   {
-    paramayru.a().setMaxWidth(800);
-    birs localbirs = (birs)paramayjl;
-    ImageView localImageView = paramayru.b();
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if ((5 == localbirs.f) || (localbirs.jdField_a_of_type_Boolean))
-    {
-      localImageView.setImageResource(2130843723);
-      if (localbirs.jdField_d_of_type_JavaLangString == null) {
-        break label186;
-      }
-      paramayjl = URLDrawable.URLDrawableOptions.obtain();
-      paramayjl.mRequestHeight = paramayru.b().getHeight();
-      paramayjl.mRequestWidth = paramayru.b().getWidth();
-      if ((5 != localbirs.f) && (!localbirs.jdField_a_of_type_Boolean)) {
-        break label136;
-      }
-      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localbirs.jdField_d_of_type_JavaLangString, paramayjl));
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
     }
-    label136:
-    do
+    if ((!this.jdField_a_of_type_Birr.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Birr.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      this.jdField_a_of_type_Birr.jdField_a_of_type_AndroidAppProgressDialog.show();
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
+    }
+    if ((!this.jdField_a_of_type_Birr.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Birr.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
+      this.jdField_a_of_type_Birr.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
+      this.jdField_a_of_type_Birr.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
+    }
+    birr localbirr = this.jdField_a_of_type_Birr;
+    if ((localbirr != null) && (localbirr.jdField_a_of_type_Biqu != null))
+    {
+      paramString = this.jdField_a_of_type_Birn.a(paramString);
+      if ((paramString != null) && (paramString.mInstalledPath != null)) {
+        localbirr.jdField_a_of_type_Biqw.c = paramString.mInstalledPath;
+      }
+      paramString = localbirr.jdField_a_of_type_Biqu;
+      if (paramInt != 2) {
+        break label122;
+      }
+    }
+    label122:
+    for (boolean bool = true;; bool = false)
+    {
+      paramString.a(bool, localbirr.jdField_a_of_type_AndroidContentContext, localbirr.jdField_a_of_type_Biqw);
       return;
-      localImageView.setImageDrawable(null);
-      localImageView.setBackgroundDrawable(null);
-      break;
-      try
-      {
-        localImageView.setImageDrawable(URLDrawable.getDrawable(localbirs.jdField_d_of_type_JavaLangString, paramayjl));
-        return;
-      }
-      catch (Exception paramayjl) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramayjl.toString());
-    return;
-    label186:
-    if (localbirs.jdField_d_of_type_Int != 0)
-    {
-      if ((5 == localbirs.f) || (localbirs.jdField_a_of_type_Boolean))
-      {
-        localImageView.setBackgroundResource(localbirs.jdField_d_of_type_Int);
-        return;
-      }
-      localImageView.setImageResource(localbirs.jdField_d_of_type_Int);
-      return;
     }
-    if (localbirs.jdField_a_of_type_ArrayOfByte != null)
-    {
-      this.a.inJustDecodeBounds = true;
-      BitmapFactory.decodeByteArray(localbirs.jdField_a_of_type_ArrayOfByte, 0, localbirs.jdField_a_of_type_ArrayOfByte.length, this.a);
-      this.a.inJustDecodeBounds = false;
-      this.a.inSampleSize = (this.a.outWidth / paramayru.b().getMeasuredWidth());
-      try
-      {
-        paramayjl = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localbirs.jdField_a_of_type_ArrayOfByte, 0, localbirs.jdField_a_of_type_ArrayOfByte.length, this.a));
-        if ((5 == localbirs.f) || (localbirs.jdField_a_of_type_Boolean))
-        {
-          localImageView.setBackgroundDrawable(paramayjl);
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramayjl)
-      {
-        for (;;)
-        {
-          paramayjl = null;
-        }
-        localImageView.setImageDrawable(paramayjl);
-        return;
-      }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    long l = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
     }
-    super.a(paramayjl, paramayru);
+    paramString = this.jdField_a_of_type_Birr;
+    if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+    if ((paramString != null) && (paramString.jdField_a_of_type_Biqu != null))
+    {
+      PluginInfo localPluginInfo = birn.a(this.jdField_a_of_type_Birn).a(paramString.jdField_a_of_type_Biqw.b);
+      if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null))
+      {
+        paramString.jdField_a_of_type_Biqw.c = localPluginInfo.mInstalledPath;
+        paramString.jdField_a_of_type_Biqw.a(localPluginInfo);
+      }
+      paramString.jdField_a_of_type_Biqu.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_Biqw);
+    }
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    this.jdField_a_of_type_Birn.a(this.jdField_a_of_type_Birr.jdField_a_of_type_Biqw.b, "pluginDownloadCost", l);
   }
 }
 

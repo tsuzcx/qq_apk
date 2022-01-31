@@ -1,14 +1,10 @@
-public class ujc
-  implements uha
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
+
+public abstract interface ujc
 {
-  public String a;
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof ujc)) {
-      this.a = ((ujc)paramObject).a;
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 

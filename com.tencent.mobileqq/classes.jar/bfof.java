@@ -1,38 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bfof
-  extends bfnr
+final class bfof
+  implements DialogInterface.OnClickListener
 {
-  private List<String> a;
+  bfof(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public bfof()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
-      int j = paramString.length();
-      int i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
-        i += 1;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    bfod.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

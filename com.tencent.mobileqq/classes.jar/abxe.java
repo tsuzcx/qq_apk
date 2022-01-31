@@ -1,143 +1,154 @@
-import android.content.Intent;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity.4.1;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 public class abxe
-  extends AccountObserver
+  extends abwx
 {
-  public abxe(AddAccountActivity paramAddAccountActivity) {}
+  protected auef a;
+  private String jdField_c_of_type_JavaLangString = "doraemon_user_permission_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  private Map<String, Integer> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private String d;
+  private String e;
+  private String f;
   
-  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
+  public abxe(Activity paramActivity, int paramInt, String paramString)
   {
-    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
-    }
-    if (!this.a.isFinishing()) {}
-    try
-    {
-      this.a.dismissDialog(1);
-      if ((paramBoolean) && (paramInt == 0))
-      {
-        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
-        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
-        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
-        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
-        paramArrayOfByte.putExtra("not_need_verify_sms", true);
-        this.a.startActivity(paramArrayOfByte);
-        return;
+    super(paramActivity, paramInt, paramString);
+  }
+  
+  private int a(abxd paramabxd)
+  {
+    Integer localInteger2 = (Integer)this.jdField_c_of_type_JavaUtilMap.get(paramabxd.jdField_a_of_type_JavaLangString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).getLong(this.b + "_" + paramabxd.jdField_a_of_type_JavaLangString + "_2", 0L) <= NetConnInfoCenter.getServerTimeMillis()) {
+        break label106;
       }
     }
-    catch (Exception paramArrayOfByte)
+    label106:
+    for (localInteger1 = Integer.valueOf(2);; localInteger1 = Integer.valueOf(0))
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
-      paramArrayOfByte.putExtra("key_register_from", 1);
-      this.a.startActivity(paramArrayOfByte);
+      this.jdField_c_of_type_JavaUtilMap.put(paramabxd.jdField_a_of_type_JavaLangString, localInteger1);
+      return localInteger1.intValue();
     }
   }
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  private void a(abxd paramabxd, int paramInt)
   {
-    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt1);
-    if (!this.a.isFinishing()) {}
-    try
+    if (2 == paramInt)
     {
-      this.a.dismissDialog(0);
-      this.a.runOnUiThread(new AddAccountActivity.4.1(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
-      }
-      if ((paramString2 == null) || (paramString2.equals("")))
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).edit().putLong(this.b + "_" + paramabxd.jdField_a_of_type_JavaLangString + "_2", l + 2592000000L).apply();
+    }
+    this.jdField_c_of_type_JavaUtilMap.put(paramabxd.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+  }
+  
+  public auef a()
+  {
+    return this.jdField_a_of_type_Auef;
+  }
+  
+  public String a()
+  {
+    if (this.e == null) {
+      return MobileQQ.getContext().getPackageName();
+    }
+    return this.e;
+  }
+  
+  protected Map<String, abwv> a()
+  {
+    return abzg.a();
+  }
+  
+  protected void a(abwv paramabwv, JSONObject paramJSONObject, abwu paramabwu)
+  {
+    abxd localabxd;
+    Object localObject2;
+    Object localObject1;
+    switch (paramabwv.b)
+    {
+    default: 
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "unsupport auth type " + paramabwv.b);
+      a(6, paramabwv, paramJSONObject, paramabwu);
+      return;
+    case 0: 
+      a(0, paramabwv, paramJSONObject, paramabwu);
+      return;
+    case 1: 
+      localabxd = abxj.a().a(paramabwv.jdField_a_of_type_JavaLangString);
+      if (localabxd == null)
       {
-        QQToast.a(this.a, 2131694764, 0).a();
+        a(1, paramabwv, paramJSONObject, paramabwu);
         return;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      int i = a(localabxd);
+      if (i == 1)
       {
-        localException.printStackTrace();
+        a(4, paramabwv, paramJSONObject, paramabwu);
+        return;
       }
-      if (!TextUtils.isEmpty(paramString3))
+      if (i == 2)
       {
-        Intent localIntent = new Intent(this.a, NotificationActivity.class);
-        localIntent.putExtra("type", 8);
-        if (paramInt1 == 40)
-        {
-          localIntent.putExtra("msg", paramString2);
-          localIntent.putExtra("errorver", paramInt2);
+        a(0, paramabwv, paramJSONObject, paramabwu);
+        return;
+      }
+      localObject2 = a();
+      if (localObject2 == null)
+      {
+        localObject1 = null;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label352;
         }
-        for (;;)
-        {
-          localIntent.putExtra("loginalias", paramString1);
-          localIntent.putExtra("loginret", paramInt1);
-          localIntent.putExtra("errorUrl", paramString3);
-          localIntent.putExtra("expiredSig", paramArrayOfByte);
-          this.a.startActivity(localIntent);
-          return;
-          localIntent.putExtra("msg", paramString2 + " " + paramString3);
-        }
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131695084);
       }
-      if (paramInt1 == 2008)
+      break;
+    }
+    label352:
+    for (;;)
+    {
+      if (localObject2 == null) {}
+      for (localObject2 = null;; localObject2 = ((auef)localObject2).jdField_c_of_type_JavaLangString)
       {
-        bdcd.a(this.a, 230, alpo.a(2131700190), alpo.a(2131700191), "OK", null, new abxf(this), null).show();
-        QQToast.a(this.a, 2131693231, 0).a();
+        a((String)localObject1, (String)localObject2, BaseApplicationImpl.getApplication().getResources().getString(2131695083, new Object[] { localObject1 }), localabxd.b, BaseApplicationImpl.getApplication().getResources().getString(2131721454), new abxg(this, localabxd, paramabwv, paramJSONObject, paramabwu), BaseApplicationImpl.getApplication().getResources().getString(2131721463), new abxh(this, localabxd, paramabwv, paramJSONObject, paramabwu), new abxi(this, localabxd, paramabwv, paramJSONObject, paramabwu));
+        return;
+        localObject1 = ((auef)localObject2).b;
+        break;
+      }
+      localObject1 = (abye)a(abye.class, false);
+      if ((localObject1 != null) && (((abye)localObject1).a()))
+      {
+        a(0, paramabwv, paramJSONObject, paramabwu);
         return;
       }
-      bdcd.a(this.a, 230, alpo.a(2131700194), paramString2, new abxg(this), null).show();
-    }
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
-    if (!this.a.isFinishing()) {}
-    try
-    {
-      this.a.dismissDialog(0);
-      QQToast.a(this.a, 2131694764, 0).a();
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "not login");
+      a(5, paramabwv, paramJSONObject, paramabwu);
       return;
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
   }
   
-  public void onUserCancel(String paramString)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    super.onUserCancel(paramString);
-    if (!this.a.isFinishing()) {}
-    try
-    {
-      this.a.dismissDialog(0);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
+  }
+  
+  protected void c()
+  {
+    abxj.a().a(this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.d, this.e, this.f, new abxf(this));
   }
 }
 

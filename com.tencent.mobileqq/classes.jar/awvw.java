@@ -1,96 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.qcall.QCallCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.graphics.PointF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 
 public class awvw
-  implements Manager
+  implements awuw
 {
-  private awbw jdField_a_of_type_Awbw;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public awvw(ProfileTagView paramProfileTagView) {}
   
-  public awvw(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.a();
-  }
-  
-  private awbw a()
-  {
-    if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    ProfileTagView.a(this.a, 2);
+    Object localObject1;
+    if (this.a.jdField_b_of_type_AndroidGraphicsPointF != null)
     {
-      if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {
-        this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-      return this.jdField_a_of_type_Awbw;
-    }
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_Awbw != null) && (this.jdField_a_of_type_Awbw.a())) {
-      this.jdField_a_of_type_Awbw.a();
-    }
-  }
-  
-  public QCallCardInfo a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
-    paramString = a().a(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
-    if (paramString != null) {
-      return (QCallCardInfo)paramString.get(0);
-    }
-    return null;
-  }
-  
-  public void a(QCallCardInfo paramQCallCardInfo)
-  {
-    if (paramQCallCardInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCallCardManager", 2, "saveQcallCard null ");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
-    }
-    b(paramQCallCardInfo);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.b(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
-  }
-  
-  public void b(QCallCardInfo paramQCallCardInfo)
-  {
-    if (paramQCallCardInfo == null) {}
-    for (;;)
-    {
-      return;
-      try
+      localObject1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
+        Object localObject2 = localObject1[i];
+        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
-          continue;
+          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
+          if (localLayoutParams != null)
+          {
+            localLayoutParams.a = this.a.jdField_b_of_type_AndroidGraphicsPointF.x;
+            localLayoutParams.b = this.a.jdField_b_of_type_AndroidGraphicsPointF.y;
+            localObject2.setLayoutParams(localLayoutParams);
+          }
+        }
+        i += 1;
+      }
+      this.a.e();
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject1 = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
+      if (localObject1 != null)
+      {
+        this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((FrameLayout)localObject1).getBackground();
+        if (!bdwf.a(this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable)) {
+          ((FrameLayout)localObject1).setBackgroundDrawable(null);
         }
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
     }
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

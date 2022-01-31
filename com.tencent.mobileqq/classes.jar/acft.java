@@ -1,16 +1,90 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
-public final class acft
-  implements DialogInterface.OnClickListener
+public class acft
+  implements View.OnClickListener
 {
-  public acft(acgy paramacgy) {}
+  public acft(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    View localView2;
+    do
+    {
+      do
+      {
+        return;
+        localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
+        localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
+        if (AssociatedAccountManageActivity.a(this.a) != null) {
+          break;
+        }
+        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        AssociatedAccountManageActivity.a(this.a).b();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).b();
+        }
+      } while (!AppSetting.c);
+      paramView.setContentDescription(this.a.getString(2131690852));
+      return;
+      if (AssociatedAccountManageActivity.a(this.a) != paramView) {
+        break;
+      }
+      AssociatedAccountManageActivity.a(this.a).a();
+      if (localView2 != null)
+      {
+        localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
+        localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      if ((localView1 instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView1).f();
+      }
+      AssociatedAccountManageActivity.a(this.a, null);
+    } while (!AppSetting.c);
+    paramView.setContentDescription(this.a.getString(2131721201));
+    return;
+    AssociatedAccountManageActivity.a(this.a).a();
+    Object localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
+    if (localObject != null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+      localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
+      ((View)localObject).setLayoutParams(localLayoutParams);
     }
+    ((RotateSwitchImageView)paramView).b();
+    if (localView2 != null)
+    {
+      localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
+      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (AppSetting.c)
+    {
+      paramView.setContentDescription(this.a.getString(2131690852));
+      AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131721201));
+    }
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).b();
+    }
+    View localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).f();
+    }
+    AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 

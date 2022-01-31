@@ -1,8 +1,6 @@
-public abstract interface xjl
+public abstract interface xjl<ERROR_TYPE, DATA_TYPE>
 {
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void j();
+  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
 }
 
 

@@ -1,31 +1,51 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class wpk
-  extends QQUIEventReceiver<MystoryListView, ukk>
+class wpk
+  implements urr<ver, ves>
 {
-  public wpk(@NonNull MystoryListView paramMystoryListView)
-  {
-    super(paramMystoryListView);
-  }
+  wpk(wpi paramwpi, JobContext paramJobContext, wov paramwov) {}
   
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull ukk paramukk)
+  public void a(@NonNull ver paramver, @Nullable ves arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramMystoryListView.q();
-    paramukk = (wps)paramMystoryListView.a("FeedSegment");
-    if (paramukk != null) {
-      paramukk.j();
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
     }
-    paramMystoryListView = (wrh)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
+    if (??? == null)
+    {
+      paramErrorMessage = new ves(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Wpi)
+      {
+        wpi.a(this.jdField_a_of_type_Wpi, paramErrorMessage);
+        wpi.a(this.jdField_a_of_type_Wpi).remove(paramver);
+        wpi.a(this.jdField_a_of_type_Wpi, this.jdField_a_of_type_Wov);
+        return;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ukk.class;
+    if (paramErrorMessage.isFail()) {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    uux localuux = (uux)uwa.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (vet)localIterator.next();
+      localuux.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localuux.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+      }
+    }
   }
 }
 

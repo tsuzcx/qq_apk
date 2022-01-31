@@ -1,17 +1,6 @@
-import android.text.TextUtils;
-
-public class wiz
-  extends wiu
+public abstract interface wiz
 {
-  public wiz()
-  {
-    super("memory_publish", null);
-  }
-  
-  public static boolean a(wiu paramwiu)
-  {
-    return TextUtils.equals("memory_publish", paramwiu.a);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

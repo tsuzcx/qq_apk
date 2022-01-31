@@ -1,210 +1,311 @@
-import com.tencent.common.app.AppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import com.tencent.widget.AbsListView.LayoutParams;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
 public class blri
-  extends bllx
+  extends BaseAdapter
 {
-  public static final File a;
-  private ArrayList<DoodleEmojiItem> a;
+  public static final int a;
+  public static final int b;
+  public static final int c = bdoo.b(10.0F);
+  float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArrayList<blrj> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList(0);
+  public boolean a;
+  float jdField_b_of_type_Float;
+  private boolean jdField_b_of_type_Boolean;
+  int d;
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(blve.a(), "dov_doodle_sticker");
+    jdField_a_of_type_Int = bdoo.b(40.0F);
+    jdField_b_of_type_Int = bdoo.b(5.0F);
   }
   
-  private ArrayList<DoodleEmojiItem> a(String paramString)
+  public blri(Context paramContext, int paramInt)
   {
-    localArrayList = new ArrayList(4);
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = paramInt;
+  }
+  
+  private View a()
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
+    if (!this.jdField_a_of_type_Boolean) {
+      localFrameLayout.setPadding(c, c, c, c);
+    }
+    for (;;)
     {
-      paramString = new JSONObject(paramString).getJSONArray("category");
-      localArrayList.ensureCapacity(paramString.length());
-      int i = 0;
-      while (i < paramString.length())
+      ((RelativeLayout.LayoutParams)localObject1).setMargins(jdField_b_of_type_Int, jdField_b_of_type_Int, jdField_b_of_type_Int, jdField_b_of_type_Int);
+      localRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject1);
+      localObject1 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((URLImageView)localObject1).setId(2131367819);
+      ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
+      Object localObject2 = new FrameLayout.LayoutParams(jdField_a_of_type_Int, jdField_a_of_type_Int);
+      ((FrameLayout.LayoutParams)localObject2).gravity = 49;
+      localFrameLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)localObject2).setId(2131366358);
+      ((TextView)localObject2).setGravity(17);
+      ((TextView)localObject2).setTextSize(2, 12.0F);
+      ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167194));
+      ((TextView)localObject2).setMaxLines(1);
+      ((TextView)localObject2).setLines(1);
+      ((TextView)localObject2).setShadowLayer(3.0F, 0.0F, 0.0F, Color.parseColor("#7F000000"));
+      Object localObject3 = new FrameLayout.LayoutParams(-2, -2);
+      ((FrameLayout.LayoutParams)localObject3).gravity = 81;
+      localFrameLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+      localObject3 = new blrj();
+      ((blrj)localObject3).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject1);
+      ((blrj)localObject3).jdField_a_of_type_AndroidViewView = localFrameLayout;
+      ((blrj)localObject3).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+      ((blrj)localObject3).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      localRelativeLayout.setTag(localObject3);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+      return localRelativeLayout;
+      localFrameLayout.setPadding(jdField_b_of_type_Int, 0, jdField_b_of_type_Int, jdField_b_of_type_Int);
+    }
+  }
+  
+  private void a(ImageView paramImageView, String paramString)
+  {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      try
       {
-        DoodleEmojiItem localDoodleEmojiItem = DoodleEmojiItem.getDoodleEmojiItemFromJsonObj(paramString.getJSONObject(i));
-        if (localDoodleEmojiItem != null) {
-          localArrayList.add(localDoodleEmojiItem);
+        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+        if (paramString.getStatus() == 2) {
+          paramString.restartDownload();
         }
-        i += 1;
+        paramImageView.setImageDrawable(paramString);
+        return;
       }
-      return localArrayList;
+      catch (Error paramImageView) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("TransitionProviderGridAdapter", 2, "setStaticURLDrawable " + paramImageView.toString());
+  }
+  
+  private void b(ImageView paramImageView, String paramString)
+  {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString))) {
+      throw new Exception("apngUrl null");
     }
-    catch (Exception paramString)
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getFilesDir() + "/shortvideo_transition_preview/";
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdir();
+    }
+    localObject2 = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
+    localObject1 = bduc.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, paramString, null, new int[] { 16 }, "-Transition-", null);
+    if (localObject1 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QIMPasterConfigManager", 2, QLog.getStackTraceString(paramString));
+      paramImageView.setImageDrawable((Drawable)localObject1);
+      if (((URLDrawable)localObject1).getStatus() == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TransitionProviderGridAdapter", 2, "restartDownload apng:" + paramString);
+        }
+        ((URLDrawable)localObject1).restartDownload();
       }
+      return;
     }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = new File(jdField_a_of_type_JavaIoFile + File.separator + "doodle_sticker_config.cfg").exists();
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPasterConfigManager", 2, "QIMPasterConfigManager isStickerConfigFileExist=" + bool);
-    }
-    return bool;
-  }
-  
-  /* Error */
-  public ArrayList<DoodleEmojiItem> a()
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   6: ifnonnull +153 -> 159
-    //   9: aload_0
-    //   10: monitorenter
-    //   11: aload_0
-    //   12: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   15: ifnonnull +142 -> 157
-    //   18: getstatic 25	blri:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   21: ldc 104
-    //   23: invokestatic 126	blve:a	(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
-    //   26: astore_3
-    //   27: aload_3
-    //   28: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   31: ifne +12 -> 43
-    //   34: aload_0
-    //   35: aload_0
-    //   36: aload_3
-    //   37: invokespecial 134	blri:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   40: putfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   43: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   46: ifeq +39 -> 85
-    //   49: new 90	java/lang/StringBuilder
-    //   52: dup
-    //   53: invokespecial 91	java/lang/StringBuilder:<init>	()V
-    //   56: ldc 136
-    //   58: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: astore_3
-    //   62: aload_0
-    //   63: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   66: ifnull +98 -> 164
-    //   69: iconst_1
-    //   70: istore_1
-    //   71: ldc 78
-    //   73: iconst_2
-    //   74: aload_3
-    //   75: iload_1
-    //   76: invokevirtual 117	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: aload_0
-    //   86: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   89: ifnull +13 -> 102
-    //   92: aload_0
-    //   93: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   96: invokevirtual 139	java/util/ArrayList:size	()I
-    //   99: ifne +58 -> 157
-    //   102: aload_0
-    //   103: aload_0
-    //   104: ldc 141
-    //   106: invokestatic 144	blve:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   109: invokespecial 134	blri:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   112: putfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   115: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +39 -> 157
-    //   121: new 90	java/lang/StringBuilder
-    //   124: dup
-    //   125: invokespecial 91	java/lang/StringBuilder:<init>	()V
-    //   128: ldc 146
-    //   130: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: astore_3
-    //   134: aload_0
-    //   135: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   138: ifnull +31 -> 169
-    //   141: iload_2
-    //   142: istore_1
-    //   143: ldc 78
-    //   145: iconst_2
-    //   146: aload_3
-    //   147: iload_1
-    //   148: invokevirtual 117	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   151: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   157: aload_0
-    //   158: monitorexit
-    //   159: aload_0
-    //   160: getfield 123	blri:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   163: areturn
-    //   164: iconst_0
-    //   165: istore_1
-    //   166: goto -95 -> 71
-    //   169: iconst_0
-    //   170: istore_1
-    //   171: goto -28 -> 143
-    //   174: astore_3
-    //   175: aload_0
-    //   176: monitorexit
-    //   177: aload_3
-    //   178: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	179	0	this	blri
-    //   70	101	1	bool1	boolean
-    //   1	141	2	bool2	boolean
-    //   26	121	3	localObject1	Object
-    //   174	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   11	43	174	finally
-    //   43	69	174	finally
-    //   71	85	174	finally
-    //   85	102	174	finally
-    //   102	141	174	finally
-    //   143	157	174	finally
-    //   157	159	174	finally
-    //   175	177	174	finally
+    throw new Exception("urlDrawableApng null");
   }
   
   public void a()
   {
-    a();
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = a(paramString);
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    TransitionCategoryItem localTransitionCategoryItem = bnhb.a().a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    blrj localblrj;
+    boolean bool2;
+    label66:
+    boolean bool1;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-      localObject = (blqw)blmf.a().c(4);
-      if (((blqw)localObject).a != null) {
-        ((blqw)localObject).a.clear();
+      localblrj = (blrj)localIterator.next();
+      if (localblrj.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem == null) {
+        break label116;
       }
-      ((bmni)urr.a(39)).a(this.jdField_a_of_type_JavaUtilArrayList);
-      a().notifyObservers(blpe.class, 4, true, null);
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMPasterConfigManager", 2, "paster config send notify");
+      if (localTransitionCategoryItem == null) {
+        break label111;
       }
-      blve.a(jdField_a_of_type_JavaIoFile, "doodle_sticker_config.cfg", paramString);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder().append("paster config handleConfig").append(paramString).append(" result:");
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        break label149;
+      bool2 = TextUtils.equals(localTransitionCategoryItem.a, localblrj.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem.a);
+      bool1 = bool2;
+      if (!bool2)
+      {
+        if (((localTransitionCategoryItem != null) && (!localTransitionCategoryItem.c())) || (!localblrj.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem.c())) {
+          break label105;
+        }
+        bool1 = true;
       }
     }
-    label149:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      QLog.i("QIMPasterConfigManager", 2, bool);
+      localblrj.a(bool1);
+      break;
+      label105:
+      bool1 = false;
+      continue;
       return;
+      label111:
+      bool2 = false;
+      break label66;
+      label116:
+      bool1 = false;
     }
   }
   
-  public void b() {}
+  public void a(List<QIMFilterCategoryItem> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TransitionProviderGridAdapter", 2, "onDestroy");
+    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool3 = false;
+    if ((this.jdField_a_of_type_Float <= 0.0F) && (paramViewGroup != null))
+    {
+      this.jdField_a_of_type_Float = paramViewGroup.getMeasuredWidth();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label105;
+      }
+    }
+    label105:
+    for (this.jdField_b_of_type_Float = ((this.jdField_a_of_type_Float - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 3.2F + 0.5F);; this.jdField_b_of_type_Float = ((this.jdField_a_of_type_Float - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4.0F + 0.5F))
+    {
+      paramViewGroup = paramView;
+      if (paramView == null) {
+        paramViewGroup = a();
+      }
+      if ((paramViewGroup.getTag() != null) && ((paramViewGroup.getTag() instanceof blrj))) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TransitionProviderGridAdapter", 2, "ConvertViewTag null");
+      }
+      return paramViewGroup;
+    }
+    blrj localblrj = (blrj)paramViewGroup.getTag();
+    TextView localTextView = localblrj.jdField_a_of_type_AndroidWidgetTextView;
+    URLImageView localURLImageView = localblrj.jdField_a_of_type_ComTencentImageURLImageView;
+    TransitionCategoryItem localTransitionCategoryItem = (TransitionCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localblrj.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem = localTransitionCategoryItem;
+    paramView = bnhb.a().a();
+    if (paramView != null) {}
+    for (boolean bool1 = TextUtils.equals(paramView.a, localTransitionCategoryItem.a);; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        if (paramView != null)
+        {
+          bool1 = bool3;
+          if (!paramView.c()) {}
+        }
+        else
+        {
+          bool1 = bool3;
+          if (localTransitionCategoryItem.c()) {
+            bool1 = true;
+          }
+        }
+        bool2 = bool1;
+      }
+      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)paramViewGroup.getLayoutParams();
+      paramView = localLayoutParams;
+      if (localLayoutParams == null)
+      {
+        paramView = new AbsListView.LayoutParams(-1, -1);
+        paramViewGroup.setLayoutParams(paramView);
+      }
+      paramView.height = ((int)this.jdField_b_of_type_Float);
+      localblrj.a(bool2);
+      try
+      {
+        b(localURLImageView, localTransitionCategoryItem.j);
+        localTextView.setText(localTransitionCategoryItem.b);
+        paramViewGroup.setFocusable(true);
+        paramViewGroup.setFocusableInTouchMode(true);
+        paramViewGroup.setContentDescription(localTransitionCategoryItem.b + alud.a(2131715458));
+        return paramViewGroup;
+      }
+      catch (Error paramView)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TransitionProviderGridAdapter", 2, "setApngURLDrawable " + paramView.toString());
+          }
+          a(localURLImageView, localTransitionCategoryItem.d);
+        }
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TransitionProviderGridAdapter", 2, "setApngURLDrawable " + paramView.toString());
+          }
+          a(localURLImageView, localTransitionCategoryItem.d);
+        }
+      }
+    }
+  }
 }
 
 

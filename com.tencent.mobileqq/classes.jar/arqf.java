@@ -1,16 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-class arqf
-  extends AnimatorListenerAdapter
+public class arqf
 {
-  arqf(arqe paramarqe) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.setVisibility(8);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
 }
 
 

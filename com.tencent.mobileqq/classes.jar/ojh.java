@@ -81,10 +81,10 @@ public class ojh
     {
       this.jdField_a_of_type_Oje.notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131705049));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131705061));
       break;
       label257:
-      this.b.setText(alpo.a(2131705050));
+      this.b.setText(alud.a(2131705062));
       break label220;
       label272:
       if (this.b != null)
@@ -112,7 +112,7 @@ public class ojh
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("folder_status", "" + ors.d);
-        if (!bdee.h(this.jdField_a_of_type_AndroidContentContext)) {
+        if (!bdin.h(this.jdField_a_of_type_AndroidContentContext)) {
           continue;
         }
         paramView = "2";
@@ -151,7 +151,7 @@ public class ojh
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("folder_status", "" + ors.d);
-        if (!bdee.h(this.jdField_a_of_type_AndroidContentContext)) {
+        if (!bdin.h(this.jdField_a_of_type_AndroidContentContext)) {
           continue;
         }
         paramAdapterView = "2";

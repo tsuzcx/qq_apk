@@ -1,99 +1,106 @@
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mobileqq.data.Card;
+import java.text.DateFormat;
+import java.util.Date;
 
-@TargetApi(14)
 public class ujx
-  extends ujt
+  extends ujw
 {
-  protected int a;
-  protected int b;
+  public long a;
+  public long b;
+  public String c;
   
-  public ujx(@NonNull String[] paramArrayOfString)
+  public ujx(uii paramuii, int paramInt)
   {
-    super(paramArrayOfString);
-    paramArrayOfString = (urk)urr.a(10);
-    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
-    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
-  }
-  
-  protected void a(String[] paramArrayOfString, uju paramuju)
-  {
-    int m = paramArrayOfString.length;
-    int i = 0;
-    String str;
-    int j;
-    if (i < m)
-    {
-      str = paramArrayOfString[i];
-      if (paramuju.a)
-      {
-        j = 50;
-        label31:
-        if (!a(str, j)) {
-          break label60;
-        }
-      }
-    }
+    super(paramuii);
+    if (paramuii.e == 1) {}
     for (;;)
     {
-      i += 1;
-      break;
-      j = this.a;
-      break label31;
-      label60:
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      j = 0;
-      while (j < k)
-      {
-        localArrayList.add(new ujy(this, arrayOfFile[j]));
-        j += 1;
+      xqq.a(bool);
+      this.c = paramuii.jdField_a_of_type_JavaLangString;
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = paramuii.jdField_a_of_type_Int;
       }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
-      {
-        if (j % 150 == 0) {}
-        try
-        {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-          a(((ujy)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
-        }
-      }
-      paramuju.jdField_b_of_type_Double = (d - a(localFile) + paramuju.jdField_b_of_type_Double);
-      paramuju.jdField_b_of_type_Int += k;
+      String str = i + "-" + paramuii.jdField_b_of_type_JavaLangString;
+      paramuii = i + "-" + paramuii.c;
+      long l1 = uig.a.parse(str).getTime() / 1000L;
+      long l2 = uig.a.parse(paramuii).getTime() / 1000L;
+      this.a = l1;
+      this.b = l2;
+      return;
+      bool = false;
     }
   }
   
-  public boolean a(String paramString, int paramInt)
+  public ujx(uii paramuii, Card paramCard, int paramInt)
   {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
+    super(paramuii);
+    boolean bool;
+    int i;
+    label48:
+    int j;
+    if (paramuii.e == 6)
+    {
+      bool = true;
+      xqq.a(bool);
+      this.c = paramuii.jdField_a_of_type_JavaLangString;
+      if (paramCard == null) {
+        break label239;
+      }
+      i = (int)((paramCard.lBirthday & 0xFF00) >> 8);
+      if (paramCard == null) {
+        break label245;
+      }
+      j = (int)(paramCard.lBirthday & 0xFF);
+      label63:
+      if ((i <= 0) || (j <= 0)) {
+        break label270;
+      }
+      if (i >= 10) {
+        break label251;
+      }
+      paramCard = "0" + i;
+      label101:
+      if (j >= 10) {
+        break label260;
+      }
     }
-    return false;
+    label260:
+    for (String str = "0" + j;; str = String.valueOf(j))
+    {
+      paramCard = paramInt + "-" + paramCard + "-" + str + " " + paramuii.jdField_b_of_type_JavaLangString;
+      paramCard = uig.a.parse(paramCard);
+      long l1 = paramCard.getTime() / 1000L;
+      long l2 = paramCard.getTime() / 1000L;
+      long l3 = paramuii.jdField_b_of_type_Int * 60 * 60;
+      this.a = l1;
+      this.b = (l2 + l3);
+      return;
+      bool = false;
+      break;
+      label239:
+      i = 0;
+      break label48;
+      label245:
+      j = 0;
+      break label63;
+      label251:
+      paramCard = String.valueOf(i);
+      break label101;
+    }
+    label270:
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("TimeSplitConfig =[");
+    localStringBuilder.append(" mStartTime=").append(this.a);
+    localStringBuilder.append(" mEndTime=").append(this.b);
+    localStringBuilder.append(" mAlbumName=").append(this.c);
+    localStringBuilder.append("] ");
+    return localStringBuilder.toString() + super.toString();
   }
 }
 

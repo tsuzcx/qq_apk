@@ -161,14 +161,14 @@ public class mqh
     a(false);
   }
   
-  public void a(axqz paramaxqz)
+  public void a(axvi paramaxvi)
   {
-    this.jdField_a_of_type_JavaLangString = paramaxqz.jdField_a_of_type_JavaLangString;
-    Object localObject = MediaFormat.createVideoFormat("video/avc", paramaxqz.jdField_a_of_type_Int, paramaxqz.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaLangString = paramaxvi.jdField_a_of_type_JavaLangString;
+    Object localObject = MediaFormat.createVideoFormat("video/avc", paramaxvi.jdField_a_of_type_Int, paramaxvi.jdField_b_of_type_Int);
     ((MediaFormat)localObject).setInteger("color-format", 2130708361);
-    ((MediaFormat)localObject).setInteger("bitrate", paramaxqz.c);
-    ((MediaFormat)localObject).setInteger("frame-rate", paramaxqz.d);
-    ((MediaFormat)localObject).setInteger("i-frame-interval", paramaxqz.e);
+    ((MediaFormat)localObject).setInteger("bitrate", paramaxvi.c);
+    ((MediaFormat)localObject).setInteger("frame-rate", paramaxvi.d);
+    ((MediaFormat)localObject).setInteger("i-frame-interval", paramaxvi.e);
     if (QLog.isColorLevel()) {
       QLog.d("QavRecordEncoder", 2, "VideoFormat: " + localObject);
     }
@@ -196,18 +196,18 @@ public class mqh
       this.jdField_b_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
       this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     }
-    localObject = new File(paramaxqz.jdField_a_of_type_JavaLangString);
+    localObject = new File(paramaxvi.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordEncoder", 2, "start, before check file, exits[" + ((File)localObject).exists() + "]");
     }
     if (!((File)localObject).exists()) {
-      bdcs.c(((File)localObject).getAbsolutePath());
+      bdhb.c(((File)localObject).getAbsolutePath());
     }
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordEncoder", 2, "start, end of check file, exits[" + ((File)localObject).exists() + "]");
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramaxqz.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramaxqz.g);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramaxvi.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramaxvi.g);
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = false;

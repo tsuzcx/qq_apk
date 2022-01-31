@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import allz;
+import alqo;
 import java.util.TimerTask;
 
 public class DataLineHandler$4
   extends TimerTask
 {
-  public DataLineHandler$4(allz paramallz) {}
+  public DataLineHandler$4(alqo paramalqo) {}
   
   public void run()
   {

@@ -1,28 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import java.util.List;
 
 class vpd
-  implements vqy
+  implements wjd
 {
-  private vpd(vpa paramvpa) {}
+  vpd(vpc paramvpc, List paramList) {}
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr, int paramInt, Object paramObject)
+  public void a(wje paramwje)
   {
-    return false;
+    vpc.a(this.jdField_a_of_type_Vpc, this.jdField_a_of_type_JavaUtilList, paramwje);
   }
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr, boolean paramBoolean)
-  {
-    return this.a.a.a(paramVideoViewVideoHolder, paramvrr, paramBoolean);
-  }
-  
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr) {}
-  
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr) {}
 }
 
 

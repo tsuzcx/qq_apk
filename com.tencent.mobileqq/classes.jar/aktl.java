@@ -1,216 +1,92 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class aktl
-  implements aksw, Handler.Callback
+  extends aktk
 {
-  private static long jdField_a_of_type_Long;
-  private int jdField_a_of_type_Int;
-  protected bhow a;
-  public WeakReference<Activity> a;
-  private WeakReference<QQAppInterface> b;
-  
-  public aktl(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
+  public aktl(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
-    }
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1000L) {
-      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
-    }
-    do
+    super(paramQQAppInterface);
+    this.a = 99;
+    if (paramQQAppInterface != null)
     {
+      int i = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getInt("hire_priority", 99);
+      if (i > this.a) {
+        this.a = (i + 1);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CardDrawerStatus", 2, "[CardDrawerStatus] onCreate ");
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getUIHandler().post(new CardDrawerStatus.1(this, paramQQAppInterface));
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    Object localObject = aknx.a();
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putBoolean("CardDrawerStatus.VOICE_CONTROL", paramBoolean).commit();
+        return;
+      }
+      QLog.e("CardDrawerStatus", 1, "[setVoicePermission] editor is null ");
       return;
-      jdField_a_of_type_Long = l;
-    } while (TextUtils.isEmpty(paramString));
-    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
-  }
-  
-  public int a()
-  {
-    return 100;
-  }
-  
-  public aknh a(String paramString)
-  {
-    aknh localaknh = new aknh();
-    String str = ApolloUtil.a(paramString, "tips");
-    int i = ApolloUtil.a(paramString, "length");
-    if (TextUtils.isEmpty(str)) {
-      return localaknh;
     }
-    paramString = this.jdField_a_of_type_Bhow.obtainMessage(255);
-    paramString.obj = str;
-    paramString.arg1 = i;
-    paramString.sendToTarget();
-    return localaknh;
+    QLog.e("CardDrawerStatus", 1, "[setVoicePermission] sp is null ");
   }
   
-  public aknh a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static boolean a()
   {
-    if (this.b == null) {
-      return null;
+    SharedPreferences localSharedPreferences = aknx.a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean("CardDrawerStatus.VOICE_CONTROL", true);
     }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    QLog.e("CardDrawerStatus", 1, "[getVoicePermission] sp is null ");
+    return true;
+  }
+  
+  public int a(albr paramalbr, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if ((paramalbr == null) || (paramAppInterface == null) || (paramContext == null))
+    {
+      QLog.e("CardDrawerStatus", 1, "[onExecAction] null pointer");
+      return 0;
+    }
+    if (!this.c) {
+      return super.a(paramalbr, paramInt, paramAppInterface, paramContext);
+    }
+    paramContext = ((aknx)paramAppInterface.getManager(153)).a((QQAppInterface)paramAppInterface, paramAppInterface.getCurrentAccountUin(), new int[] { 2, 4 });
+    if (paramContext != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+        QLog.d("CardDrawerStatus", 2, new Object[] { "CardDrawerStatus onExecAction actionId:", Integer.valueOf(paramContext.actionId), ",actionType:", Integer.valueOf(paramContext.actionType) });
       }
-      return new aknh();
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    if ("general_cmd_ui_show_toast".equals(paramString1)) {
-      return a(paramString2);
-    }
-    if ("cs.get_dress_path.local".equals(paramString1))
-    {
-      alep.a(localQQAppInterface, paramString1, paramString2, paramInt1);
-      return new aknh();
-    }
-    if ("cs.report_data_2_backstage.local".equals(paramString1))
-    {
-      alep.b(localQQAppInterface, paramString2);
-      return new aknh();
-    }
-    if ("cs.report_flow_data.local".equals(paramString1))
-    {
-      alep.c(localQQAppInterface, paramString2);
-      return new aknh();
-    }
-    if ("cs.save_recommend_ip.local".equals(paramString1))
-    {
-      alep.a(localQQAppInterface, paramString2);
-      return new aknh();
-    }
-    if ("cs.openFloatTransparentView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        alep.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aknh();
-      }
-    }
-    else if ("cs.openWebView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        alep.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aknh();
-      }
-    }
-    else
-    {
-      if ("cs.script_get_nickname.local".equals(paramString1))
-      {
-        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-        paramInt2 = -1;
-        String str = "";
-        paramString1 = str;
-        paramInt1 = paramInt2;
-        if (localQQMessageFacade != null)
-        {
-          paramString1 = str;
-          paramInt1 = paramInt2;
-          if (localQQMessageFacade.a())
-          {
-            paramString1 = str;
-            paramInt1 = paramInt2;
-            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
-            {
-              paramString1 = localQQMessageFacade.a();
-              paramInt1 = localQQMessageFacade.a();
-            }
-          }
-        }
-        return akwt.a(paramString2, localQQAppInterface, paramInt1, paramString1);
-      }
-      if (!"cs.send_game_msg.local".equals(paramString1)) {
-        break label403;
-      }
-      alep.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      a((QQAppInterface)paramAppInterface);
+      albi.a(paramalbr, 12, paramContext);
     }
     for (;;)
     {
-      return null;
-      label403:
-      if ("cs.create_xy.local".equals(paramString1))
-      {
-        b(paramString2);
-      }
-      else if ("cs.open_cm_aio.local".equals(paramString1))
-      {
-        a(paramString2);
-      }
-      else if ("cs.show_one_more_page.local".equals(paramString1))
-      {
-        paramString1 = (akji)localQQAppInterface.getManager(153);
-        if (paramString1 != null) {
-          paramString1.a().h(paramString2);
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
-  }
-  
-  void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i = 1;
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      QQToast.a(localBaseApplication, localCharSequence, i).a();
-      return false;
-      i = 0;
+      return 0;
+      paramAppInterface = new ApolloActionData();
+      paramAppInterface.actionId = -1;
+      paramAppInterface.actionType = 0;
+      albi.a(paramalbr, 5, paramAppInterface);
     }
   }
 }

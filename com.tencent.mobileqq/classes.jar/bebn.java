@@ -1,14 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Card;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bebn
-  implements View.OnClickListener
+public class bebn
 {
-  bebn(bebk parambebk) {}
-  
-  public void onClick(View paramView)
+  public static bebj a(Activity paramActivity, @NonNull JSONObject paramJSONObject, awqt paramawqt, String paramString)
   {
-    this.a.a(false, 0, 0);
+    if ((paramawqt == null) || (paramawqt.a == null)) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
+    }
+    long l1 = paramawqt.a.lCurrentStyleId;
+    if (l1 < 0L) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
+    }
+    long l2 = paramJSONObject.optLong("id");
+    if (l2 != l1) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
+    }
+    if (l2 == awra.l) {}
+    for (paramActivity = new bebo(paramActivity, paramJSONObject, paramawqt);; paramActivity = new bebp(paramActivity, paramJSONObject, paramawqt))
+    {
+      paramActivity.a(paramString);
+      return paramActivity;
+      if (l2 != awra.m) {
+        break;
+      }
+    }
+    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
   }
 }
 

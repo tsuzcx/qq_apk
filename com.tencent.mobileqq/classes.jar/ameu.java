@@ -1,30 +1,41 @@
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
 
-public class ameu
-  extends alox
+class ameu
+  implements ServiceConnection
 {
-  public ameu(HiddenChatFragment paramHiddenChatFragment) {}
+  ameu(ames paramames) {}
   
-  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
-      QLog.e("tag_hidden_chat", 1, "data not right");
+    ames.a(this.a, 2);
+    ames.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
     }
-    do
-    {
-      do
-      {
-        return;
-        String[] arrayOfString = (String[])paramArrayOfObject[0];
-        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
-        }
-      } while (!paramBoolean);
-      this.a.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    ames.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    ames.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    ames.a(this.a, true);
+    if (ames.a(this.a) != null) {
+      ames.a(this.a).interrupt();
+    }
   }
 }
 

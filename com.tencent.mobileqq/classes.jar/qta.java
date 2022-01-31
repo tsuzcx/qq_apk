@@ -23,20 +23,20 @@ public class qta
   qta(Context paramContext, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131364889));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377972));
-    this.b = ((TextView)paramViewGroup.findViewById(2131379600));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131378150));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131364891));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378026));
+    this.b = ((TextView)paramViewGroup.findViewById(2131379658));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131378204));
   }
   
   void a(ColumnInfo paramColumnInfo, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842636);
-    ((Drawable)localObject).setBounds(0, 0, xod.a(BaseApplicationImpl.getContext(), 15.0F), xod.a(BaseApplicationImpl.getContext(), 15.0F));
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842649);
+    ((Drawable)localObject).setBounds(0, 0, xsm.a(BaseApplicationImpl.getContext(), 15.0F), xsm.a(BaseApplicationImpl.getContext(), 15.0F));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramColumnInfo.title);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(xod.a(BaseApplicationImpl.getContext(), 5.0F));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(xsm.a(BaseApplicationImpl.getContext(), 5.0F));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-    localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131719049);
+    localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131719061);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.b.setText(String.format((String)localObject, new Object[] { Integer.valueOf(paramColumnInfo.videoCount) }));
     }

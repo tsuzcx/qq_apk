@@ -1,9 +1,22 @@
-import android.widget.LinearLayout;
+import android.graphics.drawable.Drawable;
 
-public class apuc
-  extends apow
+public abstract interface apuc
 {
-  public LinearLayout[] a;
+  public abstract void a(apuf paramapuf);
+  
+  public abstract void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable);
+  
+  public abstract boolean a(apuf paramapuf);
+  
+  public abstract void b();
+  
+  public abstract void b(apuf paramapuf);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void setting();
 }
 
 

@@ -1,272 +1,470 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;>;
+import java.util.UUID;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arpf
-  extends amiz
+  extends arpd
 {
-  private List<UniformDownloadBPTransEntity> a;
-  
-  public arpf(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public arpf(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramProxyManager);
+    super(paramQQAppInterface);
   }
   
-  private void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity, amji paramamji)
+  private String a(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    paramamji = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (paramamji == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addEntityToDB. EntityManager. create failed!!");
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString1 = "";
     }
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.copyFrom(paramUniformDownloadBPTransEntity);
-    if (localUniformDownloadBPTransEntity.getStatus() == 1000) {
-      paramamji.a(localUniformDownloadBPTransEntity);
-    }
-    for (;;)
+    do
     {
-      paramamji.a();
-      return;
-      if (localUniformDownloadBPTransEntity.getStatus() == 1001) {
-        paramamji.a(localUniformDownloadBPTransEntity);
-      } else {
-        QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addEntityToDB. error status of entity");
-      }
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>getMore. no cache");
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (long l = 9223372036854775807L;; l = ((UniformDownloadBPTransEntity)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).getId())
-    {
-      localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " where _id < " + String.valueOf(l) + " order by _id desc limit " + paramInt + ") order by _id desc";
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-      if ((localObject != null) && ((localObject == null) || (((List)localObject).size() != 0))) {
+      return paramString1;
+      paramString2 = alof.bp + arsx.a(paramLong, paramInt, paramString2);
+      if (!a(paramString1, paramString2)) {
         break;
       }
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>getMore. no more. ");
+      paramString1 = paramString2;
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileMsgBackupHandler<QFile>", 4, "getThumbSavePath. thumbPath[" + paramString2 + "]");
+    return paramString2;
+    QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "getThumbSavePath. move file failed.");
+    return "";
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    if (paramMessageRecord.isMultiMsg) {}
+    for (Object localObject1 = (MessageForTroopFile)arrr.a((ChatMessage)paramMessageRecord); localObject1 == null; localObject1 = (MessageForTroopFile)paramMessageRecord)
+    {
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: get updateTroopFileRecord failed. get troop file msg is null. isMulti[" + paramMessageRecord.isMultiMsg + "]");
       return false;
     }
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      b((UniformDownloadBPTransEntity)((Iterator)localObject).next());
-    }
-    return true;
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean)
-  {
-    if (paramString == null)
+    long l = Long.parseLong(((MessageForTroopFile)localObject1).frienduin);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
+    localObject1 = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
+    if ((localTroopFileTransferManager == null) || (localObject1 == null))
     {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. delEntityFromDB. url=null");
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: get troopFileTransferManager failed.");
       return false;
     }
-    a(UniformDownloadBPTransEntity.tableName(), "mUrl = ?", new String[] { paramString }, null);
-    if (paramBoolean)
+    if (((bbtn)localObject1).jdField_a_of_type_JavaUtilUUID == null)
     {
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. delEntityFromDB. bImUpdateDB = true");
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.d();
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: updateTroopFileRecord failed. troop file status info uuid is null");
+      return false;
     }
-    return true;
-  }
-  
-  private UniformDownloadBPTransEntity b(String paramString)
-  {
-    Object localObject = "select * from " + UniformDownloadBPTransEntity.tableName() + " where mUrl = " + paramString;
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (localawbw == null)
-    {
-      QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. queryEntityFromDByUrl. EntityManager. create failed!!");
-      return null;
-    }
-    localObject = localawbw.a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-    if (localObject == null)
-    {
-      localawbw.a();
-      return null;
-    }
-    if (((List)localObject).size() > 1) {
-      QLog.w("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. count of DB  is over 1 when query url:" + paramString);
-    }
-    paramString = (UniformDownloadBPTransEntity)((List)localObject).get(0);
-    localawbw.a();
-    return paramString;
-  }
-  
-  private void b(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
-  {
-    if (paramUniformDownloadBPTransEntity == null) {}
-    for (;;)
-    {
-      try
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(((bbtn)localObject1).jdField_a_of_type_JavaUtilUUID);
+    Object localObject2;
+    String str;
+    if (localItem != null) {
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        QLog.e("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy=null");
-        return;
-      }
-      finally {}
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramUniformDownloadBPTransEntity))
-      {
-        QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 1. url:" + paramUniformDownloadBPTransEntity.mUrl);
-      }
-      else
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject1 = "";
+        localObject2 = "";
+        Iterator localIterator = paramList.iterator();
+        paramList = (List<MsgBackupResEntity>)localObject2;
         for (;;)
         {
           if (localIterator.hasNext())
           {
-            UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-            if ((localUniformDownloadBPTransEntity != null) && (localUniformDownloadBPTransEntity.mUrl.equalsIgnoreCase(paramUniformDownloadBPTransEntity.mUrl)))
+            localObject2 = (MsgBackupResEntity)localIterator.next();
+            if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
             {
-              QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. addToCacheEntityList. entiy is existed 2. url:" + paramUniformDownloadBPTransEntity.mUrl);
-              break;
+              str = a((MsgBackupResEntity)localObject2);
+              if (TextUtils.isEmpty(str)) {
+                break label381;
+              }
+              if (((MsgBackupResEntity)localObject2).msgSubType == 12)
+              {
+                if (bdhb.b(localItem.largeThumbnailFile)) {
+                  continue;
+                }
+                localObject1 = a(l, str, localItem.Id.toString(), 640);
+              }
             }
           }
         }
-        QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL].>>>addToCacheEntityList. add it. url:" + paramUniformDownloadBPTransEntity.mUrl);
-        this.jdField_a_of_type_JavaUtilList.add(0, paramUniformDownloadBPTransEntity);
-        if (this.jdField_a_of_type_JavaUtilList.size() > 30) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        }
       }
     }
-  }
-  
-  private void b(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = null;
+    label381:
     for (;;)
     {
-      Object localObject;
-      try
+      break;
+      if (((MsgBackupResEntity)localObject2).msgSubType == 11)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        localObject = localStringBuilder;
-        if (localIterator.hasNext())
-        {
-          localObject = (UniformDownloadBPTransEntity)localIterator.next();
-          if ((localObject == null) || (!paramString.equalsIgnoreCase(((UniformDownloadBPTransEntity)localObject).mUrl))) {
-            continue;
-          }
-        }
-        localStringBuilder = new StringBuilder().append("[UniformDL].>>>removFromCacheEntityList. remove it. url:");
-        if (localObject == null)
-        {
-          paramString = "null";
-          QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, paramString);
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
+        if (bdhb.b(localItem.LocalFile)) {
           break;
         }
+        paramList = a(str, localItem.FileName);
+        continue;
+        if (bdhb.b(paramList))
+        {
+          localItem.LocalFile = paramList;
+          localItem.Status = 11;
+          localTroopFileTransferManager.b(localItem);
+        }
+        if (bdhb.b((String)localObject1))
+        {
+          localItem.largeThumbnailFile = ((String)localObject1);
+          localItem.HasThumbnailFile_Large = true;
+          localTroopFileTransferManager.b(localItem);
+        }
+        return true;
+        return false;
       }
-      finally {}
-      paramString = ((UniformDownloadBPTransEntity)localObject).mUrl;
     }
   }
   
-  private UniformDownloadBPTransEntity c(String paramString)
+  private void c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = null;
-    if (paramString == null)
+    if (paramMessageRecord.isMultiMsg) {}
+    for (Object localObject1 = (MessageForTroopFile)arrr.a((ChatMessage)paramMessageRecord); localObject1 == null; localObject1 = (MessageForTroopFile)paramMessageRecord)
     {
-      paramString = localUniformDownloadBPTransEntity;
-      return paramString;
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: createTroopFileRecord failed. get troop file msg is null. isMulti[" + paramMessageRecord.isMultiMsg + "]");
+      return;
+    }
+    long l = Long.parseLong(((MessageForTroopFile)localObject1).frienduin);
+    if (bcmo.a(l) == null) {
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "createTroopFileRecord: get TroopFileDataManager failed.");
+    }
+    bbsa localbbsa = bcmu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).b(((MessageForTroopFile)localObject1).url, ((MessageForTroopFile)localObject1).fileName, ((MessageForTroopFile)localObject1).fileSize, ((MessageForTroopFile)localObject1).bisID);
+    Object localObject2;
+    String str;
+    if ((localbbsa != null) && (paramList != null) && (!paramList.isEmpty()))
+    {
+      localObject1 = "";
+      localObject2 = "";
+      Iterator localIterator = paramList.iterator();
+      paramList = (List<MsgBackupResEntity>)localObject2;
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          localObject2 = (MsgBackupResEntity)localIterator.next();
+          if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
+          {
+            str = a((MsgBackupResEntity)localObject2);
+            if (TextUtils.isEmpty(str)) {
+              break label412;
+            }
+            if (((MsgBackupResEntity)localObject2).msgSubType == 12) {
+              localObject1 = a(l, str, UUID.nameUUIDFromBytes(localbbsa.b.getBytes()).toString(), 640);
+            }
+          }
+        }
+      }
+    }
+    label412:
+    for (;;)
+    {
+      break;
+      if (((MsgBackupResEntity)localObject2).msgSubType == 11)
+      {
+        paramList = a(str, localbbsa.c);
+        continue;
+        if (bdhb.b(paramList))
+        {
+          localbbsa.h = paramList;
+          localbbsa.e = 11;
+          a("TroopFileMsgBackupHandler<QFile>", "createTroopFileRecord", String.valueOf(paramMessageRecord.msgseq), "save origin path. path[" + paramList + "]");
+        }
+        if (bdhb.b((String)localObject1))
+        {
+          localbbsa.j = ((String)localObject1);
+          a("TroopFileMsgBackupHandler<QFile>", "createTroopFileRecord", String.valueOf(paramMessageRecord.msgseq), "save large thumb path. path[" + (String)localObject1 + "]");
+        }
+        TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).a(localbbsa);
+        return;
+      }
+    }
+  }
+  
+  protected String a(MessageRecord paramMessageRecord, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("msgType", 5);
+      localJSONObject.put("msgSubType", paramInt);
+      MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileType[" + 3 + "]");
+      }
+      localJSONObject.put("uint32_file_type", 3);
+      localJSONObject.put("uint64_sender_uin", paramMessageRecord.senderuin);
+      localJSONObject.put("uint64_receiver_uin", paramMessageRecord.frienduin);
+      Object localObject = localMessageForTroopFile.url;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileUuid[" + (String)localObject + "]");
+        }
+        localJSONObject.put("bytes_file_uuid", localObject);
+      }
+      localObject = localMessageForTroopFile.fileName;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileName[" + (String)localObject + "]");
+        }
+        localJSONObject.put("str_file_name", localObject);
+      }
+      long l = localMessageForTroopFile.fileSize;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileSize[" + l + "]");
+      }
+      localJSONObject.put("uint64_file_size", l);
+      localObject = localMessageForTroopFile.sha1;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo strSHA1[" + (String)localObject + "]");
+        }
+        localJSONObject.put("sha", localObject);
+      }
+      paramInt = localMessageForTroopFile.width;
+      if (paramInt != 0)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo imgWidth[" + paramInt + "]");
+        }
+        localJSONObject.put("uint32_img_width", paramInt);
+      }
+      paramInt = localMessageForTroopFile.height;
+      if (paramInt != 0)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo imgHeight[" + paramInt + "]");
+        }
+        localJSONObject.put("uint32_img_height", paramInt);
+      }
+      localObject = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopFile);
+      if ((localObject != null) && (((bbtn)localObject).e > 0) && (((bbtn)localObject).f > 0))
+      {
+        localJSONObject.put("uint32_img_width", ((bbtn)localObject).e);
+        localJSONObject.put("uint32_img_height", ((bbtn)localObject).f);
+      }
+      l = localMessageForTroopFile.lastTime;
+      if (l != 0L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo deadTime[" + l + "]");
+        }
+        localJSONObject.put("int64_dead_time", l);
+      }
+      l = localMessageForTroopFile.duration;
+      if (l != 0L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo videoDur[" + l + "]");
+        }
+        localJSONObject.put("uint64_video_duration", l);
+      }
+      paramInt = localMessageForTroopFile.bisID;
+      if (paramInt != 0)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo bizId[" + paramInt + "]");
+        }
+        localJSONObject.put("uint32_bus_id", paramInt);
+      }
+      if (paramMessageRecord.isMultiMsg) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        localJSONObject.put("nest_forward", paramInt);
+        paramMessageRecord = localJSONObject.toString();
+        return paramMessageRecord;
+      }
+      return "{}";
+    }
+    catch (JSONException paramMessageRecord) {}
+  }
+  
+  public String a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    HashMap localHashMap = a(paramMsgBackupResEntity.extraDataStr);
+    String str2 = "";
+    String str1 = "";
+    if (paramMsgBackupResEntity.msgSubType == 12)
+    {
+      str1 = (String)localHashMap.get("uint64_receiver_uin");
+      long l = 0L;
+      if (!TextUtils.isEmpty(str1))
+      {
+        l = Long.parseLong(str1);
+        str2 = (String)localHashMap.get("bytes_file_uuid");
+        if (QLog.isDebugVersion()) {
+          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop file uin[" + str1 + "] fileId[" + str2 + "]");
+        }
+        str2 = arsx.a(l, 640, str2);
+        str1 = jdField_a_of_type_JavaLangString;
+      }
     }
     for (;;)
     {
-      try
+      a("TroopFileMsgBackupHandler<QFile>", "getTempFilePath", "", "resType[" + paramMsgBackupResEntity.msgType + "] tempPath[" + str1 + str2 + "]");
+      return str1 + str2;
+      QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop file uin is null");
+      break;
+      if (paramMsgBackupResEntity.msgSubType == 11)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
+        str1 = (String)localHashMap.get("str_file_name");
+        if (QLog.isDebugVersion()) {
+          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop fileName[" + str1 + "]");
+        }
+        str2 = (String)localHashMap.get("bytes_file_uuid");
+        str2 = MD5.toMD5(str1 + str2);
+        if (QLog.isDebugVersion()) {
+          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop temp msg backup fileName[" + str2 + "]");
+        }
+        str1 = b;
+      }
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.i("<QFile_Backup>", 1, "Export: type[troop] contactUin[" + paramMessageRecord.frienduin + "] senderUin[" + paramMessageRecord.senderuin + "] uniSeq[" + paramMessageRecord.uniseq + "] msgSeq[" + paramMessageRecord.msgseq + "]");
+    }
+    Object localObject1;
+    if (paramMessageRecord.isMultiMsg)
+    {
+      localObject1 = (MessageForTroopFile)arrr.a((ChatMessage)paramMessageRecord);
+      localObject1 = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
+      if (localObject1 != null) {
+        break label145;
+      }
+      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "handleExport: get TroopFileStatusInfo failed.");
+    }
+    for (;;)
+    {
+      return;
+      localObject1 = (MessageForTroopFile)paramMessageRecord;
+      localObject1 = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
+      break;
+      label145:
+      int i = arrr.a(((bbtn)localObject1).g);
+      if ((i == 0) || (i == 2))
+      {
+        Object localObject2 = ((bbtn)localObject1).c;
+        if (bdhb.b((String)localObject2))
         {
-          localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)localIterator.next();
-          if (localUniformDownloadBPTransEntity == null) {
-            continue;
-          }
-          boolean bool = paramString.equalsIgnoreCase(localUniformDownloadBPTransEntity.mUrl);
-          if (!bool) {
-            continue;
-          }
-          paramString = localUniformDownloadBPTransEntity;
-          break;
+          localObject2 = a(paramMessageRecord, 12, (String)localObject2);
+          paramList.add(localObject2);
+          a("TroopFileMsgBackupHandler<QFile>", "handleExport", String.valueOf(paramMessageRecord.msgseq), "add resource. resType[" + ((MsgBackupResEntity)localObject2).msgType + "]");
         }
       }
-      finally {}
-      paramString = null;
+      localObject1 = ((bbtn)localObject1).jdField_a_of_type_JavaLangString;
+      if (bdhb.b((String)localObject1))
+      {
+        localObject1 = a(paramMessageRecord, 11, (String)localObject1);
+        paramList.add(localObject1);
+        a("TroopFileMsgBackupHandler<QFile>", "handleExport", String.valueOf(paramMessageRecord.msgseq), "add resource. resType[" + ((MsgBackupResEntity)localObject1).msgType + "]");
+      }
+      if ((QLog.isDebugVersion()) && (paramList != null))
+      {
+        QLog.i("<QFile_Backup>", 1, "Export --step: msgSeq[" + paramMessageRecord.msgseq + "resourceSize[" + paramList.size() + "]");
+        paramMessageRecord = paramList.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramList = (MsgBackupResEntity)paramMessageRecord.next();
+          QLog.i("<QFile_Backup>", 1, "Export --step: backup entity [" + paramList.toLogString() + "]");
+        }
+      }
     }
   }
   
-  private void c()
+  public boolean a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return;
-    }
-    Object localObject = "select * from ( select * from " + UniformDownloadBPTransEntity.tableName() + " order by _id desc limit " + 30 + ") order by _id desc";
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_JavaUtilList = localawbw.a(UniformDownloadBPTransEntity.class, (String)localObject, null);
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
+    boolean bool1 = true;
+    if (paramMsgBackupResEntity == null) {}
+    do
     {
-      UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = (UniformDownloadBPTransEntity)((Iterator)localObject).next();
-      QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>init cache:[ " + localUniformDownloadBPTransEntity.toString() + " ]");
+      return false;
+      paramMessageRecord = a(paramMsgBackupResEntity.extraDataStr);
+      String str = (String)paramMessageRecord.get("bytes_file_uuid");
+      paramMessageRecord = (String)paramMessageRecord.get("uint64_receiver_uin");
+      if (TextUtils.isEmpty(str))
+      {
+        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop fileId is null");
+        return false;
+      }
+      if (TextUtils.isEmpty(paramMessageRecord))
+      {
+        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop uin is null");
+        return false;
+      }
+      TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramMessageRecord));
+      paramMessageRecord = null;
+      if (localTroopFileTransferManager != null) {
+        paramMessageRecord = localTroopFileTransferManager.a(str);
+      }
+      if (paramMessageRecord == null)
+      {
+        QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "checkNeedDownloadRes: get troopStatusInfo failed.");
+        return true;
+      }
+      QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop fileId[" + str + "]");
+      if (paramMsgBackupResEntity.msgSubType == 12)
+      {
+        bool1 = bdhb.b(paramMessageRecord.c);
+        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: offline large thumb exist[" + bool1 + "]");
+        if (!bool1) {}
+        for (bool1 = true;; bool1 = false) {
+          return bool1;
+        }
+      }
+    } while (paramMsgBackupResEntity.msgSubType != 11);
+    boolean bool2 = bdhb.b(paramMessageRecord.jdField_a_of_type_JavaLangString);
+    QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop origin file exist[" + bool2 + "]");
+    if (!bool2) {}
+    for (;;)
+    {
+      return bool1;
+      bool1 = false;
     }
-    localawbw.a();
   }
   
-  public UniformDownloadBPTransEntity a(String paramString)
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
-    c();
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = c(paramString);
-    if (localUniformDownloadBPTransEntity != null) {
-      return localUniformDownloadBPTransEntity;
+    if (QLog.isDebugVersion())
+    {
+      QLog.i("<QFile_Backup>", 1, "Import: type[troop] contactUin[" + paramMessageRecord.frienduin + "] senderUin[" + paramMessageRecord.senderuin + "] uniSeq[" + paramMessageRecord.uniseq + "] msgSeq[" + paramMessageRecord.msgseq + "]");
+      if (paramList != null)
+      {
+        QLog.i("<QFile_Backup>", 1, "Import --step: msgSeq[" + paramMessageRecord.msgseq + "resourceSize[" + paramList.size() + "]");
+        Iterator localIterator = paramList.iterator();
+        while (localIterator.hasNext())
+        {
+          MsgBackupResEntity localMsgBackupResEntity = (MsgBackupResEntity)localIterator.next();
+          QLog.i("<QFile_Backup>", 1, "Import --step: backup entity [" + localMsgBackupResEntity.toLogString() + "]");
+        }
+      }
     }
-    return b(paramString);
+    if (a(paramMessageRecord, paramList)) {
+      a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "update troop file record.");
+    }
+    for (;;)
+    {
+      a(paramMessageRecord);
+      return;
+      c(paramMessageRecord, paramList);
+      a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "create troop file record.");
+    }
   }
-  
-  protected void a() {}
-  
-  public void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity)
-  {
-    QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>addEntity. url[" + paramUniformDownloadBPTransEntity.mUrl + "]");
-    c();
-    b(paramUniformDownloadBPTransEntity);
-    ThreadManager.executeOnSubThread(new UniformDownloadBPTransProxy.1(this, paramUniformDownloadBPTransEntity));
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>deleteEntity. url[" + paramString + "]");
-    c();
-    b(paramString);
-    a(paramString, false);
-    a(1);
-  }
-  
-  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, amji paramamji)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramamji);
-  }
-  
-  protected void b() {}
 }
 
 

@@ -1,50 +1,47 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.widget.AuthorizationItem;
+import android.content.Context;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
+import java.lang.ref.WeakReference;
 
-public class aaoz
+final class aaoz
+  implements ArkViewImplement.LoadCallback
 {
-  public int a;
-  public final String a;
-  public final String b;
-  public final String c;
+  aaoz(long paramLong, String paramString, WeakReference paramWeakReference1, WeakReference paramWeakReference2, GdtInterstitialParams paramGdtInterstitialParams) {}
   
-  private aaoz(String paramString1, String paramString2, String paramString3)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this(paramString1, paramString2, paramString3, 0);
-  }
-  
-  private aaoz(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static aaoz b()
-  {
-    return new aaoz("", "", "", 1);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
+    int i = aaom.a(paramInt2);
+    if (i == 0) {
+      i = 1;
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
-      return this.b;
+    for (;;)
+    {
+      aase.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
+      aaoy.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
+      {
+        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
+        aasr.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), i, paramInt2);
+      }
+      return;
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
-      return this.c;
-    }
-    return "";
   }
   
-  @NonNull
-  public String toString()
+  public void onLoadState(int paramInt)
   {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
+    aase.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+    if (paramInt == 1) {
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
+      {
+        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
+        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c = true;
+        aasr.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0, -2147483648);
+      }
+    }
+    while (paramInt != -1) {
+      return;
+    }
   }
 }
 

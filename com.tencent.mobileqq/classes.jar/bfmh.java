@@ -1,17 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.content.ContentValues;
+import android.os.Parcel;
 
 public class bfmh
-  implements DialogInterface.OnClickListener
+  extends bfnp
 {
-  public bfmh(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  public static final bfnq<bfmh> a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.a.b(false, true);
-    paramDialogInterface.dismiss();
-    bfgx.b(bfgz.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
+    jdField_a_of_type_Bfnq = new bfmi();
+  }
+  
+  protected bfmh(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramString3;
+  }
+  
+  bfmh(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = bflr.b(paramString1);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public void a(ContentValues paramContentValues)
+  {
+    paramContentValues.put("urlKey", this.jdField_a_of_type_JavaLangString);
+    paramContentValues.put("ETag", this.jdField_b_of_type_JavaLangString);
+    paramContentValues.put("lastModify", Long.valueOf(this.jdField_a_of_type_Long));
+    paramContentValues.put("cacheTime", Long.valueOf(this.jdField_b_of_type_Long));
+    Parcel localParcel = Parcel.obtain();
+    localParcel.writeString(this.c);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("response", arrayOfByte);
   }
 }
 

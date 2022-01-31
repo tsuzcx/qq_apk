@@ -1,77 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.HighwayConfBean;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bapj
-  extends aofy<HighwayConfBean>
+class bapj
+  extends ameq
 {
-  public int a()
-  {
-    return 15;
-  }
+  bapj(baph parambaph) {}
   
-  @NonNull
-  public HighwayConfBean a(int paramInt)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
     if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
     }
-    return localHighwayConfBean;
-  }
-  
-  @Nullable
-  public HighwayConfBean a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
     {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      Iterator localIterator = baph.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((baps)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
       }
-      return localHighwayConfBean;
     }
-    return null;
   }
   
-  public Class<HighwayConfBean> a()
-  {
-    return HighwayConfBean.class;
-  }
-  
-  public void a(int paramInt)
+  protected void b(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
     }
-  }
-  
-  public void a(HighwayConfBean paramHighwayConfBean)
-  {
-    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    Iterator localIterator = baph.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((baps)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
+    }
   }
 }
 

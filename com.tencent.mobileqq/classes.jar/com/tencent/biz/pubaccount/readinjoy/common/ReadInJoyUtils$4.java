@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.Context;
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,14 +29,14 @@ public final class ReadInJoyUtils$4
       QLog.d("Q.readinjoy.video", 2, "reportKandianVideoInfo, success =" + this.jdField_a_of_type_Boolean + ", data=" + ((StringBuilder)localObject).toString());
     }
     Object localObject = new HashMap(this.jdField_a_of_type_JavaUtilHashMap);
-    azmz.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoWithExtraInfo", this.jdField_a_of_type_Boolean, -1L, 0L, (HashMap)localObject, null);
+    azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoWithExtraInfo", this.jdField_a_of_type_Boolean, -1L, 0L, (HashMap)localObject, null);
     try
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("param_speedList")) {
         this.jdField_a_of_type_JavaUtilHashMap.remove("param_speedList");
       }
       label185:
-      azmz.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
+      azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
       try
       {
         nrt.a(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", new JSONObject(this.jdField_a_of_type_JavaUtilHashMap).toString(), false);

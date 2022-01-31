@@ -11,15 +11,15 @@ class SubscriptFeedsActivity$9$1
   {
     if (this.jdField_a_of_type_Int <= 0)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(2131720570);
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(2131720582);
       return;
     }
     if (this.jdField_a_of_type_Int > 99)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131720570), Integer.valueOf(99) }));
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131720582), Integer.valueOf(99) }));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131720570), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131720582), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

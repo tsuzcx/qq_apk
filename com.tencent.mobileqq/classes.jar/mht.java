@@ -27,13 +27,13 @@ public class mht
   mhp a(View paramView)
   {
     mhp localmhp = new mhp();
-    localmhp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372633));
-    localmhp.d = ((ImageView)paramView.findViewById(2131372630));
-    localmhp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372646));
-    localmhp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372648));
-    localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372632));
-    localmhp.e = ((ImageView)paramView.findViewById(2131372645));
-    localmhp.f = ((ImageView)paramView.findViewById(2131372631));
+    localmhp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372659));
+    localmhp.d = ((ImageView)paramView.findViewById(2131372656));
+    localmhp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372672));
+    localmhp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372674));
+    localmhp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372658));
+    localmhp.e = ((ImageView)paramView.findViewById(2131372671));
+    localmhp.f = ((ImageView)paramView.findViewById(2131372657));
     if ((this.a.jdField_b_of_type_Boolean) && (localmhp.jdField_a_of_type_AndroidWidgetTextView != null) && (localmhp.d != null))
     {
       float f = MultiMembersVideoUI.a(this.a).getDisplayMetrics().density;
@@ -94,7 +94,7 @@ public class mht
     }
     if (paramView == null)
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559600, null);
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559599, null);
       paramViewGroup = a(paramView);
       paramView.setTag(paramViewGroup);
     }
@@ -134,7 +134,7 @@ public class mht
         ((GradientDrawable)localObject1).setShape(1);
         ((GradientDrawable)localObject1).setColor(Color.parseColor("#4C000000"));
         paramViewGroup.d.setImageDrawable((Drawable)localObject1);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372632));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372658));
         localObject1 = new StringBuilder("");
         ((StringBuilder)localObject1).append(this.a.jdField_a_of_type_JavaUtilArrayList.size() - 8 + 1);
         ((StringBuilder)localObject1).append("+");
@@ -142,7 +142,7 @@ public class mht
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
-        paramView.setContentDescription(MultiMembersVideoUI.d(this.a).getString(2131693344));
+        paramView.setContentDescription(MultiMembersVideoUI.d(this.a).getString(2131693346));
         return paramView;
         paramViewGroup = (mhp)paramView.getTag();
         if (paramViewGroup != null) {
@@ -168,12 +168,12 @@ public class mht
         if (str == null) {
           break label599;
         }
-        ((mhq)localObject2).jdField_b_of_type_JavaLangString = bdbt.a(str);
+        ((mhq)localObject2).jdField_b_of_type_JavaLangString = bdgc.a(str);
         ((mhq)localObject2).jdField_a_of_type_JavaLangString = str;
       }
       for (;;)
       {
-        ((mhq)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)MultiMembersVideoUI.c(this.a).getDrawable(2130841774)).getBitmap();
+        ((mhq)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)MultiMembersVideoUI.c(this.a).getDrawable(2130841787)).getBitmap();
         ((mhq)localObject2).d = true;
         break;
         localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(l, this.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
@@ -187,7 +187,7 @@ public class mht
           QLog.d("MultiMembersVideoUI", 2, "getView --> can not get Open Id. PhoneInfo = " + ((AVPhoneUserInfo)localObject1).toString());
         }
         ((mhq)localObject2).jdField_b_of_type_JavaLangString = null;
-        ((mhq)localObject2).jdField_a_of_type_JavaLangString = MultiMembersVideoUI.b(this.a).getString(2131693345);
+        ((mhq)localObject2).jdField_a_of_type_JavaLangString = MultiMembersVideoUI.b(this.a).getString(2131693347);
       }
       paramViewGroup.jdField_b_of_type_Boolean = true;
       paramViewGroup.jdField_a_of_type_Long = ((mhq)localObject2).jdField_a_of_type_Long;
@@ -203,7 +203,7 @@ public class mht
         }
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((mhq)localObject2).jdField_b_of_type_JavaLangString);
-        localObject1 = ((BitmapDrawable)MultiMembersVideoUI.e(this.a).getDrawable(2130841731)).getBitmap();
+        localObject1 = ((BitmapDrawable)MultiMembersVideoUI.e(this.a).getDrawable(2130841744)).getBitmap();
         paramViewGroup.d.setImageBitmap((Bitmap)localObject1);
         if (((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 1) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().C == 10)) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 2))
         {
@@ -254,7 +254,7 @@ public class mht
         if (!(localObject2 instanceof BitmapDrawable)) {
           break;
         }
-        localObject1 = bdda.a(((BitmapDrawable)localObject2).getBitmap(), true);
+        localObject1 = bdhj.a(((BitmapDrawable)localObject2).getBitmap(), true);
         paramViewGroup.d.setImageBitmap((Bitmap)localObject1);
         return paramView;
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(((mhq)localObject2).jdField_a_of_type_Long));
@@ -264,7 +264,7 @@ public class mht
         break label802;
         label1108:
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramViewGroup.d.setImageResource(2130840084);
+        paramViewGroup.d.setImageResource(2130840085);
         break label802;
         label1130:
         if (paramViewGroup.e.getVisibility() != 0) {

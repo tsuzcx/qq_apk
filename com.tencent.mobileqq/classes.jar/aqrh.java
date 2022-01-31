@@ -1,34 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
-class aqrh
-  implements bhqd
+public class aqrh
+  extends arsq
 {
-  aqrh(aqrg paramaqrg, bhpy parambhpy) {}
+  public aqrh(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_Aqrg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(aqrg.a(this.jdField_a_of_type_Aqrg).uniseq, this.jdField_a_of_type_Aqrg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqrg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      ChatActivityUtils.a(this.jdField_a_of_type_Aqrg.jdField_a_of_type_AndroidContentContext, 2131719744, 1);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.cancel();
-      return;
-      paramView = arni.a(this.jdField_a_of_type_Aqrg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqrg.a(this.jdField_a_of_type_Aqrg));
-      if (paramView.status == 16)
-      {
-        armz.a(2131692939);
-        this.jdField_a_of_type_Bhpy.cancel();
-        return;
-      }
-      aqrg.a(this.jdField_a_of_type_Aqrg).status = 1002;
-      arni.a(this.jdField_a_of_type_Aqrg.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Aqrg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    }
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

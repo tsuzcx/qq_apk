@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achy
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public achy(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public achy(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
+    }
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

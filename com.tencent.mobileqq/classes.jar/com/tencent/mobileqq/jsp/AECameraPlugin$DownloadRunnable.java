@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.jsp;
 
-import bapx;
+import baug;
 import com.tencent.common.app.AppInterface;
 
 class AECameraPlugin$DownloadRunnable
   implements Runnable
 {
-  bapx jdField_a_of_type_Bapx;
+  baug jdField_a_of_type_Baug;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
   String b;
@@ -14,7 +14,7 @@ class AECameraPlugin$DownloadRunnable
   
   public void run()
   {
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bapx);
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Baug);
   }
 }
 

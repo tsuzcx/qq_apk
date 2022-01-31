@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class adhx
-  extends alqy
+  implements ActionMode.Callback
 {
-  public adhx(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adhx(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
-    }
+    return false;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131719872, 1);
-    }
-    this.a.a(paramBoolean2);
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

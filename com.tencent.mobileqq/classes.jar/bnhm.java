@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class bnhm
-  implements Animation.AnimationListener
+  extends bnhq
 {
-  public bnhm(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
+    RMVideoStateMgr.a().a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

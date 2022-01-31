@@ -1,20 +1,6 @@
-public class arts
+public abstract interface arts
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  
-  public arts(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
+  public abstract void a(String paramString);
 }
 
 

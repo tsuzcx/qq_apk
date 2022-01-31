@@ -1,15 +1,15 @@
 package com.tencent.device.devicemgr;
 
-import zpa;
+import ztp;
 
 public class SmartDeviceProxyMgr$3
   implements Runnable
 {
-  public SmartDeviceProxyMgr$3(zpa paramzpa, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
+  public SmartDeviceProxyMgr$3(ztp paramztp, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    zpa.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    ztp.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

@@ -1,22 +1,11 @@
-public class basc
-  extends base
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+
+class basc
 {
-  private int a = 480000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 20000;
-  private int e = 40000;
-  private int f = 5000;
+  public LocalMediaInfo a;
+  public boolean a;
   
-  public int a()
-  {
-    return this.d;
-  }
-  
-  public int b()
-  {
-    return this.e;
-  }
+  basc(basb parambasb) {}
 }
 
 

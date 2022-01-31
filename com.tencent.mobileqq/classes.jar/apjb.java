@@ -1,12 +1,6 @@
 public abstract interface apjb
 {
   public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(apij paramapij);
-  
-  public abstract void b();
 }
 
 

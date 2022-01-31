@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,19 +17,19 @@ class AppBrandLaunchManager$13
     }
     if (paramInt == 1)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, alpo.a(2131700967));
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, alud.a(2131700979));
       return;
     }
-    String str = alpo.a(2131700964);
+    String str = alud.a(2131700976);
     if (paramInt == 1100) {
-      str = alpo.a(2131700970);
+      str = alud.a(2131700982);
     }
     for (;;)
     {
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
       return;
       if (paramInt == 1101) {
-        str = alpo.a(2131700973);
+        str = alud.a(2131700985);
       }
     }
   }

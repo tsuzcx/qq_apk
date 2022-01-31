@@ -1,69 +1,51 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class baos
-  extends baop
+public class baos
 {
-  private SSOAccountObserver a;
-  private AtomicBoolean c = new AtomicBoolean(false);
-  
-  baos(baoo parambaoo)
+  public static Bundle a(QQAppInterface paramQQAppInterface)
   {
-    super(parambaoo);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new baot(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
-  }
-  
-  protected boolean a()
-  {
-    return (this.c.get()) && (!TextUtils.isEmpty(baoo.f(this.jdField_b_of_type_Baoo)));
-  }
-  
-  protected void d()
-  {
-    String str = this.jdField_b_of_type_Baoo.a.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + baoo.a(this.jdField_b_of_type_Baoo));
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
-    }
-    for (;;)
+    Bundle localBundle = new Bundle();
+    Object localObject = ThemeUtil.getWeekLoopTheme(paramQQAppInterface);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      return;
-      if (!this.jdField_b_of_type_Baoo.e())
-      {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Baoo.a);
-        this.jdField_b_of_type_Baoo.b(9366, "illegal app");
-        c();
-        return;
+      localObject = paramQQAppInterface.getPreferences();
+      paramQQAppInterface = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+      localObject = ((SharedPreferences)localObject).getString("previousThemeVersion", "0");
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchUtil", 2, "ThemeSwitchUtil getPreviousThemeIdVersion,themeID=" + paramQQAppInterface + ",version=" + (String)localObject);
       }
-      int i;
-      if (!baoo.a(this.jdField_b_of_type_Baoo))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_Baoo.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          baoo.d(this.jdField_b_of_type_Baoo, str);
-          this.c.set(true);
-          b();
-        }
-      }
-      while (i != 0)
-      {
-        if (baoo.b(this.jdField_b_of_type_Baoo) == 11) {
-          arzy.a("KEY_SSO_GET_TICKET_NO_PASSWD");
-        }
-        this.jdField_b_of_type_Baoo.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_Baoo.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-        return;
-        i = 1;
-      }
+      localBundle.putString("themeID", paramQQAppInterface);
+      localBundle.putString("version", (String)localObject);
+      return localBundle;
     }
+    localBundle.putString("themeID", (String)localObject);
+    localBundle.putString("version", ThemeUtil.getUserCurrentThemeVersion(paramQQAppInterface));
+    return localBundle;
+  }
+  
+  public static Boolean a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    String str = paramAppRuntime.getAccount();
+    Object localObject = str;
+    if (str == null) {
+      localObject = "noLogin";
+    }
+    localObject = paramAppRuntime.getApplication().getSharedPreferences((String)localObject, 4);
+    paramAppRuntime = paramAppRuntime.getAccount();
+    str = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString("previousThemeId", paramString1);
+    ((SharedPreferences.Editor)localObject).putString("previousThemeVersion", paramString2);
+    QLog.d("ThemeSwitchUtil", 1, "ThemeSwitchUtil setPreviousThemeIdVersion,uin=" + paramAppRuntime + ",oldPreviousThemeId=" + str + ",set new themeId=" + paramString1);
+    return Boolean.valueOf(((SharedPreferences.Editor)localObject).commit());
   }
 }
 

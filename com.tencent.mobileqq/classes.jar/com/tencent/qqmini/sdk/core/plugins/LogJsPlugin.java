@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import bgho;
-import bgid;
-import bgkd;
+import bglv;
+import bgmk;
+import bgok;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.utils.StorageUtil;
 import org.json.JSONException;
@@ -17,35 +17,35 @@ public class LogJsPlugin
   public static final String TAG = "LogJsPlugin";
   private static final String TAG_MINI_LOG = "miniAppLog";
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
-    if ((!this.mIsMiniGame) && ("setEnableDebug".equals(parambgkd)))
+    if ((!this.mIsMiniGame) && ("setEnableDebug".equals(parambgok)))
     {
-      this.mMiniAppContext.a(bgid.a(parambgkd, 3));
+      this.mMiniAppContext.a(bgmk.a(parambgok, 3));
       return true;
     }
-    return super.onInterceptJsEvent(parambgkd);
+    return super.onInterceptJsEvent(parambgok);
   }
   
-  public String setEnableDebug(bgkd parambgkd)
+  public String setEnableDebug(bgok parambgok)
   {
     try
     {
-      boolean bool = new JSONObject(parambgkd.b).optBoolean("enableDebug");
+      boolean bool = new JSONObject(parambgok.b).optBoolean("enableDebug");
       if (bool != Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mMiniAppContext.a().appId + "_debug", false)).booleanValue()) {
         this.mMiniAppContext.a().runOnUiThread(new LogJsPlugin.1(this, bool));
       }
       for (;;)
       {
         return "";
-        parambgkd.a();
+        parambgok.a();
       }
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        parambgkd.b();
+        parambgok.b();
       }
     }
   }

@@ -1,56 +1,66 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aolr
-  extends aofy<aolq>
 {
-  public int a()
-  {
-    return 419;
-  }
+  protected String a = "";
   
-  @NonNull
-  public aolq a(int paramInt)
-  {
-    return new aolq();
-  }
+  public aolr() {}
   
-  @Nullable
-  public aolq a(aogf[] paramArrayOfaogf)
+  public aolr(String paramString)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aolq.a(paramArrayOfaogf[0].a);
+    if (paramString != null) {
+      this.a = paramString;
     }
+  }
+  
+  public aols a()
+  {
+    if ((this instanceof aols)) {
+      return (aols)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
     return null;
   }
   
-  public Class<aolq> a()
+  public aolt a()
   {
-    return aolq.class;
+    if ((this instanceof aolt)) {
+      return (aolt)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aolq paramaolq) {}
-  
-  public boolean a()
+  public aolu a()
   {
-    return false;
+    if ((this instanceof aolu)) {
+      return (aolu)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
+    return null;
   }
   
-  public int b()
+  public aolv a()
   {
-    return 0;
+    if ((this instanceof aolv)) {
+      return (aolv)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
   }
   
-  public boolean b()
+  public aolw a()
   {
-    return false;
+    if ((this instanceof aolw)) {
+      return (aolw)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
   }
   
-  public boolean c()
+  public String a()
   {
-    return true;
+    return this.a;
   }
 }
 

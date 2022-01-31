@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgMoreView;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class bjef
-  implements View.OnClickListener
+  extends Handler
 {
-  public bjef(MsgMoreView paramMsgMoreView) {}
+  public bjef(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (MsgMoreView.a(this.a) != null) {
-      MsgMoreView.a(this.a).a(MsgMoreView.a(this.a), paramView, 5);
-    }
+    this.a.a(this.a.a, paramMessage);
   }
 }
 

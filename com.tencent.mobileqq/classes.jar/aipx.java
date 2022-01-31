@@ -1,55 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aipx
-  extends Handler
+class aipx
+  implements bhuk
 {
-  aipx(aipw paramaipw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aipx(aipw paramaipw, bhuf parambhuf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
+    if ((this.jdField_a_of_type_Aipw.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Aipw.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Aipw.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break label56;
-      }
     }
     for (;;)
     {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
+      try
       {
-        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_Aipw.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          ((BaseActivity)this.jdField_a_of_type_Aipw.jdField_a_of_type_AndroidAppActivity).requestPermissions(new aipy(this), 1, new String[] { "android.permission.CAMERA" });
+        } else {
+          aipw.a(this.jdField_a_of_type_Aipw);
         }
+      }
+      else
+      {
+        aipw.a(this.jdField_a_of_type_Aipw);
+        continue;
+        aiqe.b(this.jdField_a_of_type_Aipw.jdField_a_of_type_AndroidAppActivity, aiqe.d(this.jdField_a_of_type_Aipw.c));
       }
     }
   }

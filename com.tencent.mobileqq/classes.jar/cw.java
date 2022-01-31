@@ -12,7 +12,7 @@ class cw
   
   public void onClick(View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131364021);
+    paramView = (TextView)paramView.findViewById(2131364023);
     cu localcu;
     if (paramView != null)
     {

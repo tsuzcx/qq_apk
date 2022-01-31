@@ -245,7 +245,7 @@ public class odt
   
   public static boolean a()
   {
-    boolean bool = "1".equals(bjxj.a("readinjjoy_ad_supplement_config"));
+    boolean bool = "1".equals(bkbq.a("readinjjoy_ad_supplement_config"));
     if ((QLog.isColorLevel()) && (!bool) && (!jdField_a_of_type_Boolean))
     {
       jdField_a_of_type_Boolean = true;

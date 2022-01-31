@@ -3,12 +3,12 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awft;
+import awkc;
 
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReportInfo> CREATOR = new awft();
+  public static final Parcelable.Creator<ReportInfo> CREATOR = new awkc();
   public int a;
   public long a;
   public int b;

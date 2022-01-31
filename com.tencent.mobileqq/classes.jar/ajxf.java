@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
-
-public class ajxf
-  implements Comparator<CommonlyUsedTroop>
+public abstract interface ajxf
 {
-  protected ajxf(ajxc paramajxc) {}
-  
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
-  {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(String paramString);
 }
 
 

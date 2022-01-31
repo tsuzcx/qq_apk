@@ -1,11 +1,48 @@
-import android.view.animation.Interpolator;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 public class bgpj
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
+  public static final String a = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
+  public static final String b = a + "navigateback_appid";
+  
+  public static void a(String paramString)
   {
-    return (float)Math.tan((paramFloat * 2.0F - 1.0F) / 4.0F * 3.141592653589793D) / 2.0F + 0.5F;
+    Object localObject = new File(b);
+    do
+    {
+      try
+      {
+        localObject = new BufferedWriter(new FileWriter((File)localObject));
+        QMLog.e("NavigateBackUtils", "getTagAppid exception!", paramString);
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          ((BufferedWriter)localObject).write(paramString);
+          ((BufferedWriter)localObject).close();
+          return;
+        }
+        catch (Exception paramString)
+        {
+          continue;
+        }
+        paramString = paramString;
+        localObject = null;
+      }
+    } while (localObject == null);
+    try
+    {
+      ((BufferedWriter)localObject).close();
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 

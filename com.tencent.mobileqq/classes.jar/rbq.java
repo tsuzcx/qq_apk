@@ -7,9 +7,9 @@ import android.widget.TextView;
 public class rbq
   extends rbl
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131369762);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131369768);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131369771);
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131369781);
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131369787);
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131369790);
   
   public rbq(View paramView, int paramInt)
   {

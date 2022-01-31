@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.text.TextUtils;
-import baci;
-import badg;
+import bagr;
+import bahp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TeamWorkFileExportHandler$1
   implements Runnable
 {
-  public TeamWorkFileExportHandler$1(baci parambaci, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public TeamWorkFileExportHandler$1(bagr parambagr, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    badg.a(this.this$0.app, this.a, this.b, this.c, this.d, this.this$0.app.getCurrentAccountUin());
+    bahp.a(this.this$0.app, this.a, this.b, this.c, this.d, this.this$0.app.getCurrentAccountUin());
   }
 }
 

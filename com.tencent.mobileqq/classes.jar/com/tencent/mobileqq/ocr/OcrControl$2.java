@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ocr;
 
-import amxi;
-import avss;
-import avsu;
+import anbr;
+import avxb;
+import avxd;
 import java.util.HashMap;
 
 public class OcrControl$2
   implements Runnable
 {
-  public OcrControl$2(avss paramavss, String paramString) {}
+  public OcrControl$2(avxb paramavxb, String paramString) {}
   
   public void run()
   {
-    if (((amxi)this.this$0.a.get(this.a) != null) && (avss.a(this.this$0) != null)) {
-      avss.a(this.this$0).a();
+    if (((anbr)this.this$0.a.get(this.a) != null) && (avxb.a(this.this$0) != null)) {
+      avxb.a(this.this$0).a();
     }
   }
 }

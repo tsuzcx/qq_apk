@@ -1,12 +1,20 @@
-class bcft
-  implements bcsn
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+
+public class bcft
+  extends BroadcastReceiver
 {
-  bcft(bcfr parambcfr, boolean paramBoolean) {}
+  public bcft(HWReciteItem paramHWReciteItem) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bcfr.a = 1;
-    this.jdField_a_of_type_Bcfr.a(this.jdField_a_of_type_Boolean);
+    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
+    {
+      this.a.b();
+      this.a.a.a.a();
+    }
   }
 }
 

@@ -1,17 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
 public class ayeo
   implements View.OnClickListener
 {
-  public ayeo(BaseSearchActivity paramBaseSearchActivity) {}
+  public ayeo(CommentsView paramCommentsView, ayel paramayel, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    BaseSearchActivity.b = 1;
-    this.a.a.setText("");
+    if ((this.jdField_a_of_type_Ayel.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+    }
   }
 }
 

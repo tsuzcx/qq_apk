@@ -1,37 +1,41 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
 
 public class auue
-  implements auvj
+  implements URLDrawable.DownloadListener
 {
-  public auue(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
   
-  public void a(View paramView)
+  public auue(Context paramContext)
   {
-    this.a.f();
-    azmj.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(View paramView, auvm paramauvm)
+  public auue(Context paramContext, String paramString)
   {
-    if (paramauvm.jdField_a_of_type_Boolean) {
-      QQToast.a(this.a, 1, alpo.a(2131705489), 1).a();
-    }
-    do
-    {
-      return;
-      GameRoomInviteActivity.a(this.a, paramauvm.jdField_a_of_type_JavaLangString, paramauvm.jdField_a_of_type_Int);
-      paramauvm.jdField_a_of_type_Boolean = true;
-      this.a.a.a(paramView, paramauvm.jdField_a_of_type_Boolean);
-      if (paramauvm.jdField_a_of_type_Int == 1)
-      {
-        azmj.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
-        return;
-      }
-    } while (paramauvm.jdField_a_of_type_Int != 0);
-    azmj.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.qqmini.proxyimpl;
 
-import anxn;
-import bdfq;
-import bgho;
+import aobw;
+import bdjz;
+import bglv;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class ColorNotePlugin$1
   implements Runnable
 {
-  ColorNotePlugin$1(ColorNotePlugin paramColorNotePlugin, anxn paramanxn) {}
+  ColorNotePlugin$1(ColorNotePlugin paramColorNotePlugin, aobw paramaobw) {}
   
   public void run()
   {
-    bdfq localbdfq = new bdfq(ColorNotePlugin.access$000(this.this$0).a(), 2131755801);
-    localbdfq.setContentView(2131559295);
-    localbdfq.setMessage("是否将" + ColorNotePlugin.access$100(this.this$0).name + "添加到彩签？");
-    localbdfq.setPositiveButton("确定", new ColorNotePlugin.1.1(this));
-    localbdfq.setNegativeButton("取消", new ColorNotePlugin.1.2(this));
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.show();
+    bdjz localbdjz = new bdjz(ColorNotePlugin.access$000(this.this$0).a(), 2131755801);
+    localbdjz.setContentView(2131559294);
+    localbdjz.setMessage("是否将" + ColorNotePlugin.access$100(this.this$0).name + "添加到彩签？");
+    localbdjz.setPositiveButton("确定", new ColorNotePlugin.1.1(this));
+    localbdjz.setNegativeButton("取消", new ColorNotePlugin.1.2(this));
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.show();
   }
 }
 

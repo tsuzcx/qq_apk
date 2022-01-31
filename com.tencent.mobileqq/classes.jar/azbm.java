@@ -1,23 +1,32 @@
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class azbm
+  extends MSFServlet
 {
-  public float a;
-  public int a;
-  public ajng a;
-  public boolean a;
-  public float b;
-  public int b;
-  public int c;
-  
-  public azbm() {}
-  
-  public azbm(boolean paramBoolean)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramIntent = (QQAppInterface)getAppRuntime();
+    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      bazo.a().a(paramFromServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
+      }
+    }
   }
   
-  public boolean a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Ajng != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
+    }
+    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
+    paramPacket.setTimeout(15000L);
   }
 }
 

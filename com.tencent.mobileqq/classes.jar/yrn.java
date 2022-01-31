@@ -1,24 +1,19 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 public class yrn
-  implements View.OnClickListener
+  extends altm
 {
-  public yrn(TroopGiftPanel paramTroopGiftPanel) {}
+  public yrn(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    TroopGiftPanel.b(this.a).setSelected(false);
-    this.a.a.a(-1);
-    TroopGiftPanel.a(this.a).setSelected(true);
-    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131378766)).setTextColor(Color.parseColor("#ff878b99"));
-    TroopGiftPanel.b(this.a).findViewById(2131379871).setVisibility(8);
-    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131378765)).setTextColor(Color.parseColor("#ffff5b84"));
-    TroopGiftPanel.a(this.a).findViewById(2131379880).setVisibility(0);
-    this.a.onTabSelected(this.a.h, TroopGiftPanel.d);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import alpo;
+import alud;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -301,7 +301,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, alpo.a(2131711821), 0).a();
+          QQToast.a(this, alud.a(2131711833), 0).a();
         }
         return;
       }

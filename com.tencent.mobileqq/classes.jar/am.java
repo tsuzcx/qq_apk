@@ -3,9 +3,9 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class am
-  implements bepj
+  implements bets
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372225);
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372245);
   
   public am(LiteActivity paramLiteActivity) {}
   

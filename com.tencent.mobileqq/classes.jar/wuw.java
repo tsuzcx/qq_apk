@@ -1,23 +1,29 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wuw
-  implements xax
+public class wuw
+  extends QQUIEventReceiver<wub, vsu>
 {
-  wuw(wus paramwus) {}
-  
-  public void a(int paramInt, List<usw> paramList)
+  public wuw(@NonNull wub paramwub)
   {
-    wsv.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull vsu paramvsu)
+  {
+    wxe.a(this.TAG, "play video groupId=%s, %s", paramvsu.jdField_a_of_type_Vpm, paramvsu.b);
+    if ((wub.a(paramwub).equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vpb)))
+    {
+      woq localwoq = ((vpb)paramvsu.jdField_a_of_type_Vpm).a;
+      if (localwoq != null) {
+        paramwub.a(localwoq.jdField_a_of_type_JavaLangString, paramvsu.b, true);
+      }
     }
-    uht.a().dispatch(new xav(paramInt, (List)localObject));
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vsu.class;
   }
 }
 

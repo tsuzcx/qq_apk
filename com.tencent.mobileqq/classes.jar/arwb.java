@@ -1,94 +1,218 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.nio.ByteBuffer;
+import java.util.HashSet;
+import java.util.Set;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class arwb
-  extends arum
+  extends alpd
 {
-  public arwb(Intent paramIntent)
+  public arwb(QQAppInterface paramQQAppInterface)
   {
-    super(paramIntent);
+    super(paramQQAppInterface);
   }
   
-  public List<RecentUser> a(List<RecentUser> paramList)
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "handleReqSetSwitch ");
+    }
+    boolean bool1;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bdal.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aruc.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
-        localArrayList.add(localRecentUser);
+      paramObject = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
+        {
+          int i = paramFromServiceMsg.uint32_result.get();
+          if (QLog.isColorLevel()) {
+            QLog.i("FlashChat", 2, "handleReqSetSwitch ret=" + i);
+          }
+          if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
+          {
+            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+            i = paramFromServiceMsg.length;
+            boolean bool2 = true;
+            bool1 = bool2;
+            if (4 > i) {
+              break label215;
+            }
+            paramFromServiceMsg = String.valueOf(bdqa.a(paramFromServiceMsg, 0));
+            if (paramFromServiceMsg != null)
+            {
+              bool1 = bool2;
+              if (paramFromServiceMsg.equals(this.app.getAccount())) {
+                break label215;
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.w("FlashChat", 2, "handleReqSetSwitch uin error");
+            }
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        for (;;)
+        {
+          paramFromServiceMsg.printStackTrace();
+          paramFromServiceMsg = paramObject;
+        }
       }
     }
-    return localArrayList;
+    else
+    {
+      bool1 = false;
+    }
+    label215:
+    paramToServiceMsg.extraData.getByte("lightalk_switch", (byte)0).byteValue();
+    if (bool1) {}
+    notifyUI(2, bool1, null);
   }
   
-  protected void a(Drawable paramDrawable, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean) {
-      baul.a((URLDrawable)paramDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "requestGetSwitch begin...");
     }
-    if (paramDrawable == null) {
+    try
+    {
+      long l = Long.parseLong(this.app.getAccount());
+      Object localObject = new byte[9];
+      bdqa.a((byte[])localObject, 0, l);
+      localObject[4] = 0;
+      bdqa.a((byte[])localObject, 5, (short)1);
+      bdqa.a((byte[])localObject, 7, 40352);
+      localObject = makeOIDBPkg("OidbSvc.0x480_9", 1152, 9, (byte[])localObject);
+      ((ToServiceMsg)localObject).extraData.putBoolean("FlashChatHanlder", true);
+      sendPbReq((ToServiceMsg)localObject);
       return;
     }
-    paramDrawable.setBounds(0, 0, (int)(264.0F * this.jdField_a_of_type_Float), (int)(138.0F * this.jdField_a_of_type_Float));
-  }
-  
-  protected void a(bdfq parambdfq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
-    }
-    a(arwv.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839433), this.jdField_a_of_type_Float), false, 0);
-  }
-  
-  protected void b()
-  {
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_location_string");
-    this.jdField_a_of_type_Bdfq.setMessage(str);
-  }
-  
-  protected boolean c()
-  {
-    boolean bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false);
-    boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromFavorites", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("forward", 2, "ForwardMapOption realForwardTo isFromFavorite=" + bool1 + "isFromFav=" + bool2);
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    if ((bool1) || (bool2))
+    catch (Exception localException)
     {
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      while (!QLog.isColorLevel()) {}
+      QLog.w("FlashChat", 2, "send_oidb_0x480_9 error", localException);
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    try
+    {
+      paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+      paramFromServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has())) {
+        break label348;
+      }
+      i = paramToServiceMsg.uint32_result.get();
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      long l;
+      int j;
+      while (QLog.isColorLevel())
+      {
+        QLog.d("FlashChat", 2, "handleReqGetSwitch exception: " + paramToServiceMsg.getMessage());
+        return;
+        label348:
+        i = -1;
+        continue;
+        label354:
+        i = 0;
+      }
+    }
+    if (i == 0)
+    {
+      l = paramFromServiceMsg.getInt();
+      paramFromServiceMsg.get();
+      j = paramFromServiceMsg.getShort();
+      if (!QLog.isColorLevel()) {
+        break label354;
+      }
+      QLog.d("FlashChat", 2, "handleReqGetSwitch, request success, tlvCount = " + j + " uin:" + Long.valueOf(l));
     }
     for (;;)
     {
-      return true;
-      if (this.f)
+      if ((paramFromServiceMsg.hasRemaining()) && (i < j))
       {
-        this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
+        int k = paramFromServiceMsg.getShort();
+        int m = paramFromServiceMsg.getShort();
+        if (QLog.isColorLevel()) {
+          QLog.d("FlashChat", 2, "handleReqGetSwitch, TLV type: " + k + ",legnth: " + m);
+        }
+        if (k == -25184)
+        {
+          i = paramFromServiceMsg.getShort();
+          if (QLog.isColorLevel()) {
+            QLog.i("FlashChat", 2, "handleReqGetSwitch switchValue" + i);
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            break label361;
+          }
+          QLog.i("FlashChat", 2, "handleReqGetSwitch" + k);
+          break label361;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("FlashChat", 2, "handleReqGetSwitch" + i);
+            return;
+          }
+        }
       }
-      else
-      {
-        super.c();
-      }
+      return;
+      label361:
+      i += 1;
     }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x4ff_9");
+      this.allowCmdSet.add("OidbSvc.0x480_9");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return arwa.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = paramFromServiceMsg.getServiceCmd();
+        if (!"OidbSvc.0x4ff_9".equals(str)) {
+          break;
+        }
+      } while (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false));
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    } while ((!"OidbSvc.0x480_9".equals(str)) || (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false)));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq;
 
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 
 public class DrawerPushItem
-  extends awbv
+  extends awge
 {
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO = 2;
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO_GAME_PANEL = 9;
@@ -31,13 +31,13 @@ public class DrawerPushItem
   public String icon_url;
   public int is_reddot;
   public int life_Time;
-  @awdj
+  @awhs
   public String msg_id;
   public int msg_type;
   public int priority;
   public int reddotGameId;
   public String reddotPath;
-  @awdg
+  @awhp
   public int reddotRedId;
   public String scheme;
   public int send_time;

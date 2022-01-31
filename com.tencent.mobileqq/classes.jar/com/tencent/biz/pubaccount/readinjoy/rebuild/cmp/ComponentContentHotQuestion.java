@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.widget.BorderTextView;
@@ -69,7 +69,7 @@ public class ComponentContentHotQuestion
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559949, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559948, this, true);
   }
   
   public void a() {}
@@ -81,17 +81,17 @@ public class ComponentContentHotQuestion
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367981));
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131365784));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377884));
-    this.b = ((TextView)paramView.findViewById(2131371304));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367992));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131365786));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377938));
+    this.b = ((TextView)paramView.findViewById(2131371323));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderWidth(2);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setRadius(4.0F);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alpo.a(2131702661));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702673));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -123,11 +123,11 @@ public class ComponentContentHotQuestion
       if ((localqlk.jdField_a_of_type_Qlm != null) && (localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_Int >= 0))
       {
         this.b.setVisibility(0);
-        StringBuilder localStringBuilder = new StringBuilder().append(bjxj.b(localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_Int));
+        StringBuilder localStringBuilder = new StringBuilder().append(bkbq.b(localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_Int));
         if (!TextUtils.isEmpty(localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_JavaLangString)) {
           break label240;
         }
-        paramObject = alpo.a(2131702676);
+        paramObject = alud.a(2131702688);
         paramObject = paramObject;
         this.b.setText(paramObject);
       }
@@ -145,11 +145,11 @@ public class ComponentContentHotQuestion
       break;
       if (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12)
       {
-        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alpo.a(2131702695));
+        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702707));
         return;
       }
     } while (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int != 13);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alpo.a(2131702627));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702639));
   }
   
   public void a(pxt parampxt)
@@ -160,8 +160,8 @@ public class ComponentContentHotQuestion
   public void b()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-    localLayoutParams.width = aekt.a(150.0F, getResources());
-    localLayoutParams.height = aekt.a(150.0F, getResources());
+    localLayoutParams.width = aepi.a(150.0F, getResources());
+    localLayoutParams.height = aepi.a(150.0F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }

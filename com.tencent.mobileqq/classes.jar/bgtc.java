@@ -1,41 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnControllerClickListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.ref.WeakReference;
 
-public final class bgtc
-  implements Parcelable.Creator<InstalledEngine>
+public class bgtc
+  implements VideoPlayerProxy.OnControllerClickListener
 {
-  public InstalledEngine a(Parcel paramParcel)
+  public bgtc(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  
+  public void onAttationClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onBackClick(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    boolean bool2 = true;
-    InstalledEngine localInstalledEngine = new InstalledEngine();
-    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
-    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label102;
-      }
+    QMLog.d("MiniAppVideoPlayer", "video player onBackClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
     }
-    label102:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
-      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
-      return localInstalledEngine;
-      bool1 = false;
-      break;
-    }
+    this.a.g();
   }
   
-  public InstalledEngine[] a(int paramInt)
+  public void onBackOnFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    return new InstalledEngine[paramInt];
+    QMLog.d("MiniAppVideoPlayer", "video player onBackOnFullScreenClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void onCacheClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onFeedbackClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
+  {
+    if (this.a.c)
+    {
+      this.a.g();
+      return;
+    }
+    this.a.f();
   }
 }
 

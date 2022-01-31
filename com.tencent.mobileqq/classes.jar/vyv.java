@@ -1,15 +1,15 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
 
 class vyv
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  vyv(vys paramvys, vyj paramvyj) {}
   
-  vyv(vyu paramvyu) {}
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  {
+    this.jdField_a_of_type_Vyj.a(this.jdField_a_of_type_Vys, paramInt);
+  }
 }
 
 

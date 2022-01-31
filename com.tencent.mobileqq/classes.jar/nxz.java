@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 public class nxz
-  implements bedj
+  implements behs
 {
   public nxz(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   

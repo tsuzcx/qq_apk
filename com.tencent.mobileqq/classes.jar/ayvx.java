@@ -1,39 +1,51 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class ayvx
-  extends zdf
+  extends ayxt
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "MessageSvc", "TransService", "StreamSvr", "ADMsgSvc", "VideoSvc", "VideoCCSvc", "OnlinePush", "KQQGroupPic", "AccostSvc", "SecretFileSvc", "MultiVideo" };
-  private ayvl jdField_a_of_type_Ayvl = new ayvl();
-  private ayvp jdField_a_of_type_Ayvp = new ayvp();
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public ayvx(QQAppInterface paramQQAppInterface)
+  public ayvx(View paramView)
   {
-    this.jdField_a_of_type_Ayvp.a(paramQQAppInterface);
+    super(paramView);
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public ayvx(ViewGroup paramViewGroup, int paramInt)
   {
-    return this.jdField_a_of_type_Ayvl.a(paramToServiceMsg, paramFromServiceMsg);
+    super(paramViewGroup, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
-    this.jdField_a_of_type_Ayvp = null;
-    this.jdField_a_of_type_Ayvl = null;
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376803));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378980);
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Ayvp.a(paramToServiceMsg, paramUniPacket);
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
   
-  public String[] a()
+  public TextView e()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import arcb;
-import arcg;
+import argk;
+import argp;
 
 public class LocalTbsViewManager$1$4
   implements Runnable
 {
-  public LocalTbsViewManager$1$4(arcb paramarcb, Integer paramInteger) {}
+  public LocalTbsViewManager$1$4(argk paramargk, Integer paramInteger) {}
   
   public void run()
   {
@@ -17,10 +17,10 @@ public class LocalTbsViewManager$1$4
     default: 
       return;
     case 5001: 
-      this.jdField_a_of_type_Arcb.a.a(true);
+      this.jdField_a_of_type_Argk.a.a(true);
       return;
     }
-    this.jdField_a_of_type_Arcb.a.a(false);
+    this.jdField_a_of_type_Argk.a.a(false);
   }
 }
 

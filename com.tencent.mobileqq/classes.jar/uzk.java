@@ -1,71 +1,79 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1;
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Build;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public final class uzk
-  extends QQUIEventReceiver<uzh, usj>
+public class uzk
+  extends urt
 {
-  public uzk(@NonNull uzh paramuzh)
+  static final String a;
+  static boolean b;
+  public boolean a;
+  public String b;
+  public int c;
+  public String c;
+  
+  static
   {
-    super(paramuzh);
+    jdField_a_of_type_JavaLangString = uqn.a("StoryTabSvc.startpage_feeds_list_725");
   }
   
-  private void b(uzh paramuzh, usj paramusj)
+  public String a()
   {
-    Object localObject = ((uuq)uzh.a(paramuzh).getManager(251)).a().a(3, "");
-    if ((localObject != null) && (paramusj.b.equals(((utx)localObject).e))) {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "onEvent: invoked. Message: guideInfo: " + localObject);
-      }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
+    try
+    {
+      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
+      return new uzl(localRspMsgTabNodeList);
     }
-    utx localutx;
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return;
-      localObject = (uhu)uzh.a(paramuzh).getManager(197);
-      localutx = ((uhu)localObject).b(paramusj.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "syncHaloReadStatus: invoked. Message: haloNodeInfo: " + localutx + "\nmanager: " + localObject);
-      }
-    } while (localutx == null);
-    int i = localutx.a.size() - 1;
-    for (;;)
-    {
-      if (i >= 0)
+      for (;;)
       {
-        uup localuup = (uup)localutx.a.get(i);
-        if ((localuup.jdField_a_of_type_Long == paramusj.jdField_a_of_type_Long) && (!localuup.jdField_a_of_type_Boolean))
-        {
-          localuup.jdField_a_of_type_Boolean = true;
-          localutx.b -= 1;
-        }
+        paramArrayOfByte.printStackTrace();
       }
-      else
-      {
-        ((uhu)localObject).c(localutx);
-        ((uhu)localObject).b(localutx);
-        paramuzh = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramuzh);
-        ThreadManager.getUIHandler().post(paramuzh);
-        return;
-      }
-      i -= 1;
     }
   }
   
-  public void a(@NonNull uzh paramuzh, @NonNull usj paramusj)
+  protected byte[] a()
   {
-    ThreadManager.post(new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1(this, paramuzh, paramusj), 8, null, true);
+    if (jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_c_of_type_JavaLangString = null;
+    }
+    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.version.set(4);
+    Long localLong = xrm.a();
+    if (localLong != null) {
+      localReqMsgTabNodeList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
+    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
+    return localReqMsgTabNodeList.toByteArray();
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return usj.class;
+    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

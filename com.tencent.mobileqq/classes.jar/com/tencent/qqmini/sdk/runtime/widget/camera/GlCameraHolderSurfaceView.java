@@ -11,7 +11,7 @@ import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
-import bhem;
+import bhit;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.IOException;
 import java.util.Collection;
@@ -110,7 +110,7 @@ public class GlCameraHolderSurfaceView
   
   private boolean a()
   {
-    return !bhem.a(bhem.jdField_a_of_type_JavaLangString);
+    return !bhit.a(bhit.jdField_a_of_type_JavaLangString);
   }
   
   private boolean a(String paramString)
@@ -256,7 +256,7 @@ public class GlCameraHolderSurfaceView
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_AndroidHardwareCamera = Camera.open(paramInt);
       paramInt = 90;
-      if (bhem.a(bhem.g)) {
+      if (bhit.a(bhit.g)) {
         paramInt = 270;
       }
       this.jdField_a_of_type_AndroidHardwareCamera.setDisplayOrientation(paramInt);

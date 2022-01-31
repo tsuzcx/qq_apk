@@ -1,82 +1,81 @@
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class atkg
-  extends Handler
+public class atkg
+  extends MSFServlet
 {
-  private final WeakReference<atke> a;
+  public static long a;
+  public static long b;
+  public static long c;
+  public static long d;
   
-  atkg(atke paramatke, Looper paramLooper)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramatke);
+    c = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebSSOAgentServlet", 2, "onReceive");
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
+      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
+      localBundle.putByteArray("extra_data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      arrayOfByte = null;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    atke localatke = (atke)this.a.get();
-    if (localatke == null) {
-      super.handleMessage(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebSSOAgentServlet", 2, "onSend");
     }
-    do
+    String str = paramIntent.getStringExtra("extra_cmd");
+    if (str == null)
     {
-      do
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          super.handleMessage(paramMessage);
-          return;
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
-      return;
-      paramMessage = paramMessage.getData();
-      paramMessage.setClassLoader(ISong.class.getClassLoader());
-      paramMessage = (ISong)paramMessage.getParcelable("key_song");
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
       }
-      atke.a(localatke, paramMessage);
       return;
-      paramMessage = paramMessage.getData();
-      String str = paramMessage.getString("key_id");
-      i = paramMessage.getInt("key_play_state", -1);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, atjy.a(i) }));
-      }
-      atke.a(localatke, str, i);
-    } while ((i != 4) || (!atke.a(localatke)));
-    atke.a(localatke);
-    return;
-    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
     }
-    atke.a(localatke, bool1);
-    return;
-    paramMessage = paramMessage.getData();
-    bool1 = paramMessage.getBoolean("key_focus_state", false);
-    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
+    paramPacket.setSSOCommand(str);
+    long l = paramIntent.getLongExtra("extra_timeout", -1L);
+    if (l > 0L) {
+      paramPacket.setTimeout(l);
     }
-    atke.a(localatke, bool1, bool2);
-    return;
-    paramMessage = paramMessage.getData();
-    int i = paramMessage.getInt("key_position", -1);
-    int j = paramMessage.getInt("key_duration", -1);
-    paramMessage = paramMessage.getString("key_id");
-    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
+    if (arrayOfByte != null)
+    {
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
     }
-    atke.a(localatke, paramMessage, i, j);
+    b = System.currentTimeMillis();
   }
 }
 

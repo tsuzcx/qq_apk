@@ -14,7 +14,7 @@ public class omf
       ReadInJoySecondCommentListFragment.a(this.a, true);
     }
     if (paramInt == 1003) {
-      xxb.a(1, 2131718776);
+      ybk.a(1, 2131718788);
     }
   }
 }

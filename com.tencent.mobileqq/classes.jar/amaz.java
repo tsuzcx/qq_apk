@@ -1,23 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import android.os.Handler;
+import android.os.Message;
 
 public class amaz
-  implements DialogInterface.OnClickListener
+  implements alpg
 {
-  public amaz(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  private Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amaz(Handler paramHandler)
   {
-    mtq.e(false, false);
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
-    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
+      return;
     }
-    mtq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 

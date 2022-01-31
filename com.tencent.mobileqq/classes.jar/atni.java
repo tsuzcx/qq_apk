@@ -1,28 +1,15 @@
-class atni
-  implements atne
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
+
+public class atni
+  implements auri
 {
-  atni(atnf paramatnf) {}
+  public atni(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
-  public void a(int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      atnf.b(this.a);
-      return;
-    case 1: 
-      atnf.c(this.a);
-      return;
-    case 2: 
-      atnf.a(this.a);
-      return;
-    case 3: 
-      atnf.d(this.a);
-      return;
-    }
-    atnf.e(this.a);
+    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
   }
 }
 

@@ -7,28 +7,28 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import blof;
-import blwi;
-import blxm;
-import blxp;
-import bmtx;
+import blsr;
+import bmau;
+import bmby;
+import bmcb;
+import bmyj;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import xod;
+import xsm;
 
 public class ProviderViewEditContainer
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 100;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private blof jdField_a_of_type_Blof;
-  private blwi jdField_a_of_type_Blwi;
-  private blxm jdField_a_of_type_Blxm;
-  private blxp jdField_a_of_type_Blxp;
+  private blsr jdField_a_of_type_Blsr;
+  private bmau jdField_a_of_type_Bmau;
+  private bmby jdField_a_of_type_Bmby;
+  private bmcb jdField_a_of_type_Bmcb;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
   private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int[] jdField_a_of_type_ArrayOfInt = { 103, 109, 111, 113 };
@@ -91,16 +91,16 @@ public class ProviderViewEditContainer
         if (!((StaticStickerProviderView)localObject1).d())
         {
           ((StaticStickerProviderView)localObject1).a(null);
-          ((StaticStickerProviderView)localObject1).setOnFaceSelectedListener(this.jdField_a_of_type_Blof);
+          ((StaticStickerProviderView)localObject1).setOnFaceSelectedListener(this.jdField_a_of_type_Blsr);
         }
         ((StaticStickerProviderView)localObject1).setCaptureScene(this.b);
         ((StaticStickerProviderView)localObject1).i();
         ((StaticStickerProviderView)localObject1).c();
         if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
-          ((StaticStickerProviderView)localObject1).a((bmtx)paramVarArgs[0]);
+          ((StaticStickerProviderView)localObject1).a((bmyj)paramVarArgs[0]);
         }
         paramVarArgs = getLayoutParams();
-        paramInt = xod.a(getContext(), 206.0F);
+        paramInt = xsm.a(getContext(), 206.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -113,8 +113,8 @@ public class ProviderViewEditContainer
         {
           ((MusicFragmentProviderView)localObject1).d(250);
           ((MusicFragmentProviderView)localObject1).a(null);
-          if (this.jdField_a_of_type_Blwi != null) {
-            ((MusicFragmentProviderView)localObject1).setProviderViewListener(this.jdField_a_of_type_Blwi);
+          if (this.jdField_a_of_type_Bmau != null) {
+            ((MusicFragmentProviderView)localObject1).setProviderViewListener(this.jdField_a_of_type_Bmau);
           }
         }
         ((MusicFragmentProviderView)localObject1).setCaptureScene(this.b);
@@ -122,7 +122,7 @@ public class ProviderViewEditContainer
           ((MusicFragmentProviderView)localObject1).setMusicProviderView((MusicItemInfo)paramVarArgs[0]);
         }
         paramVarArgs = getLayoutParams();
-        paramInt = xod.a(getContext(), 250.0F);
+        paramInt = xsm.a(getContext(), 250.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -141,14 +141,14 @@ public class ProviderViewEditContainer
         {
           paramVarArgs.d(250);
           paramVarArgs.a(null);
-          if (this.jdField_a_of_type_Blwi != null) {
-            paramVarArgs.setProviderViewListener(this.jdField_a_of_type_Blwi);
+          if (this.jdField_a_of_type_Bmau != null) {
+            paramVarArgs.setProviderViewListener(this.jdField_a_of_type_Bmau);
           }
         }
         paramVarArgs.setCaptureScene(this.b);
         paramVarArgs.c();
         paramVarArgs = getLayoutParams();
-        paramInt = xod.a(getContext(), 250.0F);
+        paramInt = xsm.a(getContext(), 250.0F);
         if (paramVarArgs.height != paramInt)
         {
           paramVarArgs.height = paramInt;
@@ -161,7 +161,7 @@ public class ProviderViewEditContainer
       if (!((VideoSegmentPickerProviderView)localObject1).d())
       {
         ((VideoSegmentPickerProviderView)localObject1).setCaptureScene(this.b);
-        ((VideoSegmentPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Blxp);
+        ((VideoSegmentPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bmcb);
         ((VideoSegmentPickerProviderView)localObject1).a(null);
       }
       if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
@@ -171,14 +171,14 @@ public class ProviderViewEditContainer
     for (paramInt = ((VideoSegmentPickerProviderView)localObject1).b() + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();; paramInt = 0)
     {
       localObject2 = getLayoutParams();
-      int i = xod.a(getContext(), 95.0F);
+      int i = xsm.a(getContext(), 95.0F);
       if (paramInt > 0) {}
       for (((ViewGroup.LayoutParams)localObject2).height = paramInt;; ((ViewGroup.LayoutParams)localObject2).height = i)
       {
         setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bmtx)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bmyj)))
         {
-          ((VideoSegmentPickerProviderView)localObject1).setItems((bmtx)paramVarArgs[0]);
+          ((VideoSegmentPickerProviderView)localObject1).setItems((bmyj)paramVarArgs[0]);
           ((VideoSegmentPickerProviderView)localObject1).c();
         }
         this.jdField_a_of_type_Int = 111;
@@ -188,14 +188,14 @@ public class ProviderViewEditContainer
       if (!((VideoCoverPickerProviderView)localObject1).d())
       {
         ((VideoCoverPickerProviderView)localObject1).setCaptureScene(this.b);
-        ((VideoCoverPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Blxm);
+        ((VideoCoverPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bmby);
         ((VideoCoverPickerProviderView)localObject1).a(null);
       }
       if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof Long))) {
         ((VideoCoverPickerProviderView)localObject1).setCoverFrameTime(((Long)paramVarArgs[0]).longValue());
       }
       paramVarArgs = getLayoutParams();
-      i = xod.a(getContext(), 185.0F);
+      i = xsm.a(getContext(), 185.0F);
       paramInt = i;
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
         paramInt = i + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
@@ -318,24 +318,24 @@ public class ProviderViewEditContainer
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
   }
   
-  public void setProviderViewListener(blwi paramblwi)
+  public void setProviderViewListener(bmau parambmau)
   {
-    this.jdField_a_of_type_Blwi = paramblwi;
+    this.jdField_a_of_type_Bmau = parambmau;
   }
   
-  public void setStickerListener(blof paramblof)
+  public void setStickerListener(blsr paramblsr)
   {
-    this.jdField_a_of_type_Blof = paramblof;
+    this.jdField_a_of_type_Blsr = paramblsr;
   }
   
-  public void setVideoCoverPickerListener(blxm paramblxm)
+  public void setVideoCoverPickerListener(bmby parambmby)
   {
-    this.jdField_a_of_type_Blxm = paramblxm;
+    this.jdField_a_of_type_Bmby = parambmby;
   }
   
-  public void setVideoSegmentPickerListener(blxp paramblxp)
+  public void setVideoSegmentPickerListener(bmcb parambmcb)
   {
-    this.jdField_a_of_type_Blxp = paramblxp;
+    this.jdField_a_of_type_Bmcb = parambmcb;
   }
 }
 

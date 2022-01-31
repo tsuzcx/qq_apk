@@ -1,35 +1,20 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-final class bixk
-  extends biwh
+public class bixk
+  implements DialogInterface.OnDismissListener
 {
-  bixk(Context paramContext) {}
+  public bixk(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void b(@NonNull biwi parambiwi)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool2 = false;
+    if (this.a.a) {
+      QQIndividualityBridgeActivity.b(this.a);
+    }
     if (QLog.isColorLevel()) {
-      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
-    }
-    parambiwi = parambiwi.a();
-    boolean bool1 = bool2;
-    if (parambiwi != null)
-    {
-      parambiwi = bixj.a("on_off", parambiwi);
-      if (parambiwi == null) {
-        bool1 = bool2;
-      }
-    }
-    else
-    {
-      bixi.a(this.a, bool1);
-      return;
-    }
-    if (((Integer)parambiwi).intValue() == 1) {}
-    for (bool1 = true;; bool1 = false) {
-      break;
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
     }
   }
 }

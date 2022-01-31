@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class akdy
-  implements Comparator<awbv>
+public class akdy
+  implements DialogInterface.OnClickListener
 {
-  akdy(akdx paramakdx, HashMap paramHashMap) {}
+  public akdy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public int a(awbv paramawbv1, awbv paramawbv2)
-  {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawbv1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawbv2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

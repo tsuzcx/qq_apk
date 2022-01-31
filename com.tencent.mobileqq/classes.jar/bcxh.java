@@ -1,47 +1,23 @@
-import com.tencent.mobileqq.util.FaceInfo;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
 
 public class bcxh
-  implements bcxf
+  implements Animator.AnimatorListener
 {
-  public String a;
-  public WeakReference<bcxb> a;
+  public bcxh(PhantomPicView.1 param1) {}
   
-  bcxh(bcxd parambcxd, bcxb parambcxb)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcxb);
-    if ((parambcxb != null) && (parambcxb.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null)) {
-      this.jdField_a_of_type_JavaLangString = parambcxb.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-    }
+    this.a.this$0.c();
   }
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Bcxd.a(paramBoolean, 11, paramString, this.jdField_a_of_type_Bcxd.jdField_a_of_type_Bcxh);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Bcxd.a(paramBoolean1, 32, paramString, this.jdField_a_of_type_Bcxd.jdField_a_of_type_Bcxh);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Bcxd.a(paramBoolean, 1, paramString, this.jdField_a_of_type_Bcxd.jdField_a_of_type_Bcxh);
-  }
-  
-  public void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if ((this.jdField_a_of_type_Bcxd.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramInt != this.jdField_a_of_type_Bcxd.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Bcxd.a(paramBoolean1, 16, paramString, this.jdField_a_of_type_Bcxd.jdField_a_of_type_Bcxh);
-  }
-  
-  public void c(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Bcxd.a(paramBoolean, 4, paramString, this.jdField_a_of_type_Bcxd.jdField_a_of_type_Bcxh);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

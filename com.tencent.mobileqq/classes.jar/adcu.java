@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class adcu
-  implements DialogInterface.OnDismissListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public adcu(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcu(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
-      LoginInfoActivity.a(this.a, null);
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
     }
+    return true;
   }
 }
 

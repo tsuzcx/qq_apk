@@ -1,13 +1,13 @@
-import com.tencent.widget.XListView;
+import java.util.HashSet;
+import java.util.Set;
 
-class ajeg
-  implements uzi
+public class ajeg
 {
-  ajeg(ajee paramajee) {}
+  public static final Set<String> a = new HashSet();
   
-  public void a()
+  static
   {
-    this.a.a.invalidateViews();
+    a.add("SoLoadModule");
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkrl;
+import bkvs;
 
 public class AEBottomListScrollView$ScrollStateListener$1
   implements Runnable
 {
-  public AEBottomListScrollView$ScrollStateListener$1(bkrl parambkrl) {}
+  public AEBottomListScrollView$ScrollStateListener$1(bkvs parambkvs) {}
   
   public void run()
   {

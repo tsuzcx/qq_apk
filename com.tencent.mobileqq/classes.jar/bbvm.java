@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Context;
 
 public class bbvm
-  implements DialogInterface.OnClickListener
 {
-  public bbvm(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbvm(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramString2.length();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.b != null) {
+      localStringBuilder.append(", pinyin = " + this.b);
+    }
+    return localStringBuilder.toString();
   }
 }
 

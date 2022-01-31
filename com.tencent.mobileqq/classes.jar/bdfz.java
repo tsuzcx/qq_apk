@@ -1,30 +1,86 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.Sizeable;
 
-class bdfz
-  implements View.OnClickListener
+public class bdfz
 {
-  bdfz(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public static Bitmap a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 0);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    try
+    if (BaseApplicationImpl.sImageCache != null)
     {
-      if (this.jdField_a_of_type_Bdfq.isShowing()) {
-        this.jdField_a_of_type_Bdfq.dismiss();
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString != null) && ((paramString instanceof Bitmap))) {
+        return (Bitmap)paramString;
       }
+    }
+    return null;
+  }
+  
+  public static Sizeable a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString != null) && ((paramString instanceof Sizeable))) {
+        return (Sizeable)paramString;
+      }
+    }
+    return null;
+  }
+  
+  public static sfc a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString instanceof sfc)) {
+        return (sfc)paramString;
+      }
+    }
+    return null;
+  }
+  
+  public static void a(String paramString, Bitmap paramBitmap)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
       return;
     }
-    catch (Exception paramView) {}
+    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
+  }
+  
+  public static void a(String paramString, Sizeable paramSizeable)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
+      return;
+    }
+    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
+  }
+  
+  public static void a(String paramString, sfc paramsfc)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramsfc == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
+      return;
+    }
+    BaseApplicationImpl.sImageCache.put(paramString, paramsfc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,120 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
-class arpy
-  implements arpz
+public class arpy
 {
-  arpy(arpx paramarpx) {}
+  private arqa jdField_a_of_type_Arqa;
+  private arqb jdField_a_of_type_Arqb;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ChatMessage a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public arpy(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a.b(paramInt);
-    if ((arpx.a(this.a) != null) && (paramInt - this.a.g() > 0))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_Arqa = arqa.a(paramQQAppInterface, paramChatMessage);
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {
+      return this.jdField_a_of_type_Arqa.a();
+    }
+    return 0L;
+  }
+  
+  public arpx a()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {
+      return this.jdField_a_of_type_Arqa.a();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {
+      return this.jdField_a_of_type_Arqa.b();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {}
+    for (boolean bool = this.jdField_a_of_type_Arqa.a();; bool = false)
     {
-      this.a.a(paramInt);
-      arpx.a(this.a).b(paramInt, paramBundle);
+      if (!bool)
+      {
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
+        if (this.jdField_a_of_type_Arqb != null) {
+          this.jdField_a_of_type_Arqb.a(false);
+        }
+      }
+      return;
     }
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(arqb paramarqb)
   {
-    arpx.a(this.a);
-    this.a.c(5);
-    if (arpx.a(this.a) != null) {
-      arpx.a(this.a).a(paramInt, paramString, paramBundle);
+    this.jdField_a_of_type_Arqb = paramarqb;
+    if (this.jdField_a_of_type_Arqa != null) {
+      this.jdField_a_of_type_Arqa.a(this.jdField_a_of_type_Arqb);
     }
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void a(String paramString, arpz paramarpz)
   {
-    arpx.a(this.a);
-    this.a.c(4);
-    if (bdcs.a(this.a.e)) {
-      this.a.e = arni.b(this.a.e);
-    }
-    QLog.i(arpx.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
-    int i = 1;
-    long l2;
-    long l1;
-    if (paramBundle != null)
+    if (!bdhb.b(paramString))
     {
-      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
-      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
-      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
+      if (paramarpz != null) {
+        paramarpz.a(-1, "file is not exist");
+      }
+      return;
     }
-    for (;;)
+    ThreadManager.getSubThreadHandler().post(new QFileMultiSaveReq.1(this, paramString, paramarpz));
+  }
+  
+  public boolean a()
+  {
+    return bdhb.b(b());
+  }
+  
+  public String b()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_Arqa != null) {
+      str = this.jdField_a_of_type_Arqa.a();
+    }
+    return str;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {}
+    for (boolean bool = this.jdField_a_of_type_Arqa.b();; bool = false)
     {
-      if (!bdcs.b(new File(this.a.f), new File(this.a.e)))
+      if (!bool)
       {
-        QLog.e(arpx.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
-        this.a.c(5);
-        paramString = arpl.a(7);
-        QQAppInterface localQQAppInterface = aqwa.a().a();
-        if (localQQAppInterface != null)
-        {
-          arni.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          arni.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          azmy.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-          if (arpx.a(this.a) != null) {
-            arpx.a(this.a).a(7, paramString, paramBundle);
-          }
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
+        if (this.jdField_a_of_type_Arqb != null) {
+          this.jdField_a_of_type_Arqb.b(false);
         }
       }
-      for (;;)
-      {
-        return;
-        QLog.w(arpx.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
-        break;
-        arpd.a().a(this.a.jdField_c_of_type_JavaLangString);
-        paramString = aqwa.a().a();
-        if (paramString != null)
-        {
-          arni.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          arni.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          azmy.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_1");
-        }
-        while (arpx.a(this.a) != null)
-        {
-          l1 = paramLong;
-          if (this.a.b > 0L)
-          {
-            l1 = paramLong;
-            if (paramLong <= 0L) {
-              l1 = this.a.b;
-            }
-          }
-          arpx.a(this.a).a(this.a.e, l1, paramBundle);
-          return;
-          QLog.i(arpx.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
-        }
-      }
-      l1 = paramLong;
-      l2 = paramLong;
+      return;
     }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Arqa != null) {
+      this.jdField_a_of_type_Arqa.c();
+    }
+    return false;
   }
 }
 

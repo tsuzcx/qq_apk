@@ -1,83 +1,56 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import java.util.Arrays;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aoqa
+  extends aokh<aopz>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  public final boolean a;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private final String c;
-  private final String d;
-  
-  public aoqa()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    this.c = null;
-    this.d = null;
+    return 419;
   }
   
-  public aoqa(String paramString1, boolean paramBoolean, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  @NonNull
+  public aopz a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString1;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString2;
-    if ("AIO".equals(paramString1))
-    {
-      this.c = "0X800A647";
-      this.d = "0X800A648";
-      return;
-    }
-    if ("group".equals(paramString1))
-    {
-      this.c = "0X800A649";
-      this.d = "0X800A64A";
-      return;
-    }
-    if ("download".equals(paramString1))
-    {
-      this.c = "0X800A64B";
-      this.d = "0X800A64C";
-      return;
-    }
-    this.c = null;
-    this.d = null;
+    return new aopz();
   }
   
-  public SpannableString a(Context paramContext, CharSequence paramCharSequence)
+  @Nullable
+  public aopz a(aoko[] paramArrayOfaoko)
   {
-    paramCharSequence = paramCharSequence + this.jdField_b_of_type_JavaLangString;
-    SpannableString localSpannableString = new SpannableString(paramCharSequence);
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      String str1 = this.jdField_a_of_type_ArrayOfJavaLangString[i];
-      String str2 = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        int j = paramCharSequence.indexOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        localSpannableString.setSpan(new aoqb(this, str2, paramContext), j, str1.length() + j, 33);
-      }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aopz.a(paramArrayOfaoko[0].a);
     }
-    azmj.b(null, "dc00898", "", "", this.c, this.c, 2, 0, "", "", "", "");
-    return localSpannableString;
+    return null;
   }
   
-  public String toString()
+  public Class<aopz> a()
   {
-    return "Item{enable=" + this.jdField_a_of_type_Boolean + ", content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", keyWords=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + ", actionUrls=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + '}';
+    return aopz.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aopz paramaopz) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

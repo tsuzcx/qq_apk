@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class RoamSetting
-  extends awbv
+  extends awge
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @awdj
+  @awhs
   public String path;
   public String value;
   

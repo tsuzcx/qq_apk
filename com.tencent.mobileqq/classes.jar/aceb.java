@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.Emoticon;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aceb
-  implements aubp<Emoticon>
+public class aceb
+  implements View.OnClickListener
 {
-  aceb(acea paramacea, int paramInt1, int paramInt2, String paramString) {}
+  public aceb(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(View paramView)
   {
-    afqr.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Acea.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acea.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acea.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      anoe.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, anoe.b, 0, 0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+    }
+    this.a.finish();
   }
 }
 

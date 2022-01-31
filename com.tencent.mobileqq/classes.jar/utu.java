@@ -1,20 +1,40 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+
 public class utu
+  implements apuc
 {
-  public final int a;
-  public final String a;
-  public final utt a;
+  public utu(StoryInputBarView paramStoryInputBarView) {}
   
-  public utu(utt paramutt, int paramInt, String paramString)
+  public void a(apuf paramapuf)
   {
-    this.jdField_a_of_type_Utt = paramutt;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (((paramapuf instanceof apza)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((apza)paramapuf).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    }
   }
   
-  public String toString()
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
+  
+  public boolean a(apuf paramapuf)
   {
-    return "Output{intput=" + this.jdField_a_of_type_Utt + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return false;
   }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      banh.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+  }
+  
+  public void b(apuf paramapuf) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

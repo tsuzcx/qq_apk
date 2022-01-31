@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import afai;
-import alrh;
+import afex;
+import alvw;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
@@ -12,9 +12,9 @@ class LangSettingFragment$4
   
   public void run()
   {
-    alrh.c(this.this$0.getActivity());
+    alvw.c(this.this$0.getActivity());
     this.this$0.getActivity().finish();
-    afai.b(this.this$0.getActivity(), GeneralSettingActivity.class);
+    afex.b(this.this$0.getActivity(), GeneralSettingActivity.class);
   }
 }
 

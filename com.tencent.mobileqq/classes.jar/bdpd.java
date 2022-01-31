@@ -1,22 +1,98 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class bdpd
-  implements Sizeable
 {
-  public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
-  
-  public int getByteSize()
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
+    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    try
+    {
+      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
+      localDataOutputStream.write(paramArrayOfByte);
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      label76:
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte;
+      paramArrayOfByte.printStackTrace();
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException1)
+      {
+        break label76;
+      }
+    }
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte)
+  {
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
+    try
+    {
+      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
+      label72:
+      return paramArrayOfByte;
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException5) {}
+      localException1 = localException1;
+      paramArrayOfByte = null;
+      localException1.printStackTrace();
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException2)
+      {
+        return paramArrayOfByte;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException3)
+      {
+        break label72;
+      }
+    }
   }
 }
 

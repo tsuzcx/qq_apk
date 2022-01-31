@@ -1,47 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class uws
-  extends uhn
+public class uws
+  extends uli
 {
-  uws(uwn paramuwn) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void a()
+  public uws(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    wsv.b(uwn.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      wsv.e(uwn.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
     }
-    uuq localuuq = (uuq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
-    if (localuuq.a()) {
-      if (this.a.a()) {
-        this.a.jdField_a_of_type_Uvz.a("exp_story", 3);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!localuuq.b()) {
-          break;
-        }
-      } while (!this.a.a());
-      this.a.jdField_a_of_type_Uvz.a("exp_story", 2);
-      return;
-      if (!this.a.jdField_a_of_type_Uwx.a()) {
-        break;
-      }
-    } while (!this.a.a());
-    this.a.jdField_a_of_type_Uvz.a("exp_story", 5);
-    return;
-    if (localuuq.c())
-    {
-      this.a.h();
-      localuuq.a();
-      this.a.jdField_a_of_type_Uvz.a("exp_hide", 0);
-      return;
-    }
-    this.a.jdField_a_of_type_Uvz.a("exp_hide", 0);
+  }
+  
+  public String toString()
+  {
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
 import android.os.Bundle;
-import aruc;
-import aryh;
-import bfdq;
-import bfdw;
+import aryl;
+import ascq;
+import bfhz;
+import bfif;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ForwardSdkBaseOption$9$1
@@ -14,15 +14,15 @@ class ForwardSdkBaseOption$9$1
   
   public void run()
   {
-    this.a.this$0.a(1004, aruc.b.intValue());
+    this.a.this$0.a(1004, aryl.b.intValue());
     Bundle localBundle = new Bundle();
     localBundle.putString("report_type", "102");
     localBundle.putString("act_type", "84");
-    localBundle.putString("intext_1", "" + bfdw.a(this.a.this$0.d));
-    localBundle.putString("intext_2", "" + bfdw.a(this.a.this$0.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.a.this$0.jdField_a_of_type_AndroidOsBundle.getString("uin")));
+    localBundle.putString("intext_1", "" + bfif.a(this.a.this$0.d));
+    localBundle.putString("intext_2", "" + bfif.a(this.a.this$0.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.a.this$0.jdField_a_of_type_AndroidOsBundle.getString("uin")));
     localBundle.putString("intext_3", "0");
     localBundle.putString("intext_4", "5");
-    bfdq.a().a(localBundle, "", this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    bfhz.a().a(localBundle, "", this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
   }
 }
 

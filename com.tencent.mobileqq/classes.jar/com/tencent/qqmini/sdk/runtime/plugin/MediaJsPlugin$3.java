@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgkd;
-import bglo;
-import bhab;
+import bgok;
+import bgpv;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
 import org.json.JSONObject;
@@ -10,16 +10,16 @@ import org.json.JSONObject;
 class MediaJsPlugin$3
   implements Runnable
 {
-  MediaJsPlugin$3(MediaJsPlugin paramMediaJsPlugin, int paramInt, JSONObject paramJSONObject, bgkd parambgkd) {}
+  MediaJsPlugin$3(MediaJsPlugin paramMediaJsPlugin, int paramInt, JSONObject paramJSONObject, bgok parambgok) {}
   
   public void run()
   {
-    CoverView localCoverView = bhab.a(MediaJsPlugin.access$700(this.this$0)).a(this.val$videoPlayerId);
+    CoverView localCoverView = bhei.a(MediaJsPlugin.access$700(this.this$0)).a(this.val$videoPlayerId);
     if ((localCoverView instanceof CoverVideoView))
     {
       ((CoverVideoView)localCoverView).b(this.val$jsonObject);
       String str = this.val$jsonObject.optString("filePath");
-      if (!bglo.a(str)) {
+      if (!bgpv.a(str)) {
         ((CoverVideoView)localCoverView).setVideoPath(str);
       }
       this.val$req.a();

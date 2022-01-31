@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import xod;
+import xsm;
 
 public class StorySimpleLoadView
   extends RelativeLayout
@@ -35,14 +35,14 @@ public class StorySimpleLoadView
   {
     ProgressBar localProgressBar = new ProgressBar(getContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846392));
-    localProgressBar.setId(2131369762);
-    int i = xod.a(getContext(), 24.0F);
+    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846465));
+    localProgressBar.setId(2131369781);
+    int i = xsm.a(getContext(), 24.0F);
     Object localObject = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     addView(localProgressBar, (ViewGroup.LayoutParams)localObject);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setText(alpo.a(2131714941));
+    ((TextView)localObject).setText(alud.a(2131714953));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14);
     localLayoutParams.addRule(3, localProgressBar.getId());

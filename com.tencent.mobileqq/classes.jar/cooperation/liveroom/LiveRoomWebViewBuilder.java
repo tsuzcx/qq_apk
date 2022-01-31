@@ -1,6 +1,6 @@
 package cooperation.liveroom;
 
-import alyh;
+import amcw;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -19,11 +19,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import beaz;
-import bebb;
-import befr;
-import befv;
-import besa;
+import befi;
+import befk;
+import beka;
+import beke;
+import bewj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.haoliyou.JefsClass;
@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import myl;
 
 public class LiveRoomWebViewBuilder
-  extends beaz
+  extends befi
 {
   public static final String TAG = "LiveRoomWebViewBuilder";
   private final WebAccelerateHelper.CommonJsPluginFactory LIVEROOM_COMMON_JS = new LiveRoomWebViewBuilder.1(this);
@@ -83,31 +83,31 @@ public class LiveRoomWebViewBuilder
   @TargetApi(14)
   public View buildLayoutOnly()
   {
-    View localView = LayoutInflater.from(this.mContext).inflate(2131562815, null);
-    this.mViewRoot = localView.findViewById(2131380105);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131562833, null);
+    this.mViewRoot = localView.findViewById(2131380163);
     if (this.mViewRoot == null) {
       return localView;
     }
     if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131377921));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131377975));
     this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363394));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131380120));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131375537));
-    this.maskView = this.mViewRoot.findViewById(2131380123);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131364780));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131380178));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131375588));
+    this.maskView = this.mViewRoot.findViewById(2131380181);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131364781));
     if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131372322));
-      this.mProgressBarController = new besa();
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131372342));
+      this.mProgressBarController = new bewj();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
       if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131380117);
+    this.mWebview.setId(2131380175);
     WebSettings localWebSettings = this.mWebview.getSettings();
     String str1 = " gflive/" + this.sdkVersion;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -116,7 +116,7 @@ public class LiveRoomWebViewBuilder
     if (this.mWebview.getX5WebViewExtension() != null) {}
     for (boolean bool = true;; bool = false)
     {
-      localWebSettings.setUserAgentString(befr.a(str2, str3, bool) + " gflivesdk" + str1);
+      localWebSettings.setUserAgentString(beka.a(str2, str3, bool) + " gflivesdk" + str1);
       localWebSettings.setMixedContentMode(0);
       this.webviewContainer.addView(this.mWebview, new RelativeLayout.LayoutParams(-1, -1));
       return localView;
@@ -126,10 +126,10 @@ public class LiveRoomWebViewBuilder
   public void buildTitleBar()
   {
     this.titleContainer.setBackgroundColor(getResources().getColor(17170445));
-    bebb localbebb = new bebb();
-    localbebb.a = this.webviewContainer;
-    localbebb.b = this.titleContainer;
-    setTittlebarImmersive(true, localbebb);
+    befk localbefk = new befk();
+    localbefk.a = this.webviewContainer;
+    localbefk.b = this.titleContainer;
+    setTittlebarImmersive(true, localbefk);
   }
   
   public Object doInterceptRequest(WebView paramWebView, String paramString)
@@ -163,7 +163,7 @@ public class LiveRoomWebViewBuilder
     return this.LIVEROOM_COMMON_JS;
   }
   
-  public void onImmersive(boolean paramBoolean, bebb parambebb)
+  public void onImmersive(boolean paramBoolean, befk parambefk)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomWebViewBuilder", 2, "onImmersive");
@@ -173,8 +173,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(false, 0);
       }
-      if (parambebb.b != null) {
-        parambebb.b.getBackground().setAlpha(0);
+      if (parambefk.b != null) {
+        parambefk.b.getBackground().setAlpha(0);
       }
     }
     do
@@ -183,8 +183,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
-      if (parambebb.b != null) {
-        parambebb.b.setBackgroundResource(2130849463);
+      if (parambefk.b != null) {
+        parambefk.b.setBackgroundResource(2130849536);
       }
     } while (this.mTitleBar == null);
     this.mTitleBar.a(255, 0);
@@ -248,7 +248,7 @@ public class LiveRoomWebViewBuilder
             localObject1 = ((ActivityInfo)localObject3).packageName;
           }
           localObject3 = this.mInActivity.getClass().getName();
-          alyh.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
+          amcw.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
         }
         catch (Exception paramWebView)
         {

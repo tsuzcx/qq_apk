@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-public final class bbfp
-  implements QQPermissionCallback
+public class bbfp
+  implements InputFilter
 {
-  public bbfp(bbfu parambbfu, BaseActivity paramBaseActivity) {}
+  public bbfp(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Bbfu.a(bcht.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, aljq.bd, 1001));
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (paramCharSequence.contains("\n")) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 

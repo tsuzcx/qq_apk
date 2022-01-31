@@ -1,6 +1,18 @@
-public abstract interface wba
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+class wba
+  implements DialogInterface.OnDismissListener
 {
-  public abstract boolean a(String paramString);
+  wba(waz paramwaz) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
+  }
 }
 
 

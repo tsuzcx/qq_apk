@@ -44,7 +44,7 @@ public class pvy
   {
     Object localObject = this.g + "/" + "libpts.so";
     String str = this.g + "/" + "pts_config.json";
-    boolean bool1 = bdcs.a((String)localObject);
+    boolean bool1 = bdhb.a((String)localObject);
     boolean bool2 = pwc.a(str);
     jdField_a_of_type_JavaLangString = pwc.b(str);
     localObject = new StringBuilder();

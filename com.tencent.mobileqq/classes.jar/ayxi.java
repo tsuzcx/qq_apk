@@ -1,8 +1,12 @@
-public abstract interface ayxi
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ayxi
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  ayxi(ayxg paramayxg) {}
   
-  public abstract void a(String paramString);
+  public void onClick(View paramView) {}
 }
 
 

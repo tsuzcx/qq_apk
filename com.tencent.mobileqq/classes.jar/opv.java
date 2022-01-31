@@ -13,10 +13,10 @@ public class opv
     if (BaseApplicationImpl.sApplication == null) {
       return null;
     }
-    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562687, null);
-    ((DragTextView)localView.findViewById(2131379223)).setDragViewType(2);
-    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131377323)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
-    ((TextView)localView.findViewById(2131378966)).setText(paramInt5);
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562705, null);
+    ((DragTextView)localView.findViewById(2131379281)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131377377)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131379024)).setText(paramInt5);
     return localView;
   }
   

@@ -3,13 +3,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 class dw
-  implements arnx
+  implements arsg
 {
   dw(dt paramdt, DataLineMsgRecord paramDataLineMsgRecord) {}
   
   public void onClick(View paramView)
   {
-    ((baff)this.jdField_a_of_type_Dt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext);
+    ((bajo)this.jdField_a_of_type_Dt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext);
   }
 }
 

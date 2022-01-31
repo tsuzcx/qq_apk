@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aekt;
-import aemk;
+import aepi;
+import aeqz;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.ViewGroup;
-import azus;
-import azuw;
+import azzb;
+import azzf;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class StructMsgItemPAAudio$3
   implements Runnable
 {
-  public StructMsgItemPAAudio$3(azus paramazus, View paramView, azuw paramazuw) {}
+  public StructMsgItemPAAudio$3(azzb paramazzb, View paramView, azzf paramazzf) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class StructMsgItemPAAudio$3
       if ((localObject1 instanceof ViewGroup))
       {
         localObject2 = (ViewGroup)localObject1;
-        if (((ViewGroup)localObject2).getId() != 2131377085) {
+        if (((ViewGroup)localObject2).getId() != 2131377139) {
           break label64;
         }
-        localObject2 = (StructMsgForGeneralShare)((ViewGroup)localObject2).getTag(2131377085);
+        localObject2 = (StructMsgForGeneralShare)((ViewGroup)localObject2).getTag(2131377139);
       }
     }
     if (localObject2 == null) {}
@@ -43,18 +43,18 @@ public class StructMsgItemPAAudio$3
         break;
         this.this$0.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject1);
       } while (this.this$0.jdField_a_of_type_AndroidViewViewGroup == null);
-      localObject1 = (aemk)aekt.a(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+      localObject1 = (aeqz)aepi.a(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     } while (localObject1 == null);
-    long l = ((aemk)localObject1).a.uniseq;
+    long l = ((aeqz)localObject1).a.uniseq;
     this.this$0.W = ((StructMsgForGeneralShare)localObject2).uin;
     this.this$0.jdField_a_of_type_Boolean = this.this$0.a(l);
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Azuw.c.setBackgroundResource(2130841463);
+      this.jdField_a_of_type_Azzf.c.setBackgroundResource(2130841464);
       return;
     }
-    this.jdField_a_of_type_Azuw.c.setBackgroundResource(2130772119);
-    ((AnimationDrawable)this.jdField_a_of_type_Azuw.c.getBackground()).start();
+    this.jdField_a_of_type_Azzf.c.setBackgroundResource(2130772119);
+    ((AnimationDrawable)this.jdField_a_of_type_Azzf.c.getBackground()).start();
   }
 }
 

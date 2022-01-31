@@ -1,16 +1,17 @@
-public abstract interface atjk
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+
+public class atjk
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public atjk(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+  }
 }
 
 

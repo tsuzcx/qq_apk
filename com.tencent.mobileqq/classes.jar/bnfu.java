@@ -1,51 +1,59 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.util.QZLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class bnfu
-  implements MediaPlayer.OnPreparedListener
+class bnfu
 {
-  public bnfu(ShortVideoPreviewActivity paramShortVideoPreviewActivity, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private final Class<? extends bmnh> jdField_a_of_type_JavaLangClass;
+  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private final int b;
+  private final int c;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  private bnfu(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmnh> paramClass)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_b_of_type_Long);
-    }
-    paramMediaPlayer = this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((paramMediaPlayer == null) || (!paramMediaPlayer.getSurface().isValid()))
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  static bnfu a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmnh> paramClass)
+  {
+    return new bnfu(paramInt1, paramInt2, paramInt3, paramClass);
+  }
+  
+  Class<? extends bmnh> a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
     {
-      armz.a(2131691371);
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.f();
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.c) && (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(paramMediaPlayer);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int = this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-      if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int > 0)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int));
-        }
-        this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.d.setText(ShortVideoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int));
-        this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int);
+        Integer localInteger = (Integer)localIterator.next();
+        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
+        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
       }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_JavaLangRunnable);
     }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    if (this.jdField_a_of_type_Int > 0) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.b(1);
+    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
+    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
+  }
+  
+  void a(Set<Integer> paramSet)
+  {
+    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
+  }
+  
+  public String toString()
+  {
+    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
   }
 }
 

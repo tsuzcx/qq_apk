@@ -2,13 +2,9 @@ public abstract interface aulr
 {
   public abstract void a();
   
-  public abstract void a(aulp paramaulp);
+  public abstract void a(int paramInt);
   
-  public abstract void a(aulp paramaulp, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract boolean a();
 }
 
 

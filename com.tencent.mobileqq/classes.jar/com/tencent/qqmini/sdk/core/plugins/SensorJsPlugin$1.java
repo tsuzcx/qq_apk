@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$1
   implements Runnable
 {
-  SensorJsPlugin$1(SensorJsPlugin paramSensorJsPlugin, bgkd parambgkd) {}
+  SensorJsPlugin$1(SensorJsPlugin paramSensorJsPlugin, bgok parambgok) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ class SensorJsPlugin$1
             break label157;
           }
           i = 1;
-          if (this.this$0.startAccelerometer(this.val$req.jdField_a_of_type_Bghn, i))
+          if (this.this$0.startAccelerometer(this.val$req.jdField_a_of_type_Bglu, i))
           {
             this.val$req.a();
             return;

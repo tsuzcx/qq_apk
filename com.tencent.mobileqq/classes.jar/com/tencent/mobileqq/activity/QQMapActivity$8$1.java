@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adnd;
-import amkv;
+import adrs;
+import ampk;
 
 public class QQMapActivity$8$1
   implements Runnable
 {
-  public QQMapActivity$8$1(adnd paramadnd) {}
+  public QQMapActivity$8$1(adrs paramadrs) {}
   
   public void run()
   {
-    amkv.b(this.a.a.a);
+    ampk.b(this.a.a.a);
   }
 }
 

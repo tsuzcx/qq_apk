@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import amjf;
-import amjn;
-import amjo;
-import amjq;
+import amnu;
+import amoc;
+import amod;
+import amof;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
 import com.tencent.qphone.base.util.QLog;
@@ -11,25 +11,25 @@ import com.tencent.qphone.base.util.QLog;
 public class FTSMsgUpgrader$1
   implements Runnable
 {
-  public FTSMsgUpgrader$1(amjo paramamjo) {}
+  public FTSMsgUpgrader$1(amod paramamod) {}
   
   public void run()
   {
-    if ((!amjo.a(this.this$0)) && (amjo.a(this.this$0).a().a())) {
-      if ((amjo.a(this.this$0) != null) && (amjo.a(this.this$0).a()))
+    if ((!amod.a(this.this$0)) && (amod.a(this.this$0).a().a())) {
+      if ((amod.a(this.this$0) != null) && (amod.a(this.this$0).a()))
       {
         if (!this.this$0.a) {
-          amjo.a(this.this$0);
+          amod.a(this.this$0);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle hasReadNativeCursor = " + this.this$0.a + " mUpgradeCursor=" + amjo.a(this.this$0) + " mUpgradeMaxIndex=" + amjo.b(this.this$0));
+          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle hasReadNativeCursor = " + this.this$0.a + " mUpgradeCursor=" + amod.a(this.this$0) + " mUpgradeMaxIndex=" + amod.b(this.this$0));
         }
         if (this.this$0.a)
         {
-          if (amjo.a(this.this$0) >= amjo.b(this.this$0)) {
+          if (amod.a(this.this$0) >= amod.b(this.this$0)) {
             break label201;
           }
-          if (!amjo.b(this.this$0)) {
+          if (!amod.b(this.this$0)) {
             break label186;
           }
         }
@@ -41,7 +41,7 @@ public class FTSMsgUpgrader$1
     {
       do
       {
-        amjo.a(this.this$0).postDelayed(this, 20L);
+        amod.a(this.this$0).postDelayed(this, 20L);
         do
         {
           return;
@@ -51,19 +51,19 @@ public class FTSMsgUpgrader$1
         if (QLog.isColorLevel()) {
           QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade compeleted in handler");
         }
-        amjo.b(this.this$0);
-        amjo.a(this.this$0).c();
+        amod.b(this.this$0);
+        amod.a(this.this$0).c();
         return;
       } while (!QLog.isColorLevel());
       StringBuilder localStringBuilder = new StringBuilder().append("upgrade history in handle mDatabase = ");
-      if (amjo.a(this.this$0) == null) {}
+      if (amod.a(this.this$0) == null) {}
       for (String str = "null";; str = "@@@")
       {
         QLog.d("Q.fts.FTSMsgUpgrader", 2, str);
         return;
       }
     }
-    QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle isDestroy = " + amjo.a(this.this$0));
+    QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle isDestroy = " + amod.a(this.this$0));
   }
 }
 

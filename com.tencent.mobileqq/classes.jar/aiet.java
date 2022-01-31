@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-public class aiet
+public abstract class aiet
 {
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public aiet(QzoneFrame paramQzoneFrame) {}
+  
+  public abstract void a(int paramInt);
 }
 
 

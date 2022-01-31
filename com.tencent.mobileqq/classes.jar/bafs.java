@@ -1,26 +1,53 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
-class bafs
-  implements URLDrawable.DownloadListener
+public class bafs
+  implements View.OnTouchListener
 {
-  bafs(bafr parambafr, String paramString) {}
+  public bafs(TableQueryViewer paramTableQueryViewer) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!bafr.a(this.jdField_a_of_type_Bafr).contains(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bafr.a(this.jdField_a_of_type_Bafr).add(this.jdField_a_of_type_JavaLangString);
+    paramView = this.a.getContext();
+    int i = paramMotionEvent.getAction();
+    int j = (int)paramMotionEvent.getRawY();
+    if (i == 0) {
+      TableQueryViewer.a(this.a, (int)paramMotionEvent.getY());
     }
+    label171:
+    do
+    {
+      return false;
+      if (i == 2)
+      {
+        if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > bdaq.a(paramView, 10.0F)))
+        {
+          TableQueryViewer.a(this.a, true);
+          paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
+          paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - xin.b(paramView, 0.0F));
+          i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
+          if (paramMotionEvent.y >= 0) {
+            break label171;
+          }
+          paramMotionEvent.y = 0;
+        }
+        for (;;)
+        {
+          TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
+          return true;
+          if (paramMotionEvent.y > i - this.a.getHeight()) {
+            paramMotionEvent.y = (i - this.a.getHeight());
+          }
+        }
+      }
+    } while ((i != 1) && (i != 3));
+    return false;
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

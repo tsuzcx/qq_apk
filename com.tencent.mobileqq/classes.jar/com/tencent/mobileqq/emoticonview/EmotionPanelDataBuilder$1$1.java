@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apsl;
+import apwu;
 import java.util.List;
 
 class EmotionPanelDataBuilder$1$1

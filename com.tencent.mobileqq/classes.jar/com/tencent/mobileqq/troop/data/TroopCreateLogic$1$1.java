@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbjs;
-import bbml;
-import bbmm;
+import bbob;
+import bbqu;
+import bbqv;
 
 public class TroopCreateLogic$1$1
   implements Runnable
 {
-  public TroopCreateLogic$1$1(bbmm parambbmm) {}
+  public TroopCreateLogic$1$1(bbqv parambbqv) {}
   
   public void run()
   {
-    bbml.a(this.a.jdField_a_of_type_Bbml);
-    new bbjs(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Bbmu).show();
+    bbqu.a(this.a.jdField_a_of_type_Bbqu);
+    new bbob(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Bbrd).show();
   }
 }
 

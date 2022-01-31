@@ -1,21 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-final class bgrj
-  implements View.OnTouchListener
+class bgrj
 {
-  bgrj(float[] paramArrayOfFloat) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.a[0] = paramMotionEvent.getX();
-      this.a[1] = paramMotionEvent.getY();
-    }
-    return false;
-  }
+  private bgrj(bgrb parambgrb) {}
 }
 
 

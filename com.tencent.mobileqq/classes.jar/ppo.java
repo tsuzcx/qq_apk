@@ -27,9 +27,9 @@ public class ppo
   
   private void a()
   {
-    bddb localbddb = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (localbddb != null) {
-      localbddb.c();
+    bdhk localbdhk = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (localbdhk != null) {
+      localbdhk.c();
     }
   }
   

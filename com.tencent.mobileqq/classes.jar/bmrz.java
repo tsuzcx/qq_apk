@@ -1,20 +1,31 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 class bmrz
-  extends SoftReference<V>
+  implements urr<vfq, vhk>
 {
-  private K jdField_a_of_type_JavaLangObject;
+  bmrz(bmru parambmru, WeakReference paramWeakReference) {}
   
-  public bmrz(K paramK, V paramV, ReferenceQueue<? super V> paramReferenceQueue)
+  public void a(@NonNull vfq paramvfq, @Nullable vhk paramvhk, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramReferenceQueue, localReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramV;
-  }
-  
-  public K a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    if (paramvhk == null)
+    {
+      paramvfq = (bmsf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramvfq != null) {
+        paramvfq.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
+    }
+    paramvfq = (bmsf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramvfq != null)
+    {
+      paramvfq.a(0, paramvhk.a);
+      return;
+    }
+    wxe.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

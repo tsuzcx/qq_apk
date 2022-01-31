@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class qya
-  implements ayzw
+  implements azef
 {
   qya(qxw paramqxw) {}
   
   public void G_()
   {
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707989), null);
-    ayyy.a(3, -1500);
+    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708001), null);
+    azdh.a(3, -1500);
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -18,8 +18,8 @@ class qya
       if (paramInt == 0) {
         break label95;
       }
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707992) + paramInt + "]", null);
-      ayyy.a(2, paramInt);
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708004) + paramInt + "]", null);
+      azdh.a(2, paramInt);
     }
     for (;;)
     {
@@ -27,7 +27,7 @@ class qya
       return;
       label95:
       qxw.a(this.a, true);
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alpo.a(2131707991) + paramInt + "]", null);
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708003) + paramInt + "]", null);
     }
   }
   
@@ -35,7 +35,7 @@ class qya
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package dov.com.qq.im.ae.play;
 
-import bkvu;
-import blbm;
-import bldz;
+import blab;
+import blft;
+import blig;
 import mqq.util.WeakReference;
 
 public class PlayDownloadManagerWrap$2
   implements Runnable
 {
-  public PlayDownloadManagerWrap$2(bldz parambldz, bkvu parambkvu) {}
+  public PlayDownloadManagerWrap$2(blig paramblig, blab paramblab) {}
   
   public void run()
   {
     if (this.a.f == 0) {
-      if ((bldz.a(this.this$0) != null) && (bldz.a(this.this$0).get() != null))
+      if ((blig.a(this.this$0) != null) && (blig.a(this.this$0).get() != null))
       {
-        blbs.b = this.a;
-        ((blbm)bldz.a(this.this$0).get()).a(393218, new Object[] { this.a });
+        blfz.b = this.a;
+        ((blft)blig.a(this.this$0).get()).a(393218, new Object[] { this.a });
       }
     }
-    while (((this.a.f != 4) && (this.a.f != 5) && (this.a.f != 6) && (this.a.f != 7)) || (bldz.a(this.this$0) == null) || (bldz.a(this.this$0).get() == null)) {
+    while (((this.a.f != 4) && (this.a.f != 5) && (this.a.f != 6) && (this.a.f != 7)) || (blig.a(this.this$0) == null) || (blig.a(this.this$0).get() == null)) {
       return;
     }
-    ((blbm)bldz.a(this.this$0).get()).a(655361, new Object[] { this.a });
+    ((blft)blig.a(this.this$0).get()).a(655361, new Object[] { this.a });
   }
 }
 

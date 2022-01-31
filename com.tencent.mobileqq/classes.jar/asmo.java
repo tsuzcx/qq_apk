@@ -1,15 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-class asmo
-  implements DialogInterface.OnClickListener
+public class asmo
+  extends GestureDetector.SimpleOnGestureListener
 {
-  asmo(asmj paramasmj) {}
+  public asmo(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    asmj.a(this.a).finish();
+    this.a.f();
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

@@ -1,20 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-
-class bksa
-  implements View.OnTouchListener
+public abstract interface bksa
 {
-  bksa(bkrq parambkrq) {}
+  public abstract boolean a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((bkrq.a(this.a) != null) && (bkrq.d(this.a) != null)) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bkrq.d(this.a), bkrq.a(this.a));
-    }
-    return true;
-  }
+  public abstract boolean b();
 }
 
 

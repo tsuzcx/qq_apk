@@ -5,7 +5,7 @@ public final class szz
 {
   public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
   public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + alpo.a(2131713965) + File.separator;
+  public static final String c = Environment.getExternalStorageDirectory() + File.separator + alud.a(2131713977) + File.separator;
 }
 
 

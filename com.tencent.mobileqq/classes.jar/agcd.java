@@ -1,25 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agcd
-  implements Animation.AnimationListener
+public class agcd
+  extends StructingMsgItemBuilder
 {
-  agcd(agcb paramagcb) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public agcd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (agcb.a(this.a) != null) {
-      agcb.a(this.a).setVisibility(8);
-    }
-    if (agcb.a(this.a) != null) {
-      agcb.a(this.a).c();
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

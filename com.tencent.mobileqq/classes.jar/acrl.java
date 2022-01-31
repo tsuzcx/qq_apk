@@ -1,44 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acrl
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public acrl(EditInfoActivity paramEditInfoActivity) {}
+  public acrl(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = this.a;
-    if (!this.a.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break;
-      }
-      this.a.e();
-      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837978);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131704014));
-      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      return;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847355);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131704004));
-    this.a.a();
+    this.a.a(1134057, 50L, true);
   }
 }
 

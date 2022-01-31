@@ -1,10 +1,16 @@
-public final class bjpg
-  extends ThreadLocal<Integer>
+import cooperation.qzone.plugin.PluginRecord;
+
+public abstract interface bjpg
 {
-  protected Integer a()
-  {
-    return Integer.valueOf(-100);
-  }
+  public abstract void a(PluginRecord paramPluginRecord);
+  
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
 }
 
 

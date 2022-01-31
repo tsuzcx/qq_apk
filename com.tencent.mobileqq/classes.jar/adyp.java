@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adyp
-  implements nfd
+  implements View.OnClickListener
 {
-  public adyp(TroopInfoActivity paramTroopInfoActivity) {}
+  public adyp(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
+    azqs.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
   }
 }
 

@@ -102,7 +102,7 @@ class svp
         }
         else if (paramInteger.intValue() == 12)
         {
-          if (bdee.g(svl.a(this.a)))
+          if (bdin.g(svl.a(this.a)))
           {
             localObject = new Bundle();
             if (svl.a(this.a).mPictures != null) {
@@ -131,7 +131,7 @@ class svp
             j = 0;
             continue;
           }
-          QQToast.a(svl.a(this.a), 1, svl.a(this.a).getString(2131718723), 0).a();
+          QQToast.a(svl.a(this.a), 1, svl.a(this.a).getString(2131718735), 0).a();
           i = 4;
           j = 0;
         }
@@ -143,7 +143,7 @@ class svp
           localObject = svl.a(this.a);
           svl.a(this.a);
           ((ClipboardManager)((Context)localObject).getSystemService("clipboard")).setText(svl.a(this.a) + "&source=" + 11);
-          xxb.a(2, 2131691362);
+          ybk.a(2, 2131691363);
           i = 3;
           j = 0;
         }
@@ -195,14 +195,14 @@ class svp
         if ((this.a.a != null) && (this.a.a.size() > 0)) {
           try
           {
-            svl.a(this.a, (bhpy)bhql.a(svl.a(this.a), null));
+            svl.a(this.a, (bhuf)bhus.a(svl.a(this.a), null));
             localObject = new ReadInJoyDisLikeDialogView(svl.a(this.a));
             ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new svr(this));
             ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(this.a.a);
             svl.a(this.a).a((View)localObject, null);
             if (!svl.a(this.a).isShowing())
             {
-              if ((bhou.g()) && (!ShortVideoUtils.c()))
+              if ((bhtb.g()) && (!ShortVideoUtils.c()))
               {
                 svl.a(this.a).getWindow().getDecorView().setSystemUiVisibility(2);
                 svl.a(this.a).getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new svs(this));

@@ -1,5 +1,5 @@
 public class nub
-  implements alkr
+  implements alpg
 {
   protected void a(boolean paramBoolean, Object paramObject) {}
   

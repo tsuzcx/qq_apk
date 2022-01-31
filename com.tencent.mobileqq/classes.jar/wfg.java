@@ -1,12 +1,9 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-
 public abstract interface wfg
+  extends wnf
 {
-  public abstract boolean a();
+  public abstract void b();
   
-  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
-  
-  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public abstract void c();
 }
 
 

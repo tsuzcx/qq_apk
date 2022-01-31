@@ -48,7 +48,7 @@ public class srj
     if (paramString1 != null) {
       this.jdField_c_of_type_JavaLangString = paramString1.getAccount();
     }
-    this.jdField_d_of_type_Int = bdkf.c(CommonSuspensionGestureLayout.a(BaseActivity.sTopActivity));
+    this.jdField_d_of_type_Int = bdoo.c(CommonSuspensionGestureLayout.a(BaseActivity.sTopActivity));
   }
   
   public srj(@NonNull String paramString1, @NonNull JSONObject paramJSONObject, String paramString2, int paramInt)
@@ -97,7 +97,7 @@ public class srj
         localJSONObject.put("screenWidth", FlexConvertUtils.getScreenWidth(BaseApplicationImpl.getApplication()));
         localJSONObject.put("screenHeight", FlexConvertUtils.getScreenHeight(BaseApplicationImpl.getApplication()));
         i = j;
-        if (bdvr.a() == 1) {
+        if (beaa.a() == 1) {
           i = 1;
         }
         localJSONObject.put("isKindCard", i);

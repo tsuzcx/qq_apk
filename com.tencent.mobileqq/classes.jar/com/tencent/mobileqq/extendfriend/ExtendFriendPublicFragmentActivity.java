@@ -2,7 +2,7 @@ package com.tencent.mobileqq.extendfriend;
 
 import android.content.Context;
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -30,7 +30,7 @@ public class ExtendFriendPublicFragmentActivity
     }
     for (;;)
     {
-      azmj.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
+      azqs.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
       return;
       str = "";
     }

@@ -1,11 +1,17 @@
-import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import cooperation.wadl.ipc.WadlResult;
 
 public class anje
+  implements anjl
 {
-  public int a;
-  public ArkAppInfo.AppDownloadInfo a;
-  public String a;
-  public int b;
+  anje(aniz paramaniz) {}
+  
+  public void a(WadlResult paramWadlResult)
+  {
+    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+  }
 }
 
 

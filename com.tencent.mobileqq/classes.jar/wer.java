@@ -1,68 +1,32 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wer
-  implements weq
+  extends QQUIEventReceiver<IEventReceiver, vdv>
 {
-  private int jdField_a_of_type_Int;
-  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public wer(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
+  public wer(@NonNull IEventReceiver paramIEventReceiver)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramIEventReceiver);
   }
   
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull vdv paramvdv)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    if (paramvdv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      QQToast.a(vls.a(), 2, alud.a(2131711427), 0).a();
+      wxj.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramvdv.jdField_a_of_type_Int), "5" });
+      return;
+    }
+    QQToast.a(vls.a(), 1, alud.a(2131711422), 0).a();
+    wxj.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
   }
   
-  public void a(String paramString, int paramInt)
+  public Class acceptEventClass()
   {
-    wsv.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        ume.a((Context)localObject, 12, paramString);
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = "clk_reply_nick";
-      paramString = "2";
-      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
-        break label157;
-      }
-      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      paramInt = wta.a(paramString);
-      if (!paramString.getOwner().isMe()) {
-        break label151;
-      }
-      paramString = "1";
-    }
-    for (;;)
-    {
-      wta.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, wta.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      localObject = "clk_like_name";
-      break;
-      label151:
-      paramString = "2";
-      continue;
-      label157:
-      paramInt = 4;
-    }
+    return vdv.class;
   }
 }
 

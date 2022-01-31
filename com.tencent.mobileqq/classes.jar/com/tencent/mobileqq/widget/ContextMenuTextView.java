@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import baig;
-import bain;
-import bekb;
-import bekd;
+import bamp;
+import bamw;
+import beok;
+import beom;
 import com.tencent.widget.BubblePopupWindow;
 
 public class ContextMenuTextView
@@ -19,7 +19,7 @@ public class ContextMenuTextView
 {
   private Context jdField_a_of_type_AndroidContentContext;
   public View.OnClickListener a;
-  bekd jdField_a_of_type_Bekd = new bekd(this, null);
+  beom jdField_a_of_type_Beom = new beom(this, null);
   public BubblePopupWindow a;
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
@@ -27,20 +27,20 @@ public class ContextMenuTextView
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bekb(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Bekd);
+    setOnLongClickListener(this.jdField_a_of_type_Beom);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bekb(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Bekd);
+    setOnLongClickListener(this.jdField_a_of_type_Beom);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Bekd);
+    setOnTouchListener(this.jdField_a_of_type_Beom);
   }
   
   private void a(Object paramObject)
@@ -72,7 +72,7 @@ public class ContextMenuTextView
     if ((localObject1 instanceof Spannable))
     {
       localObject1 = (Spannable)localObject1;
-      localObject1 = (bain[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bain.class);
+      localObject1 = (bamw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bamw.class);
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         this.jdField_a_of_type_Boolean = true;
@@ -104,10 +104,10 @@ public class ContextMenuTextView
     if (!getText().equals(paramCharSequence))
     {
       super.setText(paramCharSequence, paramBufferType);
-      if ((getText() instanceof baig))
+      if ((getText() instanceof bamp))
       {
         paramCharSequence = (Spannable)getText();
-        paramCharSequence = (bain[])paramCharSequence.getSpans(0, paramCharSequence.length(), bain.class);
+        paramCharSequence = (bamw[])paramCharSequence.getSpans(0, paramCharSequence.length(), bamw.class);
         paramBufferType = new Drawable[paramCharSequence.length];
         while (i < paramCharSequence.length)
         {

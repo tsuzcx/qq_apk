@@ -1,91 +1,148 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.view.Gravity;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class afcu
-  extends Drawable
 {
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private static afcu jdField_a_of_type_Afcu;
+  private SparseArray<afct> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public afcu(int paramInt, float paramFloat)
+  private afct a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(paramInt1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    float f1 = 0.0F;
-    int i = getLevel();
-    if (i == 0) {}
-    Rect localRect1;
-    Rect localRect2;
-    int j;
-    int k;
-    int m;
-    do
+    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
+    while (i >= 0)
     {
-      return;
-      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
-      localRect2 = getBounds();
-      j = localRect2.width();
-      k = localRect2.height();
-      k -= (10000 - i) * k / 10000;
-      m = paramCanvas.getHeight();
-      Gravity.apply(48, j, k, localRect2, localRect1);
-    } while ((j <= 0) || (k <= 0));
-    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
-    paramCanvas.save();
-    float f2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
-      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
-    }
-    for (;;)
-    {
-      paramCanvas.clipRect(localRect1);
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+      afct localafct = (afct)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localafct != null) && (localafct.a(paramLong, paramBoolean))) {
+        return localafct;
       }
-      paramCanvas.restore();
-      return;
-      f2 = 0.0F;
+      i -= 1;
+    }
+    return null;
+  }
+  
+  public static afcu a()
+  {
+    if (jdField_a_of_type_Afcu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Afcu == null) {
+        jdField_a_of_type_Afcu = new afcu();
+      }
+      return jdField_a_of_type_Afcu;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
+    }
+    afct localafct = (afct)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localafct != null) {
+      localafct.a(paramLong1, paramLong2);
     }
   }
   
-  public int getOpacity()
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    return -3;
+    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
   }
   
-  public void setAlpha(int paramInt) {}
+  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
+        }
+      }
+    }
+    if (paramInt1 == 1) {}
+    for (paramList = new afda();; paramList = new afcv())
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
+      return;
+    }
+  }
   
-  public void setColorFilter(ColorFilter paramColorFilter) {}
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
+    }
+    afct localafct = a(paramLong, false);
+    if ((localafct != null) && (localafct.a(paramQQAppInterface, paramLong))) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localafct.a);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    afct localafct = (afct)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localafct != null) {
+      localafct.a(paramQQAppInterface, paramLong);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      afct localafct = a(paramMessageRecord.uniseq, true);
+      if (localafct != null) {
+        localafct.a(paramQQAppInterface, paramMessageRecord);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  {
+    if (paramList != null) {
+      try
+      {
+        if (paramList.size() > 0)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext()) {
+            a(paramQQAppInterface, (MessageRecord)paramList.next());
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
+  {
+    try
+    {
+      ((afct)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      return;
+    }
+    finally {}
+  }
 }
 
 

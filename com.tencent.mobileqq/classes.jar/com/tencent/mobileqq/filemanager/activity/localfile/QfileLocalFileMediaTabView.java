@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import aqiz;
-import aqlr;
-import arol;
-import arqz;
+import aqni;
+import aqqa;
+import arsu;
+import arvi;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,7 +20,7 @@ public class QfileLocalFileMediaTabView
 {
   private int a;
   
-  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<arqz> paramList, boolean paramBoolean)
+  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<arvi> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_Int = 3;
@@ -34,9 +34,9 @@ public class QfileLocalFileMediaTabView
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  protected aqiz a()
+  protected aqni a()
   {
-    return new aqlr(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aqqa(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()

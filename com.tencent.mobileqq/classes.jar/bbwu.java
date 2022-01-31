@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Map;
+import java.util.UUID;
 
-public class bbwu
-  implements View.OnClickListener
+class bbwu
+  extends yuh
 {
-  public bbwu(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  bbwu(bbwt parambbwt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    do
+    {
+      do
+      {
+        return;
+        paramBundle = paramBundle.getString("itemKey");
+      } while (paramBundle == null);
+      paramBundle = UUID.fromString(paramBundle);
+      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    } while (paramBundle == null);
+    bbwt.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

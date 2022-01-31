@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
 import java.util.ArrayList;
-import wkl;
-import wkp;
-import wsv;
+import wou;
+import woy;
+import wxe;
 
 public class FeedManager$2
   implements Runnable
 {
-  public FeedManager$2(wkp paramwkp) {}
+  public FeedManager$2(woy paramwoy) {}
   
   public void run()
   {
-    if (wkp.a(this.this$0) == 0L)
+    if (woy.a(this.this$0) == 0L)
     {
-      wsv.d("Q.qqstory.home.position", "cache in use");
+      wxe.d("Q.qqstory.home.position", "cache in use");
       return;
     }
     this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.this$0.jdField_a_of_type_Wkl != null) {
-      this.this$0.jdField_a_of_type_Wkl.a();
+    if (this.this$0.jdField_a_of_type_Wou != null) {
+      this.this$0.jdField_a_of_type_Wou.a();
     }
-    wsv.d("Q.qqstory.home.position", "release cache");
+    wxe.d("Q.qqstory.home.position", "release cache");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bdfq;
+import bdjz;
 
 class AuthorityAccountView$DelAccountRunnable$2
   implements Runnable

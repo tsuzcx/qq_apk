@@ -1,23 +1,17 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class ahqg
-  implements ahqd
+public class ahqg
+  implements View.OnClickListener
 {
-  ahqg(ahqf paramahqf) {}
+  public ahqg(TroopSuspiciousFragment paramTroopSuspiciousFragment, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    ((alro)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Ahpo != null) {
-      this.a.jdField_a_of_type_Ahpo.a();
-    }
-    ahqf.a(this.a);
+    awrt.a(TroopSuspiciousFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment), this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.getActivity(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 

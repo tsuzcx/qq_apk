@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import awbv;
-import uha;
+import awge;
+import ulj;
 
 public class TagItemEntry
-  extends awbv
-  implements uha
+  extends awge
+  implements ulj
 {
   public String desc;
   public long id;

@@ -2,63 +2,63 @@ public class nap
 {
   public static int a()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.jdField_a_of_type_Int;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.jdField_a_of_type_Int;
     }
     return 0;
   }
   
   public static String a()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.jdField_a_of_type_JavaLangString;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.jdField_a_of_type_JavaLangString;
     }
     return null;
   }
   
   public static int b()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.b;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.b;
     }
     return -1;
   }
   
   public static String b()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.c;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.c;
     }
     return null;
   }
   
   public static String c()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.d;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.d;
     }
     return null;
   }
   
   public static String d()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.e;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.e;
     }
     return null;
   }
   
   public static String e()
   {
-    aoof localaoof = (aoof)aogj.a().a(207);
-    if (localaoof != null) {
-      return localaoof.f;
+    aoso localaoso = (aoso)aoks.a().a(207);
+    if (localaoso != null) {
+      return localaoso.f;
     }
     return null;
   }

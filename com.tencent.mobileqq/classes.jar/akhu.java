@@ -1,21 +1,17 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 class akhu
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  akhu(akht paramakht, zpa paramzpa, View paramView) {}
+  akhu(akhs paramakhs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Zpa.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839216);
+    GroupManagerActivity.a(this.a.a);
+    azqs.b(akhs.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

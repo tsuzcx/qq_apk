@@ -1,39 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bknk
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public bknk(AECropperImageView paramAECropperImageView) {}
+  public bknk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationCancel(paramAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationEnd(paramAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.onAnimationStart(paramAnimator);
-    }
+    this.a.g();
   }
 }
 

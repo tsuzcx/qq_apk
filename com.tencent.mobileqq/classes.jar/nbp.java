@@ -96,7 +96,7 @@ public class nbp
     Object localObject = null;
     try
     {
-      String str = bdiv.c(paramContext);
+      String str = bdne.c(paramContext);
       localObject = str;
     }
     catch (Exception localException)
@@ -104,7 +104,7 @@ public class nbp
       label9:
       break label9;
     }
-    bdiv.c(paramContext, "");
+    bdne.c(paramContext, "");
     if (!TextUtils.isEmpty(localObject))
     {
       a(SecurityUtile.b(localObject));
@@ -116,7 +116,7 @@ public class nbp
       return;
       try
       {
-        paramContext = (alne)BaseApplicationImpl.sApplication.getRuntime().getManager(69);
+        paramContext = (alrt)BaseApplicationImpl.sApplication.getRuntime().getManager(69);
         if (paramContext != null) {
           a(paramContext.a(), false);
         }
@@ -127,24 +127,24 @@ public class nbp
   
   public static void a(String paramString)
   {
-    alne localalne;
+    alrt localalrt;
     if (a(paramString, false))
     {
-      localalne = (alne)BaseApplicationImpl.sApplication.getRuntime().getManager(69);
-      if (localalne == null) {
+      localalrt = (alrt)BaseApplicationImpl.sApplication.getRuntime().getManager(69);
+      if (localalrt == null) {
         break label47;
       }
       if (!TextUtils.isEmpty(paramString)) {
         break label41;
       }
-      localalne.a("");
+      localalrt.a("");
     }
     label41:
     label47:
     while (!QLog.isColorLevel())
     {
       return;
-      localalne.a(paramString);
+      localalrt.a(paramString);
       return;
     }
     QLog.d("BmqqSegmentUtil", 2, "EqqDetailDataManager is null");

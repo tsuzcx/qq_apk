@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import biyg;
+import bjcn;
 
 public class DrawHbFragment$DrawHbBundleInfo
-  extends biyg
+  extends bjcn
 {
   public String drawParam;
   public String skinId;

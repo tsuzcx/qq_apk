@@ -1,53 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Locale;
+import dalvik.system.PathClassLoader;
 
-class bgve
-  implements bgum
+public class bgve
+  extends PathClassLoader
 {
-  private float jdField_a_of_type_Float;
+  private ClassLoader a;
   
-  bgve(bgvd parambgvd, long paramLong) {}
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  public bgve(String paramString1, String paramString2, ClassLoader paramClassLoader)
   {
-    String str = "";
-    if (paramFloat - this.jdField_a_of_type_Float > 0.1F)
-    {
-      this.jdField_a_of_type_Float = paramFloat;
-      str = String.format(Locale.getDefault(), "%.2f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%";
-      QMLog.i("GpkgLoadAsyncTask", "[Gpkg]" + paramMiniAppInfo.appId + "(" + paramMiniAppInfo.name + "), progress " + str + ", size=" + paramLong);
-    }
-    if (!TextUtils.isEmpty(str))
-    {
-      paramMiniAppInfo = new bgvr().a(paramFloat).a();
-      this.jdField_a_of_type_Bgvd.a().notifyRuntimeEvent(2001, new Object[] { paramMiniAppInfo });
-    }
+    super(paramString1, paramString2, paramClassLoader.getParent());
+    this.a = paramClassLoader;
   }
   
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
+  public Class<?> findClass(String paramString)
   {
-    QMLog.i("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig end, resCode=" + paramInt + ", msg=" + paramString + " ,timecost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if ((paramInt == 0) && (parambgun != null))
+    try
     {
-      bgjm.a().a(parambgun, true);
-      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig appid=" + parambgun.appId + ", appName=" + parambgun.apkgName + " success");
-      bgvd.a(this.jdField_a_of_type_Bgvd, parambgun);
-      bgvd.a(this.jdField_a_of_type_Bgvd, null);
-      this.jdField_a_of_type_Bgvd.c();
-      return;
+      Class localClass = super.findClass(paramString);
+      return localClass;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("[Gpkg] getGpkgInfoByConfig appid=");
-    if (parambgun != null) {}
-    for (parambgun = parambgun.appId;; parambgun = "unknown appid")
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      QMLog.e("GpkgLoadAsyncTask", parambgun + ", fail " + paramString);
-      bgvd.a(this.jdField_a_of_type_Bgvd, null);
-      bgvd.a(this.jdField_a_of_type_Bgvd, null);
-      this.jdField_a_of_type_Bgvd.a(paramInt, paramString);
-      return;
+      QMLog.w("MiniAppClassloader", "ClassNotFoundException, load class from old loader: " + paramString);
+      return this.a.loadClass(paramString);
     }
+    catch (InternalError localInternalError)
+    {
+      QMLog.w("MiniAppClassloader", "InternalError, load class from old loader: " + paramString);
+    }
+    return this.a.loadClass(paramString);
   }
 }
 

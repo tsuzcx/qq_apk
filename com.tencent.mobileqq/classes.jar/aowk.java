@@ -1,87 +1,77 @@
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipDescription;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
 
 public class aowk
-  implements Manager
+  extends aokh<aowl>
 {
-  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public aowk(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 589;
   }
   
-  private ClipboardManager a()
+  @NonNull
+  public aowl a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
-      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
-    }
-    return this.jdField_a_of_type_AndroidContentClipboardManager;
+    return new aowl();
   }
   
-  private SharedPreferences a()
+  @Nullable
+  public aowl a(aoko[] paramArrayOfaoko)
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
-  }
-  
-  public String a()
-  {
-    if (Build.VERSION.SDK_INT >= 26)
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
-      Object localObject = a().getPrimaryClipDescription();
-      if (localObject != null)
-      {
-        long l2 = ((ClipDescription)localObject).getTimestamp();
-        long l3 = System.currentTimeMillis();
-        if ((l2 != l1) && (l3 - l2 < 180000L))
-        {
-          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
-          if ((a().hasPrimaryClip()) && (a().getPrimaryClip() != null) && (a().getPrimaryClip().getItemCount() > 0))
-          {
-            localObject = a().getPrimaryClip().getItemAt(0);
-            if (QLog.isColorLevel()) {
-              QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
-            }
-            if (localObject != null)
-            {
-              localObject = ((ClipData.Item)localObject).getText();
-              if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-                return String.valueOf(localObject);
-              }
-            }
-          }
-        }
+      aowl localaowl = aowl.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfaoko[0].a);
       }
+      return localaowl;
     }
-    return "";
+    return new aowl();
   }
   
-  public void onDestroy()
+  public Class<aowl> a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
+    return aowl.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
+    }
+  }
+  
+  public void a(aowl paramaowl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowk
  * JD-Core Version:    0.7.0.1
  */

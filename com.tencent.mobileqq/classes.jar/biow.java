@@ -1,11 +1,20 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
+
 public class biow
+  extends bipm
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  biow(biov parambiov) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
+    }
+  }
 }
 
 

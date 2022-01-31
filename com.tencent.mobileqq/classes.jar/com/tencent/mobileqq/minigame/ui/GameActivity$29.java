@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.minigame.debug.DebugWebSocket.DebuggerStateListener;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,26 +12,26 @@ class GameActivity$29
   public void onDebuggerBreakPointPaused()
   {
     QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger BreakPointPaused");
-    GameActivity.access$5000(this.this$0, alpo.a(2131705389), null, true);
+    GameActivity.access$5000(this.this$0, alud.a(2131705401), null, true);
   }
   
   public void onDebuggerConnectedNormal()
   {
     QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger connected ");
-    GameActivity.access$5000(this.this$0, alpo.a(2131705383), null, false);
+    GameActivity.access$5000(this.this$0, alud.a(2131705395), null, false);
     GameActivity.access$5100(this.this$0);
   }
   
   public void onDebuggerDisconnect(String paramString)
   {
     QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Disconnect");
-    GameActivity.access$5000(this.this$0, alpo.a(2131705388), alpo.a(2131705393), false);
+    GameActivity.access$5000(this.this$0, alud.a(2131705400), alud.a(2131705405), false);
   }
   
   public void onDebuggerReconnecting(String paramString)
   {
     QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Reconnecting");
-    GameActivity.access$5000(this.this$0, alpo.a(2131705385), alpo.a(2131705384), false);
+    GameActivity.access$5000(this.this$0, alud.a(2131705397), alud.a(2131705396), false);
   }
 }
 

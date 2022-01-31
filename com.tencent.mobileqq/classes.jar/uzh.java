@@ -1,69 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class uzh
-  implements IEventReceiver
+  extends uro
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private uzi jdField_a_of_type_Uzi;
-  private uzj jdField_a_of_type_Uzj;
-  private uzk jdField_a_of_type_Uzk;
+  public long a;
+  public int b;
   
-  public uzh(QQAppInterface paramQQAppInterface)
+  public uzh(qqstory_service.RspCheckActivity paramRspCheckActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
   }
   
-  private void b()
+  public String toString()
   {
-    this.jdField_a_of_type_Uzj = new uzj(this);
-    this.jdField_a_of_type_Uzk = new uzk(this);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Uzj);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Uzk);
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Uzi);
-    }
-    if (this.jdField_a_of_type_Uzi != null) {
-      this.jdField_a_of_type_Uzi.a();
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
-    }
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Uzj);
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Uzk);
-    this.jdField_a_of_type_Uzi = null;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void a(uzi paramuzi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramuzi);
-    }
-    this.jdField_a_of_type_Uzi = paramuzi;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
   }
 }
 

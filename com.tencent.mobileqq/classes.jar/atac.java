@@ -1,21 +1,17 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
 
-class atac
-  implements asvc
+public class atac
+  implements View.OnClickListener
 {
-  atac(atab paramatab, asuy paramasuy, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  private atac(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    paramString = new Bundle(this.jdField_a_of_type_Asuy.a().a.getExtras());
-    Bundle localBundle = new Bundle();
-    localBundle.putBundle("data", paramString);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    GroupVideoLoadingFragment.a(this.a).a(alud.a(2131705790), alud.a(2131705794));
+    GroupVideoLoadingFragment.a(this.a).c();
+    GroupVideoLoadingFragment.a(this.a, false);
   }
 }
 

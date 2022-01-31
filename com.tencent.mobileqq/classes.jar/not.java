@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class not
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private bhpy jdField_a_of_type_Bhpy;
+  private bhuf jdField_a_of_type_Bhuf;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
   public not(Activity paramActivity, AppInterface paramAppInterface)
@@ -27,25 +27,25 @@ public class not
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(this.jdField_a_of_type_AndroidAppActivity, null));
+      this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this.jdField_a_of_type_AndroidAppActivity, null));
       Object localObject = new nou(this);
-      this.jdField_a_of_type_Bhpy.a((bhqg)localObject);
+      this.jdField_a_of_type_Bhuf.a((bhun)localObject);
       localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
       ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new nov(this, paramAdvertisementInfo));
       ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new now(this, paramAdvertisementInfo));
       ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
-      this.jdField_a_of_type_Bhpy.a((View)localObject, null);
+      this.jdField_a_of_type_Bhuf.a((View)localObject, null);
       try
       {
-        if (!this.jdField_a_of_type_Bhpy.isShowing())
+        if (!this.jdField_a_of_type_Bhuf.isShowing())
         {
-          if ((bhou.g()) && (!ShortVideoUtils.c()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
+          if ((bhtb.g()) && (!ShortVideoUtils.c()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
           {
-            this.jdField_a_of_type_Bhpy.getWindow().setFlags(8, 8);
-            this.jdField_a_of_type_Bhpy.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-            this.jdField_a_of_type_Bhpy.setOnShowListener(new nox(this));
+            this.jdField_a_of_type_Bhuf.getWindow().setFlags(8, 8);
+            this.jdField_a_of_type_Bhuf.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
+            this.jdField_a_of_type_Bhuf.setOnShowListener(new nox(this));
           }
-          this.jdField_a_of_type_Bhpy.show();
+          this.jdField_a_of_type_Bhuf.show();
           return;
         }
       }

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import wwr;
-import wwt;
+import xba;
+import xbc;
 
 public class EditVideoPoi$2$2
   implements Runnable
 {
-  public EditVideoPoi$2$2(wwt paramwwt) {}
+  public EditVideoPoi$2$2(xbc paramxbc) {}
   
   public void run()
   {
-    wwr.a(this.a.a, 1);
+    xba.a(this.a.a, 1);
   }
 }
 

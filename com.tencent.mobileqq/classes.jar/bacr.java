@@ -1,70 +1,60 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import java.util.ArrayList;
 
-public class bacr
-  extends bacq
+public final class bacr
 {
-  private aqpg jdField_a_of_type_Aqpg = new bacs(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  
-  public bacr(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public static void a(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
-      return false;
+    Object localObject = paramBundle;
+    if (paramBundle == null) {
+      localObject = new Bundle();
     }
-    return true;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    String str1 = ((Bundle)localObject).getString("title");
+    String str2 = ((Bundle)localObject).getString("summary");
+    String str3 = ((Bundle)localObject).getString("imageUrl");
+    String str4 = ((Bundle)localObject).getString("targetUrl");
+    String str5 = ((Bundle)localObject).getString("sourceName");
+    String str6 = ((Bundle)localObject).getString("iconUrl");
+    localObject = ((Bundle)localObject).getString("sourceUrl");
+    String str7 = paramActivity.getString(2131696875, new Object[] { str1 });
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (paramBundle = " ";; paramBundle = "web")
     {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label240;
-      }
-      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
-        break label219;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arni.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
-        break label240;
-      }
-      i = 1;
-      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aqpg);
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bacn.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-      this.jdField_a_of_type_Bacn.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      bdna.a(paramActivity, 1001, 1, "web_share", "", str3, str1, str2, str7, str4, "web", null, null, null, paramBundle, null, null, null, str6, str5, "", null, paramInt, (String)localObject, -1L);
       return;
-      label219:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      break;
-      label240:
-      i = 0;
     }
+  }
+  
+  public static void a(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new QZoneShareData();
+    paramBundle.jdField_b_of_type_JavaLangString = localBundle.getString("title");
+    paramBundle.c = localBundle.getString("summary");
+    String str = localBundle.getString("imageUrl");
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(str);
+    paramBundle.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    paramBundle.d = localBundle.getString("targetUrl");
+    paramBundle.jdField_a_of_type_Int = -1;
+    paramBundle.jdField_b_of_type_Long = System.currentTimeMillis();
+    paramBundle.jdField_b_of_type_Int = 0;
+    bjev.a(paramActivity, paramString, paramBundle, null, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, Intent paramIntent, String paramString)
+  {
+    QLog.d(paramString, 2, "handleShareToFriend: resultCode=" + paramInt);
+    paramActivity.setResult(paramInt);
   }
 }
 

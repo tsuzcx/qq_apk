@@ -1,51 +1,36 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
-class aani
-  implements aanf
+public class aani
 {
-  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
+  private aanq jdField_a_of_type_Aanq;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  
+  aani(Context paramContext)
   {
-    Object localObject = null;
-    if (paramaamm != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramVarArgs = paramaamm.a();
-        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
-        localJSONObject = new JSONObject();
-        if (paramVarArgs == null) {
-          continue;
-        }
-        localJSONObject.put("lat", paramVarArgs[0]);
-        localJSONObject.put("lon", paramVarArgs[1]);
-        paramaamm.callJs(paramString, new String[] { localJSONObject.toString() });
-      }
-      catch (Exception paramString)
-      {
-        JSONObject localJSONObject;
-        paramString.printStackTrace();
-        continue;
-        paramString = null;
-        continue;
-      }
-      if (paramaamm == null) {
-        continue;
-      }
-      paramString = paramaamm.a();
-      paramVarArgs = localObject;
-      if (paramaamm != null) {
-        paramVarArgs = paramaamm.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
-      return true;
-      paramVarArgs = null;
-      continue;
-      localJSONObject.put("lat", JSONObject.NULL);
-      localJSONObject.put("lon", JSONObject.NULL);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public aanh a()
+  {
+    aanh localaanh = new aanh();
+    localaanh.a(this.jdField_a_of_type_AndroidContentContext);
+    localaanh.a(this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData);
+    localaanh.a(this.jdField_a_of_type_Aanq);
+    return localaanh;
+  }
+  
+  public aani a(aanq paramaanq)
+  {
+    this.jdField_a_of_type_Aanq = paramaanq;
+    return this;
+  }
+  
+  public aani a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+    return this;
   }
 }
 

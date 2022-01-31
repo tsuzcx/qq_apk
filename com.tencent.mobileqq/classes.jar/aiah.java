@@ -1,15 +1,17 @@
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+
 public class aiah
-  implements ajds
+  implements acnt
 {
-  public void a(int paramInt) {}
+  public aiah(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
+  public boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      bkjn.a(this.a.getActivity());
+    }
+    return false;
+  }
 }
 
 

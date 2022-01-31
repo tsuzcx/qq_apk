@@ -1,37 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
 
-public class aqhc
-  implements arqh
+final class aqhc
+  implements View.OnClickListener
 {
-  public aqhc(FilePreviewActivity paramFilePreviewActivity) {}
+  aqhc(Activity paramActivity, String paramString, DialogFromBottom paramDialogFromBottom) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Aqxr != null)
-    {
-      this.a.jdField_a_of_type_Aqxr.l = "3";
-      this.a.jdField_a_of_type_Aqxr.e = System.currentTimeMillis();
-    }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
+    aqgz.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqMiniUiDialogDialogFromBottom.dismiss();
+    azqs.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 1, 0, "", "", "", "");
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

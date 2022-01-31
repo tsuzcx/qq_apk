@@ -1,6 +1,13 @@
-public abstract interface bepj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
+
+public class bepj
+  implements View.OnClickListener
 {
-  public abstract boolean a();
+  public bepj(DrawerFrame paramDrawerFrame) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

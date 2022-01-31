@@ -1,63 +1,56 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.List;
-
-class bmgz
-  implements blxm
+public class bmgz
 {
-  bmgz(bmgy parambmgy) {}
+  public int a;
+  private bmha jdField_a_of_type_Bmha;
+  private bmhd jdField_a_of_type_Bmhd;
+  public int b = 100;
+  public int c = 2;
+  private int d;
   
-  public void a()
+  public bmgz(int paramInt1, int paramInt2, int paramInt3)
   {
-    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)this.a.a.jdField_a_of_type_Bmfh.a.a(113);
-    boolean bool;
-    Object localObject;
-    if (localVideoCoverPickerProviderView != null)
-    {
-      bool = this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_is_need_gaussion_blur", false);
-      if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakeVideoSource))
-      {
-        localObject = (EditTakeVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-        localVideoCoverPickerProviderView.setVideo(((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString, 0L, ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, ((EditTakeVideoSource)localObject).a(), ((EditTakeVideoSource)localObject).b(), ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource))
-    {
-      localObject = (EditLocalVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-      localVideoCoverPickerProviderView.setVideo(((EditLocalVideoSource)localObject).jdField_a_of_type_JavaLangString, ((EditLocalVideoSource)localObject).jdField_a_of_type_Int, ((EditLocalVideoSource)localObject).b, ((EditLocalVideoSource)localObject).a(), ((EditLocalVideoSource)localObject).b(), ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      return;
-    }
-    throw new IllegalArgumentException("SegmentEdit init error");
+    this.jdField_a_of_type_Int = 10000;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void a(long paramLong)
+  public int a()
   {
-    bmgy.a(this.a, true);
-    bmet localbmet = (bmet)this.a.a(bmet.class);
-    if (localbmet != null) {
-      localbmet.a(paramLong, true, false);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bmha a()
+  {
+    return this.jdField_a_of_type_Bmha;
+  }
+  
+  public bmhd a()
+  {
+    return this.jdField_a_of_type_Bmhd;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void a(bmha parambmha)
+  {
+    this.jdField_a_of_type_Bmha = parambmha;
+    if (parambmha.a() != null) {
+      this.b = parambmha.b();
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void a(bmhd parambmhd)
   {
-    this.a.a(paramLong, paramBoolean);
+    this.jdField_a_of_type_Bmhd = parambmhd;
   }
   
-  public void a(List<Long> paramList)
+  public int b()
   {
-    bmet localbmet = (bmet)this.a.a(bmet.class);
-    if (localbmet != null) {
-      localbmet.a(paramList);
-    }
+    return this.b;
   }
 }
 

@@ -7,23 +7,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import benu;
-import benv;
-import bhpo;
+import besd;
+import bese;
+import bhtv;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
 import java.util.LinkedList;
 
 public class PinnedDividerListView
   extends XListView
-  implements bhpo
+  implements bhtv
 {
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private benu jdField_a_of_type_Benu;
-  private benv jdField_a_of_type_Benv;
-  private bhpo jdField_a_of_type_Bhpo;
+  private besd jdField_a_of_type_Besd;
+  private bese jdField_a_of_type_Bese;
+  private bhtv jdField_a_of_type_Bhtv;
   private LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private int b;
   
@@ -51,9 +51,9 @@ public class PinnedDividerListView
     super.setOnScrollListener(this);
   }
   
-  protected benu a()
+  protected besd a()
   {
-    return this.jdField_a_of_type_Benu;
+    return this.jdField_a_of_type_Besd;
   }
   
   public void addHeaderView(View paramView)
@@ -83,12 +83,12 @@ public class PinnedDividerListView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       i = getFirstVisiblePosition() - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      if ((i < 0) || (this.jdField_a_of_type_Benu.a(this.jdField_a_of_type_AndroidViewView, i))) {
+      if ((i < 0) || (this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i))) {
         break label161;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_Benu.a(this.jdField_a_of_type_AndroidViewView, i);
+      this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i);
     }
     for (;;)
     {
@@ -105,8 +105,8 @@ public class PinnedDividerListView
       label161:
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
-    if (this.jdField_a_of_type_Benv != null) {
-      this.jdField_a_of_type_Benv.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bese != null) {
+      this.jdField_a_of_type_Bese.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -124,12 +124,12 @@ public class PinnedDividerListView
     int j;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_Benu.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
+      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
         break label359;
       }
       i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_Benu.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_Benu.a(i))
+      this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i);
+      if (this.jdField_a_of_type_Besd.a(i))
       {
         this.jdField_a_of_type_Int = 0;
         paramInt1 = 1;
@@ -164,7 +164,7 @@ public class PinnedDividerListView
           paramInt1 = 0;
           break;
         }
-        if (this.jdField_a_of_type_Benu.a(i + 1))
+        if (this.jdField_a_of_type_Besd.a(i + 1))
         {
           this.jdField_a_of_type_Int = 1;
           paramInt1 = 0;
@@ -193,8 +193,8 @@ public class PinnedDividerListView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhpo != null) {
-        this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, i, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bhtv != null) {
+        this.jdField_a_of_type_Bhtv.onScroll(paramAbsListView, i, paramInt2, paramInt3);
       }
       return;
       label346:
@@ -208,10 +208,10 @@ public class PinnedDividerListView
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       j = this.jdField_a_of_type_JavaUtilLinkedList.size();
       i = paramInt1;
-      if (this.jdField_a_of_type_Benu.getCount() > 0)
+      if (this.jdField_a_of_type_Besd.getCount() > 0)
       {
         i = paramInt1;
-        if (this.jdField_a_of_type_Benu.a(0))
+        if (this.jdField_a_of_type_Besd.a(0))
         {
           i = paramInt1;
           if (j >= paramInt1)
@@ -230,8 +230,8 @@ public class PinnedDividerListView
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -246,30 +246,30 @@ public class PinnedDividerListView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof benu))
+    if ((paramListAdapter instanceof besd))
     {
-      this.jdField_a_of_type_Benu = ((benu)paramListAdapter);
-      int i = this.jdField_a_of_type_Benu.a();
+      this.jdField_a_of_type_Besd = ((besd)paramListAdapter);
+      int i = this.jdField_a_of_type_Besd.a();
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         requestLayout();
       }
-      super.setAdapter(this.jdField_a_of_type_Benu);
+      super.setAdapter(this.jdField_a_of_type_Besd);
       return;
     }
-    this.jdField_a_of_type_Benu = null;
+    this.jdField_a_of_type_Besd = null;
     super.setAdapter(paramListAdapter);
   }
   
-  public void setOnLayoutListener(benv parambenv)
+  public void setOnLayoutListener(bese parambese)
   {
-    this.jdField_a_of_type_Benv = parambenv;
+    this.jdField_a_of_type_Bese = parambese;
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
 }
 

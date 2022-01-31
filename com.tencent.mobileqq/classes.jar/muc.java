@@ -30,7 +30,7 @@ final class muc
       do
       {
         return;
-        biln.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+        bipu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
         return;
         Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
         localIntent.putExtra("url", parammuh.jdField_a_of_type_JavaLangString);
@@ -40,7 +40,7 @@ final class muc
         this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
         a(this.jdField_a_of_type_AndroidContentContext);
         return;
-        ((asvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
+        ((atad)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
         return;
         if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
         {

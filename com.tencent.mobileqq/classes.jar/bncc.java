@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bncc
-  implements DialogInterface.OnClickListener
+public abstract interface bncc
 {
-  bncc(bnbz parambnbz) {}
+  public abstract void cancelAnimator();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bnbz.a(this.a, "an_yuanshipin");
-  }
+  public abstract void displayPanel();
+  
+  public abstract void displayPanelFinish();
+  
+  public abstract void fadeBackground(float paramFloat);
+  
+  public abstract void hidePanel();
+  
+  public abstract void hidePanelFinish();
 }
 
 

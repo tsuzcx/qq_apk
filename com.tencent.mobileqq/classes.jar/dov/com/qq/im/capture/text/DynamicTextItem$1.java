@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.view.View;
-import blsy;
+import blxk;
 
 class DynamicTextItem$1
   implements Runnable
@@ -10,11 +10,11 @@ class DynamicTextItem$1
   
   public void run()
   {
-    blsy localblsy = DynamicTextItem.a(this.this$0);
+    blxk localblxk = DynamicTextItem.a(this.this$0);
     if (!((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      localblsy.b = Boolean.valueOf(bool);
+      localblxk.b = Boolean.valueOf(bool);
       this.a.invalidate();
       return;
     }

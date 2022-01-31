@@ -1,19 +1,18 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
 
 public class addf
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  private addf(LoginInfoActivity paramLoginInfoActivity) {}
+  public addf(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    aujo.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
   }
 }
 

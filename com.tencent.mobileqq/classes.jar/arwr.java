@@ -1,23 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
-class arwr
-  implements TextWatcher
+public class arwr
 {
-  arwr(arwl paramarwl, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b = 1000L;
+  public String b;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public arwr()
   {
-    if ((arwl.a(this.jdField_a_of_type_Arwl).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      arwl.a(this.jdField_a_of_type_Arwl).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      arwl.a(this.jdField_a_of_type_Arwl).setSelection(this.jdField_a_of_type_Int - 1);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 1000L;
   }
 }
 

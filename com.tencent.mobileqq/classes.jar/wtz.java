@@ -1,21 +1,39 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class wtz
+class wtz
+  extends wrj
 {
-  public static String a;
+  wtz(wty paramwty) {}
   
-  public static boolean a(long paramLong, Context paramContext)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    a = alno.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
-    }
-    return (bool1) || (bool2);
+    if (xsm.b()) {}
+    label6:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label6;
+          do
+          {
+            return;
+          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
+          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
+        paramObject = wty.a(this.a).b(paramObject.mOwnerUid);
+      } while (paramObject == null);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while (wty.a(this.a) == null);
+    wty.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
   }
 }
 

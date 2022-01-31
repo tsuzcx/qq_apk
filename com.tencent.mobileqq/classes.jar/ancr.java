@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-
 public class ancr
-  implements DialogInterface.OnDismissListener
 {
-  public ancr(ARScanEntryView paramARScanEntryView) {}
+  public long a;
+  public ancg a;
+  public ancq a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ancr()
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ancq = null;
+    this.jdField_a_of_type_Ancg = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Ancq + ", faceResult = " + this.jdField_a_of_type_Ancg + '}';
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
-import bfbw;
-import bfbx;
-import bfdm;
-import bfdp;
+import bfgf;
+import bfgg;
+import bfhv;
+import bfhy;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class OpenSdkFriendService$CheckAvatarUpdateCallback$1
   implements Runnable
 {
-  public OpenSdkFriendService$CheckAvatarUpdateCallback$1(bfbx parambfbx, int paramInt, JSONArray paramJSONArray) {}
+  public OpenSdkFriendService$CheckAvatarUpdateCallback$1(bfgg parambfgg, int paramInt, JSONArray paramJSONArray) {}
   
   public void run()
   {
@@ -22,8 +22,8 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback$1
         try
         {
           String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = bfdp.a(this.jdField_a_of_type_Bfbx.a.a, str);
-          bfdm.a().a(str);
+          str = bfhy.a(this.jdField_a_of_type_Bfgg.a.a, str);
+          bfhv.a().a(str);
           i += 1;
         }
         catch (JSONException localJSONException)

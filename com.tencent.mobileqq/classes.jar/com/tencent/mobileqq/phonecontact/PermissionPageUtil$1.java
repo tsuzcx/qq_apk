@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.phonecontact;
 
 import android.os.Build;
-import awdq;
+import awhz;
 
 public class PermissionPageUtil$1
   implements Runnable
 {
-  public PermissionPageUtil$1(awdq paramawdq) {}
+  public PermissionPageUtil$1(awhz paramawhz) {}
   
   public void run()
   {
     String str = null;
     if ("Xiaomi".equals(Build.MANUFACTURER)) {
-      str = awdq.a();
+      str = awhz.a();
     }
-    awdq.a(String.format("PermissionPageUtil init [%s, %s]", new Object[] { Build.MANUFACTURER, str }));
+    awhz.a(String.format("PermissionPageUtil init [%s, %s]", new Object[] { Build.MANUFACTURER, str }));
   }
 }
 

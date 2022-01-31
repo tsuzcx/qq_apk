@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class AppShareID
-  extends awbv
+  extends awge
 {
   public String appstorelink;
   public String bundleid;
@@ -14,14 +14,14 @@ public class AppShareID
   public short sPriority;
   public short sResType;
   public String sourceUrl;
-  @awdj
+  @awhs
   public String strPkgName;
   public String strResDesc;
   public String strResName;
   public String strResURL_big;
   public String strResURL_small;
   public long uiNewVer;
-  @awdj
+  @awhs
   public long uiResID;
   public long updateTime;
   

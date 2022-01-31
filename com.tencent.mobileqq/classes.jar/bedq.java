@@ -1,8 +1,7 @@
-import android.os.Bundle;
-
-public abstract interface bedq
+public class bedq
+  implements alpg
 {
-  public abstract void a(String paramString, Bundle paramBundle, long paramLong);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

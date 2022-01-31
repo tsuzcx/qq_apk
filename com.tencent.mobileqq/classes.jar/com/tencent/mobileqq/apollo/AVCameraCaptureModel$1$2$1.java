@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import akix;
-import akiy;
-import akja;
-import akro;
-import akuf;
+import aknm;
+import aknn;
+import aknp;
+import akwd;
+import akyu;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
 
 public class AVCameraCaptureModel$1$2$1
   extends IApolloRunnableTask
 {
-  public AVCameraCaptureModel$1$2$1(akja paramakja, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
+  public AVCameraCaptureModel$1$2$1(aknp paramaknp, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public String a()
   {
@@ -20,15 +20,15 @@ public class AVCameraCaptureModel$1$2$1
   
   public void run()
   {
-    akuf localakuf = akro.a(akix.a(this.jdField_a_of_type_Akja.a.a));
-    if (localakuf == null) {
+    akyu localakyu = akwd.a(aknm.a(this.jdField_a_of_type_Aknp.a.a));
+    if (localakyu == null) {
       return;
     }
-    String str2 = localakuf.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
+    String str2 = localakyu.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
-      str2 = localakuf.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
+      str2 = localakyu.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
       str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier;

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bbiv;
+import bbne;
 
 public class ContactListAdapter$3
   implements Runnable
 {
-  public ContactListAdapter$3(bbiv parambbiv) {}
+  public ContactListAdapter$3(bbne parambbne) {}
   
   public void run()
   {

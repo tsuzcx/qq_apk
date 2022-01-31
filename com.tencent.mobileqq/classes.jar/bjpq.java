@@ -1,27 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.PluginRecord;
 
-final class bjpq
-  implements ModuleDownloadListener
+class bjpq
+  extends bjol
 {
-  public void onDownloadCanceled(String paramString) {}
+  private bjpp jdField_a_of_type_Bjpp;
   
-  public void onDownloadFailed(String paramString)
+  public bjpq(bjpo parambjpo, bjpp parambjpp)
   {
-    QZLog.i(bjpp.a, "download webp so fail");
+    this.jdField_a_of_type_Bjpp = parambjpp;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(String paramString)
   {
-    if (!paramString.equals("animatedWebp.so")) {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginManger", 2, "onInstallBegin." + paramString);
+    }
+  }
+  
+  public void a(String paramString, float paramFloat, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginManger", 2, "onInstallDownloadProgress." + paramString);
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginManger", 2, "onInstallError." + paramString + "," + paramInt);
+    }
+    bjpp localbjpp = this.jdField_a_of_type_Bjpp;
+    if ((localbjpp != null) && (localbjpp.jdField_a_of_type_Bjof != null))
+    {
+      paramString = this.jdField_a_of_type_Bjpo.a(paramString);
+      if ((paramString != null) && (paramString.mInstalledPath != null)) {
+        localbjpp.jdField_a_of_type_Bjog.c = paramString.mInstalledPath;
+      }
+      paramString = localbjpp.jdField_a_of_type_Bjof;
+      if (paramInt != 2) {
+        break label122;
+      }
+    }
+    label122:
+    for (boolean bool = true;; bool = false)
+    {
+      paramString.a(bool, localbjpp.jdField_a_of_type_AndroidContentContext, localbjpp.jdField_a_of_type_Bjog);
       return;
     }
-    bfjp.a().edit().putString("PREFERENCE_SO_MD5_KEY", bjpp.b).commit();
-    QZLog.i(bjpp.a, "download webp so succ");
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginManger", 2, "onInstallFinish." + paramString);
+    }
+    paramString = this.jdField_a_of_type_Bjpp;
+    if ((paramString != null) && (paramString.jdField_a_of_type_Bjof != null))
+    {
+      PluginRecord localPluginRecord = bjpo.a(this.jdField_a_of_type_Bjpo).a(paramString.jdField_a_of_type_Bjog.b);
+      if ((localPluginRecord != null) && (localPluginRecord.mInstalledPath != null)) {
+        paramString.jdField_a_of_type_Bjog.c = localPluginRecord.mInstalledPath;
+      }
+      paramString.jdField_a_of_type_Bjof.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_Bjog);
+    }
   }
 }
 

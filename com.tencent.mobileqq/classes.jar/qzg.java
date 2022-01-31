@@ -10,7 +10,7 @@ public class qzg
     {
       syw localsyw = new syw();
       localsyw.label = "播放反馈";
-      localsyw.icon = 2130841460;
+      localsyw.icon = 2130841461;
       localsyw.iconNeedBg = true;
       localsyw.action = a(paramInteger.intValue());
       localsyw.argus = "";
@@ -27,7 +27,7 @@ public class qzg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzg
  * JD-Core Version:    0.7.0.1
  */

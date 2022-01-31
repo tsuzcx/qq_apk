@@ -1,8 +1,22 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract class uqt
-  implements IEventReceiver
-{}
+public class uqt
+{
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  {
+    return urm.a(paramStoryVideoItem);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return urm.a(paramString);
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return urm.a(paramString, paramBoolean);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

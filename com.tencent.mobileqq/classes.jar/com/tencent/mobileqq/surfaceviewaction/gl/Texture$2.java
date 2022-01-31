@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import baam;
+import baev;
 
 public class Texture$2
   implements Runnable
 {
-  public Texture$2(baam parambaam) {}
+  public Texture$2(baev parambaev) {}
   
   public void run()
   {

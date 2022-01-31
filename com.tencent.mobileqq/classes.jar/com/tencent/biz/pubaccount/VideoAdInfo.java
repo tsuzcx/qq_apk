@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import awdg;
+import awhp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -33,19 +33,19 @@ public class VideoAdInfo
   public String A;
   public String B;
   public String C;
-  @awdg
+  @awhp
   public String D = "";
-  @awdg
+  @awhp
   public String E = "";
-  @awdg
+  @awhp
   public String F = "";
-  @awdg
+  @awhp
   public String G = "";
-  @awdg
+  @awhp
   public String H = "";
-  @awdg
+  @awhp
   public String I;
-  @awdg
+  @awhp
   public String J;
   public int a;
   public long a;
@@ -61,13 +61,13 @@ public class VideoAdInfo
   public long c;
   public String c;
   public ArrayList<String> c;
-  @awdg
+  @awhp
   public boolean c;
   public int d;
   public long d;
   public String d;
   public ArrayList<String> d;
-  @awdg
+  @awhp
   public boolean d;
   public int e;
   public long e;
@@ -76,17 +76,17 @@ public class VideoAdInfo
   public int f;
   public long f;
   public String f;
-  @awdg
+  @awhp
   public ArrayList<String> f;
   public int g;
   public long g;
   public String g;
-  @awdg
+  @awhp
   public ArrayList<String> g;
   public int h;
   public long h;
   public String h;
-  @awdg
+  @awhp
   public ArrayList<String> h;
   public int i;
   public String i;
@@ -100,16 +100,16 @@ public class VideoAdInfo
   public String m;
   public int n;
   public String n;
-  @awdg
+  @awhp
   public int o;
   public String o;
-  @awdg
+  @awhp
   public int p;
   public String p;
-  @awdg
+  @awhp
   public int q;
   public String q;
-  @awdg
+  @awhp
   public int r;
   public String r;
   public String s;

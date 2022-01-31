@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class lio
-  extends alko
+  extends alpd
 {
   liq jdField_a_of_type_Liq = null;
   lis jdField_a_of_type_Lis = null;
@@ -43,7 +43,7 @@ public class lio
         i = j;
         if (j == -1)
         {
-          String str = alpo.a(2131701257) + paramInt + "]，需要在FrameDataHandlerArray中添加";
+          String str = alud.a(2131701269) + paramInt + "]，需要在FrameDataHandlerArray中添加";
           QLog.d("AVDataSender", 1, str);
           throw new IllegalArgumentException(str);
         }
@@ -114,7 +114,7 @@ public class lio
         i = j;
         if (j == -1)
         {
-          String str = alpo.a(2131701259) + paramInt + "]，需要在C2CDataHandlerArray中添加";
+          String str = alud.a(2131701271) + paramInt + "]，需要在C2CDataHandlerArray中添加";
           QLog.d("AVDataSender", 1, str);
           throw new IllegalArgumentException(str);
         }
@@ -273,7 +273,7 @@ public class lio
     return false;
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

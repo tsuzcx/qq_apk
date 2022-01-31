@@ -1,100 +1,10 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout.LayoutParams;
-import java.io.File;
+import android.graphics.Bitmap;
 
-public class xdy
-  extends xdr<xdo>
-  implements View.OnClickListener
+public abstract interface xdy
 {
-  public xdy(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Xdi == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new xdz(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xdo)this.jdField_a_of_type_Xdi).a(), ((xdo)this.jdField_a_of_type_Xdi).a(), this);; paramView = (xdz)paramView)
-    {
-      paramView.a((xdo)this.jdField_a_of_type_Xdi, paramInt, getCount());
-      return paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = 0;
-    ImageView localImageView = (ImageView)paramView;
-    int j = ((Integer)localImageView.getTag(2131377387)).intValue();
-    xdo localxdo = (xdo)this.jdField_a_of_type_Xdi;
-    Object localObject3 = Uri.parse(localxdo.a(j));
-    Object localObject1 = ((Uri)localObject3).getPath();
-    String str = new File((String)localObject1).getName();
-    try
-    {
-      localObject1 = Drawable.createFromPath((String)localObject1);
-      if (localObject1 != null)
-      {
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-        try
-        {
-          j = ((RelativeLayout.LayoutParams)((ListView)paramView.getParent().getParent()).getLayoutParams()).leftMargin;
-          i = j;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            float f2;
-            float f3;
-            float f4;
-            float f5;
-            int k;
-            Object localObject2;
-            wsv.c("NormalFaceAdapter", "get marginLeft error : %s", localException);
-            continue;
-            float f1 = (i - (k + (i - j) / 2) * 2) / i;
-          }
-        }
-        localObject3 = (xdz)paramView.getParent();
-        j = (int)wzc.b((View)localObject3);
-        f2 = wzc.a(paramView);
-        f3 = paramView.getWidth() / 2;
-        f4 = i;
-        f5 = ((xdz)localObject3).getHeight() / 2 + j;
-        i = ((Drawable)localObject1).getIntrinsicWidth();
-        j = localImageView.getWidth();
-        k = localImageView.getPaddingLeft();
-        if (j > i)
-        {
-          f1 = (((j - i) / 2 - k) * 2 + i) / i;
-          paramView = new xag(localxdo.b, str, (Drawable)localObject1);
-          this.jdField_a_of_type_Xdk.a(paramView, f4 + (f2 + f3), f5, f1 * 1.2F);
-          return;
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        wsv.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
-        localObject2 = null;
-      }
-      wsv.e("NormalFaceAdapter", "can create drawable from uri:" + localException);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

@@ -13,6 +13,7 @@ public class QCircleInitBean
   implements Serializable
 {
   public boolean isSingleFeed;
+  public QCircleInitBean.QCircleActionBean mActionBean;
   private byte[] mBusiInfoDataByteArray;
   public int mDataPosInList;
   private ExtraTypeInfo mExtraTypeInfo;
@@ -42,6 +43,7 @@ public class QCircleInitBean
     {
       this.mExtraTypeInfo = localExtraTypeInfo;
       this.mDataPosInList = tqo.a(paramtqo);
+      this.mActionBean = tqo.a(paramtqo);
       return;
     }
   }

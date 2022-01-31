@@ -1,16 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-
-public class arkc
-  implements arco
+class arkc
+  implements arip
 {
-  public arkc(SimpleFileViewer paramSimpleFileViewer) {}
+  arkc(arka paramarka) {}
   
   public void a()
   {
-    if (SimpleFileViewer.d(this.a) != null) {
-      SimpleFileViewer.d(this.a).setVisibility(8);
-    }
+    this.a.a(false, arqo.a(this.a.a.a()), this.a.c(), new arkd(this));
+  }
+  
+  public void b()
+  {
+    arka.b(this.a);
   }
 }
 

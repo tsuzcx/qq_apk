@@ -47,7 +47,7 @@ public class otw
         try
         {
           paramInt1 = Integer.valueOf(paramString).intValue();
-          bdiv.q(BaseApplicationImpl.getApplication(), paramInt1, ors.a());
+          bdne.q(BaseApplicationImpl.getApplication(), paramInt1, ors.a());
           return true;
         }
         catch (NumberFormatException paramString)

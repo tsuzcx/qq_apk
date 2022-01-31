@@ -9,12 +9,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdkf;
+import bdoo;
 
 public class MultiCardMaskView
   extends View
 {
-  private float jdField_a_of_type_Float = bdkf.b(12.0F);
+  private float jdField_a_of_type_Float = bdoo.b(12.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private boolean jdField_a_of_type_Boolean = true;

@@ -1,58 +1,58 @@
 package com.tencent.qqmini.sdk.runtime.app;
 
 import android.content.Context;
-import bgqg;
-import bgqh;
-import bhaf;
-import bhag;
-import bhah;
-import bhdu;
-import bhdw;
-import bhdz;
-import bhea;
-import bheb;
-import bhec;
-import bhee;
-import bheg;
-import bhhn;
+import bgun;
+import bguo;
+import bhem;
+import bhen;
+import bheo;
+import bhib;
+import bhid;
+import bhig;
+import bhih;
+import bhii;
+import bhij;
+import bhil;
+import bhin;
+import bhlu;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppRuntimeLoader
-  extends bgqg
+  extends bgun
 {
-  public static final bgqh<AppRuntimeLoader> CREATOR = new bhaf();
+  public static final bguo<AppRuntimeLoader> CREATOR = new bhem();
   public static final String TAG = "AppRuntimeLoader";
-  private bhdu apkgLoadTask;
-  private bhdw baselibLoadTask;
-  private bhag pageCreateTask;
-  private bhah pageInitTask;
-  private bhdz preloadFlagTask;
-  public bhea runtimeCreateTask;
-  private bheb runtimeInitTask;
-  public bhec serviceCreateTask;
-  public bhee serviceInitTask;
-  bheg tbsTask;
+  private bhib apkgLoadTask;
+  private bhid baselibLoadTask;
+  private bhen pageCreateTask;
+  private bheo pageInitTask;
+  private bhig preloadFlagTask;
+  public bhih runtimeCreateTask;
+  private bhii runtimeInitTask;
+  public bhij serviceCreateTask;
+  public bhil serviceInitTask;
+  bhin tbsTask;
   
   public AppRuntimeLoader(Context paramContext)
   {
     super(paramContext);
   }
   
-  public bhhn[] createTasks()
+  public bhlu[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bhea(localContext, this);
-    this.tbsTask = new bheg(localContext, this);
-    this.serviceCreateTask = new bhec(localContext, this);
-    this.runtimeInitTask = new bheb(localContext, this);
-    this.baselibLoadTask = new bhdw(localContext, this);
-    this.apkgLoadTask = new bhdu(localContext, this);
-    this.serviceInitTask = new bhee(localContext, this);
-    this.preloadFlagTask = new bhdz(localContext, this);
-    this.pageCreateTask = new bhag(localContext, this);
-    this.pageInitTask = new bhah(localContext, this);
+    this.runtimeCreateTask = new bhih(localContext, this);
+    this.tbsTask = new bhin(localContext, this);
+    this.serviceCreateTask = new bhij(localContext, this);
+    this.runtimeInitTask = new bhii(localContext, this);
+    this.baselibLoadTask = new bhid(localContext, this);
+    this.apkgLoadTask = new bhib(localContext, this);
+    this.serviceInitTask = new bhil(localContext, this);
+    this.preloadFlagTask = new bhig(localContext, this);
+    this.pageCreateTask = new bhen(localContext, this);
+    this.pageInitTask = new bheo(localContext, this);
     this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.serviceCreateTask.a(this.tbsTask).a(this.runtimeCreateTask)).a(this.baselibLoadTask)).a(this.pageInitTask.a(this.pageCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask))).a(this.apkgLoadTask);
-    return new bhhn[] { this.runtimeInitTask };
+    return new bhlu[] { this.runtimeInitTask };
   }
   
   public void loadMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -61,38 +61,38 @@ public class AppRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bhhn parambhhn)
+  public void onTaskDone(bhlu parambhlu)
   {
-    if (parambhhn == null) {
+    if (parambhlu == null) {
       return;
     }
-    if (!parambhhn.d())
+    if (!parambhlu.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambhhn.a, parambhhn.b);
+      onRuntimeLoadResult(parambhlu.a, parambhlu.b);
       return;
     }
-    if (parambhhn == this.preloadFlagTask) {
+    if (parambhlu == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambhhn);
+      super.onTaskDone(parambhlu);
       return;
-      if (parambhhn == this.runtimeCreateTask)
+      if (parambhlu == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambhhn == this.runtimeInitTask)
+      else if (parambhlu == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d()) {
           notifyRuntimeEvent(4, new Object[0]);
         }
         this.mIsRunning = false;
       }
-      else if ((parambhhn == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambhlu == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }

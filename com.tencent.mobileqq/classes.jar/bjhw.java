@@ -1,21 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import GIFT_MALL_PROTOCOL.doufu_piece_req;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
 public class bjhw
-  implements DialogInterface.OnClickListener
+  extends QzoneExternalRequest
 {
-  public bjhw(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bjib parambjib) {}
+  private doufu_piece_req a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjhw(long paramLong, Map<String, String> paramMap)
   {
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    if (this.jdField_a_of_type_Bjib != null) {
-      this.jdField_a_of_type_Bjib.a();
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.a = new doufu_piece_req(paramLong, paramMap);
+  }
+  
+  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+    do
+    {
+      return paramArrayOfByte;
+      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
+      paramArrayOfByte = paramArrayOfInt;
+    } while (paramArrayOfInt != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getDofuPieceInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getDofuPieceInfo";
   }
 }
 

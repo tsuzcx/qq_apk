@@ -1,15 +1,12 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class assi
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+final class assi
+  implements DialogInterface.OnClickListener
 {
-  assi(assd paramassd) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.start();
-    this.a.c = 2;
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,83 +1,21 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.SingleLineTextView;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.widget.XListView;
 
-class bbjt
-  extends BaseAdapter
+public class bbjt
+  extends Handler
 {
-  List<bccq> jdField_a_of_type_JavaUtilList;
+  public bbjt(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  bbjt(List<bccq> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bccq localbccq;
-    if (paramView == null)
+    switch (paramMessage.what)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_Bbjs.getContext()).inflate(2131560429, null);
-      paramViewGroup = new bbju(this.jdField_a_of_type_Bbjs);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131370958));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367555));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369115));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369433);
-      paramView.setOnClickListener(this.jdField_a_of_type_Bbjs);
-      paramView.setTag(paramViewGroup);
-      localbccq = (bccq)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localbccq.a.getTroopName());
-      if (localbccq.a.lastMsgTime == 0L) {
-        break label270;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707950) + ajgs.a().a(localbccq.a.troopuin, localbccq.a.lastMsgTime));
-      label191:
-      if (!localbccq.a.hasSetTroopHead()) {
-        break label356;
-      }
+    default: 
+      return;
     }
-    label270:
-    label356:
-    for (paramInt = 4;; paramInt = 113)
-    {
-      bcxb localbcxb = bcxb.a(this.jdField_a_of_type_Bbjs.a, paramInt, localbccq.a.troopuin, 3, bcxb.a(4, 3), bcxb.a(4, 3));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbcxb);
-      paramViewGroup.jdField_a_of_type_JavaLangString = localbccq.a.troopuin;
-      return paramView;
-      paramViewGroup = (bbju)paramView.getTag();
-      break;
-      if (localbccq.a.troopCreateTime != 0L)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707955) + ajgs.a().a(localbccq.a.troopuin, localbccq.a.troopCreateTime));
-        break label191;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label191;
-    }
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

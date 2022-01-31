@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,81 +9,81 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.RelativeLayout.LayoutParams;
-import anwv;
-import bkle;
-import bklh;
-import bkpa;
-import bkwm;
-import blbm;
-import blfg;
+import aobe;
+import bkpl;
+import bkpo;
+import bkth;
+import blat;
+import blft;
+import bljn;
 import dov.com.qq.im.ae.mode.AECaptureMode;
 import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 public class AEPituCameraUnit$16
   implements Runnable
 {
-  public AEPituCameraUnit$16(bkle parambkle) {}
+  public AEPituCameraUnit$16(bkpl parambkpl) {}
   
   public void run()
   {
-    blfg.b("AEPituCameraUnit", "actionAfterFirstFrame--ui run--BEGIN");
-    Object localObject = (ViewStub)bkle.a(this.this$0).findViewById(2131377091);
+    bljn.b("AEPituCameraUnit", "actionAfterFirstFrame--ui run--BEGIN");
+    Object localObject = (ViewStub)bkpl.a(this.this$0).findViewById(2131377145);
     if (localObject != null)
     {
       ((ViewStub)localObject).inflate();
-      blfg.b("AEPituCameraUnit", "AEPartAction--inflate bottom");
+      bljn.b("AEPituCameraUnit", "AEPartAction--inflate bottom");
     }
-    localObject = (ViewStub)bkle.a(this.this$0).findViewById(2131377093);
+    localObject = (ViewStub)bkpl.a(this.this$0).findViewById(2131377147);
     if (localObject != null)
     {
       ((ViewStub)localObject).inflate();
-      blfg.b("AEPituCameraUnit", "AEPartAction--inflate captureMode");
+      bljn.b("AEPituCameraUnit", "AEPartAction--inflate captureMode");
     }
-    bkle.a(this.this$0, (AEPituCameraCaptureButtonLayout)bkle.a(this.this$0).findViewById(2131363938));
-    bkle.a(this.this$0).a(this.this$0, bkle.a(this.this$0), bkle.a(this.this$0));
+    bkpl.a(this.this$0, (AEPituCameraCaptureButtonLayout)bkpl.a(this.this$0).findViewById(2131363940));
+    bkpl.a(this.this$0).a(this.this$0, bkpl.a(this.this$0), bkpl.a(this.this$0));
     localObject = this.this$0.a().getIntent();
-    bkle.a(this.this$0).setOriginIntent((Intent)localObject);
-    localObject = (RelativeLayout.LayoutParams)bkle.a(this.this$0).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = aekt.a(-30.0F, bkle.a(this.this$0).getResources());
-    bkle.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    bkle.a(this.this$0).b();
-    if (bkle.a(this.this$0))
+    bkpl.a(this.this$0).setOriginIntent((Intent)localObject);
+    localObject = (RelativeLayout.LayoutParams)bkpl.a(this.this$0).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = aepi.a(-30.0F, bkpl.a(this.this$0).getResources());
+    bkpl.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    bkpl.a(this.this$0).b();
+    if (bkpl.a(this.this$0))
     {
-      bkle.a(this.this$0).l();
+      bkpl.a(this.this$0).l();
       this.this$0.q();
     }
-    bkle.a(this.this$0).c();
-    if (bkle.a(this.this$0).shouldStartCamera())
+    bkpl.a(this.this$0).c();
+    if (bkpl.a(this.this$0).shouldStartCamera())
     {
-      bkle.g(this.this$0);
-      bkle.a(this.this$0).a();
+      bkpl.g(this.this$0);
+      bkpl.a(this.this$0).a();
     }
-    bkle.a(this.this$0, (Button)bkle.a(this.this$0).findViewById(2131364984));
-    bkle.a(this.this$0).setOnClickListener(this.this$0);
-    bkle.a(this.this$0).setSelected(false);
-    bkle.a(this.this$0).setVisibility(8);
-    if (bkle.b(this.this$0)) {
-      bkle.a(this.this$0, bkle.b(this.this$0));
+    bkpl.a(this.this$0, (Button)bkpl.a(this.this$0).findViewById(2131364986));
+    bkpl.a(this.this$0).setOnClickListener(this.this$0);
+    bkpl.a(this.this$0).setSelected(false);
+    bkpl.a(this.this$0).setVisibility(8);
+    if (bkpl.b(this.this$0)) {
+      bkpl.a(this.this$0, bkpl.b(this.this$0));
     }
-    bkle.b(this.this$0, (Button)bkle.a(this.this$0).findViewById(2131364090));
-    bkle.b(this.this$0).setOnClickListener(this.this$0);
-    bkle.b(this.this$0).setContentDescription(bkle.b(this.this$0).getResources().getString(2131719251));
-    if (!anwv.d())
+    bkpl.b(this.this$0, (Button)bkpl.a(this.this$0).findViewById(2131364092));
+    bkpl.b(this.this$0).setOnClickListener(this.this$0);
+    bkpl.b(this.this$0).setContentDescription(bkpl.b(this.this$0).getResources().getString(2131719263));
+    if (!aobe.d())
     {
-      bkle.b(this.this$0).setVisibility(4);
-      bkle.b(this.this$0).setEnabled(false);
+      bkpl.b(this.this$0).setVisibility(4);
+      bkpl.b(this.this$0).setEnabled(false);
     }
-    if (bkle.a(this.this$0))
+    if (bkpl.a(this.this$0))
     {
-      bkle.a(this.this$0).b();
-      bkle.a(this.this$0).i();
+      bkpl.a(this.this$0).b();
+      bkpl.a(this.this$0).i();
     }
-    bkle.a(this.this$0).setOnTouchListener(this.this$0);
-    if (bkle.a(this.this$0) == bkwm.x.a()) {
-      bkle.a(this.this$0).setOnClickListener(new bklh(this));
+    bkpl.a(this.this$0).setOnTouchListener(this.this$0);
+    if (blat.h(bkpl.a(this.this$0))) {
+      bkpl.a(this.this$0).setOnClickListener(new bkpo(this));
     }
-    bkle.a(this.this$0, true);
-    blfg.b("AEPituCameraUnit", "actionAfterFirstFrame--ui run--END");
+    bkpl.a(this.this$0, true);
+    bljn.b("AEPituCameraUnit", "actionAfterFirstFrame--ui run--END");
   }
 }
 

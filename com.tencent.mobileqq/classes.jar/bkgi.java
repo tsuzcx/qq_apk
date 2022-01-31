@@ -1,178 +1,143 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.weiyun.utils.IOUtils;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import cooperation.vip.qqbanner.QbossADBannerCountDownManager.1;
+import cooperation.vip.qqbanner.QbossADBannerCountDownManager.2;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class bkgi
+  extends ajir
 {
-  private long jdField_a_of_type_Long;
-  private baps jdField_a_of_type_Baps;
-  private final bkge jdField_a_of_type_Bkge;
-  private final bkgj jdField_a_of_type_Bkgj;
-  private bkgy jdField_a_of_type_Bkgy;
-  private final String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private volatile boolean jdField_d_of_type_Boolean;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bkgh jdField_a_of_type_Bkgh;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
+  private TextView b;
+  private TextView c;
   
-  private bkgi(String paramString1, String paramString2, bkge parambkge, bkgj parambkgj)
+  private Drawable a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bkge = parambkge;
-    this.jdField_a_of_type_Bkgj = parambkgj;
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(bdoo.b(20.0F));
+    localGradientDrawable.setColor(a(paramString));
+    return localGradientDrawable;
   }
   
-  public static baps a(Object paramObject, String paramString1, String paramString2, String paramString3, bapw parambapw, bapx parambapx)
+  private String a()
   {
-    return a(paramObject, paramString1, paramString2, paramString3, parambapw, parambapx, null);
+    if (this.jdField_a_of_type_Bkgh == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Bkgh.d != 1) {
+      return this.jdField_a_of_type_Bkgh.h;
+    }
+    return a(this.jdField_a_of_type_Bkgh.e, this.jdField_a_of_type_Bkgh.f);
   }
   
-  public static baps a(Object paramObject, String paramString1, String paramString2, String paramString3, bapw parambapw, bapx parambapx, String paramString4)
+  private String a(int paramInt1, int paramInt2)
   {
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = parambapx;
-    localbaps.jdField_a_of_type_JavaLangString = paramString1;
-    localbaps.jdField_a_of_type_Int = 0;
-    if (!TextUtils.isEmpty(paramString3))
+    String str1;
+    String str2;
+    if (paramInt1 > 99)
     {
-      localbaps.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Cookie", paramString3);
+      str1 = "99";
+      if (paramInt2 <= 59) {
+        break label106;
+      }
+      str2 = "59";
     }
-    if (!TextUtils.isEmpty(paramString4)) {
-      localbaps.jdField_d_of_type_JavaLangString = paramString4;
+    for (;;)
+    {
+      return str1 + ":" + str2;
+      if ((paramInt1 >= 10) && (paramInt1 <= 99))
+      {
+        str1 = String.valueOf(paramInt1);
+        break;
+      }
+      if ((paramInt1 >= 0) && (paramInt1 < 10))
+      {
+        str1 = "0" + String.valueOf(paramInt1);
+        break;
+      }
+      str1 = "00";
+      break;
+      label106:
+      if ((paramInt2 >= 10) && (paramInt2 <= 59)) {
+        str2 = String.valueOf(paramInt2);
+      } else if ((paramInt2 >= 0) && (paramInt2 < 10)) {
+        str2 = "0" + String.valueOf(paramInt2);
+      } else {
+        str2 = "00";
+      }
     }
-    localbaps.jdField_c_of_type_JavaLangString = paramString2;
-    localbaps.e = 1;
-    localbaps.a(paramObject);
-    localbaps.jdField_a_of_type_Bapw = parambapw;
-    return localbaps;
   }
   
-  public static bkgi a(String paramString1, bkge parambkge, String paramString2, bkgj parambkgj)
+  private void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (parambkge == null) || (parambkgj == null)) {
-      throw new IllegalArgumentException("The params jobOwnerUid, localDir, file and statusInfo should be valid.");
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.c.setVisibility(8);
+      return;
     }
-    return new bkgi(paramString1, IOUtils.getDirPathNoSeparator(paramString2), parambkge, parambkgj);
+    this.c.setVisibility(0);
+    this.c.setText(paramString);
   }
   
-  public long a()
+  private void i()
   {
-    return this.jdField_a_of_type_Long;
+    j();
+    this.jdField_a_of_type_JavaUtilTimer = new Timer();
+    this.jdField_a_of_type_JavaUtilTimerTask = new QbossADBannerCountDownManager.2(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 1000L);
   }
   
-  public baps a()
+  private void j()
   {
-    return this.jdField_a_of_type_Baps;
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    this.jdField_a_of_type_JavaUtilTimer = null;
+    this.jdField_a_of_type_JavaUtilTimerTask = null;
   }
   
-  public bkge a()
+  protected int a()
   {
-    return this.jdField_a_of_type_Bkge;
+    return 2131561735;
   }
   
-  public bkgj a()
+  public View a()
   {
-    return this.jdField_a_of_type_Bkgj;
+    View localView = super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378879));
+    this.b = ((TextView)localView.findViewById(2131378992));
+    this.c = ((TextView)localView.findViewById(2131378676));
+    return localView;
   }
   
-  public bkgy a()
+  protected void a(ajin paramajin)
   {
-    return this.jdField_a_of_type_Bkgy;
+    super.a(paramajin);
+    ThreadManagerV2.getUIHandlerV2().post(new QbossADBannerCountDownManager.1(this, paramajin));
   }
   
-  public String a()
+  public void e()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super.e();
+    j();
   }
   
-  public void a(long paramLong)
+  public void f()
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(baps parambaps)
-  {
-    this.jdField_a_of_type_Baps = parambaps;
-  }
-  
-  public void a(bkgy parambkgy)
-  {
-    this.jdField_a_of_type_Bkgy = parambkgy;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public bkgj b()
-  {
-    return this.jdField_a_of_type_Bkgj.a();
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
+    super.f();
+    j();
   }
 }
 

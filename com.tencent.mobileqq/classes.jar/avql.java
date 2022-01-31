@@ -1,20 +1,19 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class avql
-  extends avqe
+  extends avqj
 {
-  public ArrayList<ahjb> a;
-  public boolean a;
+  public View e;
+  public ImageView e;
+  public View f;
+  public ImageView f;
+  public TextView g;
   
-  public avql(ArrayList<ahjb> paramArrayList, boolean paramBoolean)
+  public avql(avqk paramavqk)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    super(paramavqk);
   }
 }
 

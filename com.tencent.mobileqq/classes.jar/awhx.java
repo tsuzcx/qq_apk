@@ -1,31 +1,38 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
 
-class awhx
-  implements ValueAnimator.AnimatorUpdateListener
+public class awhx
+  implements alpg
 {
-  awhx(awhw paramawhw, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void c(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    switch (paramInt)
     {
+    default: 
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-awhw.a(this.jdField_a_of_type_Awhw) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Awhw.f);
-    this.b.setAlpha(1.0F - f);
+    case 1: 
+      a(paramBoolean);
+      return;
+    case 2: 
+      b(paramBoolean);
+      return;
+    case 3: 
+      a((NewerGuidePlugin.RecommendedListResp)paramObject);
+      return;
+    }
+    c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awhx
  * JD-Core Version:    0.7.0.1
  */

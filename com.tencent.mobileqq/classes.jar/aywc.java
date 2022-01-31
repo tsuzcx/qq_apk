@@ -1,13 +1,14 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
+import android.widget.TextView;
+import java.util.List;
 
 public abstract interface aywc
+  extends aywe
 {
-  public abstract int a();
+  public abstract TextView a();
   
-  public abstract ReqItem a(int paramInt);
+  public abstract List<aywd> a();
   
-  public abstract void a(RespItem paramRespItem);
+  public abstract TextView b();
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
-import ajlk;
+import ajpz;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class ReadInJoyFlowComponentInterface
-  implements ajlk
+  implements ajpz
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   
@@ -38,7 +38,7 @@ public class ReadInJoyFlowComponentInterface
   
   public void a(Activity paramActivity, Intent paramIntent) {}
   
-  public void d_(String paramString) {}
+  public void c_(String paramString) {}
 }
 
 

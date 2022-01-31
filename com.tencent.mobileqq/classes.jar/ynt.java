@@ -1,27 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.widget.AlphaLoadingView;
 
-class ynt
-  extends yoh
+public class ynt
+  extends Handler
 {
-  ynt(ynm paramynm, ynu paramynu, String paramString1, String paramString2)
-  {
-    super(paramynm);
-  }
+  public ynt(AlphaLoadingView paramAlphaLoadingView) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel())
+    super.handleMessage(paramMessage);
+    if (!AlphaLoadingView.a(this.a))
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ynm.a));
-      this.jdField_a_of_type_Ynm.a = System.currentTimeMillis();
+      this.a.invalidate();
+      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
-      return;
-    }
-    this.jdField_a_of_type_Ynu.a(this.b, false, "cmobine auido video done.");
   }
 }
 

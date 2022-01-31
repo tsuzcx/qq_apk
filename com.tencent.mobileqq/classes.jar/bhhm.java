@@ -1,32 +1,14 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.task.AsyncTask.1;
+import android.webkit.ValueCallback;
+import com.tencent.tissue.v8rt.engine.Callback;
 
-public abstract class bhhm
-  extends bhhn
+class bhhm
+  implements Callback
 {
-  public bhhm(Context paramContext, bgqg parambgqg)
-  {
-    super(paramContext, 2, parambgqg);
-  }
+  bhhm(bhhk parambhhk, ValueCallback paramValueCallback) {}
   
-  public abstract void a();
-  
-  public boolean b()
+  public void onFinish(Object paramObject)
   {
-    return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
-  }
-  
-  public void f()
-  {
-    if (!b())
-    {
-      a();
-      return;
-    }
-    ThreadManager.a().post(new AsyncTask.1(this));
+    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(null);
   }
 }
 

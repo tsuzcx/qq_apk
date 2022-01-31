@@ -1,151 +1,46 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView.MovingImg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class uek
-  implements uel
+  implements Animator.AnimatorListener
 {
-  public int a;
-  protected String a;
-  protected List<uff> a;
-  protected uem a;
-  protected boolean a;
-  private List<uer> b;
-  private List<uer> c = new ArrayList();
+  public uek(QCirclePolymorphicAniView paramQCirclePolymorphicAniView, yyi paramyyi, View paramView, QCirclePolymorphicAniView.MovingImg paramMovingImg, ueq paramueq) {}
   
-  public uek(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic_BaseAlbumFilter";
-  }
-  
-  private void a(List<ueq> paramList, String paramString) {}
-  
-  @NonNull
-  protected List<uer> a()
-  {
-    if (this.b == null) {
-      return new ArrayList();
+    if (this.jdField_a_of_type_Yyi != null) {
+      this.jdField_a_of_type_Yyi.a();
     }
-    return this.b;
-  }
-  
-  public void a(List<uer> paramList)
-  {
-    this.b = new ArrayList();
-    this.b.addAll(paramList);
-  }
-  
-  public void a(uem paramuem)
-  {
-    wsv.b(this.jdField_a_of_type_JavaLangString, "start");
-    this.jdField_a_of_type_Uem = paramuem;
-    paramuem = a();
-    if ((paramuem == null) || (paramuem.isEmpty()))
+    if ((this.jdField_a_of_type_AndroidViewView instanceof URLImageView))
     {
-      wsv.e(this.jdField_a_of_type_JavaLangString, "can't find enough pic");
-      b(null);
-      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView$MovingImg.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramAnimator = URLDrawable.URLDrawableOptions.obtain();
+      paramAnimator.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843582);
+      paramAnimator.mRequestWidth = this.jdField_a_of_type_AndroidViewView.getWidth();
+      paramAnimator.mRequestHeight = this.jdField_a_of_type_AndroidViewView.getHeight();
+      tql.a(this.jdField_a_of_type_Ueq.a().polyIconUrl.get(), (URLImageView)this.jdField_a_of_type_AndroidViewView, paramAnimator, false);
     }
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      wsv.e(this.jdField_a_of_type_JavaLangString, "must set split strategy");
-      b(null);
-      return;
-    }
-    paramuem = new ueq(this.jdField_a_of_type_Int, paramuem);
-    Object localObject1 = new LinkedList();
-    ((Queue)localObject1).offer(paramuem);
-    paramuem = new LinkedList();
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      Object localObject2 = (uff)this.jdField_a_of_type_JavaUtilList.get(i);
-      while (((Queue)localObject1).size() > 0)
-      {
-        Object localObject3 = (ueq)((Queue)localObject1).poll();
-        if (localObject3 != null)
-        {
-          wsv.b(this.jdField_a_of_type_JavaLangString, "to split StoryAlbum=%s", ((ueq)localObject3).toString());
-          ((uff)localObject2).a((ueq)localObject3);
-          localObject3 = ((uff)localObject2).b();
-          if ((localObject3 == null) || (((List)localObject3).size() == 0))
-          {
-            wsv.d(this.jdField_a_of_type_JavaLangString, "find no album strategy=" + localObject2.toString());
-          }
-          else
-          {
-            a((List)localObject3, localObject2.toString());
-            wsv.b(this.jdField_a_of_type_JavaLangString, "split strategy=%s, result=%s", localObject2.toString(), localObject3.toString());
-            localObject3 = ((List)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              ueq localueq = (ueq)((Iterator)localObject3).next();
-              if (i == this.jdField_a_of_type_JavaUtilList.size() - 1) {
-                localArrayList.add(localueq);
-              } else {
-                paramuem.add(localueq);
-              }
-            }
-          }
-        }
-      }
-      if (paramuem.size() <= 0) {
-        break;
-      }
-      i += 1;
-      localObject2 = paramuem;
-      paramuem = (uem)localObject1;
-      localObject1 = localObject2;
-    }
-    b(localArrayList);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.removeAllViews();
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.setVisibility(8);
+    QLog.d("QCirclePolymorphicAniView", 1, "poly ani end");
   }
   
-  public void a(uff paramuff)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramuff);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected void b(List<ueq> paramList)
-  {
-    this.c = new ArrayList();
-    this.c.addAll(this.b);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      c(paramList);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        localObject = paramList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Iterator localIterator = ((ueq)((Iterator)localObject).next()).a().iterator();
-          while (localIterator.hasNext())
-          {
-            uer localuer = (uer)localIterator.next();
-            this.c.remove(localuer);
-          }
-        }
-      }
-    }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      wsv.a((String)localObject, "handleResult, find album count=%d, leaving pic count=%d", Integer.valueOf(i), Integer.valueOf(this.c.size()));
-      this.jdField_a_of_type_Uem.a(paramList, this.c);
-      return;
-    }
-  }
-  
-  protected void c(List<ueq> paramList) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

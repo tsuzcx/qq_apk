@@ -1,14 +1,29 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class bmqj
-  implements Comparator<bmmw>
+class bmqj
+  implements Animator.AnimatorListener
 {
-  public bmqj(DoodleView paramDoodleView) {}
+  bmqj(bmqh parambmqh) {}
   
-  public int a(bmmw parambmmw1, bmmw parambmmw2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return parambmmw2.i_() - parambmmw1.i_();
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.api;
 
-import alpo;
+import alud;
 import android.content.Context;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
@@ -17,9 +17,9 @@ class QQEnvImp$2
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), alpo.a(2131710602), alpo.a(2131710603), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.show();
+    bdjz localbdjz = bdgm.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), alud.a(2131710614), alud.a(2131710615), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.show();
     MiniReportManager.reportEventType(QQEnvImp.access$000(this.this$0).getGameInfoManager().getMiniAppConfig(), 1024, "1");
   }
 }

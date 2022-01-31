@@ -1,50 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class bcji
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public static bcji a;
-  public alkl a;
-  public QQAppInterface a;
+  public bcji(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public bcji()
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_Alkl = new bcjj(this);
-  }
-  
-  public static bcji a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Bcji == null) {
-      b(paramQQAppInterface);
-    }
-    for (;;)
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
     {
-      return jdField_a_of_type_Bcji;
-      if (jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-      {
-        if (jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bcji.jdField_a_of_type_Alkl);
-        }
-        jdField_a_of_type_Bcji = null;
-        b(paramQQAppInterface);
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((jdField_a_of_type_Bcji != null) && (jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
+    label85:
+    label91:
+    for (String str2 = bdes.a(this.a.a);; str2 = "1")
     {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bcji.jdField_a_of_type_Alkl);
-      jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bcji = null;
+      bdes.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
     }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Bcji = new bcji();
-    jdField_a_of_type_Bcji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bcji.jdField_a_of_type_Alkl);
   }
 }
 

@@ -1,45 +1,56 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class appw
-  extends apsj
+  extends apsb
 {
-  public EmojiStickerManager.StickerInfo a;
-  public boolean a;
-  public int c = -1;
-  public int d;
-  public int e;
-  public int f = 0;
-  public int g;
-  public String i;
-  public String j;
+  public appw(MessengerService paramMessengerService) {}
   
-  public Drawable a(Context paramContext, float paramFloat)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    return baiy.a(paramContext.getResources(), this.e);
-  }
-  
-  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
-  {
-    return baiy.a(paramContext.getResources(), this.e);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public Drawable b(Context paramContext, float paramFloat)
-  {
-    return a(paramContext, paramFloat);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "EmoticonInfo[type: " + this.c + "  action: " + this.i + "]";
+    int i = 2;
+    if (this.a.a != null) {}
+    try
+    {
+      Message localMessage = Message.obtain(null, 5);
+      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
+      if (paramInt == 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        paramEmoticonPackage = new Bundle();
+        paramEmoticonPackage.putInt("packetid", j);
+        paramEmoticonPackage.putInt("peoriodtype", 1);
+        paramEmoticonPackage.putInt("resultcode", i);
+        localMessage.setData(paramEmoticonPackage);
+        this.a.a.send(localMessage);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
+        }
+        return;
+        if (paramInt != 11007) {
+          if (paramInt == 11001) {
+            i = 1;
+          } else if (paramInt == 11000) {
+            i = 6;
+          } else {
+            i = -1;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramEmoticonPackage)
+    {
+      return;
+    }
+    catch (RemoteException paramEmoticonPackage) {}
   }
 }
 

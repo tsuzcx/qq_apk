@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import appt;
+import apuc;
 
 class EmoticonLinearLayout$2
   implements Runnable

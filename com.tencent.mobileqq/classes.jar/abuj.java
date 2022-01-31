@@ -1,13 +1,9 @@
-class abuj
-  implements abte
+public abstract class abuj
 {
-  abuj(abui paramabui) {}
-  
-  public void a(atzw paramatzw, int paramInt)
-  {
-    abui.a(this.a, paramatzw);
-    abui.a(this.a, paramInt);
-  }
+  public static int a;
+  public static String a = "http://zyjc.sec.qq.com/config?b=";
+  public static String b = "http://zyjc.sec.qq.com/reportFixer.php";
+  public static String c = "/sdcard/";
 }
 
 

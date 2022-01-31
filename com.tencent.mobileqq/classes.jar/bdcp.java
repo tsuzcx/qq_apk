@@ -1,13 +1,19 @@
-import android.content.Context;
-import android.view.View;
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
 
-public abstract interface bdcp
+class bdcp
+  extends BitmapDrawable
 {
-  public abstract View a(Context paramContext, Object paramObject);
+  private final WeakReference<bdcq> a;
+  
+  public bdcq a()
+  {
+    return (bdcq)this.a.get();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcp
  * JD-Core Version:    0.7.0.1
  */

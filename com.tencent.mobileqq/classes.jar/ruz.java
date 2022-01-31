@@ -4,13 +4,13 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class ruz
-  implements azzy
+  implements baeh
 {
   public ruz(ReadInJoySkinGuideView.1 param1) {}
   
-  public void a(azzb paramazzb)
+  public void a(badk parambadk)
   {
-    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramazzb));
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambadk));
   }
 }
 

@@ -1,13 +1,13 @@
-class bmwe
+public class bmwe
 {
-  final int jdField_a_of_type_Int;
-  final bmwf jdField_a_of_type_Bmwf;
-  
-  public bmwe(bmwf parambmwf, int paramInt)
-  {
-    this.jdField_a_of_type_Bmwf = parambmwf;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public int a;
+  public String a;
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

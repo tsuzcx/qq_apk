@@ -8,12 +8,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import aprg;
+import apvp;
 
 public class EmoticonPanelSystemAndEmojiHelper$2
   implements Runnable
 {
-  public EmoticonPanelSystemAndEmojiHelper$2(aprg paramaprg) {}
+  public EmoticonPanelSystemAndEmojiHelper$2(apvp paramapvp) {}
   
   public void run()
   {

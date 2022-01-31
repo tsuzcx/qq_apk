@@ -1,23 +1,21 @@
-import com.tencent.qqmini.sdk.core.utils.QZipIOException;
-import java.io.File;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bgle
-  extends ZipFile
+  implements TextView.OnEditorActionListener
 {
-  public bgle(File paramFile)
-  {
-    super(paramFile);
-  }
+  public bgle(Login paramLogin) {}
   
-  public InputStream getInputStream(ZipEntry paramZipEntry)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
-      throw new QZipIOException();
+    if (paramInt == 6)
+    {
+      this.a.b();
+      return true;
     }
-    return super.getInputStream(paramZipEntry);
+    return false;
   }
 }
 

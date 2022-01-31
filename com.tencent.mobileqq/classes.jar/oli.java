@@ -21,7 +21,7 @@ public class oli
       oik.a(paramoio.b(), paramoio.a(), paramoio.c(), paramoio.b(), paramoio.a(), paramoio.c(), paramoio.d(), paramoio.a());
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713267), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
   }
 }
 

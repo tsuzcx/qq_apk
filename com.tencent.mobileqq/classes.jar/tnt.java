@@ -232,7 +232,7 @@ public class tnt
   
   public static void e(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if (!xoo.a(BaseApplicationImpl.getApplication())) {}
+    if (!xsx.a(BaseApplicationImpl.getApplication())) {}
     for (int i = 1000002;; i = 1000003)
     {
       a("video_title", paramstSimpleMetaFeed, i, "", null);

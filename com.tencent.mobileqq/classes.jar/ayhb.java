@@ -1,49 +1,25 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class ayhb
+class ayhb
+  implements Comparator<ayms>
 {
-  public static aygx a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return new ayhe(paramQQAppInterface);
-  }
+  ayhb(ayha paramayha) {}
   
-  public static aygz a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public int a(ayms paramayms1, ayms paramayms2)
   {
-    return new ayhk(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
-  }
-  
-  public static ayql a(int paramInt, String paramString, FTSEntity paramFTSEntity)
-  {
-    paramString = new ayql(paramString);
-    paramFTSEntity = (FTSMessage)paramFTSEntity;
-    paramString.a = new Bundle();
-    paramString.a.putLong("uin", paramFTSEntity.uin);
-    paramString.a.putInt("uinType", paramFTSEntity.istroop);
-    return paramString;
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    return paramContext.getString(2131719570);
-  }
-  
-  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
-  {
-    String str = paramString;
-    if (paramString.length() > 13) {
-      str = paramString.substring(0, 10) + "…";
-    }
-    return paramContext.getString(2131719569, new Object[] { Integer.valueOf(paramInt1), str });
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    return alpo.a(2131705330);
+    int i = paramayms2.a[2] - paramayms1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = paramayms1.a[0] - paramayms2.a[0];
+      i = j;
+    } while (j != 0);
+    paramayms1 = paramayms1.c.substring(paramayms1.a[0] + paramayms1.a[1]);
+    paramayms2 = paramayms2.c.substring(paramayms2.a[0] + paramayms2.a[1]);
+    return ChnToSpell.a(paramayms1, 2).compareTo(ChnToSpell.a(paramayms2, 2));
   }
 }
 

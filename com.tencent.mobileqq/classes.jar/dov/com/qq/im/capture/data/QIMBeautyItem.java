@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bloh;
+import blst;
 
 public class QIMBeautyItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new bloh();
+  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new blst();
   public String a;
   public String b;
   public String c;

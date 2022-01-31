@@ -2,12 +2,12 @@ package com.tencent.mobileqq.intervideo.od;
 
 import android.view.View;
 import android.widget.FrameLayout;
-import ataj;
+import ates;
 
 public class ODLoadingActivity$2$1$1
   implements Runnable
 {
-  public ODLoadingActivity$2$1$1(ataj paramataj) {}
+  public ODLoadingActivity$2$1$1(ates paramates) {}
   
   public void run()
   {

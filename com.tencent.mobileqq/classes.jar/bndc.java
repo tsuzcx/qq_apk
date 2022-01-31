@@ -1,13 +1,25 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.util.Property;
 
-public class bndc
-  extends bnde
+class bndc
+  extends Property<bndb, Float>
 {
-  public void a()
+  bndc(bndb parambndb, Class paramClass, String paramString)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.d();
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bndb parambndb)
+  {
+    if (parambndb != null) {
+      return Float.valueOf(bndb.a(parambndb));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bndb parambndb, Float paramFloat)
+  {
+    if (parambndb != null) {
+      bndb.a(parambndb, paramFloat.floatValue());
     }
   }
 }

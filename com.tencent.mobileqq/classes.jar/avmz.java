@@ -1,16 +1,20 @@
-public abstract class avmz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
+class avmz
+  implements View.OnClickListener
 {
-  public void a(String paramString) {}
+  avmz(avmf paramavmf) {}
   
-  public void a(String paramString, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void c(String paramString, long paramLong) {}
+  public void onClick(View paramView)
+  {
+    if (!this.a.a.onBackEvent())
+    {
+      this.a.a.finish();
+      this.a.a.b(false);
+    }
+  }
 }
 
 

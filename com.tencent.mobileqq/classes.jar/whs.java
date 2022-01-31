@@ -1,166 +1,97 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextWatcher;
+import android.view.ViewParent;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class whs
-  implements IEventReceiver
+  implements TextWatcher
 {
   public int a;
-  public ErrorMessage a;
+  public Context a;
+  public BubbleTextView a;
   public String a;
-  public ArrayList<VideoCollectionItem> a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private wht jdField_a_of_type_Wht;
-  private whu jdField_a_of_type_Whu;
-  private whv jdField_a_of_type_Whv;
-  private whw jdField_a_of_type_Whw;
-  private wit jdField_a_of_type_Wit = new wit();
+  public woy a;
   public boolean a;
-  public boolean b = true;
+  private int b;
+  public String b;
+  private int c;
   
-  public whs(String paramString, @NonNull whv paramwhv)
+  public whs(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Whv = paramwhv;
+    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
+      throw new IllegalArgumentException("illegal textWatcher source");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
   }
   
-  private void a(VideoCollectionItem paramVideoCollectionItem)
+  public static void a(EditText paramEditText, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0) {
-      wsv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
-    }
+    if (paramIntent == null) {}
     do
     {
       return;
-      i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_Wit);
-    } while (i >= 0);
-    int i = -i;
-    this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+      paramIntent = paramIntent.getStringExtra("at_video_text");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
+      }
+    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
+    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
   }
   
-  public VideoCollectionItem a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.c > 0)
     {
-      VideoCollectionItem localVideoCollectionItem2 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      VideoCollectionItem localVideoCollectionItem1;
-      if (localVideoCollectionItem2.isEmptyFakeItem)
+      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
+        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
+        ViewParent localViewParent1 = localViewParent2;
+        if (localViewParent2 != null)
         {
-          localVideoCollectionItem1 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
-          if (TextUtils.isEmpty(localVideoCollectionItem1.collectionId)) {}
+          localViewParent1 = localViewParent2;
+          if (!(localViewParent2 instanceof RelativeLayout)) {
+            localViewParent1 = localViewParent2.getParent();
+          }
+        }
+        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
+          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
+      }
+      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
+      {
+        wxj.a("home_page", "send_at", 0, 0, new String[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
+        }
+        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
+          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Woy.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
         }
       }
-      else {
-        do
-        {
-          return localVideoCollectionItem1;
-          localVideoCollectionItem1 = localVideoCollectionItem2;
-        } while (!TextUtils.isEmpty(localVideoCollectionItem2.collectionId));
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Wht = new wht(this);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Wht);
-    this.jdField_a_of_type_Whu = new whu(this);
-    uht.a().registerSubscriber(this.jdField_a_of_type_Whu);
-  }
-  
-  public void a(String paramString)
-  {
-    wsv.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request video info list.");
-    this.jdField_a_of_type_Whw.a(paramString);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    wsv.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request visit count.");
-    this.jdField_a_of_type_Whw.b(paramList, true);
-  }
-  
-  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a((VideoCollectionItem)paramList.next());
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (paramBoolean2))
-    {
-      paramList = ((usd)urr.a(2)).b(this.jdField_a_of_type_JavaLangString);
-      if ((paramList != null) && (!paramList.isMe()) && (!paramList.isFriend()) && (!paramList.isVip))
-      {
-        paramList = new VideoCollectionItem();
-        paramList.collectionType = 8;
-        paramList.collectionId = "";
-        paramList.collectionTime = -1L;
-        paramList.key = "local_desc_item";
-        paramList.isEmptyFakeItem = true;
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramList);
-      }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    wsv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request refresh video collection data. from cache : %s.", Boolean.valueOf(paramBoolean));
-    if (this.jdField_a_of_type_Whw == null)
-    {
-      this.jdField_a_of_type_Whw = new whw(this.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()));
-      this.jdField_a_of_type_Whw.a();
-    }
-    if (paramBoolean)
-    {
-      uyb localuyb = this.jdField_a_of_type_Whw.a();
-      a(localuyb.jdField_a_of_type_JavaUtilList, localuyb.c, localuyb.jdField_a_of_type_Boolean);
-      this.b = localuyb.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      wsv.a("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "get video collection data from cache: collectionList.size() = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-      return;
-    }
-    this.jdField_a_of_type_Whw.d();
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt3;
   }
   
-  public void b()
-  {
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Wht);
-    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Whu);
-    if (this.jdField_a_of_type_Whw != null) {
-      this.jdField_a_of_type_Whw.b();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void c()
-  {
-    wsv.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request load next page video collection.");
-    this.jdField_a_of_type_Whw.a(a());
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

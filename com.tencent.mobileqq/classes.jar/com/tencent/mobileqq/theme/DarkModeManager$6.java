@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.theme;
 
 import android.app.Activity;
-import bajd;
-import baji;
+import banm;
+import banr;
 
 public final class DarkModeManager$6
   implements Runnable
 {
-  public DarkModeManager$6(Activity paramActivity, String paramString, baji parambaji) {}
+  public DarkModeManager$6(Activity paramActivity, String paramString, banr parambanr) {}
   
   public void run()
   {
-    bajd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Baji);
+    banm.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Banr);
   }
 }
 

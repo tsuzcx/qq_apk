@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aysj
-  extends aysb
+final class aysj
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private LinearLayout a;
+  protected WeakReference<aysi> a;
   
-  public aysj(ViewGroup paramViewGroup, int paramInt)
+  public aysj(aysi paramaysi)
   {
-    super(paramViewGroup, paramInt);
+    this.a = new WeakReference(paramaysi);
   }
   
-  protected void a()
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    super.a();
-    this.a = ((LinearLayout)a(this.c).findViewById(2131369588));
-  }
-  
-  public View b()
-  {
-    return this.a;
+    aysi localaysi = (aysi)this.a.get();
+    if (localaysi == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
+    }
+    localaysi.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface alah
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+
+class alah
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public abstract void a(String paramString);
+  alah(alag paramalag) {}
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    alag.a(this.a, true);
+  }
 }
 
 

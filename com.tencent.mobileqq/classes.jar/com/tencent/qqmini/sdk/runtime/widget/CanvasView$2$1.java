@@ -340,14 +340,14 @@ class CanvasView$2$1
     //   690: aload 14
     //   692: aconst_null
     //   693: invokevirtual 190	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   696: invokestatic 195	bgjm:a	()Lbgjm;
+    //   696: invokestatic 195	bgnt:a	()Lbgnt;
     //   699: aload_0
     //   700: getfield 13	com/tencent/qqmini/sdk/runtime/widget/CanvasView$2$1:jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCanvasView$2	Lcom/tencent/qqmini/sdk/runtime/widget/CanvasView$2;
     //   703: getfield 197	com/tencent/qqmini/sdk/runtime/widget/CanvasView$2:b	Ljava/lang/String;
-    //   706: invokevirtual 200	bgjm:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   706: invokevirtual 200	bgnt:b	(Ljava/lang/String;)Ljava/lang/String;
     //   709: astore 14
     //   711: aload 14
-    //   713: invokestatic 205	bgkv:a	(Ljava/lang/String;)Ljava/io/File;
+    //   713: invokestatic 205	bgpc:a	(Ljava/lang/String;)Ljava/io/File;
     //   716: astore 13
     //   718: new 207	java/io/FileOutputStream
     //   721: dup
@@ -392,9 +392,9 @@ class CanvasView$2$1
     //   793: astore 12
     //   795: aload 12
     //   797: ldc 227
-    //   799: invokestatic 195	bgjm:a	()Lbgjm;
+    //   799: invokestatic 195	bgnt:a	()Lbgnt;
     //   802: aload 14
-    //   804: invokevirtual 229	bgjm:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   804: invokevirtual 229	bgnt:e	(Ljava/lang/String;)Ljava/lang/String;
     //   807: invokevirtual 233	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   810: pop
     //   811: aload_0

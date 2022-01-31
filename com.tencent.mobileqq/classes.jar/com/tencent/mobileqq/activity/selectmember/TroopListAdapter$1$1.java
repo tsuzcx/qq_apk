@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajxc;
-import ajxd;
+import akbr;
+import akbs;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,7 +22,7 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 public class TroopListAdapter$1$1
   implements Runnable
 {
-  public TroopListAdapter$1$1(ajxd paramajxd, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  public TroopListAdapter$1$1(akbs paramakbs, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
   
   public void run()
   {
@@ -58,7 +58,7 @@ public class TroopListAdapter$1$1
       localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
       if (localArrayList != null)
       {
-        ajxc.a((QQAppInterface)ajxc.a(this.jdField_a_of_type_Ajxd.a).b.get(), ajxc.a(this.jdField_a_of_type_Ajxd.a), localArrayList);
+        akbr.a((QQAppInterface)akbr.a(this.jdField_a_of_type_Akbs.a).b.get(), akbr.a(this.jdField_a_of_type_Akbs.a), localArrayList);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));

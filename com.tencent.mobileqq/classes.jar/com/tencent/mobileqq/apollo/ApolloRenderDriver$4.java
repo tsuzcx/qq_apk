@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import akmn;
+import akrc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
@@ -30,8 +30,8 @@ class ApolloRenderDriver$4
         i += 1;
       }
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Akmn != null)) {
-        this.this$0.jdField_a_of_type_Akmn.onRender();
+      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Akrc != null)) {
+        this.this$0.jdField_a_of_type_Akrc.onRender();
       }
       return;
     }

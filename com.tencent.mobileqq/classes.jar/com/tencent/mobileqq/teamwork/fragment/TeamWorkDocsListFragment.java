@@ -2,29 +2,29 @@ package com.tencent.mobileqq.teamwork.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import badq;
-import badt;
-import bedf;
-import beei;
-import befb;
+import bahz;
+import baic;
+import beho;
+import beir;
+import bejk;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import zbj;
+import zfy;
 
 public class TeamWorkDocsListFragment
   extends WebViewFragment
 {
   public void c()
   {
-    beei localbeei = (beei)this.jdField_a_of_type_Bedf.a(4);
-    if (localbeei != null)
+    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
+    if (localbeir != null)
     {
-      zbj localzbj = b();
-      if ((localzbj != null) && (badt.a(localzbj.a())))
+      zfy localzfy = b();
+      if ((localzfy != null) && (baic.a(localzfy.a())))
       {
         a().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localbeei.a = new badq(a());
+        localbeir.a = new bahz(a());
       }
-      localbeei.a(localzbj, this.jdField_a_of_type_Befb.a);
+      localbeir.a(localzfy, this.jdField_a_of_type_Bejk.a);
     }
   }
 }

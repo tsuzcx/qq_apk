@@ -1,93 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aohd
-  extends aofy<aohc>
+  extends MSFServlet
 {
-  public static void b()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    aohc localaohc = (aohc)aogj.a().a(67);
-    aohc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaohc);
-  }
-  
-  public static void c()
-  {
-    int i = aogj.a().a(67, "");
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "resetApolloConfVersion localVersion:" + i);
-    aogj.a().a(67, 0);
-  }
-  
-  public int a()
-  {
-    return 67;
-  }
-  
-  @NonNull
-  public aohc a(int paramInt)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    if (paramInt == 1) {
-      return new aohc();
-    }
-    aohc.a();
-    return new aohc();
-  }
-  
-  @Nullable
-  public aohc a(aogf[] paramArrayOfaogf)
-  {
-    return aohc.a(paramArrayOfaogf);
-  }
-  
-  public Class<aohc> a()
-  {
-    return aohc.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfig_GlobalProcessor", 2, "onReqNoReceive");
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bdpd.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      amdu localamdu = (amdu)((QQAppInterface)getAppRuntime()).a(20);
+      if (localamdu != null) {
+        localamdu.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      return;
     }
   }
   
-  public void a(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    QLog.e("ApolloConfig_GlobalProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aohc paramaohc)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "onUpdate");
-    aohc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaohc);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdpd.a(arrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,426 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyTribeAppController.1;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.mutualmark.mutualmark.MutualMark;
+import tencent.im.oidb.cmd0xd6b.Oidb_0xd6b.MutualMarkData;
 
 public class ausl
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private arpo jdField_a_of_type_Arpo = new ausn(this);
-  protected QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString = "NearbyTribeAppController";
-  private boolean jdField_a_of_type_Boolean;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { alpo.a(2131707769), alpo.a(2131707768), "好看的人都在用兴趣部落APP", alpo.a(2131707767), alpo.a(2131707765), "看看好友在兴趣部落APP玩什么？" };
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String[] jdField_b_of_type_ArrayOfJavaLangString = { alpo.a(2131707758), alpo.a(2131707761), "好看的人都在用兴趣部落APP", alpo.a(2131707764), alpo.a(2131707763) };
-  
-  public ausl(Context paramContext, QQAppInterface paramQQAppInterface)
+  private static int a(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, String paramString, Oidb_0xd6b.MutualMarkData paramMutualMarkData)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    int k = 0;
+    int i = -1;
+    if (paramMutualMarkData.uint32_result.has()) {
+      i = paramMutualMarkData.uint32_result.get();
+    }
+    int j = k;
+    if (i == 0)
+    {
+      j = k;
+      if (paramExtensionInfo != null)
+      {
+        paramalto = new ArrayList();
+        if ((paramMutualMarkData.mutualmark_info.has()) && (paramMutualMarkData.mutualmark_info.size() > 0))
+        {
+          paramFriends = paramMutualMarkData.mutualmark_info.get().iterator();
+          while (paramFriends.hasNext())
+          {
+            paramMutualMarkData = autl.a((mutualmark.MutualMark)paramFriends.next());
+            if (paramMutualMarkData != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("MutualMarkDataS2CHandleHelper", 1, "handleMutualMarkData friendUin:" + paramString + " info:" + paramMutualMarkData);
+              }
+              paramalto.add(paramMutualMarkData);
+              if ((!TextUtils.isEmpty(paramMutualMarkData.c)) && (!TextUtils.isEmpty(paramMutualMarkData.d))) {
+                ausr.a(paramQQAppInterface).a(paramMutualMarkData.c, paramMutualMarkData.d);
+              }
+            }
+          }
+        }
+        a(paramalto, paramExtensionInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("MutualMarkDataS2CHandleHelper", 1, "handleMutualMarkData friendUin:" + paramString + " infos.size:" + paramalto.size());
+        }
+        j = 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkDataS2CHandleHelper", 1, "handleMutualMarkData friendUin:" + paramString + " changeType:" + j + " retCode:" + i);
+    }
+    return j;
   }
   
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
   {
-    if (!bdee.g(this.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131694767), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Add msginfo:" + paramamlj);
     }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Oidb_0xd6b.MutualMarkData paramMutualMarkData)
+  {
+    if (paramMutualMarkData == null) {}
+    String str;
+    int i;
     do
     {
+      long l;
       do
       {
         return;
-        if ("0".equals(bdem.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe"))) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity));
-      TroopBarPublishUtils.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_call", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
-      return;
-      if (this.jdField_b_of_type_Boolean) {
-        break;
+        l = paramMutualMarkData.uint64_frd_uin.get();
+      } while (l <= 0L);
+      str = String.valueOf(l);
+      alto localalto = (alto)paramQQAppInterface.getManager(51);
+      Object localObject2 = localalto.a(str);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new ExtensionInfo();
+        ((ExtensionInfo)localObject1).uin = str;
+      }
+      localObject2 = localalto.e(str);
+      i = a(paramQQAppInterface, localalto, (Friends)localObject2, (ExtensionInfo)localObject1, str, paramMutualMarkData);
+      if ((localObject1 != null) && ((i & 0x1) != 0)) {
+        localalto.a((ExtensionInfo)localObject1);
+      }
+      if ((localObject2 != null) && ((i & 0x2) != 0))
+      {
+        localalto.a((Friends)localObject2);
+        paramQQAppInterface.a(1).notifyUI(3, true, str);
       }
     } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "invokeTribeOpenOrDownload,isActivate=false");
-    return;
-    ThreadManager.post(new NearbyTribeAppController.1(this), 8, null, true);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_download", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
+    QLog.d("MutualMarkDataS2CHandleHelper", 1, "handleGet0x5e0MutualMarkData uin:" + str + " changeType:" + i);
   }
   
-  public void a(TextView paramTextView)
+  private static boolean a(aers paramaers, ExtensionInfo paramExtensionInfo)
   {
-    String str = bdem.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe");
-    Random localRandom = new Random();
-    int i;
-    if (!"0".equals(str))
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool1;
+    if (paramaers != null)
     {
-      i = localRandom.nextInt(this.jdField_b_of_type_ArrayOfJavaLangString.length);
-      this.jdField_a_of_type_Int = (i + 1);
-      this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-      paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+      if (paramExtensionInfo != null) {
+        break label19;
+      }
+      bool2 = bool1;
     }
-    for (paramTextView = "exp_app_call";; paramTextView = "exp_app_download")
+    label19:
+    do
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", paramTextView, 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
-      return;
-      i = localRandom.nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length);
-      this.jdField_a_of_type_Int = (i + 1);
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString[i];
-      paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+      long l;
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool2;
+            if (paramaers.jdField_a_of_type_Int != 2) {
+              break;
+            }
+            bool2 = bool1;
+          } while (paramaers.jdField_a_of_type_Aerv == null);
+          l = paramaers.a();
+          bool2 = bool1;
+        } while (paramExtensionInfo.mutualMarks == null);
+        bool2 = bool1;
+      } while (!paramExtensionInfo.mutualMarks.containsKey(Long.valueOf(l)));
+      paramExtensionInfo.mutualMarks.remove(Long.valueOf(l));
+      return true;
+      bool1 = bool3;
+      if (paramaers.jdField_b_of_type_Aerv != null) {
+        bool1 = false | a(paramaers.jdField_b_of_type_Aerv, paramaers.jdField_a_of_type_Int, paramExtensionInfo);
+      }
+      bool2 = bool1;
+    } while (paramaers.jdField_a_of_type_JavaUtilArrayList == null);
+    Iterator localIterator = paramaers.jdField_a_of_type_JavaUtilArrayList.iterator();
+    if (localIterator.hasNext())
+    {
+      aert localaert = (aert)localIterator.next();
+      if ((localaert != null) && (localaert.jdField_b_of_type_Aerv != null)) {
+        bool1 |= a(localaert.jdField_b_of_type_Aerv, paramaers.jdField_a_of_type_Int, paramExtensionInfo);
+      }
+      for (;;)
+      {
+        break;
+      }
     }
+    return bool1;
   }
   
-  public void a(String paramString)
+  private static boolean a(aerv paramaerv, long paramLong, ExtensionInfo paramExtensionInfo)
   {
+    if ((paramaerv == null) || (paramExtensionInfo == null)) {}
+    while (paramaerv.jdField_a_of_type_Int <= 0) {
+      return false;
+    }
+    autk localautk1 = null;
+    if (paramExtensionInfo.mutualMarks != null) {
+      localautk1 = (autk)paramExtensionInfo.mutualMarks.get(Long.valueOf(paramaerv.jdField_a_of_type_Int));
+    }
+    autk localautk2 = localautk1;
+    if (localautk1 == null) {
+      localautk2 = new autk();
+    }
+    boolean bool = localautk2.a(paramaerv, paramLong);
+    if (bool) {
+      if (paramExtensionInfo.mutualMarks != null) {}
+    }
     try
     {
-      this.jdField_b_of_type_Boolean = true;
-      arpg.a("http://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", new ausm(this));
-      return;
+      if (paramExtensionInfo.mutualMarks == null) {
+        paramExtensionInfo.mutualMarks = new ConcurrentHashMap();
+      }
+      paramExtensionInfo.mutualMarks.put(Long.valueOf(localautk2.a), localautk2);
+      return bool;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, aers paramaers, ExtensionInfo paramExtensionInfo)
+  {
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, String paramString, byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      paramString.printStackTrace();
-      QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131707766), 0).b(50);
+      Oidb_0xd6b.MutualMarkData localMutualMarkData = new Oidb_0xd6b.MutualMarkData();
+      try
+      {
+        localMutualMarkData.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localMutualMarkData;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          paramArrayOfByte = null;
+          localException.printStackTrace();
+        }
+        j = a(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramString, paramArrayOfByte);
+        i = j;
+        if (!QLog.isColorLevel()) {
+          break label116;
+        }
+        QLog.d("MutualMarkDataS2CHandleHelper", 1, "handleGetFriendListMutualMarkData uin:" + paramString + " changeType:" + j);
+        i = j;
+      }
+      if (paramArrayOfByte == null) {
+        return false;
+      }
+    }
+    for (;;)
+    {
+      int j;
+      label116:
+      if (i != 0) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
+      }
+      int i = 0;
     }
   }
   
-  public void b()
+  private static boolean a(ArrayList<autl> paramArrayList, ExtensionInfo paramExtensionInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if ((paramArrayList == null) || (paramExtensionInfo == null)) {
+      return false;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramArrayList.iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      autl localautl = (autl)localIterator.next();
+      if (localautl != null)
+      {
+        paramArrayList = null;
+        if (paramExtensionInfo.mutualMarks != null) {
+          paramArrayList = (autk)paramExtensionInfo.mutualMarks.get(Long.valueOf(localautl.a));
+        }
+        localObject = paramArrayList;
+        if (paramArrayList == null) {
+          localObject = new autk();
+        }
+        ((autk)localObject).a(localautl);
+        localArrayList.add(localObject);
+      }
+    }
+    if (paramExtensionInfo.mutualMarks == null) {}
+    try
+    {
+      if (paramExtensionInfo.mutualMarks == null) {
+        paramExtensionInfo.mutualMarks = new ConcurrentHashMap();
+      }
+      if (!paramExtensionInfo.mutualMarks.isEmpty()) {
+        paramExtensionInfo.mutualMarks.clear();
+      }
+      paramArrayList = localArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject = (autk)paramArrayList.next();
+        if (localObject != null) {
+          paramExtensionInfo.mutualMarks.put(Long.valueOf(((autk)localObject).a), localObject);
+        }
+      }
+      return true;
+    }
+    finally {}
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Del msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, aers paramaers, ExtensionInfo paramExtensionInfo)
+  {
+    if (paramaers.jdField_a_of_type_Int == 2)
+    {
+      if (!aush.a(paramQQAppInterface, paramaers.a())) {}
+    }
+    else {
+      do
+      {
+        return true;
+        if (paramaers.jdField_a_of_type_Int != 10003) {
+          break;
+        }
+      } while (aush.a(paramQQAppInterface, paramaers.a()));
+    }
+    while (!aush.a(paramQQAppInterface, paramaers.a(), paramaers.c())) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Modify msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Downgrade_Soon msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void e(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Egalitarian_Soon msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void f(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Downgrade msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void g(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Upgrade msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void h(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Recover msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void i(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Icon_Light msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void j(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Icon_Extinguish msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void k(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_Icon_Twinkle msginfo:" + paramamlj);
+    }
+    m(paramQQAppInterface, paramalto, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+  }
+  
+  public static void l(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushType_GrayTipChannel msginfo:" + paramamlj);
+    }
+    if (!auss.a(paramQQAppInterface)) {
+      ausm.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+    }
+  }
+  
+  private static void m(QQAppInterface paramQQAppInterface, alto paramalto, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
+  {
+    if (!a(paramQQAppInterface, paramaers, paramExtensionInfo)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushCommonUpdate not enable update");
+      }
+    }
+    while (!a(paramaers, paramExtensionInfo)) {
+      return;
+    }
+    if (paramaers.jdField_a_of_type_Int == 1) {
+      ausj.a(paramQQAppInterface, paramaers.jdField_b_of_type_JavaLangString, paramExtensionInfo, paramaers.a());
+    }
+    paramalto.a(paramExtensionInfo);
+    if ((!TextUtils.isEmpty(paramaers.b())) && (!TextUtils.isEmpty(paramaers.c()))) {
+      ausr.a(paramQQAppInterface).a(paramaers.b(), paramaers.c());
+    }
+    if ((b(paramQQAppInterface, paramaers, paramExtensionInfo)) && (!auss.a(paramQQAppInterface))) {
+      ausm.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramaers, paramamlj);
+    }
+    for (;;)
+    {
+      paramQQAppInterface.a(1).notifyUI(3, true, paramaers.jdField_b_of_type_JavaLangString);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkDataS2CHandleHelper", 2, "handleMutualMarkDataPushCommonUpdate not enable insert grayTips");
+      }
+    }
   }
 }
 

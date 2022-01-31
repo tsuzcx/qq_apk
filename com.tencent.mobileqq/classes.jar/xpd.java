@@ -1,30 +1,27 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-final class xpd
-  extends xos
+public class xpd
+  implements bhxs
 {
-  xpd(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
+  public xpd(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void onFailure(String paramString)
+  public void onScrollStateChanged(int paramInt)
   {
-    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
-    this.jdField_a_of_type_Xos.onFailure(paramString);
-    wta.a("music_composite", "music_clip", 0, 1, new String[0]);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    wta.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
+    wxe.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
+      return;
+    }
+    this.a.c();
   }
 }
 

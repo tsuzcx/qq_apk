@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-class bbxh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bbxh
 {
-  bbxh(bbxf parambbxf, boolean paramBoolean) {}
+  public abstract void a(long paramLong);
   
-  public void onGlobalLayout()
-  {
-    bbxf.a(this.jdField_a_of_type_Bbxf).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bbxf.b(this.jdField_a_of_type_Bbxf).setVisibility(4);
-    bbxf.a(this.jdField_a_of_type_Bbxf, this.jdField_a_of_type_Boolean, bbxf.a(this.jdField_a_of_type_Bbxf), bbxf.c(this.jdField_a_of_type_Bbxf));
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

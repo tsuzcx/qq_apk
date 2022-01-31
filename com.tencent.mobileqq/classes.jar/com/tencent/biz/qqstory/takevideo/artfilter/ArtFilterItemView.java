@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
@@ -18,7 +18,7 @@ import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import wyl;
+import xcu;
 
 public class ArtFilterItemView
   extends RelativeLayout
@@ -38,7 +38,7 @@ public class ArtFilterItemView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131559444, this);
+    inflate(paramContext, 2131559443, this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362848));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362850));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362851));
@@ -134,14 +134,14 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new wyl(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new xcu(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   
   public void b()
   {
     setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, aekt.a(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, aepi.a(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);

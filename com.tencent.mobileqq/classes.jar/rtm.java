@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 import pb.unite.search.RequestSearchWord.Rcmd;
 
 public class rtm
-  implements amaq
+  implements amff
 {
   public rtm(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
   
@@ -23,7 +23,7 @@ public class rtm
     }
     for (;;)
     {
-      bdiv.a("search_word_prefix_show_times", bdiv.b("search_word_prefix_show_times") + 1L);
+      bdne.a("search_word_prefix_show_times", bdne.b("search_word_prefix_show_times") + 1L);
       ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.35.1(this, paramPBRepeatMessageField, paramPBStringField));
       return;
       ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import asil;
-import asiv;
+import asmu;
+import asne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,28 +9,28 @@ import java.util.ArrayList;
 public class GameMsgManager$4
   implements Runnable
 {
-  public GameMsgManager$4(asil paramasil, boolean paramBoolean, ArrayList paramArrayList) {}
+  public GameMsgManager$4(asmu paramasmu, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
     int i = 1;
-    if (asil.a(this.this$0) == null) {
-      QLog.w(asil.c(), 1, "app is null");
+    if (asmu.a(this.this$0) == null) {
+      QLog.w(asmu.c(), 1, "app is null");
     }
     for (;;)
     {
       return;
-      asiv localasiv = (asiv)asil.a(this.this$0).a(175);
+      asne localasne = (asne)asmu.a(this.this$0).a(175);
       if (this.jdField_a_of_type_Boolean)
       {
-        localasiv.a(this.jdField_a_of_type_JavaUtilArrayList);
+        localasne.a(this.jdField_a_of_type_JavaUtilArrayList);
         return;
       }
-      ArrayList localArrayList = asil.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
+      ArrayList localArrayList = asmu.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
       if ((localArrayList != null) && (localArrayList.size() > 0)) {}
       while (i != 0)
       {
-        localasiv.a(localArrayList);
+        localasne.a(localArrayList);
         return;
         i = 0;
       }

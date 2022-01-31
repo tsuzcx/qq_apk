@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.data.FlowMusic;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.aeeditor.view.EditorClipView;
 
-class blqg
-  implements blne
+public class blqg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  blqg(blqf paramblqf, String paramString) {}
+  private blqg(EditorClipView paramEditorClipView) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (paramObject == null) {}
-    do
-    {
-      return;
-      paramObject = (FlowMusic)paramObject;
-      blqf.a(this.jdField_a_of_type_Blqf, blqf.a(this.jdField_a_of_type_Blqf, paramObject, this.jdField_a_of_type_JavaLangString));
-    } while (!blqf.a(this.jdField_a_of_type_Blqf).equals(blqf.a(this.jdField_a_of_type_Blqf).getClass()));
-    this.jdField_a_of_type_Blqf.d();
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramFloat1, paramFloat2);
   }
 }
 

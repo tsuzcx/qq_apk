@@ -1,6 +1,9 @@
-public abstract interface atvx
+import com.tencent.image.URLDrawable;
+
+public class atvx
 {
-  public abstract void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2);
+  public URLDrawable a;
+  public boolean a;
 }
 
 

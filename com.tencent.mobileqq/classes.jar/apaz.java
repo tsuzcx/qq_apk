@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverResource;
-
-public final class apaz
-  implements Parcelable.Creator<PrecoverResource>
+public class apaz
 {
-  public PrecoverResource a(Parcel paramParcel)
+  private apbc a;
+  
+  public static apaz a()
   {
-    return new PrecoverResource(paramParcel);
+    return apbb.a();
   }
   
-  public PrecoverResource[] a(int paramInt)
+  public apbc a()
   {
-    return new PrecoverResource[paramInt];
+    if (this.a == null) {
+      this.a = new apbd();
+    }
+    return this.a;
   }
 }
 

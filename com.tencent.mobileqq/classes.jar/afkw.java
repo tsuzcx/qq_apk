@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
-
-public class afkw
+public abstract interface afkw
 {
-  public int a;
-  public String a;
-  
-  public afkw(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public abstract void a();
 }
 
 

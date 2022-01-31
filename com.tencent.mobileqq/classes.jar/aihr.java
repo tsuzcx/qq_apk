@@ -1,26 +1,19 @@
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class aihr
-  implements Animation.AnimationListener
+class aihr
+  implements View.OnTouchListener
 {
-  public aihr(CountryActivity paramCountryActivity) {}
+  aihr(aihl paramaihl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Aihx.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -15,14 +15,14 @@ public class rtv
     if (paramoio.a() == 0)
     {
       olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a(), 2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a().getString(2131718789), 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a(), 2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a().getString(2131718801), 0).a();
     }
     for (;;)
     {
       ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a();
       ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup, null);
       return;
-      QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713267), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
     }
   }
 }

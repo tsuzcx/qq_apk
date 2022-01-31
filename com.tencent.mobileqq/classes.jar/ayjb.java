@@ -1,44 +1,24 @@
 import android.view.View;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ayjb
-  implements ayjk
+  implements View.OnClickListener
 {
-  public static final String a;
-  private final List<ayjl> a;
-  private final String b;
+  public ayjb(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131705765);
-  }
-  
-  public ayjb(List<ayjl> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 2147483647;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.b;
+    this.a.a.setText("");
+    this.a.a.requestFocus();
+    paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (paramView != null) {
+      paramView.showSoftInput(this.a.a, 0);
+    }
   }
 }
 

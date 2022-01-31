@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -22,8 +22,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baul;
-import bddw;
+import bayu;
+import bdif;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
@@ -75,7 +75,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         return false;
         i = paramLocalMediaInfo.selectStatus;
       } while (((i == 1) && (paramBoolean)) || ((i == 2) && (!paramBoolean)));
-      if ((i != 2) || (!paramBoolean) || (((aimj)localObject1).selectedPhotoList.size() < ((aimj)localObject1).maxSelectNum)) {
+      if ((i != 2) || (!paramBoolean) || (((aiqy)localObject1).selectedPhotoList.size() < ((aiqy)localObject1).maxSelectNum)) {
         break;
       }
       l = System.currentTimeMillis();
@@ -101,10 +101,10 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         localObject2 = this.mPhotoListData;
         ((PhotoListBaseData)localObject2).gifSelectedCount += 1;
       }
-      ((aimj)localObject1).selectedPhotoList.add(str);
-      ((aimj)localObject1).selectedIndex.add(paramLocalMediaInfo.position);
-      if (((aimj)localObject1).needMediaInfo) {
-        ((aimj)localObject1).selectedMediaInfoHashMap.put(str, paramLocalMediaInfo);
+      ((aiqy)localObject1).selectedPhotoList.add(str);
+      ((aiqy)localObject1).selectedIndex.add(paramLocalMediaInfo.position);
+      if (((aiqy)localObject1).needMediaInfo) {
+        ((aiqy)localObject1).selectedMediaInfoHashMap.put(str, paramLocalMediaInfo);
       }
       if (this.mPhotoListData.cancelPresendPathSet.contains(str)) {
         this.mPhotoListData.cancelPresendPathSet.remove(str);
@@ -150,10 +150,10 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         localObject2 = this.mPhotoListData;
         ((PhotoListBaseData)localObject2).gifSelectedCount -= 1;
       }
-      ((aimj)localObject1).selectedPhotoList.remove(paramLocalMediaInfo.path);
-      ((aimj)localObject1).selectedIndex.remove(paramLocalMediaInfo.position);
-      if (((aimj)localObject1).needMediaInfo) {
-        ((aimj)localObject1).selectedMediaInfoHashMap.remove(str);
+      ((aiqy)localObject1).selectedPhotoList.remove(paramLocalMediaInfo.path);
+      ((aiqy)localObject1).selectedIndex.remove(paramLocalMediaInfo.position);
+      if (((aiqy)localObject1).needMediaInfo) {
+        ((aiqy)localObject1).selectedMediaInfoHashMap.remove(str);
       }
       if (this.mPhotoListData.presendPathSet.contains(paramLocalMediaInfo.path)) {
         this.mPhotoListData.presendPathSet.remove(paramLocalMediaInfo.path);
@@ -332,7 +332,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   protected String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
   {
     int i = this.mPhotoCommonData.maxSelectNum;
-    return this.mActivity.getResources().getString(2131695258, new Object[] { Integer.valueOf(i) });
+    return this.mActivity.getResources().getString(2131695260, new Object[] { Integer.valueOf(i) });
   }
   
   protected List<LocalMediaInfo> getLocalMediaInfos()
@@ -342,7 +342,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       i = 100;
     }
     List localList2 = QAlbumUtil.getAlbumMedias(this.mActivity, this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName, i, this.mPhotoListData.filter, this.mPhotoListData.filterVideoDurationLimit);
-    bddw.a("PEAK", "getAlbumMedias");
+    bdif.a("PEAK", "getAlbumMedias");
     List localList1 = localList2;
     if (localList2 == null)
     {
@@ -365,7 +365,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
     {
       paramViewGroup = (ImageView)paramView;
       paramView.setBackgroundColor(-16777216);
-      paramViewGroup.setImageResource(2130841169);
+      paramViewGroup.setImageResource(2130841170);
       paramViewGroup.setScaleType(ImageView.ScaleType.CENTER);
       return paramView;
     }
@@ -375,15 +375,15 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   {
     if (paramView == null)
     {
-      paramViewGroup = this.mActivity.photoListAdapter.mInflater.inflate(2131561138, null);
+      paramViewGroup = this.mActivity.photoListAdapter.mInflater.inflate(2131561156, null);
       paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.mActivity.mImageWidth, this.mActivity.mImageHeight));
-      paramHolder.mImageView = ((ImageView)paramViewGroup.findViewById(2131371876));
-      paramHolder.mImageViewPanoramaIcon = ((ImageView)paramViewGroup.findViewById(2131371837));
-      paramHolder.mMaskView = ((ImageView)paramViewGroup.findViewById(2131368523));
-      paramHolder.mSelectedIconView = ((ImageView)paramViewGroup.findViewById(2131371881));
-      paramHolder.mSelectedBtn = paramViewGroup.findViewById(2131371878);
-      paramHolder.mCheckBox = ((NumberCheckBox)paramViewGroup.findViewById(2131371879));
-      paramHolder.mPhotoFlagView = ((ImageView)paramViewGroup.findViewById(2131371807));
+      paramHolder.mImageView = ((ImageView)paramViewGroup.findViewById(2131371896));
+      paramHolder.mImageViewPanoramaIcon = ((ImageView)paramViewGroup.findViewById(2131371857));
+      paramHolder.mMaskView = ((ImageView)paramViewGroup.findViewById(2131368534));
+      paramHolder.mSelectedIconView = ((ImageView)paramViewGroup.findViewById(2131371901));
+      paramHolder.mSelectedBtn = paramViewGroup.findViewById(2131371898);
+      paramHolder.mCheckBox = ((NumberCheckBox)paramViewGroup.findViewById(2131371899));
+      paramHolder.mPhotoFlagView = ((ImageView)paramViewGroup.findViewById(2131371827));
       paramHolder.mPhotoFlagView.setVisibility(8);
       if (this.mPhotoCommonData.maxSelectNum > 100) {
         paramHolder.mCheckBox.setTextSize(10.0F);
@@ -438,7 +438,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
           if (QLog.isColorLevel()) {
             QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),image url :" + ((URL)localObject).toString());
           }
-          localObject = baul.a((URL)localObject, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
+          localObject = bayu.a((URL)localObject, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
           ((URLDrawable)localObject).setTag(paramViewGroup);
           paramCheckBoxClickedListener.setImageDrawable((Drawable)localObject);
           ((URLImageView)paramCheckBoxClickedListener).setURLDrawableDownListener(this.mActivity.photoListAdapter);
@@ -498,14 +498,14 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramView = this.mActivity.photoListAdapter.mInflater.inflate(2131561375, null);
+      paramView = this.mActivity.photoListAdapter.mInflater.inflate(2131561393, null);
       paramView.setLayoutParams(new AbsListView.LayoutParams(this.mActivity.mImageWidth, this.mActivity.mImageHeight));
-      paramHolder.mImageView = ((ImageView)paramView.findViewById(2131371876));
-      paramHolder.mTextView = ((TextView)paramView.findViewById(2131371882));
-      paramHolder.mMaskView = ((ImageView)paramView.findViewById(2131368523));
-      paramHolder.mSelectedIconView = ((ImageView)paramView.findViewById(2131371881));
-      paramHolder.mSelectedBtn = paramView.findViewById(2131371878);
-      paramHolder.mCheckBox = ((NumberCheckBox)paramView.findViewById(2131371879));
+      paramHolder.mImageView = ((ImageView)paramView.findViewById(2131371896));
+      paramHolder.mTextView = ((TextView)paramView.findViewById(2131371902));
+      paramHolder.mMaskView = ((ImageView)paramView.findViewById(2131368534));
+      paramHolder.mSelectedIconView = ((ImageView)paramView.findViewById(2131371901));
+      paramHolder.mSelectedBtn = paramView.findViewById(2131371898);
+      paramHolder.mCheckBox = ((NumberCheckBox)paramView.findViewById(2131371899));
       if (this.mPhotoCommonData.maxSelectNum > 100) {
         paramHolder.mCheckBox.setTextSize(10.0F);
       }
@@ -544,7 +544,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         if (QLog.isColorLevel()) {
           QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),vedio url :" + paramView.toString());
         }
-        paramView = baul.a(paramView, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
+        paramView = bayu.a(paramView, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
         paramView.setTag(paramCheckBoxClickedListener);
         localImageView.setImageDrawable(paramView);
         ((URLImageView)localImageView).setURLDrawableDownListener(this.mActivity.photoListAdapter);
@@ -913,16 +913,16 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   
   protected List<LocalMediaInfo> queryPhotoList()
   {
-    aimj localaimj = this.mPhotoCommonData;
-    if (localaimj.selectedPhotoList == null) {
-      localaimj.selectedPhotoList = new ArrayList();
+    aiqy localaiqy = this.mPhotoCommonData;
+    if (localaiqy.selectedPhotoList == null) {
+      localaiqy.selectedPhotoList = new ArrayList();
     }
-    Object localObject3 = localaimj.selectedPhotoList;
-    if (localaimj.selectedMediaInfoHashMap == null) {
-      localaimj.selectedMediaInfoHashMap = new HashMap();
+    Object localObject3 = localaiqy.selectedPhotoList;
+    if (localaiqy.selectedMediaInfoHashMap == null) {
+      localaiqy.selectedMediaInfoHashMap = new HashMap();
     }
-    Object localObject2 = localaimj.selectedMediaInfoHashMap;
-    bddw.a();
+    Object localObject2 = localaiqy.selectedMediaInfoHashMap;
+    bdif.a();
     Object localObject1 = getLocalMediaInfos();
     if (localObject1 == null) {
       localObject1 = new ArrayList();
@@ -933,12 +933,12 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       this.mPhotoListData.gifSelectedCount = 0;
       long l1 = System.currentTimeMillis();
       long l2 = QAlbumUtil.sLastAlbumRecordTime;
-      if (QAlbumUtil.sLastAlbumPhotoCountMap.containsKey(localaimj.albumId)) {}
-      for (int j = ((Integer)QAlbumUtil.sLastAlbumPhotoCountMap.get(localaimj.albumId)).intValue();; j = 0)
+      if (QAlbumUtil.sLastAlbumPhotoCountMap.containsKey(localaiqy.albumId)) {}
+      for (int j = ((Integer)QAlbumUtil.sLastAlbumPhotoCountMap.get(localaiqy.albumId)).intValue();; j = 0)
       {
         Object localObject4;
         Object localObject5;
-        if ((this.mPhotoListData.isShowCamera) && (localaimj.albumId.equals("$RecentAlbumId")))
+        if ((this.mPhotoListData.isShowCamera) && (localaiqy.albumId.equals("$RecentAlbumId")))
         {
           localObject4 = ((List)localObject1).iterator();
           while (((Iterator)localObject4).hasNext())
@@ -953,7 +953,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
           ((List)localObject1).addAll(0, PhotoListBaseData.newCaptureMediaInfo.values());
         }
         int i;
-        if ((this.mPhotoListData.showCameraInVideo) && (localaimj.albumId.equals("$VideoAlbumId")))
+        if ((this.mPhotoListData.showCameraInVideo) && (localaiqy.albumId.equals("$VideoAlbumId")))
         {
           localObject4 = ((List)localObject1).iterator();
           while (((Iterator)localObject4).hasNext())
@@ -1000,8 +1000,8 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
               if (((ArrayList)localObject3).contains(((LocalMediaInfo)localObject5).path))
               {
                 ((LocalMediaInfo)localObject5).selectStatus = 1;
-                if (!localaimj.selectedIndex.contains(((LocalMediaInfo)localObject5).position)) {
-                  localaimj.selectedIndex.add(((LocalMediaInfo)localObject5).position);
+                if (!localaiqy.selectedIndex.contains(((LocalMediaInfo)localObject5).position)) {
+                  localaiqy.selectedIndex.add(((LocalMediaInfo)localObject5).position);
                 }
                 if ((this.mPhotoListData.isSupportVideoCheckbox) && (m == 1))
                 {
@@ -1020,12 +1020,12 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
                   ((PhotoListBaseData)localObject5).gifSelectedCount += 1;
                 }
               }
-              else if ((((ArrayList)localObject3).size() < localaimj.maxSelectNum) && (((LocalMediaInfo)localObject5).path.equals(this.mPhotoListData.currentPhotoPath)))
+              else if ((((ArrayList)localObject3).size() < localaiqy.maxSelectNum) && (((LocalMediaInfo)localObject5).path.equals(this.mPhotoListData.currentPhotoPath)))
               {
                 ((LocalMediaInfo)localObject5).selectStatus = 1;
                 ((ArrayList)localObject3).add(((LocalMediaInfo)localObject5).path);
-                localaimj.selectedIndex.add(((LocalMediaInfo)localObject5).position);
-                if (localaimj.needMediaInfo) {
+                localaiqy.selectedIndex.add(((LocalMediaInfo)localObject5).position);
+                if (localaiqy.needMediaInfo) {
                   ((HashMap)localObject2).put(((LocalMediaInfo)localObject5).path, localObject5);
                 }
               }
@@ -1041,9 +1041,9 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
           }
           if (needVedio())
           {
-            if (localaimj.allMediaInfoHashMap == null)
+            if (localaiqy.allMediaInfoHashMap == null)
             {
-              localaimj.allMediaInfoHashMap = new HashMap();
+              localaiqy.allMediaInfoHashMap = new HashMap();
               i = 0;
               label891:
               if (i >= k) {
@@ -1062,17 +1062,17 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
               while (((Iterator)localObject3).hasNext())
               {
                 localObject5 = (String)((Iterator)localObject3).next();
-                if ((localaimj.allMediaInfoHashMap.containsKey(localObject5)) && (!((HashMap)localObject2).containsKey(localObject5))) {
-                  ((HashMap)localObject2).put(localObject5, localaimj.allMediaInfoHashMap.get(localObject5));
+                if ((localaiqy.allMediaInfoHashMap.containsKey(localObject5)) && (!((HashMap)localObject2).containsKey(localObject5))) {
+                  ((HashMap)localObject2).put(localObject5, localaiqy.allMediaInfoHashMap.get(localObject5));
                 }
               }
-              localaimj.allMediaInfoHashMap.clear();
+              localaiqy.allMediaInfoHashMap.clear();
               break;
               label1008:
-              localaimj.allMediaInfoHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
+              localaiqy.allMediaInfoHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
             }
           }
-          localaimj.mediaPathsList = ((ArrayList)localObject4);
+          localaiqy.mediaPathsList = ((ArrayList)localObject4);
           return localObject1;
         }
       }
@@ -1107,7 +1107,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       this.mActivity.sendBtn.setEnabled(bool);
       this.mActivity.previewBtn.setEnabled(bool);
       return;
-      str1 = this.mActivity.getString(2131695243);
+      str1 = this.mActivity.getString(2131695245);
       break;
     }
   }

@@ -1,10 +1,25 @@
-public abstract interface amji
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class amji
+  extends ameq
 {
-  public abstract void a(String paramString);
+  public amji(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString, int paramInt);
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 512) && (paramBoolean))
+    {
+      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(52)).b(paramString1);
+      amjo.a(HiddenChatFragment.a(this.a), paramString2);
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch troopUin=" + paramString1);
+      }
+    }
+  }
 }
 
 

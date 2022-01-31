@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
+import awge;
 import java.util.Arrays;
 import qlv;
 import qlw;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
 
 public class ReportInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public String firstVideoRowkey;

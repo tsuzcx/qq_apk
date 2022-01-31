@@ -1,17 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusMoveCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFMoveCallbackForward.1;
 
+@TargetApi(16)
 public class aoau
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Camera.AutoFocusMoveCallback
 {
-  public aoau(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoal jdField_a_of_type_Aoal;
+  private final aoaq jdField_a_of_type_Aoaq;
   
-  public boolean onPreDraw()
+  public void onAutoFocusMoving(boolean paramBoolean, Camera paramCamera)
   {
-    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ColorNoteSmallScreenRelativeLayout.a(this.a);
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFMoveCallbackForward.1(this, paramBoolean));
   }
 }
 

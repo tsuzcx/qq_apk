@@ -114,7 +114,7 @@ public class MainBrowserScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559247, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559246, null);
   }
   
   public RelativeLayout getContentView()
@@ -144,7 +144,7 @@ public class MainBrowserScene
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131364770));
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131364771));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
       this.mGallery.setSelection(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
@@ -152,7 +152,7 @@ public class MainBrowserScene
     if ((this.mGallery instanceof DragGallery)) {
       ((DragGallery)this.mGallery).setGalleryScaleListener(this.mAdapter);
     }
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365487));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131365489));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();

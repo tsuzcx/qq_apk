@@ -1,14 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.PressDarkImageButton;
 
 class bmin
   implements View.OnClickListener
 {
-  bmin(bmil parambmil) {}
+  bmin(bmim parambmim) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.a(0);
+    if (bmim.a(this.a))
+    {
+      bmim.a(this.a, false);
+      bmim.a(this.a).setChecked(false);
+      return;
+    }
+    bmim.a(this.a, true);
+    bmim.a(this.a).setChecked(true);
   }
 }
 

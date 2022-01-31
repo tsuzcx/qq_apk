@@ -1,19 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class adhc
-  implements View.OnClickListener
+  extends auwn
 {
-  public adhc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adhc(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
-    azmj.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, 2131719884, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((auug)this.a.app.getManager(161)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+    }
   }
 }
 

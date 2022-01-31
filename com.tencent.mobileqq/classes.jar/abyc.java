@@ -1,254 +1,113 @@
-import android.content.ComponentName;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity.StartRecommendPageTask;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class abyc
-  extends amab
+  extends abwy
 {
-  public abyc(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  protected ShareActionSheetBuilder a;
   
-  protected void a(int paramInt1, int paramInt2)
+  private void a(JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    if (paramInt1 == 1)
+    paramJSONObject = this.jdField_a_of_type_Abwx.a();
+    if ((paramJSONObject instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)paramJSONObject).getTitleBarHeight();; i = 0)
     {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-      bclo.a(this.a, paramInt2);
-      AddFriendVerifyActivity.b(this.a, 1002);
+      paramabwu = new abyd(this, i, paramabwu);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramJSONObject);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramJSONObject.getString(2131720052));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(paramJSONObject));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(paramabwu);
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("DoraemonApi.ShareModule", 2, "actionSheet.show failed!", paramJSONObject);
+      }
     }
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public static List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
   {
-    if (1 == paramInt1) {}
-    switch (paramInt2)
+    ArrayList localArrayList = new ArrayList();
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696873);
+    localActionSheetItem.icon = 2130838917;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 2;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696886);
+    localActionSheetItem.icon = 2130838918;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 3;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696893);
+    localActionSheetItem.icon = 2130838921;
+    localActionSheetItem.action = 9;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696876);
+    localActionSheetItem.icon = 2130838915;
+    localActionSheetItem.action = 10;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    return (List[])new ArrayList[] { localArrayList, new ArrayList() };
+  }
+  
+  private void b(JSONObject paramJSONObject, @NonNull abwu paramabwu)
+  {
+    int i = paramJSONObject.optInt("shareChanel", 0);
+    Activity localActivity = this.jdField_a_of_type_Abwx.a();
+    if (!bdin.g(BaseApplicationImpl.getContext()))
     {
-    case -1: 
-    default: 
-      AddFriendVerifyActivity.b(this.a, 1002);
-      this.a.jdField_a_of_type_Bepp.dismiss();
-      QQToast.a(this.a, 1, 2131719225, 1).b(this.a.getTitleBarHeight());
-    case -2: 
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_Bepp.dismiss();
-        AddFriendVerifyActivity.b(this.a, 1004);
-      } while ((this.a.getIntent() == null) || (this.a.getIntent().getExtras() == null));
-      if (this.a.getIntent().getExtras().getShort("group_option", (short)2) == 4)
-      {
-        if (AddFriendVerifyActivity.c(this.a) != null) {
-          AddFriendVerifyActivity.c(this.a).setVisibility(0);
-        }
-        AddFriendVerifyActivity.b(this.a, 1002);
-        return;
-      }
-      ((alzf)this.a.app.a(20)).b(Long.parseLong(this.a.jdField_a_of_type_JavaLangString), Long.parseLong(this.a.app.getAccount()));
-      AddFriendVerifyActivity.a(this.a, true);
+      acab.a(paramabwu, -1, "net work not available");
       return;
-    case 0: 
-    case 1: 
-      this.a.jdField_a_of_type_Bepp.dismiss();
-      Object localObject = this.a.getIntent().getStringExtra("param_return_addr");
-      AddFriendVerifyActivity.b(this.a, 1003);
-      if (localObject != null) {
-        QQToast.a(this.a, 2, 2131719226, 1).b(this.a.getTitleBarHeight());
-      }
-      for (;;)
-      {
-        try
-        {
-          paramString = Class.forName((String)localObject);
-          localObject = new Intent();
-          ((Intent)localObject).setComponent(new ComponentName("com.tencent.mobileqq", paramString.getName()));
-          ((Intent)localObject).setFlags(67108864);
-          this.a.startActivity((Intent)localObject);
-          if (TextUtils.isEmpty(this.a.d)) {
-            break;
-          }
-          paramString = new ArrayList(1);
-          paramString.add("admin.qun.qq.com");
-          atda.a("closeJoinWebView", null, paramString, null);
-          return;
-        }
-        catch (ClassNotFoundException paramString)
-        {
-          paramString.printStackTrace();
-          this.a.setResult(-1);
-          this.a.finish();
-          continue;
-        }
-        if (this.a.getIntent().getBooleanExtra("from_newer_guide", false))
-        {
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("has_operation", true);
-          ((Intent)localObject).putExtra("uin", paramString);
-          this.a.setResult(-1, (Intent)localObject);
-          this.a.finish();
-        }
-        else if (this.a.getIntent().getBooleanExtra("from_babyq", false))
-        {
-          this.a.app.a().b("babyq_add_troop");
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("has_operation", true);
-          ((Intent)localObject).putExtra("uin", paramString);
-          this.a.setResult(-1, (Intent)localObject);
-          this.a.finish();
-        }
-        else
-        {
-          paramInt1 = this.a.getIntent().getExtras().getShort("group_option", (short)2);
-          paramString = (alzf)this.a.app.a(20);
-          if ((paramInt1 == 1) || (paramInt1 == 4)) {
-            paramString.b(this.a.jdField_a_of_type_JavaLangString, false);
-          } else {
-            paramString.b(Long.parseLong(this.a.jdField_a_of_type_JavaLangString), Long.parseLong(this.a.app.getAccount()));
-          }
-        }
-      }
     }
-    AddFriendVerifyActivity.b(this.a, 1002);
-    this.a.jdField_a_of_type_Bepp.dismiss();
-    QQToast.a(this.a, 1, 2131721045, 1).b(this.a.getTitleBarHeight());
+    Intent localIntent = new Intent(localActivity, TroopCreateLogicActivity.class);
+    localIntent.putExtra("type", 8);
+    localIntent.putExtra("chanelId", i);
+    localIntent.putExtra("params", paramJSONObject.toString());
+    localActivity.startActivity(localIntent);
+    acab.a(paramabwu, abww.a);
   }
   
-  protected void a(String paramString)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    if (TextUtils.isEmpty(paramString))
+    switch (paramInt)
     {
-      QQToast.a(this.a, 2, 2131719226, 1).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      if ((this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) && (AddFriendVerifyActivity.a(this.a) != null))
-      {
-        this.a.getWindow().setSoftInputMode(2);
-        this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
-      }
-      AddFriendVerifyActivity.a(this.a, false);
-      this.a.finish();
+    case 28: 
+    case 29: 
+    default: 
+      return false;
+    case 30: 
+      a(paramJSONObject, paramabwu);
     }
     for (;;)
     {
-      AddFriendVerifyActivity.b(this.a, 1004);
-      return;
-      paramString = new AddFriendVerifyActivity.StartRecommendPageTask(this.a, paramString);
-      this.a.jdField_a_of_type_AndroidOsHandler.post(paramString);
+      return true;
+      b(paramJSONObject, paramabwu);
     }
-  }
-  
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    if (paramBoolean)
-    {
-      int i = this.a.getIntent().getExtras().getShort("group_option", (short)2);
-      if (i == 4) {
-        if (paramTroopInfo != null)
-        {
-          paramString = aekt.a(new Intent(this.a, SplashActivity.class), null);
-          paramString.putExtra("uin", paramTroopInfo.troopuin);
-          paramString.putExtra("uintype", 1);
-          paramString.putExtra("uinname", paramTroopInfo.getTroopName());
-          this.a.startActivity(paramString);
-        }
-      }
-      while ((TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.a.app.getAccount())) || (i != 1)) {
-        return;
-      }
-      paramString = this.a.app.a();
-      RecentUser localRecentUser = paramString.a().a(paramTroopInfo.troopuin, 1);
-      localRecentUser.displayName = paramTroopInfo.troopname;
-      localRecentUser.msgData = null;
-      localRecentUser.msg = null;
-      localRecentUser.msgType = 0;
-      long l = NetConnInfoCenter.getServerTime();
-      if (localRecentUser.lastmsgtime < l) {
-        localRecentUser.lastmsgtime = l;
-      }
-      paramString.a().a(localRecentUser);
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
-    }
-    this.a.setResult(-1);
-    if ((this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) && (AddFriendVerifyActivity.a(this.a) != null))
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    this.a.finish();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = true;
-    if ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131696666), 0).b(this.a.getTitleBarHeight());
-      AddFriendVerifyActivity.b(this.a);
-    }
-    paramString = this.a;
-    if (paramInt3 == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramString.c = paramBoolean;
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (!bdal.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) {}
-    label262:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramBoolean) {
-            break label262;
-          }
-          long l = paramTroopInfo.dwGroupClassExt;
-          if (QLog.isColorLevel()) {
-            QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret isSuccess = " + paramBoolean + ", troopuin = " + paramLong + ", nFlag = " + paramInt1 + ", troopInfo = " + paramTroopInfo + ", dwGroupClassExt = " + l + ", onResult = " + paramInt2 + ", strErrorMsg = " + paramString);
-          }
-          if ((l != 10009L) && (l != 10010L) && (l != 10011L) && (l != 10012L) && (!paramTroopInfo.isHomeworkTroop())) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret: 不需要显示城市、星座、性别这一交友信息~");
-        return;
-        paramTroopInfo = AddFriendVerifyActivity.b(this.a);
-      } while (TextUtils.isEmpty(paramTroopInfo));
-      paramTroopInfo = this.a.getString(2131697973, new Object[] { this.a.app.getCurrentNickname() }) + paramTroopInfo;
-      this.a.d(paramTroopInfo);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("zivonchen", 2, "AddFriendVerifyActivity onOIDB0X88D_10_Ret isSuccess = " + paramBoolean + ", troopuin = " + paramLong + ", nFlag = " + paramInt1 + ", troopInfo = " + paramTroopInfo + ", onResult = " + paramInt2 + ", strErrorMsg = " + paramString);
   }
 }
 

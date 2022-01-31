@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -62,7 +62,7 @@ public class ComponentContentThree
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559959, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559958, this, true);
   }
   
   public void a() {}
@@ -74,10 +74,10 @@ public class ComponentContentThree
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375254));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369323));
-    this.b = ((KandianUrlImageView)paramView.findViewById(2131364049));
-    this.c = ((KandianUrlImageView)paramView.findViewById(2131375731));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375305));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369341));
+    this.b = ((KandianUrlImageView)paramView.findViewById(2131364051));
+    this.c = ((KandianUrlImageView)paramView.findViewById(2131375782));
     this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.b, this.c });
     b();
   }
@@ -102,8 +102,8 @@ public class ComponentContentThree
     qfg.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, true);
     qfg.a(getContext(), this.b, true);
     qfg.a(getContext(), this.c, true);
-    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, aekt.a(1.5F, getResources()), 0);
-    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, aekt.a(1.5F, getResources()), 0);
+    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, aepi.a(1.5F, getResources()), 0);
+    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, aepi.a(1.5F, getResources()), 0);
   }
   
   public void setContent(pgd parampgd)

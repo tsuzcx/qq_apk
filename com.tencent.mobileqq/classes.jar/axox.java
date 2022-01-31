@@ -1,23 +1,23 @@
-import java.util.HashMap;
-
 public class axox
-  extends axow
 {
-  public HashMap<String, String> a(String paramString)
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e = "";
+  public String f;
+  
+  public axox()
   {
-    if ("ShortVideo.Save".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      return paramString;
-    }
-    return null;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
   }
 }
 

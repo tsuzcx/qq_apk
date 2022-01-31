@@ -281,12 +281,12 @@ public class RequestPlugin
     //   193: iload 4
     //   195: ldc_w 358
     //   198: ldc_w 359
-    //   201: invokestatic 365	alpo:a	(I)Ljava/lang/String;
+    //   201: invokestatic 365	alud:a	(I)Ljava/lang/String;
     //   204: invokespecial 367	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/RequestPlugin:callbackFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Lorg/json/JSONObject;ILjava/lang/String;Ljava/lang/String;)V
     //   207: ldc_w 358
     //   210: aconst_null
     //   211: ldc_w 368
-    //   214: invokestatic 365	alpo:a	(I)Ljava/lang/String;
+    //   214: invokestatic 365	alud:a	(I)Ljava/lang/String;
     //   217: invokestatic 374	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   220: invokevirtual 129	org/json/JSONObject:toString	()Ljava/lang/String;
     //   223: astore 7
@@ -551,7 +551,7 @@ public class RequestPlugin
     //   770: iload 4
     //   772: ldc_w 484
     //   775: ldc_w 485
-    //   778: invokestatic 365	alpo:a	(I)Ljava/lang/String;
+    //   778: invokestatic 365	alud:a	(I)Ljava/lang/String;
     //   781: invokespecial 367	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/RequestPlugin:callbackFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Lorg/json/JSONObject;ILjava/lang/String;Ljava/lang/String;)V
     //   784: aload 7
     //   786: monitorexit

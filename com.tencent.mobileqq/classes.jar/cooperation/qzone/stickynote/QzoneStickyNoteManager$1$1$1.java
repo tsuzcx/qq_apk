@@ -1,7 +1,7 @@
 package cooperation.qzone.stickynote;
 
-import bjpc;
-import bjpd;
+import bjtj;
+import bjtk;
 
 class QzoneStickyNoteManager$1$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class QzoneStickyNoteManager$1$1$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Bjpc.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.jdField_a_of_type_ComTencentWidgetListView, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
+    this.a.a.jdField_a_of_type_Bjtj.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.jdField_a_of_type_ComTencentWidgetListView, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }
 

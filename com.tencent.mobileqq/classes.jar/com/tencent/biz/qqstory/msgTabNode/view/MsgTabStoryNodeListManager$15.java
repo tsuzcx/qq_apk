@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.msgTabNode.view;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import uwn;
+import vaw;
 
 public class MsgTabStoryNodeListManager$15
   implements Runnable
@@ -11,7 +11,7 @@ public class MsgTabStoryNodeListManager$15
   {
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      if (uwn.a(this.this$0)) {
+      if (vaw.a(this.this$0)) {
         this.this$0.jdField_a_of_type_JavaLangRunnable = null;
       }
       return;

@@ -1,6 +1,19 @@
-public abstract interface alsq
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+
+public class alsq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public alsq(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
+      this.a.c.setVisibility(8);
+    }
+  }
 }
 
 

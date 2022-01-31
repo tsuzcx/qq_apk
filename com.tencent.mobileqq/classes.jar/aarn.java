@@ -1,93 +1,76 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
-public class aarn
-  extends aark
+class aarn
+  implements aaru
 {
-  private ArrayList<String> a;
+  private GdtDwellTimeStatisticsAfterClick a;
   
-  public aarn(JSONObject paramJSONObject)
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str1 = super.a();
-    try
+    Object localObject = null;
+    if (paramaarb != null) {}
+    GdtHandler.Params localParams;
+    for (Activity localActivity = paramaarb.a();; localActivity = null)
     {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      localParams = new GdtHandler.Params();
+      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
+      if ((paramaarb != null) && (localActivity != null) && (bool)) {
+        break;
+      }
+      aase.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
+        aase.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
+        localParams.c = 7;
+        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
+        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaarb.a());
+        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
+        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+        paramVarArgs = paramaarb.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
         {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramaarb.mRuntime.a()));
+          this.a.a();
+          GdtHandler.a(localParams);
+          paramaarb.callJs(paramString, null);
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
           }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
         }
       }
-      localJSONException.put("classIdList", localStringBuilder.toString());
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
-    }
-    String str2 = localJSONException.toString();
-    return str2;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-    {
-      int j = paramJSONObject.length;
-      while (i < j)
+      catch (Throwable paramaarb)
       {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
-        }
-        i += 1;
+        aase.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramaarb);
+        return true;
       }
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
-    }
-    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarn
  * JD-Core Version:    0.7.0.1
  */

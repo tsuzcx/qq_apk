@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
 import android.text.TextUtils;
-import bgkd;
-import bgth;
-import bgwc;
+import bgok;
+import bgxo;
+import bhaj;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -12,15 +12,15 @@ import org.json.JSONObject;
 class OpenDataJsPlugin$8
   implements AsyncResult
 {
-  OpenDataJsPlugin$8(OpenDataJsPlugin paramOpenDataJsPlugin, bgkd parambgkd, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  OpenDataJsPlugin$8(OpenDataJsPlugin paramOpenDataJsPlugin, bgok parambgok, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     QMLog.d("OpenDataJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.b();
       return;
     }
@@ -48,7 +48,7 @@ class OpenDataJsPlugin$8
           }
           if (OpenDataJsPlugin.access$700(this.this$0))
           {
-            paramJSONObject = (bgth)this.val$req.a;
+            paramJSONObject = (bgxo)this.val$req.a;
             if ((paramJSONObject == null) || (paramJSONObject.a() != 1)) {
               break;
             }
@@ -59,8 +59,8 @@ class OpenDataJsPlugin$8
         }
         catch (Exception paramJSONObject)
         {
-          bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
-          bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
+          bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
+          bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
           this.val$req.b();
           return;
         }
@@ -69,13 +69,13 @@ class OpenDataJsPlugin$8
       label341:
       ((JSONObject)localObject).put("errMsg", paramJSONObject);
       ((JSONObject)localObject).put("errCode", i);
-      bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
-      bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
+      bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
+      bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
       this.val$req.a((JSONObject)localObject, null);
       return;
     }
-    bgwc.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
-    bgwc.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
+    bhaj.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
+    bhaj.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
     this.val$req.b();
   }
 }

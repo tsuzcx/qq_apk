@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-public final class bjgm
-  implements Parcelable.Creator<DiscoverTab>
+public class bjgm
+  implements View.OnClickListener
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  public bjgm(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public DiscoverTab[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DiscoverTab[paramInt];
+    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
+    QzoneVerticalVideoDownloadActivity.access$600(this.a);
+    this.a.finish();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amle;
+import ampt;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class MiniAppProxyImpl$10
-  extends amle
+  extends ampt
 {
   MiniAppProxyImpl$10(MiniAppProxyImpl paramMiniAppProxyImpl, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5, boolean paramBoolean6, AsyncResult paramAsyncResult)
   {

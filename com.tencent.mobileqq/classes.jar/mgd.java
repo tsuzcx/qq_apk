@@ -16,7 +16,7 @@ class mgd
     paramView = (mge)paramView.getTag();
     if (paramView.c) {
       if (this.a.jdField_a_of_type_Int == 1) {
-        azmj.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
       }
     }
     VideoController localVideoController;
@@ -25,7 +25,7 @@ class mgd
     {
       if ((paramView.c) && (paramView.d))
       {
-        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131696172, 1).a();
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131696174, 1).a();
         if (this.a.jdField_a_of_type_Int == 1) {}
         for (paramView = "0x8007CB5";; paramView = "0x8007CB6")
         {
@@ -34,17 +34,17 @@ class mgd
           if (this.a.jdField_a_of_type_Int != 2) {
             break;
           }
-          azmj.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
           break;
           if (this.a.jdField_a_of_type_Int == 1)
           {
-            azmj.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
+            azqs.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
             break;
           }
           if (this.a.jdField_a_of_type_Int != 2) {
             break;
           }
-          azmj.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
           break;
         }
       }
@@ -54,7 +54,7 @@ class mgd
         bool = true;
       }
     } while ((!localVideoController.a(l, bool)) || (!paramView.c));
-    QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131696018, 1).a();
+    QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131696020, 1).a();
   }
 }
 

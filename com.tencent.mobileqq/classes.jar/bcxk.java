@@ -1,21 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
-
-public final class bcxk
-  implements Parcelable.Creator<FaceInfo>
+public class bcxk
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
-  
-  public FaceInfo[] a(int paramInt)
-  {
-    return new FaceInfo[paramInt];
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 

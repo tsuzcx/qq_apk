@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bglz;
+import bgqg;
 
 public class NioSelectorThread$1
   implements Runnable
 {
-  public NioSelectorThread$1(bglz parambglz) {}
+  public NioSelectorThread$1(bgqg parambgqg) {}
   
   public void run()
   {
-    bglz.a(this.this$0);
+    bgqg.a(this.this$0);
   }
 }
 

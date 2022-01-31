@@ -43,7 +43,7 @@ public class pmd
       parampgd = parampgd.a();
       localObject = (NativeAvatarView)((pqg)localObject).getNativeView();
       if ((ors.b(parampgd)) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845836));
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845909));
       }
     }
     paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");

@@ -1,32 +1,50 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-final class ayxq
-  extends amky
+public class ayxq
+  extends ayxs
 {
-  ayxq(String paramString, boolean paramBoolean)
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  
+  public ayxq(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramString, paramBoolean);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559170, paramViewGroup, false);
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new ayxr(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377938));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370721));
+    if (paramBoolean2) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365369);
+    if (paramBoolean1) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public TextView a()
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = ayxp.a();
-    bjmr.a(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      ayxp.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + ayxp.a());
-    }
-    for (;;)
-    {
-      ayxp.a(paramInt);
+      localView.setVisibility(i);
       return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
     }
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
   }
 }
 

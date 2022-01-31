@@ -1,12 +1,24 @@
-import java.io.File;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.HashMap;
 
-public class bkkz
+class bkkz
+  implements ThreadPool.Job<Void>
 {
-  public static final String a = bklb.a + File.separator + "playshow";
-  public static final String b = bkks.e;
-  public static final String c = a + File.separator + "material_config";
-  public static final String d = a + File.separator + "thumbs";
-  public static final String e = a + File.separator + "videos";
+  bkkz(bkks parambkks, Long paramLong, bave parambave) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    paramJobContext = (bkkp)bkks.a(this.jdField_a_of_type_Bkks).get(this.jdField_a_of_type_JavaLangLong);
+    if ((paramJobContext == null) || (paramJobContext.d())) {
+      bkks.a(this.jdField_a_of_type_Bkks, this.jdField_a_of_type_JavaLangLong.longValue());
+    }
+    for (;;)
+    {
+      return null;
+      bkks.b(this.jdField_a_of_type_Bkks).a(this.jdField_a_of_type_Bave);
+    }
+  }
 }
 
 

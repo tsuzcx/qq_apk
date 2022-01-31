@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import android.os.Message;
-import awmk;
-import bhow;
+import awqt;
+import bhtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -15,7 +15,7 @@ class FriendProfileCardActivity$42
   public void run()
   {
     int j = 0;
-    Object localObject = (aloz)this.this$0.app.getManager(51);
+    Object localObject = (alto)this.this$0.app.getManager(51);
     if (localObject == null)
     {
       localObject = null;
@@ -34,16 +34,16 @@ class FriendProfileCardActivity$42
       if (i != 0) {}
       for (localMessage.what = 6;; localMessage.what = 5)
       {
-        if (this.this$0.jdField_a_of_type_Bhow != null) {
-          this.this$0.jdField_a_of_type_Bhow.sendMessage(localMessage);
+        if (this.this$0.jdField_a_of_type_Bhtd != null) {
+          this.this$0.jdField_a_of_type_Bhtd.sendMessage(localMessage);
         }
         i = j;
-        if (this.this$0.jdField_a_of_type_Awmk.a != null) {
-          i = this.this$0.jdField_a_of_type_Awmk.a.h;
+        if (this.this$0.jdField_a_of_type_Awqt.a != null) {
+          i = this.this$0.jdField_a_of_type_Awqt.a.h;
         }
         this.this$0.h(i);
         return;
-        localObject = ((aloz)localObject).b(this.this$0.jdField_a_of_type_Awmk.a.a);
+        localObject = ((alto)localObject).b(this.this$0.jdField_a_of_type_Awqt.a.a);
         break;
       }
     }

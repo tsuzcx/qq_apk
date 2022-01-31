@@ -1,16 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrp
   implements View.OnClickListener
 {
-  public adrp(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adrp(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    if (this.a.a == null)
+    {
+      this.a.a = ((bhuf)bhus.a(this.a, null));
+      this.a.a.b(2131698445);
+      this.a.a.b(2131692401);
+      this.a.a.c(2131690648);
+      this.a.a.a(new adrq(this));
+    }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

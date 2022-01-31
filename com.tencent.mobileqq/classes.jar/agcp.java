@@ -1,6 +1,11 @@
-public abstract interface agcp
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+
+public class agcp
+  implements biac
 {
-  public abstract boolean a(Object paramObject);
+  public agcp(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  
+  public void a() {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.app.Activity;
-import bfko;
+import bfox;
 
 class WebViewFragment$4
   implements Runnable
@@ -10,8 +10,8 @@ class WebViewFragment$4
   
   public void run()
   {
-    if (bfko.d()) {
-      bfko.a().a(this.a);
+    if (bfox.d()) {
+      bfox.a().a(this.a);
     }
   }
 }

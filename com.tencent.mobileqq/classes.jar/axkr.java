@@ -1,96 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class axkr
-  implements GLGestureListener
+  implements awiq
 {
-  protected View a;
-  private axks a;
-  protected ProviderContainerView a;
-  protected AEMaterialPanel a;
-  protected AEProviderContainerView a;
-  protected QIMProviderContainerView a;
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public axkr() {}
-  
-  public axkr(QIMProviderContainerView paramQIMProviderContainerView)
+  public axkr(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  public void a(int paramInt, boolean paramBoolean) {}
   
-  public void a(axks paramaxks)
+  public void a(awir paramawir)
   {
-    this.jdField_a_of_type_Axks = paramaxks;
-  }
-  
-  public void a(AEMaterialPanel paramAEMaterialPanel)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
-  }
-  
-  public void a(AEProviderContainerView paramAEProviderContainerView)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1060;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int j = paramMotionEvent.getPointerCount();
-    int k = paramMotionEvent.getAction() & 0xFF;
-    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
-    {
-      blfg.a("CameraProviderViewGesture", i);
-      if ((j == 1) && (!paramBoolean)) {}
-      switch (k)
-      {
-      default: 
-        return false;
-      }
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
+    if (localReceiptMessageDetailFragment == null) {
+      return;
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
-    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
+    switch (paramawir.a)
     {
-      if (this.jdField_a_of_type_Axks != null) {
-        this.jdField_a_of_type_Axks.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
-      {
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
-      {
-        blfg.a("CameraProviderViewGesture", "in hide close panel.");
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
-      }
-      if ((localObject == null) || (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView == null) || (paramMotionEvent.getY() >= ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
-        break;
-      }
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
-      return false;
+    default: 
+      return;
+    case -1: 
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
+      return;
     }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 

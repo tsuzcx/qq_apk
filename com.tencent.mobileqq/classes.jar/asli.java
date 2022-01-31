@@ -1,91 +1,15 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
-public class asli
+class asli
+  extends AnimatorListenerAdapter
 {
-  int jdField_a_of_type_Int;
-  asli jdField_a_of_type_Asli;
-  ArrayList<asli> jdField_a_of_type_JavaUtilArrayList;
-  HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap;
+  asli(aslg paramaslg) {}
   
-  public asli(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private String a(int paramInt)
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    int i = 0;
-    while (i < paramInt)
-    {
-      localStringBuilder2.append("\t");
-      i += 1;
-    }
-    localStringBuilder1.append(localStringBuilder2).append(aslh.a(this.jdField_a_of_type_Int)).append(":[\n");
-    localStringBuilder1.append(localStringBuilder2).append("\tfields").append(":[\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      String str = aslh.b(((Integer)localObject).intValue());
-      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      localStringBuilder1.append(localStringBuilder2).append("\t\t").append(str).append(":").append(localObject).append("\n");
-    }
-    localStringBuilder1.append(localStringBuilder2).append("\t]").append("\n");
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder1.append(((asli)localIterator.next()).a(paramInt + 1));
-    }
-    localStringBuilder1.append(localStringBuilder2).append("]").append("\n");
-    return localStringBuilder1.toString();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public asli a()
-  {
-    return this.jdField_a_of_type_Asli;
-  }
-  
-  public asli a(asli paramasli)
-  {
-    this.jdField_a_of_type_Asli = paramasli;
-    this.jdField_a_of_type_Asli.a(this);
-    return this;
-  }
-  
-  public ArrayList<asli> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public HashMap<Integer, Object> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramObject);
-  }
-  
-  public void a(asli paramasli)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramasli);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
+    aslg.a(this.a).sendEmptyMessage(2);
   }
 }
 

@@ -1,13 +1,31 @@
-import android.os.Bundle;
+import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhkg
+  implements bhkk
 {
-  int jdField_a_of_type_Int;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
+  public bhkg(MiniAppCamera paramMiniAppCamera, bgok parambgok) {}
+  
+  public void a(String paramString)
+  {
+    if (bgpv.a(paramString))
+    {
+      this.jdField_a_of_type_Bgok.b();
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("tempImagePath", bgnt.a().e(paramString));
+      this.jdField_a_of_type_Bgok.a.a(this.jdField_a_of_type_Bgok.b, localJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
 }
 
 

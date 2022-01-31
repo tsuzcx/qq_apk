@@ -1,38 +1,21 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.TranslucentActivity;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class angx
-  implements angu
+  implements DialogInterface.OnClickListener
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  public angx(ARScanEntryView paramARScanEntryView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramLong != 0L) {}
-    do
-    {
-      return false;
-      paramJSONObject = BaseActivity.sTopActivity;
-    } while (paramJSONObject == null);
-    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
-    paramString3.addFlags(268435456);
-    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
-    paramString3.setAction("action_js2qzone");
-    paramString3.putExtra("cmd", "Schema");
-    paramString2 = paramString1;
-    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
-    {
-      paramString2 = paramString1;
-      if (!paramString1.contains("from")) {
-        paramString2 = paramString1 + "&from=aio";
-      }
-    }
-    paramString3.putExtra("schema", "mqzone://" + paramString2);
-    paramString3.putExtra("from", 2);
-    paramJSONObject.startActivity(paramString3);
-    return true;
+    Activity localActivity = (Activity)this.a.a;
+    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+    localActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

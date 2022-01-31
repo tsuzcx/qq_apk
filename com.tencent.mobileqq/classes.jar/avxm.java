@@ -1,23 +1,32 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
-class avxm
-  implements OnCompositionLoadedListener
+public class avxm
+  implements View.OnTouchListener
 {
-  avxm(avxl paramavxl, String paramString, int paramInt1, int paramInt2) {}
+  public avxm(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImageAssetDelegate(new avxn(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    avxl.a(this.jdField_a_of_type_Avxl).setImageDrawable(localLottieDrawable);
-    avxl.a(this.jdField_a_of_type_Avxl, localLottieDrawable);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

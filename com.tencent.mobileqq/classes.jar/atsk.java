@@ -1,32 +1,9 @@
-import android.util.Log;
-import java.util.ArrayList;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class atsk
+public abstract interface atsk
 {
-  public static atsc a(String paramString, boolean paramBoolean)
-  {
-    if ((paramString != null) && (paramString.length() >= 0))
-    {
-      if (paramBoolean) {}
-      for (;;)
-      {
-        try
-        {
-          paramString = new atso(paramString).a();
-          if ((paramString == null) || (paramString.a.size() <= 0)) {
-            break;
-          }
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramString);
-        }
-        paramString = new atsl(paramString).a();
-      }
-    }
-    return null;
-  }
+  public abstract void a(List<LocationRoom.Venue> paramList);
 }
 
 

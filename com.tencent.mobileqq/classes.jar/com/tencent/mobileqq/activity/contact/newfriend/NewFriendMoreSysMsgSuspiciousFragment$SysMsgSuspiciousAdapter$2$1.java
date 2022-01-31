@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahhl;
+import ahma;
 import android.view.View;
 import java.util.List;
 
@@ -11,18 +11,18 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2$1
   
   public void run()
   {
-    ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0, this.jdField_a_of_type_JavaUtilList);
-    if ((ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) == null) || (ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).isEmpty())) {
-      if (ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-        ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(0);
+    ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0, this.jdField_a_of_type_JavaUtilList);
+    if ((ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) == null) || (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).isEmpty())) {
+      if (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
+        ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(0);
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0.notifyDataSetChanged();
       return;
-      if (ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-        ahhl.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(8);
+      if (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
+        ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(8);
       }
     }
   }

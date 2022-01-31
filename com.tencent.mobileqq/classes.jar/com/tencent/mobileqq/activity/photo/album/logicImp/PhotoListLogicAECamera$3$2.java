@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aini;
-import ainm;
+import airx;
+import aisb;
 import android.util.Log;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class PhotoListLogicAECamera$3$2
   implements Runnable
 {
-  public PhotoListLogicAECamera$3$2(ainm paramainm) {}
+  public PhotoListLogicAECamera$3$2(aisb paramaisb) {}
   
   public void run()
   {

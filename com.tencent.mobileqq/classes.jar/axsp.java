@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-
-class axsp
-  extends alsi
+public abstract interface axsp
 {
-  axsp(axso paramaxso) {}
+  public abstract void a(long paramLong);
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty()) && ((paramList.get(0) instanceof MessageForShortVideo))) {
-      agdf.a((MessageRecord)paramList.get(0));
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void g();
 }
 
 

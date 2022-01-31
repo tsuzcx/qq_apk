@@ -93,7 +93,7 @@ public class ndk
       try
       {
         String str = new URL(paramString).getHost();
-        Object localObject2 = bavf.a().a(str, paramInt);
+        Object localObject2 = bazo.a().a(str, paramInt);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           Object localObject1 = localObject2;

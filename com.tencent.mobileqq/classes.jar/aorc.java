@@ -1,59 +1,75 @@
 import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aorc
-  extends aopw<aorb>
+  extends aokh<aord>
 {
-  public static aorb a()
-  {
-    return (aorb)aogj.a().a(413);
-  }
-  
   public int a()
   {
-    return 413;
+    return 368;
   }
   
   @NonNull
-  public aorb a(@NonNull aogf[] paramArrayOfaogf)
+  public aord a(int paramInt)
   {
-    aorb localaorb = new aorb();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (paramArrayOfaogf != null) {}
-    try
-    {
-      if (!"".equals(paramArrayOfaogf))
-      {
-        paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
-        localaorb.a(paramArrayOfaogf.getString("url"));
-        localaorb.a(paramArrayOfaogf.getBoolean("isEnable"));
-        localaorb.b(paramArrayOfaogf.getBoolean("hideHotValue"));
-      }
-      return localaorb;
+    return new aord();
+  }
+  
+  @Nullable
+  public aord a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
     }
-    catch (JSONException paramArrayOfaogf)
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramArrayOfaogf.printStackTrace();
+      aord localaord = new aord();
+      localaord.a(paramArrayOfaoko);
+      return localaord;
     }
-    return localaorb;
+    return new aord();
   }
   
-  public Class<aorb> a()
+  public Class<aord> a()
   {
-    return aorb.class;
+    return aord.class;
   }
   
-  @NonNull
-  public aorb b()
+  public void a(int paramInt)
   {
-    return new aorb();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
   }
   
-  @NonNull
-  public aorb c()
+  public void a(aord paramaord)
   {
-    return new aorb();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bdne.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

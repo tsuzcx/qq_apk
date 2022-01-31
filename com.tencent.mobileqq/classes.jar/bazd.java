@@ -1,17 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class bazd
-  implements ValueAnimator.AnimatorUpdateListener
+class bazd
+  implements bazg
 {
-  public bazd(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  bazd(bazc parambazc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Bitmap getBitmap(URL paramURL)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = bazc.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = bazc.b(this.a, str);
+      }
+      return paramURL;
+    }
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 

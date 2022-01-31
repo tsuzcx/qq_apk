@@ -1,36 +1,37 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class van
+  extends QQUIEventReceiver<vai, vcv>
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public int b;
-  
-  public boolean equals(Object paramObject)
+  public van(@NonNull vai paramvai)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (van)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
+    super(paramvai);
   }
   
-  public int hashCode()
+  public void a(@NonNull vai paramvai, @NonNull vcv paramvcv)
   {
-    if (this.a != null) {
-      return this.a.hashCode();
+    if (paramvcv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      }
+      if (paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
+        paramvai.a(paramvai.a.a(8, paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
+      }
     }
-    return 0;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramvcv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcv.class;
   }
 }
 

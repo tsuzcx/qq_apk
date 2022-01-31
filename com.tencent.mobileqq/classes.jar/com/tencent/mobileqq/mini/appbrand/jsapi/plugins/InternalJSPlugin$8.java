@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bfka;
+import bfoj;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class InternalJSPlugin$8
-  implements bfka
+  implements bfoj
 {
   InternalJSPlugin$8(InternalJSPlugin paramInternalJSPlugin) {}
   

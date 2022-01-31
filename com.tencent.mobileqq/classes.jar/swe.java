@@ -199,7 +199,7 @@ public class swe
   
   public void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, paramString, true, 0L, 0L, paramHashMap, null);
+    azri.a(BaseApplicationImpl.getApplication()).a(null, paramString, true, 0L, 0L, paramHashMap, null);
   }
   
   public void b()

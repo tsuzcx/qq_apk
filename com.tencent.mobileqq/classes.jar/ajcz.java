@@ -1,25 +1,19 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
-class ajcz
+public class ajcz
   implements View.OnClickListener
 {
-  ajcz(ajbm paramajbm, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public ajcz(DrawHbFragment paramDrawHbFragment) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
+    if (this.a.a != null) {
+      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
     }
-    bevd.a(ajbm.a(this.jdField_a_of_type_Ajbm), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
-    ajbm.a(this.jdField_a_of_type_Ajbm).removeMessages(202);
-    ajbm.a(this.jdField_a_of_type_Ajbm).obtainMessage(202).sendToTarget();
-    azmj.a(ajbm.a(this.jdField_a_of_type_Ajbm).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
   }
 }
 

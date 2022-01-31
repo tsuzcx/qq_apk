@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import ajyn;
-import bdcd;
-import bdfq;
+import akdc;
+import bdgm;
+import bdjz;
 
 public class ShortVideoPlayActivity$14
   implements Runnable
@@ -11,8 +11,8 @@ public class ShortVideoPlayActivity$14
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.this$0, 232, null, this.a, new ajyn(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbdfq);
+    bdjz localbdjz = bdgm.a(this.this$0, 232, null, this.a, new akdc(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localbdjz);
   }
 }
 

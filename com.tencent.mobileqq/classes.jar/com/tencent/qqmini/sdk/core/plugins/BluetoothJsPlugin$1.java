@@ -2,15 +2,15 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import bgjd;
-import bgje;
-import bgkd;
+import bgnk;
+import bgnl;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class BluetoothJsPlugin$1
-  implements bgje
+  implements bgnl
 {
-  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, bgkd parambgkd) {}
+  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, bgok parambgok) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -26,7 +26,7 @@ class BluetoothJsPlugin$1
     }
     for (;;)
     {
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       bool = true;
       return bool;
       label99:

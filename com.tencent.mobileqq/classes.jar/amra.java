@@ -1,23 +1,26 @@
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class amra
+abstract class amra
 {
-  private HashMap<String, Object> a = new HashMap();
-  public float[] a;
+  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
   
-  public Object a(String paramString)
+  protected abstract String a();
+  
+  protected void a()
   {
-    return this.a.get(paramString);
+    this.a.edit().putBoolean(a(), true).commit();
   }
   
-  public void a(String paramString, Object paramObject)
+  protected boolean a()
   {
-    this.a.put(paramString, paramObject);
+    return !this.a.contains(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amra
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.logic;
 
-import alzf;
-import amjk;
+import amdu;
+import amnz;
 import android.text.TextUtils;
-import bccq;
-import bccr;
-import bdbo;
+import bcgz;
+import bcha;
+import bdfx;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -22,20 +22,20 @@ import java.util.List;
 class TroopSearchLogic$TroopSearchTask
   implements Runnable
 {
-  bccr jdField_a_of_type_Bccr;
+  bcha jdField_a_of_type_Bcha;
   ArrayList<ResultRecord> jdField_a_of_type_JavaUtilArrayList;
   
-  TroopSearchLogic$TroopSearchTask(bccr parambccr, ArrayList<ResultRecord> paramArrayList)
+  TroopSearchLogic$TroopSearchTask(bcha parambcha, ArrayList<ResultRecord> paramArrayList)
   {
-    this.jdField_a_of_type_Bccr = paramArrayList;
+    this.jdField_a_of_type_Bcha = paramArrayList;
     Object localObject;
     this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  private void a(ArrayList<bccq> paramArrayList)
+  private void a(ArrayList<bcgz> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bccr != null) {
-      this.jdField_a_of_type_Bccr.a(paramArrayList);
+    if (this.jdField_a_of_type_Bcha != null) {
+      this.jdField_a_of_type_Bcha.a(paramArrayList);
     }
   }
   
@@ -62,7 +62,7 @@ class TroopSearchLogic$TroopSearchTask
   
   public void run()
   {
-    Object localObject1 = (alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    Object localObject1 = (amdu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
     localObject1 = new ArrayList();
     Object localObject2 = new ArrayList(this.this$0.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a());
     if ((localObject2 == null) || (((List)localObject2).size() == 0))
@@ -122,15 +122,15 @@ class TroopSearchLogic$TroopSearchTask
         if (i == 0) {
           break label451;
         }
-        localObject3 = new bccq();
-        ((bccq)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopInfo;
-        ((bccq)localObject3).jdField_a_of_type_Int = localList.size();
-        ((bccq)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
+        localObject3 = new bcgz();
+        ((bcgz)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopInfo;
+        ((bcgz)localObject3).jdField_a_of_type_Int = localList.size();
+        ((bcgz)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
         localTroopInfo.lastMsgTime = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localTroopInfo.troopuin, 1).lastmsgtime;
-        if (k != ((bccq)localObject3).jdField_a_of_type_Int) {
+        if (k != ((bcgz)localObject3).jdField_a_of_type_Int) {
           break;
         }
-        ((bccq)localObject3).b = 1;
+        ((bcgz)localObject3).b = 1;
         ((ArrayList)localObject1).add(localObject3);
         break;
         Collections.sort((List)localObject1);

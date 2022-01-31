@@ -20,7 +20,7 @@ class tdl
     tdf.a(this.jdField_a_of_type_Tdf).removeTextChangedListener(this);
     if (paramEditable.length() > tdf.b(this.jdField_a_of_type_Tdf))
     {
-      QQToast.a(this.jdField_a_of_type_Tdf.getContext(), alpo.a(2131702555) + tdf.b(this.jdField_a_of_type_Tdf) + alpo.a(2131702556), 0).a();
+      QQToast.a(this.jdField_a_of_type_Tdf.getContext(), alud.a(2131702567) + tdf.b(this.jdField_a_of_type_Tdf) + alud.a(2131702568), 0).a();
       paramEditable.delete(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
       tdf.a(this.jdField_a_of_type_Tdf).addTextChangedListener(this);
       return;
@@ -30,7 +30,7 @@ class tdl
     if ((i >= 0) && (i < ((String)localObject1).length() - 1))
     {
       localObject1 = new SpannableStringBuilder(paramEditable.toString());
-      ycw.a(tdf.a(this.jdField_a_of_type_Tdf).getContext(), (SpannableStringBuilder)localObject1);
+      yhf.a(tdf.a(this.jdField_a_of_type_Tdf).getContext(), (SpannableStringBuilder)localObject1);
     }
     for (;;)
     {

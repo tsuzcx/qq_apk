@@ -1,62 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
-import java.util.Observable;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 
-public class bchj
-  extends Observable
-  implements Manager
+class bchj
+  implements View.OnTouchListener
 {
-  protected awbw a;
-  protected QQAppInterface a;
-  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
+  bchj(bchh parambchh, View paramView1, View paramView2) {}
   
-  public bchj(QQAppInterface paramQQAppInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-        }
-        return;
-      }
-      finally {}
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
     }
-  }
-  
-  public TroopAioTopADInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_Awbw.a(TroopAioTopADInfo.class, paramString);
-    } while (paramString == null);
-    this.jdField_a_of_type_Awbw.b(paramString);
-  }
-  
-  public void onDestroy()
-  {
-    if ((this.jdField_a_of_type_Awbw != null) && (this.jdField_a_of_type_Awbw.a())) {
-      this.jdField_a_of_type_Awbw.a();
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
+    return false;
   }
 }
 

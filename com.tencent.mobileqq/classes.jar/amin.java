@@ -1,30 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
-final class amin
-  extends bdvu
+public class amin
+  extends alog
 {
-  amin(String paramString) {}
+  private amin(RegisterProxy paramRegisterProxy) {}
   
-  public void onCancel(bdvv parambdvv)
+  protected void a()
   {
-    amij.jdField_a_of_type_Bdvv = null;
-    QLog.d(amij.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
-  
-  public void onDone(bdvv parambdvv)
-  {
-    amij.jdField_a_of_type_Bdvv = null;
-    if (parambdvv.a() == 3)
-    {
-      QLog.d(amij.jdField_a_of_type_JavaLangString, 1, "download finished " + amij.f);
-      parambdvv = new File(this.jdField_a_of_type_JavaLangString);
-      if ((parambdvv.exists()) && (amij.a(parambdvv))) {
-        QLog.d(amij.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
-      }
-      return;
-    }
-    QLog.d(amij.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambdvv.b, " code=", Integer.valueOf(parambdvv.a) });
+    this.a.a(10000L);
   }
 }
 

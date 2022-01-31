@@ -1,8 +1,15 @@
-public class ylp
+final class ylp
+  implements bhum
 {
-  public float a;
-  public int a;
-  public CharSequence a;
+  ylp(yls paramyls, bhuf parambhuf) {}
+  
+  public void onDismiss()
+  {
+    if (this.jdField_a_of_type_Yls != null) {
+      this.jdField_a_of_type_Yls.a(false);
+    }
+    this.jdField_a_of_type_Bhuf.dismiss();
+  }
 }
 
 

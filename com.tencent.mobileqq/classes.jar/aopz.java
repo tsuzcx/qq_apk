@@ -1,99 +1,97 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aopz
 {
-  @NonNull
-  public final aoqa a;
-  @NonNull
-  public final aoqa b;
-  @NonNull
-  public final aoqa c;
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
   
-  private aopz()
+  public static aopz a(String paramString)
   {
-    this(a(null, ""), a(null, ""), a(null, ""));
-  }
-  
-  private aopz(aoqa paramaoqa1, aoqa paramaoqa2, aoqa paramaoqa3)
-  {
-    this.a = paramaoqa1;
-    this.b = paramaoqa2;
-    this.c = paramaoqa3;
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, toString());
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
     }
-  }
-  
-  @NonNull
-  public static aopz a()
-  {
-    return new aopz();
-  }
-  
-  @NonNull
-  public static aopz a(@Nullable String paramString)
-  {
     try
     {
-      if (!TextUtils.isEmpty(paramString))
+      aopz localaopz = new aopz();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
       {
-        paramString = new JSONObject(paramString);
-        return new aopz(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
+        bool1 = true;
+        localaopz.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
+        }
+        bool1 = true;
+        label56:
+        localaopz.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localaopz.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
+        }
       }
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        localaopz.d = bool1;
+        localaopz.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localaopz.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localaopz;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
+      }
+      return null;
     }
-    catch (JSONException paramString)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
   }
   
-  @NonNull
-  private static aoqa a(JSONObject paramJSONObject, String paramString)
+  public long a()
   {
-    boolean bool = false;
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        Object localObject = paramJSONObject.optJSONObject(paramString);
-        paramJSONObject = ((JSONObject)localObject).optString("content", null);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
-        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
-        String[] arrayOfString1 = new String[localJSONArray.length()];
-        String[] arrayOfString2 = new String[localJSONArray.length()];
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          arrayOfString1[i] = localJSONArray.optString(i, null);
-          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
-          i += 1;
-        }
-        if (paramJSONObject != null) {
-          bool = true;
-        }
-        paramJSONObject = new aoqa(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
-        return paramJSONObject;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
-      }
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
     }
-    return new aoqa();
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
   }
   
   public String toString()
   {
-    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 

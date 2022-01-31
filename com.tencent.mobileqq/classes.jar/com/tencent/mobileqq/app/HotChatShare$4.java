@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import alqh;
-import bepp;
+import aluw;
+import bety;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotChatShare$4
   implements Runnable
 {
-  public HotChatShare$4(alqh paramalqh) {}
+  public HotChatShare$4(aluw paramaluw) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class HotChatShare$4
       QLog.i("HotChatShare", 2, "30s has gone, goto share....");
     }
     this.this$0.c();
-    alqh.a(this.this$0);
+    aluw.a(this.this$0);
   }
 }
 

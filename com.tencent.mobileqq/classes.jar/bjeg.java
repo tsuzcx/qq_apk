@@ -1,39 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgPhotoView;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class bjeg
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public bjeg(MsgPhotoView paramMsgPhotoView) {}
+  public bjeg(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (MsgPhotoView.a(this.a) != null)
-    {
-      if (paramView == MsgPhotoView.a(this.a)) {
-        MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
-      }
-    }
-    else {
-      return;
-    }
-    if (paramView == MsgPhotoView.b(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
-      return;
-    }
-    if (paramView == MsgPhotoView.c(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
-      return;
-    }
-    if (paramView == MsgPhotoView.d(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
-      return;
-    }
-    MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
+    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

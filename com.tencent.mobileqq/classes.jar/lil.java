@@ -28,22 +28,22 @@ public class lil
     return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, aoct paramaoct, Class<? extends MSFServlet> paramClass)
+  public void a(ToServiceMsg paramToServiceMsg, aohc paramaohc, Class<? extends MSFServlet> paramClass)
   {
     if (paramToServiceMsg.getWupBuffer() != null)
     {
       long l = paramToServiceMsg.getWupBuffer().length;
       byte[] arrayOfByte = new byte[(int)l + 4];
-      bdlr.a(arrayOfByte, 0, 4L + l);
-      bdlr.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      bdqa.a(arrayOfByte, 0, 4L + l);
+      bdqa.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
       paramToServiceMsg.putWupBuffer(arrayOfByte);
       if (QLog.isColorLevel()) {
         QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
       }
-      paramToServiceMsg.actionListener = paramaoct;
-      paramaoct = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramaoct.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramaoct);
+      paramToServiceMsg.actionListener = paramaohc;
+      paramaohc = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramaohc.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramaohc);
       l = System.currentTimeMillis();
       paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
@@ -88,7 +88,7 @@ public class lil
     {
       i = paramFromServiceMsg.getWupBuffer().length - 4;
       paramException = new byte[i];
-      bdlr.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      bdqa.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
       paramFromServiceMsg.putWupBuffer(paramException);
     }
     for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
@@ -104,11 +104,11 @@ public class lil
           if (i >= j) {
             break;
           }
-          localObject = (alko)localAppInterface.getBusinessHandler(arrayOfInt[i]);
+          localObject = (alpd)localAppInterface.getBusinessHandler(arrayOfInt[i]);
           if (localObject != null) {}
           try
           {
-            ((alko)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            ((alpd)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
             i += 1;
             break label290;
             label335:

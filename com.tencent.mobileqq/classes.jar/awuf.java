@@ -1,139 +1,36 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.utils.SilkCodecWrapper;
-import com.tencent.mobileqq.voicechange.VoiceChange;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
+import QC.SuixintieCheckInfo;
+import QC.SuixintieCheckItem;
+import com.qq.taf.jce.JceInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class awuf
-  implements awui
 {
-  int jdField_a_of_type_Int;
-  awuk jdField_a_of_type_Awuk;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  String jdField_a_of_type_JavaLangString;
-  public int b;
-  
-  public int a()
+  public static SuixintieCheckInfo a(String paramString)
   {
-    return this.b;
+    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
+    localSuixintieCheckInfo.readFrom(new JceInputStream(bezi.a(paramString, 0)));
+    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
+      return localSuixintieCheckInfo;
+    }
+    return null;
   }
   
-  public void a()
+  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
   {
-    try
+    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
     {
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null)
+      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
+      while (paramSuixintieCheckInfo.hasNext())
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      }
-      if (this.jdField_a_of_type_Awuk != null)
-      {
-        this.jdField_a_of_type_Awuk.a();
-        this.jdField_a_of_type_Awuk = null;
-      }
-      this.jdField_a_of_type_Int = 0;
-      this.b = 0;
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("PttPreSendManager", 2, "PttPreVoiceChanger.close error");
-    }
-  }
-  
-  public void a(awug paramawug, awuh paramawuh)
-  {
-    if (((paramawug instanceof SilkCodecWrapper)) || ((paramawug instanceof AmrInputStreamWrapper))) {
-      this.b += (int)QQRecorder.a(this.jdField_a_of_type_Int, 4, 2, paramawuh.jdField_a_of_type_Int);
-    }
-  }
-  
-  public boolean a(Context paramContext, String paramString1, int paramInt, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    try
-    {
-      this.jdField_a_of_type_Awuk = new awuk();
-      if (paramInt != 0) {
-        this.jdField_a_of_type_Awuk.a(new VoiceChange(paramContext, paramInt, paramString2));
-      }
-      if (paramRecorderParam.c == 0) {
-        this.jdField_a_of_type_Awuk.a(new AmrInputStreamWrapper(paramContext));
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Awuk.a(paramRecorderParam.jdField_a_of_type_Int, paramRecorderParam.b, paramRecorderParam.c);
-        this.jdField_a_of_type_Int = paramRecorderParam.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Awuk.a(this);
-        this.b = 0;
-        this.jdField_a_of_type_JavaLangString = paramString1;
-        paramContext = new File(this.jdField_a_of_type_JavaLangString);
-        if (paramContext.exists()) {
-          paramContext.delete();
-        }
-        paramContext.createNewFile();
-        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(paramContext);
-        paramContext = bdic.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramContext, 0, paramContext.length);
-        this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-        return true;
-        this.jdField_a_of_type_Awuk.a(new SilkCodecWrapper(paramContext));
-      }
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Awuk != null)
-      {
-        paramArrayOfByte = this.jdField_a_of_type_Awuk.a(paramArrayOfByte, 0, paramInt);
-        if (paramArrayOfByte != null) {
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.jdField_a_of_type_Int);
+        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
+        if (localSuixintieCheckItem.appid == paramInt) {
+          return localSuixintieCheckItem;
         }
       }
-      return true;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      if (QLog.isDevelopLevel()) {
-        QLog.e("PttPreSendManager", 4, "handleSliceDataIfNeed exception !!!");
-      }
-    }
-    return false;
+    return null;
   }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttPreSendManager", 2, "delete tempfile, path : " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
-  }
-  
-  public void b(awug paramawug, awuh paramawuh) {}
 }
 
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
-import bkup;
-import bkuq;
+import bkyw;
+import bkyx;
 
 public class WaterMarkOnlineUserManager$1$1
   implements Runnable
 {
-  public WaterMarkOnlineUserManager$1$1(bkuq parambkuq) {}
+  public WaterMarkOnlineUserManager$1$1(bkyx parambkyx) {}
   
   public void run()
   {
-    bkup.a(this.a.a);
+    bkyw.a(this.a.a);
   }
 }
 

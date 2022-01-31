@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ class ShieldFriendsListActivity$1
   
   public void run()
   {
-    ArrayList localArrayList = ((aloz)this.this$0.app.getManager(51)).a();
+    ArrayList localArrayList = ((alto)this.this$0.app.getManager(51)).a();
     this.this$0.runOnUiThread(new ShieldFriendsListActivity.1.1(this, localArrayList));
   }
 }

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-class uda
-  implements tzq
+public class uda
+  implements ucd
 {
-  uda(ucz paramucz, FeedCloudMeta.StUser paramStUser) {}
+  public uda(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, String paramString) {}
   
   public void a()
   {
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get());
+    tzs.a(this.jdField_a_of_type_JavaLangString, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
+    tqs.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

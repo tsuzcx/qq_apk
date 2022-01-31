@@ -7,15 +7,15 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bhxo;
-import bhxp;
+import bibv;
+import bibw;
 
 public class LabelTextView
   extends TextView
-  implements bhxp
+  implements bibw
 {
   private int jdField_a_of_type_Int = 2147483647;
-  protected bhxo a;
+  protected bibv a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -48,9 +48,9 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_Bhxo = new bhxo();
-    this.jdField_a_of_type_Bhxo.a(true);
-    this.jdField_a_of_type_Bhxo.a(bhxo.c);
+    this.jdField_a_of_type_Bibv = new bibv();
+    this.jdField_a_of_type_Bibv.a(true);
+    this.jdField_a_of_type_Bibv.a(bibv.c);
   }
   
   public void a_(Canvas paramCanvas)
@@ -60,9 +60,9 @@ public class LabelTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.b) && (this.jdField_a_of_type_Bhxo != null))
+    if ((this.b) && (this.jdField_a_of_type_Bibv != null))
     {
-      this.jdField_a_of_type_Bhxo.a(paramCanvas, this);
+      this.jdField_a_of_type_Bibv.a(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);

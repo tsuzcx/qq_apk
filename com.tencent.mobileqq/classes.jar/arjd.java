@@ -1,52 +1,73 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
 class arjd
-  implements SeekBar.OnSeekBarChangeListener
+  extends yui
 {
-  arjd(aris paramaris) {}
+  arjd(arjc paramarjc, aqxm paramaqxm) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
+    if (paramDownloadFileRspBody == null)
     {
-      aris.a(this.a, aris.b(this.a, paramInt));
-      this.a.jdField_a_of_type_Arke.b(aris.a(this.a));
       if (QLog.isDevelopLevel()) {
-        QLog.d("#@#@", 1, "onProgressChanged userPos[" + aris.a(this.a) + "]");
+        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
       }
+      this.jdField_a_of_type_Aqxm.a(-1, "");
+      return;
     }
-  }
-  
-  @TargetApi(16)
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    paramBundle = TroopFileTransferManager.a(arjc.a(this.jdField_a_of_type_Arjc).b);
+    if (paramBundle == null)
     {
-      this.a.jdField_a_of_type_Boolean = false;
+      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
       return;
     }
-    aris.c(this.a);
-    aris.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-    this.a.jdField_a_of_type_Arke.a(null);
-    aris.a(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    paramBundle = paramBundle.a(arjc.a(this.jdField_a_of_type_Arjc));
+    if (paramBundle == null)
+    {
+      this.jdField_a_of_type_Aqxm.a(-2, "");
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("##########", 1, "mMediaPlayer sekTo [" + aris.a(this.a) + "]");
+    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramDownloadFileRspBody.bytes_cookie_val.has())
+    {
+      paramBundle.cookieValue = bdhe.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+      paramBundle.cookieValue = paramBundle.cookieValue.toLowerCase();
     }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(aris.a(this.a));
+    paramBundle.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    paramBundle.DownloadUrl = bdhe.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    paramBundle.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    paramBundle.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      this.jdField_a_of_type_Aqxm.a(paramInt, "");
+      return;
+    }
+    if ((paramInt == -103) || (paramInt == -301))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      return;
+    }
+    paramDownloadFileRspBody = arhh.a(paramBundle.DownloadIp, paramBundle.DownloadUrl, paramBundle.FilePath, paramBundle.cookieValue, "");
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoForTroop<QFile>", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + paramBundle.cookieValue);
+    }
+    if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+    {
+      this.jdField_a_of_type_Aqxm.a(paramDownloadFileRspBody, paramBundle.cookieValue);
+      return;
+    }
+    this.jdField_a_of_type_Aqxm.a(-3, "");
   }
 }
 

@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbkt;
+import bbpc;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import wtw;
+import wyf;
 
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new wtw();
+  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new wyf();
   public int a;
   @NonNull
   public final LocalMediaInfo a;
@@ -23,7 +23,7 @@ public class EditLocalVideoSource
   public EditLocalVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bbkt.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bbpc.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
   }

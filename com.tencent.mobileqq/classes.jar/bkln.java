@@ -1,12 +1,8 @@
-class bkln
-  implements axks
+public abstract interface bkln
 {
-  bkln(bkle parambkle) {}
+  public abstract void a(long paramLong, int paramInt, String paramString);
   
-  public void a()
-  {
-    bkoi.a().e();
-  }
+  public abstract void a(long paramLong, bkkn parambkkn);
 }
 
 

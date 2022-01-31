@@ -1,30 +1,52 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-final class aprp
-  implements aubp<EmoticonPackage>
+class aprp
+  extends bead
 {
-  aprp(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage)
+  aprp(apro paramapro, String paramString1, String paramString2)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006))
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    Bundle localBundle;
+    EmoticonPackage localEmoticonPackage;
+    try
     {
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, String.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      localBundle = parambeae.a();
+      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      if (localEmoticonPackage == null) {
+        return;
       }
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
+      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambeae.a());
+      }
+      if (parambeae.a() != 3) {
+        break label189;
+      }
+      boolean bool = localBundle.getBoolean("isSmallEmotion");
+      String str = apsd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambeae, bool);
+      if (str != null)
+      {
+        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : parse json error : = " + str);
+        this.a.a(localEmoticonPackage, 11008, 0L, parambeae.d);
+        return;
+      }
+    }
+    catch (Exception parambeae)
+    {
+      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "json download fail", parambeae);
       return;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Int), false, true);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
+    apro.jdField_a_of_type_Aprn.a(localEmoticonPackage, 0, localBundle);
+    return;
+    label189:
+    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : ondone error , reportCode = " + parambeae.a);
+    apro.jdField_a_of_type_Aprn.a(localEmoticonPackage, -1, localBundle);
+    bdva.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambeae.a + "", "", "", "");
   }
 }
 

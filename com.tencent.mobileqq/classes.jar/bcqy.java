@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class bcqy
-  implements azzg
+  extends TextView
 {
-  public bcqy(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
-  
-  public void a()
+  public bcqy(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
+    super(paramContext);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (FollowImageTextView.a(this.a))
+    {
+      super.onDraw(paramCanvas);
+      return;
+    }
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((bcrb)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((bcrb)localObject).a(paramCanvas);
   }
 }
 

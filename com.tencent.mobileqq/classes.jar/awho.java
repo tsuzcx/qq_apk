@@ -1,14 +1,26 @@
-import kotlin.Metadata;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor;", "Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelAppInfoOrderConfigProcessor;", "()V", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class awho
-  extends awhm
+public class awho
 {
-  public static final awhp a = new awhp(null);
+  public int a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
   
-  public int a()
+  public awho(String paramString, Class<? extends FTSEntity> paramClass, String[] paramArrayOfString, boolean paramBoolean, int paramInt)
   {
-    return 611;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramClass.getName().replace('.', '/');
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import java.util.ArrayList;
-
 public class aija
-  implements View.OnClickListener
 {
-  public aija(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {
-      return;
-    }
-    if (this.a.b) {
-      azmj.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
-    }
-    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
-    paramView.setClickable(false);
-  }
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 

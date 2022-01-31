@@ -1,10 +1,12 @@
+import android.graphics.PointF;
+
 public abstract interface xea
 {
-  public abstract void a();
+  public abstract void a(xiq paramxiq);
   
-  public abstract void b();
+  public abstract void a(xiq paramxiq, int paramInt1, int paramInt2);
   
-  public abstract void c();
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 

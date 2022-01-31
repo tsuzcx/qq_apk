@@ -13,8 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhuy;
-import bjxj;
+import bhzf;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
@@ -44,7 +44,7 @@ public class ReadInJoyDailyXListView
 {
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-1);
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  public List<bhuy> a;
+  public List<bhzf> a;
   private boolean f;
   private boolean g;
   
@@ -86,7 +86,7 @@ public class ReadInJoyDailyXListView
     for (;;)
     {
       localorz.b("is_jump", str1);
-      localorz.b("cmd", bjxj.g());
+      localorz.b("cmd", bkbq.g());
       if ("1".equals(str1)) {
         localorz.b("jump_src", otf.b());
       }
@@ -125,7 +125,7 @@ public class ReadInJoyDailyXListView
       if (this.jdField_a_of_type_Rru != null)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719152);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719164);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         this.c = 1;
         this.jdField_a_of_type_Rru.b(this, paramInt);
@@ -137,7 +137,7 @@ public class ReadInJoyDailyXListView
       return;
       setFooterView(true);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719152);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719164);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       if (this.jdField_a_of_type_Rru != null)
       {
@@ -169,14 +169,14 @@ public class ReadInJoyDailyXListView
   
   public void a(View paramView, ListView paramListView, int paramInt) {}
   
-  public void a(bhuy parambhuy)
+  public void a(bhzf parambhzf)
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
       super.setOverScrollListener(new rsa(this));
     }
-    this.jdField_a_of_type_JavaUtilList.add(parambhuy);
+    this.jdField_a_of_type_JavaUtilList.add(parambhzf);
   }
   
   public void a(boolean paramBoolean)
@@ -342,10 +342,10 @@ public class ReadInJoyDailyXListView
   
   public void setNoMoreData(boolean paramBoolean) {}
   
-  public void setOverScrollListener(bhuy parambhuy)
+  public void setOverScrollListener(bhzf parambhzf)
   {
-    if (parambhuy != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambhuy);
+    if (parambhzf != null) {
+      this.jdField_a_of_type_JavaUtilList.add(parambhzf);
     }
   }
   

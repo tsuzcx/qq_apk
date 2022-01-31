@@ -1,19 +1,20 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
-final class bevg
-  implements ambj
+public class bevg
+  implements Animation.AnimationListener
 {
-  bevg(QQAppInterface paramQQAppInterface, ambi paramambi) {}
+  public bevg(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ambi);
-    }
+    this.a.setVisibility(8);
   }
   
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

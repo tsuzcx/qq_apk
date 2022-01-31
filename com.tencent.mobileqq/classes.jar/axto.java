@@ -1,71 +1,142 @@
-import android.app.Activity;
-import com.tencent.richmediabrowser.core.IMvpFactory;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BaseView;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWVideoDecoder;
+import com.tencent.ttpic.video.AEDecoder;
 
 public class axto
-  implements IMvpFactory
+  implements SurfaceTexture.OnFrameAvailableListener, axtx, AEDecoder
 {
-  public BrowserBaseModel createModel(int paramInt, BasePresenter paramBasePresenter)
+  private final int jdField_a_of_type_Int = 1;
+  private axtu jdField_a_of_type_Axtu;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private SurfaceTextureFilter jdField_a_of_type_ComTencentFilterSurfaceTextureFilter;
+  private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder = new HWVideoDecoder();
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private final int b = 2;
+  private final int c = 3;
+  private final int d = 4;
+  private final int e = 5;
+  private final int f = 6;
+  private int g = 1;
+  private int h = -1;
+  private int i = -1;
+  private int j;
+  private int k;
+  
+  public axto(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new axue();
-    case 101: 
-      new axuf();
-    case 102: 
-      return new axua();
-    }
-    return new axub();
+    this.jdField_a_of_type_Axtu = new axtu(paramString, 0, false, false);
   }
   
-  public BasePresenter createPresenter(int paramInt)
+  private void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new axum();
-    case 101: 
-      return new axup();
-    case 102: 
-      return new axui();
-    }
-    return new axuk();
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.k = arrayOfInt[0];
+    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter = new SurfaceTextureFilter();
+    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.apply();
   }
   
-  public BaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
+  private void b()
   {
-    switch (paramInt)
+    GLES20.glDeleteTextures(1, new int[] { this.k }, 0);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.clearGLSLSelf();
+  }
+  
+  public void a(int paramInt, Throwable paramThrowable)
+  {
+    this.g = 6;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public void a(long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      if (this.g != 2) {
+        this.jdField_a_of_type_JavaLangObject.wait();
+      }
     }
-    do
+    this.g = 3;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public void b(long paramLong) {}
+  
+  public void f() {}
+  
+  public void g()
+  {
+    this.g = 5;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public int getNextFrameTexture()
+  {
+    int m = -1;
+    try
     {
-      do
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        do
-        {
-          do
-          {
-            return null;
-          } while (!(paramBasePresenter instanceof axum));
-          return new axvr(paramActivity, (axum)paramBasePresenter);
-        } while (!(paramBasePresenter instanceof axup));
-        return new axwf(paramActivity, (axup)paramBasePresenter);
-      } while (!(paramBasePresenter instanceof axui));
-      return new axvg(paramActivity, (axui)paramBasePresenter);
-    } while (!(paramBasePresenter instanceof axuk));
-    return new axvm(paramActivity, (axuk)paramBasePresenter);
+        if ((this.g == 4) || (this.g == 5) || (this.g == 6)) {
+          break label152;
+        }
+        this.jdField_a_of_type_JavaLangObject.wait();
+      }
+      if (this.g != 4) {}
+    }
+    catch (InterruptedException localInterruptedException) {}
+    label152:
+    for (;;)
+    {
+      if ((this.h == -1) || (this.i == -1))
+      {
+        this.h = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
+        this.i = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.b();
+      }
+      this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterSurfaceTextureFilter.RenderProcess(this.k, this.h, this.i, this.j, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      this.g = 2;
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      m = 0;
+      return m;
+    }
+  }
+  
+  public void i() {}
+  
+  public void l() {}
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    paramSurfaceTexture.updateTexImage();
+    paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    this.g = 4;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public void release()
+  {
+    b();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
+  }
+  
+  public void setTexture(int paramInt)
+  {
+    a();
+    this.j = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a(this.jdField_a_of_type_Axtu, this.k, this, this);
+    this.g = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class akde
-  implements bhqd
+public class akde
+  implements DialogInterface.OnClickListener
 {
-  akde(akdd paramakdd, boolean paramBoolean, Friends paramFriends, bhpy parambhpy) {}
+  public akde(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!bdee.g(this.jdField_a_of_type_Akdd.a)) {
-      QQToast.a(this.jdField_a_of_type_Akdd.a, 1, 2131692397, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      paramView = (FriendListHandler)akdd.a(this.jdField_a_of_type_Akdd).a(1);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        azmj.b(akdd.a(this.jdField_a_of_type_Akdd), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        azmj.b(akdd.a(this.jdField_a_of_type_Akdd), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
-      }
-    }
+    this.a.finish();
   }
 }
 

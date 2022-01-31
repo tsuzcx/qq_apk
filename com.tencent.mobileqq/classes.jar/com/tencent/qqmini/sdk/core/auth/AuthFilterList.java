@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.auth;
 
 import android.text.TextUtils;
-import bglo;
-import bglq;
+import bgpv;
+import bgpx;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
@@ -44,7 +44,7 @@ public class AuthFilterList
   {
     synchronized (sAppWhiteList)
     {
-      String str1 = bglq.a("qqminiapp", "MiniAppAuthWhiteList", "1108292102");
+      String str1 = bgpx.a("qqminiapp", "MiniAppAuthWhiteList", "1108292102");
       if ((str1 != null) && (!str1.equals(sCurAppWhiteListConfig)))
       {
         sAppWhiteList.clear();
@@ -58,7 +58,7 @@ public class AuthFilterList
             while (i < j)
             {
               String str2 = arrayOfString[i];
-              if (!bglo.a(str2)) {
+              if (!bgpv.a(str2)) {
                 sAppWhiteList.add(str2);
               }
               i += 1;

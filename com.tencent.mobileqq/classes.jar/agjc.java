@@ -1,23 +1,10 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class agjc
-  extends alnd
+final class agjc
+  implements DialogInterface.OnClickListener
 {
-  agjc(agiy paramagiy) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.b = apwl.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.t(false);
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

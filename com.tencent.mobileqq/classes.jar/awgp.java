@@ -1,59 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
-public abstract class awgp
-  extends aofy<awgt>
+public abstract interface awgp
 {
-  public int a()
-  {
-    return c();
-  }
-  
-  @NonNull
-  public awgt a(int paramInt)
-  {
-    return new awgt();
-  }
-  
-  @Nullable
-  public awgt a(aogf[] paramArrayOfaogf)
-  {
-    awgt localawgt = new awgt();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      awgt.a(localawgt, paramArrayOfaogf[0].a);
-    }
-    return localawgt;
-  }
-  
-  public Class<awgt> a()
-  {
-    return awgt.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(awgt paramawgt) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  protected abstract int c();
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(NoColumnError paramNoColumnError);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awgp
  * JD-Core Version:    0.7.0.1
  */

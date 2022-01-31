@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
-import bdje;
+import bdnn;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ public class AddressData
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131700248);
+    jdField_a_of_type_JavaLangString = alud.a(2131700260);
   }
   
   public AddressData()
@@ -79,7 +79,7 @@ public class AddressData
     if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject2 = bdje.a(paramString, '|');
+    Object localObject2 = bdnn.a(paramString, '|');
     if ((paramString.startsWith("#")) || (localObject2.length < 2)) {
       return true;
     }

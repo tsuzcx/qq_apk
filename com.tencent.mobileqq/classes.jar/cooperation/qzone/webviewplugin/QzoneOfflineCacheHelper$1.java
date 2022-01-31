@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import bjds;
+import bjhz;
 
 final class QzoneOfflineCacheHelper$1
   implements Runnable

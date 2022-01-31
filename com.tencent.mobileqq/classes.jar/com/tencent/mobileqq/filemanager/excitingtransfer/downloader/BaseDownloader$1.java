@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.downloader;
 
-import arah;
-import armo;
+import areq;
+import arqx;
 
 public class BaseDownloader$1
   implements Runnable
 {
-  public BaseDownloader$1(arah paramarah) {}
+  public BaseDownloader$1(areq paramareq) {}
   
   public void run()
   {
-    this.this$0.a = armo.a();
-    this.this$0.a(arah.a(this.this$0));
+    this.this$0.a = arqx.a();
+    this.this$0.a(areq.a(this.this$0));
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.util.Base64;
-import bjxj;
+import bkbq;
 import java.util.HashMap;
 import java.util.Iterator;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ public class FollowCoverInfoModule$1
   
   public void run()
   {
-    Object localObject1 = bjxj.a(pfv.a(this.this$0), true, false);
+    Object localObject1 = bkbq.a(pfv.a(this.this$0), true, false);
     if (localObject1 != null) {
       try
       {

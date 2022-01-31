@@ -1,13 +1,13 @@
 package dov.com.qq.im.ae.config;
 
-import bkvm;
+import bkzt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class CameraPeakServiceHandler$2
   implements Runnable
 {
-  public CameraPeakServiceHandler$2(bkvm parambkvm) {}
+  public CameraPeakServiceHandler$2(bkzt parambkzt) {}
   
   public void run()
   {

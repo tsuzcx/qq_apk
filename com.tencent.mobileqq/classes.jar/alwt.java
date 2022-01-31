@@ -1,32 +1,29 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class alwt
-  implements BusinessObserver
+public class alwt
 {
-  alwt(alws paramalws, long paramLong) {}
+  public int a;
+  public FromServiceMsg a;
+  public ToServiceMsg a;
+  public Object a;
+  public boolean a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public alwt(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_Alws.a.append(2, Boolean.valueOf(false));
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label79;
-      }
-      alws.a(this.jdField_a_of_type_Alws, 2, this.jdField_a_of_type_Long, paramBundle);
-    }
-    label79:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public alwt(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

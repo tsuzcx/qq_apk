@@ -12,7 +12,7 @@ public class mtk
   void a()
   {
     super.getWindow().setGravity(17);
-    super.setContentView(2131559646);
+    super.setContentView(2131559645);
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -20,7 +20,7 @@ public class mtk
     if (paramBoolean) {
       b();
     }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372887);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372913);
     localFrameLayout.setOnClickListener(new mtl(this));
     if (paramView != null) {
       localFrameLayout.addView(paramView);
@@ -29,7 +29,7 @@ public class mtk
   
   void b()
   {
-    findViewById(2131372886).setOnClickListener(new mtm(this));
+    findViewById(2131372912).setOnClickListener(new mtm(this));
   }
 }
 

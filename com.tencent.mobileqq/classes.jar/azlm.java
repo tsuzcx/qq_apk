@@ -1,11 +1,29 @@
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
-final class azlm
-  extends ThreadLocal<SimpleDateFormat>
+public class azlm
 {
-  protected SimpleDateFormat a()
+  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
+  
+  public static String a()
   {
-    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
+    synchronized (a)
+    {
+      int i = new Random().nextInt(10000);
+      String str = a.format(new Date()) + "_" + i;
+      return str;
+    }
+  }
+  
+  public static String a(File paramFile)
+  {
+    if (paramFile == null) {
+      return null;
+    }
+    return paramFile.getName();
   }
 }
 

@@ -1,17 +1,49 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class bltq
-  implements blsz
+public class bltq
+  implements BusinessObserver
 {
-  bltq(bltp parambltp) {}
+  public void a() {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 0) {
-      return bcjk.b(paramString);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      b();
+      return;
+    case 2: 
+      c();
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      d();
+      return;
+    case 5: 
+      e();
+      return;
+    case 6: 
+      f();
+      return;
     }
-    return "";
+    g();
   }
 }
 

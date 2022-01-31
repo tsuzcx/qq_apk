@@ -1,8 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface axna
 {
-  public abstract void a(Bitmap paramBitmap);
+  public abstract void a(long paramLong);
 }
 
 

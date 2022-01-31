@@ -15,7 +15,7 @@ public class af
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      bfdq.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
+      bfhz.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog back");
@@ -23,7 +23,7 @@ public class af
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("MigSdkShareNotDone", false))
     {
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
-      arys.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
+      asdb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
     }
     for (;;)
     {
@@ -34,7 +34,7 @@ public class af
       {
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getActivity().moveTaskToBack(true);
         return;
-        arys.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+        asdb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
       }
       catch (Throwable paramDialogInterface)
       {

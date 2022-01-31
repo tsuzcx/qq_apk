@@ -1,22 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
+import android.graphics.PointF;
 
 public class ancm
-  implements View.OnClickListener
 {
-  public ancm(ARScanEntryView.26 param26) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public PointF[] a;
+  public int b;
+  public int c;
+  public int d = -1;
   
-  public void onClick(View paramView)
+  public ancm()
   {
-    if (this.a.jdField_a_of_type_Amqu != null) {
-      this.a.jdField_a_of_type_Amqu.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    a();
+  }
+  
+  public ancm(int paramInt)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0;
+    this.c = 0;
+    this.d = -1;
+  }
+  
+  public String toString()
+  {
+    if (this.b > 0) {}
+    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
+      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
     }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
   }
 }
 

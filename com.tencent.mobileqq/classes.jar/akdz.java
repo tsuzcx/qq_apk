@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class akdz
-  implements View.OnClickListener
+public class akdz
+  implements arrh
 {
-  akdz(akdx paramakdx) {}
+  public akdz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof akec)) {}
-    do
-    {
-      return;
-      paramView = (akec)paramView;
-    } while ((paramView.a == null) || (this.a.a == null));
-    this.a.a.a(paramView.a);
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
+  
+  public void b() {}
 }
 
 

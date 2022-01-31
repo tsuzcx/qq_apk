@@ -1,202 +1,82 @@
+import android.content.Context;
 import android.text.TextUtils;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
 
 public class bgxn
+  implements IJSEngine
 {
-  public static ConcurrentHashMap<String, bgxo> a = new ConcurrentHashMap();
-  public static boolean a;
+  private bgxq jdField_a_of_type_Bgxq;
+  private JsPluginEngine jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
   
-  public static int a(String paramString)
+  bgxn(bgxq parambgxq)
   {
-    return a(paramString).a;
+    this.jdField_a_of_type_Bgxq = parambgxq;
   }
   
-  public static bgxo a(String paramString)
+  public JsPluginEngine a()
   {
-    if (a.containsKey(paramString)) {
-      return (bgxo)a.get(paramString);
-    }
-    bgxo localbgxo = new bgxo();
-    a.put(paramString, localbgxo);
-    return localbgxo;
+    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
     }
-    int i = a(paramString);
-    if (i == 0) {
-      return "baselib_not_download";
-    }
-    if (i == 1) {
-      return "baselib_download";
-    }
-    return "unknown";
   }
   
-  public static void a(String paramString)
+  public void b()
   {
-    paramString = a(paramString);
-    paramString.a = -1;
-    paramString.b = -1;
-    paramString.c = -1;
-    paramString.d = -1;
-    paramString.e = -1;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
+    }
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public boolean canHandleEvent(String paramString)
   {
-    paramString = a(paramString);
-    if (paramBoolean)
+    return true;
+  }
+  
+  public ITTJSRuntime getJsRuntime(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bgxq.a(paramInt) != null) {
+      return this.jdField_a_of_type_Bgxq.a(paramInt).a;
+    }
+    return null;
+  }
+  
+  public void onCreate(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(paramContext);
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this.jdField_a_of_type_Bgxq);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
+    }
+  }
+  
+  public String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null)
     {
-      paramString.a = 1;
-      paramString.b = 1;
-      paramString.c = 1;
-    }
-    for (paramString.e = 1;; paramString.e = 0)
-    {
-      if (paramString.d == -1) {
-        paramString.d = 0;
-      }
-      return;
-      paramString.a = 0;
-      paramString.b = 0;
-      paramString.c = 0;
-    }
-  }
-  
-  public static int b(String paramString)
-  {
-    return a(paramString).b;
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = b(paramString);
-    if (i == 0) {
-      return "service_not_preload";
-    }
-    if (i == 1) {
-      return "service_preload";
-    }
-    return "unknown";
-  }
-  
-  public static void b(String paramString)
-  {
-    a.remove(paramString);
-  }
-  
-  public static void b(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString).b = 1;
-      return;
-    }
-    a(paramString).b = 0;
-  }
-  
-  public static int c(String paramString)
-  {
-    return a(paramString).c;
-  }
-  
-  public static String c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = c(paramString);
-    if (i == 0) {
-      return "apkg_not_download";
-    }
-    if (i == 1) {
-      return "apkg_download";
-    }
-    return "unknown";
-  }
-  
-  public static void c(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString).c = 1;
-      return;
-    }
-    a(paramString).c = 0;
-  }
-  
-  public static int d(String paramString)
-  {
-    return a(paramString).d;
-  }
-  
-  public static String d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = d(paramString);
-    if (i == 0) {
-      return "hot_start";
-    }
-    if (i == 1) {
-      return "page_switch";
-    }
-    return "unknown";
-  }
-  
-  public static void d(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString).e = 1;
-      return;
-    }
-    a(paramString).e = 0;
-  }
-  
-  public static int e(String paramString)
-  {
-    return a(paramString).e;
-  }
-  
-  public static String e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = e(paramString);
-    if (i == 0) {
-      return "service_not_preload";
-    }
-    if (i == 1) {
-      return "service_preload";
-    }
-    return "unknown";
-  }
-  
-  public static void e(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramBoolean))
-    {
-      if (paramString.c == -1) {
-        paramString.c = 1;
-      }
-      if (paramString.a == -1) {
-        paramString.a = 1;
-      }
-      if (paramString.b == -1) {
-        paramString.b = 1;
+      bgxo localbgxo = this.jdField_a_of_type_Bgxq.a(paramInt2);
+      localObject1 = localObject2;
+      if (localbgxo != null) {
+        localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.handleNativeRequest(paramString1, paramString2, localbgxo, paramInt1);
       }
     }
+    paramString1 = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString1 = "{}";
+    }
+    return paramString1;
   }
 }
 

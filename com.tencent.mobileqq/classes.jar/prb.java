@@ -94,7 +94,7 @@ public class prb
       if ((this.jdField_a_of_type_JavaUtilArrayList.size() != 1) || (l != ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue())) {
         break label281;
       }
-      localObject = "还Biu了" + this.i + alpo.a(2131713358);
+      localObject = "还Biu了" + this.i + alud.a(2131713370);
     }
     label132:
     label183:
@@ -132,7 +132,7 @@ public class prb
         if (k <= this.h) {
           break label359;
         }
-        localObject = alpo.a(2131713492) + k + "人也Biu了";
+        localObject = alud.a(2131713504) + k + "人也Biu了";
         break;
         k = this.jdField_a_of_type_JavaUtilArrayList.size();
         break label132;
@@ -165,7 +165,7 @@ public class prb
       FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(this.c + this.f * 2, this.c + this.f * 2);
       ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localLayoutParams2.setMargins(n - this.f, paramInt3 - this.f, 0, m);
-      localImageView.setBackgroundResource(2130848848);
+      localImageView.setBackgroundResource(2130848921);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localImageView, localLayoutParams2);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localReadInJoyHeadImageView, localLayoutParams1);
       k -= 1;

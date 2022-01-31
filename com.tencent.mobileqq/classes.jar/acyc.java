@@ -1,37 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class acyc
-  extends zep
+  implements Comparator<RecentUser>
 {
-  public acyc(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  public acyc(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public zdw a(Activity paramActivity, zec paramzec)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    return super.a(paramActivity, paramzec);
-  }
-  
-  public zdy a(Activity paramActivity, zec paramzec)
-  {
-    this.a.a = new awkj((FriendProfilePicBrowserActivity)paramActivity, paramzec);
-    return this.a.a;
-  }
-  
-  public zec a(Activity paramActivity)
-  {
-    paramActivity = new avfg(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public zed a(Activity paramActivity, zec paramzec)
-  {
-    return null;
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class adfj
-  implements DialogInterface.OnClickListener
+  implements acln
 {
-  public adfj(NotificationActivity paramNotificationActivity) {}
+  public adfj(JumpActivity paramJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
     this.a.finish();
   }
 }

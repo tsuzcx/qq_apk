@@ -1,6 +1,6 @@
 package com.tencent.av.share;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
 import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -59,7 +59,7 @@ public class AVSchema$MyMsgListener$1
         }
         else
         {
-          localObject = alpo.a(2131701266);
+          localObject = alud.a(2131701278);
         }
       }
       this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas.a = i;
@@ -69,7 +69,7 @@ public class AVSchema$MyMsgListener$1
         this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject);
       }
     } while (!AudioHelper.d());
-    Object localObject = alpo.a(2131701263) + i + "], bytes_wording[" + (String)localObject + "], seq[" + this.jdField_a_of_type_Long + "]";
+    Object localObject = alud.a(2131701275) + i + "], bytes_wording[" + (String)localObject + "], seq[" + this.jdField_a_of_type_Long + "]";
     QLog.w(this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, (String)localObject);
     throw new RuntimeException((String)localObject);
     mts.a(0);

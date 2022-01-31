@@ -1,826 +1,566 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.URLState;
+import com.tencent.image.Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Locale;
 
-public class baqn
-  extends bamr
+public abstract class baqn
+  extends ProtocolDownloader.Adapter
 {
-  private byte[] a;
-  private byte[] b;
-  private int jdField_c_of_type_Int = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
-  private byte[] jdField_c_of_type_ArrayOfByte;
-  private String e;
-  private int p;
+  public static final String a = alof.aX + "chatpic" + File.separator;
   
-  public baqn(batw parambatw, baub parambaub)
+  public static final File a(String paramString)
   {
-    super(parambatw, parambaub);
-    this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Baub.l.getBytes();
+    if (paramString != null)
+    {
+      paramString = new File(d(paramString));
+      if (paramString.exists()) {
+        return paramString;
+      }
+      return null;
+    }
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = paramString2.substring(paramString2.length() - 3);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(a);
+    localStringBuffer.append(paramString1);
+    localStringBuffer.append(File.separator);
+    localStringBuffer.append(str);
+    localStringBuffer.append(File.separator);
+    localStringBuffer.append(paramString2);
+    return bbck.a(localStringBuffer.toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    int i = bdhb.a(paramString2, paramString3);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatImageMigrate", 2, "migrate:" + paramString1 + " from:" + paramString2 + " to:" + paramString3 + " status:" + i);
+    }
+  }
+  
+  public static final File b(String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = new File(d(paramString) + "_fp");
+      if (paramString.exists()) {
+        return paramString;
+      }
+      return null;
+    }
+    return null;
+  }
+  
+  public static String b(String paramString)
+  {
+    String str = paramString;
+    if (paramString != null) {
+      str = paramString;
+    }
+    try
+    {
+      if (paramString.substring(0, "aiothumb".length()).equalsIgnoreCase("aiothumb"))
+      {
+        str = "chatthumb" + paramString.substring("aiothumb".length());
+        if (QLog.isColorLevel()) {
+          QLog.d("AbsDownloader", 2, "getUrlStringForDisk newUrl = " + str);
+        }
+      }
+      return str;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      do
+      {
+        str = paramString;
+      } while (!QLog.isColorLevel());
+      QLog.d("AbsDownloader", 2, "getUrlStringForDisk IndexOutOfBoundsException" + localIndexOutOfBoundsException);
+    }
+    return paramString;
+  }
+  
+  public static final boolean b(String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramString != null) {
+      if (paramString.startsWith("regionalthumb")) {
+        localObject1 = localObject2;
+      }
+    }
+    try
+    {
+      if (paramString.substring(0, "regionalthumb:".length()).equalsIgnoreCase("regionalthumb:")) {
+        localObject1 = paramString.substring("regionalthumb:".length());
+      }
+      if (localObject1 != null)
+      {
+        paramString = ((String)localObject1).split("\\|");
+        if (paramString != null)
+        {
+          return new File(paramString[0]).exists();
+          if (paramString.toLowerCase(Locale.US).startsWith("file")) {
+            localObject1 = localObject3;
+          }
+        }
+      }
+      try
+      {
+        if (paramString.substring(0, "file:".length()).equalsIgnoreCase("file:")) {
+          localObject1 = paramString.substring("file:".length());
+        }
+        if (localObject1 != null)
+        {
+          return new File((String)localObject1).exists();
+          paramString = b(paramString);
+          if (paramString != null) {
+            return a(paramString) != null;
+          }
+        }
+        return false;
+      }
+      catch (IndexOutOfBoundsException paramString)
+      {
+        for (;;)
+        {
+          localObject1 = localObject3;
+        }
+      }
+    }
+    catch (IndexOutOfBoundsException paramString)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+      }
+    }
+  }
+  
+  public static final String c(String paramString)
+  {
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.startsWith("pubaccountimage")) {
+        str = paramString.replace("pubaccountimage:", "");
+      }
+    }
+    return "Cache_" + Utils.Crc64String(str);
+  }
+  
+  public static final String d(String paramString)
+  {
+    Object localObject4 = null;
+    Object localObject2 = null;
+    if (paramString == null) {}
+    for (;;)
+    {
+      return localObject2;
+      String str = c(paramString);
+      Object localObject1 = bayu.a + File.separator + str;
+      try
+      {
+        localObject2 = new URL(paramString);
+        if (localObject2 != null) {
+          localObject4 = ((URL)localObject2).getProtocol();
+        }
+        if ("chatthumb".equals(localObject4))
+        {
+          localObject2 = a((String)localObject4, str);
+          if (new File((String)localObject2 + "_hd").exists())
+          {
+            localObject2 = (String)localObject2 + "_hd";
+            i = 0;
+            localObject4 = localObject1;
+            localObject1 = localObject2;
+            localObject2 = localObject1;
+            if (i == 0) {
+              continue;
+            }
+            a(paramString, (String)localObject4, (String)localObject1);
+            return localObject1;
+          }
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          int i;
+          localMalformedURLException.printStackTrace();
+          Object localObject3 = null;
+          continue;
+          if (new File((String)localObject1 + "_hd").exists())
+          {
+            localObject4 = (String)localObject1 + "_hd";
+            localObject1 = (String)localObject3 + "_hd";
+            i = 1;
+          }
+          else
+          {
+            if (new File((String)localObject1).exists())
+            {
+              localObject4 = localObject1;
+              i = 1;
+              localObject1 = localObject3;
+              continue;
+              if ("chatimg".equals(localObject4))
+              {
+                localObject4 = a((String)localObject4, str);
+                localObject3 = localObject4;
+                if (!new File((String)localObject1).exists()) {
+                  break;
+                }
+                a(paramString, (String)localObject1, (String)localObject4);
+                return localObject4;
+              }
+              if ("chatraw".equals(localObject4))
+              {
+                localObject4 = a((String)localObject4, str);
+                localObject3 = localObject4;
+                if (!new File((String)localObject1).exists()) {
+                  break;
+                }
+                a(paramString, (String)localObject1, (String)localObject4);
+                return localObject4;
+              }
+              return localObject1;
+            }
+            localObject4 = localObject1;
+            i = 0;
+            localObject1 = localObject3;
+          }
+        }
+      }
+    }
+  }
+  
+  public static String e(String paramString)
+  {
+    return d(paramString) + "_dp";
+  }
+  
+  protected int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  {
+    return URLState.calculateInSampleSize(paramOptions, paramInt1, paramInt2);
+  }
+  
+  public abstract File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler);
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(DownloadParams paramDownloadParams)
+  {
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public final boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    if (!a()) {
+      return false;
+    }
+    return b(paramDownloadParams.urlStr);
   }
   
   /* Error */
-  private boolean a(String paramString)
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     // Byte code:
-    //   0: new 46	java/io/File
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 49	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 53	java/io/File:exists	()Z
-    //   11: ifne +30 -> 41
-    //   14: aload_0
-    //   15: ldc 55
-    //   17: new 57	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   24: ldc 62
-    //   26: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: aload_1
-    //   30: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: iconst_0
-    //   40: ireturn
-    //   41: new 75	java/io/RandomAccessFile
-    //   44: dup
-    //   45: aload_1
-    //   46: ldc 77
-    //   48: invokespecial 79	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: astore 6
-    //   53: aload 6
-    //   55: astore 5
-    //   57: aload 6
-    //   59: invokevirtual 83	java/io/RandomAccessFile:length	()J
-    //   62: l2i
-    //   63: newarray byte
-    //   65: astore 7
-    //   67: aload 6
-    //   69: astore 5
-    //   71: aload 6
-    //   73: aload 7
-    //   75: invokevirtual 87	java/io/RandomAccessFile:read	([B)I
-    //   78: istore_2
-    //   79: aload 6
-    //   81: ifnull +8 -> 89
-    //   84: aload 6
-    //   86: invokevirtual 90	java/io/RandomAccessFile:close	()V
-    //   89: aload 7
-    //   91: ifnull +13 -> 104
-    //   94: aload 7
-    //   96: arraylength
-    //   97: ifle +7 -> 104
-    //   100: iload_2
-    //   101: ifgt +154 -> 255
-    //   104: aload_0
-    //   105: ldc 55
-    //   107: ldc 92
-    //   109: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: iconst_0
-    //   113: ireturn
-    //   114: astore_1
-    //   115: aload_1
-    //   116: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   119: goto -30 -> 89
-    //   122: astore 7
-    //   124: aconst_null
-    //   125: astore 6
-    //   127: aload 6
-    //   129: astore 5
-    //   131: aload 7
-    //   133: invokevirtual 96	java/io/FileNotFoundException:printStackTrace	()V
-    //   136: aload 6
-    //   138: astore 5
-    //   140: aload_0
-    //   141: ldc 55
-    //   143: new 57	java/lang/StringBuilder
-    //   146: dup
-    //   147: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   150: ldc 62
-    //   152: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: aload_1
-    //   156: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   165: aload 6
-    //   167: ifnull +8 -> 175
-    //   170: aload 6
-    //   172: invokevirtual 90	java/io/RandomAccessFile:close	()V
-    //   175: iconst_0
-    //   176: ireturn
-    //   177: astore_1
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_0
+    //   3: invokevirtual 218	baqn:a	()Z
+    //   6: ifeq +402 -> 408
+    //   9: aload_1
+    //   10: getfield 223	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   13: astore 6
+    //   15: aload 6
+    //   17: invokestatic 154	baqn:a	(Ljava/lang/String;)Ljava/io/File;
+    //   20: astore 7
+    //   22: aload 7
+    //   24: ifnull +53 -> 77
+    //   27: ldc 116
+    //   29: ldc 232
+    //   31: new 10	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   38: ldc 234
+    //   40: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: aload 7
+    //   45: invokevirtual 237	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   48: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokestatic 242	awiw:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   57: aload_2
+    //   58: ifnull +14 -> 72
+    //   61: aload_2
+    //   62: aload 7
+    //   64: invokevirtual 245	java/io/File:length	()J
+    //   67: invokeinterface 251 3 0
+    //   72: aload 7
+    //   74: astore_1
+    //   75: aload_1
+    //   76: areturn
+    //   77: aload_1
+    //   78: getfield 255	com/tencent/image/DownloadParams:mHttpDownloaderParams	Ljava/lang/Object;
+    //   81: ifnull +14 -> 95
+    //   84: aload_0
+    //   85: aconst_null
+    //   86: aload_1
+    //   87: aload_2
+    //   88: invokevirtual 257	baqn:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   91: pop
+    //   92: aload 7
+    //   94: areturn
+    //   95: aload 6
+    //   97: invokestatic 176	baqn:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: astore 9
+    //   102: getstatic 262	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lbasi;
+    //   105: aload 9
+    //   107: invokevirtual 267	basi:a	(Ljava/lang/String;)Lbasj;
+    //   110: astore 10
+    //   112: aload_0
+    //   113: invokevirtual 269	baqn:b	()Z
+    //   116: istore 4
+    //   118: iload 4
+    //   120: ifeq +338 -> 458
+    //   123: aload_1
+    //   124: aload 10
+    //   126: getfield 272	basj:a	Ljava/io/File;
+    //   129: invokevirtual 245	java/io/File:length	()J
+    //   132: putfield 276	com/tencent/image/DownloadParams:downloaded	J
+    //   135: aload_0
+    //   136: aload_1
+    //   137: invokevirtual 278	baqn:a	(Lcom/tencent/image/DownloadParams;)Z
+    //   140: istore 5
+    //   142: iload 5
+    //   144: ifne +5 -> 149
+    //   147: iconst_1
+    //   148: istore_3
+    //   149: iload 4
+    //   151: iload_3
+    //   152: iand
+    //   153: istore 4
+    //   155: new 280	java/io/FileOutputStream
+    //   158: dup
+    //   159: aload 10
+    //   161: getfield 272	basj:a	Ljava/io/File;
+    //   164: iload 4
+    //   166: invokespecial 283	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   169: astore 8
+    //   171: aload 8
+    //   173: astore 7
+    //   175: aload_0
+    //   176: aload 8
     //   178: aload_1
-    //   179: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   182: goto -7 -> 175
-    //   185: astore_1
-    //   186: aconst_null
-    //   187: astore 6
-    //   189: aload 6
-    //   191: astore 5
-    //   193: aload_0
-    //   194: ldc 55
-    //   196: ldc 98
-    //   198: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   201: aload 6
-    //   203: astore 5
-    //   205: aload_1
-    //   206: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   209: aload 6
-    //   211: ifnull +8 -> 219
-    //   214: aload 6
-    //   216: invokevirtual 90	java/io/RandomAccessFile:close	()V
-    //   219: iconst_0
-    //   220: ireturn
-    //   221: astore_1
+    //   179: aload_2
+    //   180: invokevirtual 257	baqn:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   183: pop
+    //   184: aload 8
+    //   186: astore 7
+    //   188: aload 6
+    //   190: ldc_w 285
+    //   193: invokevirtual 288	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   196: ifeq +256 -> 452
+    //   199: aload 8
+    //   201: astore 7
+    //   203: aload 6
+    //   205: iconst_0
+    //   206: aload 6
+    //   208: ldc_w 285
+    //   211: invokevirtual 292	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   214: invokevirtual 108	java/lang/String:substring	(II)Ljava/lang/String;
+    //   217: astore_1
+    //   218: aload 8
+    //   220: astore 7
     //   222: aload_1
-    //   223: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   226: goto -7 -> 219
-    //   229: astore_1
-    //   230: aconst_null
-    //   231: astore 5
-    //   233: aload 5
-    //   235: ifnull +8 -> 243
-    //   238: aload 5
-    //   240: invokevirtual 90	java/io/RandomAccessFile:close	()V
-    //   243: aload_1
-    //   244: athrow
-    //   245: astore 5
-    //   247: aload 5
-    //   249: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   252: goto -9 -> 243
-    //   255: aload 7
-    //   257: arraylength
-    //   258: istore_2
-    //   259: aload 7
-    //   261: iconst_0
-    //   262: baload
-    //   263: bipush 40
-    //   265: if_icmpne +14 -> 279
-    //   268: aload 7
-    //   270: iload_2
-    //   271: iconst_1
-    //   272: isub
-    //   273: baload
-    //   274: bipush 41
-    //   276: if_icmpeq +87 -> 363
-    //   279: new 57	java/lang/StringBuilder
-    //   282: dup
-    //   283: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   286: ldc 100
-    //   288: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: iload_2
-    //   292: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   295: ldc 105
-    //   297: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   300: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   303: astore_1
-    //   304: aload 7
-    //   306: invokevirtual 108	java/lang/Object:toString	()Ljava/lang/String;
-    //   309: astore 5
-    //   311: new 57	java/lang/StringBuilder
-    //   314: dup
-    //   315: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   318: aload_1
-    //   319: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: astore 6
-    //   324: aload 5
-    //   326: astore_1
-    //   327: aload 5
-    //   329: invokevirtual 111	java/lang/String:length	()I
-    //   332: bipush 20
-    //   334: if_icmple +12 -> 346
-    //   337: aload 5
-    //   339: iconst_0
-    //   340: bipush 20
-    //   342: invokevirtual 115	java/lang/String:substring	(II)Ljava/lang/String;
-    //   345: astore_1
-    //   346: aload_0
-    //   347: ldc 55
-    //   349: aload 6
-    //   351: aload_1
-    //   352: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   361: iconst_0
-    //   362: ireturn
-    //   363: new 117	java/io/DataInputStream
-    //   366: dup
-    //   367: new 119	java/io/ByteArrayInputStream
-    //   370: dup
-    //   371: aload 7
-    //   373: invokespecial 122	java/io/ByteArrayInputStream:<init>	([B)V
-    //   376: invokespecial 125	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   379: astore 5
-    //   381: aload 5
-    //   383: invokevirtual 129	java/io/DataInputStream:readByte	()B
-    //   386: pop
-    //   387: aload 5
-    //   389: invokevirtual 132	java/io/DataInputStream:readInt	()I
-    //   392: istore 4
-    //   394: aload 5
-    //   396: invokevirtual 132	java/io/DataInputStream:readInt	()I
-    //   399: istore_3
-    //   400: iload 4
-    //   402: iload_2
-    //   403: if_icmpgt +8 -> 411
-    //   406: iload_3
-    //   407: iload_2
-    //   408: if_icmple +40 -> 448
-    //   411: aload_0
-    //   412: ldc 55
-    //   414: new 57	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   421: ldc 134
-    //   423: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   426: iload 4
-    //   428: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   431: ldc 136
-    //   433: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: iload_3
-    //   437: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   440: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   446: iconst_0
-    //   447: ireturn
-    //   448: iload 4
-    //   450: ifle +450 -> 900
-    //   453: iload 4
-    //   455: newarray byte
-    //   457: astore_1
-    //   458: aload 5
-    //   460: aload_1
-    //   461: invokevirtual 137	java/io/DataInputStream:read	([B)I
-    //   464: pop
-    //   465: new 139	tencent/im/msg/im_msg_head$Head
-    //   468: dup
-    //   469: invokespecial 140	tencent/im/msg/im_msg_head$Head:<init>	()V
-    //   472: astore 6
-    //   474: aload 6
-    //   476: aload_1
-    //   477: invokevirtual 144	tencent/im/msg/im_msg_head$Head:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   480: pop
-    //   481: aload 6
-    //   483: getfield 148	tencent/im/msg/im_msg_head$Head:msg_httpconn_head	Ltencent/im/msg/im_msg_head$HttpConnHead;
-    //   486: invokevirtual 154	tencent/im/msg/im_msg_head$HttpConnHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   489: checkcast 150	tencent/im/msg/im_msg_head$HttpConnHead
-    //   492: getfield 158	tencent/im/msg/im_msg_head$HttpConnHead:uint32_error_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   495: invokevirtual 162	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   498: istore_2
-    //   499: goto +403 -> 902
-    //   502: aload_0
-    //   503: ldc 55
-    //   505: new 57	java/lang/StringBuilder
-    //   508: dup
-    //   509: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   512: ldc 164
-    //   514: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   517: iload_3
-    //   518: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   521: ldc 166
-    //   523: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   526: iload_2
-    //   527: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   530: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   533: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   536: iconst_0
-    //   537: ireturn
-    //   538: iload_3
-    //   539: newarray byte
-    //   541: astore_1
-    //   542: aload 5
-    //   544: aload_1
-    //   545: invokevirtual 137	java/io/DataInputStream:read	([B)I
-    //   548: pop
-    //   549: new 168	com/tencent/qphone/base/util/Cryptor
-    //   552: dup
-    //   553: invokespecial 169	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   556: aload_1
-    //   557: aload_0
-    //   558: getfield 171	baqn:jdField_b_of_type_ArrayOfByte	[B
-    //   561: invokevirtual 175	com/tencent/qphone/base/util/Cryptor:decrypt	([B[B)[B
-    //   564: astore 5
-    //   566: aload 5
-    //   568: ifnull +9 -> 577
-    //   571: aload 5
-    //   573: arraylength
-    //   574: ifgt +13 -> 587
-    //   577: aload_0
-    //   578: ldc 55
-    //   580: ldc 177
-    //   582: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   585: iconst_0
-    //   586: ireturn
-    //   587: new 179	tencent/im/longconn/longmsg/LongMsg$RspBody
-    //   590: dup
-    //   591: invokespecial 180	tencent/im/longconn/longmsg/LongMsg$RspBody:<init>	()V
-    //   594: astore 6
-    //   596: aload 6
-    //   598: aload 5
-    //   600: invokevirtual 181	tencent/im/longconn/longmsg/LongMsg$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   603: pop
-    //   604: aload 6
-    //   606: getfield 185	tencent/im/longconn/longmsg/LongMsg$RspBody:rpt_msg_down_rsp	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   609: iconst_0
-    //   610: invokevirtual 190	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   613: checkcast 192	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp
-    //   616: astore 5
-    //   618: aload 5
-    //   620: ifnonnull +13 -> 633
-    //   623: aload_0
-    //   624: ldc 55
-    //   626: ldc 194
-    //   628: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   631: iconst_0
-    //   632: ireturn
-    //   633: aload 5
-    //   635: getfield 197	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   638: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   641: ifne +13 -> 654
-    //   644: aload_0
-    //   645: ldc 55
-    //   647: ldc 202
-    //   649: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   652: iconst_0
-    //   653: ireturn
-    //   654: aload 5
-    //   656: getfield 197	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   659: invokevirtual 162	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   662: ifeq +13 -> 675
-    //   665: aload_0
-    //   666: ldc 55
-    //   668: ldc 204
-    //   670: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   673: iconst_0
-    //   674: ireturn
-    //   675: aload 5
-    //   677: getfield 208	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:bytes_msg_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   680: invokevirtual 211	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   683: ifne +13 -> 696
-    //   686: aload_0
-    //   687: ldc 55
-    //   689: ldc 213
-    //   691: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   694: iconst_0
-    //   695: ireturn
-    //   696: aload_0
-    //   697: aload 5
-    //   699: getfield 208	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:bytes_msg_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   702: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   705: invokevirtual 221	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   708: putfield 223	baqn:jdField_c_of_type_ArrayOfByte	[B
-    //   711: aload_0
-    //   712: getfield 223	baqn:jdField_c_of_type_ArrayOfByte	[B
-    //   715: ifnull +11 -> 726
-    //   718: aload_0
-    //   719: getfield 223	baqn:jdField_c_of_type_ArrayOfByte	[B
-    //   722: arraylength
-    //   723: ifgt +13 -> 736
-    //   726: aload_0
-    //   727: ldc 55
-    //   729: ldc 225
-    //   731: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   734: iconst_0
-    //   735: ireturn
-    //   736: aload_0
-    //   737: ldc 55
-    //   739: new 57	java/lang/StringBuilder
-    //   742: dup
-    //   743: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   746: ldc 227
-    //   748: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   751: aload_1
-    //   752: invokestatic 233	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   755: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   758: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   761: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   764: aload_0
-    //   765: ldc 55
-    //   767: new 57	java/lang/StringBuilder
-    //   770: dup
-    //   771: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   774: ldc 235
-    //   776: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   779: aload_1
-    //   780: arraylength
-    //   781: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   784: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   787: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   790: aload_0
-    //   791: ldc 55
-    //   793: new 57	java/lang/StringBuilder
-    //   796: dup
-    //   797: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   800: ldc 237
-    //   802: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   805: aload_0
-    //   806: getfield 223	baqn:jdField_c_of_type_ArrayOfByte	[B
-    //   809: invokestatic 233	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   812: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   815: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   818: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   821: aload_0
-    //   822: ldc 55
-    //   824: new 57	java/lang/StringBuilder
-    //   827: dup
-    //   828: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   831: ldc 239
-    //   833: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   836: aload_0
-    //   837: getfield 223	baqn:jdField_c_of_type_ArrayOfByte	[B
-    //   840: arraylength
-    //   841: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   844: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   847: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   850: iconst_1
-    //   851: ireturn
-    //   852: astore_1
-    //   853: aload_1
-    //   854: invokevirtual 240	java/lang/Exception:printStackTrace	()V
-    //   857: aload_0
-    //   858: ldc 55
-    //   860: new 57	java/lang/StringBuilder
-    //   863: dup
-    //   864: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   867: ldc 242
-    //   869: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   872: aload_1
-    //   873: invokevirtual 245	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   876: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   879: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   882: invokevirtual 73	baqn:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   885: iconst_0
-    //   886: ireturn
-    //   887: astore_1
-    //   888: goto -655 -> 233
-    //   891: astore_1
-    //   892: goto -703 -> 189
-    //   895: astore 7
-    //   897: goto -770 -> 127
-    //   900: iconst_0
-    //   901: istore_2
-    //   902: iload_3
-    //   903: ifle -401 -> 502
-    //   906: iload_2
-    //   907: ifeq -369 -> 538
-    //   910: goto -408 -> 502
+    //   223: invokestatic 154	baqn:a	(Ljava/lang/String;)Ljava/io/File;
+    //   226: astore_2
+    //   227: aload_2
+    //   228: ifnull +67 -> 295
+    //   231: aload 8
+    //   233: astore 7
+    //   235: ldc 116
+    //   237: ldc 232
+    //   239: new 10	java/lang/StringBuilder
+    //   242: dup
+    //   243: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   246: ldc_w 294
+    //   249: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: aload_2
+    //   253: invokevirtual 237	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   256: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   262: invokestatic 242	awiw:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   265: aload 8
+    //   267: astore 7
+    //   269: aload 10
+    //   271: getfield 272	basj:a	Ljava/io/File;
+    //   274: invokevirtual 297	java/io/File:delete	()Z
+    //   277: pop
+    //   278: aload_2
+    //   279: astore_1
+    //   280: aload 8
+    //   282: ifnull -207 -> 75
+    //   285: aload 8
+    //   287: invokevirtual 302	java/io/OutputStream:close	()V
+    //   290: aload_2
+    //   291: areturn
+    //   292: astore_1
+    //   293: aload_2
+    //   294: areturn
+    //   295: aload 8
+    //   297: astore 7
+    //   299: aload 10
+    //   301: invokevirtual 305	basj:a	()Ljava/io/File;
+    //   304: astore_2
+    //   305: aload_2
+    //   306: astore_1
+    //   307: aload 8
+    //   309: ifnull -234 -> 75
+    //   312: aload 8
+    //   314: invokevirtual 302	java/io/OutputStream:close	()V
+    //   317: aload_2
+    //   318: areturn
+    //   319: astore_1
+    //   320: aload_2
+    //   321: areturn
+    //   322: astore_1
+    //   323: aconst_null
+    //   324: astore_2
+    //   325: aload 10
+    //   327: ifnull +13 -> 340
+    //   330: aload_2
+    //   331: astore 7
+    //   333: aload 10
+    //   335: iload 4
+    //   337: invokevirtual 308	basj:a	(Z)V
+    //   340: aload_2
+    //   341: astore 7
+    //   343: ldc_w 310
+    //   346: ldc 232
+    //   348: new 10	java/lang/StringBuilder
+    //   351: dup
+    //   352: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   355: ldc_w 312
+    //   358: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: aload 9
+    //   363: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: ldc_w 314
+    //   369: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: aload 6
+    //   374: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   380: invokestatic 316	awiw:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   383: aload_2
+    //   384: astore 7
+    //   386: aload_1
+    //   387: invokevirtual 317	java/lang/Exception:printStackTrace	()V
+    //   390: aload_2
+    //   391: astore 7
+    //   393: aload_1
+    //   394: athrow
+    //   395: astore_1
+    //   396: aload 7
+    //   398: ifnull +8 -> 406
+    //   401: aload 7
+    //   403: invokevirtual 302	java/io/OutputStream:close	()V
+    //   406: aload_1
+    //   407: athrow
+    //   408: aload_0
+    //   409: aconst_null
+    //   410: aload_1
+    //   411: aload_2
+    //   412: invokevirtual 257	baqn:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   415: areturn
+    //   416: astore_2
+    //   417: goto -11 -> 406
+    //   420: astore_1
+    //   421: aconst_null
+    //   422: astore 7
+    //   424: goto -28 -> 396
+    //   427: astore_1
+    //   428: aconst_null
+    //   429: astore_2
+    //   430: goto -105 -> 325
+    //   433: astore_1
+    //   434: aload 8
+    //   436: astore_2
+    //   437: goto -112 -> 325
+    //   440: astore_2
+    //   441: aload_1
+    //   442: astore 6
+    //   444: aload_2
+    //   445: astore_1
+    //   446: aload 8
+    //   448: astore_2
+    //   449: goto -124 -> 325
+    //   452: aload 6
+    //   454: astore_1
+    //   455: goto -237 -> 218
+    //   458: goto -303 -> 155
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	913	0	this	baqn
-    //   0	913	1	paramString	String
-    //   78	829	2	i	int
-    //   399	504	3	j	int
-    //   392	62	4	k	int
-    //   55	184	5	localObject1	Object
-    //   245	3	5	localIOException	java.io.IOException
-    //   309	389	5	localObject2	Object
-    //   51	554	6	localObject3	Object
-    //   65	30	7	arrayOfByte	byte[]
-    //   122	250	7	localFileNotFoundException1	java.io.FileNotFoundException
-    //   895	1	7	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	461	0	this	baqn
+    //   0	461	1	paramDownloadParams	DownloadParams
+    //   0	461	2	paramURLDrawableHandler	URLDrawableHandler
+    //   1	152	3	bool1	boolean
+    //   116	220	4	bool2	boolean
+    //   140	3	5	bool3	boolean
+    //   13	440	6	localObject1	Object
+    //   20	403	7	localObject2	Object
+    //   169	278	8	localFileOutputStream	java.io.FileOutputStream
+    //   100	262	9	str	String
+    //   110	224	10	localbasj	basj
     // Exception table:
     //   from	to	target	type
-    //   84	89	114	java/io/IOException
-    //   41	53	122	java/io/FileNotFoundException
-    //   170	175	177	java/io/IOException
-    //   41	53	185	java/io/IOException
-    //   214	219	221	java/io/IOException
-    //   41	53	229	finally
-    //   238	243	245	java/io/IOException
-    //   363	400	852	java/lang/Exception
-    //   411	446	852	java/lang/Exception
-    //   453	499	852	java/lang/Exception
-    //   502	536	852	java/lang/Exception
-    //   538	566	852	java/lang/Exception
-    //   571	577	852	java/lang/Exception
-    //   577	585	852	java/lang/Exception
-    //   587	618	852	java/lang/Exception
-    //   623	631	852	java/lang/Exception
-    //   633	652	852	java/lang/Exception
-    //   654	673	852	java/lang/Exception
-    //   675	694	852	java/lang/Exception
-    //   696	726	852	java/lang/Exception
-    //   726	734	852	java/lang/Exception
-    //   736	850	852	java/lang/Exception
-    //   57	67	887	finally
-    //   71	79	887	finally
-    //   131	136	887	finally
-    //   140	165	887	finally
-    //   193	201	887	finally
-    //   205	209	887	finally
-    //   57	67	891	java/io/IOException
-    //   71	79	891	java/io/IOException
-    //   57	67	895	java/io/FileNotFoundException
-    //   71	79	895	java/io/FileNotFoundException
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Bamy.a();
-    bawu localbawu = new bawu();
-    localbawu.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString;
-    localbawu.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
-    localbawu.e = this.jdField_a_of_type_Baub.jdField_d_of_type_JavaLangString;
-    localbawu.jdField_f_of_type_Int = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
-    localbawu.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localbawu.jdField_a_of_type_Int = this.jdField_a_of_type_Baub.h;
-    bawo localbawo = new bawo();
-    localbawo.jdField_a_of_type_Baxv = this;
-    localbawo.jdField_a_of_type_JavaLangString = "multi_msg_dw";
-    localbawo.jdField_a_of_type_JavaUtilList.add(localbawu);
-    localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    if (!e())
-    {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
-      d();
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localbawo.toString());
-      }
-    } while (!f());
-    this.jdField_a_of_type_Bawo = localbawo;
-    baxu.a(localbawo);
-  }
-  
-  private void g()
-  {
-    baps localbaps = new baps();
-    basp localbasp = (basp)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    String str = "http://";
-    Object localObject;
-    if (this.p == 2)
-    {
-      str = "https://";
-      localbaps.jdField_f_of_type_Boolean = true;
-      localbaps.jdField_g_of_type_Boolean = true;
-      if (localbasp.jdField_a_of_type_Boolean)
-      {
-        localbaps.jdField_b_of_type_JavaLangString = "sslv6.htdata.qq.com";
-        localObject = new basp();
-        ((basp)localObject).jdField_a_of_type_JavaLangString = localbaps.jdField_b_of_type_JavaLangString;
-        ((basp)localObject).jdField_a_of_type_Int = 443;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MultiMsg_TAG", 2, "Multimsg download recieveFile  url =" + str);
-      }
-      if ((!localbasp.jdField_a_of_type_Boolean) || (localbasp.jdField_a_of_type_JavaLangString.startsWith("["))) {
-        break label431;
-      }
-    }
-    label431:
-    for (str = str + "[" + localbasp.jdField_a_of_type_JavaLangString + "]";; str = str + localbasp.jdField_a_of_type_JavaLangString)
-    {
-      localObject = str;
-      if (localbasp.jdField_a_of_type_Int != 80) {
-        localObject = str + ":" + localbasp.jdField_a_of_type_Int;
-      }
-      str = (String)localObject + this.jdField_a_of_type_JavaLangString;
-      b("MultimsgDownload.recieveFile", " url:" + str);
-      this.e = bame.d(str);
-      localbaps.jdField_a_of_type_Bapx = this;
-      localbaps.jdField_a_of_type_JavaLangString = str;
-      localbaps.jdField_a_of_type_Int = 0;
-      localbaps.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-      localbaps.jdField_c_of_type_JavaLangString = this.e;
-      localbaps.e = String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
-      localbaps.jdField_g_of_type_Int = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
-      localbaps.jdField_f_of_type_Int = this.jdField_a_of_type_Baub.jdField_b_of_type_Int;
-      localbaps.jdField_a_of_type_Long = 0L;
-      localbaps.k = true;
-      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-      b("httpDown", "url:" + str + ",downOffset:" + localbaps.jdField_a_of_type_Long);
-      if (f()) {
-        break label457;
-      }
-      return;
-      localbaps.jdField_b_of_type_JavaLangString = "ssl.htdata.qq.com";
-      break;
-    }
-    label457:
-    this.jdField_a_of_type_Baqv = localbaps;
-    n();
-    this.jdField_a_of_type_Bapv.a(localbaps);
-  }
-  
-  public void a(bawo parambawo, baxd parambaxd)
-  {
-    this.jdField_a_of_type_Bawo = null;
-    if (parambaxd == null) {
-      d();
-    }
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < parambaxd.jdField_a_of_type_JavaUtilList.size())
-      {
-        parambawo = (baxm)parambaxd.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", parambawo.toString());
-        }
-        a(this.jdField_a_of_type_Bamy, parambawo);
-        if (parambawo.jdField_c_of_type_Int != 0) {
-          break label127;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList = a(parambawo.jdField_b_of_type_JavaUtilArrayList, parambawo.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaLangString = parambawo.jdField_a_of_type_JavaLangString;
-        this.jdField_b_of_type_ArrayOfByte = parambawo.jdField_b_of_type_ArrayOfByte;
-        this.p = parambawo.jdField_a_of_type_Int;
-        g();
-        i += 1;
-      }
-    }
-    label127:
-    d();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (basb.b(this.jdField_j_of_type_Int))) {}
-    while ((this.h) || ((paramBoolean) && ((this.m & 0x2) > 0)) || ((!paramBoolean) && ((this.m & 0x1) > 0))) {
-      return;
-    }
-    int j = this.m;
-    int i;
-    long l;
-    if (paramBoolean)
-    {
-      i = 2;
-      this.m = (i | j);
-      l = (System.nanoTime() - this.k) / 1000000L;
-      String str = this.jdField_a_of_type_Bamy.a(1) + ";" + this.jdField_b_of_type_Bamy.a(2) + ";" + this.jdField_c_of_type_Bamy.a(3);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_step", str);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Baub.e);
-      if (!paramBoolean) {
-        break label235;
-      }
-      b(true, l);
-      azmz.a(BaseApplication.getContext()).a(null, b(), true, l, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-    for (;;)
-    {
-      l();
-      return;
-      i = 1;
-      break;
-      label235:
-      if (this.jdField_j_of_type_Int != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      b(false, l);
-      azmz.a(BaseApplication.getContext()).a(null, b(), false, l, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-  }
-  
-  public void aS_()
-  {
-    d(1000);
-    d(2001);
-    f();
-  }
-  
-  protected String b()
-  {
-    return "actMultiMsgDownload";
-  }
-  
-  public int c()
-  {
-    b("uiParam", this.jdField_a_of_type_Baub.toString());
-    return 0;
-  }
-  
-  void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh != null)
-    {
-      awei localawei = new awei();
-      localawei.jdField_b_of_type_Int = -1;
-      localawei.jdField_a_of_type_Awey = new awey();
-      localawei.jdField_a_of_type_Awey.jdField_b_of_type_JavaLangString = "[MultiMsgDownloadProcessor] download failed";
-      localawei.jdField_a_of_type_ArrayOfByte = null;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh.a(localawei);
-    }
-    this.jdField_c_of_type_ArrayOfByte = null;
-    d(2005);
-  }
-  
-  void e()
-  {
-    super.e();
-    Object localObject1;
-    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh != null)
-    {
-      localObject1 = new awei();
-      ((awei)localObject1).jdField_b_of_type_Int = 0;
-      ((awei)localObject1).jdField_a_of_type_ArrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-      ((awei)localObject1).jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.f;
-      ((awei)localObject1).jdField_c_of_type_Int = this.jdField_a_of_type_Baub.jdField_b_of_type_Int;
-      ((awei)localObject1).jdField_d_of_type_Int = this.jdField_a_of_type_Baub.jdField_g_of_type_Int;
-      ((awei)localObject1).jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString;
-      ((awei)localObject1).jdField_a_of_type_Long = this.jdField_a_of_type_Baub.jdField_a_of_type_Long;
-      ((awei)localObject1).e = this.jdField_a_of_type_Baub.l;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Aweh.a((awei)localObject1);
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_ArrayOfByte = null;
-      d(2003);
-      return;
-      localObject1 = new HashMap();
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_c_of_type_ArrayOfByte, (HashMap)localObject1, (MessageRecord)localObject2, null);
-      if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
-      {
-        aukx.a().a((HashMap)localObject1, this.jdField_a_of_type_Baub.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "BaseTransProcessoronSuccess.onDownload,MultiMsg ");
-        }
-      }
-    }
-  }
-  
-  protected void n()
-  {
-    String str;
-    if ((this.jdField_a_of_type_Baqv != null) && ((this.jdField_a_of_type_Baqv instanceof baps)))
-    {
-      if (!abot.d(this.jdField_c_of_type_Int)) {
-        break label56;
-      }
-      str = "multimsgCd";
-    }
-    for (;;)
-    {
-      ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype(str, ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
-      return;
-      label56:
-      if (this.jdField_c_of_type_Int == 1) {
-        str = "multimsgGd";
-      } else {
-        str = "multimsgDd";
-      }
-    }
-  }
-  
-  public void onResp(baqw parambaqw)
-  {
-    boolean bool2 = true;
-    Object localObject = this.jdField_b_of_type_Bamy;
-    if (parambaqw.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      a((bamy)localObject, parambaqw, bool1);
-      localObject = new StringBuilder().append(" result:");
-      if (parambaqw.jdField_a_of_type_Int != 0) {
-        break label154;
-      }
-    }
-    label154:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      b("onHttpResp", bool1);
-      this.jdField_a_of_type_Long = parambaqw.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Baqv = null;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambaqw.jdField_b_of_type_Long + parambaqw.jdField_a_of_type_Baqv.jdField_a_of_type_Long);
-      }
-      this.jdField_a_of_type_Baoj.a.jdField_d_of_type_JavaLangString = ((String)parambaqw.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader"));
-      if ((parambaqw.jdField_a_of_type_Int != 0) || (!a(this.e))) {
-        break label159;
-      }
-      e();
-      return;
-      bool1 = false;
-      break;
-    }
-    label159:
-    if ((parambaqw.jdField_b_of_type_Int == 9364) && (this.l < 3))
-    {
-      b("[netChg]", "failed.but net change detect.so retry");
-      this.l += 1;
-      m();
-      f();
-      return;
-    }
-    d();
+    //   285	290	292	java/io/IOException
+    //   312	317	319	java/io/IOException
+    //   123	142	322	java/lang/Exception
+    //   175	184	395	finally
+    //   188	199	395	finally
+    //   203	218	395	finally
+    //   222	227	395	finally
+    //   235	265	395	finally
+    //   269	278	395	finally
+    //   299	305	395	finally
+    //   333	340	395	finally
+    //   343	383	395	finally
+    //   386	390	395	finally
+    //   393	395	395	finally
+    //   401	406	416	java/io/IOException
+    //   123	142	420	finally
+    //   155	171	420	finally
+    //   155	171	427	java/lang/Exception
+    //   175	184	433	java/lang/Exception
+    //   188	199	433	java/lang/Exception
+    //   203	218	433	java/lang/Exception
+    //   222	227	440	java/lang/Exception
+    //   235	265	440	java/lang/Exception
+    //   269	278	440	java/lang/Exception
+    //   299	305	440	java/lang/Exception
   }
 }
 

@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
 
-class arga
-  implements areh
+final class arga
+  implements View.OnClickListener
 {
-  arga(arfz paramarfz, String paramString) {}
+  arga(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void onClick(View paramView)
   {
-    paramString = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramString.addAll(paramList);
-      if (this.jdField_a_of_type_Arfz.jdField_a_of_type_Ardn != null) {
-        this.jdField_a_of_type_Arfz.jdField_a_of_type_Ardn.e();
-      }
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
     }
-    this.jdField_a_of_type_Arfz.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
   }
 }
 

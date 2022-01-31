@@ -17,15 +17,15 @@ public class ssd
   
   public void onClick(View paramView)
   {
-    if (ytg.a("service_account_folder_publish_feed_button", 2000L)) {
+    if (yxv.a("service_account_folder_publish_feed_button", 2000L)) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = ammv.a(this.a);; bool = true)
+    for (boolean bool = amrk.a(this.a);; bool = true)
     {
       if (!bool)
       {
-        bdcd.b(this.a);
+        bdgm.b(this.a);
         return;
       }
       paramView = new Intent();
@@ -42,7 +42,7 @@ public class ssd
       }
       else
       {
-        bizm.a(this.a.getActivity(), paramView, 0);
+        bjdt.a(this.a.getActivity(), paramView, 0);
         str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
         if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
           break label217;
@@ -51,7 +51,7 @@ public class ssd
       label217:
       for (paramView = "auth_follow";; paramView = "auth_discover")
       {
-        yvu.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
+        zaj.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
         return;
         bool = false;
         break;

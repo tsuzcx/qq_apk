@@ -1,19 +1,12 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class ajzc
-  implements View.OnClickListener
+  extends aehc
 {
-  public ajzc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public CheckBox a;
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
-  }
+  private ajzc(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

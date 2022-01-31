@@ -28,7 +28,7 @@ public class tcs
   HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   private List<stMetaComment> jdField_a_of_type_JavaUtilList;
   private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private yde jdField_a_of_type_Yde;
+  private yhn jdField_a_of_type_Yhn;
   private String jdField_b_of_type_JavaLangString = "focus";
   HashSet<Integer> jdField_b_of_type_JavaUtilHashSet = new HashSet();
   private String c;
@@ -38,7 +38,7 @@ public class tcs
     jdField_a_of_type_Int = 1;
   }
   
-  public tcs(Context paramContext, yde paramyde)
+  public tcs(Context paramContext, yhn paramyhn)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     if (this.jdField_a_of_type_JavaUtilList == null)
@@ -48,7 +48,7 @@ public class tcs
     }
     for (;;)
     {
-      this.jdField_a_of_type_Yde = paramyde;
+      this.jdField_a_of_type_Yhn = paramyhn;
       this.jdField_a_of_type_JavaUtilMap = new HashMap();
       return;
       tlo.a("comment", "复用 mComments ...");
@@ -334,7 +334,7 @@ public class tcs
       for (;;)
       {
         paramView = new MoreCommentPanel(this.jdField_a_of_type_AndroidContentContext);
-        ((TextView)paramView.findViewById(2131370715)).setTextColor(-7829368);
+        ((TextView)paramView.findViewById(2131370734)).setTextColor(-7829368);
         paramView.setOnClickListener(new tct(this, paramInt));
         paramView.setHintText(localstMetaComment.wording);
         return paramView;
@@ -359,7 +359,7 @@ public class tcs
     else
     {
       paramViewGroup = new WsCommentView(this.jdField_a_of_type_AndroidContentContext);
-      ((WsCommentView)paramViewGroup).setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
+      ((WsCommentView)paramViewGroup).setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
       paramViewGroup.setTag(paramViewGroup);
     }
     paramView = (WsCommentView)paramViewGroup.getTag();

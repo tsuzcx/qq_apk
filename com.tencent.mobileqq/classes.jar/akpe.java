@@ -1,19 +1,31 @@
-public class akpe
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
+
+public final class akpe
+  implements abwu
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static int c;
-  public static int d;
+  public akpe(View paramView, abwx paramabwx, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  static
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    jdField_a_of_type_Int = 6;
-    b = 1;
-    c = 1;
-    d = 1;
-    jdField_a_of_type_JavaLangString = alef.jdField_a_of_type_JavaLangString + "/game";
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

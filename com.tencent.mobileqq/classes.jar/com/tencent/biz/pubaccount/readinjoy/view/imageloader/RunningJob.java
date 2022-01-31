@@ -8,10 +8,10 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import azmz;
-import banz;
-import baul;
-import bdda;
+import azri;
+import basi;
+import bayu;
+import bdhj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -45,7 +45,7 @@ public class RunningJob
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  banz jdField_a_of_type_Banz;
+  basi jdField_a_of_type_Basi;
   File jdField_a_of_type_JavaIoFile;
   Set<WeakReference<sfe>> jdField_a_of_type_JavaUtilSet = new HashSet();
   sey jdField_a_of_type_Sey;
@@ -63,7 +63,7 @@ public class RunningJob
     this.jdField_a_of_type_Sff = paramsff;
     this.jdField_a_of_type_Sfg = paramsfg;
     this.jdField_a_of_type_Sey = paramsff.jdField_a_of_type_Sey;
-    this.jdField_a_of_type_Banz = new banz(baul.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Basi = new basi(bayu.jdField_a_of_type_JavaIoFile);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
@@ -122,7 +122,7 @@ public class RunningJob
   {
     Bitmap localBitmap = paramBitmap;
     if (this.jdField_a_of_type_Sfg.c == 1) {
-      localBitmap = bdda.c(paramBitmap, this.jdField_a_of_type_Sfg.jdField_a_of_type_Int, this.jdField_a_of_type_Sfg.jdField_b_of_type_Int);
+      localBitmap = bdhj.c(paramBitmap, this.jdField_a_of_type_Sfg.jdField_a_of_type_Int, this.jdField_a_of_type_Sfg.jdField_b_of_type_Int);
     }
     return localBitmap;
   }
@@ -277,7 +277,7 @@ public class RunningJob
     for (String str = "1";; str = "0")
     {
       localHashMap.put("success", str);
-      azmz.a(BaseApplication.getContext()).a(null, "actKandianImageShow", paramBoolean2, paramLong, paramInt, localHashMap, "", true);
+      azri.a(BaseApplication.getContext()).a(null, "actKandianImageShow", paramBoolean2, paramLong, paramInt, localHashMap, "", true);
       return;
       str = "2";
       break;

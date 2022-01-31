@@ -1,16 +1,16 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import bnnw;
+import bnsi;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class OffScreenGLSurface$1
   implements Runnable
 {
-  public OffScreenGLSurface$1(bnnw parambnnw) {}
+  public OffScreenGLSurface$1(bnsi parambnsi) {}
   
   public void run()
   {
-    bnnw.a(this.this$0).sendFirstFrameMsg();
+    bnsi.a(this.this$0).sendFirstFrameMsg();
   }
 }
 

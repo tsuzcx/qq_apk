@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bbta;
+import bbxj;
 
 public class TroopFileScaner$2
   implements Runnable
 {
-  public TroopFileScaner$2(bbta parambbta, long paramLong) {}
+  public TroopFileScaner$2(bbxj parambbxj, long paramLong) {}
   
   public void run()
   {
-    bbta.a(this.this$0, this.a);
-    bbta.a(this.this$0);
+    bbxj.a(this.this$0, this.a);
+    bbxj.a(this.this$0);
   }
 }
 

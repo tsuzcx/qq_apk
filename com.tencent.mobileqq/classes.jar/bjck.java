@@ -1,53 +1,110 @@
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjck
-  implements ayzw
+  extends bjci
 {
-  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  public long a;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public bjck(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+    super.a(paramBundle);
+    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
+    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
+    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
+    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
+    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
+    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
+    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
+    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
+    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
+    this.m = paramBundle.getString("_mqqpay_payapi_sig");
+    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
   }
   
-  public void G_()
+  public void a(String paramString)
   {
-    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, alpo.a(2131712851));
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    this.c = "browser";
+    this.d = "pay";
+    this.jdField_a_of_type_Int = 1;
+    try
     {
-      if (paramInt == 0) {
-        break label111;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, alpo.a(2131712860) + paramInt + "]");
-      ayyy.b(2, paramInt);
-    }
-    for (;;)
-    {
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
-      return;
-      label111:
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+      paramString = new JSONObject(paramString);
+      JSONObject localJSONObject = paramString.optJSONObject("action");
+      if (localJSONObject != null)
       {
-        paramString2 = new Bundle();
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
+        String str = localJSONObject.optString("name");
+        if (str != null)
+        {
+          if (!str.equals("pay")) {
+            return;
+          }
+          this.e = localJSONObject.optString("identifier");
+          localJSONObject = paramString.optJSONObject("application");
+          if (localJSONObject != null)
+          {
+            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
+            this.b = localJSONObject.optString("sdkVersion");
+            this.n = localJSONObject.optString("pkgName");
+            this.f = localJSONObject.optString("urlScheme");
+          }
+          paramString = paramString.optJSONObject("params");
+          if (paramString != null)
+          {
+            this.i = paramString.optString("tokenId");
+            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
+            this.j = paramString.optString("nonce");
+            this.k = paramString.optString("bargainorId");
+            this.l = "HMAC-SHA1";
+            this.m = paramString.optString("sig");
+            return;
+          }
+        }
       }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public boolean a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
+      return false;
     }
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("&sn=" + this.e);
+    localStringBuilder.append("&cs=" + this.f);
+    localStringBuilder.append("&pa=" + this.g);
+    localStringBuilder.append("&pah=" + this.h);
+    localStringBuilder.append("&ti=" + this.i);
+    localStringBuilder.append("&ne=" + this.j);
+    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("&bi=" + this.k);
+    localStringBuilder.append("&st=" + this.l);
+    localStringBuilder.append("&sg=" + this.m);
+    localStringBuilder.append("&pn=" + this.n);
+    return localStringBuilder.toString();
   }
 }
 

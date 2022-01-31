@@ -1,28 +1,8 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-
-class bgss
-  implements DialogInterface.OnClickListener
+public class bgss
 {
-  bgss(bgsr parambgsr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString, bgsu parambgsu)
   {
-    paramDialogInterface.dismiss();
-    if ((this.a.a() instanceof Activity))
-    {
-      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      Activity localActivity = (Activity)this.a.a();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", this.a.a().url.get());
-      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
-    }
+    new bgst(parambgsu).execute(new String[] { paramString });
   }
 }
 

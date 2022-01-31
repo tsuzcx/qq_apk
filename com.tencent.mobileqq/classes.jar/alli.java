@@ -1,118 +1,44 @@
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
 
-public class alli
-  extends QIPCModule
+class alli
+  implements View.OnClickListener
 {
-  public static alli a;
+  alli(allg paramallg) {}
   
-  private alli()
+  public void onClick(View paramView)
   {
-    super("CommonModule");
-  }
-  
-  public static alli a()
-  {
-    if (a == null) {}
-    try
+    if ((!TextUtils.isEmpty(allg.a(this.a))) && (!allg.a(this.a).equals("0")))
     {
-      if (a == null) {
-        a = new alli();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
-    }
-    if (paramIntent != null)
-    {
-      int i = paramIntent.getIntExtra("param_callback_id", -1);
-      int j = paramIntent.getIntExtra("param_result_code", -99999);
-      paramIntent = paramIntent.getStringExtra("param_result_desc");
-      if (i > 0)
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
+      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
       {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("param_result_code", j);
-        localBundle.putString("param_result_desc", paramIntent);
-        localBundle.putString("param_action", "set_avatar");
-        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
+        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        paramView.putExtra("uin", allg.a(this.a));
+        paramView.putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity(paramView);
+        return;
       }
     }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("getPhoneBindState".equals(paramString))
-    {
-      paramString = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramString instanceof QQAppInterface))
-      {
-        localBundle.putInt("selfBindState", ((aubm)((QQAppInterface)paramString).getManager(11)).d());
-        return EIPCResult.createSuccessResult(localBundle);
-      }
-    }
-    else
-    {
-      AppRuntime localAppRuntime;
-      if ("set_nickname".equals(paramString))
-      {
-        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localAppRuntime instanceof QQAppInterface))
-        {
-          paramString = "";
-          if (paramBundle != null) {
-            paramString = paramBundle.getString("nickname");
-          }
-          ((alkv)((QQAppInterface)localAppRuntime).a(2)).notifyUI(94, true, paramString);
-          return EIPCResult.createSuccessResult(localBundle);
-        }
-      }
-      else if ("set_avatar".equals(paramString))
-      {
-        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localAppRuntime instanceof QQAppInterface))
-        {
-          paramString = "";
-          if (paramBundle != null) {
-            paramString = paramBundle.getString("param_avatar_path");
-          }
-          paramBundle = new Intent();
-          paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
-          paramBundle.putExtra("param_callback_id", paramInt);
-          paramString = bcyw.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
-          if (paramString.jdField_a_of_type_Int == 0) {
-            break label295;
-          }
-          localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
-          localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
-          localBundle.putString("param_action", "set_avatar");
-          callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
-        }
-      }
-    }
-    return EIPCResult.createSuccessResult(localBundle);
-    label295:
-    return null;
+    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alli
  * JD-Core Version:    0.7.0.1
  */

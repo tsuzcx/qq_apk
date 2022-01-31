@@ -1,48 +1,26 @@
-import android.text.TextUtils;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class aoky
-  implements aoga<String>
+final class aoky
+  extends XC_MethodHook
 {
-  public boolean a;
-  
-  public void a(String paramString)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
-    }
-    for (;;)
+    try
     {
+      paramMethodHookParam = aokv.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
+        aokv.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
+      }
       return;
-      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
-      try
-      {
-        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
-          bool = true;
-        }
-        this.a = bool;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
-      }
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
-    localStringBuilder.append("enable:").append(this.a);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+    }
   }
 }
 

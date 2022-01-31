@@ -1,323 +1,121 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.selectable.CommonMenuWrapper.1;
-import com.tencent.widget.BubblePopupWindow;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 public class ajte
-  implements ajtq
+  extends PagerAdapter
 {
-  private static final int e = bdkf.b(72.0F);
-  private static final int f = bdkf.b(63.0F);
-  public int a;
-  private ajto jdField_a_of_type_Ajto;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  bdkz jdField_a_of_type_Bdkz;
-  private bhrf jdField_a_of_type_Bhrf;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public int b;
-  private bdkz b;
-  private int jdField_c_of_type_Int;
-  private bdkz jdField_c_of_type_Bdkz;
-  private int d;
+  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ArrayList<FilterDesc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final Map<Class<? extends View>, Queue<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  private void c()
-  {
-    if (this.jdField_a_of_type_Ajto == null) {
-      throw new IllegalStateException("Delegate has not bound.");
-    }
-  }
+  public ajte(VideoFilterViewPager paramVideoFilterViewPager) {}
   
   public int a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public ajtf a(View paramView, BaseChatPie paramBaseChatPie)
+  public int a(int paramInt)
   {
-    int m = 0;
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationInWindow(arrayOfInt);
-    int n = arrayOfInt[1];
-    int i = arrayOfInt[1];
-    i = paramView.getHeight() + i;
-    paramView = paramBaseChatPie;
-    if (paramBaseChatPie == null)
-    {
-      paramView = paramBaseChatPie;
-      if ((this instanceof ajsw)) {
-        paramView = ((ajsw)this).a;
-      }
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (i > 0) {
+      return paramInt % i;
     }
-    int j;
-    int k;
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
-    {
-      paramView.a.getLocationInWindow(arrayOfInt);
-      j = arrayOfInt[1];
-      if (n + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label344;
-      }
-      if (i + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label221;
-      }
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.jdField_c_of_type_Int)) {
-        break label171;
-      }
-      i = this.jdField_a_of_type_Int + 0;
-      k = m;
-    }
-    for (;;)
-    {
-      return new ajtf(i, k);
-      j = bdkf.b();
-      break;
-      label171:
-      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
-      {
-        i = this.jdField_a_of_type_Int + 0;
-        k = 1;
-      }
-      else
-      {
-        i = e + ImmersiveUtils.jdField_c_of_type_Int;
-        k = m;
-        continue;
-        label221:
-        i += 0;
-        if (f + i > j) {
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.jdField_c_of_type_Int))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 0;
-          }
-        }
-        for (;;)
-        {
-          k = i;
-          i = j;
-          break;
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 1;
-          }
-          else
-          {
-            j = e + ImmersiveUtils.jdField_c_of_type_Int + f + 0;
-            i = 0;
-            continue;
-            k = 1;
-            j = i;
-            i = k;
-          }
-        }
-        label344:
-        i = j;
-        k = m;
-        if (n <= j)
-        {
-          i = n + 0;
-          k = m;
-        }
-      }
-    }
+    return -1;
   }
   
   @Nullable
-  public ajto a()
+  public View a(int paramInt)
   {
-    return this.jdField_a_of_type_Ajto;
+    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public void a()
+  public FilterDesc a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    paramInt = a(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
+    return null;
   }
   
-  public void a(int paramInt)
+  public void a(List<FilterDesc> paramList)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    notifyDataSetChanged();
   }
   
-  public void a(@Nullable ajto paramajto)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_Ajto = paramajto;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    c();
-    bdkz localbdkz;
-    if (this.jdField_a_of_type_Ajto.c())
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
+    }
+    View localView = (View)paramObject;
+    localView.removeCallbacks((Runnable)localView.getTag());
+    localView.clearAnimation();
+    paramViewGroup.removeView(localView);
+    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
+    paramViewGroup = paramObject;
+    if (paramObject == null)
     {
-      int i = this.jdField_a_of_type_Ajto.c();
-      int j = this.jdField_a_of_type_Ajto.b();
-      if (this.jdField_a_of_type_Ajto.a() == i - j) {
-        localbdkz = this.b;
+      paramViewGroup = new LinkedList();
+      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
+    }
+    paramViewGroup.offer(localView);
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
+    }
+    Object localObject1 = a(paramInt);
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
       }
+      return null;
     }
-    for (;;)
+    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
+    if (localObject1 != null) {}
+    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
     {
-      a(localbdkz, paramView, paramInt1, paramInt2, paramInt3);
-      return;
-      if (this.jdField_c_of_type_Bdkz != null)
-      {
-        localbdkz = this.jdField_c_of_type_Bdkz;
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131560978, null);
       }
-      else
-      {
-        if (this.jdField_a_of_type_Bdkz == null)
-        {
-          this.jdField_a_of_type_Bdkz = new bdkz();
-          this.jdField_a_of_type_Bdkz.a(2131364910, alpo.a(2131702612), 2130838668);
-          this.jdField_a_of_type_Bdkz.a(2131376287, alpo.a(2131702610), 2130838686);
-          this.jdField_a_of_type_Bdkz.a(2131366750, alpo.a(2131702614), 2130838677);
-          this.jdField_a_of_type_Bdkz.a(2131366015, alpo.a(2131702611), 2130838676);
-        }
-        localbdkz = this.jdField_a_of_type_Bdkz;
-        continue;
-        localbdkz = this.b;
-      }
+      paramViewGroup.addView((View)localObject2);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+      return localObject2;
     }
   }
   
-  protected void a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, int paramInt3, boolean paramBoolean)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    a(paramView, paramInt1, paramInt2, parambdkz, paramInt3, paramBoolean, null);
-  }
-  
-  protected void a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, int paramInt3, boolean paramBoolean, Activity paramActivity)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdbk.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), parambdkz, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
-    parambdkz = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      parambdkz.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bhrf);
-      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
-      this.jdField_c_of_type_Int = paramInt1;
-      this.d = paramInt2;
-      return;
-    }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, boolean paramBoolean, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambdkz, paramBoolean, paramInt3, null);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, boolean paramBoolean, int paramInt3, Activity paramActivity)
-  {
-    this.b = parambdkz;
-    this.jdField_c_of_type_Bdkz = null;
-    a(paramView, paramInt1, paramInt2, parambdkz, paramInt3, paramBoolean, paramActivity);
-  }
-  
-  void a(bdkz parambdkz, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambdkz, paramInt3, false);
-  }
-  
-  public void a(bdkz parambdkz, boolean paramBoolean)
-  {
-    this.b = parambdkz;
-    this.jdField_c_of_type_Bdkz = null;
-    Object localObject;
-    int i;
-    if ((paramBoolean) && (parambdkz != null))
-    {
-      localObject = parambdkz.a();
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        parambdkz = new ArrayList(Arrays.asList((Object[])localObject));
-        i = 0;
-        if (i >= localObject.length) {
-          break label171;
-        }
-        if (localObject[i].a() != 2131364910) {}
-      }
-    }
-    for (;;)
-    {
-      localObject = new bdlb();
-      ((bdlb)localObject).a(2131376287);
-      ((bdlb)localObject).a(alpo.a(2131702613));
-      ((bdlb)localObject).b(2130838686);
-      parambdkz.add(i + 1, localObject);
-      this.jdField_c_of_type_Bdkz = new bdkz();
-      parambdkz = parambdkz.iterator();
-      for (;;)
-      {
-        if (parambdkz.hasNext())
-        {
-          localObject = (bdlb)parambdkz.next();
-          this.jdField_c_of_type_Bdkz.a((bdlb)localObject);
-          continue;
-          i += 1;
-          break;
-        }
-      }
-      return;
-      label171:
-      i = 0;
-    }
-  }
-  
-  public void a(bhrf parambhrf)
-  {
-    this.jdField_a_of_type_Bhrf = parambhrf;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
+    return ((paramObject instanceof View)) && (paramObject == paramView);
   }
 }
 

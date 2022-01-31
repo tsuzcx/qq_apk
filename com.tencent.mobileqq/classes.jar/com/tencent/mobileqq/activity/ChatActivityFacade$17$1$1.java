@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import acez;
+import acjo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatActivityFacade$17$1$1
   implements Runnable
 {
-  public ChatActivityFacade$17$1$1(acez paramacez) {}
+  public ChatActivityFacade$17$1$1(acjo paramacjo) {}
   
   public void run()
   {

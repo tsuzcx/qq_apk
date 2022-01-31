@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
 public class adei
-  implements View.OnClickListener
+  extends amck
 {
-  public void onClick(View paramView)
+  public adei(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  
+  public void a()
   {
-    MainFragment.b(true);
-    paramView = (ViewGroup)paramView.getParent();
-    if (!MainFragment.a()) {
-      paramView.callOnClick();
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
     }
   }
 }

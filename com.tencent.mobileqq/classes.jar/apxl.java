@@ -1,86 +1,21 @@
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import java.io.File;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
 
 public class apxl
-  extends RecyclerView.ViewHolder
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqba jdField_a_of_type_Aqba;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private int b;
+  public apxl(HorizontalListViewEx paramHorizontalListViewEx, View paramView, int paramInt) {}
   
-  public apxl(View paramView, RecyclerView paramRecyclerView, int paramInt1, aqba paramaqba, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377552));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Aqba = paramaqba;
-    paramView.setOnTouchListener(this);
-  }
-  
-  public void a(apxl paramapxl, apyo paramapyo, int paramInt)
-  {
-    paramapyo = paramapxl.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    paramapyo.height = (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() - this.jdField_a_of_type_Int);
-    if ((paramapyo instanceof RecyclerView.LayoutParams)) {
-      ((RecyclerView.LayoutParams)paramapyo).topMargin = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int += this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int == this.jdField_a_of_type_AndroidViewView.getLeft()) {
+      HorizontalListViewEx.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx, false);
     }
-    paramapyo = URLDrawable.URLDrawableOptions.obtain();
-    paramapyo.mLoadingDrawable = baul.a;
-    paramapyo.mFailedDrawable = baul.a;
-    paramapyo = aqcy.a("expand_square_blank.png");
-    if (new File(paramapyo).exists())
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      paramapyo = aqcy.a(paramapyo, localOptions);
-      paramapxl.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramapyo));
-    }
-    if (paramInt == 1) {
-      if (this.b == 0) {
-        paramInt = 2131699270;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-      return;
-      paramInt = 2131699266;
-      continue;
-      if (this.b == 0) {
-        paramInt = 2131699269;
-      } else {
-        paramInt = 2131699265;
-      }
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((this.jdField_a_of_type_Aqba != null) && (paramMotionEvent.getAction() == 0)) {
-      this.jdField_a_of_type_Aqba.d();
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.invalidate();
   }
 }
 

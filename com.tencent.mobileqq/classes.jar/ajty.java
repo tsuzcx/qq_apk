@@ -1,41 +1,42 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class ajty
-  extends awdn
+public abstract interface ajty
 {
-  public ajty(ContactsInnerFrame paramContactsInnerFrame) {}
+  public abstract void A();
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
-    }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
-    {
-      ContactsInnerFrame.a(this.a);
-      return;
-    }
-    ContactsInnerFrame.b(this.a);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract int d();
+  
+  public abstract void g(boolean paramBoolean);
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

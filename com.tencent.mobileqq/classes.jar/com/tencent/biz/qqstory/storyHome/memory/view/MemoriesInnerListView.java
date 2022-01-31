@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bcwh;
+import bdaq;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import wiu;
-import wiv;
-import wiw;
-import wix;
+import wnd;
+import wne;
+import wnf;
+import wng;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public wiw a;
-  private wix a;
+  public wnf a;
+  private wng a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -38,22 +38,22 @@ public class MemoriesInnerListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bcwh.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Wix = new wix(getContext());
-    super.setAdapter(this.jdField_a_of_type_Wix);
-    super.setOnItemClickListener(this.jdField_a_of_type_Wix);
-    super.setOnScrollStateChangedListener(new wiv(this));
+    this.b = bdaq.a(paramContext, 82.0F);
+    this.jdField_a_of_type_Wng = new wng(getContext());
+    super.setAdapter(this.jdField_a_of_type_Wng);
+    super.setOnItemClickListener(this.jdField_a_of_type_Wng);
+    super.setOnScrollStateChangedListener(new wne(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Wix;
+    return this.jdField_a_of_type_Wng;
   }
   
-  public void setDate(List<wiu> paramList, String paramString)
+  public void setDate(List<wnd> paramList, String paramString)
   {
-    this.jdField_a_of_type_Wix.a(paramList, paramString);
+    this.jdField_a_of_type_Wng.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {

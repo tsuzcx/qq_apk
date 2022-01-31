@@ -1,8 +1,6 @@
 public abstract interface bnmi
 {
-  public abstract bnmn a();
-  
-  public abstract bnmn a(int paramInt);
+  public abstract void a();
 }
 
 

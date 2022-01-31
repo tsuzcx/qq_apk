@@ -1,27 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
 public class afbw
-  implements afal
+  extends afbz
 {
-  private BaseChatPie a;
+  public int a;
+  public int b;
   
-  public afbw(BaseChatPie paramBaseChatPie)
+  public afbw(int paramInt1, int paramInt2)
   {
-    this.a = paramBaseChatPie;
+    this.b = paramInt1;
+    this.a = paramInt2;
   }
   
-  public void a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    String str = this.a.c();
-    if (!TextUtils.isEmpty(str)) {
-      bdsn.a(this.a.a).a(str);
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[6];
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof afbw));
+      paramObject = (afbw)paramObject;
+    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
+    return true;
   }
 }
 

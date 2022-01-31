@@ -1,14 +1,17 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.theme.TextHook;
 
-public abstract interface bdwa
+class bdwa
+  extends BroadcastReceiver
 {
-  public abstract int a(boolean paramBoolean, String paramString);
-  
-  public abstract bdvv a(String paramString);
-  
-  public abstract void a(bdvv parambdvv, bdvu parambdvu, Bundle paramBundle);
-  
-  public abstract void b();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent.getBooleanExtra("isFont", false)) {
+      TextHook.getInstance().checkTypeface(paramContext);
+    }
+  }
 }
 
 

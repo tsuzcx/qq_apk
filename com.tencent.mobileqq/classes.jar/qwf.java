@@ -3,24 +3,24 @@ import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearch
 import com.tencent.widget.ListView;
 
 public class qwf
-  extends ayff<ayjl, ayru>
+  extends ayjo<aynu, aywd>
 {
-  public qwf(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, bcws parambcws)
+  public qwf(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, bdbb parambdbb)
   {
-    super(paramListView, parambcws);
+    super(paramListView, parambdbb);
   }
   
-  protected aymg<ayjl, ayru> a(int paramInt)
+  protected ayqp<aynu, aywd> a(int paramInt)
   {
-    if (((ayjl)a(paramInt) instanceof ayhw)) {
-      return new aynp(this.jdField_a_of_type_Bcws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    if (((aynu)a(paramInt) instanceof aymf)) {
+      return new ayry(this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
     }
-    return new qwb(this.jdField_a_of_type_Bcws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+    return new qwb(this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
   }
   
-  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  protected aywe a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new ayro(paramViewGroup, 2131562584);
+    return new ayvx(paramViewGroup, 2131562602);
   }
 }
 

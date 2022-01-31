@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import biib;
-import biie;
-import biux;
+import bimi;
+import biml;
+import bize;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -31,13 +31,13 @@ public class Leba$5
         WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
       }
     }
-    localObject = (biux)this.this$0.a.getManager(129);
+    localObject = (bize)this.this$0.a.getManager(129);
     if (localObject != null) {
-      ((biux)localObject).a(6);
+      ((bize)localObject).a(6);
     }
-    localObject = (biie)this.this$0.a.getManager(142);
+    localObject = (biml)this.this$0.a.getManager(142);
     if (localObject != null) {
-      biib.a(((biie)localObject).a(6), 500L);
+      bimi.a(((biml)localObject).a(6), 500L);
     }
     ThreadManager.post(new Leba.5.1(this), 5, null, false);
   }

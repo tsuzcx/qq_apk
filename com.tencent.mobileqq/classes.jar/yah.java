@@ -1,11 +1,15 @@
-class yah
-  implements yhf
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class yah
+  implements yar
 {
-  yah(yag paramyag) {}
+  public yah(ScannerActivity paramScannerActivity, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    this.a.jdField_a_of_type_Yae.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
+    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

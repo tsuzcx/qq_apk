@@ -1,17 +1,20 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bfag
-  extends aecn
+  extends BroadcastReceiver
 {
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  public bfag(WXShareHelper paramWXShareHelper) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (WXShareHelper.a(this.a) != null) {
+      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    }
+  }
 }
 
 

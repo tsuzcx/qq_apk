@@ -1,8 +1,8 @@
 package dov.com.qq.im.ptv;
 
-import bdfq;
-import bmay;
-import bmaz;
+import bdjz;
+import bmfk;
+import bmfl;
 
 public class LightVideoSoDownloadFragment$4
   implements Runnable
@@ -11,9 +11,9 @@ public class LightVideoSoDownloadFragment$4
   
   public void run()
   {
-    bmay localbmay = new bmay(this);
-    bmaz localbmaz = new bmaz(this);
-    bdfq.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbmay, localbmay, localbmaz);
+    bmfk localbmfk = new bmfk(this);
+    bmfl localbmfl = new bmfl(this);
+    bdjz.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbmfk, localbmfk, localbmfl);
   }
 }
 

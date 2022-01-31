@@ -1,34 +1,23 @@
-import android.graphics.Paint.Align;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public abstract interface atjm
+public class atjm
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  public atjm(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  public abstract String a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
   
-  public abstract void a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setAlign(Paint.Align paramAlign);
-  
-  public abstract void setLineMaxWidth(int paramInt);
-  
-  public abstract void setLyric(atsc paramatsc, int paramInt);
-  
-  public abstract void setOnSizeChangeListener(atjx paramatjx);
-  
-  public abstract void setSongId(String paramString);
-  
-  public abstract void setStrokeColor(int paramInt);
-  
-  public abstract void setStrokeWidth(int paramInt);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,31 +1,41 @@
-import android.os.Looper;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class accq
-  implements bdyc
+public class accq
+  extends bfzo
 {
-  private final WeakReference<accm> a;
+  public accq(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  accq(accm paramaccm)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a = new WeakReference(paramaccm);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.a(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          }
+        }
       }
     }
-    accm localaccm;
-    do
+    while (!QLog.isColorLevel())
     {
+      String str;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
-      localaccm = (accm)this.a.get();
-    } while (localaccm == null);
-    localaccm.a(paramString, paramBoolean);
+    }
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

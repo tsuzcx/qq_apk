@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-
-public class arrx
-  implements affd
+final class arrx
+  implements bezx
 {
-  public arrx(FlashChatPanel paramFlashChatPanel) {}
+  arrx(arrh paramarrh) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.a.a();
+    }
+  }
 }
 
 

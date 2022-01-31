@@ -1,27 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
 
 public class axmw
-  extends Animation
+  implements bhuy
 {
-  public axmw(CircleBarView paramCircleBarView) {}
+  public axmw(IosTimepicker paramIosTimepicker) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
     {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
       }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
     }
-    this.a.postInvalidate();
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

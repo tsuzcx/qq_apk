@@ -1,18 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class besz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public besz(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
+  public besz(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    paramView = new Intent();
+    paramView.putExtra("key_jump_from", "5");
+    tqs.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin, paramView);
+    tzv.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, 3, 1L, 2L);
   }
 }
 

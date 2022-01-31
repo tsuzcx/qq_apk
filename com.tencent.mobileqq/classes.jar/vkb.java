@@ -1,29 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class vkb
-  implements TVK_ICacheMgr.IPreloadCallback
+class vkb
+  extends vik
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  vkb(vji paramvji, StoryVideoItem paramStoryVideoItem, vkr paramvkr)
   {
-    synchronized ()
-    {
-      vkf localvkf = vjz.a();
-      vjz.a().post(new TVKPreloader.2.2(this, localvkf, paramString1, paramInt, paramString2));
-      return;
-    }
+    super(paramStoryVideoItem);
   }
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  public boolean b()
   {
-    synchronized ()
-    {
-      paramString2 = vjz.a();
-      vjz.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
+    this.jdField_a_of_type_Vkr.e = ((String)a("result"));
+    return true;
   }
 }
 

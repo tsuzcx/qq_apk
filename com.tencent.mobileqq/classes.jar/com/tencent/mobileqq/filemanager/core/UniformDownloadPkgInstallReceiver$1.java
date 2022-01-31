@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwa;
-import aqwh;
-import aqwi;
+import araj;
+import araq;
+import arar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -16,17 +16,17 @@ class UniformDownloadPkgInstallReceiver$1
   {
     if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.a)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.a)))
     {
-      Object localObject = aqwa.a().a(this.b, true);
+      Object localObject = araj.a().a(this.b, true);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          aqwh localaqwh = (aqwh)((Iterator)localObject).next();
-          if (localaqwh != null)
+          araq localaraq = (araq)((Iterator)localObject).next();
+          if (localaraq != null)
           {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localaqwh.a);
-            aqwi.a().c(localaqwh.a, null);
+            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localaraq.a);
+            arar.a().c(localaraq.a, null);
           }
         }
       }

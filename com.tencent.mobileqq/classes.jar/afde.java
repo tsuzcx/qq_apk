@@ -1,9 +1,19 @@
-import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
-public class afde
-  extends afeg
+class afde
+  extends ambp
 {
-  public ApolloMessageProgressView a;
+  afde(afdd paramafdd) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    afdd.a(this.a).a.b();
+    afgb localafgb = (afgb)afdd.a(this.a).a(29);
+    if (localafgb != null) {
+      localafgb.f();
+    }
+  }
 }
 
 

@@ -1,14 +1,42 @@
-import com.tencent.qqmini.sdk.launcher.AppUIProxy;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask.SerialExecutor.1;
+import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
+import java.util.concurrent.Executor;
 
 public class bgqd
-  extends bgpz
+  implements Executor
 {
-  public bgqd(AppUIProxy paramAppUIProxy) {}
+  final ArrayDeque<Runnable> jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque = new ArrayDeque();
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public void a(bgpy parambgpy)
+  public void a()
   {
-    if (parambgpy.a == 11) {
-      this.a.hideLoading();
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.poll();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.offer(new AsyncTask.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
     }
   }
 }

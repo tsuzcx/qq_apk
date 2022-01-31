@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multimsg;
 
-import aukx;
-import azmz;
+import aupg;
+import azri;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -14,7 +14,7 @@ import java.util.List;
 public class MultiMsgManager$5
   implements Runnable
 {
-  public MultiMsgManager$5(aukx paramaukx, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  public MultiMsgManager$5(aupg paramaupg, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,11 +24,11 @@ public class MultiMsgManager$5
     StringBuilder localStringBuilder;
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = aukx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = aupg.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
       if (localObject != null)
       {
         j = ((List)localObject).size();
-        k = aukx.a().a((Collection)localObject);
+        k = aupg.a().a((Collection)localObject);
         localObject = new HashMap();
         localStringBuilder = new StringBuilder();
         if (!this.jdField_a_of_type_Boolean) {
@@ -42,7 +42,7 @@ public class MultiMsgManager$5
       ((HashMap)localObject).put("result", i + "");
       ((HashMap)localObject).put("msgCount", j + "");
       ((HashMap)localObject).put("picCount", k + "");
-      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
+      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
       return;
     }
   }

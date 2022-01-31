@@ -1,49 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class awnb
-  extends VasWebviewJsPlugin
+public final class awnb
+  implements bauf
 {
-  public awnb()
+  public void a(bave parambave, bavf parambavf)
   {
-    this.mPluginNameSpace = "usersummary";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("usersummary"))) {
-      return false;
-    }
-    if ((this.mRuntime.a() instanceof FriendProfileCardActivity))
+    if ((parambave == null) || (parambavf == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle FriendProfileCardActivity");
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
       }
-      paramJsBridgeListener = (FriendProfileCardActivity)this.mRuntime.a();
-      paramJsBridgeListener.a(paramJsBridgeListener.a.a, false);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle none");
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambavf);
   }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
-    }
-    if (paramInt != -1) {}
-  }
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 

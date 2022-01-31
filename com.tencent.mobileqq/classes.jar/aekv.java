@@ -1,17 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
-final class aekv
-  implements bdzz
+public class aekv
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean)
+  public aekv(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      aekj.a();
+    default: 
+      return;
+    case 0: 
+      amqe.a().b(false);
+      paramDialogInterface.dismiss();
+      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
+      return;
     }
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
   }
 }
 

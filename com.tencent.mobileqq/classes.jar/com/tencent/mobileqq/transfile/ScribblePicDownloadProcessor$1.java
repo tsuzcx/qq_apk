@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import basl;
+import bawu;
 
 public class ScribblePicDownloadProcessor$1
   implements Runnable
 {
-  public ScribblePicDownloadProcessor$1(basl parambasl) {}
+  public ScribblePicDownloadProcessor$1(bawu parambawu) {}
   
   public void run()
   {

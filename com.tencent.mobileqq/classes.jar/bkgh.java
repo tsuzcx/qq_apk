@@ -1,53 +1,55 @@
+import BOSSStrategyCenter.tAdvDesc;
 import android.text.TextUtils;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.utils.ErrorCodeUtil;
-import com.tencent.weiyun.utils.NetworkUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class bkgh
+public class bkgh
+  extends ajin
 {
-  public static String a(int paramInt, String paramString)
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  
+  public bkgh(tAdvDesc paramtAdvDesc)
   {
-    String str = paramString;
-    if (paramInt != 0)
-    {
-      str = paramString;
-      if (TextUtils.isEmpty(paramString))
-      {
-        str = ErrorCodeUtil.getErrorMsg(paramInt);
-        paramString = str;
-        if (TextUtils.isEmpty(str)) {
-          if (!ErrorCodeUtil.isHttpError(paramInt)) {
-            break label101;
-          }
-        }
-      }
-    }
-    label101:
-    for (paramString = ErrorCodeUtil.getErrorMsg(1810023);; paramString = ErrorCodeUtil.getErrorMsg(1810014))
-    {
-      str = paramString;
-      if (1810008 == paramInt) {
-        str = paramString + "\n请尝试下载到其他路径";
-      }
-      str = "(" + paramInt + ")" + str;
-      return str;
-    }
+    super(paramtAdvDesc);
   }
   
-  public static String a(String paramString)
+  protected void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
+    super.a();
+    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
     }
-    paramString = new StringBuilder(paramString);
-    int i = NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext());
-    paramString.append("&nettype=").append(i);
-    return paramString.toString();
-  }
-  
-  static boolean a(int paramInt)
-  {
-    return (-29150 == paramInt) || (-29151 == paramInt) || (-29152 == paramInt);
+    String str = this.a.res_data;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(str);
+      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
+      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
+      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
+      this.c = localJSONObject.optString("topText");
+      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
+      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
+      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
+      this.g = localJSONObject.optString("coutdownTextColor");
+      this.h = localJSONObject.optString("buttonTitle");
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bjqm.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
   }
 }
 

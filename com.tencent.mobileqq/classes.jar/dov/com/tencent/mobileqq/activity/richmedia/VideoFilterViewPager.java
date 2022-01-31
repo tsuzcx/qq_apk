@@ -10,24 +10,24 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azfz;
-import blen;
-import bler;
-import blmf;
-import blnl;
-import blno;
-import blob;
-import bloe;
-import blol;
-import blwi;
-import bmld;
-import bncp;
-import bncq;
-import bncr;
-import bncu;
-import bncv;
-import bncw;
-import bncx;
+import azki;
+import bliu;
+import bliy;
+import blqr;
+import blrx;
+import blsa;
+import blsn;
+import blsq;
+import blsx;
+import bmau;
+import bmpp;
+import bnhb;
+import bnhc;
+import bnhd;
+import bnhg;
+import bnhh;
+import bnhi;
+import bnhj;
 import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -35,20 +35,20 @@ import dov.com.qq.im.ae.camera.ui.panel.AEFilterProviderView;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 import java.util.ArrayList;
 import java.util.List;
-import wta;
+import wxj;
 
 public class VideoFilterViewPager
   extends UnHandleTouchEventViewPager
-  implements blno
+  implements blsa
 {
   public int a;
   public long a;
   private View jdField_a_of_type_AndroidViewView;
-  private blwi jdField_a_of_type_Blwi;
-  private bncu jdField_a_of_type_Bncu;
-  private bncv jdField_a_of_type_Bncv;
-  private bncw jdField_a_of_type_Bncw;
-  private bncx jdField_a_of_type_Bncx;
+  private bmau jdField_a_of_type_Bmau;
+  private bnhg jdField_a_of_type_Bnhg;
+  private bnhh jdField_a_of_type_Bnhh;
+  private bnhi jdField_a_of_type_Bnhi;
+  private bnhj jdField_a_of_type_Bnhj;
   private int b;
   public boolean b;
   public boolean c = true;
@@ -80,7 +80,7 @@ public class VideoFilterViewPager
   
   private void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    if (azfz.l()) {}
+    if (azki.l()) {}
     QIMFilterCategoryItem localQIMFilterCategoryItem;
     do
     {
@@ -94,7 +94,7 @@ public class VideoFilterViewPager
       this.jdField_a_of_type_AndroidViewView = paramView;
       this.jdField_b_of_type_Int = paramInt;
       paramView.setVisibility(0);
-      localQIMFilterCategoryItem = this.jdField_a_of_type_Bncx.a(paramInt);
+      localQIMFilterCategoryItem = this.jdField_a_of_type_Bnhj.a(paramInt);
       if (localQIMFilterCategoryItem != null) {
         break;
       }
@@ -103,23 +103,23 @@ public class VideoFilterViewPager
     return;
     Object localObject2;
     Object localObject1;
-    if (bler.a().b())
+    if (bliy.a().b())
     {
-      localObject2 = blen.a();
+      localObject2 = bliu.a();
       if (paramInt == 0)
       {
         localObject1 = "none";
         label137:
-        ((blen)localObject2).i((String)localObject1);
-        localObject1 = (TextView)paramView.findViewById(2131364507);
-        localObject2 = (TextView)paramView.findViewById(2131364506);
-        Object localObject3 = (blnl)blmf.a(5);
+        ((bliu)localObject2).i((String)localObject1);
+        localObject1 = (TextView)paramView.findViewById(2131364509);
+        localObject2 = (TextView)paramView.findViewById(2131364508);
+        Object localObject3 = (blrx)blqr.a(5);
         if (!this.e)
         {
           Object localObject4 = new Bundle();
           ((Bundle)localObject4).putInt("apply_source", 2);
           ((Bundle)localObject4).putInt("capture_scene", this.jdField_a_of_type_Int);
-          ((blnl)localObject3).a(localQIMFilterCategoryItem, (Activity)getContext(), (Bundle)localObject4);
+          ((blrx)localObject3).a(localQIMFilterCategoryItem, (Activity)getContext(), (Bundle)localObject4);
           if ((this.j) && (this.i)) {
             AEFilterProviderView.a(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
           }
@@ -132,15 +132,15 @@ public class VideoFilterViewPager
               if (!(localObject4 instanceof QIMCameraCaptureActivity)) {
                 break label550;
               }
-              wta.a("clk_swipe", paramInt, 0, new String[] { "", localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString });
+              wxj.a("clk_swipe", paramInt, 0, new String[] { "", localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString });
             }
           }
         }
         label320:
-        localObject3 = ((blnl)localObject3).a(localQIMFilterCategoryItem);
-        paramInt = ((bloe)localObject3).d();
+        localObject3 = ((blrx)localObject3).a(localQIMFilterCategoryItem);
+        paramInt = ((blsq)localObject3).d();
         if (QLog.isColorLevel()) {
-          QLog.i("QCombo", 2, "onPageSelect state = " + paramInt + " " + ((bloe)localObject3).toString());
+          QLog.i("QCombo", 2, "onPageSelect state = " + paramInt + " " + ((blsq)localObject3).toString());
         }
         if ((!localQIMFilterCategoryItem.c()) && (!localQIMFilterCategoryItem.jdField_a_of_type_Boolean) && (!this.d)) {
           break label577;
@@ -159,22 +159,22 @@ public class VideoFilterViewPager
       }
       paramView.setVisibility(0);
       a(paramView, localQIMFilterCategoryItem, paramInt);
-      if (this.jdField_a_of_type_Blwi == null) {
+      if (this.jdField_a_of_type_Bmau == null) {
         break;
       }
-      this.jdField_a_of_type_Blwi.b(true);
+      this.jdField_a_of_type_Bmau.b(true);
       return;
       localObject1 = "" + localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString;
       break label137;
-      localObject2 = blen.a();
+      localObject2 = bliu.a();
       if (paramInt == 0) {}
       for (localObject1 = "none";; localObject1 = "" + localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString)
       {
-        ((blen)localObject2).e((String)localObject1);
+        ((bliu)localObject2).e((String)localObject1);
         break;
       }
       label550:
-      wta.b("filter_swipe", paramInt, 0, new String[] { "", localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString });
+      wxj.b("filter_swipe", paramInt, 0, new String[] { "", localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString });
       break label320;
       label577:
       ((TextView)localObject1).setVisibility(0);
@@ -184,8 +184,8 @@ public class VideoFilterViewPager
   
   private void a(View paramView, QIMFilterCategoryItem paramQIMFilterCategoryItem, int paramInt)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131364507);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131364506);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131364509);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131364508);
     ViewParent localViewParent = getParent();
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -193,10 +193,10 @@ public class VideoFilterViewPager
     {
       localObject1 = localObject2;
       if ((localViewParent instanceof RelativeLayout)) {
-        localObject1 = (RelativeLayout)((RelativeLayout)localViewParent).findViewById(2131369774);
+        localObject1 = (RelativeLayout)((RelativeLayout)localViewParent).findViewById(2131369793);
       }
     }
-    boolean bool = ((blnl)blmf.a(5)).d();
+    boolean bool = ((blrx)blqr.a(5)).d();
     switch (paramInt)
     {
     }
@@ -285,22 +285,22 @@ public class VideoFilterViewPager
   
   private void b(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Bncx.a(paramInt);
+    View localView = this.jdField_a_of_type_Bnhj.a(paramInt);
     if (localView != null)
     {
-      QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Bncx.a(paramInt);
+      QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Bnhj.a(paramInt);
       if (localQIMFilterCategoryItem != null) {
-        a(localView, localQIMFilterCategoryItem, ((blnl)blmf.a(5)).a(localQIMFilterCategoryItem).jdField_a_of_type_Int);
+        a(localView, localQIMFilterCategoryItem, ((blrx)blqr.a(5)).a(localQIMFilterCategoryItem).jdField_a_of_type_Int);
       }
     }
   }
   
   private void c(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Bncx.a(paramInt);
+    View localView = this.jdField_a_of_type_Bnhj.a(paramInt);
     if (localView != null)
     {
-      QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Bncx.a(paramInt);
+      QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Bnhj.a(paramInt);
       if (localQIMFilterCategoryItem != null) {
         a(localView, localQIMFilterCategoryItem, 4);
       }
@@ -309,26 +309,26 @@ public class VideoFilterViewPager
   
   private void e()
   {
-    this.jdField_a_of_type_Bncx = new bncx(this);
-    this.jdField_a_of_type_Bncw = new bncw(this);
-    setAdapter(this.jdField_a_of_type_Bncx);
-    setOnPageChangeListener(this.jdField_a_of_type_Bncw);
+    this.jdField_a_of_type_Bnhj = new bnhj(this);
+    this.jdField_a_of_type_Bnhi = new bnhi(this);
+    setAdapter(this.jdField_a_of_type_Bnhj);
+    setOnPageChangeListener(this.jdField_a_of_type_Bnhi);
   }
   
   public void a()
   {
     String str = AEFilterProviderView.a();
-    this.jdField_a_of_type_Bncx.a(str);
+    this.jdField_a_of_type_Bnhj.a(str);
   }
   
   public void a(int paramInt)
   {
-    setCurrentItem(this.jdField_a_of_type_Bncx.a() * 50 + paramInt);
+    setCurrentItem(this.jdField_a_of_type_Bnhj.a() * 50 + paramInt);
   }
   
-  public void a(blob paramblob) {}
+  public void a(blsn paramblsn) {}
   
-  public void a(blob paramblob, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(blsn paramblsn, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
     if (paramBundle == null) {
       QLog.e("QCombo", 1, "onComboApply aborted");
@@ -342,8 +342,8 @@ public class VideoFilterViewPager
         QLog.e("QCombo", 2, "onComboApply aborted " + this.jdField_a_of_type_Int + paramInt);
         return;
       }
-      paramBundle = ((blnl)blmf.a(5)).a(paramblob, this.jdField_a_of_type_Bncx.a);
-      ArrayList localArrayList = this.jdField_a_of_type_Bncx.a;
+      paramBundle = ((blrx)blqr.a(5)).a(paramblsn, this.jdField_a_of_type_Bnhj.a);
+      ArrayList localArrayList = this.jdField_a_of_type_Bnhj.a;
       this.d = true;
       int k;
       if (localArrayList != null)
@@ -362,13 +362,13 @@ public class VideoFilterViewPager
       }
       for (paramInt = k; QLog.isColorLevel(); paramInt = -1)
       {
-        QLog.i("QCombo", 2, "vp onComboApply combo " + paramblob.jdField_a_of_type_JavaLangObject + " filter " + paramBundle + " index " + paramInt);
+        QLog.i("QCombo", 2, "vp onComboApply combo " + paramblsn.jdField_a_of_type_JavaLangObject + " filter " + paramBundle + " index " + paramInt);
         return;
       }
     }
   }
   
-  public void a(bloe parambloe, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(blsq paramblsq, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
     if (paramBundle == null) {
       QLog.e("QCombo", 1, "onFilterApply aborted");
@@ -387,19 +387,19 @@ public class VideoFilterViewPager
             QLog.e("QCombo", 2, "onFilterApply aborted " + this.jdField_a_of_type_Int + paramInt);
             return;
           }
-        } while (!(parambloe.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem));
-        bler.a().e(parambloe.b());
-        parambloe = (QIMFilterCategoryItem)parambloe.jdField_a_of_type_JavaLangObject;
-        localArrayList = this.jdField_a_of_type_Bncx.a;
+        } while (!(paramblsq.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem));
+        bliy.a().e(paramblsq.b());
+        paramblsq = (QIMFilterCategoryItem)paramblsq.jdField_a_of_type_JavaLangObject;
+        localArrayList = this.jdField_a_of_type_Bnhj.a;
       } while (localArrayList == null);
-      paramInt = localArrayList.indexOf(parambloe);
+      paramInt = localArrayList.indexOf(paramblsq);
     } while (paramInt < 0);
     this.d = false;
     int k;
-    if ((paramBundle.getInt("apply_source", 2) == 1) || (paramBundle.getInt("apply_source", 2) == blnl.jdField_a_of_type_Int))
+    if ((paramBundle.getInt("apply_source", 2) == 1) || (paramBundle.getInt("apply_source", 2) == blrx.jdField_a_of_type_Int))
     {
       this.e = true;
-      k = this.jdField_a_of_type_Bncx.a() * 50 + paramInt;
+      k = this.jdField_a_of_type_Bnhj.a() * 50 + paramInt;
       if (k == this.jdField_b_of_type_Int) {
         if (paramBoolean)
         {
@@ -410,11 +410,11 @@ public class VideoFilterViewPager
     }
     for (;;)
     {
-      wta.a((Activity)getContext(), "filter_element", String.valueOf(parambloe.jdField_a_of_type_Int), parambloe.jdField_a_of_type_JavaLangString);
+      wxj.a((Activity)getContext(), "filter_element", String.valueOf(paramblsq.jdField_a_of_type_Int), paramblsq.jdField_a_of_type_JavaLangString);
       if (!this.jdField_b_of_type_Boolean) {
         break;
       }
-      bmld.a().a();
+      bmpp.a().a();
       return;
       c(k);
       continue;
@@ -422,7 +422,7 @@ public class VideoFilterViewPager
       {
         a(paramInt);
         continue;
-        if ((paramBundle.getInt("apply_source", 2) == 2) && (paramInt == this.jdField_a_of_type_Bncx.a(this.jdField_b_of_type_Int)))
+        if ((paramBundle.getInt("apply_source", 2) == 2) && (paramInt == this.jdField_a_of_type_Bnhj.a(this.jdField_b_of_type_Int)))
         {
           paramInt = this.jdField_b_of_type_Int;
           if (paramBoolean) {
@@ -435,17 +435,17 @@ public class VideoFilterViewPager
     }
   }
   
-  public void a(blol paramblol, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public void a(blsx paramblsx, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void a(bncq parambncq)
+  public void a(bnhc parambnhc)
   {
-    if (parambncq != null)
+    if (parambnhc != null)
     {
-      parambncq = parambncq.a(this.jdField_a_of_type_Int);
-      if (parambncq != null)
+      parambnhc = parambnhc.a(this.jdField_a_of_type_Int);
+      if (parambnhc != null)
       {
-        a(parambncq.c);
-        int k = parambncq.c.indexOf(bncp.a().c(this.jdField_a_of_type_Int));
+        a(parambnhc.c);
+        int k = parambnhc.c.indexOf(bnhb.a().c(this.jdField_a_of_type_Int));
         QLog.i("VideoFilterViewPager", 2, "onResourceDownload - update viewpagerIndex = " + k + "; getCurrentItem()" + getCurrentItem());
         if ((k != -1) && (k != getCurrentItem()))
         {
@@ -460,14 +460,14 @@ public class VideoFilterViewPager
   
   public void a(List<QIMFilterCategoryItem> paramList)
   {
-    if (azfz.l())
+    if (azki.l())
     {
       setVisibility(8);
       setEnabled(false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bncx.a(paramList);
+      this.jdField_a_of_type_Bnhj.a(paramList);
       QLog.i("VideoFilterViewPager", 2, "update getCurrentItem = " + getCurrentItem());
       return;
       if (!(getContext() instanceof QzoneEditVideoActivity))
@@ -500,14 +500,14 @@ public class VideoFilterViewPager
   public void b()
   {
     int k = getCurrentItem();
-    QLog.i("VideoFilterViewPager", 2, "needReselectMiddle getActualCount " + this.jdField_a_of_type_Bncx.a());
-    if ((k == 0) || (k % this.jdField_a_of_type_Bncx.a() == 0)) {
+    QLog.i("VideoFilterViewPager", 2, "needReselectMiddle getActualCount " + this.jdField_a_of_type_Bnhj.a());
+    if ((k == 0) || (k % this.jdField_a_of_type_Bnhj.a() == 0)) {
       QLog.i("VideoFilterViewPager", 2, "needReselectMiddle ");
     }
     for (k = 1;; k = 0)
     {
       if (k != 0) {
-        setCurrentItem(this.jdField_a_of_type_Bncx.a() * 50, false);
+        setCurrentItem(this.jdField_a_of_type_Bnhj.a() * 50, false);
       }
       return;
     }
@@ -533,13 +533,13 @@ public class VideoFilterViewPager
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ((blnl)blmf.a(5)).a(this);
+    ((blrx)blqr.a(5)).a(this);
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ((blnl)blmf.a(5)).b(this);
+    ((blrx)blqr.a(5)).b(this);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -567,9 +567,9 @@ public class VideoFilterViewPager
     }
   }
   
-  public void setProviderViewListener(blwi paramblwi)
+  public void setProviderViewListener(bmau parambmau)
   {
-    this.jdField_a_of_type_Blwi = paramblwi;
+    this.jdField_a_of_type_Bmau = parambmau;
   }
   
   public void setReadyToApply(boolean paramBoolean)
@@ -577,14 +577,14 @@ public class VideoFilterViewPager
     this.g = paramBoolean;
   }
   
-  public void setScrollCallBack(bncu parambncu)
+  public void setScrollCallBack(bnhg parambnhg)
   {
-    this.jdField_a_of_type_Bncu = parambncu;
+    this.jdField_a_of_type_Bnhg = parambnhg;
   }
   
-  public void setSecleteCallBack(bncv parambncv)
+  public void setSecleteCallBack(bnhh parambnhh)
   {
-    this.jdField_a_of_type_Bncv = parambncv;
+    this.jdField_a_of_type_Bnhh = parambnhh;
   }
 }
 

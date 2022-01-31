@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aege
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aege(UpgradeActivity paramUpgradeActivity) {}
+  public aege(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    azmj.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      azmj.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    UpgradeActivity.a(this.a, false);
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amlo.b(), String.valueOf(2), amlp.a(), "");
   }
 }
 

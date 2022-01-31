@@ -1,26 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
 
-final class vuv
-  implements URLDrawable.URLDrawableListener
+public class vuv
+  implements DialogInterface.OnDismissListener
 {
-  vuv(ImageView paramImageView, Drawable paramDrawable) {}
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public vuv(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    wsv.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
+    {
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
+      }
+      wxe.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+    }
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 

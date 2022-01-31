@@ -1,35 +1,22 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-class bkyr
-  implements View.OnClickListener
+public class bkyr
 {
-  bkyr(bkyq parambkyq, int paramInt, bkys parambkys) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public bkyr(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_Int != bkyq.a(this.jdField_a_of_type_Bkyq))
-    {
-      paramView = (bkys)bkyq.a(this.jdField_a_of_type_Bkyq).findViewHolderForAdapterPosition(bkyq.a(this.jdField_a_of_type_Bkyq));
-      if (paramView == null) {
-        break label94;
-      }
-      paramView.a(false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkys.a(true);
-      this.jdField_a_of_type_Bkyq.a(this.jdField_a_of_type_Int);
-      if (bkyq.a(this.jdField_a_of_type_Bkyq) != null) {
-        bkyq.a(this.jdField_a_of_type_Bkyq).setTextColor(Color.parseColor(bkyq.a(this.jdField_a_of_type_Bkyq)));
-      }
-      return;
-      label94:
-      this.jdField_a_of_type_Bkyq.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

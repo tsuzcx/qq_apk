@@ -1,67 +1,46 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class awfe
-  extends QIPCModule
+  extends alwx
 {
-  private static volatile awfe a;
+  public awfe(OpenApiManager paramOpenApiManager) {}
   
-  public awfe(String paramString)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    super(paramString);
+    a(false, paramString1, paramLong2);
   }
   
-  public static awfe a()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (a == null) {}
-    try
+    Intent localIntent;
+    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
     {
-      if (a == null) {
-        a = new awfe("PicSTWXQIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicSTWXQIPCModule", 2, "onCall, action = " + paramString);
-    }
-    paramString = paramBundle.getString("param_pic_path", "");
-    if (TextUtils.isEmpty(paramString)) {
       if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "path is empty");
+        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
+      }
+      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
+      paramString = (awfi)OpenApiManager.access$200(this.a).get(paramString);
+      if (paramString != null)
+      {
+        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
+        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
+        if (!paramBoolean) {
+          break label171;
+        }
       }
     }
-    int i;
-    do
+    label171:
+    for (int i = 0;; i = -9)
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, path = " + paramString);
-      }
-      i = paramBundle.getInt("param_from_type", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, fromType = " + i);
-      }
-      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle instanceof QQAppInterface)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
-    return null;
-    paramBundle = (QQAppInterface)paramBundle;
-    PicShareToWX.a().a(this, paramInt, paramBundle, paramString, i);
-    return null;
+      localIntent.putExtra("rs_code", i);
+      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
+      return;
+    }
   }
 }
 

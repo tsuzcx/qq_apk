@@ -1,6 +1,27 @@
-public abstract interface bndu
+import android.util.Property;
+
+class bndu
+  extends Property<bnds, Integer>
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  bndu(bnds parambnds, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(bnds parambnds)
+  {
+    if (parambnds != null) {
+      return Integer.valueOf(bnds.b(parambnds));
+    }
+    return Integer.valueOf(255);
+  }
+  
+  public void a(bnds parambnds, Integer paramInteger)
+  {
+    if (parambnds != null) {
+      bnds.b(parambnds, paramInteger.intValue());
+    }
+  }
 }
 
 

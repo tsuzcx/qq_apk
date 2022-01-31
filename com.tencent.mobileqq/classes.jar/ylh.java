@@ -1,19 +1,13 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
-public class ylh
-  implements ylg
+public abstract interface ylh
 {
-  public ylh(AsyncRichTextView paramAsyncRichTextView) {}
+  public abstract void a();
   
-  public boolean a(String paramString)
-  {
-    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
-    while (BaseApplicationImpl.getContext() == null) {
-      return true;
-    }
-    return true;
-  }
+  public abstract void a(AnimationDrawable paramAnimationDrawable);
+  
+  public abstract void a(QQAnimationDrawable paramQQAnimationDrawable);
 }
 
 

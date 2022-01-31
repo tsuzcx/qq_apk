@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alsi;
-import alxw;
-import amds;
+import alwx;
+import amcl;
+import amih;
 import android.os.Bundle;
-import azmj;
-import bipb;
+import azqs;
+import biti;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class GetSig
   extends AsyncStep
 {
-  private alsi a;
+  private alwx a;
   
   private void b()
   {
@@ -29,10 +29,10 @@ public class GetSig
   
   public int a()
   {
-    if (this.jdField_a_of_type_Alsi == null)
+    if (this.jdField_a_of_type_Alwx == null)
     {
-      this.jdField_a_of_type_Alsi = new amds(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Alsi);
+      this.jdField_a_of_type_Alwx = new amih(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Alwx);
     }
     b();
     return 2;
@@ -40,17 +40,17 @@ public class GetSig
   
   public void a()
   {
-    ((alxw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
-    azmj.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
-    bipb.a();
+    ((amcl)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
+    azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
+    biti.a();
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alsi != null)
+    if (this.jdField_a_of_type_Alwx != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alsi);
-      this.jdField_a_of_type_Alsi = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alwx);
+      this.jdField_a_of_type_Alwx = null;
     }
   }
 }

@@ -1,34 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.util.List;
 
-public class bajv
-  extends bdqc
+class bajv
+  implements bhuk
 {
-  bajv(bajt parambajt) {}
+  bajv(bajs parambajs, List paramList, baky parambaky, bhuf parambhuf) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 36) && ((paramObject instanceof Integer)))
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      paramView = (bakz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (bajs.a(this.jdField_a_of_type_Bajs) != null) {
+        bajs.a(this.jdField_a_of_type_Bajs).a(paramView.b(), this.jdField_a_of_type_Baky);
       }
-      paramInt = ((Integer)paramObject).intValue();
-      bajt.a(this.a, paramInt);
-      if (paramInt > 0)
-      {
-        this.a.a = true;
-        bdsc.a.download(null, bajt.a(this.a), bajt.a(this.a), false);
-      }
-    }
-    else
-    {
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
-    this.a.a = false;
-    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
+    this.jdField_a_of_type_Bhuf.cancel();
   }
 }
 

@@ -1,45 +1,63 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class bcgj
-  implements bcgo
+  implements View.OnTouchListener
 {
-  bcgj(bcgi parambcgi) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  bcgj(bcgh parambcgh) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
+    if ((this.jdField_a_of_type_Bcgh.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
+    int i = paramMotionEvent.getAction();
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof autj))) {}
+    for (paramMotionEvent = (autj)paramView.getTag();; paramMotionEvent = null)
     {
-      if (paramJSONObject.has("code")) {
-        break label88;
-      }
-      i = j;
-      paramInt = k;
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (i != 0))
+      switch (i)
       {
-        bcgi.a(this.a);
-        this.a.b();
       }
-      return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
+      for (;;)
       {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
+        return true;
+        if (paramMotionEvent != null)
+        {
+          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+        }
+        else
+        {
+          paramView.setAlpha(0.5F);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          }
+          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+          {
+            return true;
+            paramView.setAlpha(1.0F);
+          }
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          azqs.b(this.jdField_a_of_type_Bcgh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Bcgh.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
+          paramView = bcos.a().a(this.jdField_a_of_type_Bcgh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bcgh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramMotionEvent = new Intent(this.jdField_a_of_type_Bcgh.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+          paramMotionEvent.putExtra("url", paramView);
+          this.jdField_a_of_type_Bcgh.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
+          }
+        }
       }
     }
   }

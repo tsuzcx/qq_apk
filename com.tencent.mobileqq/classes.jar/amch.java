@@ -1,43 +1,154 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-public abstract class amch
-  extends amcc
+public class amch
+  implements Manager
 {
-  public amch(QQAppInterface paramQQAppInterface, amcg paramamcg, Class<? extends awbv> paramClass)
+  public static final String a;
+  public static boolean a;
+  private QQAppInterface a;
+  
+  static
   {
-    super(paramQQAppInterface, paramamcg, paramClass);
+    jdField_a_of_type_JavaLangString = amch.class.getSimpleName();
   }
   
-  protected void a()
+  public amch() {}
+  
+  public amch(QQAppInterface paramQQAppInterface)
   {
-    awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject = localawbw.a(this.jdField_a_of_type_JavaLangClass, false, null, null, null, null, null, null);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private static String a()
+  {
+    return (String)bkbq.a("search_keyword_list", "");
+  }
+  
+  private static void b(String paramString)
+  {
+    jdField_a_of_type_Boolean = true;
+    bkbq.a("search_keyword_list", paramString);
+  }
+  
+  public ArrayList<String> a()
+  {
+    localArrayList = new ArrayList();
+    Object localObject = a();
+    if (localObject != null) {
+      try
       {
-        awbv localawbv = (awbv)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(localawbv), localawbv);
+        localObject = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        return localArrayList;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    localawbw.a();
   }
   
-  public void a(awbv paramawbv, int paramInt, amci paramamci)
+  public void a()
   {
-    String str = a(paramawbv);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramawbv);
-    if (paramawbv.getStatus() == 1000)
+    b("");
+  }
+  
+  public void a(int paramInt)
+  {
+    ArrayList localArrayList = a();
+    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
+      localArrayList.remove(paramInt);
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramInt = 0;
+    while (paramInt < localArrayList.size())
     {
-      this.a.a(paramawbv, 0, paramInt, paramamci);
+      localJSONArray.put(localArrayList.get(paramInt));
+      paramInt += 1;
+    }
+    b(localJSONArray.toString());
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
+      }
       return;
     }
-    this.a.a(paramawbv, 1, paramInt, paramamci);
+    ArrayList localArrayList = a();
+    if (localArrayList.size() >= 10) {
+      localArrayList.remove(localArrayList.size() - 1);
+    }
+    localArrayList.remove(paramString);
+    localArrayList.add(0, paramString);
+    paramString = new JSONArray();
+    while (i < localArrayList.size())
+    {
+      paramString.put(localArrayList.get(i));
+      i += 1;
+    }
+    b(paramString.toString());
   }
+  
+  public void a(JSONArray paramJSONArray)
+  {
+    int j = 0;
+    if (paramJSONArray == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
+      }
+      return;
+    }
+    ArrayList localArrayList2 = a();
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null) {
+      localArrayList1 = new ArrayList();
+    }
+    localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      String str = paramJSONArray.optString(i);
+      if (!TextUtils.isEmpty(str))
+      {
+        localArrayList2.add(str);
+        localArrayList1.remove(str);
+      }
+      i += 1;
+    }
+    localArrayList2.addAll(localArrayList1);
+    paramJSONArray = new JSONArray();
+    if (localArrayList2.size() > 10) {
+      i = 10;
+    }
+    while (j < i)
+    {
+      paramJSONArray.put(localArrayList2.get(j));
+      j += 1;
+      continue;
+      i = localArrayList2.size();
+    }
+    b(paramJSONArray.toString());
+  }
+  
+  public void onDestroy() {}
 }
 
 

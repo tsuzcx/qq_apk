@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import alpo;
-import bayo;
+import alud;
+import bbcx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoListPlayerFragment$12$1$1
@@ -11,7 +11,7 @@ class TribeVideoListPlayerFragment$12$1$1
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getActivity(), 2, alpo.a(2131715499), 1).a();
+    QQToast.a(this.a.a.a.getActivity(), 2, alud.a(2131715511), 1).a();
   }
 }
 

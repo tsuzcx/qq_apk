@@ -6,7 +6,7 @@ import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import java.util.List;
 
 public class tbb
-  extends bhzz<stFeed, biac<stFeed>>
+  extends bieg<stFeed, biej<stFeed>>
 {
   public WSFollowFragment a;
   private WSPlayerManager a;
@@ -51,7 +51,7 @@ public class tbb
     return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.getActivity();
   }
   
-  public biac<stFeed> a(ViewGroup paramViewGroup, int paramInt)
+  public biej<stFeed> a(ViewGroup paramViewGroup, int paramInt)
   {
     paramViewGroup = tfq.a(paramInt, paramViewGroup, this);
     tlo.a("WSFollowContinuePlayLog", "===> WSFollowAdapter onCreateCustomViewHolder viewHolder:" + paramViewGroup);
@@ -88,36 +88,36 @@ public class tbb
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localtgd.jdField_a_of_type_Thl);
   }
   
-  public void a(biac<stFeed> parambiac)
+  public void a(biej<stFeed> parambiej)
   {
-    tlo.b("WSFollowAdapter", "[WSFollowAdapter.java][onViewAttachedToWindow] holder: " + parambiac);
-    if (((parambiac instanceof tfk)) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.getUserVisibleHint())) {
-      ((tfk)parambiac).d();
+    tlo.b("WSFollowAdapter", "[WSFollowAdapter.java][onViewAttachedToWindow] holder: " + parambiej);
+    if (((parambiej instanceof tfk)) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.getUserVisibleHint())) {
+      ((tfk)parambiej).d();
     }
   }
   
-  public void a(biac<stFeed> parambiac, int paramInt)
+  public void a(biej<stFeed> parambiej, int paramInt)
   {
     stFeed localstFeed = (stFeed)a(paramInt);
     if (localstFeed == null) {}
     do
     {
       return;
-      if ((parambiac instanceof tfk))
+      if ((parambiej instanceof tfk))
       {
-        parambiac.a(localstFeed);
-        tfk localtfk = (tfk)parambiac;
+        parambiej.a(localstFeed);
+        tfk localtfk = (tfk)parambiej;
         localtfk.jdField_a_of_type_Thp = thn.a(localstFeed.feed);
         tel.a().a(localtfk);
         localtfk.jdField_a_of_type_Thf = tel.a().a(localtfk);
         localtfk.jdField_a_of_type_Thl = tel.a().a(localtfk, 0L, paramInt);
-        tlo.a("WSFollowContinuePlayLog", "===> WSFollowAdapter onBindCustomViewHolder1 holder:" + parambiac);
+        tlo.a("WSFollowContinuePlayLog", "===> WSFollowAdapter onBindCustomViewHolder1 holder:" + parambiej);
         tlo.a("WSFollowContinuePlayLog", "===> WSFollowAdapter onBindCustomViewHolder2 position:" + paramInt + ", title: " + localtfk.jdField_a_of_type_Thp.d);
         this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.b(localtfk);
         return;
       }
-    } while (!(parambiac instanceof tfr));
-    ((tfr)parambiac).a(localstFeed);
+    } while (!(parambiej instanceof tfr));
+    ((tfr)parambiej).a(localstFeed);
   }
   
   public void a(WSPlayerManager paramWSPlayerManager)
@@ -136,11 +136,11 @@ public class tbb
     tel.a().a(paramtgd.jdField_a_of_type_Thl);
   }
   
-  public void b(biac<stFeed> parambiac)
+  public void b(biej<stFeed> parambiej)
   {
-    super.onViewDetachedFromWindow(parambiac);
-    if ((parambiac instanceof tfk)) {
-      ((tfk)parambiac).c();
+    super.onViewDetachedFromWindow(parambiej);
+    if ((parambiej instanceof tfk)) {
+      ((tfk)parambiej).c();
     }
   }
   

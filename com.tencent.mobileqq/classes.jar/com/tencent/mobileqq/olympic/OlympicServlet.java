@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import avxz;
-import awiz;
-import bdcb;
-import bdee;
-import bdku;
+import awci;
+import awni;
+import bdgk;
+import bdin;
+import bdpd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.DeviceInfo;
@@ -70,7 +70,7 @@ public class OlympicServlet
   {
     if (paramAppRuntime == null)
     {
-      avxz.b("OlympicServlet", new Object[] { "reportConfig, runtime is null" });
+      awci.b("OlympicServlet", new Object[] { "reportConfig, runtime is null" });
       return;
     }
     if (QLog.isColorLevel()) {
@@ -151,7 +151,7 @@ public class OlympicServlet
     int m;
     if (bool)
     {
-      Object localObject1 = bdku.b(paramFromServiceMsg.getWupBuffer());
+      Object localObject1 = bdpd.b(paramFromServiceMsg.getWupBuffer());
       switch (j)
       {
       default: 
@@ -291,7 +291,7 @@ public class OlympicServlet
       if (i == -1)
       {
         localObject2 = localPageRespInfo.md5.get();
-        localObject4 = awiz.a((byte[])localObject3);
+        localObject4 = awni.a((byte[])localObject3);
         i = localPageRespInfo.total_size.get();
         if (QLog.isColorLevel()) {
           QLog.i("OlympicServlet", 2, "onReceive,respSize=" + i + ",md5=" + (String)localObject2 + ",md5Cal=" + (String)localObject4);
@@ -417,7 +417,7 @@ public class OlympicServlet
         localObject1 = new Unisso.UniSsoServerReq();
         localObject2 = new PackServer.PkgReq();
         ((PackServer.PkgReq)localObject2).cmdtype.set(1);
-        ((PackServer.PkgReq)localObject2).net_type.set(bdee.a(BaseApplicationImpl.sApplication));
+        ((PackServer.PkgReq)localObject2).net_type.set(bdin.a(BaseApplicationImpl.sApplication));
         localObject3 = paramIntent.getStringExtra("k_uin");
         ((PackServer.PkgReq)localObject2).uin.set(Long.parseLong((String)localObject3));
         ((PackServer.PkgReq)localObject2).from_id.set(1);
@@ -430,7 +430,7 @@ public class OlympicServlet
         paramIntent.signature.set(ByteStringMicro.copyFrom(((String)localObject3 + k + j).getBytes()));
         ((PackServer.PkgReq)localObject2).get_new_pack.set(paramIntent);
         ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackServer.PkgReq)localObject2).toByteArray()));
-        paramIntent = bdku.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+        paramIntent = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
         localObject1 = "NY2015.get_new_pack";
         break;
         j = paramIntent.getIntExtra("k_taskid", 0);
@@ -450,15 +450,15 @@ public class OlympicServlet
         localObject2 = new ConfigurationService.Screen();
         ((ConfigurationService.Screen)localObject2).setHasFlag(true);
         ((ConfigurationService.Screen)localObject2).model.set("");
-        ((ConfigurationService.Screen)localObject2).width.set((int)bdcb.g());
-        ((ConfigurationService.Screen)localObject2).height.set((int)bdcb.h());
-        ((ConfigurationService.Screen)localObject2).dpi.set(bdcb.d());
-        ((ConfigurationService.Screen)localObject2).multi_touch.set(bdcb.c());
+        ((ConfigurationService.Screen)localObject2).width.set((int)bdgk.g());
+        ((ConfigurationService.Screen)localObject2).height.set((int)bdgk.h());
+        ((ConfigurationService.Screen)localObject2).dpi.set(bdgk.d());
+        ((ConfigurationService.Screen)localObject2).multi_touch.set(bdgk.c());
         ((ConfigurationService.DeviceInfo)localObject1).setHasFlag(true);
         ((ConfigurationService.DeviceInfo)localObject1).screen = ((ConfigurationService.Screen)localObject2);
         paramIntent.device_info.set((MessageMicro)localObject1);
         paramIntent.type.set(1003);
-        paramIntent = bdku.a(paramIntent.toByteArray());
+        paramIntent = bdpd.a(paramIntent.toByteArray());
         localObject1 = "ConfigurationService.ReqGetConfigByPage";
         break;
         localObject2 = new ConfigurationService.ReqReportConfig();
@@ -470,7 +470,7 @@ public class OlympicServlet
         ((ConfigurationService.ReportConfig)localObject1).result.set(paramIntent.getIntExtra("k_code", -1));
         ((ConfigurationService.ReqReportConfig)localObject2).config_list.add((MessageMicro)localObject1);
         localObject1 = "ConfigurationService.ReqReportConfig";
-        paramIntent = bdku.a(((ConfigurationService.ReqReportConfig)localObject2).toByteArray());
+        paramIntent = bdpd.a(((ConfigurationService.ReqReportConfig)localObject2).toByteArray());
         break;
         localObject1 = new Unisso.UniSsoServerReq();
         localObject2 = new PackReport.PkgReq();
@@ -565,7 +565,7 @@ public class OlympicServlet
       }
       ((PackReport.PkgReq)localObject2).report.set(paramIntent);
       ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackReport.PkgReq)localObject2).toByteArray()));
-      paramIntent = bdku.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+      paramIntent = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
       localObject1 = "NewYearReport.pack_report";
     }
   }

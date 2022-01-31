@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import altc;
-import alti;
+import alxr;
+import alxx;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class NewFriendManager$5
   implements Runnable
 {
-  public NewFriendManager$5(altc paramaltc, int paramInt) {}
+  public NewFriendManager$5(alxr paramalxr, int paramInt) {}
   
   public void run()
   {
-    synchronized (altc.a(this.this$0))
+    synchronized (alxr.a(this.this$0))
     {
-      Iterator localIterator = altc.a(this.this$0).iterator();
+      Iterator localIterator = alxr.a(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((alti)localIterator.next()).j_(this.a);
+        ((alxx)localIterator.next()).j_(this.a);
       }
     }
   }

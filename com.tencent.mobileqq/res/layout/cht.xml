@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/bp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/mkj" android:layout="@layout/cim" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.biz.qqcircle.component.ComponentPageView android:id="@id/kip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/mkj" />
-    <ViewStub android:id="@id/mky" android:layout="@layout/chr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextureView android:id="@id/mqk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/mgg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bkh" android:scaleType="centerCrop" />
+    <ImageButton android:id="@id/ldf" android:background="@color/ajp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/e95" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/jpl" android:visibility="gone" android:layout_width="221.0dip" android:layout_height="47.0dip" android:src="@drawable/bsu" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/jpo" android:visibility="gone" android:layout_width="221.0dip" android:layout_height="47.0dip" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/mgb" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="36.0dip" android:layout_marginBottom="70.0dip" android:src="@drawable/e9_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

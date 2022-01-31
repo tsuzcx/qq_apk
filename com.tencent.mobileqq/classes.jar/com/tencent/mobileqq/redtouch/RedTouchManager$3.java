@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.redtouch;
 
-import axho;
+import axlx;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 
 public class RedTouchManager$3
   implements Runnable
 {
-  public RedTouchManager$3(axho paramaxho, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
+  public RedTouchManager$3(axlx paramaxlx, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
   public void run()
   {

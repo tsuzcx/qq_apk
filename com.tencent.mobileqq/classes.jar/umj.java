@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class umj
+class umj
+  implements INetEventHandler
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
-  {
-    return unc.a(paramQQUserUIItem);
-  }
+  private umj(umg paramumg) {}
   
-  public static boolean a()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    return true;
-  }
-  
-  public static String b(QQUserUIItem paramQQUserUIItem)
-  {
-    return unc.b(paramQQUserUIItem);
+    wxe.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
+    this.a.b.set(true);
   }
 }
 

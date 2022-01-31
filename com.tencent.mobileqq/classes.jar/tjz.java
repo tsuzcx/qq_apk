@@ -54,7 +54,7 @@ public class tjz
     }
     for (;;)
     {
-      azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedUserConsumption", true, 0L, 0L, localHashMap, "");
+      azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedUserConsumption", true, 0L, 0L, localHashMap, "");
       Log.w("weishi-beacon", "reportFallListExit{ stayTime:" + paramLong1 + ",loadTime:" + paramLong2 + ",exposeCount:" + paramInt + ",hasClickFuceng:" + paramBoolean1 + ",hasClickWeishi:" + paramBoolean2);
       tlq.jdField_a_of_type_Boolean = false;
       return;
@@ -71,7 +71,7 @@ public class tjz
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
     localHashMap.put("actWsFeedPageLoadDuration", "" + paramLong);
-    azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
     Log.w("weishi-beacon", " actWsFeedPageLoadDuration=" + paramLong);
   }
   
@@ -82,7 +82,7 @@ public class tjz
     localHashMap.put("actWsFeedPicReqDuration", "" + paramLong1);
     localHashMap.put("actWsFeedPicBytes", "" + paramLong2);
     Log.i("actWsGzhFeedPerformance", "actWsFeedPicBytes=" + paramLong2);
-    azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
     Log.i("weishi-beacon", "actWsFeedPicReqDuration=" + paramLong1);
   }
   
@@ -91,7 +91,7 @@ public class tjz
     paramLong = a(paramLong, 20000L);
     HashMap localHashMap = new HashMap();
     localHashMap.put("actWSFeedListReqDuration", "" + paramLong);
-    azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
     Log.w("weishi-beacon", "actWSFeedListReqDuration=" + paramLong);
   }
   
@@ -100,7 +100,7 @@ public class tjz
     paramLong = a(paramLong, 20000L);
     HashMap localHashMap = new HashMap();
     localHashMap.put("actWsFeedNotificationReqDuration", "" + paramLong);
-    azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
     Log.w("weishi-beacon", "actWsFeedNotificationReqDuration=" + paramLong);
   }
   
@@ -109,7 +109,7 @@ public class tjz
     paramLong = a(paramLong, 20000L);
     HashMap localHashMap = new HashMap();
     localHashMap.put("actWsPlayPageLoadDuration", "" + paramLong);
-    azmz.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a(null, "actWsGzhFeedPerformance", paramBoolean, 0L, 0L, localHashMap, "");
     Log.w("weishi-beacon", "actWsPlayPageLoadDuration=" + paramLong);
   }
 }

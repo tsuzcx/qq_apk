@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aild;
-import aimd;
+import aips;
+import aiqs;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Locale;
 public class NewAlbumListAdapter$1
   implements Runnable
 {
-  public NewAlbumListAdapter$1(aimd paramaimd) {}
+  public NewAlbumListAdapter$1(aiqs paramaiqs) {}
   
   public void run()
   {
@@ -57,7 +57,7 @@ public class NewAlbumListAdapter$1
               n += 1;
             } else if ((str1.equals("weixin")) || (str1.equals("wechat")) || (str1.equals("micromsg"))) {
               k += ((QQAlbumInfo)localObject2).mMediaFileCount;
-            } else if (aild.a(str2)) {
+            } else if (aips.a(str2)) {
               j += ((QQAlbumInfo)localObject2).mMediaFileCount;
             } else {
               i += ((QQAlbumInfo)localObject2).mMediaFileCount;
@@ -69,7 +69,7 @@ public class NewAlbumListAdapter$1
             i4 += ((QQAlbumInfo)localObject2).mMediaFileCount;
           } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains("相机")) || (str1.contains("照片")) || (str1.contains("相片"))) {
             i6 += ((QQAlbumInfo)localObject2).mMediaFileCount;
-          } else if (aild.a(str2)) {
+          } else if (aips.a(str2)) {
             j += ((QQAlbumInfo)localObject2).mMediaFileCount;
           } else {
             i += ((QQAlbumInfo)localObject2).mMediaFileCount;
@@ -77,7 +77,7 @@ public class NewAlbumListAdapter$1
         }
       }
     }
-    aild.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
+    aips.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
   }
 }
 

@@ -1,14 +1,47 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-class bkyg
-  implements View.OnClickListener
+public class bkyg
+  extends bktk
 {
-  bkyg(bkyc parambkyc) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  public bkyg(ViewStub paramViewStub)
   {
-    bkyc.a(this.a).a();
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365926);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365925));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692712);
+  }
+  
+  public void c()
+  {
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

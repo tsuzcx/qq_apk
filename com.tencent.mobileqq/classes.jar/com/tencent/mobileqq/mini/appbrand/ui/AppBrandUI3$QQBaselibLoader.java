@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import bgkv;
+import bgpc;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
@@ -64,14 +64,14 @@ public class AppBrandUI3$QQBaselibLoader
         if ((!paramContext.isBaseLibInited()) && (i != 0))
         {
           QLog.d("minisdk-start", 1, "readJsFromFile from download.");
-          paramContext.waWebviewJsStr = bgkv.a(new File(str2, "QView.js"));
-          paramContext.waServiceJsStr = bgkv.a(new File(str2, "QLogic.js"));
+          paramContext.waWebviewJsStr = bgpc.a(new File(str2, "QView.js"));
+          paramContext.waServiceJsStr = bgpc.a(new File(str2, "QLogic.js"));
           paramContext.waServicePath = (str2 + File.separator + "QLogic.js");
-          paramContext.waConsoleJsStr = bgkv.a(new File(str2, "QVConsole.js"));
-          paramContext.waRemoteDebugStr = bgkv.a(new File(str2, "QRemoteDebug.js"));
-          paramContext.miniappWebviewStr = bgkv.a(new File(str2, "QWebview.js"));
-          paramContext.waWorkerStr = bgkv.a(new File(str2, "QWorker.js"));
-          paramContext.pageFrameStr = bgkv.a(new File(str2, "QPageFrame.html"));
+          paramContext.waConsoleJsStr = bgpc.a(new File(str2, "QVConsole.js"));
+          paramContext.waRemoteDebugStr = bgpc.a(new File(str2, "QRemoteDebug.js"));
+          paramContext.miniappWebviewStr = bgpc.a(new File(str2, "QWebview.js"));
+          paramContext.waWorkerStr = bgpc.a(new File(str2, "QWorker.js"));
+          paramContext.pageFrameStr = bgpc.a(new File(str2, "QPageFrame.html"));
         }
         if (!paramContext.isBaseLibInited())
         {

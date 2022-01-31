@@ -22,7 +22,7 @@ import java.util.List;
 import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
 import tqg;
 import tra;
-import tym;
+import tzy;
 
 public class QCircleDoLikeRequest
   extends QCircleBaseRequest
@@ -53,7 +53,7 @@ public class QCircleDoLikeRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tym.a().c(61)) && (tym.a().d(57))) || (tym.a().c(57))) {
+    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
       paramStFeed.value.set("2");
     }
     for (;;)
@@ -89,7 +89,7 @@ public class QCircleDoLikeRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tym.a().c(61)) && (tym.a().d(57))) || (tym.a().c(57))) {
+    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
       paramStFeed.value.set("2");
     }
     for (;;)

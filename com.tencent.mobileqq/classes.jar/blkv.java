@@ -1,28 +1,18 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
 public class blkv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
+  public blkv(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public int a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    AEEditorAILoadingView.b(this.a).setPadding(0, i, 0, 0);
+    AEEditorAILoadingView.c(this.a).setPadding(0, i, 0, 0);
   }
 }
 

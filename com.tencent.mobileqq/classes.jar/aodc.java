@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
 
 public class aodc
-  implements alln
+  implements aocw
 {
-  public aodc(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private String a = "ReadInJoyLauncher";
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((this.a.j == 1) || (this.a.j == 2))
-    {
-      if (paramBoolean) {
-        break label110;
-      }
-      this.a.a();
-      QQToast.a(this.a, 2131691081, 0).b(this.a.getTitleBarHeight());
-    }
-    label110:
-    while (paramInt != 2) {
+    paramColorNote = paramColorNote.getReserve();
+    if (paramColorNote == null) {
       return;
     }
-    this.a.a();
-    this.a.a(this.a.j);
+    try
+    {
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
+      localParcel.setDataPosition(0);
+      paramColorNote = new ArticleInfo(localParcel);
+      if (paramColorNote == null)
+      {
+        QLog.d(this.a, 2, "init color error something is null");
+        return;
+      }
+    }
+    catch (Exception paramColorNote)
+    {
+      for (;;)
+      {
+        QLog.e(this.a, 2, "unmarshall error");
+        paramColorNote.printStackTrace();
+        paramColorNote = null;
+      }
+      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
+      paramColorNote = osb.b(paramContext, paramColorNote);
+      paramColorNote.addFlags(268435456);
+      paramColorNote.putExtra("from_color_note", true);
+      paramContext.startActivity(paramColorNote);
+    }
   }
 }
 

@@ -1,61 +1,43 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import MWIFI.SCGet3rdCloudCheck;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bezn
-  implements bhqd
+final class bezn
+  extends bezy
 {
-  public bezn(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, bhpy parambhpy) {}
+  bezn(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, amfx paramamfx) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amfx);
     }
-    for (;;)
+  }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+    }
+    if (paramSCGet3rdCloudCheck != null)
     {
-      try
-      {
-        this.jdField_a_of_type_Bhpy.dismiss();
-        return;
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bfac.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
       }
-      paramView = new Intent();
-      paramInt = bcyw.b(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
-      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      paramView.putExtra("Business_Origin", 103);
-      paramView.putExtra("BUSINESS_ORIGIN_NEW", 103);
-      paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
-      paramView.putExtra("fromWhereClick", 11);
-      PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), PublicFragmentActivityForOpenSDK.class.getName(), paramInt, paramInt, 1080, 1080, bcyw.a());
-      continue;
-      if (Build.VERSION.SDK_INT >= 23)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().checkSelfPermission("android.permission.CAMERA") != 0)
-        {
-          paramInt = 1;
-          if (paramInt != 0) {
-            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().requestPermissions(new bezo(this), 2, new String[] { "android.permission.CAMERA" });
-          }
-        }
-        else
-        {
-          paramInt = 0;
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bezm.b(this.jdField_a_of_type_AndroidContentContext, 398677);
       }
     }
   }

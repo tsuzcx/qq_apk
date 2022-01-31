@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bass;
+import baxb;
 
 public class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(bass parambass) {}
+  public ShortVideoDownloadProcessor$1(baxb parambaxb) {}
   
   public void run()
   {

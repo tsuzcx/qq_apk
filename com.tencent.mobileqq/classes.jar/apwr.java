@@ -1,137 +1,94 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
 
 public class apwr
+  extends apvz
 {
-  private static apwr jdField_a_of_type_Apwr;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private alox jdField_a_of_type_Alox = new apws(this);
-  private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new apwt(this);
-  
-  public static apwr a()
+  public static int a(QQAppInterface paramQQAppInterface, apwv paramapwv)
   {
-    if (jdField_a_of_type_Apwr == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    if (paramapwv == null) {
+      return -1;
+    }
+    int i = paramapwv.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
+    }
+    switch (i)
     {
-      if (jdField_a_of_type_Apwr == null) {
-        jdField_a_of_type_Apwr = new apwr();
+    case 5: 
+    default: 
+      return -1;
+    case 4: 
+      return 4;
+    case 7: 
+      return 1;
+    case 9: 
+      return 5;
+    case 8: 
+      return 3;
+    case 6: 
+      return a(paramQQAppInterface, paramapwv, false);
+    case 10: 
+      return a(paramQQAppInterface, paramapwv, true);
+    }
+    return 13;
+  }
+  
+  private static int a(QQAppInterface paramQQAppInterface, apwv paramapwv, boolean paramBoolean)
+  {
+    if ((paramQQAppInterface == null) || (paramapwv == null))
+    {
+      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
+      return -1;
+    }
+    EmoticonPackage localEmoticonPackage = paramapwv.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+    if (localEmoticonPackage == null)
+    {
+      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramapwv.jdField_a_of_type_Int);
+      return -1;
+    }
+    boolean bool = apvx.a(localEmoticonPackage);
+    int i = localEmoticonPackage.status;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
+    }
+    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
+    {
+      if (i == 2) {
+        return 12;
       }
-      return jdField_a_of_type_Apwr;
+      return 7;
     }
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Apwr != null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
-      {
-        if ((jdField_a_of_type_Apwr != null) && (jdField_a_of_type_Apwr.jdField_a_of_type_JavaLangRefWeakReference != null))
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)jdField_a_of_type_Apwr.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localQQAppInterface != null) {
-            localQQAppInterface.removeObserver(jdField_a_of_type_Apwr.jdField_a_of_type_Alox);
-          }
-          jdField_a_of_type_Apwr = null;
-        }
-        return;
+    if (bool)
+    {
+      if (paramBoolean) {
+        return 9;
       }
+      return 8;
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putInt("checkDevLockSms_ret", paramInt);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "openEquipmentLock");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidOsMessenger != null) {}
-    try
-    {
-      Message localMessage = Message.obtain(null, 4);
-      localMessage.setData(paramBundle);
-      this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
-      if (QLog.isColorLevel()) {
-        QLog.i("EquipLockWebImpl", 2, "resp to sever: ");
-      }
-      return;
+    if (i != 2) {
+      return 7;
     }
-    catch (RemoteException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    if (paramBoolean) {
+      return 2;
     }
+    return 6;
   }
   
-  private void a(boolean paramBoolean)
+  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
   {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("isWaiting", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "setWaitingResponse");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("setMobileResult", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "setMobileResult");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("isBack", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "closeWeb");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Messenger paramMessenger)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsMessenger = paramMessenger;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localQQAppInterface != null) {
-        break label30;
-      }
+    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
+      return false;
     }
-    label30:
-    for (int i = -1;; i = apwu.a().a(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), null, paramArrayOfByte, this.jdField_a_of_type_MqqObserverWtloginObserver))
-    {
-      a(i);
-      return;
+    int i = ((amca)paramQQAppInterface.a(13)).g();
+    if (paramEmoticonPackage.mobileFeetype == 4) {
+      return (i == 1) || (i == 3);
     }
+    if (paramEmoticonPackage.mobileFeetype == 5) {
+      return i == 3;
+    }
+    return true;
   }
 }
 

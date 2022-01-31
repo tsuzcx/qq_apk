@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aljq;
+import alof;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdcs;
-import bdpk;
-import bdvu;
-import bdvv;
-import bdvx;
-import bdwa;
-import becq;
-import beep;
+import bdhb;
+import bdtt;
+import bead;
+import beae;
+import beag;
+import beaj;
+import begz;
+import beiy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -32,11 +32,11 @@ import org.json.JSONObject;
 public class LocalDataJsPlugin
   extends VasWebviewJsPlugin
 {
-  private static final String[] FILE_PATH_WHITE_LIST = { aljq.bW };
+  private static final String[] FILE_PATH_WHITE_LIST = { alof.bW };
   public static final String NAME_SPACE = "localData";
   private static final String TAG = "LocalDataJsPlugin";
   private BrowserAppInterface browserApp;
-  bdvu sigTplResDownloadListener = new LocalDataJsPlugin.1(this);
+  bead sigTplResDownloadListener = new LocalDataJsPlugin.1(this);
   
   public LocalDataJsPlugin()
   {
@@ -45,10 +45,10 @@ public class LocalDataJsPlugin
   
   private boolean existDynamicSource(String paramString)
   {
-    paramString = bdpk.a(paramString, "dynamic_aio");
+    paramString = bdtt.a(paramString, "dynamic_aio");
     File localFile = new File(paramString);
     if ((!localFile.exists()) || (!localFile.isDirectory())) {}
-    while (bdcs.a(paramString).size() <= 0) {
+    while (bdhb.a(paramString).size() <= 0) {
       return false;
     }
     return true;
@@ -62,7 +62,7 @@ public class LocalDataJsPlugin
       paramString2 = new JSONObject();
       localObject2 = new JSONObject();
       localObject3 = new JSONArray();
-      localObject1 = new File(bdpk.a((String)localObject1, "dynamic_aio")).listFiles();
+      localObject1 = new File(bdtt.a((String)localObject1, "dynamic_aio")).listFiles();
       int i = localObject1.length;
       paramInt = 0;
       while (paramInt < i)
@@ -96,21 +96,21 @@ public class LocalDataJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("LocalDataJsPlugin", 2, "handleSignatureRequest file not exist, start download");
     }
-    Object localObject2 = ((bdvx)this.browserApp.getManager(47)).a(1);
-    paramString2 = new bdvv(paramString2, new File(bdpk.a((String)localObject1, "temp.zip")));
+    Object localObject2 = ((beag)this.browserApp.getManager(47)).a(1);
+    paramString2 = new beae(paramString2, new File(bdtt.a((String)localObject1, "temp.zip")));
     Object localObject3 = new Bundle();
     ((Bundle)localObject3).putString("callbackId", paramString1);
     ((Bundle)localObject3).putString("itemId", (String)localObject1);
     if (paramJSONObject != null) {
       ((Bundle)localObject3).putString("localRules", paramJSONObject.toString());
     }
-    ((bdwa)localObject2).a(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
+    ((beaj)localObject2).a(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
   }
   
   private boolean hasInterceptRight(String paramString)
   {
     myl localmyl = myl.a();
-    Object localObject = (beep)super.getBrowserComponent(-2);
+    Object localObject = (beiy)super.getBrowserComponent(-2);
     if (localObject == null)
     {
       QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight SwiftBrowserStatistics = null");
@@ -118,9 +118,9 @@ public class LocalDataJsPlugin
     }
     int j;
     int i;
-    if (((beep)localObject).a.size() > 0)
+    if (((beiy)localObject).a.size() > 0)
     {
-      localObject = (String)((beep)localObject).a.get(((beep)localObject).a.size() - 1);
+      localObject = (String)((beiy)localObject).a.get(((beiy)localObject).a.size() - 1);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label174;
       }
@@ -141,7 +141,7 @@ public class LocalDataJsPlugin
         if (paramString.startsWith(localObject[i]))
         {
           return true;
-          localObject = ((beep)localObject).d;
+          localObject = ((beiy)localObject).d;
           break;
         }
         i += 1;

@@ -1,45 +1,21 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.QQRecorder;
-import java.lang.ref.WeakReference;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
-class bjzj
-  extends Handler
+public final class bjzj
+  implements ThreadPool.Job<Object>
 {
-  bjzj(bjzi parambjzi) {}
+  public bjzj(String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (bjzi.a(this.a) != null) {
-            bjzi.a(this.a).a(1, bjzi.a(this.a));
-          }
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        this.a.d(paramMessage);
-        this.a.c(paramMessage);
-        return;
-        bjzi.a(this.a).c();
-        bdaz.b(2131230744, false);
-      } while (this.a.a == null);
-      paramMessage = (Context)this.a.a.get();
-    } while (paramMessage == null);
-    bdaz.a(paramMessage, false);
+    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjzj
  * JD-Core Version:    0.7.0.1
  */

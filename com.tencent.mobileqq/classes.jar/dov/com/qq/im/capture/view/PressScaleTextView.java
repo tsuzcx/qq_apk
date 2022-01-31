@@ -5,12 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import blwf;
+import bmar;
 
 public class PressScaleTextView
   extends TextView
 {
-  private final blwf a = new blwf(this);
+  private final bmar a = new bmar(this);
   
   public PressScaleTextView(Context paramContext)
   {

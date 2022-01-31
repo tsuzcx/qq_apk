@@ -1,17 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class xap
-  implements utn
+  implements DialogInterface.OnClickListener
 {
-  xap(xak paramxak, xax paramxax) {}
+  xap(xan paramxan) {}
   
-  public void a(boolean paramBoolean, utj paramutj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    wsv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramutj != null))
-    {
-      this.jdField_a_of_type_Xak.a(paramutj.b, paramutj.a, this.jdField_a_of_type_Xax);
-      return;
-    }
-    wsv.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    this.a.c();
   }
 }
 

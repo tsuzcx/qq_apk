@@ -1,107 +1,48 @@
 import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aoml
+  implements aokj<String>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e;
-  public int f;
+  public HashMap<String, String> a = new HashMap();
   
-  public aoml()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public static aoml a(JSONObject paramJSONObject)
-  {
-    aoml localaoml = new aoml();
-    if (paramJSONObject == null) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "onParse,fileOrRes is null");
+    }
+    for (;;)
     {
-      do
+      return;
+      try
       {
-        do
+        paramString = new JSONObject(paramString).optJSONArray("ark_ai_keyword_sdk_share_app_info");
+        if (paramString != null)
         {
-          return localaoml;
-          paramJSONObject = paramJSONObject.optJSONObject("emoticon_guide_config");
-        } while (paramJSONObject == null);
-        if (QLog.isColorLevel()) {
-          QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            Object localObject = (JSONObject)paramString.get(i);
+            String str = ((JSONObject)localObject).getString("appID");
+            localObject = ((JSONObject)localObject).getString("appName");
+            QLog.i("ArkAIKeyWordSDKShareConfig", 1, "onParse ark_ai_keyword_sdk_share_app_info id=" + str + ", name=" + (String)localObject);
+            this.a.put(str, localObject);
+            i += 1;
+          }
         }
-        if (paramJSONObject.has("emoticon_guide_url")) {
-          localaoml.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_night_url")) {
-          localaoml.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid")) {
-          localaoml.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-          localaoml.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_width")) {
-          localaoml.e = paramJSONObject.optInt("emoticon_guide_width", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_height")) {
-          localaoml.f = paramJSONObject.optInt("emoticon_guide_height", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_open")) {
-          localaoml.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_version")) {
-          localaoml.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
-        }
-      } while (!paramJSONObject.has("emoticon_guide_invalid_time"));
-      paramJSONObject = paramJSONObject.optString("emoticon_guide_invalid_time", null);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-    try
-    {
-      localaoml.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
-      return localaoml;
+        ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "getArkShareConfig,ark_ai_keyword_sdk_share_app_info is empty");
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("ArkAIKeyWordSDKShareConfig", 1, "onParse error e = ", paramString);
+      }
     }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse invalidTime failed!", paramJSONObject);
-    }
-    return localaoml;
-  }
-  
-  boolean a()
-  {
-    int i = bdiv.c("key_emoticon_guide_version");
-    if (this.jdField_b_of_type_Int > i)
-    {
-      bdiv.a("key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
-      bdiv.a("key_show_emoticon_guide", Boolean.valueOf(true));
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQSysAndEmojiConfProcessor", 2, "currentTimeMillis: " + System.currentTimeMillis() + " mInvalidTime: " + this.jdField_a_of_type_Long);
-    }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return "{mOpen=" + this.jdField_a_of_type_Int + ", mDrawableUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNightDrawableUrl=" + this.jdField_b_of_type_JavaLangString + ", mServerId=" + this.c + ", mEmoType=" + this.d + ", mInvalidTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

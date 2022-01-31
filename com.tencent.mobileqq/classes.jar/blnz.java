@@ -1,7 +1,6 @@
-class blnz
-  extends allb
+public abstract interface blnz
 {
-  blnz(blnx paramblnx) {}
+  public abstract boolean a(int paramInt1, int paramInt2);
 }
 
 

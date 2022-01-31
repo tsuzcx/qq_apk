@@ -1,95 +1,81 @@
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.request.GetAppInfoByLinkRequest.1;
-import com.tencent.qqmini.sdk.utils.ProcessUtil;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
-public class bgyq
-  extends bgzp
+final class bgyq
+  implements DownloaderProxy.DownloadListener
 {
-  private INTERFACE.StGetAppInfoByLinkReq a = new INTERFACE.StGetAppInfoByLinkReq();
+  bgyq(MiniAppInfo paramMiniAppInfo, bgyt parambgyt, String paramString1, String paramString2, bgyu parambgyu, int paramInt) {}
   
-  public bgyq(String paramString, int paramInt)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    this.a.link.set(paramString);
-    this.a.linkType.set(paramInt);
-  }
-  
-  private void a(MiniAppInfo paramMiniAppInfo)
-  {
-    if (!ProcessUtil.isMainProcess(AppLoaderFactory.g().getMiniAppEnv().getContext())) {
-      return;
-    }
-    ThreadManager.b().post(new GetAppInfoByLinkRequest.1(this, paramMiniAppInfo));
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
-    try
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 614, null, null, null, paramInt, "1", 0L, null);
+    if (this.jdField_a_of_type_Bgyt != null)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetAppInfoByLinkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if ((localStGetAppInfoByLinkRsp != null) && (localStGetAppInfoByLinkRsp.appInfo != null))
+      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(2010, null, "download sub pkg fail");
+      QMLog.d("[minigame] GpkgManager", "onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
+    }
+  }
+  
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bgyt != null)
+    {
+      float f = paramFloat;
+      long l = paramLong2;
+      if (paramLong2 == 0L)
       {
-        paramArrayOfByte = new JSONObject();
-        MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
-        localMiniAppInfo.link = this.a.link.get();
-        localMiniAppInfo.linkType = this.a.linkType.get();
-        String str = localStGetAppInfoByLinkRsp.shareTicket.get();
-        paramArrayOfByte.put("appInfo", localMiniAppInfo);
-        paramArrayOfByte.put("shareTicket", str);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
-          a(localMiniAppInfo);
+        f = paramFloat;
+        l = paramLong2;
+        if (this.jdField_a_of_type_Int > 0)
+        {
+          paramLong2 = this.jdField_a_of_type_Int;
+          f = paramFloat;
+          l = paramLong2;
+          if (paramLong2 > paramLong1)
+          {
+            f = (float)paramLong1 * 1.0F / (float)paramLong2;
+            l = paramLong2;
+          }
         }
       }
-      else
-      {
-        QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-        return null;
+      this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f, l);
+    }
+  }
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  {
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 614, "1");
+    paramString = bgvi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    paramMap = new File(this.jdField_a_of_type_JavaLangString);
+    bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 615, "1");
+    boolean bool = bgoa.a(paramMap.getAbsolutePath(), paramString, this.b, true);
+    paramMap = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    if (bool)
+    {
+      paramInt = 0;
+      bhck.a(paramMap, 616, null, null, null, paramInt, "1", 0L, null);
+      QMLog.d("[minigame] GpkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + this.b);
+      if (!bool) {
+        break label166;
+      }
+      if (this.jdField_a_of_type_Bgyt != null) {
+        this.jdField_a_of_type_Bgyt.onInitGpkgInfo(0, this.jdField_a_of_type_Bgyu, "download sub pkg and unpack succeed");
       }
     }
-    catch (Exception paramArrayOfByte)
+    label166:
+    while (this.jdField_a_of_type_Bgyt == null)
     {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      return;
+      paramInt = 1;
+      break;
     }
-    return paramArrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetAppInfoByLink";
+    this.jdField_a_of_type_Bgyt.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail");
   }
 }
 

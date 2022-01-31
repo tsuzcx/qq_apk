@@ -1,24 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 public class acwr
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public acwr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public acwr(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
     }
   }
 }

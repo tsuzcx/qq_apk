@@ -1,42 +1,55 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-class vqs
-  implements vrv
+public class vqs
+  extends vpr
 {
-  vqs(vqr paramvqr) {}
+  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
+  private vpm jdField_a_of_type_Vpm;
   
-  public boolean a(vrr paramvrr, int paramInt, Object paramObject)
+  public vqs(VidListPlayInfo paramVidListPlayInfo)
   {
-    if (this.a.isCanceled()) {
-      return false;
-    }
-    wsv.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramvrr)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramvrr, paramInt, paramObject);
-      return false;
-      wsv.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      wsv.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      wsv.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
+    this.jdField_a_of_type_Vpm = new vpm("vidList");
   }
+  
+  public List<vpt> a(List<vpm> paramList)
+  {
+    return null;
+  }
+  
+  public vpp a()
+  {
+    return new vpp(this.jdField_a_of_type_Vpm, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, vps paramvps)
+  {
+    ArrayList localArrayList = new ArrayList();
+    vpn localvpn = new vpn(this.jdField_a_of_type_Vpm);
+    localArrayList.add(localvpn);
+    localvpn.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    {
+      if (paramInt < i) {}
+      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
+      {
+        localvpn.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
+        paramInt += 1;
+        break;
+      }
+    }
+    paramvps.b(new ErrorMessage(), localArrayList, true);
+  }
+  
+  public void b() {}
 }
 
 

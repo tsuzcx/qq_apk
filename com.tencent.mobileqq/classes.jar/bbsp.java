@@ -1,9 +1,4 @@
-public abstract interface bbsp
-  extends bbrv
-{
-  public abstract void a(int paramInt);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbsp

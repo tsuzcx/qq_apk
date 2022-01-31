@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import bgpn;
+import bgtu;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.utils.EnvUtils;
 
@@ -21,7 +21,7 @@ public final class SDKMiniProgramLpReportDC04239$10
     localBundle.putString("reserves2", this.e);
     localBundle.putString("app_type", this.f);
     localBundle.putBoolean("x5_enable", EnvUtils.isX5Enabled(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
-    bgpn.a().a("launch_report", localBundle, null);
+    bgtu.a().a("launch_report", localBundle, null);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class StoryVideoSimpleInfoEntity
-  extends awbv
+  extends awge
 {
   public byte[] data;
-  @awdj
+  @awhs
   public String unionId;
 }
 

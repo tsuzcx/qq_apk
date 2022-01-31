@@ -1,26 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bknq
-  extends GestureDetector.SimpleOnGestureListener
+class bknq
+  implements View.OnTouchListener
 {
-  private bknq(AECropperImageView paramAECropperImageView) {}
+  bknq(bknm parambknm) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!AECropperImageView.a(this.a)) {}
-    do
-    {
-      return false;
-      if (AECropperImageView.b(this.a))
-      {
-        blfg.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
-        return false;
-      }
-    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
-    this.a.a(paramFloat1, paramFloat2);
-    return false;
+    return true;
   }
 }
 

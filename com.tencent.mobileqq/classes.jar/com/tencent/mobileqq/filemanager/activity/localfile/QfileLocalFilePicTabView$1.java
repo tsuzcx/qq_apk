@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import armo;
-import arna;
-import arqz;
+import arqx;
+import arrj;
+import arvi;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ class QfileLocalFilePicTabView$1
   public void run()
   {
     if (this.this$0.f) {}
-    for (HashMap localHashMap = (HashMap)arna.a(this.a);; localHashMap = null)
+    for (HashMap localHashMap = (HashMap)arrj.a(this.a);; localHashMap = null)
     {
       if (localHashMap == null) {
         localHashMap = new HashMap();
@@ -28,13 +28,13 @@ class QfileLocalFilePicTabView$1
       {
         Object localObject1 = this.this$0.d.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          arna.a(true, ((arqz)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
+          arrj.a(true, ((arvi)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
         }
         if (this.this$0.f)
         {
-          localObject1 = armo.a().a();
+          localObject1 = arqx.a().a();
           if (localObject1 != null) {
-            arna.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
+            arrj.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
           }
           if (!this.this$0.c()) {
             break label134;
@@ -46,7 +46,7 @@ class QfileLocalFilePicTabView$1
           localObject1 = null;
           break;
           label134:
-          arna.a(localHashMap);
+          arrj.a(localHashMap);
           if (localHashMap != null)
           {
             localObject1 = localHashMap.keySet().iterator();

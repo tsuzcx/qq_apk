@@ -55,13 +55,13 @@ public class ResultUI$2
     if (this.this$0.jdField_a_of_type_Msq.f == 3)
     {
       if (this.this$0.jdField_a_of_type_Msq.b) {
-        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696280);
+        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696282);
       }
       for (;;)
       {
         this.this$0.a("EXCEPTION_BEFORE_GAME");
         return;
-        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696278);
+        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696280);
       }
     }
     if (this.this$0.jdField_a_of_type_Msq.f == 4)
@@ -78,7 +78,7 @@ public class ResultUI$2
     if (this.this$0.jdField_a_of_type_Msq.f == 6)
     {
       if (this.this$0.jdField_a_of_type_Msq.b) {
-        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696281);
+        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696283);
       }
       this.this$0.a("EXCEPTION_NOT_RECEIVE_REDBAG");
       return;
@@ -86,7 +86,7 @@ public class ResultUI$2
     if (this.this$0.jdField_a_of_type_Msq.f == 7)
     {
       if (this.this$0.jdField_a_of_type_Msq.b) {
-        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696279);
+        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696281);
       }
       this.this$0.a("EXCEPTION_GAME_TIMEOUT");
       return;

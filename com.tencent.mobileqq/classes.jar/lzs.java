@@ -1,12 +1,12 @@
 class lzs
-  implements bilp
+  implements bipw
 {
   lzs(lzr paramlzr) {}
   
-  public void a(bilo parambilo)
+  public void a(bipv parambipv)
   {
-    parambilo.b();
-    parambilo.a();
+    parambipv.b();
+    parambipv.a();
   }
 }
 

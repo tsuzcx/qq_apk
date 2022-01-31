@@ -1,20 +1,21 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import cooperation.readinjoy.ReadInJoyHelper.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bjxk
-  implements ArkAppMgr.IGetAppPathByNameCallback
+final class bjxk
+  implements DialogInterface.OnClickListener
 {
-  public bjxk(ReadInJoyHelper.1 param1) {}
+  bjxk(bdjz parambdjz) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {}
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjxk
  * JD-Core Version:    0.7.0.1
  */

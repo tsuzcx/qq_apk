@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class beyn
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public beyn(BindGroupActivity.4.1 param1) {}
+  public beyn(VideoTextureView paramVideoTextureView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoComplete(true);
     }
   }
 }

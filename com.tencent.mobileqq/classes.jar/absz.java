@@ -1,23 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-
-class absz
-  extends JobSegment<atzw, atzw>
+public class absz
 {
-  absz(absu paramabsu, String paramString, int paramInt) {}
+  public boolean a;
   
-  protected void a(JobContext paramJobContext, atzw paramatzw)
+  public absz(absu paramabsu)
   {
-    if (paramatzw.b())
-    {
-      notifyResult(paramatzw);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
-      }
-      return;
-    }
-    auab.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new abta(this, this));
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

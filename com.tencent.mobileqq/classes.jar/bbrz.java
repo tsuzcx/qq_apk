@@ -1,40 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import org.json.JSONObject;
 
 public class bbrz
-  implements Observer
 {
-  private final void a(Object paramObject)
-  {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public static bbrz a(JSONObject paramJSONObject)
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if (paramJSONObject != null)
     {
-      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
-      return;
+      bbrz localbbrz = new bbrz();
+      localbbrz.a = paramJSONObject.optString("apurl");
+      localbbrz.c = paramJSONObject.optString("img");
+      localbbrz.b = paramJSONObject.optString("rl");
+      return localbbrz;
     }
-    a(paramObject);
+    return null;
   }
 }
 

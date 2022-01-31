@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import ania;
-import anjx;
+import anmj;
+import anog;
 import com.tencent.wordsegment.WordSegment;
 import java.util.Locale;
 
@@ -10,12 +10,12 @@ public class ArkAiDictMgr$5
 {
   public void run()
   {
-    String str = anjx.a().a() + "/";
+    String str = anog.a().a() + "/";
     WordSegment.uninit();
     int i = WordSegment.init(str);
     if (i == 0)
     {
-      ania.b(str);
+      anmj.b(str);
       return;
     }
     ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));

@@ -3,34 +3,34 @@ package com.tencent.biz.qqstory.storyHome.memory.controller;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import uht;
-import ure;
-import urr;
-import win;
-import wio;
-import wsv;
+import umc;
+import uvn;
+import uwa;
+import wmw;
+import wmx;
+import wxe;
 
 public class ShareGroupPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((ure)urr.a(19)).b(this.this$0.a);
-    wio localwio = new wio(new ErrorMessage(), win.a(this.this$0));
-    localwio.b = true;
-    localwio.jdField_a_of_type_Boolean = true;
-    localwio.c = true;
-    localwio.jdField_a_of_type_JavaUtilList = ((List)???);
-    localwio.jdField_a_of_type_Int = ((List)???).size();
+    ??? = ((uvn)uwa.a(19)).b(this.this$0.a);
+    wmx localwmx = new wmx(new ErrorMessage(), wmw.a(this.this$0));
+    localwmx.b = true;
+    localwmx.jdField_a_of_type_Boolean = true;
+    localwmx.c = true;
+    localwmx.jdField_a_of_type_JavaUtilList = ((List)???);
+    localwmx.jdField_a_of_type_Int = ((List)???).size();
     synchronized (this.this$0)
     {
       if (!this.this$0.b)
       {
-        uht.a().dispatch(localwio);
-        wsv.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localwio);
+        umc.a().dispatch(localwmx);
+        wxe.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localwmx);
         return;
       }
-      wsv.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
+      wxe.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
     }
   }
 }

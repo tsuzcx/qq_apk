@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import akii;
+import akmx;
 import android.graphics.Typeface;
-import bdbg;
+import bdfp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
@@ -14,11 +14,11 @@ import mqq.app.AppRuntime;
 public class DiyPendantFetcher$4
   implements Runnable
 {
-  public DiyPendantFetcher$4(akii paramakii, int paramInt, String paramString) {}
+  public DiyPendantFetcher$4(akmx paramakmx, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (bdbg.a(String.valueOf(this.jdField_a_of_type_Int))) {
+    if (bdfp.a(String.valueOf(this.jdField_a_of_type_Int))) {
       if (this.jdField_a_of_type_Int == 1) {}
     }
     AppRuntime localAppRuntime;

@@ -12,9 +12,9 @@ public class orb
   public orb(oqy paramoqy, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378677));
-    this.b = ((TextView)paramView.findViewById(2131378678));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369433);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378731));
+    this.b = ((TextView)paramView.findViewById(2131378732));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369451);
   }
 }
 

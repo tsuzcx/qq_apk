@@ -5,9 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Process;
 import android.os.ResultReceiver;
-import bgpn;
-import bgpo;
-import bgpr;
+import bgtu;
+import bgtv;
+import bgty;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -19,18 +19,18 @@ public class AppBrandProxy
   implements IAppBrandProxy
 {
   private static final String TAG = "minisdk-start_AppBrandProxy";
-  private bgpo mAppBrandProxyImpl;
+  private bgtv mAppBrandProxyImpl;
   private Context mContext;
   
   public AppBrandProxy()
   {
-    bgpn.a().a(this);
+    bgtu.a().a(this);
   }
   
   public void init(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mAppBrandProxyImpl = new bgpo(this.mContext);
+    this.mAppBrandProxyImpl = new bgtv(this.mContext);
   }
   
   public void notifyShareResult(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
@@ -113,7 +113,7 @@ public class AppBrandProxy
       }
       return;
     }
-    bgpr.a().a(paramString, paramBundle, paramMiniCmdCallback);
+    bgty.a().a(paramString, paramBundle, paramMiniCmdCallback);
   }
   
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)

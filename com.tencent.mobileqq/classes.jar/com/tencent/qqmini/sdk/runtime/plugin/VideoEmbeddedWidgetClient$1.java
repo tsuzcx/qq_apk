@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.os.Handler;
-import bghn;
+import bglu;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnCompletionListener;
 import com.tencent.qqmini.sdk.log.QMLog;

@@ -1,29 +1,10 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import java.util.Collection;
-import java.util.Iterator;
+import cooperation.qzone.LocalMultiProcConfig;
 
-class bjdy
-  implements ThreadPool.Job<Object>
+public class bjdy
 {
-  bjdy(bjdu parambjdu, boolean paramBoolean) {}
-  
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public static String a()
   {
-    paramJobContext.setMode(1);
-    paramJobContext = bjdu.a(this.jdField_a_of_type_Bjdu).a();
-    if (paramJobContext != null)
-    {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        Object localObject = (bjds)paramJobContext.next();
-        int i = ((bjds)localObject).a(this.jdField_a_of_type_Boolean);
-        localObject = ((bjds)localObject).a();
-        this.jdField_a_of_type_Bjdu.a((String)localObject, i);
-      }
-    }
-    return null;
+    return LocalMultiProcConfig.getString("QzoneFamousSpaceSp", bjea.a().a, "https://h5.qzone.qq.com/vpage/cover/{uin}/vpage-index?screenWidth={screenWidth}&qua={qua}&_proxy=1&_wv=1029&bottom={bottom}");
   }
 }
 

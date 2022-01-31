@@ -1,18 +1,6 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
-
-public class ucn
-  extends RecyclerView.OnScrollListener
+public abstract interface ucn
 {
-  public ucn(QCircleRecommendWidget paramQCircleRecommendWidget) {}
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0) {
-      tyg.a(30, 2, QCircleRecommendWidget.a(this.a));
-    }
-  }
+  public abstract void a();
 }
 
 

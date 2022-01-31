@@ -1,14 +1,8 @@
-import android.view.View;
-
-class bkrw
-  implements yts
+public abstract interface bkrw
 {
-  bkrw(bkrq parambkrq) {}
+  public abstract void a();
   
-  public void a()
-  {
-    bkrq.e(this.a).setVisibility(0);
-  }
+  public abstract void b();
 }
 
 

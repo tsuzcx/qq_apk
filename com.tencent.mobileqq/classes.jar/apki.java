@@ -1,55 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PathMeasure;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
 
-class apki
-  extends apns
+public class apki
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  apki(apkf paramapkf) {}
+  public apki(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.a(paramEmoticonPackage, paramInt);
-    apne.a().b(this.a.a);
-    Object localObject = (apke)apkf.i(this.a).getManager(149);
-    aube localaube = (aube)apkf.j(this.a).getManager(14);
-    List localList = ((apke)localObject).c(paramEmoticonPackage.epId);
-    if ((localList == null) || (localList.size() <= 0)) {}
-    do
-    {
-      return;
-      paramEmoticonPackage = new ArrayList();
-      int i = 0;
-      if (i < localList.size())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
-        if (localaube.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
-        {
-          localCustomEmotionData.RomaingType = "needDel";
-          ((apke)localObject).b(localCustomEmotionData);
-          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
-            paramEmoticonPackage.add(localCustomEmotionData.resid);
-          }
-        }
-        apkf localapkf = this.a;
-        if (paramInt == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localapkf.a(localCustomEmotionData, bool);
-          i += 1;
-          break;
-        }
-      }
-      localObject = (alnm)apkf.k(this.a).a(72);
-    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
-    }
-    ((alnm)localObject).a(paramEmoticonPackage, false);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
   }
 }
 

@@ -73,7 +73,7 @@ public class ReadInJoyBBCircleFragment
         if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
           continue;
         }
-        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375349);
         this.jdField_a_of_type_Nwj = ((nwj)ors.a.remove(Integer.valueOf(70)));
         if (this.jdField_a_of_type_Nwj == null)
         {
@@ -205,7 +205,7 @@ public class ReadInJoyBBCircleFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560030, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560029, paramViewGroup, false);
     if ((!getUserVisibleHint()) && (ors.l())) {}
     for (;;)
     {

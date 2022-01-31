@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import android.view.View;
+import android.widget.TextView;
 
-public class aczt
-  extends alxv
+class aczt
+  implements bhvm
 {
-  public aczt(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  aczt(aczr paramaczr, View paramView) {}
   
   public void a()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    this.jdField_a_of_type_Aczr.a = false;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      this.jdField_a_of_type_Aczr.a((TextView)this.jdField_a_of_type_AndroidViewView);
     }
   }
 }

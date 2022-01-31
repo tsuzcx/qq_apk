@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afeg;
-import afei;
+import afiv;
+import afix;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ArkAppItemBubbleBuilder$Holder$2$2
   implements Runnable
 {
-  public ArkAppItemBubbleBuilder$Holder$2$2(afei paramafei, String paramString) {}
+  public ArkAppItemBubbleBuilder$Holder$2$2(afix paramafix, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afei.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Afei.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_Afei.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Afix.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Afix.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_Afix.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

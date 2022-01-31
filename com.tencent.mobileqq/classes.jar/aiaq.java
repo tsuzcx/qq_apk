@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class aiaq
+public class aiaq
   implements DialogInterface.OnClickListener
 {
-  aiaq(aiap paramaiap) {}
+  public aiaq(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, acnt paramacnt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Acnt.a(false);
+  }
 }
 
 

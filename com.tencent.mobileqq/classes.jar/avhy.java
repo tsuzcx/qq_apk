@@ -1,24 +1,22 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1;
+import android.view.View.OnTouchListener;
 
-public class avhy
-  implements View.OnClickListener
+class avhy
+  implements View.OnTouchListener
 {
-  avhy(avhw paramavhw) {}
+  avhy(avhf paramavhf) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
-    this.a.a.startActivity(paramView);
-    avhw.a(this.a, null);
-    ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
-    azmj.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131376566).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131376566).setAlpha(1.0F);
+    }
   }
 }
 

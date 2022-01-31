@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 import com.tencent.widget.AbsListView;
 
 public class rxo
-  implements bhpo
+  implements bhtv
 {
   public rxo(SlideActiveAnimController paramSlideActiveAnimController) {}
   

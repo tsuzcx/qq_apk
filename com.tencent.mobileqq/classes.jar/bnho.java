@@ -1,12 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class bnho
-  implements bngk
+  extends bnhq
 {
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.d();
     }
   }
 }

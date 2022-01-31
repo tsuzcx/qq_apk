@@ -1,17 +1,17 @@
 package com.tencent.gdtad.util;
 
-import aaow;
-import aaox;
-import aaoz;
+import aatl;
+import aatm;
+import aato;
 
 public class GdtUserInfoAuthorizationHelper$1$1
   implements Runnable
 {
-  public GdtUserInfoAuthorizationHelper$1$1(aaox paramaaox, boolean paramBoolean, aaoz paramaaoz) {}
+  public GdtUserInfoAuthorizationHelper$1$1(aatm paramaatm, boolean paramBoolean, aato paramaato) {}
   
   public void run()
   {
-    aaow.a(this.jdField_a_of_type_Aaox.jdField_a_of_type_Aaow, this.jdField_a_of_type_Aaox.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aaoz, this.jdField_a_of_type_Aaox.jdField_a_of_type_Aaoy, this.jdField_a_of_type_Aaox.jdField_a_of_type_JavaUtilList);
+    aatl.a(this.jdField_a_of_type_Aatm.jdField_a_of_type_Aatl, this.jdField_a_of_type_Aatm.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aato, this.jdField_a_of_type_Aatm.jdField_a_of_type_Aatn, this.jdField_a_of_type_Aatm.jdField_a_of_type_JavaUtilList);
   }
 }
 

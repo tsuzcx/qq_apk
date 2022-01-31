@@ -1,63 +1,53 @@
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 class asec
-  implements bavq
+  extends ameq
 {
-  asec(asdz paramasdz) {}
+  asec(aseb paramaseb) {}
   
-  public void a(bavp parambavp)
+  public void a(boolean paramBoolean, bcxk parambcxk)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { parambavp.a.a }));
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
     }
-  }
-  
-  public void onResp(baqw parambaqw)
-  {
-    Object localObject = ((baps)parambaqw.jdField_a_of_type_Baqv).a;
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(parambaqw.jdField_a_of_type_Int) }));
-    }
-    switch (parambaqw.jdField_a_of_type_Int)
+    this.a.x();
+    if (aseb.a(this.a) != -1)
     {
-    }
-    do
-    {
-      boolean bool1;
-      boolean bool2;
-      do
-      {
-        return;
-        if (asdz.a(this.a) != null) {
-          asdz.a(this.a).a((String)localObject, parambaqw.jdField_a_of_type_Long);
-        }
-        parambaqw = (baps)parambaqw.jdField_a_of_type_Baqv;
-        if (!asdz.a(this.a, parambaqw.c, asdz.a(this.a))) {
-          break;
-        }
-        localObject = new File(asdz.a());
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        bool1 = asdz.b(this.a, parambaqw.c, asdz.a());
-        bool2 = asdz.a(this.a);
-      } while (!QLog.isColorLevel());
-      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+      if ((!paramBoolean) || (parambcxk.jdField_a_of_type_Int != 0)) {
+        break label189;
       }
-      asdz.a(this.a, parambaqw.c);
+      if (parambcxk.jdField_a_of_type_Boolean)
+      {
+        aseb.a(this.a, parambcxk.b);
+        if (aseb.a(this.a) == 0) {}
+      }
+      else
+      {
+        do
+        {
+          return;
+          aseb.b(this.a, parambcxk.b);
+        } while (aseb.a(this.a) != 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aseb.a(this.a) + " mTroopNotNeedVefifyLink=" + aseb.b(this.a));
+      }
+      if ((parambcxk.jdField_a_of_type_JavaLangString != null) && (parambcxk.jdField_a_of_type_JavaLangString.equals(aseb.c(this.a)))) {
+        aseb.a(this.a);
+      }
+    }
+    for (;;)
+    {
+      aseb.a(this.a, -1);
       return;
-    } while (asdz.a(this.a) == null);
-    asdz.a(this.a).a((String)localObject, -1L);
-  }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((baps)parambaqv).a, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
+      label189:
+      if (((parambcxk.jdField_a_of_type_Boolean) && (aseb.a(this.a) != 0)) || ((!parambcxk.jdField_a_of_type_Boolean) && (aseb.a(this.a) != 1))) {
+        break;
+      }
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131693136), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

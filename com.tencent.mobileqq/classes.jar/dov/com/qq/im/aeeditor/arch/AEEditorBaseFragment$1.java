@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import blfg;
+import bljn;
 import dov.com.qq.im.aeeditor.view.ProgressView;
 
 class AEEditorBaseFragment$1
@@ -18,7 +18,7 @@ class AEEditorBaseFragment$1
   {
     if (this.this$0.getActivity().isFinishing())
     {
-      blfg.c(AEEditorBaseFragment.b(), "Activity has been destroy.");
+      bljn.c(AEEditorBaseFragment.b(), "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

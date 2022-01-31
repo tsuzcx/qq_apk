@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import com.tencent.biz.pubaccount.CustomWebView;
-import zbj;
+import zfy;
 
 public class Share$9
   implements Runnable
 {
-  public Share$9(zbj paramzbj, String paramString) {}
+  public Share$9(zfy paramzfy, String paramString) {}
   
   public void run()
   {

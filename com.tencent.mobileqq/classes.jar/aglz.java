@@ -1,49 +1,69 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class aglz
-  extends alsi
+  extends aglx
 {
-  aglz(aglv paramaglv) {}
+  aiul a;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public aglz(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aglv.g, 2, "[onUpdateSendMsgError], errMsg:" + paramString2 + ",replyCode:" + paramInt2);
-    }
-    ThreadManager.getUIHandler().post(new GameMsgChatPie.4.1(this, paramString2));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, alsf paramalsf)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+    this.jdField_a_of_type_Aiul = ((aiul)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
+    {
+      this.j = 2130846772;
       return;
     }
-    this.a.u = true;
-    this.a.a(262144, paramalsf, paramLong);
   }
   
-  public void b(String paramString)
+  public boolean b()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-    this.a.e(131072);
+    this.jdField_a_of_type_Agmp.b.setVisibility(0);
+    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agmp.b.setText(agmc.a);
+    return true;
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  public void f()
   {
-    this.a.e(65536);
+    super.f();
+    try
+    {
+      this.jdField_a_of_type_Agmp.a.setText(ajeu.a(this.jdField_a_of_type_Agmp.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agmp.a.getPaint()));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    aiuk localaiuk2 = this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId);
+    aiuk localaiuk1 = localaiuk2;
+    if (localaiuk2 == null)
+    {
+      localaiuk1 = new aiuk(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 2);
+      this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
+    }
+    if (!super.a(localaiuk1))
+    {
+      this.jdField_a_of_type_Agmp.d.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Agmp.d.setVisibility(0);
   }
 }
 

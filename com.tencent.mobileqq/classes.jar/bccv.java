@@ -1,19 +1,55 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bccv
-  implements View.OnClickListener
+public class bccv
+  extends BaseAdapter
 {
-  bccv(bccu parambccu) {}
+  public bccw a;
+  protected List<String> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public String a(int paramInt)
   {
-    paramView = new Intent(bccu.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    bccu.a(this.a).startActivity(paramView);
+    return (String)this.a.get(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.add(paramString);
+  }
+  
+  public int getCount()
+  {
+    return this.a.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560475, null, false);
+      paramViewGroup = new bccx(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379025));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      String str = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      return paramView;
+      paramViewGroup = (bccx)paramView.getTag();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghn;
+import bglu;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnInfoListener;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;

@@ -1,65 +1,36 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.BaseFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class asdl
+class asdl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View.OnClickListener a;
-  public BaseFragment a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
-  public boolean c = false;
-  public String d;
-  public String e;
+  asdl(asdb paramasdb) {}
   
-  public asdl(BaseFragment paramBaseFragment)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
-  }
-  
-  public asdl a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public asdl a(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public asdl a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
+    if (paramInt == 1)
+    {
+      if (asdb.a(this.a))
+      {
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aryl.e.intValue());
+        this.a.l();
+      }
+      azri.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public asdl b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public asdl b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+    paramDialogInterface.setResult(0);
+    azri.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

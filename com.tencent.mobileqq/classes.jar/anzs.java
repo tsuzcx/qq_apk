@@ -1,37 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import mqq.app.QQPermissionCallback;
 
-class anzs
-  implements View.OnClickListener
+public class anzs
+  implements QQPermissionCallback
 {
-  anzs(anzr paramanzr, HistoryFormItem paramHistoryFormItem) {}
+  public anzs(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ColorNote localColorNote = (ColorNote)anzr.a(this.jdField_a_of_type_Anzr).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
-    Bundle localBundle = new Bundle();
-    if (anzr.a(this.jdField_a_of_type_Anzr) == 17104896) {
-      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
-        localBundle.putBoolean("isFromFavourite", true);
-      }
-    }
-    for (;;)
-    {
-      anxn.a(paramView.getContext(), localColorNote, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
-      }
-      azmj.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", anyi.b(anzr.a(this.jdField_a_of_type_Anzr)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
-      return;
-      if (anzr.a(this.jdField_a_of_type_Anzr) == 16908289) {
-        localBundle.putBoolean("history_note", true);
-      }
-    }
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

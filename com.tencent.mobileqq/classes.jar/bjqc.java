@@ -1,6 +1,24 @@
-public abstract interface bjqc<V>
+import android.os.IInterface;
+import cooperation.qzone.plugin.PluginRecord;
+
+public abstract interface bjqc
+  extends IInterface
 {
-  public abstract boolean a(V paramV1, V paramV2);
+  public abstract PluginRecord a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(bjoh parambjoh, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bjok parambjok, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 

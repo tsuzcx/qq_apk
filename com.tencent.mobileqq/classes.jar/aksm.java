@@ -1,446 +1,249 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVRoomMulti;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.sdk.AVView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.1;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.10;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.12;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.13;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.14;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.2;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.3;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.4;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.5;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.6;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.7;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.8;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import com.tencent.mobileqq.apollo.data.ApolloDress.1;
+import com.tencent.mobileqq.apollo.data.ApolloDress.2;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionGrant;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import mqq.os.MqqHandler;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aksm
-  implements aknb
+  implements Cloneable
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  public akix a;
-  public bggp a;
-  private AVVideoCtrl.EnableCameraCompleteCallback jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback = new aksq(this);
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  private boolean f;
+  public static final Map<String, Integer> a;
+  public static final String[] a;
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<Integer, aksn> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public aksm(int paramInt)
+  static
   {
-    this.jdField_a_of_type_Bggp = new aksp(this);
-    this.jdField_b_of_type_Int = paramInt;
+    jdField_a_of_type_JavaUtilMap = new ApolloDress.1();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alud.a(2131700717), alud.a(2131700714), alud.a(2131700710), alud.a(2131700716), alud.a(2131700715), alud.a(2131700711), alud.a(2131700713) };
   }
   
-  private void a(String[] paramArrayOfString, String paramString)
+  public static aksm a(String paramString)
   {
-    int j = 0;
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    if (i < paramArrayOfString.length)
-    {
-      if (paramArrayOfString[i].equals(paramString)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localArrayList1.add(paramArrayOfString[i]);
-        AVView localAVView = new AVView();
-        localAVView.videoSrcType = 1;
-        localAVView.viewSizeType = 1;
-        localArrayList2.add(localAVView);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      i = 0;
-      while (i < localArrayList1.size())
-      {
-        QLog.d("CmGameAvHandler", 2, "requestVideo identifiers=" + ((String)localArrayList1.get(i)).toString());
-        i += 1;
-      }
-    }
-    paramArrayOfString = new akss(this);
-    if (QLog.isColorLevel())
-    {
-      i = j;
-      while (i < localArrayList1.size())
-      {
-        QLog.d("CmGameAvHandler", 2, "xxxx request iden=" + (String)localArrayList1.get(i));
-        i += 1;
-      }
-    }
-    if ((alcm.a(BaseApplicationImpl.getContext()).a() != null) && (alcm.a(BaseApplicationImpl.getContext()).a().getRoom() != null) && (localArrayList1.size() > 0)) {
-      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().requestViewList((String[])localArrayList1.toArray(new String[localArrayList1.size()]), (AVView[])localArrayList2.toArray(new AVView[localArrayList2.size()]), localArrayList1.size(), paramArrayOfString);
-    }
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (GraphicRendererMgr.getInstance() != null)) {}
-    this.f = paramBoolean;
-    if ((akro.b(this.jdField_a_of_type_Long) != null) && (akro.b(this.jdField_a_of_type_Long).a != null))
-    {
-      AppActivity localAppActivity = (AppActivity)akro.b(this.jdField_a_of_type_Long).a.get();
-      localAppActivity.requestPermissions(new aksr(this, localAppActivity), 1, new String[] { "android.permission.CAMERA" });
-    }
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public aknh a(long paramLong, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    if ((!"cs.audioRoom_enter.local".equals(paramString1)) || (!TextUtils.isEmpty(paramString2))) {}
+    boolean bool = true;
+    aksm localaksm = new aksm();
     for (;;)
     {
       try
       {
-        paramString1 = new JSONObject(paramString2);
-        i = paramString1.optInt("avRoomId");
-        paramLong = paramString1.optLong("gameRoomId");
-        paramString1 = paramString1.optString("avRoleName", "lmxtest");
-        ThreadManager.getUIHandler().post(new CmGameAvHandler.1(this, paramString1, paramLong, i));
-        return null;
-      }
-      catch (Exception paramString1)
-      {
-        int i;
-        return null;
-      }
-      if ("cs.audioRoom_exit.local".equals(paramString1))
-      {
-        ThreadManager.getUIHandler().post(new CmGameAvHandler.2(this));
-        return null;
-      }
-      if ("cs.audioRoom_camera_enable.local".equals(paramString1)) {}
-      try
-      {
-        bool = new JSONObject(paramString2).optBoolean("switch");
-        this.jdField_a_of_type_Boolean = bool;
-        if (bool)
+        JSONObject localJSONObject = new JSONObject(paramString);
+        Object localObject1 = localJSONObject.getJSONObject("role");
+        localaksm.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("id");
+        if (((JSONObject)localObject1).optInt("aiFlag", 0) == 1)
         {
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.3(this));
-          return null;
-        }
-        ThreadManager.getUIHandler().post(new CmGameAvHandler.4(this));
-        return null;
-      }
-      catch (Exception paramString1)
-      {
-        boolean bool;
-        return null;
-      }
-      if ("cs.audioRoom_set_mic.local".equals(paramString1))
-      {
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        try
-        {
-          bool = new JSONObject(paramString2).optBoolean("switch");
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.5(this, bool));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-      if ("cs.audioRoom_set_speaker.local".equals(paramString1))
-      {
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        try
-        {
-          bool = new JSONObject(paramString2).optBoolean("switch");
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.6(this, bool));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-      if ("cs.audioRoom_init.local".equals(paramString1))
-      {
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        try
-        {
-          a(paramString2);
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-      if ("cs.audioRoom_set_local_video.local".equals(paramString1)) {}
-      try
-      {
-        bool = new JSONObject(paramString2).optBoolean("switch");
-        this.jdField_a_of_type_Boolean = bool;
-        if (bool)
-        {
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.7(this));
-          return null;
-        }
-        ThreadManager.getUIHandler().post(new CmGameAvHandler.8(this));
-        return null;
-      }
-      catch (Exception paramString1)
-      {
-        return null;
-      }
-      if ("cs.audioRoom_camera_switch.local".equals(paramString1)) {}
-      try
-      {
-        i = new JSONObject(paramString2).optInt("cameraPos");
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          if (!QLog.isColorLevel()) {
+          localaksm.jdField_a_of_type_Boolean = bool;
+          localaksm.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+          localaksm.c = ((JSONObject)localObject1).optInt("feeType");
+          localaksm.d = ((JSONObject)localObject1).optInt("tag");
+          localaksm.b = localJSONObject.optInt("sex");
+          localaksm.e = localJSONObject.optInt("belongCombId");
+          localaksm.f = localJSONObject.optInt("combIsCollected");
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloDress", 2, "parseApolloDress data:" + paramString);
+          }
+          paramString = localJSONObject.getJSONArray("dresslist");
+          int i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject2 = paramString.getJSONObject(i);
+            localObject1 = new aksn();
+            ((aksn)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("id");
+            ((aksn)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("ts");
+            ((aksn)localObject1).b = ((JSONObject)localObject2).optInt("feeType");
+            ((aksn)localObject1).c = ((JSONObject)localObject2).optInt("tag");
+            ((aksn)localObject1).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).getJSONArray("parts");
+            int j = 0;
+            if (j < ((JSONArray)localObject2).length())
+            {
+              ((aksn)localObject1).jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).getString(j));
+              j += 1;
+              continue;
+            }
+            if (localaksm.jdField_a_of_type_JavaUtilHashMap == null) {
+              localaksm.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            }
+            localaksm.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((aksn)localObject1).jdField_a_of_type_Int), localObject1);
+            i += 1;
             continue;
           }
-          QLog.d("CmGameAvHandler", 2, "switch carmera but carma close");
-          return null;
-        }
-        ThreadManager.getUIHandler().post(new CmGameAvHandler.9(this, i, paramLong));
-        return null;
-      }
-      catch (Exception paramString1) {}
-      if ("cs.audioRoom_change_qav_role.local".equals(paramString1)) {
-        try
-        {
-          paramString1 = new JSONObject(paramString2).optString("role", "user");
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.10(this, paramString1, paramLong));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-      if ("cs.audioRoom_set_remote_video.local".equals(paramString1)) {
-        try
-        {
-          paramString1 = Boolean.valueOf(new JSONObject(paramString2).optBoolean("switch"));
-          this.d = paramString1.booleanValue();
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.11(this, paramString1));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-      if ("cs.audioRoom_watch_remote_video.local".equals(paramString1)) {
-        try
-        {
-          paramString1 = new JSONObject(paramString2).optJSONArray("openIdList");
-          if (paramString1 == null) {
-            continue;
+          if ((localaksm.jdField_a_of_type_JavaUtilHashMap == null) || (localaksm.jdField_a_of_type_JavaUtilHashMap.size() < 7))
+          {
+            QLog.e("ApolloDress", 2, "parseApolloDress role dress do not complete :" + localJSONObject.toString());
+            if (QLog.isColorLevel())
+            {
+              i = localaksm.jdField_a_of_type_Int;
+              ThreadManager.getUIHandler().post(new ApolloDress.2(i));
+            }
           }
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.12(this, paramString1));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      } else if ("cs.audioRoom_set_beauty.local".equals(paramString1)) {
-        try
-        {
-          float f1 = (float)new JSONObject(paramString2).optDouble("beauty");
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.13(this, f1));
-          return null;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-      }
-    }
-    return null;
-  }
-  
-  AVVideoCtrl a()
-  {
-    AVContext localAVContext = alcm.a(BaseApplicationImpl.getContext()).a();
-    if (localAVContext != null) {
-      return localAVContext.getVideoCtrl();
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("sdkAppId"))
-        {
-          i = paramString.optInt("sdkAppId");
-          if (paramString.has("accountType")) {
-            j = paramString.optInt("accountType");
-          }
-          ThreadManager.getUIHandler().post(new CmGameAvHandler.14(this, i, j));
-          return;
+          return localaksm;
         }
       }
       catch (Exception paramString)
       {
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloDress", 2, "parseApolloDress failed", paramString);
+        }
+        return null;
       }
+      bool = false;
+    }
+  }
+  
+  public static aksm a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    while ((!paramJSONObject.has("role")) || (!paramJSONObject.has("dresslist"))) {
+      return null;
+    }
+    aksm localaksm = new aksm();
+    localaksm.b = paramJSONObject.optInt("sex");
+    Object localObject1 = paramJSONObject.optJSONObject("role");
+    if (localObject1 != null)
+    {
+      localaksm.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+      localaksm.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+    }
+    localObject1 = paramJSONObject.optJSONArray("dresslist");
+    if (localObject1 != null)
+    {
       int i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+        aksn localaksn = new aksn();
+        localaksn.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+        localaksn.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("ts");
+        localaksn.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localObject2 = ((JSONObject)localObject2).optJSONArray("parts");
+        int j = 0;
+        while ((localObject2 != null) && (j < ((JSONArray)localObject2).length()))
+        {
+          localaksn.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).optString(j));
+          j += 1;
+        }
+        if (localaksm.jdField_a_of_type_JavaUtilHashMap == null) {
+          localaksm.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        localaksm.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localaksn.jdField_a_of_type_Int), localaksn);
+        i += 1;
+      }
     }
+    localaksm.jdField_a_of_type_JavaLangString = paramJSONObject.optString("faceData");
+    return localaksm;
   }
   
-  public void a(boolean paramBoolean)
+  public static aksm b(String paramString)
   {
-    if (paramBoolean)
+    try
     {
-      alce.a().c();
-      if (this.e)
+      paramString = new JSONObject(paramString).optJSONArray("petList");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        if (!paramBoolean) {
-          break label120;
-        }
-        if (this.jdField_b_of_type_Boolean) {
-          alce.a().a(paramBoolean);
-        }
-      }
-      label35:
-      if (this.e)
-      {
-        if (!paramBoolean) {
-          break label130;
-        }
-        if (this.c) {
-          alce.a().b(paramBoolean);
-        }
-      }
-      label60:
-      if (this.d)
-      {
-        if (!paramBoolean) {
-          break label140;
-        }
-        a((String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]), "");
+        paramString = a(paramString.getJSONObject(0).toString());
+        return paramString;
       }
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        b(paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.e("ApolloPet", 2, "parseApolloPetDress failed", paramString);
       }
-      label120:
-      do
-      {
-        return;
-        alce.a().b();
-        break;
-        alce.a().a(paramBoolean);
-        break label35;
-        alce.a().b(paramBoolean);
-        break label60;
-      } while ((alcm.a(BaseApplicationImpl.getContext()).a() == null) || (alcm.a(BaseApplicationImpl.getContext()).a().getRoom() == null));
-      label130:
-      label140:
-      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new akst(this));
     }
+    return null;
   }
   
-  public boolean a(Activity paramActivity)
+  public String a()
   {
-    return false;
-  }
-  
-  public void b()
-  {
-    a(false);
-  }
-  
-  public void c()
-  {
-    a(true);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Int != -1)
+    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int + "|");
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      alce.a().a("" + this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Akix != null) {
-        this.jdField_a_of_type_Akix.b();
+      Iterator localIterator = new TreeSet(this.jdField_a_of_type_JavaUtilHashMap.keySet()).iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(localIterator.next()).append("|");
       }
-      b(false);
-      this.jdField_a_of_type_Int = -1;
     }
+    return localStringBuilder.toString();
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public int[] a()
   {
-    int i = 1;
-    Object localObject = a();
-    if (localObject != null) {
-      i = ((AVVideoCtrl)localObject).enableCamera(0, this.f, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback);
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.keySet().size() == 0)) {
+      return aldv.a(this.jdField_a_of_type_Int);
     }
-    if (i == 0) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+    int[] arrayOfInt = new int[((Set)localObject).size()];
+    localObject = ((Set)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("res", 0);
-        akro.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_camera_enable.local", ((JSONObject)localObject).toString());
-        return;
-      }
-      catch (Exception localException2) {}
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("res", -1);
-        akro.a().callbackFromRequest(this.jdField_a_of_type_Long, i, "cs.audioRoom_camera_enable.local", ((JSONObject)localObject).toString());
-        QLog.e("CmGameAvHandler", 1, "enableCamera error rescode = " + i);
-        return;
-      }
-      catch (Exception localException1) {}
+      arrayOfInt[i] = ((Integer)((Iterator)localObject).next()).intValue();
+      i += 1;
     }
+    return arrayOfInt;
+  }
+  
+  protected Object clone()
+  {
+    Object localObject = null;
+    try
+    {
+      aksm localaksm = (aksm)super.clone();
+      localObject = localaksm;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localObject.jdField_a_of_type_JavaUtilHashMap = ((HashMap)this.jdField_a_of_type_JavaUtilHashMap.clone());
+    }
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ApolloDress{");
+    localStringBuffer.append("roleId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mRoleGender=").append(this.b);
+    localStringBuffer.append(", roleTimeStamp=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", feeType=").append(this.c);
+    localStringBuffer.append(", tag=").append(this.d);
+    localStringBuffer.append(", isAIRole=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", belongCombId=").append(this.e);
+    localStringBuffer.append(", combIsCollected=").append(this.f);
+    localStringBuffer.append(", faceData='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+      localStringBuffer.append(",ids [");
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuffer.append((Integer)((Iterator)localObject).next()).append(",");
+      }
+      localStringBuffer.append("]");
+    }
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

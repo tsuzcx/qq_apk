@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vas;
 
-import aljq;
+import alof;
 import android.text.TextUtils;
-import bdcs;
-import bdpe;
-import bdpx;
-import bdqc;
-import bdrz;
-import bdsj;
-import bduw;
+import bdhb;
+import bdtn;
+import bdug;
+import bdul;
+import bdwi;
+import bdws;
+import bdzf;
 import com.google.gson.stream.JsonReader;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -54,7 +54,7 @@ public class VasQuickUpdateManager
   public static final long BID_SONIC_TEMPLATE_UPDATE = 1001L;
   public static final long BID_STICKER_GUIDE_MATERIAL = 1004L;
   public static final long BID_TROOP_ENTER_EFFECT = 25L;
-  public static final String QUICKUPDATE_TEST_DIR = bduw.a(aljq.aX + ".vas_quickupdate_test/");
+  public static final String QUICKUPDATE_TEST_DIR = bdzf.a(alof.aX + ".vas_quickupdate_test/");
   public static final String SCID_APNG_SO = "libAPNG_813";
   public static final String SCID_AVATARIN_PENDANT_JSON = "avatarInPendant_json";
   public static final String SCID_BLESS_VOICECHANGE = "blessVoiceList.json";
@@ -128,10 +128,10 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private bdrz defaultCallback = new VasQuickUpdateManager.2(this);
+  private bdwi defaultCallback = new VasQuickUpdateManager.2(this);
   VasQuickUpdateEngine mEngine;
   AtomicInteger mKey = new AtomicInteger(0);
-  bdqc mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
+  bdul mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
@@ -155,7 +155,7 @@ public class VasQuickUpdateManager
     //   16: aload_0
     //   17: invokestatic 385	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 388	bdsj:a	(Landroid/content/Context;)V
+    //   21: invokestatic 388	bdws:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
@@ -267,7 +267,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(bdcs.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(bdhb.a((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -344,8 +344,8 @@ public class VasQuickUpdateManager
       return;
       QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
       this.mEngine = VasQuickUpdateEngine.getInstance();
-      bdsj.a(this.defaultCallback);
-      this.mEngine.mWeakHandler = new WeakReference((bdpx)this.app.a(71));
+      bdws.a(this.defaultCallback);
+      this.mEngine.mWeakHandler = new WeakReference((bdug)this.app.a(71));
     } while ((this.mEngine.mUpdateManagerInstance == 0L) || (!this.mEngine.engineReady.get()));
     this.mEngine.nativeupdateAllItem(this.mEngine.mUpdateManagerInstance);
   }
@@ -426,7 +426,7 @@ public class VasQuickUpdateManager
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
     if (this.mEngine != null) {
-      bdsj.b(this.defaultCallback);
+      bdws.b(this.defaultCallback);
     }
     this.callBackers.clear();
   }
@@ -446,18 +446,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bdpe parambdpe)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bdtn parambdtn)
   {
     if (this.mEngine != null)
     {
-      parambdpe = new VasQuickUpdateManager.TimeoutWrapper(parambdpe, paramBoolean2, null);
+      parambdtn = new VasQuickUpdateManager.TimeoutWrapper(parambdtn, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambdpe, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambdtn, paramLong);
       }
-      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambdpe);
+      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambdtn);
       return;
     }
-    parambdpe.a(2, "", "");
+    parambdtn.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)

@@ -1,77 +1,64 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
 import java.util.ArrayList;
 
 public class bbdu
-  implements bhqr
+  extends BaseAdapter
 {
-  public bbdu(TroopAvatarWallPreviewActivity.2.1 param1) {}
+  bbej jdField_a_of_type_Bbej;
+  ArrayList<bbeh> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected bbdu(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void a(ArrayList<bbeh> paramArrayList, bbej parambbej)
   {
-    if (paramView == null) {
-      return;
-    }
-    if (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).isReport)
-    {
-      TroopAvatarWallPreviewActivity.a(this.a.a.this$0).addPicIndex(paramInt);
-      paramAdapterView = TroopAvatarWallPreviewActivity.a(this.a.a.this$0);
-      paramAdapterView.slide_number += 1;
-    }
-    this.a.a.this$0.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.a.this$0.jdField_a_of_type_Int + 1 + "/" + this.a.a.this$0.jdField_b_of_type_Int;
-    this.a.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
-    boolean bool1;
-    if (this.a.a.this$0.c)
-    {
-      azmj.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "0", "", "");
-      if (this.a.a.this$0.jdField_b_of_type_Boolean) {
-        TroopAvatarWallPreviewActivity.a(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
-      }
-      boolean bool2 = this.a.a.this$0.f;
-      if ((TroopAvatarWallPreviewActivity.a(this.a.a.this$0) != null) && (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).getBoolean("from_personality_label", false)))
-      {
-        paramAdapterView = this.a.a.this$0;
-        if (Long.valueOf((String)this.a.a.this$0.jdField_b_of_type_JavaUtilArrayList.get(this.a.a.this$0.jdField_a_of_type_Int)).longValue() == -1L) {
-          break label530;
-        }
-        bool1 = true;
-        label363:
-        paramAdapterView.f = bool1;
-      }
-      if (bool2 != this.a.a.this$0.f)
-      {
-        paramAdapterView = this.a.a.this$0.jdField_a_of_type_AndroidWidgetImageView;
-        if (!this.a.a.this$0.f) {
-          break label536;
-        }
-      }
-    }
-    label530:
-    label536:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramAdapterView.setVisibility(paramInt);
-      if (this.a.a.this$0.j) {
-        TroopAvatarWallPreviewActivity.b(this.a.a.this$0);
-      }
-      TroopAvatarWallPreviewActivity.b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
-      return;
-      azmj.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "1", "", "");
-      break;
-      bool1 = false;
-      break label363;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Bbej = parambbej;
+    notifyDataSetChanged();
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560391, paramViewGroup, false);
+    }
+    for (;;)
+    {
+      paramViewGroup = (PressEffectTextView)paramView;
+      if (TextUtils.isEmpty(((bbeh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a))
+      {
+        paramViewGroup.setVisibility(8);
+        return paramView;
+      }
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((bbeh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
+      paramViewGroup.setOnClickListener(new bbdv(this, paramInt));
+      return paramView;
+    }
+  }
 }
 
 

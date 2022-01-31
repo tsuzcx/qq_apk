@@ -1,8 +1,16 @@
-import cooperation.plugin.PluginInfo;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface bimo
+final class bimo
+  implements EIPCResultCallback
 {
-  public abstract void a(String paramString, PluginInfo paramPluginInfo, bimg parambimg);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.isSuccess()) {
+      bimn.a(paramEIPCResult.data.getString("config_json"));
+    }
+  }
 }
 
 

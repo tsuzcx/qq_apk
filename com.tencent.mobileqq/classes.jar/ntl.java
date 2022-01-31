@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class ntl
-  extends aofy<ntk>
+  extends aokh<ntk>
 {
   public int a()
   {
@@ -34,13 +34,13 @@ public class ntl
   }
   
   @Nullable
-  public ntk a(aogf[] paramArrayOfaogf)
+  public ntk a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PaSubscribeRedDotProcessor", 2, "[onParsed]");
     }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return ntk.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return ntk.a(paramArrayOfaoko);
     }
     return null;
   }
@@ -63,7 +63,7 @@ public class ntl
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      return bdiv.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+      return bdne.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
     }
     return 0;
   }

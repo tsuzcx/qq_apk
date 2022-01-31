@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class ubb
-  implements DialogInterface.OnClickListener
+public abstract interface ubb
 {
-  public ubb(QCircleFollowTagView paramQCircleFollowTagView) {}
+  public abstract void a(FeedCloudMeta.StComment paramStComment);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(FeedCloudMeta.StReply paramStReply);
 }
 
 

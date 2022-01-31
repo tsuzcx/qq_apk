@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wwf
-  implements DialogInterface.OnClickListener
+public class wwf
+  extends QQUIEventReceiver<wvq, uvf>
 {
-  wwf(wwe paramwwe) {}
+  public wwf(@NonNull wvq paramwvq)
+  {
+    super(paramwvq);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull wvq paramwvq, @NonNull uvf paramuvf)
+  {
+    if (paramuvf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      wxe.d(this.TAG, "deleted story failed");
+      paramwvq.a(5, paramuvf.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramwvq.a(paramuvf.jdField_a_of_type_JavaLangString);
+    paramwvq.a(new wsz[] { new wsu(wsc.a(wvq.a(paramwvq).a.jdField_a_of_type_JavaLangString)), (wsz)paramwvq.c.a() });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
+  }
 }
 
 

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import bhpw;
+import bhud;
 
 public class AbsSpinner$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new bhpw();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bhud();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   

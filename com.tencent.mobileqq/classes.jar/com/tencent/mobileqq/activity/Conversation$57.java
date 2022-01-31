@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 import com.tencent.mobileqq.widget.QQToast;
 
 class Conversation$57
@@ -13,7 +13,7 @@ class Conversation$57
     if ((Conversation.a(this.this$0) != null) && (Conversation.a(this.this$0).isShowing()))
     {
       Conversation.a(this.this$0).dismiss();
-      QQToast.a(this.this$0.a(), 2, this.this$0.a(2131720435), 1).a();
+      QQToast.a(this.this$0.a(), 2, this.this$0.a(2131720447), 1).a();
     }
   }
 }

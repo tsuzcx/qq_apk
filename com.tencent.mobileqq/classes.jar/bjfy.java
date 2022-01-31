@@ -1,31 +1,16 @@
-import NS_USER_ACTION_REPORT.ActionInfo;
+import java.util.concurrent.CountDownLatch;
 
 class bjfy
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private long b;
+  private final String jdField_a_of_type_JavaLangString;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private volatile String b;
+  private volatile String c;
   
-  public bjfy(long paramLong, int paramInt)
+  private bjfy(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public bjfy(long paramLong1, int paramInt, long paramLong2)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-  }
-  
-  public ActionInfo a()
-  {
-    ActionInfo localActionInfo = new ActionInfo();
-    localActionInfo.oper_time = this.jdField_a_of_type_Long;
-    localActionInfo.action_id = this.jdField_a_of_type_Int;
-    localActionInfo.action_value = this.b;
-    return localActionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
   }
 }
 

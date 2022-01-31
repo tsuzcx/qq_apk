@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 public class baxj
-  extends baxq
 {
-  public String a;
-  public ArrayList<basp> a = new ArrayList();
-  public String b;
-  public ArrayList<basp> b = new ArrayList();
+  public int a;
+  public long a;
+  public long b;
+  public long c;
 }
 
 

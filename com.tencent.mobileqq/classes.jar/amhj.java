@@ -1,24 +1,4 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
-
-class amhj
-  implements abnz
-{
-  amhj(amha paramamha, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
-  
-  public ToServiceMsg a()
-  {
-    ToServiceMsg localToServiceMsg = amha.c(this.jdField_a_of_type_Amha).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
-  }
-}
+public class amhj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

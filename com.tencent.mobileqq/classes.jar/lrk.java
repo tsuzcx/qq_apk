@@ -125,7 +125,7 @@ public class lrk
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(108, false);
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setBeautyNormalAlpha(0.8F);
       str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
-      if ((!TextUtils.isEmpty(str)) && (!bdcs.a(str))) {
+      if ((!TextUtils.isEmpty(str)) && (!bdhb.a(str))) {
         break label223;
       }
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);
@@ -296,7 +296,7 @@ public class lrk
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
       str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
-      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null) || ((!TextUtils.isEmpty(str)) && (!bdcs.a(str)))) {
+      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null) || ((!TextUtils.isEmpty(str)) && (!bdhb.a(str)))) {
         break label112;
       }
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);

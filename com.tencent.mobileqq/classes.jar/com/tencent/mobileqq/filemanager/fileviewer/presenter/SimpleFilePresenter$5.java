@@ -2,26 +2,26 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import arfz;
-import arin;
+import arki;
+import armw;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 public class SimpleFilePresenter$5
   implements Runnable
 {
-  public SimpleFilePresenter$5(arin paramarin) {}
+  public SimpleFilePresenter$5(armw paramarmw) {}
   
   public void run()
   {
-    String str = this.this$0.jdField_a_of_type_Arfz.i();
-    if ((TextUtils.isEmpty(str)) || (arin.c(this.this$0)))
+    String str = this.this$0.jdField_a_of_type_Arki.i();
+    if ((TextUtils.isEmpty(str)) || (armw.c(this.this$0)))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(8);
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(str);
-    arin.a(this.this$0).postDelayed(arin.a(this.this$0), 1000L);
+    armw.a(this.this$0).postDelayed(armw.a(this.this$0), 1000L);
   }
 }
 

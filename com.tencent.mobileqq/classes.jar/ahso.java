@@ -1,29 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
 class ahso
-  implements View.OnClickListener
+  implements ahvd
 {
-  ahso(ahsh paramahsh, int paramInt, ArrayList paramArrayList) {}
+  ahso(ahsi paramahsi) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!ahsh.a(this.jdField_a_of_type_Ahsh))
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), ahsh.a(this.jdField_a_of_type_Ahsh), null);
-      }
+    if (ahsi.a(this.a) != null) {
+      ahsi.a(this.a).a(paramInt1, paramInt2);
     }
-    else {
-      return;
-    }
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-    PublicFragmentActivity.a(ahsh.a(this.jdField_a_of_type_Ahsh), paramView, SDKSetEmotionPreviewFragment.class);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
-import abqm;
+import abvb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,11 +72,11 @@ public class StoryDetailActivity
   
   private void d()
   {
-    setContentView(2131561399);
+    setContentView(2131561417);
     this.leftView.setText(2131690623);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131364735, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    localFragmentTransaction.replace(2131364736, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -98,7 +98,7 @@ public class StoryDetailActivity
   public void finish()
   {
     super.finish();
-    abqm.a(this);
+    abvb.a(this);
   }
 }
 

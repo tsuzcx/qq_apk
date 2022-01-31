@@ -1,20 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
 
-public class awpa
-  implements DialogInterface.OnClickListener
+public abstract interface awpa
 {
-  public awpa(StickyNotePublishFragment paramStickyNotePublishFragment, awox paramawox) {}
+  public abstract void a(long paramLong, awoz paramawoz);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Awox).sendToTarget();
-    azmj.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
-  }
+  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
 }
 
 

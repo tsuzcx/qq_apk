@@ -1,20 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mfsdk.collector.ResultObject;
 
-public class abvv
-  implements View.OnClickListener
+public abstract interface abvv
 {
-  public abvv(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
-    }
-    azmj.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
-  }
+  public abstract boolean a(ResultObject paramResultObject, abvw paramabvw);
 }
 
 

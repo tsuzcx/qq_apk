@@ -1,27 +1,70 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-public abstract interface ayof
+public class ayof
+  extends ayod
 {
-  public abstract ayoh a();
+  public static final String a;
+  public float a;
+  public int a;
+  public CharSequence a;
+  public float b;
+  public CharSequence b;
+  public String b;
+  public String j;
+  public String k;
   
-  public abstract String a();
+  static
+  {
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + ayof.class.getSimpleName();
+  }
   
-  public abstract void a(ayog paramayog);
+  public ayof(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3);
+  public ayof(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
   
-  public abstract void a(String paramString1, String paramString2, String paramString3);
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
+  }
   
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
+      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
+      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
+      this.j = paramString.optString("topLeftTagText");
+      this.k = paramString.optString("topLeftTagColor");
+      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
+      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+    }
+  }
 }
 
 

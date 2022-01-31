@@ -1,19 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpe
-  implements bhwu
+  implements View.OnClickListener
 {
-  public adpe(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public adpe(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    RecommendFriendActivity.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, true);
+    this.a.a.setText("");
   }
 }
 

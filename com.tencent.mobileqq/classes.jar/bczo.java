@@ -1,66 +1,36 @@
-import android.animation.AnimatorSet;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 final class bczo
-  implements bczp<T>
+  implements DownloadParams.DecodeHandler
 {
-  bczo(AtomicBoolean paramAtomicBoolean, avva paramavva, bczp parambczp, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
-  
-  public T a(Bitmap paramBitmap)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    try
     {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
-      this.jdField_a_of_type_Avva.dismiss();
-      return null;
-    }
-    if (paramBitmap == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
-      this.jdField_a_of_type_Avva.dismiss();
-      return null;
-    }
-    return this.jdField_a_of_type_Bczp.a(paramBitmap);
-  }
-  
-  public void a(Exception paramException)
-  {
-    this.jdField_a_of_type_Bczp.a(paramException);
-    this.jdField_a_of_type_Avva.dismiss();
-  }
-  
-  public void a(T paramT, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
-      this.jdField_a_of_type_Avva.dismiss();
-      return;
-    }
-    if (paramT == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
-      this.jdField_a_of_type_Avva.dismiss();
-      return;
-    }
-    if (paramBitmap == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
-      this.jdField_a_of_type_Avva.dismiss();
-      this.jdField_a_of_type_Bczp.a(new NullPointerException("postBitmap bitmap is null"));
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Avva.isShowing()))
-    {
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      int i = paramBitmap.getHeight();
+      int j = paramBitmap.getWidth();
+      int k = paramDownloadParams.reqWidth;
+      int m = paramDownloadParams.reqHeight;
+      float f = k * 1.0F / j;
+      paramDownloadParams = new Matrix();
+      paramDownloadParams.setScale(f, f);
+      if (i * f > m) {}
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
+      {
+        QLog.d(bcyz.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
+        break;
       }
-      this.jdField_a_of_type_Avva.dismiss();
+      return paramDownloadParams;
     }
-    this.jdField_a_of_type_Bczp.a(paramT, paramBitmap);
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+      return paramBitmap;
+    }
   }
 }
 

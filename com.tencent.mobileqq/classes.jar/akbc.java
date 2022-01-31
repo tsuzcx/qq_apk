@@ -1,22 +1,28 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import java.util.List;
 
-public class akbc
-  implements Animation.AnimationListener
+class akbc
+  implements View.OnClickListener
 {
-  public akbc(SpecailCareListActivity paramSpecailCareListActivity) {}
+  akbc(akbb paramakbb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    paramView = (akbd)paramView.getTag();
+    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      return;
+    }
+    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acwm;
+import adbb;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1
   implements Runnable
 {
-  public FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1(acwm paramacwm) {}
+  public FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1(adbb paramadbb) {}
   
   public void run()
   {

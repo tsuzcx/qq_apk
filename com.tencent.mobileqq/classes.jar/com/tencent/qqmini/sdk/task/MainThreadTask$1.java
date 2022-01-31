@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhhp;
+import bhlw;
 
 public class MainThreadTask$1
   implements Runnable
 {
-  public MainThreadTask$1(bhhp parambhhp) {}
+  public MainThreadTask$1(bhlw parambhlw) {}
   
   public void run()
   {

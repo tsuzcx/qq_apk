@@ -1,180 +1,177 @@
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.turingfd.sdk.xq.ITuringDID;
-import com.tencent.turingfd.sdk.xq.TuringDIDConfig;
-import com.tencent.turingfd.sdk.xq.TuringDIDConfig.Builder;
-import com.tencent.turingfd.sdk.xq.TuringDIDService;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.1;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.2;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.3;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.4;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.5;
+import java.lang.ref.WeakReference;
 
-public class aaoj
+public final class aaoj
 {
-  private volatile Set<String> jdField_a_of_type_JavaUtilSet;
+  private volatile int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = -2147483648L;
+  private aaoi jdField_a_of_type_Aaoi;
+  private ArkAppMgr.IGetAppPathByNameCallback jdField_a_of_type_ComTencentArkOpenArkAppMgr$IGetAppPathByNameCallback = new aaok(this);
+  private WeakReference<aaol> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   
-  public static aaoj a()
+  public aaoj(WeakReference<aaol> paramWeakReference, aaoi paramaaoi, long paramLong)
   {
-    return aaol.a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.jdField_a_of_type_Aaoi = paramaaoi;
+    this.jdField_a_of_type_Long = paramLong;
+    a();
   }
   
-  private aaom a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  private String a()
   {
-    if (!azot.b())
+    String str = null;
+    if (a()) {
+      str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_Aaoi.a, "", null, false);
+    }
+    aase.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
+    return str;
+  }
+  
+  private void a()
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.1(this), 4);
+  }
+  
+  private void a(int paramInt)
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.4(this, paramInt), 0);
+  }
+  
+  private void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    AdThreadManager.INSTANCE.postDelayed(new GdtArkPreDownloadTask.3(this, paramInt1, paramInt2), 0, paramLong);
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Aaoi != null) && (this.jdField_a_of_type_Aaoi.a());
+  }
+  
+  private static boolean a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0)
     {
-      aanp.a("GdtAidHelper", "only arm support taid");
-      return new aaom("", "", -2147483647, 0L, null);
+      if ((paramInt2 != 1) && (paramInt2 != 1)) {}
     }
-    boolean bool = false;
-    aanp.a("GdtAidHelper", "getAidTicket start , businessId -> " + paramString + ", useCache -> " + paramBoolean1 + ", needVerifyBusinessId -> " + paramBoolean2 + "， TuringVersion : " + TuringDIDService.getVersionInfo());
-    if (paramBoolean2) {
-      bool = a(paramString);
-    }
-    paramString = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!this.jdField_a_of_type_Boolean) {
-      aanp.a("GdtAidHelper", "getAidTicket init TuringSDK");
-    }
-    int j;
-    long l;
-    for (;;)
-    {
-      try
+    else {
+      do
       {
-        TuringDIDService.init(TuringDIDConfig.newBuilder(paramString).appid("1109803375").build());
-        this.jdField_a_of_type_Boolean = true;
-        if (paramBoolean1) {}
-        String str1;
-        String str2;
-        paramString = TuringDIDService.getTuringDID(paramString);
-      }
-      catch (Throwable paramString)
-      {
-        try
-        {
-          paramString = TuringDIDService.getTuringDIDCached(paramString);
-          j = paramString.getErrorCode();
-          l = paramString.getExpiredTimestamp();
-          if ((!paramBoolean2) || (j != 0)) {
-            break label373;
-          }
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          azmj.b(null, "dc00898", "", "", "0X800A5B3", "0X800A5B3", 0, 0, "", "", "", "");
-          str1 = paramString.getAIDTicket();
-          str2 = paramString.getTAIDTicket();
-          aanp.a("GdtAidHelper", "getAidTicket aid ticket ->" + str1 + ", taidTicket -> " + str2);
-          return new aaom(paramString.getAIDTicket(), paramString.getTAIDTicket(), 0, l, null);
+        return true;
+        if (paramInt1 != 1) {
+          break;
         }
-        catch (Throwable paramString)
-        {
-          QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing get aid crash" + TuringDIDService.getVersionInfo() });
-          return new aaom("", "", -2147483645, 0L, paramString, null);
-        }
-        paramString = paramString;
-        QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing init crash fail" });
-        return new aaom("", "", -2147483646, 0L, paramString, null);
-      }
-      continue;
-      label373:
-      i = 0;
+      } while ((paramInt2 == 2) || (paramInt2 == 3));
     }
-    int i = j;
-    if (paramBoolean2)
+    do
     {
-      i = j;
-      if (!bool) {
-        i = -2147483648;
-      }
-    }
-    aanp.a("GdtAidHelper", "getAidTicket business id not verify, error code return only : error code-> " + i);
-    return new aaom("", "", i, l, null);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {}
-    for (;;)
-    {
-      int i;
-      try
+      do
       {
-        HashSet localHashSet;
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          localHashSet = new HashSet();
-        }
-        try
-        {
-          InputStream localInputStream = BaseApplicationImpl.getContext().getResources().getAssets().open("AidAuthorityFile.xml");
-          localXmlPullParser = Xml.newPullParser();
-          localXmlPullParser.setInput(localInputStream, "utf-8");
-          i = localXmlPullParser.getEventType();
-        }
-        catch (IOException localIOException)
-        {
-          XmlPullParser localXmlPullParser;
-          String str;
-          localIOException.printStackTrace();
-          this.jdField_a_of_type_JavaUtilSet = localHashSet;
-          if ((this.jdField_a_of_type_JavaUtilSet == null) || (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-            break label228;
-          }
-          bool = true;
-          if (bool) {
-            continue;
-          }
-          azlr.a("GdtAidHelper", "business id verify fail, please check the business id");
-          return bool;
-          localIOException.close();
-          continue;
-        }
-        catch (XmlPullParserException localXmlPullParserException)
-        {
-          localXmlPullParserException.printStackTrace();
-          continue;
-        }
-        i = localXmlPullParser.next();
-        break label233;
-        if (!localXmlPullParser.getName().equalsIgnoreCase("business")) {
-          continue;
-        }
-        str = localXmlPullParser.getAttributeValue(null, "id");
-        localHashSet.add(str);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("GdtAidHelper", 4, "init sensitive au, busiId = " + str);
-        continue;
-        boolean bool = false;
+        aase.d("GdtArkPreDownloadTask", String.format("checkStatus result:false oldStatus:%d newStatus:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        return false;
+      } while (paramInt1 != 2);
+      if (paramInt2 == 3) {
+        break;
       }
-      finally {}
-      label228:
-      continue;
-      label233:
-      if (i != 1) {
-        switch (i)
-        {
-        }
-      }
-    }
+    } while (paramInt2 != 4);
+    return true;
   }
   
-  public aaom a()
+  private void b()
   {
-    return a("", false, false);
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
   }
   
-  aaom a(String paramString)
+  /* Error */
+  private void b(int paramInt)
   {
-    return a(paramString, true, true);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 23	aaoj:jdField_a_of_type_Int	I
+    //   4: istore_2
+    //   5: iload_2
+    //   6: iload_1
+    //   7: if_icmpeq +30 -> 37
+    //   10: aload_0
+    //   11: monitorenter
+    //   12: iload_2
+    //   13: iload_1
+    //   14: if_icmpeq +21 -> 35
+    //   17: iload_2
+    //   18: iload_1
+    //   19: invokestatic 143	aaoj:a	(II)Z
+    //   22: ifeq +54 -> 76
+    //   25: aload_0
+    //   26: iload_1
+    //   27: putfield 23	aaoj:jdField_a_of_type_Int	I
+    //   30: aload_0
+    //   31: iload_1
+    //   32: invokespecial 145	aaoj:a	(I)V
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: ldc 66
+    //   39: ldc 147
+    //   41: iconst_3
+    //   42: anewarray 4	java/lang/Object
+    //   45: dup
+    //   46: iconst_0
+    //   47: iload_2
+    //   48: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   51: aastore
+    //   52: dup
+    //   53: iconst_1
+    //   54: iload_1
+    //   55: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_2
+    //   61: aload_0
+    //   62: getfield 23	aaoj:jdField_a_of_type_Int	I
+    //   65: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   68: aastore
+    //   69: invokestatic 74	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   72: invokestatic 80	aase:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   75: return
+    //   76: aload_0
+    //   77: iconst_1
+    //   78: ldc 148
+    //   80: lconst_0
+    //   81: invokespecial 121	aaoj:a	(IIJ)V
+    //   84: goto -49 -> 35
+    //   87: astore_3
+    //   88: aload_0
+    //   89: monitorexit
+    //   90: aload_3
+    //   91: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	92	0	this	aaoj
+    //   0	92	1	paramInt	int
+    //   4	44	2	i	int
+    //   87	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   17	35	87	finally
+    //   35	37	87	finally
+    //   76	84	87	finally
+    //   88	90	87	finally
+  }
+  
+  private void c()
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.5(this), 4);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

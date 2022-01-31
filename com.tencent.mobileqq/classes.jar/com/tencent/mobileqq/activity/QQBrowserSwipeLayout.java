@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adlk;
+import adpz;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -35,7 +35,7 @@ public class QQBrowserSwipeLayout
   public QQBrowserSwipeLayout(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, paramBoolean);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new adlk(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new adpz(this, paramContext));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)

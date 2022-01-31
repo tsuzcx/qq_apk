@@ -19,7 +19,7 @@ public class otn
       String str2 = (String)paramString.get(str1);
       QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "opt_open_cost")) {
-        bjxj.a("preload_controller", Boolean.valueOf("1".equals(str2)));
+        bkbq.a("preload_controller", Boolean.valueOf("1".equals(str2)));
       }
     }
     return true;
@@ -27,7 +27,7 @@ public class otn
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("preload_controller", Boolean.valueOf(true));
+    bkbq.a("preload_controller", Boolean.valueOf(true));
   }
 }
 

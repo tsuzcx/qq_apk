@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.os.Bundle;
 
-public class alob
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class alob
+  extends altm
 {
-  public alob(FrameHelperActivity paramFrameHelperActivity) {}
+  alob(aloa paramaloa) {}
   
-  public void onGlobalLayout()
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
-      this.a.c.setVisibility(8);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
     }
   }
 }

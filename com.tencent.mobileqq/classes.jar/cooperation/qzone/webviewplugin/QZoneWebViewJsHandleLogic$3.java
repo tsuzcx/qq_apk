@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.graphics.BitmapFactory;
-import becq;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
@@ -12,7 +12,7 @@ import ndd;
 public final class QZoneWebViewJsHandleLogic$3
   implements Runnable
 {
-  public QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, becq parambecq, Runnable paramRunnable) {}
+  public QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, begz parambegz, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public final class QZoneWebViewJsHandleLogic$3
         QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localOutOfMemoryError);
       }
     }
-    this.jdField_a_of_type_Becq.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Begz.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

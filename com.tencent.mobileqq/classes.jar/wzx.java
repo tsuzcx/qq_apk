@@ -1,28 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 
 class wzx
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  wzx(wzu paramwzu) {}
+  wzx(wzv paramwzv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    wsv.b("TextLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wsv.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    wsv.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

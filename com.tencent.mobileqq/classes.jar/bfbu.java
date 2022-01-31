@@ -1,16 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+
 public class bfbu
+  implements View.OnClickListener
 {
-  public long a;
-  String a;
-  public boolean a;
-  String b;
+  public bfbu(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
   
-  public bfbu(long paramLong, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
+      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+    }
+    for (;;)
+    {
+      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
+        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
+      }
+      return;
+      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+      }
+    }
   }
 }
 

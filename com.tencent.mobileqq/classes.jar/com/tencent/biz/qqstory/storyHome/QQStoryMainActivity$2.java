@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ayyd;
+import azcm;
 import com.tencent.qphone.base.util.QLog;
 
 class QQStoryMainActivity$2
@@ -10,8 +10,8 @@ class QQStoryMainActivity$2
   
   public void run()
   {
-    ayyd.b = System.currentTimeMillis();
-    QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(ayyd.b) });
+    azcm.b = System.currentTimeMillis();
+    QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(azcm.b) });
     this.this$0.a.a(false, true, 1, null);
   }
 }

@@ -1,8 +1,8 @@
+import android.os.Message;
+
 public abstract interface atxi
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(Message paramMessage);
 }
 
 

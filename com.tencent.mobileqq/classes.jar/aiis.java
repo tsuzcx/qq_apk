@@ -1,34 +1,104 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aiis
-  extends awdn
 {
-  public aiis(RebindActivity paramRebindActivity) {}
+  private static final aiis jdField_a_of_type_Aiis = new aiis();
+  private Map<String, List<WeakReference<aiip>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  private int a(List<WeakReference<aiip>> paramList, aiip paramaiip)
   {
-    this.a.b();
-    if (paramBoolean)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
-      paramBundle.addFlags(67108864);
-      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
-      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      this.a.startActivityForResult(paramBundle, 1);
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        aiip localaiip = (aiip)((WeakReference)paramList.next()).get();
+        if ((localaiip != null) && (localaiip == paramaiip)) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
+  }
+  
+  public static aiis a()
+  {
+    return jdField_a_of_type_Aiis;
+  }
+  
+  public void a(int paramInt, String paramString, aiip paramaiip)
+  {
+    try
+    {
+      String str = abti.a(paramString, paramInt);
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString = localList;
+      if (localList == null)
+      {
+        paramString = new ArrayList(2);
+        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+      }
+      if (a(paramString, paramaiip) < 0) {
+        paramString.add(new WeakReference(paramaiip));
+      }
       return;
     }
-    this.a.b(2131719221);
+    finally {}
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramString = abti.a(paramString, paramInt);
+        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if ((paramString != null) && (paramString.size() > 0))
+        {
+          paramString = paramString.iterator();
+          if (paramString.hasNext())
+          {
+            if ((aiip)((WeakReference)paramString.next()).get() == null) {
+              continue;
+            }
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d(aike.a, 2, "hasOtherInstance -->" + bool);
+            }
+            return bool;
+          }
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
+  }
+  
+  public void b(int paramInt, String paramString, aiip paramaiip)
+  {
+    try
+    {
+      paramString = abti.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0) && (paramaiip != null))
+      {
+        paramInt = a(paramString, paramaiip);
+        if (paramInt >= 0) {
+          paramString.remove(paramInt);
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 

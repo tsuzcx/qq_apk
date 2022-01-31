@@ -1,22 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class bhnd
-  implements PtuFilterResource
+class bhnd
+  implements bhoa
 {
-  public boolean checkPendantVersionOK()
+  protected long a;
+  
+  public bhnd(bhmz parambhmz, long paramLong)
   {
-    return azgk.d();
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public String getPortraitPathDir()
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return getSoPathDir();
-  }
-  
-  public String getSoPathDir()
-  {
-    return azgk.b(BaseApplicationImpl.getContext());
+    if (this.jdField_a_of_type_Long != 0L) {
+      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    }
   }
 }
 

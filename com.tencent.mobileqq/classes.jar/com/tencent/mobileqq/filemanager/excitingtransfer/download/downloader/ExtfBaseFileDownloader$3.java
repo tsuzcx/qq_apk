@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import arad;
+import arem;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
 public class ExtfBaseFileDownloader$3
   implements Runnable
 {
-  public ExtfBaseFileDownloader$3(arad paramarad, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
+  public ExtfBaseFileDownloader$3(arem paramarem, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
   
   public void run()
   {

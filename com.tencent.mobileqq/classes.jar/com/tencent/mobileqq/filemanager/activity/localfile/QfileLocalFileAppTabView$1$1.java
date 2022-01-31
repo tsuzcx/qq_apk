@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import aqlo;
-import aqlp;
-import aqlq;
-import bdcd;
-import bdfq;
+import aqpx;
+import aqpy;
+import aqpz;
+import bdgm;
+import bdjz;
 
 public class QfileLocalFileAppTabView$1$1
   implements Runnable
@@ -13,12 +13,12 @@ public class QfileLocalFileAppTabView$1$1
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692641).setNegativeButton(2131690648, new aqlp(this)).setPositiveButton(2131692642, new aqlo(this));
-    localbdfq.setOnDismissListener(new aqlq(this));
-    localbdfq.setTitle(2131692643);
-    localbdfq.setCancelable(false);
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.show();
+    bdjz localbdjz = bdgm.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692642).setNegativeButton(2131690648, new aqpy(this)).setPositiveButton(2131692643, new aqpx(this));
+    localbdjz.setOnDismissListener(new aqpz(this));
+    localbdjz.setTitle(2131692644);
+    localbdjz.setCancelable(false);
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.show();
     this.a.this$0.i();
   }
 }

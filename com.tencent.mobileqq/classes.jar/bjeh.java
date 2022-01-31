@@ -1,63 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import cooperation.qzone.contentbox.MsgPhotoView;
-import cooperation.qzone.contentbox.model.MQMsg;
-import cooperation.qzone.contentbox.model.MQUserPersonalData;
-import cooperation.qzone.util.QZLog;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
 public class bjeh
   implements View.OnClickListener
 {
-  public bjeh(MsgPhotoView paramMsgPhotoView) {}
+  public bjeh(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
   public void onClick(View paramView)
   {
-    MQUserPersonalData localMQUserPersonalData = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
-    if (localMQUserPersonalData == null)
+    if (!this.a.b)
     {
-      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
-      return;
-    }
-    Object localObject = "";
-    switch (paramView.getId())
-    {
-    default: 
-      paramView = (View)localObject;
-    }
-    for (;;)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + paramView);
+      if (1 == this.a.c) {
+        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
       }
-      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      return;
-      paramView = localMQUserPersonalData.mBVJumpUrl;
-      bjzq.a(12, 2);
-      continue;
-      localObject = localMQUserPersonalData.mYJumpUrl;
-      paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof Boolean)))
-      {
-        if (((Boolean)paramView).booleanValue()) {}
-        for (int i = 11;; i = 10)
-        {
-          bjzq.a(i, 2);
-          paramView = (View)localObject;
-          break;
-        }
-        paramView = localMQUserPersonalData.mLYJumpUrl;
-        bjzq.a(13, 2);
-      }
-      else
-      {
-        paramView = (View)localObject;
-      }
+      this.a.a(false, false);
+      this.a.b();
     }
   }
 }

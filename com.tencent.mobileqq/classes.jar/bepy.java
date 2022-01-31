@@ -1,36 +1,26 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.BitmapDrawable;
 
 public class bepy
 {
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private WeakReference<bepw> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public long a;
+  public BitmapDrawable a;
   
-  public bepy(QQToast paramQQToast, bepw parambepw)
+  public bepy(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambepw);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
   }
   
-  private boolean a()
+  public String toString()
   {
-    bepw localbepw = (bepw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localbepw != null) && (localbepw.a());
-  }
-  
-  @Nullable
-  QQToast a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-    }
-    return null;
+    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepy
  * JD-Core Version:    0.7.0.1
  */

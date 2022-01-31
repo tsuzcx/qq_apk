@@ -14,27 +14,27 @@ import android.webkit.URLUtil;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azmj;
-import bmir;
-import bmvb;
-import bmvc;
+import azqs;
+import bmnd;
+import bmzn;
+import bmzo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import nbv;
-import wsv;
+import wxe;
 
 public class LinkerSummaryView
   extends FrameLayout
-  implements View.OnClickListener, bmvc
+  implements View.OnClickListener, bmzo
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmir jdField_a_of_type_Bmir;
-  public bmvb a;
+  bmnd jdField_a_of_type_Bmnd;
+  public bmzn a;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
@@ -51,16 +51,16 @@ public class LinkerSummaryView
   public LinkerSummaryView(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131559048, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365583));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365584));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365585));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365580));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365579));
-    this.d = ((TextView)findViewById(2131365586));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365578));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365582));
-    this.e = ((TextView)findViewById(2131365581));
+    inflate(paramContext, 2131559047, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365585));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365586));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365587));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365582));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365581));
+    this.d = ((TextView)findViewById(2131365588));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365580));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365584));
+    this.e = ((TextView)findViewById(2131365583));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
@@ -70,9 +70,9 @@ public class LinkerSummaryView
   private void b()
   {
     Object localObject2;
-    if ((this.jdField_a_of_type_Bmvb != null) && (this.jdField_a_of_type_Bmvb.jdField_a_of_type_JavaLangString != null))
+    if ((this.jdField_a_of_type_Bmzn != null) && (this.jdField_a_of_type_Bmzn.jdField_a_of_type_JavaLangString != null))
     {
-      localObject2 = this.jdField_a_of_type_Bmvb.jdField_a_of_type_JavaLangString;
+      localObject2 = this.jdField_a_of_type_Bmzn.jdField_a_of_type_JavaLangString;
       localObject1 = null;
       int i = ((String)localObject2).lastIndexOf("#");
       if (i > 0) {
@@ -110,14 +110,14 @@ public class LinkerSummaryView
       if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaLangString != null))
       {
         localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130846108);
-        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130839435);
+        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130846181);
+        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130839436);
       }
       try
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        wsv.b(getClass().getName(), "setIconURlDrawable:" + this.jdField_a_of_type_JavaLangString);
+        wxe.b(getClass().getName(), "setIconURlDrawable:" + this.jdField_a_of_type_JavaLangString);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
@@ -129,34 +129,34 @@ public class LinkerSummaryView
     this.e.setVisibility(8);
   }
   
-  public void a(bmvb parambmvb)
+  public void a(bmzn parambmzn)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.1(this, parambmvb));
+    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.1(this, parambmzn));
   }
   
-  public void a(bmvb parambmvb, int paramInt)
+  public void a(bmzn parambmzn, int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.2(this, parambmvb));
+    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.2(this, parambmzn));
   }
   
-  void b(bmvb parambmvb)
+  void b(bmzn parambmzn)
   {
-    this.jdField_a_of_type_Bmvb = parambmvb;
-    String str1 = parambmvb.jdField_a_of_type_JavaLangString;
-    String str2 = parambmvb.d;
-    str2 = parambmvb.jdField_b_of_type_JavaLangString;
-    parambmvb = parambmvb.c;
+    this.jdField_a_of_type_Bmzn = parambmzn;
+    String str1 = parambmzn.jdField_a_of_type_JavaLangString;
+    String str2 = parambmzn.d;
+    str2 = parambmzn.jdField_b_of_type_JavaLangString;
+    parambmzn = parambmzn.c;
     if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839435);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839436);
     }
     if (!TextUtils.isEmpty(str2))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      if (!TextUtils.isEmpty(parambmvb))
+      if (!TextUtils.isEmpty(parambmzn))
       {
-        parambmvb = Html.fromHtml(parambmvb);
-        wsv.b(getClass().getName(), "result:" + parambmvb);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(parambmvb);
+        parambmzn = Html.fromHtml(parambmzn);
+        wxe.b(getClass().getName(), "result:" + parambmzn);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(parambmzn);
       }
       this.d.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -175,21 +175,21 @@ public class LinkerSummaryView
   {
     switch (paramView.getId())
     {
-    case 2131365579: 
-    case 2131365580: 
     case 2131365581: 
-    default: 
-    case 2131365578: 
+    case 2131365582: 
     case 2131365583: 
+    default: 
+    case 2131365580: 
+    case 2131365585: 
       do
       {
         return;
-        if (this.jdField_a_of_type_Bmir != null) {
-          this.jdField_a_of_type_Bmir.j();
+        if (this.jdField_a_of_type_Bmnd != null) {
+          this.jdField_a_of_type_Bmnd.j();
         }
-        this.jdField_a_of_type_Bmvb = null;
-        this.jdField_a_of_type_Bmir = null;
-        bmir.a("clk_linkdelete", this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_a_of_type_Bmzn = null;
+        this.jdField_a_of_type_Bmnd = null;
+        bmnd.a("clk_linkdelete", this.jdField_a_of_type_AndroidContentContext);
         return;
         if (this.jdField_a_of_type_Boolean)
         {
@@ -199,21 +199,21 @@ public class LinkerSummaryView
         if (!this.jdField_b_of_type_Boolean) {
           break;
         }
-      } while (this.jdField_a_of_type_Bmir == null);
-      this.jdField_a_of_type_Bmir.b(true);
-      azmj.b(null, "dc00899", "grp_story", "", "video_edit", "edit_linkbar", 0, 0, "2", "1", "", "");
+      } while (this.jdField_a_of_type_Bmnd == null);
+      this.jdField_a_of_type_Bmnd.b(true);
+      azqs.b(null, "dc00899", "grp_story", "", "video_edit", "edit_linkbar", 0, 0, "2", "1", "", "");
       return;
       setEditing(true);
-      bmir.a("clk_linkbar", this.jdField_a_of_type_AndroidContentContext);
+      bmnd.a("clk_linkbar", this.jdField_a_of_type_AndroidContentContext);
       return;
     }
     b();
-    bmir.a("clk_linkgo", this.jdField_a_of_type_AndroidContentContext);
+    bmnd.a("clk_linkgo", this.jdField_a_of_type_AndroidContentContext);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bmir != null))
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bmnd != null))
     {
       setEditing(false);
       return true;
@@ -221,9 +221,9 @@ public class LinkerSummaryView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setEditVideoLinker(bmir parambmir)
+  public void setEditVideoLinker(bmnd parambmnd)
   {
-    this.jdField_a_of_type_Bmir = parambmir;
+    this.jdField_a_of_type_Bmnd = parambmnd;
   }
   
   public void setEditing(boolean paramBoolean)
@@ -242,26 +242,26 @@ public class LinkerSummaryView
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  public void setLinkerObject(bmvb parambmvb)
+  public void setLinkerObject(bmzn parambmzn)
   {
     a();
-    if (parambmvb.a())
+    if (parambmzn.a())
     {
-      b(parambmvb);
+      b(parambmzn);
       return;
     }
-    this.jdField_a_of_type_Bmvb = parambmvb;
-    String str = parambmvb.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bmzn = parambmzn;
+    String str = parambmzn.jdField_a_of_type_JavaLangString;
     this.d.setVisibility(0);
     this.d.setText(str);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846108);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846181);
     }
-    parambmvb.a(this);
-    parambmvb.a(str);
+    parambmzn.a(this);
+    parambmzn.a(str);
   }
   
   public void setReadOnly()

@@ -12,7 +12,7 @@ class mmx
   {
     if (this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372730, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372756, false);
       this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362956, false);
       this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362968, false);
       this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362967, false);

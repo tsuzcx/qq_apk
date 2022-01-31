@@ -1,15 +1,13 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.List;
 
-public class vaa
-  extends ugz
+public abstract interface vaa
 {
-  public List<StoryVideoItem> a;
+  public abstract void a(@Nullable uyg paramuyg, Error paramError);
   
-  public String toString()
-  {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
-  }
+  public abstract void a(@Nullable uyg paramuyg, @NonNull List<StoryVideoItem> paramList);
 }
 
 

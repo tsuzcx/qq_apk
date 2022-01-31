@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amof;
-import amrl;
+import amsu;
+import amwa;
 import android.text.TextUtils;
 
 public class Interactive3DRenderable$11
   implements Runnable
 {
-  public Interactive3DRenderable$11(amrl paramamrl, String paramString) {}
+  public Interactive3DRenderable$11(amwa paramamwa, String paramString) {}
   
   public void run()
   {
-    if ((amrl.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
-      amrl.a(this.this$0).a(amrl.a(this.this$0) + this.a, true, true);
+    if ((amwa.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
+      amwa.a(this.this$0).a(amwa.a(this.this$0) + this.a, true, true);
     }
   }
 }

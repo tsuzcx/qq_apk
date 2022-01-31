@@ -7,10 +7,10 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bevz;
-import bewa;
-import bewb;
-import bhnp;
+import bfai;
+import bfaj;
+import bfak;
+import bhrw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -45,34 +45,34 @@ public class d
   private static String l;
   private static String m;
   private static String n;
-  private static String o = bevz.a(bevz.l);
+  private static String o = bfai.a(bfai.l);
   
   static
   {
-    jdField_a_of_type_JavaLangString = bevz.a(bevz.a);
-    jdField_b_of_type_JavaLangString = bevz.a(bevz.a);
-    c = bevz.a(bevz.a);
-    d = bevz.a(bevz.a);
+    jdField_a_of_type_JavaLangString = bfai.a(bfai.a);
+    jdField_b_of_type_JavaLangString = bfai.a(bfai.a);
+    c = bfai.a(bfai.a);
+    d = bfai.a(bfai.a);
     e = "";
-    e = bevz.a(bevz.b);
+    e = bfai.a(bfai.b);
     f = "";
-    f = bevz.a(bevz.c);
+    f = bfai.a(bfai.c);
     g = "";
-    g = bevz.a(bevz.d);
+    g = bfai.a(bfai.d);
     h = "";
-    h = bevz.a(bevz.e);
+    h = bfai.a(bfai.e);
     i = "";
     j = "";
     k = "";
     l = "";
     m = "";
     n = "";
-    i = bevz.a(bevz.f);
-    j = bevz.a(bevz.g);
-    k = bevz.a(bevz.h);
-    l = bevz.a(bevz.i);
-    m = bevz.a(bevz.j);
-    n = bevz.a(bevz.k);
+    i = bfai.a(bfai.f);
+    j = bfai.a(bfai.g);
+    k = bfai.a(bfai.h);
+    l = bfai.a(bfai.i);
+    m = bfai.a(bfai.j);
+    n = bfai.a(bfai.k);
     o = "";
   }
   
@@ -88,8 +88,8 @@ public class d
     //   8: astore_2
     //   9: aload_2
     //   10: astore_1
-    //   11: getstatic 101	bevz:m	[B
-    //   14: invokestatic 42	bevz:a	([B)Ljava/lang/String;
+    //   11: getstatic 101	bfai:m	[B
+    //   14: invokestatic 42	bfai:a	([B)Ljava/lang/String;
     //   17: invokestatic 107	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   20: astore 4
     //   22: aload_2
@@ -133,7 +133,7 @@ public class d
     //   85: astore_1
     //   86: aload 4
     //   88: invokevirtual 127	java/security/MessageDigest:digest	()[B
-    //   91: invokestatic 130	bewa:a	([B)Ljava/lang/String;
+    //   91: invokestatic 130	bfaj:a	([B)Ljava/lang/String;
     //   94: astore 4
     //   96: aload 4
     //   98: astore_1
@@ -248,15 +248,15 @@ public class d
     //   71: aload_2
     //   72: astore_1
     //   73: aload 5
-    //   75: getstatic 171	bevz:n	[B
-    //   78: invokestatic 42	bevz:a	([B)Ljava/lang/String;
+    //   75: getstatic 171	bfai:n	[B
+    //   78: invokestatic 42	bfai:a	([B)Ljava/lang/String;
     //   81: invokevirtual 175	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   84: ifeq -68 -> 16
     //   87: aload_2
     //   88: astore_1
     //   89: aload 5
-    //   91: getstatic 177	bevz:o	[B
-    //   94: invokestatic 42	bevz:a	([B)Ljava/lang/String;
+    //   91: getstatic 177	bfai:o	[B
+    //   94: invokestatic 42	bfai:a	([B)Ljava/lang/String;
     //   97: invokevirtual 180	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   100: ifeq -84 -> 16
     //   103: aload_2
@@ -448,7 +448,7 @@ public class d
           if (str4 != null) {
             jdField_b_of_type_JavaLangString = str4;
           }
-          if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.3.3.4515"))) {
+          if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.3.5.4555"))) {
             break label444;
           }
           if (localObject2 != null) {
@@ -465,7 +465,7 @@ public class d
         localc.str_apkmd5.set(jdField_a_of_type_JavaLangString);
         localc.str_rsamd5.set(jdField_b_of_type_JavaLangString);
         localc.str_txsfcfgkmd5.set(c);
-        localc.str_apkversion.set("8.3.3.4515");
+        localc.str_apkversion.set("8.3.5.4555");
         localc.str_channelid.set(AppSetting.c());
         localc.str_uin.set(localQQAppInterface.getCurrentAccountUin());
         localc.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
@@ -494,13 +494,13 @@ public class d
         return;
       }
       label444:
-      d = bhnp.a(BaseApplication.getContext());
-      jdField_a_of_type_JavaLangString = bhnp.a(localException);
+      d = bhrw.a(BaseApplication.getContext());
+      jdField_a_of_type_JavaLangString = bhrw.a(localException);
       Object localObject2 = new byte[16];
       if (localObject2 != null)
       {
-        bewa.a(localException, g, (byte[])localObject2);
-        c = bhnp.a((byte[])localObject2);
+        bfaj.a(localException, g, (byte[])localObject2);
+        c = bhrw.a((byte[])localObject2);
       }
       jdField_b_of_type_Boolean = true;
     }
@@ -516,7 +516,7 @@ public class d
       localEditor.putString(k, c);
       localEditor.putString(l, jdField_b_of_type_JavaLangString);
       localEditor.putString(m, jdField_a_of_type_JavaLangString);
-      localEditor.putString(n, "8.3.3.4515");
+      localEditor.putString(n, "8.3.5.4555");
       localEditor.commit();
       return;
     }
@@ -545,7 +545,7 @@ public class d
           localObject = ((QQAppInterface)localObject).getApplication().getApplicationInfo().sourceDir;
           if (localObject != null)
           {
-            jdField_a_of_type_Int = bewb.a((String)localObject, g);
+            jdField_a_of_type_Int = bfak.a((String)localObject, g);
             jdField_a_of_type_Boolean = true;
           }
         }

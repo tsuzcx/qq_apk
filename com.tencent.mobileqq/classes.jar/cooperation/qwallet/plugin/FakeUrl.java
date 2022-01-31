@@ -10,7 +10,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bdfq;
+import bdjz;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
@@ -32,7 +32,7 @@ public class FakeUrl
   public FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
   protected FakeUrl.FakeListener fl;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bdfq mDialog;
+  private bdjz mDialog;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
   
@@ -93,7 +93,7 @@ public class FakeUrl
     return paramString;
   }
   
-  public bdfq getDialog()
+  public bdjz getDialog()
   {
     return this.mDialog;
   }
@@ -179,8 +179,8 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new bdfq(this.context, 2131755801);
-      this.mDialog.setContentView(2131558943);
+      this.mDialog = new bdjz(this.context, 2131755801);
+      this.mDialog.setContentView(2131558942);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
       this.mDialog.setNegativeButton(paramFakeListener, paramString);

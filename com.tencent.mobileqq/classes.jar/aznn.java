@@ -1,9 +1,6 @@
-import com.tencent.mobileqq.statistics.UEC.UECItem;
-import java.util.ArrayList;
-
 public abstract interface aznn
 {
-  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
+  public abstract void a();
 }
 
 

@@ -1,75 +1,53 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class athb
+  extends WebViewPlugin
 {
-  public static int a(int paramInt)
+  yqz a;
+  
+  public athb()
   {
-    if (paramInt == 1) {
-      return 1;
-    }
-    return 2;
+    this.mPluginNameSpace = "connect";
   }
   
-  public static int a(RedTouch paramRedTouch)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
-    do
+    boolean bool = false;
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
+    try
     {
-      return 0;
-      paramRedTouch = paramRedTouch.a();
-    } while ((paramRedTouch == null) || (paramRedTouch.isEmpty()));
-    paramRedTouch = paramRedTouch.iterator();
-    while (paramRedTouch.hasNext())
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("appid");
+      paramString1 = paramString3.optString("openid");
+      paramString2 = paramString3.optString("troopuin");
+      paramString3 = paramString3.optString("callback");
+      if (this.a == null)
+      {
+        this.a = yqz.a();
+        this.a.a();
+      }
+      this.a.c(paramJsBridgeListener, paramString1, paramString2, new athc(this, paramString3));
+      bool = true;
+    }
+    catch (JSONException paramJsBridgeListener)
     {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next();
-      if (localRedTypeInfo.red_type.get() == 0) {
-        return 1;
-      }
-      if (localRedTypeInfo.red_type.get() == 5) {
-        return 2;
-      }
-      if (localRedTypeInfo.red_type.get() == 11) {
-        return 3;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
     }
-    return 3;
+    return bool;
+    return false;
   }
   
-  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  public void onDestroy()
   {
-    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
-      return 0;
+    super.onDestroy();
+    if (this.a != null) {
+      this.a.b();
     }
-    if (paramRedTypeInfo.red_type.get() == 0) {
-      return 1;
-    }
-    if (paramRedTypeInfo.red_type.get() == 5) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static azov a(String paramString)
-  {
-    azov localazov = new azov();
-    localazov.i = "trends_tab";
-    localazov.j = "trends_plugin";
-    localazov.k = paramString;
-    return localazov;
-  }
-  
-  public static int b(RedTouch paramRedTouch)
-  {
-    if (paramRedTouch == null) {}
-    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
-      return 0;
-    }
-    return 1;
   }
 }
 

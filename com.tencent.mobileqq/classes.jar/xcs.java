@@ -1,14 +1,20 @@
 import android.graphics.Bitmap;
 
-public abstract interface xcs
+public class xcs
 {
-  public abstract void a();
+  public final int c;
+  public final Bitmap c;
   
-  public abstract void a(Bitmap paramBitmap);
+  public xcs(int paramInt, Bitmap paramBitmap)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
   
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(xct paramxct);
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+  }
 }
 
 

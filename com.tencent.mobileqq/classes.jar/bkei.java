@@ -1,46 +1,34 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.1;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.2;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
 
-public final class bkei
-  extends Handler
+class bkei
+  extends View
 {
-  public bkei(bkee parambkee, Looper paramLooper)
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public bkei(bkeh parambkeh, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    super(paramLooper);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      Bundle localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.1(this, localBundle));
-      continue;
-      localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.2(this, localBundle));
-      continue;
-      if (bkee.a(this.a) != null)
-      {
-        bkee.a(this.a).a();
-        continue;
-        if ((!bkee.a(this.a)) && (bkee.a(this.a) != null)) {
-          bkee.a(this.a).b();
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

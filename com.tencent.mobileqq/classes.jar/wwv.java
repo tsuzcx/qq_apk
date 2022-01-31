@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class wwv
-  extends uto
+  implements View.OnClickListener
 {
-  wwv(wwu paramwwu, String paramString)
-  {
-    super(paramString);
-  }
+  wwv(wws paramwws) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Wwr.a = paramSosoLbsInfo.a.a;
-      this.a.jdField_a_of_type_Wwr.b = paramSosoLbsInfo.a.b;
-      wsv.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Wwr.a + " longitude=" + this.a.jdField_a_of_type_Wwr.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Wwr.f();
-      }
-      return;
+    if (wws.a(this.a) != null) {
+      wws.a(this.a).h();
     }
-    this.a.jdField_a_of_type_Wwr.a = 0.0D;
-    this.a.jdField_a_of_type_Wwr.b = 0.0D;
-    wsv.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

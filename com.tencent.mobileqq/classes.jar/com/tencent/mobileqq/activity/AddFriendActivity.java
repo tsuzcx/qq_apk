@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abxk;
-import ahco;
-import ahcq;
-import ahea;
-import alpo;
-import amlx;
+import acbz;
+import ahhd;
+import ahhf;
+import ahip;
+import alud;
+import amqm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,11 +30,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcgx;
-import bclo;
-import bdee;
-import bepp;
-import bhow;
+import bclg;
+import bcpx;
+import bdin;
+import bety;
+import bhtd;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -56,13 +56,13 @@ public class AddFriendActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback, TextWatcher, View.OnClickListener
 {
-  private ahco jdField_a_of_type_Ahco;
-  ahcq jdField_a_of_type_Ahcq = new abxk(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhow(this);
+  private ahhd jdField_a_of_type_Ahhd;
+  ahhf jdField_a_of_type_Ahhf = new acbz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhtd(this);
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bepp jdField_a_of_type_Bepp;
+  bety jdField_a_of_type_Bety;
   String jdField_a_of_type_JavaLangString = "";
   private final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$", 2);
   private boolean jdField_a_of_type_Boolean;
@@ -82,7 +82,7 @@ public class AddFriendActivity
         a(paramString);
         return;
       }
-      a(2131692665);
+      a(2131692667);
       return;
     }
     label289:
@@ -91,7 +91,7 @@ public class AddFriendActivity
     label360:
     for (;;)
     {
-      ahea localahea;
+      ahip localahip;
       int i;
       try
       {
@@ -104,11 +104,11 @@ public class AddFriendActivity
         if (!localIterator1.hasNext()) {
           break label360;
         }
-        localahea = (ahea)localIterator1.next();
-        if ((localahea == null) || (localahea.a != 80000000) || (localahea.b == null) || (localahea.b.size() == 0)) {
+        localahip = (ahip)localIterator1.next();
+        if ((localahip == null) || (localahip.a != 80000000) || (localahip.b == null) || (localahip.b.size() == 0)) {
           continue;
         }
-        Iterator localIterator2 = localahea.b.iterator();
+        Iterator localIterator2 = localahip.b.iterator();
         i = 0;
         if (!localIterator2.hasNext()) {
           break label348;
@@ -122,12 +122,12 @@ public class AddFriendActivity
         if ((paramString != null) && (paramString.b != null) && (paramString.b.size() != 0)) {
           break label289;
         }
-        a(2131719578);
+        a(2131719590);
         return;
       }
       catch (Exception paramString)
       {
-        a(2131692665);
+        a(2131692667);
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -144,7 +144,7 @@ public class AddFriendActivity
       paramString = null;
       continue;
       if (i != 0) {
-        paramString = localahea;
+        paramString = localahip;
       }
     }
   }
@@ -155,9 +155,9 @@ public class AddFriendActivity
       return;
     }
     long l3 = paramSearchResultItem.jdField_a_of_type_Long;
-    if ((paramQQAppInterface != null) && (bcgx.b(paramQQAppInterface, String.valueOf(l3))))
+    if ((paramQQAppInterface != null) && (bclg.b(paramQQAppInterface, String.valueOf(l3))))
     {
-      bcgx.a(paramActivity, null, String.valueOf(l3));
+      bclg.a(paramActivity, null, String.valueOf(l3));
       return;
     }
     long l1 = 0L;
@@ -297,11 +297,11 @@ public class AddFriendActivity
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
     }
-    this.jdField_a_of_type_Bepp.c(paramInt);
-    this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety.c(paramInt);
+    this.jdField_a_of_type_Bety.show();
   }
   
   private void b(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
@@ -312,16 +312,16 @@ public class AddFriendActivity
       paramString = (ArrayList)paramObject;
       if (paramString.size() == 1)
       {
-        paramObject = ((ahea)paramString.get(0)).b;
+        paramObject = ((ahip)paramString.get(0)).b;
         if ((paramObject != null) && (paramObject.size() == 1))
         {
           paramObject = (AccountSearchPb.record)paramObject.get(0);
-          paramInt1 = ((ahea)paramString.get(0)).a;
+          paramInt1 = ((ahip)paramString.get(0)).a;
           paramString = String.valueOf(paramObject.code.get());
           if ((paramInt1 == 80000001) && (!TextUtils.isEmpty(paramString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramString)))
           {
             paramString = paramObject.bytes_join_group_auth.get().toStringUtf8();
-            bclo.a(this, TroopInfoActivity.a(String.valueOf(paramObject.code.get()), paramString, 105), 2);
+            bcpx.a(this, TroopInfoActivity.a(String.valueOf(paramObject.code.get()), paramString, 105), 2);
             finish();
             overridePendingTransition(0, 0);
             return;
@@ -331,31 +331,31 @@ public class AddFriendActivity
     }
     if (!paramBoolean)
     {
-      if (!bdee.d(BaseApplication.getContext()))
+      if (!bdin.d(BaseApplication.getContext()))
       {
-        a(2131694769);
+        a(2131694771);
         return;
       }
-      a(2131692665);
+      a(2131692667);
       return;
     }
-    a(2131721096);
+    a(2131721108);
   }
   
   private void c()
   {
-    Button localButton = (Button)findViewById(2131363699);
-    TextView localTextView = (TextView)findViewById(2131378793);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365842));
+    Button localButton = (Button)findViewById(2131363701);
+    TextView localTextView = (TextView)findViewById(2131378848);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365844));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378717));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378771));
     if (this.jdField_a_of_type_Boolean)
     {
-      setTitle(2131719582);
-      localTextView.setText(2131719572);
+      setTitle(2131719594);
+      localTextView.setText(2131719584);
       this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(25) });
       localTextView.setVisibility(8);
-      findViewById(2131376219).setVisibility(8);
+      findViewById(2131376273).setVisibility(8);
       Object localObject1 = findViewById(2131362100);
       Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((FrameLayout.LayoutParams)localObject2).height = -1;
@@ -381,9 +381,9 @@ public class AddFriendActivity
       localTextView.setFocusableInTouchMode(true);
       localTextView.requestFocus();
       return;
-      setTitle(2131719581);
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131719571);
-      localTextView.setText(2131719571);
+      setTitle(2131719593);
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131719583);
+      localTextView.setText(2131719583);
     }
     if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
     {
@@ -402,20 +402,20 @@ public class AddFriendActivity
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
     if (this.jdField_a_of_type_JavaLangString.equals("")) {
-      a(2131692142);
+      a(2131692143);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_JavaLangString.length() < 5)
       {
-        a(2131692268);
+        a(2131692269);
         return;
       }
       if (this.jdField_a_of_type_JavaLangString.indexOf("@") != -1)
       {
         if (!this.jdField_a_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).matches()) {
-          a(alpo.a(2131700237));
+          a(alud.a(2131700249));
         }
       }
       else
@@ -423,59 +423,59 @@ public class AddFriendActivity
         this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).replaceAll("");
         if (this.jdField_a_of_type_JavaLangString.length() < 5)
         {
-          a(2131692142);
+          a(2131692143);
           return;
         }
       }
-      if (!bdee.d(this)) {
+      if (!bdin.d(this)) {
         break;
       }
-      this.jdField_a_of_type_Ahco.a(this.jdField_a_of_type_JavaLangString, 80000000, 0.0D, 0.0D, 0);
-      b(2131692676);
+      this.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_JavaLangString, 80000000, 0.0D, 0.0D, 0);
+      b(2131692678);
     } while (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     return;
-    QQToast.a(this, 2131694766, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131694768, 0).b(getTitleBarHeight());
   }
   
   private void e()
   {
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
     if (this.jdField_b_of_type_JavaLangString.trim().equals("")) {
-      a(2131719572);
+      a(2131719584);
     }
     do
     {
       return;
-      if (!bdee.d(this)) {
+      if (!bdin.d(this)) {
         break;
       }
-      b(2131719597);
+      b(2131719609);
       f();
     } while (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     return;
-    QQToast.a(this, 2131694766, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131694768, 0).b(getTitleBarHeight());
   }
   
   private void f()
   {
     if (a(this.jdField_b_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Ahco.a(this.jdField_b_of_type_JavaLangString, 80000001, 0.0D, 0.0D, 0);
+      this.jdField_a_of_type_Ahhd.a(this.jdField_b_of_type_JavaLangString, 80000001, 0.0D, 0.0D, 0);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("AddFriendActivity", 2, "少于5位数字，直接显示找不到群号");
     }
     g();
-    a(2131721096);
+    a(2131721108);
   }
   
   private void g()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
@@ -494,27 +494,27 @@ public class AddFriendActivity
     runOnUiThread(new AddFriendActivity.2(this, paramInt));
   }
   
-  void a(ahea paramahea)
+  void a(ahip paramahip)
   {
-    if ((paramahea == null) || (paramahea.b == null) || (paramahea.b.size() == 0)) {}
+    if ((paramahip == null) || (paramahip.b == null) || (paramahip.b.size() == 0)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = new ArrayList(paramahea.b.size());
-      paramahea = paramahea.b.iterator();
-      while (paramahea.hasNext())
+      localArrayList = new ArrayList(paramahip.b.size());
+      paramahip = paramahip.b.iterator();
+      while (paramahip.hasNext())
       {
-        AccountSearchPb.record localrecord = (AccountSearchPb.record)paramahea.next();
+        AccountSearchPb.record localrecord = (AccountSearchPb.record)paramahip.next();
         if (localrecord != null) {
           localArrayList.add(new SearchResultItem(localrecord));
         }
       }
     } while (localArrayList.size() == 0);
-    paramahea = new Intent(this, SearchFriendListActivity.class);
-    paramahea.putParcelableArrayListExtra("param_search_result_item_list", localArrayList);
-    paramahea.putExtra("param_return_addr", getIntent().getStringExtra("param_return_addr"));
-    startActivity(paramahea);
+    paramahip = new Intent(this, SearchFriendListActivity.class);
+    paramahip.putParcelableArrayListExtra("param_search_result_item_list", localArrayList);
+    paramahip.putExtra("param_return_addr", getIntent().getStringExtra("param_return_addr"));
+    startActivity(paramahip);
   }
   
   void a(String paramString)
@@ -554,11 +554,11 @@ public class AddFriendActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ahco = new ahco(this.app);
-      this.jdField_a_of_type_Ahco.a(this.jdField_a_of_type_Ahcq);
+      this.jdField_a_of_type_Ahhd = new ahhd(this.app);
+      this.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_Ahhf);
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getSystemService("input_method"));
       super.setContentView(View.inflate(this, 2131558467, null));
-      setContentBackgroundResource(2130838591);
+      setContentBackgroundResource(2130838592);
       c();
       return true;
       paramBundle.setSoftInputMode(4);
@@ -570,8 +570,8 @@ public class AddFriendActivity
     if (QLog.isColorLevel()) {
       QLog.d("AddFriendActivity", 2, "onDestroy");
     }
-    this.jdField_a_of_type_Ahco.d();
-    this.jdField_a_of_type_Ahco = null;
+    this.jdField_a_of_type_Ahhd.d();
+    this.jdField_a_of_type_Ahhd = null;
     super.doOnDestroy();
   }
   
@@ -605,7 +605,7 @@ public class AddFriendActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363699)
+    if (paramView.getId() == 2131363701)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       if (!isFinishing())

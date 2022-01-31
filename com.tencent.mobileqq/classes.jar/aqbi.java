@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-
-public class aqbi
-  implements DialogInterface.OnClickListener
+class aqbi
+  extends aqbl
 {
-  public aqbi(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  aqbi(aqbg paramaqbg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      aqbg.a(this.a);
+    }
   }
 }
 

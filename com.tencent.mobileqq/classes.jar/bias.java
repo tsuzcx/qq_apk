@@ -1,14 +1,8 @@
-import android.view.View;
+import com.tencent.widget.ScrollView;
 
 public abstract interface bias
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
+  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
 }
 
 

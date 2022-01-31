@@ -4,13 +4,13 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PromoteTaskEntry;
 import java.util.Collections;
 import java.util.List;
-import uqi;
-import urp;
+import uur;
+import uvy;
 
 public class DebugPromoteTaskCode$4
   implements Runnable
 {
-  public DebugPromoteTaskCode$4(uqi paramuqi, String paramString1, String paramString2) {}
+  public DebugPromoteTaskCode$4(uur paramuur, String paramString1, String paramString2) {}
   
   public void run()
   {

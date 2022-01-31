@@ -1,88 +1,75 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aozi
+  extends aokh<aozh>
 {
-  private static int jdField_a_of_type_Int;
-  public static Paint a;
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static Paint b;
-  private static final Map<Float, Float> b;
-  private static final Map<Float, Float> c;
-  
-  static
+  public int a()
   {
-    jdField_b_of_type_JavaUtilMap = new HashMap();
-    c = new HashMap();
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    return 424;
   }
   
-  public static float a(float paramFloat)
+  @NonNull
+  public aozh a(int paramInt)
   {
-    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
-    Object localObject = localFloat;
-    if (localFloat == null)
+    return new aozh();
+  }
+  
+  @Nullable
+  public aozh a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      float f1 = ((Paint.FontMetrics)localObject).descent;
-      float f2 = ((Paint.FontMetrics)localObject).ascent;
-      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
-      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
+      QLog.i("SafeModeProcessor", 1, "onParsed: invoked.  content: " + paramArrayOfaoko);
+      paramArrayOfaoko = aozh.a(paramArrayOfaoko);
+      if (paramArrayOfaoko != null)
+      {
+        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash_config", 4).edit().putBoolean("key_test_crash_switch", paramArrayOfaoko.a).apply();
+        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash", 0).edit().putBoolean("crash", paramArrayOfaoko.a).commit();
+      }
+      return paramArrayOfaoko;
     }
-    return ((Float)localObject).floatValue();
+    return null;
   }
   
-  public static float a(float paramFloat, String paramString)
+  public Class<aozh> a()
   {
-    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
+    return aozh.class;
   }
   
-  public static float a(Paint paramPaint, String paramString)
+  public void a(int paramInt) {}
+  
+  public void a(aozh paramaozh) {}
+  
+  public boolean a()
   {
-    return paramPaint.measureText(paramString);
+    return true;
   }
   
-  public static float a(aoyg paramaoyg)
+  public int b()
   {
-    return a(paramaoyg.c()) + aoxq.a().c() * 2 + paramaoyg.d() * 2.0F + paramaoyg.e() * 2.0F;
+    return 0;
   }
   
-  public static void a(Canvas paramCanvas)
+  public boolean b()
   {
-    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+    return false;
   }
   
-  public static void a(Canvas paramCanvas, String paramString)
+  public boolean c()
   {
-    if (jdField_b_of_type_AndroidGraphicsPaint == null)
-    {
-      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
-      Object localObject = aowq.a().a().a().getDisplayMetrics();
-      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
-      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
-      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
-    }
-    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozi
  * JD-Core Version:    0.7.0.1
  */

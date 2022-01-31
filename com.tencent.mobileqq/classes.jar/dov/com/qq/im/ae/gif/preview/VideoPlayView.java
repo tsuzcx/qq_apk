@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import blaf;
-import blag;
+import blem;
+import blen;
 
 public class VideoPlayView
   extends GLSurfaceView
 {
   private static final String jdField_a_of_type_JavaLangString = VideoPlayView.class.getSimpleName();
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final blag jdField_a_of_type_Blag;
+  private final blen jdField_a_of_type_Blen;
   
   public VideoPlayView(Context paramContext)
   {
@@ -24,8 +24,8 @@ public class VideoPlayView
     super(paramContext, paramAttributeSet);
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 0, 0);
-    this.jdField_a_of_type_Blag = new blag(this);
-    setRenderer(this.jdField_a_of_type_Blag);
+    this.jdField_a_of_type_Blen = new blen(this);
+    setRenderer(this.jdField_a_of_type_Blen);
     setRenderMode(0);
   }
   
@@ -40,7 +40,7 @@ public class VideoPlayView
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
     }
     this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_Blag.a(paramMediaPlayer);
+    this.jdField_a_of_type_Blen.a(paramMediaPlayer);
     return this;
   }
   
@@ -49,17 +49,17 @@ public class VideoPlayView
     queueEvent(new VideoPlayView.1(this));
   }
   
-  public void setFrameRenderCallback(blaf paramblaf)
+  public void setFrameRenderCallback(blem paramblem)
   {
-    if (this.jdField_a_of_type_Blag != null) {
-      this.jdField_a_of_type_Blag.a(paramblaf);
+    if (this.jdField_a_of_type_Blen != null) {
+      this.jdField_a_of_type_Blen.a(paramblem);
     }
   }
   
   public void setNeedComposeAlpha(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blag != null) {
-      this.jdField_a_of_type_Blag.a(paramBoolean);
+    if (this.jdField_a_of_type_Blen != null) {
+      this.jdField_a_of_type_Blen.a(paramBoolean);
     }
   }
 }

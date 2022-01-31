@@ -1,51 +1,44 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
 
-class aqqw
-  extends aqqt
+public class aqqw
+  extends arsq
 {
-  private long jdField_a_of_type_Long;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aqqr jdField_a_of_type_Aqqr;
-  private bbtj jdField_a_of_type_Bbtj = new aqqx(this);
-  private String jdField_a_of_type_JavaLangString;
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  public aqqw(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
-  private aqqw(aqpv paramaqpv, String paramString1, String paramString2)
+  public void a()
   {
-    super(paramaqpv);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+    this.a.a.a().b();
   }
   
-  void a(String paramString, int paramInt)
+  public void b()
   {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+    this.a.a.a().p();
   }
   
-  void a(String paramString, int paramInt, aqqr paramaqqr)
+  public void c()
   {
-    if (paramaqqr == null)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.jdField_a_of_type_Aqqr = paramaqqr;
-    this.jdField_b_of_type_Long = Long.parseLong(paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bbtj);
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

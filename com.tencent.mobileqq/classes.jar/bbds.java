@@ -1,22 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bbds
-  implements Animation.AnimationListener
+  extends bbdr
 {
-  public bbds(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bbds(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    this.a.m = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    super(paramTribeVideoListPlayerFragment, paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

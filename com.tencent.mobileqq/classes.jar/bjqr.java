@@ -1,19 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.remote.RecvMsg;
 
 public final class bjqr
+  implements Parcelable.Creator<RecvMsg>
 {
-  public int a;
-  public Map<String, String> a;
-  
-  public bjqr()
+  public RecvMsg a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    return new RecvMsg(paramParcel);
   }
   
-  public String toString()
+  public RecvMsg[] a(int paramInt)
   {
-    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
+    return new RecvMsg[paramInt];
   }
 }
 

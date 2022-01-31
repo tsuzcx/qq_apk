@@ -1,22 +1,81 @@
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-class zbb
-  extends Handler
+public class zbb
 {
-  zbb(zay paramzay, Looper paramLooper)
+  private int jdField_a_of_type_Int = -1;
+  protected zba a;
+  private zbd jdField_a_of_type_Zbd = new zbd(this, Looper.getMainLooper());
+  
+  public void a()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Zbd.removeCallbacks(null);
+    this.jdField_a_of_type_Zba = null;
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(int paramInt)
   {
-    if (!(paramMessage.obj instanceof begh)) {}
-    while (paramMessage.what != 204) {
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zbd);
+    localMessage.what = 7;
+    localMessage.obj = new zbc(paramLong);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(zba paramzba)
+  {
+    this.jdField_a_of_type_Zba = paramzba;
+  }
+  
+  public void b()
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zbd);
+    localMessage.what = 4;
+    localMessage.sendToTarget();
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_Zba != null) {
+      this.jdField_a_of_type_Zba.a(paramLong);
     }
-    this.a.a((begh)paramMessage.obj);
+  }
+  
+  public void c()
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zbd);
+    localMessage.what = 2;
+    localMessage.sendToTarget();
+  }
+  
+  protected void c(long paramLong)
+  {
+    a(3);
+    if (this.jdField_a_of_type_Zba != null) {
+      this.jdField_a_of_type_Zba.a(paramLong);
+    }
+  }
+  
+  protected void d()
+  {
+    a(3);
+    if (this.jdField_a_of_type_Zba != null) {}
+  }
+  
+  protected void e()
+  {
+    a(4);
+    if (this.jdField_a_of_type_Zba != null) {}
+  }
+  
+  protected void f()
+  {
+    a(5);
+    if (this.jdField_a_of_type_Zba != null) {}
   }
 }
 

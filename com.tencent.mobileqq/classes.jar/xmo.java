@@ -1,14 +1,6 @@
-import android.support.annotation.NonNull;
-
-public class xmo
+public abstract interface xmo
 {
-  public void a(byte[] paramArrayOfByte) {}
-  
-  @NonNull
-  public byte[] a(int paramInt)
-  {
-    return new byte[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

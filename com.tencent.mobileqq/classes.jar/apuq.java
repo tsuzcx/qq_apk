@@ -1,11 +1,35 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmoticonImageView;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public class apuq
-  extends apow
+class apuq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  EmoticonImageView[] jdField_a_of_type_ArrayOfComTencentMobileqqEmoticonviewEmoticonImageView;
+  apuq(apuo paramapuo, ImageView paramImageView) {}
+  
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_Apuo.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() != 0)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        localLayoutParams.height = ((int)(this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() * 0.6F));
+        localLayoutParams.width = ((int)(localLayoutParams.height * 1.3F));
+        localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() * 0.08F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      }
+      return;
+      this.jdField_a_of_type_Apuo.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+  }
 }
 
 

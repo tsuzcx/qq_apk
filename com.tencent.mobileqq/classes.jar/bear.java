@@ -1,89 +1,67 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.util.Pair;
+import mqq.os.MqqHandler;
 
-class bear
-  implements ymm
+public class bear
+  extends beam
 {
-  bear(beaq parambeaq, String paramString, boolean paramBoolean) {}
-  
-  public void callback(Bundle paramBundle)
+  String a()
   {
-    if (this.jdField_a_of_type_Beaq.isDestroy) {}
-    do
+    return "KC.KCWraper.Other";
+  }
+  
+  void a(ViewGroup paramViewGroup)
+  {
+    a("can not call bindActivationView");
+  }
+  
+  void a(beaw parambeaw, boolean paramBoolean)
+  {
+    a("queryKingCard : from cache");
+    Pair localPair = a();
+    if (parambeaw != null)
     {
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambeaw, localPair));
+      }
+    }
+    else {
       return;
-      if (TextUtils.equals(this.jdField_a_of_type_Beaq.b, this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("WebSecurityPluginV2", 2, "receive check result but not current url");
-    return;
-    int i = paramBundle.getInt("result", -1);
-    int j;
-    int k;
-    int m;
-    int n;
-    long l;
-    Object localObject;
-    if (i == 0)
-    {
-      j = paramBundle.getInt("jumpResult");
-      k = paramBundle.getInt("level");
-      m = paramBundle.getInt("subLevel");
-      n = paramBundle.getInt("umrType");
-      l = paramBundle.getLong("operationBit");
-      localObject = this.jdField_a_of_type_Beaq;
-      int i1 = ((beaq)localObject).jdField_a_of_type_Boolean;
-      if (k == 15)
-      {
-        i = 1;
-        label116:
-        ((beaq)localObject).jdField_a_of_type_Boolean = (i & i1);
-        if (j != 0) {
-          break label252;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break label362;
-        }
-      }
     }
-    label167:
-    label360:
-    label362:
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = null)
+    parambeaw.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : do nothing");
+  }
+  
+  boolean a()
+  {
+    a("isReady : do nothing");
+    return true;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    if (c())
     {
-      QLog.i("UrlCheckLog", 1, "check pass l=" + k);
-      this.jdField_a_of_type_Beaq.a(l);
-      for (;;)
-      {
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label360;
-        }
-        localObject = this.jdField_a_of_type_Beaq.mRuntime.a();
-        if (localObject == null) {
-          break;
-        }
-        QLog.i("WebSecurityPluginV2", 1, "now jump url=" + ndq.b(paramBundle, new String[0]));
-        this.jdField_a_of_type_Beaq.jdField_a_of_type_JavaLangString = paramBundle;
-        ((CustomWebView)localObject).loadUrl(paramBundle);
-        return;
-        i = 0;
-        break label116;
-        label252:
-        paramBundle = paramBundle.getString("jumpUrl");
-        QLog.i("UrlCheckLog", 1, "check finish jr=" + j + ", l=" + k + ", sl=" + m + ", umr=" + n);
-        break label167;
-        QLog.i("UrlCheckLog", 1, "check fail r=" + i);
-        if (!this.jdField_a_of_type_Boolean) {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
-        } else {
-          paramBundle = null;
-        }
-      }
-      break;
+      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+      return true;
     }
+    return false;
+  }
+  
+  boolean b()
+  {
+    boolean bool = c();
+    a("supportActivationView = " + bool);
+    return bool;
   }
 }
 

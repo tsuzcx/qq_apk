@@ -1,29 +1,85 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class aujd
-  implements auid
+public abstract class aujd<T extends MessageRecord>
+  extends auiw
 {
-  public aujd(MultiCardFragment paramMultiCardFragment) {}
+  protected T a;
+  protected MessageRecord b;
   
-  public void a(int paramInt)
+  public aujd(T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(true);
-    }
-    if (MultiCardFragment.a(this.a) != null)
+    this.a = paramT;
+  }
+  
+  protected abstract int a();
+  
+  protected MsgBackupResEntity a()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
+    localMsgBackupResEntity.msgType = a();
+    if (this.b != null)
     {
-      MultiCardFragment.a(this.a).c(paramInt);
-      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      }
+      aujq.a(this.b, localMsgBackupResEntity);
+      return localMsgBackupResEntity;
+    }
+    aujq.a(this.a, localMsgBackupResEntity);
+    return localMsgBackupResEntity;
+  }
+  
+  protected String a(Map paramMap)
+  {
+    try
+    {
+      paramMap = new JSONObject(paramMap).toString();
+      return paramMap;
+    }
+    catch (Exception paramMap) {}
+    return null;
+  }
+  
+  protected HashMap<String, String> a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(a()));
+    localHashMap.put("msgSubType", String.valueOf(paramInt));
+    return localHashMap;
+  }
+  
+  public abstract List<MsgBackupResEntity> a();
+  
+  public abstract void a();
+  
+  protected void a(MessageRecord paramMessageRecord)
+  {
+    this.b = paramMessageRecord;
+  }
+  
+  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    try
+    {
+      new File(paramString);
+      paramMsgBackupResEntity.fileSize = new File(paramString).length();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b() {}
 }
 
 

@@ -1,30 +1,13 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.net.Uri;
 
-public class bbfe
-  extends ClickableSpan
+class bbfe
+  implements bbkd
 {
-  public bbfe(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
+  bbfe(bbfd parambbfd) {}
   
-  public void onClick(View paramView)
+  public void a(Uri paramUri)
   {
-    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
-      return;
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    this.a.a.a = paramUri;
   }
 }
 

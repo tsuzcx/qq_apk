@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,8 +12,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import bdkf;
-import bhqp;
+import bdoo;
+import bhuw;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.widget.GridView;
@@ -30,27 +30,27 @@ public class NativeShareView
   implements IView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  protected bhqp a;
+  protected bhuw a;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   
   public NativeShareView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bhqp = new pto(this);
+    this.jdField_a_of_type_Bhuw = new pto(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Bhqp = new pto(this);
+    this.jdField_a_of_type_Bhuw = new pto(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Bhqp = new pto(this);
+    this.jdField_a_of_type_Bhuw = new pto(this);
     a(paramContext);
   }
   
@@ -70,9 +70,9 @@ public class NativeShareView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    Object localObject1 = inflate(getContext(), 2131559995, this);
-    int j = bdkf.b(44.0F);
-    localObject1 = (GridView)((View)localObject1).findViewById(2131367298);
+    Object localObject1 = inflate(getContext(), 2131559994, this);
+    int j = bdoo.b(44.0F);
+    localObject1 = (GridView)((View)localObject1).findViewById(2131367308);
     List localList = a(paramContext)[0];
     Object localObject2 = new TextPaint();
     ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131298843));
@@ -90,7 +90,7 @@ public class NativeShareView
     for (;;)
     {
       break;
-      int k = bdkf.b(14.0F);
+      int k = bdoo.b(14.0F);
       j = k + (k + j);
       ((GridView)localObject1).setColumnWidth(j);
       ((GridView)localObject1).setNumColumns(i);
@@ -100,7 +100,7 @@ public class NativeShareView
       ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((GridView)localObject1).setAdapter(new ptp(paramContext, localList));
       ((GridView)localObject1).setSelector(new ColorDrawable(0));
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhuw);
       ((GridView)localObject1).setOnTouchListener(new ptn(this));
       tae.a();
       return;
@@ -132,36 +132,36 @@ public class NativeShareView
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = alpo.a(2131707454);
-    localActionSheetItem.icon = 2130842437;
+    localActionSheetItem.label = alud.a(2131707466);
+    localActionSheetItem.icon = 2130842450;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 47;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696871);
-    localActionSheetItem.icon = 2130842439;
+    localActionSheetItem.label = paramContext.getString(2131696873);
+    localActionSheetItem.icon = 2130842452;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696884);
-    localActionSheetItem.icon = 2130842440;
+    localActionSheetItem.label = paramContext.getString(2131696886);
+    localActionSheetItem.icon = 2130842453;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696891);
-    localActionSheetItem.icon = 2130842441;
+    localActionSheetItem.label = paramContext.getString(2131696893);
+    localActionSheetItem.icon = 2130842454;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696874);
-    localActionSheetItem.icon = 2130842438;
+    localActionSheetItem.label = paramContext.getString(2131696876);
+    localActionSheetItem.icon = 2130842451;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";

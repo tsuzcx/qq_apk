@@ -1,41 +1,39 @@
 import android.content.Context;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.content.IntentFilter;
 
-@bghi(a="PageCreateTask")
 public class bhag
-  extends bhhp
 {
-  public bhag(Context paramContext, bgqg parambgqg)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private bhah jdField_a_of_type_Bhah;
+  private bhai jdField_a_of_type_Bhai;
+  
+  public bhag(Context paramContext)
   {
-    super(paramContext, parambgqg);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("action.qq.miniapp.show.monitorview");
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
   }
   
   public void a()
   {
-    if (a().getRuntime() == null)
-    {
-      QMLog.w("ServiceInitTask", "runtime is null!");
-      c();
-      return;
+    if (this.jdField_a_of_type_Bhah != null) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Bhah, this.jdField_a_of_type_AndroidContentIntentFilter);
     }
-    bghq localbghq = a().getRuntime().a();
-    if (!(localbghq instanceof AppBrandPageContainer))
-    {
-      QMLog.w("ServiceInitTask", "PageContainer type is incorrect! page=" + localbghq);
-      c();
-      return;
-    }
-    try
-    {
-      ((AppBrandPageContainer)localbghq).a(null);
-      c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("ServiceInitTask", "pageContainer init exception!", localThrowable);
-      a(10, "Page创建失败");
+  }
+  
+  public void a(bhai parambhai)
+  {
+    this.jdField_a_of_type_Bhai = parambhai;
+    this.jdField_a_of_type_Bhah = new bhah(this);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bhah != null) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Bhah);
     }
   }
 }

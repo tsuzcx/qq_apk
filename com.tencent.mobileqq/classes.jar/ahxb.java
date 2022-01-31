@@ -1,25 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
 
-public class ahxb
-  implements View.OnClickListener
+class ahxb
+  implements DialogInterface.OnClickListener
 {
-  public ahxb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxb(ahww paramahww, ArrayList paramArrayList, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131368615));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(alpo.a(2131702034));
-    this.a.d.setOnClickListener(new ahxc(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    ahww.a(this.jdField_a_of_type_Ahww, true);
+    ahww.a(this.jdField_a_of_type_Ahww).a(1);
+    ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    if (bdin.d(BaseApplicationImpl.getContext()))
+    {
+      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
+      ahww.a(this.jdField_a_of_type_Ahww).b(paramInt);
     }
+    ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,9 +1,6 @@
-class aqmp
+public abstract interface aqmp
 {
-  int jdField_a_of_type_Int;
-  int b;
-  
-  aqmp(aqmo paramaqmo) {}
+  public abstract void a(long paramLong);
 }
 
 

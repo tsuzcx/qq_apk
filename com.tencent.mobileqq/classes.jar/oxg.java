@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 final class oxg
-  extends amky
+  extends ampn
 {
   oxg(String paramString, boolean paramBoolean)
   {

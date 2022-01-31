@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aeje;
+import aent;
 
 public class QQNotifySettingBaseFragment$1$2
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$1$2(aeje paramaeje) {}
+  public QQNotifySettingBaseFragment$1$2(aent paramaent) {}
   
   public void run()
   {

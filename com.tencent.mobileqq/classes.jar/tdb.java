@@ -17,7 +17,7 @@ class tdb
       }
       for (;;)
       {
-        uht.a().dispatch(this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+        umc.a().dispatch(this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
         return;
         tlo.d(tcu.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
       }

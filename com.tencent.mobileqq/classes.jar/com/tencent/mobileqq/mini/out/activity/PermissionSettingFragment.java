@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import adky;
-import alpo;
+import adpn;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import bdfq;
-import bepp;
+import bdjz;
+import bety;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -46,7 +46,7 @@ public class PermissionSettingFragment
   TextView leftBtnView;
   private ListView mPermissionListView;
   private TextView mPermissionNoneTextView;
-  private bepp mProgress;
+  private bety mProgress;
   MiniAppInterface miniAppInterface;
   private TextView miniAppNameDesc;
   TextView titleView;
@@ -79,7 +79,7 @@ public class PermissionSettingFragment
         if (!TextUtils.isEmpty(paramString))
         {
           this.miniAppNameDesc.setVisibility(0);
-          this.miniAppNameDesc.setText(String.format(alpo.a(2131694415), new Object[] { paramString }));
+          this.miniAppNameDesc.setText(String.format(alud.a(2131694417), new Object[] { paramString }));
         }
         this.adapter.setScopeList(localList);
       }
@@ -89,7 +89,7 @@ public class PermissionSettingFragment
         return;
         localList = null;
         break;
-        this.mPermissionNoneTextView.setText(paramString + alpo.a(2131708315));
+        this.mPermissionNoneTextView.setText(paramString + alud.a(2131708327));
         this.mPermissionNoneTextView.setVisibility(0);
       }
       localAuthorizeInfo = null;
@@ -101,7 +101,7 @@ public class PermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    adky.a(paramContext, localIntent, PublicFragmentActivityForMini.class, PermissionSettingFragment.class);
+    adpn.a(paramContext, localIntent, PublicFragmentActivityForMini.class, PermissionSettingFragment.class);
   }
   
   public static void launchForResult(Activity paramActivity, String paramString1, String paramString2, int paramInt)
@@ -110,7 +110,7 @@ public class PermissionSettingFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString1);
     localIntent.putExtra("key_name", paramString2);
-    adky.a(paramActivity, localIntent, PublicFragmentActivityForMini.class, PermissionSettingFragment.class, paramInt);
+    adpn.a(paramActivity, localIntent, PublicFragmentActivityForMini.class, PermissionSettingFragment.class, paramInt);
   }
   
   public boolean needImmersive()
@@ -133,10 +133,10 @@ public class PermissionSettingFragment
     if ((!paramBoolean) && (!hasCancel))
     {
       hasCancel = true;
-      bdfq localbdfq = new bdfq(getActivity(), 2131755801);
-      localbdfq.setContentView(2131558943);
-      localbdfq.setTitle(alpo.a(2131708313)).setMessage(alpo.a(2131708306)).setPositiveButton(alpo.a(2131708311), Color.parseColor("#5B6B92"), new PermissionSettingFragment.4(this, str, paramBoolean, local2)).setNegativeButton(alpo.a(2131708308), Color.parseColor("#000000"), new PermissionSettingFragment.3(this, paramCompoundButton));
-      localbdfq.show();
+      bdjz localbdjz = new bdjz(getActivity(), 2131755801);
+      localbdjz.setContentView(2131558942);
+      localbdjz.setTitle(alud.a(2131708325)).setMessage(alud.a(2131708318)).setPositiveButton(alud.a(2131708323), Color.parseColor("#5B6B92"), new PermissionSettingFragment.4(this, str, paramBoolean, local2)).setNegativeButton(alud.a(2131708320), Color.parseColor("#000000"), new PermissionSettingFragment.3(this, paramCompoundButton));
+      localbdjz.show();
       return;
     }
     this.adapter.changeChecked(str, paramBoolean);
@@ -145,14 +145,14 @@ public class PermissionSettingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368613) {
+    if (paramView.getId() == 2131368624) {
       getActivity().finish();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559313, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559312, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
@@ -176,14 +176,14 @@ public class PermissionSettingFragment
       getActivity().finish();
       return;
     }
-    this.leftBtnView = ((TextView)paramView.findViewById(2131368613));
-    this.titleView = ((TextView)paramView.findViewById(2131368659));
-    this.leftBtnView.setText(alpo.a(2131708304));
-    this.titleView.setText(alpo.a(2131708318));
+    this.leftBtnView = ((TextView)paramView.findViewById(2131368624));
+    this.titleView = ((TextView)paramView.findViewById(2131368670));
+    this.leftBtnView.setText(alud.a(2131708316));
+    this.titleView.setText(alud.a(2131708330));
     this.leftBtnView.setOnClickListener(this);
-    this.mPermissionListView = ((ListView)paramView.findViewById(2131371695));
-    this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131371696));
-    this.miniAppNameDesc = ((TextView)paramView.findViewById(2131370619));
+    this.mPermissionListView = ((ListView)paramView.findViewById(2131371715));
+    this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131371716));
+    this.miniAppNameDesc = ((TextView)paramView.findViewById(2131370638));
     this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
     if (this.authorizeCenter == null)
     {
@@ -196,9 +196,9 @@ public class PermissionSettingFragment
       return;
     }
     if (this.mProgress == null) {
-      this.mProgress = new bepp(getActivity());
+      this.mProgress = new bety(getActivity());
     }
-    this.mProgress.a(super.getResources().getString(2131695055));
+    this.mProgress.a(super.getResources().getString(2131695057));
     this.mProgress.show();
     MiniAppCmdUtil.getInstance().getAuthList(null, this.appId, new PermissionSettingFragment.1(this, paramBundle));
   }

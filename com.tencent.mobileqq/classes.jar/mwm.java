@@ -1,7 +1,7 @@
 import com.tencent.qphone.base.util.QLog;
 
 class mwm
-  implements bhqf
+  implements bhum
 {
   mwm(mwk parammwk) {}
   
@@ -10,7 +10,7 @@ class mwm
     if (QLog.isColorLevel()) {
       QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
     }
-    azmj.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
   }
 }
 

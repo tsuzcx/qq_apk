@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richstatus;
 
-import aloz;
+import alto;
 import android.text.TextUtils;
-import axzt;
-import axzw;
+import ayec;
+import ayef;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -14,21 +14,21 @@ import mqq.os.MqqHandler;
 public class StatusManager$3$2
   implements Runnable
 {
-  public StatusManager$3$2(axzw paramaxzw, boolean paramBoolean) {}
+  public StatusManager$3$2(ayef paramayef, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    axzt.a(this.jdField_a_of_type_Axzw.a, null);
-    aloz localaloz = (aloz)axzt.a(this.jdField_a_of_type_Axzw.a).getManager(51);
-    if (localaloz != null)
+    ayec.a(this.jdField_a_of_type_Ayef.a, null);
+    alto localalto = (alto)ayec.a(this.jdField_a_of_type_Ayef.a).getManager(51);
+    if (localalto != null)
     {
-      Object localObject2 = localaloz.a(axzt.a(this.jdField_a_of_type_Axzw.a).getAccount());
+      Object localObject2 = localalto.a(ayec.a(this.jdField_a_of_type_Ayef.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = axzt.a(this.jdField_a_of_type_Axzw.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = ayec.a(this.jdField_a_of_type_Ayef.a).getAccount();
       }
       localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
       if ((localObject2 != null) && ((!TextUtils.isEmpty(((RichStatus)localObject2).actionText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).dataText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).toSpannableStringWithoutAction())))) {
@@ -39,7 +39,7 @@ public class StatusManager$3$2
       {
         long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
         ((ExtensionInfo)localObject1).setRichBuffer(new byte[0], l);
-        localaloz.a((ExtensionInfo)localObject1);
+        localalto.a((ExtensionInfo)localObject1);
       }
     }
     ThreadManager.getUIHandler().post(new StatusManager.3.2.1(this));

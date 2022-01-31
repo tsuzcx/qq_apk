@@ -79,16 +79,16 @@ public class VideoChatRoomContainer
   
   private void b(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131559560, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369129));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131364787));
+    View localView = LayoutInflater.from(paramContext).inflate(2131559559, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369147));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131364788));
     this.jdField_a_of_type_Mou = new mou(paramContext);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(16908298));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Mou);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368335));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368346));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(40) });
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131365706));
-    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365712));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131365708));
+    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365714));
     setFitsSystemWindows(true);
   }
   
@@ -98,7 +98,7 @@ public class VideoChatRoomContainer
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar = new SystemAndEmojiEmoticonPanelWithActionBar(getContext(), this.jdField_a_of_type_Mov);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setBackgroundColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131372582);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131372608);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setVisibility(0);
     this.c.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar, paramContext);
     this.jdField_a_of_type_Mov.a(this.c);
@@ -412,7 +412,7 @@ public class VideoChatRoomContainer
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (((AVActivity)getContext()).findViewById(2131372598) != null) {}
+    if (((AVActivity)getContext()).findViewById(2131372624) != null) {}
     for (int i = 1; i != 0; i = 0)
     {
       this.jdField_a_of_type_Mov.a();
@@ -429,7 +429,7 @@ public class VideoChatRoomContainer
     }
     if (VideoController.a().a().B)
     {
-      mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696216);
+      mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131696218);
       return false;
     }
     boolean bool2 = super.dispatchTouchEvent(paramMotionEvent);

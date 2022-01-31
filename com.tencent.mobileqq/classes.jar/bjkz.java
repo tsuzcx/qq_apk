@@ -1,16 +1,19 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.MapParcelable;
 
-public abstract interface bjkz
+public final class bjkz
+  implements Parcelable.Creator<MapParcelable>
 {
-  public abstract void a(PluginRecord paramPluginRecord);
+  public MapParcelable a(Parcel paramParcel)
+  {
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+  }
   
-  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
-  
-  public abstract void b(PluginRecord paramPluginRecord);
-  
-  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
-  
-  public abstract void c(PluginRecord paramPluginRecord);
+  public MapParcelable[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

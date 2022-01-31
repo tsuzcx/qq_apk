@@ -1,70 +1,77 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class bdyq
-  extends Handler
+public final class bdyq
+  implements BusinessObserver
 {
-  public bdyq(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
     {
-    }
-    BitmapDrawable localBitmapDrawable;
-    do
-    {
-      RelativeLayout localRelativeLayout;
-      do
+      try
       {
-        do
+        Object localObject = paramBundle.getByteArray("extra_data");
+        if (localObject == null)
         {
+          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
           return;
-          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-          {
-            if (this.a.jdField_a_of_type_Boolean)
-            {
-              if ((this.a.g instanceof Button)) {
-                ((Button)this.a.g).setText(alpo.a(2131717117));
-              }
-              this.a.g.setEnabled(false);
-              return;
-            }
-            this.a.g.setEnabled(true);
-            return;
+        }
+        paramBundle = new WebSSOAgent.UniSsoServerRsp();
+        paramBundle.mergeFrom((byte[])localObject);
+        QLog.i("SSOHttpUtils", 1, "report result:" + paramBundle.rspdata.get() + ",ret:" + paramBundle.ret.get());
+        if (0L == paramBundle.ret.get())
+        {
+          localObject = new NewIntent(BaseApplicationImpl.getApplication(), bdyx.class);
+          ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
+          ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
+          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(bdyp.jdField_a_of_type_Boolean));
+          BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+          bdyp.jdField_a_of_type_Float = bdyp.jdField_a_of_type_Int - bdyp.b + bdyp.c;
+          localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            bdyp.jdField_a_of_type_JavaLangString = (String)localObject;
           }
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.g.setVisibility(0);
-            this.a.g.setEnabled(true);
-            if ((this.a.g instanceof Button)) {
-              ((Button)this.a.g).setText(alpo.a(2131717111));
-            }
-            this.a.g.setEnabled(false);
-            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-            this.a.f.setVisibility(8);
-            return;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
-        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131379969);
-        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
-      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
-      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
-    } while (paramMessage.arg1 != 1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
+          bdyp.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+          QLog.i("SSOHttpUtils", 1, "SSOHttpUtils do report success steps:" + bdyp.jdField_a_of_type_Float);
+        }
+        localObject = new JSONObject(paramBundle.rspdata.get());
+        paramBundle = str;
+        if (((JSONObject)localObject).has("svr_steps"))
+        {
+          paramInt = ((JSONObject)localObject).getInt("svr_steps");
+          QLog.e("SSOHttpUtils", 1, "step reset from server:" + paramInt);
+          paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), bdyx.class);
+          paramBundle.putExtra("msf_cmd_type", "cmd_reset_step");
+          paramBundle.putExtra("server_step", paramInt);
+          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
+          paramBundle = str;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("SSOHttpUtils", 1, "Parse response exception:" + paramBundle.getMessage());
+        paramBundle = str;
+        continue;
+      }
+      ThreadManager.post(new SSOHttpUtils.1.1(this, -1, paramBundle), 5, null, true);
+      return;
+      QLog.i("SSOHttpUtils", 1, "SSO sent Failed!!" + paramBundle.toString());
+      paramBundle = paramBundle.toString();
+    }
   }
 }
 

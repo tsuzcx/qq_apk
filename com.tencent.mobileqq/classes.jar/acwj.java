@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.1;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.2;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class acwj
-  implements beoy
+  implements appk
 {
-  public acwj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public acwj(EmosmActivity paramEmosmActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if ("profile_btn_config".equals(paramString)) {
-      this.a.runOnUiThread(new FriendProfileCardActivity.62.1(this));
+    if (paramInt1 != paramInt2)
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      aprn.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      azqs.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        azqs.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
+      }
     }
-    while (!"profile_switch_config".equals(paramString)) {
+    else
+    {
       return;
     }
-    this.a.runOnUiThread(new FriendProfileCardActivity.62.2(this));
+    azqs.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 

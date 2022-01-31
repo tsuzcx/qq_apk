@@ -1,20 +1,21 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import java.util.ArrayList;
+import com.tencent.TMG.utils.QLog;
 
-public class abzy
+class abzy
   implements View.OnClickListener
 {
-  public abzy(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
+  abzy(abzw paramabzw, View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
   }
 }
 

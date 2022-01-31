@@ -1,28 +1,35 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class agcr
-  implements URLDrawable.URLDrawableListener
+public class agcr
+  implements amev
 {
-  agcr(agcq paramagcq, String paramString) {}
+  public agcr(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
+    do
+    {
+      return;
+      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+      if (paramInt1 != 1001) {
+        paramInt2 = 100;
+      }
+      paramView.setProgress(paramInt2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377118);
+    } while (!(paramView instanceof ProgressBar));
+    ((ProgressBar)paramView).setProgress(paramInt2);
+    if (paramInt2 == 100) {}
+    for (paramInt1 = 8;; paramInt1 = 0)
+    {
+      paramView.setVisibility(paramInt1);
+      return;
     }
-    agcq.a(this.jdField_a_of_type_Agcq).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

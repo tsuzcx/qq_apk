@@ -1,36 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-final class ajaj
-  implements View.OnTouchListener
+public class ajaj
 {
-  private float b = 1.0F;
+  int jdField_a_of_type_Int = 0;
+  ajam jdField_a_of_type_Ajam;
+  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  List<DownloadParam> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean = false;
   
-  ajaj(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajaj(List<DownloadParam> paramList, ajam paramajam)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_JavaUtilList = paramajam;
+    Object localObject;
+    this.jdField_a_of_type_Ajam = localObject;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!ajaf.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new ajak(this));
     }
   }
 }

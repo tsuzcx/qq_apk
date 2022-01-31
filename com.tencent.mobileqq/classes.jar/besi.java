@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public abstract interface besi
+class besi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract CalendarDay a();
+  besi(besf parambesf) {}
   
-  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
-  
-  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
-  
-  public abstract CalendarDay b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (besf.a(this.a) != null)
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      besf.a(this.a).setAlpha(f);
+    }
+  }
 }
 
 

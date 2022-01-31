@@ -1,25 +1,31 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.concurrent.atomic.AtomicLong;
 
-public abstract class wof<T extends Dispatcher.Dispatchable>
-  extends QQUIEventReceiver<wnl, T>
-  implements woq
+public class wof
+  extends QQUIEventReceiver<StoryMessageListActivity, vdl>
 {
-  protected static AtomicLong a = new AtomicLong(0L);
-  public int a;
-  public long a;
-  public uxw a;
-  public wos a;
-  public int b;
-  
-  public abstract int a(T paramT);
-  
-  public abstract void a(T paramT);
-  
-  public boolean b()
+  public wof(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    return this.b > 0;
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramvdl.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

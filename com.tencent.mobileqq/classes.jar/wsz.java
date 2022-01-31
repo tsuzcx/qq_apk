@@ -1,17 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
-
-public class wsz
-  extends unf
+public abstract interface wsz
 {
-  public wsz(qqstory_service.RspMonitorValue paramRspMonitorValue)
-  {
-    super(paramRspMonitorValue.result);
-  }
+  public abstract Object a();
   
-  public String toString()
-  {
-    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(wta paramwta);
+  
+  public abstract void a(wtb paramwtb);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

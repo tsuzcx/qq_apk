@@ -1,14 +1,19 @@
-public abstract interface anom
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+
+class anom
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public abstract String a(anop paramanop);
+  anom(anol paramanol, String paramString) {}
   
-  public abstract boolean a(anop paramanop);
-  
-  public abstract boolean a(anop paramanop, boolean paramBoolean);
-  
-  public abstract String b(anop paramanop);
-  
-  public abstract boolean b(anop paramanop);
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      anoj.a(this.jdField_a_of_type_Anol.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, anoj.a(this.jdField_a_of_type_Anol.a), 2);
+    }
+  }
 }
 
 

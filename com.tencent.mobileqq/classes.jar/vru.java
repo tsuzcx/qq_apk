@@ -1,6 +1,15 @@
-public abstract interface vru
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+
+public class vru
+  extends xwf
 {
-  public abstract boolean a(vrr paramvrr, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  public vru(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
+  }
 }
 
 

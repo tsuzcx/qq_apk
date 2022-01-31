@@ -1,16 +1,16 @@
 package com.tencent.device.msg.activities;
 
-import armz;
-import zsr;
+import arri;
+import zxg;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(zsr paramzsr) {}
+  public DevShortVideoItemBuilder$1(zxg paramzxg) {}
   
   public void run()
   {
-    armz.a(2131694061);
+    arri.a(2131694063);
   }
 }
 

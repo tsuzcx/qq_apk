@@ -1,99 +1,224 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.qphone.base.util.QLog;
 
-class xdz
-  extends LinearLayout
+public class xdz
+  extends xeh
+  implements Drawable.Callback
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  private int d;
+  public static final String a;
+  public int a;
+  public xea a;
+  public xip a;
+  public xiq a;
+  public boolean a;
   
-  public xdz(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    paramInt1 /= this.b;
-    this.c = ((int)(paramInt1 * paramFloat));
-    this.d = (paramInt1 - this.c * 2);
-    a();
+    jdField_a_of_type_JavaLangString = xdz.class.getSimpleName();
   }
   
-  private void a()
+  public xdz(DoodleView paramDoodleView)
   {
-    int i = 0;
-    setOrientation(0);
-    setGravity(17);
-    int j = this.jdField_a_of_type_Int / this.b;
-    while (i < this.b)
-    {
-      ImageView localImageView = new ImageView(getContext());
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
-      if (i == 0) {
-        localLayoutParams.leftMargin = xee.b(getContext(), 7.0F);
+    super(paramDoodleView);
+    this.jdField_a_of_type_Xip = new xip();
+    this.jdField_a_of_type_Xip.a(false);
+    this.jdField_a_of_type_Xip.a(6.0F);
+    this.jdField_a_of_type_Xip.b(0.2F);
+  }
+  
+  private void a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Xip.b(this.jdField_a_of_type_Xiq, f1, f2)) {
+      if (this.jdField_a_of_type_Xea != null) {
+        this.jdField_a_of_type_Xea.a(this.jdField_a_of_type_Xiq);
       }
-      if (i == this.b - 1) {
-        localLayoutParams.rightMargin = xee.b(getContext(), 7.0F);
-      }
-      localImageView.setLayoutParams(localLayoutParams);
-      localImageView.setPadding(this.c, this.c, this.c, this.c);
-      addView(localImageView);
-      i += 1;
     }
+    while ((this.jdField_a_of_type_Xip.a(this.jdField_a_of_type_Xiq, f1, f2)) || (!this.jdField_a_of_type_Xip.a(this.jdField_a_of_type_Xiq, f1, f2, true)) || (this.jdField_a_of_type_Xea == null) || (this.jdField_a_of_type_Xiq == null)) {
+      return;
+    }
+    wxe.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Xiq);
+    this.jdField_a_of_type_Xea.a(this.jdField_a_of_type_Xiq, 0, 0);
   }
   
-  private void a(int paramInt)
+  private boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = 0;
-    int j;
+    return this.jdField_a_of_type_Xip.a(this.jdField_a_of_type_Xiq, paramFloat1, paramFloat2, true);
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public xiq a()
+  {
+    return this.jdField_a_of_type_Xiq;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xiq = null;
+    this.jdField_a_of_type_Xip.a();
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Xiq == null) {
+      return;
+    }
+    paramCanvas.save();
+    this.jdField_a_of_type_Xiq.a(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(xea paramxea)
+  {
+    this.jdField_a_of_type_Xea = paramxea;
+  }
+  
+  public void a(xiq paramxiq)
+  {
+    this.jdField_a_of_type_Xiq = paramxiq;
+    if (this.jdField_a_of_type_Xiq == null) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Xiq instanceof xed))
+      {
+        this.jdField_a_of_type_Xip.a(6.0F);
+        this.jdField_a_of_type_Xip.b(0.2F);
+        return;
+      }
+    } while (!(this.jdField_a_of_type_Xiq instanceof xdr));
+    this.jdField_a_of_type_Xip.a(18.0F);
+    this.jdField_a_of_type_Xip.b(0.2F);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Xiq = null;
+    g();
+  }
+  
+  public void b(Canvas paramCanvas)
+  {
+    throw new IllegalStateException("TextFaceEditLayer should not save");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Xiq != null;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Xip.a(this.jdField_a_of_type_Xiq, f1, f2, true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+    }
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean e(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Xei != null) {
+      this.jdField_a_of_type_Xei.a(this, paramMotionEvent);
+    }
+    int i = (int)paramMotionEvent.getY();
+    int j = Math.abs(i - this.jdField_a_of_type_Int);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
     for (;;)
     {
-      j = paramInt;
-      if (i >= paramInt) {
+      this.jdField_a_of_type_Xip.a(paramMotionEvent, true);
+      if (this.jdField_a_of_type_Xiq == null) {
         break;
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
+      this.jdField_a_of_type_Xea.a(this.jdField_a_of_type_Xiq.f, this.jdField_a_of_type_Xiq.k, (int)this.jdField_a_of_type_Xiq.l, (int)this.jdField_a_of_type_Xiq.m, this.jdField_a_of_type_Xiq.a, this.jdField_a_of_type_Xiq.e, 2);
+      return true;
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Xiq != null)
+      {
+        this.jdField_a_of_type_Xiq.e = false;
+        this.jdField_a_of_type_Xiq.f = false;
       }
-      getChildAt(i).setVisibility(0);
-      i += 1;
+      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+      if (this.jdField_a_of_type_Xiq != null)
+      {
+        this.jdField_a_of_type_Xip.a(this.jdField_a_of_type_Xiq);
+        continue;
+        if (this.jdField_a_of_type_Xiq != null) {
+          this.jdField_a_of_type_Xiq.f = true;
+        }
+        if (j > 10)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          continue;
+          if (this.jdField_a_of_type_Xiq != null)
+          {
+            this.jdField_a_of_type_Xiq.e = false;
+            this.jdField_a_of_type_Xiq.f = false;
+          }
+          if (!this.jdField_a_of_type_Boolean) {
+            a(paramMotionEvent);
+          }
+          this.jdField_a_of_type_Xip.a();
+          continue;
+          if (this.jdField_a_of_type_Xiq != null)
+          {
+            this.jdField_a_of_type_Xiq.e = true;
+            continue;
+            if (this.jdField_a_of_type_Xiq != null) {
+              this.jdField_a_of_type_Xiq.e = false;
+            }
+          }
+        }
+      }
     }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
+    this.jdField_a_of_type_Xea.a(false, 0.0F, 0, 0, null, false, 2);
+    return true;
   }
   
-  public void a(xdo paramxdo, int paramInt1, int paramInt2)
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    int i = paramInt1 * this.b;
-    if (paramInt1 == paramInt2 - 1) {}
-    for (paramInt1 = paramxdo.b();; paramInt1 = this.b + i)
-    {
-      a(paramInt1 - i);
-      paramInt2 = i;
-      while (paramInt2 < paramInt1)
-      {
-        ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
-        localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        String str = paramxdo.a(paramInt2);
-        localImageView.setTag(2131377396, str);
-        localImageView.setTag(2131377387, Integer.valueOf(paramInt2));
-        localImageView.setContentDescription(alpo.a(2131707980) + paramInt2);
-        xai.a().a(getContext(), localImageView, str, this.d, this.d, null);
-        paramInt2 += 1;
-      }
-    }
+    g();
   }
+  
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

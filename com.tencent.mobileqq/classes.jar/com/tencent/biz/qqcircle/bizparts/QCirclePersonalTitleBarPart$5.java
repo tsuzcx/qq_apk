@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import tsl;
+import tss;
 
 public class QCirclePersonalTitleBarPart$5
   implements Runnable
 {
-  public QCirclePersonalTitleBarPart$5(tsl paramtsl) {}
+  public QCirclePersonalTitleBarPart$5(tss paramtss) {}
   
   public void run()
   {
-    tsl.e(this.this$0);
+    tss.e(this.this$0);
   }
 }
 

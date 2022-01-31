@@ -1,75 +1,31 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDateCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class vav
-  extends unk
+  extends QQUIEventReceiver<vai, vdl>
 {
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public vav()
+  public vav(@NonNull vai paramvai)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramvai);
   }
   
-  public String a()
+  public void a(@NonNull vai paramvai, @NonNull vdl paramvdl)
   {
-    if (QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
-      return ume.a("StorySvc.get_date_collection_list");
+    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvdl.jdField_a_of_type_JavaUtilList != null) && (!paramvdl.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramvai.a.b(paramvdl);
     }
-    return ume.a("StorySvc.get_others_video_list");
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramvdl.jdField_a_of_type_JavaUtilList);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspDateVideoCollectionList localRspDateVideoCollectionList = new qqstory_service.RspDateVideoCollectionList();
-    try
-    {
-      localRspDateVideoCollectionList.mergeFrom(paramArrayOfByte);
-      return new vct(this.jdField_b_of_type_JavaLangString, localRspDateVideoCollectionList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("Q.qqstory.memories:GetDateCollectionListRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqDateCollectionList localReqDateCollectionList = new qqstory_service.ReqDateCollectionList();
-    localReqDateCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqDateCollectionList.collection_count.set(this.c);
-    localReqDateCollectionList.collection_video_count.set(this.d);
-    localReqDateCollectionList.seqno.set(this.jdField_b_of_type_Long);
-    PBInt32Field localPBInt32Field = localReqDateCollectionList.is_friend;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBInt32Field.set(i);
-      if (this.e != -1) {
-        localReqDateCollectionList.time_zone.set(this.e);
-      }
-      localReqDateCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-      return localReqDateCollectionList.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetDateCollectionListRequest{startCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", collectionPageSize=" + this.c + ", collectionVideoCount=" + this.d + ", seq=" + this.jdField_b_of_type_Long + ", timeZoneOffset=" + this.e + ", uin=" + this.jdField_b_of_type_JavaLangString + ", isFriend=" + this.jdField_a_of_type_Boolean + '}';
+    return vdl.class;
   }
 }
 

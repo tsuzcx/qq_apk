@@ -1,48 +1,118 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ScanEntranceReport.1;
+import com.tencent.mobileqq.ar.ScanEntranceReport.4;
+import com.tencent.mobileqq.ar.ScanEntranceReport.5;
+import com.tencent.mobileqq.ar.ScanEntranceReport.6;
+import com.tencent.mobileqq.ar.ScanEntranceReport.9;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class amys
 {
-  public double a;
-  public int a;
-  public amyo a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g = "";
+  private static amys jdField_a_of_type_Amys;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public String toString()
+  public static amys a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
-      if (this.jdField_a_of_type_Amyo == null) {
-        break label230;
-      }
-      str = this.jdField_a_of_type_Amyo.jdField_a_of_type_JavaLangString;
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label236;
-      }
+    if (jdField_a_of_type_Amys == null) {
+      jdField_a_of_type_Amys = new amys();
     }
-    label230:
-    label236:
-    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
+    return jdField_a_of_type_Amys;
+  }
+  
+  private boolean a(long paramLong)
+  {
+    return (paramLong >= 0L) && (paramLong <= 600000L);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (paramLong <= 0L) {}
+    do
     {
-      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
-      str = "";
-      break;
-      str = "";
-      break label56;
+      return;
+      paramLong = System.currentTimeMillis() - paramLong;
+    } while (!a(paramLong));
+    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstSuccess totalTime=%s", new Object[] { Long.valueOf(paramLong) }));
+    ThreadManager.post(new ScanEntranceReport.6(this, paramInt, paramLong), 5, null, false);
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L) || (paramLong3 <= 0L)) {
+      return;
     }
+    long l = System.currentTimeMillis();
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramLong1 = paramLong2 - paramLong1;
+      paramLong2 = paramLong3 - paramLong2;
+      paramLong3 = l - paramLong3;
+      l = paramLong1 + paramLong2 + paramLong3;
+      if ((!a(paramLong1)) || (!a(paramLong2)) || (!a(paramLong3)) || (!a(l))) {
+        break;
+      }
+      QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstUpload firstInit=%s startDelay=%s firstSelectTime=%s firstUploadDelay=%s totalTime=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(l) }));
+      ThreadManager.post(new ScanEntranceReport.4(this, bool, paramLong1, paramLong2, paramLong3, paramInt, l), 5, null, false);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("ScanEntranceReport", 2, String.format("reportQBarSoLoadFail systemLoadSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    HashMap localHashMap = new HashMap();
+    azri.a(BaseApplication.getContext()).a("", "scanner_qbar_so_load_fail", paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramLong <= 0L) {}
+    do
+    {
+      return;
+      paramLong = System.currentTimeMillis() - paramLong;
+    } while (!a(paramLong));
+    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstResult success=%s totalTime=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
+    ThreadManager.post(new ScanEntranceReport.5(this, paramBoolean, paramLong), 5, null, false);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
+  {
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {}
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      paramLong1 = paramLong2 - paramLong1;
+      paramLong2 = l - paramLong2;
+      l = paramLong1 + paramLong2;
+    } while ((!a(paramLong1)) || (!a(paramLong2)) || (!a(l)));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((paramBoolean) && (paramLong1 > 500L)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.b = paramBoolean;
+      QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
+      ThreadManager.post(new ScanEntranceReport.1(this, paramLong1, paramLong2, paramString, l), 5, null, false);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    QLog.d("ScanEntranceReport", 2, "reportZoomCamera");
+    ThreadManager.post(new ScanEntranceReport.9(this), 5, null, false);
   }
 }
 

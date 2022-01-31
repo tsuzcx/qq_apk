@@ -1,24 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class ansx
-  extends AnimatorListenerAdapter
+final class ansx
+  implements bauf
 {
-  ansx(ansu paramansu, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(bave parambave, bavf parambavf)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Ansu.c != null) {
-      this.jdField_a_of_type_Ansu.c.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    if ((parambave == null) || (parambavf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambavf);
   }
 }
 

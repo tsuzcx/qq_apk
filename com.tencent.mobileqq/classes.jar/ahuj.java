@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-
-public class ahuj
-  extends Handler
+class ahuj
+  implements aufw
 {
-  public ahuj(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ahuj(ahuf paramahuf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new bepp(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691583);
-      this.a.a.show();
-    }
+    this.a.c(false);
+    ahuf.a(this.a);
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

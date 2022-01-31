@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.view.View;
-import blsy;
+import blxk;
 
 class DynamicTextItem$2
   implements Runnable
@@ -10,10 +10,10 @@ class DynamicTextItem$2
   
   public void run()
   {
-    blsy localblsy;
+    blxk localblxk;
     if (((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue() != this.jdField_a_of_type_Boolean)
     {
-      localblsy = DynamicTextItem.a(this.this$0);
+      localblxk = DynamicTextItem.a(this.this$0);
       if (((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue()) {
         break label93;
       }
@@ -21,7 +21,7 @@ class DynamicTextItem$2
     label93:
     for (boolean bool = true;; bool = false)
     {
-      localblsy.b = Boolean.valueOf(bool);
+      localblxk.b = Boolean.valueOf(bool);
       this.jdField_a_of_type_AndroidViewView.invalidate();
       if (this.jdField_a_of_type_JavaLangRunnable != null) {
         this.jdField_a_of_type_JavaLangRunnable.run();

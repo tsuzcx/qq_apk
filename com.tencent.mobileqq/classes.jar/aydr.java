@@ -1,14 +1,13 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
 
-final class aydr
-  implements ThreadFactory
+class aydr
+  implements bhvm
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  aydr(aydq paramaydq, View paramView) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void a()
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

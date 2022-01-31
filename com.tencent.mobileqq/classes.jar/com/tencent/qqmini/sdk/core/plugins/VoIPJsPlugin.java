@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bghn;
-import bgho;
-import bgkd;
-import bgki;
+import bglu;
+import bglv;
+import bgok;
+import bgop;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager;
@@ -55,22 +55,22 @@ public class VoIPJsPlugin
     return (VoIPManager.RoomConfig)new VoIPJsPlugin.JSONParser().parse(paramString, VoIPManager.RoomConfig.class);
   }
   
-  public String exitVoIPChat(bgkd parambgkd)
+  public String exitVoIPChat(bgok parambgok)
   {
     VoIPManager.getInstance().exitRoom();
     JSONObject localJSONObject = new JSONObject();
-    parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+    parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject).toString());
     return "";
   }
   
-  public String joinVoIPChat(bgkd parambgkd)
+  public String joinVoIPChat(bgok parambgok)
   {
     try
     {
-      Object localObject = parseRoomConfig(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject = parseRoomConfig(parambgok.jdField_b_of_type_JavaLangString);
       if (localObject == null)
       {
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "param error").toString());
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "param error").toString());
         return "";
       }
       if (!isRoomConfigValid((VoIPManager.RoomConfig)localObject))
@@ -80,7 +80,7 @@ public class VoIPJsPlugin
         try
         {
           ((JSONObject)localObject).put("errCode", -5);
-          parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "invalid parameters").toString());
+          parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "invalid parameters").toString());
           return "";
         }
         catch (JSONException localJSONException1)
@@ -95,12 +95,12 @@ public class VoIPJsPlugin
       {
         JSONObject localJSONObject;
         localJSONObject.put("errCode", -1000);
-        parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject, "internal error").toString());
+        parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject, "internal error").toString());
         for (;;)
         {
           return "";
           String str = localJSONObject.groupId;
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).transForRoomId(this.mMiniAppContext.a().appId, str, new VoIPJsPlugin.2(this, parambgkd, localJSONObject));
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).transForRoomId(this.mMiniAppContext.a().appId, str, new VoIPJsPlugin.2(this, parambgok, localJSONObject));
         }
       }
       catch (JSONException localJSONException2)
@@ -143,18 +143,18 @@ public class VoIPJsPlugin
     }
   }
   
-  public String updateVoIPChatMuteConfig(bgkd parambgkd)
+  public String updateVoIPChatMuteConfig(bgok parambgok)
   {
-    VoIPManager.RoomConfig localRoomConfig = parseRoomConfig(parambgkd.jdField_b_of_type_JavaLangString);
+    VoIPManager.RoomConfig localRoomConfig = parseRoomConfig(parambgok.jdField_b_of_type_JavaLangString);
     JSONObject localJSONObject = new JSONObject();
     if ((localRoomConfig != null) && (localRoomConfig.muteConfig != null)) {
-      VoIPManager.getInstance().updateMuteConfig(localRoomConfig.muteConfig, new VoIPJsPlugin.1(this, localJSONObject, parambgkd));
+      VoIPManager.getInstance().updateMuteConfig(localRoomConfig.muteConfig, new VoIPJsPlugin.1(this, localJSONObject, parambgok));
     }
     for (;;)
     {
       return "";
-      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject, "参数错误").toString());
-      QMLog.e("[mini] VoIPJsPlugin", "参数错误 " + parambgkd.jdField_b_of_type_JavaLangString);
+      parambgok.jdField_a_of_type_Bglu.a(parambgok.jdField_b_of_type_Int, bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject, "参数错误").toString());
+      QMLog.e("[mini] VoIPJsPlugin", "参数错误 " + parambgok.jdField_b_of_type_JavaLangString);
     }
   }
 }

@@ -11,7 +11,7 @@ class nhd
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Nhi.jdField_a_of_type_AndroidWidgetTextView.setText(2131695743);
+    this.jdField_a_of_type_Nhi.jdField_a_of_type_AndroidWidgetTextView.setText(2131695745);
     this.jdField_a_of_type_Nhi.b.setVisibility(4);
     this.jdField_a_of_type_Nhi.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     nia.a(this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Ngw.jdField_a_of_type_AndroidAppActivity).a());

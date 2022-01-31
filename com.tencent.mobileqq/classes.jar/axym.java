@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.view.View;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 
-public class axym
-  implements DialogInterface.OnClickListener
+class axym
+  implements arsr
 {
-  public axym(SignatureEditFragment paramSignatureEditFragment) {}
+  axym(axyk paramaxyk, AIOFileVideoData paramAIOFileVideoData, aiqi paramaiqi, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    axzn.a().a(axzn.a().b);
-    this.a.getActivity().finish();
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h = false;
+      this.jdField_a_of_type_Aiqi.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Axyk.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData, false));
+    }
+    this.jdField_a_of_type_Aiqi.b();
+    this.jdField_a_of_type_Aiqi.f();
   }
 }
 

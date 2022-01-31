@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import atax;
-import atbj;
+import atfg;
+import atfs;
 
 public class TogetherBusinessForWebPlugin$1
   implements Runnable
 {
-  public TogetherBusinessForWebPlugin$1(atax paramatax) {}
+  public TogetherBusinessForWebPlugin$1(atfg paramatfg) {}
   
   public void run()
   {
-    atbj.a().a();
+    atfs.a().a();
   }
 }
 

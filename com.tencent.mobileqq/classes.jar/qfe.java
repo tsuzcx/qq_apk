@@ -13,7 +13,7 @@ public class qfe
     paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.a();
     ors.a = paramView;
     ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext(), this.jdField_a_of_type_Qno.b);
-    String str1 = ors.a(paramView.mAlgorithmID, ors.a(paramView), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e(), 0, 0, bdee.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext()), paramView.mSubscribeID, null, paramView.innerUniqueID, null, paramView);
+    String str1 = ors.a(paramView.mAlgorithmID, ors.a(paramView), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e(), 0, 0, bdin.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext()), paramView.mSubscribeID, null, paramView.innerUniqueID, null, paramView);
     String str2 = szp.b(paramView.mChannelID);
     nrt.a(null, paramView.mSubscribeID, str2, str2, 0, 0, paramView.mFeedId + "", String.valueOf(this.jdField_a_of_type_Qno.a), String.valueOf(paramView.mAlgorithmID), str1, false);
     ors.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e());

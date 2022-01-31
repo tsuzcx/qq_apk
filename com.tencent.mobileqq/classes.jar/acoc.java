@@ -1,27 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class acoc
-  implements bhqd
+  implements DialogInterface.OnClickListener
 {
-  public acoc(Conversation paramConversation) {}
+  public acoc(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bhpy.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
-      }
-      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).g();
+    paramDialogInterface = this.a;
+    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
+    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
     }
   }
 }

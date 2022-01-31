@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
 import android.os.Bundle;
-import aste;
+import asxn;
 
 public class IdentificationIpcServer$1
   implements Runnable
 {
-  public IdentificationIpcServer$1(aste paramaste, Bundle paramBundle) {}
+  public IdentificationIpcServer$1(asxn paramasxn, Bundle paramBundle) {}
   
   public void run()
   {
-    aste.a(this.this$0, this.a);
+    asxn.a(this.this$0, this.a);
   }
 }
 

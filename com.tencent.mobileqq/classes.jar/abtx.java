@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class abtx
-  implements DialogInterface.OnCancelListener
+public class abtx
+  implements abtw
 {
-  abtx(abtt paramabtt) {}
+  private abtt<abtv> a = new abtu();
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public abtv a(int paramInt)
   {
-    this.a.jdField_a_of_type_Absi.d();
-    abvm.a(this.a.jdField_a_of_type_Absf, 4);
+    return (abtv)this.a.a(paramInt);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import azmj;
-import bclo;
+import azqs;
+import bcpx;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
@@ -48,9 +48,9 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return alpo.a(2131702935);
+      return alud.a(2131702947);
     }
-    return alpo.a(2131702918);
+    return alud.a(2131702930);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,8 +60,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        bclo.a(this, paramIntent, true);
-        azmj.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        bcpx.a(this, paramIntent, true);
+        azqs.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }

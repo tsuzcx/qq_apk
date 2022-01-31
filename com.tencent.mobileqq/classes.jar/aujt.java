@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class aujt
-  extends amab
+class aujt
+  implements auqa
 {
-  public aujt(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  aujt(aujr paramaujr, aupt paramaupt, auqc paramauqc, List paramList) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
+    this.jdField_a_of_type_Aupt.a(new auju(this));
+    this.jdField_a_of_type_Aupt.show();
+  }
+  
+  public void a(aupy paramaupy)
+  {
+    if ((paramaupy != null) && (aujr.a(this.jdField_a_of_type_Aujr) != null) && (aujr.a(this.jdField_a_of_type_Aujr).v())) {
+      switch (paramaupy.a)
+      {
+      }
     }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aupt.isShowing()) {
+        this.jdField_a_of_type_Aupt.dismiss();
+      }
+      if (aujr.a(this.jdField_a_of_type_Aujr) != null) {
+        aujr.a(this.jdField_a_of_type_Aujr).a(false, null, false);
+      }
+      this.jdField_a_of_type_Auqc.b();
+      return;
+      aupz.a(aujr.a(this.jdField_a_of_type_Aujr));
+      continue;
+      aupz.b(aujr.a(this.jdField_a_of_type_Aujr));
+      continue;
+      aupz.c(aujr.a(this.jdField_a_of_type_Aujr));
     }
+  }
+  
+  public void a(aupy paramaupy, int paramInt)
+  {
+    this.jdField_a_of_type_Aupt.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aupt.isShowing()) {
+      this.jdField_a_of_type_Aupt.dismiss();
+    }
+    if (aujr.a(this.jdField_a_of_type_Aujr) != null) {
+      aujr.a(this.jdField_a_of_type_Aujr).a(false, null, false);
+    }
+    this.jdField_a_of_type_Auqc.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Auqc.a(aujr.a(this.jdField_a_of_type_Aujr), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

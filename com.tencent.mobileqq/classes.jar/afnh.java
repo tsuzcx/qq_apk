@@ -1,17 +1,32 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class afnh
-  extends afpq
+  implements afkw
 {
-  afnh(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  afnh(afmy paramafmy, afnk paramafnk, MessageForPoke paramMessageForPoke) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a()
   {
-    return new afrq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Afnk.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Afnk.b == afmy.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afmy.a instanceof ChatHistoryActivity)) && (!afmy.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Afnk.c.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      aepi.a -= 1;
+      return;
+      this.jdField_a_of_type_Afnk.c.setVisibility(8);
+    }
   }
 }
 

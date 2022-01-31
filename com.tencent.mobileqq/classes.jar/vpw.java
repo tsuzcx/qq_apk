@@ -1,57 +1,35 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vpw
-  extends vox
+class vpw
+  extends QQUIEventReceiver<vpv, vck>
 {
-  public vpw(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void d()
+  public vpw(@NonNull vpv paramvpv)
   {
-    boolean bool = false;
-    super.d();
-    String str1 = this.a.jdField_a_of_type_JavaLangString;
-    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
-    if (this.a.a().getVisibility() == 0) {
-      bool = true;
-    }
-    wsv.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
-    if (this.a.c()) {
-      this.a.a(10, "onResume");
-    }
+    super(paramvpv);
   }
   
-  public void e()
+  public void a(@NonNull vpv paramvpv, @NonNull vck paramvck)
   {
-    super.e();
-    VideoViewVideoHolder.a(this.a, false);
-    wsv.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
-    this.a.a(0, true, "onPause");
-  }
-  
-  public void g()
-  {
-    super.g();
-    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
-    this.a.jdField_a_of_type_Vqn.a();
-    this.a.a(0, true, "onDestroy");
-    this.a.jdField_a_of_type_Vrr.a();
-    this.a.jdField_a_of_type_Vrr.e();
-    vha localvha = VideoViewVideoHolder.a(this.a);
-    VideoViewVideoHolder.a(this.a, null);
-    if (localvha != null) {
-      localvha.a();
+    if ((!TextUtils.equals(vpv.a(paramvpv).mContext, paramvck.jdField_a_of_type_JavaLangString)) || (vpv.a(paramvpv) == null)) {
+      return;
     }
-    if (VideoViewVideoHolder.a(this.a) != null)
+    if (paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      VideoViewVideoHolder.a(this.a).recycle();
-      VideoViewVideoHolder.a(this.a, null);
+      wxe.a(this.TAG, "pull feedId list fail %s", paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      vpv.a(paramvpv).a(new ErrorMessage(paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+      return;
     }
-    if ((this.a.jdField_a_of_type_Xqo != null) && (this.a.jdField_a_of_type_Xqo.isShowing())) {
-      this.a.jdField_a_of_type_Xqo.dismiss();
-    }
+    vpv.a(paramvpv).mIsEnd = paramvck.jdField_a_of_type_Boolean;
+    vpv.a(paramvpv).b(new ErrorMessage(), vpv.b(paramvck.jdField_a_of_type_JavaUtilList), paramvck.jdField_a_of_type_Boolean);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vck.class;
   }
 }
 

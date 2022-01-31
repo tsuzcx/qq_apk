@@ -9,7 +9,7 @@ class MiniProgramShareUtils$1$1
   
   public void run()
   {
-    QQToast.a(this.this$0.val$activity, 1, 2131720019, 0).a();
+    QQToast.a(this.this$0.val$activity, 1, 2131720031, 0).a();
   }
 }
 

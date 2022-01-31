@@ -1,6 +1,18 @@
-public abstract interface avcd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+
+class avcd
+  implements View.OnClickListener
 {
-  public abstract boolean a(avbz paramavbz, int paramInt, Object paramObject);
+  avcd(avcc paramavcc) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
+  }
 }
 
 

@@ -285,7 +285,7 @@ public class BaseConstants
   public static final boolean isReleaseVersion = true;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "6b98d0b0";
+  public static final String revision = "fd2cc8f9";
   public static String testServerAddress;
   
   static

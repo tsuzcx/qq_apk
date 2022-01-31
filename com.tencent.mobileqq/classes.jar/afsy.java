@@ -1,17 +1,17 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
 
-class afsy
-  implements ImageAssetDelegate
+final class afsy
+  implements afug
 {
-  afsy(afsx paramafsx) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
+      return 71;
+    }
+    return 84;
   }
 }
 

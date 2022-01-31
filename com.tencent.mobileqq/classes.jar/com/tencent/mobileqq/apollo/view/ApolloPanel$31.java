@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import akji;
+import aknx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -59,8 +59,8 @@ class ApolloPanel$31
             bool1 = bool3;
             if (localJSONObject != null)
             {
-              akji localakji = (akji)this.this$0.a.a.getManager(153);
-              ApolloPanel.a(this.this$0, localakji.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
+              aknx localaknx = (aknx)this.this$0.a.a.getManager(153);
+              ApolloPanel.a(this.this$0, localaknx.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
               localObject = ApolloPanel.a(this.this$0);
               bool1 = bool3;
               if (localObject == null) {}

@@ -1,73 +1,69 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ExpiredPushBanner;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class awbz
-  extends awch
+class awbz
+  implements amtx
 {
-  public awbz()
-  {
-    this.a = 3;
-  }
+  awbz(awby paramawby, String paramString, AppInterface paramAppInterface) {}
   
-  public awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg)
+  public void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    paramawbv = (ExpiredPushBanner)paramawbv;
-    if (paramawcg == null)
-    {
-      paramawbv.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
-      paramawbv.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
-      paramawbv.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
-      return paramawbv;
+    boolean bool = false;
+    QLog.w(awby.jdField_a_of_type_JavaLangString, 1, "getRes, promotionConfigInfo[" + paramPromotionConfigInfo + "], activityID[" + this.jdField_a_of_type_JavaLangString + "], isDestroyed[" + awby.a(this.jdField_a_of_type_Awby) + "]");
+    if (awby.a(this.jdField_a_of_type_Awby)) {
+      return;
     }
-    int i = paramCursor.getColumnIndex("cid");
-    if (i == -1)
+    Object localObject = null;
+    amts localamts;
+    String str;
+    if (paramPromotionConfigInfo != null)
     {
-      paramawcg.a(new NoColumnError("cid", Long.TYPE));
-      i = paramCursor.getColumnIndex("md5");
-      if (i != -1) {
-        break label187;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label324;
       }
-      paramawcg.a(new NoColumnError("md5", String.class));
+      localamts = paramPromotionConfigInfo.getItem(this.jdField_a_of_type_JavaLangString);
+      str = awby.a(this.jdField_a_of_type_Awby).getCurrentAccountUin();
+      int i = angs.a(str + "AR_PROMOTION_ENTRY_SHOWONCE");
+      int j = bdpg.b(str);
+      if ((j != angs.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION")) || (j == 0))
+      {
+        angs.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION", j);
+        i = 0;
+      }
+      if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
+        angs.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 0);
+      }
+      if (!paramPromotionConfigInfo.showOnce) {
+        break label333;
+      }
+      if (i != 0) {}
     }
-    for (;;)
+    label324:
+    label333:
+    for (bool = true;; bool = true)
     {
-      i = paramCursor.getColumnIndex("endtime");
-      if (i != -1) {
-        break label202;
+      awby.a(this.jdField_a_of_type_Awby).a(bool, paramPromotionConfigInfo.showInTopView);
+      localObject = localamts;
+      if (bool)
+      {
+        localObject = localamts;
+        if (paramPromotionConfigInfo.showOnce)
+        {
+          angs.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 1);
+          localObject = localamts;
+        }
       }
-      paramawcg.a(new NoColumnError("endtime", Long.TYPE));
-      return paramawbv;
-      paramawbv.cid = paramCursor.getLong(i);
+      awby.a(this.jdField_a_of_type_Awby, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localObject);
+      return;
+      localamts = paramPromotionConfigInfo.getActivityItem();
       break;
-      label187:
-      paramawbv.md5 = paramCursor.getString(i);
     }
-    label202:
-    paramawbv.endtime = paramCursor.getLong(i);
-    return paramawbv;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(awbv paramawbv, ContentValues paramContentValues)
-  {
-    paramawbv = (ExpiredPushBanner)paramawbv;
-    paramContentValues.put("cid", Long.valueOf(paramawbv.cid));
-    paramContentValues.put("md5", paramawbv.md5);
-    paramContentValues.put("endtime", Long.valueOf(paramawbv.endtime));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awbz
  * JD-Core Version:    0.7.0.1
  */

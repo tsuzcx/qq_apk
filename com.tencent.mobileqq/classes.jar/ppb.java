@@ -47,7 +47,7 @@ public class ppb
           ((JSONObject)localObject2).put("rowkey", paramArticleInfo.innerUniqueID);
         }
         ((JSONObject)localObject2).put("comment", paramArticleInfo.mSocialFeedInfo.d);
-        if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+        if (bkbq.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
           continue;
         }
         paramInt = i;

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import awbw;
+import awgf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;

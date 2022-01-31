@@ -1,15 +1,14 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.smtt.sdk.ValueCallback;
-
-class bhfg
-  implements ValueCallback<String>
+public class bhfg<T>
 {
-  bhfg(bhfe parambhfe) {}
+  public T a;
   
-  public void a(String paramString)
+  public bhfg(T paramT)
   {
-    QMLog.e("ProgressWebView", "evaluateJavascript miniAppWebviewStr callback");
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
+  
+  public void a() {}
 }
 
 

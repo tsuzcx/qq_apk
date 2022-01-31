@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 public class ntp
-  extends aofy<nto>
+  extends aokh<nto>
 {
   public int a()
   {
@@ -25,20 +25,20 @@ public class ntp
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
-        return nto.a(bdiv.e(((QQAppInterface)localAppRuntime).getApplication()));
+        return nto.a(bdne.e(((QQAppInterface)localAppRuntime).getApplication()));
       }
     }
     return new nto();
   }
   
   @Nullable
-  public nto a(aogf[] paramArrayOfaogf)
+  public nto a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
     }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return nto.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return nto.a(paramArrayOfaoko);
     }
     return null;
   }
@@ -55,7 +55,7 @@ public class ntp
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return bdiv.n(((QQAppInterface)localAppRuntime).getApp());
+      return bdne.n(((QQAppInterface)localAppRuntime).getApp());
     }
     return 0;
   }

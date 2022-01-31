@@ -1,13 +1,16 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
 
 public class aprv
-  extends apow
 {
-  public TextView a;
-  public URLImageView a;
-  public ProgressButton a;
+  WeakReference<alrp> a;
+  
+  public aprv(apro paramapro, alrp paramalrp)
+  {
+    this.a = new WeakReference(paramalrp);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 

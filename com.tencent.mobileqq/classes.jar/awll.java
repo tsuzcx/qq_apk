@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class awll
-  implements DialogInterface.OnClickListener
+public final class awll
+  extends awky
 {
-  awll(awlh paramawlh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected int c()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return 511;
   }
 }
 

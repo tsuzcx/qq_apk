@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.comment;
 
-import uoe;
-import uoh;
+import usn;
+import usq;
 
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener$1
   implements Runnable
 {
-  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(uoh paramuoh) {}
+  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(usq paramusq) {}
   
   public void run()
   {
-    uoe.a(this.a.a, uoh.a(this.a), uoh.a(this.a));
+    usn.a(this.a.a, usq.a(this.a), usq.a(this.a));
   }
 }
 

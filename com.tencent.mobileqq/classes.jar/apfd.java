@@ -1,124 +1,38 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import java.lang.ref.SoftReference;
 
-public final class apfd
+public class apfd
+  extends ClickableSpan
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
-  private String jdField_a_of_type_JavaLangString;
+  public apfd(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
   
-  public apfd(WebViewPlugin paramWebViewPlugin)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
-  }
-  
-  private AppActivity a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
     {
-      localObject = null;
-      if (localObject != null) {
-        break label38;
-      }
-    }
-    label38:
-    for (Object localObject = null;; localObject = ((becq)localObject).a())
-    {
-      if (!(localObject instanceof AppActivity)) {
-        break label46;
-      }
-      return (AppActivity)localObject;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
-      break;
-    }
-    label46:
-    return null;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject1;
-    if (!TextUtils.isEmpty(str)) {
-      localObject1 = "";
-    }
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("granted", paramBoolean);
-      ((JSONObject)localObject2).put("errorCode", paramInt);
-      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
-    }
-  }
-  
-  private boolean a()
-  {
-    AppActivity localAppActivity = a();
-    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
-  }
-  
-  private void b()
-  {
-    AppActivity localAppActivity = a();
-    if (localAppActivity == null) {
       return;
-    }
-    localAppActivity.requestPermissions(new apfe(this), 1819, new String[] { "android.permission.CAMERA" });
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new apff(this, Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
+      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    } while (paramView == null);
+    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramView.startActivity(localIntent);
   }
   
-  private void c()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    c();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (a())
-    {
-      a(true, 0);
-      return true;
-    }
-    b();
-    return false;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

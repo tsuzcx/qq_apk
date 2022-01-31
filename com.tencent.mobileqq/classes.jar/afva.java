@@ -1,15 +1,20 @@
-import android.graphics.Rect;
-import java.net.URL;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class afva
+class afva
+  implements bemz
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
+  afva(afuw paramafuw) {}
+  
+  public void a(View paramView)
+  {
+    if (atlt.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
+    }
+    aepi.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

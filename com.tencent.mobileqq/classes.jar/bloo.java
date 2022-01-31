@@ -1,15 +1,8 @@
-import com.tribe.async.dispatch.Dispatcher;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.support.annotation.NonNull;
 
-public class bloo
-  implements axml
+public abstract interface bloo
 {
-  public bloo(CaptureModeController paramCaptureModeController) {}
-  
-  public void a()
-  {
-    uht.a().dispatch(new bmda(2, true));
-  }
+  public abstract void a(@NonNull bloh parambloh, boolean paramBoolean, @NonNull String paramString);
 }
 
 

@@ -1,12 +1,42 @@
-import android.view.View;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import java.util.List;
 
-public final class blbi
+class blbi
+  implements bmeo<List<blag>>
 {
-  public View a;
-  public TextView a;
+  blbi(blbe paramblbe) {}
   
-  public blbi(blbg paramblbg) {}
+  public void a(@Nullable List<blag> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      blbe.a(this.a).clear();
+      blbe.a(this.a).addAll(paramList);
+      blbe.a(this.a).notifyDataSetChanged();
+      paramList = blbe.a(this.a).a().getIntent().getStringExtra("KEY_CURRENT_SELECT_ID");
+      bljn.b("AEGIFStickerListPart", "takeSameId=" + paramList);
+      if (!TextUtils.isEmpty(paramList))
+      {
+        int i = 0;
+        while (i < blbe.a(this.a).size())
+        {
+          blag localblag = (blag)blbe.a(this.a).get(i);
+          if ((localblag != null) && (paramList.equals(localblag.a)))
+          {
+            blbe.a(this.a, localblag);
+            blbe.a(this.a).a(i + 1);
+            return;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
 }
 
 

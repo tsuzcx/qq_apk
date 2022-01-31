@@ -1,52 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bngu
-  extends AnimatorListenerAdapter
+class bngu
+  extends xtb
 {
-  public bngu(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bngu(bngs parambngs, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onFailure(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onFinish(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
+      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
     }
-    if (!this.a.b.get())
+    bdhb.d(this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.d();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
+      bngs.a(this.jdField_a_of_type_Bngs, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
       return;
-      this.a.e();
-      this.a.a(1.0F);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

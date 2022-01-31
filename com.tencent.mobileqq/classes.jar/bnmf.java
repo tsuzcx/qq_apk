@@ -1,31 +1,29 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
+import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
 
 public class bnmf
+  extends AnimatorListenerAdapter
 {
-  public static int a;
-  public static boolean a;
+  public bnmf(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_Int = 1500;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
+    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
+    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
+      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    }
   }
   
-  public static boolean a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
+    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
+    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
+      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
     }
-    boolean bool = azcw.a(azcw.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
-      }
-    }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
   }
 }
 

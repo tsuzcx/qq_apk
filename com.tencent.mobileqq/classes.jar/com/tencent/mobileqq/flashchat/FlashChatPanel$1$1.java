@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import arrw;
+import arwf;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class FlashChatPanel$1$1
   implements Runnable
 {
-  public FlashChatPanel$1$1(arrw paramarrw) {}
+  public FlashChatPanel$1$1(arwf paramarwf) {}
   
   public void run()
   {

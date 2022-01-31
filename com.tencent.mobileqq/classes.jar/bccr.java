@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
-public abstract interface bccr
+public class bccr
+  implements bccw
 {
-  public abstract void a(ArrayList<bccq> paramArrayList);
+  public bccr(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramView = this.a.jdField_a_of_type_Bccv.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+    bdes.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+  }
 }
 
 

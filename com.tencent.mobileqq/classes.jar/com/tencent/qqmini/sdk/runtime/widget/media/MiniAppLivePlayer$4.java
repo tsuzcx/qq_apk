@@ -8,7 +8,7 @@ import android.view.ViewParent;
 import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import bghl;
+import bgls;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -36,7 +36,7 @@ class MiniAppLivePlayer$4
       localActivity = (Activity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localActivity == null) || (!(this.this$0.getParent() instanceof CoverLiveView)));
     this.this$0.jdField_a_of_type_Boolean = true;
-    Object localObject = this.this$0.jdField_a_of_type_Bghl.a();
+    Object localObject = this.this$0.jdField_a_of_type_Bgls.a();
     if (!(localObject instanceof AppBrandPageContainer))
     {
       QMLog.d("MiniAppLivePlayer", "Page is invalid");

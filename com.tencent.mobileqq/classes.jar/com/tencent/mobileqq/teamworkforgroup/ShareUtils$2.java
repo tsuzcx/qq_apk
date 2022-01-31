@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import bagr;
+import bala;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareUtils$2
   implements Runnable
 {
-  public ShareUtils$2(bagr parambagr, int paramInt1, int paramInt2) {}
+  public ShareUtils$2(bala parambala, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (bagr.a(this.this$0).getWidth() < this.a) {
-      bagr.a(this.this$0).setMove(true);
+    if (bala.a(this.this$0).getWidth() < this.a) {
+      bala.a(this.this$0).setMove(true);
     }
-    while (bagr.b(this.this$0).getWidth() < this.b)
+    while (bala.b(this.this$0).getWidth() < this.b)
     {
-      bagr.b(this.this$0).setMove(true);
+      bala.b(this.this$0).setMove(true);
       return;
-      bagr.a(this.this$0).setMove(false);
+      bala.a(this.this$0).setMove(false);
     }
-    bagr.b(this.this$0).setMove(false);
+    bala.b(this.this$0).setMove(false);
   }
 }
 

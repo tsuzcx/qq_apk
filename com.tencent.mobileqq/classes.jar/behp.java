@@ -1,34 +1,30 @@
-import java.lang.reflect.Method;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-public class behp
+class behp
+  implements behr
 {
-  public static Class a(ClassLoader paramClassLoader, String paramString)
+  behp(beho parambeho) {}
+  
+  public Activity a()
   {
-    try
-    {
-      paramClassLoader = paramClassLoader.loadClass(paramString);
-      return paramClassLoader;
-    }
-    catch (ClassNotFoundException paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return null;
+    return this.a.a.a();
   }
   
-  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  public beho a()
   {
-    try
-    {
-      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
-      paramClass.setAccessible(true);
-      return paramClass;
-    }
-    catch (NoSuchMethodException paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    return this.a;
+  }
+  
+  public WebViewFragment a()
+  {
+    return this.a.a.a();
+  }
+  
+  public WebView a()
+  {
+    return this.a.a.a();
   }
 }
 

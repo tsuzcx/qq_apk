@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class pxi
 {
-  public static View a(int paramInt1, Object paramObject, int paramInt2, View paramView, Context paramContext, rqj paramrqj, bcws parambcws)
+  public static View a(int paramInt1, Object paramObject, int paramInt2, View paramView, Context paramContext, rqj paramrqj, bdbb parambdbb)
   {
     if ((paramView != null) && ((paramView.getTag() instanceof pxl))) {}
     for (paramContext = (pxl)paramView.getTag();; paramContext = paramrqj)
@@ -20,16 +20,16 @@ public class pxi
         paramContext.p();
       }
       return paramView;
-      paramrqj = a(paramInt2, paramContext, paramObject, parambcws, paramrqj);
+      paramrqj = a(paramInt2, paramContext, paramObject, parambdbb, paramrqj);
       if (paramrqj != null) {
         try
         {
           paramView = paramrqj.a();
           paramView.setTag(paramrqj);
           if (!qfg.c(paramInt2)) {
-            opi.a(paramView, paramContext.getResources().getDrawable(2130841380));
+            opi.a(paramView, paramContext.getResources().getDrawable(2130841381));
           } else {
-            opi.a(paramView, paramContext.getResources().getDrawable(2131166790));
+            opi.a(paramView, paramContext.getResources().getDrawable(2131166792));
           }
         }
         catch (Exception paramObject)
@@ -41,7 +41,7 @@ public class pxi
     }
   }
   
-  private static pxl a(int paramInt, Context paramContext, Object paramObject, bcws parambcws, rqj paramrqj)
+  private static pxl a(int paramInt, Context paramContext, Object paramObject, bdbb parambdbb, rqj paramrqj)
   {
     switch (paramInt)
     {
@@ -100,131 +100,131 @@ public class pxi
       {
         paramContext.printStackTrace();
       }
-      paramContext = new pyy(paramContext, parambcws, paramrqj);
+      paramContext = new pyy(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qae(paramContext, parambcws, paramrqj);
+      paramContext = new qae(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pxv(paramContext, parambcws, paramrqj);
+      paramContext = new pxv(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qao(paramContext, parambcws, paramrqj);
+      paramContext = new qao(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qao(paramContext, parambcws, paramrqj);
+      paramContext = new qao(paramContext, parambdbb, paramrqj);
       continue;
       paramContext = null;
       continue;
-      paramContext = new qam(paramContext, parambcws, paramrqj);
+      paramContext = new qam(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pxw(paramContext, parambcws, paramrqj);
+      paramContext = new pxw(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qad(paramContext, parambcws, paramrqj);
+      paramContext = new qad(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pxu(paramContext, parambcws, paramrqj);
+      paramContext = new pxu(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qan(paramContext, parambcws, paramrqj);
+      paramContext = new qan(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qaf(paramContext, parambcws, paramrqj);
+      paramContext = new qaf(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyg(paramContext, parambcws, paramrqj);
+      paramContext = new pyg(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyz(paramContext, parambcws, paramrqj);
+      paramContext = new pyz(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pxx(paramContext, parambcws, paramrqj);
+      paramContext = new pxx(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyg(paramContext, parambcws, paramrqj);
+      paramContext = new pyg(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzh(paramContext, parambcws, paramrqj);
+      paramContext = new pzh(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzi(paramContext, parambcws, paramrqj);
+      paramContext = new pzi(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pye(paramContext, parambcws, paramrqj);
+      paramContext = new pye(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzr(paramContext, parambcws, paramrqj);
+      paramContext = new pzr(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pye(paramContext, parambcws, paramrqj);
+      paramContext = new pye(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzp(paramContext, parambcws, paramrqj);
+      paramContext = new pzp(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbj(paramContext, parambcws, paramrqj);
+      paramContext = new qbj(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbh(paramContext, parambcws, paramrqj);
+      paramContext = new qbh(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbf(paramContext, parambcws, paramrqj);
+      paramContext = new qbf(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbn(paramContext, parambcws, paramrqj);
+      paramContext = new qbn(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbi(paramContext, parambcws, paramrqj);
+      paramContext = new qbi(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbg(paramContext, parambcws, paramrqj);
+      paramContext = new qbg(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbp(paramContext, parambcws, paramrqj);
+      paramContext = new qbp(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbk(paramContext, parambcws, paramrqj);
+      paramContext = new qbk(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbc(paramContext, parambcws, paramrqj);
+      paramContext = new qbc(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qap(paramContext, parambcws, paramrqj);
+      paramContext = new qap(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzz(paramContext, parambcws, paramrqj);
+      paramContext = new pzz(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qab(paramContext, parambcws, paramrqj);
+      paramContext = new qab(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbd(paramContext, parambcws, paramrqj);
+      paramContext = new qbd(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzk(paramContext, parambcws, paramrqj);
+      paramContext = new pzk(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzm(paramContext, parambcws, paramrqj);
+      paramContext = new pzm(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qas(paramContext, parambcws, paramrqj);
+      paramContext = new qas(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qaw(paramContext, parambcws, paramrqj);
+      paramContext = new qaw(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qau(paramContext, parambcws, paramrqj);
+      paramContext = new qau(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pxx(paramContext, parambcws, paramrqj);
+      paramContext = new pxx(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzm(paramContext, parambcws, paramrqj);
+      paramContext = new pzm(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qaf(paramContext, parambcws, paramrqj);
+      paramContext = new qaf(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pym(paramContext, parambcws, paramrqj);
+      paramContext = new pym(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyv(paramContext, parambcws, paramrqj);
+      paramContext = new pyv(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyn(paramContext, parambcws, paramrqj);
+      paramContext = new pyn(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qaz(paramContext, parambcws, paramrqj);
+      paramContext = new qaz(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qay(paramContext, parambcws, paramrqj);
+      paramContext = new qay(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qba(paramContext, parambcws, paramrqj);
+      paramContext = new qba(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbk(paramContext, parambcws, paramrqj);
+      paramContext = new qbk(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbi(paramContext, parambcws, paramrqj);
+      paramContext = new qbi(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qbp(paramContext, parambcws, paramrqj);
+      paramContext = new qbp(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzt(paramContext, parambcws, paramrqj);
+      paramContext = new pzt(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzu(paramContext, parambcws, paramrqj);
+      paramContext = new pzu(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pyw(paramContext, parambcws, paramrqj);
+      paramContext = new pyw(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzv(paramContext, parambcws, paramrqj);
+      paramContext = new pzv(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzx(paramContext, parambcws, paramrqj);
+      paramContext = new pzx(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzw(paramContext, parambcws, paramrqj);
+      paramContext = new pzw(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new qac(paramContext, parambcws, paramrqj, ComponentContentRecommend.class);
+      paramContext = new qac(paramContext, parambdbb, paramrqj, ComponentContentRecommend.class);
       continue;
-      paramContext = new qac(paramContext, parambcws, paramrqj, ComponentContentRecommendFollowList.class);
+      paramContext = new qac(paramContext, parambdbb, paramrqj, ComponentContentRecommendFollowList.class);
       continue;
-      paramContext = new qac(paramContext, parambcws, paramrqj, ComponentContentRecommendFollowGroup.class);
+      paramContext = new qac(paramContext, parambdbb, paramrqj, ComponentContentRecommendFollowGroup.class);
       continue;
-      paramContext = new pyx(paramContext, parambcws, paramrqj);
+      paramContext = new pyx(paramContext, parambdbb, paramrqj);
       continue;
-      paramContext = new pzg(paramContext, parambcws, paramrqj);
+      paramContext = new pzg(paramContext, parambdbb, paramrqj);
     }
     return null;
   }

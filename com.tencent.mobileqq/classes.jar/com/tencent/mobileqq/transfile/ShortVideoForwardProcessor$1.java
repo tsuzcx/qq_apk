@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import basv;
+import baxe;
 
 public class ShortVideoForwardProcessor$1
   implements Runnable
 {
-  public ShortVideoForwardProcessor$1(basv parambasv) {}
+  public ShortVideoForwardProcessor$1(baxe parambaxe) {}
   
   public void run()
   {

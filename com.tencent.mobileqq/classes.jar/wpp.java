@@ -1,126 +1,111 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wpp
-  extends wgt
+  extends JobSegment<Integer, wov>
 {
-  private usd jdField_a_of_type_Usd = (usd)urr.a(2);
-  private wna jdField_a_of_type_Wna = new wpq(this);
-  private wpr jdField_a_of_type_Wpr;
+  private int jdField_a_of_type_Int;
+  private uxs jdField_a_of_type_Uxs;
+  private wou jdField_a_of_type_Wou;
   
-  public wpp(Context paramContext, Activity paramActivity, int paramInt)
+  public wpp(@NonNull wou paramwou, uxs paramuxs)
   {
-    super(paramContext, paramActivity, paramInt);
+    this.jdField_a_of_type_Wou = paramwou;
+    this.jdField_a_of_type_Uxs = paramuxs;
   }
   
-  protected View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
+  public static boolean a(@Nullable vgb paramvgb, AtomicBoolean paramAtomicBoolean)
   {
-    paramwph.b = paramInt;
-    paramwph.a(this.jdField_a_of_type_Wna);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    Object localObject2 = "";
+    Object localObject1 = null;
+    List localList = ((uvx)uwa.a(5)).a(true);
+    Iterator localIterator = paramvgb.a.iterator();
+    paramvgb = (vgb)localObject1;
+    if (localIterator.hasNext())
     {
-      wsv.e("HotRecommendFeedAdapter", "bind view failed because of invalidate data.");
-      return paramwph.a();
+      woq localwoq = (woq)localIterator.next();
+      localObject1 = localObject2;
+      if (!((String)localObject2).equals(localwoq.c)) {
+        localObject1 = localwoq.c;
+      }
+      if (!a(localwoq, localList)) {
+        break label121;
+      }
+      localwoq.jdField_b_of_type_Boolean = true;
+      paramAtomicBoolean.set(true);
+      paramvgb = localwoq;
     }
-    paramViewGroup = paramwph.a(2131364894);
-    paramViewGroup.setVisibility(8);
-    TextView localTextView1 = (TextView)paramwph.a(2131378956);
-    localTextView1.setVisibility(4);
-    localTextView1.setOnClickListener(null);
-    TextView localTextView2 = (TextView)paramwph.a(2131378904);
-    localTextView2.setVisibility(4);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramwph.a(2131379957);
-    localStoryUserBadgeView.setVisibility(8);
-    TextView localTextView3 = (TextView)paramwph.a(2131378839);
-    localTextView3.setVisibility(8);
-    Object localObject = (QQStoryAutoPlayView)paramwph.a(2131373721);
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localStoryVideoItem != null)
-    {
-      ((QQStoryAutoPlayView)localObject).setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, localStoryVideoItem, paramInt);
-      if (this.jdField_a_of_type_Wmw != null) {
-        ((QQStoryAutoPlayView)localObject).a(this.jdField_a_of_type_Wmw);
-      }
-      if (this.jdField_a_of_type_Wmz != null) {
-        ((QQStoryAutoPlayView)localObject).setStoryCoverClickListener(this.jdField_a_of_type_Wmz);
-      }
-      wps.a(localStoryVideoItem, (QQStoryAutoPlayView)localObject, "QQStory_feed_min", xod.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), xod.a(this.jdField_a_of_type_AndroidContentContext, 178.0F));
-      if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
-      {
-        localObject = this.jdField_a_of_type_Usd.b(localStoryVideoItem.mOwnerUid);
-        if (localObject != null)
-        {
-          localTextView3.setVisibility(0);
-          if (!TextUtils.isEmpty(((QQUserUIItem)localObject).remark)) {
-            break label464;
-          }
-          localTextView3.setText(((QQUserUIItem)localObject).nickName);
-          if (!TextUtils.isEmpty(((QQUserUIItem)localObject).getUnionId()))
-          {
-            localStoryUserBadgeView.setVisibility(0);
-            localStoryUserBadgeView.setUnionID(((QQUserUIItem)localObject).getUnionId(), 1);
-          }
-          if (!TextUtils.isEmpty(localStoryVideoItem.mRecommendWording))
-          {
-            localTextView2.setVisibility(0);
-            localTextView2.setText(localStoryVideoItem.mRecommendWording);
-          }
-          if ((!((QQUserUIItem)localObject).isVip()) || (((QQUserUIItem)localObject).isMe()) || (((QQUserUIItem)localObject).isFriend())) {
-            break label513;
-          }
-          localTextView1.setVisibility(0);
-          if (!((QQUserUIItem)localObject).isSubscribe()) {
-            break label477;
-          }
-          localTextView1.setText(alpo.a(2131705994));
-          localTextView1.setTextColor(Color.parseColor("#80FFFFFF"));
-          localTextView1.setBackgroundDrawable(null);
-          localTextView1.setOnClickListener(null);
-          localTextView1.setClickable(false);
-          paramViewGroup.setVisibility(0);
-        }
-      }
-    }
+    label121:
     for (;;)
     {
-      wta.a("home_page", "multi_card_exp", 0, 0, new String[] { localStoryVideoItem.mOwnerUid, localStoryVideoItem.mVid });
-      return paramwph.a();
-      label464:
-      localTextView3.setText(((QQUserUIItem)localObject).remark);
+      localObject2 = localObject1;
       break;
-      label477:
-      localTextView1.setText(alpo.a(2131705993));
-      localTextView1.setTextColor(Color.parseColor("#FFFFFF"));
-      localTextView1.setBackgroundResource(2130846391);
-      localTextView1.setOnClickListener(paramwph);
-      continue;
-      label513:
-      if (QLog.isColorLevel()) {
-        QLog.w("HotRecommendFeedAdapter", 2, "这个里显示不出关注按钮了，打个log \n" + localObject);
-      }
+      return (paramvgb != null) && (((String)localObject2).equals(paramvgb.c));
     }
   }
   
-  protected wph a(int paramInt, ViewGroup paramViewGroup)
+  private static boolean a(woq paramwoq, List<StoryVideoItem> paramList)
   {
-    return new wph(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561462, paramViewGroup, false));
+    Object localObject2;
+    do
+    {
+      paramList = paramList.iterator();
+      Object localObject1;
+      while (!((Iterator)localObject1).hasNext())
+      {
+        do
+        {
+          do
+          {
+            if (!paramList.hasNext()) {
+              break;
+            }
+            localObject1 = (StoryVideoItem)paramList.next();
+          } while (!paramwoq.c.equals(((StoryVideoItem)localObject1).mPublishDate));
+          if ((((StoryVideoItem)localObject1).isLocalAddShareGroupVideo()) && (paramwoq.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).shareGroupId)))
+          {
+            wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has *add* fail video:%s", new Object[] { paramwoq });
+            return true;
+          }
+          localObject2 = uqf.a(((StoryVideoItem)localObject1).mVid);
+          if ((localObject2 != null) && (((PublishVideoEntry)localObject2).getBooleanExtra("ignorePersonalPublish", false))) {}
+          for (int i = 1; (i == 0) && (paramwoq.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).mOwnerUid)); i = 0)
+          {
+            wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this personal feed  has fail video:%s", new Object[] { paramwoq });
+            return true;
+          }
+          localObject1 = ((StoryVideoItem)localObject1).mVideoSpreadGroupList;
+        } while ((localObject1 == null) || (((uxr)localObject1).b == null));
+        localObject1 = ((uxr)localObject1).b.iterator();
+      }
+      localObject2 = (String)((Iterator)localObject1).next();
+    } while (!paramwoq.jdField_b_of_type_JavaLangString.equals(localObject2));
+    wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has fail video:%s", new Object[] { paramwoq });
+    return true;
+    return false;
   }
   
-  public void a(wpr paramwpr)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    this.jdField_a_of_type_Wpr = paramwpr;
+    Object localObject = this.jdField_a_of_type_Wou.a(paramInteger.intValue(), 5);
+    if ((((wov)localObject).a.size() > 0) || (((wov)localObject).jdField_b_of_type_Boolean))
+    {
+      wxe.b("Q.qqstory.home.data.HomeFeedListPageLoader", "hit feed id cache");
+      notifyResult(localObject);
+      return;
+    }
+    localObject = new AtomicBoolean(false);
+    vga localvga = new vga();
+    localvga.jdField_a_of_type_Uxs = this.jdField_a_of_type_Uxs;
+    localvga.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Wou.a();
+    urp.a().a(localvga, new wpq(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
   }
 }
 

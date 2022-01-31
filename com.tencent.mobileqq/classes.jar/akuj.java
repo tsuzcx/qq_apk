@@ -1,44 +1,16 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
 public class akuj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
-  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
+  public akuj(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public akuj(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt == 1) {}
-    do
-    {
-      return 1;
-      if (paramInt == 3) {
-        return 0;
-      }
-    } while (paramInt != 2);
-    return 8;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
-    }
+    ApolloWebGameActivity.a(this.a).dismiss();
+    ApolloWebGameActivity.b(this.a);
   }
 }
 

@@ -1,31 +1,20 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class bmnn
-  implements uni<vbh, vdb>
+  extends SimpleJob<Object>
 {
-  bmnn(bmni parambmni, WeakReference paramWeakReference) {}
-  
-  public void a(@NonNull vbh paramvbh, @Nullable vdb paramvdb, @NonNull ErrorMessage paramErrorMessage)
+  bmnn(bmnj parambmnj, String paramString)
   {
-    if (paramvdb == null)
-    {
-      paramvbh = (bmnt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramvbh != null) {
-        paramvbh.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
-      return;
-    }
-    paramvbh = (bmnt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramvbh != null)
-    {
-      paramvbh.a(0, paramvdb.a);
-      return;
-    }
-    wsv.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxk.a("0X80076BC");
+    return null;
   }
 }
 

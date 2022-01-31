@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akxm;
+import alcb;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class CmShowRenderView$PlayActionConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<PlayActionConfig> CREATOR = new akxm();
+  public static final Parcelable.Creator<PlayActionConfig> CREATOR = new alcb();
   public int a;
   public Bundle a;
   public String a;

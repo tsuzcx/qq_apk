@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdar;
+import bdfa;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.net.URL;
-import ueq;
-import xih;
+import uiz;
+import xmq;
 
 public class SlideItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new xih();
+  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new xmq();
   public int a;
   public long a;
   public LocalMediaInfo a;
   public String a;
   public URL a;
-  public ueq a;
+  public uiz a;
   public boolean a;
   public int b;
   public long b;
@@ -89,7 +89,7 @@ public class SlideItemInfo
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
       this.jdField_b_of_type_JavaLangString = paramLocalMediaInfo.path;
-      this.jdField_b_of_type_Int = bdar.getMediaType(paramLocalMediaInfo);
+      this.jdField_b_of_type_Int = bdfa.getMediaType(paramLocalMediaInfo);
       if (!TextUtils.isEmpty(paramLocalMediaInfo.mTransId)) {
         this.jdField_e_of_type_JavaLangString = paramLocalMediaInfo.mTransId;
       }
@@ -103,7 +103,7 @@ public class SlideItemInfo
         StringBuilder localStringBuilder = new StringBuilder("albumthumb");
         localStringBuilder.append("://");
         localStringBuilder.append(paramLocalMediaInfo.path);
-        this.jdField_a_of_type_JavaNetURL = bdar.generateAlbumThumbURL(paramLocalMediaInfo);
+        this.jdField_a_of_type_JavaNetURL = bdfa.generateAlbumThumbURL(paramLocalMediaInfo);
         this.jdField_a_of_type_Long = 2000L;
         this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
         return;
@@ -115,7 +115,7 @@ public class SlideItemInfo
       return;
     }
     if (paramLocalMediaInfo.isSystemMeidaStore == true) {}
-    for (this.jdField_a_of_type_JavaNetURL = bdar.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");; this.jdField_a_of_type_JavaNetURL = bdar.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO"))
+    for (this.jdField_a_of_type_JavaNetURL = bdfa.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");; this.jdField_a_of_type_JavaNetURL = bdfa.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO"))
     {
       this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
       if (this.jdField_c_of_type_Long != 0L) {

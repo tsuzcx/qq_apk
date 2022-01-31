@@ -1,18 +1,43 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.app.Activity;
+import android.content.res.Resources;
 
-public class ajpe
+class ajpe
+  implements ajpf
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  ajpe(ajpb paramajpb, ajpf paramajpf) {}
   
-  private ajpe(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    ajpb.a(this.jdField_a_of_type_Ajpb, new bety(ajpb.a(this.jdField_a_of_type_Ajpb), ajpb.a(this.jdField_a_of_type_Ajpb).getResources().getDimensionPixelSize(2131298914)));
+    ajpb.a(this.jdField_a_of_type_Ajpb).c(2131718384);
+    ajpb.a(this.jdField_a_of_type_Ajpb).setCancelable(false);
+    ajpb.a(this.jdField_a_of_type_Ajpb).show();
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (ajpb.a(this.jdField_a_of_type_Ajpb) != null) {
+      ajpb.a(this.jdField_a_of_type_Ajpb).dismiss();
+    }
+    this.jdField_a_of_type_Ajpb.a(true);
+    ajpb.a(this.jdField_a_of_type_Ajpb, false);
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.a(paramString);
+    }
+  }
+  
+  public void b()
+  {
+    if (ajpb.a(this.jdField_a_of_type_Ajpb) != null) {
+      ajpb.a(this.jdField_a_of_type_Ajpb).dismiss();
+    }
+    ajpb.a(this.jdField_a_of_type_Ajpb, false);
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.b();
+    }
   }
 }
 

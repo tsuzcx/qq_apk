@@ -54,7 +54,7 @@ class nuj
         break label300;
       }
     }
-    nuh.a(this.jdField_a_of_type_Nuh).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846574));
+    nuh.a(this.jdField_a_of_type_Nuh).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846647));
     nuh.a(this.jdField_a_of_type_Nuh).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, nuh.b(this.jdField_a_of_type_Nuh), nuh.a(this.jdField_a_of_type_Nuh) - k);
     for (;;)
     {
@@ -65,7 +65,7 @@ class nuj
       nuh.a(this.jdField_a_of_type_Nuh).setOnDismissListener(new nuk(this));
       return;
       label300:
-      nuh.a(this.jdField_a_of_type_Nuh).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846573));
+      nuh.a(this.jdField_a_of_type_Nuh).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846646));
       nuh.a(this.jdField_a_of_type_Nuh).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, nuh.b(this.jdField_a_of_type_Nuh), m + nuh.a(this.jdField_a_of_type_Nuh));
     }
   }

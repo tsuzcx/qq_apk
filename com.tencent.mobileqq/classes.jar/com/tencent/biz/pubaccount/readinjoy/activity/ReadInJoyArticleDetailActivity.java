@@ -9,10 +9,10 @@ import android.os.MessageQueue;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import anxn;
-import azmj;
-import bdag;
-import biqt;
+import aobw;
+import azqs;
+import bdep;
+import biva;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.biz.pubaccount.util.PreloadManager;
 import com.tencent.common.app.AppInterface;
@@ -34,7 +34,7 @@ import nxw;
 import nxx;
 import ors;
 import szp;
-import ymk;
+import yqz;
 
 public class ReadInJoyArticleDetailActivity
   extends QQBrowserActivity
@@ -45,7 +45,7 @@ public class ReadInJoyArticleDetailActivity
   public BrowserAppInterface a;
   public Object a;
   public String a;
-  ymk jdField_a_of_type_Ymk = null;
+  yqz jdField_a_of_type_Yqz = null;
   boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   protected long b;
@@ -83,7 +83,7 @@ public class ReadInJoyArticleDetailActivity
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyArticleDetail", 2, "请求开始时间" + System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Ymk.b(this.jdField_a_of_type_JavaLangString, new nxw(this));
+    this.jdField_a_of_type_Yqz.b(this.jdField_a_of_type_JavaLangString, new nxw(this));
   }
   
   @TargetApi(23)
@@ -160,7 +160,7 @@ public class ReadInJoyArticleDetailActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label105;
       }
-      if ((!bdag.b()) && (!bdag.d())) {
+      if ((!bdep.b()) && (!bdep.d())) {
         this.mSystemBarComp.setStatusBarColor(-7829368);
       }
     }
@@ -172,13 +172,13 @@ public class ReadInJoyArticleDetailActivity
     this.mSystemBarComp.setStatusBarDarkMode(true);
     return;
     label105:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
     {
       a(true);
       this.mSystemBarComp.setStatusBarColor(-1);
       return;
     }
-    if (!bdag.d())
+    if (!bdep.d())
     {
       this.mSystemBarComp.setStatusBarColor(-2368549);
       return;
@@ -198,8 +198,8 @@ public class ReadInJoyArticleDetailActivity
     {
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      azmj.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
-      biqt.a(this, paramIntent);
+      azqs.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
+      biva.a(this, paramIntent);
       return;
     }
   }
@@ -219,8 +219,8 @@ public class ReadInJoyArticleDetailActivity
   {
     super.doOnDestroy();
     ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.3(this));
-    if (this.jdField_a_of_type_Ymk != null) {
-      this.jdField_a_of_type_Ymk.b();
+    if (this.jdField_a_of_type_Yqz != null) {
+      this.jdField_a_of_type_Yqz.b();
     }
   }
   
@@ -255,8 +255,8 @@ public class ReadInJoyArticleDetailActivity
       localReportInfo.mInnerId = this.jdField_e_of_type_JavaLangString;
       ((List)localObject).add(localReportInfo);
       ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.2(this, (List)localObject));
-      if (this.jdField_a_of_type_Ymk != null) {
-        this.jdField_a_of_type_Ymk.j();
+      if (this.jdField_a_of_type_Yqz != null) {
+        this.jdField_a_of_type_Yqz.j();
       }
       return;
     }
@@ -290,10 +290,10 @@ public class ReadInJoyArticleDetailActivity
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_Ymk == null)
+    if (this.jdField_a_of_type_Yqz == null)
     {
-      this.jdField_a_of_type_Ymk = ymk.a();
-      this.jdField_a_of_type_Ymk.a();
+      this.jdField_a_of_type_Yqz = yqz.a();
+      this.jdField_a_of_type_Yqz.a();
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str)) && (str.equals(this.jdField_a_of_type_JavaLangString)))
     {

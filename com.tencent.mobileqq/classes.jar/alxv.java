@@ -1,81 +1,46 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class alxv
-  implements SensorEventListener
+class alxv
+  implements aufw
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  alxv(alxr paramalxr) {}
   
-  private void a(long paramLong)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.d();
   }
   
-  protected void a() {}
+  public void a(long paramLong) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
     }
-    label66:
-    while (l2 <= 80L) {
-      return;
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
     }
-    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-    }
-    this.d += f1;
-    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-    {
-      if (QLog.isColorLevel())
+    if ((paramInt & 0x1) != 0) {
+      synchronized (alxr.a(this.a))
       {
-        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
-        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
+        Iterator localIterator = alxr.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((alxx)localIterator.next()).b();
+        }
       }
-      a();
-      a(l1);
-      return;
     }
-    if (this.jdField_a_of_type_Int < 10)
-    {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Float = f2;
-      this.b = f3;
-      this.c = f4;
-      this.jdField_a_of_type_Long = l1;
-      return;
-    }
-    a(l1);
   }
 }
 

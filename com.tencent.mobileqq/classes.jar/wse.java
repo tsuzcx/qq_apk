@@ -1,14 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class wse
-  implements View.OnClickListener
+public class wse
+  extends urt
 {
-  wse(wsb paramwsb) {}
+  public static final String a = uqn.a("StorySvc.get_photography_guide");
   
-  public void onClick(View paramView)
+  public String a()
   {
-    this.a.dismiss();
+    return a;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
+    {
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new wsf(localRspGetPhotographyGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideRequest{}";
   }
 }
 

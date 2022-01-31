@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import wvj;
-import wvk;
-import xev;
+import wzs;
+import wzt;
+import xje;
 
 public class EditVideoFilterNeo$1$1
   implements Runnable
 {
-  public EditVideoFilterNeo$1$1(wvk paramwvk, int paramInt) {}
+  public EditVideoFilterNeo$1$1(wzt paramwzt, int paramInt) {}
   
   public void run()
   {
-    if (wvj.a(this.jdField_a_of_type_Wvk.a) != null) {
-      wvj.a(this.jdField_a_of_type_Wvk.a).a(this.jdField_a_of_type_Int);
+    if (wzs.a(this.jdField_a_of_type_Wzt.a) != null) {
+      wzs.a(this.jdField_a_of_type_Wzt.a).a(this.jdField_a_of_type_Int);
     }
   }
 }

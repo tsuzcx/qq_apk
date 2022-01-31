@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 import com.tencent.mobileqq.bubble.ChatXListView;
-import xod;
+import xsm;
 
 public class PublicAccountChatPie$7
   implements Runnable
 {
-  public PublicAccountChatPie$7(agot paramagot) {}
+  public PublicAccountChatPie$7(agti paramagti) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), xod.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), xsm.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F));
   }
 }
 

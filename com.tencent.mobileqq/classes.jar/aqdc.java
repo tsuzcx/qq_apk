@@ -1,23 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-final class aqdc
-  implements DialogInterface.OnClickListener
+public class aqdc
 {
-  aqdc(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<aqcx> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqdc()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      aqcq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      paramDialogInterface.dismiss();
-      return;
-      aqcq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+      if ((paramObject instanceof aqdc))
+      {
+        paramObject = (aqdc)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
+        }
+      }
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 

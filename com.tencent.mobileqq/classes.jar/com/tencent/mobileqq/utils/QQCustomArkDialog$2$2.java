@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
-import bdfh;
-import bdfj;
+import bdjq;
+import bdjs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$2$2
   implements Runnable
 {
-  public QQCustomArkDialog$2$2(bdfj parambdfj) {}
+  public QQCustomArkDialog$2$2(bdjs parambdjs) {}
   
   public void run()
   {
-    if (bdfh.a(this.a.a) != null) {}
-    for (Activity localActivity = (Activity)bdfh.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (bdjq.a(this.a.a) != null) {}
+    for (Activity localActivity = (Activity)bdjq.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
       this.a.a.show();
       return;

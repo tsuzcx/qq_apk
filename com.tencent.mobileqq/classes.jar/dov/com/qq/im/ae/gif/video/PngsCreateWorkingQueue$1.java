@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.video;
 
-import blak;
-import blan;
+import bler;
+import bleu;
 
 public class PngsCreateWorkingQueue$1
   implements Runnable
 {
-  public PngsCreateWorkingQueue$1(blan paramblan, blak paramblak) {}
+  public PngsCreateWorkingQueue$1(bleu parambleu, bler parambler) {}
   
   public void run()
   {
-    blan.a(this.this$0, this.a);
+    bleu.a(this.this$0, this.a);
   }
 }
 

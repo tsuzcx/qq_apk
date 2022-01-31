@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class PreloadingFragment$9
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708781), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708793), 1).a();
   }
 }
 

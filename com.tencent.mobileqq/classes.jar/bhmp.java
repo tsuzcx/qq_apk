@@ -1,34 +1,27 @@
-public abstract interface bhmp
+import android.content.Intent;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+
+final class bhmp
+  implements bgnl
 {
-  public abstract void a(int paramInt);
+  bhmp(ShareState paramShareState, MiniAppProxy paramMiniAppProxy, bglv parambglv) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString);
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (9527 != paramInt1) {
+      return false;
+    }
+    bhmo.a(false);
+    bgnk.a().b(this);
+    paramInt1 = paramIntent.getIntExtra("more_item_id", -1);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareState.isShareInMiniProcess = paramIntent.getBooleanExtra("share_in_mini_process", false);
+    paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getMoreItemSelectedListener();
+    if (paramIntent != null) {
+      paramIntent.onMoreItemSelected(new bglw(this.jdField_a_of_type_Bglv), paramInt1);
+    }
+    return true;
+  }
 }
 
 

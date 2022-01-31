@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkch;
+import bkgo;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import org.json.JSONObject;
 
 class ChannelProxyImpl$4
-  implements bkch
+  implements bkgo
 {
   ChannelProxyImpl$4(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   

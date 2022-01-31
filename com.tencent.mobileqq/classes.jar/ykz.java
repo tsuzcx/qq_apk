@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public class ykz
-  implements View.OnClickListener
+final class ykz
+  implements TypeEvaluator<Matrix>
 {
-  public ykz(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
-  
-  public void onClick(View paramView)
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    yvu.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    yho.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131720479, new yla(this));
+    return null;
   }
 }
 

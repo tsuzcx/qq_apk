@@ -1,29 +1,18 @@
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+
 public class auvm
+  implements INetEventHandler
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  private int jdField_a_of_type_Int = -1;
   
-  public auvm(auvk paramauvk) {}
+  public auvm(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public boolean equals(Object paramObject)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof auvm))
-    {
-      paramObject = (auvm)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    int i = ndd.a();
+    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Int = i;
   }
 }
 

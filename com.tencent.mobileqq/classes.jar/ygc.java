@@ -1,44 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
 public class ygc
-  extends yge
+  implements Dispatcher.Dispatchable
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  public int a;
+  public Object a;
   
-  public ygc(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public ygc(int paramInt, Object... paramVarArgs)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-  }
-  
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 

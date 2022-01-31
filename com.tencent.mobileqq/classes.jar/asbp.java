@@ -1,16 +1,19 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 
-public class asbp
-  implements Handler.Callback
+class asbp
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public asbp(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  asbp(asbo paramasbo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    this.a.a(paramMessage);
-    return false;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    asbo.a(this.a);
   }
 }
 

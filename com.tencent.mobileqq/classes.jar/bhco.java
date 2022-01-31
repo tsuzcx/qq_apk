@@ -1,26 +1,64 @@
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.GdtJsonPbUtil;
+import java.util.List;
+import org.json.JSONObject;
+
 public class bhco
+  extends bhdw
 {
-  public int a;
-  public int b;
+  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
   
-  public int a()
+  public bhco(List<String> paramList)
   {
-    return this.a;
+    this.a.appids.set(paramList);
   }
   
-  public void a(int paramInt)
+  protected String a()
   {
-    this.a = paramInt;
+    return "mini_app_info";
   }
   
-  public int b()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    return this.b;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    try
+    {
+      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetRobotUinRsp != null)
+      {
+        paramArrayOfByte = GdtJsonPbUtil.pbToJson(localStGetRobotUinRsp);
+        if ((paramArrayOfByte instanceof JSONObject)) {
+          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
+        }
+      }
+      else
+      {
+        QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
+    }
+    return null;
   }
   
-  public void b(int paramInt)
+  protected byte[] a()
   {
-    this.b = paramInt;
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "BatchGetContact";
   }
 }
 

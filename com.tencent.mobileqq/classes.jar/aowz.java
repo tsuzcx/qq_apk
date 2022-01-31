@@ -1,63 +1,76 @@
-import android.util.SparseArray;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aowz
 {
-  private final SparseArray<BlockingQueue<aoxh>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private aoxq jdField_a_of_type_Aoxq;
-  private final BlockingQueue<aoxh> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public aowz(aoxq paramaoxq)
+  public static aowz a(aoko[] paramArrayOfaoko)
   {
-    this.jdField_a_of_type_Aoxq = paramaoxq;
-  }
-  
-  protected int a()
-  {
-    return 300;
-  }
-  
-  public aoxh a(int paramInt, Object paramObject)
-  {
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null) {
-      localObject = new LinkedBlockingQueue();
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
     }
-    localObject = (aoxh)((BlockingQueue)localObject).poll();
-    if (localObject == null)
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0))
     {
-      localObject = this.jdField_a_of_type_Aoxq.a(paramInt);
-      aozj.a("DanmakuFactory", new Object[] { localObject, " is created " });
+      paramArrayOfaoko = null;
+      return paramArrayOfaoko;
     }
+    aowz localaowz = new aowz();
     for (;;)
     {
-      ((aoxh)localObject).e();
-      ((aoxh)localObject).a(paramObject);
-      return localObject;
-      aozj.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfaoko = localaowz;
+        if (!localJSONObject.has("tencentDocAioSendEntry")) {
+          break;
+        }
+        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
+        if (localJSONObject.has("aioSendDocSwitch"))
+        {
+          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
+            localaowz.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          paramArrayOfaoko = localaowz;
+          if (!localJSONObject.has("webDocSelectorUrl")) {
+            break;
+          }
+          localaowz.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
+          return localaowz;
+        }
+      }
+      catch (JSONException paramArrayOfaoko)
+      {
+        paramArrayOfaoko.printStackTrace();
+        return localaowz;
+      }
+      bool = false;
     }
   }
   
-  public void a(aoxh paramaoxh)
+  public String a()
   {
-    int i = paramaoxh.a();
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null)
-    {
-      localObject = new LinkedBlockingQueue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
     }
-    if (a() > ((BlockingQueue)localObject).size()) {
-      ((BlockingQueue)localObject).add(paramaoxh);
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowz
  * JD-Core Version:    0.7.0.1
  */

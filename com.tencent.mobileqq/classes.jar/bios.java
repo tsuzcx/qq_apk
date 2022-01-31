@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.webbundle.sdk.IWebBundleRuntime;
+import com.tencent.webbundle.sdk.IWebBundleWebView;
+import cooperation.comic.webbundle.WebBundleWebView;
+import org.jetbrains.annotations.NotNull;
 
-class bios
-  implements DialogInterface.OnClickListener
+public class bios
+  extends IWebBundleRuntime
 {
-  bios(bioj parambioj, xwj paramxwj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bios(@NotNull Context paramContext)
   {
-    this.jdField_a_of_type_Xwj.a();
-    paramDialogInterface.dismiss();
+    super(paramContext);
+  }
+  
+  @NotNull
+  public IWebBundleWebView createWebView(@NotNull Context paramContext)
+  {
+    paramContext = new WebBundleWebView(paramContext);
+    WebSettings localWebSettings = paramContext.getSettings();
+    String str = localWebSettings.getUserAgentString();
+    if (paramContext.getX5WebViewExtension() != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localWebSettings.setUserAgentString(beka.a(str, "VipComic", bool));
+      return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bios
  * JD-Core Version:    0.7.0.1
  */

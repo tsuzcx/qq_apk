@@ -1,11 +1,29 @@
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import android.content.DialogInterface;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
 class bgxg
-  implements bgwz
+  extends bgwp
 {
-  private bgxg(bgxf parambgxf) {}
-  
-  public void a(long paramLong, double paramDouble)
+  bgxg(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    this.a.a = paramDouble;
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+  }
+  
+  protected bgwo a()
+  {
+    return new bgwo(2131694350, new bgxh(this));
+  }
+  
+  protected void a(DialogInterface paramDialogInterface)
+  {
+    a("expo");
+  }
+  
+  protected String b()
+  {
+    return "timeAlert";
   }
 }
 

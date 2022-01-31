@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import arev;
-import arew;
-import argf;
+import arje;
+import arjf;
+import arko;
 
 public class C2CFileModel$1$1
   implements Runnable
 {
-  public C2CFileModel$1$1(arew paramarew) {}
+  public C2CFileModel$1$1(arjf paramarjf) {}
   
   public void run()
   {

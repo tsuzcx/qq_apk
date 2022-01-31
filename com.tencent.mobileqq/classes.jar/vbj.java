@@ -1,24 +1,82 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
 public class vbj
-  extends une
+  extends RecyclerView.ItemDecoration
 {
-  public List<wkh> a = new ArrayList();
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public vbj(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
+  static
   {
-    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
-    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspProfileStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
-      this.a.add(new wkh(localFeedSeqInfo));
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+  }
+  
+  public vbj(Context paramContext)
+  {
+    this.jdField_a_of_type_Int = aepi.a(5.0F, paramContext.getResources());
+    this.b = aepi.a(16.0F, paramContext.getResources());
+    this.c = aepi.a(8.5F, paramContext.getResources());
+    this.d = aepi.a(3.0F, paramContext.getResources());
+    this.e = aepi.a(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
     }
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
+    {
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
+    }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

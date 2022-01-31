@@ -1,38 +1,59 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
 
 class bcsm
-  extends awfw
+  extends bcsl
 {
-  bcsm(bcsl parambcsl, aweu paramaweu, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
-  
-  public void a(int paramInt, awfd paramawfd)
+  bcsm(bcsf parambcsf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
-    }
-    paramawfd = new File(this.jdField_a_of_type_Aweu.c());
-    bcfr localbcfr = (bcfr)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.getManager(223);
-    if ((paramawfd.exists()) && (localbcfr != null))
-    {
-      localbcfr.a = 1;
-      localbcfr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
-      localbcfr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localbcfr.f();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    super(parambcsf);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.a).inflate(2131560403, null);
+    }
+    paramView = (bcsn)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
+    {
+      localObject = new bcsn(this);
+      ((bcsn)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371945));
+      ((bcsn)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377938));
+      ((bcsn)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131380086));
+      ((bcsn)localObject).b = ((TextView)localView.findViewById(2131380089));
+      ((bcsn)localObject).c = ((TextView)localView.findViewById(2131380090));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
+    }
+    ((bcsn)localObject).jdField_a_of_type_Int = paramInt;
+    ((bcsn)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((bcsn)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((bcsn)localObject).b.setText(paramTroopFeedItem.content);
+    ((bcsn)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = alud.a(2131715704) + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!bdnn.a(paramTroopFeedItem.ex_1))
+    {
+      ((bcsn)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
+    }
+    for (;;)
+    {
+      ((bcsn)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843227);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " " + alud.a(2131715700);
+      }
+      localView.setContentDescription(paramTroopFeedItem);
+      return localView;
+      ((bcsn)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
 }

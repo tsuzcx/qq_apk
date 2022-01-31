@@ -1,50 +1,22 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 
-public abstract class ydn<E>
-  extends RecyclerView.Adapter
+public class ydn
 {
-  public final ArrayList<E> a = new ArrayList();
+  public int a;
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
   
-  public void a()
+  public ydn(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.a.clear();
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  public void a(ArrayList<E> paramArrayList)
+  public ydn(CertifiedAccountMeta.StUser paramStUser)
   {
-    this.a.clear();
-    notifyDataSetChanged();
-    if (paramArrayList == null) {
-      return;
-    }
-    this.a.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(List<E> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.a.addAll(paramList);
-    notifyItemRangeInserted(this.a.size(), paramList.size());
-  }
-  
-  public ArrayList<E> b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return this.a.size();
-  }
-  
-  public int getItemCount()
-  {
-    return this.a.size();
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

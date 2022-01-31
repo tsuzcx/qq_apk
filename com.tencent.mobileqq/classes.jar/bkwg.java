@@ -1,8 +1,20 @@
-public abstract interface bkwg
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+
+class bkwg
+  implements View.OnTouchListener
 {
-  public abstract void a(bkvu parambkvu, int paramInt);
+  bkwg(bkvx parambkvx) {}
   
-  public abstract void a(bkvu parambkvu, boolean paramBoolean);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((bkvx.a(this.a) != null) && (bkvx.c(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bkvx.c(this.a), bkvx.a(this.a));
+    }
+    return true;
+  }
 }
 
 

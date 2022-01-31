@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class acsf
-  implements View.OnClickListener
+  extends ambs
 {
-  public acsf(FontSettingActivity paramFontSettingActivity) {}
+  public acsf(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (alnq.a(this.a, FontSettingActivity.a(this.a), true)) {
-      alnq.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
     }
-    this.a.finish();
+    if (paramInt == 1)
+    {
+      this.a.a.a(27, 2);
+      this.a.a.a(-1, null);
+      return;
+    }
+    this.a.a.k();
   }
 }
 

@@ -6,11 +6,11 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bghn;
-import bgki;
-import bgkk;
-import bglq;
-import bgte;
+import bglu;
+import bgop;
+import bgor;
+import bgpx;
+import bgxl;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -37,15 +37,15 @@ class AppBoxPlugin$MiniAppBox
   private String appId;
   private WeakReference<Activity> mActivity;
   private volatile boolean mIsRequestingAd;
-  private bghn mJsService;
+  private bglu mJsService;
   
-  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, bghn parambghn)
+  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, bglu parambglu)
   {
     this.mActivity = new WeakReference(paramActivity);
     this.appBoxId = paramInt;
     this.adUnitId = paramString1;
     this.appId = paramString2;
-    this.mJsService = parambghn;
+    this.mJsService = parambglu;
   }
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -56,7 +56,7 @@ class AppBoxPlugin$MiniAppBox
       }
     }
     label75:
-    for (paramString = bgki.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bgki.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
+    for (paramString = bgop.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bgop.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
     {
       paramString = paramString.toString();
       QMLog.i("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
@@ -88,7 +88,7 @@ class AppBoxPlugin$MiniAppBox
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = bgte.a().a();
+    String str3 = bgxl.a().a();
     if (TextUtils.isEmpty(this.appId))
     {
       QMLog.e("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
@@ -146,7 +146,7 @@ class AppBoxPlugin$MiniAppBox
       {
         str2 = ((MiniAppInfo)localObject3).via;
         str4 = AdUtil.getSpAdGdtCookie(j);
-        bglq.a("QZoneSetting", "MiniGameShareRate", 53);
+        bgpx.a("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
           break label463;
         }
@@ -226,9 +226,9 @@ class AppBoxPlugin$MiniAppBox
     this.mActivity = new WeakReference(paramActivity);
   }
   
-  void setJsService(bghn parambghn)
+  void setJsService(bglu parambglu)
   {
-    this.mJsService = parambghn;
+    this.mJsService = parambglu;
   }
   
   boolean show(int paramInt1, int paramInt2)
@@ -236,7 +236,7 @@ class AppBoxPlugin$MiniAppBox
     if (this.adBox == null) {
       return false;
     }
-    bgkk.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
+    bgor.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
     return true;
   }
 }

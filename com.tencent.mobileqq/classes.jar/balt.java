@@ -1,55 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 class balt
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  balt(balo parambalo) {}
+  balt(balm parambalm) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
-      }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      if ((this.a.b != null) && (this.a.b.size() > 3))
-      {
-        paramMessage = (String)this.a.b.get(3);
-        Drawable localDrawable = bdda.a(true);
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localQQAppInterface != null) {
-          bcxb.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-      return false;
-    }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
-    }
-    balo.a(this.a, paramMessage);
-    return false;
+    this.a.a.setText("");
+    this.a.c();
   }
 }
 

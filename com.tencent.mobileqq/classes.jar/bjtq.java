@@ -1,12 +1,17 @@
+import android.util.Printer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneThreadMonitor;
+
 public class bjtq
+  implements Printer
 {
-  public int a;
-  public int b;
+  public bjtq(QzoneThreadMonitor paramQzoneThreadMonitor) {}
   
-  public bjtq(int paramInt1, int paramInt2)
+  public void println(String paramString)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneThreadMonitor", 4, paramString);
+    }
   }
 }
 

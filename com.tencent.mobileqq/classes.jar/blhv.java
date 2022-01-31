@@ -1,13 +1,49 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
+import android.app.Activity;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import com.tencent.common.app.AppInterface;
+import dov.com.qq.im.ae.play.EditTextViewer;
+import dov.com.qq.im.ae.play.EditTextViewer.4.1;
 
-public abstract interface blhv
+public class blhv
+  extends bkzv
 {
-  public abstract void a(CMTime paramCMTime);
+  public blhv(EditTextViewer paramEditTextViewer, AppInterface paramAppInterface, String paramString) {}
   
-  public abstract void a(CMTimeRange paramCMTimeRange);
-  
-  public abstract void a(boolean paramBoolean);
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramBoolean)
+    {
+      bool1 = bool2;
+      if (paramGetFontDataRsp != null)
+      {
+        if (paramGetFontDataRsp.Code != 0) {
+          break label74;
+        }
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, this.jdField_a_of_type_JavaLangString);
+        bool1 = true;
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, paramGetFontDataRsp);
+      }
+    }
+    for (;;)
+    {
+      EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer).runOnUiThread(new EditTextViewer.4.1(this, bool1));
+      return;
+      label74:
+      if (paramGetFontDataRsp.Code == -10002)
+      {
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689851);
+        bool1 = bool2;
+      }
+      else
+      {
+        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689853);
+        bool1 = bool2;
+      }
+    }
+  }
 }
 
 

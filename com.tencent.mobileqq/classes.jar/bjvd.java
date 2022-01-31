@@ -1,222 +1,249 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzonePluginProxyActivity;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bjvd
-  extends WebViewPlugin
 {
-  public static String a = "QZFamousUserHome";
-  public static String b = "usermoodlist";
-  public static String c = "useralbum";
-  public static String d = "userhome";
-  public static String e = "openRedPocket";
-  public static String f = "famous";
-  public static String g = "key_uin";
-  public static String h = "key_nickname";
+  private static bjvd jdField_a_of_type_Bjvd;
+  private String jdField_a_of_type_JavaLangString;
+  private final ConcurrentHashMap<String, Set<String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String jdField_b_of_type_JavaLangString;
+  private final ConcurrentHashMap<String, Set<String>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bjvd()
+  public static bjvd a()
   {
-    this.mPluginNameSpace = a;
+    if (jdField_a_of_type_Bjvd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bjvd == null) {
+        jdField_a_of_type_Bjvd = new bjvd();
+      }
+      return jdField_a_of_type_Bjvd;
+    }
+    finally {}
   }
   
-  private void a(String... paramVarArgs)
+  private void a(String paramString, ConcurrentHashMap<String, Set<String>> paramConcurrentHashMap)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      int i;
+      Object localObject;
+      int j;
+      String str;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        if ((paramString == null) || (paramString.length() <= 0)) {
+          break label198;
+        }
+        paramConcurrentHashMap.clear();
+        int m = paramString.length();
+        i = 0;
+        if (i >= m) {
+          break label197;
+        }
+        localObject = paramString.optJSONObject(i);
+        JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("schema");
+        JSONArray localJSONArray2 = ((JSONObject)localObject).optJSONArray("match");
+        int n = localJSONArray2.length();
+        j = 0;
+        if (j >= n) {
+          break label225;
+        }
+        str = localJSONArray2.optString(j);
+        Set localSet = (Set)paramConcurrentHashMap.get(str);
+        localObject = localSet;
+        if (localSet == null) {
+          localObject = new HashSet(20);
+        }
+        int i1 = localJSONArray1.length();
+        int k = 0;
+        if (k >= i1) {
+          break label207;
+        }
+        ((Set)localObject).add(localJSONArray1.optString(k));
+        k += 1;
+        continue;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QzoneAuthorizeConfig", 2, "Js Api Config JSONArray error!", paramString);
+        }
+        paramString = null;
+        continue;
+      }
+      QLog.e("QzoneAuthorizeConfig", 1, "get Js Api Config From jsApiBlackString is empty!");
+      label197:
+      return;
+      label198:
+      QLog.e("QzoneAuthorizeConfig", 1, "Js Api Config JSONArray From jsApiBlackString is empty");
+      return;
+      label207:
+      paramConcurrentHashMap.put(str, localObject);
+      j += 1;
+      continue;
+      label225:
+      i += 1;
+    }
+  }
+  
+  public static boolean c(String paramString1, String paramString2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while ("*".equals(paramString1));
+      if (!"*.*".equals(paramString1)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramString2.indexOf('.') != -1);
+    return false;
+    if (paramString1.startsWith("*")) {
+      return paramString2.endsWith(paramString1.substring(1));
+    }
+    if (paramString1.endsWith("*")) {
+      return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
+    }
+    return paramString2.equals(paramString1);
+  }
+  
+  public boolean a(String paramString1, String paramString2)
   {
     for (;;)
     {
-      Object localObject;
-      int i;
-      int j;
-      String str;
-      Activity localActivity;
       try
       {
-        localObject = new JSONObject(paramVarArgs[0]);
-        long l = ((JSONObject)localObject).getLong("uin");
-        if (!((JSONObject)localObject).has("actiontype")) {
-          break label362;
+        paramString1 = Uri.parse(paramString1);
+        Object localObject1 = paramString1.getScheme();
+        if ((!((String)localObject1).equals("http")) && (!((String)localObject1).equals("https"))) {
+          return false;
         }
-        i = ((JSONObject)localObject).getInt("actiontype");
-        if (!((JSONObject)localObject).has("actionurl")) {
-          break label367;
-        }
-        paramVarArgs = ((JSONObject)localObject).optString("actionurl");
-        if (!((JSONObject)localObject).has("cover_type")) {
-          break label373;
-        }
-        j = ((JSONObject)localObject).getInt("cover_type");
-        if (!((JSONObject)localObject).has("action_url")) {
-          break label378;
-        }
-        str = ((JSONObject)localObject).optString("action_url");
-        if (!((JSONObject)localObject).has("autoShowTimeLine")) {
-          break label385;
-        }
-        localObject = ((JSONObject)localObject).optString("autoShowTimeLine");
-        boolean bool = "1".equals(localObject);
-        localObject = new Intent();
-        localActivity = this.mRuntime.a();
-        if ((35 == i) && (paramVarArgs != null) && (paramVarArgs.length() > 0))
+        localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "jsapiblacklist", "");
+        if (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString))
         {
-          if ((localActivity != null) && ((localActivity instanceof bjve)) && (((bjve)localActivity).a())) {
-            return;
+          a((String)localObject1, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+          this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneAuthorizeConfig", 1, this.jdField_a_of_type_JavaLangString);
           }
-          str = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
-          ((Intent)localObject).putExtra("famous_space_webview_url", paramVarArgs);
-          paramVarArgs = str;
-          QzonePluginProxyActivity.a((Intent)localObject, paramVarArgs);
-          ((Intent)localObject).putExtra("qqid", l);
-          ((Intent)localObject).putExtra("refer", f);
-          ((Intent)localObject).putExtra("autoShowTimeLine", bool);
-          if (bool) {
-            ((Intent)localObject).setFlags(335544320);
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) {
+          return true;
+        }
+        localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
+        if (((Set)localObject1).size() == 0) {
+          return true;
+        }
+        paramString1 = paramString1.getHost();
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramString1 = paramString1.toLowerCase();
+          localObject1 = ((Set)localObject1).iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = (String)((Iterator)localObject1).next();
+            if (c((String)localObject2, paramString1))
+            {
+              localObject2 = (Set)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+              if ((localObject2 != null) && (((Set)localObject2).size() != 0))
+              {
+                localObject2 = ((Set)localObject2).iterator();
+                if (((Iterator)localObject2).hasNext())
+                {
+                  boolean bool = c((String)((Iterator)localObject2).next(), paramString2);
+                  if (bool) {
+                    return false;
+                  }
+                }
+              }
+            }
           }
-          if ((localActivity == null) || ((!(localActivity instanceof bjve)) && (!(localActivity instanceof BasePluginActivity)))) {
-            break label343;
+          else
+          {
+            return true;
           }
-          ((Intent)localObject).setClassName(localActivity, paramVarArgs);
-          localActivity.startActivity((Intent)localObject);
-          return;
         }
       }
-      catch (JSONException paramVarArgs)
+      catch (Exception paramString1)
       {
-        paramVarArgs.printStackTrace();
-        return;
-      }
-      if ((j == 35) && (str != null) && (str.length() > 0))
-      {
-        paramVarArgs = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
-        ((Intent)localObject).putExtra("famous_space_webview_url", str);
-      }
-      else
-      {
-        paramVarArgs = "com.qzone.homepage.ui.activity.QZoneUserHomeActivity";
-        ((Intent)localObject).setFlags(67108864);
-        continue;
-        label343:
-        QzonePluginProxyActivity.a(localActivity, this.mRuntime.a().getAccount(), (Intent)localObject, 0);
-        return;
-        label362:
-        i = 0;
-        continue;
-        label367:
-        paramVarArgs = "";
-        continue;
-        label373:
-        j = 0;
-        continue;
-        label378:
-        str = "";
-        continue;
-        label385:
-        localObject = "0";
+        QLog.e("QzoneAuthorizeConfig", 1, "hasJsApiRight()", paramString1);
+        return true;
       }
     }
   }
   
-  private void b(String... paramVarArgs)
+  public boolean b(String paramString1, String paramString2)
   {
+    Object localObject1 = paramString1;
     try
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      long l = paramVarArgs.getLong("uin");
-      paramVarArgs = paramVarArgs.getString("nick");
-      Intent localIntent = new Intent();
-      QzonePluginProxyActivity.a(localIntent, "com.qzone.homepage.ui.activity.QzoneMoodListActivity");
-      localIntent.putExtra(g, l);
-      if (!TextUtils.isEmpty(paramVarArgs)) {
-        localIntent.putExtra(h, paramVarArgs);
+      if (TextUtils.isEmpty(paramString1)) {
+        localObject1 = "null";
       }
-      localIntent.putExtra("refer", f);
-      QzonePluginProxyActivity.a(this.mRuntime.a(), this.mRuntime.a().getAccount(), localIntent, 0);
-      return;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-  }
-  
-  private void c(String... paramVarArgs)
-  {
-    try
-    {
-      long l = new JSONObject(paramVarArgs[0]).getLong("uin");
-      paramVarArgs = new Intent();
-      QzonePluginProxyActivity.a(paramVarArgs, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
-      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131718026));
-      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131718107));
-      paramVarArgs.putExtra("key_album_owner_uin", l);
-      paramVarArgs.putExtra("key_selected_tab", 0);
-      paramVarArgs.putExtra("refer", f);
-      QzonePluginProxyActivity.a(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramVarArgs, 0);
-      return;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!a.equals(paramString2)) {}
-    do
-    {
+      paramString1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "schemablacklist", "");
+      if (!paramString1.equals(this.jdField_b_of_type_JavaLangString))
+      {
+        a(paramString1, this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+        this.jdField_b_of_type_JavaLangString = paramString1;
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAuthorizeConfig", 1, this.jdField_b_of_type_JavaLangString);
+        }
+      }
+      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) {
+        return true;
+      }
+      Object localObject2 = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
+      if (((Set)localObject2).size() == 0) {
+        return true;
+      }
+      paramString1 = ((String)localObject1).toLowerCase();
+      localObject1 = ((Set)localObject2).iterator();
+      boolean bool;
+      do
+      {
+        while (!((Iterator)localObject2).hasNext())
+        {
+          do
+          {
+            do
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+              localObject2 = (String)((Iterator)localObject1).next();
+            } while (!c((String)localObject2, paramString1));
+            localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+          } while ((localObject2 == null) || (((Set)localObject2).size() == 0));
+          localObject2 = ((Set)localObject2).iterator();
+        }
+        bool = c((String)((Iterator)localObject2).next(), paramString2);
+      } while (!bool);
       return false;
-      if (paramString3.equals(b))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          b(paramVarArgs);
-        }
-        return true;
-      }
-      if (paramString3.equals(c))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          c(paramVarArgs);
-        }
-        return true;
-      }
-      if (paramString3.equals(d))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          a(paramVarArgs);
-        }
-        return true;
-      }
-    } while (!paramString3.equals(e));
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      l = Long.parseLong(paramVarArgs[0]);
-      if (l != 0L)
-      {
-        this.mRuntime.a();
-        paramJsBridgeListener = new Intent();
-        paramJsBridgeListener.setAction("qzoneGrapRedPocket");
-        paramJsBridgeListener.putExtra("uin", l);
-        if (this.mRuntime.a() != null) {
-          this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
-        }
-      }
-      return true;
     }
-    catch (Exception paramJsBridgeListener)
+    catch (Exception paramString1)
     {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        long l = 0L;
-      }
+      QLog.e("QzoneAuthorizeConfig", 1, "hasSchemeRight()", paramString1);
     }
+    return true;
   }
 }
 

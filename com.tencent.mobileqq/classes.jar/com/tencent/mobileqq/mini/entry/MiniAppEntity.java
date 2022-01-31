@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class MiniAppEntity
-  extends awbv
+  extends awge
 {
   public static final String TAG = "MiniAppEntity";
-  @awdj
+  @awhs
   public String appId;
   public byte[] appInfo;
   public String name;

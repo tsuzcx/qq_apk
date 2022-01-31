@@ -1,54 +1,30 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
+import org.json.JSONArray;
 
-public final class alfi
-  implements absf
+class alfi
+  implements aleg
 {
-  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
+  alfi(alfe paramalfe, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
   
-  public alfi(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
-  
-  private String[] a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
-  }
-  
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
-    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new alfl(this)), 8, null, false);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
-    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new alfj(this)), 8, null, false);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
-    try
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.jdField_a_of_type_Alfe;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
     {
-      String str = paramJSONObject.optString("openid");
-      paramJSONObject = paramJSONObject.optString("access_token");
-      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
-      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new alfk(this)), 8, null, false);
+      localObject = alfe.a((alfe)localObject, 6, str, paramInt);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
+      }
+      this.jdField_a_of_type_Alfe.a(this.b, alud.a(2131700886), this.jdField_a_of_type_OrgJsonJSONArray);
       return;
     }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
-    }
+    alfe.a(this.jdField_a_of_type_Alfe, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

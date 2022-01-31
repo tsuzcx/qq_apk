@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayyi;
-import azab;
-import azac;
-import azgk;
+import azcr;
+import azek;
+import azel;
+import azkt;
 import java.io.File;
 
 public final class PendantVersionManager$1
@@ -11,10 +11,10 @@ public final class PendantVersionManager$1
 {
   public void run()
   {
-    String str1 = azgk.a(VideoEnvironment.a());
-    String str2 = ayyi.a();
+    String str1 = azkt.a(VideoEnvironment.a());
+    String str2 = azcr.a();
     File[] arrayOfFile = new File(str1).listFiles();
-    int i = ayyi.a().length;
+    int i = azcr.a().length;
     int j;
     Object localObject1;
     Object localObject2;
@@ -34,10 +34,10 @@ public final class PendantVersionManager$1
           k += 1;
           break;
           localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!ayyi.b((String)localObject2)))
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!azcr.b((String)localObject2)))
           {
-            localObject3 = azab.a((String)localObject2);
-            m = ((azac)localObject3).a();
+            localObject3 = azek.a((String)localObject2);
+            m = ((azel)localObject3).a();
             if (m == 0) {
               break label218;
             }
@@ -49,7 +49,7 @@ public final class PendantVersionManager$1
           }
         }
         label218:
-        localObject3 = ((azac)localObject3).b();
+        localObject3 = ((azel)localObject3).b();
       }
     }
     label418:

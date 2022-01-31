@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayqh
-  extends ayox
+class ayqh
+  implements View.OnClickListener
 {
-  public final ayqi a;
+  ayqh(ayqe paramayqe) {}
   
-  public ayqh(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new ayqi(paramQQAppInterface);
-  }
-  
-  public Comparator<ayjh> a()
-  {
-    return this.a;
+    ayqe.a(this.a).a(paramView);
   }
 }
 

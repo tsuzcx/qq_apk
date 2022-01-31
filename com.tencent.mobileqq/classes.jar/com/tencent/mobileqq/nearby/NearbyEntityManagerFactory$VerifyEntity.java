@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import awbv;
+import awge;
 
 public class NearbyEntityManagerFactory$VerifyEntity
-  extends awbv
+  extends awge
 {
   public String flags = "nearby_verify_entity";
   public String name = "";

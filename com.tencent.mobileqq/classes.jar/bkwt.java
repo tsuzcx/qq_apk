@@ -1,6 +1,22 @@
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
 class bkwt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private static bkwr a = new bkwr(null);
+  bkwt(bkwr parambkwr) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    paramCompoundButton = bkwr.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

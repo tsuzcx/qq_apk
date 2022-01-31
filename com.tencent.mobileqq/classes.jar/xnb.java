@@ -1,13 +1,24 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.qphone.base.util.QLog;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface xnb
+class xnb
+  extends blts
 {
-  String a();
+  xnb(xna paramxna) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
+    }
+  }
 }
 
 

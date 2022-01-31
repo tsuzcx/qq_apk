@@ -2,12 +2,12 @@ package com.tencent.biz.webviewplugin;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import zab;
+import zeq;
 
 public class OfflineWebResManager$1
   implements Runnable
 {
-  public OfflineWebResManager$1(zab paramzab, SharedPreferences paramSharedPreferences) {}
+  public OfflineWebResManager$1(zeq paramzeq, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {

@@ -277,18 +277,18 @@ public class mgb
     if (paramBoolean)
     {
       if (this.jdField_b_of_type_Boolean) {}
-      for (i = 2130841617;; i = 2130841616)
+      for (i = 2130841630;; i = 2130841629)
       {
         paramImageView.setImageResource(i);
-        paramImageView.setContentDescription(alpo.a(2131705532));
+        paramImageView.setContentDescription(alud.a(2131705544));
         return;
       }
     }
     if (this.jdField_b_of_type_Boolean) {}
-    for (int i = 2130841619;; i = 2130841618)
+    for (int i = 2130841632;; i = 2130841631)
     {
       paramImageView.setImageResource(i);
-      paramImageView.setContentDescription(alpo.a(2131705534));
+      paramImageView.setContentDescription(alud.a(2131705546));
       return;
     }
   }

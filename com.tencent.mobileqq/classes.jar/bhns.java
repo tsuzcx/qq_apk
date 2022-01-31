@@ -1,29 +1,55 @@
-import java.util.List;
+import java.lang.reflect.Field;
 
 public class bhns
 {
-  public static boolean a(int paramInt, List paramList)
+  public static Object a(Object paramObject, String paramString)
   {
-    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
+    try
+    {
+      paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalAccessException paramObject) {}
+    return null;
   }
   
-  public static <T> boolean a(T[] paramArrayOfT, T paramT)
+  public static Object b(Object paramObject, String paramString)
   {
-    if ((paramArrayOfT == null) || (paramT == null)) {}
-    for (;;)
+    try
     {
-      return false;
-      int j = paramArrayOfT.length;
+      String[] arrayOfString = paramString.split("\\.");
+      int j = arrayOfString.length;
       int i = 0;
-      while (i < j)
+      for (;;)
       {
-        T ? = paramArrayOfT[i];
-        if ((? != null) && (?.equals(paramT))) {
-          return true;
+        paramString = paramObject;
+        if (i >= j) {
+          break;
         }
+        paramString = arrayOfString[i];
+        paramObject = paramObject.getClass().getField(paramString).get(paramObject);
         i += 1;
       }
+      return null;
     }
+    catch (IllegalAccessException paramObject)
+    {
+      paramString = null;
+      return paramString;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (NoSuchFieldException paramObject) {}
   }
 }
 

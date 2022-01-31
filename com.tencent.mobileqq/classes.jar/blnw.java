@@ -1,9 +1,17 @@
-import dov.com.qq.im.capture.data.TemplateData;
-import java.util.List;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFiltersManager.4;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface blnw
+public class blnw
+  implements blny
 {
-  public abstract void a(List<TemplateData> paramList);
+  public blnw(AEEditorFiltersManager.4 param4, int paramInt, AEEditorDownloadResBean paramAEEditorDownloadResBean, CountDownLatch paramCountDownLatch) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    bljn.b("AEEditorFiltersManager", "preDownloadAllRes---[finish] " + this.jdField_a_of_type_Int + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

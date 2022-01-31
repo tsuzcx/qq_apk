@@ -1,6 +1,16 @@
-public abstract interface agaz
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.AudioAnimationView;
+import com.tencent.mobileqq.widget.CircleProgressView;
+
+public class agaz
+  extends aeqi
 {
-  public abstract void a(int paramInt);
+  agaw jdField_a_of_type_Agaw;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
+  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
+  
+  public agaz(agat paramagat) {}
 }
 
 

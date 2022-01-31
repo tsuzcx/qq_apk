@@ -1,37 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import java.util.ArrayList;
+import com.tencent.TMG.utils.QLog;
 
-public class baua
-  extends Handler
+class baua
+  implements baug
 {
-  private ArrayList<Class<?>> filterList = new ArrayList();
+  private baua(baty parambaty) {}
   
-  public baua()
+  public void onResp(bavf parambavf)
   {
-    this.filterList.clear();
-  }
-  
-  public baua(Looper paramLooper)
-  {
-    super(paramLooper);
-    this.filterList.clear();
-  }
-  
-  public void addFilter(Class<?>... paramVarArgs)
-  {
-    int i = 0;
-    while (i < paramVarArgs.length)
+    synchronized (baty.a(this.a))
     {
-      this.filterList.add(paramVarArgs[i]);
-      i += 1;
+      baty.a(this.a, parambavf.jdField_a_of_type_Int);
+      baty.b(this.a, parambavf.b);
+      this.a.jdField_a_of_type_JavaLangString = parambavf.jdField_a_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Int = parambavf.c;
+      baty.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("HttpInterfaceForTVKImp", 0, "onResp, result = " + baty.a(this.a) + " , errorCode = " + baty.b(this.a) + " , mErrDesc = " + this.a.jdField_a_of_type_JavaLangString + " , mHttpCode = " + this.a.jdField_a_of_type_Int);
+      }
+      baty.a(this.a).notify();
+      return;
     }
   }
   
-  public ArrayList<Class<?>> getFilter()
-  {
-    return this.filterList;
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

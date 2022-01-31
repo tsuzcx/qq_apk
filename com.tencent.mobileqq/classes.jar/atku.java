@@ -1,71 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-class atku
-  extends atic
+public abstract interface atku
 {
-  atku(atkt paramatkt) {}
+  public abstract int a();
   
-  protected void a(int paramInt, String paramString)
-  {
-    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Atkz.jdField_a_of_type_Int), this.a.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
-    if ((!this.a.b) || (this.a.jdField_a_of_type_Atkz.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-      return;
-    }
-    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
-    if ((paramString == null) || (this.a.jdField_a_of_type_Atkz.b == 3))
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693954, 0).a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_Atkz.c != 2)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693956, 0).a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_Atkz.b == 4)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693959, 0).a();
-      return;
-    }
-    MusicInfo localMusicInfo = paramString.a();
-    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Atkz.jdField_a_of_type_Boolean, null);
-  }
+  public abstract void a();
   
-  protected void a(int paramInt, String paramString1, String paramString2)
-  {
-    atkt.a(this.a, paramInt, paramString1, paramString2);
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, int paramInt2);
   
-  protected void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramInt, paramString, paramBoolean);
-  }
+  public abstract void a(atkw paramatkw);
   
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    this.a.a(paramListenTogetherSession);
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
   
-  protected void a(String paramString, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramString, paramInt1, paramInt2);
-  }
+  public abstract int b();
   
-  protected void b(int paramInt, String paramString)
-  {
-    this.a.a(paramInt, paramString);
-  }
+  public abstract void b();
   
-  protected void h(int paramInt, String paramString)
-  {
-    this.a.b(paramInt, paramString);
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

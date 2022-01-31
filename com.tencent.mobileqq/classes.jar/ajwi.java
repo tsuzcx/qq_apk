@@ -1,13 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
 
-class ajwi
-  extends ajwl
+public class ajwi
+  implements azlj
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public ajwi(CameraFilterGLView paramCameraFilterGLView) {}
+  
+  public void a()
+  {
+    CameraFilterGLView.b(this.a);
+  }
 }
 
 

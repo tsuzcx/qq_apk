@@ -1,30 +1,47 @@
-class asut
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+
+public class asut
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public static asut a;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  asvx a;
+  public ImageView d;
   
-  static
+  public asut(HotPicPageView paramHotPicPageView, View paramView, asvx paramasvx)
   {
-    jdField_a_of_type_Asut = new asut(null);
+    super(paramView);
+    if (paramasvx != null)
+    {
+      this.a = paramasvx;
+      this.d = ((ImageView)paramView.findViewById(2131367783));
+      this.d.setTag("HotPicControlTag");
+      this.itemView.setOnClickListener(this);
+      this.itemView.setOnLongClickListener(this);
+      this.itemView.setOnTouchListener(paramasvx);
+    }
   }
   
-  public asut(String paramString)
+  public void onClick(View paramView)
   {
-    this(paramString, null, null);
+    if (this.a != null) {
+      this.a.a(paramView, getPosition());
+    }
   }
   
-  public asut(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    boolean bool = false;
+    if (this.a != null)
+    {
+      this.a.b(paramView, getPosition());
+      bool = true;
+    }
+    return bool;
   }
 }
 

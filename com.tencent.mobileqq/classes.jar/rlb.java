@@ -340,8 +340,8 @@ public class rlb
           if (!paramBoolean) {
             break label404;
           }
-          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130842660));
-          ((ImageView)paramString.get()).setContentDescription(alpo.a(2131716835));
+          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130842673));
+          ((ImageView)paramString.get()).setContentDescription(alud.a(2131716847));
         }
       }
       catch (Exception paramString)
@@ -350,8 +350,8 @@ public class rlb
       }
       return;
       label404:
-      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130842661));
-      ((ImageView)paramString.get()).setContentDescription(alpo.a(2131716836));
+      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130842674));
+      ((ImageView)paramString.get()).setContentDescription(alud.a(2131716848));
       break label464;
       label449:
       paramInt = n;

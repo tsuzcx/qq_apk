@@ -1,26 +1,23 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class adwy
-  extends Handler
+  implements INetEventHandler
 {
-  public adwy(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  adwy(adws paramadws) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (!paramBoolean)
     {
-    default: 
-      return;
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694778), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
     }
-    this.a.jdField_a_of_type_Akhm.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Akhm.notifyDataSetChanged();
-    this.a.b();
   }
 }
 

@@ -1,20 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
+import feedcloud.FeedCloudMeta.StNotice;
 
-class uhm
-  extends SimpleJob<Object>
+public class uhm
+  extends ugz
 {
-  uhm(uhl paramuhl, String paramString, boolean paramBoolean)
+  public uhm(int paramInt)
   {
-    super(paramString);
+    super(paramInt);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  void b(Context paramContext, View paramView) {}
+  
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
   {
-    this.jdField_a_of_type_Uhl.b(this.jdField_a_of_type_Boolean);
-    return null;
+    if ((this.b != null) && (this.a != null)) {
+      this.b.setText(this.a.getString(2131698350));
+    }
   }
 }
 

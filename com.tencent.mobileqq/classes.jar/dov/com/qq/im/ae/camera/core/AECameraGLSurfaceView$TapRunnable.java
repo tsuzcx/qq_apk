@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkov;
+import bktc;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class AECameraGLSurfaceView$TapRunnable
@@ -19,7 +19,7 @@ class AECameraGLSurfaceView$TapRunnable
   
   public void run()
   {
-    ((bkov)AECameraGLSurfaceView.a(this.this$0)).a().setTouchTriggerEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b);
+    ((bktc)AECameraGLSurfaceView.a(this.this$0)).a().setTouchTriggerEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b);
   }
 }
 

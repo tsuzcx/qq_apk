@@ -118,7 +118,7 @@ public class swc
         try
         {
           if (this.jdField_a_of_type_AndroidOsHandler == null) {
-            this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
+            this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
           }
           Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 101, paramString).sendToTarget();
           return;
@@ -217,7 +217,7 @@ public class swc
         if ((localObject != null) && (((String)localObject).length() != 0))
         {
           paramMessage.remove("qb_param_url");
-          aqrb.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, paramMessage);
+          aqvk.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, paramMessage);
         }
       }
     }

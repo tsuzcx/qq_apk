@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.theme;
 
-import aubp;
-import bake;
-import bakf;
+import aufy;
+import baon;
+import baoo;
 
 public class ThemeIPCModule$2$1
   implements Runnable
 {
-  public ThemeIPCModule$2$1(bake parambake, bakf parambakf) {}
+  public ThemeIPCModule$2$1(baon parambaon, baoo parambaoo) {}
   
   public void run()
   {

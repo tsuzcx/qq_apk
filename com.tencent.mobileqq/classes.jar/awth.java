@@ -1,13 +1,21 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.XEditTextEx;
 
 public class awth
+  extends Editable.Factory
 {
-  public ByteArrayOutputStream a;
-  public File a;
-  public FileOutputStream a;
-  public String a;
+  public awth(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof bane)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bane(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
+  }
 }
 
 

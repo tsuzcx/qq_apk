@@ -1,35 +1,16 @@
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bhzm
-  extends bhzs
+public class bhzm
+  implements View.OnClickListener
 {
-  bhzm(bhzk parambhzk, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    super(parambhzk, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
+  public bhzm(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Bhzk.mCallback.clearView(this.jdField_a_of_type_Bhzk.mRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-      while (this.jdField_a_of_type_Bhzk.mOverdrawChild == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
-      {
-        this.jdField_a_of_type_Bhzk.removeChildDrawingOrderCallbackIfNecessary(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        return;
-        this.jdField_a_of_type_Bhzk.mPendingCleanup.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_Bhzk.postDispatchSwipe(this, this.jdField_a_of_type_Int);
-        }
-      }
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
     }
   }
 }

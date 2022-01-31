@@ -1,35 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import java.io.File;
 
-public class asvs
-  extends Handler
+class asvs
+  implements asvh
 {
-  public asvs(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  asvs(asvr paramasvr, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(asvi paramasvi)
   {
-    int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
-      return;
-    }
-    GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
-    paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
+    if (paramasvi.a)
     {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-      i += 8;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasvi.a();
+      asvr.a(this.jdField_a_of_type_Asvr, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaIoFile.delete();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
   }
 }
 

@@ -1,26 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class yaq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  yaq(yan paramyan) {}
+  yaq(yap paramyap) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a() != null)
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    }
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), yap.a(this.a))))
     {
-      paramView = this.a.a().a();
-      if (paramView != null) {
-        this.a.d(paramView);
+      if (yap.a(this.a) != null) {
+        yap.a(this.a).removeMessages(108);
+      }
+      if (yap.a(this.a) != null) {
+        yap.a(this.a).a();
       }
     }
-    else
-    {
-      return;
-    }
-    QQToast.a(yan.a(this.a), 1, alpo.a(2131715031), 0).a();
   }
 }
 

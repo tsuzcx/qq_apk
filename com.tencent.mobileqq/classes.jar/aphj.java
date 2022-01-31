@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class aphj
-  extends aphk
+  implements Animator.AnimatorListener
 {
-  public aphj(QQAppInterface paramQQAppInterface)
+  public aphj(DataReportViewer paramDataReportViewer) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(e(), paramQQAppInterface);
+    this.a.a.setVisibility(0);
+    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
+    paramAnimator.setFillAfter(true);
+    paramAnimator.setDuration(200L);
+    this.a.a.startAnimation(paramAnimator);
+    paramAnimator.setAnimationListener(new aphk(this));
   }
   
-  public static String e()
-  {
-    if (lnz.f() <= 2) {
-      return "qq.android.qav.so_665";
-    }
-    return "qq.android.qav.sov9_828";
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public Class<? extends XmlData> a()
-  {
-    return QavSoData.class;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

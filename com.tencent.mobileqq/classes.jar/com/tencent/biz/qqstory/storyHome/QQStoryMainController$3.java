@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.storyHome;
 
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.app.QQAppInterface;
-import uhk;
+import ult;
 
 class QQStoryMainController$3
   implements Runnable
@@ -11,7 +11,7 @@ class QQStoryMainController$3
   
   public void run()
   {
-    ((uhk)QQStoryContext.a().a(98)).notifyUI(2001, true, null);
+    ((ult)QQStoryContext.a().a(98)).notifyUI(2001, true, null);
   }
 }
 

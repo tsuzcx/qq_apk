@@ -1,76 +1,58 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aovn
+  extends aouf<aovm>
 {
-  protected byte a;
-  protected int a;
-  protected long a;
-  protected String a;
-  protected short a;
-  protected boolean a;
-  protected byte[] a;
-  public String b;
-  protected String c;
-  protected String d;
-  protected String e = "";
-  protected String f = "";
-  
-  public aovn(aovm paramaovm)
+  public static aovm a()
   {
-    this.jdField_a_of_type_Byte = 3;
-    this.jdField_a_of_type_Boolean = true;
+    return (aovm)aoks.a().a(563);
   }
   
-  public void a(DataInputStream paramDataInputStream)
+  public int a()
   {
-    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
-    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
-    this.b = paramDataInputStream.readUTF();
-    this.d = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
-    this.c = paramDataInputStream.readUTF();
-    this.e = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
+    return 563;
   }
   
-  public void a(DataOutputStream paramDataOutputStream)
+  @NonNull
+  public aovm a(@NonNull aoko[] paramArrayOfaoko)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    aovm localaovm = new aovm();
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (paramArrayOfaoko != null) {}
+    try
+    {
+      if (!"".equals(paramArrayOfaoko))
+      {
+        paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
+        localaovm.a = paramArrayOfaoko.getString("musicBoxUrl");
+        localaovm.b = paramArrayOfaoko.getString("playerUrl");
+      }
+      return localaovm;
     }
-    if (this.b == null) {
-      this.b = "";
+    catch (JSONException paramArrayOfaoko)
+    {
+      paramArrayOfaoko.printStackTrace();
     }
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
-    paramDataOutputStream.writeUTF(this.b);
-    paramDataOutputStream.writeUTF(this.d);
-    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
-    paramDataOutputStream.writeUTF(this.c);
-    paramDataOutputStream.writeUTF(this.e);
-    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
+    return localaovm;
   }
   
-  public void b(DataInputStream paramDataInputStream)
+  public Class<aovm> a()
   {
-    a(paramDataInputStream);
-    this.f = paramDataInputStream.readUTF();
+    return aovm.class;
   }
   
-  public void b(DataOutputStream paramDataOutputStream)
+  @NonNull
+  public aovm b()
   {
-    a(paramDataOutputStream);
-    if (this.f == null) {
-      this.f = "";
-    }
-    paramDataOutputStream.writeUTF(this.f);
+    return new aovm();
+  }
+  
+  @NonNull
+  public aovm c()
+  {
+    return new aovm();
   }
 }
 

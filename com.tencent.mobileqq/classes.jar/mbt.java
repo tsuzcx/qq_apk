@@ -314,7 +314,7 @@ public class mbt
         QLog.w("SmallScreenUtils", 1, "actionOn isFloatWindowOpAllowed, isFloatWindowOpAllowed[" + c(paramContext) + "], isCalling[" + muz.d(paramContext) + "], isHome[" + a(paramContext) + "], isNeedStartDialog[" + paramBoolean1 + "], seq[" + paramLong + "]");
       }
       if (a(paramContext, paramBoolean1, paramString, paramBoolean2)) {
-        azmj.b(null, "CliOper", "", "", "0X80057D8", "0X80057D8", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X80057D8", "0X80057D8", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -348,7 +348,7 @@ public class mbt
     for (;;)
     {
       if ((paramlid != null) && (c(paramContext))) {
-        azmj.b(null, "CliOper", "", "", paramlid, paramlid, 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", paramlid, paramlid, 0, 0, "", "", "", "");
       }
       return;
       if (paramlid.jdField_a_of_type_Lie.jdField_b_of_type_Int == 5)
@@ -437,7 +437,7 @@ public class mbt
     AnimationSet localAnimationSet;
     if (paramView != null)
     {
-      localObject = paramView.getTag(2131372541);
+      localObject = paramView.getTag(2131372567);
       if (localObject != null) {
         break label190;
       }
@@ -445,7 +445,7 @@ public class mbt
       if ((!paramBoolean2) || (!bool)) {
         break label236;
       }
-      localObject = paramView.getTag(2131372542);
+      localObject = paramView.getTag(2131372568);
       if (localObject != null) {
         break label203;
       }
@@ -476,8 +476,8 @@ public class mbt
       localAnimationSet.setAnimationListener(new mbu(paramView, paramBoolean1));
       paramView.startAnimation(localAnimationSet);
       paramView.setVisibility(0);
-      paramView.setTag(2131372542, Boolean.valueOf(paramBoolean1));
-      paramView.setTag(2131372541, Boolean.valueOf(paramBoolean2));
+      paramView.setTag(2131372568, Boolean.valueOf(paramBoolean1));
+      paramView.setTag(2131372567, Boolean.valueOf(paramBoolean2));
       return;
       bool = ((Boolean)localObject).booleanValue();
       break;

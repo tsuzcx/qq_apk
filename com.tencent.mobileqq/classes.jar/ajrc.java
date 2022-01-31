@@ -1,22 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ajrc
-  implements MediaPlayer.OnCompletionListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ajrc(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public ajrc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
+    NewFlowCameraActivity.a(this.a, paramBoolean);
   }
 }
 

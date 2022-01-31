@@ -1,7 +1,7 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
 import NS_QQ_STORY_META.META.StMusic;
-import alpo;
+import alud;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -15,7 +15,7 @@ public class VsMusicItemInfo
   public String a;
   public boolean a;
   public String b;
-  public String c = alpo.a(2131717250);
+  public String c = alud.a(2131717262);
   
   public VsMusicItemInfo()
   {

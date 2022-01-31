@@ -1,66 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahwn
-  implements bhuy
+  extends Drawable
 {
-  public ahwn(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<Drawable> jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public ahwn(QQAppInterface paramQQAppInterface)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void a(List<Drawable> paramList, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = (paramInt * 2);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramView.a(l);
-      if (!bdee.g(this.a.getActivity())) {
-        break;
+      Drawable localDrawable = (Drawable)localIterator.next();
+      localDrawable = ((bduj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(localDrawable, this.jdField_a_of_type_Int);
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(0, 0, this.b, this.b);
+        localDrawable.draw(paramCanvas);
+        paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
       }
-      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
-      return true;
-    }
-    ChatHistoryTroopFileFragment.a(this.a, 1);
-    bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
     }
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView)
+  public int getOpacity()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
-    }
+    return -3;
   }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

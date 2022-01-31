@@ -1,23 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class adqq
-  implements Handler.Callback
+  implements Comparator<ChatMessage>
 {
-  public adqq(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public adqq(QQLSActivity paramQQLSActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    switch (paramMessage.what)
-    {
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
     }
-    for (;;)
-    {
-      return true;
-      paramMessage = new adqr(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
     }
+    return -1;
   }
 }
 

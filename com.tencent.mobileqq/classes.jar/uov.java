@@ -1,8 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
 
-public abstract interface uov
+public final class uov
 {
-  public abstract void a(long paramLong, String paramString, CommentLikeFeedItem paramCommentLikeFeedItem);
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<uou> a;
+  
+  public uov()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+  }
 }
 
 

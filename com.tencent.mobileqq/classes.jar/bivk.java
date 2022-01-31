@@ -1,20 +1,17 @@
-import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.ReaderSplashImpl.3.1;
+import android.view.View.OnClickListener;
 
-public class bivk
-  implements EnterCallback
+final class bivk
+  implements View.OnClickListener
 {
-  bivk(bivh parambivh) {}
+  bivk(Dialog paramDialog) {}
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
+  public void onClick(View paramView)
   {
-    bivh.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
+    if (this.a != null) {
+      this.a.dismiss();
+    }
   }
 }
 

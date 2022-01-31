@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import anwg;
-import anwq;
+import aoap;
+import aoaz;
 
 public class CameraManagerImpl$PreviewCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$PreviewCallbackForward$1(anwq paramanwq, byte[] paramArrayOfByte) {}
+  public CameraManagerImpl$PreviewCallbackForward$1(aoaz paramaoaz, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    anwq.a(this.this$0).a(this.a, anwq.a(this.this$0), 0);
+    aoaz.a(this.this$0).a(this.a, aoaz.a(this.this$0), 0);
   }
 }
 

@@ -917,22 +917,22 @@ public class TbsShareManager
     //   96: aload_0
     //   97: invokevirtual 492	com/tencent/smtt/sdk/TbsInstaller:getTbsCoreShareDir	(Landroid/content/Context;)Ljava/io/File;
     //   100: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   103: astore 8
+    //   103: astore 7
     //   105: aload_0
     //   106: invokevirtual 314	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   109: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   112: astore 7
+    //   112: astore 8
     //   114: aload_0
     //   115: invokestatic 497	com/tencent/smtt/utils/AppUtil:getAppVersionCode	(Landroid/content/Context;)I
     //   118: istore_2
     //   119: aload 6
     //   121: ldc 14
-    //   123: aload 7
+    //   123: aload 8
     //   125: invokevirtual 490	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   128: pop
     //   129: aload 6
     //   131: ldc 17
-    //   133: aload 8
+    //   133: aload 7
     //   135: invokevirtual 490	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   138: pop
     //   139: aload 6
@@ -1060,8 +1060,8 @@ public class TbsShareManager
     //   274	6	5	localObject6	Object
     //   288	32	5	localContext3	Context
     //   69	100	6	localProperties	java.util.Properties
-    //   112	12	7	str1	String
-    //   103	31	8	str2	String
+    //   103	31	7	str1	String
+    //   112	12	8	str2	String
     //   13	147	9	localFile	File
     // Exception table:
     //   from	to	target	type

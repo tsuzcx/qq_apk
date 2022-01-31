@@ -1,13 +1,4 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-public class bbcx
-{
-  public TextView a;
-  public bbcy a;
-  public URLImageView a;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbcx

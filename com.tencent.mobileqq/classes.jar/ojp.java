@@ -13,7 +13,7 @@ class ojp
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramViewBase.getEventAttachedData());
     QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
-    bcch.a(this.a.jdField_a_of_type_Omg.a(), 0, localArrayList, true, "", 1888);
+    bcgq.a(this.a.jdField_a_of_type_Omg.a(), 0, localArrayList, true, "", 1888);
     if (this.a.jdField_a_of_type_Omg.a() != null) {
       this.a.jdField_a_of_type_Omg.a().f(this.a.jdField_a_of_type_Omt);
     }

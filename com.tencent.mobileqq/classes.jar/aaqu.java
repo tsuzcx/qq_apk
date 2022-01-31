@@ -1,26 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aaqu
-  implements ValueAnimator.AnimatorUpdateListener
+class aaqu
+  implements EIPCResultCallback
 {
-  public aaqu(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
+  aaqu(aaqt paramaaqt, aaqw paramaaqw, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
-    aanp.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
-    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = ((int)f);
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_Aaqw != null)
+    {
+      str1 = this.jdField_a_of_type_Aaqw.a();
+      if (this.jdField_a_of_type_Aaqw != null) {
+        str2 = this.jdField_a_of_type_Aaqw.b();
+      }
+      if (paramEIPCResult == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      aase.b("GdtIPCManager", String.format("ClientToServerIPCModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Aaqt.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
+    }
   }
 }
 

@@ -1,34 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class vqk<T>
-  extends SimpleObserver<T>
+class vqk
+  implements vpu
 {
-  private vqk(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  vqk(vqj paramvqj) {}
   
-  public void onCancel()
+  public void a(ErrorMessage paramErrorMessage, List<vpm> paramList)
   {
-    super.onCancel();
-    wsv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    this.a.a.a(paramErrorMessage, paramList);
+    this.a.b();
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(List<vpn> paramList, boolean paramBoolean)
   {
-    super.onError(paramError);
-    wsv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onNext(T paramT)
-  {
-    super.onNext(paramT);
-    wsv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    this.a.a.a(paramList, paramBoolean);
+    this.a.b();
   }
 }
 

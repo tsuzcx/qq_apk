@@ -1,12 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class tva
-  implements DialogInterface.OnClickListener
+  implements uej
 {
-  tva(tuw paramtuw) {}
+  tva(tuz paramtuz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (tzy.a().d(57))
+    {
+      tzw.a(55, 3, tuz.a(this.a));
+      return;
+    }
+    tzs.a(55, 3, tuz.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (tzy.a().d(57))
+    {
+      tzw.a(54, 2, tuz.a(this.a));
+      return;
+    }
+    tzs.a(54, 2, tuz.a(this.a));
+  }
 }
 
 

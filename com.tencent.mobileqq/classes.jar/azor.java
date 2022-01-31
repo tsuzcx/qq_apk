@@ -1,7 +1,9 @@
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
+
 public final class azor
+  extends PluginRecoverReceiver
 {
-  public long a;
-  public Object a;
+  public void onRecver(String paramString) {}
 }
 
 

@@ -1,59 +1,83 @@
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class amgr
+public abstract class amgr
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  protected amgv a;
+  public QQAppInterface a;
+  protected Class<? extends awge> a;
+  protected ArrayList<amgu> a;
+  public ConcurrentHashMap<String, awge> a;
   
-  public static int a(String paramString)
+  public amgr(QQAppInterface paramQQAppInterface, amgv paramamgv, Class<? extends awge> paramClass)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amgv = paramamgv;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static String a(String paramString)
+  public awge a(String paramString)
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
+    return (awge)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
   
-  public static Map<String, Pair<String, Integer>> a()
+  protected String a(awge paramawge)
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
-      }
-      return jdField_a_of_type_JavaUtilMap;
+    return Long.toString(paramawge.getId());
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((amgu)localIterator.next()).a(paramInt);
     }
   }
   
-  private static void a()
+  public void a(awge paramawge)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
-    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
+    a(paramawge, 0, null);
+  }
+  
+  public abstract void a(awge paramawge, int paramInt, amgx paramamgx);
+  
+  protected abstract void b();
+  
+  public void b(awge paramawge)
+  {
+    b(paramawge, 0, null);
+  }
+  
+  public void b(awge paramawge, int paramInt, amgx paramamgx)
+  {
+    String str = a(paramawge);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramawge);
+    if (paramawge.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_Amgv.a(paramawge, 0, paramInt, paramamgx);
+      return;
+    }
+    this.jdField_a_of_type_Amgv.a(paramawge, 1, paramInt, paramamgx);
+  }
+  
+  public void c(awge paramawge)
+  {
+    c(paramawge, 0, null);
+  }
+  
+  public void c(awge paramawge, int paramInt, amgx paramamgx)
+  {
+    String str = a(paramawge);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    }
+    this.jdField_a_of_type_Amgv.a(paramawge, 2, paramInt, paramamgx);
   }
 }
 

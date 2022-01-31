@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import awga;
-import bamp;
-import batw;
-import baub;
-import bdda;
+import awkj;
+import baqy;
+import bayf;
+import bayk;
+import bdhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -81,13 +81,13 @@ class ReadInJoyDeliverUGCActivity$15
               break label458;
             }
             this.this$0.m();
-            ReadInJoyDeliverUGCActivity.a(this.this$0, 1, this.this$0.getString(2131718847));
+            ReadInJoyDeliverUGCActivity.a(this.this$0, 1, this.this$0.getString(2131718859));
             this.this$0.j();
           } while (!QLog.isColorLevel());
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic empty path!");
           return;
           this.this$0.m();
-          ReadInJoyDeliverUGCActivity.b(this.this$0, 1, this.this$0.getString(2131718847));
+          ReadInJoyDeliverUGCActivity.b(this.this$0, 1, this.this$0.getString(2131718859));
           this.this$0.j();
         } while (!QLog.isColorLevel());
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic oncommon error!");
@@ -98,7 +98,7 @@ class ReadInJoyDeliverUGCActivity$15
         }
         ReadInJoyDeliverUGCActivity.e(this.this$0, true);
         this.this$0.m();
-        ReadInJoyDeliverUGCActivity.c(this.this$0, 1, this.this$0.getString(2131718847));
+        ReadInJoyDeliverUGCActivity.c(this.this$0, 1, this.this$0.getString(2131718859));
         this.this$0.j();
       } while (!QLog.isColorLevel());
       QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic file not exist, path=" + str2);
@@ -116,7 +116,7 @@ class ReadInJoyDeliverUGCActivity$15
         try
         {
           ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          bdda.a(str2, (BitmapFactory.Options)localObject);
+          bdhj.a(str2, (BitmapFactory.Options)localObject);
           if (((BitmapFactory.Options)localObject).outHeight <= ((BitmapFactory.Options)localObject).outWidth) {
             continue;
           }
@@ -129,9 +129,9 @@ class ReadInJoyDeliverUGCActivity$15
         {
           int i;
           boolean bool2;
-          batw localbatw;
+          bayf localbayf;
           qpb localqpb;
-          baub localbaub;
+          bayk localbayk;
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "isNeedCompress error" + localException2.toString());
           continue;
           ReadInJoyDeliverUGCActivity.b(this.this$0).add(localCompressInfo.jdField_e_of_type_JavaLangString);
@@ -151,7 +151,7 @@ class ReadInJoyDeliverUGCActivity$15
         if (!ReadInJoyDeliverUGCActivity.c(this.this$0)) {
           break;
         }
-        bool2 = awga.a(localCompressInfo);
+        bool2 = awkj.a(localCompressInfo);
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "compress result= " + bool2);
         }
@@ -177,28 +177,28 @@ class ReadInJoyDeliverUGCActivity$15
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "afterCompress picture: w:" + localCompressInfo.d + "  h:" + localCompressInfo.jdField_e_of_type_Int + " size:" + l2 / 1024L + "kb");
         }
         ReadInJoyDeliverUGCActivity.a(this.this$0).d(this.jdField_a_of_type_Int, NetConnInfoCenter.getServerTimeMillis());
-        localbatw = this.this$0.app.a();
+        localbayf = this.this$0.app.a();
         localqpb = new qpb(this.this$0, this.this$0.getMainLooper());
-        localbaub = new baub();
+        localbayk = new bayk();
         if (!ReadInJoyDeliverUGCActivity.c(this.this$0)) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "doStartUploadPicposition" + this.jdField_a_of_type_Int);
         }
-        localqpb.addFilter(new Class[] { bamp.class });
-        localbatw.a(localqpb);
-        localbaub.jdField_a_of_type_Boolean = true;
-        localbaub.jdField_c_of_type_Int = 10;
-        localbaub.i = ((String)localObject);
-        localbaub.jdField_a_of_type_Long = this.jdField_a_of_type_Int;
-        localbaub.jdField_c_of_type_JavaLangString = "0";
-        localbaub.b = 24;
-        localbaub.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-        localbatw.a(localbaub);
+        localqpb.addFilter(new Class[] { baqy.class });
+        localbayf.a(localqpb);
+        localbayk.jdField_a_of_type_Boolean = true;
+        localbayk.jdField_c_of_type_Int = 10;
+        localbayk.i = ((String)localObject);
+        localbayk.jdField_a_of_type_Long = this.jdField_a_of_type_Int;
+        localbayk.jdField_c_of_type_JavaLangString = "0";
+        localbayk.b = 24;
+        localbayk.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+        localbayf.a(localbayk);
         localqpb.jdField_a_of_type_Boolean = true;
         ReadInJoyDeliverUGCActivity.d(this.this$0).add(localqpb);
-        ReadInJoyDeliverUGCActivity.e(this.this$0).add(localbaub);
+        ReadInJoyDeliverUGCActivity.e(this.this$0).add(localbayk);
         ReadInJoyDeliverUGCActivity.a(this.this$0).e(this.jdField_a_of_type_Int, NetConnInfoCenter.getServerTimeMillis());
         if (!bool1) {
           break;

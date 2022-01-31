@@ -1,36 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class arwi
-  implements awfy
+  implements aetk
 {
-  public arwi(ForwardMultServerShare.2 param2) {}
+  public arwi(FlashChatPanel paramFlashChatPanel) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public boolean onLongClick(View paramView)
   {
-    return null;
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
   }
   
-  public void a(awfz paramawfz)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramawfz != null) {
-      QLog.d(arwg.a(), 1, "requestImageShare updateMsg info =" + paramawfz);
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
     }
-  }
-  
-  public void b(awfz paramawfz)
-  {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramawfz);
-    QLog.d(arwg.a(), 1, new Object[] { "requestImageShare onSend result =", paramawfz, ", isTimeOut=", Boolean.valueOf(arwg.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == arwg.a(this.a.this$0).size())
-    {
-      arzy.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      arwg.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
-    }
+    return true;
   }
 }
 

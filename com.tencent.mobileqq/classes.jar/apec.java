@@ -1,25 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
-public class apec
-  implements Handler.Callback
+public final class apec
+  implements Parcelable.Creator
 {
-  private String a;
-  
-  public apec(String paramString)
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    this.a = paramString;
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public IPSiteModel.ComicRich[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    }
-    aurt.a(this.a, 1);
-    return true;
+    return new IPSiteModel.ComicRich[paramInt];
   }
 }
 

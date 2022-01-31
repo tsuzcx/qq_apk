@@ -1,13 +1,27 @@
-import android.content.DialogInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-class ajfu
-  extends bdco
+public class ajfu
+  implements Animation.AnimationListener
 {
-  ajfu(ajfr paramajfr) {}
+  public ajfu(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
+    }
   }
 }
 

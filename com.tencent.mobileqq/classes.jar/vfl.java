@@ -1,18 +1,10 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+import java.util.List;
 
-class vfl
-  extends veb
+public class vfl
 {
-  vfl(vez paramvez, StoryVideoItem paramStoryVideoItem, vgf paramvgf)
-  {
-    super(paramStoryVideoItem);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Vgf.a = ((String)a("result"));
-    return true;
-  }
+  public String a;
+  public List<xof> a = new ArrayList();
 }
 
 

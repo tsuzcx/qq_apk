@@ -1,68 +1,66 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aond
-  extends aofy<aone>
 {
-  public int a()
+  public int a;
+  public String a;
+  public JSONObject a;
+  
+  public aond()
   {
-    return 551;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
   }
   
-  @NonNull
-  public aone a(int paramInt)
+  public static aond a(String paramString)
   {
-    return new aone();
-  }
-  
-  @Nullable
-  public aone a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      return aone.a(paramArrayOfaogf[0].a);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
+    try
+    {
+      aond localaond = new aond();
+      localaond.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
+      return localaond;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
     }
     return null;
   }
   
-  public Class<aone> a()
+  public aond b(String paramString)
   {
-    return aone.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    aond localaond = new aond();
+    try
+    {
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      {
+        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
+        if (paramString != null)
+        {
+          localaond.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
+          localaond.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
+          return localaond;
+        }
+        localaond.jdField_a_of_type_Int = 1;
+        localaond.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+        return localaond;
+      }
     }
-  }
-  
-  public void a(aone paramaone)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramaone.toString());
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
+      }
+      localaond.jdField_a_of_type_Int = 1;
+      localaond.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
     }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return localaond;
   }
 }
 

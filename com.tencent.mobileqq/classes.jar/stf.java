@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class stf
-  implements bhyj
+  implements bicq
 {
   public stf(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   

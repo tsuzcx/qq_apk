@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aeun;
-import alpo;
+import aezc;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ class VoiceTextEditPanel$11
         return;
       }
     } while (VoiceTextEditPanel.a(this.this$0).get() != 4);
-    if (bdje.a(VoiceTextEditPanel.a(this.this$0)))
+    if (bdnn.a(VoiceTextEditPanel.a(this.this$0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceTextEditPanel", 2, "no word state= " + VoiceTextEditPanel.a(this.this$0).get());
@@ -51,7 +51,7 @@ class VoiceTextEditPanel$11
       }
       for (;;)
       {
-        QQToast.a(this.this$0.getContext(), alpo.a(2131717232), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(this.this$0.getContext(), alud.a(2131717244), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298914));
         return;
         this.this$0.setSendEnable(true);
       }

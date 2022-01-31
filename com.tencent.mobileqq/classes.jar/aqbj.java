@@ -1,24 +1,45 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class aqbj
-  extends AnimatorListenerAdapter
 {
-  public aqbj(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
+  public int a;
+  public String a;
+  public HashMap<String, aqbk> a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b = new ArrayList();
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l = 2;
+  public String l;
+  public int m = 50;
+  public String m;
+  public int n = 1;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public aqbj()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 

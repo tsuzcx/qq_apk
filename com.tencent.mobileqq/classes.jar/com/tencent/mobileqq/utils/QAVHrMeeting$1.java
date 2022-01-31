@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import almt;
-import almv;
+import alri;
+import alrk;
 import android.text.TextUtils;
-import bdfe;
-import bdff;
+import bdjn;
+import bdjo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public final class QAVHrMeeting$1
   implements Runnable
 {
-  public QAVHrMeeting$1(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, bdff parambdff) {}
+  public QAVHrMeeting$1(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, bdjo parambdjo) {}
   
   public void run()
   {
@@ -154,36 +154,36 @@ public final class QAVHrMeeting$1
           }
           localDefaultHttpClient.getConnectionManager().shutdown();
           AudioHelper.b("获取hr信息_rsp_" + this.c);
-          localObject4 = (almv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+          localObject4 = (alrk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
           if (TextUtils.equals(this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
           {
-            localObject6 = ((almv)localObject4).a(this.d);
+            localObject6 = ((alrk)localObject4).a(this.d);
             if ((localObject6 != null) && (((DiscussionInfo)localObject6).mSelfRight != i))
             {
               ((DiscussionInfo)localObject6).mSelfRight = i;
-              ((almv)localObject4).a((DiscussionInfo)localObject6);
-              bdfe.a("getHrConfMemberName", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DiscussionInfo)localObject6);
-              bdfe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscussionInfo)localObject6).uin);
+              ((alrk)localObject4).a((DiscussionInfo)localObject6);
+              bdjn.a("getHrConfMemberName", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DiscussionInfo)localObject6);
+              bdjn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscussionInfo)localObject6).uin);
             }
           }
           if ((localObject1 != null) && (((String)localObject1).length() > 0))
           {
-            localObject6 = ((almv)localObject4).a(this.d, this.c);
+            localObject6 = ((alrk)localObject4).a(this.d, this.c);
             if (localObject6 != null)
             {
               ((DiscussionMemberInfo)localObject6).memberName = ((String)localObject1);
               ((DiscussionMemberInfo)localObject6).inteRemark = ((String)localObject1);
-              ((almv)localObject4).a((DiscussionMemberInfo)localObject6);
+              ((alrk)localObject4).a((DiscussionMemberInfo)localObject6);
               localObject4 = new ArrayList(2);
               ((ArrayList)localObject4).add(this.d);
               ((ArrayList)localObject4).add(1, Boolean.valueOf(true));
-              ((almt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6)).notifyUI(1001, true, localObject4);
+              ((alri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6)).notifyUI(1001, true, localObject4);
             }
           }
-          if (this.jdField_a_of_type_Bdff == null) {
+          if (this.jdField_a_of_type_Bdjo == null) {
             continue;
           }
-          this.jdField_a_of_type_Bdff.a((String)localObject1, i);
+          this.jdField_a_of_type_Bdjo.a((String)localObject1, i);
           return;
         }
         catch (Exception localException3)

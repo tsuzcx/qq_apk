@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aozt;
+import apec;
 
 public class IPSiteModel$ComicRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<ComicRich> CREATOR = new aozt();
+  public static final Parcelable.Creator<ComicRich> CREATOR = new apec();
   public String extCover;
   public String extName;
   public String extTitle;
@@ -44,7 +44,7 @@ public class IPSiteModel$ComicRich
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.ComicRich
  * JD-Core Version:    0.7.0.1
  */

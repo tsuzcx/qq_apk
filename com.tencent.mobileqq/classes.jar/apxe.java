@@ -1,11 +1,13 @@
-class apxe
-  implements bapx
+import android.app.Application;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+
+public class apxe
+  extends AlbumThumbDownloader
 {
-  apxe(apxd paramapxd) {}
-  
-  public void onResp(baqw parambaqw) {}
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public apxe(Application paramApplication)
+  {
+    super(paramApplication);
+  }
 }
 
 

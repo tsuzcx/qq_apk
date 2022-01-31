@@ -1,39 +1,44 @@
-import android.content.Context;
-import android.widget.OverScroller;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
 public class auhw
-  extends OverScroller
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private auhx a;
+  public auhw(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public auhw(Context paramContext)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super(paramContext);
-  }
-  
-  public void a(auhx paramauhx)
-  {
-    this.a = paramauhx;
-  }
-  
-  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
+    switch (paramInt)
+    {
     }
-    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-  }
-  
-  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
+    while (MsgBackupDateFragment.a(this.a)) {
+      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a)))
+      {
+        this.a.setRightButtonEnable(true);
+        return;
+        MsgBackupDateFragment.a(this.a, false);
+        MsgBackupDateFragment.a(this.a, 0L);
+        MsgBackupDateFragment.b(this.a, 0L);
+        MsgBackupDateFragment.a(this.a).setVisibility(8);
+        continue;
+        MsgBackupDateFragment.a(this.a, true);
+        MsgBackupDateFragment.a(this.a).setVisibility(0);
+      }
+      else
+      {
+        if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
+        {
+          this.a.setRightButtonEnable(true);
+          return;
+        }
+        this.a.setRightButtonEnable(false);
+        return;
+      }
     }
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    }
-    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    this.a.setRightButtonEnable(true);
   }
 }
 

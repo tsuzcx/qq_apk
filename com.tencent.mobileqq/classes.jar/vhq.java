@@ -1,36 +1,45 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class vhq
-  implements bhqd
+public class vhq
+  extends uro
 {
-  vhq(StoryVideoItem paramStoryVideoItem, bhpy parambhpy) {}
+  public final List<vgd> a = new ArrayList();
   
-  public void OnClick(View paramView, int paramInt)
+  public vhq(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
   {
-    switch (paramInt)
+    super(paramRspStoryPlayerTagInfo.result);
+    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
+    Object localObject;
+    String str;
+    qqstory_struct.TagInfoBase localTagInfoBase;
+    if (localIterator.hasNext())
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((usd)urr.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new uzn().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
+      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
+      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
+      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
+        break label163;
       }
-      break;
     }
-    for (;;)
+    label163:
+    for (paramRspStoryPlayerTagInfo = new xnx((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wsv.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
+      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
+      {
+        this.a.add(new vgd(str, new xof(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
+        break;
+        return;
+      }
     }
   }
 }

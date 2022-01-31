@@ -1,41 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-class amzb
-  extends bavp
+public final class amzb
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  amzb(amyy paramamyy, QQAppInterface paramQQAppInterface, String paramString, bavq parambavq, baps parambaps, amze paramamze, amzd paramamzd)
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    super(paramQQAppInterface, paramString, parambavq, parambaps);
+    return new ARScanStarFaceConfigInfo(paramParcel);
   }
   
-  protected void realCancel()
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
   {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
-    synchronized (amyy.a(this.jdField_a_of_type_Amyy))
-    {
-      amzd localamzd = (amzd)amyy.a(this.jdField_a_of_type_Amyy).get(this.jdField_a_of_type_Amze.b);
-      if (localamzd != null) {
-        localamzd.b();
-      }
-      super.realCancel();
-      return;
-    }
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
-    synchronized (amyy.a(this.jdField_a_of_type_Amyy))
-    {
-      amzd localamzd = (amzd)amyy.a(this.jdField_a_of_type_Amyy).get(this.jdField_a_of_type_Amze.b);
-      if (localamzd != null) {
-        this.jdField_a_of_type_Amzd.a();
-      }
-      super.realStart();
-      return;
-    }
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 

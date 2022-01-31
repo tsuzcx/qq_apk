@@ -1,22 +1,31 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aiim
-  implements View.OnClickListener
+class aiim
+  implements bhux
 {
-  public aiim(PhoneFrameActivity paramPhoneFrameActivity) {}
+  aiim(aiie paramaiie) {}
   
-  public void onClick(View paramView)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
+    if ((this.a.jdField_a_of_type_Aieh.getCount() <= 0) || (paramInt <= 0)) {}
+    do
+    {
+      return true;
+      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aieh.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Aihj = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bdpi();
+    paramAdapterView.a(2131364912, alud.a(2131715576), 2130838669);
+    paramAdapterView.a(2131366760, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692837), 2130838678);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView, paramAdapterView, aiie.a(this.a), new aiin(this, paramView));
+    return true;
   }
 }
 

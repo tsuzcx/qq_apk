@@ -1,67 +1,31 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 class auyt
-  implements auzh
+  implements bemh<oidb_0x8e4.RspBody>
 {
   auyt(auys paramauys) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    boolean bool = true;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(auys.a(this.a), 2, "errorCode:   " + paramInt);
-    }
-    if (paramArrayOfByte != null) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    if (paramInt == 0)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(auys.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(auys.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
-        }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
-        }
-      }
-      for (;;)
-      {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        auys.a(this.a, paramArrayOfByte);
-        auys.a(this.a, auys.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_Auyf;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
-      }
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    }
+    do
+    {
       return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+      this.a.a.a(paramInt, paramRspBody, alud.a(2131705457));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

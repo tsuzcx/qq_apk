@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
-final class afmr
-  implements afpr
+public class afmr
+  implements bhuk
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afmr(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramChatMessage.msgtype == -3016) {
-      return 93;
+    switch (paramInt)
+    {
     }
-    return 15;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aali;
+import aapx;
 
 public class GdtMvDownloadBtnPresenter$2
   implements Runnable
 {
-  public GdtMvDownloadBtnPresenter$2(aali paramaali, GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt) {}
+  public GdtMvDownloadBtnPresenter$2(aapx paramaapx, GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt) {}
   
   public void run()
   {

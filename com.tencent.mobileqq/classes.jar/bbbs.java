@@ -1,22 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import java.util.ArrayList;
 
 public class bbbs
-  implements Animation.AnimationListener
+  extends bbbz
 {
-  public bbbs(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String a;
+  public ArrayList<bawy> a = new ArrayList();
+  public String b;
+  public ArrayList<bawy> b = new ArrayList();
 }
 
 

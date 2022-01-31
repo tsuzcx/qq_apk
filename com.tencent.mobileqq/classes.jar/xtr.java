@@ -1,14 +1,31 @@
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
+
 final class xtr
+  extends xtb
 {
-  public float a;
-  public float b;
-  public float c;
+  xtr(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public xtr(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onFailure(String paramString)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original failed " + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original：" + String.valueOf(l1 - l2));
   }
 }
 

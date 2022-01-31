@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bjlh;
+import bjpo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneHelper$7
@@ -10,9 +10,9 @@ public final class QZoneHelper$7
   
   public void run()
   {
-    bjlh localbjlh = (bjlh)this.a.getManager(175);
-    if (localbjlh != null) {
-      localbjlh.b();
+    bjpo localbjpo = (bjpo)this.a.getManager(175);
+    if (localbjpo != null) {
+      localbjpo.b();
     }
   }
 }

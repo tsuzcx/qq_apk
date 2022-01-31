@@ -1,93 +1,18 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
 
 public class bheq
+  implements MediaPlayer.OnCompletionListener
 {
-  private static Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[\\w\\d+_]+://");
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private String b;
-  private String c;
+  public bheq(LameMp3EncodeThread paramLameMp3EncodeThread) {}
   
-  public bheq(String paramString)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      Object localObject = paramString;
-      if (paramString.contains("://")) {
-        localObject = paramString.replaceFirst("^.*://", "");
-      }
-      if (!((String)localObject).contains("?"))
-      {
-        this.b = ((String)localObject);
-        return;
-      }
-      paramString = ((String)localObject).split("\\?");
-      this.b = paramString[0];
-      this.c = paramString[1];
-      localObject = this.c.split("&");
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = localObject[i];
-        if (paramString.contains("="))
-        {
-          String[] arrayOfString = paramString.split("=");
-          String str = arrayOfString[0];
-          paramString = "";
-          if (arrayOfString.length > 1) {
-            paramString = arrayOfString[1];
-          }
-          this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public bheq(String paramString, Map<String, String> paramMap)
-  {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.c = "";
-    if (paramMap != null)
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        this.c = (this.c + str + "=" + (String)paramMap.get(str) + "&");
-      }
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (!TextUtils.isEmpty(this.c))
-    {
-      this.c = this.c.substring(0, this.c.length() - 1);
-      this.jdField_a_of_type_JavaLangString = (paramString + "?" + this.c);
-    }
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public Map<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    QMLog.i(LameMp3EncodeThread.a, "onCompletion");
+    LameMp3EncodeThread.a(this.a).sendEmptyMessage(106);
   }
 }
 

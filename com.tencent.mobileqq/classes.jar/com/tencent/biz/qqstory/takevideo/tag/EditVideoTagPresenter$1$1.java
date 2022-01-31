@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import xjp;
-import xjq;
+import xny;
+import xnz;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(xjq paramxjq) {}
+  public EditVideoTagPresenter$1$1(xnz paramxnz) {}
   
   public void run()
   {
-    xjp.a(xjp.a(this.a.a), xjp.a(this.a.a));
+    xny.a(xny.a(this.a.a), xny.a(this.a.a));
   }
 }
 

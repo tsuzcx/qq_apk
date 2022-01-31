@@ -10,8 +10,8 @@ class rlq
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (ImageView)rlo.a(this.a).findViewById(2131379373);
-    ImageView localImageView = (ImageView)rlo.a(this.a).findViewById(2131379374);
+    paramAnimation = (ImageView)rlo.a(this.a).findViewById(2131379431);
+    ImageView localImageView = (ImageView)rlo.a(this.a).findViewById(2131379432);
     rlo.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
   

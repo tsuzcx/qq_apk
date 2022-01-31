@@ -1,53 +1,35 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.soload.config.SoConfig;
+import java.util.Comparator;
 
-class aznb
+public class aznb
+  implements Comparator<aoko>
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public aznb(SoConfig paramSoConfig) {}
   
-  public aznb(long paramLong, String paramString1, String paramString2)
+  public int a(aoko paramaoko1, aoko paramaoko2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    int j = 0;
     int i;
-    if (paramString1 == null)
+    if (paramaoko1 == null)
     {
       i = 0;
-      if (paramString2 != null) {
-        break label67;
+      if (paramaoko2 != null) {
+        break label26;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
-      return;
-      i = paramString1.getBytes().length;
+      return j - i;
+      i = paramaoko1.a;
       break;
-      label67:
-      j = paramString2.getBytes().length;
+      label26:
+      j = paramaoko2.a;
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(azmz.a().format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznb
  * JD-Core Version:    0.7.0.1
  */

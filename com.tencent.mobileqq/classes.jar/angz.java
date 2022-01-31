@@ -1,28 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class angz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public angz(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdfq parambdfq) {}
+  public angz(ARScanEntryView paramARScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
-    ArkAppCenter.a(paramDialogInterface);
-    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_Bdfq.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
 public class avat
-  implements DialogInterface.OnClickListener
+  implements beqz
 {
-  public avat(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public avat(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramDialogInterface.dismiss();
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
 }
 

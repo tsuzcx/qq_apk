@@ -41,27 +41,27 @@ public class max
     this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData = new TroopInfoData();
   }
   
-  public static bddb a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  public static bdhk a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    bddb localbddb = new bddb(paramQQAppInterface, paramContext);
+    bdhk localbdhk = new bdhk(paramQQAppInterface, paramContext);
     if ((paramContext instanceof JumpActivity))
     {
       paramQQAppInterface = ((JumpActivity)paramContext).getIntent();
       if (paramQQAppInterface != null) {
-        localbddb.a("from_url_InternalCheck", paramQQAppInterface.getStringExtra("url"));
+        localbdhk.a("from_url_InternalCheck", paramQQAppInterface.getStringExtra("url"));
       }
     }
-    paramContext = bdds.a(paramString, "?");
+    paramContext = bdib.a(paramString, "?");
     paramQQAppInterface = paramContext[0];
     paramContext = paramContext[1];
     paramQQAppInterface = paramQQAppInterface.split("//");
     if (paramQQAppInterface.length != 2) {
       return null;
     }
-    localbddb.jdField_a_of_type_JavaLangString = paramString;
-    localbddb.jdField_b_of_type_JavaLangString = "mqqavshare://";
-    localbddb.c = paramQQAppInterface[1];
-    paramQQAppInterface = "parser, jumpStr[" + paramString + "], server_name[" + localbddb.jdField_b_of_type_JavaLangString + "], action_name[" + localbddb.c + "]";
+    localbdhk.jdField_a_of_type_JavaLangString = paramString;
+    localbdhk.jdField_b_of_type_JavaLangString = "mqqavshare://";
+    localbdhk.c = paramQQAppInterface[1];
+    paramQQAppInterface = "parser, jumpStr[" + paramString + "], server_name[" + localbdhk.jdField_b_of_type_JavaLangString + "], action_name[" + localbdhk.c + "]";
     paramString = paramContext.split("&");
     int j = paramString.length;
     int i = 0;
@@ -71,15 +71,15 @@ public class max
       paramContext = paramQQAppInterface;
       if (arrayOfString.length == 2)
       {
-        paramContext = bdds.a(arrayOfString[1], false);
-        localbddb.a(arrayOfString[0], paramContext);
+        paramContext = bdib.a(arrayOfString[1], false);
+        localbdhk.a(arrayOfString[0], paramContext);
         paramContext = paramQQAppInterface + ", [" + arrayOfString[0] + "]=[" + paramContext + "]";
       }
       i += 1;
       paramQQAppInterface = paramContext;
     }
     QLog.w("ShareChat", 1, paramQQAppInterface);
-    return localbddb;
+    return localbdhk;
   }
   
   private String a(int paramInt)
@@ -96,7 +96,7 @@ public class max
   
   static String a(Context paramContext)
   {
-    return paramContext.getString(2131693347);
+    return paramContext.getString(2131693349);
   }
   
   static String a(QQAppInterface paramQQAppInterface, String paramString)
@@ -104,13 +104,13 @@ public class max
     if (paramQQAppInterface == null) {
       return null;
     }
-    paramString = bdbt.h(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
-    return paramString + paramQQAppInterface.getApp().getString(2131693350);
+    paramString = bdgc.h(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
+    return paramString + paramQQAppInterface.getApp().getString(2131693352);
   }
   
   static String a(String paramString)
   {
-    return bcgh.a("", paramString, 0) + "100";
+    return bckq.a("", paramString, 0) + "100";
   }
   
   static String a(mbh parammbh)
@@ -167,16 +167,16 @@ public class max
   
   static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView, String paramString)
   {
-    bcgx.a(paramBaseActivity, paramString);
+    bclg.a(paramBaseActivity, paramString);
   }
   
-  public static boolean a(bddb parambddb)
+  public static boolean a(bdhk parambdhk)
   {
-    if ("avshare/group".equals(parambddb.c)) {
-      return b(parambddb);
+    if ("avshare/group".equals(parambdhk.c)) {
+      return b(parambdhk);
     }
-    if ("avshare/forward".equals(parambddb.c)) {
-      return d(parambddb);
+    if ("avshare/forward".equals(parambdhk.c)) {
+      return d(parambdhk);
     }
     return false;
   }
@@ -189,12 +189,12 @@ public class max
     return null;
   }
   
-  public static boolean b(bddb parambddb)
+  public static boolean b(bdhk parambdhk)
   {
-    if (!"avshare/group".equals(parambddb.c)) {
+    if (!"avshare/group".equals(parambdhk.c)) {
       return false;
     }
-    String str = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("guid");
+    String str = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("guid");
     if (TextUtils.isEmpty(str)) {
       return false;
     }
@@ -203,21 +203,21 @@ public class max
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.addFlags(268435456);
     localIntent.putExtra("guid", str);
-    adky.a(parambddb.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, AVSchema.class);
+    adpn.a(parambdhk.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, AVSchema.class);
     mts.c();
     return true;
   }
   
-  static boolean c(bddb parambddb)
+  static boolean c(bdhk parambdhk)
   {
-    if (!parambddb.a())
+    if (!parambdhk.a())
     {
-      parambddb = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("from_url_InternalCheck");
-      QLog.w("ShareChat", 1, "handle_forward, KEY_CurrentUrl[" + parambddb + "]");
-      if (!TextUtils.isEmpty(parambddb))
+      parambdhk = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("from_url_InternalCheck");
+      QLog.w("ShareChat", 1, "handle_forward, KEY_CurrentUrl[" + parambdhk + "]");
+      if (!TextUtils.isEmpty(parambdhk))
       {
-        parambddb = parambddb.replace('\\', '/');
-        if ((parambddb.startsWith("https://web.qun.qq.com/")) || (parambddb.startsWith("http://web.qun.qq.com/"))) {
+        parambdhk = parambdhk.replace('\\', '/');
+        if ((parambdhk.startsWith("https://web.qun.qq.com/")) || (parambdhk.startsWith("http://web.qun.qq.com/"))) {
           return true;
         }
       }
@@ -226,66 +226,66 @@ public class max
     return true;
   }
   
-  public static boolean d(bddb parambddb)
+  public static boolean d(bdhk parambdhk)
   {
-    if (!"avshare/forward".equals(parambddb.c)) {
+    if (!"avshare/forward".equals(parambdhk.c)) {
       return false;
     }
-    if (!c(parambddb)) {
+    if (!c(parambdhk)) {
       return false;
     }
-    String str1 = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("url");
-    Object localObject1 = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("exp");
-    String str2 = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("guin");
-    Object localObject2 = (String)parambddb.jdField_a_of_type_JavaUtilHashMap.get("fromchannel");
+    String str1 = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("url");
+    Object localObject1 = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("exp");
+    String str2 = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("guin");
+    Object localObject2 = (String)parambdhk.jdField_a_of_type_JavaUtilHashMap.get("fromchannel");
     if (TextUtils.isEmpty(str1)) {
       return false;
     }
-    int i = (int)bdje.a("ShareChat", (String)localObject2);
+    int i = (int)bdnn.a("ShareChat", (String)localObject2);
     if (i == 0) {
       return false;
     }
     mts.a(i, str2);
     AudioHelper.b("handle_forward");
-    long l1 = bdje.a("ShareChat", (String)localObject1);
+    long l1 = bdnn.a("ShareChat", (String)localObject1);
     long l2 = AudioHelper.a();
     if (l1 < l2)
     {
-      parambddb = QQToast.a(parambddb.jdField_a_of_type_AndroidContentContext, 2131693351, 1);
-      parambddb.a();
-      parambddb.a();
+      parambdhk = QQToast.a(parambdhk.jdField_a_of_type_AndroidContentContext, 2131693353, 1);
+      parambdhk.a();
+      parambdhk.a();
       QLog.w("ShareChat", 1, "handle_forward, expTime[" + l1 + "], curTime[" + l2 + "]");
       return true;
     }
-    if (((TroopManager)parambddb.a().getManager(52)).b(str2) == null)
+    if (((TroopManager)parambdhk.a().getManager(52)).b(str2) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.w("ShareChat", 1, "handle_forward, troopUin[" + str2 + "]");
       }
-      parambddb = QQToast.a(parambddb.jdField_a_of_type_AndroidContentContext, 2131693351, 1);
-      parambddb.a();
-      parambddb.a();
+      parambdhk = QQToast.a(parambdhk.jdField_a_of_type_AndroidContentContext, 2131693353, 1);
+      parambdhk.a();
+      parambdhk.a();
       return true;
     }
-    localObject1 = parambddb.a();
-    localObject2 = (bcjl)((QQAppInterface)localObject1).getManager(48);
-    boolean bool1 = ((bcjl)localObject2).a(str2);
-    boolean bool2 = ((bcjl)localObject2).b(str2);
+    localObject1 = parambdhk.a();
+    localObject2 = (bcnu)((QQAppInterface)localObject1).getManager(48);
+    boolean bool1 = ((bcnu)localObject2).a(str2);
+    boolean bool2 = ((bcnu)localObject2).b(str2);
     if ((!bool1) && (!bool2))
     {
       if (AudioHelper.e()) {
         QLog.w("ShareChat", 1, "handle_forward, troopUin[" + str2 + "], isAdmin[" + bool1 + "], isOwner[" + bool2 + "]");
       }
-      parambddb = QQToast.a(parambddb.jdField_a_of_type_AndroidContentContext, 2131693352, 1);
-      parambddb.a();
-      parambddb.a();
+      parambdhk = QQToast.a(parambdhk.jdField_a_of_type_AndroidContentContext, 2131693354, 1);
+      parambdhk.a();
+      parambdhk.a();
       return true;
     }
-    parambddb.jdField_b_of_type_Boolean = false;
-    if ((parambddb.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) {
-      ((JumpActivity)parambddb.jdField_a_of_type_AndroidContentContext).a();
+    parambdhk.jdField_b_of_type_Boolean = false;
+    if ((parambdhk.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) {
+      ((JumpActivity)parambdhk.jdField_a_of_type_AndroidContentContext).a();
     }
-    a((QQAppInterface)localObject1, parambddb.jdField_a_of_type_AndroidContentContext, str2, str1, i);
+    a((QQAppInterface)localObject1, parambdhk.jdField_a_of_type_AndroidContentContext, str2, str1, i);
     return true;
   }
   
@@ -312,7 +312,7 @@ public class max
       return;
     }
     a(paramQQAppInterface, paramString);
-    paramQQAppInterface = bdex.a().a(paramString);
+    paramQQAppInterface = bdjg.a().a(paramString);
     long l = AudioHelper.b();
     if (paramQQAppInterface == null)
     {
@@ -359,7 +359,7 @@ public class max
   
   void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ((alzf)paramQQAppInterface.a(20)).b(paramString, false);
+    ((amdu)paramQQAppInterface.a(20)).b(paramString, false);
     if (this.jdField_a_of_type_Mbb == null)
     {
       this.jdField_a_of_type_Mbb = new mbb(this, null);
@@ -383,11 +383,11 @@ public class max
   void b(long paramLong1, long paramLong2, int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
-    long l = bdje.a("ShareChat", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    long l = bdnn.a("ShareChat", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard;
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+      localObject1 = bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import awmr;
-import bcyw;
-import bdcs;
-import bdjk;
-import bdvv;
-import bdvx;
-import bhow;
+import awra;
+import bddf;
+import bdhb;
+import bdnt;
+import beae;
+import beag;
+import bhtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,12 +21,12 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
   String jdField_a_of_type_JavaLangString;
   WeakReference<FriendProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  WeakReference<awmr> b;
+  WeakReference<awra> b;
   
-  public FriendProfileCardActivity$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, awmr paramawmr, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
+  public FriendProfileCardActivity$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, awra paramawra, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFriendProfileCardActivity);
-    this.b = new WeakReference(paramawmr);
+    this.b = new WeakReference(paramawra);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = paramAtomicBoolean;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
@@ -45,30 +45,30 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
         if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.b != null))
         {
           localFriendProfileCardActivity = (FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          localObject1 = (awmr)this.b.get();
+          localObject1 = (awra)this.b.get();
           if ((localFriendProfileCardActivity != null) && (localObject1 != null))
           {
-            localFriendProfileCardActivity.jdField_a_of_type_Bdjk.a("downloadTemplateStart", true);
-            bool2 = bcyw.a(localFriendProfileCardActivity.app);
+            localFriendProfileCardActivity.jdField_a_of_type_Bdnt.a("downloadTemplateStart", true);
+            bool2 = bddf.a(localFriendProfileCardActivity.app);
             if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
               break label818;
             }
-            bool1 = bcyw.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
+            bool1 = bddf.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
             if (bool1) {
               break label811;
             }
             if (QLog.isColorLevel()) {
               QLog.i("Q.profilecard.FrdProfileCard", 2, "start download background=" + this.jdField_a_of_type_JavaLangString + ",isExistBgResource=" + bool1);
             }
-            localObject1 = new File(bcyw.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
-            localObject1 = new bdvv(this.jdField_a_of_type_JavaLangString, (File)localObject1);
-            ((bdvv)localObject1).f = "profileCardDownload";
-            ((bdvv)localObject1).e = "VIP_profilecard";
-            i = bdvx.a((bdvv)localObject1, localFriendProfileCardActivity.app);
+            localObject1 = new File(bddf.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
+            localObject1 = new beae(this.jdField_a_of_type_JavaLangString, (File)localObject1);
+            ((beae)localObject1).f = "profileCardDownload";
+            ((beae)localObject1).e = "VIP_profilecard";
+            i = beag.a((beae)localObject1, localFriendProfileCardActivity.app);
             if (i != 0) {
               QLog.e("Q.profilecard.FrdProfileCard", 1, "download BG fail code = " + i + " url = " + this.jdField_a_of_type_JavaLangString);
             }
-            if ((i != 0) || (!bcyw.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
+            if ((i != 0) || (!bddf.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
               break label831;
             }
             bool1 = true;
@@ -76,7 +76,7 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
             bool1 = bool2;
             if (!bool2)
             {
-              localObject1 = bcyw.a(localFriendProfileCardActivity.app, -1L);
+              localObject1 = bddf.a(localFriendProfileCardActivity.app, -1L);
               bool1 = bool2;
               if ("http://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip" != null)
               {
@@ -92,10 +92,10 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
                 }
               }
             }
-            localFriendProfileCardActivity.jdField_a_of_type_Bdjk.a("downloadCommonEnd", "downloadBackgroundEnd", false);
-            if (localFriendProfileCardActivity.jdField_a_of_type_Bhow != null)
+            localFriendProfileCardActivity.jdField_a_of_type_Bdnt.a("downloadCommonEnd", "downloadBackgroundEnd", false);
+            if (localFriendProfileCardActivity.jdField_a_of_type_Bhtd != null)
             {
-              localObject1 = localFriendProfileCardActivity.jdField_a_of_type_Bhow.obtainMessage();
+              localObject1 = localFriendProfileCardActivity.jdField_a_of_type_Bhtd.obtainMessage();
               ((Message)localObject1).what = 7;
               if ((!bool1) || (m == 0)) {
                 break label806;
@@ -103,7 +103,7 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
               i = j;
               ((Message)localObject1).arg1 = i;
               ((Message)localObject1).arg2 = 0;
-              localFriendProfileCardActivity.jdField_a_of_type_Bhow.sendMessage((Message)localObject1);
+              localFriendProfileCardActivity.jdField_a_of_type_Bhtd.sendMessage((Message)localObject1);
             }
           }
         }
@@ -116,10 +116,10 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
         if (localFile.exists()) {
           localFile.delete();
         }
-        Object localObject2 = new bdvv("http://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
-        ((bdvv)localObject2).f = "profileCardDownload";
-        ((bdvv)localObject2).e = "VIP_profilecard";
-        int k = bdvx.a((bdvv)localObject2, localFriendProfileCardActivity.app);
+        Object localObject2 = new beae("http://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
+        ((beae)localObject2).f = "profileCardDownload";
+        ((beae)localObject2).e = "VIP_profilecard";
+        int k = beag.a((beae)localObject2, localFriendProfileCardActivity.app);
         if (k != 0) {
           break label843;
         }
@@ -131,9 +131,9 @@ class FriendProfileCardActivity$DownloadTemplateRunnable
           }
           try
           {
-            bdcs.a(localFile.getAbsolutePath(), (String)localObject1 + File.separator, false);
-            bcyw.a(localFriendProfileCardActivity.app, "common", "583");
-            if (bcyw.a(localFriendProfileCardActivity.app))
+            bdhb.a(localFile.getAbsolutePath(), (String)localObject1 + File.separator, false);
+            bddf.a(localFriendProfileCardActivity.app, "common", "583");
+            if (bddf.a(localFriendProfileCardActivity.app))
             {
               localFile.delete();
               if (!QLog.isColorLevel()) {

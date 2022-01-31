@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acmu
-  implements DialogInterface.OnClickListener
+class acmu
+  implements View.OnClickListener
 {
-  public acmu(Conversation paramConversation) {}
+  acmu(acms paramacms, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    azmj.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    azmj.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Acms.a.app.a(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

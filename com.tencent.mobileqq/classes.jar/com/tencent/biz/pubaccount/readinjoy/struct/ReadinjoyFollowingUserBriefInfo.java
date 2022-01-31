@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ReadinjoyFollowingUserBriefInfo
-  extends awbv
+  extends awge
 {
   public int followed = 0;
-  @awdj
+  @awhs
   public long uin;
   
   public ReadinjoyFollowingUserBriefInfo()

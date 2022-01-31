@@ -170,18 +170,18 @@ public class odp
         try
         {
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mRequestWidth = aekt.a(paramInt2, paramContext.getResources());
-          localURLDrawableOptions.mRequestHeight = aekt.a(paramInt2, paramContext.getResources());
+          localURLDrawableOptions.mRequestWidth = aepi.a(paramInt2, paramContext.getResources());
+          localURLDrawableOptions.mRequestHeight = aepi.a(paramInt2, paramContext.getResources());
           if (paramInt3 != -1) {
             localURLDrawableOptions.mUseMemoryCache = false;
           }
           localURLDrawable = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
-          localURLDrawable.setTag(bcuq.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, aekt.a(paramInt1, paramContext.getResources())));
+          localURLDrawable.setTag(bcyz.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, aepi.a(paramInt1, paramContext.getResources())));
           if (paramInt3 != 0) {
             continue;
           }
           localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 1 });
-          localURLDrawable.setDecodeHandler(bcuq.j);
+          localURLDrawable.setDecodeHandler(bcyz.j);
         }
         catch (Exception paramContext)
         {
@@ -191,7 +191,7 @@ public class odp
           }
           QLog.d("ReadInJoyCommonAdUtils", 2, "后台下发的url格式有问题：" + paramString);
           return;
-          localURLDrawable.setDecodeHandler(bcuq.i);
+          localURLDrawable.setDecodeHandler(bcyz.i);
           continue;
         }
         paramImageView.setImageDrawable(localURLDrawable);
@@ -200,7 +200,7 @@ public class odp
           continue;
         }
         localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 3 });
-        localURLDrawable.setDecodeHandler(bcuq.j);
+        localURLDrawable.setDecodeHandler(bcyz.j);
       }
     }
   }
@@ -230,9 +230,9 @@ public class odp
     {
       paramSimpleRoundProgress.jdField_a_of_type_Int = Color.parseColor("#CCE5E5E5");
       paramSimpleRoundProgress.jdField_b_of_type_Int = Color.parseColor("#FF00CAFC");
-      paramSimpleRoundProgress.jdField_a_of_type_Float = aekt.a(1.5F, paramSimpleRoundProgress.getContext().getResources());
-      paramSimpleRoundProgress.jdField_b_of_type_Float = aekt.a(1.5F, paramSimpleRoundProgress.getContext().getResources());
-      paramSimpleRoundProgress.jdField_c_of_type_Float = aekt.a(7.0F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.jdField_a_of_type_Float = aepi.a(1.5F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.jdField_b_of_type_Float = aepi.a(1.5F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.jdField_c_of_type_Float = aepi.a(7.0F, paramSimpleRoundProgress.getContext().getResources());
       paramSimpleRoundProgress.jdField_c_of_type_Int = 100;
       paramSimpleRoundProgress.e = 270;
       paramSimpleRoundProgress.d = 0;

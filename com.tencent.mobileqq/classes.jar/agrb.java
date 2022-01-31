@@ -1,17 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.View;
 
-public class agrb
-  implements DialogInterface.OnClickListener
+class agrb
+  implements bhuk
 {
-  public agrb(TroopChatPie paramTroopChatPie) {}
+  agrb(agqq paramagqq, boolean paramBoolean, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    new azmo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
-    this.a.I();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Agqq.bD();
+      }
+      else
+      {
+        this.jdField_a_of_type_Agqq.bB();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Agqq.bB();
+        }
+        else
+        {
+          this.jdField_a_of_type_Agqq.bA();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Agqq.bA();
+          }
+        }
+      }
+    }
   }
 }
 

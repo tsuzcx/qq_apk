@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aalk;
+import aapz;
 
 public class GdtMvViewAnimationAbs$1
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$1(aalk paramaalk) {}
+  public GdtMvViewAnimationAbs$1(aapz paramaapz) {}
   
   public void run()
   {
-    aalk.a(this.this$0, this.this$0.a);
+    aapz.a(this.this$0, this.this$0.a);
   }
 }
 

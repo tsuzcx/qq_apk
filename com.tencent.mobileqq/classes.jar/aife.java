@@ -1,94 +1,81 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aife
-  implements appt
+  extends Handler
 {
-  aife(aifb paramaifb) {}
-  
-  public void a(appw paramappw)
+  aife(aiez paramaiez, Looper paramLooper)
   {
-    int i;
-    int j;
-    if ((paramappw instanceof apuw))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    apur localapur;
-    int k;
-    int m;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
     do
     {
-      this.a.a.getEditableText().replace(i, j, baiy.c(((apuw)paramappw).a));
       do
       {
         return;
-      } while (!(paramappw instanceof apur));
-      localapur = (apur)paramappw;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localapur.a;
-      m = localapur.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramappw = baiy.c(m);; paramappw = baiy.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramappw);
-      this.a.a.requestFocus();
-      localapur.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      apoa.a().a(k).a(m, 2);
-      return;
-    }
-  }
-  
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
+        switch (paramMessage.what)
         {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
+        default: 
           return;
+        case 0: 
+          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+          this.a.a(35, paramMessage);
+          return;
+        case 28929: 
+          paramMessage = paramMessage.getData();
+        }
+      } while (paramMessage == null);
+      int i = paramMessage.getInt("result");
+      if ((i == -1) || (i == -2))
+      {
+        if (i == -1) {
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719556);
+        }
+        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719555);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719558))
+        {
+          try
+          {
+            if (this.a.jdField_a_of_type_Bdjz != null)
+            {
+              if (this.a.jdField_a_of_type_Bdjz.isShowing()) {
+                this.a.jdField_a_of_type_Bdjz.dismiss();
+              }
+              this.a.jdField_a_of_type_Bdjz = null;
+            }
+            this.a.jdField_a_of_type_Bdjz = bdgm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new aiff(this), null);
+            this.a.jdField_a_of_type_Bdjz.setOnCancelListener(new aifg(this));
+            this.a.jdField_a_of_type_Bdjz.setOnDismissListener(new aifh(this));
+            this.a.jdField_a_of_type_Bdjz.show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          paramMessage.printStackTrace();
+          return;
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719559);
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    } while (this.a.jdField_a_of_type_Bdjz == null);
+    this.a.jdField_a_of_type_Bdjz.dismiss();
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(34, paramMessage);
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(33, paramMessage);
   }
-  
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

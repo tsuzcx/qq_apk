@@ -63,7 +63,7 @@ public class tff
     for (;;)
     {
       return;
-      Iterator localIterator = paramtfi.a().iterator();
+      Iterator localIterator = paramtfi.getEventClass().iterator();
       while (localIterator.hasNext()) {
         a(((Class)localIterator.next()).getName(), paramtfi);
       }
@@ -76,7 +76,7 @@ public class tff
     for (;;)
     {
       return;
-      Iterator localIterator = paramtfi.a().iterator();
+      Iterator localIterator = paramtfi.getEventClass().iterator();
       while (localIterator.hasNext()) {
         b(((Class)localIterator.next()).getName(), paramtfi);
       }

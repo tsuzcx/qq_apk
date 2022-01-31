@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import amry;
+import amwn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARScanAR
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanAR> CREATOR = new amry();
+  public static final Parcelable.Creator<ARScanAR> CREATOR = new amwn();
   public int a;
   public long a;
   public String a;

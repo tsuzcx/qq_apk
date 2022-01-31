@@ -1,9 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-public abstract interface ajdu
+public class ajdu
 {
-  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
+  public QQAppInterface a;
+  
+  public boolean a(MessageForScribble paramMessageForScribble, String paramString, awkh paramawkh)
+  {
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.jdField_b_of_type_Int = 262153;
+    localbayk.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
+    localbayk.c = paramMessageForScribble.frienduin;
+    localbayk.jdField_a_of_type_Int = paramMessageForScribble.istroop;
+    localbayk.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
+    localbayk.jdField_a_of_type_Awkh = paramawkh;
+    localbayk.i = paramString;
+    localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
+    paramMessageForScribble.fileUploadStatus = 3;
+    this.a.a().a(localbayk);
+    return true;
+  }
 }
 
 

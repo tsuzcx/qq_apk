@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdg;
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
@@ -27,7 +27,7 @@ public class RouterMsgRecord
   public static final int status_transfer_pause = 5;
   public static final int status_transfer_suc = 3;
   public static final int status_transfering = 2;
-  @awdg
+  @awhp
   public long entityID;
   public long fileSize;
   public String filename;
@@ -68,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  public Class<? extends awbv> getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return RouterMsgRecord.class;
   }

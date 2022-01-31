@@ -1,43 +1,10 @@
-public class bhlj
+public abstract interface bhlj
 {
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    int i;
-    if (a(paramString)) {
-      i = paramString.length() - 1;
-    }
-    for (;;)
-    {
-      if ((i < 0) || (paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/'))
-      {
-        str = paramString.substring(i + 1);
-        return str;
-      }
-      i -= 1;
-    }
-  }
+  public abstract void a();
   
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    int j = paramString.length();
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if ((paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/')) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
 }
 
 

@@ -1,11 +1,6 @@
-import android.view.animation.Animation;
-
-class annz
-  extends bhnr
+public abstract interface annz
 {
-  annz(annx paramannx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public abstract Object a(int paramInt, Object paramObject);
 }
 
 

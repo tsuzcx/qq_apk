@@ -1,129 +1,79 @@
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import KQQ.UserBitFlagReq;
+import KQQ.UserBitFlagRes;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
 
 public class bddq
-  extends bdbj
+  implements azal
 {
-  private static volatile bddq jdField_a_of_type_Bddq;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0);
-  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface a;
   
-  static
+  public bddq(QQAppInterface paramQQAppInterface)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = localBaseApplication.getFilesDir().getAbsoluteFile() + File.separator + "jumpConfig/";
-    b = jdField_a_of_type_JavaLangString + "qq_safe_jump_whitelist.xml";
+    this.a = paramQQAppInterface;
   }
   
-  public static bddq a()
+  public int a()
   {
-    if (jdField_a_of_type_Bddq == null) {}
-    try
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting", 2, "getCheckUpdateItemData");
+    }
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 106;
+    UserBitFlagReq localUserBitFlagReq = new UserBitFlagReq();
+    localUserBitFlagReq.cEmotionMall = 0;
+    localUserBitFlagReq.cMyWallet = ((byte)bddn.a(this.a));
+    localUserBitFlagReq.cPtt2Text = 0;
+    localUserBitFlagReq.cAccout2Dis = 0;
+    localReqItem.vecParam = localUserBitFlagReq.toByteArray();
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting", 2, "handleCheckUpdateItemData");
+    }
+    if (paramRespItem.eServiceID == 106)
     {
-      if (jdField_a_of_type_Bddq == null) {
-        jdField_a_of_type_Bddq = new bddq();
+      UserBitFlagRes localUserBitFlagRes = new UserBitFlagRes();
+      localUserBitFlagRes.readFrom(new JceInputStream(paramRespItem.vecUpdate));
+      int i = localUserBitFlagRes.cEmotionMall;
+      int j = localUserBitFlagRes.cMyWallet;
+      int k = localUserBitFlagRes.cAccout2Dis;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSetting", 2, "vEmotion=" + i + ",cMyWallet=" + j + ",cPtt2Text=" + localUserBitFlagRes.cPtt2Text + " ,cAccout2Dis=" + k);
       }
-      return jdField_a_of_type_Bddq;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "reportIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    azmz.a(BaseApplicationImpl.getApplication()).a(null, "JumpIllegal", true, 0L, 0L, localHashMap, null);
-  }
-  
-  protected int a()
-  {
-    return 2131886091;
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  protected Object a(XmlPullParser paramXmlPullParser)
-  {
-    if (paramXmlPullParser == null) {
-      return null;
-    }
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    for (int i = paramXmlPullParser.getEventType(); i != 1; i = paramXmlPullParser.next()) {
-      if ((i == 2) && (paramXmlPullParser.getName().equalsIgnoreCase("Item")))
+      if (this.a != null)
       {
-        String str1 = paramXmlPullParser.getAttributeValue(null, "pkg");
-        String str2 = paramXmlPullParser.getAttributeValue(null, "cmp");
-        if ((str1 != null) && (str2 != null)) {
-          localArrayList.add(new Pair(str1, str2));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpFilterHelper", 2, "doParseRules pkg=" + str1 + ";cmp=" + str2);
+        this.a.getApp().getApplicationContext().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
+        paramRespItem = this.a;
+        if (localUserBitFlagRes.cPtt2Text != 1) {
+          break label211;
         }
       }
     }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "doParseRules :  cost time:" + (l2 - l1) + "ms;size=" + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "updateConfigVersion version=" + paramLong);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
-  }
-  
-  protected void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    Pair localPair = new Pair(paramString1, paramString2);
-    if (!this.jdField_a_of_type_Boolean) {}
-    synchronized (jdField_a_of_type_Bddq)
+    for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        a(paramContext);
-      }
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
-      {
-        a(paramString1, paramString2);
-        return true;
-      }
+      baam.a(paramRespItem, bool);
+      return;
+      label211:
+      bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "isIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    return false;
   }
 }
 

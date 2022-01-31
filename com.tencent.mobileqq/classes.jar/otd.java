@@ -19,7 +19,7 @@ public class otd
   
   public static int a()
   {
-    String[] arrayOfString = ((String)bjxj.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
+    String[] arrayOfString = ((String)bkbq.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
     if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
       return Integer.valueOf(arrayOfString[1]).intValue();
     }
@@ -59,7 +59,7 @@ public class otd
   
   public static String a()
   {
-    String str = (String)bjxj.a("readinjoy_comment_guide_wording", alpo.a(2131702554));
+    String str = (String)bkbq.a("readinjoy_comment_guide_wording", alud.a(2131702566));
     QLog.d("CommentGuideConfigHandler", 1, "wording = " + str);
     return str;
   }
@@ -72,7 +72,7 @@ public class otd
   
   public static String a(String paramString)
   {
-    String str2 = (String)bjxj.a("readinjoy_comment_guide_base_jump_url", "");
+    String str2 = (String)bkbq.a("readinjoy_comment_guide_base_jump_url", "");
     QLog.d("CommentGuideConfigHandler", 1, "jump = " + str2);
     String str1;
     if (TextUtils.isEmpty(str2)) {
@@ -86,14 +86,14 @@ public class otd
         return str1;
         str1 = str2;
       } while (TextUtils.isEmpty(paramString));
-      str3 = (String)bhos.a(str2).get("appSchema");
+      str3 = (String)bhsz.a(str2).get("appSchema");
       str1 = str2;
     } while (TextUtils.isEmpty(str3));
     try
     {
       str1 = URLDecoder.decode(str3, "UTF-8");
       paramString = str1 + "&rowkey=" + paramString;
-      paramString = bhos.a(bhos.a(str2, "appSchema"), "appSchema", paramString);
+      paramString = bhsz.a(bhsz.a(str2, "appSchema"), "appSchema", paramString);
       QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl : " + paramString);
       return paramString;
     }
@@ -110,9 +110,9 @@ public class otd
     try
     {
       localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
-      localJSONObject.put("guide_image", bjxj.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
+      localJSONObject.put("guide_image", bkbq.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
       localJSONObject.put("guide_wording", a());
-      localJSONObject.put("jump_button_text", alpo.a(2131702553));
+      localJSONObject.put("jump_button_text", alud.a(2131702565));
       localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
       return localJSONObject;
     }
@@ -126,12 +126,12 @@ public class otd
   public static void a(int paramInt)
   {
     String str = a(System.currentTimeMillis());
-    bjxj.a("readinjoy_comment_guide_show_num_one_day", str + "_" + paramInt);
+    bkbq.a("readinjoy_comment_guide_show_num_one_day", str + "_" + paramInt);
   }
   
   public static boolean a()
   {
-    if (((Integer)bjxj.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {}
+    if (((Integer)bkbq.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool);
@@ -142,13 +142,13 @@ public class otd
   public static boolean b()
   {
     boolean bool1;
-    if (((Integer)bjxj.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1)
+    if (((Integer)bkbq.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1)
     {
       bool1 = true;
       bool2 = bool1;
       if (bool1)
       {
-        int i = ((Integer)bjxj.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
+        int i = ((Integer)bkbq.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
         int j = a();
         QLog.d("CommentGuideConfigHandler", 1, "count = " + i + "  todayNum : " + j);
         if (j >= i) {
@@ -178,17 +178,17 @@ public class otd
       String str2 = (String)paramString.get(str1);
       QLog.d("CommentGuideConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "should_show")) {
-        bjxj.a("readinjoy_comment_guide_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+        bkbq.a("readinjoy_comment_guide_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
       } else if (TextUtils.equals(str1, "wording")) {
-        bjxj.a("readinjoy_comment_guide_wording", str2);
+        bkbq.a("readinjoy_comment_guide_wording", str2);
       } else if (TextUtils.equals(str1, "image_url")) {
-        bjxj.a("readinjoy_comment_guide_image_url", str2);
+        bkbq.a("readinjoy_comment_guide_image_url", str2);
       } else if (TextUtils.equals(str1, "base_jump_url")) {
-        bjxj.a("readinjoy_comment_guide_base_jump_url", str2);
+        bkbq.a("readinjoy_comment_guide_base_jump_url", str2);
       } else if (TextUtils.equals(str1, "max_show_count")) {
-        bjxj.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(Integer.valueOf(str2).intValue()));
+        bkbq.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(Integer.valueOf(str2).intValue()));
       } else if (TextUtils.equals(str1, "pic_button_should_show")) {
-        bjxj.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+        bkbq.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
       }
     }
     return true;
@@ -197,7 +197,7 @@ public class otd
   public void onWipeConfig(int paramInt)
   {
     QLog.d("CommentGuideConfigHandler", 1, "[onWipeConfig]");
-    bjxj.a("readinjoy_comment_guide_should_show", Integer.valueOf(0));
+    bkbq.a("readinjoy_comment_guide_should_show", Integer.valueOf(0));
   }
 }
 

@@ -2,15 +2,15 @@ package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
 import Wallet.AcsSubNoticeRsp;
-import aeiz;
-import aejf;
-import aejg;
-import aejx;
-import aizx;
-import ambl;
+import aeno;
+import aenu;
+import aenv;
+import aeom;
+import ajem;
+import amga;
 import android.os.Bundle;
-import azmj;
-import bdee;
+import azqs;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.FakeUrl;
@@ -18,14 +18,14 @@ import cooperation.qwallet.plugin.FakeUrl;
 public class QQNotifySettingBaseFragment$2$1
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$2$1(aejf paramaejf, Bundle paramBundle) {}
+  public QQNotifySettingBaseFragment$2$1(aenu paramaenu, Bundle paramBundle) {}
   
   public void run()
   {
     Object localObject = (AcsSubNoticeRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
     if (localObject == null)
     {
-      this.jdField_a_of_type_Aejf.a.b(3, "system error");
+      this.jdField_a_of_type_Aenu.a.b(3, "system error");
       return;
     }
     int i = ((AcsSubNoticeRsp)localObject).ret_code;
@@ -36,29 +36,29 @@ public class QQNotifySettingBaseFragment$2$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aejf.a.b(i, str);
+      this.jdField_a_of_type_Aenu.a.b(i, str);
       return;
       localObject = ((AcsSubNoticeRsp)localObject).msg;
       QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder subscribe succ acsMsg: " + localObject);
-      if ((localObject != null) && (aeiz.a(((AcsMsg)localObject).notice_time * 1000L))) {
-        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a).a((AcsMsg)localObject);
+      if ((localObject != null) && (aeno.a(((AcsMsg)localObject).notice_time * 1000L))) {
+        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a).a((AcsMsg)localObject);
       }
-      boolean bool = bdee.d(this.jdField_a_of_type_Aejf.a.getActivity());
+      boolean bool = bdin.d(this.jdField_a_of_type_Aenu.a.getActivity());
       QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder isNerSupport: " + bool);
       if (bool)
       {
-        if (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a) == null) {
+        if (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a) == null) {
           break label383;
         }
-        localObject = (ambl)QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a).getManager(85);
+        localObject = (amga)QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a).getManager(85);
         if (localObject != null)
         {
-          bool = ((ambl)localObject).b(true);
+          bool = ((amga)localObject).b(true);
           QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder prepare open notify switch isOpened: " + bool);
           if (!bool)
           {
             QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder setQQReminderSwitch");
-            ((ambl)localObject).a(true, true);
+            ((amga)localObject).a(true, true);
           }
         }
       }
@@ -67,19 +67,19 @@ public class QQNotifySettingBaseFragment$2$1
         if (QLog.isColorLevel()) {
           QLog.d(QQNotifySettingBaseFragment.a(), 2, "do report: QQnotice.set.add");
         }
-        azmj.b(null, "P_CliOper", "QQnotice", "", "", "QQnotice.set.add", 0, 0, "", "", QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a), QQNotifySettingBaseFragment.b(this.jdField_a_of_type_Aejf.a));
+        azqs.b(null, "P_CliOper", "QQnotice", "", "", "QQnotice.set.add", 0, 0, "", "", QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a), QQNotifySettingBaseFragment.b(this.jdField_a_of_type_Aenu.a));
         break;
         label383:
-        bool = aizx.a();
+        bool = ajem.a();
         QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder prepare open notify switch isOpened: " + bool);
         if (!bool)
         {
           QLog.i(QQNotifySettingBaseFragment.a(), 1, "QQReminderServlet.sendSubscribeReminder setQQReminderSwitch");
-          aizx.a(true);
+          ajem.a(true);
         }
       }
-      if (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a) != null) {
-        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aejf.a).onFakePros("", ((AcsSubNoticeRsp)localObject).err_str, new aejg(this));
+      if (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a) != null) {
+        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_Aenu.a).onFakePros("", ((AcsSubNoticeRsp)localObject).err_str, new aenv(this));
       }
     }
   }

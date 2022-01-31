@@ -1,35 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
-
-class bayh
-  implements Animator.AnimatorListener
+public class bayh
 {
-  bayh(bayf parambayf) {}
+  public int a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bayh()
   {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), -bayf.a(this.a), 0, 0);
-    bayf.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    bayf.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bayf.a(this.a).setPadding(bcwh.a(bayf.a(this.a).getContext(), 8.0F), -bayf.a(this.a), 0, 0);
-    bayf.a(this.a, true);
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_a_of_type_JavaLangString = "unkown error";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bayh
  * JD-Core Version:    0.7.0.1
  */

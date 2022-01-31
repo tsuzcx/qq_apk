@@ -39,7 +39,7 @@ public class ncv
   
   private void a(Activity paramActivity)
   {
-    File localFile = new File(aljq.aX + "photo/");
+    File localFile = new File(alof.aX + "photo/");
     if ((!localFile.exists()) && (!localFile.mkdirs()))
     {
       a();
@@ -90,7 +90,7 @@ public class ncv
   
   private void b(Activity paramActivity)
   {
-    Object localObject = new File(aljq.aX + "photo/");
+    Object localObject = new File(alof.aX + "photo/");
     if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
       a();
@@ -157,13 +157,13 @@ public class ncv
     {
       if (paramInt != 0)
       {
-        paramString2 = bhpy.a(paramActivity);
+        paramString2 = bhuf.a(paramActivity);
         paramString2.a(new ncw(this));
         paramString2.setOnCancelListener(new ncx(this));
         if (paramValueCallback.equals("camera"))
         {
-          paramString2.a(paramActivity.getString(2131720588), 0);
-          paramString2.a(paramActivity.getString(2131692590), 0);
+          paramString2.a(paramActivity.getString(2131720600), 0);
+          paramString2.a(paramActivity.getString(2131692591), 0);
           paramString2.a(new ncy(this, paramActivity, paramString1, paramString2));
         }
         for (;;)
@@ -187,14 +187,14 @@ public class ncv
           break label151;
           if (paramValueCallback.equals("camcorder"))
           {
-            paramString2.a(paramActivity.getString(2131719769), 0);
-            paramString2.a(paramActivity.getString(2131692590), 0);
+            paramString2.a(paramActivity.getString(2131719781), 0);
+            paramString2.a(paramActivity.getString(2131692591), 0);
             paramString2.a(new ncz(this, paramActivity, paramString1, paramString2));
           }
           else if (paramValueCallback.equals("microphone"))
           {
-            paramString2.a(paramActivity.getString(2131719141), 0);
-            paramString2.a(paramActivity.getString(2131692590), 0);
+            paramString2.a(paramActivity.getString(2131719153), 0);
+            paramString2.a(paramActivity.getString(2131692591), 0);
             paramString2.a(new nda(this, paramActivity, paramString1, paramString2));
           }
         }

@@ -1,18 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class aeyi
-  implements DialogInterface.OnClickListener
+public class aeyi
+  implements Animation.AnimationListener
 {
-  aeyi(aeyh paramaeyh, BaseActivity paramBaseActivity) {}
+  public aeyi(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    aeyh.a(null);
-    if (aeyh.a(this.jdField_a_of_type_Aeyh) != null) {
-      aeyh.a(this.jdField_a_of_type_Aeyh).b();
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }

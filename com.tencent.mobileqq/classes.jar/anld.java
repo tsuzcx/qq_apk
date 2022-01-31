@@ -1,19 +1,8 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
+import org.json.JSONObject;
 
-public class anld
-  implements beeo
+public abstract interface anld
 {
-  public anld(ArkBrowserFragment paramArkBrowserFragment) {}
-  
-  public void a(String paramString)
-  {
-    this.a.a = paramString;
-    paramString = this.a.getWebView();
-    if (paramString != null) {
-      paramString.callJs("NativeApi.lightappGetShareData();");
-    }
-  }
+  public abstract boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3);
 }
 
 

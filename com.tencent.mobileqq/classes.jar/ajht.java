@@ -1,64 +1,20 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajht
-  extends ajhc
+class ajht
+  implements View.OnClickListener
 {
-  public ajht(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131697853), new Object[] { alpo.a(2131716100) });
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajht(ajgb paramajgb) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    paramView = new Intent(ajgb.a(this.a), NotifyPushSettingActivity.class);
+    ajgb.a(this.a).startActivity(paramView);
+    azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
   }
 }
 

@@ -1,44 +1,16 @@
-import android.support.annotation.NonNull;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
 public class ahjo
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
+  public ahjo(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
   
-  public ahjo()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

@@ -1,20 +1,17 @@
-import java.io.File;
+import android.graphics.Bitmap;
 
-final class vkc
-  implements uin
+class vkc
+  extends vja
 {
-  vkc(File paramFile, String paramString) {}
-  
-  public void a(uil paramuil)
+  vkc(vji paramvji, boolean paramBoolean1, boolean paramBoolean2, vkr paramvkr)
   {
-    String str = paramuil.b;
-    if (str != null)
-    {
-      if ((paramuil.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!ujb.a(this.jdField_a_of_type_JavaIoFile))) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      vjz.a(new vkf(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
-    }
+    super(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vkr.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
+    return true;
   }
 }
 

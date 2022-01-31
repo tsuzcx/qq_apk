@@ -1,25 +1,50 @@
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import java.util.List;
 
-class tre
-  extends RecyclerView.ViewHolder
+public class tre
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public tre(BaseWidgetView paramBaseWidgetView)
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private List<trx> jdField_a_of_type_JavaUtilList;
+  private ydl jdField_a_of_type_Ydl;
+  
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
   {
-    super(paramBaseWidgetView);
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
   }
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trr paramtrr)
+  public void a(List<trx> paramList)
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramtrr);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(ydl paramydl)
+  {
+    this.jdField_a_of_type_Ydl = paramydl;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && ((this.jdField_a_of_type_Ydl instanceof trw))) {
+      ((trf)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (trw)this.jdField_a_of_type_Ydl);
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new trf(new QCircleFeedCommentWidget(paramViewGroup.getContext()));
   }
 }
 

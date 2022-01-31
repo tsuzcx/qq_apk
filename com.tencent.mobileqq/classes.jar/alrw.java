@@ -1,8 +1,9 @@
-public class alrw
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.util.FaceInfo;
+
+public abstract interface alrw
 {
-  public long a;
-  public long b;
-  public long c;
+  public abstract void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

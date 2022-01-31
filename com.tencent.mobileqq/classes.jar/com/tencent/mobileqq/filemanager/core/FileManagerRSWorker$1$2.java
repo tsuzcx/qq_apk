@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqsc;
-import aqsk;
-import aqsl;
+import aqwl;
+import aqwt;
+import aqwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 public class FileManagerRSWorker$1$2
   implements Runnable
 {
-  public FileManagerRSWorker$1$2(aqsl paramaqsl) {}
+  public FileManagerRSWorker$1$2(aqwu paramaqwu) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class FileManagerRSWorker$1$2
       this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
       this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      aqsk.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
+      aqwt.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)

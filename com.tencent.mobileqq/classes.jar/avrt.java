@@ -1,19 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-
-public class avrt
-  implements avvc
+public abstract interface avrt
 {
-  public avrt(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void a(int paramInt, avvd paramavvd)
-  {
-    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramavvd.b)))
-    {
-      OCRResultActivity.b(this.a, paramavvd.b);
-      OCRResultActivity.a(this.a, false);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

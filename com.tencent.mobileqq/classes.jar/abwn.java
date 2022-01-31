@@ -1,62 +1,99 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import mqq.os.MqqHandler;
+import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
 
 public class abwn
-  implements View.OnClickListener
 {
-  public abwn(AccountManageActivity paramAccountManageActivity) {}
+  private static int jdField_a_of_type_Int = -1;
+  private static String jdField_a_of_type_JavaLangString = "";
   
-  public void onClick(View paramView)
+  public static String a(Application paramApplication)
   {
-    if (!this.a.b) {
-      return;
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      return jdField_a_of_type_JavaLangString;
     }
-    paramView = this.a;
-    boolean bool;
-    if (!this.a.jdField_a_of_type_Boolean)
+    String str1 = "";
+    Context localContext = paramApplication.getApplicationContext();
+    Object localObject = str1;
+    if (a(paramApplication))
     {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label245;
+      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
+      String str2 = paramApplication.getDeviceId();
+      localObject = str1;
+      if (!TextUtils.isEmpty(str2)) {
+        localObject = "" + str2;
       }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131692680);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166981));
+      str1 = paramApplication.getSubscriberId();
+      if (TextUtils.isEmpty(str1)) {
+        break label170;
+      }
+      paramApplication = (String)localObject + str1;
     }
     for (;;)
     {
-      if (AccountManageActivity.a(this.a) != null)
+      localObject = paramApplication;
+      if (TextUtils.isEmpty(paramApplication))
       {
-        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((paramView instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)paramView).f();
+        localObject = paramApplication;
+        if (Build.VERSION.SDK_INT >= 23) {
+          localObject = bhsp.b();
         }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
       }
-      this.a.b();
-      this.a.a(this.a.jdField_a_of_type_Boolean);
-      this.a.b = false;
-      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
-      azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
-      return;
-      bool = false;
-      break;
-      label245:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131692016);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166909));
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramApplication = (Application)localObject;
+        if (!((String)localObject).startsWith("012345678912345")) {}
+      }
+      else
+      {
+        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+      }
+      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
+      return jdField_a_of_type_JavaLangString;
+      label170:
+      str1 = paramApplication.getSimOperator();
+      paramApplication = (Application)localObject;
+      if (!TextUtils.isEmpty(str1)) {
+        paramApplication = (String)localObject + str1;
+      }
     }
+  }
+  
+  private static boolean a(Application paramApplication)
+  {
+    boolean bool = true;
+    if (jdField_a_of_type_Int == -1)
+    {
+      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
+      if (bool) {
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    while (jdField_a_of_type_Int > 0) {
+      for (;;)
+      {
+        return bool;
+        jdField_a_of_type_Int = 0;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean a(Application paramApplication, String paramString)
+  {
+    if (paramApplication == null) {}
+    PackageManager localPackageManager;
+    do
+    {
+      return false;
+      localPackageManager = paramApplication.getPackageManager();
+    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
+    return true;
   }
 }
 

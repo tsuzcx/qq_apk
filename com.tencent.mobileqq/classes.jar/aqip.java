@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
-public class aqip
-  implements View.OnClickListener
+class aqip
+  implements Animation.AnimationListener
 {
-  public aqip(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aqip(aqio paramaqio) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new aqiq(this));
+    this.a.c.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

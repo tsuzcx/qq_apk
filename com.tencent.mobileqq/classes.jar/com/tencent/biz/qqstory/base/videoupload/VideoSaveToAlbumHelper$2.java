@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import ulh;
-import ulj;
+import upq;
+import ups;
 
 public class VideoSaveToAlbumHelper$2
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$2(ulh paramulh, ulj paramulj, int paramInt, String paramString)
+  public VideoSaveToAlbumHelper$2(upq paramupq, ups paramups, int paramInt, String paramString)
   {
     add(this.val$taskInfo.c);
     if ((this.val$rotation != 0) && (this.val$rotation != -1)) {}
-    for (paramulh = this.val$hflipPath;; paramulh = this.val$taskInfo.jdField_b_of_type_JavaLangString)
+    for (paramupq = this.val$hflipPath;; paramupq = this.val$taskInfo.jdField_b_of_type_JavaLangString)
     {
-      add(paramulh);
+      add(paramupq);
       add(this.val$taskInfo.d);
       add(Integer.valueOf(this.val$taskInfo.a));
       add(Integer.valueOf(this.val$taskInfo.jdField_b_of_type_Int));

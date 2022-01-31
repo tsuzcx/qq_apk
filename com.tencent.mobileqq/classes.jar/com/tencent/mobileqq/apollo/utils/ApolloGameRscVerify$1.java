@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aley;
+import aljn;
 
 public class ApolloGameRscVerify$1
   implements Runnable
 {
-  public ApolloGameRscVerify$1(aley paramaley) {}
+  public ApolloGameRscVerify$1(aljn paramaljn) {}
   
   public void run()
   {

@@ -13,8 +13,8 @@ public class QCirclePopupWindowHelper$1
   
   public void run()
   {
-    if ((tpz.a().c()) && (this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698306)))) {
-      tpz.a().f();
+    if ((tpz.a().c()) && (this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698309)))) {
+      tpz.a().g();
     }
   }
 }

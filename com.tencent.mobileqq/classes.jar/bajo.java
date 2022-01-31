@@ -1,85 +1,151 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.1;
+import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.2;
+import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-class bajo
-  implements bajm
+public class bajo
+  implements Manager
 {
-  private IBinder a;
+  private int jdField_a_of_type_Int = -1;
+  public long a;
+  private bajg jdField_a_of_type_Bajg;
+  private bajm jdField_a_of_type_Bajm;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  bajo(IBinder paramIBinder)
+  public bajo(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bajm = new bajm(paramQQAppInterface);
   }
   
-  public IBinder asBinder()
+  private void a(DataLineMsgRecord paramDataLineMsgRecord, String paramString1, String paramString2, String paramString3, aoxj paramaoxj)
   {
-    return this.a;
-  }
-  
-  public void beginSwitch()
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    if (!this.jdField_a_of_type_Bajm.a())
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      this.a.transact(1, localParcel, null, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("DataLineMessageSpreadManager", 1, "last insert time less");
+      }
       return;
     }
-    finally
+    if (QLog.isDebugVersion()) {
+      QLog.i("DataLineMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
+    }
+    this.jdField_a_of_type_Bajm.a(paramDataLineMsgRecord);
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new DataLineMessageSpreadManager.2(this, paramDataLineMsgRecord, paramString1, paramaoxj, paramString2, paramString3), 1000L);
+  }
+  
+  private boolean a(DataLineMsgRecord paramDataLineMsgRecord)
+  {
+    int i = this.jdField_a_of_type_Bajm.a();
+    int j = aoxk.a().a();
+    if (j == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DataLineMessageSpreadManager", 1, "config is max: 0, return");
+      }
+    }
+    do
     {
-      localParcel.recycle();
+      return false;
+      if (i <= j) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DataLineMessageSpreadManager", 1, "file count over[" + i + "], return");
+    return false;
+    return true;
+  }
+  
+  public void a(aoxh paramaoxh)
+  {
+    this.jdField_a_of_type_Bajm.a(paramaoxh);
+  }
+  
+  public void a(DataLineMsgRecord paramDataLineMsgRecord)
+  {
+    if (QLog.isDebugVersion())
+    {
+      QLog.i("DataLineMessageSpreadManager", 4, "ready to post to SubThread Process， msgUid[" + paramDataLineMsgRecord.msgUid + "], hashCode:" + paramDataLineMsgRecord.hashCode());
+      if (paramDataLineMsgRecord.msgUid == 0L) {
+        arrr.a();
+      }
+    }
+    ThreadManager.executeOnSubThread(new DataLineMessageSpreadManager.1(this, paramDataLineMsgRecord));
+  }
+  
+  public void a(DataLineMsgRecord paramDataLineMsgRecord, Context paramContext)
+  {
+    paramDataLineMsgRecord = paramDataLineMsgRecord.getExtInfoFromExtStr("tim_aio_file_msg_uiniseq");
+    try
+    {
+      l = Long.parseLong(paramDataLineMsgRecord);
+      i = DataLineMsgRecord.getDevTypeBySeId(l);
+      paramDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(l);
+      if (paramDataLineMsgRecord == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DataLineMessageSpreadManager", 1, "garyTips not find fileMsg");
+        }
+        return;
+      }
+    }
+    catch (Exception paramDataLineMsgRecord)
+    {
+      long l;
+      int i;
+      for (;;)
+      {
+        QLog.e("DataLineMessageSpreadManager", 1, paramDataLineMsgRecord.toString());
+        l = 0L;
+      }
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80098F8", "0X80098F8", 0, 0, "", "", "", "");
+      paramDataLineMsgRecord = paramDataLineMsgRecord.trans2Entity();
+      if (paramDataLineMsgRecord == null)
+      {
+        QLog.e("DataLineMessageSpreadManager", 1, "query Entity is nyll!!!, uniseq[" + l + "]");
+        return;
+      }
+      bagk.a(paramDataLineMsgRecord, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, i);
     }
   }
   
-  public void doSwitch(String paramString1, String paramString2)
+  public void a(MessageRecord paramMessageRecord, int paramInt)
   {
-    Parcel localParcel = Parcel.obtain();
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramMessageRecord == null)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(3, localParcel, null, 1);
+      QLog.e("DataLineMessageSpreadManager", 1, arrr.a());
       return;
     }
-    finally
-    {
-      localParcel.recycle();
+    if (QLog.isColorLevel()) {
+      QLog.i("DataLineMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
     }
+    ThreadManager.getUIHandler().postDelayed(new DataLineMessageSpreadManager.3(this), 1000L);
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.jdField_a_of_type_Long + "],lstCache size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
+      }
+      return;
+    }
+    finally {}
   }
   
-  public void onProgress(long paramLong1, long paramLong2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void postSwitch(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(4, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
+  public void onDestroy() {}
 }
 
 

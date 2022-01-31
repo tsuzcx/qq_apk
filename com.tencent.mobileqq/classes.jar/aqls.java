@@ -1,22 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-class aqls
+public class aqls
   implements View.OnClickListener
 {
-  aqls(aqlr paramaqlr) {}
+  public aqls(FilePreviewActivity paramFilePreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = arni.a((FileInfo)((aqlt)paramView.getTag()).a);
-    localObject = new arhh(aqlr.a(this.a).app, aqlr.a(this.a), (FileManagerEntity)localObject, 10000);
-    localObject = new arhj(aqlr.a(this.a), (arhm)localObject);
-    ((arhj)localObject).a(8);
-    ((arhj)localObject).a(zen.a(paramView));
-    ((arhj)localObject).a();
+    azqs.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, bagk.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720692), false));
   }
 }
 

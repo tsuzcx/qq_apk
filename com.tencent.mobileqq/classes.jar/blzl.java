@@ -1,11 +1,12 @@
-import java.util.concurrent.Executor;
-
-final class blzl
-  implements Executor
+public class blzl
 {
-  public void execute(Runnable paramRunnable)
+  public int a;
+  public int b;
+  
+  public blzl(int paramInt1, int paramInt2)
   {
-    blzj.a().a(paramRunnable);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

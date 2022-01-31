@@ -1,15 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class andl
-  implements CompoundButton.OnCheckedChangeListener
+final class andl
+  implements bauf
 {
-  public andl(QRScanEntryView paramQRScanEntryView) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(bave parambave, bavf parambavf)
   {
-    auan.b = paramBoolean;
+    if ((parambave == null) || (parambavf == null)) {}
+    while (!(parambave instanceof baub)) {
+      return;
+    }
+    baub localbaub = (baub)parambave;
+    localbaub.jdField_a_of_type_Long += parambavf.c;
+    parambavf.c = 0L;
+    parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+    parambavf = localbaub.jdField_a_of_type_JavaLangString;
+    if (parambavf.contains("range="))
+    {
+      parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
+      localbaub.jdField_a_of_type_JavaLangString = (parambavf + "range=" + localbaub.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", offset=" + localbaub.jdField_a_of_type_Long);
   }
 }
 

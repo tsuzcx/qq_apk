@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
-
-public class atmt
-  implements DialogInterface.OnClickListener
+public abstract interface atmt
 {
-  public atmt(LocationDialogUtil.4 param4) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azmj.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

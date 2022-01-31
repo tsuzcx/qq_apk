@@ -1,29 +1,56 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
 
-class arwo
-  implements View.OnTouchListener
+public class arwo
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  arwo(arwl paramarwl) {}
+  public int a;
+  public arwh a;
+  arwp a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public MessageForArkFlashChat a;
+  public FlashChatItem a;
+  public int b;
+  int c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public arwo(View paramView, arwp paramarwp, int paramInt)
   {
-    arwl.a(this.a).setImageResource(2130839716);
-    arwl.a(this.a).setTag(Integer.valueOf(2130839716));
-    if (arwl.a(this.a))
-    {
-      arwl.a(this.a);
-      arwl.a(this.a).removeView(arwl.a(this.a));
-      arwl.a(this.a, false);
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
+    if (paramarwp != null) {
+      this.jdField_a_of_type_Arwp = paramarwp;
     }
-    return false;
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362798));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131369757));
+    this.itemView.setOnClickListener(this);
+    this.itemView.setOnTouchListener(paramarwp);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Arwp != null) {
+      this.jdField_a_of_type_Arwp.a(paramView, getPosition(), this.c);
+    }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Arwp != null)
+    {
+      this.jdField_a_of_type_Arwp.b(paramView, getPosition(), this.c);
+      bool = true;
+    }
+    return bool;
   }
 }
 

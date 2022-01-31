@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aclv;
+import acqk;
 import android.app.Activity;
 import android.content.res.Resources;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 
 public class ChatSettingForTroop$52
   implements Runnable
@@ -21,10 +21,10 @@ public class ChatSettingForTroop$52
     do
     {
       return;
-      this.this$0.a = bdcd.a(this.this$0, 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131721024));
-      aclv localaclv = new aclv(this);
-      this.this$0.a.setPositiveButton(2131691088, localaclv);
+      this.this$0.a = bdgm.a(this.this$0, 230);
+      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131721036));
+      acqk localacqk = new acqk(this);
+      this.this$0.a.setPositiveButton(2131691089, localacqk);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

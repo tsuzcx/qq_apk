@@ -1,22 +1,8 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.view.View;
 
-public abstract class ajll
+public abstract interface ajll
 {
-  FlowActivity a;
-  
-  public ajll(FlowActivity paramFlowActivity)
-  {
-    this.a = paramFlowActivity;
-  }
-  
-  public Context a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(ViewGroup paramViewGroup);
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
 }
 
 

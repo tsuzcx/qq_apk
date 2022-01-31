@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.widget;
 
 import android.graphics.drawable.Animatable;
-import bgnd;
+import bgrk;
 
 public class QQProgressDialog$1
   implements Runnable
 {
-  public QQProgressDialog$1(bgnd parambgnd) {}
+  public QQProgressDialog$1(bgrk parambgrk) {}
   
   public void run()
   {
-    bgnd.a(this.this$0).start();
+    bgrk.a(this.this$0).start();
   }
 }
 

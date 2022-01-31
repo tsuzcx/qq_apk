@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.content.Context;
-import beuy;
+import bezh;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class Validator$1
   implements Runnable
 {
-  public Validator$1(beuy parambeuy, String paramString) {}
+  public Validator$1(bezh parambezh, String paramString) {}
   
   public void run()
   {
-    Context localContext = beuy.a(this.this$0).a;
+    Context localContext = bezh.a(this.this$0).a;
     if (localContext != null) {
       QQToast.a(localContext, this.a, 0).a();
     }

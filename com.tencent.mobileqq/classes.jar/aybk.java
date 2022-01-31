@@ -1,37 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.graphics.Bitmap;
 
-public class aybk
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public abstract interface aybk
 {
-  public final TextView a;
-  private aybi jdField_a_of_type_Aybi;
-  public RecentDynamicAvatarView a;
-  
-  public aybk(aybh paramaybh, View paramView, aybi paramaybi)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371142));
-    this.jdField_a_of_type_Aybi = paramaybi;
-    paramView.setOnClickListener(this);
-    paramView.setTag(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Aybi != null) && (aybh.a(this.jdField_a_of_type_Aybh))) {
-      this.jdField_a_of_type_Aybi.a(paramView, getAdapterPosition() - 1);
-    }
-    while (this.jdField_a_of_type_Aybi == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aybi.a(paramView, getAdapterPosition());
-  }
+  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
 }
 
 

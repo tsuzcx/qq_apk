@@ -1,66 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-public abstract interface aumk
-  extends IInterface
+public class aumk
+  implements aumg
 {
-  public abstract int a();
+  public aumk(TabPageIndicator paramTabPageIndicator) {}
   
-  public abstract Intent a();
-  
-  public abstract Bundle a();
-  
-  public abstract SongInfo a();
-  
-  public abstract String a();
-  
-  public abstract String a(int paramInt, String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(aumh paramaumh);
-  
-  public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract SongInfo[] a();
-  
-  public abstract int b();
-  
-  public abstract SongInfo b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(aumh paramaumh);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract int f();
-  
-  public abstract int g();
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    TabPageIndicator.a(this.a);
+    return false;
+  }
 }
 
 

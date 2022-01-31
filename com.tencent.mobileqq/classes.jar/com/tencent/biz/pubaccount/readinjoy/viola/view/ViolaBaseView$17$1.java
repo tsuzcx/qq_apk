@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import android.text.TextUtils;
-import bfhi;
+import bflr;
 import com.tencent.qphone.base.util.QLog;
 import sqz;
 
@@ -17,7 +17,7 @@ public class ViolaBaseView$17$1
     if (!TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_Sqz.a))) {}
     for (String str1 = ViolaBaseView.b(this.jdField_a_of_type_Sqz.a);; str1 = "")
     {
-      QLog.d(str2, 2, bfhi.d(str1) + " js down source MD5 " + bfhi.d(this.jdField_a_of_type_JavaLangString));
+      QLog.d(str2, 2, bflr.d(str1) + " js down source MD5 " + bflr.d(this.jdField_a_of_type_JavaLangString));
       return;
     }
   }

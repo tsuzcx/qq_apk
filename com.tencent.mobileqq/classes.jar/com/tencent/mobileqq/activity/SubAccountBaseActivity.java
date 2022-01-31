@@ -4,11 +4,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import azyl;
-import bdcd;
-import bdee;
-import bdfq;
-import bepp;
+import bacu;
+import bdgm;
+import bdin;
+import bdjz;
+import bety;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -18,27 +18,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bdfq jdField_a_of_type_Bdfq;
-  private bepp jdField_a_of_type_Bepp;
+  private bdjz jdField_a_of_type_Bdjz;
+  private bety jdField_a_of_type_Bety;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bepp.c(true);
+      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bety.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Bepp.c(paramInt);
+      this.jdField_a_of_type_Bety.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bepp != null) && (!this.jdField_a_of_type_Bepp.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bepp.show();
+      if ((this.jdField_a_of_type_Bety != null) && (!this.jdField_a_of_type_Bety.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bety.show();
       }
       return;
-      this.jdField_a_of_type_Bepp.c(2131695088);
+      this.jdField_a_of_type_Bety.c(2131695090);
     }
   }
   
@@ -49,11 +49,11 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bdfq = bdcd.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bdfq.setPositiveButton(2131691088, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdfq.setNegativeButton(2131690648, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdfq.setCancelable(false);
-    this.jdField_a_of_type_Bdfq.show();
+    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setCancelable(false);
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   public void b(String paramString)
@@ -68,15 +68,15 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bdfq = bdcd.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bdfq.setPositiveButton(2131691088, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdfq.setCancelable(false);
-    this.jdField_a_of_type_Bdfq.show();
+    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setCancelable(false);
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   public boolean b()
   {
-    return bdee.d(BaseApplication.getContext());
+    return bdin.d(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -88,7 +88,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = b();
     if (!bool) {
-      b(getString(2131692397));
+      b(getString(2131692398));
     }
     return bool;
   }
@@ -103,18 +103,18 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    azyl localazyl = (azyl)this.app.getManager(62);
-    if (localazyl != null) {
-      localazyl.a(this);
+    bacu localbacu = (bacu)this.app.getManager(62);
+    if (localbacu != null) {
+      localbacu.a(this);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {}
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -122,12 +122,12 @@ public class SubAccountBaseActivity
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {}
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bdfq.dismiss();
+      this.jdField_a_of_type_Bdjz.dismiss();
       label24:
-      this.jdField_a_of_type_Bdfq = null;
+      this.jdField_a_of_type_Bdjz = null;
       return;
     }
     catch (Exception localException)

@@ -1,170 +1,197 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForBirthdayNotice;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.vip.manager.MonitorManager;
 
-class afkg
-  implements arnx
+public class afkg
+  extends aepl
+  implements View.OnClickListener
 {
-  afkg(afjb paramafjb, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
+  private static final String jdField_a_of_type_JavaLangString = alud.a(2131701532);
+  private long jdField_a_of_type_Long;
+  private ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(Color.parseColor("#883353"));
+  
+  public afkg(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  private View a(View paramView, afkh paramafkh)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558764, null);
+      paramafkh.jdField_b_of_type_AndroidViewView = paramView;
+      paramafkh.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362254);
+      paramafkh.d = paramView.findViewById(2131362253);
+      paramafkh.a = ((URLImageView)paramView.findViewById(2131362256));
+      paramafkh.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362257));
+      paramafkh.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362255));
+      localView = paramView;
+      if (e)
+      {
+        paramafkh.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        localView = paramView;
+      }
+    }
+    if (e)
+    {
+      localView.setContentDescription(null);
+      paramafkh.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramafkh.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+    }
+    return localView;
+  }
+  
+  private void a(MessageRecord paramMessageRecord)
+  {
+    long l1;
+    if ((paramMessageRecord != null) && (!bdew.a().a(paramMessageRecord, "aio_msg|birthday_notice")))
+    {
+      bdew.a().a(paramMessageRecord, "aio_msg|birthday_notice");
+      l1 = 0L;
+    }
+    try
+    {
+      long l2 = Long.parseLong(paramMessageRecord.frienduin);
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramMessageRecord);
+        MonitorManager.a().a(19, 10, " error parse friend uin " + paramMessageRecord, false);
+      }
+    }
+    paramMessageRecord = new LpReportInfo_pf00064();
+    paramMessageRecord.actionType = 91;
+    paramMessageRecord.subactionType = 22;
+    paramMessageRecord.reserves = 1;
+    paramMessageRecord.toUin = l1;
+    LpReportManager.getInstance().reportToPF00064(paramMessageRecord, false, false);
+  }
+  
+  protected aepm a()
+  {
+    return new afkh(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
+  {
+    paramMessageRecord = (MessageForBirthdayNotice)paramMessageRecord;
+    paramaepm = (afkh)paramaepm;
+    paramView = a(paramView, paramaepm);
+    try
+    {
+      paramaepm.a.setBackgroundURL(paramMessageRecord.icon);
+      paramaepm.d.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
+      paramaepm.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
+      int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
+      if (i >= 0)
+      {
+        paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
+        paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
+        paramaepm.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
+        paramaepm.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
+        paramaepm.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+        a(paramMessageRecord);
+        if (e)
+        {
+          paramaepm.jdField_b_of_type_JavaLangStringBuilder.append("生日");
+          paramaepm.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
+          paramaepm.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
+          paramaepm.jdField_b_of_type_AndroidViewView.setContentDescription(paramaepm.jdField_b_of_type_JavaLangStringBuilder.toString());
+        }
+        return paramView;
+      }
+    }
+    catch (Exception paramLinearLayout)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeItemBuilder", 1, "set resource error " + paramLinearLayout);
+        MonitorManager.a().a(19, 2, "set data error " + paramLinearLayout, false);
+        continue;
+        paramaepm.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
+      }
+    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public boolean a()
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 500L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Long = l;
+      return bool;
+    }
+  }
+  
+  public bdpk[] a(View paramView)
+  {
+    return null;
+  }
   
   public void onClick(View paramView)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (a())
     {
-    default: 
-      QLog.e("GrayTipsItemBuilder", 1, "handle renewal gray tips click, action not support yet, action=" + this.jdField_a_of_type_Int);
+      paramView = paramView.getTag();
+      if ((paramView instanceof MessageForBirthdayNotice))
+      {
+        paramView = (MessageForBirthdayNotice)paramView;
+        if (!TextUtils.isEmpty(paramView.doufu_link)) {
+          break label80;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("BirthDayNoticeItemBuilder", 2, "jumpToH5Page with url empty");
+        }
+        MonitorManager.a().a(19, 2, " parse data with empty url " + paramView, false);
+      }
     }
-    for (;;)
+    return;
+    label80:
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView.doufu_link);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    try
     {
-      abot.b(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -4020);
-      do
-      {
-        return;
-        paramView = (bdot)this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(177);
-        if (paramView.jdField_a_of_type_Int == 0) {}
-        for (;;)
-        {
-          VasWebviewUtil.openIndividuationIndex(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext);
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_personality", "", 1, 0, 0, "", "", "");
-          break;
-          if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString)) {}
-        }
-        EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 10, false, "");
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_emoji", "", 1, 0, 0, "", "", "");
-        break;
-        paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("individuation_url_type", 40306);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_bubble", "", 1, 0, 0, "", "", "");
-        break;
-        if (!BaseApplicationImpl.IS_SUPPORT_THEME) {
-          Toast.makeText(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getString(2131720769), 0).show();
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_theme", "", 1, 0, 0, "", "", "");
-          break;
-          if (bdal.a())
-          {
-            paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-            paramView.putExtra("individuation_url_type", 40306);
-            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, true, -1);
-          }
-          else
-          {
-            Toast.makeText(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getString(2131719535), 0).show();
-          }
-        }
-        if (!bdal.a()) {
-          Toast.makeText(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.getString(2131719535), 0).show();
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_widget", "", 1, 0, 0, "", "", "");
-          break;
-          paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("individuation_url_type", 40100);
-          paramView.putExtra("vasUsePreWebview", true);
-          paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-          paramView.putExtra("hide_left_button", false);
-          paramView.putExtra("show_right_close_button", false);
-          paramView.putExtra("url", bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "pendant", ""));
-          paramView.putExtra("business", 512L);
-          VasWebviewUtil.insertVasWbPluginToIntent(512L, paramView);
-          paramView.putExtra("isShowAd", false);
-          this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        }
-        if (!((fx)this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42)).c())
-        {
-          paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, ChatTextSizeSettingActivity.class);
-          this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_font", "", 1, 0, 0, "", "", "");
-          break;
-          paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("hide_left_button", false);
-          paramView.putExtra("show_right_close_button", false);
-          paramView.putExtra("individuation_url_type", 40100);
-          paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-          VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "font", ""), 4096L, paramView, false, -1);
-        }
-        paramView = new Intent();
-        paramView.putExtra("vasUsePreWebview", true);
-        paramView.putExtra("bg_replace_entrance", 8);
-        paramView.putExtra("hide_left_button", false);
-        paramView.putExtra("show_right_close_button", false);
-        paramView.putExtra("individuation_url_type", 40306);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "background", ""), 33554432L, paramView, false, -1);
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_background", "", 1, 0, 0, "", "", "");
-        break;
-        bcyw.a((Activity)this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "inside.myIndividuation", 1, 2, 1, "", false, false, "");
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_card", "", 1, 0, 0, "", "", "");
-        break;
-        paramView = alqr.a(2, this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      } while (TextUtils.isEmpty(paramView));
-      Object localObject = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("individuation_url_type", 40100);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, paramView, 134217728L, (Intent)localObject, true, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_redbag", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "bubbleDetailDialog", String.valueOf(this.b), "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "fontDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramView.putExtra("hide_left_button", false);
-      paramView.putExtra("show_right_close_button", false);
-      paramView.putExtra("url", bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "pendantDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.faceaddon.client_tab_store"));
-      paramView.putExtra("business", 512L);
-      paramView.putExtra("individuation_url_type", 40100);
-      VasWebviewUtil.insertVasWbPluginToIntent(512L, paramView);
-      paramView.putExtra("isShowAd", false);
-      this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent();
-      paramView.putExtra("individuation_url_type", 40100);
-      localObject = bdox.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "backgroundDetail", String.valueOf(this.b), "");
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, (String)localObject, 33554432L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        paramView = new Intent(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-        paramView.putExtra("isShowAd", false);
-        this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      }
-      else
-      {
-        QLog.e("GrayTipsItemBuilder", 1, "MSG_TYPE_RENEWAL_TAIL_TIP, onClick, url null");
-        continue;
-        bdqe.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "LTMCLUB", 3, false, false);
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
-        continue;
-        bdqe.a(this.jdField_a_of_type_Afjb.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "CJCLUBT", 3, false, false);
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Afjb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
-      }
+      long l = Long.parseLong(paramView.frienduin);
+      paramView = new LpReportInfo_pf00064();
+      paramView.actionType = 91;
+      paramView.subactionType = 22;
+      paramView.reserves = 2;
+      paramView.toUin = l;
+      LpReportManager.getInstance().reportToPF00064(paramView, false, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramView);
+      MonitorManager.a().a(19, 10, " error parse friend uin " + paramView, false);
     }
   }
 }

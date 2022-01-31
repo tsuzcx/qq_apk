@@ -1,33 +1,6 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-
-public class vcd
-  extends unk<vdo>
+public abstract interface vcd
 {
-  public String a()
-  {
-    return ume.a("StorySvc.video_apply_authkey");
-  }
-  
-  public vdo a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
-    {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new vdo(localRspAuthKey);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new byte[0];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,34 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.RotateableView;
 
-class agdn
-  implements bhqd
+public class agdn
+  extends agdh
 {
-  agdn(agdi paramagdi, bhpy parambhpy, AIOImageData paramAIOImageData, File paramFile) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
+  boolean jdField_a_of_type_Boolean = false;
+  public long b;
+  String b;
+  long jdField_c_of_type_Long;
+  View jdField_c_of_type_AndroidViewView;
+  String jdField_c_of_type_JavaLangString;
+  int e;
+  int f;
+  int g;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Agdi.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bhpy.dismiss();
-  }
+  public agdn(agdj paramagdj) {}
 }
 
 

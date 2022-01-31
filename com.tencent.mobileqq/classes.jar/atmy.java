@@ -1,16 +1,15 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.8;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class atmy
   implements DialogInterface.OnClickListener
 {
-  public atmy(LocationDialogUtil.8 param8) {}
+  public atmy(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

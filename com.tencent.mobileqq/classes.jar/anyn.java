@@ -1,9 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract interface anyn
+public class anyn
 {
-  public abstract void a(Context paramContext, ColorNote paramColorNote);
+  public Set<Integer> a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
+  
+  public anyn()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import axtq;
-import axtz;
-import axuh;
-import axuw;
+import axxz;
+import axyi;
+import axyq;
+import axzf;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
@@ -11,24 +11,24 @@ import com.tencent.richmediabrowser.log.IBrowserLog;
 public class AIOGalleryActivity$2$3
   implements Runnable
 {
-  public AIOGalleryActivity$2$3(axtq paramaxtq, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public AIOGalleryActivity$2$3(axxz paramaxxz, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_Axtq.a) != null))
+    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a) != null))
     {
-      axtz localaxtz = AIOGalleryActivity.a(this.jdField_a_of_type_Axtq.a).a;
+      axyi localaxyi = AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a;
       try
       {
-        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = axuw.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
+        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = axzf.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
         if (arrayOfAIOBrowserBaseData == null)
         {
           BrowserLogHelper.getInstance().getGalleryLog().d("IAIOImageProviderCallBack", 4, "galleryBaseDatas is null");
           return;
         }
-        if (localaxtz.a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int))
+        if (localaxyi.a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int))
         {
-          AIOGalleryActivity.a(this.jdField_a_of_type_Axtq.a).a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
+          AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
           return;
         }
       }

@@ -18,7 +18,7 @@ final class ncd
     Object localObject;
     if (paramString != null)
     {
-      paramString = (bavr)paramString.getManager(193);
+      paramString = (bbaa)paramString.getManager(193);
       localObject = this.jdField_a_of_type_JavaLangString;
       if (!BidDownloader.a(paramInt)) {
         break label172;

@@ -1,71 +1,171 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.annotation.SuppressLint;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.utils.DebugUtil;
+import com.tencent.mobileqq.minigame.manager.EngineInstaller;
+import com.tencent.mobileqq.minigame.manager.InstalledEngine;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.Iterator;
 
+@SuppressLint({"WrongConstant"})
 public class aues
-  extends aueu<MessageForPtt>
 {
-  public aues(MessageForPtt paramMessageForPtt)
+  private static volatile aues jdField_a_of_type_Aues;
+  public static final String[] a;
+  private int jdField_a_of_type_Int = 3;
+  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
+  private boolean jdField_a_of_type_Boolean;
+  
+  static
   {
-    super(paramMessageForPtt);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "native_lame_mp3", "c++_shared", "saturn", "traeimp-rtmp", "txffmpeg", "liteavsdk" };
   }
   
-  protected int a()
+  public aues()
   {
-    return 3;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = 15;
-    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
-    if (!a(localMsgBackupResEntity.filePath)) {
-      return null;
-    }
-    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
-    Object localObject = a(15);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
-    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).istroop == 1) {
-      ((HashMap)localObject).put("chatType", "1");
-    }
-    for (;;)
+    Iterator localIterator = EngineInstaller.getInstalledEngine(this.jdField_a_of_type_Int).iterator();
+    while (localIterator.hasNext())
     {
-      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localMsgBackupResEntity);
-      return localObject;
-      if (((MessageForPtt)this.a).istroop == 3000) {
-        ((HashMap)localObject).put("chatType", "2");
-      } else {
-        ((HashMap)localObject).put("chatType", "3");
+      InstalledEngine localInstalledEngine = (InstalledEngine)localIterator.next();
+      if (localInstalledEngine.isVerify) {
+        this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = localInstalledEngine;
       }
     }
   }
   
-  public void a()
+  public static aues a()
   {
-    Object localObject = (MessageForPtt)this.a;
-    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
-    localObject = ((MessageForPtt)this.a).getRichText();
-    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
+    if (jdField_a_of_type_Aues == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aues == null) {
+        jdField_a_of_type_Aues = new aues();
+      }
+      return jdField_a_of_type_Aues;
+    }
+    finally {}
   }
   
-  public void b()
+  private String a(InstalledEngine paramInstalledEngine)
   {
-    ((MessageForPtt)this.a).url = auet.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).isSendFromLocal()) {
-      ((MessageForPtt)this.a).issend = 2;
+    if ((paramInstalledEngine != null) && (paramInstalledEngine.isVerify)) {
+      return paramInstalledEngine.engineDir;
     }
-    ((MessageForPtt)this.a).isReadPtt = true;
-    ((MessageForPtt)this.a).serial();
+    return null;
+  }
+  
+  public void a(InstalledEngine paramInstalledEngine)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramInstalledEngine;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine != null) {}
+    for (;;)
+    {
+      try
+      {
+        bool1 = bjmt.a(this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.engineDir + File.separator + "liteavsdk.jar", BaseApplicationImpl.getApplication().getApplicationContext(), getClass().getClassLoader(), "com.tencent.rtmp.ui.TXCloudVideoView", null, false);
+        if (bool1)
+        {
+          QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar successful!!!");
+          bool3 = bool1;
+          String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+          int j = arrayOfString.length;
+          int i = 0;
+          bool1 = true;
+          if (i >= j) {
+            continue;
+          }
+          str = arrayOfString[i];
+          if ((!"liteavsdk".equals(str)) || (bool3)) {
+            continue;
+          }
+          QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed?!!, and don't load liteavsdk.so ?!!");
+          bool1 = false;
+          i += 1;
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        String str;
+        QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed, e:" + localException.toString());
+        boolean bool1 = false;
+        continue;
+        QLog.e("MiniAppSoLoader", 1, "load liteavsdk.jar failed ？!! ");
+        bool3 = bool1;
+        continue;
+        if ((bool1) && (a(str)))
+        {
+          bool2 = true;
+          bool1 = bool2;
+          if (!"native_lame_mp3".equals(str)) {
+            continue;
+          }
+          bool1 = bool2;
+          if (!bool2) {
+            continue;
+          }
+          this.jdField_a_of_type_Boolean = true;
+          bool1 = bool2;
+          continue;
+        }
+        boolean bool2 = false;
+        continue;
+        if ((bool1) && (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.engineDir)))
+        {
+          QLog.d("MiniAppSoLoader", 1, "loadAllOk, TXLiveBase.setLibraryPath:" + this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.engineDir);
+          bjue.a("com.tencent.rtmp.TXLiveBase", "setLibraryPath", false, bjue.a(new Class[] { String.class }), new Object[] { this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.engineDir });
+        }
+        return bool1;
+      }
+      boolean bool3 = false;
+    }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.e("MiniAppSoLoader", 1, "[MiniEng]load so " + paramString + " from " + this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine);
+    }
+    String str2;
+    String str1;
+    do
+    {
+      return false;
+      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine);
+      str1 = str2 + File.separator + "lib" + paramString + ".so";
+      QLog.i("MiniAppSoLoader", 1, "[MiniEng]load so " + paramString + " from " + str1);
+    } while (TextUtils.isEmpty(str2));
+    try
+    {
+      System.load(str1);
+      if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus = 3;
+      }
+      QLog.i("MiniAppSoLoader", 1, "[MiniEng] load " + str1 + " success.");
+      return true;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MiniAppSoLoader", 1, "[MiniEng] load " + str1 + " fail: " + DebugUtil.getPrintableStackTrace(paramString), paramString);
+      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine.loadStatus = 2;
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return a("native_lame_mp3");
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

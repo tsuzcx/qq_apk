@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.utils;
 
-import bdcs;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import yho;
-import yhs;
+import ymb;
+import ymf;
 
 public class SubscribeDraftManager$1
   implements Runnable
 {
-  public SubscribeDraftManager$1(yho paramyho, String paramString1, String paramString2, String paramString3, String paramString4, yhs paramyhs) {}
+  public SubscribeDraftManager$1(ymb paramymb, String paramString1, String paramString2, String paramString3, String paramString4, ymf paramymf) {}
   
   public void run()
   {
-    Pair localPair = yho.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Pair localPair = ymb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localPair != null)
     {
       int i;
@@ -23,8 +23,8 @@ public class SubscribeDraftManager$1
         if (i == 0) {
           break label100;
         }
-        if (this.jdField_a_of_type_Yhs != null) {
-          this.jdField_a_of_type_Yhs.a(3, true, this.b, new Object[0]);
+        if (this.jdField_a_of_type_Ymf != null) {
+          this.jdField_a_of_type_Ymf.a(3, true, this.b, new Object[0]);
         }
       }
       label100:
@@ -33,16 +33,16 @@ public class SubscribeDraftManager$1
         return;
         i = 0;
         break;
-        bdcs.d((String)localPair.first);
-        bdcs.d((String)localPair.second);
-      } while (this.jdField_a_of_type_Yhs == null);
-      this.jdField_a_of_type_Yhs.a(3, false, this.b, new Object[0]);
+        bdhb.d((String)localPair.first);
+        bdhb.d((String)localPair.second);
+      } while (this.jdField_a_of_type_Ymf == null);
+      this.jdField_a_of_type_Ymf.a(3, false, this.b, new Object[0]);
       return;
     }
-    if (this.jdField_a_of_type_Yhs != null) {
-      this.jdField_a_of_type_Yhs.a(3, false, this.b, new Object[0]);
+    if (this.jdField_a_of_type_Ymf != null) {
+      this.jdField_a_of_type_Ymf.a(3, false, this.b, new Object[0]);
     }
-    QLog.d(yho.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
+    QLog.d(ymb.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
   }
 }
 

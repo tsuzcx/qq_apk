@@ -6,8 +6,8 @@ import android.os.Debug;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.SparseBooleanArray;
-import aznl;
-import bjxj;
+import azru;
+import bkbq;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -50,8 +50,8 @@ public class MonitorTimeExecutor
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
     localStringBuilder.append("|").append("monitorThread=").append(paramThread.getName()).append(",tid=").append(paramThread.getId()).append(",state=").append(paramThread.getState());
-    localStringBuilder.append(aznl.a());
-    localStringBuilder.append(aznl.b());
+    localStringBuilder.append(azru.a());
+    localStringBuilder.append(azru.b());
     return localStringBuilder.toString();
   }
   
@@ -122,13 +122,13 @@ public class MonitorTimeExecutor
   private static void b(MonitorTimeExecutor paramMonitorTimeExecutor)
   {
     QLog.i("MonitorTimeExecutor", 1, "[startWatching] for " + paramMonitorTimeExecutor);
-    if (!((Boolean)bjxj.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)bkbq.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
     {
       QLog.i("MonitorTimeExecutor", 1, "[startWatching] won't start since monitor disabled");
       return;
     }
-    jdField_a_of_type_Long = ((Long)bjxj.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
-    b = ((Long)bjxj.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
+    jdField_a_of_type_Long = ((Long)bkbq.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
+    b = ((Long)bkbq.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
     QLog.i("MonitorTimeExecutor", 1, "[startWatching] CHECK_PERIOD=" + jdField_a_of_type_Long + " THRESHOLD=" + b);
     if (jdField_a_of_type_AndroidOsHandler == null) {
       jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
@@ -162,9 +162,9 @@ public class MonitorTimeExecutor
     {
       try
       {
-        localObject = aznl.a("kandian");
+        localObject = azru.a("kandian");
         str1 = str2;
-        i = aznl.a(BaseApplication.getContext(), (String)localObject, str2);
+        i = azru.a(BaseApplication.getContext(), (String)localObject, str2);
         if (i != 1) {
           continue;
         }

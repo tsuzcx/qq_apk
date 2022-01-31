@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
-class adoh
-  implements QQPermissionCallback
+public class adoh
+  extends anyt
 {
-  adoh(adog paramadog) {}
+  public adoh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
-    bdcd.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+    super.a(paramBoolean, paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
-    this.a.a.g();
+    super.a(paramBoolean, paramString, paramInt);
+    if (paramBoolean)
+    {
+      BusinessCard localBusinessCard = ((anys)this.a.app.getManager(112)).a(paramString);
+      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
+      this.a.a(localBusinessCard);
+      this.a.a = localBusinessCard;
+      return;
+    }
+    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.b(paramBoolean, paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.b(paramBoolean, paramString, paramInt);
   }
 }
 

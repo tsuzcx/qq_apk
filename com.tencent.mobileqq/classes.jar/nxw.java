@@ -3,7 +3,7 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActiv
 import com.tencent.qphone.base.util.QLog;
 
 public class nxw
-  implements ymm
+  implements yrb
 {
   public nxw(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   

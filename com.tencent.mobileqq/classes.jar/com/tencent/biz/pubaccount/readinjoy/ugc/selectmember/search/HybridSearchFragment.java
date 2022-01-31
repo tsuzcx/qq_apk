@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search;
 
-import aljq;
+import alof;
 import android.view.View;
-import ayfe;
-import ayjl;
-import aylz;
-import ayox;
-import aypx;
+import ayjn;
+import aynu;
+import ayqi;
+import aytg;
+import ayug;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ import qwh;
 
 public class HybridSearchFragment
   extends BaseSearchFragment
-  implements aylz
+  implements ayqi
 {
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   private qwg jdField_a_of_type_Qwg;
@@ -29,24 +29,24 @@ public class HybridSearchFragment
     return new HybridSearchFragment();
   }
   
-  public ayfe a()
+  public ayjn a()
   {
-    return new qwf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
+    return new qwf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  public aypx a()
+  public ayug a()
   {
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    localHashSet.add(aljq.aC);
-    localArrayList.add(new ayox(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
+    localHashSet.add(alof.aC);
+    localArrayList.add(new aytg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
     localArrayList.add(new qwd());
     return new qwh(localArrayList);
   }
   
   public void a(View paramView)
   {
-    paramView = (ayjl)paramView.getTag(2131379913);
+    paramView = (aynu)paramView.getTag(2131379971);
     if (this.jdField_a_of_type_Qwg != null) {
       this.jdField_a_of_type_Qwg.a(paramView);
     }

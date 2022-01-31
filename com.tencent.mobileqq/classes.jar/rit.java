@@ -7,7 +7,7 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class rit
-  implements bfka
+  implements bfoj
 {
   private HashMap<String, riu> a = new HashMap();
   

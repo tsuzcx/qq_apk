@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class adqw
-  implements DialogInterface.OnDismissListener
+  extends adqz
 {
-  public adqw(RiskHintDlgFragment paramRiskHintDlgFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 class PayJsPlugin$8
   implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
+  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, bgok parambgok) {}
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {

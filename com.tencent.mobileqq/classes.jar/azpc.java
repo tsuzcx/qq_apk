@@ -1,17 +1,17 @@
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class azpc
-  implements EIPCResultCallback
+public final class azpc
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  azpc(azpb paramazpb) {}
+  public azpc(aznp paramaznp) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitor", 2, new Object[] { "eipcResult=", Integer.valueOf(paramEIPCResult.code), paramEIPCResult.data });
-    }
+    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
+    this.a.a(15, 1, 0L);
+    return false;
   }
 }
 

@@ -1,45 +1,18 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 
-public class yeo
-  implements anxw
+class yeo
+  implements View.OnClickListener
 {
-  public yeo(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  yeo(yen paramyen, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public ColorNote getColorNote()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
-    {
-      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
-      return null;
+    if (((this.jdField_a_of_type_Yen.itemView instanceof RelativeFeedItemView)) && (yei.a(this.jdField_a_of_type_Yen.a) != null)) {
+      yei.a(this.jdField_a_of_type_Yen.a).a(this.jdField_a_of_type_Yen.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
     }
-    byte[] arrayOfByte = yhl.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
-    xzf localxzf = new xzf();
-    localxzf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    localxzf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-    String str1 = "";
-    String str3 = localxzf.c();
-    String str2 = localxzf.d();
-    String str4 = localxzf.e();
-    switch (localxzf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
-    {
-    }
-    while (TextUtils.isEmpty(str1))
-    {
-      return null;
-      str2 = localxzf.f();
-      str1 = "" + localxzf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-      continue;
-      str1 = "" + localxzf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    }
-    return new anyc().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
   }
 }
 

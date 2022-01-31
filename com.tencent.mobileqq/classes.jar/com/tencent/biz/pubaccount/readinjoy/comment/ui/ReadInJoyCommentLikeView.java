@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import opf;
@@ -50,10 +50,10 @@ public class ReadInJoyCommentLikeView
   
   private void a()
   {
-    inflate(getContext(), 2131559936, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369654));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378671));
+    inflate(getContext(), 2131559935, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369671));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368823));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378725));
     this.jdField_a_of_type_AndroidViewView$OnClickListener = new opf(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
@@ -79,11 +79,11 @@ public class ReadInJoyCommentLikeView
       }
     }
     label77:
-    for (int i = 2130842423;; i = 2130842421)
+    for (int i = 2130842436;; i = 2130842434)
     {
       localImageView.setImageResource(i);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt > 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(bjxj.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(bkbq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt == 0) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("");

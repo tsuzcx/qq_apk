@@ -1,22 +1,34 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
+import android.view.View;
+import java.lang.ref.SoftReference;
+import java.util.concurrent.Future;
 
-public class avsz
-  implements PopupWindow.OnDismissListener
+public final class avsz<Params, Result>
 {
-  public avsz(TranslateFragment paramTranslateFragment, avrj paramavrj) {}
+  public final int a;
+  public final Integer a;
+  public Long a;
+  public final Params a;
+  public final String a;
+  public SoftReference<View> a;
+  public Future<?> a;
+  public SoftReference<View> b;
+  public SoftReference<Result> c;
   
-  public void onDismiss()
+  public avsz(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
   {
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Avrj.b != null) && (this.jdField_a_of_type_Avrj.b.size() > 1))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
+    if (paramView2 != null) {}
+    for (paramString = new SoftReference(paramView2);; paramString = null)
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845668);
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      this.b = paramString;
+      this.jdField_a_of_type_JavaLangObject = paramParams;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
+      this.c = null;
+      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
+      return;
     }
   }
 }

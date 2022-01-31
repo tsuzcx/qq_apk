@@ -55,7 +55,7 @@ public class rji
         try
         {
           String str = new URL(paramosl.jdField_a_of_type_JavaLangString).getHost();
-          localObject = bavf.a().a(str, 1006);
+          localObject = bazo.a().a(str, 1006);
           qlq localqlq = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$3.jdField_a_of_type_Rjk.a;
           if (localObject != null) {
             continue;

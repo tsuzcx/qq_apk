@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqpl;
-import aqsv;
+import aqtu;
+import aqxe;
 
 public class NewFileUploader$1
   implements Runnable
 {
-  public NewFileUploader$1(aqpl paramaqpl) {}
+  public NewFileUploader$1(aqtu paramaqtu) {}
   
   public void run()
   {
-    if (aqpl.a(this.this$0) != null) {
-      aqpl.a(this.this$0).a(0L);
+    if (aqtu.a(this.this$0) != null) {
+      aqtu.a(this.this$0).a(0L);
     }
   }
 }

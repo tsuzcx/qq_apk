@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yjz
-  implements Parcelable.Creator<CommodityBean>
+public class yjz
+  implements osj
 {
-  public CommodityBean a(Parcel paramParcel)
-  {
-    return new CommodityBean(paramParcel);
-  }
+  public yjz(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public CommodityBean[] a(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    return new CommodityBean[paramInt];
+    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
+    if (this.a.a != null) {
+      this.a.a.f(paramString2);
+    }
   }
 }
 

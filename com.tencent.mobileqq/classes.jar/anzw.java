@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.image.URLImageView;
 
-final class anzw
-  extends anxq
+public class anzw
 {
-  anzw(anxo paramanxo, ColorNote paramColorNote) {}
-  
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Anxo.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
-  }
+  URLImageView a;
 }
 
 

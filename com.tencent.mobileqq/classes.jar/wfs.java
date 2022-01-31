@@ -1,39 +1,24 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wfs
-  extends uhn
+class wfs
+  implements View.OnClickListener
 {
-  public String a;
-  private wft a;
+  wfs(wfr paramwfr) {}
   
-  public wfs(String paramString, @NonNull wft paramwft)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Wft = paramwft;
-  }
-  
-  public void a(StoryPushMsg paramStoryPushMsg)
-  {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPushMsg.d))
-    {
-      wsv.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
-      return;
+    paramView = new wfl();
+    if (this.a.a.a) {
+      this.a.a.a = false;
     }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    for (paramView.a = 0;; paramView.a = 1)
     {
-      wsv.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      this.jdField_a_of_type_Wft.a(1);
+      umc.a().dispatch(paramView);
       return;
+      this.a.a.a = true;
     }
-    if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
-    {
-      wsv.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-      this.jdField_a_of_type_Wft.a(2);
-      return;
-    }
-    this.jdField_a_of_type_Wft.a(0);
   }
 }
 

@@ -1,81 +1,15 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akzt
-  implements akmm
+  implements DialogInterface.OnClickListener
 {
-  akzt(akzs paramakzs) {}
+  akzt(akzr paramakzr, akzz paramakzz) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!akzs.a(this.a).containsKey(paramString))
-          {
-            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
-            return;
-          }
-          if ((akzs.a(this.a) == null) || (TextUtils.isEmpty(akzs.a(this.a).apolloId)) || (!akzs.a(this.a).apolloId.equals(paramString))) {
-            break;
-          }
-          akzs.b(this.a);
-          if (this.a.c != 5) {
-            this.a.jdField_a_of_type_Int = 1;
-          }
-          paramString = akzs.a(this.a).obtainMessage(18, 1, 0);
-          akzs.a(this.a).sendMessage(paramString);
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-        } while (TextUtils.isEmpty(akzs.a(this.a)));
-        if (!akzs.a(this.a)) {
-          break;
-        }
-      } while ((akzs.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
-      return;
-      if (akzs.a(this.a) != 1) {
-        break;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, akzs.a(this.a).apolloId, "Bubble");
-    return;
-    synchronized (akzs.a(this.a))
-    {
-      if (akzs.a(this.a).containsKey(paramString))
-      {
-        Message localMessage = akzs.a(this.a).obtainMessage(28);
-        localMessage.obj = paramString;
-        akzs.a(this.a).sendMessage(localMessage);
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-      }
-      return;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
-    }
-    if ((akzs.a(this.a) != null) && (!TextUtils.isEmpty(akzs.a(this.a).apolloId)) && (akzs.a(this.a).apolloId.equals(paramString))) {
-      akzs.a(this.a);
+    if (this.jdField_a_of_type_Akzz != null) {
+      this.jdField_a_of_type_Akzz.a(this.jdField_a_of_type_Akzr.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
     }
   }
 }

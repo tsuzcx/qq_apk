@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
-import wxq;
+import xbz;
 
 public class EditWebVideoActivity$1$1
   implements Runnable
 {
-  public EditWebVideoActivity$1$1(wxq paramwxq) {}
+  public EditWebVideoActivity$1$1(xbz paramxbz) {}
   
   public void run()
   {
     this.a.a.f();
-    QQToast.a(this.a.a, alpo.a(2131704355), 0).a();
+    QQToast.a(this.a.a, alud.a(2131704367), 0).a();
     this.a.a.finish();
   }
 }

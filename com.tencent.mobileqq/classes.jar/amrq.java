@@ -1,24 +1,25 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class amrq
-  implements anau
+public class amrq
+  extends alpd
 {
-  amrq(amrp paramamrp) {}
-  
-  public void a()
+  public amrq(QQAppInterface paramQQAppInterface)
   {
-    GLES20.glUniform1i(amrp.a(this.a), amrp.b(this.a));
+    super(paramQQAppInterface);
   }
   
-  public void a(int paramInt)
+  protected Class<? extends alpg> observerClass()
   {
-    amrp.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    amsa.a("glGetUniformLocation uDisplayType");
+    return amco.class;
   }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrq
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,20 @@ public class pzk
 {
   private qcf a;
   
-  public pzk(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pzk(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).g().q().l().n().j();
+    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).g().q().l().n().j();
   }
   
-  public pxl c(rqj paramrqj, bcws parambcws)
+  public pxl c(rqj paramrqj, bdbb parambdbb)
   {
-    super.c(paramrqj, parambcws);
+    super.c(paramrqj, parambdbb);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.jdField_a_of_type_Boolean = true;
     return this;
   }
@@ -46,7 +46,7 @@ public class pzk
     if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)))
     {
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
       ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setOnNoItemClickListener(new pzl(this));
       localLinearLayout.addView((ComponentContentGridImage)this.jdField_a_of_type_Pxk);

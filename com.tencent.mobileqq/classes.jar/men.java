@@ -48,11 +48,11 @@ public class men
       AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2131559551, this.jdField_a_of_type_AndroidViewViewGroup);
+        localAVActivity.getLayoutInflater().inflate(2131559550, this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372585));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372611));
   }
   
   public void a(View paramView)

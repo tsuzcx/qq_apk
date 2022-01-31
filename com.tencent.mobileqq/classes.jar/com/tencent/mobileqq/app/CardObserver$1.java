@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import allb;
+import alpq;
 
 public class CardObserver$1
   implements Runnable
 {
-  public CardObserver$1(allb paramallb, boolean paramBoolean, Object paramObject) {}
+  public CardObserver$1(alpq paramalpq, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {

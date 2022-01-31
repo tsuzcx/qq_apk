@@ -4,18 +4,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bkot;
-import blfg;
+import bkta;
+import bljn;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bkot jdField_a_of_type_Bkot;
+  private bkta jdField_a_of_type_Bkta;
   private boolean jdField_a_of_type_Boolean;
   
-  public AEEditorOrderBroadcastReceiver(bkot parambkot)
+  public AEEditorOrderBroadcastReceiver(bkta parambkta)
   {
-    this.jdField_a_of_type_Bkot = parambkot;
+    this.jdField_a_of_type_Bkta = parambkta;
   }
   
   private IntentFilter a()
@@ -49,21 +49,21 @@ public class AEEditorOrderBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    blfg.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
-    blfg.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
+    bljn.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
+    bljn.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
     if ("AEEDITOR_ORDER_CANCEL".equals(paramContext)) {
-      this.jdField_a_of_type_Bkot.a(paramIntent);
+      this.jdField_a_of_type_Bkta.a(paramIntent);
     }
     do
     {
       return;
       if ("AEEDITOR_ORDER_SAVE".equals(paramContext))
       {
-        this.jdField_a_of_type_Bkot.b(paramIntent);
+        this.jdField_a_of_type_Bkta.b(paramIntent);
         return;
       }
     } while (!"AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext));
-    this.jdField_a_of_type_Bkot.c(paramIntent);
+    this.jdField_a_of_type_Bkta.c(paramIntent);
   }
 }
 

@@ -1,22 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
 public class aqih
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public aqih(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
+  public aqih(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramView = new Intent();
-    paramView.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+    this.a.c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.window;
 
-import atqj;
+import atus;
 
 public class LocationFloatWindowManager$5
   implements Runnable
 {
-  public LocationFloatWindowManager$5(atqj paramatqj, int paramInt) {}
+  public LocationFloatWindowManager$5(atus paramatus, int paramInt) {}
   
   public void run()
   {

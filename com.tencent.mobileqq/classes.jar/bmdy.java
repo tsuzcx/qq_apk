@@ -1,168 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bmdy
-  extends bmgo
+  extends bmea
 {
-  public static final String a;
-  private static final String jdField_b_of_type_JavaLangString = alpo.a(2131703860);
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private int jdField_b_of_type_Int = -1;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private String d = "barindex";
+  @Nullable
+  private volatile Handler jdField_a_of_type_AndroidOsHandler;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(2, new bmdz(this));
   
-  static
+  public void a(Runnable paramRunnable)
   {
-    jdField_a_of_type_JavaLangString = bmdy.class.getSimpleName();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
   }
   
-  public bmdy(bmix parambmix, long paramLong)
+  public boolean a()
   {
-    super(parambmix, paramLong);
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
   
-  private void a(Intent paramIntent)
+  public void b(Runnable paramRunnable)
   {
-    if (paramIntent == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      return;
-      int i = paramIntent.getIntExtra("theme_id", -1);
-      paramIntent = paramIntent.getStringExtra("theme_name");
-      this.jdField_b_of_type_Int = i;
-      if (i == -1)
-      {
-        b(jdField_b_of_type_JavaLangString);
-        this.jdField_c_of_type_JavaLangString = "";
+      if (this.jdField_a_of_type_AndroidOsHandler == null) {
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleSelectedTheme mThemeID = " + this.jdField_b_of_type_Int + " mThemeName = " + this.jdField_c_of_type_JavaLangString);
-        return;
-        if (paramIntent != null)
-        {
-          b("#" + paramIntent);
-          this.jdField_c_of_type_JavaLangString = paramIntent;
-        }
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if ("barindex".equals(this.d)) {}
-    for (int i = 1;; i = 2)
-    {
-      azmj.b(null, "dc00899", "Grp_tribe", "", "video_edit", paramString, i, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
       return;
     }
-  }
-  
-  private void b(String paramString)
-  {
-    int i = -1;
-    paramString = new SpannableString(paramString);
-    if (this.jdField_b_of_type_Int == -1) {}
-    for (;;)
-    {
-      paramString.setSpan(new xsn(a(), 2130842223), 0, 1, 33);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
-      return;
-      i = -18432;
-    }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_b_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      b("#" + this.jdField_c_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bmdz(this));
-      return;
-      b(jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131363828));
-    this.jdField_a_of_type_AndroidViewView = ((ImageView)a(2131378116));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364829));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131703859));
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(a());
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(bcwh.a(a(), 192.0F));
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int i = bcwh.a(a(), 10.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842224);
-    Object localObject = new RelativeLayout.LayoutParams(-2, bcwh.a(a(), 28.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = bcwh.a(a(), 10.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    localObject = bbae.a(((EditVideoParams)((Activity)a()).getIntent().getParcelableExtra(EditVideoParams.class.getName())).a);
-    if (localObject != null)
-    {
-      boolean bool = ((JSONObject)localObject).optBoolean("needTheme", false);
-      this.d = ((JSONObject)localObject).optString("from", "");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("theme_id", -1);
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name", "");
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate mThemeID = " + this.jdField_b_of_type_Int + " mThemeName = " + this.jdField_c_of_type_JavaLangString);
-      }
-      j();
-      if (!bool) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt2 == 0) {
-      return;
-    }
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    }
-    a(paramIntent);
   }
 }
 

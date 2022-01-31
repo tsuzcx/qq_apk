@@ -1,51 +1,44 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class yui
+public abstract class yui
+  extends nac
 {
-  private String a = yuh.b;
-  private String b = "1";
-  private String c = yuh.a;
-  
-  public static yui a(String paramString)
+  public yui()
   {
-    if (paramString == null) {
-      return null;
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
+      return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
     try
     {
-      yui localyui = new yui();
-      paramString = new JSONObject(paramString);
-      localyui.a = paramString.optString("mine_videostory_entrance", yuh.b);
-      localyui.b = paramString.optString("enable_click_take_picture", "1");
-      localyui.c = paramString.optString("mine_videostory_drawer_entrance", yuh.a);
-      return localyui;
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
     }
-    catch (Exception paramString)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramString.printStackTrace();
+      a(false, -1, null, paramBundle);
+      return;
     }
-    return null;
+    a(false, -1, null, paramBundle);
   }
   
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
 }
 
 

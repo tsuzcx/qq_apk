@@ -1,41 +1,68 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class apmw
-  extends WtloginObserver
+  implements apnk
 {
-  apmw(aply paramaply, Bundle paramBundle, MessengerService paramMessengerService) {}
+  apmw(apmt paramapmt, aupt paramaupt) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a()
   {
-    boolean bool2 = true;
-    paramWUserSigInfo = new Bundle();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label90;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label96;
+    if (this.jdField_a_of_type_Aupt.isShowing()) {
+      this.jdField_a_of_type_Aupt.dismiss();
+    }
+    apmt.a(this.jdField_a_of_type_Apmt);
+    apmt.a(this.jdField_a_of_type_Apmt).a().b();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Aupt.a(paramInt);
+  }
+  
+  public void a(apms paramapms)
+  {
+    if ((paramapms != null) && (!this.jdField_a_of_type_Apmt.a.isFinishing())) {
+      switch (paramapms.a)
+      {
       }
     }
-    label90:
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      paramWUserSigInfo.putBoolean("allow_set", bool1);
-      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Aupt.isShowing()) {
+        this.jdField_a_of_type_Aupt.dismiss();
+      }
+      apmt.a(this.jdField_a_of_type_Apmt);
+      apmt.a(this.jdField_a_of_type_Apmt).a().b();
       return;
-      bool1 = false;
-      break;
+      QQToast.a(this.jdField_a_of_type_Apmt.a.getApplicationContext(), this.jdField_a_of_type_Apmt.a.getString(2131719321), 0).a();
+      continue;
+      if (paramapms.b == 10006)
+      {
+        QQToast.a(this.jdField_a_of_type_Apmt.a.getApplicationContext(), this.jdField_a_of_type_Apmt.a.getString(2131719312), 0).a();
+      }
+      else
+      {
+        QQToast.a(this.jdField_a_of_type_Apmt.a.getApplicationContext(), this.jdField_a_of_type_Apmt.a.getString(2131719316), 0).a();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("MultiEmotionSaveManager", 2, "onSaveComplete " + this.jdField_a_of_type_Apmt.a.isFinishing());
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Aupt.isShowing())
+    {
+      this.jdField_a_of_type_Aupt.a(0);
+      this.jdField_a_of_type_Aupt.a(new apmx(this));
+      if (QLog.isColorLevel()) {
+        QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
+      }
+      this.jdField_a_of_type_Aupt.show();
     }
   }
 }

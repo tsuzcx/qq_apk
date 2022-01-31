@@ -348,7 +348,7 @@ public class nco
   {
     if (a(paramInt1))
     {
-      azmj.b(null, "P_CliOper", "AppBernoulliReport", "", paramInt1 + "", paramString1, paramInt2, paramInt3, paramString2, paramString3, paramString3, paramString4);
+      azqs.b(null, "P_CliOper", "AppBernoulliReport", "", paramInt1 + "", paramString1, paramInt2, paramInt3, paramString2, paramString3, paramString3, paramString4);
       if (!QLog.isDevelopLevel()) {}
     }
     if (paramAppInterface != null) {

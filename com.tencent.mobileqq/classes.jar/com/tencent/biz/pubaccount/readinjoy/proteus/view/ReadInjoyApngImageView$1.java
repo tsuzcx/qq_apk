@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdpt;
+import bduc;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -31,7 +31,7 @@ public class ReadInjoyApngImageView$1
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_loop", 1);
       localBundle.putBoolean("key_once_clear", true);
-      localObject1 = bdpt.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, this.a, psf.a(this.this$0), new int[] { 31 }, "-kandianopt-", localBundle);
+      localObject1 = bduc.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, this.a, psf.a(this.this$0), new int[] { 31 }, "-kandianopt-", localBundle);
       if (localObject1 != null)
       {
         this.this$0.a.setImageDrawable((Drawable)localObject1);

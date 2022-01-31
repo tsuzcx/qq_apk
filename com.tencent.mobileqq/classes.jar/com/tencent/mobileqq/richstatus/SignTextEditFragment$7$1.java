@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
-import axya;
+import aycj;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignTextEditFragment$7$1
   implements Runnable
 {
-  public SignTextEditFragment$7$1(axya paramaxya) {}
+  public SignTextEditFragment$7$1(aycj paramaycj) {}
   
   public void run()
   {

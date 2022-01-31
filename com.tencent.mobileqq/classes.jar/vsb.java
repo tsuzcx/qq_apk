@@ -1,18 +1,28 @@
-class vsb
-  implements vrw
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+
+final class vsb
+  extends AnimatorListenerAdapter
 {
-  public vrw a;
+  vsb(Animator.AnimatorListener paramAnimatorListener) {}
   
-  private vsb(vrx paramvrx) {}
-  
-  public void a(vrr paramvrr)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (vrx.a(this.jdField_a_of_type_Vrx) != null) {
-      vrx.a(this.jdField_a_of_type_Vrx).a(0L, paramvrr.b(), paramvrr);
-    }
-    if (this.jdField_a_of_type_Vrw != null) {
-      this.jdField_a_of_type_Vrw.a(paramvrr);
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.onAnimationCancel(paramAnimator);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
+    this.a.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
   }
 }
 

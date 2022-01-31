@@ -9,8 +9,8 @@ class ssz
   
   public void onClick(View paramView)
   {
-    yvu.a("", "auth_discover", "fold_clk", 0, 0, new String[0]);
-    ygy.a(ssy.a(this.a), FolderRecommendTabFragment.a(this.a.a), new sta(this));
+    zaj.a("", "auth_discover", "fold_clk", 0, 0, new String[0]);
+    yll.a(ssy.a(this.a), FolderRecommendTabFragment.a(this.a.a), new sta(this));
   }
 }
 

@@ -6,8 +6,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgho;
-import bgws;
+import bglv;
+import bhaz;
 import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
 import com.tencent.qqmini.sdk.launcher.model.NavigationBarInfo;
 import com.tencent.qqmini.sdk.launcher.model.WindowInfo;
@@ -65,7 +65,7 @@ public class GameNavigationBar
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClipChildren(false);
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton = new CapsuleButton(getContext());
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131364766);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131364767);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       j = DisplayUtil.dip2px(getContext(), 9.0F);
@@ -142,10 +142,10 @@ public class GameNavigationBar
     ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.getLayoutParams()).topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
   }
   
-  public void a(bgho parambgho)
+  public void a(bglv parambglv)
   {
-    parambgho = new bgws(parambgho);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.a(parambgho);
+    parambglv = new bhaz(parambglv);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.a(parambglv);
   }
   
   public GameNavigationBar b(String paramString)

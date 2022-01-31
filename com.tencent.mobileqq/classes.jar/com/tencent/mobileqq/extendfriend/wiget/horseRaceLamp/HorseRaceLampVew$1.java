@@ -5,10 +5,10 @@ import android.content.res.Resources;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import aqeq;
-import aqes;
-import aqet;
-import aqeu;
+import aqiz;
+import aqjb;
+import aqjc;
+import aqjd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public class HorseRaceLampVew$1
       j = 0;
       while (j < 4)
       {
-        HorseRaceLampVew.a(this.this$0).add(new aqes(j, i, k, m));
+        HorseRaceLampVew.a(this.this$0).add(new aqjb(j, i, k, m));
         j += 1;
       }
       if (HorseRaceLampVew.a(this.this$0) == null)
@@ -49,20 +49,20 @@ public class HorseRaceLampVew$1
       Object localObject;
       while (i < HorseRaceLampVew.a(this.this$0).a())
       {
-        localObject = new aqet(HorseRaceLampVew.a(this.this$0).a(i));
-        ((aqes)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((aqet)localObject);
+        localObject = new aqjc(HorseRaceLampVew.a(this.this$0).a(i));
+        ((aqjb)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((aqjc)localObject);
         i += 1;
       }
       i = 0;
       while (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        ((aqes)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        ((aqjb)HorseRaceLampVew.a(this.this$0).get(i)).a();
         i += 1;
       }
       i = 0;
       if (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        localObject = ((aqes)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        localObject = ((aqjb)HorseRaceLampVew.a(this.this$0).get(i)).a();
         if (localObject == null) {}
         for (;;)
         {
@@ -71,10 +71,10 @@ public class HorseRaceLampVew$1
           j = 0;
           while (j < ((ArrayList)localObject).size())
           {
-            aqet localaqet = (aqet)((ArrayList)localObject).get(j);
-            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localaqet.a, this.this$0);
-            localView.setTag(localaqet);
-            localView.setOnClickListener(new aqeq(this));
+            aqjc localaqjc = (aqjc)((ArrayList)localObject).get(j);
+            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localaqjc.a, this.this$0);
+            localView.setTag(localaqjc);
+            localView.setOnClickListener(new aqiz(this));
             this.this$0.addView(localView);
             localView.setVisibility(4);
             j += 1;

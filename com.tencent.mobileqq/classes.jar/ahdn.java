@@ -1,18 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class ahdn
+public abstract interface ahdn
 {
-  public int a;
-  public long a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public String c;
-  public TextView d;
+  public abstract void a();
 }
 
 

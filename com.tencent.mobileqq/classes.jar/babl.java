@@ -1,67 +1,88 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class babl
-  extends BaseAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Config;", "()V", "clazz", "Ljava/lang/Class;", "isAccountRelated", "", "isNeedCompressed", "isNeedStoreLargeFile", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Config;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "Companion", "Config", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class babl
+  extends aokh<babn>
 {
-  public babl(TableQueryViewer paramTableQueryViewer) {}
+  public static final babm a = new babm(null);
   
-  private int a()
+  public int a()
   {
-    return a().size();
+    return 619;
   }
   
-  private List<babc> a()
+  @NotNull
+  public babn a(int paramInt)
   {
-    return TableQueryViewer.a(this.a);
+    return new babn();
   }
   
-  public int getCount()
+  @Nullable
+  public babn a(@Nullable aoko[] paramArrayOfaoko)
   {
-    return a();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return a().get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562689, paramViewGroup, false);
-      paramViewGroup = new babk(this.a, paramView);
-      paramView.setTag(paramViewGroup);
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyModeSwitchDialogConfigProcessor", 2, "onParsed");
     }
-    for (;;)
+    babn localbabn = new babn();
+    if (paramArrayOfaoko != null)
     {
-      babc localbabc = (babc)a().get(paramInt);
-      paramViewGroup.a.setText(localbabc.b);
-      paramViewGroup.d.setText(localbabc.k);
-      paramViewGroup.b.setText(localbabc.c);
-      paramViewGroup.c.setText(localbabc.f);
-      if (paramInt % 2 != 0) {
-        break;
+      if (paramArrayOfaoko.length != 0) {
+        break label68;
       }
-      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166486));
-      return paramView;
-      paramViewGroup = (babk)paramView.getTag();
+      i = 1;
+      if (i != 0) {
+        break label73;
+      }
     }
-    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167192));
-    return paramView;
+    label68:
+    label73:
+    for (int i = j;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramArrayOfaoko = paramArrayOfaoko[0].a;
+        Intrinsics.checkExpressionValueIsNotNull(paramArrayOfaoko, "confFiles[0].content");
+        localbabn.a(paramArrayOfaoko);
+      }
+      return localbabn;
+      i = 0;
+      break;
+    }
+  }
+  
+  @NotNull
+  public Class<babn> a()
+  {
+    return babn.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(@Nullable babn parambabn) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

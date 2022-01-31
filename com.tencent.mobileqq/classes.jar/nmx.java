@@ -18,7 +18,7 @@ public class nmx
 {
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = 0L;
-  bdfq jdField_a_of_type_Bdfq;
+  bdjz jdField_a_of_type_Bdjz;
   String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   
@@ -28,7 +28,7 @@ public class nmx
       return null;
     }
     if (paramString.startsWith("data:")) {
-      return paramContext.getString(2131693813);
+      return paramContext.getString(2131693815);
     }
     try
     {
@@ -41,8 +41,8 @@ public class nmx
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-      this.jdField_a_of_type_Bdfq.cancel();
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.cancel();
     }
   }
   
@@ -109,18 +109,18 @@ public class nmx
     Context localContext = paramWebView.getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-        this.jdField_a_of_type_Bdfq.dismiss();
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
       }
-      this.jdField_a_of_type_Bdfq = bdcd.a(localContext, 0);
-      this.jdField_a_of_type_Bdfq.setTitle(a(localContext, paramString1));
-      this.jdField_a_of_type_Bdfq.setMessage(paramString2);
-      this.jdField_a_of_type_Bdfq.setPositiveButton(2131694951, new nmy(this, paramJsResult));
+      this.jdField_a_of_type_Bdjz = bdgm.a(localContext, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131694953, new nmy(this, paramJsResult));
       if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_Bdfq.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nnb(this, paramJsResult, localContext));
+        this.jdField_a_of_type_Bdjz.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nnb(this, paramJsResult, localContext));
       }
-      this.jdField_a_of_type_Bdfq.setOnCancelListener(new nnc(this, paramJsResult, localContext));
-      this.jdField_a_of_type_Bdfq.show();
+      this.jdField_a_of_type_Bdjz.setOnCancelListener(new nnc(this, paramJsResult, localContext));
+      this.jdField_a_of_type_Bdjz.show();
       this.jdField_a_of_type_Int += 1;
       return true;
     }
@@ -133,22 +133,22 @@ public class nmx
     paramString1 = paramWebView.getContext();
     if (((paramString1 instanceof Activity)) && (!((Activity)paramString1).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-        this.jdField_a_of_type_Bdfq.dismiss();
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
       }
-      this.jdField_a_of_type_Bdfq = bdcd.a(paramString1, 0);
-      this.jdField_a_of_type_Bdfq.setTitle(2131693812);
-      this.jdField_a_of_type_Bdfq.setMessage(paramString2);
-      this.jdField_a_of_type_Bdfq.setPositiveButton(2131690506, new nnh(this, paramJsResult));
+      this.jdField_a_of_type_Bdjz = bdgm.a(paramString1, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(2131693814);
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131690506, new nnh(this, paramJsResult));
       if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_Bdfq.setNegativeButton(paramString1.getString(2131690608), paramString1.getResources().getColor(2131165332), new nni(this, paramJsResult, paramString1));
+        this.jdField_a_of_type_Bdjz.setNegativeButton(paramString1.getString(2131690608), paramString1.getResources().getColor(2131165332), new nni(this, paramJsResult, paramString1));
       }
       for (;;)
       {
-        this.jdField_a_of_type_Bdfq.setOnCancelListener(new nna(this, paramJsResult, paramString1));
-        this.jdField_a_of_type_Bdfq.show();
+        this.jdField_a_of_type_Bdjz.setOnCancelListener(new nna(this, paramJsResult, paramString1));
+        this.jdField_a_of_type_Bdjz.show();
         return true;
-        this.jdField_a_of_type_Bdfq.setNegativeButton(2131690505, new nmz(this, paramJsResult));
+        this.jdField_a_of_type_Bdjz.setNegativeButton(2131690505, new nmz(this, paramJsResult));
       }
     }
     paramJsResult.cancel();
@@ -160,22 +160,22 @@ public class nmx
     Context localContext = paramWebView.getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-        this.jdField_a_of_type_Bdfq.dismiss();
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
       }
-      this.jdField_a_of_type_Bdfq = bdcd.a(localContext, 0);
-      this.jdField_a_of_type_Bdfq.setTitle(a(localContext, paramString1));
-      this.jdField_a_of_type_Bdfq.setMessage(paramString2);
-      this.jdField_a_of_type_Bdfq.setPositiveButton(2131694951, new nnd(this, paramJsResult));
+      this.jdField_a_of_type_Bdjz = bdgm.a(localContext, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131694953, new nnd(this, paramJsResult));
       if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_Bdfq.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nne(this, paramJsResult, localContext));
+        this.jdField_a_of_type_Bdjz.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nne(this, paramJsResult, localContext));
       }
       for (;;)
       {
-        this.jdField_a_of_type_Bdfq.setOnCancelListener(new nng(this, paramJsResult, localContext));
-        this.jdField_a_of_type_Bdfq.show();
+        this.jdField_a_of_type_Bdjz.setOnCancelListener(new nng(this, paramJsResult, localContext));
+        this.jdField_a_of_type_Bdjz.show();
         return true;
-        this.jdField_a_of_type_Bdfq.setNegativeButton(2131690648, new nnf(this, paramJsResult));
+        this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, new nnf(this, paramJsResult));
       }
     }
     paramJsResult.cancel();

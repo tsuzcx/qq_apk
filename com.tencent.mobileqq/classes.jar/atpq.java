@@ -1,37 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class atpq
-  implements Animator.AnimatorListener
 {
-  public atpq(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public atpq(int paramInt, String paramString)
   {
-    PoiSlideBottomPanel.h(this.a, false);
-    PoiSlideBottomPanel.i(this.a, false);
-    PoiSlideBottomPanel.j(this.a, false);
-    if (PoiSlideBottomPanel.k(this.a) != null) {
-      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    PoiSlideBottomPanel.e(this.a, false);
-    PoiSlideBottomPanel.f(this.a, false);
-    PoiSlideBottomPanel.g(this.a, false);
-    if (PoiSlideBottomPanel.i(this.a) != null) {
-      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public String a()
   {
-    PoiSlideBottomPanel.d(this.a, true);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof atpq)) {}
+    do
+    {
+      return false;
+      paramObject = (atpq)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

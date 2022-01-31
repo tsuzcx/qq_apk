@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.subaccount;
 
-import azyl;
+import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SubAccountControll$6
   implements Runnable
 {
-  public SubAccountControll$6(azyl paramazyl, QQAppInterface paramQQAppInterface) {}
+  public SubAccountControll$6(bacu parambacu, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    azyl.a(this.a, true);
+    bacu.a(this.a, true);
   }
 }
 

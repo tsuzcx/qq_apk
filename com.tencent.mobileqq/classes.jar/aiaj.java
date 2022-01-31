@@ -1,10 +1,16 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-public abstract interface aiaj
+public class aiaj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public aiaj(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acnt paramacnt) {}
   
-  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Acnt.a(true);
+  }
 }
 
 

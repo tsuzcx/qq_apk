@@ -1,34 +1,21 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bitr
-  extends alye
+public class bitr
+  implements DialogInterface.OnClickListener
 {
-  bitr(bito parambito) {}
+  public bitr(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 0);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
-  }
-  
-  protected void d(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 1);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitr
  * JD-Core Version:    0.7.0.1
  */

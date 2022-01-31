@@ -1,21 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.Button;
+import com.tencent.ttpic.openapi.model.WMEditItem;
 
 class bkzc
-  implements EIPCResultCallback
+  implements View.OnFocusChangeListener
 {
-  bkzc(bkyt parambkyt) {}
+  bkzc(bkyz parambkyz, bkzh parambkzh, WMEditItem paramWMEditItem) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
+    if (paramBoolean)
     {
-      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
+      bkyz.a(this.jdField_a_of_type_Bkyz, this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+      this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837640);
+      this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       return;
     }
-    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
 }
 

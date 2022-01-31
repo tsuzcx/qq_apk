@@ -1,87 +1,17 @@
-import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.widget.TextView;
 
 public class ayrh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ayqp<ayns, aywc>
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final List<ayri> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 200;
-  
-  public ayrh(View paramView)
+  public void a(ayns paramayns, aywc paramaywc)
   {
-    this(paramView, false);
-  }
-  
-  public ayrh(View paramView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ayri localayri = (ayri)localIterator.next();
-      if (localayri != null) {
-        localayri.onSoftKeyboardClosed();
-      }
+    paramayns = (aynt)paramayns;
+    paramaywc.b().setText(paramayns.b());
+    paramaywc.a().setOnClickListener(new ayri(this, paramayns));
+    if ((paramayns instanceof aynj)) {
+      azqs.b(null, "CliOper", "", "", "0X80061B6", "0X80061B6", 0, 0, "", "", "", "");
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ayri localayri = (ayri)localIterator.next();
-      if (localayri != null) {
-        localayri.onSoftKeyboardOpened(paramInt);
-      }
-    }
-  }
-  
-  public void a(ayri paramayri)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramayri);
-  }
-  
-  public void b(ayri paramayri)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramayri);
-  }
-  
-  public void onGlobalLayout()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - (localRect.bottom - localRect.top) - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("SoftKeyboardStateHelper", 2, "onGlobalLayout , activityRootView.Height = " + this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (i > this.b))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      a(i);
-    }
-    while ((!this.jdField_a_of_type_Boolean) || (i >= this.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    a();
   }
 }
 

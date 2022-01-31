@@ -31,7 +31,7 @@ public class otz
           }
           QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
           if (TextUtils.equals(str1, "video_channel_feeds_type")) {
-            bjxj.a(Integer.parseInt(str2));
+            bkbq.a(Integer.parseInt(str2));
           }
         }
         else
@@ -47,7 +47,7 @@ public class otz
       }
       if (TextUtils.equals(str1, "multi_video_feeds_type"))
       {
-        bjxj.b(Integer.parseInt(str2));
+        bkbq.b(Integer.parseInt(str2));
         continue;
         label209:
         QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
@@ -58,8 +58,8 @@ public class otz
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.a(1);
-    bjxj.b(1);
+    bkbq.a(1);
+    bkbq.b(1);
   }
 }
 

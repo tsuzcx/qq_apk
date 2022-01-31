@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adtf;
+import adxu;
 import java.util.ArrayList;
 
 class ShieldFriendsListActivity$1$1

@@ -1,18 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-
-class ausc
-  extends AnimatorListenerAdapter
+public class ausc
 {
-  ausc(ausb paramausb, URLDrawable paramURLDrawable) {}
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ausc(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ausb.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_Ausb.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

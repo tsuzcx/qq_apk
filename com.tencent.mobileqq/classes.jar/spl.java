@@ -110,7 +110,7 @@ public class spl
       }
     }
     ((ClipboardManager)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("clipboard")).setText((CharSequence)localObject3);
-    xxb.a(2, 2131691362);
+    ybk.a(2, 2131691363);
     for (;;)
     {
       localObject2 = new JSONObject();
@@ -147,7 +147,7 @@ public class spl
           localObject3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
           String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("desc");
           String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("image_url");
-          biqt.a(0, (String)localObject3, this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url"), null, str1, str2, null, null, false, -1L).c((String)localObject2).b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject2, 2, null);
+          biva.a(0, (String)localObject3, this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url"), null, str1, str2, null, null, false, -1L).c((String)localObject2).b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject2, 2, null);
           continue;
         }
         if (paramInteger.intValue() == 20)
@@ -182,7 +182,7 @@ public class spl
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             continue;
           }
-          localObject3 = aekt.a(new Intent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), SplashActivity.class), null);
+          localObject3 = aepi.a(new Intent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), SplashActivity.class), null);
           ((Intent)localObject3).putExtra("uin", (String)localObject2);
           ((Intent)localObject3).putExtra("uintype", 0);
           ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject3);

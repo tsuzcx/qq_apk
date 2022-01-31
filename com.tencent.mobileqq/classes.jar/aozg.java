@@ -1,14 +1,14 @@
+import java.util.ArrayList;
+
 public class aozg
-  implements Thread.UncaughtExceptionHandler
 {
-  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
-  {
-    aozj.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
-  }
+  public int a;
+  public ArrayList<String> a = new ArrayList();
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozg
  * JD-Core Version:    0.7.0.1
  */

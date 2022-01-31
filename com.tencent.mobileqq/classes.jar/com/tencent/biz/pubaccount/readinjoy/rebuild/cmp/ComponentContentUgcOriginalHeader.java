@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
@@ -9,8 +9,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import ayvy;
-import baig;
+import azah;
+import bamp;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -139,7 +139,7 @@ public class ComponentContentUgcOriginalHeader
           localObject1 = ReadInJoyUserInfoModule.a();
           break label372;
         }
-        localObject1 = new SpannableStringBuilder(new baig(localStringBuilder, 7, 16));
+        localObject1 = new SpannableStringBuilder(new bamp(localStringBuilder, 7, 16));
         localObject2 = ((List)localObject3).iterator();
         while (((Iterator)localObject2).hasNext())
         {
@@ -152,7 +152,7 @@ public class ComponentContentUgcOriginalHeader
       }
       else if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject1 = new baig(ayvy.b((String)localObject2), 7, 16);
+        localObject1 = new bamp(azah.b((String)localObject2), 7, 16);
         this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
       }
     }
@@ -163,7 +163,7 @@ public class ComponentContentUgcOriginalHeader
     this.jdField_a_of_type_Qbs = new qbs();
     setOrientation(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.setMargins(aekt.a(12.0F, paramContext.getResources()), aekt.a(12.0F, paramContext.getResources()), aekt.a(20.0F, paramContext.getResources()), 0);
+    localLayoutParams.setMargins(aepi.a(12.0F, paramContext.getResources()), aepi.a(12.0F, paramContext.getResources()), aepi.a(20.0F, paramContext.getResources()), 0);
     setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = new ReadInJoyYAFolderTextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
@@ -171,7 +171,7 @@ public class ComponentContentUgcOriginalHeader
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextColor(Color.parseColor("#606060"));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextSize(2, 16.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alpo.a(2131702712));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702724));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qdm(this));
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView);
@@ -197,7 +197,7 @@ public class ComponentContentUgcOriginalHeader
       a(paramObject);
     } while ((!rqj.m(paramObject)) || (!TextUtils.isEmpty(paramObject.businessName)));
     paramObject = (LinearLayout.LayoutParams)getLayoutParams();
-    paramObject.bottomMargin = aekt.a(12.0F, getContext().getResources());
+    paramObject.bottomMargin = aepi.a(12.0F, getContext().getResources());
     setLayoutParams(paramObject);
   }
   

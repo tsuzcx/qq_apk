@@ -1,23 +1,12 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
-
-class ajxu
-  implements ulb
+public final class ajxu
 {
-  ajxu(ajxt paramajxt, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
+  public final int a;
+  public final int b;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  ajxu(int paramInt1, int paramInt2)
   {
-    if (ajxt.a(this.jdField_a_of_type_Ajxt)) {}
-    for (int i = -24;; i = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + ajxt.a(this.jdField_a_of_type_Ajxt) + ", errCode:" + paramInt);
-      }
-      this.jdField_a_of_type_Ajxt.a = true;
-      ajxt.a(this.jdField_a_of_type_Ajxt).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      return;
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

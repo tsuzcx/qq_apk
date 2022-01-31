@@ -1,42 +1,107 @@
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import java.io.File;
 
-public class bmse
-  implements blrf
+class bmse
+  extends SimpleJob<DoodleEmojiItem>
+  implements uml
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  protected long a;
+  private final DoodleEmojiItem jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+  private final umx jdField_a_of_type_Umx;
+  private long b;
   
-  bmse(bmsc parambmsc, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public bmse(DoodleEmojiItem paramDoodleEmojiItem)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131377365));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bmrn parambmrn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
+    super("DownloadAndUnZipJob");
+    if (paramDoodleEmojiItem == null) {
+      throw new IllegalArgumentException("doodleEmojiItem should not be null");
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambmrn));
+    this.jdField_a_of_type_Umx = new umy();
+    this.jdField_a_of_type_Umx.a(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
+  }
+  
+  protected DoodleEmojiItem a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Umx.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.download_url, bmru.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id), 0L);
+    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    DoodleEmojiItem localDoodleEmojiItem1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (paramInt == 0)
+    {
+      paramString = bmru.a(localDoodleEmojiItem1.pack_id);
+      String str = bmru.b(localDoodleEmojiItem1.pack_id);
+      wxe.b("DoodleEmojiManager", "DownloadListener onDownloadFinish zip = " + paramString);
+      wxe.b("DoodleEmojiManager", "DownloadListener onDownloadFinish folder = " + str);
+      for (;;)
+      {
+        int i;
+        try
+        {
+          xrg.d(str);
+          i = ndr.a(paramString, str);
+          if (i == 0)
+          {
+            long l1 = SystemClock.uptimeMillis();
+            long l2 = this.jdField_a_of_type_Long;
+            wxj.b("edit_video", "face_download_timecost", 0, 0, new String[] { localDoodleEmojiItem1.pack_id, l1 - l2 + "" });
+            wxj.b("edit_video", "face_download_success", 0, 0, new String[] { localDoodleEmojiItem1.pack_id });
+            wxe.c("DoodleEmojiManager", "DownloadListener onDownloadFinish success, unZip success");
+            localDoodleEmojiItem1.setLocalEmojiFolderPath(str);
+            new File(str).setLastModified(System.currentTimeMillis());
+            umc.a().dispatch(new bmsb(localDoodleEmojiItem1, paramInt, true, 0L, 0L));
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          wxe.d("DoodleEmojiManager", "DownloadListener remove folderPath : %s ,error : %s ", new Object[] { str, localException });
+          continue;
+        }
+        finally
+        {
+          new File(paramString).delete();
+        }
+        wxe.d("DoodleEmojiManager", "DownloadListener onDownloadFinish unZip failed, treat it as download failed");
+        umc.a().dispatch(new bmsb(localDoodleEmojiItem2, i, false, 0L, 0L));
+        wxj.b("edit_video", "face_download_success", 0, i, new String[] { localDoodleEmojiItem2.pack_id });
+      }
+    }
+    wxe.e("DoodleEmojiManager", "DownloadListener onDownloadFinish error = " + paramInt + ", url = " + paramString);
+    umc.a().dispatch(new bmsb(localDoodleEmojiItem2, paramInt, true, 0L, 0L));
+    wxj.b("edit_video", "face_download_success", 0, paramInt, new String[] { localDoodleEmojiItem2.pack_id });
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    DoodleEmojiItem localDoodleEmojiItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (!TextUtils.equals(localDoodleEmojiItem.download_url, paramString))
+    {
+      wxe.d("DoodleEmojiManager", "DownloadListener onProgress error : " + localDoodleEmojiItem);
+      wxe.d("DoodleEmojiManager", "DownloadListener onProgress error : call back url = " + paramString);
+    }
+    while (paramLong1 <= paramLong2 / 10L + this.b) {
+      return;
+    }
+    wxe.a("DoodleEmojiManager", "DownloadListener onProgress " + paramLong1 + " / " + paramLong2);
+    umc.a().dispatch(new bmsb(localDoodleEmojiItem, 0, false, paramLong2, paramLong1));
+    this.b = paramLong1;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    wxe.b("DoodleEmojiManager", "onDownloadStart : url = " + paramString1 + ", path = " + paramString2);
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
   }
 }
 

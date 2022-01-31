@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import bjuc;
+import bjyj;
 
 public class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bjuc parambjuc) {}
+  public QzoneQunFeedJsPlugin$6(bjyj parambjyj) {}
   
   public void run()
   {
-    bjuc.a(this.this$0, bjuc.a(this.this$0));
+    bjyj.a(this.this$0, bjyj.a(this.this$0));
   }
 }
 

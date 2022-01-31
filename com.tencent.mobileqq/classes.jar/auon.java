@@ -1,45 +1,16 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 class auon
-  implements URLDrawable.URLDrawableListener
+  extends RecyclerView.ViewHolder
 {
-  auon(auom paramauom) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public auon(auok paramauok, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadCanceled");
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCallback();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
-    {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379064));
   }
 }
 

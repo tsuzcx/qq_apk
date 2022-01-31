@@ -1,22 +1,64 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.SVIPHandler.1;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class amcb
+  implements alpg
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public AddFriendBlockedInfo a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public amcb(SVIPHandler.1 param1, anwm paramanwm) {}
   
-  public amcb(amca paramamca) {}
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Object localObject = (BubbleDiyEntity)paramObject.next();
+            String str2;
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            {
+              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
+              this.jdField_a_of_type_Anwm.b.add(localObject);
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_Anwm.b();
+  }
 }
 
 

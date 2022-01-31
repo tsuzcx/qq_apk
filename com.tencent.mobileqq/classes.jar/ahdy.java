@@ -1,18 +1,15 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 
 public class ahdy
+  implements bhvm
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public ahdy(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

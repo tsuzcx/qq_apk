@@ -1,57 +1,17 @@
 import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.view.View.OnClickListener;
 
-public class wgj
-  extends wna
+class wgj
+  implements View.OnClickListener
 {
-  public wgj(wgg paramwgg) {}
+  wgj(wgi paramwgi) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
+  public void onClick(View paramView)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wgg.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(wgg.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        ume.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (wgg.a(this.a) == null);
-      wgg.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (wgg.a(this.a) == null);
-    wgg.a(this.a).T_();
-  }
-  
-  public void b(int paramInt, View paramView, Object paramObject, wph paramwph)
-  {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wgg.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(wgg.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (wgg.a(this.a) == null);
-      wgg.a(this.a).b(paramObject, paramInt);
-      return;
-    } while (wgg.a(this.a) == null);
-    wgg.a(this.a).T_();
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
+    }
   }
 }
 

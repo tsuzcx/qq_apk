@@ -1,47 +1,19 @@
-import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
 
 public class bgmj
-  implements Iterator<E>
+  implements bgmc<ShareState>
 {
-  private int jdField_a_of_type_Int = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-  private int b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-  private int c = -1;
-  
-  private bgmj(ArrayDeque paramArrayDeque) {}
-  
-  public boolean hasNext()
+  public static ShareState a(bglv parambglv)
   {
-    return this.jdField_a_of_type_Int != this.b;
+    if (parambglv == null) {
+      return null;
+    }
+    return (ShareState)parambglv.a(new bgmj());
   }
   
-  public E next()
+  public ShareState a(bgls parambgls)
   {
-    if (this.jdField_a_of_type_Int == this.b) {
-      throw new NoSuchElementException();
-    }
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
-    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
-    if ((ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
-      throw new ConcurrentModificationException();
-    }
-    this.c = this.jdField_a_of_type_Int;
-    return localObject;
-  }
-  
-  public void remove()
-  {
-    if (this.c < 0) {
-      throw new IllegalStateException();
-    }
-    if (!ArrayDeque.access$500(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque, this.c))
-    {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
-      this.b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-    }
-    this.c = -1;
+    return parambgls.a();
   }
 }
 

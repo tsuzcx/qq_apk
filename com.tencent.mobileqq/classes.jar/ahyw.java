@@ -1,22 +1,59 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahyw
-  implements TextWatcher
+  extends aqru
 {
-  public ahyw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ahyw(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(arcg paramarcg)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    if ((TextUtils.isEmpty(paramarcg.a)) || (TextUtils.isEmpty(paramarcg.b))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramarcg.a + " [path] = " + paramarcg.b);
+      }
+    }
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.QLog;
 
 class QzoneModuleManager$2
@@ -10,9 +10,9 @@ class QzoneModuleManager$2
   
   public void run()
   {
-    int i = azmz.a();
+    int i = azri.a();
     QLog.i("QzoneModuleManager", 1, "current versionNum is:" + i);
-    azmz.a(i + 6000);
+    azri.a(i + 6000);
     QzoneModuleManager.access$102(this.this$0, true);
   }
 }

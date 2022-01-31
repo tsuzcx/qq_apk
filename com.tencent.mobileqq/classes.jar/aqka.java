@@ -1,14 +1,15 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class aqka
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aqka
+  implements DialogInterface.OnClickListener
 {
-  public aqka(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  aqka(aqjz paramaqjz) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.aC_();
+    Face2FaceAddFriendActivity.e(this.a.a);
   }
 }
 

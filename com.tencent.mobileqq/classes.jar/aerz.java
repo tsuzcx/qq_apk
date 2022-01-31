@@ -1,11 +1,17 @@
+import android.os.Looper;
+import android.os.Message;
+
 class aerz
-  implements aesa
+  extends bayj
 {
-  aerz(aery paramaery) {}
-  
-  public void a()
+  aerz(aery paramaery, Looper paramLooper)
   {
-    this.a.b();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

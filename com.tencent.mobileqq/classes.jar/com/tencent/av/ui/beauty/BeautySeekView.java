@@ -1,6 +1,6 @@
 package com.tencent.av.ui.beauty;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -76,18 +76,18 @@ public class BeautySeekView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    paramContext = inflate(paramContext, 2131559614, this);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372829);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841588);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131372746));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372745));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372747));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841596);
+    paramContext = inflate(paramContext, 2131559613, this);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372855);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841601);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131372772));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372771));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372773));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841609);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     this.jdField_a_of_type_AndroidWidgetSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new mom(this));
-    this.jdField_b_of_type_Int = aekt.a(24.0F, getResources());
+    this.jdField_b_of_type_Int = aepi.a(24.0F, getResources());
     if (AudioHelper.a(0) == 1)
     {
       setBackgroundColor(-270080262);
@@ -127,7 +127,7 @@ public class BeautySeekView
       View localView = this.jdField_a_of_type_AndroidViewView;
       if (paramInt > this.c)
       {
-        i = 2130841589;
+        i = 2130841602;
         localView.setBackgroundResource(i);
       }
     }
@@ -136,21 +136,21 @@ public class BeautySeekView
       if (paramInt != 0) {
         break label65;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841592);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841605);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return;
-      i = 2130841588;
+      i = 2130841601;
       break;
       label65:
       if (paramInt <= 30) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841594);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841607);
       } else if (paramInt <= 60) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841595);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841608);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841593);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841606);
       }
     }
   }

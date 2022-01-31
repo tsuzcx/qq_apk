@@ -1,50 +1,25 @@
 import android.app.Activity;
-import android.content.Intent;
+import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
 public class ayja
-  implements ayjk
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public ayja(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
   
-  public ayja(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return alpo.a(2131705752);
-  }
-  
-  public List<ayjl> a()
-  {
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
-    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("jump_src_key", 0);
-    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
-    ((Activity)paramView.getContext()).startActivity(localIntent);
-    ayrd.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
-    azmj.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
+    }
+    return false;
   }
 }
 

@@ -1,39 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.view.View;
+import android.widget.TextView;
 
 public class xry
-  extends Handler
+  extends xsa
 {
-  public xry(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
+  TextView a;
+  
+  public xry(xsc paramxsc, View paramView)
   {
-    super(paramLooper);
+    super(paramxsc, paramView);
+    this.a = ((TextView)paramView.findViewById(2131377644));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
   }
   
-  public void handleMessage(Message paramMessage)
+  public CharSequence a()
   {
-    switch (paramMessage.what)
+    return this.a.getText();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = xrr.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-    default: 
+      this.a.setBackgroundResource(2130844197);
       return;
     }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      wsv.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    this.a.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.a.getHint();
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.a.setHint(paramCharSequence);
+    this.a.setGravity(17);
   }
 }
 

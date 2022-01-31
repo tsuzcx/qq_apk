@@ -6,7 +6,7 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class mau
-  extends amab
+  extends ameq
 {
   public String a;
   

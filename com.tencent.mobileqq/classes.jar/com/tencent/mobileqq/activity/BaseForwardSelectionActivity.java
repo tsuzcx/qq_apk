@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aekt;
+import aepi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import aruc;
-import arum;
-import arwu;
-import azmj;
+import aryl;
+import aryv;
+import asbd;
+import azqs;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -17,13 +17,13 @@ public class BaseForwardSelectionActivity
   extends FragmentActivity
 {
   protected Bundle a;
-  public arum a;
+  public aryv a;
   public boolean a;
   public boolean b;
   
   private void a()
   {
-    Intent localIntent = aekt.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -54,7 +54,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Arum.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Aryv.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -66,8 +66,8 @@ public class BaseForwardSelectionActivity
       this.b = getIntent().getBooleanExtra("call_by_forward", false);
       if (this.b)
       {
-        this.jdField_a_of_type_Arum = arwu.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Arum.a();
+        this.jdField_a_of_type_Aryv = asbd.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aryv.a();
       }
     }
     return true;
@@ -75,8 +75,8 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Arum != null) {
-      this.jdField_a_of_type_Arum.w();
+    if (this.jdField_a_of_type_Aryv != null) {
+      this.jdField_a_of_type_Aryv.w();
     }
     super.doOnDestroy();
   }
@@ -99,14 +99,14 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == aruc.f.intValue()) || (i == aruc.k.intValue()))
+    if ((i == aryl.f.intValue()) || (i == aryl.k.intValue()))
     {
-      this.jdField_a_of_type_Arum.b(i);
+      this.jdField_a_of_type_Aryv.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    azmj.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()

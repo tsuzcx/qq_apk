@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.setting.QIMSelectEffectParams;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public final class bmcx
-  implements Parcelable.Creator<QIMSelectEffectParams>
+class bmcx
+  implements EIPCOnGetConnectionListener
 {
-  public QIMSelectEffectParams a(Parcel paramParcel)
+  bmcx(bmcv parambmcv) {}
+  
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    return new QIMSelectEffectParams(paramParcel);
+    if (paramEIPCConnection != null) {
+      bmcv.a(this.a, paramEIPCConnection.procName);
+    }
+    bmcv.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    }
   }
   
-  public QIMSelectEffectParams[] a(int paramInt)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    return new QIMSelectEffectParams[paramInt];
+    if (paramEIPCConnection != null) {
+      bmcv.a(this.a, paramEIPCConnection.procName);
+    }
+    bmcv.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bmcv.a(this.a));
+    }
   }
 }
 

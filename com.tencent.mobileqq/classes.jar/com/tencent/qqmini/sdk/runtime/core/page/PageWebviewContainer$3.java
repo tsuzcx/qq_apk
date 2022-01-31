@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import bgid;
+import bgmk;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class PageWebviewContainer$3
   implements Runnable
 {
-  PageWebviewContainer$3(PageWebviewContainer paramPageWebviewContainer, bgid parambgid) {}
+  PageWebviewContainer$3(PageWebviewContainer paramPageWebviewContainer, bgmk parambgmk) {}
   
   public void run()
   {

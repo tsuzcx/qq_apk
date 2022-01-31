@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzp
-  implements awvu
+  implements axad
 {
   public lzp(QQServiceForAV paramQQServiceForAV) {}
   

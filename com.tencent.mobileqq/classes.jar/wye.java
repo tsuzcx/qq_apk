@@ -1,39 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 
 public class wye
-  implements View.OnClickListener
+  extends xcs
 {
-  protected long a;
-  protected View a;
-  public wyf a;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public wye(wyf paramwyf, View paramView)
+  public wye(int paramInt, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Wyf = paramwyf;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setOnClickListener(this);
+    super(paramInt, paramBitmap);
   }
   
-  private boolean a()
+  public static wye a(wye paramwye, Bitmap paramBitmap)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if ((l2 > 0L) && (l2 < 2000L)) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = l1;
-    return false;
+    paramBitmap = new wye(paramwye.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramwye.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramwye.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramwye.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramwye.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramwye.jdField_b_of_type_Boolean;
+    return paramBitmap;
   }
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (!a())
-    {
-      wta.a("home_page", "clk_shoot", 0, 0, new String[0]);
-      this.jdField_a_of_type_Wyf.a();
-    }
-    bato.g();
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 

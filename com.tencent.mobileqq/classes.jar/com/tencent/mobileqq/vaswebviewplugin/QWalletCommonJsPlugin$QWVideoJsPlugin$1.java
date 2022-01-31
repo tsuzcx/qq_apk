@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aivs;
+import ajah;
 import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class QWalletCommonJsPlugin$QWVideoJsPlugin$1
-  implements aivs
+  implements ajah
 {
   QWalletCommonJsPlugin$QWVideoJsPlugin$1(QWalletCommonJsPlugin.QWVideoJsPlugin paramQWVideoJsPlugin, String paramString) {}
   

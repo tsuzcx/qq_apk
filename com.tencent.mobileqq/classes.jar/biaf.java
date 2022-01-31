@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-
-class biaf
-  implements View.OnLongClickListener
+public abstract interface biaf
 {
-  biaf(biad parambiad, biac parambiac) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean onLongClick(View paramView)
-  {
-    int i = this.jdField_a_of_type_Biac.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Biad.a.a(this.jdField_a_of_type_Biac.itemView, i);
-    }
-    return true;
-  }
+  public abstract void b();
 }
 
 

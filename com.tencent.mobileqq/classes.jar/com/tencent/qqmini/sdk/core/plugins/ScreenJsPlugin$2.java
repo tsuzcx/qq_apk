@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class ScreenJsPlugin$2
   implements Runnable
 {
-  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin, bgkd parambgkd) {}
+  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin, bgok parambgok) {}
   
   public void run()
   {

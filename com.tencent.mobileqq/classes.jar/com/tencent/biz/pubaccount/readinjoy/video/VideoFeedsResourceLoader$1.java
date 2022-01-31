@@ -14,8 +14,8 @@ public class VideoFeedsResourceLoader$1
     Context localContext = (Context)this.a.get();
     if (localContext != null)
     {
-      rha.a(localContext, 2130842736);
-      rha.a(localContext, 2130842590);
+      rha.a(localContext, 2130842749);
+      rha.a(localContext, 2130842603);
     }
   }
 }

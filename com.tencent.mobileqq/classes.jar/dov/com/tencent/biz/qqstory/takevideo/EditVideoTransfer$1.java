@@ -1,9 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmec;
-import bmix;
-import bmjh;
-import bmke;
+import bmio;
+import bmnj;
+import bmnt;
+import bmoq;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class EditVideoTransfer$1
@@ -11,15 +11,15 @@ public class EditVideoTransfer$1
 {
   public void run()
   {
-    if (bmke.a(this.this$0))
+    if (bmoq.a(this.this$0))
     {
-      localObject = (bmjh)this.this$0.a(bmjh.class);
+      localObject = (bmnt)this.this$0.a(bmnt.class);
       if (localObject != null) {
-        ((bmjh)localObject).a(bmke.a(this.this$0));
+        ((bmnt)localObject).a(bmoq.a(this.this$0));
       }
     }
-    bmke.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
-    Object localObject = (bmec)this.this$0.a(bmec.class);
+    bmoq.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
+    Object localObject = (bmio)this.this$0.a(bmio.class);
     if (this.this$0.a() != 0) {}
   }
 }

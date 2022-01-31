@@ -1,17 +1,14 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.wifisdk.TMSDKCustomConfig.IToast;
+import android.view.View;
 
-final class bevn
-  implements TMSDKCustomConfig.IToast
+public abstract interface bevn
 {
-  public void showToast(Context paramContext, CharSequence paramCharSequence, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      QQToast.a(paramContext, paramCharSequence, paramInt).a();
-    }
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat, int paramInt);
+  
+  public abstract boolean a();
 }
 
 

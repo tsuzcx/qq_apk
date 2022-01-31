@@ -1,11 +1,11 @@
 import com.tencent.qphone.base.util.QLog;
 
 class nou
-  implements bhqg
+  implements bhun
 {
   nou(not paramnot) {}
   
-  public void as_()
+  public void ap_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");

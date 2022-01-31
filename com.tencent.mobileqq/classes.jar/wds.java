@@ -1,53 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.parallel.ParallelStream;
+import android.support.annotation.NonNull;
 
-public class wds
-  extends JobSegment<weh, weh>
+class wds
+  implements wdo
 {
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
-  private weh jdField_a_of_type_Weh;
+  wds(wdr paramwdr) {}
   
-  private void a(String paramString)
+  public void a(@NonNull wdm paramwdm)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new wea(this), paramString);
-    wkg localwkg1;
-    wkg localwkg2;
-    if (this.jdField_a_of_type_Weh.a())
-    {
-      localwkg1 = new wkg(paramString, 2, "", 0);
-      localwkg2 = new wkg(paramString, 2, "", 1);
-    }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new wdy(this, 0), paramString).map(new wdy(this, 1), paramString).map(new wdw(this), localwkg1).map(new wdw(this), localwkg2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new wdy(this, -1), paramString).map(new wdw(this), localwkg1))
-    {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new wdv(this));
-      return;
-      localwkg1 = new wkg(paramString, 2, "");
+    paramwdm = paramwdm.a();
+    if (paramwdm != null) {
+      wdr.a(this.a, paramwdm);
     }
   }
   
-  protected void a(JobContext paramJobContext, weh paramweh)
-  {
-    if ((paramweh == null) || (paramweh.a == null) || (TextUtils.isEmpty(paramweh.a.feedId)))
-    {
-      wsv.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
-      return;
-    }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_Weh = paramweh;
-    a(paramweh.a.feedId);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
-  }
+  public void b(@NonNull wdm paramwdm) {}
 }
 
 

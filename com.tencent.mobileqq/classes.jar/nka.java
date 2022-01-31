@@ -4,7 +4,7 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class nka
-  extends alvc
+  extends alzr
 {
   public nka(AccountDetailActivity paramAccountDetailActivity) {}
   

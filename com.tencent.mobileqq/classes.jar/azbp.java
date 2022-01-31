@@ -1,80 +1,25 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class azbp
+final class azbp
+  implements azbr
 {
-  private azbq<Integer, azbr> a;
-  protected String a;
+  azbp(BusinessObserver paramBusinessObserver) {}
   
-  public azbp()
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_Azbq = new azbq(this);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    try
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_Azbq.a(Integer.valueOf(paramInt));
-      if (localArrayList != null) {
-        localArrayList.clear();
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_Azbq.a(Integer.valueOf(paramInt));
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          azbr localazbr = (azbr)((Iterator)localObject).next();
-          if (localazbr != null) {
-            localazbr.a(this, paramInt, paramVarArgs);
-          }
-        }
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(azbr paramazbr)
-  {
-    try
-    {
-      this.jdField_a_of_type_Azbq.a(paramazbr);
-      return;
-    }
-    finally
-    {
-      paramazbr = finally;
-      throw paramazbr;
-    }
-  }
-  
-  public void a(azbr paramazbr, int... paramVarArgs)
-  {
-    try
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        int k = paramVarArgs[i];
-        this.jdField_a_of_type_Azbq.a(Integer.valueOf(k), paramazbr);
-        i += 1;
-      }
-      return;
-    }
-    finally {}
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "getAppConfig");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

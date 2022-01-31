@@ -1,23 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
 
 public class acae
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public acae(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acae(AboutActivity paramAboutActivity, aual paramaual) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aual.d))
     {
-      azmj.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
-      return;
+      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Aual.d);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
     }
-    azmj.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Aual.a();
+    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
   }
 }
 

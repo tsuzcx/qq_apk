@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpk
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public adpk(RegisterActivity paramRegisterActivity, String paramString) {}
+  public adpk(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

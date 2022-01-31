@@ -1,10 +1,16 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-public abstract interface aqds
+public class aqds
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public aqds(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,8 +1,8 @@
-import java.util.List;
+import android.view.View;
 
 public abstract interface asvm
 {
-  public abstract void a(List<aswg> paramList);
+  public abstract void onClick(View paramView);
 }
 
 

@@ -1,53 +1,121 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class aqqi
-  extends aqqt
+public class aqqi
+  extends alqv
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  private Map<Long, FileManagerEntity> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  aqqi(aqpv paramaqpv, MessageRecord paramMessageRecord)
+  public aqqi(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  
+  FileManagerEntity a(long paramLong)
   {
-    super(paramaqpv);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    }
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramLong, alof.z, 6000, -1L);
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFileManagerEntity);
+    return localFileManagerEntity;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqqr paramaqqr)
+  protected void a(long paramLong, float paramFloat)
   {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, false), false);
+    super.a(paramLong, paramFloat);
+    FileManagerEntity localFileManagerEntity = a(paramLong);
+    if (localFileManagerEntity == null) {
       return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
-      }
-      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, true), false);
+    localFileManagerEntity.fProgress = paramFloat;
+    QfileBaseRecentFileTabView.l(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, alof.z, 6000, 16, null, 0, null);
+  }
+  
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    paramString = a(paramLong1);
+    if (paramString == null) {
       return;
     }
-    aqpv.a(this.jdField_a_of_type_Aqpv).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqqj(this, paramString, paramaqqr));
+    paramString.status = 2;
+    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, alof.z, 6000, 10, null, 0, null);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    Object localObject = a(paramLong);
+    if (localObject == null) {
+      return;
+    }
+    long l;
+    if (paramBoolean)
+    {
+      ((FileManagerEntity)localObject).status = 1;
+      QfileBaseRecentFileTabView.j(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
+      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onRecvFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).strFilePath);
+      paramString = QfileBaseRecentFileTabView.k(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
+      paramLong = ((FileManagerEntity)localObject).uniseq;
+      l = ((FileManagerEntity)localObject).nSessionId;
+      localObject = alof.z;
+      if (!paramBoolean) {
+        break label155;
+      }
+    }
+    label155:
+    for (int i = 11;; i = 12)
+    {
+      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
+      return;
+      ((FileManagerEntity)localObject).status = 0;
+      break;
+    }
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    paramString = a(paramLong1);
+    if (paramString == null) {
+      return;
+    }
+    paramString.status = 2;
+    QfileBaseRecentFileTabView.g(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, alof.z, 6000, 10, null, 0, null);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    super.a(paramBoolean, paramLong, paramString);
+    Object localObject = a(paramLong);
+    if (localObject == null) {
+      return;
+    }
+    long l;
+    if (paramBoolean)
+    {
+      ((FileManagerEntity)localObject).status = 1;
+      QfileBaseRecentFileTabView.h(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
+      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onSendFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).strFilePath);
+      paramString = QfileBaseRecentFileTabView.i(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
+      paramLong = ((FileManagerEntity)localObject).uniseq;
+      l = ((FileManagerEntity)localObject).nSessionId;
+      localObject = alof.z;
+      if (!paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (int i = 11;; i = 12)
+    {
+      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
+      return;
+      ((FileManagerEntity)localObject).status = 0;
+      break;
+    }
   }
 }
 

@@ -1,8 +1,18 @@
-public abstract interface amtc
+import java.io.File;
+
+public final class amtc
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public static String a = "_model.zip";
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public static String a()
+  {
+    return andq.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+  }
+  
+  public static String b()
+  {
+    return andq.a() + "ar_cloud_transfer/";
+  }
 }
 
 

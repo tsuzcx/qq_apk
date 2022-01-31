@@ -1,166 +1,242 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.CircleProgress;
+import NS_MOBILE_NEWEST_FEEDS.QzoneData;
+import NS_MOBILE_NEWEST_FEEDS.feed_info;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import NS_QQ_STORY_META.META.StImage;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_WEISHI_QQ_PROFILE.stGetNewestFeedRspInner;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class axjp
-  extends BaseAdapter
+  extends MSFServlet
 {
-  public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public String a;
-  List<axkn> jdField_a_of_type_JavaUtilList;
-  
-  public axjp(Context paramContext)
+  private void b(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    this.jdField_a_of_type_JavaLangString = "SubtitleProviderGridAdapter";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(axkn paramaxkn, View paramView)
-  {
-    if ((paramaxkn == null) || (paramView == null)) {}
-    do
-    {
-      return;
-      paramView = (ImageView)paramView.findViewById(2131364860);
-    } while (paramView == null);
-    if ((paramaxkn != null) && (paramaxkn.jdField_a_of_type_Axko != null) && (paramaxkn.jdField_a_of_type_Axko.d != 2) && (!paramaxkn.jdField_b_of_type_Boolean))
-    {
-      paramView.setImageResource(2130845529);
-      paramView.setVisibility(0);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    if (localQQAppInterface == null) {
       return;
     }
-    paramView.setVisibility(8);
-  }
-  
-  public void a(List<axkn> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if ((paramList != null) && (QLog.isColorLevel())) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "SubtitleProviderGridAdapter setData size = " + paramList.size());
-    }
-  }
-  
-  public void b(axkn paramaxkn, View paramView)
-  {
-    if ((paramaxkn == null) || (paramView == null)) {}
-    do
+    if ((paramBoolean) && (paramnewest_feeds_rsp != null))
     {
+      a(paramBoolean, paramnewest_feeds_rsp);
+      localQQAppInterface.a().a(paramnewest_feeds_rsp);
+      localQQAppInterface.a().d();
       return;
-      CircleProgress localCircleProgress = (CircleProgress)paramView.findViewById(2131377216);
-      paramView = (ImageView)paramView.findViewById(2131368195);
-      if (paramaxkn.jdField_b_of_type_Boolean)
+    }
+    localQQAppInterface.a().c();
+  }
+  
+  protected void a(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed isSuc=%s last_feed_time=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramnewest_feeds_rsp.last_feed_time) }));
+    }
+    QQAppInterface localQQAppInterface;
+    alto localalto;
+    if (paramBoolean)
+    {
+      localQQAppInterface = (QQAppInterface)getAppRuntime();
+      if (localQQAppInterface != null)
       {
-        localCircleProgress.setVisibility(0);
-        if (paramaxkn.jdField_a_of_type_Axko != null) {
-          localCircleProgress.setProgress(paramaxkn.jdField_a_of_type_Axko.e);
+        localalto = (alto)localQQAppInterface.getManager(51);
+        if (localalto == null) {}
+      }
+    }
+    ArrayList localArrayList;
+    Object localObject1;
+    Object localObject2;
+    long l;
+    for (;;)
+    {
+      Object localObject4;
+      Object localObject5;
+      try
+      {
+        localArrayList = new ArrayList();
+        localObject1 = paramnewest_feeds_rsp.mapVcByte;
+        if ((localObject1 == null) || (((Map)localObject1).isEmpty())) {
+          break;
         }
-        paramView.setVisibility(8);
+        localObject2 = ((Map)localObject1).keySet().iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        Object localObject3 = (Long)((Iterator)localObject2).next();
+        localObject4 = (QzoneData)((Map)localObject1).get(localObject3);
+        localObject3 = localalto.a(String.valueOf(localObject3));
+        if (localObject3 == null) {
+          continue;
+        }
+        if (((QzoneData)localObject4).iType == 2)
+        {
+          localObject5 = new JceInputStream();
+          ((JceInputStream)localObject5).wrap(((QzoneData)localObject4).vcByte);
+          ((JceInputStream)localObject5).setServerEncoding("utf-8");
+          localObject4 = new stGetNewestFeedRspInner();
+          ((stGetNewestFeedRspInner)localObject4).readFrom((JceInputStream)localObject5);
+          localObject5 = ((stGetNewestFeedRspInner)localObject4).mapItemInfo;
+          if ((localObject5 == null) || (((Map)localObject5).isEmpty())) {
+            continue;
+          }
+          localObject4 = (String)((Map)localObject5).get("upload_time");
+          localObject5 = (String)((Map)localObject5).get("desc");
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed weishi feed, uploadTime=%s desc=%s", new Object[] { localObject4, localObject5 }));
+          }
+          try
+          {
+            l = Long.valueOf((String)localObject4).longValue();
+            if ((((ExtensionInfo)localObject3).feedTime > l) && (((ExtensionInfo)localObject3).feedType != 1)) {
+              continue;
+            }
+            ((ExtensionInfo)localObject3).feedType = 1;
+            ((ExtensionInfo)localObject3).feedTime = l;
+            ((ExtensionInfo)localObject3).feedContent = ((String)localObject5);
+            ((ExtensionInfo)localObject3).feedHasPhoto = false;
+            ((ExtensionInfo)localObject3).feedPhotoUrl = null;
+            localArrayList.add(localObject3);
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localNumberFormatException);
+          }
+          continue;
+          return;
+        }
+      }
+      catch (Exception paramnewest_feeds_rsp)
+      {
+        QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", paramnewest_feeds_rsp);
+      }
+      int i = ((QzoneData)localObject4).iType;
+      if (i == 3) {
+        try
+        {
+          localObject5 = new META.StStoryFeed();
+          ((META.StStoryFeed)localObject5).mergeFrom(((QzoneData)localObject4).vcByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed story feed, uploadTime=%s feedPhotoUrl=%s", new Object[] { Long.valueOf(((META.StStoryFeed)localObject5).createTime.get()), ((META.StStoryFeed)localObject5).coverImage.url.get() }));
+          }
+          if (((localNumberFormatException.feedTime <= ((META.StStoryFeed)localObject5).createTime.get()) || (localNumberFormatException.feedType == 2)) && (!TextUtils.isEmpty(((META.StStoryFeed)localObject5).coverImage.url.get())))
+          {
+            localNumberFormatException.feedType = 2;
+            localNumberFormatException.feedTime = ((META.StStoryFeed)localObject5).createTime.get();
+            localNumberFormatException.feedContent = BaseApplicationImpl.getApplication().getString(2131690058);
+            localNumberFormatException.feedHasPhoto = false;
+            localNumberFormatException.feedPhotoUrl = ((META.StStoryFeed)localObject5).coverImage.url.get();
+            localArrayList.add(localNumberFormatException);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localInvalidProtocolBufferMicroException);
+        }
+      }
+    }
+    paramnewest_feeds_rsp = paramnewest_feeds_rsp.vec_feed_info;
+    label630:
+    String str;
+    if ((paramnewest_feeds_rsp != null) && (!paramnewest_feeds_rsp.isEmpty()))
+    {
+      paramnewest_feeds_rsp = paramnewest_feeds_rsp.iterator();
+      while (paramnewest_feeds_rsp.hasNext())
+      {
+        localObject1 = (feed_info)paramnewest_feeds_rsp.next();
+        localObject2 = localalto.a(String.valueOf(((feed_info)localObject1).opuin));
+        if (localObject2 != null)
+        {
+          l = ((feed_info)localObject1).time;
+          str = axjq.a(((feed_info)localObject1).strcontent, localQQAppInterface);
+          if (((feed_info)localObject1).has_pic != 1L) {
+            break label879;
+          }
+        }
+      }
+    }
+    label879:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed qzone feed, qZoneFeedTime=%s qZoneFeedContent=%s qZoneFeedHasPhoto=%s", new Object[] { Long.valueOf(l), str, Boolean.valueOf(paramBoolean) }));
+      }
+      if ((((ExtensionInfo)localObject2).feedTime > l) && (((ExtensionInfo)localObject2).feedType != 0)) {
+        break label630;
+      }
+      ((ExtensionInfo)localObject2).feedType = 0;
+      ((ExtensionInfo)localObject2).feedTime = l;
+      ((ExtensionInfo)localObject2).feedContent = str;
+      ((ExtensionInfo)localObject2).feedHasPhoto = paramBoolean;
+      ((ExtensionInfo)localObject2).feedPhotoUrl = ((feed_info)localObject1).strImgUrl;
+      localArrayList.add(localObject2);
+      break label630;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed update size=%s", new Object[] { Integer.valueOf(localArrayList.size()) }));
+      }
+      if (localArrayList.size() <= 0) {
+        break;
+      }
+      localalto.b(localArrayList);
+      paramnewest_feeds_rsp = (FriendListHandler)localQQAppInterface.a(1);
+      if (paramnewest_feeds_rsp == null) {
+        break;
+      }
+      paramnewest_feeds_rsp.notifyUI(2, true, null);
+      return;
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = axjo.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent != null)
+      {
+        b(true, paramIntent);
         return;
       }
-      localCircleProgress.setVisibility(8);
-    } while (this.jdField_a_of_type_Int != paramaxkn.jdField_a_of_type_Int);
-    paramView.setVisibility(0);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560861, paramViewGroup, false);
-    }
-    paramView = (TextView)localView.findViewById(2131366356);
-    Object localObject2 = (ImageView)localView.findViewById(2131368195);
-    paramViewGroup = (ImageView)localView.findViewById(2131367808);
-    ImageView localImageView = (ImageView)localView.findViewById(2131364860);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131368476);
-    Object localObject1 = (CircleProgress)localView.findViewById(2131377216);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166901);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165332);
-    ((CircleProgress)localObject1).setStrokeWidth(2.0F);
-    ((CircleProgress)localObject1).setBgAndProgressColor(30, i, 100, j);
-    localObject1 = (axkn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.jdField_a_of_type_Int == ((axkn)localObject1).jdField_a_of_type_Int)
-    {
-      paramInt = 1;
-      localView.setTag(localObject1);
-      if ((AbsListView.LayoutParams)localView.getLayoutParams() == null) {
-        localView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet isSuccess false");
       }
-      if (!((axkn)localObject1).a()) {
-        break label290;
-      }
-      ((ImageView)localObject2).setVisibility(8);
-      if (paramInt == 0) {
-        break label271;
-      }
-      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845464));
+      b(false, null);
+      return;
     }
-    for (;;)
-    {
-      paramViewGroup.setContentDescription(alpo.a(2131715056));
-      localImageView.setVisibility(8);
-      paramView.setVisibility(0);
-      paramView.setText("");
-      return localView;
-      paramInt = 0;
-      break;
-      label271:
-      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845465));
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet resultcode fail.");
     }
-    label290:
-    if (paramInt != 0)
-    {
-      ((ImageView)localObject2).setVisibility(0);
-      paramView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
-      localRelativeLayout.setVisibility(8);
+    b(false, null);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
     }
-    for (;;)
-    {
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845457);
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845457);
-      b((axkn)localObject1, localView);
-      localObject2 = URLDrawable.getDrawable(((axkn)localObject1).jdField_a_of_type_JavaLangString, URLDrawable.URLDrawableOptions.obtain());
-      ((URLDrawable)localObject2).startDownload();
-      paramViewGroup.setImageDrawable((Drawable)localObject2);
-      paramViewGroup.setContentDescription(((axkn)localObject1).jdField_b_of_type_JavaLangString);
-      paramView.setText(((axkn)localObject1).jdField_b_of_type_JavaLangString);
-      paramView.setVisibility(8);
-      a((axkn)localObject1, localView);
-      return localView;
-      ((ImageView)localObject2).setVisibility(8);
-      paramView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
-      localRelativeLayout.setVisibility(8);
+    byte[] arrayOfByte = new axjo(axjq.a(paramIntent)).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
     }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeeds");
+    paramPacket.putSendData(paramIntent);
   }
 }
 

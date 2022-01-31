@@ -18,12 +18,12 @@ public class rcy
   private int c()
   {
     int i = 0;
-    boolean bool = bjxj.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    boolean bool = bkbq.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (!bool) {
-      bjxj.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+      bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
     }
     if (bool) {
-      i = ((Integer)bjxj.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
+      i = ((Integer)bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
     }
     return i;
   }
@@ -39,7 +39,7 @@ public class rcy
     {
       int i = c();
       jdField_a_of_type_Int += 1;
-      bjxj.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+      bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
       return;
     }
     catch (Exception localException)

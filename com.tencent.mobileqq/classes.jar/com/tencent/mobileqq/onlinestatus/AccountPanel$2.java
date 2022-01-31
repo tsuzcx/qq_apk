@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import avyo;
-import azyl;
+import awcx;
+import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPanel$2
   implements Runnable
 {
-  public AccountPanel$2(avyo paramavyo) {}
+  public AccountPanel$2(awcx paramawcx) {}
   
   public void run()
   {
-    if ((avyo.a(this.this$0) != null) && (avyo.a(this.this$0) != null))
+    if ((awcx.a(this.this$0) != null) && (awcx.a(this.this$0) != null))
     {
-      avyo.b(this.this$0, true);
-      avyo.c(this.this$0, false);
-      avyo.a(this.this$0, avyo.a(this.this$0));
-      avyo.a(this.this$0).g(false);
-      azyl.a(avyo.a(this.this$0), false);
+      awcx.b(this.this$0, true);
+      awcx.c(this.this$0, false);
+      awcx.a(this.this$0, awcx.a(this.this$0));
+      awcx.a(this.this$0).g(false);
+      bacu.a(awcx.a(this.this$0), false);
     }
   }
 }

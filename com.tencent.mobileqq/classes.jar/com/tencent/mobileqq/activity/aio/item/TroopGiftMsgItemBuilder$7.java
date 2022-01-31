@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import awbw;
+import awgf;
 
 public final class TroopGiftMsgItemBuilder$7
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$7(awbw paramawbw) {}
+  public TroopGiftMsgItemBuilder$7(awgf paramawgf) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawbw;
-    //   4: invokevirtual 24	awbw:a	()Lawby;
+    //   1: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawgf;
+    //   4: invokevirtual 24	awgf:a	()Lawgh;
     //   7: astore_1
     //   8: aload_1
-    //   9: invokevirtual 28	awby:a	()V
-    //   12: getstatic 33	afzx:a	Ljava/util/List;
+    //   9: invokevirtual 28	awgh:a	()V
+    //   12: getstatic 33	agem:a	Ljava/util/List;
     //   15: invokeinterface 39 1 0
     //   20: astore_2
     //   21: aload_2
@@ -28,31 +28,31 @@ public final class TroopGiftMsgItemBuilder$7
     //   36: checkcast 51	com/tencent/mobileqq/data/MessageForTroopGift
     //   39: astore_3
     //   40: aload_0
-    //   41: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawbw;
+    //   41: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawgf;
     //   44: aload_3
-    //   45: invokevirtual 54	awbw:a	(Lawbv;)Z
+    //   45: invokevirtual 54	awgf:a	(Lawge;)Z
     //   48: pop
     //   49: goto -28 -> 21
     //   52: astore_2
     //   53: aload_1
-    //   54: invokevirtual 57	awby:b	()V
-    //   57: getstatic 33	afzx:a	Ljava/util/List;
+    //   54: invokevirtual 57	awgh:b	()V
+    //   57: getstatic 33	agem:a	Ljava/util/List;
     //   60: invokeinterface 60 1 0
     //   65: return
     //   66: aload_1
-    //   67: invokevirtual 63	awby:c	()V
+    //   67: invokevirtual 63	awgh:c	()V
     //   70: aload_1
-    //   71: invokevirtual 57	awby:b	()V
+    //   71: invokevirtual 57	awgh:b	()V
     //   74: goto -17 -> 57
     //   77: astore_2
     //   78: aload_1
-    //   79: invokevirtual 57	awby:b	()V
+    //   79: invokevirtual 57	awgh:b	()V
     //   82: aload_2
     //   83: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	84	0	this	7
-    //   7	72	1	localawby	awby
+    //   7	72	1	localawgh	awgh
     //   20	11	2	localIterator	java.util.Iterator
     //   52	1	2	localException	java.lang.Exception
     //   77	6	2	localObject	Object

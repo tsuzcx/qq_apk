@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public abstract interface aljj
 {
-  public abstract void a(aljh paramaljh, String paramString1, String paramString2, String paramString3);
+  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

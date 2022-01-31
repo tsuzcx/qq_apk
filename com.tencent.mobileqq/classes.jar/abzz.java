@@ -1,21 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.TMG.utils.QLog;
 
-public class abzz
-  implements CompoundButton.OnCheckedChangeListener
+class abzz
+  implements DialogInterface.OnCancelListener
 {
-  public abzz(AssistantSettingActivity paramAssistantSettingActivity, apfp paramapfp) {}
+  abzz(abzw paramabzw, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Apfp.a(paramBoolean);
-    if (!paramBoolean)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
       return;
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+    azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
   }
 }
 

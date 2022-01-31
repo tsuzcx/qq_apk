@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
-import abot;
-import azvm;
+import abti;
+import azzv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -22,8 +22,8 @@ public final class VideoReporter$2
     if (this.jdField_a_of_type_Int == -2011)
     {
       l1 = System.currentTimeMillis();
-      localazvm = swn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
-      if (localazvm != null) {
+      localazzv = swn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
+      if (localazzv != null) {
         localObject1 = "";
       }
     }
@@ -32,9 +32,9 @@ public final class VideoReporter$2
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localazvm.U);
+        ((JSONObject)localObject2).put("vid", localazzv.U);
         ((JSONObject)localObject2).put("os", "1");
-        if (!abot.d(this.b)) {
+        if (!abti.d(this.b)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -47,10 +47,10 @@ public final class VideoReporter$2
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localazvm.Z;
+        String str = localazzv.Z;
         continue;
       }
-      if (localazvm.Z != null) {
+      if (localazzv.Z != null) {
         continue;
       }
       localObject2 = "0";

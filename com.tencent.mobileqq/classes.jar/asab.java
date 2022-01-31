@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
 
-class asab
-  implements View.OnClickListener
+public class asab
+  extends asei
 {
-  asab(arzz paramarzz) {}
-  
-  public void onClick(View paramView)
+  public asab(Intent paramIntent)
   {
-    arzz.a(this.a);
+    super(paramIntent);
+  }
+  
+  protected boolean g()
+  {
+    return true;
   }
 }
 

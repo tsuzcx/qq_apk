@@ -1,88 +1,50 @@
-import NS_MINI_REPORT.REPORT.StDcReportRsp;
-import NS_MINI_REPORT.REPORT.StGameDcReportRsp;
-import NS_MINI_REPORT.REPORT.StThirdDcReportRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
-public class bgyn
-  extends bgzp
+final class bgyn
+  implements DownloaderProxy.DownloadListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
+  bgyn(MiniGamePluginInfo paramMiniGamePluginInfo, bgyr parambgyr, File paramFile1, File paramFile2) {}
   
-  public bgyn(byte[] paramArrayOfByte, String paramString1, String paramString2)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin failed " + paramInt + " " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
+    this.jdField_a_of_type_Bgyr.a(false, null);
   }
   
-  protected String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return "mini_app_dcreport";
-  }
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
     try
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      int i;
-      if ("ThirdDcReport".equals(this.b))
+      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize != 0) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize != this.jdField_a_of_type_JavaIoFile.length()))
       {
-        paramArrayOfByte = new REPORT.StThirdDcReportRsp();
-        paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-        i = paramArrayOfByte.ret.get();
+        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin file-size mismatch " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
+        this.jdField_a_of_type_Bgyr.a(false, new RuntimeException("file size mismatch, expected:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize + " got:" + this.jdField_a_of_type_JavaIoFile.length()));
+        return;
       }
-      while (i == 0)
+      bgpc.a(this.b.getAbsolutePath(), false);
+      if (!bgoa.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.b.getAbsolutePath()))
       {
-        return new JSONObject();
-        if ("GameDcReport".equals(this.b))
-        {
-          paramArrayOfByte = new REPORT.StGameDcReportRsp();
-          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-          i = paramArrayOfByte.ret.get();
-        }
-        else
-        {
-          paramArrayOfByte = new REPORT.StDcReportRsp();
-          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-          i = paramArrayOfByte.ret.get();
-        }
+        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin unpack failed " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
+        this.jdField_a_of_type_Bgyr.a(false, new RuntimeException("unpack file failed"));
+        return;
       }
-      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
-      return null;
+      QMLog.i("[minigame] GpkgManager", "[Gpkg] download plugin success " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
+      this.jdField_a_of_type_Bgyr.a(true, null);
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    finally
     {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      this.jdField_a_of_type_JavaIoFile.delete();
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  protected String b()
-  {
-    if (this.b != null) {
-      return this.b;
-    }
-    return "DcReport";
   }
 }
 

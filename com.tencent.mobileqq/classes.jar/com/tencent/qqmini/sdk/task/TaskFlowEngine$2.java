@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhhn;
-import bhhq;
+import bhlu;
+import bhlx;
 
 public class TaskFlowEngine$2
   implements Runnable
 {
-  public TaskFlowEngine$2(bhhq parambhhq, bhhn parambhhn) {}
+  public TaskFlowEngine$2(bhlx parambhlx, bhlu parambhlu) {}
   
   public void run()
   {

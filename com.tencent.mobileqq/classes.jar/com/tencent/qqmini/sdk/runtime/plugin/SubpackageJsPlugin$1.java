@@ -1,38 +1,38 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghn;
-import bgjw;
-import bgkd;
-import bgrh;
+import bglu;
+import bgod;
+import bgok;
+import bgvo;
 import org.json.JSONObject;
 
 class SubpackageJsPlugin$1
-  implements bgrh
+  implements bgvo
 {
-  SubpackageJsPlugin$1(SubpackageJsPlugin paramSubpackageJsPlugin, int paramInt, String paramString, bgkd parambgkd) {}
+  SubpackageJsPlugin$1(SubpackageJsPlugin paramSubpackageJsPlugin, int paramInt, String paramString, bgok parambgok) {}
   
-  public void onInitApkgInfo(int paramInt, bgjw parambgjw, String paramString)
+  public void onInitApkgInfo(int paramInt, bgod parambgod, String paramString)
   {
-    parambgjw = new JSONObject();
+    parambgod = new JSONObject();
     try
     {
-      parambgjw.put("taskId", this.val$loadTaskId);
-      parambgjw.put("moduleName", this.val$moduleName);
+      parambgod.put("taskId", this.val$loadTaskId);
+      parambgod.put("moduleName", this.val$moduleName);
       if (paramInt == 0) {
-        parambgjw.put("state", "success");
+        parambgod.put("state", "success");
       }
       for (;;)
       {
-        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambgjw.toString(), 0);
+        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambgod.toString(), 0);
         return;
-        parambgjw.put("state", "fail");
+        parambgod.put("state", "fail");
       }
       try
       {
-        parambgjw.put("taskId", this.val$loadTaskId);
-        parambgjw.put("moduleName", this.val$moduleName);
-        parambgjw.put("state", "fail");
-        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambgjw.toString(), 0);
+        parambgod.put("taskId", this.val$loadTaskId);
+        parambgod.put("moduleName", this.val$moduleName);
+        parambgod.put("state", "fail");
+        this.val$req.a.a("onLoadSubPackageTaskStateChange", parambgod.toString(), 0);
         paramString.printStackTrace();
         return;
       }

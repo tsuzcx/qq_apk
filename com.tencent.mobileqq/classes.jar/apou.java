@@ -1,35 +1,10 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import java.util.List;
 
-public abstract class apou
+public abstract interface apou
 {
-  public final EmoticonPanelController a;
+  public abstract void a(float paramFloat, List<Integer> paramList);
   
-  public apou(EmoticonPanelController paramEmoticonPanelController)
-  {
-    this.a = paramEmoticonPanelController;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public abstract int[] a();
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
+  public abstract void a(List<Integer> paramList);
 }
 
 

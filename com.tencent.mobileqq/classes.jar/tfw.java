@@ -177,13 +177,13 @@ public class tfw
       tju.a(true);
       if ((paramContext instanceof BaseActivity))
       {
-        paramContext = bdds.a(((BaseActivity)paramContext).app, paramContext, paramstSimpleMetaFeed.video_url + "&click_index=" + (paramInt + 1));
+        paramContext = bdib.a(((BaseActivity)paramContext).app, paramContext, paramstSimpleMetaFeed.video_url + "&click_index=" + (paramInt + 1));
         if (paramContext != null) {
           paramContext.c();
         }
-        aszw.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.id;
-        aszw.b = paramstSimpleMetaFeed.feed_desc;
-        aszw.jdField_a_of_type_Int = paramInt;
+        atef.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.id;
+        atef.b = paramstSimpleMetaFeed.feed_desc;
+        atef.jdField_a_of_type_Int = paramInt;
       }
       return;
     }
@@ -284,7 +284,7 @@ public class tfw
           bool2 = true;
           i = tee.a().b();
           j = tee.a().c();
-          if (!xoo.a(BaseApplicationImpl.getApplication())) {
+          if (!xsx.a(BaseApplicationImpl.getApplication())) {
             break label322;
           }
           bool2 = tee.a().c();

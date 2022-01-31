@@ -1,19 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class akft
-  implements DialogInterface.OnClickListener
+public class akft
 {
-  akft(akfo paramakfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
-    }
-    azmj.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
-  }
+  public String a;
+  public String b;
 }
 
 

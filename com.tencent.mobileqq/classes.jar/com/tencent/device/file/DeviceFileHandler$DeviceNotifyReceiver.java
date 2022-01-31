@@ -1,17 +1,17 @@
 package com.tencent.device.file;
 
-import aljq;
+import alof;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.Session;
 import java.util.HashMap;
 import java.util.HashSet;
-import ztk;
+import zxz;
 
 public class DeviceFileHandler$DeviceNotifyReceiver
   extends BroadcastReceiver
@@ -80,8 +80,8 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                       if (str.lastIndexOf(".") > 0)
                       {
                         paramContext = str.substring(str.lastIndexOf("."));
-                        paramContext = aljq.aX + "/smart_device/" + System.currentTimeMillis() + paramContext;
-                        bdcs.b(str, paramContext);
+                        paramContext = alof.aX + "/smart_device/" + System.currentTimeMillis() + paramContext;
+                        bdhb.b(str, paramContext);
                         paramIntent.strFilePathSrc = paramContext;
                         this.a.b.remove(Long.valueOf(l1));
                       }
@@ -103,7 +103,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                     return;
                     paramContext = ".amr";
                     break;
-                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(ztk.c)) {
+                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(zxz.c)) {
                       break label301;
                     }
                     paramIntent.vFileMD5Src = str.getBytes();

@@ -1,23 +1,68 @@
 import android.content.Context;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.lang.ref.WeakReference;
 
 public class wja
-  extends wsa
+  implements wiz
 {
-  public wja(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private int jdField_a_of_type_Int;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public wja(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
   {
-    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected void aa_()
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    xrg localxrg = a().a("FeedSegment");
-    if ((localxrg != null) && (localxrg.a() == 0))
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    wxe.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    Object localObject;
+    do
     {
-      this.a = true;
       return;
+      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        uqn.a((Context)localObject, 12, paramString);
+      }
+    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = "clk_reply_nick";
+      paramString = "2";
+      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
+        break label157;
+      }
+      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramInt = wxj.a(paramString);
+      if (!paramString.getOwner().isMe()) {
+        break label151;
+      }
+      paramString = "1";
     }
-    this.a = false;
+    for (;;)
+    {
+      wxj.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, wxj.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+      localObject = "clk_like_name";
+      break;
+      label151:
+      paramString = "2";
+      continue;
+      label157:
+      paramInt = 4;
+    }
   }
 }
 

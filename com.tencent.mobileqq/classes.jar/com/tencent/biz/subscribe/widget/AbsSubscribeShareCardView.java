@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import azgq;
+import azkz;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,31 +20,31 @@ import com.tencent.smtt.utils.Md5Utils;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import xzf;
-import yjf;
-import yjk;
+import ydo;
+import yns;
+import ynx;
 
 public abstract class AbsSubscribeShareCardView
   extends FrameLayout
 {
   public static final int a;
   public static final int b;
-  public static final int c = azgq.a(375.0F);
-  public static final int d = azgq.a(701.0F);
-  public static final int e = azgq.a(667.0F);
+  public static final int c = azkz.a(375.0F);
+  public static final int d = azkz.a(701.0F);
+  public static final int e = azkz.a(667.0F);
   public float a;
   protected Bitmap a;
   protected View a;
   protected ArrayList<String> a;
-  protected xzf a;
+  protected ydo a;
   protected View b;
   protected ArrayList<ImageView> b;
   private volatile int f;
   
   static
   {
-    jdField_a_of_type_Int = azgq.a(311.0F);
-    jdField_b_of_type_Int = azgq.a(415.0F);
+    jdField_a_of_type_Int = azkz.a(311.0F);
+    jdField_b_of_type_Int = azkz.a(415.0F);
   }
   
   public AbsSubscribeShareCardView(Context paramContext)
@@ -114,7 +114,7 @@ public abstract class AbsSubscribeShareCardView
       if (paramFrameLayout != null)
       {
         paramFrameLayout.getLayoutParams().width = paramInt2;
-        paramFrameLayout.getLayoutParams().height = (i - azgq.a(168.0F));
+        paramFrameLayout.getLayoutParams().height = (i - azkz.a(168.0F));
         paramFrameLayout.setLayoutParams(paramFrameLayout.getLayoutParams());
       }
       this.jdField_b_of_type_AndroidViewView.getLayoutParams().height = i;
@@ -136,7 +136,7 @@ public abstract class AbsSubscribeShareCardView
     }
   }
   
-  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, yjf paramyjf)
+  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, yns paramyns)
   {
     int i = 0;
     if ((paramArrayList != null) && (paramArrayList.size() == paramArrayList1.size()))
@@ -144,28 +144,28 @@ public abstract class AbsSubscribeShareCardView
       this.f = 0;
       if (i < paramArrayList.size())
       {
-        String str = yjk.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
+        String str = ynx.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
         if (new File(str).exists())
         {
           ((ImageView)paramArrayList1.get(i)).setImageBitmap(SafeBitmapFactory.decodeFile(str));
           this.f += 1;
           if (this.f == paramArrayList.size()) {
-            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramyjf));
+            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramyns));
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramyjf));
+          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramyns));
         }
       }
     }
   }
   
-  public void a(xzf paramxzf, Bitmap paramBitmap, yjf paramyjf)
+  public void a(ydo paramydo, Bitmap paramBitmap, yns paramyns)
   {
-    this.jdField_a_of_type_Xzf = paramxzf;
+    this.jdField_a_of_type_Ydo = paramydo;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     measure(c, e);
     layout(0, 0, getMeasuredWidth(), getMeasuredHeight());

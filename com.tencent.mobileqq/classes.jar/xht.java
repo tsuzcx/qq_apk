@@ -1,19 +1,8 @@
-import java.util.Observable;
-
-public class xht
-  extends Observable
+public abstract interface xht
 {
-  public void notifyObservers()
-  {
-    setChanged();
-    super.notifyObservers();
-  }
+  public abstract void a(xep paramxep, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public void notifyObservers(Object paramObject)
-  {
-    setChanged();
-    super.notifyObservers(paramObject);
-  }
+  public abstract void a(xhv paramxhv);
 }
 
 

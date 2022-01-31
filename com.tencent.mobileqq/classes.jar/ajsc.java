@@ -1,82 +1,28 @@
-public final class ajsc
-  implements ajse
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+
+class ajsc
+  implements bhxs
 {
-  private boolean a(char paramChar)
-  {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
-  }
+  ajsc(ajry paramajry) {}
   
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onScrollStateChanged(int paramInt)
   {
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
     }
-    int j;
-    for (;;)
+    if (paramInt == 4097)
     {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
       }
-      i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
     }
-    return j + (paramInt2 - i);
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
-      {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
-      }
-      else
-      {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
-      }
-      paramInt1 += 1;
-    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 

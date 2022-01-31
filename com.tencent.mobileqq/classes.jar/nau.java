@@ -34,8 +34,8 @@ public class nau
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    paramContext = bbkw.a(paramContext, paramViewGroup, paramInt2);
-    paramViewGroup = (bbky)paramContext.getTag();
+    paramContext = bbpf.a(paramContext, paramViewGroup, paramInt2);
+    paramViewGroup = (bbph)paramContext.getTag();
     paramViewGroup.a.setMaxLabelCount(paramInt1);
     paramViewGroup.a.setmIsNeedPriority(paramBoolean);
     return paramContext;
@@ -55,7 +55,7 @@ public class nau
       {
         ((oidb_0x935.RgroupInfo)localObject).mergeFrom(paramRecommendTroopItem.x935RgroupInfo);
         if (((oidb_0x935.RgroupInfo)localObject).rpt_group_label.has()) {
-          paramRecommendTroopItem.labelList = alws.a(((oidb_0x935.RgroupInfo)localObject).rpt_group_label.get());
+          paramRecommendTroopItem.labelList = ambh.a(((oidb_0x935.RgroupInfo)localObject).rpt_group_label.get());
         }
         if ((paramRecommendTroopItem.labelList == null) || (paramRecommendTroopItem.labelList.size() <= 0)) {
           continue;
@@ -138,7 +138,7 @@ public class nau
         }
       }
       localGroupInfo.labels = localNumberFormatException;
-      bbkw.a(paramView, localGroupInfo, paramContext, false);
+      bbpf.a(paramView, localGroupInfo, paramContext, false);
     }
   }
   
@@ -188,14 +188,14 @@ public class nau
         }
       }
       localGroupInfo.labels = localNumberFormatException;
-      bbkw.a(paramView, localGroupInfo, paramContext, false);
+      bbpf.a(paramView, localGroupInfo, paramContext, false);
     }
   }
   
   public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    paramContext = bbkw.a(paramContext, paramViewGroup, paramInt2, 2131561250);
-    paramViewGroup = (bbky)paramContext.getTag();
+    paramContext = bbpf.a(paramContext, paramViewGroup, paramInt2, 2131561268);
+    paramViewGroup = (bbph)paramContext.getTag();
     paramViewGroup.a.setMaxLabelCount(paramInt1);
     paramViewGroup.a.setmIsNeedPriority(paramBoolean);
     paramViewGroup.b = 1;

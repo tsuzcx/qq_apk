@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.flashchat;
 
-import acex;
-import alpo;
+import acjm;
+import alud;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import arry;
-import arsg;
-import asnx;
-import azmj;
+import arwh;
+import arwp;
+import assg;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,9 +23,9 @@ import mqq.os.MqqHandler;
 
 public class FlashChatPanelView
   extends RichTextPanelView
-  implements arsg
+  implements arwp
 {
-  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131704994);
+  private static final String jdField_a_of_type_JavaLangString = alud.a(2131705006);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private FlashChatTextEffectView jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView;
   
@@ -56,22 +56,22 @@ public class FlashChatPanelView
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (!asnx.c.get()) {}
+    if (!assg.c.get()) {}
     label128:
     do
     {
       return;
       Object localObject = new StringBuilder();
-      arry localarry = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
-      if ((localarry != null) && (localarry.a != null)) {}
-      for (paramInt1 = localarry.a.id;; paramInt1 = -1)
+      arwh localarwh = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
+      if ((localarwh != null) && (localarwh.a != null)) {}
+      for (paramInt1 = localarwh.a.id;; paramInt1 = -1)
       {
         paramView = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217);
         paramView.a(((StringBuilder)localObject).toString());
         if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().isEmpty()) {
           break label128;
         }
-        if ((localarry == null) || (localarry.a == null) || (localarry.a.id != -100001)) {
+        if ((localarwh == null) || (localarwh.a == null) || (localarwh.a.id != -100001)) {
           break;
         }
         return;
@@ -84,13 +84,13 @@ public class FlashChatPanelView
     } while (paramView == null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373095, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373121, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-    acex.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
+    acjm.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aE();
     return;
-    QQToast.a(getContext(), alpo.a(2131704993), 0).a();
+    QQToast.a(getContext(), alud.a(2131705005), 0).a();
   }
   
   public void a(boolean paramBoolean)

@@ -2,7 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class owh
-  extends avqr
+  extends avva
 {
   public owh(KandianMergeManager paramKandianMergeManager) {}
   

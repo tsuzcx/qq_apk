@@ -83,7 +83,7 @@ public class ncm
             paramString3.d = paramString1;
             paramString3.l = paramString2.b;
             paramString3.e = paramString2.jdField_a_of_type_JavaLangString;
-            bfgh.a(paramContext, paramString3);
+            bfkq.a(paramContext, paramString3);
             return;
           }
           catch (Throwable paramContext)
@@ -159,7 +159,7 @@ public class ncm
       a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 15, "cannot get current file after download");
       return;
     }
-    if (!bdcs.d(localTMAssistantDownloadClient, paramnch.b))
+    if (!bdhb.d(localTMAssistantDownloadClient, paramnch.b))
     {
       a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 16, "rename file fail after download");
       paramTMAssistantDownloadClient.delete();

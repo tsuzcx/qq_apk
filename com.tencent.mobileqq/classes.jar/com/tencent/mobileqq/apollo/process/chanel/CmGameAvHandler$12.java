@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import akro;
-import aksm;
-import akso;
-import akuf;
-import alcm;
+import akwd;
+import akxb;
+import akxd;
+import akyu;
+import alhb;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
@@ -16,37 +16,37 @@ import org.json.JSONArray;
 public class CmGameAvHandler$12
   implements Runnable
 {
-  public CmGameAvHandler$12(aksm paramaksm, JSONArray paramJSONArray) {}
+  public CmGameAvHandler$12(akxb paramakxb, JSONArray paramJSONArray) {}
   
   public void run()
   {
     if (this.a.length() <= 0)
     {
-      aksm.a(this.this$0).clear();
-      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new akso(this));
+      akxb.a(this.this$0).clear();
+      alhb.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new akxd(this));
     }
     for (;;)
     {
       return;
-      aksm.a(this.this$0).clear();
+      akxb.a(this.this$0).clear();
       String[] arrayOfString = new String[this.a.length()];
-      String str3 = akro.a().getCurrentAccountUin();
+      String str3 = akwd.a().getCurrentAccountUin();
       int i = 0;
       while (i < this.a.length())
       {
         try
         {
-          akuf localakuf = akro.a(aksm.a(this.this$0));
-          if (localakuf != null)
+          akyu localakyu = akwd.a(akxb.a(this.this$0));
+          if (localakyu != null)
           {
-            String str2 = localakuf.c(this.a.get(i).toString());
+            String str2 = localakyu.c(this.a.get(i).toString());
             String str1 = str2;
             if (TextUtils.isEmpty(str2)) {
-              str1 = localakuf.a(this.a.get(i).toString());
+              str1 = localakyu.a(this.a.get(i).toString());
             }
             arrayOfString[i] = str1;
-            aksm.a(this.this$0).add(str1);
-            aksm.a(this.this$0, arrayOfString, str3);
+            akxb.a(this.this$0).add(str1);
+            akxb.a(this.this$0, arrayOfString, str3);
           }
         }
         catch (Exception localException)

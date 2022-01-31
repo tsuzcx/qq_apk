@@ -1,67 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
 
-public class alwf
+class alwf
+  implements bhuk
 {
-  private alqy jdField_a_of_type_Alqy = new alwh(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new alwg(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  alwf(alwd paramalwd, bhuf parambhuf) {}
   
-  public alwf(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
-      paramString = new IntentFilter();
-      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
-      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
-      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
       if (QLog.isColorLevel()) {
-        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
       }
-      return;
-    }
-    catch (AccountNotMatchException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alqy);
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+      this.jdField_a_of_type_Alwd.h();
+      azqs.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,30 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
 
 public class aegu
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aegu(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public int a;
+  public View a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "1");
-      return;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }

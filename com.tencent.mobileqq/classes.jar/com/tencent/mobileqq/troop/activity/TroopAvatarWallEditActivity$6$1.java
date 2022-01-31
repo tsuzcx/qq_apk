@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bhpy;
+import bhuf;
 
 class TroopAvatarWallEditActivity$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class TroopAvatarWallEditActivity$6$1
   
   public void run()
   {
-    this.a.a.b(2131693493);
+    this.a.a.b(2131693495);
     this.a.a.b();
   }
 }

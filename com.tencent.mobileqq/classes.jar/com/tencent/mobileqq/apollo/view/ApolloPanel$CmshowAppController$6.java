@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alin;
-import alpo;
+import alnc;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ApolloPanel$CmshowAppController$6
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$6(alin paramalin) {}
+  public ApolloPanel$CmshowAppController$6(alnc paramalnc) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getContext(), 1, alpo.a(2131700851), 0).b(0);
-    alin.a(this.a);
+    QQToast.a(this.a.a.getContext(), 1, alud.a(2131700863), 0).b(0);
+    alnc.a(this.a);
   }
 }
 

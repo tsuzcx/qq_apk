@@ -42,14 +42,14 @@ public class MiniFragmentActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.a = b();
-    setContentView(2131559345);
+    setContentView(2131559344);
     if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131366780, this.a);
+    paramBundle.replace(2131366790, this.a);
     paramBundle.commit();
     return true;
   }

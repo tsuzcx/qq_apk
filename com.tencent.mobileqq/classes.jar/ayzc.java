@@ -1,124 +1,151 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class ayzc
+class ayzc
+  implements BusinessObserver
 {
-  public static int a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getInt("short_video_msg_config_version", 0);
-  }
+  ayzc(ayyy paramayyy, long paramLong, String paramString, Context paramContext, int paramInt) {}
   
-  public static String a(Context paramContext, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_jumping_url_" + paramInt, "");
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
-    paramContext.putInt("short_video_msg_config_version", paramInt);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    Object localObject = a(paramContext, paramInt);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (QLog.isColorLevel())
     {
-      paramString = ((String)localObject).replace("$GCODE$", paramString);
-      localObject = new Intent(paramContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramString);
-      paramContext.startActivity((Intent)localObject);
-      return;
+      QLog.d("AppLaucherHelper", 2, "t=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 2, "onReceive");
     }
-    QLog.i("ShortVideoMsgTailHelper", 1, "jumpUrl is empty");
-  }
-  
-  public static void a(Context paramContext, List<String> paramList)
-  {
-    if (paramList == null) {}
-    try
+    new Bundle();
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    if (paramBoolean)
     {
-      if (!QLog.isColorLevel()) {
-        break label300;
+      Object localObject2 = paramBundle.getByteArray("data");
+      try
+      {
+        paramBundle = new FastAuthorize.AuthorizeResponse();
+        paramBundle.mergeFrom((byte[])localObject2);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
+          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
+          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
+          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
+          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
+          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
+          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
+          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
+          QLog.d("AppLaucherHelper", 2, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
+        }
+        this.jdField_a_of_type_Ayyy.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+        this.jdField_a_of_type_Ayyy.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
+        if ((!paramBundle.ret.get().equals("0")) || (!paramBundle.apk_name.has())) {
+          break label1163;
+        }
+        if (paramBundle.access_token.has())
+        {
+          localObject2 = paramBundle.access_token.get();
+          this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject2);
+        }
+        if (paramBundle.pay_token.has())
+        {
+          localObject2 = paramBundle.pay_token.get();
+          this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject2);
+        }
+        if (paramBundle.openid.has())
+        {
+          localObject2 = paramBundle.openid.get();
+          this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject2);
+        }
+        for (;;)
+        {
+          if (paramBundle.pfkey.has())
+          {
+            localObject2 = paramBundle.pfkey.get();
+            this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject2);
+          }
+          if (paramBundle.encrykey.has())
+          {
+            localObject2 = paramBundle.encrykey.get();
+            this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject2);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 2, "mParams=" + this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString);
+          }
+          paramBundle = paramBundle.apk_name.get();
+          if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.contains(this.jdField_a_of_type_JavaLangString))) {
+            break;
+          }
+          ayyy.jdField_a_of_type_Boolean = false;
+          QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
+          return;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
+          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
+          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
+          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
+          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
+          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
+          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
+          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
+          QLog.d("AppLaucherHelper", 1, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
+        }
+        localObject1 = paramBundle;
       }
-      QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, configs == null");
-      return;
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        paramBundle = (Bundle)localObject1;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException1.getMessage());
+          localObject1 = paramBundle;
+        }
+        for (;;)
+        {
+          paramBundle = ayyy.a(this.jdField_a_of_type_Ayyy.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
+          }
+          bfms.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
+          ayyy.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_Ayyy.jdField_a_of_type_MqqAppNewIntent == null) {
+            return;
+          }
+          this.jdField_a_of_type_Ayyy.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+          this.jdField_a_of_type_Ayyy.jdField_a_of_type_MqqAppNewIntent = null;
+          return;
+          try
+          {
+            QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 4, "pkg=" + paramBundle);
+            localObject1 = paramBundle;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
+        }
+      }
+      label1163:
+      QLog.d(this.jdField_a_of_type_Ayyy.getClass().getSimpleName(), 4, "start without login state");
     }
-    catch (JSONException paramContext)
-    {
-      QLog.e("ShortVideoMsgTailHelper", 1, paramContext.toString(), paramContext);
-      return;
-    }
-    paramList = paramList.iterator();
     for (;;)
     {
-      Object localObject;
-      int j;
-      SharedPreferences.Editor localEditor;
-      int i;
-      if (paramList.hasNext())
-      {
-        localObject = (String)paramList.next();
-        if (QLog.isColorLevel()) {
-          QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, config=" + (String)localObject);
-        }
-        localObject = new JSONArray((String)localObject);
-        j = ((JSONArray)localObject).length();
-        if (j > 0)
-        {
-          localEditor = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
-          i = 0;
-        }
-      }
-      else
-      {
-        while (i < j)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          int k = localJSONObject.getInt("type");
-          if (k != 0) {
-            if (!"1".equals(localJSONObject.optString("isShow"))) {
-              break label294;
-            }
-          }
-          label294:
-          for (boolean bool = true;; bool = false)
-          {
-            localEditor.putBoolean("short_video_msg_tail_is_show_" + k, bool);
-            localEditor.putString("short_video_msg_tail_wording_" + k, localJSONObject.optString("wording"));
-            localEditor.putString("short_video_msg_tail_jumping_url_" + k, localJSONObject.optString("jumpUrl"));
-            localEditor.apply();
-            break;
-            QLog.i("ShortVideoMsgTailHelper", 1, "type == 0");
-            break;
-          }
-          label300:
-          return;
-          i += 1;
-        }
-      }
+      break;
+      QLog.e("AppLaucherHelper", 1, "FastAuthorize.AuthorizeRequest failed");
     }
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getBoolean("short_video_msg_tail_is_show_" + paramInt, false);
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_wording_" + paramInt, "");
   }
 }
 

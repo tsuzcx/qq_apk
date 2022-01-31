@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.lang.ref.WeakReference;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class aplz
-  extends VasQuickUpdateManager.CallBacker
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface aplz
 {
-  aplz(aply paramaply) {}
+  boolean a() default false;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    paramString2 = (MessengerService)this.a.a.get();
-    if (paramString2 == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
-      paramString1 = new Bundle();
-    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
-    paramString2.d.putString("cmd", "card_download");
-    paramString1.putInt("result", paramInt1);
-    paramString1.putString("message", paramString3);
-    paramString2.d.putBundle("response", paramString1);
-    paramString2.a(paramString2.d);
-    paramString2.d = null;
-  }
+  boolean b() default false;
 }
 
 

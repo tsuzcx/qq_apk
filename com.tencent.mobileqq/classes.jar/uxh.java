@@ -1,46 +1,49 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class uxh
-  extends uxf
+  implements ulj
 {
-  public int a;
+  public String a;
+  public String b;
   
-  public uxh(ViewGroup paramViewGroup, int paramInt)
+  public uxh(String paramString1, String paramString2)
   {
-    super(paramViewGroup, 2131561491);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(utx paramutx)
+  public qqstory_struct.UserId a()
   {
-    super.a(paramutx);
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      xmh.a(alpo.a(2131707984), new Object[0]);
-      return;
-    case 3: 
-      this.itemView.setTag(Integer.valueOf(3));
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramutx.c, false);
-      String str = xoa.b(paramutx.g);
-      if (!TextUtils.isEmpty(str)) {
-        b(str);
-      }
-      while ((paramutx.a == null) || (paramutx.a.isEmpty()))
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramutx.b);
-        return;
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846112);
-      }
+    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
+    if (!TextUtils.isEmpty(this.a)) {
+      localUserId.uid.set(Long.valueOf(this.a).longValue());
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(alpo.a(2131707983), false);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846109);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
+    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localUserId;
+  }
+  
+  public boolean a()
+  {
+    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof uxh))
+    {
+      this.a = ((uxh)paramObject).a;
+      this.b = ((uxh)paramObject).b;
+    }
+  }
+  
+  public String toString()
+  {
+    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
   }
 }
 

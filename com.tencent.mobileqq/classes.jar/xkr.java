@@ -1,134 +1,92 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaMetadataRetriever;
-import android.widget.ImageView;
-import com.tencent.maxvideo.trim.TrimNative;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class xkr
-  extends xqv
+  extends xku
 {
-  private long jdField_a_of_type_Long;
-  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private xks jdField_a_of_type_Xks;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
+  private final int b;
+  private boolean c;
+  private boolean d;
   
-  public xkr(ImageView paramImageView, MediaMetadataRetriever paramMediaMetadataRetriever, Integer paramInteger, int paramInt1, int paramInt2, long paramLong, int paramInt3, boolean paramBoolean1, xks paramxks, boolean paramBoolean2)
+  public xkr(Context paramContext, String paramString, int paramInt)
   {
-    super(paramImageView);
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
-    this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = paramMediaMetadataRetriever;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramInt3;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Xks = paramxks;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
+    super(paramContext, paramString, -1);
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    this.b = i;
   }
   
-  public String a()
+  public int a()
   {
-    return String.valueOf(this.jdField_a_of_type_JavaLangInteger);
+    return 1;
   }
   
-  @TargetApi(10)
-  public void a()
+  public int a(int paramInt)
   {
-    wsv.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround:%s", new Object[] { a() });
-    long l3 = System.currentTimeMillis();
-    if ((xod.a()) && (this.jdField_c_of_type_Boolean)) {
-      wsv.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative:%s", new Object[] { a() });
+    return 4;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(this.a);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
+    paramViewGroup.setBackgroundResource(2130849535);
+    paramInt = -2170912;
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+      paramInt = -16444373;
     }
-    long l1;
-    Object localObject;
-    Bitmap localBitmap2;
-    for (;;)
-    {
-      try
-      {
-        Bitmap localBitmap1;
-        if (this.jdField_b_of_type_Boolean)
-        {
-          localBitmap1 = Bitmap.createBitmap(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-          l1 = this.jdField_a_of_type_JavaLangInteger.intValue() * this.d;
-          long l2 = (this.jdField_a_of_type_JavaLangInteger.intValue() + 1) * this.d;
-          l1 = l2;
-          if (l2 > this.jdField_a_of_type_Long) {
-            l1 = this.jdField_a_of_type_Long;
-          }
-          if (TrimNative.getThumbnail(0L, l1, localBitmap1) == 0)
-          {
-            Bitmap localBitmap3 = localBitmap1.copy(Bitmap.Config.RGB_565, true);
-            localObject = localBitmap3;
-            if (this.jdField_b_of_type_Boolean) {
-              localObject = xod.a(localBitmap3, 90.0F);
-            }
-            a(new BitmapDrawable((Bitmap)localObject));
-            localBitmap1.recycle();
-            l1 = System.currentTimeMillis() - l3;
-            wsv.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
-            this.jdField_a_of_type_Xks.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
-          }
-        }
-        else
-        {
-          localBitmap1 = Bitmap.createBitmap(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-          continue;
-        }
-        if ((localBitmap1 == null) || (localBitmap1.isRecycled())) {
-          continue;
-        }
-        localBitmap1.recycle();
-      }
-      catch (Exception localException)
-      {
-        wsv.e("Q.qqstory.frameWidget.FrameLoader", "create bitmap width=%s,height=%s,error:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), localException });
-        continue;
-        localBitmap2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(this.jdField_a_of_type_JavaLangInteger.intValue() * this.d * 1000L);
-        if (localBitmap2 != null) {
-          continue;
-        }
-        wsv.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever return null!");
-        return;
-        localObject = new Matrix();
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      }
-      if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever == null)
-      {
-        wsv.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever is null!");
-        return;
-        wsv.e("Q.qqstory.frameWidget.FrameLoader", "TrimNative return error!");
-      }
-      else
-      {
-        float f1 = this.jdField_b_of_type_Int / localBitmap2.getHeight();
-        float f2 = this.jdField_c_of_type_Int / localBitmap2.getWidth();
-        ((Matrix)localObject).postRotate(90.0F);
-        ((Matrix)localObject).postScale(f1, f2);
-      }
+    View localView = new View(this.a);
+    Object localObject = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localView.setBackgroundColor(paramInt);
+    localObject = new View(this.a);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
+    localLayoutParams.addRule(12);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    ((View)localObject).setBackgroundColor(paramInt);
+    paramViewGroup.addView(localView);
+    paramViewGroup.addView((View)localObject);
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView)
+  {
+    View localView = ((ViewGroup)paramView).getChildAt(0);
+    paramView = ((ViewGroup)paramView).getChildAt(1);
+    if (this.c) {
+      localView.setVisibility(0);
     }
-    for (;;)
+    while (this.d)
     {
-      localObject = Bitmap.createBitmap(localBitmap2, 0, 0, localBitmap2.getWidth(), localBitmap2.getHeight(), (Matrix)localObject, true);
-      localBitmap2.recycle();
-      a(new BitmapDrawable((Bitmap)localObject));
-      l1 = System.currentTimeMillis() - l3;
-      wsv.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: mRetriever 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
-      this.jdField_a_of_type_Xks.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
+      paramView.setVisibility(0);
       return;
-      ((Matrix)localObject).postScale(this.jdField_b_of_type_Int / localBitmap2.getWidth(), this.jdField_c_of_type_Int / localBitmap2.getHeight());
+      localView.setVisibility(4);
     }
+    paramView.setVisibility(4);
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
+  }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

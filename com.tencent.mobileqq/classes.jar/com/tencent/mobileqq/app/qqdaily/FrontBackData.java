@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.qqdaily;
 
-import awbv;
+import awge;
 
 public class FrontBackData
-  extends awbv
+  extends awge
 {
   public long time;
   public int type;

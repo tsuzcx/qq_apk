@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.hiboom;
 
-import asnr;
+import assa;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class HiBoomFontDrawer$3
   implements Runnable
 {
-  public HiBoomFontDrawer$3(asnr paramasnr) {}
+  public HiBoomFontDrawer$3(assa paramassa) {}
   
   public void run()
   {

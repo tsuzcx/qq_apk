@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import albm;
+import algb;
 
 public class ApolloUrlInterceptor$1
   implements Runnable
 {
   public void run()
   {
-    albm.a(this.this$0);
+    algb.a(this.this$0);
   }
 }
 

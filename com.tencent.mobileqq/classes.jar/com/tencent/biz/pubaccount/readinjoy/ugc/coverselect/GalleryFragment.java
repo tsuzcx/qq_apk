@@ -168,7 +168,7 @@ public class GalleryFragment
   {
     if ((paramqnz.a() < this.jdField_a_of_type_Int / 2.0F) || (paramqnz.b() < this.jdField_b_of_type_Int / 2.0F))
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131719046, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131719058, 0).show();
       return false;
     }
     return true;
@@ -196,17 +196,17 @@ public class GalleryFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559845, null);
+    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559844, null);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367018));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365740);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367015));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367028));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365742);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367025));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362504));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369616);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369634);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setCallback(this);
     this.jdField_a_of_type_Qrf = new qrf(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_Qrf.a(this);

@@ -10,7 +10,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bhoe;
+import bhsl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -24,7 +24,7 @@ public class AccountDetailBannerViewPager
   private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new nij(this);
   private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailBannerIndicator;
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this, true);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this, true);
   private boolean jdField_a_of_type_Boolean;
   private int b = 0;
   private final int c = 1;

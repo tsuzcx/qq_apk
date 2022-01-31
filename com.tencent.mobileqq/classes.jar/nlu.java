@@ -36,7 +36,7 @@ public class nlu
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     int i = paramURLDrawable.getIntrinsicWidth();
     int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * aekt.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
+    localLayoutParams.width = (i * aepi.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
     paramView.setLayoutParams(localLayoutParams);
     ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
     paramView.requestLayout();

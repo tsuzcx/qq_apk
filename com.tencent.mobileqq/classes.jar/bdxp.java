@@ -1,28 +1,27 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.HashMap;
 
-class bdxp
-  implements View.OnLayoutChangeListener
+public class bdxp
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
+  public bdxp(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
   
-  private bdxp(ScrollView paramScrollView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
+    if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getOutputMute())
     {
-      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
-      paramView.removeOnLayoutChangeListener(this);
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845920));
+      return;
     }
+    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
+    ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845919));
   }
 }
 

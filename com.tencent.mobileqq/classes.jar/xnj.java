@@ -1,43 +1,39 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface xnj
+class xnj
+  implements axvu
 {
-  public abstract int a();
+  xnj(xni paramxni) {}
   
-  public abstract Bitmap a();
+  public void a() {}
   
-  public abstract View a();
+  public void a(String paramString)
+  {
+    synchronized (xni.a(this.a))
+    {
+      xni.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(xni.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      xni.a(this.a).notifyAll();
+      return;
+    }
+  }
   
-  public abstract xno a(int paramInt);
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (xni.a(this.a))
+    {
+      xni.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(xni.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      xni.a(this.a).notifyAll();
+      return;
+    }
+  }
   
-  public abstract xnp a();
-  
-  public abstract void a();
-  
-  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
-  
-  public abstract void a(utb paramutb, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(xnl paramxnl);
-  
-  public abstract void a(xnn paramxnn);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract xnr[] a();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
+  public void b() {}
 }
 
 

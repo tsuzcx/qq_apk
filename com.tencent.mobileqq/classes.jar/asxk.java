@@ -1,16 +1,10 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 
-class asxk
-  implements DialogInterface.OnDismissListener
+public abstract interface asxk
 {
-  asxk(asxj paramasxj) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    asxg.a(this.a.a).finish();
-  }
+  public abstract void a(FaceDetectForThirdPartyManager.AppConf paramAppConf);
 }
 
 

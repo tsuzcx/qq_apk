@@ -1,26 +1,35 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aloj
-  implements View.OnClickListener
+class aloj
+  implements EIPCResultCallback
 {
-  public aloj(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity) {}
+  aloj(aloh paramaloh) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
-    if (SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
-      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
+    boolean bool = paramEIPCResult.isSuccess();
+    String str2 = paramEIPCResult.data.getString("key_method_action");
+    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
     }
+    String str1 = "";
+    if ("setFriendGrouping".equals(str2))
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
+      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
+    }
+    aloh.a(this.a, str3, str1, str2);
   }
 }
 

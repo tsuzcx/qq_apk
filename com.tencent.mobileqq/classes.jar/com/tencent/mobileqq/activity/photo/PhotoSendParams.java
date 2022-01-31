@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aika;
+import aiop;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class PhotoSendParams
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new aika();
+  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new aiop();
   public static final int SEND_PIC_NORMAL = 0;
   public static final int SEND_PIC_QZONE = 1;
   public long fileSize;

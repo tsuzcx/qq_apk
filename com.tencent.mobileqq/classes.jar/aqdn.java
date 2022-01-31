@@ -1,132 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.util.WeakReference;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class aqdn
-  implements aqdl
+  implements GestureDetector.OnGestureListener
 {
-  private static volatile aqdn jdField_a_of_type_Aqdn;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  protected aqdj a;
-  private WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private WeakReference<ExtendFriendVoiceView> b;
+  public aqdn(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  private aqdn(BaseActivity paramBaseActivity)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
+    return false;
   }
   
-  public static final aqdn a(BaseActivity paramBaseActivity)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (jdField_a_of_type_Aqdn == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Aqdn == null) {
-        jdField_a_of_type_Aqdn = new aqdn(paramBaseActivity);
+    int j = 1;
+    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
+      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
+        break label102;
       }
-      return jdField_a_of_type_Aqdn;
     }
-  }
-  
-  public static final void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    label102:
+    for (int i = 1;; i = 0)
     {
-      b();
-      jdField_a_of_type_Aqdn = null;
-      return;
-    }
-  }
-  
-  public static final void b()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Aqdn != null)
+      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
+        i = j;
+      }
+      for (;;)
       {
-        if (jdField_a_of_type_Aqdn.a()) {
-          jdField_a_of_type_Aqdn.c();
+        if ((i != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a();
+          ExtendFriendEditFragment.a(this.a).setVisibility(8);
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         }
-        ExtendFriendVoiceView localExtendFriendVoiceView = jdField_a_of_type_Aqdn.a();
-        if ((localExtendFriendVoiceView != null) && (localExtendFriendVoiceView.b())) {
-          localExtendFriendVoiceView.d();
-        }
-      }
-      return;
-    }
-  }
-  
-  public ExtendFriendVoiceView a()
-  {
-    if (this.b != null) {
-      return (ExtendFriendVoiceView)this.b.get();
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Aqdj != null) {
-      this.jdField_a_of_type_Aqdj.b();
-    }
-  }
-  
-  public void a(ExtendFriendVoiceView paramExtendFriendVoiceView)
-  {
-    if (paramExtendFriendVoiceView != null) {
-      this.b = new WeakReference(paramExtendFriendVoiceView);
-    }
-  }
-  
-  public void a(File paramFile) {}
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatAioVoicePlayerManager", 2, "playVoice " + paramString);
-    }
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localBaseActivity != null)
-    {
-      if (this.jdField_a_of_type_Aqdj == null) {
-        this.jdField_a_of_type_Aqdj = new aqdj(this, localBaseActivity);
-      }
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_Aqdj.a(paramString);
-        this.jdField_a_of_type_Boolean = true;
+        return false;
       }
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
+  public void onLongPress(MotionEvent paramMotionEvent) {}
   
-  public boolean a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return this.jdField_a_of_type_Boolean;
+    return false;
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public void onShowPress(MotionEvent paramMotionEvent) {}
   
-  public void c()
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatAioVoicePlayerManager", 2, "stopVoice");
-    }
-    if (this.jdField_a_of_type_Aqdj != null)
-    {
-      this.jdField_a_of_type_Aqdj.a();
-      this.jdField_a_of_type_Boolean = false;
-    }
+    return false;
   }
-  
-  public void c(boolean paramBoolean) {}
-  
-  public void f(int paramInt) {}
 }
 
 

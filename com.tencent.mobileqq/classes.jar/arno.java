@@ -1,13 +1,16 @@
-final class arno
-  implements bevo
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+
+public class arno
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  arno(army paramarmy) {}
+  arno(arnb paramarnb) {}
   
-  public void a(int paramInt)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (paramInt == 2) {
-      this.a.a();
-    }
+    this.a.a.runOnUiThread(new VideoFilePresenter.8.1(this));
   }
 }
 

@@ -1,16 +1,6 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
-
-class wgu
-  implements bemn
+public abstract interface wgu
 {
-  wgu(wgt paramwgt, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
-  
-  public void a(String paramString)
-  {
-    wsv.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    ukp.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
 }
 
 

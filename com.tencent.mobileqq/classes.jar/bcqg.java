@@ -1,21 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
-class bcqg
-  implements Animation.AnimationListener
+public class bcqg
+  implements bdbc
 {
-  bcqg(bcqe parambcqe, ImageView paramImageView) {}
+  public bcqg(AddedRobotView paramAddedRobotView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bcqe.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (AddedRobotView.a(this.a) == null) {}
+    for (;;)
+    {
+      return;
+      if (!AddedRobotView.a(this.a).a())
+      {
+        paramInt2 = AddedRobotView.a(this.a).getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
+        {
+          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
+          if ((localObject instanceof bcqj))
+          {
+            localObject = (bcqj)localObject;
+            if ((!TextUtils.isEmpty(((bcqj)localObject).jdField_a_of_type_JavaLangString)) && (((bcqj)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
+              ((bcqj)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+            }
+          }
+          else
+          {
+            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

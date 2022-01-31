@@ -1,17 +1,11 @@
-public class aqgp
-  extends aqgn
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
+
+public abstract interface aqgp<V extends View>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public aqgp(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
-  {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
 }
 
 

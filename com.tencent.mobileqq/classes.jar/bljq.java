@@ -1,8 +1,15 @@
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bljq
+class bljq
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
+  bljq(bljp parambljp, Runnable paramRunnable) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

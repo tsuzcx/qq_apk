@@ -16,7 +16,7 @@ public class pjy
       if (paramBaseArticleInfo.mGalleryPicNumber > 1)
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alpo.a(2131713275));
+        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713287));
         localJSONObject1.put("id_gallery_cnt", localObject);
         localObject = new JSONObject();
         ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");

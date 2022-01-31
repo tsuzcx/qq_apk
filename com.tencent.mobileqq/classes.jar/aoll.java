@@ -1,67 +1,130 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 public class aoll
-  extends aofy<aolk>
 {
-  public int a()
-  {
-    return 488;
-  }
+  private Map<String, String> a = new HashMap();
   
-  @NonNull
-  public aolk a(int paramInt)
+  public static aoll a(aoko[] paramArrayOfaoko)
   {
-    return new aolk();
-  }
-  
-  @Nullable
-  public aolk a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    Object localObject;
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0))
     {
-      aolk localaolk = aolk.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "onParsed error: confFiles is empty");
+      localObject = null;
+      return localObject;
+    }
+    for (;;)
+    {
+      aoll localaoll;
+      int i;
+      try
+      {
+        localaoll = new aoll();
+        i = 0;
+        localObject = localaoll;
+        if (i >= paramArrayOfaoko.length) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfaoko[i].jdField_a_of_type_Int) });
+        }
+        localObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).has("apolloSwitch")) {
+          localaoll.a.put("apolloConfig", paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        } else if (((JSONObject)localObject).has("aioGameTab")) {
+          localaoll.a.put("apolloGame", paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        }
       }
-      return localaolk;
-    }
-    return null;
-  }
-  
-  public Class<aolk> a()
-  {
-    return aolk.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aolk paramaolk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaolk.toString());
+      catch (Exception paramArrayOfaoko)
+      {
+        QLog.e("ApolloConfig_GlobalProcessor", 1, paramArrayOfaoko, new Object[0]);
+        return null;
+      }
+      if (((JSONObject)localObject).has("preDownLoadRes")) {
+        localaoll.a.put("apolloPreDownload", paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+      }
+      i += 1;
     }
   }
   
-  public boolean a()
+  public static String a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return true;
+    if (!paramBoolean) {}
+    return paramString2;
   }
   
-  public int b()
+  public static void a()
   {
-    return 0;
+    try
+    {
+      String str = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0).getString("sp_key_config_script", "");
+      if (!TextUtils.isEmpty(str))
+      {
+        QLog.d("ApolloConfig_GlobalProcessor", 1, new Object[] { "rollbackConfig scriptConfig:", str });
+        alit.a(new JSONObject(str), "base_script", false);
+        aknx.a.set(true);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "rollbackConfig e:", localException);
+    }
   }
   
-  public boolean b()
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aoll paramaoll)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((paramQQAppInterface == null) || (paramaoll == null) || (paramaoll.a.size() == 0))
+    {
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "parseApolloConfBean err params");
+      if (!paramBoolean) {
+        aolm.c();
+      }
+    }
+    int i;
+    do
+    {
+      return;
+      Iterator localIterator = paramaoll.a.keySet().iterator();
+      i = 0;
+      if (localIterator.hasNext())
+      {
+        String str1 = (String)localIterator.next();
+        String str2 = a(paramBoolean, str1, (String)paramaoll.a.get(str1));
+        if ((paramBoolean) && (QLog.isColorLevel())) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloConfBean isUpdate:", paramBoolean + ",content:", str2 });
+        }
+        if ("apolloConfig".equals(str1))
+        {
+          alit.a(str2, paramQQAppInterface, paramBoolean);
+          if (paramBoolean) {
+            aknx.b(false);
+          }
+          i = 1;
+        }
+        for (;;)
+        {
+          break;
+          if ("apolloGame".equals(str1)) {
+            alit.b(paramQQAppInterface, str2, paramBoolean);
+          } else if ("apolloPreDownload".equals(str1)) {
+            alit.b(paramQQAppInterface, str2);
+          }
+        }
+      }
+    } while (i == 0);
+    aolo.b();
   }
 }
 

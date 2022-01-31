@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.util;
 
-import aiqi;
+import aiux;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bcxv;
+import bdce;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
@@ -15,14 +15,14 @@ import org.json.JSONObject;
 public class HbThemeConfigManager$1
   implements Runnable
 {
-  public HbThemeConfigManager$1(bcxv parambcxv, Context paramContext, JSONObject paramJSONObject, QQAppInterface paramQQAppInterface) {}
+  public HbThemeConfigManager$1(bdce parambdce, Context paramContext, JSONObject paramJSONObject, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qb_tenpay_share_face", 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("hb_face", bcxv.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject).toString());
+    ((SharedPreferences.Editor)localObject).putString("hb_face", bdce.a(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject).toString());
     ((SharedPreferences.Editor)localObject).commit();
-    localObject = bcxv.a(this.this$0).optString("hb_face_imgurl");
+    localObject = bdce.a(this.this$0).optString("hb_face_imgurl");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
     }
@@ -31,7 +31,7 @@ public class HbThemeConfigManager$1
     }
     HashSet localHashSet = new HashSet(2);
     localHashSet.add(localObject);
-    aiqi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHashSet);
+    aiux.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHashSet);
   }
 }
 

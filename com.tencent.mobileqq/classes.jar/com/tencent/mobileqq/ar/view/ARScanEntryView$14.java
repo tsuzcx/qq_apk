@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import amtf;
-import bdfq;
+import amxu;
+import bdjz;
 
 class ARScanEntryView$14
   implements Runnable

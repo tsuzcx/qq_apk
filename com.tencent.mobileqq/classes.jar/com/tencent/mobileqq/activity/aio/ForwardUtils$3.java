@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aild;
+import aips;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ForwardUtils$3
@@ -14,7 +14,7 @@ final class ForwardUtils$3
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
     int j = this.jdField_a_of_type_Int;
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    aild.a(new String[] { str }, i, false, true, j, localQQAppInterface);
+    aips.a(new String[] { str }, i, false, true, j, localQQAppInterface);
   }
 }
 

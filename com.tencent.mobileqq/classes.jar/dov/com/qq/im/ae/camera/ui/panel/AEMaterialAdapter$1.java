@@ -1,13 +1,13 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bktf;
+import bkxm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 
 public class AEMaterialAdapter$1
   implements Runnable
 {
-  public AEMaterialAdapter$1(bktf parambktf) {}
+  public AEMaterialAdapter$1(bkxm parambkxm) {}
   
   public void run()
   {

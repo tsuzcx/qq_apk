@@ -1,171 +1,247 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class uqc
-  extends nbq
+public abstract class uqc<T extends uqd>
+  extends uuw
+  implements uqe
 {
-  public static uqe a;
-  public SparseArray<uqf> a;
-  public boolean a;
-  public int b;
-  public SparseArray<uqd> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  public BasePublishTask<T> a;
+  public ArrayList<T> a;
+  public ArrayList<T> b = new ArrayList();
   
-  public uqc(Context paramContext, String paramString)
+  public uqc()
   {
-    super(paramContext, paramString);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public String a()
+  private void a(ErrorMessage paramErrorMessage)
   {
-    return "key_for_text_filter_cfg";
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    Object localObject1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1|1");
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    try
     {
-      localObject2 = new Integer[2];
-      if (DeviceProfileManager.a((String)localObject1, (Object[])localObject2, new almr()) > 1) {
-        if (localObject2[1].intValue() != 1) {
-          break label115;
-        }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        uqd localuqd = (uqd)localIterator.next();
+        localuqd.jdField_a_of_type_Int = 6;
+        localuqd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+        this.b.add(localuqd);
+        a(localuqd);
       }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
-    label115:
-    for (boolean bool = true;; bool = false)
+    finally {}
+  }
+  
+  protected abstract BasePublishTask a(T paramT);
+  
+  public void a() {}
+  
+  protected void a(BasePublishTask<T> paramBasePublishTask)
+  {
+    try
     {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask == paramBasePublishTask) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = null;
       }
-      this.jdField_a_of_type_Boolean = false;
       return;
+    }
+    finally
+    {
+      paramBasePublishTask = finally;
+      throw paramBasePublishTask;
+    }
+  }
+  
+  public final void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
+  {
+    if (paramBasePublishTask == null)
+    {
+      wxe.e("Q.qqstory.publish.upload:BasePublishTaskManager", "running publish task is null, when finish publish");
+      return;
+    }
+    uqd localuqd = paramBasePublishTask.a();
+    paramBasePublishTask.a().jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((localuqd.jdField_a_of_type_Int == 6) || (localuqd.jdField_a_of_type_Int == 5) || (localuqd.jdField_a_of_type_Int == 3) || (localuqd.jdField_a_of_type_Int == 7))
+    {
+      wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "finish task:" + paramBasePublishTask);
+      if (localuqd.jdField_a_of_type_Int != 5) {
+        wxe.d("Q.qqstory.publish.upload:BasePublishTaskManager", "task fail:" + paramBasePublishTask);
+      }
+      if (paramErrorMessage.errorCode != 10406) {
+        break label147;
+      }
+      a(paramBasePublishTask);
+      a(paramErrorMessage);
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("is_enable", 0) != 1) {
-          break label644;
-        }
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        this.jdField_b_of_type_Int = paramString.optInt("bid");
-        this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
-        this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
-        localObject1 = paramString.optJSONArray("template");
-        if (localObject1 != null)
-        {
-          i = 0;
-          if (i < ((JSONArray)localObject1).length())
-          {
-            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-            if (localObject2 == null) {
-              break label637;
-            }
-            uqf localuqf = new uqf();
-            localuqf.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
-            localuqf.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
-            localuqf.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
-            localuqf.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
-            if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
-              break label650;
-            }
-            bool = true;
-            localuqf.jdField_a_of_type_Boolean = bool;
-            localuqf.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
-            localuqf.e = ((JSONObject)localObject2).optString("background_color");
-            localuqf.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
-            if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
-              break label656;
-            }
-            bool = true;
-            localuqf.jdField_b_of_type_Boolean = bool;
-            localuqf.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
-            localuqf.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
-            localuqf.f = ((JSONObject)localObject2).optString("music_file");
-            localuqf.g = ((JSONObject)localObject2).optString("pcm_music_file");
-            localuqf.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
-            localuqf.h = ((JSONObject)localObject2).optString("image_url");
-            localuqf.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(localuqf.jdField_a_of_type_Int, localuqf);
-            break label637;
-          }
-        }
-        paramString = paramString.optJSONArray("color_template");
-        if (paramString != null)
-        {
-          i = j;
-          if (i < paramString.length())
-          {
-            localObject1 = paramString.optJSONObject(i);
-            if (localObject1 != null)
-            {
-              localObject2 = new uqd();
-              ((uqd)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
-              ((uqd)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
-              ((uqd)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
-              ((uqd)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
-              ((uqd)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
-              ((uqd)localObject2).e = ((JSONObject)localObject1).optString("text_color");
-              ((uqd)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
-              this.jdField_b_of_type_AndroidUtilSparseArray.put(((uqd)localObject2).jdField_a_of_type_Int, localObject2);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("read TextFilter Config", 2, paramString.getMessage());
-        }
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
+      b(localuqd, paramErrorMessage);
+      a(localuqd);
       return;
-      label637:
-      i += 1;
-      continue;
-      label644:
-      bool = false;
-      continue;
-      label650:
-      bool = false;
-      continue;
-      label656:
-      bool = false;
+      label147:
+      a(paramBasePublishTask);
+      d();
     }
   }
   
-  public String b()
+  public void a(List<T> paramList)
   {
-    return "key_for_text_filter_cfg_version";
+    try
+    {
+      this.b.addAll(paramList);
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
+  }
+  
+  protected abstract void a(T paramT);
+  
+  protected abstract void a(T paramT, ErrorMessage paramErrorMessage);
+  
+  public void b()
+  {
+    super.b();
+    c();
+  }
+  
+  /* Error */
+  protected void b(T paramT)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	uqc:b	Ljava/util/ArrayList;
+    //   6: aload_1
+    //   7: invokevirtual 131	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: getfield 22	uqc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   15: aload_1
+    //   16: invokevirtual 134	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   19: ifeq +13 -> 32
+    //   22: ldc 67
+    //   24: ldc 136
+    //   26: invokestatic 104	wxe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: return
+    //   32: aload_0
+    //   33: getfield 22	uqc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   36: aload_1
+    //   37: invokevirtual 52	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   40: pop
+    //   41: goto -12 -> 29
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	uqc
+    //   0	49	1	paramT	T
+    // Exception table:
+    //   from	to	target	type
+    //   2	29	44	finally
+    //   32	41	44	finally
+  }
+  
+  protected void b(T paramT, ErrorMessage paramErrorMessage)
+  {
+    if (b())
+    {
+      wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
+      return;
+    }
+    try
+    {
+      this.b.add(paramT);
+      a(paramT, paramErrorMessage);
+      return;
+    }
+    finally {}
+  }
+  
+  protected void c()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.b();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected void c(T paramT)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramT);
+      this.b.remove(paramT);
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a().equals(paramT))) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a();
+      }
+      return;
+    }
+    finally
+    {
+      paramT = finally;
+      throw paramT;
+    }
+  }
+  
+  protected void d()
+  {
+    Bosses.get().postLightWeightJob(new BasePublishTaskManager.1(this), 10);
+  }
+  
+  public void e()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null)
+        {
+          wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "task waiting list size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          return;
+        }
+        if (b())
+        {
+          wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
+          continue;
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          break label137;
+        }
+      }
+      finally {}
+      uqd localuqd = (uqd)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = a(localuqd);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a(this);
+      wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "start publish task:" + localuqd);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.run();
+      continue;
+      label137:
+      wxe.c("Q.qqstory.publish.upload:BasePublishTaskManager", "--- no feeds need to post");
+    }
   }
 }
 

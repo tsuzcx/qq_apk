@@ -1,12 +1,31 @@
-class bkxr
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+
+public class bkxr
+  implements Animator.AnimatorListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
+  public bkxr(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  bkxr(bkxq parambkxq) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).c();
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+  }
 }
 
 

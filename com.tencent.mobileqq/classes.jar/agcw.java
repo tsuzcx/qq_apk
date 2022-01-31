@@ -1,70 +1,70 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForTroopNotification;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class agcw
-  extends zep
+  implements View.OnClickListener
 {
-  agfw jdField_a_of_type_Agfw = new agcx(this);
+  public agcw(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg, MessageForStructing paramMessageForStructing, ChatMessage paramChatMessage, long paramLong, View.OnClickListener paramOnClickListener) {}
   
-  public agcw(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public zdy a(Activity paramActivity, zec paramzec)
+  public void onClick(View paramView)
   {
-    return new agej(paramActivity, paramzec, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public zec a(Activity paramActivity)
-  {
-    return new ages(true);
-  }
-  
-  public zed a(Activity paramActivity, zec paramzec)
-  {
-    ages localages = (ages)paramzec;
-    localages.e = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
-    if (localages.e) {
-      azmj.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 81) {
+      wxj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, "clk_play");
     }
-    localages.d(4);
-    localages.a();
-    return new aget(paramActivity, paramzec, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft == null)
+    while (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 98)
     {
-      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localBinderWarpper == null) {
-        break label160;
+      aepi.n = true;
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a()) {
+        break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft = agfu.a(localBinderWarpper.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft.a(this.jdField_a_of_type_Agfw);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Agft);
-      }
+      return;
     }
-    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
-    super.a(paramActivity);
-    if (bool)
+    int i;
+    label79:
+    String str1;
+    label94:
+    String str3;
+    if ((azxx.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mExtraData) & 0x2) != 0)
     {
-      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
-      super.a();
-      if ((this.jdField_a_of_type_Zed != null) && ((this.jdField_a_of_type_Zed instanceof aget))) {
-        ((aget)this.jdField_a_of_type_Zed).n();
+      i = 1;
+      if (!auuc.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, "isFaceScoreSecondMember")) {
+        break label149;
+      }
+      str1 = "2";
+      str3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
+      if (i == 0) {
+        break label155;
       }
     }
-    return;
-    label160:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
-  }
-  
-  public boolean a()
-  {
-    return true;
+    label149:
+    label155:
+    for (String str2 = "2";; str2 = "1")
+    {
+      auuc.a("clk_obj", str3, new String[] { str1, "", "", str2 });
+      break;
+      i = 0;
+      break label79;
+      str1 = "1";
+      break label94;
+    }
+    if ((((bede)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).b(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 38)) {}
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing instanceof MessageForTroopNotification))
+      {
+        paramView = (MessageForTroopNotification)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "AIOchat", "obj_clk", 0, 0, paramView.frienduin, "" + paramView.feedType, "", "");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      return;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
   }
 }
 

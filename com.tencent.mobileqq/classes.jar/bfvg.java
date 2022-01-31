@@ -1,38 +1,84 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.common.app.AppInterface;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bfvg
+  extends bfve
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = 0;
+  private static bfvg jdField_a_of_type_Bfvg;
+  private int jdField_a_of_type_Int;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public bfvg(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public static bfvg a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (jdField_a_of_type_Bfvg == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bfvg == null) {
+        jdField_a_of_type_Bfvg = new bfvg();
+      }
+      return jdField_a_of_type_Bfvg;
+    }
+    finally {}
   }
   
-  public int a()
+  protected long a()
   {
-    return this.jdField_a_of_type_Int;
+    long l = 0L;
+    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
+      l = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
+    }
+    return l;
   }
   
-  public MessageMicro<?> a()
+  public void a(AppRuntime paramAppRuntime)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
+    int i = 0;
+    if ((paramAppRuntime instanceof AppInterface)) {
+      i = ((AppInterface)paramAppRuntime).getAppid();
+    }
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Int = i;
   }
   
-  public Object a()
+  protected void b()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
+    localNewIntent.putExtra("req_type", 5);
+    localNewIntent.putExtra("app_id", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
   }
   
-  public int b()
+  protected void g(byte[] paramArrayOfByte)
   {
-    return this.b;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
+    localNewIntent.putExtra("req_type", 6);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void h(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
+    localNewIntent.putExtra("req_type", 2);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void i(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
+    localNewIntent.putExtra("req_type", 3);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void j(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
+    localNewIntent.putExtra("req_type", 4);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
   }
 }
 

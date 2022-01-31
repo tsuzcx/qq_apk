@@ -1,41 +1,43 @@
-public class vtx
+import android.os.SystemClock;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+
+class vtx
+  implements AbsListView.OnScrollListener
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
+  vtx(vtv paramvtv) {}
   
-  public vtx()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    a();
+    if (SystemClock.uptimeMillis() - vtv.a(this.a) < 500L) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        vtv.a(this.a, SystemClock.uptimeMillis());
+      } while (!(this.a.jdField_a_of_type_Vpm instanceof vqa));
+      i = paramInt1 + paramInt2;
+      ((vqa)this.a.jdField_a_of_type_Vpm).a = i;
+    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
+    this.a.jdField_a_of_type_Vsj.a();
+    wxe.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Vpm.toString());
   }
   
-  private long b()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public long a()
-  {
-    return b() - this.jdField_a_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    if (paramInt == 0) {
+      vtv.a(this.a, false);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (vtv.a(this.a))) {
+        this.a.d();
+      }
+      return;
+      vtv.a(this.a, true);
+    }
   }
 }
 

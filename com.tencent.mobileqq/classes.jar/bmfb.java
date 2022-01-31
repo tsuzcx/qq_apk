@@ -1,71 +1,92 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class bmfb
-  implements bhqd
+public class bmfb
 {
-  bmfb(bmey parambmey, bhpy parambhpy, Intent paramIntent, String paramString, Activity paramActivity) {}
+  public static HashMap<String, Integer> a = new HashMap();
+  public static HashMap<String, Integer> b;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    if (paramView == null)
+    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
+    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
+    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
+    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
+    a.put("actLbsPackListFailure", Integer.valueOf(1000));
+    a.put("actLbsGetPackFailure", Integer.valueOf(100));
+    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
+    b = new HashMap();
+    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
+    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
+    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
+    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
+    b.put("actLbsPackListFailure", Integer.valueOf(10000));
+    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
+    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
+  }
+  
+  public static void a(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Bhpy.a(paramInt);
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    if (((String)localObject).equals(paramView.getResources().getString(2131693485)))
-    {
-      int i = 1;
-      paramInt = i;
-      if (this.jdField_a_of_type_Bmey.a.c() == 130)
+      HashMap localHashMap = new HashMap();
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
       {
-        paramInt = i;
-        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_edited_pic", false)) {
-          paramInt = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
         }
+        azri.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", paramInt);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_filepath", this.jdField_a_of_type_JavaLangString);
-      arum.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 19003);
-      azmj.b(null, "dc00898", "", "", "0X800A184", "0X800A184", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      if (((String)localObject).equals(paramView.getResources().getString(2131693495)))
-      {
-        localObject = new File(this.jdField_a_of_type_JavaLangString);
-        String str = ((File)localObject).getAbsolutePath();
-        agem.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.jdField_a_of_type_Bmey);
-        azmj.b(null, "dc00898", "", "", "0X800A185", "0X800A185", 0, 0, "", "", "", "");
-      }
-      else if (((String)localObject).equals(paramView.getResources().getString(2131693483)))
-      {
-        paramView = BaseApplicationImpl.getApplication();
-        biqt.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, paramView.getRuntime().getAccount(), 2131695321, this.jdField_a_of_type_Bmey);
-        azmj.b(null, "dc00898", "", "", "0X800A186", "0X800A186", 0, 0, "", "", "", "");
-      }
     }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", String.valueOf(paramInt));
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
+        }
+        azri.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = (Integer)a.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    paramString = (Integer)b.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
   }
 }
 

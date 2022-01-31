@@ -1,21 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class yil
-  implements ytf
+public class yil
+  extends RecyclerView.ViewHolder
 {
-  yil(yik paramyik, SeekBar paramSeekBar) {}
+  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
+  public yil(View paramView)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.jdField_a_of_type_Yik.a.a().b());
-    localMessage.obj = Boolean.valueOf(false);
-    this.jdField_a_of_type_Yik.a.a().sendMessage(localMessage);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131371663));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369115));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379040));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366430));
   }
 }
 

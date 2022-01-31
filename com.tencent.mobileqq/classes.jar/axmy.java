@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
 
 public class axmy
-  implements axll
+  implements bice
 {
-  public axmy(EffectsCameraCaptureView.3 param3) {}
+  public axmy(IosTimepicker paramIosTimepicker) {}
   
-  public void a()
+  public void b(VerticalGallery paramVerticalGallery)
   {
-    bkum.a().a();
+    IosTimepicker.a(this.a);
   }
 }
 

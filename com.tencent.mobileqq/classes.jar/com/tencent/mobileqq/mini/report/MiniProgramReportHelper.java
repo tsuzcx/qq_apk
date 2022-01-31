@@ -12,11 +12,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bdcb;
-import bexd;
-import bfin;
-import bgld;
-import bizf;
+import bdgk;
+import bfbm;
+import bfmw;
+import bgpk;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -50,7 +50,7 @@ public class MiniProgramReportHelper
   private static final Map<String, String> APP_ID_LAUNCH_ID_MAP = new HashMap();
   private static final Map<String, String> LAUNCH_ID_MAP_MAIN_PROCESS = new HashMap();
   private static MiniAppConfig MINI_APP_CONFIG_FOR_PRELOAD;
-  public static final String PERF_LEVEL = String.valueOf(bdcb.f());
+  public static final String PERF_LEVEL = String.valueOf(bdgk.f());
   public static final String PRELOAD_MINI_APP_ID = "0000000000";
   private static final String TAG = "MiniProgramReportHelper";
   
@@ -184,7 +184,7 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newAppQualityEntries(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
-    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bexd.a().a()));
+    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bfbm.a().a()));
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppConfig));
     paramString10 = newEntry("launchid", paramString10);
     label60:
@@ -210,13 +210,13 @@ public class MiniProgramReportHelper
         break label450;
       }
       paramString3 = newEntry("attachinfo", paramString3);
-      localEntry4 = newEntry("appversion", "8.3.3.4515");
+      localEntry4 = newEntry("appversion", "8.3.5.4555");
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
         break label456;
       }
       paramString1 = paramMiniAppConfig.config.version;
       localEntry5 = newEntry("miniapp_version", paramString1);
-      localEntry6 = newEntry("qua", bizf.a());
+      localEntry6 = newEntry("qua", bjdm.a());
       if (paramString4 == null) {
         break label462;
       }
@@ -371,8 +371,8 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newGenericEntries()
   {
-    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "Android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", bgld.b(bexd.a().a())) }));
-    Object localObject = bfin.f();
+    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "Android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", bgpk.b(bfbm.a().a())) }));
+    Object localObject = bfmw.f();
     if (localObject != null)
     {
       localObject = ((String)localObject).split("\\*");
@@ -470,7 +470,7 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newUserInfoEntries()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bexd.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", bizf.a()), newEntry("imei", bfin.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bexd.a().a().getContentResolver(), "android_id")) }));
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bfbm.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", bjdm.a()), newEntry("imei", bfmw.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bfbm.a().a().getContentResolver(), "android_id")) }));
   }
   
   private static Map<String, String> parseReportData(String paramString)

@@ -1,31 +1,88 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aowo
-  implements View.OnClickListener
+public class aowo
+  extends aokh<aowm>
 {
-  aowo(aowl paramaowl, String paramString) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    aowl.a(this.jdField_a_of_type_Aowl).removeCallbacks(aowl.a(this.jdField_a_of_type_Aowl));
-    aowl.a(this.jdField_a_of_type_Aowl).run();
-    int i = aowl.a(this.jdField_a_of_type_Aowl).getSelectionStart();
-    paramView = aowl.a(this.jdField_a_of_type_Aowl).getEditableText();
-    if ((i < 0) || (i >= paramView.length()))
+    return 456;
+  }
+  
+  @NonNull
+  public aowm a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aowm();
+  }
+  
+  @Nullable
+  public aowm a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
+      }
+      return aowm.a(paramArrayOfaoko[0]);
+    }
+    return null;
+  }
+  
+  public Class a()
+  {
+    return aowm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aowm paramaowm)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaowm == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramaowm = paramaowm.toString();; paramaowm = " empty")
+    {
+      QLog.d("VerticalSearchConfProcessor", 2, paramaowm);
       return;
     }
-    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowo
  * JD-Core Version:    0.7.0.1
  */

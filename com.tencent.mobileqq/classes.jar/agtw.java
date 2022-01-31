@@ -1,71 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class agtw
-  extends agth
+class agtw
+  implements DialogInterface.OnDismissListener
 {
-  private Collection<String> a;
+  agtw(agti paramagti) {}
   
-  public agtw(QQAppInterface paramQQAppInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private List<agtv> b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (apjm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
-    agug localagug = agug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localObject = ((apjm)localObject).a();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
-        if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localagug.b(localCameraEmotionData.strContext)))) {
-          localArrayList.add(new agtv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCameraEmotionData));
-        }
-      }
-    }
-    if (localArrayList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecCameraEmoticonHandleListener", 2, "findMatchCameraEmoticons matchList is null or empty,keyWord: " + bdal.a(paramString));
-      }
-      return null;
-    }
-    return localArrayList;
-  }
-  
-  public List<agtv> a(String paramString)
-  {
-    return b(paramString);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilCollection = agug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
-      a();
-    }
-    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
+    this.a.ah = false;
+    azqs.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 

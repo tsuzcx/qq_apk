@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupMenu;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import java.util.ArrayList;
 
-class avxt
-  implements View.OnClickListener
+public class avxt
 {
-  avxt(avxp paramavxp) {}
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    paramView = new PopupMenu(avxp.a(this.a), paramView);
-    this.a.a(avxp.a(this.a).b, paramView);
-    paramView.show();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
+    return localStringBuilder.toString();
   }
 }
 

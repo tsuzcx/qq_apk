@@ -1,6 +1,21 @@
-public abstract interface alsp
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
+
+public class alsp
+  implements beuc
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public alsp(FrameFragment paramFrameFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  {
+    if (paramInt1 == paramInt2)
+    {
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.d();
+      }
+    }
+  }
 }
 
 

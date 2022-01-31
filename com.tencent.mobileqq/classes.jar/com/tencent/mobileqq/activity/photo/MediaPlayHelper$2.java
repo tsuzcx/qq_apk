@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aijm;
-import aijn;
+import aiob;
+import aioc;
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class MediaPlayHelper$2
   implements Runnable
 {
-  public MediaPlayHelper$2(aijm paramaijm, Context paramContext) {}
+  public MediaPlayHelper$2(aiob paramaiob, Context paramContext) {}
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.a, new aijn(this));
+    TVK_SDKMgr.installPlugin(this.a, new aioc(this));
   }
 }
 

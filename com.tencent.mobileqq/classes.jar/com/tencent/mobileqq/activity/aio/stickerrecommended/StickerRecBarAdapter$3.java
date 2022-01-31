@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agtq;
-import agug;
+import agyf;
+import agyv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import java.util.List;
 
 public class StickerRecBarAdapter$3
   implements Runnable
 {
-  public StickerRecBarAdapter$3(agtq paramagtq, List paramList1, List paramList2) {}
+  public StickerRecBarAdapter$3(agyf paramagyf, List paramList1, List paramList2) {}
   
   public void run()
   {
-    agug localagug = agug.a(agtq.a(this.this$0));
-    if (agtq.a(this.this$0) == null) {
-      localagug.a(this.a, false, 0, null);
+    agyv localagyv = agyv.a(agyf.a(this.this$0));
+    if (agyf.a(this.this$0) == null) {
+      localagyv.a(this.a, false, 0, null);
     }
     for (;;)
     {
-      localagug.b(this.a);
-      agtq.a(this.this$0).a(this.b);
+      localagyv.b(this.a);
+      agyf.a(this.this$0).a(this.b);
       return;
-      localagug.a(this.a, true, agtq.a(this.this$0).jdField_a_of_type_Int, agtq.a(this.this$0).jdField_a_of_type_JavaLangString);
+      localagyv.a(this.a, true, agyf.a(this.this$0).jdField_a_of_type_Int, agyf.a(this.this$0).jdField_a_of_type_JavaLangString);
     }
   }
 }

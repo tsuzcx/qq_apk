@@ -1,89 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
-class aquy
-  extends aquk
+public class aquy
 {
-  public aquy(aqug paramaqug)
+  int jdField_a_of_type_Int;
+  public aqva a;
+  aqvc jdField_a_of_type_Aqvc;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString;
+  
+  aquy(aque paramaque, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
   {
-    super(paramaqug);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Aqva = new aquz(this, paramaque, paramMessageRecord);
   }
   
-  protected String a()
+  void a()
   {
-    return "StateLocalFailedWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ((this.jdField_a_of_type_Aqvc != null) && (this.jdField_b_of_type_Int == 0))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+      }
+      this.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Aqvc.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aqva);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    aqug.c(this.jdField_a_of_type_Aqug, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Aquk = new aqvm(this.jdField_a_of_type_Aqug);
-    this.jdField_a_of_type_Aqug.a(true, 0L);
-    this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  void b()
   {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ((this.jdField_a_of_type_Aqvc != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      this.jdField_a_of_type_Aqvc.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_Int = 4;
     }
-    aqug.a(this.jdField_a_of_type_Aqug, 10, 12, true);
-    a("StateExcepInvalidWhenPause");
-    this.jdField_a_of_type_Aquk = new aquu(this.jdField_a_of_type_Aqug);
-  }
-  
-  protected void a(long paramLong)
-  {
-    b(paramLong);
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((arni.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Aqug.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    aqug.b(this.jdField_a_of_type_Aqug, 1, 3);
-    aqug.c(this.jdField_a_of_type_Aqug, 1, 3);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Aquk = new aquw(this.jdField_a_of_type_Aqug);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aqug.a(this.jdField_a_of_type_Aqug, 10, 9, true);
-    a("StateCancelUploadWhenPause");
-    this.jdField_a_of_type_Aquk = new aqum(this.jdField_a_of_type_Aqug);
   }
 }
 

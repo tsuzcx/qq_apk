@@ -1,6 +1,18 @@
-public abstract interface ydx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+
+class ydx
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, ydw paramydw);
+  ydx(ydw paramydw) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
+    }
+  }
 }
 
 

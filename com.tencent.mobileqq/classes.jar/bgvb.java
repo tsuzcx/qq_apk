@@ -1,25 +1,13 @@
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.minigame.manager.JsApiUpdateManager.2.1;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public final class bgvb
-  implements bgum
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bgvb
 {
-  bgvb(bgtg parambgtg) {}
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
-  
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
-  {
-    if ((paramInt == 0) && (parambgun != null))
-    {
-      bgjm.a().a(parambgun, true);
-      ThreadManager.a(new JsApiUpdateManager.2.1(this), 16, null, true);
-      bguz.b(this.a, true);
-      return;
-    }
-    bguz.b(this.a, false);
-  }
+  String a();
 }
 
 

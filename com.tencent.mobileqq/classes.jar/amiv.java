@@ -1,171 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class amiv
+  extends altm
 {
-  private static String jdField_a_of_type_JavaLangString = "en-release.zip";
-  private amiu jdField_a_of_type_Amiu;
-  private amiy jdField_a_of_type_Amiy;
+  private amiv(UpdateFriend paramUpdateFriend) {}
   
-  public static amiv a()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return amiw.a();
-  }
-  
-  private static String a()
-  {
-    File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/multi_language");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile.getAbsolutePath() + File.separator;
-  }
-  
-  private void a(Context paramContext, String paramString)
-  {
-    long l;
-    String str;
-    if (!new File(paramString).exists())
+    if ((this.a.b == 7) || (this.a.b == 3))
     {
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLanguage need unzip:", jdField_a_of_type_JavaLangString });
-      l = System.currentTimeMillis();
-      paramString = "language" + File.separator + jdField_a_of_type_JavaLangString;
-      str = a() + jdField_a_of_type_JavaLangString;
-      bdcs.a(paramContext, paramString, str);
-    }
-    try
-    {
-      ndr.a(new File(str), a());
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiLanguageEngine", 2, new Object[] { "copy and unzip success! cost:", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
+      if (paramBoolean1) {
+        break label37;
       }
+      this.a.a(6);
+    }
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
       return;
     }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
+    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
     }
+    this.a.a.notifyUI(3, true, Integer.valueOf(1));
+    this.a.a(7);
   }
   
-  private boolean a(Context paramContext, String paramString)
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    a(paramContext, paramString);
-    try
+    if (this.a.b == 8)
     {
-      long l = System.currentTimeMillis();
-      AssetManager localAssetManager = (AssetManager)AssetManager.class.getConstructor(new Class[0]).newInstance(new Object[0]);
-      Object localObject = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-      ((Method)localObject).setAccessible(true);
-      ((Method)localObject).invoke(localAssetManager, new Object[] { paramString });
-      Resources localResources = new Resources(localAssetManager, this.jdField_a_of_type_Amiy.b().getDisplayMetrics(), this.jdField_a_of_type_Amiy.b().getConfiguration());
-      localObject = paramContext.getPackageName();
-      paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if (paramContext != null) {}
-      for (paramContext = paramContext.packageName;; paramContext = (Context)localObject)
-      {
-        this.jdField_a_of_type_Amiy.a(localResources, paramContext);
-        QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLangPkg:", localAssetManager.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        return true;
-        QLog.d("MultiLanguageEngine", 1, "pkgInfo is null");
+      if (paramBoolean1) {
+        break label26;
       }
-      return false;
+      this.a.a(6);
     }
-    catch (Exception paramContext)
-    {
-      QLog.d("MultiLanguageEngine", 1, paramContext, new Object[0]);
-    }
-  }
-  
-  private void e(Context paramContext)
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      Object localObject1 = Class.forName("android.app.ContextImpl");
-      Object localObject2 = ((Class)localObject1).getDeclaredField("mResources");
-      ((Field)localObject2).setAccessible(true);
-      Object localObject3 = ((Field)localObject2).get(paramContext);
-      ((Field)localObject2).set(paramContext, this.jdField_a_of_type_Amiu);
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate ContextImpl resources:", this.jdField_a_of_type_Amiu.toString(), " ,old:", localObject3.toString() });
-      localObject1 = ((Class)localObject1).getDeclaredField("mPackageInfo");
-      ((Field)localObject1).setAccessible(true);
-      paramContext = ((Field)localObject1).get(paramContext);
-      localObject1 = Class.forName("android.app.LoadedApk").getDeclaredField("mResources");
-      ((Field)localObject1).setAccessible(true);
-      localObject2 = ((Field)localObject1).get(paramContext);
-      ((Field)localObject1).set(paramContext, this.jdField_a_of_type_Amiu);
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate LoadedApk resources:", this.jdField_a_of_type_Amiu.toString(), " ,old:", localObject2.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+    label26:
+    while (!paramBoolean2) {
       return;
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (alrh.a()) {}
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      LayoutInflater.from(paramActivity).setFactory2(new amix(paramActivity));
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiLanguageEngine", 2, new Object[] { "register cost:", Long.valueOf(System.currentTimeMillis() - l) });
-  }
-  
-  public void a(Context paramContext)
-  {
-    boolean bool = false;
-    if (!alrh.a()) {
-      bool = true;
-    }
-    QLog.d("MultiLanguageEngine", 1, new Object[] { "initAndDelegate:", Boolean.valueOf(bool), ", context:", paramContext });
-    if (paramContext == null) {}
-    while (alrh.a()) {
-      return;
-    }
-    this.jdField_a_of_type_Amiy = new amiy(paramContext);
-    this.jdField_a_of_type_Amiu = new amiu(this.jdField_a_of_type_Amiy);
-    e(paramContext);
-  }
-  
-  public void b(Context paramContext)
-  {
-    if (alrh.b()) {
-      a(paramContext, a() + "en.lang");
-    }
-    while (this.jdField_a_of_type_Amiy == null) {
-      return;
-    }
-    this.jdField_a_of_type_Amiy.a(null, null);
-  }
-  
-  public void c(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    bdcs.a(a());
-    b(paramContext);
-    QLog.d("MultiLanguageEngine", 1, new Object[] { "update lang pkg! cost:", Long.valueOf(System.currentTimeMillis() - l) });
-  }
-  
-  public void d(Context paramContext)
-  {
-    a(paramContext, a() + "en.lang");
+    this.a.a(7);
   }
 }
 

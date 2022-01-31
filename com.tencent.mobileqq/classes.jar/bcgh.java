@@ -1,67 +1,61 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.List;
 
-public class bcgh
+final class bcgh
+  implements bcgf
 {
-  public static String a(String paramString)
-  {
-    if (a(paramString)) {
-      return paramString + 140;
-    }
-    return null;
-  }
+  bcgh(NavBarAIO paramNavBarAIO, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
   
-  public static String a(String paramString1, String paramString2, int paramInt)
+  public void a(List<bcgk> paramList)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
-    }
-    do
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      return "http://p.qlogo.cn/gh/dir/file/";
-      if (1 == paramInt) {
-        return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeft(0, 0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      this.b.setOnTouchListener(null);
+      return;
+    }
+    if (paramList.size() > 1) {
+      Collections.sort(paramList, new bcgi(this));
+    }
+    autj localautj = bcgg.a((bcgk)paramList.get(0));
+    if (paramList.size() > 1)
+    {
+      paramList = bcgg.a((bcgk)paramList.get(1));
+      label99:
+      bcgj localbcgj = new bcgj(this);
+      if (localautj == null) {
+        break label203;
       }
-    } while (paramInt != 0);
-    return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(localautj);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localbcgj);
+      label128:
+      if (paramList == null) {
+        break label214;
+      }
+      this.b.setTag(paramList);
+      this.b.setOnTouchListener(localbcgj);
     }
-    return paramString.startsWith("http://p.qlogo.cn/gh/");
-  }
-  
-  public static String b(String paramString)
-  {
-    if (a(paramString)) {
-      return paramString + 0;
-    }
-    return null;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      int j = paramString.length();
-      int k;
-      do
-      {
-        k = j - 1;
-        if (k < i) {
-          break;
-        }
-        j = k;
-      } while (Character.isDigit(paramString.charAt(k)));
-      return false;
-      return true;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeftForMutualMark(localautj, paramList);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopHonor.utils", 2, "updateAIOTitleTroopHonorInteractiveIcon one:" + localautj + " two:" + paramList);
+      return;
+      paramList = null;
+      break label99;
+      label203:
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      break label128;
+      label214:
+      this.b.setOnTouchListener(null);
     }
   }
 }

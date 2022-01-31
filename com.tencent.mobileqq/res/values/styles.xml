@@ -5011,30 +5011,30 @@
         <item name="android:textColor">@color/x9</item>
     </style>
     <style name="zb" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bjy</item>
+        <item name="android:button">@drawable/bk1</item>
     </style>
     <style name="zc" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk0</item>
+        <item name="android:button">@drawable/bk3</item>
     </style>
     <style name="zd" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk3</item>
+        <item name="android:button">@drawable/bk6</item>
     </style>
     <style name="ze">
         <item name="android:focusable">true</item>
         <item name="android:maxHeight">1.0dip</item>
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:indeterminateDrawable">@drawable/bk8</item>
-        <item name="android:progressDrawable">@drawable/bk8</item>
+        <item name="android:indeterminateDrawable">@drawable/bka</item>
+        <item name="android:progressDrawable">@drawable/bka</item>
         <item name="android:minHeight">1.0dip</item>
-        <item name="android:thumb">@drawable/bk6</item>
+        <item name="android:thumb">@drawable/bk9</item>
     </style>
     <style name="zf" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/j5</item>
-        <item name="android:windowExitAnimation">@anim/j6</item>
+        <item name="android:windowEnterAnimation">@anim/j6</item>
+        <item name="android:windowExitAnimation">@anim/j7</item>
     </style>
     <style name="zg" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/j7</item>
-        <item name="android:windowExitAnimation">@anim/j8</item>
+        <item name="android:windowEnterAnimation">@anim/j8</item>
+        <item name="android:windowExitAnimation">@anim/j9</item>
     </style>
     <style name="ts">
         <item name="android:background">@drawable/a8p</item>
@@ -5400,10 +5400,10 @@
         <item name="ut">@drawable/b58</item>
     </style>
     <style name="zh" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk4</item>
+        <item name="android:button">@drawable/bk7</item>
     </style>
     <style name="zi" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bks</item>
+        <item name="android:button">@drawable/bkx</item>
     </style>
     <style name="vh" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/aw8</item>

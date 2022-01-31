@@ -1,80 +1,46 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class ykn
-  extends SubscribeBannerView.BannerAdapter
+  extends ykr
 {
-  public ykn(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
+  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
   
-  private String a(Object paramObject)
+  public ykn(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
-      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    return "";
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
+    }
+    this.a.mBitmap.set(1L);
   }
   
-  public View a(View paramView, Object paramObject)
+  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
   {
-    String str = a(paramObject);
-    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
-    {
-      paramObject = (CertifiedAccountMeta.StImage)paramObject;
-      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
-      {
-        float f = paramObject.height.get() / paramObject.width.get();
-        paramObject = paramView.getLayoutParams();
-        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
-        int i = j;
-        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
-          i = RelativeMultiPicHeadItemView.b(this.a);
-        }
-        paramObject.width = i;
-        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
-      }
-    }
-    if (str != null) {}
+    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
     try
     {
-      paramObject = ygg.a(str);
-      if (!TextUtils.isEmpty(paramObject))
-      {
-        paramObject = new File(paramObject);
-        if (paramObject.exists())
-        {
-          ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
-          return paramView;
-        }
+      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
       }
     }
-    catch (Exception paramObject)
-    {
-      QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
-      xxd.a(str, (URLImageView)paramView);
-    }
-    return paramView;
+    return null;
   }
   
-  protected URLImageView a(ViewGroup paramViewGroup)
+  public byte[] a()
   {
-    paramViewGroup = new URLImageView(paramViewGroup.getContext());
-    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
-    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
-    {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
-      return paramViewGroup;
-    }
+    return this.a.toByteArray();
   }
 }
 

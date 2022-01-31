@@ -1,16 +1,21 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import android.widget.ImageView;
 
-public class aexf
-  implements View.OnClickListener
+class aexf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aexf(ColorView paramColorView) {}
+  aexf(aexe paramaexe) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (aexe.a(this.a) != null) {
+      aexe.a(this.a).setAlpha((float)d);
+    }
+    if (aexe.a(this.a) != null) {
+      aexe.a(this.a).setAlpha((float)d * 2.0F);
     }
   }
 }

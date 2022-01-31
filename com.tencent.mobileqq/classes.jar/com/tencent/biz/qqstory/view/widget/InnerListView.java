@@ -7,22 +7,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
-import wph;
-import wsv;
-import xrl;
-import xrm;
-import xrn;
-import xro;
-import xrp;
+import wtq;
+import wxe;
+import xvu;
+import xvv;
+import xvw;
+import xvx;
+import xvy;
 
 public class InnerListView
   extends LinearLayout
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<wph> jdField_a_of_type_JavaUtilList;
-  private xrn jdField_a_of_type_Xrn;
-  private xro jdField_a_of_type_Xro;
-  private xrp jdField_a_of_type_Xrp;
+  private List<wtq> jdField_a_of_type_JavaUtilList;
+  private xvw jdField_a_of_type_Xvw;
+  private xvx jdField_a_of_type_Xvx;
+  private xvy jdField_a_of_type_Xvy;
   private List<View> b;
   
   public InnerListView(Context paramContext)
@@ -57,11 +57,11 @@ public class InnerListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Xrp != null)
+    if (this.jdField_a_of_type_Xvy != null)
     {
-      if ((this.jdField_a_of_type_Xrp.a() != null) && (!this.jdField_a_of_type_Xrp.a().isEmpty()))
+      if ((this.jdField_a_of_type_Xvy.a() != null) && (!this.jdField_a_of_type_Xvy.a().isEmpty()))
       {
-        int j = this.jdField_a_of_type_Xrp.a().size();
+        int j = this.jdField_a_of_type_Xvy.a().size();
         if (j < getChildCount() - a()) {
           removeViews(j, getChildCount() - j - a());
         }
@@ -70,20 +70,20 @@ public class InnerListView
         {
           Object localObject;
           if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
-            localObject = (wph)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject = (wtq)this.jdField_a_of_type_JavaUtilList.get(i);
           }
           for (;;)
           {
-            this.jdField_a_of_type_Xrp.a(i, (wph)localObject);
-            localObject = ((wph)localObject).a();
+            this.jdField_a_of_type_Xvy.a(i, (wtq)localObject);
+            localObject = ((wtq)localObject).a();
             if (((View)localObject).getParent() == null) {
               addView((View)localObject, getChildCount() - a());
             }
-            ((View)localObject).setOnClickListener(new xrl(this, i));
-            ((View)localObject).setOnLongClickListener(new xrm(this, i));
+            ((View)localObject).setOnClickListener(new xvu(this, i));
+            ((View)localObject).setOnLongClickListener(new xvv(this, i));
             i += 1;
             break;
-            localObject = new wph(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Xrp.a(), this, false));
+            localObject = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Xvy.a(), this, false));
             this.jdField_a_of_type_JavaUtilList.add(localObject);
           }
         }
@@ -103,11 +103,11 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      wph localwph = new wph(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localwph);
+      wtq localwtq = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
+      this.jdField_a_of_type_JavaUtilList.add(localwtq);
       i += 1;
     }
-    wsv.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    wxe.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void a(View paramView)
@@ -119,9 +119,9 @@ public class InnerListView
     addView(paramView);
   }
   
-  public void setAdapter(xrp paramxrp)
+  public void setAdapter(xvy paramxvy)
   {
-    this.jdField_a_of_type_Xrp = paramxrp;
+    this.jdField_a_of_type_Xvy = paramxvy;
     a();
   }
   
@@ -138,14 +138,14 @@ public class InnerListView
     addView(paramView, paramInt);
   }
   
-  public void setOnItemClickListener(xrn paramxrn)
+  public void setOnItemClickListener(xvw paramxvw)
   {
-    this.jdField_a_of_type_Xrn = paramxrn;
+    this.jdField_a_of_type_Xvw = paramxvw;
   }
   
-  public void setOnItemLongClickListener(xro paramxro)
+  public void setOnItemLongClickListener(xvx paramxvx)
   {
-    this.jdField_a_of_type_Xro = paramxro;
+    this.jdField_a_of_type_Xvx = paramxvx;
   }
 }
 

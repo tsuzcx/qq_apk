@@ -1,69 +1,45 @@
-import NS_QZONE_MQMSG.BottomContentItem;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-public class bjew
+final class bjew
+  extends AccountObserver
 {
-  public String a;
-  public String b;
+  bjew(String paramString, alpg paramalpg) {}
   
-  public bjew() {}
-  
-  public bjew(String paramString1, String paramString2)
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public static bjew a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    bjew localbjew = new bjew();
-    localbjew.a = paramJSONObject.optString("content");
-    localbjew.b = paramJSONObject.optString("url");
-    return localbjew;
-  }
-  
-  public static ArrayList<bjew> a(ArrayList<BottomContentItem> paramArrayList)
-  {
-    if (paramArrayList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      BottomContentItem localBottomContentItem = (BottomContentItem)paramArrayList.next();
-      if (localBottomContentItem != null)
-      {
-        bjew localbjew = new bjew();
-        localbjew.a = localBottomContentItem.content;
-        localbjew.b = localBottomContentItem.url;
-        localArrayList.add(localbjew);
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
       }
     }
-    return localArrayList;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    for (;;)
     {
-      localJSONObject.put("content", this.a);
-      localJSONObject.put("url", this.b);
-      return localJSONObject;
+      return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_Alpg != null) {
+            this.jdField_a_of_type_Alpg.onUpdate(1, true, localOpenID);
+          }
+        }
+        i += 1;
+      }
     }
-    catch (JSONException localJSONException)
-    {
-      QZLog.e("BottomItem", "convert json error", localJSONException);
-    }
-    return localJSONObject;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class TroopMemberListActivity$25
@@ -10,7 +10,7 @@ class TroopMemberListActivity$25
   
   public void run()
   {
-    ((alzf)this.this$0.app.a(20)).a(this.this$0.b, this.this$0.i, this.this$0.e);
+    ((amdu)this.this$0.app.a(20)).a(this.this$0.b, this.this$0.i, this.this$0.e);
   }
 }
 

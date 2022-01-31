@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.1.1;
+import java.io.File;
 
 public class blke
-  implements Animation.AnimationListener
 {
-  blke(blkd paramblkd) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    blkd.a(this.a, false);
-    blkd.a(this.a).post(new AEEditorMusicPanelDialog.1.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    blkd.a(this.a, true);
-  }
+  public static final String a = bkpi.a + File.separator + "ae_editor";
+  public static final String b = a + File.separator + "resources";
+  public static final String c = a + File.separator + "generated_images";
+  public static final String d = a + File.separator + "generated_videos";
 }
 
 

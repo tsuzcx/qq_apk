@@ -1,6 +1,8 @@
 public abstract interface azbr
 {
-  public abstract void a(Object paramObject, int paramInt, Object... paramVarArgs);
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

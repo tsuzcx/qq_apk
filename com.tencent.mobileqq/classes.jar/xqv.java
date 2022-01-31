@@ -1,86 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
-public abstract class xqv
+class xqv
+  extends Handler
 {
-  public int a;
-  public Drawable a;
-  public Object a;
-  protected WeakReference<ImageView> a;
-  public xqu a;
-  protected xqw a;
-  protected volatile boolean a;
-  public Drawable b;
+  xqv(xqu paramxqu) {}
   
-  public xqv(ImageView paramImageView)
+  xqv(xqu paramxqu, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    super(paramHandler.getLooper());
   }
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public void a(Drawable paramDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Xqw != null) {
-      this.jdField_a_of_type_Xqw.a(this);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
-  }
-  
-  public void a(Drawable paramDrawable, String paramString)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Xqw != null) {
-      this.jdField_a_of_type_Xqw.a(this, paramString);
-    }
-  }
-  
-  public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    ImageView localImageView;
     do
     {
       return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      wsv.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
-      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
       return;
     }
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    wnb.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369070), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131369070, this.jdField_a_of_type_JavaLangObject.toString());
-  }
-  
-  public void a(xqw paramxqw)
-  {
-    this.jdField_a_of_type_Xqw = paramxqw;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    wnb.b("Q.qqstory.newImageLoader", new Object[] { alpo.a(2131715109), this.jdField_a_of_type_JavaLangObject });
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Xqw = null;
-    this.jdField_a_of_type_Xqu = null;
-    wnb.b("Q.qqstory.newImageLoader", new Object[] { alpo.a(2131715110), this.jdField_a_of_type_JavaLangObject });
+    this.a.b = true;
   }
 }
 

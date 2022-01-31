@@ -50,7 +50,7 @@ public class qof
           str = paramString1;
           qoe.a(this.a, qoe.a(this.a).getInt("arg_video_width", 0));
           str = paramString1;
-          ((JSONObject)localObject).put("comment", new String(bdbi.encode(paramString1.getBytes(), 0)));
+          ((JSONObject)localObject).put("comment", new String(bdfr.encode(paramString1.getBytes(), 0)));
           str = paramString1;
           ((JSONObject)localObject).put("feedsId", String.valueOf(paramLong));
           str = paramString1;
@@ -90,7 +90,7 @@ public class qof
         }
       }
       this.a.a(0);
-      bjxj.D(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+      bkbq.D(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
       paramString1 = paramString3;
     }
     for (;;)

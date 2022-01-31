@@ -1,13 +1,25 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+
 public class bkxw
+  implements Animator.AnimatorListener
 {
-  public String a;
-  public String b;
+  public bkxw(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public bkxw(String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel opened");
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

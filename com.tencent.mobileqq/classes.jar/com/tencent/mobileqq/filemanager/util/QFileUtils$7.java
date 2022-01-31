@@ -4,24 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.SparseArray;
-import areh;
-import bdcs;
+import ariq;
+import bdhb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import xwb;
+import yak;
 
 public final class QFileUtils$7
   implements Runnable
 {
-  public QFileUtils$7(Context paramContext, String paramString, areh paramareh) {}
+  public QFileUtils$7(Context paramContext, String paramString, ariq paramariq) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (!bdcs.b(this.jdField_a_of_type_JavaLangString)) {
+    while (!bdhb.b(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
     SparseArray localSparseArray = new SparseArray(2);
-    int i = xwb.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext, 3, localSparseArray);
+    int i = yak.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext, 3, localSparseArray);
     ThreadManagerV2.getUIHandlerV2().post(new QFileUtils.7.1(this, i, localSparseArray));
   }
 }

@@ -1,33 +1,24 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
 
-class avka
-  implements View.OnClickListener
+public class avka
+  implements Animation.AnimationListener
 {
-  avka(avjc paramavjc, int paramInt) {}
+  public avka(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
+    paramAnimation = this.a;
+    paramAnimation.k += 1;
+    if (NearbyPeopleProfileActivity.a(this.a) != null) {
+      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
     }
-    bhpy localbhpy = bhpy.a(this.jdField_a_of_type_Avjc.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localbhpy.c(this.jdField_a_of_type_Avjc.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694729));
-    }
-    localbhpy.c(alpo.a(2131707643));
-    if (this.jdField_a_of_type_Avjc.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localbhpy.a(alpo.a(2131707726), 3);
-    }
-    localbhpy.c(2131690648);
-    localbhpy.a(new avkb(this, paramView, localPicInfo, localbhpy));
-    localbhpy.show();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

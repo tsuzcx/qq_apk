@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
-import ysc;
+import ywr;
 
 public abstract class absMultiViewPager
   extends ViewPager
@@ -18,7 +18,7 @@ public abstract class absMultiViewPager
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
-  protected ysc a;
+  protected ywr a;
   protected ArrayList<View> b = new ArrayList();
   protected int d;
   
@@ -53,8 +53,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ysc != null) {
-      this.jdField_a_of_type_Ysc.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Ywr != null) {
+      this.jdField_a_of_type_Ywr.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -106,9 +106,9 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(ysc paramysc)
+  public void setOnPagerSizeChangeListener(ywr paramywr)
   {
-    this.jdField_a_of_type_Ysc = paramysc;
+    this.jdField_a_of_type_Ywr = paramywr;
   }
 }
 

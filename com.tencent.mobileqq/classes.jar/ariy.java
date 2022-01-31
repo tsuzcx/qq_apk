@@ -1,32 +1,22 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class ariy
-  implements AudioManager.OnAudioFocusChangeListener
+  extends aqtp
 {
-  ariy(aris paramaris) {}
+  ariy(arix paramarix, aqxm paramaqxm) {}
   
-  public void onAudioFocusChange(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    if (paramInt == -2) {
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-        aris.a(this.a);
-      }
+    QLog.i("VideoForC2C<QFile>", 2, "[" + this.jdField_a_of_type_Arix.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Arix.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+      this.jdField_a_of_type_Arix.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
-      aris.b(this.a);
-      return;
-    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
-    aris.a(this.a);
+    arrr.a(this.jdField_a_of_type_Arix.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Arix.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ariz(this, paramLong1, paramBoolean, paramString3, paramString2, paramShort, paramString4));
   }
 }
 

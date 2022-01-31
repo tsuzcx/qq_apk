@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afdm;
-import aleh;
+import afib;
+import aliw;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -21,7 +21,7 @@ import mqq.os.MqqHandler;
 class ApolloItemBuilder$1
   implements Runnable
 {
-  ApolloItemBuilder$1(ApolloItemBuilder paramApolloItemBuilder, MessageForApollo paramMessageForApollo, BaseChatItemLayout paramBaseChatItemLayout, afdm paramafdm) {}
+  ApolloItemBuilder$1(ApolloItemBuilder paramApolloItemBuilder, MessageForApollo paramMessageForApollo, BaseChatItemLayout paramBaseChatItemLayout, afib paramafib) {}
   
   public void run()
   {
@@ -29,14 +29,14 @@ class ApolloItemBuilder$1
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage != null)
     {
-      localObject = ((aleh)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.id);
+      localObject = ((aliw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.id);
       if ((localObject == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed) || (((ApolloActionData)localObject).feeType != 1) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) || (ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgType))) {
         break label342;
       }
-      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_Afdm, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 0);
+      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_Afib, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 0);
       ((ApolloItemBuilder.PlusOneManagerTask)localObject).a = this.this$0.b;
       ThreadManager.getUIHandler().post((Runnable)localObject);
-      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_Afdm, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 1);
+      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_Afib, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 1);
       ThreadManager.getUIHandler().postDelayed((Runnable)localObject, 8000L);
       if ((this.this$0.jdField_a_of_type_AndroidContentContext != null) && (((FragmentActivity)this.this$0.jdField_a_of_type_AndroidContentContext).getChatFragment() != null))
       {

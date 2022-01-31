@@ -1,19 +1,16 @@
-import org.json.JSONArray;
-
-public class bhes
+public abstract interface bhes
 {
-  public JSONArray a;
-  public boolean a;
-  public boolean b;
+  public abstract void onPlayFinish();
   
-  public bhes() {}
+  public abstract void onPlayPause();
   
-  public bhes(boolean paramBoolean1, JSONArray paramJSONArray, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_OrgJsonJSONArray = paramJSONArray;
-    this.b = paramBoolean2;
-  }
+  public abstract void onPlayResume();
+  
+  public abstract void onPlayStart();
+  
+  public abstract void onPlayStop();
+  
+  public abstract void onPlayUpdate(int paramInt1, int paramInt2);
 }
 
 

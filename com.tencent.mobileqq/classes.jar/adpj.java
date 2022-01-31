@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class adpj
-  implements DialogInterface.OnClickListener
+  implements Comparator<adpf>
 {
-  public adpj(RegisterActivity paramRegisterActivity) {}
+  public adpj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(adpf paramadpf1, adpf paramadpf2)
   {
-    paramDialogInterface.dismiss();
+    long l = paramadpf1.a.certifiedGrade;
+    return (int)(paramadpf2.a.certifiedGrade - l);
   }
 }
 

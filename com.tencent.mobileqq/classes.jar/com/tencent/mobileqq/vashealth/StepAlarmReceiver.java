@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vashealth;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdug;
-import bduj;
+import bdyp;
+import bdys;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public class StepAlarmReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!bduj.a()) {
+    if (!bdys.a()) {
       QLog.e("StepAlarmReceiver", 1, "onReceive:step counter not support");
     }
     do
@@ -43,19 +43,19 @@ public class StepAlarmReceiver
           if (!"action_sport_timer1".equals(paramContext)) {
             break;
           }
-        } while ((!bdug.a(2)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
+        } while ((!bdyp.a(2)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
         ThreadManager.post(new StepAlarmReceiver.1(this), 5, null, true);
         return;
         if (!"action_sport_timer2".equals(paramContext)) {
           break;
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      ((bduj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260)).c();
+      ((bdys)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260)).c();
       return;
     } while (!"StepAlarmReceiver_long_time_report".equals(paramContext));
     QLog.i("StepAlarmReceiver", 1, "StepAlarmReceiver_long_time_report!");
     if (!paramIntent.getBooleanExtra("VerifyResult", true)) {
-      bdug.a(-1000, "verifyFailed");
+      bdyp.a(-1000, "verifyFailed");
     }
     ThreadManager.post(new StepAlarmReceiver.2(this), 5, null, true);
   }

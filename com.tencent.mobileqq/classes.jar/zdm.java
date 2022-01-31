@@ -1,32 +1,48 @@
-public class zdm
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class zdm
+  implements yrb
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
+  zdm(zdj paramzdj, String paramString) {}
   
-  public zdm(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("MemoryLevelInfo{");
-    localStringBuilder.append("MemoryPercent=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", delayTime=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", maxCacheSize=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", trimPercent=").append(this.jdField_b_of_type_Float);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    Object localObject = null;
+    String str;
+    if (paramBundle != null)
+    {
+      str = paramBundle.getString("content");
+      paramBundle = paramBundle.getString("url");
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("content", str);
+      localJSONObject.put("url", paramBundle);
+      paramBundle = localJSONObject.toString();
+      this.jdField_a_of_type_Zdj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        paramBundle = localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
+          paramBundle = localObject;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdm
  * JD-Core Version:    0.7.0.1
  */

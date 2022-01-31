@@ -1,31 +1,25 @@
-import android.view.View;
-import android.view.Window;
-
 public class yhj
 {
-  public static void a(Window paramWindow)
+  public static String a(long paramLong)
   {
-    if (paramWindow == null) {
-      return;
+    long l = paramLong;
+    if (paramLong < 0L) {
+      l = 0L;
     }
-    paramWindow.getDecorView().setSystemUiVisibility(2);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new yhk(paramWindow));
-  }
-  
-  public static void b(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
+    String str1 = alud.a(2131705115);
+    if (l < 10000L) {
+      return String.valueOf(l);
     }
-    paramWindow.setFlags(8, 8);
-  }
-  
-  public static void c(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
+    if (l < 10000000L)
+    {
+      str1 = String.valueOf(l / 10000.0D + 0.05D);
+      return str1.substring(0, str1.indexOf(".") + 2) + "w";
     }
-    paramWindow.clearFlags(8);
+    if (l < 100000000L) {
+      return l / 10000L + "w";
+    }
+    String str2 = String.valueOf(l / 100000000.0D);
+    return str2.substring(0, str2.indexOf(".") + 2) + str1;
   }
 }
 

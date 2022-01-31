@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bdwm;
-import becq;
+import beav;
+import begz;
 import org.json.JSONObject;
 
 public class KingCardJsPlugin
@@ -21,7 +21,7 @@ public class KingCardJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bdwm.a().a(this.mRuntime.a())) {}
+      if (beav.a().a(this.mRuntime.a())) {}
       for (;;)
       {
         localJSONObject.put("result", i);
@@ -44,7 +44,7 @@ public class KingCardJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bdwm.a().c()) {}
+      if (beav.a().c()) {}
       for (;;)
       {
         localJSONObject.put("result", i);

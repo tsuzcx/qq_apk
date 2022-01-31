@@ -1,552 +1,247 @@
-import android.annotation.SuppressLint;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodecInfo;
-import android.media.MediaCodecInfo.CodecCapabilities;
-import android.media.MediaCodecList;
-import android.media.MediaFormat;
-import android.os.Build.VERSION;
+import QQService.strupbuff;
+import QQService.strupbuffResp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
+import com.tencent.mobileqq.msf.sdk.RdmReq;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.report.StrupBuff;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-@SuppressLint({"NewApi"})
 public class azci
+  extends MSFServlet
 {
-  public static int a;
-  public static String a;
-  protected static Method a;
-  protected static boolean a;
-  public static int b;
-  public static String b;
-  protected static Method b;
-  public static String c;
-  protected static Method c;
-  protected static Method d;
-  protected MediaCodec a;
-  protected MediaFormat a;
-  protected ByteBuffer[] a;
-  protected MediaFormat b;
-  protected ByteBuffer[] b;
-  protected int c;
-  
-  static
+  public String[] getPreferSSOCommands()
   {
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "video/avc";
-    jdField_b_of_type_JavaLangString = "request-sync";
-    jdField_c_of_type_JavaLangString = "AndroidCodec";
-    jdField_a_of_type_Boolean = true;
+    return new String[] { "CliLogSvc.UploadReq" };
   }
   
-  public azci()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_c_of_type_Int = jdField_b_of_type_Int;
-    a();
-    if ((Build.VERSION.SDK_INT >= 19) && (d == null)) {}
-    try
+    if ("CliLogSvc.UploadReq".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      d = MediaCodec.class.getMethod("setParameters", new Class[] { Bundle.class });
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      d = null;
-    }
-  }
-  
-  public static MediaCodecInfo.CodecCapabilities a(MediaCodecInfo paramMediaCodecInfo, String paramString)
-  {
-    try
-    {
-      paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
-      return paramMediaCodecInfo;
-    }
-    catch (Exception paramMediaCodecInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_c_of_type_JavaLangString, 2, "getCodecCapabilities erro", paramMediaCodecInfo);
+      boolean bool = paramFromServiceMsg.isSuccess();
+      if (paramIntent.getExtras().getInt("seqKey") != 0) {
+        notifyObserver(paramIntent, paramIntent.getExtras().getInt("sendType"), bool, paramIntent.getExtras(), null);
+      }
+      if (bool) {
+        paramIntent = (strupbuffResp)decodePacket(paramFromServiceMsg.getWupBuffer(), "DataResp", new strupbuffResp());
       }
     }
-    return null;
   }
   
-  public static MediaCodecInfo a(String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int j = MediaCodecList.getCodecCount();
     int i = 0;
-    while (i < j)
+    switch (paramIntent.getExtras().getInt("sendType"))
     {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.getName().equalsIgnoreCase(paramString)) {
-        return localMediaCodecInfo;
-      }
-      i += 1;
     }
-    return null;
-  }
-  
-  public static List<MediaCodecInfo> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    if (i < k)
+    Object localObject1;
+    label514:
+    label1174:
+    do
     {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localMediaCodecInfo.getName().contains(".sw.")) || (localMediaCodecInfo.getName().contains(".SW.")) || (localMediaCodecInfo.getName().contains("google")) || (localMediaCodecInfo.getName().contains("Google")) || (localMediaCodecInfo.getName().contains("GOOGLE")))
-        {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static List<MediaCodecInfo> a(String paramString, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    if (i < k)
-    {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE"))))
-        {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  protected static void a()
-  {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    try
-    {
-      if (jdField_a_of_type_JavaLangReflectMethod == null) {
-        jdField_a_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getInputBuffer", new Class[] { Integer.TYPE });
-      }
-      if (jdField_b_of_type_JavaLangReflectMethod == null) {
-        jdField_b_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputBuffer", new Class[] { Integer.TYPE });
-      }
-      if (jdField_c_of_type_JavaLangReflectMethod == null) {
-        jdField_c_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputFormat", new Class[] { Integer.TYPE });
-      }
       return;
-    }
-    catch (Exception localException)
-    {
-      jdField_a_of_type_JavaLangReflectMethod = null;
-      jdField_b_of_type_JavaLangReflectMethod = null;
-      jdField_c_of_type_JavaLangReflectMethod = null;
-      jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public MediaCodec a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaCodec;
-  }
-  
-  /* Error */
-  public azcj a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 165	azci:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   4: ifnonnull +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: new 174	azcj
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 177	azcj:<init>	(Lazci;)V
-    //   17: astore 4
-    //   19: aload_0
-    //   20: getfield 165	azci:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   23: lload_1
-    //   24: invokevirtual 181	android/media/MediaCodec:dequeueInputBuffer	(J)I
-    //   27: istore_3
-    //   28: iload_3
-    //   29: iflt +139 -> 168
-    //   32: getstatic 53	android/os/Build$VERSION:SDK_INT	I
-    //   35: bipush 20
-    //   37: if_icmpgt +34 -> 71
-    //   40: aload_0
-    //   41: monitorenter
-    //   42: aload 4
-    //   44: iload_3
-    //   45: putfield 182	azcj:jdField_a_of_type_Int	I
-    //   48: aload 4
-    //   50: aload_0
-    //   51: getfield 184	azci:jdField_a_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
-    //   54: iload_3
-    //   55: aaload
-    //   56: putfield 187	azcj:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload 4
-    //   63: areturn
-    //   64: astore 4
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload 4
-    //   70: athrow
-    //   71: aload_0
-    //   72: monitorenter
-    //   73: aload 4
-    //   75: iload_3
-    //   76: putfield 182	azcj:jdField_a_of_type_Int	I
-    //   79: aload 4
-    //   81: getstatic 146	azci:jdField_a_of_type_JavaLangReflectMethod	Ljava/lang/reflect/Method;
-    //   84: aload_0
-    //   85: getfield 165	azci:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   88: iconst_1
-    //   89: anewarray 4	java/lang/Object
-    //   92: dup
-    //   93: iconst_0
-    //   94: iload_3
-    //   95: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   98: aastore
-    //   99: invokevirtual 197	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   102: checkcast 199	java/nio/ByteBuffer
-    //   105: putfield 187	azcj:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   108: aload_0
-    //   109: monitorexit
-    //   110: aload 4
-    //   112: areturn
-    //   113: astore 5
-    //   115: aload 5
-    //   117: invokevirtual 202	java/lang/IllegalAccessException:printStackTrace	()V
-    //   120: aload 4
-    //   122: iconst_0
-    //   123: putfield 203	azcj:jdField_a_of_type_Boolean	Z
-    //   126: goto -18 -> 108
-    //   129: astore 4
-    //   131: aload_0
-    //   132: monitorexit
-    //   133: aload 4
-    //   135: athrow
-    //   136: astore 5
-    //   138: aload 5
-    //   140: invokevirtual 204	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   143: aload 4
-    //   145: iconst_0
-    //   146: putfield 203	azcj:jdField_a_of_type_Boolean	Z
-    //   149: goto -41 -> 108
-    //   152: astore 5
-    //   154: aload 5
-    //   156: invokevirtual 205	java/lang/reflect/InvocationTargetException:printStackTrace	()V
-    //   159: aload 4
-    //   161: iconst_0
-    //   162: putfield 203	azcj:jdField_a_of_type_Boolean	Z
-    //   165: goto -57 -> 108
-    //   168: aload 4
-    //   170: iload_3
-    //   171: putfield 182	azcj:jdField_a_of_type_Int	I
-    //   174: aload 4
-    //   176: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	177	0	this	azci
-    //   0	177	1	paramLong	long
-    //   27	144	3	i	int
-    //   17	45	4	localazcj1	azcj
-    //   64	57	4	localazcj2	azcj
-    //   129	46	4	localazcj3	azcj
-    //   113	3	5	localIllegalAccessException	IllegalAccessException
-    //   136	3	5	localIllegalArgumentException	IllegalArgumentException
-    //   152	3	5	localInvocationTargetException	InvocationTargetException
-    // Exception table:
-    //   from	to	target	type
-    //   42	61	64	finally
-    //   66	68	64	finally
-    //   79	108	113	java/lang/IllegalAccessException
-    //   73	79	129	finally
-    //   79	108	129	finally
-    //   108	110	129	finally
-    //   115	126	129	finally
-    //   131	133	129	finally
-    //   138	149	129	finally
-    //   154	165	129	finally
-    //   79	108	136	java/lang/IllegalArgumentException
-    //   79	108	152	java/lang/reflect/InvocationTargetException
-  }
-  
-  public void a(azcj paramazcj)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramazcj.jdField_a_of_type_Int, false);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_c_of_type_JavaLangString, 2, "releaseOutputBuffer index = " + paramazcj.jdField_a_of_type_Int);
-        }
-      }
+      sendToMSF(paramIntent, MsfMsgUtil.getAppDataIncermentMsg(null, paramIntent.getStringExtra("uin"), paramIntent.getStringArrayExtra("tags"), paramIntent.getLongExtra("count", 0L)));
       return;
-    }
-    finally
-    {
-      paramazcj = finally;
-      throw paramazcj;
-    }
-  }
-  
-  public void a(azcj paramazcj, int paramInt1, long paramLong, int paramInt2)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(paramazcj.jdField_a_of_type_Int, 0, paramInt1, paramLong, paramInt2);
-      }
+      localObject1 = new StrupBuff();
+      Object localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      Object localObject3 = paramIntent.getExtras().getByteArray("content");
+      paramIntent = new ArrayList();
+      paramIntent.add(localObject3);
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put(localObject2, paramIntent);
+      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
+      ((StrupBuff)localObject1).encoding = 0;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+      paramPacket.setNoResponse();
       return;
-    }
-    finally
-    {
-      paramazcj = finally;
-      throw paramazcj;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      localObject1 = new StrupBuff();
+      localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("content");
+      paramIntent = new ArrayList();
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-        if (Build.VERSION.SDK_INT <= 20) {
-          try
-          {
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-            this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-          }
-          finally {}
-        }
-      }
-      else
-      {
-        return false;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return true;
-  }
-  
-  public boolean a(MediaFormat paramMediaFormat, String paramString)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-    paramMediaFormat = a(paramString);
-    if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder())) {
-      this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-    }
-    for (int i = 1;; i = 0) {
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createByCodecName(paramString);
-        return false;
-      }
-      catch (Exception paramMediaFormat)
-      {
+        localObject4 = (String)((Iterator)localObject3).next();
         try
         {
-          if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, i);
-          }
-          if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
-            continue;
-          }
-          return true;
+          paramIntent.add(((String)localObject4).getBytes("utf-8"));
         }
-        catch (Exception paramMediaFormat)
+        catch (UnsupportedEncodingException paramIntent)
         {
-          paramMediaFormat.printStackTrace();
-          this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-          this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-          return false;
-        }
-        paramMediaFormat = paramMediaFormat;
-        paramMediaFormat.printStackTrace();
-        return false;
-      }
-    }
-  }
-  
-  public azcj b(long paramLong)
-  {
-    Object localObject1 = null;
-    for (;;)
-    {
-      Object localObject5;
-      int i;
-      try
-      {
-        localObject5 = this.jdField_a_of_type_AndroidMediaMediaCodec;
-        if (localObject5 == null) {
-          return localObject1;
-        }
-        localObject5 = new azcj(this);
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, paramLong);
-        switch (i)
-        {
-        case -3: 
-          if (i < 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_c_of_type_JavaLangString, 2, "dequeueOutputBuffer ok,index = " + i + ",BufferInfo[flags = " + ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags + ",offset=" + ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + ",size= " + ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + ",TimeUs=" + ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs + "]");
-          }
-          if (Build.VERSION.SDK_INT > 20) {
-            break label444;
-          }
-          ((azcj)localObject5).jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-          ((azcj)localObject5).jdField_a_of_type_Int = i;
-          ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
-          localObject1 = localObject5;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_c_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
-          }
-          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-          ((azcj)localObject5).jdField_a_of_type_Int = -3;
+          paramIntent.printStackTrace();
+          return;
         }
       }
-      finally {}
-      ((azcj)localObject5).jdField_a_of_type_Int = -2;
-      this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-      if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
-      {
-        i = this.jdField_c_of_type_Int;
-        int j = jdField_b_of_type_Int;
-        if (i == j)
-        {
-          try
-          {
-            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
-            if (!QLog.isColorLevel()) {
-              break label566;
-            }
-            QLog.e(jdField_c_of_type_JavaLangString, 2, "New color format " + i + "[0x" + Integer.toHexString(i) + "]");
-          }
-          catch (Exception localException)
-          {
-            if (!QLog.isColorLevel()) {
-              break label566;
-            }
-          }
-          QLog.e(jdField_c_of_type_JavaLangString, 2, "Exception,INFO_OUTPUT_FORMAT_CHANGED");
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e(jdField_c_of_type_JavaLangString, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
-          break label566;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_c_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
-          }
-          ((azcj)localObject5).jdField_a_of_type_Int = -1;
-          Object localObject3 = localObject5;
-          continue;
-          label444:
-          ((azcj)localObject5).jdField_a_of_type_Int = i;
-          try
-          {
-            ((azcj)localObject5).jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
-            ((azcj)localObject5).jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
-            localObject3 = localObject5;
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            for (;;)
-            {
-              localIllegalAccessException.printStackTrace();
-              ((azcj)localObject5).jdField_a_of_type_Boolean = false;
-            }
-          }
-          catch (IllegalArgumentException localIllegalArgumentException)
-          {
-            for (;;)
-            {
-              localIllegalArgumentException.printStackTrace();
-              ((azcj)localObject5).jdField_a_of_type_Boolean = false;
-            }
-          }
-          catch (InvocationTargetException localInvocationTargetException)
-          {
-            for (;;)
-            {
-              localInvocationTargetException.printStackTrace();
-              ((azcj)localObject5).jdField_a_of_type_Boolean = false;
-            }
-          }
-          continue;
-        }
-      }
-      label566:
-      Object localObject4 = localObject5;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-    }
-  }
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = null;
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = null;
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-      }
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put(localObject2, paramIntent);
+      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
+      ((StrupBuff)localObject1).encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+      paramPacket.setNoResponse();
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+      localObject2 = new StrupBuff();
+      ((StrupBuff)localObject2).prefix = "";
+      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
+      Object localObject4 = paramIntent.getExtras().getStringArrayList("contents");
+      Object localObject5 = new HashMap();
+      while (i < ((List)localObject3).size())
+      {
+        localObject6 = (String)((List)localObject3).get(i);
+        paramIntent = (String)((List)localObject4).get(i);
+        try
+        {
+          localObject7 = paramIntent.getBytes("utf-8");
+          localObject1 = (ArrayList)((HashMap)localObject5).get(localObject6);
+          paramIntent = (Intent)localObject1;
+          if (localObject1 == null)
+          {
+            paramIntent = new ArrayList();
+            ((HashMap)localObject5).put(localObject6, paramIntent);
+          }
+          paramIntent.add(localObject7);
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          Object localObject7;
+          long l1;
+          long l2;
+          boolean bool1;
+          boolean bool2;
+          String str;
+          break label514;
+        }
+        i += 1;
+      }
+      ((StrupBuff)localObject2).logstring = new HashMap((Map)localObject5);
+      ((StrupBuff)localObject2).encoding = 2;
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject2);
+      paramPacket.setNoResponse();
+      return;
+      sendToMSF(paramIntent, MsfMsgUtil.getCurrentDataCountMsg(null, paramIntent.getStringArrayExtra("tags")));
+      return;
+      paramPacket = paramIntent.getExtras().getString("tagName");
+      l1 = paramIntent.getExtras().getLong("duration");
+      l2 = paramIntent.getExtras().getLong("size");
+      bool1 = paramIntent.getExtras().getBoolean("success");
+      localObject1 = (HashMap)paramIntent.getExtras().getSerializable("Params_MAP");
+      bool2 = paramIntent.getExtras().getBoolean("realtime");
+      localObject2 = new RdmReq();
+      ((RdmReq)localObject2).eventName = paramPacket;
+      ((RdmReq)localObject2).elapse = l1;
+      ((RdmReq)localObject2).size = l2;
+      ((RdmReq)localObject2).isSucceed = Boolean.valueOf(bool1).booleanValue();
+      ((RdmReq)localObject2).isRealTime = Boolean.valueOf(bool2).booleanValue();
+      ((RdmReq)localObject2).params = ((Map)localObject1);
+      sendToMSF(paramIntent, MsfMsgUtil.getRdmReportMsg(null, (RdmReq)localObject2));
+      return;
+      localObject1 = new StrupBuff();
+      localObject2 = paramIntent.getExtras().getString("tag");
+      ((StrupBuff)localObject1).prefix = "";
+      localObject3 = paramIntent.getExtras().getString("content");
+      localObject4 = new ArrayList();
+      if (azqs.a((String)localObject2)) {}
+      for (paramIntent = "GBK";; paramIntent = "UTF-8") {
+        try
+        {
+          ((ArrayList)localObject4).add(((String)localObject3).getBytes(paramIntent));
+          paramIntent = new HashMap();
+          paramIntent.put(localObject2, localObject4);
+          ((StrupBuff)localObject1).logstring = new HashMap(paramIntent);
+          ((StrupBuff)localObject1).encoding = 0;
+          paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+          paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+          paramPacket.setFuncName("UploadReq");
+          paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
+          paramPacket.setNoResponse();
+          if ((!QLog.isColorLevel()) || (!"dc02181".equals(localObject2))) {
+            break;
+          }
+          QLog.d("CaptureReport", 2, "[Capture Report Send:runtime] tag = " + (String)localObject2 + ", content = " + (String)localObject3);
+          return;
+        }
+        catch (UnsupportedEncodingException paramIntent)
+        {
+          paramIntent.printStackTrace();
+          return;
+        }
+      }
+      localObject4 = new strupbuff();
+      ((strupbuff)localObject4).prefix = "";
+      localObject5 = paramIntent.getExtras().getStringArrayList("tags");
+      Object localObject6 = paramIntent.getExtras().getStringArrayList("contents");
+      localObject7 = new HashMap();
+      i = 0;
+      localObject1 = null;
+      if (i < ((List)localObject5).size())
+      {
+        str = (String)((List)localObject5).get(i);
+        localObject3 = (String)((List)localObject6).get(i);
+        localObject2 = localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new StringBuilder("[Capture Report Send:not runtime]:\n");
+          }
+          ((StringBuilder)localObject2).append("[").append(i).append("]").append(" tag = ").append(str).append(", content = ").append((String)localObject3).append("\n");
+        }
+        if (azqs.a(str)) {}
+        for (localObject1 = "GBK";; localObject1 = "UTF-8")
+        {
+          try
+          {
+            byte[] arrayOfByte = ((String)localObject3).getBytes((String)localObject1);
+            localObject3 = (ArrayList)((HashMap)localObject7).get(str);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              localObject1 = new ArrayList();
+              ((HashMap)localObject7).put(str, localObject1);
+            }
+            ((ArrayList)localObject1).add(arrayOfByte);
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException)
+          {
+            break label1174;
+          }
+          i += 1;
+          localObject1 = localObject2;
+          break;
+        }
+      }
+      ((strupbuff)localObject4).logstring = new HashMap((Map)localObject7);
+      ((strupbuff)localObject4).encoding = 0;
+      ((strupbuff)localObject4).seqno = paramIntent.getExtras().getInt("seqKey");
+      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
+      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+      paramPacket.setFuncName("UploadReq");
+      paramPacket.addRequestPacket("Data", (JceStruct)localObject4);
+      paramPacket.setTimeout(30000L);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    QLog.d("CaptureReport", 2, ((StringBuilder)localObject1).toString());
   }
 }
 

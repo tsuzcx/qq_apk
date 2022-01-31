@@ -1,19 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.BusinessAlbumInfo;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public final class bjgh
-  implements Parcelable.Creator<BusinessAlbumInfo>
+class bjgh
 {
-  public BusinessAlbumInfo a(Parcel paramParcel)
-  {
-    return new BusinessAlbumInfo(paramParcel, null);
-  }
+  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
+  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  public BusinessAlbumInfo[] a(int paramInt)
-  {
-    return new BusinessAlbumInfo[paramInt];
-  }
+  bjgh(bjgf parambjgf) {}
 }
 
 

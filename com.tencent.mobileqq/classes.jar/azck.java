@@ -1,8 +1,31 @@
-public abstract interface azck
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class azck
+  extends MSFServlet
 {
-  public abstract azcp a();
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  public abstract azcp a(int paramInt);
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
+  
+  public void service(Intent paramIntent)
+  {
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gif_ui_show".equals(str)))
+    {
+      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
+      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
+      paramIntent = new Bundle();
+      paramIntent.putInt("gif_ui_show_bid", i);
+      paramIntent.putLong("gif_ui_show_seq", l);
+      notifyObserver(null, 0, true, paramIntent, avve.class);
+      return;
+    }
+    super.service(paramIntent);
+  }
 }
 
 

@@ -1,45 +1,35 @@
-import android.content.res.Resources;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-class beef
-  implements View.OnClickListener
+public class beef
+  extends BroadcastReceiver
 {
-  beef(beed parambeed) {}
+  public beef(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = "";
-    Object localObject = Uri.parse(beed.a(this.a).c());
-    try
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      localObject = ((Uri)localObject).getQueryParameter("article_id");
-      paramView = (View)localObject;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      do
       {
-        localException.printStackTrace();
-      }
-      this.a.f(this.a.jdField_a_of_type_JavaLangString);
-    }
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = "";
-    }
-    azmj.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject, "", "");
-    nrt.a("0X8006A1D", "", "", (String)localObject, "", "");
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.b = true;
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695749, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebProcessManager", 2, "action=" + paramContext);
+        }
+        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
+          break;
+        }
+        this.a.f();
+      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
+      this.a.i();
       return;
-    }
+    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
+    this.a.i();
   }
 }
 

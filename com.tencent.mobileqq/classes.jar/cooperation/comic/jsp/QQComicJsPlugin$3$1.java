@@ -1,6 +1,6 @@
 package cooperation.comic.jsp;
 
-import bijh;
+import bino;
 
 class QQComicJsPlugin$3$1
   implements Runnable

@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-class bcld
-  extends nac
+public class bcld
 {
-  bcld(bckx parambckx, bclf parambclf) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bclf.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

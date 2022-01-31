@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.content.Context;
-import aqsz;
-import aqte;
+import aqxi;
+import aqxn;
 import java.util.HashMap;
 
 public final class FileVideoManager$4
   implements Runnable
 {
-  public FileVideoManager$4(Context paramContext, aqte paramaqte) {}
+  public FileVideoManager$4(Context paramContext, aqxn paramaqxn) {}
   
   public void run()
   {
-    if (aqsz.a == null) {
-      aqsz.a = new aqsz(null);
+    if (aqxi.a == null) {
+      aqxi.a = new aqxi(null);
     }
-    if (aqsz.a(aqsz.a) == null) {
-      aqsz.a(aqsz.a, new HashMap());
+    if (aqxi.a(aqxi.a) == null) {
+      aqxi.a(aqxi.a, new HashMap());
     }
-    aqsz.a(aqsz.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aqte);
+    aqxi.a(aqxi.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aqxn);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
+import bglv;
 import com.tencent.qqmini.sdk.runtime.util.ToastMessage;
 
 class VideoJsPlugin$3

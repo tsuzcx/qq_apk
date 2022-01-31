@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class noc
-  implements bhqd
+  implements bhuk
 {
   public noc(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
@@ -24,10 +24,10 @@ public class noc
       QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
       return;
       noy.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131718929);
+      paramView = this.a.getString(2131718941);
       continue;
       noy.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131718931);
+      paramView = this.a.getString(2131718943);
     }
   }
 }

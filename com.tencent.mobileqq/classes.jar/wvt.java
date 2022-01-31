@@ -1,17 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import java.util.ArrayList;
 
-public class wvt
-  implements DialogInterface.OnDismissListener
+class wvt
+  extends wrj
 {
-  public wvt(EditVideoGuide paramEditVideoGuide) {}
+  wvt(wvq paramwvq, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_Wwe.a(14);
+    if (paramView == paramwtq.a()) {
+      wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+    }
+    do
+    {
+      return;
+      if (paramView == paramwtq.a(2131373820))
+      {
+        paramView = (StoryCoverView)paramwtq.a(2131373819);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+          return;
+        }
+        wvq.b(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+        return;
+      }
+      if ((paramView == paramwtq.a(2131373875)) || (paramView == paramwtq.a(2131373822)))
+      {
+        wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt));
+        return;
+      }
+    } while (paramView != paramwtq.a(2131373871));
+    this.jdField_a_of_type_Wvq.a(paramwtq, paramInt);
   }
 }
 

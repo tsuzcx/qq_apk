@@ -1,62 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-class aqny
-  extends aqou
+public class aqny
+  implements View.OnLongClickListener
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public aqny(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public aqny(aqnw paramaqnw, MessageRecord paramMessageRecord)
+  public boolean onLongClick(View paramView)
   {
-    super(paramaqnw);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqot paramaqot)
-  {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
-      }
-      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aqnm localaqnm = aqnw.a(this.jdField_a_of_type_Aqnw).a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    localaqnm.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aqnz(this, paramString, paramaqot));
+    paramView.setSelected(true);
+    bdpi localbdpi = new bdpi();
+    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
+    this.a.a = bdft.a(paramView, localbdpi, new aqnz(this, paramView), new aqoa(this, paramView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqny
  * JD-Core Version:    0.7.0.1
  */

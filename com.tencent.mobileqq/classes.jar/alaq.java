@@ -1,72 +1,206 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.script.SpriteActionMessage.1;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloSlaveInfo;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.os.MqqHandler;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
-class alaq
-  implements akzo
+public class alaq
 {
-  alaq(alap paramalap, JSONArray paramJSONArray, File paramFile, AppInterface paramAppInterface, String paramString1, int[] paramArrayOfInt, String paramString2) {}
+  private alba a;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public alaq(alba paramalba)
   {
-    QLog.d("ApolloPluginRscLoader", 1, new Object[] { "getCombination onDownLoadFinish sucess:", Boolean.valueOf(paramBoolean) });
-    label75:
-    int i;
-    if (paramInt1 > 0)
+    this.a = paramalba;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new SpriteActionMessage.1(this, paramInt, paramBoolean));
+  }
+  
+  private void a(ApolloActionData paramApolloActionData)
+  {
+    if (paramApolloActionData == null) {
+      QLog.e("cmshow_scripted_SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
+    }
+    SpriteTaskParam localSpriteTaskParam;
+    do
     {
-      paramString = this.jdField_a_of_type_Alap;
-      if (ApolloUtil.d(paramInt1))
-      {
-        paramInt2 = 0;
-        paramString = alap.a(paramString, 1, String.valueOf(paramInt1), paramInt2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      }
+      return;
+      localSpriteTaskParam = new SpriteTaskParam();
+      localSpriteTaskParam.f = paramApolloActionData.actionId;
+      localSpriteTaskParam.jdField_c_of_type_Int = 0;
+      localSpriteTaskParam.g = 3;
+      localSpriteTaskParam.e = paramApolloActionData.personNum;
+      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
+      localSpriteTaskParam.jdField_a_of_type_Boolean = true;
+      localSpriteTaskParam.b = false;
+      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
+    } while ((this.a == null) || (this.a.a() == null));
+    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
+    ((albf)this.a.a().getManager(249)).a().a(localSpriteTaskParam);
+  }
+  
+  private void a(String paramString)
+  {
+    alar localalar;
+    if ((this.a != null) && (this.a.a() != null))
+    {
+      localalar = albi.a(this.a.a());
+      if (localalar != null) {}
     }
     else
     {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-        break label147;
-      }
-      paramInt1 = 0;
-      if (paramInt1 >= paramArrayOfInt.length) {
-        break label147;
-      }
-      paramString = this.jdField_a_of_type_Alap;
-      i = paramArrayOfInt[paramInt1];
-      if (!ApolloUtil.c(paramArrayOfInt[paramInt1])) {
-        break label141;
-      }
-    }
-    label141:
-    for (paramInt2 = 0;; paramInt2 = 2)
-    {
-      paramString = alap.a(paramString, 2, String.valueOf(i), paramInt2);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      paramInt1 += 1;
-      break label75;
-      paramInt2 = 2;
-      break;
-    }
-    label147:
-    if ((this.jdField_a_of_type_JavaIoFile != null) && (!this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      akzg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, new alar(this));
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString = alap.a(this.jdField_a_of_type_Alap, 6, this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-    }
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length <= 0))
-    {
-      this.jdField_a_of_type_Alap.a(this.b, alpo.a(2131700858), this.jdField_a_of_type_OrgJsonJSONArray);
+    localalar.a("", paramString);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    if ((this.a == null) || (this.a.a() == null)) {
       return;
     }
-    alap.a(this.jdField_a_of_type_Alap, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
+    QQAppInterface localQQAppInterface = this.a.a();
+    ApolloActionData localApolloActionData = ((aliw)localQQAppInterface.getManager(155)).a(paramInt);
+    String str = alud.a(2131714700);
+    if (localApolloActionData == null)
+    {
+      a(str);
+      return;
+    }
+    localApolloActionData.bubbleText = str;
+    if (!ApolloUtil.a(paramInt, localApolloActionData.personNum))
+    {
+      ((aknx)localQQAppInterface.getManager(153)).a(localApolloActionData, 4);
+      a(str);
+      return;
+    }
+    a(localApolloActionData);
+  }
+  
+  public boolean a(MessageForApollo paramMessageForApollo)
+  {
+    int k = 2;
+    int j = 0;
+    if ((paramMessageForApollo.actionType != 5) || (this.a == null) || (this.a.a() == null)) {
+      return true;
+    }
+    QQAppInterface localQQAppInterface = this.a.a();
+    String str1 = paramMessageForApollo.extendJson;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionMessage", 2, new Object[] { "rep data:", str1 });
+    }
+    for (;;)
+    {
+      int i;
+      boolean bool1;
+      boolean bool2;
+      try
+      {
+        paramMessageForApollo = new JSONObject(paramMessageForApollo.extendJson);
+        if (!paramMessageForApollo.has("data")) {
+          break label332;
+        }
+        String str2 = localQQAppInterface.getCurrentAccountUin();
+        JSONObject localJSONObject = paramMessageForApollo.getJSONObject("data");
+        JSONArray localJSONArray = localJSONObject.getJSONArray("slaveInfoList");
+        Object localObject = null;
+        str1 = null;
+        paramMessageForApollo = localObject;
+        if (localJSONArray != null)
+        {
+          paramMessageForApollo = localObject;
+          if (localJSONArray.length() > 0)
+          {
+            i = 0;
+            paramMessageForApollo = str1;
+            if (i < localJSONArray.length())
+            {
+              paramMessageForApollo = (ApolloSlaveInfo)bdcs.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
+              if (!str2.equals(String.valueOf(paramMessageForApollo.uin))) {
+                continue;
+              }
+            }
+          }
+        }
+        if (paramMessageForApollo == null) {
+          break label324;
+        }
+        i = paramMessageForApollo.slaveTotal;
+        if (paramMessageForApollo.isCaptured == 1)
+        {
+          bool1 = true;
+          int m = localJSONObject.optInt("defaultActId");
+          a(i, bool1);
+          if ((bool1) || (i != 0)) {
+            break label318;
+          }
+          a(m);
+          bool2 = false;
+          break label343;
+          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clickslaveaction", j, i, new String[0]);
+          return bool2;
+          i += 1;
+          continue;
+        }
+        bool1 = false;
+        continue;
+        if (i > 0) {
+          i = k;
+        } else {
+          i = 3;
+        }
+      }
+      catch (Exception paramMessageForApollo)
+      {
+        QLog.i("cmshow_scripted_SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
+        return true;
+      }
+      if (i == 0)
+      {
+        i = 0;
+      }
+      else
+      {
+        i = 1;
+        break label355;
+        label318:
+        bool2 = true;
+        break label343;
+        label324:
+        bool1 = false;
+        i = 0;
+        continue;
+        label332:
+        bool1 = false;
+        i = 0;
+        bool2 = true;
+        break label355;
+        label343:
+        if (!bool1) {
+          continue;
+        }
+        if (i < 5) {
+          continue;
+        }
+        i = 1;
+      }
+      label355:
+      if (bool1) {
+        j = 1;
+      }
+    }
   }
 }
 

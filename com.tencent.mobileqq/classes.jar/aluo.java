@@ -1,19 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 final class aluo
   implements DialogInterface.OnClickListener
 {
-  aluo(DialogInterface.OnClickListener paramOnClickListener) {}
+  aluo(QQAppInterface paramQQAppInterface) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
+    paramDialogInterface.dismiss();
+    azqs.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 

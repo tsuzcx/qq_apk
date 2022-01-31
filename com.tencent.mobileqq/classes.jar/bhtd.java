@@ -1,58 +1,51 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.GestureSelectGridView;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bhtd
-  implements bhpo
+  extends Handler
 {
-  public bhtd(GestureSelectGridView paramGestureSelectGridView) {}
+  private WeakReference<Handler.Callback> a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public bhtd(Handler.Callback paramCallback)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_Bhte.onSelectChanged(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Bhpo != null) {
-          this.a.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
-      }
-    }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_Bhte.onSelectChanged(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
-    }
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public bhtd(Looper paramLooper, Handler.Callback paramCallback)
   {
-    if (this.a.jdField_a_of_type_Bhpo != null) {
-      this.a.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
+  }
+  
+  public String toString()
+  {
+    Object localObject = (Handler.Callback)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("WH");
+    if (localObject != null) {}
+    for (localObject = localObject.toString();; localObject = "None callback") {
+      return (String)localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhtd
  * JD-Core Version:    0.7.0.1
  */

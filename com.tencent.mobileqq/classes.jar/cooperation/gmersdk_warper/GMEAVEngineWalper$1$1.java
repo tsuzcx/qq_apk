@@ -1,17 +1,17 @@
 package cooperation.gmersdk_warper;
 
-import biko;
-import bikp;
-import bikv;
+import biov;
+import biow;
+import bipc;
 
 public class GMEAVEngineWalper$1$1
   implements Runnable
 {
-  public GMEAVEngineWalper$1$1(bikp parambikp) {}
+  public GMEAVEngineWalper$1$1(biow parambiow) {}
   
   public void run()
   {
-    bikv.a(this.a.a.a).a(biko.a(this.a.a));
+    bipc.a(this.a.a.a).a(biov.a(this.a.a));
   }
 }
 

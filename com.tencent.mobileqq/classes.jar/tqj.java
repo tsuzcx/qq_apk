@@ -46,7 +46,7 @@ public class tqj
     this.jdField_a_of_type_Boolean = false;
     if (a())
     {
-      SosoInterface.SosoLbsInfo localSosoLbsInfo = amkv.a("qqcircle");
+      SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("qqcircle");
       if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
       {
         a(localSosoLbsInfo);
@@ -58,7 +58,7 @@ public class tqj
       return;
     }
     QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request");
-    amkv.a(new tqk(this, "qqcircle", true));
+    ampk.a(new tqk(this, "qqcircle", true));
   }
   
   public boolean a()

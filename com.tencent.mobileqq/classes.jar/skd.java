@@ -22,14 +22,14 @@ public class skd
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560082, null);
-    paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, aekt.a(60.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
-    ImageView localImageView = (ImageView)paramLayoutInflater.findViewById(2131368507);
-    localImageView.setImageResource(2130841340);
-    ((TextView)paramLayoutInflater.findViewById(2131368562)).setVisibility(8);
-    ((TextView)paramLayoutInflater.findViewById(2131368566)).setText(alpo.a(2131714543));
-    paramLayoutInflater.findViewById(2131368551).setVisibility(8);
-    paramLayoutInflater.findViewById(2131376388).setVisibility(8);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560081, null);
+    paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, aepi.a(60.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
+    ImageView localImageView = (ImageView)paramLayoutInflater.findViewById(2131368518);
+    localImageView.setImageResource(2130841341);
+    ((TextView)paramLayoutInflater.findViewById(2131368573)).setVisibility(8);
+    ((TextView)paramLayoutInflater.findViewById(2131368577)).setText(alud.a(2131714555));
+    paramLayoutInflater.findViewById(2131368562).setVisibility(8);
+    paramLayoutInflater.findViewById(2131376442).setVisibility(8);
     paramLayoutInflater.setOnClickListener(new ske(this));
     localImageView.setOnClickListener(new skf(this));
     return paramLayoutInflater;

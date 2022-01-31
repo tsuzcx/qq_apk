@@ -1,49 +1,79 @@
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
-import com.tencent.qapmsdk.base.listener.IInspectorListener;
-import com.tencent.qapmsdk.common.util.InspectUUID;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.OldApplication;
+import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Update;
 
 public class azpf
-  implements IInspectorListener
+  implements azpg
 {
-  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
+  private static azpg a;
   
-  public boolean onFilter(@NotNull Object paramObject)
+  public static void a()
   {
-    return InitMagnifierSDK.a(paramObject);
+    a = (azpg)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
   }
   
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  public static Step b(int paramInt, aznp paramaznp, int[] paramArrayOfInt)
   {
-    InitMagnifierSDK.a(paramBoolean, paramString1, paramString2);
-  }
-  
-  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
-  {
-    LeakInspector.InspectUUID localInspectUUID = null;
-    if (paramInspectUUID != null)
+    Object localObject;
+    switch (paramInt)
     {
-      localInspectUUID = new LeakInspector.InspectUUID();
-      localInspectUUID.classname = paramInspectUUID.className;
-      localInspectUUID.digest = paramInspectUUID.digest;
-      localInspectUUID.weakObj = paramInspectUUID.weakObj;
-      localInspectUUID.uuid = paramInspectUUID.uuid;
-      localInspectUUID.digest = paramInspectUUID.digest;
+    case 5: 
+    case 6: 
+    case 10: 
+    case 11: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    default: 
+      if (a != null) {
+        localObject = a.a(paramInt, paramaznp, paramArrayOfInt);
+      }
+      break;
     }
-    return InitMagnifierSDK.a(localInspectUUID);
+    for (;;)
+    {
+      ((Step)localObject).mId = paramInt;
+      ((Step)localObject).mDirector = paramaznp;
+      if (paramInt == 0) {
+        Step.access$002((Step)localObject, paramArrayOfInt);
+      }
+      return localObject;
+      localObject = new LoadDex();
+      continue;
+      localObject = new InitMemoryCache();
+      continue;
+      localObject = new OldApplication();
+      continue;
+      localObject = new SetSplash();
+      continue;
+      localObject = new CheckPermission();
+      continue;
+      localObject = new Update();
+      continue;
+      localObject = new StartService();
+      continue;
+      localObject = new Step();
+    }
   }
   
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
+  public Step a(int paramInt, aznp paramaznp, int[] paramArrayOfInt)
   {
-    return InitMagnifierSDK.a(paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azpf
  * JD-Core Version:    0.7.0.1
  */

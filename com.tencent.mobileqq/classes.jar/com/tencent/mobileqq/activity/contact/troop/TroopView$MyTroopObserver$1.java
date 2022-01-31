@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ahmb;
+import ahqq;
 
 public class TroopView$MyTroopObserver$1
   implements Runnable
 {
-  public TroopView$MyTroopObserver$1(ahmb paramahmb) {}
+  public TroopView$MyTroopObserver$1(ahqq paramahqq) {}
   
   public void run()
   {

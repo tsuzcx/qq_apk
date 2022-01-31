@@ -85,11 +85,11 @@ class njc
     for (boolean bool = true;; bool = false)
     {
       ((nin)localObject1).d = bool;
-      localObject1 = (bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+      localObject1 = (bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
       ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
-      ((bcic)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
+      ((bcml)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
       this.a.d();
       if (QLog.isColorLevel())
       {

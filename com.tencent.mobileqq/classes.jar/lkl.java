@@ -17,7 +17,7 @@ public class lkl
     boolean bool1;
     label132:
     long l;
-    if ((!azgk.g()) || (AIManager.installDetector(PTSegmenter.class, (String)localObject2, (String)localObject1)))
+    if ((!azkt.g()) || (AIManager.installDetector(PTSegmenter.class, (String)localObject2, (String)localObject1)))
     {
       bool1 = true;
       bool2 = lko.a().a();

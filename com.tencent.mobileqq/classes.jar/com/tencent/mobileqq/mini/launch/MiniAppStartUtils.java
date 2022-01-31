@@ -509,220 +509,220 @@ public class MiniAppStartUtils
     //   126: dup
     //   127: aload 7
     //   129: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   132: astore_1
-    //   133: aload 5
-    //   135: astore_0
-    //   136: new 28	java/io/File
-    //   139: dup
-    //   140: getstatic 43	com/tencent/mobileqq/mini/launch/MiniAppStartUtils:FOLDER	Ljava/lang/String;
-    //   143: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   146: astore 8
+    //   132: astore 8
+    //   134: aload 5
+    //   136: astore_0
+    //   137: new 28	java/io/File
+    //   140: dup
+    //   141: getstatic 43	com/tencent/mobileqq/mini/launch/MiniAppStartUtils:FOLDER	Ljava/lang/String;
+    //   144: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
+    //   147: astore_1
     //   148: aload 5
     //   150: astore_0
-    //   151: aload 8
-    //   153: invokevirtual 136	java/io/File:exists	()Z
-    //   156: ifeq +14 -> 170
-    //   159: aload 5
-    //   161: astore_0
-    //   162: aload 8
-    //   164: invokevirtual 184	java/io/File:isDirectory	()Z
-    //   167: ifne +12 -> 179
-    //   170: aload 5
-    //   172: astore_0
-    //   173: aload 8
-    //   175: invokevirtual 187	java/io/File:mkdirs	()Z
-    //   178: pop
-    //   179: aload 5
-    //   181: astore_0
-    //   182: aload_1
-    //   183: invokevirtual 136	java/io/File:exists	()Z
-    //   186: ifeq +13 -> 199
-    //   189: aload 5
-    //   191: astore_0
-    //   192: aload_1
-    //   193: invokevirtual 190	java/io/File:isFile	()Z
-    //   196: ifne +11 -> 207
-    //   199: aload 5
-    //   201: astore_0
-    //   202: aload_1
+    //   151: aload_1
+    //   152: invokevirtual 136	java/io/File:exists	()Z
+    //   155: ifeq +13 -> 168
+    //   158: aload 5
+    //   160: astore_0
+    //   161: aload_1
+    //   162: invokevirtual 184	java/io/File:isDirectory	()Z
+    //   165: ifne +11 -> 176
+    //   168: aload 5
+    //   170: astore_0
+    //   171: aload_1
+    //   172: invokevirtual 187	java/io/File:mkdirs	()Z
+    //   175: pop
+    //   176: aload 5
+    //   178: astore_0
+    //   179: aload 8
+    //   181: invokevirtual 136	java/io/File:exists	()Z
+    //   184: ifeq +14 -> 198
+    //   187: aload 5
+    //   189: astore_0
+    //   190: aload 8
+    //   192: invokevirtual 190	java/io/File:isFile	()Z
+    //   195: ifne +12 -> 207
+    //   198: aload 5
+    //   200: astore_0
+    //   201: aload 8
     //   203: invokevirtual 193	java/io/File:createNewFile	()Z
     //   206: pop
     //   207: aload 5
     //   209: astore_0
     //   210: new 195	java/io/FileOutputStream
     //   213: dup
-    //   214: aload_1
-    //   215: iconst_0
-    //   216: invokespecial 198	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   219: astore_1
-    //   220: aload_1
-    //   221: aload 6
-    //   223: invokevirtual 202	java/io/FileOutputStream:write	([B)V
-    //   226: aload_1
-    //   227: invokevirtual 205	java/io/FileOutputStream:flush	()V
-    //   230: ldc 9
-    //   232: iconst_1
-    //   233: new 13	java/lang/StringBuilder
-    //   236: dup
-    //   237: invokespecial 16	java/lang/StringBuilder:<init>	()V
-    //   240: ldc 207
-    //   242: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: aload 7
-    //   247: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   250: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   253: invokestatic 111	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   256: aload_1
-    //   257: ifnull +7 -> 264
-    //   260: aload_1
-    //   261: invokevirtual 208	java/io/FileOutputStream:close	()V
-    //   264: aload_3
-    //   265: ifnull +7 -> 272
-    //   268: aload_3
-    //   269: invokevirtual 72	android/os/Parcel:recycle	()V
-    //   272: iconst_1
-    //   273: ireturn
-    //   274: astore_0
-    //   275: ldc 9
-    //   277: iconst_1
-    //   278: ldc 181
-    //   280: aload_0
-    //   281: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   284: goto -20 -> 264
-    //   287: astore_0
-    //   288: aload_3
-    //   289: ifnull +7 -> 296
-    //   292: aload_3
-    //   293: invokevirtual 72	android/os/Parcel:recycle	()V
-    //   296: aload_0
-    //   297: athrow
-    //   298: astore_0
-    //   299: aload 4
-    //   301: astore_1
-    //   302: aload_0
-    //   303: astore 4
-    //   305: aload_1
-    //   306: astore_0
-    //   307: ldc 9
-    //   309: iconst_1
-    //   310: ldc 181
-    //   312: aload 4
-    //   314: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   317: aload_1
-    //   318: ifnull +7 -> 325
-    //   321: aload_1
-    //   322: invokevirtual 208	java/io/FileOutputStream:close	()V
-    //   325: aload_3
-    //   326: ifnull -307 -> 19
-    //   329: aload_3
-    //   330: invokevirtual 72	android/os/Parcel:recycle	()V
-    //   333: iconst_0
-    //   334: ireturn
-    //   335: astore_0
-    //   336: ldc 9
-    //   338: iconst_1
-    //   339: ldc 181
-    //   341: aload_0
-    //   342: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   345: goto -20 -> 325
-    //   348: astore 4
-    //   350: aload_0
-    //   351: astore_1
-    //   352: aload 4
-    //   354: astore_0
-    //   355: aload_1
-    //   356: ifnull +7 -> 363
-    //   359: aload_1
-    //   360: invokevirtual 208	java/io/FileOutputStream:close	()V
-    //   363: aload_0
-    //   364: athrow
-    //   365: astore_1
-    //   366: ldc 9
-    //   368: iconst_1
-    //   369: ldc 181
-    //   371: aload_1
-    //   372: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   375: goto -12 -> 363
-    //   378: astore_0
-    //   379: aconst_null
-    //   380: astore_3
-    //   381: goto -93 -> 288
-    //   384: astore_1
-    //   385: aload_0
-    //   386: astore_3
-    //   387: aload_1
-    //   388: astore_0
-    //   389: goto -101 -> 288
-    //   392: astore_1
-    //   393: aload_3
-    //   394: astore_0
-    //   395: goto -294 -> 101
-    //   398: astore_0
-    //   399: goto -44 -> 355
-    //   402: astore 4
-    //   404: goto -99 -> 305
+    //   214: aload 8
+    //   216: iconst_0
+    //   217: invokespecial 198	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   220: astore_1
+    //   221: aload_1
+    //   222: aload 6
+    //   224: invokevirtual 202	java/io/FileOutputStream:write	([B)V
+    //   227: aload_1
+    //   228: invokevirtual 205	java/io/FileOutputStream:flush	()V
+    //   231: ldc 9
+    //   233: iconst_1
+    //   234: new 13	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   241: ldc 207
+    //   243: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: aload 7
+    //   248: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: invokestatic 111	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: aload_1
+    //   258: ifnull +7 -> 265
+    //   261: aload_1
+    //   262: invokevirtual 208	java/io/FileOutputStream:close	()V
+    //   265: aload_3
+    //   266: ifnull +7 -> 273
+    //   269: aload_3
+    //   270: invokevirtual 72	android/os/Parcel:recycle	()V
+    //   273: iconst_1
+    //   274: ireturn
+    //   275: astore_0
+    //   276: ldc 9
+    //   278: iconst_1
+    //   279: ldc 181
+    //   281: aload_0
+    //   282: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   285: goto -20 -> 265
+    //   288: astore_0
+    //   289: aload_3
+    //   290: ifnull +7 -> 297
+    //   293: aload_3
+    //   294: invokevirtual 72	android/os/Parcel:recycle	()V
+    //   297: aload_0
+    //   298: athrow
+    //   299: astore_0
+    //   300: aload 4
+    //   302: astore_1
+    //   303: aload_0
+    //   304: astore 4
+    //   306: aload_1
+    //   307: astore_0
+    //   308: ldc 9
+    //   310: iconst_1
+    //   311: ldc 181
+    //   313: aload 4
+    //   315: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   318: aload_1
+    //   319: ifnull +7 -> 326
+    //   322: aload_1
+    //   323: invokevirtual 208	java/io/FileOutputStream:close	()V
+    //   326: aload_3
+    //   327: ifnull -308 -> 19
+    //   330: aload_3
+    //   331: invokevirtual 72	android/os/Parcel:recycle	()V
+    //   334: iconst_0
+    //   335: ireturn
+    //   336: astore_0
+    //   337: ldc 9
+    //   339: iconst_1
+    //   340: ldc 181
+    //   342: aload_0
+    //   343: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   346: goto -20 -> 326
+    //   349: astore 4
+    //   351: aload_0
+    //   352: astore_1
+    //   353: aload 4
+    //   355: astore_0
+    //   356: aload_1
+    //   357: ifnull +7 -> 364
+    //   360: aload_1
+    //   361: invokevirtual 208	java/io/FileOutputStream:close	()V
+    //   364: aload_0
+    //   365: athrow
+    //   366: astore_1
+    //   367: ldc 9
+    //   369: iconst_1
+    //   370: ldc 181
+    //   372: aload_1
+    //   373: invokestatic 80	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   376: goto -12 -> 364
+    //   379: astore_0
+    //   380: aconst_null
+    //   381: astore_3
+    //   382: goto -93 -> 289
+    //   385: astore_1
+    //   386: aload_0
+    //   387: astore_3
+    //   388: aload_1
+    //   389: astore_0
+    //   390: goto -101 -> 289
+    //   393: astore_1
+    //   394: aload_3
+    //   395: astore_0
+    //   396: goto -295 -> 101
+    //   399: astore_0
+    //   400: goto -44 -> 356
+    //   403: astore 4
+    //   405: goto -99 -> 306
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	407	0	paramMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
-    //   0	407	1	paramString	String
+    //   0	408	0	paramMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
+    //   0	408	1	paramString	String
     //   58	2	2	bool	boolean
-    //   7	387	3	localObject1	Object
-    //   1	312	4	localMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
-    //   348	5	4	localObject2	Object
-    //   402	1	4	localThrowable	Throwable
+    //   7	388	3	localObject1	Object
+    //   1	313	4	localMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
+    //   349	5	4	localObject2	Object
+    //   403	1	4	localThrowable	Throwable
     //   4	204	5	localObject3	Object
-    //   24	198	6	localObject4	Object
-    //   48	198	7	str	String
-    //   146	28	8	localFile	File
+    //   24	199	6	localObject4	Object
+    //   48	199	7	str	String
+    //   132	83	8	localFile	File
     // Exception table:
     //   from	to	target	type
     //   67	75	85	java/lang/Throwable
     //   29	41	98	java/lang/Throwable
     //   86	95	98	java/lang/Throwable
-    //   275	284	98	java/lang/Throwable
-    //   336	345	98	java/lang/Throwable
-    //   363	365	98	java/lang/Throwable
-    //   366	375	98	java/lang/Throwable
-    //   260	264	274	java/lang/Throwable
-    //   29	41	287	finally
-    //   67	75	287	finally
-    //   86	95	287	finally
-    //   260	264	287	finally
-    //   275	284	287	finally
-    //   321	325	287	finally
-    //   336	345	287	finally
-    //   359	363	287	finally
-    //   363	365	287	finally
-    //   366	375	287	finally
-    //   44	50	298	java/lang/Throwable
-    //   53	59	298	java/lang/Throwable
-    //   123	133	298	java/lang/Throwable
-    //   136	148	298	java/lang/Throwable
-    //   151	159	298	java/lang/Throwable
-    //   162	170	298	java/lang/Throwable
-    //   173	179	298	java/lang/Throwable
-    //   182	189	298	java/lang/Throwable
-    //   192	199	298	java/lang/Throwable
-    //   202	207	298	java/lang/Throwable
-    //   210	220	298	java/lang/Throwable
-    //   321	325	335	java/lang/Throwable
-    //   44	50	348	finally
-    //   53	59	348	finally
-    //   123	133	348	finally
-    //   136	148	348	finally
-    //   151	159	348	finally
-    //   162	170	348	finally
-    //   173	179	348	finally
-    //   182	189	348	finally
-    //   192	199	348	finally
-    //   202	207	348	finally
-    //   210	220	348	finally
-    //   307	317	348	finally
-    //   359	363	365	java/lang/Throwable
-    //   21	26	378	finally
-    //   101	110	384	finally
-    //   21	26	392	java/lang/Throwable
-    //   220	256	398	finally
-    //   220	256	402	java/lang/Throwable
+    //   276	285	98	java/lang/Throwable
+    //   337	346	98	java/lang/Throwable
+    //   364	366	98	java/lang/Throwable
+    //   367	376	98	java/lang/Throwable
+    //   261	265	275	java/lang/Throwable
+    //   29	41	288	finally
+    //   67	75	288	finally
+    //   86	95	288	finally
+    //   261	265	288	finally
+    //   276	285	288	finally
+    //   322	326	288	finally
+    //   337	346	288	finally
+    //   360	364	288	finally
+    //   364	366	288	finally
+    //   367	376	288	finally
+    //   44	50	299	java/lang/Throwable
+    //   53	59	299	java/lang/Throwable
+    //   123	134	299	java/lang/Throwable
+    //   137	148	299	java/lang/Throwable
+    //   151	158	299	java/lang/Throwable
+    //   161	168	299	java/lang/Throwable
+    //   171	176	299	java/lang/Throwable
+    //   179	187	299	java/lang/Throwable
+    //   190	198	299	java/lang/Throwable
+    //   201	207	299	java/lang/Throwable
+    //   210	221	299	java/lang/Throwable
+    //   322	326	336	java/lang/Throwable
+    //   44	50	349	finally
+    //   53	59	349	finally
+    //   123	134	349	finally
+    //   137	148	349	finally
+    //   151	158	349	finally
+    //   161	168	349	finally
+    //   171	176	349	finally
+    //   179	187	349	finally
+    //   190	198	349	finally
+    //   201	207	349	finally
+    //   210	221	349	finally
+    //   308	318	349	finally
+    //   360	364	366	java/lang/Throwable
+    //   21	26	379	finally
+    //   101	110	385	finally
+    //   21	26	393	java/lang/Throwable
+    //   221	257	399	finally
+    //   221	257	403	java/lang/Throwable
   }
 }
 

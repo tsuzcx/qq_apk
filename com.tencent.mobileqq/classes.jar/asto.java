@@ -1,39 +1,37 @@
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
 
-@RequiresApi(api=18)
 public class asto
-  implements assw
 {
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private xic jdField_a_of_type_Xic;
+  protected Context a;
+  protected astm a;
+  protected astm b;
+  protected astm c;
   
-  public void a()
+  public asto(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("identification_yuv", 2, "uninit..");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
-      }
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(xig paramxig)
+  public astm a(int paramInt, astg paramastg)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Xic != null) {
-      this.jdField_a_of_type_Xic.a(paramxig);
+    switch (paramInt)
+    {
+    default: 
+      if (this.jdField_a_of_type_Astm == null) {
+        this.jdField_a_of_type_Astm = new astn(this.jdField_a_of_type_AndroidContentContext, 2130845479, paramastg);
+      }
+      return this.jdField_a_of_type_Astm;
+    case 2: 
+      if (this.c == null) {
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842245, paramastg);
+      }
+      return this.c;
     }
+    if (this.b == null) {
+      this.b = new astn(this.jdField_a_of_type_AndroidContentContext, 2130845483, paramastg);
+    }
+    return this.b;
   }
 }
 

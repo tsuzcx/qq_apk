@@ -1,79 +1,68 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aybc
+  extends PagerAdapter
 {
-  public static final String a;
+  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = alpo.a(2131715409);
-  }
+  private aybc(ActionListActivity paramActionListActivity) {}
   
-  private static void a(BaseChatPie paramBaseChatPie, long paramLong, String paramString)
+  public void a()
   {
-    MessageForText localMessageForText = new MessageForText();
-    localMessageForText.selfuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageForText.frienduin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    localMessageForText.istroop = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    localMessageForText.senderuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (paramLong != 0L) {}
-    for (;;)
-    {
-      localMessageForText.time = paramLong;
-      localMessageForText.msg = paramString;
-      localMessageForText.uniseq = 0L;
-      localMessageForText.msgUid = -1L;
-      localMessageForText.shmsgseq = 1L;
-      localMessageForText.sb = paramString;
-      paramBaseChatPie.d(localMessageForText);
-      return;
-      paramLong = NetConnInfoCenter.getServerTime();
-    }
-  }
-  
-  public static final boolean a(BaseChatPie paramBaseChatPie, Intent paramIntent)
-  {
-    paramIntent.getStringExtra("key_aio_reply_time");
-    String str = paramIntent.getStringExtra("key_aio_reply_content");
-    paramIntent.getIntExtra("key_aio_reply_type", 0);
-    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-  }
-  
-  public static final boolean b(BaseChatPie paramBaseChatPie, Intent paramIntent)
-  {
-    String str2 = paramIntent.getStringExtra("key_aio_reply_time");
-    String str1 = paramIntent.getStringExtra("key_aio_reply_content");
-    int i = paramIntent.getIntExtra("key_aio_reply_type", 0);
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      return false;
-    }
-    long l1 = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
     try
     {
-      long l2 = Long.valueOf(str2).longValue();
-      l1 = l2;
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        aydz localaydz = (aydz)localIterator.next();
+        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+        localGridView.setNumColumns(3);
+        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        localGridView.setSelector(new ColorDrawable(0));
+        localGridView.setScrollingCacheEnabled(false);
+        localGridView.setAdapter(new aybb(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localaydz.jdField_a_of_type_JavaUtilArrayList));
+        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
+      }
+      return;
     }
-    catch (Exception paramIntent)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      label62:
-      break label62;
+      System.gc();
+      super.notifyDataSetChanged();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicReplyUtil", 2, String.format("checkAIOReplyNInsert [%s, %d, %s]", new Object[] { paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Long.valueOf(l1), str1 }));
-    }
-    paramIntent = str1;
-    if (i == 0) {
-      paramIntent = jdField_a_of_type_JavaLangString + str1;
-    }
-    a(paramBaseChatPie, l1, paramIntent);
-    return true;
+  }
+  
+  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup.addView(localGridView);
+    return localGridView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

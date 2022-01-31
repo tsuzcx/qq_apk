@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adfe
-  implements DialogInterface.OnClickListener
+  extends WtloginObserver
 {
-  public adfe(NotificationActivity paramNotificationActivity) {}
+  public adfe(JumpActivity paramJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a.finish();
+    if (paramDevlockInfo != null) {
+      aqax.a().a(paramDevlockInfo.TransferInfo);
+    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      paramWUserSigInfo.a(paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
+    }
   }
 }
 

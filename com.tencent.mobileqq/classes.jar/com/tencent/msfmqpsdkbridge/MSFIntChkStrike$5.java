@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
-import arni;
+import arrr;
 
 class MSFIntChkStrike$5
   extends BroadcastReceiver
@@ -46,7 +46,7 @@ class MSFIntChkStrike$5
         localCursor.close();
       }
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        arni.b(paramContext, (String)localObject);
+        arrr.b(paramContext, (String)localObject);
       }
       return;
     }

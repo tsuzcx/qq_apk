@@ -1,12 +1,12 @@
 package cooperation.qqindividuality.ipc;
 
-import bitt;
-import bitv;
+import biya;
+import biyc;
 
 public class QQIndividualityRemoteProxy$1
   implements Runnable
 {
-  public QQIndividualityRemoteProxy$1(bitt parambitt, bitv parambitv) {}
+  public QQIndividualityRemoteProxy$1(biya parambiya, biyc parambiyc) {}
   
   public void run()
   {

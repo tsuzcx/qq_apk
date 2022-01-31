@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.List;
 
-public class bnag
-  implements View.OnClickListener
+public abstract interface bnag
 {
-  public bnag(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(View paramView)
-  {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.a();
-  }
+  public abstract void a(List<Long> paramList);
 }
 
 

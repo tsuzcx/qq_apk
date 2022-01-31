@@ -1,22 +1,20 @@
-import android.support.annotation.Nullable;
+import java.io.File;
 
-public class vol
-  extends ugz
+final class vol
+  implements umw
 {
-  public String a;
-  public vld a;
-  public String b;
+  vol(File paramFile, String paramString) {}
   
-  public vol(@Nullable String paramString1, vld paramvld, String paramString2)
+  public void a(umu paramumu)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Vld = paramvld;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Vld + ", vid='" + this.b + '\'' + '}';
+    String str = paramumu.b;
+    if (str != null)
+    {
+      if ((paramumu.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!unk.a(this.jdField_a_of_type_JavaIoFile))) {
+        this.jdField_a_of_type_JavaIoFile.delete();
+      }
+      voi.a(new voo(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
+    }
   }
 }
 

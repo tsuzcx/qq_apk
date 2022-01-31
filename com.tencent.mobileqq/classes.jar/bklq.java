@@ -1,17 +1,7 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public class bklq
+final class bklq
+  implements bdpy
 {
-  public static bmah a(@NonNull bmam parambmam)
-  {
-    return new bmah(parambmam, bmai.a(BaseApplicationImpl.getApplication()));
-  }
-  
-  public static bmah a(@NonNull bmam parambmam, bmaj parambmaj)
-  {
-    return new bmah(parambmam, parambmaj);
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

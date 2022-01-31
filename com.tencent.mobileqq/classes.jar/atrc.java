@@ -1,44 +1,15 @@
-import android.net.ConnectivityManager;
-import android.net.ConnectivityManager.NetworkCallback;
-import android.support.annotation.RequiresApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
-@RequiresApi(api=21)
 public class atrc
-  implements atrb
+  implements DialogInterface.OnClickListener
 {
-  private ConnectivityManager.NetworkCallback jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback;
-  private ConnectivityManager jdField_a_of_type_AndroidNetConnectivityManager;
-  private atrb jdField_a_of_type_Atrb;
+  public atrc(LocationDialogUtil.4 param4) {}
   
-  atrc(ConnectivityManager paramConnectivityManager, ConnectivityManager.NetworkCallback paramNetworkCallback, atrb paramatrb)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidNetConnectivityManager = paramConnectivityManager;
-    this.jdField_a_of_type_Atrb = paramatrb;
-    this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback = paramNetworkCallback;
-  }
-  
-  public void a(int paramInt, Exception paramException)
-  {
-    this.jdField_a_of_type_AndroidNetConnectivityManager.unregisterNetworkCallback(this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback);
-    this.jdField_a_of_type_Atrb.a(paramInt, paramException);
-  }
-  
-  public void a(Exception paramException)
-  {
-    this.jdField_a_of_type_AndroidNetConnectivityManager.unregisterNetworkCallback(this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback);
-    this.jdField_a_of_type_Atrb.a(paramException);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidNetConnectivityManager.unregisterNetworkCallback(this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback);
-    this.jdField_a_of_type_Atrb.a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidNetConnectivityManager.unregisterNetworkCallback(this.jdField_a_of_type_AndroidNetConnectivityManager$NetworkCallback);
-    this.jdField_a_of_type_Atrb.a(paramString1, paramString2);
+    azqs.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
   }
 }
 

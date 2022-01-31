@@ -1,15 +1,7 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
-
 public class bmpd
-  implements Comparator<bmmw>
+  implements bnov
 {
-  public bmpd(DoodleLayout paramDoodleLayout) {}
-  
-  public int a(bmmw parambmmw1, bmmw parambmmw2)
-  {
-    return parambmmw2.i_() - parambmmw1.i_();
-  }
+  bmpd(bmpc parambmpc) {}
 }
 
 

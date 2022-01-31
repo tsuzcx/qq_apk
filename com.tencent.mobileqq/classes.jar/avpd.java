@@ -1,21 +1,12 @@
-import android.graphics.drawable.Drawable;
-
-public class avpd
+class avpd
+  implements bhum
 {
-  public int a;
-  public Drawable a;
-  public avpl a;
-  public String a;
+  avpd(avop paramavop) {}
   
-  public avpd(String paramString, avpl paramavpl)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Avpl = paramavpl;
-    a();
+    avop.a(this.a, this.a.b, false);
   }
-  
-  public void a() {}
 }
 
 

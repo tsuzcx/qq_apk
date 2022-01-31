@@ -1,11 +1,20 @@
-public class uju
+import java.util.Comparator;
+
+class uju
+  implements Comparator<uiz>
 {
-  public double a;
-  public int a;
-  public long a;
-  public boolean a;
-  public double b;
-  public int b;
+  uju(ujs paramujs) {}
+  
+  public int a(uiz paramuiz1, uiz paramuiz2)
+  {
+    if (paramuiz1.f() == paramuiz2.f()) {
+      return 0;
+    }
+    if (paramuiz1.f() > paramuiz2.f()) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

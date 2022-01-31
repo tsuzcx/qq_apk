@@ -1,31 +1,97 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
 
 public class wrw
-  extends QQUIEventReceiver<wrh, uqw>
+  implements wsz
 {
-  public wrw(@NonNull wrh paramwrh)
+  protected vcc a;
+  private wrd jdField_a_of_type_Wrd;
+  private wry jdField_a_of_type_Wry;
+  protected wsc a;
+  protected wta a;
+  protected wtb a;
+  
+  public wrw(wry paramwry)
   {
-    super(paramwrh);
+    this.jdField_a_of_type_Wry = paramwry;
+    this.jdField_a_of_type_Wrd = new wrd();
   }
   
-  public void a(@NonNull wrh paramwrh, @NonNull uqw paramuqw)
+  public Object a()
   {
-    if (paramuqw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    return null;
+  }
+  
+  public String a()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public void a()
+  {
+    wxe.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
+    if (this.jdField_a_of_type_Wsc == null)
     {
-      wsv.d(this.TAG, "deleted story failed");
-      paramwrh.a(5, paramuqw.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Wtb != null)
+      {
+        this.jdField_a_of_type_Wtb.a(a());
+        return;
+      }
+      wxe.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
       return;
     }
-    paramwrh.a(paramuqw.jdField_a_of_type_JavaLangString);
-    paramwrh.a(new woq[] { new wol(wnt.a(wrh.a(paramwrh).a.jdField_a_of_type_JavaLangString)), (woq)paramwrh.c.a() });
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Wsc.a);
+    this.jdField_a_of_type_Vcc = vcc.a(localArrayList);
+    this.jdField_a_of_type_Vcc.a("GetMyStoryDesFromVidListStep");
+    this.jdField_a_of_type_Vcc.a(new wrx(this, localArrayList));
+    this.jdField_a_of_type_Vcc.b();
   }
   
-  public Class acceptEventClass()
+  public void a(Object paramObject)
   {
-    return uqw.class;
+    boolean bool2 = true;
+    if ((paramObject instanceof wsc))
+    {
+      this.jdField_a_of_type_Wsc = ((wsc)paramObject);
+      return;
+    }
+    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+    if (this.jdField_a_of_type_Wsc == null)
+    {
+      bool1 = true;
+      wxe.e("GetMyStoryDesFromVidListStep", bool1);
+      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+      if (this.jdField_a_of_type_Wsc != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      xqq.a(bool1, new Object[0]);
+      return;
+      bool1 = false;
+      break;
+    }
   }
+  
+  public void a(wta paramwta)
+  {
+    this.jdField_a_of_type_Wta = paramwta;
+  }
+  
+  public void a(wtb paramwtb)
+  {
+    this.jdField_a_of_type_Wtb = paramwtb;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

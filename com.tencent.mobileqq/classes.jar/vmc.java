@@ -1,27 +1,55 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
 
 public class vmc
-  extends Subscriber.SingleEventSubscriberNoRefect<uqw>
+  implements xtk
 {
-  vlz a;
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public vmc(@NonNull vlz paramvlz)
+  public vmc(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
   {
-    this.a = paramvlz;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.b = paramString2;
   }
   
-  protected void a(@NonNull uqw paramuqw)
+  public void onFailure(String paramString)
   {
-    if (paramuqw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramuqw.jdField_a_of_type_JavaLangString);
-    }
+    paramString = new vmb(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    umc.a().dispatch(paramString);
+    wxj.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    wxj.a("play_video", "down_watermark", 0, 1, new String[0]);
   }
   
-  public Class acceptEventClass()
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
   {
-    return uqw.class;
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    vmb localvmb = new vmb(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    umc.a().dispatch(localvmb);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = new vmb(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    paramString.b = this.jdField_a_of_type_JavaLangString;
+    umc.a().dispatch(paramString);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
+    wxj.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    wxj.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
+    wxj.a("play_video", "down_watermark", 0, 0, new String[0]);
+    xrg.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
   }
 }
 

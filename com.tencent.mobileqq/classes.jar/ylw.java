@@ -1,22 +1,31 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.Window;
 
 public class ylw
-  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public ylw(TribeVideoPlugin paramTribeVideoPlugin, yme paramyme) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public static void a(Window paramWindow)
   {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, yme.a(this.jdField_a_of_type_Yme));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = yme.a(this.jdField_a_of_type_Yme);
-      paramTVK_IMediaPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+    if (paramWindow == null) {
+      return;
     }
+    paramWindow.getDecorView().setSystemUiVisibility(2);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new ylx(paramWindow));
+  }
+  
+  public static void b(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.setFlags(8, 8);
+  }
+  
+  public static void c(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.clearFlags(8);
   }
 }
 

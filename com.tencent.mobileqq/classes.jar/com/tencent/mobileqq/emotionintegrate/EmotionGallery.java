@@ -7,14 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import apwc;
-import bnoa;
+import aqal;
+import bnsm;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private apwc a;
+  private aqal a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,42 +35,42 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)bnoa.a / paramInt);
+      setMaxScale((float)bnsm.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apwc != null)
+    if (this.jdField_a_of_type_Aqal != null)
     {
       float f = a();
-      this.jdField_a_of_type_Apwc.c(f);
+      this.jdField_a_of_type_Aqal.c(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Apwc != null) {
-      this.jdField_a_of_type_Apwc.b();
+    if (this.jdField_a_of_type_Aqal != null) {
+      this.jdField_a_of_type_Aqal.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Apwc != null)
+    if (this.jdField_a_of_type_Aqal != null)
     {
       float f = a();
-      this.jdField_a_of_type_Apwc.b(f);
+      this.jdField_a_of_type_Aqal.b(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(apwc paramapwc)
+  public void setOnScaleChangeListener(aqal paramaqal)
   {
-    this.jdField_a_of_type_Apwc = paramapwc;
+    this.jdField_a_of_type_Aqal = paramaqal;
   }
 }
 

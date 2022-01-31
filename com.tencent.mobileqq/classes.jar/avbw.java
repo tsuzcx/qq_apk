@@ -1,47 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
-class avbw
-  implements TVK_SDKMgr.OnLogListener
+public class avbw
+  extends Handler
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public avbw(StoryPlayController paramStoryPlayController) {}
   
-  public int e(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
+    switch (paramMessage.what)
+    {
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      StoryPlayController.a(this.a, this.a.a);
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
   }
 }
 

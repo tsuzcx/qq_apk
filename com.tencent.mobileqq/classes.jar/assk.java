@@ -1,17 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-class assk
-  implements TVK_IMediaPlayer.OnNetVideoInfoListener
+final class assk
+  implements asrz
 {
-  assk(assd paramassd) {}
-  
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    return awsl.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
     }
   }
 }

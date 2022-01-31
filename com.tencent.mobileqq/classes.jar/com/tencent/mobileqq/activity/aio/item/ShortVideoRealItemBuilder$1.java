@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afwt;
+import agbi;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import java.lang.ref.WeakReference;
 
@@ -15,7 +15,7 @@ class ShortVideoRealItemBuilder$1
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress;
     }
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, (afwt)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress);
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, (agbi)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress);
     }
   }
 }

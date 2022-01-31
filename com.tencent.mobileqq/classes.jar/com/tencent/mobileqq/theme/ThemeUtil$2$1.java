@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.theme;
 
-import alyu;
-import bakm;
+import amdj;
+import baov;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ThemeUtil$2$1
   implements Runnable
 {
-  public ThemeUtil$2$1(bakm parambakm) {}
+  public ThemeUtil$2$1(baov parambaov) {}
   
   public void run()
   {
     ThemeUtil.isNowThemeIsAnimate();
-    alyu localalyu = (alyu)this.this$0.a.a(14);
-    if (localalyu != null) {
-      localalyu.a();
+    amdj localamdj = (amdj)this.this$0.a.a(14);
+    if (localamdj != null) {
+      localamdj.a();
     }
   }
 }

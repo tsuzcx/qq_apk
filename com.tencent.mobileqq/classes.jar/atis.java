@@ -1,32 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-public class atis
-  implements bhqd
+class atis
+  implements yrb
 {
-  public atis(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, atjn paramatjn) {}
+  atis(atir paramatir, long paramLong1, long paramLong2, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
+    boolean bool = true;
+    paramBundle = paramBundle.getString("videoPath");
+    Object localObject;
+    if (!TextUtils.isEmpty(paramBundle))
+    {
+      localObject = new File(paramBundle);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
     }
     for (;;)
     {
-      this.jdField_a_of_type_Atjn.b(false);
-      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
+      }
+      try
+      {
+        localObject = new JSONObject();
+        if (bool)
+        {
+          MediaApiPlugin.a(this.jdField_a_of_type_Atir.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+          ((JSONObject)localObject).put("ret", 0);
+          ((JSONObject)localObject).put("errMsg", "");
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Atir.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+          ((JSONObject)localObject).put("ret", -2);
+          ((JSONObject)localObject).put("errMsg", alud.a(2131715579));
+        }
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      catch (Exception paramBundle)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
       }
       return;
-      atii.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Atjn.a().e, this.jdField_a_of_type_Atjn.a().b);
-      continue;
-      this.jdField_a_of_type_Atjn.g();
-      continue;
-      this.jdField_a_of_type_Atjn.g();
+      bool = false;
     }
   }
 }

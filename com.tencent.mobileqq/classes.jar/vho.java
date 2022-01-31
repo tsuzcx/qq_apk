@@ -1,35 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class vho
-  implements bhqd
+public class vho
+  extends uro
 {
-  vho(QQUserUIItem paramQQUserUIItem, bhpy parambhpy) {}
+  public List<StoryVideoItem> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public vho(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
-    switch (paramInt)
+    super(paramRspBatchGetVideoInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspBatchGetVideoInfo.vid_info_list.has())
     {
-    default: 
-      paramView = "16384";
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
-        new uzn().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
+      while (paramRspBatchGetVideoInfo.hasNext())
+      {
+        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
       }
-      break;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wsv.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
-    }
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

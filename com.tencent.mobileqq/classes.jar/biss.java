@@ -1,27 +1,24 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class biss
-  extends anxq
+class biss
+  extends BroadcastReceiver
 {
-  public biss(LocationDetailActivity paramLocationDetailActivity) {}
+  biss(bisq parambisq) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (bisq.a(this.a) != null))
     {
-      azmj.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
-      return;
+      bisq.a(this.a).dismiss();
+      bisq.a(this.a, null);
     }
-    azmj.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biss
  * JD-Core Version:    0.7.0.1
  */

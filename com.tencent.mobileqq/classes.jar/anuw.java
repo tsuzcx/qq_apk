@@ -1,26 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-
-public class anuw
-  implements View.OnClickListener
+public abstract interface anuw
 {
-  public anuw(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    paramView = (anva)paramView.getTag();
-    if (!((aloz)this.a.app.getManager(51)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

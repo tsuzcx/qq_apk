@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bdee;
-import bebt;
-import bedf;
-import bedl;
-import beep;
+import bdin;
+import begc;
+import beho;
+import behu;
+import beiy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -97,7 +97,7 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = bdee.a(BaseApplication.getContext());
+    int i = bdin.a(BaseApplication.getContext());
     int j = i;
     if (i == 0) {
       j = -1;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof bedl)) {
+      if (!(localObject instanceof behu)) {
         break label226;
       }
-      localObject = (beep)((bedl)localObject).b().a(-2);
+      localObject = (beiy)((behu)localObject).b().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((beep)localObject).w) {
+        if (!((beiy)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof bebt)) {
+        if (!(localObject instanceof begc)) {
           break label285;
         }
-        localObject = ((bebt)localObject).b();
+        localObject = ((begc)localObject).b();
         if (localObject == null) {
           break label285;
         }
-        localObject = (beep)((WebViewFragment)localObject).b().a(-2);
+        localObject = (beiy)((WebViewFragment)localObject).b().a(-2);
         break;
         label269:
-        if (beep.s) {
+        if (beiy.s) {
           i = 1;
         } else {
           i = 0;

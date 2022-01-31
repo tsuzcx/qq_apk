@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aphy;
+import apmh;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppPlugin$3
-  extends aphy
+  extends apmh
 {
   MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
   

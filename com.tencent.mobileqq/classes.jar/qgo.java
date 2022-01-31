@@ -33,12 +33,12 @@ public class qgo
     ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
     localObject1 = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20200402/3aeb63b5612d43a3b555782b6d77b0e2.png", (URLDrawable.URLDrawableOptions)localObject1);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-    TextView localTextView1 = (TextView)a(2131380060);
-    TextView localTextView2 = (TextView)a(2131380062);
-    TextView localTextView3 = (TextView)a(2131380067);
-    TextView localTextView4 = (TextView)a(2131380068);
-    localObject2 = (TextView)a(2131380065);
-    ImageView localImageView = (ImageView)a(2131380057);
+    TextView localTextView1 = (TextView)a(2131380118);
+    TextView localTextView2 = (TextView)a(2131380120);
+    TextView localTextView3 = (TextView)a(2131380125);
+    TextView localTextView4 = (TextView)a(2131380126);
+    localObject2 = (TextView)a(2131380123);
+    ImageView localImageView = (ImageView)a(2131380115);
     if (paramLong % 100L == 0L) {}
     for (localObject1 = String.valueOf(paramLong / 100L);; localObject1 = String.valueOf((float)paramLong / 100.0F))
     {
@@ -55,11 +55,11 @@ public class qgo
       paramString1.mRequestHeight = 148;
       ((TextView)localObject2).setBackgroundDrawable(URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/readinjoy/btn_bg_2x.png", paramString1));
       paramString1 = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup = paramViewGroup.getContext().getResources().getDrawable(2130844950);
+      paramViewGroup = paramViewGroup.getContext().getResources().getDrawable(2130845022);
       paramString1.mFailedDrawable = paramViewGroup;
       paramString1.mLoadingDrawable = paramViewGroup;
       paramViewGroup = URLDrawable.getDrawable(paramqfz.jdField_a_of_type_JavaLangString, paramString1);
-      paramViewGroup.setDecodeHandler(bcuq.a);
+      paramViewGroup.setDecodeHandler(bcyz.a);
       localImageView.setImageDrawable(paramViewGroup);
       ((TextView)localObject2).setOnClickListener(new qgp(this, paramInt1, paramInt2, paramInt3));
       a(paramInt1, paramInt2, paramString3);
@@ -69,7 +69,7 @@ public class qgo
   
   View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562505, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562523, paramViewGroup, false);
   }
   
   protected void c()

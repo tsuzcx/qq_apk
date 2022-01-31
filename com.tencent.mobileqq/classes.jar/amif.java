@@ -1,32 +1,28 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class amif
-  implements Comparator<String>
+  extends alpq
 {
-  private amif(MsgLruCache paramMsgLruCache) {}
+  public amif(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  public int a(String paramString1, String paramString2)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    paramString1 = this.a.getOriginal(paramString1);
-    paramString2 = this.a.getOriginal(paramString2);
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
     }
-    if ((paramString2 == null) || (paramString2.isEmpty())) {
-      return -1;
+    if (!this.a.a.app.getCurrentAccountUin().equals(paramString)) {
+      return;
     }
-    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
-    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
-    if (l1 > l2) {
-      return 1;
+    if (!paramBoolean)
+    {
+      this.a.a(7);
+      return;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.a.a(6);
   }
 }
 

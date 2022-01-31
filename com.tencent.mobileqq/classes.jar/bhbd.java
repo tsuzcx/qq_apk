@@ -1,25 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import java.util.Comparator;
 
-public class bhbd
-  implements Animator.AnimatorListener
+final class bhbd
+  implements Comparator<byte[]>
 {
-  public bhbd(AppBrandPage paramAppBrandPage, bgid parambgid) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.jdField_a_of_type_Bgid.b();
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Bgid.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

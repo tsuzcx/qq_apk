@@ -1,29 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-public final class bjgk
-  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
+public class bjgk
+  implements URLDrawable.URLDrawableListener
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
+  public bjgk(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    }
-    return localGameCoverInfo;
+    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
   }
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return null;
+    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

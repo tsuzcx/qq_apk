@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
-
-public class apbt
-  implements View.OnClickListener
+public abstract interface apbt
 {
-  public apbt(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(0).a().a().printMsgLruCache();
-    }
-  }
+  public abstract void a(apbq paramapbq);
 }
 
 

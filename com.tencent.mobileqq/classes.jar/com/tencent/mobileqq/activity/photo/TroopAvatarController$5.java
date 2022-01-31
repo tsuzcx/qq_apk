@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aile;
-import ailh;
-import bchs;
+import aipt;
+import aipw;
+import bcmb;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopAvatarController$5
   implements Runnable
 {
-  public TroopAvatarController$5(aile paramaile, String paramString) {}
+  public TroopAvatarController$5(aipt paramaipt, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bchs.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-    aile.b(this.this$0, null);
+    this.this$0.jdField_a_of_type_Bcmb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+    aipt.b(this.this$0, null);
     this.this$0.b();
-    ailh.a(this.a);
+    aipw.a(this.a);
   }
 }
 

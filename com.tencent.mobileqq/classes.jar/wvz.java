@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.os.Handler;
 
-public class wvz
-  implements DialogInterface.OnDismissListener
+class wvz
+  implements wry
 {
-  public wvz(EditVideoMusic paramEditVideoMusic) {}
+  wvz(wvy paramwvy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(wrd paramwrd)
   {
-    this.a.a.a(0);
-    wtb.a("0X80076DD");
+    wvq.a(this.a.a).sendMessage(wvq.a(this.a.a).obtainMessage(0, paramwrd));
   }
 }
 

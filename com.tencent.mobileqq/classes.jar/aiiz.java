@@ -1,14 +1,21 @@
-public class aiiz
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnClickListener;
+
+class aiiz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  aiiz(aiiy paramaiiy) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (aiiy.a(this.a) != null)
+    {
+      aiiy.a(this.a).onClick(aiiy.a(this.a));
+      return true;
+    }
+    return false;
+  }
 }
 
 

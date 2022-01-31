@@ -1,6 +1,23 @@
-public abstract interface ahfy
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+
+class ahfy
+  implements Animator.AnimatorListener
 {
-  public abstract void a(String paramString);
+  ahfy(ahfu paramahfu) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

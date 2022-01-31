@@ -1,26 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import java.util.UUID;
 
-public class bbwl
-  implements View.OnTouchListener
+public abstract interface bbwl
 {
-  public bbwl(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbwj parambbwj);
 }
 
 

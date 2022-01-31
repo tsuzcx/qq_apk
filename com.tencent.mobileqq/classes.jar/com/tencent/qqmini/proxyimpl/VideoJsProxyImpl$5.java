@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgjm;
-import bjps;
+import bgnt;
+import bjtz;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -15,11 +15,11 @@ class VideoJsProxyImpl$5
   public void run()
   {
     QZLog.i("VideoJsPlugin", 1, "start copy from " + this.val$info.path);
-    String str = bgjm.a().b(this.val$suffix);
+    String str = bgnt.a().b(this.val$suffix);
     if (str.contains(" "))
     {
       QLog.w("VideoJsPlugin", 1, "wrong copy path " + str);
-      str = bgjm.a().e(this.val$info.path);
+      str = bgnt.a().e(this.val$info.path);
       VideoJsProxyImpl.access$800(this.this$0, str, this.val$info.fileSize, this.val$info);
       return;
     }
@@ -27,14 +27,14 @@ class VideoJsProxyImpl$5
     if (localFile.exists()) {
       localFile.delete();
     }
-    if (bjps.a(new File(this.val$info.path), localFile))
+    if (bjtz.a(new File(this.val$info.path), localFile))
     {
       this.val$info.path = str;
       VideoJsProxyImpl.access$700(this.this$0, this.val$info, this.val$changeSize);
       return;
     }
     QLog.w("VideoJsPlugin", 1, "copy file failed");
-    str = bgjm.a().e(this.val$info.path);
+    str = bgnt.a().e(this.val$info.path);
     VideoJsProxyImpl.access$800(this.this$0, str, this.val$info.fileSize, this.val$info);
   }
 }

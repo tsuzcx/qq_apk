@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.qphone.base.util.QLog;
 
 class bmoc
-  implements View.OnFocusChangeListener
+  implements betp
 {
-  bmoc(bmnw parambmnw) {}
+  bmoc(bmnz parambmnz) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(betn parambetn)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
     }
-    wsv.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

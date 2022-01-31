@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import bgjd;
-import bgje;
-import bgkd;
+import bgnk;
+import bgnl;
+import bgok;
 import java.io.File;
 import java.util.ArrayList;
 
 class ImageJsPlugin$3
-  implements bgje
+  implements bgnl
 {
-  ImageJsPlugin$3(ImageJsPlugin paramImageJsPlugin, bgkd parambgkd, File paramFile) {}
+  ImageJsPlugin$3(ImageJsPlugin paramImageJsPlugin, bgok parambgok, File paramFile) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -23,13 +23,13 @@ class ImageJsPlugin$3
         this.val$req.c();
       }
       this.val$imageFile.deleteOnExit();
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       return true;
     }
     paramIntent = new ArrayList();
     paramIntent.add(this.val$imageFile.getAbsolutePath());
     ImageJsPlugin.access$100(this.this$0, paramIntent, this.val$req);
-    bgjd.a().b(this);
+    bgnk.a().b(this);
     return true;
   }
 }

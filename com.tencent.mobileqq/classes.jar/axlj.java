@@ -1,31 +1,20 @@
-class axlj
-  implements ajnu
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class axlj
+  extends RecyclerView.ViewHolder
 {
-  axlj(axli paramaxli, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  private axlj(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      azmj.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Axli.a.dismiss();
-      this.jdField_a_of_type_Axli.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      azmj.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Axli.a.dismiss();
-      return;
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368796));
   }
 }
 

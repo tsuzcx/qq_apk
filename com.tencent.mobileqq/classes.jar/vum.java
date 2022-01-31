@@ -1,14 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class vum
-  implements MediaPlayer.OnBufferingUpdateListener
+public class vum
+  extends vut<StoryVideoItem>
 {
-  vum(vuj paramvuj, vua paramvua) {}
-  
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  public vum(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_Vua.a(this.jdField_a_of_type_Vuj, paramInt);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

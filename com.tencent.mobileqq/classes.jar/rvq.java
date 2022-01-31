@@ -19,7 +19,7 @@ class rvq
       if (!paramAdapterView.b.startsWith("mqq://")) {
         break label154;
       }
-      paramView = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
+      paramView = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
       if (paramView != null) {
         paramView.c();
       }

@@ -1,15 +1,11 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import MWIFI.SCGet3rdCloudCheck;
 
-class bezy
-  implements bfdo
+public class bezy
+  implements amfy
 {
-  bezy(bezx parambezx, ImageView paramImageView) {}
+  public void a(int paramInt) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-  }
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 

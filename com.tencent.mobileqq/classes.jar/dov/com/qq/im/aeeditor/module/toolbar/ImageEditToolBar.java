@@ -3,7 +3,7 @@ package dov.com.qq.im.aeeditor.module.toolbar;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import blle;
+import blpq;
 
 public class ImageEditToolBar
   extends AEEditorToolBar
@@ -30,8 +30,8 @@ public class ImageEditToolBar
   
   void a(String paramString)
   {
-    if ((paramString.equals("text")) && (this.a != null) && ((this.a instanceof blle))) {
-      ((blle)this.a).n();
+    if ((paramString.equals("text")) && (this.a != null) && ((this.a instanceof blpq))) {
+      ((blpq)this.a).q();
     }
   }
 }

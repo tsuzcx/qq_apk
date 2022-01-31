@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aact;
-import akro;
+import aahi;
+import akwd;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.widget.RelativeLayout;
-import asjc;
+import asnl;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
@@ -34,8 +34,8 @@ class QQGamePubAccountFragment$10
       this.this$0.e();
       QQGamePubAccountFragment.a(this.this$0).setVisibility(0);
       QQGamePubAccountFragment.a(this.this$0).sendEmptyMessageDelayed(0, 3000L);
-      QQGamePubAccountFragment.a(this.this$0).setTag(asjc.a(this.a));
-      aact.a(akro.a(), "769", "205030", "", "76901", "1", "160", new String[] { asjc.a(this.a), "", "8" });
+      QQGamePubAccountFragment.a(this.this$0).setTag(asnl.a(this.a));
+      aahi.a(akwd.a(), "769", "205030", "", "76901", "1", "160", new String[] { asnl.a(this.a), "", "8" });
       return;
     }
   }

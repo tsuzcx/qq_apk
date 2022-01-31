@@ -1,10 +1,24 @@
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+
 public class yws
-  implements ywk
+  implements nbs
 {
-  public atsc a(String paramString)
+  public yws(PluginJumpManager paramPluginJumpManager) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    return new atso(paramString).a();
+    if (paramInt == 0) {
+      nbv.a("urlplugin.cfg", this.a.mContext, "1007", new ywt(this));
+    }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+      return;
+    }
+    this.a.loadConfigFromFile();
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -2,24 +2,24 @@ package com.tencent.mobileqq.hotpic;
 
 import android.graphics.drawable.Drawable;
 import android.support.v4.util.ArrayMap;
-import asqh;
-import asqv;
-import asri;
+import asuq;
+import asve;
+import asvr;
 
 public class HotVideoBlurTaskManager$1
   implements Runnable
 {
-  public HotVideoBlurTaskManager$1(asqv paramasqv) {}
+  public HotVideoBlurTaskManager$1(asve paramasve) {}
   
   public void run()
   {
     HotVideoData localHotVideoData = (HotVideoData)this.this$0.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
-    asqh localasqh = (asqh)this.this$0.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
-    if (localasqh.a(localHotVideoData))
+    asuq localasuq = (asuq)this.this$0.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
+    if (localasuq.a(localHotVideoData))
     {
-      Drawable localDrawable = asri.a(this.this$0.jdField_a_of_type_AndroidContentContext, localHotVideoData);
-      if ((localDrawable != null) && (localasqh.a(localHotVideoData))) {
-        localasqh.b(localDrawable);
+      Drawable localDrawable = asvr.a(this.this$0.jdField_a_of_type_AndroidContentContext, localHotVideoData);
+      if ((localDrawable != null) && (localasuq.a(localHotVideoData))) {
+        localasuq.b(localDrawable);
       }
       this.this$0.a(localHotVideoData);
     }

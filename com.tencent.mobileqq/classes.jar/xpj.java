@@ -1,32 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-final class xpj
-  extends xos
+public abstract interface xpj
 {
-  xpj(xos paramxos) {}
-  
-  public void onFailure(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.a.onFailure(paramString);
-    wta.a("music_composite", "music_clip", 0, 1, new String[0]);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    wta.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

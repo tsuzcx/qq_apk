@@ -1,17 +1,10 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-public class xkb
-  implements AdapterView.OnItemClickListener
+public abstract interface xkb
 {
-  public xkb(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public abstract void a(xkl paramxkl);
+  
+  public abstract void b();
 }
 
 

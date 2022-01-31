@@ -40,8 +40,8 @@ public class ReadInjoyMenuIconView
     setOrientation(1);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     setGravity(17);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560056, this);
-    TextView localTextView = (TextView)paramContext.findViewById(2131379919);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560055, this);
+    TextView localTextView = (TextView)paramContext.findViewById(2131379977);
     localTextView.setTextSize(0, this.b);
     localTextView.setTextColor(this.jdField_a_of_type_Int);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
@@ -50,7 +50,7 @@ public class ReadInjoyMenuIconView
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localTextView.getLayoutParams();
     localLayoutParams.topMargin = this.c;
     localTextView.setLayoutParams(localLayoutParams);
-    paramContext = (KandianUrlImageView)paramContext.findViewById(2131379870);
+    paramContext = (KandianUrlImageView)paramContext.findViewById(2131379928);
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d, this.e));
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       paramContext.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);

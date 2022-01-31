@@ -73,7 +73,7 @@ public class lsa
   
   public static boolean a()
   {
-    return bkkj.b();
+    return bkoq.b();
   }
   
   public static boolean a(int paramInt, long paramLong)
@@ -81,7 +81,7 @@ public class lsa
     if (f()) {
       return true;
     }
-    int i = bdcb.a();
+    int i = bdgk.a();
     if (i < 17)
     {
       lek.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error  OSversion:" + i);
@@ -104,7 +104,7 @@ public class lsa
       QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice fail, cpuFrequency[" + l + " < " + paramLong1 + "]");
       return false;
     }
-    paramLong1 = bdcb.d();
+    paramLong1 = bdgk.d();
     if (paramLong1 < paramLong2)
     {
       QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice fail, mem[" + paramLong1 + " < " + paramLong2 + "]");
@@ -388,7 +388,7 @@ public class lsa
     while (paramInt < 5) {
       return;
     }
-    throw new IllegalArgumentException("setExtInfo fail, EXP_BIT_MAX[5" + alpo.a(2131704371));
+    throw new IllegalArgumentException("setExtInfo fail, EXP_BIT_MAX[5" + alud.a(2131704383));
   }
   
   public void a(long paramLong)

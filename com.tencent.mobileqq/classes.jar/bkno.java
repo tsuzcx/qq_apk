@@ -1,31 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkno
-  implements Animator.AnimatorListener
+class bkno
+  implements blsa
 {
-  public bkno(AECropperImageView paramAECropperImageView) {}
+  bkno(bknm parambknm) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(blsn paramblsn) {}
+  
+  public void a(blsn paramblsn, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    AECropperImageView.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
+    }
+    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
+      paramBundle = (EffectsCameraCaptureView)this.a.a;
+    }
+    try
+    {
+      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
+      if (paramBundle != null)
+      {
+        paramblsn = bknm.a(this.a, paramblsn);
+        paramBundle.setWatermarkPath(paramblsn);
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + paramblsn);
+        }
+      }
+      return;
+    }
+    catch (Throwable paramblsn)
+    {
+      QLog.e("QIMEmojiRedPacketCameraCapture", 2, paramblsn.getStackTrace());
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, false);
-    AECropperImageView.c(this.a);
-  }
+  public void a(blsq paramblsq, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, true);
-  }
+  public void a(blsx paramblsx, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(bnhc parambnhc)
   {
-    AECropperImageView.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
+    }
   }
 }
 

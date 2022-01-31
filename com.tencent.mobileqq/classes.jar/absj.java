@@ -1,21 +1,33 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class absj
+public class absj
 {
-  protected absi a;
+  public abta a;
+  public alto a;
+  public amnz a;
+  public auga a;
+  public Map<String, RecentUser> a;
+  public Map<String, MessageRecord> b = new HashMap();
+  public Map<String, MessageRecord> c = new HashMap();
+  public Map<String, MessageRecord> d = new HashMap();
+  public Map<String, MessageRecord> e = new HashMap();
+  public Map<String, List<MessageRecord>> f = new HashMap();
+  public Map<String, List<MessageRecord>> g = new HashMap();
   
-  protected void a() {}
-  
-  public final void a(absi paramabsi)
+  public absj(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramabsi;
-    a();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Alto = ((alto)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Auga = ((auga)paramQQAppInterface.getManager(37));
+    this.jdField_a_of_type_Amnz = paramQQAppInterface.a().a();
+    this.jdField_a_of_type_Abta = paramQQAppInterface.a();
   }
-  
-  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf);
-  
-  public void b() {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.av.funchat;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -42,8 +42,8 @@ public class AVListImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = aekt.a(this.jdField_a_of_type_Int, getResources()) - 2;
-    int n = aekt.a(this.jdField_b_of_type_Int, getResources());
+    int m = aepi.a(this.jdField_a_of_type_Int, getResources()) - 2;
+    int n = aepi.a(this.jdField_b_of_type_Int, getResources());
     int i = Math.min(getWidth(), getHeight()) / 2;
     int j = getWidth() / 2;
     int k = getHeight() / 2;

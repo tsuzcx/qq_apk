@@ -1,22 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class vlv
-  implements uni<vbi, vbj>
+final class vlv
+  implements DialogInterface.OnClickListener
 {
-  vlv(vlu paramvlu, vlj paramvlj) {}
+  vlv(StoryVideoItem paramStoryVideoItem, String paramString) {}
   
-  public void a(@NonNull vbi paramvbi, @Nullable vbj paramvbj, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramErrorMessage.isFail()) || (paramvbj == null))
-    {
-      wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Vlj.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Vlu.a.a(paramvbj.jdField_a_of_type_JavaUtilList, paramvbj.jdField_a_of_type_JavaLangString, paramvbj.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Vlj.a(paramErrorMessage, vkr.b(paramvbj.jdField_a_of_type_JavaUtilList), paramvbj.jdField_a_of_type_Boolean);
+    wxe.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    uom.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

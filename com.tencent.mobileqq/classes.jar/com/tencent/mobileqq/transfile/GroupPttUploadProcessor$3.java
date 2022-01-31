@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bape;
+import batn;
 
 public class GroupPttUploadProcessor$3
   implements Runnable
 {
-  public GroupPttUploadProcessor$3(bape parambape) {}
+  public GroupPttUploadProcessor$3(batn parambatn) {}
   
   public void run()
   {

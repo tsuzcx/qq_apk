@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import ajap;
-import ajaq;
-import ajar;
-import alpo;
+import ajfe;
+import ajff;
+import ajfg;
+import alud;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -20,7 +20,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import bcwh;
+import bdaq;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,14 +31,14 @@ public class RecordMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 10000;
-  private ajar jdField_a_of_type_Ajar;
+  private ajfg jdField_a_of_type_Ajfg;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<ajaq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ajff> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  private float jdField_b_of_type_Float = bcwh.a(getContext(), 2.0F);
+  private float jdField_b_of_type_Float = bdaq.a(getContext(), 2.0F);
   private int jdField_b_of_type_Int = 0;
   private int c;
   private int d;
@@ -48,19 +48,19 @@ public class RecordMicView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    int i = bcwh.a(getContext(), 120.0F);
+    int i = bdaq.a(getContext(), 120.0F);
     this.d = i;
     this.c = i;
-    this.e = bcwh.a(getContext(), 33.0F);
+    this.e = bdaq.a(getContext(), 33.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(alpo.a(2131713662));
+    setContentDescription(alud.a(2131713674));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    ajaq localajaq = new ajaq(bcwh.a(getContext(), paramFloat1), bcwh.a(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localajaq);
+    ajff localajff = new ajff(bdaq.a(getContext(), paramFloat1), bdaq.a(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localajff);
   }
   
   private void d()
@@ -72,7 +72,7 @@ public class RecordMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ajap(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ajfe(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -141,37 +141,37 @@ public class RecordMicView
     int i;
     if (this.jdField_b_of_type_Int == 2)
     {
-      this.jdField_b_of_type_Float = bcwh.a(getContext(), 1.0F);
+      this.jdField_b_of_type_Float = bdaq.a(getContext(), 1.0F);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ajaq localajaq = (ajaq)((Iterator)localObject).next();
+        ajff localajff = (ajff)((Iterator)localObject).next();
         paramCanvas.save();
-        float f2 = localajaq.jdField_a_of_type_Float;
-        f1 = localajaq.jdField_b_of_type_Float;
+        float f2 = localajff.jdField_a_of_type_Float;
+        f1 = localajff.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localajaq.c);
+        i = (int)(255.0F * localajff.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localajaq.d, localajaq.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localajaq.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localajff.d, localajff.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localajff.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
       paramCanvas.save();
       paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-      localObject = getResources().getDrawable(2130846791);
+      localObject = getResources().getDrawable(2130846864);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(127);
       ((Drawable)localObject).draw(paramCanvas);
       paramCanvas.restore();
       return;
     }
-    this.jdField_b_of_type_Float = bcwh.a(getContext(), 2.0F);
+    this.jdField_b_of_type_Float = bdaq.a(getContext(), 2.0F);
     paramCanvas.save();
     paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
     if (this.jdField_b_of_type_Int == 0)
@@ -196,7 +196,7 @@ public class RecordMicView
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
       this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F, this.jdField_b_of_type_Float * 0.5F, a() - this.jdField_b_of_type_Float * 0.5F, b() - this.jdField_b_of_type_Float * 0.5F);
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject = getResources().getDrawable(2130846791);
+      localObject = getResources().getDrawable(2130846864);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(i);
       ((Drawable)localObject).draw(paramCanvas);
@@ -231,8 +231,8 @@ public class RecordMicView
       this.jdField_b_of_type_Int = 1;
       invalidate();
       b();
-      if (this.jdField_a_of_type_Ajar != null) {
-        this.jdField_a_of_type_Ajar.a();
+      if (this.jdField_a_of_type_Ajfg != null) {
+        this.jdField_a_of_type_Ajfg.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -242,8 +242,8 @@ public class RecordMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Ajar != null) {
-          this.jdField_a_of_type_Ajar.d();
+        if (this.jdField_a_of_type_Ajfg != null) {
+          this.jdField_a_of_type_Ajfg.d();
         }
         c();
         break;
@@ -254,10 +254,10 @@ public class RecordMicView
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Ajar == null) {
+        if (this.jdField_a_of_type_Ajfg == null) {
           break label204;
         }
-        this.jdField_a_of_type_Ajar.b();
+        this.jdField_a_of_type_Ajfg.b();
         break;
         c();
       }
@@ -272,9 +272,9 @@ public class RecordMicView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setStatusListener(ajar paramajar)
+  public void setStatusListener(ajfg paramajfg)
   {
-    this.jdField_a_of_type_Ajar = paramajar;
+    this.jdField_a_of_type_Ajfg = paramajfg;
   }
 }
 

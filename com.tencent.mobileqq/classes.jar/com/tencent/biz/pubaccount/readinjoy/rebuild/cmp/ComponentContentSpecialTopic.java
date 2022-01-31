@@ -49,7 +49,7 @@ public class ComponentContentSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559958, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559957, this, true);
   }
   
   public void a() {}
@@ -63,7 +63,7 @@ public class ComponentContentSpecialTopic
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367981));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367992));
   }
   
   public void a(Object paramObject)

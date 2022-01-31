@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agld;
-import aglg;
+import agps;
+import agpv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -10,17 +10,17 @@ import com.tencent.mobileqq.widget.QQToast;
 public class FriendChatPie$12$1
   implements Runnable
 {
-  public FriendChatPie$12$1(aglg paramaglg, MessageRecord paramMessageRecord) {}
+  public FriendChatPie$12$1(agpv paramagpv, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
     {
-      QQToast.a(this.jdField_a_of_type_Aglg.a.a.getApp(), 2131692101, 0).a();
+      QQToast.a(this.jdField_a_of_type_Agpv.a.a.getApp(), 2131692102, 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Aglg.a.a.getApp(), 2131720309, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aglg.a.a.c(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    QQToast.a(this.jdField_a_of_type_Agpv.a.a.getApp(), 2131720321, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Agpv.a.a.c(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

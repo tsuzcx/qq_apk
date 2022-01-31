@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acum;
-import awmk;
+import aczb;
+import awqt;
 
 public class FriendProfileCardActivity$15$1
   implements Runnable
 {
-  public FriendProfileCardActivity$15$1(acum paramacum) {}
+  public FriendProfileCardActivity$15$1(aczb paramaczb) {}
   
   public void run()
   {

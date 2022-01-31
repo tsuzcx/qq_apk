@@ -1,13 +1,30 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-class aoma
-  implements blur
+public class aoma
+  extends aolx
 {
-  aoma(aolz paramaolz) {}
-  
-  public void a(String paramString)
+  public int a()
   {
-    ((QIMMusicConfigManager)blmf.a(2)).a(paramString);
+    return 250;
+  }
+  
+  public aolr a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
+    {
+      aoml localaoml = (aoml)aolc.a(paramString, aoml.class);
+      return new aolu(paramString, localaoml);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
   }
 }
 

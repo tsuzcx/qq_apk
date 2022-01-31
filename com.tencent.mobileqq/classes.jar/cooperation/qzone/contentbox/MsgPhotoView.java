@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Message;
@@ -18,16 +18,16 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import baul;
-import bdkf;
-import bjed;
-import bjeg;
-import bjeh;
-import bjei;
-import bjex;
-import bjwu;
-import bjzq;
-import bkcl;
+import bayu;
+import bdoo;
+import bjik;
+import bjin;
+import bjio;
+import bjip;
+import bjje;
+import bkbb;
+import bkdx;
+import bkgs;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -49,17 +49,17 @@ import mqq.os.MqqHandler;
 public class MsgPhotoView
   extends BaseMsgView
 {
-  private static final int jdField_c_of_type_Int = bdkf.b(36.0F);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjeg(this);
+  private static final int jdField_c_of_type_Int = bdoo.b(36.0F);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjin(this);
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjex jdField_a_of_type_Bjex;
+  private bjje jdField_a_of_type_Bjje;
   private AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
   private boolean jdField_a_of_type_Boolean;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bjeh(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bjio(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -135,13 +135,13 @@ public class MsgPhotoView
       do
       {
         return;
-        localObject1 = new bjei(this.jdField_a_of_type_Bjed, this.jdField_j_of_type_AndroidWidgetImageView, paramInt2, this.jdField_a_of_type_Boolean);
-        localObject2 = bkcl.a();
+        localObject1 = new bjip(this.jdField_a_of_type_Bjik, this.jdField_j_of_type_AndroidWidgetImageView, paramInt2, this.jdField_a_of_type_Boolean);
+        localObject2 = bkgs.a();
         if (paramInt3 != 1) {
           break;
         }
         bool = true;
-        localObject1 = ((bkcl)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
+        localObject1 = ((bkgs)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
       } while (localObject1 == null);
       Object localObject2 = this.jdField_i_of_type_AndroidWidgetImageView;
       if (paramInt2 != 2) {
@@ -155,7 +155,7 @@ public class MsgPhotoView
     if (paramInt2 == 2) {}
     for (paramInt1 = 11;; paramInt1 = 10)
     {
-      bjzq.a(paramInt1, 1);
+      bkdx.a(paramInt1, 1);
       return;
       bool = false;
       break;
@@ -168,45 +168,45 @@ public class MsgPhotoView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bjed = new bjed(this);
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562181, this);
+    this.jdField_a_of_type_Bjik = new bjik(this);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562199, this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363010));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362973));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371142));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371161));
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)findViewById(2131363188));
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager = ((QzoneMsgViewPager)findViewById(2131379882));
+    this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager = ((QzoneMsgViewPager)findViewById(2131379940));
     d();
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365103));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365104));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365105));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365106));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365107));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365108));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365105));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365106));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365107));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365108));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365109));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365110));
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362999));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369414));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369415));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364539));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369418));
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369423));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364555));
-    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364580));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376515));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373658));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375133));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373659));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375134));
-    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373660));
-    this.k = ((TextView)findViewById(2131375135));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369432));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369433));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364541));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369436));
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369441));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364557));
+    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364582));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376569));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373709));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375184));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373710));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375185));
+    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373711));
+    this.k = ((TextView)findViewById(2131375186));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374738));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379671));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368028));
-    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368029));
-    this.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368027));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374789));
+    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379729));
+    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368039));
+    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368040));
+    this.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368038));
     this.jdField_h_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     this.jdField_i_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     this.jdField_j_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
@@ -225,20 +225,20 @@ public class MsgPhotoView
       if ((paramMQUserClientShowInfo.unionIconWidth > 0) && (paramMQUserClientShowInfo.unionIconHeight > 0))
       {
         localObject = this.jdField_h_of_type_AndroidWidgetImageView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = bdkf.b(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
-        ((ViewGroup.LayoutParams)localObject).height = bdkf.b(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).width = bdoo.b(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).height = bdoo.b(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
         this.jdField_h_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       paramMQUserClientShowInfo = paramMQUserClientShowInfo.unionVipUrl;
-      Object localObject = new bjwu();
-      ((bjwu)localObject).a(paramMQUserClientShowInfo, 10);
-      ((bjwu)localObject).a(bdkf.a() / 720.0F);
-      ((bjwu)localObject).a(true);
-      ((bjwu)localObject).a();
-      ((bjwu)localObject).start();
+      Object localObject = new bkbb();
+      ((bkbb)localObject).a(paramMQUserClientShowInfo, 10);
+      ((bkbb)localObject).a(bdoo.a() / 720.0F);
+      ((bkbb)localObject).a(true);
+      ((bkbb)localObject).a();
+      ((bkbb)localObject).start();
       this.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     } while (this.jdField_a_of_type_Boolean);
-    bjzq.a(12, 1);
+    bkdx.a(12, 1);
   }
   
   private void a(boolean paramBoolean)
@@ -251,15 +251,15 @@ public class MsgPhotoView
       {
         return;
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = baul.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = baul.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bayu.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bayu.a;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
         localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20170905110724_aew14oIQKq.png", (URLDrawable.URLDrawableOptions)localObject);
       } while (localObject == null);
       this.jdField_j_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       this.jdField_j_of_type_AndroidWidgetImageView.setVisibility(0);
     } while (this.jdField_a_of_type_Boolean);
-    bjzq.a(13, 1);
+    bkdx.a(13, 1);
   }
   
   private void f()
@@ -311,10 +311,10 @@ public class MsgPhotoView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Bjed != null)
+    if (this.jdField_a_of_type_Bjik != null)
     {
-      this.jdField_a_of_type_Bjed.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Bjed = null;
+      this.jdField_a_of_type_Bjik.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Bjik = null;
     }
   }
   
@@ -380,12 +380,12 @@ public class MsgPhotoView
           this.jdField_e_of_type_AndroidWidgetTextView.setText(paramMQMsg.eventTitle);
           this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_f_of_type_AndroidWidgetTextView.setText("摄于" + paramMQMsg.capTime);
-          findViewById(2131375121).setVisibility(0);
-          findViewById(2131378221).setVisibility(0);
+          findViewById(2131375172).setVisibility(0);
+          findViewById(2131378275).setVisibility(0);
           if (paramBoolean2)
           {
-            ((ImageView)findViewById(2131378222)).setImageResource(2130847918);
-            ((TextView)findViewById(2131378223)).setTextColor(-7500397);
+            ((ImageView)findViewById(2131378276)).setImageResource(2130847991);
+            ((TextView)findViewById(2131378277)).setTextColor(-7500397);
           }
           if (((MQMsgBody)localObject1).photolist != null)
           {
@@ -468,8 +468,8 @@ public class MsgPhotoView
           }
           this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
           break label297;
-          findViewById(2131375121).setVisibility(8);
-          findViewById(2131378221).setVisibility(8);
+          findViewById(2131375172).setVisibility(8);
+          findViewById(2131378275).setVisibility(8);
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -485,7 +485,7 @@ public class MsgPhotoView
           if (!paramMQMsg.msgInteractData.likeCell.liked) {
             break label1289;
           }
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847906);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847979);
           if (paramMQMsg.msgInteractData.likeCell.totalLike <= 0) {
             break label1322;
           }
@@ -505,15 +505,15 @@ public class MsgPhotoView
         {
           this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(-7500397);
           this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(-7500397);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847901);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847974);
         }
         if (paramMQMsg.msgInteractData.type == 2)
         {
           this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           if (paramBoolean2)
           {
-            this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130847912);
-            this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847915);
+            this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130847985);
+            this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847988);
             this.jdField_j_of_type_AndroidWidgetTextView.setTextColor(-7500397);
             this.k.setTextColor(-7500397);
           }
@@ -522,23 +522,23 @@ public class MsgPhotoView
         return;
         localObject1 = this.jdField_b_of_type_AndroidWidgetImageView;
         if (paramBoolean2) {}
-        for (m = 2130847909;; m = 2130847908)
+        for (m = 2130847982;; m = 2130847981)
         {
           ((ImageView)localObject1).setImageResource(m);
           break;
         }
-        this.jdField_h_of_type_AndroidWidgetTextView.setText(alpo.a(2131707335));
+        this.jdField_h_of_type_AndroidWidgetTextView.setText(alud.a(2131707347));
         this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
         break label1137;
-        this.jdField_i_of_type_AndroidWidgetTextView.setText(alpo.a(2131707336));
+        this.jdField_i_of_type_AndroidWidgetTextView.setText(alud.a(2131707348));
         this.jdField_i_of_type_AndroidWidgetTextView.setVisibility(0);
       }
     }
   }
   
-  public void setMsgOnClickListener(bjex parambjex)
+  public void setMsgOnClickListener(bjje parambjje)
   {
-    this.jdField_a_of_type_Bjex = parambjex;
+    this.jdField_a_of_type_Bjje = parambjje;
   }
 }
 

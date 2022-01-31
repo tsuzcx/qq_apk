@@ -1,22 +1,30 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adbi
-  implements ViewSwitcher.ViewFactory
+  implements Animation.AnimationListener
 {
-  public adbi(Leba paramLeba) {}
+  public adbi(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public View makeView()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tribe.async.dispatch.Dispatcher;
-import uht;
-import ukd;
-import ukk;
-import ukn;
-import ulw;
-import wsv;
+import umc;
+import uom;
+import uot;
+import uow;
+import uqf;
+import wxe;
 
 public class StoryVideoUploadManager$4
   implements Runnable
 {
-  public StoryVideoUploadManager$4(ukd paramukd, ulw paramulw, ukn paramukn) {}
+  public StoryVideoUploadManager$4(uom paramuom, uqf paramuqf, uow paramuow) {}
   
   public void run()
   {
-    wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Ulw });
-    uht.a().dispatch(this.jdField_a_of_type_Ukn);
-    uht.a().dispatch(new ukk());
+    wxe.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Uqf });
+    umc.a().dispatch(this.jdField_a_of_type_Uow);
+    umc.a().dispatch(new uot());
   }
 }
 

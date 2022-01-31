@@ -1,19 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.graphics.Bitmap;
 
-public final class bmiu
-  implements Parcelable.Creator<EditVideoParams>
+public abstract interface bmiu
+  extends bmni
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public abstract Bitmap a();
   
-  public EditVideoParams[] a(int paramInt)
-  {
-    return new EditVideoParams[paramInt];
-  }
+  public abstract bmzd a();
+  
+  public abstract void a(bmqr parambmqr, float paramFloat1, float paramFloat2);
+  
+  public abstract void a_(int paramInt, bnaz parambnaz);
+  
+  public abstract void b();
 }
 
 

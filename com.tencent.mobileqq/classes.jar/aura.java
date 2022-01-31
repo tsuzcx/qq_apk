@@ -1,43 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aura
-  implements BusinessObserver
+  implements INetInfoHandler
 {
-  public aura(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
+  long a = 0L;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private void a(int paramInt)
   {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.w("followUser js api", 2, " no data!");
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("followUser js api", 2, " no data! error");
-        }
-      }
+    if (System.currentTimeMillis() - this.a < 500L) {
+      return;
     }
+    this.a = System.currentTimeMillis();
+    QQPlayerService.d(BaseApplicationImpl.getContext());
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 

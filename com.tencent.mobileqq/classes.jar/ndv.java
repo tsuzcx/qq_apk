@@ -52,15 +52,15 @@ public class ndv
   public static int a(QQAppInterface paramQQAppInterface, String paramString)
   {
     int j = 0;
-    Object localObject = (aluw)paramQQAppInterface.getManager(56);
+    Object localObject = (alzl)paramQQAppInterface.getManager(56);
     int i = j;
     if (localObject != null)
     {
-      localObject = ((aluw)localObject).c(paramString);
+      localObject = ((alzl)localObject).c(paramString);
       if (localObject != null) {
         break label69;
       }
-      paramQQAppInterface = (alne)paramQQAppInterface.getManager(69);
+      paramQQAppInterface = (alrt)paramQQAppInterface.getManager(69);
       if (paramQQAppInterface == null) {
         break label84;
       }
@@ -68,7 +68,7 @@ public class ndv
       if ((paramQQAppInterface == null) || (paramQQAppInterface.certifiedGrade <= 0)) {
         break label84;
       }
-      i = 2130841431;
+      i = 2130841432;
     }
     for (;;)
     {
@@ -77,7 +77,7 @@ public class ndv
       i = j;
       if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
       {
-        return 2130841431;
+        return 2130841432;
         label84:
         i = 0;
       }
@@ -160,7 +160,7 @@ public class ndv
   {
     try
     {
-      bool = ((bfua)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165)).c(paramString, false);
+      bool = ((bfyh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165)).c(paramString, false);
       if (bool) {
         if (paramIntent == null)
         {
@@ -241,9 +241,9 @@ public class ndv
   {
     String str = "";
     if (!TextUtils.isEmpty(paramString)) {
-      if (bfua.b(paramQQAppInterface, paramString))
+      if (bfyh.b(paramQQAppInterface, paramString))
       {
-        paramQQAppInterface = ((aloz)paramQQAppInterface.getManager(51)).b(paramString);
+        paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).b(paramString);
         if (paramQQAppInterface == null) {
           break label189;
         }
@@ -256,14 +256,14 @@ public class ndv
       Object localObject = paramQQAppInterface.getManager(56);
       if (localObject != null)
       {
-        localObject = ((aluw)localObject).c(paramString);
+        localObject = ((alzl)localObject).c(paramString);
         if (localObject != null) {
           return ((PublicAccountInfo)localObject).name;
         }
         paramQQAppInterface = paramQQAppInterface.getManager(69);
         if (paramQQAppInterface != null)
         {
-          paramQQAppInterface = ((alne)paramQQAppInterface).a(paramString);
+          paramQQAppInterface = ((alrt)paramQQAppInterface).a(paramString);
           if (paramQQAppInterface != null) {
             return paramQQAppInterface.name;
           }
@@ -304,9 +304,9 @@ public class ndv
     }
   }
   
-  private static void a(int paramInt, bepp parambepp)
+  private static void a(int paramInt, bety parambety)
   {
-    b(paramInt, parambepp);
+    b(paramInt, parambety);
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -341,11 +341,11 @@ public class ndv
       return;
       if ((lnz.c()) && (lnz.d()))
       {
-        bhpy localbhpy = bhpy.a(paramContext);
-        localbhpy.b(2131720898);
-        localbhpy.c(2131690648);
-        localbhpy.a(new ndy(localbhpy, paramQQAppInterface, paramContext, paramSessionInfo));
-        localbhpy.show();
+        bhuf localbhuf = bhuf.a(paramContext);
+        localbhuf.b(2131720910);
+        localbhuf.c(2131690648);
+        localbhuf.a(new ndy(localbhuf, paramQQAppInterface, paramContext, paramSessionInfo));
+        localbhuf.show();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -354,37 +354,37 @@ public class ndv
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
   {
-    bepp localbepp = null;
+    bety localbety = null;
     if (QLog.isDevelopLevel()) {
       QLog.d("IVR_TS_CrmUtils", 4, ">>>ivrAudio2(), ts=" + System.currentTimeMillis());
     }
-    if (bfua.b(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (bfyh.b(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
       c(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
     }
     for (;;)
     {
       return;
-      Object localObject = (aluw)paramQQAppInterface.getManager(56);
+      Object localObject = (alzl)paramQQAppInterface.getManager(56);
       mobileqq_mp.GetEqqDetailInfoRequest localGetEqqDetailInfoRequest;
       if (localObject != null)
       {
-        localObject = ((aluw)localObject).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        localObject = ((alzl)localObject).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
         if (localObject == null)
         {
-          localObject = (alne)paramQQAppInterface.getManager(69);
+          localObject = (alrt)paramQQAppInterface.getManager(69);
           if (localObject != null)
           {
-            localObject = ((alne)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+            localObject = ((alrt)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
             if (localObject == null)
             {
               if (QLog.isDevelopLevel()) {
                 QLog.d("IVR_TS_CrmUtils", 4, ">>>begin getDetail, ts=" + System.currentTimeMillis());
               }
               if ((paramContext instanceof Activity)) {
-                localbepp = new bepp(paramContext, paramContext.getResources().getDimensionPixelSize(2131298914));
+                localbety = new bety(paramContext, paramContext.getResources().getDimensionPixelSize(2131298914));
               }
-              if (localbepp != null) {
-                localbepp.setCanceledOnTouchOutside(true);
+              if (localbety != null) {
+                localbety.setCanceledOnTouchOutside(true);
               }
               if (QLog.isColorLevel()) {
                 QLog.d("CrmUtils", 2, "sendDetailInfoRequest");
@@ -403,14 +403,14 @@ public class ndv
         localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
         label280:
         ((NewIntent)localObject).putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        ((NewIntent)localObject).setObserver(new ndw(paramContext, paramQQAppInterface, localbepp, paramSessionInfo, paramString));
+        ((NewIntent)localObject).setObserver(new ndw(paramContext, paramQQAppInterface, localbety, paramSessionInfo, paramString));
         paramQQAppInterface.startServlet((NewIntent)localObject);
         try
         {
           if ((!(paramContext instanceof Activity)) || (((Activity)paramContext).isFinishing())) {
             continue;
           }
-          a(2131695778, localbepp);
+          a(2131695780, localbety);
           return;
         }
         catch (Exception paramQQAppInterface)
@@ -419,13 +419,13 @@ public class ndv
         }
         b(paramQQAppInterface, paramContext, paramSessionInfo, null, (EqqDetail)localObject, paramString);
         return;
-        a(paramContext, 2131695727);
-        azmj.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        a(paramContext, 2131695729);
+        azqs.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
         b(paramQQAppInterface, paramContext, paramSessionInfo, (PublicAccountInfo)localObject, null, paramString);
         return;
-        a(paramContext, 2131695727);
-        azmj.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        a(paramContext, 2131695729);
+        azqs.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
       }
       catch (Exception localException)
@@ -533,7 +533,7 @@ public class ndv
     if ((paramQQAppInterface == null) || (paramString == null)) {
       return false;
     }
-    paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+    paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.c(paramString);
@@ -565,7 +565,7 @@ public class ndv
       Object localObject = paramQQAppInterface.getManager(56);
       if (localObject != null)
       {
-        localObject = ((aluw)localObject).c(paramString);
+        localObject = ((alzl)localObject).c(paramString);
         if (localObject != null) {}
         for (bool1 = ((PublicAccountInfo)localObject).hasIvrAbility();; bool1 = paramQQAppInterface.hasIvrAbility())
         {
@@ -587,7 +587,7 @@ public class ndv
           if (paramQQAppInterface == null) {
             break label309;
           }
-          paramQQAppInterface = ((alne)paramQQAppInterface).a(paramString);
+          paramQQAppInterface = ((alrt)paramQQAppInterface).a(paramString);
           if (paramQQAppInterface == null) {
             break label278;
           }
@@ -623,7 +623,7 @@ public class ndv
   {
     if ((paramQQAppInterface != null) && (nbp.a(paramString)) && (nbp.b(paramString)))
     {
-      paramQQAppInterface = (aloz)paramQQAppInterface.getManager(51);
+      paramQQAppInterface = (alto)paramQQAppInterface.getManager(51);
       if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramString))) {
         return 0;
       }
@@ -637,10 +637,10 @@ public class ndv
     String str = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!bfua.b(paramQQAppInterface, paramString)) {
+      if (!bfyh.b(paramQQAppInterface, paramString)) {
         break label25;
       }
-      str = bfua.a(paramQQAppInterface, paramString);
+      str = bfyh.a(paramQQAppInterface, paramString);
     }
     label25:
     do
@@ -656,7 +656,7 @@ public class ndv
             localObject = paramQQAppInterface.getManager(56);
             str = paramString;
           } while (localObject == null);
-          localObject = ((aluw)localObject).c(paramString);
+          localObject = ((alzl)localObject).c(paramString);
           if (localObject == null) {
             break;
           }
@@ -666,25 +666,25 @@ public class ndv
         paramQQAppInterface = paramQQAppInterface.getManager(69);
         str = paramString;
       } while (paramQQAppInterface == null);
-      paramQQAppInterface = ((alne)paramQQAppInterface).a(paramString);
+      paramQQAppInterface = ((alrt)paramQQAppInterface).a(paramString);
       str = paramString;
     } while (paramQQAppInterface == null);
     return paramQQAppInterface.name;
   }
   
-  private static void b(int paramInt, bepp parambepp)
+  private static void b(int paramInt, bety parambety)
   {
-    if (parambepp != null)
+    if (parambety != null)
     {
-      parambepp.c(paramInt);
-      parambepp.show();
+      parambety.c(paramInt);
+      parambety.show();
     }
   }
   
-  private static void b(bepp parambepp)
+  private static void b(bety parambety)
   {
-    if ((parambepp != null) && (parambepp.isShowing())) {
-      parambepp.dismiss();
+    if ((parambety != null) && (parambety.isShowing())) {
+      parambety.dismiss();
     }
   }
   
@@ -712,7 +712,7 @@ public class ndv
         }
         paramPublicAccountInfo = null;
         if ((paramContext instanceof Activity)) {
-          paramPublicAccountInfo = new bepp(paramContext, paramContext.getResources().getDimensionPixelSize(2131298914));
+          paramPublicAccountInfo = new bety(paramContext, paramContext.getResources().getDimensionPixelSize(2131298914));
         }
         if (paramPublicAccountInfo != null) {
           paramPublicAccountInfo.setCanceledOnTouchOutside(true);
@@ -729,7 +729,7 @@ public class ndv
       try
       {
         if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-          a(2131695778, paramPublicAccountInfo);
+          a(2131695780, paramPublicAccountInfo);
         }
         label257:
         if (QLog.isColorLevel()) {
@@ -769,7 +769,7 @@ public class ndv
     if (localObject == null) {}
     for (localObject = null; (localObject == null) || (((String)localObject).length() == 0); localObject = ((TicketManager)localObject).getStweb(paramQQAppInterface.getCurrentAccountUin()))
     {
-      new beqa(paramContext).a(2131693560, paramContext.getResources().getDimensionPixelSize(2131298914), 0, 1);
+      new beuj(paramContext).a(2131693562, paramContext.getResources().getDimensionPixelSize(2131298914), 0, 1);
       return;
     }
     paramString1 = String.format("https://ptlogin2.qq.com/qidian_client?pt_clientver=5428&pt_src=1&clientuin=%s&clientkey=%s&keyindex=19&jump=30&kfuin=%s&kfext=%s&buildver=1.0.0.0&inter=1&_wv=1027", new Object[] { paramQQAppInterface.getCurrentAccountUin(), localObject, paramString1, paramString2 });
@@ -788,13 +788,13 @@ public class ndv
     if (QLog.isColorLevel()) {
       QLog.d("CrmUtils", 2, "saveCache");
     }
-    alne localalne = (alne)paramQQAppInterface.getManager(69);
-    if (localalne != null) {
-      localalne.a(paramEqqDetail);
+    alrt localalrt = (alrt)paramQQAppInterface.getManager(69);
+    if (localalrt != null) {
+      localalrt.a(paramEqqDetail);
     }
     if ((paramEqqDetail != null) && (paramEqqDetail.followType == 1))
     {
-      paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+      paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
       if (paramQQAppInterface != null) {
         paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramEqqDetail, 0L));
       }
@@ -809,15 +809,15 @@ public class ndv
     if ((paramQQAppInterface == null) || (paramString == null)) {
       return false;
     }
-    Object localObject = (aluw)paramQQAppInterface.getManager(56);
+    Object localObject = (alzl)paramQQAppInterface.getManager(56);
     if (localObject != null)
     {
-      localObject = ((aluw)localObject).c(paramString);
+      localObject = ((alzl)localObject).c(paramString);
       if ((localObject != null) && (((PublicAccountInfo)localObject).extendType == 2)) {
         return true;
       }
     }
-    paramQQAppInterface = (alne)paramQQAppInterface.getManager(69);
+    paramQQAppInterface = (alrt)paramQQAppInterface.getManager(69);
     return (paramQQAppInterface != null) && (paramQQAppInterface.a(paramString) != null);
   }
   
@@ -838,7 +838,7 @@ public class ndv
       localObject = paramQQAppInterface.getManager(56);
       if (localObject != null)
       {
-        localObject = ((aluw)localObject).c(paramString);
+        localObject = ((alzl)localObject).c(paramString);
         if (localObject != null)
         {
           if (((PublicAccountInfo)localObject).extendType != 2) {
@@ -859,7 +859,7 @@ public class ndv
               if (QLog.isColorLevel()) {
                 QLog.d("CrmUtils", 2, "isQiye after getSimpleInfo value is " + bool1);
               }
-              if (bfua.b(paramQQAppInterface, paramString)) {
+              if (bfyh.b(paramQQAppInterface, paramString)) {
                 if (QLog.isColorLevel()) {
                   QLog.d("CrmUtils", 2, "isQiye uin is qidianmaster");
                 }
@@ -878,7 +878,7 @@ public class ndv
       QLog.i("CrmUtils", 1, "isQiye is true finally");
       return bool1;
       localObject = paramQQAppInterface.getManager(69);
-      if ((localObject != null) && (((alne)localObject).a(paramString) != null))
+      if ((localObject != null) && (((alrt)localObject).a(paramString) != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("CrmUtils", 2, "isQiye EqqDetail has data");
@@ -902,19 +902,19 @@ public class ndv
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        azmj.b(paramQQAppInterface, "CliOper", "", "", "0X8004628", "0X8004628", 0, 0, "", "", "", "");
+        azqs.b(paramQQAppInterface, "CliOper", "", "", "0X8004628", "0X8004628", 0, 0, "", "", "", "");
       }
       if (paramSessionInfo.jdField_a_of_type_Int != 1008) {
         paramSessionInfo.jdField_a_of_type_Int = 1024;
       }
-      aepf.a(paramQQAppInterface, paramContext, paramSessionInfo, true, paramString, null);
+      aetu.a(paramQQAppInterface, paramContext, paramSessionInfo, true, paramString, null);
       return;
     }
   }
   
   public static void c(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    if (!((aloz)paramQQAppInterface.getManager(51)).b(paramString2)) {}
+    if (!((alto)paramQQAppInterface.getManager(51)).b(paramString2)) {}
     for (;;)
     {
       return;
@@ -922,7 +922,7 @@ public class ndv
       {
         if (!paramContext.getSharedPreferences(paramString1 + "_customer_transfer_sharepreference", 0).getBoolean(paramString1 + "_" + paramString2, false))
         {
-          ((bfvi)paramQQAppInterface.a(85)).a(Long.valueOf(paramString1).longValue(), Long.valueOf(paramString2).longValue());
+          ((bfzp)paramQQAppInterface.a(85)).a(Long.valueOf(paramString1).longValue(), Long.valueOf(paramString2).longValue());
           return;
         }
       }
@@ -938,7 +938,7 @@ public class ndv
     if (!nbp.a(paramString)) {
       return false;
     }
-    paramQQAppInterface = ((aloz)paramQQAppInterface.getManager(51)).b(paramString);
+    paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).b(paramString);
     if ((paramQQAppInterface != null) && (a(paramQQAppInterface.cSpecialFlag))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
@@ -962,7 +962,7 @@ public class ndv
       Manager localManager = paramQQAppInterface.getManager(56);
       if (localManager != null)
       {
-        if (((aluw)localManager).c(paramString) != null) {}
+        if (((alzl)localManager).c(paramString) != null) {}
         for (bool1 = true;; bool1 = true)
         {
           bool2 = bool1;
@@ -978,7 +978,7 @@ public class ndv
           if (paramQQAppInterface == null) {
             break label187;
           }
-          if (((alne)paramQQAppInterface).a(paramString) == null) {
+          if (((alrt)paramQQAppInterface).a(paramString) == null) {
             break label157;
           }
         }

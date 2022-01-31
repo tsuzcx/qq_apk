@@ -1,26 +1,26 @@
 package cooperation.liveroom;
 
-import bdvu;
-import bdvv;
+import bead;
+import beae;
 
 class LiveRoomDownloadManager$1
-  extends bdvu
+  extends bead
 {
   LiveRoomDownloadManager$1(LiveRoomDownloadManager paramLiveRoomDownloadManager, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    super.onDone(parambdvv);
+    super.onDone(parambeae);
     if (this.val$callback != null)
     {
-      if (parambdvv.a() == 3) {
-        this.val$callback.onSuccess(parambdvv.a(), parambdvv.a);
+      if (parambeae.a() == 3) {
+        this.val$callback.onSuccess(parambeae.a(), parambeae.a);
       }
     }
     else {
       return;
     }
-    this.val$callback.onFailure(parambdvv.a(), parambdvv.a);
+    this.val$callback.onFailure(parambeae.a(), parambeae.a);
   }
 }
 

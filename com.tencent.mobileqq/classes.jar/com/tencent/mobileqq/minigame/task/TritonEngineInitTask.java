@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.minigame.task;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.text.TextUtils;
-import bguy;
+import bgzf;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -48,14 +48,14 @@ public class TritonEngineInitTask
   private MiniAppConfig mAppConfig;
   private int mEngineLoadResult = -1;
   private GameEngineWrapper mGameEngine;
-  private bguy mInspectorAgentWrapper;
+  private bgzf mInspectorAgentWrapper;
   private IQQEnv mQQEnv;
   
-  public TritonEngineInitTask(Context paramContext, bguy parambguy, IQQEnv paramIQQEnv, APIProxy paramAPIProxy)
+  public TritonEngineInitTask(Context paramContext, bgzf parambgzf, IQQEnv paramIQQEnv, APIProxy paramAPIProxy)
   {
     super(paramContext);
     GameLog.getInstance().i(this.LOG_TAG, "new TritonEngineInitTask");
-    this.mInspectorAgentWrapper = parambguy;
+    this.mInspectorAgentWrapper = parambgzf;
     this.mQQEnv = paramIQQEnv;
     this.mAPIProxy = paramAPIProxy;
     this.mGameEngine = new GameEngineWrapper();
@@ -204,7 +204,7 @@ public class TritonEngineInitTask
         onTaskSucceed();
         return;
       }
-      onTaskFailed(this.mEngineLoadResult, alpo.a(2131705430));
+      onTaskFailed(this.mEngineLoadResult, alud.a(2131705442));
       return;
     }
     if (isGameSatisfy(paramInstalledEngine, this.mAppConfig))
@@ -223,7 +223,7 @@ public class TritonEngineInitTask
       }
       MiniProgramLpReportDC04239.reportPageView(this.mAppConfig, "1", null, "load_fail", "load_baselib_fail");
       MiniAppReportManager2.reportPageView("2launch_fail", "load_baselib_fail", null, this.mAppConfig);
-      onTaskFailed(this.mEngineLoadResult, alpo.a(2131705430));
+      onTaskFailed(this.mEngineLoadResult, alud.a(2131705442));
       return;
     }
     if ((this.mAppConfig != null) && (this.mAppConfig.config != null) && (!TextUtils.isEmpty(this.mAppConfig.config.appId))) {

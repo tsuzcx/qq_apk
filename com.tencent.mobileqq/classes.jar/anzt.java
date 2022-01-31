@@ -1,43 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
-class anzt
-  implements aoag
+public class anzt
+  implements DialogInterface.OnClickListener
 {
-  anzt(anzr paramanzr, HistoryFormItem paramHistoryFormItem) {}
+  public anzt(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void a(View paramView, int paramInt, boolean paramBoolean)
-  {
-    anxo localanxo = new anxo();
-    ColorNote localColorNote2;
-    if ((anxr.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
-      localColorNote2 = (ColorNote)anzr.a(this.jdField_a_of_type_Anzr).get(paramInt);
-    }
-    try
-    {
-      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
-      if (localColorNote1 != null)
-      {
-        localColorNote1.setType(0);
-        localanxo.a(localColorNote1.parseBundle());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
-      anzr.a(this.jdField_a_of_type_Anzr, localColorNote2, paramInt);
-      QQToast.a(paramView.getContext(), 2, alpo.a(2131690928), 500).a();
-      return;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-        Object localObject = null;
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

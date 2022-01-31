@@ -1,52 +1,38 @@
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.1;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class algm
-  extends bdqc
-  implements akmo
+  implements MediaPlayer.OnCompletionListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private WeakReference<akxc> jdField_a_of_type_JavaLangRefWeakReference;
+  public algm(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
   
-  public algm(akxc paramakxc, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakxc);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  public void onCompletion(MediaPlayer arg1)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
+      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
     }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.2(this, paramBoolean, paramObject), 5, null, true);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    int i = this.jdField_a_of_type_Int - 1;
+    if (i == 0) {}
+    do
     {
-      akwc localakwc = ((akxc)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
-      if (localakwc != null) {
-        localakwc.a(akwt.a(paramInt), null, paramString);
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
+      {
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
+        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
+          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
+        }
+        return;
       }
-    }
-  }
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
-    }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.1(this), 8, null, true);
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
+      {
+        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
   }
 }
 

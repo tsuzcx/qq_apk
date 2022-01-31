@@ -1,32 +1,12 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
-
-final class xpi
-  extends xos
+class xpi
 {
-  xpi(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
+  static void a(String paramString1, String paramString2) {}
   
-  public void onFailure(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Xos.onFailure(paramString);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original failed " + paramString);
-  }
+  static void b(String paramString1, String paramString2) {}
   
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original start");
-  }
+  static void c(String paramString1, String paramString2) {}
   
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original：" + String.valueOf(l1 - l2));
-  }
+  static void d(String paramString1, String paramString2) {}
 }
 
 

@@ -1,103 +1,44 @@
-import android.content.Intent;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ump
-  extends urg
+class ump
+  extends SimpleJob<Void>
 {
-  private boolean a(List<String> paramList)
+  ump(umm paramumm, String paramString1, String paramString2, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
-    urk localurk = (urk)urr.a(10);
-    boolean bool;
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
-      }
-      localurk.b("key_story_msg_tab_show", Boolean.valueOf(false));
-      bool = true;
-    }
-    for (;;)
-    {
-      ((uhk)localQQAppInterface.a(98)).notifyUI(1021, true, null);
-      return bool;
-      paramList = (String)paramList.get(0);
-      if (paramList != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
-        }
-        try
-        {
-          paramList = new JSONObject(paramList);
-          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
-          for (bool = true;; bool = false)
-          {
-            localurk.b("key_story_msg_tab_show", Boolean.valueOf(bool));
-            localurk.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
-            bool = true;
-            break;
-          }
-          bool = false;
-        }
-        catch (JSONException paramList)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
-          }
-        }
-      }
-    }
+    super(paramString1);
   }
   
-  private boolean b(List<String> paramList)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramList.isEmpty())
+    paramJobContext = umm.a(this.jdField_a_of_type_Umm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    long l1;
+    if (paramJobContext != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
+      paramVarArgs = ((uvx)uwa.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null) {
+        break label132;
       }
-      return false;
-    }
-    paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
-    }
-    try
-    {
-      paramList = new JSONObject(paramList);
-      int i = paramList.getInt("MsgTabPrestrainbNum");
-      paramList = paramList.getString("4G");
-      urk localurk = (urk)urr.a(10);
-      localurk.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      localurk.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
-      return true;
-    }
-    catch (JSONException paramList)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+      l1 = 0L;
+      if (paramJobContext.updatedMs <= 0L) {
+        break label141;
       }
     }
-    return false;
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
-  {
-    switch (paramInt)
+    label132:
+    label141:
+    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
     {
-    default: 
-      return false;
-    case 243: 
-      return a(paramList);
+      int i = paramJobContext.compressLevel;
+      wxj.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
+      wxe.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
+      return null;
+      l1 = paramVarArgs.mCreateTime;
+      break;
     }
-    return b(paramList);
   }
 }
 

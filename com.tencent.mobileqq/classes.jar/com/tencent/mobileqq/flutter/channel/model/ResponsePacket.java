@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import artz;
+import aryi;
 import java.util.Map;
 
 public class ResponsePacket
@@ -12,12 +12,12 @@ public class ResponsePacket
   
   public static ResponsePacket fromMap(Map paramMap)
   {
-    return (ResponsePacket)artz.a(paramMap, ResponsePacket.class);
+    return (ResponsePacket)aryi.a(paramMap, ResponsePacket.class);
   }
   
   public static Map toMap(ResponsePacket paramResponsePacket)
   {
-    return artz.a(paramResponsePacket);
+    return aryi.a(paramResponsePacket);
   }
 }
 

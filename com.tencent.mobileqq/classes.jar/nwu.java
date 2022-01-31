@@ -55,7 +55,7 @@ public class nwu
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_Pag = ((pag)paramozp);
     this.jdField_a_of_type_Ore = new ore();
-    this.jdField_a_of_type_Ore.jdField_a_of_type_Long = bjxj.a(paramInt1, (QQAppInterface)ors.a());
+    this.jdField_a_of_type_Ore.jdField_a_of_type_Long = bkbq.a(paramInt1, (QQAppInterface)ors.a());
   }
   
   private int a()
@@ -117,7 +117,7 @@ public class nwu
   private void a(boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
   {
     this.jdField_a_of_type_Ore.jdField_a_of_type_Long = System.currentTimeMillis();
-    bjxj.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Ore.jdField_a_of_type_Long, (QQAppInterface)ors.a());
+    bkbq.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Ore.jdField_a_of_type_Long, (QQAppInterface)ors.a());
     ArrayList localArrayList = null;
     int j = -1;
     Object localObject = (KandianMergeManager)((BaseActivity)a()).app.getManager(162);
@@ -276,7 +276,7 @@ public class nwu
   {
     this.jdField_a_of_type_Pag.a();
     this.jdField_a_of_type_Pag.a(paramBaseArticleInfo, paramInt);
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, this.jdField_a_of_type_AndroidAppActivity.getString(2131700042), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, this.jdField_a_of_type_AndroidAppActivity.getString(2131700054), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
     if (peo.a(paramBaseArticleInfo.mRecommendSeq)) {
       peo.a().a(this.jdField_b_of_type_Int, paramBaseArticleInfo.mRecommendSeq);
     }
@@ -287,7 +287,7 @@ public class nwu
         return;
         String str = ors.a();
         DislikeInfo localDislikeInfo = new DislikeInfo();
-        localDislikeInfo.a = alpo.a(2131713098);
+        localDislikeInfo.a = alud.a(2131713110);
         localDislikeInfo.jdField_c_of_type_Int = 9;
         localDislikeInfo.b = "";
         ArrayList localArrayList = new ArrayList();
@@ -420,7 +420,7 @@ public class nwu
       this.jdField_a_of_type_Pag.a(a(Integer.valueOf(this.jdField_b_of_type_Int)), b(Integer.valueOf(this.jdField_b_of_type_Int)));
     }
     this.jdField_a_of_type_Ore.b = System.currentTimeMillis();
-    this.jdField_a_of_type_Ore.d = bjxj.a((QQAppInterface)ors.a(), this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Ore.d = bkbq.a((QQAppInterface)ors.a(), this.jdField_b_of_type_Int);
     j();
   }
   

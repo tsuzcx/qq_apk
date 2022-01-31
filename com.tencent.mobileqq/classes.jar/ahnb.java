@@ -1,21 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ahnb
-  implements QQPermissionCallback
+public class ahnb
+  extends ahlp
 {
-  ahnb(ahna paramahna, View paramView, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ahna.a(this.jdField_a_of_type_Ahna, this.jdField_a_of_type_AndroidViewView);
-  }
+  public long a;
+  public structmsg.StructMsg a;
 }
 
 

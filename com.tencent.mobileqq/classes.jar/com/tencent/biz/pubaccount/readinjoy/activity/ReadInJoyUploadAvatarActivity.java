@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,8 +67,8 @@ public class ReadInJoyUploadAvatarActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(new View(this));
-    setTitle(alpo.a(2131713266), alpo.a(2131713266));
-    setLeftViewName(2131695238);
+    setTitle(alud.a(2131713278), alud.a(2131713278));
+    setLeftViewName(2131695240);
     this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarActivity.1(this));
     paramBundle = getIntent();
     ArrayList localArrayList = paramBundle.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -78,7 +78,7 @@ public class ReadInJoyUploadAvatarActivity
       Intent localIntent = getIntent();
       Bundle localBundle = new Bundle();
       localBundle.putInt("retCode", 2);
-      localBundle.putString("msg", alpo.a(2131713247));
+      localBundle.putString("msg", alud.a(2131713259));
       localIntent.putExtra("Bundle", localBundle);
       setResult(-1, localIntent);
       finish();

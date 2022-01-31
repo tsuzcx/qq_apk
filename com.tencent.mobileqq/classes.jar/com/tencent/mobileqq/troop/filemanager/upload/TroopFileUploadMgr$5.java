@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bbtf;
-import bbtj;
+import bbxo;
+import bbxs;
 import java.util.UUID;
 
 public class TroopFileUploadMgr$5
   implements Runnable
 {
-  public TroopFileUploadMgr$5(bbtf parambbtf, UUID paramUUID, long paramLong, String paramString1, String paramString2, bbtj parambbtj) {}
+  public TroopFileUploadMgr$5(bbxo parambbxo, UUID paramUUID, long paramLong, String paramString1, String paramString2, bbxs parambbxs) {}
   
   public void run()
   {
-    bbtf.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bbtj);
+    bbxo.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bbxs);
   }
 }
 

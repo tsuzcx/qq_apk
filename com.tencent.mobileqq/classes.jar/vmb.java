@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class vmb
-  implements vll
+public final class vmb
+  extends uli
 {
-  vmb(vma paramvma) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void a(ErrorMessage paramErrorMessage, List<vld> paramList)
+  public vmb(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.a.a(paramErrorMessage, paramList);
-    this.a.b();
-  }
-  
-  public void a(List<vle> paramList, boolean paramBoolean)
-  {
-    this.a.a.a(paramList, paramBoolean);
-    this.a.b();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 

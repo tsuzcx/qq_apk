@@ -1,24 +1,11 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
 
 class afwg
-  implements VideoDrawable.OnAudioPlayOnceListener
+  extends aepm
 {
-  afwg(afwe paramafwe) {}
+  TextView b;
   
-  public void onFinish()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((afwe.a() != null) && (afwe.a().get() != null))
-    {
-      afwe.a(afwe.a(this.a), (ChatMessage)afwe.a().get());
-      afwe.a(null);
-    }
-  }
+  afwg(afwf paramafwf) {}
 }
 
 

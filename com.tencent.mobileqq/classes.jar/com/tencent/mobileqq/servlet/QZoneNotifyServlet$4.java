@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.servlet;
 
-import amkv;
+import ampk;
 import android.os.Build.VERSION;
-import ayxp;
+import azby;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -15,8 +15,8 @@ public final class QZoneNotifyServlet$4
     if ((Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext() == null) || (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
       try
       {
-        ayxp.a(System.currentTimeMillis());
-        amkv.a(ayxp.a());
+        azby.a(System.currentTimeMillis());
+        ampk.a(azby.a());
         return;
       }
       catch (Exception localException)

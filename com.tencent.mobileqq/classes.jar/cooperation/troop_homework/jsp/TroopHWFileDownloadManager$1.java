@@ -1,16 +1,16 @@
 package cooperation.troop_homework.jsp;
 
-import bjyv;
+import bkdc;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$1
   implements Runnable
 {
-  public TroopHWFileDownloadManager$1(bjyv parambjyv, String paramString1, String paramString2) {}
+  public TroopHWFileDownloadManager$1(bkdc parambkdc, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bjyv.a(this.this$0).startDownloadTask(this.a, "resource/tm.android.unknown", this.b);
+    bkdc.a(this.this$0).startDownloadTask(this.a, "resource/tm.android.unknown", this.b);
   }
 }
 

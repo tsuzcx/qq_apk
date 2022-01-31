@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.text.TextUtils;
 import java.io.UnsupportedEncodingException;
@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = alpo.a(2131715210);
-  public String sourceName = alpo.a(2131715206);
-  public String summary = alpo.a(2131715214);
+  public String sourceAction = alud.a(2131715222);
+  public String sourceName = alud.a(2131715218);
+  public String summary = alud.a(2131715226);
   public String title;
   public String url;
   
@@ -86,7 +86,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131692777, new Object[] { getTitle() });
+    return paramContext.getString(2131692779, new Object[] { getTitle() });
   }
   
   public String getTitle()

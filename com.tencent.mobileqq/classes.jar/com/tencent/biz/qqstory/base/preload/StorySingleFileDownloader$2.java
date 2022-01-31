@@ -4,70 +4,70 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import uid;
-import uil;
-import uir;
-import uja;
-import ujb;
-import ujq;
-import ujr;
-import urr;
-import wsv;
+import umm;
+import umu;
+import una;
+import unj;
+import unk;
+import unz;
+import uoa;
+import uwa;
+import wxe;
 
 public class StorySingleFileDownloader$2
   implements Runnable
 {
-  public StorySingleFileDownloader$2(ujq paramujq, String paramString, int paramInt, ujr paramujr, boolean paramBoolean) {}
+  public StorySingleFileDownloader$2(unz paramunz, String paramString, int paramInt, uoa paramuoa, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = uja.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if (ujq.a(this.this$0).containsKey(str))
+    String str = unj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (unz.a(this.this$0).containsKey(str))
     {
-      wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s is running , wait", new Object[] { str });
+      wxe.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s is running , wait", new Object[] { str });
       return;
     }
-    Object localObject1 = ujb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
+    Object localObject1 = unk.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
     if ((localObject1 != null) && (((File)localObject1).exists()))
     {
-      wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s before , no need to download again", new Object[] { str });
-      ujq.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ujr);
+      wxe.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s before , no need to download again", new Object[] { str });
+      unz.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Uoa);
       return;
     }
-    wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s start now! cancelOtherTask :%s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    wxe.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s start now! cancelOtherTask :%s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = ujq.a(this.this$0).values().iterator();
+      localObject1 = unz.a(this.this$0).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (uja)((Iterator)localObject1).next();
-        ujq.a(this.this$0).a((uja)localObject2);
-        Object localObject3 = ((uja)localObject2).jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-        if ((localObject3 != null) && ((localObject3 instanceof ujr)))
+        localObject2 = (unj)((Iterator)localObject1).next();
+        unz.a(this.this$0).a((unj)localObject2);
+        Object localObject3 = ((unj)localObject2).jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+        if ((localObject3 != null) && ((localObject3 instanceof uoa)))
         {
-          ujq.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (ujr)localObject3);
-          wsv.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!   because task :%s start", new Object[] { ((uja)localObject2).jdField_a_of_type_JavaLangString, str });
+          unz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (uoa)localObject3);
+          wxe.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!   because task :%s start", new Object[] { ((unj)localObject2).jdField_a_of_type_JavaLangString, str });
         }
       }
-      ujq.a(this.this$0).clear();
+      unz.a(this.this$0).clear();
     }
-    localObject1 = uja.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    Object localObject2 = ((uid)urr.a(28)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    ((uja)localObject1).d = ((uil)localObject2).b;
-    ((uja)localObject1).jdField_a_of_type_Boolean = ((uil)localObject2).jdField_a_of_type_Boolean;
-    ((uja)localObject1).jdField_f_of_type_Int = ((uil)localObject2).c;
-    ((uja)localObject1).jdField_a_of_type_JavaUtilMap.put("DOWNLOAD_TASK_KEY_LISTENER", this.jdField_a_of_type_Ujr);
-    if (((uja)localObject1).jdField_a_of_type_Boolean)
+    localObject1 = unj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject2 = ((umm)uwa.a(28)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ((unj)localObject1).d = ((umu)localObject2).b;
+    ((unj)localObject1).jdField_a_of_type_Boolean = ((umu)localObject2).jdField_a_of_type_Boolean;
+    ((unj)localObject1).jdField_f_of_type_Int = ((umu)localObject2).c;
+    ((unj)localObject1).jdField_a_of_type_JavaUtilMap.put("DOWNLOAD_TASK_KEY_LISTENER", this.jdField_a_of_type_Uoa);
+    if (((unj)localObject1).jdField_a_of_type_Boolean)
     {
-      localObject2 = new File(((uja)localObject1).jdField_f_of_type_JavaLangString);
+      localObject2 = new File(((unj)localObject1).jdField_f_of_type_JavaLangString);
       if (((File)localObject2).exists())
       {
         ((File)localObject2).delete();
-        wsv.d("Q.qqstory.download:StorySingleFileDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ((uja)localObject1).b, Integer.valueOf(((uja)localObject1).jdField_a_of_type_Int) });
+        wxe.d("Q.qqstory.download:StorySingleFileDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ((unj)localObject1).b, Integer.valueOf(((unj)localObject1).jdField_a_of_type_Int) });
       }
     }
-    ujq.a(this.this$0).a((uja)localObject1, this.this$0);
-    ujq.a(this.this$0).put(str, localObject1);
+    unz.a(this.this$0).a((unj)localObject1, this.this$0);
+    unz.a(this.this$0).put(str, localObject1);
   }
 }
 

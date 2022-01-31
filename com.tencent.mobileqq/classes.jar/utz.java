@@ -1,17 +1,38 @@
-import java.util.Comparator;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class utz
-  implements Comparator<utx>
 {
-  public int a(utx paramutx1, utx paramutx2)
+  public static utz a;
+  
+  public static utz a()
   {
-    if (paramutx1.c < paramutx2.c) {
-      return 1;
+    if (a == null) {
+      a = new utz();
     }
-    if (paramutx1.c > paramutx2.c) {
-      return -1;
-    }
-    return 0;
+    return a;
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), mzx.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(uub paramuub, uuc paramuuc)
+  {
+    byte[] arrayOfByte = paramuub.a();
+    String str = paramuub.a();
+    long l = System.currentTimeMillis();
+    a(paramuub.a(), arrayOfByte, new uua(this, l, paramuub, str, paramuuc));
   }
 }
 

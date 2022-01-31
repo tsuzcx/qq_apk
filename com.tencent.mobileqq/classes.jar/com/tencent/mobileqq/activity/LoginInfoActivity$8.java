@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class LoginInfoActivity$8
   implements Runnable
@@ -21,7 +21,7 @@ class LoginInfoActivity$8
             LoginInfoActivity.a(this.this$0).cancel();
             LoginInfoActivity.a(this.this$0, null);
           }
-          LoginInfoActivity.a(this.this$0, new bepp(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+          LoginInfoActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
           int i = this.a;
           switch (i)
           {
@@ -32,14 +32,14 @@ class LoginInfoActivity$8
       {
         localThrowable.printStackTrace();
         continue;
-        LoginInfoActivity.a(this.this$0).c(2131695088);
+        LoginInfoActivity.a(this.this$0).c(2131695090);
         continue;
       }
       if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
         LoginInfoActivity.a(this.this$0).show();
       }
       return;
-      LoginInfoActivity.a(this.this$0).c(2131719152);
+      LoginInfoActivity.a(this.this$0).c(2131719164);
     }
   }
 }

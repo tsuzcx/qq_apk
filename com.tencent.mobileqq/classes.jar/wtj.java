@@ -1,39 +1,18 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public abstract interface wtj
-  extends wwd
+public class wtj
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public wtj(StoryListPresenter.4.1 param1) {}
   
-  public abstract Bitmap a();
-  
-  public abstract Bitmap a(int paramInt);
-  
-  @NonNull
-  public abstract DoodleLayout a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract void ag_();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean e_();
+  public void onClick(View paramView)
+  {
+    wxj.a("home_page", "clk_up_close", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
+  }
 }
 
 

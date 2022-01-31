@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import akxz;
-import akya;
+import alco;
+import alcp;
 
 public class CmShowTest$1$1
   implements Runnable
 {
-  public CmShowTest$1$1(akya paramakya) {}
+  public CmShowTest$1$1(alcp paramalcp) {}
   
   public void run()
   {
-    akxz.a(this.this$0.a);
+    alco.a(this.this$0.a);
   }
 }
 

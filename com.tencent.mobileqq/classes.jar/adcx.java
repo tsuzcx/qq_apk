@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class adcx
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public adcx(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcx(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if ((paramDialogInterface instanceof bdjz)) {
+      ((bdjz)paramDialogInterface).setOnDismissListener(null);
+    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

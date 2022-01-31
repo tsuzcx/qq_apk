@@ -1,31 +1,69 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.List;
 
-class wfp
-  extends uoj
+public class wfp
+  extends wfe
 {
-  wfp(wfn paramwfn) {}
+  public TextView a;
+  public wfn a;
+  public TextView b;
+  public wfn b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public wfp(View paramView, wfk paramwfk)
   {
-    wsv.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!wfn.a(this.a).get()) {
-      wfn.a(this.a).c();
+    View localView = paramView.findViewById(2131373800);
+    paramView = paramView.findViewById(2131373851);
+    this.jdField_a_of_type_Wfn = new wfn(localView, paramwfk.jdField_a_of_type_AndroidContentContext);
+    this.jdField_b_of_type_Wfn = new wfn(paramView, paramwfk.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364008));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364008));
+    this.c = ((TextView)localView.findViewById(2131363988));
+    this.d = ((TextView)paramView.findViewById(2131363988));
+    this.e = ((TextView)localView.findViewById(2131364004));
+    this.f = ((TextView)paramView.findViewById(2131364004));
+    QQStoryContext.a();
+    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
+      this.c.setTextColor(Color.parseColor("#6991b8"));
+      this.d.setTextColor(Color.parseColor("#6991b8"));
+      this.e.setTextColor(Color.parseColor("#6991b8"));
+      this.f.setTextColor(Color.parseColor("#6991b8"));
+    }
+    if (paramwfk.jdField_a_of_type_Wfh != null)
+    {
+      this.jdField_a_of_type_Wfn.a(paramwfk.jdField_a_of_type_Wfh);
+      this.jdField_b_of_type_Wfn.a(paramwfk.jdField_a_of_type_Wfh);
     }
   }
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
   {
-    uqo localuqo = (uqo)urr.a(17);
-    localuqo.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localuqo.a(paramCommentEntry);
-    return true;
+    if ((paramVideoCollectionItem == null) || (paramView == null))
+    {
+      wxe.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");
+      return;
+    }
+    paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
+    paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
+    this.jdField_a_of_type_Wfn.a(paramView);
+    if (paramVideoCollectionItem == null)
+    {
+      this.jdField_b_of_type_Wfn.a();
+      return;
+    }
+    this.jdField_b_of_type_Wfn.a(paramVideoCollectionItem);
   }
 }
 

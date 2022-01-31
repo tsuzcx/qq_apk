@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bhxo;
-import bhxp;
+import bibv;
+import bibw;
 
 public class ThemeImageView
   extends ImageView
-  implements bhxp
+  implements bibw
 {
-  public bhxo a;
+  public bibv a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bhxo();
+        this.a = new bibv();
       }
       this.a.a(true);
     }

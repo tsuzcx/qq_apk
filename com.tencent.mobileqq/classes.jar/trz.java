@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import feedcloud.FeedCloudMeta.StFeed;
 
-class trz
-  implements uab
+public class trz
 {
-  trz(trx paramtrx) {}
-  
-  public void a()
-  {
-    if (trx.a(this.a) != null) {
-      trx.a(this.a, tqr.a(trx.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
-    }
-  }
-  
-  public void b()
-  {
-    if (trx.a(this.a) != null) {
-      trx.a(this.a, tqr.a(trx.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
-    }
-  }
+  public int a;
+  public ExtraTypeInfo a;
+  public FeedCloudMeta.StFeed a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 

@@ -1,14 +1,10 @@
-import android.view.View;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public abstract interface ayax
+public class ayax
 {
-  public abstract Object a();
+  public BaseVideoView a;
   
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void onClick(View paramView);
+  public ayax(ayao paramayao) {}
 }
 
 

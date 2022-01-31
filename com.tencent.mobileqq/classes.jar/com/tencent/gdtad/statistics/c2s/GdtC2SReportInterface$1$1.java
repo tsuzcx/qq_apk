@@ -1,29 +1,29 @@
 package com.tencent.gdtad.statistics.c2s;
 
-import aaoe;
-import aaof;
-import azmj;
+import aast;
+import aasu;
+import azqs;
 
 public class GdtC2SReportInterface$1$1
   implements Runnable
 {
-  public GdtC2SReportInterface$1$1(aaof paramaaof) {}
+  public GdtC2SReportInterface$1$1(aasu paramaasu) {}
   
   public void run()
   {
-    azmj.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", aaoe.a(this.a.a), "");
+    azqs.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", aast.a(this.a.a), "");
     switch (this.a.a.a)
     {
     default: 
       return;
     case 0: 
-      aaoe.a(this.a.a, aaoe.a(this.a.a));
+      aast.a(this.a.a, aast.a(this.a.a));
       return;
     case 1: 
-      aaoe.a(this.a.a, aaoe.b(this.a.a));
+      aast.a(this.a.a, aast.b(this.a.a));
       return;
     }
-    aaoe.a(this.a.a, aaoe.c(this.a.a));
+    aast.a(this.a.a, aast.c(this.a.a));
   }
 }
 

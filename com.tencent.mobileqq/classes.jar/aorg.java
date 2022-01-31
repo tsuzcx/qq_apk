@@ -1,65 +1,62 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
 import org.json.JSONObject;
 
 public class aorg
-  extends aopw<aorf>
 {
-  public static final aorf a = new aorf();
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public String b = "";
   
-  public static aorf c()
+  public aorg()
   {
-    aorf localaorf2 = (aorf)aogj.a().a(423);
-    aorf localaorf1 = localaorf2;
-    if (localaorf2 == null) {
-      localaorf1 = new aorf();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static aorg a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
     }
-    return localaorf1;
-  }
-  
-  public int a()
-  {
-    return 423;
-  }
-  
-  @NonNull
-  public aorf a()
-  {
-    return a;
-  }
-  
-  @NonNull
-  public aorf a(aogf[] paramArrayOfaogf)
-  {
-    boolean bool = true;
-    localaorf = new aorf();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
+    aorg localaorg;
     try
     {
-      if (new JSONObject(paramArrayOfaogf).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localaorf.a = bool;
-        return localaorf;
-        bool = false;
+      localaorg = new aorg();
+      localaorg.jdField_a_of_type_JavaLangString = paramString;
+      paramString = new JSONObject(paramString);
+      localaorg.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
+      localaorg.b = paramString.optString("iconUrl");
+      if (!TextUtils.isEmpty(localaorg.b)) {
+        localaorg.b = localaorg.b.trim();
       }
-      return localaorf;
+      paramString = paramString.optJSONObject("grayTips");
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localaorg.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
+      }
+      QLog.d("ConfBean", 0, "confBean = " + localaorg.toString());
     }
-    catch (JSONException paramArrayOfaogf)
+    catch (Exception paramString)
     {
-      wsv.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaogf.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("ConfBean", 1, "parse e:", paramString);
+      }
+      return null;
     }
+    return localaorg;
   }
   
-  public Class<aorf> a()
+  public String toString()
   {
-    return aorf.class;
-  }
-  
-  @NonNull
-  public aorf b()
-  {
-    return a;
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

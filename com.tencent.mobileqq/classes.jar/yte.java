@@ -1,58 +1,31 @@
-import android.os.SystemClock;
-import android.support.v4.util.SimpleArrayMap;
-import com.tencent.biz.videostory.EventControlUtils.1;
-import com.tencent.biz.videostory.EventControlUtils.2;
+import android.graphics.Rect;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.util.Timer;
 
-public class yte
+class yte
+  implements benm
 {
-  private static SimpleArrayMap<String, Long> a = new SimpleArrayMap();
-  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
+  yte(ytb paramytb) {}
   
-  public static void a(String paramString, long paramLong, ytf paramytf)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
+    if ((this.a.jdField_a_of_type_Bbrz != null) && (this.a.d))
     {
-      Object localObject = (Long)a.get(paramString);
-      long l = SystemClock.elapsedRealtime();
-      QLog.i("EventControlUtils", 2, "currentTime" + l);
-      if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
+      Rect localRect = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
+      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
       {
-        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
-        return;
+        this.a.d = false;
+        bcmc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Bbrz.a, 0, null, null);
+        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Bbry.a), "8020205751015455", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
+        }
       }
-      a.put(paramString, Long.valueOf(l));
-      localObject = (Timer)b.get(paramString);
-      if (localObject != null) {
-        ((Timer)localObject).cancel();
-      }
-      localObject = new Timer();
-      ((Timer)localObject).schedule(new EventControlUtils.1(paramytf), paramLong);
-      b.put(paramString, localObject);
-      return;
     }
-    catch (Exception paramString) {}
-  }
-  
-  public static void b(String paramString, long paramLong, ytf paramytf)
-  {
-    if (b == null) {
-      b = new SimpleArrayMap();
-    }
-    try
-    {
-      Timer localTimer = (Timer)b.get(paramString);
-      if (localTimer != null) {
-        localTimer.cancel();
-      }
-      localTimer = new Timer();
-      localTimer.schedule(new EventControlUtils.2(paramytf), paramLong);
-      b.put(paramString, localTimer);
-      return;
-    }
-    catch (Exception paramString) {}
   }
 }
 

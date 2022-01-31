@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.magicface.view;
 
-import atva;
+import atzj;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 public class MagicfaceViewController$3
   implements Runnable
 {
-  public MagicfaceViewController$3(atva paramatva) {}
+  public MagicfaceViewController$3(atzj paramatzj) {}
   
   public void run()
   {

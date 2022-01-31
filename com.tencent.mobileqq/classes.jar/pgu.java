@@ -15,16 +15,16 @@ import java.util.concurrent.RejectedExecutionException;
 
 public class pgu
 {
-  private awbw jdField_a_of_type_Awbw;
+  private awgf jdField_a_of_type_Awgf;
   private ReadInJoyUserInfoModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule;
   private ConcurrentHashMap<String, ReadInJoyUserInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
-  public pgu(ExecutorService paramExecutorService, ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, awbw paramawbw)
+  public pgu(ExecutorService paramExecutorService, ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, awgf paramawgf)
   {
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule = paramReadInJoyUserInfoModule;
-    this.jdField_a_of_type_Awbw = paramawbw;
+    this.jdField_a_of_type_Awgf = paramawgf;
   }
   
   private void a(ReadInJoyUserInfo paramReadInJoyUserInfo)
@@ -61,7 +61,7 @@ public class pgu
     do
     {
       return null;
-      localList = this.jdField_a_of_type_Awbw.a(ReadInJoyUserInfo.class, true, "uin = ?", new String[] { paramString }, null, null, null, "1");
+      localList = this.jdField_a_of_type_Awgf.a(ReadInJoyUserInfo.class, true, "uin = ?", new String[] { paramString }, null, null, null, "1");
     } while ((localList == null) || (localList.size() <= 0));
     QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadSingleReadInJoyUserInfoFromDB, userInfo = ", localList.get(0) });
     a(paramString, (ReadInJoyUserInfo)localList.get(0), false, true);

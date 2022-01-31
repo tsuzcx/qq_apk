@@ -1,14 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.content.Intent;
+import android.os.Bundle;
 
-class vtg
-  implements vuc
+public class vtg
+  implements vrx
 {
-  vtg(vte paramvte, vru paramvru, Object paramObject) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public boolean a(vtz paramvtz, int paramInt1, int paramInt2)
-  {
-    return this.jdField_a_of_type_Vru.a(this.jdField_a_of_type_Vte, 0, paramInt1, this.jdField_a_of_type_Vte.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
-  }
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

@@ -1,24 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class akbg
-  implements axxi
+  extends akit
 {
-  private akbg(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
-    }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

@@ -1,29 +1,60 @@
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+
 public class axpe
+  implements GLGestureListener
 {
-  public static int a(long paramLong1, long paramLong2)
+  private ViewPager a;
+  
+  public axpe(ViewPager paramViewPager)
   {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
-      return -1;
-    }
-    long l = Math.max(paramLong1, paramLong2);
-    if ((l > 500L) && (l <= 960L)) {
-      return 3;
-    }
-    if ((l > 200L) && (l <= 500L)) {
-      return 2;
-    }
-    if (l <= 200L) {
-      return 1;
-    }
-    if (a(paramLong1, paramLong2)) {
-      return 0;
-    }
-    return 4;
+    this.a = paramViewPager;
   }
   
-  public static boolean a(long paramLong1, long paramLong2)
+  public void a(ViewPager paramViewPager)
   {
-    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
+    this.a = paramViewPager;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1002;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
+    {
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+        {
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
+        }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
+      }
+      catch (Exception paramMotionEvent)
+      {
+        for (;;)
+        {
+          paramMotionEvent.printStackTrace();
+        }
+      }
+    }
   }
 }
 

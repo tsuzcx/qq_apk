@@ -97,13 +97,13 @@ public class qyl
       if (localImageView != null) {
         localImageView.setVisibility(8);
       }
-      localTextView.setText(alpo.a(2131700295));
+      localTextView.setText(alud.a(2131700307));
       paramqyj.jdField_a_of_type_Int = 4;
       localProgressBar.setProgress(paramInt);
       paramqyj.b = paramInt;
       if (a())
       {
-        this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700304));
+        this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700316));
         this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -118,15 +118,15 @@ public class qyl
     String str3 = paramqyj.c;
     paramqyj = paramqyj.e;
     Bundle localBundle = new Bundle();
-    localBundle.putInt(bfjy.k, 5);
-    localBundle.putString(bfjy.f, str1);
-    localBundle.putString(bfjy.b, str2);
-    localBundle.putString(bfjy.j, str3);
-    localBundle.putString(bfjy.l, paramqyj);
+    localBundle.putInt(bfoh.k, 5);
+    localBundle.putString(bfoh.f, str1);
+    localBundle.putString(bfoh.b, str2);
+    localBundle.putString(bfoh.j, str3);
+    localBundle.putString(bfoh.l, paramqyj);
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppUIPresenter", 2, "installAppDownload:" + str1 + ", appid:" + str2 + ", name:" + paramqyj + ", url:" + str3);
     }
-    bfju.a(localBundle);
+    bfod.a(localBundle);
   }
   
   private void f(qyj paramqyj)
@@ -264,9 +264,9 @@ public class qyl
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoADVideoAppDownloadManager != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoADVideoAppDownloadManager.c(paramqyj);
       }
-      localTextView.setText(alpo.a(2131700297));
+      localTextView.setText(alud.a(2131700309));
     } while (!a());
-    this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700293));
+    this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700305));
   }
   
   public void a(qyj paramqyj, int paramInt)
@@ -283,7 +283,7 @@ public class qyl
       ImageView localImageView = this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetImageView;
       if (this.jdField_a_of_type_Boolean)
       {
-        a(paramqyj, localTextView, alpo.a(2131700299));
+        a(paramqyj, localTextView, alud.a(2131700311));
         if (this.jdField_a_of_type_Boolean) {
           break label141;
         }
@@ -295,7 +295,7 @@ public class qyl
         if (localImageView != null) {
           localImageView.setVisibility(8);
         }
-        a(paramqyj, localTextView, alpo.a(2131700298));
+        a(paramqyj, localTextView, alud.a(2131700310));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoADVideoAppDownloadManager.e();
         break;
         label141:
@@ -355,10 +355,10 @@ public class qyl
         localTextView = this.jdField_a_of_type_Rbi.g;
         localImageView = this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetImageView;
       } while ((localTextView == null) || (paramqyj == null) || (!paramqyj.a()));
-      localTextView.setText(alpo.a(2131700306));
+      localTextView.setText(alud.a(2131700318));
       paramqyj.jdField_a_of_type_Int = 1;
       if (a()) {
-        this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700305));
+        this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700317));
       }
     } while (localImageView == null);
     if (b())
@@ -367,7 +367,7 @@ public class qyl
       return;
     }
     localImageView.setVisibility(0);
-    localImageView.setImageResource(2130842348);
+    localImageView.setImageResource(2130842361);
   }
   
   public void b(qyj paramqyj, int paramInt)
@@ -390,14 +390,14 @@ public class qyl
     if (QLog.isColorLevel()) {
       QLog.d("ADVideoAppUIPresenter", 2, "updateBtnProgressUI " + paramInt);
     }
-    localTextView.setText(alpo.a(2131700302) + paramInt + "%");
+    localTextView.setText(alud.a(2131700314) + paramInt + "%");
     localProgressBar.setProgress(paramInt);
     if (localImageView != null) {
       localImageView.setVisibility(8);
     }
     if (a())
     {
-      this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700303) + paramInt + "%");
+      this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700315) + paramInt + "%");
       this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
     }
     paramqyj.b = paramInt;
@@ -429,11 +429,11 @@ public class qyl
         localProgressBar = this.jdField_a_of_type_Rbi.jdField_a_of_type_AndroidWidgetProgressBar;
         localImageView = this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetImageView;
       } while ((localTextView == null) || (localProgressBar == null) || (paramqyj == null) || (!paramqyj.a()));
-      localTextView.setText(alpo.a(2131700294));
+      localTextView.setText(alud.a(2131700306));
       localProgressBar.setProgress(100);
       if (a())
       {
-        this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700300));
+        this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700312));
         this.jdField_a_of_type_Rbi.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(100);
       }
       paramqyj.b = 100;
@@ -445,7 +445,7 @@ public class qyl
       return;
     }
     localImageView.setVisibility(0);
-    localImageView.setImageResource(2130842348);
+    localImageView.setImageResource(2130842361);
   }
   
   public void d(DownloadInfo paramDownloadInfo, qyj paramqyj)
@@ -466,16 +466,16 @@ public class qyl
       return;
       localTextView = this.jdField_a_of_type_Rbi.g;
     } while ((localTextView == null) || (paramqyj == null));
-    localTextView.setText(alpo.a(2131700296));
+    localTextView.setText(alud.a(2131700308));
     if (a()) {
-      this.jdField_a_of_type_Rbi.n.setText(alpo.a(2131700301));
+      this.jdField_a_of_type_Rbi.n.setText(alud.a(2131700313));
     }
     paramqyj.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qyl
  * JD-Core Version:    0.7.0.1
  */

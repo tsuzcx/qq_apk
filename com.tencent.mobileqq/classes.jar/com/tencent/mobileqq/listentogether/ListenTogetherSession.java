@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.listentogether;
 
-import alpo;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atih;
-import atii;
-import balk;
+import atmq;
+import atmr;
+import bapt;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListenTogetherSession
-  extends balk
+  extends bapt
   implements Parcelable
 {
-  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new atih();
+  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new atmq();
   public int a;
   public String a;
   public List<MusicInfo> a;
@@ -82,7 +82,7 @@ public class ListenTogetherSession
   
   public String a(int paramInt1, int paramInt2)
   {
-    return atii.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
+    return atmr.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
   }
   
   public void a(ListenTogetherSession paramListenTogetherSession)
@@ -118,13 +118,13 @@ public class ListenTogetherSession
     do
     {
       return i;
-      if (alpo.a(2131693938).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (alud.a(2131693940).equals(this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (alpo.a(2131693949).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (alud.a(2131693951).equals(this.jdField_a_of_type_JavaLangString)) {
         return 2;
       }
-    } while (alpo.a(2131693968).equals(this.jdField_a_of_type_JavaLangString));
+    } while (alud.a(2131693970).equals(this.jdField_a_of_type_JavaLangString));
     return 4;
   }
   

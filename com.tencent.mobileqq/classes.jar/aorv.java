@@ -3,66 +3,47 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aorv
-  extends aofy<aoru>
+  extends aokh<aort>
 {
   public int a()
   {
-    return 434;
+    return 418;
   }
   
   @NonNull
-  public aoru a(int paramInt)
+  public aort a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aoru();
+    return new aort();
   }
   
   @Nullable
-  public aoru a(aogf[] paramArrayOfaogf)
+  public aort a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
-      }
-      return aoru.a(paramArrayOfaogf[0]);
+      new aort();
+      return aort.a(paramArrayOfaoko);
     }
     return null;
   }
   
-  public Class<aoru> a()
+  public Class<aort> a()
   {
-    return aoru.class;
+    return aort.class;
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(aort paramaort)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramaort.toString());
     }
   }
   
-  public void a(aoru paramaoru)
+  public boolean a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaoru == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramaoru = paramaoru.toString();; paramaoru = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramaoru);
-      return;
-    }
+    return true;
   }
   
   public int b()

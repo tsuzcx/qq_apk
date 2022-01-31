@@ -27,7 +27,7 @@ class nwr
       nwm.a(paramTabChannelCoverInfo.mChannelCoverId, 1);
       this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
       nwm.a(this.a);
-      if (bjxj.A())
+      if (bkbq.A())
       {
         nwm.b(this.a, paramTabChannelCoverInfo);
         nwm.b(this.a, nwm.a(this.a, nwm.a(this.a)));
@@ -64,9 +64,9 @@ class nwr
     }
   }
   
-  public void ax_()
+  public void au_()
   {
-    super.ax_();
+    super.au_();
   }
   
   public void b(boolean paramBoolean)

@@ -19,7 +19,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogOpenUrl
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131694050, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131694052, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
   }
 }
 

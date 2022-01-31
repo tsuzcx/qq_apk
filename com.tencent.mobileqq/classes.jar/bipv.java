@@ -1,45 +1,88 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.os.RemoteException;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import cooperation.groupvideo.GVideoProxyService;
 
 public class bipv
-  implements DialogInterface.OnClickListener
 {
-  public bipv(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bipw jdField_a_of_type_Bipw = null;
+  bipx jdField_a_of_type_Bipx = new bipx(this);
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  lqr jdField_a_of_type_Lqr = null;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bipv(AppInterface paramAppInterface)
   {
-    this.a.app.a().a("0X8004750", 1);
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(9));
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("topAct:");
-      if (QlinkStandardDialogActivity.a(this.a) == null) {
-        break label150;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Lqr == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
       }
     }
-    label150:
-    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
+    do
     {
-      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
-      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
-        break;
+      return 0;
+      try
+      {
+        paramInt = this.jdField_a_of_type_Lqr.a(paramLong, paramInt);
+        return paramInt;
       }
-      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
-      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
-        break;
+      catch (RemoteException localRemoteException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", localRemoteException);
+    return 0;
+  }
+  
+  public void a()
+  {
+    bipu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bipx);
+    this.jdField_a_of_type_Lqr = null;
+    this.jdField_a_of_type_Bipw = null;
+  }
+  
+  public void a(bipw parambipw)
+  {
+    this.jdField_a_of_type_Bipw = parambipw;
+    if (this.jdField_a_of_type_Lqr == null) {
+      bipu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, GVideoProxyService.class, this.jdField_a_of_type_Bipx, "com.gvideo.com.tencent.av.service.GVServiceForQQ");
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lqr == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
       }
-      this.a.finish();
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lqr.a(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", paramArrayOfByte);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Lqr != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lqr.a();
       return;
     }
-    arni.a(this.a, false);
-    this.a.finish();
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
   }
 }
 

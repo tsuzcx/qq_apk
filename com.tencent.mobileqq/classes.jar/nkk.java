@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 
 public class nkk
-  implements bhqd
+  implements bhuk
 {
   public nkk(AccountDetailActivity paramAccountDetailActivity) {}
   
@@ -29,10 +29,10 @@ public class nkk
       if (((ntw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88)).a(this.a.d)) {
         ((nup)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
       }
-      aekt.n = false;
+      aepi.n = false;
       if ("2290230341".equals(this.a.d))
       {
-        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
+        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
         label177:
         if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
           break label273;
@@ -43,7 +43,7 @@ public class nkk
         if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
           break label277;
         }
-        ajfx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, paramView);
+        ajkm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, paramView);
         break;
         if (!TextUtils.equals(String.valueOf(2062433139L), this.a.d)) {
           break label177;

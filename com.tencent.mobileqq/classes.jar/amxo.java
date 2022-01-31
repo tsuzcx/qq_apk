@@ -1,26 +1,23 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-final class amxo
-  implements FileFilter
+public class amxo
+  implements amya
 {
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
-  }
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
+  
+  public void a(ArConfigInfo paramArConfigInfo) {}
+  
+  public void a(ArEffectConfig paramArEffectConfig) {}
+  
+  public void b() {}
 }
 
 

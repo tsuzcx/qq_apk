@@ -6,20 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
-import android.support.v4.widget.ScrollerCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
-import ydp;
-import yds;
+import yij;
 
 public class NestScrollRecyclerView
   extends RecyclerViewCompat
@@ -28,10 +23,10 @@ public class NestScrollRecyclerView
   private static String jdField_a_of_type_JavaLangString = "NestScrollRecyclerView";
   private int jdField_a_of_type_Int;
   private NestedScrollingParentHelper jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper;
-  private ScrollerCompat jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private View jdField_a_of_type_AndroidViewView;
+  private RefreshHeaderView jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView;
+  private int jdField_b_of_type_Int;
+  private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   
@@ -51,52 +46,42 @@ public class NestScrollRecyclerView
     a();
   }
   
-  private int a(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    int i = 0;
-    if ((paramLayoutManager instanceof GridLayoutManager)) {
-      i = ((GridLayoutManager)paramLayoutManager).findFirstCompletelyVisibleItemPosition();
-    }
-    do
-    {
-      return i;
-      if ((paramLayoutManager instanceof StaggeredGridLayoutManager))
-      {
-        paramLayoutManager = (StaggeredGridLayoutManager)paramLayoutManager;
-        int[] arrayOfInt = new int[paramLayoutManager.getColumnCountForAccessibility(null, null)];
-        paramLayoutManager.findFirstCompletelyVisibleItemPositions(arrayOfInt);
-        return arrayOfInt[0];
-      }
-    } while (!(paramLayoutManager instanceof LinearLayoutManager));
-    return ((LinearLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-  }
-  
   private void a()
   {
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
     this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat = ScrollerCompat.create(getContext());
+  }
+  
+  private void a(RecyclerView paramRecyclerView)
+  {
+    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof yij)) && (((yij)getAdapter()).b()) && (((NestScrollRecyclerView)paramRecyclerView).a() == null)) {
+      ((NestScrollRecyclerView)paramRecyclerView).a(((yij)getAdapter()).a());
+    }
+  }
+  
+  private void a(RefreshHeaderView paramRefreshHeaderView)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView = paramRefreshHeaderView;
   }
   
   private boolean a()
   {
-    if (!(getAdapter() instanceof yds)) {
+    if (this.jdField_b_of_type_AndroidViewView == null) {}
+    while (this.jdField_b_of_type_AndroidViewView.getTop() <= 0) {
       return false;
     }
-    ydp localydp = ((yds)getAdapter()).a(1);
-    if (localydp == null) {
-      return true;
-    }
-    int i = a(getLayoutManager());
-    if (localydp.c(0) > i) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return true;
   }
   
   private boolean a(int paramInt, RecyclerView paramRecyclerView)
   {
+    a(paramRecyclerView);
     return ((paramInt > 0) && (a())) || ((paramInt < 0) && (!paramRecyclerView.canScrollVertically(-1)));
+  }
+  
+  public RefreshHeaderView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView;
   }
   
   public boolean fling(int paramInt1, int paramInt2)
@@ -123,8 +108,10 @@ public class NestScrollRecyclerView
       return bool1;
     case 0: 
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getX() + 0.5F));
-      this.b = ((int)(paramMotionEvent.getY() + 0.5F));
+      this.jdField_b_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
       this.c = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
+      this.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_b_of_type_AndroidViewView = null;
     }
     do
     {
@@ -132,7 +119,7 @@ public class NestScrollRecyclerView
       j = (int)(paramMotionEvent.getX() + 0.5F);
       i = (int)(paramMotionEvent.getY() + 0.5F);
       j -= this.jdField_a_of_type_Int;
-      i = (int)((i - this.b) * 0.6F);
+      i = (int)((i - this.jdField_b_of_type_Int) * 0.6F);
       if (Math.abs(j) > this.d)
       {
         bool1 = bool2;
@@ -141,7 +128,7 @@ public class NestScrollRecyclerView
         }
       }
       bool1 = bool2;
-      if (this.jdField_a_of_type_Boolean) {
+      if ((this.jdField_a_of_type_AndroidViewView instanceof NestScrollRecyclerView)) {
         break;
       }
     } while ((Math.abs(j) <= this.d) || (Math.abs(i) <= Math.abs(j)));
@@ -167,14 +154,10 @@ public class NestScrollRecyclerView
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    if ((paramView instanceof RecyclerView))
+    if (((paramView instanceof RecyclerView)) && (a(paramInt2, (RecyclerView)paramView)))
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView);
-      if (a(paramInt2, (RecyclerView)paramView))
-      {
-        scrollBy(0, paramInt2);
-        paramArrayOfInt[1] = paramInt2;
-      }
+      scrollBy(0, paramInt2);
+      paramArrayOfInt[1] = paramInt2;
     }
   }
   
@@ -186,6 +169,8 @@ public class NestScrollRecyclerView
   @SuppressLint({"NewApi"})
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
+    this.jdField_a_of_type_AndroidViewView = paramView2;
+    this.jdField_b_of_type_AndroidViewView = paramView1;
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onNestedScrollAccepted(paramView1, paramView2, paramInt);
   }
   
@@ -200,9 +185,20 @@ public class NestScrollRecyclerView
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onStopNestedScroll(paramView);
   }
   
-  public void setEnableNestScrollingParent(boolean paramBoolean)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (((getAdapter() instanceof yij)) && (((yij)getAdapter()).b())) {
+      ((yij)getAdapter()).a().a(paramMotionEvent);
+    }
+    if (a() != null) {
+      a().a(paramMotionEvent);
+    }
+    return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  public void setAdapter(RecyclerView.Adapter paramAdapter)
+  {
+    super.setAdapter(paramAdapter);
   }
 }
 

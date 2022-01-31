@@ -1,8 +1,10 @@
-public abstract interface avus
+public class avus
+  extends avun
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

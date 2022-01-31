@@ -1,61 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
+import android.os.Bundle;
 
 public class bbuz
-  extends aofy<bbuy>
 {
-  public int a()
-  {
-    return 605;
-  }
+  static long a;
+  public int a;
+  public Bundle a;
+  public bbva a;
+  public String a;
+  public nac a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c = 3;
+  public int d = 25;
+  public int e = 450000;
+  public int f = 1;
   
-  @NonNull
-  public bbuy a(int paramInt)
+  public bbuz()
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bbuy();
-  }
-  
-  @Nullable
-  public bbuy a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return bbuy.a(paramArrayOfaogf[0].a);
-    }
-    return null;
-  }
-  
-  public Class<bbuy> a()
-  {
-    return bbuy.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(bbuy parambbuy) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_Int = 480000;
+    this.jdField_b_of_type_Int = 9;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    long l = jdField_a_of_type_Long + 1L;
+    jdField_a_of_type_Long = l;
+    this.jdField_b_of_type_Long = l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbuz
  * JD-Core Version:    0.7.0.1
  */

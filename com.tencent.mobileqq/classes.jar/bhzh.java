@@ -1,371 +1,420 @@
 import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.ViewConfiguration;
+import android.view.animation.AnimationUtils;
 
 class bhzh
-  implements bhzg
 {
-  private static final int jdField_e_of_type_Int = ;
-  private static final int jdField_f_of_type_Int = ViewConfiguration.getTapTimeout();
-  private static final int jdField_g_of_type_Int = ViewConfiguration.getDoubleTapTimeout();
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static final float[] jdField_b_of_type_ArrayOfFloat;
+  private static float jdField_d_of_type_Float;
+  private static float jdField_e_of_type_Float;
+  private double jdField_a_of_type_Double;
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
-  final GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener;
-  MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  boolean jdField_a_of_type_Boolean;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
+  private long jdField_b_of_type_Long;
+  private float jdField_c_of_type_Float = ViewConfiguration.getScrollFriction();
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
   private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean jdField_f_of_type_Boolean;
-  private boolean jdField_g_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
+  private int i = 0;
+  private int j = 0;
   
-  public bhzh(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  static
   {
-    if (paramHandler != null) {}
-    for (this.jdField_a_of_type_AndroidOsHandler = new bhzi(this, paramHandler);; this.jdField_a_of_type_AndroidOsHandler = new bhzi(this))
+    float f2 = 0.0F;
+    jdField_e_of_type_Float = (float)(Math.log(0.78D) / Math.log(0.9D));
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    jdField_b_of_type_ArrayOfFloat = new float[101];
+    int k = 0;
+    float f1 = 0.0F;
+    if (k < 100)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = paramOnGestureListener;
-      if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
-        a((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
-      }
-      a(paramContext);
-      return;
-    }
-  }
-  
-  private void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context must not be null");
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener == null) {
-      throw new IllegalArgumentException("OnGestureListener must not be null");
-    }
-    this.jdField_g_of_type_Boolean = true;
-    paramContext = ViewConfiguration.get(paramContext);
-    int i = paramContext.getScaledTouchSlop();
-    int j = paramContext.getScaledDoubleTapSlop();
-    this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
-    this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
-    this.jdField_a_of_type_Int = (i * i);
-    this.jdField_b_of_type_Int = (j * j);
-  }
-  
-  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
-  {
-    if (!this.jdField_e_of_type_Boolean) {}
-    int i;
-    int j;
-    do
-    {
-      do
+      float f5 = k / 100.0F;
+      float f3 = 1.0F;
+      label55:
+      float f4 = (f3 - f1) / 2.0F + f1;
+      float f6 = 3.0F * f4 * (1.0F - f4);
+      float f7 = ((1.0F - f4) * 0.175F + 0.35F * f4) * f6 + f4 * f4 * f4;
+      if (Math.abs(f7 - f5) < 1.E-005D)
       {
-        return false;
-      } while (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > jdField_g_of_type_Int);
-      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
-      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
-    } while (i * i + j * j >= this.jdField_b_of_type_Int);
-    return true;
+        jdField_a_of_type_ArrayOfFloat[k] = (f4 * (f4 * f4) + f6 * ((1.0F - f4) * 0.5F + f4));
+        f3 = 1.0F;
+      }
+      for (;;)
+      {
+        f4 = (f3 - f2) / 2.0F + f2;
+        f6 = 3.0F * f4 * (1.0F - f4);
+        f7 = ((1.0F - f4) * 0.5F + f4) * f6 + f4 * f4 * f4;
+        if (Math.abs(f7 - f5) < 1.E-005D)
+        {
+          jdField_b_of_type_ArrayOfFloat[k] = (f4 * (f4 * f4) + ((1.0F - f4) * 0.175F + 0.35F * f4) * f6);
+          k += 1;
+          break;
+          if (f7 > f5)
+          {
+            f3 = f4;
+            break label55;
+          }
+          f1 = f4;
+          break label55;
+        }
+        if (f7 > f5) {
+          f3 = f4;
+        } else {
+          f2 = f4;
+        }
+      }
+    }
+    float[] arrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+    jdField_b_of_type_ArrayOfFloat[100] = 1.0F;
+    arrayOfFloat[100] = 1.0F;
+  }
+  
+  private double a(int paramInt)
+  {
+    return Math.log(0.35F * Math.abs(paramInt) / (this.jdField_c_of_type_Float * jdField_d_of_type_Float));
+  }
+  
+  private int a(int paramInt)
+  {
+    return (int)(Math.exp(a(paramInt) / (jdField_e_of_type_Float - 1.0D)) * 1000.0D);
+  }
+  
+  static void a(Context paramContext)
+  {
+    jdField_d_of_type_Float = paramContext.getResources().getDisplayMetrics().density * 160.0F * 386.0878F * 0.84F;
+  }
+  
+  private double b(int paramInt)
+  {
+    double d1 = a(paramInt);
+    double d2 = jdField_e_of_type_Float;
+    double d3 = this.jdField_c_of_type_Float * jdField_d_of_type_Float;
+    return Math.exp(d1 * (jdField_e_of_type_Float / (d2 - 1.0D))) * d3;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-    this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    this.jdField_f_of_type_Boolean = false;
+    long l = this.jdField_a_of_type_Long;
+    l = this.jdField_e_of_type_Int + l;
+    int k = (int)(this.jdField_e_of_type_Int / this.jdField_f_of_type_Int * 100.0F);
+    float f1 = 0.0F;
+    if (k < 100)
+    {
+      f1 = k / 100.0F;
+      float f2 = (k + 1) / 100.0F;
+      float f3 = jdField_a_of_type_ArrayOfFloat[k];
+      f1 = (jdField_a_of_type_ArrayOfFloat[(k + 1)] - f3) / (f2 - f1);
+    }
+    this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
+    this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l - this.jdField_b_of_type_Long) * 1000.0D));
+    a(this.jdField_c_of_type_Int, this.h, (int)this.jdField_a_of_type_Float, bhzg.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Long = l;
+    c();
+  }
+  
+  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_c_of_type_Boolean = false;
+    this.i = 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.h = (paramInt2 - paramInt1);
+    this.jdField_e_of_type_Int = paramInt4;
+  }
+  
+  private void c(int paramInt1, int paramInt2, int paramInt3)
+  {
+    float f1 = Math.abs((paramInt3 - paramInt1) / (paramInt2 - paramInt1));
+    paramInt1 = (int)(100.0F * f1);
+    if (paramInt1 < 100)
+    {
+      float f2 = paramInt1 / 100.0F;
+      float f3 = (paramInt1 + 1) / 100.0F;
+      float f4 = jdField_b_of_type_ArrayOfFloat[paramInt1];
+      float f5 = jdField_b_of_type_ArrayOfFloat[(paramInt1 + 1)];
+      this.jdField_e_of_type_Int = ((int)(((f1 - f2) / (f3 - f2) * (f5 - f4) + f4) * this.jdField_e_of_type_Int));
     }
   }
   
-  private void c()
+  private void d(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_c_of_type_Boolean = false;
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.i = 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.h = (paramInt2 - paramInt1);
+    this.jdField_e_of_type_Int = bhzg.jdField_a_of_type_Int;
   }
   
   void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onLongPress(this.jdField_a_of_type_AndroidViewMotionEvent);
+    this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  void a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
+    this.jdField_c_of_type_Float = paramFloat;
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  void a(int paramInt)
   {
-    int i1 = paramMotionEvent.getAction();
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    int i;
-    int k;
-    label53:
-    int n;
-    int m;
-    float f1;
-    float f2;
-    if ((i1 & 0xFF) == 6)
+    switch (paramInt)
     {
-      i = 1;
-      if (i == 0) {
-        break label95;
-      }
-      k = paramMotionEvent.getActionIndex();
-      n = paramMotionEvent.getPointerCount();
-      m = 0;
-      f1 = 0.0F;
-      f2 = 0.0F;
-      label66:
-      if (m >= n) {
-        break label122;
-      }
-      if (k != m) {
-        break label101;
-      }
-    }
-    for (;;)
-    {
-      m += 1;
-      break label66;
-      i = 0;
-      break;
-      label95:
-      k = -1;
-      break label53;
-      label101:
-      f2 += paramMotionEvent.getX(m);
-      f1 += paramMotionEvent.getY(m);
-    }
-    label122:
-    if (i != 0)
-    {
-      i = n - 1;
-      f2 /= i;
-      f1 /= i;
-    }
-    float f3;
-    boolean bool2;
-    float f4;
-    int j;
-    switch (i1 & 0xFF)
-    {
-    case 4: 
     default: 
-    case 5: 
-    case 6: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
-        {
-          return false;
-          i = n;
-          break;
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          c();
-          return false;
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
-          k = paramMotionEvent.getActionIndex();
-          i = paramMotionEvent.getPointerId(k);
-          f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i);
-          f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-          i = 0;
-        } while (i >= n);
-        if (i == k) {}
-        do
-        {
-          i += 1;
-          break;
-          m = paramMotionEvent.getPointerId(i);
-          f3 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(m);
-        } while (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(m) * f2 + f3 * f1 >= 0.0F);
-        this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-        return false;
-        if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
-        {
-          bool2 = this.jdField_a_of_type_AndroidOsHandler.hasMessages(3);
-          if (bool2) {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-          }
-          if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (this.jdField_b_of_type_AndroidViewMotionEvent != null) && (bool2) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))) {
-            this.jdField_f_of_type_Boolean = true;
-          }
-        }
-        for (boolean bool1 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTap(this.jdField_a_of_type_AndroidViewMotionEvent) | false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
-        {
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
-            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-          }
-          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_d_of_type_Boolean = true;
-          this.jdField_e_of_type_Boolean = true;
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_b_of_type_Boolean = false;
-          if (this.jdField_g_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(2, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int + jdField_e_of_type_Int);
-          }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(1, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int);
-          return bool1 | this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onDown(paramMotionEvent);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, jdField_g_of_type_Int);
-        }
-      } while (this.jdField_c_of_type_Boolean);
-      f3 = this.jdField_a_of_type_Float - f2;
-      f4 = this.jdField_b_of_type_Float - f1;
-      if (this.jdField_f_of_type_Boolean) {
-        return false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        j = (int)(f2 - this.jdField_c_of_type_Float);
-        k = (int)(f1 - this.jdField_d_of_type_Float);
-        j = j * j + k * k;
-        if (j <= this.jdField_a_of_type_Int) {
-          break label1136;
-        }
-        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
-        this.jdField_a_of_type_Float = f2;
-        this.jdField_b_of_type_Float = f1;
-        this.jdField_d_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      }
-      break;
+      return;
     }
-    for (;;)
+    this.j = paramInt;
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_e_of_type_Int = paramInt3;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_d_of_type_Int = 0;
+    this.i = 4;
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    float f2 = 0.09606F * paramInt2 / (1.E-005F * paramInt4);
+    if (paramInt3 > 0) {}
+    for (float f1 = 10.0F;; f1 = -10.0F)
     {
-      if (j > this.jdField_a_of_type_Int) {
-        this.jdField_e_of_type_Boolean = false;
+      if (Math.abs(paramInt3) < f2) {
+        f1 = paramInt3 * 10.0F / f2;
       }
-      return bool2;
-      if ((Math.abs(f3) < 1.0F) && (Math.abs(f4) < 1.0F)) {
-        break;
-      }
-      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
-      this.jdField_a_of_type_Float = f2;
-      this.jdField_b_of_type_Float = f1;
-      return bool2;
-      this.jdField_a_of_type_Boolean = false;
-      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (this.jdField_f_of_type_Boolean) {
-        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent) | false;
-      }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_c_of_type_Int = paramInt1;
+      this.jdField_d_of_type_Int = paramInt3;
+      this.h = paramInt2;
+      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+      this.jdField_e_of_type_Int = paramInt4;
+      this.jdField_f_of_type_Float = f1;
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.i = 3;
+      return;
+    }
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.h = paramInt5;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_d_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Float = paramInt2;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt1;
+    if ((paramInt1 > paramInt4) || (paramInt1 < paramInt3))
+    {
+      if (paramInt1 > paramInt4) {}
       for (;;)
       {
-        if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
-          this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
-        }
-        this.jdField_b_of_type_AndroidViewMotionEvent = localMotionEvent;
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-        {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-        }
-        this.jdField_f_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        return bool2;
-        if (this.jdField_c_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-          this.jdField_c_of_type_Boolean = false;
-          bool2 = false;
-        }
-        else if (this.jdField_d_of_type_Boolean)
-        {
-          boolean bool3 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onSingleTapUp(paramMotionEvent);
-          bool2 = bool3;
-          if (this.jdField_b_of_type_Boolean)
-          {
-            bool2 = bool3;
-            if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
-            {
-              this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(paramMotionEvent);
-              bool2 = bool3;
-            }
-          }
-        }
-        else
-        {
-          VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
-          j = paramMotionEvent.getPointerId(0);
-          localVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
-          f1 = localVelocityTracker.getYVelocity(j);
-          f2 = localVelocityTracker.getXVelocity(j);
-          if ((Math.abs(f1) > this.jdField_c_of_type_Int) || (Math.abs(f2) > this.jdField_c_of_type_Int))
-          {
-            bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onFling(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f2, f1);
-            continue;
-            b();
-            return false;
-          }
-          else
-          {
-            bool2 = false;
-          }
-        }
+        d(paramInt1, paramInt4, paramInt2);
+        return;
+        paramInt4 = paramInt3;
       }
-      label1136:
-      bool2 = false;
+    }
+    this.i = 0;
+    double d1 = 0.0D;
+    if (paramInt2 != 0)
+    {
+      if (this.j != 1) {
+        break label239;
+      }
+      paramInt5 = a(paramInt2) * 3 / 2;
+      this.jdField_f_of_type_Int = paramInt5;
+    }
+    for (this.jdField_e_of_type_Int = paramInt5;; this.jdField_e_of_type_Int = paramInt5)
+    {
+      this.jdField_b_of_type_Float = ((float)(a(paramInt2) * 1000.0D));
+      d1 = b(paramInt2);
+      this.g = ((int)(d1 * Math.signum(paramInt2)));
+      this.jdField_c_of_type_Int = (this.g + paramInt1);
+      if (this.jdField_c_of_type_Int < paramInt3)
+      {
+        c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt3);
+        this.jdField_c_of_type_Int = paramInt3;
+      }
+      if (this.jdField_c_of_type_Int > paramInt4)
+      {
+        c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt4);
+        this.jdField_c_of_type_Int = paramInt4;
+      }
+      this.jdField_a_of_type_Double = paramInt2;
+      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      return;
+      label239:
+      paramInt5 = a(paramInt2);
+      this.jdField_f_of_type_Int = paramInt5;
+    }
+  }
+  
+  boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    switch (this.i)
+    {
+    }
+    for (;;)
+    {
+      c();
+      bool1 = true;
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.jdField_e_of_type_Int >= this.jdField_f_of_type_Int);
+      b();
+    }
+  }
+  
+  boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_e_of_type_Int = 0;
+    if (paramInt1 < paramInt2) {
+      d(paramInt1, paramInt2, 0);
+    }
+    while (!this.jdField_a_of_type_Boolean)
+    {
+      return true;
+      if (paramInt1 > paramInt3) {
+        d(paramInt1, paramInt3, 0);
+      }
+    }
+    return false;
+  }
+  
+  boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_e_of_type_Int = 0;
+    if (paramInt1 < paramInt2) {
+      b(paramInt1, paramInt2, 0, paramInt4);
+    }
+    while (!this.jdField_a_of_type_Boolean)
+    {
+      return true;
+      if (paramInt1 > paramInt3) {
+        b(paramInt1, paramInt3, 0, paramInt4);
+      }
+    }
+    return false;
+  }
+  
+  void b(float paramFloat)
+  {
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int + Math.round((this.jdField_c_of_type_Int - this.jdField_a_of_type_Int) * paramFloat));
+  }
+  
+  void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.i == 0) {
+      if (paramInt1 == paramInt2) {
+        a(paramInt2, paramInt3, this.jdField_d_of_type_Int, bhzg.jdField_a_of_type_Int);
+      }
+    }
+    while (this.i != 4)
+    {
+      return;
+      c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int - (paramInt1 - paramInt2));
+      this.h = paramInt3;
+      this.jdField_c_of_type_Int = paramInt2;
+      b();
+      return;
+    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  boolean b()
+  {
+    boolean bool = false;
+    switch (this.i)
+    {
+    case 2: 
+    default: 
+      c();
+      bool = true;
+    }
+    return bool;
+  }
+  
+  boolean c()
+  {
+    float f2 = 1.0F;
+    long l1 = AnimationUtils.currentAnimationTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (l2 > this.jdField_e_of_type_Int) {
+      return false;
+    }
+    double d1;
+    switch (this.i)
+    {
+    case 2: 
+    default: 
+      d1 = 0.0D;
+    }
+    for (;;)
+    {
+      int k = this.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = ((int)Math.round(d1) + k);
+      return true;
+      float f3 = (float)l2 / this.jdField_f_of_type_Int;
+      k = (int)(100.0F * f3);
+      float f1 = 0.0F;
+      if (k < 100)
+      {
+        f2 = k / 100.0F;
+        f1 = (k + 1) / 100.0F;
+        float f4 = jdField_a_of_type_ArrayOfFloat[k];
+        f1 = (jdField_a_of_type_ArrayOfFloat[(k + 1)] - f4) / (f1 - f2);
+        f2 = (f3 - f2) * f1 + f4;
+      }
+      d1 = f2 * this.g;
+      this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
+      this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l1 - this.jdField_b_of_type_Long) * 1000.0D));
+      continue;
+      d1 = bhrx.a((float)l2 / this.jdField_e_of_type_Int) * this.h;
+      continue;
+      f1 = (float)l2 / this.jdField_e_of_type_Int - 1.0F;
+      f2 = this.h;
+      d1 = (f1 * this.jdField_f_of_type_Float + this.jdField_f_of_type_Float) * (f2 * f1 * f1 * f1 * f1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhzh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,118 +1,76 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huiyin.HuiyinUtilsImpl.3.1.1;
+import com.tencent.mobileqq.intervideo.huiyin.proto.FalcoLoginProto.LoginCheckRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import mqq.observer.BusinessObserver;
 
-@Deprecated
 public class atck
+  implements BusinessObserver
 {
-  HashMap<String, atcm> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  myl jdField_a_of_type_Myl;
+  atck(atcj paramatcj) {}
   
-  public void a(atcm paramatcm, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramatcm);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null)
+    if (QLog.isColorLevel()) {
+      QLog.i("huiyin", 2, "login rsp " + paramBoolean);
+    }
+    Object localObject;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, List<String> paramList, atcl paramatcl)
-  {
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j) {
-        try
-        {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
-            }
-          }
-        }
-      }
-    }
-    paramString1 = (atcm)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.call(paramString2, paramList, paramatcl);
-    }
-    while (paramatcl == null) {
-      return;
-    }
-    paramatcl.a();
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    if (!paramString.startsWith("jsbridge://")) {
-      return false;
-    }
-    List localList = Arrays.asList((paramString + "/#").split("/"));
-    if (localList.size() < 6) {
-      return false;
-    }
-    String str1 = (String)localList.get(2);
-    String str2 = (String)localList.get(3);
-    String str3 = (String)localList.get(4);
-    for (;;)
-    {
+      localObject = paramBundle.getByteArray("data");
+      paramBundle = new ILiveProto.iLiveResponse();
       try
       {
-        long l = Long.parseLong(str3);
-        localList = localList.subList(5, localList.size() - 1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("JB", 4, "calling " + str1 + "." + str2);
+        paramBundle.mergeFrom((byte[])localObject);
+        localObject = new FalcoLoginProto.LoginCheckRsp();
+        ((FalcoLoginProto.LoginCheckRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
+        this.a.a.jdField_a_of_type_Long = ((FalcoLoginProto.LoginCheckRsp)localObject).tinyid.get();
+        this.a.a.jdField_a_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).a2_key.get();
+        this.a.a.jdField_b_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).user_sig.get();
+        this.a.a.jdField_a_of_type_Boolean = ((FalcoLoginProto.LoginCheckRsp)localObject).is_not_registered.get();
+        this.a.a.jdField_a_of_type_ArrayOfByte = ((FalcoLoginProto.LoginCheckRsp)localObject).ex.get().toByteArray();
+        this.a.a.jdField_b_of_type_Boolean = false;
+        atch.a(this.a.a).opType("huiyin").opName("loginresult").d1(String.valueOf(this.a.a.jdField_a_of_type_Long)).d2(String.valueOf(this.a.a.jdField_a_of_type_Boolean)).report();
+        Log.i("huiyin.login", "login ok " + this.a.a.jdField_a_of_type_Long + ", " + this.a.a.jdField_b_of_type_JavaLangString);
+        paramBundle = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramBundle.hasNext()) {
+          ((atco)paramBundle.next()).a();
         }
-        paramString = new atcl(paramWebView, l, paramString);
-        paramWebView = paramWebView.getUrl();
-        if (this.jdField_a_of_type_Myl == null) {
-          this.jdField_a_of_type_Myl = myl.a();
-        }
-        if (this.jdField_a_of_type_Myl.a(paramWebView, str1 + "." + str2))
-        {
-          a(str1, str2, localList, paramString);
-          return true;
-        }
+        this.a.a.jdField_a_of_type_JavaUtilList.clear();
       }
-      catch (Exception paramWebView)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        return false;
+        paramBundle.printStackTrace();
+        return;
       }
-      QLog.e("JsBridge", 1, "JS API no auth url = " + ndq.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
-      paramString.b();
+      new Handler(Looper.getMainLooper()).postDelayed(new HuiyinUtilsImpl.3.1.1(this), 7200000L);
+      return;
     }
+    if (paramBundle.containsKey("data_error_msg"))
+    {
+      localObject = paramBundle.getString("data_error_msg");
+      IVPluginDataReporter localIVPluginDataReporter = atch.a(this.a.a).opType("huiyin").opName("login_fail");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "null";
+      }
+      localIVPluginDataReporter.d1(paramBundle).report();
+      return;
+    }
+    atch.a(this.a.a).opType("huiyin").opName("login_fail").report();
   }
 }
 

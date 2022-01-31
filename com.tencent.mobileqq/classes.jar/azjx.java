@@ -1,26 +1,65 @@
-import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
+import android.os.Build;
 import com.tencent.qphone.base.util.QLog;
 
-public final class azjx
-  implements IDiniFlyQLog
+public class azjx
 {
-  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
+  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
+  
+  public static boolean a()
   {
-    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
-    switch (paramInt1)
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-    case 4: 
-    default: 
-      QLog.i(paramString1, paramInt2, paramString2, null);
-      return;
-    case 5: 
-      QLog.w(paramString1, paramInt2, paramString2, null);
-      return;
-    case 6: 
-      QLog.e(paramString1, paramInt2, paramString2, null);
-      return;
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
     }
-    QLog.d(paramString1, paramInt2, paramString2, null);
+  }
+  
+  public static boolean b()
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (azki.g())
+    {
+      bool1 = bool3;
+      if (!a())
+      {
+        if (!lsa.a(8, 1400000L))
+        {
+          bool1 = bool2;
+          if (!lsa.a(4, 2150000L)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean c()
+  {
+    return (b()) && (azgg.a().e());
   }
 }
 

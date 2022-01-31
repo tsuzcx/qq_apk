@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import akgy;
+import akln;
 
 public class SystemMsgListAdapter$2
   implements Runnable
 {
-  public SystemMsgListAdapter$2(akgy paramakgy) {}
+  public SystemMsgListAdapter$2(akln paramakln) {}
   
   public void run()
   {

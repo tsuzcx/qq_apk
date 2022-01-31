@@ -1,16 +1,16 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
 
 public class asbh
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public asbh(LangSettingFragment paramLangSettingFragment) {}
+  public asbh(ForwardPhotoOption.3 param3) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LangSettingFragment.a(this.a).dismiss();
+    return true;
   }
 }
 

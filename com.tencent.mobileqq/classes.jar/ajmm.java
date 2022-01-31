@@ -1,22 +1,59 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmm
-  implements bhqd
+  extends ajlr
 {
-  public ajmm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ajmm(Context paramContext)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = ("[" + paramContext.getString(2131699994) + "]");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-    default: 
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_Bhpy.dismiss();
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

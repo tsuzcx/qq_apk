@@ -1,8 +1,6 @@
 public abstract interface axri
 {
-  public abstract void h();
-  
-  public abstract void i();
+  public abstract void a(double paramDouble);
 }
 
 

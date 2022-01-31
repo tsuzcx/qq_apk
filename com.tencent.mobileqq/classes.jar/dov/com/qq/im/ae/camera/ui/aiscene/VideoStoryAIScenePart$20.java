@@ -4,20 +4,20 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bkqa;
+import bkuh;
 
 public class VideoStoryAIScenePart$20
   implements Runnable
 {
-  public VideoStoryAIScenePart$20(bkqa parambkqa) {}
+  public VideoStoryAIScenePart$20(bkuh parambkuh) {}
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bkqa.a(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bkqa.b(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bkqa.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bkuh.a(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bkuh.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bkuh.b(this.this$0), "translationY", new float[] { 0.0F });
     Object localObject = new int[2];
-    bkqa.a(this.this$0).getLocationInWindow((int[])localObject);
+    bkuh.a(this.this$0).getLocationInWindow((int[])localObject);
     localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
     ((AnimatorSet)localObject).setDuration(300L).start();

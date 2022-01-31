@@ -1,6 +1,18 @@
-public abstract interface bmxn
+import android.animation.ValueAnimator;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+
+public class bmxn
+  extends bmtb
 {
-  public abstract void a();
+  public bmxn(ElasticImageView paramElasticImageView) {}
+  
+  public void a(ValueAnimator paramValueAnimator)
+  {
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    wxe.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
+  }
 }
 
 

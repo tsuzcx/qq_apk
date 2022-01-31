@@ -1,24 +1,24 @@
 package cooperation.qzone;
 
-import alpo;
+import alud;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import bfhq;
-import bizm;
-import bjac;
-import bjad;
-import bjjt;
-import bjlh;
-import bjlk;
-import bjlm;
-import bjls;
-import bjlu;
-import bjmn;
-import bjsb;
+import bflz;
+import bjdt;
+import bjej;
+import bjek;
+import bjoa;
+import bjpo;
+import bjpr;
+import bjpt;
+import bjpz;
+import bjqb;
+import bjqu;
+import bjwi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -32,9 +32,9 @@ import ndd;
 
 public class QZoneLiveVideoDownLoadActivtyV2
   extends QZoneLiveVideoBaseDownLoadActivty
-  implements bjlm
+  implements bjpt
 {
-  bjjt a;
+  bjoa a;
   
   private PluginBaseInfo a(PluginRecord paramPluginRecord)
   {
@@ -51,7 +51,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
   
   protected PluginBaseInfo a(String paramString)
   {
-    return a(this.jdField_a_of_type_Bjjt.a(paramString));
+    return a(this.jdField_a_of_type_Bjoa.a(paramString));
   }
   
   protected String a()
@@ -64,9 +64,9 @@ public class QZoneLiveVideoDownLoadActivtyV2
     super.a(paramPluginBaseInfo);
     if (paramPluginBaseInfo.mState == 2)
     {
-      if (bjls.a("com.tencent.mobileqq:qzonelive"))
+      if (bjpz.a("com.tencent.mobileqq:qzonelive"))
       {
-        bjmn.a().a("cmd.killLiveVideo", new Bundle(), false);
+        bjqu.a().a("cmd.killLiveVideo", new Bundle(), false);
         new Handler().postDelayed(new QZoneLiveVideoDownLoadActivtyV2.1(this, paramPluginBaseInfo), 500L);
       }
     }
@@ -75,7 +75,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
     }
     try
     {
-      this.jdField_a_of_type_Bjjt.a(paramPluginBaseInfo.mID, null, this.c);
+      this.jdField_a_of_type_Bjoa.a(paramPluginBaseInfo.mID, null, this.c);
       return;
     }
     catch (RemoteException paramPluginBaseInfo)
@@ -100,7 +100,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
     super.b();
     try
     {
-      this.jdField_a_of_type_Bjjt.a("qzone_live_video_plugin_hack.apk", new bjad(this), this.c);
+      this.jdField_a_of_type_Bjoa.a("qzone_live_video_plugin_hack.apk", new bjek(this), this.c);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -114,7 +114,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
     QLog.d("QZoneLiveVideoDownLoadActivtyV2", 1, "installPluginSilence");
     try
     {
-      this.jdField_a_of_type_Bjjt.a("qzone_live_video_plugin_hack.apk", null, 3);
+      this.jdField_a_of_type_Bjoa.a("qzone_live_video_plugin_hack.apk", null, 3);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -127,18 +127,18 @@ public class QZoneLiveVideoDownLoadActivtyV2
   {
     super.d();
     if (QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadCanceledOnCloseBtn", 0) == 1) {
-      this.jdField_a_of_type_Bjjt.b("qzone_live_video_plugin_hack.apk");
+      this.jdField_a_of_type_Bjoa.b("qzone_live_video_plugin_hack.apk");
     }
-    bjsb.a(this.b, "live_video_entry", "9", null);
+    bjwi.a(this.b, "live_video_entry", "9", null);
   }
   
   protected void e()
   {
     super.e();
-    if ((this.c != 1) && (!bjls.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bjjt != null)) {}
+    if ((this.c != 1) && (!bjpz.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bjoa != null)) {}
     try
     {
-      this.jdField_a_of_type_Bjjt.a(null, 3);
+      this.jdField_a_of_type_Bjoa.a(null, 3);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -149,10 +149,10 @@ public class QZoneLiveVideoDownLoadActivtyV2
   
   protected void g()
   {
-    if ((this.c == 1) && (!bjls.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bjjt != null)) {
+    if ((this.c == 1) && (!bjpz.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bjoa != null)) {
       try
       {
-        this.jdField_a_of_type_Bjjt.a(new bjac(this), 1);
+        this.jdField_a_of_type_Bjoa.a(new bjej(this), 1);
         return;
       }
       catch (RemoteException localRemoteException)
@@ -177,7 +177,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
       paramBundle.addAction("action_launch_completed");
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QZoneLiveVideoBaseDownLoadActivty.LaunchCompletedObserver(this, "QZoneLiveVideo", "qzone_live_video_plugin_hack.apk");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-      bjlk.a(this, this);
+      bjpr.a(this, this);
       return;
     }
     catch (Exception paramBundle)
@@ -192,14 +192,14 @@ public class QZoneLiveVideoDownLoadActivtyV2
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bjjt = null;
+    this.jdField_a_of_type_Bjoa = null;
   }
   
-  public void onQzonePluginClientReady(bjjt parambjjt)
+  public void onQzonePluginClientReady(bjoa parambjoa)
   {
-    if (parambjjt == null)
+    if (parambjoa == null)
     {
-      bjlk.a(this, this);
+      bjpr.a(this, this);
       return;
     }
     QQAppInterface localQQAppInterface2 = (QQAppInterface)getAppRuntime();
@@ -210,26 +210,26 @@ public class QZoneLiveVideoDownLoadActivtyV2
       localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
     if (localQQAppInterface1 != null) {
-      bjlu.a().a(localQQAppInterface1);
+      bjqb.a().a(localQQAppInterface1);
     }
-    this.jdField_a_of_type_Bjjt = parambjjt;
-    parambjjt = this.jdField_a_of_type_Bjjt.a("qzone_live_video_plugin_hack.apk");
-    if (parambjjt != null)
+    this.jdField_a_of_type_Bjoa = parambjoa;
+    parambjoa = this.jdField_a_of_type_Bjoa.a("qzone_live_video_plugin_hack.apk");
+    if (parambjoa != null)
     {
-      if (parambjjt.state == 4)
+      if (parambjoa.state == 4)
       {
         f();
         return;
       }
-      if (parambjjt.state == 2) {
+      if (parambjoa.state == 2) {
         try
         {
-          this.jdField_a_of_type_Bjjt.a("qzone_live_video_plugin_hack.apk", null, this.c);
+          this.jdField_a_of_type_Bjoa.a("qzone_live_video_plugin_hack.apk", null, this.c);
           return;
         }
-        catch (RemoteException parambjjt)
+        catch (RemoteException parambjoa)
         {
-          QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, parambjjt, new Object[0]);
+          QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, parambjoa, new Object[0]);
           return;
         }
       }
@@ -237,10 +237,10 @@ public class QZoneLiveVideoDownLoadActivtyV2
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.c + "");
       if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (ndd.a(this.jdField_a_of_type_JavaLangString)))
       {
-        parambjjt = this.jdField_a_of_type_JavaLangString + "&stayin=1";
-        QLog.d("QZoneLiveVideoDownLoadActivtyV2", 1, "watch mode, jump to H5, " + parambjjt);
-        bizm.a(this, parambjjt, -1, null, null);
-        if (bjlh.b()) {
+        parambjoa = this.jdField_a_of_type_JavaLangString + "&stayin=1";
+        QLog.d("QZoneLiveVideoDownLoadActivtyV2", 1, "watch mode, jump to H5, " + parambjoa);
+        bjdt.a(this, parambjoa, -1, null, null);
+        if (bjpo.b()) {
           c();
         }
         a();
@@ -256,14 +256,14 @@ public class QZoneLiveVideoDownLoadActivtyV2
         b();
         return;
       }
-      parambjjt = Message.obtain();
-      parambjjt.what = 1000;
-      parambjjt.arg1 = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(parambjjt);
+      parambjoa = Message.obtain();
+      parambjoa.what = 1000;
+      parambjoa.arg1 = 1;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(parambjoa);
       return;
     }
     b();
-    bfhq.a().a(alpo.a(2131712325));
+    bflz.a().a(alud.a(2131712337));
     a();
   }
 }

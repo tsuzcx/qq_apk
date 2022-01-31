@@ -1,15 +1,35 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class anhc
-  implements anhh
+  implements TencentMap.OnMapLoadedCallback
 {
-  anhc(anhb paramanhb) {}
+  public anhc(ARScanEntryView paramARScanEntryView) {}
   
-  public void a(String paramString)
+  public void onMapLoaded()
   {
-    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, aepi.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
+      }
+    }
   }
 }
 

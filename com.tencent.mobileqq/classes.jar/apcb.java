@@ -1,16 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import java.util.ArrayList;
+import java.util.List;
 
-class apcb
-  implements DialogInterface.OnClickListener
+public final class apcb
 {
-  apcb(apbu paramapbu) {}
+  private int jdField_a_of_type_Int;
+  private apcd jdField_a_of_type_Apcd;
+  public apce a;
+  private apcg jdField_a_of_type_Apcg;
+  private apch jdField_a_of_type_Apch;
+  public apci a;
+  private apcj jdField_a_of_type_Apcj;
+  private apcl jdField_a_of_type_Apcl;
+  private apcm jdField_a_of_type_Apcm;
+  private List<apcq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apbz a()
   {
-    paramDialogInterface.cancel();
-    apbu.a(this.a).c();
+    return new apbz(this, null);
+  }
+  
+  public apcb a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public apcb a(apcj paramapcj)
+  {
+    this.jdField_a_of_type_Apcj = paramapcj;
+    return this;
+  }
+  
+  public apcb a(apcq paramapcq)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramapcq);
+    return this;
   }
 }
 

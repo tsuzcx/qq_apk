@@ -1,23 +1,23 @@
 package cooperation.qlink;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import arng;
-import bdbt;
-import bdcd;
-import bdee;
-import bdfq;
-import bepp;
-import bhoe;
-import bimg;
-import biot;
-import biou;
-import biov;
+import arrp;
+import bdgc;
+import bdgm;
+import bdin;
+import bdjz;
+import bety;
+import bhsl;
+import biqn;
+import bita;
+import bitb;
+import bitc;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -33,17 +33,17 @@ public class QlinkBridgeActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bepp jdField_a_of_type_Bepp;
-  private bhoe jdField_a_of_type_Bhoe;
-  private bimg jdField_a_of_type_Bimg;
+  private bety jdField_a_of_type_Bety;
+  private bhsl jdField_a_of_type_Bhsl;
+  private biqn jdField_a_of_type_Biqn;
   
   private void a(int paramInt)
   {
     QLog.e("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] handleFailed errCode:" + paramInt);
     int i = getResources().getDimensionPixelSize(2131298914);
-    String str = alpo.a(2131710256);
+    String str = alud.a(2131710268);
     if (-4 == paramInt) {
-      str = alpo.a(2131710257);
+      str = alud.a(2131710269);
     }
     for (;;)
     {
@@ -51,9 +51,9 @@ public class QlinkBridgeActivity
       finish();
       return;
       if ((-5 == paramInt) || (-1 == paramInt) || (-3 == paramInt) || (-2 == paramInt)) {
-        str = alpo.a(2131710258);
+        str = alud.a(2131710270);
       } else if (-6 == paramInt) {
-        str = alpo.a(2131710260);
+        str = alud.a(2131710272);
       }
     }
   }
@@ -69,7 +69,7 @@ public class QlinkBridgeActivity
     }
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_Bimg.isReady())
+      if (!this.jdField_a_of_type_Biqn.isReady())
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("QlinkBridgeActivity", 4, "[QlinkBridgeActivity] queryPluginInfo is no ready and query it");
@@ -79,7 +79,7 @@ public class QlinkBridgeActivity
           a(-5);
           return;
         }
-        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1001, 400L);
         return;
       }
       a(-1);
@@ -88,7 +88,7 @@ public class QlinkBridgeActivity
     if (QLog.isDevelopLevel()) {
       QLog.d("QlinkBridgeActivity", 4, "[QlinkBridgeActivity] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bdee.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bdin.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
     {
       a(-4);
       return;
@@ -102,7 +102,7 @@ public class QlinkBridgeActivity
       a(-6);
       return;
     case 0: 
-      this.jdField_a_of_type_Bimg.a("qlink_plugin.apk");
+      this.jdField_a_of_type_Biqn.a("qlink_plugin.apk");
     case 1: 
     case 2: 
       if (i != 0)
@@ -110,7 +110,7 @@ public class QlinkBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 3: 
       if (i != 0)
@@ -118,7 +118,7 @@ public class QlinkBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 4: 
       b();
@@ -132,14 +132,14 @@ public class QlinkBridgeActivity
     boolean bool = false;
     if (QlinkPluginProxyActivity.a(this))
     {
-      Intent localIntent = biov.a();
+      Intent localIntent = bitc.a();
       Bundle localBundle = new Bundle();
       localBundle.putInt("string_from", this.jdField_a_of_type_Int);
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
         localBundle.putAll(this.jdField_a_of_type_AndroidOsBundle);
       }
       localIntent.putExtra("string_bundle", localBundle);
-      localBundle.putString("_SELF_NICK_", bdbt.i(this.app, this.app.getAccount()));
+      localBundle.putString("_SELF_NICK_", bdgc.i(this.app, this.app.getAccount()));
       QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, null);
       finish();
       overridePendingTransition(0, 0);
@@ -151,7 +151,7 @@ public class QlinkBridgeActivity
   private void b()
   {
     QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] launchPlugin mFrom:" + this.jdField_a_of_type_Int);
-    Intent localIntent = biov.a();
+    Intent localIntent = bitc.a();
     Bundle localBundle = new Bundle();
     localBundle.putInt("string_from", this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
@@ -163,7 +163,7 @@ public class QlinkBridgeActivity
     Object localObject1 = this.app.getAccount();
     try
     {
-      localObject2 = bdbt.a(this.app, this.app.getAccount());
+      localObject2 = bdgc.a(this.app, this.app.getAccount());
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -173,7 +173,7 @@ public class QlinkBridgeActivity
         Object localObject2;
         localException.printStackTrace();
       }
-      QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, this.jdField_a_of_type_Bepp);
+      QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, this.jdField_a_of_type_Bety);
       overridePendingTransition(0, 0);
     }
     localObject2 = localObject1;
@@ -193,16 +193,16 @@ public class QlinkBridgeActivity
   
   public void a()
   {
-    this.jdField_a_of_type_Bimg = ((bimg)this.app.getManager(27));
+    this.jdField_a_of_type_Biqn = ((biqn)this.app.getManager(27));
     QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    if (this.jdField_a_of_type_Bimg == null) {
+    if (this.jdField_a_of_type_Biqn == null) {
       a(-6);
     }
     for (;;)
     {
       return;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      PluginInfo localPluginInfo = this.jdField_a_of_type_Bimg.a("qlink_plugin.apk");
+      PluginInfo localPluginInfo = this.jdField_a_of_type_Biqn.a("qlink_plugin.apk");
       int j = 0;
       int i = j;
       if (localPluginInfo != null)
@@ -214,16 +214,16 @@ public class QlinkBridgeActivity
       }
       for (i = 1; i == 0; i = j)
       {
-        if (this.jdField_a_of_type_Bepp != null)
+        if (this.jdField_a_of_type_Bety != null)
         {
-          this.jdField_a_of_type_Bepp.a(alpo.a(2131710259));
-          this.jdField_a_of_type_Bepp.show();
+          this.jdField_a_of_type_Bety.a(alud.a(2131710271));
+          this.jdField_a_of_type_Bety.show();
         }
-        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1001, 400L);
         return;
         label122:
         QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] onPluginManagerLoaded start down or install...");
-        this.jdField_a_of_type_Bimg.a("qlink_plugin.apk");
+        this.jdField_a_of_type_Biqn.a("qlink_plugin.apk");
       }
     }
   }
@@ -234,24 +234,24 @@ public class QlinkBridgeActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("_from_", 0);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
-    this.jdField_a_of_type_Bhoe = new bhoe(this);
+    this.jdField_a_of_type_Bhsl = new bhsl(this);
     if (BaseApplication.getContext().getSharedPreferences("QlinkResistTerrorist", 0).getInt("QlinkResistTerrorist_res", 0) == 1)
     {
-      arng.a("0X8005392");
+      arrp.a("0X8005392");
       if (QLog.isColorLevel()) {
         QLog.e("QlinkBridgeActivity", 2, "[QLINK] QQ - startQlink failed because of QlinkResistTerrorist_res is 1!!!");
       }
-      paramBundle = new biot(this);
-      bdcd.a(this, 233, getString(2131698676), getString(2131698701), 2131698675, 2131698675, paramBundle, null).show();
+      paramBundle = new bita(this);
+      bdgm.a(this, 233, getString(2131698688), getString(2131698713), 2131698687, 2131698687, paramBundle, null).show();
       bool = false;
     }
     while (a()) {
       return bool;
     }
-    this.jdField_a_of_type_Bepp = new bepp(this, getResources().getDimensionPixelSize(2131298914));
-    this.jdField_a_of_type_Bepp.a(alpo.a(2131710255));
-    this.jdField_a_of_type_Bepp.setOnDismissListener(new biou(this));
-    this.jdField_a_of_type_Bhoe.postDelayed(new QlinkBridgeActivity.3(this), 300L);
+    this.jdField_a_of_type_Bety = new bety(this, getResources().getDimensionPixelSize(2131298914));
+    this.jdField_a_of_type_Bety.a(alud.a(2131710267));
+    this.jdField_a_of_type_Bety.setOnDismissListener(new bitb(this));
+    this.jdField_a_of_type_Bhsl.postDelayed(new QlinkBridgeActivity.3(this), 300L);
     return true;
   }
   
@@ -267,7 +267,7 @@ public class QlinkBridgeActivity
         QLog.d("QlinkBridgeActivity", 4, "[QlinkBridgeActivity]  ACTION_QUERY!");
       }
       if (!isFinishing()) {
-        a("qlink_plugin.apk", this.jdField_a_of_type_Bimg.a("qlink_plugin.apk"));
+        a("qlink_plugin.apk", this.jdField_a_of_type_Biqn.a("qlink_plugin.apk"));
       }
     }
   }
@@ -275,15 +275,15 @@ public class QlinkBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bepp != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
-      this.jdField_a_of_type_Bepp.dismiss();
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Bety = null;
     }
-    if (this.jdField_a_of_type_Bhoe != null) {
-      this.jdField_a_of_type_Bhoe.removeMessages(1001);
+    if (this.jdField_a_of_type_Bhsl != null) {
+      this.jdField_a_of_type_Bhsl.removeMessages(1001);
     }
-    if ((this.jdField_a_of_type_Bimg == null) || (QLog.isDevelopLevel())) {
+    if ((this.jdField_a_of_type_Biqn == null) || (QLog.isDevelopLevel())) {
       QLog.d("QPlugin", 4, "QlinkBridgeActivity onDestroy");
     }
   }

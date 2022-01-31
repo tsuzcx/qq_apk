@@ -1,12 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class blos
-  implements DialogInterface.OnClickListener
+  implements blou
 {
-  blos(blor paramblor) {}
+  public int a()
+  {
+    return 960;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int b()
+  {
+    return ((Integer)blow.a(Integer.valueOf(1024), Integer.valueOf(2048))).intValue();
+  }
+  
+  public int c()
+  {
+    return (int)(b() * 1.3D);
+  }
+  
+  public int d()
+  {
+    return ((Integer)blow.a(Integer.valueOf(1080), Integer.valueOf(1920), Integer.valueOf(2560))).intValue();
+  }
+  
+  public int e()
+  {
+    return 100;
+  }
 }
 
 

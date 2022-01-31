@@ -1,20 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class acdk
-  implements bejn
+  implements alpg
 {
-  public acdk(BaseChatPie paramBaseChatPie) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public acdk(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
+    {
+      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
+      return;
+    }
+    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
   }
 }
 

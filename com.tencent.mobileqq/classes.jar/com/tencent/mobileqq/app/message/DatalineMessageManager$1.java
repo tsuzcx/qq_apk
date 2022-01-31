@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.message;
 
-import amfy;
-import amjk;
-import awbw;
-import awbx;
-import ayvc;
+import amkn;
+import amnz;
+import awgf;
+import awgg;
+import ayzl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -16,29 +16,29 @@ import ew;
 public class DatalineMessageManager$1
   implements Runnable
 {
-  public DatalineMessageManager$1(amfy paramamfy, DataLineMsgRecord paramDataLineMsgRecord, ew paramew) {}
+  public DatalineMessageManager$1(amkn paramamkn, DataLineMsgRecord paramDataLineMsgRecord, ew paramew) {}
   
   public void run()
   {
-    awbw localawbw = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = ayvc.a();
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = ayzl.a();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
       }
-      amjk localamjk = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      RecentUser localRecentUser = localamjk.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      amnz localamnz = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      RecentUser localRecentUser = localamnz.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
       localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
-      localamjk.a(localRecentUser);
-      amfy.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localawbw);
+      localamnz.a(localRecentUser);
+      amkn.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localawgf);
       long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
       this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
       this.jdField_a_of_type_Ew.a();
-      localawbw.a();
+      localawgf.a();
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l);
       }
@@ -46,7 +46,7 @@ public class DatalineMessageManager$1
     }
     finally
     {
-      localawbw.a();
+      localawgf.a();
     }
   }
 }

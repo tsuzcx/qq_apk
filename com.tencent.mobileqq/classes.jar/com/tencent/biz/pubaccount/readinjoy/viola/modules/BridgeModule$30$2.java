@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.AppRuntime;
 import ors;
@@ -13,7 +13,7 @@ public class BridgeModule$30$2
   
   public void run()
   {
-    QQToast.a(ors.a().getApplication(), 1, alpo.a(2131701556), 0).a();
+    QQToast.a(ors.a().getApplication(), 1, alud.a(2131701568), 0).a();
   }
 }
 

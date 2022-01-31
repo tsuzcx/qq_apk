@@ -1,41 +1,318 @@
-import android.widget.CompoundButton;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.forward.ForwardNewVersionDialog.7;
+import com.tencent.mobileqq.forward.ForwardNewVersionDialog.8;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.MaxHeightRelativelayout;
+import java.lang.ref.SoftReference;
 
 public class asau
-  implements asaw
+  extends bdle
+  implements DialogInterface.OnDismissListener, View.OnClickListener
 {
-  public asau(AppletsSettingFragment paramAppletsSettingFragment) {}
+  private int jdField_a_of_type_Int = 7;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private View jdField_a_of_type_AndroidViewView;
+  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  protected ScrollView a;
+  private bdni jdField_a_of_type_Bdni;
+  bdnk jdField_a_of_type_Bdnk = new asav(this);
+  private EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+  private MaxHeightRelativelayout jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout;
+  private SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem)
+  public asau(@NonNull Context paramContext)
   {
-    int i = 1;
-    ArrayList localArrayList;
-    if (paramAppletItem != null)
+    super(paramContext, 2131755801);
+    WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+    if (localLayoutParams != null) {
+      localLayoutParams.gravity = 17;
+    }
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
+    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
+    getWindow().setSoftInputMode(19);
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, bdni.a(0), 2, 32, -1);
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 81;
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755184;
+    setContentView(2131558937);
+  }
+  
+  private int a(View paramView)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    return arrayOfInt[1];
+  }
+  
+  private void a()
+  {
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (localLayoutParams != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsSettingFragment", 2, "OnChangeSwitchListener onChangeSwitchListener " + paramAppletItem.toString() + ",  isChecked:" + paramBoolean);
-      }
-      this.a.a(true);
-      paramCompoundButton.setChecked(paramBoolean);
-      paramCompoundButton = (amnf)AppletsSettingFragment.a(this.a).a(148);
-      localArrayList = new ArrayList();
-      if (!paramBoolean) {
-        break label113;
+      localLayoutParams.height = -2;
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+    }
+  }
+  
+  private void a(Context paramContext)
+  {
+    Object localObject = new asbb(this);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
+    {
+      int i = getContext().getResources().getDimensionPixelSize(2131298914);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(getContext(), 2131559056, null));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack((apuc)localObject);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+      if (this.jdField_a_of_type_Int == 7) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ((EmoticonMainPanel)localObject).b = bool;
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a((QQAppInterface)paramContext, 100003, getContext(), i, null, null, false);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.k();
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
+        return;
       }
     }
-    for (;;)
+    QLog.e("Forward.NewVersion.Dialog", 1, "get QQAppInterface fail");
+  }
+  
+  public asau a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
     {
-      paramAppletItem.a(i);
-      localArrayList.add(paramAppletItem);
-      paramCompoundButton.a(localArrayList);
+      this.lBtn.setVisibility(8);
+      return this;
+    }
+    this.lBtn.setText(paramString);
+    this.lBtn.setVisibility(0);
+    this.lBtn.setContentDescription(paramString + getContext().getString(2131691159));
+    this.lBtn.setOnClickListener(new asbc(this, paramOnClickListener));
+    return this;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new asba(this, paramInt));
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(paramView);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    this.title.setText(paramString1);
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramString2);
+    a(paramString3, paramOnClickListener2);
+    b(paramString4, paramOnClickListener1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
-      label113:
-      i = 0;
     }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+  }
+  
+  public asau b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramString);
+    this.rBtn.setContentDescription(paramString + getContext().getString(2131691159));
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new asaw(this, paramOnClickListener));
+    return this;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(aepi.a(paramInt, getContext().getResources()));
+  }
+  
+  public EditText getEditText()
+  {
+    return this.jdField_a_of_type_AndroidWidgetEditText;
+  }
+  
+  public String getInputValue()
+  {
+    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+  }
+  
+  public void hideSoftInputFromWindow()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131365645)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null)
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          a();
+          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839717);
+          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839717));
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.7(this), 200L);
+          paramView = getWindow().getAttributes();
+          paramView.y = 0;
+          getWindow().setAttributes(paramView);
+        }
+      }
+      else {
+        return;
+      }
+      paramView = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
+      if ((paramView != null) && ((paramView instanceof Integer)) && (((Integer)paramView).intValue() == 2130839718))
+      {
+        bhsj.a(this.jdField_a_of_type_AndroidWidgetEditText);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839717);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839717));
+        this.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      bhsj.b(this.jdField_a_of_type_AndroidWidgetEditText);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839718);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839718));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setMinimumHeight(bdni.a(0));
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ForwardNewVersionDialog.8(this), 200L);
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      a();
+      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.jdField_a_of_type_Boolean = false;
+      paramView = getWindow().getAttributes();
+      paramView.y = 0;
+      getWindow().setAttributes(paramView);
+    }
+    bhsj.b(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g();
+    }
+    if (this.jdField_a_of_type_Bdni != null) {
+      this.jdField_a_of_type_Bdni.a();
+    }
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() != 1) {
+      return super.onTouchEvent(paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.jdField_a_of_type_Boolean = false;
+      WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+      localLayoutParams.y = 0;
+      getWindow().setAttributes(localLayoutParams);
+      a();
+    }
+    bhsj.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    super.onTouchEvent(paramMotionEvent);
+    return true;
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)findViewById(2131375902));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379214));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368343));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365645));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368355));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365229);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(bamz.a(16));
+    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
+    this.jdField_a_of_type_AndroidWidgetEditText.setMaxLines(2);
+    a(this.jdField_a_of_type_AndroidContentResResources.getInteger(2131427338));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new asax(this));
+    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    if (localObject == null) {
+      return;
+    }
+    aahb.a((Context)localObject, this.jdField_a_of_type_AndroidWidgetEditText);
+    this.jdField_a_of_type_Bdni = new bdni(((ViewGroup)getWindow().getDecorView().findViewById(16908290)).getChildAt(0), this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight(), this.jdField_a_of_type_Bdnk);
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_Bdni.a();
+    this.jdField_b_of_type_Int = bdni.a(this.jdField_b_of_type_Int);
+    setOnDismissListener(this);
+    a((Context)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setDispatchKeyEventListener(new asay(this));
+    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131376198);
+    if ((localObject instanceof ScrollView)) {
+      this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)localObject);
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new asaz(this));
   }
 }
 

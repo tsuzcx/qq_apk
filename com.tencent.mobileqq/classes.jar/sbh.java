@@ -17,7 +17,7 @@ public class sbh
   public static void f()
   {
     a = false;
-    SharedPreferences.Editor localEditor = bjxj.a(ors.a(), true, false).edit();
+    SharedPreferences.Editor localEditor = bkbq.a(ors.a(), true, false).edit();
     localEditor.putBoolean("key_read_injoy_fast_web_share_guide", false);
     localEditor.commit();
   }
@@ -29,8 +29,8 @@ public class sbh
   
   public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560023, null);
-    ((TextView)paramContext.findViewById(2131378776)).setTextSize(0, Utils.dp2px(15.0D));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560022, null);
+    ((TextView)paramContext.findViewById(2131378831)).setTextSize(0, Utils.dp2px(15.0D));
     return new sbi(paramContext, paramBaseData);
   }
   

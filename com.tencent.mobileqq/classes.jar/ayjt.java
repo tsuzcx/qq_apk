@@ -1,68 +1,39 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
-public class ayjt
-  extends ayju
+class ayjt
+  implements View.OnClickListener
 {
-  public static final String a;
-  public int a;
-  public CharSequence a;
-  public CharSequence b;
-  public String b;
-  public CharSequence c;
+  ayjt(ayjr paramayjr, ViewGroup paramViewGroup) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + ayjt.class.getSimpleName();
-  }
-  
-  public ayjt(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public ayjt(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
+    ayvm.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_Ayjr.jdField_a_of_type_Ayoi.m);
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_JavaLangString = ayrd.a(paramString.optString("leftImageTagText"));
-      this.jdField_a_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("firstLineText"));
-      this.jdField_b_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("secondLineText"));
-      this.c = ayrd.a(paramString.optJSONArray("thirdLineText"));
+      localJSONObject.put("project", aysc.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("get_src", "web");
+      aysc.a(paramView, new ReportModelDC02528().module("all_result").action("clk_more").obj1(this.jdField_a_of_type_Ayjr.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(aysc.a(this.jdField_a_of_type_Ayjr.jdField_a_of_type_Int)).ver3("right").ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
       return;
     }
-    catch (JSONException paramString)
+    catch (JSONException localJSONException)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        QLog.e(ayjr.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
   }
 }
 

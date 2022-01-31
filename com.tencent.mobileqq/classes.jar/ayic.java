@@ -1,32 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.Comparator;
 
-public class ayic
-  extends ayia
+final class ayic
+  implements Comparator<ayhs>
 {
-  public ayic(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public int a(ayhs paramayhs1, ayhs paramayhs2)
   {
-    super(paramQQAppInterface, paramInt, paramString1, paramString2, paramString3, paramString4);
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (!ayrd.a(this.b)) {
-      ayrd.a(paramView, this);
+    long l1 = paramayhs1.c();
+    long l2 = paramayhs2.c();
+    if (l1 < l2) {
+      return 1;
     }
-    if (SearchConfigManager.needSeparate) {
-      ayrd.a("search", "contact", "contacts", 0, 0, new String[] { ayrd.a(this.b) });
+    if (l1 > l2) {
+      return -1;
     }
-  }
-  
-  public CharSequence c()
-  {
-    if (ayrd.a(this.b)) {
-      return alpo.a(2131702940);
-    }
-    return alpo.a(2131702907);
+    return 0;
   }
 }
 

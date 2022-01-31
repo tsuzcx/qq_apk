@@ -1,47 +1,103 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class babs
-  extends babr
+public class babs
+  extends aokh<babr>
 {
-  private babs(babp parambabp, SSLSocket paramSSLSocket)
+  public static babr a()
   {
-    super(parambabp, paramSSLSocket);
+    return (babr)aoks.a().a(612);
   }
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public static void b()
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
-      {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
-        }
-      }
+    aoks.a().a(new int[] { 612 });
+  }
+  
+  public int a()
+  {
+    return 612;
+  }
+  
+  @NonNull
+  public babr a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[migrateOldOrDefaultContent]");
     }
-    for (;;)
-    {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+    return new babr();
+  }
+  
+  @Nullable
+  public babr a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onParsed]");
     }
+    babr localbabr = new babr();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = paramArrayOfaoko[0];
+      if ((paramArrayOfaoko == null) || (TextUtils.isEmpty(paramArrayOfaoko.a))) {}
+    }
+    try
+    {
+      localbabr.a = new JSONObject(paramArrayOfaoko.a);
+      return localbabr;
+    }
+    catch (JSONException paramArrayOfaoko)
+    {
+      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfaoko, new Object[0]);
+    }
+    return localbabr;
+  }
+  
+  public Class<babr> a()
+  {
+    return babr.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + a() + "curContent:" + a());
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+  }
+  
+  public void a(babr parambabr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + parambabr);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

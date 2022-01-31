@@ -1,7 +1,19 @@
-public abstract interface ayyw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+
+public final class ayyw
+  implements Parcelable.Creator<FriendListInfo>
 {
-  public static final String a = alpo.a(2131714414);
-  public static final String b = alpo.a(2131714440);
+  public FriendListInfo a(Parcel paramParcel)
+  {
+    return new FriendListInfo(paramParcel);
+  }
+  
+  public FriendListInfo[] a(int paramInt)
+  {
+    return new FriendListInfo[paramInt];
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.content.Context;
-import aswy;
-import aswz;
+import atbh;
+import atbi;
 import java.util.Map;
 
 public final class MonitorConfig$1
@@ -12,13 +12,13 @@ public final class MonitorConfig$1
   
   public void run()
   {
-    aswz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (aswz.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
+    atbi.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (atbi.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
     {
-      aswy.b(String.valueOf(((aswz)aswz.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
+      atbh.b(String.valueOf(((atbi)atbi.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
       return;
     }
-    aswy.b("3235983");
+    atbh.b("3235983");
   }
 }
 

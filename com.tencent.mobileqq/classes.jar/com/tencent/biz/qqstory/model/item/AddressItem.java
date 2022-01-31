@@ -12,12 +12,12 @@ import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uha;
-import wsv;
+import ulj;
+import wxe;
 
 public class AddressItem
   extends BaseUIItem
-  implements uha
+  implements ulj
 {
   public String building;
   public String city;
@@ -44,7 +44,7 @@ public class AddressItem
       localJSONObject.put("latitude", paramAddressItem.latitude);
       localJSONObject.put("coordinate", paramAddressItem.coordinate);
       localJSONObject.put("district", paramAddressItem.district);
-      wsv.b("AddressItem convertFromItem: ", localJSONObject.toString());
+      wxe.b("AddressItem convertFromItem: ", localJSONObject.toString());
       return localJSONObject.toString();
     }
     catch (JSONException paramAddressItem)
@@ -114,7 +114,7 @@ public class AddressItem
       }
       return localAddressItem;
     }
-    wsv.b("AddressItem :getAddressFromProtoObject()", "address is null");
+    wxe.b("AddressItem :getAddressFromProtoObject()", "address is null");
     return null;
   }
   

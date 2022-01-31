@@ -1,16 +1,16 @@
-import android.support.annotation.Nullable;
+import android.graphics.Matrix;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
-class bkqf
-  implements bmac<bkph>
+public class bkqf
 {
-  bkqf(bkqa parambkqa) {}
+  public Matrix a;
+  public EditorPicInfo a;
   
-  public void a(@Nullable bkph parambkph)
+  @NonNull
+  public String toString()
   {
-    bkqa.a(this.a, parambkph);
-    if (bkqa.a(this.a) != null) {
-      bkqa.a(this.a).a(this.a);
-    }
+    return "AEPhotoCropInfoWrapper{editorPicInfo=" + this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageEditorPicInfo + ", matrix=" + this.jdField_a_of_type_AndroidGraphicsMatrix + "}";
   }
 }
 

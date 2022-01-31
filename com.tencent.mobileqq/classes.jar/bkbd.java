@@ -1,18 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 
-public final class bkbd
-  implements Parcelable.Creator<AlumBasicData>
+class bkbd
+  extends Handler
 {
-  public AlumBasicData a(Parcel paramParcel)
+  bkbd(bkbb parambkbb, Looper paramLooper)
   {
-    return new AlumBasicData(paramParcel);
+    super(paramLooper);
   }
   
-  public AlumBasicData[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new AlumBasicData[paramInt];
+    int j = 0;
+    if (this.a.getCallback() == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramMessage.what != 1000) || (!bkbb.a(this.a).jdField_a_of_type_Boolean));
+      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bkbb.a(this.a).jdField_a_of_type_Int));
+      int i;
+      if ((bkbb.a(this.a)) && (bkbb.a(this.a).jdField_a_of_type_Bkbh.a() != 0)) {
+        i = k % bkbb.a(this.a).jdField_a_of_type_Bkbh.a();
+      }
+      for (;;)
+      {
+        bkbb.a(this.a).jdField_a_of_type_Bkbh.a(i);
+        if (j != 0) {
+          break;
+        }
+        long l = 1000 / bkbb.a(this.a).jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
+        this.a.invalidateSelf();
+        return;
+        i = k;
+        if (k >= bkbb.a(this.a).jdField_a_of_type_Bkbh.a())
+        {
+          j = 1;
+          i = k;
+        }
+      }
+      this.a.stop();
+      this.a.invalidateSelf();
+    } while (this.a.jdField_a_of_type_Bkbe == null);
+    this.a.jdField_a_of_type_Bkbe.onAnimationFinished();
   }
 }
 

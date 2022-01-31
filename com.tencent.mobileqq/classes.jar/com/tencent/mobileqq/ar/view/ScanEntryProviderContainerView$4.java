@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import ampd;
+import amts;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, ampd paramampd) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, amts paramamts) {}
   
   public void run()
   {

@@ -1,16 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acse
-  implements View.OnClickListener
+  extends ulw
 {
-  public acse(FontSettingActivity paramFontSettingActivity) {}
+  public acse(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void d(boolean paramBoolean)
   {
-    FontSettingActivity.a(this.a).dismiss();
+    if (paramBoolean)
+    {
+      wxe.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, false);
   }
 }
 

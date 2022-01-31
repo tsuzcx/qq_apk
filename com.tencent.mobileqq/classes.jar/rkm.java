@@ -23,9 +23,9 @@ class rkm
       localsyw.iconNeedBg = false;
       localsyw.action = 24;
       localsyw.argus = "";
-      Drawable localDrawable = bdda.b();
+      Drawable localDrawable = bdhj.b();
       if ((ors.w(rkd.a(this.jdField_a_of_type_Rkd))) || (rkd.a(this.jdField_a_of_type_Rkd).busiType == 1)) {}
-      for (paramInteger = bcxb.a(rkd.a(this.jdField_a_of_type_Rkd), 1, rkd.a(this.jdField_a_of_type_Rkd).getSubscribeUin(), 3, localDrawable, localDrawable);; paramInteger = localDrawable)
+      for (paramInteger = bdbk.a(rkd.a(this.jdField_a_of_type_Rkd), 1, rkd.a(this.jdField_a_of_type_Rkd).getSubscribeUin(), 3, localDrawable, localDrawable);; paramInteger = localDrawable)
       {
         for (;;)
         {
@@ -40,7 +40,7 @@ class rkm
             for (paramInteger = new URL("http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png");; paramInteger = new URL(rkd.a(this.jdField_a_of_type_Rkd).thirdIcon))
             {
               paramInteger = URLDrawable.getDrawable(paramInteger, localURLDrawableOptions);
-              paramInteger.setDecodeHandler(bcuq.a);
+              paramInteger.setDecodeHandler(bcyz.a);
               break;
             }
             if (!QLog.isColorLevel()) {}

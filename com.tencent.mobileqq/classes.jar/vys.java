@@ -1,71 +1,198 @@
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.view.Surface;
+import java.util.Map;
 
+@TargetApi(14)
 public class vys
-  extends uhn
+  implements vyi
 {
-  public vys(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  MediaPlayer a = new MediaPlayer();
   
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public int a()
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    return this.a.getDuration();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.setVolume(paramFloat1, paramFloat2);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.seekTo(paramInt);
+  }
+  
+  public void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public void a(Surface paramSurface)
+  {
+    this.a.setSurface(paramSurface);
+  }
+  
+  public void a(vyj paramvyj)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyj == null) {}
+    for (paramvyj = null;; paramvyj = new vyv(this, paramvyj))
     {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
-      }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
-      }
-    }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
+      localMediaPlayer.setOnBufferingUpdateListener(paramvyj);
       return;
-      paramBoolean = false;
-      break;
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(vyk paramvyk)
   {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_Beps.b();
-    if (paramBoolean1) {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyk == null) {}
+    for (paramvyk = null;; paramvyk = new vyu(this, paramvyk))
+    {
+      localMediaPlayer.setOnCompletionListener(paramvyk);
       return;
     }
-    QQToast.a(this.a, 2131695132, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
+  }
+  
+  public void a(vyl paramvyl)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyl == null) {}
+    for (paramvyl = null;; paramvyl = new vyy(this, paramvyl))
     {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
+      localMediaPlayer.setOnErrorListener(paramvyl);
       return;
+    }
+  }
+  
+  public void a(vym paramvym)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvym == null) {}
+    for (paramvym = null;; paramvym = new vyz(this, paramvym))
+    {
+      localMediaPlayer.setOnInfoListener(paramvym);
+      return;
+    }
+  }
+  
+  public void a(vyn paramvyn)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyn == null) {}
+    for (paramvyn = null;; paramvyn = new vyt(this, paramvyn))
+    {
+      localMediaPlayer.setOnPreparedListener(paramvyn);
+      return;
+    }
+  }
+  
+  public void a(vyo paramvyo)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyo == null) {}
+    for (paramvyo = null;; paramvyo = new vyw(this, paramvyo))
+    {
+      localMediaPlayer.setOnSeekCompleteListener(paramvyo);
+      return;
+    }
+  }
+  
+  public void a(vyq paramvyq)
+  {
+    MediaPlayer localMediaPlayer = this.a;
+    if (paramvyq == null) {}
+    for (paramvyq = null;; paramvyq = new vyx(this, paramvyq))
+    {
+      localMediaPlayer.setOnVideoSizeChangedListener(paramvyq);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.setLooping(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.a.isPlaying();
+  }
+  
+  public int b()
+  {
+    return this.a.getCurrentPosition();
+  }
+  
+  public void b()
+  {
+    this.a.prepareAsync();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.setAudioSessionId(paramInt);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.a.setScreenOnWhilePlaying(paramBoolean);
+  }
+  
+  public int c()
+  {
+    return this.a.getVideoWidth();
+  }
+  
+  public void c()
+  {
+    this.a.start();
+  }
+  
+  public void c(int paramInt)
+  {
+    this.a.setAudioStreamType(paramInt);
+  }
+  
+  public int d()
+  {
+    return this.a.getVideoHeight();
+  }
+  
+  public void d()
+  {
+    this.a.pause();
+  }
+  
+  public int e()
+  {
+    return this.a.getAudioSessionId();
+  }
+  
+  public void e()
+  {
+    this.a.stop();
+  }
+  
+  public void f()
+  {
+    this.a.release();
+  }
+  
+  public void g()
+  {
+    try
+    {
+      this.a.reset();
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      azpo.a(localIllegalStateException);
     }
   }
 }

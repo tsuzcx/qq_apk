@@ -1,12 +1,14 @@
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+
 class agsf
-  extends alxo
+  implements Comparator<MessageRecord>
 {
   agsf(agse paramagse) {}
   
-  public void a(String paramString, int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    super.a(paramString, paramInt);
-    agse.a(this.a).b();
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

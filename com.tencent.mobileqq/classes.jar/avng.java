@@ -1,82 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-final class avng
-  implements auzh
+class avng
+  implements View.OnClickListener
 {
-  avng(avnk paramavnk) {}
+  avng(avmf paramavmf, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    for (;;)
+    Intent localIntent = new Intent(this.jdField_a_of_type_Avmf.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    paramView = this.jdField_a_of_type_Avmf.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avmf.a.j)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_Avmf.a.startActivity(localIntent);
+      azqs.b(this.jdField_a_of_type_Avmf.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
+      return;
     }
   }
 }

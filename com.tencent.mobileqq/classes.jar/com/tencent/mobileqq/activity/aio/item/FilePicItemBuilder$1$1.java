@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afhq;
-import arof;
+import afmf;
+import arso;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class FilePicItemBuilder$1$1
@@ -11,7 +11,7 @@ class FilePicItemBuilder$1$1
   
   public void run()
   {
-    if ((arof.b(this.a.a.strLargeThumPath)) || (arof.b(this.a.a.strMiddleThumPath))) {
+    if ((arso.b(this.a.a.strLargeThumPath)) || (arso.b(this.a.a.strMiddleThumPath))) {
       this.a.this$0.b();
     }
   }

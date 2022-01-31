@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
-import xot;
+import xtc;
 
 public class FFmpeg$3
   extends ArrayList<Object>
 {
-  public FFmpeg$3(xot paramxot, String paramString1, String paramString2)
+  public FFmpeg$3(xtc paramxtc, String paramString1, String paramString2)
   {
     add(this.val$inputPath);
     add(this.val$tsFilePath);

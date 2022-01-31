@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bdcd;
-import bkle;
-import bklf;
-import bklg;
-import bmcv;
+import bdgm;
+import bkpl;
+import bkpm;
+import bkpn;
+import bmhh;
 
 public class AEPituCameraUnit$10
   implements Runnable
 {
-  public AEPituCameraUnit$10(bkle parambkle, String paramString) {}
+  public AEPituCameraUnit$10(bkpl parambkpl, String paramString) {}
   
   public void run()
   {
-    bklf localbklf = new bklf(this);
-    bklg localbklg = new bklg(this);
-    bdcd.a(bkle.a(this.this$0).a(), null, this.a, localbklf, localbklf, localbklg);
+    bkpm localbkpm = new bkpm(this);
+    bkpn localbkpn = new bkpn(this);
+    bdgm.a(bkpl.a(this.this$0).a(), null, this.a, localbkpm, localbkpm, localbkpn);
   }
 }
 

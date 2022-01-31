@@ -1,150 +1,88 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.Locale;
+import mqq.observer.WtloginObserver;
 
-public class axmk
+class axmk
+  extends WtloginObserver
 {
-  public static final String a;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k = 1;
-  private int l = 2000000;
-  private int m = 1;
-  private int n = 1;
+  axmk(axmj paramaxmj) {}
   
-  static
+  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir().getPath() + "/Android/data/com.tencent.mobileqq/qq/video/LightVideo/";
-    jdField_c_of_type_JavaLangString = "key_aio_fbo";
-    jdField_d_of_type_JavaLangString = "key_riji_h_compress_fbo";
-    jdField_e_of_type_JavaLangString = "key_riji_h_clip_fbo";
-    jdField_f_of_type_JavaLangString = "key_riji_l_compress_fbo";
-    jdField_g_of_type_JavaLangString = "key_riji_l_clip_fbo";
-    jdField_h_of_type_JavaLangString = "key_ae_gif_fbo";
-  }
-  
-  public axmk()
-  {
-    this.jdField_e_of_type_Int = 960;
-    this.jdField_f_of_type_Int = 720;
-    this.jdField_g_of_type_Int = 960;
-    this.jdField_h_of_type_Int = 720;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_JavaLangString = (BaseApplicationImpl.getContext().getFilesDir().getPath() + "/Android/data/com.tencent.mobileqq/qq/video/Source/" + this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_h_of_type_Int = paramInt;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.i = paramInt;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.j = paramInt;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void h(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void i(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public void j(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public void k(int paramInt)
-  {
-    this.m = paramInt;
-  }
-  
-  public void l(int paramInt)
-  {
-    this.n = paramInt;
-  }
-  
-  public void m(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "CaptureParam{wantedPreviewWidth=" + this.jdField_e_of_type_Int + ", wantedPreviewHeight=" + this.jdField_f_of_type_Int + ", defaultCamera=" + this.k + ", videoSizeRate=" + this.jdField_a_of_type_Float + ", videoBitRate=" + this.l + ", videoIFrameInterval=" + this.m + ", captureDir='" + this.jdField_b_of_type_JavaLangString + '\'' + ", audioCaptureEnable=" + this.jdField_a_of_type_Boolean + ", functionFlag=" + this.n + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d(axmj.jdField_a_of_type_JavaLangString, 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
+      return;
+    }
+    if (paramArrayOfByte3 != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
+        QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        String str = Integer.toString(paramInt);
+        if (paramArrayOfByte1 != null) {
+          break label208;
+        }
+        paramArrayOfByte3 = "";
+        azqs.a(localQQAppInterface, "new_reg", "setting_page_no", "result", "", 1, "", str, "", paramArrayOfByte3, "", "", "", "", "");
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+        if (paramInt != 0) {
+          break label469;
+        }
+        axmj.a(this.a, Long.valueOf(paramLong).toString());
+        axmj.a(this.a, paramArrayOfByte2);
+        if (!TextUtils.isEmpty(axmj.a(this.a))) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717527, 1);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte1)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+      paramArrayOfByte1 = null;
+      continue;
+      label208:
+      paramArrayOfByte3 = paramArrayOfByte1;
+    }
+    if ((axmj.a(this.a) == null) || (axmj.a(this.a).length == 0))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717527, 1);
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d(axmj.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccount ret: %s, uin: %s, sign: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), MD5.toMD5(axmj.a(this.a)) }));
+    }
+    paramArrayOfByte1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
+    paramArrayOfByte1.putExtra("phonenum", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
+    paramArrayOfByte1.putExtra("invite_code", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c);
+    paramArrayOfByte1.putExtra("key", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+    paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
+    paramArrayOfByte1.putExtra("uin", axmj.a(this.a));
+    paramArrayOfByte1.putExtra("key_register_sign", axmj.a(this.a));
+    paramArrayOfByte1.putExtra("key_register_from_send_sms", axmj.a(this.a));
+    paramArrayOfByte1.putExtra("key_register_chose_bind_phone", true);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(paramArrayOfByte1);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+    return;
+    label469:
+    if (TextUtils.isEmpty(paramArrayOfByte1))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717527, 1);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(paramArrayOfByte1, 1);
   }
 }
 

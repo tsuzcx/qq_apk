@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-class afhb
-  implements DialogInterface.OnClickListener
+public abstract interface afhb
 {
-  afhb(afgz paramafgz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

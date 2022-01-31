@@ -364,7 +364,7 @@ public abstract class YUVTexture
             if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
             {
               this.m = paramlsv.a().a();
-              this.m = a(2130840080, this.m);
+              this.m = a(2130840081, this.m);
             }
             if (this.k == -1) {
               break label286;

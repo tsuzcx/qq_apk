@@ -1,25 +1,46 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aqfm
-  implements Animation.AnimationListener
+class aqfm
+  implements aqgj
 {
-  public aqfm(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
+  aqfm(aqfk paramaqfk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, aqcl paramaqcl, String paramString1, String paramString2)
   {
-    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
-    paramAnimation.setDuration(500L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, "onMatchingResult, result = " + paramInt + " nickName : " + paramString1);
+      if (paramaqcl != null) {
+        QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, " info：" + paramaqcl.toString());
+      }
+    }
+    if ((aqfk.a(this.a) == null) || (aqfk.a(this.a).get() == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExtendFriendLimitChatManager", 2, "onMatchingResult, listener = null");
+      }
+    }
+    while (this.a.a() != 2) {
+      return;
+    }
+    if ((paramInt != 0) || (paramaqcl == null)) {
+      this.a.a().a(104);
+    }
+    for (;;)
+    {
+      ((aqfp)aqfk.a(this.a).get()).a(paramInt, paramaqcl, paramString1, paramString2);
+      return;
+      aqfk.a(this.a, paramaqcl.a());
+      this.a.a = paramString1;
+      this.a.a().a(105);
+      if (!aqfk.a(this.a))
+      {
+        QQNotificationManager.getInstance().createLimitChatNotificationChannel();
+        aqfk.a(this.a, true);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

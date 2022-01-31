@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.vas.PendantInfo;
-
-public class bdpc
+public abstract interface bdpc
 {
-  public String a;
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
   
-  public bdpc(PendantInfo paramPendantInfo, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
 }
 
 

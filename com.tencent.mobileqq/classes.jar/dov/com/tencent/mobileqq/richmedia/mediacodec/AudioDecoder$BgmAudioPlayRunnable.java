@@ -2,8 +2,8 @@ package dov.com.tencent.mobileqq.richmedia.mediacodec;
 
 import android.media.MediaPlayer;
 import android.text.TextUtils;
-import bnjc;
-import bnjd;
+import bnno;
+import bnnp;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class AudioDecoder$BgmAudioPlayRunnable
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bnjd(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bnnp(this));
       return;
     }
     catch (FileNotFoundException paramString)

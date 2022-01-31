@@ -1,194 +1,85 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.opengl.GLES20;
 
-class bniv
-  extends BaseAdapter
+public class bniv
 {
-  private int jdField_a_of_type_Int;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bniw jdField_a_of_type_Bniw;
-  private List<ShareActionSheetBuilder.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  private static int[] a = new int[1];
   
-  public bniv(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public static int a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    return a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", "precision mediump float;varying   vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.y = texture2D(SamplerU, texturecoordinateOut).r-0.5;\nyuv.z = texture2D(SamplerV, texturecoordinateOut).r-0.5;\nrgb = mat3(      1,       1,      1,\n0, \t\t-.34414, 1.772,\n1.402, \t-.71414, 0) * yuv;\nrgba = vec4(rgb, 1);\ngl_FragColor = rgba;\n}\n");
   }
   
-  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt)
+  private static int a(int paramInt1, int paramInt2)
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0))
+    int i = GLES20.glCreateProgram();
+    if (i == 0)
     {
-      localActionSheetItem = null;
-      return localActionSheetItem;
-    }
-    int j = -1;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label89;
-      }
-      localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = j;
-      if (localActionSheetItem != null)
-      {
-        k = j;
-        if (localActionSheetItem.visibility == 0) {
-          k = j + 1;
-        }
-      }
-      if (k == paramInt) {
-        break;
-      }
-      i += 1;
-      j = k;
-    }
-    label89:
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+      bnit.a("glCreateProgram:program == 0");
       return 0;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    GLES20.glAttachShader(i, paramInt1);
+    GLES20.glAttachShader(i, paramInt2);
+    GLES20.glLinkProgram(i);
+    GLES20.glGetProgramiv(i, 35714, a, 0);
+    if (a[0] == 0)
     {
-      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      if ((localActionSheetItem == null) || (localActionSheetItem.visibility != 0)) {
-        break label60;
-      }
-      i += 1;
+      String str = GLES20.glGetProgramInfoLog(i);
+      GLES20.glDeleteProgram(i);
+      bnit.a("linkProgram:GL_COMPILE_STATUS errorinfo =" + str);
+      return 0;
     }
-    label60:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
-  public long getItemId(int paramInt)
+  private static int a(int paramInt, String paramString)
   {
-    return paramInt;
+    int i = GLES20.glCreateShader(paramInt);
+    if (i == 0)
+    {
+      bnit.a("glCreateShader:shader==0 type=" + a(paramInt));
+      return 0;
+    }
+    GLES20.glShaderSource(i, paramString);
+    GLES20.glCompileShader(i);
+    GLES20.glGetShaderiv(i, 35713, a, 0);
+    if (a[0] == 0)
+    {
+      paramString = GLES20.glGetShaderInfoLog(i);
+      GLES20.glDeleteShader(i);
+      bnit.a("glGetShaderiv:GL_COMPILE_STATUS error  loginfo=" + paramString);
+      return 0;
+    }
+    return i;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static int a(String paramString1, String paramString2)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidContentResResources == null) {
-      this.jdField_a_of_type_AndroidContentResResources = paramViewGroup.getContext().getResources();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131296685));
-    }
-    if (this.jdField_a_of_type_Bniw == null) {
-      this.jdField_a_of_type_Bniw = new bniw(paramViewGroup.getContext());
-    }
-    if (paramView == null)
+    int i = a(35633, paramString1);
+    int j = a(35632, paramString2);
+    if ((i == 0) || (j == 0))
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558863, paramViewGroup, false);
-      paramViewGroup = new bnix();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376507));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376508));
-      paramView.setTag(paramViewGroup);
+      bnit.a("compileShader:vertext or fragment == 0");
+      return 0;
     }
-    for (;;)
+    int k = a(i, j);
+    if (k == 0)
     {
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem = a(paramInt);
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem != null) {
-        break;
-      }
-      QLog.e("ShareActionSheet", 2, "ShareActionSheet.ActionSheetItemAdapter.getView() getItem(" + paramInt + ") == null !!!");
-      return paramView;
-      paramViewGroup = (bnix)paramView.getTag();
+      GLES20.glDeleteShader(i);
+      GLES20.glDeleteShader(j);
+      return 0;
     }
-    paramView.setId(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.id);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(bnit.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label, 6));
-    paramInt = -8947849;
-    Object localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable)
-    {
-      ((TextView)localObject).setTextColor(paramInt);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconNeedBg) {
-        break label454;
-      }
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable == null) {
-        break label397;
-      }
-      localObject = paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable;
-      label262:
-      paramInt = ((Drawable)localObject).getIntrinsicWidth();
-      int j = ((Drawable)localObject).getIntrinsicHeight();
-      if (this.jdField_a_of_type_Int <= paramInt) {
-        break label416;
-      }
-      paramInt = (int)((this.jdField_a_of_type_Int - paramInt) / 2.0F);
-      label294:
-      if (this.jdField_a_of_type_Int > j) {
-        i = (int)((this.jdField_a_of_type_Int - j) / 2.0F);
-      }
-      localObject = this.jdField_a_of_type_Bniw.a((Drawable)localObject, paramInt, i);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable) {
-        break label421;
-      }
-      Drawable localDrawable = bniw.a(this.jdField_a_of_type_Bniw, (Drawable)localObject);
-      localObject = this.jdField_a_of_type_Bniw.a((Drawable)localObject, localDrawable);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    return k;
+  }
+  
+  private static String a(int paramInt)
+  {
+    if (paramInt == 35633) {
+      return "GL_VERTEX_SHADER";
     }
-    for (;;)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label444;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(null);
-      return paramView;
-      paramInt = 2138535799;
-      break;
-      label397:
-      localObject = this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
-      break label262;
-      label416:
-      paramInt = 0;
-      break label294;
-      label421:
-      localObject = bniw.b(this.jdField_a_of_type_Bniw, (Drawable)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    if (paramInt == 35632) {
+      return "GL_FRAGMENT_SHADER";
     }
-    label444:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    return paramView;
-    label454:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837550);
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
-        return paramView;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
-      return paramView;
-    }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
-    return paramView;
+    return "unKnown";
   }
 }
 

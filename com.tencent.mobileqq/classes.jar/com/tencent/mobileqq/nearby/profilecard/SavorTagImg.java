@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import alpo;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,8 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import avll;
-import avlp;
+import avpu;
+import avpy;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.widget.HorizontalListView;
 import java.security.InvalidParameterException;
@@ -35,7 +35,7 @@ public class SavorTagImg
   static final int[] b = { 85, 60, 60 };
   int jdField_a_of_type_Int;
   public TextView a;
-  avll jdField_a_of_type_Avll;
+  avpu jdField_a_of_type_Avpu;
   public HorizontalListView a;
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = true;
@@ -62,7 +62,7 @@ public class SavorTagImg
     getResources().getDimensionPixelSize(2131297112);
     int i = getResources().getDimensionPixelSize(2131297113);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561086, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561104, null));
     LinearLayout.LayoutParams localLayoutParams = generateDefaultLayoutParams();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -73,14 +73,14 @@ public class SavorTagImg
   
   private void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Avll != null)
+    if (this.jdField_a_of_type_Avpu != null)
     {
-      Object localObject = (avlp)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
+      Object localObject = (avpy)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
       if (localObject != null)
       {
-        localObject = (InterestTagInfo)((avlp)localObject).getItem(paramInt);
+        localObject = (InterestTagInfo)((avpy)localObject).getItem(paramInt);
         if (localObject != null) {
-          this.jdField_a_of_type_Avll.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
+          this.jdField_a_of_type_Avpu.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
         }
       }
     }
@@ -91,7 +91,7 @@ public class SavorTagImg
     if ((this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder(alpo.a(2131713885));
+    StringBuilder localStringBuilder = new StringBuilder(alud.a(2131713897));
     ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
     if (localListAdapter == null) {
       return "";
@@ -114,14 +114,14 @@ public class SavorTagImg
   }
   
   @TargetApi(9)
-  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, avll paramavll)
+  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, avpu paramavpu)
   {
     if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView != null) {
       throw new InvalidParameterException("SavorTagImg can not init twice");
     }
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Avll = paramavll;
+    this.jdField_a_of_type_Avpu = paramavpu;
     int i = 0;
     int k;
     int j;
@@ -146,17 +146,17 @@ public class SavorTagImg
         int n = getResources().getDimensionPixelSize(2131297274);
         paramString.setSize(n, n);
         label214:
-        paramString = new avlp(getContext(), paramString, k, j, paramInt);
+        paramString = new avpy(getContext(), paramString, k, j, paramInt);
         paramString.a(0 - i);
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(getContext());
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(i);
-        paramavll = generateDefaultLayoutParams();
-        paramavll.width = -1;
-        paramavll.height = paramString.a();
-        paramavll.bottomMargin = m;
-        addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, paramavll);
+        paramavpu = generateDefaultLayoutParams();
+        paramavpu.width = -1;
+        paramavpu.height = paramString.a();
+        paramavpu.bottomMargin = m;
+        addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, paramavpu);
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramString);
-        if (this.jdField_a_of_type_Avll == null) {
+        if (this.jdField_a_of_type_Avpu == null) {
           break label402;
         }
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemLongClickListener(this);
@@ -191,11 +191,11 @@ public class SavorTagImg
     if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null) {
       throw new InvalidParameterException("can not updateData before init");
     }
-    avlp localavlp = (avlp)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
-    if (localavlp == null) {
+    avpy localavpy = (avpy)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
+    if (localavpy == null) {
       return;
     }
-    localavlp.a(paramList);
+    localavpy.a(paramList);
     if (paramList == null) {}
     for (int i = 0; i > 0; i = paramList.size())
     {
@@ -248,7 +248,7 @@ public class SavorTagImg
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839097, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839098, 0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

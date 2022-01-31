@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.miniapp;
 
 import android.os.Bundle;
-import atzr;
-import atzs;
+import auea;
+import aueb;
 import com.tencent.qphone.base.util.QLog;
 
 public class AKOfflineDownloader$1$1
   implements Runnable
 {
-  public AKOfflineDownloader$1$1(atzs paramatzs) {}
+  public AKOfflineDownloader$1$1(aueb paramaueb) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("bid", this.a.jdField_a_of_type_JavaLangString);
-    localBundle.putString("path", atzr.a(this.a.jdField_a_of_type_JavaLangString, ""));
-    atzr.a(this.a.jdField_a_of_type_Atzr.a(localBundle), this.a.b, this.a.c, 1, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangObject);
+    localBundle.putString("path", auea.a(this.a.jdField_a_of_type_JavaLangString, ""));
+    auea.a(this.a.jdField_a_of_type_Auea.a(localBundle), this.a.b, this.a.c, 1, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangObject);
     QLog.d("AKOfflineDownloader", 2, new Object[] { " checkUpByBusinessId load success. param null. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
   }
 }

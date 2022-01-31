@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewplugin;
 
-import zbu;
+import zgj;
 
 public class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(zbu paramzbu) {}
+  public UrlCheckPlugin$4(zgj paramzgj) {}
   
   public void run()
   {

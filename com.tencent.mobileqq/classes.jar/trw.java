@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
-public class trw
+public abstract class trw
+  implements ydl
 {
-  public long a;
-  public MessageMicro a;
-  public String a;
-  public boolean a;
-  
-  public trw(long paramLong, String paramString, MessageMicro paramMessageMicro, boolean paramBoolean)
+  public QCircleInitBean a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return null;
   }
+  
+  public QCirclePolymorphicAniView a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public tuz a()
+  {
+    return null;
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(ttf paramttf) {}
 }
 
 

@@ -1,79 +1,57 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqbq
+  implements baug
 {
-  private aqbr jdField_a_of_type_Aqbr;
-  private aqbs jdField_a_of_type_Aqbs;
-  private aqbt jdField_a_of_type_Aqbt;
-  private aqbu jdField_a_of_type_Aqbu;
+  public aqbq(ExtendFriendResourceDownloader.4 param4) {}
   
-  public aqbq(aqbb paramaqbb)
+  public void onResp(bavf parambavf)
   {
-    this.jdField_a_of_type_Aqbu = new aqbu(this, paramaqbb);
-    this.jdField_a_of_type_Aqbt = new aqbt(this, paramaqbb);
-    this.jdField_a_of_type_Aqbs = new aqbs(this, paramaqbb);
-    this.jdField_a_of_type_Aqbr = this.jdField_a_of_type_Aqbu;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Aqbr.a;
-  }
-  
-  public aqbr a(int paramInt)
-  {
-    switch (paramInt)
+    int i = 0;
+    aqbk localaqbk = (aqbk)parambavf.jdField_a_of_type_Bave.a();
+    if (localaqbk != null)
     {
-    case 1: 
-    default: 
-      return this.jdField_a_of_type_Aqbs;
-    case 0: 
-      return this.jdField_a_of_type_Aqbu;
+      if (parambavf.jdField_a_of_type_Int == 0) {
+        break label147;
+      }
+      QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + localaqbk.b);
     }
-    return this.jdField_a_of_type_Aqbt;
-  }
-  
-  public void a(int paramInt)
-  {
-    b(paramInt, -1);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 != this.jdField_a_of_type_Aqbr.a)
+    for (;;)
     {
-      aqbr localaqbr = a(paramInt1);
-      if (localaqbr != null)
+      if ((i != 0) && (aqbm.a(this.a.this$0, localaqbk)))
       {
-        this.jdField_a_of_type_Aqbr.a();
-        this.jdField_a_of_type_Aqbr = localaqbr;
-        this.jdField_a_of_type_Aqbr.a(paramInt2);
+        ((aqbe)aqbm.a(this.a.this$0).a(127)).notifyUI(8, true, Boolean.valueOf(true));
+        QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
+      }
+      aqbm.a(this.a.this$0, localaqbk);
+      return;
+      label147:
+      if (!localaqbk.c.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
+      {
+        QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed: " + localaqbk.b + "md5 is not match. ：" + SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c) + " infomd5:" + localaqbk.c);
+        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener resFile success. file: " + localaqbk.jdField_a_of_type_JavaLangString + localaqbk.b);
+        }
+        String str = aqfx.c();
+        boolean bool = aqbm.b(this.a.this$0, parambavf.jdField_a_of_type_Bave.c, str);
+        i = bool;
+        if (!bool)
+        {
+          QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  unzip file failed.");
+          i = bool;
+        }
       }
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
-  {
-    c(paramInt1, paramInt2);
-    int i = this.jdField_a_of_type_Aqbr.a;
-    if ((!this.jdField_a_of_type_Aqbr.a(paramInt1, paramInt2)) && (QLog.isColorLevel())) {
-      QLog.e("LimitChatUiStateMachine", 2, "state " + i + " not handle event " + paramInt1 + ", subEvent " + paramInt2);
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Aqbr.a == 0);
-    this.jdField_a_of_type_Aqbr.b();
-    this.jdField_a_of_type_Aqbr = this.jdField_a_of_type_Aqbu;
-    this.jdField_a_of_type_Aqbr.a(-1);
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

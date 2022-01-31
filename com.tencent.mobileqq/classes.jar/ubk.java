@@ -1,26 +1,43 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.ViewModel;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public class ubk
-  implements ubh
+public abstract class ubk
+  extends ViewModel
 {
-  public ubk(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget) {}
+  protected int a = -1;
+  protected uae a;
   
-  public void a()
-  {
-    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 3L);
-  }
+  public abstract String a();
+  
+  public void a() {}
   
   public void a(int paramInt)
   {
-    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 1L, String.valueOf(paramInt));
+    this.a = paramInt;
   }
   
-  public void b(int paramInt)
+  public void a(int paramInt, VSBaseRequest paramVSBaseRequest, zac paramzac)
   {
-    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 2L, String.valueOf(paramInt));
+    VSNetworkHelper.a().a(paramInt, paramVSBaseRequest, paramzac);
+    if (paramVSBaseRequest != null) {
+      QLog.d(a(), 1, a() + "->sendQCircleRequest: CmdName:" + paramVSBaseRequest.getCmdName() + "| TraceId:" + paramVSBaseRequest.getTraceId() + " | SeqId:" + paramVSBaseRequest.getCurrentSeq());
+    }
   }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, zac paramzac)
+  {
+    a(this.a, paramVSBaseRequest, paramzac);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d(a(), 1, "loadPreloadResult:" + paramString);
+    ykb.a(paramString, new ubl(this));
+  }
+  
+  protected void a(Object[] paramArrayOfObject) {}
 }
 
 

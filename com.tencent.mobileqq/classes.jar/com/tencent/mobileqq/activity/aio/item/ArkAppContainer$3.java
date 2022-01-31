@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afdt;
+import afii;
 import com.tencent.ark.open.ArkAppInfo.TimeRecord;
 
 public class ArkAppContainer$3
   implements Runnable
 {
-  public ArkAppContainer$3(afdt paramafdt) {}
+  public ArkAppContainer$3(afii paramafii) {}
   
   public void run()
   {

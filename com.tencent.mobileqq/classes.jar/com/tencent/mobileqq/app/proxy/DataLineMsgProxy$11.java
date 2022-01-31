@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amjd;
+import amns;
 
 public class DataLineMsgProxy$11
   implements Runnable
 {
-  public DataLineMsgProxy$11(amjd paramamjd, long paramLong) {}
+  public DataLineMsgProxy$11(amns paramamns, long paramLong) {}
   
   public void run()
   {
-    amjd.b(this.this$0, this.a);
+    amns.b(this.this$0, this.a);
   }
 }
 

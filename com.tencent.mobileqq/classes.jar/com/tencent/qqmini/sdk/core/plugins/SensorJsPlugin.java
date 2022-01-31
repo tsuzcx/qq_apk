@@ -4,10 +4,10 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Vibrator;
-import bghn;
-import bgho;
-import bgkd;
-import bgkk;
+import bglu;
+import bglv;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
@@ -69,36 +69,36 @@ public class SensorJsPlugin
     }
   }
   
-  public String enableAccelerometer(bgkd parambgkd)
+  public String enableAccelerometer(bgok parambgok)
   {
-    bgkk.a(new SensorJsPlugin.1(this, parambgkd));
+    bgor.a(new SensorJsPlugin.1(this, parambgok));
     return "";
   }
   
-  public String enableCompass(bgkd parambgkd)
+  public String enableCompass(bgok parambgok)
   {
-    bgkk.a(new SensorJsPlugin.2(this, parambgkd));
+    bgor.a(new SensorJsPlugin.2(this, parambgok));
     return "";
   }
   
-  public String enableDeviceMotionChangeListening(bgkd parambgkd)
+  public String enableDeviceMotionChangeListening(bgok parambgok)
   {
-    bgkk.a(new SensorJsPlugin.4(this, parambgkd));
+    bgor.a(new SensorJsPlugin.4(this, parambgok));
     return "";
   }
   
-  public String enableGyroscope(bgkd parambgkd)
+  public String enableGyroscope(bgok parambgok)
   {
-    bgkk.a(new SensorJsPlugin.3(this, parambgkd));
+    bgor.a(new SensorJsPlugin.3(this, parambgok));
     return "";
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
   }
   
-  public final boolean startAccelerometer(bghn parambghn, int paramInt)
+  public final boolean startAccelerometer(bglu parambglu, int paramInt)
   {
     if (this.senSensorManager == null) {}
     while (this.senAccelerometer == null) {
@@ -114,7 +114,7 @@ public class SensorJsPlugin
     return true;
   }
   
-  public final boolean startGyroscope(bghn parambghn, int paramInt)
+  public final boolean startGyroscope(bglu parambglu, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.gyroscopeSensor == null)) {
       return false;
@@ -127,7 +127,7 @@ public class SensorJsPlugin
     return true;
   }
   
-  public final boolean startRotationListening(bghn parambghn, int paramInt)
+  public final boolean startRotationListening(bglu parambglu, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.orientationSensor == null)) {
       return false;
@@ -136,7 +136,7 @@ public class SensorJsPlugin
       stopRotationListening();
     }
     this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, null);
-    this.orientationSensorJsPlugin.setJsService(parambghn);
+    this.orientationSensorJsPlugin.setJsService(parambglu);
     this.senSensorManager.registerListener(this.orientationSensorJsPlugin, this.orientationSensor, paramInt);
     return true;
   }
@@ -168,19 +168,19 @@ public class SensorJsPlugin
     }
   }
   
-  public String vibrateLong(bgkd parambgkd)
+  public String vibrateLong(bgok parambgok)
   {
     initSensor();
     ThreadManager.a(new SensorJsPlugin.6(this), 16, null, true);
-    parambgkd.a();
+    parambgok.a();
     return "";
   }
   
-  public String vibrateShort(bgkd parambgkd)
+  public String vibrateShort(bgok parambgok)
   {
     initSensor();
     ThreadManager.a(new SensorJsPlugin.5(this), 16, null, true);
-    parambgkd.a();
+    parambgok.a();
     return "";
   }
 }

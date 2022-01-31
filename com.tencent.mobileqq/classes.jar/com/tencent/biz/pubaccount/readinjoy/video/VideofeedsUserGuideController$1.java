@@ -12,9 +12,9 @@ public class VideofeedsUserGuideController$1
   public void run()
   {
     rlo.a(this.this$0).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379379).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379373).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379374).setVisibility(8);
+    rlo.a(this.this$0).findViewById(2131379437).setVisibility(8);
+    rlo.a(this.this$0).findViewById(2131379431).setVisibility(8);
+    rlo.a(this.this$0).findViewById(2131379432).setVisibility(8);
   }
 }
 

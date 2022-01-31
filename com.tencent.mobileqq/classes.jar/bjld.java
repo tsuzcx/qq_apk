@@ -1,13 +1,19 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
 
-class bjld
+public final class bjld
+  implements Parcelable.Creator<PublishEventTag>
 {
-  bjle jdField_a_of_type_Bjle;
-  bjlf jdField_a_of_type_Bjlf;
-  PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  String jdField_a_of_type_JavaLangString;
+  public PublishEventTag a(Parcel paramParcel)
+  {
+    return new PublishEventTag(paramParcel);
+  }
   
-  bjld(bjlb parambjlb) {}
+  public PublishEventTag[] a(int paramInt)
+  {
+    return new PublishEventTag[paramInt];
+  }
 }
 
 

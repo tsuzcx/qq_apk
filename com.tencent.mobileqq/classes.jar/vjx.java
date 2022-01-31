@@ -1,34 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-final class vjx
-  implements vhu
+class vjx
+  extends vik
 {
-  vjx(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
-  
-  public void a(int paramInt)
+  vjx(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    xqq.a(str);
+    xqq.a(this.jdField_a_of_type_Vkq.d);
+    if (this.jdField_a_of_type_Vkq.d == null)
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
-      }
+      this.jdField_a_of_type_Vkq.d = "";
+      wxe.c(this.b, "imageLocalPath is null", new Throwable());
     }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      vju.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
+    return true;
   }
 }
 

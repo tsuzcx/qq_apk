@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.contacts.view.IndexBar;
-import com.tencent.widget.AbsListView;
-import java.util.Arrays;
+import com.tencent.qphone.base.util.QLog;
 
 class bcdn
-  implements bhpo
+  extends bead
 {
-  bcdn(bcdm parambcdm) {}
+  bcdn(bcdk parambcdk, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onDone(beae parambeae)
   {
-    paramInt1 = Arrays.binarySearch(bcdm.a(this.a), paramInt1);
-    if ((paramInt1 >= 0) && (bcdm.a(this.a).a != null)) {
-      bcdm.a(this.a).a.setChooseIndex(paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambeae.c + " code = " + parambeae.jdField_a_of_type_Int);
     }
+    boolean bool = bcdk.a(this.jdField_a_of_type_Bcdk, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
+    }
+    bcdk.b(this.jdField_a_of_type_Bcdk);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void onProgress(beae parambeae)
+  {
+    int i = (int)(parambeae.jdField_a_of_type_Float * 100.0F);
+    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
+      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
+    }
+  }
 }
 
 

@@ -6,10 +6,10 @@ import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bexd;
-import bfgd;
-import bfge;
-import bgxn;
+import bfbm;
+import bfkm;
+import bfkn;
+import bhbu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -46,18 +46,18 @@ public class AppBrandUI3
     long l1 = System.currentTimeMillis();
     try
     {
-      bfge localbfge = new bfge(bexd.a().a());
-      bfgd localbfgd = new bfgd();
-      localbfgd.a(true);
-      long l2 = bexd.a().a();
+      bfkn localbfkn = new bfkn(bfbm.a().a());
+      bfkm localbfkm = new bfkm();
+      localbfkm.a(true);
+      long l2 = bfbm.a().a();
       Object localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       String str = ((TicketManager)localObject).getSkey(String.valueOf(l2));
       localObject = ((TicketManager)localObject).getPskey(String.valueOf(l2), "qzone.qq.com");
-      localbfgd.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbfgd.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbfgd.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbfgd.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbfge.a();
+      localbfkm.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbfkm.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbfkm.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbfkm.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbfkn.a();
       l2 = System.currentTimeMillis();
       QMLog.e(AppBrandUI3.class.getSimpleName(), "setCookie cost:" + (l2 - l1));
       return;
@@ -96,8 +96,8 @@ public class AppBrandUI3
     MiniAppInfo localMiniAppInfo = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
     if (localMiniAppInfo != null)
     {
-      bgxn.b(localMiniAppInfo.appId, bgxn.a);
-      QMLog.w("minisdk-start", "AppBrandUI3.onCreate baseLib pre load:" + bgxn.a + " appid:" + localMiniAppInfo.appId);
+      bhbu.b(localMiniAppInfo.appId, bhbu.a);
+      QMLog.w("minisdk-start", "AppBrandUI3.onCreate baseLib pre load:" + bhbu.a + " appid:" + localMiniAppInfo.appId);
     }
     ThreadManager.executeOnSubThread(new AppBrandUI3.1(this));
     MiniSDK.init(getApplicationContext());

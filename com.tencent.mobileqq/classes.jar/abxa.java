@@ -1,72 +1,55 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class abxa
-  implements TextWatcher
 {
-  public abxa(AddAccountActivity paramAddAccountActivity) {}
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public abxa(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
-      AddAccountActivity.a(this.a, null);
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+  }
+  
+  public static void a(int paramInt, Bundle paramBundle, abxb paramabxb)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    String str;
-    SimpleAccount localSimpleAccount;
-    for (;;)
+    localBundle.putInt("key_sub_cmd", paramInt);
+    if (paramabxb != null)
     {
+      yqz.a().a(118, localBundle, paramabxb);
       return;
-      if (paramCharSequence != null)
-      {
-        str = paramCharSequence.toString();
-        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-          break;
-        }
-        paramInt1 = 0;
-        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
-          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
-            break label110;
-          }
-          paramInt1 += 1;
-        }
-      }
     }
-    label110:
-    if (this.a.app == null)
+    yqz.a().a(118, localBundle);
+  }
+  
+  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
+  {
+    switch (paramBundle.getInt("key_sub_cmd"))
     {
-      paramCharSequence = localSimpleAccount.getUin();
-      label126:
-      if (!str.equals(paramCharSequence)) {
-        break label198;
-      }
-      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
-        break label200;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+    default: 
       return;
-      paramCharSequence = this.a.app.b(localSimpleAccount.getUin());
-      break label126;
-      label198:
-      break;
-      label200:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    case 1: 
+      paramBundle.putBundle("key_result", abye.a());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
+      return;
+    case 2: 
+      str1 = paramBundle.getString("key");
+      paramInt1 = paramBundle.getInt("type");
+      paramBundle = paramBundle.getString("appid");
+      abzo.a().b(str1, paramInt1, paramBundle);
+      return;
     }
+    String str1 = paramBundle.getString("key");
+    paramInt1 = paramBundle.getInt("type");
+    String str2 = paramBundle.getString("appid");
+    paramBundle = paramBundle.getString("api");
+    abzo.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 

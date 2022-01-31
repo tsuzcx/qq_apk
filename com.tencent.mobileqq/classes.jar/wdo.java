@@ -1,24 +1,10 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
 
-class wdo
-  extends SimpleJob
+abstract interface wdo
 {
-  wdo(wdn paramwdn, String paramString, wdq paramwdq, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public abstract void a(@NonNull wdm paramwdm);
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Wdn.a();
-    this.jdField_a_of_type_Wdn.b();
-    ((uqo)urr.a(17)).a(this.jdField_a_of_type_Wdq.a, wdn.a(this.jdField_a_of_type_Wdn).a, wdn.a(this.jdField_a_of_type_Wdn).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Wdn.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
-  }
+  public abstract void b(@NonNull wdm paramwdm);
 }
 
 

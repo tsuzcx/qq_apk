@@ -1,23 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class zcq
-  implements View.OnClickListener
+  extends bead
 {
-  zcq(zcp paramzcp, DialogInterface.OnClickListener paramOnClickListener) {}
+  zcq(zcn paramzcn, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(View paramView)
+  public void onDone(beae parambeae)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcp, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambeae.c + " code = " + parambeae.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_Zcp.dismiss();
+    boolean bool = this.jdField_a_of_type_Zcn.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
+    }
+    this.jdField_a_of_type_Zcn.a();
+  }
+  
+  public void onProgress(beae parambeae)
+  {
+    int i = (int)(parambeae.jdField_a_of_type_Float * 100.0F);
+    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
+      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcq
  * JD-Core Version:    0.7.0.1
  */

@@ -30,17 +30,17 @@ public class ofb
     super(paramContext, 2131755332);
     requestWindowFeature(1);
     getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
-    setContentView(2131560044);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369879));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369890));
+    setContentView(2131560043);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369898));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369909));
     this.jdField_a_of_type_Ofe = new ofe(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ofe);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ofc(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369890));
-    this.b = ((LinearLayout)findViewById(2131369896));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369909));
+    this.b = ((LinearLayout)findViewById(2131369915));
     this.b.setOnClickListener(this);
-    syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    syo.a(this.jdField_a_of_type_AndroidWidgetListView, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    syo.a(this.jdField_a_of_type_AndroidWidgetListView, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
     setCanceledOnTouchOutside(true);
   }
   

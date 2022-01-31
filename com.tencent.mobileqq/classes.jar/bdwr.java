@@ -1,35 +1,46 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import java.util.HashMap;
-import org.json.JSONObject;
-
 public class bdwr
-  extends bkbk
+  extends bdwi
 {
-  private HashMap<String, bkbk> a;
+  public static final bdwr a;
+  private int a;
   
-  public bdwr(String paramString, View paramView, HashMap<String, bkbk> paramHashMap)
+  static
   {
-    super(paramString, paramView);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    jdField_a_of_type_Bdwr = new bdwr();
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  public void a(bdts parambdts)
   {
-    int i = xod.b(this.jdField_a_of_type_AndroidViewView.getContext());
-    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), xod.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
-    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), xod.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
-    return paramLayoutParams;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("border".equals(paramString1))
-    {
-      if ((bkbk)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
-      return;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 2) {
+      download(null, 0, parambdts, false);
     }
-    super.a(paramString1, paramString2);
+  }
+  
+  public long getBID()
+  {
+    return 3L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "tintconfig";
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix();
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "theme_mapping_config_android";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 

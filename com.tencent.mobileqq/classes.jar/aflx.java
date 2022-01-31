@@ -1,17 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
 class aflx
-  extends afpq
+  implements bezx
 {
-  aflx(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  aflx(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    return new afyl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

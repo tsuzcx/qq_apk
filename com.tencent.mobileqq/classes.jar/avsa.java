@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class avsa
-  extends asfo
+  extends avqj
 {
-  public avsa(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
   
-  protected void a(boolean paramBoolean, asfr paramasfr)
+  public avsa(avrz paramavrz)
   {
-    if (!OCRResultFragmentNew.a(this.a)) {
-      return;
-    }
-    OCRResultFragmentNew.b(this.a, false);
-    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramasfr));
+    super(paramavrz);
   }
 }
 

@@ -19,7 +19,7 @@ public class ott
   private static Set<String> b()
   {
     HashSet localHashSet = new HashSet();
-    Object localObject = (String)bjxj.a("comment_feeds_aladdin_keys", "");
+    Object localObject = (String)bkbq.a("comment_feeds_aladdin_keys", "");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localHashSet;
     }
@@ -46,7 +46,7 @@ public class ott
       {
         String str2 = (String)paramString.get(str1);
         QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-        bjxj.a("comment_feeds_aladdin_keys", str2);
+        bkbq.a("comment_feeds_aladdin_keys", str2);
       }
     }
     return true;

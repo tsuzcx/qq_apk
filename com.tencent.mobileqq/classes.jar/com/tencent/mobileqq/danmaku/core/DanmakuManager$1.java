@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aowv;
-import aoxd;
-import aoxh;
-import aoyu;
-import aoze;
+import apbe;
+import apbm;
+import apbq;
+import apdd;
+import apdn;
 
 public class DanmakuManager$1
   implements Runnable
 {
-  DanmakuManager$1(DanmakuManager paramDanmakuManager, aoxh paramaoxh, aoze paramaoze) {}
+  DanmakuManager$1(DanmakuManager paramDanmakuManager, apbq paramapbq, apdn paramapdn) {}
   
   public void run()
   {
     if (DanmakuManager.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Aoxh == null)
+    if (this.jdField_a_of_type_Apbq == null)
     {
       DanmakuManager.a(this.this$0).a(false);
       return;
     }
-    this.jdField_a_of_type_Aoze.a(this.jdField_a_of_type_Aoxh.h(), this.jdField_a_of_type_Aoxh.i());
-    aoyu localaoyu = this.jdField_a_of_type_Aoxh.a(this.jdField_a_of_type_Aoze);
-    if (DanmakuManager.a(this.this$0, localaoyu))
+    this.jdField_a_of_type_Apdn.a(this.jdField_a_of_type_Apbq.h(), this.jdField_a_of_type_Apbq.i());
+    apdd localapdd = this.jdField_a_of_type_Apbq.a(this.jdField_a_of_type_Apdn);
+    if (DanmakuManager.a(this.this$0, localapdd))
     {
       DanmakuManager.a(this.this$0).a(true);
-      if (localaoyu.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Aoxh);
+      if (localapdd.a) {
+        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Apbq);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Aoxh, this.jdField_a_of_type_Aoze, localaoyu);
+      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Apbq, this.jdField_a_of_type_Apdn, localapdd);
       return;
     }
     DanmakuManager.a(this.this$0).a(false);

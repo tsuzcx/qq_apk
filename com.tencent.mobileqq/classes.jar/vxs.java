@@ -1,142 +1,185 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class vxs
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean e;
+  private int jdField_a_of_type_Int;
+  private List<vxt> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Queue<vxt> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private int b;
   
-  public vxs(ViewGroup paramViewGroup)
+  public vxt a()
   {
-    super(paramViewGroup);
-  }
-  
-  public String a()
-  {
-    return "UploadStatusVideoInfoWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379799));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379801));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379800));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379802));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    if (paramStoryVideoItem.isUploadFail())
+    try
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700084);
+      vxt localvxt = (vxt)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localvxt != null) {
+        this.b -= localvxt.jdField_a_of_type_JavaNioByteBuffer.remaining();
       }
-      while (this.e)
-      {
-        this.e = false;
-        wta.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700086);
-      }
-      wta.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-      return;
+      return localvxt;
     }
-    if (paramStoryVideoItem.isUploading())
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = ukp.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131716308) + i + "%");
-      }
       for (;;)
       {
-        ukp.a().a(paramStoryVideoItem.mVid, new vxt(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131716310));
+        vxt localvxt = (vxt)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (localvxt == null) {
+          break;
+        }
+        a(localvxt);
       }
+      this.b = 0;
     }
-    k();
+    finally {}
   }
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  /* Error */
+  public void a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    paramMap.put(new vxu(this), "");
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   6: aload_0
+    //   7: getfield 53	vxs:jdField_a_of_type_Int	I
+    //   10: if_icmple +20 -> 30
+    //   13: aload_0
+    //   14: getfield 25	vxs:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   17: invokeinterface 58 1 0
+    //   22: aload_0
+    //   23: aload_1
+    //   24: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   27: putfield 53	vxs:jdField_a_of_type_Int	I
+    //   30: aload_0
+    //   31: getfield 25	vxs:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   34: invokeinterface 62 1 0
+    //   39: ifne +101 -> 140
+    //   42: aload_0
+    //   43: getfield 25	vxs:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   46: iconst_0
+    //   47: invokeinterface 66 2 0
+    //   52: checkcast 38	vxt
+    //   55: astore 5
+    //   57: aload 5
+    //   59: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   62: aload_1
+    //   63: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   66: invokevirtual 70	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
+    //   69: pop
+    //   70: aload 5
+    //   72: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   75: invokevirtual 74	java/nio/ByteBuffer:mark	()Ljava/nio/Buffer;
+    //   78: pop
+    //   79: aload 5
+    //   81: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   84: aload_1
+    //   85: invokevirtual 78	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   88: pop
+    //   89: aload 5
+    //   91: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   94: invokevirtual 81	java/nio/ByteBuffer:reset	()Ljava/nio/Buffer;
+    //   97: pop
+    //   98: aload 5
+    //   100: lload_2
+    //   101: putfield 84	vxt:jdField_a_of_type_Long	J
+    //   104: aload_0
+    //   105: getfield 20	vxs:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   108: aload 5
+    //   110: invokeinterface 88 2 0
+    //   115: pop
+    //   116: aload_0
+    //   117: getfield 29	vxs:b	I
+    //   120: istore 4
+    //   122: aload_0
+    //   123: aload 5
+    //   125: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   128: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   131: iload 4
+    //   133: iadd
+    //   134: putfield 29	vxs:b	I
+    //   137: aload_0
+    //   138: monitorexit
+    //   139: return
+    //   140: new 38	vxt
+    //   143: dup
+    //   144: aload_1
+    //   145: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
+    //   148: invokespecial 91	vxt:<init>	(I)V
+    //   151: astore 5
+    //   153: goto -96 -> 57
+    //   156: astore_1
+    //   157: aload_0
+    //   158: monitorexit
+    //   159: aload_1
+    //   160: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	161	0	this	vxs
+    //   0	161	1	paramByteBuffer	ByteBuffer
+    //   0	161	2	paramLong	long
+    //   120	14	4	i	int
+    //   55	97	5	localvxt	vxt
+    // Exception table:
+    //   from	to	target	type
+    //   2	30	156	finally
+    //   30	57	156	finally
+    //   57	137	156	finally
+    //   140	153	156	finally
   }
   
-  public void a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem)
+  /* Error */
+  public void a(vxt paramvxt)
   {
-    a(paramStoryVideoItem);
-  }
-  
-  public boolean a(@NonNull vpk paramvpk, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
-  }
-  
-  public int b()
-  {
-    return 2131561616;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Vpk != null) {}
-    for (StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Vpk.a(); localStoryVideoItem == null; localStoryVideoItem = null)
-    {
-      wsv.d(this.b, "video item not found ,click error..");
-      return;
-    }
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    switch (localStoryVideoItem.mUploadStatus)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    }
-    if (!vhj.a(localStoryVideoItem, b())) {
-      wta.a("play_video", "retrypub_fail", 0, 0, new String[0]);
-    }
-    for (;;)
-    {
-      wta.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      wsv.b(this.b, "on retry click !");
-      return;
-      this.e = true;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   6: invokevirtual 94	java/nio/ByteBuffer:capacity	()I
+    //   9: istore_2
+    //   10: aload_0
+    //   11: getfield 53	vxs:jdField_a_of_type_Int	I
+    //   14: istore_3
+    //   15: iload_2
+    //   16: iload_3
+    //   17: if_icmpeq +6 -> 23
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: return
+    //   23: aload_1
+    //   24: getfield 41	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   27: invokevirtual 97	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   30: pop
+    //   31: aload_0
+    //   32: getfield 25	vxs:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   35: aload_1
+    //   36: invokeinterface 98 2 0
+    //   41: pop
+    //   42: goto -22 -> 20
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_1
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	vxs
+    //   0	50	1	paramvxt	vxt
+    //   9	9	2	i	int
+    //   14	4	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	45	finally
+    //   23	42	45	finally
   }
 }
 

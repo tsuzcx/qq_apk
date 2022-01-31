@@ -1,28 +1,48 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.manager.TicketManager;
 
-public abstract class baif
+public class baif
+  extends alpd
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String[] a = { "docs.qq.com" };
   
-  public baif(int paramInt, @NonNull String paramString)
+  public baif(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface);
   }
   
-  abstract float a(@NonNull Paint paramPaint);
-  
-  int a()
+  private void a(Runnable paramRunnable)
   {
-    return this.jdField_a_of_type_Int;
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new baig(this, paramRunnable)) == null) {
+      return;
+    }
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
   
-  String a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    a(new TenDocOCRExportHandler.1(this, paramString));
   }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return baih.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

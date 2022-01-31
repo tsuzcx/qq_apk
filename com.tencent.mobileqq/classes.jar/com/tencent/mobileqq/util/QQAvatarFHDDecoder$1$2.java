@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.util;
 
-import bczb;
-import bczc;
+import bddk;
+import bddl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
 public class QQAvatarFHDDecoder$1$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$2(bczc parambczc, String paramString) {}
+  public QQAvatarFHDDecoder$1$2(bddl parambddl, String paramString) {}
   
   public void run()
   {
-    if (bczb.a(this.jdField_a_of_type_Bczc.a)) {
+    if (bddk.a(this.jdField_a_of_type_Bddl.a)) {
       return;
     }
-    Setting localSetting = bczb.a(this.jdField_a_of_type_Bczc.a).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bczc.a.a(localSetting);
+    Setting localSetting = bddk.a(this.jdField_a_of_type_Bddl.a).c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bddl.a.a(localSetting);
   }
 }
 

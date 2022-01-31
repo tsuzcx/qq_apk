@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import azyr;
+import bada;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,9 +11,9 @@ public class GetSubAccount
 {
   public int a()
   {
-    azyr localazyr = (azyr)this.a.app.getManager(28);
-    if (localazyr != null) {
-      localazyr.a();
+    bada localbada = (bada)this.a.app.getManager(28);
+    if (localbada != null) {
+      localbada.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");

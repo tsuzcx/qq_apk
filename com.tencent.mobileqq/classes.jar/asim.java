@@ -1,67 +1,104 @@
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.IntimateInfo;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-class asim
-  extends asiw
+public class asim
+  implements alpg
 {
-  asim(asil paramasil) {}
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ahpo> paramArrayList) {}
   
-  protected void a(Object paramObject)
+  protected void a(boolean paramBoolean, long paramLong) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.a(paramObject);
-    if ((paramObject instanceof ArrayList))
+    switch (paramInt)
     {
-      paramObject = (ArrayList)paramObject;
-      int j = paramObject.size();
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject;
-        GameCenterSessionInfo localGameCenterSessionInfo;
-        if ((paramObject.get(i) instanceof asik))
-        {
-          localObject = (asik)paramObject.get(i);
-          localGameCenterSessionInfo = this.a.b(((asik)localObject).jdField_b_of_type_JavaLangString);
-          if (localGameCenterSessionInfo != null)
-          {
-            localGameCenterSessionInfo.f(((asik)localObject).c);
-            localGameCenterSessionInfo.g(((asik)localObject).i);
-            localGameCenterSessionInfo.i(((asik)localObject).e);
-            localGameCenterSessionInfo.d(((asik)localObject).jdField_b_of_type_Int);
-            localGameCenterSessionInfo.c(((asik)localObject).k);
-            localGameCenterSessionInfo.h(((asik)localObject).d);
-            localGameCenterSessionInfo.a(((asik)localObject).j);
-            if (j <= 30) {
-              break label178;
-            }
-            if (i == j - 1) {
-              this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 3, this.a.a());
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label178:
-          if (localGameCenterSessionInfo.a() == 0)
-          {
-            localObject = this.a.c(localGameCenterSessionInfo.d());
-            if (QLog.isColorLevel()) {
-              QLog.d(asil.c(), 2, "[onGameUserInfoChangedNotify] folder session:" + localObject);
-            }
-            if ((localObject != null) && (((GameCenterSessionInfo)localObject).c().equals(localGameCenterSessionInfo.c()))) {
-              this.a.a("action_qgame_messgae_change", (GameCenterSessionInfo)localObject, 2, this.a.a());
-            }
-          }
-          else
-          {
-            this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 2, this.a.a());
-          }
-        }
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+                    return;
+                  }
+                  a(false, "", null);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+                    return;
+                  }
+                  a(paramBoolean, "", false);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+                    return;
+                  }
+                  a(false, "");
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  }
+                  a(false, "", -1, -1, -1);
+                  return;
+                  if ((paramBoolean) && ((paramObject instanceof Object[])))
+                  {
+                    a(paramBoolean, (Object[])paramObject);
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while (!(paramObject instanceof Object[]));
+                paramObject = (Object[])paramObject;
+              } while (paramObject.length < 2);
+              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+          } while (paramObject.length < 1);
+          a(paramBoolean, ((Long)paramObject[0]).longValue());
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 2);
+      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
   }
 }
 

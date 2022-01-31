@@ -1,57 +1,64 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.os.RemoteException;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class bjww
-  extends Handler
+  implements bjpt
 {
-  bjww(bjwu parambjwu, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bjww(bjwu parambjwu, JSONObject paramJSONObject, boolean paramBoolean, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onQzonePluginClientReady(bjoa parambjoa)
   {
-    int j = 0;
-    if (this.a.getCallback() == null) {}
-    do
+    if (parambjoa == null) {
+      return;
+    }
+    try
     {
-      do
-      {
-        return;
-      } while ((paramMessage.what != 1000) || (!bjwu.a(this.a).jdField_a_of_type_Boolean));
-      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bjwu.a(this.a).jdField_a_of_type_Int));
-      int i;
-      if ((bjwu.a(this.a)) && (bjwu.a(this.a).jdField_a_of_type_Bjxa.a() != 0)) {
-        i = k % bjwu.a(this.a).jdField_a_of_type_Bjxa.a();
+      localPluginRecord = parambjoa.a("qzone_live_video_plugin_hack.apk");
+      if ((localPluginRecord == null) || (localPluginRecord.state != 4)) {
+        break label104;
       }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
+    }
+    catch (JSONException parambjoa)
+    {
       for (;;)
       {
-        bjwu.a(this.a).jdField_a_of_type_Bjxa.a(i);
-        if (j != 0) {
-          break;
-        }
-        long l = 1000 / bjwu.a(this.a).jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
-        this.a.invalidateSelf();
+        PluginRecord localPluginRecord;
+        parambjoa.printStackTrace();
         return;
-        i = k;
-        if (k >= bjwu.a(this.a).jdField_a_of_type_Bjxa.a())
+        if ((localPluginRecord != null) && ((localPluginRecord.state == 2) || (NetworkState.isWifiConn())))
         {
-          j = 1;
-          i = k;
+          this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, " needInstall:" + this.jdField_a_of_type_Boolean + ",需要安装插件");
+            }
+            parambjoa.a(localPluginRecord.id, null, 0);
+          }
         }
       }
-      this.a.stop();
-      this.a.invalidateSelf();
-    } while (this.a.jdField_a_of_type_Bjwx == null);
-    this.a.jdField_a_of_type_Bjwx.onAnimationFinished();
+    }
+    catch (RemoteException parambjoa)
+    {
+      parambjoa.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneLiveJsPlugin", 2, " 返回结果：" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    this.jdField_a_of_type_Bjwu.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    return;
+    label104:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjww
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ public class ReadInJoyCardViewCostBall
   
   private void a(Context paramContext)
   {
-    setId(2131370673);
+    setId(2131370692);
     setBackgroundColor(paramContext.getResources().getColor(2131165320));
     setText("60.00");
     setTextColor(-16711936);

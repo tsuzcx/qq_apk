@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
-import alpo;
+import alud;
 import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
-import bcwh;
+import bdaq;
 import com.tencent.av.VideoController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ public class GAudioMembersCtrlActivity$7$4
   public void run()
   {
     TextPaint localTextPaint = new TextView(GAudioMembersCtrlActivity.a(this.jdField_a_of_type_Mgn.a)).getPaint();
-    String str2 = alpo.a(2131705533);
+    String str2 = alud.a(2131705545);
     float f3 = GAudioMembersCtrlActivity.a(this.jdField_a_of_type_Mgn.a).getDisplayMetrics().widthPixels;
     float f4 = localTextPaint.measureText(str2);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -32,7 +32,7 @@ public class GAudioMembersCtrlActivity$7$4
     float f1;
     if (m == 1)
     {
-      f1 = f3 - bcwh.a(GAudioMembersCtrlActivity.b(this.jdField_a_of_type_Mgn.a), 60.0F) - f4;
+      f1 = f3 - bdaq.a(GAudioMembersCtrlActivity.b(this.jdField_a_of_type_Mgn.a), 60.0F) - f4;
       if (f1 > 0.0F) {
         break label645;
       }
@@ -60,7 +60,7 @@ public class GAudioMembersCtrlActivity$7$4
           return;
           f1 = localTextPaint.measureText("等99人" + str2);
           float f5 = localTextPaint.measureText("...");
-          float f2 = f3 - bcwh.a(GAudioMembersCtrlActivity.c(this.jdField_a_of_type_Mgn.a), 60.0F) - f1 - f5;
+          float f2 = f3 - bdaq.a(GAudioMembersCtrlActivity.c(this.jdField_a_of_type_Mgn.a), 60.0F) - f1 - f5;
           f1 = f2;
           if (f2 <= 0.0F) {
             f1 = GAudioMembersCtrlActivity.c(this.jdField_a_of_type_Mgn.a).getDimensionPixelSize(2131297048);
@@ -109,7 +109,7 @@ public class GAudioMembersCtrlActivity$7$4
               break label640;
             }
             localStringBuilder.delete(0, localStringBuilder.length());
-            f1 = f3 - bcwh.a(GAudioMembersCtrlActivity.d(this.jdField_a_of_type_Mgn.a), 60.0F) - f4;
+            f1 = f3 - bdaq.a(GAudioMembersCtrlActivity.d(this.jdField_a_of_type_Mgn.a), 60.0F) - f4;
             i += 1;
             j = 1;
             break label358;

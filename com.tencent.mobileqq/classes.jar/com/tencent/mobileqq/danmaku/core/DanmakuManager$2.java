@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aoxq;
+import apbz;
 
 class DanmakuManager$2
   implements Runnable

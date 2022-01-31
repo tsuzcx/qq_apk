@@ -1,55 +1,145 @@
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.module.base.inter.IDownloadConfig;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.plugin.QZonePluginDownloadConfig.1;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import java.util.HashMap;
+import java.util.Properties;
+import mqq.app.AppRuntime;
 
 public class bjoy
+  implements IDownloadConfig
 {
-  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
-  
-  public int a()
+  private boolean a()
   {
-    return this.a.size();
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "EnableColor", -1) == 1;
   }
   
-  public Statistic a()
+  public boolean canRetCodeRetry(int paramInt)
   {
-    return (Statistic)this.a.poll();
+    return false;
   }
   
-  public List<Statistic> a()
+  public boolean enableDns114()
   {
-    return a(a());
+    return true;
   }
   
-  public List<Statistic> a(int paramInt)
+  public long getConfig(String paramString1, String paramString2, long paramLong)
   {
-    Object localObject;
-    if (paramInt < 1)
+    return QzoneConfig.getInstance().getConfig(paramString1, paramString2, paramLong);
+  }
+  
+  public long getCurrentUin()
+  {
+    try
     {
-      localObject = null;
-      return localObject;
+      long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+      return l;
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = Math.min(paramInt, a());
-    paramInt = 0;
-    for (;;)
+    catch (Exception localException)
     {
-      localObject = localArrayList;
-      if (paramInt >= i) {
-        break;
-      }
-      localObject = a();
-      if (localObject != null) {
-        localArrayList.add(localObject);
-      }
-      paramInt += 1;
+      QLog.w("QzonePluginDownloadConfig", 1, "", localException);
     }
+    return 0L;
   }
   
-  public void a(Statistic paramStatistic)
+  public long getDefaultHttp2LiveTime()
   {
-    this.a.add(paramStatistic);
+    return 0L;
+  }
+  
+  public int getDefaultHttp2ThreadPoolSize()
+  {
+    return 0;
+  }
+  
+  public long getDefaultHttpLiveTime()
+  {
+    return 0L;
+  }
+  
+  public int getDefaultThreadPoolSize()
+  {
+    return 0;
+  }
+  
+  public int getNetworkStackType()
+  {
+    return bjhc.a(1);
+  }
+  
+  public int getOperator()
+  {
+    int i = zig.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
+    }
+    return i;
+  }
+  
+  public String getQUA()
+  {
+    return bjdm.a();
+  }
+  
+  public String getRefer()
+  {
+    return "mqq";
+  }
+  
+  public int getReportPercent()
+  {
+    if (a()) {
+      return 100;
+    }
+    return 5;
+  }
+  
+  public String getTerminal()
+  {
+    return "Android-QZoneInQQ";
+  }
+  
+  public String getUserAgent()
+  {
+    return "qzone";
+  }
+  
+  public String getVersion()
+  {
+    return bjdm.b();
+  }
+  
+  public boolean isFromQzoneAlbum(String paramString)
+  {
+    return false;
+  }
+  
+  public int photoDownloadKeepAliveConfig()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAlive", 0);
+  }
+  
+  public int photoDownloadKeepAliveProxyConfig()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAliveProxy", 1);
+  }
+  
+  public void reportToBeacon(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap, long paramLong) {}
+  
+  public void reportToLp(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2) {}
+  
+  public void reportToMta(String paramString, Properties paramProperties)
+  {
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new QZonePluginDownloadConfig.1(this, paramString, paramProperties));
+  }
+  
+  public boolean shouldUseHttp2(String paramString)
+  {
+    return false;
   }
 }
 

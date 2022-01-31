@@ -1,73 +1,88 @@
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
 
 public class bave
 {
-  public String a;
-  public ArrayList<bavj> a;
+  public long a;
+  public bauf a;
+  public baug a;
+  public bauh a;
+  public bavf a;
+  public OutputStream a;
+  public Object a;
+  public HashMap<String, String> a;
+  public List<bawy> a;
+  public byte[] a;
+  int jdField_b_of_type_Int = 1;
+  public long b;
+  private Object jdField_b_of_type_JavaLangObject;
+  public int c;
+  public long c;
+  public String c;
+  public int d = 5;
+  public String d;
+  public int e = 1;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public boolean i;
+  public boolean j = true;
+  public boolean k;
+  public boolean l = true;
+  public boolean m = true;
+  public boolean n = true;
+  public boolean o;
   
-  public bave(String paramString, ArrayList<bavj> paramArrayList)
+  public bave()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_c_of_type_Long = 480000L;
+    this.jdField_c_of_type_Int = 8;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static String a(HashMap<String, bave> paramHashMap)
+  public Object a()
   {
-    if (paramHashMap == null) {
-      return null;
-    }
     try
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramHashMap = paramHashMap.values().iterator();
-      while (paramHashMap.hasNext())
-      {
-        bave localbave = (bave)paramHashMap.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("n", localbave.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("l", bavj.a(localbave.jdField_a_of_type_JavaUtilArrayList));
-        localJSONArray.put(localJSONObject);
-      }
-      paramHashMap = localJSONArray.toString();
+      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
+      return localObject1;
     }
-    catch (Exception paramHashMap)
+    finally
     {
-      paramHashMap.printStackTrace();
-      return null;
+      localObject2 = finally;
+      throw localObject2;
     }
-    return paramHashMap;
   }
   
-  public static HashMap<String, bave> a(String paramString)
+  public void a(Object paramObject)
   {
     try
     {
-      HashMap localHashMap = new HashMap();
-      JSONArray localJSONArray = new JSONArray(paramString);
-      int i = 0;
-      for (;;)
-      {
-        paramString = localHashMap;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        String str = paramString.getString("n");
-        localHashMap.put(str, new bave(str, bavj.a(paramString.getString("l"))));
-        i += 1;
-      }
-      return paramString;
+      this.jdField_b_of_type_JavaLangObject = paramObject;
+      return;
     }
-    catch (Exception paramString)
+    finally
     {
-      paramString.printStackTrace();
-      paramString = null;
+      paramObject = finally;
+      throw paramObject;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_JavaLangString != null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_JavaIoOutputStream != null;
   }
 }
 

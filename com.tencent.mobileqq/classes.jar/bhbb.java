@@ -1,15 +1,14 @@
-public class bhbb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bhbb
+  implements DialogInterface.OnClickListener
 {
-  private boolean a;
+  bhbb(bhaz parambhaz) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    bhaz.a(this.a);
   }
 }
 

@@ -1,18 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.Leba.42;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
-public class adbu
-  implements DialogInterface.OnClickListener
+class adbu
+  extends altm
 {
-  public adbu(Leba.42 param42) {}
+  adbu(adbt paramadbt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
-    this.a.jdField_a_of_type_Adbx.a();
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Adbx);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Adbx, false);
+      this.a.c(this.a.jdField_a_of_type_Adbx);
+      return;
+    }
+    this.a.jdField_a_of_type_Adbx.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Adbx);
   }
 }
 

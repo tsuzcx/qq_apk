@@ -1,22 +1,33 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahav
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public BubbleLayout a;
+  ahav(ahau paramahau) {}
   
-  public ahav(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372163));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372162));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372161));
+    QQAppInterface localQQAppInterface;
+    String str;
+    if (this.a.a())
+    {
+      auam.a().a(ahau.a(this.a), ahau.a(this.a).a);
+      ahau.a(this.a).a();
+      localQQAppInterface = ahau.a(this.a);
+      str = ahau.a(this.a).a;
+      if (ahau.a(this.a).b(ahau.a(this.a).a) != 3) {
+        break label112;
+      }
+    }
+    label112:
+    for (paramView = "1";; paramView = "0")
+    {
+      azqs.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
+      return;
+    }
   }
 }
 

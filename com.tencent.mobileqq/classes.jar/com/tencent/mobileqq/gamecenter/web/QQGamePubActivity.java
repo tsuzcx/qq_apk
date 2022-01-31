@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import akro;
-import anmp;
+import akwd;
+import anqy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 
@@ -10,13 +10,13 @@ public class QQGamePubActivity
 {
   static
   {
-    anmp.a(true);
-    anmp.a();
+    anqy.a(true);
+    anqy.a();
   }
   
   public AppInterface getAppInterface()
   {
-    return akro.a();
+    return akwd.a();
   }
 }
 

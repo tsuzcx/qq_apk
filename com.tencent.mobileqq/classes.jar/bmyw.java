@@ -1,21 +1,22 @@
-import android.util.Property;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
 class bmyw
-  extends Property<bmyp, Float>
+  implements DialogInterface.OnShowListener
 {
-  bmyw(bmyp parambmyp, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bmyw(bmyu parambmyu, boolean paramBoolean) {}
   
-  public Float a(bmyp parambmyp)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    return Float.valueOf(bmyp.c(parambmyp));
-  }
-  
-  public void a(bmyp parambmyp, Float paramFloat)
-  {
-    bmyp.b(parambmyp, paramFloat.floatValue());
+    if (bmyu.a(this.jdField_a_of_type_Bmyu) != null) {
+      bmyu.a(this.jdField_a_of_type_Bmyu).onShow(paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      bmyu.a(this.jdField_a_of_type_Bmyu).b();
+      return;
+    }
+    bmyu.a(this.jdField_a_of_type_Bmyu).a(true);
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bfkb;
+import bfok;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import java.util.ArrayList;
 import nnw;
@@ -35,7 +35,7 @@ public class AdModuleAdapter
   public void a()
   {
     noe localnoe = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    bfkb.a().b(localnoe);
+    bfok.a().b(localnoe);
     if (localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
       AppNetConnInfo.unregisterNetInfoHandler(localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     }

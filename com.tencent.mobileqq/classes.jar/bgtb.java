@@ -1,6 +1,18 @@
-abstract interface bgtb
+import android.widget.ImageView;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.io.File;
+
+public class bgtb
+  implements bgsu
 {
-  public abstract void a();
+  public bgtb(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  
+  public void a(File paramFile)
+  {
+    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
+      MiniAppVideoPlayer.c(this.a).setImageBitmap(bgpe.a(paramFile.getAbsolutePath()));
+    }
+  }
 }
 
 

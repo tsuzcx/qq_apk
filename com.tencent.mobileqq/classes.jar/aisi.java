@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class aisi
+class aisi
   implements DialogInterface.OnClickListener
 {
-  public aisi(TransactionActivity paramTransactionActivity) {}
+  aisi(aisf paramaisf) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

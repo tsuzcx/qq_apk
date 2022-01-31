@@ -1,16 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
-import bgjm;
+import alud;
+import bgnt;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import xpb;
+import xtk;
 
 class VideoJsProxyImpl$6
-  implements xpb
+  implements xtk
 {
   VideoJsProxyImpl$6(VideoJsProxyImpl paramVideoJsProxyImpl, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2) {}
   
@@ -30,7 +30,7 @@ class VideoJsProxyImpl$6
       VideoJsProxyImpl.access$700(this.this$0, this.val$info, false);
       return;
     }
-    paramString = bgjm.a().e(this.val$info.path);
+    paramString = bgnt.a().e(this.val$info.path);
     VideoJsProxyImpl.access$800(this.this$0, paramString, this.val$info.fileSize, this.val$info);
   }
   
@@ -69,7 +69,7 @@ class VideoJsProxyImpl$6
             i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.val$duration);
             if (i < 100)
             {
-              VideoJsProxyImpl.access$900(this.this$0, alpo.a(2131716682) + i + "%");
+              VideoJsProxyImpl.access$900(this.this$0, alud.a(2131716694) + i + "%");
               return;
             }
           }
@@ -98,7 +98,7 @@ class VideoJsProxyImpl$6
       paramString = this.val$info;
       paramString.mediaHeight /= this.val$compressMultiple;
     }
-    paramString = bgjm.a().e(this.val$outPath);
+    paramString = bgnt.a().e(this.val$outPath);
     VideoJsProxyImpl.access$800(this.this$0, paramString, new File(this.val$outPath).length(), this.val$info);
   }
 }

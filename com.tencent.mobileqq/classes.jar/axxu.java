@@ -1,48 +1,124 @@
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
+import com.tencent.richmediabrowser.model.BrowserAnimation;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class axxu
-  implements CompoundButton.OnCheckedChangeListener
+  extends BrowserAnimation
+  implements IBrowserAnimationListener
 {
-  public axxu(SignTextEditFragment paramSignTextEditFragment) {}
+  public int a;
+  public Rect a;
+  private RichMediaBaseData a;
+  Rect b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public axxu() {}
+  
+  public axxu(RichMediaBaseData paramRichMediaBaseData)
   {
-    if ((bdee.d(this.a.getActivity())) && (SignTextEditFragment.a(this.a) != null))
+    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
+  }
+  
+  public Drawable getAnimationDrawable()
+  {
+    for (;;)
     {
-      if (AppSetting.c) {
-        this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(alpo.a(2131708300));
+      try
+      {
+        Drawable localDrawable;
+        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        {
+          localDrawable = new axyn().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localObject2 = getThumbRect();
+          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
+            this.isImgCenterCropMode = false;
+          }
+          if ((localDrawable != null) && (localObject2 != null))
+          {
+            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
+            if (localDrawable.getIntrinsicHeight() == -1) {
+              break;
+            }
+            localObject2 = localDrawable;
+            if (localDrawable.getIntrinsicWidth() != -1) {
+              return localObject2;
+            }
+            break;
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+          {
+            localDrawable = new axyo().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+          {
+            localDrawable = new axyj().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
+            break label219;
+          }
+          localDrawable = new axyk().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          continue;
+        }
+        return null;
       }
-      SignTextEditFragment.a(this.a).a(paramBoolean);
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
-      return;
-    }
-    paramCompoundButton = this.a.getActivity();
-    int i;
-    label108:
-    CheckBox localCheckBox;
-    if (SignTextEditFragment.a(this.a) != null)
-    {
-      i = 2131694827;
-      QQToast.a(paramCompoundButton, i, 1).a();
-      paramCompoundButton = this.a;
-      localCheckBox = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (paramBoolean) {
-        break label154;
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AIOImageInfo", 2, "getAnimationBitmap ", localThrowable);
+        }
+        return null;
       }
+      label219:
+      Object localObject1 = null;
     }
-    label154:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      SignTextEditFragment.a(paramCompoundButton, localCheckBox, paramBoolean);
-      break;
-      i = 2131719872;
-      break label108;
+    Object localObject2 = null;
+    return localObject2;
+  }
+  
+  public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
+  {
+    paramRichMediaBaseData = new axxu(paramRichMediaBaseData);
+    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    return paramRichMediaBaseData;
+  }
+  
+  public int getCutValue()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect getStartSrcRect()
+  {
+    return this.b;
+  }
+  
+  public int getStartX()
+  {
+    return 0;
+  }
+  
+  public int getStartY()
+  {
+    return 0;
+  }
+  
+  public Rect getThumbRect()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
     }
+    return super.getThumbRect();
   }
 }
 

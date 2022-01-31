@@ -1,34 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
-import android.view.accessibility.AccessibilityManager;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.graphics.Paint.Align;
 
-public class atnv
-  implements View.OnHoverListener
+public abstract interface atnv
 {
-  public atnv(LocationPickFragment paramLocationPickFragment) {}
+  public abstract int a();
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
-    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
-    {
-      if (paramView.requestFocus()) {
-        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
-      }
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      azmj.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
-    }
-    return false;
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setAlign(Paint.Align paramAlign);
+  
+  public abstract void setLineMaxWidth(int paramInt);
+  
+  public abstract void setLyric(atwl paramatwl, int paramInt);
+  
+  public abstract void setOnSizeChangeListener(atog paramatog);
+  
+  public abstract void setSongId(String paramString);
+  
+  public abstract void setStrokeColor(int paramInt);
+  
+  public abstract void setStrokeWidth(int paramInt);
 }
 
 

@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.biz.qqcircle.requests.QCircleDoFollowTagRequest;
 import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -17,27 +17,27 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StTagInfo;
 import tra;
-import txu;
-import uaz;
-import uba;
-import ubb;
-import ubc;
-import ubd;
-import xzd;
-import ytg;
+import tze;
+import udq;
+import udr;
+import uds;
+import udt;
+import udu;
+import ydm;
+import yxv;
 
 public class QCircleFollowTagView
   extends TextView
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = QCircleFollowTagView.class.getSimpleName();
-  private int jdField_a_of_type_Int = 2130843532;
+  private int jdField_a_of_type_Int = 2130843547;
   private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = new FeedCloudMeta.StTagInfo();
-  private ubc jdField_a_of_type_Ubc;
-  private ubd jdField_a_of_type_Ubd;
-  private xzd jdField_a_of_type_Xzd;
+  private udt jdField_a_of_type_Udt;
+  private udu jdField_a_of_type_Udu;
+  private ydm jdField_a_of_type_Ydm;
   protected boolean a;
-  private int jdField_b_of_type_Int = 2130843533;
+  private int jdField_b_of_type_Int = 2130843548;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   private boolean d;
@@ -71,7 +71,7 @@ public class QCircleFollowTagView
   
   private void d()
   {
-    bdcd.a(getContext(), 230, getContext().getResources().getString(2131698382), null, 2131690648, 2131690626, new uba(this), new ubb(this)).show();
+    bdgm.a(getContext(), 230, getContext().getResources().getString(2131698394), null, 2131690648, 2131690626, new udr(this), new uds(this)).show();
   }
   
   protected void a()
@@ -105,7 +105,7 @@ public class QCircleFollowTagView
     for (;;)
     {
       QCircleDoFollowTagRequest localQCircleDoFollowTagRequest = new QCircleDoFollowTagRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get(), i, null);
-      VSNetworkHelper.a().a(localQCircleDoFollowTagRequest, new uaz(this, i, paramBoolean));
+      VSNetworkHelper.a().a(localQCircleDoFollowTagRequest, new udq(this, i, paramBoolean));
       return;
       i = 0;
     }
@@ -116,7 +116,7 @@ public class QCircleFollowTagView
     setVisibility(0);
     setBackgroundResource(this.jdField_a_of_type_Int);
     setTextColor(getResources().getColor(2131165307));
-    setText(2131698315);
+    setText(2131698318);
   }
   
   protected void c()
@@ -124,7 +124,7 @@ public class QCircleFollowTagView
     setVisibility(0);
     setBackgroundResource(this.jdField_b_of_type_Int);
     setTextColor(getResources().getColor(2131165320));
-    setText(2131698318);
+    setText(2131698327);
   }
   
   protected void onAttachedToWindow()
@@ -134,15 +134,15 @@ public class QCircleFollowTagView
   
   public void onClick(View paramView)
   {
-    if ((ytg.a("QCircleFollowTagViewClick")) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo == null)) {}
+    if ((yxv.a("QCircleFollowTagViewClick")) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo == null)) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_Ubd != null) {
-        this.jdField_a_of_type_Ubd.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.get());
+      if (this.jdField_a_of_type_Udu != null) {
+        this.jdField_a_of_type_Udu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.get());
       }
-      if (this.jdField_a_of_type_Xzd != null) {
-        this.jdField_a_of_type_Xzd.a();
+      if (this.jdField_a_of_type_Ydm != null) {
+        this.jdField_a_of_type_Ydm.a();
       }
       if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.get() == 0) {
         a(true);
@@ -156,9 +156,9 @@ public class QCircleFollowTagView
     super.onDetachedFromWindow();
   }
   
-  public void setFollowStateChangeListener(ubc paramubc)
+  public void setFollowStateChangeListener(udt paramudt)
   {
-    this.jdField_a_of_type_Ubc = paramubc;
+    this.jdField_a_of_type_Udt = paramudt;
   }
   
   public void setFollowedDismiss(boolean paramBoolean)
@@ -181,14 +181,14 @@ public class QCircleFollowTagView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(xzd paramxzd)
+  public void setItemPreClickListener(ydm paramydm)
   {
-    this.jdField_a_of_type_Xzd = paramxzd;
+    this.jdField_a_of_type_Ydm = paramydm;
   }
   
-  public void setItemReportListener(ubd paramubd)
+  public void setItemReportListener(udu paramudu)
   {
-    this.jdField_a_of_type_Ubd = paramubd;
+    this.jdField_a_of_type_Udu = paramudu;
   }
   
   public void setOnlyFollowMode(boolean paramBoolean)
@@ -201,20 +201,20 @@ public class QCircleFollowTagView
     boolean bool = true;
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.set(paramStTagInfo.tagId.get());
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.set(paramStTagInfo.tagName.get());
-    if (txu.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get()))
+    if (tze.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get()))
     {
-      bool = txu.a().b(paramStTagInfo.tagId.get());
+      bool = tze.a().b(paramStTagInfo.tagId.get());
       this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.set(tra.a(bool));
       a(tra.a(bool));
       return;
     }
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.set(paramStTagInfo.followState.get());
-    txu localtxu = txu.a();
+    tze localtze = tze.a();
     String str = paramStTagInfo.tagId.get();
     if (paramStTagInfo.followState.get() == 1) {}
     for (;;)
     {
-      localtxu.a(str, bool);
+      localtze.a(str, bool);
       a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.followState.get());
       return;
       bool = false;

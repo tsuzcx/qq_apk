@@ -1,62 +1,28 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wip
+  extends SimpleObserver<wiq>
 {
-  public static int a;
-  public static int b = 2;
-  public Activity a;
-  public String a;
-  private List<xrg> a;
-  public wpi a;
-  public int c;
-  public int d;
+  public wip(wil paramwil) {}
   
-  static
+  public void a(wiq paramwiq)
   {
-    jdField_a_of_type_Int = 1;
+    super.onNext(paramwiq);
+    wil.a(this.a, paramwiq, false, new ErrorMessage());
   }
   
-  public wip(Activity paramActivity, int paramInt1, String paramString, int paramInt2, wpi paramwpi)
+  public void onCancel()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.d = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Wpi = paramwpi;
-    if (paramInt2 == jdField_a_of_type_Int)
-    {
-      a();
-      return;
-    }
-    if (paramInt2 == b)
-    {
-      b();
-      return;
-    }
-    throw new IllegalStateException("setup profile list error because unknown list type.");
+    super.onCancel();
+    wxe.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
   }
   
-  private void a()
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new wjd(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wjb(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Wpi, false));
-    this.jdField_a_of_type_JavaUtilList.add(new wja(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131700062), 2130846083, 2130846084));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new wjd(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wjf(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wje(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public List<xrg> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    super.onError(paramError);
+    wil.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 

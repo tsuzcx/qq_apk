@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afqr;
+import afvg;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.Set;
@@ -15,7 +15,7 @@ class MarketFaceItemBuilder$10$1
     if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.isEmpty())
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq));
-      afqr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_Afrf, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+      afvg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_Afvu, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
       if (!this.jdField_a_of_type_Boolean) {
         QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.b, 1, 2131689958, 0).a();
       }

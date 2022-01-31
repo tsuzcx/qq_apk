@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anuh;
+import anyq;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,9 +18,9 @@ class WordMatchManager$3$1
     Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      anuh localanuh = (anuh)localIterator.next();
-      if (localanuh != null) {
-        localanuh.a(this.a.this$0.jdField_a_of_type_Anui);
+      anyq localanyq = (anyq)localIterator.next();
+      if (localanyq != null) {
+        localanyq.a(this.a.this$0.jdField_a_of_type_Anyr);
       }
     }
     this.a.this$0.jdField_a_of_type_JavaUtilArrayList.clear();

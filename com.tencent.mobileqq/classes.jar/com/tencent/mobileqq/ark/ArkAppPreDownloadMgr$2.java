@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark;
 
 import android.text.TextUtils;
-import anju;
-import anka;
-import anke;
+import anod;
+import anoj;
+import anon;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,36 +16,36 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ArkAppPreDownloadMgr$2
   implements Runnable
 {
-  public ArkAppPreDownloadMgr$2(anka paramanka) {}
+  public ArkAppPreDownloadMgr$2(anoj paramanoj) {}
   
   public void run()
   {
-    if ((anka.a(this.this$0).size() == 0) || (anka.a(this.this$0))) {}
+    if ((anoj.a(this.this$0).size() == 0) || (anoj.a(this.this$0))) {}
     for (;;)
     {
       return;
-      anka.a(this.this$0, true);
+      anoj.a(this.this$0, true);
       if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
       {
         QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling predownload error for invalid ArkAppMgr");
         return;
       }
-      Iterator localIterator = anka.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = anoj.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        anke localanke = (anke)((Map.Entry)localIterator.next()).getValue();
-        if ((!TextUtils.isEmpty(localanke.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localanke.jdField_a_of_type_JavaLangString, "", null, false))))
+        anon localanon = (anon)((Map.Entry)localIterator.next()).getValue();
+        if ((!TextUtils.isEmpty(localanon.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localanon.jdField_a_of_type_JavaLangString, "", null, false))))
         {
-          if (anju.c(localanke.jdField_a_of_type_JavaLangString))
+          if (anod.c(localanon.jdField_a_of_type_JavaLangString))
           {
-            localanke.jdField_a_of_type_Int = 0;
-            QLog.w("ArkApp.ArkAppPreDownloadMgr", 1, "profiling disable to preload ArkApp name = " + localanke.jdField_a_of_type_JavaLangString);
+            localanon.jdField_a_of_type_Int = 0;
+            QLog.w("ArkApp.ArkAppPreDownloadMgr", 1, "profiling disable to preload ArkApp name = " + localanon.jdField_a_of_type_JavaLangString);
           }
-          if (localanke.jdField_a_of_type_Int == 1)
+          if (localanon.jdField_a_of_type_Int == 1)
           {
-            QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling need to preload ArkApp name = " + localanke.jdField_a_of_type_JavaLangString);
-            String str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(localanke.jdField_a_of_type_JavaLangString, "", "0.0.0.1", false);
-            anka.a(this.this$0, localanke.jdField_a_of_type_JavaLangString, str, anka.a(this.this$0), 1);
+            QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling need to preload ArkApp name = " + localanon.jdField_a_of_type_JavaLangString);
+            String str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(localanon.jdField_a_of_type_JavaLangString, "", "0.0.0.1", false);
+            anoj.a(this.this$0, localanon.jdField_a_of_type_JavaLangString, str, anoj.a(this.this$0), 1);
           }
         }
       }

@@ -1,19 +1,21 @@
-class uqk
-  implements utn
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+
+public class uqk
+  implements upz
 {
-  uqk(uqj paramuqj) {}
+  public uqk(StoryVideoUploadTask paramStoryVideoUploadTask, uxp paramuxp, upv paramupv) {}
   
-  public void a(boolean paramBoolean, utj paramutj)
+  public void a(upy paramupy)
   {
-    wsv.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramutj != null))
+    paramupy = this.jdField_a_of_type_Uxp;
+    if (this.jdField_a_of_type_Upv.a == 0) {}
+    for (int i = 2;; i = 3)
     {
-      wsv.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramutj.b), Integer.valueOf(paramutj.a));
-      this.a.a(paramutj.b, paramutj.a);
+      paramupy.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Uxp.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Upv.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Uxp.c = this.jdField_a_of_type_Upv.c;
       return;
     }
-    wsv.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
-    this.a.a(false, null);
   }
 }
 

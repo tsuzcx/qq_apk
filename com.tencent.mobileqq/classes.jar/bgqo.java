@@ -1,12 +1,4 @@
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
-
-class bgqo
-{
-  public ProcessType a;
-  public Class a;
-  public String a;
-  public Class b;
-}
+public class bgqo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

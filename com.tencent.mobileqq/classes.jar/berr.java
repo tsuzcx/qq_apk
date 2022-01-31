@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
 
 public class berr
-  implements View.OnClickListener
+  implements berw
 {
-  public berr(TipsBar paramTipsBar) {}
+  public berr(ParticipleBottomMenuView paramParticipleBottomMenuView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.removeAllViews();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berr
  * JD-Core Version:    0.7.0.1
  */

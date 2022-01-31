@@ -1,89 +1,45 @@
-import java.io.OutputStream;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.List;
 
-public class baqv
+class baqv
+  implements ITransactionCallback
 {
-  public long a;
-  public bapw a;
-  public bapx a;
-  public bapy a;
-  public baqw a;
-  public OutputStream a;
-  public Object a;
-  public HashMap<String, String> a;
-  public List<basp> a;
-  public byte[] a;
-  int jdField_b_of_type_Int = 1;
-  public long b;
-  private Object jdField_b_of_type_JavaLangObject;
-  public int c;
-  public long c;
-  public String c;
-  public int d = 5;
-  public String d;
-  public int e = 1;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public boolean i;
-  public boolean j = true;
-  public boolean k;
-  public boolean l = true;
-  public boolean m = true;
-  public boolean n = true;
-  public boolean o;
+  baqv(baqu parambaqu) {}
   
-  public baqv()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_c_of_type_Long = 480000L;
-    this.jdField_c_of_type_Int = 8;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public Object a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
-      return localObject1;
+    this.a.d = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
     }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
+    this.a.jdField_a_of_type_Bass.a = paramArrayOfByte;
+    if (this.a.b != -1) {
+      this.a.a(paramInt, "uploadImgError");
     }
   }
   
-  public void a(Object paramObject)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    try
-    {
-      this.jdField_b_of_type_JavaLangObject = paramObject;
-      return;
+    this.a.d = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
     }
-    finally
+    if (this.a.jdField_a_of_type_Xcy.b.equals(this.a.jdField_a_of_type_Xda.a))
     {
-      paramObject = finally;
-      throw paramObject;
+      this.a.jdField_a_of_type_Xcy.a = this.a.d;
+      if (this.a.b != -1) {
+        this.a.aO_();
+      }
     }
   }
   
-  public boolean a()
-  {
-    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
-  }
+  public void onSwitch2BackupChannel() {}
   
-  public boolean b()
-  {
-    return this.jdField_c_of_type_JavaLangString != null;
-  }
+  public void onTransStart() {}
   
-  public boolean c()
-  {
-    return this.jdField_a_of_type_JavaIoOutputStream != null;
-  }
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

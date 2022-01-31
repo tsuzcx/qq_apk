@@ -1,23 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-
-public class arjz
-  implements bhqd
+class arjz
+  implements aznz
 {
-  public arjz(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhpy parambhpy) {}
+  arjz(arjq paramarjq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    bacb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    this.jdField_a_of_type_Bhpy.dismiss();
+    arrr.a(this.a.a, this.a.d());
   }
+  
+  public void b() {}
 }
 
 

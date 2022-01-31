@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aekt;
-import aelz;
-import aflj;
+import aepi;
+import aeqo;
+import afpy;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
@@ -28,18 +28,18 @@ class SpriteUIHandler$1
         QLog.e("cmshow_scripted_SpriteUIHandler", 1, "adatper is null.");
         return;
       }
-      int i = aekt.a(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
+      int i = aepi.a(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
       if (i >= 0)
       {
         XListView localXListView = this.this$0.a();
-        Object localObject2 = (ChatMessage)((aelz)localObject1).getItem(i);
+        Object localObject2 = (ChatMessage)((aeqo)localObject1).getItem(i);
         if ((localXListView != null) && (localObject2 != null) && ((localObject2 instanceof MessageForApollo)))
         {
-          localObject1 = ((aelz)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
+          localObject1 = ((aeqo)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
           if ((localObject1 instanceof ApolloItemBuilder))
           {
             localObject1 = (ApolloItemBuilder)localObject1;
-            localObject2 = (BaseChatItemLayout)aekt.a(localXListView, aekt.a(this.jdField_a_of_type_Long, localXListView.getAdapter()));
+            localObject2 = (BaseChatItemLayout)aepi.a(localXListView, aepi.a(this.jdField_a_of_type_Long, localXListView.getAdapter()));
             if (localObject2 != null)
             {
               ((ApolloItemBuilder)localObject1).a((View)localObject2, this.jdField_a_of_type_Int, this.b);
@@ -48,7 +48,7 @@ class SpriteUIHandler$1
               i = 0;
               while (i < j)
               {
-                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)aekt.a(localXListView, i);
+                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)aepi.a(localXListView, i);
                 if (localBaseChatItemLayout != null) {
                   ((ApolloItemBuilder)localObject1).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject2, this.jdField_a_of_type_Int, this.b);
                 }

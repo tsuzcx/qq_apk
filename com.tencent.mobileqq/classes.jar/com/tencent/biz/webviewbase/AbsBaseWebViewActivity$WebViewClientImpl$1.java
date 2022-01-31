@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewbase;
 
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import yyk;
+import zcz;
 
 public class AbsBaseWebViewActivity$WebViewClientImpl$1
   implements Runnable
 {
-  public AbsBaseWebViewActivity$WebViewClientImpl$1(yyk paramyyk, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public AbsBaseWebViewActivity$WebViewClientImpl$1(zcz paramzcz, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

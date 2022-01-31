@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aoap;
-import aoaq;
-import azmj;
-import bdcd;
-import bdfq;
+import aoey;
+import aoez;
+import azqs;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 
@@ -31,14 +31,14 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     if (QLog.isColorLevel()) {
       QLog.i("ColorNoteSmallScreenPermissionDialogFragment", 2, "showPermissionDialog in");
     }
-    bdfq localbdfq = bdcd.a(getActivity(), 230).setMessage(2131690910).setPositiveButton(2131690911, new aoap(this));
-    localbdfq.setTitle(2131690912);
-    localbdfq.setCancelable(true);
-    localbdfq.setOnCancelListener(new aoaq(this));
-    localbdfq.setCanceledOnTouchOutside(false);
-    localbdfq.show();
+    bdjz localbdjz = bdgm.a(getActivity(), 230).setMessage(2131690911).setPositiveButton(2131690912, new aoey(this));
+    localbdjz.setTitle(2131690913);
+    localbdjz.setCancelable(true);
+    localbdjz.setOnCancelListener(new aoez(this));
+    localbdjz.setCanceledOnTouchOutside(false);
+    localbdjz.show();
     a = true;
-    azmj.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", 0, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", 0, 0, "", "", "", "");
     return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
   }
   

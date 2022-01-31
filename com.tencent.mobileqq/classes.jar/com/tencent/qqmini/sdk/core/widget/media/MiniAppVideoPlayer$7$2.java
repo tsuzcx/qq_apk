@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
 import android.widget.ImageView;
-import bgow;
+import bgtd;
 
 public class MiniAppVideoPlayer$7$2
   implements Runnable
 {
-  public MiniAppVideoPlayer$7$2(bgow parambgow) {}
+  public MiniAppVideoPlayer$7$2(bgtd parambgtd) {}
   
   public void run()
   {

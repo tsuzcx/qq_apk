@@ -1,31 +1,22 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class aejp
-  extends RecyclerView.ItemDecoration
 {
-  private aejp(ReminderListFragment paramReminderListFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramRect.left = aekt.a(16.0F, this.a.getResources());
-    paramRect.right = aekt.a(16.0F, this.a.getResources());
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    int j = ReminderListFragment.a(this.a).getItemCount();
-    if (QLog.isColorLevel()) {
-      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
-    }
-    paramRect.top = aekt.a(12.0F, this.a.getResources());
-    if (i == j - 1) {
-      paramRect.bottom = aekt.a(12.0F, this.a.getResources());
-    }
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 

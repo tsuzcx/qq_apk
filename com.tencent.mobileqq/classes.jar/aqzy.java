@@ -1,200 +1,267 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
-import com.tencent.mobileqq.highway.config.ConfigManager;
-import com.tencent.mobileqq.highway.utils.EndPoint;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqzy
+class aqzy
+  extends aqyt
 {
-  private static aqzy jdField_a_of_type_Aqzy;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public static aqzy a()
+  public aqzy(aqyp paramaqyp)
   {
-    try
+    super(paramaqyp);
+  }
+  
+  protected String a()
+  {
+    return "StateWaitResultWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (jdField_a_of_type_Aqzy == null) {
-        jdField_a_of_type_Aqzy = new aqzy();
-      }
-      aqzy localaqzy = jdField_a_of_type_Aqzy;
-      return localaqzy;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    finally {}
+    aqyp.b(this.jdField_a_of_type_Aqyp, 9, 10);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 9, 15);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateWaitResultWhenRecv)");
+    this.jdField_a_of_type_Aqyt = new aqzz(this.jdField_a_of_type_Aqyp);
   }
   
-  public long a()
+  protected void a(int paramInt)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
-    }
-    return 20971520L;
-  }
-  
-  @Deprecated
-  public ExcitingTransferDownloadConfig a()
-  {
-    return ((aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a().a();
-  }
-  
-  public ExcitingTransferHostInfo a()
-  {
-    EndPoint localEndPoint = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine()).getNextSrvAddr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    if (localEndPoint != null) {
-      return new ExcitingTransferHostInfo(localEndPoint.host, localEndPoint.port);
-    }
-    return new ExcitingTransferHostInfo("", 0);
-  }
-  
-  public ExcitingTransferUploadChnConfigInfo a()
-  {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
-    }
-    return new ExcitingTransferUploadChnConfigInfo();
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine());
-    if (localObject != null)
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      localObject = ((ConfigManager)localObject).getIpList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), false);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
+      return;
+    }
+    if (5 != paramInt)
+    {
+      this.jdField_a_of_type_Aqyp.d();
+      switch (paramInt)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          EndPoint localEndPoint = (EndPoint)((Iterator)localObject).next();
-          if ((localEndPoint != null) && (!TextUtils.isEmpty(localEndPoint.host))) {
-            localArrayList.add(new ExcitingTransferHostInfo(localEndPoint.host, localEndPoint.port));
-          }
-        }
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public boolean a()
-  {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    while (paramInt != 0)
+    {
+      this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
+      return;
+      this.jdField_a_of_type_Aqyp.d();
+      break label63;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 5);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateAcceptByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqyr(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 6);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateRefuseByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzk(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 8);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSenderCancelSendWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzr(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 7);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSaveToWeiYunByPCWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzo(this.jdField_a_of_type_Aqyp);
+      paramInt = i;
+      continue;
+      aqyp.a(this.jdField_a_of_type_Aqyp);
+      aqyp.b(this.jdField_a_of_type_Aqyp, 10, 11);
+      aqyp.c(this.jdField_a_of_type_Aqyp, 10, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenPause)");
+      this.jdField_a_of_type_Aqyt = new aqzu(this.jdField_a_of_type_Aqyp);
+      paramInt = 0;
     }
-    return false;
   }
   
-  public long b()
+  protected void a(int paramInt1, int paramInt2)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (a("onSenderUploadProgressNotify")) {
+      return;
     }
-    return 20971520L;
+    this.jdField_a_of_type_Aqyp.c(true);
+    aqyp.a(this.jdField_a_of_type_Aqyp);
+    b(paramInt1, paramInt2);
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 11);
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 14, false);
+    a("StateUploadingWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzu(this.jdField_a_of_type_Aqyp);
   }
   
-  public ExcitingTransferDownloadConfig b()
+  protected void a(int paramInt, String paramString)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    return new ExcitingTransferDownloadConfig();
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzd(this.jdField_a_of_type_Aqyp);
   }
   
-  public ExcitingTransferUploadChnConfigInfo b()
+  protected void a(boolean paramBoolean)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. onRecvOnLineFileResult entity is null");
+      return;
     }
-    return new ExcitingTransferUploadChnConfigInfo();
-  }
-  
-  public boolean b()
-  {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + " recv  success response of accept,  waiting the cmd of starting upload");
+      return;
     }
-    return false;
-  }
-  
-  public long c()
-  {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    this.jdField_a_of_type_Aqyp.c(1);
+    if (!this.jdField_a_of_type_Aqyp.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " recvonlinefile result = false and no handle it. here waiting response of asking progress");
+      return;
     }
-    return 20971520L;
+    this.jdField_a_of_type_Aqyp.c(false);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 10, 10);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Aqyt = new aqyx(this.jdField_a_of_type_Aqyp);
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]  recv failed!!");
   }
   
-  public ExcitingTransferDownloadConfig c()
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    return new ExcitingTransferDownloadConfig();
-  }
-  
-  public boolean c()
-  {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((arrr.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
     }
-    return false;
+    this.jdField_a_of_type_Aqyp.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 1, 3);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 1, 3);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadoneWhenPause)");
+    this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Aqyt = new aqzx(this.jdField_a_of_type_Aqyp);
+    return true;
   }
   
-  public long d()
+  protected void b()
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    return 20971520L;
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 9, true);
+    a("StateCancelUploadWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqyv(this.jdField_a_of_type_Aqyp);
   }
   
-  public boolean d()
+  protected void b(boolean paramBoolean)
   {
-    aqpu localaqpu = (aqpu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localaqpu.a() != null) {
-      return localaqpu.a().a();
+    if (a("onAskSenderUpProgressResult")) {
+      return;
     }
-    return false;
-  }
-  
-  public long e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return 0L;
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + " recv  success response of ask progress,  waiting the notify of progress");
+      return;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+    this.jdField_a_of_type_Aqyp.c(2);
+    if (!this.jdField_a_of_type_Aqyp.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " ask progress server result = false and no handle it. here waiting response of sender on recv");
+      return;
+    }
+    this.jdField_a_of_type_Aqyp.c(false);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 10, 10);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Aqyt = new aqyx(this.jdField_a_of_type_Aqyp);
   }
   
-  @Deprecated
-  public boolean e()
+  protected void d()
   {
-    return false;
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. onSenderReplayComeOnRecv entity is null");
+      return;
+    }
+    this.jdField_a_of_type_Aqyp.c(true);
+    aqyp.a(this.jdField_a_of_type_Aqyp);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 10, 11);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 10, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenPause)");
+    this.jdField_a_of_type_Aqyt = new aqzu(this.jdField_a_of_type_Aqyp);
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + "onRecvButSenderReplayTimeOut entity is null");
+      return;
+    }
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " you had recv the file, but sender replay time out!!!! recvCmdSucAndHadTryCount=" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Araa.a);
+    this.jdField_a_of_type_Aqyp.c(1);
+    if (!this.jdField_a_of_type_Aqyp.e())
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " sender replay time out and no handle it. here waiting response of asking progress");
+      return;
+    }
+    this.jdField_a_of_type_Aqyp.c(false);
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_Araa.a < 9223372036854775807L)
+    {
+      aqyp.a(this.jdField_a_of_type_Aqyp, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Aqyt = new aqyx(this.jdField_a_of_type_Aqyp);
+      return;
+    }
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzd(this.jdField_a_of_type_Aqyp);
+  }
+  
+  protected void h()
+  {
+    if (a("onAskSenderUpProgressTimeOut")) {
+      return;
+    }
+    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " you had recv the file, but ask progress time out!!!!!, recvCmdSucAndHadTryCount =" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Araa.a);
+    this.jdField_a_of_type_Aqyp.c(2);
+    if (!this.jdField_a_of_type_Aqyp.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Aqyt.a() + " ask progress time out and no handle it. here waiting response of sender when recv");
+      return;
+    }
+    this.jdField_a_of_type_Aqyp.c(false);
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_Araa.a < 9223372036854775807L)
+    {
+      aqyp.a(this.jdField_a_of_type_Aqyp, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Aqyt = new aqyx(this.jdField_a_of_type_Aqyp);
+      return;
+    }
+    aqyp.a(this.jdField_a_of_type_Aqyp, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Aqyt = new aqzd(this.jdField_a_of_type_Aqyp);
   }
 }
 

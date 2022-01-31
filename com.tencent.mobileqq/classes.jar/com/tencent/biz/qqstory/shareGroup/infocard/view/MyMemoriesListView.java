@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import bdee;
-import bhpo;
-import bhuy;
+import bdin;
+import bhtv;
+import bhzf;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
@@ -17,22 +17,22 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
 import java.util.List;
-import vad;
-import wau;
-import waw;
-import wax;
-import way;
+import vem;
+import wfd;
+import wff;
+import wfg;
+import wfh;
 
 public class MyMemoriesListView
   extends QQStoryPullToRefreshListView
-  implements bhpo, bhuy
+  implements bhtv, bhzf
 {
   private int jdField_a_of_type_Int = 5;
-  private bhpo jdField_a_of_type_Bhpo;
+  private bhtv jdField_a_of_type_Bhtv;
   public StoryListLoadMoreView a;
   public PullRefreshHeader a;
-  public wau a;
-  public wax a;
+  public wfd a;
+  public wfg a;
   
   public MyMemoriesListView(Context paramContext)
   {
@@ -55,12 +55,12 @@ public class MyMemoriesListView
   private boolean a()
   {
     int i;
-    if (this.jdField_a_of_type_Wau.getCount() == 3) {
+    if (this.jdField_a_of_type_Wfd.getCount() == 3) {
       i = 0;
     }
-    while (i < this.jdField_a_of_type_Wau.getCount())
+    while (i < this.jdField_a_of_type_Wfd.getCount())
     {
-      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_Wau.getItem(i);
+      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_Wfd.getItem(i);
       if ((!localVideoCollectionItem.isEmptyFakeItem) && (!TextUtils.isEmpty(localVideoCollectionItem.collectionId))) {
         return false;
       }
@@ -72,14 +72,14 @@ public class MyMemoriesListView
   private void b()
   {
     super.setActTAG("list_qqstory_memories");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(getContext()).inflate(2131561534, this, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(getContext()).inflate(2131561552, this, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTextColor(-1, -1, -1, -1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setHeaderBgDrawable(getResources().getDrawable(2130839219));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setHeaderBgDrawable(getResources().getDrawable(2130839220));
     super.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     super.setOverScrollHeight(getResources().getDimensionPixelSize(2131298665));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView = new StoryListLoadMoreView(getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(3);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.setOnClickListener(new waw(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.setOnClickListener(new wff(this));
     super.addFooterView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
@@ -98,10 +98,10 @@ public class MyMemoriesListView
     }
   }
   
-  public void a(vad paramvad)
+  public void a(vem paramvem)
   {
-    if ((paramvad.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvad.jdField_a_of_type_JavaUtilList != null) && (paramvad.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Wau.a(paramvad.jdField_a_of_type_JavaLangString, paramvad.jdField_a_of_type_JavaUtilList);
+    if ((paramvem.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvem.jdField_a_of_type_JavaUtilList != null) && (paramvem.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Wfd.a(paramvem.jdField_a_of_type_JavaLangString, paramvem.jdField_a_of_type_JavaUtilList);
     }
   }
   
@@ -123,8 +123,8 @@ public class MyMemoriesListView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      if (this.jdField_a_of_type_Wax != null) {
-        this.jdField_a_of_type_Wax.b();
+      if (this.jdField_a_of_type_Wfg != null) {
+        this.jdField_a_of_type_Wfg.b();
       }
     }
     return true;
@@ -146,8 +146,8 @@ public class MyMemoriesListView
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if ((paramInt2 == 0) && (paramInt3 == 0)) {}
     do
@@ -155,16 +155,16 @@ public class MyMemoriesListView
       do
       {
         return;
-      } while ((this.jdField_a_of_type_Wau.getCount() == 0) || (a()) || (getCount() - getLastVisiblePosition() > this.jdField_a_of_type_Int) || ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 5) && (!bdee.g(getContext()))) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 4) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 1));
+      } while ((this.jdField_a_of_type_Wfd.getCount() == 0) || (a()) || (getCount() - getLastVisiblePosition() > this.jdField_a_of_type_Int) || ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 5) && (!bdin.g(getContext()))) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 4) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 1));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-    } while (this.jdField_a_of_type_Wax == null);
-    this.jdField_a_of_type_Wax.c();
+    } while (this.jdField_a_of_type_Wfg == null);
+    this.jdField_a_of_type_Wfg.c();
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpo != null) {
-      this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhtv != null) {
+      this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
     }
     if (paramInt == 0)
     {
@@ -172,23 +172,23 @@ public class MyMemoriesListView
       if ((getCount() - getLastVisiblePosition() <= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() == 5))
       {
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-        if (this.jdField_a_of_type_Wax != null) {
-          this.jdField_a_of_type_Wax.c();
+        if (this.jdField_a_of_type_Wfg != null) {
+          this.jdField_a_of_type_Wfg.c();
         }
       }
     }
   }
   
-  public void setListAdapter(wau paramwau)
+  public void setListAdapter(wfd paramwfd)
   {
-    super.setAdapter(paramwau);
-    this.jdField_a_of_type_Wau = paramwau;
+    super.setAdapter(paramwfd);
+    this.jdField_a_of_type_Wfd = paramwfd;
   }
   
-  public void setListener(wax paramwax, way paramway)
+  public void setListener(wfg paramwfg, wfh paramwfh)
   {
-    this.jdField_a_of_type_Wax = paramwax;
-    this.jdField_a_of_type_Wau.a(paramwax, paramway);
+    this.jdField_a_of_type_Wfg = paramwfg;
+    this.jdField_a_of_type_Wfd.a(paramwfg, paramwfh);
   }
   
   public void setLoadMoreState(boolean paramBoolean1, boolean paramBoolean2)
@@ -206,9 +206,9 @@ public class MyMemoriesListView
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(5);
   }
   
-  public void setOnScrollListener(bhpo parambhpo)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.jdField_a_of_type_Bhpo = parambhpo;
+    this.jdField_a_of_type_Bhtv = parambhtv;
   }
 }
 

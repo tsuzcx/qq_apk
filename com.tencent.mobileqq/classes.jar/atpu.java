@@ -1,156 +1,139 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLocationShare;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype31;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import java.util.Map;
 
 public class atpu
 {
-  public static List<MessageRecord> a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  private static String b = "LocationDataHandler";
+  private String jdField_a_of_type_JavaLangString;
+  private final List<atpv> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final Map<atpq, LocationRoom> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+  
+  atpu(String paramString)
   {
-    return paramQQAppInterface.a().a(paramString, paramInt, new int[] { -2076 }, 5);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean)
+  public LocationRoom a(atpq paramatpq)
   {
-    paramString = b(paramQQAppInterface, paramInt, paramString);
-    if (paramString != null)
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      paramInt = 0;
-      if (paramInt < paramString.size())
+      LocationRoom localLocationRoom2 = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatpq);
+      LocationRoom localLocationRoom1 = localLocationRoom2;
+      if (localLocationRoom2 == null)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramString.get(paramInt);
-        if ((localMessageRecord instanceof MessageForLocationShare))
-        {
-          if (paramInt != paramString.size() - 1) {
-            break label69;
-          }
-          a(paramQQAppInterface, localMessageRecord, paramBoolean);
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          label69:
-          a(paramQQAppInterface, localMessageRecord, false);
-        }
+        localLocationRoom1 = new LocationRoom(paramatpq, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramatpq, localLocationRoom1);
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "updateAllLbsMsgState: invoked. ", " lbsMsgs: ", paramString, " lbsMsgs.size(): ", Integer.valueOf(paramString.size()) });
+      if (QLog.isColorLevel()) {
+        QLog.d(b, 2, "getLocationRoom: invoked. mLocationRoomMap size: " + this.jdField_a_of_type_JavaUtilMap.size() + " locationRoom: " + localLocationRoom1);
+      }
+      return localLocationRoom1;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
+  public void a()
   {
-    MessageForLocationShare localMessageForLocationShare;
-    if ((paramMessageRecord instanceof MessageForLocationShare))
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      localMessageForLocationShare = (MessageForLocationShare)paramMessageRecord;
-      if (localMessageForLocationShare.isSharingLocation == paramBoolean) {
-        break label79;
-      }
-      localMessageForLocationShare.isSharingLocation = paramBoolean;
-      paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, localMessageForLocationShare.convertToMsgData());
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      return;
     }
-    for (;;)
+  }
+  
+  void a(int paramInt, String paramString)
+  {
+    paramString = new atpq(paramInt, paramString);
+    LocationRoom localLocationRoom = a(paramString);
+    if (localLocationRoom != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageUtil", 2, new Object[] { "updateMsgSharingState: invoked. updateMsgContentByUniseq to false ", " locationShare: ", localMessageForLocationShare });
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((atpv)localIterator.next()).a(paramString, localLocationRoom.a(), localLocationRoom.c());
+      }
+    }
+  }
+  
+  void a(atpq paramatpq)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      paramatpq = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatpq);
+      if ((paramatpq != null) && (paramatpq.a() != null)) {
+        paramatpq.a().a();
       }
       return;
-      label79:
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageUtil", 2, "updateMsgSharingState: invoked. state ok, no need update. ");
-      }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  void a(atpq paramatpq, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "onDecodeC2cLbsCloseRoomMessage: invoked. ", " friendUin: ", paramString });
-    }
-    atpv.a(paramQQAppInterface, 0, paramString, false);
-    a(paramQQAppInterface, 0, paramString, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, boolean paramBoolean, bbku parambbku)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "decodePBMsgElems_LbsShareMsg: invoked. ", "elems = [" + paramList + "], msgRecords = [" + paramList1 + "], logBuilder = [" + paramStringBuilder + "], msg = [" + paramMsg + "]" });
-    }
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LocationMessageUtil", 2, "decodePBMsgElems_LbsShareMsg msg decode failed");
-      }
-    }
-    do
-    {
-      return;
-      if (paramBoolean)
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramatpq)) {
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
       {
-        if (paramQQAppInterface.getLongAccountUin() == paramMsg.msg_head.to_uin.get()) {}
-        for (paramQQAppInterface = paramMsg.msg_head.from_uin.get() + "";; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "")
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            paramMsg = (im_msg_body.Elem)paramList.next();
-            if ((paramMsg.common_elem.has()) && (paramMsg.common_elem.uint32_service_type.get() == 31) && (paramMsg.common_elem.bytes_pb_elem.has())) {
-              try
-              {
-                new hummer_commelem.MsgElemInfo_servtype31().mergeFrom(paramMsg.common_elem.bytes_pb_elem.get().toByteArray());
-              }
-              catch (InvalidProtocolBufferMicroException paramMsg)
-              {
-                QLog.e("LocationMessageUtil", 1, "decodePBMsgElems_LbsShareMsg: failed. ", paramMsg);
-              }
-            }
-          }
+        this.jdField_a_of_type_JavaUtilMap.remove(paramatpq);
+        ??? = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (((Iterator)???).hasNext()) {
+          ((atpv)((Iterator)???).next()).b(paramatpq, paramInt);
         }
       }
-      if (parambbku != null) {}
-      for (paramQQAppInterface = parambbku.a;; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "") {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:LbsShareMsg;\n");
-      }
-      paramList = (MessageForLocationShare)ayvw.a(-2076);
-      paramList.msgtype = -2076;
-      paramList.msg = BaseApplicationImpl.context.getString(2131720279);
-      paramList.isSharingLocation = true;
-      paramList.frienduin = paramQQAppInterface;
-      paramList.parse();
-      paramList1.add(paramList);
-    } while (!QLog.isColorLevel());
-    paramStringBuilder.append("LbsShareMsg.msg: ").append(paramList.toString() + "\n").append("\n");
+    }
   }
   
-  public static List<MessageRecord> b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  void a(atpq paramatpq, int paramInt1, int paramInt2)
   {
-    return paramQQAppInterface.a().a(paramString, paramInt, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2076 }, 2147483647);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((atpv)localIterator.next()).a(paramatpq, paramInt1, paramInt2);
+    }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  void a(atpq paramatpq, LocationRoom.Venue paramVenue, List<atpo> paramList)
   {
-    atpv.a(paramQQAppInterface, 1, paramString, false);
-    a(paramQQAppInterface, 1, paramString, false);
+    LocationRoom localLocationRoom = a(paramatpq);
+    localLocationRoom.a(paramVenue);
+    localLocationRoom.a(paramList);
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((atpv)paramList.next()).a(paramatpq, paramVenue, localLocationRoom.c());
+    }
+  }
+  
+  public void a(atpv paramatpv)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramatpv);
+      return;
+    }
+  }
+  
+  void b(atpq paramatpq, int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(paramatpq);
+      ??? = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((atpv)((Iterator)???).next()).a(paramatpq, paramInt);
+      }
+    }
+  }
+  
+  public void b(atpv paramatpv)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramatpv)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramatpv);
+      }
+      return;
+    }
   }
 }
 

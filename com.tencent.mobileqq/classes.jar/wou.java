@@ -1,285 +1,184 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class wou
-  implements Handler.Callback, umd, wnz, wot, wra
 {
-  private int a;
-  public Activity a;
-  public Handler a;
-  protected bdfq a;
-  public urk a;
-  protected wog a;
-  protected wpi a;
-  public wsb a;
-  protected boolean a;
+  private static wor jdField_a_of_type_Wor = new wor();
+  public int a;
+  private String jdField_a_of_type_JavaLangString = "";
+  public List<woq> a;
+  public boolean a;
+  private int b;
   
-  public wou(Activity paramActivity)
+  public wou()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Urk = ((urk)urr.a(10));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public wou(wou paramwou)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramwou.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramwou.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramwou.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramwou.jdField_a_of_type_Int;
+    this.b = paramwou.b;
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    int i;
+    ArrayList localArrayList;
+    for (;;)
+    {
+      try
+      {
+        wov localwov1 = new wov();
+        if (paramInt1 == 0)
+        {
+          localwov1.jdField_a_of_type_Boolean = bool;
+          if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) {
+            break label330;
+          }
+          i = paramInt2;
+          if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
+            i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+          }
+          if ((paramInt1 + i >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
+            localwov1.b = true;
+          }
+          localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+          localwov1.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+          paramInt2 = paramInt1 + i;
+          if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
+            break label309;
+          }
+          woq localwoq1 = (woq)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+          Iterator localIterator = localwov1.jdField_a_of_type_JavaUtilList.iterator();
+          if (!localwoq1.b) {
+            break label309;
+          }
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          woq localwoq2 = (woq)localIterator.next();
+          if ((!localwoq2.b) || (!localwoq2.c.equals(localwoq1.c))) {
+            continue;
+          }
+          localIterator.remove();
+          wxe.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localwoq2 });
+          continue;
+        }
+        bool = false;
+      }
+      finally {}
+    }
+    if (localwov2.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localwov2.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+      wxe.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localwov2.jdField_a_of_type_JavaUtilList });
+    }
+    for (;;)
+    {
+      label309:
+      this.b = (localwov2.jdField_a_of_type_JavaUtilList.size() + paramInt1);
+      return localwov2;
+      label330:
+      localwov2.b = a();
+    }
   }
   
   public void a()
   {
-    wsv.b("Q.qqstory.home.StoryListPresenter", "---------onCreate----------");
-    c();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Wog = new wog(ThreadManager.getSubThreadLooper());
-    b();
-    if (a()) {
-      this.jdField_a_of_type_Urk.b("key_story_has_show_rename_guide", Boolean.valueOf(true));
-    }
-    for (;;)
+    try
     {
-      h();
-      d();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
       return;
-      d();
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(List<woq> paramList, String paramString, boolean paramBoolean)
   {
-    switch (paramInt1)
+    try
     {
-    default: 
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      wxe.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId list:set next cookie data count:%d, cookie:%s, isEnd:%b", new Object[] { Integer.valueOf(paramList.size()), paramString, Boolean.valueOf(paramBoolean) });
+      wxe.a("Q.qqstory.home.data.FeedListPageLoaderBase", "add feed list:%s", paramList);
       return;
     }
-    i();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Urk.b("story_list_last_update_from_net_time", Long.valueOf(paramLong));
-  }
-  
-  public void a(wob paramwob)
-  {
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-      wsv.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now new User dialog is showing");
-    }
-    int i;
-    do
+    finally
     {
+      paramList = finally;
+      throw paramList;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = this.b;
       return;
-      if ((this.jdField_a_of_type_Wsb != null) && (this.jdField_a_of_type_Wsb.isShowing()))
-      {
-        wsv.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now upgrade dialog is showing");
-        return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      if (wxe.a()) {
+        wxe.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
       }
-      if (paramwob == null)
-      {
-        wsv.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog userGuideInfo=null");
-        return;
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_Wor);
+      if (wxe.a()) {
+        wxe.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
       }
-      i = ((Integer)this.jdField_a_of_type_Urk.b("qqstory_guide_info_seqno", Integer.valueOf(0))).intValue();
-      wsv.a("Q.qqstory.home.StoryListPresenter", "showGuideDialog local:%s,now:%s", Integer.valueOf(i), Integer.valueOf(paramwob.b));
-    } while (paramwob.b <= i);
-    this.jdField_a_of_type_Urk.b("qqstory_guide_info_seqno", Integer.valueOf(paramwob.b));
-    wsb localwsb = new wsb(this.jdField_a_of_type_AndroidAppActivity, 2131755880);
-    localwsb.b(paramwob.a).c(paramwob.c).d(paramwob.e).b(new wpd(this, localwsb)).e(paramwob.d).a(new wpc(this, localwsb)).setCancelable(true);
-    localwsb.c(new wpe(this, localwsb));
-    localwsb.setCanceledOnTouchOutside(true);
-    localwsb.show();
-    wta.a("home_page", "guide_cnt", 0, 0, new String[0]);
-  }
-  
-  public void a(wpi paramwpi)
-  {
-    this.jdField_a_of_type_Wpi = paramwpi;
-  }
-  
-  protected boolean a()
-  {
-    int i = ((Integer)this.jdField_a_of_type_Urk.b("qqstory_is_story_new_user", Integer.valueOf(0))).intValue();
-    wsv.d("Q.qqstory.home.StoryListPresenter", "showNewUserGuideIfNeccessary:%d", new Object[] { Integer.valueOf(i) });
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Urk.b("qqstory_is_story_new_user", Integer.valueOf(1));
-      this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-      this.jdField_a_of_type_Bdfq.setTitle(alpo.a(2131714853));
-      this.jdField_a_of_type_Bdfq.setMessage("在这里，你可以拍摄小视频记录真实所见，与好友分享生活美好瞬间。\n");
-      this.jdField_a_of_type_Bdfq.setNegativeButton(alpo.a(2131714838), new wow(this)).setPositiveButton("立即拍摄", new wov(this));
-      this.jdField_a_of_type_Bdfq.getBtnight().setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166383));
-      this.jdField_a_of_type_Bdfq.setOnDismissListener(new wox(this));
-      this.jdField_a_of_type_Bdfq.show();
-      wta.a("home_page", "guide_exp", 0, 0, new String[0]);
-      return true;
-    }
-    return false;
-  }
-  
-  protected void b()
-  {
-    wqx localwqx = (wqx)this.jdField_a_of_type_Wpi.a("LocalVideoPushSegment");
-    if (localwqx != null) {
-      localwqx.a(this);
-    }
-  }
-  
-  public boolean b()
-  {
-    nan localnan = (nan)QQStoryContext.a().getManager(70);
-    if (localnan == null)
-    {
-      wsv.e("Q.qqstory.home.StoryListPresenter", "get TroopRedTouchManager is null! so we return have no red point!");
-      return false;
-    }
-    oidb_0x791.RedDotInfo localRedDotInfo = localnan.a();
-    if ((localRedDotInfo == null) && (((uur)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).getManager(252)).jdField_a_of_type_Boolean))
-    {
-      wsv.b("Q.qqstory.home.StoryListPresenter", "check invisible red point for msgtab");
-      localRedDotInfo = localnan.a(52);
-      if (localRedDotInfo == null) {
-        localRedDotInfo = localnan.a(35);
-      }
-    }
-    for (;;)
-    {
-      if (localRedDotInfo != null)
-      {
-        wsv.b("Q.qqstory.home.StoryListPresenter", "it have red point");
-        int i = localRedDotInfo.uint32_last_time.get();
-        if ((i > 0) && (i > this.jdField_a_of_type_Int))
-        {
-          this.jdField_a_of_type_Int = i;
-          return true;
-        }
-        return false;
-      }
-      return false;
-    }
-  }
-  
-  protected void c()
-  {
-    if (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
-      wsv.e("Q.qqstory.home.StoryListPresenter", "get app interface failed.");
-    }
-    long l;
-    do
-    {
-      return;
-      l = ((urk)urr.a(10)).b();
-    } while (System.currentTimeMillis() - l <= 7200000L);
-    wsv.b("Q.qqstory.home.StoryListPresenter", "need update story config from server.");
-    ((uhk)((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface()).a(98)).d();
-  }
-  
-  public boolean c()
-  {
-    long l = ((Long)this.jdField_a_of_type_Urk.b("story_list_last_update_from_net_time", Long.valueOf(0L))).longValue();
-    if (l == 0L)
-    {
-      wsv.d("Q.qqstory.home.StoryListPresenter", "checkStoryListUpdateOverTime,preUpdateTime = 0!");
-      return true;
-    }
-    l = NetConnInfoCenter.getServerTimeMillis() - l;
-    wsv.a("Q.qqstory.home.StoryListPresenter", "checkStoryListUpdateOverTime gap=%s", Long.valueOf(l));
-    return l > 600000L;
-  }
-  
-  public void d()
-  {
-    boolean bool = ((Boolean)this.jdField_a_of_type_Urk.b("key_story_has_show_rename_guide", Boolean.valueOf(false))).booleanValue();
-    wsv.a("Q.qqstory.home.StoryListPresenter", "showUpgradeGuideIfNeccessary:%b", Boolean.valueOf(bool));
-    if (bool) {
       return;
     }
-    ThreadManager.executeOnFileThread(new StoryListPresenter.4(this));
+    finally {}
   }
   
-  public boolean d()
+  public String toString()
   {
-    if (xne.a(this.jdField_a_of_type_AndroidAppActivity))
+    try
     {
-      this.jdField_a_of_type_Wog.c();
-      this.jdField_a_of_type_Wog.a(new woc(null)).a(new woh(this)).a(new wnu()).a(new wnx(this)).a(new wpg(this)).a(new wpf(this)).a();
-      uza.d();
-      return true;
+      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
+      return str;
     }
-    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131714828), 0).a();
-    return false;
-  }
-  
-  public void e() {}
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Bdfq != null)
+    finally
     {
-      this.jdField_a_of_type_Bdfq.dismiss();
-      this.jdField_a_of_type_Bdfq = null;
+      localObject = finally;
+      throw localObject;
     }
-    if (this.jdField_a_of_type_Wsb != null)
-    {
-      this.jdField_a_of_type_Wsb.dismiss();
-      this.jdField_a_of_type_Wsb = null;
-    }
-  }
-  
-  public void g()
-  {
-    wsv.b("Q.qqstory.home.StoryListPresenter", "-------onDestory---------");
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bdfq != null)
-    {
-      this.jdField_a_of_type_Bdfq.dismiss();
-      this.jdField_a_of_type_Bdfq = null;
-    }
-    if (this.jdField_a_of_type_Wsb != null)
-    {
-      this.jdField_a_of_type_Wsb.dismiss();
-      this.jdField_a_of_type_Wsb = null;
-    }
-    if (this.jdField_a_of_type_Wog != null) {
-      this.jdField_a_of_type_Wog.c();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
-    xod.a();
-    xod.a(false);
-    StoryQIMBadgeView.b();
-  }
-  
-  protected void h()
-  {
-    wsv.e("Q.qqstory.home.StoryListPresenter", "showLocalVideoSegmentIfNecessary");
-    ((wqx)this.jdField_a_of_type_Wpi.a("LocalVideoPushSegment")).e_(true);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void i() {}
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

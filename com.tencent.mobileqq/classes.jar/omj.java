@@ -48,7 +48,7 @@ class omj
       this.jdField_a_of_type_Omg.e(this.jdField_a_of_type_Omt);
       TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = alpo.a(2131713106);; paramView = alpo.a(2131713171))
+      for (paramView = alud.a(2131713118);; paramView = alud.a(2131713183))
       {
         localTextView.setText(paramView);
         i = 5;

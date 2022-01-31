@@ -1,30 +1,43 @@
-public class bfrp
-  extends bfrn
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+
+class bfrp
+  extends SSOAccountObserver
 {
-  private static bfrp jdField_a_of_type_Bfrp;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  bfrp(bfrj parambfrj, OpenSDKAppInterface paramOpenSDKAppInterface, bfrr parambfrr) {}
   
-  public static bfrp a()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Bfrp == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (paramBundle == null) {}
+    for (paramString = "null";; paramString = Integer.valueOf(paramBundle.getInt("code")))
     {
-      if (jdField_a_of_type_Bfrp == null) {
-        jdField_a_of_type_Bfrp = new bfrp();
-      }
-      return jdField_a_of_type_Bfrp;
+      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", paramString });
+      this.jdField_a_of_type_Bfrr.a();
+      return;
     }
   }
   
-  public void a()
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    super.a();
-    jdField_a_of_type_Bfrp = null;
+    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
+    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
+      bfnz.a(paramString, System.currentTimeMillis());
+    }
+    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
+    bfqv localbfqv = new bfqv();
+    localbfqv.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
+    localbfqv.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
+    localbfqv.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
+    localbfqv.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
+    this.jdField_a_of_type_Bfrr.a(localbfqv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfrp
  * JD-Core Version:    0.7.0.1
  */

@@ -48,13 +48,13 @@ public class mnc
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559650, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559649, null);
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
   }
   
   public TextView a()
   {
-    return (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958);
+    return (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977);
   }
   
   public void a()
@@ -89,18 +89,18 @@ public class mnc
   
   public void a(Bitmap paramBitmap)
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365910)).setImageBitmap(paramBitmap);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365912)).setImageBitmap(paramBitmap);
   }
   
   public void a(Bitmap paramBitmap, String paramString)
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365910)).setImageBitmap(paramBitmap);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958)).setText(paramString);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365912)).setImageBitmap(paramBitmap);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977)).setText(paramString);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370224));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_AndroidViewView.invalidate();
   }
@@ -114,16 +114,16 @@ public class mnc
     if (this.jdField_d_of_type_Boolean) {
       return;
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370224);
     Button localButton1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813);
-    Button localButton2 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573);
+    Button localButton2 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375624);
     localButton1.setClickable(true);
     localButton2.setClickable(true);
     localButton1.setOnClickListener(this);
     localButton2.setOnClickListener(this);
     if (paramBoolean3) {
       if (this.jdField_b_of_type_Boolean) {
-        localTextView.setText(localTextView.getResources().getString(2131695821));
+        localTextView.setText(localTextView.getResources().getString(2131695823));
       }
     }
     for (;;)
@@ -134,12 +134,12 @@ public class mnc
       }
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int * 1000);
       return;
-      localTextView.setText(localTextView.getResources().getString(2131695822));
+      localTextView.setText(localTextView.getResources().getString(2131695824));
       continue;
       if (this.jdField_b_of_type_Boolean) {
-        localTextView.setText(localTextView.getResources().getString(2131695820));
+        localTextView.setText(localTextView.getResources().getString(2131695822));
       } else {
-        localTextView.setText(localTextView.getResources().getString(2131695823));
+        localTextView.setText(localTextView.getResources().getString(2131695825));
       }
     }
   }
@@ -224,7 +224,7 @@ public class mnc
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377830));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377884));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_AndroidViewView.invalidate();
   }
@@ -232,24 +232,24 @@ public class mnc
   public void c()
   {
     Object localObject = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813);
-    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573);
+    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375624);
     ((Button)localObject).setVisibility(4);
     localButton.setVisibility(4);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205);
+    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370224);
     this.jdField_a_of_type_AndroidViewView.invalidate();
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370224));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_AndroidViewView.invalidate();
   }
   
   public void d(String paramString)
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977)).setText(paramString);
   }
   
   public void onClick(View paramView)
@@ -269,7 +269,7 @@ public class mnc
       for (;;)
       {
         ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813)).setClickable(false);
-        ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573)).setClickable(false);
+        ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375624)).setClickable(false);
         paramView.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramView);
         return;

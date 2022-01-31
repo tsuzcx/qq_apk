@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class adcp
-  extends avqr
+  implements DialogInterface.OnClickListener
 {
-  public adcp(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcp(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bdjz parambdjz) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

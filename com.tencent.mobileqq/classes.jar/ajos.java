@@ -1,22 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajos
-  implements uqr<uqm>
+  implements DialogInterface.OnClickListener
 {
-  public ajos(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public ajos(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(boolean paramBoolean, uqm paramuqm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    wsv.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramuqm != null))
-    {
-      wsv.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramuqm);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramuqm));
-      return;
-    }
-    wsv.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    this.a.finish();
   }
 }
 

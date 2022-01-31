@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.applets;
 
-import amnk;
+import amrz;
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$2
@@ -17,10 +17,10 @@ public final class PublicAccountEventReport$2
     if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      amnk.a(str1, 101, str2, bool);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
+      amrz.a(str1, 101, str2, bool);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
       }
       return;
     }

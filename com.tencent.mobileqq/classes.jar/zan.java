@@ -1,23 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-
-class zan
-  implements Animation.AnimationListener
+public class zan
 {
-  zan(zal paramzal, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public zan(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

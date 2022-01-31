@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bjqj;
+import bjuq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
@@ -140,8 +140,8 @@ public class SharpPDec
     {
       try
       {
-        paramContext = bjqj.a(paramContext);
-        if (bjqj.f(paramContext))
+        paramContext = bjuq.a(paramContext);
+        if (bjuq.f(paramContext))
         {
           QLog.i("SharpPDec", 1, "cooperation.SharpPDec:QzoneLive process,return 0.");
           i = j;

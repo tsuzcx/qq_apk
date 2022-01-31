@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import akvr;
-import akvz;
+import alag;
+import alao;
 import android.os.Handler;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,25 +9,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(akvr paramakvr) {}
+  public CmGameTxVideoPlayer$1(alag paramalag) {}
   
   public void run()
   {
-    if (akvr.a(this.this$0) < 0L) {}
+    if (alag.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = akvr.a(this.this$0).iterator();
+      Iterator localIterator = alag.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        akvz localakvz = (akvz)localIterator.next();
-        if (localakvz != null) {
-          localakvz.a(akvr.a(this.this$0), this.this$0.a());
+        alao localalao = (alao)localIterator.next();
+        if (localalao != null) {
+          localalao.a(alag.a(this.this$0), this.this$0.a());
         }
       }
-      akvr.a(this.this$0, this.this$0.a() - this.this$0.b());
-    } while (akvr.a(this.this$0) == null);
-    akvr.a(this.this$0).postDelayed(this, akvr.b(this.this$0));
+      alag.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (alag.a(this.this$0) == null);
+    alag.a(this.this$0).postDelayed(this, alag.b(this.this$0));
   }
 }
 

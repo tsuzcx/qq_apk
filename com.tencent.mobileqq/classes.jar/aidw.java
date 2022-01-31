@@ -1,34 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.os.Bundle;
 
 class aidw
-  implements bhqp
+  extends altm
 {
-  aidw(aidp paramaidp) {}
+  aidw(aidv paramaidv) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
     }
-    if ((this.a.jdField_a_of_type_Ahzs.getCount() <= 0) || (paramInt <= 0)) {}
-    do
-    {
-      return;
-      paramAdapterView = (aicu)this.a.jdField_a_of_type_Ahzs.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
     }
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
-    this.a.a(true);
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
+    }
   }
 }
 

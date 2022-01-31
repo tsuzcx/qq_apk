@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anyb;
+import aock;
 import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class PostTable
@@ -50,14 +50,14 @@ public class PostTable
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.i = 0;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131558846, this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372193));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372194));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372195));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372192));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372191);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131558845, this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372213));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372214));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372215));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372212));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372211);
     if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839076));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839077));
     }
     paramContext = (WindowManager)paramContext.getSystemService("window");
     this.c = paramContext.getDefaultDisplay().getWidth();
@@ -105,9 +105,9 @@ public class PostTable
     }
     this.jdField_a_of_type_Boolean = true;
     this.i = 0;
-    anyb.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    anyb.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    anyb.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
+    aock.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    aock.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    aock.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
   }
   
   public void a(double paramDouble)
@@ -133,9 +133,9 @@ public class PostTable
     }
     this.jdField_a_of_type_Boolean = true;
     this.i = 1;
-    anyb.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    anyb.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    anyb.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
+    aock.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    aock.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    aock.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
   }
   
   public void c()

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class MiniAppReportEntity
-  extends awbv
+  extends awge
   implements Serializable
 {
   public String appId;
   public String appType;
-  @awdj
+  @awhs
   public String launchId;
   public String subActionType;
   public String verType;

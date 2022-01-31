@@ -1,44 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class afdz
-  extends Handler
+  implements bhuw
 {
-  afdz(afdy paramafdy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  afdz(afdy paramafdy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramMessage.obj == null)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 4: 
-        afdy.a(this.a);
-        return;
-      }
-      afdy.a(this.a, true);
-      return;
-    }
-    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      afdy.a(this.a, localWeakReference);
-      return;
-    case 2: 
-      afdy.b(this.a, localWeakReference);
-      return;
-    }
-    afdy.c(this.a, localWeakReference);
+    paramAdapterView = (aihj)afdy.a(this.a).a.getItem(paramInt - 1);
+    afdy.a(this.a, paramAdapterView);
+    afdy.a(this.a).dismiss();
+    azqs.b(afdy.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

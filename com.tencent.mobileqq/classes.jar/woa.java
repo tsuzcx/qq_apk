@@ -1,38 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class woa
-  extends unk<wob>
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public static final String a = ume.a("StorySvc.get_user_guide");
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public String a()
+  public woa(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    return a;
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369767);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369789));
+    this.b = paramView.findViewById(2131370748);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370737));
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
   }
   
-  public wob a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
-    try
-    {
-      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
-      return new wob(localRspGetUserGuide);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        wsv.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected byte[] a()
+  public void onClick(View paramView)
   {
-    return new qqstory_service.ReqGetUserGuide().toByteArray();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

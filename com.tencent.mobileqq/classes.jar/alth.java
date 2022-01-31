@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class alth
-  implements Comparator<Object>
+public abstract interface alth
 {
-  alth(altc paramaltc) {}
+  public abstract ViewGroup a();
   
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    if ((paramObject1 == null) && (paramObject2 == null)) {
-      return 0;
-    }
-    if (paramObject1 == null) {
-      return -1;
-    }
-    if (paramObject2 == null) {
-      return 1;
-    }
-    if (((paramObject1 instanceof avqe)) && ((paramObject2 instanceof avqe))) {
-      return (int)(((avqe)paramObject2).a - ((avqe)paramObject1).a);
-    }
-    if (((paramObject1 instanceof avqe)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((avqe)paramObject1).a * 1000L);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof avqe))) {
-      return (int)(((avqe)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    return paramObject1.hashCode() - paramObject2.hashCode();
-  }
+  public abstract bicb a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Configuration paramConfiguration);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(String paramString, bicb parambicb);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

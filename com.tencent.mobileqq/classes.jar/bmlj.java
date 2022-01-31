@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class bmlj
-  implements Animation.AnimationListener
+public class bmlj
 {
-  bmlj(View paramView) {}
+  public final int a;
+  public final long a;
+  public final CharSequence a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bmlj(long paramLong, int paramInt, CharSequence paramCharSequence)
   {
-    this.a.setAnimation(null);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,42 +1,71 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.capture.view.CountDownView;
-import java.lang.ref.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import java.util.List;
 
-public final class blvm
-  extends Handler
+public class blvm
+  extends QQUIEventReceiver<blvi, bmsb>
 {
-  private WeakReference<CountDownView> a;
-  
-  public blvm(CountDownView paramCountDownView)
+  public blvm(@NonNull blvi paramblvi)
   {
-    this.a = new WeakReference(paramCountDownView);
+    super(paramblvi);
   }
   
-  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
+  public void a(@NonNull blvi paramblvi, @NonNull bmsb parambmsb)
   {
-    if (paramMessage.what == 1) {
-      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
+    paramblvi = paramblvi.a;
+    if (paramblvi != null)
+    {
+      Object localObject = paramblvi.a(parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
+      if (!(localObject instanceof bmwf))
+      {
+        wxe.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
+        return;
+      }
+      localObject = (bmwf)localObject;
+      if (parambmsb.jdField_a_of_type_Int == 0)
+      {
+        if (parambmsb.jdField_a_of_type_Boolean)
+        {
+          wxe.b(this.TAG, "notify ui we finish downloading");
+          ((bmwf)localObject).jdField_b_of_type_Boolean = false;
+          ((bmwf)localObject).g = parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.getLocalEmojiFolderPath();
+          ((bmwf)localObject).c = 0;
+          ((bmwf)localObject).d = 0;
+          paramblvi.a((bmvv)localObject);
+          return;
+        }
+        wxe.b(this.TAG, "notify ui we new progress : " + parambmsb.jdField_b_of_type_Long + " / " + parambmsb.jdField_a_of_type_Long);
+        ((bmwf)localObject).jdField_b_of_type_Boolean = true;
+        ((bmwf)localObject).g = null;
+        ((bmwf)localObject).c = ((int)parambmsb.jdField_a_of_type_Long);
+        ((bmwf)localObject).d = ((int)parambmsb.jdField_b_of_type_Long);
+        paramblvi.a((bmvv)localObject);
+        return;
+      }
+      if (parambmsb.jdField_b_of_type_Boolean)
+      {
+        blvi.a((bmwf)localObject, parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
+        ((bmwf)localObject).a.clear();
+        paramblvi.a((bmvv)localObject);
+        return;
+      }
+      ((bmwf)localObject).jdField_b_of_type_Boolean = false;
+      ((bmwf)localObject).g = null;
+      ((bmwf)localObject).c = 0;
+      ((bmwf)localObject).d = 0;
+      paramblvi.a((bmvv)localObject);
+      wxe.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + parambmsb.jdField_a_of_type_Int);
+      wxk.a("0X80076C9");
+      wxk.b("0X80075DE");
+      return;
     }
+    wxe.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
   }
   
-  public void handleMessage(Message paramMessage)
+  public Class acceptEventClass()
   {
-    if (this.a.get() == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    try
-    {
-      a((CountDownView)this.a.get(), paramMessage);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    return bmsb.class;
   }
 }
 

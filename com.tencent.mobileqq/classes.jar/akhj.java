@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class akhj
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public VasAvatar a;
+  public ImageView b;
   
-  public akhj(int paramInt, awbv paramawbv)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawbv);
-  }
-  
-  public akhj(int paramInt, DiscussionInfo paramDiscussionInfo)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public akhj(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
-  }
+  public akhj(akhi paramakhi) {}
 }
 
 

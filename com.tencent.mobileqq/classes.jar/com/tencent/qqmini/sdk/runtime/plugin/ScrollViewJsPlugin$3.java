@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bhab;
+import bhei;
 import org.json.JSONObject;
 
 class ScrollViewJsPlugin$3
@@ -10,7 +10,7 @@ class ScrollViewJsPlugin$3
   
   public void run()
   {
-    bhab.a(ScrollViewJsPlugin.access$200(this.this$0)).a(this.val$jsonObject.optInt("viewId"));
+    bhei.a(ScrollViewJsPlugin.access$200(this.this$0)).a(this.val$jsonObject.optInt("viewId"));
   }
 }
 

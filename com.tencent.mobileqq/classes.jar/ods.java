@@ -24,7 +24,7 @@ public class ods
     Object localObject = "";
     try
     {
-      String str = bhoi.a("d059d4");
+      String str = bhsp.a("d059d4");
       localObject = str;
     }
     catch (Exception localException)
@@ -64,16 +64,16 @@ public class ods
   public static oidb_0x6cf.PhoneInfo a()
   {
     oidb_0x6cf.PhoneInfo localPhoneInfo = new oidb_0x6cf.PhoneInfo();
-    Object localObject1 = new aaop();
-    ((aaop)localObject1).a = "ce2d9f";
-    Object localObject2 = aaoo.a(BaseApplication.getContext(), (aaop)localObject1);
+    Object localObject1 = new aate();
+    ((aate)localObject1).a = "ce2d9f";
+    Object localObject2 = aatd.a(BaseApplication.getContext(), (aate)localObject1);
     if (localObject2 != null) {}
-    for (localObject1 = ((aaoq)localObject2).a;; localObject1 = null)
+    for (localObject1 = ((aatf)localObject2).a;; localObject1 = null)
     {
-      if ((localObject2 != null) && (((aaoq)localObject2).a != null) && (((aaoq)localObject2).a.muid != null) && (((aaoq)localObject2).a.muid_type != null))
+      if ((localObject2 != null) && (((aatf)localObject2).a != null) && (((aatf)localObject2).a.muid != null) && (((aatf)localObject2).a.muid_type != null))
       {
-        localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(((aaoq)localObject2).a.muid.get()));
-        localPhoneInfo.uint32_muid_type.set(((aaoq)localObject2).a.muid_type.get());
+        localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(((aatf)localObject2).a.muid.get()));
+        localPhoneInfo.uint32_muid_type.set(((aatf)localObject2).a.muid_type.get());
       }
       localObject2 = b();
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -84,7 +84,7 @@ public class ods
       i = 0;
       try
       {
-        int j = bdcb.e();
+        int j = bdgk.e();
         i = j;
       }
       catch (Exception localException)
@@ -93,9 +93,9 @@ public class ods
         break label158;
       }
       localPhoneInfo.uint32_carrier.set(i);
-      localObject2 = bdcb.e();
+      localObject2 = bdgk.e();
       localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localObject2 = bdcb.c();
+      localObject2 = bdgk.c();
       localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
       i = AppSetting.a();
       localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
@@ -163,7 +163,7 @@ public class ods
     Object localObject = "";
     try
     {
-      String str = bhoi.c("d059d4");
+      String str = bhsp.c("d059d4");
       localObject = str;
     }
     catch (Exception localException)

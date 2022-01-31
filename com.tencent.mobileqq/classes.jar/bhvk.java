@@ -1,12 +1,28 @@
 import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.widget.BubblePopupWindow;
+import java.lang.ref.WeakReference;
 
-public abstract interface bhvk
-  extends ExpandableListAdapter
+public class bhvk
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public abstract int a();
+  public bhvk(BubblePopupWindow paramBubblePopupWindow) {}
   
-  public abstract void a(View paramView, int paramInt);
+  public void onScrollChanged()
+  {
+    if (BubblePopupWindow.a(this.a) != null) {}
+    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
+    {
+      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
+      {
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
+        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
+        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+      }
+      return;
+    }
+  }
 }
 
 

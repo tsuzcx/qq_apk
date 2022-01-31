@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import allq;
-import bddq;
+import alqf;
+import bdhz;
 
 public class ConfigHandler$2
   implements Runnable
 {
-  public ConfigHandler$2(allq paramallq) {}
+  public ConfigHandler$2(alqf paramalqf) {}
   
   public void run()
   {
-    bddq.a().a(this.this$0.app.getApplication());
+    bdhz.a().a(this.this$0.app.getApplication());
   }
 }
 

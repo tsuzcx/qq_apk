@@ -1,16 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-class yne
-  implements beao
+public class yne
+  extends AnimatorListenerAdapter
 {
-  yne(ync paramync, int paramInt, String paramString) {}
+  public yne(VideoPlayerView paramVideoPlayerView, WeakReference paramWeakReference, int paramInt1, boolean paramBoolean, int paramInt2) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ync.a.a(121, paramBundle);
+    if (this.jdField_a_of_type_Boolean) {
+      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, false);
+    }
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) == null) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
+      return;
+    }
+    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
+      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(0);
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
+      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).put(this.jdField_a_of_type_JavaLangRefWeakReference, Integer.valueOf(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getVisibility()));
+    }
   }
 }
 

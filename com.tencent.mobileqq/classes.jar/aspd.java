@@ -1,45 +1,8 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class aspd
+public abstract interface aspd
 {
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected asox a;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public aspd(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public aspd(Context paramContext, int paramInt, asox paramasox)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Asox = paramasox;
-  }
-  
-  public Bitmap a()
-  {
-    if (this.jdField_a_of_type_Asox != null) {
-      a(this.jdField_a_of_type_Asox.a());
-    }
-    return null;
-  }
-  
-  public void a(asoz paramasoz)
-  {
-    paramasoz.c = 1.0F;
-  }
-  
-  public Drawable[] a(QQAppInterface paramQQAppInterface)
-  {
-    return null;
-  }
+  public abstract boolean a();
 }
 
 

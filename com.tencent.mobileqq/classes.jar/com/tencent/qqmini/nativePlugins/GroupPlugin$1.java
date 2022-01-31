@@ -1,7 +1,7 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.content.Intent;
-import bgkd;
+import bgok;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class GroupPlugin$1
   implements MiniAppController.ActivityResultListener
 {
-  GroupPlugin$1(GroupPlugin paramGroupPlugin, bgkd parambgkd) {}
+  GroupPlugin$1(GroupPlugin paramGroupPlugin, bgok parambgok) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {

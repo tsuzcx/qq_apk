@@ -1,62 +1,41 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Iterator;
+import android.content.Context;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.List;
 
 public class ufa
-  extends JobSegment<List<ueq>, List<ueq>>
+  extends PagerAdapter
 {
-  private ufe a;
+  Context jdField_a_of_type_AndroidContentContext;
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public ufa(ufe paramufe)
+  public ufa(Context paramContext, List<View> paramList)
   {
-    this.a = paramufe;
+    this.jdField_a_of_type_AndroidContentContext = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  protected void a(JobContext paramJobContext, List<ueq> paramList)
+  public View a(ViewGroup paramViewGroup, int paramInt)
   {
-    int i = 1;
-    wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
-    if (paramList.isEmpty())
-    {
-      notifyResult(paramList);
-      return;
-    }
-    paramJobContext = paramList.iterator();
-    while (paramJobContext.hasNext()) {
-      ((ueq)paramJobContext.next()).a(this.a);
-    }
-    uef.a(paramList);
-    uef localuef = (uef)urr.a(30);
-    udx localudx = localuef.a();
-    paramJobContext = paramList;
-    if (!this.a.a())
-    {
-      paramJobContext = paramList;
-      if (paramList.size() > localudx.a())
-      {
-        wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localudx.a());
-        paramJobContext = paramList.subList(0, localudx.a());
-      }
-    }
-    if (localuef.a(paramJobContext, this.a.a()))
-    {
-      long l2;
-      for (long l1 = ((ueq)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
-      {
-        long l3 = ((ueq)paramJobContext.get(i)).e();
-        l2 = l1;
-        if (l3 > l1) {
-          l2 = l3;
-        }
-        i += 1;
-      }
-      this.a.a(((ueq)paramJobContext.get(0)).e());
-      notifyResult(paramJobContext);
-      return;
-    }
-    notifyError(new ErrorMessage(3, "save to db occur error!"));
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return (View)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-class ajbv
-  implements View.OnClickListener
+public final class ajbv
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  ajbv(ajbm paramajbm) {}
-  
-  public void onClick(View paramView)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    ajbm.a(this.a).app.a().a("0X800474F", 1);
-    bioj.a(ajbm.a(this.a), 4, null);
-    azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

@@ -1,79 +1,53 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.4.1;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.4.2;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.4.3;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.offlineset.utils.IHttpClient;
+import com.tencent.ttpic.openapi.offlineset.utils.IResponseListener;
+import dov.com.qq.im.ae.play.UrlConHttpClient.1;
+import dov.com.qq.im.ae.play.UrlConHttpClient.2;
+import java.util.concurrent.Executor;
 
 public class blik
-  implements blgg
+  implements IHttpClient
 {
-  public blik(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  private static final String jdField_a_of_type_JavaLangString = blik.class.getSimpleName();
+  private IResponseListener jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener;
   
-  public void a(int paramInt, blhb paramblhb)
+  private void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
-      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.4.1(this, paramblhb));
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener.response(paramInt, 1, paramString1, paramString2);
     }
-    if (paramInt == 0)
-    {
-      blfg.b(AEEditorImageEditFragment.e(), "onAIFilterApplySuccess:");
-      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.4.3(this));
-      if (AEEditorImageEditFragment.a(this.a) != null) {
-        break label107;
-      }
-    }
-    label107:
-    while (paramblhb == null)
-    {
-      return;
-      blfg.b(AEEditorImageEditFragment.e(), "onAIFilterAppliedFailed:" + paramInt);
-      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.4.2(this));
-      break;
-    }
-    paramblhb = (blhd)paramblhb;
-    if (paramblhb != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      paramInt = 0;
-      if (paramInt < AEEditorImageEditFragment.b(this.a))
-      {
-        if (paramInt == AEEditorImageEditFragment.a(this.a)) {
-          localStringBuilder.append(AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(paramInt)).a() + "(当前图)|");
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          if ((AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(paramInt)) != null) && (((blhf)paramblhb.a.get(paramInt)).a))
-          {
-            AEEditorImageEditFragment.a(this.a).a(paramInt, AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(paramInt)));
-            localStringBuilder.append(AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(paramInt)).a() + "(err)|");
-          }
-          else
-          {
-            AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.a(this.a).get(paramInt), (blhb)paramblhb.a.get(paramInt));
-            AEEditorImageEditFragment.a(this.a).put(String.valueOf(paramInt), this.a.a((blhb)paramblhb.a.get(paramInt)));
-            AEEditorImageEditFragment.a(this.a).a(paramInt, (blhb)paramblhb.a.get(paramInt));
-            localStringBuilder.append(((blhf)paramblhb.a.get(paramInt)).a() + "|");
-          }
-        }
-      }
-      this.a.a("智能滤镜label", localStringBuilder.toString());
-    }
-    AEEditorImageEditFragment.b(this.a, AEEditorImageEditFragment.a(this.a));
   }
   
-  public void aX_()
+  public void download(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
-      this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.a();
+    LogUtils.i(jdField_a_of_type_JavaLangString, "开始下载文件:" + paramString2);
+    if (TextUtils.isEmpty(paramString2))
+    {
+      LogUtils.e(jdField_a_of_type_JavaLangString, "downUrl 无效：" + paramString2);
+      return;
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "资源下载中，请稍后再试", 0).a();
+    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.2(this, paramString2, paramString3, paramInt, paramString1));
+  }
+  
+  public void get(int paramInt, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2))
+    {
+      LogUtils.e(jdField_a_of_type_JavaLangString, "url 无效：" + paramString2);
+      return;
+    }
+    LogUtils.i(jdField_a_of_type_JavaLangString, "GET 请求：" + paramString2);
+    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.1(this, paramString2, paramInt, paramString1));
+  }
+  
+  public void post(int paramInt, String paramString1, String paramString2) {}
+  
+  public void setResponseListener(IResponseListener paramIResponseListener)
+  {
+    LogUtils.i(jdField_a_of_type_JavaLangString, "setResponseListener ");
+    this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener = paramIResponseListener;
   }
 }
 

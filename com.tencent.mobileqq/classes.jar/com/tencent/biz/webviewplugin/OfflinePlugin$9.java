@@ -4,18 +4,18 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import java.util.HashMap;
 import swb;
-import yzu;
+import zej;
 
 public class OfflinePlugin$9
   implements Runnable
 {
-  public OfflinePlugin$9(yzu paramyzu) {}
+  public OfflinePlugin$9(zej paramzej) {}
   
   public void run()
   {
-    if (yzu.jdField_a_of_type_JavaUtilHashMap != null)
+    if (zej.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      swb localswb = (swb)yzu.jdField_a_of_type_JavaUtilHashMap.get(yzu.a(this.this$0));
+      swb localswb = (swb)zej.jdField_a_of_type_JavaUtilHashMap.get(zej.a(this.this$0));
       if ((localswb != null) && (localswb.b() == 1))
       {
         if (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) {

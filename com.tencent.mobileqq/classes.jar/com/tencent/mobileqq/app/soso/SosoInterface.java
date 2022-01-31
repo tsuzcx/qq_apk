@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.soso;
 
-import amku;
-import amkv;
-import amkz;
-import amla;
-import amlb;
-import amlc;
-import amld;
-import amle;
+import ampj;
+import ampk;
+import ampo;
+import ampp;
+import ampq;
+import ampr;
+import amps;
+import ampt;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -15,10 +15,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apgj;
-import azmz;
-import azob;
-import bdee;
+import apks;
+import azri;
+import azsk;
+import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -48,7 +48,7 @@ public class SosoInterface
 {
   public static int a;
   public static long a;
-  private static final amle jdField_a_of_type_Amle;
+  private static final ampt jdField_a_of_type_Ampt;
   private static Handler jdField_a_of_type_AndroidOsHandler;
   private static TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
   private static TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
@@ -56,7 +56,7 @@ public class SosoInterface
   private static SosoInterface.SosoLbsInfo jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
   private static final Object jdField_a_of_type_JavaLangObject;
   public static volatile String a;
-  private static final ArrayList<amle> jdField_a_of_type_JavaUtilArrayList;
+  private static final ArrayList<ampt> jdField_a_of_type_JavaUtilArrayList;
   private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   public static volatile boolean a;
   private static long[] jdField_a_of_type_ArrayOfLong;
@@ -76,19 +76,19 @@ public class SosoInterface
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaLangString = "";
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new amkz());
+    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new ampo());
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L };
     jdField_b_of_type_Boolean = true;
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-    amlb localamlb = new amlb();
+    ampq localampq = new ampq();
     try
     {
-      BaseApplicationImpl.getContext().registerReceiver(localamlb, localIntentFilter);
-      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new amlc();
-      jdField_a_of_type_Amle = new amld(0, false, false, 0L, false, false, "reqRawData");
+      BaseApplicationImpl.getContext().registerReceiver(localampq, localIntentFilter);
+      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new ampr();
+      jdField_a_of_type_Ampt = new amps(0, false, false, 0L, false, false, "reqRawData");
       jdField_c_of_type_Boolean = true;
       return;
     }
@@ -438,10 +438,10 @@ public class SosoInterface
     //   272: invokestatic 499	java/lang/Boolean:toString	(Z)Ljava/lang/String;
     //   275: invokevirtual 483	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   278: pop
-    //   279: invokestatic 503	apgj:a	()Ljava/lang/String;
+    //   279: invokestatic 503	apks:a	()Ljava/lang/String;
     //   282: astore_2
     //   283: invokestatic 91	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   286: invokestatic 508	azmz:a	(Landroid/content/Context;)Lazmz;
+    //   286: invokestatic 508	azri:a	(Landroid/content/Context;)Lazri;
     //   289: aload_2
     //   290: ldc_w 510
     //   293: iconst_1
@@ -449,7 +449,7 @@ public class SosoInterface
     //   295: lconst_0
     //   296: aload 11
     //   298: ldc 37
-    //   300: invokevirtual 513	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   300: invokevirtual 513	azri:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   303: return
     //   304: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   307: ifeq +39 -> 346
@@ -468,11 +468,11 @@ public class SosoInterface
     //   337: invokevirtual 189	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   340: invokevirtual 195	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   343: invokestatic 471	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   346: getstatic 111	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Amle	Lamle;
+    //   346: getstatic 111	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Ampt	Lampt;
     //   349: aload_2
-    //   350: putfield 522	amle:tag	Ljava/lang/String;
-    //   353: getstatic 111	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Amle	Lamle;
-    //   356: invokestatic 525	com/tencent/mobileqq/app/soso/SosoInterface:a	(Lamle;)V
+    //   350: putfield 522	ampt:tag	Ljava/lang/String;
+    //   353: getstatic 111	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Ampt	Lampt;
+    //   356: invokestatic 525	com/tencent/mobileqq/app/soso/SosoInterface:a	(Lampt;)V
     //   359: invokestatic 206	android/os/SystemClock:elapsedRealtime	()J
     //   362: lstore_0
     //   363: iconst_0
@@ -578,10 +578,10 @@ public class SosoInterface
     //   500	503	516	finally
   }
   
-  public static void a(amle paramamle)
+  public static void a(ampt paramampt)
   {
     int j = 1;
-    if (paramamle == null) {
+    if (paramampt == null) {
       return;
     }
     for (;;)
@@ -590,11 +590,11 @@ public class SosoInterface
       label57:
       try
       {
-        if (amle.access$1500(paramamle)) {
-          amle.access$1502(paramamle, false);
+        if (ampt.access$1500(paramampt)) {
+          ampt.access$1502(paramampt, false);
         }
-        bool = bdee.d(BaseApplicationImpl.getContext());
-        if ((!b()) || ("official_location".equals(paramamle.tag))) {
+        bool = bdin.d(BaseApplicationImpl.getContext());
+        if ((!b()) || ("official_location".equals(paramampt.tag))) {
           break label151;
         }
         i = 1;
@@ -609,10 +609,10 @@ public class SosoInterface
         if (QLog.isColorLevel()) {
           QLog.d("SOSO.LBS", 2, "startLocation() return. perCheckCode=" + i + " hasNet=" + bool);
         }
-        localSosoLbsInfo = a(paramamle.level, true);
-        if (paramamle.uiThread)
+        localSosoLbsInfo = a(paramampt.level, true);
+        if (paramampt.uiThread)
         {
-          b(paramamle, i, localSosoLbsInfo);
+          b(paramampt, i, localSosoLbsInfo);
           break;
           label151:
           i = 0;
@@ -632,13 +632,13 @@ public class SosoInterface
           if (!QLog.isColorLevel()) {
             break label57;
           }
-          QLog.i("SOSO.LBS", 2, "发现启动时定位业务：" + paramamle.tag);
+          QLog.i("SOSO.LBS", 2, "发现启动时定位业务：" + paramampt.tag);
           i = j;
           break label57;
-          paramamle.onLocationFinish(i, localSosoLbsInfo);
+          paramampt.onLocationFinish(i, localSosoLbsInfo);
           break;
           if (jdField_a_of_type_ComTencentMapGeolocationInternalTencentLog == null) {}
-          ThreadManager.getSubThreadHandler().post(new SosoInterface.6(paramamle));
+          ThreadManager.getSubThreadHandler().post(new SosoInterface.6(paramampt));
           break;
         }
         i = 0;
@@ -865,7 +865,7 @@ public class SosoInterface
             if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
               jdField_a_of_type_JavaLangString = c();
             }
-            amkv.a(new amla("official_location", false));
+            ampk.a(new ampp("official_location", false));
             localSharedPreferences.edit().putLong("lastLocationTime", NetConnInfoCenter.getServerTime()).commit();
             return;
           }
@@ -933,7 +933,7 @@ public class SosoInterface
     for (paramInt = -1;; paramInt = paramTencentLocation.code)
     {
       QLog.i("SOSO.LBS", 2, paramInt);
-      amku.a(jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation, paramString);
+      ampj.a(jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation, paramString);
       return;
       jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_a_of_type_JavaUtilList = paramTencentLocation.getPoiList();
       jdField_a_of_type_ArrayOfLong[4] = SystemClock.elapsedRealtime();
@@ -962,15 +962,15 @@ public class SosoInterface
     }
   }
   
-  public static void b(amle paramamle)
+  public static void b(ampt paramampt)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      jdField_a_of_type_JavaUtilArrayList.remove(paramamle);
-      amle.access$1502(paramamle, true);
-      amle.access$1602(paramamle, false);
+      jdField_a_of_type_JavaUtilArrayList.remove(paramampt);
+      ampt.access$1502(paramampt, true);
+      ampt.access$1602(paramampt, false);
       if (QLog.isColorLevel()) {
-        QLog.d("SOSO.LBS", 2, "removeOnLocationListener() lis=" + paramamle.tag + " removed.");
+        QLog.d("SOSO.LBS", 2, "removeOnLocationListener() lis=" + paramampt.tag + " removed.");
       }
       if (jdField_a_of_type_JavaUtilArrayList.size() == 0)
       {
@@ -983,12 +983,12 @@ public class SosoInterface
     }
   }
   
-  private static void b(amle paramamle, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private static void b(ampt paramampt, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramamle == null) {
+    if (paramampt == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new SosoInterface.5(paramamle, paramInt, paramSosoLbsInfo));
+    ThreadManager.getUIHandler().post(new SosoInterface.5(paramampt, paramInt, paramSosoLbsInfo));
   }
   
   private static void b(boolean paramBoolean1, boolean paramBoolean2, long paramLong, int paramInt1, String paramString1, String paramString2, boolean paramBoolean3, int paramInt2, boolean paramBoolean4)
@@ -1014,14 +1014,14 @@ public class SosoInterface
     localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
     localHashMap.put("param_costTime", Long.toString(paramLong));
     localHashMap.put("param_level", String.valueOf(paramInt2));
-    String str = apgj.a();
+    String str = apks.a();
     if (paramBoolean4) {
       if (paramBoolean2)
       {
         paramString2 = "actSosoLocationCache";
         label191:
-        azmz.a(BaseApplicationImpl.getContext()).a(str, paramString2, paramBoolean1, paramLong, 0L, localHashMap, "");
-        paramString2 = azob.a();
+        azri.a(BaseApplicationImpl.getContext()).a(str, paramString2, paramBoolean1, paramLong, 0L, localHashMap, "");
+        paramString2 = azsk.a();
         if (!paramBoolean2) {
           break label405;
         }
@@ -1038,7 +1038,7 @@ public class SosoInterface
         break;
       }
       paramString2.put("param_caller", paramString1);
-      azmz.a(BaseApplicationImpl.getContext()).a(str, "actLocationEarly", paramBoolean1, paramLong, 0L, paramString2, "");
+      azri.a(BaseApplicationImpl.getContext()).a(str, "actLocationEarly", paramBoolean1, paramLong, 0L, paramString2, "");
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -1116,15 +1116,15 @@ public class SosoInterface
     return BaseApplicationImpl.sProcessId == 1;
   }
   
-  private static void d(amle paramamle)
+  private static void d(ampt paramampt)
   {
-    if (paramamle == null) {
+    if (paramampt == null) {
       return;
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramamle)) {
-        jdField_a_of_type_JavaUtilArrayList.add(paramamle);
+      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramampt)) {
+        jdField_a_of_type_JavaUtilArrayList.add(paramampt);
       }
       return;
     }
@@ -1149,7 +1149,7 @@ public class SosoInterface
     for (;;)
     {
       int i;
-      amle localamle;
+      ampt localampt;
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         if (jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
@@ -1159,23 +1159,23 @@ public class SosoInterface
         if (i < 0) {
           break label107;
         }
-        localamle = (amle)jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localamle == null) {
+        localampt = (ampt)jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localampt == null) {
           break label116;
         }
-        if (localamle.reqLocation)
+        if (localampt.reqLocation)
         {
-          SosoInterface.SosoLbsInfo localSosoLbsInfo1 = a(localamle.level, true);
-          if (!localamle.uiThread) {
+          SosoInterface.SosoLbsInfo localSosoLbsInfo1 = a(localampt.level, true);
+          if (!localampt.uiThread) {
             break label96;
           }
-          b(localamle, -10000, localSosoLbsInfo1);
+          b(localampt, -10000, localSosoLbsInfo1);
         }
       }
       SosoInterface.SosoLbsInfo localSosoLbsInfo2 = a(true);
       continue;
       label96:
-      localamle.onLocationFinish(-10000, localSosoLbsInfo2);
+      localampt.onLocationFinish(-10000, localSosoLbsInfo2);
       break label116;
       label107:
       jdField_a_of_type_JavaUtilArrayList.clear();

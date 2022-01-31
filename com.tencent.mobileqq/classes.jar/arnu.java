@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class arnu
+class arnu
+  implements View.OnClickListener
 {
-  static Executor a;
+  arnu(arnq paramarnq) {}
   
-  static
+  public void onClick(View paramView)
   {
-    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-    localThreadPoolParams.poolThreadName = "fileassistant_pool";
-    localThreadPoolParams.corePoolsize = 2;
-    localThreadPoolParams.maxPooolSize = 2;
-    localThreadPoolParams.priority = 8;
-    localThreadPoolParams.queue = new LinkedBlockingQueue();
-    localThreadPoolParams.keepAliveTime = 10;
-    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-  }
-  
-  public static Executor a()
-  {
-    return a;
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
   }
 }
 

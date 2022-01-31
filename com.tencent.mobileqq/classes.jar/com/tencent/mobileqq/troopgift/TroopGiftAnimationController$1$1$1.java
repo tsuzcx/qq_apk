@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troopgift;
 
-import bcqi;
-import bcqj;
+import bcur;
+import bcus;
 
 public class TroopGiftAnimationController$1$1$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1$1$1(bcqj parambcqj) {}
+  public TroopGiftAnimationController$1$1$1(bcus parambcus) {}
   
   public void run()
   {

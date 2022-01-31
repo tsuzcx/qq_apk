@@ -42,8 +42,8 @@ public class rgc
         break label212;
       }
       paramString2.a(QQToast.a(2));
-      paramString2.c(2131692401);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(this.a.getActivity().getApplicationContext(), 5.0F));
+      paramString2.c(2131692402);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(this.a.getActivity().getApplicationContext(), 5.0F));
     }
     for (;;)
     {
@@ -57,8 +57,8 @@ public class rgc
       break;
       label212:
       paramString2.a(QQToast.a(1));
-      paramString2.c(2131692402);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(this.a.getActivity().getApplicationContext(), 5.0F));
+      paramString2.c(2131692403);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(this.a.getActivity().getApplicationContext(), 5.0F));
       paramString1.d = false;
     }
   }

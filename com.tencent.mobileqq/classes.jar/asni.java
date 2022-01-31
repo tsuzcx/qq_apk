@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import java.io.File;
 
-public class asni
-  implements aubq<T, List<FontBubble>>
+class asni
+  implements ajal
 {
-  public asni(FontBubblePanelView paramFontBubblePanelView) {}
+  asni(asnh paramasnh, FullPopData paramFullPopData) {}
   
-  public List<FontBubble> a(T paramT)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
-    FontBubble localFontBubble = new FontBubble();
-    localFontBubble.viewType = 0;
-    paramT.add(localFontBubble);
-    return paramT;
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      paramPathResult = new File(paramPathResult.folderPath);
+      if (paramPathResult.exists())
+      {
+        asnh.a(this.jdField_a_of_type_Asnh, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData);
+        asnh.a(this.jdField_a_of_type_Asnh).resPath = paramPathResult.getPath();
+        this.jdField_a_of_type_Asnh.a = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("FullPopBussiness", 1, "full pop res is ready");
+        }
+      }
+    }
   }
 }
 

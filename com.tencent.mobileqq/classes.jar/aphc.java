@@ -1,87 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.ArrayList;
 
 public class aphc
-  extends apgu
+  implements AdapterView.OnItemClickListener
 {
-  private boolean d;
+  public aphc(DataReportViewer paramDataReportViewer, Context paramContext) {}
   
-  public aphc(QQAppInterface paramQQAppInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super("qq.android.poke.res_0625", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10044;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PokeResData.class;
-  }
-  
-  public String a()
-  {
-    return "PokeResHandler_0625";
-  }
-  
-  public void a()
-  {
-    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
+    paramAdapterView = (WindowManager)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext().getSystemService("window");
+    if (this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559472, null));
     }
-    if (!new File(paramString).exists())
+    paramView = new aphm(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    ReportData localReportData = (ReportData)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView.a.setText(localReportData.table);
+    paramView.b.setText(localReportData.mainAction);
+    paramView.c.setText(localReportData.subAction);
+    paramView.d.setText(localReportData.actionName);
+    paramView.e.setText(String.valueOf(localReportData.opType));
+    paramView.f.setText(String.valueOf(localReportData.result));
+    paramView.g.setText(localReportData.r2);
+    paramView.h.setText(localReportData.r3);
+    paramView.i.setText(localReportData.r4);
+    paramView.j.setText(localReportData.r5);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365228)).setOnClickListener(new aphd(this, paramAdapterView));
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365222)).setOnClickListener(new aphe(this, localReportData, paramAdapterView));
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (paramInt = 2038;; paramInt = 2003)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
-      }
+      paramView = new WindowManager.LayoutParams(-1, -1, paramInt, 776, -2);
+      paramView.gravity = 49;
+      paramAdapterView.addView(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout, paramView);
+      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aphf(this, paramAdapterView));
       return;
     }
-    String str = bduw.a(afsw.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
-    }
-    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
-    super.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean g()
-  {
-    if (!this.d) {
-      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
-    }
-    return super.g() & this.d;
   }
 }
 

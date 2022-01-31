@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.gamecenter.data;
 
 import android.content.SharedPreferences;
-import ashh;
-import awbx;
+import aslq;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class PadFaceManager$1
   implements Runnable
 {
-  public PadFaceManager$1(ashh paramashh) {}
+  public PadFaceManager$1(aslq paramaslq) {}
   
   public void run()
   {
     for (boolean bool = true;; bool = false) {
       synchronized (this.this$0)
       {
-        ashh.a(this.this$0, ashh.a(this.this$0).getApp().getSharedPreferences("gamecenter_sp" + ashh.a(this.this$0).getCurrentAccountUin(), 4));
-        ashh.a(this.this$0, ashh.a(this.this$0).getLong("last_pad_face_request_time", 0L));
-        ashh localashh2 = this.this$0;
-        if (ashh.a(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
+        aslq.a(this.this$0, aslq.a(this.this$0).getApp().getSharedPreferences("gamecenter_sp" + aslq.a(this.this$0).getCurrentAccountUin(), 4));
+        aslq.a(this.this$0, aslq.a(this.this$0).getLong("last_pad_face_request_time", 0L));
+        aslq localaslq2 = this.this$0;
+        if (aslq.a(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
         {
-          ashh.a(localashh2, bool);
-          ashh.a(this.this$0, ashh.a(this.this$0).getInt("last_id_pad_face_shown", 0));
-          ashh.b(this.this$0, ashh.a(this.this$0).getLong("last_time_pad_face_shown", 0L));
-          ashh.c(this.this$0, ashh.a(this.this$0).getInt("request_interval", 2) * 3600000L);
-          ashh.a(this.this$0, ashh.a(this.this$0).getEntityManagerFactory().createEntityManager());
-          ashh.a(this.this$0);
-          ashh.b(this.this$0, true);
+          aslq.a(localaslq2, bool);
+          aslq.a(this.this$0, aslq.a(this.this$0).getInt("last_id_pad_face_shown", 0));
+          aslq.b(this.this$0, aslq.a(this.this$0).getLong("last_time_pad_face_shown", 0L));
+          aslq.c(this.this$0, aslq.a(this.this$0).getInt("request_interval", 2) * 3600000L);
+          aslq.a(this.this$0, aslq.a(this.this$0).getEntityManagerFactory().createEntityManager());
+          aslq.a(this.this$0);
+          aslq.b(this.this$0, true);
           return;
         }
       }

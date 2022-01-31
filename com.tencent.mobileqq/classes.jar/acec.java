@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class acec
-  extends alxz
+  implements View.OnClickListener
 {
-  public acec(BaseChatPie paramBaseChatPie) {}
+  public acec(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
-      }
-    } while ((!paramBoolean) || (paramInt != azey.a));
-    bdcd.a(this.a.a(), 0, null, this.a.a().getString(2131720123), 2131720125, 2131720124, new aced(this), new acee(this)).show();
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      anoe.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, anoe.c, 0, 0);
+    }
+    this.a.a();
   }
 }
 

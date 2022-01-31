@@ -15,7 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class nto
-  implements aoga<String>
+  implements aokj<String>
 {
   private String jdField_a_of_type_JavaLangString = "";
   private ArrayList<swz> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
@@ -25,7 +25,7 @@ public class nto
   {
     try
     {
-      nto localnto = (nto)aogt.a(paramString, nto.class);
+      nto localnto = (nto)aolc.a(paramString, nto.class);
       return localnto;
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
@@ -35,13 +35,13 @@ public class nto
     return null;
   }
   
-  public static nto a(aogf[] paramArrayOfaogf)
+  public static nto a(aoko[] paramArrayOfaoko)
   {
     nto localnto = null;
     int i = 0;
-    while (i < paramArrayOfaogf.length)
+    while (i < paramArrayOfaoko.length)
     {
-      localnto = a(paramArrayOfaogf[i].jdField_a_of_type_JavaLangString);
+      localnto = a(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
       i += 1;
     }
     return localnto;
@@ -53,7 +53,7 @@ public class nto
     {
       localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
-        bdiv.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
+        bdne.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
       }
     }
     while (!QLog.isColorLevel())

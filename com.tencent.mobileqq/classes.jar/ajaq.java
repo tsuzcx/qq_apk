@@ -1,36 +1,30 @@
-public class ajaq
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class ajaq
+  implements EIPCResultCallback
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
+  ajaq(ajao paramajao, ajal paramajal, DownloadParam paramDownloadParam) {}
   
-  public ajaq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.f = paramFloat3;
-    this.d = paramFloat5;
-    this.h = paramFloat5;
-    this.e = paramFloat7;
-    this.j = paramFloat7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.g = paramFloat4;
-    this.i = paramFloat6;
-    this.k = paramFloat8;
-    this.jdField_c_of_type_Int = paramInt2;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    {
+      i = paramEIPCResult.data.getInt("result_code");
+      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
+      if (this.jdField_a_of_type_Ajal != null) {
+        this.jdField_a_of_type_Ajal.onResult(i, paramEIPCResult);
+      }
+    }
+    while (this.jdField_a_of_type_Ajal == null)
+    {
+      int i;
+      return;
+    }
+    this.jdField_a_of_type_Ajal.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 

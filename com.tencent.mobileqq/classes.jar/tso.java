@@ -1,23 +1,14 @@
-import android.view.View;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
 class tso
-  implements bhqd
+  implements MediaPlayer.OnCompletionListener
 {
-  tso(tsl paramtsl, bhpy parambhpy) {}
+  tso(tsk paramtsk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (!ytg.a("showMoreActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      tsl.d(this.jdField_a_of_type_Tsl);
-    }
+    tsk.b(this.a);
   }
 }
 

@@ -1,85 +1,44 @@
-import android.app.Activity;
-import java.util.ArrayList;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public class blnp
+  implements SeekBar.OnSeekBarChangeListener
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public blob a;
-  public bloe a;
-  public blol a;
-  blpc jdField_a_of_type_Blpc;
-  ArrayList<blng> jdField_a_of_type_JavaUtilArrayList;
-  public long b;
+  public blnp(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
   
-  public blnp(int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    bncp.a().b(null, null, this.jdField_a_of_type_Int);
-    bncp.a().a(null, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bloe = null;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if ((this.jdField_a_of_type_Blob != null) && (this.jdField_a_of_type_Blob.jdField_a_of_type_Int == 3))
+    if ((paramBoolean) && (paramSeekBar.getVisibility() == 0))
     {
-      this.jdField_a_of_type_Blob.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Blob.a(paramActivity, this.jdField_a_of_type_Int);
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).setText(paramInt + "%");
+      }
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).a(this.a.a(), paramInt / 100.0F);
+      }
     }
-    if (this.jdField_a_of_type_Bloe != null)
-    {
-      this.jdField_a_of_type_Bloe.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bloe.a(paramActivity, this.jdField_a_of_type_Int);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(0);
+    }
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).n();
     }
   }
   
-  public void a(blob paramblob)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_Blob = paramblob;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(bloe parambloe)
-  {
-    this.jdField_a_of_type_Bloe = parambloe;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void a(blol paramblol)
-  {
-    this.jdField_a_of_type_Blol = paramblol;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bloe == null) || (this.b <= this.jdField_a_of_type_Long);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    bncp.a().a(this.jdField_a_of_type_Int);
-    bncp.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    blob localblob = bncp.a().a[this.jdField_a_of_type_Int];
-    if (localblob != null) {
-      localblob.a(paramActivity, this.jdField_a_of_type_Int);
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(4);
     }
-    bncp.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    bncp.a().b(null, paramActivity, this.jdField_a_of_type_Int);
-  }
-  
-  public void c(Activity paramActivity)
-  {
-    b(paramActivity);
-    this.jdField_a_of_type_Blob = null;
-    this.jdField_a_of_type_Bloe = null;
-    this.jdField_a_of_type_Blpc = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).o();
+    }
   }
 }
 

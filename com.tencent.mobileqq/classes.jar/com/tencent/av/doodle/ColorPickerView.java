@@ -59,7 +59,7 @@ public class ColorPickerView
   
   private void a(Context paramContext)
   {
-    setId(2131372587);
+    setId(2131372613);
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_Float = paramContext.getDimension(2131297515);
     this.jdField_b_of_type_Float = paramContext.getDimension(2131297514);
@@ -70,12 +70,12 @@ public class ColorPickerView
     this.g = paramContext.getDimension(2131297519);
     this.h = paramContext.getDimension(2131297517);
     this.i = paramContext.getDimension(2131297520);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841725);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841726);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841727);
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841728);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841730);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841729);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841738);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841739);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841740);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841741);
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841743);
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841742);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
@@ -178,7 +178,7 @@ public class ColorPickerView
     {
       this.j = f2;
       a();
-      paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131372598);
+      paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131372624);
       if (paramMotionEvent != null) {
         paramMotionEvent.setColor(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.j);
       }

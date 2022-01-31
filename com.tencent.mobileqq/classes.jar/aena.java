@@ -1,43 +1,54 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aena
-  implements aemo
+  extends alpq
 {
-  public aitd a;
-  public PreloadManager a;
-  private QQAppInterface a;
+  public aena(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public aena(QQAppInterface paramQQAppInterface)
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Aitd = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Aitd = ((aitd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+      amfz.a(this.a.app, false, true, false, true);
+      this.a.a();
     }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agij paramagij)
-  {
-    if ((paramRedPacketInfo != null) && ((paramagij instanceof agiq)))
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
-      paramagij = (agiq)paramagij;
-      paramRedPacketInfo.icon = paramagij.a;
-      paramRedPacketInfo.resPath = paramagij.b;
+      amfz.a(this.a.app, false, true, false, true);
+      this.a.a();
     }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
+    }
+    label148:
+    for (String str = this.a.getString(2131689603);; str = this.a.getString(2131689604))
+    {
+      str = this.a.getString(2131689606, new Object[] { str });
+      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
+      return;
+    }
+    label161:
+    QQToast.a(this.a, 1, this.a.getResources().getString(2131719884), 0).b(this.a.getTitleBarHeight());
   }
 }
 

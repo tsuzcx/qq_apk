@@ -1,85 +1,71 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ahpk
-  extends amab
+  implements bevu
 {
-  public ahpk(TroopFragment paramTroopFragment) {}
+  public ahpk(TroopActivity paramTroopActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.h();
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
     }
-    do
+    if (this.a.b != 2)
     {
-      do
+      switch (paramInt2)
       {
+      default: 
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        azqs.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      for (;;)
+      {
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_Bhsl.sendEmptyMessage(1234);
+        TroopActivity.a(this.a, paramInt2);
         return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.h();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.h();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a.jdField_a_of_type_Ahnd != null) {
-      this.a.jdField_a_of_type_Ahnd.b();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (this.a.jdField_a_of_type_Ahoj != null) {
-        this.a.jdField_a_of_type_Ahoj.a(this.a.b(), paramBoolean, null);
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        azqs.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        continue;
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        azqs.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
       }
     }
-    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.h();
+    switch (paramInt2)
+    {
+    default: 
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+        break;
+      }
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.h();
+    for (String str = "0";; str = "1")
+    {
+      azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 1;
+      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        break;
+      }
     }
   }
 }

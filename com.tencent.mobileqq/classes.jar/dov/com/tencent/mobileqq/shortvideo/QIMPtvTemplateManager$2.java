@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bdcs;
-import bnkz;
+import bdhb;
+import bnpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -12,7 +12,7 @@ public final class QIMPtvTemplateManager$2
   
   public void run()
   {
-    bdcs.a(bnkz.a().getPath() + File.separator, this.a, this.b);
+    bdhb.a(bnpl.a().getPath() + File.separator, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("QIMPtvTemplateManager", 2, "save Config to file finish.");
     }

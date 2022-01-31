@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aleh;
+import aliw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
@@ -16,12 +16,12 @@ class ApolloPanel$4
   {
     if ((this.this$0.a != null) && (this.this$0.a.a != null))
     {
-      aleh localaleh = (aleh)this.this$0.a.a.getManager(155);
-      if (localaleh != null)
+      aliw localaliw = (aliw)this.this$0.a.a.getManager(155);
+      if (localaliw != null)
       {
         Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
-          localaleh.a((ApolloActionPackage)localIterator.next());
+          localaliw.a((ApolloActionPackage)localIterator.next());
         }
       }
     }

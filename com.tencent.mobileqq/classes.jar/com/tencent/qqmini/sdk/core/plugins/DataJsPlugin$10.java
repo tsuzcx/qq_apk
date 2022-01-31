@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class DataJsPlugin$10
   implements AdProxy.ICmdListener
 {
-  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, bgkd parambgkd, int paramInt) {}
+  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, bgok parambgok, int paramInt) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {

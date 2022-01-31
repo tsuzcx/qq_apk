@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
 import com.tencent.qphone.base.util.QLog;
 
-public class auiw
-  implements View.OnClickListener
+public abstract class auiw
 {
-  public auiw(MultiCardFragment paramMultiCardFragment) {}
+  public String a = "MsgBackup." + getClass().getSimpleName();
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    if (aujq.a) {
+      QLog.d(this.a, 2, paramString);
     }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return bdhb.a(paramString);
   }
 }
 

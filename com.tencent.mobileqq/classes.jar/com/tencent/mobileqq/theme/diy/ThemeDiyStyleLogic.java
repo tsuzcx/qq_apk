@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aljq;
+import alof;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import baks;
-import bduw;
+import bapb;
+import bdzf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,7 +44,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public baks saveDealCallBack;
+  public bapb saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -90,8 +90,8 @@ public class ThemeDiyStyleLogic
     if (!TextUtils.isEmpty(paramString))
     {
       str = paramString;
-      if (paramString.startsWith(aljq.aX + "custom_background/")) {
-        str = bduw.a(paramString);
+      if (paramString.startsWith(alof.aX + "custom_background/")) {
+        str = bdzf.a(paramString);
       }
     }
     return str;
@@ -107,7 +107,7 @@ public class ThemeDiyStyleLogic
   
   public static String getSdcardDIYDir()
   {
-    return bduw.a(aljq.aX + "custom_background/");
+    return bdzf.a(alof.aX + "custom_background/");
   }
   
   static ThemeUtil.ThemeInfo getThemeInfoByDensity(Context paramContext, ResSuitData.StyleSuit paramStyleSuit)

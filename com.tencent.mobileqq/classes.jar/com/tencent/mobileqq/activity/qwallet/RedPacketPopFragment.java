@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aghr;
-import airq;
-import airr;
-import airs;
-import ajae;
-import alpo;
+import agmg;
+import aiwf;
+import aiwg;
+import aiwh;
+import ajet;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -23,10 +23,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcvq;
-import bcxb;
-import bdcd;
-import bdfq;
+import bczz;
+import bdbk;
+import bdgm;
+import bdjz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
@@ -88,7 +88,7 @@ public class RedPacketPopFragment
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131698851;
+      i = 2131698863;
     }
     for (;;)
     {
@@ -99,7 +99,7 @@ public class RedPacketPopFragment
           break label226;
         }
         ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165571), paramContext.getResources().getColor(2131165576)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        bdcd.a(paramContext, alpo.a(2131713679), (CharSequence)localObject, 0, 2131720960, null, null, new airq(this, paramContext)).show();
+        bdgm.a(paramContext, alud.a(2131713691), (CharSequence)localObject, 0, 2131720972, null, null, new aiwf(this, paramContext)).show();
         return;
       }
       catch (Exception paramContext) {}
@@ -110,41 +110,41 @@ public class RedPacketPopFragment
       return;
       if (((String)localObject).equalsIgnoreCase("xiaomi"))
       {
-        i = 2131698853;
+        i = 2131698865;
       }
       else if (((String)localObject).equalsIgnoreCase("vivo"))
       {
-        i = 2131698852;
+        i = 2131698864;
       }
       else
       {
-        i = 2131698850;
+        i = 2131698862;
         j = 1;
       }
     }
     label226:
-    bdcd.a(paramContext, 230, alpo.a(2131713706), ((SpannableString)localObject).toString(), alpo.a(2131713675), "", null, new airr(this)).show();
+    bdgm.a(paramContext, 230, alud.a(2131713718), ((SpannableString)localObject).toString(), alud.a(2131713687), "", null, new aiwg(this)).show();
   }
   
   protected void a(View paramView)
   {
-    new ImmersionBar(getActivity(), 0, paramView.findViewById(2131376953));
+    new ImmersionBar(getActivity(), 0, paramView.findViewById(2131377007));
     this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363030);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371523);
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364335));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364336));
-    this.f = ((ImageView)paramView.findViewById(2131367534));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372503));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131372504);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369250));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131371541));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371542);
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364337));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364338));
+    this.f = ((ImageView)paramView.findViewById(2131367544));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372523));
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131372524);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369268));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131371560));
   }
   
   protected void a(ImageView paramImageView)
   {
     String str = a();
     if ((!TextUtils.isEmpty(str)) && (paramImageView != null)) {
-      LottieComposition.Factory.fromJsonString(str, new airs(this, paramImageView));
+      LottieComposition.Factory.fromJsonString(str, new aiwh(this, paramImageView));
     }
   }
   
@@ -152,13 +152,13 @@ public class RedPacketPopFragment
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(getResources().getDrawable(2130843098));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(getResources().getDrawable(2130843111));
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      bcvq.a(this.jdField_e_of_type_AndroidWidgetImageView, getActivity().getResources().getString(2131695796), null);
-      bcvq.a(this.jdField_a_of_type_AndroidWidgetImageButton, getActivity().getResources().getString(2131695796), null);
-      if (ajae.a(getActivity()))
+      bczz.a(this.jdField_e_of_type_AndroidWidgetImageView, getActivity().getResources().getString(2131695798), null);
+      bczz.a(this.jdField_a_of_type_AndroidWidgetImageButton, getActivity().getResources().getString(2131695798), null);
+      if (ajet.a(getActivity()))
       {
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -177,7 +177,7 @@ public class RedPacketPopFragment
         if (this.jdField_c_of_type_Int == 1)
         {
           localObject = ((Bundle)localObject).getString("redPacketId");
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)aghr.a.get(localObject));
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)agmg.a.get(localObject));
         }
         for (;;)
         {
@@ -204,8 +204,8 @@ public class RedPacketPopFragment
           localException.printStackTrace();
         }
         label284:
-        bcxb localbcxb = bcxb.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (byte)4);
-        this.f.setImageDrawable(localbcxb);
+        bdbk localbdbk = bdbk.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (byte)4);
+        this.f.setImageDrawable(localbdbk);
       }
     }
     return true;
@@ -268,7 +268,7 @@ public class RedPacketPopFragment
   {
     try
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131561764, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131561782, paramViewGroup, false);
       return paramLayoutInflater;
     }
     catch (Throwable paramLayoutInflater)

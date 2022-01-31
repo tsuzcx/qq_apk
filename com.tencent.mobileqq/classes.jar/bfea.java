@@ -1,149 +1,256 @@
-import android.os.Bundle;
-import android.util.Base64;
-import com.tencent.qphone.base.util.QLog;
-import java.security.MessageDigest;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public class bfea
+  extends besd
 {
-  public static String a(Bundle paramBundle)
+  protected LinkedHashMap<String, List<Friend>> a;
+  protected int[] a;
+  protected String[] a;
+  
+  public bfea(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame)
   {
-    Object localObject6 = paramBundle.getString("status_os");
-    Object localObject5 = paramBundle.getString("status_machine");
-    Object localObject4 = paramBundle.getString("status_version");
-    Object localObject3 = paramBundle.getString("sdkv");
-    Object localObject2 = paramBundle.getString("client_id");
-    Object localObject1 = paramBundle.getString("need_pay");
-    String str = paramBundle.getString("pf");
-    QLog.d("OpenSdkDESUtils", 1, new Object[] { "os=", localObject6, ", machine=", localObject5, ", version=", localObject4, ", sdkv=", localObject3, ", appId=", localObject2, ", needPay=", localObject1, ", pf=", str });
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramBundle = (Bundle)localObject6;
-    if (localObject6 == null) {
-      paramBundle = "";
-    }
-    localObject6 = localStringBuilder.append(paramBundle);
-    if (localObject5 == null)
-    {
-      paramBundle = "";
-      localObject5 = ((StringBuilder)localObject6).append(paramBundle);
-      if (localObject4 != null) {
-        break label264;
-      }
-      paramBundle = "";
-      label191:
-      localObject4 = ((StringBuilder)localObject5).append(paramBundle);
-      if (localObject3 != null) {
-        break label270;
-      }
-      paramBundle = "";
-      label207:
-      localObject3 = ((StringBuilder)localObject4).append(paramBundle);
-      if (localObject2 != null) {
-        break label276;
-      }
-      paramBundle = "";
-      label222:
-      localObject2 = ((StringBuilder)localObject3).append(paramBundle);
-      if (localObject1 != null) {
-        break label281;
-      }
-      paramBundle = "";
-      label236:
-      localObject1 = ((StringBuilder)localObject2).append(paramBundle);
-      if (str != null) {
-        break label286;
-      }
-    }
-    label264:
-    label270:
-    label276:
-    label281:
-    label286:
-    for (paramBundle = "";; paramBundle = str)
-    {
-      return paramBundle;
-      paramBundle = (Bundle)localObject5;
-      break;
-      paramBundle = (Bundle)localObject4;
-      break label191;
-      paramBundle = (Bundle)localObject3;
-      break label207;
-      paramBundle = (Bundle)localObject2;
-      break label222;
-      paramBundle = (Bundle)localObject1;
-      break label236;
-    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_ArrayOfInt = new int[0];
+    a();
   }
   
-  public static String a(String paramString1, String paramString2)
+  public int a()
   {
-    if (paramString1 == null)
+    return 2131559236;
+  }
+  
+  public int a(String paramString)
+  {
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
     {
-      QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName decryptStr==null !!!!!!");
-      return "";
+      i = 0;
+      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
+        break label53;
+      }
+      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
     }
-    try
+    for (;;)
     {
-      paramString2 = a(paramString2);
-      if (paramString2 == null)
+      if (i >= 0)
       {
-        QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName shaBytes==null !!!!!!");
-        return "";
+        return this.jdField_a_of_type_ArrayOfInt[i];
+        i += 1;
+        break;
       }
-      byte[] arrayOfByte = new byte[8];
-      System.arraycopy(paramString2, 5, arrayOfByte, 0, 8);
-      Object localObject = new byte[16];
-      System.arraycopy(paramString2, 8, localObject, 0, 16);
-      localObject = bdcv.a((byte[])localObject);
-      paramString2 = (String)localObject;
-      if (localObject == null) {
-        paramString2 = "";
-      }
-      paramString1 = a(paramString1, paramString2, arrayOfByte);
-      return paramString1;
+      return -1;
+      return -1;
+      label53:
+      i = -1;
     }
-    catch (Exception paramString1)
-    {
-      QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName", paramString1);
-    }
-    return "";
   }
   
-  public static String a(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  protected void a()
   {
-    try
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_Bfhr.a();
+    bflp.c(DeviceFriendListOpenFrame.jdField_a_of_type_JavaLangString, "-->start constructHashStruct()");
+    Object localObject2 = ((List)localObject1).iterator();
+    if (((Iterator)localObject2).hasNext())
     {
-      paramString1 = Base64.decode(paramString1, 0);
-      paramArrayOfByte = new IvParameterSpec(paramArrayOfByte);
-      paramString2 = new SecretKeySpec(paramString2.getBytes(), "AES");
-      Cipher localCipher = Cipher.getInstance("AES/GCM/NoPadding");
-      localCipher.init(2, paramString2, paramArrayOfByte);
-      paramString1 = new String(localCipher.doFinal(paramString1));
-      return paramString1;
+      Friend localFriend = (Friend)((Iterator)localObject2).next();
+      if ((localFriend.f == null) || (localFriend.f.length() == 0))
+      {
+        localObject1 = "#";
+        label81:
+        i = ((String)localObject1).charAt(0);
+        if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
+          break label186;
+        }
+      }
+      label186:
+      for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
+      {
+        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
+        }
+        ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localFriend);
+        break;
+        localObject1 = localFriend.f.substring(0, 1);
+        break label81;
+      }
     }
-    catch (Exception paramString1)
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
+      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
+      }
+    }
+    if (((LinkedHashMap)localObject1).get("#") != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
+    }
+    ((LinkedHashMap)localObject1).clear();
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+      return;
+    }
+    this.jdField_a_of_type_ArrayOfInt[0] = 0;
+    int i = 1;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      QLog.e("OpenSdkDESUtils", 1, "decryptAES", paramString1);
+      localObject2 = this.jdField_a_of_type_ArrayOfInt;
+      int j = localObject2[i];
+      int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
+      localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
+      i += 1;
+    }
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    i = 0;
+    while (((Iterator)localObject1).hasNext())
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+      i += 1;
+    }
+    bflp.c(DeviceFriendListOpenFrame.jdField_a_of_type_JavaLangString, "-->end constructHashStruct()");
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    paramInt = i;
+    if (i < 0) {
+      paramInt = -(i + 1) - 1;
+    }
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
+      return;
+    }
+    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
+  }
+  
+  public void b()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+      return 0;
+    }
+    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
+    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    if (i >= 0) {
+      return null;
+    }
+    i = -(i + 1) - 1;
+    List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+    paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
+    if ((paramInt >= 0) && (paramInt < localList.size())) {
+      return localList.get(paramInt);
     }
     return null;
   }
   
-  public static byte[] a(String paramString)
+  public long getItemId(int paramInt)
   {
-    try
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    Friend localFriend;
+    label185:
+    label227:
+    Bitmap localBitmap;
+    if (paramView == null)
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
-      localMessageDigest.update(paramString.getBytes());
-      paramString = localMessageDigest.digest();
-      return paramString;
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562629, paramViewGroup, false);
+      paramViewGroup = new bfeb();
+      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375936));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131378845));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364256));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131370977));
+      paramView.setTag(paramViewGroup);
+      if (i >= 0) {
+        break label434;
+      }
+      i = -(i + 1) - 1;
+      localFriend = (Friend)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+      if (!this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_Bfhr.a(localFriend.jdField_a_of_type_JavaLangString)) {
+        break label386;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      if ((this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a == null) || (!this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.contains(localFriend.jdField_a_of_type_JavaLangString))) {
+        break label397;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bfhy.a(this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.jdField_a_of_type_JavaLangString);
+      }
+      paramViewGroup.jdField_b_of_type_JavaLangString = localFriend.d;
+      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      paramViewGroup.c.setVisibility(8);
+      localBitmap = bfhv.a().a(localFriend.d);
+      if (localBitmap != null) {
+        break label408;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840085);
+      bfhv.a().a(localFriend.d, this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame);
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("OpenSdkDESUtils", 1, "encryptSha", paramString);
+      if ((localFriend.c != null) && (!"".equals(localFriend.c))) {
+        break label420;
+      }
+      paramViewGroup.d.setText(localFriend.jdField_b_of_type_JavaLangString);
+      return paramView;
+      paramViewGroup = (bfeb)paramView.getTag();
+      break;
+      label386:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      break label185;
+      label397:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+      break label227;
+      label408:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
-    return null;
+    label420:
+    paramViewGroup.d.setText(localFriend.c);
+    return paramView;
+    label434:
+    paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramViewGroup.c.setVisibility(0);
+    paramViewGroup.c.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
+    return paramView;
   }
 }
 

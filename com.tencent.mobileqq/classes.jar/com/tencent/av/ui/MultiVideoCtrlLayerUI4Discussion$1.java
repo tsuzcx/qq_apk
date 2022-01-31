@@ -22,7 +22,7 @@ class MultiVideoCtrlLayerUI4Discussion$1
     }
     String str2 = null;
     String str1;
-    if (this.jdField_a_of_type_Int == 2131696013)
+    if (this.jdField_a_of_type_Int == 2131696015)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
         str2 = (String)this.this$0.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);

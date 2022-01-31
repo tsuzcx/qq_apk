@@ -10,9 +10,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awoh;
-import bdkf;
-import bdrf;
+import awsq;
+import bdoo;
+import bdvo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -26,9 +26,9 @@ public class ZanBannerView
   private static String jdField_a_of_type_JavaLangString = "spKeyZanBannerIndex";
   private int jdField_a_of_type_Int = -1;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private awoh jdField_a_of_type_Awoh;
-  private bdrf jdField_a_of_type_Bdrf;
-  private List<awoh> jdField_a_of_type_JavaUtilList;
+  private awsq jdField_a_of_type_Awsq;
+  private bdvo jdField_a_of_type_Bdvo;
+  private List<awsq> jdField_a_of_type_JavaUtilList;
   
   public ZanBannerView(Context paramContext)
   {
@@ -48,7 +48,7 @@ public class ZanBannerView
     a(paramContext);
   }
   
-  private awoh a()
+  private awsq a()
   {
     if (a()) {
       return null;
@@ -56,15 +56,15 @@ public class ZanBannerView
     List localList = this.jdField_a_of_type_JavaUtilList;
     int i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = (i + 1);
-    this.jdField_a_of_type_Awoh = ((awoh)localList.get(i % this.jdField_a_of_type_JavaUtilList.size()));
+    this.jdField_a_of_type_Awsq = ((awsq)localList.get(i % this.jdField_a_of_type_JavaUtilList.size()));
     BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int).commit();
-    return this.jdField_a_of_type_Awoh;
+    return this.jdField_a_of_type_Awsq;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131561719, null));
-    this.jdField_a_of_type_Bdrf = new bdrf(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131561737, null));
+    this.jdField_a_of_type_Bdvo = new bdvo(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_Int = BaseApplicationImpl.getApplication().getRuntime().getPreferences().getInt(jdField_a_of_type_JavaLangString, 0);
     if (this.jdField_a_of_type_Int > 100) {
@@ -72,39 +72,39 @@ public class ZanBannerView
     }
   }
   
-  private void a(bdrf parambdrf)
+  private void a(bdvo parambdvo)
   {
     Object localObject = a();
     int i;
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
     if (localObject != null)
     {
-      parambdrf.jdField_a_of_type_AndroidWidgetTextView.setText(((awoh)localObject).jdField_a_of_type_JavaLangString);
-      parambdrf.jdField_b_of_type_AndroidWidgetTextView.setText(((awoh)localObject).b);
-      if (((awoh)localObject).jdField_a_of_type_JavaUtilVector != null)
+      parambdvo.jdField_a_of_type_AndroidWidgetTextView.setText(((awsq)localObject).jdField_a_of_type_JavaLangString);
+      parambdvo.jdField_b_of_type_AndroidWidgetTextView.setText(((awsq)localObject).b);
+      if (((awsq)localObject).jdField_a_of_type_JavaUtilVector != null)
       {
-        i = ((awoh)localObject).jdField_a_of_type_JavaUtilVector.size();
+        i = ((awsq)localObject).jdField_a_of_type_JavaUtilVector.size();
         localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        int j = bdkf.b(36.0F);
+        int j = bdoo.b(36.0F);
         localURLDrawableOptions.mRequestWidth = j;
         localURLDrawableOptions.mRequestHeight = j;
         if (i != 1) {
           break label118;
         }
-        localURLDrawable = URLDrawable.getDrawable((String)((awoh)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-        parambdrf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-        parambdrf.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        localURLDrawable = URLDrawable.getDrawable((String)((awsq)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
+        parambdvo.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        parambdvo.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
     label118:
     while (i <= 1) {
       return;
     }
-    URLDrawable localURLDrawable = URLDrawable.getDrawable((String)((awoh)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-    localObject = URLDrawable.getDrawable((String)((awoh)localObject).jdField_a_of_type_JavaUtilVector.get(1), localURLDrawableOptions);
-    parambdrf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-    parambdrf.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    parambdrf.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    URLDrawable localURLDrawable = URLDrawable.getDrawable((String)((awsq)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
+    localObject = URLDrawable.getDrawable((String)((awsq)localObject).jdField_a_of_type_JavaUtilVector.get(1), localURLDrawableOptions);
+    parambdvo.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+    parambdvo.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    parambdvo.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
   private boolean a()
@@ -114,24 +114,24 @@ public class ZanBannerView
   
   public String a()
   {
-    if (this.jdField_a_of_type_Awoh != null) {
-      return this.jdField_a_of_type_Awoh.c;
+    if (this.jdField_a_of_type_Awsq != null) {
+      return this.jdField_a_of_type_Awsq.c;
     }
     return null;
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_Awoh != null) {
-      return this.jdField_a_of_type_Awoh.d;
+    if (this.jdField_a_of_type_Awsq != null) {
+      return this.jdField_a_of_type_Awsq.d;
     }
     return "";
   }
   
-  public void setInfoList(List<awoh> paramList)
+  public void setInfoList(List<awsq> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    a(this.jdField_a_of_type_Bdrf);
+    a(this.jdField_a_of_type_Bdvo);
   }
 }
 

@@ -1,14 +1,20 @@
-import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class ayuw
+  extends aytg
 {
-  public SummaryCardBusiEntry.comm a;
-  public byte[] a;
+  private Comparator<aynq> a = new ayux(this);
   
-  public ayuw(SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
+  public ayuw(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    this.jdField_a_of_type_ComTencentPbProfilecardSummaryCardBusiEntry$comm = paramcomm;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+  }
+  
+  public Comparator<aynq> a()
+  {
+    return this.a;
   }
 }
 

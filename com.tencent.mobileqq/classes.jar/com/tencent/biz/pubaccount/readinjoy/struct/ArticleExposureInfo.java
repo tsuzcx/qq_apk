@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import ors;
 
 public class ArticleExposureInfo
-  extends awbv
+  extends awge
   implements Comparable<ArticleExposureInfo>
 {
   public static final String TABLE_NAME = ArticleExposureInfo.class.getSimpleName();

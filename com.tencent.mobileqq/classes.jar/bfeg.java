@@ -1,87 +1,58 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.tmassistant.common.jce.StatItem;
-import java.io.Serializable;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-class bfeg
-  extends Handler
+public class bfeg
+  extends bfhp
 {
-  bfeg(bfef parambfef, Looper paramLooper)
+  public bfeg(FriendChooser paramFriendChooser) {}
+  
+  public int getCount()
   {
-    super(paramLooper);
+    return this.a.b.size();
   }
   
-  public void handleMessage(Message paramMessage)
+  public Object getItem(int paramInt)
   {
-    int i;
-    Object localObject2;
-    if (paramMessage.what == 1)
+    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
+      return this.a.b.get(paramInt);
+    }
+    return null;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Friend localFriend = (Friend)getItem(paramInt);
+    if (paramView == null)
     {
-      localObject1 = bfef.a(this.a).keySet();
-      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
-      {
-        paramMessage = new ArrayList();
-        localObject1 = ((Set)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          i = ((Integer)((Iterator)localObject1).next()).intValue();
-          localObject2 = new StatItem();
-          ((StatItem)localObject2).type = i;
-          ((StatItem)localObject2).records = ((ArrayList)bfef.a(this.a).get(Integer.valueOf(i)));
-          paramMessage.add(localObject2);
-        }
-        bfef.a(this.a).clear();
-        if (paramMessage.size() > 0)
-        {
-          i = bfef.a(this.a).a(paramMessage);
-          bfef.a(this.a).put(i, paramMessage);
-        }
-      }
+      paramViewGroup = new bfem();
+      paramView = this.a.getLayoutInflater().inflate(2131559201, null);
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131365912));
+      paramView.setTag(paramViewGroup);
     }
-    while (paramMessage.what != 2) {
-      return;
-    }
-    Object localObject1 = bfds.a().a();
-    paramMessage = new ArrayList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    Bitmap localBitmap;
+    for (;;)
     {
-      i = ((Integer)((Iterator)localObject1).next()).intValue();
-      Object localObject3 = bfds.a().a(String.valueOf(i));
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
-          try
-          {
-            ((ArrayList)localObject2).add((String)localSerializable);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bfhy.a(this.a.a(), localFriend.a);
       }
-      if (((ArrayList)localObject2).size() > 0) {
-        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
+      localBitmap = bfhv.a().a(localFriend.d);
+      if (localBitmap != null) {
+        break;
       }
+      paramViewGroup.a.setImageResource(2130840085);
+      paramViewGroup = paramViewGroup.a;
+      bfhv.a().a(localFriend.d, new bfeh(this, paramViewGroup));
+      return paramView;
+      paramViewGroup = (bfem)paramView.getTag();
     }
-    if (paramMessage.size() > 0)
-    {
-      i = bfef.a(this.a).a(paramMessage);
-      bfef.b(this.a).put(i, paramMessage);
-    }
-    bfef.a(this.a).sendEmptyMessageDelayed(2, bfef.a(this.a));
+    paramViewGroup.a.setImageBitmap(localBitmap);
+    return paramView;
   }
 }
 

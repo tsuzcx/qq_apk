@@ -1,131 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-public class apvb
-  extends NativeGifImage
+class apvb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  boolean a = false;
-  private boolean b = true;
-  private boolean c;
-  private boolean d;
+  apvb(apuz paramapuz) {}
   
-  public apvb(File paramFile, int paramInt, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
-  }
-  
-  public void a()
-  {
-    this.b = true;
-    if ((QLog.isColorLevel()) && (this.a)) {
-      QLog.d("VoiceGifImage", 2, "getNextFrame start");
+    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (apuz.a(this.a).getParent() != null) {
+      apuz.a(this.a).getParent().requestLayout();
     }
-  }
-  
-  public void b()
-  {
-    this.b = false;
-    this.c = true;
-    if ((QLog.isColorLevel()) && (this.a)) {
-      QLog.d("VoiceGifImage", 2, "getNextFrame stop");
-    }
-  }
-  
-  public void doApplyNextFrame()
-  {
-    if ((QLog.isColorLevel()) && (this.a)) {
-      QLog.d("VoiceGifImage", 2, "doApplyNextFrame");
-    }
-    super.doApplyNextFrame();
-    if (this.d)
-    {
-      this.d = false;
-      this.c = false;
-    }
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    initHandlerAndRunnable();
-    if ((!this.b) && (this.mFirstFrameBitmap != null)) {
-      if (this.mFirstFrameBitmap != null)
-      {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-        if ((QLog.isColorLevel()) && (this.a)) {
-          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running ");
-        }
-      }
-    }
-    label57:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label57;
-          break label57;
-          do
-          {
-            return;
-          } while ((!QLog.isColorLevel()) || (!this.a));
-          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running, mFirstFrameBitmap is null");
-          return;
-          if (!this.c) {
-            break;
-          }
-          if (this.mFirstFrameBitmap != null) {
-            paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-          }
-          for (;;)
-          {
-            if (sPaused) {
-              break label161;
-            }
-            executeNewTask();
-            if ((!QLog.isColorLevel()) || (!this.a)) {
-              break;
-            }
-            QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart  !sPaused");
-            return;
-            if ((QLog.isColorLevel()) && (this.a)) {
-              QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart, mFirstFrameBitmap is null");
-            }
-          }
-        } while (this.mIsInPendingAction);
-        sPendingActions.add(new WeakReference(this));
-        this.mIsInPendingAction = true;
-      } while ((!QLog.isColorLevel()) || (!this.a));
-      QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !mIsInPendingAction  !mIsInPendingAction");
-      return;
-      super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-    } while ((!QLog.isColorLevel()) || (!this.a));
-    label161:
-    QLog.d("VoiceGifImage", 2, "VoiceGifImage draw else");
-  }
-  
-  public void getNextFrame()
-  {
-    try
-    {
-      if (this.c)
-      {
-        this.d = true;
-        super.reset();
-        if ((QLog.isColorLevel()) && (this.a)) {
-          QLog.d("VoiceGifImage", 2, "getNextFrame restart");
-        }
-      }
-      super.getNextFrame();
-      return;
-    }
-    finally {}
   }
 }
 

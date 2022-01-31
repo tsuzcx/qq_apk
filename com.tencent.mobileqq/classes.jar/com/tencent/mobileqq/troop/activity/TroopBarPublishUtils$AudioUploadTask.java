@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import arof;
+import arso;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -50,7 +50,7 @@ public class TroopBarPublishUtils$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if (!arof.a(this.b))
+    if (!arso.a(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "Audio is null! mAudioPath=" + this.b);

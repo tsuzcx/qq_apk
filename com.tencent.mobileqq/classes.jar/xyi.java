@@ -1,42 +1,41 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-class xyi
-  implements yhe
+public class xyi
 {
-  xyi(xyg paramxyg) {}
+  int jdField_a_of_type_Int = 0;
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
   
-  public void a(boolean paramBoolean)
+  public xyi() {}
+  
+  public xyi(int paramInt, short paramShort, byte[] paramArrayOfByte)
   {
-    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean)
-    {
-      str1 = "cancel";
-      yvu.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
-      if (RecommendBannerItemView.a(this.a.a))
-      {
-        str2 = RecommendBannerItemView.a(this.a.a).id.get();
-        localStringBuilder = new StringBuilder().append("reco_");
-        if (!paramBoolean) {
-          break label252;
-        }
-      }
-    }
-    label252:
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      yvu.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
-      return;
-      str1 = "dislike";
-      break;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+  }
+  
+  public long a()
+  {
+    return ybk.a(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String a()
+  {
+    return new String(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String toString()
+  {
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xyi
  * JD-Core Version:    0.7.0.1
  */

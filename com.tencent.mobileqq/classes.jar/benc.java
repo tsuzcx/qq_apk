@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
 
-public abstract interface benc
+class benc
+  extends Handler
 {
-  public abstract void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView);
+  benc(benb parambenb, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - benb.a(this.a).getHeight(), true);
+    }
+    super.handleMessage(paramMessage);
+  }
 }
 
 

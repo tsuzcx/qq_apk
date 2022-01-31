@@ -1,25 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.SingleThreadExecutor;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.util.List;
+import java.util.concurrent.AbstractExecutorService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class amdp
-  extends alqf
+  extends AbstractExecutorService
 {
-  private amdp(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
+  private final int a;
   
-  protected void a(int paramInt)
+  protected amdp(int paramInt)
   {
-    if (GetJoinedHotChatListStep.a(this.a) != null)
-    {
-      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
-      GetJoinedHotChatListStep.a(this.a, null);
-    }
-    if (paramInt == 0)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    this.a = paramInt;
+  }
+  
+  public static ExecutorService a(int paramInt)
+  {
+    return new amdp(paramInt);
+  }
+  
+  public static ExecutorService b(int paramInt)
+  {
+    return new SingleThreadExecutor(paramInt);
+  }
+  
+  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  {
+    return false;
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
+  }
+  
+  public boolean isShutdown()
+  {
+    return false;
+  }
+  
+  public boolean isTerminated()
+  {
+    return false;
+  }
+  
+  public void shutdown()
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  @NonNull
+  public List<Runnable> shutdownNow()
+  {
+    throw new UnsupportedOperationException();
   }
 }
 

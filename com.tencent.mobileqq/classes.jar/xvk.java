@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class xvk
-  implements View.OnClickListener
+  extends SimpleJob
 {
-  public xvk(QRLoginBaseActivity paramQRLoginBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public xvk(SegmentList paramSegmentList, String paramString)
   {
-    this.a.finish();
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
+    }
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
   }
 }
 

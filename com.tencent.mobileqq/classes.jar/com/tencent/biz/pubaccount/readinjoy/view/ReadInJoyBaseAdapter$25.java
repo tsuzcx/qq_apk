@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.AbsListView;
@@ -18,30 +18,30 @@ public class ReadInJoyBaseAdapter$25
     int j;
     long l1;
     long l2;
-    if ((rqj.a(this.this$0) == 0) && (bjxj.h(rqj.a()) > 0) && (this.a.getLastVisiblePosition() >= bjxj.h(rqj.a())) && (bjxj.g(rqj.a()) > 0))
+    if ((rqj.a(this.this$0) == 0) && (bkbq.h(rqj.a()) > 0) && (this.a.getLastVisiblePosition() >= bkbq.h(rqj.a())) && (bkbq.g(rqj.a()) > 0))
     {
       rqj.a(this.this$0, this.a.getLastVisiblePosition());
-      i = bjxj.g(rqj.a());
-      j = bjxj.i(rqj.a());
+      i = bkbq.g(rqj.a());
+      j = bkbq.i(rqj.a());
       Calendar localCalendar = Calendar.getInstance();
       localCalendar.set(10, 0);
       localCalendar.set(12, 0);
       localCalendar.set(13, 0);
       localCalendar.set(14, 0);
       l1 = localCalendar.getTimeInMillis();
-      l2 = bjxj.a(rqj.a());
+      l2 = bkbq.a(rqj.a());
       if (l1 <= l2) {
         break label161;
       }
-      bjxj.j(rqj.a(), 1);
-      bjxj.a(rqj.a(), l1);
+      bkbq.j(rqj.a(), 1);
+      bkbq.a(rqj.a(), l1);
       ((KandianMergeManager)rqj.a().getManager(162)).n();
     }
     label161:
     while ((l1 != l2) || (j >= i)) {
       return;
     }
-    bjxj.j(rqj.a(), j + 1);
+    bkbq.j(rqj.a(), j + 1);
     ((KandianMergeManager)rqj.a().getManager(162)).n();
   }
 }

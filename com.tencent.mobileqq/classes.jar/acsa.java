@@ -1,23 +1,48 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class acsa
-  extends apns
+  extends alqv
 {
-  public acsa(EmosmActivity paramEmosmActivity) {}
+  public acsa(Conversation paramConversation) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, alof.z, 6000);
+    }
+    while (i != 1) {
       return;
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a(8, alof.A, 6000);
   }
   
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, alof.z, 6003);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, alof.A, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, alof.z, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, alof.A, 6003);
+  }
 }
 
 

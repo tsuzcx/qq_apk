@@ -1,19 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.text.TextUtils;
 
-public class aflb
-  implements ValueAnimator.AnimatorUpdateListener
+abstract class aflb
 {
-  public aflb(HeartCombolEffectView paramHeartCombolEffectView, aflc paramaflc) {}
+  protected int a;
+  protected afpx a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a()
   {
-    this.jdField_a_of_type_Aflc.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Aflc.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aflc.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Aflc.jdField_b_of_type_Boolean = true;
-    }
+    return this.jdField_b_of_type_Int;
   }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(afpx paramafpx)
+  {
+    this.jdField_a_of_type_Afpx = paramafpx;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 

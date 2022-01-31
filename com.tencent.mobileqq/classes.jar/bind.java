@@ -1,11 +1,10 @@
-public abstract interface bind
-  extends bine
+final class bind
+  extends ThreadLocal<char[]>
 {
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void e(String paramString);
-  
-  public abstract void f(String paramString);
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 

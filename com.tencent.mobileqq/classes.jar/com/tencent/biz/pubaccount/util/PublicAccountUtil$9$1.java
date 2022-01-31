@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.PublicAccountHandler;
@@ -22,7 +22,7 @@ public class PublicAccountUtil$9$1
     Object localObject1 = new AccountDetail(this.a);
     Object localObject2 = this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
     if (localObject2 != null) {
-      ((awbw)localObject2).b((awbv)localObject1);
+      ((awgf)localObject2).b((awge)localObject1);
     }
     if ((this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
     {

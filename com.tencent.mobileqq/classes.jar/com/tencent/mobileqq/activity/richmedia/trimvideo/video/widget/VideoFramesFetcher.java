@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ajrf;
-import ajrk;
-import ajrm;
-import ajrq;
+import ajvu;
+import ajvz;
+import ajwb;
+import ajwf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,26 +12,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class VideoFramesFetcher
-  implements ajrm
+  implements ajwb
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int = 1;
-  private ajrf jdField_a_of_type_Ajrf;
-  private BlockingQueue<ajrq> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, ajrq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ajvu jdField_a_of_type_Ajvu;
+  private BlockingQueue<ajwf> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, ajwf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
   private int c;
   
-  private ajrk b(int paramInt)
+  private ajvz b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    ajrq localajrq2;
+    ajwf localajwf2;
     do
     {
       return null;
@@ -39,10 +39,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          ajrq localajrq1 = (ajrq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          ajwf localajwf1 = (ajwf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localajrq1.jdField_a_of_type_Long = l;
+          localajwf1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -53,17 +53,17 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localajrq2 = new ajrq(this, l, paramInt, paramInt + this.b);
+      localajwf2 = new ajwf(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajrq2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajwf2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, ajrf paramajrf)
+  public int a(int paramInt1, int paramInt2, ajvu paramajvu)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Ajrf = paramajrf;
+    this.jdField_a_of_type_Ajvu = paramajvu;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
@@ -71,7 +71,7 @@ public class VideoFramesFetcher
     return 0;
   }
   
-  public ajrk a(int paramInt)
+  public ajvz a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -80,8 +80,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_Ajrf.a(paramInt)) {
-      return this.jdField_a_of_type_Ajrf.a(paramInt);
+    if (this.jdField_a_of_type_Ajvu.a(paramInt)) {
+      return this.jdField_a_of_type_Ajvu.a(paramInt);
     }
     return b(this.b * paramInt);
   }

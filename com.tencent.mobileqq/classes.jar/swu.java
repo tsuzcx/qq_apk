@@ -19,7 +19,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
 public class swu
-  extends bapk
+  extends batt
 {
   private BaseApplicationImpl a;
   
@@ -43,7 +43,7 @@ public class swu
         if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
           return new URL(paramString);
         }
-        paramObject = bhos.a(paramString);
+        paramObject = bhsz.a(paramString);
         if (!paramObject.containsKey("busiType")) {
           continue;
         }
@@ -71,14 +71,14 @@ public class swu
       }
       QLog.e("PubAccountHttpDownloader", 2, "<--generateURL urlString", paramObject);
       return paramString;
-      paramString = bhos.a(paramString, "busiType", paramInt + "");
+      paramString = bhsz.a(paramString, "busiType", paramInt + "");
     }
     return str;
   }
   
   private void a(String paramString, long paramLong)
   {
-    if (bdee.b(BaseApplication.getContext()) == 1) {}
+    if (bdin.b(BaseApplication.getContext()) == 1) {}
     for (String[] arrayOfString = { "param_WIFIPublicPlatDownloadFlow", "param_WIFIFlow", "param_Flow" };; arrayOfString = new String[] { "param_XGPublicPlatDownloadFlow", "param_XGFlow", "param_Flow" }) {
       try
       {
@@ -103,7 +103,7 @@ public class swu
     }
     for (;;)
     {
-      Object localObject1 = bhos.a(str);
+      Object localObject1 = bhsz.a(str);
       if (((Map)localObject1).get("busiType") != null) {}
       int i;
       sww localsww;

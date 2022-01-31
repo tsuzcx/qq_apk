@@ -1,15 +1,35 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class beba
-  implements View.OnClickListener
+public class beba
+  extends bkfr
 {
-  beba(beaz parambeaz) {}
+  private HashMap<String, bkfr> a;
   
-  public void onClick(View paramView)
+  public beba(String paramString, View paramView, HashMap<String, bkfr> paramHashMap)
   {
-    this.a.mInActivity.finish();
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  {
+    int i = xsm.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), xsm.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), xsm.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
+    {
+      if ((bkfr)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
+      return;
+    }
+    super.a(paramString1, paramString2);
   }
 }
 

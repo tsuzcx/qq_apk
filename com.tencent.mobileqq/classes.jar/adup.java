@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class adup
-  implements DialogInterface.OnClickListener
+  implements adif
 {
-  public adup(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public adup(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QQSettingCleanActivity.a(this.a);
-    azmj.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    RegisterPhoneNumActivity.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 

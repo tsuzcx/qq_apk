@@ -1,17 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class ancq
-  implements DialogInterface.OnDismissListener
+  extends ancs
 {
-  public ancq(ARScanEntryView paramARScanEntryView) {}
+  public float a;
+  public int a;
+  public long a;
+  public ArCloudConfigInfo a;
+  public String a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ancq()
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
   }
 }
 

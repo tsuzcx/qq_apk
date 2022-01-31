@@ -1,32 +1,66 @@
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
-public class aizk
-  implements View.OnClickListener
+class aizk
+  implements AdapterView.OnItemClickListener
 {
-  public aizk(SpecifyGiftView paramSpecifyGiftView, baaa parambaaa, View.OnClickListener paramOnClickListener) {}
+  aizk(aizh paramaizh) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
-    if (this.jdField_a_of_type_Baaa != null) {
-      this.jdField_a_of_type_Baaa.a();
-    }
-    QQAppInterface localQQAppInterface = ajaf.a();
-    if (localQQAppInterface != null)
+    Object localObject2 = null;
+    paramAdapterView = aizh.a(this.a).getList();
+    aize localaize = (aize)paramAdapterView.get(paramInt);
+    if (0L != localaize.a.skin_permission_state)
     {
-      bcfr localbcfr = (bcfr)localQQAppInterface.getManager(223);
-      if (localbcfr != null) {
-        localbcfr.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
-      }
+      aize.c = ((aize)paramAdapterView.get(paramInt)).a.skin_id;
+      aizh.a(this.a).notifyDataSetChanged();
+      return;
     }
-    ajaf.a(localQQAppInterface, "212", "only.animation.close");
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    String str1 = localaize.a.pop_dialog.dialog_title;
+    String str2 = localaize.a.pop_dialog.dialog_tips;
+    paramView = localaize.a.pop_dialog.left_tips;
+    Object localObject1 = localaize.a.pop_dialog.right_tips;
+    paramAdapterView = paramView;
+    if (TextUtils.isEmpty(paramView)) {
+      paramAdapterView = null;
+    }
+    paramView = (View)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramView = null;
+    }
+    if ((paramAdapterView == null) && (paramView == null)) {
+      paramAdapterView = alud.a(2131705825);
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramAdapterView))
+      {
+        localObject1 = null;
+        if (!TextUtils.isEmpty(paramView)) {
+          break label229;
+        }
+      }
+      for (;;)
+      {
+        paramAdapterView = bdgm.a(aizh.a(this.a), 230, str1, str2, paramAdapterView, paramView, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+        paramAdapterView.setCancelable(false);
+        paramAdapterView.setCanceledOnTouchOutside(false);
+        paramAdapterView.show();
+        return;
+        localObject1 = new aizl(this, localaize);
+        break;
+        label229:
+        localObject2 = new aizm(this, localaize);
+      }
     }
   }
 }

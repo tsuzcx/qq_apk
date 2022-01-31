@@ -1,26 +1,25 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+
 public class apga
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public String a;
-  public boolean a;
+  public apga(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public apga(String paramString, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this(paramString, paramInt, true);
-  }
-  
-  public apga(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(amms.a, 0).edit().putBoolean(amms.b, paramBoolean).commit();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), alud.a(2131703254), 1).a();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
+    }
   }
 }
 

@@ -1,8 +1,15 @@
-public abstract interface arok
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
+
+class arok
+  implements bago
 {
-  public abstract void a();
+  arok(aroj paramaroj) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a(bety parambety)
+  {
+    SimpleFileViewer.a(this.a.a.this$0, parambety);
+  }
 }
 
 

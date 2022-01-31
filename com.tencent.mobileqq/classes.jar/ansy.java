@@ -1,45 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-
-class ansy
-  extends AnimatorListenerAdapter
+public class ansy
 {
-  ansy(ansu paramansu, ante paramante) {}
+  public int a;
+  public ansz a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ansy()
   {
-    if ((this.jdField_a_of_type_Ansu.d != null) && (this.jdField_a_of_type_Ansu.e != null))
-    {
-      this.jdField_a_of_type_Ansu.d.setVisibility(4);
-      this.jdField_a_of_type_Ansu.e.setVisibility(0);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ansu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      paramAnimator.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_Ansu.a("show pendant, " + this.jdField_a_of_type_Ansu.jdField_a_of_type_Long);
-      paramAnimator.b();
-    }
-    if (this.jdField_a_of_type_Ansu.c != null) {
-      this.jdField_a_of_type_Ansu.c.setVisibility(0);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Ansu.d != null) && (this.jdField_a_of_type_Ansu.e != null))
-    {
-      this.jdField_a_of_type_Ansu.d.setVisibility(0);
-      this.jdField_a_of_type_Ansu.e.setVisibility(4);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ansu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      this.jdField_a_of_type_Ansu.a("stop show pendant, " + this.jdField_a_of_type_Ansu.jdField_a_of_type_Long);
-      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Ansu.jdField_a_of_type_Long;
-      paramAnimator.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
     }
-    if ((this.jdField_a_of_type_Ansu.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Ante.e))) {
-      this.jdField_a_of_type_Ansu.c.setVisibility(4);
-    }
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
   }
 }
 

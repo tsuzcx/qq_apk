@@ -10,7 +10,7 @@ public class otv
 {
   public static boolean a()
   {
-    return ((Boolean)bjxj.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)bkbq.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -24,7 +24,7 @@ public class otv
       String str2 = (String)paramString.get(str1);
       QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
       if (TextUtils.equals(str1, "enable_1160_use_new_report_service")) {
-        bjxj.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
+        bkbq.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
     return true;
@@ -32,7 +32,7 @@ public class otv
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
+    bkbq.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
   }
 }
 

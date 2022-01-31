@@ -1,28 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
-final class vns
-  extends AnimatorListenerAdapter
+public class vns
+  implements View.OnTouchListener
 {
-  vns(Animator.AnimatorListener paramAnimatorListener) {}
+  public vns(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wsv.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    return true;
   }
 }
 

@@ -1,14 +1,25 @@
-class ajqt
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class ajqt
+  implements ajru
 {
-  public int a;
-  public long a;
-  public int b;
+  public ajqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public ajqt(long paramLong, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
+    if (this.a.r == 10011)
+    {
+      NewFlowCameraActivity.a(this.a, paramString1);
+      return;
+    }
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
+    }
+    this.a.i(true);
+    QQToast.a(this.a, alud.a(2131707872), 0).a();
   }
 }
 

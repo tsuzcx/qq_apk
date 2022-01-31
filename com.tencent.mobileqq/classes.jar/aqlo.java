@@ -1,18 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
-public class aqlo
+class aqlo
   implements DialogInterface.OnClickListener
 {
-  public aqlo(QfileLocalFileAppTabView.1.1 param1) {}
+  aqlo(aqlm paramaqlm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
+    arrp.a("0X80052CF");
   }
 }
 

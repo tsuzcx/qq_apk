@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahmt;
+import ahri;
 import com.tencent.qphone.base.util.QLog;
 
 class AlphabetFriendAdapter$1$2
@@ -15,7 +15,7 @@ class AlphabetFriendAdapter$1$2
     }
     this.a.this$0.b();
     this.a.this$0.c();
-    ahmt.a(this.a.this$0);
+    ahri.a(this.a.this$0);
   }
 }
 

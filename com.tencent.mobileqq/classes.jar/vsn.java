@@ -1,16 +1,25 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vsn
-  implements vud
+  extends QQUIEventReceiver<vsk, vef>
 {
-  public vsn(TextureVideoView paramTextureVideoView) {}
-  
-  public boolean a_(vtz paramvtz, int paramInt1, int paramInt2)
+  public vsn(@NonNull vsk paramvsk)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramvtz, paramInt1, paramInt2);
+    super(paramvsk);
+  }
+  
+  public void a(@NonNull vsk paramvsk, @NonNull vef paramvef)
+  {
+    wxe.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
+    if (paramvsk.d()) {
+      paramvsk.a(paramvsk.jdField_a_of_type_Int, paramvsk.b, paramvsk.jdField_a_of_type_Vtt, paramvsk.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
     }
-    return true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vef.class;
   }
 }
 

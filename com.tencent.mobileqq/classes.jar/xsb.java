@@ -1,6 +1,18 @@
-public abstract interface xsb
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class xsb
+  implements View.OnClickListener
 {
-  public abstract void a(xsa paramxsa);
+  xsb(xsa paramxsa) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Xrw;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_Xsc, this.a);
+    }
+  }
 }
 
 

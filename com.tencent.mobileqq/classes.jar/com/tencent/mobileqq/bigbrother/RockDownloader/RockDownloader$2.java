@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import alpo;
+import alud;
 import android.text.TextUtils;
-import anrk;
-import anrl;
-import awbv;
-import awbw;
+import anvt;
+import anvu;
+import awge;
+import awgf;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ public final class RockDownloader$2
   
   public void run()
   {
-    Object localObject = anrl.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
+    Object localObject = anvu.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -30,10 +30,10 @@ public final class RockDownloader$2
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        awbv localawbv = (awbv)((Iterator)localObject).next();
-        if ((localawbv instanceof RockDownloadInfo))
+        awge localawge = (awge)((Iterator)localObject).next();
+        if ((localawge instanceof RockDownloadInfo))
         {
-          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localawbv;
+          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localawge;
           if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new VFSFile(localRockDownloadInfo.localPath).exists()))
           {
             localArrayList.add(localRockDownloadInfo);
@@ -41,9 +41,9 @@ public final class RockDownloader$2
           else
           {
             if (QLog.isColorLevel()) {
-              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localawbv.toString() });
+              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localawge.toString() });
             }
-            anrl.a().b(localRockDownloadInfo);
+            anvu.a().b(localRockDownloadInfo);
           }
         }
       }
@@ -57,7 +57,7 @@ public final class RockDownloader$2
     else {
       return;
     }
-    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), alpo.a(2131713870), 10002);
+    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), alud.a(2131713882), 10002);
   }
 }
 

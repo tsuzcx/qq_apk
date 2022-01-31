@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -19,7 +19,7 @@ class AppBrandLaunchManager$7
     }
     for (;;)
     {
-      QQToast.a(AppBrandLaunchManager.access$100(this.this$0), alpo.a(2131700972), 2000).a();
+      QQToast.a(AppBrandLaunchManager.access$100(this.this$0), alud.a(2131700984), 2000).a();
       return;
       QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空" + this.val$appConfig.config.toString() + " Activity=" + this.val$activity);
     }

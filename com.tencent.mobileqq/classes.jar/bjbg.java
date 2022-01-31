@@ -1,11 +1,39 @@
-class bjbg
-  implements bjbe
+import android.support.annotation.NonNull;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import org.json.JSONObject;
+
+public class bjbg
+  extends bjaq
 {
-  bjbg(bjbf parambjbf, bjbc parambjbc) {}
+  public bjbg(ReaderHomePageActivity paramReaderHomePageActivity) {}
   
-  public void a()
+  public void a(@NonNull bjap parambjap)
   {
-    this.jdField_a_of_type_Bjbc.a();
+    parambjap = parambjap.a();
+    if (parambjap == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = parambjap.getJSONObject("data").getInt("identity");
+        parambjap = this.a;
+        if (i == 2)
+        {
+          bool = true;
+          bjbj.e(parambjap, bool);
+          bjbl.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
+          return;
+        }
+      }
+      catch (Exception parambjap)
+      {
+        bjbl.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambjap);
+        return;
+      }
+      boolean bool = false;
+    }
   }
 }
 

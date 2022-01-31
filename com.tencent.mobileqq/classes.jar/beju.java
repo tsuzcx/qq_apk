@@ -1,34 +1,61 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class beju
-  implements TextWatcher
+  extends bejt
 {
-  public beju(ConfigClearableEditText paramConfigClearableEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public beju(int paramInt)
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
+    super(paramInt);
+  }
+  
+  public int a()
+  {
+    if (WebAccelerateHelper.preloadBrowserView == null)
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
+      WebAccelerateHelper.preInflaterBrowserView();
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
       }
     }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    do
     {
-      this.a.setClearButtonVisible(true);
-      return;
+      return 2;
+      if (SwiftReuseTouchWebView.b != 0) {
+        break;
+      }
+      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
+    return 2;
+    long l;
+    if (bejq.a() < 5)
+    {
+      l = System.currentTimeMillis();
+      if (System.currentTimeMillis() > bejq.a() + 10000L)
+      {
+        bejq.a();
+        bejq.b();
+        bejq.a(l);
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
+        }
+      }
     }
-    this.a.setClearButtonVisible(false);
+    for (;;)
+    {
+      return 1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + bejq.a() + " < 10s.");
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + bejq.a() + ">=" + 5 + ".");
+        }
+      }
+    }
   }
 }
 

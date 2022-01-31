@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import awbv;
+import awge;
 
 public class ReadInJoyEntityManagerFactory$VerifyEntity
-  extends awbv
+  extends awge
 {
   public String flags = "readinjoy_message_node_verify_entity";
   public String name = "";

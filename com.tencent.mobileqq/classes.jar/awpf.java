@@ -1,43 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-public final class awpf
-  implements appt
+public class awpf
+  implements Animator.AnimatorListener
 {
-  public awpf(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public awpf(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
   
-  public void a(appw paramappw)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramappw != null) {}
-    try
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845261;; i = 2130845253)
     {
-      paramappw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
       return;
     }
-    catch (Throwable paramappw) {}
   }
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return false;
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845261;; i = 2130845253)
+    {
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
+      return;
+    }
   }
   
-  public void b()
-  {
-    baiy.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

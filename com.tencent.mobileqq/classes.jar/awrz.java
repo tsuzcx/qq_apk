@@ -1,20 +1,16 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class awrz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
+  public awrz(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public awrz(SingleTouchLayout paramSingleTouchLayout) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

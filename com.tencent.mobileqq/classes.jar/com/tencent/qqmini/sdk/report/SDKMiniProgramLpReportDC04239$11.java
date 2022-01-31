@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.report;
 
-import bgya;
-import bgyg;
+import bhch;
+import bhcn;
 
 public final class SDKMiniProgramLpReportDC04239$11
   implements Runnable
 {
   public void run()
   {
-    String str = bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    bgyg.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, str, null, "drop_down", this.jdField_a_of_type_JavaLangString, this.b);
-    bgya.a().b();
+    String str = bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    bhcn.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, str, null, "drop_down", this.jdField_a_of_type_JavaLangString, this.b);
+    bhch.a().b();
   }
 }
 

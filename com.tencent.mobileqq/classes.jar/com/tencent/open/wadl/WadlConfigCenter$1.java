@@ -1,11 +1,11 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bdcs;
-import bfns;
-import bfnt;
-import bfof;
-import bkeu;
+import bdhb;
+import bfsb;
+import bfsc;
+import bfso;
+import bkjb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -13,33 +13,33 @@ import java.util.HashMap;
 public class WadlConfigCenter$1
   implements Runnable
 {
-  public WadlConfigCenter$1(bfnt parambfnt) {}
+  public WadlConfigCenter$1(bfsc parambfsc) {}
   
   public void run()
   {
-    ??? = bkeu.a();
+    ??? = bkjb.a();
     String str = null;
     if (((File)???).exists()) {
-      str = bdcs.a((File)???);
+      str = bdhb.a((File)???);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WadlConfigCenter", 2, "loadConfig content=" + str);
     }
-    synchronized (bfnt.a(this.this$0))
+    synchronized (bfsc.a(this.this$0))
     {
-      bfnt.a(this.this$0).clear();
+      bfsc.a(this.this$0).clear();
       boolean bool = TextUtils.isEmpty(str);
       if (!bool) {}
       try
       {
-        Object localObject3 = new bfof();
-        ((bfof)localObject3).a = "valid_url_regex_lists";
-        ((bfof)localObject3).a(str);
-        bfnt.a(this.this$0).put("valid_url_regex_lists", localObject3);
-        localObject3 = new bfns();
-        ((bfns)localObject3).a = "comminfo";
-        ((bfns)localObject3).a(str);
-        bfnt.a(this.this$0).put("comminfo", localObject3);
+        Object localObject3 = new bfso();
+        ((bfso)localObject3).a = "valid_url_regex_lists";
+        ((bfso)localObject3).a(str);
+        bfsc.a(this.this$0).put("valid_url_regex_lists", localObject3);
+        localObject3 = new bfsb();
+        ((bfsb)localObject3).a = "comminfo";
+        ((bfsb)localObject3).a(str);
+        bfsc.a(this.this$0).put("comminfo", localObject3);
         return;
       }
       catch (Exception localException)

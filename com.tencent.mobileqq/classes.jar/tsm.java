@@ -1,33 +1,18 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class tsm
-  implements Observer<tzm<FeedCloudRead.StGetMainPageRsp>>
+  implements MediaPlayer.OnInfoListener
 {
   tsm(tsl paramtsl) {}
   
-  public void a(@Nullable tzm<FeedCloudRead.StGetMainPageRsp> paramtzm)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramtzm != null) {}
-    try
-    {
-      if ((paramtzm.a() == 2) || (paramtzm.a() == 3))
-      {
-        tsl.a(this.a, (FeedCloudRead.StGetMainPageRsp)paramtzm.a());
-        tsl.a(this.a, (FeedCloudMeta.StUser)tsl.a(this.a).user.get());
-        tsl.a(this.a);
-        tsl.b(this.a);
-        tsl.c(this.a);
-      }
-      return;
+    if (paramInt1 == 3) {
+      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
     }
-    catch (Exception paramtzm)
-    {
-      QLog.e("QCirclePersonalTitleBar", 1, "getShareInfo error");
-    }
+    return true;
   }
 }
 

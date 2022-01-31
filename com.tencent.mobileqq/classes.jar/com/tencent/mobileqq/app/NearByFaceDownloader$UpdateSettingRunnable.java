@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import bcxl;
+import bdbu;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.util.FaceInfo;
@@ -22,10 +22,10 @@ class NearByFaceDownloader$UpdateSettingRunnable
   
   public void run()
   {
-    Object localObject1 = (bcxl)this.this$0.a.getManager(216);
-    ((bcxl)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    Object localObject1 = (bdbu)this.this$0.a.getManager(216);
+    ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a;
-    localObject2 = ((bcxl)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    localObject2 = ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
     localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
     localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))

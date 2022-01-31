@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-
-class uao
-  implements DialogInterface.OnClickListener
+public abstract interface uao
 {
-  uao(uan paramuan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).b(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-  }
+  public abstract float a();
 }
 
 

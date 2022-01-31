@@ -1,16 +1,49 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class bazy
+  extends bazx
+  implements baug
 {
-  public long a;
-  public String a;
-  public String b;
+  public baub a;
+  private bazz a;
   
-  public bazy() {}
-  
-  public bazy(long paramLong, String paramString1, String paramString2)
+  public bazy(QQAppInterface paramQQAppInterface, String paramString, bazz parambazz, baub parambaub)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_Baub = parambaub;
+    this.jdField_a_of_type_Bazz = parambazz;
+  }
+  
+  public void onResp(bavf parambavf)
+  {
+    this.jdField_a_of_type_Bazz.onResp(parambavf);
+    this.ctrl.a(this);
+  }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Bazz.onUpdateProgeress(parambave, paramLong1, paramLong2);
+  }
+  
+  protected void realCancel()
+  {
+    this.app.getNetEngine(0).b(this.jdField_a_of_type_Baub);
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreDownload.Task", 2, "start: " + this);
+    }
+    this.app.getNetEngine(0).a(this.jdField_a_of_type_Baub);
+    this.jdField_a_of_type_Baub.jdField_a_of_type_Baug = this;
+    this.jdField_a_of_type_Bazz.a(this);
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "[" + this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_Bazz + "]";
   }
 }
 

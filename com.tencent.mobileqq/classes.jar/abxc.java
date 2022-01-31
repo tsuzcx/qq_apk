@@ -1,58 +1,85 @@
-import android.content.Intent;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Locale;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxc
-  implements bhqd
 {
-  public abxc(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static abwx a(@NonNull Activity paramActivity, int paramInt, String paramString)
   {
-    if (AddAccountActivity.a(this.a)) {
-      return;
+    return a(paramActivity, paramInt, paramString, null);
+  }
+  
+  public static abwx a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    String str = null;
+    abxe localabxe = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
     }
-    if (paramInt == 0)
+    if (paramActivity == null)
     {
-      azmj.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
-      paramView = null;
-      if (this.a.a != null) {
-        paramView = this.a.a.getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label292;
-      }
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
+      return null;
     }
-    label292:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
+    }
+    Object localObject = localabxe;
+    switch (paramInt)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
+    default: 
+      localObject = localabxe;
+    case 2: 
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      while (localObject == null)
       {
-        AddAccountActivity.c(this.a, true);
-        AddAccountActivity.a(this.a).dismiss();
-        return;
-        if (paramInt == 1)
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
+        return localObject;
+        if (paramBundle == null) {}
+        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
         {
-          azmj.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
-          azmj.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
-          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("login_from_account_change", bool);
-          this.a.startActivity(paramView);
+          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+          return null;
         }
+        localObject = new abyx(paramActivity, paramInt, paramString, paramBundle);
+        continue;
+        localabxe = new abxe(paramActivity, paramInt, paramString);
+        if (paramBundle == null) {
+          break label305;
+        }
+        localObject = paramBundle.getString("sdkVersion");
+        str = paramBundle.getString("pkgName");
+        paramActivity = paramBundle.getString("signature");
+        paramBundle = str;
       }
     }
+    for (;;)
+    {
+      ((abxe)localabxe).a((String)localObject, paramBundle, paramActivity);
+      localObject = localabxe;
+      break;
+      localObject = new abxu(paramActivity, paramInt, paramString);
+      break;
+      ((abwx)localObject).a();
+      return localObject;
+      label305:
+      paramBundle = null;
+      localObject = null;
+      paramActivity = str;
+    }
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 

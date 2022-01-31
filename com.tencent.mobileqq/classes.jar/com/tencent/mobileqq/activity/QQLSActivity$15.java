@@ -28,7 +28,7 @@ class QQLSActivity$15
         }
         QQLSActivity.a(this.this$0, 1);
       }
-      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772225));
+      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772226));
       QQLSActivity.a(this.this$0).setFillAfter(true);
       if (QLog.isColorLevel()) {
         QLog.d("QQLSActivity", 2, "registerScreenListener");

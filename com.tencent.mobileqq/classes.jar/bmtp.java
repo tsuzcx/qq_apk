@@ -1,18 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
-import java.util.ArrayList;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.Comparator;
 
 public class bmtp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparator<bmri>
 {
-  public bmtp(SecondDemoView paramSecondDemoView) {}
+  public bmtp(DoodleLayout paramDoodleLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(bmri parambmri1, bmri parambmri2)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidate();
+    return parambmri2.i_() - parambmri1.i_();
   }
 }
 

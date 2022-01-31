@@ -1,48 +1,29 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XEditTextEx;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class awpj
-  implements TextWatcher
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  public awpj(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public awpj(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (baiy.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
+    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690363, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
-    }
-    paramEditable = awor.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
-    if ((TextUtils.isEmpty(paramEditable)) || (TextUtils.isEmpty(paramEditable.trim()))) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
-    }
-    for (;;)
-    {
-      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
-        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
+      {
+        this.a.a = true;
+        PersonalityLabelGalleryActivity.a(this.a);
+      }
     }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
   }
 }
 

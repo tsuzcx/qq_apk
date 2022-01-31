@@ -1,26 +1,20 @@
 class bmeq
-  implements bmve<Boolean, bmvj>
 {
-  bmeq(bmeo parambmeo) {}
+  bmdi jdField_a_of_type_Bmdi;
+  bmdl jdField_a_of_type_Bmdl;
   
-  public Void a(Boolean paramBoolean, bmvj parambmvj)
+  bmeq(bmdm parambmdm, bmdl parambmdl)
   {
-    if ((!paramBoolean.booleanValue()) || (parambmvj == null) || (parambmvj.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
-    }
-    wsv.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(parambmvj.jdField_a_of_type_Int));
-    if (parambmvj.jdField_a_of_type_Int >= this.a.a.length)
-    {
-      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(parambmvj.jdField_a_of_type_Int) });
-      return null;
-    }
-    wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(parambmvj.jdField_a_of_type_Int));
-    this.a.a[parambmvj.jdField_a_of_type_Int] = bmer.a(this.a.a[parambmvj.jdField_a_of_type_Int], parambmvj.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.a.a[parambmvj.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = parambmvj.jdField_a_of_type_JavaLangString;
-    this.a.j();
-    return null;
+    this.jdField_a_of_type_Bmdi = bmdo.a(parambmdm);
+    this.jdField_a_of_type_Bmdl = parambmdl;
+  }
+  
+  void a(bmdn parambmdn, bmdk parambmdk)
+  {
+    bmdl localbmdl = bmep.a(parambmdk);
+    this.jdField_a_of_type_Bmdl = bmep.a(this.jdField_a_of_type_Bmdl, localbmdl);
+    this.jdField_a_of_type_Bmdi.a(parambmdn, parambmdk);
+    this.jdField_a_of_type_Bmdl = localbmdl;
   }
 }
 

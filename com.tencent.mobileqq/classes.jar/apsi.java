@@ -1,94 +1,120 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.SparseIntArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class apsi
-  extends aprq
 {
-  public static int a(QQAppInterface paramQQAppInterface, apsm paramapsm)
+  public static int a()
   {
-    if (paramapsm == null) {
-      return -1;
+    int j = apsj.a().a(2).b();
+    int i = j;
+    if (j < bamd.d.length) {
+      i = bamd.d.length;
     }
-    int i = paramapsm.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
-    }
-    switch (i)
-    {
-    case 5: 
-    default: 
-      return -1;
-    case 4: 
-      return 4;
-    case 7: 
-      return 1;
-    case 9: 
-      return 5;
-    case 8: 
-      return 3;
-    case 6: 
-      return a(paramQQAppInterface, paramapsm, false);
-    case 10: 
-      return a(paramQQAppInterface, paramapsm, true);
-    }
-    return 13;
+    return i;
   }
   
-  private static int a(QQAppInterface paramQQAppInterface, apsm paramapsm, boolean paramBoolean)
+  public static int a(int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramapsm == null))
+    int j = apsj.a().a(2).a(paramInt);
+    int i = j;
+    if (j == -1)
     {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
-      return -1;
-    }
-    EmoticonPackage localEmoticonPackage = paramapsm.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-    if (localEmoticonPackage == null)
-    {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramapsm.jdField_a_of_type_Int);
-      return -1;
-    }
-    boolean bool = apro.a(localEmoticonPackage);
-    int i = localEmoticonPackage.status;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
-    }
-    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
-    {
-      if (i == 2) {
-        return 12;
+      if ((paramInt >= 0) && (paramInt < bamd.d.length)) {
+        i = bamd.d[paramInt];
       }
-      return 7;
     }
-    if (bool)
-    {
-      if (paramBoolean) {
-        return 9;
-      }
-      return 8;
+    else {
+      return i;
     }
-    if (i != 2) {
-      return 7;
-    }
-    if (paramBoolean) {
-      return 2;
-    }
-    return 6;
+    QLog.d("EmojiUtil", 1, new Object[] { "unrecognized localId:", Integer.valueOf(paramInt) });
+    return j;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
+  public static Drawable a(int paramInt)
   {
-    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
-      return false;
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("invaid emoji static index: " + paramInt);
     }
-    int i = ((alxl)paramQQAppInterface.a(13)).g();
-    if (paramEmoticonPackage.mobileFeetype == 4) {
-      return (i == 1) || (i == 3);
+    Object localObject = BaseApplicationImpl.getContext().getResources();
+    if (paramInt >= 1000) {
+      localObject = banh.b((Resources)localObject, paramInt);
     }
-    if (paramEmoticonPackage.mobileFeetype == 5) {
-      return i == 3;
+    Drawable localDrawable;
+    do
+    {
+      return localObject;
+      if (paramInt < bamd.jdField_b_of_type_Int)
+      {
+        paramInt = 2130839808 + paramInt;
+        if (BaseApplicationImpl.sImageCache != null) {
+          return banh.a((Resources)localObject, paramInt);
+        }
+        return ((Resources)localObject).getDrawable(paramInt);
+      }
+      localDrawable = apsj.a().a(2).a(paramInt);
+      localObject = localDrawable;
+    } while (!QLog.isColorLevel());
+    QLog.d("EmojiUtil", 2, "getEmojiDrawable in new way");
+    return localDrawable;
+  }
+  
+  public static String a(int paramInt)
+  {
+    String str2 = apsj.a().a(2).a(paramInt);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      if ((paramInt >= 0) && (paramInt < bamd.jdField_b_of_type_ArrayOfJavaLangString.length)) {
+        str1 = bamd.jdField_b_of_type_ArrayOfJavaLangString[paramInt];
+      }
     }
-    return true;
+    else {
+      return str1;
+    }
+    return "未知";
+  }
+  
+  public static ArrayList<Integer> a()
+  {
+    ArrayList localArrayList = apsj.a().a(2).a();
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      return localArrayList;
+    }
+    localArrayList = new ArrayList(apub.jdField_b_of_type_Int);
+    int i = 0;
+    while (i < apub.jdField_b_of_type_Int)
+    {
+      localArrayList.add(Integer.valueOf(i));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    int j = apsj.a().a(2).a();
+    int i = j;
+    if (j <= 0) {
+      i = bamd.d.length - 1;
+    }
+    return (paramInt >= 0) && (paramInt <= i);
+  }
+  
+  public static int b(int paramInt)
+  {
+    int j = apsj.a().a(2).b(paramInt);
+    int i = j;
+    if (j == -1) {
+      i = bamd.a.get(paramInt, -1);
+    }
+    return i;
   }
 }
 

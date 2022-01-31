@@ -1,18 +1,12 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
 public class aost
-  extends aofy<aoss>
+  extends aokh<aoss>
 {
-  public static aoss a()
-  {
-    return (aoss)aogj.a().a(342);
-  }
-  
   public int a()
   {
-    return 342;
+    return 484;
   }
   
   @NonNull
@@ -22,10 +16,10 @@ public class aost
   }
   
   @Nullable
-  public aoss a(aogf[] paramArrayOfaogf)
+  public aoss a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aoss.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoss.a(paramArrayOfaoko);
     }
     return null;
   }
@@ -35,10 +29,7 @@ public class aost
     return aoss.class;
   }
   
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
-  }
+  public void a(int paramInt) {}
   
   public void a(aoss paramaoss) {}
   

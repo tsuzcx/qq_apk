@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgnr;
+import bgry;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener;
 
 class OskReliableVideoPlayerImpl$6
   implements IMediaPlayer.OnVideoSizeChangedListener
 {
-  OskReliableVideoPlayerImpl$6(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgnr parambgnr) {}
+  OskReliableVideoPlayerImpl$6(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgry parambgry) {}
   
   public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {

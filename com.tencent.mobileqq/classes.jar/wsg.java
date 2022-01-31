@@ -1,17 +1,80 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wsg
-  implements bhtj
+  extends wss
 {
-  public wsg(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  private wsi jdField_a_of_type_Wsi;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public wsg(wsi paramwsi)
   {
-    if (StoryHomeHorizontalListView.a(this.a) != null) {
-      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    this.jdField_a_of_type_Wsi = paramwsi;
+  }
+  
+  public String a()
+  {
+    return "GetUserGuideInfoStep";
+  }
+  
+  public void a()
+  {
+    wxe.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
+    wsj localwsj = new wsj();
+    urp.a().a(localwsj, new wsh(this));
+  }
+  
+  public void a(@NonNull wsj paramwsj, @Nullable wsk paramwsk, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wxe.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    if (b())
+    {
+      wxe.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
+      d();
+      return;
     }
-    wsv.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
-    this.a.a();
+    if (paramErrorMessage.isFail())
+    {
+      wxe.c("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep is failed:%s", paramErrorMessage);
+      b(paramErrorMessage);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramwsk));
+    d();
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

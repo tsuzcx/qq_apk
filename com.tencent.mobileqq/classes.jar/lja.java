@@ -2,9 +2,9 @@ import com.tencent.av.app.VideoAppInterface;
 
 public class lja
 {
-  private alko[] a = new alko[4];
+  private alpd[] a = new alpd[4];
   
-  private alko b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  private alpd b(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     Object localObject = null;
     long l1 = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class lja
     }
   }
   
-  public alko a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public alpd a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     Object localObject = this.a[paramInt];
     if (localObject != null) {
@@ -36,9 +36,9 @@ public class lja
     }
     synchronized (this.a)
     {
-      alko localalko = this.a[paramInt];
-      localObject = localalko;
-      if (localalko == null)
+      alpd localalpd = this.a[paramInt];
+      localObject = localalpd;
+      if (localalpd == null)
       {
         paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
         localObject = paramVideoAppInterface;

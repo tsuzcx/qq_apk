@@ -1,28 +1,57 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"DATE_FORMAT", "", "LOAD_STATUS_FALSE", "", "LOAD_STATUS_NONE", "LOAD_STATUS_TRUE", "MODE_TYPE_DEFAULT", "MODE_TYPE_INVALID", "MODE_TYPE_SIMPLE", "MODE_TYPE_STUDY", "getCurMode", "isSimple", "", "isStudy", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class azwi
+public class azwi
+  extends azus
 {
-  public static final int a()
+  public int k;
+  
+  public azwi()
   {
-    if (azib.b()) {
-      return 1;
-    }
-    if (azwu.a()) {
-      return 2;
-    }
-    return 0;
+    this.a = "voice";
   }
   
-  public static final int a(boolean paramBoolean1, boolean paramBoolean2)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (paramBoolean1) {
-      return 1;
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "voice");
+    paramXmlSerializer.attribute(null, "length", String.valueOf(this.k));
+    paramXmlSerializer.endTag(null, "voice");
+  }
+  
+  public boolean a(azwj paramazwj)
+  {
+    paramazwj = paramazwj.a("length");
+    if (!TextUtils.isEmpty(paramazwj)) {
+      this.k = Integer.parseInt(paramazwj);
     }
-    if (paramBoolean2) {
-      return 2;
-    }
-    return 0;
+    return true;
   }
 }
 

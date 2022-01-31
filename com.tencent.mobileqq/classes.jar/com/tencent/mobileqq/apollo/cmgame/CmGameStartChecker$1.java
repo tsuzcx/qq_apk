@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aknv;
-import akro;
-import alep;
-import aley;
-import algi;
+import aksk;
+import akwd;
+import alje;
+import aljn;
+import alkx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
@@ -30,25 +30,25 @@ class CmGameStartChecker$1
     }
     if (CmGameStartChecker.a(this.this$0) != null)
     {
-      localObject = (aknv)CmGameStartChecker.a(this.this$0).get();
+      localObject = (aksk)CmGameStartChecker.a(this.this$0).get();
       if (localObject != null)
       {
         QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameCheckStart startCheckParam:" + CmGameStartChecker.a(this.this$0));
-        ((aknv)localObject).onGameCheckStart(CmGameStartChecker.a(this.this$0));
+        ((aksk)localObject).onGameCheckStart(CmGameStartChecker.a(this.this$0));
       }
     }
-    Object localObject = new algi(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId) + "/" + "main.js.sig", ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
-    boolean bool = aley.a(CmGameStartChecker.a(this.this$0).isWhiteUsr, CmGameStartChecker.a(this.this$0).gameId);
-    akro.a(new Object[] { "[verifyRes], isNeedGameVerify:", Boolean.valueOf(bool) });
-    if ((!bool) || (CmGameStartChecker.a(this.this$0).mGameType != 1) || (((algi)localObject).a(0)))
+    Object localObject = new alkx(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId) + "/" + "main.js.sig", ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
+    boolean bool = aljn.a(CmGameStartChecker.a(this.this$0).isWhiteUsr, CmGameStartChecker.a(this.this$0).gameId);
+    akwd.a(new Object[] { "[verifyRes], isNeedGameVerify:", Boolean.valueOf(bool) });
+    if ((!bool) || (CmGameStartChecker.a(this.this$0).mGameType != 1) || (((alkx)localObject).a(0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.CmGameStartChecker", 2, new Object[] { "verify pass startCheckParam:", CmGameStartChecker.a(this.this$0) });
       }
       localObject = new CmGameInitParams();
       ((CmGameInitParams)localObject).mGamePath = ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId);
-      ((CmGameInitParams)localObject).mServerIp = alep.a();
-      ((CmGameInitParams)localObject).mPort = alep.a();
+      ((CmGameInitParams)localObject).mServerIp = alje.a();
+      ((CmGameInitParams)localObject).mPort = alje.a();
       ((CmGameInitParams)localObject).mVersion = CmGameStartChecker.a(this.this$0).version;
       ((CmGameInitParams)localObject).mIsMaster = CmGameStartChecker.a(this.this$0).isCreator;
       ((CmGameInitParams)localObject).mGameMode = CmGameStartChecker.a(this.this$0).gameMode;
@@ -93,12 +93,12 @@ class CmGameStartChecker$1
       ((CmGameInitParams)localObject).transInfo = CmGameStartChecker.a(this.this$0).transInfo;
       if (CmGameStartChecker.a(this.this$0) != null)
       {
-        aknv localaknv = (aknv)CmGameStartChecker.a(this.this$0).get();
-        if (localaknv != null)
+        aksk localaksk = (aksk)CmGameStartChecker.a(this.this$0).get();
+        if (localaksk != null)
         {
           QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameCheckFinish startCheckParam:" + CmGameStartChecker.a(this.this$0));
-          akro.a(new Object[] { "[verifyRes], done" });
-          localaknv.onVerifyGameFinish(0L, CmGameStartChecker.a(this.this$0), (CmGameInitParams)localObject);
+          akwd.a(new Object[] { "[verifyRes], done" });
+          localaksk.onVerifyGameFinish(0L, CmGameStartChecker.a(this.this$0), (CmGameInitParams)localObject);
         }
       }
       ApolloGameStateMachine.a().a(2, "ApolloManager.startGame");
@@ -114,8 +114,8 @@ class CmGameStartChecker$1
     }
     QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "verify lua fail and delete local res startCheckParam=", CmGameStartChecker.a(this.this$0) });
     CmGameStartChecker.a(this.this$0, -13L);
-    bdcs.a(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId));
-    akro.a(ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
+    bdhb.a(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId));
+    akwd.a(ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
   }
 }
 

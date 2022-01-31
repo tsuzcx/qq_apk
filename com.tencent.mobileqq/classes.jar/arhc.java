@@ -1,37 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import com.tencent.kwstudio.office.base.ILog;
+import com.tencent.qphone.base.util.QLog;
 
-class arhc
-  implements arej
+public final class arhc
+  implements ILog
 {
-  arhc(argq paramargq) {}
-  
-  public void a()
+  public void d(String paramString1, String paramString2)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Ardq.a();
-    bbpe localbbpe = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(argq.a(this.a))) && (localbbpe.a != null)) {
-      argq.a(this.a, localbbpe.a.toString());
-    }
-    bboe localbboe = new bboe(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localbbpe.b == 3) || (localbbpe.b == 2)) && (localbbpe.a != null)) {
-      localbboe.a(localbbpe.a);
-    }
-    localFileManagerEntity.status = 2;
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
   }
   
-  public void b()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    Object localObject = this.a.jdField_a_of_type_Ardq.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(argq.a(this.a)))
-    {
-      localTroopFileTransferManager.a(UUID.fromString(argq.a(this.a)));
-      argq.a(this.a, (bbpe)localObject);
-    }
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
   }
 }
 

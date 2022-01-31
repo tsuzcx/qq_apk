@@ -1,32 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class bcck
-  implements View.OnClickListener
+public class bcck
+  extends CountDownTimer
 {
-  bcck(bccj parambccj) {}
-  
-  public void onClick(View paramView)
+  public bcck(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    paramView = (BaseActivity)bccj.a(this.a).get();
-    if (paramView != null)
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.b())
     {
-      bcgk.a(bccj.a(this.a), bccj.a(this.a).a);
-      Object localObject1 = bckj.a();
-      Object localObject2 = ((bckj)localObject1).a("troop_list_homework");
-      bckk localbckk = new bckk();
-      localbckk.a = bccj.b(this.a).a;
-      localbckk.c = "aio";
-      localObject1 = ((bckj)localObject1).a((String)localObject2, localbckk);
-      localObject2 = new Intent(paramView, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      paramView.startActivity((Intent)localObject2);
-      bdaj.a(bccj.b(this.a), bccj.c(this.a).a, "homework", "AioSee_Clk", 0, 0, new String[] { bccj.d(this.a).a, "", "", bdaj.a(bccj.c(this.a), bccj.e(this.a).a) });
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      {
+        bdjz localbdjz = bdgm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697879).setNegativeButton(2131697915, new bccm(this)).setPositiveButton(2131697907, new bccl(this));
+        localbdjz.setCancelable(false);
+        localbdjz.show();
+      }
+    }
+  }
+  
+  public void onTick(long paramLong)
+  {
+    int i = (int)(paramLong / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+    }
+    if (i == 5) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697871);
     }
   }
 }

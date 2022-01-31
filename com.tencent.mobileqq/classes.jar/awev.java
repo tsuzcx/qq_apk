@@ -1,54 +1,42 @@
+import mqq.app.AppRuntime.Status;
+
 public class awev
-  extends aweu
 {
-  public aweu a()
-  {
-    return this;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public AppRuntime.Status a;
+  public int b;
+  public String b;
   
-  public void a(int paramInt)
+  public awev(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
     this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void a(String paramString)
+  public awev(AppRuntime.Status paramStatus)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = awer.a(paramStatus);
+    this.jdField_a_of_type_JavaLangString = awer.a(paramStatus);
   }
   
-  public void b(int paramInt)
+  public static String a(AppRuntime.Status paramStatus, long paramLong)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    return paramStatus.getValue() + paramLong + "";
   }
   
-  public void b(long paramLong)
+  public static boolean a(long paramLong)
   {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    return paramLong == 1000L;
   }
 }
 

@@ -1,57 +1,73 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aplg
-  implements aplc
+  extends apld
 {
-  private int jdField_a_of_type_Int = -16777216;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  
-  public aplg(XListView paramXListView)
+  public aplg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    super("qq.android.hotfriend.res", paramQQAppInterface);
   }
   
-  public View a(int paramInt)
+  public int a()
   {
-    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
-    if (localView == null) {}
-    do
-    {
-      return null;
-      localView.setPressed(false);
-      localView.setDrawingCacheEnabled(true);
-    } while (localView.getDrawingCache() == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
-    localView.setDrawingCacheEnabled(false);
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
+    return 10042;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return HotFriendResData.class;
+  }
+  
+  public String a()
+  {
+    return "HotFriendResHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    try
+    {
+      String str = autp.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        bdhb.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    super.a(paramString);
   }
   
-  public void a(View paramView)
+  public boolean a()
   {
-    ((ImageView)paramView).setImageDrawable(null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    return true;
   }
   
-  public void a(View paramView, Point paramPoint1, Point paramPoint2) {}
-  
-  public void f(int paramInt)
+  public String b()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return null;
   }
 }
 

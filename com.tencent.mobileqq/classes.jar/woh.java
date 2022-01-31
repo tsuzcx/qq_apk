@@ -1,76 +1,35 @@
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class woh
-  extends QQUIEventReceiver<wou, urj>
-  implements woq
+  extends woi<BannerFeedItem>
 {
-  protected wos a;
-  
-  public woh(wou paramwou)
+  public woh(@NonNull BannerFeedItem paramBannerFeedItem)
   {
-    super(paramwou);
+    super(paramBannerFeedItem);
   }
   
-  public Object a()
+  public List<StoryVideoItem> a()
   {
-    return null;
+    return new ArrayList(0);
   }
   
-  public String a()
+  public void a() {}
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    return "ReportWatchVideoListStep";
-  }
-  
-  public void a()
-  {
-    uht.a().registerSubscriber(this);
-    ((urh)urr.a(13)).c();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(wor paramwor) {}
-  
-  public void a(wos paramwos)
-  {
-    this.a = paramwos;
-  }
-  
-  public void a(wou paramwou, urj paramurj)
-  {
-    uht.a().unRegisterSubscriber(this);
-    if (this.a != null) {
-      this.a.a(a());
-    }
-    for (;;)
-    {
-      wsv.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
-      return;
-      wsv.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return urj.class;
-  }
-  
-  public void b()
-  {
-    wsv.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
-  }
-  
-  public void c()
-  {
-    urh localurh = (urh)urr.a(13);
-    uht.a().unRegisterSubscriber(this);
-    localurh.d();
+    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
+    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
+    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    return true;
   }
 }
 

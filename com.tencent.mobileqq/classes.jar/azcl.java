@@ -1,43 +1,36 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import java.util.Map;
 
 public class azcl
-  extends AsyncTask<Void, Void, Integer>
 {
-  public azcl(SVHwEncoder.HwEncode paramHwEncode) {}
+  public int a;
+  public long a;
+  public String a;
+  public Map<String, String> a;
+  public boolean a;
+  public byte[] a;
+  public long b;
+  public boolean b;
   
-  protected Integer a(Void... paramVarArgs)
+  public azcl(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bdcs.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bdcs.b(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public azcl(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
 }
 

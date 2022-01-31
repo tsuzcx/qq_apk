@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
 
-public final class aenp
-  implements Parcelable.Creator<ForwardUtils.Section_Pic>
+public class aenp
+  implements aenf
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  public aenp(PositionActivatePage paramPositionActivatePage) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    if (paramInt > 0) {
+      this.a.a.setEnabled(true);
+    }
+    while (paramInt > 1)
+    {
+      this.a.a.setText(2131689597);
+      return;
+      this.a.a.setEnabled(false);
+    }
+    this.a.a.setText(2131689598);
   }
 }
 

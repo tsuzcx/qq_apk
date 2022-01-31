@@ -1,37 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.BindGroupActivity;
+import java.util.List;
 
 public class bfcy
-  implements DialogInterface.OnClickListener
+  extends bfhp
 {
-  public bfcy(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bfcy(BindGroupActivity paramBindGroupActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    if (this.a.jdField_a_of_type_Bdfq == paramDialogInterface)
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      if (paramInt != 1) {
-        break label99;
+      localObject = (bfcz)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      localObject = (bfcx)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bfcx)localObject).b);
+      paramView.jdField_a_of_type_JavaLangString = ((bfcx)localObject).c;
+      Bitmap localBitmap = bfhv.a().a(((bfcx)localObject).c);
+      if (localBitmap == null) {
+        break;
       }
-      paramDialogInterface = new Intent(this.a.getActivity(), LoginActivity.class);
-      paramDialogInterface.putExtra("key_params", this.a.jdField_a_of_type_AndroidOsBundle);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("fromThirdAppByOpenSDK", true);
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.getActivity().startActivity(paramDialogInterface);
-      this.a.getActivity().finish();
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      return paramViewGroup;
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562628, paramViewGroup, false);
+      paramView = new bfcz();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131365912));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378468));
+      paramViewGroup.setTag(paramView);
     }
-    label99:
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.getActivity().setResult(0);
-    this.a.getActivity().finish();
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840313);
+    bfhv.a().a(((bfcx)localObject).c, this.a);
+    return paramViewGroup;
   }
 }
 

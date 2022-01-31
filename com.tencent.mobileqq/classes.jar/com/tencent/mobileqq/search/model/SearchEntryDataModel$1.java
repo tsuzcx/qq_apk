@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.model;
 
-import ayks;
+import aypb;
 
 public class SearchEntryDataModel$1
   implements Runnable
 {
-  public SearchEntryDataModel$1(ayks paramayks) {}
+  public SearchEntryDataModel$1(aypb paramaypb) {}
   
   /* Error */
   public void run()
@@ -28,8 +28,8 @@ public class SearchEntryDataModel$1
     //   23: aload 4
     //   25: astore_1
     //   26: aload_0
-    //   27: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   30: getfield 37	ayks:jdField_a_of_type_Boolean	Z
+    //   27: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   30: getfield 37	aypb:jdField_a_of_type_Boolean	Z
     //   33: ifne +138 -> 171
     //   36: aload_3
     //   37: astore_2
@@ -47,14 +47,14 @@ public class SearchEntryDataModel$1
     //   64: ldc 58
     //   66: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_0
-    //   70: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   73: getfield 61	ayks:jdField_a_of_type_Int	I
+    //   70: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   73: getfield 61	aypb:jdField_a_of_type_Int	I
     //   76: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   79: ldc 58
     //   81: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: aload_0
-    //   85: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   88: getfield 67	ayks:b	I
+    //   85: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   88: getfield 67	aypb:b	I
     //   91: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   94: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   97: iconst_0
@@ -73,8 +73,8 @@ public class SearchEntryDataModel$1
     //   116: aload_3
     //   117: astore_1
     //   118: aload_0
-    //   119: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   122: getfield 87	ayks:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   119: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   122: getfield 87	aypb:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   125: astore 4
     //   127: aload_3
     //   128: astore_2
@@ -83,13 +83,13 @@ public class SearchEntryDataModel$1
     //   131: aload 4
     //   133: monitorenter
     //   134: aload_0
-    //   135: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   138: getfield 90	ayks:jdField_a_of_type_ArrayOfByte	[B
+    //   135: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   138: getfield 90	aypb:jdField_a_of_type_ArrayOfByte	[B
     //   141: ifnull +18 -> 159
     //   144: aload_3
     //   145: aload_0
-    //   146: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   149: getfield 90	ayks:jdField_a_of_type_ArrayOfByte	[B
+    //   146: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   149: getfield 90	aypb:jdField_a_of_type_ArrayOfByte	[B
     //   152: invokevirtual 96	java/io/FileOutputStream:write	([B)V
     //   155: aload_3
     //   156: invokevirtual 99	java/io/FileOutputStream:flush	()V
@@ -116,14 +116,14 @@ public class SearchEntryDataModel$1
     //   199: ldc 58
     //   201: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: aload_0
-    //   205: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   208: getfield 61	ayks:jdField_a_of_type_Int	I
+    //   205: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   208: getfield 61	aypb:jdField_a_of_type_Int	I
     //   211: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   214: ldc 58
     //   216: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: aload_0
-    //   220: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Layks;
-    //   223: getfield 67	ayks:b	I
+    //   220: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Laypb;
+    //   223: getfield 67	aypb:b	I
     //   226: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   229: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   232: iconst_0

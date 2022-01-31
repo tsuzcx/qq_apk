@@ -1,23 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.drawable.Drawable;
 
-class bddm
-  implements View.OnClickListener
+public abstract interface bddm
 {
-  bddm(bddb parambddb) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((bddb.a(this.a) != null) && (bddb.a(this.a).isShowing())) {
-      bddb.a(this.a).dismiss();
-    }
-    bddb.a(this.a);
-  }
+  public abstract void a(String paramString, boolean paramBoolean, Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bddm
  * JD-Core Version:    0.7.0.1
  */

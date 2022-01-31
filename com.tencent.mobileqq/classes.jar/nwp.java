@@ -1,7 +1,7 @@
 import com.tencent.biz.widgets.TabLayout;
 
 class nwp
-  implements bhtl
+  implements bhxs
 {
   nwp(nwm paramnwm) {}
   

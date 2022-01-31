@@ -47,7 +47,7 @@ public class oxo
   
   private static boolean a()
   {
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, true);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, true);
     if (localSharedPreferences == null)
     {
       QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "isReinstallDelSucc  failed");
@@ -68,7 +68,7 @@ public class oxo
       try
       {
         jdField_a_of_type_Int = 1;
-        bdcs.a(paramString, c, false);
+        bdhb.a(paramString, c, false);
         jdField_a_of_type_Int = 0;
         QLog.i("viola.ReadInjoyWebRenderSoLoader", 1, "succeed to unzip so.");
         if (jdField_a_of_type_Int == 0) {
@@ -98,7 +98,7 @@ public class oxo
   
   private static void c()
   {
-    Object localObject = bjxj.a(ors.a(), true, true);
+    Object localObject = bkbq.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
@@ -107,7 +107,7 @@ public class oxo
     QLog.d("Q.readinjoy.tt_report", 1, "delSoReinstall sp update to true");
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putBoolean(b, true);
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
   
   private static boolean c(String paramString)
@@ -120,7 +120,7 @@ public class oxo
       try
       {
         String str = a();
-        bdcs.d(str + paramString);
+        bdhb.d(str + paramString);
       }
       catch (Throwable localThrowable)
       {
@@ -145,7 +145,7 @@ public class oxo
   
   private static void d()
   {
-    Object localObject = bjxj.a(ors.a(), true, true);
+    Object localObject = bkbq.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
@@ -153,7 +153,7 @@ public class oxo
     }
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putBoolean(jdField_a_of_type_JavaLangString, true);
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
 }
 

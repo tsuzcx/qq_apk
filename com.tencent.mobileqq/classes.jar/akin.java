@@ -1,29 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.Comparator;
+import java.util.HashMap;
 
 class akin
-  implements DialogInterface.OnClickListener
+  implements Comparator<awge>
 {
-  akin(akim paramakim) {}
+  akin(akim paramakim, HashMap paramHashMap) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(awge paramawge1, awge paramawge2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(akim.a(this.a), 2, "On Click Left Button! ");
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
     }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
+    if (l1 > l2) {
+      return 1;
     }
-    for (;;)
-    {
-      akim.a(this.a, 1);
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(akim.a(this.a), 4, "Call back object is null!");
-      }
-    }
+    return 0;
   }
 }
 

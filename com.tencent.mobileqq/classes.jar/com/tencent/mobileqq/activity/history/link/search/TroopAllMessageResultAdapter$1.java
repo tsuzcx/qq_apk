@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import ahzs;
+import aieh;
 import android.os.Bundle;
 import android.os.Message;
-import bdcw;
-import bhoe;
+import bdhf;
+import bhsl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TroopAllMessageResultAdapter$1
   implements Runnable
 {
-  public TroopAllMessageResultAdapter$1(ahzs paramahzs, String paramString, int paramInt, long paramLong) {}
+  public TroopAllMessageResultAdapter$1(aieh paramaieh, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -27,10 +27,10 @@ public class TroopAllMessageResultAdapter$1
     Object localObject4;
     if (this.jdField_a_of_type_Int == 1)
     {
-      ??? = ahzs.a(this.this$0).a().a(ahzs.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-      bdcw.a(ahzs.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = aieh.a(this.this$0).a().a(aieh.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+      bdhf.a(aieh.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
-      localObject4 = ahzs.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
+      localObject4 = aieh.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
@@ -39,17 +39,17 @@ public class TroopAllMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (ahzs.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (aieh.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
         {
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localahzs = this.this$0;
+          localaieh = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            ahzs.a(localahzs, bool);
-            ahzs.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = ahzs.a(this.this$0).obtainMessage(2, localObject2);
+            aieh.a(localaieh, bool);
+            aieh.a(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = aieh.a(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -64,7 +64,7 @@ public class TroopAllMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 2) {
             break;
           }
-          ??? = ahzs.c(this.this$0).a().a(ahzs.b(this.this$0), "");
+          ??? = aieh.c(this.this$0).a().a(aieh.b(this.this$0), "");
           break;
         }
         bool = false;
@@ -72,13 +72,13 @@ public class TroopAllMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        ahzs localahzs = this.this$0;
+        aieh localaieh = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          ahzs.b(localahzs, bool);
-          ahzs.b(this.this$0, (ChatHistorySearchData)localObject4);
-          localObject2 = ahzs.b(this.this$0).obtainMessage(2, localObject2);
+          aieh.b(localaieh, bool);
+          aieh.b(this.this$0, (ChatHistorySearchData)localObject4);
+          localObject2 = aieh.b(this.this$0).obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);

@@ -2,32 +2,32 @@ package com.tencent.biz.subscribe.utils;
 
 import android.text.TextUtils;
 import com.tencent.util.Pair;
-import yho;
-import yhs;
+import ymb;
+import ymf;
 
 public class SubscribeDraftManager$5
   implements Runnable
 {
-  public SubscribeDraftManager$5(yho paramyho, String paramString1, String paramString2, yhs paramyhs) {}
+  public SubscribeDraftManager$5(ymb paramymb, String paramString1, String paramString2, ymf paramymf) {}
   
   public void run()
   {
-    Object localObject = yho.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = ymb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = yho.a(this.this$0, (String)((Pair)localObject).first);
+      localObject = ymb.a(this.this$0, (String)((Pair)localObject).first);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label74;
       }
-      if (this.jdField_a_of_type_Yhs != null) {
-        this.jdField_a_of_type_Yhs.a(6, true, this.b, new Object[] { localObject });
+      if (this.jdField_a_of_type_Ymf != null) {
+        this.jdField_a_of_type_Ymf.a(6, true, this.b, new Object[] { localObject });
       }
     }
     label74:
-    while (this.jdField_a_of_type_Yhs == null) {
+    while (this.jdField_a_of_type_Ymf == null) {
       return;
     }
-    this.jdField_a_of_type_Yhs.a(6, false, this.b, null);
+    this.jdField_a_of_type_Ymf.a(6, false, this.b, null);
   }
 }
 

@@ -1,18 +1,22 @@
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-public class tse
-  implements yfu<Object>
+class tse
+  implements uco
 {
-  public tse(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  tse(tsc paramtsc) {}
   
-  public void a(Object... paramVarArgs)
+  public void a()
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4))
-    {
-      QLog.d("QCircleFolderFragmentsPart", 1, "preload requestTabData onReceive: dispatch Success:" + (Boolean)paramVarArgs[0] + " | retCode:" + (Long)paramVarArgs[1] + " | retMessage:" + (String)paramVarArgs[2]);
-      QCircleFolderFragmentsPart.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetBusiInfoRsp)paramVarArgs[3]);
+    if (tsc.a(this.a) != null) {
+      tsc.a(this.a, tqr.a(tsc.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
+    }
+  }
+  
+  public void b()
+  {
+    if (tsc.a(this.a) != null) {
+      tsc.a(this.a, tqr.a(tsc.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
     }
   }
 }

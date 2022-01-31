@@ -1,50 +1,53 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
 
 public class bjsu
-  extends bjts
+  extends bjso
 {
-  public static bjsu a;
+  public static final String a = bjsu.class.getName();
+  public int b = -1;
   
-  public bjsu()
+  public bjsu(String paramString)
   {
-    jdField_a_of_type_Bjsu = this;
+    super(paramString);
   }
   
-  public static void a(String paramString)
+  public static boolean a()
   {
-    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    if (bjtc.a() == null) {
+      return false;
+    }
+    return NetworkState.isWap();
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    if (this.b == -1)
     {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
-      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
+      int j = super.a(paramString, paramInt);
+      int i = j;
+      if (a())
+      {
+        if (j != 0)
+        {
+          this.b = 1;
+          i = super.a(paramString, paramInt);
+        }
+      }
+      else {
+        return i;
+      }
+      this.b = 0;
+      return j;
     }
+    return super.a(paramString, paramInt);
   }
   
-  public static void b()
+  public bjsq a()
   {
-    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
-    {
-      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
-      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.cutCancel()");
+    if ((a()) && (this.b == 1)) {
+      return bjsq.a;
     }
-  }
-  
-  public static void c()
-  {
-    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
-      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
-    }
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Bjsu = null;
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    return false;
+    return null;
   }
 }
 

@@ -1,25 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class adqc
-  implements View.OnTouchListener
+  implements axqc
 {
-  public adqc(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public adqc(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(float paramFloat)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramFloat < 0.0F)
     {
+      this.a.a(this.a.getString(2131694580));
+      return;
     }
-    for (;;)
+    if (paramFloat > 175.0F)
     {
-      return false;
-      paramView.setAlpha(0.7F);
-      continue;
-      paramView.setAlpha(1.0F);
+      this.a.a(this.a.getString(2131694579));
+      return;
     }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

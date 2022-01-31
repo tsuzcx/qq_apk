@@ -1,32 +1,18 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class adqj
-  implements bdyc
+  extends alwx
 {
-  private final WeakReference<RegisterQQNumberActivity> a;
+  public adqj(QQLSActivity paramQQLSActivity) {}
   
-  public adqj(RegisterQQNumberActivity paramRegisterQQNumberActivity)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramRegisterQQNumberActivity);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
     }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
-    {
-      return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
+    QQLSActivity.a(this.a);
   }
 }
 

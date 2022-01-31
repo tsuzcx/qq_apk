@@ -1,29 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class aqis
-  implements DialogInterface.OnKeyListener
+class aqis
+  implements Animation.AnimationListener
 {
-  public aqis(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aqis(aqir paramaqir) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      if (this.a.a != null)
-      {
-        this.a.a.dismiss();
-        this.a.a = null;
-      }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
-    }
-    return bool;
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

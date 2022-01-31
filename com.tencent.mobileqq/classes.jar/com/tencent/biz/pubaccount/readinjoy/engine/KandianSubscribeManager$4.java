@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aljq;
-import ayvw;
+import alof;
+import azaf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -18,11 +18,11 @@ class KandianSubscribeManager$4
     if (localQQAppInterface == null) {
       return;
     }
-    MessageRecord localMessageRecord2 = localQQAppInterface.a().b(aljq.aR, 1008);
+    MessageRecord localMessageRecord2 = localQQAppInterface.a().b(alof.aR, 1008);
     MessageRecord localMessageRecord1;
     if (localMessageRecord2 != null)
     {
-      localMessageRecord1 = ayvw.a(-1000);
+      localMessageRecord1 = azaf.a(-1000);
       MessageRecord.copyMessageRecordBaseField(localMessageRecord1, localMessageRecord2);
       localMessageRecord1.msgtype = -1000;
     }
@@ -31,7 +31,7 @@ class KandianSubscribeManager$4
       KandianSubscribeManager.a(localMessageRecord1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
       localQQAppInterface.a().a(localMessageRecord1, localQQAppInterface.c());
       return;
-      localMessageRecord1 = ayvw.a(-1000);
+      localMessageRecord1 = azaf.a(-1000);
       localMessageRecord1.selfuin = localQQAppInterface.getCurrentAccountUin();
     }
   }

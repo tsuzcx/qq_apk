@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import vrr;
+import vwa;
 
 public class CleanVideoPlayerView
   extends VideoPlayerView
@@ -19,9 +19,9 @@ public class CleanVideoPlayerView
     super.a();
   }
   
-  public void a(vrr paramvrr)
+  public void a(vwa paramvwa)
   {
-    super.a(paramvrr);
+    super.a(paramvwa);
   }
 }
 

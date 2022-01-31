@@ -1,6 +1,6 @@
 package cooperation.qqreader.ui;
 
-import absf;
+import abwu;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -14,23 +14,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bebk;
-import bedf;
-import beei;
-import befb;
-import bhow;
-import bivx;
-import bixj;
+import beft;
+import beho;
+import beir;
+import bejk;
+import bhtd;
+import bjae;
+import bjbq;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.List;
-import zbj;
+import zfy;
 
 public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  private bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -66,11 +66,11 @@ public class ReaderContentPageFragment
   
   private void j()
   {
-    if (this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Bebk.c != null) {
-      this.jdField_a_of_type_Bebk.c.setVisibility(8);
+    if (this.jdField_a_of_type_Beft.c != null) {
+      this.jdField_a_of_type_Beft.c.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
     {
@@ -81,8 +81,8 @@ public class ReaderContentPageFragment
   
   private void k()
   {
-    zbj localzbj = b();
-    localzbj.a(bixj.a(localzbj.a()));
+    zfy localzfy = b();
+    localzfy.a(bjbq.a(localzfy.a()));
   }
   
   public void a(ImageView paramImageView, TextView paramTextView, String paramString1, String paramString2, String paramString3)
@@ -159,27 +159,27 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843439);
+        paramImageView.setImageResource(2130843452);
         continue;
-        paramImageView.setImageResource(2130843438);
+        paramImageView.setImageResource(2130843451);
         continue;
-        paramImageView.setImageResource(2130840101);
+        paramImageView.setImageResource(2130840102);
         continue;
-        paramImageView.setImageResource(2130846424);
+        paramImageView.setImageResource(2130846497);
         continue;
-        paramImageView.setImageResource(2130846434);
+        paramImageView.setImageResource(2130846507);
         continue;
-        paramImageView.setImageResource(2130838647);
+        paramImageView.setImageResource(2130838648);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, absf paramabsf)
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, abwu paramabwu)
   {
-    if ((this.jdField_a_of_type_Bebk != null) && (this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bebk.c != null)) {
-      a(this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Bebk.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
+    if ((this.jdField_a_of_type_Beft != null) && (this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Beft.c != null)) {
+      a(this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Beft.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
     }
   }
   
@@ -200,8 +200,8 @@ public class ReaderContentPageFragment
     if ((paramBundle instanceof ReaderBaseWebActivity))
     {
       paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      if ((paramBundle != null) && (this.jdField_a_of_type_Bebk.c != null)) {
-        paramBundle.a(this.jdField_a_of_type_Bebk.c);
+      if ((paramBundle != null) && (this.jdField_a_of_type_Beft.c != null)) {
+        paramBundle.a(this.jdField_a_of_type_Beft.c);
       }
     }
     return i;
@@ -209,18 +209,18 @@ public class ReaderContentPageFragment
   
   public void c()
   {
-    beei localbeei = (beei)this.jdField_a_of_type_Bedf.a(4);
-    if (localbeei != null)
+    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
+    if (localbeir != null)
     {
       k();
-      a(localbeei.a);
-      localbeei.a(b(), this.jdField_a_of_type_Befb.a);
+      a(localbeir.a);
+      localbeir.a(b(), this.jdField_a_of_type_Bejk.a);
     }
   }
   
   public void e()
   {
-    a(this.jdField_a_of_type_Bhow);
+    a(this.jdField_a_of_type_Bhtd);
     super.e();
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
@@ -259,14 +259,14 @@ public class ReaderContentPageFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bebk.c))
+    if ((paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Beft.c))
     {
       if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
       }
       return;
     }
-    if (paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView)
+    if (paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView)
     {
       i();
       return;
@@ -286,7 +286,7 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
   }
 }
 

@@ -1,12 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public abstract interface bjmd
+public class bjmd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList);
+  public bjmd(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bjmi parambjmi) {}
   
-  public abstract void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    if (this.jdField_a_of_type_Bjmi != null) {
+      this.jdField_a_of_type_Bjmi.a();
+    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+  }
 }
 
 

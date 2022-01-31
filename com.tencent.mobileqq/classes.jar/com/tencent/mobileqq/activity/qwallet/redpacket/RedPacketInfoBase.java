@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
-import aixg;
+import ajbv;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 public class RedPacketInfoBase
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedPacketInfoBase> CREATOR = new aixg();
+  public static final Parcelable.Creator<RedPacketInfoBase> CREATOR = new ajbv();
   public static final String ICON_DEF = "icon_def";
   public static final String ICON_DRAW = "icon_draw";
   public static final String ICON_EMOJI = "icon_emoji";

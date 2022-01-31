@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import aube;
-import awbw;
-import awby;
+import aufn;
+import awgf;
+import awgh;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.List;
 public class EmoticonManager$20
   implements Runnable
 {
-  public EmoticonManager$20(aube paramaube, List paramList) {}
+  public EmoticonManager$20(aufn paramaufn, List paramList) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    awby localawby = this.this$0.a.a();
+    awgh localawgh = this.this$0.a.a();
     for (;;)
     {
       int i;
       try
       {
-        localawby.a();
+        localawgh.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveRecentEmotionToDB:");
         i = this.a.size() - 1;
@@ -49,27 +49,27 @@ public class EmoticonManager$20
           if (localRecentEmotion2 != null) {
             this.this$0.a.b(localRecentEmotion2);
           }
-          aube.a(this.this$0, localRecentEmotion3);
+          aufn.a(this.this$0, localRecentEmotion3);
         }
       }
       catch (Exception localException)
       {
         QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
-        localawby.b();
+        localawgh.b();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
         }
         return;
-        localawby.c();
+        localawgh.c();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, localException.toString());
         }
-        localawby.b();
+        localawgh.b();
         continue;
       }
       finally
       {
-        localawby.b();
+        localawgh.b();
       }
       label364:
       i -= 1;

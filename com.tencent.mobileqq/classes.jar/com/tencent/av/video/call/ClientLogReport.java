@@ -3,7 +3,7 @@ package com.tencent.av.video.call;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import bdee;
+import bdin;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -285,7 +285,7 @@ public class ClientLogReport
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord mInit is false.");
       return;
     }
-    if (!bdee.g(this.mContext))
+    if (!bdin.g(this.mContext))
     {
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord network is invalid.");
       return;

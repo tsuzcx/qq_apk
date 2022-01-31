@@ -1,9 +1,7 @@
-class afjo
-  implements bhqf
+public class afjo
+  extends aeqi
 {
-  afjo(afjn paramafjn) {}
-  
-  public void onDismiss() {}
+  public String b;
 }
 
 

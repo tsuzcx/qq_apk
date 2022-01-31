@@ -1,214 +1,154 @@
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import mqq.app.AccountNotMatchException;
 
 public class azvf
-  extends azqj
   implements View.OnClickListener
 {
-  public String S;
-  public String T;
-  public String U;
-  public int k;
-  public int l;
+  private long jdField_a_of_type_Long;
   
-  public azvf()
-  {
-    this.a = "textButton";
-    b(32);
-    c(32);
-  }
+  public azvf(StructMsgForAudioShare paramStructMsgForAudioShare) {}
   
-  private LinearLayout a(Context paramContext)
+  public void onClick(View paramView)
   {
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(0);
-    paramContext.setGravity(16);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    paramContext.setId(2131378976);
-    return paramContext;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (paramView != null) {
-      paramContext = (azvg)paramView.getTag();
+    int j = 0;
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() instanceof AbsShareMsg)) {
+        break label47;
+      }
     }
+    label47:
+    AbsShareMsg localAbsShareMsg;
+    Context localContext;
+    Object localObject2;
+    Object localObject1;
+    SongInfo localSongInfo;
     for (;;)
     {
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
-      if (!TextUtils.isEmpty(this.S)) {
-        paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.S);
-      }
+      return;
+      localAbsShareMsg = (AbsShareMsg)paramView.getTag();
+      localContext = paramView.getContext();
+      localObject2 = null;
       try
       {
-        if (!TextUtils.isEmpty(this.T))
-        {
-          paramBundle = URLDrawable.getDrawable(this.T, this.k, this.k, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localAbsShareMsg.currentAccountUin);
+        if (localObject1 != null) {
+          MediaPlayerManager.a((QQAppInterface)localObject1).a(true);
         }
-        if (!TextUtils.isEmpty(this.U))
+        if ((localAbsShareMsg == null) || (localAbsShareMsg.mMsgServiceID != 2)) {
+          break label604;
+        }
+        localObject2 = (StructMsgForAudioShare)localAbsShareMsg;
+        if (QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare))
         {
-          paramBundle = URLDrawable.getDrawable(this.U, this.l, this.l, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+          QQPlayerService.c(localContext);
+          paramView.setContentDescription(localResources.getString(2131690325));
+          return;
         }
       }
-      catch (Exception paramContext)
+      catch (AccountNotMatchException localAccountNotMatchException)
       {
         for (;;)
         {
+          localObject1 = localObject2;
+          if (QLog.isDevelopLevel())
+          {
+            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
+            localObject1 = localObject2;
+          }
+        }
+        if ((localObject1 != null) && (((QQAppInterface)localObject1).c()))
+        {
           if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
+            QLog.i("QQPlayerService", 2, "Video Chatting is going on, don't play music.");
+          }
+        }
+        else
+        {
+          awfa.a().a = 1;
+          localSongInfo = new SongInfo();
+          localSongInfo.jdField_b_of_type_JavaLangString = ((StructMsgForAudioShare)localObject2).mContentSrc;
+          localSongInfo.c = ((StructMsgForAudioShare)localObject2).mContentTitle;
+          localSongInfo.d = ((StructMsgForAudioShare)localObject2).mContentSummary;
+          localSongInfo.e = ((StructMsgForAudioShare)localObject2).mContentCover;
+          localSongInfo.f = ((StructMsgForAudioShare)localObject2).mMsgUrl;
+          if ("com.tencent.radio".equals(localAbsShareMsg.mSource_A_ActionData)) {
+            break label312;
           }
         }
       }
-      if ((this.c != null) && (!this.c.equals("")))
+    }
+    label312:
+    int i;
+    if (("1103394134".equals(Long.valueOf(localAbsShareMsg.mSourceAppid))) || ("企鹅FM".equals(localAbsShareMsg.mSourceName)))
+    {
+      localSongInfo.jdField_b_of_type_Int = 6;
+      i = 0;
+      j = 1;
+    }
+    for (;;)
+    {
+      Intent localIntent = new Intent(localContext, MusicPlayerActivity.class);
+      if (((j != 0) || (i != 0)) && ("web".equals(localAbsShareMsg.mMsgAction)))
       {
-        paramView.setClickable(true);
-        paramView.setOnClickListener(this);
+        localIntent.putExtra("key_isReadModeEnabled", true);
+        localObject2 = localAbsShareMsg.mMsgUrl;
+        localObject1 = localObject2;
+        if (j != 0) {
+          localObject1 = (String)localObject2 + "&player=mqq";
+        }
+        localIntent.putExtra("url", (String)localObject1);
+        localIntent.putExtra("param_force_internal_browser", true);
+        localIntent.putExtra("isAppShare", true);
+        localIntent.putExtra("appShareID", bdff.a(localAbsShareMsg.mSourceAppid));
+        localIntent.putExtra("fromAio", true);
+        syb.a(localIntent, localAbsShareMsg.mMsgUrl);
       }
-      return paramView;
-      paramView = new azvg(this);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      paramView.b = new ImageView(paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      paramContext = new LinearLayout.LayoutParams(-2, -2);
-      paramContext.gravity = 16;
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.b, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramView);
-      paramBundle = paramView.jdField_a_of_type_AndroidWidgetLinearLayout;
-      paramContext = paramView;
-      paramView = paramBundle;
-    }
-  }
-  
-  public String a()
-  {
-    return "TextButton";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = ayvy.a(paramObjectInput.readUTF(), false);
-    this.T = ayvy.a(paramObjectInput.readUTF(), false);
-    this.U = ayvy.a(paramObjectInput.readUTF(), false);
-    this.b = ayvy.a(paramObjectInput.readUTF(), false);
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.T != null) {
-        break label86;
+      QQPlayerService.a(localIntent);
+      localObject2 = QQPlayerService.a();
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new Bundle();
+        QQPlayerService.a((Bundle)localObject1);
       }
-      str = "";
-      label32:
-      paramObjectOutput.writeUTF(str);
-      if (this.U != null) {
-        break label94;
-      }
-      str = "";
-      label49:
-      paramObjectOutput.writeUTF(str);
-      if (this.b != null) {
-        break label102;
-      }
-    }
-    label86:
-    label94:
-    label102:
-    for (String str = "";; str = this.b)
-    {
-      paramObjectOutput.writeUTF(str);
+      ((Bundle)localObject1).putString("KEY_SOURCE_NAME", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getSourceName());
+      QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare);
+      QQPlayerService.a(localContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getToken(), localSongInfo);
+      paramView.setContentDescription(localResources.getString(2131690323));
       return;
-      str = ayvy.a(this.S, false);
-      break;
-      str = this.T;
-      break label32;
-      str = this.U;
-      break label49;
+      if (("com.tencent.qqmusic".equals(localAbsShareMsg.mSource_A_ActionData)) || ("100497308".equals(Long.valueOf(localAbsShareMsg.mSourceAppid))) || ("QQ音乐".equals(localAbsShareMsg.mSourceName)))
+      {
+        localSongInfo.jdField_b_of_type_Int = 4;
+        i = 1;
+        continue;
+        label604:
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("QQPlayerService", 2, "msg is null or serviceId not audio_share");
+        return;
+      }
+      i = 0;
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, this.a);
-    if (!TextUtils.isEmpty(this.S)) {
-      paramXmlSerializer.attribute(null, "text", this.S);
-    }
-    if (!TextUtils.isEmpty(this.T)) {
-      paramXmlSerializer.attribute(null, "leftImage", this.T);
-    }
-    if (!TextUtils.isEmpty(this.U)) {
-      paramXmlSerializer.attribute(null, "rightImage", this.U);
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      paramXmlSerializer.attribute(null, "url", this.b);
-    }
-    paramXmlSerializer.endTag(null, this.a);
-  }
-  
-  public boolean a(azsa paramazsa)
-  {
-    if (paramazsa == null) {
-      return true;
-    }
-    this.b = paramazsa.a("url");
-    this.T = paramazsa.a("leftImage");
-    this.U = paramazsa.a("rightImage");
-    this.S = ayvy.a(paramazsa.a("text"), false);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 26;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public int c()
-  {
-    return -16777216;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public int d()
-  {
-    return 0;
   }
 }
 

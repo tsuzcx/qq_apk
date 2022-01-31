@@ -1,129 +1,99 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.hotpic.HotVideoData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.TicketManager;
 
-class asvi
+public class asvi
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new asvk(this);
-  private ataw jdField_a_of_type_Ataw = new asvj(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<atav> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<atav> b = new ArrayList();
+  public int a;
+  public String a;
+  public ArrayList<bawy> a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  private Intent a()
+  public String a()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      bawy localbawy = (bawy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localStringBuilder.append("http://");
+      localStringBuilder.append(localbawy.jdField_a_of_type_JavaLangString);
+      if (localbawy.jdField_a_of_type_Int != 80)
+      {
+        localStringBuilder.append(":");
+        localStringBuilder.append(localbawy.jdField_a_of_type_Int);
+      }
+      localStringBuilder.append("/");
+    }
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      return localStringBuilder.toString();
+      if (!this.jdField_c_of_type_JavaLangString.startsWith("http://")) {
+        localStringBuilder.append("http://");
+      }
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      if (!this.jdField_c_of_type_JavaLangString.endsWith("/")) {
+        localStringBuilder.append("/");
+      }
+    }
   }
   
-  private void a(Intent paramIntent)
+  public void a(bbca parambbca)
   {
-    atbq localatbq = (atbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338);
-    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
-    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
-    localatbq.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
-  }
-  
-  private void a(Intent paramIntent, List<atav> paramList)
-  {
-    int i;
-    String str;
+    int i = 0;
     StringBuilder localStringBuilder;
-    if (!paramList.isEmpty())
+    if (HotVideoData.access$000())
     {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext()) {
-        ((atav)paramIntent.next()).a(i, str);
+      this.jdField_a_of_type_JavaUtilArrayList = parambbca.jdField_a_of_type_JavaUtilArrayList;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+      if (parambbca.jdField_c_of_type_Int != 0) {
+        break label200;
       }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("onBusiProtoResp() cdn ---- mIpListSize:");
+        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+          break label189;
+        }
       }
     }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
+    for (;;)
     {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
-      paramList.clear();
+      QLog.d("HotVideoData", 2, i + " mHostType:" + parambbca.jdField_a_of_type_Int + " domain:" + parambbca.jdField_b_of_type_JavaLangString + " url:" + parambbca.jdField_c_of_type_JavaLangString);
+      QLog.d("HotVideoData", 2, "onBusiProtoResp() cdn ---- downResp.previewMd5:" + HexUtil.bytes2HexStr(parambbca.jdField_a_of_type_ArrayOfByte));
+      this.jdField_b_of_type_JavaLangString = parambbca.jdField_c_of_type_JavaLangString;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      this.jdField_a_of_type_JavaUtilArrayList = parambbca.jdField_b_of_type_JavaUtilArrayList;
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        break;
+      }
+      break;
+      label189:
+      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    label200:
+    this.jdField_a_of_type_Boolean = false;
+    if (-5100026 == parambbca.d)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotVideoData", 2, "onBusiProtoResp()---- 安全打击");
+      }
+      this.jdField_a_of_type_JavaLangString = alud.a(2131706014);
       return;
     }
-  }
-  
-  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", paramInt);
-    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
-    b(localIntent);
-  }
-  
-  private void b()
-  {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+    if ((-9527 == parambbca.d) && ((parambbca.g.equals("H_400_-5103017")) || (parambbca.g.equals("H_400_-5103059"))))
     {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
-      localIntent.putExtra("command_type", 6);
-      localIntent.putExtra("sKeyKey", (String)localObject);
-      b(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("HotVideoData", 2, "onBusiProtoResp()---- 视频文件过期errCode=" + parambbca.d);
+      }
+      this.jdField_a_of_type_JavaLangString = alud.a(2131706015);
       return;
     }
-    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
-  }
-  
-  private void b(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
-  }
-  
-  public ataw a()
-  {
-    return this.jdField_a_of_type_Ataw;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(Bundle paramBundle, atav paramatav)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", 4);
-    localIntent.putExtra("closeRoomBundle", paramBundle);
-    b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramatav);
-  }
-  
-  void a(atav paramatav)
-  {
-    this.b.add(paramatav);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = new IntentFilter();
-    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = alud.a(2131706016);
   }
 }
 

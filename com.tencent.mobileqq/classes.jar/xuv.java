@@ -1,36 +1,14 @@
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.22;
+import android.view.View.OnClickListener;
 
-public class xuv
-  implements View.OnTouchListener
+class xuv
+  implements View.OnClickListener
 {
-  public xuv(QRDisplayActivity.22 param22) {}
+  xuv(xus paramxus) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
-      }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    bcvq.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
-    return true;
+    this.a.dismiss();
   }
 }
 

@@ -1,101 +1,27 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
 
 public class alac
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public final HashMap<Integer, alae> a;
-  public final List<alae> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<alad> b;
-  public long c;
-  public String c;
-  public List<alad> c;
-  public String d;
-  public String e;
+  public alac(QzoneGameFloatView paramQzoneGameFloatView, View paramView, DisplayMetrics paramDisplayMetrics) {}
   
-  public alac()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt > 999999) {
-      return String.valueOf(999999) + "+";
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String b(int paramInt)
-  {
-    if (paramInt > 99999) {
-      return String.valueOf(99999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String c(int paramInt)
-  {
-    if (paramInt > 9999) {
-      return String.valueOf(9999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
       return;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label40:
-    alad localalad;
-    alae localalae;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localalad = (alad)localIterator.next();
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localalad.jdField_a_of_type_Long))))
-        {
-          if (localalad.jdField_a_of_type_Short > 4) {
-            break label165;
-          }
-          localalae = (alae)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-          if (localalae != null)
-          {
-            localalae.c += 1;
-            this.jdField_b_of_type_Int += 1;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.c == null) {
-        this.c = new ArrayList();
-      }
-      this.c.add(localalad);
-      break label40;
-      break;
-      label165:
-      localalae = (alae)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localalad.jdField_a_of_type_Short));
-      if (localalae != null)
-      {
-        localalae.c += localalad.f;
-        this.jdField_b_of_type_Int += localalad.f;
-      }
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

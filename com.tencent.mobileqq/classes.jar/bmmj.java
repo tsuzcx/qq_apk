@@ -1,16 +1,21 @@
-public abstract interface bmmj
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+class bmmj
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(bmtx parambmtx);
+  bmmj(bmmh parambmmh) {}
   
-  public abstract void a(bmtx parambmtx, int paramInt1, int paramInt2);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    bmmh.a(this.a).setVisibility(8);
+  }
   
-  public abstract void a(bmtx parambmtx, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract void b(bmtx parambmtx);
-  
-  public abstract void b(bmtx parambmtx, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bmmh.a(this.a).setVisibility(8);
+  }
 }
 
 

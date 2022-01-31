@@ -1,9 +1,16 @@
-class ajqb
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+
+public class ajqb
 {
-  long jdField_a_of_type_Long;
-  ajqd jdField_a_of_type_Ajqd;
-  long jdField_b_of_type_Long;
-  ajqd jdField_b_of_type_Ajqd;
+  public static <T extends ajqa> T a(FlowActivity paramFlowActivity, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new ajqc(paramFlowActivity);
+  }
 }
 
 

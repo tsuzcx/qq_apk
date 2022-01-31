@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.network.observer;
 
 import android.os.Bundle;
-import yvm;
+import zab;
 
 public class VSDispatchObserver$1
   implements Runnable
 {
-  public VSDispatchObserver$1(yvm paramyvm, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
+  public VSDispatchObserver$1(zab paramzab, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    yvm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean);
+    zab.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean);
   }
 }
 

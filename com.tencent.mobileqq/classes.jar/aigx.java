@@ -1,26 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aigx
-  extends awdn
+class aigx
+  implements bhux
 {
-  public aigx(BindNumberActivity paramBindNumberActivity) {}
+  aigx(aigp paramaigp) {}
   
-  protected void b(boolean paramBoolean)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.b(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-    for (;;)
+    if ((this.a.jdField_a_of_type_Aign.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-      this.a.app.unRegistObserver(this.a.b);
-      this.a.b = null;
-      return;
-      this.a.b();
-      this.a.b(2131719221);
-    }
+      return true;
+      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aign.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Aihj = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bdpi();
+    paramAdapterView.a(2131364912, alud.a(2131701665), 2130838669);
+    paramAdapterView.a(2131366760, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692837), 2130838678);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView, paramAdapterView, aigp.a(this.a), new aigy(this, paramView));
+    return true;
   }
 }
 

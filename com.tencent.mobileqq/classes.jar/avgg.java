@@ -1,21 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-
-public class avgg
-  implements View.OnClickListener
+public abstract interface avgg
 {
-  public avgg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

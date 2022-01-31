@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmjn;
+import bmnz;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(bmjn parambmjn) {}
+  public EditVideoSave$5(bmnz parambmnz) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bmjn localbmjn;
+    bmnz localbmnz;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbmjn = this.this$0;
+      localbmnz = this.this$0;
     }
-    for (localbmjn.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbmjn.jdField_a_of_type_Float += 1.0F)
+    for (localbmnz.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbmnz.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbmjn = this.this$0;
+      localbmnz = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
     this.this$0.d();

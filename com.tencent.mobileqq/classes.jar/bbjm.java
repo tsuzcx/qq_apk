@@ -1,34 +1,21 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
 
 public class bbjm
-  implements TextWatcher
+  extends AnimatorListenerAdapter
 {
-  public bbjm(NewTroopContactView paramNewTroopContactView) {}
+  public bbjm(TroopBarPublishActivity.6 param6) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    if (this.a.a) {
+      this.a.this$0.s();
     }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    }
+    this.a.this$0.b.requestFocus();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

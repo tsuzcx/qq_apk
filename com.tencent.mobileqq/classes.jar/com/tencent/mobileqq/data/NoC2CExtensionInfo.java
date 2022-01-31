@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdc;
-import awdg;
+import awge;
+import awhl;
+import awhp;
 
 public class NoC2CExtensionInfo
-  extends awbv
+  extends awge
 {
   public static final int TYPE_EXT_C2C = 0;
   public static final int TYPE_EXT_COUNT = 3;
   public static final int TYPE_EXT_DISCUSSION = 2;
   public static final int TYPE_EXT_GROUP = 1;
-  @awdc(a=-1)
+  @awhl(a=-1)
   public int audioPanelType = -1;
   public int chatInputType = 0;
-  @awdg
+  @awhp
   public boolean isDataChanged;
   public int pttChangeVoiceType = 0;
   public int showC2CPanel = 1;

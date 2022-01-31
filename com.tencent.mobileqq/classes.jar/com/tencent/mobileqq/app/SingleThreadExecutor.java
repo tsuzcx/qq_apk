@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import alza;
+import amdp;
 import android.support.annotation.NonNull;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.annotation.concurrent.GuardedBy;
 
 public class SingleThreadExecutor
-  extends alza
+  extends amdp
 {
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")

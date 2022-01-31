@@ -1,18 +1,14 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class apqe
-  extends RadioButton
+  extends akfy
 {
-  public apqe(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public apqe(MessengerService paramMessengerService) {}
   
-  public boolean performClick()
+  public void a(Bundle paramBundle)
   {
-    return true;
+    this.a.a(paramBundle);
   }
 }
 

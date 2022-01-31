@@ -1,9 +1,50 @@
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qwallet.plugin.QWalletHelper;
+import mqq.app.AppRuntime;
 
-public abstract class bizh
-  extends QzoneExternalRequest
+public class bizh
+  extends RemoteCommand
 {
-  public abstract int a();
+  public bizh()
+  {
+    super("qqreader_plugin_asyn_cmd");
+  }
+  
+  private QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    switch (paramBundle.getInt("CommondType"))
+    {
+    }
+    for (;;)
+    {
+      return null;
+      if (a() != null)
+      {
+        paramBundle = paramBundle.getString("publicaccount_uin");
+        syb.a(a(), a().getApp(), paramBundle, new bizi(this, paramOnInvokeFinishLinstener));
+        continue;
+        QWalletHelper.preloadQWallet(a());
+      }
+    }
+  }
+  
+  public boolean isSynchronized()
+  {
+    return false;
+  }
 }
 
 

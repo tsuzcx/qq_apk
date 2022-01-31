@@ -133,7 +133,7 @@ public class HackVm
       {
         for (;;)
         {
-          DalvikReplacer.dvmHack(BaseApplicationImpl.sApplication, 20971520, bool2, jdField_b_of_type_Long);
+          DalvikReplacer.dvmHack(BaseApplicationImpl.sApplication, 26214400, bool2, jdField_b_of_type_Long);
           QLog.e("QQAppInterface", 1, new Object[] { "laResult: ", Integer.valueOf(DalvikReplacer.sLaResult), ", verifyResult: ", Integer.valueOf(DalvikReplacer.sVerifyResult), ", heapResult = ", Integer.valueOf(DalvikReplacer.sHeapResult), ", modHeap = " + jdField_b_of_type_Long });
           jdField_a_of_type_Int = DalvikReplacer.sLaResult;
           if (bool2)

@@ -1,17 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
-public class yba
+class yba
   implements View.OnClickListener
 {
-  public yba(CommentBottomBar paramCommentBottomBar) {}
+  yba(yay paramyay, ybe paramybe) {}
   
   public void onClick(View paramView)
   {
-    this.a.d();
-    if (CommentBottomBar.a(this.a) != null) {
-      CommentBottomBar.a(this.a).onClick(paramView);
+    if (yay.a(this.jdField_a_of_type_Yay) != null) {
+      yay.a(this.jdField_a_of_type_Yay).b(this.jdField_a_of_type_Ybe);
     }
   }
 }

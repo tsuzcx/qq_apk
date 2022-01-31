@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Build.VERSION;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
 
-class uav
-  implements DialogInterface.OnClickListener
+public class uav
+  implements Animator.AnimatorListener
 {
-  uav(uau paramuau, int paramInt) {}
+  public uav(QCircleTransitionLayout paramQCircleTransitionLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Uau.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.setBackground(null);
+      return;
+    }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QCircleTransitionLayout.a(this.a) != null) {
+      QCircleTransitionLayout.a(this.a).b();
+    }
   }
 }
 

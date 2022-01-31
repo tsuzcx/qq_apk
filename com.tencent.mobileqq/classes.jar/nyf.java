@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nyf
-  implements bhqd
+  implements bhuk
 {
   public nyf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   

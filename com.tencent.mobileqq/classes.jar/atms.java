@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
-
 public class atms
-  implements DialogInterface.OnClickListener
 {
-  public atms(LocationDialogUtil.4 param4) {}
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atms(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.b();
-    azmj.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public String toString()
+  {
+    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
   }
 }
 

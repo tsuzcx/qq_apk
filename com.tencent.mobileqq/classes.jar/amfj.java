@@ -1,51 +1,43 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-class amfj
-  extends alox
+public class amfj
+  extends alpd
 {
-  amfj(amfi paramamfi) {}
-  
-  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
+  public amfj(QQAppInterface paramQQAppInterface)
   {
-    int j = 1;
-    aloz localaloz;
-    int i;
-    Object localObject;
-    if (paramBoolean)
-    {
-      localaloz = (aloz)this.a.a.getManager(51);
-      ExtensionInfo localExtensionInfo = localaloz.a(paramString2, true);
-      i = 0;
-      localObject = localExtensionInfo;
-      if (localExtensionInfo == null)
-      {
-        localObject = new ExtensionInfo();
-        ((ExtensionInfo)localObject).uin = paramString2;
-        i = 1;
-      }
-      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
-        break label152;
-      }
-      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
-      i = j;
+    super(paramQQAppInterface);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return amfk.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
+      notifyUI(1, false, null);
     }
-    label152:
-    for (;;)
+    String str;
+    do
     {
-      if (i != 0) {
-        localaloz.a((ExtensionInfo)localObject);
-      }
-      if (amfi.a(this.a) == null) {}
-      for (localObject = null;; localObject = (amfm)amfi.a(this.a).get())
+      return;
+      str = paramToServiceMsg.getServiceCmd();
+      if (TextUtils.isEmpty(str))
       {
-        if (localObject != null) {
-          ((amfm)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
-        }
+        notifyUI(1, false, null);
         return;
       }
-    }
+      if ((str.compareTo("VipPayLogicServer.getCommPayInfo ") == 0) && (QLog.isColorLevel())) {
+        QLog.i("VIPRecommendPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      }
+    } while (str.compareTo("VipPayLogicServer.getCommPayInfo ") != 0);
+    notifyUI(1, true, paramObject);
+    bdhb.a(this.app.getCurrentAccountUin() + "_" + "VIPRecommendPayFile.txt", paramObject);
   }
 }
 

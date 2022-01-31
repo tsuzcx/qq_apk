@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import android.os.Bundle;
-import ayfe;
-import aygy;
-import ayhb;
-import ayhe;
-import aypx;
-import ayqm;
-import ayrd;
+import ayjn;
+import aylh;
+import aylk;
+import ayln;
+import ayug;
+import ayuv;
+import ayvm;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -25,21 +25,21 @@ public class FTSEntitySearchFragment
     return localFTSEntitySearchFragment;
   }
   
-  public ayfe a()
+  public ayjn a()
   {
-    return new aygy(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
+    return new aylh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  public aypx a()
+  public ayug a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return ayhb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
+    return aylk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public String a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return ayhb.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
+    return aylk.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
@@ -64,21 +64,21 @@ public class FTSEntitySearchFragment
     label93:
     for (paramInt = i;; paramInt = paramList.size())
     {
-      ayrd.a("talk", "exp_page", new String[] { str, paramInt });
+      ayvm.a("talk", "exp_page", new String[] { str, paramInt });
       this.b = true;
       return;
     }
   }
   
-  public void a(List paramList, ayqm paramayqm)
+  public void a(List paramList, ayuv paramayuv)
   {
-    if (paramayqm.a(this.c)) {
-      a(paramList, paramayqm.jdField_a_of_type_Int);
+    if (paramayuv.a(this.c)) {
+      a(paramList, paramayuv.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayqm.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayuv.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
   }
   
   public void onCreate(Bundle paramBundle)
@@ -92,25 +92,25 @@ public class FTSEntitySearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Aypx.c();
+    this.jdField_a_of_type_Ayug.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Aypx.d();
+    this.jdField_a_of_type_Ayug.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((ayhe)this.jdField_a_of_type_Aypx).f();
+    ((ayln)this.jdField_a_of_type_Ayug).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((ayhe)this.jdField_a_of_type_Aypx).g();
+    ((ayln)this.jdField_a_of_type_Ayug).g();
   }
 }
 

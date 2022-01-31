@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import aano;
-import aanp;
-import aaoo;
-import aaop;
-import aaoq;
+import aasd;
+import aase;
+import aatd;
+import aate;
+import aatf;
 import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBField;
@@ -26,9 +26,9 @@ class BridgeModule$6
     Object localObject1 = BaseActivity.sTopActivity.getApplicationContext();
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = null;
-    Object localObject3 = new aaop();
-    ((aaop)localObject3).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject1 = aaoo.a((Context)localObject1, (aaop)localObject3);
+    Object localObject3 = new aate();
+    ((aate)localObject3).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject1 = aatd.a((Context)localObject1, (aate)localObject3);
     if (localObject1 == null)
     {
       localObject1 = localObject2;
@@ -46,12 +46,12 @@ class BridgeModule$6
         }
         this.this$0.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
         return;
-        localObject3 = ((aaoq)localObject1).a;
+        localObject3 = ((aatf)localObject1).a;
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
         }
-        localObject3 = aano.a((PBField)localObject3);
+        localObject3 = aasd.a((PBField)localObject3);
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
@@ -64,11 +64,11 @@ class BridgeModule$6
       }
       catch (JSONException localJSONException)
       {
-        aanp.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        aase.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
         continue;
       }
       label165:
-      aanp.d(BridgeModule.TAG, "handleJsCallRequest error");
+      aase.d(BridgeModule.TAG, "handleJsCallRequest error");
     }
     label176:
     ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), this.this$0.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);

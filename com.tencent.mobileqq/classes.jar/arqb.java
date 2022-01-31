@@ -1,26 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public abstract class arqb
-  implements View.OnClickListener
+public abstract interface arqb
 {
-  private long a;
+  public abstract void a(int paramInt);
   
-  public abstract void a(View paramView);
+  public abstract void a(boolean paramBoolean);
   
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
-    {
-      a(paramView);
-      this.a = l;
-      return;
-    }
-    b(paramView);
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

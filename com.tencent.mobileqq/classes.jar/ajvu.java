@@ -1,24 +1,54 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ajvu
-  implements View.OnClickListener
 {
-  public ajvu(SelectMemberActivity paramSelectMemberActivity) {}
+  private ajvv jdField_a_of_type_Ajvv;
+  private ConcurrentHashMap<Integer, ajvz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  public ajvu(ajvv paramajvv)
   {
-    if (this.a.d == 27)
+    this.jdField_a_of_type_Ajvv = paramajvv;
+  }
+  
+  public ajvz a(int paramInt)
+  {
+    return (ajvz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
+      ajvz localajvz = (ajvz)localIterator.next();
+      localajvz.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      localajvz.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    this.a.finish();
+  }
+  
+  public void a(ajvz paramajvz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramajvz.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramajvz.jdField_a_of_type_Int), paramajvz);
+    if (this.jdField_a_of_type_Ajvv != null) {
+      this.jdField_a_of_type_Ajvv.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

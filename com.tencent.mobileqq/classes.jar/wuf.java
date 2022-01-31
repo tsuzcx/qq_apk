@@ -1,46 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import java.util.List;
 
-public class wuf
-  extends SimpleObserver<xgs>
+class wuf
+  implements bhum
 {
-  wuf(wud paramwud) {}
+  wuf(wub paramwub, int paramInt) {}
   
-  public void a(xgs paramxgs)
+  public void onDismiss()
   {
-    super.onNext(paramxgs);
-    this.a.a(40);
-    paramxgs = paramxgs.a.b;
-    wsv.b("EditPicSave", "picPath = " + paramxgs);
-    if (this.a.jdField_a_of_type_Wxp.getActivity() != null)
-    {
-      ThreadManager.post(new EditPicSave.2.1(this, paramxgs), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.f();
-    }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    wsv.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_Wwe.a(0);
-    this.a.g();
-    QQToast.a(this.a.jdField_a_of_type_Wxp.a(), alpo.a(2131704071), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wsv.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_Wwe.a(0);
-    QQToast.a(this.a.jdField_a_of_type_Wxp.a(), 1, alpo.a(2131704072) + paramError, 0).a();
-    this.a.g();
+    wqn localwqn = (wqn)this.jdField_a_of_type_Wub.a.a().get(this.jdField_a_of_type_Int);
+    wub.a(this.jdField_a_of_type_Wub, localwqn, "clk_hide");
   }
 }
 

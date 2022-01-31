@@ -1,27 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class atjb
-  implements View.OnTouchListener
+public final class atjb
+  implements EIPCResultCallback
 {
-  float jdField_a_of_type_Float = 0.0F;
+  public atjb(JSONObject paramJSONObject, spj paramspj, String paramString) {}
   
-  public atjb(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
+    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
+        this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        for (;;)
+        {
+          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
+        }
       }
     }
   }

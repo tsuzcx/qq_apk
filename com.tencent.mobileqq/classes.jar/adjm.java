@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class adjm
-  implements awmq
+  extends Handler
 {
-  public adjm(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adjm(NearbyActivity paramNearbyActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {
-      if (ProfileActivity.AllInOne.b(this.a.a))
-      {
-        paramInt = 1;
-        azmj.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
-        azmj.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
-      }
+    if (!this.a.c)
+    {
+      this.a.g();
+      this.a.b.removeMessages(this.a.i);
+      sendEmptyMessageDelayed(this.a.i, this.a.n);
     }
-    while (paramInt != 2) {
-      for (;;)
-      {
-        return;
-        paramInt = 2;
-      }
-    }
-    azmj.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

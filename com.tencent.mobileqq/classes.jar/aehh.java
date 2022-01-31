@@ -1,45 +1,18 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aehh
-  implements axxi
+  extends altm
 {
-  public aehh(VisitorsActivity paramVisitorsActivity) {}
+  public aehh(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
-      }
-      paramInt2 = paramBitmap.getChildCount();
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
-    for (;;)
-    {
-      if (i < paramInt2)
-      {
-        Object localObject = paramBitmap.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof aehy)))
-        {
-          localObject = (aehy)localObject;
-          if ((((aehy)localObject).b == paramInt1) && (((aehy)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((aehy)localObject).e, paramInt1);
-          }
-        }
-        i += 1;
-      }
-      else
-      {
-        return;
-        label108:
-        paramInt2 = 0;
-      }
-    }
+    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
   }
 }
 

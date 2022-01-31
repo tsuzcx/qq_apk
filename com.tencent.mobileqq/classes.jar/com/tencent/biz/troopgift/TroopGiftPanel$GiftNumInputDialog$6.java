@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import yru;
+import ywj;
 
 public class TroopGiftPanel$GiftNumInputDialog$6
   implements Runnable
 {
-  public TroopGiftPanel$GiftNumInputDialog$6(yru paramyru) {}
+  public TroopGiftPanel$GiftNumInputDialog$6(ywj paramywj) {}
   
   public void run()
   {

@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class nxg
-  extends bhnr
+  extends bhry
 {
   public nxg(ReadInJoyNaviController.1 param1, View paramView) {}
   

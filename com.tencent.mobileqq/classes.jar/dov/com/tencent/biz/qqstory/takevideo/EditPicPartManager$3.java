@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
-import bmey;
+import bmjk;
 
 public class EditPicPartManager$3
   implements Runnable
 {
-  public EditPicPartManager$3(bmey parambmey, Activity paramActivity) {}
+  public EditPicPartManager$3(bmjk parambmjk, Activity paramActivity) {}
   
   public void run()
   {

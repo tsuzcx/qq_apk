@@ -1,31 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
-import com.tencent.qphone.base.util.QLog;
-
-public class benf
-  implements View.OnTouchListener
+public abstract interface benf
 {
-  public benf(PagingScrollView paramPagingScrollView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.a.mIsOnSpecialView)
-    {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
-      {
-        this.a.mIsOnSpecialView = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
-        }
-      }
-    }
-    return false;
-  }
+  public abstract void a();
 }
 
 

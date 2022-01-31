@@ -6,16 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import bejs;
-import bems;
-import bemt;
+import beob;
+import berb;
+import berc;
 
 public class CommonTextView
   extends TextView
-  implements bemt
+  implements berc
 {
-  private bejs jdField_a_of_type_Bejs;
-  private bems jdField_a_of_type_Bems;
+  private beob jdField_a_of_type_Beob;
+  private berb jdField_a_of_type_Berb;
   
   public CommonTextView(Context paramContext)
   {
@@ -44,9 +44,9 @@ public class CommonTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bems != null)
+    if (this.jdField_a_of_type_Berb != null)
     {
-      this.jdField_a_of_type_Bems.a(paramCanvas);
+      this.jdField_a_of_type_Berb.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -54,9 +54,9 @@ public class CommonTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bems != null)
+    if (this.jdField_a_of_type_Berb != null)
     {
-      this.jdField_a_of_type_Bems.b(paramCanvas);
+      this.jdField_a_of_type_Berb.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -65,27 +65,27 @@ public class CommonTextView
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Bejs != null) {
-      this.jdField_a_of_type_Bejs.a(paramView, paramInt);
+    if (this.jdField_a_of_type_Beob != null) {
+      this.jdField_a_of_type_Beob.a(paramView, paramInt);
     }
   }
   
-  public void setMosaicEffect(bems parambems)
+  public void setMosaicEffect(berb paramberb)
   {
-    bems localbems = this.jdField_a_of_type_Bems;
-    if (localbems != null) {
-      localbems.a(null);
+    berb localberb = this.jdField_a_of_type_Berb;
+    if (localberb != null) {
+      localberb.a(null);
     }
-    this.jdField_a_of_type_Bems = parambems;
-    if (parambems != null) {
-      parambems.a(this);
+    this.jdField_a_of_type_Berb = paramberb;
+    if (paramberb != null) {
+      paramberb.a(this);
     }
     invalidate();
   }
   
-  public void setOnVisibilityChangedListener(bejs parambejs)
+  public void setOnVisibilityChangedListener(beob parambeob)
   {
-    this.jdField_a_of_type_Bejs = parambejs;
+    this.jdField_a_of_type_Beob = parambeob;
   }
 }
 

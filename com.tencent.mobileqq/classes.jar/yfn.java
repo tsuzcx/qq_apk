@@ -1,11 +1,20 @@
-public abstract class yfn<T>
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+
+public class yfn
+  implements Animation.AnimationListener
 {
-  public long a;
-  public boolean a = true;
+  public yfn(CommentBottomBar paramCommentBottomBar) {}
   
-  public abstract void a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    CommentBottomBar.a(this.a, true);
+  }
   
-  public abstract void a(yft<T> paramyft);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

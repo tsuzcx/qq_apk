@@ -1,103 +1,112 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
-import cooperation.qzone.panorama.piece.PanoramaPieceManager;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import NS_MOBILE_FEEDS.single_feed;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQMsgInteractData;
+import cooperation.qzone.contentbox.model.MQShareCell;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class bjiw
-  implements GLSurfaceView.Renderer
+  implements bjje
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bjis jdField_a_of_type_Bjis;
-  private bjja jdField_a_of_type_Bjja;
-  private bjje jdField_a_of_type_Bjje;
-  private bjjh jdField_a_of_type_Bjjh;
-  private int b;
-  private int c;
-  private int d;
+  public bjiw(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public bjiw(bjjh parambjjh, bjis parambjis)
+  public void a(MQMsg paramMQMsg, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bjjh = parambjjh;
-    this.jdField_a_of_type_Int = parambjjh.b();
-    this.jdField_a_of_type_Bjja = parambjjh.a();
-    this.d = parambjjh.a();
-    this.jdField_a_of_type_Bjis = parambjis;
-  }
-  
-  public void a()
-  {
-    bjjj.a(this.c);
-    bjjj.a(this.jdField_a_of_type_Bjje);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_Bjja != null) {
-      this.jdField_a_of_type_Bjja.a(paramFloat);
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "clicktype:" + paramInt);
+    if (paramMQMsg == null) {
+      QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "MsgOnClickListener msg null");
     }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Bjja != null) {
-      this.jdField_a_of_type_Bjja.a(paramFloat1, paramFloat2);
-    }
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16384);
-    if ((this.jdField_a_of_type_Bjjh != null) && (this.jdField_a_of_type_Bjjh.f()))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Bjjh.a();
-      bjjj.a(this.c);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        this.c = bjjj.a(((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap(), false);
-      }
-      if (this.jdField_a_of_type_Bjis != null) {
-        this.jdField_a_of_type_Bjis.b();
-      }
+    default: 
+      this.a.a(paramMQMsg);
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      label255:
+      do
+      {
+        return;
+        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null)) {
+          ((bjiy)this.a.a.getManager(293)).a(paramMQMsg.msgInteractData.likeCell, paramMQMsg.pushTime);
+        }
+        LpReportInfo_pf00064.allReport(133, 5, String.valueOf(paramMQMsg.msgType));
+        return;
+        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
+        {
+          if ((paramMQMsg.msgInteractData.feed == null) || (paramMQMsg.msgInteractData.feed.singlefeed == null) || (paramMQMsg.msgInteractData.feed.singlefeed.size() <= 0)) {
+            break label255;
+          }
+          paramView = new Intent();
+          QzonePluginProxyActivity.a(paramView, "com.qzone.misc.web.QZoneTranslucentActivity2");
+          paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
+          paramView.putExtra("action", 3);
+          bjdt.b(this.a.getActivity(), bjea.a(), paramView);
+        }
+        for (;;)
+        {
+          LpReportInfo_pf00064.allReport(133, 8, String.valueOf(paramMQMsg.msgType));
+          return;
+          if (paramMQMsg.msgInteractData.shareToFriend != null)
+          {
+            paramView = new Intent(this.a.getActivity(), ForwardRecentActivity.class);
+            paramView.putExtra("forward_type", 2);
+            paramView.putExtra("req_type", 1);
+            paramView.putExtra("req_share_id", "1103584836");
+            paramView.putExtra("image_url_remote", paramMQMsg.msgInteractData.shareToFriend.imgUrl);
+            paramView.putExtra("detail_url", paramMQMsg.msgInteractData.shareToFriend.jumpUrl);
+            paramView.putExtra("title", paramMQMsg.msgInteractData.shareToFriend.title);
+            paramView.putExtra("desc", paramMQMsg.msgInteractData.shareToFriend.content);
+            this.a.startActivity(paramView);
+          }
+        }
+        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
+        {
+          if ((paramMQMsg.msgInteractData.feed == null) || (paramMQMsg.msgInteractData.feed.singlefeed == null) || (paramMQMsg.msgInteractData.feed.singlefeed.size() <= 0)) {
+            break label504;
+          }
+          paramView = new Intent();
+          QzonePluginProxyActivity.a(paramView, "com.qzone.misc.web.QZoneTranslucentActivity2");
+          paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
+          paramView.putExtra("action", 4);
+          bjdt.b(this.a.getActivity(), bjea.a(), paramView);
+        }
+        for (;;)
+        {
+          LpReportInfo_pf00064.allReport(133, 7, String.valueOf(paramMQMsg.msgType));
+          return;
+          if (paramMQMsg.msgInteractData.shareToQzone != null)
+          {
+            paramView = new QZoneShareData();
+            paramView.b = paramMQMsg.msgInteractData.shareToQzone.title;
+            paramView.c = paramMQMsg.msgInteractData.shareToQzone.content;
+            ArrayList localArrayList = new ArrayList();
+            localArrayList.add(paramMQMsg.msgInteractData.shareToQzone.imgUrl);
+            paramView.a = localArrayList;
+            paramView.d = paramMQMsg.msgInteractData.shareToQzone.jumpUrl;
+            bjev.a(this.a.getActivity(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView, null, 0);
+          }
+        }
+        paramMQMsg = bdib.a(this.a.a, this.a.getActivity(), "mqqzone://arouse/activefeed");
+      } while (paramMQMsg == null);
+      label504:
+      paramMQMsg.c();
+      return;
     }
-    if ((this.jdField_a_of_type_Bjjh != null) && (this.jdField_a_of_type_Bjjh.a() != null))
-    {
-      this.jdField_a_of_type_Bjjh.a().d();
-      this.jdField_a_of_type_Bjje = this.jdField_a_of_type_Bjjh.a().a();
-      this.jdField_a_of_type_Bjja.a(this.jdField_a_of_type_Bjje);
-    }
-    if (this.jdField_a_of_type_Bjja != null)
-    {
-      this.jdField_a_of_type_Bjja.b(this.c);
-      this.jdField_a_of_type_Bjja.c();
-      this.jdField_a_of_type_Bjja.d();
-    }
-  }
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
-  {
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    GLES20.glEnable(2884);
-    float f = paramInt1 / paramInt2;
-    if (this.jdField_a_of_type_Bjja != null) {
-      this.jdField_a_of_type_Bjja.b(f);
-    }
-  }
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
-  {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    this.b = bjji.a();
-    GLES20.glUseProgram(this.b);
-    if (this.jdField_a_of_type_Bjja != null) {
-      this.jdField_a_of_type_Bjja.a(this.b);
-    }
-    paramGL10 = this.jdField_a_of_type_Bjjh.a();
-    if ((paramGL10 != null) && (this.jdField_a_of_type_Bjja != null)) {
-      paramGL10.b(this.jdField_a_of_type_Bjja.a());
-    }
+    this.a.a(paramMQMsg);
+    LpReportInfo_pf00064.allReport(133, 6, String.valueOf(paramMQMsg.msgType));
   }
 }
 

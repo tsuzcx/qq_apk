@@ -1,56 +1,27 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 import java.util.List;
 
 class wvc
-  extends xdt
+  extends SimpleJob<Object>
 {
-  private final List<xdi> a = new ArrayList();
-  
-  public int a()
+  wvc(wvb paramwvb, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
   {
-    return this.a.size();
+    super(paramString);
   }
   
-  public xdi a(int paramInt)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (xdi)this.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public xdi a(String paramString)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    synchronized (wvb.a(this.jdField_a_of_type_Wvb))
     {
-      xdi localxdi = (xdi)localIterator.next();
-      if (TextUtils.equals(paramString, localxdi.a)) {
-        return localxdi;
-      }
-    }
-    return null;
-  }
-  
-  public void a(Collection<xdi> paramCollection)
-  {
-    wsv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(xdi paramxdi)
-  {
-    wsv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramxdi);
-    int i = this.a.indexOf(paramxdi);
-    if (i >= 0)
-    {
-      this.a.set(i, paramxdi);
-      a(i);
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_Wvd = new wvd(this.jdField_a_of_type_Wvb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_Wvb.b();
+      return null;
     }
   }
 }

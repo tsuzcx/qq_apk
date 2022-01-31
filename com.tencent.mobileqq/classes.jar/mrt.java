@@ -215,7 +215,7 @@ public class mrt
       bool1 = bool3;
       if (k == VideoController.p)
       {
-        bool2 = azgk.a(BaseApplicationImpl.getContext());
+        bool2 = azkt.a(BaseApplicationImpl.getContext());
         bool1 = bool2;
         if (bool2) {
           break;
@@ -462,7 +462,7 @@ public class mrt
       }
       QLog.w("AVRedBag", 1, bool + "]");
       if (paramIntent != null) {
-        AudioHelper.a(alpo.a(2131701260), paramIntent.getExtras());
+        AudioHelper.a(alud.a(2131701272), paramIntent.getExtras());
       }
       return;
     }

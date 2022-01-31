@@ -1,151 +1,71 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 
 public class xiu
+  extends xis
 {
-  private static String a;
+  public final int c;
+  @NonNull
+  public final String c;
+  public final int d;
+  @NonNull
+  public final String d;
+  public final int e;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public final String i;
   
-  static
+  public xiu(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
   {
-    jdField_a_of_type_JavaLangString = "SlideShowUtils";
+    super(paramInt1, paramString1, paramInt2);
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.h = paramString7;
+    this.i = paramString8;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
   }
   
-  public static String a()
+  @NonNull
+  public Class<? extends xit> a()
   {
-    String str = "" + System.currentTimeMillis();
-    str = aljq.aX + "multipicset/" + str + "/" + str + ".mp4";
-    File localFile = new File(str);
-    if (!localFile.getParentFile().exists()) {
-      localFile.getParentFile().mkdirs();
-    }
-    return str;
+    return xiv.class;
   }
   
-  public static String a(long paramLong)
+  public String a()
   {
-    paramLong /= 1000L;
-    int i = (int)paramLong % 60;
-    int j = (int)paramLong / 60;
-    String str1;
-    if (i > 9)
-    {
-      str1 = String.valueOf(i);
-      if (j <= 9) {
-        break label102;
-      }
+    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      return "";
     }
-    label102:
-    for (String str2 = String.valueOf(j);; str2 = "0" + String.valueOf(j))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str2).append(":").append(str1);
-      return localStringBuilder.toString();
-      str1 = "0" + String.valueOf(i);
-      break;
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
     }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return this.jdField_e_of_type_JavaLangString;
   }
   
-  public static List<String> a(List<SlideItemInfo> paramList)
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (paramList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList.next();
-      if (localSlideItemInfo != null) {
-        localArrayList.add(localSlideItemInfo.jdField_b_of_type_JavaLangString);
-      }
-    }
-    return localArrayList;
+    return new xiv(this, paramContext, paramViewGroup);
   }
   
-  public static List<SlideItemInfo> a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap, List<SlideItemInfo> paramList1)
+  public boolean a()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      localObject1 = (LocalMediaInfo)paramHashMap.get(paramList.get(i));
-      if (localObject1 == null) {
-        break label365;
-      }
-    }
-    label60:
-    label336:
-    label356:
-    label359:
-    label365:
-    for (Object localObject1 = new SlideItemInfo((LocalMediaInfo)localObject1);; localObject1 = null)
-    {
-      int j;
-      SlideItemInfo localSlideItemInfo1;
-      if (paramList1 != null)
-      {
-        j = 0;
-        localObject2 = localObject1;
-        if (j >= paramList1.size()) {
-          break label336;
-        }
-        localSlideItemInfo1 = (SlideItemInfo)paramList1.get(j);
-        if (localSlideItemInfo1 == null) {
-          break label359;
-        }
-      }
-      for (Object localObject2 = localSlideItemInfo1.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;; localObject2 = null)
-      {
-        if ((localObject2 != null) && (((String)paramList.get(i)).equals(((LocalMediaInfo)localObject2).path)))
-        {
-          SlideItemInfo localSlideItemInfo2 = (SlideItemInfo)paramList1.get(j);
-          if ((localObject1 != null) && (localSlideItemInfo2 != null))
-          {
-            ((SlideItemInfo)localObject1).jdField_b_of_type_Long = localSlideItemInfo2.jdField_b_of_type_Long;
-            ((SlideItemInfo)localObject1).jdField_c_of_type_Long = localSlideItemInfo2.jdField_c_of_type_Long;
-            ((SlideItemInfo)localObject1).jdField_e_of_type_Int = localSlideItemInfo2.jdField_e_of_type_Int;
-            ((SlideItemInfo)localObject1).f = localSlideItemInfo2.f;
-            ((SlideItemInfo)localObject1).d = localSlideItemInfo2.d;
-            ((SlideItemInfo)localObject1).jdField_b_of_type_Boolean = localSlideItemInfo2.jdField_b_of_type_Boolean;
-            ((SlideItemInfo)localObject1).jdField_c_of_type_Int = localSlideItemInfo2.jdField_c_of_type_Int;
-            ((SlideItemInfo)localObject1).jdField_a_of_type_Boolean = localSlideItemInfo2.jdField_a_of_type_Boolean;
-            ((SlideItemInfo)localObject1).jdField_c_of_type_Boolean = localSlideItemInfo2.jdField_c_of_type_Boolean;
-            ((SlideItemInfo)localObject1).jdField_e_of_type_JavaLangString = localSlideItemInfo2.jdField_e_of_type_JavaLangString;
-            ((SlideItemInfo)localObject1).jdField_a_of_type_Int = localSlideItemInfo2.jdField_a_of_type_Int;
-            ((SlideItemInfo)localObject1).jdField_a_of_type_JavaLangString = localSlideItemInfo2.jdField_a_of_type_JavaLangString;
-            if (((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) {
-              break label356;
-            }
-            ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = ((LocalMediaInfo)localObject2).mediaWidth;
-            ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = ((LocalMediaInfo)localObject2).mediaHeight;
-            ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation = ((LocalMediaInfo)localObject2).rotation;
-          }
-        }
-        for (;;)
-        {
-          j += 1;
-          break label60;
-          localObject1 = localSlideItemInfo1;
-          continue;
-          localObject2 = localObject1;
-          localArrayList.add(localObject2);
-          i += 1;
-          break;
-          return localArrayList;
-        }
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, List<String> paramList)
-  {
-    wta.a("video_edit", "choose_slides", 0, 0, new String[] { String.valueOf(paramList.size()) });
+    return true;
   }
 }
 

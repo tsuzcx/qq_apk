@@ -31,9 +31,9 @@ public class pej
   static
   {
     jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + pej.class.getSimpleName();
-    b = alpo.a(2131713281);
-    c = alpo.a(2131713192);
-    d = alpo.a(2131713352);
+    b = alud.a(2131713293);
+    c = alud.a(2131713204);
+    d = alud.a(2131713364);
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), b);
     jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), c);
@@ -55,7 +55,7 @@ public class pej
   
   private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<byte[]> paramArrayList)
   {
-    new biqt(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
+    new biva(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean)
@@ -65,7 +65,7 @@ public class pej
     {
       ors.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
       if (!paramBoolean) {
-        bdcd.a(paramContext, 230, paramContext.getString(2131692442), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690648, 2131692440, new pel(), null).setMessageCount(null).show();
+        bdgm.a(paramContext, 230, paramContext.getString(2131692443), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690648, 2131692441, new pel(), null).setMessageCount(null).show();
       }
       bool = true;
     }
@@ -116,7 +116,7 @@ public class pej
     localKandianFavoriteBizData.uint32_type.set(paramInt);
     paramString2 = new ArrayList();
     paramString2.add(localKandianFavoriteBizData.toByteArray());
-    new biqt(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
+    new biva(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
   }
   
   public void a(List<String> paramList, pem parampem)

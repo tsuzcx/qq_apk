@@ -100,7 +100,7 @@ public class EffectFilterTextPager
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372606);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372632);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -155,7 +155,7 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368335);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368346);
         if (localEditText != null)
         {
           localEditText.clearFocus();

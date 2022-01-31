@@ -3,7 +3,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 public class myw
-  implements bhpo
+  implements bhtv
 {
   public myw(PoiMapActivity paramPoiMapActivity) {}
   

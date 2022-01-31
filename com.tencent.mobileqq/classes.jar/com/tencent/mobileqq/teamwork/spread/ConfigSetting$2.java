@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aouf;
-import bafb;
+import aoyo;
+import bajk;
 
 public class ConfigSetting$2
   implements Runnable
 {
-  public ConfigSetting$2(bafb parambafb, aouf paramaouf) {}
+  public ConfigSetting$2(bajk parambajk, aoyo paramaoyo) {}
   
   public void run()
   {
-    bafb.a(this.this$0, this.a);
+    bajk.a(this.this$0, this.a);
   }
 }
 

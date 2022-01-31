@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import mqq.util.WeakReference;
 
 public class txd
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public txd(QCircleContentOperationView paramQCircleContentOperationView) {}
+  private WeakReference<QCirclePersonalDetailFragment> a;
   
-  public void onClick(View paramView)
+  public txd(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment)
   {
-    TextView localTextView;
-    if (QCircleContentOperationView.a(this.a) != null)
+    this.a = new WeakReference(paramQCirclePersonalDetailFragment);
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = (QCirclePersonalDetailFragment)this.a.get();
+    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")) && (paramIntent.hasExtra("uin")) && (paramIntent.getStringExtra("uin").equals(QCirclePersonalDetailFragment.a(paramContext))))
     {
-      localTextView = QCircleContentOperationView.a(this.a);
-      if (QCircleContentOperationView.a(this.a).a() != 1) {
-        break label46;
-      }
-    }
-    label46:
-    for (paramView = QCircleContentOperationView.a(this.a);; paramView = QCircleContentOperationView.b(this.a))
-    {
-      localTextView.setText(paramView);
-      return;
+      QCirclePersonalDetailFragment.a(paramContext, false);
+      QCirclePersonalDetailFragment.b(paramContext, false);
+      yiw.a().a(new UserStateUpdateEvent());
     }
   }
 }

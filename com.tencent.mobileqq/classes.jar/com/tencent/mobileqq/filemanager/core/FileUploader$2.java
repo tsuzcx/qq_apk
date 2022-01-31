@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqsv;
+import aqxe;
 
 public class FileUploader$2
   implements Runnable
 {
-  public FileUploader$2(aqsv paramaqsv) {}
+  public FileUploader$2(aqxe paramaqxe) {}
   
   public void run()
   {
-    if (aqsv.a(this.this$0)) {
+    if (aqxe.a(this.this$0)) {
       return;
     }
-    aqsv.a(this.this$0, aqsv.a(this.this$0));
+    aqxe.a(this.this$0, aqxe.a(this.this$0));
   }
 }
 

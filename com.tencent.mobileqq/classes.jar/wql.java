@@ -1,27 +1,7 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wql
-  extends QQUIEventReceiver<wps, vaa>
+  extends uli
 {
-  public wql(@NonNull wps paramwps)
-  {
-    super(paramwps);
-  }
-  
-  public void a(@NonNull wps paramwps, @NonNull vaa paramvaa)
-  {
-    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    paramwps.a(paramvaa);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vaa.class;
-  }
+  public wqn a;
 }
 
 

@@ -1,23 +1,44 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class afik
-  extends LruCache<Long, MessageForPoke>
+public final class afik
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  afik(afij paramafij, int paramInt)
+  protected WeakReference<afii> a;
+  
+  public afik(WeakReference<afii> paramWeakReference)
   {
-    super(paramInt);
+    this.a = paramWeakReference;
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    paramObject = (afii)this.a.get();
+    if (paramObject == null)
     {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
+    }
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        afii.a(paramObject).view = str2;
+      }
+      afii.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
     }
   }
 }

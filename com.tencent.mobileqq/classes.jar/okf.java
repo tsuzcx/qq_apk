@@ -40,7 +40,7 @@ public class okf
           ojm.a(paramContainer, paramomg, (omt)paramomg.getItem(paramInt1));
         }
       }
-      bhxr.a();
+      biby.a();
       return;
     }
     catch (JSONException paramVafContext)
@@ -68,7 +68,7 @@ public class okf
   {
     if (c == 2147483647)
     {
-      aekt.a("DynamicCommentProteusHelper", "", new IllegalArgumentException(alpo.a(2131703954)));
+      aepi.a("DynamicCommentProteusHelper", "", new IllegalArgumentException(alud.a(2131703966)));
       return this.b - 8;
     }
     return c - 8;
@@ -128,7 +128,7 @@ public class okf
     {
       jdField_a_of_type_JavaLangString = ((AladdinConfig)localObject).getString("comment_feeds", "0");
       localObject = ((AladdinConfig)localObject).getString("comment_feeds_cdn_url", "");
-      bjxj.a("comment_proteus_offline_bid", jdField_a_of_type_JavaLangString);
+      bkbq.a("comment_proteus_offline_bid", jdField_a_of_type_JavaLangString);
       QLog.i("DynamicCommentProteusHelper", 1, "[init], offline comment pts bid = " + jdField_a_of_type_JavaLangString + ", cdnUrl = " + (String)localObject);
       sgl.a(jdField_a_of_type_JavaLangString, (String)localObject);
     }

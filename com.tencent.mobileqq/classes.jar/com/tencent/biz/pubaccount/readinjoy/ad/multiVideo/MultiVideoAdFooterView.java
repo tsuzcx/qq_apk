@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.multiVideo;
 
-import aekt;
+import aepi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcuq;
+import bcyz;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
@@ -80,15 +80,15 @@ public class MultiVideoAdFooterView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131559886, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364339));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365116));
+    LayoutInflater.from(getContext()).inflate(2131559885, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364341));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365118));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131362014));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361982));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362823));
-    this.b = ((TextView)findViewById(2131378050));
+    this.b = ((TextView)findViewById(2131378104));
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
@@ -122,12 +122,12 @@ public class MultiVideoAdFooterView
     for (Object localObject1 = "http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png";; localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.n)
     {
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = aekt.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = aekt.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = aepi.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = aepi.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
       ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "ad_icon_footer";
       localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(bcuq.b(((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight, aekt.a(2.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
-      ((URLDrawable)localObject1).setDecodeHandler(bcuq.i);
+      ((URLDrawable)localObject1).setTag(bcyz.b(((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight, aepi.a(2.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
+      ((URLDrawable)localObject1).setDecodeHandler(bcyz.i);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable((Drawable)localObject1);
       this.b.setText(oee.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, getResources()));
       return;

@@ -8,9 +8,9 @@ import com.tencent.mobileqq.data.PAMessage.Item;
 import java.util.ArrayList;
 
 final class syh
-  implements bhqd
+  implements bhuk
 {
-  syh(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bhpy parambhpy) {}
+  syh(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -19,7 +19,7 @@ final class syh
     }
     do
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
       if (this.jdField_a_of_type_Boolean) {
@@ -35,7 +35,7 @@ final class syh
     paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
     if (paramView != null)
     {
-      paramView = aepx.a(paramView);
+      paramView = aeum.a(paramView);
       if (paramView != null)
       {
         paramView = (PAMessage.Item)paramView.items.get(0);

@@ -1,46 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.List;
+import pb.unify.search.UnifySearchUnite.TabItemGroup;
+import pb.unite.search.UniteSearch.TabItemGroup;
 
-class ayno
-  implements View.OnClickListener
+public class ayno
 {
-  ayno(aynf paramaynf, Context paramContext, aykk paramaykk) {}
+  public String a;
+  public List<Long> a;
   
-  public void onClick(View paramView)
+  public ayno() {}
+  
+  public ayno(UnifySearchUnite.TabItemGroup paramTabItemGroup)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ayrd.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aykk.a.jdField_a_of_type_JavaLangString);
-    aydx localaydx;
-    JSONObject localJSONObject;
-    if (aydw.b.containsKey(this.jdField_a_of_type_Aykk))
-    {
-      localaydx = (aydx)aydw.b.get(this.jdField_a_of_type_Aykk);
-      localJSONObject = new JSONObject();
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
     }
-    try
-    {
-      localJSONObject.put("project", aynt.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localaydx.jdField_a_of_type_Long + "").obj2(localaydx.b).ver1(localaydx.jdField_a_of_type_JavaLangString).ver2(aynt.a(this.jdField_a_of_type_Aykk.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
-      return;
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+  }
+  
+  public ayno(UniteSearch.TabItemGroup paramTabItemGroup)
+  {
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
   }
 }
 

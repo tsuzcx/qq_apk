@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.out.plugins;
 
-import ajfr;
+import ajkg;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -115,7 +115,7 @@ public class OtherJsPlugin
   
   public void enterQRCode(BaseActivity paramBaseActivity)
   {
-    if (!ajfr.a(paramBaseActivity)) {
+    if (!ajkg.a(paramBaseActivity)) {
       return;
     }
     Intent localIntent = new Intent(paramBaseActivity, ScannerActivity.class);

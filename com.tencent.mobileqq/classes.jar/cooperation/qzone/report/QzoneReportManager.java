@@ -1,13 +1,13 @@
 package cooperation.qzone.report;
 
-import bjmv;
-import bjoe;
+import bjrc;
+import bjsl;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QzoneReportManager
 {
-  private static final bjoe<QzoneReportManager, Void> jdField_a_of_type_Bjoe = new bjmv();
+  private static final bjsl<QzoneReportManager, Void> jdField_a_of_type_Bjsl = new bjrc();
   public static String a;
   public static boolean a;
   volatile int jdField_a_of_type_Int = 0;

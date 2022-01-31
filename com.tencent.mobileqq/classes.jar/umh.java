@@ -1,17 +1,46 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
-public class umh
+class umh
+  extends SimpleJob<Object>
 {
-  public static void a(SparseIntArray paramSparseIntArray)
+  umh(umg paramumg, String paramString)
   {
-    una.a(paramSparseIntArray);
+    super(paramString);
   }
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    una.a(paramMSFServlet, paramIntent, paramBoolean);
+    Object localObject = (String)((uvt)uwa.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new umk();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = bdhe.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        wxe.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          wxe.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
+    }
   }
 }
 

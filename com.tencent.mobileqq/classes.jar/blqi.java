@@ -1,18 +1,64 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public final class blqi
-  implements Parcelable.Creator<QIMTemplateItem>
+public class blqi
 {
-  public QIMTemplateItem a(Parcel paramParcel)
+  public static Bundle a(@NonNull Intent paramIntent)
   {
-    return new QIMTemplateItem(paramParcel);
+    return paramIntent.getBundleExtra("state");
   }
   
-  public QIMTemplateItem[] a(int paramInt)
+  public static Bundle a(@NonNull blqk paramblqk)
   {
-    return new QIMTemplateItem[paramInt];
+    Bundle localBundle = new Bundle();
+    if (paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout != null)
+    {
+      bmqg localbmqg = (bmqg)paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bmqg.a);
+      bmqe localbmqe = (bmqe)paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("DynamicFaceLayer");
+      bmqw localbmqw = (bmqw)paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bmqw.a);
+      localBundle.putBundle(bmqg.a, localbmqg.a());
+      localBundle.putBundle("DynamicFaceLayer", localbmqe.a());
+      if (localbmqw != null) {
+        localBundle.putBundle(bmqw.a, localbmqw.a());
+      }
+      a(paramblqk, localBundle);
+      localBundle.putBundle("container", paramblqk.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a());
+      return localBundle;
+    }
+    QLog.e("EditState", 1, "saveState mDoodleLayout is null");
+    return localBundle;
+  }
+  
+  private static void a(blqk paramblqk, Bundle paramBundle)
+  {
+    Object localObject = paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+    bmrg localbmrg = ((bmre)localObject).a();
+    if (localbmrg == null)
+    {
+      localObject = paramblqk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+      paramblqk = ((bmre)localObject).a();
+      if (paramblqk == null) {
+        break label83;
+      }
+      paramblqk.jdField_a_of_type_Int = 1001;
+    }
+    label83:
+    for (;;)
+    {
+      if (paramblqk != null)
+      {
+        ((blsg)blqr.a(15)).a(paramblqk.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramBundle.putBundle("VoteLayer", ((bmre)localObject).a());
+      }
+      return;
+      localbmrg.jdField_a_of_type_Int = 1000;
+      paramblqk = localbmrg;
+    }
   }
 }
 

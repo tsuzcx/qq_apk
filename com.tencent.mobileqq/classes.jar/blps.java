@@ -1,47 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
 
-final class blps
-  implements xpb
+public class blps
+  implements Animation.AnimationListener
 {
-  blps(String paramString, blqf paramblqf) {}
+  public blps(VideoEditToolBar paramVideoEditToolBar) {}
   
-  public void onFailure(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
-    }
+    this.a.setVisibility(8);
   }
   
-  public void onFinish(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Blqf != null) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Blqf.a(localFile);
-      this.jdField_a_of_type_Blqf.c();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

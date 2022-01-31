@@ -43,16 +43,16 @@ public class prr
   private prr(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramVafContext.getContext()).inflate(2131560123, null));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375429));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramVafContext.getContext()).inflate(2131560122, null));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375480));
     BezierSideBarView localBezierSideBarView = (BezierSideBarView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363178);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setSideBarView(localBezierSideBarView);
     this.jdField_a_of_type_Psb = new psb(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(xee.b(paramVafContext.getContext(), 5.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(xin.b(paramVafContext.getContext(), 5.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setAdapter(this.jdField_a_of_type_Psb);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnViewWindowChangedListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnOverScrollListener(this);
-    this.jdField_a_of_type_Int = xee.b(paramVafContext.getContext(), 6.0F);
+    this.jdField_a_of_type_Int = xin.b(paramVafContext.getContext(), 6.0F);
   }
   
   private void a(long paramLong)
@@ -78,7 +78,7 @@ public class prr
     prx localprx = new prx(this);
     pry localpry = new pry(this, paramBoolean);
     if (paramBoolean) {}
-    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { xee.b(this.mContext.getContext(), 6.0F), this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() });; localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight(), xee.b(this.mContext.getContext(), 6.0F) }))
+    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { xin.b(this.mContext.getContext(), 6.0F), this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() });; localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight(), xin.b(this.mContext.getContext(), 6.0F) }))
     {
       localValueAnimator.addListener(localpry);
       localValueAnimator.addUpdateListener(localprx);
@@ -90,8 +90,8 @@ public class prr
   
   private void b(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    if (!bdee.g(this.mContext.getContext())) {
-      QQToast.a(this.mContext.getContext(), 1, 2131718949, 0).a();
+    if (!bdin.g(this.mContext.getContext())) {
+      QQToast.a(this.mContext.getContext(), 1, 2131718961, 0).a();
     }
     do
     {
@@ -100,7 +100,7 @@ public class prr
         QLog.d("ReadInJoySocializeRecommendFollowView", 1, "jumpToProfile, info = " + paramRecommendFollowInfo);
       }
     } while (paramRecommendFollowInfo == null);
-    paramRecommendFollowInfo = oqu.k + bdbi.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
+    paramRecommendFollowInfo = oqu.k + bdfr.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
     Intent localIntent = new Intent(this.mContext.getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", paramRecommendFollowInfo);
     localIntent.putExtra("hide_operation_bar", true);
@@ -169,7 +169,7 @@ public class prr
   
   protected void a(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
-    if (bdee.g(this.mContext.getContext()))
+    if (bdin.g(this.mContext.getContext()))
     {
       if ((!paramBoolean) || (paramRecommendFollowInfo.type == 1)) {
         c(paramRecommendFollowInfo, paramBoolean);
@@ -185,7 +185,7 @@ public class prr
         }
       }
     }
-    QQToast.a(this.mContext.getContext(), 1, 2131718949, 0).a();
+    QQToast.a(this.mContext.getContext(), 1, 2131718961, 0).a();
   }
   
   public void a(pgd parampgd)
@@ -214,7 +214,7 @@ public class prr
       parampgd.run();
       return;
     }
-    this.jdField_a_of_type_Int = xee.b(this.mContext.getContext(), 6.0F);
+    this.jdField_a_of_type_Int = xin.b(this.mContext.getContext(), 6.0F);
   }
   
   public void b()

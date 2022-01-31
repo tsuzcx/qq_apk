@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import bldr;
+import blhy;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 
 public final class FaceChangeUtils$3
@@ -11,7 +11,7 @@ public final class FaceChangeUtils$3
   
   public void run()
   {
-    this.jdField_a_of_type_ArrayOfComTencentTtpicOpenapiPTFaceAttr[0] = bldr.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ArrayOfComTencentTtpicOpenapiPTFaceAttr[0] = blhy.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

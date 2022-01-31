@@ -1,50 +1,14 @@
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arjy
-  implements bhrq
+  implements View.OnClickListener
 {
-  arjy(arjx paramarjx) {}
+  arjy(arjq paramarjq) {}
   
-  public void F()
+  public void onClick(View paramView)
   {
-    arjx.a(this.a, false);
-    this.a.jdField_a_of_type_Arjv.o();
-  }
-  
-  public void G()
-  {
-    arjx.a(this.a, false);
-    if (arjx.a(this.a)) {
-      this.a.b(true);
-    }
-    if (arjx.b(this.a)) {
-      this.a.a(true);
-    }
-  }
-  
-  public void H() {}
-  
-  public void a(float paramFloat)
-  {
-    arjx.a(this.a, true);
-    if (arjx.a(this.a) != null)
-    {
-      Drawable localDrawable = arjx.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
-    }
-    if (paramFloat < 0.8F)
-    {
-      if (arjx.a(this.a) != null) {
-        arjx.a(this.a).setVisibility(8);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-    }
+    arrr.a(this.a.a, this.a.d());
   }
 }
 

@@ -1,18 +1,19 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aomz
-  extends aofy<aona>
+  extends aokh<aona>
 {
-  public static aona a()
-  {
-    return (aona)aogj.a().a(564);
-  }
-  
   public int a()
   {
-    return 564;
+    return 566;
   }
   
   @NonNull
@@ -22,16 +23,20 @@ public class aomz
   }
   
   @Nullable
-  public aona a(aogf[] paramArrayOfaogf)
+  public aona a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aona localaona = aona.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("BootOptimizeConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaona;
     }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfaogf);
+      QLog.d("BootOptimizeConfProcessor", 2, "onParsed is null");
     }
-    return aona.a(paramArrayOfaogf);
+    return null;
   }
   
   public Class<aona> a()
@@ -39,20 +44,63 @@ public class aomz
     return aona.class;
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BootOptimizeConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
   
   public void a(aona paramaona)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    if (paramaona == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("BootOptimizeConfProcessor", 2, "onUpdate but newConf==null");
+      }
     }
-    if (paramaona != null) {
-      axwx.a = (int)(paramaona.a * 60.0D * 60.0D);
-    }
+    Object localObject;
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("BootOptimizeConfProcessor", 2, "onUpdate " + paramaona.toString());
+        }
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        ajkl.a((QQAppInterface)localObject, paramaona.jdField_a_of_type_Boolean);
+        ((QQAppInterface)localObject).getApp().getSharedPreferences("acc_info" + ((QQAppInterface)localObject).getAccount(), 0).edit().putLong("PREF_PLUGIN_DELAY_TIME", paramaona.jdField_a_of_type_Long).apply();
+        try
+        {
+          localObject = new File(((QQAppInterface)localObject).getApp().getFilesDir() + File.separator + "enableKernelServiceInVivo");
+          if (paramaona.b)
+          {
+            if (((File)localObject).exists()) {
+              continue;
+            }
+            ((File)localObject).createNewFile();
+          }
+        }
+        catch (Throwable paramaona)
+        {
+          QLog.e("BootOptimizeConfProcessor", 1, "create file failed", paramaona);
+          return;
+        }
+      }
+    } while (!((File)localObject).exists());
+    ((File)localObject).delete();
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("BootOptimizeConfProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

@@ -1,20 +1,20 @@
 package cooperation.qzone.stickynote;
 
-import bjpc;
+import bjtj;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.widget.ListView;
 
 public class QzoneStickyNoteManager$2
   implements Runnable
 {
-  public QzoneStickyNoteManager$2(bjpc parambjpc, ListView paramListView, Card paramCard) {}
+  public QzoneStickyNoteManager$2(bjtj parambjtj, ListView paramListView, Card paramCard) {}
   
   public void run()
   {
-    bjpc.a(this.this$0, bjpc.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetListView));
-    bjpc.a(this.this$0, this.this$0.a());
-    bjpc.a(this.this$0, true);
-    bjpc.a(this.this$0);
+    bjtj.a(this.this$0, bjtj.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetListView));
+    bjtj.a(this.this$0, this.this$0.a());
+    bjtj.a(this.this$0, true);
+    bjtj.a(this.this$0);
     this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }

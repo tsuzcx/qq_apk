@@ -1,93 +1,17 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ukx
-  implements xpb
+public class ukx
+  implements xnc
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  public ukx(AlbumGalleryCapturePart.12.1 param1) {}
   
-  public ukx(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    wsv.d(uku.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    wsv.d(uku.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-        wsv.e(uku.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
-        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
-      }
-    }
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramBoolean)
-    {
-      label152:
-      localAtomicInteger.set(i);
-      for (;;)
-      {
-        label158:
-        return;
-        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean) {
-          break;
-        }
-        i = j;
-        label174:
-        localAtomicInteger.set(i);
-      }
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean) {
-        break label248;
-      }
-    }
-    label248:
-    for (i = k;; i = 945001)
-    {
-      localAtomicInteger.set(i);
-      break label158;
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (paramBoolean) {}
-      for (i = m;; i = 944004)
-      {
-        localAtomicInteger.set(i);
-        break;
-      }
-      break;
-      i = 943004;
-      break label152;
-      i = 942004;
-      break label174;
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    wsv.c(uku.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    wsv.c(uku.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    ukt.a(this.a.a.a, -1L);
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
   }
 }
 

@@ -1,63 +1,72 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
-import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
 
+@bglp(a="GpkgLoadAsyncTask")
 public class bgzk
-  extends bgzp
+  extends bhlt
 {
-  private INTERFACE.StGetUserSettingReq a = new INTERFACE.StGetUserSettingReq();
+  private bgyu jdField_a_of_type_Bgyu;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bgzk(String paramString1, String paramString2, String paramString3)
+  public bgzk(Context paramContext, bgun parambgun)
   {
-    this.a.appid.set(paramString1);
-    this.a.openid.set(paramString2);
-    this.a.settingItem.set(paramString3);
+    super(paramContext, parambgun);
   }
   
-  protected String a()
+  private void b(MiniAppInfo paramMiniAppInfo)
   {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
-    try
+    if ((paramMiniAppInfo == null) || (paramMiniAppInfo.appId == null))
     {
-      localStGetUserSettingRsp.mergeFrom(a(paramArrayOfByte));
-      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
-        paramArrayOfByte.put("desc", localStGetUserSettingRsp.setting.desc.get());
-        paramArrayOfByte.put("authState", localStGetUserSettingRsp.setting.authState.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
-      return null;
+      QMLog.e("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig failed " + paramMiniAppInfo);
+      a(2002, "配置错误");
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    if ((this.jdField_a_of_type_Bgyu != null) && (paramMiniAppInfo.appId.equals(this.jdField_a_of_type_Bgyu.appId)))
     {
-      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
+      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + paramMiniAppInfo.appId + " has loaded.");
+      c();
+      return;
     }
-    return null;
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramMiniAppInfo.appId)))
+    {
+      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + paramMiniAppInfo.appId + " is loading.");
+      return;
+    }
+    QMLog.i("GpkgLoadAsyncTask", "[Gpkg] start loadGpkgByConfig appid:" + paramMiniAppInfo.appId);
+    this.jdField_a_of_type_JavaLangString = paramMiniAppInfo.appId;
+    this.jdField_a_of_type_Bgyu = null;
+    bgyk.a(paramMiniAppInfo, new bgzl(this, System.currentTimeMillis()));
   }
   
-  protected byte[] a()
+  public bgyu a()
   {
-    return this.a.toByteArray();
+    return this.jdField_a_of_type_Bgyu;
   }
   
-  protected String b()
+  public MiniAppInfo a()
   {
-    return "GetUserSetting";
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  }
+  
+  public void a()
+  {
+    QMLog.i("GpkgLoadAsyncTask", "executeAsync(). " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+  }
+  
+  public void b()
+  {
+    QMLog.i("GpkgLoadAsyncTask", "[Gpkg]" + this + " reset ");
+    super.b();
+    this.jdField_a_of_type_Bgyu = null;
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

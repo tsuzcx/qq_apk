@@ -1,51 +1,70 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
-class atlw
-  implements alkr
+public class atlw
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public static final String a;
+  public int a;
+  public long a;
+  public alrb a;
+  public int b = 0;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserverBase", 2, new Object[] { "onUpdate: invoked. ", " type: ", Integer.valueOf(paramInt), " isSuccess: ", Boolean.valueOf(paramBoolean), " data: ", paramObject });
-    }
-    switch (paramInt)
+    jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.ltcfg.name();
+  }
+  
+  private atlw()
+  {
+    this.jdField_a_of_type_Int = 50;
+    this.jdField_a_of_type_Long = 3000L;
+    this.jdField_a_of_type_Alrb = new atlx(this);
+    a();
+    DeviceProfileManager.a(this.jdField_a_of_type_Alrb);
+  }
+  
+  public static atlw a()
+  {
+    return atly.a();
+  }
+  
+  private void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    try
     {
-    default: 
-      return;
-    case 1: 
-      g(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      f(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      d(paramBoolean, paramObject);
-      return;
-    case 6: 
-      c(paramBoolean, paramObject);
+      if (!TextUtils.isEmpty(str))
+      {
+        String[] arrayOfString = str.split("\\|");
+        if (arrayOfString.length >= 4)
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+          this.b = Integer.valueOf(arrayOfString[1]).intValue();
+          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
+      }
       return;
     }
-    b(paramBoolean, paramObject);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
+        this.jdField_a_of_type_Int = 50;
+        this.b = 0;
+        this.jdField_a_of_type_Long = 3000L;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

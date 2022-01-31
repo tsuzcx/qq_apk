@@ -1,9 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public abstract interface uex
+public class uex
+  implements ydm
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
+  public uex(QCirclePushRankItemView paramQCirclePushRankItemView) {}
+  
+  public void a()
+  {
+    tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 3L, 0L);
+  }
 }
 
 

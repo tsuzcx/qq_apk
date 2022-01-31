@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aalg;
-import aanp;
+import aapv;
+import aase;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -14,18 +14,18 @@ class GdtMvDownloadBtnManager$1
   
   public void run()
   {
-    aalg localaalg;
+    aapv localaapv;
     if (GdtMvDownloadBtnManager.a(this.this$0) != null) {
-      localaalg = new aalg();
+      localaapv = new aapv();
     }
     for (;;)
     {
       GdtMvDownloadBtnManager.a(this.this$0);
       Object localObject = GdtMvDownloadBtnManager.a(this.this$0).getUrlForClick();
-      aanp.a("GdtMvDownloadBtnManager", "fetching AppData " + GdtMvDownloadBtnManager.b(this.this$0) + ", url = " + (String)localObject);
+      aase.a("GdtMvDownloadBtnManager", "fetching AppData " + GdtMvDownloadBtnManager.b(this.this$0) + ", url = " + (String)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = localaalg.a((String)localObject, "&gd=1", GdtMvDownloadBtnManager.b(this.this$0));
+        localObject = localaapv.a((String)localObject, "&gd=1", GdtMvDownloadBtnManager.b(this.this$0));
         if ((localObject != null) && (((GdtMvAppBtnData)localObject).isValid()))
         {
           ((GdtMvAppBtnData)localObject).mGdtAd_appId = GdtMvDownloadBtnManager.a(this.this$0).getAppId();
@@ -37,14 +37,14 @@ class GdtMvDownloadBtnManager$1
       }
       if (GdtMvDownloadBtnManager.a(this.this$0) != null)
       {
-        aanp.c("GdtMvDownloadBtnPresenter", "loader sucess!!!");
+        aase.c("GdtMvDownloadBtnPresenter", "loader sucess!!!");
         this.this$0.e();
       }
       while ((GdtMvDownloadBtnManager.a(this.this$0) != null) || (GdtMvDownloadBtnManager.b(this.this$0) >= 2))
       {
         GdtMvDownloadBtnManager.a(this.this$0, false);
         return;
-        aanp.c("GdtMvDownloadBtnPresenter", "loader failed!!!");
+        aase.c("GdtMvDownloadBtnPresenter", "loader failed!!!");
       }
     }
   }

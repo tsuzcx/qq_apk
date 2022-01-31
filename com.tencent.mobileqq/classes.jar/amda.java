@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
 
-public class amda
-  implements Comparator<File>
+class amda
 {
-  public amda(CleanCache.1 param1) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  String jdField_a_of_type_JavaLangString;
   
-  public int a(File paramFile1, File paramFile2)
+  amda(amcw paramamcw, String paramString, Context paramContext, Intent paramIntent)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
 }
 

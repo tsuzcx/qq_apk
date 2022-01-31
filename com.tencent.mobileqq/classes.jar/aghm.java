@@ -1,53 +1,45 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class aghm
-  extends aghi
+  extends agkm
 {
-  aipw a;
+  aghm(aghl paramaghl) {}
   
-  public aghm(QQAppInterface paramQQAppInterface, agia paramagia, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aemp paramaemp)
+  public void a()
   {
-    super(paramQQAppInterface, paramagia, paramQQWalletTransferMsgElem, paramInt, paramaemp);
-    this.jdField_a_of_type_Aipw = ((aipw)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
-    {
-      this.i = 0;
-      return;
-    }
-    this.i = paramQQWalletTransferMsgElem.effectsId;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
   }
   
-  public boolean b()
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Agia.b.setVisibility(0);
-    this.jdField_a_of_type_Agia.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Agia.b.setText(aghn.d);
-    return true;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
   }
   
-  public void f()
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    super.f();
-    try
-    {
-      this.jdField_a_of_type_Agia.a.setTextColor(Color.parseColor("#604121"));
-      this.jdField_a_of_type_Agia.a.setText(ajaf.a(this.jdField_a_of_type_Agia.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agia.a.getPaint()));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
   }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
+  {
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  {
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

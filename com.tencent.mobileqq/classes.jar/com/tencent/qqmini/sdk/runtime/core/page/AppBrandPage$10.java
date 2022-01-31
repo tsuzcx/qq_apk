@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bgid;
+import bgmk;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 
 class AppBrandPage$10
   implements Runnable
 {
-  AppBrandPage$10(AppBrandPage paramAppBrandPage, String paramString, bgid parambgid) {}
+  AppBrandPage$10(AppBrandPage paramAppBrandPage, String paramString, bgmk parambgmk) {}
   
   public void run()
   {
     AppBrandPage.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bgid.a();
+    this.jdField_a_of_type_Bgmk.a();
   }
 }
 

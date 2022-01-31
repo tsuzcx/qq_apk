@@ -1,57 +1,38 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class amuv
-  extends Binder
-  implements amuu
+class amuv
+  implements View.OnTouchListener
 {
-  public amuv()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-  }
+  amuv(amuu paramamuu) {}
   
-  public static amuu a(IBinder paramIBinder)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof amuu))) {
-      return (amuu)localIInterface;
-    }
-    return new amuw(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    switch (paramMotionEvent.getAction())
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
+    do
+    {
+      do
+      {
+        return true;
+        amuu.a(this.a).setAlpha(0.5F);
+        return true;
+        amuu.a(this.a).setAlpha(1.0F);
+        if (!amuu.a(this.a))
+        {
+          amul.a(true);
+          amuu.a(this.a, true);
+        }
+        amuu.a(this.a).setVisibility(8);
+        amuu.a(this.a).clearAnimation();
+      } while (amuu.a(this.a) == null);
+      amuu.a(this.a).g();
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
     return true;
   }
 }

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.database.corrupt;
 
 import android.app.Activity;
 import android.app.Dialog;
-import apbu;
+import apgd;
 
 public class DBFixDialogUI$2
   implements Runnable
 {
-  public DBFixDialogUI$2(apbu paramapbu, Dialog paramDialog) {}
+  public DBFixDialogUI$2(apgd paramapgd, Dialog paramDialog) {}
   
   public void run()
   {

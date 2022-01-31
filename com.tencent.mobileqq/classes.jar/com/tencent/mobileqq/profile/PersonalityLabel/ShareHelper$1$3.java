@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import awlv;
-import awlw;
+import awqe;
+import awqf;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class ShareHelper$1$3
   implements Runnable
 {
-  public ShareHelper$1$3(awlw paramawlw, long paramLong) {}
+  public ShareHelper$1$3(awqf paramawqf, long paramLong) {}
   
   public void run()
   {
-    String str = awlv.a(this.jdField_a_of_type_Awlw.a);
+    String str = awqe.a(this.jdField_a_of_type_Awqf.a);
     ThreadManager.getUIHandler().post(new ShareHelper.1.3.1(this, str));
   }
 }

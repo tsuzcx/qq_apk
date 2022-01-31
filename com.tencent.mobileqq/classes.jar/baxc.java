@@ -1,46 +1,60 @@
-public class baxc
-  extends bawz
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+
+class baxc
+  implements bauf
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public byte[] b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  baxc(baxb parambaxb) {}
   
-  public String toString()
+  public void a(bave parambave, bavf parambavf)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" format:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" str_file_name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(" userCnt:");
-    localStringBuilder.append(this.l);
-    return localStringBuilder.toString();
+    if ((parambave == null) || (parambavf == null)) {}
+    label8:
+    baub localbaub;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label8;
+          do
+          {
+            return;
+          } while (!(parambave instanceof baub));
+          localbaub = (baub)parambave;
+          if (baxb.a(this.a))
+          {
+            File localFile = new File(parambave.d);
+            if (parambavf.c == localFile.length())
+            {
+              parambavf.c = 0L;
+              if (QLog.isColorLevel()) {
+                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + parambave.jdField_a_of_type_Long);
+              }
+            }
+          }
+          localbaub.jdField_a_of_type_Long += parambavf.c;
+          if (0L != localbaub.b) {
+            break;
+          }
+          parambavf.c = 0L;
+          parambave = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+          localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambave);
+          parambave = localbaub.jdField_a_of_type_JavaLangString;
+        } while (!parambave.contains("range="));
+        parambave = parambave.substring(0, parambave.lastIndexOf("range="));
+        localbaub.jdField_a_of_type_JavaLangString = (parambave + "range=" + localbaub.jdField_a_of_type_Long);
+        return;
+      } while ((localbaub.jdField_a_of_type_Long <= 0L) || (localbaub.b <= 0L) || (localbaub.jdField_a_of_type_Long >= localbaub.b));
+      parambavf.c = 0L;
+      parambave = "bytes=" + localbaub.jdField_a_of_type_Long + "-" + localbaub.b;
+      localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambave);
+      parambave = localbaub.jdField_a_of_type_JavaLangString;
+    } while (!parambave.contains("range="));
+    parambave = parambave.substring(0, parambave.lastIndexOf("range="));
+    localbaub.jdField_a_of_type_JavaLangString = (parambave + "range=" + localbaub.jdField_a_of_type_Long + "-" + localbaub.b);
   }
 }
 

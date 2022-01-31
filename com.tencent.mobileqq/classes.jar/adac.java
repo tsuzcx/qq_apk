@@ -1,36 +1,49 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adac
-  implements TextWatcher
+  implements bdvr
 {
-  public adac(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public adac(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onLeftClick: ");
     }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131166975));
-    }
-    for (;;)
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
     {
-      this.a.a.setText("" + (40 - i));
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(this.a, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.a.startActivity((Intent)localObject);
       return;
-      this.a.a.setTextColor(-65536);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    }
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bdun.a(this.a, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      FriendProfileCardActivity.a(this.a).set(true);
+      return;
+    }
+  }
 }
 
 

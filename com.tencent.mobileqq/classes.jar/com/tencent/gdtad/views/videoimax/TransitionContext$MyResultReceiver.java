@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import aanp;
+import aase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -20,7 +20,7 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    aanp.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    aase.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     TransitionContext localTransitionContext = (TransitionContext)this.a.get();
     if (localTransitionContext != null)
     {

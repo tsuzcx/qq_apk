@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aekt;
+import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -26,7 +26,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = aekt.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = aepi.a(a(paramContext, paramAttributeSet), paramContext.getResources());
   }
   
   int a(Context paramContext, AttributeSet paramAttributeSet)

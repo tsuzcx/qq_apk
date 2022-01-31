@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
 
-public class ajiw
-  implements addq
+class ajiw
+  implements bhvm
 {
-  public ajiw(LoginView paramLoginView) {}
+  ajiw(ajit paramajit, View paramView) {}
   
   public void a()
   {
-    LoginView.a(this.a);
-  }
-  
-  public void b()
-  {
-    LoginView.a(this.a);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

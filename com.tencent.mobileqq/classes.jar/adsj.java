@@ -1,22 +1,14 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class adsj
-  implements INetEventHandler
+  implements aybp
 {
-  adsj(adsd paramadsd) {}
+  public adsj(QQSettingMe paramQQSettingMe) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694776), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.z();
     }
   }
 }

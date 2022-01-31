@@ -232,7 +232,7 @@ public class sff
   
   public boolean a(URL paramURL)
   {
-    return (paramURL != null) && (bame.a(paramURL.toString()) != null);
+    return (paramURL != null) && (baqn.a(paramURL.toString()) != null);
   }
   
   public void b()

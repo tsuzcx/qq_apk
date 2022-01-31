@@ -1,6 +1,16 @@
-public abstract interface asvc
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
+
+class asvc
+  implements View.OnHoverListener
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
+  asvc(asvb paramasvb) {}
+  
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

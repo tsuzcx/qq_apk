@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alef;
-import alfa;
-import alfc;
+import aliu;
+import aljp;
+import aljr;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bctc;
-import bcwc;
+import bcxl;
+import bdal;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,18 +15,18 @@ import java.io.File;
 public class ApolloGameShare$2
   implements Runnable
 {
-  public ApolloGameShare$2(alfa paramalfa, int paramInt) {}
+  public ApolloGameShare$2(aljp paramaljp, int paramInt) {}
   
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(alef.s).append(alfa.a(this.this$0)).append("/inviteIcon.png");
+    ((StringBuilder)localObject).append(aliu.s).append(aljp.a(this.this$0)).append("/inviteIcon.png");
     try
     {
       if (new File(((StringBuilder)localObject).toString()).exists()) {
         localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
       } else {
-        localObject = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130838498);
+        localObject = bdal.b(BaseApplicationImpl.getApplication().getResources(), 2130838499);
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,10 +42,10 @@ public class ApolloGameShare$2
     Bitmap localBitmap;
     while (localBitmap != null)
     {
-      localBitmap = bctc.a(localThrowable);
-      alfa.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.a().a(new alfc(this));
-      WXShareHelper.a().a(alfa.a(this.this$0), alfa.b(this.this$0), localBitmap, alfa.c(this.this$0), alfa.d(this.this$0), this.a);
+      localBitmap = bcxl.a(localThrowable);
+      aljp.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(new aljr(this));
+      WXShareHelper.a().a(aljp.a(this.this$0), aljp.b(this.this$0), localBitmap, aljp.c(this.this$0), aljp.d(this.this$0), this.a);
       return;
     }
   }

@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class agah
-  extends agae
+public class agah
+  extends aeqi
 {
-  public agah(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public agah(agad paramagad) {}
 }
 
 

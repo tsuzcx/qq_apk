@@ -1,16 +1,14 @@
-import android.content.Context;
+import java.util.concurrent.ThreadFactory;
 
 class bdoa
-  extends bdfq
+  implements ThreadFactory
 {
-  bdoa(bdnx parambdnx, Context paramContext, int paramInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
+    bdnz.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + bdnz.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 

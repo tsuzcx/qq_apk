@@ -1,26 +1,54 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowEntryData;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class aszo
-  extends CustomizedReport
+public class aszo
+  implements aszg
 {
-  aszo(asyy paramasyy) {}
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
   
-  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
-  
-  public void onReport(Bundle paramBundle)
+  public aszo(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    asyp localasyp = aszx.a().a();
-    if (localasyp != null) {
-      localasyp.a(paramBundle);
-    }
-    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
-      tjr.a(aszw.jdField_a_of_type_JavaLangString, "", "", aszw.b, aszw.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
+  }
+  
+  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    boolean bool = TextUtils.isEmpty(aszn.a().a());
+    if (bool) {}
+    for (String str = "idle";; str = "busy")
+    {
+      QLog.i("shadow::PluginManagerWrapper", 1, String.format("doPreLoad pps status is %s ", new Object[] { str }));
+      if (bool) {
+        enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      }
+      return;
     }
   }
   
-  public void setNowEntryData(NowEntryData paramNowEntryData) {}
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    }
+    aszn.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    if ("Now".equals(this.b)) {}
+    for (paramContext = "33669800";; paramContext = "33669805")
+    {
+      atbh.b(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter").d1(paramLong + "").report();
+      return;
+    }
+  }
 }
 
 

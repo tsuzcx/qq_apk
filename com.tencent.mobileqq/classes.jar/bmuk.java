@@ -1,23 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-
-class bmuk
-  implements DialogInterface.OnShowListener
+public abstract interface bmuk
 {
-  bmuk(bmui parambmui, boolean paramBoolean) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    if (bmui.a(this.jdField_a_of_type_Bmui) != null) {
-      bmui.a(this.jdField_a_of_type_Bmui).onShow(paramDialogInterface);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bmui.a(this.jdField_a_of_type_Bmui).b();
-      return;
-    }
-    bmui.a(this.jdField_a_of_type_Bmui).a(true);
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 

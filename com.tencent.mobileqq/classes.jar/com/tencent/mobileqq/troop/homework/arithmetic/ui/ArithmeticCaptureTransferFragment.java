@@ -8,9 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import bbzm;
-import bbzn;
-import bdaj;
+import bcdv;
+import bcdw;
+import bdes;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class ArithmeticCaptureTransferFragment
   extends AbsHomeWorkFragment
 {
-  private bbzm jdField_a_of_type_Bbzm;
+  private bcdv jdField_a_of_type_Bcdv;
   private String jdField_a_of_type_JavaLangString;
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -40,14 +40,14 @@ public class ArithmeticCaptureTransferFragment
     paramLayoutInflater.putInt("edit_video_type", 10019);
     paramLayoutInflater.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
     QIMCameraCaptureActivity.a(getActivity(), paramLayoutInflater, 10001);
-    getActivity().overridePendingTransition(2130772232, 2130772038);
+    getActivity().overridePendingTransition(2130772233, 2130772038);
   }
   
   public void a(@Nullable String paramString)
   {
     try
     {
-      this.jdField_a_of_type_Bbzm = new bbzm(new JSONObject(paramString));
+      this.jdField_a_of_type_Bcdv = new bcdv(new JSONObject(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("ArithmeticCaptureTransferFragment", 2, "init data ,homework = " + paramString);
       }
@@ -61,7 +61,7 @@ public class ArithmeticCaptureTransferFragment
   
   public int getContentLayoutId()
   {
-    return 2131560450;
+    return 2131560449;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -72,16 +72,16 @@ public class ArithmeticCaptureTransferFragment
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
       if ((paramIntent != null) && (paramIntent.size() > 0))
       {
-        bbzn localbbzn = new bbzn();
-        localbbzn.b = ((String)paramIntent.get(0));
-        this.jdField_a_of_type_Bbzm.a(localbbzn);
+        bcdw localbcdw = new bcdw();
+        localbcdw.b = ((String)paramIntent.get(0));
+        this.jdField_a_of_type_Bcdv.a(localbcdw);
         if (QLog.isColorLevel()) {
-          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbbzn.b);
+          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbcdw.b);
         }
-        bdaj.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+        bdes.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       }
     }
-    a(this.jdField_a_of_type_Bbzm.a(1));
+    a(this.jdField_a_of_type_Bcdv.a(1));
     a();
   }
   

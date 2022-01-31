@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bmci
-  implements DialogInterface.OnCancelListener
+  implements View.OnTouchListener
 {
-  public bmci(LightWeightSoDownloadUnit.4 param4) {}
+  public bmci(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

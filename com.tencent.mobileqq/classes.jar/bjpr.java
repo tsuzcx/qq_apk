@@ -1,22 +1,33 @@
-import java.util.Calendar;
+import android.content.Context;
+import android.content.ServiceConnection;
+import java.lang.ref.WeakReference;
 
 public class bjpr
 {
-  public static final String a = alpo.a(2131703222);
-  public static final String b = alpo.a(2131703193);
-  public static final String c = alpo.a(2131703174);
-  public static final String d = alpo.a(2131703214);
-  public static final String e = alpo.a(2131703184);
-  public static final String f = alpo.a(2131703178);
-  public static final String g = alpo.a(2131703217);
+  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bjps();
+  static bjov jdField_a_of_type_Bjov;
+  private static WeakReference<bjpt> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static boolean a(long paramLong1, long paramLong2)
+  public static void a(Context paramContext, bjpt parambjpt)
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
+    if ((jdField_a_of_type_Bjov != null) && (jdField_a_of_type_Bjov.b()))
+    {
+      if (parambjpt != null) {
+        parambjpt.onQzonePluginClientReady(jdField_a_of_type_Bjov);
+      }
+      return;
+    }
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjpt);
+    bjop.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
+  }
+  
+  private static void b()
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
   }
 }
 

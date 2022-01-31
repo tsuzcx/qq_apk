@@ -1,11 +1,19 @@
-class amza
-  implements bapx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+
+public final class amza
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  amza(amyy paramamyy) {}
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
+  {
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
   
-  public void onResp(baqw parambaqw) {}
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
+  }
 }
 
 

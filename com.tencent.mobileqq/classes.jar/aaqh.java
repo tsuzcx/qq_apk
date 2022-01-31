@@ -1,17 +1,44 @@
-import android.view.View;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
 
-public abstract interface aaqh
+class aaqh
+  extends BroadcastReceiver
 {
-  public abstract void a(View paramView);
+  private aaqh(aaqa paramaaqa) {}
   
-  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (aaqa.a(this.a))
+    {
+      aaqa.b(this.a, false);
+      aase.a("GdtMvViewController", "SilentModeReceiver first auto called! so skip!");
+    }
+    while ((aaqa.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
+      return;
+    }
+    int i = aaqa.a(this.a).getRingerMode();
+    int j = aaqa.a(this.a).getStreamVolume(3);
+    aase.a("GdtMvViewController", "system context mode: " + i + ", streamVolume = " + j);
+    switch (i)
+    {
+    default: 
+      aaqa.c(this.a, true);
+      this.a.a = true;
+      aaqa.a(this.a).a(true);
+    }
+    for (;;)
+    {
+      aaqa.a(this.a, j, aaqa.b(this.a), false);
+      return;
+      aaqa.c(this.a, false);
+      if (j > 0) {
+        this.a.a = false;
+      }
+      aaqa.a(this.a).a(this.a.a);
+    }
+  }
 }
 
 

@@ -1,21 +1,20 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aede
-  extends bcib
+  implements nfd
 {
-  public aede(TroopRequestActivity paramTroopRequestActivity) {}
+  public aede(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void a()
   {
-    if ((paramBoolean) && (paramAccountDetail != null))
-    {
-      this.a.j.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
-    }
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
   }
 }
 

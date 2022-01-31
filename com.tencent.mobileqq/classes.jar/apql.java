@@ -1,66 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class apql
-  implements apqp
+class apql
+  implements TVK_SDKMgr.InstallListener
 {
-  public apql(EmoticonPanelController paramEmoticonPanelController, int paramInt, long paramLong) {}
+  apql(apqh paramapqh, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a()
+  public void onInstallProgress(float paramFloat)
   {
-    int k = 1;
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    List localList;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean)
+    int i = (int)Math.floor(100.0F * paramFloat);
+    if (i > bdzr.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelController", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_JavaUtilList;
-      i = j;
-      if (localList != null)
-      {
-        i = j;
-        if (localList.size() > 0)
-        {
-          if ((localList.size() <= EmoticonPanelController.d) || (((apsm)localList.get(EmoticonPanelController.d)).jdField_a_of_type_Int != 8)) {
-            break label163;
-          }
-          i = 1;
-          if (!((apjf)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(334)).c()) {
-            break label198;
-          }
-        }
-      }
+      bdzr.a = i;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("status", 1);
+      localBundle.putFloat("progress", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
     }
-    label163:
-    label198:
-    for (j = k;; j = 0)
-    {
-      if (i != 0) {
-        if (localList.size() >= j + 4) {
-          i = j + 3;
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean = false;
-        EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, this.jdField_a_of_type_Long, i);
-        return;
-        i = 0;
-        break;
-        i = 0;
-        continue;
-        if (localList.size() >= j + 3) {
-          i = j + 2;
-        } else {
-          i = 0;
-        }
-      }
-    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 2);
+    localBundle.putInt("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 3);
+    localBundle.putBoolean("result", true);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

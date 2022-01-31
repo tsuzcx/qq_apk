@@ -1,6 +1,18 @@
-public abstract interface yxf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+
+public class yxf
+  implements View.OnClickListener
 {
-  public abstract void a(ytk paramytk);
+  public yxf(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
+  }
 }
 
 

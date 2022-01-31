@@ -1,15 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class addx
-  implements View.OnClickListener
+  implements bhuw
 {
-  public addx(MainFragment paramMainFragment) {}
+  public addx(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.g();
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+      return;
+    }
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, bdgm.a(this.a, 2131693327, 2131693331, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

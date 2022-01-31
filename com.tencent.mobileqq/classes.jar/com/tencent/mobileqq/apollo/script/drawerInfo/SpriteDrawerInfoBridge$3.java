@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import akwc;
-import akwl;
-import akxb;
+import alar;
+import alba;
+import albq;
 
 public class SpriteDrawerInfoBridge$3
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$3(akxb paramakxb, akwc paramakwc, akwl paramakwl) {}
+  public SpriteDrawerInfoBridge$3(albq paramalbq, alar paramalar, alba paramalba) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Akwc != null) && (this.jdField_a_of_type_Akwl != null))
+    if ((this.jdField_a_of_type_Alar != null) && (this.jdField_a_of_type_Alba != null))
     {
-      this.jdField_a_of_type_Akwc.a(this.jdField_a_of_type_Akwl.b, false);
-      this.jdField_a_of_type_Akwc.a(this.jdField_a_of_type_Akwl.a, false);
+      this.jdField_a_of_type_Alar.a(this.jdField_a_of_type_Alba.b, false);
+      this.jdField_a_of_type_Alar.a(this.jdField_a_of_type_Alba.a, false);
     }
   }
 }

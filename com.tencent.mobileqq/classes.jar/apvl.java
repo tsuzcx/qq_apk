@@ -1,28 +1,27 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class apvl
-  implements aubp<EmoticonPackage>
+  extends apsb
 {
-  public apvl(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  apvl(apvi paramapvi) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
+    do
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
-      int j = (int)(System.currentTimeMillis() / 1000L);
-      if ((j - i > 86400) || (j < i))
-      {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
-        return;
-      }
-      afqr.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
       return;
-    }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      }
+    } while (this.a.a.g);
+    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
   }
 }
 

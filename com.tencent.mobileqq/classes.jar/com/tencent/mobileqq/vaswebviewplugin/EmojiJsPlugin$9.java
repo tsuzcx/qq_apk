@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bepp;
+import bety;
 
 class EmojiJsPlugin$9
   implements Runnable

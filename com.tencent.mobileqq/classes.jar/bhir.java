@@ -1,9 +1,12 @@
-public class bhir
+final class bhir
+  implements com.tencent.smtt.sdk.ValueCallback
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  bhir(android.webkit.ValueCallback paramValueCallback) {}
+  
+  public void onReceiveValue(Object paramObject)
+  {
+    this.a.onReceiveValue(paramObject);
+  }
 }
 
 

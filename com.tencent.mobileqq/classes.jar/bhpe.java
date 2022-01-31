@@ -1,29 +1,34 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bhpe
+class bhpe
+  implements bhoy
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString).versionCode;
-  }
+  bhpe(bhpd parambhpd) {}
   
-  public static PackageInfo a(Context paramContext, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    return paramContext.getPackageManager().getPackageInfo(paramString, 0);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    try
-    {
-      a(paramContext, paramString);
-      return true;
+    if (paramInt1 == 1) {
+      synchronized (bhpd.a(this.a))
+      {
+        Object localObject2 = (List)bhpd.a(this.a).get(Integer.valueOf(paramInt2));
+        if (localObject2 != null)
+        {
+          bhpd.a(this.a).remove(Integer.valueOf(paramInt2));
+          bhpd.a(this.a);
+        }
+        if (localObject2 != null)
+        {
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (bhpf)((Iterator)???).next();
+            bhpd.a(this.a).a(((bhpf)localObject2).jdField_a_of_type_Int, ((bhpf)localObject2).b, ((bhpf)localObject2).c, new Object[] { ((bhpf)localObject2).jdField_a_of_type_ArrayOfByte }, null);
+          }
+        }
+      }
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
   }
 }
 

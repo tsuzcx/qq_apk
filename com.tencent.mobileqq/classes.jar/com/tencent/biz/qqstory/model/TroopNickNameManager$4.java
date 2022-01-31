@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import urz;
+import uwi;
 
 public class TroopNickNameManager$4
   implements Runnable
 {
-  public TroopNickNameManager$4(urz paramurz) {}
+  public TroopNickNameManager$4(uwi paramuwi) {}
   
   public void run()
   {

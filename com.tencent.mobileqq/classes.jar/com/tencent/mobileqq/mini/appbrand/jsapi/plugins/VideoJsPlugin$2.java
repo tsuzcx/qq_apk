@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
-import bdcd;
-import bdfq;
+import alud;
+import bdgm;
+import bdjz;
 
 class VideoJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class VideoJsPlugin$2
   
   public void run()
   {
-    bdcd.a(this.this$0.jsPluginEngine.getActivityContext(), 230, alpo.a(2131716679), alpo.a(2131716680), alpo.a(2131716683), alpo.a(2131716681), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
+    bdgm.a(this.this$0.jsPluginEngine.getActivityContext(), 230, alud.a(2131716691), alud.a(2131716692), alud.a(2131716695), alud.a(2131716693), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
   }
 }
 

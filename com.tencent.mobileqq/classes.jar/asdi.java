@@ -1,17 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class asdi
-  implements CompoundButton.OnCheckedChangeListener
+class asdi
+  extends Handler
 {
-  public asdi(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  asdi(asdb paramasdb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    ((atvu)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
-    azmj.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, alud.a(2131705210), 0).a();
+    }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

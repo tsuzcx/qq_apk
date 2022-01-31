@@ -1,33 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
 
 public class vpp
-  extends QQUIEventReceiver<vpm, vaa>
 {
-  public vpp(@NonNull vpm paramvpm)
+  @Nullable
+  public String a;
+  public vpm a;
+  @Nullable
+  public vpn a;
+  @Nullable
+  public String b;
+  
+  public vpp(@Nullable vpm paramvpm, @Nullable String paramString1, @Nullable String paramString2)
   {
-    super(paramvpm);
+    this.jdField_a_of_type_Vpm = paramvpm;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(@NonNull vpm paramvpm, @NonNull vaa paramvaa)
+  public vpp(vpp paramvpp)
   {
-    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    if (vpm.b(paramvpm))
-    {
-      vpm.b(paramvpm, true);
-      wsv.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
-      return;
-    }
-    paramvpm.d();
-    wsv.b("VideoCoverListGroupHolder", "base info return , notify list now");
+    this.jdField_a_of_type_Vpm = paramvpp.jdField_a_of_type_Vpm;
+    this.jdField_a_of_type_JavaLangString = paramvpp.jdField_a_of_type_JavaLangString;
+    this.b = paramvpp.b;
+    this.jdField_a_of_type_Vpn = paramvpp.jdField_a_of_type_Vpn;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return vaa.class;
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Vpm + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
 }
 

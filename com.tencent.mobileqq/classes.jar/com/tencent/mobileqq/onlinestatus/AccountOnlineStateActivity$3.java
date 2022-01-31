@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import alkv;
+import alpk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountOnlineStateActivity$3
@@ -10,9 +10,9 @@ class AccountOnlineStateActivity$3
   
   public void run()
   {
-    alkv localalkv = (alkv)AccountOnlineStateActivity.a(this.this$0).a(2);
-    if (localalkv != null) {
-      localalkv.D();
+    alpk localalpk = (alpk)AccountOnlineStateActivity.a(this.this$0).a(2);
+    if (localalpk != null) {
+      localalpk.D();
     }
   }
 }

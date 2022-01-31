@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.Process;
 import android.text.TextUtils;
-import bhli;
+import bhpp;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
@@ -67,7 +67,7 @@ public class EngineInstanceManager
         }
         try
         {
-          String str4 = bhli.a((File)localObject);
+          String str4 = bhpp.a((File)localObject);
           localObject = str4;
           if (str4 == null) {
             localObject = "";
@@ -190,7 +190,7 @@ public class EngineInstanceManager
   {
     InstalledEngine localInstalledEngine = new InstalledEngine();
     localInstalledEngine.engineType = 2;
-    localInstalledEngine.engineVersion = EngineVersion.fromFolderName("8.3.3.4515_1.14.0.00225");
+    localInstalledEngine.engineVersion = EngineVersion.fromFolderName("8.3.5.4555_1.14.0.00225");
     localInstalledEngine.engineDir = "";
     localInstalledEngine.isVerify = true;
     localInstalledEngine.isPersist = true;

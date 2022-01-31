@@ -55,20 +55,20 @@ public class oqs
     localLayoutParams.leftMargin = paramInt3;
     localLayoutParams.topMargin = paramInt4;
     localLayoutParams.width = paramInt1;
-    localLayoutParams.height = (aekt.a(42.0F, paramActivity.getResources()) + paramInt2);
+    localLayoutParams.height = (aepi.a(42.0F, paramActivity.getResources()) + paramInt2);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   public static void a(LinearLayout paramLinearLayout, ArticleInfo paramArticleInfo, Activity paramActivity, rqi paramrqi, int paramInt1, int paramInt2, int paramInt3)
   {
     pdq localpdq = new pdq(paramActivity);
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramLinearLayout.findViewById(2131379755));
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramLinearLayout.findViewById(2131367910));
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131367808));
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131375233));
-    localpdq.b = ((TextView)paramLinearLayout.findViewById(2131365504));
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramLinearLayout.findViewById(2131379680));
-    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131369112));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramLinearLayout.findViewById(2131379813));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramLinearLayout.findViewById(2131367921));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131367819));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131375284));
+    localpdq.b = ((TextView)paramLinearLayout.findViewById(2131365506));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramLinearLayout.findViewById(2131379738));
+    localpdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131369130));
     a(localpdq, paramArticleInfo, paramLinearLayout, paramActivity, paramrqi, paramInt1, paramInt2, paramInt3);
   }
   
@@ -83,7 +83,7 @@ public class oqs
   
   public static void a(ReadInJoyHeadImageView paramReadInJoyHeadImageView)
   {
-    paramReadInJoyHeadImageView.setImageDrawable(bdda.b());
+    paramReadInJoyHeadImageView.setImageDrawable(bdhj.b());
   }
   
   public static void a(pdq parampdq, ArticleInfo paramArticleInfo, LinearLayout paramLinearLayout, Activity paramActivity, rqi paramrqi, int paramInt1, int paramInt2, int paramInt3)
@@ -110,7 +110,7 @@ public class oqs
     a(parampdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramArticleInfo.getVideoCoverUrlWithSmartCut(false), false, paramActivity, paramArticleInfo);
     parampdq.b.setVisibility(0);
     parampdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setCustomSize(1.0F, orc.a(localrjk.jdField_c_of_type_Int, localrjk.jdField_d_of_type_Int));
-    float f1 = bdcb.b(paramActivity);
+    float f1 = bdgk.b(paramActivity);
     float f2 = f1 * orc.a(localrjk.jdField_c_of_type_Int, localrjk.jdField_d_of_type_Int);
     paramArticleInfo = parampdq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout.getLayoutParams();
     paramArticleInfo.width = ((int)f1);

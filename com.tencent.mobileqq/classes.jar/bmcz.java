@@ -1,18 +1,13 @@
-import com.tribe.async.dispatch.Dispatcher;
+import android.support.annotation.CallSuper;
 
-class bmcz
-  extends bfsy
+public class bmcz
+  extends bmes
 {
-  bmcz(bmcy parambmcy) {}
-  
-  public void a()
-  {
-    uht.a().dispatch(new bmda(1, true));
-  }
-  
+  @CallSuper
   public void b()
   {
-    uht.a().dispatch(new bmda(1, false));
+    super.b();
+    bmda.a().a(this);
   }
 }
 

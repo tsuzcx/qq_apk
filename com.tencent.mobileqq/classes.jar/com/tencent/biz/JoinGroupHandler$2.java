@@ -1,6 +1,6 @@
 package com.tencent.biz;
 
-import bepp;
+import bety;
 import myo;
 
 public class JoinGroupHandler$2

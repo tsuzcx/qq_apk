@@ -1,37 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class aqrb
+  extends aqru
 {
-  public static boolean a;
-  public Activity a;
+  public aqrb(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  static
+  protected void a(arcg paramarcg)
   {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  private aqrb(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
-    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
-    {
-      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
-      return false;
+    super.a(paramarcg);
+    if ((paramarcg.b != null) && (paramarcg.b.length() > 0)) {
+      this.a.i();
     }
-    new aqrb(paramActivity).a(paramString, paramBundle);
-    return true;
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    arpg.a(paramString, new aqrc(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 

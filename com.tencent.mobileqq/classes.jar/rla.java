@@ -2,7 +2,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import tencent.im.msg.im_msg_body.RichText;
 
 class rla
-  implements awfy
+  implements awkh
 {
   rla(rky paramrky) {}
   
@@ -11,9 +11,9 @@ class rla
     return null;
   }
   
-  public void a(awfz paramawfz) {}
+  public void a(awki paramawki) {}
   
-  public void b(awfz paramawfz) {}
+  public void b(awki paramawki) {}
 }
 
 

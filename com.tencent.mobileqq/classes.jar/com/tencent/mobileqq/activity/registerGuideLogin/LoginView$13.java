@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import bepp;
+import bety;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LoginView$13
   implements Runnable
 {
-  LoginView$13(LoginView paramLoginView, String paramString, bepp parambepp) {}
+  LoginView$13(LoginView paramLoginView, String paramString, bety parambety) {}
   
   public void run()
   {

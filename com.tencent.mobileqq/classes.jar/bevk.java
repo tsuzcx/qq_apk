@@ -1,11 +1,18 @@
-import com.tencent.wifisdk.TMSDKCustomConfig.ICustomReporter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
-final class bevk
-  implements TMSDKCustomConfig.ICustomReporter
+public class bevk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void reportAction(String paramString, int paramInt)
+  public bevk(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bevd.a(paramString);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 

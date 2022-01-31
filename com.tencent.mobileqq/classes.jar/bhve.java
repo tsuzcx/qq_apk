@@ -1,11 +1,15 @@
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bhve
-  implements bhpo
+class bhve
+  implements View.OnClickListener
 {
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  bhve(bhvd parambhvd) {}
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 

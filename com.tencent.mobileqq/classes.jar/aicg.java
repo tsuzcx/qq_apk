@@ -1,18 +1,16 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicg
-  implements View.OnTouchListener
+public class aicg
+  implements View.OnClickListener
 {
-  aicg(aica paramaica) {}
+  public aicg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.d.dismiss();
   }
 }
 

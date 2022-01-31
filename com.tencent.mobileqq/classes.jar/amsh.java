@@ -1,54 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.6.1;
-import com.tencent.mobileqq.ar.ArConfigService.6.2;
-import com.tencent.mobileqq.ar.ArConfigService.6.3;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.ar.ARGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amsh
-  implements amzd
+  implements GLSurfaceView.EGLContextFactory
 {
-  public amsh(ArConfigService paramArConfigService) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void a()
+  public amsh(ARGLSurfaceView paramARGLSurfaceView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARCloudResourceDownloadCallback");
-    }
+    QLog.i("AREngine_ARGLSurfaceView", 1, "createContext. display = " + paramEGLDisplay);
+    int i = this.jdField_a_of_type_Int;
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    if (ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView) != null) {
+      ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView).a();
     }
-    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.6.1(this, i));
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
+    QLog.i("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
   }
-  
-  public void a(boolean paramBoolean, amze paramamze)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCloudResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
-    {
-      ArConfigService.d(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.6.2(this));
-      }
-    }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.6.3(this));
-    ArConfigService.a(this.a, true);
-  }
-  
-  public void b() {}
 }
 
 

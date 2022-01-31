@@ -1,24 +1,6 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.qphone.base.util.QLog;
-
-public class yia
+public abstract interface yia<T>
 {
-  private static SharedPreferences a;
-  
-  public static SharedPreferences a(Context paramContext)
-  {
-    if (a == null)
-    {
-      if (paramContext == null)
-      {
-        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
-        return null;
-      }
-      a = paramContext.getSharedPreferences("biz_subscribe", 0);
-    }
-    return a;
-  }
+  public abstract void a(yii paramyii, T paramT);
 }
 
 

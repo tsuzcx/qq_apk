@@ -1,98 +1,34 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class bemd
-  extends Drawable
+class bemd
+  implements bemh<oidb_0x8ed.RspBody>
 {
-  private ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private Paint c;
+  bemd(bema parambema, bemh parambemh1, HotChatInfo paramHotChatInfo, long paramLong, int paramInt1, int paramInt2, bemh parambemh2) {}
   
-  public bemd()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    this.c = new Paint();
-    this.c.setAntiAlias(true);
-    this.c.setStyle(Paint.Style.FILL);
-    this.c.setColor(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = paramColorMatrixColorFilter;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(paramColorMatrixColorFilter);
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((j - i) / 2.0F + i);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = ((j - i) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i;
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, j);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
-    this.jdField_b_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.c.getColor() != 0) {
-      paramCanvas.drawCircle(i / 2.0F, j / 2.0F, i / 2.0F, this.c);
+    if (this.jdField_a_of_type_Bemh != null) {
+      this.jdField_a_of_type_Bemh.a(paramInt, paramRspBody);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter != null)
-    {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bema.app.getManager(60);
+    List localList = paramRspBody.a();
+    if (localList != null) {
+      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
     }
+    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    auxp.a().a(this.jdField_a_of_type_Long);
+    auwq.a(this.jdField_a_of_type_Bema.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(ayzl.a()));
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals("0"))) {
+      this.jdField_a_of_type_Bema.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, 1);
+    }
+    this.jdField_a_of_type_Bema.b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Bemh);
   }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

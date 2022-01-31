@@ -1,14 +1,28 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-public abstract interface agfz
-  extends IInterface
+public class agfz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(CompressInfo paramCompressInfo);
+  public agfz(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public abstract void b(CompressInfo paramCompressInfo);
-  
-  public abstract void c(CompressInfo paramCompressInfo);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    {
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
+    }
+  }
 }
 
 

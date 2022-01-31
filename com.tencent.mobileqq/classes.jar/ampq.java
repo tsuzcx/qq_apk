@@ -1,52 +1,40 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class ampq
+public final class ampq
   extends BroadcastReceiver
 {
-  ampq(ampp paramampp) {}
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    if (paramIntent == null) {}
     do
     {
-      int i;
-      int j;
       do
       {
         do
         {
           return;
-        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
-        switch (paramIntent.getIntExtra("event", 0))
-        {
-        default: 
-          return;
-        case 1: 
-          paramContext = paramIntent.getStringExtra("bussinessSubName");
-          i = paramIntent.getIntExtra("download_Index", 0);
-          j = paramIntent.getIntExtra("download_Progress", 0);
-          if (AudioHelper.e()) {
-            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+            break;
           }
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(paramContext, i, j);
-      return;
-      paramContext = paramIntent.getStringExtra("config_Content");
-      this.a.b(paramContext);
-    } while (this.a.a == null);
-    this.a.a.b();
+          SosoInterface.a(true);
+        } while (!QLog.isColorLevel());
+        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
+        return;
+      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
+      SosoInterface.a(false);
+      SosoInterface.a().sendEmptyMessage(1002);
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
-import bdcs;
+import bdhb;
 
 final class AEEditorAILoadingView$11
   implements Runnable
 {
   public void run()
   {
-    bdcs.a(AEEditorAILoadingView.a);
+    bdhb.a(AEEditorAILoadingView.a);
   }
 }
 

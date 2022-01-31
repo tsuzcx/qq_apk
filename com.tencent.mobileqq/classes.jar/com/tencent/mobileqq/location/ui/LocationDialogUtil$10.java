@@ -2,10 +2,10 @@ package com.tencent.mobileqq.location.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import atmi;
-import atmk;
-import bdcd;
-import bdfq;
+import atqr;
+import atqt;
+import bdgm;
+import bdjz;
 import com.tencent.qphone.base.util.QLog;
 
 public final class LocationDialogUtil$10
@@ -15,19 +15,19 @@ public final class LocationDialogUtil$10
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.a, 230, null, this.a.getResources().getString(2131720148), 2131719889, 2131690648, null, new atmk(this));
-    localbdfq.setCancelable(false);
-    if (!String.valueOf(this.a.hashCode()).equals(atmi.a()))
+    bdjz localbdjz = bdgm.a(this.a, 230, null, this.a.getResources().getString(2131720160), 2131719901, 2131690648, null, new atqt(this));
+    localbdjz.setCancelable(false);
+    if (!String.valueOf(this.a.hashCode()).equals(atqr.a()))
     {
-      atmi.a(this.a, localbdfq);
+      atqr.a(this.a, localbdjz);
       if (QLog.isColorLevel()) {
-        QLog.d("LocationDialogUtil", 2, new Object[] { "showRoomJoinLimitedDialog#run: invoked. ", " currentDialogActivityHash: ", atmi.a() });
+        QLog.d("LocationDialogUtil", 2, new Object[] { "showRoomJoinLimitedDialog#run: invoked. ", " currentDialogActivityHash: ", atqr.a() });
       }
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("LocationDialogUtil", 2, new Object[] { "run: invoked. ", " same hash currentDialogActivityHash: ", atmi.a(), " activity: ", Integer.valueOf(this.a.hashCode()) });
+    QLog.d("LocationDialogUtil", 2, new Object[] { "run: invoked. ", " same hash currentDialogActivityHash: ", atqr.a(), " activity: ", Integer.valueOf(this.a.hashCode()) });
   }
 }
 

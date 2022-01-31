@@ -1,6 +1,28 @@
-public abstract interface wcl
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class wcl
+  extends QQUIEventReceiver<wcj, vdl>
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  public wcl(@NonNull wcj paramwcj)
+  {
+    super(paramwcj);
+  }
+  
+  public void a(@NonNull wcj paramwcj, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(this.TAG, "receive user info event. %s.", paramvdl.toString());
+      paramwcj.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
+  }
 }
 
 

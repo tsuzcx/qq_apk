@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbjg
-  extends alox
+  implements View.OnClickListener
 {
-  public bbjg(NewTroopContactView paramNewTroopContactView) {}
+  public bbjg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
+    QQToast.a(this.a.a, alud.a(2131715618), 0).a();
   }
 }
 

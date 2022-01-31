@@ -1,8 +1,21 @@
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public abstract interface atsz
+class atsz
+  implements View.OnClickListener
 {
-  public abstract void a(Message paramMessage);
+  atsz(atsy paramatsy, atso paramatso) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso.a()) {
+      return;
+    }
+    atso.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso).c(true);
+    atso.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso);
+    azqs.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+  }
 }
 
 

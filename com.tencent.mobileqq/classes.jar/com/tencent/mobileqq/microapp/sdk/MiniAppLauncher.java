@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import aizx;
+import ajem;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        aizx.a(paramLaunchParam, null);
+        ajem.a(paramLaunchParam, null);
         return true;
       }
     }

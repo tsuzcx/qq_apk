@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acrz
-  implements apnr
+  extends aqru
 {
-  public acrz(EmosmActivity paramEmosmActivity) {}
+  public acrz(Conversation paramConversation) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

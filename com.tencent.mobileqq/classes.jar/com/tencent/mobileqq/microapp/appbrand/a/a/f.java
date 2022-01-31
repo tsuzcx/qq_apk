@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
-import aivk;
+import aizz;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdcs;
-import bdvv;
+import bdhb;
+import beae;
 import com.tencent.commonsdk.util.MD5Coding;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
@@ -27,7 +27,7 @@ public final class f
   
   private Object a(String paramString1, String paramString2)
   {
-    paramString2 = bdcs.a(new File(paramString2));
+    paramString2 = bdhb.a(new File(paramString2));
     if ("base64".equals(paramString1)) {
       return Base64.encodeToString(paramString2, 2);
     }
@@ -78,7 +78,7 @@ public final class f
     if (paramJSONArray != null) {}
     for (;;)
     {
-      return bdcs.a(paramJSONArray, paramString3);
+      return bdhb.a(paramJSONArray, paramString3);
       paramJSONArray = paramString1.getBytes();
     }
   }
@@ -158,20 +158,20 @@ public final class f
           if ((!TextUtils.isEmpty((CharSequence)localObject7)) && (this.a.a.c.m((String)localObject7)))
           {
             localObject6 = b.a().b((String)localObject7);
-            localObject7 = new bdvv((String)localObject7, new File((String)localObject6));
-            ((bdvv)localObject7).jdField_f_of_type_JavaLangString = "mini_app";
-            ((bdvv)localObject7).jdField_f_of_type_Long = 10000L;
+            localObject7 = new beae((String)localObject7, new File((String)localObject6));
+            ((beae)localObject7).jdField_f_of_type_JavaLangString = "mini_app";
+            ((beae)localObject7).jdField_f_of_type_Long = 10000L;
             if (localObject2 != null)
             {
               localObject8 = ((JSONObject)localObject2).keys();
               while (((Iterator)localObject8).hasNext())
               {
                 str3 = (String)((Iterator)localObject8).next();
-                ((bdvv)localObject7).a(str3, ((JSONObject)localObject2).optString(str3));
+                ((beae)localObject7).a(str3, ((JSONObject)localObject2).optString(str3));
               }
             }
             i = localObject7.hashCode();
-            aivk.a().a((bdvv)localObject7, new o(this, (WeakReference)localObject5, i, (String)localObject6), null);
+            aizz.a().a((beae)localObject7, new o(this, (WeakReference)localObject5, i, (String)localObject6), null);
             localObject2 = new JSONObject();
             try
             {
@@ -325,7 +325,7 @@ public final class f
       if ("removeSavedFile".equals(paramString1))
       {
         str2 = localThrowable7.optString("filePath");
-        bdcs.a(b.a().d(str2), false);
+        bdhb.a(b.a().d(str2), false);
         this.a.a(paramBaseAppBrandWebview, paramString1, null, paramInt);
         break;
       }

@@ -1,52 +1,76 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
-class yzv
-  implements nbs
+public class yzv
 {
-  yzv(yzu paramyzu) {}
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  public void loaded(String paramString, int paramInt)
+  public yzv(yzr paramyzr, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
-    }
-    if (paramInt == 9)
-    {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
-          }
-          paramString = null;
-        }
-      }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
-    this.a.a.sendMessage(paramString);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void progress(int paramInt) {}
+  public void a(String paramString)
+  {
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
+    {
+      this.jdField_a_of_type_Boolean = true;
+      localObject = Arrays.asList(((File)localObject).list());
+      String str;
+      if (((List)localObject).contains("bg@2x.png"))
+      {
+        str = paramString + "/" + "bg@2x.png";
+        if (!new File(str).exists()) {
+          break label195;
+        }
+        this.c = str;
+      }
+      if (((List)localObject).contains("camera@2x.png"))
+      {
+        str = paramString + "/" + "camera@2x.png";
+        if (!new File(str).exists()) {
+          break label203;
+        }
+        this.d = str;
+      }
+    }
+    for (;;)
+    {
+      if (((List)localObject).contains("point@2x.png"))
+      {
+        paramString = paramString + "/" + "point@2x.png";
+        if (!new File(paramString).exists()) {
+          break label211;
+        }
+        this.e = paramString;
+      }
+      return;
+      label195:
+      this.jdField_a_of_type_Boolean = false;
+      break;
+      label203:
+      this.jdField_a_of_type_Boolean = false;
+    }
+    label211:
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

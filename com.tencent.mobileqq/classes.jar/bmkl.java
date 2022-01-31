@@ -1,19 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class bmkl
+public final class bmkl
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public final Bitmap a;
-  public final boolean a;
-  public final Rect[] a;
-  public final String[] a;
-  
-  public bmkl(String[] paramArrayOfString, Bitmap paramBitmap, Rect[] paramArrayOfRect, boolean paramBoolean)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodePushNotify;
-import uuc;
+import uyl;
 
 public class MsgTabNodeListLoader$6
   implements Runnable
 {
-  public MsgTabNodeListLoader$6(uuc paramuuc, qqstory_service.MsgTabNodePushNotify paramMsgTabNodePushNotify) {}
+  public MsgTabNodeListLoader$6(uyl paramuyl, qqstory_service.MsgTabNodePushNotify paramMsgTabNodePushNotify) {}
   
   public void run()
   {
-    uuc.a(this.this$0, this.a);
+    uyl.a(this.this$0, this.a);
   }
 }
 

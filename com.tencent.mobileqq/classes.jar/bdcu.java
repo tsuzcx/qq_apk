@@ -1,86 +1,13 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class bdcu
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bdcu
 {
-  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    String str = bduw.a(bdda.a(paramContext, paramString, paramInt));
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramBoolean) {}
-    for (int i = 7;; i = 4)
-    {
-      bdda.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
-      return localImageInfo.b;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
-  {
-    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
-  {
-    Object localObject;
-    if ((paramContext instanceof Activity))
-    {
-      localObject = ((Activity)paramContext).getIntent();
-      if (localObject == null) {}
-    }
-    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
-    {
-      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
-      bdda.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
-      }
-      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
-      }
-      if (!bdcs.b(paramString1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
-        }
-        return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
-      }
-      if (paramString1 != null)
-      {
-        int i = 1009;
-        if (bool) {
-          i = 1053;
-        }
-        paramContext = new awfm();
-        paramContext.a(paramString1);
-        paramContext.d(i);
-        paramContext.d(paramString2);
-        paramContext.c(batv.d);
-        paramContext.e(paramString3);
-        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
-        paramContext.e(paramInt1);
-        paramString2 = awes.a(2, i);
-        paramString2.a(paramContext.a());
-        paramString2.c = paramInt2;
-        awes.a(paramString2, paramQQAppInterface);
-        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
-      }
-      return true;
-    }
-  }
+  Class a() default Object.class;
 }
 
 

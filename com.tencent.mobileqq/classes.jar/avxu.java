@@ -1,18 +1,19 @@
-public abstract interface avxu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
+
+public final class avxu
+  implements Parcelable.Creator<OcrConfig>
 {
-  public abstract void a(ampd paramampd);
+  public OcrConfig a(Parcel paramParcel)
+  {
+    return new OcrConfig(paramParcel);
+  }
   
-  public abstract void a(ampd paramampd, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
+  }
 }
 
 

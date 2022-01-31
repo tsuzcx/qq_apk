@@ -1,563 +1,939 @@
-import android.util.Pair;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RoamDate;
-import com.tencent.mobileqq.data.RoamMessagePreloadInfo;
+import com.tencent.mobileqq.app.ShieldOperationItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ShieldListInfo;
+import com.tencent.mobileqq.pb.PBFixed32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
+import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.MobileQQ;
+import org.apache.http.util.ByteArrayBuffer;
+import tencent.im.s2c.msgtype0x210.submsgtype0x30.SubMsgType0x30.BlockListNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x30.SubMsgType0x30.BlockUinInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x30.SubMsgType0x30.MsgBody;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.BlockUinInfo;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.ReqBody;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.ReqBodyAddBlockList;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.ReqBodyDelBlockList;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.ReqBodyGetBlockList;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.RspBody;
+import tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.RspBodyGetBlockList;
+import tencent.im.sso2sns.sso2sns_comm_info.Sso2SnsCommInfo;
 
 public class amcl
-  extends amch
+  extends alpd
 {
-  public amcl(QQAppInterface paramQQAppInterface, amcg paramamcg)
+  private volatile int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, ShieldListInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentLinkedQueue<ShieldOperationItem> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private ConcurrentHashMap<String, ShieldListInfo> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String c;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
+  private String h;
+  private String i;
+  
+  public amcl(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramamcg, RoamDate.class);
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131720084);
+    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131720085);
+    this.c = paramQQAppInterface.getApplication().getString(2131720082);
+    this.d = paramQQAppInterface.getApplication().getString(2131720086);
+    this.f = paramQQAppInterface.getApplication().getString(2131720080);
+    this.g = paramQQAppInterface.getApplication().getString(2131720078);
+    this.h = paramQQAppInterface.getApplication().getString(2131720081);
+    this.e = paramQQAppInterface.getApplication().getString(2131720083);
+    this.i = paramQQAppInterface.getApplication().getString(2131720079);
   }
   
-  private String a(String paramString1, String paramString2)
+  private int a()
   {
-    return paramString1 + "&" + paramString2;
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).getInt("lastGetShieldListTime", 0);
+    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public Pair<Calendar, Calendar> a()
+  private void a(int paramInt)
   {
-    Object localObject2 = a();
-    if (!((List)localObject2).isEmpty())
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.app.getCurrentAccountUin() != null)
     {
-      Object localObject1 = (RoamDate)((Map.Entry)((List)localObject2).get(0)).getValue();
-      localObject2 = (RoamDate)((Map.Entry)((List)localObject2).get(((List)localObject2).size() - 1)).getValue();
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.set(11, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.set(14, 0);
-      localCalendar.set(1, ((RoamDate)localObject1).getYear());
-      localCalendar.set(2, ((RoamDate)localObject1).getMonth() - 1);
-      int i = 0;
-      if ((i >= ((RoamDate)localObject1).getDays()) || (a((RoamDate)localObject1, i)))
-      {
-        localCalendar.set(5, i + 1);
-        localObject1 = Calendar.getInstance();
-        ((Calendar)localObject1).set(11, 0);
-        ((Calendar)localObject1).set(12, 0);
-        ((Calendar)localObject1).set(13, 0);
-        ((Calendar)localObject1).set(14, 0);
-        ((Calendar)localObject1).set(1, ((RoamDate)localObject2).getYear());
-        ((Calendar)localObject1).set(2, ((RoamDate)localObject2).getMonth() - 1);
-        i = ((RoamDate)localObject2).getDays() - 1;
-      }
-      for (;;)
-      {
-        if ((i < 0) || (a((RoamDate)localObject2, i)))
-        {
-          ((Calendar)localObject1).set(5, i + 1);
-          return new Pair(localCalendar, localObject1);
-          i += 1;
-          break;
-        }
-        i -= 1;
-      }
-    }
-    return null;
-  }
-  
-  public RoamDate a(String paramString, int paramInt1, int paramInt2)
-  {
-    return (RoamDate)a(a(paramString, paramInt1, paramInt2));
-  }
-  
-  public RoamDate a(String paramString1, String paramString2)
-  {
-    return (RoamDate)a(a(paramString1, paramString2));
-  }
-  
-  public RoamMessagePreloadInfo a(String paramString, Calendar paramCalendar, int paramInt)
-  {
-    RoamMessagePreloadInfo localRoamMessagePreloadInfo = new RoamMessagePreloadInfo();
-    localRoamMessagePreloadInfo.preloadType = paramInt;
-    List localList = a();
-    if (paramInt == 0) {
-      if (a(paramString, paramCalendar, localList)) {
-        localRoamMessagePreloadInfo.curday = paramCalendar;
-      }
-    }
-    for (;;)
-    {
-      if ((localRoamMessagePreloadInfo.curday != null) && (paramInt != 0))
-      {
-        localRoamMessagePreloadInfo.previousday = a(paramString, localRoamMessagePreloadInfo.curday, localList);
-        localRoamMessagePreloadInfo.nextday = b(paramString, localRoamMessagePreloadInfo.curday, localList);
-      }
-      return localRoamMessagePreloadInfo;
-      paramCalendar = null;
-      break;
-      if (paramInt == 1) {
-        localRoamMessagePreloadInfo.curday = a(paramString, paramCalendar, localList);
-      } else if (paramInt == 2) {
-        localRoamMessagePreloadInfo.curday = b(paramString, paramCalendar, localList);
+      SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).edit();
+      localEditor.putInt("lastGetShieldListTime", paramInt);
+      localEditor.commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShieldListHandler", 2, "setLastGetShieldListTime lastTime = " + paramInt);
       }
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
-  {
-    return paramInt1 + '-' + paramInt2;
-  }
-  
-  protected String a(awbv paramawbv)
-  {
-    paramawbv = (RoamDate)paramawbv;
-    return paramawbv.uin + "&" + paramawbv.date;
-  }
-  
-  public String a(String paramString, int paramInt1, int paramInt2)
-  {
-    return paramString + "&" + a(paramInt1, paramInt2);
-  }
-  
-  public Calendar a(String paramString, Calendar paramCalendar, List<Map.Entry<String, awbv>> paramList)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = paramList;
-    if (paramList == null) {
-      localObject1 = a();
-    }
-    paramList = localObject3;
-    int j;
-    int k;
-    int i1;
-    int i;
-    if (!((List)localObject1).isEmpty())
-    {
-      j = paramCalendar.get(1);
-      k = paramCalendar.get(2);
-      i1 = paramCalendar.get(5);
-      i = 0;
-      if (i >= ((List)localObject1).size()) {
-        break label391;
-      }
-      if (!((String)((Map.Entry)((List)localObject1).get(i)).getKey()).equals(a(paramString, j, k + 1))) {
-        break label250;
-      }
-    }
-    for (;;)
-    {
-      j = 0;
-      int m = i;
-      paramString = localObject2;
-      label115:
-      paramList = paramString;
-      if (m >= 0)
-      {
-        paramList = (RoamDate)((Map.Entry)((List)localObject1).get(m)).getValue();
-        if (m != i) {
-          break label268;
-        }
-        k = i1 - 2;
-        label156:
-        if (k < 0) {
-          break label388;
-        }
-        if (!a(paramList, k)) {
-          break label259;
-        }
-        paramString = Calendar.getInstance();
-        paramString.set(11, 0);
-        paramString.set(12, 0);
-        paramString.set(13, 0);
-        paramString.set(14, 0);
-        paramString.set(1, paramList.getYear());
-        paramString.set(2, paramList.getMonth() - 1);
-        paramString.set(5, k + 1);
-        j = 1;
-      }
-      label259:
-      label388:
-      for (;;)
-      {
-        paramCalendar = paramString;
-        k = j;
-        if (k != 0)
-        {
-          paramList = paramCalendar;
-          return paramList;
-          label250:
-          i += 1;
-          break;
-          k -= 1;
-          break label156;
-          label268:
-          int n = paramList.getDays() - 1;
-          for (;;)
-          {
-            k = j;
-            paramCalendar = paramString;
-            if (n < 0) {
-              break;
-            }
-            if (a(paramList, n))
-            {
-              paramCalendar = Calendar.getInstance();
-              paramCalendar.set(11, 0);
-              paramCalendar.set(12, 0);
-              paramCalendar.set(13, 0);
-              paramCalendar.set(14, 0);
-              paramCalendar.set(1, paramList.getYear());
-              paramCalendar.set(2, paramList.getMonth() - 1);
-              paramCalendar.set(5, n + 1);
-              k = 1;
-              break;
-            }
-            n -= 1;
-          }
-        }
-        m -= 1;
-        j = k;
-        paramString = paramCalendar;
-        break label115;
-      }
-      label391:
-      i = 0;
-    }
-  }
-  
-  public List<Map.Entry<String, awbv>> a()
-  {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet());
-    Collections.sort(localArrayList, new amcm(this));
-    return localArrayList;
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    RoamDate localRoamDate = a(String.valueOf(paramLong), paramInt1, paramInt2);
-    if (localRoamDate == null) {
-      localRoamDate = new RoamDate(String.valueOf(paramLong), a(paramInt1, paramInt2), paramInt3, paramInt4);
-    }
-    for (;;)
-    {
-      a(localRoamDate);
-      return;
-      localRoamDate.setSerindex(paramInt3, paramInt4);
-    }
-  }
-  
-  public void a(RoamDate paramRoamDate)
+  private void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RoamDateCache", 2, "saveRoamDate roamDate = " + paramRoamDate);
+      QLog.d("ShieldListHandler", 2, "<shield_get><S> : sendGetShieldListReqInternal : queue size:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
     }
-    a(paramRoamDate);
-    this.jdField_a_of_type_Amcg.c();
+    Object localObject2 = Long.valueOf(this.app.getCurrentAccountUin());
+    int j = a();
+    ToServiceMsg localToServiceMsg = createToServiceMsg("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList");
+    Object localObject1 = new sso2sns_comm_info.Sso2SnsCommInfo();
+    ((sso2sns_comm_info.Sso2SnsCommInfo)localObject1).uint32_seq.set(1234);
+    sso2sns_0x3_blocklist.ReqBodyGetBlockList localReqBodyGetBlockList = new sso2sns_0x3_blocklist.ReqBodyGetBlockList();
+    localReqBodyGetBlockList.uint64_uin.set(((Long)localObject2).longValue());
+    localReqBodyGetBlockList.uint32_get_type.set(paramInt1);
+    localReqBodyGetBlockList.uint32_start_pos.set(paramInt2);
+    localReqBodyGetBlockList.uint32_want_num.set(1000);
+    localReqBodyGetBlockList.fixed32_last_get_time.set(j);
+    localObject2 = new sso2sns_0x3_blocklist.ReqBody();
+    ((sso2sns_0x3_blocklist.ReqBody)localObject2).msg_body_get_blocklist.set(localReqBodyGetBlockList);
+    localObject1 = a((sso2sns_comm_info.Sso2SnsCommInfo)localObject1, (sso2sns_0x3_blocklist.ReqBody)localObject2);
+    localToServiceMsg.setTimeout(60000L);
+    localToServiceMsg.putWupBuffer((byte[])localObject1);
+    sendPbReq(localToServiceMsg);
   }
   
-  public void a(String paramString)
+  private void a(ShieldOperationItem paramShieldOperationItem)
   {
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = ((awbw)localObject).a(RoamDate.class, false, "uin=?", new String[] { paramString }, null, null, null, null);
-    ((awbw)localObject).a();
-    if (paramString != null)
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
     {
-      c();
-      localObject = paramString.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        RoamDate localRoamDate = (RoamDate)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(localRoamDate), localRoamDate);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("doInit size = ");
-      if (paramString != null) {
-        break label132;
-      }
-    }
-    for (;;)
-    {
-      QLog.d("Q.db.Cache.RoamDateCache", 2, i);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramShieldOperationItem);
+      b();
       return;
-      label132:
-      i = paramString.size();
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield><TO><---handleOperatingShieldList time out.");
+    }
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ((str == null) || (str.length() == 0)) {}
+    do
     {
-      paramString = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      return;
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList".equalsIgnoreCase(str))
       {
-        String str1 = (String)((Map.Entry)localIterator.next()).getKey();
-        String str2 = str1.split("&")[1];
-        paramInt3 = Integer.parseInt(str2.split("-")[0]);
-        paramInt4 = Integer.parseInt(str2.split("-")[1]);
-        if ((paramInt3 < paramInt1) || ((paramInt3 == paramInt1) && (paramInt4 < paramInt2)))
+        c(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList".equalsIgnoreCase(str))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+    } while (!"SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList".equalsIgnoreCase(str));
+    e(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, sso2sns_0x3_blocklist.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_add><R><---handleAddShieldListResp.");
+    }
+    paramFromServiceMsg = new ArrayList();
+    paramRspBody = paramToServiceMsg.extraData.getLongArray("uinList");
+    int k = paramToServiceMsg.extraData.getInt("source_id");
+    int m = paramToServiceMsg.extraData.getInt("source_sub_id");
+    int n = paramToServiceMsg.extraData.getInt("fromType");
+    int i1 = paramRspBody.length;
+    int j = 0;
+    while (j < i1)
+    {
+      long l = paramRspBody[j];
+      paramToServiceMsg = new ShieldListInfo();
+      paramToServiceMsg.uin = String.valueOf(Long.valueOf(l));
+      paramToServiceMsg.source_id = k;
+      paramToServiceMsg.source_sub_id = m;
+      paramToServiceMsg.flags = 1;
+      paramFromServiceMsg.add(paramToServiceMsg);
+      j += 1;
+    }
+    ((auac)this.app.getManager(16)).a(paramFromServiceMsg);
+    a(true, k, paramRspBody);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_add><R> : " + Arrays.toString(paramRspBody));
+    }
+    notifyUI(2, true, new Object[] { paramRspBody, Integer.valueOf(n) });
+  }
+  
+  private void a(boolean paramBoolean, int paramInt, long[] paramArrayOfLong)
+  {
+    String str = this.app.getCurrentAccountUin();
+    ArrayList localArrayList = new ArrayList();
+    int m = paramArrayOfLong.length;
+    int j = 0;
+    long l1;
+    Object localObject3;
+    Object localObject2;
+    Object localObject1;
+    bfyh localbfyh;
+    if (j < m)
+    {
+      l1 = paramArrayOfLong[j];
+      long l2 = ayzl.a();
+      k = ShieldListInfo.SOURCE_ID_2_AIO_TYPE(paramInt);
+      localObject3 = String.valueOf(l1);
+      if (k != 1006) {
+        if (paramBoolean)
         {
-          paramString.add(str1);
+          localObject2 = this.jdField_a_of_type_JavaLangString;
+          if (ChatActivityUtils.a.contains(l1 + ""))
+          {
+            localObject2 = this.jdField_b_of_type_JavaLangString;
+            ChatActivityUtils.a.remove(l1 + "");
+          }
+          localObject1 = localObject2;
+          if (k == 1024)
+          {
+            localbfyh = (bfyh)this.app.getManager(165);
+            if (localbfyh != null)
+            {
+              localObject1 = localObject2;
+              if (!localbfyh.a((String)localObject3))
+              {
+                localObject1 = localObject2;
+                if (localbfyh.f((String)localObject3)) {}
+              }
+            }
+            else
+            {
+              localObject1 = this.d;
+            }
+          }
+          if ((k != 1037) && (k != 1044))
+          {
+            localObject2 = localObject3;
+            if (k != 1045) {}
+          }
+          else
+          {
+            localObject1 = this.e;
+            localObject2 = localObject3;
+          }
+          label246:
+          localObject3 = azaf.a(-2012);
+          ((MessageRecord)localObject3).init(str, (String)localObject2, str, (String)localObject1, l2, 0, k, 0L);
+          ((MessageRecord)localObject3).msgtype = -2012;
+          ((MessageRecord)localObject3).isread = true;
+          localObject1 = this.app.a().b((String)localObject2, k);
+          if ((localObject1 == null) || (((List)localObject1).size() <= 0) || (!abti.a((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1), (MessageRecord)localObject3, false))) {
+            break label610;
+          }
           if (QLog.isColorLevel()) {
-            QLog.d("Q.db.Cache.RoamDateCache", 2, "clipRoamDate key=" + str1);
+            QLog.w("ShieldListHandler", 2, "insertShieldMsgIntoMsgPool filtered!");
           }
         }
       }
-      if (!paramString.isEmpty())
+    }
+    label610:
+    for (int k = 1;; k = 0)
+    {
+      if (k == 0) {
+        localArrayList.add(localObject3);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShieldListHandler", 2, "<---insertShieldMsgIntoMsgPool : insert:" + ((MessageRecord)localObject3).toString());
+      }
+      do
       {
-        paramString = paramString.iterator();
-        while (paramString.hasNext()) {
-          b((String)paramString.next());
+        j += 1;
+        break;
+        localObject2 = this.f;
+        localObject1 = localObject2;
+        if (k == 1024)
+        {
+          localbfyh = (bfyh)this.app.getManager(165);
+          if (localbfyh != null)
+          {
+            localObject1 = localObject2;
+            if (!localbfyh.a((String)localObject3))
+            {
+              localObject1 = localObject2;
+              if (localbfyh.f((String)localObject3)) {}
+            }
+          }
+          else
+          {
+            localObject1 = this.h;
+          }
         }
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt)
-  {
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis((5L + paramLong) * 1000L);
-    int i = ((Calendar)localObject).get(1);
-    int j = ((Calendar)localObject).get(2) + 1;
-    int k = ((Calendar)localObject).get(5);
-    RoamDate localRoamDate = a(paramString, i, j);
-    localObject = localRoamDate;
-    if (localRoamDate == null) {
-      localObject = new RoamDate(paramString, a(i, j));
-    }
-    ((RoamDate)localObject).setSerState(k - 1, paramInt);
-    a((RoamDate)localObject);
-  }
-  
-  public boolean a(RoamDate paramRoamDate, int paramInt)
-  {
-    return (paramRoamDate.getSerState(paramInt) == 2) || (paramRoamDate.getLocState(paramInt) == 3);
-  }
-  
-  public boolean a(String paramString, Calendar paramCalendar, List<Map.Entry<String, awbv>> paramList)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int k;
-    int m;
-    int i;
-    if (!paramList.isEmpty())
-    {
-      j = paramCalendar.get(1);
-      k = paramCalendar.get(2);
-      m = paramCalendar.get(5);
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < paramList.size())
+        if ((k != 1037) && (k != 1044))
+        {
+          localObject2 = localObject3;
+          if (k != 1045) {
+            break label246;
+          }
+        }
+        localObject1 = this.i;
+        localObject2 = localObject3;
+        break label246;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShieldListHandler", 2, "<---insertShieldMsgIntoMsgPool : isContactMsgType!");
+        }
+        localObject2 = bdgc.f(this.app, String.valueOf(l1));
+      } while (localObject2 == null);
+      if (paramBoolean)
       {
-        if ((((String)((Map.Entry)paramList.get(i)).getKey()).equals(a(paramString, j, k + 1))) && (a((RoamDate)((Map.Entry)paramList.get(i)).getValue(), m - 1))) {
-          bool1 = true;
-        }
+        localObject1 = this.c;
+        break label246;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
+      localObject1 = this.g;
+      break label246;
+      this.app.a().a(localArrayList, String.valueOf(str), false);
+      return;
     }
   }
   
-  public String[] a(String paramString)
+  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return paramString.split("\\&");
-  }
-  
-  public Calendar b(String paramString, Calendar paramCalendar, List<Map.Entry<String, awbv>> paramList)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = paramList;
-    if (paramList == null) {
-      localObject1 = a();
-    }
-    paramList = localObject3;
-    int j;
-    int k;
-    int i1;
-    int i;
-    if (!((List)localObject1).isEmpty())
+    byte[] arrayOfByte1 = (byte[])paramObject;
+    String str = paramFromServiceMsg.getServiceCmd();
+    paramObject = new sso2sns_comm_info.Sso2SnsCommInfo();
+    sso2sns_0x3_blocklist.RspBody localRspBody = new sso2sns_0x3_blocklist.RspBody();
+    if (arrayOfByte1.length < 8)
     {
-      j = paramCalendar.get(1);
-      k = paramCalendar.get(2);
-      i1 = paramCalendar.get(5);
-      i = 0;
-      if (i >= ((List)localObject1).size()) {
-        break label399;
-      }
-      if (!((String)((Map.Entry)((List)localObject1).get(i)).getKey()).equals(a(paramString, j, k + 1))) {
-        break label259;
-      }
+      b(paramToServiceMsg, paramFromServiceMsg);
+      return false;
     }
-    for (;;)
+    long l1 = bdqa.a(arrayOfByte1, 0);
+    long l2 = bdqa.a(arrayOfByte1, 4);
+    byte[] arrayOfByte3 = new byte[(int)l1];
+    byte[] arrayOfByte2 = new byte[(int)l2];
+    System.arraycopy(arrayOfByte1, 8, arrayOfByte3, 0, (int)l1);
+    try
     {
-      j = 0;
-      int m = i;
-      paramString = localObject2;
-      label115:
-      paramList = paramString;
-      if (m < ((List)localObject1).size())
+      paramObject = (sso2sns_comm_info.Sso2SnsCommInfo)paramObject.mergeFrom(arrayOfByte3);
+      if (paramObject == null)
       {
-        paramList = (RoamDate)((Map.Entry)((List)localObject1).get(m)).getValue();
-        if (m != i) {
-          break label277;
+        if (QLog.isColorLevel()) {
+          QLog.e("ShieldListHandler", 2, "<---decodeSso2SnsCommInfo: error: commInfo is null.");
         }
-        k = i1;
-        label161:
-        if (k >= paramList.getDays()) {
-          break label396;
-        }
-        if (!a(paramList, k)) {
-          break label268;
-        }
-        paramString = Calendar.getInstance();
-        paramString.set(11, 0);
-        paramString.set(12, 0);
-        paramString.set(13, 0);
-        paramString.set(14, 0);
-        paramString.set(1, paramList.getYear());
-        paramString.set(2, paramList.getMonth() - 1);
-        paramString.set(5, k + 1);
-        j = 1;
+        b(paramToServiceMsg, paramFromServiceMsg);
+        return false;
       }
-      label259:
-      label268:
-      label396:
+    }
+    catch (Exception paramObject)
+    {
       for (;;)
       {
-        paramCalendar = paramString;
-        k = j;
-        if (k != 0)
+        if (QLog.isColorLevel()) {
+          QLog.e("ShieldListHandler", 2, "<---decodeSso2SnsCommInfo: exception : parse Sso2SnsCommInfo failed.", paramObject);
+        }
+        paramObject = null;
+      }
+      if ((!paramObject.uint32_result.has()) || (paramObject.uint32_result.get() != 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShieldListHandler", 2, "<---decodeSso2SnsCommInfo: error resultCode :" + paramObject.uint32_result.get());
+        }
+        b(paramToServiceMsg, paramFromServiceMsg);
+        return false;
+      }
+      System.arraycopy(arrayOfByte1, (int)(l1 + 8L), arrayOfByte2, 0, (int)l2);
+      try
+      {
+        paramObject = (sso2sns_0x3_blocklist.RspBody)localRspBody.mergeFrom(arrayOfByte2);
+        if ("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList".equalsIgnoreCase(str)) {
+          return a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        }
+      }
+      catch (Exception paramObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShieldListHandler", 2, "<---decodeSso2SnsCommInfo: exception : parse RspBody failed.", paramObject);
+        }
+        b(paramToServiceMsg, paramFromServiceMsg);
+        return false;
+      }
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList".equalsIgnoreCase(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return false;
+      }
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList".equalsIgnoreCase(str)) {
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, sso2sns_0x3_blocklist.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_get><R><---handleGetShieldListResp.");
+    }
+    if ((paramRspBody == null) || (!paramRspBody.msg_body_get_blocklist.has())) {
+      return false;
+    }
+    paramToServiceMsg = (sso2sns_0x3_blocklist.RspBodyGetBlockList)paramRspBody.msg_body_get_blocklist.get();
+    int k = paramToServiceMsg.fixed32_get_time.get();
+    int m = paramToServiceMsg.uint32_completed.get();
+    int n = paramToServiceMsg.uint32_now_pos.get();
+    int i1 = paramToServiceMsg.uint32_get_type.get();
+    paramRspBody = paramToServiceMsg.rpt_msg_block_uin_info.get();
+    paramToServiceMsg = (auac)this.app.getManager(16);
+    int j = 0;
+    if (paramRspBody != null) {
+      j = paramRspBody.size();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<---handleGetShieldListResp : lastGetTime:" + k + ",isComplete:" + m + ",nowPos:" + n + ",getType:" + i1 + ",respSize:" + j);
+    }
+    Object localObject;
+    boolean bool;
+    if (i1 == 2)
+    {
+      if ((paramRspBody != null) && (paramRspBody.size() > 0))
+      {
+        paramFromServiceMsg = paramRspBody.iterator();
+        while (paramFromServiceMsg.hasNext())
         {
-          paramList = paramCalendar;
-          return paramList;
-          i += 1;
-          break;
-          k += 1;
-          break label161;
-          label277:
-          int n = 0;
-          for (;;)
+          paramRspBody = (sso2sns_0x3_blocklist.BlockUinInfo)paramFromServiceMsg.next();
+          localObject = new ShieldListInfo();
+          ((ShieldListInfo)localObject).uin = String.valueOf(paramRspBody.uint64_block_uin.get());
+          ((ShieldListInfo)localObject).flags = 1;
+          ((ShieldListInfo)localObject).source_id = paramRspBody.uint32_source_id.get();
+          ((ShieldListInfo)localObject).source_sub_id = paramRspBody.uint32_source_sub_id.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ShieldListHandler", 2, "<---handleGetShieldListResp : total data : shieldUin:" + ((ShieldListInfo)localObject).uin + ",source_id:" + ((ShieldListInfo)localObject).source_id + ",sub_ource_id:" + ((ShieldListInfo)localObject).source_sub_id);
+          }
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ShieldListInfo)localObject).uin, localObject);
+        }
+      }
+      if (m != 1) {
+        break label596;
+      }
+      bool = paramToServiceMsg.a(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    for (;;)
+    {
+      if (m == 0)
+      {
+        a(i1, n);
+        return true;
+        if (i1 == 1)
+        {
+          paramFromServiceMsg = new ArrayList();
+          if ((paramRspBody != null) && (paramRspBody.size() > 0))
           {
-            k = j;
-            paramCalendar = paramString;
-            if (n >= paramList.getDays()) {
-              break;
-            }
-            if (a(paramList, n))
+            paramRspBody = paramRspBody.iterator();
+            while (paramRspBody.hasNext())
             {
-              paramCalendar = Calendar.getInstance();
-              paramCalendar.set(11, 0);
-              paramCalendar.set(12, 0);
-              paramCalendar.set(13, 0);
-              paramCalendar.set(14, 0);
-              paramCalendar.set(1, paramList.getYear());
-              paramCalendar.set(2, paramList.getMonth() - 1);
-              paramCalendar.set(5, n + 1);
-              k = 1;
-              break;
+              localObject = (sso2sns_0x3_blocklist.BlockUinInfo)paramRspBody.next();
+              ShieldListInfo localShieldListInfo = new ShieldListInfo();
+              localShieldListInfo.uin = String.valueOf(((sso2sns_0x3_blocklist.BlockUinInfo)localObject).uint64_block_uin.get());
+              localShieldListInfo.flags = 1;
+              localShieldListInfo.source_id = ((sso2sns_0x3_blocklist.BlockUinInfo)localObject).uint32_source_id.get();
+              localShieldListInfo.source_sub_id = ((sso2sns_0x3_blocklist.BlockUinInfo)localObject).uint32_source_sub_id.get();
+              if (QLog.isColorLevel()) {
+                QLog.d("ShieldListHandler", 2, "<---handleGetShieldListResp : add data :" + localShieldListInfo.toString());
+              }
+              paramFromServiceMsg.add(localShieldListInfo);
             }
-            n += 1;
+          }
+          bool = paramToServiceMsg.a(paramFromServiceMsg);
+        }
+      }
+      else
+      {
+        if ((m == 1) && (bool)) {
+          a(k);
+        }
+        return false;
+      }
+      label596:
+      bool = false;
+    }
+  }
+  
+  private byte[] a(sso2sns_comm_info.Sso2SnsCommInfo paramSso2SnsCommInfo, sso2sns_0x3_blocklist.ReqBody paramReqBody)
+  {
+    byte[] arrayOfByte1 = new byte[4];
+    byte[] arrayOfByte2 = new byte[4];
+    paramSso2SnsCommInfo = paramSso2SnsCommInfo.toByteArray();
+    paramReqBody = paramReqBody.toByteArray();
+    long l1 = paramSso2SnsCommInfo.length;
+    long l2 = paramReqBody.length;
+    bdqa.a(arrayOfByte1, 0, l1);
+    bdqa.a(arrayOfByte2, 0, l2);
+    ByteArrayBuffer localByteArrayBuffer = new ByteArrayBuffer((int)(8L + l1 + l2));
+    localByteArrayBuffer.append(arrayOfByte1, 0, 4);
+    localByteArrayBuffer.append(arrayOfByte2, 0, 4);
+    localByteArrayBuffer.append(paramSso2SnsCommInfo, 0, (int)l1);
+    localByteArrayBuffer.append(paramReqBody, 0, (int)l2);
+    return localByteArrayBuffer.toByteArray();
+  }
+  
+  private void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShieldListHandler", 2, "--->execNextShieldOperation : isShieldOperating:" + this.jdField_a_of_type_Boolean + ",isEmpty:" + bool);
+      }
+      if ((this.jdField_a_of_type_Boolean) || (bool)) {
+        return;
+      }
+      ShieldOperationItem localShieldOperationItem1 = (ShieldOperationItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      if (localShieldOperationItem1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShieldListHandler", 2, "--->execNextShieldOperation : queque is empty.");
+        }
+        return;
+      }
+    }
+    int j = localShieldOperationItem2.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Boolean = true;
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      return;
+      a(0, 0);
+      continue;
+      b(localShieldOperationItem2);
+      continue;
+      c(localShieldOperationItem2);
+    }
+  }
+  
+  private void b(ShieldOperationItem paramShieldOperationItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_add><S> : sendGetShieldListReqInternal : queue size:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+    }
+    long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
+    ToServiceMsg localToServiceMsg = createToServiceMsg("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList");
+    Object localObject1 = new sso2sns_comm_info.Sso2SnsCommInfo();
+    ((sso2sns_comm_info.Sso2SnsCommInfo)localObject1).uint32_seq.set(1234);
+    sso2sns_0x3_blocklist.ReqBodyAddBlockList localReqBodyAddBlockList = new sso2sns_0x3_blocklist.ReqBodyAddBlockList();
+    localReqBodyAddBlockList.uint64_uin.set(l);
+    Object localObject2 = paramShieldOperationItem.jdField_a_of_type_ArrayOfLong;
+    int k = localObject2.length;
+    int j = 0;
+    while (j < k)
+    {
+      l = localObject2[j];
+      sso2sns_0x3_blocklist.BlockUinInfo localBlockUinInfo = new sso2sns_0x3_blocklist.BlockUinInfo();
+      localBlockUinInfo.uint64_block_uin.set(Long.valueOf(l).longValue());
+      localBlockUinInfo.uint32_source_id.set(paramShieldOperationItem.b);
+      localBlockUinInfo.uint32_source_sub_id.set(0);
+      localReqBodyAddBlockList.rpt_msg_block_uin_info.add(localBlockUinInfo);
+      j += 1;
+    }
+    localObject2 = new sso2sns_0x3_blocklist.ReqBody();
+    ((sso2sns_0x3_blocklist.ReqBody)localObject2).msg_body_add_blocklist.set(localReqBodyAddBlockList);
+    localObject1 = a((sso2sns_comm_info.Sso2SnsCommInfo)localObject1, (sso2sns_0x3_blocklist.ReqBody)localObject2);
+    localToServiceMsg.setTimeout(60000L);
+    localToServiceMsg.extraData.putInt("opType", paramShieldOperationItem.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putInt("source_id", paramShieldOperationItem.b);
+    localToServiceMsg.extraData.putInt("source_sub_id", paramShieldOperationItem.c);
+    localToServiceMsg.extraData.putLongArray("uinList", paramShieldOperationItem.jdField_a_of_type_ArrayOfLong);
+    localToServiceMsg.extraData.putInt("fromType", paramShieldOperationItem.d);
+    localToServiceMsg.putWupBuffer((byte[])localObject1);
+    sendPbReq(localToServiceMsg);
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ((str == null) || (str.length() == 0)) {}
+    do
+    {
+      return;
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList".equalsIgnoreCase(str))
+      {
+        c(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+      if ("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList".equalsIgnoreCase(str))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+    } while (!"SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList".equalsIgnoreCase(str));
+    e(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, sso2sns_0x3_blocklist.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_del><R><---handleDeleteShieldListResp.");
+    }
+    paramFromServiceMsg = new ArrayList();
+    paramRspBody = paramToServiceMsg.extraData.getLongArray("uinList");
+    int k = paramToServiceMsg.extraData.getInt("source_id");
+    int m = paramToServiceMsg.extraData.getInt("source_sub_id");
+    int n = paramToServiceMsg.extraData.getInt("fromType");
+    int i1 = paramRspBody.length;
+    int j = 0;
+    while (j < i1)
+    {
+      long l = paramRspBody[j];
+      paramToServiceMsg = new ShieldListInfo();
+      paramToServiceMsg.uin = String.valueOf(Long.valueOf(l));
+      paramToServiceMsg.source_id = k;
+      paramToServiceMsg.source_sub_id = m;
+      paramToServiceMsg.flags = 0;
+      paramFromServiceMsg.add(paramToServiceMsg);
+      j += 1;
+    }
+    ((auac)this.app.getManager(16)).a(paramFromServiceMsg);
+    a(false, k, paramRspBody);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_del><R> : " + Arrays.toString(paramRspBody));
+    }
+    notifyUI(3, true, new Object[] { paramRspBody, Integer.valueOf(n) });
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    b();
+  }
+  
+  private void c(ShieldOperationItem paramShieldOperationItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_del><S> : sendDeleteShieldListReqInternal : queue size:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+    }
+    long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
+    ToServiceMsg localToServiceMsg = createToServiceMsg("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList");
+    Object localObject1 = new sso2sns_comm_info.Sso2SnsCommInfo();
+    ((sso2sns_comm_info.Sso2SnsCommInfo)localObject1).uint32_seq.set(1234);
+    sso2sns_0x3_blocklist.ReqBodyDelBlockList localReqBodyDelBlockList = new sso2sns_0x3_blocklist.ReqBodyDelBlockList();
+    localReqBodyDelBlockList.uint64_uin.set(l);
+    Object localObject2 = paramShieldOperationItem.jdField_a_of_type_ArrayOfLong;
+    int k = localObject2.length;
+    int j = 0;
+    while (j < k)
+    {
+      l = localObject2[j];
+      localReqBodyDelBlockList.rpt_uint64_del_uin.add(Long.valueOf(l));
+      j += 1;
+    }
+    localObject2 = new sso2sns_0x3_blocklist.ReqBody();
+    ((sso2sns_0x3_blocklist.ReqBody)localObject2).msg_body_del_blocklist.set(localReqBodyDelBlockList);
+    localObject1 = a((sso2sns_comm_info.Sso2SnsCommInfo)localObject1, (sso2sns_0x3_blocklist.ReqBody)localObject2);
+    localToServiceMsg.extraData.putInt("opType", paramShieldOperationItem.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putInt("source_id", paramShieldOperationItem.b);
+    localToServiceMsg.extraData.putInt("source_sub_id", paramShieldOperationItem.c);
+    localToServiceMsg.extraData.putLongArray("uinList", paramShieldOperationItem.jdField_a_of_type_ArrayOfLong);
+    localToServiceMsg.extraData.putInt("fromType", paramShieldOperationItem.d);
+    localToServiceMsg.setTimeout(60000L);
+    localToServiceMsg.putWupBuffer((byte[])localObject1);
+    sendPbReq(localToServiceMsg);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_get><E><---handleGetShieldListError.");
+    }
+    notifyUI(1, false, null);
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "flushPushCacheIntoDB : pushCache size" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localArrayList.add((ShieldListInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str));
+    }
+    ((auac)this.app.getManager(16)).a(localArrayList);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    notifyUI(4, true, null);
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = paramToServiceMsg.extraData.getLongArray("uinList");
+    int j = paramToServiceMsg.extraData.getInt("fromType");
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_add><E> : handleAddShieldListError :" + Arrays.toString(paramFromServiceMsg));
+    }
+    notifyUI(2, false, new Object[] { paramFromServiceMsg, Integer.valueOf(j) });
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = paramToServiceMsg.extraData.getLongArray("uinList");
+    int j = paramToServiceMsg.extraData.getInt("fromType");
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_del><E> : handleDeleteShieldListError : " + Arrays.toString(paramFromServiceMsg));
+    }
+    notifyUI(3, false, new Object[] { paramFromServiceMsg, Integer.valueOf(j) });
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_get><S> : sendGetShieldListReq");
+    }
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = 1;
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = null;
+    a(localShieldOperationItem);
+  }
+  
+  public void a(int paramInt1, long[] paramArrayOfLong, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_add><S> : msgType " + paramInt1 + ",uinList:" + Arrays.toString(paramArrayOfLong));
+    }
+    int j = paramArrayOfLong.length;
+    if ((paramArrayOfLong == null) || (j <= 0)) {}
+    ShieldOperationItem localShieldOperationItem;
+    do
+    {
+      return;
+      localShieldOperationItem = new ShieldOperationItem();
+      localShieldOperationItem.jdField_a_of_type_Int = 2;
+      localShieldOperationItem.b = ShieldListInfo.AIO_TYPE_2_SOURCE_ID(paramInt1);
+      localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+      localShieldOperationItem.d = paramInt2;
+    } while (localShieldOperationItem.b == -1);
+    a(localShieldOperationItem);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    long l = -1L;
+    long[] arrayOfLong = new long[1];
+    boolean bool;
+    if (paramInt == 1006)
+    {
+      paramString = bdgc.e(this.app, paramString);
+      if ((paramString == null) || (paramString.length() <= 0)) {
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShieldListHandler", 2, "<---handleSendMsgErrorWhileShield : msgType:" + paramInt + Arrays.toString(arrayOfLong) + ",hasUin:" + bool);
+      }
+      if (bool)
+      {
+        arrayOfLong[0] = l;
+        paramString = new ShieldListInfo();
+        paramString.uin = String.valueOf(l);
+        paramString.source_id = ShieldListInfo.AIO_TYPE_2_SOURCE_ID(paramInt);
+        paramString.source_sub_id = 0;
+        paramString.flags = 1;
+        localArrayList.add(paramString);
+        ((auac)this.app.getManager(16)).a(localArrayList);
+        a(true, paramString.source_id, arrayOfLong);
+      }
+      return;
+      l = Long.valueOf(paramString).longValue();
+      bool = true;
+      continue;
+      l = Long.valueOf(paramString).longValue();
+      bool = true;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListHandler", 2, "<shield_push><R><---handleShieldListOnlinePush.");
+    }
+    Object localObject1 = new SubMsgType0x30.MsgBody();
+    try
+    {
+      paramArrayOfByte = (SubMsgType0x30.MsgBody)((SubMsgType0x30.MsgBody)localObject1).mergeFrom(paramArrayOfByte);
+      if ((paramArrayOfByte == null) || (!paramArrayOfByte.uint32_sub_cmd.has()) || (paramArrayOfByte.uint32_sub_cmd.get() != 1)) {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder().append("<---handleShieldListOnlinePush : msgBody is null or NotSupportSubCMd :");
+          if (paramArrayOfByte == null)
+          {
+            paramArrayOfByte = "null";
+            QLog.e("ShieldListHandler", 2, paramArrayOfByte);
           }
         }
-        m += 1;
-        j = k;
-        paramString = paramCalendar;
-        break label115;
+        else
+        {
+          return;
+        }
       }
-      label399:
-      i = 0;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      do
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ShieldListHandler", 2, "<---handleShieldListOnlinePush : fail to parse SubMsgType0x30.");
+          }
+          paramArrayOfByte = null;
+          continue;
+          paramArrayOfByte = Integer.valueOf(paramArrayOfByte.uint32_sub_cmd.get());
+        }
+        if (paramArrayOfByte.msg_s2c_blocklist_notify.has())
+        {
+          paramArrayOfByte = (SubMsgType0x30.BlockListNotify)paramArrayOfByte.msg_s2c_blocklist_notify.get();
+          localObject1 = paramArrayOfByte.rpt_msg_block_uin_info.get();
+          paramArrayOfByte = paramArrayOfByte.rpt_uint64_del_uin.get();
+          Object localObject2;
+          if ((localObject1 != null) && (((List)localObject1).size() > 0))
+          {
+            localObject1 = ((List)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (SubMsgType0x30.BlockUinInfo)((Iterator)localObject1).next();
+              ShieldListInfo localShieldListInfo = new ShieldListInfo();
+              localShieldListInfo.uin = String.valueOf(((SubMsgType0x30.BlockUinInfo)localObject2).uint64_block_uin.get());
+              localShieldListInfo.source_id = ((SubMsgType0x30.BlockUinInfo)localObject2).uint32_source_id.get();
+              localShieldListInfo.source_sub_id = ((SubMsgType0x30.BlockUinInfo)localObject2).uint32_source_sub_id.get();
+              localShieldListInfo.flags = 1;
+              if (QLog.isColorLevel()) {
+                QLog.d("ShieldListHandler", 2, "<---handleShieldListOnlinePush : add: uin:" + localShieldListInfo.uin + ",source_id:" + localShieldListInfo.source_id);
+              }
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localShieldListInfo.uin, localShieldListInfo);
+            }
+          }
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+          {
+            localObject1 = paramArrayOfByte.iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              long l = ((Long)((Iterator)localObject1).next()).longValue();
+              localObject2 = new ShieldListInfo();
+              ((ShieldListInfo)localObject2).uin = String.valueOf(l);
+              ((ShieldListInfo)localObject2).flags = 0;
+              if (QLog.isColorLevel()) {
+                QLog.d("ShieldListHandler", 2, "<---handleShieldListOnlinePush : del: uin:" + ((ShieldListInfo)localObject2).uin + ",source_id:" + ((ShieldListInfo)localObject2).source_id);
+              }
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ShieldListInfo)localObject2).uin, localObject2);
+            }
+          }
+          localObject1 = this.app.a();
+          if (localObject1 != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("ShieldListHandler", 2, "handleShieldListOnlinePush, removeFriendFromBlackList");
+            }
+            ((MessageHandler)localObject1).a(paramArrayOfByte);
+          }
+        }
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          d();
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ShieldListHandler", 2, "<---handleShieldListOnlinePush : is shield operating, put into cache.");
     }
   }
   
-  protected void b() {}
-  
-  public void b(RoamDate paramRoamDate)
+  public void b(int paramInt1, long[] paramArrayOfLong, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RoamDateCache", 2, "removeRoamDate roamDate = " + paramRoamDate);
+      QLog.d("ShieldListHandler", 2, "<shield_del><S> : msgType:" + paramInt1 + ",uinList:" + Arrays.toString(paramArrayOfLong));
     }
-    c(paramRoamDate);
-    this.jdField_a_of_type_Amcg.c();
+    if ((paramArrayOfLong == null) || (paramArrayOfLong.length <= 0)) {}
+    ShieldOperationItem localShieldOperationItem;
+    do
+    {
+      return;
+      localShieldOperationItem = new ShieldOperationItem();
+      localShieldOperationItem.jdField_a_of_type_Int = 3;
+      localShieldOperationItem.b = ShieldListInfo.AIO_TYPE_2_SOURCE_ID(paramInt1);
+      localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+      localShieldOperationItem.d = paramInt2;
+    } while (localShieldOperationItem.b == -1);
+    a(localShieldOperationItem);
   }
   
-  public void b(String paramString)
+  protected Class<? extends alpg> observerClass()
   {
-    paramString = a(paramString);
-    if ((paramString == null) || (paramString.length != 2)) {
+    return amcm.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if ((str == null) || (str.length() == 0)) {}
+    while ((!"SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList".equalsIgnoreCase(str)) && (!"SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList".equalsIgnoreCase(str)) && (!"SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList".equalsIgnoreCase(str))) {
       return;
     }
-    paramString = a(paramString[0], paramString[1]);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RoamDateCache", 2, "removeRoamDate roamDate = " + paramString);
-    }
-    c(paramString);
-    this.jdField_a_of_type_Amcg.c();
-  }
-  
-  public void b(String paramString, long paramLong, int paramInt)
-  {
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis((5L + paramLong) * 1000L);
-    int i = ((Calendar)localObject).get(1);
-    int j = ((Calendar)localObject).get(2) + 1;
-    int k = ((Calendar)localObject).get(5);
-    localObject = a(paramString, i, j);
-    if (localObject != null)
+    boolean bool2 = false;
+    if (paramFromServiceMsg.getResultCode() == 1000) {}
+    for (;;)
     {
-      ((RoamDate)localObject).setLocState(k - 1, paramInt);
-      a((RoamDate)localObject);
-      return;
-    }
-    QLog.e("Q.roammsg.MessageRoamManager", 1, "updateRoamDateLocIndex error roam not found uin = " + paramString + " year = " + i + " month = " + j);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      b((RoamDate)((Map.Entry)localIterator.next()).getValue());
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      RoamDate localRoamDate = (RoamDate)((Map.Entry)localIterator.next()).getValue();
-      localRoamDate.clearLocState();
-      a(localRoamDate);
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      RoamDate localRoamDate = (RoamDate)((Map.Entry)localIterator.next()).getValue();
-      localRoamDate.clearSerState();
-      a(localRoamDate);
+      boolean bool1;
+      try
+      {
+        bool1 = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        if (bool1) {
+          break;
+        }
+        c();
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ShieldListHandler", 2, "<---decodeSso2SnsCommInfo: exception.", paramToServiceMsg);
+        bool1 = bool2;
+        continue;
+      }
+      if ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg);
+        bool1 = bool2;
+      }
+      else
+      {
+        b(paramToServiceMsg, paramFromServiceMsg);
+        bool1 = bool2;
+      }
     }
   }
 }

@@ -15,12 +15,12 @@ public class nqb
   {
     if (paramBoolean)
     {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375291);
+      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375342);
       if (localViewStub != null)
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375939);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375992);
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
-        int i = xee.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 116.0F);
+        int i = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 116.0F);
         localLayoutParams.rightMargin = i;
         localLayoutParams.leftMargin = i;
         localRelativeLayout.setLayoutParams(localLayoutParams);
@@ -39,7 +39,7 @@ public class nqb
         if ((PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser) != null) && (PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).getVisibility() == 0)) {
           break label247;
         }
-        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848864);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848937);
         PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
         PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(8);
       }
@@ -49,7 +49,7 @@ public class nqb
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).a(2, PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.jdField_a_of_type_JavaLangString);
       return;
       label247:
-      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848919);
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848992);
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
       PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
       continue;

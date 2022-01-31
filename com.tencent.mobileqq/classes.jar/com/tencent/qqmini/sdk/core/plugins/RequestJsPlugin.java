@@ -2,13 +2,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bghn;
-import bgjw;
-import bgkd;
-import bgki;
-import bgkz;
-import bglb;
-import bgyd;
+import bglu;
+import bgod;
+import bgok;
+import bgop;
+import bgpg;
+import bgpi;
+import bhck;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
@@ -42,9 +42,9 @@ public class RequestJsPlugin
   private boolean socketClosedCallbacked;
   private ConcurrentHashMap<Integer, RequestJsPlugin.WebsocketRequestTask> wsrequestMap = new ConcurrentHashMap();
   
-  private void callback(bgkd parambgkd, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  private void callback(bgok parambgok, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
   {
-    if (parambgkd != null)
+    if (parambgok != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       if (paramString3 == null) {
@@ -59,48 +59,48 @@ public class RequestJsPlugin
     label116:
     for (paramString2 = "";; paramString2 = " " + paramString2)
     {
-      paramJSONObject = bgkz.a(paramJSONObject, "errMsg", paramString2).toString();
-      parambgkd.a(paramJSONObject);
+      paramJSONObject = bgpg.a(paramJSONObject, "errMsg", paramString2).toString();
+      parambgok.a(paramJSONObject);
       if (!"fail".equals(paramString1)) {
         break label141;
       }
       QMLog.e("[mini] http.RequestJsPlugin", "[callbackFail] " + paramJSONObject);
       return;
-      paramString3 = parambgkd.jdField_a_of_type_JavaLangString;
+      paramString3 = parambgok.jdField_a_of_type_JavaLangString;
       break;
     }
     label141:
     QMLog.i("[mini] http.RequestJsPlugin", "[callback] " + paramJSONObject);
   }
   
-  private void callbackComplete(bgkd parambgkd, JSONObject paramJSONObject)
+  private void callbackComplete(bgok parambgok, JSONObject paramJSONObject)
   {
-    callback(parambgkd, paramJSONObject, "complete", null, null);
+    callback(parambgok, paramJSONObject, "complete", null, null);
   }
   
-  private void callbackFail(bgkd parambgkd, JSONObject paramJSONObject)
+  private void callbackFail(bgok parambgok, JSONObject paramJSONObject)
   {
-    callback(parambgkd, paramJSONObject, "fail", null, null);
+    callback(parambgok, paramJSONObject, "fail", null, null);
   }
   
-  private void callbackFail(bgkd parambgkd, JSONObject paramJSONObject, String paramString)
+  private void callbackFail(bgok parambgok, JSONObject paramJSONObject, String paramString)
   {
-    callback(parambgkd, paramJSONObject, "fail", paramString, null);
+    callback(parambgok, paramJSONObject, "fail", paramString, null);
   }
   
-  private void callbackFail(bgkd parambgkd, JSONObject paramJSONObject, String paramString1, String paramString2)
+  private void callbackFail(bgok parambgok, JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    callback(parambgkd, paramJSONObject, "fail", paramString1, null);
+    callback(parambgok, paramJSONObject, "fail", paramString1, null);
   }
   
-  private void callbackOK(bgkd parambgkd, JSONObject paramJSONObject)
+  private void callbackOK(bgok parambgok, JSONObject paramJSONObject)
   {
-    callback(parambgkd, paramJSONObject, "ok", null, null);
+    callback(parambgok, paramJSONObject, "ok", null, null);
   }
   
-  private void callbackOK(bgkd parambgkd, JSONObject paramJSONObject, String paramString)
+  private void callbackOK(bgok parambgok, JSONObject paramJSONObject, String paramString)
   {
-    callback(parambgkd, paramJSONObject, "ok", null, paramString);
+    callback(parambgok, paramJSONObject, "ok", null, paramString);
   }
   
   private String getRequestReferer()
@@ -153,7 +153,7 @@ public class RequestJsPlugin
     return null;
   }
   
-  private void onCloseCallback(bgkd parambgkd, int paramInt1, String paramString, int paramInt2)
+  private void onCloseCallback(bgok parambgok, int paramInt1, String paramString, int paramInt2)
   {
     try
     {
@@ -162,25 +162,25 @@ public class RequestJsPlugin
       ((JSONObject)localObject).put("state", "close");
       ((JSONObject)localObject).put("code", paramInt1);
       ((JSONObject)localObject).put("reason", paramString);
-      parambgkd.jdField_a_of_type_Bghn.a("onSocketTaskStateChange", ((JSONObject)localObject).toString(), 0);
-      parambgkd = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt2));
+      parambgok.jdField_a_of_type_Bglu.a("onSocketTaskStateChange", ((JSONObject)localObject).toString(), 0);
+      parambgok = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt2));
       paramString = this.mMiniAppInfo;
-      localObject = bgyd.a(this.mMiniAppInfo);
-      if (parambgkd != null) {}
-      for (parambgkd = parambgkd.mUrl;; parambgkd = null)
+      localObject = bhck.a(this.mMiniAppInfo);
+      if (parambgok != null) {}
+      for (parambgok = parambgok.mUrl;; parambgok = null)
       {
-        bgyd.a(paramString, 633, null, null, null, 0, (String)localObject, 0L, getSecondLevelDomain(parambgkd));
+        bhck.a(paramString, 633, null, null, null, 0, (String)localObject, 0L, getSecondLevelDomain(parambgok));
         return;
       }
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onClose exception:", parambgkd);
+      QMLog.e("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onClose exception:", parambgok);
     }
   }
   
-  public String createRequestTask(bgkd parambgkd)
+  public String createRequestTask(bgok parambgok)
   {
     boolean bool;
     String str2;
@@ -188,25 +188,25 @@ public class RequestJsPlugin
     {
       try
       {
-        Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        Object localObject1 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         bool = ((JSONObject)localObject1).optBoolean("__skipDomainCheck__", false);
         localObject1 = new RequestJsPlugin.RequestTask(this, (JSONObject)localObject1);
         str2 = ((RequestJsPlugin.RequestTask)localObject1).mUrl;
         if ((((RequestJsPlugin.RequestTask)localObject1).mMethod != null) && (!supportMethod.contains(((RequestJsPlugin.RequestTask)localObject1).mMethod.toUpperCase())))
         {
           if (!this.mIsMiniGame) {
-            callbackFail(parambgkd, null, "request protocol error");
+            callbackFail(parambgok, null, "request protocol error");
           }
-          localObject1 = bgki.a("createRequest", null, "request protocol error").toString();
+          localObject1 = bgop.a("createRequest", null, "request protocol error").toString();
           return localObject1;
         }
         if ((!TextUtils.isEmpty(str2)) && ((str2.startsWith("https://")) || (str2.startsWith("http://")))) {
           break label207;
         }
         if (!this.mIsMiniGame) {
-          callbackFail(parambgkd, null, "url is invalid");
+          callbackFail(parambgok, null, "url is invalid");
         }
-        localObject1 = bgki.a("createRequest", null, "url is invalid").toString();
+        localObject1 = bgop.a("createRequest", null, "url is invalid").toString();
         return localObject1;
       }
       finally {}
@@ -214,8 +214,8 @@ public class RequestJsPlugin
     }
     catch (Throwable localThrowable1)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " exception:", localThrowable1);
-      callbackFail(parambgkd, null, "createRequest");
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " exception:", localThrowable1);
+      callbackFail(parambgok, null, "createRequest");
     }
     for (;;)
     {
@@ -223,25 +223,25 @@ public class RequestJsPlugin
       String str1;
       if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, str2, 0))
       {
-        QMLog.w("[mini] http.RequestJsPlugin", "check request DomainValid fail, callbackFail, event:" + parambgkd.jdField_a_of_type_JavaLangString + ", callbackId:" + parambgkd.jdField_b_of_type_Int + ", url:" + str2);
+        QMLog.w("[mini] http.RequestJsPlugin", "check request DomainValid fail, callbackFail, event:" + parambgok.jdField_a_of_type_JavaLangString + ", callbackId:" + parambgok.jdField_b_of_type_Int + ", url:" + str2);
         if (!this.mIsMiniGame) {
-          callbackFail(parambgkd, null, "url not in domain list, 请求域名不合法");
+          callbackFail(parambgok, null, "url not in domain list, 请求域名不合法");
         }
-        str1 = bgki.a("createRequest", null, "url not in domain list, 请求域名不合法").toString();
+        str1 = bgop.a("createRequest", null, "url not in domain list, 请求域名不合法").toString();
         return str1;
       }
       this.requestMap.put(Integer.valueOf(str1.mTaskId), str1);
       try
       {
-        JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        JSONObject localJSONObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         localJSONObject.put("requestTaskId", str1.mTaskId);
         if (this.requestMap.size() > 200)
         {
           QMLog.d("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
           if (!this.mIsMiniGame) {
-            callbackFail(parambgkd, localJSONObject);
+            callbackFail(parambgok, localJSONObject);
           }
-          str1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bgop.b(parambgok.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
         RequestProxy localRequestProxy = (RequestProxy)ProxyManager.get(RequestProxy.class);
@@ -249,17 +249,17 @@ public class RequestJsPlugin
         {
           QMLog.d("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
           if (!this.mIsMiniGame) {
-            callbackFail(parambgkd, localJSONObject);
+            callbackFail(parambgok, localJSONObject);
           }
-          str1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bgop.b(parambgok.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
-        if (localRequestProxy.request(str1.mUrl, str1.mBody, str1.mHeaders, str1.mMethod, 60, new RequestJsPlugin.1(this, str2, str1, parambgkd)))
+        if (localRequestProxy.request(str1.mUrl, str1.mBody, str1.mHeaders, str1.mMethod, 60, new RequestJsPlugin.1(this, str2, str1, parambgok)))
         {
           if (!this.mIsMiniGame) {
-            callbackOK(parambgkd, localJSONObject);
+            callbackOK(parambgok, localJSONObject);
           }
-          str1 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
       }
@@ -270,7 +270,7 @@ public class RequestJsPlugin
     }
   }
   
-  public String createSocketTask(bgkd parambgkd)
+  public String createSocketTask(bgok parambgok)
   {
     try
     {
@@ -282,58 +282,58 @@ public class RequestJsPlugin
         if (localWebSocketProxy == null)
         {
           QMLog.w("[mini] http.RequestJsPlugin", "not support web socket right now");
-          callbackFail(parambgkd, null, "not support web socket right now");
+          callbackFail(parambgok, null, "not support web socket right now");
           return "";
         }
-        localObject3 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        localObject3 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         boolean bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
         j = this.mApkgInfo.a().networkTimeoutInfo.connectSocket;
         localObject3 = new RequestJsPlugin.WebsocketRequestTask(this, (JSONObject)localObject3);
         if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, 1))
         {
-          QMLog.w("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + parambgkd.jdField_a_of_type_JavaLangString + ", callbackId:" + parambgkd.jdField_b_of_type_Int + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl);
-          callbackFail(parambgkd, null, "请求域名不合法");
+          QMLog.w("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + parambgok.jdField_a_of_type_JavaLangString + ", callbackId:" + parambgok.jdField_b_of_type_Int + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl);
+          callbackFail(parambgok, null, "请求域名不合法");
           return "";
         }
       }
       try
       {
-        parambgkd = new RequestJsPlugin.WebsocketRequestTask(this, new JSONObject(parambgkd.jdField_b_of_type_JavaLangString)).mUrl;
-        bgyd.a(this.mMiniAppInfo, 632, null, null, null, 1, bgyd.a(this.mMiniAppInfo), 0L, getSecondLevelDomain(parambgkd));
+        parambgok = new RequestJsPlugin.WebsocketRequestTask(this, new JSONObject(parambgok.jdField_b_of_type_JavaLangString)).mUrl;
+        bhck.a(this.mMiniAppInfo, 632, null, null, null, 1, bhck.a(this.mMiniAppInfo), 0L, getSecondLevelDomain(parambgok));
         return "";
         int i = j;
         if (((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout > j) {
           i = ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout;
         }
-        localObject1.connectSocket(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mHeaders, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mMethod, i, new RequestJsPlugin.2(this, parambgkd, (RequestJsPlugin.WebsocketRequestTask)localObject3));
+        localObject1.connectSocket(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mHeaders, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mMethod, i, new RequestJsPlugin.2(this, parambgok, (RequestJsPlugin.WebsocketRequestTask)localObject3));
         this.wsrequestMap.put(Integer.valueOf(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId), localObject3);
-        Object localObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+        Object localObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
         ((JSONObject)localObject2).put("socketTaskId", ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId);
-        ((JSONObject)localObject2).put("errMsg", parambgkd.jdField_a_of_type_JavaLangString + ":ok");
-        callbackOK(parambgkd, (JSONObject)localObject2);
+        ((JSONObject)localObject2).put("errMsg", parambgok.jdField_a_of_type_JavaLangString + ":ok");
+        callbackOK(parambgok, (JSONObject)localObject2);
         localObject2 = ((JSONObject)localObject2).toString();
         return localObject2;
       }
-      catch (JSONException parambgkd)
+      catch (JSONException parambgok)
       {
         for (;;)
         {
-          QMLog.e("[mini] http.RequestJsPlugin", "handleNativeRequest ", parambgkd);
+          QMLog.e("[mini] http.RequestJsPlugin", "handleNativeRequest ", parambgok);
         }
       }
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
-      callbackFail(parambgkd, null);
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      callbackFail(parambgok, null);
     }
   }
   
-  public String operateRequestTask(bgkd parambgkd)
+  public String operateRequestTask(bgok parambgok)
   {
     try
     {
-      Object localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       int i = ((JSONObject)localObject).optInt("requestTaskId");
       localObject = ((JSONObject)localObject).optString("operationType");
       if (this.requestMap.containsKey(Integer.valueOf(i)))
@@ -343,28 +343,28 @@ public class RequestJsPlugin
         {
           ((RequestProxy)ProxyManager.get(RequestProxy.class)).abort(localRequestTask.mUrl);
           if (!this.mIsMiniGame) {
-            callbackOK(parambgkd, null);
+            callbackOK(parambgok, null);
           }
         }
       }
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
       for (;;)
       {
-        QMLog.e("[mini] http.RequestJsPlugin", "OPERATE_REQUEST_TASK : " + parambgkd);
+        QMLog.e("[mini] http.RequestJsPlugin", "OPERATE_REQUEST_TASK : " + parambgok);
       }
     }
     return "";
   }
   
-  public String operateSocketTask(bgkd parambgkd)
+  public String operateSocketTask(bgok parambgok)
   {
     int i;
     WebSocketProxy localWebSocketProxy;
     try
     {
-      Object localObject3 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      Object localObject3 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       ??? = ((JSONObject)localObject3).optString("operationType");
       i = ((JSONObject)localObject3).optInt("socketTaskId");
       if ("close".equals(???)) {
@@ -381,15 +381,15 @@ public class RequestJsPlugin
               localWebSocketProxy.closeSocket(i, j, (String)localObject3);
             }
             if (this.mIsMiniGame) {
-              callbackOK(parambgkd, null, "closeSocket");
+              callbackOK(parambgok, null, "closeSocket");
             }
-            localObject3 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+            localObject3 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null).toString();
             return localObject3;
           }
           if (this.mIsMiniGame) {
-            callbackFail(parambgkd, null, "do not have this socket ", "closeSocket");
+            callbackFail(parambgok, null, "do not have this socket ", "closeSocket");
           }
-          localObject3 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+          localObject3 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
           return localObject3;
         }
       }
@@ -399,8 +399,8 @@ public class RequestJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
-      return bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      return bgop.b(parambgok.jdField_a_of_type_JavaLangString, null).toString();
     }
     Object localObject8 = localObject4.optString("data", null);
     Object localObject7;
@@ -417,61 +417,61 @@ public class RequestJsPlugin
         {
           localWebSocketProxy.send(i, (String)localObject8);
           if (this.mIsMiniGame) {
-            callbackOK(parambgkd, null, "sendSocketMessage");
+            callbackOK(parambgok, null, "sendSocketMessage");
           }
-          localObject5 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+          localObject5 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null).toString();
           return localObject5;
         }
       }
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error, send msg:" + (String)localObject8 + " on null socket instance");
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error, send msg:" + (String)localObject8 + " on null socket instance");
       if (this.mIsMiniGame) {
-        callbackFail(parambgkd, null, "socket is null ", "sendSocketMessage");
+        callbackFail(parambgok, null, "socket is null ", "sendSocketMessage");
       }
-      localObject7 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
+      localObject7 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
       return localObject7;
       label499:
       if (this.mIsMiniGame) {
-        callbackFail(parambgkd, null, "do not have this socket ", "closeSocket");
+        callbackFail(parambgok, null, "do not have this socket ", "closeSocket");
       }
-      localObject7 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+      localObject7 = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
       return localObject7;
     }
-    if (bglb.a((JSONObject)localObject7))
+    if (bgpi.a((JSONObject)localObject7))
     {
-      ??? = bglb.a(this.mMiniAppContext, (JSONObject)localObject7, "data");
-      if ((??? != null) && (((bglb)???).a != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+      ??? = bgpi.a(this.mMiniAppContext, (JSONObject)localObject7, "data");
+      if ((??? != null) && (((bgpi)???).a != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
       {
         localObject7 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));
         localObject8 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
         if ((localObject7 != null) && (localObject8 != null))
         {
-          ((WebSocketProxy)localObject8).send(i, ((bglb)???).a);
+          ((WebSocketProxy)localObject8).send(i, ((bgpi)???).a);
           if (this.mIsMiniGame) {
-            callbackOK(parambgkd, null);
+            callbackOK(parambgok, null);
           }
-          return bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+          return bgop.a(parambgok.jdField_a_of_type_JavaLangString, null).toString();
         }
-        QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error, send NativeBuffer on null socket instance");
+        QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error, send NativeBuffer on null socket instance");
         if (this.mIsMiniGame) {
-          callbackFail(parambgkd, null, "socket is null ", "sendSocketMessage");
+          callbackFail(parambgok, null, "socket is null ", "sendSocketMessage");
         }
-        return bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
+        return bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambgkd, null, "do not have this socket ", "closeSocket");
+        callbackFail(parambgok, null, "do not have this socket ", "closeSocket");
       }
-      ??? = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+      ??? = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
       return ???;
     }
     label766:
     return "";
   }
   
-  public String wnsCgiRequest(bgkd parambgkd)
+  public String wnsCgiRequest(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
       Object localObject = localJSONObject1;
       if (localJSONObject1 == null) {
@@ -481,27 +481,27 @@ public class RequestJsPlugin
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localObject != null)
       {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.4(this, parambgkd));
+        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.4(this, parambgok));
         return "";
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambgkd, null, "do not support wnsCgiRequest");
+        callbackFail(parambgok, null, "do not support wnsCgiRequest");
       }
-      localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "do not support wnsCgiRequest").toString();
+      localObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "do not support wnsCgiRequest").toString();
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
     }
-    return bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+    return bgop.b(parambgok.jdField_a_of_type_JavaLangString, null).toString();
   }
   
-  public String wnsRequest(bgkd parambgkd)
+  public String wnsRequest(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject2 = new JSONObject(parambgok.jdField_b_of_type_JavaLangString);
       JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
       Object localObject = localJSONObject1;
       if (localJSONObject1 == null) {
@@ -511,20 +511,20 @@ public class RequestJsPlugin
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localObject != null)
       {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3(this, parambgkd));
+        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3(this, parambgok));
         return "";
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambgkd, null, "do not support wnsRequest");
+        callbackFail(parambgok, null, "do not support wnsRequest");
       }
-      localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, null, "do not support wnsRequest").toString();
+      localObject = bgop.a(parambgok.jdField_a_of_type_JavaLangString, null, "do not support wnsRequest").toString();
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      QMLog.e("[mini] http.RequestJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
     }
-    return bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+    return bgop.b(parambgok.jdField_a_of_type_JavaLangString, null).toString();
   }
 }
 

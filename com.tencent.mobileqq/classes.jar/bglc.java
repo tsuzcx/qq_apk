@@ -1,48 +1,15 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bglc
+  implements DialogInterface.OnDismissListener
 {
-  public static final String a = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + "navigateback_appid";
+  public bglc(Login paramLogin) {}
   
-  public static void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = new File(b);
-    do
-    {
-      try
-      {
-        localObject = new BufferedWriter(new FileWriter((File)localObject));
-        QMLog.e("NavigateBackUtils", "getTagAppid exception!", paramString);
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          ((BufferedWriter)localObject).write(paramString);
-          ((BufferedWriter)localObject).close();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          continue;
-        }
-        paramString = paramString;
-        localObject = null;
-      }
-    } while (localObject == null);
-    try
-    {
-      ((BufferedWriter)localObject).close();
-      return;
-    }
-    catch (Exception paramString) {}
+    Login.b(this.a, false);
   }
 }
 

@@ -1,89 +1,90 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class aonu
+  extends aokh<aont>
 {
-  public String a;
-  public boolean a;
-  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+  public static final String a = asne.a + "GameCenterMsgConfigProcessor";
   
-  public aonu()
+  public static aont a()
   {
-    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
-    this.jdField_a_of_type_Boolean = false;
+    return (aont)aoks.a().a(608);
   }
   
-  public static aonu a(aogf[] paramArrayOfaogf)
+  public int a()
   {
-    aonu localaonu = new aonu();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    return 608;
+  }
+  
+  @NonNull
+  public aont a(int paramInt)
+  {
+    return new aont();
+  }
+  
+  @Nullable
+  public aont a(aoko[] paramArrayOfaoko)
+  {
+    Object localObject2 = null;
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "[onParsed]");
+    }
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
     {
-      int j = paramArrayOfaogf.length;
-      int i = 0;
-      while (i < j)
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0)
       {
-        Object localObject = paramArrayOfaogf[i];
-        if (localObject == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          localObject = ((aogf)localObject).jdField_a_of_type_JavaLangString;
-          for (;;)
-          {
-            try
-            {
-              JSONObject localJSONObject = new JSONObject((String)localObject);
-              if (localJSONObject.has("announcementUrl")) {
-                localaonu.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
-              }
-              if (localJSONObject.has("autoApprovalUrl")) {
-                localaonu.b = localJSONObject.optString("autoApprovalUrl");
-              }
-              if (!localJSONObject.has("frequencyLimitVisible")) {
-                continue;
-              }
-              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
-                continue;
-              }
-              bool = true;
-              localaonu.jdField_a_of_type_Boolean = bool;
-            }
-            catch (JSONException localJSONException)
-            {
-              boolean bool;
-              localJSONException.printStackTrace();
-              continue;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
-            break;
-            bool = false;
-            continue;
-            localaonu.jdField_a_of_type_Boolean = false;
-          }
+        localObject1 = aont.a(paramArrayOfaoko);
+        paramArrayOfaoko = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        if ((paramArrayOfaoko != null) && (localObject1 != null)) {
+          ((asmu)paramArrayOfaoko.getManager(358)).a((aont)localObject1);
         }
       }
     }
-    if (TextUtils.isEmpty(localaonu.jdField_a_of_type_JavaLangString)) {
-      localaonu.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
-    }
-    if (TextUtils.isEmpty(localaonu.b)) {
-      localaonu.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
-    }
-    return localaonu;
+    return localObject1;
   }
   
-  public String toString()
+  public Class<aont> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
-    return localStringBuilder.toString();
+    return aont.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "onReqNoReceive: type=" + a());
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aont paramaont)
+  {
+    QLog.i(a, 1, "[onUpdate]");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

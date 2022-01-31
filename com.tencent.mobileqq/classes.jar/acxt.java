@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class acxt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acxt(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public acxt(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    azmj.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
-    FriendProfileMoreInfoActivity.b(this.a);
+    if (!this.a.isFinishing()) {
+      ForwardRecentActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxt
  * JD-Core Version:    0.7.0.1
  */

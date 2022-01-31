@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agis;
-import agit;
-import alpo;
+import agnh;
+import agni;
+import alud;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ArkDebugChatPie$1$1$3
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$3(agit paramagit, String paramString1, String paramString2) {}
+  public ArkDebugChatPie$1$1$3(agni paramagni, String paramString1, String paramString2) {}
   
   public void run()
   {
     ArkAppMgr.getInstance().setDebugAppPathCache(this.jdField_a_of_type_JavaLangString, this.b);
-    QQToast.a(this.jdField_a_of_type_Agit.a.this$0.a, alpo.a(2131701042), 0).a();
+    QQToast.a(this.jdField_a_of_type_Agni.a.this$0.a, alud.a(2131701054), 0).a();
   }
 }
 

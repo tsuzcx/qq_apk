@@ -1,25 +1,21 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
-class ajda
+public class ajda
   implements View.OnClickListener
 {
-  ajda(ajbm paramajbm) {}
+  public ajda(DrawHbFragment paramDrawHbFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
+    if ((paramView instanceof TextView))
     {
-      this.a.k();
-      return;
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
     }
-    paramView = new Intent(ajbm.a(this.a), QRLoginMgrActivity.class);
-    paramView.putExtra("qrlogin_position", this.a.b);
-    paramView.putExtra("qrlogin_appid", this.a.a);
-    ajbm.a(this.a).startActivity(paramView);
   }
 }
 

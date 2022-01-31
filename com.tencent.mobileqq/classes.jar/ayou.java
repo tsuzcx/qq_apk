@@ -1,39 +1,10 @@
-class ayou
+public class ayou
 {
-  boolean jdField_a_of_type_Boolean;
+  public int a;
+  public CharSequence a;
+  public String a;
   
-  public ayou(ayos paramayos, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public ayou(ayot paramayot) {}
 }
 
 

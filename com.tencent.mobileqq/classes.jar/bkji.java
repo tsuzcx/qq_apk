@@ -1,15 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class bkji
-  implements View.OnTouchListener
+final class bkji
+  implements bklf
 {
-  bkji(bkjf parambkjf) {}
+  public void a(String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, long paramLong, bkkq parambkkq, boolean paramBoolean)
   {
-    return true;
+    if (paramBoolean)
+    {
+      if (parambkkq.a != 5) {
+        break label25;
+      }
+      bkmk.a(paramString, "actFileWyDown", parambkkq, false, paramLong);
+    }
+    label25:
+    while (parambkkq.a != 4) {
+      return;
+    }
+    bkmk.a(paramString, "actFileWyDown", parambkkq, true, paramLong);
   }
 }
 

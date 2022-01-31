@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bnoa;
+import bnsm;
 
 public class LightWeightProgress
   extends View
@@ -27,7 +27,7 @@ public class LightWeightProgress
   int d;
   int e;
   int f = 2;
-  int g = bnoa.a(14.0F);
+  int g = bnsm.a(14.0F);
   protected int h;
   protected int i;
   protected int j;
@@ -57,8 +57,8 @@ public class LightWeightProgress
     setLayerType(1, null);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_c_of_type_Int = 0;
-    this.d = getResources().getColor(2131166202);
-    this.e = getResources().getColor(2131166206);
+    this.d = getResources().getColor(2131166204);
+    this.e = getResources().getColor(2131166208);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);

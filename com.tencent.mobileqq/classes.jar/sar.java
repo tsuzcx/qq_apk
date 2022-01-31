@@ -25,12 +25,12 @@ class sar
   {
     super(paramView, paramBaseData);
     paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368589));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378985));
-    this.b = ((TextView)paramView.findViewById(2131378685));
-    syo.a((FrameLayout)paramView.findViewById(2131366605), 0.0F, Color.parseColor("#dedfe0"), 1);
-    syo.a((TextView)paramView.findViewById(2131378756), aekt.a(2.0F, paramView.getResources()), Color.parseColor("#fa8726"), 1);
-    syo.a((TextView)paramView.findViewById(2131378865), aekt.a(2.0F, paramView.getResources()), Color.parseColor("#12b7f5"), 1);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368600));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+    this.b = ((TextView)paramView.findViewById(2131378739));
+    syo.a((FrameLayout)paramView.findViewById(2131366611), 0.0F, Color.parseColor("#dedfe0"), 1);
+    syo.a((TextView)paramView.findViewById(2131378811), aepi.a(2.0F, paramView.getResources()), Color.parseColor("#fa8726"), 1);
+    syo.a((TextView)paramView.findViewById(2131378922), aepi.a(2.0F, paramView.getResources()), Color.parseColor("#12b7f5"), 1);
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
@@ -44,8 +44,8 @@ class sar
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.j);
     this.b.setText(paramBaseData1.k);
     paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
-    paramBaseData2.mRequestWidth = aekt.a(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    paramBaseData2.mRequestHeight = aekt.a(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mRequestWidth = aepi.a(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mRequestHeight = aepi.a(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
     paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
     paramBaseData2.mPlayGifImage = true;
     paramBaseData2.mMemoryCacheKeySuffix = "fast_web";

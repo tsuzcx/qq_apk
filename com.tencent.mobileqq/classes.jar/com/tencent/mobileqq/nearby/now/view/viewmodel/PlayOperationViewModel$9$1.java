@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
 import android.text.TextUtils;
-import auqc;
-import auzx;
-import avcw;
-import avdz;
-import azmo;
+import auul;
+import aveg;
+import avhf;
+import avii;
+import azqx;
 
 public class PlayOperationViewModel$9$1
   implements Runnable
 {
-  public PlayOperationViewModel$9$1(avdz paramavdz, auqc paramauqc) {}
+  public PlayOperationViewModel$9$1(avii paramavii, auul paramauul) {}
   
   public void run()
   {
-    azmo localazmo = new azmo(this.jdField_a_of_type_Avdz.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_like_click").e(auzx.d);
-    int i = this.jdField_a_of_type_Auqc.b();
-    String str2 = auzx.a;
-    if (TextUtils.equals(auzx.a, "2")) {}
-    for (String str1 = auzx.c;; str1 = "")
+    azqx localazqx = new azqx(this.jdField_a_of_type_Avii.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_like_click").e(aveg.d);
+    int i = this.jdField_a_of_type_Auul.b();
+    String str2 = aveg.a;
+    if (TextUtils.equals(aveg.a, "2")) {}
+    for (String str1 = aveg.c;; str1 = "")
     {
-      localazmo.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localazqx.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

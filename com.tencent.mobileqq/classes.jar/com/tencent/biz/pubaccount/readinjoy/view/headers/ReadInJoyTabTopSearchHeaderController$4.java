@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import bhot;
+import bhta;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 import set;
@@ -13,7 +13,7 @@ public class ReadInJoyTabTopSearchHeaderController$4
   public void run()
   {
     this.this$0.a.a();
-    bhot.a(new ReadInJoyTabTopSearchHeaderController.4.1(this));
+    bhta.a(new ReadInJoyTabTopSearchHeaderController.4.1(this));
   }
 }
 

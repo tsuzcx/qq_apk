@@ -1,12 +1,21 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class aook
-  extends aofy<aooj>
+  extends aokh<aooj>
 {
+  public static aooj a()
+  {
+    return (aooj)aoks.a().a(446);
+  }
+  
   public int a()
   {
-    return 484;
+    return 446;
   }
   
   @NonNull
@@ -16,10 +25,10 @@ public class aook
   }
   
   @Nullable
-  public aooj a(aogf[] paramArrayOfaogf)
+  public aooj a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aooj.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aooj.a(paramArrayOfaoko);
     }
     return null;
   }
@@ -31,7 +40,25 @@ public class aook
   
   public void a(int paramInt) {}
   
-  public void a(aooj paramaooj) {}
+  public void a(aooj paramaooj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramaooj.toString());
+    }
+    paramaooj = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramaooj instanceof QQAppInterface))
+    {
+      paramaooj = (MiniAppEntryHandler)((QQAppInterface)paramaooj).a(149);
+      if (paramaooj != null) {
+        paramaooj.notifyUI(0, true, null);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
   
   public int b()
   {

@@ -1,56 +1,287 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.search.rich.ArkAppModule.1;
+import com.tencent.mobileqq.search.rich.ArkAppModule.2;
+import java.lang.ref.WeakReference;
 
 public class ayse
-  extends aysb
+  extends ankc
 {
-  public int a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SquareImageView a;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public URLImageView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
+  private WeakReference<aysf> a;
   
-  public ayse(ViewGroup paramViewGroup, int paramInt)
+  public ayse(ark.Application paramApplication, long paramLong)
   {
-    super(paramViewGroup, paramInt);
+    super(paramApplication, paramLong);
   }
   
-  protected void a()
+  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364891));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377394));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371964));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131376741));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368007));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369119));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365512));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365524));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375186));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131380333));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380335));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364556));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364588));
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramInt;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return (int)paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
+  }
+  
+  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
+  {
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramLong;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
+  }
+  
+  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
+  {
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramVariantWrapper.GetType();
+      if (i == 5) {
+        return paramVariantWrapper.GetString();
+      }
+    } while (i != 6);
+    return paramVariantWrapper.GetTableAsJsonString();
+  }
+  
+  public void Destruct()
+  {
+    super.Destruct();
+  }
+  
+  public String GetTypeName()
+  {
+    return "QQSearch";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    if (paramString.equals("Report")) {}
+    do
+    {
+      return true;
+      if (paramString.equals("GetContainerInfo")) {
+        return false;
+      }
+    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
+    return false;
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (!a(paramString)) {}
+    do
+    {
+      return false;
+      if (paramString.equals("Report")) {
+        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("SetTalkBackText")) {
+        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    } while (!paramString.equals("Notify"));
+    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
+  }
+  
+  public void a(aysf paramaysf)
+  {
+    this.a = new WeakReference(paramaysf);
+  }
+  
+  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localQQAppInterface == null) {
+      return false;
+    }
+    String str = localQQAppInterface.getCurrentAccountUin();
+    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
+    int i = 0;
+    int j = 0;
+    long l1 = 0L;
+    long l2 = 0L;
+    Object localObject3 = "";
+    Object localObject2 = "";
+    int k = 0;
+    Object localObject4;
+    int m;
+    long l3;
+    if (k < paramArrayOfVariantWrapper.length) {
+      if (k == 0)
+      {
+        localObject4 = paramArrayOfVariantWrapper[0].GetString();
+        m = j;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+        l3 = l2;
+        l2 = l1;
+        l1 = l3;
+        j = i;
+        i = m;
+      }
+    }
+    for (;;)
+    {
+      m = k + 1;
+      l3 = l2;
+      k = i;
+      i = j;
+      localObject4 = paramVariantWrapper;
+      paramVariantWrapper = (ark.VariantWrapper)localObject1;
+      localObject1 = localObject4;
+      j = k;
+      l2 = l1;
+      l1 = l3;
+      k = m;
+      break;
+      if (k == 1)
+      {
+        localObject1 = paramArrayOfVariantWrapper[1].GetString();
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 2)
+      {
+        m = a(paramArrayOfVariantWrapper[2], 0);
+        i = j;
+        j = m;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 3)
+      {
+        m = a(paramArrayOfVariantWrapper[3], 0);
+        j = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 4)
+      {
+        l3 = a(paramArrayOfVariantWrapper[4], 0L);
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l1 = l2;
+        i = j;
+        j = m;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 5)
+      {
+        l3 = a(paramArrayOfVariantWrapper[5], 0L);
+        m = i;
+        l2 = l1;
+        localObject4 = paramVariantWrapper;
+        l1 = l3;
+        i = j;
+        j = m;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 6)
+      {
+        localObject4 = paramArrayOfVariantWrapper[6].GetString();
+        m = i;
+        localObject3 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if (k == 7)
+      {
+        localObject4 = paramArrayOfVariantWrapper[7].GetString();
+        m = i;
+        localObject2 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject4;
+        continue;
+        azqs.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
+        return true;
+      }
+      else
+      {
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+    }
+  }
+  
+  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+      long l = paramArrayOfVariantWrapper[1].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
+    }
+    return true;
+  }
+  
+  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+      String str = a(paramArrayOfVariantWrapper[2], null);
+      long l = paramArrayOfVariantWrapper[3].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
+    }
+    return true;
   }
 }
 

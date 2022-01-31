@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import dov.com.qq.im.ae.camera.core.AECameraManager.7;
 
 public class bksq
-  implements EIPCResultCallback
+  implements azht
 {
-  bksq(bksk parambksk) {}
+  public bksq(AECameraManager.7 param7) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
+    bksp.a().a(this.a.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.a.this$0.jdField_a_of_type_Int, this.a.this$0.b), this.a.jdField_a_of_type_Ajwh, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, 1, this.a.this$0.e);
   }
 }
 

@@ -1,94 +1,90 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class bmwc
-  extends bmwf
+  extends bmvv
 {
-  private final int b;
-  private boolean d;
-  private boolean e;
+  public List<bmwd> a;
+  public boolean b;
+  public String f;
   
-  public bmwc(Context paramContext, int paramInt)
+  public bmwc(@NonNull String paramString)
   {
-    super(paramContext, "", "", -1);
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = 0;
-    }
-    this.b = i;
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int a()
+  public static List<bmwd> a(JSONArray paramJSONArray)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new RelativeLayout(this.a);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundColor(Color.parseColor("#F7F7F9"));
-    View localView = new View(this.a);
-    Object localObject = new RelativeLayout.LayoutParams(-1, xod.a(this.a, 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(10);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localView.setBackgroundColor(Color.parseColor("#DEDFE0"));
-    localObject = new View(this.a);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xod.a(this.a, 1.0F));
-    localLayoutParams.addRule(12);
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    ((View)localObject).setBackgroundColor(Color.parseColor("#DEDFE0"));
-    if (QQStoryContext.a())
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
     {
-      paramViewGroup.setBackgroundColor(this.a.getResources().getColor(2131166396));
-      ((View)localObject).setBackgroundColor(this.a.getResources().getColor(2131166396));
-      localView.setBackgroundColor(this.a.getResources().getColor(2131166396));
+      localArrayList.add(new bmwd(paramJSONArray.getJSONObject(i)));
+      i += 1;
     }
-    paramViewGroup.addView(localView);
-    paramViewGroup.addView((View)localObject);
-    return paramViewGroup;
+    return localArrayList;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView)
+  public bmwd a(String paramString)
   {
-    View localView = ((ViewGroup)paramView).getChildAt(0);
-    paramView = ((ViewGroup)paramView).getChildAt(1);
-    if (this.d) {
-      localView.setVisibility(0);
-    }
-    while (this.e)
+    if ((!bdnn.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
     {
-      paramView.setVisibility(0);
-      return;
-      localView.setVisibility(4);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bmwd localbmwd = (bmwd)localIterator.next();
+        if (paramString.equals(localbmwd.f)) {
+          return localbmwd;
+        }
+      }
     }
-    paramView.setVisibility(4);
+    return null;
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public String a()
   {
-    this.d = paramBoolean1;
-    this.e = paramBoolean2;
+    return "LocationFacePackage";
   }
   
-  public void b(boolean paramBoolean) {}
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bmwd)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    }
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bmwd)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    }
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

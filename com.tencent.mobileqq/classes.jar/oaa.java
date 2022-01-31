@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class oaa
-  implements bhqf
+  implements bhum
 {
   public oaa(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   

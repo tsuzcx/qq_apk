@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Handler;
@@ -16,14 +16,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asil;
-import asin;
-import asjc;
-import asjh;
-import asji;
-import asjj;
-import asjk;
-import bkeu;
+import asmu;
+import asmw;
+import asnl;
+import asnq;
+import asnr;
+import asns;
+import asnt;
+import bkjb;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -45,7 +45,7 @@ public class GameSessionView
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private asjj jdField_a_of_type_Asjj;
+  private asns jdField_a_of_type_Asns;
   private List<GameCenterSessionInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private View b;
@@ -81,12 +81,12 @@ public class GameSessionView
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
     {
-      asin.a(((asil)this.jdField_a_of_type_MqqAppAppRuntime.getManager(358)).a(), paramContext, paramGameCenterSessionInfo);
+      asmw.a(((asmu)this.jdField_a_of_type_MqqAppAppRuntime.getManager(358)).a(), paramContext, paramGameCenterSessionInfo);
       return;
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof ToolAppRuntime))
     {
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsgUrl", null, new asji(this, paramContext, paramGameCenterSessionInfo));
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsgUrl", null, new asnr(this, paramContext, paramGameCenterSessionInfo));
       return;
     }
     QLog.w(jdField_a_of_type_JavaLangString, 1, "[initData] unknown interface:" + this.jdField_a_of_type_MqqAppAppRuntime.getClass().getSimpleName());
@@ -104,7 +104,7 @@ public class GameSessionView
     }
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof ToolAppRuntime))
     {
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsg", null, new asjh(this));
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "getGameMsg", null, new asnq(this));
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 1, "[initData] unknown interface:" + this.jdField_a_of_type_MqqAppAppRuntime.getClass().getSimpleName());
@@ -113,47 +113,47 @@ public class GameSessionView
   public void a(Context paramContext)
   {
     Object localObject = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559132, null);
-    this.jdField_a_of_type_AndroidViewView.setTag(new asjk(this.jdField_a_of_type_AndroidViewView));
-    this.jdField_a_of_type_AndroidViewView.setId(2131367021);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(asjc.a(getContext()));
-    this.b = ((LayoutInflater)localObject).inflate(2131559132, null);
-    this.b.setTag(new asjk(this.b));
-    this.b.setId(2131367022);
-    this.b.setBackgroundDrawable(asjc.a(getContext()));
-    this.c = ((LayoutInflater)localObject).inflate(2131559133, null);
-    this.c.setBackgroundDrawable(asjc.a(getContext()));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.c.findViewById(2131368823));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131378853));
-    localObject = new LinearLayout.LayoutParams(0, aekt.a(74.0F, getResources()));
-    ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(4.0F, getResources());
-    ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(4.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559131, null);
+    this.jdField_a_of_type_AndroidViewView.setTag(new asnt(this.jdField_a_of_type_AndroidViewView));
+    this.jdField_a_of_type_AndroidViewView.setId(2131367031);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(asnl.a(getContext()));
+    this.b = ((LayoutInflater)localObject).inflate(2131559131, null);
+    this.b.setTag(new asnt(this.b));
+    this.b.setId(2131367032);
+    this.b.setBackgroundDrawable(asnl.a(getContext()));
+    this.c = ((LayoutInflater)localObject).inflate(2131559132, null);
+    this.c.setBackgroundDrawable(asnl.a(getContext()));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.c.findViewById(2131368838));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131378910));
+    localObject = new LinearLayout.LayoutParams(0, aepi.a(74.0F, getResources()));
+    ((LinearLayout.LayoutParams)localObject).leftMargin = aepi.a(4.0F, getResources());
+    ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(4.0F, getResources());
     ((LinearLayout.LayoutParams)localObject).weight = 43.0F;
     addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    localObject = new LinearLayout.LayoutParams(0, aekt.a(74.0F, getResources()));
-    ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(4.0F, getResources());
+    localObject = new LinearLayout.LayoutParams(0, aepi.a(74.0F, getResources()));
+    ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(4.0F, getResources());
     ((LinearLayout.LayoutParams)localObject).weight = 43.0F;
     addView(this.b, (ViewGroup.LayoutParams)localObject);
-    localObject = new LinearLayout.LayoutParams(0, aekt.a(74.0F, getResources()));
-    ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(4.0F, getResources());
+    localObject = new LinearLayout.LayoutParams(0, aepi.a(74.0F, getResources()));
+    ((LinearLayout.LayoutParams)localObject).rightMargin = aepi.a(4.0F, getResources());
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     ((LinearLayout.LayoutParams)localObject).weight = 14.0F;
-    this.c.setId(2131370706);
+    this.c.setId(2131370725);
     addView(this.c, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_Asjj = new asjj(this, null);
+    this.jdField_a_of_type_Asns = new asns(this, null);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("action_qgame_messgae_change");
     ((IntentFilter)localObject).addAction("action_qgame_unread_change");
-    paramContext.registerReceiver(this.jdField_a_of_type_Asjj, (IntentFilter)localObject);
+    paramContext.registerReceiver(this.jdField_a_of_type_Asns, (IntentFilter)localObject);
   }
   
   public void a(View paramView, GameCenterSessionInfo paramGameCenterSessionInfo)
   {
-    if ((paramView.getTag() instanceof asjk)) {
-      ((asjk)paramView.getTag()).a(paramGameCenterSessionInfo);
+    if ((paramView.getTag() instanceof asnt)) {
+      ((asnt)paramView.getTag()).a(paramGameCenterSessionInfo);
     }
   }
   
@@ -169,7 +169,7 @@ public class GameSessionView
   public void b()
   {
     if (getContext() != null) {
-      getContext().unregisterReceiver(this.jdField_a_of_type_Asjj);
+      getContext().unregisterReceiver(this.jdField_a_of_type_Asns);
     }
   }
   
@@ -202,7 +202,7 @@ public class GameSessionView
     for (;;)
     {
       a(getContext(), paramView);
-      bkeu.a().a(paramView.d(), "1", "145", "920", "92001", "206342", "0", "0", "20", "" + i);
+      bkjb.a().a(paramView.d(), "1", "145", "920", "92001", "206342", "0", "0", "20", "" + i);
       return;
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 2)) {
         break;
@@ -215,7 +215,7 @@ public class GameSessionView
       for (;;)
       {
         a(getContext(), paramView);
-        bkeu.a().a(paramView.d(), "1", "145", "920", "92001", "206342", "0", "0", "20", "" + i);
+        bkjb.a().a(paramView.d(), "1", "145", "920", "92001", "206342", "0", "0", "20", "" + i);
         return;
         a(getContext(), null);
         if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
@@ -227,7 +227,7 @@ public class GameSessionView
         }
         for (;;)
         {
-          bkeu.a().a("", "1", "145", "920", "92001", "206342", "0", "1", "20", "" + i);
+          bkjb.a().a("", "1", "145", "920", "92001", "206342", "0", "1", "20", "" + i);
           return;
         }
       }
@@ -242,7 +242,7 @@ public class GameSessionView
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(getMeasuredWidth(), aekt.a(74.0F, getResources()));
+    setMeasuredDimension(getMeasuredWidth(), aepi.a(74.0F, getResources()));
   }
   
   public void setData(List<GameCenterSessionInfo> paramList)

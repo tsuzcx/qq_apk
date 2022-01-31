@@ -1,64 +1,36 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.qphone.base.util.QLog;
 
 public class xcc
-  implements wzl
+  extends axux
 {
-  public xcc(DoodleLayout paramDoodleLayout) {}
+  public xcc(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Xcg != null) {
-      this.a.jdField_a_of_type_Xcg.b(1, paramInt);
-    }
+    super.a();
+    this.a.a.n();
+    this.a.l();
   }
   
-  public void a(wzf paramwzf)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Wzf = paramwzf;
-    if (this.a.jdField_a_of_type_Xcg != null)
-    {
-      wsv.b("DoodleLayout", "selectLocation: clickItem-->" + paramwzf.toString());
-      this.a.jdField_a_of_type_Xcg.a(this.a.jdField_a_of_type_Wzf.a());
-    }
+    super.a(paramInt1, paramInt2);
   }
   
-  public boolean a(wzi paramwzi)
+  public void a(long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((xeh)localObject).d = false;
-        if (!(localObject instanceof wzi)) {
-          break label120;
-        }
-        wze localwze = this.a.a();
-        if (localwze != null) {
-          localwze.a.add((wzi)localObject);
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramwzi);
-        paramwzi.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label120:
-        if ((localObject instanceof wzu))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((wzs)localObject).d();
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
     }
-    return false;
+    super.a(paramLong);
+    try
+    {
+      this.a.a(1000L * paramLong);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 

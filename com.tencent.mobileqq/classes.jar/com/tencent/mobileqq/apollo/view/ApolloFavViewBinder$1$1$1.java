@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import algo;
-import algp;
+import alld;
+import alle;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 public class ApolloFavViewBinder$1$1$1
   implements Runnable
 {
-  public ApolloFavViewBinder$1$1$1(algo paramalgo) {}
+  public ApolloFavViewBinder$1$1$1(alld paramalld) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ApolloFavViewBinder$1$1$1
     localTranslateAnimation.setDuration(400L);
     localTranslateAnimation.setRepeatCount(1);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new algp(this));
+    localTranslateAnimation.setAnimationListener(new alle(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }

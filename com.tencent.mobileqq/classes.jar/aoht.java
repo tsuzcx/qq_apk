@@ -1,58 +1,51 @@
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aoht
-  extends aoho
+  implements aoim
 {
+  public aoht(LocationSelectActivity paramLocationSelectActivity) {}
+  
   public int a()
   {
-    return 380;
+    return this.a.jdField_a_of_type_Int;
   }
   
-  public aohi a(String paramString)
+  public int a(int paramInt)
   {
-    QLog.d("ArkPlatformConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
+      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
     try
     {
-      aoih localaoih = (aoih)aogt.a(paramString, aoih.class);
-      return new aohn(paramString, localaoih);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
       {
-        QLog.i("ArkPlatformConfProcessor", 1, "readJsonOrXml:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
+        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
+          return "----";
+        }
+        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
+        return str;
       }
     }
-  }
-  
-  public void a(aohi paramaohi)
-  {
-    super.a(paramaohi);
-    if (paramaohi == null) {
-      QLog.i("ArkPlatformConfProcessor", 1, "newConf is null");
-    }
-    do
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      return;
-      QLog.d("ArkPlatformConfProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramaohi.a());
-      paramaohi = paramaohi.a();
-      anju.a();
-    } while ((paramaohi == null) || (paramaohi.a() == null));
-    paramaohi = paramaohi.a();
-    if (paramaohi == null)
-    {
-      QLog.i("ArkPlatformConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      }
     }
-    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramaohi.jdField_a_of_type_Boolean, paramaohi.b, paramaohi.jdField_a_of_type_JavaUtilArrayList);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoht
  * JD-Core Version:    0.7.0.1
  */

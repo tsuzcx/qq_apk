@@ -1,66 +1,17 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-class astz
-  implements INetInfoHandler
+public class astz
+  implements View.OnTouchListener
 {
-  astw a;
+  public astz(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public astz(astw paramastw1, astw paramastw2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramastw2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    astv.b("onNetMobile2None");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    astv.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    astv.b("onNetNone2Mobile");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    astv.b("onNetNone2Wifi");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    astv.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    astv.b("onNetWifi2None");
-    if (this.a != null) {
-      astw.c(this.a);
-    }
+    HotPicMainPanel.a(this.a);
+    return true;
   }
 }
 

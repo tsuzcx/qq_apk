@@ -1,49 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class aqae
+public abstract class aqae
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  
-  public aqae(QQAppInterface paramQQAppInterface)
+  public static aqae a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
-    }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
+      {
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
+        }
+        localObject1 = new aqap(null).b(paramBundle);
       }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    label53:
+    do
+    {
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new aqan(null).b(paramBundle);
   }
+  
+  public abstract int a(List<aqae> paramList);
+  
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract apuf a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putInt("cur_data_source_type", paramInt);
+  }
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aqae paramaqae);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

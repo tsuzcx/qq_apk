@@ -24,7 +24,7 @@ import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.ArrayList;
 
 public abstract class tfj
-  extends biac<stSimpleMetaFeed>
+  extends biej<stSimpleMetaFeed>
   implements View.OnClickListener, tfu
 {
   private Context jdField_a_of_type_AndroidContentContext = a();
@@ -44,13 +44,13 @@ public abstract class tfj
     super(paramViewGroup, paramInt);
     this.jdField_a_of_type_Tby = paramtby;
     this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramtby.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)b(2131368709));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131378627));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)b(2131368710));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131378628));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)b(2131367291));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)b(2131367294));
-    this.c = ((TextView)b(2131377208));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)b(2131368723));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)b(2131378681));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)b(2131368724));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)b(2131378682));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)b(2131367301));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)b(2131367304));
+    this.c = ((TextView)b(2131377262));
     this.itemView.setOnClickListener(this);
     a();
   }
@@ -198,7 +198,7 @@ public abstract class tfj
       if (paramInt == 0) {
         break label45;
       }
-      i = 2131379794;
+      i = 2131379852;
       localViewStub = (ViewStub)b(i);
       if (paramInt == 0) {
         break label51;
@@ -206,13 +206,13 @@ public abstract class tfj
     }
     label45:
     label51:
-    for (paramInt = 2131560230;; paramInt = 2131560229)
+    for (paramInt = 2131560229;; paramInt = 2131560228)
     {
       localViewStub.setLayoutResource(paramInt);
       return localViewStub.inflate();
       paramInt = 0;
       break;
-      i = 2131379793;
+      i = 2131379851;
       break label14;
     }
   }
@@ -248,7 +248,7 @@ public abstract class tfj
         if (paramInt2 != 1) {
           break label100;
         }
-        paramInt2 = 2130842758;
+        paramInt2 = 2130842771;
         label42:
         localImageView.setImageResource(paramInt2);
         a(localImageView, this.jdField_a_of_type_Tby.g);
@@ -269,7 +269,7 @@ public abstract class tfj
       i = paramstSimpleMetaFeed.ding_count;
       break;
       label100:
-      paramInt2 = 2130846151;
+      paramInt2 = 2130846224;
       break label42;
       label107:
       localImageView.setVisibility(8);
@@ -408,7 +408,7 @@ public abstract class tfj
     {
       return;
       this.jdField_a_of_type_Tby.jdField_a_of_type_Long = System.currentTimeMillis();
-      i = getAdapterPosition() - ((biau)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.getAdapter()).a();
+      i = getAdapterPosition() - ((bifb)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.getAdapter()).a();
       tlo.b("weishi-adapter", " ~~~~~~onClick: " + i);
       paramView = new ArrayList();
       if ((i >= this.jdField_a_of_type_Tby.b()) || (i < 0))

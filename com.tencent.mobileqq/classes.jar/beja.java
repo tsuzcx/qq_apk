@@ -1,15 +1,25 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.content.SharedPreferences;
+import java.util.HashMap;
 
 public class beja
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public beja(BounceScrollView paramBounceScrollView) {}
+  public static HashMap<String, Integer> a;
+  public static int d = -1;
+  public int a;
+  public long a;
+  public SharedPreferences a;
+  public boolean a;
+  public int b;
+  public int c = 6;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  static
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  }
+  
+  public beja()
+  {
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

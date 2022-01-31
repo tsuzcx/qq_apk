@@ -1,16 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
 
 public class aefz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aefz(UpgradeActivity paramUpgradeActivity) {}
+  public aefz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    UpgradeActivity.a(this.a, true);
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "");
+    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

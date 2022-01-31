@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class ankf
+class ankf
+  implements afjf
 {
-  java.lang.ref.WeakReference<QQAppInterface> a;
+  ankf(anke paramanke, long paramLong) {}
   
-  public ankf(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, alkr paramalkr)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
-      return false;
-    }
-    return ((anjy)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramalkr);
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, alkr paramalkr)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
-      return false;
-    }
-    return ((anjy)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramalkr);
+    this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

@@ -1,75 +1,79 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ajhv
-  extends ajhc
+class ajhv
+  implements ajhw
 {
-  public boolean a;
+  private ajhy jdField_a_of_type_Ajhy;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ajhv(Context paramContext)
+  public ajhv(String paramString, QQAppInterface paramQQAppInterface)
   {
-    this(paramContext, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public ajhv(Context paramContext, boolean paramBoolean)
+  public void a(@Nullable ajhy paramajhy)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131698110);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Ajhy = paramajhy;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public boolean isNeedAutoCloseWhenAccountChange()
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Ajhy == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
-      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
+  }
+  
+  public void onEnter()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
       return;
     }
-    catch (JSONException paramArrayOfByte)
+    Intent localIntent;
+    if (BaseActivity.sTopActivity != null)
     {
-      paramArrayOfByte.printStackTrace();
+      localIntent = new Intent();
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      localIntent.addFlags(268435456);
     }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    for (;;)
     {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        localJSONException.printStackTrace();
+        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
+        ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
+        return;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localClassNotFoundException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
     }
   }
+  
+  public void onOverride() {}
 }
 
 

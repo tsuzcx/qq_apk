@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agfi;
-import agft;
+import agjx;
+import agki;
 
 public class AIOPhotoListAdapter$3
   implements Runnable
 {
-  public AIOPhotoListAdapter$3(agfi paramagfi, AIOFilePicData paramAIOFilePicData) {}
+  public AIOPhotoListAdapter$3(agjx paramagjx, AIOFilePicData paramAIOFilePicData) {}
   
   public void run()
   {

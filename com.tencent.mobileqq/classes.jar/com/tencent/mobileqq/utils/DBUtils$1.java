@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import alxj;
-import bdbx;
+import amby;
+import bdgg;
 import com.tencent.mobileqq.data.RoamSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class DBUtils$1
   implements Runnable
 {
-  public DBUtils$1(bdbx parambdbx, ArrayList paramArrayList, alxj paramalxj) {}
+  public DBUtils$1(bdgg parambdgg, ArrayList paramArrayList, amby paramamby) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class DBUtils$1
     while (localIterator.hasNext())
     {
       RoamSetting localRoamSetting = (RoamSetting)localIterator.next();
-      this.jdField_a_of_type_Alxj.a(localRoamSetting);
+      this.jdField_a_of_type_Amby.a(localRoamSetting);
     }
   }
 }

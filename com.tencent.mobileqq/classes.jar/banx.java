@@ -1,45 +1,83 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class banx
-  implements baux
+  implements banv
 {
-  banx(banw parambanw) {}
+  private IBinder a;
   
-  public Bitmap getBitmap(URL paramURL)
+  banx(IBinder paramIBinder)
   {
-    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
-    if (localLocalMediaInfo == null) {}
-    for (;;)
+    this.a = paramIBinder;
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void beginSwitch()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
-      }
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void doSwitch(String paramString1, String paramString2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeString(paramString1);
+      localParcel.writeString(paramString2);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void onProgress(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeLong(paramLong1);
+      localParcel.writeLong(paramLong2);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void postSwitch(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(4, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
     }
   }
 }

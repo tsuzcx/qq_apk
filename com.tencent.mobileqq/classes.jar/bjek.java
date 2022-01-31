@@ -1,41 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.PlusMenuContainer;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
 
 public class bjek
-  implements View.OnClickListener
+  extends bjol
 {
-  public bjek(PlusMenuContainer paramPlusMenuContainer) {}
+  public bjek(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
+    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
+    paramString = this.a.a.obtainMessage();
+    paramString.what = 1010;
+    if (8 == paramInt) {}
+    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
     {
-      paramView = (String)paramView.getTag();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("cmd", "Schema");
-      localIntent.putExtra("schema", paramView);
-      bizm.a((Activity)this.a.a, bizt.a(), localIntent);
-      if (!paramView.equals(PlusMenuContainer.b[0])) {
-        break label94;
-      }
-      LpReportInfo_pf00064.report(133, 2);
-    }
-    for (;;)
-    {
-      this.a.b();
+      this.a.a.sendMessage(paramString);
       return;
-      label94:
-      if (paramView.equals(PlusMenuContainer.b[1])) {
-        LpReportInfo_pf00064.report(133, 3);
-      } else if (paramView.equals(PlusMenuContainer.b[2])) {
-        LpReportInfo_pf00064.report(133, 4);
-      }
     }
   }
+  
+  public void b(String paramString) {}
 }
 
 

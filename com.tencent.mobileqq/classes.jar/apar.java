@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import android.os.Handler;
 
-public class apar
-  implements View.OnClickListener
+class apar
+  implements nae
 {
-  public apar(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  apar(apap paramapap, nad[] paramArrayOfnad) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    if (!paramBoolean)
+    {
+      apap.a(this.jdField_a_of_type_Apap).removeCallbacks(apap.a(this.jdField_a_of_type_Apap));
+      apap.a(this.jdField_a_of_type_Apap).run();
+      if (this.jdField_a_of_type_ArrayOfNad[0] != null) {
+        this.jdField_a_of_type_ArrayOfNad[0].a();
+      }
+    }
   }
 }
 

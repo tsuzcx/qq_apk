@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.clip.video;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -12,17 +12,17 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdcd;
-import bdfq;
-import blfg;
-import blfr;
-import blhw;
-import blhx;
-import blhy;
-import blhz;
-import blia;
-import blkj;
-import blkl;
+import bdgm;
+import bdjz;
+import bljn;
+import bljy;
+import blmf;
+import blmg;
+import blmh;
+import blmi;
+import blmj;
+import blov;
+import blox;
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
@@ -40,7 +40,7 @@ public class AEEditorVideoClipFragment
 {
   private static final String jdField_b_of_type_JavaLangString = AEEditorVideoClipFragment.class.getSimpleName();
   private Context jdField_a_of_type_AndroidContentContext;
-  private blkl jdField_a_of_type_Blkl = blkj.a();
+  private blox jdField_a_of_type_Blox = blov.a();
   private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
   private MoviePlayer jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer;
   private TAVCutVideoSession jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
@@ -106,16 +106,16 @@ public class AEEditorVideoClipFragment
     this.c = d();
     this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange = a();
     this.jdField_b_of_type_ComTencentTavCoremediaCMTimeRange = this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131377415));
+    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131377469));
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = new MoviePlayer();
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setLoopPlay(true);
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setBackColor(getResources().getColor(2131165232));
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new blhw(this));
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new blmf(this));
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = new TAVCutVideoSession();
     paramView = new SessionConfig();
     paramView.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     paramView.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    paramView.setMaxIntermediateRenderSize(this.jdField_a_of_type_Blkl.a());
+    paramView.setMaxIntermediateRenderSize(this.jdField_a_of_type_Blox.a());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(paramView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setVideoPath(this.c);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
@@ -126,11 +126,11 @@ public class AEEditorVideoClipFragment
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu = ((AEEditorMvClipMenu)paramView.findViewById(2131370909));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu = ((AEEditorMvClipMenu)paramView.findViewById(2131370928));
     i();
     c();
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131378090));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(new blhx(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131378144));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(new blmg(this));
   }
   
   private boolean b()
@@ -140,7 +140,7 @@ public class AEEditorVideoClipFragment
   
   private void c()
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setMvClipMenuListener(new blhy(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setMvClipMenuListener(new blmh(this));
   }
   
   private boolean c()
@@ -158,7 +158,7 @@ public class AEEditorVideoClipFragment
     while (localArrayList.size() > 0)
     {
       return (String)localArrayList.get(0);
-      blfg.d(jdField_b_of_type_JavaLangString, "no video paths");
+      bljn.d(jdField_b_of_type_JavaLangString, "no video paths");
     }
     return null;
   }
@@ -284,13 +284,13 @@ public class AEEditorVideoClipFragment
     {
       return true;
       Object localObject = getActivity();
-      localObject = bdcd.a((Context)localObject, 230).setTitle(alpo.a(2131689805)).setMessage(((Context)localObject).getString(2131689806)).setPositiveButton(((Context)localObject).getString(2131689805), new blia(this)).setNegativeButton(((Context)localObject).getString(2131689792), new blhz(this));
+      localObject = bdgm.a((Context)localObject, 230).setTitle(alud.a(2131689805)).setMessage(((Context)localObject).getString(2131689806)).setPositiveButton(((Context)localObject).getString(2131689805), new blmj(this)).setNegativeButton(((Context)localObject).getString(2131689792), new blmi(this));
       if (localObject != null) {
         try
         {
-          if (!((bdfq)localObject).isShowing())
+          if (!((bdjz)localObject).isShowing())
           {
-            ((bdfq)localObject).show();
+            ((bdjz)localObject).show();
             return true;
           }
         }
@@ -302,7 +302,7 @@ public class AEEditorVideoClipFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    blfg.b(jdField_b_of_type_JavaLangString, "onCreate");
+    bljn.b(jdField_b_of_type_JavaLangString, "onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
     this.jdField_b_of_type_Boolean = true;
@@ -311,7 +311,7 @@ public class AEEditorVideoClipFragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    blfg.b(jdField_b_of_type_JavaLangString, "onCreateView");
+    bljn.b(jdField_b_of_type_JavaLangString, "onCreateView");
     a(2131165232);
     paramLayoutInflater = paramLayoutInflater.inflate(2131558539, paramViewGroup, false);
     a(paramLayoutInflater);
@@ -323,7 +323,7 @@ public class AEEditorVideoClipFragment
   public void onDestroy()
   {
     super.onDestroy();
-    blfg.b(jdField_b_of_type_JavaLangString, "onDestroy");
+    bljn.b(jdField_b_of_type_JavaLangString, "onDestroy");
     l();
     this.jdField_b_of_type_Boolean = false;
   }
@@ -357,13 +357,13 @@ public class AEEditorVideoClipFragment
   public void onPause()
   {
     super.onPause();
-    blfg.b(jdField_b_of_type_JavaLangString, "onPause");
+    bljn.b(jdField_b_of_type_JavaLangString, "onPause");
     h();
     if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      blfg.a(jdField_b_of_type_JavaLangString, "onPause: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
+      bljn.a(jdField_b_of_type_JavaLangString, "onPause: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
       k();
       return;
     }
@@ -372,9 +372,9 @@ public class AEEditorVideoClipFragment
   public void onResume()
   {
     super.onResume();
-    blfg.b(jdField_b_of_type_JavaLangString, "onResume");
+    bljn.b(jdField_b_of_type_JavaLangString, "onResume");
     g();
-    blfg.a(jdField_b_of_type_JavaLangString, "onResume: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
+    bljn.a(jdField_b_of_type_JavaLangString, "onResume: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
     if (this.jdField_a_of_type_Boolean) {
       j();
     }

@@ -1,19 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class ytj
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  ytj(ytb paramytb, bbrz parambbrz) {}
   
-  ytj(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367830));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364903));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    }
+    paramView = new Intent(this.jdField_a_of_type_Ytb.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Bbrz.b);
+    this.jdField_a_of_type_Ytb.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+    azqs.b(this.jdField_a_of_type_Ytb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Ytb.b, String.valueOf(this.jdField_a_of_type_Ytb.jdField_a_of_type_Bbry.a), "8020205751015455", "");
   }
 }
 

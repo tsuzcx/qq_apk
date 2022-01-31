@@ -1,21 +1,13 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-
 class bcaz
-  implements View.OnKeyListener
+  implements bhun
 {
-  bcaz(bcax parambcax, bcbd parambcbd) {}
+  bcaz(bcax parambcax) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void ap_()
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bcbd.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Bcax.a.b(this.jdField_a_of_type_Bcbd);
-      return true;
+    if (bcax.a(this.a) != null) {
+      bcax.a(this.a).a();
     }
-    return false;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiji;
+import ainx;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoMediaPlayHelper$2
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$2(aiji paramaiji) {}
+  public FileVideoMediaPlayHelper$2(ainx paramainx) {}
   
   public void run()
   {
-    if (aiji.a(this.this$0) != null) {
-      aiji.a(this.this$0).stopPreLoad(aiji.a(this.this$0));
+    if (ainx.a(this.this$0) != null) {
+      ainx.a(this.this$0).stopPreLoad(ainx.a(this.this$0));
     }
   }
 }

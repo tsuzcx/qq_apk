@@ -17,21 +17,21 @@ import SummaryCardTaf.SUserLabel;
 import SummaryCardTaf.cardDiyComplicatedInfo;
 import SummaryCardTaf.cardDiyTextInfo;
 import SummaryCardTaf.summaryCardWzryInfo;
-import alkv;
+import alpk;
 import android.content.Intent;
 import android.os.Parcel;
 import android.text.TextUtils;
-import anul;
-import awbv;
-import awdg;
-import awdj;
-import awmw;
-import awmy;
-import awmz;
-import awna;
-import azmz;
-import bdqj;
-import bdqk;
+import anyu;
+import awge;
+import awhp;
+import awhs;
+import awrf;
+import awrh;
+import awri;
+import awrj;
+import azri;
+import bdus;
+import bdut;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
@@ -70,7 +70,7 @@ import tencent.im.oidb.cmd0x703.cmd0x703.PhotoInfo;
 import tencent.im.oidb.cmd0x703.cmd0x703.UinPhotoListInfo;
 
 public class Card
-  extends awbv
+  extends awge
 {
   public static final long BIRTHDAY_INVALID = 0L;
   public static final int CONSTELLATION_INVALID = 0;
@@ -115,7 +115,7 @@ public class Card
   public int category;
   public int clothesId;
   public int constellation = 0;
-  @awdg
+  @awhp
   public String coverUrl;
   public String declaration;
   public int defaultCardId;
@@ -193,7 +193,7 @@ public class Card
   public long lVoteCount;
   public byte[] labelInfoBytes;
   public byte[] lastPraiseInfoList;
-  @awdg
+  @awhp
   public ArrayList<TPraiseInfo> lastPraiseInfos;
   public String lightalkId;
   public String lightalkNick;
@@ -201,7 +201,7 @@ public class Card
   public int mNowShowFlag;
   public String mNowShowIconUrl;
   public String mNowShowJumpUrl;
-  @awdg
+  @awhp
   public cmd0x703.UinPhotoListInfo mPhotoListInfo;
   public int mQQLevelType;
   public boolean medalSwitchDisable;
@@ -215,10 +215,10 @@ public class Card
   public long namePlateOfKingGameId;
   public long namePlateOfKingLoginTime;
   public int nameplateVipType;
-  @awdg
+  @awhp
   public int newSchoolStatusFlagForGuide = 1;
   public byte olympicTorch;
-  @awdg
+  @awhp
   public PersonalityLabel personalityLabel;
   public int popularity;
   public String presentCustourl;
@@ -228,7 +228,7 @@ public class Card
   public String privilegeJumpUrl;
   public String privilegePromptStr;
   public String pyFaceUrl;
-  @awdg
+  @awhp
   public ArrayList<PhotoInfo> qzonePhotoList = new ArrayList();
   public int redLevel;
   public String schoolId;
@@ -245,13 +245,13 @@ public class Card
   public boolean showPresent;
   public boolean showPublishButton;
   public boolean showRedPointMusicPendant;
-  @awdg
+  @awhp
   public String singer;
-  @awdg
+  @awhp
   public long songDuration;
-  @awdg
+  @awhp
   public String songId;
-  @awdg
+  @awhp
   public String songName;
   public String starFansJumpUrl;
   public String strActiveUrl = "";
@@ -322,23 +322,23 @@ public class Card
   public String strZipUrl = "";
   public boolean strangerInviteMeGroupOpen = true;
   public boolean strangerVoteOpen;
-  @awdg
-  public List<awmz> summaryEntrys;
-  @awdg
+  @awhp
+  public List<awri> summaryEntrys;
+  @awhp
   public short switch_disable_personality_label = -1;
-  @awdg
+  @awhp
   public short switch_interest = -1;
-  @awdg
+  @awhp
   public short switch_miniapp = -1;
-  @awdg
+  @awhp
   public short switch_music = -1;
-  @awdg
+  @awhp
   public short switch_musicbox = -1;
-  @awdg
+  @awhp
   public short switch_present = -1;
-  @awdg
+  @awhp
   public short switch_qqcircle = -1;
-  @awdg
+  @awhp
   public short switch_sticky_note = -1;
   public String tabJumpUrl;
   public byte[] tagInfosByte;
@@ -348,7 +348,7 @@ public class Card
   public long uAccelerateMultiple;
   public long uCurMulType;
   public int uFaceTimeStamp;
-  @awdj
+  @awhs
   public String uin;
   public int ulShowControl;
   public long updateTime;
@@ -449,7 +449,7 @@ public class Card
         this.strJoinHexAlbumFileKey = (this.strJoinHexAlbumFileKey + ";" + str);
       }
     }
-    this.strJoinHexAlbumFileKey = alkv.b(paramList);
+    this.strJoinHexAlbumFileKey = alpk.b(paramList);
   }
   
   public boolean checkCoverUrl(byte[] paramArrayOfByte)
@@ -485,7 +485,7 @@ public class Card
     return new ArrayList();
   }
   
-  public List<awmz> getBigOrderEntrys()
+  public List<awri> getBigOrderEntrys()
   {
     if (this.summaryEntrys == null)
     {
@@ -496,7 +496,7 @@ public class Card
     {
       int i;
       JSONObject localJSONObject1;
-      awmz localawmz;
+      awri localawri;
       Object localObject1;
       try
       {
@@ -508,7 +508,7 @@ public class Card
           if (localJSONObject1 == null) {
             break label1151;
           }
-          localawmz = new awmz();
+          localawri = new awri();
           Iterator localIterator1 = localJSONObject1.keys();
           if (!localIterator1.hasNext()) {
             break label1139;
@@ -516,7 +516,7 @@ public class Card
           localObject1 = (String)localIterator1.next();
           if (((String)localObject1).equals("strName"))
           {
-            localawmz.jdField_a_of_type_JavaLangString = localJSONObject1.getString((String)localObject1);
+            localawri.jdField_a_of_type_JavaLangString = localJSONObject1.getString((String)localObject1);
             continue;
           }
         }
@@ -533,15 +533,15 @@ public class Card
       }
       if (((String)localObject1).equals("serviceType"))
       {
-        localawmz.jdField_a_of_type_Int = localJSONObject1.getInt((String)localObject1);
+        localawri.jdField_a_of_type_Int = localJSONObject1.getInt((String)localObject1);
       }
       else if (((String)localObject1).equals("strServiceUrl"))
       {
-        localawmz.jdField_b_of_type_JavaLangString = localJSONObject1.getString((String)localObject1);
+        localawri.jdField_b_of_type_JavaLangString = localJSONObject1.getString((String)localObject1);
       }
       else if (((String)localObject1).equals("strServiceType"))
       {
-        localawmz.c = localJSONObject1.getString((String)localObject1);
+        localawri.c = localJSONObject1.getString((String)localObject1);
       }
       else if (((String)localObject1).equals("sProfileSummaryHobbiesItem"))
       {
@@ -555,45 +555,45 @@ public class Card
           {
             JSONObject localJSONObject2 = ((JSONArray)localObject1).getJSONObject(j);
             Iterator localIterator2 = localJSONObject2.keys();
-            awna localawna = new awna();
+            awrj localawrj = new awrj();
             while (localIterator2.hasNext())
             {
               Object localObject2 = (String)localIterator2.next();
               if (((String)localObject2).equals("strTitle"))
               {
-                localawna.jdField_a_of_type_JavaLangString = localJSONObject2.getString((String)localObject2);
+                localawrj.jdField_a_of_type_JavaLangString = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("strCoverUrl"))
               {
-                localawna.jdField_b_of_type_JavaLangString = localJSONObject2.getString((String)localObject2);
+                localawrj.jdField_b_of_type_JavaLangString = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("strSubInfo"))
               {
-                localawna.d = localJSONObject2.getString((String)localObject2);
+                localawrj.d = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("strDesc"))
               {
-                localawna.e = localJSONObject2.getString((String)localObject2);
+                localawrj.e = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("serviceType"))
               {
-                localawna.jdField_a_of_type_Int = localJSONObject2.getInt((String)localObject2);
+                localawrj.jdField_a_of_type_Int = localJSONObject2.getInt((String)localObject2);
               }
               else if (((String)localObject2).equals("service"))
               {
-                localawna.jdField_b_of_type_Int = localJSONObject2.getInt((String)localObject2);
+                localawrj.jdField_b_of_type_Int = localJSONObject2.getInt((String)localObject2);
               }
               else if (((String)localObject2).equals("strTitleIconUrl"))
               {
-                localawna.f = localJSONObject2.getString((String)localObject2);
+                localawrj.f = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("strJmpUrl"))
               {
-                localawna.c = localJSONObject2.getString((String)localObject2);
+                localawrj.c = localJSONObject2.getString((String)localObject2);
               }
               else if (((String)localObject2).equals("uint64_group_code"))
               {
-                localawna.jdField_a_of_type_Long = localJSONObject2.getLong((String)localObject2);
+                localawrj.jdField_a_of_type_Long = localJSONObject2.getLong((String)localObject2);
               }
               else if ((((String)localObject2).equals("labels")) && (!TextUtils.isEmpty(localJSONObject2.getString((String)localObject2))))
               {
@@ -603,26 +603,26 @@ public class Card
                 while (k < localJSONArray2.length())
                 {
                   JSONObject localJSONObject3 = localJSONArray2.getJSONObject(k);
-                  awmy localawmy = new awmy();
+                  awrh localawrh = new awrh();
                   Iterator localIterator3 = localJSONObject3.keys();
                   while (localIterator3.hasNext())
                   {
                     Object localObject3 = (String)localIterator3.next();
                     if (((String)localObject3).equals("strWording"))
                     {
-                      localawmy.jdField_a_of_type_JavaLangString = localJSONObject3.getString((String)localObject3);
+                      localawrh.jdField_a_of_type_JavaLangString = localJSONObject3.getString((String)localObject3);
                     }
                     else if (((String)localObject3).equals("attr"))
                     {
-                      localawmy.jdField_b_of_type_Long = localJSONObject3.getLong((String)localObject3);
+                      localawrh.jdField_b_of_type_Long = localJSONObject3.getLong((String)localObject3);
                     }
                     else if (((String)localObject3).equals("type"))
                     {
-                      localawmy.jdField_a_of_type_Long = localJSONObject3.getLong((String)localObject3);
+                      localawrh.jdField_a_of_type_Long = localJSONObject3.getLong((String)localObject3);
                     }
                     else
                     {
-                      awmw localawmw;
+                      awrf localawrf;
                       Iterator localIterator4;
                       String str;
                       if (((String)localObject3).equals("text_color"))
@@ -631,20 +631,20 @@ public class Card
                         if (!TextUtils.isEmpty((CharSequence)localObject3))
                         {
                           localObject3 = new JSONObject((String)localObject3);
-                          localawmw = new awmw();
+                          localawrf = new awrf();
                           localIterator4 = ((JSONObject)localObject3).keys();
                           while (localIterator4.hasNext())
                           {
                             str = (String)localIterator4.next();
                             if (str.equals("R")) {
-                              localawmw.jdField_a_of_type_Long = ((JSONObject)localObject3).getLong(str);
+                              localawrf.jdField_a_of_type_Long = ((JSONObject)localObject3).getLong(str);
                             } else if (str.equals("G")) {
-                              localawmw.jdField_b_of_type_Long = ((JSONObject)localObject3).getLong(str);
+                              localawrf.jdField_b_of_type_Long = ((JSONObject)localObject3).getLong(str);
                             } else if (str.equals("B")) {
-                              localawmw.c = ((JSONObject)localObject3).getLong(str);
+                              localawrf.c = ((JSONObject)localObject3).getLong(str);
                             }
                           }
-                          localawmy.jdField_a_of_type_Awmw = localawmw;
+                          localawrh.jdField_a_of_type_Awrf = localawrf;
                         }
                       }
                       else if (((String)localObject3).equals("edging_color"))
@@ -653,37 +653,37 @@ public class Card
                         if (!TextUtils.isEmpty((CharSequence)localObject3))
                         {
                           localObject3 = new JSONObject((String)localObject3);
-                          localawmw = new awmw();
+                          localawrf = new awrf();
                           localIterator4 = ((JSONObject)localObject3).keys();
                           while (localIterator4.hasNext())
                           {
                             str = (String)localIterator4.next();
                             if (str.equals("R")) {
-                              localawmw.jdField_a_of_type_Long = ((JSONObject)localObject3).getLong(str);
+                              localawrf.jdField_a_of_type_Long = ((JSONObject)localObject3).getLong(str);
                             } else if (str.equals("G")) {
-                              localawmw.jdField_b_of_type_Long = ((JSONObject)localObject3).getLong(str);
+                              localawrf.jdField_b_of_type_Long = ((JSONObject)localObject3).getLong(str);
                             } else if (str.equals("B")) {
-                              localawmw.c = ((JSONObject)localObject3).getLong(str);
+                              localawrf.c = ((JSONObject)localObject3).getLong(str);
                             }
                           }
-                          localawmy.jdField_b_of_type_Awmw = localawmw;
+                          localawrh.jdField_b_of_type_Awrf = localawrf;
                         }
                       }
                     }
                   }
-                  ((ArrayList)localObject2).add(localawmy);
+                  ((ArrayList)localObject2).add(localawrh);
                   k += 1;
                 }
-                localawna.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+                localawrj.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
               }
             }
-            localArrayList.add(localawna);
+            localArrayList.add(localawrj);
             j += 1;
           }
-          localawmz.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+          localawri.jdField_a_of_type_JavaUtilArrayList = localArrayList;
           continue;
           label1139:
-          this.summaryEntrys.add(localawmz);
+          this.summaryEntrys.add(localawri);
           label1151:
           i += 1;
         }
@@ -699,7 +699,7 @@ public class Card
     try
     {
       localCardInfo.mergeFrom(this.bCardInfo);
-      anul.a(localBusinessCard, localCardInfo);
+      anyu.a(localBusinessCard, localCardInfo);
       return localBusinessCard;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -885,7 +885,7 @@ public class Card
     if ((this.strJoinHexAlbumFileKey == null) || (this.strJoinHexAlbumFileKey.length() == 0)) {
       return 0;
     }
-    return alkv.a(this.strJoinHexAlbumFileKey).size();
+    return alpk.a(this.strJoinHexAlbumFileKey).size();
   }
   
   public PersonalityLabel getPersonalityLabel()
@@ -1346,15 +1346,15 @@ public class Card
   
   public void removePortrait(byte[] paramArrayOfByte)
   {
-    LinkedList localLinkedList = alkv.a(this.strJoinHexAlbumFileKey);
+    LinkedList localLinkedList = alpk.a(this.strJoinHexAlbumFileKey);
     if (localLinkedList.remove(HexUtil.bytes2HexStr(paramArrayOfByte)))
     {
       this.iFaceNum -= 1;
-      this.strJoinHexAlbumFileKey = alkv.b(localLinkedList);
+      this.strJoinHexAlbumFileKey = alpk.b(localLinkedList);
     }
   }
   
-  public void saveBigOrderEntrys(List<awmz> paramList)
+  public void saveBigOrderEntrys(List<awri> paramList)
   {
     JSONStringer localJSONStringer1 = new JSONStringer();
     this.hobbyEntry = "";
@@ -1367,32 +1367,32 @@ public class Card
       Iterator localIterator = paramList.iterator();
       if (localIterator.hasNext())
       {
-        Object localObject1 = (awmz)localIterator.next();
-        localJSONStringer1.object().key("strName").value(((awmz)localObject1).jdField_a_of_type_JavaLangString).key("strServiceUrl").value(((awmz)localObject1).jdField_b_of_type_JavaLangString).key("strServiceType").value(((awmz)localObject1).c).key("serviceType").value(((awmz)localObject1).jdField_a_of_type_Int);
-        if (((awmz)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
+        Object localObject1 = (awri)localIterator.next();
+        localJSONStringer1.object().key("strName").value(((awri)localObject1).jdField_a_of_type_JavaLangString).key("strServiceUrl").value(((awri)localObject1).jdField_b_of_type_JavaLangString).key("strServiceType").value(((awri)localObject1).c).key("serviceType").value(((awri)localObject1).jdField_a_of_type_Int);
+        if (((awri)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
         {
           localJSONStringer2 = new JSONStringer().array();
-          localObject1 = ((awmz)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject1 = ((awri)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
           if (((Iterator)localObject1).hasNext())
           {
-            Object localObject2 = (awna)((Iterator)localObject1).next();
-            localJSONStringer2.object().key("strTitle").value(((awna)localObject2).jdField_a_of_type_JavaLangString).key("strCoverUrl").value(((awna)localObject2).jdField_b_of_type_JavaLangString).key("strJmpUrl").value(((awna)localObject2).c).key("strSubInfo").value(((awna)localObject2).d).key("strDesc").value(((awna)localObject2).e).key("serviceType").value(((awna)localObject2).jdField_a_of_type_Int).key("service").value(((awna)localObject2).jdField_b_of_type_Int).key("strTitleIconUrl").value(((awna)localObject2).f).key("uint64_group_code").value(((awna)localObject2).jdField_a_of_type_Long);
-            if (((awna)localObject2).jdField_a_of_type_JavaUtilArrayList != null)
+            Object localObject2 = (awrj)((Iterator)localObject1).next();
+            localJSONStringer2.object().key("strTitle").value(((awrj)localObject2).jdField_a_of_type_JavaLangString).key("strCoverUrl").value(((awrj)localObject2).jdField_b_of_type_JavaLangString).key("strJmpUrl").value(((awrj)localObject2).c).key("strSubInfo").value(((awrj)localObject2).d).key("strDesc").value(((awrj)localObject2).e).key("serviceType").value(((awrj)localObject2).jdField_a_of_type_Int).key("service").value(((awrj)localObject2).jdField_b_of_type_Int).key("strTitleIconUrl").value(((awrj)localObject2).f).key("uint64_group_code").value(((awrj)localObject2).jdField_a_of_type_Long);
+            if (((awrj)localObject2).jdField_a_of_type_JavaUtilArrayList != null)
             {
               localJSONStringer3 = new JSONStringer().array();
-              localObject2 = ((awna)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
+              localObject2 = ((awrj)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
               for (;;)
               {
                 if (((Iterator)localObject2).hasNext())
                 {
-                  awmy localawmy = (awmy)((Iterator)localObject2).next();
+                  awrh localawrh = (awrh)((Iterator)localObject2).next();
                   JSONStringer localJSONStringer4 = new JSONStringer().object();
-                  localJSONStringer4.key("R").value(localawmy.jdField_a_of_type_Awmw.jdField_a_of_type_Long).key("G").value(localawmy.jdField_a_of_type_Awmw.jdField_b_of_type_Long).key("B").value(localawmy.jdField_a_of_type_Awmw.c);
+                  localJSONStringer4.key("R").value(localawrh.jdField_a_of_type_Awrf.jdField_a_of_type_Long).key("G").value(localawrh.jdField_a_of_type_Awrf.jdField_b_of_type_Long).key("B").value(localawrh.jdField_a_of_type_Awrf.c);
                   localJSONStringer4.endObject();
                   JSONStringer localJSONStringer5 = new JSONStringer().object();
-                  localJSONStringer5.key("R").value(localawmy.jdField_b_of_type_Awmw.jdField_a_of_type_Long).key("G").value(localawmy.jdField_b_of_type_Awmw.jdField_b_of_type_Long).key("B").value(localawmy.jdField_b_of_type_Awmw.c);
+                  localJSONStringer5.key("R").value(localawrh.jdField_b_of_type_Awrf.jdField_a_of_type_Long).key("G").value(localawrh.jdField_b_of_type_Awrf.jdField_b_of_type_Long).key("B").value(localawrh.jdField_b_of_type_Awrf.c);
                   localJSONStringer5.endObject();
-                  localJSONStringer3.object().key("strWording").value(localawmy.jdField_a_of_type_JavaLangString).key("type").value(localawmy.jdField_a_of_type_Long).key("attr").value(localawmy.jdField_b_of_type_Long).key("text_color").value(localJSONStringer4).key("edging_color").value(localJSONStringer5).endObject();
+                  localJSONStringer3.object().key("strWording").value(localawrh.jdField_a_of_type_JavaLangString).key("type").value(localawrh.jdField_a_of_type_Long).key("attr").value(localawrh.jdField_b_of_type_Long).key("text_color").value(localJSONStringer4).key("edging_color").value(localJSONStringer5).endObject();
                   continue;
                   if (this.summaryEntrys == null) {
                     break;
@@ -1735,8 +1735,8 @@ public class Card
       if (paramSSummaryCardRsp.res < 0)
       {
         QLog.e("DIYProfileTemplate.SummaryCard", 1, "getSummaryCard template error! res =" + paramSSummaryCardRsp.res);
-        bdqk.a(paramQQAppInterface, "individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res, "personalcard get template = null", null, 0.0F);
-        bdqj.a("individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res);
+        bdut.a(paramQQAppInterface, "individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res, "personalcard get template = null", null, 0.0F);
+        bdus.a("individual_v2_personalcard_get_fail", "" + paramSSummaryCardRsp.res);
         return;
       }
       if (!QLog.isColorLevel()) {}
@@ -1795,7 +1795,7 @@ public class Card
           if (QLog.isColorLevel()) {
             QLog.i("SummaryCard", 2, "updateCardTemplate templateInfo-->" + getProfileCardDesc());
           }
-          azmz.a(paramQQAppInterface.getApp()).a(paramString, "profileCardGet", true, 0L, 0L, localHashMap, "", false);
+          azri.a(paramQQAppInterface.getApp()).a(paramString, "profileCardGet", true, 0L, 0L, localHashMap, "", false);
           return;
           QLog.w("DIYProfileTemplate.SummaryCard", 1, "updateCardTemplate res=" + paramSSummaryCardRsp.res + " styleid=" + paramSSummaryCardRsp.styleid + " bgid=" + paramSSummaryCardRsp.bgid + " strDrawerCardUrl=" + paramSSummaryCardRsp.strDrawerCard);
           if ((paramSSummaryCardRsp.stDiyComplicated != null) && (paramSSummaryCardRsp.stDiyComplicated.detail != null) && (paramSSummaryCardRsp.stDiyComplicated.detail.length() > 850))
@@ -1820,11 +1820,11 @@ public class Card
       }
     }
     QLog.i("SummaryCard", 1, "updateCardTemplate templateInfo is null");
-    bdqk.a(paramQQAppInterface, "individual_v2_personalcard_get_fail", "personalcard_get_template_null", "personalcard get template = null", null, 0.0F);
-    bdqj.a("individual_v2_personalcard_get_fail", "personalcard_get_template_null");
+    bdut.a(paramQQAppInterface, "individual_v2_personalcard_get_fail", "personalcard_get_template_null", "personalcard get template = null", null, 0.0F);
+    bdus.a("individual_v2_personalcard_get_fail", "personalcard_get_template_null");
     localHashMap.put("param_FailCode", "-101");
     localHashMap.put("param_templateRet", "0");
-    azmz.a(paramQQAppInterface.getApp()).a(paramString, "profileCardGet", false, 0L, 0L, localHashMap, "", false);
+    azri.a(paramQQAppInterface.getApp()).a(paramString, "profileCardGet", false, 0L, 0L, localHashMap, "", false);
   }
   
   public void updateCoverData(byte[] paramArrayOfByte)
@@ -1954,7 +1954,7 @@ public class Card
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Card
  * JD-Core Version:    0.7.0.1
  */

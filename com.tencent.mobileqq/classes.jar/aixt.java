@@ -1,24 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import java.util.Collections;
-import java.util.List;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class aixt
-  implements View.OnClickListener
+class aixt
+  implements BusinessObserver
 {
-  public aixt(ChooseItemView paramChooseItemView) {}
+  aixt(aixs paramaixs, long paramLong, aixv paramaixv, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
     {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a(ChooseItemView.a(this.a), true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      aixs.a(this.jdField_a_of_type_Aixs, -1L);
+      return;
     }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
     }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    aixs.a(this.jdField_a_of_type_Aixs).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Aixv, (aixs)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    aixs.a(this.jdField_a_of_type_Aixs, -1L);
   }
 }
 

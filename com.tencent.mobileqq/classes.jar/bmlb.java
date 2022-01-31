@@ -1,8 +1,14 @@
-public abstract interface bmlb
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+
+class bmlb
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public abstract void j();
+  bmlb(bmla parambmla) {}
   
-  public abstract void n();
+  public void onScrollChanged()
+  {
+    bmla.a(this.a);
+  }
 }
 
 

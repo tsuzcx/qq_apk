@@ -1,26 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-final class atdb
-  extends BroadcastReceiver
+public class atdb
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static long a(Bundle paramBundle)
   {
-    if ((atda.a != null) && (atda.a.size() > 0))
+    if (paramBundle == null) {}
+    do
     {
-      Iterator localIterator = atda.a.iterator();
-      while (localIterator.hasNext())
-      {
-        atda localatda = (atda)((WeakReference)localIterator.next()).get();
-        if (localatda != null) {
-          localatda.a(paramContext, paramIntent);
-        }
-      }
+      return 0L;
+      paramBundle = paramBundle.getString("roomid", "");
+    } while (TextUtils.isEmpty(paramBundle));
+    return Long.parseLong(paramBundle);
+  }
+  
+  public static String a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      paramBundle = "";
     }
+    String str;
+    do
+    {
+      return paramBundle;
+      str = paramBundle.getString("roomtype");
+      paramBundle = str;
+    } while (!TextUtils.isEmpty(str));
+    return "0";
+  }
+  
+  public static String b(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return "";
+    }
+    return paramBundle.getString("fromid", "");
+  }
+  
+  public static String c(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return "";
+    }
+    return paramBundle.getString("shakespearetime", "");
   }
 }
 

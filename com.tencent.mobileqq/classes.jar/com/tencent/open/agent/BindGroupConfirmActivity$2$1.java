@@ -3,14 +3,14 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import beyu;
+import bfdd;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
 
 public class BindGroupConfirmActivity$2$1
   implements Runnable
 {
-  public BindGroupConfirmActivity$2$1(beyu parambeyu, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public BindGroupConfirmActivity$2$1(bfdd parambfdd, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class BindGroupConfirmActivity$2$1
       Message localMessage = new Message();
       localMessage.obj = localBitmap;
       localMessage.what = 4;
-      this.jdField_a_of_type_Beyu.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_Bfdd.a.a.sendMessage(localMessage);
     }
   }
 }

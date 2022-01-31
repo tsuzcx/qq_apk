@@ -1,14 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-public abstract class bcao<D extends bbzp>
-  extends RecyclerView.ViewHolder
+public class bcao
+  implements View.OnClickListener
 {
-  public D a;
+  public bcao(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public bcao(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
+    bhsj.b(paramView);
+    this.a.getActivity().doOnBackPressed();
   }
 }
 

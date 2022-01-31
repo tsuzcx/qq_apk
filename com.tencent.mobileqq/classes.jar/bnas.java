@@ -1,16 +1,6 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-
-class bnas
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public abstract interface bnas
 {
-  bnas(bnar parambnar) {}
-  
-  public void onThreadMonitorEnd(int paramInt)
-  {
-    if (paramInt == 10) {
-      this.a.a();
-    }
-  }
+  public abstract void a(bnar parambnar);
 }
 
 

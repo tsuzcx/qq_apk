@@ -1,176 +1,69 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import cooperation.qzone.util.QZLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class bnbl
-  extends bmey
+  extends bnbp<bnaz, bnaz>
 {
-  public View a;
-  private bnbj jdField_a_of_type_Bnbj;
-  private bnbn jdField_a_of_type_Bnbn;
-  private bnbp jdField_a_of_type_Bnbp;
-  private final QzoneEditPictureActivity jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity;
-  public String a;
-  public ArrayList<String> a;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
-  public String d;
-  public int e = -1;
-  public String e;
-  public int f;
-  public boolean f;
-  public boolean g;
-  public boolean h = true;
-  public boolean i;
-  public boolean j = true;
-  private boolean k;
-  private boolean l;
+  public WeakReference<bmiu> a;
   
-  public bnbl(QzoneEditPictureActivity paramQzoneEditPictureActivity, boolean paramBoolean)
+  public bnbl(bmiu parambmiu)
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity = paramQzoneEditPictureActivity;
-    this.l = paramBoolean;
+    this.a = new WeakReference(parambmiu);
   }
   
-  private void D()
+  protected void a(JobContext paramJobContext, bnaz parambnaz)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.findViewById(2131371965);
-    Object localObject = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity).inflate(2131562040, null);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, bngs.jdField_a_of_type_Int, 0, 0);
-    localLayoutParams.addRule(11);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    ((LinearLayout)localObject).findViewById(2131374549).setVisibility(0);
-    ((LinearLayout)localObject).findViewById(2131374547).setVisibility(0);
-    ((LinearLayout)localObject).findViewById(2131374550).setVisibility(8);
-    localObject = (RelativeLayout)this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.getLayoutInflater().inflate(2131562038, localRelativeLayout, false);
-    localLayoutParams = new RelativeLayout.LayoutParams(-1, aekt.a(50.0F, a().a().getResources()));
-    ((RelativeLayout)localObject).setVisibility(0);
-    localLayoutParams.addRule(12);
-    if (bngs.e > 0) {}
-    for (int m = bngs.e;; m = aekt.a(60.0F, this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.getResources()))
+    paramJobContext = (bmiu)this.a.get();
+    if (paramJobContext == null)
     {
-      localLayoutParams.bottomMargin = m;
-      View localView = new View(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity);
-      localView.setBackgroundColor(Color.argb(128, 0, 0, 0));
-      localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView.setVisibility(8);
-      localRelativeLayout.addView((View)localObject, localLayoutParams);
-      localRelativeLayout.addView(localView);
-      this.jdField_a_of_type_AndroidViewView = localView;
+      wxe.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "EditVideoInteract is null, return directly.");
+      notifyResult(parambnaz);
       return;
     }
-  }
-  
-  private bnbm a()
-  {
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext())
+    paramJobContext = paramJobContext.a();
+    if (paramJobContext == null)
     {
-      bmiv localbmiv = (bmiv)localIterator.next();
-      if ((localbmiv instanceof bnbm)) {
-        return (bnbm)localbmiv;
+      wxe.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
+      notifyResult(parambnaz);
+      return;
+    }
+    int i = bnbk.a(parambnaz);
+    Object localObject;
+    if (i != 0)
+    {
+      localObject = xsm.a(paramJobContext, i);
+      if (localObject != null)
+      {
+        paramJobContext.recycle();
+        paramJobContext = (JobContext)localObject;
       }
     }
-    return null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    super.a(paramContext);
-    d(3005);
-  }
-  
-  protected void a(@NonNull EditVideoParams paramEditVideoParams)
-  {
-    long l1 = 0xFFFFFFFF & (paramEditVideoParams.jdField_a_of_type_Long | 0x0);
-    if (f())
+    for (;;)
     {
-      super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, 0xFDFFFFFF & 0xFFFDFFFF & l1 & 0xFBFFFFFF & 0xFFFFDFFF, paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
-      a(this.jdField_a_of_type_JavaUtilList);
-      return;
+      localObject = bnbs.a(parambnaz.jdField_a_of_type_Int, parambnaz.b, ".png");
+      try
+      {
+        if (!xqw.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, (String)localObject)) {
+          break;
+        }
+        parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", localObject);
+        notifyResult(parambnaz);
+        return;
+      }
+      catch (Exception paramJobContext)
+      {
+        wxe.c("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
+        super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+        return;
+      }
+      wxe.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "rotate vote bitmap failed. rotation=%s", new Object[] { Integer.valueOf(i) });
     }
-    super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, l1, paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
-  }
-  
-  protected void a(List<bmiv> paramList)
-  {
-    super.a(paramList);
-    if (f())
-    {
-      Object localObject = new bnbj(this);
-      this.jdField_a_of_type_Bnbj = ((bnbj)localObject);
-      paramList.add(localObject);
-      localObject = new bnbp(this);
-      this.jdField_a_of_type_Bnbp = ((bnbp)localObject);
-      paramList.add(localObject);
-      localObject = new bnbn(this);
-      this.jdField_a_of_type_Bnbn = ((bnbn)localObject);
-      paramList.add(localObject);
-    }
-    try
-    {
-      paramList.add(new bnbx(this));
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QZLog.e("QzEditVideoPartManager", 2, new Object[] { "addExtraParts", " add report part error" });
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    bnbm localbnbm = a();
-    if (localbnbm != null) {
-      localbnbm.a_(paramInt, null);
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    d(3006);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    this.k = paramBoolean;
-  }
-  
-  public boolean f()
-  {
-    return this.l;
-  }
-  
-  public boolean g()
-  {
-    return this.k;
-  }
-  
-  public void j()
-  {
-    if (f()) {
-      D();
-    }
-    super.j();
+    wxe.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile failed.");
+    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
   }
 }
 

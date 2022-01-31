@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-
-public class ayez
-  implements View.OnClickListener
+class ayez
+  implements bdvh
 {
-  public ayez(UniteSearchActivity paramUniteSearchActivity) {}
+  ayez(ayey paramayey) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.e();
+    this.a.l();
+    this.a.h();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

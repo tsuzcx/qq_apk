@@ -1,46 +1,24 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class adwo
-  extends avrb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adwo(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public adwo(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
-      return;
-    }
-    String str2 = this.a.getResources().getString(2131699612);
-    String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
-      }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131699591);
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwo
  * JD-Core Version:    0.7.0.1
  */

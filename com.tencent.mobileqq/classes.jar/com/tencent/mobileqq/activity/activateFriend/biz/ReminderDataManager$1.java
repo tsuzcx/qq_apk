@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aejx;
-import bdcs;
+import aeom;
+import bdhb;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,31 +10,31 @@ import java.io.File;
 public class ReminderDataManager$1
   implements Runnable
 {
-  public ReminderDataManager$1(aejx paramaejx, AcsMsg paramAcsMsg) {}
+  public ReminderDataManager$1(aeom paramaeom, AcsMsg paramAcsMsg) {}
   
   public void run()
   {
     synchronized ()
     {
-      if (aejx.a(this.this$0, aejx.a(this.this$0)).length == 3) {
-        aejx.a(this.this$0, aejx.a(this.this$0));
+      if (aeom.a(this.this$0, aeom.a(this.this$0)).length == 3) {
+        aeom.a(this.this$0, aeom.a(this.this$0));
       }
       JceOutputStream localJceOutputStream = new JceOutputStream();
-      String str = aejx.a(this.this$0) + "_" + this.a.notice_time * 1000L + "_" + this.a.msg_id;
+      String str = aeom.a(this.this$0) + "_" + this.a.notice_time * 1000L + "_" + this.a.msg_id;
       try
       {
         localJceOutputStream.setServerEncoding("utf-8");
         this.a.writeTo(localJceOutputStream);
-        File localFile = new File(aejx.a(this.this$0), str);
-        bdcs.a(localJceOutputStream.toByteArray(), localFile.getAbsolutePath());
+        File localFile = new File(aeom.a(this.this$0), str);
+        bdhb.a(localJceOutputStream.toByteArray(), localFile.getAbsolutePath());
         return;
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          QLog.e(aejx.a(), 1, "save file : " + str + " fail because throw an exception " + localThrowable);
-          aejx.a(this.this$0, this.a);
+          QLog.e(aeom.a(), 1, "save file : " + str + " fail because throw an exception " + localThrowable);
+          aeom.a(this.this$0, this.a);
         }
       }
     }

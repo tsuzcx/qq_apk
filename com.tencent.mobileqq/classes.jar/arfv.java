@@ -1,49 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-class arfv
-  implements arei
+final class arfv
+  implements View.OnClickListener
 {
-  arfv(arfr paramarfr) {}
+  arfv(String paramString, arhw paramarhw) {}
   
-  public void a(argc paramargc)
+  public void onClick(View paramView)
   {
-    paramargc = ((arem)paramargc).a();
-    if (paramargc == null) {}
-    label12:
-    do
+    try
     {
-      do
+      paramView = new arfw(this);
+      arqo localarqo = arqo.a(this.jdField_a_of_type_JavaLangString);
+      if (localarqo == null)
       {
-        do
-        {
-          break label12;
-          do
-          {
-            return;
-          } while ((TextUtils.isEmpty(paramargc.a())) || (arni.a(paramargc.a()) != 0) || (!TextUtils.isEmpty(paramargc.g())));
-          paramargc = paramargc.a();
-          if (paramargc != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "mEntity = null");
-        return;
-        if (TextUtils.isEmpty(paramargc.strThumbPath)) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
         }
-      } while (this.a.jdField_a_of_type_Arge == null);
-      this.a.jdField_a_of_type_Arge.a(String.valueOf(paramargc.nSessionId), paramargc.strThumbPath);
+      }
+      else if (localarqo.a(false))
+      {
+        if (!bdin.e(BaseApplicationImpl.getContext()))
+        {
+          arri.a(2131693417);
+          return;
+        }
+        if (bezm.a(this.jdField_a_of_type_Arhw.getActivity(), 5, new arfx(this, paramView))) {
+          arre.a(this.jdField_a_of_type_Arhw.getActivity(), 2131692754, 2131692757, paramView);
+        }
+      }
+      else
+      {
+        paramView.a();
+      }
       return;
-      paramargc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramargc.peerUin, paramargc.peerType, paramargc.msgSeq);
-    } while (paramargc == null);
-    paramargc = (MessageForDeviceSingleStruct)paramargc;
-    zte localzte = ((ztk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
-    arfr.a(this.a, localzte.a(paramargc, null, null));
+    }
+    catch (Exception paramView) {}
   }
 }
 

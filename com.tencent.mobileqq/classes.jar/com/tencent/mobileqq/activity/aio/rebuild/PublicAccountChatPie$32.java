@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agot;
+import agti;
 
 public class PublicAccountChatPie$32
   implements Runnable
 {
-  public PublicAccountChatPie$32(agot paramagot) {}
+  public PublicAccountChatPie$32(agti paramagti) {}
   
   public void run()
   {
-    agot.b(this.this$0);
+    agti.b(this.this$0);
   }
 }
 

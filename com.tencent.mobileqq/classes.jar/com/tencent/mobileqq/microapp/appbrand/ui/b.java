@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bdda;
+import bdhj;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
 import com.tencent.mobileqq.microapp.b.a;
@@ -28,7 +28,7 @@ final class b
         Object localObject = RoundedBitmapDrawableFactory.create(this.b.getResources(), localBitmap);
         ((RoundedBitmapDrawable)localObject).setCornerRadius(i);
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
-        localObject = new ActivityManager.TaskDescription(this.a.config.app_name, bdda.b((Drawable)localObject));
+        localObject = new ActivityManager.TaskDescription(this.a.config.app_name, bdhj.b((Drawable)localObject));
         this.b.setTaskDescription((ActivityManager.TaskDescription)localObject);
         if (!localBitmap.isRecycled()) {
           localBitmap.recycle();

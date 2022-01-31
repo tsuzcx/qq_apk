@@ -1,104 +1,149 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.pluginsdk.IPluginActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.IActionListener;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
+import cooperation.qzone.remote.logic.QzoneWebPluginProxyService;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class bjqu
 {
-  public static boolean a(Activity paramActivity)
+  private static bjqu jdField_a_of_type_Bjqu;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private bjqw jdField_a_of_type_Bjqw;
+  IActionListener jdField_a_of_type_CooperationQzoneRemoteIActionListener = new bjqv(this);
+  private RemoteServiceProxy jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy = new RemoteServiceProxy("com.qzone.common.webplugin.WebPluginHandleService", QzoneWebPluginProxyService.class, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+  private ArrayList<WeakReference<bjqx>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  
+  public bjqu()
   {
-    return a(paramActivity, new bjqv(paramActivity), 0);
+    this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.setActionListener(this.jdField_a_of_type_CooperationQzoneRemoteIActionListener);
   }
   
-  public static boolean a(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  public static bjqu a()
   {
-    if (paramActivity == null) {}
-    do
+    if (jdField_a_of_type_Bjqu == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      return false;
-      if ((paramActivity instanceof BasePluginActivity)) {
-        return a((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      if (jdField_a_of_type_Bjqu == null) {
+        jdField_a_of_type_Bjqu = new bjqu();
       }
-      if ((paramActivity instanceof QzonePluginProxyActivity)) {
-        return a((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      return jdField_a_of_type_Bjqu;
+    }
+  }
+  
+  protected int a(String paramString, Bundle paramBundle, long paramLong, boolean paramBoolean)
+  {
+    SendMsg localSendMsg = new SendMsg(paramString);
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
+    }
+    if ((paramString != null) && (paramString.size() > 0)) {
+      localSendMsg.extraData.putAll(paramString);
+    }
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    localSendMsg.setRequestId(i);
+    if (paramLong > 0L) {
+      localSendMsg.setTimeout(paramLong);
+    }
+    localSendMsg.setNeedCallback(paramBoolean);
+    if (paramBoolean) {
+      localSendMsg.actionListener = this.jdField_a_of_type_CooperationQzoneRemoteIActionListener;
+    }
+    try
+    {
+      this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.sendMsg(localSendMsg);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new RuntimeException("sendMsg is fail", paramString);
+    }
+  }
+  
+  public int a(String paramString, Bundle paramBundle, boolean paramBoolean)
+  {
+    try
+    {
+      int i = a(paramString, paramBundle, 0L, paramBoolean);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public bjqw a()
+  {
+    if (this.jdField_a_of_type_Bjqw == null) {
+      this.jdField_a_of_type_Bjqw = new bjqw(this);
+    }
+    return this.jdField_a_of_type_Bjqw;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteHandleManager", 2, "----destroy----");
+    }
+    if (this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy != null) {
+      this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.unbindBaseService();
+    }
+  }
+  
+  public void a(bjqx parambjqx)
+  {
+    if (parambjqx == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (WeakReference)localIterator.next();
+      if (localObject != null)
+      {
+        localObject = (bjqx)((WeakReference)localObject).get();
+        if (localObject == null) {
+          localIterator.remove();
+        } else if (localObject == parambjqx) {
+          return;
+        }
       }
-      if ((paramActivity instanceof BaseActivity)) {
-        return a((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(parambjqx));
+  }
+  
+  public void b(bjqx parambjqx)
+  {
+    if (parambjqx == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (WeakReference)localIterator.next();
+        if (localObject != null)
+        {
+          localObject = (bjqx)((WeakReference)localObject).get();
+          if (localObject == null) {
+            localIterator.remove();
+          } else if (localObject == parambjqx) {
+            localIterator.remove();
+          }
+        }
       }
-    } while (!(paramActivity instanceof Activity));
-    return b(paramActivity);
-  }
-  
-  public static boolean a(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramBasePluginActivity == null) {
-      return false;
     }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramBasePluginActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBasePluginActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      paramBasePluginActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramQzonePluginProxyActivity == null) {}
-    do
-    {
-      return false;
-      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
-        break;
-      }
-      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.a();
-    } while (paramQzonePluginProxyActivity == null);
-    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-    return false;
-    return true;
-  }
-  
-  private static boolean a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramBaseActivity == null) {
-      return false;
-    }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramBaseActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-      return false;
-    }
-    return true;
-  }
-  
-  private static Activity b(Activity paramActivity)
-  {
-    Activity localActivity;
-    if (paramActivity == null) {
-      localActivity = null;
-    }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
-  }
-  
-  private static boolean b(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return false;
-    }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      bdcd.b(b(paramActivity));
-      return false;
-    }
-    return true;
   }
 }
 

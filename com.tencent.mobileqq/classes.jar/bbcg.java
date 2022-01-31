@@ -1,26 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
 public class bbcg
-  extends alox
+  extends bbal
 {
-  public bbcg(TroopAdminList paramTroopAdminList) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void a(bavq parambavq)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.c();
-    }
+    parambavq.a = "LongConn.SharePic2Wechat";
   }
   
-  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
-    }
-    this.a.c();
+    paramTryUpImgReq.uint32_bu_type.set(96);
   }
 }
 

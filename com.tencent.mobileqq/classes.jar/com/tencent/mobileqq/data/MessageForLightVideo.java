@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import aeot;
-import alpo;
+import aeti;
+import alud;
 import android.text.TextUtils;
-import ayvj;
-import bdcs;
+import ayzs;
+import bdhb;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class MessageForLightVideo
   extends MessageForShortVideo
-  implements aeot
+  implements aeti
 {
   public static final int LIGHT_VIDEO_STATUS_MUTE_PLAY = 3;
   public static final int LIGHT_VIDEO_STATUS_PAUSE = 2;
@@ -29,7 +29,7 @@ public class MessageForLightVideo
   public void doParse()
   {
     super.doParse();
-    if ("1".equals(getExtInfoFromExtStr(ayvj.u)))
+    if ("1".equals(getExtInfoFromExtStr(ayzs.u)))
     {
       this.isLightVideoRead = true;
       return;
@@ -40,14 +40,14 @@ public class MessageForLightVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return alpo.a(2131706956);
+      return alud.a(2131706968);
     }
     return this.msg;
   }
   
   public boolean isAllReady()
   {
-    return (bdcs.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
+    return (bdhb.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
   }
   
   public boolean isStatusReady()

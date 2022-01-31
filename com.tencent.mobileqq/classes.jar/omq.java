@@ -19,14 +19,14 @@ public class omq
     View localView = paramView;
     if (paramView == null)
     {
-      localView = paramomg.a().inflate(2131559941, paramViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378985));
+      localView = paramomg.a().inflate(2131559940, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379043));
       if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       }
-      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131379881);
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131379939);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b = localView.findViewById(2131379865);
+      this.b = localView.findViewById(2131379923);
       this.b.setVisibility(0);
     }
     localView.setTag(this);
@@ -40,7 +40,7 @@ public class omq
     }
     omt localomt = (omt)paramomg.getItem(paramInt);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = alpo.a(2131713091);
+    String str = alud.a(2131713103);
     if (localomt.a != null) {}
     for (paramomg = String.valueOf(paramomg.a().a(localomt.a.commentId));; paramomg = "")
     {

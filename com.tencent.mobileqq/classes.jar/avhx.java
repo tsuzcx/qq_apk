@@ -1,20 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class avhx
-  implements Handler.Callback
+  implements View.OnTouchListener
 {
-  avhx(avhw paramavhw) {}
+  avhx(avhf paramavhf) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131369429).setAlpha(0.5F);
     }
     for (;;)
     {
-      return true;
-      avhw.a(this.a);
+      return false;
+      this.a.a.findViewById(2131369429).setAlpha(1.0F);
     }
   }
 }

@@ -1,32 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
 
-public class ajbe
-  implements Animation.AnimationListener
+class ajbe
+  implements EmojiGifHelper.OnConvertListener
 {
-  public ajbe(AnonymousEntranceView paramAnonymousEntranceView) {}
+  ajbe(ajaz paramajaz, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onConvertResult(boolean paramBoolean, String paramString)
   {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
-    }
-    if (AnonymousEntranceView.b(this.a) != null)
-    {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

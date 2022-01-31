@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
 class bkut
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bkut(bkus parambkus, int paramInt, bkva parambkva) {}
+  bkut(bkur parambkur) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(this.jdField_a_of_type_Int);
-    if (paramView != null)
-    {
-      if (paramView.ischeckin) {
-        bkus.a(this.jdField_a_of_type_Bkus, paramView, this.jdField_a_of_type_Bkva);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bkva.a.setText("");
+    bkur.a(this.a).smoothScrollToPosition(bkur.a);
+    bkur.b = bkur.a;
   }
 }
 

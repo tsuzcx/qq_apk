@@ -1,70 +1,16 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.ui.InternalMiniActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-public class bgws
-  extends bgmr
+class bgws
+  implements DialogInterface.OnShowListener
 {
-  public bgws(bgho parambgho)
-  {
-    super(parambgho);
-  }
+  bgws(bgwp parambgwp, bgxi parambgxi) {}
   
-  private void c()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    Object localObject = this.a.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-    {
-      if (!(localObject instanceof InternalMiniActivity)) {
-        break label139;
-      }
-      ((Activity)localObject).finish();
-    }
-    for (;;)
-    {
-      this.a.a(bghw.a(60));
-      if (this.a.b())
-      {
-        localObject = this.a.a();
-        if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.fromMiniAppId))) {
-          bglc.a(((MiniAppInfo)localObject).launchParam.fromMiniAppId);
-        }
-      }
-      if (this.a.a() != null) {
-        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new bghp(this.a));
-      }
-      return;
-      label139:
-      int i = 0;
-      try
-      {
-        boolean bool = ((Activity)localObject).moveTaskToBack(true);
-        i = bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        label149:
-        break label149;
-      }
-      if (i == 0)
-      {
-        QMLog.e("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
-        ((Activity)localObject).finish();
-      }
-    }
-  }
-  
-  public void a()
-  {
-    QMLog.i("GameCapsuleButton", "on close click");
-    if ((!bguo.b(this.a, new bgwt(this))) && (!bguo.a(this.a, new bgwu(this)))) {
-      c();
-    }
+    this.jdField_a_of_type_Bgwp.a(paramDialogInterface);
+    bgwl.a(this.jdField_a_of_type_Bgwp.a(), bgwp.a(this.jdField_a_of_type_Bgwp), this.jdField_a_of_type_Bgwp.a());
+    bgwl.a(this.jdField_a_of_type_Bgxi);
   }
 }
 

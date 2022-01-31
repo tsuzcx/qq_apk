@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import asps;
-import asry;
+import asub;
+import aswh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -18,7 +18,7 @@ import com.tencent.widget.XPanelContainer;
 public class PublicAccountHotPicPanel
   extends HotPicMainPanel
 {
-  asry a;
+  aswh a;
   
   public PublicAccountHotPicPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,12 +34,12 @@ public class PublicAccountHotPicPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = paramPanelIconLinearLayout;
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369748);
-    this.c = findViewById(2131367772);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369767);
+    this.c = findViewById(2131367782);
     this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558579, null);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131367778));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131367759));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131367788));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131367769));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a = 1008;
   }
@@ -48,10 +48,10 @@ public class PublicAccountHotPicPanel
   
   public void d() {}
   
-  public void setPublicAccountGifListener(asry paramasry)
+  public void setPublicAccountGifListener(aswh paramaswh)
   {
-    this.jdField_a_of_type_Asry = paramasry;
-    asps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramasry);
+    this.jdField_a_of_type_Aswh = paramaswh;
+    asub.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramaswh);
   }
 }
 

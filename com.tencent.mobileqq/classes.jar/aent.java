@@ -1,45 +1,43 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.observer.BusinessObserver;
 
-class aent
-  implements AdapterView.OnItemClickListener
+public class aent
+  implements BusinessObserver
 {
-  aent(aens paramaens) {}
+  public aent(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int j = ((ShareActionSheetBuilder.ActionSheetItem)aens.a(this.a)[0].get(paramInt)).action;
-    aens.a(this.a).dismiss();
-    int i = 0;
-    switch (j)
-    {
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
     }
-    for (;;)
+    if (paramInt == 2005)
     {
-      if (i != 0) {
-        azmj.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
       }
-      this.a.a(j, aens.a(this.a));
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
     }
+    else
+    {
+      return;
+    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 

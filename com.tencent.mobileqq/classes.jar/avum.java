@@ -1,16 +1,19 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class avum
+public class avum
+  extends avun
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public final aoor a;
+  public final boolean a;
   
-  avum(avuk paramavuk) {}
+  public avum(aoor paramaoor, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Aoor = paramaoor;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

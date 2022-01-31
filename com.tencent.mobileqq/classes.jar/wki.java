@@ -1,22 +1,29 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wki
-  implements Comparator<wkh>
+  extends QQUIEventReceiver<wjw, vdl>
 {
-  public int a(wkh paramwkh1, wkh paramwkh2)
+  public wki(@NonNull wjw paramwjw)
   {
-    if (paramwkh1.a == paramwkh2.a) {
-      if (!paramwkh1.b) {}
-    }
-    while (paramwkh1.a > paramwkh2.a)
+    super(paramwjw);
+  }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull vdl paramvdl)
+  {
+    if (wjw.a(paramwjw) == null)
     {
-      return -1;
-      if (paramwkh2.b) {
-        return 1;
-      }
-      return 0;
+      wxe.b(this.TAG, "ignore this user info event. %s.", paramvdl.toString());
+      return;
     }
-    return 1;
+    wxe.a(this.TAG, "receive user info event. %s.", paramvdl.toString());
+    wjw.a(paramwjw).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

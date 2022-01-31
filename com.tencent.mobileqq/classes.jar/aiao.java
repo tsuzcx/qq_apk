@@ -1,32 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 class aiao
-  implements aiaj
+  implements aupv
 {
-  aiao(aiak paramaiak) {}
+  aiao(aian paramaian) {}
   
   public void a()
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = oxp.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
-    {
-      ((oxp)localObject).b(bool);
-      return;
-      bool = false;
-    }
+    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Auqc.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
   }
 }
 

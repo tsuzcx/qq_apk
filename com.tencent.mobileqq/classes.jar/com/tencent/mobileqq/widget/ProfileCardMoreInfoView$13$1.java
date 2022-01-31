@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.widget.TextView;
-import bdkf;
+import bdoo;
 import java.lang.ref.WeakReference;
 
 class ProfileCardMoreInfoView$13$1
@@ -17,8 +17,8 @@ class ProfileCardMoreInfoView$13$1
       localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView$13.a.get();
       if (this.jdField_a_of_type_Boolean)
       {
-        localTextView.setCompoundDrawablePadding(bdkf.b(3.0F));
-        localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841879, 0);
+        localTextView.setCompoundDrawablePadding(bdoo.b(3.0F));
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841892, 0);
       }
     }
     else

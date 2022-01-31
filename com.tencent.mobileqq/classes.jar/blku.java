@@ -1,6 +1,17 @@
-public abstract interface blku
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
+public class blku
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(bllc parambllc);
+  public blku(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    AEEditorAILoadingView.a(this.a).setPadding(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0, 0);
+  }
 }
 
 

@@ -1,122 +1,77 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyUtils.1;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class auxa
+  implements BusinessObserver
 {
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new auxb(this);
-  auwv jdField_a_of_type_Auwv;
-  private auwy jdField_a_of_type_Auwy;
-  auxd jdField_a_of_type_Auxd = new auxc(this);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public auxa(NearbyUtils.1 param1) {}
   
-  public auxa(AppInterface paramAppInterface, auwy paramauwy)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Auwy = paramauwy;
-  }
-  
-  public Message a(Message paramMessage)
-  {
-    if ((this.jdField_a_of_type_Auwv == null) || (paramMessage == null)) {}
-    for (;;)
-    {
-      return null;
+    if (paramBoolean) {
       try
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          if (this.jdField_a_of_type_Auwv != null) {
-            break label49;
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramInt = localWebSsoResponseBody.ret.get();
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            if (!TextUtils.isEmpty(paramBundle)) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
+            }
           }
-          return null;
+          else
+          {
+            paramBundle = paramBundle.optString("signature");
+            if (QLog.isColorLevel()) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
+            }
+            try
+            {
+              if (TextUtils.isEmpty(paramBundle)) {
+                return;
+              }
+              if (this.a.jdField_a_of_type_Int != 0) {
+                break label283;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, bdfr.decode(paramBundle, 0));
+              return;
+            }
+            catch (Exception paramBundle)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+            }
+            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
+            return;
+          }
         }
-        if (!QLog.isDevelopLevel()) {}
       }
-      catch (RemoteException paramMessage) {}
-    }
-    paramMessage.printStackTrace();
-    return null;
-    label49:
-    paramMessage = this.jdField_a_of_type_Auwv.a(paramMessage);
-    return paramMessage;
-  }
-  
-  public void a()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ConnectNearbyProcService.class);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "bindService");
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Auwv != null;
-  }
-  
-  public Object[] a(int paramInt)
-  {
-    return a(paramInt, new Object[0]);
-  }
-  
-  public Object[] a(int paramInt, Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Auwv == null) {}
-    for (;;)
-    {
-      return null;
-      try
+      catch (Exception paramBundle)
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        if (QLog.isColorLevel())
         {
-          if (this.jdField_a_of_type_Auwv != null) {
-            break label45;
-          }
-          return null;
+          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
+          return;
+          label283:
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, bdfr.decode(paramBundle, 0));
         }
-        if (!QLog.isDevelopLevel()) {}
       }
-      catch (RemoteException paramVarArgs) {}
     }
-    paramVarArgs.printStackTrace();
-    return null;
-    label45:
-    paramVarArgs = this.jdField_a_of_type_Auwv.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
-    if (paramVarArgs == null) {
-      return null;
-    }
-    paramVarArgs = paramVarArgs.a;
-    return paramVarArgs;
-  }
-  
-  Message b(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Auwy != null) {
-      return this.jdField_a_of_type_Auwy.a(paramMessage);
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-  }
-  
-  Object[] b(int paramInt, Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Auwy != null) {
-      return this.jdField_a_of_type_Auwy.a(paramInt, paramVarArgs);
-    }
-    return null;
   }
 }
 

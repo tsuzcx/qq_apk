@@ -1,17 +1,30 @@
-final class bhjg
+import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+
+class bhjg
+  implements bgmc<Void>
 {
-  int jdField_a_of_type_Int;
-  bhjv jdField_a_of_type_Bhjv;
-  bhjw jdField_a_of_type_Bhjw;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  bhjg(bhje parambhje, int paramInt) {}
   
-  public String toString()
+  public Void a(bgls parambgls)
   {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bhjv.toString() + "]";
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer)) {
+      QMLog.d("Action", "Page is invalid");
+    }
+    do
+    {
+      do
+      {
+        return null;
+        parambgls = ((AppBrandPageContainer)parambgls).a();
+      } while ((parambgls == null) || (parambgls.a() == null));
+      parambgls.a().a((byte)1);
+    } while (this.jdField_a_of_type_Int != 100);
+    parambgls.a().a((byte)2);
+    return null;
   }
 }
 

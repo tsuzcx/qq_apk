@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.view.MotionEvent;
 
-public class baer
-  implements DialogInterface.OnClickListener
+public abstract interface baer
 {
-  public baer(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
 }
 
 

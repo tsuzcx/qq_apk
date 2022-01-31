@@ -1,139 +1,218 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.addon.DiyPendantEntity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoRsp;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonReqComm;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonRsp;
-import com.tencent.pb.pendant.DiyAddonUser.UserDiyInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.widget.XListView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
 
 public class akik
-  extends alko
+  extends akho
+  implements ayhu, bhtv
 {
-  public akik(QQAppInterface paramQQAppInterface)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public akik(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, List<ayhr> paramList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, boolean paramBoolean)
   {
-    super(paramQQAppInterface);
+    super(paramContext, paramQQAppInterface, paramXListView, paramList);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void a(List<Long> paramList, alkr paramalkr)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    if (paramTextView == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantHandler", 2, "try fetchDiyPendants: " + TextUtils.join(",", paramList));
-    }
-    DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
-    localAddonReqComm.platform.set(109L);
-    localAddonReqComm.osver.set(Build.VERSION.RELEASE);
-    localAddonReqComm.mqqver.set("8.3.3");
-    DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
-    localAddonGetDiyInfoReq.uin.set(paramList);
-    paramList = new DiyAddonPbInfo.ReadAddonReq();
-    paramList.cmd.set(1);
-    paramList.comm.set(localAddonReqComm);
-    paramList.packetseq.set(System.currentTimeMillis());
-    paramList.reqcmd0x01.set(localAddonGetDiyInfoReq);
-    paramalkr = super.createToServiceMsg("ReadDiyAddonInfo.1", paramalkr);
-    paramalkr.putWupBuffer(paramList.toByteArray());
-    super.sendPbReq(paramalkr);
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("ReadDiyAddonInfo.1"))
+    if (paramBoolean)
     {
-      bool = paramFromServiceMsg.isSuccess();
-      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyPendantHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
-      }
-      if (bool) {
-        paramFromServiceMsg = new DiyAddonPbInfo.ReadAddonRsp();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
       {
-        try
-        {
-          boolean bool;
-          paramFromServiceMsg = (DiyAddonPbInfo.ReadAddonRsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramFromServiceMsg != null) {
-            if (paramFromServiceMsg.ret.get() != 0L)
-            {
-              QLog.d("DiyPendantHandler", 1, "fetch diy pendant info 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
-              super.notifyUI(paramToServiceMsg, 1, false, null);
-              return;
-            }
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          Object localObject;
-          for (;;)
-          {
-            QLog.e("DiyPendantHandler", 1, "fetch diy pendant info on response err", paramFromServiceMsg);
-            paramFromServiceMsg = null;
-          }
-          if ((paramFromServiceMsg.rspcmd0x01.has()) && (paramFromServiceMsg.rspcmd0x01.userdiyinfo.has()))
-          {
-            paramObject = paramFromServiceMsg.rspcmd0x01.userdiyinfo.get();
-            paramFromServiceMsg = new ArrayList();
-            if (paramObject != null)
-            {
-              paramObject = paramObject.iterator();
-              while (paramObject.hasNext())
-              {
-                localObject = (DiyAddonUser.UserDiyInfo)paramObject.next();
-                if ((((DiyAddonUser.UserDiyInfo)localObject).uin.has()) && (((DiyAddonUser.UserDiyInfo)localObject).curid.has()))
-                {
-                  DiyPendantEntity localDiyPendantEntity = new DiyPendantEntity();
-                  localDiyPendantEntity.uinAndDiyId = (((DiyAddonUser.UserDiyInfo)localObject).uin.get() + "_" + ((DiyAddonUser.UserDiyInfo)localObject).curid.get());
-                  localDiyPendantEntity.diyId = ((DiyAddonUser.UserDiyInfo)localObject).curid.get();
-                  localDiyPendantEntity.borderId = ((DiyAddonUser.UserDiyInfo)localObject).frameid.get();
-                  localDiyPendantEntity.updateTs = ((DiyAddonUser.UserDiyInfo)localObject).updatets.get();
-                  localDiyPendantEntity.setStickerInfoList(((DiyAddonUser.UserDiyInfo)localObject).stickerinfo.get());
-                  paramFromServiceMsg.add(localDiyPendantEntity);
-                }
-              }
-            }
-            akii.a().a(this.app, true, paramFromServiceMsg);
-            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
-            return;
-          }
-          super.notifyUI(paramToServiceMsg, 1, false, null);
-          return;
-        }
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-        return;
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("DiyPendantHandler", 2, "DiyText isSuccess is false sso通道  异常");
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130841432);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      }
+      ThemeUtil.setThemeFilter(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
+      paramTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
       return;
     }
-    QLog.d("DiyPendantHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+    paramTextView.setCompoundDrawables(null, null, null, null);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  protected boolean a(akhp paramakhp)
+  {
+    boolean bool2 = super.a(paramakhp);
+    boolean bool1 = bool2;
+    if ((paramakhp instanceof akil))
+    {
+      paramakhp = (akil)paramakhp;
+      if ((bool2) && (!paramakhp.jdField_a_of_type_Boolean)) {
+        bool1 = true;
+      }
+    }
+    else
+    {
+      return bool1;
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    super.b();
+  }
+  
+  public int getCount()
+  {
+    int i = super.getCount();
+    if (i > 5) {
+      return 5;
+    }
+    return i;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool2 = true;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558892, paramViewGroup, false);
+      paramViewGroup = new akil();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368809));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368925));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368787));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375906);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setContentDescription(alud.a(2131702946));
+      ayif.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378881));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379072));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131368811));
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378980);
+      paramView.setTag(paramViewGroup);
+    }
+    Object localObject1;
+    for (;;)
+    {
+      localObject1 = (ayhr)getItem(paramInt);
+      if (localObject1 != null) {
+        break;
+      }
+      QLog.w("ContactsSearchResultAdapter", 1, "getView entity is null.");
+      return paramView;
+      paramViewGroup = (akil)paramView.getTag();
+    }
+    Object localObject2 = ((ayhr)localObject1).c();
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    if (String.valueOf(9954L).equals(((ayhr)localObject1).d())) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, bool1);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((ayhr)localObject1).b());
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(((ayhr)localObject1).b());
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(((ayhr)localObject1).a());
+      paramViewGroup.jdField_a_of_type_JavaLangString = ((ayhr)localObject1).d();
+      paramViewGroup.jdField_a_of_type_Int = ((ayhr)localObject1).c();
+      if ((localObject1 instanceof aygz))
+      {
+        SearchHistory localSearchHistory = ((aygz)localObject1).a();
+        bool1 = bool2;
+        if (localSearchHistory.type != 56938)
+        {
+          if (localSearchHistory.type != 56942) {
+            break label524;
+          }
+          bool1 = bool2;
+        }
+      }
+      for (;;)
+      {
+        paramViewGroup.jdField_a_of_type_Boolean = bool1;
+        if (paramViewGroup.jdField_a_of_type_Boolean)
+        {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841744);
+          paramViewGroup.d.setVisibility(0);
+          paramViewGroup.d.setText(bdgc.a((String)localObject2));
+          label386:
+          localObject2 = ((ayhr)localObject1).a();
+          if (localObject2 != null) {
+            break label561;
+          }
+          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+          label407:
+          if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+          {
+            paramView.setTag(-1, Integer.valueOf(paramInt));
+            paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          }
+          if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null)
+          {
+            paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(-1, Long.valueOf(((SearchHistory)((ayhr)localObject1).a()).getId()));
+            paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+          }
+          localObject1 = paramView.findViewById(2131365369);
+          if (paramInt != getCount() - 1) {
+            break label581;
+          }
+          ((View)localObject1).setVisibility(8);
+        }
+        for (;;)
+        {
+          if (paramViewGroup.jdField_b_of_type_AndroidViewView == null) {
+            break label588;
+          }
+          if (!ayif.a(paramViewGroup.jdField_a_of_type_JavaLangString)) {
+            break label590;
+          }
+          paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return paramView;
+          label524:
+          bool1 = false;
+          break;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramViewGroup.jdField_a_of_type_JavaLangString, paramViewGroup.jdField_a_of_type_Int));
+          paramViewGroup.d.setVisibility(8);
+          break label386;
+          label561:
+          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          break label407;
+          label581:
+          ((View)localObject1).setVisibility(0);
+        }
+        label588:
+        break;
+        label590:
+        paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        return paramView;
+        bool1 = false;
+      }
+    }
   }
 }
 

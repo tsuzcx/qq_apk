@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anvr;
+import aoaa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 public class CardUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardUinInfo> CREATOR = new anvr();
+  public static final Parcelable.Creator<CardUinInfo> CREATOR = new aoaa();
   public String a;
   public boolean a;
   public boolean b;

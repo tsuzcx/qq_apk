@@ -1,185 +1,128 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewParent;
-import cooperation.qzone.panorama.controller.TouchController.1;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.QZoneMsgFragment.QZoneMsgUIObserver.1;
+import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
+import cooperation.qzone.util.QZLog;
+import java.util.ArrayList;
 
 public class bjix
-  implements View.OnTouchListener
+  extends bjiz
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bjiy(this);
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private bjit jdField_a_of_type_Bjit;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float d;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k = 1.0F;
+  public bjix(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public bjix(View paramView, Context paramContext, bjit parambjit, bjjh parambjjh)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bjit = parambjit;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = parambjjh.a();
-    this.jdField_b_of_type_Int = parambjjh.b();
-    this.jdField_c_of_type_Int = parambjjh.d();
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
-    if (this.jdField_a_of_type_Int == 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg");
+    }
+    super.a(paramBoolean, paramBundle);
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_Float = 0.35F;
-      this.jdField_b_of_type_Float = 0.057F;
-      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
-      this.d = 0.162F;
-    }
-    while (this.jdField_b_of_type_Int == 1) {
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.k = 0.4142652F;
-        return;
-        this.jdField_a_of_type_Float = 0.122F;
-        this.jdField_b_of_type_Float = 0.01F;
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
-        this.d = 0.08F;
-      }
-      else
-      {
-        this.k = 0.5228754F;
-        return;
-      }
-    }
-    this.k = 1.0F;
-  }
-  
-  private void a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Bjit != null) {
-      this.jdField_a_of_type_Bjit.a(paramFloat1, paramFloat2);
-    }
-    this.g += paramFloat1;
-    this.h += paramFloat2;
-    if (this.g > 90.0F) {
-      this.g = 90.0F;
-    }
-    while (this.g >= -90.0F) {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onLoadMoreMsg error");
+      QZoneMsgFragment.a(this.a, paramBoolean);
       return;
     }
-    this.g = -90.0F;
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      this.a.a.b(paramBundle.ArkNes_vec);
+      QZoneMsgFragment.a(this.a);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
+    }
+    for (;;)
+    {
+      QZoneMsgFragment.a(this.a, paramBoolean);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，rsp=null");
+      }
+    }
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected boolean a(boolean paramBoolean, Bundle paramBundle)
   {
-    int m = 40;
-    int n = 1;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getParent().requestDisallowInterceptTouchEvent(true);
+    return true;
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg");
     }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    super.b(paramBoolean, paramBundle);
+    if (!paramBoolean) {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onPreloadMsg error");
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    boolean bool = this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-    if (paramMotionEvent.getActionMasked() == 6) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if ((!this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()) && (paramMotionEvent.getPointerCount() == 1) && (!this.jdField_a_of_type_Boolean))
+    do
     {
-      if (paramMotionEvent.getAction() != 0) {
-        break label341;
-      }
-      this.i = f1;
-      this.j = f2;
-      if (this.jdField_a_of_type_JavaUtilTimer != null) {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
-      if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-      }
-    }
-    int i1;
-    label278:
-    label283:
-    label341:
-    while (paramMotionEvent.getAction() != 2)
-    {
-      this.e = f2;
-      this.f = f1;
-      if (paramMotionEvent.getAction() == 1)
+      return;
+      paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+      if (paramBundle != null)
       {
-        this.jdField_a_of_type_Boolean = false;
-        m = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop();
-        if ((Math.abs(f1 - this.i) <= m) && (Math.abs(f2 - this.j) <= m) && (this.jdField_a_of_type_Bjit != null)) {
-          this.jdField_a_of_type_Bjit.a();
-        }
-        this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(10);
-        i1 = (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-        int i2 = (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
-        if (i1 <= 0) {
-          break;
-        }
-        m = 1;
-        if (i2 <= 0) {
-          break label499;
-        }
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimerTask = new TouchController.1(this, m, new int[] { i1, i2 }, n);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 15L);
+        QZoneMsgFragment.a(this.a, paramBundle);
+        QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+        this.a.a.a(paramBundle.ArkNes_vec);
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
+        return;
       }
-      return bool;
-    }
-    float f3 = this.f;
-    float f4 = this.e;
-    float f5;
-    float f6;
-    if (this.jdField_c_of_type_Int != 4)
+    } while (!QLog.isColorLevel());
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，rsp=null");
+  }
+  
+  protected void c(boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "onReFreshMsg start");
+    super.c(paramBoolean, paramBundle);
+    if (!paramBoolean)
     {
-      f5 = f2 - this.j;
-      f6 = f1 - this.i;
-      i1 = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop() * 2;
-      if (i1 >= 40) {
-        break label505;
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onReFreshMsg error");
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+    }
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      QZoneMsgFragment.a(this.a, paramBundle);
+      QZoneMsgFragment.a(this.a).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1(this, paramBundle), 500L);
+      QZoneMsgFragment.b(this.a, true);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("onReFreshMsg ，hasMore=").append(QZoneMsgFragment.c(this.a)).append(" ,ArkNes_vec size:");
+        if (paramBundle.ArkNes_vec == null) {
+          break label175;
+        }
+        paramBundle = String.valueOf(paramBundle.ArkNes_vec.size());
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, paramBundle);
       }
     }
     for (;;)
     {
-      if (((f5 / f6 >= 1.0F) || (f5 / f6 <= -1.0F)) && (Math.abs(f5) <= m) && (Math.abs(f6) <= m))
-      {
-        this.jdField_a_of_type_AndroidViewView.getParent().requestDisallowInterceptTouchEvent(false);
-        return true;
-      }
-      a(this.d * (f2 - f4), this.d * (f1 - f3));
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+      label175:
+      paramBundle = "null";
       break;
-      m = 0;
-      break label278;
-      label499:
-      n = 0;
-      break label283;
-      label505:
-      m = i1;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onReFreshMsg ，rsp=null");
+      }
+    }
+  }
+  
+  protected void d(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLikeFeed start");
+    }
+    super.d(paramBoolean, paramBundle);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBoolean = paramBundle.getBoolean("like_key");
+      long l = paramBundle.getLong("entity_pushtime");
+      this.a.a.a(l, paramBoolean);
     }
   }
 }

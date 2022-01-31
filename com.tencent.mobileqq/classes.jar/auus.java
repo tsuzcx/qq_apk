@@ -1,105 +1,58 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import android.os.Bundle;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 
-public class auus
-  implements behy<oidb_0x8e4.RspBody>
+class auus
+  extends mzz
 {
-  public auus(GameRoomTransActivity paramGameRoomTransActivity, String paramString, int paramInt) {}
+  auus(auur paramauur, auua paramauua) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str3 = null;
-    String str2;
-    if (paramRspBody.string_err_title.has())
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      str2 = paramRspBody.string_err_title.get().toStringUtf8();
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {}
-    }
-    for (String str1 = null;; str1 = null)
-    {
-      str2 = str3;
-      if (paramRspBody.string_err_msg.has())
+      paramBundle = new cmd0x938.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
+      boolean bool1;
+      if (paramArrayOfByte.uint32_show_card.get() == 1)
       {
-        str2 = paramRspBody.string_err_msg.get().toStringUtf8();
-        if (!TextUtils.isEmpty(str2)) {
-          break label578;
+        bool1 = true;
+        if (paramArrayOfByte.uint32_show_list.get() != 1) {
+          break label208;
         }
-        str2 = str3;
       }
-      label578:
       for (;;)
       {
+        long l = paramArrayOfByte.uint64_next_time.get();
+        if (paramBundle.msg_datacard_config.has()) {
+          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
+        }
         if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "onAcceptInvite invitedId = " + this.jdField_a_of_type_JavaLangString + " errorCode = " + paramInt + " ,errTitle = " + str1 + " ,errMsgFromServer = " + str2);
+          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
         }
-        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          }
-          return;
-          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-          }
-          else
-          {
-            if ((paramInt == 0) || (paramInt == 1005))
-            {
-              paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
-              paramRspBody.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-              paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-              return;
-            }
-            if (paramInt == 1008)
-            {
-              str3 = paramRspBody.string_invite_id.get().toStringUtf8();
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str3;
-              paramInt = this.jdField_a_of_type_Int;
-              if (paramRspBody.uint32_max_member_num.has()) {
-                paramInt = paramRspBody.uint32_max_member_num.get();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2, str3, paramInt);
-            }
-            else if (paramInt == 1009)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 230);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setTitle(str1);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setMessage(str2);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setPositiveButton(alpo.a(2131705515), new auut(this, paramRspBody));
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.setNegativeButton(2131690382, new auuu(this));
-              if (!this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.isFinishing()) {
-                this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq.show();
-              }
-            }
-            else
-            {
-              if (TextUtils.isEmpty(str2)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdfq = auux.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-            }
-          }
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, alpo.a(2131705491), 1).a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+        paramArrayOfByte = new auub(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
+        this.jdField_a_of_type_Auua.a(paramArrayOfByte);
         return;
+        bool1 = false;
+        break;
+        label208:
+        bool2 = false;
       }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

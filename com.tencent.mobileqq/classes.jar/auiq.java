@@ -1,23 +1,24 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
-class auiq
-  implements View.OnLongClickListener
+public class auiq
+  implements auid
 {
-  auiq(auip paramauip) {}
+  public auiq(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    if (this.a.a != null)
-    {
-      paramView = (MultiCardItemFragment)this.a.a.get();
-      if (paramView != null) {
-        paramView.a(this.a);
-      }
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
     }
-    return true;
+    for (;;)
+    {
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
+      return;
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+    }
   }
 }
 

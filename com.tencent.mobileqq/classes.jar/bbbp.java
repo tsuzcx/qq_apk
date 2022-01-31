@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.ArrayList;
 
-class bbbp
-  implements DialogInterface.OnDismissListener
+public class bbbp
+  extends bbbz
 {
-  bbbp(bbbm parambbbm) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bbbm.a(this.a);
-  }
+  public String a;
+  public ArrayList<bawy> a = new ArrayList();
+  public String b;
+  public ArrayList<bawy> b = new ArrayList();
 }
 
 

@@ -43,9 +43,9 @@ public class pdr
   private int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2130845842;
+      return 2130845915;
     }
-    return 2130842538;
+    return 2130842551;
   }
   
   private void a(int paramInt)
@@ -62,10 +62,10 @@ public class pdr
     if ((paramView != null) && (this.jdField_a_of_type_Pdj != null) && (paramView.mVideoColumnInfo != null) && (!paramView.mVideoColumnInfo.jdField_a_of_type_Boolean))
     {
       this.l.setSelected(false);
-      this.l.setText(alpo.a(2131716658));
+      this.l.setText(alud.a(2131716670));
       Object localObject = paramView.mVideoColumnInfo;
       ((VideoColumnInfo)localObject).jdField_c_of_type_Int += 1;
-      rdm.a(this.k, paramView.mVideoColumnInfo.jdField_c_of_type_Int, alpo.a(2131716664), "0");
+      rdm.a(this.k, paramView.mVideoColumnInfo.jdField_c_of_type_Int, alud.a(2131716676), "0");
       paramView.mVideoColumnInfo.jdField_a_of_type_Boolean = true;
       if ((paramView instanceof ArticleInfo)) {
         owy.a().b((ArticleInfo)paramView);
@@ -140,7 +140,7 @@ public class pdr
       }
       localSocializeFeedsInfo = localBaseArticleInfo.mSocialFeedInfo;
       localSocializeFeedsInfo.b -= 1;
-      rdm.a(this.d, localBaseArticleInfo.mSocialFeedInfo.b, alpo.a(2131716659));
+      rdm.a(this.d, localBaseArticleInfo.mSocialFeedInfo.b, alud.a(2131716671));
       localSocializeFeedsInfo = localBaseArticleInfo.mSocialFeedInfo;
       if (i == 0) {
         break label226;
@@ -197,23 +197,23 @@ public class pdr
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
     paramViewGroup = super.a(paramInt, paramViewGroup);
-    this.g = ((ViewStub)paramViewGroup.findViewById(2131379591)).inflate();
-    this.g.setId(2131379591);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)this.g.findViewById(2131368732));
-    this.j = ((TextView)this.g.findViewById(2131378653));
-    this.k = ((TextView)this.g.findViewById(2131378958));
-    this.l = ((TextView)this.g.findViewById(2131378957));
-    paramViewGroup.findViewById(2131379589).setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(bdkf.b(2.0F));
+    this.g = ((ViewStub)paramViewGroup.findViewById(2131379649)).inflate();
+    this.g.setId(2131379649);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)this.g.findViewById(2131368746));
+    this.j = ((TextView)this.g.findViewById(2131378707));
+    this.k = ((TextView)this.g.findViewById(2131379016));
+    this.l = ((TextView)this.g.findViewById(2131379015));
+    paramViewGroup.findViewById(2131379647).setVisibility(0);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(bdoo.b(2.0F));
     this.g.setOnClickListener(this);
     this.l.setOnClickListener(this);
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bdkf.a(0.0F);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bdoo.a(0.0F);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setLayoutParams(localLayoutParams);
     }
-    this.c.setPadding(bdkf.b(1.0F), this.c.getPaddingTop(), this.c.getPaddingRight(), this.c.getPaddingBottom());
+    this.c.setPadding(bdoo.b(1.0F), this.c.getPaddingTop(), this.c.getPaddingRight(), this.c.getPaddingBottom());
     this.d.setVisibility(0);
     return paramViewGroup;
   }
@@ -245,16 +245,16 @@ public class pdr
     for (;;)
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(i);
-      rdm.a(this.d, m, alpo.a(2131716662));
+      rdm.a(this.d, m, alud.a(2131716674));
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(rdm.c(paramBaseArticleInfo.mVideoPlayCount) + alpo.a(2131716660));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(rdm.c(paramBaseArticleInfo.mVideoPlayCount) + alud.a(2131716672));
       break;
       label160:
       bool = false;
       break label75;
       label166:
-      i = 2130842538;
+      i = 2130842551;
     }
   }
   
@@ -274,7 +274,7 @@ public class pdr
         str = "#" + paramVideoColumnInfo.b;
       }
       this.j.setText(str);
-      rdm.a(this.k, paramVideoColumnInfo.jdField_c_of_type_Int, alpo.a(2131716661), "0");
+      rdm.a(this.k, paramVideoColumnInfo.jdField_c_of_type_Int, alud.a(2131716673), "0");
       if (paramVideoColumnInfo.jdField_a_of_type_Boolean)
       {
         this.l.setVisibility(8);
@@ -289,7 +289,7 @@ public class pdr
       }
       this.l.setVisibility(0);
       this.l.setSelected(true);
-      this.l.setText(alpo.a(2131716663));
+      this.l.setText(alud.a(2131716675));
     }
   }
   
@@ -299,10 +299,10 @@ public class pdr
     {
     default: 
       return;
-    case 2131368035: 
+    case 2131368046: 
       c(paramView);
       return;
-    case 2131379591: 
+    case 2131379649: 
       b(paramView);
       return;
     }

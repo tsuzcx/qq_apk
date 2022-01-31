@@ -1,27 +1,34 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
 
-class bdfv
-  implements CompoundButton.OnCheckedChangeListener
+public class bdfv
+  extends BroadcastReceiver
 {
-  bdfv(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdfv(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-    bdfq localbdfq = this.jdField_a_of_type_Bdfq;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      paramCompoundButton.onClick(localbdfq, i);
-      return;
-    }
+      do
+      {
+        return;
+      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("event", 0);
+      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
+    } while (i != 1);
+    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfv
  * JD-Core Version:    0.7.0.1
  */

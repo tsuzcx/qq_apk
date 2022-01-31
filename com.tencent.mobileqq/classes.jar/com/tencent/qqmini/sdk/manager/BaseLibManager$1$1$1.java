@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.text.TextUtils;
-import bgrl;
-import bgrm;
-import bgrx;
-import bgtd;
+import bgvs;
+import bgvt;
+import bgwe;
+import bgxk;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class BaseLibManager$1$1$1
   implements Runnable
 {
-  public BaseLibManager$1$1$1(bgrm parambgrm, JSONObject paramJSONObject) {}
+  public BaseLibManager$1$1$1(bgvt parambgvt, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -22,26 +22,26 @@ public class BaseLibManager$1$1$1
     JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(localJSONObject);
     QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject);
-    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.14.0.00225".equals(this.jdField_a_of_type_Bgrm.a)))
+    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.14.0.00225".equals(this.jdField_a_of_type_Bgvt.a)))
     {
-      if (bgtd.a().b()) {
+      if (bgxk.a().b()) {
         break label131;
       }
       if (localBaseLibInfo2 != null) {
-        bgrx.a().a(localBaseLibInfo2, null);
+        bgwe.a().a(localBaseLibInfo2, null);
       }
     }
     for (;;)
     {
       if (localBaseLibInfo1 != null) {
-        bgrx.a().a(localBaseLibInfo1, null);
+        bgwe.a().a(localBaseLibInfo1, null);
       }
       return;
       label131:
-      localBaseLibInfo2 = bgrl.a();
+      localBaseLibInfo2 = bgvs.a();
       QMLog.i("miniapp-process_BaseLibManager", "[MiniEng]MiniEng QQSpeed gameEngineLib " + localBaseLibInfo2);
       if ((localBaseLibInfo2 != null) && (localBaseLibInfo2.baseLibType == 2)) {
-        bgrx.a().a(localBaseLibInfo2, null);
+        bgwe.a().a(localBaseLibInfo2, null);
       }
     }
   }

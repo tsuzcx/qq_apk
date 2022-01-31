@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
-import azmj;
+import azqs;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -29,9 +29,9 @@ public class ReadInJoyBaseAdapter$17$1$1
     this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.b.remove(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
     rqj.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj, true);
     this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.notifyDataSetChanged();
-    int i = 2131700042;
+    int i = 2131700054;
     if (AdvertisementInfo.isAdvertisementInfo(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-      i = 2131700043;
+      i = 2131700055;
     }
     if ((this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a instanceof BaseActivity)) {
       QQToast.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a, -1, this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a.getString(i), 0).b(((BaseActivity)this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a).getTitleBarHeight());
@@ -77,7 +77,7 @@ public class ReadInJoyBaseAdapter$17$1$1
           break;
         }
         ((JSONObject)localObject).put("folder_status", 1);
-        azmj.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", ((JSONObject)localObject).toString());
+        azqs.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", ((JSONObject)localObject).toString());
         return;
       }
       catch (JSONException localJSONException)

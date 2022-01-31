@@ -1,109 +1,39 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class asao
-  extends arum
+class asao
+  implements View.OnClickListener
 {
-  public asao(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  asao(asan paramasan) {}
   
-  protected boolean a(bdfq parambdfq)
+  public void onClick(View paramView)
   {
-    int i = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
-    int j = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
-    int k = Color.parseColor("#e1e1e5");
-    Object localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ((LinearLayout)localObject1).setOrientation(1);
-    Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject2).gravity = 1;
-    Object localObject3 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    Object localObject4 = new LinearLayout.LayoutParams(i, j);
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
-    Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839403);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int m = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
-    localLayoutParams.setMargins(0, m, m, 0);
-    localLayoutParams.addRule(10);
-    localLayoutParams.addRule(11);
-    ((RelativeLayout)localObject3).addView((View)localObject5, localLayoutParams);
-    ((LinearLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-    localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("key_source_name");
-    if (!TextUtils.isEmpty((CharSequence)localObject3))
-    {
-      localObject4 = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-      ((TextView)localObject4).setTextColor(-7829368);
-      ((TextView)localObject4).setTextSize(1, 12.0F);
-      localObject5 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject5).topMargin = bcwh.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
-      ((LinearLayout.LayoutParams)localObject5).gravity = 3;
-      ((TextView)localObject4).setText((CharSequence)localObject3);
-      ((LinearLayout)localObject1).addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
+      if (this.a.jdField_a_of_type_Bdjz != null) {}
     }
-    parambdfq.addView((View)localObject1, (LinearLayout.LayoutParams)localObject2);
-    parambdfq = this.jdField_a_of_type_AndroidOsBundle.getString("key_thumb_url");
-    try
+    while (!QLog.isColorLevel())
     {
-      localObject1 = new ColorDrawable(k);
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = j;
-      parambdfq = URLDrawable.getDrawable(parambdfq, (URLDrawable.URLDrawableOptions)localObject2);
-      if (parambdfq.getStatus() == 2) {
-        parambdfq.restartDownload();
+      return;
+      this.a.jdField_a_of_type_Bdjz.hideSoftInputFromWindow();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
+      {
+        ((axnb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        ascg.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
       }
-      localURLImageView.setImageDrawable(parambdfq);
-    }
-    catch (Exception parambdfq)
-    {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.troopstory.share", 2, "addStructView:", parambdfq);
-        }
+        this.a.D();
+        return;
+        paramView = new asbo(this.a.jdField_a_of_type_Bdjz, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692845), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        this.a.jdField_a_of_type_Bdjz.addPreviewView(paramView.b());
       }
     }
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    localIntent = aekt.a(localIntent, null);
-    localIntent.putExtra("isBack2Root", true);
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return true;
+    QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
   }
 }
 

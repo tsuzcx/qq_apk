@@ -1,7 +1,19 @@
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import java.util.Comparator;
+
 public class awms
+  implements Comparator<PortalManager.ComboNumber>
 {
-  public int a;
-  public awmr a;
+  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
+  {
+    if (paramComboNumber1.number > paramComboNumber2.number) {
+      return 1;
+    }
+    if (paramComboNumber1.number < paramComboNumber2.number) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -13,7 +13,7 @@ import mqq.observer.BusinessObserver;
 final class syk
   implements BusinessObserver
 {
-  syk(alvc paramalvc, String paramString, boolean paramBoolean, Context paramContext, Object paramObject, QQAppInterface paramQQAppInterface) {}
+  syk(alzr paramalzr, String paramString, boolean paramBoolean, Context paramContext, Object paramObject, QQAppInterface paramQQAppInterface) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -22,11 +22,11 @@ final class syk
     }
     if (!paramBoolean)
     {
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
       }
       if (this.jdField_a_of_type_Boolean) {
-        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
       }
     }
     label220:
@@ -61,24 +61,24 @@ final class syk
               if (paramBundle != null) {
                 paramBundle.a(this.jdField_a_of_type_JavaLangObject);
               }
-              if (this.jdField_a_of_type_Alvc == null) {
+              if (this.jdField_a_of_type_Alzr == null) {
                 break;
               }
-              this.jdField_a_of_type_Alvc.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
+              this.jdField_a_of_type_Alzr.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
               return;
             }
             catch (Exception paramBundle)
             {
-              if (this.jdField_a_of_type_Alvc != null) {
-                this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+              if (this.jdField_a_of_type_Alzr != null) {
+                this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
               }
             }
             if (!this.jdField_a_of_type_Boolean) {
               break;
             }
-            syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+            syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
             return;
-            paramBundle = (aluw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+            paramBundle = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
             paramBundle.b(this.jdField_a_of_type_JavaLangString);
             paramBundle.a(this.jdField_a_of_type_JavaLangString);
             StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
@@ -90,24 +90,24 @@ final class syk
               paramBundle.a(this.jdField_a_of_type_JavaLangString, "unfollow");
             }
           }
-          if (this.jdField_a_of_type_Alvc != null) {
-            this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_Alzr != null) {
+            this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
           }
         } while (!this.jdField_a_of_type_Boolean);
-        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
         return;
-        if (this.jdField_a_of_type_Alvc != null) {
-          this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Alzr != null) {
+          this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
         }
       } while (!this.jdField_a_of_type_Boolean);
-      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
       return;
-      if (this.jdField_a_of_type_Alvc != null) {
-        this.jdField_a_of_type_Alvc.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
       }
     } while (!this.jdField_a_of_type_Boolean);
     label336:
-    syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+    syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
     label412:
   }
 }

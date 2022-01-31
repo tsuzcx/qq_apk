@@ -1,5 +1,5 @@
 final class tgy
-  extends bjoe<tgx, Void>
+  extends bjsl<tgx, Void>
 {
   protected tgx a(Void paramVoid)
   {

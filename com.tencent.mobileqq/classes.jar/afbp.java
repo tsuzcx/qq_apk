@@ -1,23 +1,9 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Path;
+import java.util.List;
 
-class afbp
-  implements apse
+public abstract interface afbp
 {
-  afbp(afbo paramafbo) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 8) {
-      afbo.a(this.a).b();
-    }
-    while ((paramInt != 0) || (afbo.a(this.a) == 0L)) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = afbo.a(this.a);
-    azmz.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
-    afbo.a(this.a, 0L);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<afbg> paramList);
 }
 
 

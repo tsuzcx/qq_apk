@@ -1,20 +1,17 @@
-import com.tencent.widget.HorizontalListView;
+import android.view.MotionEvent;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class bhto
+public abstract interface bhto
 {
-  private int a;
+  public abstract int getMode();
   
-  private bhto(HorizontalListView paramHorizontalListView) {}
+  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
   
-  public void a()
-  {
-    this.a = HorizontalListView.access$900(this.this$0);
-  }
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
-  }
+  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
 }
 
 

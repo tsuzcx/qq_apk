@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-public final class ajpq
-  implements Parcelable.Creator<BarrageParcelItem>
+public class ajpq
+  extends OrientationEventListener
 {
-  public BarrageParcelItem a(Parcel paramParcel)
+  public ajpq(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    return new BarrageParcelItem(paramParcel);
+    super(paramContext);
   }
   
-  public BarrageParcelItem[] a(int paramInt)
+  public void onOrientationChanged(int paramInt)
   {
-    return new BarrageParcelItem[paramInt];
+    this.a.k = paramInt;
   }
 }
 

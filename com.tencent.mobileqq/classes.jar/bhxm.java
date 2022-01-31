@@ -1,37 +1,294 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import android.database.DataSetObserver;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ListAdapter;
+import android.widget.WrapperListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bhxm
-  extends NumberKeyListener
+  implements Filterable, WrapperListAdapter
 {
-  private bhxm(TCWNumberPicker paramTCWNumberPicker) {}
+  static final ArrayList<bhyr> c = new ArrayList();
+  private final ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  ArrayList<bhyr> jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean;
+  ArrayList<bhyr> jdField_b_of_type_JavaUtilArrayList;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public bhxm(ArrayList<bhyr> paramArrayList1, ArrayList<bhyr> paramArrayList2, ListAdapter paramListAdapter)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.jdField_b_of_type_Boolean = (paramListAdapter instanceof Filterable);
+    if (paramArrayList1 == null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList = c;
+      if (paramArrayList2 != null) {
+        break label79;
+      }
+      this.jdField_b_of_type_JavaUtilArrayList = c;
+      label39:
+      if ((!a(this.jdField_a_of_type_JavaUtilArrayList)) || (!a(this.jdField_b_of_type_JavaUtilArrayList))) {
+        break label87;
+      }
     }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
+    label79:
+    label87:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+      break;
+      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList2;
+      break label39;
     }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
   }
   
-  protected char[] getAcceptedChars()
+  private boolean a(ArrayList<bhyr> paramArrayList)
   {
-    return TCWNumberPicker.a();
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        if (!((bhyr)paramArrayList.next()).jdField_a_of_type_Boolean) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
   
-  public int getInputType()
+  public int a()
   {
-    return 2;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public boolean a(View paramView)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        boolean bool1 = bool2;
+        if (a(this.jdField_a_of_type_JavaUtilArrayList))
+        {
+          bool1 = bool2;
+          if (a(this.jdField_b_of_type_JavaUtilArrayList)) {
+            bool1 = true;
+          }
+        }
+        this.jdField_a_of_type_Boolean = bool1;
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean areAllItemsEnabled()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetListAdapter == null) || ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled()));
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_JavaUtilArrayList.size();
+  }
+  
+  public boolean b(View paramView)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+    {
+      if (((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView)
+      {
+        this.jdField_b_of_type_JavaUtilArrayList.remove(i);
+        boolean bool1 = bool2;
+        if (a(this.jdField_a_of_type_JavaUtilArrayList))
+        {
+          bool1 = bool2;
+          if (a(this.jdField_b_of_type_JavaUtilArrayList)) {
+            bool1 = true;
+          }
+        }
+        this.jdField_a_of_type_Boolean = bool1;
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
+      return b() + a() + this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+    }
+    return b() + a();
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return ((Filterable)this.jdField_a_of_type_AndroidWidgetListAdapter).getFilter();
+    }
+    return null;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    int i = a();
+    if (paramInt < i) {
+      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangObject;
+    }
+    int j = paramInt - i;
+    paramInt = 0;
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
+    {
+      i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+      paramInt = i;
+      if (j < i) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(j);
+      }
+    }
+    return ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(j - paramInt)).jdField_a_of_type_JavaLangObject;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    int i = a();
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramInt >= i))
+    {
+      paramInt -= i;
+      if (paramInt < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
+      }
+    }
+    return -1L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int i = a();
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramInt >= i))
+    {
+      paramInt -= i;
+      if (paramInt < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
+      }
+    }
+    return -2;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = a();
+    if (paramInt < j) {
+      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_AndroidViewView;
+    }
+    int k = paramInt - j;
+    paramInt = 0;
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
+    {
+      int i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+      paramInt = i;
+      if (k < i) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.getView(k, paramView, paramViewGroup);
+      }
+    }
+    try
+    {
+      paramView = ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(k - paramInt)).jdField_a_of_type_AndroidViewView;
+      return paramView;
+    }
+    catch (Exception paramView)
+    {
+      throw new RuntimeException("adapter index out of bound. adapter count: " + paramInt + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + ", numHeaders:" + j + " , position: " + k + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
+      return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
+    }
+    return 1;
+  }
+  
+  public ListAdapter getWrappedAdapter()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter;
+  }
+  
+  public boolean hasStableIds()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
+      return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
+    }
+    return false;
+  }
+  
+  public boolean isEmpty()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetListAdapter == null) || (this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty());
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    int k = a();
+    if (paramInt < k) {
+      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+    }
+    int m = paramInt - k;
+    int i;
+    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
+    {
+      int j = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+      i = j;
+      if (m < j) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(m);
+      }
+    }
+    else
+    {
+      i = 0;
+    }
+    try
+    {
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() <= m - i)
+      {
+        QLog.e("HeaderViewListAdapter", 1, "adapter index out of bound. adapter count: " + i + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + " , adjPosition: " + m + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter + "position=" + paramInt + "numHeaders=" + k);
+        return false;
+      }
+    }
+    catch (Exception localException)
+    {
+      throw new RuntimeException("adapter index out of bound. adapter count: " + i + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + " , position: " + m + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
+    }
+    boolean bool = ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(m - i)).jdField_a_of_type_Boolean;
+    return bool;
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramDataSetObserver != null)) {
+      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(paramDataSetObserver);
+    }
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramDataSetObserver != null)) {
+      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(paramDataSetObserver);
+    }
   }
 }
 

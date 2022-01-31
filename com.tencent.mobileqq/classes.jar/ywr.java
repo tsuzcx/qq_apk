@@ -1,10 +1,6 @@
 public abstract interface ywr
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

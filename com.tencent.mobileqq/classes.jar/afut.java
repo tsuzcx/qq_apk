@@ -1,26 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class afut
-  implements aeov
+  extends aeqi
 {
-  afut(afus paramafus) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onLongClick(View paramView)
-  {
-    paramView = (afvc)((View)paramView.getParent().getParent().getParent()).getTag();
-    if (paramView != null) {
-      paramView.a.performLongClick();
-    }
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  afut(afup paramafup) {}
 }
 
 

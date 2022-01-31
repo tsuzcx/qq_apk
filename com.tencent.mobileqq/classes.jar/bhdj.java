@@ -1,13 +1,62 @@
-public abstract interface bhdj
-  extends bghn
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
+
+public class bhdj
+  extends bhdw
 {
-  public abstract int a();
+  private INTERFACE.StGetRobotUinReq a = new INTERFACE.StGetRobotUinReq();
   
-  public abstract void a(bgjw parambgjw);
+  public bhdj(COMM.StCommonExt paramStCommonExt, String paramString)
+  {
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    this.a.appid.set(paramString);
+  }
   
-  public abstract void a(bhbb parambhbb);
+  protected String a()
+  {
+    return "mini_app_info";
+  }
   
-  public abstract void a(bhdk parambhdk);
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    try
+    {
+      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetRobotUinRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("robotUin", localStGetRobotUinRsp.uin.get());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetRobotUinRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetRobotUinRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetRobotUin";
+  }
 }
 
 

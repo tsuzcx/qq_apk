@@ -11,7 +11,7 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
 public class ocu
-  extends alko
+  extends alpd
 {
   public static long a = 1800L;
   
@@ -48,7 +48,7 @@ public class ocu
     }
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return ocw.class;
   }

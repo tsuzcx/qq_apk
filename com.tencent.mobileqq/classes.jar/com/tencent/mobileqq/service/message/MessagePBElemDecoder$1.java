@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.service.message;
 
-import ayvr;
+import azaa;
 import nrc;
 
 public class MessagePBElemDecoder$1
   implements Runnable
 {
-  public MessagePBElemDecoder$1(ayvr paramayvr) {}
+  public MessagePBElemDecoder$1(azaa paramazaa) {}
   
   public void run()
   {
-    nrc.a().a(ayvr.a(this.this$0));
+    nrc.a().a(azaa.a(this.this$0));
   }
 }
 

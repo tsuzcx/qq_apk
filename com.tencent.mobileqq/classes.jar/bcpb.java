@@ -1,12 +1,19 @@
-import android.view.animation.Interpolator;
-
 public class bcpb
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
 }
 
 

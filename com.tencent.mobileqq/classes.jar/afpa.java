@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class afpa
-  extends afpq
+  extends ClickableSpan
 {
-  afpa(aflj paramaflj)
+  afpa(afnq paramafnq, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramaflj, null);
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new afus(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

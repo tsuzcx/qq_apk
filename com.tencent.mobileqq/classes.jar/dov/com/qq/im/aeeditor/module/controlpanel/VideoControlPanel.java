@@ -5,16 +5,16 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bljv;
-import blkd;
-import blkf;
+import bloh;
+import blop;
+import blor;
 import java.util.LinkedList;
 import java.util.List;
 
 public class VideoControlPanel
   extends AEEditorControlPanelContainer
 {
-  private blkd a;
+  private blop a;
   
   public VideoControlPanel(@NonNull Context paramContext)
   {
@@ -32,10 +32,10 @@ public class VideoControlPanel
   }
   
   @NonNull
-  public List<bljv> a()
+  public List<bloh> a()
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      return this.jdField_a_of_type_Blkd.a();
+    if (this.jdField_a_of_type_Blop != null) {
+      return this.jdField_a_of_type_Blop.a();
     }
     return new LinkedList();
   }
@@ -43,27 +43,27 @@ public class VideoControlPanel
   void a()
   {
     int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296269);
-    this.jdField_a_of_type_Blkd = new blkd(this.jdField_a_of_type_AndroidContentContext, i);
+    this.jdField_a_of_type_Blop = new blop(this.jdField_a_of_type_AndroidContentContext, i);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.a(paramInt);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.a(paramInt);
     }
   }
   
-  public void a(@NonNull bljv parambljv)
+  public void a(@NonNull bloh parambloh)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.a(parambljv);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.a(parambloh);
     }
   }
   
-  public void a(@NonNull List<bljv> paramList)
+  public void a(@NonNull List<bloh> paramList)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.a(paramList);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.a(paramList);
     }
   }
   
@@ -75,36 +75,36 @@ public class VideoControlPanel
   
   public void c()
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.show();
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.show();
     }
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Blkd != null) && (this.jdField_a_of_type_Blkd.isShowing())) {
-      this.jdField_a_of_type_Blkd.dismiss();
+    if ((this.jdField_a_of_type_Blop != null) && (this.jdField_a_of_type_Blop.isShowing())) {
+      this.jdField_a_of_type_Blop.dismiss();
     }
   }
   
   public void setBackgroundMusicChecked(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.a(paramBoolean);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.a(paramBoolean);
     }
   }
   
-  public void setMusicOperationCallback(@Nullable blkf paramblkf)
+  public void setMusicOperationCallback(@Nullable blor paramblor)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.a(paramblkf);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.a(paramblor);
     }
   }
   
   public void setOriginalSoundChecked(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blkd != null) {
-      this.jdField_a_of_type_Blkd.b(paramBoolean);
+    if (this.jdField_a_of_type_Blop != null) {
+      this.jdField_a_of_type_Blop.b(paramBoolean);
     }
   }
 }

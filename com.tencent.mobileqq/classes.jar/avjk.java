@@ -1,45 +1,24 @@
-import java.util.Calendar;
+import android.view.View;
+import com.tencent.image.Utils;
+import java.io.File;
 
 class avjk
-  implements aoed
+  implements bhuk
 {
-  avjk(avjc paramavjc) {}
+  avjk(avjj paramavjj, bhuf parambhuf, File paramFile, String paramString) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
+    this.jdField_a_of_type_Bhuf.dismiss();
     switch (paramInt)
     {
     default: 
-      return 0;
+      return;
     case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+      agjb.a(avjj.a(this.jdField_a_of_type_Avjj), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+      return;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + alpo.a(2131707633);
-    case 1: 
-      return paramInt2 + 1 + alpo.a(2131707736);
-    }
-    return paramInt2 + 1 + alpo.a(2131707718);
+    avjj.a(this.jdField_a_of_type_Avjj, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,25 +1,25 @@
 package dov.com.qq.im.ae;
 
 import android.app.Activity;
-import bkle;
-import blfi;
-import bmcv;
+import bkpl;
+import bljp;
+import bmhh;
 
 public class AEPituCameraUnit$11
   implements Runnable
 {
-  public AEPituCameraUnit$11(bkle parambkle) {}
+  public AEPituCameraUnit$11(bkpl parambkpl) {}
   
   public void run()
   {
-    Activity localActivity = bkle.a(this.this$0).a();
+    Activity localActivity = bkpl.a(this.this$0).a();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    if (bkle.a(this.this$0) == null) {
-      bkle.a(this.this$0, new blfi(localActivity));
+    if (bkpl.a(this.this$0) == null) {
+      bkpl.a(this.this$0, new bljp(localActivity));
     }
-    bkle.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
+    bkpl.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
   }
 }
 

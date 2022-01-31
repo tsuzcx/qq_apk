@@ -1,26 +1,31 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public class bizz
-  implements URLDrawable.URLDrawableListener
+class bizz
+  extends bjaq
 {
-  public bizz(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  bizz(bizx parambizx) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(bjap parambjap)
   {
-    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
+    parambjap = parambjap.a();
+    if (parambjap == null) {
+      bjbl.a("ReaderTabConfigDataHelper", "Response json is null");
+    }
+    do
+    {
+      return;
+      if (parambjap.length() == 0)
+      {
+        bjbl.a("ReaderTabConfigDataHelper", "后台数据异常");
+        return;
+      }
+    } while (!bizx.a(this.a, parambjap, false));
+    bizx.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), parambjap.toString()).apply();
   }
 }
 

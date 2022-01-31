@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alpo;
+import alud;
 import android.view.View;
-import bhpy;
-import bhqd;
+import bhuf;
+import bhuk;
 
 class ProgressWebView$3$1
-  implements bhqd
+  implements bhuk
 {
-  ProgressWebView$3$1(ProgressWebView.3 param3, bhpy parambhpy, String paramString) {}
+  ProgressWebView$3$1(ProgressWebView.3 param3, bhuf parambhuf, String paramString) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     this.val$actionSheet.dismiss();
     paramView = this.val$actionSheet.a(paramInt);
-    if (alpo.a(2131708890).equals(paramView)) {
+    if (alud.a(2131708902).equals(paramView)) {
       ProgressWebView.access$600(this.this$1.this$0, this.val$pic);
     }
-    while (!alpo.a(2131708884).equals(paramView)) {
+    while (!alud.a(2131708896).equals(paramView)) {
       return;
     }
     ProgressWebView.access$700(this.this$1.this$0, this.val$pic);

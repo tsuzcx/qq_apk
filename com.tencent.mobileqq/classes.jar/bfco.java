@@ -1,59 +1,45 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.widget.ListView;
 
 public class bfco
-  extends Handler
+  implements bhzf
 {
-  public bfco(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  public bfco(AuthorityControlFragment paramAuthorityControlFragment) {}
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    super(paramLooper);
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).c(0L);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    switch (paramMessage.what)
+    if (paramInt == 0)
     {
+      AuthorityControlFragment.a(this.a).a(0L);
+      AuthorityControlFragment.a(this.a, (bfqt)AuthorityControlFragment.a(this.a).a(151));
+      AuthorityControlFragment.a(this.a).a();
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          paramMessage = bfdz.a(this.a, paramMessage, 50, 50);
-          localMessage = Message.obtain();
-          localMessage.what = 1002;
-          localMessage.obj = paramMessage;
-          this.a.b.sendMessage(localMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-        } while (TextUtils.isEmpty(paramMessage));
-        paramMessage = AuthorityActivity.a(paramMessage);
-      } while (paramMessage == null);
-      Message localMessage = Message.obtain();
-      localMessage.what = 1003;
-      localMessage.obj = paramMessage;
-      this.a.b.sendMessage(localMessage);
-      return;
-      QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
-    } while (this.a.a.a == null);
-    this.a.a.a.c();
-    paramMessage = Message.obtain();
-    paramMessage.what = 1006;
-    this.a.b.sendMessage(paramMessage);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).c(0L);
+    }
   }
 }
 

@@ -1,61 +1,66 @@
+import NS_COMM.COMM.Entry;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhbz
 {
-  private bgho jdField_a_of_type_Bgho;
-  private ConcurrentHashMap<AppBrandPageContainer, bhbi> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  public bhbz(bgho parambgho)
+  private static List<COMM.Entry> a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bgho = parambgho;
-  }
-  
-  public bhbi a(AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    bhbi localbhbi = (bhbi)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramAppBrandPageContainer);
-    if (localbhbi == null)
+    ArrayList localArrayList = new ArrayList();
+    do
     {
-      QMLog.i("PageWebviewPool", "get page form new BrandPageWebview.");
-      return new bhbi(this.jdField_a_of_type_Bgho, paramAppBrandPageContainer);
-    }
-    QMLog.i("PageWebviewPool", "get page from cache.");
-    return localbhbi;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        bhbi localbhbi = (bhbi)((Map.Entry)localIterator.next()).getValue();
-        if (localbhbi != null) {
-          localbhbi.c();
+        try
+        {
+          paramString2 = new JSONObject(new JSONObject(paramString2).optString("actionData"));
+          String str1 = paramString2.optString("business");
+          if ("mmbizwxamonitor".equals(str1))
+          {
+            localArrayList.add(bhcg.a(paramString2.optString("name"), String.valueOf(paramString2.optInt("value"))));
+            Iterator localIterator = paramString2.keys();
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            String str2 = (String)localIterator.next();
+            if ((("mmbizwxamonitor".equals(str1)) && (("name".equals(str2)) || ("value".equals(str2)))) || (("mmbizwxaanalytics".equals(str1)) && (("eventID".equals(str2)) || ("data".equals(str2))))) {
+              continue;
+            }
+            localArrayList.add(bhcg.a(str2, paramString2.optString(str2)));
+            continue;
+          }
+          if (!"mmbizwxaanalytics".equals(str1)) {
+            continue;
+          }
         }
-        localIterator.remove();
+        catch (JSONException paramString1)
+        {
+          paramString1.printStackTrace();
+          return localArrayList;
+        }
+        localArrayList.add(bhcg.a(paramString2.optString("eventID"), paramString2.optString("data")));
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("PageWebviewPool", "destroyCachePage error:", localException);
-    }
+      localArrayList.add(bhcg.a("appid", paramString1));
+    } while (QUAUtil.isQQApp());
+    localArrayList.addAll(bhcg.a());
+    return localArrayList;
   }
   
-  public void a(AppBrandPageContainer paramAppBrandPageContainer)
+  public static void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramAppBrandPageContainer)) {
+    if ((TextUtils.isEmpty(paramString2)) || (paramString2.contains("mmbizwxajsapi")) || (paramString2.contains("mmbizwxaservicequality")))
+    {
+      QMLog.w("MiniProgramLpReportDC04", "handleReportRealTimeAction not handle data " + paramString2);
       return;
     }
-    QMLog.i("PageWebviewPool", "preLoad page");
-    bhbi localbhbi = new bhbi(this.jdField_a_of_type_Bgho, paramAppBrandPageContainer);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramAppBrandPageContainer, localbhbi);
+    paramString1 = bhcg.a(4, String.valueOf(3), a(paramString1, paramString2), null);
+    bhch.a().a(paramString1);
   }
 }
 

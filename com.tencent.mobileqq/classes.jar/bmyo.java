@@ -1,57 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class bmyo
-  implements Animator.AnimatorListener
+public class bmyo
+  extends bmym<bmyn>
 {
-  bmyo(bmyl parambmyl) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369821);
   
-  public void onAnimationCancel(Animator paramAnimator)
+  bmyo(bmyn parambmyn, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (!bmyl.a(this.a)) {}
-    do
-    {
-      return;
-      if (bmyl.b(this.a)) {
-        break;
-      }
-      bmyl.a(this.a, false);
-    } while (bmyl.b(this.a) != 2);
-    bmyl.a(this.a, 0);
-    return;
-    bmyl.a(this.a, false);
-    bmyl.a(this.a, 0);
+    super(paramContext, paramViewGroup);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (!bmyl.a(this.a)) {
-      return;
-    }
-    if (!bmyl.b(this.a))
-    {
-      bmyl.a(this.a, false);
-      if (bmyl.b(this.a) == 1)
-      {
-        bmyl.a(this.a, 3);
-        return;
-      }
-      bmyl.a(this.a, 0);
-      return;
-    }
-    if (bmyl.b(this.a) == 1)
-    {
-      bmyl.a(this.a, 2);
-      bmyl.a(this.a, bmyl.b(this.a), 1000);
-      return;
-    }
-    bmyl.a(this.a, false);
-    bmyl.a(this.a, 0);
+    return LayoutInflater.from(paramContext).inflate(2131561543, paramViewGroup, false);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(bmyn parambmyn, int paramInt)
+  {
+    super.a(parambmyn, paramInt);
+    if (parambmyn != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(parambmyn.a());
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
 }
 
 

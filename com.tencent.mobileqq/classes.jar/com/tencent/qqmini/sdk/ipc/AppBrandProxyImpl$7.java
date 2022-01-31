@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.ipc;
 
-import bgpo;
+import bgtv;
 import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandProxyImpl$7
   implements Runnable
 {
-  public AppBrandProxyImpl$7(bgpo parambgpo) {}
+  public AppBrandProxyImpl$7(bgtv parambgtv) {}
   
   public void run()
   {
     try
     {
-      bgpo.a(this.this$0).stopAllMiniApp();
+      bgtv.a(this.this$0).stopAllMiniApp();
       return;
     }
     catch (Throwable localThrowable)

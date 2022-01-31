@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bmka
-  implements DialogInterface.OnClickListener
+  extends blts
 {
-  bmka(bmjx parambmjx) {}
+  bmka(bmjt parambmjt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    bmjx.a(this.a);
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
+    }
   }
 }
 

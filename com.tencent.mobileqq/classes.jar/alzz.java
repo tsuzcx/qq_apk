@@ -1,16 +1,33 @@
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.securemodule.impl.AppInfo;
+import com.tencent.securemodule.service.CloudScanListener;
+import java.util.List;
 
-public abstract interface alzz
+public class alzz
+  implements CloudScanListener
 {
-  public abstract void a(String paramString);
+  public alzz(QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(String paramString1, String paramString2);
+  public void onFinish(int paramInt)
+  {
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
+    }
+  }
   
-  public abstract void a(ArrayList<String> paramArrayList);
+  public void onRiskFoud(List<AppInfo> paramList) {}
   
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
+    }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
+  }
 }
 
 

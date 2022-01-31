@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class tuy
-  implements DialogInterface.OnClickListener
+public class tuy
 {
-  tuy(tuw paramtuw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
 }
 
 

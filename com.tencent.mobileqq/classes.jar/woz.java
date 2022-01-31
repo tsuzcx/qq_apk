@@ -1,17 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class woz
-  implements View.OnClickListener
+  implements urr<vex, uro>
 {
-  public woz(StoryListPresenter.4.1 param1) {}
+  public woz(FeedManager.3 param3) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vex paramvex, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
   {
-    wta.a("home_page", "clk_up_know", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
+    paramvex = (vey)paramuro;
+    paramuro = new wpd();
+    paramuro.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramvex == null)) {
+      woy.a().remove(this.a.a);
+    }
+    for (;;)
+    {
+      wxe.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
+      umc.a().dispatch(paramuro);
+      return;
+      if (!paramvex.a.isEmpty())
+      {
+        paramuro.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((wqn)paramvex.a.get(0)).a());
+      }
+      else
+      {
+        wxe.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
+        woy.a().remove(this.a.a);
+      }
+    }
   }
 }
 

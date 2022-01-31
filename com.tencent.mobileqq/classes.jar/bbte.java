@@ -1,43 +1,56 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class bbte
-  extends ypo
+  extends alpa
 {
-  bbte(bbtc parambbtc) {}
+  bbte(bbtd parambbtd) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  protected void c(Object paramObject)
   {
-    if ((!paramBoolean) || (paramFileInfo == null)) {}
+    bcnp localbcnp = (bcnp)paramObject;
+    Object localObject1 = localbcnp.c;
+    if (!bdin.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692747);
+    }
     Object localObject2;
-    Object localObject1;
-    do
+    if (localObject1 != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localObject2 = paramFileInfo.str_file_id.get();
-          } while (TextUtils.isEmpty((CharSequence)localObject2));
-          localObject1 = localObject2;
-          if (!((String)localObject2).startsWith("/")) {
-            localObject1 = "/" + (String)localObject2;
-          }
-        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
-        bbrc.c("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
-        localObject2 = bbra.a(this.a.d);
-      } while (localObject2 == null);
-      localObject1 = ((bcil)localObject2).a((String)localObject1);
-    } while (localObject1 == null);
-    ((bbnr)localObject1).a = paramFileInfo.uint32_bus_id.get();
-    ((bbnr)localObject1).c = paramFileInfo.uint32_dead_time.get();
-    ((bcil)localObject2).d((bbnr)localObject1);
+      localObject2 = localObject1;
+      if (((String)localObject1).length() >= 1) {}
+    }
+    else
+    {
+      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694092);
+    }
+    if (arbp.jdField_a_of_type_Boolean)
+    {
+      localbcnp.jdField_a_of_type_JavaLangString = "183.61.37.13";
+      localbcnp.b = "443";
+    }
+    if ((bcnt.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!TextUtils.isEmpty(localbcnp.f)))
+    {
+      short s2 = localbcnp.jdField_a_of_type_Short;
+      short s1 = s2;
+      if (s2 == 0) {
+        s1 = 443;
+      }
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putBoolean("ishttps", true);
+      ((Bundle)localObject1).putString("httpsdomain", localbcnp.f);
+      ((Bundle)localObject1).putShort("httpsport", s1);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Aqlx != null) {
+        this.a.jdField_a_of_type_Aqlx.a(localbcnp.jdField_a_of_type_Boolean, localbcnp.jdField_a_of_type_JavaLangString, localbcnp.b, localbcnp.jdField_a_of_type_Int, (String)localObject2, localbcnp.d, null, localbcnp.e, (Bundle)localObject1);
+      }
+      super.c(paramObject);
+      return;
+      localObject1 = null;
+    }
   }
 }
 

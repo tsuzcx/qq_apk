@@ -1,54 +1,16 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.ksong.KSongProsBar;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class besq
-  extends AsyncTask<String, Void, besn>
+  implements View.OnClickListener
 {
-  public besq(KSongView paramKSongView) {}
+  public besq(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  protected besn a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    String str = paramVarArgs[0];
-    paramVarArgs = paramVarArgs[1];
-    for (;;)
-    {
-      try
-      {
-        KSongView.a(this.a, KSongView.a(this.a, paramVarArgs));
-        if ((KSongView.a(this.a) != null) && (KSongView.a(this.a, str)))
-        {
-          paramVarArgs = KSongView.a(this.a);
-          return paramVarArgs;
-        }
-      }
-      finally {}
-      paramVarArgs = null;
-    }
-  }
-  
-  protected void a(besn parambesn)
-  {
-    boolean bool = false;
-    if (parambesn != null)
-    {
-      if (KSongView.a(this.a) != null) {
-        KSongView.a(this.a).a(parambesn);
-      }
-      KSongView.a(this.a).notifyDataSetChanged();
-      KSongView.a(this.a, 0);
-    }
-    QLog.i("KSongView", 2, "InitTask config = " + parambesn);
-    if (KSongView.a(this.a) != null)
-    {
-      besp localbesp = KSongView.a(this.a);
-      if (parambesn != null) {
-        bool = true;
-      }
-      localbesp.a(bool);
-    }
+    awrn.a().b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

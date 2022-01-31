@@ -1,37 +1,12 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class bksy
-  implements SeekBar.OnSeekBarChangeListener
+public abstract interface bksy
 {
-  public bksy(AEBeautyProviderView paramAEBeautyProviderView) {}
+  public abstract void onAETavSessionExportCompleted(String paramString, LocalMediaInfo paramLocalMediaInfo);
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
-  {
-    if (AEBeautyProviderView.a(this.a) != null)
-    {
-      AEBeautyProviderView.a(this.a).b(paramInt);
-      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
-  }
+  public abstract void onAETavSessionExportError(String paramString, int paramInt);
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    bler.a().e(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
+  public abstract void onAETavSessionExporting(String paramString, float paramFloat);
 }
 
 

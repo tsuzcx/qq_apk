@@ -1,6 +1,6 @@
 public abstract interface bgnm
 {
-  public abstract boolean a(bgnj parambgnj, int paramInt1, int paramInt2);
+  public abstract boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
 }
 
 

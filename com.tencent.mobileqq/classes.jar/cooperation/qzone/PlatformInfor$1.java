@@ -1,22 +1,22 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bize;
+import bjdl;
 import common.config.service.QzoneConfig;
 
 public class PlatformInfor$1
   implements Runnable
 {
-  public PlatformInfor$1(bize parambize, Context paramContext) {}
+  public PlatformInfor$1(bjdl parambjdl, Context paramContext) {}
   
   public void run()
   {
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneSharppGate", 1) == 1)
     {
-      bize.a(this.this$0, SharpPDec.a(this.a));
+      bjdl.a(this.this$0, SharpPDec.a(this.a));
       return;
     }
-    bize.a(this.this$0, 0);
+    bjdl.a(this.this$0, 0);
   }
 }
 

@@ -1,42 +1,31 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-
-public class ahmc
-  extends RecyclerView.OnScrollListener
+class ahmc
+  extends bibk
 {
-  public ahmc(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  ahmc(ahma paramahma, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if ((paramRecyclerView instanceof LinearLayoutManager)) {
-        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
-      }
-    }
-    if (this.a.jdField_a_of_type_Bcws != null)
-    {
-      if (paramInt == 0) {
-        break label73;
-      }
-      this.a.jdField_a_of_type_Bcws.a();
-      this.a.jdField_a_of_type_Bcws.c();
-    }
-    label73:
-    while (!this.a.jdField_a_of_type_Bcws.a()) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bcws.b();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    paramInt = 0;
+    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbibj.length < 0)
+      {
+        paramArrayOfbibj[0].b = 0;
+        paramArrayOfbibj[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbibj.length)
+      {
+        paramArrayOfbibj[paramInt].b = -1;
+        paramArrayOfbibj[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
   }
 }
 

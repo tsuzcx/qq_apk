@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alpo;
+import alud;
 
 public class MessageForTroopStory
   extends MessageForRichText
@@ -19,7 +19,7 @@ public class MessageForTroopStory
   public static final String KEY_UNION_ID = "key_union_id";
   public static final String KEY_VIDEO_HEIGHT = "key_video_height";
   public static final String KEY_VIDEO_WIDTH = "key_video_width";
-  public static final String MSG_CONTENT = alpo.a(2131706960);
+  public static final String MSG_CONTENT = alud.a(2131706972);
   public static final String TAG = "MessageForTroopStory";
   public String compatibleText;
   public int ctrVersion;

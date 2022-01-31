@@ -1,108 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class alwh
-  extends alqy
+  implements aufw
 {
-  alwh(alwf paramalwf) {}
+  alwh(alwd paramalwd) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramBoolean)
-    {
-      str1 = str2;
-      if (paramArrayOfByte != null)
-      {
-        str1 = new String(paramArrayOfByte);
-        alwf.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", str1));
-      }
-    }
+    boolean bool1 = alwd.b(this.a);
+    alwd.a(this.a, false);
+    boolean bool2 = this.a.a();
     if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "mLbsObserver, onGetStreetViewUrl: isSuccess=" + paramBoolean + ", hashCode=" + hashCode() + ",url=" + str1);
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
+    }
+    if (bool1 != bool2) {
+      ((FriendListHandler)alwd.a(this.a).a(1)).notifyUI(92, true, null);
     }
   }
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareSearch: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
-    }
-    Object localObject = (ToServiceMsg)paramArrayOfObject[0];
-    paramArrayOfObject = (byte[])paramArrayOfObject[1];
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
-    localIntent.putExtra("data", paramArrayOfObject);
-    localIntent.putExtra("req", ((ToServiceMsg)localObject).extraData.getBundle("req"));
-    alwf.a(this.a).sendBroadcast(localIntent);
-  }
+  public void a(long paramLong) {}
   
-  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareShop: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetLbsShareShop");
-    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
-    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    alwf.a(this.a).sendBroadcast((Intent)localObject);
-  }
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("mLbsObserver, onGetShareShopDetail: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetShareShopDetail");
-    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
-    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    alwf.a(this.a).sendBroadcast((Intent)localObject);
-  }
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

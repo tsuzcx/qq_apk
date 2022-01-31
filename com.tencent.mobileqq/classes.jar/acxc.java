@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class acxc
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public acxc(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public acxc(ForceLogoutActivity paramForceLogoutActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
   }
 }
 

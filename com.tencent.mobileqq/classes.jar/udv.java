@@ -1,39 +1,57 @@
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
+import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
 import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
 
 public class udv
-  extends ucz
+  implements zac<FeedCloudWrite.StDoFollowRsp>
 {
-  private static final String jdField_a_of_type_JavaLangString = udv.class.getSimpleName();
-  private QCircleRockeyPopupView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView;
+  public udv(QCircleFollowView paramQCircleFollowView, int paramInt, boolean paramBoolean) {}
   
-  public void a(ViewStub paramViewStub)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    if (paramViewStub != null)
+    boolean bool = true;
+    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView = ((QCircleRockeyPopupView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372528));
-    }
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
-    {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setFeedId(localStFeed.id.get());
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setPageType(1);
+      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) {}
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
+      if ((QCircleFollowView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) && (this.jdField_a_of_type_Int == 1)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), 2, 2131698320, 0).a();
       }
+      if (this.jdField_a_of_type_Int == 1) {
+        yiw.a().a(new QCircleFuelAnimationEvent());
+      }
+      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null)
+      {
+        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
+          QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a(true, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView));
+        }
+        yiw.a().a(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get()));
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get(), this.jdField_a_of_type_Int);
+        paramString = tyy.a();
+        paramStDoFollowRsp = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get();
+        if (this.jdField_a_of_type_Int != 1) {
+          break label273;
+        }
+      }
+      label273:
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.a(paramStDoFollowRsp, paramBoolean);
+        return;
+      }
+    }
+    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2131698319;; i = 2131698393)
+    {
+      QQToast.a(paramString, 1, i, 0).a();
+      return;
     }
   }
 }

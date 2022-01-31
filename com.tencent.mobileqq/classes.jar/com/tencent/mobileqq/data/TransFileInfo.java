@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mr_time,mr_seq,selfUin,friendUin")
 public class TransFileInfo
-  extends awbv
+  extends awge
 {
   public String fileName;
   public String friendUin;

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import aekt;
+import aepi;
 import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.os.Looper;
 import android.text.TextUtils;
-import awcx;
-import azmz;
-import bhof;
+import awhg;
+import azri;
+import bhsm;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.BaseConstants;
@@ -28,15 +28,15 @@ public class SQLiteDatabase
   public static boolean a;
   private long jdField_a_of_type_Long;
   public final android.database.sqlite.SQLiteDatabase a;
-  private awcx jdField_a_of_type_Awcx;
+  private awhg jdField_a_of_type_Awhg;
   private final Map<String, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(32);
   private final Map<String, ArrayList<String>> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap(32);
   private boolean jdField_b_of_type_Boolean;
   
-  public SQLiteDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, awcx paramawcx, String paramString)
+  public SQLiteDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, awhg paramawhg, String paramString)
   {
     this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = paramSQLiteDatabase;
-    this.jdField_a_of_type_Awcx = paramawcx;
+    this.jdField_a_of_type_Awhg = paramawhg;
     if ((TextUtils.isEmpty(paramString)) || (paramString.endsWith("59.db"))) {}
     for (boolean bool = true;; bool = false)
     {
@@ -130,7 +130,7 @@ public class SQLiteDatabase
       try
       {
         l2 = System.currentTimeMillis();
-        if ((!jdField_a_of_type_Boolean) && (!aekt.f)) {
+        if ((!jdField_a_of_type_Boolean) && (!aepi.f)) {
           break label308;
         }
         localStringBuilder = new StringBuilder(32);
@@ -161,7 +161,7 @@ public class SQLiteDatabase
       }
       a("query", paramString1, i);
       paramArrayOfString1 = localCursor;
-      bhof.a().a(System.currentTimeMillis() - l1);
+      bhsm.a().a(System.currentTimeMillis() - l1);
       return paramArrayOfString1;
       i = 1;
     }
@@ -259,7 +259,7 @@ public class SQLiteDatabase
     localHashMap.put("OpType", paramString1);
     localHashMap.put("OpTableName", paramString2);
     localHashMap.put("param_FailCode", Integer.toString(paramInt));
-    paramString2 = azmz.a(BaseApplication.getContext());
+    paramString2 = azri.a(BaseApplication.getContext());
     paramString1 = "DatabaseOperatorResult_" + paramString1;
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
@@ -476,11 +476,11 @@ public class SQLiteDatabase
   
   private void f()
   {
-    if (!this.jdField_a_of_type_Awcx.jdField_a_of_type_Boolean) {}
+    if (!this.jdField_a_of_type_Awhg.jdField_a_of_type_Boolean) {}
     try
     {
       String[] arrayOfString = a();
-      this.jdField_a_of_type_Awcx.a(arrayOfString);
+      this.jdField_a_of_type_Awhg.a(arrayOfString);
       return;
     }
     catch (Exception localException)
@@ -505,7 +505,7 @@ public class SQLiteDatabase
         i = localCursor.getInt(0);
       }
       localCursor.close();
-      bhof.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return i;
     }
     catch (Throwable localThrowable)
@@ -556,7 +556,7 @@ public class SQLiteDatabase
           {
             paramInt = ((Cursor)localObject1).getInt(0);
             ((Cursor)localObject1).close();
-            bhof.a().a(System.currentTimeMillis() - l);
+            bhsm.a().a(System.currentTimeMillis() - l);
             return paramInt;
             localObject1 = " where msgtype = " + paramInt;
           }
@@ -581,10 +581,10 @@ public class SQLiteDatabase
     {
       i = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
       l = System.currentTimeMillis() - l;
-      if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("update", paramString1, paramContentValues + ";" + paramString2, paramArrayOfString, l);
       }
-      bhof.a().a(l);
+      bhsm.a().a(l);
       return i;
     }
     catch (Throwable paramString2)
@@ -612,10 +612,10 @@ public class SQLiteDatabase
     {
       int i = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.delete(paramString1, paramString2, paramArrayOfString);
       long l2 = System.currentTimeMillis() - l1;
-      if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("delete", paramString1, paramString2 + ";", paramArrayOfString, l2);
       }
-      bhof.a().a(l2);
+      bhsm.a().a(l2);
       a("delete", paramString1, 0);
       return i;
     }
@@ -628,7 +628,7 @@ public class SQLiteDatabase
     {
       a(paramArrayOfString, paramString2);
       a("delete", paramString1, 1);
-      bhof.a().a(System.currentTimeMillis() - l1);
+      bhsm.a().a(System.currentTimeMillis() - l1);
       return -1;
     }
   }
@@ -641,10 +641,10 @@ public class SQLiteDatabase
     {
       long l1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.insert(paramString1, paramString2, paramContentValues);
       l2 = System.currentTimeMillis() - l2;
-      if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("insert", paramString1, paramString2 + ";" + paramContentValues, null, l2);
       }
-      bhof.a().a(l2);
+      bhsm.a().a(l2);
       if (l1 > -1L) {}
       for (i = 0;; i = 1)
       {
@@ -686,7 +686,7 @@ public class SQLiteDatabase
     //   28: lstore 7
     //   30: getstatic 127	com/tencent/mobileqq/app/SQLiteDatabase:jdField_a_of_type_Boolean	Z
     //   33: ifne +9 -> 42
-    //   36: getstatic 132	aekt:f	Z
+    //   36: getstatic 132	aepi:f	Z
     //   39: ifeq +40 -> 79
     //   42: ldc_w 531
     //   45: aload_2
@@ -707,11 +707,11 @@ public class SQLiteDatabase
     //   76: invokestatic 152	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;J)V
     //   79: aload 9
     //   81: astore_2
-    //   82: invokestatic 160	bhof:a	()Lbhof;
+    //   82: invokestatic 160	bhsm:a	()Lbhsm;
     //   85: invokestatic 117	java/lang/System:currentTimeMillis	()J
     //   88: lload 5
     //   90: lsub
-    //   91: invokevirtual 163	bhof:a	(J)V
+    //   91: invokevirtual 163	bhsm:a	(J)V
     //   94: aload_2
     //   95: areturn
     //   96: astore_3
@@ -770,7 +770,7 @@ public class SQLiteDatabase
       }
     }
     finally {}
-    bhof.a().a(System.currentTimeMillis() - l);
+    bhsm.a().a(System.currentTimeMillis() - l);
     return paramString;
   }
   
@@ -786,8 +786,8 @@ public class SQLiteDatabase
     {
       beginTransactionLog();
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.beginTransaction();
-      bhof.a().a(System.currentTimeMillis() - l);
-      bhof.a().b(1L);
+      bhsm.a().a(System.currentTimeMillis() - l);
+      bhsm.a().b(1L);
       return;
     }
     catch (Throwable localThrowable)
@@ -801,7 +801,7 @@ public class SQLiteDatabase
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Awcx.a(paramString);
+    this.jdField_a_of_type_Awhg.a(paramString);
   }
   
   public boolean a(String paramString)
@@ -812,10 +812,10 @@ public class SQLiteDatabase
       a(null, paramString);
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString);
       l = System.currentTimeMillis() - l;
-      if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("execSQL", "", paramString, null, l);
       }
-      bhof.a().a(l);
+      bhsm.a().a(l);
       return true;
     }
     catch (Throwable localThrowable)
@@ -844,10 +844,10 @@ public class SQLiteDatabase
               a(str, paramString);
               this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString, paramArrayOfObject);
               l = System.currentTimeMillis() - l;
-              if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+              if ((jdField_a_of_type_Boolean) || (aepi.f)) {
                 a("execSQL", "", paramString, paramArrayOfObject, l);
               }
-              bhof.a().a(l);
+              bhsm.a().a(l);
               return true;
             }
           }
@@ -895,7 +895,7 @@ public class SQLiteDatabase
         if (localCursor != null) {
           localCursor.close();
         }
-        bhof.a().a(System.currentTimeMillis() - l);
+        bhsm.a().a(System.currentTimeMillis() - l);
         return localObject1;
       }
       i += 1;
@@ -910,10 +910,10 @@ public class SQLiteDatabase
     {
       long l1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.replace(paramString1, paramString2, paramContentValues);
       l2 = System.currentTimeMillis() - l2;
-      if ((jdField_a_of_type_Boolean) || (aekt.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("replace", paramString1, paramString2 + ";" + paramContentValues, null, l2);
       }
-      bhof.a().a(l2);
+      bhsm.a().a(l2);
       if (l1 > -1L) {}
       for (i = 0;; i = 1)
       {
@@ -942,8 +942,8 @@ public class SQLiteDatabase
     {
       beginTransactionLog();
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.beginTransactionNonExclusive();
-      bhof.a().a(System.currentTimeMillis() - l);
-      bhof.a().b(1L);
+      bhsm.a().a(System.currentTimeMillis() - l);
+      bhsm.a().b(1L);
       return;
     }
     catch (Throwable localThrowable)
@@ -957,19 +957,19 @@ public class SQLiteDatabase
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_Awcx.b(paramString);
+    this.jdField_a_of_type_Awhg.b(paramString);
   }
   
   public boolean b(String paramString)
   {
     f();
-    return this.jdField_a_of_type_Awcx.a(paramString);
+    return this.jdField_a_of_type_Awhg.a(paramString);
   }
   
   public String[] b()
   {
     f();
-    return this.jdField_a_of_type_Awcx.a();
+    return this.jdField_a_of_type_Awhg.a();
   }
   
   public void c()
@@ -979,7 +979,7 @@ public class SQLiteDatabase
     {
       QLog.e("db", 1, "SQLiteDatabase close");
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      bhof.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)
@@ -998,7 +998,7 @@ public class SQLiteDatabase
     {
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.endTransaction();
       endTransactionLog();
-      bhof.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)
@@ -1016,7 +1016,7 @@ public class SQLiteDatabase
     try
     {
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.setTransactionSuccessful();
-      bhof.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)

@@ -1,23 +1,27 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-final class bgui
-  implements bgum
+public class bgui
+  implements bgup
 {
-  bgui(bgum parambgum) {}
+  public bgui(AppRuntimeLoaderManager paramAppRuntimeLoaderManager, bgup parambgup) {}
   
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
-  
-  public void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString)
+  public void a(int paramInt, String paramString, bgun parambgun)
   {
-    if (paramInt == 0) {
-      if (this.a != null) {
-        this.a.onInitGpkgInfo(0, parambgun, null);
+    try
+    {
+      if (this.jdField_a_of_type_Bgup != null) {
+        this.jdField_a_of_type_Bgup.a(paramInt, paramString, parambgun);
       }
-    }
-    while (this.a == null) {
+      if (paramInt != 0) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppRuntimeLoaderManager.removeRuntimeLoader(parambgun);
+      }
       return;
     }
-    this.a.onInitGpkgInfo(paramInt, null, paramString);
+    catch (Throwable paramString)
+    {
+      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
+    }
   }
 }
 

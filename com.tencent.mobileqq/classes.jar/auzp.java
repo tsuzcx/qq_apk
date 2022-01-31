@@ -1,29 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
-final class auzp
-  implements bevy
+public class auzp
+  extends DataSetObserver
 {
-  auzp(String paramString, auzu paramauzu) {}
+  public auzp(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onChanged()
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Auzu != null) {
-        this.jdField_a_of_type_Auzu.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Auzu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Auzu.a(false);
+    super.onChanged();
+    this.a.a();
   }
 }
 

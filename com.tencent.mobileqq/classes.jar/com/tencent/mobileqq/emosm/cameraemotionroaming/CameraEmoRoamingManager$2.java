@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import alks;
-import apjf;
-import apjm;
+import alph;
+import apno;
+import apnv;
 import java.util.List;
 
 public class CameraEmoRoamingManager$2
   implements Runnable
 {
-  public CameraEmoRoamingManager$2(apjf paramapjf, apjm paramapjm, alks paramalks) {}
+  public CameraEmoRoamingManager$2(apno paramapno, apnv paramapnv, alph paramalph) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_Apjm.a("needDel");
+    List localList = this.jdField_a_of_type_Apnv.a("needDel");
     if (localList.size() > 0) {
-      this.jdField_a_of_type_Alks.a(localList, true);
+      this.jdField_a_of_type_Alph.a(localList, true);
     }
     while (localList.size() != 0) {
       return;

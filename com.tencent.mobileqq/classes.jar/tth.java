@@ -1,15 +1,12 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class tth
-  implements yfu<Object>
+  implements DialogInterface.OnClickListener
 {
-  tth(ttc paramttc) {}
-  
-  public void a(Object... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      ttc.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
-    }
+    ttg.a(this.a);
   }
 }
 

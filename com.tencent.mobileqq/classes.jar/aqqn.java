@@ -1,44 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aqqn
-  extends aqpg
+  implements View.OnClickListener
 {
-  aqqn(aqqm paramaqqm, aqqr paramaqqr, String paramString) {}
+  aqqn(aqqm paramaqqm, View paramView) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramLong, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " start DiscUploadTaskExcuter isSuccess:" + paramBoolean + " retCode:" + paramLong + " retMsg:" + paramString6);
-    }
-    if (!paramBoolean)
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof aqnh))
     {
-      if ((paramLong == -100001L) || (paramLong == -100002L))
+      localObject = (FileManagerEntity)((aqnh)localObject).a;
+      if (paramView.getId() != 2131365065) {
+        break label114;
+      }
+      paramView = (bhuf)bhus.a(this.jdField_a_of_type_Aqqm.a.a, null);
+      paramView.a(alud.a(2131710015));
+      paramView.a(alud.a(2131710019), 3);
+      paramView.d(alud.a(2131710017));
+      paramView.a(new aqqo(this, (FileManagerEntity)localObject, paramView));
+      paramView.show();
+    }
+    label114:
+    do
+    {
+      return;
+      localObject = (FileManagerEntity)((aqqz)localObject).a;
+      break;
+      if (paramView.getId() == 2131366762)
       {
-        this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Long, false), true);
+        this.jdField_a_of_type_Aqqm.a.c((FileManagerEntity)localObject);
         return;
       }
-      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Long, false), false);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " start upload Discfile");
-    }
-    paramBoolean = aqxg.e(aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv));
-    paramString5 = paramBundle.getString("strHttpsDomain");
-    int i = paramBundle.getShort("httpsPort");
-    paramString2 = "";
-    if (aroo.b(aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv))) {
-      paramString2 = paramBundle.getString("strHttpsDomain");
-    }
-    paramString1 = new aqpi(aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv), paramString3, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqqm.jdField_a_of_type_Long, paramString4, paramInt, paramBoolean, paramString5, i, this.jdField_a_of_type_Aqqm.b, paramString2, new aqqo(this, paramString1));
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " add to rsCenter");
-    }
-    aqqm.a(this.jdField_a_of_type_Aqqm, arni.a().longValue());
-    aqpv.a(this.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv).a().a(aqqm.a(this.jdField_a_of_type_Aqqm), paramString1);
+    } while (paramView.getId() != 2131376412);
+    ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Aqqm.a));
   }
 }
 

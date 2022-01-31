@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm.web;
 
-import akji;
-import akqb;
+import aknx;
+import akuq;
 import android.os.Bundle;
-import aply;
+import apqh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MessengerService$IncomingHandler$5
   implements Runnable
 {
-  public MessengerService$IncomingHandler$5(aply paramaply, QQAppInterface paramQQAppInterface, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$5(apqh paramapqh, QQAppInterface paramQQAppInterface, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    boolean bool = ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_AndroidOsBundle.getString("url"));
+    boolean bool = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_AndroidOsBundle.getString("url"));
     Bundle localBundle = new Bundle();
     if (bool) {}
     for (int i = 0;; i = -1)

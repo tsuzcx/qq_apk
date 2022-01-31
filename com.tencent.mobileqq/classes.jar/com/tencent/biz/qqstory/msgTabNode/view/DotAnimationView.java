@@ -11,8 +11,8 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import uvx;
-import xod;
+import vag;
+import xsm;
 
 public class DotAnimationView
   extends View
@@ -20,7 +20,7 @@ public class DotAnimationView
   private static String jdField_a_of_type_JavaLangString = "DotAnimationView";
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<uvx> jdField_a_of_type_JavaUtilList = new ArrayList(3);
+  private List<vag> jdField_a_of_type_JavaUtilList = new ArrayList(3);
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -53,21 +53,21 @@ public class DotAnimationView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      uvx localuvx = (uvx)localIterator.next();
-      paramCanvas.drawCircle(getWidth() / 2 + localuvx.b, getHeight() / 2, localuvx.a, this.jdField_a_of_type_AndroidGraphicsPaint);
+      vag localvag = (vag)localIterator.next();
+      paramCanvas.drawCircle(getWidth() / 2 + localvag.b, getHeight() / 2, localvag.a, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Int = xod.a(getContext(), -20.0F);
-    this.b = xod.a(getContext(), -50.0F);
-    this.c = xod.a(getContext(), -70.0F);
-    this.d = xod.a(getContext(), -95.0F);
-    this.e = xod.a(getContext(), 3.0F);
-    this.f = xod.a(getContext(), 6.0F);
-    this.g = xod.a(getContext(), 30.0F);
-    this.h = xod.a(getContext(), -20.0F);
+    this.jdField_a_of_type_Int = xsm.a(getContext(), -20.0F);
+    this.b = xsm.a(getContext(), -50.0F);
+    this.c = xsm.a(getContext(), -70.0F);
+    this.d = xsm.a(getContext(), -95.0F);
+    this.e = xsm.a(getContext(), 3.0F);
+    this.f = xsm.a(getContext(), 6.0F);
+    this.g = xsm.a(getContext(), 30.0F);
+    this.h = xsm.a(getContext(), -20.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#DDDEE2"));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -75,7 +75,7 @@ public class DotAnimationView
     int i = 0;
     while (i < 3)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new uvx(this, null));
+      this.jdField_a_of_type_JavaUtilList.add(new vag(this, null));
       i += 1;
     }
   }
@@ -92,12 +92,12 @@ public class DotAnimationView
       i = 0;
       while (localIterator.hasNext())
       {
-        uvx localuvx = (uvx)localIterator.next();
-        if ((localuvx.a != 0.0F) || (localuvx.b != 0.0F)) {
+        vag localvag = (vag)localIterator.next();
+        if ((localvag.a != 0.0F) || (localvag.b != 0.0F)) {
           i = 1;
         }
-        localuvx.a = 0.0F;
-        localuvx.b = 0.0F;
+        localvag.a = 0.0F;
+        localvag.b = 0.0F;
       }
     } while (i == 0);
     setTranslationY(0.0F);
@@ -111,17 +111,17 @@ public class DotAnimationView
     }
     this.jdField_a_of_type_Boolean = false;
     Object localObject;
-    uvx localuvx;
+    vag localvag;
     if (paramFloat > this.jdField_a_of_type_Int)
     {
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        localuvx = (uvx)((Iterator)localObject).next();
-        localuvx.a = 0.0F;
-        localuvx.b = 0.0F;
+        localvag = (vag)((Iterator)localObject).next();
+        localvag.a = 0.0F;
+        localvag.b = 0.0F;
       }
-      ((uvx)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.f * (Math.abs(paramFloat) / Math.abs(this.jdField_a_of_type_Int)));
+      ((vag)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.f * (Math.abs(paramFloat) / Math.abs(this.jdField_a_of_type_Int)));
     }
     for (;;)
     {
@@ -134,13 +134,13 @@ public class DotAnimationView
         label142:
         if (i < this.jdField_a_of_type_JavaUtilList.size())
         {
-          ((uvx)this.jdField_a_of_type_JavaUtilList.get(i)).b = (((uvx)this.jdField_a_of_type_JavaUtilList.get(i)).c * paramFloat);
+          ((vag)this.jdField_a_of_type_JavaUtilList.get(i)).b = (((vag)this.jdField_a_of_type_JavaUtilList.get(i)).c * paramFloat);
           if (i != 1) {
             break label242;
           }
         }
         label242:
-        for (((uvx)this.jdField_a_of_type_JavaUtilList.get(i)).a = (this.f - (this.f - this.e) * paramFloat);; ((uvx)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.e)
+        for (((vag)this.jdField_a_of_type_JavaUtilList.get(i)).a = (this.f - (this.f - this.e) * paramFloat);; ((vag)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.e)
         {
           i += 1;
           break label142;
@@ -152,9 +152,9 @@ public class DotAnimationView
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localuvx = (uvx)((Iterator)localObject).next();
-          localuvx.a = this.e;
-          localuvx.b = localuvx.c;
+          localvag = (vag)((Iterator)localObject).next();
+          localvag.a = this.e;
+          localvag.b = localvag.c;
         }
       }
       else
@@ -162,34 +162,34 @@ public class DotAnimationView
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localuvx = (uvx)((Iterator)localObject).next();
-          localuvx.b = localuvx.c;
+          localvag = (vag)((Iterator)localObject).next();
+          localvag.b = localvag.c;
         }
         float f1 = this.c + (this.d - this.c) / 2;
         float f2 = this.d;
         if (paramFloat > f1)
         {
           paramFloat = (this.c - paramFloat) / (this.c - f1);
-          localObject = (uvx)this.jdField_a_of_type_JavaUtilList.get(0);
-          localuvx = (uvx)this.jdField_a_of_type_JavaUtilList.get(2);
+          localObject = (vag)this.jdField_a_of_type_JavaUtilList.get(0);
+          localvag = (vag)this.jdField_a_of_type_JavaUtilList.get(2);
           paramFloat = this.e - paramFloat * this.e;
-          localuvx.a = paramFloat;
-          ((uvx)localObject).a = paramFloat;
-          ((uvx)this.jdField_a_of_type_JavaUtilList.get(1)).a = this.e;
+          localvag.a = paramFloat;
+          ((vag)localObject).a = paramFloat;
+          ((vag)this.jdField_a_of_type_JavaUtilList.get(1)).a = this.e;
         }
         else if (paramFloat > f2)
         {
           paramFloat = (f1 - paramFloat) / (f1 - f2);
-          localObject = (uvx)this.jdField_a_of_type_JavaUtilList.get(0);
-          ((uvx)this.jdField_a_of_type_JavaUtilList.get(2)).a = 0.0F;
-          ((uvx)localObject).a = 0.0F;
-          ((uvx)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.e - paramFloat * this.e);
+          localObject = (vag)this.jdField_a_of_type_JavaUtilList.get(0);
+          ((vag)this.jdField_a_of_type_JavaUtilList.get(2)).a = 0.0F;
+          ((vag)localObject).a = 0.0F;
+          ((vag)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.e - paramFloat * this.e);
         }
         else
         {
           localObject = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((uvx)((Iterator)localObject).next()).a = 0.0F;
+            ((vag)((Iterator)localObject).next()).a = 0.0F;
           }
         }
       }
@@ -207,15 +207,15 @@ public class DotAnimationView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      uvx localuvx = (uvx)localIterator.next();
-      localuvx.a = 0.0F;
-      localuvx.b = 0.0F;
-      localuvx.c = 0.0F;
+      vag localvag = (vag)localIterator.next();
+      localvag.a = 0.0F;
+      localvag.b = 0.0F;
+      localvag.c = 0.0F;
     }
     paramInt1 = this.g;
-    ((uvx)this.jdField_a_of_type_JavaUtilList.get(0)).c = this.h;
-    ((uvx)this.jdField_a_of_type_JavaUtilList.get(1)).c = 0.0F;
-    ((uvx)this.jdField_a_of_type_JavaUtilList.get(2)).c = (-((uvx)this.jdField_a_of_type_JavaUtilList.get(0)).c);
+    ((vag)this.jdField_a_of_type_JavaUtilList.get(0)).c = this.h;
+    ((vag)this.jdField_a_of_type_JavaUtilList.get(1)).c = 0.0F;
+    ((vag)this.jdField_a_of_type_JavaUtilList.get(2)).c = (-((vag)this.jdField_a_of_type_JavaUtilList.get(0)).c);
     this.jdField_a_of_type_Boolean = false;
   }
 }

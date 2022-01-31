@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 import sxb;
 
@@ -11,7 +11,7 @@ public class PublicAccountH5AbilityForPtt$2
   
   public void run()
   {
-    QQToast.a(this.this$0.a, alpo.a(2131709192), 0).a();
+    QQToast.a(this.this$0.a, alud.a(2131709204), 0).a();
   }
 }
 

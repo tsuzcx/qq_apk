@@ -1,39 +1,28 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public final class acfh
-  implements DialogInterface.OnClickListener
+public class acfh
+  implements View.OnClickListener
 {
-  public acfh(acgz paramacgz, int paramInt, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acgy paramacgy) {}
+  public acfh(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Acgz.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label130;
-      }
-      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
-    }
+    boolean bool = false;
+    azqs.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    paramView = (badd)this.a.app.getManager(61);
+    if ((paramView != null) && (paramView.a() >= 2)) {}
     for (;;)
     {
-      this.jdField_a_of_type_Acgz.b = false;
-      this.jdField_a_of_type_Acgz.c = false;
-      this.jdField_a_of_type_Acgz.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_Acgz);
       if (QLog.isColorLevel()) {
-        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
       }
+      AssociatedAccountActivity.a(this.a, bool);
       return;
-      label130:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        azmj.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
-      }
+      bool = true;
     }
   }
 }

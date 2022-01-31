@@ -1,44 +1,21 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class aoez
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public Rect a;
-  public aofg a;
-  public ArrayList<aofa> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
+  public aoez(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public aoez(aofg paramaofg, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Aofg = paramaofg;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramaofg.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    if (this.a.getActivity() != null)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramaofg.jdField_a_of_type_Int += 1;
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aofg.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    azqs.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
   }
 }
 

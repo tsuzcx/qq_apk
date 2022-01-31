@@ -145,7 +145,7 @@ public class ndl
       label14:
       break label14;
     }
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_14", "lixian_security", i, paramInt, "", "3", "", "");
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_14", "lixian_security", i, paramInt, "", "3", "", "");
     if (QLog.isColorLevel()) {
       QLog.d("offlneSecurity", 2, "report:" + paramInt);
     }
@@ -381,7 +381,7 @@ public class ndl
       if (QLog.isColorLevel()) {
         QLog.i("offlneSecurity", 2, "-->offline:verify");
       }
-      paramString = bdbi.decode(paramString.getBytes("UTF-8"), 0);
+      paramString = bdfr.decode(paramString.getBytes("UTF-8"), 0);
       KeyFactory localKeyFactory = KeyFactory.getInstance("RSA");
       Signature localSignature = Signature.getInstance("SHA1withRSA");
       localSignature.initVerify(localKeyFactory.generatePublic(new X509EncodedKeySpec(paramString)));

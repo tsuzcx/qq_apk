@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bfgi;
-import bfln;
-import bflo;
+import bfkr;
+import bfpw;
+import bfpx;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
@@ -13,11 +13,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManagerV2$5
   implements Runnable
 {
-  public DownloadManagerV2$5(bfgi parambfgi) {}
+  public DownloadManagerV2$5(bfkr parambfkr) {}
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = bfln.a().a();
+    ConcurrentHashMap localConcurrentHashMap = bfpw.a().a();
     if (localConcurrentHashMap == null) {}
     for (;;)
     {
@@ -25,15 +25,15 @@ public class DownloadManagerV2$5
       Iterator localIterator = localConcurrentHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
-        bflo localbflo = (bflo)localConcurrentHashMap.get((String)localIterator.next());
-        if (localbflo != null)
+        bfpx localbfpx = (bfpx)localConcurrentHashMap.get((String)localIterator.next());
+        if (localbfpx != null)
         {
-          Object localObject = bfgi.a(this.this$0, localbflo.b);
+          Object localObject = bfkr.a(this.this$0, localbfpx.b);
           if ((localObject != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject).d)))
           {
             localObject = this.this$0.a(((DownloadInfo)localObject).d);
-            if ((localObject != null) && (4 != bfgi.a(((TMAssistantDownloadTaskInfo)localObject).mState))) {
-              bfln.a().a(localbflo.a);
+            if ((localObject != null) && (4 != bfkr.a(((TMAssistantDownloadTaskInfo)localObject).mState))) {
+              bfpw.a().a(localbfpx.a);
             }
           }
         }

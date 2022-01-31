@@ -1,42 +1,56 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.common.app.AppInterface;
 
 public class whn
-  extends QQUIEventReceiver<whl, uyb>
 {
-  public whn(@NonNull whl paramwhl)
-  {
-    super(paramwhl);
-  }
+  private avvb jdField_a_of_type_Avvb = new who(this);
+  public MystoryListView a;
+  protected NewMessageYellowBar a;
+  protected AppInterface a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(@NonNull whl paramwhl, @NonNull uyb paramuyb)
+  public void a()
   {
-    if (paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramuyb.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramuyb.b)) || (paramuyb.b.equals(paramwhl.jdField_a_of_type_JavaLangString))) {
-        break label49;
-      }
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Avvb);
     }
-    label49:
-    do
-    {
-      return;
-      if (paramuyb.jdField_a_of_type_Int != -1) {
-        whl.a(paramwhl, paramuyb.jdField_a_of_type_Int);
-      }
-    } while (paramwhl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramwhl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = whl.a(paramwhl);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramwhl), 5, null, false);
   }
   
-  public Class acceptEventClass()
+  public void a(AppInterface paramAppInterface, View paramView, MystoryListView paramMystoryListView)
   {
-    return uyb.class;
+    if (!(paramView instanceof NewMessageYellowBar)) {
+      throw new IllegalArgumentException("StoryHomePushYellowBarHandler 传入View不对");
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new whp(this));
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Avvb);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.a(0, 0);
+    ((nan)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(70)).a(21);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Avvb);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Avvb);
+    }
   }
 }
 

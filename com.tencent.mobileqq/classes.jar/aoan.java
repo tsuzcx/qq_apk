@@ -1,15 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class aoan
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface aoan
 {
-  aoan(aoam paramaoam) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-  }
+  public abstract void a(aoaj paramaoaj);
+  
+  public abstract void b(int paramInt);
 }
 
 

@@ -1,22 +1,14 @@
-class asxb
-  implements asxd
+public abstract interface asxb
 {
-  asxb(asxa paramasxa) {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt, String paramString)
-  {
-    try
-    {
-      if (asxa.a(this.a) != null) {
-        asxa.a(this.a).a(paramInt, paramString);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

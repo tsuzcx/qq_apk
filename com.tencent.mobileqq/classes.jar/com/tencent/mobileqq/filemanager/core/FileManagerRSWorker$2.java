@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqsk;
+import aqwt;
 
 public class FileManagerRSWorker$2
   implements Runnable
 {
-  public FileManagerRSWorker$2(aqsk paramaqsk, long paramLong) {}
+  public FileManagerRSWorker$2(aqwt paramaqwt, long paramLong) {}
   
   public void run()
   {

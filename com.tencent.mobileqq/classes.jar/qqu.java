@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 public class qqu
 {
-  private static Pattern a = Pattern.compile(bdeo.c.pattern() + "|" + bdeo.d.pattern(), 2);
+  private static Pattern a = Pattern.compile(bdix.c.pattern() + "|" + bdix.d.pattern(), 2);
   
   private static int a(Spannable paramSpannable, int paramInt1, int paramInt2)
   {
@@ -140,7 +140,7 @@ public class qqu
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localObject).getAppRuntime())) {
           break label92;
         }
-        if ((bdag.b()) || (bdag.d())) {
+        if ((bdep.b()) || (bdep.d())) {
           break label80;
         }
         localSystemBarCompact.setStatusBarColor(-7829368);
@@ -152,13 +152,13 @@ public class qqu
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label92:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
     {
       ((PublicFragmentActivity)localObject).getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(-1);
       return;
     }
-    if (!bdag.d())
+    if (!bdep.d())
     {
       localSystemBarCompact.setStatusBarColor(-2368549);
       return;
@@ -174,7 +174,7 @@ public class qqu
     for (;;)
     {
       return false;
-      if (bdeo.b.matcher(paramSpannable).find())
+      if (bdix.b.matcher(paramSpannable).find())
       {
         Object localObject = (shc[])paramSpannable.getSpans(0, m, shc.class);
         int j;
@@ -266,11 +266,11 @@ public class qqu
     label650:
     for (;;)
     {
-      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), ayvy.a(b((String)localObject + paramEditText, str))));
+      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), azah.a(b((String)localObject + paramEditText, str))));
       return true;
       int m = arrayOfsha.length;
       Arrays.sort(arrayOfsha, new qqv(localEditable));
-      paramEditText = ayvy.a(b(localEditable.subSequence(0, localEditable.getSpanStart(arrayOfsha[0])).toString(), str));
+      paramEditText = azah.a(b(localEditable.subSequence(0, localEditable.getSpanStart(arrayOfsha[0])).toString(), str));
       paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), (String)localObject + paramEditText.replaceAll("^\\s+", ""), 0));
       int k = localEditable.length();
       int i = 0;
@@ -285,7 +285,7 @@ public class qqu
           label372:
           paramEditText = "";
           if (j - n > 0) {
-            paramEditText = ayvy.a(b(localEditable.subSequence(n, j).toString(), str));
+            paramEditText = azah.a(b(localEditable.subSequence(n, j).toString(), str));
           }
           if (!(localObject instanceof AtFriendsSpan)) {
             break label481;
@@ -310,7 +310,7 @@ public class qqu
           }
           else if ((localObject instanceof shb))
           {
-            paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), paramEditText, 3, new SocializeFeedsInfo.JumpInfo(0L, alpo.a(2131716401), ((shb)localObject).a())));
+            paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), paramEditText, 3, new SocializeFeedsInfo.JumpInfo(0L, alud.a(2131716413), ((shb)localObject).a())));
           }
         }
       }

@@ -1,59 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class tsa
-  extends tvg
-  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private View b;
-  private View c;
-  private View d;
-  private View e;
+  public QQCircleFeedBase.StTabInfo a;
+  private boolean a;
   
-  protected void a(View paramView)
+  public tsa(QQCircleFeedBase.StTabInfo paramStTabInfo)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372529);
-    this.b = paramView.findViewById(2131372527);
-    this.c = paramView.findViewById(2131372519);
-    this.c.setOnClickListener(this);
-    this.d = paramView.findViewById(2131372523);
-    this.d.setOnClickListener(this);
-    tyj.a("", 4, 1L);
-    this.e = paramView.findViewById(2131372518);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131372522));
-    this.e.setOnClickListener(this);
-    if ((a() != null) && ((a() instanceof BaseActivity))) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(bcxb.a(((BaseActivity)a()).app, 1, 4, tqg.a()));
-    }
+    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo = paramStTabInfo;
   }
   
-  public void onClick(View paramView)
+  public static tsa a(QQCircleFeedBase.StTabInfo paramStTabInfo)
   {
-    String str = "1";
-    if (tym.a().c(3)) {
-      str = "2";
-    }
-    switch (paramView.getId())
+    return new tsa(paramStTabInfo);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.tabType.get();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.tabName.get();
+  }
+  
+  public tsa a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    switch (a())
     {
-    case 2131372520: 
-    case 2131372521: 
+    case 5: 
     default: 
-      return;
-    case 2131372519: 
-      ((BaseActivity)a()).doOnBackPressed();
-      tyj.a("", 21, 1L, 0L, str, "", "", "", "");
-      return;
-    case 2131372523: 
-      tqs.a(a(), tqr.b, null);
-      tyj.a("", 4, 2L);
-      return;
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 4;
+    case 3: 
+      return 6;
+    case 4: 
+      return 5;
     }
-    tyj.a("", 21, 2L, 0L, str, "", "", "", "");
-    tqs.a(tqg.a());
+    return 10;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.attachInfo.get();
   }
 }
 

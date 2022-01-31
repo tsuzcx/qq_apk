@@ -1,69 +1,46 @@
-import android.content.Context;
-import android.util.Base64;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agvo
-  implements agvy
+  extends Handler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public agvo(Context paramContext)
+  public agvo(TroopChatPie paramTroopChatPie, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 66;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558620, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362421));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362420));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846807);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agvp(this));
+    case 3: 
+    default: 
+    case 1: 
+    case 2: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a(null, false);
+          return;
+          paramMessage = paramMessage.obj;
+        } while (!(paramMessage instanceof bcoa));
+        this.a.a((bcoa)paramMessage);
+        return;
+      } while (TroopChatPie.j(this.a) == null);
+      TroopChatPie.k(this.a).a();
+      return;
     }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
-      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
-    }
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs);
-      String str = paramVarArgs.getString("content");
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
-      label150:
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      break label150;
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 17;
+    String str = (String)paramMessage.obj;
+    int i = paramMessage.arg1;
+    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
   }
 }
 

@@ -1,28 +1,21 @@
-public class balh
-  implements alkr
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+
+class balh
+  extends bajy
 {
-  protected void a() {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
+  TextView b;
+  TextView c;
   
-  protected void a(balk parambalk, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, balk parambalk, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private balh(balf parambalf)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (balk)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-      paramObject = (Object[])paramObject;
-      a((balk)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-      return;
-    } while (!paramBoolean);
-    a();
+    super(parambalf);
   }
 }
 

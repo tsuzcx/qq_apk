@@ -1,154 +1,145 @@
-import android.os.Handler;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter.1;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import pttcenterservice.PttShortVideo.PttShortVideoFileInfo;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadReq;
 
 public class bcul
+  extends bcuj
 {
-  public float a;
-  public final int a;
-  public Handler a;
-  public QQAppInterface a;
-  public String a;
-  public List<bcum> a;
-  public int b;
-  public String b;
+  private ITransactionCallback b;
+  protected Transaction b;
+  protected boolean b;
+  protected String c;
   
-  public bcul(QQAppInterface paramQQAppInterface, Handler paramHandler)
+  public bcul(bcug parambcug, int paramInt)
   {
-    this.jdField_a_of_type_Int = 32;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(parambcug, paramInt);
+    this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new bcum(this);
   }
   
-  public String a(String paramString)
+  public void a()
   {
-    Object localObject = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), paramString });
-    long l = System.currentTimeMillis();
-    Process localProcess = Runtime.getRuntime().exec((String)localObject);
-    BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
-    localObject = "";
-    for (;;)
-    {
-      String str2 = localBufferedReader.readLine();
-      if (str2 == null) {
-        break;
-      }
-      String str1 = (String)localObject + str2 + "\n";
-      if (!str2.contains("From"))
-      {
-        localObject = str1;
-        if (!str2.contains("from")) {}
-      }
-      else
-      {
-        this.jdField_a_of_type_Float = ((float)(System.currentTimeMillis() - l));
-        localObject = str1;
-      }
+    String str1 = this.jdField_a_of_type_Bcug.jdField_b_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_Bcug.jdField_a_of_type_JavaLangString;
+    boolean bool2 = a(str1);
+    boolean bool1 = false;
+    if (bool2) {
+      bool1 = b(str2);
     }
+    if ((bool2) && (bool1)) {
+      return;
+    }
+    e();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
+      c();
+    }
+  }
+  
+  protected boolean b(String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("UnifiedTraceRouter", 2, "ping url = " + paramString + " result = " + (String)localObject);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo path= " + paramString);
     }
-    try
+    ITransactionCallback localITransactionCallback = this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
+    QQAppInterface localQQAppInterface = a();
+    String str = localQQAppInterface.c();
+    byte[] arrayOfByte;
+    File localFile;
+    if (localQQAppInterface != null)
     {
-      localProcess.destroy();
-      label190:
-      if (((String)localObject).equals("")) {
-        throw new IllegalArgumentException("ping result is empty");
+      arrayOfByte = amzy.a(paramString);
+      localFile = new File(paramString);
+      if (arrayOfByte != null) {
+        break label93;
       }
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_JavaLangString = c((String)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("UnifiedTraceRouter", 2, "final ip: " + this.jdField_a_of_type_JavaLangString);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo md5 null ");
       }
-      return localObject;
     }
-    catch (Exception paramString)
-    {
-      break label190;
-    }
-  }
-  
-  public void a(long paramLong, String paramString, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new UnifiedTraceRouter.1(this, paramString, paramLong, paramMap));
-  }
-  
-  public String b(String paramString)
-  {
-    Object localObject2 = null;
+    label93:
     int i;
-    int j;
-    Object localObject1;
-    if (paramString.contains("From"))
-    {
-      paramString = paramString.substring(paramString.indexOf("From") + 5);
-      if (paramString.contains("("))
-      {
-        i = paramString.indexOf("(");
-        j = paramString.indexOf(")");
-        localObject1 = paramString;
-        if (i >= 0)
-        {
-          localObject1 = paramString;
-          if (j >= 0) {
-            localObject1 = paramString.substring(i + 1, j);
-          }
-        }
-      }
-    }
     do
     {
-      do
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "uploadVideo,file length " + new File(paramString).length());
+      }
+      PttShortVideo.PttShortVideoUploadReq localPttShortVideoUploadReq = new PttShortVideo.PttShortVideoUploadReq();
+      localPttShortVideoUploadReq.setHasFlag(true);
+      localPttShortVideoUploadReq.uint64_fromuin.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint64_touin.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint32_chat_type.set(1);
+      localPttShortVideoUploadReq.uint32_client_type.set(1);
+      localPttShortVideoUploadReq.uint64_group_code.set(Long.parseLong(str));
+      localPttShortVideoUploadReq.uint32_agent_type.set(0);
+      localPttShortVideoUploadReq.uint32_business_type.set(3001);
+      localPttShortVideoUploadReq.uint32_flag_support_large_size.set(1);
+      PttShortVideo.PttShortVideoFileInfo localPttShortVideoFileInfo = new PttShortVideo.PttShortVideoFileInfo();
+      localPttShortVideoFileInfo.str_file_name.set(localFile.getName());
+      localPttShortVideoFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
+      localPttShortVideoFileInfo.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
+      localPttShortVideoFileInfo.uint64_file_size.set(localFile.length());
+      localPttShortVideoFileInfo.uint32_file_res_length.set(0);
+      localPttShortVideoFileInfo.uint32_file_res_width.set(0);
+      localPttShortVideoFileInfo.uint32_file_format.set(3);
+      localPttShortVideoFileInfo.uint32_file_time.set((int)this.jdField_a_of_type_Bcug.jdField_a_of_type_Long);
+      localPttShortVideoFileInfo.uint64_thumb_file_size.set(0L);
+      localPttShortVideoUploadReq.msg_PttShortVideoFileInfo.set(localPttShortVideoFileInfo);
+      paramString = new Transaction(str, 74, paramString, 0, arrayOfByte, localITransactionCallback, localPttShortVideoUploadReq.toByteArray(), false);
+      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
+      if (i == 0)
       {
-        return localObject1;
-        paramString = paramString.substring(0, paramString.indexOf("\n"));
-        if (paramString.contains(":")) {}
-        for (i = paramString.indexOf(":");; i = paramString.indexOf(" "))
-        {
-          localObject1 = paramString;
-          if (i <= 0) {
-            break;
-          }
-          return paramString.substring(0, i);
-        }
-        i = paramString.indexOf("(");
-        j = paramString.indexOf(")");
-        localObject1 = localObject2;
-      } while (i < 0);
-      localObject1 = localObject2;
-    } while (j < 0);
-    return paramString.substring(i + 1, j);
+        this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo submitTransactionTask  retCode= " + i);
+    return false;
   }
   
-  public String c(String paramString)
+  public void c()
   {
-    String str = "";
-    if (paramString.contains("PING")) {
-      str = paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
-    }
-    return str;
-  }
-  
-  public String d(String paramString)
-  {
-    String str = "";
-    if (paramString.contains("time="))
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 1);
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.c != null))
     {
-      paramString = paramString.substring(paramString.indexOf("time=") + 5);
-      str = paramString.substring(0, paramString.indexOf(" "));
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("vid", this.c);
     }
-    return str;
+    for (;;)
+    {
+      bcuh.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
   }
 }
 

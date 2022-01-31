@@ -1,29 +1,36 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
-import android.app.Activity;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
-class yjs
-  implements yvn<CertifiedAccountWrite.StDelFeedRsp>
+public class yjs
+  extends yiu
 {
-  yjs(yjq paramyjq) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
+  public yjs(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    if ((!paramBoolean) || (paramLong != 0L))
-    {
-      QQToast.a(this.a.a, 1, alpo.a(2131715028), 0).a();
-      return;
-    }
-    yej.a().a(new SubscribeFeedsEvent(yjq.a(this.a).a.id.get(), 3));
-    this.a.a.finish();
-    QQToast.a(this.a.a, alpo.a(2131715024), 0).a();
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  {
+    return SubscribePersonalDetailFragment.a(this.a);
+  }
+  
+  public void loadData(yii paramyii)
+  {
+    if ((paramyii.c()) || (paramyii.d()))
+    {
+      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).a() == 1))
+      {
+        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
+        yiw.a().a(localSubDraftChangeEvent);
+      }
+      SubscribePersonalDetailFragment.a(this.a, paramyii);
+    }
+  }
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

@@ -1,6 +1,15 @@
-public abstract interface ango
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+
+public class ango
+  extends angm
 {
-  public abstract boolean a(String paramString1, String paramString2, String paramString3);
+  public String a;
+  
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  {
+    this.a = paramBundle.getString("PromotionDescription", "");
+  }
 }
 
 

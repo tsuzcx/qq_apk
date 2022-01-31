@@ -1,24 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class bkrc
-  implements Animator.AnimatorListener
+public abstract interface bkrc
 {
-  bkrc(bkqr parambkqr) {}
+  public abstract View a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(int paramInt, bkqp parambkqp, bkqo parambkqo);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
-    }
-  }
+  public abstract View b();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void b(int paramInt, bkqp parambkqp, bkqo parambkqo);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract View c();
+  
+  public abstract void c(int paramInt, bkqp parambkqp, bkqo parambkqo);
 }
 
 

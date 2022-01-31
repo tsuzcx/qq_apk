@@ -1,16 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
 final class bczl
-  implements View.OnClickListener
+  implements DownloadParams.DecodeHandler
 {
-  bczl(AtomicBoolean paramAtomicBoolean, avva paramavva) {}
-  
-  public void onClick(View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_Avva.dismiss();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      return bdhj.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return bdhj.c(paramBitmap, 50, 50);
   }
 }
 

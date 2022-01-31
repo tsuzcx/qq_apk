@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alfi;
-import alfq;
-import alft;
+import aljx;
+import alkf;
+import alki;
 
 public class ApolloGameUtil$6$4
   implements Runnable
 {
-  public ApolloGameUtil$6$4(alfi paramalfi, String paramString, String[] paramArrayOfString, alfq paramalfq) {}
+  public ApolloGameUtil$6$4(aljx paramaljx, String paramString, String[] paramArrayOfString, alkf paramalkf) {}
   
   public void run()
   {
-    alft.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Alfq);
+    alki.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Alkf);
   }
 }
 

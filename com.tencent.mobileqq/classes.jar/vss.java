@@ -1,6 +1,10 @@
 public abstract interface vss
 {
-  public abstract void b();
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

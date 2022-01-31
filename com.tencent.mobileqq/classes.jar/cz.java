@@ -1,22 +1,22 @@
 import android.os.AsyncTask;
 
 final class cz
-  implements army
+  implements arrh
 {
-  cz(AsyncTask paramAsyncTask, int paramInt, army paramarmy) {}
+  cz(AsyncTask paramAsyncTask, int paramInt, arrh paramarrh) {}
   
   public void a()
   {
     this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Army != null) {
-      this.jdField_a_of_type_Army.a();
+    if (this.jdField_a_of_type_Arrh != null) {
+      this.jdField_a_of_type_Arrh.a();
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Army != null) {
-      this.jdField_a_of_type_Army.b();
+    if (this.jdField_a_of_type_Arrh != null) {
+      this.jdField_a_of_type_Arrh.b();
     }
   }
 }

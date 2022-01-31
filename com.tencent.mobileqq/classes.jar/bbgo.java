@@ -1,28 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 
 public class bbgo
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  public bbgo(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bbgq parambbgq) {}
+  public bbgo(QLifeCommentActivity paramQLifeCommentActivity, bdjz parambdjz) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgq.a(null);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Bbgq.a(null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bfhe.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Bbgq.a(paramURLDrawable);
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.cancel();
+    }
   }
 }
 

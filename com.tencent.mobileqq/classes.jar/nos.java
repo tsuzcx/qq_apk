@@ -29,7 +29,7 @@ public class nos
   protected void a()
   {
     super.a();
-    Object localObject = bkel.a().a();
+    Object localObject = bkis.a().a();
     if ((localObject == null) || (((List)localObject).isEmpty())) {}
     for (;;)
     {
@@ -37,9 +37,9 @@ public class nos
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bked localbked = (bked)((Iterator)localObject).next();
-        if ((localbked instanceof nos)) {
-          bkel.a().b(localbked);
+        bkik localbkik = (bkik)((Iterator)localObject).next();
+        if ((localbkik instanceof nos)) {
+          bkis.a().b(localbkik);
         }
       }
     }
@@ -129,11 +129,11 @@ public class nos
         } while (!(localObject instanceof rbt));
         localObject = (rbt)localObject;
       } while ((((rbt)localObject).r == null) || (((rbt)localObject).r.getVisibility() != 0));
-      localObject = (VideoInfo.GameAdComData)((rbt)localObject).r.getTag(2131379913);
+      localObject = (VideoInfo.GameAdComData)((rbt)localObject).r.getTag(2131379971);
     } while ((localObject == null) || (!"2".equals(((VideoInfo.GameAdComData)localObject).r)) || (!paramqyj.d.equals(((VideoInfo.GameAdComData)localObject).d)));
     ((VideoInfo.GameAdComData)localObject).c = paramqyj.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c;
     ((VideoInfo.GameAdComData)localObject).b = paramqyj.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b;
-    paramqyj = ((raw)((biau)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
+    paramqyj = ((raw)((bifb)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
     this.b.post(new ADVideoFeedsVideoAppDownlodManager.1(this, paramqyj, paramInt1, paramInt2));
   }
 }

@@ -1,15 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
-class akrm
-  implements EIPCResultCallback
+public class akrm
+  implements Comparator<akrq>
 {
-  akrm(akrg paramakrg) {}
+  public akrm(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a(akrq paramakrq1, akrq paramakrq2)
   {
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
+    return paramakrq1.a() - paramakrq2.a();
   }
 }
 

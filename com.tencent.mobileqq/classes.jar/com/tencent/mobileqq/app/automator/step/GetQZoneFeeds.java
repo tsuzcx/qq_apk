@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import axfe;
-import bjlh;
+import axjn;
+import bjpo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -15,8 +15,8 @@ public class GetQZoneFeeds
   public int a()
   {
     jdField_a_of_type_Boolean = true;
-    ((axfe)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(91)).a();
-    ((bjlh)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(175)).b();
+    ((axjn)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(91)).a();
+    ((bjpo)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(175)).b();
     InstallPlugins.a(1);
     InstallPlugins.a();
     return super.a();

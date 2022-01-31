@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class bcpi
-  implements bhxy
+final class bcpi
+  extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
+  bcpi(String paramString, MessageRecord paramMessageRecord) {}
   
-  public bcpi(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    auke.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
-    }
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

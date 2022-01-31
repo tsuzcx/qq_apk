@@ -20,33 +20,33 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anhp;
-import aqil;
-import aqin;
-import aqio;
-import aqip;
-import aqiq;
-import aqir;
-import aqis;
-import aqit;
-import aqiu;
-import aqiv;
-import aqwa;
-import armv;
-import armz;
-import arni;
-import arof;
-import arpo;
-import azmj;
-import bdee;
-import bdiv;
-import bfij;
-import bfja;
-import bfka;
-import bhpx;
-import bhpy;
-import bhqd;
-import bhql;
+import anly;
+import aqmu;
+import aqmw;
+import aqmx;
+import aqmy;
+import aqmz;
+import aqna;
+import aqnb;
+import aqnc;
+import aqnd;
+import aqne;
+import araj;
+import arre;
+import arri;
+import arrr;
+import arso;
+import artx;
+import azqs;
+import bdin;
+import bdne;
+import bfms;
+import bfnj;
+import bfoj;
+import bhue;
+import bhuf;
+import bhuk;
+import bhus;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -77,14 +77,14 @@ public class UniformDownloadActivity
   public static String k = "refer_url";
   private static final String m = null;
   private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aqit(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aqnc(this);
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arpo jdField_a_of_type_Arpo = new aqio(this);
-  private bfka jdField_a_of_type_Bfka = new aqin(this);
-  public bhpy a;
-  private bhqd jdField_a_of_type_Bhqd = new aqiu(this);
+  private artx jdField_a_of_type_Artx = new aqmx(this);
+  private bfoj jdField_a_of_type_Bfoj = new aqmw(this);
+  public bhuf a;
+  private bhuk jdField_a_of_type_Bhuk = new aqnd(this);
   public QQAppInterface a;
   private boolean jdField_a_of_type_Boolean;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -111,16 +111,16 @@ public class UniformDownloadActivity
   {
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839228));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839229));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setId(241);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setId(242);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
     this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131691995);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131691996);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166808));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166810));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, a(30.0F));
     localLayoutParams.addRule(13);
@@ -186,7 +186,7 @@ public class UniformDownloadActivity
     if (localPortalManager == null) {
       return true;
     }
-    if (((!anhp.f) || (!this.jdField_a_of_type_Boolean)) && (localPortalManager.a(paramString))) {}
+    if (((!anly.f) || (!this.jdField_a_of_type_Boolean)) && (localPortalManager.a(paramString))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -194,32 +194,32 @@ public class UniformDownloadActivity
   
   private void b()
   {
-    super.setContentView(2131560671);
-    Object localObject1 = (TextView)findViewById(2131379234);
-    Object localObject2 = (TextView)findViewById(2131379235);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379233));
+    super.setContentView(2131560689);
+    Object localObject1 = (TextView)findViewById(2131379292);
+    Object localObject2 = (TextView)findViewById(2131379293);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379291));
     if (localObject2 != null)
     {
       if (getIntent().getLongExtra(c, 0L) == 1L) {
         ((TextView)localObject2).setText(2131690513);
       }
-      ((TextView)localObject2).setOnClickListener(new aqil(this));
+      ((TextView)localObject2).setOnClickListener(new aqmu(this));
     }
     if (localObject1 != null) {
-      ((TextView)localObject1).setOnClickListener(new aqip(this));
+      ((TextView)localObject1).setOnClickListener(new aqmy(this));
     }
     Intent localIntent = getIntent();
-    TextView localTextView1 = (TextView)findViewById(2131379239);
-    TextView localTextView2 = (TextView)findViewById(2131379240);
-    ImageView localImageView = (ImageView)findViewById(2131379238);
+    TextView localTextView1 = (TextView)findViewById(2131379297);
+    TextView localTextView2 = (TextView)findViewById(2131379298);
+    ImageView localImageView = (ImageView)findViewById(2131379296);
     localObject2 = localIntent.getStringExtra(h);
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = this.o;
     }
     localTextView1.setText((CharSequence)localObject1);
-    localTextView2.setText(arof.a(this.jdField_a_of_type_Long));
-    int i1 = arni.b(this.o);
+    localTextView2.setText(arso.a(this.jdField_a_of_type_Long));
+    int i1 = arrr.b(this.o);
     localObject1 = localIntent.getStringExtra(g);
     if (i1 != 0) {
       localImageView.setImageResource(i1);
@@ -229,32 +229,32 @@ public class UniformDownloadActivity
       if (localObject1 != null)
       {
         localObject1 = URLDrawable.getDrawable((String)localObject1);
-        ((URLDrawable)localObject1).setURLDrawableListener(new aqiq(this, localImageView));
+        ((URLDrawable)localObject1).setURLDrawableListener(new aqmz(this, localImageView));
         localImageView.setImageDrawable((Drawable)localObject1);
       }
       return;
-      localImageView.setImageResource(2130843906);
+      localImageView.setImageResource(2130843978);
     }
   }
   
   private boolean b()
   {
-    return bfij.a("com.tencent.android.qqdownloader") >= 5202129;
+    return bfms.a("com.tencent.android.qqdownloader") >= 5202129;
   }
   
   private void c()
   {
-    azmj.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_click", 0, 1, 0, "", "", "", "");
+    azqs.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_click", 0, 1, 0, "", "", "", "");
     Bundle localBundle = new Bundle();
     localBundle.putString("_filename_from_dlg", this.o);
     localBundle.putLong("_filesize_from_dlg", this.jdField_a_of_type_Long);
     localBundle.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_WEBVIEW");
     localBundle.putString("FILE_MIME_TYPE", this.q);
     localBundle.putString("param_refer_url", this.r);
-    aqwa.a().a(this.n, localBundle, this.jdField_a_of_type_Arpo);
+    araj.a().a(this.n, localBundle, this.jdField_a_of_type_Artx);
     d();
-    bfja.a().a(this.p, "", "ANDROIDQQ.POPUP.SDKDOWNAPP", "202", false);
-    azmj.b(null, "dc00898", "", "", "0X8008FF9", "0X8008FF9", 1, 0, "", "", "", "");
+    bfnj.a().a(this.p, "", "ANDROIDQQ.POPUP.SDKDOWNAPP", "202", false);
+    azqs.b(null, "dc00898", "", "", "0X8008FF9", "0X8008FF9", 1, 0, "", "", "", "");
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "[UniformDL]. >>> downloadFile. url:" + this.n);
     }
@@ -270,14 +270,14 @@ public class UniformDownloadActivity
   private void e()
   {
     if (b()) {
-      bfja.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3008", false);
+      bfnj.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3008", false);
     }
-    while (bdee.d(getActivity())) {
-      if (arni.a())
+    while (bdin.d(getActivity())) {
+      if (arrr.a())
       {
-        armv.a(getActivity(), 2131692752, 2131721154, new aqiv(this));
+        arre.a(getActivity(), 2131692754, 2131721167, new aqne(this));
         return;
-        bfja.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3005", false);
+        bfnj.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3005", false);
       }
       else
       {
@@ -285,43 +285,43 @@ public class UniformDownloadActivity
         return;
       }
     }
-    armz.a(2131692745);
+    arri.a(2131692747);
     finish();
     overridePendingTransition(0, 0);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(getActivity(), null));
+    this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(getActivity(), null));
     int i1 = 1;
     View localView = null;
-    Object localObject = bdiv.k(this, "noSafeDown");
+    Object localObject = bdne.k(this, "noSafeDown");
     Log.d(jdField_a_of_type_JavaLangString, this.n);
     if (((String)localObject).equals("true"))
     {
-      this.jdField_a_of_type_Bhpy.b(2131690187);
+      this.jdField_a_of_type_Bhuf.b(2131690187);
       localObject = null;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.a(this.jdField_a_of_type_Bhqd);
-      this.jdField_a_of_type_Bhpy.a(new aqir(this));
-      this.jdField_a_of_type_Bhpy.show();
-      this.jdField_a_of_type_Bhpy.setOnKeyListener(new aqis(this));
+      this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_Bhuk);
+      this.jdField_a_of_type_Bhuf.a(new aqna(this));
+      this.jdField_a_of_type_Bhuf.show();
+      this.jdField_a_of_type_Bhuf.setOnKeyListener(new aqnb(this));
       localView = LayoutInflater.from(this).inflate(2131558433, null);
       Button localButton = (Button)localView.findViewById(2131361914);
       localButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localButton.setText(2131691976);
+      localButton.setText(2131691977);
       localButton.setTextColor(getResources().getColor(2131165203));
-      this.jdField_a_of_type_Bhpy.a(localView);
+      this.jdField_a_of_type_Bhuf.a(localView);
       if (localObject != null)
       {
-        localObject = (TextView)this.jdField_a_of_type_Bhpy.findViewById(((bhpx)localObject).b);
+        localObject = (TextView)this.jdField_a_of_type_Bhuf.findViewById(((bhue)localObject).b);
         ((TextView)localObject).setTextColor(getResources().getColor(2131165201));
         ((TextView)localObject).getPaint().setFakeBoldText(true);
       }
-      bfja.a().a(this.p, "", "ANDROIDQQ.POPUP", "100", false);
-      azmj.b(null, "dc00898", "", "", "0X8008FF8", "0X8008FF8", 1, 0, "", "", "", "");
+      bfnj.a().a(this.p, "", "ANDROIDQQ.POPUP", "100", false);
+      azqs.b(null, "dc00898", "", "", "0X8008FF8", "0X8008FF8", 1, 0, "", "", "", "");
       return;
       boolean bool2 = false;
       localObject = localView;
@@ -340,8 +340,8 @@ public class UniformDownloadActivity
             break label389;
           }
           Log.d(jdField_a_of_type_JavaLangString, "url is ok show safe download");
-          localObject = new bhpx(2131365431, getString(2131691978), 0, 0);
-          this.jdField_a_of_type_Bhpy.a((bhpx)localObject, 0);
+          localObject = new bhue(2131365433, getString(2131691979), 0, 0);
+          this.jdField_a_of_type_Bhuf.a((bhue)localObject, 0);
           i1 = bool3;
         }
       }
@@ -351,7 +351,7 @@ public class UniformDownloadActivity
         {
           if (bool1)
           {
-            this.jdField_a_of_type_Bhpy.b(2131690187);
+            this.jdField_a_of_type_Bhuf.b(2131690187);
             break;
             label389:
             Log.d(jdField_a_of_type_JavaLangString, "url is blocked!! show only normal download");
@@ -359,12 +359,12 @@ public class UniformDownloadActivity
             i1 = bool3;
             continue;
           }
-          this.jdField_a_of_type_Bhpy.b(2131691977);
+          this.jdField_a_of_type_Bhuf.b(2131691978);
           break;
         }
       }
       if (localObject == null) {
-        this.jdField_a_of_type_Bhpy.b(2131690188);
+        this.jdField_a_of_type_Bhuf.b(2131690188);
       }
     }
   }
@@ -399,7 +399,7 @@ public class UniformDownloadActivity
   {
     super.doOnDestroy();
     ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.9(this));
-    aqwa.a().a(this.n);
+    araj.a().a(this.n);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }

@@ -1,20 +1,47 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import android.text.TextUtils;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
 
-class bhfc
-  implements bgje
+public class bhfc
+  extends bhfg
 {
-  bhfc(bhex parambhex) {}
+  private bhfg jdField_a_of_type_Bhfg;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public bhfc(bhfb parambhfb, int paramInt)
   {
-    if (paramInt1 == 2019)
+    super(parambhfb, Integer.valueOf(paramInt));
+  }
+  
+  public bhfc a(bhfg parambhfg)
+  {
+    this.jdField_a_of_type_Bhfg = parambhfg;
+    return this;
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.a.a.a(paramInt1, paramInt2, paramIntent);
-      bgjd.a().b(this);
-      return true;
+      this.jdField_a_of_type_Bhfb.a(bhfb.a);
+      return;
     }
-    return false;
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("QLogic.js"))) {
+      SpeedUtil.DEFAULT.event("runQLogicJs start " + this.jdField_a_of_type_Bhfb);
+    }
+    this.jdField_a_of_type_Bhfb.a(this.jdField_a_of_type_JavaLangString, new bhfd(this), this.b);
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, null);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

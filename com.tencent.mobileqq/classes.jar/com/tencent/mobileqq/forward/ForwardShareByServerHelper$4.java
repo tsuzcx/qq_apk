@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Dialog;
-import arzk;
+import asdt;
 
 public class ForwardShareByServerHelper$4
   implements Runnable
 {
-  public ForwardShareByServerHelper$4(arzk paramarzk) {}
+  public ForwardShareByServerHelper$4(asdt paramasdt) {}
   
   public void run()
   {
-    arzk.a(this.this$0).dismiss();
+    asdt.a(this.this$0).dismiss();
   }
 }
 

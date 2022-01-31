@@ -1,17 +1,17 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 class ahgf
-  extends GridLayoutManager.SpanSizeLookup
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ahgf(ahge paramahge, GridLayoutManager paramGridLayoutManager) {}
+  ahgf(ahge paramahge) {}
   
-  public int getSpanSize(int paramInt)
+  public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_Ahge.a(paramInt)) || (this.jdField_a_of_type_Ahge.b(paramInt)) || (this.jdField_a_of_type_Ahge.c(paramInt)) || (this.jdField_a_of_type_Ahge.b())) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
-    }
-    return 1;
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 

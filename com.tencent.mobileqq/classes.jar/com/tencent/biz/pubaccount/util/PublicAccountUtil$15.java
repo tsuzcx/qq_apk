@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.net.Uri;
-import azmj;
+import azqs;
 
 public final class PublicAccountUtil$15
   implements Runnable
@@ -12,7 +12,7 @@ public final class PublicAccountUtil$15
   {
     try
     {
-      azmj.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
       return;
     }
     catch (Exception localException) {}

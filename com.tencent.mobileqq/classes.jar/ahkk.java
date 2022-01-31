@@ -1,53 +1,44 @@
 import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ahkk
-  extends amab
+  extends Handler
 {
-  public ahkk(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
+  public ahkk(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    this.a.b = false;
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-        ShowExternalTroopListActivity.a(this.a);
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        paramList = new ArrayList();
-        this.a.jdField_a_of_type_Akgo.a(paramList);
-        paramInt = this.a.getTitleBarHeight();
-        QQToast.a(this.a, 1, this.a.getString(2131696650), 0).b(paramInt);
-        return;
-      }
-      this.a.a();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-      ShowExternalTroopListActivity.a(this.a);
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
     }
-    this.a.c.setVisibility(0);
-    if (this.a.jdField_a_of_type_Akgo != null)
-    {
-      this.a.jdField_a_of_type_Int = paramList.size();
-      this.a.jdField_a_of_type_Akgo.a(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
     }
-    this.a.a(paramList1, true);
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

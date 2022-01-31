@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class AuthDevRenameActivity$4
   implements Runnable
@@ -12,11 +12,11 @@ class AuthDevRenameActivity$4
     try
     {
       if ((AuthDevRenameActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevRenameActivity.a(this.this$0, new bepp(this.this$0, this.this$0.getTitleBarHeight()));
+        AuthDevRenameActivity.a(this.this$0, new bety(this.this$0, this.this$0.getTitleBarHeight()));
       }
       if ((AuthDevRenameActivity.a(this.this$0) != null) && (!AuthDevRenameActivity.a(this.this$0).isShowing()))
       {
-        AuthDevRenameActivity.a(this.this$0).a(this.this$0.getString(2131692240));
+        AuthDevRenameActivity.a(this.this$0).a(this.this$0.getString(2131692241));
         AuthDevRenameActivity.a(this.this$0).show();
       }
       return;

@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import azgq;
-import baul;
+import azkz;
+import bayu;
 import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
 import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -20,6 +20,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -32,15 +33,15 @@ import qqcircle.QQCircleFeedBase.StLikeBusiData;
 import qqcircle.QQCircleFeedBase.StPolyLike;
 import tqg;
 import tql;
-import ubq;
-import yej;
-import yel;
+import uej;
+import yiw;
+import yiy;
 
 public class QCirclePolyParseFrameLayout
   extends FrameLayout
-  implements View.OnClickListener, yel
+  implements View.OnClickListener, yiy
 {
-  private int jdField_a_of_type_Int = 2130843565;
+  private int jdField_a_of_type_Int = 2130843582;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ReportExtraTypeInfo jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo;
@@ -51,9 +52,9 @@ public class QCirclePolyParseFrameLayout
   private List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList;
   private QQCircleFeedBase.StLikeBusiData jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData;
   private QQCircleFeedBase.StPolyLike jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
-  private ubq jdField_a_of_type_Ubq;
+  private uej jdField_a_of_type_Uej;
   private boolean jdField_a_of_type_Boolean;
-  private int b = 2130843574;
+  private int b = 2130843591;
   
   public QCirclePolyParseFrameLayout(Context paramContext)
   {
@@ -75,12 +76,12 @@ public class QCirclePolyParseFrameLayout
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560561, this, true);
+    View localView = LayoutInflater.from(getContext()).inflate(2131560574, this, true);
     if (localView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373172));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131373176));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373177));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373207));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131373221));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373224));
       setOnClickListener(this);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow = new QCirclePolymorphicLikePopWindow((Activity)getContext());
     }
@@ -88,39 +89,40 @@ public class QCirclePolyParseFrameLayout
   
   private void a(QQCircleFeedBase.StPolyLike paramStPolyLike)
   {
+    QQCircleFeedBase.StLikeBusiData localStLikeBusiData;
     if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike != null) && (paramStPolyLike != null) && (!this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyLikeID.get().equals(paramStPolyLike.polyLikeID.get())))
     {
-      QQCircleFeedBase.StLikeBusiData localStLikeBusiData = new QQCircleFeedBase.StLikeBusiData();
+      localStLikeBusiData = new QQCircleFeedBase.StLikeBusiData();
       localStLikeBusiData.curPolyLikeInfo.set(paramStPolyLike);
+    }
+    try
+    {
+      this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData = new QQCircleFeedBase.StLikeBusiData();
+      this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.busiData.get().toByteArray());
       localStLikeBusiData.polyLikeInfo.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.polyLikeInfo.get());
       this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.busiData.set(ByteStringMicro.copyFrom(localStLikeBusiData.toByteArray()));
+      this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = paramStPolyLike;
+      if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyLikeID.get())))
+      {
+        paramStPolyLike = URLDrawable.URLDrawableOptions.obtain();
+        paramStPolyLike.mLoadingDrawable = bayu.a;
+        paramStPolyLike.mRequestWidth = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth();
+        paramStPolyLike.mRequestHeight = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight();
+        tql.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyIconUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, paramStPolyLike, false);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        return;
+      }
     }
-    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = paramStPolyLike;
-    if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyLikeID.get())))
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      paramStPolyLike = URLDrawable.URLDrawableOptions.obtain();
-      paramStPolyLike.mLoadingDrawable = baul.a;
-      paramStPolyLike.mRequestWidth = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth();
-      paramStPolyLike.mRequestHeight = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight();
-      tql.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyIconUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, paramStPolyLike, false);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      return;
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePolyPraiseUpdateEvent.class);
-    return localArrayList;
-  }
-  
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    ThreadManager.getUIHandler().post(new QCirclePolyParseFrameLayout.1(this, paramSimpleBaseEvent));
   }
   
   public void a(boolean paramBoolean)
@@ -130,16 +132,23 @@ public class QCirclePolyParseFrameLayout
     {
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, paramBoolean);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a();
-      if (this.jdField_a_of_type_Ubq != null) {
-        this.jdField_a_of_type_Ubq.a(paramBoolean);
+      if (this.jdField_a_of_type_Uej != null) {
+        this.jdField_a_of_type_Uej.a(paramBoolean);
       }
     }
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCirclePolyPraiseUpdateEvent.class);
+    return localArrayList;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yej.a().a(this);
+    yiw.a().a(this);
   }
   
   public void onClick(View paramView)
@@ -156,7 +165,12 @@ public class QCirclePolyParseFrameLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yej.a().b(this);
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    ThreadManager.getUIHandler().post(new QCirclePolyParseFrameLayout.1(this, paramSimpleBaseEvent));
   }
   
   public void setAniView(QCirclePolymorphicAniView paramQCirclePolymorphicAniView)
@@ -194,8 +208,8 @@ public class QCirclePolyParseFrameLayout
     int j;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = azgq.a(30.0F);
-      j = azgq.a(19.0F);
+      i = azkz.a(30.0F);
+      j = azkz.a(19.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams());
@@ -211,8 +225,8 @@ public class QCirclePolyParseFrameLayout
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(getResources().getDrawable(this.jdField_a_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(this.b));
       return;
-      i = azgq.a(45.0F);
-      j = azgq.a(19.0F);
+      i = azkz.a(45.0F);
+      j = azkz.a(19.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams());
@@ -225,11 +239,11 @@ public class QCirclePolyParseFrameLayout
     }
   }
   
-  public void setOnClickHookListener(ubq paramubq)
+  public void setOnClickHookListener(uej paramuej)
   {
-    this.jdField_a_of_type_Ubq = paramubq;
+    this.jdField_a_of_type_Uej = paramuej;
     if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(paramubq);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(paramuej);
     }
   }
   

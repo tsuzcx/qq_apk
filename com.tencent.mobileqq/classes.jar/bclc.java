@@ -1,14 +1,12 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-class bclc
-  implements bclf
+public class bclc
 {
-  bclc(bckx parambckx, String paramString) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
 }
 
 

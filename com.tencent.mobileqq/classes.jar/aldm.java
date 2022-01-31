@@ -1,114 +1,101 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.util.Calendar;
 
-public class aldm
-  implements aldq
+class aldm
+  extends bdul
 {
-  public QQAppInterface a()
+  aldm(aldl paramaldl) {}
+  
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
   {
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (paramBoolean)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        return (QQAppInterface)localAppRuntime;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "ApolloDressChange uin=" + paramObject);
       }
+      if (aldl.a(this.a) != null) {
+        aldl.a(this.a).e();
+      }
+      this.a.c();
     }
-    return null;
   }
   
-  public List<TraceData> a()
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return localQQAppInterface.getEntityManagerFactory().createEntityManager().a(TraceData.class);
-  }
+  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
   
-  public boolean a(List<TraceData> paramList)
+  protected void onGetZanCount(boolean paramBoolean, Object paramObject)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
+    if ((!paramBoolean) || (paramObject == null) || (aldl.a(this.a) == null)) {
+      return;
     }
-    Object localObject;
-    awby localawby;
-    TraceData localTraceData;
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsPresenter", 2, "get zanCount = " + paramObject);
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+    int i = ((SharedPreferences)localObject).getInt("apollo_zan_count" + aldl.a(this.a), 0);
+    ((SharedPreferences)localObject).edit().putInt("apollo_zan_count" + aldl.a(this.a), ((Integer)paramObject).intValue()).commit();
+    if (((Integer)paramObject).intValue() > 99999) {
+      paramObject = Integer.valueOf(99999);
+    }
+    for (;;)
     {
-      localObject = a();
-      if (localObject == null) {
-        return false;
+      localObject = String.valueOf(paramObject);
+      if (((Integer)paramObject).intValue() >= 99999)
+      {
+        paramObject = Integer.valueOf(99999);
+        localObject = paramObject + "+";
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localawby = ((awbw)localObject).a();
-      localawby.a();
-      paramList = paramList.iterator();
       for (;;)
       {
-        if (paramList.hasNext())
-        {
-          localTraceData = (TraceData)paramList.next();
-          if (localTraceData.getStatus() == 1000)
-          {
-            ((awbw)localObject).b(localTraceData);
-            continue;
-            return true;
-          }
-        }
+        aldl.a(this.a).a((String)localObject, i, ((Integer)paramObject).intValue());
+        return;
       }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      ((awbw)localObject).a(localTraceData);
-      break;
-      localawby.c();
-      localawby.b();
-      ((awbw)localObject).a();
     }
   }
   
-  public boolean b(List<TraceData> paramList)
+  protected void onSetZanCount(boolean paramBoolean, Object paramObject)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
+    if ((paramObject == null) || (aldl.a(this.a) == null) || (aldl.a(this.a) == null)) {
+      return;
     }
-    Object localObject;
-    awby localawby;
-    try
-    {
-      localObject = a();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localawby = ((awbw)localObject).a();
-      localawby.a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ((awbw)localObject).b((TraceData)paramList.next());
-        continue;
-        return true;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsPresenter", 2, "set zanCount = " + paramObject);
     }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
+    if (paramBoolean) {}
+    label378:
     for (;;)
     {
-      localawby.c();
-      localawby.b();
-      ((awbw)localObject).a();
+      try
+      {
+        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+        Calendar localCalendar = Calendar.getInstance();
+        ((SharedPreferences)localObject).edit().putBoolean(aldl.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + aldl.a(this.a) + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
+        if (((Integer)paramObject).intValue() <= 99999) {
+          break label378;
+        }
+        paramObject = Integer.valueOf(99999);
+        aldl.a(this.a).b(((Integer)paramObject).intValue());
+        return;
+      }
+      catch (Exception paramObject) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("ApolloGuestsPresenter", 2, "set zanCount error= " + paramObject.toString());
+      return;
+      if (((Long)paramObject).longValue() != -501010L) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "today has vote to " + aldl.a(this.a));
+      }
+      paramObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+      Object localObject = Calendar.getInstance();
+      paramObject.edit().putBoolean(aldl.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + aldl.a(this.a) + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), true).commit();
+      return;
     }
   }
 }

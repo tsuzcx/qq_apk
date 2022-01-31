@@ -1,20 +1,12 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
-public class xkj
-  implements xkk
+public abstract interface xkj
 {
-  public void a(@NonNull ArrayList<xkl> paramArrayList, @NonNull Context paramContext)
-  {
-    int i = 0;
-    while (i < xkl.a.length)
-    {
-      paramArrayList.add(new xkl(paramContext.getResources().getDrawable(xkl.b[i]), 0, xkl.a[i]));
-      i += 1;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

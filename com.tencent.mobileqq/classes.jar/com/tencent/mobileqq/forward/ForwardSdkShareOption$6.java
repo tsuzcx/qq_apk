@@ -2,14 +2,14 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.os.Bundle;
-import aruc;
-import arys;
+import aryl;
+import asdb;
 import com.tencent.qphone.base.util.QLog;
 
 public class ForwardSdkShareOption$6
   implements Runnable
 {
-  public ForwardSdkShareOption$6(arys paramarys) {}
+  public ForwardSdkShareOption$6(asdb paramasdb) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class ForwardSdkShareOption$6
       }
       this.this$0.j = true;
       this.this$0.x();
-    } while (!arys.a(this.this$0));
+    } while (!asdb.a(this.this$0));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aruc.e.intValue());
+    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aryl.e.intValue());
     this.this$0.l();
   }
 }

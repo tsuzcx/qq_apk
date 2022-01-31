@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
@@ -11,10 +11,10 @@ public class QZoneMsgManager$3
 {
   public void run()
   {
-    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
+    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
     try
     {
-      localawbw.a(QZoneMsgEntityNew.class);
+      localawgf.a(QZoneMsgEntityNew.class);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,8 +24,8 @@ public class QZoneMsgManager$3
     }
     finally
     {
-      if (localawbw != null) {
-        localawbw.a();
+      if (localawgf != null) {
+        localawgf.a();
       }
     }
   }

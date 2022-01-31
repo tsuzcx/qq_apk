@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bglw;
+import bgqd;
 
 public class AsyncTask$SerialExecutor$1
   implements Runnable
 {
-  public AsyncTask$SerialExecutor$1(bglw parambglw, Runnable paramRunnable) {}
+  public AsyncTask$SerialExecutor$1(bgqd parambgqd, Runnable paramRunnable) {}
   
   public void run()
   {

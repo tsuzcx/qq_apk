@@ -1,83 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.io.File;
 
 public class aolz
-  extends aofy<blus>
+  extends aolx
 {
   public int a()
   {
-    return 305;
+    return 186;
   }
   
-  @NonNull
-  public blus a(int paramInt)
+  public aolr a(String paramString)
   {
-    return new blus();
-  }
-  
-  @Nullable
-  public blus a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
-    }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfaogf);
-    }
-    return new blup().a(paramArrayOfaogf, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new aoma(this));
-  }
-  
-  public Class<blus> a()
-  {
-    return blus.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
-    }
-  }
-  
-  public void a(blus paramblus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!QIMMusicConfigManager.a()) {
-      return 0;
-    }
-    return bdiv.C(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!QIMMusicConfigManager.a())
+    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    for (;;)
     {
-      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
-      aogj.a().a(305, 0);
-      return 0;
+      try
+      {
+        aomk localaomk = (aomk)aolc.a(paramString, aomk.class);
+        aomu localaomu;
+        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException1)
+      {
+        try
+        {
+          localaomu = (aomu)aolc.a(paramString, aomu.class);
+          return new aolt(paramString, localaomk, localaomu);
+        }
+        catch (QStorageInstantiateException localQStorageInstantiateException2)
+        {
+          Object localObject;
+          break label71;
+        }
+        localQStorageInstantiateException1 = localQStorageInstantiateException1;
+        localaomk = null;
+      }
+      label71:
+      localObject = null;
     }
-    return super.b(paramInt);
   }
   
-  public boolean b()
+  public void a(aolr paramaolr)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super.a(paramaolr);
+    if (paramaolr == null) {
+      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
+    }
+    anly localanly;
+    do
+    {
+      return;
+      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramaolr.a());
+      localanly = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(121)).a();
+      paramaolr = paramaolr.a();
+    } while (paramaolr == null);
+    localanly.a(paramaolr.a());
   }
 }
 

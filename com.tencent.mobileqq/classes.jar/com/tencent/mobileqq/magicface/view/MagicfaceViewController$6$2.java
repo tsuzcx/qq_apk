@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.magicface.view;
 
 import android.widget.TextView;
-import atva;
-import atvc;
+import atzj;
+import atzl;
 
 public class MagicfaceViewController$6$2
   implements Runnable
 {
-  public MagicfaceViewController$6$2(atvc paramatvc, String paramString) {}
+  public MagicfaceViewController$6$2(atzl paramatzl, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      this.jdField_a_of_type_Atvc.a.d.setVisibility(0);
-      this.jdField_a_of_type_Atvc.a.d.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atzl.a.d.setVisibility(0);
+      this.jdField_a_of_type_Atzl.a.d.setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

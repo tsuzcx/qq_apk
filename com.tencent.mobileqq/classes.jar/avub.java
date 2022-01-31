@@ -1,18 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
-class avub
-  implements View.OnClickListener
+public class avub
+  implements GestureDetector.OnGestureListener
 {
-  avub(avua paramavua) {}
+  public avub(OverCoverFrameLayout paramOverCoverFrameLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof avuc)))
-    {
-      paramView = (avuc)paramView.getTag();
-      this.a.a.a(paramView);
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) <= this.a.e) {}
+    while ((this.a.a != null) && (this.a.a.a())) {
+      return false;
     }
+    if (paramFloat2 < 0.0F) {
+      this.a.a();
+    }
+    for (;;)
+    {
+      return true;
+      this.a.b();
+    }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) <= this.a.d) {}
+    while ((this.a.a != null) && (this.a.a.a())) {
+      return false;
+    }
+    if (paramFloat2 > 0.0F) {
+      this.a.a();
+    }
+    for (;;)
+    {
+      return true;
+      this.a.b();
+    }
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

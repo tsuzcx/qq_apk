@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ahke;
-import ahld;
+import ahot;
+import ahps;
 
 public class TroopNotifyAndRecommendView$10$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$10$1(ahld paramahld, String paramString) {}
+  public TroopNotifyAndRecommendView$10$1(ahps paramahps, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ahld.a.a != null) {
-      this.jdField_a_of_type_Ahld.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ahps.a.a != null) {
+      this.jdField_a_of_type_Ahps.a.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

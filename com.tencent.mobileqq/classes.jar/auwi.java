@@ -1,19 +1,16 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class auwi
-  implements AbsListView.OnScrollListener
+class auwi
+  extends avbp
 {
-  public auwi(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  auwi(auwd paramauwd, int paramInt) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected void a()
   {
-    if (paramInt == 1) {
-      bhoc.b(ChooseInterestTagActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      auwz.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
+    auwd.a(this.jdField_a_of_type_Auwd, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

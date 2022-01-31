@@ -33,7 +33,7 @@ public class obq
   extends pdc
 {
   private static odu jdField_a_of_type_Odu = new odu();
-  private float jdField_a_of_type_Float = bdcb.d() * 500 / 160.0F;
+  private float jdField_a_of_type_Float = bdgk.d() * 500 / 160.0F;
   private int jdField_a_of_type_Int;
   private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(1);
   private DecelerateInterpolator jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator = new DecelerateInterpolator(this.jdField_c_of_type_Float);
@@ -44,7 +44,7 @@ public class obq
   private ofh jdField_a_of_type_Ofh;
   protected oxe a;
   private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = bdcb.d() * 1000 / 160.0F;
+  private float jdField_b_of_type_Float = bdgk.d() * 1000 / 160.0F;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = 1.5F;
@@ -173,9 +173,9 @@ public class obq
       while (i < localReadInJoyXListView.getChildCount())
       {
         View localView = localReadInJoyXListView.getChildAt(i);
-        if ((localView.getTag(2131379913) instanceof pgq))
+        if ((localView.getTag(2131379971) instanceof pgq))
         {
-          Object localObject = ((pgq)localView.getTag(2131379913)).a();
+          Object localObject = ((pgq)localView.getTag(2131379971)).a();
           if ((localObject != null) && (AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject)) && ((localView instanceof ProteusItemView)))
           {
             localObject = ((ProteusItemView)localView).a();
@@ -307,7 +307,7 @@ public class obq
       if (paramReadInJoyBaseListView != null) {
         paramReadInJoyBaseListView.f();
       }
-      if ((this.jdField_a_of_type_Int == 0) && (oek.a().jdField_a_of_type_Boolean) && (bjxj.i()))
+      if ((this.jdField_a_of_type_Int == 0) && (oek.a().jdField_a_of_type_Boolean) && (bkbq.i()))
       {
         paramReadInJoyBaseListView = a();
         if ((paramReadInJoyBaseListView != null) && ((paramReadInJoyBaseListView instanceof ReadInJoyListViewGroup)))
@@ -363,9 +363,9 @@ public class obq
   
   public void b()
   {
-    bhtw localbhtw = a().a();
-    if ((localbhtw != null) && (localbhtw.isShowing())) {
-      localbhtw.dismiss();
+    bhyd localbhyd = a().a();
+    if ((localbhyd != null) && (localbhyd.isShowing())) {
+      localbhyd.dismiss();
     }
     if ((a() != null) && (a().a() != null)) {
       a().a().b(a());

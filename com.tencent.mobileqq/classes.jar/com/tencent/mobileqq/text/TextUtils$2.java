@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import baiy;
-import baiz;
+import banh;
+import bani;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, baiz parambaiz) {}
+  public TextUtils$2(int paramInt, bani parambani) {}
   
   public void run()
   {
-    Drawable localDrawable = baiy.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Baiz != null)) {
-      this.jdField_a_of_type_Baiz.a(localDrawable);
+    Drawable localDrawable = banh.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_Bani != null)) {
+      this.jdField_a_of_type_Bani.a(localDrawable);
     }
   }
 }

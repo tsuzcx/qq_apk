@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import adky;
-import alpo;
+import adpn;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import azxt;
-import azxu;
-import azye;
-import bepp;
+import bacc;
+import bacd;
+import bacn;
+import bety;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private bepp jdField_a_of_type_Bepp;
+  private bety jdField_a_of_type_Bety;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
   
   public static void a(Map<String, String> paramMap)
@@ -38,26 +38,26 @@ public class StudyRoomLoadingFragment
     for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
     {
       localIntent.putExtra("param", paramMap);
-      adky.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      adpn.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bepp == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_Bepp = new bepp(getActivity(), 40);
-      this.jdField_a_of_type_Bepp.a(alpo.a(2131708208));
-      this.jdField_a_of_type_Bepp.setOnCancelListener(new azxt(this));
+      this.jdField_a_of_type_Bety = new bety(getActivity(), 40);
+      this.jdField_a_of_type_Bety.a(alud.a(2131708220));
+      this.jdField_a_of_type_Bety.setOnCancelListener(new bacc(this));
     }
-    this.jdField_a_of_type_Bepp.show();
+    this.jdField_a_of_type_Bety.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bepp != null) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if (this.jdField_a_of_type_Bety != null) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
@@ -133,7 +133,7 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = azye.a(getActivity().getApplicationContext(), paramView, false, new azxu(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = bacn.a(getActivity().getApplicationContext(), paramView, false, new bacd(this));
   }
 }
 

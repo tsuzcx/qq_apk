@@ -1,28 +1,35 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 final class bczg
-  implements URLDrawable.URLDrawableListener
+  implements DownloadParams.DecodeHandler
 {
-  bczg(WeakReference paramWeakReference) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = bdgk.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
+    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return bdhj.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

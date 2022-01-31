@@ -1,20 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+
 public class bjmb
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public bjmb(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public bjmb(String paramString1, String paramString2, boolean paramBoolean, int paramInt, String paramString3, String paramString4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.a.resumePlay();
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 

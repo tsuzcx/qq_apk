@@ -1,35 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public class alpm
-  extends BroadcastReceiver
+class alpm
+  extends awuh
 {
-  public alpm(GuardManager paramGuardManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  alpm(alpk paramalpk, long paramLong)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = awug.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
     {
-      if (this.a.jdField_a_of_type_Long > 0L) {
-        this.a.a(false);
-      }
-      ankm.b();
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
-    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
-      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    ankm.a();
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

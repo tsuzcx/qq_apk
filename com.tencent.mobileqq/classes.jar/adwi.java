@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class adwi
-  implements anuh
+  implements bibb
 {
-  public adwi(TextPreviewActivity paramTextPreviewActivity) {}
+  public adwi(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a(anui paramanui)
+  public void a(View paramView)
   {
-    this.a.jdField_a_of_type_Anui = paramanui;
-    if (this.a.i != 0) {
-      paramanui.a(this.a.i);
-    }
-    this.a.i = paramanui.a(1, this.a.e, 3, this.a.jdField_a_of_type_Anuf);
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
   }
 }
 

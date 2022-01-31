@@ -1,15 +1,42 @@
-import java.util.concurrent.CountDownLatch;
+import android.graphics.SurfaceTexture;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
 
-final class blgx
-  implements bljm
+public class blgx
+  implements TextureView.SurfaceTextureListener
 {
-  blgx(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public void a(boolean paramBoolean)
+  public blgx(AETemplateInfoFragment paramAETemplateInfoFragment)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.a = new WeakReference(paramAETemplateInfoFragment);
   }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
+    }
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
+    }
+    return true;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
+  }
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

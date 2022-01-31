@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface aldq
+public class aldq
+  implements Animator.AnimatorListener
 {
-  public abstract List<TraceData> a();
+  public aldq(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public abstract boolean a(List<TraceData> paramList);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract boolean b(List<TraceData> paramList);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

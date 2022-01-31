@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class syg
-  implements bcgo
+  implements bckx
 {
   public syg(PublicAccountUtil.19 param19) {}
   

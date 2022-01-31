@@ -1,15 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
 public class ayep
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public ayep(BaseSearchActivity paramBaseSearchActivity) {}
+  public ayep(CommentsView paramCommentsView, ayel paramayel, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.a();
+    if (this.jdField_a_of_type_Ayel.a())
+    {
+      if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+        CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

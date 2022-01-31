@@ -1,17 +1,13 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aosn
-  extends aofy<aosm>
+  extends aokh<aosm>
 {
-  public static aosm a()
-  {
-    return (aosm)aogj.a().a(500);
-  }
-  
   public int a()
   {
-    return 500;
+    return 361;
   }
   
   @NonNull
@@ -21,10 +17,15 @@ public class aosn
   }
   
   @Nullable
-  public aosm a(aogf[] paramArrayOfaogf)
+  public aosm a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return aosm.a(paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aosm localaosm = aosm.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaosm;
     }
     return null;
   }
@@ -36,7 +37,17 @@ public class aosn
   
   public void a(int paramInt) {}
   
-  public void a(aosm paramaosm) {}
+  public void a(aosm paramaosm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaosm.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
   
   public int b()
   {

@@ -77,7 +77,7 @@ class nuo
                 ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
                 this.a.a.startActivity((Intent)localObject);
                 this.a.a.getActivity().overridePendingTransition(2130771979, 0);
-                azmj.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
+                azqs.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
                 return;
               }
             }

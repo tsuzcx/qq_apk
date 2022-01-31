@@ -1,34 +1,18 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class aibo
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements bcms
 {
-  protected aibo(aibn paramaibn) {}
+  private long jdField_a_of_type_Long;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public aibo(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    if (paramInt == 3)
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public long a()
   {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
-    }
-    return false;
+    return this.jdField_a_of_type_Long;
   }
 }
 

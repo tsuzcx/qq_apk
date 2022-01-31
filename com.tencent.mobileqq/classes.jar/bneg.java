@@ -1,76 +1,146 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nonnull;
 
 public class bneg
-  implements InputFilter
 {
-  private int jdField_a_of_type_Int;
+  private final int jdField_a_of_type_Int = 20;
+  private awgf jdField_a_of_type_Awgf;
+  private bmon jdField_a_of_type_Bmon;
+  private final bnej jdField_a_of_type_Bnej;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<xoe> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xoe jdField_a_of_type_Xoe;
+  private int b = 1;
   
-  public bneg(ExtendEditText paramExtendEditText, int paramInt)
+  public bneg(bnej parambnej, awgf paramawgf)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bnej = parambnej;
+    this.jdField_a_of_type_Awgf = paramawgf;
   }
   
-  private void a()
+  public static List<xoe> a(awgf paramawgf)
   {
-    if (ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
+    Object localObject = a(paramawgf, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+    paramawgf = (awgf)localObject;
+    if (localObject == null) {
+      paramawgf = new ArrayList();
+    }
+    localObject = new ArrayList();
+    paramawgf = paramawgf.iterator();
+    while (paramawgf.hasNext()) {
+      ((List)localObject).add(new xoe((TagItemEntry)paramawgf.next()));
+    }
+    return localObject;
+  }
+  
+  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public static void a(awgf paramawgf, List<xoe> paramList)
+  {
+    try
+    {
+      Object localObject = a(paramawgf, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
+          localTagItemEntry.setStatus(1001);
+          paramawgf.b(localTagItemEntry);
+        }
+      }
+    }
+    finally
+    {
+      paramawgf.a().b();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      paramawgf.b(((xoe)paramList.next()).a());
+    }
+    paramawgf.a().c();
+    paramawgf.a().b();
+  }
+  
+  public List<xoe> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  @Nullable
+  public xoe a()
+  {
+    return this.jdField_a_of_type_Xoe;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Bmon = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 1;
+    this.jdField_a_of_type_Xoe = null;
+  }
+  
+  public void a(@Nonnull bmon parambmon)
+  {
+    wxe.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, parambmon);
+    this.jdField_a_of_type_Bmon = parambmon;
+    if (parambmon.jdField_a_of_type_Boolean) {}
+    for (parambmon = new vge(parambmon.jdField_a_of_type_Int, parambmon.jdField_a_of_type_Long, "", 20);; parambmon = new vge("", 20))
+    {
+      urp.a().a(parambmon, new bneh(this));
+      return;
     }
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(List<xoe> paramList)
   {
-    ajse localajse = ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText);
-    if (localajse == null)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(xoe paramxoe)
+  {
+    this.jdField_a_of_type_Xoe = paramxoe;
+  }
+  
+  public boolean a()
+  {
+    return this.b == 1;
+  }
+  
+  public boolean a(bmon parambmon)
+  {
+    if (this.jdField_a_of_type_Bmon != null) {
+      if (this.jdField_a_of_type_Bmon.equals(parambmon)) {}
+    }
+    while (parambmon != null)
     {
-      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localajse != null) {
-        break label95;
-      }
-      paramInt2 -= paramInt1;
+      return true;
+      return false;
     }
-    for (;;)
+    return false;
+  }
+  
+  public void b(@Nonnull bmon parambmon)
+  {
+    wxe.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, parambmon);
+    this.jdField_a_of_type_Bmon = parambmon;
+    if (parambmon.jdField_a_of_type_Boolean) {}
+    for (parambmon = new vge(parambmon.jdField_a_of_type_Int, parambmon.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; parambmon = new vge(this.jdField_a_of_type_JavaLangString, 20))
     {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
-      }
-      a();
-      return "";
-      paramInt3 = localajse.a(paramSpanned, 0, paramInt3) + localajse.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
-      paramInt2 = localajse.a(paramCharSequence, paramInt1, paramInt2);
+      urp.a().a(parambmon, new bnei(this));
+      return;
     }
-    label109:
-    if (paramInt3 >= paramInt2) {
-      return null;
-    }
-    a();
-    if (localajse != null)
-    {
-      paramInt3 = localajse.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
-      paramInt2 = paramInt3;
-      if (paramInt3 <= 0) {
-        return "";
-      }
-    }
-    else
-    {
-      paramInt2 = paramInt3;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

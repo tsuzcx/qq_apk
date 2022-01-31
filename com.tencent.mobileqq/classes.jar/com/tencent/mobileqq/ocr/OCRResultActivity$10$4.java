@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import avrl;
-import avva;
+import avvu;
+import avzj;
 
 public class OCRResultActivity$10$4
   implements Runnable
 {
-  public OCRResultActivity$10$4(avrl paramavrl, int paramInt) {}
+  public OCRResultActivity$10$4(avvu paramavvu, int paramInt) {}
   
   public void run()
   {
-    OCRResultActivity.a(this.jdField_a_of_type_Avrl.a).a(this.jdField_a_of_type_Int);
+    OCRResultActivity.a(this.jdField_a_of_type_Avvu.a).a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,17 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class axyh
-  implements DialogInterface.OnClickListener
+  implements IBrowserLog
 {
-  public axyh(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    paramDialogInterface.dismiss();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    if (isColorLevel()) {
+      QLog.d(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.e(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.i(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.w(paramString1, paramInt, paramString2);
+    }
   }
 }
 

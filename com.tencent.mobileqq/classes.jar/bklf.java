@@ -1,31 +1,8 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import dov.com.qq.im.ae.AEPituCameraUnit.10;
-
-public class bklf
-  implements DialogInterface.OnClickListener
+public abstract interface bklf
 {
-  public bklf(AEPituCameraUnit.10 param10) {}
+  public abstract void a(String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    Activity localActivity = bkle.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      localActivity.finish();
-    }
-  }
+  public abstract void a(String paramString, long paramLong, bkkq parambkkq, boolean paramBoolean);
 }
 
 

@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-class acoq
-  extends alqf
+public class acoq
+  implements DialogInterface.OnClickListener
 {
-  acoq(acop paramacop, BaseActivity paramBaseActivity) {}
+  public acoq(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_Acop.a != null) && (this.jdField_a_of_type_Acop.a.isShowing())) {
-        this.jdField_a_of_type_Acop.a.dismiss();
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alpo.a(2131702975), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      return;
+    this.a.finish();
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
-    if ((this.jdField_a_of_type_Acop.a != null) && (this.jdField_a_of_type_Acop.a.isShowing())) {
-      this.jdField_a_of_type_Acop.a.dismiss();
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alpo.a(2131702976), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

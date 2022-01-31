@@ -1,23 +1,25 @@
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class audx
-  implements best
+class audx
+  extends ClickableSpan
 {
-  public audx(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  audx(audv paramaudv, BaseActivity paramBaseActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
-      }
-      this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
-      return;
-    }
+    audv.a(this.jdField_a_of_type_Audv, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.jdField_a_of_type_Audv.a.getApp().getResources().getColor(2131166911));
   }
 }
 

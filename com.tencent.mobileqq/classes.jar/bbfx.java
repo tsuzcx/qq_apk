@@ -1,89 +1,35 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class bbfx
-  extends Handler
+class bbfx
+  extends BroadcastReceiver
 {
-  public bbfx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  bbfx(bbfv parambbfv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {}
-    do
+    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
+    switch (paramIntent.getIntExtra("ret_action", 1000))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramMessage.what)
-            {
-            case 1002: 
-            case 1007: 
-            default: 
-              return;
-            case 1001: 
-              this.a.a(false);
-              if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-                this.a.jdField_a_of_type_Bepp.dismiss();
-              }
-              QQToast.a(this.a, 2131696742, 1).b(this.a.getTitleBarHeight());
-            }
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          try
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-            return;
-          }
-          catch (UnsupportedOperationException paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopBar", 2, paramMessage.toString());
-        return;
-        if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-          this.a.jdField_a_of_type_Bepp.dismiss();
-        }
-        this.a.a(false);
-        this.a.a();
-        return;
-        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-        }
-      } while ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()));
-      this.a.a();
+    default: 
+      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
       return;
-      this.a.a(false);
-      if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-        this.a.jdField_a_of_type_Bepp.dismiss();
-      }
-      QQToast.a(this.a, 2131696720, 1).b(this.a.getTitleBarHeight());
+    case 1000: 
+      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
       return;
-      if ((paramMessage.obj instanceof String))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    return;
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
-    {
-      this.a.requestPermissions(new bbfy(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+    case 1001: 
+      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
+      return;
+    case 1002: 
+      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
+      return;
+    case 1003: 
+      bbfv.a(this.a, bbfv.a(this.a).troopUin, 1);
       return;
     }
-    TroopBarReplyActivity.a(this.a, 4);
+    bbfv.a(this.a, bbfv.a(this.a).troopUin, 3);
   }
 }
 

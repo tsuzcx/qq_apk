@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import anff;
-import anfg;
-import anfo;
+import anjo;
+import anjp;
+import anjx;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class ArkAppEventObserverManager$1$2
   implements Runnable
 {
-  public ArkAppEventObserverManager$1$2(anfg paramanfg) {}
+  public ArkAppEventObserverManager$1$2(anjp paramanjp) {}
   
   public void run()
   {
-    if (anff.a(this.a.a) != null) {
-      anff.a(this.a.a).a(false, 0.0D, 0.0D);
+    if (anjo.a(this.a.a) != null) {
+      anjo.a(this.a.a).a(false, 0.0D, 0.0D);
     }
-    SosoInterface.b(anff.a(this.a.a));
-    anff.a(this.a.a, null);
+    SosoInterface.b(anjo.a(this.a.a));
+    anjo.a(this.a.a, null);
   }
 }
 

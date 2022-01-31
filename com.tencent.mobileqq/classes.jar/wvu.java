@@ -1,21 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 
-public class wvu
-  implements Animation.AnimationListener
+class wvu
+  extends wrj
 {
-  public wvu(EditVideoGuide paramEditVideoGuide) {}
+  wvu(wvq paramwvq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    this.a.g();
-    this.a.a.a(0);
+    if (xsm.b()) {}
+    while (paramView.getId() != 2131377634) {
+      return;
+    }
+    wxj.a("mystory", "clk_all_story", 0, 0, new String[0]);
+    paramView = QQStoryContext.a().b();
+    uqn.a(wvq.c(this.a), 1, paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

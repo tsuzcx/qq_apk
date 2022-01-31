@@ -3,12 +3,12 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apst;
+import apxc;
 
 public class EmotionPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new apst();
+  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new apxc();
   public String a;
   public boolean a;
   

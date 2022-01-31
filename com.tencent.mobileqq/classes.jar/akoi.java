@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class akoi
-  implements Animation.AnimationListener
+class akoi
+  extends BroadcastReceiver
 {
-  public akoi(CmGameDebugView paramCmGameDebugView) {}
+  akoi(aknx paramaknx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    if (paramIntent == null) {
+      QLog.e("ApolloManager", 1, "[onReceive] intent null");
+    }
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
+      }
+    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
+    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
+    ((bdug)this.a.a.a(71)).a(null, paramContext, -1003, 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

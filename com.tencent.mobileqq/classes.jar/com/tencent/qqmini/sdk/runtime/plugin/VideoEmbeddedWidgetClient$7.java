@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghn;
-import bgjm;
+import bglu;
+import bgnt;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
 import com.tencent.qqmini.sdk.core.proxy.IMediaPlayerUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -18,7 +18,7 @@ class VideoEmbeddedWidgetClient$7
   {
     QMLog.d("miniapp-embedded", "VideoManager probeContentFlag getSubThreadHandler start. " + VideoEmbeddedWidgetClient.access$1600(this.this$0));
     long l = System.currentTimeMillis();
-    Object localObject = VideoEmbeddedWidgetClient.access$1700(this.this$0).getUrl(bgjm.a().a(VideoEmbeddedWidgetClient.access$1600(this.this$0)));
+    Object localObject = VideoEmbeddedWidgetClient.access$1700(this.this$0).getUrl(bgnt.a().a(VideoEmbeddedWidgetClient.access$1600(this.this$0)));
     int i = VideoEmbeddedWidgetClient.access$1700(this.this$0).getContentFlag((String)localObject);
     QMLog.d("miniapp-embedded", "VideoManager probeContentFlag const : " + (System.currentTimeMillis() - l));
     localObject = this.this$0;

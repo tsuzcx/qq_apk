@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.ArrayList;
-import wuj;
+import wys;
 
 public class EditTakeGifSource
   extends EditLocalGifSource
 {
-  public static final Parcelable.Creator<EditTakeGifSource> CREATOR = new wuj();
+  public static final Parcelable.Creator<EditTakeGifSource> CREATOR = new wys();
   
   public EditTakeGifSource(Parcel paramParcel)
   {

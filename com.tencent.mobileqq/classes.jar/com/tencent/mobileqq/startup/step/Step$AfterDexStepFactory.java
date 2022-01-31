@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import azjg;
-import azkx;
+import aznp;
+import azpg;
 
 public class Step$AfterDexStepFactory
-  implements azkx
+  implements azpg
 {
-  public Step a(int paramInt, azjg paramazjg, int[] paramArrayOfInt)
+  public Step a(int paramInt, aznp paramaznp, int[] paramArrayOfInt)
   {
-    paramazjg = null;
+    paramaznp = null;
     switch (paramInt)
     {
     case 7: 
@@ -17,9 +17,9 @@ public class Step$AfterDexStepFactory
     case 12: 
     case 20: 
     default: 
-      paramazjg = new Step();
+      paramaznp = new Step();
     case 30: 
-      return paramazjg;
+      return paramaznp;
     case 6: 
     case 18: 
       return new LoadData();

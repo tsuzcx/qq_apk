@@ -1,35 +1,13 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.SendMsg;
+import android.content.Context;
+import java.util.Observable;
 
-class biod
-  implements ServiceConnection
+public class biod
+  extends Observable
 {
-  biod(bioc parambioc) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bioc.a(this.a));
-    }
-    this.a.a = binz.a(paramIBinder);
-    if (bioc.a(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = bioc.a(this.a);
-      this.a.b(paramComponentName);
-    }
-    this.a.a();
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bioc.a(this.a));
-    }
-    this.a.a = null;
+    setChanged();
+    notifyObservers(paramContext);
   }
 }
 

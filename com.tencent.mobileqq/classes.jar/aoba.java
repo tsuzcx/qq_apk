@@ -1,54 +1,17 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.hardware.Camera.ShutterCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
 
 public class aoba
-  implements Application.ActivityLifecycleCallbacks
+  implements Camera.ShutterCallback
 {
-  public aoba(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoaq jdField_a_of_type_Aoaq;
+  private final aoar jdField_a_of_type_Aoar;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public void onShutter()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
-    {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
-    }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
   }
 }
 

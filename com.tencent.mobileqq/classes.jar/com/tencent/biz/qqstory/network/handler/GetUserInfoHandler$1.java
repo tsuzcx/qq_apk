@@ -3,23 +3,23 @@ package com.tencent.biz.qqstory.network.handler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import uza;
+import vdj;
 
 public class GetUserInfoHandler$1
   implements Runnable
 {
-  public GetUserInfoHandler$1(uza paramuza) {}
+  public GetUserInfoHandler$1(vdj paramvdj) {}
   
   public void run()
   {
-    synchronized (uza.a(this.this$0))
+    synchronized (vdj.a(this.this$0))
     {
-      if (!uza.a(this.this$0).isEmpty())
+      if (!vdj.a(this.this$0).isEmpty())
       {
-        this.this$0.a(1, uza.a(this.this$0));
-        uza.a(this.this$0, new ArrayList());
+        this.this$0.a(1, vdj.a(this.this$0));
+        vdj.a(this.this$0, new ArrayList());
       }
-      uza.a(this.this$0).set(false);
+      vdj.a(this.this$0).set(false);
       return;
     }
   }

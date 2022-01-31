@@ -1,114 +1,22 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleInviteBannerView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 public class ueb
+  implements URLDrawableDownListener
 {
-  public static int a;
-  private static ueb jdField_a_of_type_Ueb;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public ueb(QCircleInviteBannerView paramQCircleInviteBannerView) {}
   
-  private String a(int paramInt)
-  {
-    if (paramInt == jdField_a_of_type_Int) {
-      return ncb.a("3408") + "3408" + File.separator + "loading" + File.separator;
-    }
-    return "";
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  public static ueb a()
-  {
-    if (jdField_a_of_type_Ueb == null) {
-      jdField_a_of_type_Ueb = new ueb();
-    }
-    return jdField_a_of_type_Ueb;
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  private void a(boolean paramBoolean)
-  {
-    wsv.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource , upzip : %s", Boolean.valueOf(paramBoolean));
-    nbv.b("3408", blmf.a(), new ued(this, paramBoolean), paramBoolean, 0, true);
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  private void b()
-  {
-    wsv.b("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip now");
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new StoryAlbumResourceDownloader.3(this));
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  private void c()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = new File(a(jdField_a_of_type_Int));
-    Object localObject2;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      if (localObject1 != null)
-      {
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject2 = localObject1[i];
-          localHashMap.put(((File)localObject2).getName(), localObject2);
-          i += 1;
-        }
-      }
-    }
-    localObject1 = new ArrayList();
-    int i = 0;
-    while (i < 50)
-    {
-      localObject2 = (File)localHashMap.get(i + ".png");
-      if (localObject2 != null) {
-        ((List)localObject1).add(((File)localObject2).getAbsolutePath());
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
-  }
-  
-  public List<String> a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return new ArrayList();
-    }
-    if (paramInt == jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_JavaUtilList;
-    }
-    return new ArrayList();
-  }
-  
-  public void a()
-  {
-    String str = a(jdField_a_of_type_Int);
-    boolean bool1 = nbv.d("3408");
-    boolean bool2 = new File(str).exists();
-    if (bool1)
-    {
-      wsv.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , new version exist , unzip now !");
-      b();
-      return;
-    }
-    if (bool2)
-    {
-      wsv.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file exist , check but not unzip now!");
-      Bosses.get().postJob(new uec(this));
-      return;
-    }
-    wsv.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file not exist , check and unzip now!");
-    a(true);
-  }
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable) {}
 }
 
 

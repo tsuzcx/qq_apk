@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import bfkb;
+import bfok;
 
 class UniformDownloadActivity$9
   implements Runnable
@@ -9,7 +9,7 @@ class UniformDownloadActivity$9
   
   public void run()
   {
-    bfkb.a().b(UniformDownloadActivity.a(this.this$0));
+    bfok.a().b(UniformDownloadActivity.a(this.this$0));
   }
 }
 

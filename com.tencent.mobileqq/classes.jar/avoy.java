@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class avoy
-  implements ValueAnimator.AnimatorUpdateListener
+class avoy
+  implements DialogInterface.OnClickListener
 {
-  public avoy(AutoScrollImageView paramAutoScrollImageView) {}
+  avoy(avov paramavov, bdjz parambdjz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Avov.a.e();
+    paramDialogInterface = new Intent("tribe_profile_edit_finish");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
   }
 }
 

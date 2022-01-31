@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkov;
+import bktc;
 
 class AECameraGLSurfaceView$17
   implements Runnable
@@ -9,9 +9,9 @@ class AECameraGLSurfaceView$17
   
   public void run()
   {
-    bkov localbkov = (bkov)AECameraGLSurfaceView.a(this.this$0);
-    if (localbkov != null) {
-      localbkov.b(this.a);
+    bktc localbktc = (bktc)AECameraGLSurfaceView.a(this.this$0);
+    if (localbktc != null) {
+      localbktc.b(this.a);
     }
   }
 }

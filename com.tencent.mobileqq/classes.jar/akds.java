@@ -1,25 +1,31 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akds
-  extends akee
+  extends BroadcastReceiver
 {
-  public View a;
-  public Button a;
-  public CheckBox a;
-  public TextView a;
-  public PhoneContact a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public akds(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public akds()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.c = 11;
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
+      }
+      this.a.d();
+    }
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+    }
+    this.a.d();
   }
 }
 

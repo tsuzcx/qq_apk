@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adoa;
+import adsp;
 
 public class QQSettingMe$32$1
   implements Runnable
 {
-  public QQSettingMe$32$1(adoa paramadoa) {}
+  public QQSettingMe$32$1(adsp paramadsp) {}
   
   public void run()
   {

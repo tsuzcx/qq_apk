@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffebedf5" />
-    <corners android:topLeftRadius="15.0dip" android:topRightRadius="15.0dip" android:bottomLeftRadius="15.0dip" android:bottomRightRadius="15.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/eff" />
+    <item android:drawable="@drawable/efe" />
+</selector>

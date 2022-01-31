@@ -1,27 +1,14 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.maxvideo.trim.TrimNative;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bndl
+class bndl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static int a;
-  private static int b;
+  bndl(bndb parambndb) {}
   
-  public static Bitmap a(long paramLong1, long paramLong2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+    this.a.invalidateSelf();
   }
 }
 

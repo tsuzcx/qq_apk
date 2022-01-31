@@ -1,31 +1,51 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class bjtv
-  extends bjts
+class bjtv
+  implements ModuleDownloadListener
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  bjtv(bjts parambjts) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ("jumpNuanProfile".equals(paramString3))
+    if (!paramString.equals("libandroidndkbeauty.so")) {}
+    for (;;)
     {
-      bool1 = bool2;
-      if (!"Qzone".equals(paramString2)) {}
+      return;
+      String str = bjts.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+      if (paramString.exists()) {}
+      try
+      {
+        bjts.a(paramString, new File(bjts.a.getPath() + "/libandroidndkbeauty.zip"));
+        paramString = new File(str);
+        if (!paramString.exists()) {
+          paramString.mkdirs();
+        }
+        if (this.a.a(bjts.b, false)) {
+          continue;
+        }
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
+        bjtz.b(new File(bjts.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
-      paramString1 = bizt.a();
-      paramString1.a = this.a.mRuntime.a().getAccount();
-      bizm.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
-      bool1 = true;
-      return bool1;
-    }
-    catch (Throwable paramJsBridgeListener) {}
-    return false;
   }
 }
 

@@ -1,49 +1,33 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aigm
+class aigm
+  implements bhuw
 {
-  public static List<aign> a;
+  aigm(aigf paramaigf) {}
   
-  public static void a(JSONObject paramJSONObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 2;
-    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
-    {
-      paramJSONObject = paramJSONObject.optJSONArray("entryList");
-      ArrayList localArrayList = new ArrayList();
-      if (paramJSONObject.length() > 2) {}
-      for (;;)
-      {
-        int j = 0;
-        while (j < i)
-        {
-          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
-          aign localaign = new aign();
-          localaign.jdField_a_of_type_Int = localJSONObject.optInt("id");
-          Object localObject = localJSONObject.optJSONObject("image");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("src");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localaign.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
-            }
-          }
-          localaign.c = localJSONObject.optString("name");
-          localaign.d = localJSONObject.optString("desc");
-          localaign.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
-          localaign.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
-          localaign.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
-          localArrayList.add(localaign);
-          j += 1;
-        }
-        i = paramJSONObject.length();
-      }
-      a = localArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
+    if ((this.a.jdField_a_of_type_Aige.getCount() <= 0) || (paramInt <= 0)) {
+      return;
+    }
+    paramAdapterView = this.a.jdField_a_of_type_Aige.a(paramInt - 1);
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
   }
 }
 

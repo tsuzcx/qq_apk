@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import aelz;
+import aeqo;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import angm;
+import ankv;
 import com.tencent.ark.ark;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -16,12 +16,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xod;
+import xsm;
 
 public class ArkAppNotifyCenter$GdtNotify$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$1(angm paramangm, JSONObject paramJSONObject, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$1(ankv paramankv, JSONObject paramJSONObject, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public class ArkAppNotifyCenter$GdtNotify$1
         localObject1 = ((ChatFragment)localObject2).a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
         JSONArray localJSONArray1 = new JSONArray();
         this.jdField_a_of_type_OrgJsonJSONObject.put("results", localJSONArray1);
-        localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_Aelz.a();
+        localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_Aeqo.a();
         JSONArray localJSONArray2 = new JSONObject(this.jdField_a_of_type_JavaLangString).optJSONArray("traceids");
         if (i >= localJSONArray2.length()) {
           break label524;
@@ -68,10 +68,10 @@ public class ArkAppNotifyCenter$GdtNotify$1
         localObject4 = ArkAppNotifyCenter.access$400((View)localObject3);
         if (localObject4 != null)
         {
-          localJSONObject1.put("left", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
-          localJSONObject1.put("top", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
-          localJSONObject1.put("right", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
-          localJSONObject1.put("bottom", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
+          localJSONObject1.put("left", xsm.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
+          localJSONObject1.put("top", xsm.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
+          localJSONObject1.put("right", xsm.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
+          localJSONObject1.put("bottom", xsm.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
         }
       }
       catch (Exception localException)

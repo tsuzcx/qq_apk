@@ -1,19 +1,40 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
-class ajlq
-  implements Handler.Callback
+public class ajlq
+  implements ajll
 {
-  ajlq(ajlp paramajlp) {}
+  public View a;
+  public TabDragAnimationView a;
+  private boolean a;
   
-  public boolean handleMessage(Message paramMessage)
+  public ajlq(TabDragAnimationView paramTabDragAnimationView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
-    }
-    ajlp.a(this.a, false, null, paramMessage.what);
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_AndroidViewView.equals(paramView))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TabDragListener", 2, "drag detect x=" + paramFloat1 + ",y=" + paramFloat2 + ",dragType=" + paramInt);
+      }
+      if ((paramInt == 1) || (paramInt == 2))
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
+        return;
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
   }
 }
 

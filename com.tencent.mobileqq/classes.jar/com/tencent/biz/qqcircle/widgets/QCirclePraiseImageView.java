@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -19,18 +19,18 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import java.util.ArrayList;
-import ubz;
-import yej;
-import yel;
+import ues;
+import yiw;
+import yiy;
 
 public class QCirclePraiseImageView
   extends ImageView
-  implements View.OnClickListener, yel
+  implements View.OnClickListener, yiy
 {
-  private int jdField_a_of_type_Int = 2130843574;
+  private int jdField_a_of_type_Int = 2130843591;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = new FeedCloudMeta.StFeed();
   private boolean jdField_a_of_type_Boolean = true;
-  private int b = 2130843575;
+  private int b = 2130843592;
   
   public QCirclePraiseImageView(Context paramContext)
   {
@@ -59,7 +59,7 @@ public class QCirclePraiseImageView
     }
     catch (Exception localException)
     {
-      QLog.e("QCirclePraise", 1, "showLikeView setBackgroundDrawable error");
+      QLog.e("QCirclePraise_", 1, "showLikeView setBackgroundDrawable error");
     }
   }
   
@@ -72,15 +72,8 @@ public class QCirclePraiseImageView
     }
     catch (Exception localException)
     {
-      QLog.e("QCirclePraise", 1, "showUnLikeView setBackgroundDrawable error");
+      QLog.e("QCirclePraise_", 1, "showUnLikeView setBackgroundDrawable error");
     }
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePraiseUpdateEvent.class);
-    return localArrayList;
   }
   
   protected void a()
@@ -102,7 +95,42 @@ public class QCirclePraiseImageView
     c();
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCirclePraiseUpdateEvent.class);
+    return localArrayList;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    yiw.a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = 0;
+    if (!this.jdField_a_of_type_Boolean) {
+      QQToast.a(getContext(), alud.a(2131702558), 0).a();
+    }
+    while ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.get() == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.get() == 0) {
+      i = 1;
+    }
+    VSNetworkHelper.a().a(new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo, null), new ues(this, i));
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     int i = 1;
     int j;
@@ -129,34 +157,6 @@ public class QCirclePraiseImageView
       label125:
       i = -1;
     }
-  }
-  
-  protected void onAttachedToWindow()
-  {
-    super.onAttachedToWindow();
-    yej.a().a(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = 0;
-    if (!this.jdField_a_of_type_Boolean) {
-      QQToast.a(getContext(), alpo.a(2131702546), 0).a();
-    }
-    while ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.get() == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.get() == 0) {
-      i = 1;
-    }
-    VSNetworkHelper.a().a(new QCircleDoLikeRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, i, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo, null), new ubz(this, i));
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    yej.a().b(this);
   }
   
   public void setFeedData(FeedCloudMeta.StFeed paramStFeed)

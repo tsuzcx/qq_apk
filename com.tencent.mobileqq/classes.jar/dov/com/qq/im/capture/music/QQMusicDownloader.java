@@ -1,41 +1,41 @@
 package dov.com.qq.im.capture.music;
 
 import android.text.TextUtils;
-import bdvv;
-import blpg;
+import beae;
+import blts;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class QQMusicDownloader
 {
-  public static bdvv a(String paramString1, String paramString2, blpg paramblpg)
+  public static beae a(String paramString1, String paramString2, blts paramblts)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       QLog.e("QQMusicDownloader", 1, "invalid downlaod params " + paramString1 + ", " + paramString2);
       return null;
     }
-    paramString1 = new bdvv(paramString1, new File(paramString2));
+    paramString1 = new beae(paramString1, new File(paramString2));
     paramString1.n = true;
     paramString1.b = 2;
     paramString1.a = paramString2;
     paramString1.b(512);
-    paramString1.a(paramblpg);
+    paramString1.a(paramblts);
     return paramString1;
   }
   
-  public static void a(bdvv parambdvv)
+  public static void a(beae parambeae)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQMusicDownloader", 2, "cancel task " + parambdvv.a);
+      QLog.i("QQMusicDownloader", 2, "cancel task " + parambeae.a);
     }
-    parambdvv.a(true);
+    parambeae.a(true);
   }
   
-  public static void a(bdvv parambdvv, blpg paramblpg)
+  public static void a(beae parambeae, blts paramblts)
   {
-    ThreadManager.post(new QQMusicDownloader.DownloadMusicTask(parambdvv, paramblpg), 5, null, false);
+    ThreadManager.post(new QQMusicDownloader.DownloadMusicTask(parambeae, paramblts), 5, null, false);
   }
 }
 

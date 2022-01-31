@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class afya
-  implements bhvv
+  extends aeqi
 {
-  public afya(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public ImageView a;
+  public TextView a;
+  public CircleFileStateView a;
   
-  public void a() {}
+  public afya(afxy paramafxy) {}
 }
 
 

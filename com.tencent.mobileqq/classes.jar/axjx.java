@@ -1,11 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
-public class axjx
+class axjx
+  extends AnimatorListenerAdapter
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, axka> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  ArrayList<axkb> b = new ArrayList();
+  axjx(axjw paramaxjw) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (axjs.a(this.a.a) != null) {
+      axjs.a(this.a.a).c();
+    }
+    axjs.a(this.a.a, 8);
+  }
 }
 
 

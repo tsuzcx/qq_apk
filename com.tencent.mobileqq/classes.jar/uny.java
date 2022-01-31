@@ -1,94 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class uny
-  extends ups
+  implements unn
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  String jdField_a_of_type_JavaLangString;
-  upu jdField_a_of_type_Upu;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
+  private String a = "SimplePreloadListener";
   
-  public uny(CommentEntry paramCommentEntry, upu paramupu)
+  public uny(String paramString)
   {
-    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramupu);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.a = paramString;
   }
   
-  public uny(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, upu paramupu)
+  public void a(String paramString, int paramInt1, int paramInt2, unj paramunj) {}
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.jdField_a_of_type_Upu = paramupu;
-    paramString1 = wta.a("home_page-comment_suc-d1");
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
+    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
     {
-      this.jdField_a_of_type_Int = paramInt1;
+      wxe.b(this.a, "download ignore because no mask pic url");
       return;
     }
+    wxe.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
   }
   
-  public String a()
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
   {
-    return unw.jdField_a_of_type_JavaLangString;
+    paramString = ((uvx)uwa.a(5)).a(paramString);
+    if (paramString != null) {
+      unk.a(paramString, paramFile.getAbsolutePath(), paramInt1);
+    }
   }
   
-  public upt a(byte[] paramArrayOfByte)
+  public void a(String paramString, int paramInt, unj paramunj) {}
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
   {
-    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
-    try
-    {
-      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
-      return new unz(localRspAddFeedComment, this.jdField_a_of_type_Upu);
+    wxe.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, ulg.a(paramInt1), paramFile.getAbsolutePath());
+    paramString = ((uvx)uwa.a(5)).a(paramString);
+    if (paramString != null) {
+      unk.a(paramString, paramFile.getAbsolutePath(), paramInt1, wxj.a(BaseApplicationImpl.getContext()));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public void b(String paramString, int paramInt, unj paramunj)
   {
-    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
-    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
-    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (this.jdField_b_of_type_Int == 1) {
-      localReqAddFeedComment.type.set(1);
-    }
-    for (;;)
-    {
-      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(this.d)) {
-        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
-      }
-      return localReqAddFeedComment.toByteArray();
-      localReqAddFeedComment.type.set(0);
-    }
+    wxe.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
   }
 }
 

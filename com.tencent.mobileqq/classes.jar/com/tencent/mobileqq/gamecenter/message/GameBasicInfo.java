@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import asiv;
-import awbv;
-import awdj;
+import asne;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameBasicInfo
-  extends awbv
+  extends awge
 {
-  public static final String TAG = asiv.a + "GameBasicInfo";
-  @awdj
+  public static final String TAG = asne.a + "GameBasicInfo";
+  @awhs
   public String mAppId;
   public String mIconUrl;
   public int mMsgMaxLen;

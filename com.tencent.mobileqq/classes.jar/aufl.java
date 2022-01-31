@@ -1,20 +1,46 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class aufl
-  implements aulm
+public class aufl
+  extends Handler
 {
-  aufl(aufk paramaufk) {}
+  public aufl() {}
   
-  public void a()
+  public aufl(Looper paramLooper)
   {
-    if ((aufi.a(this.a.jdField_a_of_type_Aufi) != null) && (aufi.a(this.a.jdField_a_of_type_Aufi).a != null)) {
-      this.a.jdField_a_of_type_Ault.a(this.a.jdField_a_of_type_JavaUtilList, 2, aufi.a(this.a.jdField_a_of_type_Aufi).a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ChatBackgroundManager.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, azri.a(BaseApplication.getContext()));
+        ChatBackgroundManager.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        }
+        Message localMessage = ChatBackgroundManager.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      }
     }
-    this.a.jdField_a_of_type_Ault.a();
-    if (aufi.a(this.a.jdField_a_of_type_Aufi) != null) {
-      aufi.a(this.a.jdField_a_of_type_Aufi).a(false, null, false);
+    else {
+      return;
     }
+    ChatBackgroundManager.c = 0;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awbv;
+import awge;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -46,7 +46,7 @@ public class ArticleInfoModule$40
           localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
           if (localObject != null)
           {
-            this.this$0.a((awbv)localObject);
+            this.this$0.a((awge)localObject);
             localConcurrentHashMap = (ConcurrentHashMap)pew.a(this.this$0).get(Integer.valueOf(0));
             if (localConcurrentHashMap != null)
             {

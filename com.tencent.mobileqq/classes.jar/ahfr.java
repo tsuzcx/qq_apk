@@ -1,26 +1,23 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+
 class ahfr
-  implements Comparable<ahfr>
+  implements View.OnClickListener
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  ahfr(ahfq paramahfq) {}
   
-  ahfr(ahfp paramahfp, String paramString, Long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public int a(ahfr paramahfr)
-  {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramahfr.jdField_a_of_type_JavaLangLong.longValue()) {
-      return -1;
-    }
-    return 1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
+    paramView = new Intent(this.a.a.getActivity(), SearchContactsActivity.class);
+    paramView.putExtra("from_key", 1);
+    paramView.putExtra("fromType", 13);
+    this.a.a.getActivity().startActivity(paramView);
+    this.a.a.getActivity().overridePendingTransition(0, 0);
   }
 }
 

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import acmb;
-import acmc;
-import acqa;
+import acqq;
+import acqr;
+import acup;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bahs;
-import bdnm;
+import bamb;
+import bdrv;
 
 public class ChatSettingForTroop$ListAdapter$1$1
   implements Runnable
 {
-  public ChatSettingForTroop$ListAdapter$1$1(acmc paramacmc, String paramString) {}
+  public ChatSettingForTroop$ListAdapter$1$1(acqr paramacqr, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acmc.jdField_a_of_type_Acmb.a.c) {}
-    while (!TextUtils.equals(this.jdField_a_of_type_Acmc.jdField_a_of_type_Acqa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acmc.jdField_a_of_type_JavaLangString)) {
+    if (this.jdField_a_of_type_Acqr.jdField_a_of_type_Acqq.a.c) {}
+    while (!TextUtils.equals(this.jdField_a_of_type_Acqr.jdField_a_of_type_Acup.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acqr.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    SpannableString localSpannableString = new bahs(this.jdField_a_of_type_JavaLangString, 12).a();
-    this.jdField_a_of_type_Acmc.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-    bdnm.a(this.jdField_a_of_type_Acmc.jdField_a_of_type_Acmb.a.app, this.jdField_a_of_type_Acmc.jdField_a_of_type_AndroidWidgetTextView, localSpannableString);
+    SpannableString localSpannableString = new bamb(this.jdField_a_of_type_JavaLangString, 12).a();
+    this.jdField_a_of_type_Acqr.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
+    bdrv.a(this.jdField_a_of_type_Acqr.jdField_a_of_type_Acqq.a.app, this.jdField_a_of_type_Acqr.jdField_a_of_type_AndroidWidgetTextView, localSpannableString);
   }
 }
 

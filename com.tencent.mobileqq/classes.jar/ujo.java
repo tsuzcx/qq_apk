@@ -1,20 +1,56 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public final class ujo
+public abstract class ujo<Config extends ujw>
 {
-  protected int a = 0;
+  protected uiz a;
+  private Config a;
   
-  public PreloadQueue a()
+  protected List<uja> a()
   {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
+    if (this.jdField_a_of_type_Uiz != null) {
+      return this.jdField_a_of_type_Uiz.a();
+    }
+    return null;
   }
   
-  public ujo a(int paramInt)
+  protected abstract List<uiz> a(@NonNull List<uja> paramList);
+  
+  public Config a()
   {
-    this.a = paramInt;
-    return this;
+    return this.jdField_a_of_type_Ujw;
+  }
+  
+  public void a(uiz paramuiz)
+  {
+    if (paramuiz.b() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      xqq.a(bool);
+      this.jdField_a_of_type_Uiz = paramuiz;
+      return;
+    }
+  }
+  
+  public void a(Config paramConfig)
+  {
+    this.jdField_a_of_type_Ujw = paramConfig;
+  }
+  
+  public List<uiz> b()
+  {
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
+      return null;
+    }
+    if ((a() != null) && (localList.size() < a().b))
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
+      return null;
+    }
+    return a(a());
   }
 }
 

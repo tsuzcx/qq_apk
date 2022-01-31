@@ -27,7 +27,7 @@ public class sgc
     {
       localObject = (sgd)a.get(paramString);
       localJSONObject.put("app", "QQ");
-      localJSONObject.put("appVersion", "8.3.3");
+      localJSONObject.put("appVersion", "8.3.5");
       localJSONObject.put("businessID", ((sgd)localObject).b);
       localJSONObject.put("os", "android");
       localObject = new JSONObject();

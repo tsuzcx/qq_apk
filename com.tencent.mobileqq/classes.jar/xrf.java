@@ -1,8 +1,10 @@
-public abstract interface xrf
+final class xrf
+  extends uzo
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public String a()
+  {
+    return ult.n;
+  }
 }
 
 

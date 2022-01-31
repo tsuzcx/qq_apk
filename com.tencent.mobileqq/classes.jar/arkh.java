@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
 class arkh
-  implements View.OnClickListener
+  implements arip
 {
-  arkh(arke paramarke) {}
+  arkh(arkf paramarkf) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.finish();
+    this.a.a = System.currentTimeMillis();
+    arkf.a(this.a).sendEmptyMessageDelayed(8001, arkf.a(this.a));
+    arkf.a(this.a).sendEmptyMessageDelayed(8002, arkf.b(this.a));
   }
+  
+  public void b() {}
 }
 
 

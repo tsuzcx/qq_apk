@@ -1,59 +1,160 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bdaf
-  extends Handler
+public abstract class bdaf
+  extends Drawable
 {
-  static int a;
-  public aeov a;
-  public WeakReference<Context> a;
+  protected int a;
+  protected ColorFilter a;
+  protected Drawable a;
+  protected boolean a;
+  protected int b;
+  protected Drawable b;
+  protected Drawable c;
   
-  static
+  protected bdaf(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
+    this.c = paramDrawable2;
   }
   
-  private void a(aeov paramaeov)
+  public Bitmap a()
   {
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu Called");
-    if ((paramaeov instanceof aema))
-    {
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is BubbleOnlongClickListener");
-      paramaeov = ((aema)paramaeov).a;
-      if ((paramaeov != null) && (paramaeov.a()))
-      {
-        QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper dismiss");
-        paramaeov.a();
-        return;
-      }
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper notshow");
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))) {
+      return ((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
     }
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is: " + paramaeov.getClass());
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  public Drawable a()
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == jdField_a_of_type_Int) && ((paramMessage.obj instanceof View)) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    switch (this.jdField_a_of_type_Int)
     {
-      paramMessage = (aelt)aekt.a((View)paramMessage.obj);
-      QLog.d("SystemDragUtils", 1, "DRAG TRIGGER: holder is: " + paramMessage.getClass());
-      if (paramMessage.a != null) {
-        ThreadManager.executeOnFileThread(new SystemDragUtils.TouchHandler.1(this, paramMessage));
-      }
+    default: 
+      return null;
+    case 0: 
+      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    case 1: 
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     }
-    else
+    return this.c;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.draw(paramCanvas);
+    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicHeight();
+    }
+    return i;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicWidth();
+    }
+    return i;
+  }
+  
+  public int getMinimumHeight()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumHeight();
+    }
+    return i;
+  }
+  
+  public int getMinimumWidth()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumWidth();
+    }
+    return i;
+  }
+  
+  public int getOpacity()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getOpacity();
+    }
+    return i;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bdeb.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+      if (this.jdField_b_of_type_Int != -1) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+      }
+      invalidateSelf();
+    }
+    Drawable localDrawable;
+    do
     {
       return;
+      localDrawable = a();
+    } while (localDrawable == null);
+    localDrawable.setBounds(paramRect);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setAlpha(paramInt);
     }
-    QLog.e("SystemDragUtils", 1, "DRAG TRIGGER: holder message is null");
+  }
+  
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setColorFilter(paramColorFilter);
+    }
   }
 }
 

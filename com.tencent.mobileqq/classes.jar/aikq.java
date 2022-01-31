@@ -1,20 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aikq
-  implements DialogInterface.OnKeyListener
+public class aikq
+  extends amcd
 {
-  aikq(aikl paramaikl) {}
+  public aikq(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if (paramFaceRsp != null)
     {
-      this.a.a.dismiss();
-      aikl.a(this.a, aikl.a(this.a), true, Long.valueOf(aikl.b(this.a)).longValue(), true);
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
+      }
     }
-    return false;
+    else
+    {
+      return;
+    }
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 

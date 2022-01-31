@@ -1,14 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class balc
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  balc(baky parambaky) {}
+  balc(bala parambala) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    if (bala.a(this.a) != null) {
+      bala.a(this.a).a();
+    }
   }
 }
 

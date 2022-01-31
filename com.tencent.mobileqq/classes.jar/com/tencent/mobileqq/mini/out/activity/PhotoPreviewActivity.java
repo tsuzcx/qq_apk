@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bdar;
+import bdfa;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.BubblePopupWindow;
@@ -34,7 +34,7 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bdar.anim(this, true, false);
+    bdfa.anim(this, true, false);
     super.finish();
   }
   
@@ -51,7 +51,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561756);
+    setContentView(2131561774);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -130,14 +130,14 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131378090);
+    this.topBar = findViewById(2131378144);
     this.backBtn = ((TextView)findViewById(2131363031));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131377884));
-    this.gallery = ((ProGallery)findViewById(2131367010));
+    this.titleView = ((TextView)findViewById(2131377938));
+    this.gallery = ((ProGallery)findViewById(2131367020));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);

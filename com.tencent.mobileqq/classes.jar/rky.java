@@ -41,25 +41,25 @@ public class rky
     if (paramBundle == null) {
       return;
     }
-    if ((TextUtils.isEmpty(paramString)) || (!xmx.b(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!xrg.b(paramString))) {}
     for (;;)
     {
       rkz localrkz = new rkz(this);
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Awfy = new rla(this);
-      batw localbatw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      localrkz.addFilter(new Class[] { bamp.class });
-      localbatw.a(localrkz);
-      localbaub.i = paramString;
-      localbaub.jdField_a_of_type_Boolean = true;
-      localbaub.jdField_b_of_type_Int = 24;
-      localbaub.jdField_c_of_type_Int = 54;
-      localbaub.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      localbaub.jdField_c_of_type_JavaLangString = "0";
-      localbaub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      localbatw.a(localbaub);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localbaub.jdField_a_of_type_Long), paramBundle);
-      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localbaub.jdField_a_of_type_Long), paramBundle);
+      bayk localbayk = new bayk();
+      localbayk.jdField_a_of_type_Awkh = new rla(this);
+      bayf localbayf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      localrkz.addFilter(new Class[] { baqy.class });
+      localbayf.a(localrkz);
+      localbayk.i = paramString;
+      localbayk.jdField_a_of_type_Boolean = true;
+      localbayk.jdField_b_of_type_Int = 24;
+      localbayk.jdField_c_of_type_Int = 54;
+      localbayk.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      localbayk.jdField_c_of_type_JavaLangString = "0";
+      localbayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      localbayf.a(localbayk);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localbayk.jdField_a_of_type_Long), paramBundle);
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localbayk.jdField_a_of_type_Long), paramBundle);
       return;
       a(jdField_a_of_type_Int);
     }

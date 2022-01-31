@@ -1,15 +1,6 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
-
-public class bglt<Data>
+public abstract interface bglt
 {
-  final AsyncTask jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
-  
-  public bglt(AsyncTask paramAsyncTask, Data... paramVarArgs)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
-  }
+  public abstract void onRuntimeMessage(int paramInt, Object paramObject);
 }
 
 

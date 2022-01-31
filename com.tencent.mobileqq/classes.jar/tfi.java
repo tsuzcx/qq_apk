@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public abstract interface tfi<T extends WSSimpleBaseEvent>
 {
-  public abstract ArrayList<Class<T>> a();
-  
   public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract ArrayList<Class<T>> getEventClass();
 }
 
 

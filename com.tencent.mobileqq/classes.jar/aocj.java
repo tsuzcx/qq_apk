@@ -1,48 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
 
-final class aocj
-  implements aoyf
+public class aocj
 {
-  public void a(String paramString1, String paramString2)
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  
+  private aocj(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aoci.a(), 2, paramString2);
-    }
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(aoci.a(), 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(aoci.a(), 2, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(aoci.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(aoci.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(aoci.a(), 2, paramString2);
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

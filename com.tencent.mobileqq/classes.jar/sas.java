@@ -13,7 +13,7 @@ public class sas
   public static String a(String paramString, ImageData paramImageData)
   {
     if ((TextUtils.isEmpty(paramString)) || (!paramImageData.a)) {}
-    while (!((Boolean)bjxj.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
+    while (!((Boolean)bkbq.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
       return paramString;
     }
     if (paramString.contains("fmt=gif"))
@@ -21,7 +21,7 @@ public class sas
       paramImageData.a = false;
       return paramString;
     }
-    paramImageData = bhos.a(paramString);
+    paramImageData = bhsz.a(paramString);
     if (paramImageData.containsKey("tp"))
     {
       paramImageData = (String)paramImageData.get("tp");
@@ -54,7 +54,7 @@ public class sas
   
   public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new sat(LayoutInflater.from(paramContext).inflate(2131560019, null), paramBaseData);
+    return new sat(LayoutInflater.from(paramContext).inflate(2131560018, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

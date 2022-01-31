@@ -1,29 +1,47 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class aiir
-  extends awdn
+  extends afpy
 {
-  public aiir(PhoneMatchView.1 param1) {}
+  boolean a;
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public aiir(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
+    super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected void b(boolean paramBoolean, int paramInt)
+  private boolean a(int paramInt)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
+    return (paramInt == 62) || (paramInt == 96) || (paramInt == 75);
   }
   
-  protected void e(boolean paramBoolean, int paramInt)
+  public aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
+    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
+      if (this.jdField_a_of_type_Aiiv == null) {
+        this.jdField_a_of_type_Aiiv = new aiiv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+    }
+    for (paramChatMessage = a(this.jdField_a_of_type_Aiiv, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
+    {
+      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
+        ((BaseBubbleBuilder)paramChatMessage).b = true;
+      }
+      return paramChatMessage;
+    }
   }
   
-  protected void f(boolean paramBoolean, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

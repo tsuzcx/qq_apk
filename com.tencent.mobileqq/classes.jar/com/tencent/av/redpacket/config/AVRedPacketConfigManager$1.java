@@ -1,6 +1,6 @@
 package com.tencent.av.redpacket.config;
 
-import anon;
+import answ;
 import com.tencent.av.service.AVRedPacketConfig;
 import com.tencent.qphone.base.util.QLog;
 import lwp;
@@ -14,17 +14,17 @@ public class AVRedPacketConfigManager$1
   public void run()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
-    if (this.this$0.jdField_a_of_type_Anon != null) {}
+    if (this.this$0.jdField_a_of_type_Answ != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.w("AVRedPacketConfigManger", 1, bool + "]");
       this.this$0.jdField_b_of_type_Lyu = this.a;
       this.this$0.jdField_b_of_type_Boolean = false;
       this.this$0.c = false;
-      if (this.this$0.jdField_a_of_type_Anon != null)
+      if (this.this$0.jdField_a_of_type_Answ != null)
       {
-        this.this$0.jdField_a_of_type_Anon.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
-        this.this$0.jdField_a_of_type_Anon.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
+        this.this$0.jdField_a_of_type_Answ.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
+        this.this$0.jdField_a_of_type_Answ.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
       }
       return;
     }

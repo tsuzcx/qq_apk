@@ -4,18 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
-import aqih;
-import aqii;
-import aqij;
-import aqik;
-import aqnl;
-import aqse;
-import aqxp;
-import arjn;
-import arni;
-import bcgp;
-import bdcb;
-import bhos;
+import aqmq;
+import aqmr;
+import aqms;
+import aqmt;
+import aqru;
+import aqwn;
+import arby;
+import arnw;
+import arrr;
+import bcky;
+import bdgk;
+import bhsz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,9 +26,9 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import ypf;
-import ypq;
-import ypy;
+import ytu;
+import yuf;
+import yun;
 
 public class TroopFileZipPreviewActivity
   extends IphoneTitleBarActivity
@@ -36,12 +36,12 @@ public class TroopFileZipPreviewActivity
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  private aqnl jdField_a_of_type_Aqnl = new aqik(this);
+  private aqru jdField_a_of_type_Aqru = new aqmt(this);
   ForwardFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
   public XListView a;
   public String a;
-  public List<arjn> a;
-  public ypy a;
+  public List<arnw> a;
+  public yun a;
   public short a;
   public boolean a;
   int b;
@@ -60,14 +60,14 @@ public class TroopFileZipPreviewActivity
     this.jdField_a_of_type_Short = 0;
   }
   
-  private ypq a(FileManagerEntity paramFileManagerEntity)
+  private yuf a(FileManagerEntity paramFileManagerEntity)
   {
-    return new aqii(this, paramFileManagerEntity);
+    return new aqmr(this, paramFileManagerEntity);
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString6, short paramShort, ypq paramypq)
+  private void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString6, short paramShort, yuf paramyuf)
   {
-    String str = "http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + bhos.a(paramString4) + "&";
+    String str = "http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + bhsz.a(paramString4) + "&";
     ArrayList localArrayList = new ArrayList();
     boolean bool;
     if (paramFileManagerEntity.getCloudType() == 2)
@@ -81,9 +81,9 @@ public class TroopFileZipPreviewActivity
     label232:
     for (;;)
     {
-      paramString1 = new bcgp(str, "GET", new aqij(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramBoolean, paramString6, paramString1, paramShort, paramString3, paramInt, paramString2, paramypq), 1000, null);
+      paramString1 = new bcky(str, "GET", new aqms(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramBoolean, paramString6, paramString1, paramShort, paramString3, paramInt, paramString2, paramyuf), 1000, null);
       paramString2 = new Bundle();
-      paramString2.putString("version", bdcb.c());
+      paramString2.putString("version", bdgk.c());
       paramString2.putString("Cookie", paramString5);
       paramString3 = new HashMap();
       paramString3.put("BUNDLE", paramString2);
@@ -128,7 +128,7 @@ public class TroopFileZipPreviewActivity
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838591);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838592);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
     setTitle(paramBundle);
@@ -138,14 +138,14 @@ public class TroopFileZipPreviewActivity
       finish();
       return false;
     }
-    this.jdField_b_of_type_Int = arni.b(paramBundle);
+    this.jdField_b_of_type_Int = arrr.b(paramBundle);
     if (this.jdField_a_of_type_Long != 0L) {
-      ypf.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, a(paramBundle));
+      ytu.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, a(paramBundle));
     }
     for (;;)
     {
       startTitleProgress();
-      super.setRightButton(2131690884, new aqih(this, paramBundle));
+      super.setRightButton(2131690885, new aqmq(this, paramBundle));
       return true;
       a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, this.jdField_a_of_type_Boolean, this.f, this.jdField_a_of_type_Short, a(paramBundle));
     }
@@ -154,15 +154,15 @@ public class TroopFileZipPreviewActivity
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Aqnl != null) {
-      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().deleteObserver(this.jdField_a_of_type_Aqnl);
+    if (this.jdField_a_of_type_Aqru != null) {
+      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().deleteObserver(this.jdField_a_of_type_Aqru);
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().addObserver(this.jdField_a_of_type_Aqnl);
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().addObserver(this.jdField_a_of_type_Aqru);
   }
 }
 

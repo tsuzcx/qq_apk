@@ -1,10 +1,10 @@
 package com.tencent.qidian.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class BmqqAccountType
-  extends awbv
+  extends awge
 {
   public static final int TYPE_ACCOUNT_BMQQ_EXT = 0;
   public static final int TYPE_ACCOUNT_CRM_EXT = 2;
@@ -14,7 +14,7 @@ public class BmqqAccountType
   public static final int TYPE_ACCOUNT_QIDIAN_MAIN = 6;
   public static final int TYPE_ACCOUNT_UNKNOW = 4;
   public int mAccountType;
-  @awdj
+  @awhs
   public String mUin = "";
   
   public BmqqAccountType() {}

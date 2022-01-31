@@ -1,10 +1,17 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
+
 public class bmax
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public boolean a;
-  public int b = 20;
-  public boolean b;
-  public int c = 500;
+  public bmax(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
+  }
 }
 
 

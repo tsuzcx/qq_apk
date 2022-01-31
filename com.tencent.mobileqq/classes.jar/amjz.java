@@ -1,125 +1,103 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class amjz
-  extends bhyb
+  extends ameq
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<QIMNotifyAddFriend> jdField_a_of_type_JavaUtilList = new ArrayList();
-  int b = 0;
+  amjz(amjx paramamjx) {}
   
-  public amjz(amjw paramamjw, Context paramContext, QQAppInterface paramQQAppInterface)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131297927);
-    this.b = paramContext.getResources().getDimensionPixelOffset(2131297926);
-  }
-  
-  public void a(List<QIMNotifyAddFriend> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    QIMNotifyAddFriend localQIMNotifyAddFriend;
-    Object localObject1;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560733, null);
-      paramViewGroup = new amkb(this.jdField_a_of_type_Amjw);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368759));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364043));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378845));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378951));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369614));
-      paramView.setTag(paramViewGroup);
-      localQIMNotifyAddFriend = (QIMNotifyAddFriend)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(localQIMNotifyAddFriend);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this.jdField_a_of_type_Amjw);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Amjw.b.contains(localQIMNotifyAddFriend));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localQIMNotifyAddFriend.uin), (byte)3));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localQIMNotifyAddFriend.nickName);
-      paramViewGroup.b.setText(localQIMNotifyAddFriend.wording);
-      localObject1 = this.jdField_a_of_type_Amjw.a.a(localQIMNotifyAddFriend.uin, localQIMNotifyAddFriend.qqUin);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label462;
-      }
-      paramViewGroup.b.setText((CharSequence)localObject1);
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
+      this.a.f(paramString);
     }
+  }
+  
+  protected void a(String paramString, List<Pair<String, String>> paramList)
+  {
+    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 2, i);
+      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
+        break label76;
+      }
+    }
+    label76:
+    while (!paramString.equals(amjx.a(this.a)))
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    localObject = (alto)this.a.a.getManager(51);
+    String str1 = this.a.a.getCurrentAccountUin();
+    int k = paramList.size();
+    int j = 0;
+    int i = 0;
+    label133:
+    if (j < k)
+    {
+      String str2 = (String)((Pair)paramList.get(j)).first;
+      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((alto)localObject).b(str2))) {
+        break label283;
+      }
+      i += 1;
+    }
+    label283:
     for (;;)
     {
-      if (localQIMNotifyAddFriend.videoInfos.size() <= 0) {
-        break label474;
+      j += 1;
+      break label133;
+      float f = amjx.a(this.a) / 100.0F;
+      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
+      if (1.0F * i / (paramList.size() - 1) <= f) {
+        break;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      localObject1 = new ArrayList();
-      paramInt = 0;
-      while (paramInt < localQIMNotifyAddFriend.videoInfos.size())
-      {
-        Object localObject2 = (QIMNotifyAddFriend.VideoInfo)localQIMNotifyAddFriend.videoInfos.get(paramInt);
-        URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-        localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        ((ArrayList)localObject1).add(((QIMNotifyAddFriend.VideoInfo)localObject2).videoVid);
-        localURLImageView.setOnClickListener(new amka(this, (ArrayList)localObject1, ((QIMNotifyAddFriend.VideoInfo)localObject2).videoVid));
-        xod.a(localURLImageView, ((QIMNotifyAddFriend.VideoInfo)localObject2).coverUrl, this.jdField_a_of_type_Int, this.b, 8, new ColorDrawable(-1), "Qim_First_Login_Recommend");
-        localObject2 = new LinearLayout.LayoutParams(this.jdField_a_of_type_Int, this.b);
-        if (paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0) {
-          ((LinearLayout.LayoutParams)localObject2).setMargins(aekt.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0, 0);
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject2);
-        paramInt += 1;
-      }
-      paramViewGroup = (amkb)paramView.getTag();
-      break;
-      label462:
-      paramViewGroup.b.setVisibility(8);
+      this.a.e(paramString);
+      return;
     }
-    label474:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_Long = localQIMNotifyAddFriend.uin;
-    return paramView;
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    this.a.f(paramString);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        long l = ((Long)paramObject[0]).longValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (String.valueOf(l).equals(amjx.a(this.a)))
+        {
+          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
+          if (paramObject.lastSpeak > paramObject.joinTime) {
+            return;
+          }
+          amjx.a(this.a, String.valueOf(l));
+          return;
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
+      }
+    }
   }
 }
 

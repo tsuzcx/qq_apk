@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aroa;
+import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FilePicURLDrawlableHelper$1
@@ -10,7 +10,7 @@ public final class FilePicURLDrawlableHelper$1
   
   public void run()
   {
-    aroa.b(this.a);
+    arsj.b(this.a);
   }
 }
 

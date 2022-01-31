@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bbzp;
-import bbzu;
-import bcar;
+import bcdy;
+import bced;
+import bcfa;
 
 public class ImageItem$1
   implements Runnable
 {
-  public ImageItem$1(bcar parambcar, bbzp parambbzp) {}
+  public ImageItem$1(bcfa parambcfa, bcdy parambcdy) {}
   
   public void run()
   {
-    bcar.a(this.this$0, (bbzu)this.a, true);
+    bcfa.a(this.this$0, (bced)this.a, true);
   }
 }
 

@@ -22,7 +22,7 @@ public class ssj
   public boolean a;
   public int b;
   public long b;
-  @awdg
+  @awhp
   public CharSequence b;
   public String b;
   public boolean b;
@@ -30,7 +30,7 @@ public class ssj
   public String c;
   public int d;
   public String d;
-  @awdg
+  @awhp
   public int e;
   public String e;
   
@@ -38,7 +38,7 @@ public class ssj
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131167006);
+    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131167008);
     this.jdField_b_of_type_Long = 0L;
   }
   
@@ -76,7 +76,7 @@ public class ssj
     localssj.jdField_b_of_type_Int = paramsut.jdField_b_of_type_Int;
     localssj.jdField_c_of_type_Int = 0;
     localssj.jdField_a_of_type_Long = paramsut.jdField_a_of_type_Long;
-    localssj.jdField_b_of_type_JavaLangString = ajgs.a().a(paramsut.jdField_a_of_type_JavaLangString, paramsut.jdField_a_of_type_Long);
+    localssj.jdField_b_of_type_JavaLangString = ajlh.a().a(paramsut.jdField_a_of_type_JavaLangString, paramsut.jdField_a_of_type_Long);
     String str2 = suv.a().a(paramsut.jdField_a_of_type_JavaLangString);
     String str1 = str2;
     if ("".equals(str2)) {
@@ -99,7 +99,7 @@ public class ssj
   
   private static void a(QQAppInterface paramQQAppInterface, ssj paramssj)
   {
-    paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+    paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
     if (paramQQAppInterface != null)
     {
       PublicAccountInfo localPublicAccountInfo = paramQQAppInterface.b(paramssj.jdField_a_of_type_JavaLangString);
@@ -170,7 +170,7 @@ public class ssj
     }
     paramssj.jdField_e_of_type_Int = 4;
     paramssj.jdField_a_of_type_Long = paramQQAppInterface.getTime();
-    paramssj.jdField_b_of_type_JavaLangString = ajgs.a().a(paramssj.jdField_a_of_type_JavaLangString, paramQQAppInterface.getTime());
+    paramssj.jdField_b_of_type_JavaLangString = ajlh.a().a(paramssj.jdField_a_of_type_JavaLangString, paramQQAppInterface.getTime());
     paramssj.jdField_a_of_type_JavaLangCharSequence = paramQQAppInterface.getSummary();
   }
   

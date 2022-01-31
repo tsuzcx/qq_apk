@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class aipf
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  aipf(aipe paramaipe) {}
+  aipf(aipa paramaipa) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (aipe.a(this.a) == null)
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      aipe.a(this.a, bdcd.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718837), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718835), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718836), new aipg(this), new aiph(this)));
-      aipe.a(this.a).setCanceledOnTouchOutside(false);
+      this.a.a.dismiss();
+      aipa.a(this.a, aipa.a(this.a), true, Long.valueOf(aipa.b(this.a)).longValue(), true);
     }
-    aipe.a(this.a).show();
+    return false;
   }
 }
 

@@ -1,6 +1,23 @@
-public abstract interface avwx
+import android.hardware.Camera.Size;
+import java.util.Comparator;
+
+class avwx
+  implements Comparator<Camera.Size>
 {
-  public abstract void a(boolean paramBoolean);
+  avwx(avwv paramavwv) {}
+  
+  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  {
+    int i = paramSize1.height * paramSize1.width;
+    int j = paramSize2.height * paramSize2.width;
+    if (j < i) {
+      return 1;
+    }
+    if (j > i) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

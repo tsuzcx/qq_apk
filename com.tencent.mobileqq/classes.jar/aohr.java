@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class aohr
-  extends aoho
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 250;
-  }
+  public aohr(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public aohi a(String paramString)
+  public void onClick(View paramView)
   {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
-    {
-      aoic localaoic = (aoic)aogt.a(paramString, aoic.class);
-      return new aohl(paramString, localaoic);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohr
  * JD-Core Version:    0.7.0.1
  */

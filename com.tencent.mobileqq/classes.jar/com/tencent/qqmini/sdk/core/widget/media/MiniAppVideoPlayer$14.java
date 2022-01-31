@@ -10,9 +10,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgho;
-import bghy;
-import bgij;
+import bglv;
+import bgmf;
+import bgmq;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.ref.WeakReference;
@@ -44,13 +44,13 @@ class MiniAppVideoPlayer$14
     int i;
     if (this.this$0.b != null)
     {
-      localObject = (bgho)this.this$0.b.get();
+      localObject = (bglv)this.this$0.b.get();
       if (localObject != null)
       {
-        MiniAppVideoPlayer.d(this.this$0, bghy.a((bgho)localObject).b());
-        MiniAppVideoPlayer.e(this.this$0, bghy.a((bgho)localObject).a());
-        bgij.a((bgho)localObject).b(8);
-        bgij.a((bgho)localObject).a(8);
+        MiniAppVideoPlayer.d(this.this$0, bgmf.a((bglv)localObject).b());
+        MiniAppVideoPlayer.e(this.this$0, bgmf.a((bglv)localObject).a());
+        bgmq.a((bglv)localObject).b(8);
+        bgmq.a((bglv)localObject).a(8);
       }
       MiniAppVideoPlayer.a(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
       if (this.this$0.getParent().getParent() != null)

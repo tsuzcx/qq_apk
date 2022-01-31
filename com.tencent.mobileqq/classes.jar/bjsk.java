@@ -1,210 +1,217 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin.1;
-import java.io.File;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.statistic.StatisticCollector;
+import cooperation.qzone.statistic.access.WnsKeys;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import cooperation.qzone.util.NetworkState;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class bjsk
-  extends bjts
-  implements bjmq
 {
-  private bjbf jdField_a_of_type_Bjbf;
-  private String jdField_a_of_type_JavaLangString = "";
+  private static final AtomicInteger a = new AtomicInteger(0);
   
-  private void a(WebViewPlugin paramWebViewPlugin, becq parambecq, String[] paramArrayOfString)
+  public static int a()
   {
-    String str;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      str = "";
-    }
-    do
+    try
     {
-      for (;;)
-      {
-        try
-        {
-          parambecq = new JSONObject(paramArrayOfString[0]);
-          paramWebViewPlugin = parambecq.getString("giftid");
-          parambecq.printStackTrace();
-        }
-        catch (JSONException parambecq)
-        {
-          try
-          {
-            parambecq = parambecq.getString("callback");
-            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambecq))) {
-              break;
-            }
-            return;
-          }
-          catch (JSONException parambecq)
-          {
-            for (;;)
-            {
-              continue;
-              int i = 0;
-            }
-          }
-          parambecq = parambecq;
-          paramWebViewPlugin = "";
-        }
-        parambecq = str;
+      int i = a.incrementAndGet();
+      if (i > 1000000) {
+        a.set(0);
       }
-      paramWebViewPlugin = new File(bjbc.a(paramWebViewPlugin) + atug.a());
-      if ((!paramWebViewPlugin.exists()) || (!paramWebViewPlugin.isDirectory())) {
-        break;
-      }
-      i = 1;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null);
-    paramWebViewPlugin = "window." + parambecq + "({checkGift:" + i + "})";
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramWebViewPlugin);
-  }
-  
-  private void b(WebViewPlugin paramWebViewPlugin, becq parambecq, String[] paramArrayOfString)
-  {
-    parambecq.a().getHandler(bjtm.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
-  }
-  
-  private void c(WebViewPlugin paramWebViewPlugin, becq parambecq, String[] paramArrayOfString)
-  {
-    Object localObject;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      localObject = "";
+      return i;
     }
-    label63:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            parambecq = new JSONObject(paramArrayOfString[0]);
-            paramWebViewPlugin = parambecq.getString("giftid");
-            parambecq.printStackTrace();
-          }
-          catch (JSONException parambecq)
-          {
-            try
-            {
-              parambecq = parambecq.getString("callback");
-              if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambecq))) {
-                break;
-              }
-              return;
-            }
-            catch (JSONException parambecq)
-            {
-              break label63;
-            }
-            parambecq = parambecq;
-            paramWebViewPlugin = "";
-          }
-          parambecq = (becq)localObject;
-        }
-        paramArrayOfString = bjbc.a(paramWebViewPlugin);
-        localObject = new File(paramArrayOfString);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      this.jdField_a_of_type_Bjbf = new bjbf(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    } while (!bjbf.a());
-    this.jdField_a_of_type_Bjbf.a(paramWebViewPlugin, paramArrayOfString, new bjsl(this, parambecq));
+    finally {}
   }
   
-  public void a()
+  public static void a(int paramInt)
   {
-    super.a();
+    a("QzoneNewService.forwardReport", paramInt, null, 1);
   }
   
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    super.a(paramIntent, paramByte, paramInt);
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ("checkGift".equalsIgnoreCase(paramString3))
+    Object localObject = "";
+    if (paramInt1 == 0)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("downloadGift".equalsIgnoreCase(paramString3))
-    {
-      bjmn.a().a(this);
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("playGift".equalsIgnoreCase(paramString3))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934601L)
-    {
-      String str = QzoneConfig.getInstance().getConfig("H5Url", "GiftDetailPage", "https://h5.qzone.qq.com/gift/detail?_wv=2097155&_proxy=1&uin={uin}&ugcid={ugcid}");
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = str.indexOf("?");
-        if (i != -1)
-        {
-          str = str.substring(0, i);
-          if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(str)) && (this.jdField_a_of_type_Bjbf != null)) {
-            this.jdField_a_of_type_Bjbf.b();
-          }
-        }
+      localObject = new StringBuilder().append("errorCode = ").append(paramInt2).append(", msg = ");
+      if (paramString1 == null) {
+        break label58;
       }
     }
-    return super.a(paramString, paramLong, paramMap);
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
     for (;;)
     {
+      localObject = paramString1;
+      a("qzonenewservice.opBox", paramInt1, (String)localObject, 0, 5, paramString2);
       return;
-      paramBundle = paramBundle.getBundle("data");
-      if (paramBundle == null)
+      label58:
+      paramString1 = "";
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    a("qzonenewservice.openvip", 1300000 + paramInt, paramString, 1);
+  }
+  
+  public static void a(String paramString)
+  {
+    a("qzonenewservice.call.music", 0, paramString, 1);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    int i = bill.b();
+    a("QZoneAPPInQQ.activiySwitch." + paramString, 0, paramInt, null, i, 0, null);
+  }
+  
+  private static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, String paramString3)
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    StatisticCollector localStatisticCollector;
+    do
+    {
+      return;
+      long l2 = 0L;
+      long l1 = l2;
+      if (BaseApplicationImpl.getApplication() != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QZoneGiftFullScreenJsPlugin", 2, "call js function,bundle is empty");
-        }
-      }
-      else if ("cmd.downloadGift".equals(paramString))
-      {
-        int i = paramBundle.getInt("Gift_DownloadProgress_FullScreen");
-        paramString = "-1";
-        if (i > 0) {
-          if (i >= 100) {
-            break label155;
+        l1 = l2;
+        if (BaseApplicationImpl.getApplication().isRuntimeReady())
+        {
+          l1 = l2;
+          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
+            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
           }
         }
-        label155:
-        for (paramString = String.format("%.1f", new Object[] { Double.valueOf(i * 0.01D) }); (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)); paramString = "1")
+      }
+      localStatisticCollector = StatisticCollector.getInstance();
+      Statistic localStatistic = localStatisticCollector.getStatistic();
+      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+      localStatistic.setValue(WnsKeys.CommandId, paramString1);
+      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(a()));
+      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+      localStatistic.setValue(WnsKeys.Qua, bjdm.a());
+      localStatistic.setValue(WnsKeys.Build, "4555");
+      localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
+      if (paramString2 != null) {
+        localStatistic.setValue(WnsKeys.Detail, paramString2);
+      }
+      if (paramInt3 > 0) {
+        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt3));
+      }
+      if (paramInt4 > 0)
+      {
+        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt4));
+        localStatistic.setValue(WnsKeys.ODetails, paramString3);
+      }
+      localStatisticCollector.put(localStatistic);
+    } while (paramInt3 != 1);
+    localStatisticCollector.forceReport();
+  }
+  
+  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  {
+    a(paramString1, paramInt1, paramString2, paramInt2, 0, null);
+  }
+  
+  private static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3)
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    StatisticCollector localStatisticCollector;
+    do
+    {
+      return;
+      long l2 = 0L;
+      long l1 = l2;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        l1 = l2;
+        if (BaseApplicationImpl.getApplication().isRuntimeReady())
         {
-          paramString = "window." + this.jdField_a_of_type_JavaLangString + "({downloadGift:" + paramString + "})";
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString);
-          return;
+          l1 = l2;
+          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
+            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+          }
         }
       }
+      localStatisticCollector = StatisticCollector.getInstance();
+      Statistic localStatistic = localStatisticCollector.getStatistic();
+      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+      localStatistic.setValue(WnsKeys.CommandId, paramString1);
+      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(a()));
+      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+      localStatistic.setValue(WnsKeys.Qua, bjdm.a());
+      localStatistic.setValue(WnsKeys.Build, "4555");
+      if (paramString2 != null) {
+        localStatistic.setValue(WnsKeys.Detail, paramString2);
+      }
+      if (paramInt2 > 0) {
+        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt2));
+      }
+      if (paramInt3 > 0)
+      {
+        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt3));
+        localStatistic.setValue(WnsKeys.ODetails, paramString3);
+      }
+      localStatisticCollector.put(localStatistic);
+    } while (paramInt2 != 1);
+    localStatisticCollector.forceReport();
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      a("qzonenewservice.refresh", 0, null, i, 1, paramString);
+      return;
     }
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    a("Qzone.FeedVideo.Play", paramInt, paramString, 1);
+  }
+  
+  public static void b(String paramString)
+  {
+    a("qzonenewservice.to.qzone", 1100003, paramString, 1);
+  }
+  
+  public static void b(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      a("qzonenewservice.refresh.more", 0, null, i, 1, paramString);
+      return;
+    }
+  }
+  
+  public static void c(int paramInt, String paramString)
+  {
+    a("wns.internal.crashRelatedServerIP", paramInt, paramString, 1);
+  }
+  
+  public static void c(String paramString)
+  {
+    a("qzonenewservice.to.qzonewap", 1100006, paramString, 1);
+  }
+  
+  public static void d(int paramInt, String paramString)
+  {
+    a("QzoneNewService.MusicSdkPlay", paramInt, paramString, 1);
+  }
+  
+  public static void e(int paramInt, String paramString)
+  {
+    a("Feeds.getStickerGif", paramInt, paramString, 1);
   }
 }
 

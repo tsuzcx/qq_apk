@@ -42,8 +42,8 @@ public class plq
     }
     paramView.setAlpha(1.0F);
     QLog.d("CommentBiuProteusItem", 2, "bindView | start CommentBiu Header Anim");
-    Animation localAnimation1 = AnimationUtils.loadAnimation(paramActivity, 2130772303);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(paramActivity, 2130772304);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(paramActivity, 2130772304);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(paramActivity, 2130772305);
     localAnimation1.setFillAfter(true);
     localAnimation1.setAnimationListener(new plr(this, paramView, localAnimation2));
     localAnimation2.setAnimationListener(new pls(this, paramView, paramBoolean, paramActivity, paramArticleInfo));
@@ -95,7 +95,7 @@ public class plq
           {
             paramJSONObject.put("column_title", localObject);
             if (paramMobileQQ != null) {
-              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131718769));
+              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131718781));
             }
             paramJSONObject.put("column_title_icon", "column_icon.png");
           }
@@ -183,7 +183,7 @@ public class plq
       for (;;)
       {
         if ((i > 0) && (paramMobileQQ != null)) {
-          paramJSONObject.put("count_text", i + paramMobileQQ.getString(2131718777));
+          paramJSONObject.put("count_text", i + paramMobileQQ.getString(2131718789));
         }
         QLog.d("CommentBiuProteusItem", 1, "getShortContentDataJson,count=" + i);
         return;

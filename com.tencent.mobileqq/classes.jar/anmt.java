@@ -1,12 +1,33 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.ark.open.ArkAppReport;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-final class anmt
-  implements ArkEnvironmentManager.IDataReport
+class anmt
+  implements anmx
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  anmt(anmm paramanmm, anmw paramanmw, String paramString, anmy paramanmy) {}
+  
+  public void a(byte[] paramArrayOfByte)
   {
-    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b }));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Anmy.a(false);
+      return;
+      if (!anmm.b(paramArrayOfByte, this.jdField_a_of_type_Anmw.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b, this.jdField_a_of_type_Anmw.d }));
+      }
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString });
+        if (anmm.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b, str }));
+      }
+    }
+    this.jdField_a_of_type_Anmy.a(true);
   }
 }
 

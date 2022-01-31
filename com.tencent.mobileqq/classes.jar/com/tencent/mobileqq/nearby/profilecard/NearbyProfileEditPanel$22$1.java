@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avjc;
+import avnl;
 
 class NearbyProfileEditPanel$22$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditPanel$22$1
   
   public void run()
   {
-    avjc.d(this.a.this$0);
+    avnl.d(this.a.this$0);
   }
 }
 

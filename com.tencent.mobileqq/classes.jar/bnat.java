@@ -1,36 +1,53 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bnat
-  extends RecyclablePool.Recyclable
+public class bnat
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public long[] a;
-  public long b;
-  public long c;
+  public bnat(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public bnat()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[6];
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    paramView = new Intent();
+    Object localObject = PermissionSettingActivity.a(this.a).a();
+    int i = 10000;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
+      i = ((bnar)localObject).b();
+      wxe.a("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, partType:%s", Integer.valueOf(i));
+      paramView.putExtra("PERMISSION_TYPE_KEY", i);
+      paramView.putExtra("PERMISSION_CURRENT_UIN_KEY", PermissionSettingActivity.a(this.a));
+      switch (i)
+      {
+      }
     }
-    this.c = 0L;
-  }
-  
-  public void recycle()
-  {
-    super.recycle();
-    a();
+    for (;;)
+    {
+      PermissionSettingActivity.a(this.a, i);
+      this.a.setResult(1, paramView);
+      this.a.finish();
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((bnaj)localObject).a();
+      if (((List)localObject).isEmpty())
+      {
+        wxe.d("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, empty friend list.");
+        QQToast.a(this.a, alud.a(2131708332), 0).a();
+        return;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(((bnal)((Iterator)localObject).next()).a());
+      }
+      paramView.putExtra("PERMISSION_UIN_LIST_KEY", localArrayList);
+      wxe.a("Q.qqstory.QQStoryBaseActivity", "select uin list:%s", localArrayList.toString());
+    }
   }
 }
 

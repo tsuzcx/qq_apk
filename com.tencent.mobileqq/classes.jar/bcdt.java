@@ -1,8 +1,25 @@
-public abstract interface bcdt
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
+public class bcdt
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  private int a;
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public bcdt(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
+    }
+  }
 }
 
 

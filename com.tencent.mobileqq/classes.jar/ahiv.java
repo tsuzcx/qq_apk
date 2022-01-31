@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class ahiv
-  extends allb
+  implements ahvh
 {
-  public ahiv(SystemMsgListView paramSystemMsgListView) {}
+  public ahiv(TroopView paramTroopView) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
-      }
-      QQToast.a(this.a.getContext(), 2131699558, 3000).a();
-      return;
+    if (paramInt == SimpleCheckableSlidingIndicator.a) {
+      TroopView.a(this.a);
     }
-    QQToast.a(this.a.getContext(), 2131699557, 1).a();
   }
 }
 

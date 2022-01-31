@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface asro
-  extends View.OnTouchListener
+class asro
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt);
+  asro(asrm paramasrm) {}
   
-  public abstract void b(View paramView, int paramInt);
-  
-  public abstract void c(asqh paramasqh, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    asrm.a(this.a, null);
+    asrm.b(this.a, null);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,100 +1,135 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class ygq
+class ygq
+  implements yhn
 {
-  private static volatile ygq jdField_a_of_type_Ygq;
-  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
-  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<ygu>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private MQLruCache<String, QQAnimationDrawable> b = new MQLruCache(10);
+  ygq(ygg paramygg) {}
   
-  private Bitmap a(File paramFile)
+  public void a(View paramView, int paramInt1, int paramInt2, Object paramObject)
   {
-    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
+    switch (paramInt1)
     {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
     }
-    return localObject1;
-  }
-  
-  public static ygq a()
-  {
-    if (jdField_a_of_type_Ygq == null) {}
-    try
+    do
     {
-      if (jdField_a_of_type_Ygq == null) {
-        jdField_a_of_type_Ygq = new ygq();
-      }
-      return jdField_a_of_type_Ygq;
-    }
-    finally {}
-  }
-  
-  public static String[] a(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (paramString.isDirectory()))
-    {
-      QLog.i("AnimationDrawableFactory", 2, "exist Animation Pic!");
-      paramString = paramString.listFiles();
-      if ((paramString != null) && (paramString.length > 0))
+      do
       {
-        Arrays.sort(paramString, new ygs());
-        ArrayList localArrayList = new ArrayList();
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
+        do
         {
-          localArrayList.add(paramString[i].getPath());
-          i += 1;
-        }
-        return (String[])localArrayList.toArray(new String[localArrayList.size()]);
-      }
-    }
-    return null;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StUser)));
+                          paramView = (CertifiedAccountMeta.StUser)paramObject;
+                        } while (paramView.type.get() != 1);
+                        ybt.a(ygg.a(this.a), paramView);
+                        return;
+                      } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
+                      paramView = (CertifiedAccountMeta.StComment)paramObject;
+                      QLog.d(ygg.a(), 1, "click comment, feedId: " + ygg.a(this.a).id + " commentId: " + paramView.id);
+                      ygg.a(this.a, paramView, null);
+                      return;
+                    } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+                    paramObject = (Object[])paramObject;
+                  } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
+                  paramView = (CertifiedAccountMeta.StComment)paramObject[0];
+                  paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
+                  QLog.d(ygg.a(), 1, "click reply, feedId: " + ygg.a(this.a).id + " commentId: " + paramView.id + " replyId: " + paramObject.id);
+                  ygg.a(this.a, paramView, paramObject);
+                  return;
+                } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
+                paramView = (CertifiedAccountMeta.StComment)paramObject;
+                ygg.a(this.a).b(paramView);
+                return;
+              } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+              paramView = (Object[])paramObject;
+            } while ((paramView.length <= 1) || (paramView[0] == null));
+            paramObject = (CertifiedAccountMeta.StComment)paramView[0];
+            paramInt1 = ygg.a(this.a).a(paramObject);
+          } while ((paramInt1 < 0) || (paramView[1] == null));
+          int i = ((Integer)paramView[1]).intValue();
+          this.a.a.setSelectionFromTop(paramInt2, i * (paramInt1 * -1));
+          return;
+        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
+        paramView = (CertifiedAccountMeta.StComment)paramObject;
+        ygg.a(this.a, ygg.a(this.a).a(ygg.a(this.a), paramView));
+        ygg.c(this.a, true);
+        return;
+      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+      paramView = (Object[])paramObject;
+    } while ((paramView.length <= 1) || (paramView[0] == null) || (paramView[1] == null));
+    paramObject = (CertifiedAccountMeta.StComment)paramView[0];
+    ygg.a(this.a).a(ygg.a(this.a), paramObject, (CertifiedAccountMeta.StReply)paramView[1]);
+    ygg.c(this.a, true);
   }
   
-  public void a(String paramString)
+  public void b(View paramView, int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, ygu paramygu, boolean paramBoolean)
-  {
-    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
-    if (TextUtils.isEmpty(paramString))
+    switch (paramInt1)
     {
-      QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
-      if (paramygu != null) {
-        paramygu.a();
-      }
     }
-    ThreadManagerV2.executeOnSubThread(new AnimationDrawableFactory.2(this, paramBoolean, paramString, paramInt, paramygu));
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
+        paramView = (CertifiedAccountMeta.StComment)paramObject;
+        ygg.a(this.a, new yfe(ygg.a(this.a), false, true));
+        ygg.a(this.a).a(ygg.b(this.a).getString(2131691357), 0, new ygr(this, paramView));
+        if (ygg.a(this.a, paramView.postUser)) {
+          ygg.a(this.a).a(ygg.d(this.a).getString(2131691556), 1, new ygs(this, paramView));
+        }
+        for (;;)
+        {
+          ygg.a(this.a).a(ygg.f(this.a).getString(2131690648));
+          ygg.a(this.a).show();
+          return;
+          ygg.a(this.a).a(ygg.e(this.a).getString(2131719229), 6, new ygt(this, paramView));
+        }
+      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+      paramObject = (Object[])paramObject;
+    } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
+    paramView = (CertifiedAccountMeta.StComment)paramObject[0];
+    paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
+    ygg.a(this.a, new yfe(ygg.g(this.a), false, true));
+    ygg.a(this.a).a(ygg.h(this.a).getString(2131691357), 0, new ygu(this, paramObject));
+    if (ygg.a(this.a, paramObject.postUser)) {
+      ygg.a(this.a).a(ygg.j(this.a).getString(2131691556), 1, new ygv(this, paramView, paramObject));
+    }
+    for (;;)
+    {
+      ygg.a(this.a).a(ygg.l(this.a).getString(2131690648));
+      ygg.a(this.a).show();
+      return;
+      ygg.a(this.a).a(ygg.k(this.a).getString(2131719229), 6, new ygw(this, paramView, paramObject));
+    }
   }
 }
 

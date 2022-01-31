@@ -1,36 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class auhk
-  extends auhs
 {
-  private final MultiAIOBaseViewPager a;
+  public int a;
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Long, auhl> a;
+  public AtomicBoolean a;
+  public boolean a;
+  public String b;
+  public ConcurrentHashMap<Long, auhl> b = new ConcurrentHashMap();
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public auhk(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
+  public auhk()
   {
-    this.a = paramMultiAIOBaseViewPager;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public int a(View paramView1, View paramView2)
+  public String toString()
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    int i = this.a.a();
-    if (i == paramView1.b) {
-      return 1;
-    }
-    if (i == paramView2.b) {
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
   }
 }
 

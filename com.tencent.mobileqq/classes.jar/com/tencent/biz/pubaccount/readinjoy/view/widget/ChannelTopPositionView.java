@@ -31,14 +31,14 @@ public class ChannelTopPositionView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559835, this, true);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559834, this, true);
     b();
     c();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372186));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372206));
   }
   
   private void c()

@@ -1,18 +1,10 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class afmx
-  extends afpq
+public abstract interface afmx
 {
-  afmx(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  public abstract void a();
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new qga(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

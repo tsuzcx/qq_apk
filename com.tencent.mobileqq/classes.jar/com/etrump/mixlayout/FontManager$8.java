@@ -1,24 +1,24 @@
 package com.etrump.mixlayout;
 
-import aloz;
-import bdbg;
+import alto;
+import bdfp;
 import com.tencent.qphone.base.util.QLog;
 import fx;
 
 public class FontManager$8
   implements Runnable
 {
-  public FontManager$8(fx paramfx, aloz paramaloz, String paramString) {}
+  public FontManager$8(fx paramfx, alto paramalto, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aloz.a(this.jdField_a_of_type_JavaLangString) == null)
+    if (this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_JavaLangString) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> extensionInfo is null.");
       }
-      bdbg.a(this.jdField_a_of_type_JavaLangString);
-      bdbg.a(this.this$0.a);
+      bdfp.a(this.jdField_a_of_type_JavaLangString);
+      bdfp.a(this.this$0.a);
     }
   }
 }

@@ -1,34 +1,10 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-
-public class babu
-  extends baig
+public abstract interface babu
 {
-  public babu(CharSequence paramCharSequence, int paramInt)
-  {
-    super(paramCharSequence, paramInt);
-  }
+  public abstract void a();
   
-  protected void a(View paramView, String paramString)
-  {
-    paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
-    try
-    {
-      paramView.startActivity(paramString);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

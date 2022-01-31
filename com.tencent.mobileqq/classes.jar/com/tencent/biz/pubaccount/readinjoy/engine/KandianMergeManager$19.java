@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acex;
-import aljq;
+import acjm;
+import alof;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ class KandianMergeManager$19
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).a().a(aljq.aA, 7220, false, false);
+    KandianMergeManager.a(this.this$0).a().a(alof.aA, 7220, false, false);
     if (this.a.extInt == 2)
     {
       this.a.isValid = false;
@@ -29,14 +29,14 @@ class KandianMergeManager$19
       if (this.a.extInt == 1)
       {
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = aljq.az;
+        localSessionInfo.jdField_a_of_type_JavaLangString = alof.az;
         localSessionInfo.jdField_a_of_type_Int = 1008;
-        acex.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        acjm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
         return;
       }
     } while (this.a.extInt != 5);
     this.a.isValid = false;
-    KandianMergeManager.a(this.this$0).a().b(aljq.aA, 7220, this.a.uniseq);
+    KandianMergeManager.a(this.this$0).a().b(alof.aA, 7220, this.a.uniseq);
   }
 }
 

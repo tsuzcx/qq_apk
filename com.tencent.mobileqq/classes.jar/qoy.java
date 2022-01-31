@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class qoy
-  implements bhqd
+  implements bhuk
 {
   public qoy(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   

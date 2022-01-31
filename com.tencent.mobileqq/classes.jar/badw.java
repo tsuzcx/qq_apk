@@ -1,48 +1,36 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
-
 public class badw
-  extends alko
-  implements Handler.Callback
+  extends bado
 {
-  private String[] a = { "docs.qq.com" };
+  private float d;
+  private float e;
   
-  public badw(QQAppInterface paramQQAppInterface)
+  public badw(int paramInt, float paramFloat1, float paramFloat2)
   {
-    super(paramQQAppInterface);
+    super(paramInt, 2, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
   }
   
-  private void a(Runnable paramRunnable)
+  protected void a(int paramInt, float paramFloat)
   {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new badx(this, paramRunnable)) == null) {
-      return;
+    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
+    if (this.e - this.d > 0.0F) {
+      if (this.jdField_c_of_type_Float >= this.e) {
+        this.jdField_c_of_type_Float = this.e;
+      }
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    for (;;)
+    {
+      if (paramInt >= this.jdField_c_of_type_Int) {
+        this.jdField_c_of_type_Float = this.e;
+      }
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.jdField_c_of_type_Float <= this.e) {
+        this.jdField_c_of_type_Float = this.e;
+      }
+    }
   }
-  
-  public void a(String paramString)
-  {
-    a(new TenDocOCRExportHandler.1(this, paramString));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends alkr> observerClass()
-  {
-    return bady.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

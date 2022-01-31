@@ -1,51 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
-class ajck
+public class ajck
   implements View.OnClickListener
 {
-  ajck(ajbm paramajbm, Bundle paramBundle) {}
+  public ajck(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    if (ajbm.a(this.jdField_a_of_type_Ajbm) != null)
-    {
-      paramView = ajbm.a(this.jdField_a_of_type_Ajbm).obtainMessage(1134042);
-      ajbm.a(this.jdField_a_of_type_Ajbm).sendMessage(paramView);
-    }
-    paramView = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(ajbm.a(this.jdField_a_of_type_Ajbm).getApplicationContext(), paramView);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        ajbm.a(this.jdField_a_of_type_Ajbm).startActivity(paramView);
-      }
-      return;
-    }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

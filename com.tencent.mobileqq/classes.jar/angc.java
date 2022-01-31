@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-
-class angc
-  implements afep
+public abstract interface angc
 {
-  angc(anfv paramanfv, long paramLong) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

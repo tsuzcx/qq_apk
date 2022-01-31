@@ -1,18 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class adha
-  implements View.OnClickListener
+class adha
 {
-  public adha(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public void onClick(View paramView)
-  {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
-  }
+  adha(adgy paramadgy) {}
 }
 
 

@@ -1,24 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class bbgp
-  implements URLDrawable.DownloadListener
+  extends altm
 {
-  public bbgp(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bbgq parambbgq) {}
+  public bbgp(TroopAdminList paramTroopAdminList) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Bbgq.a(null);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.c();
+    }
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
   {
-    Bitmap localBitmap = bfhe.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Bbgq.a(localBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    }
+    this.a.c();
   }
 }
 

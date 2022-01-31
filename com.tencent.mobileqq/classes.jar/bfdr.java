@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
 
-class bfdr
-  extends Handler
+public class bfdr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bfdr(bfdq parambfdq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bfdr(CardContainer paramCardContainer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      bfdq localbfdq = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localbfdq.a(str);
-        break;
-      }
-      this.a.a();
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.requestLayout();
   }
 }
 

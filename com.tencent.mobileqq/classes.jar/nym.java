@@ -5,7 +5,7 @@ import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class nym
-  implements bhyr
+  implements bicy
 {
   public nym(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
@@ -16,7 +16,7 @@ public class nym
     {
       if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
       {
-        ReadInJoyBaseDeliverActivity.a(this.a, (EmoticonMainPanel)View.inflate(this.a, 2131559057, null));
+        ReadInJoyBaseDeliverActivity.a(this.a, (EmoticonMainPanel)View.inflate(this.a, 2131559056, null));
         ReadInJoyBaseDeliverActivity.a(this.a).setCallBack(ReadInJoyBaseDeliverActivity.a(this.a));
         ReadInJoyBaseDeliverActivity.a(this.a).b = true;
         bool = this.a instanceof ReadInJoyDeliverBiuActivity;
@@ -32,7 +32,7 @@ public class nym
     }
     if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
     {
-      ReadInJoyBaseDeliverActivity.a(this.a, (PublicAccountHotPicPanel)View.inflate(this.a, 2131559479, null));
+      ReadInJoyBaseDeliverActivity.a(this.a, (PublicAccountHotPicPanel)View.inflate(this.a, 2131559478, null));
       ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, this.a, null, this.a.a);
       ReadInJoyBaseDeliverActivity.a(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.a(this.a));
     }

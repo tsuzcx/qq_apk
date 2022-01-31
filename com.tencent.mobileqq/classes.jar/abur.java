@@ -1,46 +1,149 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class abur
+public class abur
 {
-  private static Map<String, absg> a;
+  public int a;
+  public String a;
+  public ArrayList<Integer> a;
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<Integer> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
   
-  public static Map<String, absg> a()
+  public abur()
   {
-    if (a == null) {}
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public static ArrayList<abur> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
     try
     {
-      if (a == null)
+      paramString = new JSONArray(abuv.a(paramString));
+      int i = 0;
+      while (i < paramString.length())
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("getLocation", new absg("getLocation", 7, 1, abtj.class));
-        localHashMap.put("getCity", new absg("getCity", 6, 1, abtj.class));
-        localHashMap.put("login", new absg("login", 17, 0, abtp.class));
-        localHashMap.put("loginSilent", new absg("loginSilent", 18, 0, abtp.class));
-        localHashMap.put("getUserInfo", new absg("getUserInfo", 10, 2, abtp.class));
-        localHashMap.put("getAppFriends", new absg("getAppFriends", 5, 2, abtp.class));
-        localHashMap.put("getRankingList", new absg("getRankingList", 8, 2, abtg.class));
-        localHashMap.put("reportScore", new absg("reportScore", 24, 2, abtg.class));
-        localHashMap.put("showShareMenu", new absg("showShareMenu", 30, 0, abtn.class));
-        localHashMap.put("shareMessage", new absg("shareMessage", 27, 0, abtn.class));
-        localHashMap.put("showActionSheet", new absg("showActionSheet", 28, 0, abtz.class));
-        localHashMap.put("showDialog", new absg("showDialog", 29, 0, abtz.class));
-        localHashMap.put("getSkey", new absg("getSkey", 9, 0, abue.class));
-        localHashMap.put("openWebView", new absg("openWebView", 21, 0, abuf.class));
-        localHashMap.put("openPlatoView", new absg("openPlatoView", 20, 0, abuf.class));
-        localHashMap.put("openNativeView", new absg("openNativeView", 19, 0, abuf.class));
-        localHashMap.put("addEventListener", new absg("addEventListener", 1, 0, abuc.class));
-        localHashMap.put("removeEventListener", new absg("removeEventListener", 23, 0, abuc.class));
-        localHashMap.put("dispatchEvent", new absg("dispatchEvent", 4, 0, abuc.class));
-        localHashMap.put("sdk_dynamic_avatar_edit", new absg("sdk_dynamic_avatar_edit", 31, 0, abug.class));
-        localHashMap.put("sdk_face_collection", new absg("sdk_face_collection", 32, 0, abug.class));
-        localHashMap.put("sdk_avatar_edit", new absg("sdk_avatar_edit", 33, 0, abug.class));
-        a = Collections.unmodifiableMap(localHashMap);
+        abui.b("KingKongSubPatch", "Parsing sub patch " + i);
+        abur localabur = new abur();
+        if (localabur.a(paramString.getJSONObject(i)))
+        {
+          localabur.a();
+          localArrayList.add(localabur);
+          i += 1;
+        }
+        else
+        {
+          abui.a("KingKongSubPatch", "Parse sub patch failed, give up");
+          return null;
+        }
       }
-      return a;
+      return localArrayList;
     }
-    finally {}
+    catch (Exception paramString)
+    {
+      abui.a("KingKongSubPatch", "Parse SubPatch List exception : " + paramString);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    int k = 0;
+    int i = 0;
+    while (i < this.c.size())
+    {
+      abui.b("KingKongSubPatch", "--> HookPoints : " + this.c.get(i));
+      i += 1;
+    }
+    i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break;
+      }
+      abui.b("KingKongSubPatch", "--> Parameters : " + ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).toString());
+      i += 1;
+    }
+    while (j < this.b.size())
+    {
+      abui.b("KingKongSubPatch", "--> FingerPrint : " + (String)this.b.get(j) + ", " + this.d.get(j));
+      j += 1;
+    }
+  }
+  
+  public boolean a(JSONObject paramJSONObject)
+  {
+    int i;
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("patch_file").trim();
+        JSONArray localJSONArray1 = paramJSONObject.getJSONArray("parameters");
+        localJSONArray2 = paramJSONObject.getJSONArray("fingerprints");
+        localJSONArray3 = paramJSONObject.getJSONArray("hook_point");
+        localJSONArray4 = paramJSONObject.getJSONArray("fingerprints_value");
+        int m = localJSONArray1.length();
+        k = localJSONArray2.length();
+        int n = localJSONArray4.length();
+        j = localJSONArray3.length();
+        i = 0;
+        if (i < m)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray1.getInt(i)));
+          i += 1;
+          continue;
+        }
+        if (n == k) {
+          break;
+        }
+        abui.a("KingKongSubPatch", "Fingerprint value count mismatch " + n + ", " + k);
+        return false;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        JSONArray localJSONArray2;
+        JSONArray localJSONArray3;
+        JSONArray localJSONArray4;
+        int k;
+        int j;
+        abui.a("KingKongSubPatch", "Parse SubPatch error : " + paramJSONObject);
+        return false;
+      }
+      catch (Exception paramJSONObject)
+      {
+        return false;
+      }
+      if (i >= k) {
+        break label272;
+      }
+      this.b.add(localJSONArray2.getString(i).trim());
+      this.d.add(Integer.valueOf(localJSONArray4.getInt(i)));
+      i += 1;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        this.c.add(Integer.valueOf(localJSONArray3.getInt(i)));
+        i += 1;
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = paramJSONObject.optInt("isThumb2", 1);
+        return true;
+        i = 0;
+        break;
+        label272:
+        i = 0;
+      }
+    }
   }
 }
 

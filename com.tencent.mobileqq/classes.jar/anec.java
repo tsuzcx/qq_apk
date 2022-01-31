@@ -1,18 +1,14 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
-
 public class anec
-  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public anec(ArkAppDeviceModule.ObserverMethod.3 param3, bdfq parambdfq) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public String toString()
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bdfq.findViewById(2131365190)).setImageBitmap(paramBitmap);
-    }
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
   }
 }
 

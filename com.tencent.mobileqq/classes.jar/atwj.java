@@ -1,34 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import java.util.concurrent.ScheduledFuture;
 
 public class atwj
-  extends alox
 {
-  public atwj(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  private long jdField_a_of_type_Long = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public static atwj a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
-      this.a.b();
-    }
+    atwj localatwj = new atwj();
+    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
+    localatwj.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
+    return localatwj;
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public String toString()
   {
-    if (paramBoolean)
+    boolean bool2 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
-      }
-      int i = 0;
-      if (this.a.a(paramString)) {
-        i = 1;
-      }
-      if (i != 0) {
-        this.a.b();
+      bool1 = bool2;
+      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+        bool1 = true;
       }
     }
+    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
   }
 }
 

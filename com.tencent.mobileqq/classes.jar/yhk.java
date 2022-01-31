@@ -1,22 +1,6 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-
-final class yhk
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface yhk
 {
-  yhk(Window paramWindow) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      this.a.getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

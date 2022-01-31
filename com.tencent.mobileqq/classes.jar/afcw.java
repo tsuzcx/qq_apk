@@ -1,42 +1,107 @@
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_QQ_STORY_META.META.StUser;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.StStoryFeedUtil;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class afcw
-  implements View.OnClickListener
+public class afcw
 {
-  afcw(afcv paramafcv, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
+  private static int jdField_a_of_type_Int;
+  private static BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private long jdField_a_of_type_Long;
+  private afcy jdField_a_of_type_Afcy;
+  private afcz jdField_a_of_type_Afcz;
+  private bdjz jdField_a_of_type_Bdjz;
+  public boolean a;
   
-  public void onClick(View paramView)
+  private boolean a(List<MessageRecord> paramList)
   {
-    long l = System.currentTimeMillis();
-    paramView = (aely)this.jdField_a_of_type_Afcv.a.getManager(282);
-    if (paramView != null) {
-      paramView.a(4, 7);
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mOriginUniSeq:" + this.jdField_a_of_type_Long);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
-    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramView = new Bundle();
-      paramView.putLong("key_launch_time", l);
-      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
-      paramView.putInt("key_request_from", 3);
-      paramView.putInt("key_weishi_entrance_type", 19);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localObject);
-      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
-      paramView.putInt("key_video_story_jump_position", 0);
-      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
-      paramView.putInt("key_request_business_type", 7);
-      bddb.a(paramView);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mr.uniseq:" + localMessageRecord.uniseq);
+        }
+        if (localMessageRecord.uniseq == this.jdField_a_of_type_Long) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void d(BaseActivity paramBaseActivity)
+  {
+    ViewGroup localViewGroup = (ViewGroup)paramBaseActivity.getWindow().getDecorView();
+    ImageView localImageView = new ImageView(paramBaseActivity);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localImageView.setImageResource(2130844839);
+    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    localViewGroup.addView(localImageView, localLayoutParams);
+    if (this.jdField_a_of_type_Bdjz != null) {
+      this.jdField_a_of_type_Bdjz.dismiss();
+    }
+    this.jdField_a_of_type_Bdjz = bdgm.a(paramBaseActivity, 230).setMessage(alud.a(2131706945)).setPositiveButton(paramBaseActivity.getString(2131694207), new afcx(this, paramBaseActivity));
+    this.jdField_a_of_type_Bdjz.show();
+    if (this.jdField_a_of_type_Afcy != null) {
+      this.jdField_a_of_type_Afcy.a();
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    jdField_a_of_type_Int += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onCreate");
+    }
+    if ((paramBaseActivity.getIntent() != null) && (paramBaseActivity.getAppInterface() != null))
+    {
+      AppInterface localAppInterface = paramBaseActivity.getAppInterface();
+      afcz localafcz = new afcz(this, paramBaseActivity, null);
+      this.jdField_a_of_type_Afcz = localafcz;
+      localAppInterface.addObserver(localafcz);
+      this.jdField_a_of_type_Long = paramBaseActivity.getIntent().getLongExtra("origin_merge_structing_msg_uniseq", -1L);
+    }
+  }
+  
+  public void b(BaseActivity paramBaseActivity)
+  {
+    jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onResume");
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onDestroy");
+    }
+    if (paramBaseActivity.getAppInterface() != null) {
+      paramBaseActivity.getAppInterface().removeObserver(this.jdField_a_of_type_Afcz);
+    }
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.dismiss();
+    }
+    this.jdField_a_of_type_Bdjz = null;
+    int i = jdField_a_of_type_Int - 1;
+    jdField_a_of_type_Int = i;
+    if (i <= 0) {
+      jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
     }
   }
 }

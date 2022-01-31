@@ -1,71 +1,123 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(18)
 public class azgb
+  implements Handler.Callback
 {
-  public static int a(String paramString, azgc paramazgc)
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public HandlerThread a;
+  private azgc jdField_a_of_type_Azgc;
+  private int b;
+  private int c;
+  
+  public azgb(int paramInt1, int paramInt2)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    this.jdField_a_of_type_Int = (1000 / paramInt1);
+    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
+    this.c = 0;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+  }
+  
+  private boolean a(Message paramMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (azie.a)
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
-        }
+      paramMessage = RMVideoStateMgr.a();
+      if (!paramMessage.b) {
+        break label179;
       }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
+      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
+      if (paramMessage.jdField_a_of_type_Double >= azib.c) {
+        bool1 = true;
       }
-      for (;;)
+      bool2 = bool1;
+      if (QLog.isColorLevel())
       {
-        try
+        bool2 = bool1;
+        if (bool1)
         {
-          paramazgc.a[0] = Integer.parseInt(str1);
-          paramazgc.a[1] = Integer.parseInt(str2);
-          paramazgc.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
-        }
-        try
-        {
-          paramazgc.a[2] = Integer.parseInt(paramString);
-          paramazgc.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          paramazgc.a[2] = 0;
-          return i;
+          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
+          bool2 = bool1;
         }
       }
     }
+    for (;;)
+    {
+      if (bool2) {
+        this.c = this.b;
+      }
+      int i = this.c;
+      int j = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Azgc != null) {
+        this.jdField_a_of_type_Azgc.a(this.jdField_a_of_type_Azgc, bool2, i * j, this.c);
+      }
+      this.c += 1;
+      return true;
+      label179:
+      if (this.c >= this.b) {
+        bool2 = true;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(azgc paramazgc)
+  {
+    this.jdField_a_of_type_Azgc = paramazgc;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = (paramInt / this.jdField_a_of_type_Int);
+  }
+  
+  public void c()
+  {
+    this.c = 0;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+    }
+    return a(paramMessage);
   }
 }
 

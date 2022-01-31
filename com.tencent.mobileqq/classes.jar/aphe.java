@@ -1,116 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aphe
-  extends apgu
+class aphe
+  implements View.OnClickListener
 {
-  public aphe(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
-  }
+  aphe(aphc paramaphc, ReportData paramReportData, WindowManager paramWindowManager) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 10007;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PttSilkAndChangeVoiceSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
-    }
-    for (;;)
+    paramView = (ClipboardManager)this.jdField_a_of_type_Aphc.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+    if (paramView != null)
     {
-      try
-      {
-        str = awto.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          bdcs.a(str);
-          if (new File(str).mkdir())
-          {
-            bdcs.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
-      }
-      try
-      {
-        if (!awto.a)
-        {
-          bdcs.a(awto.b());
-          bdcs.c(str, awto.b());
-        }
-        super.a(paramString);
-        return;
-      }
-      finally {}
+      paramView.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
+      QQToast.a(this.jdField_a_of_type_Aphc.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), alud.a(2131703158), 0).a();
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = lnz.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.3.3" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
-    }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
-    {
-      bark.a();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
-      }
-      return bool;
-    }
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Aphc.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
   }
 }
 

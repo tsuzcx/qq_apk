@@ -1,29 +1,20 @@
-import com.tencent.qqmini.sdk.core.utils.FileInfo;
-import java.util.Comparator;
-
-public class bgkw
-  implements Comparator<FileInfo>
+public abstract class bgkw
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
-  {
-    if (paramFileInfo1.a()) {
-      if (paramFileInfo2.a()) {
-        break label25;
-      }
-    }
-    label25:
-    while (paramFileInfo1.b() > paramFileInfo2.b())
-    {
-      return -1;
-      if (paramFileInfo2.a()) {
-        return 1;
-      }
-    }
-    if (paramFileInfo1.b() == paramFileInfo2.b()) {
-      return 0;
-    }
-    return 1;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(String[] paramArrayOfString);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(boolean paramBoolean, int paramInt);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

@@ -1,39 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class arup
-  extends almw
+public abstract interface arup
 {
-  arup(arum paramarum) {}
+  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
-    }
-    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(str);
-    if (i != -1)
-    {
-      paramObject = (Boolean)paramObject.get(i + 1);
-      if ((paramBoolean) && (paramObject.booleanValue()))
-      {
-        paramObject = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bdfq != null)) {
-          this.a.jdField_a_of_type_Bdfq.setTitle(alpo.a(2131705115) + arvd.g + paramObject.discussionName);
-        }
-      }
-    }
-  }
+  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  
+  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
+  
+  public abstract void updatePage(int paramInt1, int paramInt2);
+  
+  public abstract void webLog(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arup
  * JD-Core Version:    0.7.0.1
  */

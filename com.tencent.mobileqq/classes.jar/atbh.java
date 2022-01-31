@@ -1,16 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
 
-final class atbh
-  implements EIPCResultCallback
+public class atbh
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static boolean a = true;
+  
+  public static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
+    if (a) {
+      b(paramString);
     }
-    if (paramEIPCResult.code != 0) {}
+  }
+  
+  public static void b(String paramString)
+  {
+    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
   }
 }
 

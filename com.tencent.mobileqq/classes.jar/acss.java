@@ -1,44 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class acss
-  implements aylz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public acss(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public acss(Conversation paramConversation) {}
   
-  public void a(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    ayjh localayjh = (ayjh)paramView.getTag(2131379913);
-    if (localayjh == null) {}
-    for (;;)
-    {
-      return;
-      String str1 = localayjh.b();
-      String str2 = localayjh.a().toString();
-      paramView = "-1";
-      if ((localayjh instanceof ayhv))
-      {
-        paramView = ((ayhv)localayjh).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-        return;
-        if ((localayjh instanceof ayib)) {
-          paramView = ((ayib)localayjh).a;
-        } else if ((localayjh instanceof ayig)) {
-          paramView = ((ayig)localayjh).a().troopuin;
-        } else if ((localayjh instanceof ayhw)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
     }
+    Conversation.k(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

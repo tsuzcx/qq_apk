@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdg;
-import awdj;
-import bdou;
+import awge;
+import awhp;
+import awhs;
+import bdtd;
 import java.io.Serializable;
 
 public class ApolloActionData
-  extends awbv
+  extends awge
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
@@ -18,14 +18,14 @@ public class ApolloActionData
   public static final int MAIN_ACTION = 1;
   public static final int POST_ACTION = 2;
   public static final int PRE_ACTION = 0;
-  @awdj
+  @awhs
   public int actionId;
   public float actionMoveDis;
   public String actionName;
   public int actionType;
   public int activeValue;
   public String anmiName;
-  @awdg
+  @awhp
   public String atNickName;
   public String boy1;
   public String bubbleText;
@@ -42,7 +42,7 @@ public class ApolloActionData
   public boolean hasSound;
   public int icon;
   public String iconUrl;
-  @awdg
+  @awhp
   public String inputText;
   public int isShow;
   public String keywords;
@@ -102,7 +102,7 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bdou.a(this.minVer, paramString)) && (bdou.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bdtd.a(this.minVer, paramString)) && (bdtd.a(paramString, this.maxVer)));
   }
 }
 

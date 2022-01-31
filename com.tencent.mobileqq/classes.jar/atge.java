@@ -1,441 +1,479 @@
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.jubao.JubaoMsgData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xccb.C2cMsgInfo;
-import tencent.im.oidb.cmd0xccb.GroupMsgInfo;
-import tencent.im.oidb.cmd0xccb.ReqBody;
-import tencent.im.oidb.cmd0xccb.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import tencent.aio.media.aio_media.ResultInfo;
+import tencent.aio.media.aio_media.RspLatestPlayingState;
+import tencent.aio.media.aio_media.TypeVideo;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.VideoChangePushInfo;
 
 public class atge
-  extends MSFServlet
+  implements baps
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private QQAppInterface a;
+  
+  public atge(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("jubaoApiPlugin", 1, "servlet onReceive  start = ");
-    int i1;
-    int i;
-    Object localObject3;
-    JubaoMsgData localJubaoMsgData;
-    try
-    {
-      m = paramFromServiceMsg.getResultCode();
-      i1 = paramFromServiceMsg.getResultCode();
-      j = -1;
-      k = -1;
-      if (!paramFromServiceMsg.isSuccess()) {
-        break label761;
-      }
-      paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      localObject1 = new byte[paramFromServiceMsg.getInt() - 4];
-      paramFromServiceMsg.get((byte[])localObject1);
-      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject1);
-      i = paramFromServiceMsg.uint32_result.get();
-      m = paramFromServiceMsg.uint32_command.get();
-      if ((i != 0) || (m != 3275)) {
-        break label741;
-      }
-      localObject2 = new cmd0xccb.RspBody();
-      ((cmd0xccb.RspBody)localObject2).mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-      ((cmd0xccb.RspBody)localObject2).dest_uin.get();
-      m = ((cmd0xccb.RspBody)localObject2).type.get();
-      if (((cmd0xccb.RspBody)localObject2).c2c_type.has()) {
-        j = ((cmd0xccb.RspBody)localObject2).c2c_type.get();
-      }
-      if (((cmd0xccb.RspBody)localObject2).service_type.has()) {
-        k = ((cmd0xccb.RspBody)localObject2).service_type.get();
-      }
-      localObject1 = bdbi.encodeToString(((cmd0xccb.RspBody)localObject2).res_id.get().toByteArray(), 0);
-      paramFromServiceMsg = new ArrayList();
-      if ((m != 1) && (m != 6)) {
-        break label780;
-      }
-      localObject2 = ((cmd0xccb.RspBody)localObject2).c2c_msg.get().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (cmd0xccb.C2cMsgInfo)((Iterator)localObject2).next();
-        localJubaoMsgData = new JubaoMsgData();
-        localJubaoMsgData.msgSeq = ((cmd0xccb.C2cMsgInfo)localObject3).msg_seq.get();
-        localJubaoMsgData.msgTime = ((cmd0xccb.C2cMsgInfo)localObject3).msg_time.get();
-        localJubaoMsgData.msgRandom = ((cmd0xccb.C2cMsgInfo)localObject3).msg_random.get();
-        localJubaoMsgData.result = ((cmd0xccb.C2cMsgInfo)localObject3).roam_flag.get();
-        paramFromServiceMsg.add(localJubaoMsgData);
-        if (QLog.isColorLevel()) {
-          QLog.d("jubaoApiPlugin", 2, "servlet upload onReceive data = " + localJubaoMsgData.toJson().toString());
-        }
-      }
-      n = k;
+    this.a = paramQQAppInterface;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, int paramInt2, long paramLong2, long paramLong3, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WatchTogetherParser", 2, "insertGrayTips begin uin:" + paramLong1 + " uinType:" + paramInt1 + " grayTips:" + paramString + " sub_type:" + paramInt2 + " msgSeq:" + paramLong2 + " msgTime:" + paramLong3 + " grayId=" + paramInt3);
     }
-    catch (Exception paramFromServiceMsg)
+    if ((TextUtils.isEmpty(paramString)) || (paramLong1 <= 0L)) {}
+    Object localObject;
+    boolean bool;
+    do
     {
-      QLog.d("jubaoApiPlugin", 1, "servlet onReceive exception:  = " + paramFromServiceMsg);
-      QLog.e("jubaoApiPlugin", 1, paramFromServiceMsg, new Object[0]);
-      paramIntent.putExtra("jubao_result_code", 3);
-      notifyObserver(paramIntent, 0, false, paramIntent.getExtras(), atgb.class);
       return;
-    }
-    int n;
-    Object localObject2 = localObject1;
-    boolean bool = true;
-    int m = i;
-    Object localObject1 = paramFromServiceMsg;
-    paramFromServiceMsg = (FromServiceMsg)localObject2;
-    int k = j;
-    int j = n;
-    QLog.d("jubaoApiPlugin", 1, "servlet upload onReceive isSucess = " + bool + ",ssoResultCode = " + i1 + ",oidbResultCode = " + i + ",uuid:" + paramFromServiceMsg + ",c2c_type:" + k + ",service_type:" + j + "，result=" + m);
-    if (bool)
-    {
-      paramIntent.putExtra("jubao_uuid", paramFromServiceMsg);
-      paramIntent.putExtra("jubao_msg_list", (Serializable)localObject1);
-    }
-    paramIntent.putExtra("jubao_result_code", m);
-    notifyObserver(paramIntent, 0, bool, paramIntent.getExtras(), atgb.class);
-    return;
-    label780:
-    for (;;)
-    {
-      label590:
-      localObject2 = ((cmd0xccb.RspBody)localObject2).group_msg.get().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (cmd0xccb.GroupMsgInfo)((Iterator)localObject2).next();
-        localJubaoMsgData = new JubaoMsgData();
-        localJubaoMsgData.msgSeq = ((cmd0xccb.GroupMsgInfo)localObject3).msg_seq.get();
-        localJubaoMsgData.result = ((cmd0xccb.GroupMsgInfo)localObject3).roam_flag.get();
-        paramFromServiceMsg.add(localJubaoMsgData);
-        if (QLog.isColorLevel()) {
-          QLog.d("jubaoApiPlugin", 2, "servlet upload onReceive data = " + localJubaoMsgData.toJson().toString());
-        }
+      int i = -5020;
+      if ((paramInt2 == 2) || (paramInt2 == 5)) {
+        i = -5040;
       }
-      label741:
-      label761:
-      do
-      {
-        n = j;
-        bool = true;
-        localObject2 = paramFromServiceMsg;
-        m = i;
-        j = k;
-        k = n;
-        paramFromServiceMsg = (FromServiceMsg)localObject1;
-        localObject1 = localObject2;
-        break;
-        j = -1;
-        k = -1;
-        paramFromServiceMsg = null;
-        bool = false;
-        localObject1 = null;
-        m = i;
-        break;
-        k = -1;
-        paramFromServiceMsg = null;
-        bool = false;
-        localObject1 = null;
-        i = 0;
-        j = -1;
-        break;
-        if ((m == 2) || (m == 3) || (m == 4)) {
-          break label590;
-        }
-      } while (m != 5);
+      localObject = String.valueOf(paramLong1);
+      paramString = new aspy((String)localObject, (String)localObject, paramString, paramInt1, i, paramInt3, ayzl.a());
+      localObject = new MessageForUniteGrayTip();
+      ((MessageForUniteGrayTip)localObject).hasRead = 0;
+      ((MessageForUniteGrayTip)localObject).subType = paramInt2;
+      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramString);
+      ((MessageForUniteGrayTip)localObject).tipParam.d = (paramLong1 + "_" + paramInt1 + "_watch_together_" + paramLong2 + "_" + paramLong3);
+      bool = aspz.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.i("WatchTogetherParser", 2, "insertGrayTips end  res:" + bool + " grayTipKey:" + ((MessageForUniteGrayTip)localObject).tipParam.d);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    bapt localbapt = ((baph)this.a.getManager(339)).a(2, 1, paramString);
+    if ((localbapt instanceof WatchTogetherSession))
+    {
+      localbapt.g = 3;
+      localbapt.jdField_h_of_type_Int = 3;
+      bapu.a(this.a, paramString, false);
+      a(true, (WatchTogetherSession)localbapt, 1007, "");
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject)
   {
-    QLog.d("jubaoApiPlugin", 1, "servlet onSend  start = ");
-    Object localObject1;
-    Object localObject2;
-    int n;
-    long l1;
-    int k;
-    int i;
-    label97:
-    int j;
-    try
-    {
-      localObject1 = new cmd0xccb.ReqBody();
-      localObject2 = paramIntent.getStringExtra("jubao_chat_uin");
-      localObject3 = paramIntent.getStringExtra("jubao_group_code");
-      n = paramIntent.getIntExtra("jubao_chat_type", 0);
-      l2 = 0L;
+    if (!(paramObject instanceof TroopTips0x857.VideoChangePushInfo)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchTogetherParser", 2, "handleBusinessTogetherGroupPush, object is error");
+      }
     }
-    catch (Exception paramPacket)
+    label56:
+    label77:
+    label98:
+    label119:
+    label505:
+    do
     {
+      int i;
       long l2;
-      int m;
-      label109:
-      QLog.d("jubaoApiPlugin", 1, "servlet onSend exception :" + paramPacket);
-      label157:
-      label167:
-      paramIntent.putExtra("jubao_result_code", 2);
-      notifyObserver(paramIntent, 0, false, paramIntent.getExtras(), atgb.class);
-      return;
-    }
-    try
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label666;
-      }
-      l1 = Long.parseLong((String)localObject2);
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        l2 = Long.parseLong((String)localObject3);
-      }
-      k = 1;
-      if (n != 1) {
-        break label704;
-      }
-      if (l1 != 0L) {
-        break label699;
-      }
-      i = 3;
-      j = 2;
-      m = -1;
-      k = i;
-      i = m;
-      ((cmd0xccb.ReqBody)localObject1).type.set(k);
-      if ((k != 1) && (k != 2) && (k != 4) && (k != 6)) {
-        break label672;
-      }
-      ((cmd0xccb.ReqBody)localObject1).dest_uin.set(l1);
-    }
-    catch (NumberFormatException paramPacket)
-    {
-      QLog.e("jubaoApiPlugin", 1, paramPacket, new Object[0]);
-      paramIntent.putExtra("jubao_result_code", 2);
-      notifyObserver(paramIntent, 0, false, paramIntent.getExtras(), atgb.class);
-      return;
-    }
-    ((cmd0xccb.ReqBody)localObject1).group_code.set(l2);
-    if (i >= 0)
-    {
-      ((cmd0xccb.ReqBody)localObject1).c2c_type.set(j);
-      ((cmd0xccb.ReqBody)localObject1).service_type.set(i);
-    }
-    Object localObject3 = (List)paramIntent.getSerializableExtra("jubao_msg_list");
-    JubaoMsgData localJubaoMsgData;
-    Object localObject4;
-    if (localObject3 != null)
-    {
-      if ((k == 1) || (k == 6))
+      long l3;
+      String str;
+      do
       {
-        localObject2 = new ArrayList();
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localJubaoMsgData = (JubaoMsgData)((Iterator)localObject3).next();
-          localObject4 = new cmd0xccb.C2cMsgInfo();
-          ((cmd0xccb.C2cMsgInfo)localObject4).msg_seq.set(localJubaoMsgData.msgSeq);
-          ((cmd0xccb.C2cMsgInfo)localObject4).msg_time.set(localJubaoMsgData.msgTime);
-          ((cmd0xccb.C2cMsgInfo)localObject4).msg_random.set(localJubaoMsgData.msgRandom);
-          ((List)localObject2).add(localObject4);
+        return;
+        TroopTips0x857.VideoChangePushInfo localVideoChangePushInfo = (TroopTips0x857.VideoChangePushInfo)paramObject;
+        if (localVideoChangePushInfo == null) {
+          break label505;
         }
-        ((cmd0xccb.ReqBody)localObject1).c2c_msg.set((List)localObject2);
+        long l1;
+        if (localVideoChangePushInfo.uint64_seq.has())
+        {
+          l1 = localVideoChangePushInfo.uint64_seq.get();
+          if (!localVideoChangePushInfo.uint32_action_type.has()) {
+            break label314;
+          }
+          i = localVideoChangePushInfo.uint32_action_type.get();
+          if (!localVideoChangePushInfo.uint64_group_id.has()) {
+            break label320;
+          }
+          l2 = localVideoChangePushInfo.uint64_group_id.get();
+          if (!localVideoChangePushInfo.uint64_oper_uin.has()) {
+            break label328;
+          }
+          l3 = localVideoChangePushInfo.uint64_oper_uin.get();
+          if (!localVideoChangePushInfo.uint32_join_nums.has()) {
+            break label336;
+          }
+          j = localVideoChangePushInfo.uint32_join_nums.get();
+          if (!localVideoChangePushInfo.bytes_gray_tips.has()) {
+            break label342;
+          }
+        }
+        for (paramObject = localVideoChangePushInfo.bytes_gray_tips.get().toStringUtf8();; paramObject = null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("WatchTogetherParser", 2, "handleWatchTogetherGroupPush, seq=" + l1 + ", actionType=" + i + ", groupid=" + l2 + ", uin=" + l3 + ", joinNum=" + j + ", tips=" + paramObject);
+          }
+          long l4 = ((baph)paramQQAppInterface.getManager(339)).a(2, 1, l2);
+          if (l1 >= l4) {
+            break label348;
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("WatchTogetherParser", 2, "handleWatchTogetherGroupPush, skip pushinfo, old seq=" + l4);
+          return;
+          l1 = -1L;
+          break label56;
+          i = -1;
+          break label77;
+          l2 = -1L;
+          break label98;
+          l3 = -1L;
+          break label119;
+          j = -1;
+          break label140;
+        }
+        WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)bapu.a(2, 1, String.valueOf(l2));
+        if (i == 1)
+        {
+          if (l3 != -1L) {
+            break;
+          }
+          str = "";
+          localWatchTogetherSession.jdField_f_of_type_JavaLangString = str;
+        }
+        if ((i == 1) || (i == 3) || (i == 4)) {
+          localWatchTogetherSession.jdField_f_of_type_Int = j;
+        }
+        a(paramQQAppInterface, localWatchTogetherSession, i, l3, paramObject, l1, paramLong1, localVideoChangePushInfo);
+      } while (((i != 5) && (i != 2)) || (TextUtils.isEmpty(paramObject)) || (l2 == -1L));
+      if (i == 5) {}
+      for (int j = 131085;; j = 131084)
+      {
+        a(paramQQAppInterface, l2, 1, paramObject, i, paramLong1, paramLong2, j);
+        return;
+        str = String.valueOf(l3);
+        break;
       }
-    }
-    else
+    } while (!QLog.isColorLevel());
+    label140:
+    label314:
+    label320:
+    label328:
+    label336:
+    label342:
+    label348:
+    QLog.d("WatchTogetherParser", 2, "handleWatchTogetherGroupPush, pushinfo is null.");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, WatchTogetherSession paramWatchTogetherSession, int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3, TroopTips0x857.VideoChangePushInfo paramVideoChangePushInfo)
+  {
+    baph localbaph = (baph)paramQQAppInterface.getManager(339);
+    localbaph.a(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramLong2);
+    WatchTogetherSession localWatchTogetherSession2 = (WatchTogetherSession)localbaph.a(paramWatchTogetherSession.jdField_d_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
+    WatchTogetherSession localWatchTogetherSession1;
+    if (localWatchTogetherSession2 != null)
     {
-      label413:
-      QLog.d("jubaoApiPlugin", 1, "servlet onSend uinTypeDst:" + k + " c2c_type:" + j + " service_type:" + i + " chatType:" + n);
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3275);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0xccb.ReqBody)localObject1).toByteArray()));
-      localObject1 = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localObject2 = ByteBuffer.allocate(localObject1.length + 4);
-      ((ByteBuffer)localObject2).putInt(localObject1.length + 4);
-      ((ByteBuffer)localObject2).put((byte[])localObject1);
-      paramPacket.putSendData(((ByteBuffer)localObject2).array());
-      paramPacket.setSSOCommand("OidbSvc.0xccb_0");
-      return;
+      if ((paramInt == 1) || (paramInt == 3) || (paramInt == 4)) {
+        localWatchTogetherSession2.jdField_f_of_type_Int = paramWatchTogetherSession.jdField_f_of_type_Int;
+      }
+      localWatchTogetherSession1 = localWatchTogetherSession2;
+      if (paramInt == 1)
+      {
+        localWatchTogetherSession1 = localWatchTogetherSession2;
+        if (!TextUtils.isEmpty(paramWatchTogetherSession.jdField_f_of_type_JavaLangString))
+        {
+          localWatchTogetherSession2.jdField_f_of_type_JavaLangString = paramWatchTogetherSession.jdField_f_of_type_JavaLangString;
+          localWatchTogetherSession1 = localWatchTogetherSession2;
+        }
+      }
+      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong1)))
+      {
+        if ((paramInt != 3) && (paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
+          break label277;
+        }
+        bapu.a(paramQQAppInterface, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, true);
+      }
     }
     for (;;)
     {
-      localObject2 = new ArrayList();
-      localObject3 = ((List)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
+      if (!TextUtils.isEmpty(localWatchTogetherSession1.jdField_e_of_type_JavaLangString))
       {
-        localJubaoMsgData = (JubaoMsgData)((Iterator)localObject3).next();
-        localObject4 = new cmd0xccb.GroupMsgInfo();
-        ((cmd0xccb.GroupMsgInfo)localObject4).msg_seq.set(localJubaoMsgData.msgSeq);
-        ((List)localObject2).add(localObject4);
+        paramQQAppInterface = localbaph.a(2, 1, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
+        paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putInt("action_type", paramInt);
+        paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putString("tips", paramString);
+        paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putLong("seq", paramLong2);
+        paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putLong("msgSeq", paramLong3);
+        paramQQAppInterface.jdField_a_of_type_JavaLangObject = paramVideoChangePushInfo;
+        localbaph.a(2, 1, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
       }
-      ((cmd0xccb.ReqBody)localObject1).group_msg.set((List)localObject2);
-      break label413;
-      label666:
-      label672:
-      label699:
-      label704:
-      do
+      return;
+      localbaph.a(paramWatchTogetherSession.jdField_d_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession);
+      localWatchTogetherSession1 = paramWatchTogetherSession;
+      break;
+      label277:
+      if (paramInt == 2) {
+        bapu.a(paramQQAppInterface, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, false);
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState)
+  {
+    int k = -1;
+    int j;
+    String str;
+    label35:
+    int i;
+    if (paramToServiceMsg != null)
+    {
+      j = paramToServiceMsg.extraData.getInt("KEY_SESSION_TYPE");
+      if (paramToServiceMsg == null) {
+        break label76;
+      }
+      str = paramToServiceMsg.extraData.getString("KEY_SESSION_UIN");
+      if (paramToServiceMsg == null) {
+        break label83;
+      }
+      i = paramToServiceMsg.extraData.getInt("KEY_REFRESH_SESSION_BY");
+      label50:
+      if (paramToServiceMsg != null) {
+        break label88;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchTogetherParser", 2, "handleGetWatchPlayingState, req == null || resp == null || data == null");
+      }
+    }
+    label76:
+    label83:
+    label88:
+    while (j == 2)
+    {
+      return;
+      j = -1;
+      break;
+      str = "";
+      break label35;
+      i = -1;
+      break label50;
+    }
+    baph localbaph = (baph)this.a.getManager(339);
+    paramToServiceMsg = (WatchTogetherSession)localbaph.a(2, 1, str);
+    Object localObject = paramToServiceMsg;
+    if (paramToServiceMsg == null)
+    {
+      localObject = (WatchTogetherSession)bapu.a(2, 1, str);
+      localbaph.a(2, 1, str, (bapt)localObject);
+    }
+    boolean bool1;
+    label470:
+    boolean bool2;
+    if (((WatchTogetherSession)localObject).a())
+    {
+      try
       {
-        j = 1;
-        i = -1;
-        break label109;
-        l1 = 0L;
-        break;
-        if ((k == 2) || (k == 3) || (k == 4)) {
-          break label157;
+        paramToServiceMsg = (aio_media.ResultInfo)paramRspLatestPlayingState.msg_result.get();
+        j = k;
+        if (paramToServiceMsg != null) {
+          j = paramToServiceMsg.uint32_result.get();
         }
-        if (k != 5) {
-          break label167;
-        }
-        break label157;
-        i = 2;
-        break label97;
-        if (n == 1000)
+        if (j != 0) {}
+      }
+      catch (Exception paramRspLatestPlayingState)
+      {
+        for (;;)
         {
-          k = 1;
-          j = 1;
-          i = 0;
-          break label109;
-        }
-        if (n == 1020)
-        {
-          k = 1;
-          j = 1;
-          i = 1;
-          break label109;
-        }
-        if (n == 3000)
-        {
-          if (l1 == 0L) {}
-          for (i = 5;; i = 4)
+          try
           {
-            j = 2;
-            k = i;
-            i = -1;
-            break;
+            QLog.d("WatchTogetherParser", 1, String.format("handleGetWatchPlayingState, result = %s, errTips = %s", new Object[] { Integer.valueOf(j), paramToServiceMsg }));
+            bool1 = false;
           }
+          catch (Exception paramRspLatestPlayingState)
+          {
+            bool1 = false;
+            continue;
+          }
+          paramRspLatestPlayingState = paramRspLatestPlayingState;
+          paramToServiceMsg = "";
+          bool1 = false;
+          QLog.d("WatchTogetherParser", 1, "handleGetWatchPlayingState exception", paramRspLatestPlayingState);
         }
-        if (n == 1004)
-        {
-          k = 1;
-          j = 1;
-          i = 1;
-          break label109;
+      }
+      try
+      {
+        ((WatchTogetherSession)localObject).g = paramRspLatestPlayingState.enum_aio_state.get();
+        ((WatchTogetherSession)localObject).jdField_h_of_type_Int = paramRspLatestPlayingState.enum_user_state.get();
+        ((WatchTogetherSession)localObject).jdField_f_of_type_JavaLangString = String.valueOf(paramRspLatestPlayingState.uint64_create_uin.get());
+        ((WatchTogetherSession)localObject).jdField_f_of_type_Int = paramRspLatestPlayingState.uint32_joined_num.get();
+        ((WatchTogetherSession)localObject).jdField_c_of_type_Long = paramToServiceMsg.uint64_svr_time.get();
+        ((WatchTogetherSession)localObject).jdField_e_of_type_Long = ((WatchTogetherSession)localObject).jdField_d_of_type_Long;
+        ((WatchTogetherSession)localObject).jdField_d_of_type_Long = paramRspLatestPlayingState.uint64_aio_identification.get();
+        if (((WatchTogetherSession)localObject).jdField_d_of_type_Long != ((WatchTogetherSession)localObject).jdField_e_of_type_Long) {
+          ((WatchTogetherSession)localObject).k = 0;
         }
-        if (n == 1006)
-        {
-          k = 6;
-          j = 1;
-          i = 130;
-          break label109;
+        if ((((WatchTogetherSession)localObject).jdField_h_of_type_Int == 2) && (((WatchTogetherSession)localObject).g == 1)) {
+          ((WatchTogetherSession)localObject).k = 1;
         }
-        if (n == 1022)
-        {
-          k = 6;
-          j = 1;
-          i = 134;
-          break label109;
+        if (!paramRspLatestPlayingState.msg_room_info.has()) {
+          break label678;
         }
-        if (n == 1037)
-        {
-          k = 1;
-          j = 1;
-          i = 159;
-          break label109;
+        ((WatchTogetherSession)localObject).jdField_a_of_type_Int = paramRspLatestPlayingState.msg_room_info.uint32_type.get();
+        ((WatchTogetherSession)localObject).jdField_a_of_type_Long = paramRspLatestPlayingState.msg_room_info.uint64_id.get();
+        ((WatchTogetherSession)localObject).b = paramRspLatestPlayingState.msg_room_info.bytes_name.get().toStringUtf8();
+        ((WatchTogetherSession)localObject).jdField_a_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_jump.get().toStringUtf8();
+        ((WatchTogetherSession)localObject).jdField_c_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_cover.get().toStringUtf8();
+        ((WatchTogetherSession)localObject).i = paramRspLatestPlayingState.msg_room_info.enum_video_type.get();
+        ((WatchTogetherSession)localObject).j = paramRspLatestPlayingState.msg_room_info.enum_video_jump_type.get();
+        ((WatchTogetherSession)localObject).jdField_h_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_video_jump_value.get().toStringUtf8();
+        paramToServiceMsg = "";
+        bool1 = true;
+      }
+      catch (Exception paramRspLatestPlayingState)
+      {
+        paramToServiceMsg = "";
+        bool1 = true;
+        break label642;
+        paramToServiceMsg = "";
+        break label601;
+        paramToServiceMsg = "";
+        bool1 = true;
+        break label470;
+      }
+      paramRspLatestPlayingState = paramToServiceMsg;
+      bool2 = bool1;
+      if (!TextUtils.isEmpty(((WatchTogetherSession)localObject).jdField_f_of_type_JavaLangString))
+      {
+        bdgc.h(this.a, ((WatchTogetherSession)localObject).jdField_e_of_type_JavaLangString, ((WatchTogetherSession)localObject).jdField_f_of_type_JavaLangString);
+        bool2 = bool1;
+        paramRspLatestPlayingState = paramToServiceMsg;
+      }
+    }
+    for (;;)
+    {
+      a(bool2, (WatchTogetherSession)localObject, i, paramRspLatestPlayingState);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("WatchTogetherParser", 2, "handleGetWatchPlayingState, isSuccess=" + bool2 + ", session= " + localObject + ", by=" + i);
+      return;
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.bytes_errmsg.get() != null)) {
+        paramToServiceMsg = paramToServiceMsg.bytes_errmsg.get().toStringUtf8();
+      }
+      label601:
+      paramRspLatestPlayingState = "";
+      label642:
+      label678:
+      bool2 = false;
+    }
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    bapt localbapt = ((baph)this.a.getManager(339)).a(2, 1, paramString);
+    if ((localbapt instanceof WatchTogetherSession))
+    {
+      localbapt.g = 3;
+      localbapt.jdField_h_of_type_Int = 3;
+      bapu.a(this.a, paramString, false);
+      a(true, (WatchTogetherSession)localbapt, 1007, "");
+    }
+  }
+  
+  public void a(boolean paramBoolean, WatchTogetherSession paramWatchTogetherSession, int paramInt, String paramString)
+  {
+    baph localbaph = (baph)this.a.getManager(339);
+    Object localObject = localbaph.a(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
+    if ((paramBoolean) && (paramInt == 1003) && ((((bapn)localObject).jdField_a_of_type_JavaLangObject instanceof TroopTips0x857.VideoChangePushInfo)))
+    {
+      int i = ((bapn)localObject).jdField_a_of_type_AndroidOsBundle.getInt("action_type");
+      String str = ((bapn)localObject).jdField_a_of_type_AndroidOsBundle.getString("tips");
+      long l1 = ((bapn)localObject).jdField_a_of_type_AndroidOsBundle.getLong("seq");
+      long l2 = ((bapn)localObject).jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
+      localbaph.a(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((bapn)localObject).jdField_a_of_type_JavaLangObject);
+      localbaph.b(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((bapn)localObject).jdField_a_of_type_JavaLangObject);
+    }
+    boolean bool1;
+    label201:
+    boolean bool2;
+    if (paramWatchTogetherSession.g == 3)
+    {
+      bapu.a(this.a, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, false);
+      if ((paramWatchTogetherSession.g == 1) && (paramWatchTogetherSession.jdField_h_of_type_Int == 2))
+      {
+        if ((paramWatchTogetherSession.jdField_a_of_type_Int == 1) || (paramWatchTogetherSession.jdField_a_of_type_Int == 0)) {
+          break label540;
         }
-        if ((n == 1032) || (n == 1034) || (n == 1033))
-        {
-          k = 6;
-          j = 1;
-          i = 156;
-          break label109;
+        bool1 = true;
+        if ((TextUtils.isEmpty(paramWatchTogetherSession.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramWatchTogetherSession.jdField_h_of_type_JavaLangString))) {
+          break label546;
         }
-        if (n == 10008)
-        {
-          k = 6;
-          j = 1;
-          i = 165;
-          break label109;
+        bool2 = true;
+        label224:
+        if ((!bool1) || (!bool2) || (!atfm.b(paramWatchTogetherSession.jdField_d_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_e_of_type_Int))) {
+          break label561;
         }
-        if (n == 1008)
-        {
-          k = 6;
-          j = 1;
-          i = 129;
-          break label109;
+        if (QLog.isColorLevel()) {
+          QLog.d("WatchTogetherParser", 1, "isSameFloatingInfo");
         }
-        if (n == 1001)
-        {
-          k = 6;
-          j = 1;
-          i = 124;
-          break label109;
+        localObject = new WatchTogetherFloatingData();
+        ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
+        ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.jdField_e_of_type_Int);
+        ((WatchTogetherFloatingData)localObject).setSmallUrl(paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+        ((WatchTogetherFloatingData)localObject).setBigUrl(paramWatchTogetherSession.jdField_h_of_type_JavaLangString);
+        if ((!((TroopManager)this.a.getManager(52)).c(paramWatchTogetherSession.jdField_e_of_type_JavaLangString).isAdmin()) && (!paramWatchTogetherSession.jdField_f_of_type_JavaLangString.equals(this.a.c()))) {
+          break label552;
         }
-        if (n == 1024)
-        {
-          k = 6;
-          j = 1;
-          i = 58;
-          break label109;
+        ((WatchTogetherFloatingData)localObject).setIsAdm(true);
+        label360:
+        atfm.a(BaseApplicationImpl.context, (WatchTogetherFloatingData)localObject);
+      }
+    }
+    for (;;)
+    {
+      if ((paramWatchTogetherSession.g == 3) || (paramWatchTogetherSession.jdField_h_of_type_Int == 1) || (paramWatchTogetherSession.jdField_h_of_type_Int == 3))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WatchTogetherParser", 1, "session.state=" + paramWatchTogetherSession.g + " session.userState=" + paramWatchTogetherSession.jdField_h_of_type_Int + " uin=" + paramWatchTogetherSession.jdField_e_of_type_JavaLangString + " type=" + paramWatchTogetherSession.jdField_e_of_type_Int);
         }
-        if (n == 1023)
-        {
-          k = 6;
-          j = 1;
-          i = 133;
-          break label109;
+        localObject = new WatchTogetherFloatingData();
+        ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
+        ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.jdField_e_of_type_Int);
+        atfm.a(BaseApplicationImpl.context, (WatchTogetherFloatingData)localObject);
+      }
+      localbaph.a(paramBoolean, paramWatchTogetherSession, paramInt, paramString);
+      localbaph.b(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
+      return;
+      bapu.a(this.a, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, true);
+      break;
+      label540:
+      bool1 = false;
+      break label201;
+      label546:
+      bool2 = false;
+      break label224;
+      label552:
+      ((WatchTogetherFloatingData)localObject).setIsAdm(false);
+      break label360;
+      label561:
+      if (atfm.b(paramWatchTogetherSession.jdField_d_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_e_of_type_Int))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WatchTogetherParser", 1, "isSameFloatingInfo but param error isSupportRoomType=" + bool1 + " isUrlValid=" + bool2);
         }
-        if (n == 10002)
-        {
-          k = 6;
-          j = 1;
-          i = 146;
-          break label109;
-        }
-        if (n == 10004)
-        {
-          k = 6;
-          j = 1;
-          i = 153;
-          break label109;
-        }
-        if (n == 1005)
-        {
-          k = 6;
-          j = 1;
-          i = 201;
-          break label109;
-        }
-        if (n == 1036)
-        {
-          k = 6;
-          j = 1;
-          i = 160;
-          break label109;
-        }
-        if (n == 1044)
-        {
-          k = 1;
-          j = 1;
-          i = 163;
-          break label109;
-        }
-      } while (n != 1045);
-      k = 1;
-      j = 1;
-      i = 166;
-      break label109;
-      if ((k != 2) && (k != 3) && (k != 4)) {
-        if (k != 5) {
-          break label413;
-        }
+        atfm.a(false, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_e_of_type_Int, false);
       }
     }
   }

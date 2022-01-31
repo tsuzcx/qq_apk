@@ -14,16 +14,16 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import blen;
-import blfg;
-import bljd;
-import blje;
-import bljf;
-import bljg;
-import bljh;
+import bliu;
 import bljn;
-import bljo;
-import bljq;
+import blnp;
+import blnq;
+import blnr;
+import blns;
+import blnt;
+import blnz;
+import bloa;
+import bloc;
 import com.tencent.mobileqq.widget.QQToast;
 import java.io.File;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class AEEditorFilterControlPanel
   extends FrameLayout
-  implements View.OnClickListener, bljq
+  implements View.OnClickListener, bloc
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorFilterControlPanel.class.getSimpleName();
   private int jdField_a_of_type_Int = -1;
@@ -40,12 +40,13 @@ public class AEEditorFilterControlPanel
   private Button jdField_a_of_type_AndroidWidgetButton;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bljf jdField_a_of_type_Bljf;
-  private bljn jdField_a_of_type_Bljn;
-  private bljo jdField_a_of_type_Bljo;
+  private blnr jdField_a_of_type_Blnr;
+  private blnz jdField_a_of_type_Blnz;
+  private bloa jdField_a_of_type_Bloa;
   private AEEditorFilterBean jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = AEEditorFilterBean.createAiFilterInstance();
   private List<AEEditorFilterBean> jdField_a_of_type_JavaUtilList = new ArrayList();
   private AEEditorFilterBean b = AEEditorFilterBean.createNonFilterInstance();
+  private AEEditorFilterBean c = AEEditorFilterBean.createComicsFilterInstance();
   
   public AEEditorFilterControlPanel(@NonNull Context paramContext)
   {
@@ -65,15 +66,22 @@ public class AEEditorFilterControlPanel
     a(paramContext);
   }
   
+  private void a()
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
+  
   private void a(Context paramContext)
   {
     View localView = View.inflate(paramContext, 2131558530, this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366361));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366363));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bljd(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new blnp(this));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362728));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366360));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366362));
     paramContext = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
   }
@@ -85,9 +93,9 @@ public class AEEditorFilterControlPanel
       this.jdField_a_of_type_AndroidAppDialog = new Dialog(getContext(), 2131755801);
       this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559438);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559437);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371874);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894);
     if (!TextUtils.isEmpty(paramString)) {
       localTextView.setText(paramString);
     }
@@ -95,35 +103,19 @@ public class AEEditorFilterControlPanel
     {
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
-      localTextView.setText(2131695287);
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      localTextView.setText(2131695289);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Bljo.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.add(this.b);
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
-    this.jdField_a_of_type_Bljo = new bljo(this.jdField_a_of_type_JavaUtilList, 0, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bljo);
+    return this.jdField_a_of_type_Bloa.a();
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
-    this.jdField_a_of_type_Bljo.a(paramInt);
+    this.jdField_a_of_type_Bloa.a(paramInt);
   }
   
   public void a(TextView paramTextView)
@@ -133,13 +125,14 @@ public class AEEditorFilterControlPanel
   
   public void a(boolean paramBoolean)
   {
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      localButton.setVisibility(i);
-      return;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.add(this.b);
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilList.add(this.c);
     }
+    this.jdField_a_of_type_Bloa = new bloa(this.jdField_a_of_type_JavaUtilList, 0, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bloa);
   }
   
   public boolean a()
@@ -153,46 +146,46 @@ public class AEEditorFilterControlPanel
     boolean bool1 = false;
     if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.AIFilter)
     {
-      blfg.b(jdField_a_of_type_JavaLangString, "select ai filter");
-      if (this.jdField_a_of_type_Bljf == null) {
-        break label302;
+      bljn.b(jdField_a_of_type_JavaLangString, "select ai filter");
+      if (this.jdField_a_of_type_Blnr == null) {
+        break label361;
       }
-      bool1 = this.jdField_a_of_type_Bljf.c();
-      blen.a().b(paramAEEditorFilterBean.getSid());
+      bool1 = this.jdField_a_of_type_Blnr.e();
+      bliu.a().b(paramAEEditorFilterBean.getSid());
     }
     for (;;)
     {
       if (bool1)
       {
-        if (this.jdField_a_of_type_Bljn != null) {
-          bool2 = this.jdField_a_of_type_Bljn.a(this.jdField_a_of_type_Int, paramInt);
+        if (this.jdField_a_of_type_Blnz != null) {
+          bool2 = this.jdField_a_of_type_Blnz.a(this.jdField_a_of_type_Int, paramInt);
         }
-        if ((bool2) && (this.jdField_a_of_type_Bljf != null)) {
-          this.jdField_a_of_type_Bljf.m();
+        if ((bool2) && (this.jdField_a_of_type_Blnr != null)) {
+          this.jdField_a_of_type_Blnr.p();
         }
         this.jdField_a_of_type_Int = paramInt;
       }
       return bool1;
       if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NON)
       {
-        blfg.b(jdField_a_of_type_JavaLangString, "select none filter");
-        if (this.jdField_a_of_type_Bljf != null)
+        bljn.b(jdField_a_of_type_JavaLangString, "select none filter");
+        if (this.jdField_a_of_type_Blnr != null)
         {
-          this.jdField_a_of_type_Bljf.j();
-          blen.a().b(paramAEEditorFilterBean.getSid());
+          this.jdField_a_of_type_Blnr.m();
+          bliu.a().b(paramAEEditorFilterBean.getSid());
           bool1 = true;
         }
       }
-      else
+      else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.COLOR)
       {
-        blfg.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getLutName());
-        String str = bljh.a().a(paramAEEditorFilterBean);
+        bljn.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getLutName());
+        String str = blnt.a().a(paramAEEditorFilterBean);
         if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
         {
-          if (this.jdField_a_of_type_Bljf != null)
+          if (this.jdField_a_of_type_Blnr != null)
           {
-            this.jdField_a_of_type_Bljf.a(paramInt, str, paramAEEditorFilterBean.getDefaultAlpha(), paramAEEditorFilterBean);
-            blen.a().b(paramAEEditorFilterBean.getSid());
+            this.jdField_a_of_type_Blnr.a(paramInt, str, paramAEEditorFilterBean.getDefaultAlpha(), paramAEEditorFilterBean);
+            bliu.a().b(paramAEEditorFilterBean.getSid());
             bool1 = true;
           }
         }
@@ -200,11 +193,20 @@ public class AEEditorFilterControlPanel
         {
           QQToast.a(getContext(), "资源下载中，请稍后再试", 0).a();
           a("资源下载中");
-          bljh.a().a(paramAEEditorFilterBean.getSid(), new blje(this, paramInt, str, paramAEEditorFilterBean));
+          blnt.a().a(paramAEEditorFilterBean.getSid(), new blnq(this, paramInt, str, paramAEEditorFilterBean));
+        }
+      }
+      else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.Comics)
+      {
+        bljn.b(jdField_a_of_type_JavaLangString, "select comics filter");
+        if (this.jdField_a_of_type_Blnr != null)
+        {
+          bool1 = this.jdField_a_of_type_Blnr.f();
+          bliu.a().b(paramAEEditorFilterBean.getSid());
           continue;
         }
       }
-      label302:
+      label361:
       bool1 = true;
     }
   }
@@ -215,6 +217,22 @@ public class AEEditorFilterControlPanel
   }
   
   public void b(boolean paramBoolean)
+  {
+    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localButton.setVisibility(i);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return a() == 0;
+  }
+  
+  public void c(boolean paramBoolean)
   {
     SeekBar localSeekBar = this.jdField_a_of_type_AndroidWidgetSeekBar;
     if (paramBoolean) {}
@@ -228,9 +246,9 @@ public class AEEditorFilterControlPanel
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return a() == 0;
+    return a() == 2;
   }
   
   public void onClick(View paramView)
@@ -241,31 +259,34 @@ public class AEEditorFilterControlPanel
     do
     {
       return;
-    } while ((!this.jdField_a_of_type_AndroidWidgetButton.isEnabled()) || (this.jdField_a_of_type_Bljf == null) || (!(this.jdField_a_of_type_Bljf instanceof bljg)));
-    ((bljg)this.jdField_a_of_type_Bljf).i();
+    } while ((!this.jdField_a_of_type_AndroidWidgetButton.isEnabled()) || (this.jdField_a_of_type_Blnr == null) || (!(this.jdField_a_of_type_Blnr instanceof blns)));
+    ((blns)this.jdField_a_of_type_Blnr).l();
   }
   
-  public void setFilterChangedComparator(bljn parambljn)
+  public void setFilterChangedComparator(blnz paramblnz)
   {
-    this.jdField_a_of_type_Bljn = parambljn;
+    this.jdField_a_of_type_Blnz = paramblnz;
   }
   
-  public void setFilterControlListener(bljf parambljf)
+  public void setFilterControlListener(blnr paramblnr)
   {
-    this.jdField_a_of_type_Bljf = parambljf;
+    this.jdField_a_of_type_Blnr = paramblnr;
   }
   
-  public void setFiltersData(List<AEEditorFilterBean> paramList)
+  public void setFiltersData(List<AEEditorFilterBean> paramList, boolean paramBoolean)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_JavaUtilList.add(this.b);
       this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
+      if (paramBoolean) {
+        this.jdField_a_of_type_JavaUtilList.add(this.c);
+      }
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    if (this.jdField_a_of_type_Bljo != null) {
-      this.jdField_a_of_type_Bljo.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Bloa != null) {
+      this.jdField_a_of_type_Bloa.notifyDataSetChanged();
     }
   }
   

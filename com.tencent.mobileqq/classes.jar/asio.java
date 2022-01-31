@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class asio
+class asio
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public static String a(MessageRecord paramMessageRecord)
-  {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.fromRoleId;
-    }
-    return localTinyInfo.toRoleId;
-  }
+  asio(asin paramasin) {}
   
-  public static String b(MessageRecord paramMessageRecord)
-  {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.toRoleId;
-    }
-    return localTinyInfo.fromRoleId;
-  }
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

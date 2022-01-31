@@ -8,9 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import apge;
-import arni;
-import baul;
+import apkn;
+import arrr;
+import bayu;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -68,7 +68,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (arni.a(paramString) == 2)
+      if (arrr.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -165,17 +165,17 @@ public class AsyncImageView
     int i = this.jdField_a_of_type_Int;
     int j = this.jdField_b_of_type_Int;
     Resources localResources = getResources();
-    if ((baul.b() instanceof SkinnableBitmapDrawable))
+    if ((bayu.b() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apge(localResources, ((SkinnableBitmapDrawable)baul.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apkn(localResources, ((SkinnableBitmapDrawable)bayu.b()).getBitmap(), i, j, -921103);
       return;
     }
-    if ((baul.b() instanceof BitmapDrawable))
+    if ((bayu.b() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apge(localResources, ((BitmapDrawable)baul.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apkn(localResources, ((BitmapDrawable)bayu.b()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = baul.b();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bayu.b();
   }
   
   public void setImageDrawableDefault()

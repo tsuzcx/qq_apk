@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
-public final class ahyy
-  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
+public class ahyy
+  extends Handler
 {
-  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
-  {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
-  }
+  public ahyy(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bety(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691584);
+      this.a.a.show();
+    }
   }
 }
 

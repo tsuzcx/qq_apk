@@ -1,22 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class bmtt
-  extends Handler
+public class bmtt
+  implements bneu
 {
-  private WeakReference<bmts> a;
+  public bmtt(DoodleLayout paramDoodleLayout) {}
   
-  public bmtt(WeakReference<bmts> paramWeakReference)
+  public void a()
   {
-    this.a = paramWeakReference;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.get() != null) {
-      bmts.a((bmts)this.a.get());
-    }
+    this.a.g();
   }
 }
 

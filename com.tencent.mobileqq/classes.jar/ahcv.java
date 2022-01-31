@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class ahcv
-  implements QQPermissionCallback
+class ahcv
+  implements DialogInterface.OnClickListener
 {
-  public ahcv(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  ahcv(ahcu paramahcu) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.denied();
-    bdcd.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.grant();
+    if (this.a.a.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,12 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class atqn
-  implements View.OnClickListener
+  implements bhuk
 {
-  atqn(atqj paramatqj) {}
+  atqn(atqm paramatqm, bhuf parambhuf) {}
   
-  public void onClick(View paramView) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      atqm.a(this.jdField_a_of_type_Atqm);
+      continue;
+      atqm.b(this.jdField_a_of_type_Atqm);
+    }
+  }
 }
 
 

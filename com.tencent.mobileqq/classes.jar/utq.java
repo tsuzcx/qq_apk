@@ -1,52 +1,39 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.HashSet;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class utq
+  implements TextView.OnEditorActionListener
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
+  public utq(StoryInputBarView paramStoryInputBarView) {}
   
-  public utq(int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static utq a()
-  {
-    return new utq(20);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    if (paramInt == 4)
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a();
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label140;
+      }
+      this.a.setKeyBoardState(false);
+      if (this.a.jdField_a_of_type_Ust != null) {
+        this.a.jdField_a_of_type_Ust.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    return false;
+    label140:
+    return true;
   }
 }
 

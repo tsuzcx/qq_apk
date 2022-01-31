@@ -1,70 +1,33 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.qphone.base.util.QLog;
 
 public class addt
-  extends alyr
+  implements bhuk
 {
-  public addt(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public addt(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  protected void b(boolean paramBoolean, azyv paramazyv)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    if (paramInt == 0)
     {
-      QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() isSucc=" + paramBoolean);
-      if (paramazyv != null) {
-        QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() mainAccount=" + paramazyv.b + " subAccount=" + paramazyv.c + " errType=" + paramazyv.jdField_a_of_type_Int + " errMsg=" + paramazyv.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.a.c();
-    Object localObject;
-    if (paramBoolean)
-    {
-      this.a.a(2131720388, 2);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
       if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
+        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
       }
-      azyk.b(this.a.app);
-      azyk.a(this.a.app);
-      azyk.c(this.a.app);
-      azyk.d(this.a.app);
-      localObject = new Intent(this.a, SplashActivity.class);
-      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
-      ((Intent)localObject).setFlags(67108864);
-      this.a.startActivity((Intent)localObject);
-      this.a.finish();
+      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
+        break label110;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693334);
     }
-    for (;;)
-    {
-      if ((paramazyv != null) && (QLog.isColorLevel())) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramazyv.jdField_a_of_type_JavaLangString + "...errorType = " + paramazyv.jdField_a_of_type_Int);
-      }
+    label110:
+    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
       return;
-      if (paramazyv != null) {
-        switch (paramazyv.jdField_a_of_type_Int)
-        {
-        default: 
-          this.a.a(2131720377, 0);
-          break;
-        case 1002: 
-          azyl.a(this.a.app, this.a);
-          break;
-        case 1003: 
-          this.a.a(2131720378, 0);
-          break;
-        case 1004: 
-          String str = paramazyv.jdField_a_of_type_JavaLangString;
-          localObject = str;
-          if (TextUtils.isEmpty(str)) {
-            localObject = this.a.getString(2131720379);
-          }
-          this.a.a((String)localObject, 0);
-        }
-      }
     }
+    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

@@ -1,27 +1,27 @@
 package com.tencent.biz.subscribe.utils;
 
-import aaoo;
-import aaop;
-import aaoq;
+import aatd;
+import aate;
+import aatf;
 import com.tencent.qphone.base.util.BaseApplication;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import yhm;
+import ylz;
 
 public class SubscribeAdDeviceInfoHelper$1
   implements Runnable
 {
-  public SubscribeAdDeviceInfoHelper$1(yhm paramyhm) {}
+  public SubscribeAdDeviceInfoHelper$1(ylz paramylz) {}
   
   public void run()
   {
-    Object localObject = new aaop();
-    ((aaop)localObject).a = "1b0ad2";
-    localObject = aaoo.a(BaseApplication.getContext(), (aaop)localObject);
-    yhm localyhm = this.this$0;
+    Object localObject = new aate();
+    ((aate)localObject).a = "1b0ad2";
+    localObject = aatd.a(BaseApplication.getContext(), (aate)localObject);
+    ylz localylz = this.this$0;
     if (localObject != null) {}
-    for (localObject = ((aaoq)localObject).a;; localObject = null)
+    for (localObject = ((aatf)localObject).a;; localObject = null)
     {
-      yhm.a(localyhm, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
+      ylz.a(localylz, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
       return;
     }
   }

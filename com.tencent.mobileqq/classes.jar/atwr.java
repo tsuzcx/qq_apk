@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.os.Handler;
+import android.os.Looper;
 
-public class atwr
-  implements DialogInterface.OnDismissListener
+final class atwr
+  extends atxa<Handler, Void>
 {
-  public atwr(MedalGuideView paramMedalGuideView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected Handler a(Void paramVoid)
   {
-    MedalGuideView.a(this.a);
+    return new Handler(Looper.getMainLooper());
   }
 }
 

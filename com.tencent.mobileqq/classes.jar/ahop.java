@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahop
-  extends allb
+  implements View.OnClickListener
 {
-  private ahop(FriendFragment paramFriendFragment) {}
+  public ahop(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      FriendFragment.a(this.a, 1400L, false);
-    }
+    awrt.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ahoe.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 

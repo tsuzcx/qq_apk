@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aoka;
-import aokb;
+import aooj;
+import aook;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -14,8 +14,8 @@ class BaseJsPluginEngine$4
   
   public void run()
   {
-    aoka localaoka = aokb.a();
-    if ((localaoka != null) && (localaoka.a() != null) && (localaoka.a().contains(this.val$eventName))) {
+    aooj localaooj = aook.a();
+    if ((localaooj != null) && (localaooj.a() != null) && (localaooj.a().contains(this.val$eventName))) {
       MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
     }
   }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import akji;
-import akjv;
-import alii;
-import alin;
+import aknx;
+import akok;
+import almx;
+import alnc;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,23 +12,23 @@ import com.tencent.image.URLImageView;
 public class ApolloPanel$35$1
   implements Runnable
 {
-  public ApolloPanel$35$1(alii paramalii) {}
+  public ApolloPanel$35$1(almx paramalmx) {}
   
   public void run()
   {
     this.a.a.b.setVisibility(8);
     ApolloPanel.a(this.a.a).setVisibility(8);
-    if (akjv.a)
+    if (akok.a)
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       ApolloPanel.b(this.a.a).setVisibility(0);
-      akji.a(101, String.valueOf(akjv.b), akjv.j);
+      aknx.a(101, String.valueOf(akok.b), akok.j);
     }
     while (ApolloPanel.a(this.a.a).getVisibility() == 0)
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       if (ApolloPanel.a(this.a.a) == null) {
-        ApolloPanel.a(this.a.a, new alin(this.a.a));
+        ApolloPanel.a(this.a.a, new alnc(this.a.a));
       }
       ApolloPanel.a(this.a.a).setOnClickListener(ApolloPanel.a(this.a.a));
       ApolloPanel.a(this.a.a).a();

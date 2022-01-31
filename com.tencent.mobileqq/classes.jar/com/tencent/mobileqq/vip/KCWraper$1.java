@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import bdwd;
-import bdwn;
+import beam;
+import beaw;
 
 public class KCWraper$1
   implements Runnable
 {
-  public KCWraper$1(bdwd parambdwd, bdwn parambdwn) {}
+  public KCWraper$1(beam parambeam, beaw parambeaw) {}
   
   public void run()
   {

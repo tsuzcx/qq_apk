@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.album.view;
 
-import ugk;
+import ukt;
 
 public class AlbumGalleryCapturePart$8
   implements Runnable
 {
-  public AlbumGalleryCapturePart$8(ugk paramugk) {}
+  public AlbumGalleryCapturePart$8(ukt paramukt) {}
   
   public void run()
   {

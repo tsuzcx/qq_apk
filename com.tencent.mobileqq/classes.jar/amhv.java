@@ -1,10 +1,22 @@
-import java.util.List;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract interface amhv
+public class amhv
+  implements Comparator<File>
 {
-  public abstract void a(String paramString, awbv paramawbv);
+  public amhv(CleanCache paramCleanCache) {}
   
-  public abstract void a(String paramString, List<? extends awbv> paramList);
+  public int a(File paramFile1, File paramFile2)
+  {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

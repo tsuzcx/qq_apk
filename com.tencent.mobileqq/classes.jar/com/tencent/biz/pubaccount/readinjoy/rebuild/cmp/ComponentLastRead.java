@@ -105,8 +105,8 @@ public class ComponentLastRead
         a((pgd)paramObject);
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView == null))
         {
-          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559974, null, false);
-          setBackgroundResource(2131166790);
+          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559973, null, false);
+          setBackgroundResource(2131166792);
           addView(this.jdField_a_of_type_AndroidViewView);
         }
         setVisibility(0);

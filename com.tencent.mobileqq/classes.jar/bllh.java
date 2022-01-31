@@ -1,11 +1,11 @@
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import java.util.ArrayList;
+
 public abstract interface bllh
-  extends blld
 {
-  public abstract void i();
+  public abstract void a(int paramInt);
   
-  public abstract void n();
-  
-  public abstract void o();
+  public abstract void a(ArrayList<SmartFilterReqItem> paramArrayList);
 }
 
 

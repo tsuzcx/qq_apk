@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.util;
 
-import aluw;
+import alzl;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -79,23 +79,23 @@ public class PublicAccountUtil$10$1
                   if (localObject4 != null)
                   {
                     j = i1;
-                    ((awbw)localObject4).b((awbv)localObject3);
+                    ((awgf)localObject4).b((awge)localObject3);
                     if (localObject3 != null)
                     {
                       j = i1;
-                      localObject4 = (aluw)this.this$0.a.getManager(56);
+                      localObject4 = (alzl)this.this$0.a.getManager(56);
                       if (localObject4 != null)
                       {
                         j = i1;
-                        ((aluw)localObject4).a((AccountDetail)localObject3);
+                        ((alzl)localObject4).a((AccountDetail)localObject3);
                         j = i1;
-                        if (((aluw)localObject4).b(((AccountDetail)localObject3).uin) == null)
+                        if (((alzl)localObject4).b(((AccountDetail)localObject3).uin) == null)
                         {
                           j = i1;
                           if (((AccountDetail)localObject3).followType == 1)
                           {
                             j = i1;
-                            ((aluw)localObject4).a(PublicAccountInfo.createPublicAccount((AccountDetail)localObject3, 0L));
+                            ((alzl)localObject4).a(PublicAccountInfo.createPublicAccount((AccountDetail)localObject3, 0L));
                           }
                         }
                       }

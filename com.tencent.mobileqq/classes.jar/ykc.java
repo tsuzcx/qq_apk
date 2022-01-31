@@ -1,20 +1,78 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.subscribe.preloader.lib.Worker;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ykc
-  implements View.OnClickListener
 {
-  public ykc(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
+  private static ykc jdField_a_of_type_Ykc;
+  private final ConcurrentHashMap<String, ykf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
   
-  public void onClick(View paramView)
+  private <T> String a(String paramString, Worker<T> paramWorker)
   {
-    yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + yjq.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
-    xxk.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    if (a(paramString))
+    {
+      ykb.b("preLoader ID is used, please note that remove!");
+      a(paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
+    paramWorker.a();
+    return paramString;
+  }
+  
+  public static ykc a()
+  {
+    if (jdField_a_of_type_Ykc == null) {
+      jdField_a_of_type_Ykc = new ykc();
+    }
+    return jdField_a_of_type_Ykc;
+  }
+  
+  public <T> String a(String paramString, yka<T> paramyka)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    return a(paramString, new Worker(paramString, paramyka, (ykh)null, i));
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
+    try
+    {
+      ykf localykf = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (localykf != null) {
+        localykf.b();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ykb.a(localException);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public <T> void a(String paramString, ykh<T> paramykh)
+  {
+    try
+    {
+      paramString = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramykh);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ykb.a(paramString);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
   }
 }
 

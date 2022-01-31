@@ -15,7 +15,7 @@ public class nml
   protected long a;
   public Handler a;
   private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
-  public WeakReference<vrr> a;
+  public WeakReference<vwa> a;
   public Timer a;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   public boolean a;
@@ -78,7 +78,7 @@ public class nml
     }
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2, vrr paramvrr)
+  public void a(int paramInt, long paramLong1, long paramLong2, vwa paramvwa)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt;
@@ -96,7 +96,7 @@ public class nml
     }
     if (paramLong2 <= 0L)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvrr);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvwa);
       a();
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
       return;

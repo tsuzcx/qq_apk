@@ -1,54 +1,40 @@
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bmhi
-  implements bmpb
+public abstract interface bmhi
 {
-  bmhi(bmhd parambmhd) {}
+  public abstract View a();
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a();
-    if (this.a.jdField_a_of_type_Bmix.a == 27) {
-      this.a.jdField_a_of_type_Bmix.a(0);
-    }
-    if (this.a.jdField_a_of_type_Bmix.a == 36)
-    {
-      bmet localbmet = (bmet)this.a.a(bmet.class);
-      if (localbmet != null) {
-        localbmet.c();
-      }
-      this.a.jdField_a_of_type_Bmix.a(0);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void a(bmtx parambmtx)
-  {
-    if ((this.a.jdField_a_of_type_Bmix.h() != 0) && (bmix.a(bmhd.a(this.a), 134217728)))
-    {
-      VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
-      if (localVideoSegmentPickerProviderView != null)
-      {
-        bmet localbmet = (bmet)this.a.a(bmet.class);
-        if (localbmet != null)
-        {
-          localVideoSegmentPickerProviderView.setPlayMode(localbmet.a());
-          localbmet.i_();
-          localbmet.b();
-        }
-      }
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111, new Object[] { parambmtx });
-      if (this.a.jdField_a_of_type_Bmix.a == 0) {
-        this.a.jdField_a_of_type_Bmix.a(36);
-      }
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { parambmtx });
-    } while (this.a.jdField_a_of_type_Bmix.a != 0);
-    this.a.jdField_a_of_type_Bmix.a(27);
-  }
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
+  
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void b_(int paramInt1, int paramInt2);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void p();
+  
+  public abstract void s();
+  
+  public abstract void t();
 }
 
 

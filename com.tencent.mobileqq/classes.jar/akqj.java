@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-
-public class akqj
-  extends akqp
+public abstract interface akqj
 {
-  public akqj(CmGameLoadingFragment paramCmGameLoadingFragment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
-  {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
-    }
-  }
+  public abstract void a(boolean paramBoolean, akqi paramakqi);
 }
 
 

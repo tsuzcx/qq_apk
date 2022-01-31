@@ -1,89 +1,108 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.io.File;
+import IMMsgBodyPack.MsgType0x210;
+import KQQ.InfoItem;
+import KQQ.PluginInfo;
+import KQQ.ReqGetPluginSettings;
+import KQQ.RespGetPluginSettings;
+import KQQ.SyncReq;
+import KQQ.SyncRes;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.Packet;
 
-class ayzd
+public class ayzd
 {
-  public static String a()
+  public static MsgType0x210 a(byte[] paramArrayOfByte)
   {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
-    boolean bool = ayyi.a(str, 1);
-    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf-8");
+      MsgType0x210 localMsgType0x210 = new MsgType0x210();
+      localMsgType0x210.readFrom(paramArrayOfByte);
+      return localMsgType0x210;
     }
-    return "other_res000_0";
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  static boolean a()
+  public static List<PluginInfo> a(byte[] paramArrayOfByte)
   {
-    return true;
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return false;
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists()) {
-      if ((a().equals(paramString1)) && (ayyi.b(paramQQAppInterface, "other_res_config_file"))) {
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject = new UniPacket(true);
+    try
+    {
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramArrayOfByte);
+      paramArrayOfByte = (SyncRes)((UniPacket)localObject).get("SyncRes");
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.result == 0))
+      {
+        paramArrayOfByte = paramArrayOfByte.vecResPkg;
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+        {
+          paramArrayOfByte = (InfoItem)paramArrayOfByte.get(0);
+          if (paramArrayOfByte.vecValue != null)
+          {
+            paramArrayOfByte = new JceInputStream(paramArrayOfByte.vecValue);
+            paramArrayOfByte.setServerEncoding("utf-8");
+            localObject = new RespGetPluginSettings();
+            ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
+            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
+            {
+              paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
+              return paramArrayOfByte;
+            }
+          }
+        }
       }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      return null;
+    }
+    return null;
+  }
+  
+  public static void a(Packet paramPacket, List<Long> paramList)
+  {
+    SyncReq localSyncReq = new SyncReq();
+    ArrayList localArrayList = new ArrayList();
+    InfoItem localInfoItem = new InfoItem();
+    localInfoItem.cOperType = 1;
+    localInfoItem.qwServiceId = 22L;
+    localInfoItem.qwTimeStamp = 0L;
+    localInfoItem.vecValue = a(paramList);
+    localArrayList.add(localInfoItem);
+    localSyncReq.vecReqPkg = localArrayList;
+    paramPacket.setSSOCommand("ProfileService.SyncReq");
+    paramPacket.setServantName("ProfileService");
+    paramPacket.setFuncName("SyncReq");
+    paramPacket.addRequestPacket("SyncReq", localSyncReq);
+  }
+  
+  public static byte[] a(List<Long> paramList)
+  {
+    ReqGetPluginSettings localReqGetPluginSettings = new ReqGetPluginSettings();
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      localArrayList.addAll(paramList);
     }
     for (;;)
     {
-      return false;
-      bdcs.a(paramQQAppInterface);
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-      boolean bool = localFile.mkdirs();
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
-      try
-      {
-        bdcs.a(paramString2, paramQQAppInterface, false);
-        bool = ayyi.b(paramQQAppInterface, "other_res_config_file");
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
-        if (bool)
-        {
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
-          if (bool) {
-            continue;
-          }
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
-          return false;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return true;
-      }
+      localReqGetPluginSettings.PluginList = localArrayList;
+      paramList = new JceOutputStream();
+      localReqGetPluginSettings.writeTo(paramList);
+      return paramList.toByteArray();
+      localArrayList.add(Long.valueOf(489L));
     }
-    return true;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
-    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
-    return localEditor.commit();
-  }
-  
-  public static String b()
-  {
-    String str = azgk.a(VideoEnvironment.a());
-    return str + "other_res_cache" + File.separator;
   }
 }
 

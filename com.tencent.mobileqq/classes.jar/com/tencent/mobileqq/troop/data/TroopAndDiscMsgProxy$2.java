@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
-import azmz;
-import bblz;
+import azri;
+import bbqi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -9,16 +9,16 @@ import java.util.HashMap;
 public class TroopAndDiscMsgProxy$2
   implements Runnable
 {
-  public TroopAndDiscMsgProxy$2(bblz parambblz, boolean paramBoolean) {}
+  public TroopAndDiscMsgProxy$2(bbqi parambbqi, boolean paramBoolean) {}
   
   public void run()
   {
-    azmz localazmz = azmz.a(BaseApplication.getContext());
-    String str = bblz.a(this.this$0).getCurrentAccountUin();
+    azri localazri = azri.a(BaseApplication.getContext());
+    String str = bbqi.a(this.this$0).getCurrentAccountUin();
     if (!this.a) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      localazri.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
       return;
     }
   }

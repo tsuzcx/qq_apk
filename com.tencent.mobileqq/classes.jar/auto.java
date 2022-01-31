@@ -1,23 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import java.util.Comparator;
 
-class auto
-  extends BroadcastReceiver
+final class auto
+  implements Comparator<String>
 {
-  auto(autj paramautj) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(String paramString1, String paramString2)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
     }
-    while ((i != 2) && (i != 0)) {
-      return;
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
     }
-    this.a.a.setVisibility(0);
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

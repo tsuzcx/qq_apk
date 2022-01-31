@@ -1,20 +1,19 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aglu
-  extends avqv
+  implements Animation.AnimationListener
 {
-  aglu(agld paramagld) {}
+  aglu(agls paramagls, agln paramagln) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.e(65536);
-      agld.a(this.a, Long.valueOf(l).longValue());
-    }
+    this.jdField_a_of_type_Agls.b();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.app.Activity;
 
-public class arqt
-  implements army
+class arqt
+  implements bezx
 {
-  public arqt(QfileEditBottomBar paramQfileEditBottomBar) {}
+  arqt(arqo paramarqo, Activity paramActivity, int paramInt) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    QfileEditBottomBar.a(this.a);
+    if (paramInt == 2) {
+      arqo.a(this.jdField_a_of_type_Arqo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
   }
-  
-  public void b() {}
 }
 
 

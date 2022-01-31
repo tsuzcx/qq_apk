@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import ahjb;
+import ahnq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bdkf;
+import bdoo;
 import java.util.ArrayList;
 import skj;
 
@@ -51,10 +51,10 @@ public class ThemeTabLayout
   
   public void a()
   {
-    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561100, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364704));
+    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561118, this, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364705));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = bdkf.a(10.0F);
+    localLayoutParams.topMargin = bdoo.a(10.0F);
     addView((View)localObject, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView = new TabThemeMaskView(getContext());
     localObject = new FrameLayout.LayoutParams(-1, -1);
@@ -66,7 +66,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramInt);
   }
   
-  public void a(ArrayList<ahjb> paramArrayList, int paramInt)
+  public void a(ArrayList<ahnq> paramArrayList, int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView == null)) {}
     while ((paramArrayList == null) || (paramInt < 0)) {
@@ -88,7 +88,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a();
   }
   
-  public void b(ArrayList<ahjb> paramArrayList, int paramInt)
+  public void b(ArrayList<ahnq> paramArrayList, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramArrayList, paramInt);
   }

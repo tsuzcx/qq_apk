@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import awga;
-import azmj;
-import bdje;
+import awkj;
+import azqs;
+import bdnn;
 import com.tencent.mobileqq.pic.CompressInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,8 +31,8 @@ public class PublicAccountH5AbilityPlugin$3
           this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
           CompressInfo localCompressInfo = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
           localCompressInfo.f = 0;
-          awga.a(localCompressInfo);
-          if (!bdje.a(localCompressInfo.e)) {
+          awkj.a(localCompressInfo);
+          if (!bdnn.a(localCompressInfo.e)) {
             sxe.b.put(str, localCompressInfo.e);
           } else {
             sxe.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
@@ -50,7 +50,7 @@ public class PublicAccountH5AbilityPlugin$3
       this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
       this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       this.this$0.o = "";
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
       return;
       i += 1;
     }

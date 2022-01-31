@@ -1,43 +1,37 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
-public final class adwk
-  extends FlingGestureHandler
+public class adwk
+  implements View.OnKeyListener
 {
-  private WeakReference<TextPreviewActivity> b;
+  public adwk(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  private adwk(TextPreviewActivity paramTextPreviewActivity)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
-  }
-  
-  public void flingLToR()
-  {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
+    if (paramInt == 67)
+    {
+      if (paramKeyEvent.getAction() != 0) {
+        break label36;
       }
+      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
     }
     for (;;)
     {
-      if (i == 0) {
-        super.flingLToR();
+      return false;
+      label36:
+      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
+        SelectedAndSearchBar.a(this.a).a();
       }
-      return;
-      i = 0;
-      continue;
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwk
  * JD-Core Version:    0.7.0.1
  */

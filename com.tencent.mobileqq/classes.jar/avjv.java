@@ -1,33 +1,29 @@
-class avjv
-  implements aoed
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
+
+public class avjv
+  implements antz
 {
-  avjv(avjc paramavjc) {}
+  public avjv(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public int a()
+  public void a(String paramString, int paramInt)
   {
-    return 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    }
   }
   
-  public int a(int paramInt)
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
     }
-    else
-    {
-      paramInt1 = 0;
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+      return;
     }
-    if (paramInt1 == 0) {
-      return alpo.a(2131707668);
-    }
-    return alpo.a(2131707639);
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

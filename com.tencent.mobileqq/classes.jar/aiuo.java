@@ -1,90 +1,34 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import org.json.JSONObject;
+import Wallet.GetBroadCastHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
-public class aiuo
+class aiuo
+  implements ajfp
 {
-  public static int a(int paramInt1, int paramInt2)
+  aiuo(aiul paramaiul, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
+  
+  public void a(String paramString)
   {
     int i = 1;
-    if (paramInt1 == 1)
+    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
+    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
+    localGetBroadCastHbIdiomReq.sKey = paramString;
+    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
+    for (;;)
     {
-      paramInt1 = i;
-      if (paramInt2 == 1) {
-        paramInt1 = 0;
-      }
-      return paramInt1;
-    }
-    return RedPacketManager.getEnterType(paramInt1);
-  }
-  
-  public static int a(String paramString)
-  {
-    int i = 0;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = paramString.replaceAll("[\\u4e00-\\u9fa5]", "aa").length() - paramString.length();
-    }
-    return i;
-  }
-  
-  public static String a(int paramInt, biyg parambiyg, aiun paramaiun, String paramString)
-  {
-    int i = 2;
-    if (parambiyg != null)
-    {
-      int j = bixy.a(parambiyg.bus_type, 2);
-      i = j;
-      if (!bdje.a(parambiyg.biz_params)) {
-        try
-        {
-          String str = new JSONObject(parambiyg.biz_params).optString("memo", "");
-          parambiyg = str;
-          if (a(str) >= 18) {
-            parambiyg = str.substring(0, 18) + "...";
-          }
-          boolean bool = bdje.a(parambiyg);
-          i = j;
-          if (!bool) {
-            return parambiyg;
-          }
-        }
-        catch (Exception parambiyg)
-        {
-          parambiyg.printStackTrace();
-          i = j;
-        }
+      localGetBroadCastHbIdiomReq.fromType = i;
+      localGetBroadCastHbIdiomReq.platform = 0;
+      localGetBroadCastHbIdiomReq.qqVersion = "8.3.5";
+      aivh.a(localGetBroadCastHbIdiomReq, new aiup(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
+        i = 2;
+      } else {
+        i = 0;
       }
     }
-    return paramaiun.a(paramInt, i, paramString);
-  }
-  
-  public static String a(EditText paramEditText)
-  {
-    String str = paramEditText.getText().toString();
-    Object localObject = str;
-    if (TextUtils.isEmpty(str))
-    {
-      localObject = paramEditText.getHint();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        localObject = paramEditText.getResources().getString(2131697273);
-      }
-    }
-    else
-    {
-      return localObject;
-    }
-    return ((CharSequence)localObject).toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.replaceAll("[\\u4e00-\\u9fa5,，。、 ]", "");
-    }
-    return str;
   }
 }
 

@@ -1,15 +1,86 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class aqsm
-  implements aqst
+  implements aqsa
 {
-  aqsm(aqsl paramaqsl, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  aqsm(aqsl paramaqsl, String paramString, aqtc paramaqtc) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool4 = true;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
+    boolean bool2 = bool3;
+    boolean bool1 = bool4;
+    if (paramInt != -100001)
+    {
+      bool2 = bool3;
+      bool1 = bool4;
+      if (paramInt != -100002)
+      {
+        if (paramInt != -100003) {
+          break label107;
+        }
+        bool1 = bool4;
+        bool2 = bool3;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Aqsl.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      label107:
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+        bool2 = bool3;
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqsl.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqsl.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqsl.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqsl.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqsl.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Aqsl.d))
+    {
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aqsl.e)) {
+        break label257;
+      }
+    }
+    label257:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aqsl.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqsl.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
+      }
+      aqsf.a(aqsf.a(this.jdField_a_of_type_Aqsl.jdField_a_of_type_Aqsf), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aqsl.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aqtc);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Aqsl.d);
+      break;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqsm
  * JD-Core Version:    0.7.0.1
  */

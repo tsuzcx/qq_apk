@@ -101,26 +101,26 @@ public class tpp
       {
         int i;
         if (!WXShareHelper.a().a()) {
-          i = 2131721478;
+          i = 2131721491;
         }
         for (;;)
         {
           if (i != -1)
           {
-            xxb.a(0, i);
+            ybk.a(0, i);
             if (QLog.isColorLevel()) {
               QLog.d("PublicAccountImageCollectionUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", action=" + paramInt);
             }
             return;
             if (!WXShareHelper.a().b()) {
-              i = 2131721479;
+              i = 2131721492;
             }
           }
           else
           {
             paramString2 = String.valueOf(System.currentTimeMillis());
             Object localObject = new tpq(paramString2);
-            WXShareHelper.a().a((bevy)localObject);
+            WXShareHelper.a().a((bfah)localObject);
             localObject = WXShareHelper.a();
             paramBitmap = a(paramBitmap);
             if (paramInt == 9) {}

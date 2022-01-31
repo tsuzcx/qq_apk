@@ -1,8 +1,19 @@
-public abstract interface bnki
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import java.util.ArrayList;
+
+public class bnki
+  implements DialogInterface.OnClickListener
 {
-  public abstract void d();
+  public bnki(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public abstract void j();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+  }
 }
 
 

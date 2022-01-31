@@ -1,25 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
-public class bejf
-  extends Handler
+class bejf
+  implements View.OnClickListener
 {
-  public bejf(CircleProgressBar paramCircleProgressBar) {}
+  bejf(bejc parambejc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    do
-    {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
   }
 }
 

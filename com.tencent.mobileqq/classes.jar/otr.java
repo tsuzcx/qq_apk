@@ -39,7 +39,7 @@ public class otr
             localObject1 = ors.a();
             if (localObject1 != null)
             {
-              bjxj.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
+              bkbq.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
               QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
             }
           }
@@ -57,7 +57,7 @@ public class otr
   {
     AppRuntime localAppRuntime = ors.a();
     if (localAppRuntime != null) {
-      bjxj.a(localAppRuntime, "local_kd_native_main_text_style", "");
+      bkbq.a(localAppRuntime, "local_kd_native_main_text_style", "");
     }
   }
 }

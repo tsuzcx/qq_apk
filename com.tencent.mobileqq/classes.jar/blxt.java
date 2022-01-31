@@ -1,18 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.text.Spanned;
 
-public class blxt
-  extends GestureDetector.SimpleOnGestureListener
+class blxt
+  extends bmsw
 {
-  public blxt(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  blxt(blxr paramblxr, int paramInt)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    super(paramInt);
+  }
+  
+  public int a(CharSequence paramCharSequence)
+  {
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    this.jdField_a_of_type_Int = (str.length() - bcnt.b(str).length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

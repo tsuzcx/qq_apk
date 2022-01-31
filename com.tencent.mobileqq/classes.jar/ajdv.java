@@ -1,75 +1,53 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ajdv
 {
-  public static bhvt a;
-  public static bhvt b = new bhvt(2131364364, BaseApplicationImpl.getContext().getString(2131720646), BaseApplicationImpl.getContext().getString(2131720646), 2130843850);
-  public static bhvt c = new bhvt(2131364361, BaseApplicationImpl.getContext().getString(2131720644), BaseApplicationImpl.getContext().getString(2131720644), 2130843849);
-  public Activity a;
-  private bhvq jdField_a_of_type_Bhvq;
-  private bhvu jdField_a_of_type_Bhvu;
-  private bhvv jdField_a_of_type_Bhvv;
-  RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = null;
-  private List<bhvt> jdField_a_of_type_JavaUtilList;
+  private static volatile ajdv jdField_a_of_type_Ajdv;
+  private String jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/imglib/201907/upload_1988f0d818d7c94c1ff6476193401b15.zip";
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public static ajdv a()
   {
-    jdField_a_of_type_Bhvt = new bhvt(2131364363, BaseApplicationImpl.getContext().getString(2131720645), BaseApplicationImpl.getContext().getString(2131720645), 2130843851);
-  }
-  
-  public ajdv(Activity paramActivity, List<bhvt> paramList, bhvu parambhvu)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Bhvu = parambhvu;
-  }
-  
-  @NonNull
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Bhvq != null) && (this.jdField_a_of_type_Bhvq.isShowing());
-  }
-  
-  private void b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if (jdField_a_of_type_Ajdv == null) {}
+    try
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(i));
-        i += 1;
+      if (jdField_a_of_type_Ajdv == null) {
+        jdField_a_of_type_Ajdv = new ajdv();
+      }
+      return jdField_a_of_type_Ajdv;
+    }
+    finally {}
+  }
+  
+  public void a(ajdx paramajdx)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramajdx != null) {
+        paramajdx.a(true);
+      }
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = BaseHbFragment.getHbPannelConfig(10);
+      if (localJSONObject != null) {
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString("aLib", "https://i.gtimg.cn/channel/imglib/201907/upload_1988f0d818d7c94c1ff6476193401b15.zip");
       }
     }
-    this.jdField_a_of_type_Bhvq = bhvq.a(this.jdField_a_of_type_AndroidAppActivity, localArrayList, this.jdField_a_of_type_Bhvu, this.jdField_a_of_type_Bhvv);
-  }
-  
-  public void a()
-  {
-    if (a()) {
-      this.jdField_a_of_type_Bhvq.dismiss();
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView, paramInt1, paramInt2, -1);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Bhvq == null) {
-      b();
+    if (QLog.isColorLevel()) {
+      QLog.d("TensorFlowlibManager", 2, "init libUrl=" + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Bhvq.showAsDropDown(paramView, paramInt1, paramInt2);
+    azmy.a().a("tensorflowlite_jni", new ajdw(this, paramajdx));
   }
 }
 

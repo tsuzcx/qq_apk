@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.preloader.lib;
 
-import yfn;
-import yfo;
-import yfu;
+import yka;
+import ykb;
+import ykh;
 
 class Worker$2
   implements Runnable
 {
-  Worker$2(Worker paramWorker, yfu paramyfu, Object[] paramArrayOfObject) {}
+  Worker$2(Worker paramWorker, ykh paramykh, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Yfu.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Ykh.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
     if (this.this$0.a.a) {
-      yfo.a(Worker.a(this.this$0));
+      ykb.a(Worker.a(this.this$0));
     }
   }
 }

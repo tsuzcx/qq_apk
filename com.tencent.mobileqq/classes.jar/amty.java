@@ -1,58 +1,70 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.util.TreeMap;
 
-class amty
-  extends amuv
+public class amty
 {
-  amty(amtv paramamtv) {}
+  static String a;
   
-  public void a(int paramInt)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    if (a == null) {
+      if (!bdep.a()) {
+        break label56;
+      }
     }
-    if (amtv.a(this.a) == null)
+    label56:
+    for (String str = bdzf.a(alof.aX) + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
-      return;
+      a = str;
+      return a;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    amtv.a(this.a).sendMessage(localMessage);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static String a(amts paramamts)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
+    if (paramamts == null) {
+      return null;
     }
-    if (amtv.a(this.a) == null) {
-      return;
+    paramamts = (amtt)paramamts.a().get(Integer.valueOf(0));
+    if (paramamts == null) {
+      return null;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    amtv.a(this.a).sendMessage(localMessage);
+    return a(paramamts);
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public static String a(amtt paramamtt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    return paramamtt.d + "entry" + File.separator;
+  }
+  
+  private static String a(String paramString, int paramInt)
+  {
+    return a() + paramString + File.separator + paramInt + File.separator;
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + ".zip";
+  }
+  
+  public static String b(amts paramamts)
+  {
+    paramamts = (amtt)paramamts.a().get(Integer.valueOf(0));
+    if (paramamts == null) {
+      return null;
     }
-    if (amtv.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    amtv.a(this.a).sendMessage(localMessage);
+    return b(paramamts);
+  }
+  
+  public static String b(amtt paramamtt)
+  {
+    return paramamtt.d + "guide" + File.separator;
+  }
+  
+  public static final String b(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + File.separator;
   }
 }
 

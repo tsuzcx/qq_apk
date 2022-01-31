@@ -39,9 +39,9 @@ public final class nhy
             }
             this.jdField_a_of_type_Npo.d = this.jdField_a_of_type_Int;
             paramBundle = null;
-            localObject = (aluw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+            localObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
             if (localObject != null) {
-              paramBundle = ((aluw)localObject).a(this.jdField_a_of_type_JavaLangString);
+              paramBundle = ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
             }
             if (paramBundle != null)
             {

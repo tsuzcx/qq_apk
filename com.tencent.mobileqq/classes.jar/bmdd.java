@@ -1,27 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
-final class bmdd
-  implements mpv
+class bmdd
 {
-  public void a(int paramInt)
+  final int jdField_a_of_type_Int;
+  final Method jdField_a_of_type_JavaLangReflectMethod;
+  
+  bmdd(int paramInt, Method paramMethod)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
+    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
   }
   
-  public void a(String paramString)
+  public boolean equals(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
-    }
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bmdd)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
+    return false;
   }
   
-  public void b(String paramString)
+  public int hashCode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
+    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
   }
 }
 

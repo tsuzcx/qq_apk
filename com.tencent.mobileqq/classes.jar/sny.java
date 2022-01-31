@@ -14,7 +14,7 @@ public class sny
   
   public boolean a()
   {
-    return bdee.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
+    return bdin.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
   }
 }
 

@@ -1,40 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-final class blwg
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+class blwg
+  implements bhtv
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
+  int jdField_a_of_type_Int = 0;
   
-  blwg(View paramView, View.OnClickListener paramOnClickListener)
+  blwg(blwf paramblwf) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
+    if ((paramInt == 0) && (blwf.a(this.jdField_a_of_type_Blwf).a() != null) && (this.jdField_a_of_type_Int == blwf.a(this.jdField_a_of_type_Blwf).a().size() - 1)) {
+      blwf.a(this.jdField_a_of_type_Blwf).a();
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
   }
 }
 

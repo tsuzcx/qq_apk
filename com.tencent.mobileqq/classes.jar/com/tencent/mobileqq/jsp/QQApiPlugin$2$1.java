@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import atdu;
-import bepp;
+import atid;
+import bety;
 
 class QQApiPlugin$2$1
   implements Runnable

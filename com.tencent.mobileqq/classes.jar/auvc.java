@@ -1,15 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class auvc
-  implements DialogInterface.OnClickListener
+public class auvc
+  extends BroadcastReceiver
 {
-  auvc(Activity paramActivity) {}
+  public auvc(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    auux.a(this.a, 10);
+    int i = paramIntent.getIntExtra("command_type", 0);
+    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
+    switch (i)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
+      this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
+      NearbyJsInterface.a(this.a, "");
+      return;
+    } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
+    this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
   }
 }
 

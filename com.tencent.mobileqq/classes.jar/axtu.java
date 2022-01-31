@@ -1,197 +1,94 @@
-import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
 
 public class axtu
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  public Rect a;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
   public boolean b;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
   public boolean c;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
   
-  private axtu()
+  public axtu()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
+    this(null, 0, true, false);
   }
   
-  public static axtu a()
+  public axtu(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return axtw.a();
+    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
   }
   
-  public int a()
+  public axtu(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    return this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  public long a()
+  public boolean a(axtu paramaxtu)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    if (paramaxtu == null) {
+      throw new NullPointerException();
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    Bundle localBundle = paramIntent.getExtras();
-    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
-    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
-    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
-    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
-    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
-    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
-    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    boolean bool;
-    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
+    boolean bool = false;
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramaxtu.jdField_a_of_type_JavaLangString))
     {
-      bool = false;
-      this.g = bool;
-      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
-        break label272;
-      }
+      this.jdField_a_of_type_JavaLangString = paramaxtu.jdField_a_of_type_JavaLangString;
       bool = true;
-      label168:
-      this.h = bool;
-      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
-        break label277;
-      }
     }
-    label272:
-    label277:
-    for (int j = 1;; j = 0)
+    if (this.jdField_a_of_type_Int != paramaxtu.jdField_a_of_type_Int)
     {
-      this.jdField_c_of_type_Int = j;
-      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
-      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
-      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
-      this.jdField_c_of_type_Boolean = localBundle.getBoolean(bilx.jdField_b_of_type_JavaLangString, true);
-      this.jdField_b_of_type_Boolean = localBundle.getBoolean(bilx.jdField_a_of_type_JavaLangString);
-      return;
+      this.jdField_a_of_type_Int = paramaxtu.jdField_a_of_type_Int;
       bool = true;
-      break;
-      bool = false;
-      break label168;
     }
+    if (this.jdField_a_of_type_Boolean != paramaxtu.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = paramaxtu.jdField_a_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Boolean != paramaxtu.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = paramaxtu.jdField_b_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Long != paramaxtu.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = paramaxtu.jdField_a_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Long != paramaxtu.jdField_b_of_type_Long)
+    {
+      this.jdField_b_of_type_Long = paramaxtu.jdField_b_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Int != paramaxtu.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Int = paramaxtu.jdField_b_of_type_Int;
+      bool = true;
+    }
+    if (this.c != paramaxtu.c)
+    {
+      this.c = paramaxtu.c;
+      return true;
+    }
+    return bool;
   }
   
-  public void a(Rect paramRect)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.f;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.g;
-  }
-  
-  public int e()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean e()
-  {
-    return this.h;
-  }
-  
-  public boolean f()
-  {
-    return this.i;
-  }
-  
-  public boolean g()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axtu
  * JD-Core Version:    0.7.0.1
  */

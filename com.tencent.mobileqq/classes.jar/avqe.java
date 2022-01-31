@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-public abstract class avqe
+class avqe
+  implements bhuk
 {
-  public long a;
-  public String a;
-  public boolean b;
+  avqe(avqc paramavqc, avqj paramavqj, avsg paramavsg, bhuf parambhuf) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return this.a;
-  }
-  
-  public abstract boolean a();
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    aveg localaveg = new aveg().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Avqc.a(this.jdField_a_of_type_Avqj)).b(this.jdField_a_of_type_Avsg.c).c(String.valueOf(this.jdField_a_of_type_Avqc.a(this.jdField_a_of_type_Avqj)));
+    if (this.jdField_a_of_type_Avqc.jdField_a_of_type_Boolean) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      localaveg.e(paramView).b(this.jdField_a_of_type_Avqc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      avqc.a(this.jdField_a_of_type_Avqc, this.jdField_a_of_type_Avqj);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
   }
 }
 

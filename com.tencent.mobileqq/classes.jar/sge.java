@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class sge
 {
-  private static String jdField_a_of_type_JavaLangString = bduw.a(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/" + "proteus/");
+  private static String jdField_a_of_type_JavaLangString = bdzf.a(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/" + "proteus/");
   private boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;

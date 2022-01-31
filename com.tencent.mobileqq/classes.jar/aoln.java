@@ -1,103 +1,74 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import org.json.JSONObject;
 
 public class aoln
-  extends aofy<aolm>
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
-  }
+  private Map<String, String> a = new HashMap();
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public static aoln a(aoko[] paramArrayOfaoko)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
-    paramContext.apply();
-  }
-  
-  public int a()
-  {
-    return 439;
-  }
-  
-  @NonNull
-  public aolm a(int paramInt)
-  {
-    return new aolm(0);
-  }
-  
-  @Nullable
-  public aolm a(aogf[] paramArrayOfaogf)
-  {
-    j = 0;
-    i = j;
-    if (paramArrayOfaogf != null)
+    Object localObject;
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0))
     {
-      i = j;
-      if (paramArrayOfaogf.length > 0) {
-        paramArrayOfaogf = paramArrayOfaogf[0].a;
-      }
+      localObject = null;
+      return localObject;
     }
-    try
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaogf);
-      }
-      i = new JSONObject(paramArrayOfaogf).getInt("isPushSwitchShow");
-    }
-    catch (Exception paramArrayOfaogf)
-    {
-      for (;;)
+      int i;
+      try
       {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaogf);
-          i = j;
+        aoln localaoln = new aoln();
+        i = 0;
+        localObject = localaoln;
+        if (i >= paramArrayOfaoko.length) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfaoko[i].jdField_a_of_type_Int) });
+        }
+        localObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).has("grayUrlConfig")) {
+          localaoln.a.put("apolloGrayUrlWhite", paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        } else if (((JSONObject)localObject).has("traceConfig")) {
+          localaoln.a.put("apolloTraceConfig", paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        }
+      }
+      catch (Exception paramArrayOfaoko)
+      {
+        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfaoko, new Object[0]);
+        return null;
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aoln paramaoln)
+  {
+    if ((paramQQAppInterface == null) || (paramaoln == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramaoln.a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str1 = (String)localIterator.next();
+        String str2 = (String)paramaoln.a.get(str1);
+        if ((paramBoolean) && (QLog.isColorLevel())) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
+        }
+        if ("apolloGrayUrlWhite".equals(str1)) {
+          alit.a(paramQQAppInterface, str2, paramBoolean);
+        } else if ("apolloTraceConfig".equals(str1)) {
+          alit.a(paramQQAppInterface, str2);
         }
       }
     }
-    return new aolm(i);
-  }
-  
-  public Class a()
-  {
-    return aolm.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aolm paramaolm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramaolm.a);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramaolm.a);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

@@ -1,24 +1,37 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import java.util.List;
 
 public class ahwe
-  extends ahvn
+  implements AdapterView.OnItemClickListener
 {
-  public static final int[] a = { 2131690787 };
-  public static final int[] b = { 2131364159 };
+  public ahwe(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public ahwe(FragmentActivity paramFragmentActivity)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    paramAdapterView = (ahwk)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
+      }
+      paramAdapterView = (ahwk)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label126;
+      }
+    }
+    label126:
+    for (bool = true;; bool = false)
+    {
+      paramAdapterView.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 

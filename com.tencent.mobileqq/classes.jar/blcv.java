@@ -1,13 +1,6 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-
-public class blcv
-  implements bepg
+public abstract interface blcv
 {
-  public blcv(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
-  
-  public void a(bepe parambepe) {}
-  
-  public void a(bepe parambepe, int paramInt1, int paramInt2) {}
+  public abstract void a(blag paramblag);
 }
 
 

@@ -1,22 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class adcz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adcz(LoginInfoActivity paramLoginInfoActivity) {}
+  public adcz(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    paramView = new Intent();
+    paramView.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
+    azqs.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

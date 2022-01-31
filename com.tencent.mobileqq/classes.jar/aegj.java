@@ -1,44 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.UpgradeTipsDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegj
-  extends WebViewClient
+  implements View.OnClickListener
 {
-  public aegj(UpgradeTipsDialog paramUpgradeTipsDialog) {}
+  public aegj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
-    }
-    azmj.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    this.a.a.loadUrl(paramString);
-    return true;
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

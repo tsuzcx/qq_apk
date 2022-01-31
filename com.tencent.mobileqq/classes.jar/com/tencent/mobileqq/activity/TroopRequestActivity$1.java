@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
+import alto;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import mqq.os.MqqHandler;
@@ -8,7 +8,7 @@ import mqq.os.MqqHandler;
 class TroopRequestActivity$1
   implements Runnable
 {
-  TroopRequestActivity$1(TroopRequestActivity paramTroopRequestActivity, aloz paramaloz) {}
+  TroopRequestActivity$1(TroopRequestActivity paramTroopRequestActivity, alto paramalto) {}
   
   public void run()
   {

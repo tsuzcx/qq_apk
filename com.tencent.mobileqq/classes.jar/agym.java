@@ -1,36 +1,52 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class agym
-  implements ajxy
 {
-  public agym(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static agym a(String paramString)
+  {
+    agym localagym = new agym();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+      {
+        localagym.a(paramString.getBoolean("useRecommendedSticker"));
+        localagym.a(paramString.getInt("maxMatchLength"));
+      }
+      return localagym;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+    }
+    return localagym;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
   public void a(int paramInt)
   {
-    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      return;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

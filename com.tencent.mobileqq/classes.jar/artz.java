@@ -1,100 +1,153 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public class artz
+class artz
+  implements arua
 {
-  public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
+  artz(arty paramarty) {}
+  
+  public void a(int paramInt, Bundle paramBundle)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int i = 0;
-    if (paramMap == null) {
-      return localObject2;
+    this.a.b(paramInt);
+    if (arty.a(this.a) != null)
+    {
+      if (paramInt <= 100) {
+        break label45;
+      }
+      arty.a(this.a).b(this.a.h(), paramBundle);
     }
-    localObject2 = localObject1;
+    label45:
+    while (paramInt - this.a.g() <= 0) {
+      return;
+    }
+    this.a.a(paramInt);
+    arty.a(this.a).b(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    this.a.c(5);
+    QQAppInterface localQQAppInterface = araj.a().a();
+    if (localQQAppInterface != null)
+    {
+      long l1 = -1L;
+      long l2 = -1L;
+      arue localarue = arue.a(paramBundle);
+      if (localarue != null)
+      {
+        l1 = localarue.jdField_a_of_type_Long;
+        l2 = localarue.b;
+      }
+      arrr.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      arrr.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+    }
     for (;;)
     {
-      Field localField;
-      try
-      {
-        localObject1 = paramClass.newInstance();
-        localObject2 = localObject1;
-        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
-        localObject2 = localObject1;
-        int j = arrayOfField.length;
-        localObject2 = localObject1;
-        if (i >= j) {
-          break;
-        }
-        localField = arrayOfField[i];
-        localObject2 = localObject1;
-        int k = localField.getModifiers();
-        localObject2 = localObject1;
-        if (Modifier.isStatic(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        if (Modifier.isFinal(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        localField.setAccessible(true);
-        localObject2 = localObject1;
-        if (paramMap.containsKey(localField.getName()))
-        {
-          localObject2 = localObject1;
-          localField.set(localObject1, paramMap.get(localField.getName()));
-        }
+      if (arty.a(this.a) != null) {
+        arty.a(this.a).a(paramInt, paramString, paramBundle);
       }
-      catch (Exception paramMap)
-      {
-        paramMap.printStackTrace();
-        return localObject2;
-      }
-      localObject2 = localObject1;
-      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
-      label195:
-      i += 1;
+      return;
+      QLog.w(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
     }
   }
   
-  public static Map a(Object paramObject)
+  public void a(Bundle paramBundle)
   {
-    Object localObject;
-    if (paramObject == null) {
-      localObject = null;
+    if (arty.a(this.a) != null) {
+      arty.a(this.a).a(this.a.h(), null);
     }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    QLog.i(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
+    this.a.c(4);
+    if (paramString == null)
+    {
+      QLog.e(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
+      a(40, artu.a(40), paramBundle);
+    }
+    label783:
+    label821:
     for (;;)
     {
-      return localObject;
-      localHashMap = new HashMap();
-      try
-      {
-        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        for (;;)
-        {
-          localObject = localHashMap;
-          if (i >= j) {
-            break;
-          }
-          localObject = arrayOfField[i];
-          ((Field)localObject).setAccessible(true);
-          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
-          i += 1;
-        }
-        return localHashMap;
+      return;
+      if (bdhb.a(this.a.e)) {
+        this.a.e = arrr.b(this.a.e);
       }
-      catch (Exception paramObject)
+      QLog.i(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
+      Object localObject;
+      if (!bdhb.b(new File(paramString), new File(this.a.e)))
       {
-        paramObject.printStackTrace();
+        QLog.e(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
+        localObject = arso.c(paramString);
+        if (!arrr.b().equalsIgnoreCase((String)localObject))
+        {
+          String str = (String)localObject + this.a.d;
+          localObject = str;
+          if (bdhb.a(str)) {
+            localObject = arrr.b(str);
+          }
+          QLog.i(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
+          if (!bdhb.b(new File(paramString), new File((String)localObject)))
+          {
+            QLog.e(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
+            a(7, artu.a(7), paramBundle);
+            return;
+          }
+          this.a.e = ((String)localObject);
+        }
+      }
+      else
+      {
+        QLog.i(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
+        paramString = araj.a().a();
+        if (paramString == null) {
+          break label783;
+        }
+        long l1 = -1L;
+        long l2 = -1L;
+        localObject = arue.a(paramBundle);
+        if (localObject == null) {
+          break label743;
+        }
+        l1 = ((arue)localObject).jdField_a_of_type_Long;
+        l2 = ((arue)localObject).b;
+        arrr.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        arrr.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        azrh.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
+      }
+      for (;;)
+      {
+        if (arty.a(this.a) == null) {
+          break label821;
+        }
+        arty.a(this.a).a(this.a.e, this.a.b, paramBundle);
+        return;
+        QLog.e(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
+        a(7, artu.a(7), paramBundle);
+        return;
+        label743:
+        QLog.w(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
+        break;
+        QLog.i(arty.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
       }
     }
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.c(3);
+    if (arty.a(this.a) != null) {
+      arty.a(this.a).c(this.a.h(), null);
+    }
+  }
+  
+  public void c(Bundle paramBundle) {}
 }
 
 

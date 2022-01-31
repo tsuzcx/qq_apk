@@ -1,49 +1,83 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aork
-  extends aopw<aorj>
+  extends aokh<aorl>
 {
-  @NonNull
-  public static aorj c()
-  {
-    aorj localaorj2 = (aorj)aogj.a().a(562);
-    aorj localaorj1 = localaorj2;
-    if (localaorj2 == null) {
-      localaorj1 = aorj.a();
-    }
-    return localaorj1;
-  }
-  
   public int a()
   {
-    return 562;
+    return 538;
   }
   
   @NonNull
-  public aorj a()
+  public aorl a(int paramInt)
   {
-    return aorj.a();
+    return new aorl();
   }
   
-  @NonNull
-  public aorj a(@NonNull aogf[] paramArrayOfaogf)
+  @Nullable
+  public aorl a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfaogf[0].a);
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
     }
-    return aorj.a(paramArrayOfaogf[0].a);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
+      }
+      return aorl.a(paramArrayOfaoko);
+    }
+    return new aorl();
   }
   
-  public Class<aorj> a()
+  public Class a()
   {
-    return aorj.class;
+    return aorl.class;
   }
   
-  @NonNull
-  public aorj b()
+  public void a(int paramInt)
   {
-    return aorj.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(aorl paramaorl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.a().a = paramaorl;
+      localQQAppInterface.getHwEngine().ipv6Switch = paramaorl.a;
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

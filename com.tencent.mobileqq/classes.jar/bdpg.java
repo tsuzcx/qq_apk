@@ -1,23 +1,96 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.ConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdpg
-  implements bdpe
 {
-  public bdpg(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public static int a(String paramString)
   {
-    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
-    localParams.intVal = paramInt;
-    localParams.strVal1 = paramString1;
-    localParams.strVal2 = paramString2;
-    paramString1 = new Bundle();
-    paramString1.putSerializable("params", localParams);
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
+    int i = 0;
+    paramString = b(paramString);
+    if (paramString != null) {
+      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
+    }
+    return i;
+  }
+  
+  public static SharedPreferences a(String paramString)
+  {
+    return bdph.a(amuc.a, paramString, "config_qq.android.ar_");
+  }
+  
+  public static SharedPreferences a(String paramString1, String paramString2)
+  {
+    return bdph.a(amuc.a, paramString1, "res_qq.android.ar_" + paramString2);
+  }
+  
+  public static PromotionConfigInfo a(String paramString1, String paramString2)
+  {
+    int i = 1;
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramString2))
+        {
+          Object localObject = a(paramString1);
+          if (localObject != null)
+          {
+            paramString2 = ((SharedPreferences)localObject).getString("config", null);
+            QLog.w(amuc.a, 1, "ConfigInfo.get, step[" + i + "], configText[" + paramString2 + "]");
+            localObject = new PromotionConfigInfo();
+            ((PromotionConfigInfo)localObject).setUin(paramString1);
+            if (!TextUtils.isEmpty(paramString2)) {
+              ((PromotionConfigInfo)localObject).tryParse(amuc.a, paramString2);
+            }
+            return localObject;
+          }
+          i = 2;
+          continue;
+        }
+        i = 0;
+      }
+      finally {}
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    Object localObject = null;
+    SharedPreferences localSharedPreferences = b(paramString);
+    paramString = localObject;
+    if (localSharedPreferences != null) {
+      paramString = localSharedPreferences.getString("config", null);
+    }
+    return paramString;
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    BusinessCommonConfig.saveMd5(amuc.a, a(paramString1, paramString2), "md5_" + paramInt, paramString3);
+  }
+  
+  public static boolean a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    return BusinessCommonConfig.isResReady(amuc.a + "_" + paramString2, a(paramString1, paramString2), "md5_" + paramInt, paramString3, paramString4);
+  }
+  
+  public static int b(String paramString)
+  {
+    int i = 0;
+    paramString = a(paramString);
+    if (paramString != null) {
+      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
+    }
+    return i;
+  }
+  
+  public static SharedPreferences b(String paramString)
+  {
+    return bdph.a(amuc.a, paramString, "res_qq.android.ar_");
   }
 }
 

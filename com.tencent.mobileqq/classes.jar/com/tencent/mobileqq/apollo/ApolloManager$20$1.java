@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
-import akjn;
+import aknx;
+import akoc;
 import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
 
 public class ApolloManager$20$1
   implements Runnable
 {
-  public ApolloManager$20$1(akjn paramakjn, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
+  public ApolloManager$20$1(akoc paramakoc, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akjn.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Akoc.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

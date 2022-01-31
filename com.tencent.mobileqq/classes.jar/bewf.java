@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class bewf
-  implements DialogInterface.OnClickListener
+public class bewf
 {
-  bewf(String paramString, int paramInt1, int paramInt2) {}
+  private static long jdField_a_of_type_Long = 400L;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    azmj.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Cancel", this.jdField_a_of_type_Int, this.b, "", "", "", "");
-    paramDialogInterface.dismiss();
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static void a(ViewGroup paramViewGroup)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    paramViewGroup.invalidate();
+    View localView = paramViewGroup.getChildAt(0);
+    paramViewGroup = paramViewGroup.getChildAt(1);
+    beuu localbeuu = new beuu(paramViewGroup);
+    localbeuu.setDuration(jdField_a_of_type_Long);
+    localbeuu.setFillAfter(true);
+    localbeuu.setAnimationListener(new bewg(localView, paramViewGroup));
+    paramViewGroup.startAnimation(localbeuu);
   }
 }
 

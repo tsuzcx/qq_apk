@@ -1,27 +1,33 @@
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class ahlm
-  extends MqqHandler
+  extends Handler
 {
-  public ahlm(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  private WeakReference<NewFriendActivity> a;
+  
+  public ahlm(NewFriendActivity paramNewFriendActivity)
+  {
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopSuspiciousFragment.a(this.a) == null);
-      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
       return;
     }
-    this.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 

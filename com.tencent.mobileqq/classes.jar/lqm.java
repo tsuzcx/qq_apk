@@ -434,9 +434,9 @@ public class lqm
         }
         this.a.mVideoController.b(l1, paramMessage);
         break;
-        azmj.b(null, "CliOper", "", "", "0X800A7A6", "0X800A7A6", 0, (int)l3, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A7A6", "0X800A7A6", 0, (int)l3, "", "", "", "");
         break;
-        azmj.b(null, "CliOper", "", "", "0X800A7A7", "0X800A7A7", 0, (int)l3, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A7A7", "0X800A7A7", 0, (int)l3, "", "", "", "");
         break;
         this.a.mVideoController.f(l3);
         break;

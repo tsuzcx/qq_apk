@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ApolloPandora
-  extends awbv
+  extends awge
 {
   public static final int BOX_TYPE_BEAN = 3;
   public static final int BOX_TYPE_CARD = 1;
@@ -18,7 +18,7 @@ public class ApolloPandora
   public short hadStolen;
   public String mBoxTipUrl;
   public long queryInterval;
-  @awdj
+  @awhs
   public String uin;
   public long updateTime;
   

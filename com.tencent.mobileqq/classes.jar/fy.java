@@ -1,11 +1,11 @@
 class fy
-  implements aubq<Void, Void>
+  implements aufz<Void, Void>
 {
-  fy(fx paramfx, aloz paramaloz, String paramString) {}
+  fy(fx paramfx, alto paramalto, String paramString) {}
   
   public Void a(Void paramVoid)
   {
-    this.jdField_a_of_type_Aloz.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_JavaLangString);
     return null;
   }
 }

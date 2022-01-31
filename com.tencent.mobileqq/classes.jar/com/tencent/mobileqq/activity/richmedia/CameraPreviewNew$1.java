@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajjs;
+import ajoh;
 import android.content.Context;
 import android.view.WindowManager.BadTokenException;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraPreviewNew$1
@@ -16,13 +16,13 @@ public class CameraPreviewNew$1
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131699714);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131699726);
     }
-    localObject = bdcd.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131694205), new ajjs(this));
+    localObject = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131694207), new ajoh(this));
     try
     {
-      ((bdfq)localObject).setCancelable(false);
-      ((bdfq)localObject).show();
+      ((bdjz)localObject).setCancelable(false);
+      ((bdjz)localObject).show();
       return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)

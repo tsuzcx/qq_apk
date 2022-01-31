@@ -1,10 +1,11 @@
-public abstract interface anbs
+public class anbs
 {
-  public abstract void a();
+  public int a = 3000;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public String toString()
+  {
+    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
+  }
 }
 
 

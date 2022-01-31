@@ -1,6 +1,19 @@
-public abstract interface bhud
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
+
+public final class bhud
+  implements Parcelable.Creator<AbsSpinner.SavedState>
 {
-  public abstract void a();
+  public AbsSpinner.SavedState a(Parcel paramParcel)
+  {
+    return new AbsSpinner.SavedState(paramParcel, null);
+  }
+  
+  public AbsSpinner.SavedState[] a(int paramInt)
+  {
+    return new AbsSpinner.SavedState[paramInt];
+  }
 }
 
 

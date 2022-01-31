@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import atdu;
-import becq;
+import atid;
+import begz;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import ndd;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class QQApiPlugin$1
   implements Runnable
 {
-  public QQApiPlugin$1(atdu paramatdu, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
+  public QQApiPlugin$1(atid paramatid, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
   
   public void run()
   {

@@ -53,9 +53,9 @@ public class oof
 {
   private olp a;
   
-  public oof(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public oof(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
   }
   
   private CommentData a(oidb_cmd0xc46.Comment paramComment)
@@ -327,7 +327,7 @@ public class oof
       if (paramComment.jump_schema.has()) {}
       try
       {
-        paramBaseCommentData.flowGuidePtsData = new String(bdbi.decode(paramComment.jump_schema.get(), 0), "utf-8");
+        paramBaseCommentData.flowGuidePtsData = new String(bdfr.decode(paramComment.jump_schema.get(), 0), "utf-8");
         QLog.d("ReadInJoyCommentPBModule", 1, "flowGuidePtsData : " + paramBaseCommentData.flowGuidePtsData);
         label756:
         if ((paramComment.is_multi_media.has()) && (paramComment.is_multi_media.get() == 1))
@@ -455,7 +455,7 @@ public class oof
       }
       try
       {
-        localooh.jdField_a_of_type_JavaLangString = new String(bdbi.decode(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).jump_kva_schema.get().toString(), 0), "utf-8");
+        localooh.jdField_a_of_type_JavaLangString = new String(bdfr.decode(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).jump_kva_schema.get().toString(), 0), "utf-8");
         if (((oidb_cmd0xc46.RspBody)localObject).hot_comment_list.has()) {
           paramFromServiceMsg.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject).hot_comment_list.get());
         }
@@ -798,7 +798,7 @@ public class oof
     paramFromServiceMsg = new HashMap();
     paramFromServiceMsg.put("retCode", String.valueOf(i));
     paramFromServiceMsg.put("request_comment_type", String.valueOf(j));
-    paramObject = azmz.a(ors.a().getApplication());
+    paramObject = azri.a(ors.a().getApplication());
     if (i == 0) {}
     for (boolean bool = true;; bool = false)
     {

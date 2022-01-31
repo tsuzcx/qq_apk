@@ -1,25 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class ahsl
-  implements DialogInterface.OnClickListener
+  implements ahud
 {
-  ahsl(ahsh paramahsh) {}
+  ahsl(ahsi paramahsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      ahsh.a(this.a, ahsh.a(this.a), Long.valueOf(ahsh.a(this.a)).longValue());
-      ahsh.a(this.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
-    }
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

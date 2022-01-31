@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.view.View;
 
-public final class ayqk
-  implements Comparator<aykp>
+public class ayqk
+  implements ayqp<aypd, ayxk>
 {
-  public int a(aykp paramaykp1, aykp paramaykp2)
+  public void a(aypd paramaypd, ayxk paramayxk)
   {
-    int j = Long.signum(paramaykp2.b() - paramaykp1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramaykp2.a() - paramaykp1.a());
-    }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(paramaykp1, paramaykp2);
-    }
-    return j;
+    paramayxk.a(paramaypd);
+    paramayxk.a().setOnClickListener(new ayql(this, paramaypd));
   }
 }
 

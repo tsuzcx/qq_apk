@@ -3,9 +3,9 @@ package com.tencent.mobileqq.filemanager.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aqsc;
-import arng;
-import arni;
+import aqwl;
+import arrp;
+import arrr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -90,7 +90,7 @@ public final class FileManagerUtil$17
     if (i >= 4)
     {
       localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
-      switch (arni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
+      switch (arrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
       {
       case 1: 
       case 4: 
@@ -103,12 +103,12 @@ public final class FileManagerUtil$17
       {
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692741), -1L, -1L, -1L);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692743), -1L, -1L, -1L);
         localSharedPreferences.edit().putLong(str2, l2);
         if (QLog.isColorLevel()) {
-          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + arni.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
+          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + arrr.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
         }
-        arng.a("0X800506B");
+        arrp.a("0X800506B");
         return;
         localObject1 = "0";
         continue;

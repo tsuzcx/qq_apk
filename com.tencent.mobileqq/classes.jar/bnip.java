@@ -1,17 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
-
-public class bnip
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bnip
+  implements ajwt
 {
-  public bnip(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

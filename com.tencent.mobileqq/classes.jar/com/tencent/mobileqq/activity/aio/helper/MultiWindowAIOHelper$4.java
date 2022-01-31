@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afaw;
-import augx;
+import affl;
+import aulg;
 
 public class MultiWindowAIOHelper$4
   implements Runnable
 {
-  public MultiWindowAIOHelper$4(afaw paramafaw, augx paramaugx) {}
+  public MultiWindowAIOHelper$4(affl paramaffl, aulg paramaulg) {}
   
   public void run()
   {

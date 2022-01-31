@@ -1,19 +1,25 @@
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class bgre
-  implements bgrh
+  implements View.OnClickListener
 {
-  bgre(bgrb parambgrb, bgrg parambgrg) {}
+  bgre(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onInitApkgInfo(int paramInt, bgjw parambgjw, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Bgrg != null) {
-        this.jdField_a_of_type_Bgrg.a(parambgjw, paramInt, paramString);
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 1);
     }
-    while (this.jdField_a_of_type_Bgrg == null) {
+    try
+    {
+      if (this.jdField_a_of_type_Bgrb.isShowing()) {
+        this.jdField_a_of_type_Bgrb.dismiss();
+      }
       return;
     }
-    this.jdField_a_of_type_Bgrg.a(null, paramInt, paramString);
+    catch (Exception paramView) {}
   }
 }
 

@@ -1,38 +1,17 @@
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
 
 public class admd
-  implements bhqd
+  implements View.OnClickListener
 {
-  public admd(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bhpy parambhpy) {}
+  public admd(Now paramNow) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
-    {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-    }
-    catch (RuntimeException paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
-      }
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).m();
     }
   }
 }

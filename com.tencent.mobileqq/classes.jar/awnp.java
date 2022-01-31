@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-public class awnp
-  implements DialogInterface.OnClickListener
+public abstract interface awnp
 {
-  public awnp(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.f();
-  }
+  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

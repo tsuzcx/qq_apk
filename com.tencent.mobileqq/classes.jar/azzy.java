@@ -1,6 +1,15 @@
-public abstract interface azzy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class azzy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(azzb paramazzb);
+  azzy(azzw paramazzw) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

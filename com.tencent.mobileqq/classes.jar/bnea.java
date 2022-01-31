@@ -1,25 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class bnea
-  implements Comparable<bnea>
+public abstract interface bnea
 {
-  public int a;
-  public long a;
-  public int b;
+  public abstract void a(int paramInt);
   
-  public bnea(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
-  public int a(bnea parambnea)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambnea.jdField_a_of_type_Long);
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

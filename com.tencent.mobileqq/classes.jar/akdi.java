@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class akdi
-  implements View.OnLongClickListener
+public class akdi
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<akdd> a;
+  public akdi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public akdi(akdd paramakdd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramakdd);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    akdd localakdd = (akdd)this.a.get();
-    if (localakdd != null) {
-      return localakdd.onLongClick(paramView);
-    }
-    return false;
+    this.a.s();
   }
 }
 

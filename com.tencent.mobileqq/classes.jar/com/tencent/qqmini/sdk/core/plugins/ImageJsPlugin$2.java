@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 class ImageJsPlugin$2
   implements MiniAppProxy.IChoosePhotoListner
 {
-  ImageJsPlugin$2(ImageJsPlugin paramImageJsPlugin, bgkd parambgkd) {}
+  ImageJsPlugin$2(ImageJsPlugin paramImageJsPlugin, bgok parambgok) {}
   
   public void onResult(ArrayList<String> paramArrayList)
   {

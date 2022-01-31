@@ -1,16 +1,15 @@
-import java.util.List;
+import android.support.annotation.NonNull;
 
-public abstract interface blxp
+class blxp
+  implements blxl
 {
-  public abstract void a();
+  blxp(blxo paramblxo) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    return bcnt.b(paramString);
+  }
 }
 
 

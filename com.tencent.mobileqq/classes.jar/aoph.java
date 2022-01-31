@@ -1,102 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoph
-  extends aofy<aopg>
+  implements aokj<String>
 {
-  public int a()
-  {
-    return 557;
-  }
+  public boolean a;
   
-  @NonNull
-  public aopg a(int paramInt)
+  public void a(String paramString)
   {
-    return new aopg();
-  }
-  
-  @Nullable
-  public aopg a(aogf[] paramArrayOfaogf)
-  {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaogf != null) {
+    boolean bool = false;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
+    }
+    for (;;)
+    {
+      return;
+      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
       try
       {
-        if (paramArrayOfaogf.length > 0)
+        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
+          bool = true;
+        }
+        this.a = bool;
+        if (QLog.isColorLevel())
         {
-          paramArrayOfaogf = (aopg)aogt.a(paramArrayOfaogf[0].a, aopg.class);
-          return paramArrayOfaogf;
+          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
+          return;
         }
       }
-      catch (QStorageInstantiateException paramArrayOfaogf)
+      catch (JSONException paramString)
       {
-        QLog.e("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
+        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
       }
     }
-    return null;
   }
   
-  public Class<aopg> a()
+  public String toString()
   {
-    return aopg.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aopg paramaopg)
-  {
-    if (paramaopg != null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
-    }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaopg.a)) {
-          paramaopg.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingupload", paramaopg.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramaopg.a + "]");
-        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqpu)localObject).a(paramaopg);
-        }
-      }
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
+    localStringBuilder.append("enable:").append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

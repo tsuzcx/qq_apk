@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
 
 public class bcxi
-  implements bcxj
+  implements Animator.AnimatorListener
 {
-  public String a;
+  public bcxi(ShakePicView paramShakePicView) {}
   
-  bcxi(bcxd parambcxd, bcxb parambcxb)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((parambcxb != null) && (parambcxb.a != null)) {
-      this.jdField_a_of_type_JavaLangString = parambcxb.a.jdField_a_of_type_JavaLangString;
-    }
+    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean2) {
-      this.jdField_a_of_type_Bcxd.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Bcxd.a);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
-      }
-      return;
-      this.jdField_a_of_type_Bcxd.a(paramBoolean1, 113, paramString, null);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

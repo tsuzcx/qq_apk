@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bfkb;
-import bfla;
+import bfok;
+import bfpj;
 
 public class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(bfla parambfla) {}
+  public MyAppApi$QQDownloadListener$2(bfpj parambfpj) {}
   
   public void run()
   {
-    bfkb.a().d();
+    bfok.a().d();
   }
 }
 

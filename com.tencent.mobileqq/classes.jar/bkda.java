@@ -1,27 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
-
-class bkda
-  extends BroadcastReceiver
+public abstract interface bkda
 {
-  bkda(bkcz parambkcz) {}
+  public abstract void a(int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    try
-    {
-      paramContext = paramIntent.getAction();
-      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
-      this.a.a(paramIntent);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

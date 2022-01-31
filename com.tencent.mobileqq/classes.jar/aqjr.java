@@ -1,14 +1,21 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqjr
-  implements bhrf
+public class aqjr
+  implements Animation.AnimationListener
 {
-  aqjr(aqjp paramaqjp, View paramView) {}
+  public aqjr(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

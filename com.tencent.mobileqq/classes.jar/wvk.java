@@ -1,20 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
 public class wvk
-  implements uqr<usi>
 {
-  wvk(wvj paramwvj) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final uiz a;
   
-  public void a(boolean paramBoolean, usi paramusi)
+  public wvk(List<LocalMediaInfo> paramList, int paramInt, uiz paramuiz)
   {
-    wsv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramusi != null))
-    {
-      wsv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramusi.a));
-      int i = paramusi.a;
-      wvj.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Uiz = paramuiz;
   }
 }
 

@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bdje;
+import bdnn;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -405,7 +405,7 @@ public class MiniAppTextArea1
       if (paramJSONObject.has("placeholder"))
       {
         str = paramJSONObject.optString("placeholder");
-        if (!bdje.a(str)) {
+        if (!bdnn.a(str)) {
           setHint(str);
         }
       }

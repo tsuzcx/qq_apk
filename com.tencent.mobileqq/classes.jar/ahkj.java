@@ -1,18 +1,11 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahkj
-  implements BusinessObserver
+public abstract interface ahkj
 {
-  ahkj(ahki paramahki) {}
+  public abstract Activity a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
-    }
-  }
+  public abstract QQAppInterface a();
 }
 
 

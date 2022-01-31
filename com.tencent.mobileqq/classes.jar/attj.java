@@ -1,28 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-final class attj
-  extends Handler
+class attj
+  implements DialogInterface.OnDismissListener
 {
-  java.lang.ref.WeakReference<atsz> a;
+  attj(atti paramatti) {}
   
-  public attj(atsz paramatsz)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramatsz);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    atsz localatsz;
-    do
-    {
-      return;
-      localatsz = (atsz)this.a.get();
-    } while (localatsz == null);
-    localatsz.a(paramMessage);
+    this.a.a.finish();
   }
 }
 

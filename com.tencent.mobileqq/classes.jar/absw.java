@@ -1,14 +1,14 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class absw
-  extends JobSegment<atzw, atzw>
+  implements Comparator<MessageRecord>
 {
-  absw(absu paramabsu, String paramString, int paramInt) {}
+  absw(absu paramabsu) {}
   
-  protected void a(JobContext paramJobContext, atzw paramatzw)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    auab.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new absx(this, this));
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

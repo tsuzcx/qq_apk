@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import aluw;
+import alzl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import suv;
 
@@ -11,7 +11,7 @@ class SubscriptFeedsActivity$7
   
   public void run()
   {
-    ((aluw)this.this$0.app.getManager(56)).a();
+    ((alzl)this.this$0.app.getManager(56)).a();
     suv.a().c(this.this$0.app);
   }
 }

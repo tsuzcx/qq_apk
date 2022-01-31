@@ -1,18 +1,22 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class achq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public achq(ChatHistory paramChatHistory) {}
+  public achq(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    this.a.jdField_a_of_type_Ahap.a();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
+    paramView.commit();
   }
 }
 

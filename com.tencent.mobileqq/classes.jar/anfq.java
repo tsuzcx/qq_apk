@@ -1,39 +1,18 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
-final class anfq
-  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
+public final class anfq
+  implements Parcelable.Creator<ArModelResource>
 {
-  anfq(String paramString1, String paramString2, anfs paramanfs) {}
-  
-  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public ArModelResource a(Parcel paramParcel)
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
-    {
-      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
-      if (paramString != null)
-      {
-        boolean bool = paramString.CheckShareUrlLegality(this.b);
-        paramString.Release();
-        if (bool)
-        {
-          this.jdField_a_of_type_Anfs.a(true);
-          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-        }
-      }
-      else
-      {
-        return;
-      }
-      this.jdField_a_of_type_Anfs.a(false);
-      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-      return;
-    }
-    this.jdField_a_of_type_Anfs.a(false);
-    anjv.a(anfp.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
-    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
+    return new ArModelResource(paramParcel);
+  }
+  
+  public ArModelResource[] a(int paramInt)
+  {
+    return new ArModelResource[paramInt];
   }
 }
 

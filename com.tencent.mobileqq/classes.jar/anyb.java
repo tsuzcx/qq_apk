@@ -1,29 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class anyb
+  implements TypeEvaluator<anya>
 {
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public anya a(float paramFloat, anya paramanya1, anya paramanya2)
   {
-    paramView.setPivotX(paramView.getWidth());
-    paramView.setPivotY(paramView.getHeight() / 2);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
-    localAnimatorSet.start();
-  }
-  
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
-    localAnimatorSet.start();
+    float f1;
+    float f2;
+    if (paramanya2.jdField_a_of_type_Int == 2)
+    {
+      f1 = 1.0F - paramFloat;
+      f2 = f1 * f1 * f1 * paramanya1.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramanya2.e + 3.0F * f1 * paramFloat * paramFloat * paramanya2.g + paramFloat * paramFloat * paramFloat * paramanya2.jdField_a_of_type_Float;
+      float f3 = paramanya1.b;
+      float f4 = paramanya2.f;
+      f1 = f1 * 3.0F * paramFloat * paramFloat * paramanya2.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramanya2.b;
+    }
+    for (;;)
+    {
+      anya localanya = anya.b(f2, f1);
+      paramanya1.d += (paramanya2.d - paramanya1.d) * paramFloat;
+      paramanya1.c += (paramanya2.c - paramanya1.c) * paramFloat;
+      return localanya;
+      if (paramanya2.jdField_a_of_type_Int == 1)
+      {
+        f1 = paramanya1.jdField_a_of_type_Float;
+        f2 = (paramanya2.jdField_a_of_type_Float - paramanya1.jdField_a_of_type_Float) * paramFloat + f1;
+        f1 = paramanya1.b + (paramanya2.b - paramanya1.b) * paramFloat;
+      }
+      else
+      {
+        f2 = paramanya2.jdField_a_of_type_Float;
+        f1 = paramanya2.b;
+      }
+    }
   }
 }
 

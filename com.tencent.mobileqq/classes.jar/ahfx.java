@@ -1,12 +1,20 @@
-public class ahfx
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+
+class ahfx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
-  public String b;
+  ahfx(ahfu paramahfu) {}
   
-  public ahfx(String paramString1, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 

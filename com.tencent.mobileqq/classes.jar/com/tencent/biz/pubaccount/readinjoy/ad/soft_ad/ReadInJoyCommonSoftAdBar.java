@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.soft_ad;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -75,11 +75,11 @@ public class ReadInJoyCommonSoftAdBar
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131559943, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364779));
-    this.b = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363501));
-    this.c = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366263));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131559942, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367819));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364780));
+    this.b = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363503));
+    this.c = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366265));
     b();
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -118,16 +118,16 @@ public class ReadInJoyCommonSoftAdBar
     localObject2 = a((String)localObject2, 11, Color.parseColor("#99000000"), 1);
     localObject3 = new LinearLayout.LayoutParams(-2, -2);
     ((LinearLayout.LayoutParams)localObject3).gravity = 16;
-    ((LinearLayout.LayoutParams)localObject3).leftMargin = aekt.a(6.0F, getResources());
+    ((LinearLayout.LayoutParams)localObject3).leftMargin = aepi.a(6.0F, getResources());
     ((TextView)localObject2).setTag("soft_desc");
     ((TextView)localObject2).setOnClickListener(this);
     ((LinearLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject1);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(getContext());
     odp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress);
-    localObject1 = new FrameLayout.LayoutParams(aekt.a(25.0F, getResources()), aekt.a(25.0F, getResources()));
+    localObject1 = new FrameLayout.LayoutParams(aepi.a(25.0F, getResources()), aepi.a(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject1).gravity = 21;
-    ((FrameLayout.LayoutParams)localObject1).rightMargin = aekt.a(6.0F, getResources());
+    ((FrameLayout.LayoutParams)localObject1).rightMargin = aepi.a(6.0F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setTag("soft_progress");
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setOnClickListener(this);
     this.b.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, (ViewGroup.LayoutParams)localObject1);
@@ -207,7 +207,7 @@ public class ReadInJoyCommonSoftAdBar
         if (this.jdField_a_of_type_AndroidWidgetTextView != null)
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131713254));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131713266));
         }
         a(paramInt1, paramInt2);
       } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress == null);
@@ -229,7 +229,7 @@ public class ReadInJoyCommonSoftAdBar
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setVisibility(8);
     }
-    QQToast.a(getContext(), alpo.a(2131713360), 0).a();
+    QQToast.a(getContext(), alud.a(2131713372), 0).a();
   }
   
   public void setSoftAdClickListener(odo paramodo)

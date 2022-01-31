@@ -49,7 +49,7 @@ public class sti
         this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
         return;
         paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bjxj.a()));
+      } while ((paramMessage == null) || (!bkbq.a()));
       paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
     } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
     if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {

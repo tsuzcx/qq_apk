@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.Switch;
+import android.view.MotionEvent;
 
-public class bhxe
-  implements View.OnClickListener
+public abstract interface bhxe
 {
-  public bhxe(Switch paramSwitch) {}
-  
-  public void onClick(View paramView) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxe
  * JD-Core Version:    0.7.0.1
  */

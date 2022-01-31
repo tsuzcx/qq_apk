@@ -1,31 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advj
-  implements bhqd
+  implements DialogInterface.OnClickListener
 {
-  public advj(SubAccountUgActivity paramSubAccountUgActivity, bhpy parambhpy) {}
+  public advj(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.c());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131720461);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (azyr)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
-      }
-    }
+    this.a.a(this.a.b);
   }
 }
 

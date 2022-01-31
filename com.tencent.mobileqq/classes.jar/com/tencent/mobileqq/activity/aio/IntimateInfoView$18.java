@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aenv;
+import aesk;
 import android.graphics.Bitmap;
-import bdbq;
+import bdfz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
 import mqq.os.MqqHandler;
@@ -10,12 +10,12 @@ import mqq.os.MqqHandler;
 public class IntimateInfoView$18
   implements Runnable
 {
-  public IntimateInfoView$18(aenv paramaenv, IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo) {}
+  public IntimateInfoView$18(aesk paramaesk, IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo) {}
   
   public void run()
   {
-    Object localObject3 = aenv.a(this.this$0, this.a, false);
-    Object localObject2 = bdbq.a((String)localObject3);
+    Object localObject3 = aesk.a(this.this$0, this.a, false);
+    Object localObject2 = bdfz.a((String)localObject3);
     Object localObject1;
     if (localObject2 != null)
     {
@@ -24,11 +24,11 @@ public class IntimateInfoView$18
     }
     else
     {
-      localObject1 = aenv.a(this.this$0, this.a);
-      bdbq.a((String)localObject3, (Bitmap)localObject1);
+      localObject1 = aesk.a(this.this$0, this.a);
+      bdfz.a((String)localObject3, (Bitmap)localObject1);
     }
-    String str = aenv.a(this.this$0, this.a, true);
-    localObject3 = bdbq.a(str);
+    String str = aesk.a(this.this$0, this.a, true);
+    localObject3 = bdfz.a(str);
     if (localObject3 != null)
     {
       localObject2 = localObject3;
@@ -36,8 +36,8 @@ public class IntimateInfoView$18
     }
     else
     {
-      localObject2 = aenv.b(this.this$0, this.a);
-      bdbq.a(str, (Bitmap)localObject2);
+      localObject2 = aesk.b(this.this$0, this.a);
+      bdfz.a(str, (Bitmap)localObject2);
     }
     ThreadManager.getUIHandler().post(new IntimateInfoView.18.1(this, (Bitmap)localObject1, (Bitmap)localObject2));
   }

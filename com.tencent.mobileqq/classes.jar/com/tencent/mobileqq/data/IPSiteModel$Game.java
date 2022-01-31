@@ -3,13 +3,13 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aozu;
+import aped;
 import java.util.List;
 
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator<Game> CREATOR = new aozu();
+  public static final Parcelable.Creator<Game> CREATOR = new aped();
   public String cover;
   public String desc;
   public List<IPSiteModel.GameRich> gameRiches;
@@ -54,7 +54,7 @@ public class IPSiteModel$Game
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Game
  * JD-Core Version:    0.7.0.1
  */

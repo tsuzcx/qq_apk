@@ -1,35 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.ArrayList;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class bcbq
-  implements bhqd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bcbq(bcbp parambcbp, bhpy parambhpy, boolean paramBoolean, bbzr parambbzr) {}
+  bcbq(bcbo parambcbo, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Bhpy.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    default: 
-      paramView = "";
-    }
-    for (;;)
-    {
-      bdaj.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Bbzr.f, paramView });
-      return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Bbzr.f, this.jdField_a_of_type_Bbzr.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Bbzr.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Bbzr.c);
-      paramView = "2";
-      continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Bbzr.f, "", this.jdField_a_of_type_Bbzr.c);
-      paramView = "0";
-    }
+    bcbo.a(this.jdField_a_of_type_Bcbo).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bcbo.b(this.jdField_a_of_type_Bcbo).setVisibility(4);
+    bcbo.a(this.jdField_a_of_type_Bcbo, this.jdField_a_of_type_Boolean, bcbo.a(this.jdField_a_of_type_Bcbo), bcbo.c(this.jdField_a_of_type_Bcbo));
   }
 }
 

@@ -1,36 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ImageUploadHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bceo
-  implements bhqd
+  implements bkda
 {
-  public bceo(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhpy parambhpy) {}
+  private bcdw a;
   
-  public void OnClick(View paramView, int paramInt)
+  public bceo(ArithmeticViewHolder paramArithmeticViewHolder, bcdw parambcdw)
   {
-    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new beps(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
+    this.jdField_a_of_type_Bcdw = parambcdw;
+  }
+  
+  private void a(bcdw parambcdw)
+  {
+    ThreadManager.getUIHandler().post(new ArithmeticViewHolder.ImageUploadHandler.1(this, parambcdw));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Bcdw.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Bcdw.jdField_a_of_type_Int = paramInt;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bcdw);
+    a(this.jdField_a_of_type_Bcdw);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Bcdw.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Bcdw.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bcdw.jdField_a_of_type_Int = 100;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bcdw);
+    a(this.jdField_a_of_type_Bcdw);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
     }
-    paramView = (alzf)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((bdee.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramView != null))
-    {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131692289, 0);
-      paramView.k(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    }
-    for (;;)
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bhpy.cancel();
-      return;
-      if (paramView != null) {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694829, 1500);
-      } else {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131692288, 1500);
-      }
-    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Bcdw.jdField_b_of_type_Int = 2;
+    a(this.jdField_a_of_type_Bcdw);
+    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_Bcdw.jdField_b_of_type_JavaLangString);
   }
 }
 

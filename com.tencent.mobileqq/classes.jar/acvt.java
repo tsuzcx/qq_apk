@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public final class acvt
-  implements DialogInterface.OnClickListener
+public class acvt
+  extends bdrp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acvt(EditInfoActivity paramEditInfoActivity) {}
+  
+  public void a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
   }
 }
 

@@ -1,14 +1,21 @@
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
+
 public class bbzs
-  extends bbzp
+  implements QQPermissionCallback
 {
-  public int a()
+  public bbzs(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 0;
+    bdgm.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public int b()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return -1;
+    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
+    bhsj.a(this.a.getActivity());
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import anpx;
-import ayzp;
+import anug;
+import azdy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class DynamicAvatarManager$1
   implements Runnable
 {
-  public DynamicAvatarManager$1(anpx paramanpx) {}
+  public DynamicAvatarManager$1(anug paramanug) {}
   
   public void run()
   {
-    if ((!VideoEnvironment.e(anpx.a(this.this$0))) && ((anpx.a(this.this$0) instanceof QQAppInterface))) {
-      ayzp.a((QQAppInterface)anpx.a(this.this$0), false);
+    if ((!VideoEnvironment.e(anug.a(this.this$0))) && ((anug.a(this.this$0) instanceof QQAppInterface))) {
+      azdy.a((QQAppInterface)anug.a(this.this$0), false);
     }
   }
 }

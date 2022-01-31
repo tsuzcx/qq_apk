@@ -1,10 +1,8 @@
-import android.graphics.Bitmap;
+import java.io.File;
 
-public abstract interface bkox
+public class bkox
 {
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void b(int paramInt);
+  public static final String a = bkoz.f + File.separator + "camera_story_default_template.json";
 }
 
 

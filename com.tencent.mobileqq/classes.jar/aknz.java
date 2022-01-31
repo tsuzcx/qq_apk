@@ -1,26 +1,68 @@
-import java.nio.channels.SocketChannel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aknz
+class aknz
+  implements aled
 {
-  public int a;
-  public long a;
-  public String a;
-  public SocketChannel a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  aknz(aknx paramaknx) {}
   
-  public aknz(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
-    this.jdField_c_of_type_Int = 0;
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
+      }
+    }
+    label96:
+    do
+    {
+      bdug localbdug;
+      do
+      {
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localbdug = (bdug)this.a.a.a(71);
+        localbdug.notifyUI(2, true, paramArrayOfInt);
+        akvv.a().a(paramArrayOfInt);
+        localbdug.a(paramString, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
+      return;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localbdug = (bdug)this.a.a.a(71);
+        localbdug.notifyUI(2, false, paramArrayOfInt);
+        localbdug.a(paramString, null);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
 }
 

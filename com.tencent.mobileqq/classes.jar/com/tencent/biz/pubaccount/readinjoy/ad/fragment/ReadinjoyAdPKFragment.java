@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.fragment;
 
-import adky;
+import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +22,8 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcuq;
-import bngs;
+import bcyz;
+import bnle;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
@@ -124,7 +124,7 @@ public class ReadinjoyAdPKFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtras(paramBundle);
-    adky.a(paramActivity, localIntent, PublicFragmentActivity.class, paramClass);
+    adpn.a(paramActivity, localIntent, PublicFragmentActivity.class, paramClass);
     paramActivity.overridePendingTransition(0, 0);
   }
   
@@ -139,7 +139,7 @@ public class ReadinjoyAdPKFragment
     {
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
       if (paramBoolean) {
-        paramString.setDecodeHandler(bcuq.a);
+        paramString.setDecodeHandler(bcyz.a);
       }
       paramKandianUrlImageView.setImageDrawable(paramString);
       return;
@@ -156,15 +156,15 @@ public class ReadinjoyAdPKFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362054));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362019));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362021));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378985));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368000));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368014));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378806));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378921));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131370175));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379043));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368011));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368025));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378861));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378979));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131370194));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131370175).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370194).setOnClickListener(this);
     URL localURL = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.getVideoCoverUrlWithSmartCut(false);
     Object localObject;
     if (localURL != null) {
@@ -243,10 +243,10 @@ public class ReadinjoyAdPKFragment
     {
     default: 
       return;
-    case 2131378806: 
+    case 2131378861: 
       a(101);
       return;
-    case 2131378921: 
+    case 2131378979: 
       a(102);
       return;
     }
@@ -261,18 +261,18 @@ public class ReadinjoyAdPKFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)rha.a(2131559890, true, new ViewGroup.LayoutParams(-1, -1)));
+    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)rha.a(2131559889, true, new ViewGroup.LayoutParams(-1, -1)));
     this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
     b();
     rdm.a(getActivity());
     getActivity().getWindow().setFlags(1024, 1024);
-    bngs.a(getActivity());
-    if (bngs.b()) {
-      bngs.c(getActivity());
+    bnle.a(getActivity());
+    if (bnle.b()) {
+      bnle.c(getActivity());
     }
-    if (bngs.b())
+    if (bnle.b())
     {
-      int i = bngs.b(getActivity());
+      int i = bnle.b(getActivity());
       paramLayoutInflater = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
       paramLayoutInflater.topMargin += i;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams(paramLayoutInflater);

@@ -1,16 +1,17 @@
-import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public class ahxr
+class ahxr
   implements View.OnClickListener
 {
-  public ahxr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ahxr(ahxp paramahxp, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    this.a.d.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahxp, 1);
+    }
   }
 }
 

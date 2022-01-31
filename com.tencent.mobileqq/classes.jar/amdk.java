@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class amdk
-  extends aljr
+class amdk
+  extends baot
 {
-  private amdk(GetCheckUpdate paramGetCheckUpdate) {}
+  amdk(amdj paramamdj) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public boolean a(baoo parambaoo)
   {
-    this.a.a(7);
+    String str = ThemeUtil.getCurrentThemeId();
+    if (!parambaoo.a().equals(str)) {
+      QQToast.a(this.a.app.getApplication(), alud.a(2131715307), 4000).a();
+    }
+    return false;
   }
 }
 

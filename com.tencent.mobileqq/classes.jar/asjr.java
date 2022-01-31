@@ -1,20 +1,11 @@
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-class asjr
-  extends bdqc
+public abstract interface asjr
 {
-  asjr(asjq paramasjq) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
-  {
-    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-    if (paramObject == null) {
-      return;
-    }
-    asjq.a(this.a, (ArrayList)paramObject);
-    asjq.a(this.a).a(asjq.a(this.a));
-    asjq.a(this.a).notifyDataSetChanged();
-  }
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
 }
 
 

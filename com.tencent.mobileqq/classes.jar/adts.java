@@ -1,16 +1,15 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
-class adts
-  extends AccessibilityDelegateCompat
+public class adts
+  implements View.OnClickListener
 {
-  adts(adtr paramadtr) {}
+  public adts(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    this.a.finish();
   }
 }
 

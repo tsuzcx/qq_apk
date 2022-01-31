@@ -1,17 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqv
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public acqv(EditActivity paramEditActivity) {}
+  public acqv(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
     }
   }
 }

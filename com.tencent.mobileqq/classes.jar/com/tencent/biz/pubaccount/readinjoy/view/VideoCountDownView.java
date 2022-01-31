@@ -59,21 +59,21 @@ public class VideoCountDownView
   
   private void d()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560189, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378982));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363684));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363655));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368944));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366989);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368895));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368896));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368897));
-    this.d = ((ImageView)findViewById(2131368898));
-    this.e = ((ImageView)findViewById(2131368899));
-    Drawable localDrawable = getResources().getDrawable(2130842829);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560188, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379040));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363686));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363657));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368962));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366999);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368913));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368914));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368915));
+    this.d = ((ImageView)findViewById(2131368916));
+    this.e = ((ImageView)findViewById(2131368917));
+    Drawable localDrawable = getResources().getDrawable(2130842842);
     localDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
-    localDrawable = getResources().getDrawable(2130842825);
+    localDrawable = getResources().getDrawable(2130842838);
     localDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
   }
@@ -85,7 +85,7 @@ public class VideoCountDownView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719087, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Qyp.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719099, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Qyp.jdField_a_of_type_JavaLangString }));
   }
   
   public void a(URL paramURL)
@@ -128,11 +128,11 @@ public class VideoCountDownView
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719088, new Object[] { this.jdField_a_of_type_Qyp.jdField_a_of_type_JavaLangString }));
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131719086, new Object[] { rdm.b(paramqyp.jdField_a_of_type_Long) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719100, new Object[] { this.jdField_a_of_type_Qyp.jdField_a_of_type_JavaLangString }));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131719098, new Object[] { rdm.b(paramqyp.jdField_a_of_type_Long) }));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131719089));
+    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131719101));
   }
   
   public void setOnCustomClickListener(View.OnClickListener paramOnClickListener)

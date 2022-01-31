@@ -6,27 +6,27 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import awts;
-import awtt;
-import awtu;
-import azmz;
-import bhow;
+import awyb;
+import awyc;
+import awyd;
+import azri;
+import bhtd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public final class SilkPlayer
-  implements Handler.Callback, awtt
+  implements Handler.Callback, awyc
 {
   private byte jdField_a_of_type_Byte = -1;
   private float jdField_a_of_type_Float = 1.0F;
   private int jdField_a_of_type_Int = 3;
   private long jdField_a_of_type_Long = -1L;
   private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
-  private awts jdField_a_of_type_Awts;
-  private awtu jdField_a_of_type_Awtu;
-  private bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+  private awyb jdField_a_of_type_Awyb;
+  private awyd jdField_a_of_type_Awyd;
+  private bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private SilkPlayer.SilkPlayerThread jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread;
   private String jdField_a_of_type_JavaLangString;
   private int b = -1;
@@ -70,14 +70,14 @@ public final class SilkPlayer
     this.jdField_a_of_type_Byte = paramByte;
   }
   
-  public void a(awts paramawts)
+  public void a(awyb paramawyb)
   {
-    this.jdField_a_of_type_Awts = paramawts;
+    this.jdField_a_of_type_Awyb = paramawyb;
   }
   
-  public void a(awtu paramawtu)
+  public void a(awyd paramawyd)
   {
-    this.jdField_a_of_type_Awtu = paramawtu;
+    this.jdField_a_of_type_Awyd = paramawyd;
   }
   
   public void a(String paramString)
@@ -98,8 +98,8 @@ public final class SilkPlayer
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_Awtu != null) {
-      this.jdField_a_of_type_Bhow.sendEmptyMessage(2);
+    if (this.jdField_a_of_type_Awyd != null) {
+      this.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
     }
   }
   
@@ -127,36 +127,36 @@ public final class SilkPlayer
   public void c(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_Awtu != null) {
-      this.jdField_a_of_type_Bhow.sendEmptyMessage(1);
+    if (this.jdField_a_of_type_Awyd != null) {
+      this.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_succ_flag", "0");
     localHashMap.put("errCode", paramInt + "");
     localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
     localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    azmz.a(BaseApplication.getContext()).a(null, "PttSilkPlaryerError", true, 0L, 0L, localHashMap, null);
+    azri.a(BaseApplication.getContext()).a(null, "PttSilkPlaryerError", true, 0L, 0L, localHashMap, null);
   }
   
   public void d() {}
   
   public void d(int paramInt)
   {
-    if (this.jdField_a_of_type_Awtu != null)
+    if (this.jdField_a_of_type_Awyd != null)
     {
       if (this.jdField_a_of_type_Long >= 0L) {
         break label46;
       }
-      localMessage = this.jdField_a_of_type_Bhow.obtainMessage(3, Integer.valueOf(paramInt));
-      this.jdField_a_of_type_Bhow.sendMessage(localMessage);
+      localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(3, Integer.valueOf(paramInt));
+      this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     label46:
     while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 100L) {
       return;
     }
-    Message localMessage = this.jdField_a_of_type_Bhow.obtainMessage(3, Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Bhow.sendMessage(localMessage);
+    Message localMessage = this.jdField_a_of_type_Bhtd.obtainMessage(3, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
@@ -199,7 +199,7 @@ public final class SilkPlayer
     //   39: astore_1
     //   40: aload_0
     //   41: aload_2
-    //   42: invokestatic 231	bdic:a	(Ljava/io/InputStream;)B
+    //   42: invokestatic 231	bdml:a	(Ljava/io/InputStream;)B
     //   45: putfield 35	com/tencent/mobileqq/ptt/player/SilkPlayer:jdField_a_of_type_Byte	B
     //   48: aload_2
     //   49: astore_1
@@ -310,8 +310,8 @@ public final class SilkPlayer
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_Awtu != null) {
-        this.jdField_a_of_type_Awtu.a(this, 0, 0);
+      if (this.jdField_a_of_type_Awyd != null) {
+        this.jdField_a_of_type_Awyd.a(this, 0, 0);
       }
     }
     do
@@ -322,11 +322,11 @@ public final class SilkPlayer
         if (paramMessage.what != 2) {
           break;
         }
-      } while (this.jdField_a_of_type_Awtu == null);
-      this.jdField_a_of_type_Awtu.a();
+      } while (this.jdField_a_of_type_Awyd == null);
+      this.jdField_a_of_type_Awyd.a();
       return true;
-    } while ((paramMessage.what != 3) || (this.jdField_a_of_type_Awtu == null));
-    this.jdField_a_of_type_Awtu.a(((Integer)paramMessage.obj).intValue());
+    } while ((paramMessage.what != 3) || (this.jdField_a_of_type_Awyd == null));
+    this.jdField_a_of_type_Awyd.a(((Integer)paramMessage.obj).intValue());
     return true;
   }
 }

@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 public class stk
-  implements bhpo
+  implements bhtv
 {
   public stk(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
@@ -18,12 +18,12 @@ public class stk
     switch (paramInt)
     {
     default: 
-      abqw.a().a("list_subscript");
+      abvl.a().a("list_subscript");
     }
     for (;;)
     {
       return;
-      abqw.a().a("list_subscript", false);
+      abvl.a().a("list_subscript", false);
       paramInt = 0;
       while (paramInt <= paramAbsListView.getChildCount())
       {

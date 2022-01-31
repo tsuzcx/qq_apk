@@ -36,7 +36,7 @@ public class mok
       moi.a(locallid, i);
       EffectSettingUi.a(this.a.mApp, paramLong);
       if (locallid.d == 4) {
-        azmb.e(String.valueOf(i));
+        azqk.e(String.valueOf(i));
       }
       return;
       lvt.a().a(64);

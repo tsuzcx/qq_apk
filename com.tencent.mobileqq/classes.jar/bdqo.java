@@ -1,134 +1,168 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-public class bdqo
+class bdqo
 {
-  public SparseArray<List<bdqn>> a;
-  bdqn a;
-  public List<bdqn> a;
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
   
-  public bdqo()
+  bdqo(bdqm parambdqm, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Bdqn = bdqn.a();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    a();
   }
   
-  public bdqn a(int paramInt)
+  final int a()
   {
-    bdqn localbdqn1 = this.jdField_a_of_type_Bdqn;
-    int m = Color.red(paramInt);
-    int n = Color.green(paramInt);
-    int i1 = Color.blue(paramInt);
-    paramInt = 128;
-    byte b = 1;
-    while (b <= 8)
-    {
-      int i;
-      int j;
-      label55:
-      int k;
-      label65:
-      bdqn localbdqn2;
-      boolean bool;
-      if ((m & paramInt) == 0)
-      {
-        i = 0;
-        if ((n & paramInt) != 0) {
-          break label247;
-        }
-        j = 0;
-        if ((i1 & paramInt) != 0) {
-          break label253;
-        }
-        k = 0;
-        i = i * 4 + j * 2 + k;
-        if (localbdqn1.jdField_a_of_type_AndroidUtilSparseArray == null) {
-          localbdqn1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        if (localbdqn1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
-        {
-          localbdqn2 = bdqn.a(i, b);
-          localbdqn1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localbdqn2);
-          if (b != 8) {
-            break label259;
-          }
-          bool = true;
-          label136:
-          localbdqn2.jdField_a_of_type_Boolean = bool;
-          if (!localbdqn2.jdField_a_of_type_Boolean) {
-            break label265;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(localbdqn2);
-        }
-      }
-      for (;;)
-      {
-        localbdqn1 = (bdqn)localbdqn1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (!localbdqn1.jdField_a_of_type_Boolean) {
-          break label313;
-        }
-        localbdqn1.jdField_a_of_type_Long += m;
-        localbdqn1.b += n;
-        localbdqn1.c += i1;
-        localbdqn1.jdField_a_of_type_Int += 1;
-        return localbdqn1;
-        i = 1;
-        break;
-        label247:
-        j = 1;
-        break label55;
-        label253:
-        k = 1;
-        break label65;
-        label259:
-        bool = false;
-        break label136;
-        label265:
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localbdqn2);
-      }
-      label313:
-      b = (byte)(b + 1);
-      paramInt >>= 1;
-    }
-    return localbdqn1;
+    return (this.e - this.d + 1) * (this.g - this.f + 1) * (this.i - this.h + 1);
   }
   
-  public void a()
+  final bdqo a()
   {
-    int i = 7;
-    while ((i > 0) && (((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).isEmpty())) {
-      i -= 1;
+    if (!a()) {
+      throw new IllegalStateException("Can not split a box with only 1 color");
     }
-    Object localObject = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    int j = d();
+    bdqo localbdqo = new bdqo(this.jdField_a_of_type_Bdqm, j + 1, this.b);
+    this.b = j;
+    a();
+    return localbdqo;
+  }
+  
+  final bdqv a()
+  {
+    int i1 = 0;
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
+    int n = this.jdField_a_of_type_Int;
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    while (n <= this.b)
     {
-      bdqn localbdqn = (bdqn)((List)localObject).get(((List)localObject).size() - 1);
-      ((List)localObject).remove(localbdqn);
-      i = 0;
-      while (i < 8)
-      {
-        localObject = (bdqn)localbdqn.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject != null)
-        {
-          localbdqn.jdField_a_of_type_Long += ((bdqn)localObject).jdField_a_of_type_Long;
-          localbdqn.b += ((bdqn)localObject).b;
-          localbdqn.c += ((bdqn)localObject).c;
-          localbdqn.jdField_a_of_type_Int += ((bdqn)localObject).jdField_a_of_type_Int;
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
-        }
-        i += 1;
-      }
-      localbdqn.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      localbdqn.jdField_a_of_type_AndroidUtilSparseArray = null;
-      localbdqn.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilList.add(localbdqn);
+      int i2 = arrayOfInt1[n];
+      int i3 = arrayOfInt2[i2];
+      i1 += i3;
+      m += bdqm.a(i2) * i3;
+      k += bdqm.b(i2) * i3;
+      j += bdqm.c(i2) * i3;
+      n += 1;
     }
+    return new bdqv(bdqm.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
+  }
+  
+  final void a()
+  {
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
+    int n = -2147483648;
+    int i5 = 0;
+    int m = this.jdField_a_of_type_Int;
+    int i6 = -2147483648;
+    int j = 2147483647;
+    int k = 2147483647;
+    int i3 = 2147483647;
+    int i2 = -2147483648;
+    while (m <= this.b)
+    {
+      int i1 = arrayOfInt1[m];
+      int i9 = i5 + arrayOfInt2[i1];
+      int i8 = bdqm.a(i1);
+      int i7 = bdqm.b(i1);
+      i5 = bdqm.c(i1);
+      i1 = i6;
+      if (i8 > i6) {
+        i1 = i8;
+      }
+      int i4 = i3;
+      if (i8 < i3) {
+        i4 = i8;
+      }
+      i3 = i2;
+      if (i7 > i2) {
+        i3 = i7;
+      }
+      i8 = k;
+      if (i7 < k) {
+        i8 = i7;
+      }
+      i2 = n;
+      if (i5 > n) {
+        i2 = i5;
+      }
+      k = j;
+      if (i5 < j) {
+        k = i5;
+      }
+      m += 1;
+      i5 = i9;
+      n = i2;
+      i2 = i3;
+      i6 = i1;
+      j = k;
+      k = i8;
+      i3 = i4;
+    }
+    this.d = i3;
+    this.e = i6;
+    this.f = k;
+    this.g = i2;
+    this.h = j;
+    this.i = n;
+    this.c = i5;
+  }
+  
+  final boolean a()
+  {
+    return b() > 1;
+  }
+  
+  final int b()
+  {
+    return this.b + 1 - this.jdField_a_of_type_Int;
+  }
+  
+  final int c()
+  {
+    int j = this.e - this.d;
+    int k = this.g - this.f;
+    int m = this.i - this.h;
+    if ((j >= k) && (j >= m)) {
+      return -3;
+    }
+    if ((k >= j) && (k >= m)) {
+      return -2;
+    }
+    return -1;
+  }
+  
+  final int d()
+  {
+    int j = c();
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
+    bdqm.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
+    Arrays.sort(arrayOfInt1, this.jdField_a_of_type_Int, this.b + 1);
+    bdqm.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
+    int m = this.c / 2;
+    j = this.jdField_a_of_type_Int;
+    int k = 0;
+    while (j <= this.b)
+    {
+      k += arrayOfInt2[arrayOfInt1[j]];
+      if (k >= m) {
+        return Math.min(this.b - 1, j);
+      }
+      j += 1;
+    }
+    return this.jdField_a_of_type_Int;
   }
 }
 

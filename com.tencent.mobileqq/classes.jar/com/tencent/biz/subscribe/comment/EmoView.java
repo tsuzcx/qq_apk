@@ -16,31 +16,31 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import azgq;
-import ycs;
-import yct;
-import ycu;
-import ycv;
-import ycx;
-import ydb;
-import ydl;
+import azkz;
+import yhb;
+import yhc;
+import yhd;
+import yhe;
+import yhg;
+import yhk;
+import yhu;
 
 public class EmoView
   extends LinearLayout
-  implements ydb, ydl
+  implements yhk, yhu
 {
-  private int jdField_a_of_type_Int = 2130838908;
+  private int jdField_a_of_type_Int = 2130838909;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private WorkSpaceView jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView;
-  private ycv jdField_a_of_type_Ycv;
-  private ydl jdField_a_of_type_Ydl;
+  private yhe jdField_a_of_type_Yhe;
+  private yhu jdField_a_of_type_Yhu;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[] jdField_a_of_type_ArrayOfBoolean = { 1, 0, 0, 0 };
   private int jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  private ycv jdField_b_of_type_Ycv = new ycu(this);
+  private yhe jdField_b_of_type_Yhe = new yhd(this);
   private final int c = 28;
   private int d = 1;
   private int e = -1;
@@ -94,7 +94,7 @@ public class EmoView
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 81;
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidOsHandler = new ycs(this);
+    this.jdField_a_of_type_AndroidOsHandler = new yhb(this);
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
@@ -110,18 +110,18 @@ public class EmoView
   {
     int i = 27;
     int j = (int)Math.ceil(107.0D / (27 * 1.0D));
-    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558742, null);
+    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558741, null);
     localGridView.setNumColumns(7);
     if (paramInt == j) {
       i = 26;
     }
-    ycx localycx = new ycx(getContext(), paramInt, i, 28, paramInt, this);
-    localGridView.setAdapter(localycx);
+    yhg localyhg = new yhg(getContext(), paramInt, i, 28, paramInt, this);
+    localGridView.setAdapter(localyhg);
     localGridView.setColumnWidth(this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() / 7);
-    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, azgq.a(196.0F)));
+    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, azkz.a(196.0F)));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.addView(localGridView);
-    postDelayed(new EmoView.2(this, paramInt, localGridView, localycx), 1000L);
-    localGridView.setOnItemClickListener(new yct(this, paramInt));
+    postDelayed(new EmoView.2(this, paramInt, localGridView, localyhg), 1000L);
+    localGridView.setOnItemClickListener(new yhc(this, paramInt));
   }
   
   private void c()
@@ -182,28 +182,28 @@ public class EmoView
   {
     this.d = (paramInt + 1);
     c(paramInt);
-    if (this.jdField_a_of_type_Ydl != null) {
-      this.jdField_a_of_type_Ydl.a(paramInt);
+    if (this.jdField_a_of_type_Yhu != null) {
+      this.jdField_a_of_type_Yhu.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 27) {
-      this.jdField_b_of_type_Ycv.a();
+      this.jdField_b_of_type_Yhe.a();
     }
     do
     {
       return;
       paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
     } while (paramInt1 >= 107);
-    String str = ydg.b[ycx.b[paramInt1]];
-    this.jdField_b_of_type_Ycv.a(str);
+    String str = yhp.b[yhg.b[paramInt1]];
+    this.jdField_b_of_type_Yhe.a(str);
   }
   
-  public void a(Activity paramActivity, Context paramContext, EditText paramEditText, ycv paramycv)
+  public void a(Activity paramActivity, Context paramContext, EditText paramEditText, yhe paramyhe)
   {
-    this.jdField_a_of_type_Ycv = paramycv;
+    this.jdField_a_of_type_Yhe = paramyhe;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     a();
     this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
@@ -235,9 +235,9 @@ public class EmoView
     }
   }
   
-  public void setOnScreenChangeListener(ydl paramydl)
+  public void setOnScreenChangeListener(yhu paramyhu)
   {
-    this.jdField_a_of_type_Ydl = paramydl;
+    this.jdField_a_of_type_Yhu = paramyhu;
   }
 }
 

@@ -1,42 +1,15 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
-import org.json.JSONObject;
-
-class bhfi
-  implements bghv<Void>
+public class bhfi
 {
-  bhfi(bhfe parambhfe, String paramString) {}
+  private boolean a;
   
-  public Void a(bghl parambghl)
+  public void a(boolean paramBoolean)
   {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    for (;;)
-    {
-      return null;
-      parambghl = (AppBrandPageContainer)parambghl;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("htmlId", this.jdField_a_of_type_Bhfe.a.a);
-        localJSONObject.put("src", this.jdField_a_of_type_JavaLangString);
-        int i = bgie.a(InnerWebView.a(this.jdField_a_of_type_Bhfe.a)).a();
-        if ((parambghl.a() != null) && (parambghl.a().a() != null))
-        {
-          parambghl.a().a().a("onWebviewError", localJSONObject.toString(), i);
-          return null;
-        }
-      }
-      catch (Exception parambghl)
-      {
-        QMLog.e("Action", "onPageStarted error." + parambghl);
-      }
-    }
-    return null;
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 

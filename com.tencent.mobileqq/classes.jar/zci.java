@@ -1,13 +1,18 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public abstract interface zci
+class zci
+  implements View.OnClickListener
 {
-  public abstract void a(List<LatLng> paramList, int paramInt);
+  zci(zch paramzch, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public abstract boolean b();
-  
-  public abstract void l();
+  public void onClick(View paramView)
+  {
+    if (zch.a(this.jdField_a_of_type_Zch) != null) {
+      zch.a(this.jdField_a_of_type_Zch).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    }
+  }
 }
 
 

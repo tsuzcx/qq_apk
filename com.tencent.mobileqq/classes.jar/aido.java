@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.app.FragmentActivity;
 
-class aido
-  implements View.OnClickListener
+public class aido
+  extends aiac
 {
-  aido(aidj paramaidj) {}
+  public static final int[] a = { 2131690782, 2131690787, 2131690784, 2131690785, 2131690789, 2131690786, 2131690783, 2131690788 };
+  public static final int[] b = { 2131364156, 2131364161, 2131364158, 2131364159, 2131364163, 2131364160, 2131364157, 2131364162 };
   
-  public void onClick(View paramView)
+  public aido(FragmentActivity paramFragmentActivity)
   {
-    aidj.a(this.a, paramView);
-    this.a.dismiss();
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

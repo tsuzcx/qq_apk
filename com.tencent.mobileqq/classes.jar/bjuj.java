@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bjuj
-  implements DialogInterface.OnClickListener
+public abstract interface bjuj<V>
 {
-  bjuj(bjuc parambjuc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract boolean a(V paramV1, V paramV2);
 }
 
 

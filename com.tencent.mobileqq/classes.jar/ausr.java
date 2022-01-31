@@ -1,77 +1,61 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils.1;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import mqq.manager.Manager;
 
 public class ausr
-  implements BusinessObserver
+  implements Manager
 {
-  public ausr(NearbyUtils.1 param1) {}
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "data.json", "icon_close.png" };
+  ausx jdField_a_of_type_Ausx;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ausr(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramInt = localWebSsoResponseBody.ret.get();
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          if (paramInt != 0)
-          {
-            paramBundle = paramBundle.optString("msg");
-            if (!TextUtils.isEmpty(paramBundle)) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
-            }
-          }
-          else
-          {
-            paramBundle = paramBundle.optString("signature");
-            if (QLog.isColorLevel()) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
-            }
-            try
-            {
-              if (TextUtils.isEmpty(paramBundle)) {
-                return;
-              }
-              if (this.a.jdField_a_of_type_Int != 0) {
-                break label283;
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, bdbi.decode(paramBundle, 0));
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-            }
-            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
-            return;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
-          return;
-          label283:
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, bdbi.decode(paramBundle, 0));
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ausx = new ausx();
+  }
+  
+  public static ausr a(QQAppInterface paramQQAppInterface)
+  {
+    return (ausr)paramQQAppInterface.getManager(345);
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    return ausx.a(paramString1, paramString2) + "/";
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (a(paramString1, paramString2)) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkManger", 2, "checkDownloadCartoonResource download url:" + paramString1 + " md5:" + paramString2);
+    }
+    this.jdField_a_of_type_Ausx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10089, "prd", paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString, null);
+  }
+  
+  public void a(String paramString1, String paramString2, autc paramautc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkManger", 2, "prepareCartoonResources url:" + paramString1 + " md5:" + paramString2);
+    }
+    this.jdField_a_of_type_Ausx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10089, "prd", paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString, paramautc);
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    boolean bool = ausx.a(paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkManger", 2, "isCartoonResourceReady url:" + paramString1 + " md5:" + paramString2 + " res:" + bool);
+    }
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Ausx.a();
   }
 }
 

@@ -98,7 +98,7 @@ public class noq
           break label347;
         }
         View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-        Object localObject = localView.getTag(2131379913);
+        Object localObject = localView.getTag(2131379971);
         if ((localObject != null) && ((localObject instanceof pgq)) && (((pgq)localObject).a() != null) && ((((pgq)localObject).a() instanceof AdvertisementInfo)))
         {
           AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)((pgq)localObject).a();

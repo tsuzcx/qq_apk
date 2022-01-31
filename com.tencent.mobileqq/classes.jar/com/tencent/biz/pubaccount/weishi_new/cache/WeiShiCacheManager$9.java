@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bdcs;
+import bdhb;
 import cooperation.qzone.LocalMultiProcConfig;
 import tcq;
 
@@ -13,7 +13,7 @@ public class WeiShiCacheManager$9
   {
     LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_msg_valid_timestamp", System.currentTimeMillis());
     LocalMultiProcConfig.putInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
-    bdcs.a(tcq.c(this.this$0), false);
+    bdhb.a(tcq.c(this.this$0), false);
   }
 }
 

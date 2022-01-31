@@ -1,19 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.support.annotation.Nullable;
 
-public class bkti
-  implements Animator.AnimatorListener
+class bkti
+  implements bmeo<bkya>
 {
-  public bkti(AEMaterialPanel paramAEMaterialPanel) {}
+  bkti(bkth parambkth) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(@Nullable bkya parambkya)
+  {
+    bkth.a(this.a, parambkya);
+  }
 }
 
 

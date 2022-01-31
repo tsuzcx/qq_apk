@@ -1,39 +1,12 @@
-import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
-import com.tencent.qqmini.sdk.log.QMLog;
-
 class bhcl
-  implements QflutterLogPlugin.Log
 {
-  bhcl(bhch parambhch) {}
+  public int a;
+  public String a;
   
-  public void d(String paramString)
+  public bhcl(String paramString, int paramInt)
   {
-    QMLog.d("miniapp-TISSUE", paramString);
-  }
-  
-  public void e(String paramString)
-  {
-    QMLog.e("miniapp-TISSUE", paramString);
-  }
-  
-  public int getLogLevel()
-  {
-    return 5;
-  }
-  
-  public void i(String paramString)
-  {
-    QMLog.i("miniapp-TISSUE", paramString);
-  }
-  
-  public void v(String paramString)
-  {
-    QMLog.d("miniapp-TISSUE", paramString);
-  }
-  
-  public void w(String paramString)
-  {
-    QMLog.w("miniapp-TISSUE", paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

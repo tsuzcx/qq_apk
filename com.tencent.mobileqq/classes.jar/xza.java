@@ -1,76 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-public abstract class xza<T>
-  extends xyz<T>
+public class xza
+  implements DialogInterface.OnDismissListener
 {
-  protected int c = -1;
+  public xza(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public xza(Context paramContext, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramContext, paramBoolean);
-  }
-  
-  protected abstract int a();
-  
-  protected abstract View a();
-  
-  protected View a(int paramInt)
-  {
-    if (this.b != null) {
-      return this.b.findViewById(paramInt);
-    }
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub == null) {
-      return;
-    }
-    if (this.c != -1)
-    {
-      a(paramViewStub, this.c);
-      return;
-    }
-    paramViewStub.setLayoutResource(a());
-    this.b = paramViewStub.inflate();
-    if (a() == 2131562258) {
-      b(a());
-    }
-    a();
-  }
-  
-  public void a(ViewStub paramViewStub, int paramInt)
-  {
-    if (paramViewStub != null)
-    {
-      paramViewStub.setLayoutResource(paramInt);
-      this.b = paramViewStub.inflate();
-      a();
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if ((paramView != null) && (c())) {
-      ((ViewGroup)this.b).addView(paramView);
-    }
-  }
-  
-  protected boolean c()
-  {
-    return (this.b != null) && ((this.b instanceof ViewGroup));
-  }
-  
-  protected void i()
-  {
-    this.b = a();
-    a();
+    this.a.f = false;
   }
 }
 

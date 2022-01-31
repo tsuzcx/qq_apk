@@ -1,43 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class beri
-  extends Handler
+  extends ImageSpan
 {
-  public beri(TabBarView paramTabBarView) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
   
-  public void handleMessage(Message paramMessage)
+  public beri(Drawable paramDrawable, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a = 0.0F;
-      paramMessage = this.a;
-      paramMessage.a = ((float)(paramMessage.a + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (this.a.a < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.a = ((float)(paramMessage.a + 0.1D));
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
+    super(paramDrawable, paramInt);
+  }
+  
+  public beri a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
+    paramInt1 = paramInt2;
+    if (this.mVerticalAlignment == 1) {
+      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
     }
-    TabBarView.a(this.a, this.a.o, this.a.n);
-    this.a.a = 1.0F;
-    TabBarView.b(this.a, this.a.o, this.a.n);
-    this.a.o = this.a.n;
-    this.a.invalidate();
-    TabBarView.a(this.a);
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
+      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
+    }
+    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

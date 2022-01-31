@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import bijf;
-import bijy;
-import bikc;
+import binm;
+import biof;
+import bioj;
 import com.tencent.qphone.base.util.QLog;
 
 class QQComicTabBarView$6
@@ -12,11 +12,11 @@ class QQComicTabBarView$6
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bikc != null) {
-      this.this$0.jdField_a_of_type_Bikc.deleteObserver(this.this$0.jdField_a_of_type_Bike);
+    if (this.this$0.jdField_a_of_type_Bioj != null) {
+      this.this$0.jdField_a_of_type_Bioj.deleteObserver(this.this$0.jdField_a_of_type_Biol);
     }
-    if (bijy.a != null) {
-      bijy.a.b(this.this$0.jdField_a_of_type_Bije);
+    if (biof.a != null) {
+      biof.a.b(this.this$0.jdField_a_of_type_Binl);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "unregister observers");

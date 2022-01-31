@@ -1,55 +1,87 @@
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import eipc.EIPCResult;
 
 public class bcuh
-  extends MSFServlet
+  extends QIPCModule
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static bcuh a;
+  private bcuj a;
+  
+  private bcuh()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    super("Module_CheckInServer");
+  }
+  
+  public static bcuh a()
+  {
+    if (jdField_a_of_type_Bcuh == null) {}
+    try
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      if (jdField_a_of_type_Bcuh == null) {
+        jdField_a_of_type_Bcuh = new bcuh();
+      }
+      return jdField_a_of_type_Bcuh;
     }
-    for (;;)
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Bcuj != null)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
+      this.jdField_a_of_type_Bcuj.d();
+      this.jdField_a_of_type_Bcuj = null;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onSend");
+      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
     }
-    Object localObject = paramIntent.getStringExtra("extra_cmd");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
+    paramBundle = EIPCResult.createResult(0, paramBundle);
+    a();
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+    a();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    }
+    a();
+    bcug localbcug;
+    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
     {
-      return;
-      paramIntent = paramIntent.getByteArrayExtra("extra_data");
-      paramPacket.setSSOCommand((String)localObject);
-    } while (paramIntent == null);
-    localObject = new byte[paramIntent.length + 4];
-    bdlr.a((byte[])localObject, 0, paramIntent.length + 4);
-    bdlr.a((byte[])localObject, 4, paramIntent, paramIntent.length);
-    paramPacket.putSendData((byte[])localObject);
+      localbcug = new bcug();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        localbcug.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new bcui(localbcug, paramInt);
+        this.jdField_a_of_type_Bcuj = paramString;
+        paramString.a();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      localbcug.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+      localbcug.b = paramBundle.getString("BUNDLE_NAME_COVER");
+      localbcug.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+      paramString = new bcul(localbcug, paramInt);
+      break;
+      if ("ACTION_CANCEL".equals(paramString)) {
+        a();
+      }
+    }
   }
 }
 

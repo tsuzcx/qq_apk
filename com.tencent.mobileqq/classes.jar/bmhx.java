@@ -1,21 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class bmhx
-  extends AnimatorListenerAdapter
+  implements Animation.AnimationListener
 {
-  bmhx(bmhv parambmhv) {}
+  bmhx(bmhu parambmhu) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bmhv.a(this.a).setVisibility(8);
+    bmhu.b(this.a).setVisibility(8);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bmhv.a(this.a).setVisibility(8);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

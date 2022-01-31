@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiji;
-import ailz;
-import arni;
+import ainx;
+import aiqo;
+import arrr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoMediaPlayHelper$1
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$1(aiji paramaiji, int paramInt) {}
+  public FileVideoMediaPlayHelper$1(ainx paramainx, int paramInt) {}
   
   public void run()
   {
-    if (aiji.a(this.this$0) == null) {}
+    if (ainx.a(this.this$0) == null) {}
     do
     {
       return;
-      if (aiji.a(this.this$0) > 0)
+      if (ainx.a(this.this$0) > 0)
       {
-        aiji.a(this.this$0).setRemainTime(20160714, aiji.b(this.this$0), 2147483647);
-        aiji.a(this.this$0).stopPreLoad(aiji.a(this.this$0));
+        ainx.a(this.this$0).setRemainTime(20160714, ainx.b(this.this$0), 2147483647);
+        ainx.a(this.this$0).stopPreLoad(ainx.a(this.this$0));
       }
-      int i = aiji.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], arni.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
-      aiji.a(this.this$0, i);
-      aiji.a(this.this$0).setPlayerState(20160714, i, 6);
+      int i = ainx.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], arrr.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
+      ainx.a(this.this$0, i);
+      ainx.a(this.this$0).setPlayerState(20160714, i, 6);
     } while (!QLog.isDevelopLevel());
-    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + aiji.a(this.this$0));
+    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + ainx.a(this.this$0));
   }
 }
 

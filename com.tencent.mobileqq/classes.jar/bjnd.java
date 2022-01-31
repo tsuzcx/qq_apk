@@ -1,64 +1,103 @@
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView.Renderer;
+import cooperation.qzone.panorama.piece.PanoramaPieceManager;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bjnd
-  implements TextWatcher
+  implements GLSurfaceView.Renderer
 {
-  public bjnd(QZoneShareActivity paramQZoneShareActivity) {}
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bjmz jdField_a_of_type_Bjmz;
+  private bjnh jdField_a_of_type_Bjnh;
+  private bjnl jdField_a_of_type_Bjnl;
+  private bjno jdField_a_of_type_Bjno;
+  private int b;
+  private int c;
+  private int d;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public bjnd(bjno parambjno, bjmz parambjmz)
   {
-    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
-      try
-      {
-        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
-        if (QZoneShareActivity.b(this.a) == -1)
-        {
-          QZoneShareActivity.g(this.a);
-          return;
-        }
-        QZoneShareActivity.c(this.a, paramInt1);
-        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
-        return;
-      }
-      catch (Exception paramCharSequence)
-      {
-        QZoneShareActivity.g(this.a);
-      }
+    this.jdField_a_of_type_Bjno = parambjno;
+    this.jdField_a_of_type_Int = parambjno.b();
+    this.jdField_a_of_type_Bjnh = parambjno.a();
+    this.d = parambjno.a();
+    this.jdField_a_of_type_Bjmz = parambjmz;
+  }
+  
+  public void a()
+  {
+    bjnq.a(this.c);
+    bjnq.a(this.jdField_a_of_type_Bjnl);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Bjnh != null) {
+      this.jdField_a_of_type_Bjnh.a(paramFloat);
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    this.a.a.removeTextChangedListener(this);
-    if (paramCharSequence == null)
+    if (this.jdField_a_of_type_Bjnh != null) {
+      this.jdField_a_of_type_Bjnh.a(paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    GLES20.glClear(16384);
+    if ((this.jdField_a_of_type_Bjno != null) && (this.jdField_a_of_type_Bjno.f()))
     {
-      this.a.a.addTextChangedListener(this);
-      QZoneShareActivity.g(this.a);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Bjno.a();
+      bjnq.a(this.c);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        this.c = bjnq.a(((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap(), false);
+      }
+      if (this.jdField_a_of_type_Bjmz != null) {
+        this.jdField_a_of_type_Bjmz.b();
+      }
     }
-    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
+    if ((this.jdField_a_of_type_Bjno != null) && (this.jdField_a_of_type_Bjno.a() != null))
     {
-      this.a.a(false);
-      this.a.g = true;
-      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-      paramCharSequence.putExtra("param_only_friends", true);
-      paramCharSequence.putExtra("param_min", 1);
-      this.a.startActivityForResult(paramCharSequence, 1000);
+      this.jdField_a_of_type_Bjno.a().d();
+      this.jdField_a_of_type_Bjnl = this.jdField_a_of_type_Bjno.a().a();
+      this.jdField_a_of_type_Bjnh.a(this.jdField_a_of_type_Bjnl);
     }
-    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
-      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
+    if (this.jdField_a_of_type_Bjnh != null)
+    {
+      this.jdField_a_of_type_Bjnh.b(this.c);
+      this.jdField_a_of_type_Bjnh.c();
+      this.jdField_a_of_type_Bjnh.d();
     }
-    QZoneShareActivity.g(this.a);
-    this.a.i();
-    this.a.a.addTextChangedListener(this);
+  }
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  {
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    GLES20.glEnable(2884);
+    float f = paramInt1 / paramInt2;
+    if (this.jdField_a_of_type_Bjnh != null) {
+      this.jdField_a_of_type_Bjnh.b(f);
+    }
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    this.b = bjnp.a();
+    GLES20.glUseProgram(this.b);
+    if (this.jdField_a_of_type_Bjnh != null) {
+      this.jdField_a_of_type_Bjnh.a(this.b);
+    }
+    paramGL10 = this.jdField_a_of_type_Bjno.a();
+    if ((paramGL10 != null) && (this.jdField_a_of_type_Bjnh != null)) {
+      paramGL10.b(this.jdField_a_of_type_Bjnh.a());
+    }
   }
 }
 

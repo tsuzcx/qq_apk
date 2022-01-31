@@ -1,28 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-class ujw
-  extends SimpleJob<Void>
+public class ujw
 {
-  ujw(ujv paramujv, String paramString)
-  {
-    super(paramString);
-  }
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b;
+  public String b;
+  public int c;
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public ujw() {}
+  
+  public ujw(uij paramuij)
   {
-    boolean bool = xmx.a(500L);
-    if (this.a.a(bool)) {
-      ujv.a(this.a, bool);
+    this.jdField_a_of_type_Int = paramuij.jdField_e_of_type_Int;
+    if (paramuij.g > 0) {}
+    for (int i = paramuij.g;; i = ujv.a(this.jdField_a_of_type_Int))
+    {
+      this.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_JavaLangString = paramuij.jdField_e_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = paramuij.d;
+      this.c = paramuij.f;
+      this.jdField_a_of_type_JavaUtilList = paramuij.jdField_a_of_type_JavaUtilList;
+      return;
     }
-    return null;
   }
   
-  public int getJobType()
+  public String toString()
   {
-    return 4;
+    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
+    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(" mTextId=").append(this.c);
+    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    {
+      localStringBuilder2.append(str);
+      localStringBuilder1.append("]");
+      return localStringBuilder1.toString();
+    }
   }
 }
 

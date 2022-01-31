@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.widget.Button;
 
@@ -13,7 +13,7 @@ class RegisterSendUpSms$2
   {
     if (RegisterSendUpSms.a(this.this$0) == 1)
     {
-      RegisterSendUpSms.a(this.this$0).setText(alpo.a(2131713716));
+      RegisterSendUpSms.a(this.this$0).setText(alud.a(2131713728));
       RegisterSendUpSms.a(this.this$0).setEnabled(true);
       RegisterSendUpSms.a(this.this$0).setClickable(true);
       RegisterSendUpSms.a(this.this$0, 0);
@@ -21,7 +21,7 @@ class RegisterSendUpSms$2
       return;
     }
     RegisterSendUpSms.b(this.this$0);
-    RegisterSendUpSms.a(this.this$0).setText(alpo.a(2131713714) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
+    RegisterSendUpSms.a(this.this$0).setText(alud.a(2131713726) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }

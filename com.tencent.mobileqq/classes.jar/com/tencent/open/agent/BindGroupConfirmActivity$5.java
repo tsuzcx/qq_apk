@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bepp;
+import bety;
 
 class BindGroupConfirmActivity$5
   implements Runnable

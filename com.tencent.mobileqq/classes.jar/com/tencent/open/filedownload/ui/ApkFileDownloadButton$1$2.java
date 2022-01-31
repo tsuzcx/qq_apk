@@ -1,11 +1,11 @@
 package com.tencent.open.filedownload.ui;
 
-import bfmg;
+import bfqp;
 
 public class ApkFileDownloadButton$1$2
   implements Runnable
 {
-  public ApkFileDownloadButton$1$2(bfmg parambfmg) {}
+  public ApkFileDownloadButton$1$2(bfqp parambfqp) {}
   
   public void run()
   {

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.util;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.statistics.Reporting;
 
 public class PAReportInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public String actionName;

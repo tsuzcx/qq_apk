@@ -1,75 +1,95 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
-import org.json.JSONException;
+import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
+import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoReq;
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bhcp
-  implements bgln
+  extends bhdw
 {
-  public bhcp(MiniAppTextArea paramMiniAppTextArea) {}
+  private INTERFACE.StBatchGetUserInfoReq a = new INTERFACE.StBatchGetUserInfoReq();
   
-  public void onSoftKeyboardClosed()
+  public bhcp(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    MiniAppTextArea.a(this.a, false);
+    this.a.appid.set(paramString1);
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.a.lang.set(paramString2);
+    }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString1 = paramArrayOfString[i];
+      this.a.openIds.add(paramString1);
+      i += 1;
+    }
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  protected String a()
   {
-    MiniAppTextArea localMiniAppTextArea = null;
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject = new INTERFACE.StBatchGetUserInfoRsp();
     try
     {
-      PageWebviewContainer localPageWebviewContainer;
-      Object localObject;
-      int i;
-      if (MiniAppTextArea.a(this.a) != null)
-      {
-        localPageWebviewContainer = MiniAppTextArea.a(this.a).a();
-        MiniAppTextArea.a(this.a).setCurInputId(MiniAppTextArea.d(this.a));
-        MiniAppTextArea.a(this.a, paramInt);
-        localObject = localMiniAppTextArea;
-        if (MiniAppTextArea.a(this.a) != null)
-        {
-          localObject = localMiniAppTextArea;
-          if (MiniAppTextArea.a(this.a).a() != null) {
-            localObject = MiniAppTextArea.a(this.a).a().a();
-          }
-        }
-        if ((DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject)))
-        {
-          localMiniAppTextArea = this.a;
-          paramInt = MiniAppTextArea.b(this.a);
-          MiniAppTextArea.a(localMiniAppTextArea, DisplayUtil.getNavigationBarHeight((Context)localObject) + paramInt);
-        }
-        MiniAppTextArea.c(this.a);
-        if (this.a.isFocused())
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("inputId", MiniAppTextArea.d(this.a));
-          i = MiniAppTextArea.b(this.a);
-          if (!MiniAppTextArea.b(this.a)) {
-            break label250;
-          }
-        }
+      ((INTERFACE.StBatchGetUserInfoRsp)localObject).mergeFrom(a(paramArrayOfByte));
+      if ((localObject == null) || (((INTERFACE.StBatchGetUserInfoRsp)localObject).user == null)) {
+        break label270;
       }
-      label250:
-      for (paramInt = MiniAppTextArea.c(this.a);; paramInt = 0)
+      localObject = ((INTERFACE.StBatchGetUserInfoRsp)localObject).user.get();
+      paramArrayOfByte = new JSONArray();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ((JSONObject)localObject).put("height", (int)((paramInt + i) / DisplayUtil.getDensity(this.a.getContext()) + 0.5F));
-        localPageWebviewContainer.b("onKeyboardShow", ((JSONObject)localObject).toString());
-        return;
-        localPageWebviewContainer = null;
-        break;
+        INTERFACE.StApiUserInfo localStApiUserInfo = (INTERFACE.StApiUserInfo)((Iterator)localObject).next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("nickName", localStApiUserInfo.nick.get());
+        localJSONObject.put("avatarUrl", localStApiUserInfo.avatar.get());
+        localJSONObject.put("gender", localStApiUserInfo.gender.get());
+        localJSONObject.put("language", localStApiUserInfo.language.get());
+        localJSONObject.put("country", localStApiUserInfo.address.country.get());
+        localJSONObject.put("province", localStApiUserInfo.address.province.get());
+        localJSONObject.put("city", localStApiUserInfo.address.city.get());
+        localJSONObject.put("openId", localStApiUserInfo.openid.get());
+        paramArrayOfByte.put(localJSONObject);
       }
-      return;
+      localObject = new JSONObject();
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramArrayOfByte)
     {
-      localJSONException.printStackTrace();
+      QMLog.d("BatchGetUserInfoRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
     }
+    ((JSONObject)localObject).put("data", paramArrayOfByte);
+    return localObject;
+    label270:
+    QMLog.d("BatchGetUserInfoRequest", "onResponse fail.rsp = null");
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "BatchGetUserInfo";
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecommendTroopInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   public int authType;
@@ -29,7 +29,7 @@ public class RecommendTroopInfo
   public short option;
   public String ownerUin;
   public String tag;
-  @awdj
+  @awhs
   public String uin;
   
   public Object clone()

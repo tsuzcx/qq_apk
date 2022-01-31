@@ -1,22 +1,11 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-
 public class bbbf
-  implements InputFilter
+  extends bbbi
 {
-  public bbbf(AbsPublishActivity paramAbsPublishActivity) {}
+  public String a;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public String toString()
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (bcht.a(paramCharSequence, '\n') + bcht.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    return this.a;
   }
 }
 

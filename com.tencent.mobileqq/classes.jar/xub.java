@@ -1,119 +1,115 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.annotation.TargetApi;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
-public class xub
-  extends MSFServlet
+@TargetApi(14)
+class xub
 {
-  private static String a = "QRCodeServlet";
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  static String a(InputStream paramInputStream)
   {
-    if (paramFromServiceMsg != null) {
-      QLog.d(a, 2, paramFromServiceMsg.toString());
-    }
-    Object localObject = null;
-    boolean bool;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getResultCode() == 1000))
+    try
     {
-      bool = true;
-      if (!bool) {
-        break label120;
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
+      for (;;)
+      {
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
       }
-      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramFromServiceMsg != null) {
-        break label75;
-      }
-      bool = false;
-      paramFromServiceMsg = (FromServiceMsg)localObject;
+      paramInputStream = localStringBuilder.toString();
     }
-    for (;;)
+    catch (IOException paramInputStream)
     {
-      notifyObserver(paramIntent, 0, bool, paramFromServiceMsg, BusinessObserver.class);
-      return;
-      bool = false;
-      break;
-      label75:
-      localObject = bdku.b(paramFromServiceMsg);
-      paramFromServiceMsg = new Bundle();
-      localObject = new String((byte[])localObject);
-      paramFromServiceMsg.putString("result", (String)localObject);
-      QLog.d(a, 2, (String)localObject);
-      continue;
-      label120:
-      QLog.e(a, 2, " MSF response is null");
-      paramFromServiceMsg = null;
+      wxe.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      return null;
+    }
+    return paramInputStream;
+  }
+  
+  static void a(Process paramProcess)
+  {
+    if (paramProcess != null) {
+      paramProcess.destroy();
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  static void a(xtj paramxtj)
   {
-    if (paramIntent == null) {
-      return;
+    if ((paramxtj != null) && (!paramxtj.a()))
+    {
+      if (paramxtj.jdField_a_of_type_JavaLangProcess != null)
+      {
+        paramxtj.jdField_a_of_type_JavaLangProcess.destroy();
+        paramxtj.jdField_a_of_type_JavaLangProcess = null;
+      }
+      if (!paramxtj.isCancelled()) {
+        paramxtj.cancel(true);
+      }
+      wxe.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramxtj.jdField_a_of_type_ArrayOfJavaLangString) });
     }
-    Object localObject1 = new JSONObject();
+  }
+  
+  static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
+  }
+  
+  static boolean a(Process paramProcess)
+  {
+    if (paramProcess == null) {}
     for (;;)
     {
-      int i;
+      return true;
       try
       {
-        paramIntent = paramIntent.getExtras();
-        String[] arrayOfString = new String[14];
-        arrayOfString[0] = "skey";
-        arrayOfString[1] = "d";
-        arrayOfString[2] = "appid";
-        arrayOfString[3] = "ul";
-        arrayOfString[4] = "bqq";
-        arrayOfString[5] = "md5";
-        arrayOfString[6] = "fromuin";
-        arrayOfString[7] = "touin";
-        arrayOfString[8] = "imei";
-        arrayOfString[9] = "ip";
-        arrayOfString[10] = "url";
-        arrayOfString[11] = "guid";
-        arrayOfString[12] = "uuid";
-        arrayOfString[13] = "type";
-        int j = arrayOfString.length;
-        i = 0;
-        if (i < j)
+        paramProcess.exitValue();
+        if (QLog.isColorLevel())
         {
-          String str = arrayOfString[i];
-          if (!paramIntent.containsKey(str)) {
-            break label279;
-          }
-          Object localObject2 = paramIntent.get(str);
-          if ((localObject2 instanceof ArrayList)) {
-            ((JSONObject)localObject1).put(str, new JSONArray((ArrayList)localObject2));
-          } else {
-            ((JSONObject)localObject1).put(str, localObject2);
-          }
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
+          return true;
         }
       }
-      catch (JSONException paramIntent)
+      catch (IllegalThreadStateException paramProcess)
       {
-        QLog.d(a, 2, "json error");
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
+        }
       }
-      localObject1 = ((JSONObject)localObject1).toString();
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand(paramIntent.getString("cmd"));
-      paramPacket.putSendData(bdku.a(((String)localObject1).getBytes()));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i(a, 2, "onSend result: " + (String)localObject1);
-      return;
-      label279:
-      i += 1;
     }
+    return false;
+  }
+  
+  static <T> T[] a(T[] paramArrayOfT1, T[] paramArrayOfT2)
+  {
+    int i = paramArrayOfT1.length;
+    int j = paramArrayOfT2.length;
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT1.getClass().getComponentType(), i + j);
+    System.arraycopy(paramArrayOfT1, 0, arrayOfObject, 0, i);
+    System.arraycopy(paramArrayOfT2, 0, arrayOfObject, i, j);
+    return arrayOfObject;
   }
 }
 

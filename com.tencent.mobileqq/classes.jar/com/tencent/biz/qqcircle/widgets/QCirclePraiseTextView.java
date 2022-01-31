@@ -15,12 +15,12 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import java.util.ArrayList;
 import tra;
-import yej;
-import yel;
+import yiw;
+import yiy;
 
 public class QCirclePraiseTextView
   extends TextView
-  implements yel
+  implements yiy
 {
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = new FeedCloudMeta.StFeed();
   private String jdField_a_of_type_JavaLangString;
@@ -56,7 +56,7 @@ public class QCirclePraiseTextView
     setText(this.jdField_a_of_type_JavaLangString);
   }
   
-  public ArrayList<Class> a()
+  public ArrayList<Class> getEventClass()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(QCirclePraiseUpdateEvent.class);
@@ -64,7 +64,21 @@ public class QCirclePraiseTextView
     return localArrayList;
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    if (!isInEditMode()) {
+      yiw.a().a(this);
+    }
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     int i = 1;
     int j;
@@ -94,20 +108,6 @@ public class QCirclePraiseTextView
     }
   }
   
-  protected void onAttachedToWindow()
-  {
-    super.onAttachedToWindow();
-    if (!isInEditMode()) {
-      yej.a().a(this);
-    }
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    yej.a().b(this);
-  }
-  
   public void setEmptyText(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -124,7 +124,7 @@ public class QCirclePraiseTextView
     }
     catch (Exception paramStFeed)
     {
-      QLog.e("QCirclePraise", 1, "QCirclePraiseTextView setFeedData error");
+      QLog.e("QCirclePraise_", 1, "QCirclePraiseTextView setFeedData error");
     }
   }
 }

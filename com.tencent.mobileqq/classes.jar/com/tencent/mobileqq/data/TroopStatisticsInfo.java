@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class TroopStatisticsInfo
-  extends awbv
+  extends awge
 {
   public long count;
-  @awdj
+  @awhs
   public String troopUin;
 }
 

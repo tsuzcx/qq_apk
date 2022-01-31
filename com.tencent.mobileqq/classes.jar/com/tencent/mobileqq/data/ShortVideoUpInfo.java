@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ShortVideoUpInfo
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String key;
   public long lastIp;
   public long timeStamp;

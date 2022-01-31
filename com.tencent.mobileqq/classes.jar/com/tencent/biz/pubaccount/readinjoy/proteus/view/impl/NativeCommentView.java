@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.text.TextUtils;
-import baig;
-import bcht;
+import bamp;
+import bcmc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
@@ -58,7 +58,7 @@ public class NativeCommentView
       if ((localArticleInfo.mFeedType != 30) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc.b.longValue() != 30L)) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmd == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmd.c)))) {
         break label508;
       }
-      localObject = new baig(bcht.a(((CharSequence)this.jdField_a_of_type_Sly.a()).toString().replaceAll("\024", "")), 3, 16);
+      localObject = new bamp(bcmc.a(((CharSequence)this.jdField_a_of_type_Sly.a()).toString().replaceAll("\024", "")), 3, 16);
     }
     label508:
     for (;;)
@@ -77,7 +77,7 @@ public class NativeCommentView
       {
         setMaxLines(a(this.jdField_a_of_type_Qbs.a.a()));
         if (localArticleInfo.isPGCShortContent()) {
-          setSpanText(alpo.a(2131707451));
+          setSpanText(alud.a(2131707463));
         }
         setMoreSpan(new ptf(this, -12084769, 16777215, 860716207));
         if (this.b)
@@ -150,7 +150,7 @@ public class NativeCommentView
   {
     QLog.d("NativeCommentView", 1, "showPreCommentText: " + paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = (alpo.a(2131719255) + "：");
+      this.jdField_a_of_type_JavaLangString = (alud.a(2131719267) + "：");
     }
   }
   

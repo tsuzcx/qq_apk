@@ -1,21 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-class arez
-  implements arej
+public class arez
 {
-  arez(arev paramarev) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
   
-  public void a()
-  {
-    this.a.a(true, armf.a(this.a.a.a()), this.a.c(), new arfa(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
-  }
+  public arez(arey paramarey) {}
 }
 
 

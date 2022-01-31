@@ -1,40 +1,79 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class asfz
-  implements View.OnClickListener
+public class asfz
+  extends auge
 {
-  asfz(asfu paramasfu, String paramString1, String paramString2) {}
+  public asfz(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = new HashMap();
-    aact.a(paramView, this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(10), "1");
-    paramView.put(Integer.valueOf(12), this.b);
-    Intent localIntent = new Intent(asfu.a(this.jdField_a_of_type_Asfu), QQBrowserActivity.class);
-    if (TextUtils.isEmpty(this.b))
-    {
-      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
-      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
     }
     for (;;)
     {
-      aact.a(akro.a(), "769", "205711", this.jdField_a_of_type_Asfu.a().gameAppId, "76905", "1", "160", paramView);
-      asfu.a(this.jdField_a_of_type_Asfu).startActivity(localIntent);
-      asfu.a(this.jdField_a_of_type_Asfu).dismiss();
+      super.a(paramBoolean);
       return;
-      localIntent.putExtra("url", this.b);
-      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, auhi paramauhi)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, paramauhi);
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramauhi);
+      return;
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof auhc)))
+    {
+      MsgBackupSettingFragment.a = (auhc)paramObject;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
+    }
+    for (;;)
+    {
+      super.b(paramBoolean);
+      return;
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, (augy)paramObject);
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.b(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
     }
   }
 }

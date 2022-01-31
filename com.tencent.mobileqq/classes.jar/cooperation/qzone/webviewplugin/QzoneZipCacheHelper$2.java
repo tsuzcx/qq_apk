@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import arof;
-import bjds;
-import bjqt;
+import arso;
+import bjhz;
+import bjva;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -56,9 +56,9 @@ final class QzoneZipCacheHelper$2
         if (!bool1)
         {
           bool3 = bool1;
-          localObject2 = bjqt.b(this.c);
+          localObject2 = bjva.b(this.c);
           bool3 = bool1;
-          bool1 = bjqt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
+          bool1 = bjva.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
           if (!bool1) {
             continue;
           }
@@ -79,7 +79,7 @@ final class QzoneZipCacheHelper$2
         if (((File)???).exists())
         {
           bool3 = bool2;
-          arof.a((File)???);
+          arso.a((File)???);
         }
       }
       catch (Throwable localThrowable)

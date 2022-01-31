@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class azvj
-  implements azvz
+public class azvj
+  implements View.OnTouchListener
 {
-  azvj(azvh paramazvh, CountdownTextView paramCountdownTextView) {}
+  public azvj(StructMsgForGeneralShare paramStructMsgForGeneralShare, aetk paramaetk) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azvh.a(this.jdField_a_of_type_Azvh, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(azvh.a(this.jdField_a_of_type_Azvh, paramLong));
-    this.jdField_a_of_type_Azvh.jdField_d_of_type_Long = paramLong;
+    return this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
   }
 }
 

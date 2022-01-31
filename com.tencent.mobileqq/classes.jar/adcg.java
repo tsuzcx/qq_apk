@@ -1,86 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
-class adcg
+public class adcg
+  extends alpp
 {
-  private static int jdField_a_of_type_Int;
-  private static adcg jdField_a_of_type_Adcg;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  bcxb jdField_a_of_type_Bcxb;
-  String jdField_a_of_type_JavaLangString;
-  volatile boolean jdField_a_of_type_Boolean;
-  private adcg b;
+  public adcg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  static adcg a()
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (paramInt != 0)
     {
-      if (jdField_a_of_type_Adcg != null)
-      {
-        adcg localadcg = jdField_a_of_type_Adcg;
-        jdField_a_of_type_Adcg = localadcg.b;
-        localadcg.b = null;
-        jdField_a_of_type_Int -= 1;
-        return localadcg;
-      }
-      return new adcg();
-    }
-  }
-  
-  static adcg a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "obtain FacePlayInfo:", paramString });
-    }
-    adcg localadcg = a();
-    localadcg.jdField_a_of_type_JavaLangString = paramString;
-    bcxb localbcxb = localadcg.a();
-    if (localbcxb != null) {
-      localbcxb.a();
-    }
-    localadcg.jdField_a_of_type_Bcxb = bcxb.a(paramQQAppInterface, String.valueOf(paramString), (byte)4);
-    localadcg.jdField_a_of_type_Boolean = false;
-    return localadcg;
-  }
-  
-  bcxb a()
-  {
-    if (this.jdField_a_of_type_Bcxb == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Bcxb;
-  }
-  
-  void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.jdField_a_of_type_JavaLangString });
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ??? = a();
-    if (??? != null) {
-      ((bcxb)???).a();
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Int < 3)
-      {
-        this.b = jdField_a_of_type_Adcg;
-        jdField_a_of_type_Adcg = this;
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
       }
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  boolean a(String paramString)
-  {
-    return (!this.jdField_a_of_type_Boolean) && (paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
+    }
+    FriendProfileMoreInfoActivity.a(this.a).clear();
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
+      paramInt += 1;
+    }
+    this.a.a.sendEmptyMessage(1003);
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import bgtj;
-import bgxl;
-import bgxp;
-import bgyd;
-import bgyg;
+import bgxq;
+import bhbs;
+import bhbw;
+import bhck;
+import bhcn;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 
 public class GameRuntime$6
   implements Runnable
 {
-  public GameRuntime$6(bgtj parambgtj) {}
+  public GameRuntime$6(bgxq parambgxq) {}
   
   public void run()
   {
-    bgtj.a(this.this$0).a();
-    bgyg.a(bgtj.a(this.this$0), "1", null, "load", null);
-    bgxl.a("2load", null, null, bgtj.a(this.this$0));
-    bgyd.a(bgtj.a(this.this$0), 1007, "1");
-    bgtj.a(this.this$0).getGameLauncher().launchGame();
+    bgxq.a(this.this$0).a();
+    bhcn.a(bgxq.a(this.this$0), "1", null, "load", null);
+    bhbs.a("2load", null, null, bgxq.a(this.this$0));
+    bhck.a(bgxq.a(this.this$0), 1007, "1");
+    bgxq.a(this.this$0).getGameLauncher().launchGame();
   }
 }
 

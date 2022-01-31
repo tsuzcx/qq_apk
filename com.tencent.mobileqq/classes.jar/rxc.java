@@ -13,7 +13,7 @@ public class rxc
   {
     ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
     if (BaseApplicationImpl.sProcessId != 9) {
-      bkjr.a(BaseApplicationImpl.getContext());
+      bkny.a(BaseApplicationImpl.getContext());
     }
     ors.c("1");
   }

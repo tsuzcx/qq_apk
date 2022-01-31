@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bcuq;
-import bcwh;
+import bcyz;
+import bdaq;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 import com.tencent.image.URLDrawable;
@@ -31,8 +31,8 @@ public class VideoFeedsPlayActivity$3
     try
     {
       localObject = URLDrawable.getDrawable(new URL(this.a.a.h), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(bcuq.b(0, 0, bcwh.a(this.this$0, 3.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(bcuq.i);
+      ((URLDrawable)localObject).setTag(bcyz.b(0, 0, bdaq.a(this.this$0, 3.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(bcyz.i);
       VideoFeedsPlayActivity.a(this.this$0).setImageDrawable((Drawable)localObject);
       VideoFeedsPlayActivity.a(this.this$0).setText(this.a.a.g);
       VideoFeedsPlayActivity.a(this.this$0).setOnClickListener(new rfh(this));

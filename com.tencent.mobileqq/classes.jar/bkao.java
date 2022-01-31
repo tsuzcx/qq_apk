@@ -1,123 +1,47 @@
-import android.content.Context;
-import android.view.SurfaceHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.webviewwrapper.QzoneWebViewRuntime;
 
 public class bkao
 {
-  private Object a = bjpx.a("com.tencent.tar.TarInterface", null, new Object[0]);
+  private static bkao jdField_a_of_type_Bkao;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private QzoneWebViewRuntime jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
   
-  public int a()
+  public static bkao a()
   {
-    Object localObject = bjpx.a(this.a, "getConfigWith", false, null, new Object[0]);
-    if ((localObject instanceof Integer)) {
-      return ((Integer)localObject).intValue();
-    }
-    return -1;
-  }
-  
-  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
-  {
-    paramSurfaceHolder = bjpx.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
-    if ((paramSurfaceHolder instanceof Integer)) {
-      return ((Integer)paramSurfaceHolder).intValue();
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    bjpx.a(this.a, "onResume", false, null, new Object[0]);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    bjpx.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    bjpx.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    bjpx.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
-  }
-  
-  public float[] a()
-  {
-    Object localObject = bjpx.a(this.a, "getModelMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
-  }
-  
-  public Class[] a(Class... paramVarArgs)
-  {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if (jdField_a_of_type_Bkao == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      arrayOfClass[i] = paramVarArgs[i];
-      i += 1;
+      if (jdField_a_of_type_Bkao == null) {
+        jdField_a_of_type_Bkao = new bkao();
+      }
+      return jdField_a_of_type_Bkao;
     }
-    return arrayOfClass;
   }
   
-  public int b()
+  public QzoneWebViewRuntime a()
   {
-    Object localObject = bjpx.a(this.a, "getConfigHeight", false, null, new Object[0]);
-    if ((localObject instanceof Integer)) {
-      return ((Integer)localObject).intValue();
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null)
+      {
+        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
+        localQzoneWebViewRuntime.onCreate(null);
+        this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = localQzoneWebViewRuntime;
+      }
+      return this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
     }
-    return -1;
   }
   
-  public void b()
+  public void a(QzoneWebViewRuntime paramQzoneWebViewRuntime)
   {
-    bjpx.a(this.a, "onStop", false, null, new Object[0]);
-  }
-  
-  public float[] b()
-  {
-    Object localObject = bjpx.a(this.a, "getViewMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
-  }
-  
-  public void c()
-  {
-    bjpx.a(this.a, "onDestroy", false, null, new Object[0]);
-  }
-  
-  public float[] c()
-  {
-    Object localObject = bjpx.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
-  }
-  
-  public void d()
-  {
-    bjpx.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
-  }
-  
-  public float[] d()
-  {
-    Object localObject = bjpx.a(this.a, "getScaleMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = paramQzoneWebViewRuntime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,130 +1,24 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vpk
 {
-  private ErrorMessage a;
-  @NonNull
-  public final String a;
-  public utx a;
-  public final String b;
-  private String c;
+  public ErrorMessage a;
+  public List<vpn> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  public vpk(@NonNull String paramString1, @NonNull String paramString2)
+  public vpk()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public static vpk a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = new vpk(paramString1, paramString2);
-      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      return paramString1;
-      paramString1 = "ERROR_NO_VID";
-      break;
-      label31:
-      paramString2 = "ERROR_NO_FEED";
-    }
-  }
-  
-  public static vpk a(String paramString1, String paramString2, String paramString3)
-  {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = new vpk(paramString1, paramString2);
-      paramString1.c = paramString3;
-      return paramString1;
-      paramString1 = "LOADING_NO_VID";
-      break;
-      label31:
-      paramString2 = "LOADING_NO_FEED";
-    }
-  }
-  
-  public ErrorMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
-  }
-  
-  public StoryVideoItem a()
-  {
-    return ((uro)urr.a(5)).b(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public VideoListFeedItem a()
-  {
-    if (TextUtils.isEmpty(this.b)) {
-      return null;
-    }
-    FeedItem localFeedItem = ((wkp)urr.a(11)).a(this.b, true);
-    if (localFeedItem == null) {
-      return null;
-    }
-    if ((localFeedItem instanceof VideoListFeedItem)) {
-      return (VideoListFeedItem)localFeedItem;
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.c != null;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return (!a()) && (!b());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
-    int i;
-    if (this.jdField_a_of_type_Utx == null)
-    {
-      i = 0;
-      localStringBuilder2.append(i).append(",");
-      if (!a()) {
-        break label89;
-      }
-      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
-    }
-    for (;;)
-    {
-      localStringBuilder1.append("}");
-      return localStringBuilder1.toString();
-      i = this.jdField_a_of_type_Utx.a;
-      break;
-      label89:
-      if (b()) {
-        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-      } else {
-        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
-      }
-    }
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

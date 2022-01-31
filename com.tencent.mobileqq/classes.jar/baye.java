@@ -1,347 +1,142 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class baye
 {
-  private static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public static int d;
+  public static int e;
+  public static int f;
+  public int a;
+  public long a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  static
   {
-    int j = 0;
-    Object localObject = null;
-    QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
-    abol localabol = paramQQAppInterface.a();
-    paramQQAppInterface = localObject;
-    if (localQQMessageFacade != null) {
-      paramQQAppInterface = localQQMessageFacade.a(paramMessageRecord.senderuin, paramMessageRecord.istroop);
-    }
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (localabol != null) {
-        i = localabol.a(paramQQAppInterface.frienduin, paramQQAppInterface.istroop);
-      }
-    }
-    return i;
+    jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
+    jdField_f_of_type_Int = 10;
   }
   
-  private static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
   {
-    Object localObject = paramQQAppInterface.a(1001).a(aljq.aj, 1001);
-    if (localObject == null)
+    return bays.a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3);
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject;
+    if ((paramString != null) && (paramString.length() > 0) && (paramString.charAt(0) == '\026'))
     {
-      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, no tribe say hi info");
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      if (localMessageRecord.istroop == 10002) {
-        localArrayList.add(localMessageRecord);
-      }
-    }
-    paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
-    for (;;)
-    {
-      if (paramInt1 < paramInt2) {}
-      try
+      localObject = paramString.split("\\|");
+      if (localObject != null)
       {
-        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
-        paramInt1 += 1;
+        int i = 0;
+        while (i < localObject.length)
+        {
+          if ((localObject[i] != null) && (localObject[i].equals("null"))) {
+            localObject[i] = null;
+          }
+          i += 1;
+        }
+        if (localObject.length >= 1) {
+          this.jdField_a_of_type_JavaLangString = localObject[0].trim();
+        }
+        if (localObject.length < 2) {}
       }
-      catch (JSONException paramContext)
-      {
-        QLog.e("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages Exception:", paramContext);
-      }
     }
-    localJSONObject.put("msgArray", localJSONArray);
-    if (paramInt2 < localArrayList.size()) {
-      localJSONObject.put("isEnd", 0);
-    }
-    while (QLog.isColorLevel())
-    {
-      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, jsonResult = " + localJSONObject.toString());
-      break;
-      localJSONObject.put("isEnd", 1);
-    }
-    return localJSONObject;
-  }
-  
-  public static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (((paramInt2 != 1) && (paramInt2 != 2)) || (paramInt1 < 0) || (paramInt3 < 1))
-    {
-      QLog.e("SayHiMessageHelper", 1, "getTribeSayHelloInfo, invalid parameters viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SayHiMessageHelper", 1, "getTribeSayHelloInfo, viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
-    }
-    switch (paramInt2)
-    {
-    default: 
-      return null;
-    case 1: 
-      return b(paramContext, paramQQAppInterface, paramInt1, paramInt3);
-    }
-    return a(paramContext, paramQQAppInterface, paramInt1, paramInt3);
-  }
-  
-  private static JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    paramMessageRecord = new RecentSayHelloListItem(paramMessageRecord);
-    paramMessageRecord.a(paramQQAppInterface, paramContext);
     try
     {
-      localJSONObject.put("uin", paramMessageRecord.a());
-      localJSONObject.put("content", paramMessageRecord.mLastMsg);
-      localJSONObject.put("time", paramMessageRecord.mShowTime);
-      localJSONObject.put("nickName", paramMessageRecord.mTitleName);
-      localJSONObject.put("redPointCount", paramMessageRecord.b());
-      return localJSONObject;
+      this.jdField_a_of_type_Long = Long.parseLong(localObject[1]);
+      if (localObject.length < 3) {}
     }
-    catch (JSONException paramContext)
+    catch (NumberFormatException localException3)
     {
-      QLog.e("SayHiMessageHelper", 1, "getNormalTribeSayHiMsg Exception:", paramContext);
-    }
-    return localJSONObject;
-  }
-  
-  private static final void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject1 = paramQQAppInterface.a(1001).a(aljq.aj, 1001);
-    if (localObject1 == null) {
-      QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, no tribe say hi info");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject2 = new ArrayList();
-      Iterator localIterator = ((List)localObject1).iterator();
-      while (localIterator.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-        if (localMessageRecord.istroop == 10002) {
-          ((ArrayList)localObject2).add(localMessageRecord.senderuin);
-        }
-      }
-      if (((List)localObject1).size() == ((ArrayList)localObject2).size())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete total box");
-        }
-        paramQQAppInterface.a().a(aljq.H, 1001, aljq.aj, paramQQAppInterface.getCurrentAccountUin());
-        return;
-      }
-      localObject1 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (QLog.isColorLevel()) {
-          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete uin = " + (String)localObject2);
-        }
-        paramQQAppInterface.a().a(aljq.aj, 1001, (String)localObject2, paramQQAppInterface.getCurrentAccountUin());
-      }
-    }
-  }
-  
-  private static final void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface.a().c(paramString, 1001);
-  }
-  
-  public static final void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
-  {
-    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2))) {
-      QLog.e("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, invalid parameters viewIndex =" + paramInt2 + " clearType = " + paramInt1 + " clearUin = " + paramString);
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, viewIndex =" + paramInt2 + " clearUin = " + paramString + " clearType = " + paramInt1);
-      }
-    } while (paramInt1 != 1);
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramQQAppInterface, paramString);
-      return;
-    }
-    a(paramQQAppInterface, paramString);
-  }
-  
-  private static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    paramQQAppInterface.a().a(paramString2, 1001, paramString1, paramQQAppInterface.getCurrentAccountUin());
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
-  {
-    Object localObject = paramQQAppInterface.a(1001).a(aljq.aj, 1001);
-    paramQQAppInterface = paramQQAppInterface.a();
-    int i;
-    int j;
-    label47:
-    int m;
-    int k;
-    if (localObject == null)
-    {
-      i = 0;
-      if (i <= 0) {
-        break label127;
-      }
-      localObject = ((List)localObject).iterator();
-      j = 0;
-      i = 0;
-      m = j;
-      k = i;
-      if (!((Iterator)localObject).hasNext()) {
-        break label133;
-      }
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      if (localMessageRecord.istroop != 10002) {
-        break label167;
-      }
-      j = i + paramQQAppInterface.a(localMessageRecord.senderuin, localMessageRecord.istroop);
-      i = 1;
-    }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break label47;
-      i = ((List)localObject).size();
-      break;
-      label127:
-      m = 0;
-      k = 0;
-      label133:
-      if (m != 0) {}
       try
       {
-        paramJSONObject.put("redPointCount", k);
-        paramJSONObject.put("status", 1);
-        return;
+        this.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+        if (localObject.length < 4) {}
       }
-      catch (JSONException paramQQAppInterface)
+      catch (NumberFormatException localException3)
       {
-        QLog.e("SayHiMessageHelper", 1, "handleTribeSayHiBox Exception:", paramQQAppInterface);
-        return;
-      }
-      label167:
-      k = i;
-      i = j;
-      j = k;
-    }
-  }
-  
-  private static final JSONObject b(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    Object localObject = paramQQAppInterface.a(1001).a(aljq.H, 1001);
-    if (localObject == null)
-    {
-      QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, no tribe say hi info");
-      return null;
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    try
-    {
-      localJSONObject2.put("redPointCount", 0);
-      localJSONObject2.put("status", 0);
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        if (aljq.aj.equals(localMessageRecord.senderuin))
+        try
         {
-          a(paramQQAppInterface, localJSONObject2);
-          break label402;
+          this.jdField_a_of_type_Boolean = Boolean.parseBoolean(localObject[3]);
+          if (localObject.length >= 5) {
+            this.jdField_b_of_type_JavaLangString = localObject[4];
+          }
+          if (localObject.length >= 6) {
+            this.jdField_c_of_type_JavaLangString = localObject[5];
+          }
+          if (localObject.length >= 7) {
+            this.jdField_d_of_type_JavaLangString = localObject[6];
+          }
+          if (localObject.length >= 8) {
+            this.jdField_e_of_type_JavaLangString = localObject[7];
+          }
+          if (localObject.length >= 9) {
+            this.jdField_f_of_type_JavaLangString = localObject[8];
+          }
+          if (localObject.length >= 10) {
+            this.g = localObject[9];
+          }
+          if (localObject.length < 11) {}
         }
-        if ((!aljq.al.equals(localMessageRecord.senderuin)) && (!aljq.am.equals(localMessageRecord.senderuin)) && (!aljq.an.equals(localMessageRecord.senderuin)) && (!aljq.ao.equals(localMessageRecord.senderuin)) && (!aljq.ap.equals(localMessageRecord.senderuin)))
+        catch (Exception localException3)
         {
-          localArrayList.add(localMessageRecord);
-          i = a(paramQQAppInterface, localMessageRecord) + i;
-          break label402;
+          try
+          {
+            this.jdField_b_of_type_Int = Integer.parseInt(localObject[10]);
+            if (localObject.length < 12) {}
+          }
+          catch (Exception localException3)
+          {
+            try
+            {
+              for (;;)
+              {
+                this.jdField_c_of_type_Int = Integer.parseInt(localObject[11]);
+                if (this.jdField_c_of_type_Int == jdField_f_of_type_Int)
+                {
+                  localObject = new bavm();
+                  ((bavm)localObject).a(paramString);
+                  this.jdField_a_of_type_JavaLangObject = localObject;
+                }
+                return;
+                localNumberFormatException1 = localNumberFormatException1;
+                this.jdField_a_of_type_Long = 0L;
+                localNumberFormatException1.printStackTrace();
+                continue;
+                localNumberFormatException2 = localNumberFormatException2;
+                this.jdField_a_of_type_Int = 0;
+                localNumberFormatException2.printStackTrace();
+                continue;
+                localException2 = localException2;
+                this.jdField_a_of_type_Boolean = false;
+                localException2.printStackTrace();
+              }
+              localException3 = localException3;
+              this.jdField_b_of_type_Int = 0;
+              localException3.printStackTrace();
+            }
+            catch (Exception localException1)
+            {
+              for (;;)
+              {
+                this.jdField_c_of_type_Int = 0;
+                localException1.printStackTrace();
+              }
+            }
+          }
         }
       }
-      paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
-      while (paramInt1 < paramInt2)
-      {
-        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
-        paramInt1 += 1;
-      }
-      localJSONObject1.put("greetingNodeInfo", localJSONObject2);
-      localJSONObject1.put("msgArray", localJSONArray);
-      localJSONObject1.put("redPointCount", i);
-      if (paramInt2 < localArrayList.size()) {
-        localJSONObject1.put("isEnd", 0);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, jsonResult = " + localJSONObject1.toString());
-        break;
-        localJSONObject1.put("isEnd", 1);
-      }
     }
-    catch (JSONException paramContext)
-    {
-      label402:
-      for (;;)
-      {
-        QLog.e("SayHiMessageHelper", 1, "getNewSayHiMessages Exception:", paramContext);
-        break;
-      }
-    }
-    return localJSONObject1;
-  }
-  
-  public static final void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
-  {
-    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2)))
-    {
-      QLog.e("SayHiMessageHelper", 1, "deleteTribeSayHiNode, invalid parameters msgType =" + paramInt2 + " deleteType = " + paramInt1 + " deleteUin = " + paramString);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SayHiMessageHelper", 1, "deleteTribeSayHiNode, msgType =" + paramInt2 + " deleteUin = " + paramString + " deleteType = " + paramInt1);
-    }
-    if (paramInt1 == 1)
-    {
-      switch (paramInt2)
-      {
-      default: 
-        return;
-      case 1: 
-        a(paramQQAppInterface, paramString, aljq.H);
-        return;
-      }
-      a(paramQQAppInterface, paramString, aljq.aj);
-      return;
-    }
-    a(paramQQAppInterface);
   }
 }
 

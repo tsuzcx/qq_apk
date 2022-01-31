@@ -1,16 +1,8 @@
-import java.util.List;
-
-class args
-  implements ypq
+public abstract interface args
 {
-  args(argr paramargr, boolean paramBoolean, String paramString, short paramShort) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(List<arjn> paramList)
-  {
-    if (this.jdField_a_of_type_Argr.a.jdField_a_of_type_Argg != null) {
-      this.jdField_a_of_type_Argr.a.jdField_a_of_type_Argg.a(paramList, this.jdField_a_of_type_Argr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Argr.a.b, this.jdField_a_of_type_Argr.a.c, this.jdField_a_of_type_Argr.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

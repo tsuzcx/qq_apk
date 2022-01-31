@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aobm
-  implements DialogInterface.OnClickListener
+class aobm
+  implements bdts
 {
-  public aobm(SwipePostTableLayout paramSwipePostTableLayout) {}
+  aobm(aobk paramaobk, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (SwipePostTableLayout.a(this.a).isShowing()) {
-      SwipePostTableLayout.a(this.a).dismiss();
+    paramQQAppInterface = bdwp.a(this.jdField_a_of_type_Aobk.a.getApp(), this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
     }
-    aobd.a(this.a.a, true);
+    aobk.a(this.jdField_a_of_type_Aobk, paramQQAppInterface);
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

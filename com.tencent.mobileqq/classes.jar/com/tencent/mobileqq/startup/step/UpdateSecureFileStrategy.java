@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.startup.step;
 
-import ammm;
-import ammn;
+import amrb;
+import amrc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.support.v4.util.SparseArrayCompat;
-import azkz;
-import bdcs;
-import bikh;
-import biul;
+import azpi;
+import bdhb;
+import bioo;
+import biys;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -24,10 +24,10 @@ public class UpdateSecureFileStrategy
   
   public UpdateSecureFileStrategy()
   {
-    a(0, new biul());
-    a(1, new ammn());
-    a(2, new ammm());
-    a(3, new bikh());
+    a(0, new biys());
+    a(1, new amrc());
+    a(2, new amrb());
+    a(3, new bioo());
   }
   
   private int a()
@@ -56,7 +56,7 @@ public class UpdateSecureFileStrategy
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
     }
-    localObject2 = localFile.listFiles(new azkz(this));
+    localObject2 = localFile.listFiles(new azpi(this));
     if (localObject2 == null) {
       return 4;
     }
@@ -69,7 +69,7 @@ public class UpdateSecureFileStrategy
         break;
       }
       localFile = localObject2[j];
-      bdcs.a(localFile.getAbsolutePath(), ((File)localObject1).getAbsolutePath() + File.separator + localFile.getName());
+      bdhb.a(localFile.getAbsolutePath(), ((File)localObject1).getAbsolutePath() + File.separator + localFile.getName());
       j += 1;
     }
   }

@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
-class arce
-  implements DialogInterface.OnClickListener
+public final class arce
+  implements Parcelable.Creator<OfflineFileInfo>
 {
-  arce(arcb paramarcb) {}
+  public OfflineFileInfo a(Parcel paramParcel)
+  {
+    return new OfflineFileInfo(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public OfflineFileInfo[] a(int paramInt)
+  {
+    return new OfflineFileInfo[paramInt];
+  }
 }
 
 

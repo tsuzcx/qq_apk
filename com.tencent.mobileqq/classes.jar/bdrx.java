@@ -1,17 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class bdrx
-  implements Handler.Callback
+  extends apsc
 {
-  bdrx(bdrw parambdrw) {}
+  bdrx(bdrv parambdrv) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    if ((paramMessage != null) && (paramMessage.obj != null)) {
-      bdry.a(paramMessage.obj.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
     }
-    return false;
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(257);
+    }
   }
 }
 

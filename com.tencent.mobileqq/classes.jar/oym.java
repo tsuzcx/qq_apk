@@ -53,7 +53,7 @@ public class oym
         return;
       } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView != null);
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364773);
+      localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364774);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView = new ReadInJoySkinGuideView(0, this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface, paramGuideData.id, paramString, paramInt, new oyn(this, localFrameLayout, paramInt, localQQAppInterface), new oyo(this, localQQAppInterface, paramGuideData, localFrameLayout));
     } while (a() != 0);
     localFrameLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView, -1, -1);
@@ -96,8 +96,8 @@ public class oym
       }
       if (localRefreshData != null)
       {
-        bdiv.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null, paramInt);
-        bdcs.b(qjs.a());
+        bdne.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null, paramInt);
+        bdhb.b(qjs.a());
         localqiu.a(0, "", -1L, paramInt);
       }
     }
@@ -109,7 +109,7 @@ public class oym
         if (localRefreshData != null) {
           paramRefreshInfo.isShown = localRefreshData.isShown;
         }
-        bdiv.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt);
+        bdne.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt);
       }
       return;
       paramRefreshInfo = null;
@@ -124,7 +124,7 @@ public class oym
       if (((localRefreshData == null) || (!paramRefreshInfo.id.equals(localRefreshData.id)) || (paramRefreshInfo.seq > localRefreshData.seq)) && (i <= paramRefreshInfo.endTime))
       {
         localqiu.a(0, "", -1L, paramInt);
-        bdcs.b(qjs.a());
+        bdhb.b(qjs.a());
         localqiu.a(paramRefreshInfo, paramInt);
         if (QLog.isColorLevel()) {
           QLog.d("Q.readinjoy.4tab", 2, "setRefreshType none and downloadRefreshRes");
@@ -144,14 +144,14 @@ public class oym
       {
         if (261 == paramInt)
         {
-          if (bdiv.g(this.jdField_a_of_type_AndroidAppActivity, paramBaseResData.id) != paramBaseResData.seq)
+          if (bdne.g(this.jdField_a_of_type_AndroidAppActivity, paramBaseResData.id) != paramBaseResData.seq)
           {
-            bdcs.a(str);
+            bdhb.a(str);
             localqir.c(paramString, paramBaseResData);
             return false;
           }
-          bdiv.t(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramBaseResData.id);
-          bdiv.C(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin());
+          bdne.t(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramBaseResData.id);
+          bdne.C(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin());
         }
         localqir.b(paramString, paramBaseResData);
         if (QLog.isColorLevel()) {
@@ -201,11 +201,11 @@ public class oym
         break label310;
       }
       this.jdField_a_of_type_JavaLangString = paramGuideInfo.a();
-      bdiv.s(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null);
+      bdne.s(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null);
       if ((localRefreshData != null) && (i <= localRefreshData.endTime))
       {
         localRefreshData.isShown = true;
-        bdiv.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), localRefreshData.toJson().toString(), paramInt);
+        bdne.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), localRefreshData.toJson().toString(), paramInt);
       }
     }
     label258:
@@ -220,7 +220,7 @@ public class oym
         break label165;
       }
       bool1 = bool2;
-      if (!bdee.h(this.jdField_a_of_type_AndroidAppActivity)) {
+      if (!bdin.h(this.jdField_a_of_type_AndroidAppActivity)) {
         break label165;
       }
       paramGuideInfo.a((GuideData)localObject);
@@ -228,13 +228,13 @@ public class oym
       bool1 = bool2;
       break label165;
     }
-    bdiv.s(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
+    bdne.s(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
     if (paramSkinInfo.id.equals(paramGuideInfo.a()))
     {
       this.jdField_a_of_type_JavaLangString = paramSkinInfo.id;
       return bool1;
     }
-    bdcs.a(qip.a(paramSkinInfo.id));
+    bdhb.a(qip.a(paramSkinInfo.id));
     return bool1;
   }
   
@@ -257,9 +257,9 @@ public class oym
         break label338;
       }
       paramGuideInfo.business = "operation_guide";
-      GuideData localGuideData = (GuideData)((awbw)localObject).a(GuideData.class, new String[] { paramGuideInfo.id, paramGuideInfo.uin, paramGuideInfo.business });
+      GuideData localGuideData = (GuideData)((awgf)localObject).a(GuideData.class, new String[] { paramGuideInfo.id, paramGuideInfo.uin, paramGuideInfo.business });
       if ((localGuideData == null) || (localGuideData.showTime == 0)) {
-        ((awbw)localObject).b(paramGuideInfo);
+        ((awgf)localObject).b(paramGuideInfo);
       }
       paramGuideInfo = localqit.a("operation_guide", paramGuideInfo.id);
       if (paramGuideInfo == null) {
@@ -294,7 +294,7 @@ public class oym
       if (j <= ((GuideData)localObject).endTime)
       {
         bool2 = bool1;
-        if (bdee.h(this.jdField_a_of_type_AndroidAppActivity))
+        if (bdin.h(this.jdField_a_of_type_AndroidAppActivity))
         {
           localqit.c("operation_guide", (BaseResData)localObject);
           bool2 = bool1;
@@ -317,7 +317,7 @@ public class oym
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a();
-      ((FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364773)).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
+      ((FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364774)).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView = null;
     }
   }
@@ -348,7 +348,7 @@ public class oym
     super.d();
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      bdcs.a(qip.a(this.jdField_a_of_type_JavaLangString));
+      bdhb.a(qip.a(this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_JavaLangString = null;
     }
   }

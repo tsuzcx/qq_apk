@@ -1,19 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
 public class uzp
-  implements uni<uzq, uzr>
+  extends uro
 {
-  public void a(String paramString)
+  public uzp(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    paramString = new uzq(this, paramString);
-    ung.a().a(paramString, this);
+    super(paramRspMsgTabNodeWatched.result);
   }
   
-  public void a(@NonNull uzq paramuzq, @Nullable uzr paramuzr, @NonNull ErrorMessage paramErrorMessage)
+  public String toString()
   {
-    new uzs(paramErrorMessage, paramuzq.b);
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

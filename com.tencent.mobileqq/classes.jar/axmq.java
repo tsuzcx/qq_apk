@@ -1,14 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.remind.widget.WheelView;
 
-class axmq
-  implements axkj
+final class axmq
+  implements axmz
 {
-  axmq(axmp paramaxmp) {}
-  
-  public void a(boolean paramBoolean)
+  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    Object localObject2 = null;
+    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
+      return -1L;
+    }
+    String str2;
+    if (AppSetting.c)
+    {
+      str2 = axmu.a(paramArrayOfInt[0]);
+      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= axmu.a.length)) {
+        break label206;
+      }
+    }
+    label206:
+    for (String str1 = axmu.a[paramArrayOfInt[1]];; str1 = null)
+    {
+      Object localObject1 = localObject2;
+      if (paramArrayOfInt[2] >= 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfInt[2] < axmu.b.length) {
+          localObject1 = axmu.b[paramArrayOfInt[2]];
+        }
+      }
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        str1 = alud.a(2131713784) + str2 + str1 + alud.a(2131713782) + (String)localObject1 + alud.a(2131713783);
+        int j = paramArrayOfWheelView.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramArrayOfWheelView[i].setContentDescription(str1);
+          i += 1;
+        }
+      }
+      return axmu.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
     }
   }
 }

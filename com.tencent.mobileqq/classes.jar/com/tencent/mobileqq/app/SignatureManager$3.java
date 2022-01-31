@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import aely;
-import aloz;
-import amjk;
+import aeqn;
+import alto;
+import amnz;
 import android.text.TextUtils;
-import axxo;
-import azmj;
-import bdiv;
-import bdpk;
+import aybx;
+import azqs;
+import bdne;
+import bdtt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
@@ -42,15 +42,15 @@ final class SignatureManager$3
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-        Object localObject1 = (aloz)localQQAppInterface.getManager(51);
-        boolean bool = ((aloz)localObject1).b(this.jdField_a_of_type_JavaLangString);
+        Object localObject1 = (alto)localQQAppInterface.getManager(51);
+        boolean bool = ((alto)localObject1).b(this.jdField_a_of_type_JavaLangString);
         if (!bool) {
           return;
         }
         long l2 = NetConnInfoCenter.getServerTime();
         if (localObject4 == null)
         {
-          localObject1 = ((aloz)localObject1).a(this.jdField_a_of_type_JavaLangString);
+          localObject1 = ((alto)localObject1).a(this.jdField_a_of_type_JavaLangString);
           if (localObject1 == null) {
             return;
           }
@@ -94,16 +94,16 @@ final class SignatureManager$3
       catch (Exception localException)
       {
         return;
-        ((aely)localQQAppInterface.getManager(282)).a(this.jdField_a_of_type_JavaLangString, 0, 1);
+        ((aeqn)localQQAppInterface.getManager(282)).a(this.jdField_a_of_type_JavaLangString, 0, 1);
         if (QLog.isColorLevel()) {
           QLog.d("Signature", 2, "insertSignMsgIfNeeded delete signature");
         }
-        bdiv.b(localQQAppInterface.c(), this.jdField_a_of_type_JavaLangString, 0L);
+        bdne.b(localQQAppInterface.c(), this.jdField_a_of_type_JavaLangString, 0L);
         return;
         localObject5 = (SignatureManager)localQQAppInterface.getManager(58);
         if (!SignatureManager.a.containsKey(Integer.valueOf(((RichStatus)localObject4).tplId)))
         {
-          localObject5 = bdpk.a(localQQAppInterface, ((RichStatus)localObject4).tplId);
+          localObject5 = bdtt.a(localQQAppInterface, ((RichStatus)localObject4).tplId);
           if (localObject5 != null) {
             SignatureManager.a.put(Integer.valueOf(((RichStatus)localObject4).tplId), localObject5);
           }
@@ -172,8 +172,8 @@ final class SignatureManager$3
             i = k;
             if (((RichStatus)localObject4).sigZanInfo.get(Integer.valueOf(255)) != null)
             {
-              i = ((axxo)((RichStatus)localObject4).sigZanInfo.get(Integer.valueOf(255))).b;
-              j = ((axxo)((RichStatus)localObject4).sigZanInfo.get(Integer.valueOf(255))).c;
+              i = ((aybx)((RichStatus)localObject4).sigZanInfo.get(Integer.valueOf(255))).b;
+              j = ((aybx)((RichStatus)localObject4).sigZanInfo.get(Integer.valueOf(255))).c;
             }
           }
           ((JSONObject)localObject5).put("count", i);
@@ -216,7 +216,7 @@ final class SignatureManager$3
         }
         localObject5 = ((JSONObject)localObject5).toString();
         l2 = NetConnInfoCenter.getServerTimeMillis();
-        localObject6 = (aely)localQQAppInterface.getManager(282);
+        localObject6 = (aeqn)localQQAppInterface.getManager(282);
         localObject7 = new BeancurdMsg();
         ((BeancurdMsg)localObject7).frienduin = this.jdField_a_of_type_JavaLangString;
         ((BeancurdMsg)localObject7).busiid = 1;
@@ -225,14 +225,14 @@ final class SignatureManager$3
         ((BeancurdMsg)localObject7).startTime = NetConnInfoCenter.getServerTime();
         ((BeancurdMsg)localObject7).validTime = 2592000L;
         ((BeancurdMsg)localObject7).buffer = ((String)localObject5);
-        ((aely)localObject6).a((BeancurdMsg)localObject7);
-        bdiv.b(localQQAppInterface.c(), this.jdField_a_of_type_JavaLangString, l2);
+        ((aeqn)localObject6).a((BeancurdMsg)localObject7);
+        bdne.b(localQQAppInterface.c(), this.jdField_a_of_type_JavaLangString, l2);
         if (localJSONException != null)
         {
           localJSONException.isAdded2C2C = true;
-          ((aloz)localQQAppInterface.getManager(51)).a(localJSONException);
+          ((alto)localQQAppInterface.getManager(51)).a(localJSONException);
         }
-        azmj.b(localQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(((RichStatus)localObject4).tplId), "", "", "");
+        azqs.b(localQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(((RichStatus)localObject4).tplId), "", "", "");
         return;
       }
       finally

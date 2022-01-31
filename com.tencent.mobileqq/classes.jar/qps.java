@@ -8,10 +8,10 @@ import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLay
 public class qps
   extends QIMEffectCameraCaptureUnit
 {
-  public qps(bmcv parambmcv, bmcu parambmcu)
+  public qps(bmhh parambmhh, bmhg parambmhg)
   {
-    super(parambmcv, parambmcu);
-    this.jdField_a_of_type_Bmcn = new bmcn(10017, 106, 4);
+    super(parambmhh, parambmhg);
+    this.jdField_a_of_type_Bmgz = new bmgz(10017, 106, 4);
   }
   
   public View a()
@@ -24,19 +24,19 @@ public class qps
     return localView;
   }
   
-  protected axmk a()
+  protected axqt a()
   {
-    axmk localaxmk = super.a();
-    localaxmk.a(false);
-    localaxmk.l(2);
-    localaxmk.i(2);
-    return localaxmk;
+    axqt localaxqt = super.a();
+    localaxqt.a(false);
+    localaxqt.l(2);
+    localaxqt.i(2);
+    return localaxqt;
   }
   
-  public void a(axmn paramaxmn)
+  public void a(axqw paramaxqw)
   {
-    Activity localActivity = this.jdField_a_of_type_Bmcv.a();
-    localActivity.startActivity(EditPicActivity.a(localActivity, paramaxmn.a, true, true, true, true, true, 8));
+    Activity localActivity = this.jdField_a_of_type_Bmhh.a();
+    localActivity.startActivity(EditPicActivity.a(localActivity, paramaxqw.a, true, true, true, true, true, 8));
   }
 }
 

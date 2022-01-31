@@ -2,42 +2,42 @@ package com.tencent.mobileqq.location.net;
 
 import android.os.Handler;
 import android.util.Pair;
-import atlf;
-import atlx;
-import atly;
+import atpo;
+import atqg;
+import atqh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReportLocationHandler$1
   implements Runnable
 {
-  public ReportLocationHandler$1(atlx paramatlx) {}
+  public ReportLocationHandler$1(atqg paramatqg) {}
   
   public void run()
   {
-    if ((!QLog.isColorLevel()) || ((atlx.a(this.this$0) != null) && (atlx.a(this.this$0).a() != null)))
+    if ((!QLog.isColorLevel()) || ((atqg.a(this.this$0) != null) && (atqg.a(this.this$0).a() != null)))
     {
-      atlx.a(this.this$0, ((Integer)atlx.a(this.this$0).a().first).intValue());
-      atlx.a(this.this$0, Long.valueOf(Long.parseLong((String)atlx.a(this.this$0).a().second)));
-      atlf localatlf = atlx.a(this.this$0).a();
+      atqg.a(this.this$0, ((Integer)atqg.a(this.this$0).a().first).intValue());
+      atqg.a(this.this$0, Long.valueOf(Long.parseLong((String)atqg.a(this.this$0).a().second)));
+      atpo localatpo = atqg.a(this.this$0).a();
       if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", "uinType = [" + atlx.a(this.this$0) + "], sessionUin = [" + atlx.a(this.this$0) + "], locationItem = [" + localatlf + "]" });
+        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", "uinType = [" + atqg.a(this.this$0) + "], sessionUin = [" + atqg.a(this.this$0) + "], locationItem = [" + localatpo + "]" });
       }
-      if (atlx.a(this.this$0).get())
+      if (atqg.a(this.this$0).get())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. stop old heartbeat ", " uinType: ", Integer.valueOf(atlx.a(this.this$0)), " sessionUin: ", atlx.a(this.this$0), " locationItem: ", localatlf });
+          QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. stop old heartbeat ", " uinType: ", Integer.valueOf(atqg.a(this.this$0)), " sessionUin: ", atqg.a(this.this$0), " locationItem: ", localatpo });
         }
         return;
       }
-      this.this$0.a(atlx.a(this.this$0), atlx.a(this.this$0).longValue(), localatlf);
+      this.this$0.a(atqg.a(this.this$0), atqg.a(this.this$0).longValue(), localatpo);
     }
     for (;;)
     {
-      atlx.a(this.this$0).postDelayed(this, atlx.b());
+      atqg.a(this.this$0).postDelayed(this, atqg.b());
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", atlx.a(this.this$0) });
+        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", atqg.a(this.this$0) });
       }
     }
   }

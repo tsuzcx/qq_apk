@@ -1,28 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
-class akbp
-  implements MediaPlayer.OnCompletionListener
+public class akbp
+  extends alwx
 {
-  akbp(akbl paramakbl, int paramInt, String paramString) {}
+  public akbp(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  protected void a()
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
-    try
-    {
-      paramMediaPlayer = new JSONObject();
-      paramMediaPlayer.put("code", 1);
-      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-      return;
-    }
-    catch (JSONException paramMediaPlayer)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
-    }
+    this.a.c();
   }
 }
 

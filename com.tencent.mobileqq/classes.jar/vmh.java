@@ -1,22 +1,31 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vmh
-  implements uni<vbw, vbx>
+public class vmh
+  extends QQUIEventReceiver<vmg, vmb>
 {
-  vmh(vmg paramvmg, vlj paramvlj) {}
-  
-  public void a(@NonNull vbw paramvbw, @Nullable vbx paramvbx, @NonNull ErrorMessage paramErrorMessage)
+  public vmh(@NonNull vmg paramvmg)
   {
-    if ((paramErrorMessage.isFail()) || (paramvbx == null))
+    super(paramvmg);
+  }
+  
+  public void a(@NonNull vmg paramvmg, @NonNull vmb paramvmb)
+  {
+    if (TextUtils.equals("SendVideoToFriendHelper", paramvmb.jdField_a_of_type_JavaLangString)) {}
+    switch (paramvmb.jdField_a_of_type_Int)
     {
-      wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Vlj.a(paramErrorMessage, null, false);
+    default: 
       return;
     }
-    this.jdField_a_of_type_Vmg.a.a(paramvbx.jdField_a_of_type_JavaUtilList, paramvbx.jdField_a_of_type_JavaLangString, paramvbx.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Vlj.a(paramErrorMessage, vkr.b(paramvbx.jdField_a_of_type_JavaUtilList), paramvbx.jdField_a_of_type_Boolean);
+    wxe.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramvmb.b);
+    vmg.a(paramvmg, false);
+    paramvmg.a(paramvmg.jdField_a_of_type_AndroidOsBundle, paramvmg.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramvmg.jdField_a_of_type_JavaLangString, paramvmb.b);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vmb.class;
   }
 }
 

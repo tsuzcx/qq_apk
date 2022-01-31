@@ -1,22 +1,43 @@
-public class aunt
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+class aunt
+  extends altm
 {
-  public final long a;
-  public final String a;
-  public final boolean a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  
-  public aunt(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  protected void onAddFriend(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardManager", 2, "onAddFriend " + paramString);
+    }
+    ArrayList localArrayList;
+    if ((!auno.a(this.a)) && (auno.a(this.a) != null))
+    {
+      localArrayList = (ArrayList)auno.a(this.a).get(Long.valueOf(auno.a(this.a)));
+      if (localArrayList == null) {}
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (localArrayList.indexOf(Long.valueOf(l)) != -1)
+      {
+        paramString = new ArrayList(1);
+        paramString.add(Long.valueOf(l));
+        localArrayList = new ArrayList(1);
+        localArrayList.add(Long.valueOf(auno.a(this.a)));
+        HashMap localHashMap = new HashMap(5);
+        localHashMap.put("notRequest", paramString);
+        localHashMap.put("groupUin", localArrayList);
+        ((asig)auno.a(this.a).a(153)).a(auno.a(this.a), paramString, localHashMap);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MultiCardManager", 2, "onAddFriend error " + paramString.toString());
+    }
   }
 }
 

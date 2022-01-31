@@ -1,25 +1,8 @@
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
-public class wnh
+public abstract interface wnh
 {
-  private static final String jdField_a_of_type_JavaLangString = aljq.aW + "/Tencent/com/tencent/mobileqq/";
-  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
-  
-  public static void a(wnk<Integer> paramwnk)
-  {
-    paramwnk = new WeakReference(paramwnk);
-    woc localwoc = new woc(null);
-    localwoc.a(new wni(paramwnk));
-    localwoc.a(new wnj(paramwnk));
-    localwoc.a();
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Boolean) {}
-    return false;
-  }
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
 }
 
 

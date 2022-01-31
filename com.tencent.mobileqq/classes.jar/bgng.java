@@ -1,28 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.util.LruCache;
 
 class bgng
-  implements View.OnTouchListener
+  extends LruCache<String, String>
 {
-  bgng(bgnf parambgnf, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bgng(bgnf parambgnf, int paramInt)
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
+    super(paramInt);
+  }
+  
+  protected int a(String paramString1, String paramString2)
+  {
+    int j = 0;
+    int i;
+    if (paramString1 == null)
     {
-      QMLog.d("QQToast", "start to cancel toast");
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      bgnf.a(this.jdField_a_of_type_Bgnf, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      i = 0;
+      if (paramString2 != null) {
+        break label26;
       }
-      return bool;
     }
-    return false;
+    for (;;)
+    {
+      return j + i;
+      i = paramString1.length();
+      break;
+      label26:
+      j = paramString2.length();
+    }
   }
 }
 

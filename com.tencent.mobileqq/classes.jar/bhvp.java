@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface bhvp
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a();
 }
 
 

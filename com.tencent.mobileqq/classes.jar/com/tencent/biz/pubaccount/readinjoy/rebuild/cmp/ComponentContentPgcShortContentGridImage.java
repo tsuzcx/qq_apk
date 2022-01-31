@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import bcwh;
-import bdcb;
+import bdaq;
+import bdgk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
@@ -36,11 +36,11 @@ public class ComponentContentPgcShortContentGridImage
     {
       localLayoutParams = paramView.getLayoutParams();
       localqms = (qms)((pgd)this.a).a().mSocialFeedInfo.a.a.get(0);
-      localLayoutParams.height = ((int)((bdcb.k() - bcwh.a(getContext(), 54.0F)) / 2L));
+      localLayoutParams.height = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 2L));
       if (localqms.b <= 1.5F * localqms.a) {
         break label126;
       }
-      localLayoutParams.width = ((int)((bdcb.k() - bcwh.a(getContext(), 54.0F)) / 3L));
+      localLayoutParams.width = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 3L));
     }
     for (;;)
     {
@@ -53,7 +53,7 @@ public class ComponentContentPgcShortContentGridImage
       } else if (localqms.b > 0.6666667F * localqms.a) {
         localLayoutParams.width = (localqms.a * localLayoutParams.height / localqms.b);
       } else {
-        localLayoutParams.width = ((int)((bdcb.k() - bcwh.a(getContext(), 54.0F)) / 2L * 3L / 2L));
+        localLayoutParams.width = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 2L * 3L / 2L));
       }
     }
   }

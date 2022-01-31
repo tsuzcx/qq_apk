@@ -1,115 +1,44 @@
-import android.annotation.TargetApi;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
-@TargetApi(14)
-class xps
+public class xps
+  extends naa
 {
-  static String a(InputStream paramInputStream)
-  {
-    try
-    {
-      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-      StringBuilder localStringBuilder = new StringBuilder();
-      for (;;)
-      {
-        String str = paramInputStream.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-      }
-      paramInputStream = localStringBuilder.toString();
-    }
-    catch (IOException paramInputStream)
-    {
-      wsv.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
-      return null;
-    }
-    return paramInputStream;
-  }
+  xps(xpr paramxpr) {}
   
-  static void a(Process paramProcess)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramProcess != null) {
-      paramProcess.destroy();
-    }
-  }
-  
-  static void a(xpa paramxpa)
-  {
-    if ((paramxpa != null) && (!paramxpa.a()))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      if (paramxpa.jdField_a_of_type_JavaLangProcess != null)
-      {
-        paramxpa.jdField_a_of_type_JavaLangProcess.destroy();
-        paramxpa.jdField_a_of_type_JavaLangProcess = null;
-      }
-      if (!paramxpa.isCancelled()) {
-        paramxpa.cancel(true);
-      }
-      wsv.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramxpa.jdField_a_of_type_ArrayOfJavaLangString) });
-    }
-  }
-  
-  static boolean a(File paramFile)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
-    return false;
-  }
-  
-  static boolean a(Process paramProcess)
-  {
-    if (paramProcess == null) {}
-    for (;;)
-    {
-      return true;
+      paramBundle = new qqstory_group.RspGroupVideoForward();
       try
       {
-        paramProcess.exitValue();
-        if (QLog.isColorLevel())
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if ((paramArrayOfByte.error_code.has()) && (paramArrayOfByte.error_code.get() == 0))
         {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
-          return true;
+          ThreadManager.executeOnSubThread(new TroopStoryForwardTask.2.1(this, paramBundle.story_id.get().toStringUtf8()));
+          return paramArrayOfByte;
         }
       }
-      catch (IllegalThreadStateException paramProcess)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
+          QLog.e("Q.qqstory.troopstory.share", 2, "parse RspGroupVideoForward error", paramArrayOfByte);
         }
       }
     }
-    return false;
-  }
-  
-  static <T> T[] a(T[] paramArrayOfT1, T[] paramArrayOfT2)
-  {
-    int i = paramArrayOfT1.length;
-    int j = paramArrayOfT2.length;
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT1.getClass().getComponentType(), i + j);
-    System.arraycopy(paramArrayOfT1, 0, arrayOfObject, 0, i);
-    System.arraycopy(paramArrayOfT2, 0, arrayOfObject, i, j);
-    return arrayOfObject;
+    this.a.a.sendEmptyMessage(5);
+    return null;
   }
 }
 

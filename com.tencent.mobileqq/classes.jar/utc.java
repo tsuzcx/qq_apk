@@ -1,9 +1,21 @@
-public class utc
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+
+class utc
+  extends vii
 {
-  @xnb(a="mqqapiUrl")
-  public String a;
-  @xnb(a="jumpH5Url")
-  public String b;
+  utc(uta paramuta) {}
+  
+  public void a()
+  {
+    super.a();
+    usz.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wxj.a("home_page", "suc_share", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
 }
 
 

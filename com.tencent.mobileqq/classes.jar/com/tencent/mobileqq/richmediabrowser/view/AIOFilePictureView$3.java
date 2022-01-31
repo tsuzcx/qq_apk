@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.net.Uri;
-import axvg;
+import axzp;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AIOFilePictureView$3
   implements Runnable
 {
-  public AIOFilePictureView$3(axvg paramaxvg, File paramFile, ArrayList paramArrayList) {}
+  public AIOFilePictureView$3(axzp paramaxzp, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class AIOFilePictureView$3
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
         Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        axvg.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        axzp.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
     }

@@ -84,8 +84,8 @@ public class mqg
       localmqg.p = a((String[])localObject, 15, 25000);
       localmqg.q = a((String[])localObject, 16, 1);
     }
-    localmqg.r = bdcb.b();
-    localmqg.s = ((int)(bdcb.b() / 1000L));
+    localmqg.r = bdgk.b();
+    localmqg.s = ((int)(bdgk.b() / 1000L));
     if (QLog.isColorLevel()) {
       QLog.d("QavRecordDpc", 2, "init=" + localmqg);
     }

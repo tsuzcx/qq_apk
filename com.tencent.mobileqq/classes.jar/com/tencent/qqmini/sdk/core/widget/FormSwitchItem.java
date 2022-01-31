@@ -80,7 +80,7 @@ public class FormSwitchItem
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    return paramResources.getDrawable(2130849679);
+    return paramResources.getDrawable(2130849752);
   }
   
   private void a()

@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
-import yde;
+import yhn;
 
 public class ReplyContainer
   extends LinearLayout
@@ -24,7 +24,7 @@ public class ReplyContainer
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private yde jdField_a_of_type_Yde;
+  private yhn jdField_a_of_type_Yhn;
   private int b;
   private int c;
   
@@ -97,7 +97,7 @@ public class ReplyContainer
         CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
         ReplyView localReplyView = new ReplyView(getContext());
         localReplyView.setPosition(i);
-        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
+        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
         localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localReplyView.setClickable(true);
         localReplyView.setFocusable(true);
@@ -128,7 +128,7 @@ public class ReplyContainer
         addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
         setVisibility(0);
         return;
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713778));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713790));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
         continue;
@@ -138,7 +138,7 @@ public class ReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713776) + paramInt + alpo.a(2131713777));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713788) + paramInt + alud.a(2131713789));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -164,13 +164,13 @@ public class ReplyContainer
       do
       {
         return;
-      } while (this.jdField_a_of_type_Yde == null);
-      this.jdField_a_of_type_Yde.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
+      } while (this.jdField_a_of_type_Yhn == null);
+      this.jdField_a_of_type_Yhn.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
       return;
-    } while (this.jdField_a_of_type_Yde == null);
+    } while (this.jdField_a_of_type_Yhn == null);
     CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
     int i = getHeight() / this.c;
-    this.jdField_a_of_type_Yde.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+    this.jdField_a_of_type_Yhn.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
   }
   
   public boolean onLongClick(View paramView)
@@ -183,9 +183,9 @@ public class ReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(yde paramyde)
+  public void setOnCommentElementClickListener(yhn paramyhn)
   {
-    this.jdField_a_of_type_Yde = paramyde;
+    this.jdField_a_of_type_Yhn = paramyhn;
   }
   
   public void setPosition(int paramInt)

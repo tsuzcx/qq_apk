@@ -1,26 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface wcw
+class wcw
+  extends ulw
 {
-  public abstract View a();
+  wcw(wcv paramwcv) {}
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public void c(boolean paramBoolean)
+  {
+    ulu localulu = (ulu)this.a.a.app.getManager(181);
+    this.a.a(2, localulu.a());
+    this.a.a(3, localulu.b());
+  }
 }
 
 

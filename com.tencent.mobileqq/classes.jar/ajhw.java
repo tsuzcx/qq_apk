@@ -1,12 +1,12 @@
-import android.content.Context;
-
-public class ajhw
-  extends ajhi
+public abstract interface ajhw
 {
-  public ajhw(Context paramContext)
-  {
-    this.a = paramContext.getString(2131698120);
-  }
+  public abstract boolean isNeedAutoCloseWhenAccountChange();
+  
+  public abstract void onClose();
+  
+  public abstract void onEnter();
+  
+  public abstract void onOverride();
 }
 
 

@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 public class oou
   extends ImageBase
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841396));
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841397));
   private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
   private Long jdField_a_of_type_JavaLangLong;
   

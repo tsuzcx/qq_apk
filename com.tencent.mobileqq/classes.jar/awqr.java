@@ -1,39 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
-import java.lang.ref.Reference;
-import java.util.List;
-
 public class awqr
-  implements View.OnClickListener
 {
-  public awqr(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (PhotoViewForShopping.a(this.a.a).get() != null)
-    {
-      paramView = new Intent((Context)PhotoViewForShopping.a(this.a.a).get(), QQBrowserActivity.class);
-      paramView.putExtra("url", ((awnd)this.a.a.jdField_a_of_type_JavaUtilList.get(i)).b);
-      ((Activity)PhotoViewForShopping.a(this.a.a).get()).startActivity(paramView);
-      if (PhotoViewForShopping.a(this.a.a).a.a.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        azmj.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Mtemplatewindowclk", "0X8005B94", 0, 0, "", "", "", "");
-      }
-    }
-    else
-    {
-      return;
-    }
-    azmj.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Ftemplatewindowclk", "0X8005B98", 0, 0, "", "", "", "");
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
 }
 
 

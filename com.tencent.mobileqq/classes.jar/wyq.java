@@ -1,42 +1,18 @@
-public class wyq
-  implements Comparable<wyq>
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+
+public final class wyq
+  implements Parcelable.Creator<EditRecordVideoSource>
 {
-  public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
-  
-  public wyq()
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -1;
+    return new EditRecordVideoSource(paramParcel);
   }
   
-  public wyq(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public EditRecordVideoSource[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public int a(wyq paramwyq)
-  {
-    if (paramwyq == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramwyq.jdField_b_of_type_Int) {
-        return 1;
-      }
-    } while (this.jdField_b_of_type_Int != paramwyq.jdField_b_of_type_Int);
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+    return new EditRecordVideoSource[paramInt];
   }
 }
 

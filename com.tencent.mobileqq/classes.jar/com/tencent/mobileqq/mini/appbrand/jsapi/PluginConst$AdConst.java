@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi;
 
-import alpo;
+import alud;
 import java.util.HashMap;
 
 public class PluginConst$AdConst
@@ -23,7 +23,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = alpo.a(2131708640);
+  public static final String ERROR_MSG_SERVICE_FAIL = alud.a(2131708652);
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
   public static final int KErrAdNotFound = -100100007;
@@ -35,14 +35,14 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = alpo.a(2131708646);
-    ERROR_MSG_INVALID_ADUNITID = alpo.a(2131708644);
-    ERROR_MSG_INNER_ERROR = alpo.a(2131708647);
-    ERROR_MSG_NO_AD = alpo.a(2131708643);
-    ERROR_MSG_IN_REVIEW = alpo.a(2131708641);
-    ERROR_MSG_REJECTED = alpo.a(2131708642);
-    ERROR_MSG_BANNED = alpo.a(2131708645);
-    ERROR_MSG_CLOSED = alpo.a(2131708639);
+    ERROR_MSG_PARAM_ERROR = alud.a(2131708658);
+    ERROR_MSG_INVALID_ADUNITID = alud.a(2131708656);
+    ERROR_MSG_INNER_ERROR = alud.a(2131708659);
+    ERROR_MSG_NO_AD = alud.a(2131708655);
+    ERROR_MSG_IN_REVIEW = alud.a(2131708653);
+    ERROR_MSG_REJECTED = alud.a(2131708654);
+    ERROR_MSG_BANNED = alud.a(2131708657);
+    ERROR_MSG_CLOSED = alud.a(2131708651);
   }
   
   public static int getRetCodeByServerResult(int paramInt)

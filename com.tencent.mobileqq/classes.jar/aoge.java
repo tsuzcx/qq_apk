@@ -1,412 +1,252 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import ConfigPush.FileStorageServerListInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class aoge
+  extends QIPCModule
+  implements aogm
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private static Hashtable<String, ArrayList<String>>[] jdField_a_of_type_ArrayOfJavaUtilHashtable;
-  private static boolean[] jdField_a_of_type_ArrayOfBoolean;
-  public static final String[][] a;
-  private static String[] b;
+  private static volatile aoge jdField_a_of_type_Aoge;
+  public static boolean a;
+  private List<aogg> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  private aoge()
   {
-    int i = 0;
-    String[] arrayOfString1 = { "p_qlogo_cn_2g", "p_qlogo_cn_3g", "p_plogo_cn_4g", "p_plogo_cn_wifi" };
-    String[] arrayOfString2 = { "p_qpic_cn_2g", "p_qpic_cn_3g", "p_qpic_cn_4g", "p_qpic_cn_wifi" };
-    String[] arrayOfString3 = { "pgdt_gtimg_cn_2g", "pgdt_gtimg_cn_3g", "pgdt_gtimg_cn_4g", "pgdt_gtimg_cn_wifi" };
-    String[] arrayOfString4 = { "sqimg_qq_com_2g", "sqimg_qq_com_3g", "sqimg_qq_com_4g", "sqimg_qq_com_wifi" };
-    String[] arrayOfString5 = { "wfqqreader_3g_qq_cn_2g", "wfqqreader_3g_qq_cn_3g", "wfqqreader_3g_qq_cn_4g", "wfqqreader_3g_qq_cn_wifi" };
-    String[] arrayOfString6 = { "buluo_qq_com_2g", "buluo_qq_com_3g", "buluo_qq_com_4g", "buluo_qq_com_wifi" };
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "q_qlogo_cn_2g", "q_qlogo_cn_3g", "q_qlogo_cn_4g", "q_qlogo_cn_wifi" }, arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, { "download_wegame_qq_com_2g", "download_wegame_qq_com_3g", "download_wegame_qq_com_4g", "download_wegame_qq_com_wifi" }, arrayOfString5, arrayOfString6 };
-    jdField_a_of_type_ArrayOfBoolean = new boolean[13];
-    jdField_a_of_type_ArrayOfJavaLangString = new String[14];
-    b = new String[14];
-    jdField_a_of_type_ArrayOfJavaUtilHashtable = new Hashtable[11];
-    while (i <= 7)
-    {
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable(4);
-      i += 1;
-    }
-    i = 8;
-    while (i < 11)
-    {
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable(3);
-      i += 1;
-    }
+    super("DanmuDataIPCClient");
   }
   
-  public static String a()
+  public static aoge a()
   {
-    String str = String.valueOf(bdee.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-    if ((str.equals(b[12])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[12]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[12];
-    }
-    Object localObject = baoc.a().a(12);
-    if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-      return null;
-    }
-    localObject = (FileStorageServerListInfo)((ArrayList)localObject).get((int)(Math.random() * ((ArrayList)localObject).size() + 1.0D));
-    if (localObject == null) {
-      return null;
-    }
-    b[12] = str;
-    jdField_a_of_type_ArrayOfJavaLangString[12] = ((FileStorageServerListInfo)localObject).sIP;
-    return jdField_a_of_type_ArrayOfJavaLangString[12];
-  }
-  
-  public static String a(int paramInt)
-  {
-    int i = bdee.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    if (i == 1) {
-      i = 3;
-    }
-    while ((jdField_a_of_type_Array2dOfJavaLangString[paramInt][i].equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt])))
+    if (jdField_a_of_type_Aoge == null) {}
+    try
     {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      if (i == 2)
-      {
-        i = 0;
+      if (jdField_a_of_type_Aoge == null) {
+        jdField_a_of_type_Aoge = new aoge();
       }
-      else if (i == 3)
-      {
-        i = 1;
-      }
-      else if (i == 4)
-      {
-        i = 2;
-      }
-      else
-      {
-        QLog.i("PicIPManager", 1, "getIpList netType unknown netType=" + i);
-        return null;
-      }
+      return jdField_a_of_type_Aoge;
     }
-    int j;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
-    {
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("QQHeadIPList", 4);
-      if (localObject == null) {
-        return null;
-      }
-      j = 0;
-      while (j <= 3)
-      {
-        String str = ((SharedPreferences)localObject).getString(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], null);
-        if (!TextUtils.isEmpty(str))
-        {
-          String[] arrayOfString = str.split("\\|");
-          if ((arrayOfString != null) && (arrayOfString.length > 0))
-          {
-            ArrayList localArrayList = new ArrayList();
-            int k = 0;
-            while (k < arrayOfString.length)
-            {
-              localArrayList.add(arrayOfString[k]);
-              k += 1;
-            }
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], localArrayList);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("PicIPManager", 2, "getIpList array=" + str);
-          }
-        }
-        j += 1;
-      }
-      jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
-    }
-    Object localObject = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(jdField_a_of_type_Array2dOfJavaLangString[paramInt][i]);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      j = (int)(Math.random() * ((ArrayList)localObject).size());
-      jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)((ArrayList)localObject).get(j));
-      b[paramInt] = jdField_a_of_type_Array2dOfJavaLangString[paramInt][i];
-    }
-    return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    finally {}
   }
   
   public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PicIPManager", 2, "resetInitedFlag.");
-    }
-    int i = 0;
-    while (i <= 7)
+    aoge localaoge = a();
+    if (!jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_ArrayOfBoolean[i] = false;
-      i += 1;
+      QIPCClientHelper.getInstance().register(localaoge);
+      jdField_a_of_type_Boolean = true;
+      QLog.d("DanmuDataIPCClient", 1, "registerModule");
     }
   }
   
-  public static void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList, QQAppInterface paramQQAppInterface)
+  public Bundle a(String paramString, Bundle paramBundle)
   {
-    int i = bdee.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    int j;
-    SharedPreferences localSharedPreferences;
-    if (i == 1)
+    long l1;
+    long l2;
+    int i;
+    Object localObject;
+    if ("qipc_action_get_barrage".equals(paramString))
     {
-      j = 3;
-      if (QLog.isColorLevel()) {
-        QLog.i("PicIPManager", 2, "saveQQHeadIpList netType=" + i);
-      }
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("QQHeadIPList", 4);
-      if (localSharedPreferences == null) {
-        break label777;
+      l1 = paramBundle.getLong("key_barrage_msg_seq");
+      l2 = paramBundle.getLong("key_barrage_grp_uin");
+      i = paramBundle.getInt("key_barrage_topic_type");
+      localObject = aogc.a().a(l2, l1);
+      localObject = aogc.a().a((String)localObject);
+      if (localObject == null) {
+        break label243;
       }
     }
-    label777:
-    for (Object localObject1 = localSharedPreferences.edit();; localObject1 = null)
+    label243:
+    for (boolean bool = true;; bool = false)
     {
-      i = 0;
-      Object localObject2;
-      for (;;)
-      {
-        if (i <= 7)
-        {
-          localObject2 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[i].get(Integer.valueOf(j));
-          if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
-            ((ArrayList)localObject2).clear();
-          }
-          if (localObject1 != null) {
-            ((SharedPreferences.Editor)localObject1).putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], "");
-          }
-          jdField_a_of_type_ArrayOfJavaLangString[i] = null;
-          b[i] = null;
-          i += 1;
-          continue;
-          if (i == 2)
-          {
-            j = 0;
-            break;
-          }
-          if (i == 3)
-          {
-            j = 1;
-            break;
-          }
-          if (i == 4)
-          {
-            j = 2;
-            break;
-          }
-          QLog.i("PicIPManager", 1, "saveQQHeadIpList netType unknown netType=" + i);
-          return;
-        }
+      QLog.d("DanmuDataIPCClient", 2, new Object[] { "get barrage list, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
+      if (bool) {
+        QLog.d("DanmuDataIPCClient", 2, new Object[] { "peak listSize:", Integer.valueOf(((aogd)localObject).d.size()), ", fullList:", ((aogd)localObject).d.toString() });
       }
-      if (localObject1 != null) {
-        ((SharedPreferences.Editor)localObject1).commit();
+      paramBundle.putBoolean("key_barrage_is_update", bool);
+      paramBundle.putLong("key_barrage_req_time", System.currentTimeMillis());
+      QIPCClientHelper.getInstance().getClient().callServer("DanmuDataIPCServer", "qipc_action_get_barrage", paramBundle, new aogf(this));
+      if ("qipc_action_clear_cache".equals(paramString)) {
+        QIPCClientHelper.getInstance().getClient().callServer("DanmuDataIPCServer", "qipc_action_clear_cache", null);
       }
-      if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.domainIpChannel != null) && (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists != null))
+      return null;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    QLog.d("DanmuDataIPCClient", 1, "getDanmuList start");
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("key_barrage_msg_seq", paramLong1);
+      localBundle.putLong("key_barrage_grp_uin", paramLong2);
+      localBundle.putInt("key_barrage_topic_type", paramInt);
+      a().a("qipc_action_get_barrage", localBundle);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("DanmuDataIPCClient", 1, "getDanmuList fail, ", localException);
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    paramBundle.setClassLoader(DanmuItemBean.class.getClassLoader());
+    long l1 = paramBundle.getLong("key_barrage_msg_seq");
+    long l2 = paramBundle.getLong("key_barrage_grp_uin");
+    int k = paramBundle.getInt("key_barrage_topic_type");
+    boolean bool = paramBundle.getBoolean("key_barrage_is_success");
+    int m = paramBundle.getInt("key_barrage_interval_time");
+    if (QLog.isColorLevel()) {
+      QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, topicSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(k), " isSuccess:", Boolean.valueOf(bool) });
+    }
+    if (paramBundle.containsKey("key_barrage_req_time"))
+    {
+      long l4 = paramBundle.getLong("key_barrage_req_time");
+      long l5 = paramBundle.getLong("key_barrage_net_req_time");
+      long l3 = paramBundle.getLong("key_barrage_net_response_time");
+      l4 = l5 - l4;
+      l5 = l3 - l5;
+      l3 = System.currentTimeMillis() - l3;
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("ipcReqCost", String.valueOf(l4));
+      ((HashMap)localObject1).put("netReqCost", String.valueOf(l5));
+      ((HashMap)localObject1).put("ipcRspCost", String.valueOf(l3));
+      azri.a(BaseApplication.getContext()).a(null, "DanmuPullCost", false, 0L, 0L, (HashMap)localObject1, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, ipcReqCost:", Long.valueOf(l4), " netReqCost:", Long.valueOf(l5), " ipcRspCost:", Long.valueOf(l3) });
+      }
+    }
+    Object localObject1 = paramBundle.getParcelableArrayList("key_barrage_danmu_list");
+    Object localObject2 = paramBundle.getLongArray("key_barrage_del_seq_list");
+    int i;
+    int j;
+    label347:
+    Object localObject3;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+    {
+      i = 1;
+      if ((localObject2 == null) || (localObject2.length <= 0)) {
+        break label506;
+      }
+      j = 1;
+      localObject3 = aogc.a().a(l2, l1);
+      paramBundle = aogc.a().a((String)localObject3);
+      if (paramBundle != null) {
+        break label649;
+      }
+      paramBundle = aogc.a().b((String)localObject3);
+    }
+    label516:
+    label649:
+    for (;;)
+    {
+      if ((bool) && ((i != 0) || (j != 0)))
       {
-        paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-        while (paramFileStoragePushFSSvcList.hasNext())
+        if (QLog.isColorLevel())
         {
-          localObject1 = (DomainIpList)paramFileStoragePushFSSvcList.next();
-          if ((((DomainIpList)localObject1).vIplist != null) && (((DomainIpList)localObject1).vIplist.size() != 0))
-          {
-            localObject2 = new StringBuilder();
-            i = 0;
-            while (i < ((DomainIpList)localObject1).vIplist.size())
-            {
-              ((StringBuilder)localObject2).append(bdee.a(((DomainIpInfo)((DomainIpList)localObject1).vIplist.get(i)).uIp));
-              if (i < ((DomainIpList)localObject1).vIplist.size() - 1) {
-                ((StringBuilder)localObject2).append("|");
-              }
-              i += 1;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("PicIPManager", 2, "saveQQHeadIpList.uDomain_type=" + ((DomainIpList)localObject1).uDomain_type + ".strBuilder=" + ((StringBuilder)localObject2).toString());
-            }
-            if (((DomainIpList)localObject1).uDomain_type == 8) {
-              i = 0;
-            }
-            ArrayList localArrayList;
-            for (;;)
-            {
-              if ((((DomainIpList)localObject1).vIplist == null) || (((DomainIpList)localObject1).vIplist.size() == 0)) {
-                break label664;
-              }
-              localObject2 = new StringBuilder();
-              localArrayList = new ArrayList();
-              int k = 0;
-              while (k < ((DomainIpList)localObject1).vIplist.size())
-              {
-                String str = bdee.a(((DomainIpInfo)((DomainIpList)localObject1).vIplist.get(k)).uIp);
-                localArrayList.add(str);
-                ((StringBuilder)localObject2).append(str);
-                if (k < ((DomainIpList)localObject1).vIplist.size() - 1) {
-                  ((StringBuilder)localObject2).append("|");
-                }
-                k += 1;
-              }
-              if (((DomainIpList)localObject1).uDomain_type == 9)
-              {
-                i = 1;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 10)
-              {
-                i = 2;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 11)
-              {
-                i = 3;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 12)
-              {
-                i = 4;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 13)
-              {
-                i = 5;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 14)
-              {
-                i = 6;
-              }
-              else
-              {
-                if (((DomainIpList)localObject1).uDomain_type != 15) {
-                  break;
-                }
-                i = 7;
-              }
-            }
-            label664:
-            continue;
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[i].put(jdField_a_of_type_Array2dOfJavaLangString[i][j], localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicIPManager", 2, "saveQQHeadIpList.sIpList=" + localArrayList + ",sb=" + ((StringBuilder)localObject2).toString());
-            }
-            if (localSharedPreferences != null) {
-              localSharedPreferences.edit().putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], ((StringBuilder)localObject2).toString()).commit();
-            }
+          if (localObject1 == null) {
+            break label511;
+          }
+          i = ((ArrayList)localObject1).size();
+          label411:
+          if (localObject2 == null) {
+            break label516;
           }
         }
+        for (j = localObject2.length;; j = 0)
+        {
+          QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, danmuItemList size:", Integer.valueOf(i), " delSeqArr size:", Integer.valueOf(j) });
+          localObject3 = new ArrayList(localObject2.length);
+          j = localObject2.length;
+          i = 0;
+          while (i < j)
+          {
+            ((List)localObject3).add(Long.valueOf(localObject2[i]));
+            i += 1;
+          }
+          i = 0;
+          break;
+          label506:
+          j = 0;
+          break label347;
+          label511:
+          i = 0;
+          break label411;
+        }
+        localObject2 = new aogb(l2, l1, k, true);
+        paramBundle.a((List)localObject1).b((List)localObject3).a((aogb)localObject2).a(null).a();
       }
-      paramQQAppInterface.a().d();
+      if ((bool) && (paramBundle != null) && (!paramBundle.d.isEmpty()))
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((aogg)((Iterator)localObject1).next()).a(l1, String.valueOf(l2), m, paramBundle.d);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataIPCClient", 2, "handleGetBarrageEIPCResult end");
+      }
       return;
     }
   }
   
-  public static String b()
+  public void a(aogg paramaogg)
   {
-    String str = String.valueOf(bdee.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-    if ((str.equals(b[13])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[13]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[13];
+    if ((paramaogg != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramaogg))) {
+      this.jdField_a_of_type_JavaUtilList.add(paramaogg);
     }
-    Object localObject = baoc.a().a(14);
-    if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-      return null;
-    }
-    localObject = (FileStorageServerListInfo)((ArrayList)localObject).get((int)(Math.random() * ((ArrayList)localObject).size() + 1.0D));
-    if (localObject == null) {
-      return null;
-    }
-    b[13] = str;
-    jdField_a_of_type_ArrayOfJavaLangString[13] = ((FileStorageServerListInfo)localObject).sIP;
-    return jdField_a_of_type_ArrayOfJavaLangString[13];
   }
   
-  public static String b(int paramInt)
+  public void b()
   {
-    String str1 = String.valueOf(bdcb.e());
-    if ((str1.equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    aogc.a().a();
+    a("qipc_action_clear_cache", null);
+  }
+  
+  public void b(aogg paramaogg)
+  {
+    if ((paramaogg != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramaogg))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramaogg);
     }
-    String str2;
-    Object localObject1;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
-    {
-      str2 = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadDirectIP");
-      if (QLog.isColorLevel()) {
-        QLog.i("PicIPManager", 2, "getQzoneIp " + str2);
-      }
-      if (TextUtils.isEmpty(str2)) {
-        return null;
-      }
-      localObject1 = "";
-      if (paramInt == 10) {
-        localObject1 = ".*qzonestyle.gtimg.cn";
-      }
-      while (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        return null;
-        if (paramInt == 8) {
-          localObject1 = "ugc.qpic.cn";
-        } else if (paramInt == 9) {
-          localObject1 = "a[0-9].qpic.cn";
-        } else if (paramInt == 11) {
-          localObject1 = ".*qzs.qq.com";
-        }
-      }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("qipc_action_get_barrage_result".equals(paramString)) {
+      a(paramBundle);
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        localObject1 = new JSONObject(str2).getJSONArray((String)localObject1);
-        i = 0;
-        if (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-          str2 = ((JSONObject)localObject2).getString("apn");
-          localObject2 = ((JSONObject)localObject2).getString("ip");
-          ArrayList localArrayList2 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(str2);
-          if (localArrayList2 == null)
-          {
-            localArrayList2 = new ArrayList();
-            localArrayList2.add(localObject2);
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(str2, localArrayList2);
-          }
-          else
-          {
-            localArrayList2.add(localObject2);
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isDevelopLevel()) {
-          localJSONException.printStackTrace();
-        }
-      }
-      for (;;)
-      {
-        ArrayList localArrayList1 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(str1);
-        if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
-          break;
-        }
-        i = (int)(Math.random() * localArrayList1.size());
-        jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)localArrayList1.get(i));
-        b[paramInt] = str1;
-        return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-        jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
-      }
       return null;
-      i += 1;
+      if ("qipc_action_send_barrage".equals(paramString))
+      {
+        paramBundle.setClassLoader(DanmuItemBean.class.getClassLoader());
+        paramString = (DanmuItemBean)paramBundle.getParcelable("key_barrage_danmu_msg");
+        long l = paramBundle.getLong("key_barrage_msg_seq");
+        paramBundle = paramBundle.getString("key_barrage_grp_uin");
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((aogg)localIterator.next()).a(l, paramBundle, paramString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoge
  * JD-Core Version:    0.7.0.1
  */

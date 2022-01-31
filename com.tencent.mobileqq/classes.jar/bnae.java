@@ -1,17 +1,12 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.List;
 
-public class bnae
-  implements AdapterView.OnItemClickListener
+public abstract interface bnae
 {
-  public bnae(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a(long paramLong);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void b(long paramLong);
 }
 
 

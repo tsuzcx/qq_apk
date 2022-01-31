@@ -1,61 +1,63 @@
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+
 public class bfdw
+  implements bhuk
 {
-  public static int a(int paramInt)
-  {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
-  }
+  public bfdw(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, bhuf parambhuf) {}
   
-  public static int a(int paramInt, String paramString)
-  {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (aljq.aH.equals(paramString)) {
-      return 3;
-    }
-    if (aljq.L.equals(paramString)) {
-      return 4;
-    }
-    if (aljq.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
     }
-    return 4;
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      paramView = new Intent();
+      paramInt = bddf.b(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
+      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      paramView.putExtra("Business_Origin", 103);
+      paramView.putExtra("BUSINESS_ORIGIN_NEW", 103);
+      paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      paramView.putExtra("fromWhereClick", 11);
+      PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), PublicFragmentActivityForOpenSDK.class.getName(), paramInt, paramInt, 1080, 1080, bddf.a());
+      continue;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().checkSelfPermission("android.permission.CAMERA") != 0)
+        {
+          paramInt = 1;
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().requestPermissions(new bfdx(this), 2, new String[] { "android.permission.CAMERA" });
+          }
+        }
+        else
+        {
+          paramInt = 0;
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+      }
+    }
   }
 }
 

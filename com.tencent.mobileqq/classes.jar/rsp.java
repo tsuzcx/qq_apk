@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
 
 public class rsp
-  extends bhqo
+  extends bhuv
 {
   public rsp(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {

@@ -1,6 +1,16 @@
-public abstract interface bitb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkBridgeActivity;
+
+public class bitb
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public bitb(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

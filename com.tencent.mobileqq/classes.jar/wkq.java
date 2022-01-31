@@ -1,39 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
 
 public class wkq
-  implements uni<vao, unf>
+  implements wiz
 {
-  public wkq(FeedManager.3 param3) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<wia> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(@NonNull vao paramvao, @Nullable unf paramunf, @NonNull ErrorMessage paramErrorMessage)
+  public wkq(int paramInt)
   {
-    paramvao = (vap)paramunf;
-    paramunf = new wku();
-    paramunf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramvao == null)) {
-      wkp.a().remove(this.a.a);
-    }
-    for (;;)
-    {
-      wsv.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      uht.a().dispatch(paramunf);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    wxe.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
-      if (!paramvao.a.isEmpty())
-      {
-        paramunf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((wme)paramvao.a.get(0)).a());
-      }
-      else
-      {
-        wsv.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        wkp.a().remove(this.a.a);
-      }
     }
+    ((wia)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void a(wia paramwia)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwia);
   }
 }
 

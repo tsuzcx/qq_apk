@@ -1,21 +1,30 @@
-import com.tencent.biz.ui.CustomMenuBar;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agpo
-  implements ysr
+  extends aspm
 {
-  agpo(agot paramagot) {}
+  agpo(agpi paramagpi) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected void a()
   {
-    if ((afsb.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
-    {
-      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
-      return;
+    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      agpi.a(this.a).a(this.a.jdField_a_of_type_Agzq, new Object[0]);
     }
-    aekt.n = true;
-    this.a.jdField_a_of_type_Nrc.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, agot.a(this.a), agot.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    amnk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, agot.e(this.a), paramInt1);
+  }
+  
+  protected void b()
+  {
+    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Agzq.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (agpi.b(this.a).a() == 14)) {
+      agpi.c(this.a).a();
+    }
   }
 }
 

@@ -6,20 +6,20 @@ public class tce
 {
   public tce(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void a(biac<stSimpleMetaFeed> parambiac)
+  public void a(biej<stSimpleMetaFeed> parambiej)
   {
     int i;
     if (WSRecommendFragment.d(this.a))
     {
-      i = parambiac.getAdapterPosition();
-      parambiac = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
-      if (parambiac != null) {}
+      i = parambiej.getAdapterPosition();
+      parambiej = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (parambiej != null) {}
     }
     else
     {
       return;
     }
-    WSRecommendFragment.a(this.a, parambiac, i);
+    WSRecommendFragment.a(this.a, parambiej, i);
   }
 }
 

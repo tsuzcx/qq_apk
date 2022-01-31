@@ -1,8 +1,17 @@
-public class awbd
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+
+class awbd
+  extends AnimatorListenerAdapter
 {
-  public static final boolean a(int paramInt)
+  awbd(awaw paramawaw) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return (paramInt == 1) || (paramInt == 4) || (paramInt == 2);
+    if (awaw.a(this.a) != null) {
+      awaw.a(this.a).setVisibility(0);
+    }
   }
 }
 

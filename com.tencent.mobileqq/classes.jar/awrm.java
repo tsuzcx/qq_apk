@@ -1,47 +1,33 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.text.TextUtils;
 
 public class awrm
-  implements bdjy<Integer>
 {
-  public awrm(ProfileTagView paramProfileTagView) {}
+  public String a;
+  public String b;
   
-  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public String a()
   {
-    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
-    if (paramTransformation != null)
-    {
-      paramTransformation.height = paramInteger.intValue();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
-        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
-        {
-          paramInteger = paramInteger.getChildAt(0);
-          if (paramInteger != null)
-          {
-            paramInteger = paramInteger.getBackground();
-            if ((paramInteger instanceof BitmapDrawable))
-            {
-              int j = (int)(255.0F * paramFloat);
-              int i = j;
-              if (parambdjs == this.a.jdField_a_of_type_Bdjs) {
-                i = 255 - j;
-              }
-              paramInteger.setAlpha(i);
-            }
-          }
-        }
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    paramString = paramString.split(" ");
+    if ((paramString != null) && (paramString.length == 2))
+    {
+      this.b = paramString[0];
+      this.a = paramString[1];
+      return;
+    }
+    this.b = "";
+    this.a = "";
   }
 }
 

@@ -69,7 +69,7 @@ public final class ron
     if (paramInt == 1004) {
       return 2;
     }
-    if (bjxj.i()) {
+    if (bkbq.i()) {
       return 0;
     }
     return 1;
@@ -562,7 +562,7 @@ public final class ron
       if (paramBaseArticleInfo.mChannelID == 56L)
       {
         i = j;
-        if (bjxj.d())
+        if (bkbq.d())
         {
           i = j;
           if (paramBaseArticleInfo.mVideoColumnInfo != null) {

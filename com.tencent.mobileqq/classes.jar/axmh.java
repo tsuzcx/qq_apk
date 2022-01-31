@@ -1,6 +1,10 @@
-public abstract interface axmh
+public class axmh
 {
-  public abstract void l();
+  public int a;
+  public long a;
+  public String a;
+  
+  public axmh(axmf paramaxmf) {}
 }
 
 

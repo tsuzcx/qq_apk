@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class alcf
-  extends alcy
+class alcf
+  extends alce
 {
-  alcf(alce paramalce) {}
+  private int b;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public alcf(int paramInt1, int paramInt2, alcg paramalcg, alcc paramalcc)
   {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
-    }
+    super(paramInt1, paramalcg, paramalcc);
+    this.b = paramInt2;
+  }
+  
+  public akrw a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 

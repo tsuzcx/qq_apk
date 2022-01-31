@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class auxv
-  implements DialogInterface.OnDismissListener
+class auxv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public auxv(StoryPlayController paramStoryPlayController, avbn paramavbn, HashMap paramHashMap) {}
+  auxv(auxs paramauxs, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Avbn.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.jdField_a_of_type_Auxs.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.b();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Avbn.jdField_a_of_type_Int)) != null) {
-        ((avby)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Avbn.jdField_a_of_type_Int))).h();
-      }
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
-    StoryPlayController.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController, null);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

@@ -52,7 +52,7 @@ public class lwr
     this.jdField_a_of_type_Lxd = new lxd();
     this.jdField_a_of_type_Lxj = new lxj(this.jdField_a_of_type_Lxb);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Lwz.a(paramContext.getString(2131696269));
+    this.jdField_a_of_type_Lwz.a(paramContext.getString(2131696271));
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramContext.getSystemService("vibrator"));
   }
   

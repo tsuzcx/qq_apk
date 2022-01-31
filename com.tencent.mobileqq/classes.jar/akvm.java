@@ -1,48 +1,44 @@
-import android.content.Context;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameGuideView;
-import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.Comparator;
 
-public class akvm
+class akvm
+  implements Comparator<ApolloGameData>
 {
-  public static FrameworkView a(Context paramContext, aktr paramaktr, bhow parambhow, akpy paramakpy, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  SparseArray<Long> a;
+  
+  akvm(SparseArray paramSparseArray)
   {
-    switch (paramStartCheckParam.src)
-    {
-    default: 
-      if (paramStartCheckParam.mGameType == 5) {
-        paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramContext.a(paramaktr, parambhow, paramakpy, paramStartCheckParam);
-      return paramContext;
-      paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameFloatView(paramContext, paramStartCheckParam);
-    }
+    this.a = paramSparseArray;
   }
   
-  public static FrameworkView a(Context paramContext, aktr paramaktr, bhow parambhow, CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
   {
-    switch (paramInt)
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
     {
-    default: 
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
     }
     for (;;)
     {
-      paramContext.a(paramaktr, parambhow, null, paramStartCheckParam);
-      return paramContext;
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameDebugView(paramContext, paramStartCheckParam);
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
     }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

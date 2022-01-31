@@ -1,31 +1,26 @@
-class ued
-  implements nbs
+import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
+
+public class ued
+  implements udy
 {
-  ued(ueb paramueb, boolean paramBoolean) {}
+  public ued(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a()
   {
-    wsv.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      ueb.a(this.jdField_a_of_type_Ueb);
-    }
-    wsv.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
+    tzv.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 3L);
   }
   
-  public void progress(int paramInt) {}
+  public void a(int paramInt)
+  {
+    tzv.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 1L, String.valueOf(paramInt));
+  }
+  
+  public void b(int paramInt)
+  {
+    tzv.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 2L, String.valueOf(paramInt));
+  }
 }
 
 

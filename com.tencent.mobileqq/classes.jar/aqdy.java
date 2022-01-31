@@ -1,25 +1,18 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqdy
-  implements Animator.AnimatorListener
+  extends ambp
 {
-  public aqdy(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
+  public aqdy(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    ExtendFriendFragment.a(this.a);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

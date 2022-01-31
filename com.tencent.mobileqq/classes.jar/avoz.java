@@ -1,11 +1,14 @@
-public class avoz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avoz
+  implements DialogInterface.OnClickListener
 {
-  public T a;
+  avoz(avov paramavov, bdjz parambdjz) {}
   
-  public avoz(T paramT)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

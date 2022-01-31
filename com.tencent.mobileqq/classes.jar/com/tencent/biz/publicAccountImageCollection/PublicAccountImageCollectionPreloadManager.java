@@ -1,13 +1,13 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import aljq;
+import alof;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import azmz;
-import bdcs;
+import azri;
+import bdhb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
@@ -138,7 +138,7 @@ public class PublicAccountImageCollectionPreloadManager
     if (paramString == null) {
       return;
     }
-    if (bdcs.b(aljq.cN + paramString))
+    if (bdhb.b(alof.cN + paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfo file exist");
@@ -289,7 +289,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void a(boolean paramBoolean)
   {
-    azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumHitStatics", paramBoolean, 0L, 0L, null, "");
+    azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumHitStatics", paramBoolean, 0L, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");
@@ -302,7 +302,7 @@ public class PublicAccountImageCollectionPreloadManager
   {
     Object localObject = new HashMap();
     ((HashMap)localObject).put("photo_index", String.valueOf(paramInt));
-    azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumCacheHitStatics", paramBoolean, 0L, 0L, (HashMap)localObject, "");
+    azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumCacheHitStatics", paramBoolean, 0L, 0L, (HashMap)localObject, "");
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder("\n");
@@ -314,7 +314,7 @@ public class PublicAccountImageCollectionPreloadManager
   public void a(boolean paramBoolean, long paramLong)
   {
     paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-    azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumTime", paramBoolean, paramLong, 0L, null, "");
+    azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumTime", paramBoolean, paramLong, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");
@@ -376,7 +376,7 @@ public class PublicAccountImageCollectionPreloadManager
   public void b(boolean paramBoolean, long paramLong)
   {
     paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-    azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumPreDownPhotoTime", paramBoolean, paramLong, 0L, null, "");
+    azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumPreDownPhotoTime", paramBoolean, paramLong, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");

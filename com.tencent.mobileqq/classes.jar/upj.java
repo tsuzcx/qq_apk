@@ -1,29 +1,32 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-
 public class upj
-  implements View.OnFocusChangeListener
 {
-  public upj(StoryInputBarView paramStoryInputBarView) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public upj(int paramInt, String paramString)
   {
-    if (!paramBoolean) {
-      this.a.a();
-    }
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Wdj.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_Wdj.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-    paramView = this.a;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramView.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

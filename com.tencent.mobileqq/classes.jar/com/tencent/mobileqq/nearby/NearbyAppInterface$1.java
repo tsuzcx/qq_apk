@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import alpo;
+import alud;
 import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -20,8 +20,8 @@ public class NearbyAppInterface$1
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", alpo.a(2131707482));
-      localIntent.putExtra("msg", alpo.a(2131707483));
+      localIntent.putExtra("title", alud.a(2131707494));
+      localIntent.putExtra("msg", alud.a(2131707495));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);

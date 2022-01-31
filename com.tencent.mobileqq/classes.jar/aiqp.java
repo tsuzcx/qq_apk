@@ -1,8 +1,10 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
 
-public abstract interface aiqp
+public class aiqp
+  extends AlbumListBaseData
 {
-  public abstract void a(Bundle paramBundle);
+  public avvd a;
+  public boolean a;
 }
 
 

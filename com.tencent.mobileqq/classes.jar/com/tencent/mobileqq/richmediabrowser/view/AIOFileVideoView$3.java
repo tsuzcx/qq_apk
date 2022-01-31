@@ -2,8 +2,8 @@ package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import axuk;
-import axvm;
+import axyt;
+import axzv;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
@@ -11,7 +11,7 @@ import com.tencent.richmediabrowser.log.IBrowserLog;
 public class AIOFileVideoView$3
   implements Runnable
 {
-  public AIOFileVideoView$3(axvm paramaxvm, float paramFloat, String paramString) {}
+  public AIOFileVideoView$3(axzv paramaxzv, float paramFloat, String paramString) {}
   
   public void run()
   {

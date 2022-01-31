@@ -1,19 +1,9 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import mqq.app.QQPermissionCallback;
-
-public class awlt
-  implements QQPermissionCallback
+public final class awlt
+  extends awky
 {
-  public awlt(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected int c()
   {
-    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    PersonalityLabelShareActivity.a(this.a);
+    return 515;
   }
 }
 

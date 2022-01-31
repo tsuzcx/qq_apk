@@ -1,92 +1,134 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.Editable;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput.3;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import java.lang.ref.SoftReference;
-import java.util.Timer;
-
 public class bdha
-  extends bdfq
 {
-  private long jdField_a_of_type_Long;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
+  private static char[] a = new char[32];
+  private static final char[] b = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
   
-  public bdha(Context paramContext, int paramInt)
+  public static String a(long paramLong)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
+    return a(paramLong, 160);
   }
   
-  public EditText a()
+  public static String a(long paramLong, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  }
-  
-  public void a(TextWatcher paramTextWatcher)
-  {
-    if (paramTextWatcher != null)
+    long l = paramLong;
+    if (paramLong < 0L) {
+      l = 0L;
+    }
+    double d = l;
+    int i;
+    int m;
+    int j;
+    label64:
+    int k;
+    label96:
+    char[] arrayOfChar;
+    if (l < 1048576L) {
+      if (l < 1024L)
+      {
+        i = 66;
+        m = (int)(0.005D + d);
+        if (m >= 100) {
+          break label259;
+        }
+        if (m >= 10) {
+          break label253;
+        }
+        j = 1;
+        if (i == 66) {
+          break label319;
+        }
+        if ((alsf.a() <= 18.0F) || (paramInt >= 160)) {
+          break label293;
+        }
+        k = j + 2;
+        j = m;
+        if (k <= a.length) {
+          break label332;
+        }
+        arrayOfChar = new char[k];
+        label111:
+        m = k - 1;
+        arrayOfChar[m] = 'B';
+        if (i == 66) {
+          break label411;
+        }
+        if ((alsf.a() <= 18.0F) || (paramInt >= 160)) {
+          break label340;
+        }
+        paramInt = m - 1;
+        arrayOfChar[paramInt] = i;
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidTextTextWatcher = paramTextWatcher;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(paramTextWatcher);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramString);
-    }
-  }
-  
-  public String getInputValue()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368332));
-  }
-  
-  public bdfq setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramInt);
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bdhb(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void show()
-  {
-    super.show();
-    Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
-    if ((localEditable instanceof Spannable)) {
-      Selection.setSelection((Spannable)localEditable, localEditable.length());
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusable()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusableInTouchMode())) {
-      new Timer().schedule(new QQCustomDialogWtihInput.3(this), 200L);
+      paramInt -= 1;
+      arrayOfChar[paramInt] = b[(j % 10)];
+      m = j / 10;
+      j = m;
+      if (m <= 0)
+      {
+        return new String(arrayOfChar, 0, k);
+        d /= 1024.0D;
+        i = 75;
+        break;
+        if (l < 1073741824L)
+        {
+          d /= 1048576.0D;
+          i = 77;
+          break;
+        }
+        d /= 1073741824.0D;
+        i = 71;
+        break;
+        label253:
+        j = 2;
+        break label64;
+        label259:
+        if (m < 1000)
+        {
+          j = 3;
+          break label64;
+        }
+        if (m < 10000)
+        {
+          j = 4;
+          break label64;
+        }
+        j = 5;
+        break label64;
+        label293:
+        m = (int)(d * 100.0D + 0.5D);
+        k = j + 5;
+        j = m;
+        break label96;
+        label319:
+        k = j + 1;
+        j = m;
+        break label96;
+        label332:
+        arrayOfChar = a;
+        break label111;
+        label340:
+        paramInt = m - 1;
+        arrayOfChar[paramInt] = i;
+        paramInt -= 1;
+        arrayOfChar[paramInt] = b[(j % 10)];
+        j /= 10;
+        paramInt -= 1;
+        arrayOfChar[paramInt] = b[(j % 10)];
+        j /= 10;
+        paramInt -= 1;
+        arrayOfChar[paramInt] = '.';
+        continue;
+        label411:
+        paramInt = m;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdha
  * JD-Core Version:    0.7.0.1
  */

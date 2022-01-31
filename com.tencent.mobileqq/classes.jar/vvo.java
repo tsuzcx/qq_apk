@@ -1,29 +1,72 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public final class vvo
-  extends QQUIEventReceiver<vvc, wku>
+public class vvo
+  extends AccessibilityDelegateCompat
 {
-  public vvo(@NonNull vvc paramvvc)
+  public vvo(XViewPager paramXViewPager) {}
+  
+  private boolean a()
   {
-    super(paramvvc);
+    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
   }
   
-  public void a(@NonNull vvc paramvvc, @NonNull wku paramwku)
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
-    if ((paramwku.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramvvc.a != null) && (TextUtils.equals(paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramvvc.a.b)))
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
+    paramView = AccessibilityRecordCompat.obtain();
+    paramView.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
     {
-      wsv.a(paramvvc.b, "refresh feed item , feed id :%s", paramvvc.a.b);
-      paramvvc.i();
+      paramView.setItemCount(XViewPager.a(this.a).getCount());
+      paramView.setFromIndex(XViewPager.a(this.a));
+      paramView.setToIndex(XViewPager.a(this.a));
     }
   }
   
-  public Class acceptEventClass()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    return wku.class;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
+      {
+        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
+        return true;
+      }
+      return false;
+    }
+    if (this.a.canScrollHorizontally(-1))
+    {
+      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
+      return true;
+    }
+    return false;
   }
 }
 

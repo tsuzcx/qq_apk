@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
-public final class apbk
-  implements Parcelable.Creator<SpecialCareInfo>
+public class apbk
+  implements apbo
 {
-  public SpecialCareInfo a(Parcel paramParcel)
-  {
-    return new SpecialCareInfo(paramParcel);
-  }
+  public apbk(DanmakuManager paramDanmakuManager) {}
   
-  public SpecialCareInfo[] a(int paramInt)
+  public void a(apbq paramapbq)
   {
-    return new SpecialCareInfo[paramInt];
+    DanmakuManager.a(this.a).b(paramapbq);
+    if (DanmakuManager.a(this.a) != null) {
+      DanmakuManager.a(this.a).f();
+    }
   }
 }
 

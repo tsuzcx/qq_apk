@@ -1,25 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class bbwh
-  implements DialogInterface.OnClickListener
+class bbwh
+  implements aqxn
 {
-  public bbwh(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bbtw parambbtw) {}
+  bbwh(bbwg parambbwg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Bbtw);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Bbtw);
+    aqxi.a(new arjc(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.a.jdField_a_of_type_Long)));
   }
 }
 

@@ -1,12 +1,12 @@
 class tqf
-  implements yij
+  implements ymw
 {
-  tqf(tqc paramtqc, udu paramudu) {}
+  tqf(tqc paramtqc, ugu paramugu) {}
   
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      tqc.a(this.jdField_a_of_type_Tqc, this.jdField_a_of_type_Udu, false);
+      tqc.a(this.jdField_a_of_type_Tqc, this.jdField_a_of_type_Ugu, false);
     }
   }
 }

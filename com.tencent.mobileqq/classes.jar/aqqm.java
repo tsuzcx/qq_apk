@@ -1,48 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-class aqqm
-  extends aqqt
+public class aqqm
+  implements View.OnLongClickListener
 {
-  protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected String a;
-  private long b;
-  protected String b;
+  public aqqm(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  aqqm(aqpv paramaqpv, MessageRecord paramMessageRecord)
+  public boolean onLongClick(View paramView)
   {
-    super(paramaqpv);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaqpv = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqpv);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqqr paramaqqr)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = aqzr.a(arni.d(this.jdField_b_of_type_JavaLangString));
-    String str2 = aqzr.a(arni.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = arni.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
-    aqpv.a(this.jdField_a_of_type_Aqpv).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aqpv.a(this.jdField_a_of_type_Aqpv).getCurrentAccountUin(), new aqqn(this, paramaqqr, str2));
+    paramView.setSelected(true);
+    bdpi localbdpi = new bdpi();
+    localbdpi.a(2131366762, paramView.getContext().getString(2131692837));
+    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbdpi);
+    this.a.a = bdft.a(paramView, localbdpi, new aqqn(this, paramView), new aqqp(this, paramView));
+    return true;
   }
 }
 

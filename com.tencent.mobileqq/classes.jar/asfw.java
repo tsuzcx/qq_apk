@@ -1,18 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
-class asfw
-  extends RecyclerView.ViewHolder
+public class asfw
+  implements TextWatcher
 {
-  asfw(asfu paramasfu, View paramView)
+  public asfw(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramView);
+    paramEditable = paramEditable.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
   }
   
-  public String toString()
-  {
-    return super.toString();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

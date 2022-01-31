@@ -1,6 +1,17 @@
-public abstract interface bdve
+import android.annotation.TargetApi;
+import android.os.Handler;
+
+class bdve
+  extends bead
 {
-  public abstract void a(bdvb parambdvb);
+  bdve(bdvd parambdvd) {}
+  
+  @TargetApi(9)
+  public void onDone(beae parambeae)
+  {
+    super.onDone(parambeae);
+    bdvd.a(this.a).sendMessage(bdvd.a(this.a).obtainMessage(10002, parambeae.a(), 0, parambeae.a()));
+  }
 }
 
 

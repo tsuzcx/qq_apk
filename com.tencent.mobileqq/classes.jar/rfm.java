@@ -15,7 +15,7 @@ public class rfm
       localqhj = new qhj(this.a);
       localqhj.a(paramString);
       localqhj.a(RIJRedPacketManager.a().d());
-      localqhj.showAsDropDown(VideoFeedsPlayActivity.a(this.a), 0, -bdkf.a(10.0F));
+      localqhj.showAsDropDown(VideoFeedsPlayActivity.a(this.a), 0, -bdoo.a(10.0F));
     }
     while (!paramBoolean)
     {

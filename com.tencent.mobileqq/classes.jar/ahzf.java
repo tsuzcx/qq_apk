@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahzf
+  implements alxc
 {
-  public static String a(MessageRecord paramMessageRecord)
+  public ahzf(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  
+  public void a(alxc paramalxc) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if ((paramMessageRecord instanceof MessageForText))
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.o();
+    if (paramBoolean)
     {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
     }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
-    }
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
-    }
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
-    }
-    return "";
+    this.a.c(this.a.getString(2131690774));
   }
+  
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

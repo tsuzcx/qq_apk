@@ -1,59 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class apot
-  extends bdvu
+public class apot
+  implements apoa
 {
-  apot(apos paramapos) {}
+  private int jdField_a_of_type_Int;
   
-  public void onDone(bdvv parambdvv)
-  {
-    super.onDone(parambdvv);
-    apnf localapnf = this.a.a();
-    Bundle localBundle = parambdvv.a();
-    if (parambdvv.a() != 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = localBundle.getLong("vas_download_start");
-      localapnf.a(localBundle, parambdvv, bool, parambdvv.a, parambdvv.d, l1 - l2, 0);
-      return;
-    }
-  }
+  public apot(FavroamingManager.8 param8, List paramList) {}
   
-  public void onDoneFile(bdvv parambdvv)
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = parambdvv.a();
-    int i = ((Bundle)localObject).getInt(parambdvv.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambdvv);
-    }
-    if (parambdvv.a != 0)
+    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
     {
-      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambdvv.a);
-      if (apnf.a(i)) {
-        apnf.a.a((EmoticonPackage)localObject, i, -1, parambdvv.a);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Apou != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Apou.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       }
-      bdqr.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambdvv.a + "", "", "", "");
     }
-    for (;;)
-    {
-      return;
-      apnf localapnf = this.a.a();
-      if (apnf.a(i)) {
-        apnf.a.a((EmoticonPackage)localObject, i, 0, 0);
-      }
-      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
+      if (!apoo.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
       {
-        localapnf.b(parambdvv);
-        return;
-        if (i == 7) {
-          localapnf.a(parambdvv);
-        }
+        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+        apoo.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, apoo.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
       }
     }
+    do
+    {
+      return;
+      paramString = apoo.s(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
+      if (paramString != null) {
+        paramString.obtainMessage(10).sendToTarget();
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Apou == null);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Apou.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

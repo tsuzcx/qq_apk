@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class aued
-  implements DialogInterface.OnClickListener
+public abstract class aued
 {
-  public aued(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public static int a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
+      return 1;
+    }
+    return 0;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(String paramString1, String paramString2, Object paramObject);
+  
+  protected abstract boolean a(Bundle paramBundle);
 }
 
 

@@ -1,8 +1,29 @@
-public abstract interface ahoj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
+
+class ahoj
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
+  ahoj(ahoi paramahoi) {}
   
-  public abstract void au_();
+  public void onClick(View paramView)
+  {
+    ahok localahok = (ahok)paramView.getTag();
+    if ((localahok == null) || (!(localahok instanceof ahok))) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).d();
+    }
+    ahoi.a(this.a, localahok.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(ahoi.a(this.a).remove(this.a.getCount() - localahok.b - 1));
+    this.a.notifyDataSetChanged();
+  }
 }
 
 

@@ -1,11 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public class anme
+class anme
+  implements AdapterView.OnItemClickListener
 {
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public String b;
-  public String c;
+  anme(anma paramanma) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = anma.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(false);
+    }
+    anma.a(this.a).setSelection(paramInt);
+    paramAdapterView = anma.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(true);
+    }
+    anma.a(this.a, paramInt);
+    anma.a(this.a, true);
+    if ((anma.a(this.a) != null) && (anma.a(this.a).size() > 0) && (anma.a(this.a).size() > anma.a(this.a)))
+    {
+      paramAdapterView = (annb)anma.a(this.a).get(anma.a(this.a));
+      if (paramAdapterView != null) {
+        anoe.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
+      }
+    }
+  }
 }
 
 

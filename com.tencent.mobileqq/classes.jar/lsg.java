@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class lsg
 {
-  private static final String jdField_a_of_type_JavaLangString = aljq.aW + "/avdebug/";
+  private static final String jdField_a_of_type_JavaLangString = alof.aW + "/avdebug/";
   private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(500);
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "10.AV_SRC", "20.AV_PRE_RENDER", "30.AV_FILTER_NEW", "40.AV_FILTER", "50.AV_POST_RENDER", "60.AV_RETURN", "appleVideoDenoise", "appleLowlightEnhance", "applyBeauty30", "yuvCenterTextureFbo", "rgbRotateCenterTextureFbo", "applyBeauty20" };
   private static boolean jdField_b_of_type_Boolean;

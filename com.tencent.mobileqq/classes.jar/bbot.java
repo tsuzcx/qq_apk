@@ -1,22 +1,30 @@
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract interface bbot
+public class bbot
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public String a;
+  public ArrayList<bbot> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public abstract void a(bbnr parambbnr);
+  public bbot() {}
   
-  public abstract void a(bbnr parambbnr, String paramString);
+  public bbot(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
   
-  public abstract void a(List<bbnr> paramList, boolean paramBoolean, String paramString, long paramLong);
-  
-  public abstract void b(bbnr parambbnr);
-  
-  public abstract void c(bbnr parambbnr);
-  
-  public abstract void d(bbnr parambbnr);
-  
-  public abstract void e(bbnr parambbnr);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = ((Integer)bbos.a().get(paramString)).intValue();
+  }
 }
 
 

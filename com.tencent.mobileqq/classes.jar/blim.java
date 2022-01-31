@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.tavcut.exporter.ImageExporter;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.6;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class blim
-  implements DialogInterface.OnDismissListener
+class blim
+  implements View.OnClickListener
 {
-  public blim(AEEditorImageEditFragment.6 param6) {}
+  blim(blil paramblil, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    AEEditorImageEditFragment.a(this.a.this$0).cancel();
+    if (!blil.a()) {}
+    do
+    {
+      return;
+      blil.a(this.jdField_a_of_type_Blil, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Blil.notifyDataSetChanged();
+    } while (blil.a(this.jdField_a_of_type_Blil) == null);
+    blil.a(this.jdField_a_of_type_Blil).a(this.jdField_a_of_type_Int);
   }
 }
 

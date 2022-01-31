@@ -1,7 +1,4 @@
-public abstract interface bdqg<E>
-{
-  public abstract void a(E paramE, Object paramObject);
-}
+class bdqg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

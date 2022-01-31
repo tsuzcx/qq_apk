@@ -1,8 +1,4 @@
-public class afez
-  extends aelt
-{
-  public String b;
-}
+public abstract interface afez {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

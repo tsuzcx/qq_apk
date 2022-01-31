@@ -1,192 +1,297 @@
-import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amio
-  extends AsyncTask<Void, Integer, Boolean>
+  extends alwx
 {
-  WeakReference<QQAppInterface> a;
+  private amio(RegisterProxy paramRegisterProxy) {}
   
-  public amio(QQAppInterface paramQQAppInterface)
+  private void h()
   {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  protected Boolean a(Void... paramVarArgs)
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler1", 2, "stateC2C=" + RegisterProxy.a(this.a) + " stateGroupFirstMsg=" + RegisterProxy.c(this.a));
+    }
+    long l1;
+    long l2;
+    Object localObject1;
+    if ((RegisterProxy.a(this.a) == 2) && (RegisterProxy.c(this.a) == 2))
+    {
+      l1 = SystemClock.uptimeMillis();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a(true);
+      if ((BaseApplicationImpl.sLaunchTime < 0L) && (BaseApplicationImpl.sShowTime < 0L))
+      {
+        l2 = BaseApplicationImpl.sLaunchTime + l1;
+        if (!QLog.isColorLevel()) {
+          break label470;
+        }
+        QLog.i("AutoMonitor", 2, "registerB, cost=" + l2);
+        azri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterB", true, l2, 0L, null, null);
+      }
+      if (BaseApplicationImpl.appStartTime > 0L)
+      {
+        l2 = BaseApplicationImpl.appStartTime;
+        if ((!BaseApplicationImpl.isCurrentVersionFirstLaunch) || (!BaseApplicationImpl.isFirstLogin)) {
+          break label498;
+        }
+        localObject1 = "1";
+      }
+    }
     for (;;)
     {
-      try
+      Object localObject2 = new HashMap();
+      ((HashMap)localObject2).put("actLoginType", localObject1);
+      azri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterT", true, l1 - l2, 0L, (HashMap)localObject2, null);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long > 0L)
       {
-        Object localObject = (QQAppInterface)this.a.get();
-        if (localObject == null) {
-          return Boolean.valueOf(false);
-        }
-        if (!((QQAppInterface)localObject).isLogin()) {
-          return Boolean.valueOf(false);
-        }
-        if (!GuardManager.jdField_a_of_type_Boolean) {
-          return Boolean.valueOf(false);
-        }
-        amij.a((QQAppInterface)localObject);
-        if ((!amij.jdField_a_of_type_Boolean) || (amij.jdField_c_of_type_Boolean) || (amij.jdField_a_of_type_AndroidContentIntent == null)) {
-          return Boolean.valueOf(false);
-        }
-        if ((amij.b != 0) && (Build.VERSION.SDK_INT > amij.b)) {
-          return Boolean.valueOf(false);
-        }
-        paramVarArgs = ((QQAppInterface)localObject).c();
-        if (QQToast.a() == 0)
+        l1 = System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long;
+        if (bdin.g(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()))
         {
-          i = 1;
-          if (i != 0)
-          {
-            if (!amij.a((QQAppInterface)localObject)) {
-              return Boolean.valueOf(false);
-            }
-            localObject = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject).getApp());
-            long l3 = System.currentTimeMillis();
-            if (amij.a() == -1L) {
-              amij.a(((SharedPreferences)localObject).getLong("push_open_notify_lasttime", l3));
-            }
-            long l1 = 0L;
-            i = 0;
-            int n = ((SharedPreferences)localObject).getInt("push_open_notify_stage", 1);
-            int i1 = ((SharedPreferences)localObject).getInt("push_open_notify_stage_count", 0);
-            int i2 = ((SharedPreferences)localObject).getInt("push_msg_notify_count", 0);
-            if (n == 1)
-            {
-              l1 = amij.jdField_c_of_type_Int * amij.jdField_a_of_type_Long;
-              i = amij.d;
-              j = i;
-              m = i1;
-              l2 = l1;
-              k = n;
-              if (i1 >= i)
-              {
-                SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-                n += 1;
-                localEditor.putInt("push_open_notify_stage", n);
-                localEditor.remove("push_open_notify_stage_count");
-                localEditor.commit();
-                i1 = 0;
-                if (n == 1)
-                {
-                  l2 = amij.jdField_c_of_type_Int * amij.jdField_a_of_type_Long;
-                  j = amij.d;
-                  k = n;
-                  m = i1;
-                }
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PushOpenNotify", 2, new Object[] { "PopOpenMsgNotifation, stage:", Integer.valueOf(k), " stagecount:", Integer.valueOf(m), " count:", Integer.valueOf(i2), " countMax:", Integer.valueOf(j), " pushInteral:", Long.valueOf(l2), " timeDiff:", Long.valueOf(l3 - amij.a()) });
-                }
-                if ((l3 - amij.a() <= l2) && (i2 != 0)) {
-                  break label754;
-                }
-                amij.a(l3);
-                localObject = ((SharedPreferences)localObject).edit();
-                i = m + 1;
-                ((SharedPreferences.Editor)localObject).putInt("push_open_notify_stage_count", i);
-                ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_count", i2 + 1);
-                ((SharedPreferences.Editor)localObject).putLong("push_open_notify_lasttime", l3);
-                if ((k == 1) && (i == 1))
-                {
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_count");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_open");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_cancle");
-                }
-                ((SharedPreferences.Editor)localObject).commit();
-                return Boolean.valueOf(true);
-              }
-            }
-            else
-            {
-              if (n == 2)
-              {
-                l1 = amij.e * amij.jdField_a_of_type_Long;
-                i = amij.f;
-                continue;
-              }
-              if (n != 3) {
-                continue;
-              }
-              l1 = amij.g * amij.jdField_a_of_type_Long;
-              i = 2147483647;
-              continue;
-            }
-            if (n == 2)
-            {
-              l2 = amij.e * amij.jdField_a_of_type_Long;
-              j = amij.f;
-              m = i1;
-              k = n;
-              continue;
-            }
-            int j = i;
-            int m = i1;
-            long l2 = l1;
-            int k = n;
-            if (n != 3) {
-              continue;
-            }
-            l1 = amij.g;
-            l2 = amij.jdField_a_of_type_Long;
-            l2 = l1 * l2;
-            j = 2147483647;
-            m = i1;
-            k = n;
-            continue;
+          boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isFirstQQInit", true);
+          localObject1 = new HashMap();
+          ((HashMap)localObject1).put("param_isFirstInit", String.valueOf(bool));
+          azri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterM", RegisterProxy.a(this.a), l1, 0L, (HashMap)localObject1, null);
+          if (QLog.isColorLevel()) {
+            QLog.i("AutoMonitor", 2, "machineStartToStopCircle, cost=" + l1 + ", isfirstQQInit=" + bool);
           }
-          return Boolean.valueOf(false);
         }
       }
-      catch (Exception paramVarArgs)
+      if (GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager != null)
       {
-        return Boolean.valueOf(false);
+        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp();
+        localObject2 = GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager;
+        GuardManager.a((Context)localObject1, GuardManager.jdField_a_of_type_Boolean);
       }
-      label754:
-      int i = 0;
+      return;
+      label470:
+      Log.i("AutoMonitor", "registerB, cost=" + l2);
+      break;
+      label498:
+      if ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (!BaseApplicationImpl.isFirstLogin)) {
+        localObject1 = "2";
+      } else if ((!BaseApplicationImpl.isCurrentVersionFirstLaunch) && (BaseApplicationImpl.isFirstLogin)) {
+        localObject1 = "3";
+      } else {
+        localObject1 = "4";
+      }
     }
   }
   
-  protected void a(Boolean paramBoolean)
+  private void i()
   {
-    try
+    if (this.a.a()) {
+      this.a.a(7);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetPAMsg Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    Object localObject = this.a;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-      if (paramBoolean.booleanValue())
+      RegisterProxy.e((RegisterProxy)localObject, i);
+      if (!MessageHandler.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.c = true;
+      i();
+      return;
+    }
+    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
+    if (RegisterProxy.b(this.a) == 2) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      ((Automator)localObject).c = paramBoolean;
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    int j = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPA", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    RegisterProxy localRegisterProxy;
+    if (paramLong2 == 0L)
+    {
+      localRegisterProxy = this.a;
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label248;
+      }
+      i = 2;
+      RegisterProxy.d(localRegisterProxy, i);
+      localRegisterProxy = this.a;
+      if ((!paramBoolean) || (paramLong1 == 128L) || (paramLong1 == 64L) || (paramLong1 == 32L)) {
+        break label254;
+      }
+      i = 2;
+      label174:
+      RegisterProxy.c(localRegisterProxy, i);
+      this.a.jdField_a_of_type_Long = paramLong1;
+      if (MessageHandler.jdField_a_of_type_Boolean)
       {
-        if (localQQAppInterface == null) {
-          return;
+        localRegisterProxy = this.a;
+        if (!paramBoolean) {
+          break label260;
         }
-        paramBoolean = new Intent(localQQAppInterface.getApp(), DialogActivity.class);
-        paramBoolean.addFlags(268435456);
-        paramBoolean.addFlags(536870912);
-        paramBoolean.addFlags(67108864);
-        paramBoolean.addFlags(131072);
-        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
-        localQQAppInterface.getApp().startActivity(paramBoolean);
-        return;
+        i = 2;
+        label209:
+        RegisterProxy.b(localRegisterProxy, i);
+        localRegisterProxy = this.a;
+        if (!paramBoolean) {
+          break label266;
+        }
       }
     }
-    catch (Exception paramBoolean)
+    label260:
+    label266:
+    for (int i = j;; i = 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushOpenNotify", 2, "popOpenMsgNotifation, exception: ", paramBoolean);
+      RegisterProxy.e(localRegisterProxy, i);
+      MessageHandler.jdField_a_of_type_Boolean = false;
+      i();
+      return;
+      label248:
+      i = 1;
+      break;
+      label254:
+      i = 1;
+      break label174;
+      i = 1;
+      break label209;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetTroopMsg Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPT", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    bhsm.a().h();
+    paramArrayOfString = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.d(paramArrayOfString, i);
+      i();
+      return;
+      i = 1;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.a(localRegisterProxy, i);
+      if (!paramBoolean) {
+        break;
       }
+      i();
+      RegisterProxy.a(this.a, paramObject);
+      return;
+      i = 1;
+    }
+    this.a.a(6);
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetC2CMsg Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPC", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    bhsm.a().f();
+    Object localObject = this.a;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      RegisterProxy.b((RegisterProxy)localObject, i);
+      if (!MessageHandler.jdField_a_of_type_Boolean) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetDiscussionMsg Fin: Receive empty package set isC2CMsgSuccess true");
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b = true;
+      if (MessageHandler.b) {
+        h();
+      }
+      i();
+      return;
+    }
+    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
+    if (RegisterProxy.a(this.a) == 2) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      ((Automator)localObject).b = paramBoolean;
+      break;
+    }
+  }
+  
+  protected void g(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetDiscussionMsg Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPD", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    bhsm.a().j();
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.c(localRegisterProxy, i);
+      i();
+      return;
+      i = 1;
+    }
+  }
+  
+  protected void h(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetFirstGroup Fin:" + paramBoolean);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPF", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.f(localRegisterProxy, i);
+      h();
+      return;
+      i = 1;
     }
   }
 }

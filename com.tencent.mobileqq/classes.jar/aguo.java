@@ -1,70 +1,53 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class aguo
-  implements agvy
+class aguo
+  extends ampt
 {
-  private long jdField_a_of_type_Long = -1L;
-  private agwa jdField_a_of_type_Agwa;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public aguo(agwa paramagwa, Context paramContext)
+  aguo(agti paramagti, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Agwa = paramagwa;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public int a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return 55;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    double d3 = 0.0D;
+    String str;
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558557, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362396));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agup(this));
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
-      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
-    }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362394);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(paramDrawable);
+      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+        break label211;
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 16;
+    label211:
+    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
+    {
+      double d2 = d3;
+      if (paramSosoLbsInfo != null)
+      {
+        d2 = d3;
+        if (paramSosoLbsInfo.a != null) {
+          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, d1, d2, str);
+      }
+      return;
+      str = "";
+      break;
+    }
   }
 }
 

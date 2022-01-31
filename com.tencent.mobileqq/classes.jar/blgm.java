@@ -1,21 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.Button;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
 
-public class blgm
-  implements View.OnClickListener
+class blgm
+  implements bmeo<blfi>
 {
-  public blgm(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blgm(blgj paramblgj) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable blfi paramblfi)
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    if (AEEditorAILoadingView.a(this.a) != null) {
-      AEEditorAILoadingView.a(this.a).a();
+    if (paramblfi == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramblfi = paramblfi.a;
+          if (paramblfi != AECaptureMode.NORMAL) {
+            break;
+          }
+          if ((blfz.a == null) || (blfz.a != bkzy.a())) {
+            bliy.a().g("none");
+          }
+        } while (!this.a.a());
+        blgj.a(this.a).setVisibility(8);
+        return;
+        if (paramblfi != AECaptureMode.GIF) {
+          break;
+        }
+      } while (!this.a.a());
+      blgj.a(this.a).setVisibility(8);
+      return;
+    } while (paramblfi != AECaptureMode.PLAY);
+    blgj.c(this.a);
+    if (blgj.a(this.a) != null)
+    {
+      paramblfi = blgj.a(this.a).a();
+      if ((!TextUtils.isEmpty(paramblfi)) && (!"-1".equals(paramblfi))) {
+        bliy.a().g(paramblfi);
+      }
     }
-    ((ViewGroup)this.a.getParent()).removeAllViews();
+    blgj.a(this.a).setVisibility(0);
+    blgj.d(this.a);
   }
 }
 

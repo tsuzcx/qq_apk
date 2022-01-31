@@ -6,9 +6,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
 public class cj
-  implements bhqd
+  implements bhuk
 {
-  public cj(LiteAdvanceActivity paramLiteAdvanceActivity, bhpy parambhpy) {}
+  public cj(LiteAdvanceActivity paramLiteAdvanceActivity, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -17,10 +17,10 @@ public class cj
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.cancel();
+      this.jdField_a_of_type_Bhuf.cancel();
       return;
-      azmy.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
-      paramView = (allz)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a(8);
+      azrh.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
+      paramView = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a(8);
       paramView.a(32, true);
       paramView.e();
       this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();

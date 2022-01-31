@@ -1,37 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class aeax
-  implements View.OnClickListener
+  implements anyq
 {
-  public aeax(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeax(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(anyr paramanyr)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("troop_uin", this.a.b);
-    List localList = (List)this.a.jdField_a_of_type_Aecg.a.get(TroopMemberListActivity.a(this.a));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localList.size())
-    {
-      localArrayList.add(((aece)localList.get(i)).a);
-      i += 1;
+    this.a.jdField_a_of_type_Anyr = paramanyr;
+    if (this.a.i != 0) {
+      paramanyr.a(this.a.i);
     }
-    localIntent.putExtra("members_uin", localArrayList);
-    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
-    paramView = ((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
-    bdaj.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdaj.a(paramView) });
+    this.a.i = paramanyr.a(1, this.a.e, 3, this.a.jdField_a_of_type_Anyo);
   }
 }
 

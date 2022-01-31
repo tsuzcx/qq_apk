@@ -52,30 +52,30 @@ public class roh
   {
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365817)).inflate();
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365818));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365811));
-      this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379714));
+      this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365819)).inflate();
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365820));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365813));
+      this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379772));
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(null);
     }
     c();
     rdm.a(this.jdField_b_of_type_AndroidViewView);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842760);
-    int i = xee.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842773);
+    int i = xin.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
     localDrawable.setBounds(0, 0, i, i);
     this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
     if (paramInt == 1)
     {
       this.c.setVisibility(0);
-      paramString1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841459);
-      paramInt = xee.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+      paramString1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841460);
+      paramInt = xin.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
       paramString1.setBounds(0, 0, paramInt, paramInt);
       this.c.setCompoundDrawables(paramString1, null, null, null);
-      this.c.setCompoundDrawablePadding(aekt.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.c.setCompoundDrawablePadding(aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       return;
     }
     this.c.setVisibility(8);

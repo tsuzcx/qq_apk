@@ -1,19 +1,15 @@
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class bmpv
+final class bmpv
   implements Animation.AnimationListener
 {
-  bmpv(bmpu parambmpu) {}
+  bmpv(View paramView) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bmpo != null) {
-      this.a.a.jdField_a_of_type_Bmpo.a(null);
-    }
+    this.a.setAnimation(null);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

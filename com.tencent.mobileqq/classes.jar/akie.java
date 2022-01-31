@@ -1,17 +1,19 @@
-import android.widget.ImageView;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class akie
-  extends akia
 {
+  public CheckBox a;
+  public RelativeLayout a;
   public TextView a;
-  public boolean a;
-  public int b;
-  public ImageView b;
+  public URLImageView a;
+  public Object a;
+  public String a;
   public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  
+  public akie(akid paramakid) {}
 }
 
 

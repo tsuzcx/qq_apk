@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 
@@ -28,7 +28,7 @@ final class TroopAddFrdsInnerFrame$6
     }
     for (;;)
     {
-      azmj.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
+      azqs.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
       return;
       str2 = "singleMode_add";
       break;

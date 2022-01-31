@@ -87,14 +87,14 @@ public class qwa
         paramViewGroup.setHeadImgByUin(((ResultRecord)localObject).a());
       }
       int i = getCount();
-      paramViewGroup = paramView.findViewById(2131368032);
+      paramViewGroup = paramView.findViewById(2131368043);
       if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
         break;
       }
       paramViewGroup.setVisibility(0);
       return paramView;
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560114, paramViewGroup, false);
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131368031);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560113, paramViewGroup, false);
+      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131368042);
       paramView.setTag(paramViewGroup);
     }
     paramViewGroup.setVisibility(4);

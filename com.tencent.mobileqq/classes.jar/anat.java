@@ -1,302 +1,702 @@
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.ar.arcloud.ARCloudImageFilter;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class anat
+public class anat
 {
-  public static final float[] a;
-  public float a;
-  public anap a;
-  public anaq a;
-  public anau a;
-  public anaz a;
-  public String a;
-  private boolean a;
-  public short[] a;
-  public float b;
-  public String b;
-  public float[] b;
-  public float c;
-  public String c;
+  public static int a;
+  public static int b;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean jdField_b_of_type_Boolean;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  public int c;
+  private byte[] c;
   public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public int n = -1;
-  public int o = 0;
+  private byte[] d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j = 10;
+  private int k = 170;
+  private int l = 640;
+  private int m = 480;
+  private int n;
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
+    jdField_b_of_type_Int = 1;
   }
   
   public anat(int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = anax.jdField_a_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nuniform samplerExternalOES samplerOES;\nuniform sampler2D sampler2d1;\nuniform sampler2D sampler2d2;\nuniform sampler2D sampler2d3;\nuniform vec4 u_screenColor;\nvarying vec2 vTextureCoord;\n";
-    this.jdField_e_of_type_JavaLangString = "//抠像算法相关定义片段\n";
-    this.jdField_f_of_type_JavaLangString = "//用户自己定义变量及方法相关片段\n";
-    this.jdField_g_of_type_JavaLangString = "void main() {\n    vec2 position = vTextureCoord;\n";
-    this.jdField_h_of_type_JavaLangString = "    //用户定义片段，用于在获取颜色值前处理, 如纹理坐标改变\n";
-    this.jdField_i_of_type_JavaLangString = "    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);\n    #if defined(TEXTURE_TYPE_OES)\n        gl_FragColor = texture2D(samplerOES, position);\n        gl_FragColor.r = max(0.0, min(gl_FragColor.r, 1.0));\n        gl_FragColor.g = max(0.0, min(gl_FragColor.g, 1.0));\n        gl_FragColor.b = max(0.0, min(gl_FragColor.b, 1.0));\n    #endif\n    #if defined(TEXTURE_TYPE_SAMPLER2D)\n        gl_FragColor = texture2D(sampler2d1, position);\n    #endif\n    #if defined(TEXTURE_TYPE_Y_U_V)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        yuv.y = texture2D(sampler2d2, position).r-0.5;\n        yuv.z = texture2D(sampler2d3, position).r-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;\n        gl_FragColor.a = 1.0;\n    #endif\n    #if defined(TEXTURE_TYPE_Y_UV)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        vec2 uv = texture2D(sampler2d2, position).ra;\n        yuv.y = uv.x-0.5;\n        yuv.z = uv.y-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;//yuv->rgb\n        gl_FragColor.a = 1.0;\n    #endif\n";
-    this.jdField_j_of_type_JavaLangString = anax.jdField_b_of_type_JavaLangString;
-    this.jdField_k_of_type_JavaLangString = anax.jdField_c_of_type_JavaLangString;
-    this.jdField_l_of_type_JavaLangString = anax.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = "precision mediump float;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nuniform mat4 uMVPMatrix;\nvoid main() {\n   gl_Position = uMVPMatrix * aPosition;\n   vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}";
-    this.o = paramInt;
-  }
-  
-  private final int a(anaw paramanaw, boolean paramBoolean)
-  {
-    int i1 = 0;
-    a(paramanaw);
-    if (this.jdField_a_of_type_Anau != null) {
-      this.jdField_a_of_type_Anau.a();
-    }
-    if (this.n == 1) {
-      this.jdField_a_of_type_Anap.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    }
-    for (;;)
+    this.jdField_c_of_type_Int = -2147483648;
+    this.jdField_d_of_type_Int = -2147483648;
+    this.e = paramInt;
+    if ((paramInt == jdField_a_of_type_Int) && (avxv.a() != null))
     {
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      anax.a("keyingHandleAfter");
-      if (paramBoolean) {
-        i1 = this.jdField_a_of_type_Anaq.a();
+      this.j = avxv.a().g;
+      this.k = avxv.a().h;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARCloudImageSelect", 2, "init args ocr bestImgThreshold:" + this.j + ",sameSceneDiff:" + this.k);
       }
-      return i1;
-      this.jdField_a_of_type_Anaz.a();
     }
   }
   
-  private final void a(anaw paramanaw, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      a(-1, 0.0F, 0.0F, 0.0F);
-    }
-    GLES20.glUseProgram(this.jdField_d_of_type_Int);
-    anax.a("glUseProgram");
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Anaq.a(paramInt1, paramInt2);
-      GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-      GLES20.glClear(16384);
+      ARCloudImageFilter.nativeUninit();
+      this.jdField_a_of_type_Boolean = false;
     }
-    if (this.n == 1) {}
-    for (;;)
-    {
-      GLES20.glUniformMatrix4fv(this.jdField_g_of_type_Int, 1, false, paramArrayOfFloat1, 0);
-      GLES20.glUniformMatrix4fv(this.jdField_h_of_type_Int, 1, false, paramArrayOfFloat2, 0);
-      if (this.m != -1) {
-        GLES20.glUniform4f(this.m, paramanaw.jdField_a_of_type_Float, paramanaw.jdField_b_of_type_Float, paramanaw.jdField_c_of_type_Float, 1.0F);
-      }
-      anax.a("keyingHandleBefore");
-      return;
-      this.jdField_a_of_type_Anaz.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    }
+    this.f = 0;
+    this.g = 0;
+    this.j = 10;
+    this.k = 170;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.h = 0;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.i = 0;
+    this.l = 0;
+    this.m = 0;
+    this.jdField_c_of_type_ArrayOfByte = null;
+    this.n = 0;
+    this.jdField_d_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  public final int a(int[] paramArrayOfInt, anaw paramanaw, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public void a(Context paramContext)
   {
-    return a(paramArrayOfInt, paramanaw, paramArrayOfFloat1, paramArrayOfFloat2, false, 0, 0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public final int a(int[] paramArrayOfInt, anaw paramanaw, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean, int paramInt1, int paramInt2)
+  public boolean a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfInt == null) {
-      throw new IllegalArgumentException("textureIds can not be null!");
+    if (!this.jdField_b_of_type_Boolean) {
+      return false;
     }
-    a(paramanaw, paramArrayOfFloat1, paramArrayOfFloat2, paramBoolean, paramInt1, paramInt2);
-    switch (this.o)
-    {
+    if (this.e == jdField_a_of_type_Int) {
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.h);
     }
-    for (;;)
+    try
     {
-      anax.a("keyingTexture");
-      return a(paramanaw, paramBoolean);
-      if (paramArrayOfInt.length < 1) {
-        throw new IllegalArgumentException("textureIds.size should >= 1!");
-      }
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, paramArrayOfInt[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
-      continue;
-      if (paramArrayOfInt.length < 1) {
-        throw new IllegalArgumentException("textureIds.size should >= 1!");
-      }
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(36197, paramArrayOfInt[0]);
-      GLES20.glTexParameterf(36197, 10241, 9728.0F);
-      GLES20.glTexParameterf(36197, 10240, 9729.0F);
-      GLES20.glTexParameteri(36197, 10242, 33071);
-      GLES20.glTexParameteri(36197, 10243, 33071);
-      GLES20.glUniform1i(this.jdField_l_of_type_Int, 0);
-      continue;
-      if (paramArrayOfInt.length < 2) {
-        throw new IllegalArgumentException("textureIds.size should >= 2!");
-      }
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, paramArrayOfInt[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, paramArrayOfInt[1]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.jdField_j_of_type_Int, 1);
-      if (this.o == 3)
+      if (this.e == jdField_a_of_type_Int) {}
+      for (bool = ARCloudImageFilter.nativeIsSameScene(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte);; bool = ARCloudImageFilter.nativeIsSameScene(this.jdField_c_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte))
       {
-        if (paramArrayOfInt.length < 3) {
-          throw new IllegalArgumentException("textureIds.size should >= 3!");
+        return bool;
+        if ((this.f != this.l) || (this.g != this.m))
+        {
+          int i2 = (this.f - this.l) / 2;
+          int i1 = this.l;
+          int i3 = (this.g - this.m) / 2;
+          i1 = this.m;
+          i1 = 0;
+          while (i1 < this.m)
+          {
+            System.arraycopy(paramArrayOfByte, (i1 + i3) * this.f + i2, this.jdField_c_of_type_ArrayOfByte, this.l * i1, this.l);
+            i1 += 1;
+          }
         }
-        GLES20.glActiveTexture(33986);
-        GLES20.glBindTexture(3553, paramArrayOfInt[2]);
-        GLES20.glTexParameterf(3553, 10240, 9729.0F);
-        GLES20.glTexParameterf(3553, 10241, 9729.0F);
-        GLES20.glTexParameterf(3553, 10242, 33071.0F);
-        GLES20.glTexParameterf(3553, 10243, 33071.0F);
-        GLES20.glUniform1i(this.jdField_k_of_type_Int, 2);
-      }
-    }
-  }
-  
-  protected String a()
-  {
-    this.jdField_c_of_type_JavaLangString = anax.a(this.o);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append(this.jdField_d_of_type_JavaLangString).append(this.jdField_e_of_type_JavaLangString).append(this.jdField_f_of_type_JavaLangString).append(this.jdField_g_of_type_JavaLangString).append(this.jdField_h_of_type_JavaLangString).append(this.jdField_i_of_type_JavaLangString).append(this.jdField_j_of_type_JavaLangString).append(this.jdField_k_of_type_JavaLangString).append(this.jdField_l_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
-  
-  protected abstract void a();
-  
-  public final void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    long l1 = System.currentTimeMillis();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("mVertexShader can not be empty!");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.n = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_JavaLangString = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("KeyingBase", 4, "init. markerType = " + this.n + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", mFragmentShader = \n" + this.jdField_b_of_type_JavaLangString);
-    }
-    if (this.n == 1) {
-      this.jdField_a_of_type_Anap = new anap(1.0F, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Anaq = new anaq();
-      this.jdField_d_of_type_Int = anax.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-      anax.a("createProgram");
-      if (this.jdField_d_of_type_Int == 0) {
+        System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, 0, this.n);
         break;
       }
-      this.jdField_e_of_type_Int = GLES20.glGetAttribLocation(this.jdField_d_of_type_Int, "aPosition");
-      anax.a("glGetAttribLocation aPosition");
-      if (this.jdField_e_of_type_Int != -1) {
-        break label303;
-      }
-      throw new RuntimeException("Could not get attrib location for aPosition");
-      if ((this.jdField_b_of_type_ArrayOfFloat != null) && (this.jdField_a_of_type_ArrayOfShort != null)) {
-        this.jdField_a_of_type_Anaz = new anaz(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfShort);
-      } else {
-        this.jdField_a_of_type_Anaz = new anaz();
-      }
     }
-    label303:
-    this.jdField_f_of_type_Int = GLES20.glGetAttribLocation(this.jdField_d_of_type_Int, "aTextureCoord");
-    anax.a("glGetAttribLocation aTextureCoord");
-    if (this.jdField_f_of_type_Int == -1) {
-      throw new RuntimeException("Could not get attrib location for aTextureCoord");
-    }
-    this.jdField_g_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uMVPMatrix");
-    anax.a("glGetUniformLocation uMVPMatrix");
-    this.jdField_h_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uSTMatrix");
-    anax.a("glGetUniformLocation uSTMatrix");
-    this.jdField_l_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "samplerOES");
-    anax.a("glGetUniformLocation samplerOES");
-    this.jdField_i_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d1");
-    anax.a("glGetUniformLocation sampler2d1");
-    this.jdField_j_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d2");
-    anax.a("glGetUniformLocation sampler2d2");
-    this.jdField_k_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d3");
-    anax.a("glGetUniformLocation sampler2d3");
-    this.m = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "u_screenColor");
-    anax.a("glGetUniformLocation u_screenColor");
-    a();
-    if (this.jdField_a_of_type_Anau != null) {
-      this.jdField_a_of_type_Anau.a(this.jdField_d_of_type_Int);
-    }
-    QLog.i("KeyingBase", 2, " init need " + (System.currentTimeMillis() - l1) + "ms");
-  }
-  
-  protected abstract void a(anaw paramanaw);
-  
-  public void a(String paramString1, String paramString2, String paramString3, anau paramanau)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_f_of_type_JavaLangString = paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.jdField_h_of_type_JavaLangString = paramString2;
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      this.jdField_k_of_type_JavaLangString = paramString3;
-    }
-    this.jdField_a_of_type_Anau = paramanau;
-  }
-  
-  public void a(float[] paramArrayOfFloat, short[] paramArrayOfShort)
-  {
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfShort = paramArrayOfShort;
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    catch (Exception paramArrayOfByte)
     {
-      return;
-      GLES20.glDeleteProgram(this.jdField_d_of_type_Int);
-    } while (this.jdField_a_of_type_Anaq == null);
-    this.jdField_a_of_type_Anaq.a();
-    this.jdField_a_of_type_Anaq = null;
+      for (;;)
+      {
+        QLog.i("AREngine_ARCloudImageSelect", 1, "ARCloudImageFilter.nativeIsSameScene()" + paramArrayOfByte.getMessage());
+        boolean bool = false;
+      }
+    }
+  }
+  
+  /* Error */
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 98	anat:f	I
+    //   4: ifeq +10 -> 14
+    //   7: aload_0
+    //   8: getfield 99	anat:g	I
+    //   11: ifne +149 -> 160
+    //   14: ldc 67
+    //   16: iconst_1
+    //   17: ldc 140
+    //   19: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   22: aload_0
+    //   23: iload_2
+    //   24: putfield 98	anat:f	I
+    //   27: aload_0
+    //   28: iload_3
+    //   29: putfield 99	anat:g	I
+    //   32: aload_0
+    //   33: aload_0
+    //   34: getfield 98	anat:f	I
+    //   37: aload_0
+    //   38: getfield 99	anat:g	I
+    //   41: imul
+    //   42: putfield 102	anat:h	I
+    //   45: aload_0
+    //   46: aload_0
+    //   47: getfield 98	anat:f	I
+    //   50: aload_0
+    //   51: getfield 99	anat:g	I
+    //   54: imul
+    //   55: iconst_3
+    //   56: imul
+    //   57: iconst_2
+    //   58: idiv
+    //   59: putfield 106	anat:i	I
+    //   62: aload_0
+    //   63: aload_0
+    //   64: getfield 102	anat:h	I
+    //   67: newarray byte
+    //   69: putfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   72: aload_0
+    //   73: aload_0
+    //   74: getfield 106	anat:i	I
+    //   77: newarray byte
+    //   79: putfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   82: aload_0
+    //   83: aload_0
+    //   84: getfield 102	anat:h	I
+    //   87: newarray byte
+    //   89: putfield 112	anat:jdField_d_of_type_ArrayOfByte	[B
+    //   92: aload_0
+    //   93: getfield 98	anat:f	I
+    //   96: aload_0
+    //   97: getfield 99	anat:g	I
+    //   100: if_icmple +553 -> 653
+    //   103: aload_0
+    //   104: getfield 98	anat:f	I
+    //   107: sipush 480
+    //   110: if_icmplt +460 -> 570
+    //   113: aload_0
+    //   114: getfield 99	anat:g	I
+    //   117: sipush 480
+    //   120: if_icmplt +450 -> 570
+    //   123: aload_0
+    //   124: sipush 480
+    //   127: putfield 39	anat:l	I
+    //   130: aload_0
+    //   131: sipush 480
+    //   134: putfield 41	anat:m	I
+    //   137: aload_0
+    //   138: aload_0
+    //   139: getfield 39	anat:l	I
+    //   142: aload_0
+    //   143: getfield 41	anat:m	I
+    //   146: imul
+    //   147: putfield 110	anat:n	I
+    //   150: aload_0
+    //   151: aload_0
+    //   152: getfield 110	anat:n	I
+    //   155: newarray byte
+    //   157: putfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   160: aload_0
+    //   161: getfield 98	anat:f	I
+    //   164: iload_2
+    //   165: if_icmpne +11 -> 176
+    //   168: aload_0
+    //   169: getfield 99	anat:g	I
+    //   172: iload_3
+    //   173: if_icmpeq +161 -> 334
+    //   176: aload_0
+    //   177: iload_2
+    //   178: putfield 98	anat:f	I
+    //   181: aload_0
+    //   182: iload_3
+    //   183: putfield 99	anat:g	I
+    //   186: aload_0
+    //   187: aload_0
+    //   188: getfield 98	anat:f	I
+    //   191: aload_0
+    //   192: getfield 99	anat:g	I
+    //   195: imul
+    //   196: putfield 102	anat:h	I
+    //   199: aload_0
+    //   200: aload_0
+    //   201: getfield 98	anat:f	I
+    //   204: aload_0
+    //   205: getfield 99	anat:g	I
+    //   208: imul
+    //   209: iconst_3
+    //   210: imul
+    //   211: iconst_2
+    //   212: idiv
+    //   213: putfield 106	anat:i	I
+    //   216: aload_0
+    //   217: aload_0
+    //   218: getfield 102	anat:h	I
+    //   221: newarray byte
+    //   223: putfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   226: aload_0
+    //   227: aload_0
+    //   228: getfield 106	anat:i	I
+    //   231: newarray byte
+    //   233: putfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   236: aload_0
+    //   237: aload_0
+    //   238: getfield 102	anat:h	I
+    //   241: newarray byte
+    //   243: putfield 112	anat:jdField_d_of_type_ArrayOfByte	[B
+    //   246: aload_0
+    //   247: getfield 98	anat:f	I
+    //   250: aload_0
+    //   251: getfield 99	anat:g	I
+    //   254: if_icmple +474 -> 728
+    //   257: aload_0
+    //   258: getfield 98	anat:f	I
+    //   261: sipush 480
+    //   264: if_icmplt +445 -> 709
+    //   267: aload_0
+    //   268: getfield 99	anat:g	I
+    //   271: sipush 480
+    //   274: if_icmplt +435 -> 709
+    //   277: aload_0
+    //   278: sipush 480
+    //   281: putfield 39	anat:l	I
+    //   284: aload_0
+    //   285: sipush 480
+    //   288: putfield 41	anat:m	I
+    //   291: aload_0
+    //   292: aload_0
+    //   293: getfield 39	anat:l	I
+    //   296: aload_0
+    //   297: getfield 41	anat:m	I
+    //   300: imul
+    //   301: putfield 110	anat:n	I
+    //   304: aload_0
+    //   305: aload_0
+    //   306: getfield 110	anat:n	I
+    //   309: newarray byte
+    //   311: putfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   314: aload_0
+    //   315: getfield 90	anat:jdField_a_of_type_Boolean	Z
+    //   318: istore 5
+    //   320: iload 5
+    //   322: ifeq +12 -> 334
+    //   325: invokestatic 96	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeUninit	()I
+    //   328: pop
+    //   329: aload_0
+    //   330: iconst_0
+    //   331: putfield 90	anat:jdField_a_of_type_Boolean	Z
+    //   334: aload_0
+    //   335: getfield 90	anat:jdField_a_of_type_Boolean	Z
+    //   338: ifne +104 -> 442
+    //   341: invokestatic 145	amyg:a	()Lamyg;
+    //   344: invokevirtual 147	amyg:a	()Z
+    //   347: ifeq +471 -> 818
+    //   350: iconst_1
+    //   351: istore_2
+    //   352: aload_0
+    //   353: getfield 48	anat:e	I
+    //   356: getstatic 50	anat:jdField_a_of_type_Int	I
+    //   359: if_icmpne +464 -> 823
+    //   362: aload_0
+    //   363: getfield 98	anat:f	I
+    //   366: aload_0
+    //   367: getfield 99	anat:g	I
+    //   370: aload_0
+    //   371: getfield 35	anat:j	I
+    //   374: aload_0
+    //   375: getfield 37	anat:k	I
+    //   378: aload_0
+    //   379: getfield 106	anat:i	I
+    //   382: invokestatic 151	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeInitOcr	(IIIII)I
+    //   385: pop
+    //   386: iload_2
+    //   387: iconst_1
+    //   388: if_icmpne +496 -> 884
+    //   391: aload_0
+    //   392: iload_2
+    //   393: invokestatic 155	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeSetNeonOpen	(I)I
+    //   396: putfield 44	anat:jdField_c_of_type_Int	I
+    //   399: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   402: ifeq +35 -> 437
+    //   405: ldc 67
+    //   407: iconst_2
+    //   408: ldc 157
+    //   410: iconst_2
+    //   411: anewarray 4	java/lang/Object
+    //   414: dup
+    //   415: iconst_0
+    //   416: iconst_0
+    //   417: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   420: aastore
+    //   421: dup
+    //   422: iconst_1
+    //   423: aload_0
+    //   424: getfield 44	anat:jdField_c_of_type_Int	I
+    //   427: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   430: aastore
+    //   431: invokestatic 169	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   434: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   437: aload_0
+    //   438: iconst_1
+    //   439: putfield 90	anat:jdField_a_of_type_Boolean	Z
+    //   442: aload_0
+    //   443: getfield 48	anat:e	I
+    //   446: getstatic 50	anat:jdField_a_of_type_Int	I
+    //   449: if_icmpne +443 -> 892
+    //   452: aload_1
+    //   453: iconst_0
+    //   454: aload_0
+    //   455: getfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   458: iconst_0
+    //   459: aload_0
+    //   460: getfield 102	anat:h	I
+    //   463: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   466: aload_1
+    //   467: iconst_0
+    //   468: aload_0
+    //   469: getfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   472: iconst_0
+    //   473: aload_0
+    //   474: getfield 106	anat:i	I
+    //   477: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   480: lconst_0
+    //   481: lstore 6
+    //   483: getstatic 170	amyg:jdField_a_of_type_Boolean	Z
+    //   486: ifeq +8 -> 494
+    //   489: invokestatic 174	java/lang/System:currentTimeMillis	()J
+    //   492: lstore 6
+    //   494: aload_0
+    //   495: getfield 48	anat:e	I
+    //   498: getstatic 50	anat:jdField_a_of_type_Int	I
+    //   501: if_icmpne +511 -> 1012
+    //   504: aload_0
+    //   505: aload_0
+    //   506: getfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   509: aload_0
+    //   510: getfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   513: invokestatic 177	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeFilter	([B[B)Z
+    //   516: putfield 114	anat:jdField_b_of_type_Boolean	Z
+    //   519: aload_0
+    //   520: getfield 114	anat:jdField_b_of_type_Boolean	Z
+    //   523: ifeq +20 -> 543
+    //   526: aload_0
+    //   527: getfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   530: iconst_0
+    //   531: aload_0
+    //   532: getfield 112	anat:jdField_d_of_type_ArrayOfByte	[B
+    //   535: iconst_0
+    //   536: aload_0
+    //   537: getfield 102	anat:h	I
+    //   540: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   543: getstatic 170	amyg:jdField_a_of_type_Boolean	Z
+    //   546: ifeq +19 -> 565
+    //   549: invokestatic 145	amyg:a	()Lamyg;
+    //   552: invokestatic 174	java/lang/System:currentTimeMillis	()J
+    //   555: lload 6
+    //   557: lsub
+    //   558: aload_0
+    //   559: getfield 44	anat:jdField_c_of_type_Int	I
+    //   562: invokevirtual 180	amyg:a	(JI)V
+    //   565: aload_0
+    //   566: getfield 114	anat:jdField_b_of_type_Boolean	Z
+    //   569: ireturn
+    //   570: aload_0
+    //   571: aload_0
+    //   572: getfield 98	anat:f	I
+    //   575: putfield 39	anat:l	I
+    //   578: aload_0
+    //   579: aload_0
+    //   580: getfield 99	anat:g	I
+    //   583: putfield 41	anat:m	I
+    //   586: goto -449 -> 137
+    //   589: astore_1
+    //   590: ldc 67
+    //   592: iconst_1
+    //   593: new 69	java/lang/StringBuilder
+    //   596: dup
+    //   597: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   600: ldc 182
+    //   602: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   605: aload_1
+    //   606: invokevirtual 183	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   609: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   618: aload_0
+    //   619: aconst_null
+    //   620: putfield 101	anat:jdField_a_of_type_ArrayOfByte	[B
+    //   623: aload_0
+    //   624: aconst_null
+    //   625: putfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   628: aload_0
+    //   629: aconst_null
+    //   630: putfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   633: aload_0
+    //   634: iconst_0
+    //   635: putfield 98	anat:f	I
+    //   638: aload_0
+    //   639: iconst_0
+    //   640: putfield 99	anat:g	I
+    //   643: aload_0
+    //   644: aconst_null
+    //   645: putfield 112	anat:jdField_d_of_type_ArrayOfByte	[B
+    //   648: invokestatic 186	java/lang/System:gc	()V
+    //   651: iconst_0
+    //   652: ireturn
+    //   653: aload_0
+    //   654: getfield 98	anat:f	I
+    //   657: sipush 480
+    //   660: if_icmplt +30 -> 690
+    //   663: aload_0
+    //   664: getfield 99	anat:g	I
+    //   667: sipush 480
+    //   670: if_icmplt +20 -> 690
+    //   673: aload_0
+    //   674: sipush 480
+    //   677: putfield 39	anat:l	I
+    //   680: aload_0
+    //   681: sipush 480
+    //   684: putfield 41	anat:m	I
+    //   687: goto -550 -> 137
+    //   690: aload_0
+    //   691: aload_0
+    //   692: getfield 98	anat:f	I
+    //   695: putfield 39	anat:l	I
+    //   698: aload_0
+    //   699: aload_0
+    //   700: getfield 99	anat:g	I
+    //   703: putfield 41	anat:m	I
+    //   706: goto -569 -> 137
+    //   709: aload_0
+    //   710: aload_0
+    //   711: getfield 98	anat:f	I
+    //   714: putfield 39	anat:l	I
+    //   717: aload_0
+    //   718: aload_0
+    //   719: getfield 99	anat:g	I
+    //   722: putfield 41	anat:m	I
+    //   725: goto -434 -> 291
+    //   728: aload_0
+    //   729: getfield 98	anat:f	I
+    //   732: sipush 480
+    //   735: if_icmplt +30 -> 765
+    //   738: aload_0
+    //   739: getfield 99	anat:g	I
+    //   742: sipush 480
+    //   745: if_icmplt +20 -> 765
+    //   748: aload_0
+    //   749: sipush 480
+    //   752: putfield 39	anat:l	I
+    //   755: aload_0
+    //   756: sipush 480
+    //   759: putfield 41	anat:m	I
+    //   762: goto -471 -> 291
+    //   765: aload_0
+    //   766: aload_0
+    //   767: getfield 98	anat:f	I
+    //   770: putfield 39	anat:l	I
+    //   773: aload_0
+    //   774: aload_0
+    //   775: getfield 99	anat:g	I
+    //   778: putfield 41	anat:m	I
+    //   781: goto -490 -> 291
+    //   784: astore 8
+    //   786: ldc 67
+    //   788: iconst_1
+    //   789: new 69	java/lang/StringBuilder
+    //   792: dup
+    //   793: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   796: ldc 188
+    //   798: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   801: aload 8
+    //   803: invokevirtual 133	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   806: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   809: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   812: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   815: goto -486 -> 329
+    //   818: iconst_0
+    //   819: istore_2
+    //   820: goto -468 -> 352
+    //   823: aload_0
+    //   824: getfield 39	anat:l	I
+    //   827: aload_0
+    //   828: getfield 41	anat:m	I
+    //   831: aload_0
+    //   832: getfield 35	anat:j	I
+    //   835: aload_0
+    //   836: getfield 37	anat:k	I
+    //   839: aload_0
+    //   840: getfield 106	anat:i	I
+    //   843: invokestatic 191	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeInit	(IIIII)I
+    //   846: pop
+    //   847: goto -461 -> 386
+    //   850: astore 8
+    //   852: ldc 67
+    //   854: iconst_1
+    //   855: new 69	java/lang/StringBuilder
+    //   858: dup
+    //   859: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   862: ldc 193
+    //   864: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   867: aload 8
+    //   869: invokevirtual 133	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   872: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   875: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   878: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   881: goto -444 -> 437
+    //   884: aload_0
+    //   885: iconst_0
+    //   886: putfield 44	anat:jdField_c_of_type_Int	I
+    //   889: goto -490 -> 399
+    //   892: aload_0
+    //   893: getfield 98	anat:f	I
+    //   896: aload_0
+    //   897: getfield 39	anat:l	I
+    //   900: if_icmpne +14 -> 914
+    //   903: aload_0
+    //   904: getfield 99	anat:g	I
+    //   907: aload_0
+    //   908: getfield 41	anat:m	I
+    //   911: if_icmpeq +84 -> 995
+    //   914: aload_0
+    //   915: getfield 98	anat:f	I
+    //   918: aload_0
+    //   919: getfield 39	anat:l	I
+    //   922: isub
+    //   923: iconst_2
+    //   924: idiv
+    //   925: istore_3
+    //   926: aload_0
+    //   927: getfield 39	anat:l	I
+    //   930: istore_2
+    //   931: aload_0
+    //   932: getfield 99	anat:g	I
+    //   935: aload_0
+    //   936: getfield 41	anat:m	I
+    //   939: isub
+    //   940: iconst_2
+    //   941: idiv
+    //   942: istore 4
+    //   944: aload_0
+    //   945: getfield 41	anat:m	I
+    //   948: istore_2
+    //   949: iconst_0
+    //   950: istore_2
+    //   951: iload_2
+    //   952: aload_0
+    //   953: getfield 41	anat:m	I
+    //   956: if_icmpge -490 -> 466
+    //   959: aload_1
+    //   960: iload_2
+    //   961: iload 4
+    //   963: iadd
+    //   964: aload_0
+    //   965: getfield 98	anat:f	I
+    //   968: imul
+    //   969: iload_3
+    //   970: iadd
+    //   971: aload_0
+    //   972: getfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   975: aload_0
+    //   976: getfield 39	anat:l	I
+    //   979: iload_2
+    //   980: imul
+    //   981: aload_0
+    //   982: getfield 39	anat:l	I
+    //   985: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   988: iload_2
+    //   989: iconst_1
+    //   990: iadd
+    //   991: istore_2
+    //   992: goto -41 -> 951
+    //   995: aload_1
+    //   996: iconst_0
+    //   997: aload_0
+    //   998: getfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   1001: iconst_0
+    //   1002: aload_0
+    //   1003: getfield 110	anat:n	I
+    //   1006: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1009: goto -543 -> 466
+    //   1012: aload_0
+    //   1013: aload_0
+    //   1014: getfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   1017: aload_0
+    //   1018: getfield 104	anat:jdField_b_of_type_ArrayOfByte	[B
+    //   1021: invokestatic 177	com/tencent/mobileqq/ar/arcloud/ARCloudImageFilter:nativeFilter	([B[B)Z
+    //   1024: putfield 114	anat:jdField_b_of_type_Boolean	Z
+    //   1027: aload_0
+    //   1028: getfield 114	anat:jdField_b_of_type_Boolean	Z
+    //   1031: ifeq -488 -> 543
+    //   1034: aload_0
+    //   1035: getfield 108	anat:jdField_c_of_type_ArrayOfByte	[B
+    //   1038: iconst_0
+    //   1039: aload_0
+    //   1040: getfield 112	anat:jdField_d_of_type_ArrayOfByte	[B
+    //   1043: iconst_0
+    //   1044: aload_0
+    //   1045: getfield 110	anat:n	I
+    //   1048: invokestatic 124	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1051: goto -508 -> 543
+    //   1054: astore_1
+    //   1055: ldc 67
+    //   1057: iconst_1
+    //   1058: new 69	java/lang/StringBuilder
+    //   1061: dup
+    //   1062: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   1065: ldc 195
+    //   1067: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1070: aload_1
+    //   1071: invokevirtual 133	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1074: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1077: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1080: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1083: goto -518 -> 565
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1086	0	this	anat
+    //   0	1086	1	paramArrayOfByte	byte[]
+    //   0	1086	2	paramInt1	int
+    //   0	1086	3	paramInt2	int
+    //   942	22	4	i1	int
+    //   318	3	5	bool	boolean
+    //   481	75	6	l1	long
+    //   784	18	8	localException1	Exception
+    //   850	18	8	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	14	589	java/lang/OutOfMemoryError
+    //   14	137	589	java/lang/OutOfMemoryError
+    //   137	160	589	java/lang/OutOfMemoryError
+    //   160	176	589	java/lang/OutOfMemoryError
+    //   176	291	589	java/lang/OutOfMemoryError
+    //   291	320	589	java/lang/OutOfMemoryError
+    //   325	329	589	java/lang/OutOfMemoryError
+    //   329	334	589	java/lang/OutOfMemoryError
+    //   570	586	589	java/lang/OutOfMemoryError
+    //   653	687	589	java/lang/OutOfMemoryError
+    //   690	706	589	java/lang/OutOfMemoryError
+    //   709	725	589	java/lang/OutOfMemoryError
+    //   728	762	589	java/lang/OutOfMemoryError
+    //   765	781	589	java/lang/OutOfMemoryError
+    //   786	815	589	java/lang/OutOfMemoryError
+    //   325	329	784	java/lang/Exception
+    //   352	386	850	java/lang/Exception
+    //   391	399	850	java/lang/Exception
+    //   399	437	850	java/lang/Exception
+    //   823	847	850	java/lang/Exception
+    //   884	889	850	java/lang/Exception
+    //   483	494	1054	java/lang/Exception
+    //   494	543	1054	java/lang/Exception
+    //   543	565	1054	java/lang/Exception
+    //   1012	1051	1054	java/lang/Exception
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_b_of_type_ArrayOfByte;
   }
 }
 

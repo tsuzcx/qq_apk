@@ -1,49 +1,120 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class bkzw
-  implements InputFilter
+public class bkzw
+  extends UniPacket
 {
-  private int jdField_a_of_type_Int = 32;
+  private final String a = "compressed";
   
-  public bkzw(bkzl parambkzl) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public bkzw(boolean paramBoolean)
   {
-    if (paramCharSequence.equals("\n")) {
-      return "";
-    }
-    for (;;)
+    super(paramBoolean);
+  }
+  
+  private void a(boolean paramBoolean) {}
+  
+  /* Error */
+  private byte[] a(byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 20	java/util/zip/Inflater
+    //   9: dup
+    //   10: invokespecial 23	java/util/zip/Inflater:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: aload_1
+    //   16: iconst_0
+    //   17: aload_1
+    //   18: arraylength
+    //   19: invokevirtual 27	java/util/zip/Inflater:setInput	([BII)V
+    //   22: sipush 4096
+    //   25: newarray byte
+    //   27: astore_3
+    //   28: new 29	java/io/ByteArrayOutputStream
+    //   31: dup
+    //   32: invokespecial 30	java/io/ByteArrayOutputStream:<init>	()V
+    //   35: astore 4
+    //   37: aload_2
+    //   38: invokevirtual 34	java/util/zip/Inflater:finished	()Z
+    //   41: ifne +29 -> 70
+    //   44: aload 4
+    //   46: aload_3
+    //   47: iconst_0
+    //   48: aload_2
+    //   49: aload_3
+    //   50: invokevirtual 38	java/util/zip/Inflater:inflate	([B)I
+    //   53: invokevirtual 41	java/io/ByteArrayOutputStream:write	([BII)V
+    //   56: goto -19 -> 37
+    //   59: astore_3
+    //   60: aload_3
+    //   61: invokevirtual 44	java/util/zip/DataFormatException:printStackTrace	()V
+    //   64: aload_2
+    //   65: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   68: aload_1
+    //   69: areturn
+    //   70: aload 4
+    //   72: invokevirtual 51	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   75: astore_3
+    //   76: aload_2
+    //   77: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   80: aload_3
+    //   81: areturn
+    //   82: astore_1
+    //   83: aload_2
+    //   84: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	bkzw
+    //   0	89	1	paramArrayOfByte	byte[]
+    //   13	71	2	localInflater	java.util.zip.Inflater
+    //   27	23	3	arrayOfByte1	byte[]
+    //   59	2	3	localDataFormatException	java.util.zip.DataFormatException
+    //   75	6	3	arrayOfByte2	byte[]
+    //   35	36	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   37	56	59	java/util/zip/DataFormatException
+    //   70	76	59	java/util/zip/DataFormatException
+    //   37	56	82	finally
+    //   60	64	82	finally
+    //   70	76	82	finally
+  }
+  
+  public <T> T getByClass(String paramString, T paramT)
+  {
+    Object localObject;
+    if ((this._data != null) && (this._data.containsKey("compressed")) && (this._data.get("compressed") != null))
     {
-      char c;
-      if ((paramInt1 <= this.jdField_a_of_type_Int) && (paramInt2 < paramSpanned.length()))
+      localObject = (byte[])((HashMap)this._data.get("compressed")).get("string");
+      if ("true".equalsIgnoreCase(new String((byte[])localObject)))
       {
-        c = paramSpanned.charAt(paramInt2);
-        paramInt1 += bkzl.a(this.jdField_a_of_type_Bkzl, c);
-        paramInt2 += 1;
-      }
-      else
-      {
-        if (paramInt1 > this.jdField_a_of_type_Int) {
-          return paramSpanned.subSequence(0, paramInt2 - 1);
-        }
-        paramInt3 = 0;
-        paramInt2 = paramInt1;
-        paramInt1 = paramInt3;
-        while ((paramInt2 <= this.jdField_a_of_type_Int) && (paramInt1 < paramCharSequence.length()))
+        localObject = (HashMap)this._data.get(paramString);
+        if (localObject != null)
         {
-          c = paramCharSequence.charAt(paramInt1);
-          paramInt2 = bkzl.a(this.jdField_a_of_type_Bkzl, c) + paramInt2;
-          paramInt1 += 1;
+          localObject = ((HashMap)localObject).entrySet().iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            localObject = (Map.Entry)((Iterator)localObject).next();
+            ((Map.Entry)localObject).setValue(a((byte[])((Map.Entry)localObject).getValue()));
+          }
         }
-        paramInt3 = paramInt1;
-        if (paramInt2 > this.jdField_a_of_type_Int) {
-          paramInt3 = paramInt1 - 1;
-        }
-        return paramCharSequence.subSequence(0, paramInt3);
-        paramInt1 = 0;
-        paramInt2 = 0;
       }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      return super.getByClass(paramString, paramT);
+      QLog.e("CompressUniPacket", 1, "not compressed " + new String((byte[])localObject));
     }
   }
 }

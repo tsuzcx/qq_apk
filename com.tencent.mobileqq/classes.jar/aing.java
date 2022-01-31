@@ -1,28 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
 
 public class aing
-  extends aimb
+  extends awhw
 {
-  boolean a;
+  public aing(PhoneMatchView.1 param1) {}
   
-  protected aing(AlbumListFragment paramAlbumListFragment)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    super(paramAlbumListFragment);
-    this.jdField_a_of_type_Boolean = false;
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
   }
   
-  public void initData(Intent paramIntent)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Aima.recentImagesMaxCount = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
-      this.jdField_a_of_type_Aima.recentImagesLimitSize = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
-      this.jdField_a_of_type_Aima.recentImagesLimitWidth = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
-      this.jdField_a_of_type_Aima.recentImagesBlockPaths = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
-    }
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
+  }
+  
+  protected void e(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
+  }
+  
+  protected void f(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
   }
 }
 

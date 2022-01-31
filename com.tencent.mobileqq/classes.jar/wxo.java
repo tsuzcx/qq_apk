@@ -1,9 +1,17 @@
-public abstract interface wxo
-  extends wwd
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+
+public class wxo
+  implements View.OnClickListener
 {
-  public abstract xjv a(int paramInt);
+  public wxo(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public abstract void a(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

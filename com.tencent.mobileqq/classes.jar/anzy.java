@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
 
-public class anzy
-  implements View.OnClickListener
+public final class anzy
+  implements Parcelable.Creator<CardMobileInfo>
 {
-  public anzy(ColorNoteSettingFragment paramColorNoteSettingFragment, aoah paramaoah, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public CardMobileInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Aoah.a(paramView, this.jdField_a_of_type_Int);
+    return new CardMobileInfo(paramParcel);
+  }
+  
+  public CardMobileInfo[] a(int paramInt)
+  {
+    return new CardMobileInfo[paramInt];
   }
 }
 

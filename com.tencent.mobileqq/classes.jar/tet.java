@@ -6,7 +6,7 @@ import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import mqq.util.WeakReference;
 
 public class tet
-  extends bdfq
+  extends bdjz
 {
   private static WeakReference<tet> a;
   
@@ -67,7 +67,7 @@ public class tet
           paramActivity = new tet(paramActivity, 2131755801);
           paramActivity.setTitle("正在下载腾讯微视APP");
           paramActivity.setMessage("️⬆完成安装即可领取最高188红包⬆");
-          paramActivity.setPositiveButton(alpo.a(2131717388), new teu());
+          paramActivity.setPositiveButton(alud.a(2131717400), new teu());
           a = new WeakReference(paramActivity);
         }
         ((tet)a.get()).show();
@@ -101,8 +101,8 @@ public class tet
     if (paramWSDownloadParams.mStReportItem == null) {}
     for (int i = paramWSDownloadParams.mScene;; i = paramWSDownloadParams.mStReportItem.pagetype)
     {
-      localtet.setPositiveButton(alpo.a(2131717390), new tev(paramActivity, paramString, paramWSDownloadParams, i, paramInt));
-      localtet.setNegativeButton(alpo.a(2131717389), new tew(i, paramInt));
+      localtet.setPositiveButton(alud.a(2131717402), new tev(paramActivity, paramString, paramWSDownloadParams, i, paramInt));
+      localtet.setNegativeButton(alud.a(2131717401), new tew(i, paramInt));
       localtet.show();
       tju.b(6, 0, 0);
       tjr.a(6, i, paramInt, null);
@@ -118,7 +118,7 @@ public class tet
   
   private void b()
   {
-    setContentView(2131558943);
+    setContentView(2131558942);
     setCanceledOnTouchOutside(true);
   }
   
@@ -130,10 +130,10 @@ public class tet
       return;
     }
     tet localtet = new tet(paramActivity, 2131755801);
-    localtet.setTitle(alpo.a(2131717391));
+    localtet.setTitle(alud.a(2131717403));
     localtet.setMessage("️⬆完成安装即可领取最高188红包⬆");
-    localtet.setPositiveButton(alpo.a(2131717387), new tex(paramActivity, paramWSDownloadParams));
-    localtet.setNegativeButton(alpo.a(2131717389), new tey(paramWSDownloadParams));
+    localtet.setPositiveButton(alud.a(2131717399), new tex(paramActivity, paramWSDownloadParams));
+    localtet.setNegativeButton(alud.a(2131717401), new tey(paramWSDownloadParams));
     localtet.show();
     tju.a(paramWSDownloadParams.mScene, true, false);
     a(124, paramWSDownloadParams);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import azzz;
-import baam;
+import baei;
+import baev;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -16,26 +16,26 @@ class FrameSprite$1$1
       int j;
       synchronized (this.a.this$0)
       {
-        baam[] arrayOfbaam = azzz.a(this.a.this$0);
-        if ((arrayOfbaam == null) || (azzz.a(this.a.this$0))) {
+        baev[] arrayOfbaev = baei.a(this.a.this$0);
+        if ((arrayOfbaev == null) || (baei.a(this.a.this$0))) {
           return;
         }
-        azzz.a(this.a.this$0, new baam[azzz.a(this.a.this$0).length / 2]);
+        baei.a(this.a.this$0, new baev[baei.a(this.a.this$0).length / 2]);
         j = 0;
         int i = 0;
-        if (j < azzz.a(this.a.this$0).length)
+        if (j < baei.a(this.a.this$0).length)
         {
           if (j % 2 == 0)
           {
-            azzz localazzz2 = this.a.this$0;
+            baei localbaei2 = this.a.this$0;
             int k = i + 1;
-            azzz.a(localazzz2, i, arrayOfbaam[j]);
+            baei.a(localbaei2, i, arrayOfbaev[j]);
             i = k;
           }
           else
           {
-            azzz.a(this.a.this$0).remove(arrayOfbaam[j]);
-            arrayOfbaam[j].c();
+            baei.a(this.a.this$0).remove(arrayOfbaev[j]);
+            arrayOfbaev[j].c();
           }
         }
         else {

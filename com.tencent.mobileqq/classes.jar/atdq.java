@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class atdq
-  implements QQPermissionCallback
+class atdq
+  implements ActionCallback
 {
-  public atdq(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  atdq(atdh paramatdh, atdz paramatdz) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onResult(String paramString)
   {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bdcd.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+    try
+    {
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Atdz.a(i, "");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 

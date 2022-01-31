@@ -1,21 +1,10 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
-
 public class twc
-  extends RecyclerView.OnScrollListener
 {
-  public twc(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
+  public String a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public twc(String paramString)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      abqw.a().a("qcircle_follow_tab_page", false);
-      return;
-    }
-    abqw.a().a("qcircle_follow_tab_page");
+    this.a = paramString;
   }
 }
 

@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
-public final class bbkq
-  implements Parcelable.Creator<InviteToGroupInfo>
+public class bbkq
+  implements bctw
 {
-  public InviteToGroupInfo a(Parcel paramParcel)
-  {
-    return new InviteToGroupInfo(paramParcel);
-  }
+  public bbkq(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public InviteToGroupInfo[] a(int paramInt)
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    return new InviteToGroupInfo[paramInt];
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
+      TroopBarReplyActivity.a(this.a, false);
+    }
+    return false;
   }
 }
 

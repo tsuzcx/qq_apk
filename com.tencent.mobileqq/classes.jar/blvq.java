@@ -1,27 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class blvq
-  extends RecyclerView.OnScrollListener
+  implements blvr
 {
-  boolean jdField_a_of_type_Boolean = false;
+  blvq(blvo paramblvo) {}
   
-  blvq(blvp paramblvp) {}
+  public void a(float paramFloat, String paramString, int paramInt) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, bmvz parambmvz)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Blvp.a();
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambmvz.toString());
     }
   }
 }

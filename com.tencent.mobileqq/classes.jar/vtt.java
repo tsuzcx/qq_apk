@@ -1,71 +1,129 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
 public class vtt
-  extends Handler
 {
-  private vtt(MediaPlayer paramMediaPlayer) {}
+  private ErrorMessage a;
+  @NonNull
+  public final String a;
+  public uyg a;
+  public final String b;
+  private String c;
   
-  public void handleMessage(Message paramMessage)
+  public vtt(@NonNull String paramString1, @NonNull String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 4: 
-    case 2: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            Log.d("Story-MediaPlayer", "onPrepared");
-          } while (this.a.jdField_a_of_type_Vue == null);
-          this.a.jdField_a_of_type_Vue.a_(this.a);
-          return;
-          Log.d("Story-MediaPlayer", "onSeekComplete");
-        } while (this.a.jdField_a_of_type_Vuf == null);
-        this.a.jdField_a_of_type_Vuf.a(this.a);
-        return;
-        Log.d("Story-MediaPlayer", "onPlaybackComplete");
-        if (this.a.jdField_a_of_type_Vub != null) {
-          this.a.jdField_a_of_type_Vub.a(this.a);
-        }
-        this.a.c(false);
-        return;
-        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-      } while (this.a.jdField_a_of_type_Vuh == null);
-      this.a.jdField_a_of_type_Vuh.a(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 100: 
-      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-      if (this.a.jdField_a_of_type_Vuc == null) {
-        break;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public static vtt a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
       }
     }
-    for (boolean bool = this.a.jdField_a_of_type_Vuc.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    for (;;)
     {
-      if ((this.a.jdField_a_of_type_Vub != null) && (!bool)) {
-        this.a.jdField_a_of_type_Vub.a(this.a);
+      paramString1 = new vtt(paramString1, paramString2);
+      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      return paramString1;
+      paramString1 = "ERROR_NO_VID";
+      break;
+      label31:
+      paramString2 = "ERROR_NO_FEED";
+    }
+  }
+  
+  public static vtt a(String paramString1, String paramString2, String paramString3)
+  {
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
       }
-      this.a.c(false);
-      return;
-      Log.d("Story-MediaPlayer", "onInfo");
-      if (this.a.jdField_a_of_type_Vud == null) {
-        break;
+    }
+    for (;;)
+    {
+      paramString1 = new vtt(paramString1, paramString2);
+      paramString1.c = paramString3;
+      return paramString1;
+      paramString1 = "LOADING_NO_VID";
+      break;
+      label31:
+      paramString2 = "LOADING_NO_FEED";
+    }
+  }
+  
+  public ErrorMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+  }
+  
+  public StoryVideoItem a()
+  {
+    return ((uvx)uwa.a(5)).b(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public VideoListFeedItem a()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return null;
+    }
+    FeedItem localFeedItem = ((woy)uwa.a(11)).a(this.b, true);
+    if (localFeedItem == null) {
+      return null;
+    }
+    if ((localFeedItem instanceof VideoListFeedItem)) {
+      return (VideoListFeedItem)localFeedItem;
+    }
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.c != null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+  }
+  
+  public boolean c()
+  {
+    return (!a()) && (!b());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
+    int i;
+    if (this.jdField_a_of_type_Uyg == null)
+    {
+      i = 0;
+      localStringBuilder2.append(i).append(",");
+      if (!a()) {
+        break label89;
       }
-      this.a.jdField_a_of_type_Vud.a_(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-      if (this.a.jdField_a_of_type_Vua != null) {
-        this.a.jdField_a_of_type_Vua.a(this.a, paramMessage.arg1);
+      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
+    }
+    for (;;)
+    {
+      localStringBuilder1.append("}");
+      return localStringBuilder1.toString();
+      i = this.jdField_a_of_type_Uyg.a;
+      break;
+      label89:
+      if (b()) {
+        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      } else {
+        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
       }
-      this.a.e = paramMessage.arg1;
-      return;
     }
   }
 }

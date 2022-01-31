@@ -1,8 +1,10 @@
-import android.graphics.Bitmap;
-
 public abstract interface ajpf
 {
-  public abstract Bitmap a(int paramInt1, int paramInt2);
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

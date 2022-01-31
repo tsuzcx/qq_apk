@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aqar;
-import aqay;
+import aqfa;
+import aqfh;
 
 public class ExtendFriendSquareFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSquareFragment$2$1(aqar paramaqar) {}
+  public ExtendFriendSquareFragment$2$1(aqfa paramaqfa) {}
   
   public void run()
   {

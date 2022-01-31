@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aipv;
-import aipw;
-import airt;
-import aitd;
-import aizz;
-import ajaf;
-import ajar;
-import ajat;
-import ajbb;
-import alpo;
+import aiuk;
+import aiul;
+import aiwi;
+import aixs;
+import ajeo;
+import ajeu;
+import ajfg;
+import ajfi;
+import ajfq;
+import alud;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,8 +21,8 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azmj;
-import bdbt;
+import azqs;
+import bdgc;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
@@ -39,11 +39,11 @@ import java.lang.ref.WeakReference;
 
 public class RedPacketVoiceFragment
   extends RedPacketPopFragment
-  implements ajar, ajbb
+  implements ajfg, ajfq
 {
   private int jdField_a_of_type_Int;
   public long a;
-  ajat jdField_a_of_type_Ajat;
+  ajfi jdField_a_of_type_Ajfi;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private Handler jdField_a_of_type_AndroidOsHandler;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -69,15 +69,15 @@ public class RedPacketVoiceFragment
     Object localObject = new StringBuilder(50);
     ((StringBuilder)localObject).append("msgType=13").append("&isOffline=").append(this.jdField_a_of_type_Boolean);
     long l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.sendByVoice", ((StringBuilder)localObject).toString(), 0, null, SystemClock.uptimeMillis());
-    aipw localaipw = (aipw)getActivity().app.getManager(125);
-    aipv localaipv = localaipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-    localaipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
-    localObject = (aitd)getActivity().app.getManager(245);
+    aiul localaiul = (aiul)getActivity().app.getManager(125);
+    aiuk localaiuk = localaiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
+    localaiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
+    localObject = (aixs)getActivity().app.getManager(245);
     int i;
     SessionInfo localSessionInfo;
     if (localObject != null)
     {
-      i = ((aitd)localObject).a("voice_pwd", 1, new String[] { "scoreSwitch" });
+      i = ((aixs)localObject).a("voice_pwd", 1, new String[] { "scoreSwitch" });
       localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (i != 1) {
         break label304;
@@ -86,10 +86,10 @@ public class RedPacketVoiceFragment
     label304:
     for (localObject = paramString;; localObject = "")
     {
-      localaipw.a(localSessionInfo, localaipv, l, 65536, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, null);
-      ajaf.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+      localaiul.a(localSessionInfo, localaiuk, l, 65536, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, null);
+      ajeu.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
       if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localaipv.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localaipv.b + ",isPasswdRedBagOverDue=" + localaipv.c + "|scoreSwitch:" + i + "|scoreId" + paramString);
+        QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localaiuk.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localaiuk.b + ",isPasswdRedBagOverDue=" + localaiuk.c + "|scoreSwitch:" + i + "|scoreId" + paramString);
       }
       return;
       i = 1;
@@ -99,7 +99,7 @@ public class RedPacketVoiceFragment
   
   private boolean e()
   {
-    if (((aitd)getActivity().app.getManager(245)).a("voice_pwd", 0, new String[] { "offline" }) == 1) {}
+    if (((aixs)getActivity().app.getManager(245)).a("voice_pwd", 0, new String[] { "offline" }) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
@@ -134,7 +134,7 @@ public class RedPacketVoiceFragment
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695800));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695802));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketVoiceFragment", 2, "onBegin() is called");
@@ -146,11 +146,11 @@ public class RedPacketVoiceFragment
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      this.jdField_a_of_type_JavaLangString = aizz.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title);
-      if ((this.jdField_a_of_type_Ajat != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg != null)) {
-        this.jdField_a_of_type_Ajat.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_JavaLangString = ajeo.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title);
+      if ((this.jdField_a_of_type_Ajfi != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg != null)) {
+        this.jdField_a_of_type_Ajfi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
-      azmj.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.start", 0, 0, "", "", "", "");
+      azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.start", 0, 0, "", "", "", "");
       return;
     }
     catch (Throwable localThrowable)
@@ -175,16 +175,16 @@ public class RedPacketVoiceFragment
   protected void a(View paramView)
   {
     super.a(paramView);
-    ((ViewStub)paramView.findViewById(2131377119)).inflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372506));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377870));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView = ((RecordMicView)paramView.findViewById(2131375455));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380008));
+    ((ViewStub)paramView.findViewById(2131377173)).inflate();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372526));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377924));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView = ((RecordMicView)paramView.findViewById(2131375506));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380066));
     a(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380024));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)paramView.findViewById(2131368217));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)paramView.findViewById(2131368218));
-    this.c = ((TextView)paramView.findViewById(2131367464));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380082));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)paramView.findViewById(2131368228));
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)paramView.findViewById(2131368229));
+    this.c = ((TextView)paramView.findViewById(2131367474));
   }
   
   public void a(String paramString)
@@ -192,7 +192,7 @@ public class RedPacketVoiceFragment
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     g();
-    this.jdField_a_of_type_Ajat.c();
+    this.jdField_a_of_type_Ajfi.c();
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
   }
   
@@ -206,15 +206,15 @@ public class RedPacketVoiceFragment
     if (!super.a()) {
       return false;
     }
-    this.jdField_e_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130842985));
-    String str = bdbt.b(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
-    str = ajaf.a(getActivity(), str, 135.0F, this.d.getPaint());
-    this.d.setText(str + alpo.a(2131713684));
+    this.jdField_e_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130842998));
+    String str = bdgc.b(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
+    str = ajeu.a(getActivity(), str, 135.0F, this.d.getPaint());
+    this.d.setText(str + alud.a(2131713696));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("“" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title + "”");
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695798));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695800));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.setStatusListener(this);
-    this.jdField_a_of_type_Ajat = ajat.a();
-    this.jdField_a_of_type_Ajat.a(this);
+    this.jdField_a_of_type_Ajfi = ajfi.a();
+    this.jdField_a_of_type_Ajfi.a(this);
     this.jdField_a_of_type_Boolean = e();
     this.jdField_a_of_type_Int = (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.soundRecordDuration * 1000);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.setRecordTime(this.jdField_a_of_type_Int);
@@ -222,23 +222,23 @@ public class RedPacketVoiceFragment
     {
       this.c.setVisibility(0);
       this.jdField_a_of_type_AndroidOsBundle = ((Bundle)getArguments().getParcelable("detail_bundle"));
-      this.c.setOnClickListener(new airt(this));
+      this.c.setOnClickListener(new aiwi(this));
     }
-    aizz.a().a();
+    ajeo.a().a();
     f();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-    azmj.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.show", 0, 0, "", "", "", "");
+    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.show", 0, 0, "", "", "", "");
     return true;
   }
   
   public void b()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695801));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695803));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     g();
     c();
-    if (this.jdField_a_of_type_Ajat != null) {
-      this.jdField_a_of_type_Ajat.b();
+    if (this.jdField_a_of_type_Ajfi != null) {
+      this.jdField_a_of_type_Ajfi.b();
     }
   }
   
@@ -268,13 +268,13 @@ public class RedPacketVoiceFragment
   
   public void d()
   {
-    a(getResources().getString(2131695798));
-    azmj.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.cancel", 0, 0, "", "", "", "");
+    a(getResources().getString(2131695800));
+    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.cancel", 0, 0, "", "", "", "");
   }
   
   public void e()
   {
-    a(getResources().getString(2131695799));
+    a(getResources().getString(2131695801));
   }
   
   public void i() {}
@@ -284,18 +284,18 @@ public class RedPacketVoiceFragment
   public void o()
   {
     super.o();
-    ajat.a().d();
+    ajfi.a().d();
   }
   
   public boolean onBackEvent()
   {
     if (this.jdField_e_of_type_Boolean) {
-      azmj.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.keyback", 0, 0, "", "", "", "");
+      azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.keyback", 0, 0, "", "", "", "");
     }
     for (;;)
     {
       return super.onBackEvent();
-      azmj.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.back", 0, 0, "", "", "", "");
+      azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.back", 0, 0, "", "", "", "");
     }
   }
   

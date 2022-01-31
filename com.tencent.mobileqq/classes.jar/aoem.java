@@ -1,76 +1,50 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aoem
+  implements aoeq
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  
-  public static aoem a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    aoem localaoem = new aoem();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localaoem.jdField_a_of_type_Int = paramString.optInt("nTopicId");
-      localaoem.jdField_b_of_type_Int = paramString.optInt("nBGType");
-      localaoem.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
-      localaoem.jdField_a_of_type_JavaLangString = paramString.optString("strRecNick");
-      localaoem.jdField_b_of_type_JavaLangString = paramString.optString("strRecUin");
-      localaoem.jdField_c_of_type_JavaLangString = paramString.optString("strConfessorUin");
-      localaoem.jdField_d_of_type_JavaLangString = paramString.optString("strConfessorDesc");
-      localaoem.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorNick");
-      localaoem.g = paramString.optInt("flag");
-      localaoem.jdField_a_of_type_Long = paramString.optInt("confessTime");
-      localaoem.jdField_d_of_type_Int = paramString.optInt("nConfessNum");
-      localaoem.jdField_e_of_type_Int = paramString.optInt("nGetConfessSex");
-      localaoem.f = paramString.optInt("nBizType");
-      return localaoem;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
   public String a()
   {
-    try
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692447);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("strRecNick", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strRecUin", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorUin", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorDesc", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorNick", this.jdField_e_of_type_JavaLangString);
-      ((JSONObject)localObject).put("flag", this.g);
-      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("nConfessNum", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("nGetConfessSex", this.jdField_e_of_type_Int);
-      ((JSONObject)localObject).put("nBizType", this.f);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
+      }
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
     }
-    catch (Exception localException)
+    label116:
+    label121:
+    for (;;)
     {
-      localException.printStackTrace();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bivc.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bivo.b(paramView, 6, 0);
+      bivs.a(paramView.getCurrentAccountUin());
+      azqs.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
-    return "";
   }
 }
 

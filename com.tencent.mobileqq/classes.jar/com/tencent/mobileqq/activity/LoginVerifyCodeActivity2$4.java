@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class LoginVerifyCodeActivity2$4
   implements Runnable
@@ -11,8 +11,8 @@ class LoginVerifyCodeActivity2$4
     {
       if ((LoginVerifyCodeActivity2.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        LoginVerifyCodeActivity2.a(this.this$0, new bepp(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity2.a(this.this$0).c(2131695088);
+        LoginVerifyCodeActivity2.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        LoginVerifyCodeActivity2.a(this.this$0).c(2131695090);
       }
       if ((LoginVerifyCodeActivity2.a(this.this$0) != null) && (!LoginVerifyCodeActivity2.a(this.this$0).isShowing())) {
         LoginVerifyCodeActivity2.a(this.this$0).show();

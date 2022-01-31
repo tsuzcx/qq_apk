@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.entry;
 
-import alko;
-import alkr;
+import alpd;
+import alpg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class MiniAppEntryHandler
-  extends alko
+  extends alpd
 {
   public MiniAppEntryHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  public Class<? extends alkr> observerClass()
+  public Class<? extends alpg> observerClass()
   {
     return MiniAppEntryObserver.class;
   }

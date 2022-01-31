@@ -1,13 +1,13 @@
 package com.tencent.mm.hardcoder;
 
-import absd;
+import abws;
 
 public final class HardCoderManager$1
   extends Thread
 {
   public void run()
   {
-    absd.a(absd.b());
+    abws.a(abws.b());
   }
 }
 

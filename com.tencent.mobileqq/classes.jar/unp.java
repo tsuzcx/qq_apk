@@ -1,21 +1,19 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tribe.async.async.Job;
 import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class unp
-  extends Job<Object, Object, Object>
+  extends SimpleJob
 {
-  unp(uno paramuno, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
+  unp(uno paramuno, String paramString, boolean paramBoolean)
   {
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    wsv.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Uno.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    this.jdField_a_of_type_Uno.b(this.jdField_a_of_type_Boolean);
     return null;
   }
 }

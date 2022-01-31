@@ -1,12 +1,20 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajhu
-  extends ajhi
+class ajhu
+  implements View.OnClickListener
 {
-  public ajhu(Context paramContext)
+  ajhu(ajgb paramajgb) {}
+  
+  public void onClick(View paramView)
   {
-    this.a = paramContext.getString(2131698821);
-    this.b = this.a;
+    if (ajgb.a(this.a).app != null)
+    {
+      ((alpk)ajgb.a(this.a).app.a(2)).b(0, "", "not_disturb_from_conversation");
+      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8009EBA", "0X8009EBA", 0, 1, "", "", "", "");
+    }
   }
 }
 

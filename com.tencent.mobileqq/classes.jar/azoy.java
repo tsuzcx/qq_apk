@@ -1,69 +1,26 @@
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class azoy
-  implements Comparable<azoy>
+public final class azoy
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, azoy> a;
+  public azoy(aznp paramaznp) {}
   
-  public azoy()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public azoy(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a(azoy paramazoy)
-  {
-    return paramazoy.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
-  }
-  
-  public azoy a(String paramString)
-  {
-    return (azoy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    return ((azoy)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    this.a.a(15, 1, 0L);
+    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
+    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azoy
  * JD-Core Version:    0.7.0.1
  */

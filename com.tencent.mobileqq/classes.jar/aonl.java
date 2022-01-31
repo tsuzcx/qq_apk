@@ -1,62 +1,87 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aonl
+  extends aokh<aonm>
 {
-  private String jdField_a_of_type_JavaLangString = "1108338344";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "pages/list/list";
-  private String c = "";
+  public static int a = 16777216;
+  public static int b = 10240;
   
-  public static aonl a(JSONObject paramJSONObject)
+  public int a()
   {
-    boolean bool = true;
-    aonl localaonl = new aonl();
-    if (paramJSONObject.has("enableOpenMiniCode")) {
-      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
-        break label93;
-      }
+    return 561;
+  }
+  
+  @NonNull
+  public aonm a(int paramInt)
+  {
+    aonm localaonm = new aonm();
+    localaonm.a = a;
+    localaonm.b = b;
+    return localaonm;
+  }
+  
+  @Nullable
+  public aonm a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return new aonm();
     }
-    for (;;)
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
+    }
+    aonm localaonm = new aonm();
+    try
     {
-      localaonl.jdField_a_of_type_Boolean = bool;
-      if (paramJSONObject.has("miniCodeAppid")) {
-        localaonl.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
-      }
-      if (paramJSONObject.has("miniCodePage")) {
-        localaonl.b = paramJSONObject.getString("miniCodePage");
-      }
-      if (paramJSONObject.has("miniCodeEnvVersion")) {
-        localaonl.c = paramJSONObject.getString("miniCodeEnvVersion");
-      }
-      return localaonl;
-      label93:
-      bool = false;
+      JSONObject localJSONObject = new JSONObject(paramArrayOfaoko);
+      localaonm.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
+      localaonm.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
+      return localaonm;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfaoko);
+      localaonm.a = a;
+      localaonm.b = b;
+    }
+    return localaonm;
+  }
+  
+  public Class a()
+  {
+    return aonm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
     }
   }
   
-  public String a()
+  public void a(aonm paramaonm)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
+    }
   }
   
-  public void a(String paramString)
+  public int b()
   {
-    this.b = paramString;
+    return 0;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean b()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return false;
   }
   
-  public boolean a()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    return true;
   }
 }
 

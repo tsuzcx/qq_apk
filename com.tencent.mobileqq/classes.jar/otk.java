@@ -26,7 +26,7 @@ public class otk
         String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)paramString.get(str1);
         if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
-          bjxj.m(Integer.parseInt(str2));
+          bkbq.m(Integer.parseInt(str2));
         }
       }
       return true;
@@ -40,7 +40,7 @@ public class otk
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.m(0);
+    bkbq.m(0);
   }
 }
 

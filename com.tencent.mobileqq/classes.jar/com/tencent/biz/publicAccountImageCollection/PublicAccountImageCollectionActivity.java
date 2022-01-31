@@ -76,7 +76,7 @@ public class PublicAccountImageCollectionActivity
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559480);
+    super.setContentView(2131559479);
     int i = getWindowManager().getDefaultDisplay().getHeight();
     int j = getWindowManager().getDefaultDisplay().getWidth();
     Object localObject = getIntent();
@@ -91,7 +91,7 @@ public class PublicAccountImageCollectionActivity
       ((Matrix)localObject).setValues(arrayOfFloat);
     }
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView = new PublicAccountImageView(this, this.jdField_a_of_type_AndroidOsHandler, (Matrix)localObject, this.jdField_a_of_type_Int, n, i1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372430));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372450));
     paramBundle = a(paramBundle, k, m);
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageDrawable(paramBundle);
     ((Matrix)localObject).postScale(3.0F, 3.0F, n / 2, i1 / 2);

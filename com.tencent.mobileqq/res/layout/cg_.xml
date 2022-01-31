@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/mt3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/mt4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/mt8" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gir" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/mt5" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gcf" android:layout_centerInParent="true" />
-    <ProgressBar android:id="@id/mt2" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
-    <TextView android:textSize="16.0dip" android:textColor="#e6ffffff" android:id="@id/mt6" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_below="@id/mt2" android:layout_centerHorizontal="true" />
+    <FrameLayout android:id="@id/mup" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/muq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/muu" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gir" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/mur" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gcf" android:layout_centerInParent="true" />
+    <ProgressBar android:id="@id/muo" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
+    <TextView android:textSize="16.0dip" android:textColor="#e6ffffff" android:id="@id/mus" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_below="@id/muo" android:layout_centerHorizontal="true" />
 </RelativeLayout>

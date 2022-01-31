@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acmd;
+import acqs;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -20,7 +20,7 @@ public class ChatTextSizeSettingActivity
 {
   private static int jdField_b_of_type_Int;
   public int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acmd(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acqs(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -82,7 +82,7 @@ public class ChatTextSizeSettingActivity
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131377692);
+      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131377746);
       if (i == paramInt) {
         ((ImageView)localObject).setVisibility(0);
       }
@@ -102,12 +102,12 @@ public class ChatTextSizeSettingActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131558803);
-    setTitle(getString(2131695409));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377695));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377694));
-    this.c = ((ViewGroup)findViewById(2131377693));
-    this.d = ((ViewGroup)findViewById(2131377691));
+    super.setContentView(2131558802);
+    setTitle(getString(2131695411));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377749));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377748));
+    this.c = ((ViewGroup)findViewById(2131377747));
+    this.d = ((ViewGroup)findViewById(2131377745));
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);

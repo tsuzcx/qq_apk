@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bbbd;
+import bbfm;
 
 public class AbsPublishActivity$8$3
   implements Runnable
 {
-  public AbsPublishActivity$8$3(bbbd parambbbd) {}
+  public AbsPublishActivity$8$3(bbfm parambbfm) {}
   
   public void run()
   {

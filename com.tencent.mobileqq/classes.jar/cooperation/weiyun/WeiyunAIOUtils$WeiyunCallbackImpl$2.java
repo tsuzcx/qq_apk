@@ -1,16 +1,16 @@
 package cooperation.weiyun;
 
-import bkfk;
+import bkjr;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$2
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bkfk parambkfk, String paramString) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bkjr parambkjr, String paramString) {}
   
   public void run()
   {
-    QQToast.a(bkfk.a(this.this$0), 1, this.a, 1).b(bkfk.a(this.this$0));
+    QQToast.a(bkjr.a(this.this$0), 1, this.a, 1).b(bkjr.a(this.this$0));
   }
 }
 

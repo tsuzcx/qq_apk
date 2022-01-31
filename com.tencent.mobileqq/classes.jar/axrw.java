@@ -1,111 +1,97 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.opengl.EGL14;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
-import android.opengl.Matrix;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import java.nio.IntBuffer;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class axrw
-  implements GLSurfaceView.Renderer
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private axqx jdField_a_of_type_Axqx;
-  private axqy jdField_a_of_type_Axqy;
-  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private int b;
+  public axrw(ProviderContainerView paramProviderContainerView) {}
   
-  public Bitmap a(Bitmap paramBitmap, GPUBaseFilter paramGPUBaseFilter)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = paramGPUBaseFilter;
-    onSurfaceCreated(null, null);
-    onSurfaceChanged(null, paramBitmap.getWidth(), paramBitmap.getHeight());
-    onDrawFrame(null);
-    onDrawFrame(null);
-    paramGPUBaseFilter = IntBuffer.allocate(paramBitmap.getWidth() * paramBitmap.getHeight());
-    GLES20.glReadPixels(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), 6408, 5121, paramGPUBaseFilter);
-    paramGPUBaseFilter = paramGPUBaseFilter.array();
-    paramBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-    paramBitmap.copyPixelsFromBuffer(IntBuffer.wrap(paramGPUBaseFilter));
-    return paramBitmap;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Axqy != null)
+    int i = ProviderContainerView.a(this.a).a(((Integer)paramView.getTag()).intValue());
+    if (i == 102)
     {
-      this.jdField_a_of_type_Axqy.a();
-      this.jdField_a_of_type_Axqy = null;
-    }
-    if (this.jdField_a_of_type_Axqx != null)
-    {
-      this.jdField_a_of_type_Axqx.a();
-      this.jdField_a_of_type_Axqx = null;
-    }
-  }
-  
-  @TargetApi(17)
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      this.jdField_a_of_type_Axqx = new axqx(EGL14.eglGetCurrentContext(), 1);
-    }
-    this.jdField_a_of_type_Axqy = new axqy(this.jdField_a_of_type_Axqx);
-    this.jdField_a_of_type_Axqy.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Axqy.b();
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16640);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() % 2 == 1)
-    {
-      paramGL10 = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + 1, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      localObject = new Canvas(paramGL10);
-      ((Canvas)localObject).drawARGB(0, 0, 0, 0);
-      ((Canvas)localObject).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
-      this.jdField_a_of_type_Int = 1;
-      if (paramGL10 != null) {
-        break label144;
+      axpl.b();
+      if (!azkt.a(this.a.getContext())) {
+        QQToast.a(this.a.getContext(), alud.a(2131708916), 0).a();
       }
     }
-    label144:
-    for (Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;; localObject = paramGL10)
+    boolean bool;
+    do
     {
-      this.b = GlUtil.createTexture(3553, (Bitmap)localObject);
-      if ((paramGL10 != null) && (!paramGL10.isRecycled())) {
-        paramGL10.recycle();
-      }
-      paramGL10 = new float[16];
-      Matrix.setIdentityM(paramGL10, 0);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.b, null, paramGL10);
+      do
+      {
+        return;
+        if (axpm.a == 0)
+        {
+          QQToast.a(this.a.getContext(), alud.a(2131708922), 0).a();
+          return;
+        }
+        if (axpm.a != -1) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
       return;
-      this.jdField_a_of_type_Int = 0;
-      paramGL10 = null;
-      break;
+      if (axpm.a == 2)
+      {
+        bool = axpm.a(true);
+        if (QLog.isColorLevel()) {
+          QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
+        }
+        if (ProviderContainerView.a(this.a) != null) {
+          ProviderContainerView.a(this.a).y();
+        }
+      }
+      if (i != 103) {
+        break label334;
+      }
+      axpl.e();
+      axpl.b();
+      if (!azkt.a(this.a.getContext()))
+      {
+        QQToast.a(this.a.getContext(), alud.a(2131708921), 0).a();
+        return;
+      }
+      if (axpm.a == 0)
+      {
+        QQToast.a(this.a.getContext(), alud.a(2131708920), 0).a();
+        return;
+      }
+      if (axpm.a != -1) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
+    return;
+    if (axpm.a == 2)
+    {
+      bool = axpm.a(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
+      }
+      if (ProviderContainerView.a(this.a) != null) {
+        ProviderContainerView.a(this.a).y();
+      }
     }
-  }
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
-  {
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    GLES20.glUseProgram(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.getProgram());
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
-  {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glDisable(2929);
+    label334:
+    if (i == 101) {
+      axpl.d();
+    }
+    if (i == 104)
+    {
+      azqs.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
+      axpl.c();
+    }
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).a();
+    }
+    ProviderContainerView.a(this.a, paramView, i);
   }
 }
 

@@ -1,59 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import org.json.JSONException;
 
-class bbyx
-  extends Handler
+public class bbyx
+  implements View.OnClickListener
 {
-  bbyx(bbyw parambbyw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bbyx(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Bbyz == null) {}
-    WordInfo localWordInfo;
-    do
+    try
     {
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        localWordInfo = (WordInfo)paramMessage.obj;
-        this.a.jdField_a_of_type_Bbyz.a(localWordInfo);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
-          this.a.a(localWordInfo);
-        }
-        break;
-      }
-    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
-    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
-    int i = localWordInfo.wordPos + 1;
-    label148:
-    if (i < paramMessage.size())
-    {
-      localWordInfo = (WordInfo)paramMessage.get(i);
-      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
     }
-    for (i = 0; i != 0; i = 1)
+    catch (JSONException paramView)
     {
-      this.a.b();
-      return;
-      i += 1;
-      break label148;
-      this.a.jdField_a_of_type_Bbyz.g();
-      return;
-      this.a.jdField_a_of_type_Bbyz.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = 0;
-      return;
+      paramView.printStackTrace();
+      xqq.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
     }
   }
 }

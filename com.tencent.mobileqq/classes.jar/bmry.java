@@ -1,48 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.util.HashMap;
-
-public class bmry<K, V>
+class bmry
+  implements uxw
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, bmry<K, V>.bmrz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  bmry(bmru parambmru) {}
   
-  @Nullable
-  public V a(K paramK)
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
-    {
-      paramK = (bmrz)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-      if (paramK.get() != null) {
-        return paramK.get();
-      }
+    wxe.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramuxs != null) && (this.a.a != null)) {
+      this.a.a(paramuxs.b, paramuxs.a, this.a.a);
     }
-    return null;
-  }
-  
-  public void a()
-  {
     for (;;)
     {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localReference == null) {
-        break;
+      paramuxs = (uxt)uwa.a(9);
+      if (paramuxs != null) {
+        paramuxs.b(this);
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((bmrz)localReference).a());
-    }
-  }
-  
-  public void a(@NonNull K paramK, @NonNull V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("key-value cannot be null");
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bmrz)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+      this.a.a = null;
       return;
+      wxe.e("DoodleEmojiManager", "onLbsUpdate failed.");
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bmrz(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
   }
 }
 

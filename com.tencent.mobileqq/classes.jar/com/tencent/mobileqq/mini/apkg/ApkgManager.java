@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alpo;
+import alud;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -328,7 +328,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, alpo.a(2131700657));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, alud.a(2131700669));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)

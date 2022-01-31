@@ -1,21 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
-class zai
-  implements QQPermissionCallback
+public class zai
 {
-  zai(zae paramzae) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static Bitmap a(Bitmap paramBitmap)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    bdcd.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    zae.g(this.a);
+    int i;
+    int j;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      i = paramBitmap.getWidth();
+      j = paramBitmap.getHeight();
+      if ((i > 0) && (j > 0)) {}
+    }
+    else
+    {
+      return paramBitmap;
+    }
+    int k = ((Long)yyw.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
+    float f1 = k / i;
+    float f2 = k / j;
+    awiw.a("Q.videostory", "Q.videostory.capture", "resizeImage", k + " " + k);
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
   }
 }
 

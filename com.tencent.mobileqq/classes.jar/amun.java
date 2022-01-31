@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
-public final class amun
-  implements Parcelable.Creator<ArCloudConfigInfo>
+public class amun
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
-  {
-    return new ArCloudConfigInfo(paramParcel);
-  }
+  public amun(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ArCloudConfigInfo[paramInt];
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
   }
 }
 

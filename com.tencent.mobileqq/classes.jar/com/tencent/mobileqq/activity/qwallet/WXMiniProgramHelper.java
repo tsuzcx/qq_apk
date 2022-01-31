@@ -87,12 +87,12 @@ public class WXMiniProgramHelper
     Object localObject = ThreadManager.getUIHandler();
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled())
     {
-      a((MqqHandler)localObject, 2131693073);
+      a((MqqHandler)localObject, 2131693075);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() < 621086464)
     {
-      a((MqqHandler)localObject, 2131693074);
+      a((MqqHandler)localObject, 2131693076);
       return;
     }
     localObject = new WXLaunchMiniProgram.Req();

@@ -1,18 +1,14 @@
-public class ayrb
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ayrb
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  ayrb(ayra paramayra) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
+    ayra.a(this.a).a(paramView);
   }
 }
 

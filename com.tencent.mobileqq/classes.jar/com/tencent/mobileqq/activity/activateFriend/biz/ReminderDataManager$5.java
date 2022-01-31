@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aejx;
-import aekb;
-import bdcs;
+import aeom;
+import aeoq;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class ReminderDataManager$5
   implements Runnable
 {
-  public ReminderDataManager$5(aejx paramaejx, String paramString, aekb paramaekb) {}
+  public ReminderDataManager$5(aeom paramaeom, String paramString, aeoq paramaeoq) {}
   
   public void run()
   {
-    File[] arrayOfFile = aejx.b(this.this$0, aejx.a(this.this$0));
+    File[] arrayOfFile = aeom.b(this.this$0, aeom.a(this.this$0));
     int j;
     int i;
     if (arrayOfFile.length > 0)
@@ -32,14 +32,14 @@ public class ReminderDataManager$5
           break label190;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(aejx.a(), 2, "deleteReminderFilesByMsgId msgId: " + this.jdField_a_of_type_JavaLangString);
+          QLog.d(aeom.a(), 2, "deleteReminderFilesByMsgId msgId: " + this.jdField_a_of_type_JavaLangString);
         }
-        if (!bdcs.d(localFile.getAbsolutePath())) {
+        if (!bdhb.d(localFile.getAbsolutePath())) {
           break label158;
         }
-        aejx.a(this.this$0, localAcsMsg);
+        aeom.a(this.this$0, localAcsMsg);
         if (QLog.isColorLevel()) {
-          QLog.d(aejx.a(), 2, "cancelAlarmById alarmId: " + localAcsMsg.hashCode());
+          QLog.d(aeom.a(), 2, "cancelAlarmById alarmId: " + localAcsMsg.hashCode());
         }
       }
       label158:
@@ -47,10 +47,10 @@ public class ReminderDataManager$5
       {
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(aejx.a(), 2, " deleteFile fail ");
+          QLog.d(aeom.a(), 2, " deleteFile fail ");
         }
-      } while (this.jdField_a_of_type_Aekb == null);
-      this.jdField_a_of_type_Aekb.a();
+      } while (this.jdField_a_of_type_Aeoq == null);
+      this.jdField_a_of_type_Aeoq.a();
       return;
       label190:
       i += 1;

@@ -1,8 +1,13 @@
-public abstract interface xkt
+class xkt
 {
-  public abstract void a();
+  final int jdField_a_of_type_Int;
+  final xku jdField_a_of_type_Xku;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public xkt(xku paramxku, int paramInt)
+  {
+    this.jdField_a_of_type_Xku = paramxku;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

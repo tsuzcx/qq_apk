@@ -1,32 +1,63 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.HashSet;
+import java.util.Set;
 
 public class auef
-  implements auby
 {
-  public auef(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public Set<String> a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public void a(List<RecentBaseData> paramList)
+  public auef(String paramString, int paramInt)
   {
-    MsgBackupSelectionFragment.a(this.a, true);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-    }
-    for (;;)
-    {
-      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
-      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
-      return;
-      if (MsgBackupSelectionFragment.a(this.a) == 0) {
-        auff.a("0X800A232");
-      } else if (aucf.c) {
-        auff.a("0X800A257");
-      }
-    }
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.h = a(paramString, paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    return paramInt + "_" + paramString;
+  }
+  
+  public static String[] a(String paramString)
+  {
+    return paramString.split("_");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public String toString()
+  {
+    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
   }
 }
 

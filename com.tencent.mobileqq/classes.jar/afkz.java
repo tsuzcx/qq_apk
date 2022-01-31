@@ -1,17 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
-
-public class afkz
-  implements View.OnTouchListener
+public abstract interface afkz
 {
-  public afkz(HeartCombolEffectView paramHeartCombolEffectView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

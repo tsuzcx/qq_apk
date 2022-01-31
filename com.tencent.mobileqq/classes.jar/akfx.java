@@ -1,27 +1,35 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContactAdd;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class akfx
-  extends bhxb
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContactAdd a;
-  public QIMNotifyAddFriend a;
-  public String a;
-  public structmsg.StructMsg a;
-  public long b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public static void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    if ((paramInt == 3) && (arxg.a().a()))
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("uin", paramString);
+      ((Map)localObject).put("from", Integer.valueOf(3));
+      arxt.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
+      return;
+    }
+    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
+    ((Intent)localObject).putExtra("key_friend_uin", paramString);
+    ((Intent)localObject).putExtra("key_start_from", 3);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+  }
 }
 
 

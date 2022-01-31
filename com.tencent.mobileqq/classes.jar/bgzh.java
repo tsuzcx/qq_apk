@@ -1,62 +1,34 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
-public class bgzh
-  extends bgzp
+final class bgzh
+  implements AsyncResult
 {
-  private INTERFACE.StGetUserHealthDataReq a = new INTERFACE.StGetUserHealthDataReq();
+  bgzh(MiniAppInfo paramMiniAppInfo, bgxn parambgxn) {}
   
-  public bgzh(COMM.StCommonExt paramStCommonExt, String paramString)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a.appid.set(paramString);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
-    try
+    QMLog.d("JsApiUpdateManager", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
+    if ((paramJSONObject != null) && (paramBoolean))
     {
-      localStGetUserHealthDataRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserHealthDataRsp != null)
+      bgzg.a((MiniAppInfo)paramJSONObject.opt("mini_app_info_data"));
+      if (bgzg.a() != null)
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserHealthDataRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserHealthDataRsp.iv.get());
-        return paramArrayOfByte;
+        if (bgos.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bgzg.a()))
+        {
+          bgzg.a(this.jdField_a_of_type_Bgxn, true);
+          bgzg.a(this.jdField_a_of_type_Bgxn, bgzg.a());
+          return;
+        }
+        bgzg.a(this.jdField_a_of_type_Bgxn, false);
+        return;
       }
-      QMLog.d("GetUserHealthDataRequest", "onResponse fail.rsp = null");
-      return null;
+      QMLog.e("JsApiUpdateManager", "onCmdListener newMiniAppInfo = null");
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetUserHealthDataRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserHealthData";
+    QMLog.e("JsApiUpdateManager", "onCmdListener success = " + paramBoolean + " ret = " + paramJSONObject);
   }
 }
 

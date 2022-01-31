@@ -1,17 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afsl
-  extends aelt
+class afsl
+  extends afuf
 {
-  public ImageView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
+  afsl(afpy paramafpy)
+  {
+    super(paramafpy, null);
+  }
   
-  public afsl(afsf paramafsf) {}
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agfs(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

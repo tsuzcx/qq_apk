@@ -1,61 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+
 public class blmj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  String a;
-  String b;
+  public blmj(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public blmj(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    case 3: 
-    case 6: 
-    case 8: 
-    case 9: 
-    default: 
-      return;
-    case 5: 
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131701733);
-      this.b = alpo.a(2131701730);
-      return;
-    case 1: 
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131701732);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 0: 
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131701735);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 2: 
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131701734);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 4: 
-      this.jdField_a_of_type_JavaLangString = alpo.a(2131701736);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 7: 
-      bmde localbmde = (bmde)blmf.a(17);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131701731);
-    this.b = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    AEEditorVideoClipFragment.a(this.a);
+    this.a.a().a(this.a.getActivity());
   }
 }
 

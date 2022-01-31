@@ -1,77 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-
 public class baqr
-  implements bdcx
+  extends alwx
 {
-  private baoa jdField_a_of_type_Baoa;
-  private DownloadParams jdField_a_of_type_ComTencentImageDownloadParams;
-  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
   
-  public baqr(baqq parambaqq, baoa parambaoa, URLDrawableHandler paramURLDrawableHandler)
+  /* Error */
+  protected void a(boolean paramBoolean, QQService.RespTmpChatPicDownload paramRespTmpChatPicDownload)
   {
-    this.jdField_a_of_type_Baoa = parambaoa;
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-  }
-  
-  public baqr(baqq parambaqq, baoa parambaoa, URLDrawableHandler paramURLDrawableHandler, DownloadParams paramDownloadParams)
-  {
-    this(parambaqq, parambaoa, paramURLDrawableHandler);
-    this.jdField_a_of_type_ComTencentImageDownloadParams = paramDownloadParams;
-  }
-  
-  public boolean a(apnb paramapnb)
-  {
-    Object localObject2 = null;
-    if (paramapnb.jdField_b_of_type_Int == 0) {
-      if ((this.jdField_a_of_type_ComTencentImageDownloadParams == null) || (!(this.jdField_a_of_type_ComTencentImageDownloadParams.mExtraInfo instanceof PicInfo))) {
-        break label257;
-      }
-    }
-    label257:
-    for (Object localObject1 = (PicInfo)this.jdField_a_of_type_ComTencentImageDownloadParams.mExtraInfo;; localObject1 = null)
-    {
-      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramapnb.k)) && (!paramapnb.k.trim().equals("0"))) || ((!TextUtils.isEmpty(paramapnb.j)) && (!paramapnb.j.trim().equals("0")))))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramapnb.jdField_b_of_type_JavaLangString + " respXFailNo: " + paramapnb.j + " respXErrNo: " + paramapnb.k);
-        }
-        paramapnb.jdField_b_of_type_Int = 32;
-        return false;
-      }
-      if (paramapnb.a != null) {
-        try
-        {
-          localObject1 = paramapnb.a.getInputStream();
-          if (localObject1 != null) {
-            return baqq.a(this.jdField_a_of_type_Baqq, (InputStream)localObject1, paramapnb.e, this.jdField_a_of_type_Baoa, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localObject1 = localObject2;
-            if (QLog.isColorLevel())
-            {
-              QLog.w("NearbyImgDownloader", 2, localIOException.toString());
-              localObject1 = localObject2;
-            }
-          }
-          paramapnb.jdField_b_of_type_Int = 11;
-          return false;
-        }
-      }
-      paramapnb.jdField_b_of_type_Int = 11;
-      return false;
-      return false;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: iload_1
+    //   4: putfield 18	baqr:jdField_b_of_type_Boolean	Z
+    //   7: iload_1
+    //   8: ifeq +56 -> 64
+    //   11: aload_2
+    //   12: ifnull +35 -> 47
+    //   15: aload_2
+    //   16: getfield 23	QQService/RespTmpChatPicDownload:lReplyCode	I
+    //   19: ifne +28 -> 47
+    //   22: aload_2
+    //   23: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
+    //   26: ifnull +21 -> 47
+    //   29: aload_2
+    //   30: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
+    //   33: invokevirtual 32	java/lang/String:length	()I
+    //   36: ifle +11 -> 47
+    //   39: aload_0
+    //   40: aload_2
+    //   41: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
+    //   44: putfield 34	baqr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   47: aload_0
+    //   48: iconst_1
+    //   49: putfield 36	baqr:jdField_a_of_type_Int	I
+    //   52: aload_0
+    //   53: iconst_1
+    //   54: putfield 38	baqr:jdField_a_of_type_Boolean	Z
+    //   57: aload_0
+    //   58: invokevirtual 43	java/lang/Object:notify	()V
+    //   61: aload_0
+    //   62: monitorexit
+    //   63: return
+    //   64: aload_0
+    //   65: sipush 9006
+    //   68: putfield 45	baqr:jdField_b_of_type_Int	I
+    //   71: goto -19 -> 52
+    //   74: astore_2
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_2
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	baqr
+    //   0	79	1	paramBoolean	boolean
+    //   0	79	2	paramRespTmpChatPicDownload	QQService.RespTmpChatPicDownload
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	74	finally
+    //   15	47	74	finally
+    //   47	52	74	finally
+    //   52	63	74	finally
+    //   64	71	74	finally
+    //   75	77	74	finally
   }
 }
 

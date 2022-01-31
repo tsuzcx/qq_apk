@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import arpg;
-import arpi;
-import arpk;
+import artp;
+import artr;
+import artt;
 
 public final class UniformDownloadUtil$1
   implements Runnable
 {
-  public UniformDownloadUtil$1(String paramString, arpk paramarpk) {}
+  public UniformDownloadUtil$1(String paramString, artt paramartt) {}
   
   public void run()
   {
-    arpi localarpi = arpg.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Arpk != null) && (localarpi != null)) {
-      this.jdField_a_of_type_Arpk.a(localarpi.jdField_a_of_type_JavaLangString, localarpi.jdField_a_of_type_Long);
+    artr localartr = artp.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Artt != null) && (localartr != null)) {
+      this.jdField_a_of_type_Artt.a(localartr.jdField_a_of_type_JavaLangString, localartr.jdField_a_of_type_Long);
     }
   }
 }

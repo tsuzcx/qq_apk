@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 class apyh
-  implements MiniAppCmdInterface
+  implements aufz<Void, List<apws>>
 {
-  apyh(apyg paramapyg, apyi paramapyi) {}
+  apyh(apyf paramapyf) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public List<apws> a(Void paramVoid)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = paramJSONObject.opt("data");
-      if ((paramJSONObject instanceof MiniAppRecommInfo))
-      {
-        apyg.a(this.jdField_a_of_type_Apyg, (MiniAppRecommInfo)paramJSONObject);
-        this.jdField_a_of_type_Apyg.a(apyg.a(this.jdField_a_of_type_Apyg));
-        if (this.jdField_a_of_type_Apyi != null) {
-          this.jdField_a_of_type_Apyi.a(true, apyg.a(this.jdField_a_of_type_Apyg));
-        }
-      }
+    paramVoid = ((aufn)this.a.a.getManager(14)).a(false, apyf.a(this.a), false);
+    ArrayList localArrayList = new ArrayList();
+    if (paramVoid != null) {
+      localArrayList.addAll(paramVoid);
     }
-    while (this.jdField_a_of_type_Apyi == null) {
-      return;
-    }
-    this.jdField_a_of_type_Apyi.a(false, null);
+    return localArrayList;
   }
 }
 

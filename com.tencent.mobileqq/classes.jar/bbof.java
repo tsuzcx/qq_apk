@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
 class bbof
-  implements DialogInterface.OnClickListener
+  implements Comparator<Map.Entry<String, bboh>>
 {
-  bbof(bboe parambboe, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  bbof(bboe parambboe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Map.Entry<String, bboh> paramEntry1, Map.Entry<String, bboh> paramEntry2)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
+    float f = ((bboh)paramEntry2.getValue()).a() - ((bboh)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
     }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
   }
 }
 

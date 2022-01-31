@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public final class yzt
-  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
+class yzt
+  implements Downloader.DownloadListener
 {
-  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
-  {
-    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
-  }
+  yzt(yzr paramyzr, yzb paramyzb, String paramString) {}
   
-  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    return new NewerGuidePlugin.RecommendedListResp[paramInt];
+    yzr.a(this.jdField_a_of_type_Yzr, this.jdField_a_of_type_Yzb, yzo.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -21,11 +21,11 @@ public class obp
       if (paramInt1 == 185)
       {
         if ((TextUtils.equals(str1, "adcard_style")) && (!TextUtils.isEmpty(str2))) {
-          bjxj.a("sp_key_ad_imax_style", str2.trim());
+          bkbq.a("sp_key_ad_imax_style", str2.trim());
         }
       }
       else if ((paramInt1 == 188) && (TextUtils.equals(str1, "ad_exposure_supplement")) && (!TextUtils.isEmpty(str2))) {
-        bjxj.a("readinjjoy_ad_supplement_config", str2.trim());
+        bkbq.a("readinjjoy_ad_supplement_config", str2.trim());
       }
     }
     return true;
@@ -34,12 +34,12 @@ public class obp
   public void onWipeConfig(int paramInt)
   {
     if (paramInt == 185) {
-      bjxj.a("sp_key_ad_imax_style", "0");
+      bkbq.a("sp_key_ad_imax_style", "0");
     }
     while (paramInt != 188) {
       return;
     }
-    bjxj.a("readinjjoy_ad_supplement_config", "0");
+    bkbq.a("readinjjoy_ad_supplement_config", "0");
   }
 }
 

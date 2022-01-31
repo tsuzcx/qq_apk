@@ -1,6 +1,6 @@
 package com.tencent.biz.lebasearch;
 
-import alkr;
+import alpg;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,26 +11,26 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdfq;
+import bdjz;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.smtt.sdk.WebView;
 import nfk;
 import nfl;
-import ymk;
+import yqz;
 
 public class LebaSearchMoreInfoActivity
   extends AbsBaseWebViewActivity
 {
   long jdField_a_of_type_Long;
-  public alkr a;
+  public alpg a;
   Handler jdField_a_of_type_AndroidOsHandler = new nfk(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bdfq jdField_a_of_type_Bdfq = null;
+  bdjz jdField_a_of_type_Bdjz = null;
   String jdField_a_of_type_JavaLangString;
-  public ymk a;
+  public yqz a;
   public boolean a;
   public String b;
   public String c = null;
@@ -38,14 +38,14 @@ public class LebaSearchMoreInfoActivity
   public LebaSearchMoreInfoActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Alkr = new nfl(this);
+    this.jdField_a_of_type_Alpg = new nfl(this);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Ymk = ymk.a();
-    this.jdField_a_of_type_Ymk.a();
-    this.jdField_a_of_type_Ymk.a(this.jdField_a_of_type_Alkr);
+    this.jdField_a_of_type_Yqz = yqz.a();
+    this.jdField_a_of_type_Yqz.a();
+    this.jdField_a_of_type_Yqz.a(this.jdField_a_of_type_Alpg);
     Intent localIntent = getIntent();
     if (localIntent == null) {
       finish();
@@ -61,21 +61,21 @@ public class LebaSearchMoreInfoActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372100);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372120);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371165));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371184));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371163);
-    ((ImageView)localObject).setImageResource(2130846908);
+    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371182);
+    ((ImageView)localObject).setImageResource(2130846981);
     ((ImageView)localObject).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380107));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380165));
     this.jdField_a_of_type_AndroidOsHandler.post(new LebaSearchMoreInfoActivity.2(this));
     if (this.jdField_a_of_type_Long != -1L)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putLong("uiResId", this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Ymk.a(18, (Bundle)localObject, this.jdField_a_of_type_Alkr);
+      this.jdField_a_of_type_Yqz.a(18, (Bundle)localObject, this.jdField_a_of_type_Alpg);
     }
   }
   
@@ -102,7 +102,7 @@ public class LebaSearchMoreInfoActivity
           break label232;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131696519));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131696521));
         long l = localSharedPreferences.getLong("time_" + str + "_" + this.jdField_a_of_type_Long, 0L);
         if (System.currentTimeMillis() - l <= 86400000L) {
           break label244;
@@ -132,7 +132,7 @@ public class LebaSearchMoreInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559669);
+    setContentView(2131559668);
     b();
     c();
     return true;
@@ -140,10 +140,10 @@ public class LebaSearchMoreInfoActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Ymk != null)
+    if (this.jdField_a_of_type_Yqz != null)
     {
-      this.jdField_a_of_type_Ymk.b();
-      this.jdField_a_of_type_Ymk.b(this.jdField_a_of_type_Alkr);
+      this.jdField_a_of_type_Yqz.b();
+      this.jdField_a_of_type_Yqz.b(this.jdField_a_of_type_Alpg);
     }
     super.doOnDestroy();
   }
@@ -155,16 +155,16 @@ public class LebaSearchMoreInfoActivity
     {
     default: 
       return;
-    case 2131364840: 
-    case 2131372100: 
+    case 2131364842: 
+    case 2131372120: 
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (this.jdField_a_of_type_Bdfq == null) {
-        this.jdField_a_of_type_Bdfq = Utils.createPluginSetDialogForWeb(this, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, 1, this.jdField_a_of_type_Long, this.c, null);
+      if (this.jdField_a_of_type_Bdjz == null) {
+        this.jdField_a_of_type_Bdjz = Utils.createPluginSetDialogForWeb(this, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, 1, this.jdField_a_of_type_Long, this.c, null);
       }
-      if (this.jdField_a_of_type_Bdfq.isShowing()) {
-        this.jdField_a_of_type_Bdfq.dismiss();
+      if (this.jdField_a_of_type_Bdjz.isShowing()) {
+        this.jdField_a_of_type_Bdjz.dismiss();
       }
-      this.jdField_a_of_type_Bdfq.show();
+      this.jdField_a_of_type_Bdjz.show();
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);

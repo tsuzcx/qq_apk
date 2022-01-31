@@ -1,20 +1,14 @@
-public class aoew
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class aoew
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  aoew(aoev paramaoev) {}
   
-  public aoew(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

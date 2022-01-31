@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aqsc;
-import biqt;
+import aqwl;
+import biva;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,7 +25,7 @@ public class FilePicQFavActivity
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.a().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new biqt(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        new biva(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
       }
     }
     finish();

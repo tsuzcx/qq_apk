@@ -1,86 +1,45 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
-final class aouq
+public class aouq
+  extends aouf<aovj>
 {
-  private int jdField_a_of_type_Int = -1;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public static aouq a(aogf[] paramArrayOfaogf)
+  @NonNull
+  public static aovj c()
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
-    {
-      QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
+    aovj localaovj2 = (aovj)aoks.a().a(527);
+    aovj localaovj1 = localaovj2;
+    if (localaovj2 == null) {
+      localaovj1 = new aovj();
     }
-    aouq localaouq = new aouq();
-    int k = paramArrayOfaogf.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < k)
-      {
-        Object localObject1 = paramArrayOfaogf[i];
-        try
-        {
-          localObject1 = new JSONObject(((aogf)localObject1).a);
-          if (localObject1 != null)
-          {
-            if (((JSONObject)localObject1).has("is_enable"))
-            {
-              if (((JSONObject)localObject1).optBoolean("is_enable"))
-              {
-                j = 1;
-                localaouq.jdField_a_of_type_Int = j;
-              }
-            }
-            else {
-              aouo.a((JSONObject)localObject1, localaouq.jdField_a_of_type_JavaUtilMap);
-            }
-          }
-          else {
-            i += 1;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error", localJSONException);
-            Object localObject2 = null;
-            continue;
-            int j = 0;
-          }
-        }
-      }
-    }
-    return localaouq;
+    return localaovj1;
   }
   
-  public static void a(boolean paramBoolean, aouq paramaouq)
+  public int a()
   {
-    paramBoolean = true;
-    if (paramaouq == null) {
-      QLog.w("TdsReaderView_TdsReaderGrayConfigBean", 1, "source error, configBean is null.");
-    }
-    do
-    {
-      return;
-      if (!paramaouq.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-        TdsReaderGlobal.a(true, paramaouq.jdField_a_of_type_JavaUtilMap);
-      }
-    } while (paramaouq.jdField_a_of_type_Int == -1);
-    if (paramaouq.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      TdsReaderGlobal.a(paramBoolean);
-      return;
-      paramBoolean = false;
-    }
+    return 527;
+  }
+  
+  @NonNull
+  public aovj a()
+  {
+    return new aovj();
+  }
+  
+  @NonNull
+  public aovj a(@NonNull aoko[] paramArrayOfaoko)
+  {
+    return aovj.a(paramArrayOfaoko[0].a);
+  }
+  
+  public Class<aovj> a()
+  {
+    return aovj.class;
+  }
+  
+  @NonNull
+  public aovj b()
+  {
+    return new aovj();
   }
 }
 

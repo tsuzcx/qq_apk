@@ -1,225 +1,233 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Looper;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.BaseBusinessHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import mqq.os.MqqHandler;
 
-public class aloy
-  extends QIPCModule
+public abstract class aloy
+  extends alya
 {
-  private static volatile aloy a;
+  public static final int BG_OBSERVERS = 2;
+  public static final int DEFAULT_OBSERVER = 0;
+  public static final String SEQ_KEY = aloy.class.getName();
+  public static final int UI_OBSERVERS = 1;
+  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
+  private static int notReportedCallNum;
+  private static int reportThreshold = -1;
+  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
+  protected Set<String> allowCmdSet;
+  private Map<Long, alpg> bgObserverMap = new HashMap();
+  private long seq;
+  private Map<Long, alpg> uiObserverMap = new HashMap();
   
-  public aloy(String paramString)
+  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, alpg paramalpg, MqqHandler paramMqqHandler)
   {
-    super(paramString);
+    paramObject = new BaseBusinessHandler.1(this, paramalpg, paramInt, paramMqqHandler, paramBoolean1, paramObject);
+    if (paramBoolean2)
+    {
+      paramMqqHandler.postAtFrontOfQueue(paramObject);
+      return;
+    }
+    paramMqqHandler.post(paramObject);
   }
   
-  public static aloy a()
+  protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, alpg paramalpg, boolean paramBoolean)
   {
-    if (a == null) {}
+    if ((paramalpg == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramalpg);
+      paramToServiceMsg = paramToServiceMsg.extraData;
+      paramalpg = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramToServiceMsg.putLong(paramalpg, l);
+      return;
+      ??? = this.uiObserverMap;
+    }
+  }
+  
+  public ToServiceMsg createToServiceMsg(String paramString)
+  {
+    return new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), paramString);
+  }
+  
+  public ToServiceMsg createToServiceMsg(String paramString, alpg paramalpg)
+  {
+    return createToServiceMsg(paramString, paramalpg, false);
+  }
+  
+  ToServiceMsg createToServiceMsg(String arg1, alpg paramalpg, boolean paramBoolean)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg(???);
+    if ((paramalpg == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramalpg);
+      paramalpg = localToServiceMsg.extraData;
+      String str = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramalpg.putLong(str, l);
+      return localToServiceMsg;
+      ??? = this.uiObserverMap;
+    }
+  }
+  
+  public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
     try
     {
-      if (a == null) {
-        a = new aloy("FriendQIPCModule");
-      }
-      return a;
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
     }
-    finally {}
+    catch (Exception paramArrayOfByte) {}
+    return null;
   }
   
-  private EIPCResult a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  public abstract String getCurrentAccountUin();
+  
+  public abstract List<alpg> getObservers(int paramInt);
+  
+  protected boolean msgCmdFilter(String paramString)
   {
-    paramBundle = paramBundle.getString("KEY_UIN");
-    paramQQAppInterface = (aloz)paramQQAppInterface.getManager(51);
-    Bundle localBundle = new Bundle();
-    if (paramQQAppInterface != null) {}
-    for (boolean bool = paramQQAppInterface.b(paramBundle);; bool = false)
-    {
-      localBundle.putBoolean("KEY_IS_FRIEND", bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, isFriend: %s", new Object[] { paramBundle, Boolean.valueOf(bool) }));
+    return false;
+  }
+  
+  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    notifyUI(paramInt, paramBoolean, paramObject, false);
+  }
+  
+  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
+  {
+    List localList = getObservers(0);
+    Iterator localIterator;
+    Object localObject;
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alpg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
+          {
+            long l = System.currentTimeMillis();
+            ((alpg)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
+            l = System.currentTimeMillis() - l;
+            if ((l > 100L) && (QLog.isColorLevel()))
+            {
+              localObject = new Exception("run too long!");
+              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
+            }
+          }
+        }
       }
-      return EIPCResult.createSuccessResult(localBundle);
+      finally {}
+    }
+    localList = getObservers(1);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alpg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alpg)localObject, uiHandler);
+          }
+        }
+      }
+      finally {}
+    }
+    localList = getObservers(2);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alpg)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alpg)localObject, bgHandler);
+          }
+        }
+      }
+      finally {}
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    String str = paramBundle.getString("KEY_UIN");
-    int j = paramBundle.getInt("KEY_SCF_SWITCH_TYPE");
-    boolean bool = paramBundle.getBoolean("KEY_SCF_SWITCH_STATUS");
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendQIPCModule", 2, String.format("SCP set switch, switchType: %s, switchStatus", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) }));
-    }
-    paramBundle = (aloz)paramQQAppInterface.getManager(51);
-    if (j == 1) {
-      if (bool)
+    long l;
+    MqqHandler localMqqHandler;
+    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
+    {
+      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      synchronized (this.uiObserverMap)
       {
-        paramBundle.e(str);
-        SpecialCareInfo localSpecialCareInfo = new SpecialCareInfo();
-        localSpecialCareInfo.globalSwitch = 1;
-        localSpecialCareInfo.specialRingSwitch = 1;
-        localSpecialCareInfo.friendRingId = 1;
-        localSpecialCareInfo.qzoneSwitch = 1;
-        localSpecialCareInfo.uin = str;
-        paramBundle.a(localSpecialCareInfo);
-        akaj.a(str, "1", paramQQAppInterface);
+        paramToServiceMsg = (alpg)this.uiObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = uiHandler;
+        if (paramToServiceMsg != null) {}
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        paramBundle.e(str);
-        return;
-      } while (j != 2);
-      paramQQAppInterface = paramBundle.a(str);
-    } while (paramQQAppInterface == null);
-    if (bool) {}
     for (;;)
     {
-      paramQQAppInterface.qzoneSwitch = i;
-      paramBundle.a(paramQQAppInterface);
+      synchronized (this.bgObserverMap)
+      {
+        paramToServiceMsg = (alpg)this.bgObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = bgHandler;
+        if (paramToServiceMsg != null)
+        {
+          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          return;
+          paramToServiceMsg = finally;
+          throw paramToServiceMsg;
+        }
+      }
+      notifyUI(paramInt, paramBoolean, paramObject);
       return;
-      i = 0;
     }
   }
   
-  private EIPCResult b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("KEY_UIN");
-    aloz localaloz = (aloz)paramQQAppInterface.getManager(51);
-    Bundle localBundle = new Bundle();
-    boolean bool;
-    if (localaloz != null)
-    {
-      bool = localaloz.b(paramBundle);
-      if (!bool) {
-        break label157;
-      }
-      paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(11);
-      if (paramQQAppInterface == null) {
-        break label157;
-      }
-      int i = paramQQAppInterface.d();
-      if (((i != 9) && (i != 8) && (i != 4) && (i != 2)) || (!paramQQAppInterface.k())) {
-        break label157;
-      }
-      paramQQAppInterface = paramQQAppInterface.a(paramBundle);
-      if (paramQQAppInterface == null) {
-        break label157;
-      }
-    }
-    label157:
-    for (paramQQAppInterface = paramQQAppInterface.unifiedCode;; paramQQAppInterface = null)
-    {
-      localBundle.putString("PHONE_NUMBER", paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, phoneNumber: %s", new Object[] { paramBundle, paramQQAppInterface }));
-      }
-      return EIPCResult.createSuccessResult(localBundle);
-      bool = false;
-      break;
-    }
-  }
+  protected abstract Class<? extends alpg> observerClass();
   
-  private EIPCResult c(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("KEY_UIN");
-    paramBundle = ((aloz)paramQQAppInterface.getManager(51)).a(str1);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("KEY_SCF_INFO", paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendQIPCModule", 2, String.format("getSCFInfo: %s", new Object[] { paramBundle }));
-    }
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    String str2 = "special_care_voice_red_dot" + paramQQAppInterface.getCurrentAccountUin();
-    paramBundle = bdiw.a(localSharedPreferences, str2, null);
-    paramQQAppInterface = paramBundle;
-    if (paramBundle == null) {
-      paramQQAppInterface = new HashSet();
-    }
-    if (paramQQAppInterface.add(str1))
-    {
-      localBundle.putBoolean("KEY_SCF_VOICE_NEW_FLAG", true);
-      paramBundle = localSharedPreferences.edit();
-      bdiw.a(paramBundle, str2, paramQQAppInterface.toArray());
-      paramBundle.commit();
-    }
-    for (;;)
-    {
-      return EIPCResult.createSuccessResult(localBundle);
-      localBundle.putBoolean("KEY_SCF_VOICE_NEW_FLAG", false);
-    }
-  }
+  public void onDestroy() {}
   
-  private EIPCResult d(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("KEY_UIN");
-    ExtensionInfo localExtensionInfo = ((aloz)paramQQAppInterface.getManager(51)).a(paramBundle, false);
-    if (localExtensionInfo != null) {}
-    for (int i = localExtensionInfo.friendRingId;; i = 0)
-    {
-      paramQQAppInterface = anxb.a(paramQQAppInterface).a(i, paramBundle, 0);
-      paramBundle = new Bundle();
-      paramBundle.putString("KEY_SCF_RING_NAME", paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("SCP getRingName, ringId: %s, ringName: %s", new Object[] { Integer.valueOf(i), paramQQAppInterface }));
-      }
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-  }
+  public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
   
-  private EIPCResult e(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  protected alwx removeMessageObserver(ToServiceMsg paramToServiceMsg)
   {
-    paramBundle = paramBundle.getStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS");
-    QLog.d("FriendQIPCModule", 1, "delete single way friends: " + paramBundle);
-    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      ((alyn)paramQQAppInterface.a(26)).notifyUI(5, true, paramBundle);
-    }
-    return EIPCResult.createSuccessResult(null);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
+    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
       return null;
     }
-    localObject = (QQAppInterface)localObject;
-    if ("ACTION_IS_FRIEND".equals(paramString)) {
-      return a((QQAppInterface)localObject, paramBundle);
+    synchronized (this.uiObserverMap)
+    {
+      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      if (alwx.class.isInstance((alpg)this.uiObserverMap.get(Long.valueOf(l))))
+      {
+        paramToServiceMsg = (alwx)this.uiObserverMap.remove(Long.valueOf(l));
+        return paramToServiceMsg;
+      }
     }
-    if ("ACTION_GET_PHONE_NUMBER".equals(paramString)) {
-      return b((QQAppInterface)localObject, paramBundle);
-    }
-    if ("ACTION_GET_SPECIAL_CARE_INFO".equals(paramString)) {
-      return c((QQAppInterface)localObject, paramBundle);
-    }
-    if ("ACTION_GET_SCF_RING_NAME".equals(paramString)) {
-      return d((QQAppInterface)localObject, paramBundle);
-    }
-    if ("ACTION_SET_SAVE_SWITCH".equals(paramString)) {
-      a((QQAppInterface)localObject, paramBundle);
-    }
-    while (!"ACTION_DELETE_SINGLE_WAY_FRIENDS".equals(paramString)) {
-      return null;
-    }
-    return e((QQAppInterface)localObject, paramBundle);
+    return null;
   }
+  
+  public abstract void send(ToServiceMsg paramToServiceMsg);
+  
+  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
 }
 
 

@@ -1,38 +1,32 @@
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bczs
+final class bczs
+  implements DownloadParams.DecodeHandler
 {
-  public static int a(Drawable paramDrawable)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramDrawable == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
+    }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
     do
     {
-      return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return bdal.a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return bdal.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return bdal.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
-  }
-  
-  public static final Bitmap a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    do
-    {
-      return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bdhj.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
   }
 }
 

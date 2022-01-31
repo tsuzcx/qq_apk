@@ -150,7 +150,7 @@ class VipProfileCardPreviewActivity$7
     //   292: aload 7
     //   294: astore 6
     //   296: aload 8
-    //   298: invokestatic 167	bdal:a	(Landroid/graphics/Bitmap;)I
+    //   298: invokestatic 167	bdeu:a	(Landroid/graphics/Bitmap;)I
     //   301: istore_2
     //   302: aload 7
     //   304: astore 6

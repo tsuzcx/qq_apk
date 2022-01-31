@@ -1,22 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blrd
-  implements blrf
+class blrd
+  implements DialogInterface.OnClickListener
 {
-  public blrd(QIMInformationPasterManager.2 param2) {}
+  blrd(blra paramblra) {}
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bmrn parambmrn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambmrn);
-    }
-    if (parambmrn.a() != null) {
-      parambmrn.a().a(paramBoolean);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,9 +1,29 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
 
-public final class aami
+public class aami
+  implements AdProgressDialogAdapter
 {
-  public Bundle a;
-  public boolean a;
+  private bety a;
+  
+  public void dismiss()
+  {
+    if ((this.a != null) && (this.a.isShowing()))
+    {
+      this.a.dismiss();
+      this.a = null;
+    }
+  }
+  
+  public void show(Context paramContext, int paramInt)
+  {
+    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
+      this.a = new bety(paramContext, paramInt);
+    }
+    if (this.a != null) {
+      this.a.show();
+    }
+  }
 }
 
 

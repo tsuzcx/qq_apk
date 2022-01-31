@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import bdal;
+import bdeu;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -59,7 +59,7 @@ public class ConfessInfo
     {
       return false;
       paramObject = (ConfessInfo)paramObject;
-    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bdal.a(this.confessorNick, paramObject.confessorNick)) || (!bdal.a(this.topic, paramObject.topic)));
+    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bdeu.a(this.confessorNick, paramObject.confessorNick)) || (!bdeu.a(this.topic, paramObject.topic)));
     return true;
   }
   

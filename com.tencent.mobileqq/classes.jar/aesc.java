@@ -1,21 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aesc
-  implements aese
+public final class aesc
+  implements arrh
 {
-  aesc(aesb paramaesb, aesd paramaesd) {}
+  public aesc(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      aesb.a(this.jdField_a_of_type_Aesb, this.jdField_a_of_type_Aesd.a());
-      this.jdField_a_of_type_Aesd.a();
-      return;
+      Object localObject = (Uri)localIterator.next();
+      localObject = arzt.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+      }
     }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Aesd.a());
-    aesb.a(this.jdField_a_of_type_Aesb, 0);
   }
+  
+  public void b() {}
 }
 
 

@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import axmu;
-import axmv;
-import axmw;
+import axrd;
+import axre;
+import axrf;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axmu jdField_a_of_type_Axmu;
-  private axmv jdField_a_of_type_Axmv;
-  private axmw jdField_a_of_type_Axmw;
+  private axrd jdField_a_of_type_Axrd;
+  private axre jdField_a_of_type_Axre;
+  private axrf jdField_a_of_type_Axrf;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Axmw = new axmw(this);
+    this.jdField_a_of_type_Axrf = new axrf(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Axmu != null) && (this.jdField_a_of_type_Axmu.hasStarted())) {
-      this.jdField_a_of_type_Axmu.cancel();
+    if ((this.jdField_a_of_type_Axrd != null) && (this.jdField_a_of_type_Axrd.hasStarted())) {
+      this.jdField_a_of_type_Axrd.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Axmu = new axmu(this);
+    this.jdField_a_of_type_Axrd = new axrd(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Axmu.setDuration(paramInt);
-    this.jdField_a_of_type_Axmu.setRepeatCount(-1);
-    this.jdField_a_of_type_Axmu.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Axmu);
+    this.jdField_a_of_type_Axrd.setDuration(paramInt);
+    this.jdField_a_of_type_Axrd.setRepeatCount(-1);
+    this.jdField_a_of_type_Axrd.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Axrd);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(axmv paramaxmv)
+  public void setOnAnimationListener(axre paramaxre)
   {
-    this.jdField_a_of_type_Axmv = paramaxmv;
+    this.jdField_a_of_type_Axre = paramaxre;
   }
   
   public void setTextView(TextView paramTextView)

@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public abstract class ley<T>
-  extends aofy<T>
+  extends aokh<T>
 {
   final int jdField_a_of_type_Int;
   final String jdField_a_of_type_JavaLangString;
@@ -30,26 +30,26 @@ public abstract class ley<T>
   }
   
   @Nullable
-  static aogf a(String paramString, int paramInt, aogf[] paramArrayOfaogf)
+  static aoko a(String paramString, int paramInt, aoko[] paramArrayOfaoko)
   {
     Object localObject1 = null;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0))
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0))
     {
-      paramArrayOfaogf = (aogf[])localObject1;
+      paramArrayOfaoko = (aoko[])localObject1;
       if (QLog.isColorLevel())
       {
         QLog.i(paramString, 2, "getSuitableItem, confFiles is null or empty.");
-        paramArrayOfaogf = (aogf[])localObject1;
+        paramArrayOfaoko = (aoko[])localObject1;
       }
-      return paramArrayOfaogf;
+      return paramArrayOfaoko;
     }
     int i;
-    if ((QLog.isDevelopLevel()) || (paramArrayOfaogf.length > 1))
+    if ((QLog.isDevelopLevel()) || (paramArrayOfaoko.length > 1))
     {
       i = 1;
       label47:
       localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramInt = aogj.a().a(paramInt, ((AppInterface)localObject1).getCurrentAccountUin());
+      paramInt = aoks.a().a(paramInt, ((AppInterface)localObject1).getCurrentAccountUin());
       if (i == 0) {
         break label341;
       }
@@ -57,28 +57,28 @@ public abstract class ley<T>
     label139:
     label338:
     label341:
-    for (Object localObject2 = "getSuitableItem, Version[" + paramInt + "], size[" + paramArrayOfaogf.length + "]";; localObject2 = null)
+    for (Object localObject2 = "getSuitableItem, Version[" + paramInt + "], size[" + paramArrayOfaoko.length + "]";; localObject2 = null)
     {
-      localObject1 = paramArrayOfaogf[0];
+      localObject1 = paramArrayOfaoko[0];
       Object localObject4 = localObject2;
       Object localObject3 = localObject1;
       int j;
-      if (paramArrayOfaogf.length > 1)
+      if (paramArrayOfaoko.length > 1)
       {
-        int k = paramArrayOfaogf.length;
+        int k = paramArrayOfaoko.length;
         paramInt = 0;
         j = 0;
         localObject4 = localObject2;
         localObject3 = localObject1;
         if (paramInt < k)
         {
-          localObject4 = paramArrayOfaogf[paramInt];
-          int m = a(((aogf)localObject4).jdField_a_of_type_JavaLangString);
+          localObject4 = paramArrayOfaoko[paramInt];
+          int m = a(((aoko)localObject4).jdField_a_of_type_JavaLangString);
           localObject3 = localObject2;
           if (i != 0) {
-            localObject3 = (String)localObject2 + ", \nindex[" + j + "], taskId[" + ((aogf)localObject4).jdField_a_of_type_Int + "], task_id[" + m + "]";
+            localObject3 = (String)localObject2 + ", \nindex[" + j + "], taskId[" + ((aoko)localObject4).jdField_a_of_type_Int + "], task_id[" + m + "]";
           }
-          if (m != ((aogf)localObject4).jdField_a_of_type_Int) {
+          if (m != ((aoko)localObject4).jdField_a_of_type_Int) {
             break label338;
           }
           localObject1 = localObject4;
@@ -92,12 +92,12 @@ public abstract class ley<T>
         break label139;
         i = 0;
         break label47;
-        paramArrayOfaogf = (aogf[])localObject3;
+        paramArrayOfaoko = (aoko[])localObject3;
         if (i == 0) {
           break;
         }
-        paramArrayOfaogf = (String)localObject4 + ", \nselect taskId[" + ((aogf)localObject3).jdField_a_of_type_Int;
-        QLog.w(paramString, 1, paramArrayOfaogf + "], content\n" + ((aogf)localObject3).jdField_a_of_type_JavaLangString);
+        paramArrayOfaoko = (String)localObject4 + ", \nselect taskId[" + ((aoko)localObject3).jdField_a_of_type_Int;
+        QLog.w(paramString, 1, paramArrayOfaoko + "], content\n" + ((aoko)localObject3).jdField_a_of_type_JavaLangString);
         return localObject3;
       }
     }
@@ -109,7 +109,7 @@ public abstract class ley<T>
   }
   
   @NonNull
-  protected abstract T a(aogf[] paramArrayOfaogf);
+  protected abstract T a(aoko[] paramArrayOfaoko);
   
   public void a()
   {
@@ -147,17 +147,17 @@ public abstract class ley<T>
   }
   
   @Nullable
-  public final T b(aogf[] paramArrayOfaogf)
+  public final T b(aoko[] paramArrayOfaoko)
   {
     try
     {
-      Object localObject = a(paramArrayOfaogf);
+      Object localObject = a(paramArrayOfaoko);
       return localObject;
     }
     catch (Exception localException)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onParsed, 配置解析异常, [\n" + paramArrayOfaogf[0].jdField_a_of_type_JavaLangString + "\n]", localException);
-      AudioHelper.c(this.jdField_a_of_type_JavaLangString + alpo.a(2131709284));
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onParsed, 配置解析异常, [\n" + paramArrayOfaoko[0].jdField_a_of_type_JavaLangString + "\n]", localException);
+      AudioHelper.c(this.jdField_a_of_type_JavaLangString + alud.a(2131709296));
     }
     return a(a());
   }
@@ -173,7 +173,7 @@ public abstract class ley<T>
     if (a()) {
       str = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
     }
-    return aogj.a().a(this.jdField_a_of_type_Int, str);
+    return aoks.a().a(this.jdField_a_of_type_Int, str);
   }
   
   public boolean c()

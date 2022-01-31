@@ -1,60 +1,54 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import java.util.Map;
 import org.json.JSONObject;
 
-class bhcs
-  implements TextWatcher
+public class bhcs
+  extends bhdw
 {
-  bhcs(bhcq parambhcq, bgid parambgid) {}
+  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public bhcs(String paramString)
   {
-    if ((bhcq.a(this.jdField_a_of_type_Bhcq).containsKey(Integer.valueOf(bhcq.a(this.jdField_a_of_type_Bhcq)))) && (paramCharSequence.toString().equals(bhcq.a(this.jdField_a_of_type_Bhcq).get(Integer.valueOf(bhcq.a(this.jdField_a_of_type_Bhcq)))))) {
-      return;
+    this.a.appid.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_program_auth";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    bhcq.a(this.jdField_a_of_type_Bhcq).remove(Integer.valueOf(bhcq.a(this.jdField_a_of_type_Bhcq)));
-    JSONObject localJSONObject = new JSONObject();
+    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
     try
     {
-      localJSONObject.put("inputId", bhcq.a(this.jdField_a_of_type_Bhcq));
-      if (paramInt3 == 0)
-      {
-        localJSONObject.put("cursor", paramInt1);
-        localJSONObject.put("value", paramCharSequence.toString());
-        if ((paramInt2 == 0) || (paramInt3 != 0)) {
-          break label241;
-        }
-        localJSONObject.put("keyCode", 8);
-        label154:
-        localJSONObject.put("data", new JSONObject(this.jdField_a_of_type_Bgid.b).optString("data"));
-        this.jdField_a_of_type_Bgid.a("onKeyboardValueChange", localJSONObject.toString(), bhcq.a(this.jdField_a_of_type_Bhcq).b());
-        return;
+      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStCheckSessionRsp != null) {
+        return new JSONObject();
       }
+      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    catch (Exception paramCharSequence)
+    catch (Exception paramArrayOfByte)
     {
-      QMLog.e("WebInputHandler", "onTextChanged error", paramCharSequence);
-      return;
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
-    if (paramInt2 != 0) {
-      paramInt2 -= 1;
-    }
-    for (;;)
-    {
-      localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
-      break;
-      label241:
-      localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
-      break label154;
-      paramInt2 = 0;
-    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "CheckSession";
   }
 }
 

@@ -1,37 +1,83 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import java.io.UnsupportedEncodingException;
 
-class accn
-  extends WtloginObserver
+public class accn
+  implements TextWatcher
 {
-  accn(accm paramaccm) {}
+  public accn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel())
+    if (AddFriendVerifyActivity.a(this.a) != 4)
     {
-      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      int i = paramEditable.length();
+      if (i > 30)
+      {
+        paramEditable = paramEditable.toString();
+        if (i > 30)
+        {
+          i = paramEditable.length();
+          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
+          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
+          {
+            i = paramEditable.length();
+            break;
+          }
+        }
+        this.a.a.setText(paramEditable);
+        this.a.a.setSelection(paramEditable.length());
       }
     }
-    if (paramInt2 == 0) {}
-    do
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (AddFriendVerifyActivity.a(this.a) != 4) {}
+    for (;;)
     {
       return;
-      accm.a(this.a);
-    } while (accm.a(this.a) == null);
-    paramString = new Intent(accm.a(this.a), LoginActivity.class);
-    paramString.putExtra("uin", accm.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    accm.a(this.a).startActivity(paramString);
-    accm.a(this.a).finish();
+      try
+      {
+        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
+        paramInt1 = 90 - paramInt3;
+        paramCharSequence = paramCharSequence.toString();
+        paramInt2 = paramInt1;
+        if (paramInt3 > 90)
+        {
+          paramInt2 = paramInt3;
+          if (paramInt2 > 90)
+          {
+            paramInt1 = paramCharSequence.length();
+            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
+            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
+            {
+              paramInt2 = paramCharSequence.getBytes("utf-8").length;
+              paramInt1 = 90 - paramInt2;
+              break;
+            }
+          }
+          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
+          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
+          paramInt2 = paramInt1;
+        }
+        if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
+        {
+          paramCharSequence = paramInt2 + "";
+          AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
+          return;
+        }
+      }
+      catch (UnsupportedEncodingException paramCharSequence)
+      {
+        paramCharSequence.printStackTrace();
+      }
+    }
   }
 }
 

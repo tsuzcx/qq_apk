@@ -1,74 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class yna
-  extends oxe
+  implements bexv
 {
-  public yna(TroopMemberApiService paramTroopMemberApiService) {}
+  public yna(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("rowKey", paramString1);
-    localBundle.putString("action", paramString2);
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", ymk.a());
-    this.a.a(137, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    if (paramBoolean)
+    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("action", paramString3);
-      localBundle.putInt("seq", paramInt1);
-      localBundle.putInt("totalDeleteCount", paramInt2);
-      localBundle.putString("processName", ymk.a());
-      this.a.a(136, localBundle);
+      VideoPlayerView.d(this.a, false);
+      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
+      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
-  {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("commentContent", paramString3);
-      localBundle.putInt("commentLevel", paramInt1);
-      localBundle.putString("action", paramString4);
-      localBundle.putString("parentCommentId", paramString5);
-      localBundle.putInt("seq", paramInt2);
-      localBundle.putString("processName", ymk.a());
-      this.a.a(134, localBundle);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("likeStatus", paramString3);
-      localBundle.putString("action", paramString4);
-      localBundle.putInt("seq", paramInt);
-      localBundle.putString("processName", ymk.a());
-      this.a.a(135, localBundle);
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", ymk.a());
-    this.a.a(138, localBundle);
   }
 }
 

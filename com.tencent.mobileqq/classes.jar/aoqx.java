@@ -1,32 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoqx
-  extends aopw<aoqw>
+  extends aokh<aoqw>
 {
   public int a()
   {
-    return 76;
+    return 546;
   }
   
   @NonNull
-  public aoqw a()
+  public aoqw a(int paramInt)
   {
     return new aoqw();
   }
   
-  @NonNull
-  public aoqw a(aogf[] paramArrayOfaogf)
+  @Nullable
+  public aoqw a(aoko[] paramArrayOfaoko)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    bdvp.a().a(localQQAppInterface.getApplication(), paramArrayOfaogf, localQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaogf);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aoqw localaoqw = aoqw.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaoqw;
     }
-    return new aoqw();
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
   public Class<aoqw> a()
@@ -34,15 +38,36 @@ public class aoqx
     return aoqw.class;
   }
   
-  @NonNull
-  public aoqw b()
+  public void a(int paramInt)
   {
-    return new aoqw();
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(aoqw paramaoqw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramaoqw.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
   
   public boolean c()
   {
-    return false;
+    return true;
   }
 }
 

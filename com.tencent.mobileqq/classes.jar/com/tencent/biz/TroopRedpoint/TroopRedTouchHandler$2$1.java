@@ -1,7 +1,7 @@
 package com.tencent.biz.TroopRedpoint;
 
 import android.os.Bundle;
-import badt;
+import baic;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class TroopRedTouchHandler$2$1
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null))
     {
       localObject = this.jdField_a_of_type_AndroidOsBundle.getByteArray("data");
-      if ((!this.jdField_a_of_type_Nah.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!badt.a(this.jdField_a_of_type_Nah.jdField_a_of_type_Nag.app))) {
+      if ((!this.jdField_a_of_type_Nah.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!baic.a(this.jdField_a_of_type_Nah.jdField_a_of_type_Nag.app))) {
         break label309;
       }
       j = 1;

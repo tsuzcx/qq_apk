@@ -1,21 +1,26 @@
-import android.os.IInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-public abstract interface awej
-  extends IInterface
+public class awej
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public awej(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int[] a();
-  
-  public abstract boolean[] a();
+  public void onClick(View paramView)
+  {
+    if (AutoReplyEditActivity.c(this.a))
+    {
+      AutoReplyEditActivity.a(this.a, false);
+      return;
+    }
+    if (AutoReplyEditActivity.d(this.a))
+    {
+      AutoReplyEditActivity.b(this.a, false);
+      return;
+    }
+    AutoReplyEditActivity.a(this.a, true);
+  }
 }
 
 

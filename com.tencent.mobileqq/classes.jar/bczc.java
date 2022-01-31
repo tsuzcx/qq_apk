@@ -1,70 +1,45 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bczc
-  extends alox
+final class bczc
+  implements DownloadParams.DecodeHandler
 {
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if ((paramBitmap == null) || (paramDownloadParams == null)) {}
+    int i;
+    int j;
+    int k;
+    int m;
+    do
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
-      }
-    }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bczb.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
-      }
-      return;
-    }
-  }
-  
-  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
-      }
-    }
-    label138:
-    for (String str = paramList.toString();; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
+      do
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(bczb.a(this.a))))
-          {
-            if (!paramBoolean) {
-              break label145;
-            }
-            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
-          }
-        }
-      }
-      return;
+        return paramBitmap;
+        paramDownloadParams = paramDownloadParams.tag;
+      } while ((!(paramDownloadParams instanceof int[])) || (((int[])paramDownloadParams).length != 4));
+      paramDownloadParams = (int[])paramDownloadParams;
+      i = paramDownloadParams[0];
+      j = paramDownloadParams[1];
+      k = paramDownloadParams[2];
+      m = paramDownloadParams[3];
+    } while ((k <= 0) || (m <= 0) || ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())));
+    try
+    {
+      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(paramDownloadParams);
+      Matrix localMatrix = new Matrix();
+      bcyz.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
+      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
+      return paramDownloadParams;
     }
-    label145:
-    bczb.a(this.a).obtainMessage(1).sendToTarget();
+    catch (OutOfMemoryError paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 

@@ -1,26 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aflq
-  extends afpq
+  implements DialogInterface.OnClickListener
 {
-  aflq(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
+  aflq(aflo paramaflo) {}
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    paramChatMessage = new afpx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    aflj.a(this.a).add(paramChatMessage);
-    return paramChatMessage;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

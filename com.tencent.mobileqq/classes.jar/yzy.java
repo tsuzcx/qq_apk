@@ -1,25 +1,27 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class yzy
-  implements beec
+public class yzy
 {
-  yzy(yzu paramyzu, long paramLong, String paramString) {}
+  private static final String jdField_a_of_type_JavaLangString = yzy.class.getName();
+  private static yzw jdField_a_of_type_Yzw;
+  private static String b;
+  private static String c;
   
-  public void onCheckOfflineFinish(int paramInt)
+  public static yzw a()
   {
-    this.jdField_a_of_type_Yzu.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Yzu.c + ", url: " + ndq.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+    if (b == null) {
+      b = BaseApplicationImpl.getApplication().getPackageName();
     }
-    this.jdField_a_of_type_Yzu.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_Yzu.mRuntime.a();
-    if (localCustomWebView != null)
+    if (c == null) {
+      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
+    }
+    if (jdField_a_of_type_Yzw == null)
     {
-      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
-      return;
+      jdField_a_of_type_Yzw = new yzz(b, c);
+      wxe.b(jdField_a_of_type_JavaLangString, "init FileCache");
     }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
+    return jdField_a_of_type_Yzw;
   }
 }
 

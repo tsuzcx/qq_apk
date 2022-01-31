@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import ador;
-import ados;
-import adot;
+import adtg;
+import adth;
+import adti;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import atbd;
+import atfm;
 import com.tencent.smtt.sdk.WebView;
 
 public class QQTranslucentBrowserActivity
@@ -28,7 +28,7 @@ public class QQTranslucentBrowserActivity
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new adot(this);
+        this.jdField_a_of_type_AndroidAppDialog = new adti(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
@@ -53,10 +53,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167138);
+    getWindow().setBackgroundDrawableResource(2131167140);
     View localView = findViewById(2131363457);
     if (localView != null) {
-      localView.setBackgroundResource(2131167138);
+      localView.setBackgroundResource(2131167140);
     }
     int i;
     if (paramBundle != null)
@@ -73,14 +73,14 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = atbd.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ador(this));
+        this.jdField_a_of_type_AndroidAppDialog = atfm.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new adtg(this));
         a();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = atbd.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ados(this));
+    this.jdField_a_of_type_AndroidAppDialog = atfm.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new adth(this));
     a();
     return bool;
   }

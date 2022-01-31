@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class uwp
-  implements View.OnClickListener
+  implements uxw
 {
-  uwp(uwn paramuwn) {}
+  uwp(uwo paramuwo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    this.a.a.dismiss();
-    wta.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    wxe.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramuxs != null))
+    {
+      this.a.a(paramuxs.b, paramuxs.a);
+      return;
+    }
+    this.a.a(false, null);
   }
 }
 

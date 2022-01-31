@@ -1,69 +1,64 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class bhld
+  implements InvocationHandler
 {
-  private AtomicInteger a = new AtomicInteger(0);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public bhld(bhky parambhky) {}
+  
+  public void a(boolean paramBoolean)
   {
-    int i;
-    do
-    {
-      i = this.a.get();
-      if ((i & 0xFFFFFFFE) == 0) {}
-      do
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    QMLog.e("TXLivePlayerJSAdapter", "InnerITXSnapshotListenerImpl invoke:" + paramMethod.getName());
+    if (Object.class.equals(paramMethod.getDeclaringClass())) {
+      try
       {
-        return;
-        if ((i & 0x1) == 0) {
-          break;
+        paramObject = paramMethod.invoke(this, paramArrayOfObject);
+        return paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        paramObject.printStackTrace();
+        return null;
+      }
+    }
+    if (("onSnapshot".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1))
+    {
+      paramObject = (Bitmap)paramArrayOfObject[0];
+      if (bhky.a(this.jdField_a_of_type_Bhky) != null)
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label181;
         }
-      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
-      synchronized (this.a)
-      {
-        this.a.notifyAll();
-        return;
-      }
-    } while (!this.a.compareAndSet(i, i - 2));
-  }
-  
-  public boolean a()
-  {
-    int i;
-    do
-    {
-      i = this.a.get();
-      if ((i & 0x1) != 0) {
-        return false;
-      }
-    } while (!this.a.compareAndSet(i, i + 2));
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.compareAndSet(0, 1)) {}
-    while (this.a.compareAndSet(1, 1)) {
-      return;
-    }
-    int i;
-    do
-    {
-      i = this.a.get();
-    } while (!this.a.compareAndSet(i, i | 0x1));
-    try
-    {
-      synchronized (this.a)
-      {
-        this.a.wait();
-        return;
+        if (paramObject == null) {
+          break label165;
+        }
+        int i = paramObject.getWidth();
+        int j = paramObject.getHeight();
+        paramMethod = new Matrix();
+        paramMethod.setScale(0.5F, 0.5F);
+        paramMethod = Bitmap.createBitmap(paramObject, 0, 0, i, j, paramMethod, false);
+        bhky.a(this.jdField_a_of_type_Bhky).a(paramMethod);
+        bhky.a(this.jdField_a_of_type_Bhky, paramObject);
       }
     }
-    catch (InterruptedException localInterruptedException)
+    for (;;)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      return null;
+      label165:
+      bhky.a(this.jdField_a_of_type_Bhky).a(paramObject);
+      continue;
+      label181:
+      bhky.a(this.jdField_a_of_type_Bhky).a(paramObject);
     }
   }
 }

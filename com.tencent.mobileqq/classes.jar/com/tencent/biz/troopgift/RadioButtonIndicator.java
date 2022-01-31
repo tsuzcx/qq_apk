@@ -11,12 +11,12 @@ import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.common.config.AppSetting;
-import yqp;
-import ysc;
+import yve;
+import ywr;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, ysc
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, ywr
 {
   protected int a;
   protected ViewPager a;
@@ -30,19 +30,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839458;
+    this.jdField_a_of_type_Int = 2130839459;
   }
   
   public RadioButton a(int paramInt)
   {
-    yqp localyqp = new yqp(this, getContext());
-    localyqp.setButtonDrawable(this.jdField_a_of_type_Int);
-    localyqp.setPadding(10, 0, 10, 0);
-    localyqp.setClickable(true);
+    yve localyve = new yve(this, getContext());
+    localyve.setButtonDrawable(this.jdField_a_of_type_Int);
+    localyve.setPadding(10, 0, 10, 0);
+    localyve.setClickable(true);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localyqp, 2);
+      ViewCompat.setImportantForAccessibility(localyve, 2);
     }
-    return localyqp;
+    return localyve;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)

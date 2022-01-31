@@ -1,6 +1,6 @@
 package cooperation.weiyun.channel;
 
-import bkft;
+import bkka;
 import org.json.JSONObject;
 
 public final class HttpChannel$1
@@ -10,7 +10,7 @@ public final class HttpChannel$1
   
   public void run()
   {
-    bkft.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    bkka.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

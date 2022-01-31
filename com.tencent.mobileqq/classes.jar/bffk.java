@@ -1,92 +1,75 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
-class bffk
-  implements bfka
+public class bffk
+  implements bfrt
 {
-  bffk(bffi parambffi) {}
+  public bffk(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a()
   {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).installSucceed(paramString1, paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadCancel(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (asyt.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    if (!OpenAuthorityFragment.b(this.a))
     {
-      if (!asyt.b().equals(paramDownloadInfo.l))
+      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
+      return;
+    }
+    Object localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached appid=", OpenAuthorityFragment.a(this.a), ", appInfo=", ((aryj)localObject1).toString() });
+    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    ((Message)localObject2).what = 3;
+    ((Message)localObject2).obj = localObject1;
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+    localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    boolean bool;
+    if (localObject1 != null)
+    {
+      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
+      localObject2 = this.a.jdField_a_of_type_Bfrs;
+      if (((GetVirtualListResult)localObject1).a == 0)
       {
-        asyt.a(paramDownloadInfo.l);
-        paramDownloadInfo.l = asyt.b();
+        bool = true;
+        ((bfrs)localObject2).a(bool, (GetVirtualListResult)localObject1);
       }
-      bfkb.a().e(paramDownloadInfo);
     }
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadFinish(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadPause(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadUpdate(paramList);
+    for (;;)
+    {
+      if (!this.a.b) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      }
+      localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      ((Message)localObject2).what = 0;
+      ((Message)localObject2).obj = localObject1;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+      return;
+      bool = false;
+      break;
+      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
+      this.a.jdField_a_of_type_Bfrs.a(false, null);
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void a(int paramInt, String paramString)
   {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).onDownloadWait(paramDownloadInfo);
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bfii.a(this.a.jdField_a_of_type_Bfqv.a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
+    if (!OpenAuthorityFragment.b(this.a))
+    {
+      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
+      return;
     }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).packageReplaced(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bffi.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bffl)localIterator.next()).uninstallSucceed(paramString1, paramString2);
-    }
+    this.a.jdField_a_of_type_Bfrs.a(false, null);
+    this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
+    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    paramString.what = 6;
+    paramString.arg1 = 3001;
+    paramString.obj = this.a.getResources().getString(2131695056);
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
   }
 }
 

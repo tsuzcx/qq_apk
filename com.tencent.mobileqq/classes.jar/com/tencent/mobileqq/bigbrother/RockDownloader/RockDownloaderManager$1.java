@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import anro;
+import anvx;
 import com.tencent.qphone.base.util.QLog;
 
 public class RockDownloaderManager$1
   implements Runnable
 {
-  public RockDownloaderManager$1(anro paramanro) {}
+  public RockDownloaderManager$1(anvx paramanvx) {}
   
   public void run()
   {
     try
     {
-      anro.a(this.this$0);
+      anvx.a(this.this$0);
       return;
     }
     catch (Exception localException)

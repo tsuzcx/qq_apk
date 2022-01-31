@@ -1,13 +1,27 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
 
-class arsd
-  implements affe
+public class arsd
 {
-  arsd(arsc paramarsc) {}
+  static Executor a;
   
-  public boolean a(int paramInt)
+  static
   {
-    return (asnx.c.get()) && (paramInt == 0);
+    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
+    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+  }
+  
+  public static Executor a()
+  {
+    return a;
   }
 }
 

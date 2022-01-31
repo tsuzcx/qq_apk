@@ -1,15 +1,24 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
 public class aiyu
-  implements aiyi
+  extends Handler
 {
-  public aiyu(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public aiyu(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
+    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
   }
 }
 

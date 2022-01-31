@@ -1,16 +1,10 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class agle
-  extends ayxx
+public abstract interface agle
 {
-  agle(agld paramagld) {}
+  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
-    }
-  }
+  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
 }
 
 

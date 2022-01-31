@@ -1,38 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
-import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class bkyi
-  extends RecyclerView.ViewHolder
+  implements Animation.AnimationListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AEGIFOutlineTextView jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
-  private DrawableImageView jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView;
-  private ImageView b;
+  bkyi(bkyh parambkyh) {}
   
-  public bkyi(bkyc parambkyc, View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363700));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131373264));
-    this.jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView = ((DrawableImageView)paramView.findViewById(2131362183));
-    this.b = ((ImageView)paramView.findViewById(2131362184));
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView = ((AEGIFOutlineTextView)paramView.findViewById(2131371475));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (bkyh.a(this.a) != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837983);
-      return;
+      bkyh.a(this.a).clearAnimation();
+      bkyh.a(this.a).setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837693);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

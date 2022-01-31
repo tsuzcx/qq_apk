@@ -1,35 +1,28 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class xsn
-  extends ImageSpan
+final class xsn
+  implements DownloadParams.DecodeHandler
 {
-  public xsn(Context paramContext, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public xsn(Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return xsm.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

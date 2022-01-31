@@ -1,23 +1,47 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.photoplus.PhotoPlusManager;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class biqf
+  extends bead
 {
-  public static String a = "?action=folderList&offset=%d&limit=%d";
-  public static String b = "?action=fileList&folderId=%s&offset=%d&limit=%d";
-  public static String c = "?action=fileDetail&fileId=%s&offset=%d&limit=%d";
-  public static String d = "MPFILE_ACTION_HOST_INFO_UPDATE";
-  public static String e = "MPFILE_ACTION_CONNECT_PC_RET";
-  public static String f = "MPFILE_ACTION_CONNECT_PC_SESSINID";
-  public static String g = "MPFILE_ACTION_CHANNEL_DISCONNECT";
-  public static String h = "0X8005E1F";
-  public static String i = "0X8005F29";
-  public static String j = "0X8005E22";
-  public static String k = "0X8005E20";
-  public static String l = "0X8005E21";
-  public static String m = "0X80060DF";
-  public static String n = "0X80061A2";
-  public static String o = "0X8006443";
-  public static String p = "0X8006444";
-  public static String q = "0X8006445";
-  public static String r = "0X8006446";
+  public biqf(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
+  
+  public void onCancel(beae parambeae)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambeae.a() == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
+      }
+      if (TextUtils.isEmpty(this.c)) {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      parambeae = awni.a(this.jdField_a_of_type_JavaLangString);
+      if (this.c.equalsIgnoreCase(parambeae))
+      {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
+      }
+      bdhb.d(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambeae.b + " code=" + parambeae.a);
+  }
 }
 
 

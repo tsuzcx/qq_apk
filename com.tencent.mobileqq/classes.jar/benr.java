@@ -1,65 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.PhotoWallView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class benr
-  extends alla
+  implements View.OnTouchListener
 {
-  private WeakReference<PhotoWallView> a;
+  public benr(ClearableEditText paramClearableEditText) {}
   
-  public benr(PhotoWallView paramPhotoWallView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramPhotoWallView);
-  }
-  
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
-  {
-    if (this.a != null) {}
-    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
+    for (;;)
     {
-      if (localPhotoWallView == null) {
-        return;
-      }
-      if (paramInt != 0)
+      return false;
+      if (paramMotionEvent.getAction() == 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_Benu == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_Benu.m();
+          return false;
+          i = 0;
         }
-        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
-      }
-      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        paramInt += 1;
-      }
-      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        azmj.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
-      }
-      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     benr
  * JD-Core Version:    0.7.0.1
  */

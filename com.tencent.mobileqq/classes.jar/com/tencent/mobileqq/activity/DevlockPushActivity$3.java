@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bepp;
+import bety;
 
 class DevlockPushActivity$3
   implements Runnable
@@ -13,8 +13,8 @@ class DevlockPushActivity$3
     {
       if ((this.this$0.a == null) && (!this.this$0.isFinishing()))
       {
-        this.this$0.a = new bepp(this.this$0, this.this$0.getTitleBarHeight());
-        this.this$0.a.c(2131695088);
+        this.this$0.a = new bety(this.this$0, this.this$0.getTitleBarHeight());
+        this.this$0.a.c(2131695090);
       }
       if ((this.this$0.a != null) && (!this.this$0.a.isShowing())) {
         this.this$0.a.show();

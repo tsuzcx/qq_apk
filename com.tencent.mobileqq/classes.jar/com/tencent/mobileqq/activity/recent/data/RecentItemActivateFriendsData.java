@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abol;
-import ajgs;
+import abta;
+import ajlh;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
@@ -43,7 +43,7 @@ public class RecentItemActivateFriendsData
         break;
       }
       this.mUnreadNum = paramQQAppInterface.a(localMessage.frienduin, localMessage.istroop);
-      this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+      this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
       this.mLastMsg = localMessage.getMessageText();
       e();
       if (TextUtils.isEmpty(this.mTitleName)) {

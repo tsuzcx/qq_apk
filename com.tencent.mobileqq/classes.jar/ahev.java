@@ -1,24 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class ahev
-  extends RecyclerView.ViewHolder
+public class ahev
 {
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
-  
-  public ahev(ahes paramahes, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376017));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
-  }
+  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
 }
 
 

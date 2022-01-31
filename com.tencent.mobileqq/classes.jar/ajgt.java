@@ -1,27 +1,22 @@
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-@Deprecated
-public class ajgt
-  extends ajff
+class ajgt
+  implements View.OnClickListener
 {
-  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
+  ajgt(ajgb paramajgb) {}
+  
+  public void onClick(View paramView)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2131562731, null);
-    }
-    paramajfa = paramObject.findViewById(2131378286);
-    paramajfa.setTag(-1, Integer.valueOf(paramInt));
-    paramajfa.setOnClickListener(paramOnClickListener);
-    paramajfa = paramObject.findViewById(2131378285);
-    paramajfa.setTag(-1, Integer.valueOf(paramInt));
-    paramajfa.setOnClickListener(paramOnClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    paramView = new Intent(ajgb.a(this.a), TroopAssisSettingActivity.class);
+    ajgb.a(this.a).startActivityForResult(paramView, 9001);
+    ajgb.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    azqs.b(ajgb.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
   }
 }
 

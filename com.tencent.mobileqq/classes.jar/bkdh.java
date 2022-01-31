@@ -1,25 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
-class bkdh
-  implements View.OnTouchListener
+public class bkdh
+  implements QQPermissionCallback
 {
-  bkdh(bkdd parambkdd) {}
+  public bkdh(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.a.d();
-      return true;
-    }
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.d();
-      return true;
-    }
-    return paramView.onTouchEvent(paramMotionEvent);
+    bdgm.b(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
   }
 }
 

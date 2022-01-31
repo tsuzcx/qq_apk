@@ -1,11 +1,15 @@
-class alum
-  extends alxd
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class alum
+  implements View.OnClickListener
 {
-  alum(aluk paramaluk) {}
+  alum(Dialog paramDialog) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.dismiss();
   }
 }
 

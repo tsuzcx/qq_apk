@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import aljq;
+import alof;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -13,7 +13,7 @@ class AccountDetailActivity$6$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.k();
-    if (TextUtils.equals(aljq.aQ, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.d)) {
+    if (TextUtils.equals(alof.aQ, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.d)) {
       AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
     }
     while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.l)) {

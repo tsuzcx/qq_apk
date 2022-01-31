@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaie;
-import aaig;
-import aano;
+import aamt;
+import aamv;
+import aasd;
 import android.app.Activity;
 import android.content.Context;
-import angn;
+import ankw;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ark.ark;
 import java.lang.ref.WeakReference;
@@ -15,20 +15,20 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$3$1$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$3$1$1(angn paramangn, aaie paramaaie) {}
+  public ArkAppNotifyCenter$GdtNotify$3$1$1(ankw paramankw, aamt paramaamt) {}
   
   public void run()
   {
-    Object localObject2 = aano.a(this.jdField_a_of_type_Aaie.a().a);
+    Object localObject2 = aasd.a(this.jdField_a_of_type_Aamt.a().a);
     Object localObject1 = new JSONObject();
     try
     {
       ((JSONObject)localObject1).put("rsp", localObject2);
-      ark.arkNotify(this.jdField_a_of_type_Angn.a.jdField_a_of_type_JavaLangString, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
-      if (this.jdField_a_of_type_Angn.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+      ark.arkNotify(this.jdField_a_of_type_Ankw.a.jdField_a_of_type_JavaLangString, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
+      if (this.jdField_a_of_type_Ankw.a.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject1 = (Activity)this.jdField_a_of_type_Angn.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-        AdReporterForAnalysis.reportForARKSendNotification((Context)localObject1, this.jdField_a_of_type_Angn.a.jdField_a_of_type_Boolean, "ad_req_callback", this.jdField_a_of_type_Angn.a.jdField_a_of_type_JavaLangString, null);
+        localObject1 = (Activity)this.jdField_a_of_type_Ankw.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        AdReporterForAnalysis.reportForARKSendNotification((Context)localObject1, this.jdField_a_of_type_Ankw.a.jdField_a_of_type_Boolean, "ad_req_callback", this.jdField_a_of_type_Ankw.a.jdField_a_of_type_JavaLangString, null);
         return;
       }
     }

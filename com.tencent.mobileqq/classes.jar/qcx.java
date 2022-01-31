@@ -19,7 +19,7 @@ public class qcx
   {
     if ((ComponentContentRecommend.a(this.a) == null) || (ComponentContentRecommend.a(this.a).mRecommendFollowInfos == null))
     {
-      QQToast.a(ComponentContentRecommend.a(this.a), 1, alpo.a(2131702696), 1).a();
+      QQToast.a(ComponentContentRecommend.a(this.a), 1, alud.a(2131702708), 1).a();
       ComponentContentRecommend.a(this.a).clearAnimation();
     }
     while (ComponentContentRecommend.a(this.a).mArticleID != paramLong) {
@@ -27,7 +27,7 @@ public class qcx
     }
     if ((!paramBoolean) || (paramList == null) || (paramList.size() <= 0))
     {
-      QQToast.a(ComponentContentRecommend.a(this.a), 1, alpo.a(2131702699), 1).a();
+      QQToast.a(ComponentContentRecommend.a(this.a), 1, alud.a(2131702711), 1).a();
       ComponentContentRecommend.a(this.a).clearAnimation();
       return;
     }

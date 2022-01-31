@@ -1,11 +1,17 @@
 import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-class bjoc
-  extends bjoa
+final class bjoc
+  implements bjof
 {
-  protected int b(Context paramContext, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean, Context paramContext, bjog parambjog)
   {
-    return -3;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bjoa.d(paramContext, parambjog);
+    }
   }
 }
 

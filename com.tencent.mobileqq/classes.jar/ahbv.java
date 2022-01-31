@@ -1,19 +1,14 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.lang.ref.WeakReference;
 
-public class ahbv
-  implements MessageQueue.IdleHandler
+class ahbv
 {
-  public ahbv(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public boolean queueIdle()
-  {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  WeakReference<ahbw> jdField_a_of_type_JavaLangRefWeakReference;
 }
 
 

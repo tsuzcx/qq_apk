@@ -1,24 +1,62 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bcls
+  extends Observable
+  implements Manager
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
+  protected awgf a;
+  protected QQAppInterface a;
+  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
   
-  public String a(int paramInt)
+  public bcls(QQAppInterface paramQQAppInterface)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        }
+        return;
+      }
+      finally {}
     }
-    if (paramInt < this.a.size()) {
-      return (String)this.a.get(paramInt);
+  }
+  
+  public TroopAioTopADInfo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return (String)this.a.get(this.a.size() - 1);
+    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_Awgf.a(TroopAioTopADInfo.class, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_Awgf.b(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_a_of_type_Awgf != null) && (this.jdField_a_of_type_Awgf.a())) {
+      this.jdField_a_of_type_Awgf.a();
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
   }
 }
 

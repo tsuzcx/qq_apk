@@ -1,6 +1,6 @@
 public abstract interface axqj
 {
-  public abstract void a(axpl paramaxpl, axqz paramaxqz, axrl paramaxrl, axre paramaxre);
+  public abstract boolean a();
 }
 
 

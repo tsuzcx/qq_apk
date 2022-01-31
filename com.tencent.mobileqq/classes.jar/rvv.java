@@ -27,7 +27,7 @@ public class rvv
   extends Dialog
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131713521);
+  private static final String jdField_a_of_type_JavaLangString = alud.a(2131713533);
   View jdField_a_of_type_AndroidViewView;
   Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -47,7 +47,7 @@ public class rvv
   
   private Drawable a()
   {
-    float f = aekt.a(3.0F, getContext().getResources());
+    float f = aepi.a(3.0F, getContext().getResources());
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
     localShapeDrawable.getPaint().setColor(Color.parseColor("#12B7F5"));
     localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
@@ -83,7 +83,7 @@ public class rvv
   
   private Drawable b()
   {
-    float f = aekt.a(3.0F, getContext().getResources());
+    float f = aepi.a(3.0F, getContext().getResources());
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
     localShapeDrawable.getPaint().setColor(-1);
     localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
@@ -111,11 +111,11 @@ public class rvv
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131560001, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364798));
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131560000, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364799));
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramBundle.findViewById(2131362230));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131364341);
+    this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131364343);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
     this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(new rvx());
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -127,7 +127,7 @@ public class rvv
     setContentView(paramBundle);
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
-    paramBundle.width = aekt.a(320.0F, getContext().getResources());
+    paramBundle.width = aepi.a(320.0F, getContext().getResources());
     getWindow().setAttributes(paramBundle);
     setCancelable(false);
     setCanceledOnTouchOutside(false);

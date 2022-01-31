@@ -1,52 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class auei
-  implements best
+public abstract class auei<T>
 {
-  public auei(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public WeakReference<T> a;
   
-  public void a(View paramView, int paramInt)
+  public auei(T paramT)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + aucf.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
-      {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
-        }
-        auff.a("0X800A243", 2);
-      }
-      while (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.k();
-        return;
-        label129:
-        auff.a("0X800A243", 1);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
-      return;
-    }
-    aucf.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + aucf.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
-    }
-    aucf.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    auff.a("0X800A249");
+    this.a = new WeakReference(paramT);
   }
+  
+  public abstract void a(T paramT, boolean paramBoolean, auef paramauef);
 }
 
 

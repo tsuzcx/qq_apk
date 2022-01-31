@@ -1,81 +1,85 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
-import eipc.EIPCResult;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureRequest.Builder;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
-class azfl
-  extends QIPCModule
+public class azfl
+  extends CameraCaptureSession.CaptureCallback
 {
-  azfl(azfk paramazfk, String paramString)
+  public azfl(Camera2Control paramCamera2Control) {}
+  
+  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
   {
-    super(paramString);
+    paramCaptureRequest = paramCaptureRequest.getTag();
+    if ((!(paramCaptureRequest instanceof azhw)) || (((azhw)paramCaptureRequest).jdField_a_of_type_Boolean))
+    {
+      azfu.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
+    }
+    do
+    {
+      return;
+      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+      azfu.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
+    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
+    a(true, (azhw)paramCaptureRequest);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  private void a(boolean paramBoolean, azhw paramazhw)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
+    Camera2Control.d(this.a, false);
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    try
     {
-      paramString = new Bundle();
-      paramString.putString("VALUE_USER_NICK_NAME", bdbt.b(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
-    {
-      paramString = localQQAppInterface.getCurrentNickname();
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
-    {
-      paramString = localQQAppInterface.a(1, localQQAppInterface.c(), 200);
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
-    {
-      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-      paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
-      if (paramBundle != null)
+      azfu.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
+      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {}
+      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
       {
-        azey.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
-        VideoRedbagData.updateRewardStat(paramBundle);
+        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
+        if ((paramazhw.jdField_a_of_type_Azfs.a == null) || (paramazhw.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        paramazhw.jdField_a_of_type_Boolean = true;
+        paramazhw.jdField_a_of_type_Azfs.a.a(1, paramBoolean);
+        return;
       }
-      return EIPCResult.createSuccessResult(new Bundle());
+      return;
     }
-    if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
+    catch (Exception paramazhw)
     {
-      boolean bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
-      paramString = new Bundle();
-      paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
-      return EIPCResult.createSuccessResult(paramString);
+      azfu.a(2, "[Camera2] mAfCaptureCallback e:" + paramazhw);
     }
-    if ("CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString))
+  }
+  
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  {
+    a(paramTotalCaptureResult, paramCaptureRequest);
+  }
+  
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  {
+    azfu.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
+    paramCameraCaptureSession = paramCaptureRequest.getTag();
+    if ((!(paramCameraCaptureSession instanceof azhw)) || (((azhw)paramCameraCaptureSession).jdField_a_of_type_Boolean))
     {
-      bkwi.a().a(bkwh.c, null, false);
-      blfg.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-      return EIPCResult.createSuccessResult(new Bundle());
+      azfu.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
+      return;
     }
-    if ("CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString))
-    {
-      bkwi.a().a(bkwh.b, null, false);
-      blfg.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-      return EIPCResult.createSuccessResult(new Bundle());
-    }
-    if ("CMD_QUERY_STATUS_PTU_RES".equals(paramString))
-    {
-      paramInt = bkwi.a().a(bkwh.c);
-      blfg.b("VideoPlayIPCServer", "query additional_package");
-      paramString = new Bundle();
-      paramString.putInt("VALUE_MSG_PTU_RES_STATUS", paramInt);
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    return null;
+    a(false, (azhw)paramCameraCaptureSession);
+  }
+  
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  {
+    a(paramCaptureResult, paramCaptureRequest);
   }
 }
 

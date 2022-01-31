@@ -1,14 +1,12 @@
-public class bfrt
+public abstract interface bfrt
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfrt
  * JD-Core Version:    0.7.0.1
  */

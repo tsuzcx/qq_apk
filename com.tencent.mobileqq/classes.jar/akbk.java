@@ -1,25 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class akbk
-  extends Handler
+class akbk
+  implements View.OnClickListener
 {
-  public akbk(VipSpecialCareHandler.1 param1, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  akbk(akbj paramakbj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    akbj.a(this.a.this$0, "-->request timeout");
-    akbj.a(this.a.this$0, -2);
+    paramView = paramView.getTag();
+    akbj.a(this.a, (akhv)paramView);
   }
 }
 

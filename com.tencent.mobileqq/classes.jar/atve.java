@@ -1,13 +1,52 @@
-import com.tencent.mobileqq.data.Emoticon;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class atve
-  implements atuz
+final class atve
+  extends Handler
 {
-  atve(atva paramatva, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void a()
+  atve(Looper paramLooper)
   {
-    this.jdField_a_of_type_Atva.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 10000001)
+    {
+      paramMessage = (ProgressBar)atvd.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131366695);
+      localDrawable = atvd.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130839405);
+      paramMessage.setIndeterminateDrawable(localDrawable);
+      paramMessage.setBackgroundDrawable(localDrawable);
+      ((TextView)atvd.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131365233)).setText(2131719772);
+      atvd.a().sendEmptyMessageDelayed(10000002, 2000L);
+    }
+    while ((paramMessage.what != 10000002) || (atvd.jdField_a_of_type_AndroidAppProgressDialog == null))
+    {
+      Drawable localDrawable;
+      return;
+    }
+    try
+    {
+      atvd.jdField_a_of_type_Boolean = false;
+      atvd.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      return;
+    }
+    finally
+    {
+      atvd.jdField_a_of_type_AndroidAppProgressDialog = null;
+    }
   }
 }
 

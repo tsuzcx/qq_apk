@@ -1,59 +1,22 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
-public class ajhx
-  extends ajhc
+class ajhx
+  implements View.OnClickListener
 {
-  public ajhx(Context paramContext)
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  
+  public ajhx(int paramInt, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_JavaLangString = ("[" + paramContext.getString(2131699982) + "]");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
   }
 }
 

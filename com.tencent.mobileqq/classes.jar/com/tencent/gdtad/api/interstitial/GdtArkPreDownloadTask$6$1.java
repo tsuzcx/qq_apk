@@ -1,9 +1,9 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaju;
-import aajv;
-import aajx;
-import aanp;
+import aaoj;
+import aaok;
+import aaom;
+import aase;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.json.AdJSON;
 import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
@@ -11,7 +11,7 @@ import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
 public class GdtArkPreDownloadTask$6$1
   implements Runnable
 {
-  public GdtArkPreDownloadTask$6$1(aajv paramaajv, ArkAppMgr.AppPathInfo paramAppPathInfo, int paramInt, String paramString) {}
+  public GdtArkPreDownloadTask$6$1(aaok paramaaok, ArkAppMgr.AppPathInfo paramAppPathInfo, int paramInt, String paramString) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class GdtArkPreDownloadTask$6$1
       if (localObject1 != null) {
         str1 = localObject1.toString();
       }
-      aanp.b("GdtArkPreDownloadTask", String.format("onGetAppPathByName retCode:%d msg:%s appPathInfo:%s", new Object[] { Integer.valueOf(i), str2, str1 }));
+      aase.b("GdtArkPreDownloadTask", String.format("onGetAppPathByName retCode:%d msg:%s appPathInfo:%s", new Object[] { Integer.valueOf(i), str2, str1 }));
       if (this.jdField_a_of_type_Int == -6) {
         return;
       }
@@ -33,11 +33,11 @@ public class GdtArkPreDownloadTask$6$1
     {
       for (;;)
       {
-        aanp.b("GdtArkPreDownloadTask", "onGetAppPathByName", localThrowable);
+        aase.b("GdtArkPreDownloadTask", "onGetAppPathByName", localThrowable);
         Object localObject2 = null;
       }
-      int k = aajx.a(this.jdField_a_of_type_Int);
-      if ((k == 0) && (this.jdField_a_of_type_ComTencentArkOpenArkAppMgr$AppPathInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentArkOpenArkAppMgr$AppPathInfo.path)) && (!TextUtils.isEmpty(aaju.a(this.jdField_a_of_type_Aajv.a)))) {}
+      int k = aaom.a(this.jdField_a_of_type_Int);
+      if ((k == 0) && (this.jdField_a_of_type_ComTencentArkOpenArkAppMgr$AppPathInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentArkOpenArkAppMgr$AppPathInfo.path)) && (!TextUtils.isEmpty(aaoj.a(this.jdField_a_of_type_Aaok.a)))) {}
       int j;
       for (int i = 1;; i = 0)
       {
@@ -52,12 +52,12 @@ public class GdtArkPreDownloadTask$6$1
         if (i == 0) {
           break;
         }
-        aaju.a(this.jdField_a_of_type_Aajv.a, 3);
-        aaju.b(this.jdField_a_of_type_Aajv.a);
+        aaoj.a(this.jdField_a_of_type_Aaok.a, 3);
+        aaoj.b(this.jdField_a_of_type_Aaok.a);
         return;
       }
-      aaju.a(this.jdField_a_of_type_Aajv.a, 4);
-      aaju.a(this.jdField_a_of_type_Aajv.a, j, this.jdField_a_of_type_Int, 0L);
+      aaoj.a(this.jdField_a_of_type_Aaok.a, 4);
+      aaoj.a(this.jdField_a_of_type_Aaok.a, j, this.jdField_a_of_type_Int, 0L);
     }
   }
 }

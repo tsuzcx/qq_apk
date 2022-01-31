@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import axwf;
+import ayao;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class AIOVideoView$7
   implements Runnable
 {
-  public AIOVideoView$7(axwf paramaxwf) {}
+  public AIOVideoView$7(ayao paramayao) {}
   
   public void run()
   {
-    axwf.a(this.this$0, axwf.a(this.this$0, this.this$0.a.getCoverDrawable()));
+    ayao.a(this.this$0, ayao.a(this.this$0, this.this$0.a.getCoverDrawable()));
   }
 }
 

@@ -1,17 +1,41 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class vft
-  extends ver
+public class vft
+  extends urt
 {
-  vft(vez paramvez, boolean paramBoolean1, boolean paramBoolean2, vgi paramvgi)
+  public String a;
+  
+  public String a()
   {
-    super(paramBoolean1, paramBoolean2);
+    return uqn.a("StorySvc.get_profile_year_node_info");
   }
   
-  public boolean b()
+  public uro a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Vgi.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
-    return true;
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    try
+    {
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new vfu(localRspProfileYearNodeList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
 }
 

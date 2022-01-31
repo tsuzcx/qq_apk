@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apvd;
-import apve;
-import azmj;
+import apzm;
+import apzn;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -44,22 +44,22 @@ public abstract class AIOEmotionBaseFragment
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131368613);
-    localTextView.setText(alpo.a(2131700395));
-    localTextView.setOnClickListener(new apvd(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131368624);
+    localTextView.setText(alud.a(2131700407));
+    localTextView.setOnClickListener(new apzm(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131368627);
-      paramView.setImageResource(2130837935);
+      paramView = (ImageView)paramView.findViewById(2131368638);
+      paramView.setImageResource(2130837936);
       paramView.setVisibility(0);
-      paramView.setContentDescription(alpo.a(2131700394));
-      paramView.setOnClickListener(new apve(this));
+      paramView.setContentDescription(alud.a(2131700406));
+      paramView.setOnClickListener(new apzn(this));
     }
   }
   
   public void a(String paramString)
   {
-    azmj.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public boolean a()

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import aucf;
-import aufc;
-import auff;
-import aufh;
+import augo;
+import aujl;
+import aujo;
+import aujq;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -434,17 +434,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      auff.a();
-      aucf.a().a.add(Long.valueOf(paramLong2));
-      aufc localaufc = auff.a;
-      localaufc.j += 1L;
+      aujo.a();
+      augo.a().a.add(Long.valueOf(paramLong2));
+      aujl localaujl = aujo.a;
+      localaujl.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, aufh.b);
+    setEncryptKey(paramLong, paramString, aujq.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)

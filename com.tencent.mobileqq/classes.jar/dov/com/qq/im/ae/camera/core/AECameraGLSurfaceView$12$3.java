@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkum;
+import bkyt;
 
 class AECameraGLSurfaceView$12$3
   implements Runnable
@@ -9,7 +9,7 @@ class AECameraGLSurfaceView$12$3
   
   public void run()
   {
-    bkum.a().a();
+    bkyt.a().a();
   }
 }
 

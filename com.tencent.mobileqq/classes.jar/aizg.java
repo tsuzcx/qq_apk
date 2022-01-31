@@ -1,53 +1,54 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import Wallet.SkinInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class aizg
 {
-  private static volatile aizg jdField_a_of_type_Aizg;
-  private String jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/imglib/201907/upload_1988f0d818d7c94c1ff6476193401b15.zip";
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static aizg a()
+  public static aize a(String paramString)
   {
-    if (jdField_a_of_type_Aizg == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aizg == null) {
-        jdField_a_of_type_Aizg = new aizg();
-      }
-      return jdField_a_of_type_Aizg;
-    }
-    finally {}
+    aize localaize = new aize(alud.a(2131705822));
+    localaize.jdField_b_of_type_Int = -2;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
+    localaize.jdField_a_of_type_Int = 0;
+    return localaize;
   }
   
-  public void a(aizi paramaizi)
+  public static aize a(List<aize> paramList, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (paramaizi != null) {
-        paramaizi.a(true);
-      }
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = BaseHbFragment.getHbPannelConfig(10);
-      if (localJSONObject != null) {
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString("aLib", "https://i.gtimg.cn/channel/imglib/201907/upload_1988f0d818d7c94c1ff6476193401b15.zip");
+      aize localaize = (aize)paramList.next();
+      if (localaize.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+        return localaize;
       }
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TensorFlowlibManager", 2, "init libUrl=" + this.jdField_a_of_type_JavaLangString);
-    }
-    azip.a().a("tensorflowlite_jni", new aizh(this, paramaizi));
+    return null;
+  }
+  
+  public static aize b(String paramString)
+  {
+    aize localaize = new aize(alud.a(2131705824));
+    localaize.jdField_b_of_type_Int = -1;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localaize.jdField_a_of_type_Int = -1;
+    return localaize;
+  }
+  
+  public static aize c(String paramString)
+  {
+    aize localaize = new aize(alud.a(2131705823));
+    localaize.jdField_b_of_type_JavaLangString = paramString;
+    localaize.jdField_b_of_type_Int = 1;
+    localaize.jdField_a_of_type_Int = 1000;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
+    localaize.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    return localaize;
   }
 }
 

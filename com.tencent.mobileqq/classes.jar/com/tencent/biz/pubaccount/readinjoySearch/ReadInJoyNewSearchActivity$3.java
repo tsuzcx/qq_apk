@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoySearch;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ class ReadInJoyNewSearchActivity$3
   
   public void run()
   {
-    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = localawbw.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    List localList = localawgf.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
     if (localList != null)
     {
@@ -26,7 +26,7 @@ class ReadInJoyNewSearchActivity$3
       {
         localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
         if (localReadInJoySearchHistoryEntity.keyWord.equals(this.a)) {
-          localawbw.b(localReadInJoySearchHistoryEntity);
+          localawgf.b(localReadInJoySearchHistoryEntity);
         }
       }
     }
@@ -37,7 +37,7 @@ class ReadInJoyNewSearchActivity$3
       }
       if (localList.size() == 20)
       {
-        localawbw.b((awbv)localList.get(localList.size() - 1));
+        localawgf.b((awge)localList.get(localList.size() - 1));
         localList.remove(localList.size() - 1);
       }
       for (;;)
@@ -45,8 +45,8 @@ class ReadInJoyNewSearchActivity$3
         localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
         localReadInJoySearchHistoryEntity.keyWord = this.a;
         localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
-        localawbw.a(localReadInJoySearchHistoryEntity);
-        localawbw.a();
+        localawgf.a(localReadInJoySearchHistoryEntity);
+        localawgf.a();
         return;
         new ArrayList();
       }

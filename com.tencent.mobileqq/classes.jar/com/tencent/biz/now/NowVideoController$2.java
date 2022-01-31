@@ -22,7 +22,7 @@ public class NowVideoController$2
         Object localObject = ngf.a(this.this$0).getChildAt(i - this.a);
         if (localObject != null)
         {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131377079);
+          localObject = (PAVideoView)((View)localObject).findViewById(2131377133);
           if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
             ((PAVideoView)localObject).e();
           }

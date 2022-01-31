@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class SearchHistory
-  extends awbv
+  extends awge
 {
   public int count;
   public String displayName;
   public String extralInfo;
-  @awdj
+  @awhs
   public String key;
   public long time;
   public String troopUin;

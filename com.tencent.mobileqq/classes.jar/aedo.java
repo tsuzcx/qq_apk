@@ -1,157 +1,72 @@
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 
 public class aedo
-  implements aoed
+  implements nfc
 {
-  public TroopRobotPickerActivity.RobotPickerData a;
+  public aedo(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public aedo(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
-  }
-  
-  public int a()
-  {
-    int j = 1;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = 2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getColumnCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", count : " + i);
-      }
-      return i;
-      int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      i = j;
-      if (k != 1)
-      {
-        k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3) {
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount;
-        }
-      }
+    this.a.stopTitleProgress();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
+      TroopInfoActivity.h(this.a);
     }
   }
   
-  public int a(int paramInt)
+  public void a(oidb_0x79a.RspBody paramRspBody)
   {
+    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
+    this.a.stopTitleProgress();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
     int j = 0;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = allj.b.length;
-    }
-    for (;;)
+    int i;
+    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getRowCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      if (i == 1)
-      {
-        i = allj.a.length;
-      }
-      else
-      {
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3)
+      i = j;
+      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
+    }
+    else
+    {
+      i = j;
+      if (localGroupInfo != null) {
+        if (4 != localGroupInfo.uint32_group_type_flag.get())
         {
           i = j;
-          if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount)
-          {
-            i = j;
-            if (paramInt >= 0)
-            {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt] != null) {
-                i = ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt]).size();
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    String str2 = "";
-    int i;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < allj.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      str1 = allj.b[i];
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getText|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt1 + ", row : " + i + ", result : " + str1);
-      }
-      return str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < allj.c.length) {}
+          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
         }
         else
         {
-          i = 0;
-        }
-        str1 = allj.a[i];
-      }
-      else
-      {
-        str1 = str2;
-        i = paramInt2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 3)
-        {
-          str1 = str2;
-          i = paramInt2;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1] != null)
-          {
-            if (paramInt2 >= 0)
-            {
-              i = paramInt2;
-              if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).size()) {}
-            }
-            else
-            {
-              i = 0;
-            }
-            if (((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).code.equals("0")) {
-              str1 = alpo.a(2131716131);
-            } else {
-              str1 = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).name;
-            }
-          }
+          this.a.a(localGroupInfo);
+          i = 1;
         }
       }
     }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
+      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
+      if (i == 0) {
+        this.a.a(localGroupInfo);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
+    {
+      TroopInfoActivity.h(this.a);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
 }
 

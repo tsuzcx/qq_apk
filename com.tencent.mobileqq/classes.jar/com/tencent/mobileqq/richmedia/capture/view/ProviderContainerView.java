@@ -13,44 +13,44 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import axkz;
-import axli;
-import axlm;
-import axnl;
-import axnn;
-import axno;
-import axnp;
-import axnq;
-import axnr;
-import axns;
-import axnt;
-import azey;
+import axpi;
+import axpr;
+import axpv;
+import axru;
+import axrw;
+import axrx;
+import axry;
+import axrz;
+import axsa;
+import axsb;
+import axsc;
+import azjh;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import xod;
+import xsm;
 
 @TargetApi(11)
 public class ProviderContainerView
   extends FrameLayout
-  implements axnl
+  implements axru
 {
   private int jdField_a_of_type_Int = -1;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axnn(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axrw(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private axli jdField_a_of_type_Axli;
-  private axlm jdField_a_of_type_Axlm;
-  private axns jdField_a_of_type_Axns;
-  private axnt jdField_a_of_type_Axnt;
+  private axpr jdField_a_of_type_Axpr;
+  private axpv jdField_a_of_type_Axpv;
+  private axsb jdField_a_of_type_Axsb;
+  private axsc jdField_a_of_type_Axsc;
   private CameraCaptureButtonLayout jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout;
   private EffectsCameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView;
   private ProviderView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView;
   private HashMap<Integer, RedDotImageView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<axns> jdField_a_of_type_JavaUtilList;
+  private List<axsb> jdField_a_of_type_JavaUtilList;
   public boolean a;
   View jdField_b_of_type_AndroidViewView;
   private HashMap<Integer, ProviderView> jdField_b_of_type_JavaUtilHashMap = new HashMap();
@@ -97,15 +97,15 @@ public class ProviderContainerView
   private void a(int paramInt)
   {
     a(paramInt, true);
-    paramInt = xod.a(getContext(), 80.0F);
+    paramInt = xsm.a(getContext(), 80.0F);
     Object localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), axkz.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165448), 0, 153), axkz.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165448), 0, 153), axkz.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165448), 0, 153) });
-    ((AnimatorSet)localObject).addListener(new axno(this));
+    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), axpi.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165448), 0, 153), axpi.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165448), 0, 153), axpi.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165448), 0, 153) });
+    ((AnimatorSet)localObject).addListener(new axrx(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = axkz.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 0.0F, 1.0F);
+    localObject = axpi.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new axnp(this));
+    ((Animation)localObject).setAnimationListener(new axry(this));
     startAnimation((Animation)localObject);
   }
   
@@ -118,13 +118,13 @@ public class ProviderContainerView
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.setVisibility(8);
     }
     ProviderView localProviderView;
-    if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Axlm.a(paramInt))))
+    if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Axpv.a(paramInt))))
     {
-      localProviderView = (ProviderView)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Axlm.a(paramInt)));
+      localProviderView = (ProviderView)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Axpv.a(paramInt)));
       if ((localProviderView != null) && (!localProviderView.jdField_c_of_type_Boolean))
       {
-        localProviderView.setProviderViewListener(this.jdField_a_of_type_Axli);
-        localProviderView.setAppInterface(this.jdField_a_of_type_Axli.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        localProviderView.setProviderViewListener(this.jdField_a_of_type_Axpr);
+        localProviderView.setAppInterface(this.jdField_a_of_type_Axpr.jdField_a_of_type_ComTencentCommonAppAppInterface);
         localProviderView.a(null);
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView = localProviderView;
@@ -139,16 +139,16 @@ public class ProviderContainerView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.aM_();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.aJ_();
       return;
-      int i = this.jdField_a_of_type_Axlm.a(paramInt);
-      localProviderView = this.jdField_a_of_type_Axlm.a(getContext(), i);
+      int i = this.jdField_a_of_type_Axpv.a(paramInt);
+      localProviderView = this.jdField_a_of_type_Axpv.a(getContext(), i);
       if (localProviderView != null)
       {
-        if ((localProviderView instanceof axnl)) {
-          ((axnl)localProviderView).setNeedAdvertisement(this.jdField_e_of_type_Boolean);
+        if ((localProviderView instanceof axru)) {
+          ((axru)localProviderView).setNeedAdvertisement(this.jdField_e_of_type_Boolean);
         }
-        this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Axlm.a(paramInt)), localProviderView);
+        this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Axpv.a(paramInt)), localProviderView);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localProviderView);
         break;
       }
@@ -182,8 +182,8 @@ public class ProviderContainerView
         if ((paramView instanceof RedDotImageView))
         {
           ((RedDotImageView)paramView).a(false);
-          if ((paramInt == 102) && (!azey.a(azey.e))) {
-            azey.a(azey.e);
+          if ((paramInt == 102) && (!azjh.a(azjh.e))) {
+            azjh.a(azjh.e);
           }
         }
         else
@@ -196,9 +196,9 @@ public class ProviderContainerView
         Object localObject;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_Axns;
+          localObject = this.jdField_a_of_type_Axsb;
           if (localObject != null) {
-            ((axns)localObject).a(paramView, paramInt);
+            ((axsb)localObject).a(paramView, paramInt);
           }
           if (i != this.jdField_a_of_type_Int) {
             break label155;
@@ -206,7 +206,7 @@ public class ProviderContainerView
           a();
           this.jdField_a_of_type_Int = -1;
           return;
-          this.jdField_a_of_type_Axlm.a(i);
+          this.jdField_a_of_type_Axpv.a(i);
           break;
           label146:
           a(i, false);
@@ -220,7 +220,7 @@ public class ProviderContainerView
         {
           localObject = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((axns)((Iterator)localObject).next()).a(paramView, paramInt);
+            ((axsb)((Iterator)localObject).next()).a(paramView, paramInt);
           }
         }
       }
@@ -229,33 +229,33 @@ public class ProviderContainerView
   
   private void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131561223, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131561241, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131367820));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372371));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365985);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365984);
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372361);
-    this.jdField_a_of_type_Axlm = new axlm(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131367831));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372391));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365987);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365986);
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372381);
+    this.jdField_a_of_type_Axpv = new axpv(0);
   }
   
   private void b(boolean paramBoolean)
   {
-    Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, xod.a(getContext(), 80.0F) });
+    Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, xsm.a(getContext(), 80.0F) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { localObject, axkz.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165448), 153, 0), axkz.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165448), 153, 0), axkz.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165448), 153, 0) });
-    localAnimatorSet.addListener(new axnq(this));
+    localAnimatorSet.playTogether(new Animator[] { localObject, axpi.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131165448), 153, 0), axpi.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165448), 153, 0), axpi.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165448), 153, 0) });
+    localAnimatorSet.addListener(new axrz(this));
     localAnimatorSet.setDuration(300L).start();
-    localObject = axkz.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 1.0F, 0.0F);
+    localObject = axpi.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new axnr(this, paramBoolean));
+    ((Animation)localObject).setAnimationListener(new axsa(this, paramBoolean));
     startAnimation((Animation)localObject);
   }
   
   public int a(int paramInt)
   {
-    return this.jdField_a_of_type_Axlm.b(paramInt);
+    return this.jdField_a_of_type_Axpv.b(paramInt);
   }
   
   public void a()
@@ -281,38 +281,38 @@ public class ProviderContainerView
   public void setBeautyEnable(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Axlm != null) {
-      this.jdField_a_of_type_Axlm.a(paramBoolean);
+    if (this.jdField_a_of_type_Axpv != null) {
+      this.jdField_a_of_type_Axpv.a(paramBoolean);
     }
   }
   
-  public void setContainerViewListener(axns paramaxns)
+  public void setContainerViewListener(axsb paramaxsb)
   {
-    this.jdField_a_of_type_Axns = paramaxns;
+    this.jdField_a_of_type_Axsb = paramaxsb;
   }
   
   public void setFaceEffectEnable(boolean paramBoolean)
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Axlm != null) {
-      this.jdField_a_of_type_Axlm.d(paramBoolean);
+    if (this.jdField_a_of_type_Axpv != null) {
+      this.jdField_a_of_type_Axpv.d(paramBoolean);
     }
   }
   
   public void setFilterEnable(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Axlm != null) {
-      this.jdField_a_of_type_Axlm.c(paramBoolean);
+    if (this.jdField_a_of_type_Axpv != null) {
+      this.jdField_a_of_type_Axpv.c(paramBoolean);
     }
   }
   
-  public void setListenerController(axli paramaxli)
+  public void setListenerController(axpr paramaxpr)
   {
-    this.jdField_a_of_type_Axli = paramaxli;
-    this.jdField_e_of_type_AndroidViewView = paramaxli.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131363938));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131363888));
+    this.jdField_a_of_type_Axpr = paramaxpr;
+    this.jdField_e_of_type_AndroidViewView = paramaxpr.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131363940));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131363890));
   }
   
   public void setNeedAdvertisement(boolean paramBoolean)
@@ -323,14 +323,14 @@ public class ProviderContainerView
   public void setSubtitleEnable(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Axlm != null) {
-      this.jdField_a_of_type_Axlm.b(paramBoolean);
+    if (this.jdField_a_of_type_Axpv != null) {
+      this.jdField_a_of_type_Axpv.b(paramBoolean);
     }
   }
   
-  public void setTriggerLisener(axnt paramaxnt)
+  public void setTriggerLisener(axsc paramaxsc)
   {
-    this.jdField_a_of_type_Axnt = paramaxnt;
+    this.jdField_a_of_type_Axsc = paramaxsc;
   }
 }
 

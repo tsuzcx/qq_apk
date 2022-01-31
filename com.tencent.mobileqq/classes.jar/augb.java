@@ -1,22 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
+import java.util.Comparator;
 
 public class augb
-  extends AnimatorListenerAdapter
+  implements Comparator<TroopMessageNavigateInfo>
 {
-  public augb(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.d(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.d(this.a);
+    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
+    {
+      int i = 0;
+      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
+        i = -1;
+      }
+      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
+        return i;
+      }
+      return 1;
+    }
+    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
   }
 }
 

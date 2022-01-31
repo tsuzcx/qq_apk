@@ -1,40 +1,38 @@
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class bhaa
-  implements bghv<Void>
+public final class bhaa
+  implements AsyncResult
 {
-  private int jdField_a_of_type_Int = -1;
-  private bgho jdField_a_of_type_Bgho;
-  private String jdField_a_of_type_JavaLangString;
+  public bhaa(WeakReference paramWeakReference, String paramString, int paramInt) {}
   
-  public static bhaa a(bgho parambgho)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bhaa localbhaa = new bhaa();
-    localbhaa.jdField_a_of_type_Bgho = parambgho;
-    return localbhaa;
-  }
-  
-  public Void a(bghl parambghl)
-  {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer)) {
-      return null;
-    }
-    parambghl = (AppBrandPageContainer)parambghl;
-    switch (this.jdField_a_of_type_Int)
+    if (paramBoolean) {}
+    try
     {
-    default: 
-      return null;
+      TianShuAccess.GetAdsRsp localGetAdsRsp = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
+      QMLog.d("MiniGameAdBannerPopup", "onGetAdvs() called with: result = [" + paramJSONObject + "], getAdsRsp = [" + localGetAdsRsp + "]");
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+        return;
+      }
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, localGetAdsRsp);
+      return;
     }
-    parambghl.setNaviBarStyle(this.jdField_a_of_type_JavaLangString);
-    return null;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Bgho.a(this);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    catch (Exception paramJSONObject)
+    {
+      QMLog.e("MiniGameAdBannerPopup", "tianshuRequestAdv onReceiveResult", paramJSONObject);
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, null);
+      return;
+    }
   }
 }
 

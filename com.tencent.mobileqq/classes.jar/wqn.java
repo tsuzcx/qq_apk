@@ -1,29 +1,76 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wqn
-  extends QQUIEventReceiver<wps, vol>
+public abstract class wqn<T extends FeedItem>
 {
-  public wqn(@NonNull wps paramwps)
+  protected T a;
+  public boolean b;
+  
+  public wqn(@NonNull T paramT)
   {
-    super(paramwps);
+    xqq.a(paramT);
+    this.a = paramT;
   }
   
-  public void a(@NonNull wps paramwps, @NonNull vol paramvol)
+  public static wqn a(int paramInt)
   {
-    wsv.a(this.TAG, "play video groupId=%s, %s", paramvol.jdField_a_of_type_Vld, paramvol.b);
-    if ((wps.a(paramwps).equals(paramvol.jdField_a_of_type_JavaLangString)) && ((paramvol.jdField_a_of_type_Vld instanceof vks)))
-    {
-      wkh localwkh = ((vks)paramvol.jdField_a_of_type_Vld).a;
-      if (localwkh != null) {
-        paramwps.a(localwkh.jdField_a_of_type_JavaLangString, paramvol.b, true);
-      }
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
+    if (localFeedItem == null) {
+      return null;
     }
+    return localFeedItem.generateHomeFeed();
   }
   
-  public Class acceptEventClass()
+  public T a()
   {
-    return vol.class;
+    return this.a;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, vey paramvey, ves paramves, vev paramvev);
+  
+  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
+  
+  public abstract void b();
+  
+  public List<StoryVideoItem> d()
+  {
+    return new ArrayList(0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wqn)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgqv;
+import bgvc;
 
 public class VoIPManager$MuteConfig
 {
-  @bgqv(a="muteEarphone")
+  @bgvc(a="muteEarphone")
   public boolean isMuteEarphone;
-  @bgqv(a="muteMicrophone")
+  @bgvc(a="muteMicrophone")
   public boolean isMuteMicrophone;
   
   public String toString()

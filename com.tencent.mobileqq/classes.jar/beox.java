@@ -1,203 +1,141 @@
-import android.text.TextUtils;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class beox
-  implements aofq
+  extends Dialog
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   private beoy jdField_a_of_type_Beoy;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 1, 1, 0, 0, 1, 1, 1, 1 };
-  private final Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean = new Boolean[10];
+  private boolean jdField_a_of_type_Boolean;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   
-  public beox(QQAppInterface paramQQAppInterface, beoy parambeoy)
+  public beox(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
+    super(paramContext, 2131755801);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Beoy = parambeoy;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_btn_config", this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_switch_config", this);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a();
   }
   
-  private void a(String paramString)
+  private void a()
   {
-    int[] arrayOfInt = new int[10];
-    int i = 0;
-    while (i < 10)
-    {
-      arrayOfInt[i] = this.jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
+    setContentView(2131562563);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365237));
+    this.b = ((TextView)findViewById(2131365233));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364244));
+    this.c = ((TextView)findViewById(2131365222));
+    this.d = ((TextView)findViewById(2131365228));
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131703520));
     }
-    label288:
-    label443:
-    label448:
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label455;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label288;
-      }
-      localObject = "";
+    if (this.b != null) {
+      this.b.setText(alud.a(2131703519));
     }
-    catch (Exception localException1)
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null)
     {
-      for (;;)
-      {
-        Object localObject;
-        localException1 = localException1;
-        QLog.e("ProfileConfigHelper", 1, "initProfileSwitchConfig fail.", localException1);
-        i = 0;
-        if (i < 10)
-        {
-          arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-          if (arrayOfInt[i] == 1) {}
-          for (bool = true;; bool = false)
-          {
-            arrayOfBoolean[i] = Boolean.valueOf(bool);
-            i += 1;
-            break;
-          }
-        }
+      if (!this.jdField_a_of_type_Boolean) {
+        break label231;
       }
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setText(alud.a(2131703521));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bdne.F(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
     }
-    finally
-    {
-      i = 0;
-      if (i >= 10) {
-        break label448;
-      }
-      Boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-      if (arrayOfInt[i] != 1) {
-        break label443;
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        arrayOfBoolean[i] = Boolean.valueOf(bool);
-        i += 1;
-        break;
-      }
-    }
-    localObject = aofo.a((String)localObject, "profile_switch_config");
-    paramString = (String)localObject;
-    label455:
-    for (;;) {}
-  }
-  
-  private void b(String paramString)
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    label165:
     for (;;)
     {
-      try
+      if (this.c != null)
       {
-        if (!TextUtils.isEmpty(paramString)) {
-          break label165;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-        {
-          str = "";
-          str = aofo.a(str, "profile_btn_config");
-          paramString = str;
-        }
+        this.c.setText(2131690648);
+        this.c.setOnClickListener(this);
       }
-      catch (Exception localException1)
+      if (this.d != null)
       {
-        String str;
-        localException1.printStackTrace();
-        Object localObject1 = localObject4;
-        if (TextUtils.isEmpty(null)) {
-          localObject1 = alpo.a(2131708827);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        continue;
+        this.d.setText(2131694953);
+        this.d.setOnClickListener(this);
       }
-      finally
-      {
-        paramString = (String)localObject3;
-        if (TextUtils.isEmpty(null)) {
-          paramString = alpo.a(2131708827);
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      try
-      {
-        str = new JSONObject(paramString).optString("call_wording");
-        localObject3 = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject3 = alpo.a(2131708827);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.i("ProfileConfigHelper", 2, String.format("initVoiceBtnConfig [str:%s content:%s]", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    }
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return alpo.a(2131708809);
-    }
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      b(null);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Beoy = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aofp paramaofp)
-  {
-    if (paramaofp == null) {}
-    for (;;)
-    {
+      setCancelable(true);
+      setCanceledOnTouchOutside(true);
       return;
-      if ("profile_btn_config".equals(paramString)) {
-        b(paramaofp.jdField_a_of_type_JavaLangString);
-      }
-      while (this.jdField_a_of_type_Beoy != null)
-      {
-        this.jdField_a_of_type_Beoy.a(paramInt, paramString);
-        return;
-        if ("profile_switch_config".equals(paramString)) {
-          a(paramaofp.jdField_a_of_type_JavaLangString);
-        }
-      }
+      label231:
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     }
   }
   
-  public boolean a(int paramInt)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while ((paramInt < 0) || (paramInt >= 10)) {
-      return false;
+    super.show();
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A363", "0X800A363", paramInt, 0, "1", "", "", "");
+  }
+  
+  public void a(beoy parambeoy)
+  {
+    this.jdField_a_of_type_Beoy = parambeoy;
+  }
+  
+  @Deprecated
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
+      return this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt] == null) {
-      a(null);
+    return false;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = 3;
+    if (this.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label53;
+      }
     }
-    return this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt].booleanValue();
+    label53:
+    for (i = 1;; i = 2) {
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    }
+    dismiss();
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A365", "0X800A365", i, 0, "1", "", "", "");
+    return;
+    if (this.jdField_a_of_type_Beoy != null)
+    {
+      this.jdField_a_of_type_Beoy.a(this, paramView, a());
+      if (this.jdField_a_of_type_Boolean) {
+        bdne.w(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+      }
+      dismiss();
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A364", "0X800A364", i, 0, "1", "", "", "");
   }
 }
 

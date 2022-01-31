@@ -1,88 +1,43 @@
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
-import com.tencent.biz.qqcircle.widgets.QCircleTaskItemView;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import qqcircle.TaskCenterReader.TaskRecord;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import qqcircle.QQCircleDitto.StCircleDittoDataNew;
 
 public class tro
-  extends ydp<TaskCenterReader.TaskRecord>
+  extends yiu
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130843639, 2130843640, 2130843641, 2130843642, 2130843643, 2130843644, 2130843645, 2130843646, 2130843647, 2130843648 };
+  private QQCircleDitto.StCircleDittoDataNew jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew;
+  private ubm jdField_a_of_type_Ubm;
   
   public tro(Bundle paramBundle)
   {
     super(paramBundle);
+    a(false);
   }
   
-  private RelativeLayout a()
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(a()).inflate(2131560580, null));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378769));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new trp(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, ImmersiveUtils.a(60.0F)));
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    return new QCirclePushRankTopView(paramViewGroup.getContext());
   }
   
-  public int a()
+  public void a(ubm paramubm, LifecycleOwner paramLifecycleOwner)
   {
-    return 1;
+    this.jdField_a_of_type_Ubm = paramubm;
+    this.jdField_a_of_type_Ubm.a().observe(paramLifecycleOwner, new trp(this));
   }
   
-  public void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      a(a(), ImmersiveUtils.a(60.0F));
-    }
-  }
-  
-  public void a(yeb paramyeb)
-  {
-    if (paramyeb.d())
-    {
-      paramyeb = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      paramyeb.setEnableCache(true);
-      VSNetworkHelper.a().a(paramyeb, new trq(this));
-    }
-  }
-  
-  public int getItemCount()
-  {
-    return c();
-  }
+  public void loadData(yii paramyii) {}
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (!bhns.a(paramInt, b())) {
-      ((QCircleTaskItemView)paramViewHolder.itemView).setData(b().get(paramInt));
-    }
+    ((QCirclePushRankTopView)a()).setData(this.jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew);
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new ydo(this, new QCircleTaskItemView(paramViewGroup.getContext()));
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    a(null);
-  }
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 

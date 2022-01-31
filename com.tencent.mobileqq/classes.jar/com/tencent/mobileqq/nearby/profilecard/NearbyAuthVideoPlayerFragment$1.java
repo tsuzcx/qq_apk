@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import anpo;
+import antx;
 import com.tencent.qphone.base.util.QLog;
 
 class NearbyAuthVideoPlayerFragment$1

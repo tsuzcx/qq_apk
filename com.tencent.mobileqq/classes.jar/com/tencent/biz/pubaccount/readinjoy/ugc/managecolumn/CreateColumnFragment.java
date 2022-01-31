@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bdcd;
-import bdee;
-import bdfq;
+import bdgm;
+import bdin;
+import bdjz;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 import com.tencent.mobileqq.widget.QQToast;
@@ -64,15 +64,15 @@ public class CreateColumnFragment
   public void e()
   {
     super.e();
-    bdcd.a(getActivity(), 230).setMessage(2131718760).setNegativeButton(2131718757, new qto(this)).setPositiveButton(2131718759, new qtn(this)).show();
+    bdgm.a(getActivity(), 230).setMessage(2131718772).setNegativeButton(2131718769, new qto(this)).setPositiveButton(2131718771, new qtn(this)).show();
   }
   
   public void f()
   {
     super.f();
-    if (!bdee.a())
+    if (!bdin.a())
     {
-      QQToast.a(getActivity(), 0, getString(2131694764), 0).a();
+      QQToast.a(getActivity(), 0, getString(2131694766), 0).a();
       return;
     }
     this.jdField_a_of_type_Qtv.b(a());
@@ -81,8 +81,8 @@ public class CreateColumnFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718801);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718796);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718813);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718808);
     this.jdField_a_of_type_Qtv.b();
     paramViewGroup = getArguments();
     if (paramViewGroup != null) {

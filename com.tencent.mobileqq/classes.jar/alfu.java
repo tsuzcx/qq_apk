@@ -1,48 +1,25 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
 
 final class alfu
-  implements akzo
+  extends bead
 {
-  alfu(String paramString, String[] paramArrayOfString, alfs paramalfs) {}
+  alfu(SharedPreferences paramSharedPreferences, int paramInt, alfs paramalfs) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onDone(beae parambeae)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    super.onDone(parambeae);
+    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambeae.a() + ", httpCode: " + parambeae.f);
+    if (3 == parambeae.a())
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = alft.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (alft.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = alft.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Alfs.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
-            return;
-            this.jdField_a_of_type_Alfs.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Alfs.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
       }
-    }
-    else
-    {
-      this.jdField_a_of_type_Alfs.a(-1, null, null);
+      if (this.jdField_a_of_type_Alfs != null) {
+        alfs.a(this.jdField_a_of_type_Alfs);
+      }
     }
   }
 }

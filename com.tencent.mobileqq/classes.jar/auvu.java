@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.2.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class auvu
-  extends autc
+class auvu
+  implements DialogInterface.OnClickListener
 {
-  public auvu(NearbyGuideActivity paramNearbyGuideActivity) {}
+  auvu(auvr paramauvr, Activity paramActivity) {}
   
-  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1)
+    paramDialogInterface = this.jdField_a_of_type_Auvr.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
     {
-      this.a.app.a(this.a.app.getCurrentAccountUin(), 200);
-      long l = ((Long)aush.a(this.a.app.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
-      if (l != 0L) {
-        this.a.app.a(String.valueOf(l), 202);
-      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.a);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
     }
-    this.a.runOnUiThread(new NearbyGuideActivity.2.1(this, paramBoolean1, paramString));
   }
 }
 

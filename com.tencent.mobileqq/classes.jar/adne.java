@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class adne
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
-  public adne(QQMapActivity paramQQMapActivity) {}
+  public adne(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
+    this.a.finish();
   }
 }
 

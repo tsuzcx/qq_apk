@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
 
-class arfj
-  implements ypq
+public abstract interface arfj
 {
-  arfj(arfi paramarfi, boolean paramBoolean, String paramString, short paramShort) {}
+  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
   
-  public void a(List<arjn> paramList)
-  {
-    if (this.jdField_a_of_type_Arfi.a.jdField_a_of_type_Argg != null) {
-      this.jdField_a_of_type_Arfi.a.jdField_a_of_type_Argg.a(paramList, this.jdField_a_of_type_Arfi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arfi.a.b, this.jdField_a_of_type_Arfi.a.c, this.jdField_a_of_type_Arfi.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-    if (paramList != null)
-    {
-      azmj.b(this.jdField_a_of_type_Arfi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Arfi.a.jdField_a_of_type_Ardq.a().TroopUin, "", arni.f(this.jdField_a_of_type_Arfi.a.c()), "1");
-      return;
-    }
-    azmj.b(this.jdField_a_of_type_Arfi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Arfi.a.jdField_a_of_type_Ardq.a().TroopUin, "-1", arni.f(this.jdField_a_of_type_Arfi.a.c()), "1");
-  }
+  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void aC_();
 }
 
 

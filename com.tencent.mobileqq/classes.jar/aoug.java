@@ -1,9 +1,6 @@
 public class aoug
 {
-  public String a;
-  public String[] a;
-  public String b;
-  public String[] b;
+  public boolean a = true;
 }
 
 

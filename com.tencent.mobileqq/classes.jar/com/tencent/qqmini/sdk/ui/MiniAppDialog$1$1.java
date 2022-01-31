@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.ui;
 
-import bhhy;
-import bhhz;
+import bhmf;
+import bhmg;
 
 public class MiniAppDialog$1$1
   implements Runnable
 {
-  public MiniAppDialog$1$1(bhhz parambhhz) {}
+  public MiniAppDialog$1$1(bhmg parambhmg) {}
   
   public void run()
   {
     try
     {
-      bhhy.a(this.a.a);
+      bhmf.a(this.a.a);
       return;
     }
     catch (Exception localException) {}

@@ -1,14 +1,16 @@
-public class ayuh
+import java.util.List;
+
+public abstract interface ayuh<M extends ayns>
 {
-  public Object a;
-  public boolean a;
-  public Object b;
+  public abstract void a(List<M> paramList);
   
-  public ayuh(ayug paramayug) {}
+  public abstract void a(List<M> paramList, int paramInt);
+  
+  public abstract void a(List<M> paramList, ayuv paramayuv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayuh
  * JD-Core Version:    0.7.0.1
  */

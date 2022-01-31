@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avhw;
+import avmf;
 
 public class NearbyProfileDisplayTribePanel$26
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$26(avhw paramavhw) {}
+  public NearbyProfileDisplayTribePanel$26(avmf paramavmf) {}
   
   public void run()
   {

@@ -1,96 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class bdgu
-  implements appt
+final class bdgu
+  implements View.OnClickListener
 {
-  bdgu(bdgl parambdgl) {}
+  bdgu(DialogInterface.OnClickListener paramOnClickListener, bdjz parambdjz) {}
   
-  public void a(appw paramappw)
+  public void onClick(View paramView)
   {
-    int i;
-    int j;
-    if ((paramappw instanceof apuw))
-    {
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    apur localapur;
-    int k;
-    int m;
-    do
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, baiy.c(((apuw)paramappw).a));
-      do
-      {
-        return;
-      } while (!(paramappw instanceof apur));
-      localapur = (apur)paramappw;
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      k = localapur.a;
-      m = localapur.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramappw = baiy.c(m);; paramappw = baiy.a(m))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramappw);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      if (this.a.jdField_a_of_type_Boolean) {
-        localapur.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      }
-      apoa.a().a(k).a(m, 5);
-      return;
-    }
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdjz, 2);
   }
-  
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
-  
-  public boolean a(appw paramappw)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(appw paramappw) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

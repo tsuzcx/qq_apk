@@ -1,14 +1,6 @@
-import com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView;
-
-public class bgxi
-  implements bgwz
+abstract interface bgxi
 {
-  private bgxi(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
-  
-  public void a(long paramLong, double paramDouble)
-  {
-    this.a.a(paramDouble);
-  }
+  public abstract void a();
 }
 
 

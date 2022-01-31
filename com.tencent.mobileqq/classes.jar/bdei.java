@@ -1,33 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.SurfaceView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
-class bdei
-  implements View.OnClickListener
+public class bdei
 {
-  bdei(bdef parambdef, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfhg.b("NewUpgradeDialog", bfeh.a(10010, bdef.a(), 2, 200));
-    bfef.a().a(17, bfeh.a(10010, bdef.a(), 2, 200));
-    if (bdef.a() == 2) {
-      azmj.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    if (paramSurfaceView == null)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdef, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bfkb.a().b(bdef.a(this.jdField_a_of_type_Bdef));
-        this.jdField_a_of_type_Bdef.dismiss();
-      }
-      bdef.a(this.jdField_a_of_type_Bdef, true);
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
       return;
-      azmj.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
     }
+    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
+    {
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
+      return;
+    }
+    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
+    {
+      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
+      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
+      paramSurfaceView.setLayoutParams(localLayoutParams);
+      return;
+    }
+    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
+    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
+    paramSurfaceView.setLayoutParams(localLayoutParams);
   }
 }
 

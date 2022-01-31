@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.webkit.ValueCallback;
-import bhbi;
-import bhej;
+import bhfp;
+import bhiq;
 
 public class BrandPageWebview$5
   implements Runnable
 {
-  public BrandPageWebview$5(bhbi parambhbi, String paramString, ValueCallback paramValueCallback) {}
+  public BrandPageWebview$5(bhfp parambhfp, String paramString, ValueCallback paramValueCallback) {}
   
   public void run()
   {
-    if (bhbi.a(this.this$0) != null) {
-      bhbi.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, bhej.a(this.jdField_a_of_type_AndroidWebkitValueCallback));
+    if (bhfp.a(this.this$0) != null) {
+      bhfp.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, bhiq.a(this.jdField_a_of_type_AndroidWebkitValueCallback));
     }
   }
 }

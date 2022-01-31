@@ -1,19 +1,12 @@
 import android.view.View;
 
-class bhtx
-  implements bhtv
+public abstract interface bhtx
 {
-  bhtx(bhtw parambhtw) {}
-  
-  public void a(View paramView)
-  {
-    this.a.c(paramView);
-    this.a.c();
-  }
+  public abstract void b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhtx
  * JD-Core Version:    0.7.0.1
  */

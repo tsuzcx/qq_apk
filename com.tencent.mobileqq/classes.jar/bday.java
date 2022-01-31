@@ -1,15 +1,12 @@
-public class bday
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+
+public abstract interface bday
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
   
-  public bday(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

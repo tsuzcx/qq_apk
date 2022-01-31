@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avkg;
+import avop;
 
 class NearbyProfileEditTribePanel$16$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditTribePanel$16$1
   
   public void run()
   {
-    avkg.a(this.a.this$0);
+    avop.a(this.a.this$0);
   }
 }
 

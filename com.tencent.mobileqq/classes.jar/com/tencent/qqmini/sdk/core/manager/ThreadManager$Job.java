@@ -1,29 +1,29 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgjs;
+import bgnz;
 
 public class ThreadManager$Job
   implements Runnable
 {
-  private bgjs jdField_a_of_type_Bgjs;
+  private bgnz jdField_a_of_type_Bgnz;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public ThreadManager$Job(Runnable paramRunnable, bgjs parambgjs)
+  public ThreadManager$Job(Runnable paramRunnable, bgnz parambgnz)
   {
     this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Bgjs = parambgjs;
+    this.jdField_a_of_type_Bgnz = parambgnz;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bgjs != null) {
-      this.jdField_a_of_type_Bgjs.a();
+    if (this.jdField_a_of_type_Bgnz != null) {
+      this.jdField_a_of_type_Bgnz.a();
     }
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    if (this.jdField_a_of_type_Bgjs != null) {
-      this.jdField_a_of_type_Bgjs.b();
+    if (this.jdField_a_of_type_Bgnz != null) {
+      this.jdField_a_of_type_Bgnz.b();
     }
   }
 }

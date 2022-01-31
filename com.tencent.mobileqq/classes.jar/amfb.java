@@ -1,7 +1,6 @@
-public class amfb
+public abstract class amfb
 {
-  public static final String a = alpo.a(2131700455);
-  public static final String b = alpo.a(2131700454);
+  public abstract void a();
 }
 
 

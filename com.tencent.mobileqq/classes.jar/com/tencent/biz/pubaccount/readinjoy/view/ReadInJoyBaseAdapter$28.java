@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.widget.QQToast;
 import ors;
 import pdn;
@@ -30,7 +30,7 @@ public class ReadInJoyBaseAdapter$28
       int i = this.a.a;
       int j = this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount();
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.post(new ReadInJoyBaseAdapter.28.1(this, i + j));
-    } while (!bjxj.a(ors.a()));
+    } while (!bkbq.a(ors.a()));
     QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), "为你开启wifi下连续播放功能", 1).a();
   }
 }

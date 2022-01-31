@@ -1,20 +1,6 @@
-import android.view.View;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-
-public class aaqv
-  implements aaqm
+public abstract interface aaqv
 {
-  public aaqv(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void a(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a();
-  }
+  public abstract aaqx a(aaqw paramaaqw);
 }
 
 

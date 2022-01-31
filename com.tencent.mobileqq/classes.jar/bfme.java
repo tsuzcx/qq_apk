@@ -1,32 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import org.apache.http.HttpResponse;
 
-final class bfme
-  implements URLDrawable.URLDrawableListener
+public class bfme
 {
-  bfme(ImageView paramImageView) {}
+  public int a;
+  public HttpResponse a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public bfme(HttpResponse paramHttpResponse, int paramInt)
   {
-    QLog.d("CommonUtils_", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
+    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -195,8 +195,8 @@ public class oip
   
   public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    boolean bool = azgk.a(paramQQAppInterface, BaseApplicationImpl.getContext());
-    return (a(paramQQAppInterface)) && ((bool) || (azgk.a(paramContext) == 0));
+    boolean bool = azkt.a(paramQQAppInterface, BaseApplicationImpl.getContext());
+    return (a(paramQQAppInterface)) && ((bool) || (azkt.a(paramContext) == 0));
   }
 }
 

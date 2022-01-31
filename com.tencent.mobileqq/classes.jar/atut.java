@@ -1,17 +1,51 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
 
 class atut
-  implements SoundPool.OnLoadCompleteListener
+  implements bexw
 {
-  atut(atus paramatus, int paramInt, String paramString) {}
+  bdjz jdField_a_of_type_Bdjz;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  atut(atus paramatus, BaseActivity paramBaseActivity, atpq paramatpq) {}
+  
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_Atus.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Atus.a.isBackground_Pause) || (this.jdField_a_of_type_Atus.a.isBackground_Stop)) {
+      atus.a(this.jdField_a_of_type_Atus, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atpq);
     }
+    for (;;)
+    {
+      azqs.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
+      return true;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Bdjz = atqr.a(this.jdField_a_of_type_Atpq.a(), this.jdField_a_of_type_Atpq.a());
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Bdjz != null) {
+          this.jdField_a_of_type_Bdjz.setOnDismissListener(new atuu(this));
+        }
+      }
+    }
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atpq.a(), this.jdField_a_of_type_Atpq.a(), 4);
+    atuf.e();
+    if (this.jdField_a_of_type_Bdjz != null) {}
+    try
+    {
+      this.jdField_a_of_type_Bdjz.dismiss();
+      return false;
+    }
+    catch (Exception localException) {}
+    return false;
   }
 }
 

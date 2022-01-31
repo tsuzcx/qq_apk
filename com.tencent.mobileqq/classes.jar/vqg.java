@@ -1,27 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class vqg
-  extends vqk<StoryVideoItem>
+class vqg
+  implements vpt
 {
-  public vqg(VideoViewVideoHolder paramVideoViewVideoHolder)
+  private int jdField_a_of_type_Int;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  vpm jdField_a_of_type_Vpm;
+  
+  public vqg(vqf paramvqf, vpm paramvpm)
   {
-    super(paramVideoViewVideoHolder, null);
+    this.jdField_a_of_type_Vpm = paramvpm;
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  protected void a(String paramString, vpu paramvpu)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    vfd localvfd = new vfd();
+    localvfd.jdField_c_of_type_JavaLangString = vqf.a(this.jdField_a_of_type_Vqf).uid;
+    if (vqf.a(this.jdField_a_of_type_Vqf).collectionKey != null) {
+      localvfd.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(vqf.a(this.jdField_a_of_type_Vqf).collectionKey);
+    }
+    localvfd.jdField_d_of_type_JavaLangString = paramString;
+    localvfd.jdField_c_of_type_Int = 20;
+    localvfd.jdField_e_of_type_Int = vqf.a(this.jdField_a_of_type_Vqf).shareTimeZone;
+    localvfd.jdField_e_of_type_JavaLangString = vqf.a(this.jdField_a_of_type_Vqf).feedId;
+    localvfd.f = vqf.a(this.jdField_a_of_type_Vqf).identify;
+    localvfd.g = vqf.a(this.jdField_a_of_type_Vqf).videoListOrder;
+    urp.a().a(localvfd, new vqh(this, paramvpu));
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(vpu paramvpu)
   {
-    super.onError(paramError);
-    wsv.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a(vqf.a(this.jdField_a_of_type_Vqf), paramvpu);
   }
 }
 

@@ -1,17 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class atji
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public atji(FloatIconLayout paramFloatIconLayout) {}
+  public atji(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setRotation(f);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
+    }
   }
 }
 

@@ -1,98 +1,37 @@
-import android.database.Cursor;
-import com.tencent.mobileqq.data.Ability;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import mqq.app.AppRuntime.Status;
 
-public class awdh
-  extends QQEntityManagerFactory
+class awdh
+  extends ClickableSpan
 {
-  public awdh(String paramString)
-  {
-    super(paramString);
-  }
+  awdh(awcx paramawcx, AppRuntime.Status paramStatus, long paramLong) {}
   
-  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  public void onClick(@NonNull View paramView)
   {
-    System.currentTimeMillis();
-    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
-    ArrayList localArrayList = new ArrayList();
-    if (localCursor1 != null)
+    paramView = new Intent();
+    paramView.putExtra("KEY_ONLINE_STATUS", this.jdField_a_of_type_MqqAppAppRuntime$Status);
+    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.jdField_a_of_type_Long);
+    PublicFragmentActivity.a(awcx.a(this.jdField_a_of_type_Awcx), paramView, AccountOnlineStateActivity.class);
+    if ((awcx.a(this.jdField_a_of_type_Awcx) != null) && (awcx.a(this.jdField_a_of_type_Awcx).isShowing()))
     {
-      while (localCursor1.moveToNext())
-      {
-        String str = SecurityUtile.b(localCursor1.getString(0));
-        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
-        if (localCursor2 != null) {
-          for (;;)
-          {
-            try
-            {
-              if (!str.startsWith("mr_slow_")) {
-                continue;
-              }
-              localObject = MessageRecord.class;
-              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
-            }
-            catch (ClassNotFoundException localClassNotFoundException)
-            {
-              Object localObject;
-              continue;
-            }
-            localCursor2.close();
-            break;
-            localObject = Class.forName(paramString + "." + str);
-          }
-        }
-      }
-      localCursor1.close();
+      awcx.a(this.jdField_a_of_type_Awcx).dismiss();
+      awcx.a(this.jdField_a_of_type_Awcx, null);
     }
-    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
-    paramSQLiteDatabase.beginTransaction();
-    try
-    {
-      paramString = localArrayList.iterator();
-      while (paramString.hasNext()) {
-        paramSQLiteDatabase.execSQL((String)paramString.next());
-      }
-      paramSQLiteDatabase.setTransactionSuccessful();
-    }
-    finally
-    {
-      paramSQLiteDatabase.endTransaction();
-      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-    }
-    paramSQLiteDatabase.endTransaction();
-    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    azqs.b(awcx.a(this.jdField_a_of_type_Awcx), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
   }
   
-  public alxk build(String paramString)
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    if (this.dbHelper == null)
-    {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "slowtable_" + paramString + ".db", null, 1);
-      this.dbHelper = new alxk(this.mInnerDbHelper);
-    }
-    return this.dbHelper;
-  }
-  
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL(awcw.a(new Ability()));
-  }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    a(getPackageName(), paramSQLiteDatabase);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
   }
 }
 

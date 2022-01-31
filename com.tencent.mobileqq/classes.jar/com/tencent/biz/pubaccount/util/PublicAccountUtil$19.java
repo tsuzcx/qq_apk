@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.util;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcgo;
-import bcgp;
+import bckx;
+import bcky;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -81,7 +81,7 @@ public final class PublicAccountUtil$19
             if (QLog.isColorLevel()) {
               QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
             }
-            new bcgp((String)localObject1, "GET", (bcgo)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
+            new bcky((String)localObject1, "GET", (bckx)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
             return;
           }
         }

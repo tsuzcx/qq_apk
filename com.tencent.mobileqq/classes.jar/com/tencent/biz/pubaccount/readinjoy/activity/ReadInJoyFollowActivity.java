@@ -5,7 +5,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.Window;
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import nwj;
 import nze;
@@ -18,7 +18,7 @@ public class ReadInJoyFollowActivity
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375298);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375349);
     this.a = new nwj(this);
     this.a.a(70);
     this.a.b(0);
@@ -40,7 +40,7 @@ public class ReadInJoyFollowActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560030);
+    setContentView(2131560029);
     getWindow().setBackgroundDrawable(null);
     setClickableTitle("BB圈", new nze(this));
     a();
@@ -70,7 +70,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bjxj.a(getAppRuntime());
+    bkbq.a(getAppRuntime());
     this.a.e();
   }
   

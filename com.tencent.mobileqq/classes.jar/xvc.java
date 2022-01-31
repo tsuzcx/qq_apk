@@ -1,28 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
 public class xvc
-  implements BusinessObserver
+  implements URLDrawable.URLDrawableListener
 {
-  public xvc(QRDisplayActivity paramQRDisplayActivity) {}
+  private final WeakReference<TextView> a;
   
-  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public xvc(TextView paramTextView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.a = new WeakReference(paramTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
     }
-    if (paramBoolean)
-    {
-      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
-      return;
-    }
-    this.b.g();
   }
 }
 

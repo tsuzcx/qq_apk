@@ -1,16 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
-public class yey
+class yey
   implements View.OnClickListener
 {
-  public yey(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  yey(yew paramyew) {}
   
   public void onClick(View paramView)
   {
-    if (SubscribeMultiPicFragment.a(this.a) != null) {
-      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    if (!ydw.a())
+    {
+      paramView = yew.a(this.a);
+      if (paramView != null)
+      {
+        this.a.d(paramView);
+        if (this.a.a() != null) {
+          this.a.a().c(paramView);
+        }
+      }
     }
   }
 }

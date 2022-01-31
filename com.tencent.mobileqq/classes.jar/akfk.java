@@ -1,21 +1,27 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class akfk
+  implements Animation.AnimationListener
 {
-  public int a = 1;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public String a;
-  public boolean a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  public akfk(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Akfw.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131367819);
+    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Akfw.a.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

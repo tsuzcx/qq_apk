@@ -1,22 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agqm
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private agqm(agot paramagot) {}
+  agqm(agqk paramagqk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      agot.a(this.a, 1);
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      return;
-    }
-    agot.a(this.a, 1);
+    agqk.a(this.a);
   }
 }
 

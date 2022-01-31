@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afdm;
+import afib;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.data.MessageForApollo;
@@ -10,15 +10,15 @@ class ApolloItemBuilder$PlusOneManagerTask
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  WeakReference<afdm> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<afib> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean;
   WeakReference<ApolloItemBuilder> b;
   WeakReference<MessageForApollo> c;
   
-  public ApolloItemBuilder$PlusOneManagerTask(ApolloItemBuilder paramApolloItemBuilder, afdm paramafdm, MessageForApollo paramMessageForApollo, int paramInt)
+  public ApolloItemBuilder$PlusOneManagerTask(ApolloItemBuilder paramApolloItemBuilder, afib paramafib, MessageForApollo paramMessageForApollo, int paramInt)
   {
     this.b = new WeakReference(paramApolloItemBuilder);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramafdm);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramafib);
     this.c = new WeakReference(paramMessageForApollo);
     this.jdField_a_of_type_Int = paramInt;
   }
@@ -26,23 +26,23 @@ class ApolloItemBuilder$PlusOneManagerTask
   public void run()
   {
     ApolloItemBuilder localApolloItemBuilder = (ApolloItemBuilder)this.b.get();
-    afdm localafdm = (afdm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    afib localafib = (afib)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     MessageForApollo localMessageForApollo = (MessageForApollo)this.c.get();
-    if ((localApolloItemBuilder == null) || (localafdm == null) || (localMessageForApollo == null)) {
+    if ((localApolloItemBuilder == null) || (localafib == null) || (localMessageForApollo == null)) {
       break label45;
     }
     label45:
-    while (!(localafdm instanceof afdm)) {
+    while (!(localafib instanceof afib)) {
       return;
     }
     if (this.jdField_a_of_type_Int == 0) {
-      if ((!(localafdm.c.getContext() instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_Boolean))
+      if ((!(localafib.c.getContext() instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_Boolean))
       {
         if (!localMessageForApollo.isSend()) {
           break label155;
         }
-        localafdm.c.setVisibility(0);
-        localafdm.d.setVisibility(8);
+        localafib.c.setVisibility(0);
+        localafib.d.setVisibility(8);
       }
     }
     for (;;)
@@ -51,13 +51,13 @@ class ApolloItemBuilder$PlusOneManagerTask
       if ((this.jdField_a_of_type_Int != 1) || (ApolloItemBuilder.a(localApolloItemBuilder) != localMessageForApollo.uniseq)) {
         break;
       }
-      localafdm.c.setVisibility(8);
-      localafdm.d.setVisibility(8);
+      localafib.c.setVisibility(8);
+      localafib.d.setVisibility(8);
       ApolloItemBuilder.a(localApolloItemBuilder, 0L);
       return;
       label155:
-      localafdm.c.setVisibility(8);
-      localafdm.d.setVisibility(0);
+      localafib.c.setVisibility(8);
+      localafib.d.setVisibility(0);
     }
   }
 }

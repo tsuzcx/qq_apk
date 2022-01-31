@@ -38,7 +38,7 @@ public class mym
           if (paramInt == 0)
           {
             ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
-            azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
+            azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
             return;
           }
           if (paramInt == 304)
@@ -47,7 +47,7 @@ public class mym
             this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
             this.a.this$0.g();
             this.a.this$0.i();
-            azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
+            azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
             return;
           }
         }
@@ -62,7 +62,7 @@ public class mym
     this.a.this$0.g();
     this.a.this$0.i();
     this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 

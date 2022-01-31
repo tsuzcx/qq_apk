@@ -1,16 +1,22 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Groups;
-
-class ajwo
+public class ajwo
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  TextView b;
+  public int a;
+  public boolean a;
   
-  ajwo(ajwm paramajwm) {}
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
+    }
+    return 180;
+  }
 }
 
 

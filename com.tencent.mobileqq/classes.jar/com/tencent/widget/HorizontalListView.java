@@ -28,13 +28,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListAdapter;
-import bhti;
-import bhtj;
-import bhtk;
-import bhtl;
-import bhtm;
-import bhtn;
-import bhuz;
+import bhxp;
+import bhxq;
+import bhxr;
+import bhxs;
+import bhxt;
+import bhxu;
+import bhzg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -91,22 +91,22 @@ public class HorizontalListView
   private int mMotionX;
   private int mMotionY;
   protected int mNextX;
-  private bhtj mOnItemScrollEventListener;
-  private bhtk mOnScrollLinstener;
-  private bhtl mOnScrollStateChangedListener;
+  private bhxq mOnItemScrollEventListener;
+  private bhxr mOnScrollLinstener;
+  private bhxs mOnScrollStateChangedListener;
   private HorizontalListView.CheckForLongPress mPendingCheckForLongPress;
   private Runnable mPendingCheckForTap;
   private HorizontalListView.PerformClick mPerformClick;
   Runnable mPositionScrollAfterLayout;
   HorizontalListView.PositionScroller mPositionScroller;
   private Rect mRect = new Rect();
-  private bhtm mRecycleListener;
+  private bhxt mRecycleListener;
   private List<Queue<View>> mRemovedViewsCache = new ArrayList();
   private Integer mRestoreX;
   protected int mRightViewAdapterIndex;
-  private bhtn mRunningOutOfDataListener;
+  private bhxu mRunningOutOfDataListener;
   private int mRunningOutOfDataThreshold;
-  protected bhuz mScroller;
+  protected bhzg mScroller;
   protected boolean mStayDisplayOffsetZero;
   private Rect mTouchFrame;
   int mTouchMode = -1;
@@ -389,7 +389,7 @@ public class HorizontalListView
   private View obtainView(int paramInt)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131367740, Boolean.valueOf(true));
+    setTag(2131367750, Boolean.valueOf(true));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -404,7 +404,7 @@ public class HorizontalListView
   private View obtainView(int paramInt, boolean paramBoolean)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131367740, Boolean.valueOf(paramBoolean));
+    setTag(2131367750, Boolean.valueOf(paramBoolean));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -1161,7 +1161,7 @@ public class HorizontalListView
   @TargetApi(9)
   protected void initView(boolean paramBoolean)
   {
-    this.mScroller = new bhuz(getContext());
+    this.mScroller = new bhzg(getContext());
     this.mScroller.a(getScrollerFriction());
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
@@ -1178,7 +1178,7 @@ public class HorizontalListView
     setWillNotDraw(false);
     this.mTouchMode = -1;
     setCurrentScrollState(4097);
-    this.mAdapterDataObserver = new bhti(this);
+    this.mAdapterDataObserver = new bhxp(this);
   }
   
   protected boolean isLastItemInAdapter(int paramInt)
@@ -2313,19 +2313,19 @@ public class HorizontalListView
     this.mMinX = 0;
   }
   
-  public void setOnItemScollEventListener(bhtj parambhtj)
+  public void setOnItemScollEventListener(bhxq parambhxq)
   {
-    this.mOnItemScrollEventListener = parambhtj;
+    this.mOnItemScrollEventListener = parambhxq;
   }
   
-  public void setOnScrollListener(bhtk parambhtk)
+  public void setOnScrollListener(bhxr parambhxr)
   {
-    this.mOnScrollLinstener = parambhtk;
+    this.mOnScrollLinstener = parambhxr;
   }
   
-  public void setOnScrollStateChangedListener(bhtl parambhtl)
+  public void setOnScrollStateChangedListener(bhxs parambhxs)
   {
-    this.mOnScrollStateChangedListener = parambhtl;
+    this.mOnScrollStateChangedListener = parambhxs;
   }
   
   @TargetApi(9)
@@ -2336,9 +2336,9 @@ public class HorizontalListView
     }
   }
   
-  public void setRecycleListener(bhtm parambhtm)
+  public void setRecycleListener(bhxt parambhxt)
   {
-    this.mRecycleListener = parambhtm;
+    this.mRecycleListener = parambhxt;
   }
   
   public void setRestoreX(int paramInt)
@@ -2346,9 +2346,9 @@ public class HorizontalListView
     this.mRestoreX = Integer.valueOf(paramInt);
   }
   
-  public void setRunningOutOfDataListener(bhtn parambhtn, int paramInt)
+  public void setRunningOutOfDataListener(bhxu parambhxu, int paramInt)
   {
-    this.mRunningOutOfDataListener = parambhtn;
+    this.mRunningOutOfDataListener = parambhxu;
     this.mRunningOutOfDataThreshold = paramInt;
   }
   

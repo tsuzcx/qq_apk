@@ -1,42 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicb
-  implements TextWatcher
+public class aicb
+  implements View.OnTouchListener
 {
-  aicb(aica paramaica) {}
+  public aicb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
+    if (paramMotionEvent.getAction() == 1)
     {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131367807).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Aiby.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.a.x();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
     }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131367807).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
+    return true;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

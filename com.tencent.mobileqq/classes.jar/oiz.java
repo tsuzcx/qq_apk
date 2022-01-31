@@ -103,7 +103,7 @@ public class oiz
       if (paramView == null)
       {
         paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(aekt.a(2.0F, (Resources)localObject), aekt.a(30.0F, (Resources)localObject)));
+        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(aepi.a(2.0F, (Resources)localObject), aepi.a(30.0F, (Resources)localObject)));
       }
     }
     ChannelCoverInfo localChannelCoverInfo;
@@ -115,7 +115,7 @@ public class oiz
       }
       localObject = new oja(this);
       paramView = new ReadInJoyVideoTopicTextView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131375239);
+      paramView.setId(2131375290);
       paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       ((oja)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView = paramView;
       paramView.setTag(localObject);
@@ -134,8 +134,8 @@ public class oiz
       if (TextUtils.isEmpty(localChannelCoverInfo.mIconUrl)) {
         break label418;
       }
-      paramInt = bdkf.a(21.0F);
-      paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840212);
+      paramInt = bdoo.a(21.0F);
+      paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840213);
       paramViewGroup = URLDrawable.getDrawable(localChannelCoverInfo.mIconUrl, paramInt, paramInt, paramViewGroup, paramViewGroup);
       if ((paramViewGroup != null) && (paramViewGroup.getStatus() == 2)) {
         paramViewGroup.restartDownload();

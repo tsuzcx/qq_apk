@@ -1,15 +1,42 @@
-import android.util.Pair;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import org.json.JSONObject;
 
-final class bhjp
-  implements bhjr
+class bhjp
+  implements bgmc<Void>
 {
-  public Pair<String, String> a(String paramString)
+  bhjp(bhjl parambhjl, String paramString) {}
+  
+  public Void a(bgls parambgls)
   {
-    paramString = paramString.split(":", 2);
-    if ((paramString == null) || (paramString.length < 2)) {
-      return null;
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer)) {
+      QMLog.d("Action", "Page is invalid");
     }
-    return new Pair(paramString[0].trim(), paramString[1].trim());
+    for (;;)
+    {
+      return null;
+      parambgls = (AppBrandPageContainer)parambgls;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("htmlId", this.jdField_a_of_type_Bhjl.a.a);
+        localJSONObject.put("src", this.jdField_a_of_type_JavaLangString);
+        int i = bgml.a(InnerWebView.a(this.jdField_a_of_type_Bhjl.a)).a();
+        if ((parambgls.a() != null) && (parambgls.a().a() != null))
+        {
+          parambgls.a().a().a("onWebviewError", localJSONObject.toString(), i);
+          return null;
+        }
+      }
+      catch (Exception parambgls)
+      {
+        QMLog.e("Action", "onPageStarted error." + parambgls);
+      }
+    }
+    return null;
   }
 }
 

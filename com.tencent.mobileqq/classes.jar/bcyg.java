@@ -1,15 +1,17 @@
-import android.graphics.drawable.BitmapDrawable;
-import java.lang.ref.WeakReference;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 
-class bcyg
-  extends BitmapDrawable
+public class bcyg
 {
-  private final WeakReference<bcyh> a;
+  public long a;
+  public ResultReceiver a;
+  public bcyf a;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
   
-  public bcyh a()
-  {
-    return (bcyh)this.a.get();
-  }
+  public bcyg(SnapshotService paramSnapshotService) {}
 }
 
 

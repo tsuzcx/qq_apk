@@ -67,7 +67,7 @@ public class lfa
         localObject1 = localObject2;
         if (localContent.compress.get() == 1)
         {
-          localObject1 = amsl.a((byte[])localObject2);
+          localObject1 = amxa.a((byte[])localObject2);
           if ((localObject1 == null) && (QLog.isDevelopLevel())) {
             QLog.w(str2, 1, "handleCompressConfig, 解压失败");
           }
@@ -144,7 +144,7 @@ public class lfa
       paramConfigSeq.version.set(paramInt);
       paramConfigSeq.compress.set(1);
       continue;
-      paramInt = bdiv.a(BaseApplicationImpl.getContext());
+      paramInt = bdne.a(BaseApplicationImpl.getContext());
       paramConfigSeq.version.set(paramInt);
       paramConfigSeq.compress.set(1);
     }
@@ -179,7 +179,7 @@ public class lfa
     {
     default: 
       i = -1;
-      paramString = alpo.a(2131709283);
+      paramString = alud.a(2131709295);
     }
     for (;;)
     {
@@ -206,14 +206,14 @@ public class lfa
           lrw.a(localQQAppInterface.getApplication(), paramConfig, k, true);
           paramString = paramConfig;
           continue;
-          i = bdiv.a(localQQAppInterface.getApplication());
+          i = bdne.a(localQQAppInterface.getApplication());
           paramConfig = a(paramConfig, i, paramInt);
           paramString = paramConfig;
           paramInt = i;
           if (paramConfig != null)
           {
-            bdiv.a(localQQAppInterface.getApplication(), k);
-            paramString = bdiv.c(localQQAppInterface.getCurrentAccountUin());
+            bdne.a(localQQAppInterface.getApplication(), k);
+            paramString = bdne.c(localQQAppInterface.getCurrentAccountUin());
             if (paramString != null) {
               paramString.edit().putString("AvWeakNet_video_ConfigContent", paramConfig).commit();
             }

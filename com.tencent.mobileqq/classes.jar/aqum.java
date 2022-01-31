@@ -1,29 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
+import java.util.concurrent.Executor;
 
-class aqum
-  extends aquk
+public class aqum
+  extends aqvc
 {
-  public aqum(aqug paramaqug)
+  public long a;
+  private Bundle a;
+  public String a;
+  private long b;
+  public String b;
+  
+  public aqum(aque paramaque, MessageRecord paramMessageRecord)
   {
-    super(paramaqug);
+    super(paramaque);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaque = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaque);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  protected String a()
-  {
-    return "StateCancelUploadWhenPause";
-  }
+  void a(String paramString, int paramInt) {}
   
-  protected void a()
+  void a(String paramString, int paramInt, aqva paramaqva)
   {
-    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aqug.b(this.jdField_a_of_type_Aqug, 11, 9);
-    aqug.c(this.jdField_a_of_type_Aqug, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Aquk = new aqun(this.jdField_a_of_type_Aqug);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    arsd.a().execute(new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramString, paramaqva));
   }
 }
 

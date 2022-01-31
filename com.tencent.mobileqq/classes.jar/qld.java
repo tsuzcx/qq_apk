@@ -18,7 +18,7 @@ public class qld
   public static qld a()
   {
     qld localqld = new qld();
-    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
     localqld.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
     localqld.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
     localqld.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);

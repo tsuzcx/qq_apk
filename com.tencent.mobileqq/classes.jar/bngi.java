@@ -1,49 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditVideoActivity;
 
-class bngi
-  implements bapx
+public class bngi
+  implements xnc
 {
-  bngi(bngf parambngf) {}
+  public bngi(QzoneEditVideoActivity paramQzoneEditVideoActivity) {}
   
-  public void onResp(baqw parambaqw)
+  public void a()
   {
-    Object localObject = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
-    if (parambaqw.jdField_a_of_type_Int != 0) {
-      lek.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
-      {
-        lek.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-        return;
-      }
-      lek.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = bngf.b;
-        bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
-        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-        if ((bngf.a(this.a).decrementAndGet() == 0) && (bngf.a(this.a) != null))
-        {
-          bngf.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException parambaqw)
-      {
-        parambaqw.printStackTrace();
-        lek.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
-    }
+    QLog.d(QzoneEditVideoActivity.a(), 2, "QzoneEditVideoActivity doOnActivityResult reCreateDone");
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

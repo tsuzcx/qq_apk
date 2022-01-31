@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.pushdialog;
 
 import android.database.sqlite.SQLiteException;
-import awbw;
-import awur;
+import awgf;
+import awza;
 import com.tencent.TMG.utils.QLog;
 import java.util.Date;
 
 public class PushDialogDbUtil$3
   implements Runnable
 {
-  public PushDialogDbUtil$3(awur paramawur, awbw paramawbw, PushDialogTemplate paramPushDialogTemplate) {}
+  public PushDialogDbUtil$3(awza paramawza, awgf paramawgf, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    synchronized (awur.a(this.this$0))
+    synchronized (awza.a(this.this$0))
     {
       try
       {
-        this.jdField_a_of_type_Awbw.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
+        this.jdField_a_of_type_Awgf.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
         if (QLog.isColorLevel()) {
           QLog.d("PushDialogDbUtil", 3, "PushDialogTemplate insert: " + new Date(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.time) + "," + this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.mUin + "," + this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.c2c_type);
         }

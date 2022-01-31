@@ -1,22 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleRead.ConfidentCircleMemberRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
 
 class ttp
-  implements yvn<QQCircleRead.ConfidentCircleMemberRsp>
+  implements DialogInterface.OnClickListener
 {
-  ttp(ttn paramttn) {}
+  ttp(ttl paramttl) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRead.ConfidentCircleMemberRsp paramConfidentCircleMemberRsp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramConfidentCircleMemberRsp == null))
+    if (paramInt == 1)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip error:" + paramString);
+      if (!ttl.a(this.a).a.isRecomFd.get()) {
+        break label118;
       }
-      return;
+      paramDialogInterface = new FeedCloudMeta.StFeed();
+      paramDialogInterface.id.set(ttl.a(this.a).a.recomForward.id.get());
+      paramDialogInterface.poster.set(ttl.a(this.a).a.recomForward.poster.get());
     }
-    QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip success!");
+    for (;;)
+    {
+      String str = paramDialogInterface.id.get();
+      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
+      VSNetworkHelper.a().a(paramDialogInterface, new ttq(this, str));
+      return;
+      label118:
+      paramDialogInterface = ttl.a(this.a).a;
+    }
   }
 }
 

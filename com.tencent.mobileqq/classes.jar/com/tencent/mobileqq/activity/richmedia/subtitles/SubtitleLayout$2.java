@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajpl;
-import ajps;
-import alpo;
+import ajua;
+import ajuh;
+import alud;
 
 class SubtitleLayout$2
   implements Runnable
@@ -16,11 +16,11 @@ class SubtitleLayout$2
       if (SubtitleLayout.a(this.this$0) != null)
       {
         long l = System.currentTimeMillis();
-        String str1 = alpo.a(2131715055);
+        String str1 = alud.a(2131715067);
         String str2 = "Record and speak with subtitles added.";
-        if (!ajpl.a(false))
+        if (!ajua.a(false))
         {
-          str1 = alpo.a(2131715057);
+          str1 = alud.a(2131715069);
           str2 = "Unable to Recognize Your Speaking due to Poor Internet Connection";
         }
         if (SubtitleLayout.a(this.this$0).a(false) <= 4) {

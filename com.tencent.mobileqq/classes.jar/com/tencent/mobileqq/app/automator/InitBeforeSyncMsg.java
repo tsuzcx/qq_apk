@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator;
 
-import amce;
+import amgt;
 import android.util.Log;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;

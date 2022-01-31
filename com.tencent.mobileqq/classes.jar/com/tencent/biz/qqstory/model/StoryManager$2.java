@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.model;
 
-import awbw;
+import awgf;
 import com.tencent.biz.qqstory.database.StoryEntry;
-import uro;
+import uvx;
 
 public class StoryManager$2
   implements Runnable
 {
-  public StoryManager$2(uro paramuro, awbw paramawbw, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
+  public StoryManager$2(uvx paramuvx, awgf paramawgf, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awbw.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Awgf.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

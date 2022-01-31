@@ -1,249 +1,310 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.Appconf.AppConfRequest;
-import face.qqlogin.Appconf.AppConfResponse;
-import face.qqlogin.Appconf.Wording;
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.os.Environment;
+import java.io.File;
 
 public class atdc
-  extends MSFServlet
 {
-  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static String a()
   {
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
+    return c() + "now_download_temp_QQ.apk";
+  }
+  
+  private static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists())
     {
-      Object localObject1;
-      int i;
-      Object localObject3;
-      String str1;
-      int j;
-      String str2;
-      String str3;
-      try
-      {
-        localObject1 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject1).getInt() - 4];
-        ((ByteBuffer)localObject1).get(paramFromServiceMsg);
-        localObject1 = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(paramFromServiceMsg);
-        i = ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.get();
-        if (i == 15)
-        {
-          paramFromServiceMsg = ((oidb_sso.OIDBSSOPkg)localObject1).str_error_msg.get();
-          QLog.e("FaceDetectForThirdPartyServlet", 1, "sso result error, ret : " + i + "  error : " + paramFromServiceMsg);
-          notifyObserver(paramIntent, 15, false, null, null);
-          return;
-        }
-        localObject3 = new Appconf.AppConfResponse();
-        ((Appconf.AppConfResponse)localObject3).mergeFrom(paramFromServiceMsg);
-        localObject2 = ((Appconf.AppConfResponse)localObject3).AppName.get();
-        i = ((Appconf.AppConfResponse)localObject3).Mode.get();
-        localObject1 = ((Appconf.AppConfResponse)localObject3).ColorSeq.get().toStringUtf8();
-        str1 = ((Appconf.AppConfResponse)localObject3).Session.get();
-        j = ((Appconf.AppConfResponse)localObject3).Ret.get();
-        str2 = ((Appconf.AppConfResponse)localObject3).ErrMsg.get();
-        str3 = ((Appconf.AppConfResponse)localObject3).ActionSeq.get().toStringUtf8();
-        if (!QLog.isDevelopLevel()) {
-          break label543;
-        }
-        paramFromServiceMsg = ((Appconf.AppConfResponse)localObject3).Debug.get();
-        Object localObject4 = ((Appconf.AppConfResponse)localObject3).Wordings.get();
-        localObject3 = new ArrayList(3);
-        if ((localObject4 == null) || (((List)localObject4).isEmpty())) {
-          break label354;
-        }
-        localObject4 = ((List)localObject4).iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label386;
-        }
-        Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject4).next();
-        ((List)localObject3).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
-        continue;
-        QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramFromServiceMsg);
+      if (!paramString.getParentFile().exists()) {
+        a(paramString.getParent());
       }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        notifyObserver(paramIntent, 17, false, null, null);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      return;
-      label354:
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject2);
-      }
-      label386:
-      Object localObject2 = new FaceDetectForThirdPartyManager.AppConf((String)localObject2, (List)localObject3, i);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).colorSequence = ((String)localObject1);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).session = str1;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).ret = j;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).errMsg = str2;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).actionReq = b(str3);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject2).debug = paramFromServiceMsg;
-      paramFromServiceMsg = new Bundle();
-      paramFromServiceMsg.putInt("app_id", paramIntent.getIntExtra("app_id", 0));
-      paramFromServiceMsg.putSerializable("FaceRecognition.AppConf", (Serializable)localObject2);
-      notifyObserver(paramIntent, 17, true, paramFromServiceMsg, null);
-      if ((!QLog.isColorLevel()) || (!QLog.isColorLevel())) {
-        break;
-      }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject2 });
-      return;
-      notifyObserver(paramIntent, 17, false, null, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse not ok");
-      return;
-      label543:
-      paramFromServiceMsg = null;
+      paramString.mkdir();
     }
   }
   
-  private void a(Intent paramIntent, Packet paramPacket)
+  public static boolean a(String paramString)
   {
-    int i = paramIntent.getIntExtra("app_id", 0);
-    Object localObject = paramIntent.getStringExtra("qq_version");
-    String str = paramIntent.getStringExtra("light_info");
-    paramIntent = paramIntent.getStringExtra("tmp_key");
-    Appconf.AppConfRequest localAppConfRequest = new Appconf.AppConfRequest();
-    localAppConfRequest.AppID.set(i);
-    localAppConfRequest.Platform.set("a");
-    localAppConfRequest.QQVersion.set((String)localObject);
-    localAppConfRequest.YtSDKEnv.set(str);
-    localAppConfRequest.TmpKey.set(paramIntent);
-    paramIntent = localAppConfRequest.toByteArray();
-    localObject = ByteBuffer.allocate(paramIntent.length + 4);
-    ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
-    ((ByteBuffer)localObject).put(paramIntent);
-    paramPacket.setSSOCommand("FaceRecognition.AppConf");
-    paramPacket.putSendData(((ByteBuffer)localObject).array());
+    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
+      return false;
+    }
+    return new File(paramString).delete();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, long paramLong, BusinessObserver paramBusinessObserver)
+  public static boolean a(String paramString1, String paramString2)
   {
-    if ("loginVerify".equals(paramString1)) {
-      a(paramString2, paramInt, paramString3, paramString4, paramString5, paramLong, paramBusinessObserver);
+    if (!"com.tencent.now".equals(paramString2)) {}
+    while (!b(b())) {
+      return false;
     }
-    do
-    {
-      return;
-      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), atdc.class);
-      localNewIntent.putExtra("qq_version", paramString3);
-      localNewIntent.putExtra("app_id", paramInt);
-      localNewIntent.putExtra("cmd_param", "FaceRecognition.AppConf");
-      localNewIntent.putExtra("light_info", paramString4);
-      localNewIntent.putExtra("tmp_key", paramString5);
-      localNewIntent.putExtra("method", paramString1);
-      localNewIntent.putExtra("nonce", paramLong);
-      localNewIntent.putExtra("uin", paramString2);
-      localNewIntent.setObserver(paramBusinessObserver);
-      paramQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceDetectForThirdPartyServlet", 2, "requestThirdPartyInfo appId=" + paramInt + " qqVersion=" + paramString3 + " lightInfo=" + paramString4);
+    return true;
   }
   
-  private static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, long paramLong, BusinessObserver paramBusinessObserver)
+  /* Error */
+  public static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    Appconf.AppConfRequest localAppConfRequest = new Appconf.AppConfRequest();
-    localAppConfRequest.AppID.set(paramInt);
-    localAppConfRequest.Platform.set("a");
-    localAppConfRequest.QQVersion.set(paramString2);
-    localAppConfRequest.YtSDKEnv.set(paramString3);
-    localAppConfRequest.TmpKey.set(paramString4);
-    ayxe.a(paramString1, paramLong, Base64.encodeToString(localAppConfRequest.toByteArray(), 11), new atdd(paramInt, paramBusinessObserver));
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore_1
+    //   8: iconst_0
+    //   9: istore 5
+    //   11: ldc 60
+    //   13: aload_2
+    //   14: invokevirtual 64	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ifne +5 -> 22
+    //   20: iconst_0
+    //   21: ireturn
+    //   22: aload_0
+    //   23: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
+    //   26: ifeq -6 -> 20
+    //   29: invokestatic 67	atdc:b	()Ljava/lang/String;
+    //   32: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
+    //   35: ifeq +5 -> 40
+    //   38: iconst_1
+    //   39: ireturn
+    //   40: invokestatic 76	atdc:a	()Ljava/lang/String;
+    //   43: astore 8
+    //   45: aload 8
+    //   47: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
+    //   50: ifeq +9 -> 59
+    //   53: aload 8
+    //   55: invokestatic 78	atdc:a	(Ljava/lang/String;)Z
+    //   58: pop
+    //   59: new 28	java/io/File
+    //   62: dup
+    //   63: aload_0
+    //   64: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
+    //   67: astore_0
+    //   68: new 28	java/io/File
+    //   71: dup
+    //   72: aload 8
+    //   74: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
+    //   77: astore_2
+    //   78: aload_2
+    //   79: invokevirtual 81	java/io/File:createNewFile	()Z
+    //   82: pop
+    //   83: new 83	java/io/FileInputStream
+    //   86: dup
+    //   87: aload_0
+    //   88: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   91: astore_0
+    //   92: new 88	java/io/FileOutputStream
+    //   95: dup
+    //   96: aload_2
+    //   97: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   100: astore_1
+    //   101: sipush 1024
+    //   104: newarray byte
+    //   106: astore_2
+    //   107: aload_0
+    //   108: aload_2
+    //   109: invokevirtual 95	java/io/InputStream:read	([B)I
+    //   112: istore_3
+    //   113: iload_3
+    //   114: iconst_m1
+    //   115: if_icmpeq +58 -> 173
+    //   118: aload_1
+    //   119: aload_2
+    //   120: iconst_0
+    //   121: iload_3
+    //   122: invokevirtual 101	java/io/OutputStream:write	([BII)V
+    //   125: goto -18 -> 107
+    //   128: astore_2
+    //   129: aload_1
+    //   130: astore_2
+    //   131: aload_0
+    //   132: astore_1
+    //   133: aload_2
+    //   134: astore_0
+    //   135: aload_0
+    //   136: ifnull +7 -> 143
+    //   139: aload_0
+    //   140: invokevirtual 104	java/io/OutputStream:close	()V
+    //   143: iload 5
+    //   145: istore 4
+    //   147: aload_1
+    //   148: ifnull +11 -> 159
+    //   151: aload_1
+    //   152: invokevirtual 105	java/io/InputStream:close	()V
+    //   155: iload 5
+    //   157: istore 4
+    //   159: iload 4
+    //   161: ifne +134 -> 295
+    //   164: aload 8
+    //   166: invokestatic 78	atdc:a	(Ljava/lang/String;)Z
+    //   169: pop
+    //   170: iload 4
+    //   172: ireturn
+    //   173: aload_1
+    //   174: ifnull +7 -> 181
+    //   177: aload_1
+    //   178: invokevirtual 104	java/io/OutputStream:close	()V
+    //   181: aload_0
+    //   182: ifnull +7 -> 189
+    //   185: aload_0
+    //   186: invokevirtual 105	java/io/InputStream:close	()V
+    //   189: iconst_1
+    //   190: istore 4
+    //   192: goto -33 -> 159
+    //   195: astore_0
+    //   196: aload_0
+    //   197: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   200: iconst_1
+    //   201: istore 4
+    //   203: goto -44 -> 159
+    //   206: astore_0
+    //   207: aload_0
+    //   208: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   211: iload 5
+    //   213: istore 4
+    //   215: goto -56 -> 159
+    //   218: astore_0
+    //   219: aconst_null
+    //   220: astore_0
+    //   221: aload 7
+    //   223: astore_1
+    //   224: aload_1
+    //   225: ifnull +7 -> 232
+    //   228: aload_1
+    //   229: invokevirtual 104	java/io/OutputStream:close	()V
+    //   232: iload 5
+    //   234: istore 4
+    //   236: aload_0
+    //   237: ifnull -78 -> 159
+    //   240: aload_0
+    //   241: invokevirtual 105	java/io/InputStream:close	()V
+    //   244: iload 5
+    //   246: istore 4
+    //   248: goto -89 -> 159
+    //   251: astore_0
+    //   252: aload_0
+    //   253: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   256: iload 5
+    //   258: istore 4
+    //   260: goto -101 -> 159
+    //   263: astore_1
+    //   264: aconst_null
+    //   265: astore_0
+    //   266: aload 6
+    //   268: astore_2
+    //   269: aload_2
+    //   270: ifnull +7 -> 277
+    //   273: aload_2
+    //   274: invokevirtual 104	java/io/OutputStream:close	()V
+    //   277: aload_0
+    //   278: ifnull +7 -> 285
+    //   281: aload_0
+    //   282: invokevirtual 105	java/io/InputStream:close	()V
+    //   285: aload_1
+    //   286: athrow
+    //   287: astore_0
+    //   288: aload_0
+    //   289: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   292: goto -7 -> 285
+    //   295: aload 8
+    //   297: invokestatic 67	atdc:b	()Ljava/lang/String;
+    //   300: invokestatic 110	atdc:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   303: pop
+    //   304: iload 4
+    //   306: ireturn
+    //   307: astore_0
+    //   308: iconst_0
+    //   309: ireturn
+    //   310: astore_1
+    //   311: aload 6
+    //   313: astore_2
+    //   314: goto -45 -> 269
+    //   317: astore 6
+    //   319: aload_1
+    //   320: astore_2
+    //   321: aload 6
+    //   323: astore_1
+    //   324: goto -55 -> 269
+    //   327: astore_1
+    //   328: aload 7
+    //   330: astore_1
+    //   331: goto -107 -> 224
+    //   334: astore_2
+    //   335: goto -111 -> 224
+    //   338: astore_0
+    //   339: aconst_null
+    //   340: astore_0
+    //   341: goto -206 -> 135
+    //   344: astore_1
+    //   345: aconst_null
+    //   346: astore_2
+    //   347: aload_0
+    //   348: astore_1
+    //   349: aload_2
+    //   350: astore_0
+    //   351: goto -216 -> 135
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	354	0	paramString1	String
+    //   0	354	1	paramString2	String
+    //   0	354	2	paramString3	String
+    //   112	10	3	i	int
+    //   145	160	4	bool1	boolean
+    //   9	248	5	bool2	boolean
+    //   4	308	6	localObject1	Object
+    //   317	5	6	localObject2	Object
+    //   1	328	7	localObject3	Object
+    //   43	253	8	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   101	107	128	java/io/FileNotFoundException
+    //   107	113	128	java/io/FileNotFoundException
+    //   118	125	128	java/io/FileNotFoundException
+    //   177	181	195	java/io/IOException
+    //   185	189	195	java/io/IOException
+    //   139	143	206	java/io/IOException
+    //   151	155	206	java/io/IOException
+    //   83	92	218	java/io/IOException
+    //   228	232	251	java/io/IOException
+    //   240	244	251	java/io/IOException
+    //   83	92	263	finally
+    //   273	277	287	java/io/IOException
+    //   281	285	287	java/io/IOException
+    //   78	83	307	java/io/IOException
+    //   92	101	310	finally
+    //   101	107	317	finally
+    //   107	113	317	finally
+    //   118	125	317	finally
+    //   92	101	327	java/io/IOException
+    //   101	107	334	java/io/IOException
+    //   107	113	334	java/io/IOException
+    //   118	125	334	java/io/IOException
+    //   83	92	338	java/io/FileNotFoundException
+    //   92	101	344	java/io/FileNotFoundException
   }
   
-  private static int[] b(String paramString)
+  public static String b()
   {
-    int i = 0;
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return new int[0];
-      }
-      String[] arrayOfString = paramString.split(" ");
-      int[] arrayOfInt = new int[arrayOfString.length];
-      for (;;)
-      {
-        paramString = arrayOfInt;
-        if (i >= arrayOfString.length) {
-          break;
-        }
-        arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
-        i += 1;
-      }
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("FaceDetectForThirdPartyServlet", 1, "parseAction error : " + paramString.getMessage());
-      paramString = null;
-    }
+    return c() + "now_download_common.apk";
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static boolean b(String paramString)
   {
-    String str2 = paramFromServiceMsg.getServiceCmd();
-    if (str2 == null) {
-      return;
+    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
+      return false;
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      boolean bool = paramFromServiceMsg.isSuccess();
-      localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-      if (!bool) {
-        break label97;
-      }
-    }
-    label97:
-    for (String str1 = "";; str1 = "not")
-    {
-      QLog.d("FaceDetectForThirdPartyServlet", 2, str1 + " success");
-      if (!"FaceRecognition.AppConf".equals(str2)) {
-        break;
-      }
-      a(paramIntent, paramFromServiceMsg);
-      return;
-    }
+    return new File(paramString).exists();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static boolean b(String paramString1, String paramString2)
   {
-    String str = paramIntent.getStringExtra("cmd_param");
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "resp:" + str);
+    if (!b(paramString1)) {
+      return false;
     }
-    if ("FaceRecognition.AppConf".equals(str)) {
-      a(paramIntent, paramPacket);
-    }
+    return new File(paramString1).renameTo(new File(paramString2));
+  }
+  
+  private static String c()
+  {
+    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/now/";
+    a(str);
+    return str;
   }
 }
 

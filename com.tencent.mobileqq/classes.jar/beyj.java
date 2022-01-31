@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-import java.util.List;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class beyj
-  implements DialogInterface.OnClickListener
+class beyj
+  implements IVideoInnerStatusListener
 {
-  public beyj(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
+  beyj(beyi parambeyi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void notifyVideoClose(int paramInt)
   {
-    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
+    this.a.b();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    if (beyi.a(this.a) != null)
+    {
+      paramInt = (int)(paramInt * beyi.a(this.a).c() / 100.0D);
+      beyi.a(this.a, paramInt);
+    }
+  }
+  
+  public void notifyVideoStart()
+  {
+    beyi.a(this.a);
+  }
+  
+  public void notifyVideoStop()
+  {
+    beyi.b(this.a);
   }
 }
 

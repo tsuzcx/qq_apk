@@ -1,120 +1,23 @@
-import SummaryCard.CondFitUser;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aodt
-  extends BaseAdapter
+class aodt
+  implements Animator.AnimatorListener
 {
-  private aodt(SearchResultActivity paramSearchResultActivity) {}
+  aodt(aodl paramaodl) {}
   
-  public int getCount()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    if (this.a.b != 0) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
+    if (aodl.a(this.a) != null) {
+      aodl.a(this.a).a();
     }
   }
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (getItemViewType(paramInt) == 0)
-    {
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = this.a.getLayoutInflater().inflate(2131560866, null);
-        paramViewGroup.setOnClickListener(this.a);
-        paramView = new aodu();
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367536));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371141));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376702));
-        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)paramViewGroup.findViewById(2131367104));
-        paramView.c = ((InterestLabelTextView)paramViewGroup.findViewById(2131380293));
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)paramViewGroup.findViewById(2131364011));
-        paramView.d = ((InterestLabelTextView)paramViewGroup.findViewById(2131369792));
-        paramViewGroup.setTag(paramView);
-      }
-      paramView = (aodu)paramViewGroup.getTag();
-      localObject = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localObject = this.a.a(paramView, (CondFitUser)localObject);
-      paramView = paramViewGroup;
-      if (SearchResultActivity.jdField_a_of_type_Boolean)
-      {
-        paramViewGroup.setContentDescription((CharSequence)localObject);
-        paramView = paramViewGroup;
-      }
-    }
-    do
-    {
-      return paramView;
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = this.a.getLayoutInflater().inflate(2131559365, null);
-        paramViewGroup.setOnClickListener(this.a);
-        paramView = new aodv();
-        paramViewGroup.setTag(paramView);
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131375537));
-        paramViewGroup.findViewById(2131369742).setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370748));
-      }
-      if (this.a.b == 1)
-      {
-        this.a.b = 2;
-        SearchResultActivity.d(this.a);
-      }
-      localObject = (aodv)paramViewGroup.getTag();
-      if (this.a.b == 3)
-      {
-        ((aodv)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        ((aodv)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714034));
-        return paramViewGroup;
-      }
-      if (this.a.b == 2)
-      {
-        ((aodv)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        ((aodv)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714025));
-        return paramViewGroup;
-      }
-      paramView = paramViewGroup;
-    } while (this.a.b != 4);
-    ((aodv)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    ((aodv)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714024));
-    return paramViewGroup;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

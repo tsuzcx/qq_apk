@@ -1,23 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class xis
-  extends blpg
+public abstract class xis
 {
-  xis(xir paramxir) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public xis(int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends xit> a();
+  
+  @NonNull
+  public abstract xit a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

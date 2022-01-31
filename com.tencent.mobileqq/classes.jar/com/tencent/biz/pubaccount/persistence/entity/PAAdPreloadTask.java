@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.persistence.entity;
 
 import android.text.TextUtils;
-import awbv;
-import bdee;
+import awge;
+import bdin;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PAAdPreloadTask
-  extends awbv
+  extends awge
 {
   public static final int NETWORK_TYPE_4G = 2;
   public static final int NETWORK_TYPE_NONE = 0;
@@ -119,8 +119,8 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (bdee.h(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (bdee.a(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (bdin.h(null))) {}
+    while (((this.mNetworkType & 0x2) != 0) && (bdin.a(BaseApplication.getContext()) == 4)) {
       return true;
     }
     return false;

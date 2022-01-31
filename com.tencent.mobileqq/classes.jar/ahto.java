@@ -1,35 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class ahto
-  implements Handler.Callback
+  extends altm
 {
-  public ahto(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
+  public ahto(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131379348).setEnabled(true);
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    if (paramMessage.arg1 == 0) {
-      QQToast.a(this.a.getActivity(), 2, alpo.a(2131701989), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-    for (;;)
-    {
-      this.a.getActivity().setResult(1);
-      this.a.getActivity().finish();
-      return false;
-      QQToast.a(this.a.getActivity(), 2, alpo.a(2131701999), 0).b(this.a.getActivity().getTitleBarHeight());
+    if (paramBoolean) {
+      this.a.i();
     }
   }
 }

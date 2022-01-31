@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar;
 
-import amsi;
+import amwx;
 
 public class ArConfigService$7$1
   implements Runnable
 {
-  public ArConfigService$7$1(amsi paramamsi, int paramInt) {}
+  public ArConfigService$7$1(amwx paramamwx, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Amsi.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.jdField_a_of_type_Amwx.a, this.jdField_a_of_type_Int);
   }
 }
 

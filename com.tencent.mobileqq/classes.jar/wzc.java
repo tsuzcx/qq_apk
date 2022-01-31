@@ -1,35 +1,25 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-@TargetApi(14)
-public class wzc
+class wzc
+  implements xbf
 {
-  public static float a(View paramView)
+  wzc(wzb paramwzb) {}
+  
+  public void a()
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return 0.0F;
-    }
-    return paramView.getX();
+    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
   }
   
-  public static void a(View paramView, float paramFloat)
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
+    {
+      this.a.a.setLocation(paramTroopBarPOI.a());
       return;
     }
-    paramView.setAlpha(paramFloat);
-  }
-  
-  public static float b(View paramView)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return 0.0F;
-    }
-    return paramView.getY();
+    this.a.a.setLocation("None for test!!");
   }
 }
 

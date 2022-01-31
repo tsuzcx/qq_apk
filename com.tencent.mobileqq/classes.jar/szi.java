@@ -76,8 +76,8 @@ class szi
       {
         if (!TextUtils.isEmpty(szc.a(this.a).c))
         {
-          bacb.a(1, 3);
-          bacb.a(szc.a(this.a).c, szc.a(this.a).jdField_a_of_type_JavaLangString);
+          bagk.a(1, 3);
+          bagk.a(szc.a(this.a).c, szc.a(this.a).jdField_a_of_type_JavaLangString);
           szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
         }
       }
@@ -117,7 +117,7 @@ class szi
         {
           if (!TextUtils.isEmpty(szc.a(this.a).e))
           {
-            localIntent = aekt.a(new Intent(this.a.a(), SplashActivity.class), null);
+            localIntent = aepi.a(new Intent(this.a.a(), SplashActivity.class), null);
             localIntent.putExtra("uin", szc.a(this.a).e);
             localIntent.putExtra("uintype", 0);
             this.a.a().startActivity(localIntent);

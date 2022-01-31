@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adni
   implements DialogInterface.OnClickListener
 {
-  public adni(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public adni(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    }
+    azqs.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
   }
 }
 

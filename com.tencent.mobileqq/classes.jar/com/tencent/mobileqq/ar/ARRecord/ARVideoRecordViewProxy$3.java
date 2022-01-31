@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amqf;
+import amuu;
 import android.view.View;
 
 public class ARVideoRecordViewProxy$3
   implements Runnable
 {
-  public ARVideoRecordViewProxy$3(amqf paramamqf) {}
+  public ARVideoRecordViewProxy$3(amuu paramamuu) {}
   
   public void run()
   {
-    if (amqf.b(this.this$0) != null)
+    if (amuu.b(this.this$0) != null)
     {
-      amqf.b(this.this$0).setVisibility(0);
-      amqf.a(this.this$0);
+      amuu.b(this.this$0).setVisibility(0);
+      amuu.a(this.this$0);
     }
   }
 }

@@ -6,43 +6,43 @@ import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbzo;
-import bcag;
-import bcaj;
-import bcak;
-import bcam;
+import bcdx;
+import bcep;
+import bces;
+import bcet;
+import bcev;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class AudioItem$AudioUploadCallback$1
   implements Runnable
 {
-  public AudioItem$AudioUploadCallback$1(bcaj parambcaj) {}
+  public AudioItem$AudioUploadCallback$1(bces parambces) {}
   
   public void run()
   {
-    bcak localbcak;
-    if (this.a.jdField_a_of_type_Bbzo.c < this.a.jdField_a_of_type_Bcag.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount())
+    bcet localbcet;
+    if (this.a.jdField_a_of_type_Bcdx.c < this.a.jdField_a_of_type_Bcep.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount())
     {
-      this.a.jdField_a_of_type_Bcag.jdField_a_of_type_Bcam.a(this.a.jdField_a_of_type_Bcag.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bbzo.c), true);
-      localbcak = (bcak)this.a.jdField_a_of_type_Bcag.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bbzo.c);
-      if (localbcak != null)
+      this.a.jdField_a_of_type_Bcep.jdField_a_of_type_Bcev.a(this.a.jdField_a_of_type_Bcep.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bcdx.c), true);
+      localbcet = (bcet)this.a.jdField_a_of_type_Bcep.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bcdx.c);
+      if (localbcet != null)
       {
-        if (!this.a.jdField_a_of_type_Bbzo.a) {
+        if (!this.a.jdField_a_of_type_Bcdx.a) {
           break label171;
         }
-        AnimationDrawable localAnimationDrawable = (AnimationDrawable)bcag.a(this.a.jdField_a_of_type_Bcag).getResources().getDrawable(2130772263);
-        localbcak.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+        AnimationDrawable localAnimationDrawable = (AnimationDrawable)bcep.a(this.a.jdField_a_of_type_Bcep).getResources().getDrawable(2130772264);
+        localbcet.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
         localAnimationDrawable.start();
       }
     }
     for (;;)
     {
-      localbcak.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localbcak.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localbcak.c.setVisibility(4);
+      localbcet.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbcet.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localbcet.c.setVisibility(4);
       return;
       label171:
-      localbcak.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846506);
+      localbcet.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846579);
     }
   }
 }

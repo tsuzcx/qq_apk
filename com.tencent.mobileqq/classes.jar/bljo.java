@@ -1,151 +1,85 @@
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean.FilterID;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class bljo
-  extends RecyclerView.Adapter<bljr>
 {
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bljq jdField_a_of_type_Bljq;
-  private List<AEEditorFilterBean> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  public bljo(List<AEEditorFilterBean> paramList, int paramInt, bljq parambljq)
+  public static void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.g = paramInt;
-    this.jdField_a_of_type_Bljq = parambljq;
-  }
-  
-  private void b(int paramInt)
-  {
-    LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-    int i = localLinearLayoutManager.findFirstVisibleItemPosition();
-    i = (localLinearLayoutManager.findLastVisibleItemPosition() - i + 1) / 2 + i;
-    if (paramInt > i) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(bllm.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 100.0F), 0);
-    }
-    while (paramInt >= i) {
+    if (paramActivity == null)
+    {
+      bljn.d("PicChooseJumpUtil", "activity is null.");
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(-bllm.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 100.0F), 0);
+    String str1 = QIMCameraCaptureActivity.class.getName();
+    String str2 = LocalVideoSelectActivity.class.getName();
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 5);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_DURATION", 60000L);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str1);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", str2);
+    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("enter_from", 26);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
+    localIntent.putExtra("pic_back_type_result", true);
+    localIntent.putExtra("VIDEO_STORY_JUMP_TO_TYPE", blat.b(paramActivity.getIntent()));
+    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", blat.a(paramActivity.getIntent()));
+    localIntent.putExtra("edit_video_way", 11);
+    localIntent.putExtra("edit_video_type", 10023);
+    paramActivity.startActivityForResult(localIntent, 10006);
   }
   
-  public int a()
+  public static void a(Activity paramActivity, int paramInt)
   {
-    return this.g;
+    String str = QIMCameraCaptureActivity.class.getName();
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("enter_from", 23);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", paramInt);
+    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramActivity));
+    paramActivity.startActivity(localIntent);
   }
   
-  @NonNull
-  public bljr a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  public static void a(Activity paramActivity, Intent paramIntent)
   {
-    return new bljr(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558534, paramViewGroup, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(@NonNull bljr parambljr, int paramInt)
-  {
-    AEEditorFilterBean localAEEditorFilterBean = (AEEditorFilterBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    int i;
-    if (paramInt == this.g)
-    {
-      i = 1;
-      if (i == 0) {
-        break label136;
-      }
-      parambljr.b.setVisibility(0);
-      parambljr.b.setBackgroundColor(this.jdField_a_of_type_Int);
-      parambljr.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      parambljr.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.e);
-      parambljr.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(this.jdField_a_of_type_Int);
-      label79:
-      if (localAEEditorFilterBean.type != AEEditorFilterBean.FilterID.NON) {
-        break label201;
-      }
-      parambljr.jdField_a_of_type_AndroidWidgetTextView.setText(2131692661);
-      if (i == 0) {
-        break label178;
-      }
-      parambljr.b.setImageResource(2130837653);
+    bljn.b("PicChooseJumpUtil", "[jumpForAECircle] Start");
+    bljn.a("PicChooseJumpUtil", "[AE Profiler] jumpForAECircle Start");
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    for (;;)
-    {
-      parambljr.itemView.setOnClickListener(new bljp(this, localAEEditorFilterBean, paramInt));
-      return;
-      i = 0;
-      break;
-      label136:
-      parambljr.b.setVisibility(8);
-      parambljr.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      parambljr.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.f);
-      parambljr.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(this.d);
-      break label79;
-      label178:
-      parambljr.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837654);
-      parambljr.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.c);
-      continue;
-      label201:
-      if (localAEEditorFilterBean.type == AEEditorFilterBean.FilterID.AIFilter)
-      {
-        parambljr.jdField_a_of_type_AndroidWidgetTextView.setText(2131692660);
-        if (i != 0)
-        {
-          parambljr.b.setImageResource(2130837651);
-        }
-        else
-        {
-          parambljr.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837652);
-          parambljr.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.b);
-        }
-      }
-      else
-      {
-        parambljr.jdField_a_of_type_AndroidWidgetTextView.setText(localAEEditorFilterBean.getName());
-        if (i != 0) {
-          parambljr.b.setImageResource(2130837655);
-        } else {
-          xod.a(parambljr.jdField_a_of_type_AndroidWidgetImageView, localAEEditorFilterBean.getPicUrl(), xod.a(parambljr.jdField_a_of_type_AndroidWidgetImageView.getContext(), 67.0F), xod.a(parambljr.jdField_a_of_type_AndroidWidgetImageView.getContext(), 67.0F), null, null);
-        }
-      }
-    }
+    localIntent.putExtra("intent_key_uid_for_report", localIntent.getStringExtra("PhotoConst.UIN"));
+    localIntent.setClass(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("enter_from", 29);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    localIntent.putExtra("PeakConstants.showGifTypeIcon", true);
+    localIntent.putExtra("isneed_edit", false);
+    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramActivity));
+    paramActivity.startActivity(localIntent);
   }
   
-  public int getItemCount()
+  public static void b(Activity paramActivity, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_Int = paramRecyclerView.getResources().getColor(2131165233);
-    this.b = paramRecyclerView.getResources().getColor(2131165237);
-    this.c = paramRecyclerView.getResources().getColor(2131165238);
-    this.d = paramRecyclerView.getResources().getColor(2131165234);
-    this.e = paramRecyclerView.getResources().getColor(2131165235);
-    this.f = paramRecyclerView.getResources().getColor(2131165236);
+    String str = QIMCameraCaptureActivity.class.getName();
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("enter_from", 23);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    localIntent.putExtra("pic_choose_in_node_id", paramInt);
+    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramActivity));
+    paramActivity.startActivity(localIntent);
   }
 }
 

@@ -1,6 +1,9 @@
+import android.view.View.OnClickListener;
+
 public abstract interface belj
+  extends begg
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bdef;
+import bdio;
 
 public class NewUpgradeDialog$5
   implements Runnable
 {
-  public NewUpgradeDialog$5(bdef parambdef) {}
+  public NewUpgradeDialog$5(bdio parambdio) {}
   
   public void run()
   {
-    bdef.d(this.this$0);
+    bdio.d(this.this$0);
   }
 }
 

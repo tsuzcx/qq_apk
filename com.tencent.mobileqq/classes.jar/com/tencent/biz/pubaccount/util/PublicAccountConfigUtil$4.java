@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdiw;
+import bdnf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public final class PublicAccountConfigUtil$4
       ((SharedPreferences.Editor)localObject).putBoolean("readInJoy_loading_img", swy.n);
       ((SharedPreferences.Editor)localObject).putBoolean("service_account_folder_redspots_delete", swy.jdField_c_of_type_Boolean);
       ((SharedPreferences.Editor)localObject).putBoolean("big_data_share_channel", swy.o);
-      bdiw.a((SharedPreferences.Editor)localObject, "big_data_share_channel_urls", swy.jdField_a_of_type_JavaUtilArrayList.toArray());
+      bdnf.a((SharedPreferences.Editor)localObject, "big_data_share_channel_urls", swy.jdField_a_of_type_JavaUtilArrayList.toArray());
       ((SharedPreferences.Editor)localObject).putInt("album_predown_enable", swy.jdField_c_of_type_Int);
       ((SharedPreferences.Editor)localObject).putInt("album_predown_photo_rule", swy.jdField_d_of_type_Int);
       ((SharedPreferences.Editor)localObject).putInt("album_predown_slide_photocounts", swy.jdField_e_of_type_Int);

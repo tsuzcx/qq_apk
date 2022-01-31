@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import adcq;
-import adcr;
+import adhf;
+import adhg;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LoginInfoActivity$10$1$1
   implements Runnable
 {
-  public LoginInfoActivity$10$1$1(adcr paramadcr) {}
+  public LoginInfoActivity$10$1$1(adhg paramadhg) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131694646), 0).b(this.a.a.a.getTitleBarHeight());
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131694648), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

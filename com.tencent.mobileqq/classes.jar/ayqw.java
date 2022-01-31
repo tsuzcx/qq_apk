@@ -1,51 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayqw
+class ayqw
+  implements View.OnClickListener
 {
-  static ayqw jdField_a_of_type_Ayqw;
-  public String a;
-  ArrayList<awbv> jdField_a_of_type_JavaUtilArrayList = null;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  ayqw(ayqv paramayqv) {}
   
-  ayqw()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-  }
-  
-  public static ayqw a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Ayqw == null) {
-        jdField_a_of_type_Ayqw = new ayqw();
-      }
-      ayqw localayqw = jdField_a_of_type_Ayqw;
-      return localayqw;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    ayqv.a(this.a).a(paramView);
   }
 }
 

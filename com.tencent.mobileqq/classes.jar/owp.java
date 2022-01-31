@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
 public class owp
-  extends bjxu
+  extends bkcb
 {
   protected void a(String paramString)
   {

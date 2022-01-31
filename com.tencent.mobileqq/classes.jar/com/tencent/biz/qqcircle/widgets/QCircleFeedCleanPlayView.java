@@ -7,20 +7,20 @@ import android.view.View;
 import android.widget.SeekBar;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import feedcloud.FeedCloudMeta.StFeed;
-import tyk;
-import udu;
-import vrr;
-import vrw;
-import vsv;
-import yjd;
+import tzw;
+import ugu;
+import vwa;
+import vwf;
+import vxe;
+import ynq;
 
 public class QCircleFeedCleanPlayView
   extends BaseVideoView
 {
   private int jdField_a_of_type_Int;
-  udu jdField_a_of_type_Udu;
-  private vrw jdField_a_of_type_Vrw;
-  private yjd jdField_a_of_type_Yjd;
+  ugu jdField_a_of_type_Ugu;
+  private vwf jdField_a_of_type_Vwf;
+  private ynq jdField_a_of_type_Ynq;
   private boolean d;
   
   public QCircleFeedCleanPlayView(@NonNull Context paramContext, int paramInt)
@@ -48,7 +48,7 @@ public class QCircleFeedCleanPlayView
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         str = paramInt2 + ":" + paramInt1;
       }
-      tyk.a(2, 4, 1, this.jdField_a_of_type_Int + 1, paramLong1, paramLong2, this.d, str, localStFeed, tyk.a(localStFeed));
+      tzw.a(2, 7, 1, this.jdField_a_of_type_Int, paramLong1, paramLong2, this.d, str, localStFeed, tzw.a(localStFeed));
     }
   }
   
@@ -58,12 +58,12 @@ public class QCircleFeedCleanPlayView
   
   public void a(Object paramObject) {}
   
-  public void a(vrr paramvrr)
+  public void a(vwa paramvwa)
   {
-    super.a(paramvrr);
+    super.a(paramvwa);
     a().setXYaxis(2);
-    if (this.jdField_a_of_type_Vrw != null) {
-      this.jdField_a_of_type_Vrw.a(paramvrr);
+    if (this.jdField_a_of_type_Vwf != null) {
+      this.jdField_a_of_type_Vwf.a(paramvwa);
     }
   }
   
@@ -79,6 +79,14 @@ public class QCircleFeedCleanPlayView
     return false;
   }
   
+  protected void f()
+  {
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
+    if (localStFeed != null) {
+      tzw.a(2, 4, 1, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, tzw.a(localStFeed));
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
@@ -87,15 +95,15 @@ public class QCircleFeedCleanPlayView
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Yjd != null) {
-        this.jdField_a_of_type_Yjd.a("", paramMessage.arg2, paramMessage.arg1);
+      if (this.jdField_a_of_type_Ynq != null) {
+        this.jdField_a_of_type_Ynq.a("", paramMessage.arg2, paramMessage.arg1);
       }
     }
   }
   
-  public void setFeedPresenter(udu paramudu)
+  public void setFeedPresenter(ugu paramugu)
   {
-    this.jdField_a_of_type_Udu = paramudu;
+    this.jdField_a_of_type_Ugu = paramugu;
   }
   
   public void setIsAutoPlay(boolean paramBoolean)
@@ -103,14 +111,14 @@ public class QCircleFeedCleanPlayView
     this.d = paramBoolean;
   }
   
-  public void setOnPreparedListener(vrw paramvrw)
+  public void setOnPreparedListener(vwf paramvwf)
   {
-    this.jdField_a_of_type_Vrw = paramvrw;
+    this.jdField_a_of_type_Vwf = paramvwf;
   }
   
-  public void setOnProgressListener(yjd paramyjd)
+  public void setOnProgressListener(ynq paramynq)
   {
-    this.jdField_a_of_type_Yjd = paramyjd;
+    this.jdField_a_of_type_Ynq = paramynq;
   }
 }
 

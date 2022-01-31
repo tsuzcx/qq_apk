@@ -1,131 +1,167 @@
-import android.media.MediaPlayer.OnCompletionListener;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
+import javax.annotation.Nullable;
+import mqq.app.AppRuntime;
 
-public final class bduc
-  implements MediaPlayer.OnCompletionListener
+public class bduc
 {
-  public bduc(ArrayList paramArrayList) {}
+  public static int[] a = { 2, 3, 4, 5, 6, 8 };
+  public static final int[] b = { 1, 0, 2, 3, 9, 27 };
   
-  /* Error */
-  public void onCompletion(android.media.MediaPlayer paramMediaPlayer)
+  public static URLDrawable a(String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
   {
-    // Byte code:
-    //   0: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
-    //   3: aload_0
-    //   4: getfield 12	bduc:a	Ljava/util/ArrayList;
-    //   7: invokevirtual 33	java/util/ArrayList:size	()I
-    //   10: iconst_1
-    //   11: isub
-    //   12: if_icmpge +142 -> 154
-    //   15: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
-    //   18: iconst_1
-    //   19: iadd
-    //   20: invokestatic 36	com/tencent/mobileqq/vashealth/PathTraceManager:a	(I)I
-    //   23: pop
-    //   24: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
-    //   27: invokevirtual 44	android/media/MediaPlayer:reset	()V
-    //   30: new 46	java/io/FileInputStream
-    //   33: dup
-    //   34: new 48	java/io/File
-    //   37: dup
-    //   38: aload_0
-    //   39: getfield 12	bduc:a	Ljava/util/ArrayList;
-    //   42: invokestatic 28	com/tencent/mobileqq/vashealth/PathTraceManager:c	()I
-    //   45: invokevirtual 52	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   48: checkcast 54	android/net/Uri
-    //   51: invokevirtual 58	android/net/Uri:getPath	()Ljava/lang/String;
-    //   54: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   57: invokespecial 64	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   60: astore_2
-    //   61: aload_2
-    //   62: astore_1
-    //   63: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
-    //   66: aload_2
-    //   67: invokevirtual 68	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   70: invokevirtual 72	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   73: aload_2
-    //   74: astore_1
-    //   75: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
-    //   78: invokevirtual 75	android/media/MediaPlayer:prepare	()V
-    //   81: aload_2
-    //   82: astore_1
-    //   83: getstatic 39	com/tencent/mobileqq/vashealth/PathTraceManager:a	Landroid/media/MediaPlayer;
-    //   86: invokevirtual 78	android/media/MediaPlayer:start	()V
-    //   89: aload_2
-    //   90: ifnull +7 -> 97
-    //   93: aload_2
-    //   94: invokevirtual 81	java/io/FileInputStream:close	()V
-    //   97: return
-    //   98: astore_1
-    //   99: aload_1
-    //   100: invokevirtual 84	java/io/IOException:printStackTrace	()V
-    //   103: return
-    //   104: astore_3
-    //   105: aconst_null
-    //   106: astore_2
-    //   107: aload_2
-    //   108: astore_1
-    //   109: ldc 86
-    //   111: iconst_1
-    //   112: ldc 88
-    //   114: aload_3
-    //   115: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   118: aload_2
-    //   119: ifnull -22 -> 97
-    //   122: aload_2
-    //   123: invokevirtual 81	java/io/FileInputStream:close	()V
-    //   126: return
-    //   127: astore_1
-    //   128: aload_1
-    //   129: invokevirtual 84	java/io/IOException:printStackTrace	()V
-    //   132: return
-    //   133: astore_2
-    //   134: aconst_null
-    //   135: astore_1
-    //   136: aload_1
-    //   137: ifnull +7 -> 144
-    //   140: aload_1
-    //   141: invokevirtual 81	java/io/FileInputStream:close	()V
-    //   144: aload_2
-    //   145: athrow
-    //   146: astore_1
-    //   147: aload_1
-    //   148: invokevirtual 84	java/io/IOException:printStackTrace	()V
-    //   151: goto -7 -> 144
-    //   154: aload_0
-    //   155: getfield 12	bduc:a	Ljava/util/ArrayList;
-    //   158: invokevirtual 97	java/util/ArrayList:clear	()V
-    //   161: iconst_0
-    //   162: invokestatic 36	com/tencent/mobileqq/vashealth/PathTraceManager:a	(I)I
-    //   165: pop
-    //   166: return
-    //   167: astore_2
-    //   168: goto -32 -> 136
-    //   171: astore_3
-    //   172: goto -65 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	175	0	this	bduc
-    //   0	175	1	paramMediaPlayer	android.media.MediaPlayer
-    //   60	63	2	localFileInputStream	java.io.FileInputStream
-    //   133	12	2	localObject1	Object
-    //   167	1	2	localObject2	Object
-    //   104	11	3	localException1	java.lang.Exception
-    //   171	1	3	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   93	97	98	java/io/IOException
-    //   30	61	104	java/lang/Exception
-    //   122	126	127	java/io/IOException
-    //   30	61	133	finally
-    //   140	144	146	java/io/IOException
-    //   63	73	167	finally
-    //   75	81	167	finally
-    //   83	89	167	finally
-    //   109	118	167	finally
-    //   63	73	171	java/lang/Exception
-    //   75	81	171	java/lang/Exception
-    //   83	89	171	java/lang/Exception
+    return a(null, paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, paramBundle);
+  }
+  
+  public static URLDrawable a(String paramString, int[] paramArrayOfInt, Drawable paramDrawable)
+  {
+    return a(paramString, paramArrayOfInt, paramDrawable, null, new bdud(paramArrayOfInt));
+  }
+  
+  public static URLDrawable a(String paramString, int[] paramArrayOfInt, Drawable paramDrawable, Bundle paramBundle, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  {
+    String str1 = new File(paramString).getName();
+    String str2 = a(paramString);
+    paramString = b(BaseApplicationImpl.sApplication.getRuntime(), str2, paramString, paramDrawable, paramArrayOfInt, str1, paramBundle);
+    if (paramString != null)
+    {
+      int i = paramString.getStatus();
+      if (i != 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ddddd", 2, "urlDrawable is not  SUCCESSED :" + i);
+        }
+        paramString.setURLDrawableListener(paramURLDrawableListener);
+        if (i == 2) {
+          paramString.restartDownload();
+        }
+      }
+      for (;;)
+      {
+        return paramString;
+        paramString.startDownload();
+        continue;
+        paramDrawable = paramString.getCurrDrawable();
+        if ((paramDrawable != null) && ((paramDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramDrawable).getImage() != null)) {
+          ApngImage.playByTag(paramArrayOfInt[0]);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static URLDrawable a(@Nullable AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    paramAppRuntime = paramBundle;
+    if (paramBundle == null) {}
+    try
+    {
+      paramAppRuntime = new Bundle();
+      boolean bool = paramAppRuntime.getBoolean("key_play_apng", true);
+      int i = paramAppRuntime.getInt("key_loop");
+      paramBundle = new URL("vasapngdownloader", paramString1, paramString2);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseApngImage = bool;
+      localURLDrawableOptions.mUseMemoryCache = paramAppRuntime.getBoolean("key_use_cache", true);
+      localURLDrawableOptions.mMemoryCacheKeySuffix = (bool + "," + i);
+      i = paramAppRuntime.getInt("key_width", 0);
+      int j = paramAppRuntime.getInt("key_height", 0);
+      if ((i > 0) && (j > 0))
+      {
+        localURLDrawableOptions.mRequestWidth = i;
+        localURLDrawableOptions.mRequestHeight = j;
+      }
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+      paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
+      paramAppRuntime.putString("key_name", paramString3);
+      paramAppRuntime.putBoolean("key_double_bitmap", true);
+      localURLDrawableOptions.mExtraInfo = paramAppRuntime;
+      if ("-Dynamic-".equals(paramString2)) {
+        localURLDrawableOptions.mUseAutoScaleParams = false;
+      }
+      if (!paramAppRuntime.getBoolean("key_use_auto_scale_params", true)) {
+        localURLDrawableOptions.mUseAutoScaleParams = false;
+      }
+      paramAppRuntime = URLDrawable.getDrawable(paramBundle, localURLDrawableOptions);
+      if (QLog.isColorLevel()) {
+        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
+      }
+      return paramAppRuntime;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
+    }
+    return null;
+  }
+  
+  public static URLDrawable a(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    paramAppRuntime = paramBundle;
+    if (paramBundle == null) {}
+    try
+    {
+      paramAppRuntime = new Bundle();
+      boolean bool = paramAppRuntime.getBoolean("key_play_apng", true);
+      int i = paramAppRuntime.getInt("key_loop");
+      paramString2 = new URL("vasapngdownloader", paramString1, paramString2);
+      paramBundle = URLDrawable.URLDrawableOptions.obtain();
+      paramBundle.mUseApngImage = bool;
+      paramBundle.mUseMemoryCache = paramAppRuntime.getBoolean("key_use_cache", true);
+      paramBundle.mMemoryCacheKeySuffix = (bool + "," + i);
+      paramBundle.mUseUnFinishCache = paramBoolean;
+      i = paramAppRuntime.getInt("key_width", 0);
+      int j = paramAppRuntime.getInt("key_height", 0);
+      if ((i > 0) && (j > 0))
+      {
+        paramBundle.mRequestWidth = i;
+        paramBundle.mRequestHeight = j;
+      }
+      paramBundle.mLoadingDrawable = paramDrawable;
+      paramBundle.mFailedDrawable = paramDrawable;
+      paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
+      paramAppRuntime.putString("key_name", paramString3);
+      paramAppRuntime.putBoolean("key_double_bitmap", true);
+      paramBundle.mExtraInfo = paramAppRuntime;
+      paramBundle.mUseAutoScaleParams = false;
+      paramAppRuntime = URLDrawable.getDrawable(paramString2, paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("VasApngUtil", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
+      }
+      return paramAppRuntime;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("VasApngUtil", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    return bdzf.a(new StringBuilder().append(alof.aX).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
+  }
+  
+  public static URLDrawable b(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  {
+    return a(paramAppRuntime, paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, true, paramBundle);
   }
 }
 

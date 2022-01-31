@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akwd;
-import akwi;
-import akwl;
+import alas;
+import alax;
+import alba;
 
 public class SpriteBridge$2
   implements Runnable
 {
-  public SpriteBridge$2(akwi paramakwi, akwd paramakwd, akwl paramakwl) {}
+  public SpriteBridge$2(alax paramalax, alas paramalas, alba paramalba) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Akwd != null) && (this.jdField_a_of_type_Akwl != null))
+    if ((this.jdField_a_of_type_Alas != null) && (this.jdField_a_of_type_Alba != null))
     {
-      this.jdField_a_of_type_Akwd.a(this.jdField_a_of_type_Akwl.b, false);
-      this.jdField_a_of_type_Akwd.a(this.jdField_a_of_type_Akwl.a, false);
+      this.jdField_a_of_type_Alas.a(this.jdField_a_of_type_Alba.b, false);
+      this.jdField_a_of_type_Alas.a(this.jdField_a_of_type_Alba.a, false);
     }
   }
 }

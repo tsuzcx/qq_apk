@@ -1,100 +1,56 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import mqq.observer.BusinessObserver;
 
-public class uua
-  extends JobSegment<List<vhg>, List<vhg>>
+class uua
+  implements BusinessObserver
 {
-  utx a;
+  uua(utz paramutz, long paramLong, uub paramuub, String paramString, uuc paramuuc) {}
   
-  public uua(utx paramutx)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramutx;
-  }
-  
-  protected void a(JobContext paramJobContext, List<vhg> paramList)
-  {
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    if (this.a.jdField_a_of_type_Int == 5)
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    Object localObject;
+    uuc localuuc;
+    String str;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobLocalVideo", 2, "self node, check local video");
-      }
-      paramJobContext = (uro)urr.a(5);
-      localObject1 = ((uuq)QQStoryContext.a().getManager(251)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
-      if ((localObject1 == null) || (((utx)localObject1).b == null) || (((utx)localObject1).b.isEmpty())) {
-        break label410;
-      }
-      localObject1 = ((utx)localObject1).b.iterator();
-      while (((Iterator)localObject1).hasNext())
+      localObject = paramBundle.getByteArray("data");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        localObject2 = (vhg)((Iterator)localObject1).next();
-        localObject3 = paramJobContext.a(((vhg)localObject2).jdField_b_of_type_JavaLangString);
-        if (localObject3 != null)
+        localuuc = this.jdField_a_of_type_Uub.a((byte[])localObject);
+        if (localuuc != null)
         {
-          ((vhg)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
-          paramList.add(localObject2);
+          paramInt = localuuc.jdField_a_of_type_Int;
+          str = localuuc.jdField_a_of_type_JavaLangString;
+          if (paramInt == 0)
+          {
+            localuuc.a();
+            wxe.a("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s success take time:%d data length=%d", this.jdField_a_of_type_JavaLangString, Long.valueOf(l), Integer.valueOf(localObject.length));
+            wxj.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { str, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
+          }
         }
       }
     }
-    label410:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      localObject1 = paramJobContext.a(false);
-      int j = i;
-      if (localObject1 != null)
-      {
-        j = i;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
-            localObject3 = new vhg();
-            ((vhg)localObject3).jdField_a_of_type_Boolean = false;
-            ((vhg)localObject3).jdField_a_of_type_JavaLangString = ((StoryVideoItem)localObject2).mAttachedFeedId;
-            ((vhg)localObject3).jdField_b_of_type_JavaLangString = ((StoryVideoItem)localObject2).mVid;
-            ((vhg)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject2);
-            ((vhg)localObject3).jdField_b_of_type_Boolean = true;
-            paramList.add(localObject3);
-          }
-          j = 1;
-        }
-      }
-      if (j != 0)
-      {
-        localObject1 = paramList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (vhg)((Iterator)localObject1).next();
-          if (((vhg)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-            ((vhg)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramJobContext.a(((vhg)localObject2).jdField_b_of_type_JavaLangString);
-          }
-          if (((vhg)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-          {
-            notifyError(new ErrorMessage(940001, "should not be null"));
-            return;
-          }
-        }
-        Collections.sort(paramList, new uub(this));
-      }
-      if (paramList.isEmpty())
-      {
-        notifyError(new ErrorMessage(103, "nodeInfo not valid"));
-        return;
-      }
-      notifyResult(paramList);
+      this.jdField_a_of_type_Uuc.a(paramBoolean, paramBundle);
       return;
+      localuuc.a(paramInt, str);
+      wxe.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), str, Long.valueOf(l), Integer.valueOf(localObject.length) });
+      break;
+      wxe.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error. response is null", new Object[] { this.jdField_a_of_type_JavaLangString });
+      wxj.b("story_net", this.jdField_a_of_type_JavaLangString, 0, 940002, new String[] { "response is null", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
+      continue;
+      this.jdField_a_of_type_Uuc.a(-2, paramBundle);
+      wxe.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_Uub.a() + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      wxj.b("story_net", this.jdField_a_of_type_Uub.a(), 0, 940002, new String[] { "rsp data error", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
+      continue;
+      paramInt = paramBundle.getInt("data_error_code");
+      localObject = paramBundle.getString("data_error_msg");
+      this.jdField_a_of_type_Uuc.a(paramInt, paramBundle);
+      wxe.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_JavaLangString + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      wxj.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { localObject, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
     }
   }
 }

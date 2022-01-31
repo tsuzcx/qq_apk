@@ -1,32 +1,9 @@
-import com.tencent.sveffects.DpcSwitcher;
-
 public class bhmy
-  implements DpcSwitcher
 {
-  public float getBeatyRate()
-  {
-    return azfz.a();
-  }
-  
-  public boolean isBeautySwitchOpen()
-  {
-    return azfz.b();
-  }
-  
-  public boolean isDeNoiseSwitchOpen()
-  {
-    return azfz.e();
-  }
-  
-  public boolean isPortraitSwitchOpen()
-  {
-    return azgk.g();
-  }
-  
-  public boolean isSvafSwitchOpen()
-  {
-    return azfz.c();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

@@ -1,6 +1,15 @@
-public abstract interface utn
+public class utn
+  extends uli
 {
-  public abstract void a(boolean paramBoolean, utj paramutj);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

@@ -1,24 +1,13 @@
+import com.tencent.tavcut.TAVCut.Callback;
+
 class blkg
-  implements blki
+  implements TAVCut.Callback
 {
-  public int a()
-  {
-    return 960;
-  }
+  blkg(blkf paramblkf) {}
   
-  public int b()
+  public void onDone(int paramInt)
   {
-    return ((Integer)blkk.a(Integer.valueOf(1024), Integer.valueOf(2048))).intValue();
-  }
-  
-  public int c()
-  {
-    return ((Integer)blkk.a(Integer.valueOf(1080), Integer.valueOf(1920), Integer.valueOf(2560))).intValue();
-  }
-  
-  public int d()
-  {
-    return 100;
+    bljn.b("AEEditorProcessManager", "TAVCut init ret code = " + paramInt);
   }
 }
 

@@ -1,27 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class vwi
-  extends QQUIEventReceiver<vvy, uzc>
+class vwi
+  implements vwd
 {
-  public vwi(@NonNull vvy paramvvy)
-  {
-    super(paramvvy);
-  }
+  public vwd a;
   
-  public void a(@NonNull vvy paramvvy, @NonNull uzc paramuzc)
+  private vwi(vwg paramvwg) {}
+  
+  public boolean a(vwa paramvwa, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (paramuzc.a.isSuccess())
-    {
-      wsv.a(paramvvy.b, "receive user info event. %s.", paramuzc.toString());
-      paramvvy.i();
+    if (vwg.a(this.jdField_a_of_type_Vwg) != null) {
+      vwg.a(this.jdField_a_of_type_Vwg).c(vwg.a(this.jdField_a_of_type_Vwg));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzc.class;
+    if (this.jdField_a_of_type_Vwd != null) {
+      return this.jdField_a_of_type_Vwd.a(paramvwa, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

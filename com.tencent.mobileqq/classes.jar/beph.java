@@ -1,18 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.PublicMenuBar;
 
-public class beph
-  implements View.OnClickListener
+public abstract interface beph
 {
-  public beph(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
-      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
 }
 
 

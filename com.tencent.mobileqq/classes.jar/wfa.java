@@ -1,22 +1,25 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface wfa
+class wfa
+  extends SimpleJob<Object>
 {
-  public abstract void V_();
+  wfa(wez paramwez, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(CommentEntry paramCommentEntry);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void h_(int paramInt);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new wfc(this.a, this.a.c);
+    }
+    this.a.d = "";
+    wez.a(this.a);
+    return null;
+  }
 }
 
 

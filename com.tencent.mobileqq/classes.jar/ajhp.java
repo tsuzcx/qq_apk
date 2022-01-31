@@ -1,64 +1,25 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhp
-  extends ajhc
+class ajhp
+  implements View.OnClickListener
 {
-  public ajhp(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697882);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajhp(ajgb paramajgb) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbkv == null) {
-        this.jdField_a_of_type_Bbkv = new bbkv();
-      }
-      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.a.k();
       return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbkv != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    paramView = new Intent(ajgb.a(this.a), QRLoginMgrActivity.class);
+    paramView.putExtra("qrlogin_position", this.a.b);
+    paramView.putExtra("qrlogin_appid", this.a.a);
+    ajgb.a(this.a).startActivity(paramView);
   }
 }
 

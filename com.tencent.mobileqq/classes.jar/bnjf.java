@@ -1,53 +1,33 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.11.1;
+import mqq.os.MqqHandler;
 
-class bnjf
-  implements axrl
+public class bnjf
+  implements TVK_SDKMgr.InstallListener
 {
-  bnjf(bnje parambnje, bnmc parambnmc, axqz paramaxqz, PublishVideoEntry paramPublishVideoEntry, bnjh parambnjh) {}
+  public bnjf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bnmc != null) {
-      this.jdField_a_of_type_Bnmc.a(this.jdField_a_of_type_Axqz.a, this.jdField_a_of_type_Axqz.b);
-    }
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public void a(String arg1)
+  public void onInstalledFailed(int paramInt)
   {
-    synchronized (bnje.a(this.jdField_a_of_type_Bnje))
-    {
-      bnje.a(this.jdField_a_of_type_Bnje, true);
-      bnje.a(this.jdField_a_of_type_Bnje).notifyAll();
-      if (this.jdField_a_of_type_Bnmc != null) {
-        this.jdField_a_of_type_Bnmc.a();
-      }
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    this.a.a(alud.a(2131714418));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
     }
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public void onInstalledSuccessed()
   {
-    wsv.c("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = ", ???);
-    if (paramInt > 10000) {
-      synchronized (bnje.a(this.jdField_a_of_type_Bnje))
-      {
-        bnje.a(this.jdField_a_of_type_Bnje, true);
-        bnje.a(this.jdField_a_of_type_Bnje).notifyAll();
-        return;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isCancel)
-    {
-      this.jdField_a_of_type_Bnjh.c();
-      QLog.w("MergeEditVideo", 1, "mergeVideo cancel!");
-    }
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    this.a.a.post(new ShortVideoPlayActivity.11.1(this));
   }
 }
 

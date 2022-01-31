@@ -5,7 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azmj;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListRequset;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -43,7 +43,7 @@ public class AuthorizeConfig$2
       }
       Object localObject1 = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString("lastVersion", null);
       localObject4 = new mobileqq_mp.WebviewWhiteListRequset();
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ("2013 8.3.3".equals(str3)))
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ("2013 8.3.5".equals(str3)))
       {
         ((mobileqq_mp.WebviewWhiteListRequset)localObject4).version.set((String)localObject1);
         if (QLog.isColorLevel()) {
@@ -52,7 +52,7 @@ public class AuthorizeConfig$2
       }
       while (!QLog.isColorLevel())
       {
-        ((mobileqq_mp.WebviewWhiteListRequset)localObject4).qqversion.set("8.3.3");
+        ((mobileqq_mp.WebviewWhiteListRequset)localObject4).qqversion.set("8.3.5");
         ((mobileqq_mp.WebviewWhiteListRequset)localObject4).gziped.set(true);
         ((mobileqq_mp.WebviewWhiteListRequset)localObject4).implat.set(109);
         if (QLog.isColorLevel()) {
@@ -99,7 +99,7 @@ public class AuthorizeConfig$2
       if (((String)localObject4).length() > 0)
       {
         localObject2 = localObject3;
-        if ("2013 8.3.3".equals(str3))
+        if ("2013 8.3.5".equals(str3))
         {
           localObject2 = new Bundle();
           ((Bundle)localObject2).putString("If-Modified-Since", (String)localObject4);
@@ -133,7 +133,7 @@ public class AuthorizeConfig$2
             localObject2 = null;
             localObject3 = ndd.a((HttpResponse)localObject3);
             this.this$0.a((String)localObject3, (String)localObject2, "lastMod");
-            azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 1, 1, 0, "", "", "", "");
+            azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 1, 1, 0, "", "", "", "");
           }
         }
         catch (Exception localException2)
@@ -142,7 +142,7 @@ public class AuthorizeConfig$2
             QLog.d("AuthorizeConfig", 2, "update error: " + localException2);
           }
           this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 1, 1, 0, "", "", "", "");
+          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 1, 1, 0, "", "", "", "");
           return;
         }
         String str2 = localException2.getValue();
@@ -150,7 +150,7 @@ public class AuthorizeConfig$2
     } while (i != 304);
     this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
     this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 1, 1, 0, "", "", "", "");
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 1, 1, 0, "", "", "", "");
   }
 }
 

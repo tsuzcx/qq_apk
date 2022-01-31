@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import bdcb;
-import bjxj;
+import bdgk;
+import bkbq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -56,12 +56,12 @@ public class VideoArticleModule$2
         }
         localReqChannelPara.uint64_begin_collection_id.set(this.a.jdField_c_of_type_Long);
         localReqChannelPara.uint64_end_collection_id.set(this.a.jdField_d_of_type_Long);
-        localObject = bdcb.a();
+        localObject = bdgk.a();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localReqChannelPara.bytes_device_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
         }
         localReqChannelPara.uint32_update_times.set(this.a.jdField_c_of_type_Int);
-        localReqChannelPara.uint32_sim_type.set(bjxj.c());
+        localReqChannelPara.uint32_sim_type.set(bkbq.c());
         localReqChannelPara.uint32_network_type.set(pew.b());
         if (this.a.jdField_a_of_type_ArrayOfByte != null) {
           localReqChannelPara.bytes_business_info.set(ByteStringMicro.copyFrom(this.a.jdField_a_of_type_ArrayOfByte));

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adnw;
+import adsl;
 
 public class QQSettingMe$29$1
   implements Runnable
 {
-  public QQSettingMe$29$1(adnw paramadnw) {}
+  public QQSettingMe$29$1(adsl paramadsl) {}
   
   public void run()
   {

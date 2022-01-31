@@ -1,25 +1,14 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
 
-final class akrq
-  implements BusinessObserver
+public abstract interface akrq
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    try
-    {
-      paramInt = paramBundle.getInt("extra_result_code");
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
-    }
-  }
+  public abstract int a();
+  
+  public abstract akrw a(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(Activity paramActivity);
 }
 
 

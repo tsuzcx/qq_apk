@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahwt;
+import aibi;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 public class ChatHistoryTroopFileFragment$8$2
   implements Runnable
 {
-  public ChatHistoryTroopFileFragment$8$2(ahwt paramahwt) {}
+  public ChatHistoryTroopFileFragment$8$2(aibi paramaibi) {}
   
   public void run()
   {

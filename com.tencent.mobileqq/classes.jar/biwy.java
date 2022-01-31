@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class biwy
-  implements anxw
+  implements aofp
 {
-  public biwy(ReaderHomePageActivity paramReaderHomePageActivity, String paramString1, String paramString2, String paramString3) {}
+  public biwy(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public ColorNote getColorNote()
+  public void onColorNoteAnimFinish()
   {
-    return new anyc().d("https://qzonestyle.gtimg.cn/aoi/sola/20191105163912_ONRjyZUKh8.png").b(this.jdField_a_of_type_JavaLangString).c(this.b).a(16908289).a(this.c + "_PUPUReader").a();
+    this.a.superFinish();
   }
 }
 

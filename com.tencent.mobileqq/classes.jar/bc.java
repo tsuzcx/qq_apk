@@ -4,7 +4,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class bc
-  extends aqnl
+  extends aqru
 {
   public bc(LiteActivity paramLiteActivity) {}
   
@@ -24,11 +24,11 @@ public class bc
       return;
       if (paramBoolean)
       {
-        arni.a(paramLong2);
+        arrr.a(paramLong2);
         return;
       }
     } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    arni.a(paramLong2, paramInt2, paramString2);
+    arrr.a(paramLong2, paramInt2, paramString2);
   }
 }
 

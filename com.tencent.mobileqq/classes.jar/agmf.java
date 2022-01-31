@@ -1,12 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
-class agmf
-  implements DialogInterface.OnClickListener
+public class agmf
+  extends aglx
 {
-  agmf(agmb paramagmb) {}
+  public agmf(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
+  {
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
+      this.i = 0;
+    }
+    this.j = 2130846771;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Agmp.b.setVisibility(0);
+    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agmp.b.setText("QQ视频通话红包");
+    return false;
+  }
+  
+  public void i()
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    {
+      this.jdField_a_of_type_Agmp.d.setVisibility(0);
+      return;
+    }
+    super.i();
+  }
 }
 
 

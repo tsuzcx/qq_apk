@@ -1,59 +1,143 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.AlphaClickableButton;
+import com.tencent.widget.AlphaClickableTextView;
 
 public class amnm
+  implements LayoutInflater.Factory2
 {
-  private static int a(int paramInt)
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843087, 16843088, 16844078, 2131034532, 2131034829, 2131034966, 2131034964 };
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  
+  public amnm(Activity paramActivity)
   {
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 0;
-    }
-    return 2;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  private View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramInt = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
+    TextView localTextView = null;
+    if (paramString.equals("TextView")) {
+      localTextView = new TextView(paramContext, paramAttributeSet);
     }
-    paramQQAppInterface = (amnf)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramString1, paramString2, paramInt);
-    }
-  }
-  
-  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
-    }
-    paramQQAppInterface = (amnf)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
-    }
-  }
-  
-  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
-  {
-    try
+    do
     {
-      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
-      return;
-    }
-    catch (NumberFormatException paramQQAppInterface)
+      return localTextView;
+      if (paramString.equals("Button")) {
+        return new Button(paramContext, paramAttributeSet);
+      }
+      if (paramString.endsWith("DragTextView")) {
+        return new DragTextView(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchItem")) {
+        return new FormSwitchItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSimpleItem")) {
+        return new FormSimpleItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchSimpleItem")) {
+        return new FormSwitchSimpleItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormMultiLineSwitchItem")) {
+        return new FormMultiLineSwitchItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.widget.AlphaClickableTextView")) {
+        return new AlphaClickableTextView(paramContext, paramAttributeSet);
+      }
+    } while (!paramString.equals("com.tencent.widget.AlphaClickableButton"));
+    return new AlphaClickableButton(paramContext, paramAttributeSet);
+  }
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    paramView = a(paramString, paramContext, paramAttributeSet);
+    if (paramView != null)
     {
-      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
+      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
+      int i = 0;
+      if (i < jdField_a_of_type_ArrayOfInt.length)
+      {
+        int j = paramString.getResourceId(i, 0);
+        if (j == 0) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          paramAttributeSet = paramContext.getString(j);
+          switch (jdField_a_of_type_ArrayOfInt[i])
+          {
+          default: 
+            break;
+          case 16843087: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setText(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setText(paramAttributeSet);
+            } else if ((paramView instanceof FormSwitchItem)) {
+              ((FormSwitchItem)paramView).setText(paramAttributeSet);
+            }
+            break;
+          case 16843088: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setHint(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setHint(paramAttributeSet);
+            }
+            break;
+          case 16844078: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setContentDescription(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setContentDescription(paramAttributeSet);
+            }
+            break;
+          case 2131034532: 
+            if ((paramView instanceof FormSimpleItem)) {
+              ((FormSimpleItem)paramView).setLeftText(paramAttributeSet);
+            }
+            break;
+          case 2131034829: 
+            if ((paramView instanceof FormSimpleItem)) {
+              ((FormSimpleItem)paramView).setRightText(paramAttributeSet);
+            }
+            break;
+          case 2131034966: 
+            if ((paramView instanceof FormSwitchItem)) {
+              ((FormSwitchItem)paramView).setText(paramAttributeSet);
+            }
+            break;
+          case 2131034964: 
+            if ((paramView instanceof FormMultiLineSwitchItem)) {
+              ((FormMultiLineSwitchItem)paramView).setSecendLineText(paramAttributeSet);
+            }
+            break;
+          }
+        }
+      }
+      paramString.recycle();
     }
+    return paramView;
+  }
+  
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnm
  * JD-Core Version:    0.7.0.1
  */

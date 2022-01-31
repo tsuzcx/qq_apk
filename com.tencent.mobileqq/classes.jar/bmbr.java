@@ -1,27 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.app.Activity;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
 public class bmbr
-  extends AnimatorListenerAdapter
+  implements bmvu
 {
-  public bmbr(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbr(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
-    }
-    this.a.jdField_a_of_type_Bmcc.d = 1;
+    wxe.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
+    ((blvi)blqr.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    wxe.b("StaticStickerProviderView", "用户点击下载：" + paramString);
+    wxk.b("0X80075DD");
+    if (!((bmru)uwa.a(39)).a(paramString, true)) {
+      wxe.d("StaticStickerProviderView", "用户点击下载启动失败");
     }
+  }
+  
+  public void b(String paramString)
+  {
+    wxe.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
   }
 }
 

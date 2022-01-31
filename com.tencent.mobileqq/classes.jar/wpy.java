@@ -1,58 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMultiRcmdDisLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import java.util.List;
 
-class wpy
-  extends nac
+public class wpy
+  extends umf<wpr, wje>
 {
-  wpy(wpx paramwpx) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public wpy(wpr paramwpr)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.home:FeedSegment", 2, "ReqMultiRcmdDisLike,onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      return;
-    }
-    try
-    {
-      paramBundle = new qqstory_service.RspMultiRcmdDisLike();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = ((qqstory_struct.ErrorInfo)paramBundle.result.get()).error_code.get();
-      if (paramInt != 0) {
-        break label255;
-      }
-      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
-      paramArrayOfByte = (wma)this.a.jdField_a_of_type_Wps.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
-      paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      if (paramArrayOfByte.a().isEmpty())
-      {
-        this.a.jdField_a_of_type_Wps.a.a().remove(paramArrayOfByte);
-        paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
-        Bosses.get().postJob(new wpz(this, "Q.qqstory.home:FeedSegment", paramArrayOfByte));
-        wps.a(this.a.jdField_a_of_type_Wps);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, error protobuf content" + paramArrayOfByte.getStackTrace());
-      return;
-    }
-    wps.a(this.a.jdField_a_of_type_Wps, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
-    return;
-    label255:
-    QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, errorcode:" + paramInt);
+    super(paramwpr);
   }
+  
+  public void a(@NonNull wpr paramwpr, @NonNull wje paramwje)
+  {
+    Object localObject = paramwpr.a(paramwje.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramwje.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof wqp))
+    {
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramwje.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (wqp)localObject;
+    if (paramwje.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ((wqp)localObject).c(paramwje.jdField_a_of_type_JavaUtilList, false);
+      ((VideoListFeedItem)((wqp)localObject).a).updateVideoInfo(paramwje.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramwje.jdField_a_of_type_JavaLangString, Integer.valueOf(((wqp)localObject).a().size()));
+    }
+    wpr.a(paramwpr).a((wqp)localObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wje.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull wje paramwje) {}
 }
 
 

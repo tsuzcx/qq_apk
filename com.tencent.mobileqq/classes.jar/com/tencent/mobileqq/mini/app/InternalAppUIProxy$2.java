@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import alpo;
+import alud;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -22,7 +22,7 @@ class InternalAppUIProxy$2
       QQToast.a(localBaseApplication, 1, str, 1).a();
       InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.2.1(this), 1000L);
       return;
-      str = alpo.a(2131706186);
+      str = alud.a(2131706198);
     }
   }
 }

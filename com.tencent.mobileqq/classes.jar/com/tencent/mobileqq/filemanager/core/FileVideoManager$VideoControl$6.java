@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqtf;
+import aqxo;
 
 public class FileVideoManager$VideoControl$6
   implements Runnable
 {
-  public FileVideoManager$VideoControl$6(aqtf paramaqtf) {}
+  public FileVideoManager$VideoControl$6(aqxo paramaqxo) {}
   
   public void run()
   {
-    aqtf.d(this.this$0);
+    aqxo.d(this.this$0);
   }
 }
 

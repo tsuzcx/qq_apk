@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aimj;
+import aiqy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -15,14 +15,14 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity>
   implements MediaScanner.OnMediaScannerListener
 {
   public K mActivity;
-  public aimj mPhotoCommonData;
+  public aiqy mPhotoCommonData;
   protected PhotoListBaseData mPhotoListData;
   protected PhotoListLogic.IonSelectionChangeListener mSelectionListener = null;
   
   protected PhotoListLogic(K paramK)
   {
     this.mActivity = paramK;
-    this.mPhotoCommonData = aimj.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mPhotoCommonData = aiqy.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
     paramK.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
     this.mPhotoCommonData.addHoldNember();
     this.mPhotoListData = new PhotoListBaseData();

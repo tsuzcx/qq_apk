@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-class avde
-  implements DialogInterface.OnDismissListener
+public final class avde
+  implements Parcelable.Creator<VideoData>
 {
-  avde(avcw paramavcw) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public VideoData a(Parcel paramParcel)
   {
-    this.a.a = false;
+    return new VideoData(paramParcel);
+  }
+  
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
   }
 }
 

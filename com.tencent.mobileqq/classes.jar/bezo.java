@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import mqq.app.QQPermissionCallback;
+import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bezo
-  implements QQPermissionCallback
+final class bezo
+  implements amfy
 {
-  bezo(bezn parambezn) {}
+  bezo(QQAppInterface paramQQAppInterface, amfx paramamfx) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    bdcd.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amfx);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
-  }
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 

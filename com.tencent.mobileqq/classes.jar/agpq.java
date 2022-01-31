@@ -1,49 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class agpq
-  implements BusinessObserver
+class agpq
+  implements DialogInterface.OnClickListener
 {
-  agpq(agot paramagot) {}
+  agpq(agpp paramagpp, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
+    ((alrk)this.jdField_a_of_type_Agpp.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Agpp.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = syb.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
-      }
-      catch (Exception paramBundle) {}
-    }
+    this.jdField_a_of_type_Agpp.a.I();
   }
 }
 

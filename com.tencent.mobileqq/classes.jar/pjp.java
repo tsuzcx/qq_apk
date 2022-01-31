@@ -17,7 +17,7 @@ public class pjp
       localJSONObject2.put("article_large_imge_url", localObject);
       localJSONObject1.put("id_article_large_imge", localJSONObject2);
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alpo.a(2131713239));
+      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713251));
       localJSONObject1.put("id_gallery_cnt", localObject);
       localObject = new JSONObject();
       ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");

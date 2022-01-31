@@ -1,18 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForVideo;
 
-public class aggk
-  implements DialogInterface.OnClickListener
+class aggk
+  implements View.OnClickListener
 {
-  public aggk(PhotoListPanel paramPhotoListPanel) {}
+  aggk(aggj paramaggj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
+    if (!aggj.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((!lnz.c()) || (!lnz.d()));
+        paramView = (aeqz)aepi.a(paramView);
+      } while (paramView == null);
+      paramView = (MessageForVideo)paramView.a;
+      aggj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    } while (paramView.istroop != 1044);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,10 +1,29 @@
-public abstract interface aksw
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
+import com.tencent.widget.HorizontalListView;
+
+public class aksw
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  public aksw(CmGameDebugView paramCmGameDebugView) {}
   
-  public abstract aknh a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (CmGameDebugView.a(this.a))
+    {
+      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
+      CmGameDebugView.a(this.a, false);
+    }
+    if (CmGameDebugView.b(this.a)) {
+      CmGameDebugView.b(this.a, 0);
+    }
+  }
   
-  public abstract void a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,40 +1,19 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 public class xem
-  extends xek<xel>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369802);
+  public int a;
+  public xek a;
+  public int b;
   
-  xem(xel paramxel, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  private xem(xeo paramxeo)
   {
-    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_Xek = xeo.a(paramxeo);
+    this.jdField_a_of_type_Int = xeo.a(paramxeo);
+    this.b = xeo.b(paramxeo);
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public String toString()
   {
-    return LayoutInflater.from(paramContext).inflate(2131561525, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(xel paramxel, int paramInt)
-  {
-    super.a(paramxel, paramInt);
-    if (paramxel != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramxel.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Xek + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
   }
 }
 

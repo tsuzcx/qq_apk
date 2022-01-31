@@ -16,7 +16,7 @@ import java.util.Random;
 import mqq.app.MobileQQ;
 
 public abstract class liv
-  extends alko
+  extends alpd
 {
   static long jdField_a_of_type_Long;
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
@@ -68,7 +68,7 @@ public abstract class liv
       ((AudioTransClientTransInfo.InfoReqBody)localObject1).msg_create_session_req.set((MessageMicro)localObject2);
       localObject2 = this.jdField_a_of_type_Lit;
       localToServiceMsg.putWupBuffer(lit.a(localInfoHead.toByteArray(), ((AudioTransClientTransInfo.InfoReqBody)localObject1).toByteArray()));
-      boolean bool = bdee.g(this.mApp.getApplication().getApplicationContext());
+      boolean bool = bdin.g(this.mApp.getApplication().getApplicationContext());
       if (bool) {
         sendPbReq(localToServiceMsg);
       }
@@ -93,7 +93,7 @@ public abstract class liv
   
   abstract boolean c();
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
-public final class acgt
-  implements DialogInterface.OnCancelListener
+public class acgt
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public acgt(acgz paramacgz, acgy paramacgy) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Acgz.a) {
-      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_Acgy != null) {
-      this.jdField_a_of_type_Acgy.a();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public acgt(AuthDevUgActivity paramAuthDevUgActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acgt
  * JD-Core Version:    0.7.0.1
  */

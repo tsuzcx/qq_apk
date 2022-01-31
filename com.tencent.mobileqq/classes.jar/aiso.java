@@ -1,24 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiso
-  implements View.OnClickListener
+class aiso
+  implements DialogInterface.OnClickListener
 {
-  public aiso(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  aiso(aisn paramaisn) {}
   
-  public void onClick(View paramView)
-  {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      ajaf.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

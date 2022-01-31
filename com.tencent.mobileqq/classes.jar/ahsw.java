@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
-class ahsw
-  implements QQPermissionCallback
+public class ahsw
+  extends View.AccessibilityDelegate
 {
-  ahsw(ahsh paramahsh) {}
+  public ahsw(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
-    bdcd.a(ahsh.a(this.a), new ahsx(this));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    ahsh.a(this.a, ahsh.b(this.a));
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
+    }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

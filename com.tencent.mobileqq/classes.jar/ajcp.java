@@ -1,29 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
-class ajcp
-  implements View.OnClickListener
+public class ajcp
+  implements ajcs
 {
-  ajcp(ajbm paramajbm) {}
+  public ajcp(DoodleLayout paramDoodleLayout) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ajbm.a(this.a).app.getPreferences();
-    amlp.a().a();
-    if (amlp.a().a() == 4)
-    {
-      amlp.a().a(ajbm.a(this.a));
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
     }
-    for (;;)
-    {
-      this.a.a(-1, null);
-      return;
-      UpgradeDetailActivity.a(ajbm.a(this.a), amlp.a().a(), true, true, true);
-      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
     }
   }
 }

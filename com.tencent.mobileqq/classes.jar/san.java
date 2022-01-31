@@ -14,7 +14,7 @@ class san
 {
   private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363397);
   private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363411);
-  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364578);
+  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364580);
   
   public san(sal paramsal, View paramView, BaseData paramBaseData)
   {
@@ -36,7 +36,7 @@ class san
       if (paramBaseData2.s != 14) {
         break label123;
       }
-      this.c.getLayoutParams().height = bcwh.a(this.c.getContext(), 6.0F);
+      this.c.getLayoutParams().height = bdaq.a(this.c.getContext(), 6.0F);
       label78:
       paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
       if (paramBaseData2.s != 14) {
@@ -51,13 +51,13 @@ class san
       this.d.setVisibility(8);
       break;
       label123:
-      this.c.getLayoutParams().height = bcwh.a(this.c.getContext(), 10.0F);
+      this.c.getLayoutParams().height = bdaq.a(this.c.getContext(), 10.0F);
       break label78;
       label148:
       this.c.setVisibility(8);
       break label78;
       label160:
-      i = bcwh.a(this.b.getContext(), 12.0F);
+      i = bdaq.a(this.b.getContext(), 12.0F);
     }
   }
   

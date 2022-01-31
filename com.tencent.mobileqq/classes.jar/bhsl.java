@@ -1,63 +1,43 @@
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bhsl
+  extends MqqHandler
 {
-  private static ArrayList<bhsl> a;
-  public int a;
-  public bhsm a;
-  public ExpandableListConnector.GroupMetadata a;
+  private WeakReference<Handler.Callback> a;
   
-  static
+  public bhsl(Handler.Callback paramCallback)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    this.a = new WeakReference(paramCallback);
   }
   
-  private static bhsl a()
+  public bhsl(Looper paramLooper, Handler.Callback paramCallback)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localbhsl = (bhsl)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbhsl.b();
-        return localbhsl;
-      }
-      bhsl localbhsl = new bhsl();
-      return localbhsl;
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public bhsl(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
+  {
+    super(paramLooper, null, paramBoolean);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
   }
   
-  public static bhsl a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
+  public String toString()
   {
-    bhsl localbhsl = a();
-    localbhsl.jdField_a_of_type_Bhsm = bhsm.a(paramInt2, paramInt3, paramInt4, paramInt1);
-    localbhsl.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
-    localbhsl.jdField_a_of_type_Int = paramInt5;
-    return localbhsl;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Bhsm = null;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

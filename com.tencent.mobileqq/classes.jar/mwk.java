@@ -94,48 +94,48 @@ public class mwk
       return paramResources;
       if (paramBoolean)
       {
-        paramResources = mtv.a(paramResources, 2130841693, false);
+        paramResources = mtv.a(paramResources, 2130841706, false);
       }
       else
       {
-        paramResources = mwj.a(paramResources, 2130841645, 2131165908);
+        paramResources = mwj.a(paramResources, 2130841658, 2131165908);
         continue;
         if (paramBoolean)
         {
-          paramResources = mtv.a(paramResources, 2130841692, false);
+          paramResources = mtv.a(paramResources, 2130841705, false);
         }
         else
         {
-          paramResources = mwj.a(paramResources, 2130841644, 2131165908);
+          paramResources = mwj.a(paramResources, 2130841657, 2131165908);
           continue;
           if (paramBoolean)
           {
-            paramResources = mtv.a(paramResources, 2130841643);
+            paramResources = mtv.a(paramResources, 2130841656);
           }
           else
           {
-            paramResources = mwj.a(paramResources, 2130841912, 2131165945);
+            paramResources = mwj.a(paramResources, 2130841925, 2131165945);
             continue;
             if (paramBoolean)
             {
-              paramResources = mtv.a(paramResources, 2130841647);
+              paramResources = mtv.a(paramResources, 2130841660);
             }
             else
             {
-              paramResources = mwj.a(paramResources, 2130841919, 2131165945);
+              paramResources = mwj.a(paramResources, 2130841932, 2131165945);
               continue;
               if (paramBoolean)
               {
-                paramResources = mtv.a(paramResources, 2130841646);
+                paramResources = mtv.a(paramResources, 2130841659);
               }
               else
               {
-                paramResources = mwj.a(paramResources, 2130841914, 2131165945);
+                paramResources = mwj.a(paramResources, 2130841927, 2131165945);
                 continue;
                 if (paramBoolean) {
-                  paramResources = mtv.a(paramResources, 2130841692, false);
+                  paramResources = mtv.a(paramResources, 2130841705, false);
                 } else {
-                  paramResources = mwj.a(paramResources, 2130841917, 2131165945);
+                  paramResources = mwj.a(paramResources, 2130841930, 2131165945);
                 }
               }
             }
@@ -239,7 +239,7 @@ public class mwk
         if (QLog.isColorLevel()) {
           QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1D at: " + System.currentTimeMillis());
         }
-        azmj.b(null, "CliOper", "", "", "0X8008D1D", "0X8008D1D", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X8008D1D", "0X8008D1D", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -274,13 +274,13 @@ public class mwk
         {
           return bool2;
           SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramVideoAppInterface.getApp());
-          bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695454), true);
+          bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695456), true);
           String str = paramVideoAppInterface.getCurrentAccountUin();
           if (str != null) {
-            bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695454) + str, true);
+            bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695456) + str, true);
           }
           bool2 = bool1;
-        } while (bdaz.a() == 0);
+        } while (bdfi.a() == 0);
         bool2 = bool1;
       } while (!bool1);
       bool2 = bool1;
@@ -318,11 +318,11 @@ public class mwk
                 String str = paramVideoAppInterface.getCurrentAccountUin();
                 bool1 = bool2;
                 if (str != null) {
-                  bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695453) + str, true);
+                  bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131695455) + str, true);
                 }
               }
               bool2 = bool1;
-            } while (bdaz.a() == 0);
+            } while (bdfi.a() == 0);
             bool2 = bool1;
           } while (!bool1);
           bool2 = bool1;
@@ -509,8 +509,8 @@ public class mwk
         if (!TextUtils.isEmpty(((lid)localObject2).r)) {
           ((mwq)localObject3).a(((lid)localObject2).r);
         }
-        localObject2 = (bhpy)bhql.a((Context)localObject1, null);
-        ((bhpy)localObject2).a(2131696084);
+        localObject2 = (bhuf)bhus.a((Context)localObject1, null);
+        ((bhuf)localObject2).a(2131696086);
         ListView localListView = new ListView((Context)localObject1);
         if (this.jdField_a_of_type_Mwo == null) {
           this.jdField_a_of_type_Mwo = new mwo((Context)localObject1, (mwq)localObject3);
@@ -523,12 +523,12 @@ public class mwk
           if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession != null) {
             this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.b(l);
           }
-          localListView.setOnItemClickListener(new mwl(this, localButton, l, (bhpy)localObject2));
-          ((bhpy)localObject2).a(localListView);
-          ((bhpy)localObject2).c(2131690648);
-          ((bhpy)localObject2).a(new mwm(this));
-          ((bhpy)localObject2).setOnShowListener(new mwn(this));
-          ((bhpy)localObject2).show();
+          localListView.setOnItemClickListener(new mwl(this, localButton, l, (bhuf)localObject2));
+          ((bhuf)localObject2).a(localListView);
+          ((bhuf)localObject2).c(2131690648);
+          ((bhuf)localObject2).a(new mwm(this));
+          ((bhuf)localObject2).setOnShowListener(new mwn(this));
+          ((bhuf)localObject2).show();
           return;
           this.jdField_a_of_type_Mwo.a((Context)localObject1, (mwq)localObject3);
         }
@@ -740,7 +740,7 @@ public class mwk
           paramInt1 = paramInt2;
           break label205;
         }
-        bdaz.a(paramInt1, paramInt2, paramOnCompletionListener);
+        bdfi.a(paramInt1, paramInt2, paramOnCompletionListener);
       }
     }
     return false;
@@ -788,7 +788,7 @@ public class mwk
             }
           }
         }
-        bdaz.a(paramInt1, paramInt2, paramOnCompletionListener);
+        bdfi.a(paramInt1, paramInt2, paramOnCompletionListener);
       }
     }
     catch (Exception paramVideoAppInterface)
@@ -861,7 +861,7 @@ public class mwk
       this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.c(paramLong);
       return;
     }
-    bdaz.a();
+    bdfi.a();
   }
   
   public void b(Button paramButton)
@@ -923,7 +923,7 @@ public class mwk
           }
           else
           {
-            bdaz.a(paramInt1, paramInt2, paramOnCompletionListener);
+            bdfi.a(paramInt1, paramInt2, paramOnCompletionListener);
             continue;
           }
         }

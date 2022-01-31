@@ -1,81 +1,62 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.util.StateSet;
-import android.view.MotionEvent;
-import android.view.View;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class bejo
-  extends bemz
+  implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bejp jdField_a_of_type_Bejp;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final bejp jdField_a_of_type_Bejp;
   private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public bejo(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    super(null, 0);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(jdField_a_of_type_ArrayOfInt, paramDrawable2);
-    localStateListDrawable.addState(StateSet.WILD_CARD, paramDrawable1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, paramDrawable2.getBounds().right, paramDrawable2.getBounds().bottom);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
-    paramView.invalidate();
-  }
-  
-  public void a(bejp parambejp)
+  public bejo(bejp parambejp)
   {
     this.jdField_a_of_type_Bejp = parambejp;
+    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
   }
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public boolean a()
+  public void a(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    int i;
+    this.b = false;
     do
     {
-      return false;
-      i = paramMotionEvent.getAction();
-    } while (i == 2);
-    if (i == 0) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
-    }
-    for (;;)
-    {
-      if ((i == 1) && (this.jdField_a_of_type_Bejp != null)) {
-        this.jdField_a_of_type_Bejp.a(this);
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Bejp.a(paramBundle))
+        {
+        }
       }
-      paramView.invalidate();
-      return true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-  }
-  
-  public void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
-    paramView.invalidate();
-  }
-  
-  public Drawable getDrawable()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

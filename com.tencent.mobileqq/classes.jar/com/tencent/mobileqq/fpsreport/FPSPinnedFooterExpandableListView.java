@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fpsreport;
 
-import abrb;
+import abvq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import bdeq;
+import bdiz;
 import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class FPSPinnedFooterExpandableListView
   extends PinnedFooterExpandableListView
 {
   private long jdField_a_of_type_Long;
-  private abrb jdField_a_of_type_Abrb;
+  private abvq jdField_a_of_type_Abvq;
   private String jdField_a_of_type_JavaLangString;
   private boolean b;
   
@@ -34,8 +34,8 @@ public class FPSPinnedFooterExpandableListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Abrb != null) {
-      this.jdField_a_of_type_Abrb.b();
+    if (this.jdField_a_of_type_Abvq != null) {
+      this.jdField_a_of_type_Abvq.b();
     }
   }
   
@@ -45,23 +45,23 @@ public class FPSPinnedFooterExpandableListView
     if (this.b)
     {
       this.b = false;
-      bdeq.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      bdiz.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Abrb != null) {
-      this.jdField_a_of_type_Abrb.a(paramInt);
+    if (this.jdField_a_of_type_Abvq != null) {
+      this.jdField_a_of_type_Abvq.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Abrb = new abrb();
-    this.jdField_a_of_type_Abrb.a(paramString);
+    this.jdField_a_of_type_Abvq = new abvq();
+    this.jdField_a_of_type_Abvq.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   

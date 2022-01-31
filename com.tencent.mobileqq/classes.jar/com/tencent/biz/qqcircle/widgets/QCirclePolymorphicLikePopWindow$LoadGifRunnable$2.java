@@ -7,11 +7,11 @@ import java.lang.ref.WeakReference;
 class QCirclePolymorphicLikePopWindow$LoadGifRunnable$2
   implements Runnable
 {
-  QCirclePolymorphicLikePopWindow$LoadGifRunnable$2(QCirclePolymorphicLikePopWindow.LoadGifRunnable paramLoadGifRunnable, QQAnimationDrawable paramQQAnimationDrawable, AnimationView paramAnimationView) {}
+  QCirclePolymorphicLikePopWindow$LoadGifRunnable$2(QCirclePolymorphicLikePopWindow.LoadGifRunnable paramLoadGifRunnable, AnimationView paramAnimationView, QQAnimationDrawable paramQQAnimationDrawable) {}
   
   public void run()
   {
-    if ((QCirclePolymorphicLikePopWindow.LoadGifRunnable.a(this.this$0).get() != null) && (((QCirclePolymorphicLikePopWindow)QCirclePolymorphicLikePopWindow.LoadGifRunnable.a(this.this$0).get()).isShowing()))
+    if ((QCirclePolymorphicLikePopWindow.LoadGifRunnable.a(this.this$0).get() != null) && (((QCirclePolymorphicLikePopWindow)QCirclePolymorphicLikePopWindow.LoadGifRunnable.a(this.this$0).get()).isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView != null))
     {
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
       this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);

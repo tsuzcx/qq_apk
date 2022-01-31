@@ -1,18 +1,47 @@
+import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.view.View.OnKeyListener;
 
-public class bbyi
-  implements bbyn
+class bbyi
+  implements View.OnKeyListener
 {
-  public bbyi(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  private bbyi(bbyg parambbyg) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    paramView = this.a.jdField_a_of_type_Bbym.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-    bdaj.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+    Activity localActivity = this.a.a();
+    if (localActivity != null)
+    {
+      this.a.a().finish();
+      localActivity.overridePendingTransition(2130772036, 2130772234);
+    }
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+      switch (paramKeyEvent.getAction())
+      {
+      case 0: 
+      default: 
+        break;
+      case 1: 
+        bool1 = bool2;
+      }
+    } while (paramKeyEvent.isCanceled());
+    a();
+    return true;
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bghl;
-import bghv;
-import bgkd;
-import bgkk;
+import bgls;
+import bgmc;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
 class EmbeddedVideoJsPlugin$3
-  implements bghv<Void>
+  implements bgmc<Void>
 {
-  EmbeddedVideoJsPlugin$3(EmbeddedVideoJsPlugin paramEmbeddedVideoJsPlugin, bgkd parambgkd) {}
+  EmbeddedVideoJsPlugin$3(EmbeddedVideoJsPlugin paramEmbeddedVideoJsPlugin, bgok parambgok) {}
   
-  public Void perform(bghl parambghl)
+  public Void perform(bgls parambgls)
   {
-    parambghl = parambghl.a();
-    if (!(parambghl instanceof AppBrandPageContainer))
+    parambgls = parambgls.a();
+    if (!(parambgls instanceof AppBrandPageContainer))
     {
       QMLog.d("Action", "Page is invalid");
       return null;
     }
-    parambghl = ((AppBrandPageContainer)parambghl).a();
-    if (parambghl != null)
+    parambgls = ((AppBrandPageContainer)parambgls).a();
+    if (parambgls != null)
     {
-      bgkk.a(new EmbeddedVideoJsPlugin.3.1(this, parambghl));
+      bgor.a(new EmbeddedVideoJsPlugin.3.1(this, parambgls));
       return null;
     }
     this.val$req.b();

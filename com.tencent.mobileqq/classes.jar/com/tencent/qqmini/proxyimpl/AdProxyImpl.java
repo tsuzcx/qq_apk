@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aaji;
-import aajj;
-import aajk;
-import aano;
+import aanx;
+import aany;
+import aanz;
+import aasd;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,7 +38,7 @@ public class AdProxyImpl
   private final String TAG = "AdProxyImpl";
   private GdtAppReceiver mGgtAppReceiver;
   
-  private aajj createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
+  private aany createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
   {
     QLog.i("AdProxyImpl", 1, "createBannerAdView width = " + paramInt1 + ", height = " + paramInt2);
     if (paramAdInfo == null) {
@@ -47,14 +47,14 @@ public class AdProxyImpl
     try
     {
       QLog.i("AdProxyImpl", 1, "createBannerAd");
-      aaji localaaji = new aaji();
-      localaaji.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
-      localaaji.jdField_a_of_type_Int = 0;
-      localaaji.b = paramInt1;
-      localaaji.c = paramInt2;
-      paramActivity = aajk.a(localaaji);
+      aanx localaanx = new aanx();
+      localaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
+      localaanx.jdField_a_of_type_Int = 0;
+      localaanx.b = paramInt1;
+      localaanx.c = paramInt2;
+      paramActivity = aanz.a(localaanx);
       if (paramActivity != null) {
-        localaaji.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
+        localaanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
       } else {
         QLog.e("AdProxyImpl", 1, "build Ad error");
       }
@@ -116,7 +116,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -156,7 +156,7 @@ public class AdProxyImpl
     try
     {
       paramString = new JSONObject(paramString);
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString));
       if (this.mGgtAppReceiver == null)
       {
         this.mGgtAppReceiver = new GdtAppReceiver();

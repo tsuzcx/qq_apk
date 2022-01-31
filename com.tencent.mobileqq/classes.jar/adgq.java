@@ -1,67 +1,21 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.MultiImageTextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.database.DataSetObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class adgq
-  implements CompoundButton.OnCheckedChangeListener
+  extends DataSetObserver
 {
-  public adgq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adgq(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onChanged()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = ndd.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    if (i == 0)
+    TextView localTextView = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
+    for (int i = 0;; i = 8)
     {
-      QQToast.a(this.a.getActivity(), 1, 2131696588, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
-      paramCompoundButton = this.a;
-      if (!paramBoolean) {}
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
-        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
-        return;
-      }
-    }
-    if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
-    {
-      QQToast.a(this.a.getActivity(), 1, 2131698639, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
-      paramCompoundButton = this.a;
-      if (!paramBoolean) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
-        return;
-      }
-    }
-    NotifyPushSettingActivity.a(this.a, paramBoolean);
-    if (paramBoolean)
-    {
-      paramCompoundButton = alpo.a(2131708025) + adhm.a(3600000L);
-      NotifyPushSettingActivity.a(this.a).setRightText(paramCompoundButton);
-      NotifyPushSettingActivity.a(this.a).set(true);
-      long l = NetConnInfoCenter.getServerTime();
-      ((alkv)this.a.app.a(2)).b((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-      azmj.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
+      localTextView.setVisibility(i);
       return;
     }
-    paramCompoundButton = NotifyPushSettingActivity.a(this.a).a().getText().toString();
-    NotifyPushSettingActivity.a(this.a).a().setText("");
-    NotifyPushSettingActivity.a(this.a).set(true);
-    ((alkv)this.a.app.a(2)).b(0, paramCompoundButton, "not_disturb_from_notify_push_setting_activity");
-    azmj.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
   }
 }
 

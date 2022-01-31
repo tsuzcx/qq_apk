@@ -1,68 +1,27 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class apge
-  extends BitmapDrawable
+class apge
+  implements DialogInterface.OnCancelListener
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
-  private int c;
+  apge(apgd paramapgd) {}
   
-  public apge(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
-    super.setGravity(17);
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.c >>> 24 != 0)
+    if (apgd.a(this.a).equals("checked corrupt"))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
+      QLog.d(apgd.a(), 1, "dialog cancel");
     }
-    super.draw(paramCanvas);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    if (this.b > 0) {
-      return this.b;
-    }
-    return super.getIntrinsicHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
-    }
-    return super.getIntrinsicWidth();
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    }
-    super.setAlpha(paramInt);
-  }
-  
-  public void setTargetDensity(int paramInt)
-  {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
-    super.setTargetDensity(paramInt);
+    this.a.a();
   }
 }
 

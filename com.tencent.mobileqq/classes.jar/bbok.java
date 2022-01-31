@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.ArrayList;
 
-class bbok
-  implements DialogInterface.OnClickListener
+public abstract interface bbok
 {
-  bbok(bboe parambboe, bbnr parambbnr) {}
+  public abstract ArrayList<ResultRecord> a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcil.a(this.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bboe.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bbnr);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a();
+  
+  public abstract ArrayList<String> b();
 }
 
 

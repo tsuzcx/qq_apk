@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import bgjd;
-import bgje;
-import bgkd;
+import bgnk;
+import bgnl;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class SettingsJsPlugin$1
-  implements bgje
+  implements bgnl
 {
-  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin, bgkd parambgkd) {}
+  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin, bgok parambgok) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -17,7 +17,7 @@ class SettingsJsPlugin$1
     if (paramInt1 == 5)
     {
       SettingsJsPlugin.access$000(this.this$0, this.val$req);
-      bgjd.a().b(this);
+      bgnk.a().b(this);
       return true;
     }
     return false;

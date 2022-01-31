@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class alsz
-  implements Comparator<MessageRecord>
+  implements DialogInterface.OnDismissListener
 {
-  public alsz(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  public alsz(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMessageRecord1.time < paramMessageRecord2.time) {
-      return 1;
-    }
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return -1;
-    }
-    return 0;
+    FrameHelperActivity.a(this.a, null);
   }
 }
 

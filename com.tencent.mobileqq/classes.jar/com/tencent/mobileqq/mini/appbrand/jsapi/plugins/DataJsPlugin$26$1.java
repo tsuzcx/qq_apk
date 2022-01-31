@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import absf;
+import abwu;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
 
 class DataJsPlugin$26$1
-  implements absf
+  implements abwu
 {
   DataJsPlugin$26$1(DataJsPlugin.26 param26) {}
   
@@ -22,7 +22,7 @@ class DataJsPlugin$26$1
       DataJsPlugin.access$302(this.this$1.this$0, Long.valueOf(0L));
       Iterator localIterator = DataJsPlugin.access$200(this.this$1.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((absf)localIterator.next()).onFailure(paramInt, paramString);
+        ((abwu)localIterator.next()).onFailure(paramInt, paramString);
       }
     }
     DataJsPlugin.access$200(this.this$1.this$0).clear();
@@ -35,7 +35,7 @@ class DataJsPlugin$26$1
       DataJsPlugin.access$302(this.this$1.this$0, Long.valueOf(0L));
       Iterator localIterator = DataJsPlugin.access$200(this.this$1.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((absf)localIterator.next()).onPermission(paramInt);
+        ((abwu)localIterator.next()).onPermission(paramInt);
       }
     }
     DataJsPlugin.access$200(this.this$1.this$0).clear();
@@ -48,7 +48,7 @@ class DataJsPlugin$26$1
       DataJsPlugin.access$302(this.this$1.this$0, Long.valueOf(0L));
       Iterator localIterator = DataJsPlugin.access$200(this.this$1.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((absf)localIterator.next()).onSuccess(paramJSONObject);
+        ((abwu)localIterator.next()).onSuccess(paramJSONObject);
       }
     }
     DataJsPlugin.access$200(this.this$1.this$0).clear();

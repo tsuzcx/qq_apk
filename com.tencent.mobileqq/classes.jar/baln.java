@@ -1,30 +1,15 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.Map;
-import javax.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface baln
+class baln
+  implements View.OnClickListener
 {
-  public abstract int a();
+  baln(balm parambalm) {}
   
-  public abstract bdfq a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
-  
-  public abstract void a(balk parambalk, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
-  
-  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, balk> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 

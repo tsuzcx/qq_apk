@@ -35,12 +35,12 @@ public class qpn
       if (localFile.exists())
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mPlayGifImage = awgi.a(paramString);
+        localURLDrawableOptions.mPlayGifImage = awkr.a(paramString);
         localURLDrawableOptions.mLoadingDrawable = ReadInJoyDeliverUGCActivity.a;
         localURLDrawableOptions.mFailedDrawable = ReadInJoyDeliverUGCActivity.a;
         localURLDrawableOptions.mUseAutoScaleParams = false;
-        localURLDrawableOptions.mRequestWidth = bdkf.b(114.0F);
-        localURLDrawableOptions.mRequestHeight = bdkf.b(114.0F);
+        localURLDrawableOptions.mRequestWidth = bdoo.b(114.0F);
+        localURLDrawableOptions.mRequestHeight = bdoo.b(114.0F);
         return URLDrawable.getDrawable(localFile, localURLDrawableOptions);
       }
     }
@@ -62,10 +62,10 @@ public class qpn
     Object localObject;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560137, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560136, null);
       paramViewGroup = new qpp(this, null);
-      paramViewGroup.a = ((ImageView)paramView.findViewById(2131379180));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131379177));
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131379238));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131379235));
       paramView.setTag(paramViewGroup);
       localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       if (!(localObject instanceof HotPicData)) {
@@ -91,7 +91,7 @@ public class qpn
       label177:
       if ("".equals(localObject))
       {
-        paramViewGroup.b.setImageResource(2130841398);
+        paramViewGroup.b.setImageResource(2130841399);
         paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER);
         paramViewGroup.a.setVisibility(8);
       }

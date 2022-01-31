@@ -1,16 +1,16 @@
 import android.support.annotation.Nullable;
 
 class bktx
-  implements bmac<blbb>
+  implements bmeo<bkya>
 {
-  bktx(bktw parambktw) {}
+  bktx(bktp parambktp) {}
   
-  public void a(@Nullable blbb paramblbb)
+  public void a(@Nullable bkya parambkya)
   {
-    if (paramblbb == null) {
-      return;
+    bktp.a(this.a, parambkya);
+    if (bktp.a(this.a) != null) {
+      bktp.a(this.a).a(bktp.a(this.a).a(), bktp.a(this.a));
     }
-    bktw.a(this.a, paramblbb.a);
   }
 }
 

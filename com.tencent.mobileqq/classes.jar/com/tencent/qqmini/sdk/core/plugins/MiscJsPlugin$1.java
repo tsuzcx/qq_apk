@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class MiscJsPlugin$1
   implements AsyncResult
 {
-  MiscJsPlugin$1(MiscJsPlugin paramMiscJsPlugin, bgkd parambgkd) {}
+  MiscJsPlugin$1(MiscJsPlugin paramMiscJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

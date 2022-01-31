@@ -23,9 +23,9 @@ public class MoreItemView
   
   private void a()
   {
-    View localView = inflate(getContext(), 2131559355, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370724));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370726));
+    View localView = inflate(getContext(), 2131559354, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370743));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370745));
   }
   
   public MoreItem a()

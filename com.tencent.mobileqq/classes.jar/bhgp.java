@@ -1,18 +1,17 @@
-public class bhgp
+import com.tencent.qqmini.sdk.log.QMLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+
+class bhgp
+  implements MethodChannel.MethodCallHandler
 {
-  public int a;
-  public String a;
+  bhgp(bhgo parambhgo) {}
   
-  public bhgp()
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_JavaLangString = "Success";
-  }
-  
-  public bhgp(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = "Success";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramResult.success(null);
+    QMLog.d("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
   }
 }
 

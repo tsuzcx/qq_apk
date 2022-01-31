@@ -1,28 +1,43 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-public class xrs
-  extends AccessibilityDelegateCompat
+public abstract interface xrs
 {
-  public xrs(LeftTabBarView paramLeftTabBarView) {}
+  public abstract int a();
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
+  public abstract Bitmap a();
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
-  }
+  public abstract View a();
+  
+  public abstract xrx a(int paramInt);
+  
+  public abstract xry a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(uxk paramuxk, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(xru paramxru);
+  
+  public abstract void a(xrw paramxrw);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract xsa[] a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 

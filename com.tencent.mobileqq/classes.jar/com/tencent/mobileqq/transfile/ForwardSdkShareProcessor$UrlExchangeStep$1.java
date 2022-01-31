@@ -2,12 +2,12 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import arzy;
-import baoo;
-import baoy;
-import baub;
-import bfdq;
-import bfhl;
+import aseh;
+import basx;
+import bath;
+import bayk;
+import bfhz;
+import bflu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,12 +22,12 @@ import ndd;
 public class ForwardSdkShareProcessor$UrlExchangeStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$UrlExchangeStep$1(baoy parambaoy) {}
+  public ForwardSdkShareProcessor$UrlExchangeStep$1(bath parambath) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,retry=" + baoy.a(this.a));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,retry=" + bath.a(this.a));
     }
     if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
@@ -35,32 +35,32 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
       return;
     }
     Object localObject = new Bundle();
-    String str = this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str = this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
     int i;
     long l;
     boolean bool;
-    if ((!baoo.b(this.a.jdField_b_of_type_Baoo).get()) && (TextUtils.isEmpty(baoo.a(this.a.jdField_b_of_type_Baoo))))
+    if ((!basx.b(this.a.jdField_b_of_type_Basx).get()) && (TextUtils.isEmpty(basx.a(this.a.jdField_b_of_type_Basx))))
     {
       i = 0;
       ((Bundle)localObject).putString("report_type", "102");
       ((Bundle)localObject).putString("act_type", "52");
       ((Bundle)localObject).putString("intext_3", "0");
-      ((Bundle)localObject).putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
+      ((Bundle)localObject).putString("stringext_1", basx.e(this.a.jdField_b_of_type_Basx));
       ((Bundle)localObject).putString("intext_4", "" + i);
-      bfdq.a().a((Bundle)localObject, "", str, false);
+      bfhz.a().a((Bundle)localObject, "", str, false);
       l = System.currentTimeMillis();
-      arzy.a("batch_url_exchange");
+      aseh.a("batch_url_exchange");
       localObject = new Bundle();
-      HashMap localHashMap = ndd.a(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_AndroidContentContext, str, baoo.f(this.a.jdField_b_of_type_Baoo), 1, baoo.a(this.a.jdField_b_of_type_Baoo), (Bundle)localObject);
+      HashMap localHashMap = ndd.a(this.a.jdField_b_of_type_Basx.jdField_a_of_type_AndroidContentContext, str, basx.f(this.a.jdField_b_of_type_Basx), 1, basx.a(this.a.jdField_b_of_type_Basx), (Bundle)localObject);
       l = System.currentTimeMillis() - l;
       bool = ((Bundle)localObject).getBoolean("isSuccess");
       i = ((Bundle)localObject).getInt("retcode", -1);
-      baoy.b(this.a).set(i);
+      bath.b(this.a).set(i);
       localObject = new HashMap();
       ((HashMap)localObject).put("param_ret_code", Integer.toString(i));
-      arzy.a("batch_url_exchange", str, (HashMap)localObject, bool);
+      aseh.a("batch_url_exchange", str, (HashMap)localObject, bool);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,suc=" + bool + ",ret=" + baoy.b(this.a) + ",cost=" + l);
+        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,suc=" + bool + ",ret=" + bath.b(this.a) + ",cost=" + l);
       }
       Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
@@ -72,26 +72,26 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
       localObject = "0";
       label425:
       localBundle.putString("intext_1", (String)localObject);
-      localBundle.putString("intext_2", "" + baoy.b(this.a));
+      localBundle.putString("intext_2", "" + bath.b(this.a));
       localBundle.putString("intext_5", "" + l);
       if (!bool) {
-        localBundle.putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
+        localBundle.putString("stringext_1", basx.e(this.a.jdField_b_of_type_Basx));
       }
-      bfdq.a().a(localBundle, "", str, false);
+      bfhz.a().a(localBundle, "", str, false);
       if (!bool) {
         break label1122;
       }
-      baoo.a(this.a.jdField_b_of_type_Baoo).putAll(localHashMap);
-      baoo.c(this.a.jdField_b_of_type_Baoo).set(true);
+      basx.a(this.a.jdField_b_of_type_Basx).putAll(localHashMap);
+      basx.c(this.a.jdField_b_of_type_Basx).set(true);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,url=" + baoo.a(this.a.jdField_b_of_type_Baoo).toString());
+        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|run,url=" + basx.a(this.a.jdField_b_of_type_Basx).toString());
       }
-      localObject = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("imageUrl");
+      localObject = (String)basx.a(this.a.jdField_b_of_type_Basx).get("imageUrl");
       if (localObject != null)
       {
-        arzy.a("reuse_image_for_aio");
-        bfhl.a(false, baoo.a(this.a.jdField_b_of_type_Baoo), baoo.a(this.a.jdField_b_of_type_Baoo), (String)localObject);
-        arzy.a("reuse_image_for_aio", str, true);
+        aseh.a("reuse_image_for_aio");
+        bflu.a(false, basx.a(this.a.jdField_b_of_type_Basx), basx.a(this.a.jdField_b_of_type_Basx), (String)localObject);
+        aseh.a("reuse_image_for_aio", str, true);
       }
     }
     label1114:
@@ -99,54 +99,54 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
     do
     {
       if (!bool) {
-        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + baoy.b(this.a) + ",cost=" + l + ",url=" + baoo.a(this.a.jdField_b_of_type_Baoo).toString());
+        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + bath.b(this.a) + ",cost=" + l + ",url=" + basx.a(this.a.jdField_b_of_type_Basx).toString());
       }
-      localObject = this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+      localObject = this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.c, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
       if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
       {
         localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
-        str = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("targetUrl");
+        str = (String)basx.a(this.a.jdField_b_of_type_Basx).get("targetUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mMsgUrl = str;
         }
-        str = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("sourceUrl");
+        str = (String)basx.a(this.a.jdField_b_of_type_Basx).get("sourceUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceUrl = str;
         }
-        str = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("sourceIcon");
+        str = (String)basx.a(this.a.jdField_b_of_type_Basx).get("sourceIcon");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceIcon = str;
         }
-        str = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("audioUrl");
+        str = (String)basx.a(this.a.jdField_b_of_type_Basx).get("audioUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mContentSrc = str;
         }
-        str = (String)baoo.a(this.a.jdField_b_of_type_Baoo).get("imageUrl");
+        str = (String)basx.a(this.a.jdField_b_of_type_Basx).get("imageUrl");
         if (str != null)
         {
           ((AbsShareMsg)localObject).shareData.imageUrlStatus = 1;
           ((AbsShareMsg)localObject).updateCover(str);
         }
-        if (baoo.c(this.a.jdField_b_of_type_Baoo).get()) {
+        if (basx.c(this.a.jdField_b_of_type_Basx).get()) {
           ((AbsShareMsg)localObject).shareData.shortUrlStatus = 1;
         }
-        this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
+        this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.c, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
       }
       this.a.b();
       return;
-      i = baoo.a(this.a.jdField_b_of_type_Baoo).length();
+      i = basx.a(this.a.jdField_b_of_type_Basx).length();
       break;
       localObject = "1";
       break label425;
-      if ((baoy.b(this.a).get() == 100000) && (baoo.c(this.a.jdField_b_of_type_Baoo) < 2))
+      if ((bath.b(this.a).get() == 100000) && (basx.c(this.a.jdField_b_of_type_Basx) < 2))
       {
-        baoo.d(this.a.jdField_b_of_type_Baoo);
-        baoo.d(this.a.jdField_b_of_type_Baoo, null);
-        baoo.a(this.a.jdField_b_of_type_Baoo, true);
-        baoo.a(this.a.jdField_b_of_type_Baoo);
+        basx.d(this.a.jdField_b_of_type_Basx);
+        basx.d(this.a.jdField_b_of_type_Basx, null);
+        basx.a(this.a.jdField_b_of_type_Basx, true);
+        basx.a(this.a.jdField_b_of_type_Basx);
         return;
       }
-    } while ((baoy.b(this.a).get() != -1) || (baoy.a(this.a).getAndIncrement() >= 2));
+    } while ((bath.b(this.a).get() != -1) || (bath.a(this.a).getAndIncrement() >= 2));
     ThreadManager.post(this, 8, null, true);
   }
 }

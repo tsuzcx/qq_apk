@@ -1,50 +1,61 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class acbb
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public acbb(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public acbb(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364244)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131719121), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    paramView.putInt("unread", i + j);
+    paramView.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
+    com.tencent.mobileqq.activity.MainFragment.c = true;
+    if (QQPlayerService.a())
     {
+      paramView = new Intent();
+      paramView.setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast(paramView);
     }
-    for (;;)
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
+    paramView = new Intent("QQ_ACTION_MENU_QUIT");
+    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
+    paramView.addFlags(67108864);
+    try
     {
-      super.handleMessage(paramMessage);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity(paramView);
+      label265:
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
       return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new bepp(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
-      {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
-      }
+    }
+    catch (Exception paramView)
+    {
+      break label265;
     }
   }
 }

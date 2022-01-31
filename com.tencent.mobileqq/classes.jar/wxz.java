@@ -1,30 +1,18 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-public class wxz
-  extends wyj
+public final class wxz
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
-  
-  public wxz(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    return new EditLocalGifSource(paramParcel);
   }
   
-  public wxz a(Bitmap paramBitmap)
+  public EditLocalGifSource[] a(int paramInt)
   {
-    return new wxz(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
-  }
-  
-  public String toString()
-  {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    return new EditLocalGifSource[paramInt];
   }
 }
 

@@ -1,32 +1,13 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.8;
 
-class blnm
-  implements Handler.Callback
+public class blnm
+  implements DialogInterface.OnDismissListener
 {
-  blnm(blnl paramblnl) {}
+  public blnm(AEEditorVideoEditFragment.8 param8) {}
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a())
-      {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-        continue;
-        this.a.a.removeMessages(3);
-        if (this.a.b()) {
-          this.a.a.sendEmptyMessageDelayed(3, 50L);
-        }
-      }
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

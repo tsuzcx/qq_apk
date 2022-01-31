@@ -1,83 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aorx
-  extends aofy<aorw>
 {
-  public int a()
+  public aosq a;
+  public boolean a;
+  
+  public aorx()
   {
-    return 433;
+    this.jdField_a_of_type_Aosq = new aosq();
   }
   
-  @NonNull
-  public aorw a(int paramInt)
+  public static aorx a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aorw();
-  }
-  
-  @Nullable
-  public aorw a(aogf[] paramArrayOfaogf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchHotWordConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    if (paramString == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
+      return null;
+      try
+      {
+        aorx localaorx = new aorx();
+        paramString = new JSONObject(paramString);
+        localaorx.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
+        paramString = paramString.optJSONObject("watchTogether");
+        if (paramString != null)
+        {
+          aosq localaosq = new aosq();
+          localaosq.a(paramString.optInt("version"));
+          localaosq.b(paramString.optInt("jumpType"));
+          localaosq.a(paramString.optString("jumpUrl"));
+          localaosq.b(paramString.optString("jumpExtensionInfo"));
+          localaorx.jdField_a_of_type_Aosq = localaosq;
+        }
+        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localaorx.toString());
+        return localaorx;
       }
-      return aorw.a(paramArrayOfaogf[0]);
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public Class a()
+  public String toString()
   {
-    return aorw.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
+    if (this.jdField_a_of_type_Aosq == null) {}
+    for (String str = "null";; str = this.jdField_a_of_type_Aosq.toString()) {
+      return str + '}';
     }
-  }
-  
-  public void a(aorw paramaorw)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaorw == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramaorw = paramaorw.toString();; paramaorw = " empty")
-    {
-      QLog.d("SearchHotWordConfProcessor", 2, paramaorw);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

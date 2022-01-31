@@ -1,13 +1,13 @@
-import android.widget.TextView;
+import java.nio.ByteBuffer;
 
-class vxt
-  implements ukr
+public class vxt
 {
-  vxt(vxs paramvxs) {}
+  public long a;
+  public ByteBuffer a;
   
-  public void a(String paramString, int paramInt)
+  vxt(int paramInt)
   {
-    vxs.a(this.a).setText(alpo.a(2131716309) + paramInt + "%");
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

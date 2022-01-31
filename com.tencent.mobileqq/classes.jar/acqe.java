@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acqe
-  implements View.OnClickListener
+class acqe
+  implements DialogInterface.OnClickListener
 {
-  public acqe(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  acqe(acqd paramacqd, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
+    if (this.jdField_a_of_type_Boolean) {
+      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

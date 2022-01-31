@@ -1,80 +1,140 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONObject;
 
 public class wjl
-  extends naa
+  implements wjp
 {
-  public wjl(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public static final String a;
+  public static final String b = alud.a(2131703534);
+  public static final String c = alud.a(2131703536);
+  public static final String d = alud.a(2131703535);
+  public static final String e = alud.a(2131703537);
+  public static final String f = alud.a(2131703533);
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private wjm jdField_a_of_type_Wjm;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
+    jdField_a_of_type_JavaLangString = alud.a(2131703532);
+  }
+  
+  public wjl(Context paramContext, int paramInt, CommentLikeFeedItem paramCommentLikeFeedItem, wjm paramwjm)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Wjm = paramwjm;
+  }
+  
+  public boolean a()
+  {
+    wxe.c("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on comment button click.");
+    if (!bdin.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131703538), 0).a();
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if (paramCommentEntry.commentType == 5)
+    {
+      paramCommentEntry = new OpenPlayerBuilder(new VidListPlayInfo(paramCommentEntry.togetherFeedId, paramCommentEntry.togetherVid), 126);
+      vod.a(this.jdField_a_of_type_AndroidContentContext, paramCommentEntry.a(), null);
+      wxj.a("play_video", "multishoot_icon", 0, 0, new String[0]);
+      bool = false;
+      paramInt1 = wxj.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+        break label330;
+      }
+    }
+    label330:
+    for (paramCommentEntry = "1";; paramCommentEntry = "2")
+    {
+      wxj.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, wxj.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return bool;
+      Object localObject;
+      if (paramCommentEntry.commentType == 4)
+      {
+        localObject = paramCommentEntry.getExtraJson().optString("vid");
+        paramCommentEntry = paramCommentEntry.getExtraJson().optString("feedid");
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramCommentEntry))) {
+          vod.b(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramCommentEntry, 74);
+        }
+        bool = false;
+        break;
+      }
+      if (!bdin.d(this.jdField_a_of_type_AndroidContentContext))
+      {
+        QQToast.a(BaseApplication.getContext(), 1, alud.a(2131703531), 0).a();
+        bool = false;
+        break;
+      }
+      if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
+      {
+        localObject = bhuf.a(this.jdField_a_of_type_AndroidContentContext);
+        if (paramCommentEntry.status == 2) {
+          ((bhuf)localObject).c(d);
+        }
+        for (;;)
+        {
+          ((bhuf)localObject).a(jdField_a_of_type_JavaLangString, 3);
+          ((bhuf)localObject).d(f);
+          ((bhuf)localObject).a(new wjn((bhuf)localObject, paramCommentEntry, paramInt1, this.jdField_a_of_type_Wjm));
+          ((bhuf)localObject).show();
+          bool = false;
+          break;
+          ((bhuf)localObject).c(e);
+        }
+      }
+      bool = true;
+      break;
+    }
+  }
+  
+  public boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_AndroidContentContext);
+    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId)) {
+      if (paramCommentEntry.status == 2)
+      {
+        localbhuf.c(d);
+        localbhuf.a(jdField_a_of_type_JavaLangString, 3);
+      }
     }
     for (;;)
     {
-      int m;
-      int k;
-      try
+      localbhuf.d(f);
+      localbhuf.a(new wjn(localbhuf, paramCommentEntry, paramInt1, this.jdField_a_of_type_Wjm));
+      localbhuf.show();
+      return false;
+      localbhuf.c(e);
+      break;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe())
       {
-        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelOneMessage.errinfo.error_code.has()) {
-          break label239;
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isVip()) || (paramInt2 == 2)) {
+          localbhuf.a(jdField_a_of_type_JavaLangString, 3);
         }
-        i = localRspDelOneMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
+        localbhuf.c(c);
+        localbhuf.c(e);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      else
       {
-        m = 0;
-        k = j;
-      }
-      try
-      {
-        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, alpo.a(2131714910), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
-        i = 0;
+        localbhuf.c(c);
+        localbhuf.c(e);
       }
     }
   }

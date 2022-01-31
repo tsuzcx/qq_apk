@@ -1,49 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
 
-public class bmel
-  extends Handler
+class bmel
+  extends bmej<T>.bmem
+  implements bmdi
 {
-  public bmel(bmek parambmek) {}
+  @NonNull
+  final bmdn jdField_a_of_type_Bmdn;
   
-  public void dispatchMessage(Message paramMessage)
+  bmel(bmdn parambmdn, @NonNull bmeo<? super T> parambmeo)
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
+    super(parambmdn, localbmeo);
+    this.jdField_a_of_type_Bmdn = parambmeo;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Bmdn.a().b(this);
+  }
+  
+  public void a(bmdn parambmdn, bmdk parambmdk)
+  {
+    if (this.jdField_a_of_type_Bmdn.a().a() == bmdl.a)
     {
-    default: 
-      return;
-    case 1: 
-      if (bmek.a(this.a) != null)
-      {
-        wtb.b("0X80080E3", wtb.a);
-        paramMessage = new ArrayList();
-        paramMessage.add(Uri.parse(bmek.a(this.a)));
-        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
-        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
-        this.a.jdField_a_of_type_Bmkf.getActivity().startActivityForResult(paramMessage, 100);
-      }
-      this.a.c();
-      return;
-    case 2: 
-      paramMessage = (Bitmap)paramMessage.obj;
-      this.a.jdField_a_of_type_Bmix.a(paramMessage, false);
-      if (this.a.jdField_a_of_type_Bmix.a != null)
-      {
-        this.a.jdField_a_of_type_Bmix.a.d();
-        this.a.jdField_a_of_type_Bmix.z();
-      }
-      this.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bmej.b(this.jdField_a_of_type_Bmeo);
       return;
     }
-    this.a.jdField_a_of_type_Bmix.a(0);
-    this.a.c();
+    a(a());
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Bmdn.a().a().a(bmdl.d);
+  }
+  
+  boolean a(bmdn parambmdn)
+  {
+    return this.jdField_a_of_type_Bmdn == parambmdn;
   }
 }
 

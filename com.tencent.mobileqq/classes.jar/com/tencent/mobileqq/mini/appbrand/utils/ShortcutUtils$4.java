@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import alpo;
+import alud;
 import android.app.Activity;
 
 final class ShortcutUtils$4
@@ -11,7 +11,7 @@ final class ShortcutUtils$4
   public void run()
   {
     if (ShortcutUtils.PermissionDialog.canShowDialog()) {
-      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, alpo.a(2131714395), alpo.a(2131714401), alpo.a(2131714382), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
+      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, alud.a(2131714407), alud.a(2131714413), alud.a(2131714394), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
     }
   }
 }

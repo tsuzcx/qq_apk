@@ -5,10 +5,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bhos;
-import bjdq;
-import bjds;
-import bjvc;
+import bhsz;
+import bjhx;
+import bjhz;
+import bjzj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
@@ -33,7 +33,7 @@ public class QzoneZipCacheHelper
   private static final String TAG = "QzoneZipCacheHelper";
   private static final byte[] URL_LOCK = new byte[0];
   public static final String ZIPURL = "zipurl";
-  private static bjds mFileCache;
+  private static bjhz mFileCache;
   private static ConcurrentHashMap<String, CopyOnWriteArrayList<Object>> sDownloadindUrlMap = new ConcurrentHashMap();
   
   public static boolean checkAndDownLoadFileIfNeeded(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
@@ -181,10 +181,10 @@ public class QzoneZipCacheHelper
     return getFileCache().a(getFolderName(paramString1, paramString2));
   }
   
-  private static bjds getFileCache()
+  private static bjhz getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bjdq.c();
+      mFileCache = bjhx.c();
     }
     return mFileCache;
   }
@@ -194,7 +194,7 @@ public class QzoneZipCacheHelper
     if (!URLUtil.isNetworkUrl(paramString)) {
       return null;
     }
-    Map localMap = bhos.a(paramString);
+    Map localMap = bhsz.a(paramString);
     return getFileIfExists(paramAppInterface, getUrlBase(paramString), getFileName(paramString), (String)localMap.get("business"), (String)localMap.get("dir"), null);
   }
   
@@ -310,7 +310,7 @@ public class QzoneZipCacheHelper
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)
   {
-    PriorityThreadPool.getDefault().submit(new bjvc(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
+    PriorityThreadPool.getDefault().submit(new bjzj(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
   }
 }
 

@@ -24,9 +24,9 @@ public class mcr
   
   public mcr()
   {
-    azgk.c(VideoEnvironment.a());
-    bhmu.a();
-    bkkj.a();
+    azkt.c(VideoEnvironment.a());
+    bhrb.a();
+    bkoq.a();
     this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor = new SwitchFaceProcessor();
     int i = 0;
     while (i < 2)
@@ -305,7 +305,7 @@ public class mcr
         }
         try
         {
-          if ((!this.jdField_a_of_type_Boolean) && (lsa.e()) && (arof.a(mcq.a)))
+          if ((!this.jdField_a_of_type_Boolean) && (lsa.e()) && (arso.a(mcq.a)))
           {
             this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor.init();
             this.jdField_a_of_type_Boolean = true;

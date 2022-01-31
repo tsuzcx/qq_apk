@@ -1,24 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-
-public class aufz
-  extends AnimatorListenerAdapter
+public abstract interface aufz<P, R>
 {
-  public aufz(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
+  public abstract R a(P paramP);
 }
 
 

@@ -1,32 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class atmh
-  implements bhqd
+public class atmh
+  extends altm
 {
-  atmh(atmg paramatmg, bhpy parambhpy) {}
+  public atmh(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      atmg.a(this.jdField_a_of_type_Atmg).finish();
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject = atmg.a(this.jdField_a_of_type_Atmg).getIntent();
-      String str = ((Intent)localObject).getStringExtra("uin");
-      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
-      atln.a(paramView).a.a(3, paramInt, str);
-      localObject = new atlh(paramInt, str);
-      atln.a(paramView).a((atlh)localObject, false);
-      azmj.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+      String str = atmr.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        atlu.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
+      }
     }
   }
 }

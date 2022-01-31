@@ -1,44 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ajyd
+public abstract interface ajyd
 {
-  public static AtomicBoolean a;
-  public static String[] a;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
-  }
+  public abstract int a(int paramInt1, int paramInt2);
   
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(paramString).intValue() == 0)
-        {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-          }
-          return;
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(@NonNull ajyf paramajyf);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
 }
 
 

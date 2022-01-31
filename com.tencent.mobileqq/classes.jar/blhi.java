@@ -1,30 +1,24 @@
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-import dov.com.qq.im.aeeditor.module.topbar.AEEditorClipPageTopBar;
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
 public class blhi
-  implements blli
+  extends RecyclerView.ItemDecoration
 {
-  public blhi(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
+  private int jdField_a_of_type_Int;
   
-  public void a()
+  public blhi(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, int paramInt)
   {
-    this.a.a().a(this.a.getActivity(), true);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b()
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
   {
-    if (AEEditorImageClipFragment.a(this.a)) {}
-    while ((AEEditorImageClipFragment.a(this.a) < 0) || (AEEditorImageClipFragment.a(this.a) >= AEEditorImageClipFragment.a(this.a).size()) || (AEEditorImageClipFragment.b(this.a))) {
-      return;
+    super.getItemOffsets(paramRect, paramInt, paramRecyclerView);
+    if (paramInt == 0) {
+      paramRect.left = this.jdField_a_of_type_Int;
     }
-    AEEditorImageClipFragment.a(this.a)[AEEditorImageClipFragment.a(this.a)] = 0;
-    int i = AEEditorImageClipFragment.a(this.a, AEEditorImageClipFragment.a(this.a));
-    AEEditorImageClipFragment.a(this.a, i);
-    if (AEEditorImageClipFragment.a(this.a) != null) {
-      AEEditorImageClipFragment.a(this.a).notifyDataSetChanged();
-    }
-    AEEditorImageClipFragment.a(this.a).setIndex(AEEditorImageClipFragment.b(this.a, i));
   }
 }
 

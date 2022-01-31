@@ -1,36 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public final class abts
+public class abts
 {
-  public long a;
+  public int a;
+  long a;
+  public abtd a;
+  public Object a;
   public String a;
-  public long b;
-  public String b;
+  public List<MessageRecord> a;
+  public boolean a;
+  public int b;
+  long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d = true;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h;
+  public volatile boolean i;
   
-  public JSONObject a()
+  public abts()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(abtp.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-    }
-    return localJSONObject;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 0L;
   }
   
   public String toString()
   {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
+    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
   }
 }
 

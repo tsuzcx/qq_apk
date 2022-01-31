@@ -1,72 +1,67 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.MultiImageTextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class adlf
-  implements View.OnClickListener
+public class adlf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adlf(adlb paramadlb, aovg paramaovg, SharedPreferences paramSharedPreferences, String paramString) {}
+  public adlf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Aovg.e;
-    paramView = this.jdField_a_of_type_Aovg.f;
-    if ((((String)localObject).equals("TMTWAPI")) || (((String)localObject).equals("WAPI")))
-    {
-      paramView = aofs.a(paramView, 0, null);
-      localObject = new Intent(this.jdField_a_of_type_Adlb.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Adlb.a.app.getCurrentAccountUin());
-      this.jdField_a_of_type_Adlb.a.startActivity(((Intent)localObject).putExtra("url", paramView));
+    boolean bool2 = true;
+    boolean bool1 = true;
+    int j = ndd.a();
+    int i = j;
+    if (j == -1) {
+      i = 2;
     }
-    for (;;)
+    if (i == 0)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-      this.jdField_a_of_type_Adlb.a.a.sendEmptyMessageDelayed(1010, 1000L);
+      QQToast.a(this.a.getActivity(), 1, 2131696590, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool1;; paramBoolean = false)
+      {
+        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
+        return;
+      }
+    }
+    if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+    {
+      QQToast.a(this.a.getActivity(), 1, 2131698651, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        NotifyPushSettingActivity.a(paramCompoundButton, paramBoolean);
+        return;
+      }
+    }
+    NotifyPushSettingActivity.a(this.a, paramBoolean);
+    if (paramBoolean)
+    {
+      paramCompoundButton = alud.a(2131708037) + admb.a(3600000L);
+      NotifyPushSettingActivity.a(this.a).setRightText(paramCompoundButton);
+      NotifyPushSettingActivity.a(this.a).set(true);
+      long l = NetConnInfoCenter.getServerTime();
+      ((alpk)this.a.app.a(2)).b((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
+      azqs.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
       return;
-      if ((((String)localObject).equals("TMTWAP")) || (((String)localObject).equals("WAP")))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Adlb.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Adlb.a.app.getCurrentAccountUin());
-        this.jdField_a_of_type_Adlb.a.startActivity(((Intent)localObject).putExtra("url", paramView));
-      }
-      else if (((String)localObject).equals("LOCAL"))
-      {
-        if ("CARD".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_Aovg.g.split(",")[0];
-          if (("".equals(paramView)) || (this.jdField_a_of_type_Adlb.a.app.getCurrentAccountUin().equals(paramView))) {}
-          for (paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_Adlb.a.app.getCurrentAccountUin(), 0);; paramView = new ProfileActivity.AllInOne(paramView, 19))
-          {
-            ProfileActivity.b(this.jdField_a_of_type_Adlb.a, paramView);
-            break;
-          }
-        }
-        if ("CHAT".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_Aovg.g.split(",")[0];
-          if (!"".equals(paramView)) {
-            if (((aloz)this.jdField_a_of_type_Adlb.a.app.getManager(51)).b(paramView)) {
-              this.jdField_a_of_type_Adlb.a(paramView, 0, bdbt.i(this.jdField_a_of_type_Adlb.a.app, paramView));
-            } else {
-              this.jdField_a_of_type_Adlb.a(paramView, 1001, bdbt.i(this.jdField_a_of_type_Adlb.a.app, paramView));
-            }
-          }
-        }
-        else if ("NEARBY".equalsIgnoreCase(paramView))
-        {
-          this.jdField_a_of_type_Adlb.a.startActivity(new Intent(this.jdField_a_of_type_Adlb.a, NearbyActivity.class));
-        }
-      }
     }
+    paramCompoundButton = NotifyPushSettingActivity.a(this.a).a().getText().toString();
+    NotifyPushSettingActivity.a(this.a).a().setText("");
+    NotifyPushSettingActivity.a(this.a).set(true);
+    ((alpk)this.a.app.a(2)).b(0, paramCompoundButton, "not_disturb_from_notify_push_setting_activity");
+    azqs.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
   }
 }
 

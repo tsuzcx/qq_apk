@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import wwe;
+import xan;
 
 public class EditVideoPartManager$8
   implements Runnable
 {
-  public EditVideoPartManager$8(wwe paramwwe) {}
+  public EditVideoPartManager$8(xan paramxan) {}
   
   public void run()
   {

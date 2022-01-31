@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agld;
+import agps;
 import android.os.Bundle;
 import android.os.Message;
 import mqq.os.MqqHandler;
@@ -8,15 +8,15 @@ import mqq.os.MqqHandler;
 public class FriendChatPie$8
   implements Runnable
 {
-  public FriendChatPie$8(agld paramagld) {}
+  public FriendChatPie$8(agps paramagps) {}
   
   public void run()
   {
-    Message localMessage = agld.c(this.this$0).obtainMessage(42);
+    Message localMessage = agps.c(this.this$0).obtainMessage(42);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showRedDot", false);
     localMessage.setData(localBundle);
-    agld.d(this.this$0).sendMessage(localMessage);
+    agps.d(this.this$0).sendMessage(localMessage);
   }
 }
 

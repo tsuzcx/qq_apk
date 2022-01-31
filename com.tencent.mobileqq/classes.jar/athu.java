@@ -1,100 +1,72 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
+import org.json.JSONObject;
 
 public class athu
-  implements atkd
+  extends WebViewPlugin
 {
-  public athu(ListenTogetherManager paramListenTogetherManager) {}
-  
-  public void a(String paramString, int paramInt)
+  public athu()
   {
-    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + atjy.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
-    HashMap localHashMap = new HashMap();
-    if (paramInt == 8)
-    {
-      ListenTogetherManager.a(this.a);
-      if (paramInt != 2) {
-        break label289;
-      }
-      ListenTogetherManager.a(this.a).k();
-      ListenTogetherManager.a(this.a).m();
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      localHashMap.put("status", String.valueOf(paramInt));
-      label177:
-      if (paramInt != 2) {
-        break label368;
-      }
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, athn.a().a);
-    }
+    this.mPluginNameSpace = "login";
+  }
+  
+  private Activity a()
+  {
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
     for (;;)
     {
-      ListenTogetherManager.a(this.a, paramString, paramInt);
-      if (!localHashMap.isEmpty()) {
-        azmz.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      try
+      {
+        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("countryCode");
+        paramString2 = paramJsBridgeListener.optString("uin");
+        paramString3 = paramJsBridgeListener.optString("phone");
+        int j = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
+        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) == 1)
+        {
+          i = 1;
+          if (i != 0)
+          {
+            paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
+            paramJsBridgeListener.putExtra("phone_num", paramString3);
+            paramJsBridgeListener.putExtra("country_code", paramString1);
+            paramJsBridgeListener.putExtra("mobile_type", 0);
+            paramJsBridgeListener.putExtra("from_login", true);
+            paramJsBridgeListener.putExtra("uin", paramString2);
+            paramJsBridgeListener.putExtra("seq", j);
+            startActivityForResult(paramJsBridgeListener, (byte)12);
+            azqs.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, "", "", "", "");
+            return true;
+          }
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
+          continue;
+          return false;
+        }
       }
-      if (QQMusicPlayService.a() != null) {
-        awar.a().a(paramInt);
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
       }
-      return;
-      if ((paramInt != 5) && (paramInt != 7)) {
-        break;
-      }
-      localHashMap.put("status", String.valueOf(paramInt));
-      break;
-      label289:
-      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
-        break label177;
-      }
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      break label177;
-      label368:
-      ListenTogetherManager.a(this.a).removeMessages(1001);
+      int i = 0;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
-    if (paramBoolean) {
-      ListenTogetherManager.b(this.a);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
-    ListenTogetherManager.a(this.a, paramBoolean1);
-    if (paramBoolean1)
-    {
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-    if (paramBoolean2)
-    {
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
+    super.onActivityResult(paramIntent, paramByte, paramInt);
   }
 }
 

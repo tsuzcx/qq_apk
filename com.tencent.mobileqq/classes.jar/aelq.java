@@ -1,84 +1,23 @@
-import android.content.res.ColorStateList;
-import android.text.Spannable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aelq
-  implements alzv
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public aelt a;
-  public ColorStateList a;
-  public BaseChatItemLayout a;
-  public ChatMessage a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
-  public ColorStateList b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public aelq(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  private aelq(BaseBubbleBuilder paramBaseBubbleBuilder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(52);
-    localObject1 = (aelt)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
-    Object localObject2;
-    Object localObject3;
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    boolean bool1;
-    if ((paramTroopMemberInfo != null) && (TextUtils.equals(((aelt)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, paramTroopMemberInfo.memberuin)))
+    this.a.l();
+    this.a.b(this.a.n);
+    if (VipUtils.b(this.a.app)) {}
+    for (paramDialogInterface = "4";; paramDialogInterface = "3")
     {
-      ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(60)).b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      localObject1 = new bahs(bdbt.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a, paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin, true), 13).a();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_type");
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_level");
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("bigClub_type");
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("bigClub_level");
-      String str3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_card_id");
-      i = VipUtils.a((String)localObject2, 0);
-      j = VipUtils.a((String)localObject3, 0);
-      k = VipUtils.a(str1, 0);
-      m = VipUtils.a(str2, 0);
-      n = VipUtils.a(str3, 0);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-      if ((localObject1 == null) && (!this.jdField_a_of_type_Boolean)) {
-        break label376;
-      }
-      bool1 = true;
-      localObject3 = this.jdField_a_of_type_AndroidContentResColorStateList;
-      if (((!this.jdField_a_of_type_Boolean) || (!nav.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) && (!aofk.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) && (!this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())) {
-        break label382;
-      }
-    }
-    label376:
-    label382:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      ((BaseChatItemLayout)localObject2).a(bool1, (CharSequence)localObject1, (ColorStateList)localObject3, bool2, this.jdField_b_of_type_Boolean, this.d, this.c, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_JavaLangString, i, j, k, m, n, paramTroopMemberInfo.mIsHideBigClub);
-      if (this.jdField_a_of_type_Int == 1) {
-        BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, ((CharSequence)localObject1).toString(), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_Aelt);
-      }
-      bdnm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.e, (Spannable)localObject1);
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "1");
       return;
-      bool1 = false;
-      break;
     }
   }
 }

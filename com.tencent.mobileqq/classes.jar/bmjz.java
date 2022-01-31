@@ -1,25 +1,11 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
-
 class bmjz
-  implements bhpo
+  implements blwe
 {
-  int jdField_a_of_type_Int = 0;
+  bmjz(bmjt parambmjt) {}
   
-  bmjz(bmjx parambmjx) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void aY_()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bmjx.a(this.jdField_a_of_type_Bmjx, bmjx.a(this.jdField_a_of_type_Bmjx)).a().size()) && (!bmjx.a(this.jdField_a_of_type_Bmjx, bmjx.a(this.jdField_a_of_type_Bmjx)).a()))
-    {
-      paramAbsListView = bmjx.a(this.jdField_a_of_type_Bmjx);
-      bmjx.a(this.jdField_a_of_type_Bmjx, bmjx.a(this.jdField_a_of_type_Bmjx)).b(paramAbsListView);
-    }
+    bmjt.a(this.a).e();
   }
 }
 

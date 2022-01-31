@@ -31,7 +31,7 @@ public class owg
         {
           return;
           localQQMessageFacade = localQQAppInterface.a();
-          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(aljq.aS, 1008);
+          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(alof.aS, 1008);
         } while (localMessageForStructing == null);
         if (!localMessageForStructing.mIsParsed) {
           localMessageForStructing.parse();

@@ -1,6 +1,21 @@
-public abstract interface vrh
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+
+public class vrh
+  extends JobSegment<wiq, wiq>
 {
-  public abstract boolean a();
+  public vrh(vrd paramvrd) {}
+  
+  protected void a(JobContext paramJobContext, wiq paramwiq)
+  {
+    paramwiq.a(vrd.a(this.a).a(paramwiq.a.feedId, true), true, true);
+    if (paramwiq.a()) {
+      paramwiq.a(vrd.a(this.a).a(vrd.a(this.a), false), true, false);
+    }
+    wxe.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", vrd.a(this.a).toString());
+    notifyResult(paramwiq);
+  }
 }
 
 

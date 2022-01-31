@@ -6,26 +6,26 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivit
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class nyn
-  implements appt
+  implements apuc
 {
   public nyn(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(appw paramappw)
+  public void a(apuf paramapuf)
   {
-    if ((paramappw instanceof aptm))
+    if ((paramapuf instanceof apxv))
     {
-      paramappw = (aptm)paramappw;
+      paramapuf = (apxv)paramapuf;
       if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-        ((ReadInJoyDeliverUGCActivity)this.a).a(paramappw);
+        ((ReadInJoyDeliverUGCActivity)this.a).a(paramapuf);
       }
       return;
     }
-    ReadInJoyBaseDeliverActivity.a(this.a.app, paramappw, this.a.a);
+    ReadInJoyBaseDeliverActivity.a(this.a.app, paramapuf, this.a.a);
   }
   
-  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
   
-  public boolean a(appw paramappw)
+  public boolean a(apuf paramapuf)
   {
     return true;
   }
@@ -54,7 +54,7 @@ public class nyn
     }
   }
   
-  public void b(appw paramappw) {}
+  public void b(apuf paramapuf) {}
   
   public void c() {}
   

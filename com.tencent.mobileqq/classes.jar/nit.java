@@ -3,9 +3,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 
 public class nit
-  implements bhqd
+  implements bhuk
 {
-  nit(nin paramnin, npo paramnpo, bhpy parambhpy) {}
+  nit(nin paramnin, npo paramnpo, bhuf parambhuf) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -16,7 +16,7 @@ public class nit
     this.jdField_a_of_type_Nin.f = true;
     if (paramInt + 1 == 1)
     {
-      if (!aljq.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString)) {
+      if (!alof.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString)) {
         break label209;
       }
       nrt.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
@@ -25,15 +25,15 @@ public class nit
     label209:
     for (;;)
     {
-      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
-      this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh = new amnh(new niu(this, i));
-      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
-      amnm.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
-      this.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw);
+      this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw = new amrw(new niu(this, i));
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw);
+      amsb.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
       int j = 3;
       i = j;
-      if (aljq.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString))
+      if (alof.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString))
       {
         nrt.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
         i = j;

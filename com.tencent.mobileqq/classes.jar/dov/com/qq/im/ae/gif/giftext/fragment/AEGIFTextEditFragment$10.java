@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bkxy;
-import bkzl;
+import blcf;
+import blds;
 
 public class AEGIFTextEditFragment$10
   implements Runnable
 {
-  public AEGIFTextEditFragment$10(bkzl parambkzl, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  public AEGIFTextEditFragment$10(blds paramblds, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   public void run()
   {
-    bkzl.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    bkzl.a(this.this$0).a(this.jdField_a_of_type_Int);
+    blds.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    blds.a(this.this$0).a(this.jdField_a_of_type_Int);
     if (this.b.equals("#ccffffff"))
     {
-      bkzl.a(this.this$0).a(false, true);
+      blds.a(this.this$0).a(false, true);
       return;
     }
-    bkzl.a(this.this$0).a(true, false);
+    blds.a(this.this$0).a(true, false);
   }
 }
 

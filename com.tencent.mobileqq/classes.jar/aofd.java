@@ -1,25 +1,17 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aofd
-  implements Comparator<Rect>
+public class aofd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  aofd(aofb paramaofb) {}
+  public aofd(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public boolean onPreDraw()
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return 1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return -1;
-    }
-    return 0;
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ColorNoteSmallScreenRelativeLayout.a(this.a);
+    return true;
   }
 }
 

@@ -1,67 +1,33 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-public class ahkd
-  implements ahlb
+class ahkd
+  implements View.OnClickListener
 {
-  public ahkd(NotificationView paramNotificationView) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  ahkd(ahkb paramahkb) {}
+  
+  public void onClick(View paramView)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    String str = this.jdField_a_of_type_Ahkb.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
     {
-      i = 1;
-      if (i == 0) {
-        break label131;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("NotificationView", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      ahla.a(this.a.jdField_a_of_type_AndroidContentContext, paramString);
-      ahla.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-        this.a.jdField_a_of_type_Bepp.dismiss();
-      }
+      ahke.a().b(ahkb.a(this.jdField_a_of_type_Ahkb), str);
+      this.jdField_a_of_type_Ahkb.a();
     }
-    label131:
-    do
-    {
+    while ((paramView != this.jdField_a_of_type_AndroidViewView) || (ahkb.a(this.jdField_a_of_type_Ahkb) == null)) {
       return;
-      i = 0;
-      break;
-      paramStructMsg = ahla.a(paramString);
-      if (paramStructMsg == null) {
-        break label269;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("NotificationView", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-      }
-      NotificationView.a(this.a, 1, (structmsg.StructMsg)paramStructMsg.get());
-    } while (paramStructMsg.msg.group_msg_type.get() != 2);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
-    azmj.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
-    return;
-    label269:
-    if (QLog.isColorLevel()) {
-      QLog.e("NotificationView", 2, "NotificationView onTroopPrivilege cache error--------------");
     }
-    azmj.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop_error", "", "", "");
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
-      this.a.jdField_a_of_type_Bepp.dismiss();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("NotificationView", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
-    }
-    azmj.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+    ahkb.a(this.jdField_a_of_type_Ahkb).a(str);
   }
 }
 

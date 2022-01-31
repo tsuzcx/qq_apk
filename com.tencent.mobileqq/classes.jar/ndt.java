@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ndt
-  extends baig
+  extends bamp
 {
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   String jdField_a_of_type_JavaLangString = "";
@@ -28,7 +28,7 @@ public class ndt
   protected void a()
   {
     super.a();
-    Matcher localMatcher = Pattern.compile(baiu.b + "|" + "QQ语音").matcher(this.e);
+    Matcher localMatcher = Pattern.compile(band.b + "|" + "QQ语音").matcher(this.e);
     while (localMatcher.find())
     {
       int i = localMatcher.start();

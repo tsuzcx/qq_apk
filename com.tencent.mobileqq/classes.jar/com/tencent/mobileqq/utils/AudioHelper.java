@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import alpo;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -22,15 +22,15 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import aowf;
-import ayvc;
-import azfz;
-import bdag;
-import bdax;
-import bday;
-import bdcb;
-import bdiv;
-import bdje;
+import apao;
+import ayzl;
+import azki;
+import bdep;
+import bdfg;
+import bdfh;
+import bdgk;
+import bdne;
+import bdnn;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.AVColorStateList;
 import com.tencent.beacon.event.UserAction;
@@ -63,7 +63,7 @@ public class AudioHelper
   static String jdField_a_of_type_JavaLangString;
   public static boolean a;
   public static final int[] a;
-  private static bday[] jdField_a_of_type_ArrayOfBday;
+  private static bdfh[] jdField_a_of_type_ArrayOfBdfh;
   private static long jdField_b_of_type_Long;
   static String jdField_b_of_type_JavaLangString;
   public static boolean b;
@@ -118,7 +118,7 @@ public class AudioHelper
     if (w()) {
       return System.currentTimeMillis();
     }
-    return ayvc.a() * 1000L;
+    return ayzl.a() * 1000L;
   }
   
   /* Error */
@@ -186,53 +186,53 @@ public class AudioHelper
     return 0L;
   }
   
-  public static bday a()
+  public static bdfh a()
   {
     if (g()) {
-      return new bday(0, 0, true);
+      return new bdfh(0, 0, true);
     }
-    return new bday(3, 0, true);
+    return new bdfh(3, 0, true);
   }
   
-  private static bday a(int paramInt)
+  private static bdfh a(int paramInt)
   {
-    bday localbday;
+    bdfh localbdfh;
     if (paramInt == 0) {
-      localbday = a();
+      localbdfh = a();
     }
     for (;;)
     {
       String str = "!@$#_" + paramInt + "_";
       SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext());
-      localbday.jdField_a_of_type_Int = localSharedPreferences.getInt(str + "m", localbday.jdField_a_of_type_Int);
-      localbday.b = localSharedPreferences.getInt(str + "s", localbday.b);
-      localbday.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(str + "so", localbday.jdField_a_of_type_Boolean);
-      return a(paramInt, localbday);
+      localbdfh.jdField_a_of_type_Int = localSharedPreferences.getInt(str + "m", localbdfh.jdField_a_of_type_Int);
+      localbdfh.b = localSharedPreferences.getInt(str + "s", localbdfh.b);
+      localbdfh.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(str + "so", localbdfh.jdField_a_of_type_Boolean);
+      return a(paramInt, localbdfh);
       if (paramInt == 1)
       {
-        localbday = b();
+        localbdfh = b();
       }
       else if (paramInt == 2)
       {
-        localbday = a();
-        localbday.jdField_a_of_type_Boolean = false;
+        localbdfh = a();
+        localbdfh.jdField_a_of_type_Boolean = false;
       }
       else if (paramInt == 3)
       {
-        localbday = a();
-        localbday.jdField_a_of_type_Boolean = false;
+        localbdfh = a();
+        localbdfh.jdField_a_of_type_Boolean = false;
       }
       else
       {
-        localbday = c();
-        localbday.jdField_a_of_type_Boolean = false;
+        localbdfh = c();
+        localbdfh.jdField_a_of_type_Boolean = false;
       }
     }
   }
   
-  private static bday a(int paramInt, bday parambday)
+  private static bdfh a(int paramInt, bdfh parambdfh)
   {
-    parambday = new bday(parambday.b, parambday.jdField_a_of_type_Int, parambday.jdField_a_of_type_Boolean);
+    parambdfh = new bdfh(parambdfh.b, parambdfh.jdField_a_of_type_Int, parambdfh.jdField_a_of_type_Boolean);
     Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.qq_audio_play_fix.name(), null);
     if (QLog.isColorLevel()) {
       QLog.d(AudioHelper.class.getSimpleName(), 2, "getDPCFixConfig | dpcConfig = " + (String)localObject);
@@ -244,23 +244,23 @@ public class AudioHelper
         if (paramInt == 0)
         {
           if (!"-1".equals(localObject[0])) {
-            parambday.jdField_a_of_type_Int = Integer.parseInt(localObject[0]);
+            parambdfh.jdField_a_of_type_Int = Integer.parseInt(localObject[0]);
           }
           if (!"-1".equals(localObject[1]))
           {
-            parambday.b = Integer.parseInt(localObject[1]);
-            return parambday;
+            parambdfh.b = Integer.parseInt(localObject[1]);
+            return parambdfh;
           }
         }
         else if (paramInt == 1)
         {
           if (!"-1".equals(localObject[2])) {
-            parambday.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+            parambdfh.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
           }
           if (!"-1".equals(localObject[3]))
           {
-            parambday.b = Integer.parseInt(localObject[3]);
-            return parambday;
+            parambdfh.b = Integer.parseInt(localObject[3]);
+            return parambdfh;
           }
         }
       }
@@ -271,7 +271,7 @@ public class AudioHelper
         }
       }
     }
-    return parambday;
+    return parambdfh;
   }
   
   public static String a(Resources paramResources, int paramInt)
@@ -327,7 +327,7 @@ public class AudioHelper
           if ((paramAppInterface instanceof VideoAppInterface))
           {
             l = lnz.d();
-            jdField_b_of_type_JavaLangString = "BaseInfo, APPID[" + AppSetting.a() + "], \nisPublicVersion[" + true + "], \nisGrayVersion[" + false + "], \nisDebugVersion[" + false + "], \nquaMainVersion[" + "2013 8.3.3" + "], \nversionCode[" + aowf.a(paramAppInterface.getApp()) + "], \nrevision[" + AppSetting.g() + "], \nisSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], \nStatusBarHeight[" + ImmersiveUtils.getStatusBarHeight(paramAppInterface.getApp()) + "], \nhasSmartBar[" + mww.a() + "], \naboutSubVersionLog[" + AppSetting.b() + "], \ngetQUA[" + a(AppSetting.e()) + "], \nTYPE[" + Build.TYPE + "], \nTAGS[" + Build.TAGS + "], \nMANUFACTURER[" + Build.MANUFACTURER + "], \nPRODUCT[" + Build.PRODUCT + "], \nRELEASE[" + Build.VERSION.RELEASE + "], \nDISPLAY[" + Build.DISPLAY + "], \nCODENAME[" + Build.VERSION.CODENAME + "], \nINCREMENTAL[" + Build.VERSION.INCREMENTAL + "], \nBRAND[" + Build.BRAND + "], \nMODEL[" + Build.MODEL + "], \nCPU_ABI[" + Build.CPU_ABI + "], \nCPU_ABI2[" + Build.CPU_ABI2 + "], \nCPU[" + Build.HARDWARE + "], \nCPUModel[" + lnz.a() + "], \nisExistSDCard[" + bdag.a() + "], \nsdkVersion[" + Build.VERSION.SDK_INT + "], \ndevicesInfo[" + AppSetting.c + "], \nVendorId[" + lnz.h() + "], \nIsMarvell[" + lnz.g() + "], \nOpenGLVersion[" + lnz.g() + "], \nGLVersion[" + lux.a(paramAppInterface.getApp()) + "], \ncupReport[" + lnz.e() + "], \nFeature[" + lnz.g() + "], \nMaxCpuFreq[" + l + "], \nSystemTotalMemory[" + bdcb.d() + "], \nCpuNum[" + bdcb.b() + "], \nuid[" + paramAppInterface.getApp().getApplicationInfo().uid + "], \nPermission_PackageName[" + paramAppInterface.getApp().getPackageName() + "], \n";
+            jdField_b_of_type_JavaLangString = "BaseInfo, APPID[" + AppSetting.a() + "], \nisPublicVersion[" + true + "], \nisGrayVersion[" + false + "], \nisDebugVersion[" + false + "], \nquaMainVersion[" + "2013 8.3.5" + "], \nversionCode[" + apao.a(paramAppInterface.getApp()) + "], \nrevision[" + AppSetting.g() + "], \nisSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], \nStatusBarHeight[" + ImmersiveUtils.getStatusBarHeight(paramAppInterface.getApp()) + "], \nhasSmartBar[" + mww.a() + "], \naboutSubVersionLog[" + AppSetting.b() + "], \ngetQUA[" + a(AppSetting.e()) + "], \nTYPE[" + Build.TYPE + "], \nTAGS[" + Build.TAGS + "], \nMANUFACTURER[" + Build.MANUFACTURER + "], \nPRODUCT[" + Build.PRODUCT + "], \nRELEASE[" + Build.VERSION.RELEASE + "], \nDISPLAY[" + Build.DISPLAY + "], \nCODENAME[" + Build.VERSION.CODENAME + "], \nINCREMENTAL[" + Build.VERSION.INCREMENTAL + "], \nBRAND[" + Build.BRAND + "], \nMODEL[" + Build.MODEL + "], \nCPU_ABI[" + Build.CPU_ABI + "], \nCPU_ABI2[" + Build.CPU_ABI2 + "], \nCPU[" + Build.HARDWARE + "], \nCPUModel[" + lnz.a() + "], \nisExistSDCard[" + bdep.a() + "], \nsdkVersion[" + Build.VERSION.SDK_INT + "], \ndevicesInfo[" + AppSetting.c + "], \nVendorId[" + lnz.h() + "], \nIsMarvell[" + lnz.g() + "], \nOpenGLVersion[" + lnz.g() + "], \nGLVersion[" + lux.a(paramAppInterface.getApp()) + "], \ncupReport[" + lnz.e() + "], \nFeature[" + lnz.g() + "], \nMaxCpuFreq[" + l + "], \nSystemTotalMemory[" + bdgk.d() + "], \nCpuNum[" + bdgk.b() + "], \nuid[" + paramAppInterface.getApp().getApplicationInfo().uid + "], \nPermission_PackageName[" + paramAppInterface.getApp().getPackageName() + "], \n";
           }
         }
         else
@@ -343,7 +343,7 @@ public class AudioHelper
         QLog.w("AudioHelper", 1, "printBaseInfo, Exception", paramAppInterface);
         return paramAppInterface.getMessage();
       }
-      long l = bdcb.a();
+      long l = bdgk.a();
     }
   }
   
@@ -407,10 +407,10 @@ public class AudioHelper
     return "***";
   }
   
-  public static void a(int paramInt, bday parambday)
+  public static void a(int paramInt, bdfh parambdfh)
   {
     String str = "!@$#_" + paramInt + "_";
-    PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext()).edit().putInt(str + "m", parambday.jdField_a_of_type_Int).putInt(str + "s", parambday.b).putBoolean(str + "so", parambday.jdField_a_of_type_Boolean).commit();
+    PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext()).edit().putInt(str + "m", parambdfh.jdField_a_of_type_Int).putInt(str + "s", parambdfh.b).putBoolean(str + "so", parambdfh.jdField_a_of_type_Boolean).commit();
   }
   
   public static void a(long paramLong)
@@ -652,9 +652,9 @@ public class AudioHelper
   public static boolean a()
   {
     String str2 = Build.MANUFACTURER + ";" + Build.MODEL + ";" + Build.VERSION.SDK_INT;
-    String str1 = bdiv.d(BaseApplicationImpl.getContext());
+    String str1 = bdne.d(BaseApplicationImpl.getContext());
     Object localObject = str1;
-    if (bdje.a(str1)) {
+    if (bdnn.a(str1)) {
       localObject = "HUAWEI;HUAWEI NXT-AL10;24|HUAWEI;FRD-AL00;24|HUAWEI;EVA-AL00;24|HUAWEI;KNT-AL10;24|HUAWEI;EDI-AL10;24";
     }
     if (QLog.isColorLevel()) {
@@ -772,28 +772,28 @@ public class AudioHelper
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("tencent.video.q2v.debug");
-      if (paramBaseApplicationImpl.registerReceiver(new bdax(paramBaseApplicationImpl), localIntentFilter) != null) {
+      if (paramBaseApplicationImpl.registerReceiver(new bdfg(paramBaseApplicationImpl), localIntentFilter) != null) {
         return true;
       }
     }
     return false;
   }
   
-  public static bday[] a()
+  public static bdfh[] a()
   {
     try
     {
-      if (jdField_a_of_type_ArrayOfBday == null)
+      if (jdField_a_of_type_ArrayOfBdfh == null)
       {
-        jdField_a_of_type_ArrayOfBday = new bday[5];
-        jdField_a_of_type_ArrayOfBday[0] = a(0);
-        jdField_a_of_type_ArrayOfBday[1] = a(1);
-        jdField_a_of_type_ArrayOfBday[2] = a(2);
-        jdField_a_of_type_ArrayOfBday[3] = a(3);
-        jdField_a_of_type_ArrayOfBday[4] = a(4);
+        jdField_a_of_type_ArrayOfBdfh = new bdfh[5];
+        jdField_a_of_type_ArrayOfBdfh[0] = a(0);
+        jdField_a_of_type_ArrayOfBdfh[1] = a(1);
+        jdField_a_of_type_ArrayOfBdfh[2] = a(2);
+        jdField_a_of_type_ArrayOfBdfh[3] = a(3);
+        jdField_a_of_type_ArrayOfBdfh[4] = a(4);
       }
-      bday[] arrayOfbday = jdField_a_of_type_ArrayOfBday;
-      return arrayOfbday;
+      bdfh[] arrayOfbdfh = jdField_a_of_type_ArrayOfBdfh;
+      return arrayOfbdfh;
     }
     finally {}
   }
@@ -814,45 +814,45 @@ public class AudioHelper
   }
   
   @TargetApi(11)
-  public static bday b()
+  public static bdfh b()
   {
     if (q()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (h()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (i()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (j()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (k()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (m()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if ((b()) || (l())) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (n()) {
-      return new bday(0, 2, false);
+      return new bdfh(0, 2, false);
     }
     if (o()) {
-      return new bday(0, 2, false);
+      return new bdfh(0, 2, false);
     }
     if (p()) {
-      return new bday(3, 3, false);
+      return new bdfh(3, 3, false);
     }
     if (r()) {
-      return new bday(0, 0, false);
+      return new bdfh(0, 0, false);
     }
     if (Build.VERSION.SDK_INT >= 11) {
-      return new bday(0, 3, false);
+      return new bdfh(0, 3, false);
     }
-    return new bday(0, 2, false);
+    return new bdfh(0, 2, false);
   }
   
   @TargetApi(17)
@@ -890,9 +890,9 @@ public class AudioHelper
     return 0L;
   }
   
-  public static bday c()
+  public static bdfh c()
   {
-    return new bday(0, 2, true);
+    return new bdfh(0, 2, true);
   }
   
   public static void c(String paramString)
@@ -924,7 +924,7 @@ public class AudioHelper
   
   public static boolean f()
   {
-    if (!azfz.m())
+    if (!azki.m())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AudioHelper", 2, "isHuaweiGreenForSegment true");
@@ -1063,7 +1063,7 @@ public class AudioHelper
   {
     if (a(15) == 1)
     {
-      a(alpo.a(2131701163));
+      a(alud.a(2131701175));
       return true;
     }
     return false;

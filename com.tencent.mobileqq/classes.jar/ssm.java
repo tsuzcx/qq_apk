@@ -41,7 +41,7 @@ class ssm
             }
             ssk.b(this.jdField_a_of_type_Ssk, this.jdField_a_of_type_Ssj);
             StructLongMessageDownloadProcessor.a(ssk.a(this.jdField_a_of_type_Ssk), this.jdField_a_of_type_Ssj.a);
-            ((bcic)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
+            ((bcml)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
             return;
           }
           ssk.a(this.jdField_a_of_type_Ssk);

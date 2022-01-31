@@ -1,6 +1,19 @@
-public abstract interface aese
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+
+public final class aese
+  implements Parcelable.Creator<ForwardUtils.Section_Pic>
 {
-  public abstract void a(boolean paramBoolean);
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
+  {
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
+  }
 }
 
 

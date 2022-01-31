@@ -1,31 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
-class aurv
-  extends alxx
+public class aurv
+  implements ServiceConnection
 {
-  aurv(auru paramauru) {}
+  public aurv(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (paramInt == 1)
+    MusicPlayerActivity.a(this.a, auqu.a(paramIBinder));
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
+      {
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (ausc)MusicPlayerActivity.b().get(str), paramIBinder);
+        }
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
+        }
       }
-      auru.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+      return;
     }
+    catch (Exception paramComponentName) {}
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (paramInt == 1)
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
-      }
-      auru.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
     }
+    catch (RemoteException paramComponentName) {}
   }
 }
 

@@ -1,60 +1,57 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class acoo
-  extends baua
+  extends alwx
 {
-  final WeakReference<Conversation> a;
+  public acoo(ChatSettingActivity paramChatSettingActivity) {}
   
-  public acoo(Conversation paramConversation)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int j = 0;
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
-    do
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      baoj localbaoj;
-      int k;
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          localbaoj = (baoj)paramMessage.obj;
-        } while ((Conversation.a(localConversation) == null) || (localbaoj == null) || (TextUtils.isEmpty(localbaoj.p)));
-        k = paramMessage.what;
-        if (localbaoj.b != 1)
-        {
-          i = j;
-          if (localbaoj.b != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localbaoj.b != 2) && (!localConversation.f))));
-      localConversation.a(8, localbaoj.p, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131720075, 1);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+    }
+    ChatSettingActivity.g(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131720075, 1);
   }
 }
 

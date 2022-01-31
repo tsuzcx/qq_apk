@@ -1,6 +1,9 @@
+import android.view.View;
+import com.tencent.widget.AdapterView;
+
 public abstract interface bhuw
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5);
+  public abstract void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
 }
 
 

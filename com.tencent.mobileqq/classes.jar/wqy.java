@@ -1,15 +1,39 @@
 import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
-class wqy
-  implements wrd
+public class wqy
+  extends xvd<wrb>
 {
-  wqy(wqx paramwqx, ImageView paramImageView) {}
+  private LruCache<wrb, Drawable> a = new wqz(this, 5242880);
   
-  public void a(Drawable paramDrawable)
+  public LruCache<wrb, Drawable> a()
   {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    return this.a;
+  }
+  
+  public xve a(ImageView paramImageView, wrb paramwrb)
+  {
+    return new wrc(paramImageView, paramwrb);
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.a = new wra(this, 5242880);
     }
   }
 }

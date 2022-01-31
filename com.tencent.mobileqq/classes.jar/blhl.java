@@ -1,21 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-import dov.com.qq.im.aeeditor.view.ClipConstant.Anchor;
-import dov.com.qq.im.aeeditor.view.EditorClipView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class blhl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements betp
 {
-  public blhl(AEEditorImageClipFragment paramAEEditorImageClipFragment, EditorClipView paramEditorClipView) {}
+  public blhl(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.b(ClipConstant.Anchor.TOP.v);
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.a(0.0F, i - AEEditorImageClipFragment.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment));
-    AEEditorImageClipFragment.d(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment, i);
-  }
+  public void a(betn parambetn) {}
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

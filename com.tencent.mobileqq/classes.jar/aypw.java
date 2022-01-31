@@ -1,108 +1,114 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aypw
+class aypw
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public final aypx a;
-  public String a;
-  public int b;
+  aypw(aypv paramaypv) {}
   
-  public aypw(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aypx = paramaypx;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  protected abstract ayjk a(List<ayjl> paramList, String paramString);
-  
-  public List<ayjk> a(ayql paramayql)
-  {
-    boolean bool2 = false;
-    long l = System.currentTimeMillis();
-    if (paramayql.jdField_a_of_type_AndroidOsBundle == null) {
-      paramayql.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    Object localObject2 = paramView.getTag(2131377450);
+    Object localObject3 = paramView.getTag(2131377451);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "tag_url=" + localObject2 + "  tag_wording=" + localObject3);
     }
-    paramayql.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
-    ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_Aypx.a(paramayql);
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-    if ((localList != null) && (!localList.isEmpty()))
+    Object localObject1 = "";
+    Context localContext;
+    int i;
+    if ((localObject2 instanceof String))
     {
-      ayjk localayjk = a(localList, paramayql.jdField_a_of_type_JavaLangString);
-      if (((localayjk instanceof ayiv)) && (localayjk.a() != null) && (localayjk.a().size() > 0)) {
-        paramayql.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-      }
-      boolean bool1;
-      if (localayjk != null)
+      localContext = paramView.getContext();
+      localObject2 = (String)localObject2;
+      if ((localContext instanceof UniteSearchActivity))
       {
-        bool1 = bool2;
-        if (localayjk.a() != null)
+        localObject1 = (UniteSearchActivity)localContext;
+        switch (((UniteSearchActivity)localObject1).a)
         {
-          bool1 = bool2;
-          if (localayjk.a().size() > localayjk.a()) {
-            bool1 = true;
-          }
-        }
-        if (!(localayjk instanceof biru)) {
-          break label385;
-        }
-      }
-      for (;;)
-      {
-        localArrayList.add(localayjk);
-        localayjk = b(localList, paramayql.jdField_a_of_type_JavaLangString);
-        if (((localayjk instanceof ayiv)) && (localayjk.a() != null) && (localayjk.a().size() > 0)) {
-          paramayql.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localayjk != null)
-        {
-          localArrayList.add(new ayis(localayjk));
-          localArrayList.add(localayjk);
-        }
-        localayjk = c(localList, paramayql.jdField_a_of_type_JavaLangString);
-        if (((localayjk instanceof ayix)) && (localayjk.a() != null) && (localayjk.a().size() > 0)) {
-          paramayql.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localayjk != null)
-        {
-          localArrayList.add(new ayis(localayjk));
-          localArrayList.add(localayjk);
-        }
-        this.jdField_a_of_type_Int = localList.size();
-        return localArrayList;
-        label385:
-        if ((localayjk instanceof aqyn)) {
-          localArrayList.add(new ayis(localayjk, alpo.a(2131705763), bool1));
-        } else if (bdli.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
-          localArrayList.add(new ayis(localayjk, localayjk.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
-        } else if ((localayjk instanceof ayjd)) {
-          localArrayList.add(new ayis(localayjk, alpo.a(2131705743), true));
-        } else if ((localayjk instanceof ayiz)) {
-          localArrayList.add(new ayis(localayjk, localayjk.a(), bool1));
-        } else if ((localayjk instanceof ayhd)) {
-          localArrayList.add(new ayis(localayjk, alpo.a(2131705751), bool1));
-        } else {
-          localArrayList.add(new ayis(localayjk));
+        default: 
+          i = 0;
+          ayvm.a("all_result", "clk_relatedsearch_list", new String[] { "" + localObject3, ((UniteSearchActivity)localObject1).a + "", "" + ayvj.a((String)localObject3, i) });
+          paramView = (ayms)paramView.getTag(2131379971);
+          localObject1 = new JSONObject();
         }
       }
     }
-    this.jdField_a_of_type_Int = 0;
-    return localArrayList;
-  }
-  
-  protected ayjk b(List<ayjl> paramList, String paramString)
-  {
-    return null;
-  }
-  
-  protected ayjk c(List<ayjl> paramList, String paramString)
-  {
-    return null;
+    for (;;)
+    {
+      try
+      {
+        ((JSONObject)localObject1).put("project", aysc.a());
+        ((JSONObject)localObject1).put("event_src", "client");
+        ((JSONObject)localObject1).put("experiment_id", aysc.b);
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(paramView.d() + "").obj2(paramView.b).ver1(paramView.a()).ver2(aysc.a(paramView.a));
+        if (localObject3 == null)
+        {
+          paramView = "";
+          aysc.a(null, localReportModelDC02528.ver4(paramView).ver7(((JSONObject)localObject1).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.a));
+          localObject1 = ayvj.d(i);
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label645;
+          }
+          paramView = (View)localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            paramView = "user_relative_word";
+          }
+          paramView = ayvj.a((String)localObject3, 3, paramView);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "open Browser append suffix url = " + paramView);
+          }
+          if ((!paramView.startsWith("https://")) && (!paramView.startsWith("http://"))) {
+            continue;
+          }
+          localObject1 = new Intent(localContext, QQBrowserActivity.class);
+          ((Intent)localObject1).putExtra("url", paramView);
+          localContext.startActivity((Intent)localObject1);
+          return;
+          i = 1;
+          break;
+          i = 2;
+          break;
+          i = 3;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "e = " + localJSONException);
+        continue;
+        paramView = localObject3.toString();
+        continue;
+        if ((localContext instanceof BaseActivity))
+        {
+          localObject1 = bdib.a(((BaseActivity)localContext).app, localContext, paramView);
+          if (localObject1 != null)
+          {
+            ((bdhk)localObject1).c();
+            return;
+          }
+          localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse(paramView)));
+          return;
+        }
+        localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse(paramView)));
+        return;
+      }
+      label645:
+      paramView = (View)localObject2;
+    }
   }
 }
 

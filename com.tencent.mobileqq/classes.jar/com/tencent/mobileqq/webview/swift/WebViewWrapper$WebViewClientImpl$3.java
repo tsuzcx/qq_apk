@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview.swift;
 
-import beda;
+import behj;
 
 public class WebViewWrapper$WebViewClientImpl$3
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$3(beda parambeda, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapper$WebViewClientImpl$3(behj parambehj, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

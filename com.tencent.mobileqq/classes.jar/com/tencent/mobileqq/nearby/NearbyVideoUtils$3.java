@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
 import android.text.TextUtils;
-import batw;
-import baub;
+import bayf;
+import bayk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class NearbyVideoUtils$3
@@ -14,11 +14,11 @@ public final class NearbyVideoUtils$3
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      baub localbaub = new baub();
-      localbaub.a = true;
-      localbaub.i = this.jdField_a_of_type_JavaLangString;
-      localbaub.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbaub);
+      bayk localbayk = new bayk();
+      localbayk.a = true;
+      localbayk.i = this.jdField_a_of_type_JavaLangString;
+      localbayk.b = 64;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbayk);
     }
   }
 }

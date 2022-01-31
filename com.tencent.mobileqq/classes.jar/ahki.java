@@ -1,39 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 
-class ahki
-  implements View.OnClickListener
+public class ahki
+  implements nar
 {
-  ahki(ahke paramahke) {}
+  public ahki(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    if ((paramView == null) || (TextUtils.isEmpty(paramView.uin)))
-    {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
       return;
     }
-    alws.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramView.uin, new ahkj(this));
-    this.a.b.remove(paramView);
-    this.a.notifyDataSetChanged();
-    if ((this.a.b != null) && (this.a.b.size() == 0)) {
-      this.a.jdField_a_of_type_Ahjp.a().sendEmptyMessage(100);
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-    if (ahke.a(this.a) != null)
-    {
-      alws localalws = (alws)ahke.a(this.a).getManager(22);
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        localalws.a(1);
-      }
-      localalws.a(paramView.uin);
-    }
-    azmj.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, paramView.uin, "", "", "");
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 

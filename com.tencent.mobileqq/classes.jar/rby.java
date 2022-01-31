@@ -128,7 +128,7 @@ public class rby
       localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment == null)
       {
-        Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentById(2131364586);
+        Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentById(2131364588);
         if ((localFragment instanceof ReadInJoyCommentListFragment)) {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = ((ReadInJoyCommentListFragment)localFragment);
         }
@@ -143,7 +143,7 @@ public class rby
     for (boolean bool = false;; bool = true)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(localArticleInfo, paramAnchorData, bool, 2);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null) && (bdee.h(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))) {
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null) && (bdin.h(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.h(true);
       }
       this.jdField_a_of_type_Boolean = true;
@@ -202,7 +202,7 @@ public class rby
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new rca(this), this.jdField_a_of_type_AndroidViewViewGroup);
       localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-      ((FragmentTransaction)localObject).add(2131364586, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+      ((FragmentTransaction)localObject).add(2131364588, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
       ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }

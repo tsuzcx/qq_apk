@@ -1,32 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wai
-  extends QQUIEventReceiver<IEventReceiver, uzm>
+class wai
+  implements DialogInterface.OnDismissListener
 {
-  public wai(@NonNull IEventReceiver paramIEventReceiver)
-  {
-    super(paramIEventReceiver);
-  }
+  wai(wah paramwah, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull uzm paramuzm)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramuzm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      QQToast.a(vhj.a(), 2, alpo.a(2131711415), 0).a();
-      wta.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramuzm.jdField_a_of_type_Int), "5" });
-      return;
-    }
-    QQToast.a(vhj.a(), 1, alpo.a(2131711410), 0).a();
-    wta.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uzm.class;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

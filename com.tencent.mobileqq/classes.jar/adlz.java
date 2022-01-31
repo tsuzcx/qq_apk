@@ -1,47 +1,42 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 
 public class adlz
-  implements bhqp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adlz(QQLSActivity paramQQLSActivity) {}
+  public adlz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
-    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "mRecentList is double click");
-      }
-      QQLSActivity.a(this.a, -1L);
-      QQLSActivity.b(this.a, 0L);
-      QQLSActivity.a(this.a, paramView);
-      QQLSActivity.a(this.a, true);
-      return;
-    }
+    boolean bool = false;
     if (QLog.isColorLevel()) {
-      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    QQLSActivity.a(this.a, paramLong);
-    QQLSActivity.b(this.a, System.currentTimeMillis());
-    if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131699450);
-    }
-    for (;;)
+    if (!NotifyPushSettingActivity.a(this.a).b())
     {
-      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
-      return;
-      QQLSActivity.a(this.a).setText(2131699449);
+      NotifyPushSettingActivity.a(this.a).a(this.a);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
+      paramBoolean = bool;
+      if (!NotifyPushSettingActivity.a(this.a).a()) {
+        paramBoolean = true;
+      }
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
+    do
+    {
+      return;
+      mti.a(this.a.app.getCurrentAccountUin(), paramBoolean);
+      if (!paramBoolean) {
+        azqs.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
   }
 }
 

@@ -1,22 +1,15 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class udg
-  extends LinearLayoutManager
+  implements DialogInterface.OnClickListener
 {
-  udg(udf paramudf, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  udg(udb paramudb, int paramInt) {}
   
-  public boolean canScrollHorizontally()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Udb.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Udb.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Udb.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int);
   }
 }
 

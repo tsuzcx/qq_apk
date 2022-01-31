@@ -1,23 +1,23 @@
 package com.tencent.qg.video.videodecoder;
 
-import bfto;
-import bftr;
-import bfts;
-import bftt;
-import bftu;
-import bftv;
-import bnjc;
+import bfxv;
+import bfxy;
+import bfxz;
+import bfya;
+import bfyb;
+import bfyc;
+import bnno;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.util.AudioEncoder;
-import wsv;
+import wxe;
 
 public class MediaDecoder
 {
   private volatile long jdField_a_of_type_Long = -1L;
-  private final bfto jdField_a_of_type_Bfto;
-  private bfts jdField_a_of_type_Bfts;
-  private final bftt jdField_a_of_type_Bftt;
-  private bftv jdField_a_of_type_Bftv;
+  private final bfxv jdField_a_of_type_Bfxv;
+  private bfxz jdField_a_of_type_Bfxz;
+  private final bfya jdField_a_of_type_Bfya;
+  private bfyc jdField_a_of_type_Bfyc;
   private MediaDecoder.DecodeRunnable jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
   private final boolean jdField_a_of_type_Boolean;
@@ -26,30 +26,30 @@ public class MediaDecoder
   private volatile boolean d;
   private volatile boolean e;
   
-  public MediaDecoder(String paramString, int paramInt1, bftv parambftv, boolean paramBoolean, int paramInt2)
+  public MediaDecoder(String paramString, int paramInt1, bfyc parambfyc, boolean paramBoolean, int paramInt2)
   {
-    wsv.a("Q.qqstory.mediadecoderMediaDecoder", "Construct MediaDecoder , src = %s , supportMusic = %s", paramString, Boolean.valueOf(paramBoolean));
-    this.jdField_a_of_type_Bfts = new bfts();
-    this.jdField_a_of_type_Bfts.jdField_a_of_type_Long = paramInt2;
+    wxe.a("Q.qqstory.mediadecoderMediaDecoder", "Construct MediaDecoder , src = %s , supportMusic = %s", paramString, Boolean.valueOf(paramBoolean));
+    this.jdField_a_of_type_Bfxz = new bfxz();
+    this.jdField_a_of_type_Bfxz.jdField_a_of_type_Long = paramInt2;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    bftr localbftr = new bftr();
-    localbftr.jdField_a_of_type_JavaLangString = "video/";
-    localbftr.b = paramString;
-    this.jdField_a_of_type_Bftt = new bftt(this.jdField_a_of_type_Bfts, localbftr, paramInt1, new bftu(this, parambftv));
-    bnjc localbnjc;
+    bfxy localbfxy = new bfxy();
+    localbfxy.jdField_a_of_type_JavaLangString = "video/";
+    localbfxy.b = paramString;
+    this.jdField_a_of_type_Bfya = new bfya(this.jdField_a_of_type_Bfxz, localbfxy, paramInt1, new bfyb(this, parambfyc));
+    bnno localbnno;
     if (this.jdField_a_of_type_Boolean)
     {
-      localbftr = new bftr();
-      localbftr.jdField_a_of_type_JavaLangString = "audio/";
-      localbftr.b = paramString;
-      localbnjc = new bnjc();
-      localbnjc.jdField_a_of_type_JavaLangString = paramString;
-      localbnjc.jdField_a_of_type_Azfn = AudioEncoder.a(paramString, null, 0);
+      localbfxy = new bfxy();
+      localbfxy.jdField_a_of_type_JavaLangString = "audio/";
+      localbfxy.b = paramString;
+      localbnno = new bnno();
+      localbnno.jdField_a_of_type_JavaLangString = paramString;
+      localbnno.jdField_a_of_type_Azjw = AudioEncoder.a(paramString, null, 0);
     }
-    for (this.jdField_a_of_type_Bfto = new bfto(this.jdField_a_of_type_Bfts, localbftr, localbnjc);; this.jdField_a_of_type_Bfto = null)
+    for (this.jdField_a_of_type_Bfxv = new bfxv(this.jdField_a_of_type_Bfxz, localbfxy, localbnno);; this.jdField_a_of_type_Bfxv = null)
     {
-      this.jdField_a_of_type_Bftv = parambftv;
-      this.jdField_a_of_type_Bftt.a(parambftv);
+      this.jdField_a_of_type_Bfyc = parambfyc;
+      this.jdField_a_of_type_Bfya.a(parambfyc);
       return;
     }
   }
@@ -61,12 +61,12 @@ public class MediaDecoder
   
   public long a()
   {
-    return this.jdField_a_of_type_Bftt.a() / 1000L;
+    return this.jdField_a_of_type_Bfya.a() / 1000L;
   }
   
   public void a()
   {
-    wsv.b("Q.qqstory.mediadecoderMediaDecoder", "start decode");
+    wxe.b("Q.qqstory.mediadecoderMediaDecoder", "start decode");
     this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable = new MediaDecoder.DecodeRunnable(this, null);
     this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable, "MediaDecoder-Thread", 8);
     this.jdField_a_of_type_JavaLangThread.start();
@@ -89,7 +89,7 @@ public class MediaDecoder
   
   public void b()
   {
-    wsv.b("Q.qqstory.mediadecoderMediaDecoder", "stopDecode");
+    wxe.b("Q.qqstory.mediadecoderMediaDecoder", "stopDecode");
     this.e = false;
     if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable != null)
     {
@@ -100,7 +100,7 @@ public class MediaDecoder
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bfts.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bfxz.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean b()
@@ -113,23 +113,23 @@ public class MediaDecoder
   
   public void c()
   {
-    wsv.b("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode");
+    wxe.b("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode");
     if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable != null)
     {
       this.d = true;
       return;
     }
-    wsv.d("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode failed, can not find DecodeRunnable");
+    wxe.d("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Bfts.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Bfxz.jdField_a_of_type_Boolean;
   }
   
   public void d()
   {
-    wsv.b("Q.qqstory.mediadecoderMediaDecoder", "resumeDecode");
+    wxe.b("Q.qqstory.mediadecoderMediaDecoder", "resumeDecode");
     MediaDecoder.DecodeRunnable localDecodeRunnable = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
     if (localDecodeRunnable != null)
     {
@@ -140,7 +140,7 @@ public class MediaDecoder
         return;
       }
     }
-    wsv.d("Q.qqstory.mediadecoderMediaDecoder", "resumeDecode failed, can not find DecodeRunnable");
+    wxe.d("Q.qqstory.mediadecoderMediaDecoder", "resumeDecode failed, can not find DecodeRunnable");
   }
 }
 

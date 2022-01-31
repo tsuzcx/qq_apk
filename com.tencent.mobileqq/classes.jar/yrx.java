@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 class yrx
-  implements View.OnClickListener
+  implements nfh
 {
-  yrx(yru paramyru, TroopGiftPanel paramTroopGiftPanel) {}
+  yrx(yrr paramyrr, Bundle paramBundle, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Yru.c();
-    this.jdField_a_of_type_Yru.b();
-    if (this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
-    {
-      this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
-      return;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
+    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
     }
-    ((BaseChatPie)this.jdField_a_of_type_Yru.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aW();
+    for (;;)
+    {
+      this.jdField_a_of_type_Yrr.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
+        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    this.jdField_a_of_type_Yrr.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

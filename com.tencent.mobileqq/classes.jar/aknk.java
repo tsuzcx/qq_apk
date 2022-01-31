@@ -1,117 +1,124 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class aknk<T>
+public class aknk
 {
-  protected final List<aknn> a = new ArrayList();
+  private static aknk jdField_a_of_type_Aknk;
+  private Map<Long, aknl> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Long, Long> b = new HashMap();
   
-  public void a(boolean paramBoolean)
+  public static aknk a()
   {
-    try
-    {
-      this.a.clear();
-      return;
+    if (jdField_a_of_type_Aknk == null) {
+      jdField_a_of_type_Aknk = new aknk();
     }
-    finally
+    return jdField_a_of_type_Aknk;
+  }
+  
+  public int a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      localObject = finally;
-      throw localObject;
+      aknl localaknl = (aknl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localaknl.jdField_a_of_type_Long < 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
+        }
+        return localaknl.jdField_a_of_type_Int;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        }
+        return 0;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.b.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "use default value, false");
+    }
+    return 0;
+  }
+  
+  public void a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.b.size() > 500) {
+      this.b.clear();
+    }
+    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
     }
   }
   
-  /* Error */
-  public boolean a()
+  public void a(long paramLong, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 17	aknk:a	Ljava/util/List;
-    //   6: invokeinterface 28 1 0
-    //   11: istore_1
-    //   12: iload_1
-    //   13: ifne +9 -> 22
-    //   16: iconst_1
-    //   17: istore_1
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload_1
-    //   21: ireturn
-    //   22: iconst_0
-    //   23: istore_1
-    //   24: goto -6 -> 18
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	aknk
-    //   11	13	1	bool	boolean
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	27	finally
-  }
-  
-  public boolean a(aknn paramaknn)
-  {
-    try
-    {
-      boolean bool = this.a.remove(paramaknn);
-      return bool;
+    long l = System.currentTimeMillis();
+    aknl localaknl = new aknl(this);
+    localaknl.jdField_a_of_type_Int = paramInt;
+    localaknl.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    finally
-    {
-      paramaknn = finally;
-      throw paramaknn;
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localaknl);
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
     }
   }
   
-  public abstract boolean a(T paramT, float paramFloat);
-  
-  /* Error */
-  public boolean a(List<aknn> paramList)
+  public boolean a(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +27 -> 30
-    //   6: aload_1
-    //   7: invokeinterface 28 1 0
-    //   12: ifne +18 -> 30
-    //   15: aload_0
-    //   16: getfield 17	aknk:a	Ljava/util/List;
-    //   19: aload_1
-    //   20: invokeinterface 39 2 0
-    //   25: istore_2
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_2
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_2
-    //   32: goto -6 -> 26
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	aknk
-    //   0	40	1	paramList	List<aknn>
-    //   25	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	35	finally
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((aknl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.b.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,6 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-
-public class akor
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface akor
 {
-  public akor(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

@@ -1,63 +1,67 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class alue
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
+  private static alue jdField_a_of_type_Alue;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.headDpcCfg.name();
+  private int jdField_a_of_type_Int = 1;
+  private alrb jdField_a_of_type_Alrb = new aluf(this);
   
-  public alue()
+  private alue()
   {
-    this.jdField_a_of_type_Int = -1;
+    DeviceProfileManager.a(this.jdField_a_of_type_Alrb);
+    a();
   }
   
-  public static alue a(String paramString)
+  public static alue a()
   {
-    alue localalue = new alue();
+    if (jdField_a_of_type_Alue == null) {}
     try
     {
-      paramString = new JSONObject(paramString);
-      localalue.jdField_a_of_type_Int = paramString.optInt("version", -1);
-      localalue.jdField_a_of_type_Long = paramString.optLong("showDate", 0L);
-      localalue.jdField_b_of_type_Long = paramString.optInt("leftShowNum", 0);
-      localalue.jdField_b_of_type_Int = paramString.optInt("showCountEveryDay", 0);
-      localalue.c = paramString.optInt("leftLoginNum", 0);
-      return localalue;
-    }
-    catch (Exception paramString)
-    {
-      localalue.jdField_a_of_type_Int = -1;
-    }
-    return localalue;
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", this.jdField_a_of_type_Int);
-      localJSONObject.put("showDate", this.jdField_a_of_type_Long);
-      localJSONObject.put("leftShowNum", this.jdField_b_of_type_Long);
-      localJSONObject.put("showCountEveryDay", this.jdField_b_of_type_Int);
-      localJSONObject.put("leftLoginNum", this.c);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      if (jdField_a_of_type_Alue == null) {
+        jdField_a_of_type_Alue = new alue();
       }
+      return jdField_a_of_type_Alue;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HeadDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 1;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 1;
     }
   }
   
-  public String toString()
+  public boolean a()
   {
-    return "MobileUnityVersionInfo [version=" + this.jdField_a_of_type_Int + ", showDate=" + this.jdField_a_of_type_Long + ", leftShowNum=" + this.jdField_b_of_type_Long + ", leftLoginNum = " + this.c + ", showCountEveryDay=" + this.jdField_b_of_type_Int + "]";
+    QLog.d("HeadDpcCfg", 1, String.format("preferIpv6 mDualStackPrefIpv6=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return this.jdField_a_of_type_Int != 0;
   }
 }
 

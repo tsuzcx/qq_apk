@@ -1,10 +1,18 @@
-import android.os.Bundle;
-
 public abstract interface bepk
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract void a(int paramInt);
   
-  public abstract void b(Bundle paramBundle);
+  public abstract void a(int paramInt, float paramFloat);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

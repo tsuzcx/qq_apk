@@ -1,22 +1,33 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class afhv
-  implements army
+public class afhv
+  implements View.OnClickListener
 {
-  afhv(afhq paramafhq, FileManagerEntity paramFileManagerEntity) {}
+  public afhv(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    if (aknx.a(this.a.a.getApplication()))
     {
-      this.jdField_a_of_type_Afhq.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ApolloUtil.a(paramView.getContext(), null, "aio", aliu.ah, null);
       return;
     }
-    this.jdField_a_of_type_Afhq.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (!aknx.b(this.a.a.getApplication())) {}
+    for (String str = aliu.U;; str = aliu.V + bimq.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      return;
+    }
   }
-  
-  public void b() {}
 }
 
 

@@ -1,10 +1,13 @@
-public class azal
+import KQQ.ReqItem;
+import KQQ.RespItem;
+
+public abstract interface azal
 {
-  public float a;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  public abstract int a();
+  
+  public abstract ReqItem a(int paramInt);
+  
+  public abstract void a(RespItem paramRespItem);
 }
 
 

@@ -1,11 +1,6 @@
-public class aiel
+public abstract interface aiel
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
+  public abstract void a(int paramInt);
 }
 
 

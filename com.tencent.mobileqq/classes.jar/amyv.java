@@ -1,34 +1,24 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-class amyv
-  implements amzq
+public class amyv
+  implements awbh
 {
-  amyv(amyt paramamyt, amyx paramamyx, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public amyv(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Amyx != null) {
-      this.jdField_a_of_type_Amyx.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
     }
+    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    azqs.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    if (this.jdField_a_of_type_Amyx != null) {
-      this.jdField_a_of_type_Amyx.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Amyx != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Amyx != null) {
-      this.jdField_a_of_type_Amyx.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
   }
 }
 

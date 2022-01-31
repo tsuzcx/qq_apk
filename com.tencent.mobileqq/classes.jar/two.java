@@ -1,19 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalPushFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 
 public class two
-  implements Observer<tzm<List<FeedCloudMeta.StFeed>>>
+  implements yia<trq>
 {
-  public two(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
+  public two(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
   
-  public void a(@Nullable tzm<List<FeedCloudMeta.StFeed>> paramtzm)
+  public void a(yii paramyii, trq paramtrq)
   {
-    QLog.d(QCirclePersonalPushFragment.a(), 4, "initViewData:getFeedListRequestRsp");
-    QCirclePersonalPushFragment.a(this.a, paramtzm);
+    if (paramyii.e()) {
+      this.a.f();
+    }
+    while (!paramyii.d()) {
+      return;
+    }
+    this.a.b(false);
   }
 }
 

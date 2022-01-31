@@ -15,7 +15,7 @@ public class ryb
     if (paramBoolean)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)FastWebActivity.a(this.a).getLayoutParams();
-      int i = xee.b(this.a, 144.0F);
+      int i = xin.b(this.a, 144.0F);
       localLayoutParams.rightMargin = i;
       localLayoutParams.leftMargin = i;
       FastWebActivity.a(this.a).setLayoutParams(localLayoutParams);
@@ -23,7 +23,7 @@ public class ryb
       FastWebActivity.a(this.a).setOnClickListener(new ryc(this));
       FastWebActivity.a(this.a);
       if (FastWebActivity.b(this.a)) {
-        FastWebActivity.a(this.a).setImageResource(2130848918);
+        FastWebActivity.a(this.a).setImageResource(2130848991);
       }
       FastWebActivity.a(this.a).a(2, FastWebActivity.a(this.a), FastWebActivity.a(this.a).innerUniqueID);
     }

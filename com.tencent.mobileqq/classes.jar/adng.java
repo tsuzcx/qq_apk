@@ -1,57 +1,59 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.view.View;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adng
-  extends BroadcastReceiver
+  implements bhuk
 {
-  public adng(QQMapActivity.MapRuntime paramMapRuntime) {}
+  public adng(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, String paramString1, String paramString2, bhuf parambhuf) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
+    paramView = paramView.getContext();
+    switch (paramInt)
     {
+    default: 
       return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
+    case 0: 
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC8", "0X8009EC8", 0, 0, "", "", "", "");
+      if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
-        }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bcwf.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
-      }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getString(2131692398), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
         return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
-        {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
-          }
-        }
       }
+      paramView = (amci)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app.a(34);
+      if (paramView != null) {
+        paramView.a(3, this.jdField_a_of_type_JavaLangString, this.b);
+      }
+      PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
+      PhoneUnityBindInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131719785, 1000L, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
+      return;
+    case 1: 
+      if (!bdin.d(paramView))
+      {
+        PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131694831);
+        return;
+      }
+      paramView = new Intent(paramView, BindNumberActivity.class);
+      paramView.putExtra("cmd_param_is_from_uni", true);
+      paramView.putExtra("cmd_param_is_from_change_bind", true);
+      paramView.putExtra("kNeedUnbind", true);
+      paramView.putExtra("kUnityOther", true);
+      paramView.putExtra("kSrouce", this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.startActivityForResult(paramView, 1004);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC9", "0X8009EC9", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bhuf.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
+      return;
     }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009ECA", "0X8009ECA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bhuf.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
   }
 }
 

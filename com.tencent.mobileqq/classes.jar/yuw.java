@@ -1,24 +1,75 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2.1.1.1;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class yuw
-  implements Animation.AnimationListener
+public class yuw
+  extends bead
 {
-  yuw(yuu paramyuu) {}
+  yuw(yuv paramyuv, long paramLong, String paramString, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDone(beae parambeae)
   {
-    if (yuu.a(this.a) != null)
-    {
-      yuu.a(this.a).clearAnimation();
-      yuu.a(this.a).startAnimation(yuu.a(this.a));
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGiftPanel.time", 2, "onDone, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
     }
+    if (parambeae.jdField_a_of_type_Int == 0) {
+      localObject = parambeae.a().getString("filePath");
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        Object localObject;
+        parambeae = new File((String)localObject);
+        String str = bdhb.b(parambeae);
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGiftPanelContainer", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
+        }
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject = new yvk(new JSONObject(str), this.jdField_a_of_type_JavaLangString);
+          ((yvk)localObject).a(this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Yvk = ((yvk)localObject);
+          this.jdField_a_of_type_Yuv.jdField_a_of_type_Bcod.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Yuv.jdField_a_of_type_Bcod.a(false);
+          if (!this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+            this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_AndroidOsHandler.post(new AIOGiftPanelContainer.2.1.1.1(this));
+          }
+          parambeae.deleteOnExit();
+        }
+        yuu.a(this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
+        this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        return;
+      }
+      catch (IOException parambeae)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambeae));
+        return;
+      }
+      catch (JSONException parambeae)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambeae));
+        return;
+      }
+    }
+    QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Yuv.jdField_a_of_type_Long) + ", errorCode = " + parambeae.jdField_a_of_type_Int);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean onStart(beae parambeae)
+  {
+    return super.onStart(parambeae);
+  }
 }
 
 

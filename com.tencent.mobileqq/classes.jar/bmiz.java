@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 
-class bmiz
-  extends SimpleJob<Object>
+public final class bmiz
+  implements Parcelable.Creator<EditLocalPhotoSource>
 {
-  bmiz(bmix parambmix, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  public EditLocalPhotoSource a(Parcel paramParcel)
   {
-    super(paramString1);
+    return new EditLocalPhotoSource(paramParcel);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public EditLocalPhotoSource[] a(int paramInt)
   {
-    wta.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    return new EditLocalPhotoSource[paramInt];
   }
 }
 

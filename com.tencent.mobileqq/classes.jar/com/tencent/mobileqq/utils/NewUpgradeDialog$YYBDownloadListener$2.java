@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bdef;
-import bdek;
+import bdio;
+import bdit;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class NewUpgradeDialog$YYBDownloadListener$2
   implements Runnable
 {
-  public NewUpgradeDialog$YYBDownloadListener$2(bdek parambdek, DownloadInfo paramDownloadInfo) {}
+  public NewUpgradeDialog$YYBDownloadListener$2(bdit parambdit, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bdek.a.a(100, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    this.jdField_a_of_type_Bdit.a.a(100, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
   }
 }
 

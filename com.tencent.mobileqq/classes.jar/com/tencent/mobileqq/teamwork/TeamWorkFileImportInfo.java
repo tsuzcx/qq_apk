@@ -3,12 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bacp;
+import bagy;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new bacp();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new bagy();
   public int a;
   public long a;
   public String a;

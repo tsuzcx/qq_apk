@@ -13,10 +13,10 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import beey;
-import bivp;
-import bivx;
-import bixh;
+import bejh;
+import bizw;
+import bjae;
+import bjbo;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -36,8 +36,8 @@ public abstract class ReaderBaseFragment
   
   private void j()
   {
-    if (this.jdField_a_of_type_Beey.a != null) {
-      this.jdField_a_of_type_Beey.a.setVisibility(8);
+    if (this.jdField_a_of_type_Bejh.a != null) {
+      this.jdField_a_of_type_Bejh.a.setVisibility(8);
     }
   }
   
@@ -77,14 +77,14 @@ public abstract class ReaderBaseFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    bivp.a().a();
+    bizw.a().a();
   }
   
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bivp.a().a();
+    bizw.a().a();
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -95,13 +95,13 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       k();
     }
-    bivp.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    bizw.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public boolean a()
   {
     this.b = true;
-    this.jdField_a_of_type_Beey.b = false;
+    this.jdField_a_of_type_Bejh.b = false;
     return super.a();
   }
   
@@ -125,19 +125,19 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         k();
       }
-      bivp.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bizw.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bivp.a().a();
+      bizw.a().a();
     }
   }
   
   public void c(String paramString, int paramInt)
   {
     super.c(paramString, paramInt);
-    bixh.b(getActivity(), paramInt, paramString);
+    bjbo.b(getActivity(), paramInt, paramString);
   }
   
   public int d(Bundle paramBundle)
@@ -155,7 +155,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bivx)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((bjae)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setVerticalScrollBarEnabled(false);

@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
 public class avth
-  implements avsu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avth(ScanOcrActivity paramScanOcrActivity) {}
+  public avth(AutoScrollImageView paramAutoScrollImageView) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

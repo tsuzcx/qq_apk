@@ -1,15 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class bezd
-  implements bfdo
+  implements View.OnClickListener
 {
-  public bezd(BragActivity paramBragActivity) {}
+  public bezd(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
 }
 

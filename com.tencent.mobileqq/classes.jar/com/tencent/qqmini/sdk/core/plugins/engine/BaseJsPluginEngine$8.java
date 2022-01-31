@@ -5,7 +5,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bgmn;
+import bgqu;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class BaseJsPluginEngine$8
@@ -15,8 +15,8 @@ class BaseJsPluginEngine$8
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bgmn localbgmn = (bgmn)paramDialogInterface;
-    Object localObject = localbgmn.a();
+    bgqu localbgqu = (bgqu)paramDialogInterface;
+    Object localObject = localbgqu.a();
     if (localObject != null)
     {
       paramDialogInterface = ((Bundle)localObject).getString("key_event_name");
@@ -25,8 +25,8 @@ class BaseJsPluginEngine$8
     for (;;)
     {
       localObject = BaseJsPluginEngine.access$000(paramDialogInterface, (String)localObject);
-      boolean bool1 = localbgmn.a();
-      boolean bool2 = localbgmn.b();
+      boolean bool1 = localbgqu.a();
+      boolean bool2 = localbgqu.b();
       QMLog.d("JsPluginEngine[AuthGuard]", "onDismiss eventName=" + paramDialogInterface + ",scopeName=" + (String)localObject + ",isConfirm=" + bool1 + ",isRefuse=" + bool2);
       paramDialogInterface = BaseJsPluginEngine.access$500(this.this$0).obtainMessage(1);
       if (bool1)

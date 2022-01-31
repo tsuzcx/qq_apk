@@ -1,48 +1,30 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.widget.GridView;
-import java.util.Collection;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class avht
-  extends AvatarWallPagerAdapter<GridView>
+class avht
+  implements avrg
 {
-  protected LinearLayout.LayoutParams a;
+  avht(avhs paramavhs) {}
   
-  public avht(avgk paramavgk, AvatarWallViewPager paramAvatarWallViewPager)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramAvatarWallViewPager);
-  }
-  
-  public View a(int paramInt, GridView paramGridView)
-  {
-    return avgk.a(this.jdField_a_of_type_Avgk, avgk.a(this.jdField_a_of_type_Avgk), paramInt);
-  }
-  
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Avgk.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(xod.a(this.jdField_a_of_type_Avgk.jdField_a_of_type_AndroidContentContext, 30.0F), xod.a(this.jdField_a_of_type_Avgk.jdField_a_of_type_AndroidContentContext, 1.5F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = xod.a(this.jdField_a_of_type_Avgk.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = xod.a(this.jdField_a_of_type_Avgk.jdField_a_of_type_AndroidContentContext, 2.0F);
-    }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
     if (paramBoolean)
     {
-      localView.setBackgroundColor(-1);
-      return localView;
+      avrb localavrb = (avrb)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
+      if (localavrb != null) {
+        localavrb.d(paramString);
+      }
+      avhf.a(this.a.a.a, paramString);
+      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
+      }
+      return;
     }
-    localView.setBackgroundColor(1728053247);
-    return localView;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Avgk.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708650), 0).a();
   }
 }
 

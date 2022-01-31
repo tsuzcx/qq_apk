@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm;
 
-import aphs;
-import apjf;
-import bdee;
+import apmb;
+import apno;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CameraRoamingStrategy$5
   implements Runnable
 {
-  public CameraRoamingStrategy$5(aphs paramaphs) {}
+  public CameraRoamingStrategy$5(apmb paramapmb) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bdee.d(this.this$0.a.getApp()))) {
+    if ((this.this$0.a == null) || (!bdin.d(this.this$0.a.getApp()))) {
       return;
     }
-    ((apjf)this.this$0.a.getManager(334)).b();
+    ((apno)this.this$0.a.getManager(334)).b();
   }
 }
 

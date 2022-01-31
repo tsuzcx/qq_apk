@@ -1,21 +1,20 @@
-public class amwl
+class amwl
+  extends ante
 {
-  public int a;
-  public amwm a;
-  public String a;
+  amwl(amwk paramamwk) {}
   
-  public amwl()
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Amwm = null;
+    if (amwk.a(this.a) != null) {
+      amwk.a(this.a).a(paramArrayOfFloat);
+    }
   }
   
-  public String toString()
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Amwm + '}';
+    if (amwk.a(this.a) != null) {
+      amwk.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
   }
 }
 

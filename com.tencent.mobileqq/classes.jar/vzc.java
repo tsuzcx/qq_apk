@@ -1,32 +1,18 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
 public class vzc
+  extends vtg
 {
-  @NonNull
-  private final Bitmap a;
+  public vzc(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public vzc(Bitmap paramBitmap)
+  public void g()
   {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      wxe.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
     }
-    this.a = paramBitmap;
-  }
-  
-  public int a()
-  {
-    return this.a.getWidth();
-  }
-  
-  public Bitmap a()
-  {
-    return Bitmap.createBitmap(this.a);
-  }
-  
-  public int b()
-  {
-    return this.a.getHeight();
   }
 }
 

@@ -1,14 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import java.io.File;
 
-public abstract class uoj
+class uoj
+  implements Comparable<uoj>
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
+  public long a;
+  public final File a;
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public uoj(uoi paramuoi, File paramFile)
   {
-    return false;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    paramuoi = paramFile.getName();
+    try
+    {
+      this.jdField_a_of_type_Long = Long.parseLong(paramuoi);
+      return;
+    }
+    catch (Exception paramFile)
+    {
+      wxe.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramuoi, paramFile.getMessage() });
+    }
+  }
+  
+  public int a(uoj paramuoj)
+  {
+    if (this.jdField_a_of_type_Long < paramuoj.jdField_a_of_type_Long) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Long == paramuoj.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

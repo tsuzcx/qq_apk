@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,8 +10,8 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bdvr;
-import bdwy;
+import beaa;
+import bebh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
@@ -32,7 +32,7 @@ public class KingCardProxyImpl
 {
   private String KINGCARD_GUIDE_KEY_PREFFIX = "mini_app_kingcard_guide_";
   private final String TAG = "KingCardProxyImpl";
-  private bdwy lottieLoader;
+  private bebh lottieLoader;
   private String mKingCardText;
   
   private boolean hasKingCardGuideShowed()
@@ -61,7 +61,7 @@ public class KingCardProxyImpl
       QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bdvr.a();
+    i = beaa.a();
     QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -74,15 +74,15 @@ public class KingCardProxyImpl
   public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694413))
+    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694415))
     {
       this.mKingCardText = ((String)localObject);
-      this.lottieLoader = new bdwy(null, paramContext);
+      this.lottieLoader = new bebh(null, paramContext);
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       localObject = new DiniFlyAnimationView(paramContext);
       ((DiniFlyAnimationView)localObject).setVisibility(0);
-      ((DiniFlyAnimationView)localObject).setContentDescription(alpo.a(2131701726));
+      ((DiniFlyAnimationView)localObject).setContentDescription(alud.a(2131701738));
       paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
       paramContext.addRule(9, -1);
       ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);

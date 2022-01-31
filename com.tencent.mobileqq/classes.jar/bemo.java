@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
 
 public class bemo
+  implements alpg
 {
-  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
+  public void a(int paramInt) {}
   
-  public bemo(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
   
-  public ChatThumbView a()
+  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a((submsgtype0xdd.MsgBody)paramObject);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+      return;
     }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
+    a(((Integer)paramObject).intValue());
   }
 }
 

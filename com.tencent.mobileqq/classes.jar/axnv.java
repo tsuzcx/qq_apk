@@ -1,24 +1,53 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
-public final class axnv
-  extends BroadcastReceiver
+class axnv
+  implements axnx
 {
-  private axnv(PtvTemplateProviderView paramPtvTemplateProviderView) {}
+  axnv(axnu paramaxnu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
     {
-      axjt.a().b(false);
-      PtvTemplateProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
+      if (!localPtvTemplateInfo.advertisement) {
+        break;
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
+      }
+    } while (axnu.a(this.a) == null);
+    axnu.a(this.a).a(localPtvTemplateInfo);
+    return;
+    this.a.a(paramInt);
+    axpl.jdField_b_of_type_JavaLangString = axnu.a(this.a).a + "";
+    axpl.c = localPtvTemplateInfo.id;
+    axpl.a = localPtvTemplateInfo.hasGesture();
+    boolean bool;
+    if (localPtvTemplateInfo.kind == 3)
+    {
+      bool = true;
+      axpl.jdField_b_of_type_Boolean = bool;
+      if (azhg.a().a != 1) {
+        break label228;
+      }
+    }
+    label228:
+    for (paramInt = i;; paramInt = 2)
+    {
+      axpl.f(paramInt);
+      return;
+      bool = false;
+      break;
     }
   }
 }

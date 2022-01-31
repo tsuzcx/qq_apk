@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import bcwh;
-import bdag;
-import bhou;
+import bdaq;
+import bdep;
+import bhtb;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
@@ -31,7 +31,7 @@ public class SelectVideoTabFragment
   implements View.OnClickListener
 {
   public static String a;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131718913, 2131718925 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131718925, 2131718937 };
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -49,7 +49,7 @@ public class SelectVideoTabFragment
   
   private void a()
   {
-    if ((bhou.k()) && (!bdag.b()) && (!bdag.d()))
+    if ((bhtb.k()) && (!bdep.b()) && (!bdep.d()))
     {
       getActivity().getWindow().getDecorView().setSystemUiVisibility(9216);
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(-1);
@@ -77,7 +77,7 @@ public class SelectVideoTabFragment
   private void c()
   {
     this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment = SelectVideoFragment.a(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment = ViolaFragment.a(qok.b() + this.jdField_a_of_type_Int, getResources().getString(2131718925), null, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment = ViolaFragment.a(qok.b() + this.jdField_a_of_type_Int, getResources().getString(2131718937), null, true);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment);
   }
@@ -87,13 +87,13 @@ public class SelectVideoTabFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(new qxb(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabMode(1);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabGravity(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(bcwh.a(getActivity(), 2.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(bdaq.a(getActivity(), 2.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorColor(Color.parseColor("#262626"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingLeft(bcwh.a(getActivity(), 32.0F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingRight(bcwh.a(getActivity(), 32.0F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingBottom(bcwh.a(getActivity(), 0.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingLeft(bdaq.a(getActivity(), 32.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingRight(bdaq.a(getActivity(), 32.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingBottom(bdaq.a(getActivity(), 0.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextColors(Color.parseColor("#737373"), Color.parseColor("#262626"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextSize(bcwh.c(getActivity(), 16.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextSize(bdaq.c(getActivity(), 16.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat, false);
   }
   
@@ -110,24 +110,24 @@ public class SelectVideoTabFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364338) {
+    if (paramView.getId() == 2131364340) {
       getActivity().finish();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560113, null);
+    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560112, null);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131377976));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364338));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378030));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364340));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramView.findViewById(2131376309));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramView.findViewById(2131376306));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramView.findViewById(2131376363));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramView.findViewById(2131376360));
     b();
     c();
     d();

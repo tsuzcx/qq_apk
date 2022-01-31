@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page.tissue;
 
-import bhch;
+import bhgo;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TissuePageContainer$6
   extends HashMap<String, Object>
 {
-  public TissuePageContainer$6(bhch parambhch, String paramString, Map paramMap, int paramInt)
+  public TissuePageContainer$6(bhgo parambhgo, String paramString, Map paramMap, int paramInt)
   {
     put("pagePath", this.val$path);
     put("query", this.val$param);

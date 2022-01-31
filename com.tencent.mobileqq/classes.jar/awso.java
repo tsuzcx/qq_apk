@@ -1,40 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.Interpolator;
 
-class awso
-  implements Animation.AnimationListener
+final class awso
+  implements Interpolator
 {
-  awso(awsn paramawsn) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public float getInterpolation(float paramFloat)
   {
-    if (!awsn.a(this.a)) {
-      for (;;)
-      {
-        int j = (int)(awsn.a(this.a) * (Math.random() * 2.0D - 1.0D));
-        int i = (int)Math.sqrt(awsn.a(this.a) * awsn.a(this.a) - j * j);
-        if (Math.random() > 0.5D) {}
-        while ((awsn.b(this.a) + j) * (awsn.b(this.a) + j) + (awsn.c(this.a) + i) * (awsn.c(this.a) + i) <= awsn.d(this.a) * awsn.d(this.a))
-        {
-          awsn.a(this.a, new TranslateAnimation(awsn.b(this.a), awsn.b(this.a) + j, awsn.c(this.a), awsn.c(this.a) + i));
-          awsn.a(this.a, j + awsn.b(this.a));
-          awsn.b(this.a, i + awsn.c(this.a));
-          awsn.a(this.a).setAnimationListener(awsn.a(this.a));
-          awsn.a(this.a).setDuration(awsn.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
-          awsn.a(this.a).startAnimation(awsn.a(this.a));
-          return;
-          i = -i;
-        }
-      }
+    if (paramFloat <= 0.3333333F) {
+      return 0.0F;
     }
-    awsn.a(this.a, false);
+    return (paramFloat - 0.3333333F) * 1.5F;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

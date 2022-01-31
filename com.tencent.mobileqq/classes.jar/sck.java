@@ -1,6 +1,6 @@
 public class sck
 {
-  public static final String a = alpo.a(2131713415);
+  public static final String a = alud.a(2131713427);
 }
 
 

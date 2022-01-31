@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import alzf;
+import amdu;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -18,11 +18,11 @@ class TroopChatPie$37
     do
     {
       return;
-      alzf localalzf = (alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      amdu localamdu = (amdu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
       String str = this.this$0.a().jdField_a_of_type_JavaLangString;
       if (!TextUtils.isEmpty(str))
       {
-        localalzf.t(str);
+        localamdu.t(str);
         return;
       }
     } while (!QLog.isColorLevel());

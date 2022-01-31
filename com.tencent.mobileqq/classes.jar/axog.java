@@ -1,10 +1,11 @@
-public abstract interface axog
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class axog
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void g();
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, axoj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ArrayList<axok> b = new ArrayList();
 }
 
 

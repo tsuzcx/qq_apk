@@ -1,105 +1,99 @@
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class ajjo
-  extends ArrayAdapter
-  implements View.OnClickListener
+  extends ajju
 {
-  Filter jdField_a_of_type_AndroidWidgetFilter;
+  private int a;
+  private int b;
+  private int c;
   
-  public ajjo(LoginView paramLoginView, Context paramContext)
+  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
   {
-    super(paramContext, 2131558412, 2131368569, paramLoginView.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public String a(int paramInt)
-  {
-    String str = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return str;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(str);
-  }
-  
-  public String b(int paramInt)
-  {
-    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(8);
-    }
-    for (;;)
+    if (paramView != null)
     {
-      return super.getCount();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(0);
+      paramajjp = paramView;
+      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131558907))) {}
     }
-  }
-  
-  public Filter getFilter()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
-      this.jdField_a_of_type_AndroidWidgetFilter = new ajjp(this);
-    }
-    return this.jdField_a_of_type_AndroidWidgetFilter;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (LinearLayout)paramView.findViewById(2131363034);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368507);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
-    if ((localObject instanceof Bitmap))
+    else
     {
-      localImageView.setImageBitmap((Bitmap)localObject);
-      localImageView = (ImageView)paramView.findViewById(2131368474);
-      localImageView.setTag(Integer.valueOf(paramInt));
-      localImageView.setOnClickListener(this);
-      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131720592));
-      paramView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689548) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
-      if (getCount() != 1) {
-        break label256;
+      paramajjp = View.inflate(paramContext, 2131558907, null);
+      this.b = paramContext.getResources().getDimensionPixelSize(2131298633);
+      this.a = paramContext.getResources().getDimensionPixelSize(2131298636);
+      this.c = paramContext.getResources().getDimensionPixelSize(2131298640);
+    }
+    int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
+    if (i > this.c)
+    {
+      paramView = new AbsListView.LayoutParams(-1, -1);
+      paramView.width = -1;
+      paramView.height = i;
+      paramajjp.setLayoutParams(paramView);
+      paramajjp.setTag(Boolean.valueOf(true));
+      paramView = (TextView)paramajjp.findViewById(2131371180);
+      paramViewGroup = (Button)paramajjp.findViewById(2131363492);
+      if (!(paramObject instanceof Integer)) {
+        break label382;
       }
-      paramViewGroup.setPadding(0, aekt.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, aekt.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+      i = ((Integer)paramObject).intValue();
+      if (i != 1) {
+        break label263;
+      }
+      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841118, 0, 0);
+      paramView.setVisibility(0);
+      paramView.setText(2131695289);
+      paramView.setTextColor(paramContext.getResources().getColorStateList(2131166983));
+      paramViewGroup.setVisibility(8);
+      paramViewGroup.setOnClickListener(null);
     }
     for (;;)
     {
-      paramViewGroup.setOnClickListener(new ajjq(this, paramInt));
-      paramView.setOnTouchListener(new mwx());
-      return paramView;
-      localImageView.setImageResource(2130840391);
+      paramajjp.setTag(-1, Integer.valueOf(paramInt));
+      paramajjp.setTag(2131558907, "R.layout.conversation_no_chat");
+      return paramajjp;
+      i = this.c;
       break;
-      label256:
-      if (paramInt == 0) {
-        paramViewGroup.setPadding(0, aekt.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
-      } else if (paramInt == getCount() - 1) {
-        paramViewGroup.setPadding(0, 0, 0, aekt.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
-      } else {
-        paramViewGroup.setPadding(0, 0, 0, 0);
+      label263:
+      if (i == 0)
+      {
+        if ((paramContext instanceof MsgBoxListActivity))
+        {
+          if (((MsgBoxListActivity)paramContext).f)
+          {
+            paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            paramView.setVisibility(0);
+            paramView.setText("");
+          }
+        }
+        else
+        {
+          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841118, 0, 0);
+          paramView.setVisibility(0);
+          paramView.setText(2131694817);
+          paramView.setTextColor(paramContext.getResources().getColorStateList(2131166983));
+          paramViewGroup.setVisibility(8);
+          paramViewGroup.setOnClickListener(null);
+        }
+      }
+      else
+      {
+        paramView.setVisibility(4);
+        paramView.setText("");
+        continue;
+        label382:
+        paramView.setVisibility(8);
+        paramView.setText("");
+        paramViewGroup.setVisibility(8);
       }
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_Int = ((Integer)paramView.getTag()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.showDialog(1);
   }
 }
 

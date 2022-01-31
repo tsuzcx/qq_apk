@@ -1,19 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
 
 class aviq
   implements View.OnClickListener
 {
-  aviq(avhw paramavhw) {}
+  aviq(avip paramavip) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.b(false);
+    if (paramView == null) {}
+    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
+      return;
     }
+    StartLiveTopicLabelListView.a(this.a.a).a();
   }
 }
 

@@ -1,6 +1,12 @@
-class blem
+import com.tencent.aekit.openrender.internal.Frame;
+
+public abstract interface blem
 {
-  public static blel a = new blel();
+  public abstract void a();
+  
+  public abstract void a(Frame paramFrame);
+  
+  public abstract void b();
 }
 
 

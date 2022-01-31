@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afsj
-  implements batz
+  extends afuf
 {
-  afsj(afsf paramafsf) {}
-  
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  afsj(afpy paramafpy)
   {
-    this.a.b();
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afmy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

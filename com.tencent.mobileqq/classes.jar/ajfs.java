@@ -1,56 +1,18 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.debug.PstnCardTestActivity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ajfs
-  implements bhvu
+public class ajfs
 {
-  ajfs(ajfr paramajfr) {}
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public void a(bhvt parambhvt)
+  public ajfs(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    switch (parambhvt.a)
-    {
-    default: 
-      if (AudioHelper.d()) {
-        PstnCardTestActivity.onDebugMenuEvent(parambhvt, this.a.a);
-      }
-      return;
-    case 2131699006: 
-      this.a.e();
-      return;
-    case 2131691316: 
-      this.a.d();
-      return;
-    case 2131691330: 
-      this.a.c();
-      return;
-    case 2131691323: 
-      this.a.f();
-      return;
-    case 2131691333: 
-      this.a.i();
-      return;
-    case 2131691335: 
-      ajfr.a(this.a);
-      return;
-    case 2131691320: 
-      this.a.a(8);
-      azmj.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
-      return;
-    case 2131691329: 
-      this.a.h();
-      return;
-    case 2131691322: 
-      this.a.g();
-      return;
-    case 2131691325: 
-      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
-      azmj.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
-      return;
-    }
-    this.a.m();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

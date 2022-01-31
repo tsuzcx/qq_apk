@@ -1,19 +1,18 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 
-final class aszf
-  implements anrf
+public final class aszf
+  implements Parcelable.Creator<IVPluginInfo>
 {
-  public void a(int paramInt1, int paramInt2)
+  public IVPluginInfo a(Parcel paramParcel)
   {
-    if (paramInt1 == asyy.a)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("action.now.jump");
-      localIntent.putExtra("jump_action", paramInt2);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    return new IVPluginInfo(paramParcel);
+  }
+  
+  public IVPluginInfo[] a(int paramInt)
+  {
+    return new IVPluginInfo[paramInt];
   }
 }
 

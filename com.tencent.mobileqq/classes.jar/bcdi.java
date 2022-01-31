@@ -1,61 +1,12 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
 
-class bcdi
-  implements Comparator<ahyq>
+public abstract interface bcdi
 {
-  private final TroopInfo a;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  bcdi(TroopInfo paramTroopInfo)
-  {
-    this.a = paramTroopInfo;
-  }
+  public abstract void a(WordInfo paramWordInfo);
   
-  public int a(ahyq paramahyq1, ahyq paramahyq2)
-  {
-    int j = 5;
-    int i;
-    if (bcde.b(paramahyq1.jdField_a_of_type_JavaLangString, this.a)) {
-      i = 5;
-    }
-    for (;;)
-    {
-      if (bcde.b(paramahyq2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
-      {
-        if (i != j)
-        {
-          return j - i;
-          if (bcde.a(paramahyq1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
-          }
-          if (!paramahyq1.jdField_a_of_type_Boolean) {
-            break label134;
-          }
-          i = 1;
-          break;
-          if (bcde.a(paramahyq2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramahyq2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
-        }
-        return ChnToSpell.a(bcde.c(paramahyq1), 1).compareToIgnoreCase(ChnToSpell.a(bcde.c(paramahyq2), 1));
-        label128:
-        j = 0;
-      }
-      label134:
-      i = 0;
-    }
-  }
+  public abstract void g();
 }
 
 

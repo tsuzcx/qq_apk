@@ -70,7 +70,7 @@ public class msy
       if (paramIntent == null) {
         break label260;
       }
-      AudioHelper.a(alpo.a(2131714208), paramIntent.getExtras());
+      AudioHelper.a(alud.a(2131714220), paramIntent.getExtras());
       str = String.valueOf(paramIntent.getExtras().get("result"));
       localObject = paramIntent.getStringExtra("retmsg");
       paramIntent = paramIntent.getStringExtra("data");

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import bblr;
+import bbqa;
 
 public class TroopAioMsgNavigateBar$2
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$2(bblr parambblr) {}
+  public TroopAioMsgNavigateBar$2(bbqa parambbqa) {}
   
   public void run()
   {
@@ -13,7 +13,7 @@ public class TroopAioMsgNavigateBar$2
       return;
     }
     this.this$0.g();
-    bblr.a(this.this$0);
+    bbqa.a(this.this$0);
   }
 }
 

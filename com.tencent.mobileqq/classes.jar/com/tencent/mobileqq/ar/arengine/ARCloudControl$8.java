@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amwd;
-import amwj;
-import amwl;
-import amxd;
+import anam;
+import anas;
+import anau;
+import anbm;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -11,27 +11,27 @@ import com.tencent.qphone.base.util.QLog;
 public class ARCloudControl$8
   implements Runnable
 {
-  public ARCloudControl$8(amwd paramamwd) {}
+  public ARCloudControl$8(anam paramanam) {}
   
   public void run()
   {
-    if ((amwd.a(this.this$0) != null) && (amwd.e(this.this$0)))
+    if ((anam.a(this.this$0) != null) && (anam.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.b(this.this$0.jdField_a_of_type_Amle);
-      if (!amwd.a(this.this$0)) {}
+      SosoInterface.b(this.this$0.jdField_a_of_type_Ampt);
+      if (!anam.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    amwl localamwl = new amwl();
-    localamwl.a = 2;
-    amxd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, amwd.a(this.this$0), localamwl);
-    if (amwd.a(this.this$0) != null) {
-      amwd.a(this.this$0).a(0, amwd.a(this.this$0));
+    anau localanau = new anau();
+    localanau.a = 2;
+    anbm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, anam.a(this.this$0), localanau);
+    if (anam.a(this.this$0) != null) {
+      anam.a(this.this$0).a(0, anam.a(this.this$0));
     }
-    amwd.a(this.this$0, null);
+    anam.a(this.this$0, null);
   }
 }
 

@@ -1,16 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
 
-public class afwz
-  implements ValueAnimator.AnimatorUpdateListener
+class afwz
+  implements bhuk
 {
-  public afwz(SixCombolEffectView paramSixCombolEffectView, afxk paramafxk) {}
+  afwz(afwu paramafwu, MessageForPic paramMessageForPic, bhuf parambhuf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Afxk.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    switch (paramInt)
+    {
+    }
+    label172:
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Afwu.d < 500L);
+      this.jdField_a_of_type_Afwu.d = l;
+      paramView = this.jdField_a_of_type_Afwu.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      if ((paramView != null) && ((paramView instanceof barf)))
+      {
+        paramView = (barf)paramView;
+        if ((paramView.c()) && (paramView.d()))
+        {
+          paramInt = 1;
+          this.jdField_a_of_type_Afwu.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0) {
+          break label172;
+        }
+        this.jdField_a_of_type_Afwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        break;
+        paramInt = 0;
+      }
+    }
   }
 }
 

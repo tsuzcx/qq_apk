@@ -20,14 +20,14 @@ class tnf
     {
       localObject = new Rect();
       tne.a(this.jdField_a_of_type_Tne).a((Rect)localObject);
-      if ((tne.a(this.jdField_a_of_type_Tne)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - azgq.a(10.0F)) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + azgq.a(10.0F))))
+      if ((tne.a(this.jdField_a_of_type_Tne)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - azkz.a(10.0F)) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + azkz.a(10.0F))))
       {
         if (!tne.a(this.jdField_a_of_type_Tne))
         {
           tne.a(this.jdField_a_of_type_Tne, true);
           tne.a(this.jdField_a_of_type_Tne).a(this.jdField_a_of_type_JavaLangRunnable);
           tne.a(this.jdField_a_of_type_Tne).setSeekBarActivated(true);
-          tne.a(this.jdField_a_of_type_Tne).setThumb(tne.b(this.jdField_a_of_type_Tne).getDrawable(2130841468));
+          tne.a(this.jdField_a_of_type_Tne).setThumb(tne.b(this.jdField_a_of_type_Tne).getDrawable(2130841469));
           tne.a(this.jdField_a_of_type_Tne).requestDisallowInterceptTouchEvent(true);
         }
         f3 = ((Rect)localObject).top;

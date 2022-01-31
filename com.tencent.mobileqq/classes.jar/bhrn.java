@@ -1,6 +1,39 @@
-public abstract interface bhrn
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+
+public class bhrn
+  implements SensorResource
 {
-  public abstract void a();
+  public boolean checkSensorEnable()
+  {
+    return lko.a().a();
+  }
+  
+  public boolean getCameraIsFront()
+  {
+    return lko.a().b();
+  }
+  
+  public int getRotation()
+  {
+    return 0;
+  }
+  
+  public void registerListener(SensorEventListener paramSensorEventListener)
+  {
+    lko.a().a(paramSensorEventListener);
+  }
+  
+  public void setCameraChangedListener(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
+  {
+    lko.a().a(paramCameraChangedCallBack);
+  }
+  
+  public void unregisterListener(SensorEventListener paramSensorEventListener)
+  {
+    lko.a().b(paramSensorEventListener);
+  }
 }
 
 

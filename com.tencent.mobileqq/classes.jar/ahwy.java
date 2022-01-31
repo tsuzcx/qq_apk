@@ -1,22 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ahwy
-  extends bcik
+class ahwy
+  implements DialogInterface.OnKeyListener
 {
-  public ahwy(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bcij parambcij, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, parambcij, paramQQAppInterface);
-  }
+  ahwy(ahww paramahww) {}
   
-  protected void b(Object paramObject)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
+    if (paramInt == 4)
+    {
+      ahww.a(this.a, ahww.a(this.a), Long.valueOf(ahww.a(this.a)).longValue());
+      ahww.a(this.a);
     }
+    return true;
   }
 }
 

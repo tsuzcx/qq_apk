@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bcyj;
+import bdcs;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import org.json.JSONObject;
 import pfg;
@@ -13,7 +13,7 @@ public class ChannelCoverInfoModule$1
   public void run()
   {
     if (this.a.redPoint != null) {
-      this.a.redPointJson = bcyj.a(this.a.redPoint).toString();
+      this.a.redPointJson = bdcs.a(this.a.redPoint).toString();
     }
     this.this$0.a(this.a);
   }

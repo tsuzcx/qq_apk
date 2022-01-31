@@ -1,34 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class behw
-  extends nac
+public final class behw
+  implements WtTicketPromise
 {
-  behw(behr parambehr, behy parambehy) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void Done(Ticket paramTicket)
   {
-    if (this.jdField_a_of_type_Behy != null)
-    {
-      paramBundle = new oidb_0x8ed.RspBody();
-      if (paramArrayOfByte == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Behy.a(paramInt, paramBundle);
-      return;
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
-        }
-      }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
     }
   }
 }

@@ -1,25 +1,28 @@
-import android.text.TextUtils;
-
 public class amxk
 {
-  public String a;
-  public String b;
-  public String c;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  baub jdField_a_of_type_Baub;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
+  String c;
   
-  public String a()
+  public String toString()
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "";
-    }
-    return this.b;
-  }
-  
-  public String b()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return "";
-    }
-    return this.c;
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,56 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
 
-public abstract class arlr
+public class arlr
+  extends arlv
 {
-  protected arls a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  public arlr(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public arlr(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
   }
   
-  public static arlr a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public Intent a()
   {
-    if (paramChatMessage == null)
-    {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
       return null;
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new arll(paramQQAppInterface, paramChatMessage);
+    ForwardFileInfo localForwardFileInfo = arzx.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
     }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new arlu(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
   }
   
-  public abstract long a();
-  
-  public abstract arlo a();
-  
-  public abstract String a();
-  
-  public void a(arls paramarls)
+  public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_Arls = paramarls;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 

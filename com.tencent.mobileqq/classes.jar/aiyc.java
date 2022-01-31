@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyc
-  implements aizb
+  implements View.OnClickListener
 {
-  public aiyc(DoodleView paramDoodleView) {}
+  public aiyc(LingHbFragment paramLingHbFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).b();
+    if ((paramView instanceof TextView))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      QLog.i("LingHbFragment", 2, "choice: " + paramView);
+      this.a.c.setText(paramView);
+      this.a.a.post(new LingHbFragment.2.1(this));
     }
   }
 }

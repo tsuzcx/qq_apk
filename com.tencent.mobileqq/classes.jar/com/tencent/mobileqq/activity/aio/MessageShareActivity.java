@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import azmj;
-import azqn;
-import azqu;
-import bhoe;
+import azqs;
+import azuw;
+import azvd;
+import bhsl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -41,7 +41,7 @@ public class MessageShareActivity
   
   public MessageShareActivity()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
   }
   
   private void a(List<ResultRecord> paramList, Intent paramIntent, AbsStructMsg paramAbsStructMsg)
@@ -124,14 +124,14 @@ public class MessageShareActivity
           localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
           {
-            localObject2 = azqn.a((String)localObject3);
+            localObject2 = azuw.a((String)localObject3);
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              azmj.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, azqn.a(j) + "", "", (String)localObject2, "");
+              azqs.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, azuw.a(j) + "", "", (String)localObject2, "");
             }
           }
         }
         boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_msg_by_server_enable_entry", false);
-        localObject2 = azqu.a(this.jdField_a_of_type_AndroidOsBundle);
+        localObject2 = azvd.a(this.jdField_a_of_type_AndroidOsBundle);
         if ((localObject2 != null) && (this.app != null))
         {
           if (!(localObject2 instanceof StructMsgForImageShare)) {
@@ -143,7 +143,7 @@ public class MessageShareActivity
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false)) {
             break label702;
           }
-          paramMessage = aekt.a(paramMessage, new int[] { 2 });
+          paramMessage = aepi.a(paramMessage, new int[] { 2 });
           this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
         }
         for (;;)
@@ -175,11 +175,11 @@ public class MessageShareActivity
           AbsShareMsg.sendSdkShareMessage(this.app, (AbsShareMsg)localObject2, (String)localObject1, j, (String)localObject3);
           break label475;
           label702:
-          paramMessage = aekt.a(paramMessage, null);
+          paramMessage = aepi.a(paramMessage, null);
           paramMessage.putExtra("share_from_aio", true);
         }
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371874)).setText(alpo.a(2131707043));
-        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371873).setVisibility(4);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894)).setText(alud.a(2131707055));
+        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371893).setVisibility(4);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3, 800L);
         continue;
         finish();
@@ -193,8 +193,8 @@ public class MessageShareActivity
     super.setContentView(new View(this));
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131755801);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559438);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371874)).setText(2131695284);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559437);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894)).setText(2131695286);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       try

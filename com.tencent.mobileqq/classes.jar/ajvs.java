@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ajvs
-  implements View.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public ajvs(SelectMemberActivity paramSelectMemberActivity) {}
+  public ajvs(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.onBackEvent();
-    if (AppSetting.c) {
-      this.a.c.post(new SelectMemberActivity.2.1(this));
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
     }
   }
 }

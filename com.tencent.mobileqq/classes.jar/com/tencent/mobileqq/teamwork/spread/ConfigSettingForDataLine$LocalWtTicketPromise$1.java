@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bafd;
-import bafe;
+import bajm;
+import bajn;
 import java.lang.ref.WeakReference;
 
 public class ConfigSettingForDataLine$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$LocalWtTicketPromise$1(bafe parambafe) {}
+  public ConfigSettingForDataLine$LocalWtTicketPromise$1(bajn parambajn) {}
   
   public void run()
   {
-    bafd localbafd = (bafd)bafe.a(this.this$0).get();
-    if (localbafd != null) {
-      bafd.a(localbafd, bafe.a(this.this$0));
+    bajm localbajm = (bajm)bajn.a(this.this$0).get();
+    if (localbajm != null) {
+      bajm.a(localbajm, bajn.a(this.this$0));
     }
   }
 }

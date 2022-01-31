@@ -1,18 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
 class afmj
-  extends afpq
+  implements arrh
 {
-  afmj(aflj paramaflj)
+  afmj(afmf paramafmf, MessageForFile paramMessageForFile, Context paramContext) {}
+  
+  public void a()
   {
-    super(paramaflj, null);
+    arrr.a(this.jdField_a_of_type_Afmf.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return aqrn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 61, paramChatMessage);
-  }
+  public void b() {}
 }
 
 

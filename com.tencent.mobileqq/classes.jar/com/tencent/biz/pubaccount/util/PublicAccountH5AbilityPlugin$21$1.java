@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import bepp;
+import bety;
 
 class PublicAccountH5AbilityPlugin$21$1
   implements Runnable

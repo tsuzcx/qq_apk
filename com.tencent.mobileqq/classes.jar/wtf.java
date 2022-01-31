@@ -1,16 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wtf
-  implements View.OnClickListener
+class wtf
+  implements DialogInterface.OnClickListener
 {
-  public wtf(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
+  wtf(wtd paramwtd) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    wxj.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

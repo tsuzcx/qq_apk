@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aktn;
-import alep;
+import akyc;
+import alje;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public class CmGameCommonShare$3
   implements Runnable
 {
-  public CmGameCommonShare$3(aktn paramaktn) {}
+  public CmGameCommonShare$3(akyc paramakyc) {}
   
   public void run()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(aktn.a(this.this$0));
-      localJSONObject.put("gameId", aktn.a(this.this$0));
+      JSONObject localJSONObject = new JSONObject(akyc.a(this.this$0));
+      localJSONObject.put("gameId", akyc.a(this.this$0));
       localJSONObject.put("isSelectFriend", 1);
-      alep.a(aktn.a(this.this$0), localJSONObject.toString(), (Activity)aktn.a(this.this$0).get());
+      alje.a(akyc.a(this.this$0), localJSONObject.toString(), (Activity)akyc.a(this.this$0).get());
       return;
     }
     catch (Exception localException)

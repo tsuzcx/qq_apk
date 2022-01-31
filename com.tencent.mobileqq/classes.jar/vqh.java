@@ -1,26 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class vqh
-  implements View.OnClickListener
+class vqh
+  implements urr<vfd, vhb>
 {
-  public vqh(VideoViewVideoHolder paramVideoViewVideoHolder, ErrorMessage paramErrorMessage) {}
+  vqh(vqg paramvqg, vpu paramvpu) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vfd paramvfd, @Nullable vhb paramvhb, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (!bdee.g(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext()))
+    if ((paramvhb == null) || (paramErrorMessage.isFail()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694764, 0).a();
+      this.jdField_a_of_type_Vpu.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a(10, true, "retry " + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+    paramvhb.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvhb.jdField_a_of_type_JavaUtilList);
+    paramvfd = paramvhb.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfd.hasNext()) {
+      ((StoryVideoItem)paramvfd.next()).mOwnerUid = vqf.a(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vqf).uid;
+    }
+    ((umm)uwa.a(28)).a(paramvhb.b);
+    paramvfd = paramvhb.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfd.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramvfd.next();
+      vqg.a(this.jdField_a_of_type_Vqg).add(paramErrorMessage.mVid);
+    }
+    if ((paramvhb.jdField_a_of_type_Boolean) || (paramvhb.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      paramvfd = new vpn(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm);
+      paramvfd.jdField_a_of_type_JavaUtilList = vqg.a(this.jdField_a_of_type_Vqg);
+      paramvfd.a(vqf.a(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vqf).feedId);
+      this.jdField_a_of_type_Vpu.a(Collections.singletonList(paramvfd), true);
+      return;
+    }
+    vqg.a(this.jdField_a_of_type_Vqg);
+    if (vqg.b(this.jdField_a_of_type_Vqg) > 50)
+    {
+      this.jdField_a_of_type_Vpu.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm));
+      return;
+    }
+    this.jdField_a_of_type_Vqg.a(paramvhb.c, this.jdField_a_of_type_Vpu);
   }
 }
 

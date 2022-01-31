@@ -1,13 +1,27 @@
-class apwz
-  extends apxc
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1.1;
+import com.tencent.widget.AbsListView;
+
+public class apwz
+  implements bhtv
 {
-  apwz(apwx paramapwx) {}
+  public apwz(EmotionPanelViewPagerAdapter.1.1 param1) {}
   
-  protected void b(boolean paramBoolean)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramBoolean) {
-      apwx.a(this.a);
+    if ((paramInt == 0) || (paramInt == 2))
+    {
+      URLDrawable.resume();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_Int == 1) {
+        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_ComTencentWidgetListView);
+      }
+      return;
     }
+    URLDrawable.pause();
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bgho;
-import bgkd;
-import bgnf;
+import bglv;
+import bgok;
+import bgrm;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 class CustomerJsPlugin$1
   implements AsyncResult
 {
-  CustomerJsPlugin$1(CustomerJsPlugin paramCustomerJsPlugin, bgkd parambgkd) {}
+  CustomerJsPlugin$1(CustomerJsPlugin paramCustomerJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -25,7 +25,7 @@ class CustomerJsPlugin$1
       {
         if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openRobotProfileCard(this.this$0.mMiniAppContext.a(), null, (String)localObject))
         {
-          bgnf.a(this.this$0.mContext, 0, "暂不支持在" + QUAUtil.getApplicationName(this.this$0.mContext) + "中下载应用", 1);
+          bgrm.a(this.this$0.mContext, 0, "暂不支持在" + QUAUtil.getApplicationName(this.this$0.mContext) + "中下载应用", 1);
           this.val$req.a("app not implement");
           return;
         }

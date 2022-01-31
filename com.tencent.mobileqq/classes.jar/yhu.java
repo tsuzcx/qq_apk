@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class yhu
-  implements DialogInterface.OnDismissListener
+public abstract interface yhu
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    yht.a(false);
-  }
+  public abstract void a(int paramInt);
 }
 
 

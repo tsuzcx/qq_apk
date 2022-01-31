@@ -1,60 +1,32 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aska
-  extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  public int a;
+  public String a;
+  public ArrayList<asjy> a;
+  public HashMap<String, String> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
-  public aska(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public aska()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public String toString()
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
-    }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

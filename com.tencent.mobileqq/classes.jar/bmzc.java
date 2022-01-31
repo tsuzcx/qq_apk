@@ -1,27 +1,6 @@
-import android.util.Property;
-
-class bmzc
-  extends Property<bmzb, Float>
+public abstract interface bmzc
 {
-  bmzc(bmzb parambmzb, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bmzb parambmzb)
-  {
-    if (parambmzb != null) {
-      return Float.valueOf(bmzb.a(parambmzb));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bmzb parambmzb, Float paramFloat)
-  {
-    if (parambmzb != null) {
-      bmzb.a(parambmzb, paramFloat.floatValue());
-    }
-  }
+  public abstract void a();
 }
 
 

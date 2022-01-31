@@ -1,16 +1,30 @@
-import java.util.Random;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bluy
+class bluy
+  implements URLDrawable.URLDrawableListener
 {
-  private static Random a = new Random();
+  bluy(blux paramblux, String paramString, URLDrawable paramURLDrawable, blsr paramblsr) {}
   
-  public static bluz a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = bnoa.a / 4;
-    int j = a.nextInt(bnoa.a / 2);
-    int k = bnoa.a / 4;
-    int m = a.nextInt(bnoa.a / 2);
-    return new bluz(i - j + bnoa.a / 2, k - m + (bnoa.b - bnoa.a(249.0F)) / 2);
+    blux.a.remove(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    blux.a.remove(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    blux.a(this.jdField_a_of_type_Blux, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Blsr);
   }
 }
 

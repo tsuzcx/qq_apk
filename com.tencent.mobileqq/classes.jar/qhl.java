@@ -84,7 +84,7 @@ public class qhl
     }
     try
     {
-      String str = (String)bjxj.a(jdField_a_of_type_JavaLangString, "");
+      String str = (String)bkbq.a(jdField_a_of_type_JavaLangString, "");
       Object localObject2;
       if (!TextUtils.isEmpty(str))
       {
@@ -97,7 +97,7 @@ public class qhl
           k += 1;
         }
       }
-      Object localObject1 = (String)bjxj.a(jdField_b_of_type_JavaLangString, "");
+      Object localObject1 = (String)bkbq.a(jdField_b_of_type_JavaLangString, "");
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).split("_").length == 4))
       {
         localObject2 = ((String)localObject1).split("_");
@@ -113,8 +113,8 @@ public class qhl
     catch (NumberFormatException localNumberFormatException)
     {
       localNumberFormatException.printStackTrace();
-      bjxj.a(jdField_a_of_type_JavaLangString, "");
-      bjxj.a(jdField_b_of_type_JavaLangString, "");
+      bkbq.a(jdField_a_of_type_JavaLangString, "");
+      bkbq.a(jdField_b_of_type_JavaLangString, "");
     }
   }
   
@@ -304,7 +304,7 @@ public class qhl
     if (this.jdField_b_of_type_ArrayOfInt != null)
     {
       str = this.jdField_b_of_type_ArrayOfInt[0] + "_" + this.jdField_b_of_type_ArrayOfInt[1] + "_" + this.jdField_b_of_type_ArrayOfInt[2] + "_" + this.jdField_b_of_type_ArrayOfInt[3];
-      bjxj.a(jdField_b_of_type_JavaLangString, str);
+      bkbq.a(jdField_b_of_type_JavaLangString, str);
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
@@ -312,7 +312,7 @@ public class qhl
         k = this.jdField_a_of_type_JavaUtilArrayList.size() - jdField_b_of_type_Int;
       }
       str = TextUtils.join("_", this.jdField_a_of_type_JavaUtilArrayList.subList(k, this.jdField_a_of_type_JavaUtilArrayList.size()));
-      bjxj.a(jdField_a_of_type_JavaLangString, str);
+      bkbq.a(jdField_a_of_type_JavaLangString, str);
     }
   }
   
@@ -384,7 +384,7 @@ public class qhl
     }
     QLog.d("UserActionCollector", 1, "register listview : " + paramAbsListView);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAbsListView);
-    this.i = azgq.a(paramAbsListView.getContext());
+    this.i = azkz.a(paramAbsListView.getContext());
     ((ReadInJoyXListView)paramAbsListView).a(this.jdField_a_of_type_Qhp);
     paramAbsListView.post(new UserActionCollector.1(this, paramInt, paramAbsListView));
   }

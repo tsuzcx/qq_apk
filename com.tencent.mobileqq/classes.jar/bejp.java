@@ -1,6 +1,8 @@
+import android.os.Bundle;
+
 public abstract interface bejp
 {
-  public abstract void a(bejo parambejo);
+  public abstract int a(Bundle paramBundle);
 }
 
 

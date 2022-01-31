@@ -1,17 +1,40 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class afpe
-  extends afpq
+  extends ClickableSpan
 {
-  afpe(aflj paramaflj)
+  private WeakReference<QQAppInterface> a;
+  private WeakReference<Context> b;
+  
+  afpe(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramaflj, null);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
   }
   
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afqo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramView = (QQAppInterface)this.a.get();
+    if (((this.b.get() instanceof Activity)) && (paramView != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
+      }
+      HotChatManager.a(null, false);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

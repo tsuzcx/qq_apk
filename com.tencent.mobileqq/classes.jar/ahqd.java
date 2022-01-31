@@ -1,6 +1,16 @@
-public abstract interface ahqd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+
+public class ahqd
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public ahqd(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    TroopSuspiciousFragment.b(this.a);
+  }
 }
 
 

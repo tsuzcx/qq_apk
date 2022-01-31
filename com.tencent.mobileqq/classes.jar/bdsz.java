@@ -1,21 +1,8 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-
-class bdsz
-  implements Drawable.Callback
+public class bdsz
 {
-  bdsz(bdsy parambdsy, bdsw parambdsw) {}
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bdsw != null) {
-      this.jdField_a_of_type_Bdsw.a(paramDrawable);
-    }
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
+  public long a;
+  public String a;
+  public String b;
 }
 
 

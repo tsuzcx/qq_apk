@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import java.util.Map;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
 
 public class ahlz
-  extends alox
+  implements View.OnClickListener
 {
-  public ahlz(TroopView paramTroopView) {}
+  public ahlz(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      this.a.j();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    this.a.getActivity().finish();
   }
 }
 

@@ -1,21 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.io.File;
 
-public class axzc
-  implements bhqd
+final class axzc
+  implements DialogInterface.OnClickListener
 {
-  public axzc(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
+  axzc(Activity paramActivity, File paramFile1, File paramFile2, axze paramaxze) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
-      bdkd.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
-    }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
+    axza.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Axze);
   }
 }
 

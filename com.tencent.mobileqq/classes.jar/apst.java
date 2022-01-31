@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apst
-  implements Parcelable.Creator<EmotionPreviewInfo>
+class apst
+  extends apsc
 {
-  public EmotionPreviewInfo a(Parcel paramParcel)
-  {
-    return new EmotionPreviewInfo(paramParcel);
-  }
+  apst(apss paramapss) {}
   
-  public EmotionPreviewInfo[] a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    return new EmotionPreviewInfo[paramInt];
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    {
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt(apss.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(apss.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
+        }
+        boolean bool = this.a.jdField_a_of_type_Apsx.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
+        }
+      }
+    }
   }
 }
 

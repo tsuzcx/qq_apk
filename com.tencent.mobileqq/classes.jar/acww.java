@@ -1,22 +1,53 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class acww
-  implements bhqd
+public class acww
+  extends BaseAdapter
 {
-  acww(acwv paramacwv, acxi paramacxi, bhpy parambhpy) {}
+  public acww(FontSettingActivity paramFontSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int getCount()
   {
-    switch (paramInt)
-    {
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.a.jdField_a_of_type_Acwy.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
+    paramViewGroup = (agdh)paramView.getTag();
+    paramViewGroup.d.setOnClickListener(null);
+    if ((paramViewGroup.d instanceof AnimationTextView)) {
+      ((AnimationTextView)paramViewGroup.d).onDoubleClick = null;
     }
-    for (;;)
+    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      this.jdField_a_of_type_Acwv.a.b(this.jdField_a_of_type_Acxi);
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a();
     }
+    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.c = false;
+      FontSettingActivity.a(this.a).postDelayed(new FontSettingActivity.AioListAdapter.1(this), 100L);
+    }
+    return paramView;
   }
 }
 

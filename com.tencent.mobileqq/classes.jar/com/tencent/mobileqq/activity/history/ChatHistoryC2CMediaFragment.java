@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import aget;
-import ahvk;
+import agji;
+import ahzz;
 import android.content.Intent;
-import aqnl;
-import aqse;
-import azmj;
+import aqru;
+import aqwn;
+import azqs;
 import com.tencent.mobileqq.activity.ChatHistoryImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -13,43 +13,43 @@ import java.util.ArrayList;
 public class ChatHistoryC2CMediaFragment
   extends ChatHistoryMediaBaseFragment
 {
-  private aqnl a;
+  private aqru a;
   
   public ChatHistoryC2CMediaFragment()
   {
-    this.jdField_a_of_type_Aqnl = new ahvk(this);
+    this.jdField_a_of_type_Aqru = new ahzz(this);
   }
   
   void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      aget.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramIntent);
+      agji.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramIntent);
     }
   }
   
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Aqnl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqnl);
+    if (this.jdField_a_of_type_Aqru != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
     }
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 2, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 2, 0, "", "", "", "");
   }
   
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Aqnl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqnl);
+    if (this.jdField_a_of_type_Aqru != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
     }
   }
   
   public void g()
   {
     super.g();
-    if (this.jdField_a_of_type_Aqnl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqnl);
+    if (this.jdField_a_of_type_Aqru != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
     }
   }
   
@@ -58,28 +58,28 @@ public class ChatHistoryC2CMediaFragment
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView != null))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.h();
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 1, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 1, 0, "", "", "", "");
     }
   }
   
   void q()
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 1, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 1, 0, "", "", "", "");
   }
   
   void r()
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 1, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 1, 0, "", "", "", "");
   }
   
   void s()
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 1, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 1, 0, "", "", "", "");
   }
   
   void t()
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 1, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 1, 0, "", "", "", "");
   }
 }
 

@@ -1,50 +1,20 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.view.animation.Transformation;
 
 class awmu
-  extends BroadcastReceiver
+  implements bdoh<Float>
 {
   awmu(awmt paramawmt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    if (paramIntent == null) {}
-    do
+    this.a.b = paramFloat1.floatValue();
+    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
+    if (this.a.jdField_a_of_type_Awmz != null)
     {
-      return;
-      paramContext = this.a.mRuntime.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
-    if ((paramIntent != null) && ((paramIntent instanceof behk)))
-    {
-      paramIntent = ((behk)paramIntent).b();
-      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
-        break label232;
-      }
+      this.a.jdField_a_of_type_Awmz.b = paramFloat1.floatValue();
+      this.a.jdField_a_of_type_Awmz.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
     }
-    label232:
-    for (this.a.a = bhos.a(bhos.a(paramIntent), "entryId", 2);; this.a.a = 2)
-    {
-      paramContext.finish();
-      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
-      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      if (this.a.a == 0) {
-        paramContext.setFlags(67108864);
-      }
-      paramContext.putExtra("AllInOne", paramIntent);
-      this.a.mRuntime.a().startActivity(paramContext);
-      paramContext = new Intent();
-      paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
-      return;
-    }
+    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
   }
 }
 

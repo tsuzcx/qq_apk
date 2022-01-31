@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import java.util.List;
 
-public final class tyw
-  implements Parcelable.Creator<QCircleWebViewTitleStyle>
+public class tyw<E>
 {
-  public QCircleWebViewTitleStyle a(Parcel paramParcel)
+  private String jdField_a_of_type_JavaLangString;
+  private List<E> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public String a()
   {
-    return new QCircleWebViewTitleStyle(paramParcel);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public QCircleWebViewTitleStyle[] a(int paramInt)
+  public List<E> a()
   {
-    return new QCircleWebViewTitleStyle[paramInt];
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<E> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

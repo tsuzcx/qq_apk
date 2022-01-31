@@ -1,38 +1,48 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import mqq.app.AppRuntime;
 
-class arwt
-  implements View.OnClickListener
+public abstract class arwt
 {
-  arwt(arwl paramarwl, DialogInterface.OnClickListener paramOnClickListener) {}
+  public static int a;
+  public static int b = 2;
+  private String a;
   
-  public void onClick(View paramView)
+  static
   {
-    this.jdField_a_of_type_Arwl.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Arwl, 0);
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public arwt(String paramString, BinaryMessenger paramBinaryMessenger)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public AppRuntime a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
     }
-    if (arwl.a(this.jdField_a_of_type_Arwl))
-    {
-      arwl.a(this.jdField_a_of_type_Arwl).removeView(arwl.a(this.jdField_a_of_type_Arwl));
-      arwl.a(this.jdField_a_of_type_Arwl, false);
+  }
+  
+  public String b()
+  {
+    AppRuntime localAppRuntime = a();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
     }
-    try
-    {
-      if (this.jdField_a_of_type_Arwl.isShowing()) {
-        this.jdField_a_of_type_Arwl.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
-    }
+    return "";
   }
 }
 

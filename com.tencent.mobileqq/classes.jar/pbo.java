@@ -10,17 +10,17 @@ public class pbo
   
   public void onInstallProgress(float paramFloat)
   {
-    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
   public void onInstalledFailed(int paramInt)
   {
-    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
   }
   
   public void onInstalledSuccessed()
   {
-    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
     if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
       ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
     }

@@ -1,406 +1,81 @@
-import android.graphics.Canvas;
-import android.text.Layout.Alignment;
-import android.text.SpannableString;
-import android.text.SpannedString;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class bcmk
+public abstract class bcmk
+  extends nac
 {
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<CharSequence> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  
-  public bcmk(EllipsizingTextView paramEllipsizingTextView) {}
-  
-  private float a(int paramInt, TextUtils.TruncateAt paramTruncateAt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = b() - (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("...");
-    if (paramTruncateAt == TextUtils.TruncateAt.MIDDLE)
+    boolean bool2 = false;
+    Object localObject = null;
+    long l2 = 0L;
+    long l1;
+    boolean bool1;
+    if ((paramInt == 0) && (paramBundle != null))
     {
-      if (this.h <= 0) {
-        return i / 2;
+      l2 = paramBundle.getLong("uin");
+      l1 = l2;
+      if (paramArrayOfByte == null) {
+        break label199;
       }
-      if (paramInt == 1)
-      {
-        if (i < this.h) {
-          return i;
-        }
-        return this.h;
-      }
-      if (i < this.h) {
-        return 0.0F;
-      }
-      return i - this.h;
-    }
-    if (paramTruncateAt == TextUtils.TruncateAt.END)
-    {
-      if (this.h <= 0) {
-        return i;
-      }
-      if (i < this.h) {
-        return i;
-      }
-      return i - this.h;
-    }
-    return i;
-  }
-  
-  private int a(String paramString)
-  {
-    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString, 0, paramString.length());
-  }
-  
-  private int a(String paramString, int paramInt)
-  {
-    if ((paramString == null) || (paramInt < 0) || (paramInt > paramString.length() - 1)) {
-      return 0;
-    }
-    char c1 = paramString.charAt(paramInt);
-    paramString = new float[1];
-    this.jdField_a_of_type_AndroidTextTextPaint.getTextWidths(String.valueOf(c1), paramString);
-    return (int)Math.ceil(paramString[0]);
-  }
-  
-  private String a(int paramInt)
-  {
-    int k = (int)a(0, TextUtils.TruncateAt.MIDDLE);
-    int m = this.jdField_a_of_type_JavaLangString.length();
-    int j = 0;
-    int i = paramInt;
-    for (;;)
-    {
-      if (i < m)
-      {
-        j += a(this.jdField_a_of_type_JavaLangString, i);
-        if (j <= k) {}
-      }
-      else
-      {
-        return this.jdField_a_of_type_JavaLangString.substring(paramInt, i);
-      }
-      i += 1;
-    }
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_c_of_type_JavaUtilArrayList.clear();
-    int n = b();
-    if (n <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EllipsizingTextView", 2, "lineWidth=" + n);
-      }
-      return;
-    }
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    label71:
-    if (i < this.jdField_a_of_type_JavaLangString.length())
-    {
-      if (this.jdField_a_of_type_JavaLangString.charAt(i) != '\n') {
-        break label166;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
-      if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
-        this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
-      }
-      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-      k = i + 1;
-      j = 0;
+      paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+      bool1 = bool2;
     }
     for (;;)
     {
-      i += 1;
-      break label71;
-      break;
-      label166:
-      int m = a(this.jdField_a_of_type_JavaLangString.substring(k, i + 1));
-      if (m > n)
+      try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
-        if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
-          this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
+        paramBundle.mergeFrom(paramArrayOfByte);
+        bool1 = bool2;
+        if (!((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) {
+          break label211;
         }
-        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_JavaLangString.length()) {
-          break;
+        bool1 = bool2;
+        if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+          break label211;
         }
-        k = i;
-        i -= 1;
-        j = 0;
+        bool1 = true;
+        paramArrayOfByte = new AccountDetail(paramBundle);
+        bool1 = true;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        bool2 = bool1;
+        bool1 = bool2;
+        paramArrayOfByte = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("TroopBindPubAccountProtocol", 2, paramBundle.toString());
+        bool1 = bool2;
+        paramArrayOfByte = localObject;
         continue;
       }
-      if (i == this.jdField_a_of_type_JavaLangString.length() - 1)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, this.jdField_a_of_type_JavaLangString.length()));
-        if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
-          this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, this.jdField_a_of_type_JavaLangCharSequence.length()));
-        }
-        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(m));
-      }
-      else
-      {
-        j = m;
-      }
-    }
-  }
-  
-  private int b()
-  {
-    return this.jdField_a_of_type_Int - this.f - this.d;
-  }
-  
-  private String b(int paramInt)
-  {
-    int k = (int)a(1, TextUtils.TruncateAt.MIDDLE);
-    int j = 0;
-    int i = paramInt;
-    for (;;)
-    {
-      if (i > 0)
-      {
-        j += a(this.jdField_a_of_type_JavaLangString, i);
-        if (j <= k) {}
-      }
-      else
-      {
-        return this.jdField_a_of_type_JavaLangString.substring(i + 1, paramInt + 1);
-      }
-      i -= 1;
-    }
-  }
-  
-  private String c(int paramInt)
-  {
-    int k = this.jdField_a_of_type_JavaLangString.length();
-    int m = (int)a(1, TextUtils.TruncateAt.END);
-    int j = 0;
-    int i = paramInt;
-    for (;;)
-    {
-      if ((i >= k) || (j > m))
-      {
-        if (i - 1 >= paramInt) {
-          break;
-        }
-        return "";
-      }
-      j += a(this.jdField_a_of_type_JavaLangString, i);
-      i += 1;
-    }
-    if (i - 1 > k) {
-      return this.jdField_a_of_type_JavaLangString.substring(paramInt, k);
-    }
-    return this.jdField_a_of_type_JavaLangString.substring(paramInt, i - 1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i <= paramInt)
-    {
-      j += ((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).length();
-      i += 1;
-    }
-    if (j <= 0) {
-      return 0;
-    }
-    return j - 1;
-  }
-  
-  public void a(Canvas paramCanvas, TextUtils.TruncateAt paramTruncateAt)
-  {
-    int j;
-    int m;
-    Object localObject1;
-    int k;
-    label39:
-    String str;
-    Object localObject2;
-    int i;
-    if ((this.jdField_c_of_type_Int > 0) && (this.jdField_c_of_type_Int <= this.jdField_a_of_type_JavaUtilArrayList.size()))
-    {
-      j = this.jdField_c_of_type_Int;
-      m = b();
-      localObject1 = null;
-      k = 0;
-      if (k >= j) {
-        break label758;
-      }
-      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      localObject2 = localObject1;
-      if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
-      {
-        localObject2 = localObject1;
-        if (this.jdField_c_of_type_JavaUtilArrayList.size() > k) {
-          localObject2 = (CharSequence)this.jdField_c_of_type_JavaUtilArrayList.get(k);
-        }
-      }
-      i = ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(k)).intValue();
-      if (paramTruncateAt != TextUtils.TruncateAt.END) {
-        break label462;
-      }
-      if ((j < 2) || (k != j - 1) || (k >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)) {
-        break label359;
-      }
-      i = a(j - 2);
-      str = c(i + 1) + "...";
-      localObject1 = str;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label759;
-      }
-      i = (m - a(str)) / 2;
-      localObject1 = str;
-    }
-    for (;;)
-    {
-      label219:
-      if ((EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) && (localObject2 != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EllipsizingTextView", 2, "text is " + ((CharSequence)localObject2).toString() + "and i is" + k + " offset: " + i);
-        }
-        if (k == 0)
-        {
-          paramCanvas.translate(i + this.d, 0.0F);
-          new StaticLayout((CharSequence)localObject2, this.jdField_a_of_type_AndroidTextTextPaint, paramCanvas.getWidth(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).draw(paramCanvas);
-        }
-      }
-      for (;;)
-      {
-        label307:
-        k += 1;
-        localObject1 = localObject2;
-        break label39;
-        j = this.jdField_a_of_type_JavaUtilArrayList.size();
-        break;
-        label359:
-        if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
-        {
-          str = c(0) + "...";
-          localObject1 = str;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label759;
-          }
-          i = (m - a(str)) / 2;
-          localObject1 = str;
-          break label219;
-        }
-        localObject1 = str;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label759;
-        }
-        i = (m - i) / 2;
-        localObject1 = str;
-        break label219;
-        label462:
-        localObject1 = str;
-        if (paramTruncateAt != TextUtils.TruncateAt.MIDDLE) {
-          break label759;
-        }
-        if ((j >= 2) && (k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
-        {
-          i = a(j - 2);
-          str = a(i + 1) + "..." + b(this.jdField_a_of_type_JavaLangString.length() - 1);
-          localObject1 = str;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label759;
-          }
-          i = (m - a(str)) / 2;
-          localObject1 = str;
-          break label219;
-        }
-        if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
-        {
-          str = a(0) + "..." + b(this.jdField_a_of_type_JavaLangString.length() - 1);
-          localObject1 = str;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label759;
-          }
-          i = (m - a(str)) / 2;
-          localObject1 = str;
-          break label219;
-        }
-        localObject1 = str;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label759;
-        }
-        i = (m - i) / 2;
-        localObject1 = str;
-        break label219;
-        paramCanvas.translate(0.0F, this.jdField_b_of_type_Int);
-        break label307;
-        paramCanvas.drawText(localObject1, i + this.d, this.jdField_a_of_type_AndroidTextTextPaint.getTextSize() + this.jdField_b_of_type_Int * k + this.e, this.jdField_a_of_type_AndroidTextTextPaint);
-      }
-      label758:
+      a(bool1, l2, paramArrayOfByte);
       return;
-      label759:
-      i = 0;
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("TroopBindPubAccountProtocol", 2, "get pubAccountInfo failed, errorCode=" + paramInt);
+        l1 = l2;
+      }
+      label199:
+      bool1 = false;
+      paramArrayOfByte = null;
+      l2 = l1;
+      continue;
+      label211:
+      paramArrayOfByte = null;
+      bool1 = false;
     }
   }
   
-  public void a(CharSequence paramCharSequence, TextView paramTextView, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if ((paramCharSequence == null) || (paramTextView == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    if (EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
-    {
-      if (!(paramCharSequence instanceof SpannableString)) {
-        break label128;
-      }
-      EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-      this.jdField_a_of_type_AndroidTextTextPaint = paramTextView.getPaint();
-      this.jdField_a_of_type_Int = paramTextView.getMeasuredWidth();
-      this.jdField_b_of_type_Int = paramTextView.getLineHeight();
-      this.d = paramTextView.getPaddingLeft();
-      this.e = paramTextView.getPaddingTop();
-      this.f = paramTextView.getPaddingRight();
-      this.g = paramTextView.getPaddingBottom();
-      this.jdField_c_of_type_Int = paramInt1;
-      this.h = paramInt2;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a();
-      return;
-      label128:
-      if ((paramCharSequence instanceof SpannedString)) {
-        EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
-      }
-    }
-  }
+  protected abstract void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail);
 }
 
 

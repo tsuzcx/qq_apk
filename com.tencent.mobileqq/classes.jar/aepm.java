@@ -1,10 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.TextView;
 
-final class aepm
-  implements DialogInterface.OnClickListener
+public abstract class aepm
+  extends aeqz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 

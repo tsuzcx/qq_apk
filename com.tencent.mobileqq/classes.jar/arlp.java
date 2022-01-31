@@ -1,120 +1,85 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class arlp
+public abstract class arlp
+  extends arlv
 {
-  private arlr jdField_a_of_type_Arlr;
-  private arls jdField_a_of_type_Arls;
+  private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public ChatMessage a;
   
-  public arlp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public arlp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  protected abstract int a();
+  
+  protected abstract long a();
+  
+  public SessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public ChatMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  }
+  
+  protected abstract String a();
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_Arlr = arlr.a(paramQQAppInterface, paramChatMessage);
   }
   
-  public long a()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Arlr != null) {
-      return this.jdField_a_of_type_Arlr.a();
-    }
-    return 0L;
-  }
-  
-  public arlo a()
-  {
-    if (this.jdField_a_of_type_Arlr != null) {
-      return this.jdField_a_of_type_Arlr.a();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Arlr != null) {
-      return this.jdField_a_of_type_Arlr.b();
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Arlr != null) {}
-    for (boolean bool = this.jdField_a_of_type_Arlr.a();; bool = false)
-    {
-      if (!bool)
-      {
-        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
-        if (this.jdField_a_of_type_Arls != null) {
-          this.jdField_a_of_type_Arls.a(false);
-        }
-      }
-      return;
-    }
-  }
-  
-  public void a(arls paramarls)
-  {
-    this.jdField_a_of_type_Arls = paramarls;
-    if (this.jdField_a_of_type_Arlr != null) {
-      this.jdField_a_of_type_Arlr.a(this.jdField_a_of_type_Arls);
-    }
-  }
-  
-  public void a(String paramString, arlq paramarlq)
-  {
-    if (!bdcs.b(paramString))
-    {
-      if (paramarlq != null) {
-        paramarlq.a(-1, "file is not exist");
-      }
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new QFileMultiSaveReq.1(this, paramString, paramarlq));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return bdcs.b(b());
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public String b()
-  {
-    String str = "";
-    if (this.jdField_a_of_type_Arlr != null) {
-      str = this.jdField_a_of_type_Arlr.a();
-    }
-    return str;
-  }
+  protected abstract String b();
   
-  public void b()
+  public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Arlr != null) {}
-    for (boolean bool = this.jdField_a_of_type_Arlr.b();; bool = false)
-    {
-      if (!bool)
-      {
-        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
-        if (this.jdField_a_of_type_Arls != null) {
-          this.jdField_a_of_type_Arls.b(false);
-        }
-      }
-      return;
-    }
+    this.b = paramBoolean;
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Arlr != null) {
-      this.jdField_a_of_type_Arlr.c();
+    String str = a();
+    long l = a();
+    if (bdhb.b(b())) {
+      return false;
     }
-    return false;
+    int i = a();
+    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
+      return false;
+    }
+    if (arrr.a(str) != 2) {
+      return false;
+    }
+    if (!arrr.a()) {
+      return false;
+    }
+    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((aqud)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(bckt.a(str)).b)) {
+      return true;
+    }
+    return l > 1048576L;
   }
 }
 

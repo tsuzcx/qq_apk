@@ -1,15 +1,6 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class bjfp
-  implements FileFilter
+public abstract interface bjfp
 {
-  bjfp(bjfl parambjfl) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".ftf");
-  }
+  public abstract void a();
 }
 
 

@@ -19,7 +19,7 @@ class qyn
       ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(qym.a(this.a).h, "alpha", new float[] { 0.0F, 1.0F });
       localObjectAnimator1.setDuration(200L);
       localObjectAnimator1.setInterpolator(new DecelerateInterpolator());
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(qym.a(this.a).h, "translationY", new float[] { aekt.a(15.0F, qym.a(this.a).h.getResources()), 0.0F });
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(qym.a(this.a).h, "translationY", new float[] { aepi.a(15.0F, qym.a(this.a).h.getResources()), 0.0F });
       localObjectAnimator2.setDuration(200L);
       localObjectAnimator2.setInterpolator(new DecelerateInterpolator());
       paramAnimator.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
@@ -29,7 +29,7 @@ class qyn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qyn
  * JD-Core Version:    0.7.0.1
  */

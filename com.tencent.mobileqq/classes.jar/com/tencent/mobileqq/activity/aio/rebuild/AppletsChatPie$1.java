@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agir;
+import agng;
 import android.widget.TextView;
 
 public class AppletsChatPie$1
   implements Runnable
 {
-  public AppletsChatPie$1(agir paramagir) {}
+  public AppletsChatPie$1(agng paramagng) {}
   
   public void run()
   {
-    if (agir.a(this.this$0) != null) {
-      agir.b(this.this$0).setVisibility(8);
+    if (agng.a(this.this$0) != null) {
+      agng.b(this.this$0).setVisibility(8);
     }
-    if (agir.c(this.this$0) != null) {
-      agir.d(this.this$0).setVisibility(8);
+    if (agng.c(this.this$0) != null) {
+      agng.d(this.this$0).setVisibility(8);
     }
   }
 }

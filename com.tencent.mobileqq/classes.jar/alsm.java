@@ -1,39 +1,46 @@
+import android.content.Context;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xd55.RspBody;
 
-class alsm
-  extends bdvu
+public class alsm
 {
-  alsm(alsl paramalsl) {}
-  
-  public void onDone(bdvv parambdvv)
+  public static String a(byte[] paramArrayOfByte)
   {
-    super.onDone(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambdvv.f + ", url: " + parambdvv.a);
-    }
-    int i = parambdvv.a.indexOf("?");
-    String str;
-    if (i == -1)
+    if (paramArrayOfByte == null)
     {
-      str = parambdvv.a;
-      if (!alsk.a.contains(str)) {
-        break label105;
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
+      return "";
+    }
+    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      if (localRspBody.wording.has()) {
+        return localRspBody.wording.get();
       }
-      this.a.a(parambdvv);
+      return "";
     }
-    label105:
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, null, paramString3, null, 1069);
       return;
-      str = parambdvv.a.substring(0, i - 1);
-      break;
-      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
-      {
-        this.a.b(parambdvv);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambdvv.a);
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, paramContext.getMessage());
+    }
   }
 }
 

@@ -1,6 +1,13 @@
-public abstract interface blne
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class blne
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, Object paramObject);
+  public blne(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

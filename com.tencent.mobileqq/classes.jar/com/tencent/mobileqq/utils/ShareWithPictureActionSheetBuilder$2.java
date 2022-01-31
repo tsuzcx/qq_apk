@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils;
 
-import bdit;
+import bdnc;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareWithPictureActionSheetBuilder$2
   implements Runnable
 {
-  public ShareWithPictureActionSheetBuilder$2(bdit parambdit) {}
+  public ShareWithPictureActionSheetBuilder$2(bdnc parambdnc) {}
   
   public void run()
   {

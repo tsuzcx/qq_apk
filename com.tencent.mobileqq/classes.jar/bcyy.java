@@ -1,380 +1,316 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import java.util.List;
 
 public class bcyy
 {
-  @Nullable
-  public static Bitmap a(int paramInt, Bitmap.Config paramConfig, Bitmap[] paramArrayOfBitmap)
+  public static void a(int paramInt1, int paramInt2, String[] paramArrayOfString, bcyx parambcyx)
   {
-    if ((paramArrayOfBitmap == null) || (paramArrayOfBitmap.length <= 0)) {
-      throw new IllegalArgumentException("bitmapArray should not be null or empty");
-    }
-    ArrayList localArrayList = new ArrayList(paramArrayOfBitmap.length);
-    int j = paramArrayOfBitmap.length;
-    int i = 0;
-    for (;;)
+    switch (paramInt1)
     {
-      if (i < j)
-      {
-        localObject = paramArrayOfBitmap[i];
-        if (localObject != null)
-        {
-          localArrayList.add(localObject);
-          if (localArrayList.size() < 6) {}
-        }
-      }
-      else
-      {
-        j = localArrayList.size();
-        if (j > 0) {
-          break;
-        }
-        throw new IllegalArgumentException("can not find any bitmap from bitmapArray");
-      }
-      i += 1;
+    default: 
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      parambcyx.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    case 2: 
+      a(paramArrayOfString, parambcyx);
+      return;
+    case 3: 
+      a(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 4: 
+      b(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 5: 
+      c(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 6: 
+      d(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 7: 
+      e(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 8: 
+      g(paramInt2, paramArrayOfString, parambcyx);
+      return;
+    case 9: 
+    case 11: 
+      f(paramInt2, paramArrayOfString, parambcyx);
+      return;
     }
-    paramArrayOfBitmap = paramConfig;
-    if (paramConfig == null) {
-      paramArrayOfBitmap = Bitmap.Config.RGB_565;
-    }
-    Object localObject = new bcza[j];
-    i = 0;
-    while (i < j)
-    {
-      localObject[i] = new bcza(null);
-      i += 1;
-    }
-    float f = paramInt / 100.0F;
-    i = 0;
-    RectF localRectF;
-    Rect localRect;
-    Paint localPaint1;
-    Canvas localCanvas;
-    Paint localPaint2;
-    label295:
-    Bitmap localBitmap;
-    int k;
-    int m;
-    if (j == 1)
-    {
-      localObject[0].a = 0;
-      localObject[0].b = 0;
-      i = paramInt;
-      localRectF = new RectF();
-      localRect = new Rect();
-      localPaint1 = new Paint();
-      localPaint1.setAntiAlias(true);
-      localPaint1.setDither(true);
-      localPaint1.setFilterBitmap(true);
-      paramArrayOfBitmap = Bitmap.createBitmap(paramInt, paramInt, paramArrayOfBitmap);
-      paramConfig = null;
-      localCanvas = new Canvas(paramArrayOfBitmap);
-      localCanvas.drawARGB(0, 0, 0, 0);
-      localPaint2 = new Paint();
-      localPaint2.setAntiAlias(true);
-      localPaint2.setDither(true);
-      localPaint2.setFilterBitmap(true);
-      localPaint2.setColor(0);
-      paramInt = 0;
-      if (paramInt >= j) {
-        break label1172;
-      }
-      localBitmap = (Bitmap)localArrayList.get(paramInt);
-      k = i / 2;
-      m = i * 3 / 40;
-      localRectF.set(localObject[paramInt].a, localObject[paramInt].b, localObject[paramInt].a + i, localObject[paramInt].b + i);
-      localRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      if ((paramInt != 1) || (j < 3)) {
-        break label1134;
-      }
-      localPaint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-      localCanvas.drawCircle(localObject[paramInt].a + k, localObject[paramInt].b + k, m + k, localPaint2);
-      paramConfig = Bitmap.createBitmap(paramArrayOfBitmap);
-      localPaint2.setXfermode(null);
-    }
-    for (;;)
-    {
-      localPaint1.setShader(a(localRectF, localBitmap));
-      localCanvas.drawCircle(localObject[paramInt].a + k, localObject[paramInt].b + k, k, localPaint1);
-      paramInt += 1;
-      break label295;
-      if (j == 2)
-      {
-        i = (int)(60.0F * f + 0.5F);
-        localObject[0].a = 0;
-        localObject[0].b = 0;
-        localObject[1].a = (paramInt - i);
-        localObject[1].b = (paramInt - i);
-        break;
-      }
-      if (j == 3)
-      {
-        i = (int)(52.0F * f + 0.5F);
-        localObject[0].a = ((paramInt - i) / 2);
-        localObject[0].b = ((int)(2.0F * f));
-        localObject[1].a = (paramInt - i);
-        localObject[1].b = (paramInt - i - (int)(2.0F * f));
-        localObject[2].a = 0;
-        localObject[2].b = (paramInt - i - (int)(f * 2.0F));
-        break;
-      }
-      if (j == 4)
-      {
-        i = (int)(52.0F * f + 0.5F);
-        localObject[0].a = (paramInt - i);
-        localObject[0].b = 0;
-        localObject[1].a = (paramInt - i);
-        localObject[1].b = (paramInt - i);
-        localObject[2].a = 0;
-        localObject[2].b = (paramInt - i);
-        localObject[3].a = 0;
-        localObject[3].b = 0;
-        break;
-      }
-      if (j == 5)
-      {
-        i = (int)(40.0F * f + 0.5F);
-        localObject[0].a = (paramInt - i);
-        localObject[0].b = ((int)(24.0F * f + 0.5F));
-        localObject[1].a = (paramInt - i - (int)(12.0F * f + 0.5F));
-        localObject[1].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        localObject[2].a = ((int)(12.0F * f + 0.5F));
-        localObject[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        localObject[3].a = 0;
-        localObject[3].b = ((int)(24.0F * f + 0.5F));
-        localObject[4].a = ((int)(30.0F * f + 0.5F));
-        localObject[4].b = ((int)(f * 2.0F + 0.5F));
-        break;
-      }
-      if (j >= 6)
-      {
-        i = (int)(36.0F * f + 0.5F);
-        localObject[0].b = ((int)(2.0F * f + 0.5F));
-        localObject[0].a = (paramInt - i - (int)(15.0F * f + 0.5F));
-        localObject[1].b = ((int)(32.0F * f + 0.5F));
-        localObject[1].a = (paramInt - i);
-        localObject[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        localObject[2].a = (paramInt - i - (int)(15.0F * f + 0.5F));
-        localObject[3].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        localObject[3].a = ((int)(15.0F * f + 0.5F));
-        localObject[4].b = ((int)(32.0F * f + 0.5F));
-        localObject[4].a = 0;
-        localObject[5].b = ((int)(2.0F * f + 0.5F));
-        localObject[5].a = ((int)(f * 15.0F + 0.5F));
-      }
-      break;
-      label1134:
-      localCanvas.drawCircle(localObject[paramInt].a + k, localObject[paramInt].b + k, m + k, localPaint2);
-    }
-    label1172:
-    if (paramConfig != null)
-    {
-      localRectF.set(0.0F, 0.0F, paramConfig.getWidth(), paramConfig.getHeight());
-      localRect.set(0, 0, paramConfig.getWidth(), paramConfig.getHeight());
-      localPaint1.setShader(null);
-      localCanvas.drawBitmap(paramConfig, localRect, localRectF, localPaint1);
-    }
-    return paramArrayOfBitmap;
+    h(paramInt2, paramArrayOfString, parambcyx);
   }
   
-  public static Bitmap a(int paramInt, Bitmap[] paramArrayOfBitmap)
+  public static void a(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
   {
-    if ((paramArrayOfBitmap == null) || (paramArrayOfBitmap.length <= 0)) {
-      paramArrayOfBitmap = null;
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[1]))
+      {
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 1;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
+        if (!TextUtils.isEmpty(paramArrayOfString[4]))
+        {
+          localbcyw = new bcyw();
+          localbcyw.jdField_a_of_type_Int = 4;
+          localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+          parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+        }
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbcyw = new bcyw();
+          localbcyw.jdField_a_of_type_Int = 3;
+          localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+        }
+      }
     }
-    Bitmap[] arrayOfBitmap;
-    int i;
-    bcza[] arrayOfbcza;
-    Paint localPaint;
-    RectF localRectF;
-    Rect localRect;
-    Canvas localCanvas;
-    label279:
-    do
+    while (paramInt != 1)
     {
-      Bitmap localBitmap;
       do
       {
-        return paramArrayOfBitmap;
-        arrayOfBitmap = new Bitmap[paramArrayOfBitmap.length];
-        i = 0;
-        j = 0;
-        while (j < paramArrayOfBitmap.length)
+        do
         {
-          k = i;
-          if (paramArrayOfBitmap[j] != null)
-          {
-            arrayOfBitmap[i] = paramArrayOfBitmap[j];
-            k = i + 1;
+          return;
+          if (TextUtils.isEmpty(paramArrayOfString[4])) {
+            break;
           }
-          j += 1;
-          i = k;
-        }
-        if (i < 1) {
-          return null;
-        }
-        if (i == 1) {
-          return paramArrayOfBitmap[0];
-        }
-        arrayOfbcza = new bcza[i];
-        j = 0;
-        while (j < i)
-        {
-          arrayOfbcza[j] = new bcza(null);
-          j += 1;
-        }
-        localPaint = new Paint();
-        localPaint.setAntiAlias(true);
-        localPaint.setDither(true);
-        localPaint.setFilterBitmap(true);
-        localRectF = new RectF();
-        localRect = new Rect();
-        localBitmap = Bitmap.createBitmap(paramInt, paramInt, Bitmap.Config.ARGB_8888);
-        localCanvas = new Canvas(localBitmap);
-        localCanvas.drawARGB(0, 0, 0, 0);
-        if (i != 2) {
-          break;
-        }
-        arrayOfbcza[0].a = 0;
-        arrayOfbcza[0].b = 0;
-        arrayOfbcza[0].c = (paramInt / 2 - 1);
-        arrayOfbcza[0].d = paramInt;
-        arrayOfbcza[0].e = 1;
-        arrayOfbcza[1].a = (paramInt / 2 + 1);
-        arrayOfbcza[1].b = 0;
-        arrayOfbcza[1].c = paramInt;
-        arrayOfbcza[1].d = paramInt;
-        arrayOfbcza[1].e = 1;
-        paramInt = 0;
-        paramArrayOfBitmap = localBitmap;
-      } while (paramInt >= i);
-      paramArrayOfBitmap = localBitmap;
-    } while (paramInt >= 4);
-    int j = arrayOfBitmap[paramInt].getWidth();
-    int k = arrayOfBitmap[paramInt].getHeight();
-    if (arrayOfbcza[paramInt].e == 1) {
-      localRect.set(j / 4, 0, j / 4 * 3, k);
+          parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 4;
+          parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        } while (TextUtils.isEmpty(paramArrayOfString[3]));
+        localbcyw = new bcyw();
+        localbcyw.jdField_a_of_type_Int = 3;
+        localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+        return;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      bcyw localbcyw = new bcyw();
+      localbcyw.jdField_a_of_type_Int = 3;
+      localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+      return;
     }
-    for (;;)
+    if (!TextUtils.isEmpty(paramArrayOfString[1]))
     {
-      localRectF.set(arrayOfbcza[paramInt].a, arrayOfbcza[paramInt].b, arrayOfbcza[paramInt].c, arrayOfbcza[paramInt].d);
-      localCanvas.drawBitmap(arrayOfBitmap[paramInt], localRect, localRectF, localPaint);
-      paramInt += 1;
-      break label279;
-      if (i == 3)
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 1;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
+      return;
+    }
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 6;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void a(String[] paramArrayOfString, bcyx parambcyx)
+  {
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[4]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 4;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      if (!TextUtils.isEmpty(paramArrayOfString[3]))
       {
-        arrayOfbcza[0].a = 0;
-        arrayOfbcza[0].b = 0;
-        arrayOfbcza[0].c = (paramInt / 2 - 1);
-        arrayOfbcza[0].d = paramInt;
-        arrayOfbcza[0].e = 1;
-        arrayOfbcza[1].a = (paramInt / 2 + 1);
-        arrayOfbcza[1].b = 0;
-        arrayOfbcza[1].c = paramInt;
-        arrayOfbcza[1].d = (paramInt / 2 - 1);
-        arrayOfbcza[1].e = 2;
-        arrayOfbcza[2].a = (paramInt / 2 + 1);
-        arrayOfbcza[2].b = (paramInt / 2 + 1);
-        arrayOfbcza[2].c = paramInt;
-        arrayOfbcza[2].d = paramInt;
-        arrayOfbcza[2].e = 2;
-        break;
+        localbcyw = new bcyw();
+        localbcyw.jdField_a_of_type_Int = 3;
+        localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
       }
-      if (i < 4) {
-        break;
-      }
-      arrayOfbcza[0].a = 0;
-      arrayOfbcza[0].b = 0;
-      arrayOfbcza[0].c = (paramInt / 2 - 1);
-      arrayOfbcza[0].d = (paramInt / 2 - 1);
-      arrayOfbcza[0].e = 2;
-      arrayOfbcza[1].a = (paramInt / 2 + 1);
-      arrayOfbcza[1].b = 0;
-      arrayOfbcza[1].c = paramInt;
-      arrayOfbcza[1].d = (paramInt / 2 - 1);
-      arrayOfbcza[1].e = 2;
-      arrayOfbcza[2].a = (paramInt / 2 + 1);
-      arrayOfbcza[2].b = (paramInt / 2 + 1);
-      arrayOfbcza[2].c = paramInt;
-      arrayOfbcza[2].d = paramInt;
-      arrayOfbcza[2].e = 2;
-      arrayOfbcza[3].a = 0;
-      arrayOfbcza[3].b = (paramInt / 2 + 1);
-      arrayOfbcza[3].c = (paramInt / 2 - 1);
-      arrayOfbcza[3].d = paramInt;
-      arrayOfbcza[3].e = 2;
-      break;
-      localRect.set(0, 0, j, k);
     }
+    do
+    {
+      return;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    } while (TextUtils.isEmpty(paramArrayOfString[3]));
+    bcyw localbcyw = new bcyw();
+    localbcyw.jdField_a_of_type_Int = 3;
+    localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+    parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
   }
   
-  public static Bitmap a(Bitmap paramBitmap1, Bitmap paramBitmap2, float paramFloat1, float paramFloat2)
+  public static void b(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
   {
-    float f = paramFloat2;
-    if (paramFloat2 < 1.5F) {
-      f = 1.5F;
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambcyx);
     }
-    int j = Math.max(paramBitmap1.getWidth(), paramBitmap1.getHeight());
-    int i = Math.max(paramBitmap2.getWidth(), paramBitmap2.getHeight());
-    j = (int)(Math.max(j, i) * f);
-    Bitmap localBitmap = Bitmap.createBitmap(j, j, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setAntiAlias(true);
-    localPaint.setFilterBitmap(true);
-    localPaint.setDither(true);
-    paramFloat2 = j / i;
-    Object localObject = new Matrix();
-    if (paramFloat1 != 0.0F) {
-      ((Matrix)localObject).setRotate(paramFloat1, paramBitmap2.getWidth() / 2.0F, paramBitmap2.getHeight() / 2.0F);
+    while (paramInt != 1) {
+      return;
     }
-    ((Matrix)localObject).postScale(paramFloat2, paramFloat2);
-    localCanvas.drawBitmap(paramBitmap2, (Matrix)localObject, localPaint);
-    paramBitmap2 = new Rect(0, 0, paramBitmap1.getWidth(), paramBitmap1.getHeight());
-    localObject = new RectF(0.0F, 0.0F, j, j);
-    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    localCanvas.drawBitmap(paramBitmap1, paramBitmap2, (RectF)localObject, localPaint);
-    return localBitmap;
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 6;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
   }
   
-  public static BitmapShader a(RectF paramRectF, @NonNull Bitmap paramBitmap)
+  public static void c(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
   {
-    float f1 = 0.0F;
-    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    int i = paramBitmap.getHeight();
-    int j = paramBitmap.getWidth();
-    paramBitmap = new Matrix();
-    float f3;
-    float f2;
-    if (paramRectF.width() / paramRectF.height() < j / i)
-    {
-      f3 = paramRectF.height() / i;
-      f2 = (paramRectF.width() - j * f3) * 0.5F;
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 4;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      }
     }
-    for (;;)
+    while (paramInt != 1)
     {
-      paramBitmap.setScale(f3, f3);
-      paramBitmap.postTranslate((int)(f2 + 0.5F) + paramRectF.left, (int)(f1 + 0.5F) + paramRectF.top);
-      localBitmapShader.setLocalMatrix(paramBitmap);
-      return localBitmapShader;
-      f3 = paramRectF.width() / j;
-      f1 = paramRectF.height();
-      float f4 = i;
-      f2 = 0.0F;
-      f1 = (f1 - f4 * f3) * 0.5F;
+      do
+      {
+        return;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[2]));
+      bcyw localbcyw = new bcyw();
+      localbcyw.jdField_a_of_type_Int = 2;
+      localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+      return;
     }
+    if (!TextUtils.isEmpty(paramArrayOfString[2]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 2;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void d(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
+  {
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 4;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbcyw = new bcyw();
+          localbcyw.jdField_a_of_type_Int = 3;
+          localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      localbcyw = new bcyw();
+      localbcyw.jdField_a_of_type_Int = 3;
+      localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+      return;
+      if (paramInt == 1)
+      {
+        localbcyw = new bcyw();
+        localbcyw.jdField_a_of_type_Int = 0;
+        localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 3;
+          parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          return;
+        }
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+        parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        return;
+      }
+    } while (paramInt != 3);
+    bcyw localbcyw = new bcyw();
+    localbcyw.jdField_a_of_type_Int = 7;
+    localbcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambcyx.jdField_a_of_type_JavaUtilList.add(localbcyw);
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 3;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void e(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambcyx);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public static void f(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambcyx);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[5]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 5;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[5];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void g(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambcyx);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 3;
+      parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void h(int paramInt, String[] paramArrayOfString, bcyx parambcyx)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambcyx);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_Int = 0;
+    parambcyx.jdField_a_of_type_Bcyw.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambcyx.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

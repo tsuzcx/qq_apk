@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgid;
-import bgkd;
+import bglv;
+import bgmk;
+import bgok;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class MiniAppFileJsPlugin
@@ -10,9 +10,9 @@ public class MiniAppFileJsPlugin
 {
   public static final String EVENT_OPEN_DOCUMENT = "openDocument";
   
-  public void openDocument(bgkd parambgkd)
+  public void openDocument(bgok parambgok)
   {
-    this.mMiniAppContext.a(bgid.a(parambgkd, 1));
+    this.mMiniAppContext.a(bgmk.a(parambgok, 1));
   }
 }
 

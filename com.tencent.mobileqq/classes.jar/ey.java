@@ -9,13 +9,13 @@ public class ey
 {
   public static String a(long paramLong)
   {
-    return bdcr.a(paramLong);
+    return bdha.a(paramLong);
   }
   
   public static String a(Context paramContext, String paramString)
   {
     Bitmap localBitmap;
-    if (arni.a(paramString) == 0) {
+    if (arrr.a(paramString) == 0) {
       localBitmap = fa.a(paramString, 150, 150);
     }
     for (;;)
@@ -23,7 +23,7 @@ public class ey
       if (localBitmap == null)
       {
         return null;
-        if (arni.a(paramString) == 2) {
+        if (arrr.a(paramString) == 2) {
           localBitmap = fa.c(paramString, 150, 150);
         }
       }
@@ -40,7 +40,7 @@ public class ey
           {
             try
             {
-              arof.a(localBitmap, paramContext);
+              arso.a(localBitmap, paramContext);
               localBitmap.recycle();
               fa.a(paramContext, fa.a(paramString));
               return paramContext;
@@ -80,11 +80,11 @@ public class ey
   
   public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = new VFSFile(bdal.a(paramContext) + "thumbnails/");
+    paramContext = new VFSFile(bdeu.a(paramContext) + "thumbnails/");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    return paramContext.getAbsolutePath() + "/" + arni.a(paramString1) + "." + paramString2 + ".JPG";
+    return paramContext.getAbsolutePath() + "/" + arrr.a(paramString1) + "." + paramString2 + ".JPG";
   }
   
   public static void a(VFSFile paramVFSFile)
@@ -459,11 +459,11 @@ public class ey
   
   public static String b(Context paramContext, String paramString)
   {
-    paramContext = new VFSFile(bdal.a(paramContext) + "thumbnails/");
+    paramContext = new VFSFile(bdeu.a(paramContext) + "thumbnails/");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    return paramContext.getAbsolutePath() + "/" + arni.a(paramString) + ".JPG";
+    return paramContext.getAbsolutePath() + "/" + arrr.a(paramString) + ".JPG";
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import alpo;
+import alud;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -11,7 +11,7 @@ class CameraCaptureView$12
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), alpo.a(2131701672), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), alud.a(2131701684), 1).show();
   }
 }
 

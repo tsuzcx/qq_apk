@@ -1,18 +1,15 @@
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class apxq
+class apxq
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public JSONObject a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  private apxq(apxn paramapxn) {}
 }
 
 

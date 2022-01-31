@@ -1,34 +1,56 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class auti
-  implements ServiceConnection
 {
-  private WeakReference<auth> jdField_a_of_type_JavaLangRefWeakReference;
+  public long a;
+  public auth a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public auti(autg paramautg, auth paramauth)
+  public static auti a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauth);
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    autg.a(this.jdField_a_of_type_Autg, lzb.a(paramIBinder));
-    paramComponentName = (auth)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bw();
+    boolean bool2 = true;
+    if (paramJSONObject == null) {
+      return null;
+    }
+    auti localauti = new auti();
+    localauti.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
+    localauti.jdField_a_of_type_Long = auss.b(localauti.jdField_a_of_type_JavaLangString);
+    localauti.jdField_b_of_type_Long = auss.a(localauti.jdField_a_of_type_JavaLangString);
+    localauti.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+    if (paramJSONObject.optInt("enable") == 1)
+    {
+      bool1 = true;
+      localauti.jdField_a_of_type_Boolean = bool1;
+      localauti.c = paramJSONObject.optString("ruleWording");
+      if (paramJSONObject.optInt("maybe_spread_user") != 1) {
+        break label109;
+      }
+    }
+    label109:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localauti.jdField_b_of_type_Boolean = bool1;
+      return localauti;
+      bool1 = false;
+      break;
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public String toString()
   {
-    autg.a(this.jdField_a_of_type_Autg, null);
-    paramComponentName = (auth)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bx();
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append("level=").append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append("name=").append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append("enable=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("maybeSpreadUser=").append(this.jdField_b_of_type_Boolean).append("|");
+    return localStringBuilder.toString();
   }
 }
 

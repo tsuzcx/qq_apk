@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask;
 
 public class bbet
-  implements View.OnClickListener
+  implements upz
 {
-  public bbet(TroopBarPublishActivity.16 param16) {}
+  public bbet(TribeVideoUploadTask paramTribeVideoUploadTask, bbes parambbes) {}
   
-  public void onClick(View paramView)
+  public void a(upy paramupy)
   {
-    this.a.this$0.t();
+    paramupy = (bbeq)paramupy;
+    this.jdField_a_of_type_Bbes.b = paramupy.a.c;
+    this.jdField_a_of_type_Bbes.c = paramupy.a.a;
   }
 }
 

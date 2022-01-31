@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.mostused.MostUsedSearch;
+import java.util.Comparator;
 
-public class aypi
-  extends aypw
+final class aypi
+  implements Comparator<MostUsedSearch>
 {
-  public aypi(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
+  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
   {
-    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
-  }
-  
-  public ayjk a(List<ayjl> paramList, String paramString)
-  {
-    return new ayjc(paramList, paramString, GroupSearchEngine.a(this.a));
+    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
   }
 }
 

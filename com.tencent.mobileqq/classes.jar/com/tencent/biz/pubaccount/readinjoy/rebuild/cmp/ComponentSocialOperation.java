@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -89,10 +89,10 @@ public class ComponentSocialOperation
     if (paramInt < 100000000)
     {
       paramInt /= 10000;
-      return String.valueOf(paramInt) + alpo.a(2131702657);
+      return String.valueOf(paramInt) + alud.a(2131702669);
     }
     paramInt /= 100000000;
-    return String.valueOf(paramInt) + alpo.a(2131702623);
+    return String.valueOf(paramInt) + alud.a(2131702635);
   }
   
   private void b(Context paramContext)
@@ -111,11 +111,11 @@ public class ComponentSocialOperation
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559975, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364588));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379340));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379339));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131379338);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559974, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364590));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379398));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379397));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131379396);
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363327));
     this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.0F, 1.8F, 1.0F, 1.8F, 1, 0.5F, 1, 0.5F);
     this.jdField_b_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.8F, 0.85F, 1.8F, 0.85F, 1, 0.5F, 1, 0.5F);
@@ -186,7 +186,7 @@ public class ComponentSocialOperation
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845842);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845915);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
         label86:
         if (this.jdField_a_of_type_Int <= 0) {
@@ -201,16 +201,16 @@ public class ComponentSocialOperation
         }
         QLog.d("ComponentSocialOperation", 2, "set upvote to " + this.jdField_a_of_type_Boolean + ", set num:" + this.jdField_a_of_type_Int);
         break;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845845);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845918);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
         break label86;
         label180:
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719076);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719088);
       }
       label190:
       break;
       label192:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718768);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718780);
     }
     label204:
     this.jdField_c_of_type_AndroidWidgetTextView.setText("Biu");
@@ -264,7 +264,7 @@ public class ComponentSocialOperation
         continue;
         ors.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
         continue;
-        if (paramView.getId() != 2131379338) {
+        if (paramView.getId() != 2131379396) {
           continue;
         }
         if (this.jdField_a_of_type_Boolean) {
@@ -382,7 +382,7 @@ public class ComponentSocialOperation
         continue;
       }
       str1 = "0X8009361";
-      if (paramView.getId() != 2131364588) {
+      if (paramView.getId() != 2131364590) {
         continue;
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo != null)

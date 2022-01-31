@@ -1,8 +1,13 @@
-import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
-
-public class avlj
+class avlj
+  implements auvz
 {
-  public NearbyPeopleCard.HiWanItem a;
+  avlj(avkt paramavkt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
+  }
 }
 
 

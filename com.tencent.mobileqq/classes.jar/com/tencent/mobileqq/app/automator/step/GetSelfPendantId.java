@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import awod;
-import awog;
-import bdox;
-import bdpx;
+import awsm;
+import awsp;
+import bdtg;
+import bdug;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,10 +25,10 @@ public class GetSelfPendantId
     if (QLog.isColorLevel()) {
       QLog.d("GetSelfPendantId", 2, "doStep");
     }
-    bdox.a(this.a.app);
-    awog.a(this.a.app);
-    awod.a(this.a.app);
-    ((bdpx)this.a.app.a(71)).a(new String[] { a() }, new int[] { 27201, 27025, 40530, 20059, 27041, 27217, 27225, 27224, 42122, 42121, 27234, 27235, 27236, 27238, 45000, 42334, 27373, 27241 });
+    bdtg.a(this.a.app);
+    awsp.a(this.a.app);
+    awsm.a(this.a.app);
+    ((bdug)this.a.app.a(71)).a(new String[] { a() }, new int[] { 27201, 27025, 40530, 20059, 27041, 27217, 27225, 27224, 42122, 42121, 27234, 27235, 27236, 27238, 45000, 42334, 27373, 27241 });
     this.a.app.getManager(44);
     return 7;
   }

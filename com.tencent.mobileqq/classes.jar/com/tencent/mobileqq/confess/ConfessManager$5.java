@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.confess;
 
-import aoel;
-import aoen;
+import aoiu;
+import aoiw;
 
 public class ConfessManager$5
   implements Runnable
 {
-  public ConfessManager$5(aoel paramaoel, String paramString, aoen paramaoen) {}
+  public ConfessManager$5(aoiu paramaoiu, String paramString, aoiw paramaoiw) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoen);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoiw);
   }
 }
 

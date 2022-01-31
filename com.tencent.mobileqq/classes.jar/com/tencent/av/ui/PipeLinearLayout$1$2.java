@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import alpo;
+import alud;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ class PipeLinearLayout$1$2
         localImageView.setVisibility(0);
         i += 1;
       }
-      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131370127)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + alpo.a(2131708561));
+      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131370146)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + alud.a(2131708573));
     }
   }
 }

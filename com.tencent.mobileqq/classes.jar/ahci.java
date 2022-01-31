@@ -1,22 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
 
 public class ahci
-  extends oxe
+  implements ahcn
 {
-  public ahci(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public ahci(BlessActivity paramBlessActivity) {}
   
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
+  public void a()
   {
-    if (paramBoolean)
+    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Ahcr.l())
     {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
-      }
-      ClassificationSearchActivity.b(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
+      BlessActivity.b(this.a);
     }
   }
 }

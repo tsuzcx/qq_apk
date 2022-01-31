@@ -1,104 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.huiyin.HuiyinRedDotProto.RedDotGetRsp;
+import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.observer.BusinessObserver;
 
-@Deprecated
-public class atcm
+class atcm
+  implements BusinessObserver
 {
-  public void call(String paramString, List<String> paramList, atcl paramatcl)
-  {
-    Object localObject2 = null;
-    Method[] arrayOfMethod = getClass().getDeclaredMethods();
-    int j = arrayOfMethod.length;
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (i < j)
-      {
-        localObject1 = arrayOfMethod[i];
-        if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
-      }
-      else
-      {
-        if (localObject1 != null) {}
-        try
-        {
-          if (paramList.size() == 0) {}
-          for (localObject2 = ((Method)localObject1).invoke(this, new Object[0]);; localObject2 = ((Method)localObject1).invoke(this, paramList.toArray()))
-          {
-            localObject1 = ((Method)localObject1).getReturnType();
-            if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
-              break;
-            }
-            if (paramatcl == null) {
-              break label276;
-            }
-            paramatcl.a(null);
-            return;
-          }
-          if (paramatcl != null) {
-            if (customCallback())
-            {
-              paramatcl.a(localObject2.toString());
-              return;
-            }
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          if (paramatcl != null) {
-            paramatcl.a();
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("JB", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-          }
-          if (paramatcl != null)
-          {
-            paramatcl.a();
-            return;
-            paramatcl.a(localObject2);
-            return;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            if (paramatcl != null) {
-              paramatcl.a();
-            }
-          }
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          for (;;)
-          {
-            if (paramatcl != null) {
-              paramatcl.a();
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (paramatcl != null) {
-              paramatcl.a();
-            }
-          }
-        }
-        label276:
-        return;
-      }
-      i += 1;
-    }
-  }
+  atcm(atch paramatch, atcp paramatcp) {}
   
-  public boolean customCallback()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return false;
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = paramBundle.getByteArray("data");
+      paramBundle = new ILiveProto.iLiveResponse();
+    }
+    try
+    {
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = new HuiyinRedDotProto.RedDotGetRsp();
+      ((HuiyinRedDotProto.RedDotGetRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
+      this.jdField_a_of_type_Atch.a = ((int)((HuiyinRedDotProto.RedDotGetRsp)localObject).totalNum.get());
+      this.jdField_a_of_type_Atcp.a(this.jdField_a_of_type_Atch.a);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

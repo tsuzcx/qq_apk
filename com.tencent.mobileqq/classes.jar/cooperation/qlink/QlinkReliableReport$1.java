@@ -1,18 +1,18 @@
 package cooperation.qlink;
 
-import bipb;
+import biti;
 import com.tencent.qphone.base.util.QLog;
 
 public class QlinkReliableReport$1
   implements Runnable
 {
-  public QlinkReliableReport$1(bipb parambipb) {}
+  public QlinkReliableReport$1(biti parambiti) {}
   
   public void run()
   {
     QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
-    bipb.a(this.this$0, null);
-    bipb.g();
+    biti.a(this.this$0, null);
+    biti.g();
   }
 }
 

@@ -1,26 +1,13 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class xrb
-  extends SimpleJob
+final class xrb
+  extends ThreadLocal<DateFormat>
 {
-  public xrb(SegmentList paramSegmentList, String paramString)
+  protected DateFormat a()
   {
-    super(paramString);
-  }
-  
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
-    }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
   }
 }
 

@@ -1,50 +1,20 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-public abstract interface ajto
+public class ajto
+  extends ajtq
 {
-  public abstract int a();
+  public void a()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.q();
+    }
+  }
   
-  public abstract int a(int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(@NonNull ajtq paramajtq);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@ColorInt int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(@ColorInt int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract void d();
+  public void b()
+  {
+    RMVideoStateMgr.a().a(2);
+  }
 }
 
 

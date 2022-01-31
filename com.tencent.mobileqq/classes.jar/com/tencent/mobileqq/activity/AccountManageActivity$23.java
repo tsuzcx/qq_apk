@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import azyu;
+import badd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountManageActivity$23
@@ -10,7 +10,7 @@ class AccountManageActivity$23
   
   public void run()
   {
-    azyu localazyu = (azyu)this.this$0.app.getManager(61);
+    badd localbadd = (badd)this.this$0.app.getManager(61);
     this.this$0.runOnUiThread(new AccountManageActivity.23.1(this));
   }
 }

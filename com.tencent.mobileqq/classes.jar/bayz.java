@@ -1,21 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
+import java.io.File;
+import java.io.OutputStream;
 
 public class bayz
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends baqn
 {
-  public bayz(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
+    return new File(alof.aW);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return AlbumThumbManager.getInstance(BaseApplicationImpl.getContext()).getThumb(paramDownloadParams.url, new baza(this));
   }
 }
 

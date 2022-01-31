@@ -1,106 +1,71 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.SurfaceTexture;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bnnv
+  extends bnnt
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private axvs jdField_a_of_type_Axvs;
+  private axwb jdField_a_of_type_Axwb;
   
-  public static byte a(String paramString)
+  public void a(DecodeConfig paramDecodeConfig, axvi paramaxvi, axvu paramaxvu, bnnu parambnnu)
   {
-    byte b = 0;
-    if (paramString == null) {
-      b = -1;
+    try
+    {
+      this.jdField_a_of_type_Axwb = new axwb(this, paramaxvi.jdField_a_of_type_JavaLangString, paramaxvu);
+      paramaxvi.jdField_a_of_type_Axwb = this.jdField_a_of_type_Axwb;
+      this.jdField_a_of_type_Axvs = new axvs(paramDecodeConfig, this.jdField_a_of_type_Axwb);
+      super.a(paramDecodeConfig, paramaxvi, paramaxvu, parambnnu);
+      return;
     }
-    do
+    catch (Exception localException)
     {
       for (;;)
       {
-        return b;
-        paramString = a() + "/lib" + paramString + ".so";
-        if (QLog.isColorLevel()) {
-          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
-        }
-        File localFile = new File(paramString);
-        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
-          try
-          {
-            System.load(paramString);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
-              return 0;
-            }
-          }
-          catch (UnsatisfiedLinkError paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
-            }
-            return -3;
-          }
-        }
+        QLog.e("Mp4ReEncoderWithAudio", 1, "startEncode,", localException);
       }
-      b = -2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    return -2;
+    }
   }
   
-  public static String a()
+  public boolean a()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
+    boolean bool2 = this.jdField_a_of_type_Axvw.a();
+    if ((this.jdField_a_of_type_Axvs == null) || (this.jdField_a_of_type_Axvs.a())) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
+        QLog.d("Mp4ReEncoderWithAudio", 2, new Object[] { "startEncode,", Boolean.valueOf(bool2), " ", Boolean.valueOf(bool1) });
       }
-      return "";
-    }
-    return localFile.getParent() + "/tk";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_ArrayOfByte)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(awiz.a(str1)))
-            {
-              break label221;
-              return bool1;
-            }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-              bool1 = bool2;
-            }
-          }
-        }
-        label221:
-        boolean bool1 = true;
+      if ((!bool2) || (!bool1)) {
+        break;
       }
+      return true;
     }
     return false;
+  }
+  
+  public void onDecodeFinish()
+  {
+    super.onDecodeFinish();
+    try
+    {
+      if (this.jdField_a_of_type_Axvs != null) {
+        this.jdField_a_of_type_Axvs.a();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    super.onFrameAvailable(paramSurfaceTexture);
+    if (this.jdField_a_of_type_Axvs != null) {
+      this.jdField_a_of_type_Axvs.b();
+    }
   }
 }
 

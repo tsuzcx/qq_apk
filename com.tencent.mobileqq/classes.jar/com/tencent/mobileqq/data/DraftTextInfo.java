@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin,type")
 public class DraftTextInfo
-  extends awbv
+  extends awge
 {
   public String mAtInfoStr;
   public String mSourceAtInfoStr;
@@ -24,12 +24,12 @@ public class DraftTextInfo
   public String text;
   public long time;
   public int type;
-  @awdj
+  @awhs
   public String uin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DraftTextInfo
  * JD-Core Version:    0.7.0.1
  */

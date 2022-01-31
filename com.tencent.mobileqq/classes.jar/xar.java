@@ -1,31 +1,20 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class xar
-  implements uni<vax, vcv>
+  extends SimpleJob<Object>
 {
-  xar(xak paramxak) {}
-  
-  public void a(@NonNull vax paramvax, @Nullable vcv paramvcv, @NonNull ErrorMessage paramErrorMessage)
+  xar(xan paramxan, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    wsv.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramvcv + ", errorMsg = " + paramErrorMessage);
-    synchronized (this.a.jdField_b_of_type_JavaLangObject)
-    {
-      if (!TextUtils.equals(paramvax.a, this.a.jdField_b_of_type_JavaLangString))
-      {
-        wsv.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramvcv);
-        return;
-      }
-      if ((paramvcv == null) || (paramErrorMessage.isFail()))
-      {
-        wsv.d("DoodleEmojiManager", "get emoji error : " + paramvcv + ", " + paramErrorMessage);
-        return;
-      }
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramvcv.a;
-    this.a.a(TextUtils.isEmpty(paramvax.a), paramvcv, false);
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxj.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

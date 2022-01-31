@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnw
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public ajnw(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ajnw(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QzoneSlideShowPreparingFragment.a(this.a);
+    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
+    LoginView.a(this.a, true);
   }
 }
 

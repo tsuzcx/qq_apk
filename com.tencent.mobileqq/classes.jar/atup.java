@@ -1,6 +1,27 @@
-public abstract interface atup
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class atup
+  implements INetInfoHandler
 {
-  public abstract void a();
+  atup(atun paramatun) {}
+  
+  public void onNetMobile2None()
+  {
+    atun.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    atun.a(this.a);
+  }
 }
 
 

@@ -1,19 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.SparseArray;
 
-class azfe
-  implements View.OnClickListener
+public class azfe
 {
-  azfe(azey paramazey) {}
+  public float a;
+  public int a;
+  public SparseArray<azfd> a;
+  public boolean a;
+  public int[] a;
+  public int b = 30;
+  public boolean b;
+  public int[] b;
+  public int c = 8;
+  public boolean c;
+  public int[] c;
+  public int d = 640;
+  public boolean d;
+  public int[] d;
+  public int e = 480;
+  public int[] e;
+  public int f = 550000;
+  public int[] f;
+  public int g = 100000;
+  public int[] g;
+  public int h = 35;
+  public int i = 3;
+  public int j = 3;
+  public int k = 1;
+  public int l = 1;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s = -1;
+  public int t = -1;
+  public int u = 2;
+  public int v = 3;
   
-  public void onClick(View paramView)
+  public azfe()
   {
-    azey.a(this.a, azey.a(this.a));
-    azey.b(this.a, System.currentTimeMillis());
-    if (azey.a(this.a) - azey.b(this.a) < 300L) {
-      return;
-    }
-    azey.a(this.a);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_Float = 1.0F;
   }
 }
 

@@ -1,45 +1,13 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.quic.QuicResDownload;
-import java.util.Properties;
-import mqq.app.MobileQQ;
-
 public class ayzt
-  implements ayzw
 {
-  public ayzt(ShortVideoResourceManager.3 param3) {}
+  public int a;
+  public String a;
   
-  public void G_()
+  public String toString()
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
-      QuicResDownload.a = true;
-    }
-    try
-    {
-      Properties localProperties = new Properties();
-      localProperties.put("version", "8.3.3.4515");
-      localProperties.put("appid", String.valueOf(AppSetting.a()));
-      localProperties.put("release", String.valueOf(true));
-      localProperties.put("name", paramString);
-      azly.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    StringBuilder localStringBuilder = new StringBuilder("-----MessageDecContent----");
+    localStringBuilder.append("msgType:").append(this.jdField_a_of_type_Int).append(" content:").append(bdeu.a(this.jdField_a_of_type_JavaLangString));
+    return localStringBuilder.toString();
   }
 }
 

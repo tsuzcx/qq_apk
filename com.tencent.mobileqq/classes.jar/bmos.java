@@ -1,24 +1,75 @@
-import android.animation.TypeEvaluator;
+import android.content.res.Resources;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView;
 
 public class bmos
-  implements TypeEvaluator<bmoq>
+  extends bmnh
 {
-  private bmoq a;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  VipFrwrdLinkView jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView;
+  private uxp jdField_a_of_type_Uxp;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bmoq a(float paramFloat, bmoq parambmoq1, bmoq parambmoq2)
+  public void a(int paramInt, @NonNull bnaz parambnaz)
   {
-    float f1 = parambmoq1.a + (parambmoq2.a - parambmoq1.a) * paramFloat;
-    float f2 = parambmoq1.b + (parambmoq2.b - parambmoq1.b) * paramFloat;
-    float f3 = parambmoq1.c + (parambmoq2.c - parambmoq1.c) * paramFloat;
-    paramFloat = parambmoq1.d + (parambmoq2.d - parambmoq1.d) * paramFloat;
-    if (this.a == null) {
-      this.a = new bmoq(f1, f2, f3, paramFloat);
+    super.a(paramInt, parambnaz);
+    if (this.jdField_a_of_type_Uxp != null) {
+      parambnaz.a.setLinkInfo(this.jdField_a_of_type_Uxp);
+    }
+  }
+  
+  void d()
+  {
+    this.jdField_a_of_type_Bmnj.a().d();
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365400));
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      {
+        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        localLayoutParams.addRule(12, -1);
+        localLayoutParams.setMargins(0, 0, 0, a().getDimensionPixelSize(2131297923) + aepi.a(17.0F, a()));
+        i = 0;
+      }
     }
     for (;;)
     {
-      return this.a;
-      this.a.a(f1, f2, f3, paramFloat);
+      if (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
+      {
+        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i).getId() == 2131365402)
+        {
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = new VipFrwrdLinkView(a());
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView, i, localLayoutParams);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Looper.myQueue().addIdleHandler(new bmot(this));
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = null;
   }
 }
 

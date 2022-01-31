@@ -1,28 +1,20 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.widgets.BaseVideoView;
+import com.tencent.image.URLImageView;
 
 public class uca
-  extends ClickableSpan
+  implements ymw
 {
-  public uca(QCirclePushAsyncTextView paramQCirclePushAsyncTextView, FeedCloudMeta.StUser paramStUser) {}
+  public uca(BaseVideoView paramBaseVideoView) {}
   
-  public void onClick(@NonNull View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView) != null) {
-      QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    if (this.a.a != null) {
+      this.a.a.setVisibility(8);
     }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setFakeBoldText(QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView));
+    this.a.d();
+    if (BaseVideoView.a(this.a) != null) {
+      BaseVideoView.a(this.a).a(paramBoolean);
+    }
   }
 }
 

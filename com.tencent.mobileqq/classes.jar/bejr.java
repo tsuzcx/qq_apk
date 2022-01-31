@@ -1,44 +1,41 @@
-import android.text.Spanned;
-import android.text.style.CharacterStyle;
-import java.util.Comparator;
+import android.os.MessageQueue.IdleHandler;
+import java.util.ArrayList;
 
-public class bejr
-  implements Comparator<CharacterStyle>
+class bejr
+  implements MessageQueue.IdleHandler
 {
-  Spanned a;
+  bejr(bejq parambejq) {}
   
-  public int a(CharacterStyle paramCharacterStyle1, CharacterStyle paramCharacterStyle2)
+  public boolean queueIdle()
   {
-    int i = 1;
-    if (this.a == null) {
-      i = 0;
-    }
-    int j;
-    int k;
-    do
+    Object localObject;
+    int i;
+    if (!bejq.a().isEmpty())
     {
-      do
-      {
-        return i;
-        j = this.a.getSpanStart(paramCharacterStyle1);
-        k = this.a.getSpanStart(paramCharacterStyle2);
-        if (j != k) {
-          break;
-        }
-        j = this.a.getSpanEnd(paramCharacterStyle1);
-        k = this.a.getSpanEnd(paramCharacterStyle2);
-        if (j == k) {
-          return 0;
-        }
-      } while (j > k);
-      return -1;
-    } while (j > k);
-    return -1;
-  }
-  
-  public void a(Spanned paramSpanned)
-  {
-    this.a = paramSpanned;
+      localObject = (bejt)bejq.a().remove(0);
+      i = ((bejt)localObject).a();
+      if (2 == i) {
+        bejq.a().add(localObject);
+      }
+    }
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (bejq.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((bejq)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
+    }
   }
 }
 

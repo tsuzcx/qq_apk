@@ -24,7 +24,7 @@ public class otq
       QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
       if (TextUtils.equals(str, "native_article"))
       {
-        bjxj.a("native_proteus_offline_bid", (String)localObject2);
+        bkbq.a("native_proteus_offline_bid", (String)localObject2);
         paramString = (String)localObject1;
         localObject1 = localObject2;
       }
@@ -54,7 +54,7 @@ public class otq
   
   public void onWipeConfig(int paramInt)
   {
-    bjxj.a("native_proteus_offline_bid", "0");
+    bkbq.a("native_proteus_offline_bid", "0");
   }
 }
 

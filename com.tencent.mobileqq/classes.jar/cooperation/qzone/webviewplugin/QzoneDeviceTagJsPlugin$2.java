@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
+import bjqu;
+import bjqw;
 
 public final class QzoneDeviceTagJsPlugin$2
   implements Runnable
 {
   public void run()
   {
-    bjmn.a().a().m();
+    bjqu.a().a().m();
   }
 }
 

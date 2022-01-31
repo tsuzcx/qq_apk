@@ -1,19 +1,21 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
 public class bitv
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Bundle a;
+  public bitv(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  bitv(bitt parambitt, int paramInt, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitv
  * JD-Core Version:    0.7.0.1
  */

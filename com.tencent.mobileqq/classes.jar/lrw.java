@@ -110,7 +110,7 @@ public class lrw
       {
         a();
         if (new File(jdField_a_of_type_JavaLangString).exists()) {
-          bdcs.a(jdField_a_of_type_JavaLangString);
+          bdhb.a(jdField_a_of_type_JavaLangString);
         }
       }
       paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
@@ -120,13 +120,13 @@ public class lrw
         lek.c("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
         if (!((File)localObject).exists())
         {
-          localObject = new baps();
-          ((baps)localObject).jdField_a_of_type_Bapx = new lrx();
-          ((baps)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
-          ((baps)localObject).jdField_a_of_type_Int = 0;
-          ((baps)localObject).c = (len.h() + "skin_color.zip");
-          ((baps)localObject).a(paramContext);
-          lel.a().a((baqv)localObject);
+          localObject = new baub();
+          ((baub)localObject).jdField_a_of_type_Baug = new lrx();
+          ((baub)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+          ((baub)localObject).jdField_a_of_type_Int = 0;
+          ((baub)localObject).c = (len.h() + "skin_color.zip");
+          ((baub)localObject).a(paramContext);
+          lel.a().a((bave)localObject);
         }
       }
       return;
@@ -154,12 +154,12 @@ public class lrw
         paramString1 = a(paramString2);
       }
       if (paramContext == null) {
-        bdcs.a(jdField_a_of_type_JavaLangString);
+        bdhb.a(jdField_a_of_type_JavaLangString);
       }
       while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
         return;
       }
-      bdcs.a(jdField_a_of_type_JavaLangString);
+      bdhb.a(jdField_a_of_type_JavaLangString);
       return;
     }
   }

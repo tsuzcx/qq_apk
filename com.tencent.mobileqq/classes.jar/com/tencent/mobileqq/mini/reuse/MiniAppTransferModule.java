@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import alkv;
-import allb;
+import alpk;
+import alpq;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aokc;
-import aokd;
-import bgyg;
+import aool;
+import aoom;
+import bhcn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -53,7 +53,7 @@ public class MiniAppTransferModule
   public static final int RESULT_CODE_SUCCESS = 0;
   private static final String TAG = "MiniAppTransferModule";
   private static MiniAppTransferModule sInstance;
-  private allb cardObserver = new MiniAppTransferModule.3(this);
+  private alpq cardObserver = new MiniAppTransferModule.3(this);
   private AtomicBoolean mSendingRequest = new AtomicBoolean(false);
   private int noDisturbModeCallbackId = -1;
   
@@ -118,10 +118,10 @@ public class MiniAppTransferModule
     if (paramBoolean)
     {
       long l = NetConnInfoCenter.getServerTime();
-      ((alkv)((QQAppInterface)localObject).a(2)).b((int)(l + 3600L), "", "not_disturb_from_miniapp");
+      ((alpk)((QQAppInterface)localObject).a(2)).b((int)(l + 3600L), "", "not_disturb_from_miniapp");
       return;
     }
-    ((alkv)((QQAppInterface)localObject).a(2)).b(0, "", "not_disturb_from_miniapp");
+    ((alpk)((QQAppInterface)localObject).a(2)).b(0, "", "not_disturb_from_miniapp");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -143,7 +143,7 @@ public class MiniAppTransferModule
         {
           paramString = new JSONObject(paramString);
           paramBundle = paramString.optString("command");
-          if (aokd.g())
+          if (aoom.g())
           {
             ((DesktopDataManager)((AppRuntime)localObject).getManager(336)).updateEntryList(paramString);
             return null;
@@ -168,7 +168,7 @@ public class MiniAppTransferModule
           paramString = paramBundle.getString("appid");
           i = paramBundle.getInt("topType");
           int j = paramBundle.getInt("verType");
-          if (aokd.g())
+          if (aoom.g())
           {
             ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject, paramString, i, paramInt, j));
             return null;
@@ -199,7 +199,7 @@ public class MiniAppTransferModule
         {
           paramString = paramBundle.getString("appid");
           i = paramBundle.getInt("verType");
-          if (aokd.g())
+          if (aoom.g())
           {
             paramBundle = (DesktopDataManager)((AppRuntime)localObject).getManager(336);
             if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
@@ -214,7 +214,7 @@ public class MiniAppTransferModule
                   {
                     paramString.putParcelable("miniappinfo", paramBundle);
                     paramString.putInt("topType", 1);
-                    paramBundle = aokd.a().a();
+                    paramBundle = aoom.a().a();
                     if (paramBundle != null) {
                       paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                     }
@@ -246,7 +246,7 @@ public class MiniAppTransferModule
                   {
                     paramString.putParcelable("miniappinfo", paramBundle);
                     paramString.putInt("topType", 1);
-                    paramBundle = aokd.a().a();
+                    paramBundle = aoom.a().a();
                     if (paramBundle != null) {
                       paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                     }
@@ -323,7 +323,7 @@ public class MiniAppTransferModule
           if ("launch_report_sdk_4239".equals(paramString)) {
             try
             {
-              paramBundle.setClassLoader(bgyg.class.getClassLoader());
+              paramBundle.setClassLoader(bhcn.class.getClassLoader());
               com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
               paramString = paramBundle.getString("sub_action");
               localObject = paramBundle.getString("path");
@@ -344,7 +344,7 @@ public class MiniAppTransferModule
           } else if ("record_duration_sdk_4239".equals(paramString)) {
             try
             {
-              paramBundle.setClassLoader(bgyg.class.getClassLoader());
+              paramBundle.setClassLoader(bhcn.class.getClassLoader());
               paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
               long l = paramBundle.getLong("add_duration_ms");
               paramString = MiniSdkUtil.convertSDK2QQConfig(paramString);

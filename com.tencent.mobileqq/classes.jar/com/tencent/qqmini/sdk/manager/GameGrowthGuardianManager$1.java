@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.Context;
-import bgse;
+import bgwl;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class GameGrowthGuardianManager$1
@@ -12,8 +12,8 @@ public final class GameGrowthGuardianManager$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.gameAdsTotalTime = 0;
-    bgse.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 11);
-    bgse.a(System.currentTimeMillis());
+    bgwl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 11);
+    bgwl.a(System.currentTimeMillis());
   }
 }
 

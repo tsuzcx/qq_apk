@@ -1,194 +1,65 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils;
-import java.io.File;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
 public class xha
+  implements xec
 {
-  double jdField_a_of_type_Double;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  double jdField_b_of_type_Double;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean;
-  int d;
-  int e;
-  int f;
+  private xha(DoodleLayout paramDoodleLayout) {}
   
-  public xha(int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, int paramInt4, boolean paramBoolean2)
+  public void a()
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.f = paramInt4;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
+    this.a.d(3);
   }
   
-  public xha(@NonNull Bitmap paramBitmap, @NonNull String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat, double paramDouble1, double paramDouble2, int paramInt4)
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.f = paramInt4;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  private int a()
-  {
-    int i = 0;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. bitmap = null or path = null.");
-      i = 1;
+    if (paramFloat == 1.0F) {
+      this.a.jdField_a_of_type_Xfh.a(this.a.a().a());
     }
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3) {}
+  
+  public boolean a(xed paramxed)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) && (paramxed != null))
     {
-      return i;
-      int j;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {
-        if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int)
-        {
-          j = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = j;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((xiq)localObject).d = false;
+        if (!(localObject instanceof xdr)) {
+          break label124;
+        }
+        xdn localxdn = this.a.a();
+        if (localxdn != null) {
+          localxdn.a.add((xdr)localObject);
         }
       }
-      Bitmap localBitmap;
       for (;;)
       {
-        localBitmap = xmn.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
-        if (localBitmap != null) {
-          break;
-        }
-        wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. resize thumb bitmap error.");
-        return 1;
-        if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramxed);
+        paramxed.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label124:
+        if ((localObject instanceof xed))
         {
-          j = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = j;
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((xeb)localObject).d();
+          }
         }
-      }
-      if (!xmn.a(localBitmap, this.jdField_a_of_type_JavaLangString))
-      {
-        wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. compress thumb bitmap to file error.");
-        return 1;
-      }
-      try
-      {
-        bdda.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-        if (!new File(this.jdField_a_of_type_JavaLangString).exists())
-        {
-          wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString });
-          return 1;
-        }
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        if (this.jdField_a_of_type_JavaLangString == null) {}
       }
     }
-    for (boolean bool = new File(this.jdField_a_of_type_JavaLangString).exists();; bool = false)
-    {
-      wta.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(bool) });
-      break;
-    }
+    return false;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_Int = 320;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_a_of_type_Float));
-    if (this.jdField_b_of_type_Int % 2 > 0) {
-      this.jdField_b_of_type_Int -= 1;
-    }
-    if (this.d > 0) {
-      this.jdField_a_of_type_Int = this.d;
-    }
-    if (this.e > 0) {
-      this.jdField_b_of_type_Int = this.e;
-    }
-    wsv.b("Q.qqstory.publish.edit.GenerateThumbTask", "FlowSendTask():mFileDir:" + this.jdField_b_of_type_JavaLangString + ", mThumbWidth: " + this.jdField_a_of_type_Int + ", mThumbHeight:" + this.jdField_b_of_type_Int + ", mThumbOK:" + this.jdField_b_of_type_Boolean + ", mShowLastFrameThumb:" + this.jdField_a_of_type_Boolean + ", mExistThumbPath:" + this.jdField_c_of_type_JavaLangString + ", mExistThumbOk:" + this.jdField_c_of_type_Boolean);
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    if ((this.jdField_a_of_type_Boolean) && (VideoEnvironment.b() >= 21)) {
-      RecordThumbnailUtils.nativeSetLastFrameCover(RecordThumbnailUtils.a(this.jdField_b_of_type_JavaLangString));
-    }
-    this.jdField_a_of_type_JavaLangString = RecordThumbnailUtils.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-    if ((this.jdField_c_of_type_Int == 90) || (this.jdField_c_of_type_Int == 270))
-    {
-      int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = j;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "generateThumb, getNativeCover result is empty, vf dir = %s", new Object[] { this.jdField_b_of_type_JavaLangString });
-      i = 1;
-    }
-    for (;;)
-    {
-      return i;
-      try
-      {
-        bdda.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-        if (!new File(this.jdField_a_of_type_JavaLangString).exists())
-        {
-          wsv.e("Q.qqstory.publish.edit.GenerateThumbTask", "generateThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString });
-          return 1;
-        }
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        if (this.jdField_a_of_type_JavaLangString == null) {}
-      }
-    }
-    for (boolean bool = new File(this.jdField_a_of_type_JavaLangString).exists();; bool = false)
-    {
-      wta.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(bool) });
-      break;
-    }
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    a();
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_JavaLangString != null)) {}
-    for (int i = a();; i = b())
-    {
-      long l2 = SystemClock.uptimeMillis();
-      if (i == 0) {
-        wta.b("take_video", "create_thumb_time", 0, 0, new String[] { "" + (l2 - l1) });
-      }
-      wta.b("take_video", "create_thumb_result", 0, i, new String[0]);
-      return Integer.valueOf(i);
-    }
-  }
+  public void b() {}
 }
 
 

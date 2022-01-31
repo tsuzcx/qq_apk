@@ -16,7 +16,7 @@ public class nmt
     if (VideoCoverView.a(this.a) == 1) {
       com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
     }
-    azmj.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    azqs.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
     nly.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
     this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
     if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))

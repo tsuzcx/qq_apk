@@ -1,30 +1,75 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.comic.VipComicJumpActivity;
 
-public class aoac
-  implements aoah
+public final class aoac
 {
-  public String a()
+  public static void a(View paramView, float paramFloat)
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690596);
+    if (aoab.a)
+    {
+      aoab.a(paramView).a(paramFloat);
+      return;
+    }
+    aoad.c(paramView, paramFloat);
   }
   
-  public void a(View paramView, int paramInt)
+  public static void b(View paramView, float paramFloat)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = new Intent("android.intent.action.MAIN");
-    paramView = paramView.getContext();
-    localObject = VipComicJumpActivity.a((Intent)localObject);
-    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (biip)localObject)) {
-      VipComicJumpActivity.a(localQQAppInterface, true);
+    if (aoab.a)
+    {
+      aoab.a(paramView).d(paramFloat);
+      return;
     }
-    azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", anyi.b(paramInt), 0, "", "", "", "");
+    aoad.d(paramView, paramFloat);
+  }
+  
+  public static void c(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).e(paramFloat);
+      return;
+    }
+    aoad.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).b(paramFloat);
+      return;
+    }
+    aoad.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).c(paramFloat);
+      return;
+    }
+    aoad.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).g(paramFloat);
+      return;
+    }
+    aoad.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).h(paramFloat);
+      return;
+    }
+    aoad.g(paramView, paramFloat);
   }
 }
 

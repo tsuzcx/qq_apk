@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import arsx;
-import artf;
+import arxg;
+import arxo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,12 +12,12 @@ public final class SpecialCareUtils$1
   
   public void run()
   {
-    if (arsx.a().a())
+    if (arxg.a().a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
       }
-      artf.a(this.a, null);
+      arxo.a(this.a, null);
     }
   }
 }

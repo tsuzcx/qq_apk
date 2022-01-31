@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.takevideo.shareto;
 
-import alpo;
-import amjk;
+import alud;
+import amnz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bhqp;
+import bhuw;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,23 +25,23 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import vhj;
-import wta;
-import xhv;
-import xhw;
-import xhx;
-import xhy;
+import vls;
+import wxj;
+import xme;
+import xmf;
+import xmg;
+import xmh;
 
 public class ShareToActivity
   extends QQStoryBaseActivity
-  implements View.OnClickListener, bhqp, xhx
+  implements View.OnClickListener, bhuw, xmg
 {
   protected XListView a;
-  protected xhw a;
+  protected xmf a;
   
   private ArrayList<TroopInfo> a()
   {
-    QQAppInterface localQQAppInterface = vhj.a();
+    QQAppInterface localQQAppInterface = vls.a();
     Object localObject2 = (TroopManager)localQQAppInterface.getManager(52);
     Object localObject1 = ((TroopManager)localObject2).a();
     ArrayList localArrayList = new ArrayList(((ArrayList)localObject1).size());
@@ -55,7 +55,7 @@ public class ShareToActivity
         ((ArrayList)localObject3).add(localRecentUser);
       }
     }
-    Collections.sort((List)localObject3, new xhv(this));
+    Collections.sort((List)localObject3, new xme(this));
     localObject3 = ((ArrayList)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
@@ -91,15 +91,15 @@ public class ShareToActivity
   {
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
-      localObject = this.jdField_a_of_type_Xhw.a();
+      localObject = this.jdField_a_of_type_Xmf.a();
     }
     int i = ((ArrayList)localObject).size();
     if (i > 0)
     {
-      this.rightViewText.setText(alpo.a(2131714348) + i + ")");
+      this.rightViewText.setText(alud.a(2131714360) + i + ")");
       return;
     }
-    this.rightViewText.setText(alpo.a(2131714349));
+    this.rightViewText.setText(alud.a(2131714361));
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -107,11 +107,11 @@ public class ShareToActivity
     b(paramArrayList);
   }
   
-  public boolean a(ArrayList<String> paramArrayList, xhy paramxhy)
+  public boolean a(ArrayList<String> paramArrayList, xmh paramxmh)
   {
-    if ((!paramxhy.a) && (paramArrayList.size() >= 10))
+    if ((!paramxmh.a) && (paramArrayList.size() >= 10))
     {
-      QQToast.a(vhj.a(), 0, "最多只能选择10个群", 0).a();
+      QQToast.a(vls.a(), 0, "最多只能选择10个群", 0).a();
       return false;
     }
     return true;
@@ -119,15 +119,15 @@ public class ShareToActivity
   
   public boolean onBackEvent()
   {
-    wta.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
+    wxj.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    wta.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Xhw.a().size()), "", "", "" });
+    wxj.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Xmf.a().size()), "", "", "" });
     paramView = new Intent();
-    paramView.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Xhw.a());
+    paramView.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Xmf.a());
     setResult(1, paramView);
     finish();
   }
@@ -135,9 +135,9 @@ public class ShareToActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561531);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376517));
-    paramBundle = getLayoutInflater().inflate(2131561532, null);
+    setContentView(2131561549);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376571));
+    paramBundle = getLayoutInflater().inflate(2131561550, null);
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
       paramBundle.setBackgroundColor(-16444373);
@@ -146,17 +146,17 @@ public class ShareToActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     paramBundle = getIntent().getStringArrayListExtra("share_to_group_key");
     ArrayList localArrayList = a();
-    this.jdField_a_of_type_Xhw = new xhw(getBaseContext(), localArrayList, paramBundle);
-    this.jdField_a_of_type_Xhw.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xhw);
+    this.jdField_a_of_type_Xmf = new xmf(getBaseContext(), localArrayList, paramBundle);
+    this.jdField_a_of_type_Xmf.a(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xmf);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    super.setTitle(alpo.a(2131714350));
-    super.a(alpo.a(2131714347), this);
+    super.setTitle(alud.a(2131714362));
+    super.a(alud.a(2131714359), this);
     b(null);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (paramBundle = "2";; paramBundle = "1")
     {
-      wta.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
+      wxj.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
       return;
     }
   }
@@ -168,10 +168,10 @@ public class ShareToActivity
     {
       return;
       paramInt = (int)paramLong;
-      paramAdapterView = (xhy)this.jdField_a_of_type_Xhw.getItem(paramInt);
+      paramAdapterView = (xmh)this.jdField_a_of_type_Xmf.getItem(paramInt);
     } while (paramAdapterView == null);
-    this.jdField_a_of_type_Xhw.a(paramAdapterView);
-    wta.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
+    this.jdField_a_of_type_Xmf.a(paramAdapterView);
+    wxj.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

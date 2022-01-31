@@ -1,20 +1,19 @@
-public abstract interface bbsy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
+
+class bbsy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong);
+  bbsy(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    }
+  }
 }
 
 

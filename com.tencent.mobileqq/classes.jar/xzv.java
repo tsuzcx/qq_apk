@@ -1,16 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.7.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xzv
-  implements yic
+class xzv
+  implements DialogInterface.OnClickListener
 {
-  xzv(xzn paramxzn) {}
+  xzv(xzu paramxzu) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (xzn.q(this.a) != null) {
-      xzn.r(this.a).runOnUiThread(new DetailBaseAdapter.7.1(this));
-    }
+    ((ambq)this.a.a.app.a(10)).a(true);
+    azqs.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
   }
 }
 

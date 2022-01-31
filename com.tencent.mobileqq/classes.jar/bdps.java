@@ -1,15 +1,42 @@
-import com.tencent.image.URLDrawableHandler;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class bdps
-  implements EIPCResultCallback
+public class bdps
 {
-  bdps(bdpr parambdpr, URLDrawableHandler paramURLDrawableHandler) {}
+  public static int a;
+  public static long a;
+  public static boolean a;
+  public static int b;
+  public static long b;
+  public static int c;
+  public static long c;
+  public static int d;
+  public static long d;
+  public static int e;
+  public static long e;
+  public static int f;
+  public static long f;
+  public static int g;
+  public static int h;
+  public static int i;
+  public static int j;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static void a()
   {
-    this.jdField_a_of_type_Bdpr.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
+    jdField_a_of_type_Int = 0;
+    jdField_b_of_type_Int = 0;
+    jdField_c_of_type_Int = 0;
+    jdField_d_of_type_Int = 0;
+    jdField_e_of_type_Int = 0;
+    jdField_f_of_type_Int = 0;
+    g = 0;
+    jdField_a_of_type_Long = 0L;
+    jdField_b_of_type_Long = 0L;
+    h = 0;
+    i = 0;
+    j = 0;
+    jdField_c_of_type_Long = 0L;
+    jdField_d_of_type_Long = 0L;
+    jdField_e_of_type_Long = 0L;
+    jdField_f_of_type_Long = 0L;
+    jdField_a_of_type_Boolean = false;
   }
 }
 

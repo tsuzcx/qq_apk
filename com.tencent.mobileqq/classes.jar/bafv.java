@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 
-class bafv
-  implements View.OnClickListener
+public abstract interface bafv
 {
-  bafv(bafu parambafu) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof bafp))
-    {
-      bafp localbafp = (bafp)paramView.getTag();
-      if ((this.a.a != null) && (localbafp.a.isClickable())) {
-        this.a.a.onClick(paramView);
-      }
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

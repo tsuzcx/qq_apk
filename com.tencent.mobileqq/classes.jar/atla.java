@@ -1,42 +1,44 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class atla
-  extends atkt
+class atla
+  implements View.OnClickListener
 {
-  public atla(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
+  atla(atkz paramatkz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agld)) {
-      ((agld)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bC();
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    aozs localaozs = (aozs)atkz.a(this.a).getItem(i);
+    if (localaozs == null) {
+      QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_Atkz.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if (this.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString = "";
+    Map localMap;
+    do
+    {
+      return;
+      localMap = atkz.a(this.a).a();
+    } while (atkz.a(this.a) == null);
+    atli localatli = new atli();
+    localatli.jdField_a_of_type_Boolean = false;
+    localatli.jdField_a_of_type_Long = localaozs.jdField_a_of_type_Long;
+    Integer localInteger = null;
+    if (localMap != null) {
+      localInteger = (Integer)localMap.get(Long.valueOf(localaozs.jdField_a_of_type_Long));
     }
-    this.jdField_a_of_type_Atky = new atky();
-    this.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_Atky.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Atky.b = "";
+    if (localInteger == null) {}
+    for (i = 0;; i = localInteger.intValue())
+    {
+      localatli.jdField_a_of_type_Int = i;
+      if ((paramView instanceof RedTouch)) {
+        localatli.b = atlk.a((RedTouch)paramView);
+      }
+      atkz.a(this.a).a(paramView, localaozs, localatli);
+      return;
+    }
   }
 }
 

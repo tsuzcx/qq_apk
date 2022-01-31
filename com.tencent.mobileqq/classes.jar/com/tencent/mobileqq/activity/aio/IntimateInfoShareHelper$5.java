@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aens;
+import aesh;
 import android.graphics.Bitmap;
 
 public class IntimateInfoShareHelper$5
   implements Runnable
 {
-  public IntimateInfoShareHelper$5(aens paramaens, Bitmap paramBitmap) {}
+  public IntimateInfoShareHelper$5(aesh paramaesh, Bitmap paramBitmap) {}
   
   /* Error */
   public void run()
@@ -16,10 +16,10 @@ public class IntimateInfoShareHelper$5
     //   3: dup
     //   4: new 27	java/io/File
     //   7: dup
-    //   8: getstatic 33	aljq:bd	Ljava/lang/String;
+    //   8: getstatic 33	alof:bd	Ljava/lang/String;
     //   11: invokespecial 36	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: invokevirtual 40	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   17: invokestatic 45	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokestatic 45	bdzf:a	(Ljava/lang/String;)Ljava/lang/String;
     //   20: invokespecial 36	java/io/File:<init>	(Ljava/lang/String;)V
     //   23: astore_3
     //   24: aload_3
@@ -95,8 +95,8 @@ public class IntimateInfoShareHelper$5
     //   169: aload 5
     //   171: astore_3
     //   172: aload_0
-    //   173: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5:this$0	Laens;
-    //   176: invokestatic 119	aens:a	(Laens;)Landroid/support/v4/app/FragmentActivity;
+    //   173: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5:this$0	Laesh;
+    //   176: invokestatic 119	aesh:a	(Laesh;)Landroid/support/v4/app/FragmentActivity;
     //   179: new 121	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5$1
     //   182: dup
     //   183: aload_0

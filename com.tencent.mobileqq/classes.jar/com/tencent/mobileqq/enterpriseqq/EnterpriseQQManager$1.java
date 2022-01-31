@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import apwl;
-import apwn;
+import aqau;
+import aqaw;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,33 +9,33 @@ import java.util.Iterator;
 public class EnterpriseQQManager$1
   implements Runnable
 {
-  public EnterpriseQQManager$1(apwl paramapwl) {}
+  public EnterpriseQQManager$1(aqau paramaqau) {}
   
   public void run()
   {
-    if ((apwl.a(this.this$0) != null) && (apwl.a(this.this$0) != null))
+    if ((aqau.a(this.this$0) != null) && (aqau.a(this.this$0) != null))
     {
       SosoInterface.a(this.this$0.a);
       return;
     }
-    synchronized (apwl.a())
+    synchronized (aqau.a())
     {
-      if ((apwl.a(this.this$0) == null) || (apwl.a(this.this$0).size() <= 0)) {
+      if ((aqau.a(this.this$0) == null) || (aqau.a(this.this$0).size() <= 0)) {
         break label144;
       }
-      Iterator localIterator = apwl.a(this.this$0).iterator();
+      Iterator localIterator = aqau.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        apwn localapwn = (apwn)localIterator.next();
-        if (localapwn != null) {
-          this.this$0.a(apwl.a(this.this$0), apwl.a(this.this$0), localapwn.a, localapwn.b, false, 0.0D, 0.0D);
+        aqaw localaqaw = (aqaw)localIterator.next();
+        if (localaqaw != null) {
+          this.this$0.a(aqau.a(this.this$0), aqau.a(this.this$0), localaqaw.a, localaqaw.b, false, 0.0D, 0.0D);
         }
       }
     }
-    apwl.a(this.this$0).clear();
+    aqau.a(this.this$0).clear();
     label144:
-    apwl.a(this.this$0, null);
-    apwl.a(this.this$0, null);
+    aqau.a(this.this$0, null);
+    aqau.a(this.this$0, null);
   }
 }
 

@@ -1,20 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class auge
-  implements View.OnClickListener
+  implements alpg
 {
-  public auge(MultiAIOFragment paramMultiAIOFragment) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, auhi paramauhi) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (auhi)paramObject);
+      return;
     }
-    this.a.getActivity().finish();
+    b(paramBoolean);
   }
 }
 

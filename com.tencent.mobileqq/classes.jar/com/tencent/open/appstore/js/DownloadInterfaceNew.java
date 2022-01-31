@@ -1,25 +1,25 @@
 package com.tencent.open.appstore.js;
 
-import aacp;
-import aact;
-import alpo;
+import aahe;
+import aahi;
+import alud;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
-import apic;
-import apmy;
-import bffd;
-import bfgi;
-import bfgm;
-import bfgt;
-import bfhg;
-import bfil;
-import bfim;
-import bfjy;
-import bfko;
+import apml;
+import aprh;
+import bfjm;
+import bfkr;
+import bfkv;
+import bflc;
+import bflp;
+import bfmu;
+import bfmv;
+import bfoh;
+import bfox;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -40,17 +40,17 @@ import org.json.JSONObject;
 
 public class DownloadInterfaceNew
   extends BaseInterface
-  implements bfil
+  implements bfmu
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bffd jdField_a_of_type_Bffd;
+  private bfjm jdField_a_of_type_Bfjm;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString = "";
   
   public DownloadInterfaceNew(Activity paramActivity, WebView paramWebView)
   {
-    bfhg.b("DownloadInterfaceNew", "<DownloadInterfaceNew>");
+    bflp.b("DownloadInterfaceNew", "<DownloadInterfaceNew>");
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -59,8 +59,8 @@ public class DownloadInterfaceNew
     }
     for (;;)
     {
-      bfgi.a().a(paramWebView);
-      bfim.a().a(this);
+      bfkr.a().a(paramWebView);
+      bfmv.a().a(this);
       return;
       paramWebView = localObject;
       if ((paramActivity instanceof BaseActivity)) {
@@ -71,19 +71,19 @@ public class DownloadInterfaceNew
   
   private void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!apmy.a().a())
+    if (!aprh.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), alpo.a(2131703873), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), alud.a(2131703885), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      apmy.a().b(paramBundle);
+      aprh.a().b(paramBundle);
       return;
     }
-    apmy.a().a(paramBundle);
+    aprh.a().a(paramBundle);
   }
   
   private void a(String paramString)
@@ -93,8 +93,8 @@ public class DownloadInterfaceNew
   
   private void a(String paramString1, String paramString2)
   {
-    paramString1 = bfgm.a().a();
-    bfhg.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos] infos size = " + paramString1.size());
+    paramString1 = bfkv.a().a();
+    bflp.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos] infos size = " + paramString1.size());
     JSONArray localJSONArray = new JSONArray();
     int j = paramString1.size();
     int i = 0;
@@ -131,7 +131,7 @@ public class DownloadInterfaceNew
       }
     }
     paramString1 = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getAllSDKDownloadInfos',{\"guid\": " + paramString2 + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bfhg.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos]:" + paramString1);
+    bflp.c("DownloadInterfaceNew", "[getAllSDKDownloadInfos]:" + paramString1);
     a(paramString1);
   }
   
@@ -154,12 +154,12 @@ public class DownloadInterfaceNew
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      bfgm.a().a(localArrayList, new bfgt(this, paramString));
+      bfkv.a().a(localArrayList, new bflc(this, paramString));
       return;
     }
     catch (JSONException paramJSONArray)
     {
-      bfhg.c("DownloadInterfaceNew", "[innerQuery] e=", paramJSONArray);
+      bflp.c("DownloadInterfaceNew", "[innerQuery] e=", paramJSONArray);
     }
   }
   
@@ -177,7 +177,7 @@ public class DownloadInterfaceNew
   
   public int batchDownloadByYYB(String paramString)
   {
-    bfhg.b("DownloadInterfaceNew", ">batchDownloadByYYB" + paramString);
+    bflp.b("DownloadInterfaceNew", ">batchDownloadByYYB" + paramString);
     if (!hasRight()) {
       return -1;
     }
@@ -196,11 +196,11 @@ public class DownloadInterfaceNew
         paramString = localJSONObject.optJSONArray("appInfo");
         localObject2 = paramString;
         localObject4 = localObject1;
-        localObject1 = localJSONObject.optString(bfjy.i);
+        localObject1 = localJSONObject.optString(bfoh.i);
         localObject2 = paramString;
         localObject4 = localObject1;
-        i = localJSONObject.optInt(bfjy.k);
-        bfhg.c("DownloadInterfaceNew", ">batchDownloadByYYB JSONException", (Throwable)localObject2);
+        i = localJSONObject.optInt(bfoh.k);
+        bflp.c("DownloadInterfaceNew", ">batchDownloadByYYB JSONException", (Throwable)localObject2);
       }
       catch (JSONException localJSONException3)
       {
@@ -225,7 +225,7 @@ public class DownloadInterfaceNew
           }
           localObject2 = localObject4;
           localObject4 = paramString;
-          bfhg.b("DownloadInterfaceNew", ">batchDownloadByYYB appInfo:" + localObject4 + "||via:" + (String)localObject1);
+          bflp.b("DownloadInterfaceNew", ">batchDownloadByYYB appInfo:" + localObject4 + "||via:" + (String)localObject1);
           if ((localObject4 != null) && (((JSONArray)localObject4).length() != 0)) {
             break;
           }
@@ -249,7 +249,7 @@ public class DownloadInterfaceNew
       label214:
       localObject2 = paramString;
     }
-    bfko.a().a(this.jdField_a_of_type_AndroidAppActivity, (JSONArray)localObject4, i, (String)localObject1, (String)localObject2);
+    bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, (JSONArray)localObject4, i, (String)localObject1, (String)localObject2);
     return 0;
   }
   
@@ -258,7 +258,7 @@ public class DownloadInterfaceNew
     if (!hasRight()) {
       return;
     }
-    bfgm.a().a(paramString, true);
+    bfkv.a().a(paramString, true);
   }
   
   public void cancelNotification(String paramString)
@@ -266,7 +266,7 @@ public class DownloadInterfaceNew
     if (!hasRight()) {
       return;
     }
-    bfgi.a().a(paramString);
+    bfkr.a().a(paramString);
   }
   
   public void deleteDownload(String paramString)
@@ -274,19 +274,19 @@ public class DownloadInterfaceNew
     if (!hasRight()) {
       return;
     }
-    bfgm.a().b(paramString, true);
+    bfkv.a().b(paramString, true);
   }
   
   public void destroy()
   {
-    bfhg.b("DownloadInterfaceNew", "destroy");
-    bfim.a().b(this);
+    bflp.b("DownloadInterfaceNew", "destroy");
+    bfmv.a().b(this);
   }
   
   public int doDownloadAction(String paramString)
   {
     localObject3 = null;
-    bfhg.b("DownloadInterfaceNew", "[doDownloadAction]");
+    bflp.b("DownloadInterfaceNew", "[doDownloadAction]");
     if (!hasRight()) {
       return -1;
     }
@@ -309,32 +309,32 @@ public class DownloadInterfaceNew
           }
           if (1 == i)
           {
-            aact.c((String)localObject1, "DELAY_LIST");
-            aact.a((String)localObject1, paramString, "DELAY_APPID_DETAIL_");
-            aacp.a();
-            a(apic.a("gamecenter_delaydownload", "callback", 0, null), false, false);
+            aahi.c((String)localObject1, "DELAY_LIST");
+            aahi.a((String)localObject1, paramString, "DELAY_APPID_DETAIL_");
+            aahe.a();
+            a(apml.a("gamecenter_delaydownload", "callback", 0, null), false, false);
             return 0;
           }
           if (i == 0) {
-            aact.b((String)localObject1, "DELAY_LIST");
+            aahi.b((String)localObject1, "DELAY_LIST");
           }
         }
-        localBundle.putString(bfjy.b, (String)localObject1);
-        localBundle.putString(bfjy.j, localJSONObject.optString("url"));
-        localBundle.putString(bfjy.f, localJSONObject.optString("packageName"));
-        localBundle.putInt(bfjy.k, localJSONObject.optInt("actionCode"));
-        localBundle.putString(bfjy.i, localJSONObject.optString("via"));
-        localBundle.putString(bfjy.l, localJSONObject.optString("appName"));
-        localBundle.putBoolean(bfjy.r, a(localJSONObject.optInt("showNetworkDialog")));
-        localBundle.putString(bfjy.D, localJSONObject.optString("iconUrl"));
-        localBundle.putInt(bfjy.H, localJSONObject.optInt("showNotification"));
-        localBundle.putBoolean(bfjy.J, a(localJSONObject.optInt("isAutoInstallBySdk")));
-        localBundle.putString(bfjy.I, localJSONObject.optString("extraData"));
-        localBundle.putString(bfjy.F, localJSONObject.optString("downloadStyle"));
-        localBundle.putLong(bfjy.G, localJSONObject.optLong("downloadSize"));
-        localBundle.putString(bfjy.p, localJSONObject.optString("wording"));
-        paramString = localJSONObject.optString(bfjy.B);
-        bfhg.b("DownloadInterfaceNew", "[doDownloadAction] feedChannel:" + paramString);
+        localBundle.putString(bfoh.b, (String)localObject1);
+        localBundle.putString(bfoh.j, localJSONObject.optString("url"));
+        localBundle.putString(bfoh.f, localJSONObject.optString("packageName"));
+        localBundle.putInt(bfoh.k, localJSONObject.optInt("actionCode"));
+        localBundle.putString(bfoh.i, localJSONObject.optString("via"));
+        localBundle.putString(bfoh.l, localJSONObject.optString("appName"));
+        localBundle.putBoolean(bfoh.r, a(localJSONObject.optInt("showNetworkDialog")));
+        localBundle.putString(bfoh.D, localJSONObject.optString("iconUrl"));
+        localBundle.putInt(bfoh.H, localJSONObject.optInt("showNotification"));
+        localBundle.putBoolean(bfoh.J, a(localJSONObject.optInt("isAutoInstallBySdk")));
+        localBundle.putString(bfoh.I, localJSONObject.optString("extraData"));
+        localBundle.putString(bfoh.F, localJSONObject.optString("downloadStyle"));
+        localBundle.putLong(bfoh.G, localJSONObject.optLong("downloadSize"));
+        localBundle.putString(bfoh.p, localJSONObject.optString("wording"));
+        paramString = localJSONObject.optString(bfoh.B);
+        bflp.b("DownloadInterfaceNew", "[doDownloadAction] feedChannel:" + paramString);
         if (TextUtils.isEmpty(paramString)) {
           break label1362;
         }
@@ -342,26 +342,26 @@ public class DownloadInterfaceNew
         if (paramString.startsWith("0;"))
         {
           break label1362;
-          str = localJSONObject.optString(bfjy.K);
-          bfhg.b("DownloadInterfaceNew", "[doDownloadAction] finalFeedChannel:" + paramString);
+          str = localJSONObject.optString(bfoh.K);
+          bflp.b("DownloadInterfaceNew", "[doDownloadAction] finalFeedChannel:" + paramString);
           if (!TextUtils.isEmpty(paramString)) {
             break label1251;
           }
-          localBundle.putString(bfjy.B, str);
+          localBundle.putString(bfoh.B, str);
         }
         for (;;)
         {
           paramString = localJSONObject.optString("via");
           i = localJSONObject.optInt("actionCode");
-          if (this.jdField_a_of_type_Bffd != null) {
+          if (this.jdField_a_of_type_Bfjm != null) {
             break label1275;
           }
-          this.jdField_a_of_type_Bffd = new bffd((String)localObject1, paramString, i);
+          this.jdField_a_of_type_Bfjm = new bfjm((String)localObject1, paramString, i);
           if (localJSONObject.optInt("actionCode") != 12) {
             break label1354;
           }
           boolean bool = a(localJSONObject.optInt("updateType"));
-          localBundle.putBoolean(bfjy.o, bool);
+          localBundle.putBoolean(bfoh.o, bool);
           bool = localJSONObject.has("updateData");
           if (!bool) {
             break label1354;
@@ -395,16 +395,16 @@ public class DownloadInterfaceNew
               paramString.sigMd5 = ((JSONObject)localObject2).optString("sigMd5");
               paramString.url = ((JSONObject)localObject2).optString("url");
               i = localJSONObject.optInt("myAppConfig");
-              localBundle.putString(bfjy.jdField_c_of_type_JavaLangString, (String)localObject1);
-              localBundle.putString(bfjy.d, localJSONObject.optString("apkId"));
-              localBundle.putInt(bfjy.e, localJSONObject.optInt("versionCode"));
-              localBundle.putInt(bfjy.n, localJSONObject.optInt("toPageType"));
-              localBundle.putBoolean(bfjy.g, a(localJSONObject.optInt("isAutoDownload")));
-              localBundle.putBoolean(bfjy.jdField_h_of_type_JavaLangString, a(localJSONObject.optInt("isAutoInstall")));
-              localBundle.putBoolean(bfjy.x, localJSONObject.optBoolean("bolckNotify"));
+              localBundle.putString(bfoh.jdField_c_of_type_JavaLangString, (String)localObject1);
+              localBundle.putString(bfoh.d, localJSONObject.optString("apkId"));
+              localBundle.putInt(bfoh.e, localJSONObject.optInt("versionCode"));
+              localBundle.putInt(bfoh.n, localJSONObject.optInt("toPageType"));
+              localBundle.putBoolean(bfoh.g, a(localJSONObject.optInt("isAutoDownload")));
+              localBundle.putBoolean(bfoh.jdField_h_of_type_JavaLangString, a(localJSONObject.optInt("isAutoInstall")));
+              localBundle.putBoolean(bfoh.x, localJSONObject.optBoolean("bolckNotify"));
               localBundle.putString("recommendId", localJSONObject.optString("recommendId"));
               localBundle.putString("sourceFromServer", "" + localJSONObject.optInt("sourceFromServer"));
-              localBundle.putString(bfjy.K, str);
+              localBundle.putString(bfoh.K, str);
               localBundle.putString("pageId", "" + localJSONObject.optInt("pageId"));
               localBundle.putString("moduleId", "" + localJSONObject.optInt("moduleId"));
               localBundle.putString("positionId", "" + localJSONObject.optInt("positionId"));
@@ -417,9 +417,9 @@ public class DownloadInterfaceNew
                 localObject1 = "biz_src_yyb";
               }
               localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.jdField_a_of_type_AndroidAppActivity));
-              bfhg.b("DownloadInterfaceNew", "[doDownloadAction] sourceType=" + (String)localObject1);
-              bfhg.b("DownloadInterfaceNew", "[doDownloadAction] object " + localJSONObject.toString());
-              bfgm.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
+              bflp.b("DownloadInterfaceNew", "[doDownloadAction] sourceType=" + (String)localObject1);
+              bflp.b("DownloadInterfaceNew", "[doDownloadAction] object " + localJSONObject.toString());
+              bfkv.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
               return 0;
             }
             catch (Exception localException1) {}
@@ -444,7 +444,7 @@ public class DownloadInterfaceNew
             break;
           }
           break label1368;
-          localBundle.putString(bfjy.B, paramString);
+          localBundle.putString(bfoh.B, paramString);
         }
       }
     }
@@ -455,13 +455,13 @@ public class DownloadInterfaceNew
         Object localObject1;
         int i;
         Object localObject2;
-        bfhg.c("DownloadInterfaceNew", "[doDownloadAction] JSONException", paramString);
+        bflp.c("DownloadInterfaceNew", "[doDownloadAction] JSONException", paramString);
         return -1;
-        if (this.jdField_a_of_type_Bffd.a((String)localObject1, paramString, i))
+        if (this.jdField_a_of_type_Bfjm.a((String)localObject1, paramString, i))
         {
-          bfhg.b("DownloadInterfaceNew", "[doDownloadAction] repeat action,return");
+          bflp.b("DownloadInterfaceNew", "[doDownloadAction] repeat action,return");
           return 0;
-          bfhg.c("DownloadInterfaceNew", "[doDownloadAction]  updateData e=" + ((Exception)localObject2).getMessage());
+          bflp.c("DownloadInterfaceNew", "[doDownloadAction]  updateData e=" + ((Exception)localObject2).getMessage());
         }
       }
     }
@@ -470,7 +470,7 @@ public class DownloadInterfaceNew
       for (;;)
       {
         label1275:
-        bfhg.c("DownloadInterfaceNew", "[doDownloadAction] Exception", paramString);
+        bflp.c("DownloadInterfaceNew", "[doDownloadAction] Exception", paramString);
         continue;
         paramString = null;
         continue;
@@ -509,7 +509,7 @@ public class DownloadInterfaceNew
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    bfhg.b("DownloadInterfaceNew", "[queryDownloadAction] guid=" + paramString2 + ",paramJson=" + paramString1);
+    bflp.b("DownloadInterfaceNew", "[queryDownloadAction] guid=" + paramString2 + ",paramJson=" + paramString1);
     try
     {
       a(new JSONArray(paramString1), paramString2);
@@ -517,7 +517,7 @@ public class DownloadInterfaceNew
     }
     catch (JSONException paramString1)
     {
-      bfhg.e("DownloadInterfaceNew", "[queryDownloadAction] e=" + paramString1.getMessage());
+      bflp.e("DownloadInterfaceNew", "[queryDownloadAction] e=" + paramString1.getMessage());
     }
   }
   
@@ -532,8 +532,8 @@ public class DownloadInterfaceNew
     // Byte code:
     //   0: invokestatic 398	java/lang/System:currentTimeMillis	()J
     //   3: lstore_3
-    //   4: invokestatic 684	bexd:a	()Lbexd;
-    //   7: invokevirtual 687	bexd:a	()Landroid/content/Context;
+    //   4: invokestatic 684	bfbm:a	()Lbfbm;
+    //   7: invokevirtual 687	bfbm:a	()Landroid/content/Context;
     //   10: invokevirtual 693	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   13: pop
     //   14: new 274	java/util/ArrayList
@@ -598,7 +598,7 @@ public class DownloadInterfaceNew
     //   157: isub
     //   158: aaload
     //   159: invokevirtual 742	android/content/pm/Signature:toCharsString	()Ljava/lang/String;
-    //   162: invokestatic 746	bfhh:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   162: invokestatic 746	bflq:a	(Ljava/lang/String;)Ljava/lang/String;
     //   165: invokevirtual 195	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   168: pop
     //   169: aload_1
@@ -617,7 +617,7 @@ public class DownloadInterfaceNew
     //   196: invokevirtual 654	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   199: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 676	bfhg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: invokestatic 676	bflp:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: return
     //   209: astore 7
     //   211: aload 7
@@ -654,7 +654,7 @@ public class DownloadInterfaceNew
     //   288: aload_1
     //   289: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   292: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   295: invokestatic 175	bfhg:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   295: invokestatic 175	bflp:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   298: aload_0
     //   299: aload_1
     //   300: invokespecial 132	com/tencent/open/appstore/js/DownloadInterfaceNew:a	(Ljava/lang/String;)V
@@ -682,23 +682,23 @@ public class DownloadInterfaceNew
   
   public void installYYB()
   {
-    bfko.a().c(this.jdField_a_of_type_AndroidAppActivity);
+    bfox.a().c(this.jdField_a_of_type_AndroidAppActivity);
   }
   
   public void isYYBSupportBatchDownload(String paramString)
   {
-    bfhg.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload " + paramString);
+    bflp.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload " + paramString);
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = bfko.b();
-      bfhg.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload yybApiLevel=" + i);
+      int i = bfox.b();
+      bflp.b("DownloadInterfaceNew", ">isYYBSupportBatchDownload yybApiLevel=" + i);
       paramString = new StringBuilder().append("javascript:").append(paramString).append("(");
       if (i >= 9) {}
       for (boolean bool = true;; bool = false)
       {
         paramString = bool + ")";
-        bfhg.c("DownloadInterfaceNew", ">isYYBSupportBatchDownload:" + paramString);
+        bflp.c("DownloadInterfaceNew", ">isYYBSupportBatchDownload:" + paramString);
         a(paramString);
         return;
       }
@@ -720,14 +720,14 @@ public class DownloadInterfaceNew
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bfgm.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      bfkv.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bfhg.c("DownloadInterfaceNew", "JSONException", paramString);
+        bflp.c("DownloadInterfaceNew", "JSONException", paramString);
       }
     }
   }
@@ -744,14 +744,14 @@ public class DownloadInterfaceNew
   
   public void queryYYBApiLevel(String paramString)
   {
-    bfhg.b("DownloadInterfaceNew", ">queryYYBApiLevel " + paramString);
+    bflp.b("DownloadInterfaceNew", ">queryYYBApiLevel " + paramString);
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = bfko.b();
-      bfhg.b("DownloadInterfaceNew", ">queryYYBApiLevel yybApiLevel=" + i);
+      int i = bfox.b();
+      bflp.b("DownloadInterfaceNew", ">queryYYBApiLevel yybApiLevel=" + i);
       paramString = "javascript:" + paramString + "(" + i + ")";
-      bfhg.c("DownloadInterfaceNew", ">queryYYBApiLevel:" + paramString);
+      bflp.c("DownloadInterfaceNew", ">queryYYBApiLevel:" + paramString);
       a(paramString);
       return;
     }
@@ -763,7 +763,7 @@ public class DownloadInterfaceNew
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    bfhg.b("DownloadInterfaceNew", "[registerDownloadCallBackListener] callbackMethod=" + paramString);
+    bflp.b("DownloadInterfaceNew", "[registerDownloadCallBackListener] callbackMethod=" + paramString);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -777,14 +777,14 @@ public class DownloadInterfaceNew
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bfgm.a(localBundle);
+      bfkv.a(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bfhg.c("DownloadInterfaceNew", "JSONException", paramString);
+        bflp.c("DownloadInterfaceNew", "JSONException", paramString);
       }
     }
   }
@@ -799,14 +799,14 @@ public class DownloadInterfaceNew
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bfgm.b(localBundle);
+      bfkv.b(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bfhg.c("DownloadInterfaceNew", "JSONException", paramString);
+        bflp.c("DownloadInterfaceNew", "JSONException", paramString);
       }
     }
   }

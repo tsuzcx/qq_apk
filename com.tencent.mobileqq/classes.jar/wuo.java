@@ -1,12 +1,19 @@
 import android.view.View;
-import android.widget.ImageView;
 
 class wuo
+  extends wrj
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  wuo(wub paramwub) {}
   
-  wuo(wun paramwun) {}
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.l();
+  }
 }
 
 

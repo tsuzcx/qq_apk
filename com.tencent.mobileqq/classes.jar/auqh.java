@@ -1,10 +1,15 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class auqh
-  implements BusinessObserver
+class auqh
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  auqh(auqc paramauqc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    auqc.a(this.a);
+  }
 }
 
 

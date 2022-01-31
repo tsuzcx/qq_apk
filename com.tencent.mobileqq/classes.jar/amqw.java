@@ -1,30 +1,27 @@
-public abstract class amqw
+public class amqw
 {
-  public float a;
-  public int a;
   public long a;
   public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
+  public long b = -1L;
+  public long c = -1L;
   
-  public amqw(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public amqw(long paramLong)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.c = -1L;
+    this.b = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import alpo;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -67,7 +67,7 @@ public class MultiVideoEnterPageMembersControlUI
     d();
     if (this.e == jdField_c_of_type_Int)
     {
-      localDrawable = super.getResources().getDrawable(2130841823);
+      localDrawable = super.getResources().getDrawable(2130841836);
       paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
       localDrawable.setBounds(0, 0, paramInt, paramInt);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -75,7 +75,7 @@ public class MultiVideoEnterPageMembersControlUI
     while (this.e != d) {
       return;
     }
-    Drawable localDrawable = super.getResources().getDrawable(2130841824);
+    Drawable localDrawable = super.getResources().getDrawable(2130841837);
     paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
     localDrawable.setBounds(0, 0, paramInt, paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -112,15 +112,15 @@ public class MultiVideoEnterPageMembersControlUI
       return;
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    LayoutInflater.from(paramContext).inflate(2131559599, this);
+    LayoutInflater.from(paramContext).inflate(2131559598, this);
     this.jdField_a_of_type_AndroidViewView = this;
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131370914));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131370912));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372629));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372628));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372623);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372627));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372620));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131370933));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131370931));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372655));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372654));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372649);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372653));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372646));
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
     this.jdField_a_of_type_AndroidWidgetGridView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
@@ -131,8 +131,8 @@ public class MultiVideoEnterPageMembersControlUI
     this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Mht);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372626));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372624));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372652));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372650));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
   }
   
@@ -149,28 +149,28 @@ public class MultiVideoEnterPageMembersControlUI
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       if (i > 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(alpo.a(2131707401), new Object[] { Integer.valueOf(i) }));
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131707403));
-        this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131707400));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(alud.a(2131707413), new Object[] { Integer.valueOf(i) }));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131707415));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131707412));
       }
     }
     while (this.e != d) {
       for (;;)
       {
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707398));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707410));
       }
     }
     int i = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131696148), new Object[] { Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131696150), new Object[] { Integer.valueOf(i) }));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696145);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131696143);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696147);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131696145);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695840);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695842);
     }
   }
   

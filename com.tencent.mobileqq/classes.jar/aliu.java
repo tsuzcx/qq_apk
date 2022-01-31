@@ -1,197 +1,187 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aliu
-  extends alja
 {
-  public int a;
-  public int b;
+  public static String A;
+  public static String B;
+  public static String C;
+  public static String D;
+  public static String E;
+  public static String F;
+  public static String G;
+  public static String H;
+  public static String I;
+  public static String J;
+  public static String K;
+  public static String L;
+  public static String M;
+  public static String N;
+  public static String O;
+  public static String P;
+  public static String Q;
+  public static String R;
+  public static String S;
+  public static String T;
+  public static String U;
+  public static String V;
+  public static final String W;
+  public static String X;
+  public static String Y;
+  public static String Z;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static final String[] a;
+  public static final String aA;
+  public static final String aB;
+  public static String aC = alud.a(2131700701);
+  public static String aD = alud.a(2131700700);
+  public static String aE = "https://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
+  public static String aF = "#FFE746";
+  public static String aG = "https://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
+  public static String aH = alud.a(2131700699);
+  public static String aa;
+  public static String ab;
+  public static String ac;
+  public static String ad;
+  public static String ae;
+  public static String af;
+  public static String ag;
+  public static String ah;
+  public static String ai;
+  public static String aj;
+  public static String ak;
+  public static String al;
+  public static String am;
+  public static String an;
+  public static String ao;
+  public static String ap;
+  public static String aq;
+  public static String ar;
+  public static String as;
+  public static String at;
+  public static String au;
+  public static String av;
+  public static String aw;
+  public static String ax;
+  public static String ay;
+  public static final String az;
+  public static int b;
+  public static long b;
+  public static String b;
+  public static final String[] b;
+  public static int c;
+  public static String c;
+  public static int d;
+  public static String d;
+  public static int e;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u;
+  public static String v;
+  public static String w;
+  public static String x;
+  public static String y;
+  public static String z;
   
-  public int a()
+  static
   {
-    return 1;
-  }
-  
-  public View a()
-  {
-    switch (this.c)
-    {
-    case 1: 
-    default: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    case 0: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    }
-    return LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131558642, null);
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    for (;;)
-    {
-      int j;
-      int i;
-      int k;
-      try
-      {
-        Object localObject;
-        alhm localalhm;
-        int i1;
-        if (this.c == 0)
-        {
-          int m = this.jdField_a_of_type_Int;
-          int n = this.jdField_b_of_type_Int;
-          j = 0;
-          i = 0;
-          if (j < this.jdField_b_of_type_Int)
-          {
-            LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
-            k = 0;
-            if (k >= this.jdField_a_of_type_Int) {
-              break label266;
-            }
-            localObject = localLinearLayout.getChildAt(k);
-            localalhm = (alhm)((View)localObject).getTag();
-            i1 = m * n * paramInt + i;
-            List localList = this.jdField_a_of_type_JavaUtilList;
-            if (localList != null) {
-              continue;
-            }
-          }
-        }
-        return;
-        if (i1 < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          localObject = ((alhk)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
-          localalhm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localalhm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((alhk)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_b_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
-          if ((localObject != null) && (((ApolloActionData)localObject).actionName != null)) {
-            localalhm.jdField_a_of_type_AndroidWidgetTextView.setText(((ApolloActionData)localObject).actionName);
-          }
-          localalhm.jdField_a_of_type_Alhk = ((alhk)this.jdField_a_of_type_JavaUtilList.get(i1));
-          localalhm.jdField_a_of_type_Alhk.c = 1;
-        }
-        else
-        {
-          ((View)localObject).setContentDescription(null);
-          ((View)localObject).setOnClickListener(null);
-        }
-      }
-      finally {}
-      label266:
-      j += 1;
-      continue;
-      k += 1;
-      i += 1;
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    boolean bool;
-    if (paramQQAppInterface == null) {
-      bool = false;
-    }
-    Object localObject1;
-    label50:
-    int i;
-    for (;;)
-    {
-      return bool;
-      try
-      {
-        localObject1 = (alfy)paramQQAppInterface.getManager(154);
-        if (localObject1 == null)
-        {
-          bool = false;
-        }
-        else
-        {
-          if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
-          for (paramSessionInfo = ((alfy)localObject1).jdField_a_of_type_JavaUtilList;; paramSessionInfo = ((alfy)localObject1).b)
-          {
-            if (paramSessionInfo == null) {
-              break label250;
-            }
-            if (paramSessionInfo.size() != 0) {
-              break;
-            }
-            break label250;
-            if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
-              break label245;
-            }
-          }
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            this.jdField_a_of_type_JavaUtilList.clear();
-          }
-          for (;;)
-          {
-            i = paramSessionInfo.size() - 1;
-            break;
-            this.jdField_a_of_type_JavaUtilList = new ArrayList();
-          }
-          localObject1 = new ApolloActionData();
-        }
-      }
-      finally {}
-    }
-    label140:
-    Object localObject2 = (aleh)paramQQAppInterface.getManager(155);
-    if (localObject2 != null)
-    {
-      localObject2 = ((aleh)localObject2).a(((ApolloActionRecentData)paramSessionInfo.get(i)).actionId);
-      localObject1 = localObject2;
-      if (localObject2 == null) {}
-    }
-    for (;;)
-    {
-      localObject2 = new alhq(paramQQAppInterface.c());
-      ((alhq)localObject2).a = ((ApolloActionData)localObject1);
-      ((alhq)localObject2).c = 1;
-      this.jdField_a_of_type_JavaUtilList.add(localObject2);
-      label275:
-      for (;;)
-      {
-        bool = true;
-        break;
-        label245:
-        paramSessionInfo = null;
-        break label50;
-        label250:
-        bool = false;
-        break;
-        for (;;)
-        {
-          if (i < 0) {
-            break label275;
-          }
-          if (paramQQAppInterface != null) {
-            break label140;
-          }
-          bool = false;
-          break;
-          i -= 1;
-        }
-      }
-    }
+    jdField_a_of_type_JavaLangString = bdzf.a(alof.aX + "/.apollo");
+    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/rsc_jsonConfig/";
+    jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getFilesDir() + "/apollo";
+    jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/action/";
+    jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/audio/";
+    f = jdField_a_of_type_JavaLangString + "/dress/";
+    g = jdField_a_of_type_JavaLangString + "/role/";
+    h = jdField_a_of_type_JavaLangString + "/room/";
+    i = jdField_a_of_type_JavaLangString + "/shader_code/";
+    j = f + "/face/";
+    k = jdField_a_of_type_JavaLangString + "/image_cache/";
+    l = k + "game/";
+    m = jdField_a_of_type_JavaLangString + "/drawer_action/";
+    n = jdField_d_of_type_JavaLangString + "packages/";
+    o = jdField_a_of_type_JavaLangString + "/ai";
+    p = o + "/audioRecord/";
+    q = o + "/action/";
+    r = o + "/audioFromSvr/";
+    s = jdField_a_of_type_JavaLangString + "/game/";
+    t = jdField_a_of_type_JavaLangString + "/pre_download/";
+    u = "def/role/0/3D/";
+    v = "apollo_dwonload_game_icon.png";
+    w = "action/action.png";
+    x = "action/action.json";
+    y = "action/action.atlas";
+    z = "action_peer/action.png";
+    A = "action_peer/action.json";
+    B = "action_peer/action.atlas";
+    C = "dress.png";
+    D = "dress.json";
+    E = "dress.atlas";
+    F = "Bubble";
+    G = "sayhi";
+    H = "interact";
+    I = "friendcard";
+    J = "ai";
+    K = "drawer";
+    L = "role.png";
+    M = "role.json";
+    N = "role.atlas";
+    O = "config.json";
+    P = "skeleton.bin";
+    Q = "dress.bin";
+    R = "action.bin";
+    jdField_a_of_type_Int = 300000;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "FaceOrnament", "BackSuit", "HeadDress", "FaceSuit", "HairType", "TopSuit", "BottomSuit" };
+    jdField_b_of_type_Int = 31104;
+    jdField_c_of_type_Int = 31105;
+    jdField_d_of_type_Int = 31102;
+    jdField_e_of_type_Int = 31106;
+    jdField_a_of_type_Long = 35001L;
+    jdField_b_of_type_Long = 35019L;
+    S = "https://cmshow.qq.com/apollo/html/direct_pay.html?_wv=1027";
+    T = "https://cmshow.qq.com/apollo/html/actlist.html?_wv=1027";
+    U = "https://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
+    V = "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
+    StringBuilder localStringBuilder = new StringBuilder("https://cmshow.qq.com/apollo/html/index_v2.html");
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("8.3.5.4555").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
+    W = localStringBuilder.toString();
+    X = "https://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
+    Y = "https://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";
+    Z = "https://cmshow.qq.com/apollo/html/system/mycoins.html?_bid=2536&_wv=1027";
+    aa = "https://cmshow.qq.com/apollo/html/task_658.html?_bid=2345&_wv=1027";
+    ab = "https://cmshow.qq.com/apollo/html/system/task_detail.html?_bid=2536&_wwv=4&_wv=16778243";
+    ac = "https://cmshow.qq.com/apollo/html/island/crystal.html?_wv=1027";
+    ad = "https://cmshow.qq.com/apollo/html/production/machine.html?_wv=3&_bid=2630";
+    ae = "https://cmshow.qq.com/apollo/html/game-platform/my-game.html?_wv=1027&_bid=2695";
+    af = "http://sqimg.qq.com/qq_product_operations/tmg_sdk/QAVOPENSDK_1.9.6.16.zip";
+    ag = "dd3d6659ce42a5face3777902679834b";
+    ar = "https://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box_lottie.zip";
+    as = "https://cmshow.qq.com/apollo/html/game-platform/game-feeds-gc.html?_wv=3&tab=hotplay&from=gamecenter&_bid=3143";
+    av = jdField_a_of_type_JavaLangString + "/script/" + au + "/";
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "103100.103200.103201", "103100.103200.103210.103211", "103100.103200.103201.103202", "103100.103200.103220" };
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(103100).append(".").append(103200).append(".").append(103240).append(".").append(103244);
+    aB = localStringBuilder.toString();
+    localStringBuilder.append(".").append(103245);
+    aA = localStringBuilder.toString();
+    localStringBuilder.append(".").append(103246);
+    az = localStringBuilder.toString();
   }
 }
 

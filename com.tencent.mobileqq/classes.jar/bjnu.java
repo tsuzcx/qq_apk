@@ -1,8 +1,28 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-public abstract interface bjnu
+public class bjnu
+  implements bjna
 {
-  public abstract void a(BaseResp paramBaseResp);
+  public bjnu(PanoramaView paramPanoramaView) {}
+  
+  public void a()
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).onPanoramaClick();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).a(paramFloat);
+    }
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.a(paramFloat1, paramFloat2);
+  }
 }
 
 

@@ -1,42 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import android.view.animation.Animation;
 import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
 
 class ansj
-  implements Animator.AnimatorListener
+  extends bhry
 {
-  ansj(ansh paramansh, anso paramanso) {}
+  ansj(ansg paramansg) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Anso.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Ansh.a(this.jdField_a_of_type_Anso);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Anso.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Ansh.a(this.jdField_a_of_type_Anso);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Anso.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Anso.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Anso.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

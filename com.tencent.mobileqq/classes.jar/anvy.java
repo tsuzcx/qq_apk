@@ -1,26 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class anvy
-  implements View.OnTouchListener
+  extends anvt
 {
-  public anvy(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public anvy(RockDownloaderManager.2 param2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = anvz.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
       }
     }
   }

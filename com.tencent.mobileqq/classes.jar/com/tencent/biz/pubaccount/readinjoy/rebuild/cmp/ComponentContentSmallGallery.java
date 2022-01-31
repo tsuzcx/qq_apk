@@ -30,13 +30,13 @@ public class ComponentContentSmallGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559956, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559955, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367013));
+    this.a = ((TextView)paramView.findViewById(2131367023));
   }
   
   public void a(Object paramObject)

@@ -2,9 +2,9 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bize;
-import bizf;
-import bjof;
+import bjdl;
+import bjdm;
+import bjsm;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -21,13 +21,13 @@ public class StatisticCollector
   
   public static StatisticCollector getInstance()
   {
-    if (!bjof.a().inited.get()) {}
+    if (!bjsm.a().inited.get()) {}
     try
     {
-      if (!bjof.a().inited.get()) {
-        bjof.a().init();
+      if (!bjsm.a().inited.get()) {
+        bjsm.a().init();
       }
-      return bjof.a();
+      return bjsm.a();
     }
     finally {}
   }
@@ -43,7 +43,7 @@ public class StatisticCollector
       return;
     }
     WnsCollector.a().a(BaseApplication.getContext());
-    WnsCollector.a().a(getDevice(), getSDKVersion(), bize.a().c());
+    WnsCollector.a().a(getDevice(), getSDKVersion(), bjdl.a().c());
     WnsCollector.a().a();
     this.inited.set(true);
   }
@@ -60,7 +60,7 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return bizf.c();
+    return bjdm.c();
   }
   
   public Statistic getStatistic()

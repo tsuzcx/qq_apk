@@ -1,42 +1,48 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.SimpleOnGestureListener;
+import android.content.Context;
 import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class berm
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnTouchListener
 {
-  public berm(TabDragAnimationView paramTabDragAnimationView) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public berm(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
   {
-    if (TabDragAnimationView.a(this.a) != null) {
-      return TabDragAnimationView.a(this.a).onDoubleTap(paramMotionEvent);
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onLongPress(paramMotionEvent);
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onLongClick(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
     }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onSingleTapConfirmed(paramMotionEvent);
-    }
-    ViewParent localViewParent = this.a.getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131372447);
+    if (paramView == null) {}
+    label100:
+    do
+    {
+      return false;
+      if (paramView.equals(Integer.valueOf(1))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (paramMotionEvent.getAction() != 0) {
+          break label100;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
+        return false;
+        if (!paramView.equals(Integer.valueOf(2))) {
+          break;
+        }
+      }
+    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+    return false;
   }
 }
 

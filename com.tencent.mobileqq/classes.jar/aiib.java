@@ -1,30 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiib
-  implements DialogInterface.OnClickListener
+class aiib
+  implements TextWatcher
 {
-  public aiib(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aiib(aihy paramaihy) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    paramEditable = paramEditable.toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-      paramDialogInterface.putExtra("main_tab_id", 1);
-      paramDialogInterface.setFlags(603979776);
-      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_JavaLangString = "";
+      aihy.a(this.jdField_a_of_type_Aihy).a();
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
+    }
+    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "afterTextChanged, mLastKeyword = " + this.jdField_a_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.jdField_a_of_type_JavaLangString = paramEditable;
+    aihy.a(this.jdField_a_of_type_Aihy).setVisibility(0);
+    this.jdField_a_of_type_Aihy.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,40 +1,36 @@
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahmj
-  extends MqqHandler
+  extends ahln
+  implements View.OnClickListener
 {
-  public ahmj(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ahmj(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    case 1015: 
-    case 1017: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
-      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
-      return;
-    case 1014: 
-      paramMessage = this.a.a.getResources().getString(2131720539);
-      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
-      return;
-    case 1016: 
-      QQToast.a(this.a.a, this.a.getString(2131719756), 0).b(this.a.a());
-      return;
-    }
-    QQToast.a(this.a.a, this.a.getString(2131719743), 0).b(this.a.a());
+    super(paramContext, paramQQAppInterface, paramakln, paramavun);
   }
+  
+  public View a(int paramInt, View paramView)
+  {
+    ahmk localahmk;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahmk)))
+    {
+      localahmk = new ahmk();
+      paramView = LayoutInflater.from(this.a).inflate(2131561124, null);
+      paramView.setTag(localahmk);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this);
+      return paramView;
+      localahmk = (ahmk)paramView.getTag();
+    }
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 

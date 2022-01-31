@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
 
-public abstract interface apwb
+public class apwb
+  extends aptf
 {
-  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
-  
-  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
+  public Button a;
+  public LinearLayout a;
+  public TextView a;
+  public EmotionInvalidPanelLinearLayout a;
 }
 
 

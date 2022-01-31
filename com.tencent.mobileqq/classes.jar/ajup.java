@@ -1,244 +1,297 @@
-import android.annotation.SuppressLint;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.nio.FloatBuffer;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajup
-  extends akdk
+public abstract class ajup
 {
-  private LinkedHashMap<String, List<Friends>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private static int jdField_a_of_type_Int = -1;
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public static final float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
+  public static final float[] b;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private long jdField_b_of_type_Long;
+  private float c;
+  private float d;
+  private float e;
+  private float f = 1.0F;
+  private float g = 1.0F;
   
-  public ajup(FriendListInnerFrame paramFriendListInnerFrame)
+  static
   {
-    super(paramFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, true);
-    b();
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+    jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
+    jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
   }
   
-  @SuppressLint({"DefaultLocale"})
-  private void b()
+  public ajup(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_JavaUtilList.iterator();
-    label66:
-    int i;
-    if (((Iterator)localObject2).hasNext())
-    {
-      Friends localFriends = (Friends)((Iterator)localObject2).next();
-      if ((localFriends.mCompareSpell == null) || (localFriends.mCompareSpell.length() == 0))
-      {
-        localObject1 = "#";
-        i = ((String)localObject1).charAt(0);
-        if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-          break label171;
-        }
-      }
-      label171:
-      for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localFriends);
-        break;
-        localObject1 = localFriends.mCompareSpell.substring(0, 1);
-        break label66;
-      }
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
-      }
-    }
-    if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
-    }
-    ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      i = 1;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        localObject2 = this.jdField_a_of_type_ArrayOfInt;
-        int j = localObject2[i];
-        int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-        localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-        i += 1;
-      }
-      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-        i += 1;
-      }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      e();
     }
   }
   
-  public int a()
+  public static int a()
   {
-    return 2131559237;
+    return jdField_a_of_type_Int;
   }
   
-  public int a(String paramString)
+  public static Bitmap a(float paramFloat1, float paramFloat2)
   {
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-    {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        return this.jdField_a_of_type_ArrayOfInt[i];
-        i += 1;
-        break;
-      }
-      return -1;
-      return -1;
-      label53:
-      i = -1;
-    }
-  }
-  
-  public void a()
-  {
-    b();
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
-    }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
+    if ((paramFloat1 <= 0.0F) || (paramFloat2 <= 0.0F)) {
       return null;
     }
-    i = -(i + 1) - 1;
-    List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
-    if ((paramInt >= 0) && (paramInt < localList.size())) {
-      return localList.get(paramInt);
+    int i = (int)paramFloat1;
+    int j = (int)paramFloat2;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(i + 1, j + 1, Bitmap.Config.ARGB_8888);
+      Paint localPaint = new Paint();
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      new Canvas(localBitmap).drawPaint(localPaint);
+      return localBitmap;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ItemBase", 2, "createcache exception:" + localException);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ItemBase", 2, "createcache OOM:");
     }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public static void a(RenderBuffer paramRenderBuffer, int paramInt, float paramFloat1, float paramFloat2, RectF paramRectF, float paramFloat3, float paramFloat4)
   {
-    return 0L;
+    if ((paramRenderBuffer == null) || (paramInt <= 0)) {}
+    int j;
+    int k;
+    do
+    {
+      return;
+      j = paramRenderBuffer.getWidth();
+      k = paramRenderBuffer.getHeight();
+    } while ((k <= 0) || (j <= 0));
+    b("onDrawFrame start");
+    int i = a();
+    float f2;
+    float f1;
+    if (paramRectF != null)
+    {
+      f2 = paramRectF.width();
+      f1 = paramRectF.height();
+    }
+    for (;;)
+    {
+      paramRenderBuffer = new float[16];
+      Matrix.setIdentityM(paramRenderBuffer, 0);
+      if (paramRectF != null)
+      {
+        Matrix.translateM(paramRenderBuffer, 0, paramRectF.left / paramFloat1, paramRectF.top / paramFloat2, 0.0F);
+        Matrix.scaleM(paramRenderBuffer, 0, f2 / paramFloat1, f1 / paramFloat2, 0.0F);
+      }
+      paramRectF = new float[16];
+      Matrix.setIdentityM(paramRectF, 0);
+      Matrix.translateM(paramRectF, 0, (2.0F * paramFloat3 + f2) / j - 1.0F, (2.0F * paramFloat4 + f1) / k - 1.0F, 0.0F);
+      Matrix.scaleM(paramRectF, 0, f2 / j, f1 / k, 1.0F);
+      GLES20.glUseProgram(i);
+      b("glUseProgram");
+      j = GLES20.glGetAttribLocation(i, "aPosition");
+      k = GLES20.glGetAttribLocation(i, "aTextureCoord");
+      int m = GLES20.glGetUniformLocation(i, "uMVPMatrix");
+      i = GLES20.glGetUniformLocation(i, "uTextureMatrix");
+      GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
+      b("glVertexAttribPointer aPosition");
+      GLES20.glEnableVertexAttribArray(j);
+      b("glEnableVertexAttribArray mPositionHandle");
+      GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
+      b("glVertexAttribPointer mTextureHandle");
+      GLES20.glEnableVertexAttribArray(k);
+      b("glEnableVertexAttribArray mTextureHandle");
+      GLES20.glUniformMatrix4fv(m, 1, false, paramRectF, 0);
+      GLES20.glUniformMatrix4fv(i, 1, false, paramRenderBuffer, 0);
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, paramInt);
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      GLES20.glDrawArrays(5, 0, 4);
+      b("glDrawArrays");
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, 0);
+      return;
+      f1 = paramFloat2;
+      f2 = paramFloat1;
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static void b(String paramString)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    View localView = paramView;
-    if (paramView == null)
+    for (;;)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562611, paramViewGroup, false);
-      paramView = new ajuq(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame, null);
-      localView.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131375883));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378790));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364254));
-      paramView.c = ((ImageView)localView.findViewById(2131367808));
-      paramView.b = ((TextView)localView.findViewById(2131370958));
-    }
-    paramView = (ajuq)localView.getTag();
-    if (i < 0)
-    {
-      i = -(i + 1) - 1;
-      paramViewGroup = (Friends)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(paramViewGroup.uin))
-      {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramView.c.setImageBitmap(a(paramViewGroup.uin));
-        paramView.b.setText(paramViewGroup.getFriendNick());
-        paramView.jdField_a_of_type_JavaLangString = paramViewGroup.uin;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(paramViewGroup.uin))) {
-          break label379;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-        label299:
-        if ((AppSetting.c) && (paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
-        {
-          if (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label390;
-          }
-          localView.setContentDescription(paramViewGroup.getFriendNick() + alpo.a(2131705253));
-        }
-      }
-      for (;;)
-      {
-        localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame);
-        return localView;
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      int i = GLES20.glGetError();
+      if (i == 0) {
         break;
-        label379:
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        break label299;
-        label390:
-        localView.setContentDescription(paramViewGroup.getFriendNick() + alpo.a(2131705256));
+      }
+      QLog.e("ItemBase", 2, paramString + ": glError " + i);
+    }
+  }
+  
+  public static void e()
+  {
+    try
+    {
+      if (jdField_a_of_type_Int > 0) {
+        break label56;
+      }
+      jdField_a_of_type_Int = GlUtil.createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord);\n}\n");
+      if (jdField_a_of_type_Int == 0) {
+        throw new RuntimeException("ItemBase: failed to creating program ");
       }
     }
-    paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramViewGroup = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberFriendListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131691953), new Object[] { paramViewGroup.toLowerCase() }));
-    return localView;
+    finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ItemBase", 2, "initOpenGL, program OK");
+    }
+    label56:
+    int i = 0;
+    if (jdField_a_of_type_Int > 0) {
+      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ItemBase", 2, "supportOpenGL, current refcount: " + i);
+    }
+  }
+  
+  public static void f()
+  {
+    try
+    {
+      int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+      if ((i <= 0) && (jdField_a_of_type_Int > 0))
+      {
+        GLES20.glDeleteProgram(jdField_a_of_type_Int);
+        jdField_a_of_type_Int = -1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ItemBase", 2, "program deleted. ");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ItemBase", 2, "unInitOpenGL, current refcount: " + i);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public float a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException();
+    case 6: 
+      return this.jdField_a_of_type_Float;
+    case 7: 
+      return this.jdField_b_of_type_Float;
+    case 4: 
+      return this.d;
+    case 3: 
+      return this.c;
+    case 5: 
+      return this.e;
+    case 8: 
+      return this.f;
+    }
+    return this.g;
+  }
+  
+  public long a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException();
+    case 2: 
+      return this.jdField_b_of_type_Long;
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Float -= this.e;
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 6: 
+      this.jdField_a_of_type_Float = paramFloat;
+      return;
+    case 7: 
+      this.jdField_b_of_type_Float = paramFloat;
+      return;
+    case 4: 
+      this.d = paramFloat;
+      return;
+    case 3: 
+      this.c = paramFloat;
+      return;
+    case 5: 
+      this.e = paramFloat;
+      return;
+    case 8: 
+      this.f = paramFloat;
+      return;
+    }
+    this.g = paramFloat;
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    e();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      f();
+    }
+    b();
   }
 }
 

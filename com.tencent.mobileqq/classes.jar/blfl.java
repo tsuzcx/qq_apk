@@ -1,18 +1,55 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.qq.im.ae.view.TabLayout;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.widget.ImageView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.qq.im.ae.mode.AECaptureModeSelectPager;
 
-public class blfl
-  implements ViewPager.OnPageChangeListener
+class blfl
+  implements bmeo<blfi>
 {
-  public blfl(TabLayout paramTabLayout) {}
+  blfl(blfj paramblfj) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(@Nullable blfi paramblfi)
   {
-    this.a.a(paramInt);
+    boolean bool = false;
+    if (paramblfi == null) {
+      return;
+    }
+    paramblfi = paramblfi.a;
+    blfj.a(this.a, paramblfi);
+    if (paramblfi != AECaptureMode.NORMAL) {
+      blfj.a(this.a).a(196616, new Object[0]);
+    }
+    int i;
+    if (blfj.a(this.a) != null)
+    {
+      i = 0;
+      if (i < blfj.a(this.a).length) {
+        if (paramblfi != blfj.a(this.a)[i]) {}
+      }
+    }
+    for (;;)
+    {
+      if (i != -1) {
+        blfj.a(this.a).setCurrentItem(i, true);
+      }
+      blfj localblfj = this.a;
+      if (paramblfi == AECaptureMode.GIF) {
+        bool = true;
+      }
+      blfj.a(localblfj, bool);
+      blfj.a(this.a).notifyDataSetChanged();
+      paramblfi = blfj.a(this.a);
+      if (blfj.a(this.a)) {}
+      for (i = 2130837595;; i = 2130837596)
+      {
+        paramblfi.setImageResource(i);
+        return;
+        i += 1;
+        break;
+      }
+      i = -1;
+    }
   }
 }
 

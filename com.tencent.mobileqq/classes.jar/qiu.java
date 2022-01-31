@@ -22,7 +22,7 @@ public class qiu
   public static volatile boolean b;
   protected int a;
   protected long a;
-  protected bdwa a;
+  protected beaj a;
   protected AppInterface a;
   protected String a;
   protected ArrayList<qiw> a;
@@ -45,7 +45,7 @@ public class qiu
     this.jdField_a_of_type_Long = -1L;
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bdwa = ((bdvx)paramAppInterface.getManager(47)).a(1);
+    this.jdField_a_of_type_Beaj = ((beag)paramAppInterface.getManager(47)).a(1);
   }
   
   public static RefreshData b(Context paramContext, int paramInt)
@@ -84,7 +84,7 @@ public class qiu
   public RefreshData a(Context paramContext, int paramInt)
   {
     RefreshData localRefreshData = null;
-    paramContext = bdiv.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    paramContext = bdne.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
     if (paramContext != null) {}
     for (;;)
     {
@@ -164,17 +164,17 @@ public class qiu
     if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
       return false;
     }
-    bdcs.a(str);
+    bdhb.a(str);
     this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
     str = str + ".zip";
     File localFile = new File(str);
     Bundle localBundle = new Bundle();
     localBundle.putString("refreshId", (String)localObject);
-    localObject = new bdvv(paramRefreshData.url, localFile);
-    ((bdvv)localObject).jdField_b_of_type_Int = paramInt1;
-    ((bdvv)localObject).d = 60L;
-    ((bdvv)localObject).m = true;
-    this.jdField_a_of_type_Bdwa.a((bdvv)localObject, new qiv(this, str, paramRefreshData, paramInt2), localBundle);
+    localObject = new beae(paramRefreshData.url, localFile);
+    ((beae)localObject).jdField_b_of_type_Int = paramInt1;
+    ((beae)localObject).d = 60L;
+    ((beae)localObject).m = true;
+    this.jdField_a_of_type_Beaj.a((beae)localObject, new qiv(this, str, paramRefreshData, paramInt2), localBundle);
     return false;
   }
   

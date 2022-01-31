@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 
 public class BubbleEntity
-  extends awbv
+  extends awge
 {
   public int bubble_id;
   public long expire;

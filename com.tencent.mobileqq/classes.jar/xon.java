@@ -1,13 +1,8 @@
-public class xon
+import android.support.annotation.NonNull;
+
+public abstract interface xon
 {
-  public long a;
-  public long b;
-  
-  public xon(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
+  public abstract void a(@NonNull xou paramxou);
 }
 
 

@@ -3,7 +3,7 @@ import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class qiz
-  implements alkr
+  implements alpg
 {
   public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
   

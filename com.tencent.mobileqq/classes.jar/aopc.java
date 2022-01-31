@@ -1,12 +1,28 @@
 public class aopc
 {
-  public int a;
-  public int b = 3145728;
-  public int c = 3145728;
+  private aopd jdField_a_of_type_Aopd;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aopc(aopb paramaopb)
+  public aopc()
   {
-    this.jdField_a_of_type_Int = 512000;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aopd = new aopd();
+  }
+  
+  public aopc(String paramString, aopd paramaopd)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aopd = paramaopd;
+  }
+  
+  public aopd a()
+  {
+    return this.jdField_a_of_type_Aopd;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

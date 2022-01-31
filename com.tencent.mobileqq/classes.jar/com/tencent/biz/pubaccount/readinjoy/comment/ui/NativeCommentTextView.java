@@ -109,7 +109,7 @@ public class NativeCommentTextView
     }
     if (this.jdField_a_of_type_Int == -1)
     {
-      setBackgroundResource(2130848796);
+      setBackgroundResource(2130848869);
       this.jdField_a_of_type_Omg.a(this.jdField_a_of_type_Omt);
       return;
     }

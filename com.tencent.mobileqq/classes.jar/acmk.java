@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acmk
-  implements acgy
+  implements bhuk
 {
-  public acmk(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public acmk(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bhuf parambhuf) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new acml(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmk
  * JD-Core Version:    0.7.0.1
  */

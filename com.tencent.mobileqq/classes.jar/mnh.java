@@ -55,7 +55,7 @@ public abstract class mnh
   
   protected void a(String paramString)
   {
-    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
   }
   
   public void a(mnh parammnh)

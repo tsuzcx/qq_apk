@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 
-class ajcc
-  implements View.OnClickListener
+public class ajcc
 {
-  ajcc(ajbm paramajbm) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.c();
-  }
+  public static final IRedPacket a = new ajcd();
 }
 
 

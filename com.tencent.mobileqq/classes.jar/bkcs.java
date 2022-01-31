@@ -1,6 +1,32 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
+
 public class bkcs
+  extends Handler
 {
-  public static final String a = bkcs.class.getName();
+  public bkcs(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
+  }
 }
 
 

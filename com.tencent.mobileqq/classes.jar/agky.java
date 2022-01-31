@@ -1,21 +1,15 @@
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class agky
+public class agky
   implements DialogInterface.OnClickListener
 {
-  agky(agkx paramagkx, Context paramContext) {}
+  public agky(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = aekt.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Agkx.a.a.a);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

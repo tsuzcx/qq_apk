@@ -45,7 +45,7 @@ public class roi
     {
       localJSONObject.put("callAddress", paramInt);
       localBundle.putString("param", localJSONObject.toString());
-      smk.a(paramActivity, null, "http://viola.qq.com/js/RIJVideoFeedback.js?_rij_violaUrl=1&v_tid=15&v_bundleName=RIJVideoFeedback&_rij_violaUrl=1&v_present=2&hideNav=1&v_bid=3811&v_nav_immer=1&statusColor=1&v_present_bar=0&v_present_radius=6&v_present_top=" + (xee.a(BaseApplicationImpl.context, xee.b(BaseApplicationImpl.context)) - 385), localBundle, true);
+      smk.a(paramActivity, null, "http://viola.qq.com/js/RIJVideoFeedback.js?_rij_violaUrl=1&v_tid=15&v_bundleName=RIJVideoFeedback&_rij_violaUrl=1&v_present=2&hideNav=1&v_bid=3811&v_nav_immer=1&statusColor=1&v_present_bar=0&v_present_radius=6&v_present_top=" + (xin.a(BaseApplicationImpl.context, xin.b(BaseApplicationImpl.context)) - 385), localBundle, true);
       return;
     }
     catch (JSONException paramActivity)
@@ -187,8 +187,8 @@ public class roi
     localHashMap.put("param_uin", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c());
     localHashMap.put("param_platform", String.valueOf(1));
     localHashMap.put("param_sdk_version", TVK_SDKMgr.SDK_Ver);
-    localHashMap.put("param_version", "8.3.3.4515");
-    localHashMap.put("param_subversion", "8.3.3");
+    localHashMap.put("param_version", "8.3.5.4555");
+    localHashMap.put("param_subversion", "8.3.5");
     a(localHashMap);
     if (paramJSONObject.optInt("close_type") > 0)
     {

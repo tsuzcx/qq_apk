@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -11,13 +11,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdcd;
-import bdfq;
-import bfhq;
-import bizm;
-import bizt;
-import bjmn;
-import bjmp;
+import bdgm;
+import bdjz;
+import bflz;
+import bjdt;
+import bjea;
+import bjqu;
+import bjqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
@@ -54,7 +54,7 @@ public class TroopAlbumPlugin
   private Handler handler = new Handler();
   private long lastClickTime;
   Dialog mDownloadingDialog;
-  private bdfq openDialog;
+  private bdjz openDialog;
   private NativePlugin.JSContext troopAlbumJsContext;
   private BroadcastReceiver troopAlbumReceiver = new TroopAlbumPlugin.1(this);
   
@@ -71,14 +71,14 @@ public class TroopAlbumPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131718528), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + alpo.a(2131715561);
+        str = String.format(paramActivity.getString(2131718540), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + alud.a(2131715573);
       }
-      paramString = str + String.format(paramActivity.getString(2131718521), new Object[] { Integer.valueOf(paramInt2) });
-      bdcd.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131718526, new TroopAlbumPlugin.5(this)).show();
+      paramString = str + String.format(paramActivity.getString(2131718533), new Object[] { Integer.valueOf(paramInt2) });
+      bdgm.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131718538, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    bfhq.a().a(paramActivity.getString(2131718529) + paramString + alpo.a(2131715560));
+    bflz.a().a(paramActivity.getString(2131718541) + paramString + alud.a(2131715572));
   }
   
   private void handleChatAio(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -95,24 +95,24 @@ public class TroopAlbumPlugin
     Intent localIntent = new Intent();
     paramJSONObject = paramJSONObject.getJSONObject("data").toString();
     localIntent.putExtra("photos", paramJSONObject);
-    bjmn.a().a(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
+    bjqu.a().a(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      bfhq.a().a(alpo.a(2131715556));
+      bflz.a().a(alud.a(2131715568));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bfhq.a().a(alpo.a(2131715555));
+      bflz.a().a(alud.a(2131715567));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      bdcd.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131718525)).setMessage(paramJSContext.getString(2131718527)).setPositiveButton(paramJSContext.getString(2131718524), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131718523), new TroopAlbumPlugin.3(this)).show();
+      bdgm.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131718537)).setMessage(paramJSContext.getString(2131718539)).setPositiveButton(paramJSContext.getString(2131718536), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131718535), new TroopAlbumPlugin.3(this)).show();
       return;
     }
-    bjmn.a().a().d(paramJSONObject);
+    bjqu.a().a().d(paramJSONObject);
   }
   
   private void handleJumpCategoryAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -122,14 +122,14 @@ public class TroopAlbumPlugin
     paramJSONObject = paramJSONObject.optString("categoryId");
     paramJSContext = paramJSContext.getActivity();
     if (paramJSContext != null) {
-      bizm.a(paramJSContext, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
+      bjdt.a(paramJSContext, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
     }
   }
   
   private void handleJumpToPublishBox(NativePlugin.JSContext paramJSContext)
   {
-    bizt.a();
-    bizm.a(paramJSContext.getActivity(), null, 0);
+    bjea.a();
+    bjdt.a(paramJSContext.getActivity(), null, 0);
   }
   
   private void handleJumpToQzone(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -154,10 +154,10 @@ public class TroopAlbumPlugin
       paramJSONObject = new Bundle();
       paramJSONObject.putInt("key_personal_album_enter_model", 0);
       paramJSONObject.putBoolean("key_pass_result_by_bundle", true);
-      bizt localbizt = bizt.a();
-      localbizt.jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+      bjea localbjea = bjea.a();
+      localbjea.jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getRuntime().getAccount();
       paramJSONObject.putBoolean("key_need_change_to_jpg", true);
-      bizm.a(paramJSContext.getActivity(), localbizt, paramJSONObject, 100);
+      bjdt.a(paramJSContext.getActivity(), localbjea, paramJSONObject, 100);
       this.troopAlbumJsContext = paramJSContext;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_select");
@@ -213,8 +213,8 @@ public class TroopAlbumPlugin
     int n = ((JSONObject)localObject2).optInt("videoHeight");
     Object localObject1 = ((JSONObject)localObject2).optString("videoURL");
     String str = ((JSONObject)localObject2).optString("videoID");
-    localObject2 = bizt.a();
-    ((bizt)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
+    localObject2 = bjea.a();
+    ((bjea)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
     localObject4 = new Bundle();
     ArrayList localArrayList = new ArrayList();
     PhotoInfo localPhotoInfo = new PhotoInfo();
@@ -246,7 +246,7 @@ public class TroopAlbumPlugin
     ((Bundle)localObject4).putInt("curindex", 0);
     ((Bundle)localObject4).putInt("mode", 13);
     ((Bundle)localObject4).putBoolean("need_clear_cache", true);
-    bizm.c(paramJSContext.getActivity(), (bizt)localObject2, (Bundle)localObject4, 6);
+    bjdt.c(paramJSContext.getActivity(), (bjea)localObject2, (Bundle)localObject4, 6);
     this.lastClickTime = System.currentTimeMillis();
   }
   
@@ -259,7 +259,10 @@ public class TroopAlbumPlugin
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     for (int i = 2;; i = 1)
     {
-      bizm.b(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        QLog.d("TroopAlbumPlugin", 1, "handleUploadPhoto  init  mAlbumId is null!");
+      }
+      bjdt.b(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
       this.troopAlbumJsContext = paramJSContext;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_upload");

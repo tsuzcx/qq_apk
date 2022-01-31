@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import utx;
+import uyg;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType,requestSource")
 public class MsgTabNodeVidListEntity
-  extends awbv
+  extends awge
 {
   public int nodeType;
   public long reqTimeStamp;
@@ -15,12 +15,12 @@ public class MsgTabNodeVidListEntity
   public byte[] rspData;
   public String unionId;
   
-  public static String[] getArgs(utx paramutx)
+  public static String[] getArgs(uyg paramuyg)
   {
-    int i = paramutx.jdField_a_of_type_Int;
-    if (paramutx.jdField_a_of_type_JavaLangString == null) {}
-    for (String str = "";; str = paramutx.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), str, String.valueOf(paramutx.f) };
+    int i = paramuyg.jdField_a_of_type_Int;
+    if (paramuyg.jdField_a_of_type_JavaLangString == null) {}
+    for (String str = "";; str = paramuyg.jdField_a_of_type_JavaLangString) {
+      return new String[] { String.valueOf(i), str, String.valueOf(paramuyg.f) };
     }
   }
   

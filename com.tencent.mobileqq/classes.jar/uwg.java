@@ -1,35 +1,52 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public final class uwg
-  extends QQUIEventReceiver<uvz, usj>
+public class uwg
+  implements uvi
 {
-  public uwg(@NonNull uvz paramuvz)
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<uvj> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  
+  public uwg()
   {
-    super(paramuvz);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new uwh());
   }
   
-  public void a(@NonNull uvz paramuvz, @NonNull usj paramusj)
+  private void b(int paramInt)
   {
-    wsv.a(this.TAG, "onEvent, %s", String.valueOf(paramusj));
-    utx localutx = paramuvz.a.a(3, "");
-    if ((localutx != null) && (paramusj.jdField_b_of_type_JavaLangString.equals(localutx.jdField_e_of_type_JavaLangString)))
+    wxe.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
-      wsv.b(this.TAG, "onEvent, guideInfoNode read");
-      paramuvz = new uvf();
-      paramuvz.jdField_b_of_type_JavaLangString = localutx.jdField_a_of_type_JavaLangString;
-      paramuvz.c = localutx.jdField_a_of_type_Int;
-      paramuvz.d = 5;
-      paramuvz.jdField_b_of_type_Long = localutx.jdField_e_of_type_Long;
-      ung.a().a(paramuvz, null);
+    default: 
       return;
     }
-    paramuvz.a.a(paramusj.jdField_a_of_type_JavaLangString, paramusj.jdField_a_of_type_Long);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((uvj)localIterator.next()).a(paramInt);
+    }
+    System.gc();
   }
   
-  public Class acceptEventClass()
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    return usj.class;
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+  }
+  
+  public void a(uvj paramuvj)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramuvj);
+  }
+  
+  public void b() {}
+  
+  public void b(uvj paramuvj)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramuvj);
   }
 }
 

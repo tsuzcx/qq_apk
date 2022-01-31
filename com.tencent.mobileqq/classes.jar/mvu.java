@@ -2,31 +2,31 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 final class mvu
-  implements bapw
+  implements bauf
 {
-  public void a(baqv parambaqv, baqw parambaqw)
+  public void a(bave parambave, bavf parambavf)
   {
-    if ((parambaqv == null) || (parambaqw == null)) {}
-    baps localbaps;
+    if ((parambave == null) || (parambavf == null)) {}
+    baub localbaub;
     do
     {
       do
       {
         return;
-      } while (!(parambaqv instanceof baps));
-      localbaps = (baps)parambaqv;
-      localbaps.jdField_a_of_type_Long += parambaqw.c;
-      parambaqw.c = 0L;
-      parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
-      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
-      parambaqw = localbaps.jdField_a_of_type_JavaLangString;
-      if (parambaqw.contains("range="))
+      } while (!(parambave instanceof baub));
+      localbaub = (baub)parambave;
+      localbaub.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+      localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = localbaub.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
       {
-        parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
-        localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
+        parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        localbaub.jdField_a_of_type_JavaLangString = (parambavf + "range=" + localbaub.jdField_a_of_type_Long);
       }
     } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
+    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", offset=" + localbaub.jdField_a_of_type_Long);
   }
 }
 

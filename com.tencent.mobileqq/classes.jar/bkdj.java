@@ -1,9 +1,21 @@
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
+
 public class bkdj
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public bkdj(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bdgm.b(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+  }
 }
 
 

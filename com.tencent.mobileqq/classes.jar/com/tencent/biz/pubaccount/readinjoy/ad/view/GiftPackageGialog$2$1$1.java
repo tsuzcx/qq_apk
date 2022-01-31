@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import alpo;
+import alud;
 import android.widget.TextView;
 import oev;
 import oex;
@@ -12,7 +12,7 @@ class GiftPackageGialog$2$1$1
   
   public void run()
   {
-    oev.c(this.a.a.a).setText(alpo.a(2131705649));
+    oev.c(this.a.a.a).setText(alud.a(2131705661));
   }
 }
 

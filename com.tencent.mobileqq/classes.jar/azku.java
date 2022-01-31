@@ -1,21 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class azku
-  implements TVK_IMediaPlayer.OnCompletionListener
+public class azku
 {
-  public azku(azjg paramazjg) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
-    this.a.a(15, 1, 0L);
-  }
+  public AtomicInteger a = new AtomicInteger(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azku
  * JD-Core Version:    0.7.0.1
  */

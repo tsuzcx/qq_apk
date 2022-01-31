@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import aact;
-import alpo;
+import aahi;
+import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -9,12 +9,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
-import ashl;
-import awbv;
-import awdg;
-import awdj;
-import bdcs;
-import bdem;
+import aslu;
+import awge;
+import awhp;
+import awhs;
+import bdhb;
+import bdiv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GameNoticeInfo
-  extends awbv
+  extends awge
   implements Cloneable
 {
   private static final String DOWNLOAD_MANAGER_PAGE = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
@@ -35,18 +35,18 @@ public class GameNoticeInfo
   public static final int TYPE_NONE = 0;
   public static final int TYPE_REGISTER = 2;
   public String apkChannel;
-  @awdj
+  @awhs
   public String appId = "";
   public String appName;
   public int bannerType;
   public long createTime;
   public long endTime;
   public String filePath;
-  @awdg
+  @awhp
   public boolean infoRequested;
   public String jumpUrl;
   public String packageName;
-  @awdg
+  @awhp
   public boolean registered;
   public boolean shown;
   public long startTime;
@@ -54,23 +54,23 @@ public class GameNoticeInfo
   
   public GameNoticeInfo() {}
   
-  public GameNoticeInfo(ashl paramashl, Context paramContext)
+  public GameNoticeInfo(aslu paramaslu, Context paramContext)
   {
-    this.appId = paramashl.a;
-    this.appName = paramashl.e;
-    this.packageName = paramashl.b;
-    this.apkChannel = paramashl.g;
-    this.filePath = paramashl.l;
-    this.createTime = paramashl.c;
-    this.bannerType = convertToBannerType(paramashl);
+    this.appId = paramaslu.a;
+    this.appName = paramaslu.e;
+    this.packageName = paramaslu.b;
+    this.apkChannel = paramaslu.g;
+    this.filePath = paramaslu.l;
+    this.createTime = paramaslu.c;
+    this.bannerType = convertToBannerType(paramaslu);
     init(paramContext);
   }
   
-  public static int convertToBannerType(ashl paramashl)
+  public static int convertToBannerType(aslu paramaslu)
   {
     int j = 0;
     int i;
-    if (bdem.a(BaseApplicationImpl.getContext(), paramashl.b)) {
+    if (bdiv.a(BaseApplicationImpl.getContext(), paramaslu.b)) {
       i = 2;
     }
     do
@@ -79,9 +79,9 @@ public class GameNoticeInfo
       {
         return i;
         i = j;
-      } while (paramashl.d != 6);
+      } while (paramaslu.d != 6);
       i = j;
-    } while (!bdcs.a(paramashl.l));
+    } while (!bdhb.a(paramaslu.l));
     return 1;
   }
   
@@ -110,8 +110,8 @@ public class GameNoticeInfo
           } while (TextUtils.isEmpty(this.filePath));
           paramContext = new File(this.filePath);
         } while (!paramContext.exists());
-        l2 = aact.a("MILLISECONDS_DELAY");
-        l3 = aact.a("MILLISECONDS_INTERVAL");
+        l2 = aahi.a("MILLISECONDS_DELAY");
+        l3 = aahi.a("MILLISECONDS_INTERVAL");
         if (l2 > 0L) {
           break label316;
         }
@@ -122,7 +122,7 @@ public class GameNoticeInfo
         this.startTime = (l1 + paramContext.lastModified());
         this.endTime = (l2 + this.startTime);
       } while (readTipInfo(this));
-      this.title = (this.appName + alpo.a(2131705433));
+      this.title = (this.appName + alud.a(2131705445));
       this.jumpUrl = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
       return;
     } while (this.bannerType != 2);
@@ -134,8 +134,8 @@ public class GameNoticeInfo
         if (paramContext == null) {
           break;
         }
-        l2 = aact.a("MILLISECONDS_DELAY");
-        l3 = aact.a("MILLISECONDS_INTERVAL");
+        l2 = aahi.a("MILLISECONDS_DELAY");
+        l3 = aahi.a("MILLISECONDS_INTERVAL");
         if (l2 > 0L) {
           break label310;
         }
@@ -149,7 +149,7 @@ public class GameNoticeInfo
       if (readTipInfo(this)) {
         break;
       }
-      this.title = (this.appName + alpo.a(2131705432));
+      this.title = (this.appName + alud.a(2131705444));
       this.jumpUrl = String.format("https://speed.gamecenter.qq.com/pushgame/v1/detail?appid=%s&_wv=2164260896&_wwv=448&autolaunch=1", new Object[] { this.appId });
       return;
       label310:

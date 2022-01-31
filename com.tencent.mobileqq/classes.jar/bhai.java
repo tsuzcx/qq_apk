@@ -1,18 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
-
-public class bhai
-  implements MediaPlayer.OnPreparedListener
+public abstract interface bhai
 {
-  public bhai(LameMp3EncodeThread paramLameMp3EncodeThread) {}
+  public abstract void a();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    LameMp3EncodeThread.a(this.a).sendEmptyMessage(101);
-    LameMp3EncodeThread.a(this.a).start();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

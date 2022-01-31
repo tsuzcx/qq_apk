@@ -7,33 +7,53 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import tqg;
-import xxf;
-import yvm;
-import yvn;
-import yvs;
+import ybo;
+import zab;
+import zac;
+import zah;
 
 public class VSNetworkHelper
 {
-  private static volatile VSNetworkHelper jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper;
-  private volatile yvm jdField_a_of_type_Yvm = new yvm();
-  
-  private VSNetworkHelper()
-  {
-    b();
-    QCircleGlobalBroadcastHelper.a().a();
-  }
+  private static final VSNetworkHelper jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper = new VSNetworkHelper();
+  private static volatile String jdField_a_of_type_JavaLangString;
+  private static final zab jdField_a_of_type_Zab = new zab();
   
   public static VSNetworkHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper == null) {}
-    try
+    if (jdField_a_of_type_JavaLangString == null) {}
+    for (;;)
     {
-      if (jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper == null) {
-        jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper = new VSNetworkHelper();
+      try
+      {
+        if (jdField_a_of_type_JavaLangString == null) {
+          b();
+        }
+        return jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper;
       }
-      return jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper;
+      finally {}
+      if (!a()) {
+        continue;
+      }
+      try
+      {
+        if (a())
+        {
+          jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper.a();
+          b();
+        }
+      }
+      finally {}
     }
-    finally {}
+  }
+  
+  public static zab a()
+  {
+    return jdField_a_of_type_Zab;
+  }
+  
+  private static boolean a()
+  {
+    return (jdField_a_of_type_JavaLangString != null) && (!jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
   }
   
   public static boolean a(String paramString)
@@ -44,23 +64,26 @@ public class VSNetworkHelper
     return false;
   }
   
-  private void b()
+  private static void b()
   {
     QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: registerObserver");
+    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     BaseApplicationImpl.getApplication().getRuntime().registObserver(a());
+    QCircleGlobalBroadcastHelper.a().a();
   }
   
-  public yvm a()
+  public int a(int paramInt, VSBaseRequest paramVSBaseRequest, zac paramzac)
   {
-    if (this.jdField_a_of_type_Yvm == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_Yvm == null) {
-        this.jdField_a_of_type_Yvm = new yvm();
-      }
-      return this.jdField_a_of_type_Yvm;
+    if (paramVSBaseRequest == null) {
+      return 0;
     }
-    finally {}
+    paramVSBaseRequest.setContextHashCode(paramInt);
+    a().a(paramVSBaseRequest, paramzac);
+    paramzac = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), zah.class);
+    paramzac.putExtra("key_request_data", paramVSBaseRequest);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramzac);
+    QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s, seq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVSBaseRequest.getCurrentSeq()) }));
+    return paramVSBaseRequest.getCurrentSeq();
   }
   
   public void a()
@@ -68,23 +91,10 @@ public class VSNetworkHelper
     QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: release");
     BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(a());
     a().a();
-    xxf.a();
+    ybo.a();
     tqg.a();
     QCircleGlobalBroadcastHelper.a().b();
-    jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper = null;
-  }
-  
-  public void a(int paramInt, VSBaseRequest paramVSBaseRequest, yvn paramyvn)
-  {
-    if (paramVSBaseRequest == null) {
-      return;
-    }
-    paramVSBaseRequest.setContextHashCode(paramInt);
-    a().a(paramVSBaseRequest, paramyvn);
-    paramyvn = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), yvs.class);
-    paramyvn.putExtra("key_request_data", paramVSBaseRequest);
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramyvn);
-    QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s", new Object[] { Integer.valueOf(paramInt) }));
+    jdField_a_of_type_JavaLangString = null;
   }
   
   public void a(Context paramContext)
@@ -96,18 +106,18 @@ public class VSNetworkHelper
     }
   }
   
-  public void a(Context paramContext, VSBaseRequest paramVSBaseRequest, yvn paramyvn)
+  public void a(Context paramContext, VSBaseRequest paramVSBaseRequest, zac paramzac)
   {
     Object localObject = paramContext;
     if (paramContext == null) {
       localObject = BaseApplicationImpl.getContext();
     }
-    a(localObject.hashCode(), paramVSBaseRequest, paramyvn);
+    a(localObject.hashCode(), paramVSBaseRequest, paramzac);
   }
   
-  public void a(VSBaseRequest paramVSBaseRequest, yvn paramyvn)
+  public void a(VSBaseRequest paramVSBaseRequest, zac paramzac)
   {
-    a(null, paramVSBaseRequest, paramyvn);
+    a(null, paramVSBaseRequest, paramzac);
   }
 }
 

@@ -1,11 +1,12 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import java.util.Observable;
 
-public abstract interface aspl
+public class aspl
+  extends Observable
 {
-  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void setChanged()
+  {
+    super.setChanged();
+  }
 }
 
 

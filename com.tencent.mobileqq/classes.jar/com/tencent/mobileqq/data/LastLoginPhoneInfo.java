@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class LastLoginPhoneInfo
-  extends awbv
+  extends awge
 {
-  @awdj
+  @awhs
   public String unifiedCode;
   
   public String toString()
@@ -16,7 +16,7 @@ public class LastLoginPhoneInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.LastLoginPhoneInfo
  * JD-Core Version:    0.7.0.1
  */

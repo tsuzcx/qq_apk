@@ -1,21 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
-import java.util.List;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbrr
-  extends amab
+  extends bbro
 {
-  bbrr(bbrq parambbrq) {}
-  
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+    Object localObject;
+    try
+    {
+      localObject = paramJSONObject.getJSONArray("content");
+      if (((JSONArray)localObject).length() <= 0) {
+        break label333;
+      }
+      localObject = ((JSONArray)localObject).getJSONObject(0);
+      int i = ((JSONObject)localObject).getInt("type");
+      if (i == 5)
+      {
+        if (((JSONObject)localObject).has("file_path")) {
+          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
+        }
+        localTroopFeedItem.type = 131;
+        if (((JSONObject)localObject).has("sharesize")) {
+          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
+        }
+        boolean bool = ((JSONObject)localObject).has("bus_id");
+        if (bool) {}
+        try
+        {
+          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
+          if (((JSONObject)localObject).has("sharefile")) {
+            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+          }
+          if (((JSONObject)localObject).has("shareexpire")) {
+            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+          }
+          if (!((JSONObject)localObject).has("sharefromuin")) {
+            break label333;
+          }
+          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
+        }
+        catch (JSONException paramJSONObject)
+        {
+          for (;;)
+          {
+            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+          }
+        }
+      }
+      if (i != 4) {
+        break label333;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return null;
+    }
+    localTroopFeedItem.type = 132;
+    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
+    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
+    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
+    label333:
+    return localTroopFeedItem;
   }
 }
 

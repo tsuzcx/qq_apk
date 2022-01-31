@@ -1,73 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class aojn
-  extends aofy<aojm>
+class aojn
+  implements Comparator<Rect>
 {
-  public int a()
-  {
-    return 414;
-  }
+  aojn(aojk paramaojk) {}
   
-  @NonNull
-  public aojm a(int paramInt)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    return new aojm();
-  }
-  
-  @Nullable
-  public aojm a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
     {
-      aojm localaojm = aojm.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
       }
-      return localaojm;
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
     }
-    return null;
-  }
-  
-  public Class<aojm> a()
-  {
-    return aojm.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aojm paramaojm)
-  {
-    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramaojm.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramaojm.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
     return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojn
  * JD-Core Version:    0.7.0.1
  */

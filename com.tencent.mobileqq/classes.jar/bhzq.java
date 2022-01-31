@@ -1,12 +1,17 @@
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-final class bhzq
-  implements Interpolator
+public class bhzq
+  implements View.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  public bhzq(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
+  
+  public void onClick(View paramView)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    if (this.b.jdField_a_of_type_Bhzs != null) {
+      this.b.jdField_a_of_type_Bhzs.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    }
   }
 }
 

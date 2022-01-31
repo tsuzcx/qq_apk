@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class qzk
-  implements bcgo
+  implements bckx
 {
   public qzk(ReadInJoyWebDataManager.6 param6) {}
   

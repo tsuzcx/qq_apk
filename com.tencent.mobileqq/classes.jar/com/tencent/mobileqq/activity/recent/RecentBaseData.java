@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajgs;
-import ajic;
+import ajlh;
+import ajmr;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import atpv;
-import baig;
-import baky;
-import bdal;
-import bdbt;
-import bdcb;
-import bdec;
+import atue;
+import bamp;
+import baph;
+import bdeu;
+import bdgc;
+import bdgk;
+import bdil;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -23,7 +23,7 @@ import com.tencent.qphone.base.util.QLog;
 import lpp;
 import mww;
 
-@ajic
+@ajmr
 public abstract class RecentBaseData
 {
   public static final int MENU_FLAG_AV_A = 12288;
@@ -97,7 +97,7 @@ public abstract class RecentBaseData
   {
     if ((paramMessage != null) && (1 == paramInt))
     {
-      paramQQAppInterface = bdbt.g(paramQQAppInterface, paramMessage.frienduin, paramMessage.senderuin);
+      paramQQAppInterface = bdgc.g(paramQQAppInterface, paramMessage.frienduin, paramMessage.senderuin);
       if ((paramQQAppInterface != null) && (!TextUtils.equals(paramQQAppInterface, paramMessage.nickName)))
       {
         paramMessage.nickName = paramQQAppInterface;
@@ -150,7 +150,7 @@ public abstract class RecentBaseData
     if (paramMessage != null) {}
     for (String str = paramMessage.nickName;; str = null)
     {
-      bdec.a(paramContext, paramQQAppInterface, paramMessage, paramInt, paramMsgSummary, str, false, false);
+      bdil.a(paramContext, paramQQAppInterface, paramMessage, paramInt, paramMsgSummary, str, false, false);
       return;
     }
   }
@@ -194,7 +194,7 @@ public abstract class RecentBaseData
               if (k != 1) {
                 break label534;
               }
-              if (atpv.b(paramQQAppInterface, (String)localObject1)) {
+              if (atue.b(paramQQAppInterface, (String)localObject1)) {
                 this.mStatus = 8;
               }
             }
@@ -216,7 +216,7 @@ public abstract class RecentBaseData
               }
               i = 1;
               label288:
-              i = ((baky)paramQQAppInterface.getManager(339)).a(i, (String)localObject1);
+              i = ((baph)paramQQAppInterface.getManager(339)).a(i, (String)localObject1);
               if (((this.mStatus == 0) || (this.mStatus >= i)) && (i != 0)) {
                 this.mStatus = i;
               }
@@ -269,7 +269,7 @@ public abstract class RecentBaseData
       this.mStatus = 0;
       break label137;
       label534:
-      if ((k != 0) || (!atpv.a(paramQQAppInterface, (String)localObject2))) {
+      if ((k != 0) || (!atue.a(paramQQAppInterface, (String)localObject2))) {
         break label185;
       }
       this.mStatus = 8;
@@ -296,7 +296,7 @@ public abstract class RecentBaseData
     if (paramMsgSummary != null)
     {
       this.mLastMsg = paramMsgSummary.a(paramContext);
-      if (((this.mLastMsg instanceof SpannableStringBuilder)) && (bdcb.b())) {
+      if (((this.mLastMsg instanceof SpannableStringBuilder)) && (bdgk.b())) {
         this.mLastMsg = ((SpannableStringBuilder)this.mLastMsg).append(" ");
       }
       paramQQAppInterface = this.mLastMsg;
@@ -306,7 +306,7 @@ public abstract class RecentBaseData
     {
       this.mLastMsg = paramQQAppInterface.subSequence(0, 168);
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
       }
       return;
     }
@@ -340,7 +340,7 @@ public abstract class RecentBaseData
     } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
     this.mDisplayTime = paramQQAppInterface.getTime();
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new baig(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new bamp(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public boolean a()
@@ -410,7 +410,7 @@ public abstract class RecentBaseData
     for (boolean bool = true; (!bool) && ((paramObject instanceof RecentBaseData)); bool = false)
     {
       paramObject = (RecentBaseData)paramObject;
-      if ((paramObject.a() != a()) || (!bdal.a(paramObject.a(), a()))) {
+      if ((paramObject.a() != a()) || (!bdeu.a(paramObject.a(), a()))) {
         break;
       }
       return true;

@@ -1,34 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akex
-  implements View.OnClickListener
+public class akex
+  extends ambf
 {
-  akex(akev paramakev, RedTouch paramRedTouch, aovj paramaovj) {}
+  public akex(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    Switch localSwitch;
-    if (AppSetting.c)
-    {
-      localSwitch = (Switch)paramView.findViewById(2131363726);
-      if (localSwitch != null) {
-        if (localSwitch.isChecked()) {
-          break label59;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
     }
-    label59:
-    for (boolean bool = true;; bool = false)
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
     {
-      localSwitch.setChecked(bool);
-      akev.a(this.jdField_a_of_type_Akev, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aovj, localSwitch.isChecked());
-      paramView.sendAccessibilityEvent(1);
+    default: 
       return;
     }
+    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 

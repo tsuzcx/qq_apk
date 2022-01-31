@@ -1,7 +1,14 @@
-public class bbua
+import java.util.Comparator;
+
+class bbua
+  implements Comparator<bbud>
 {
-  public static final String a = aljq.aX + "troop/homework/";
-  public static final String b = a + "upload/";
+  bbua(bbtz parambbtz) {}
+  
+  public int a(bbud parambbud1, bbud parambbud2)
+  {
+    return parambbud2.b - parambbud1.b;
+  }
 }
 
 

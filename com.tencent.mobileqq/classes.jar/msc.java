@@ -108,7 +108,7 @@ public class msc
     //   60: aload_2
     //   61: ifnull +708 -> 769
     //   64: ldc 139
-    //   66: invokestatic 144	alpo:a	(I)Ljava/lang/String;
+    //   66: invokestatic 144	alud:a	(I)Ljava/lang/String;
     //   69: aload_2
     //   70: invokestatic 149	com/tencent/mobileqq/utils/AudioHelper:a	(Ljava/lang/String;Landroid/os/Bundle;)V
     //   73: aload_2

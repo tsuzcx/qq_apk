@@ -1,68 +1,35 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class atpe
-  implements TencentMapGestureListener
+class atpe
+  implements atmt
 {
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  atpe(atpc paramatpc) {}
   
-  public atpe(MapWidget paramMapWidget) {}
+  public void a() {}
   
-  public boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  public void a(boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean onDown(float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
-    }
-    return false;
-  }
-  
-  public boolean onFling(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onLongPress(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onMapStable()
-  {
-    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
-    }
-    this.b = false;
-  }
-  
-  public boolean onScroll(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return false;
-  }
-  
-  public boolean onSingleTap(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onUp(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.a.jdField_a_of_type_Atpi.jdField_a_of_type_Int, this.a.jdField_a_of_type_Atpi.jdField_a_of_type_JavaLangString, paramBoolean);
+    azqs.b(null, "dc00899", this.a.jdField_a_of_type_Atph.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Atph.b, "", this.a.jdField_a_of_type_Atph.jdField_a_of_type_Int + "", "");
+    String str2;
+    String str3;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Atpi.c))
     {
-      azmj.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+      str2 = this.a.jdField_a_of_type_Atph.jdField_a_of_type_JavaLangString;
+      str3 = this.a.jdField_a_of_type_Atph.b;
+      if (!paramBoolean) {
+        break label185;
+      }
     }
-    return false;
+    label185:
+    for (String str1 = "1";; str1 = "0")
+    {
+      azqs.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
+      return;
+    }
   }
 }
 

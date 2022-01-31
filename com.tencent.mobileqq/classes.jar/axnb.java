@@ -1,24 +1,38 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-public abstract interface axnb
+public class axnb
+  implements Manager
 {
-  public abstract void a(long paramLong);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public axnb(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public ChatMessage a(long paramLong)
+  {
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public void a(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
+  }
   
-  public abstract boolean a(boolean paramBoolean);
+  public ChatMessage b(long paramLong)
+  {
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+  }
   
-  public abstract void a_(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract void c(boolean paramBoolean);
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
 }
 
 

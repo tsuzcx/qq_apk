@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adqo;
+import advd;
 
 public class RegisterVerifyCodeActivity$5$1$1
   implements Runnable
 {
-  public RegisterVerifyCodeActivity$5$1$1(adqo paramadqo) {}
+  public RegisterVerifyCodeActivity$5$1$1(advd paramadvd) {}
   
   public void run()
   {

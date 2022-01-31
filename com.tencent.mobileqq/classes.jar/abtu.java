@@ -1,76 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.observer.BusinessObserver;
 
-class abtu
-  implements BusinessObserver
+public class abtu<T>
+  implements abtt<T>
 {
-  abtu(abtt paramabtt, String paramString, boolean paramBoolean) {}
+  private SparseArray<Class<? extends T>> a = new SparseArray();
+  private SparseArray<T> b = new SparseArray();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private T a(Class<? extends T> paramClass)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
+    try
     {
-      localObject = new SdkAuthorize.GetAuthApiListResponse();
-      try
-      {
-        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
-        {
-          abvm.a(this.jdField_a_of_type_Abtt.jdField_a_of_type_Absf, paramInt, (String)localObject);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(abtt.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
-        }
-        abvm.a(this.jdField_a_of_type_Abtt.jdField_a_of_type_Absf, -1, "parse auth info error");
-        return;
-      }
-      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
-      if ((!abvh.jdField_a_of_type_Boolean) && (abtt.a(this.jdField_a_of_type_Abtt, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
-      {
-        paramBundle = new abts();
-        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
-        paramBundle.jdField_b_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
-        paramBundle.jdField_a_of_type_Long = ((SdkAuthorize.AuthorizeResponse)localObject).expires_in.get();
-        paramBundle.jdField_b_of_type_Long = (paramBundle.jdField_a_of_type_Long + System.currentTimeMillis());
-        this.jdField_a_of_type_Abtt.jdField_a_of_type_Abtp.a(paramBundle);
-        abvm.a(this.jdField_a_of_type_Abtt.jdField_a_of_type_Absf, paramBundle.a());
-        return;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        abtt.a(this.jdField_a_of_type_Abtt);
-        return;
-      }
-      paramBundle = "";
-      paramInt = 0;
-      while (paramInt < this.jdField_a_of_type_Abtt.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = (bezj)this.jdField_a_of_type_Abtt.jdField_a_of_type_JavaUtilList.get(paramInt);
-        paramBundle = paramBundle + ((bezj)localObject).jdField_a_of_type_JavaLangString + "\n";
-        paramInt += 1;
-      }
-      abtt.a(this.jdField_a_of_type_Abtt, paramBundle);
-      return;
+      paramClass = paramClass.newInstance();
+      return paramClass;
     }
-    abvm.a(this.jdField_a_of_type_Abtt.jdField_a_of_type_Absf, paramInt, "get auth info failure");
+    catch (Exception paramClass)
+    {
+      QLog.e("IntClassGeneratorImpl", 1, paramClass, new Object[0]);
+    }
+    return null;
+  }
+  
+  /* Error */
+  public T a(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	abtu:b	Landroid/util/SparseArray;
+    //   6: iload_1
+    //   7: invokevirtual 47	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   10: astore_2
+    //   11: aload_2
+    //   12: ifnull +7 -> 19
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: aload_2
+    //   18: areturn
+    //   19: aload_0
+    //   20: getfield 21	abtu:a	Landroid/util/SparseArray;
+    //   23: iload_1
+    //   24: invokevirtual 47	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   27: checkcast 29	java/lang/Class
+    //   30: astore_2
+    //   31: aload_2
+    //   32: ifnonnull +8 -> 40
+    //   35: aconst_null
+    //   36: astore_2
+    //   37: goto -22 -> 15
+    //   40: aload_0
+    //   41: aload_2
+    //   42: invokespecial 49	abtu:a	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   45: astore_3
+    //   46: aload_3
+    //   47: astore_2
+    //   48: aload_3
+    //   49: ifnull -34 -> 15
+    //   52: aload_0
+    //   53: getfield 23	abtu:b	Landroid/util/SparseArray;
+    //   56: iload_1
+    //   57: aload_3
+    //   58: invokevirtual 53	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   61: aload_3
+    //   62: astore_2
+    //   63: goto -48 -> 15
+    //   66: astore_2
+    //   67: aload_0
+    //   68: monitorexit
+    //   69: aload_2
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	this	abtu
+    //   0	71	1	paramInt	int
+    //   10	53	2	localObject1	Object
+    //   66	4	2	localObject2	Object
+    //   45	17	3	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	66	finally
+    //   19	31	66	finally
+    //   40	46	66	finally
+    //   52	61	66	finally
   }
 }
 

@@ -1,72 +1,63 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqzc
-  implements ayru
+class aqzc
+  extends aqyt
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  
-  public aqzc(ViewGroup paramViewGroup)
+  public aqzc(aqyp paramaqyp)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560662, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366299));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366311));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365102));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366313));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    super(paramaqyp);
   }
   
-  public View a()
+  protected String a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return "StateExcepInvalidWhenChangeToOff";
   }
   
-  public View a(String paramString)
+  protected void a(int paramInt1, int paramInt2)
   {
-    return null;
+    b(paramInt1, paramInt2);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 11);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadingWhenChangeToOff)");
+    this.jdField_a_of_type_Aqyt = new aqzt(this.jdField_a_of_type_Aqyp);
   }
   
-  public ImageView a()
+  protected boolean a()
   {
-    return null;
+    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    aqyp.b(this.jdField_a_of_type_Aqyp, 9, 12);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 9, 12);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateExcepInvalidWhenRecv)");
+    this.jdField_a_of_type_Aqyt = new aqze(this.jdField_a_of_type_Aqyp);
+    return true;
   }
   
-  public TextView a()
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((arrr.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 13);
+    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 13);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateUploadoneWhenChangeToOff)");
+    this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Aqyt = new aqzw(this.jdField_a_of_type_Aqyp);
+    return true;
   }
 }
 

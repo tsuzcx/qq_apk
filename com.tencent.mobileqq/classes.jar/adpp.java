@@ -1,26 +1,22 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class adpp
   extends Handler
 {
-  public adpp(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public adpp(QQBroadcastActivity paramQQBroadcastActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
+    }
+    do
+    {
       return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131721199);
-    }
-    this.a.a(paramMessage, 1);
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

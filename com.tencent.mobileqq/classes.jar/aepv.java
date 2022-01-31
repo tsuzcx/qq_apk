@@ -1,28 +1,55 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class aepv
+  implements SensorEventListener
 {
-  private static ArraySet<Long> a = new ArraySet();
+  public aepv(AudioSenorManager paramAudioSenorManager) {}
   
-  public static void a()
-  {
-    a.clear();
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
+    int i = 1;
+    if (aepi.b()) {}
+    label141:
+    label144:
+    for (;;)
     {
-      a.add(Long.valueOf(paramMessageRecord.uniseq));
-      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
+      return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
+      {
+        bool = true;
+        label28:
+        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
+        }
+        if (!bool) {
+          break label141;
+        }
+      }
+      for (;;)
+      {
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
+        return;
+        bool = false;
+        break label28;
+        i = 0;
+      }
     }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 

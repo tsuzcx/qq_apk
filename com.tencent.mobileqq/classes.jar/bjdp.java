@@ -1,39 +1,30 @@
-import GIFT_MALL_PROTOCOL.doufu_piece_req;
-import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
 import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 public class bjdp
-  extends QzoneExternalRequest
+  extends bjdo
 {
-  private doufu_piece_req a;
+  newest_feeds_req a = new newest_feeds_req();
   
-  public bjdp(long paramLong, Map<String, String> paramMap)
+  public bjdp(long paramLong, Map<Long, Long> paramMap)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new doufu_piece_req(paramLong, paramMap);
+    this.a.cmd = 4;
+    this.a.login_uin = paramLong;
+    this.a.strQua = bjdm.a();
+    this.a.mapUinTimes = new HashMap();
+    this.a.mapUinTimes.putAll(paramMap);
   }
   
-  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  public int a()
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+    return 1000;
   }
   
   public String getCmdString()
   {
-    return "QzoneNewService.getDofuPieceInfo";
+    return "QzoneNewService.getMsgNewestFeeds";
   }
   
   public JceStruct getReq()
@@ -41,9 +32,14 @@ public class bjdp
     return this.a;
   }
   
+  public String toString()
+  {
+    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
+  }
+  
   public String uniKey()
   {
-    return "getDofuPieceInfo";
+    return "getMsgNewestFeeds";
   }
 }
 

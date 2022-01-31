@@ -1,12 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ype
-  extends akee
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public ype(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
+  
+  public void onClick(View paramView)
+  {
+    ybt.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+  }
 }
 
 

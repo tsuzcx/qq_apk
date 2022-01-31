@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import xyn;
+import ycw;
 
 public class TopRecommendBannerAdapter$1
   implements Runnable
 {
-  public TopRecommendBannerAdapter$1(xyn paramxyn) {}
+  public TopRecommendBannerAdapter$1(ycw paramycw) {}
   
   public void run()
   {

@@ -1,17 +1,31 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vhz
-  extends ugz
+  extends uro
 {
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  public List<VideoCollectionItem> a = new ArrayList();
   
-  public vhz(ErrorMessage paramErrorMessage, String paramString)
+  public vhz(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    super(paramRspCollectionViewCount.result);
+    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
+    if (paramRspCollectionViewCount != null)
+    {
+      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
+      while (paramRspCollectionViewCount.hasNext())
+      {
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
+        this.a.add(localVideoCollectionItem);
+      }
+    }
   }
 }
 

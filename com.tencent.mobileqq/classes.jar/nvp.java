@@ -40,7 +40,7 @@ import org.json.JSONObject;
 public class nvp
 {
   private int jdField_a_of_type_Int = -1;
-  private final amky jdField_a_of_type_Amky = new nvw(this, "readinjoy_weather");
+  private final ampn jdField_a_of_type_Ampn = new nvw(this, "readinjoy_weather");
   private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new nvq(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -101,7 +101,7 @@ public class nvp
       Container localContainer = a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramJSONObject);
       if (localContainer != null)
       {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2130842783);
+        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2130842796);
         a(this.jdField_a_of_type_AndroidViewView, localContainer, localDrawable, paramJSONObject);
         this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(paramOnClickListener);
         return localContainer;
@@ -117,7 +117,7 @@ public class nvp
       {
         this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(paramOnClickListener);
         a(this.jdField_a_of_type_AndroidViewViewGroup, paramJSONObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842783);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842796);
         return paramJSONObject;
       }
       a(0);
@@ -127,7 +127,7 @@ public class nvp
   private static URLDrawable.URLDrawableOptions a(Context paramContext)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    paramContext = paramContext.getResources().getDrawable(2130842783);
+    paramContext = paramContext.getResources().getDrawable(2130842796);
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
     return localURLDrawableOptions;
@@ -152,7 +152,7 @@ public class nvp
     QLog.i("DailyHeaderViewController", 1, "[moveToState] from: " + this.jdField_a_of_type_Int + " to " + paramInt);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = paramInt;
-    bjxj.a("sp_key_daily_dynamic_header_state", Integer.valueOf(this.jdField_a_of_type_Int));
+    bkbq.a("sp_key_daily_dynamic_header_state", Integer.valueOf(this.jdField_a_of_type_Int));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(null);
     }
@@ -178,14 +178,14 @@ public class nvp
   private void a(@NonNull View paramView, @NonNull Container paramContainer, @NonNull Drawable paramDrawable, JSONObject paramJSONObject)
   {
     QLog.i("DailyHeaderViewController", 1, "[setupDynamicHeader] ");
-    ((DailyTitleBar)paramView.findViewById(2131371219)).setVisibility(8);
-    DailyTitleBarSwitcher localDailyTitleBarSwitcher = (DailyTitleBarSwitcher)paramView.findViewById(2131364974);
+    ((DailyTitleBar)paramView.findViewById(2131371238)).setVisibility(8);
+    DailyTitleBarSwitcher localDailyTitleBarSwitcher = (DailyTitleBarSwitcher)paramView.findViewById(2131364976);
     localDailyTitleBarSwitcher.setVisibility(0);
     localDailyTitleBarSwitcher.setOnLeftButtonClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     localDailyTitleBarSwitcher.setOnRightButtonClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     localDailyTitleBarSwitcher.setOnTitleClickListener(this.e);
-    ReadInJoyDailyPullToZoomHeaderXListView localReadInJoyDailyPullToZoomHeaderXListView = (ReadInJoyDailyPullToZoomHeaderXListView)paramView.findViewById(2131377224);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131559992, localReadInJoyDailyPullToZoomHeaderXListView, false));
+    ReadInJoyDailyPullToZoomHeaderXListView localReadInJoyDailyPullToZoomHeaderXListView = (ReadInJoyDailyPullToZoomHeaderXListView)paramView.findViewById(2131377278);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131559991, localReadInJoyDailyPullToZoomHeaderXListView, false));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363038));
     nvn.a(paramDrawable);
     nvn.a(this.jdField_a_of_type_AndroidWidgetImageView);
@@ -241,7 +241,7 @@ public class nvp
     }
     catch (Exception paramString)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2131166777);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2131166779);
       QLog.e("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] ", paramString);
     }
   }
@@ -253,7 +253,7 @@ public class nvp
     {
       return;
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBarSwitcher == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBarSwitcher = ((DailyTitleBarSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131364974));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBarSwitcher = ((DailyTitleBarSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131364976));
       }
     } while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBarSwitcher == null) || (paramJSONObject == null));
     String str = paramJSONObject.optString("weather_summary_title");
@@ -272,7 +272,7 @@ public class nvp
   private void a(boolean paramBoolean)
   {
     QLog.i("DailyHeaderViewController", 1, "[requestForUpdate] ");
-    long l1 = ((Long)bjxj.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(0L))).longValue();
+    long l1 = ((Long)bkbq.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(0L))).longValue();
     long l2 = System.currentTimeMillis();
     long l3 = Aladdin.getConfig(157).getIntegerFromString("refresh_debounce_interval", 5);
     if ((l2 - l1 > 60000L * l3) || (paramBoolean)) {
@@ -328,16 +328,16 @@ public class nvp
   private void b()
   {
     QLog.i("DailyHeaderViewController", 1, "[handleStateNormal] ");
-    DailyTitleBar localDailyTitleBar = (DailyTitleBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131371219);
+    DailyTitleBar localDailyTitleBar = (DailyTitleBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131371238);
     localDailyTitleBar.setVisibility(0);
     ImmersiveUtils.a(true, ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).getWindow());
     localDailyTitleBar.setOnLeftButtonClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     localDailyTitleBar.setOnRightButtonClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     localDailyTitleBar.setOnTitleClickListener(this.e);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364974).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131364976).setVisibility(8);
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      ((ReadInJoyDailyPullToZoomHeaderXListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377224)).removeHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+      ((ReadInJoyDailyPullToZoomHeaderXListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377278)).removeHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_AndroidViewViewGroup = null;
       this.jdField_a_of_type_AndroidWidgetImageView = null;
     }
@@ -362,16 +362,16 @@ public class nvp
         a(0);
         return;
       }
-      localJSONObject.putOpt("error_reason", alpo.a(2131703083)).putOpt("operation_text", alpo.a(2131703088));
+      localJSONObject.putOpt("error_reason", alud.a(2131703095)).putOpt("operation_text", alud.a(2131703100));
       View.OnClickListener localOnClickListener = this.c;
       for (;;)
       {
         a(localJSONObject, localOnClickListener);
         return;
-        localJSONObject.putOpt("error_reason", alpo.a(2131703089)).putOpt("operation_text", alpo.a(2131703086));
+        localJSONObject.putOpt("error_reason", alud.a(2131703101)).putOpt("operation_text", alud.a(2131703098));
         localOnClickListener = this.d;
         continue;
-        localJSONObject.putOpt("error_reason", alpo.a(2131703090)).putOpt("operation_text", alpo.a(2131703087));
+        localJSONObject.putOpt("error_reason", alud.a(2131703102)).putOpt("operation_text", alud.a(2131703099));
         localOnClickListener = this.c;
       }
     }
@@ -385,7 +385,7 @@ public class nvp
       a(3);
       return;
     }
-    a(((Integer)bjxj.a("sp_key_daily_dynamic_header_state", Integer.valueOf(0))).intValue());
+    a(((Integer)bkbq.a("sp_key_daily_dynamic_header_state", Integer.valueOf(0))).intValue());
   }
   
   private static void b(String paramString, JSONObject paramJSONObject)
@@ -447,7 +447,7 @@ public class nvp
       {
         for (;;)
         {
-          Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2131166777);
+          Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2131166779);
         }
       }
     }
@@ -492,14 +492,14 @@ public class nvp
         this.jdField_a_of_type_AndroidViewView.postDelayed(new DailyDynamicHeaderViewController.11(this), 1000L);
         return;
       }
-      ((JSONObject)localObject).putOpt("error_reason", alpo.a(2131703081));
+      ((JSONObject)localObject).putOpt("error_reason", alud.a(2131703093));
       for (;;)
       {
-        ((JSONObject)localObject).putOpt("operation_text", alpo.a(2131703082));
+        ((JSONObject)localObject).putOpt("operation_text", alud.a(2131703094));
         break;
-        ((JSONObject)localObject).putOpt("error_reason", alpo.a(2131703085));
+        ((JSONObject)localObject).putOpt("error_reason", alud.a(2131703097));
         continue;
-        ((JSONObject)localObject).putOpt("error_reason", alpo.a(2131703084));
+        ((JSONObject)localObject).putOpt("error_reason", alud.a(2131703096));
       }
     }
   }
@@ -515,7 +515,7 @@ public class nvp
   
   public void a()
   {
-    amkv.b(this.jdField_a_of_type_Amky);
+    ampk.b(this.jdField_a_of_type_Ampn);
     oxb.a().b(this.jdField_a_of_type_Oxe);
   }
   

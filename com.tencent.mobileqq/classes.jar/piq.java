@@ -36,12 +36,12 @@ public class piq
   
   public void a(SelectPositionModule.PositionData paramPositionData)
   {
-    bfrq.a().post(new SelectCityPresenter.2(this, paramPositionData));
+    bfvz.a().post(new SelectCityPresenter.2(this, paramPositionData));
   }
   
   public void a(List<pio> paramList)
   {
-    bfrq.a().post(new SelectCityPresenter.1(this, paramList));
+    bfvz.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

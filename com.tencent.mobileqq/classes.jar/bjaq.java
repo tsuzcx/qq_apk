@@ -1,6 +1,11 @@
-public abstract interface bjaq
+import cooperation.qqreader.net.BaseCgiTask;
+
+public abstract class bjaq
+  implements bjan
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
+  
+  public void b(bjap parambjap) {}
 }
 
 

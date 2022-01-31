@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afbx;
-import ajhs;
-import amjk;
-import atwd;
-import bckq;
-import bckr;
+import afgm;
+import ajmh;
+import amnz;
+import auam;
+import bcoz;
+import bcpa;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,12 +17,12 @@ import mqq.os.MqqHandler;
 public class TroopNotificationAIOHelper$2
   implements Runnable
 {
-  public TroopNotificationAIOHelper$2(afbx paramafbx) {}
+  public TroopNotificationAIOHelper$2(afgm paramafgm) {}
   
   public void run()
   {
     int i = 1;
-    if (afbx.a(this.this$0) == null) {}
+    if (afgm.a(this.this$0) == null) {}
     label12:
     Object localObject;
     label207:
@@ -33,28 +33,28 @@ public class TroopNotificationAIOHelper$2
       do
       {
         return;
-      } while (afbx.a(this.this$0).a == null);
-      amjk localamjk = afbx.a(this.this$0).a.a().a();
-      RecentUser localRecentUser = localamjk.a(afbx.a(this.this$0).a(), 1);
-      localObject = bckr.a(afbx.a(this.this$0).a, afbx.a(this.this$0).a());
-      if ((localObject != null) && (!((bckq)localObject).a.isEmpty())) {}
+      } while (afgm.a(this.this$0).a == null);
+      amnz localamnz = afgm.a(this.this$0).a.a().a();
+      RecentUser localRecentUser = localamnz.a(afgm.a(this.this$0).a(), 1);
+      localObject = bcpa.a(afgm.a(this.this$0).a, afgm.a(this.this$0).a());
+      if ((localObject != null) && (!((bcoz)localObject).a.isEmpty())) {}
       for (;;)
       {
-        localObject = afbx.a(this.this$0).a.getHandler(Conversation.class);
+        localObject = afgm.a(this.this$0).a.getHandler(Conversation.class);
         if (i != 0) {
           break;
         }
-        if (atwd.a().a(afbx.a(this.this$0).a, afbx.a(this.this$0).a())) {
+        if (auam.a().a(afgm.a(this.this$0).a, afgm.a(this.this$0).a())) {
           break label207;
         }
-        if (!(localRecentUser.msg instanceof ajhs)) {
+        if (!(localRecentUser.msg instanceof ajmh)) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotificationAIOHelper", 2, "doOnStop. clear recent user of TroopNotificationMsg.");
         }
         localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
-        localamjk.a(localRecentUser);
+        localamnz.a(localRecentUser);
         if (localObject == null) {
           break;
         }
@@ -65,7 +65,7 @@ public class TroopNotificationAIOHelper$2
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationAIOHelper", 2, "remove recent user on stop.");
       }
-      localamjk.b(localRecentUser, false);
+      localamnz.b(localRecentUser, false);
     } while (localObject == null);
     ((MqqHandler)localObject).sendEmptyMessage(1009);
   }

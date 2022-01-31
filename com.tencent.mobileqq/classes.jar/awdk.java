@@ -1,19 +1,31 @@
-public class awdk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class awdk
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  awdk(awcx paramawcx) {}
   
-  public awdk(String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public String toString()
-  {
-    return "PhoneInfo{countryCode='" + this.a + '\'' + ", areaCode='" + this.b + '\'' + ", rawPhoneNum='" + this.c + '\'' + '}';
+    try
+    {
+      if ((awcx.a(this.a) != null) && (awcx.a(this.a).isShowing()))
+      {
+        awcx.a(this.a).dismiss();
+        awcx.a(this.a, null);
+      }
+      label42:
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, "switch status cancel");
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label42;
+    }
   }
 }
 

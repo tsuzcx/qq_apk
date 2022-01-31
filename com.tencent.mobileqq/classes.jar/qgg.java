@@ -3,7 +3,7 @@ import android.view.animation.Animation;
 import com.tencent.qphone.base.util.QLog;
 
 class qgg
-  extends bhnr
+  extends bhry
 {
   qgg(qgf paramqgf) {}
   

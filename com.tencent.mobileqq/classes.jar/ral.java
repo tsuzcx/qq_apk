@@ -18,7 +18,7 @@ final class ral
     {
       int i = raj.a().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
       raj.a().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
-      bjxj.a("kandian_video_extract_frame_local_result", raj.a().toString());
+      bkbq.a("kandian_video_extract_frame_local_result", raj.a().toString());
       label66:
       raj.a(System.currentTimeMillis() - raj.a());
       raj.b(paramLong);

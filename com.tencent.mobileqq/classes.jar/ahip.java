@@ -1,42 +1,20 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SwipListView;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class ahip
-  implements skj
 {
-  public ahip(SystemMsgListView paramSystemMsgListView) {}
-  
-  public void a(sko paramsko)
-  {
-    int j;
-    if (paramsko != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramsko.a() + " tabid = " + (Integer)paramsko.a());
-      }
-      SystemMsgListView.a(this.a).a(((Integer)paramsko.a()).intValue(), paramsko.a());
-      i = SystemMsgListView.a(this.a).b();
-      paramsko = (ahjm)SystemMsgListView.a(this.a).get(i);
-      if (paramsko == null) {
-        break label141;
-      }
-      j = paramsko.b;
-    }
-    for (int i = paramsko.c;; i = SystemMsgListView.a(this.a).c)
-    {
-      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
-      SystemMsgListView.a(this.a).a(0L);
-      return;
-      label141:
-      j = SystemMsgListView.a(this.a).b;
-    }
-  }
-  
-  public void b(sko paramsko) {}
-  
-  public void c(sko paramsko) {}
+  public int a;
+  public AccountSearchPb.hotwordrecord a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
+  public int c;
+  public List<AccountSearchPb.ResultItem> c;
 }
 
 

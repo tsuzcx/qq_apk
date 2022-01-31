@@ -1,165 +1,44 @@
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import com.tencent.qqmini.sdk.core.manager.ShareManager.2;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.List;
+import java.util.Map;
 
-class bgny
+public class bgny
+  implements DownloaderProxy.DownloadListener
 {
-  private static bgny jdField_a_of_type_Bgny;
-  private static bgny jdField_b_of_type_Bgny;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int = 0;
-  private int c = 9000;
-  private int d = 1800;
-  private int e;
+  public bgny(ShareManager.2 param2, ProgressDialog paramProgressDialog) {}
   
-  public bgny(int paramInt)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.c = 9000;
-    }
-    for (this.d = 1800;; this.d = 1200)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.e = 0;
-      this.jdField_a_of_type_ArrayOfInt = new int[3];
-      paramInt = 0;
-      while (paramInt < 3)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
-        paramInt += 1;
-      }
-      this.c = 6000;
-    }
+    QMLog.e("ShareManager", "shareNetworkPicMessage failed, because of picture downloadFailed");
   }
   
-  public static bgny a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (jdField_a_of_type_Bgny == null) {
-        jdField_a_of_type_Bgny = new bgny(0);
-      }
-      return jdField_a_of_type_Bgny;
-    }
-    if (jdField_b_of_type_Bgny == null) {
-      jdField_b_of_type_Bgny = new bgny(1);
-    }
-    return jdField_b_of_type_Bgny;
-  }
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  private void b()
-  {
-    int i = 0;
-    while (i < 3)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      i += 1;
-    }
-    this.e = 0;
-  }
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
   
-  private int c()
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
   {
-    int i = 0;
-    int j = 0;
-    int m;
-    for (int k = 0; i < 3; k = m)
+    if (paramString != null) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      int n = j;
-      m = k;
-      if (this.jdField_a_of_type_ArrayOfInt[i] > 0)
-      {
-        m = k + 1;
-        n = j + this.jdField_a_of_type_ArrayOfInt[i];
+      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      if (paramInt == 0) {
+        bgrm.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.jdField_a_of_type_AndroidAppActivity, 1, "网络异常，图片分享失败", 1).b(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297248));
       }
-      i += 1;
-      j = n;
-    }
-    if (k > 0) {
-      return j / k;
-    }
-    return 0;
-  }
-  
-  public int a()
-  {
-    if (2 == this.jdField_b_of_type_Int) {
-      return this.c;
-    }
-    return this.d;
-  }
-  
-  public void a()
-  {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    int k = c();
-    int i;
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      i = this.c;
-      if (k != 0) {
-        break label90;
+      if (paramInt == 0) {
+        break;
       }
-      i *= 3;
-      label36:
-      if (j > 100) {
-        if (j <= i) {
-          break label97;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfInt[this.e] = ((int)(i * 1.2F));
-      i = this.e + 1;
-      this.e = i;
-      this.e = (i % 3);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.jdField_a_of_type_ComTencentQqminiSdkCoreModelInnerShareData.isLocalPic = true;
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.jdField_a_of_type_ComTencentQqminiSdkCoreModelInnerShareData.sharePicPath = paramString;
+      bgnv.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.this$0, this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerShareManager$2.jdField_a_of_type_ComTencentQqminiSdkCoreModelInnerShareData);
       return;
-      i = this.d;
-      break;
-      label90:
-      i = k * 3;
-      break label36;
-      label97:
-      i = j;
     }
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    int j = bgld.a(AppLoaderFactory.g().getMiniAppEnv().getContext());
-    int i;
-    if (this.jdField_b_of_type_Int != j)
-    {
-      i = 1;
-      this.jdField_b_of_type_Int = j;
-      if (i == 0) {
-        break label73;
-      }
-      if (this.jdField_b_of_type_Int != 2) {
-        break label65;
-      }
-      i = this.c;
-      label54:
-      b();
-    }
-    label65:
-    label73:
-    do
-    {
-      return i;
-      i = 0;
-      break;
-      i = this.d;
-      break label54;
-      j = c();
-      i = j;
-    } while (j > 0);
-    return 0;
+    QMLog.e("ShareManager", "shareNetworkPicMessage failed, because of picture downloadFailed");
   }
 }
 

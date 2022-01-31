@@ -1,90 +1,22 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import java.util.List;
 
-public class avvj
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, avvo
+class avvj
+  extends avvk
 {
-  private GestureController a;
+  avvj(avvi paramavvi) {}
   
-  public avvj(GestureController paramGestureController)
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList)
   {
-    this.a = paramGestureController;
-  }
-  
-  public void a(avvn paramavvn)
-  {
-    this.a.a(paramavvn);
-  }
-  
-  public boolean a(avvn paramavvn)
-  {
-    return this.a.b(paramavvn);
-  }
-  
-  public boolean b(avvn paramavvn)
-  {
-    return this.a.a(paramavvn);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return this.a.e(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.b(paramScaleGestureDetector);
-  }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.a(paramScaleGestureDetector);
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return this.a.d(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return this.a.c(paramMotionEvent);
+    paramList = this.a.a(paramList);
+    avvg localavvg = (avvg)this.a.a.a(113);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      localavvg.notifyUI(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+      return;
+    }
   }
 }
 

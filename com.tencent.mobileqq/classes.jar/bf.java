@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class bf
-  implements azjq
+  implements aznz
 {
   public bf(LiteActivity paramLiteActivity) {}
   

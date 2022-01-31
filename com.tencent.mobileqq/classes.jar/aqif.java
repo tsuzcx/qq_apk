@@ -1,34 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Timer;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 
 public class aqif
-  implements View.OnClickListener
 {
-  public aqif(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public aqif(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
   {
-    if (!bdee.d(BaseApplicationImpl.getContext())) {
-      armz.a(BaseApplicationImpl.getContext().getString(2131694764));
-    }
-    do
-    {
-      return;
-      armz.a(BaseApplicationImpl.getContext().getString(2131694490));
-      paramView = (allz)MPFileVerifyPwdView.a(this.a).a(8);
-      MPFileVerifyPwdView.a(this.a, paramView.a().a(3));
-      MPFileVerifyPwdView.b(this.a).setEnabled(false);
-      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
-      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
-    } while (MPFileVerifyPwdView.a(this.a) == null);
-    MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

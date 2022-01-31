@@ -1,33 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
-
-public class bklt
-  implements Animator.AnimatorListener
+abstract interface bklt
 {
-  public bklt(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.a(this.a)));
-    }
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a));
-    }
-  }
+  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajgs;
-import altc;
+import ajlh;
+import alxr;
 import android.content.Context;
-import avqe;
+import avun;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -27,10 +27,10 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    altc localaltc = (altc)paramQQAppInterface.getManager(34);
-    avqe localavqe = localaltc.a();
+    alxr localalxr = (alxr)paramQQAppInterface.getManager(34);
+    avun localavun = localalxr.a();
     this.mTitleName = paramContext.getString(this.mTilteId);
-    if (localavqe == null)
+    if (localavun == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
@@ -58,15 +58,15 @@ public class RecentItemNewFriendMsgData
       this.mContentDesc = paramQQAppInterface.toString();
       return;
       this.mMsgExtroInfo = "";
-      if (localavqe.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localavqe.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
+      if (localavun.a(paramQQAppInterface) != null) {}
+      for (paramQQAppInterface = localavun.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
       {
         this.mLastMsg = paramQQAppInterface;
-        this.mUnreadNum = localaltc.d();
-        if (this.mDisplayTime < localavqe.a) {
-          this.mDisplayTime = localavqe.a;
+        this.mUnreadNum = localalxr.d();
+        if (this.mDisplayTime < localavun.a) {
+          this.mDisplayTime = localavun.a;
         }
-        this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
         break;
       }
       label300:

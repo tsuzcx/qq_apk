@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
-import berl;
-import bhlt;
+import bevu;
+import bhqa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -68,14 +68,14 @@ class ThemeDIYActivity$11
         }
         paramMessage = (ResData)paramMessage.obj;
       } while (paramMessage == null);
-      Object localObject = this.this$0.mContext.getResources().getDrawable(2130846929);
+      Object localObject = this.this$0.mContext.getResources().getDrawable(2130847002);
       try
       {
         URL localURL = new URL("themediydownloader", paramMessage.path, paramMessage.url);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mUseSharpPImage = bhlt.a(BaseApplicationImpl.getApplication());
+        localURLDrawableOptions.mUseSharpPImage = bhqa.a(BaseApplicationImpl.getApplication());
         localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
         if (((URLDrawable)localObject).getStatus() != 1)
         {
@@ -175,7 +175,7 @@ class ThemeDIYActivity$11
       this.this$0.mHandler.removeMessages(24);
       this.this$0.mIsSaving.set(false);
       this.this$0.setProgessDialog(false, 0);
-      QQToast.a(this.this$0.mContext, 2131720760, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.this$0.mContext, 2131720772, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298914));
       return;
       if (paramMessage.obj == null)
       {

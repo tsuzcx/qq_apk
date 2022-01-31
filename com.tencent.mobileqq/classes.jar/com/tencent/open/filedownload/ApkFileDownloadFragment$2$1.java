@@ -1,12 +1,12 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bflz;
+import bfqi;
 
 public class ApkFileDownloadFragment$2$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$2$1(bflz parambflz) {}
+  public ApkFileDownloadFragment$2$1(bfqi parambfqi) {}
   
   public void run()
   {

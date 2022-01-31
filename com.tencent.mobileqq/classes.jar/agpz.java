@@ -1,52 +1,42 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 class agpz
-  extends amle
+  extends asim
 {
-  agpz(agot paramagot, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  agpz(agps paramagps) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBandIntimateRelationship");
+      }
+      this.a.F();
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    double d3 = 0.0D;
-    String str;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label211;
-      }
-    }
-    label211:
-    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
-    {
-      double d2 = d3;
-      if (paramSosoLbsInfo != null)
-      {
-        d2 = d3;
-        if (paramSosoLbsInfo.a != null) {
-          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-        }
-      }
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateIntimateRelationship");
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+      this.a.F();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDisbandIntimateRelationship");
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, d1, d2, str);
-      }
-      return;
-      str = "";
-      break;
+      this.a.F();
     }
   }
 }

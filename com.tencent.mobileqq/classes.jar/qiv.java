@@ -8,35 +8,35 @@ import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 class qiv
-  extends bdvu
+  extends bead
 {
   qiv(qiu paramqiu, String paramString, RefreshData paramRefreshData, int paramInt) {}
   
-  public void onCancel(bdvv parambdvv)
+  public void onCancel(beae parambeae)
   {
-    String str = parambdvv.a().getString("refreshId");
+    String str = parambeae.a().getString("refreshId");
     this.jdField_a_of_type_Qiu.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str);
-    super.onCancel(parambdvv);
+    super.onCancel(parambeae);
   }
   
-  public void onDone(bdvv parambdvv)
+  public void onDone(beae parambeae)
   {
-    String str1 = parambdvv.a().getString("refreshId");
+    String str1 = parambeae.a().getString("refreshId");
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes onDone task.errCode =" + parambdvv.jdField_a_of_type_Int);
+      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes onDone task.errCode =" + parambeae.jdField_a_of_type_Int);
     }
-    if (parambdvv.jdField_a_of_type_Int == 0)
+    if (parambeae.jdField_a_of_type_Int == 0)
     {
-      parambdvv = new File(this.jdField_a_of_type_JavaLangString);
-      if (!parambdvv.exists()) {}
+      parambeae = new File(this.jdField_a_of_type_JavaLangString);
+      if (!parambeae.exists()) {}
     }
     for (;;)
     {
       try
       {
-        bdcs.a(parambdvv.getAbsolutePath(), qjs.a(), false);
+        bdhb.a(parambeae.getAbsolutePath(), qjs.a(), false);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown = true;
-        bdiv.f(this.jdField_a_of_type_Qiu.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_Qiu.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString(), this.jdField_a_of_type_Int);
+        bdne.f(this.jdField_a_of_type_Qiu.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_Qiu.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString(), this.jdField_a_of_type_Int);
       }
       catch (Exception localException)
       {
@@ -44,12 +44,12 @@ class qiv
           continue;
         }
         QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-        parambdvv.delete();
+        parambeae.delete();
         continue;
       }
       finally
       {
-        parambdvv.delete();
+        parambeae.delete();
       }
       this.jdField_a_of_type_Qiu.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str1);
       return;
@@ -59,14 +59,14 @@ class qiv
     }
   }
   
-  public void onProgress(bdvv parambdvv)
+  public void onProgress(beae parambeae)
   {
-    super.onProgress(parambdvv);
+    super.onProgress(parambeae);
   }
   
-  public boolean onStart(bdvv parambdvv)
+  public boolean onStart(beae parambeae)
   {
-    return super.onStart(parambdvv);
+    return super.onStart(parambeae);
   }
 }
 

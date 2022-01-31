@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle;
 
-import bizm;
+import bjdt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -15,7 +15,7 @@ public final class QCircleUtil$2
     while (!(localAppRuntime instanceof QQAppInterface)) {
       return;
     }
-    bizm.a((QQAppInterface)localAppRuntime, "QCircle", true);
+    bjdt.a((QQAppInterface)localAppRuntime, "QCircle", true);
   }
 }
 

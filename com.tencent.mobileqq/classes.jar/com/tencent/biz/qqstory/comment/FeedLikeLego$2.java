@@ -5,19 +5,19 @@ import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import upc;
-import urd;
-import usd;
-import wkp;
+import utl;
+import uvm;
+import uwm;
+import woy;
 
 public class FeedLikeLego$2
   implements Runnable
 {
-  public FeedLikeLego$2(upc paramupc, usd paramusd, String paramString, LikeEntry paramLikeEntry) {}
+  public FeedLikeLego$2(utl paramutl, uwm paramuwm, String paramString, LikeEntry paramLikeEntry) {}
   
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Usd.b(this.jdField_a_of_type_JavaLangString);
+    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Uwm.b(this.jdField_a_of_type_JavaLangString);
     LikeEntry localLikeEntry;
     if (localQQUserUIItem != null)
     {
@@ -31,8 +31,8 @@ public class FeedLikeLego$2
     {
       localLikeEntry.role = l;
       this.this$0.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.this$0.jdField_a_of_type_Urd.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.this$0.jdField_a_of_type_Wkp.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      this.this$0.jdField_a_of_type_Uvm.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      this.this$0.jdField_a_of_type_Woy.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
       ThreadManager.getUIHandler().post(new FeedLikeLego.2.1(this));
       return;
     }

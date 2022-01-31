@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.res.Resources;
-import bepp;
+import bety;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -36,7 +36,7 @@ class DataJsPlugin$30$1$1
     {
       this.this$2.val$loadingDialog.dismiss();
       if (i == 0) {
-        QQToast.a(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity, 1, alpo.a(2131703116), 1).b(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity, 1, alud.a(2131703128), 1).b(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
       }
       if (i == 0) {
         break;

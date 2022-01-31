@@ -1,16 +1,23 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class bmxv
-  implements anoi
+  implements Animator.AnimatorListener
 {
-  bmxv(bmxs parambmxs) {}
+  bmxv(bmxt parambmxt) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (bmxs.a(this.a) != null) {
-      bmxs.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
+    if (bmxt.a(this.a) != null) {
+      bmxt.a(this.a).a();
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class qzj
-  implements bcgo
+  implements bckx
 {
   public qzj(ReadInJoyWebDataManager.5 param5) {}
   

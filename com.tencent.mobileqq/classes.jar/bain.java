@@ -1,170 +1,98 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.style.ReplacementSpan;
-import com.tencent.image.URLDrawable;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class bain
-  extends ReplacementSpan
+class bain
+  extends nmx
 {
-  public float a;
-  public int a;
-  private WeakReference<Drawable> a;
-  protected volatile boolean a;
-  public float b;
-  int b;
-  public float c;
-  public int c;
-  public float d;
+  bain(baim parambaim) {}
   
-  public bain(int paramInt1, int paramInt2, int paramInt3)
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
+    if (this.a.a != null) {
+      return this.a.a.b();
+    }
+    return null;
   }
   
-  public int a()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    return 0x7FFFFFFF & this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject1 != null) {}
-    for (localObject1 = (Drawable)((WeakReference)localObject1).get();; localObject1 = null)
-    {
-      Object localObject2;
-      if ((localObject1 instanceof URLDrawable))
-      {
-        localObject2 = (URLDrawable)localObject1;
-        if ((this.jdField_a_of_type_Boolean) && (!((URLDrawable)localObject2).mUseApngImage))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQText", 2, "getDrawable: change to apng");
-          }
-          localObject1 = null;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = b();
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject2);
-        }
-        return localObject2;
-      }
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
     }
   }
   
-  public String a()
+  public void onHideCustomView()
   {
-    return "";
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.setBounds(0, 0, paramInt, paramInt);
+    if (this.a.a != null) {
+      this.a.a.v();
     }
   }
   
-  protected Drawable b()
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    Drawable localDrawable2;
-    Drawable localDrawable1;
-    if (this.jdField_c_of_type_Int == 0)
-    {
-      localDrawable2 = apnz.a(this.jdField_a_of_type_Int);
-      localDrawable1 = localDrawable2;
-      if (localDrawable2 != null)
-      {
-        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-        localDrawable1 = localDrawable2;
-      }
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
     }
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return localDrawable1;
-          if ((0x80000000 & this.jdField_a_of_type_Int) != 0) {
-            break;
-          }
-          localDrawable2 = baiy.a(this.jdField_a_of_type_Int, false);
-          localDrawable1 = localDrawable2;
-        } while (localDrawable2 == null);
-        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-        return localDrawable2;
-        i = 0x7FFFFFFF & this.jdField_a_of_type_Int;
-        if (!apog.c(i)) {
-          break label158;
-        }
-        if (!apog.a(i)) {
-          break;
-        }
-        localDrawable2 = baiy.a(i, false);
-        localDrawable1 = localDrawable2;
-      } while (localDrawable2 == null);
-      localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-      return localDrawable2;
-      localDrawable2 = baiy.a(i, true);
-      localDrawable1 = localDrawable2;
-    } while (localDrawable2 == null);
-    localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-    return localDrawable2;
-    label158:
-    return new ColorDrawable();
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    paramCharSequence = a();
-    paramCanvas.save();
-    float f2 = paramInt4 - this.jdField_b_of_type_Int;
-    float f1 = f2;
-    if (paramInt5 > paramInt4)
-    {
-      f1 = f2;
-      if (paramPaint != null) {
-        f1 = f2 + paramPaint.getFontMetrics().descent;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
     }
-    paramCanvas.translate(paramFloat, f1);
-    if (paramCharSequence != null)
-    {
-      paramCharSequence.draw(paramCanvas);
-      this.jdField_a_of_type_Float = paramFloat;
-      this.jdField_b_of_type_Float = paramInt3;
-      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Int);
-      this.d = paramInt5;
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramInt);
     }
-    paramCanvas.restore();
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
+    }
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    if (paramFontMetricsInt != null)
-    {
-      paramFontMetricsInt.ascent = (-this.jdField_b_of_type_Int);
-      paramFontMetricsInt.descent = 0;
-      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
-      paramFontMetricsInt.bottom = 0;
+    if (this.a.a != null) {
+      this.a.a.b(paramWebView, paramString);
     }
-    return this.jdField_b_of_type_Int;
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.a(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramValueCallback, paramString1, paramString2);
+    }
   }
 }
 

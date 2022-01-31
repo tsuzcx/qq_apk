@@ -4,7 +4,7 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 
 public class co
-  implements bhuy
+  implements bhzf
 {
   public co(PrinterActivity paramPrinterActivity) {}
   

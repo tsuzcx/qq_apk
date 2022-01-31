@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class OlympicPredownInfo
-  extends awbv
+  extends awge
 {
   public int dailyRetryCount;
   public long dailyStartTime;
   public int totalRetryCount;
-  @awdj
+  @awhs
   public String url;
   
   public String toString()

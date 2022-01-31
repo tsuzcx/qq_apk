@@ -1,81 +1,133 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import java.util.LinkedList;
+import java.util.List;
 
 public class aheo
-  extends Handler
+  extends BaseAdapter
 {
-  public WeakReference<TroopView> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<ahen> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public aheo(TroopView paramTroopView)
+  public aheo(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
   {
-    this.a = new WeakReference(paramTroopView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a()
+  boolean a(long paramLong1, long paramLong2)
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
-      }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
+    CalendarDay localCalendarDay1 = new CalendarDay(paramLong1 * 1000L);
+    CalendarDay localCalendarDay2 = new CalendarDay(paramLong2 * 1000L);
+    return (localCalendarDay1.year == localCalendarDay2.year) && (localCalendarDay1.month == localCalendarDay2.month) && (localCalendarDay1.day == localCalendarDay2.day);
   }
   
-  public void handleMessage(Message paramMessage)
+  boolean a(List<ahen> paramList)
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int j = paramList.size();
+    int i = 0;
+    long l2;
+    for (long l1 = 0L; i < j; l1 = l2)
     {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131694766);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131694766);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label178;
-        }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
-        }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
+      ahen localahen = (ahen)paramList.get(i);
+      l2 = localahen.jdField_a_of_type_Long;
+      if ((l1 == 0L) || (!a(l1, l2))) {
+        localahen.jdField_a_of_type_Boolean = true;
       }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131720325);
-      return;
+      this.jdField_a_of_type_JavaUtilList.add(localahen);
+      i += 1;
     }
-    a();
+    return true;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ahen localahen;
+    Object localObject;
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559259, null);
+      paramViewGroup = new ahem();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377607));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377609));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131369133));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369531);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378440));
+      paramView.setTag(paramViewGroup);
+      localahen = (ahen)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localahen.jdField_a_of_type_JavaLangCharSequence);
+      paramViewGroup.b.setText(localahen.a());
+      localObject = new bamb(bdgc.h(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localahen.jdField_a_of_type_JavaLangString), 16).a();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
+      bdrv.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
+      localObject = bdbk.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localahen.jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.b.getLayoutParams();
+      if (!localahen.jdField_a_of_type_Boolean) {
+        break label420;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (paramInt != 0) {
+        break label400;
+      }
+      i = bdoo.a(3.0F);
+      label284:
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      if (paramInt != 0) {
+        break label410;
+      }
+      i = bdoo.a(3.0F);
+    }
+    label302:
+    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramViewGroup.b.setLayoutParams(localLayoutParams);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setContentDescription(localahen.jdField_a_of_type_JavaLangCharSequence + " " + localahen.a());
+      return paramView;
+      paramViewGroup = (ahem)paramView.getTag();
+      break;
+      i = bdoo.a(9.0F);
+      break label284;
+      i = bdoo.a(9.0F);
+      break label302;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bcru;
-import bcrv;
+import bcwd;
+import bcwe;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,10 +14,10 @@ class TroopRequestActivity$3
   
   public void run()
   {
-    bcru localbcru = bcrv.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localbcru != null)
+    bcwd localbcwd = bcwe.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbcwd != null)
     {
-      this.this$0.i = localbcru.a();
+      this.this$0.i = localbcwd.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this));
     }
   }

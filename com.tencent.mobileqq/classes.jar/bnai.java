@@ -1,6 +1,15 @@
+import android.graphics.Bitmap;
+import java.util.List;
+
 public abstract interface bnai
 {
-  public abstract void a();
+  public abstract void a(int paramInt, Bitmap paramBitmap);
+  
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

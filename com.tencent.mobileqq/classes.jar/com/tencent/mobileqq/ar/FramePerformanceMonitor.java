@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import amti;
-import amtj;
+import amxx;
+import amxy;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private amti jdField_a_of_type_Amti;
-  private amtj jdField_a_of_type_Amtj = new amtj(100);
+  private amxx jdField_a_of_type_Amxx;
+  private amxy jdField_a_of_type_Amxy = new amxy(100);
   private FramePerformanceMonitor.CurrentRunnable jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable;
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Amti == null) {
+    if (this.jdField_a_of_type_Amxx == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable = new FramePerformanceMonitor.CurrentRunnable(this, null);
@@ -27,14 +27,14 @@ public class FramePerformanceMonitor
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(amti paramamti)
+  public void a(amxx paramamxx)
   {
-    this.jdField_a_of_type_Amti = paramamti;
+    this.jdField_a_of_type_Amxx = paramamxx;
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_Amtj.a(paramLong);
+    return this.jdField_a_of_type_Amxy.a(paramLong);
   }
   
   public void b()

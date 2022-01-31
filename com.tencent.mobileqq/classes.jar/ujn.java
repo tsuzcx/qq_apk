@@ -1,23 +1,51 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
-import java.util.List;
-
-@TargetApi(14)
 public class ujn
-  implements ujm
 {
-  public ujn(ujl paramujl) {}
+  private long jdField_a_of_type_Long = -1L;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  public String b;
   
-  public void a(int paramInt)
+  public ujn()
   {
-    int i = paramInt + 1;
-    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
-      wsv.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
-    }
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

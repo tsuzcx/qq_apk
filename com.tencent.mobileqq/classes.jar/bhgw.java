@@ -1,64 +1,74 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhgw
-  implements InvocationHandler
+  implements bgpu
 {
-  private boolean jdField_a_of_type_Boolean;
+  public bhgw(MiniAppTextArea paramMiniAppTextArea) {}
   
-  public bhgw(bhgr parambhgr) {}
-  
-  public void a(boolean paramBoolean)
+  public void onSoftKeyboardClosed()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    MiniAppTextArea.a(this.a, false);
   }
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void onSoftKeyboardOpened(int paramInt)
   {
-    QMLog.e("TXLivePlayerJSAdapter", "InnerITXSnapshotListenerImpl invoke:" + paramMethod.getName());
-    if (Object.class.equals(paramMethod.getDeclaringClass())) {
-      try
-      {
-        paramObject = paramMethod.invoke(this, paramArrayOfObject);
-        return paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        paramObject.printStackTrace();
-        return null;
-      }
-    }
-    if (("onSnapshot".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1))
+    MiniAppTextArea localMiniAppTextArea = null;
+    try
     {
-      paramObject = (Bitmap)paramArrayOfObject[0];
-      if (bhgr.a(this.jdField_a_of_type_Bhgr) != null)
+      PageWebviewContainer localPageWebviewContainer;
+      Object localObject;
+      int i;
+      if (MiniAppTextArea.a(this.a) != null)
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label181;
+        localPageWebviewContainer = MiniAppTextArea.a(this.a).a();
+        MiniAppTextArea.a(this.a).setCurInputId(MiniAppTextArea.d(this.a));
+        MiniAppTextArea.a(this.a, paramInt);
+        localObject = localMiniAppTextArea;
+        if (MiniAppTextArea.a(this.a) != null)
+        {
+          localObject = localMiniAppTextArea;
+          if (MiniAppTextArea.a(this.a).a() != null) {
+            localObject = MiniAppTextArea.a(this.a).a().a();
+          }
         }
-        if (paramObject == null) {
-          break label165;
+        if ((DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject)))
+        {
+          localMiniAppTextArea = this.a;
+          paramInt = MiniAppTextArea.b(this.a);
+          MiniAppTextArea.a(localMiniAppTextArea, DisplayUtil.getNavigationBarHeight((Context)localObject) + paramInt);
         }
-        int i = paramObject.getWidth();
-        int j = paramObject.getHeight();
-        paramMethod = new Matrix();
-        paramMethod.setScale(0.5F, 0.5F);
-        paramMethod = Bitmap.createBitmap(paramObject, 0, 0, i, j, paramMethod, false);
-        bhgr.a(this.jdField_a_of_type_Bhgr).a(paramMethod);
-        bhgr.a(this.jdField_a_of_type_Bhgr, paramObject);
+        MiniAppTextArea.c(this.a);
+        if (this.a.isFocused())
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("inputId", MiniAppTextArea.d(this.a));
+          i = MiniAppTextArea.b(this.a);
+          if (!MiniAppTextArea.b(this.a)) {
+            break label250;
+          }
+        }
       }
+      label250:
+      for (paramInt = MiniAppTextArea.c(this.a);; paramInt = 0)
+      {
+        ((JSONObject)localObject).put("height", (int)((paramInt + i) / DisplayUtil.getDensity(this.a.getContext()) + 0.5F));
+        localPageWebviewContainer.b("onKeyboardShow", ((JSONObject)localObject).toString());
+        return;
+        localPageWebviewContainer = null;
+        break;
+      }
+      return;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      return null;
-      label165:
-      bhgr.a(this.jdField_a_of_type_Bhgr).a(paramObject);
-      continue;
-      label181:
-      bhgr.a(this.jdField_a_of_type_Bhgr).a(paramObject);
+      localJSONException.printStackTrace();
     }
   }
 }

@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Build.VERSION;
 import android.util.Log;
-import bglo;
+import bgpv;
 import com.tencent.qqmini.sdk.core.auth.EventInfo;
 import com.tencent.qqmini.sdk.core.auth.PermissionInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -123,7 +123,7 @@ public final class LocalPermissionParser
   private String getStringByAttribute(String paramString)
   {
     String str = paramString;
-    if (!bglo.a(paramString))
+    if (!bgpv.a(paramString))
     {
       str = paramString;
       if ('@' == paramString.charAt(0))
@@ -217,8 +217,8 @@ public final class LocalPermissionParser
         Log.i("PermissionParser", "Ignore permission " + localPermissionInfo + ". Required min-sdk-version is " + j);
         return null;
         label235:
-        if (bglo.a(localPermissionInfo.rejectDescription)) {
-          localPermissionInfo.rejectDescription = this.mContext.getString(2131694359);
+        if (bgpv.a(localPermissionInfo.rejectDescription)) {
+          localPermissionInfo.rejectDescription = this.mContext.getString(2131694361);
         }
         return localPermissionInfo;
       }

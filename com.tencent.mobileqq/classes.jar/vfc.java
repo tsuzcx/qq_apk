@@ -1,37 +1,40 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class vfc
-  extends ved
+public class vfc
+  extends urt<vha>
 {
-  vfc(vez paramvez, StoryVideoItem paramStoryVideoItem)
+  public static final String a = uqn.a("StorySvc.get_user_black_status");
+  public String b;
+  
+  public String a()
   {
-    super(paramStoryVideoItem);
+    return a;
   }
   
-  public boolean b()
+  public uro a(byte[] paramArrayOfByte)
   {
-    Object localObject = (String)a("result");
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
     try
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new vha(localRspGetBlackList);
     }
-    catch (URISyntaxException localURISyntaxException)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      wsv.c(this.b, "Error: 保存投票失败", localURISyntaxException);
+      paramArrayOfByte.printStackTrace();
     }
-    return false;
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 

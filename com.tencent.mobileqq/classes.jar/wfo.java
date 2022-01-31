@@ -1,23 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class wfo
-  implements wft
+  implements View.OnClickListener
 {
-  wfo(wfn paramwfn) {}
+  wfo(wfn paramwfn, String paramString) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (wfn.a(this.a) == null) {
-      return;
-    }
-    if (paramInt == 1) {
-      wfn.a(this.a);
-    }
-    for (;;)
-    {
-      this.a.h();
-      return;
-      if (paramInt == 2) {
-        wfn.b(this.a);
-      }
+    if (this.jdField_a_of_type_Wfn.jdField_a_of_type_Wfh != null) {
+      this.jdField_a_of_type_Wfn.jdField_a_of_type_Wfh.a(null, 0, this.jdField_a_of_type_Wfn.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

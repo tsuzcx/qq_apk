@@ -1,53 +1,46 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.List;
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
 public class anyx
-  extends RecyclerView.Adapter<anzb>
+  implements View.OnClickListener
 {
-  private anza jdField_a_of_type_Anza;
-  private anzn jdField_a_of_type_Anzn;
-  private List<ColorNote> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  public anyx(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public anzb a(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    return new anzb(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558842, paramViewGroup, false));
-  }
-  
-  public void a(anza paramanza)
-  {
-    this.jdField_a_of_type_Anza = paramanza;
-  }
-  
-  public void a(anzb paramanzb, int paramInt)
-  {
-    anxn.a((ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramanzb, paramInt, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(anzn paramanzn)
-  {
-    this.jdField_a_of_type_Anzn = paramanzn;
-  }
-  
-  void a(List<ColorNote> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (this.a.jdField_a_of_type_Int == 0) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+    }
+    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
+    {
+      this.a.finish();
+      return;
+      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
+        azqs.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
+      }
+    }
+    if (this.a.c)
+    {
+      aoae.a(this.a.app.getCurrentAccountUin(), -1);
+      this.a.c = false;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
+    {
+      this.a.finish();
+      return;
+    }
+    BusinessCardEditActivity.a(this.a, false, true, true);
   }
 }
 

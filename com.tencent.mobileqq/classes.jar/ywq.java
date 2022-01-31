@@ -1,12 +1,8 @@
-import com.tencent.oskplayer.util.Singleton;
-
-public class ywq
-  extends Singleton<ywp>
+public abstract interface ywq
 {
-  protected ywp a()
-  {
-    return new ywp();
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

@@ -1,62 +1,62 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.text.TextUtils;
+import android.util.SparseIntArray;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awlw
-  implements AdapterView.OnItemClickListener
+public final class awlw
 {
-  awlw(awlv paramawlv) {}
+  final SparseIntArray a = new SparseIntArray();
+  final SparseIntArray b = new SparseIntArray();
+  final SparseIntArray c = new SparseIntArray();
+  final SparseIntArray d = new SparseIntArray();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
-    }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131721478;
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      if (paramInt != -1)
+      paramString = new JSONObject(paramString);
+      if (paramString.has("c2c"))
       {
-        xxb.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131721479;
+        paramString = paramString.optJSONObject("c2c");
+        if (paramString != null)
+        {
+          if (paramString.has("defaultTheme")) {
+            a(paramString.optJSONObject("defaultTheme"), this.a);
+          }
+          if (paramString.has("conciseTheme")) {
+            a(paramString.optJSONObject("conciseTheme"), this.b);
+          }
         }
       }
-      else
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
+  
+  private void a(JSONObject paramJSONObject, SparseIntArray paramSparseIntArray)
+  {
+    if (paramJSONObject != null) {
+      try
       {
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        Iterator localIterator = paramJSONObject.keys();
+        while (localIterator.hasNext())
         {
-          xxb.a(1, 2131699638);
-          return;
+          String str = (String)localIterator.next();
+          int i = paramJSONObject.optInt(str);
+          paramSparseIntArray.put(Integer.parseInt(str), i);
         }
-        this.a.jdField_a_of_type_Awly.a(true);
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-          return;
-        case 1: 
-          ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-          return;
-        }
-        ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
         return;
       }
-      paramInt = -1;
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramJSONObject, new Object[0]);
+      }
     }
   }
 }

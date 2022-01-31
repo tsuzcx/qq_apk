@@ -3,11 +3,11 @@ import android.os.AsyncTask;
 class nkx
   extends AsyncTask<Void, Void, Void>
 {
-  nkx(nkw paramnkw, acxi paramacxi) {}
+  nkx(nkw paramnkw, adbx paramadbx) {}
   
   protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Nkw.a.a(this.jdField_a_of_type_Acxi);
+    this.jdField_a_of_type_Nkw.a.a(this.jdField_a_of_type_Adbx);
     return null;
   }
   

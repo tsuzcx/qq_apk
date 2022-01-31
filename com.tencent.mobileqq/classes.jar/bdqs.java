@@ -1,63 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import mqq.app.AppRuntime;
-
-public class bdqs
-  implements Handler.Callback
+final class bdqs
+  implements bdqu
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bdqt jdField_a_of_type_Bdqt;
-  private bdqu jdField_a_of_type_Bdqu;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public bdqs(AppRuntime paramAppRuntime, int paramInt)
+  private boolean a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Bdqu = new bdqu(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidOsHandler);
+    return paramArrayOfFloat[2] <= 0.05F;
   }
   
-  public bdqt a()
+  private boolean b(float[] paramArrayOfFloat)
   {
-    return this.jdField_a_of_type_Bdqt;
+    return paramArrayOfFloat[2] >= 0.95F;
   }
   
-  public bdqu a()
+  private boolean c(float[] paramArrayOfFloat)
   {
-    return this.jdField_a_of_type_Bdqu;
+    return (paramArrayOfFloat[0] >= 10.0F) && (paramArrayOfFloat[0] <= 37.0F) && (paramArrayOfFloat[1] <= 0.82F);
   }
   
-  public void a()
+  public boolean a(int paramInt, float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_Bdqt != null) {
-      this.jdField_a_of_type_Bdqt.c();
-    }
-  }
-  
-  public void a(bdqt parambdqt)
-  {
-    this.jdField_a_of_type_Bdqt = parambdqt;
-    this.jdField_a_of_type_Bdqt.b();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bdqt == null) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Bdqt.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      return true;
-      this.jdField_a_of_type_Bdqt.b();
-    }
+    return (!b(paramArrayOfFloat)) && (!a(paramArrayOfFloat)) && (!c(paramArrayOfFloat));
   }
 }
 

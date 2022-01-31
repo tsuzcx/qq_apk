@@ -1,78 +1,131 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class biwl
-  implements Manager
 {
-  @Nullable
-  public RedAppInfo a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
-    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
-    {
-      paramString = paramString.data;
-      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
-      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
-    }
-    return null;
-  }
+  private final HashSet<WeakReference<biwm>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<Integer, HashSet<WeakReference<biwm>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  @Nullable
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
+  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
   {
-    if (paramArrayList == null) {}
-    do
+    Object localObject1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      do
+      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      if (localHashSet != null) {
+        ((ArrayList)localObject1).addAll(localHashSet);
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
-    }
-    return paramArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("path", paramString);
-      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
+        ??? = (biwm)((WeakReference)((Iterator)localObject1).next()).get();
+        if (??? != null)
+        {
+          ((biwm)???).a(paramInt, paramObject, paramVarArgs);
+          continue;
+          paramObject = finally;
+          throw paramObject;
+        }
+      }
     }
   }
   
-  public boolean a(String paramString)
+  public void a(biwm parambiwm)
   {
-    paramString = a(paramString);
-    return (paramString != null) && (paramString.b() == 1);
+    if (parambiwm == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator;
+    Object localObject2;
+    Object localObject3;
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (WeakReference)localIterator.next();
+        localObject3 = (biwm)((WeakReference)localObject2).get();
+        if ((localObject3 == null) || (parambiwm == localObject3)) {
+          localArrayList.add(localObject2);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        int i = ((Integer)localIterator.next()).intValue();
+        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        localArrayList.clear();
+        localObject3 = ((HashSet)localObject2).iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
+          biwm localbiwm = (biwm)localWeakReference.get();
+          if ((localbiwm != null) && (parambiwm != localbiwm)) {
+            continue;
+          }
+          localArrayList.add(localWeakReference);
+        }
+      }
+      ((HashSet)localObject2).removeAll(localArrayList);
+    }
   }
   
-  public void onDestroy() {}
+  public void a(biwm parambiwm, int... arg2)
+  {
+    if (parambiwm == null) {
+      return;
+    }
+    a(parambiwm);
+    parambiwm = new WeakReference(parambiwm);
+    if ((??? == null) || (???.length == 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      {
+        this.jdField_a_of_type_JavaUtilHashSet.add(parambiwm);
+        return;
+      }
+    }
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        int j = ???.length;
+        i = 0;
+        if (i < j)
+        {
+          int k = ???[i];
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
+          {
+            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambiwm);
+          }
+          else
+          {
+            HashSet localHashSet = new HashSet();
+            localHashSet.add(parambiwm);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
+          }
+        }
+      }
+      return;
+      i += 1;
+    }
+  }
 }
 
 

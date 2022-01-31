@@ -1,89 +1,45 @@
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Set;
+
 public class awvl
+  implements alpg
 {
-  public int a;
-  public String a;
-  private boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
+  private WeakReference<ProfileHeaderView> a;
   
-  public awvl()
+  public awvl(ProfileHeaderView paramProfileHeaderView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a = new WeakReference(paramProfileHeaderView);
   }
   
-  public awvk a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new awvk(this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public awvl a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awvl a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public awvl a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public awvl b(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awvl b(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public awvl b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public awvl c(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awvl c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public awvl d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awvl d(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    {
+      paramObject = (Set)paramObject;
+      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
+      if (localProfileHeaderView == null) {
+        break label80;
+      }
+      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Awqt.a.jdField_a_of_type_JavaLangString))
+      {
+        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Awqt, false);
+        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      }
+    }
+    label80:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awvl
  * JD-Core Version:    0.7.0.1
  */

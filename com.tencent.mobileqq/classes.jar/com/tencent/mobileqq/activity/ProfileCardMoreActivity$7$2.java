@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adjr;
+import adog;
 
 public class ProfileCardMoreActivity$7$2
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$2(adjr paramadjr, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ProfileCardMoreActivity$7$2(adog paramadog, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adjr.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Adog.a.a(this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

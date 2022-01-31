@@ -1,30 +1,44 @@
-public class awmh
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+
+class awmh
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  awmh(awmf paramawmf, View paramView1, View paramView2) {}
   
-  public boolean a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.b != null)
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-awmf.a(this.jdField_a_of_type_Awmf));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Awmf.f)
     {
-      bool1 = bool2;
-      if (this.b.trim().length() > 0) {
-        bool1 = false;
-      }
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    return bool1;
   }
   
-  public String toString()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
-    return localStringBuilder.toString();
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-awmf.a(this.jdField_a_of_type_Awmf));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Awmf.f)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_Awmf.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

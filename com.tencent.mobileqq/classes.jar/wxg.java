@@ -1,12 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wxg
-  implements View.OnClickListener
+final class wxg
+  implements urr<wxh, uro>
 {
-  wxg(wxf paramwxf) {}
-  
-  public void onClick(View paramView) {}
+  public void a(@NonNull wxh paramwxh, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isFail()) {
+      wxe.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
+  }
 }
 
 

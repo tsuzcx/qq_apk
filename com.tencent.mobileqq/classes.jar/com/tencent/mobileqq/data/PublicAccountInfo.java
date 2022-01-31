@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import allu;
+import alqj;
 import android.content.Context;
 import android.os.SystemClock;
-import awbv;
-import awdg;
-import awdj;
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -27,13 +27,13 @@ import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.PublicAccountInfo;
 
 public class PublicAccountInfo
-  extends awbv
+  extends awge
 {
   public static final int SHOW_FLAG_INVISIBLE_BIT = 2048;
   public static final int SHOW_FLAG_NO = 2;
   public static final int SHOW_FLAG_YES = 1;
   public static final int SHOW_MSG_FLAG_TYPE = 5;
-  @awdg
+  @awhp
   public HashMap<String, Integer> Marks;
   public int accountFlag;
   public long accountFlag2;
@@ -43,7 +43,7 @@ public class PublicAccountInfo
   public String displayNumber;
   public long eqqAccountFlag;
   public int extendType;
-  @awdg
+  @awhp
   public boolean isOffLine;
   public boolean isRecvMsg;
   public boolean isRecvPush;
@@ -58,13 +58,13 @@ public class PublicAccountInfo
   public int mShowMsgFlag;
   public int messageSettingFlag;
   public String name;
-  @awdg
+  @awhp
   public int orderForMark;
   public int showFlag;
   public String summary;
-  @awdj
+  @awhs
   public long uin;
-  @awdg
+  @awhp
   private String uinStr;
   
   private static void copyEqqLbsSwitch(mobileqq_mp.EqqAccountInfo paramEqqAccountInfo, PublicAccountInfo paramPublicAccountInfo)
@@ -167,7 +167,7 @@ public class PublicAccountInfo
     localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
     localPublicAccountInfo.mIsSyncLbsSelected = paramAccountDetail.isSyncLbsSelected;
     localPublicAccountInfo.dateTime = paramLong;
-    allu.a(localPublicAccountInfo);
+    alqj.a(localPublicAccountInfo);
     return localPublicAccountInfo;
   }
   

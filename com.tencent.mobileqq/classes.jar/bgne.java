@@ -1,6 +1,18 @@
-public abstract interface bgne
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.cache.MiniCacheFreeManager.1;
+
+public class bgne
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public bgne(MiniCacheFreeManager.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

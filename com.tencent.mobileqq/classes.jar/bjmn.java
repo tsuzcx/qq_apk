@@ -1,154 +1,83 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IActionListener;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
-import cooperation.qzone.remote.logic.QzoneWebPluginProxyService;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
 
 public class bjmn
 {
-  private static bjmn jdField_a_of_type_Bjmn;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private bjmp jdField_a_of_type_Bjmp;
-  IActionListener jdField_a_of_type_CooperationQzoneRemoteIActionListener = new bjmo(this);
-  private RemoteServiceProxy jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy = new RemoteServiceProxy("com.qzone.common.webplugin.WebPluginHandleService", QzoneWebPluginProxyService.class, BaseApplicationImpl.getApplication().getRuntime().getAccount());
-  private ArrayList<WeakReference<bjmq>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bjmm jdField_a_of_type_Bjmm;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e = "";
+  private String f = "";
+  private String g;
   
-  public bjmn()
+  public bjmm a()
   {
-    this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.setActionListener(this.jdField_a_of_type_CooperationQzoneRemoteIActionListener);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("moduleId can not be null");
+    }
+    return new bjmm(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.g, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bjmm);
   }
   
-  public static bjmn a()
+  public bjmn a(int paramInt)
   {
-    if (jdField_a_of_type_Bjmn == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bjmn == null) {
-        jdField_a_of_type_Bjmn = new bjmn();
-      }
-      return jdField_a_of_type_Bjmn;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  protected int a(String paramString, Bundle paramBundle, long paramLong, boolean paramBoolean)
+  public bjmn a(long paramLong)
   {
-    SendMsg localSendMsg = new SendMsg(paramString);
-    paramString = paramBundle;
-    if (paramBundle == null) {
-      paramString = new Bundle();
-    }
-    if ((paramString != null) && (paramString.size() > 0)) {
-      localSendMsg.extraData.putAll(paramString);
-    }
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    localSendMsg.setRequestId(i);
-    if (paramLong > 0L) {
-      localSendMsg.setTimeout(paramLong);
-    }
-    localSendMsg.setNeedCallback(paramBoolean);
-    if (paramBoolean) {
-      localSendMsg.actionListener = this.jdField_a_of_type_CooperationQzoneRemoteIActionListener;
-    }
-    try
-    {
-      this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.sendMsg(localSendMsg);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new RuntimeException("sendMsg is fail", paramString);
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  public int a(String paramString, Bundle paramBundle, boolean paramBoolean)
+  public bjmn a(String paramString)
   {
-    try
-    {
-      int i = a(paramString, paramBundle, 0L, paramBoolean);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public bjmp a()
+  public bjmn b(String paramString)
   {
-    if (this.jdField_a_of_type_Bjmp == null) {
-      this.jdField_a_of_type_Bjmp = new bjmp(this);
-    }
-    return this.jdField_a_of_type_Bjmp;
+    this.b = paramString;
+    return this;
   }
   
-  public void a()
+  public bjmn c(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteHandleManager", 2, "----destroy----");
-    }
-    if (this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy != null) {
-      this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.unbindBaseService();
-    }
+    this.c = paramString;
+    return this;
   }
   
-  public void a(bjmq parambjmq)
+  public bjmn d(String paramString)
   {
-    if (parambjmq == null) {
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (WeakReference)localIterator.next();
-      if (localObject != null)
-      {
-        localObject = (bjmq)((WeakReference)localObject).get();
-        if (localObject == null) {
-          localIterator.remove();
-        } else if (localObject == parambjmq) {
-          return;
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(parambjmq));
+    this.d = paramString;
+    return this;
   }
   
-  public void b(bjmq parambjmq)
+  public bjmn e(String paramString)
   {
-    if (parambjmq == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = (bjmq)((WeakReference)localObject).get();
-          if (localObject == null) {
-            localIterator.remove();
-          } else if (localObject == parambjmq) {
-            localIterator.remove();
-          }
-        }
-      }
-    }
+    this.e = paramString;
+    return this;
+  }
+  
+  public bjmn f(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public bjmn g(String paramString)
+  {
+    this.g = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjmn
  * JD-Core Version:    0.7.0.1
  */

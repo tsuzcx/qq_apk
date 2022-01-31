@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-
-public final class apwj
-  implements Parcelable.Creator<SearchEmoticonWebBean>
+public abstract interface apwj
 {
-  public SearchEmoticonWebBean a(Parcel paramParcel)
-  {
-    return new SearchEmoticonWebBean(paramParcel);
-  }
-  
-  public SearchEmoticonWebBean[] a(int paramInt)
-  {
-    return new SearchEmoticonWebBean[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

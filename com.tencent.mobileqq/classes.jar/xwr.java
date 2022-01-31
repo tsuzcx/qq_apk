@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class xwr
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  xwr(xwp paramxwp, xwv paramxwv) {}
+  xwr(xwp paramxwp) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (xwp.a(this.jdField_a_of_type_Xwp) != null) {
-      xwp.a(this.jdField_a_of_type_Xwp).b(this.jdField_a_of_type_Xwv);
-    }
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

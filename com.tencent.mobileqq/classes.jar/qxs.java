@@ -10,8 +10,8 @@ public class qxs
   extends qxq
 {
   private long jdField_a_of_type_Long;
-  baua jdField_a_of_type_Baua = new qxt(this);
-  baub jdField_a_of_type_Baub;
+  bayj jdField_a_of_type_Bayj = new qxt(this);
+  bayk jdField_a_of_type_Bayk;
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;
@@ -33,12 +33,12 @@ public class qxs
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = this.jdField_b_of_type_Long;
     long l2 = this.jdField_a_of_type_Long;
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
       return;
     }
   }
@@ -58,12 +58,12 @@ public class qxs
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     localHashMap.put("cover_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
     localHashMap.put("cover_size_after_compression", this.jdField_b_of_type_JavaLangLong.toString());
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = ors.a();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
       return;
     }
   }
@@ -72,12 +72,12 @@ public class qxs
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    azri localazri = azri.a(this.jdField_a_of_type_AndroidContentContext);
     String str = ors.a();
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localazmz.a(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
+      localazri.a(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
       return;
     }
   }
@@ -122,7 +122,7 @@ public class qxs
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     localObject = new CompressInfo(paramString, paramInt);
     ((CompressInfo)localObject).f = 0;
-    if (!awga.a((CompressInfo)localObject)) {
+    if (!awkj.a((CompressInfo)localObject)) {
       a(1001);
     }
     if (QLog.isColorLevel()) {
@@ -135,17 +135,17 @@ public class qxs
       this.jdField_b_of_type_JavaLangLong = Long.valueOf(new File(this.jdField_a_of_type_JavaLangString).length());
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
-      paramString.a(this.jdField_a_of_type_Baua);
-      this.jdField_a_of_type_Baub = new baub();
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Baub.jdField_c_of_type_Int = 10;
-      this.jdField_a_of_type_Baub.i = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString = "0";
-      this.jdField_a_of_type_Baub.b = 24;
-      this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-      paramString.a(this.jdField_a_of_type_Baub);
+      this.jdField_a_of_type_Bayj.addFilter(new Class[] { baqy.class });
+      paramString.a(this.jdField_a_of_type_Bayj);
+      this.jdField_a_of_type_Bayk = new bayk();
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bayk.jdField_c_of_type_Int = 10;
+      this.jdField_a_of_type_Bayk.i = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString = "0";
+      this.jdField_a_of_type_Bayk.b = 24;
+      this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+      paramString.a(this.jdField_a_of_type_Bayk);
       return;
       paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
     }
@@ -153,7 +153,7 @@ public class qxs
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Baua);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Bayj);
     if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
     {
       if (QLog.isColorLevel()) {

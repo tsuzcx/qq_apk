@@ -1,9 +1,12 @@
 class aifc
-  implements agco
+  extends aqbl
 {
-  aifc(aifb paramaifb) {}
+  aifc(aiez paramaiez) {}
   
-  public void a(Object paramObject) {}
+  protected void a(int paramInt)
+  {
+    this.a.g();
+  }
 }
 
 

@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
-class asrv
-  implements DialogInterface.OnClickListener
+public class asrv
+  extends RecyclerView.Adapter<FontBubblePanelView<T>.asrw>
 {
-  asrv(asrp paramasrp) {}
+  public asrv(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public FontBubblePanelView<T>.asrw a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    asrp.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562822, paramViewGroup, false);
+    return new asrw(this.a, paramViewGroup);
+  }
+  
+  public void a(FontBubblePanelView<T>.asrw paramFontBubblePanelView, int paramInt)
+  {
+    if (paramInt < FontBubblePanelView.a(this.a).size()) {
+      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return FontBubblePanelView.a(this.a).size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
   }
 }
 

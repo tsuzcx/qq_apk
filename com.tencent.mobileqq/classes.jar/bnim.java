@@ -1,17 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bnim
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparable<bnim>
 {
-  public bnim(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bnim(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(bnim parambnim)
+  {
+    return -(int)(this.jdField_a_of_type_Long - parambnim.jdField_a_of_type_Long);
   }
 }
 

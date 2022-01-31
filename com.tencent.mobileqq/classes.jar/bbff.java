@@ -1,36 +1,15 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class bbff
-  extends ClickableSpan
+public final class bbff
+  extends Editable.Factory
 {
-  public bbff(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
+    if ((paramCharSequence instanceof bamz)) {
+      return (Editable)paramCharSequence;
     }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      azmj.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    return new bamz(paramCharSequence, 3, 20);
   }
 }
 

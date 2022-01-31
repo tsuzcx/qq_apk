@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aloz;
-import awmk;
-import azmj;
+import alto;
+import awqt;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
@@ -14,17 +14,17 @@ class FriendProfileCardActivity$9$1
   
   public void run()
   {
-    Object localObject = (aloz)this.a.this$0.app.getManager(51);
+    Object localObject = (alto)this.a.this$0.app.getManager(51);
     if (localObject == null) {}
     do
     {
       return;
-      localObject = ((aloz)localObject).e(this.a.this$0.a.a.a);
+      localObject = ((alto)localObject).e(this.a.this$0.a.a.a);
     } while ((localObject == null) || ((((Friends)localObject).abilityBits & 0x2) == 0L));
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfileCardActivity", 2, "mReportPCCameraAblibityRunnable-->report");
     }
-    azmj.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
   }
 }
 

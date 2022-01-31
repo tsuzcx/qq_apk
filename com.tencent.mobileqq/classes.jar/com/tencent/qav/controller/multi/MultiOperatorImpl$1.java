@@ -1,17 +1,17 @@
 package com.tencent.qav.controller.multi;
 
-import bfre;
+import bfvn;
 
 public class MultiOperatorImpl$1
   implements Runnable
 {
-  public MultiOperatorImpl$1(bfre parambfre) {}
+  public MultiOperatorImpl$1(bfvn parambfvn) {}
   
   public void run()
   {
     this.this$0.a();
-    bfre.a(this.this$0, 1);
-    bfre.a(this.this$0, null);
+    bfvn.a(this.this$0, 1);
+    bfvn.a(this.this$0, null);
   }
 }
 

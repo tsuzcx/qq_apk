@@ -1,22 +1,14 @@
-import android.graphics.Point;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agsu
+class agsu
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private agsk jdField_a_of_type_Agsk;
-  private agsl jdField_a_of_type_Agsl;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  agsu(agso paramagso) {}
   
-  agsu(Point paramPoint, String paramString, boolean paramBoolean, agsl paramagsl, agsk paramagsk, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Agsl = paramagsl;
-    this.jdField_a_of_type_Agsk = paramagsk;
-    this.jdField_a_of_type_Int = paramInt;
+    agso.a(this.a, paramView);
   }
 }
 

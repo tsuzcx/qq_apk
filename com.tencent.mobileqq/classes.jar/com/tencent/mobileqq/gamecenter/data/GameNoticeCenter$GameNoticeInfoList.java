@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.data;
 
 import android.text.TextUtils;
-import awbv;
-import awbw;
+import awge;
+import awgf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,11 +13,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GameNoticeCenter$GameNoticeInfoList
   extends CopyOnWriteArrayList<GameNoticeInfo>
 {
-  private awbw mEntityManager;
+  private awgf mEntityManager;
   
-  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, awbw paramawbw)
+  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, awgf paramawgf)
   {
-    this.mEntityManager = paramawbw;
+    this.mEntityManager = paramawgf;
   }
   
   private final void a()
@@ -93,8 +93,8 @@ public class GameNoticeCenter$GameNoticeInfoList
   public boolean remove(Object paramObject)
   {
     boolean bool = super.remove(paramObject);
-    if ((bool) && ((paramObject instanceof awbv))) {
-      this.mEntityManager.b((awbv)paramObject);
+    if ((bool) && ((paramObject instanceof awge))) {
+      this.mEntityManager.b((awge)paramObject);
     }
     return bool;
   }

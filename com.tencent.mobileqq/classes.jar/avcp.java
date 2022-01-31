@@ -1,29 +1,18 @@
-class avcp
-  implements vud
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+
+public final class avcp
+  implements Parcelable.Creator<Comments>
 {
-  avcp(avcm paramavcm, avcd paramavcd) {}
-  
-  public boolean a_(vtz paramvtz, int paramInt1, int paramInt2)
+  public Comments a(Parcel paramParcel)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Avcd.a(this.jdField_a_of_type_Avcm, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    return new Comments(paramParcel);
+  }
+  
+  public Comments[] a(int paramInt)
+  {
+    return new Comments[paramInt];
   }
 }
 

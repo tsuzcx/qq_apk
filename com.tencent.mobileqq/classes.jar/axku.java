@@ -1,33 +1,37 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class axku
-  implements GLGestureListener
+  extends axlm<ReceiptMessageDetailFragment>
 {
-  public int onGetPriority()
+  public axku(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    return 1020;
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramMotionEvent.getPointerCount() != 1) {
-      return false;
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
     }
-    int i = paramMotionEvent.getAction();
-    GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
-    switch (i & 0xFF)
+    if (paramInt == 0)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      }
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
     }
-    do
+    if (paramInt != 1281)
     {
-      return false;
-    } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
-    ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
-    return true;
+      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      return;
+    }
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 

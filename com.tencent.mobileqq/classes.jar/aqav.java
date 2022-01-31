@@ -1,49 +1,77 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aqav
-  implements aqeb
+class aqav
+  extends ampt
 {
-  public aqav(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void a(String paramString, int paramInt)
+  aqav(aqau paramaqau, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (!paramString.equals(this.a.b))
-    {
-      this.a.b = paramString;
-      if (!apwx.a.equals(this.a.b)) {
-        break label186;
-      }
-      ExtendFriendSquareFragment.a(this.a, false);
-    }
-    label186:
-    for (boolean bool1 = ExtendFriendSquareFragment.c(this.a);; bool1 = false)
-    {
-      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
-      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.a(this.a));
-      if ((!bool2) || (l > 60000L) || (bool1))
-      {
-        ExtendFriendSquareFragment.b(this.a, false);
-        this.a.jdField_a_of_type_Aqay.a();
-        this.a.jdField_a_of_type_Aqay.notifyDataSetChanged();
-        this.a.jdField_a_of_type_Aqay.a(false);
-        ExtendFriendSquareFragment.c(this.a);
-        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
-        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
-        return;
-      }
-      ExtendFriendSquareFragment.b(this.a, true);
-      return;
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void b()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
-    PublicFragmentActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ExtendFriendSearchFragment.class, 3);
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 2130772323);
-    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009417", "0X8009417", 0, 0, "", "", "", "");
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if (paramInt == 0) {
+      paramInt = i;
+    }
+    aqaw localaqaw;
+    label219:
+    while (paramInt != 0)
+    {
+      ??? = ???.a;
+      double d1 = ???.a;
+      double d2 = ???.b;
+      aqau.a(this.a, d1);
+      aqau.b(this.a, d2);
+      aqau.a(this.a, System.currentTimeMillis());
+      synchronized (aqau.a())
+      {
+        if ((aqau.a(this.a) == null) || (aqau.a(this.a).size() <= 0)) {
+          break label219;
+        }
+        Iterator localIterator1 = aqau.a(this.a).iterator();
+        do
+        {
+          if (!localIterator1.hasNext()) {
+            break;
+          }
+          localaqaw = (aqaw)localIterator1.next();
+        } while (localaqaw == null);
+        this.a.a(aqau.a(this.a), aqau.a(this.a), localaqaw.a, localaqaw.b, true, d1, d2);
+      }
+      paramInt = 0;
+      continue;
+      aqau.a(this.a).clear();
+    }
+    label362:
+    for (;;)
+    {
+      aqau.a(this.a, null);
+      aqau.a(this.a, null);
+      return;
+      synchronized (aqau.a())
+      {
+        if ((aqau.a(this.a) == null) || (aqau.a(this.a).size() <= 0)) {
+          break label362;
+        }
+        Iterator localIterator2 = aqau.a(this.a).iterator();
+        while (localIterator2.hasNext())
+        {
+          localaqaw = (aqaw)localIterator2.next();
+          if (localaqaw != null) {
+            this.a.a(aqau.a(this.a), aqau.a(this.a), localaqaw.a, localaqaw.b, false, 0.0D, 0.0D);
+          }
+        }
+      }
+      aqau.a(this.a).clear();
+    }
   }
 }
 

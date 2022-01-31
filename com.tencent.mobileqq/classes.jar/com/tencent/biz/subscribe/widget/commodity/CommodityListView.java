@@ -4,7 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,12 +21,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import xxl;
-import yjq;
-import ykc;
-import ykd;
-import ykf;
-import yvu;
+import ybu;
+import yod;
+import yop;
+import yoq;
+import yos;
+import zaj;
 
 public class CommodityListView
   extends BaseWidgetView<ArrayList>
@@ -36,8 +36,8 @@ public class CommodityListView
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ykd jdField_a_of_type_Ykd;
-  private ykf jdField_a_of_type_Ykf;
+  private yoq jdField_a_of_type_Yoq;
+  private yos jdField_a_of_type_Yos;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   
@@ -95,38 +95,38 @@ public class CommodityListView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376044));
-    this.b = ((TextView)paramView.findViewById(2131378985));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378920));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379425);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376097));
+    this.b = ((TextView)paramView.findViewById(2131379043));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378978));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379483);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Ykd = new ykd(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ykd);
+    this.jdField_a_of_type_Yoq = new yoq(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Yoq);
   }
   
   protected void a(ArrayList paramArrayList) {}
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ykd != null)
+    if (this.jdField_a_of_type_Yoq != null)
     {
-      this.jdField_a_of_type_Ykd.a();
-      this.jdField_a_of_type_Ykd.notifyDataSetChanged();
+      this.jdField_a_of_type_Yoq.clearData();
+      this.jdField_a_of_type_Yoq.notifyDataSetChanged();
     }
   }
   
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    if (this.jdField_a_of_type_Ykd != null) {
-      this.jdField_a_of_type_Ykd.a(paramArrayList);
+    if (this.jdField_a_of_type_Yoq != null) {
+      this.jdField_a_of_type_Yoq.setDatas(paramArrayList);
     }
   }
   
-  public void setOnDataChangeListener(ykf paramykf)
+  public void setOnDataChangeListener(yos paramyos)
   {
-    this.jdField_a_of_type_Ykf = paramykf;
+    this.jdField_a_of_type_Yos = paramyos;
   }
   
   public void setOrientation(int paramInt)
@@ -197,19 +197,19 @@ public class CommodityListView
     String str;
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
-      yvu.a(localStUser.id.get(), "auth_" + yjq.a(a()), "exp_shop", 0, 0, new String[0]);
+      zaj.a(localStUser.id.get(), "auth_" + yod.a(a()), "exp_shop", 0, 0, new String[0]);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      str = alpo.a(2131720465);
-      if (!xxl.a(localStUser.attr.get())) {
+      str = alud.a(2131720477);
+      if (!ybu.a(localStUser.attr.get())) {
         break label164;
       }
     }
     label164:
-    for (paramStFeed = alpo.a(2131702593);; paramStFeed = localStUser.nick.get())
+    for (paramStFeed = alud.a(2131702605);; paramStFeed = localStUser.nick.get())
     {
       localTextView.setText(String.format(str, new Object[] { paramStFeed }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ykc(this, localStUser));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new yop(this, localStUser));
       return;
     }
   }

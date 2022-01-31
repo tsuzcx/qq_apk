@@ -1,18 +1,19 @@
-public abstract interface belb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+
+public final class belb
+  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
 {
-  public abstract void a(int paramInt);
+  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
+  {
+    return new WebSoService.WebSoState.WebSo3(paramParcel);
+  }
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
+  {
+    return new WebSoService.WebSoState.WebSo3[paramInt];
+  }
 }
 
 

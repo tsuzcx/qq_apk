@@ -1,25 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class ynr
-  extends yoh
+public class ynr
+  implements baug
 {
-  ynr(ynm paramynm, ynu paramynu, String paramString)
+  public ynr(AbsSubscribeShareCardView.2 param2) {}
+  
+  public void onResp(bavf parambavf)
   {
-    super(paramynm);
+    if (parambavf.jdField_a_of_type_Int == 0)
+    {
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      AbsSubscribeShareCardView.a(this.a.this$0);
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
+      }
+      return;
+    }
+    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ynm.a));
-      this.jdField_a_of_type_Ynm.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
-    }
-  }
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

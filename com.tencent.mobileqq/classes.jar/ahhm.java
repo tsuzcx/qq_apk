@@ -1,63 +1,41 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
-class ahhm
-  extends alox
+public class ahhm
+  extends Handler
 {
-  ahhm(ahhl paramahhl) {}
+  private WeakReference<PublicView> a;
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  public ahhm(PublicView paramPublicView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(ahhl.a(this.a), alpo.a(2131707863), 0).a();
-      ahhl.a(this.a, paramLong);
-      this.a.d();
+    this.a = new WeakReference(paramPublicView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
       return;
     }
-    QQToast.a(ahhl.a(this.a), alpo.a(2131707884), 0).a();
-  }
-  
-  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if (paramBoolean) {
-      this.a.d();
-    }
-  }
-  
-  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
-    }
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      if ((paramObject instanceof Integer))
-      {
-        paramInt = ((Integer)paramObject).intValue();
-        ahhl.a(this.a).put(paramInt, paramArrayOfByte);
-      }
-      if (paramArrayList != null) {
-        ahhl.a(this.a, ahhl.a(this.a) + paramArrayList.size());
-      }
-      this.a.d();
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131720337);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
     }
-  }
-  
-  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
-    }
+    PublicView.b(localPublicView);
   }
 }
 

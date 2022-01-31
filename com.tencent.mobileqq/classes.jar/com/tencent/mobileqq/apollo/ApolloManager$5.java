@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
-import alef;
+import aknx;
+import aliu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,13 +14,13 @@ import org.json.JSONObject;
 public class ApolloManager$5
   implements Runnable
 {
-  public ApolloManager$5(akji paramakji) {}
+  public ApolloManager$5(aknx paramaknx) {}
   
   public void run()
   {
-    Object localObject13 = null;
-    Object localObject7 = null;
     Object localObject9 = null;
+    Object localObject7 = null;
+    Object localObject13 = null;
     if (this.this$0.jdField_a_of_type_OrgJsonJSONObject == null) {}
     label464:
     for (;;)
@@ -34,7 +34,7 @@ public class ApolloManager$5
           if (localObject1 == null) {
             break label464;
           }
-          localObject1 = new File(alef.a);
+          localObject1 = new File(aliu.a);
           ((File)localObject1).mkdirs();
           File localFile = new File((File)localObject1, "apollo_res_version_info.json");
           if (localFile.exists()) {
@@ -109,8 +109,8 @@ public class ApolloManager$5
                 for (;;)
                 {
                   Object localObject3;
-                  Object localObject10;
                   Object localObject4;
+                  Object localObject10;
                   Object localObject5;
                   Object localObject8 = localObject6;
                   localObject6 = localObject12;
@@ -124,13 +124,12 @@ public class ApolloManager$5
           catch (OutOfMemoryError localOutOfMemoryError1)
           {
             localOutOfMemoryError1 = localOutOfMemoryError1;
-            localObject7 = localFileNotFoundException1;
-            localObject10 = localOutOfMemoryError1;
+            localObject7 = localObject13;
             localObject4 = localObject7;
             if (QLog.isColorLevel())
             {
               localObject4 = localObject7;
-              QLog.d("ApolloManager", 2, localObject10.getMessage());
+              QLog.d("ApolloManager", 2, localOutOfMemoryError1.getMessage());
             }
             if (localObject7 == null) {
               break;
@@ -150,12 +149,13 @@ public class ApolloManager$5
           }
           catch (Exception localException1)
           {
-            localObject7 = localObject13;
+            localObject7 = localOutOfMemoryError1;
+            localObject10 = localException1;
             localObject5 = localObject7;
             if (QLog.isColorLevel())
             {
               localObject5 = localObject7;
-              QLog.d("ApolloManager", 2, localException1.getMessage());
+              QLog.d("ApolloManager", 2, localObject10.getMessage());
             }
             if (localObject7 == null) {
               break;

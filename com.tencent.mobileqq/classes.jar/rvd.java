@@ -11,11 +11,11 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 
 public class rvd
-  implements azzu
+  implements baed
 {
   public rvd(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView, View.OnClickListener paramOnClickListener1, String paramString1, int paramInt, String paramString2, Context paramContext, View.OnClickListener paramOnClickListener2) {}
   
-  public void a(azzb paramazzb, azzc paramazzc, String paramString)
+  public void a(badk parambadk, badl parambadl, String paramString)
   {
     int i = 1;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -23,34 +23,34 @@ public class rvd
     if (paramString.equals("close"))
     {
       this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
-      paramazzb = new orz();
+      parambadk = new orz();
       for (;;)
       {
         try
         {
-          paramazzb.e();
-          paramazzb.a("skin_id", this.jdField_a_of_type_JavaLangString);
-          paramazzb.a("channel_id", this.jdField_a_of_type_Int);
+          parambadk.e();
+          parambadk.a("skin_id", this.jdField_a_of_type_JavaLangString);
+          parambadk.a("channel_id", this.jdField_a_of_type_Int);
           if ((localRefreshData == null) || (!localRefreshData.isAD)) {
             continue;
           }
-          paramazzb.a("ad_page", i);
+          parambadk.a("ad_page", i);
         }
-        catch (JSONException paramazzc)
+        catch (JSONException parambadl)
         {
-          paramazzc.printStackTrace();
+          parambadl.printStackTrace();
           continue;
         }
-        nrt.a(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramazzb.a(), false);
+        nrt.a(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), parambadk.a(), false);
         return;
         i = 0;
       }
     }
     if (paramString.equals("open_sound"))
     {
-      paramazzb = paramazzb.a(alpo.a(2131713457));
-      if (paramazzb != null) {
-        paramazzb.c(0.0F);
+      parambadk = parambadk.a(alud.a(2131713469));
+      if (parambadk != null) {
+        parambadk.c(0.0F);
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a == null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a = new MediaPlayer();
@@ -62,32 +62,32 @@ public class rvd
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.setDataSource(this.jdField_b_of_type_JavaLangString + "/audio.mp3");
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.prepare();
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
-          paramazzb = new orz();
+          parambadk = new orz();
           try
           {
-            paramazzb.e();
-            paramazzb.a("skin_id", this.jdField_a_of_type_JavaLangString);
-            paramazzb.a("channel_id", this.jdField_a_of_type_Int);
+            parambadk.e();
+            parambadk.a("skin_id", this.jdField_a_of_type_JavaLangString);
+            parambadk.a("channel_id", this.jdField_a_of_type_Int);
             if ((localRefreshData == null) || (!localRefreshData.isAD)) {
               break label460;
             }
             i = 1;
-            paramazzb.a("ad_page", i);
+            parambadk.a("ad_page", i);
           }
-          catch (JSONException paramazzc)
+          catch (JSONException parambadl)
           {
-            paramazzc.printStackTrace();
+            parambadl.printStackTrace();
             continue;
           }
-          nrt.a(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramazzb.a(), false);
+          nrt.a(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), parambadk.a(), false);
           return;
         }
-        catch (Exception paramazzb)
+        catch (Exception parambadk)
         {
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramazzb));
+          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(parambadk));
           continue;
         }
         try
@@ -97,31 +97,31 @@ public class rvd
           }
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
         }
-        catch (Exception paramazzb) {}
+        catch (Exception parambadk) {}
         if (QLog.isColorLevel())
         {
-          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramazzb));
+          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(parambadk));
           continue;
           label460:
           i = 0;
         }
       }
     }
-    paramazzb = bdds.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    if (paramazzb != null)
+    parambadk = bdib.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    if (parambadk != null)
     {
-      paramazzb.c();
+      parambadk.c();
       ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView).onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
     }
     for (;;)
     {
-      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView, this.jdField_a_of_type_Int, paramString, ((azyx)paramazzc).g_());
+      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView, this.jdField_a_of_type_Int, paramString, ((badg)parambadl).g_());
       return;
       if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
       {
-        paramazzb = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramazzb.putExtra("url", paramString);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramazzb);
+        parambadk = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        parambadk.putExtra("url", paramString);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(parambadk);
         this.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
       }
     }

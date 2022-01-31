@@ -1,32 +1,67 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 public class aums
-  extends BroadcastReceiver
 {
-  public aums(QQPlayerService paramQQPlayerService) {}
+  public int a;
+  private long a;
+  public IntimateInfo a;
+  public String a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aums(IntimateInfo paramIntimateInfo)
   {
-    if (QQPlayerService.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.isFriend) {
+        break label44;
       }
     }
+    label44:
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendUin;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {}
+    int i;
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-      }
-    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
-    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-      this.a.a.b = true;
-    }
-    QQPlayerService.c(this.a.getApplicationContext());
+      return false;
+      i = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType;
+    } while ((i != 3) && (i != 2) && (i != 1));
+    return true;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

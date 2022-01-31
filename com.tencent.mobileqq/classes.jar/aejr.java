@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.widget.TextView;
 
 public class aejr
-  implements View.OnClickListener
+  extends akit
 {
-  public aejr(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    azmj.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public aejp a;
+  public TextView a;
 }
 
 

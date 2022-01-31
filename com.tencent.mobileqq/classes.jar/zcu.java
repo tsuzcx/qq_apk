@@ -1,23 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.net.Uri;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-class zcu
-  implements View.OnClickListener
+public class zcu
+  extends zcz
 {
-  zcu(zcs paramzcs, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public zcu(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcs, -1);
-    }
-    this.jdField_a_of_type_Zcs.dismiss();
+    super(paramAbsBaseWebViewActivity, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcu
  * JD-Core Version:    0.7.0.1
  */

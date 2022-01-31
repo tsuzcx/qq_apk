@@ -243,9 +243,9 @@ public class pew
   private LinkedHashMap<Integer, ConcurrentHashMap<String, ArticleExposureInfo>> jdField_c_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private LinkedHashMap<Integer, ConcurrentHashMap<String, ArticleInfo>> d;
   
-  public pew(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pew(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
     this.jdField_d_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
@@ -328,7 +328,7 @@ public class pew
     if (parampve.jdField_a_of_type_JavaUtilList != null) {
       localReqChannelPara.rpt_curr_article_list.set(parampve.jdField_a_of_type_JavaUtilList);
     }
-    if (azwu.a())
+    if (babd.a())
     {
       parampve.jdField_i_of_type_Int |= 0x2000;
       QLog.d("ArticleInfoModule", 1, "is study mode! channelID=" + parampve.jdField_b_of_type_Int);
@@ -363,7 +363,7 @@ public class pew
       }
       localReqChannelPara.uint32_update_times.set(parampve.jdField_c_of_type_Int);
       localReqChannelPara.uint32_req_media_specs.set(1);
-      if (!bjxj.a(parampve.jdField_d_of_type_Int)) {
+      if (!bkbq.a(parampve.jdField_d_of_type_Int)) {
         localReqChannelPara.uint32_is_support_video_with_small_picture.set(1);
       }
       localReqChannelPara.uint32_is_support_packinfo.set(1);
@@ -561,7 +561,7 @@ public class pew
       ((oidb_cmd0x68b.UserReadArticle)localObject2).bytes_unread_rowkeys.set((List)localObject3);
       localReqChannelPara.user_read_article.set((MessageMicro)localObject2);
     }
-    Object localObject2 = amkv.b();
+    Object localObject2 = ampk.b();
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localReqChannelPara.bytes_lbs_data.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
     }
@@ -588,7 +588,7 @@ public class pew
         localReqChannelPara.user_expose_article.set((MessageMicro)localObject2);
       }
     }
-    int i = ((Integer)bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
+    int i = ((Integer)bkbq.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
     localReqChannelPara.uint32_youngster_status.set(i);
     localReqBody.reqChannelPara.set(localReqChannelPara);
     localReqBody.reqChannelPara.setHasFlag(true);
@@ -647,10 +647,10 @@ public class pew
         }
       }
     }
-    localReqBody.uint32_req_sim_type.set(bjxj.c());
+    localReqBody.uint32_req_sim_type.set(bkbq.c());
     if (parampve.jdField_b_of_type_Int == 41403)
     {
-      localObject1 = amkv.a("nearby_readinjoy");
+      localObject1 = ampk.a("nearby_readinjoy");
       if ((localObject1 != null) && (((SosoInterface.SosoLbsInfo)localObject1).a != null))
       {
         localObject1 = ((SosoInterface.SosoLbsInfo)localObject1).a;
@@ -663,7 +663,7 @@ public class pew
       }
       if (parampve.jdField_a_of_type_Long != -1L)
       {
-        localObject1 = (String)bjxj.a("readinjoy_nearby_people_last_refresh_cookie_sp_key", "");
+        localObject1 = (String)bkbq.a("readinjoy_nearby_people_last_refresh_cookie_sp_key", "");
         QLog.d("ArticleInfoModule", 1, new Object[] { "load more article, nearby cookie = ", localObject1 });
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject1));
@@ -728,10 +728,10 @@ public class pew
       i = ((ConcurrentHashMap)localObject2).size();
       j = i + pes.jdField_b_of_type_Int;
       break;
-      if ((otf.c(parampve.jdField_b_of_type_Int)) || (bjxj.a(parampve.jdField_b_of_type_Int)))
+      if ((otf.c(parampve.jdField_b_of_type_Int)) || (bkbq.a(parampve.jdField_b_of_type_Int)))
       {
         localReqBody.bytes_style_version.set(ByteStringMicro.copyFromUtf8(sgc.a("default_feeds")));
-        if (bjxj.w())
+        if (bkbq.w())
         {
           localObject1 = pgj.a(parampve.jdField_b_of_type_Int);
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -964,7 +964,7 @@ public class pew
       }
     }
     j = ndk.a(BaseApplicationImpl.context);
-    boolean bool = bdee.g(BaseApplicationImpl.context);
+    boolean bool = bdin.g(BaseApplicationImpl.context);
     paramObject = (Long)paramToServiceMsg.getAttribute(jdField_d_of_type_JavaLangString);
     if (paramObject != null)
     {
@@ -1261,7 +1261,7 @@ public class pew
                 }
                 if (((oidb_cmd0x68b.RspGetFollowTabData)localObject6).bytes_refresh_cookie.has())
                 {
-                  localObject5 = bdbi.encodeToString(((oidb_cmd0x68b.RspGetFollowTabData)localObject6).bytes_refresh_cookie.get().toByteArray(), 0);
+                  localObject5 = bdfr.encodeToString(((oidb_cmd0x68b.RspGetFollowTabData)localObject6).bytes_refresh_cookie.get().toByteArray(), 0);
                   owy.a().f((String)localObject5);
                   QLog.d("ArticleInfoModule", 2, "getFollowTabData : lastRefreshCookie " + (String)localObject5);
                 }
@@ -1374,9 +1374,9 @@ public class pew
                     QLog.d("ArticleInfoModule", 1, new Object[] { "nearby cookie = ", localObject1 });
                     if (!TextUtils.isEmpty((CharSequence)localObject1))
                     {
-                      bjxj.a("sp_key_daily_dynamic_header_data", localObject1);
+                      bkbq.a("sp_key_daily_dynamic_header_data", localObject1);
                       owy.a().j((String)localObject1);
-                      bjxj.a("readinjoy_nearby_people_last_refresh_cookie_sp_key", localObject1);
+                      bkbq.a("readinjoy_nearby_people_last_refresh_cookie_sp_key", localObject1);
                       otf.a((String)localObject1);
                     }
                   }
@@ -1595,9 +1595,9 @@ public class pew
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
-    //   4: invokevirtual 1691	awbw:a	()Lawby;
-    //   7: invokevirtual 1695	awby:a	()V
+    //   1: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
+    //   4: invokevirtual 1691	awgf:a	()Lawgh;
+    //   7: invokevirtual 1695	awgh:a	()V
     //   10: aload_1
     //   11: invokeinterface 491 1 0
     //   16: astore_1
@@ -1628,7 +1628,7 @@ public class pew
     //   79: checkcast 1671	qkt
     //   82: astore 4
     //   84: aload_0
-    //   85: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
+    //   85: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
     //   88: ldc 160
     //   90: ldc_w 1701
     //   93: iconst_2
@@ -1644,14 +1644,14 @@ public class pew
     //   108: getfield 1672	qkt:jdField_a_of_type_Long	J
     //   111: invokestatic 451	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   114: aastore
-    //   115: invokevirtual 1704	awbw:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lawbv;
+    //   115: invokevirtual 1704	awgf:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lawge;
     //   118: astore 4
     //   120: aload 4
     //   122: ifnull -58 -> 64
     //   125: aload_0
-    //   126: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
+    //   126: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
     //   129: aload 4
-    //   131: invokevirtual 1706	awbw:b	(Lawbv;)Z
+    //   131: invokevirtual 1706	awgf:b	(Lawge;)Z
     //   134: pop
     //   135: goto -71 -> 64
     //   138: astore_1
@@ -1670,24 +1670,24 @@ public class pew
     //   166: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   169: invokestatic 1714	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   172: aload_0
-    //   173: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
-    //   176: invokevirtual 1691	awbw:a	()Lawby;
-    //   179: invokevirtual 1716	awby:b	()V
+    //   173: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
+    //   176: invokevirtual 1691	awgf:a	()Lawgh;
+    //   179: invokevirtual 1716	awgh:b	()V
     //   182: return
     //   183: aload_0
-    //   184: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
-    //   187: invokevirtual 1691	awbw:a	()Lawby;
-    //   190: invokevirtual 1718	awby:c	()V
+    //   184: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
+    //   187: invokevirtual 1691	awgf:a	()Lawgh;
+    //   190: invokevirtual 1718	awgh:c	()V
     //   193: aload_0
-    //   194: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
-    //   197: invokevirtual 1691	awbw:a	()Lawby;
-    //   200: invokevirtual 1716	awby:b	()V
+    //   194: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
+    //   197: invokevirtual 1691	awgf:a	()Lawgh;
+    //   200: invokevirtual 1716	awgh:b	()V
     //   203: return
     //   204: astore_1
     //   205: aload_0
-    //   206: getfield 1686	pew:jdField_a_of_type_Awbw	Lawbw;
-    //   209: invokevirtual 1691	awbw:a	()Lawby;
-    //   212: invokevirtual 1716	awby:b	()V
+    //   206: getfield 1686	pew:jdField_a_of_type_Awgf	Lawgf;
+    //   209: invokevirtual 1691	awgf:a	()Lawgh;
+    //   212: invokevirtual 1716	awgh:b	()V
     //   215: aload_1
     //   216: athrow
     // Local variable table:
@@ -1786,7 +1786,7 @@ public class pew
       }
     }
     i = ndk.a(BaseApplicationImpl.context);
-    bool = bdee.g(BaseApplicationImpl.context);
+    bool = bdin.g(BaseApplicationImpl.context);
     paramToServiceMsg.getAttributes().put("sendPackageSize", Long.valueOf(l));
     paramToServiceMsg.getAttributes().put("sendNetType", Integer.valueOf(i));
     paramToServiceMsg.getAttributes().put("sendIsNetConnected", Boolean.valueOf(bool));
@@ -1822,12 +1822,12 @@ public class pew
       localObject3 = new oidb_cmd0x68b.PkgInstallInfo();
       ((oidb_cmd0x68b.PkgInstallInfo)localObject3).bytes_pkg_name.set(ByteStringMicro.copyFromUtf8((String)localObject1));
       PBUInt32Field localPBUInt32Field = ((oidb_cmd0x68b.PkgInstallInfo)localObject3).uint32_is_installed;
-      if (bdem.a(BaseApplicationImpl.getContext(), (String)localObject1)) {}
+      if (bdiv.a(BaseApplicationImpl.getContext(), (String)localObject1)) {}
       for (int j = 1;; j = 0)
       {
         localPBUInt32Field.set(j);
         ((oidb_cmd0x68b.PkgInstallInfo)localObject3).uint32_platform_type.set(1);
-        ((oidb_cmd0x68b.PkgInstallInfo)localObject3).bytes_version.set(ByteStringMicro.copyFromUtf8(bdem.a(BaseApplicationImpl.getContext(), (String)localObject1)));
+        ((oidb_cmd0x68b.PkgInstallInfo)localObject3).bytes_version.set(ByteStringMicro.copyFromUtf8(bdiv.a(BaseApplicationImpl.getContext(), (String)localObject1)));
         localArrayList.add(localObject3);
         i += 1;
         break;
@@ -1925,7 +1925,7 @@ public class pew
         }
       }
       this.jdField_a_of_type_Boolean = true;
-      if ((paramInt == 70) || (paramInt == 41403) || (otf.a(paramInt)) || (bjxj.a(paramInt))) {
+      if ((paramInt == 70) || (paramInt == 41403) || (otf.a(paramInt)) || (bkbq.a(paramInt))) {
         break label463;
       }
       if ((paramBoolean2) && (!ors.c(paramInt)))
@@ -2132,7 +2132,7 @@ public class pew
       if (parampve != null)
       {
         long l1 = System.currentTimeMillis();
-        long l2 = ((Long)bjxj.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(50L))).longValue();
+        long l2 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(50L))).longValue();
         ThreadManager.getUIHandler().postDelayed(new ArticleInfoModule.2(this, l2, l1, parampve, paramLong), l2);
         return true;
       }
@@ -2152,7 +2152,7 @@ public class pew
   
   public static int b()
   {
-    switch (bdee.a(BaseApplication.getContext()))
+    switch (bdin.a(BaseApplication.getContext()))
     {
     case 0: 
     default: 
@@ -2286,8 +2286,8 @@ public class pew
         localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc.jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
         localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmc.jdField_a_of_type_JavaUtilList = new ArrayList();
         localObject1 = new SocializeFeedsInfo.BiuCommentInfo();
-        localObject2 = new String(bdbi.decode(paramohu.jdField_a_of_type_JavaLangString, 0));
-        ((SocializeFeedsInfo.BiuCommentInfo)localObject1).jdField_a_of_type_JavaLangString = ayvy.b((String)localObject2);
+        localObject2 = new String(bdfr.decode(paramohu.jdField_a_of_type_JavaLangString, 0));
+        ((SocializeFeedsInfo.BiuCommentInfo)localObject1).jdField_a_of_type_JavaLangString = azah.b((String)localObject2);
         ((SocializeFeedsInfo.BiuCommentInfo)localObject1).jdField_a_of_type_JavaLangLong = Long.valueOf(ors.a());
         ((SocializeFeedsInfo.BiuCommentInfo)localObject1).jdField_b_of_type_JavaLangLong = Long.valueOf(paramohu.jdField_a_of_type_Long);
         ((SocializeFeedsInfo.BiuCommentInfo)localObject1).jdField_a_of_type_Int = 0;
@@ -2555,7 +2555,7 @@ public class pew
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = pvb.a(paramFromServiceMsg, paramObject, new cmd0xc5b.RspBody());
-    paramToServiceMsg = BaseApplication.getContext().getString(2131695781);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131695783);
     this.jdField_a_of_type_AndroidOsHandler.post(new ArticleInfoModule.6(this, i, paramToServiceMsg));
   }
   
@@ -2606,7 +2606,7 @@ public class pew
     }
     for (;;)
     {
-      bjxj.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      bkbq.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       return;
       if (QLog.isColorLevel()) {
         QLog.w("ArticleInfoModule", 2, "handle0x75eIndividualArticleList error = " + i);
@@ -2619,7 +2619,7 @@ public class pew
     oidb_cmd0x83e.RspBody localRspBody = new oidb_cmd0x83e.RspBody();
     int i = a(paramFromServiceMsg, paramObject, localRspBody);
     QLog.d("ArticleInfoModule", 2, "handle0x83eSubmitComment | resp result code ： " + i);
-    paramFromServiceMsg = BaseApplication.getContext().getString(2131718788);
+    paramFromServiceMsg = BaseApplication.getContext().getString(2131718800);
     if (localRspBody.bytes_result_desc.has())
     {
       paramFromServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -2689,7 +2689,7 @@ public class pew
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eBiuAtlasDeliverAction result:" + i);
     }
-    paramToServiceMsg = BaseApplication.getContext().getString(2131718827);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131718839);
     if (localRspBody.bytes_result_desc.has())
     {
       paramToServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -2710,7 +2710,7 @@ public class pew
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUGCAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramFromServiceMsg + ", status=" + j + ", comment=" + paramObject);
     }
-    paramToServiceMsg = BaseApplication.getContext().getString(2131718847);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131718859);
     if (localRspBody.bytes_result_desc.has())
     {
       paramToServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -2730,7 +2730,7 @@ public class pew
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUpMasterAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramObject + ", status=" + j + ", comment=" + str);
     }
-    paramFromServiceMsg = BaseApplication.getContext().getString(2131718847);
+    paramFromServiceMsg = BaseApplication.getContext().getString(2131718859);
     if (localRspBody.bytes_result_desc.has())
     {
       paramFromServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -2771,7 +2771,7 @@ public class pew
     }
     for (;;)
     {
-      paramToServiceMsg = BaseApplication.getContext().getString(2131718827);
+      paramToServiceMsg = BaseApplication.getContext().getString(2131718839);
       if (localRspBody.bytes_result_desc.has())
       {
         paramToServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -3105,7 +3105,7 @@ public class pew
         QLog.e("ArticleInfoModule", 2, "loadChannelArticleSeqList with selection=" + (String)localObject + "channelId=" + paramInt1 + "recommendSeq=" + paramLong + "count=" + paramInt2);
       }
       ArrayList localArrayList = new ArrayList();
-      localObject = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, true, (String)localObject, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "mRecommendSeq desc", String.valueOf(paramInt2));
+      localObject = this.jdField_a_of_type_Awgf.a(ArticleInfo.class, true, (String)localObject, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "mRecommendSeq desc", String.valueOf(paramInt2));
       if (localObject != null)
       {
         puy.a((List)localObject);
@@ -3622,7 +3622,7 @@ public class pew
       localReqBody.msg_get_follow_tab_feeds_para.bytes_red_dot_cookie.set(ByteStringMicro.copyFromUtf8(paramString1));
     }
     if (!TextUtils.isEmpty(paramString2)) {
-      localReqBody.msg_get_follow_tab_feeds_para.bytes_refresh_cookie.set(ByteStringMicro.copyFrom(bdbi.decode(paramString2, 0)));
+      localReqBody.msg_get_follow_tab_feeds_para.bytes_refresh_cookie.set(ByteStringMicro.copyFrom(bdfr.decode(paramString2, 0)));
     }
     if (!TextUtils.isEmpty(paramString3)) {
       localReqBody.msg_get_follow_tab_feeds_para.bytes_last_feed_cookie.set(ByteStringMicro.copyFromUtf8(paramString3));
@@ -4255,7 +4255,7 @@ public class pew
     }
     try
     {
-      localObject3 = new String(bdbi.decode(str, 0));
+      localObject3 = new String(bdfr.decode(str, 0));
       localObject1 = localObject3;
       QLog.d("ArticleInfoModule", 2, "requestSubmitComment | commentVal " + (String)localObject3);
       localObject1 = localObject3;

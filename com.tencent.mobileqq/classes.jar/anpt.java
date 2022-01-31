@@ -1,67 +1,18 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class anpt
+class anpt
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<anpu> a;
-  public int b;
-  public int c;
-  public int d;
+  anpt(anpq paramanpq) {}
   
-  public static anpt a(oidb_0x74b.HeadInfo paramHeadInfo)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramHeadInfo == null) {
-      localObject = null;
-    }
-    anpt localanpt;
-    do
-    {
-      return localObject;
-      localanpt = new anpt();
-      if (paramHeadInfo.uint32_id.has()) {
-        localanpt.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
-      }
-      if (paramHeadInfo.str_photohead.has()) {
-        localanpt.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
-      }
-      if (paramHeadInfo.uint32_invalid.has()) {
-        localanpt.b = paramHeadInfo.uint32_invalid.get();
-      }
-      if (paramHeadInfo.uint32_timestamp.has()) {
-        localanpt.c = paramHeadInfo.uint32_timestamp.get();
-      }
-      if (paramHeadInfo.uint32_type.has()) {
-        localanpt.d = paramHeadInfo.uint32_type.get();
-      }
-      localObject = localanpt;
-    } while (!paramHeadInfo.rpt_videoheadlist.has());
-    localanpt.jdField_a_of_type_JavaUtilArrayList = anpu.a(paramHeadInfo.rpt_videoheadlist.get());
-    return localanpt;
-  }
-  
-  public static ArrayList<anpt> a(List<oidb_0x74b.HeadInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      anpt localanpt = a((oidb_0x74b.HeadInfo)paramList.next());
-      if (localanpt != null) {
-        localArrayList.add(localanpt);
-      }
-    }
-    return localArrayList;
+    acab.a(anpq.a(this.a), -3, "user canceled");
+    anpq.a(this.a).a();
+    anpq.a(this.a).dismiss();
+    anpq.a(this.a, null);
   }
 }
 

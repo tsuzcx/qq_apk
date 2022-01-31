@@ -1,40 +1,49 @@
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class atny
-  implements TextWatcher
+class atny
+  implements atmt
 {
-  public atny(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
+  atny(atnw paramatnw) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramEditable.length() > 0)
+    int i = this.a.jdField_a_of_type_Atnu.e;
+    String str3 = this.a.jdField_a_of_type_Atnu.b;
+    this.a.b(i, str3);
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
+    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
+      azqs.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
+    }
+    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+      return;
+    }
+    String str2 = "2";
+    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
+    String str1 = str2;
+    if (localTroopInfo != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(0);
-      this.c.setVisibility(0);
+      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+        break label180;
+      }
+      str1 = "0";
     }
     for (;;)
     {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
-      }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
+      azqs.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
       return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
+      label180:
+      str1 = str2;
+      if (localTroopInfo.isAdmin()) {
+        str1 = "1";
+      }
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -24,12 +24,12 @@ class mgf
   mgg a(View paramView, boolean paramBoolean)
   {
     mgg localmgg = new mgg(this.a, null);
-    localmgg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372630));
-    localmgg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372646));
-    localmgg.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372632));
-    localmgg.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372619));
-    localmgg.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372651));
-    localmgg.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372648));
+    localmgg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372656));
+    localmgg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372672));
+    localmgg.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372658));
+    localmgg.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372645));
+    localmgg.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372677));
+    localmgg.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372674));
     if (!mgb.a(this.a))
     {
       localmgg.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -43,7 +43,7 @@ class mgf
       paramView.setBackgroundColor(-16777216);
       localmgg.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A8A8A8"));
       localmgg.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#757575"));
-      localmgg.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372650);
+      localmgg.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372676);
       localmgg.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(mww.a(10.4F, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()));
       paramView.findViewById(2131363408).setBackgroundColor(Color.parseColor("#0F0F0F"));
     }
@@ -73,7 +73,7 @@ class mgf
     Object localObject2;
     if (paramView == null)
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559567, null);
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559566, null);
       paramViewGroup = a(paramView, localmge.e);
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setTag(localmge);
@@ -99,7 +99,7 @@ class mgf
         {
           localObject1 = localObject2;
           if (localObject2 != null) {
-            localObject1 = bdda.a((Bitmap)localObject2, true);
+            localObject1 = bdhj.a((Bitmap)localObject2, true);
           }
         }
         if (localObject1 == null) {
@@ -125,7 +125,7 @@ class mgf
       }
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localmge.jdField_b_of_type_JavaLangString);
-      localObject1 = ((BitmapDrawable)((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(2130841731)).getBitmap();
+      localObject1 = ((BitmapDrawable)((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(2130841744)).getBitmap();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
       label398:
       if (!localmge.jdField_c_of_type_Boolean) {
@@ -184,12 +184,12 @@ class mgf
         if (localObject2 == null) {
           break label739;
         }
-        localmge.jdField_b_of_type_JavaLangString = bdbt.a((String)localObject2);
+        localmge.jdField_b_of_type_JavaLangString = bdgc.a((String)localObject2);
         localmge.jdField_a_of_type_JavaLangString = ((String)localObject2);
       }
       for (;;)
       {
-        localmge.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(2130841774)).getBitmap();
+        localmge.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(2130841787)).getBitmap();
         localmge.jdField_b_of_type_Boolean = true;
         break;
         localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(l, this.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
@@ -203,7 +203,7 @@ class mgf
           QLog.d("GAudioMemberListCtrl", 2, "getView --> can not get Open Id. PhoneInfo = " + ((AVPhoneUserInfo)localObject1).toString());
         }
         localmge.jdField_b_of_type_JavaLangString = null;
-        localmge.jdField_a_of_type_JavaLangString = ((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getString(2131693345);
+        localmge.jdField_a_of_type_JavaLangString = ((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getString(2131693347);
       }
       label843:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(localmge.jdField_a_of_type_Long));
@@ -218,7 +218,7 @@ class mgf
       break label398;
       label907:
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840084);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840085);
       break label398;
       label929:
       if ((paramViewGroup.jdField_a_of_type_Int != -1) && (paramViewGroup.jdField_a_of_type_Int != 1)) {

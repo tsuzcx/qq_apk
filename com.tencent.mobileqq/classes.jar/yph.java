@@ -1,46 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class yph
-  extends nac
+public class yph
+  implements View.OnClickListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null);
-      return;
-    }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label104;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0, new bbnr((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null);
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label104:
-    a(false, -1, null);
-  }
+  public yph(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt, bbnr parambbnr);
+  public void onClick(View paramView)
+  {
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      ybt.a(ServiceFolderFollowPBHeadView.a(this.a));
+    }
+    for (;;)
+    {
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      azqs.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+    }
+  }
 }
 
 

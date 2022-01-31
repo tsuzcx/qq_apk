@@ -1,60 +1,12 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-public class blae
+public abstract interface blae
 {
-  private int jdField_a_of_type_Int;
-  private bkxn jdField_a_of_type_Bkxn = new bkxn();
-  private blaf jdField_a_of_type_Blaf;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  public abstract void a(MetaMaterial paramMetaMaterial);
   
-  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
-  {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bkxn.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    if (this.jdField_a_of_type_Blaf != null) {
-      this.jdField_a_of_type_Blaf.a(localFrame);
-    }
-    return localFrame;
-  }
+  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Bkxn.apply();
-    if (this.jdField_a_of_type_Blaf != null) {
-      this.jdField_a_of_type_Blaf.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(blaf paramblaf)
-  {
-    this.jdField_a_of_type_Blaf = paramblaf;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bkxn.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (this.jdField_a_of_type_Blaf != null) {
-      this.jdField_a_of_type_Blaf.b();
-    }
-  }
+  public abstract void b(MetaMaterial paramMetaMaterial);
 }
 
 

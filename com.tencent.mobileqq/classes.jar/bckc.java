@@ -1,38 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
-
 class bckc
-  extends nab
+  implements bcww
 {
-  bckc(bcju parambcju, bcjt parambcjt) {}
+  bckc(bcka parambcka, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_Bcjt != null) {
-        this.jdField_a_of_type_Bcjt.a(paramInt, "sso request error or callback is null.");
-      }
-    }
-    do
-    {
-      return;
-      paramBundle = new cmd0x9e9.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Bcjt.a(paramBundle.int64_total_point.get() / 100L);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
+    this.jdField_a_of_type_Bcka.a = 1;
+    this.jdField_a_of_type_Bcka.a(this.jdField_a_of_type_Boolean);
   }
 }
 

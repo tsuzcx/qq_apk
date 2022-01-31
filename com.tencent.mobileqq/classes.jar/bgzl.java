@@ -1,80 +1,53 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingReq;
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import java.util.Locale;
 
-public class bgzl
-  extends bgzp
+class bgzl
+  implements bgyt
 {
-  private INTERFACE.StJudgeTimingReq a = new INTERFACE.StJudgeTimingReq();
+  private float jdField_a_of_type_Float;
   
-  public bgzl(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt)
-  {
-    this.a.appid.set(paramString1);
-    this.a.appType.set(paramInt1);
-    this.a.scene.set(paramInt2);
-    this.a.factType.set(paramInt3);
-    this.a.reportTime.set(paramLong);
-    this.a.totalTime.set(paramInt4);
-    this.a.launchId.set(paramString2);
-    this.a.afterCertify.set(paramInt5);
-    this.a.via.set(paramString3);
-    this.a.AdsTotalTime.set(paramInt6);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
+  bgzl(bgzk parambgzk, long paramLong) {}
   
-  protected String a()
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    return "mini_app_growguard";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StJudgeTimingRsp localStJudgeTimingRsp = new INTERFACE.StJudgeTimingRsp();
-    try
+    String str = "";
+    if (paramFloat - this.jdField_a_of_type_Float > 0.1F)
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStJudgeTimingRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStJudgeTimingRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStJudgeTimingRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QMLog.d("JudgeTimingRequest", "onResponse fail.rsp = null");
-      return null;
+      this.jdField_a_of_type_Float = paramFloat;
+      str = String.format(Locale.getDefault(), "%.2f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%";
+      QMLog.i("GpkgLoadAsyncTask", "[Gpkg]" + paramMiniAppInfo.appId + "(" + paramMiniAppInfo.name + "), progress " + str + ", size=" + paramLong);
     }
-    catch (Exception paramArrayOfByte)
+    if (!TextUtils.isEmpty(str))
     {
-      QMLog.d("JudgeTimingRequest", "onResponse fail." + paramArrayOfByte);
+      paramMiniAppInfo = new bgzy().a(paramFloat).a();
+      this.jdField_a_of_type_Bgzk.a().notifyRuntimeEvent(2001, new Object[] { paramMiniAppInfo });
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "JudgeTiming";
+    QMLog.i("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig end, resCode=" + paramInt + ", msg=" + paramString + " ,timecost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if ((paramInt == 0) && (parambgyu != null))
+    {
+      bgnt.a().a(parambgyu, true);
+      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig appid=" + parambgyu.appId + ", appName=" + parambgyu.apkgName + " success");
+      bgzk.a(this.jdField_a_of_type_Bgzk, parambgyu);
+      bgzk.a(this.jdField_a_of_type_Bgzk, null);
+      this.jdField_a_of_type_Bgzk.c();
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append("[Gpkg] getGpkgInfoByConfig appid=");
+    if (parambgyu != null) {}
+    for (parambgyu = parambgyu.appId;; parambgyu = "unknown appid")
+    {
+      QMLog.e("GpkgLoadAsyncTask", parambgyu + ", fail " + paramString);
+      bgzk.a(this.jdField_a_of_type_Bgzk, null);
+      bgzk.a(this.jdField_a_of_type_Bgzk, null);
+      this.jdField_a_of_type_Bgzk.a(paramInt, paramString);
+      return;
+    }
   }
 }
 

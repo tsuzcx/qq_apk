@@ -1,9 +1,8 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
-
-abstract interface anfd
+public abstract interface anfd
 {
-  public abstract void a(ArrayList<WadlResult> paramArrayList);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

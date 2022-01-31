@@ -1,20 +1,15 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract class vzo
-  implements vzf
+class vzo
+  implements DialogInterface.OnDismissListener
 {
-  protected void a(Error paramError) {}
+  vzo(vzl paramvzl, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  protected void a(vzc paramvzc) {}
-  
-  public final void a(@NonNull vzd paramvzd)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    a(new vzc(paramvzd.a()));
-  }
-  
-  public final void b(@NonNull vzd paramvzd)
-  {
-    a(paramvzd.a());
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

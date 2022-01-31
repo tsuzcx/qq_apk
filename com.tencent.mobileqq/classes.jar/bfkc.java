@@ -1,17 +1,17 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
 
-class bfkc
-  implements bfig
+public class bfkc
+  implements DialogInterface.OnClickListener
 {
-  bfkc(bfkb parambfkb, DownloadInfo paramDownloadInfo) {}
+  public bfkc(DownloadNativeApi.1 param1) {}
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bfhg.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bfhe.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
+    bfjr.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bfkb.a(this.a.this$0).a(this.a.jdField_a_of_type_Bfkg);
+    paramDialogInterface.dismiss();
   }
 }
 

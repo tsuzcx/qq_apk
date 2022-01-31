@@ -4,17 +4,17 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import nca;
-import ueb;
-import uee;
+import uik;
+import uin;
 
 public class StoryAlbumResourceDownloader$3
   implements Runnable
 {
-  public StoryAlbumResourceDownloader$3(ueb paramueb) {}
+  public StoryAlbumResourceDownloader$3(uik paramuik) {}
   
   public void run()
   {
-    new nca(QQStoryContext.a().getApp().getBaseContext(), "http://3408?_bid=3408", new uee(this)).a();
+    new nca(QQStoryContext.a().getApp().getBaseContext(), "http://3408?_bid=3408", new uin(this)).a();
   }
 }
 

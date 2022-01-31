@@ -1,33 +1,26 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.text.Spanned;
 
 class blyq
+  extends bmsw
 {
-  final Map<blyy, List<blyr>> a;
-  final Map<blyr, blyy> b;
-  
-  blyq(Map<blyr, blyy> paramMap)
+  blyq(blyp paramblyp, int paramInt)
   {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      blyy localblyy = (blyy)localEntry.getValue();
-      List localList = (List)this.a.get(localblyy);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localblyy, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
+    super(paramInt);
+  }
+  
+  public int a(CharSequence paramCharSequence)
+  {
+    if (this.jdField_a_of_type_Blyp.b() == 0) {
+      return super.a(paramCharSequence);
+    }
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_Blyp.b() == 0) {}
+    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
   }
 }

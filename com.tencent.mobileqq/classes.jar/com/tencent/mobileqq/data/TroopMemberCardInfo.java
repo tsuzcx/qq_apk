@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="troopuin,memberuin")
 public class TroopMemberCardInfo
-  extends awbv
+  extends awge
 {
   public int charm;
   public String colorNick;

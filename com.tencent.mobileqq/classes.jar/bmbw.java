@@ -1,26 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
+import java.lang.ref.WeakReference;
 
 public class bmbw
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bmbw(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbw(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
+    if (VideoCoverPickerProviderView.a(this.a) != null)
+    {
+      paramView = (bmby)VideoCoverPickerProviderView.a(this.a).get();
+      if (paramView != null) {
+        paramView.a(VideoCoverPickerProviderView.a(this.a), true);
+      }
     }
-    this.a.a.d = 4;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
   }
 }
 

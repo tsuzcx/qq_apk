@@ -1,53 +1,25 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajov
-  extends FileObserver
+  implements DialogInterface.OnDismissListener
 {
-  private boolean a;
+  public ajov(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  private void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
     }
-  }
-  
-  public void onEvent(int paramInt, String paramString)
-  {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
     }
-    do
-    {
-      return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, false);
     }
-    a();
   }
 }
 

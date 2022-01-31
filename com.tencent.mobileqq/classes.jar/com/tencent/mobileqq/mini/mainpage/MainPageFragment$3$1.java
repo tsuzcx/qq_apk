@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import alpo;
-import aokd;
+import alud;
+import aoom;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -17,12 +17,12 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (aokd.g())
+    if (aoom.g())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131706813) + aokd.c() + alpo.a(2131706809), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131706825) + aoom.c() + alud.a(2131706821), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131694433), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131694435), 0).a();
   }
 }
 

@@ -1,62 +1,63 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import java.io.File;
+import java.util.WeakHashMap;
 
-public class aexm
-  extends BaseAdapter
+class aexm
+  implements ImageAssetDelegate
 {
-  private aexm(RDBaseListLayout paramRDBaseListLayout) {}
+  aexm(aexk paramaexk, String paramString) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public int getCount()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    return RDBaseListLayout.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return RDBaseListLayout.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
-    if (paramView == null) {
-      paramView = this.a.a(paramInt, paramViewGroup);
-    }
-    for (;;)
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inScaled = true;
+    ((BitmapFactory.Options)localObject).inDensity = aexk.a(this.jdField_a_of_type_Aexk).a.getResources().getDisplayMetrics().densityDpi;
+    try
     {
-      if (paramView == null) {
-        paramViewGroup = null;
-      }
-      View localView;
-      do
+      String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
+      if (aexk.a(this.jdField_a_of_type_Aexk) != null)
       {
-        return paramViewGroup;
-        paramView = (aexn)paramView.getTag();
-        if (paramView == null) {
-          break label102;
+        paramLottieImageAsset = (Bitmap)aexk.a(this.jdField_a_of_type_Aexk).get(str);
+        if (paramLottieImageAsset != null) {
+          localObject = paramLottieImageAsset;
         }
-        paramView = paramView.a;
-        break;
-        this.a.a(paramInt, paramViewGroup, paramView);
-        localView = ((aexo)paramView).a();
-        paramViewGroup = localView;
-      } while (localView == null);
-      localView.setTag(new aexn(this.a, paramInt, paramView));
-      return localView;
-      label102:
-      paramView = null;
+        for (;;)
+        {
+          return localObject;
+          try
+          {
+            Bitmap localBitmap = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
+            localObject = localBitmap;
+            paramLottieImageAsset = localBitmap;
+            if (aexk.a(this.jdField_a_of_type_Aexk) != null)
+            {
+              paramLottieImageAsset = localBitmap;
+              aexk.a(this.jdField_a_of_type_Aexk).put(str, localBitmap);
+              return localBitmap;
+            }
+          }
+          catch (Exception localException1) {}
+        }
+        localException1.printStackTrace();
+        return paramLottieImageAsset;
+      }
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramLottieImageAsset = null;
+        continue;
+        paramLottieImageAsset = null;
+      }
     }
   }
 }

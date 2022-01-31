@@ -1,11 +1,19 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.LocalImageShootInfo;
 
-class bjky
+public final class bjky
+  implements Parcelable.Creator<LocalImageShootInfo>
 {
-  private int jdField_a_of_type_Int;
-  private bjkz jdField_a_of_type_Bjkz;
-  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  private String jdField_a_of_type_JavaLangString;
+  public LocalImageShootInfo a(Parcel paramParcel)
+  {
+    return new LocalImageShootInfo(paramParcel);
+  }
+  
+  public LocalImageShootInfo[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

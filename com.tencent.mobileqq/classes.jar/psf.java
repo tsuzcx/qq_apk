@@ -56,21 +56,21 @@ public class psf
   
   public void loadImage(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")) && (!DateUtils.isToday(bdiv.b("search_word_prefix_ug_weishi_opt_day_show_time"))))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")) && (!DateUtils.isToday(bdne.b("search_word_prefix_ug_weishi_opt_day_show_time"))))
     {
-      bdiv.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
-      if (a(new Date(System.currentTimeMillis()), new Date(bdiv.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) <= 7L) {
+      bdne.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
+      if (a(new Date(System.currentTimeMillis()), new Date(bdne.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) <= 7L) {
         break label87;
       }
-      bdiv.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
-      bdiv.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
+      bdne.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
+      bdne.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
       a(paramString);
     }
     label87:
-    while (bdiv.a("search_word_prefix_ug_weishi_opt_week_first_show_count") >= 3) {
+    while (bdne.a("search_word_prefix_ug_weishi_opt_week_first_show_count") >= 3) {
       return;
     }
-    bdiv.a("search_word_prefix_ug_weishi_opt_week_first_show_count", bdiv.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
+    bdne.a("search_word_prefix_ug_weishi_opt_week_first_show_count", bdne.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
     a(paramString);
   }
   

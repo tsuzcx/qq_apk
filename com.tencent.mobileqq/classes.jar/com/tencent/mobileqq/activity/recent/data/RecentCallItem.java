@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import alpo;
+import alud;
 import android.content.Context;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,7 +42,7 @@ public class RecentCallItem
     this.mShowTime = "0";
     this.mUnreadNum = 0;
     this.mMenuFlag = 12288;
-    this.mCallingText = alpo.a(2131713531);
+    this.mCallingText = alud.a(2131713543);
     this.call.isVideo = 1;
   }
   

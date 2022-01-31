@@ -769,7 +769,7 @@ public class Gallery
       {
         localObject2 = getContext();
         localObject1 = new ImageView((Context)localObject2);
-        ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130850063));
+        ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130850136));
       }
       setUpChild((View)localObject1, paramInt2, paramInt3, paramBoolean, false);
       localObject2 = localObject1;

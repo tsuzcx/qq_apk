@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.data.search.selector;
 
 import android.view.View;
-import aqyt;
+import ardc;
 
 public class FileSelectorSearchFragment$FileSelectorSearchAdapter$2
   implements Runnable
 {
-  public FileSelectorSearchFragment$FileSelectorSearchAdapter$2(aqyt paramaqyt) {}
+  public FileSelectorSearchFragment$FileSelectorSearchAdapter$2(ardc paramardc) {}
   
   public void run()
   {
-    FileSelectorSearchFragment.a(this.a.a).findViewById(2131367555).setVisibility(0);
+    FileSelectorSearchFragment.a(this.a.a).findViewById(2131367565).setVisibility(0);
   }
 }
 

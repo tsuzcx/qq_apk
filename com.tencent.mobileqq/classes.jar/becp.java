@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class becp
-  implements ThreadExcutor.IThreadListener
+class becp
+  implements View.OnClickListener
 {
-  public becp(WebViewPlugin paramWebViewPlugin) {}
+  becp(beco parambeco) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onClick(View paramView)
   {
-    this.a.onPostPluginAsyncTask();
+    beco.a(this.a).dismiss();
   }
-  
-  public void onPreRun() {}
 }
 
 

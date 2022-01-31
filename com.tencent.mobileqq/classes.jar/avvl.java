@@ -1,53 +1,22 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avvl
-  implements avvk
+  extends BroadcastReceiver
 {
-  public void a(Matrix paramMatrix) {}
+  public avvl(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void a(MotionEvent paramMotionEvent) {}
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      QLog.d("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
+    }
   }
 }
 

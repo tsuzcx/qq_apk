@@ -1,23 +1,18 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
+
 public class aier
+  extends BroadcastReceiver
 {
-  public int a;
-  private String a;
-  private String b;
+  public aier(QzoneFrame paramQzoneFrame) {}
   
-  public aier(String paramString1, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    if (QzoneFrame.a(this.a) != null) {
+      ((bjht)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
   }
 }
 

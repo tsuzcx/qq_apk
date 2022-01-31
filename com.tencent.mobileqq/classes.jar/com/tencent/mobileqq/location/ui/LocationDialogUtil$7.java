@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import atmi;
-import atmx;
-import atqj;
-import bdcd;
-import bdfq;
+import atqr;
+import atrg;
+import atus;
+import bdgm;
+import bdjz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,15 +18,15 @@ public final class LocationDialogUtil$7
   
   public void run()
   {
-    if (atqj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a)
+    if (atus.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationDialogUtil", 2, "showBadNetDialog: invoked. 当前如果展示悬浮窗，就不显示这个弹窗了");
       }
       return;
     }
-    bdfq localbdfq = bdcd.a(this.a, 230, null, this.a.getResources().getString(2131720141), 2131694951, 2131690648, null, new atmx(this));
-    atmi.a(this.a, localbdfq);
+    bdjz localbdjz = bdgm.a(this.a, 230, null, this.a.getResources().getString(2131720153), 2131694953, 2131690648, null, new atrg(this));
+    atqr.a(this.a, localbdjz);
   }
 }
 

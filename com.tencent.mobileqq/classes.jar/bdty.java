@@ -1,92 +1,179 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.content.Intent;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.SonicTemplateUpdateManager.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.sonic.sdk.SonicEngine;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bdty
-  implements SensorEventListener
+public class bdty
+  implements Manager
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  QQAppInterface a;
   
-  private void a(long paramLong)
+  public bdty(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramQQAppInterface;
+  }
+  
+  private JSONObject a()
+  {
+    File localFile = new File(this.a.getApplication().getFilesDir() + File.separator + "sonicTemplateUpdate.json");
+    if (localFile.exists()) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(bdhb.a(localFile));
+        return localJSONObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
+        }
+        localFile.delete();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      ((VasQuickUpdateManager)this.a.getManager(184)).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
+    }
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    boolean bool = bdvk.a().a(this.a, paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "isConfigValid isValid = " + bool);
+    }
+    return bool;
   }
   
   public void a()
   {
-    bdtu.b = 1;
-    bdtu.a = true;
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SonicTemplateUpdateManager", 2, "parseJson isMainThread = " + bool);
+      }
+      if (!bool) {
+        break;
+      }
+      ThreadManager.post(new SonicTemplateUpdateManager.1(this), 5, null, true);
+      return;
+    }
+    b();
   }
   
   public void b()
   {
-    bdtu.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
     }
-    label66:
-    do
+    Object localObject1 = a();
+    if (localObject1 == null)
     {
-      do
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
+      return;
+    }
+    Object localObject4 = ((JSONObject)localObject1).optJSONArray("sonicTemplateUpdate");
+    if ((localObject4 == null) || (((JSONArray)localObject4).length() < 1))
+    {
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+        int j = ((JSONArray)localObject4).length();
+        localObject3 = new HashMap();
+        i = 0;
+        if (i >= j) {
+          break label222;
+        }
+        localObject5 = ((JSONArray)localObject4).getJSONObject(i);
+        if (!a((JSONObject)localObject5)) {
+          break label429;
+        }
+        String str = ((JSONObject)localObject5).optString("url");
+        if (TextUtils.isEmpty(str)) {
+          break label429;
+        }
+        localObject1 = null;
+        if (WebAccelerateHelper.getSonicEngine() != null) {
+          localObject1 = SonicEngine.makeSessionId(str, true);
+        }
+        if (localObject1 == null) {
+          QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable sonicSessionId = null, url = " + str);
+        }
       }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+      catch (Exception localException)
       {
-        a();
-        a(l1);
+        QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable exception e = " + localException.getMessage());
         return;
       }
-      if (this.jdField_a_of_type_Int < 10)
+      ((Map)localObject3).put(localException, Long.valueOf(((JSONObject)localObject5).optLong("templateUpdateTime")));
+      break label429;
+      label222:
+      if (((Map)localObject3).size() <= 0) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SonicTemplateUpdateManager", 2, "parseJsonRunnable ready remove expire sonic template");
+      }
+      if (!WebProcessManager.c())
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
+        localObject2 = WebAccelerateHelper.getSonicEngine();
+        if (localObject2 == null) {
+          break;
+        }
+        ((SonicEngine)localObject2).removeExpiredSessionCache((Map)localObject3);
         return;
       }
-      a(l1);
-    } while (bdtu.b >= 3);
-    b();
+      QLog.d("SonicTemplateUpdateManager", 1, "parseJsonRunnable WebProcess Exist");
+      Object localObject2 = new Intent(BaseApplicationImpl.getApplication(), WebProcessReceiver.class);
+      ((Intent)localObject2).setAction("action_delete_sonic_templateinfo");
+      localObject4 = ((Map)localObject3).keySet();
+      Object localObject3 = ((Map)localObject3).values();
+      localObject4 = (String[])((Set)localObject4).toArray(new String[((Set)localObject4).size()]);
+      Object localObject5 = new long[((Collection)localObject3).size()];
+      localObject3 = ((Collection)localObject3).iterator();
+      int i = 0;
+      while (((Iterator)localObject3).hasNext()) {
+        if (i < localObject5.length)
+        {
+          localObject5[i] = ((Long)((Iterator)localObject3).next()).longValue();
+          i += 1;
+        }
+      }
+      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId", (String[])localObject4);
+      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime", (long[])localObject5);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
+      return;
+      label429:
+      i += 1;
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 

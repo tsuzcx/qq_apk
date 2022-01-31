@@ -1,26 +1,20 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import dov.com.qq.im.capture.view.StoryToastView;
 
 public class bmbu
   extends AnimatorListenerAdapter
 {
-  public bmbu(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmbu(StoryToastView paramStoryToastView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.setVisibility(8);
+  }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
-    }
+    this.a.setVisibility(8);
   }
 }
 

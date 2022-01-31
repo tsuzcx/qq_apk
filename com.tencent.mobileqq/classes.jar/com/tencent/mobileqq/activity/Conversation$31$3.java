@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import acng;
-import ajbm;
+import acrv;
+import ajgb;
 
 public class Conversation$31$3
   implements Runnable
 {
-  public Conversation$31$3(acng paramacng, int paramInt) {}
+  public Conversation$31$3(acrv paramacrv, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Acng.a.a.a(27, 2);
-      this.jdField_a_of_type_Acng.a.a.a(-1, null);
+      this.jdField_a_of_type_Acrv.a.a.a(27, 2);
+      this.jdField_a_of_type_Acrv.a.a.a(-1, null);
       return;
     }
-    this.jdField_a_of_type_Acng.a.a.k();
+    this.jdField_a_of_type_Acrv.a.a.k();
   }
 }
 

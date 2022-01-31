@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import anwe;
-import anwn;
+import aoan;
+import aoaw;
 
 public class CameraManagerImpl$CameraOpenErrorCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$CameraOpenErrorCallbackForward$1(anwn paramanwn, int paramInt) {}
+  public CameraManagerImpl$CameraOpenErrorCallbackForward$1(aoaw paramaoaw, int paramInt) {}
   
   public void run()
   {
-    anwn.a(this.this$0).a(this.a);
+    aoaw.a(this.this$0).a(this.a);
   }
 }
 

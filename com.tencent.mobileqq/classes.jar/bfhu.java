@@ -1,31 +1,17 @@
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import java.util.concurrent.Executor;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public abstract class bfhu<Param, Progress, Result>
-  extends AsyncTask<Param, Progress, Result>
+public class bfhu
 {
-  protected String a;
-  protected String b;
-  
-  public bfhu(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
-    }
-    this.b = paramString2;
-  }
-  
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public Executor a()
-  {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
-    }
-    return null;
-  }
+  public int a;
+  public String a;
+  public ArrayList<bfhs> a;
+  public JSONObject a;
+  public int b = -1;
+  public int c = -1;
+  public int d = 1;
+  public int e = -1;
+  public int f = -1;
 }
 
 

@@ -1,33 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class bcrw
-  extends bdvu
+public class bcrw
+  implements bcpo
 {
-  bcrw(bcrv parambcrv, File paramFile, bcrx parambcrx) {}
+  public bcrw(TroopAIORobotLayout paramTroopAIORobotLayout, bcrq parambcrq) {}
   
-  public void onDone(bdvv parambdvv)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
-    }
-    if ((parambdvv.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Bcrv.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bcrv.b(BaseApplicationImpl.getContext())))
-    {
-      this.jdField_a_of_type_Bcrv.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
-      if (this.jdField_a_of_type_Bcrx != null) {
-        this.jdField_a_of_type_Bcrx.a(true);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (this.jdField_a_of_type_Bcrx != null))
-      {
-        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
-        this.jdField_a_of_type_Bcrx.a(false);
-      }
+    if (paramInt == 0) {
       return;
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, alud.a(2131715564) + "", 0).a();
   }
 }
 

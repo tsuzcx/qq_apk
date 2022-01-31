@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.graphics.Canvas;
+import android.view.View.OnTouchListener;
 
-class apcw
-  implements View.OnClickListener
+public abstract interface apcw
 {
-  apcw(apct paramapct, WindowManager paramWindowManager) {}
+  public abstract float a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Apct.a.a);
-  }
+  public abstract Canvas a();
+  
+  public abstract void a();
+  
+  public abstract void a(Canvas paramCanvas);
+  
+  public abstract void a(View.OnTouchListener paramOnTouchListener);
+  
+  public abstract void a(apcx paramapcx);
+  
+  public abstract void b();
 }
 
 

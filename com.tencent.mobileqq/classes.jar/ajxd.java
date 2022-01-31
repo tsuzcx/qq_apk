@@ -1,24 +1,33 @@
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class ajxd
-  extends nac
+  implements INetInfoHandler
 {
   ajxd(ajxc paramajxc) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+    long l = Thread.currentThread().getId();
+    if (ajxc.a(this.a) == l) {
+      ajxc.a(this.a);
+    }
+    while (ajxc.a(this.a) == null) {
       return;
     }
-    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+    ajxc.a(this.a).post(new LbsFilterStatusManager.3.1(this));
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

@@ -1,11 +1,21 @@
-final class bhek
-  implements com.tencent.smtt.sdk.ValueCallback
+public class bhek
+  implements bgmc<Boolean>
 {
-  bhek(android.webkit.ValueCallback paramValueCallback) {}
+  private String a;
   
-  public void onReceiveValue(Object paramObject)
+  public static bhek a(String paramString)
   {
-    this.a.onReceiveValue(paramObject);
+    bhek localbhek = new bhek();
+    localbhek.a = paramString;
+    return localbhek;
+  }
+  
+  public Boolean a(bgls parambgls)
+  {
+    if ((parambgls instanceof bhew)) {
+      ((bhew)parambgls).a(this.a);
+    }
+    return Boolean.valueOf(true);
   }
 }
 

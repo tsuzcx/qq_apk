@@ -1,23 +1,8 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
-
-public class blhw
-  implements IPlayer.PlayerListener
+public abstract interface blhw
 {
-  public blhw(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  public abstract void a();
   
-  public void onPositionChanged(CMTime paramCMTime) {}
-  
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
-  {
-    blfg.b(AEEditorVideoClipFragment.c(), "play status changed, current status = " + paramPlayerStatus);
-    if (AEEditorVideoClipFragment.a(this.a) != null) {
-      AEEditorVideoClipFragment.a(this.a).setPlayStatus(paramPlayerStatus);
-    }
-  }
+  public abstract void b();
 }
 
 

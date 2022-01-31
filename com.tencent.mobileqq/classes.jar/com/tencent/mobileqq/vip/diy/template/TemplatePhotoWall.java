@@ -2,22 +2,22 @@ package com.tencent.mobileqq.vip.diy.template;
 
 import android.content.Context;
 import android.view.View;
-import bens;
+import besb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.PhotoWallView;
 
 public class TemplatePhotoWall
   extends PhotoWallView
 {
-  public TemplatePhotoWall(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, bens parambens)
+  public TemplatePhotoWall(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, besb parambesb)
   {
-    super(paramContext, paramQQAppInterface, paramString, parambens);
+    super(paramContext, paramQQAppInterface, paramString, parambesb);
     this.e.setAlpha(0.8F);
   }
   
   public int a()
   {
-    return 2131561810;
+    return 2131561828;
   }
 }
 

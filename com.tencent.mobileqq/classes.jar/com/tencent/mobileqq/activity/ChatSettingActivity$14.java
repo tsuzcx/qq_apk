@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdhy;
+import bdmh;
 
 class ChatSettingActivity$14
   implements Runnable
@@ -9,7 +9,7 @@ class ChatSettingActivity$14
   
   public void run()
   {
-    bdhy.a(this.this$0.app, ChatSettingActivity.b(this.this$0), ChatSettingActivity.f(this.this$0), this.this$0.getTitleBarHeight(), this.this$0.a, 500, "0", ChatSettingActivity.a(this.this$0));
+    bdmh.a(this.this$0.app, ChatSettingActivity.b(this.this$0), ChatSettingActivity.f(this.this$0), this.this$0.getTitleBarHeight(), this.this$0.a, 500, "0", ChatSettingActivity.a(this.this$0));
   }
 }
 

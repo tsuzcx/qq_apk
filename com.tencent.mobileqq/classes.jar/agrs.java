@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agrs
-  implements bcnf
+class agrs
+  implements DialogInterface.OnClickListener
 {
-  public agrs(TroopChatPie paramTroopChatPie) {}
+  agrs(agrr paramagrr) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      TroopChatPie.b(this.a, true);
-      paramString = (afby)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      TroopChatPie.b(this.a, false);
-      paramString = (afby)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    this.a.jdField_a_of_type_Agrn.h = new Dialog(this.a.jdField_a_of_type_Agrn.a(), 2131755801);
+    this.a.jdField_a_of_type_Agrn.h.setContentView(2131558428);
+    this.a.jdField_a_of_type_Agrn.h.setCancelable(true);
+    ((TextView)this.a.jdField_a_of_type_Agrn.h.findViewById(2131365233)).setText(this.a.jdField_a_of_type_Agrn.a().getString(2131719785));
+    this.a.jdField_a_of_type_Agrn.h.show();
+    ((aluj)this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
+    azqs.b(this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
   }
 }
 

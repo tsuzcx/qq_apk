@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahdp;
-import ahdq;
-import ahdr;
-import alpo;
+import ahie;
+import ahif;
+import ahig;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -30,7 +30,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new ahdr(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new ahig(this);
   }
   
   private void a(String paramString)
@@ -72,7 +72,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131713992) + swy.a(this.app, getApplicationContext()) + alpo.a(2131713991));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714004) + swy.a(this.app, getApplicationContext()) + alud.a(2131714003));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -81,19 +81,19 @@ public class SearchContactsActivity
     else
     {
       if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131713999));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714011));
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahdp(this, bool));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahie(this, bool));
       String str2 = getResources().getString(2131690648);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahdq(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahif(this));
       if (AppSetting.c)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
           break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alpo.a(2131714001));
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714013));
       }
     }
     for (;;)
@@ -102,10 +102,10 @@ public class SearchContactsActivity
         break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131713998));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714010));
       break;
       label263:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alpo.a(2131713997));
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714009));
     }
     label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);

@@ -1,21 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.BorderURLImageView;
 
 public class bcqn
-  implements bcxc
 {
-  public bcqn(TroopGiftAnimationController.5 param5) {}
+  ainn jdField_a_of_type_Ainn;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
-  {
-    Bitmap localBitmap = bclo.a(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
-    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
-    }
-  }
+  protected bcqn(bcqm parambcqm) {}
 }
 
 

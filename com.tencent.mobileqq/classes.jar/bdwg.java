@@ -1,26 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import dualsim.common.IPhoneInfoBridge;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class bdwg
-  implements IPhoneInfoBridge
+class bdwg
+  implements Handler.Callback
 {
-  public bdwg(KCWraperV2.1 param1) {}
+  bdwg(bdwf parambdwf) {}
   
-  public String a(String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ("imei".equals(paramString)) {
-      return bhoi.a("a4bd32");
+    if ((paramMessage != null) && (paramMessage.obj != null)) {
+      bdwh.a(paramMessage.obj.toString());
     }
-    if ("imsi".equals(paramString)) {
-      return bhoi.b("a4bd32");
-    }
-    return "";
-  }
-  
-  public boolean isAllow(String paramString)
-  {
-    return !TextUtils.isEmpty(a(paramString));
+    return false;
   }
 }
 

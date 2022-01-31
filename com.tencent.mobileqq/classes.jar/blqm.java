@@ -1,30 +1,20 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
 
 class blqm
-  implements URLDrawable.URLDrawableListener
+  implements View.OnTouchListener
 {
-  blqm(blql paramblql, String paramString, URLDrawable paramURLDrawable, blof paramblof) {}
+  blqm(blqk paramblqk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    blql.a.remove(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
+    if (((blqk.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)blqk.a(this.a)).c())) {
+      return true;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    blql.a.remove(this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    blql.a(this.jdField_a_of_type_Blql, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Blof);
+    return blqk.a(this.a).a(paramMotionEvent);
   }
 }
 

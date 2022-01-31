@@ -1,24 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback.1;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback.2;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-final class bacd
-  implements DialogInterface.OnClickListener
+public class bacd
+  implements baco
 {
-  bacd(Context paramContext, String paramString) {}
+  private WeakReference<StudyRoomLoadingFragment> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bacd(StudyRoomLoadingFragment paramStudyRoomLoadingFragment)
   {
-    try
+    this.a = new WeakReference(paramStudyRoomLoadingFragment);
+  }
+  
+  public void a(Throwable paramThrowable)
+  {
+    ThreadManager.getUIHandler().post(new StudyRoomLoadingFragment.WeakCallback.1(this));
+  }
+  
+  public void onCloseLoadingView()
+  {
+    QLog.d("studyroom.StudyRoomLoadingFragment", 4, "onCloseLoadingView");
+    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)this.a.get();
+    if (localStudyRoomLoadingFragment != null)
     {
-      arni.c(this.jdField_a_of_type_AndroidContentContext, aosx.a().a());
-      return;
+      StudyRoomLoadingFragment.a(localStudyRoomLoadingFragment);
+      localStudyRoomLoadingFragment.a();
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
-    }
+  }
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
+  {
+    QLog.d("studyroom.StudyRoomLoadingFragment", 4, "onShowLoadingView");
+    ThreadManager.getUIHandler().post(new StudyRoomLoadingFragment.WeakCallback.2(this, paramView));
   }
 }
 

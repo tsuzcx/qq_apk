@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bcwk;
+import bdat;
 import sqv;
 import sqw;
 
@@ -11,7 +11,7 @@ public class ViolaBaseView$10$1$1$1
   
   public void run()
   {
-    bcwk.a().b(ViolaBaseView.a(this.a.a.a.a));
+    bdat.a().b(ViolaBaseView.a(this.a.a.a.a));
   }
 }
 

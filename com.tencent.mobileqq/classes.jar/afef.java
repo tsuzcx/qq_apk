@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class afef
-  implements DialogInterface.OnClickListener
+  implements benf
 {
-  afef(afec paramafec) {}
+  afef(afee paramafee) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.g();
+  }
 }
 
 

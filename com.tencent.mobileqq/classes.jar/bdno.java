@@ -1,21 +1,76 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SyncLoadTask.1;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bdno
-  extends apnt
+public abstract class bdno
 {
-  bdno(bdnm parambdnm) {}
+  public final String TAG;
+  int mTaskStatus = 1;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public bdno(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
+    this.TAG = (paramString + "_" + AudioHelper.b());
+  }
+  
+  public static void requestSyncTask(Resources paramResources, ArrayList<bdno> paramArrayList, bdnp parambdnp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      bdno localbdno = (bdno)localIterator.next();
+      if (localbdno.isNeedRunTask()) {
+        localArrayList.add(localbdno);
+      }
     }
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(257);
+    localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((bdno)localIterator.next()).setRunning();
     }
+    ThreadManager.post(new SyncLoadTask.1(localArrayList, paramResources, parambdnp, paramArrayList), 8, null, true);
+  }
+  
+  public final void clean()
+  {
+    this.mTaskStatus = 1;
+    innerClean();
+  }
+  
+  public abstract void innerClean();
+  
+  public final boolean isNeedRunTask()
+  {
+    return (this.mTaskStatus != 20) && (this.mTaskStatus != 2);
+  }
+  
+  final boolean isRunning()
+  {
+    return (this.mTaskStatus & 0x2) == 2;
+  }
+  
+  final boolean isSuc()
+  {
+    return (this.mTaskStatus & 0x14) == 20;
+  }
+  
+  public abstract boolean runOnSubThread(Resources paramResources);
+  
+  public final void setComplete(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mTaskStatus = 20;
+      return;
+    }
+    this.mTaskStatus = 36;
+  }
+  
+  final void setRunning()
+  {
+    this.mTaskStatus = 2;
   }
 }
 

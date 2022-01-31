@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
 public class acas
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public acas(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public acas(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    azmj.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
-    paramView = (azyu)this.a.app.getManager(61);
-    if ((paramView != null) && (paramView.a() >= 2)) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
-      }
-      AssociatedAccountActivity.a(this.a, bool);
+    default: 
       return;
-      bool = true;
     }
+    this.a.e();
   }
 }
 

@@ -1,297 +1,267 @@
+import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
-import android.os.Handler;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
-import com.tencent.qqmini.sdk.launcher.model.SubPkgInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.ApkgManager.4;
-import com.tencent.qqmini.sdk.utils.MD5Utils;
-import java.io.File;
-import java.util.Iterator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.accessibility.AccessibilityEvent;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import java.util.List;
 
 public class bgrb
+  extends Dialog
 {
-  public static volatile long a;
-  private static volatile bgrb a;
-  public static final String a;
-  public static final String b = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
-  private String c = "";
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bgrc(this);
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  protected EditText a;
+  public ImageView a;
+  protected LinearLayout a;
+  ListView jdField_a_of_type_AndroidWidgetListView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  protected TextView a;
+  private bgrh jdField_a_of_type_Bgrh = new bgrh(null);
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private ImageView b;
+  protected TextView b;
+  protected TextView c;
+  protected TextView d;
+  protected TextView e;
+  TextView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  private TextView j;
+  private TextView k;
   
-  static
+  @TargetApi(14)
+  public bgrb(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/minigame/";
+    super(paramContext, paramInt);
+    super.getWindow().setWindowAnimations(2131755758);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
+    }
   }
   
-  public static bgrb a()
+  protected int a()
   {
-    if (jdField_a_of_type_Bgrb == null) {}
-    try
+    return 2131559340;
+  }
+  
+  protected int a(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public TextView a()
+  {
+    return this.e;
+  }
+  
+  public bgrb a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
     {
-      if (jdField_a_of_type_Bgrb == null) {
-        jdField_a_of_type_Bgrb = new bgrb();
-      }
-      return jdField_a_of_type_Bgrb;
+      this.d.setVisibility(8);
+      return this;
     }
-    finally {}
+    this.d.setText(paramInt);
+    this.d.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131694329));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bgrf(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public static String a(MiniAppInfo paramMiniAppInfo)
+  public bgrb a(View paramView, LinearLayout.LayoutParams paramLayoutParams)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return "";
-    }
-    if (paramMiniAppInfo.verType == 3) {
-      return b(paramMiniAppInfo) + MD5Utils.toMD5(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.version;
-    }
-    return b(paramMiniAppInfo) + paramMiniAppInfo.appId + "_debug";
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramLayoutParams);
+    return this;
   }
   
-  private String a(MiniAppInfo paramMiniAppInfo, String paramString)
+  public bgrb a(CharSequence paramCharSequence)
   {
-    paramMiniAppInfo = paramMiniAppInfo.subpkgs;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.size() > 0) && (!TextUtils.isEmpty(paramString)))
+    if (!TextUtils.isEmpty(paramCharSequence))
     {
-      paramMiniAppInfo = paramMiniAppInfo.iterator();
-      while (paramMiniAppInfo.hasNext())
-      {
-        SubPkgInfo localSubPkgInfo = (SubPkgInfo)paramMiniAppInfo.next();
-        if (paramString.equals(localSubPkgInfo.subPkgName)) {
-          return localSubPkgInfo.downloadUrl;
-        }
-      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      return this;
     }
-    return null;
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
   }
   
-  public static String a(MiniGamePluginInfo paramMiniGamePluginInfo)
+  public bgrb a(String paramString)
   {
-    return jdField_a_of_type_JavaLangString + MD5Utils.toMD5(paramMiniGamePluginInfo.id) + "_plugin_" + paramMiniGamePluginInfo.version;
-  }
-  
-  private void a(bgrh parambgrh, int paramInt, bgjw parambgjw, String paramString)
-  {
-    QMLog.d("ApkgManager", "onInitApkgInfo :" + paramInt + "|" + paramString);
-    if (parambgrh != null) {
-      parambgrh.onInitApkgInfo(paramInt, parambgjw, paramString);
-    }
-  }
-  
-  private void a(MiniAppInfo paramMiniAppInfo, String paramString)
-  {
-    ThreadManager.b().post(new ApkgManager.4(this, paramMiniAppInfo, paramString));
-  }
-  
-  private void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, bgrg parambgrg)
-  {
-    if (paramMiniAppInfo == null) {
-      return;
-    }
-    Object localObject = paramMiniAppInfo.version;
-    QMLog.d("ApkgManager", "getApkgInfoByConfig version:" + (String)localObject);
-    localObject = a(paramMiniAppInfo);
-    if (paramMiniAppInfo.verType != 3)
+    if (paramString != null)
     {
-      QMLog.d("ApkgManager", "verType is not online, delete unPackFolderPath." + paramMiniAppInfo.verType);
-      if (new File((String)localObject).exists()) {
-        bgkv.a((String)localObject, false);
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
+      return this;
     }
-    if (new File((String)localObject).exists())
-    {
-      localObject = bgjw.a((String)localObject, null, paramMiniAppInfo);
-      if (parambgrg != null) {
-        parambgrg.a((bgjw)localObject, 0, "");
-      }
-      if (paramMiniAppInfo.launchParam != null) {}
-      for (parambgrg = paramMiniAppInfo.launchParam.entryPath;; parambgrg = "")
-      {
-        bgxl.a("cache_apkg_hit", "hit", parambgrg, paramMiniAppInfo);
-        return;
-      }
-    }
-    a(paramMiniAppInfo, paramBoolean, parambgrg, (String)localObject);
-    if (paramMiniAppInfo.launchParam != null) {}
-    for (parambgrg = paramMiniAppInfo.launchParam.entryPath;; parambgrg = "")
-    {
-      bgxl.a("cache_apkg_hit", "unhit", parambgrg, paramMiniAppInfo);
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
   }
   
-  private void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, bgrg parambgrg, String paramString)
+  public bgrb a(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    String str;
-    Object localObject2;
-    Object localObject1;
-    Object localObject3;
-    if (paramMiniAppInfo.firstPage != null)
+    if (paramOnClickListener == null)
     {
-      str = paramMiniAppInfo.firstPage.subPkgName;
-      localObject2 = paramMiniAppInfo.subpkgs.iterator();
-      localObject1 = null;
-      if (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (SubPkgInfo)((Iterator)localObject2).next();
-        if ((localObject3 != null) && (((SubPkgInfo)localObject3).subPkgName != null) && (str.equals(((SubPkgInfo)localObject3).subPkgName))) {
-          if (((SubPkgInfo)localObject3).independent == 1)
-          {
-            localObject3 = ((SubPkgInfo)localObject3).downloadUrl;
-            localObject2 = localObject1;
-            localObject1 = localObject3;
-          }
-        }
-      }
+      this.d.setVisibility(8);
+      return this;
     }
-    for (;;)
-    {
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = paramMiniAppInfo.downloadUrl;
-      }
-      a(paramMiniAppInfo, paramBoolean, parambgrg, paramString, (String)localObject3, (String)localObject2, str);
-      return;
-      localObject1 = paramMiniAppInfo.firstPage.pagePath;
-      for (;;)
-      {
-        break;
-      }
-      str = null;
-      localObject2 = localObject1;
-      localObject1 = null;
-      continue;
-      str = null;
-      localObject2 = null;
-      localObject1 = null;
-    }
+    this.d.setTextColor(paramInt);
+    return a(paramString, paramOnClickListener);
   }
   
-  private void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, bgrg parambgrg, String paramString1, String paramString2, String paramString3, String paramString4)
+  public bgrb a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    String str = b + File.separator + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + ".qapkg";
-    long l = System.currentTimeMillis();
-    if (TextUtils.isEmpty(paramString2)) {
-      if (parambgrg != null)
-      {
-        parambgrg.a(null, 1, "apkUrl is Null!");
-        QMLog.e("ApkgManager", "downloadApkgByResumableDownloader apkUrl is null!");
-      }
-    }
-    do
+    if (paramOnClickListener == null)
     {
-      return;
-      bgyd.a(paramMiniAppInfo, 619, "0");
-      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString2, null, str, 60, new bgrd(this, parambgrg, str, paramString1, paramMiniAppInfo, paramString3, paramString4, l));
-    } while (!paramBoolean);
-    a(paramMiniAppInfo, paramString1);
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramString);
+    this.d.setContentDescription(paramString + getContext().getString(2131694329));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bgrd(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  private void a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, String paramString4, bgrg parambgrg)
+  protected void a() {}
+  
+  public bgrb b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    bgyd.a(paramMiniAppInfo, 621, "0");
-    boolean bool = bgjt.a(new File(paramString1).getAbsolutePath(), paramString2);
-    int i;
-    if (bool)
+    if (paramOnClickListener == null)
     {
-      i = 0;
-      bgyd.a(paramMiniAppInfo, 622, null, null, null, i);
-      if (!bool) {
-        break label111;
-      }
-      paramString1 = bgjw.a(paramString2, paramString4, paramMiniAppInfo);
-      if ((paramString3 == null) || (paramString1 == null)) {
-        break label94;
-      }
-      a(paramString1, paramMiniAppInfo, paramString3, new bgre(this, parambgrg));
+      this.e.setVisibility(8);
+      return this;
     }
-    label94:
-    label111:
-    while (parambgrg == null)
-    {
-      do
-      {
-        return;
-        i = 1;
-        break;
-      } while (parambgrg == null);
-      parambgrg.a(paramString1, 0, "");
-      return;
-    }
-    parambgrg.a(null, 3, "解包失败");
+    this.e.setText(paramInt);
+    this.e.setContentDescription(getContext().getString(paramInt));
+    this.e.setVisibility(0);
+    this.e.setOnClickListener(new bgrg(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public static boolean a(MiniAppInfo paramMiniAppInfo)
+  public bgrb b(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    return new File(a(paramMiniAppInfo)).exists();
-  }
-  
-  public static String b(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo.isEngineTypeMiniGame()) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    return b;
-  }
-  
-  public void a(bgjw parambgjw, MiniAppInfo paramMiniAppInfo, String paramString, bgrh parambgrh)
-  {
-    String str2 = a(paramMiniAppInfo);
-    String str1;
-    if ("/__APP__/".equals(paramString))
+    if (paramOnClickListener == null)
     {
-      this.c = "";
-      str1 = paramMiniAppInfo.downloadUrl;
-      QMLog.d("ApkgManager", "downloadSubPack | downPage=" + paramString + "; subPackDownloadUrl=" + str1);
-      if (!TextUtils.isEmpty(str1)) {
-        break label119;
-      }
-      QMLog.e("ApkgManager", "subPackDownloadUrl is null, return.");
-      if (parambgrh != null) {
-        parambgrh.onInitApkgInfo(1, parambgjw, null);
-      }
+      this.e.setVisibility(8);
+      return this;
     }
-    label119:
-    do
-    {
-      return;
-      this.c = parambgjw.getRootPath(paramString);
-      str1 = a(paramMiniAppInfo, this.c);
-      break;
-      if (("/__APP__/".equals(paramString)) || (!new File(str2, this.c).exists())) {
-        break label164;
-      }
-    } while (parambgrh == null);
-    parambgrh.onInitApkgInfo(0, parambgjw, null);
-    return;
-    label164:
-    if (!TextUtils.isEmpty(str1))
-    {
-      str2 = b + File.separator + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + ".qapkg";
-      bgyd.a(paramMiniAppInfo, 613, paramString, null, null, 0, "0", 0L, null);
-      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(str1, null, str2, 60, new bgrf(this, parambgrh, parambgjw, paramMiniAppInfo, paramString, str2));
-      return;
-    }
-    parambgrh.onInitApkgInfo(1, parambgjw, null);
+    this.e.setTextColor(paramInt);
+    return b(paramString, paramOnClickListener);
   }
   
-  public void a(MiniAppInfo paramMiniAppInfo, bgrh parambgrh)
+  public bgrb b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    a(paramMiniAppInfo, true, parambgrh);
+    if (paramOnClickListener == null)
+    {
+      this.e.setVisibility(8);
+      return this;
+    }
+    this.e.setText(paramString);
+    this.e.setContentDescription(paramString + getContext().getString(2131694329));
+    this.e.setVisibility(0);
+    this.e.setOnClickListener(new bgre(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, bgrh parambgrh)
+  /* Error */
+  public void dismiss()
   {
-    long l = System.currentTimeMillis();
-    bgyd.a(paramMiniAppInfo, 12, null, null, null, 0);
-    a(paramMiniAppInfo, paramBoolean, new bgrc(this, parambgrh, l, paramMiniAppInfo));
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 181	android/app/Dialog:dismiss	()V
+    //   4: return
+    //   5: astore_1
+    //   6: aload_1
+    //   7: athrow
+    //   8: astore_1
+    //   9: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	10	0	this	bgrb
+    //   5	2	1	localObject	java.lang.Object
+    //   8	1	1	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	5	finally
+    //   0	4	8	java/lang/Exception
+  }
+  
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramAccessibilityEvent.getEventType() == 32) {
+      paramAccessibilityEvent.getText().add(getContext().getString(2131694330));
+    }
+    super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(Dialog.class.getName());
+    return false;
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365237));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365233));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365218));
+    this.c = ((TextView)findViewById(2131365211));
+    this.g = ((TextView)findViewById(2131365504));
+    this.f = ((TextView)findViewById(2131372246));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366819));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366818);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379729));
+    this.j = ((TextView)findViewById(2131369870));
+    this.k = ((TextView)findViewById(2131369871));
+    this.d = ((TextView)findViewById(2131365222));
+    this.e = ((TextView)findViewById(2131365228));
+    this.h = ((TextView)findViewById(2131365219));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365263));
+    this.d.setVisibility(8);
+    this.e.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363352));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378215));
+    this.i = ((TextView)findViewById(2131379127));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369519));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365229));
+    if ((this.jdField_a_of_type_AndroidWidgetListView != null) && (Build.VERSION.SDK_INT >= 9)) {
+      this.jdField_a_of_type_AndroidWidgetListView.setOverScrollMode(2);
+    }
+    this.jdField_a_of_type_Bgrh.a(findViewById(2131365196));
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getContext().getString(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 

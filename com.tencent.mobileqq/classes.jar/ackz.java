@@ -1,19 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class ackz
-  implements bekp
+public final class ackz
+  implements benw
 {
-  public ackz(ChatSettingForTroop paramChatSettingForTroop) {}
+  public ackz(Context paramContext) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
-    bdaj.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bdaj.a(this.a.a) });
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

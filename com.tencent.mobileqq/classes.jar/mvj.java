@@ -159,13 +159,13 @@ public class mvj
     paramIntent = new Intent(paramIntent);
     paramIntent.setAction("com.tencent.qav.notify.accept");
     paramIntent.putExtra("session_id", parammvm.jdField_a_of_type_JavaLangString);
-    localArrayList.add(new mvl(2130841757, alpo.a(2131709317), PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
+    localArrayList.add(new mvl(2130841770, alud.a(2131709329), PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
     paramIntent = new Intent("com.tencent.qav.notify.refuse");
     paramIntent.putExtra("uin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
     paramIntent.putExtra("session_id", parammvm.jdField_a_of_type_JavaLangString);
     paramIntent.putExtra("notify_type", parammvm.jdField_a_of_type_Int);
     paramIntent.putExtra("uinType", parammvm.jdField_b_of_type_Int);
-    localArrayList.add(new mvl(2130841759, alpo.a(2131709316), PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
+    localArrayList.add(new mvl(2130841772, alud.a(2131709328), PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
     return localArrayList;
   }
   
@@ -329,14 +329,14 @@ public class mvj
         localPendingIntent = PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, (Intent)localObject2, 134217728);
       }
       if (j == 2) {
-        localObject1 = ((String)localObject1).replace(this.jdField_a_of_type_AndroidContentContext.getString(2131720905), this.jdField_a_of_type_AndroidContentContext.getString(2131720906));
+        localObject1 = ((String)localObject1).replace(this.jdField_a_of_type_AndroidContentContext.getString(2131720917), this.jdField_a_of_type_AndroidContentContext.getString(2131720918));
       }
       break;
     }
     for (;;)
     {
       if (j == 2) {
-        paramString = paramString.replace(this.jdField_a_of_type_AndroidContentContext.getString(2131720905), this.jdField_a_of_type_AndroidContentContext.getString(2131720906));
+        paramString = paramString.replace(this.jdField_a_of_type_AndroidContentContext.getString(2131720917), this.jdField_a_of_type_AndroidContentContext.getString(2131720918));
       }
       for (;;)
       {
@@ -384,32 +384,32 @@ public class mvj
           ((Intent)localObject2).putExtra("GroupId", parammvm.jdField_c_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
           if (parammvm.jdField_c_of_type_Int == 4) {}
-          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696163);; paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696157))
+          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696165);; paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696159))
           {
-            i = 2130841944;
+            i = 2130841957;
             localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
             break;
           }
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteActivity.class);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131721325);
-          i = 2130841944;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131721338);
+          i = 2130841957;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteActivity.class);
           ((Intent)localObject2).addFlags(4194304);
           ((Intent)localObject2).addFlags(262144);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696162);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696164);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           ((Intent)localObject2).putExtra("uin", parammvm.jdField_c_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131695838);
-          i = 2130841944;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131695840);
+          i = 2130841957;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, GaInviteDialogActivity.class);
@@ -418,18 +418,18 @@ public class mvj
           BaseGaInvite.a((Intent)localObject2, "updateNotification");
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
           if (TextUtils.isEmpty(parammvm.jdField_d_of_type_JavaLangString)) {}
-          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696134);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696135), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
+          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696136);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696137), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
           {
-            i = 2130841773;
+            i = 2130841786;
             localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
             break;
           }
           localObject2 = mvn.a(this.jdField_a_of_type_AndroidContentContext, parammvm.jdField_a_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
           if (TextUtils.isEmpty(parammvm.jdField_d_of_type_JavaLangString)) {}
-          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696134);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696135), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
+          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696136);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696137), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
           {
-            i = 2130841773;
+            i = 2130841786;
             localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
             break;
           }
@@ -437,24 +437,24 @@ public class mvj
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           ((Intent)localObject2).putExtra("uin", parammvm.jdField_c_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696163);
-          i = 2130841944;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696165);
+          i = 2130841957;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           ((Intent)localObject2).putExtra("GroupId", parammvm.jdField_c_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131695838);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131695840);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           ((Intent)localObject2).putExtra("GroupId", parammvm.jdField_c_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696157);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696159);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
@@ -464,28 +464,28 @@ public class mvj
           ((Intent)localObject2).putExtra("uinType", parammvm.jdField_b_of_type_Int);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696030);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696032);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = mvn.b(this.jdField_a_of_type_AndroidContentContext, parammvm.jdField_a_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
           paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131690319);
-          i = 2130841773;
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = mvn.b(this.jdField_a_of_type_AndroidContentContext, parammvm.jdField_a_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131721325);
-          i = 2130841944;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131721338);
+          i = 2130841957;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = mvn.b(this.jdField_a_of_type_AndroidContentContext, parammvm.jdField_a_of_type_JavaLangString);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
           if (TextUtils.isEmpty(parammvm.jdField_d_of_type_JavaLangString)) {}
-          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696134);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696135), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
+          for (paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696136);; paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131696137), new Object[] { a(parammvm.jdField_d_of_type_JavaLangString, 7) }))
           {
-            i = 2130841773;
+            i = 2130841786;
             localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
             break;
           }
@@ -496,8 +496,8 @@ public class mvj
           ((Intent)localObject2).putExtra("uinType", parammvm.jdField_b_of_type_Int);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696157);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696159);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
@@ -507,8 +507,8 @@ public class mvj
           ((Intent)localObject2).putExtra("uinType", parammvm.jdField_b_of_type_Int);
           ((Intent)localObject2).putExtra("sessionType", parammvm.jdField_c_of_type_Int);
           localObject1 = parammvm.jdField_b_of_type_JavaLangString;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696163);
-          i = 2130841773;
+          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131696165);
+          i = 2130841786;
           localObject3 = parammvm.jdField_a_of_type_AndroidGraphicsBitmap;
           break;
         }

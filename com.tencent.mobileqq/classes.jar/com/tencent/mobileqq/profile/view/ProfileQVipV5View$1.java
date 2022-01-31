@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile.view;
 
-import aloz;
-import awmk;
-import bdbg;
+import alto;
+import awqt;
+import bdfp;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,17 +12,17 @@ import mqq.os.MqqHandler;
 class ProfileQVipV5View$1
   implements Runnable
 {
-  ProfileQVipV5View$1(ProfileQVipV5View paramProfileQVipV5View, awmk paramawmk, boolean paramBoolean) {}
+  ProfileQVipV5View$1(ProfileQVipV5View paramProfileQVipV5View, awqt paramawqt, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((aloz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Awmk.a.a);
+    ExtensionInfo localExtensionInfo = ((alto)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Awqt.a.a);
     ProfileQVipV5View.1.1 local1 = new ProfileQVipV5View.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bdbg.b(localExtensionInfo.pendantId)))
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bdfp.b(localExtensionInfo.pendantId)))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_Alkr);
-      bdbg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Awmk.a.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_Alpg);
+      bdfp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Awqt.a.a);
     }
   }
 }

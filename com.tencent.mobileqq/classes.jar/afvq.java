@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.qphone.base.util.QLog;
 
 class afvq
-  implements DialogInterface.OnClickListener
+  implements atxr
 {
-  afvq(afvo paramafvo, MessageForShakeWindow paramMessageForShakeWindow) {}
+  afvq(afvp paramafvp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(afvu paramafvu)
   {
-    acex.a(this.jdField_a_of_type_Afvo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afvo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afvo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
+    if (QLog.isColorLevel()) {
+      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
+    }
+    afvg.a(this.a.jdField_a_of_type_Afvg, paramafvu);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      afvg.a(this.a.jdField_a_of_type_Afvg, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Afvu);
+    }
   }
 }
 

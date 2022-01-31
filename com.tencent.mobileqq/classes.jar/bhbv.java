@@ -1,21 +1,10 @@
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer.6;
-import com.tencent.smtt.sdk.ValueCallback;
-
 public class bhbv
-  implements ValueCallback<String>
 {
-  public bhbv(PageWebviewContainer.6 param6) {}
-  
-  public void a(String paramString)
-  {
-    QMLog.d("PageWebviewContainer", "openFileReader callback  : " + paramString);
-    if ((paramString != null) && (paramString.startsWith("http"))) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).downloadQQBrowser("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
-    }
-  }
+  public int a = -1;
+  public int b = -1;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
 }
 
 

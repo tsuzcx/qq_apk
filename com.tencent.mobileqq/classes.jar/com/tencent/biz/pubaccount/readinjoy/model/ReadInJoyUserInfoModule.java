@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aloz;
-import alpo;
+import alto;
+import alud;
 import android.os.Handler;
 import android.text.TextUtils;
-import awbw;
+import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
@@ -57,10 +57,10 @@ public class ReadInJoyUserInfoModule
   private pgu jdField_a_of_type_Pgu;
   private ConcurrentHashMap<String, Boolean> b = new ConcurrentHashMap();
   
-  public ReadInJoyUserInfoModule(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public ReadInJoyUserInfoModule(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
-    this.jdField_a_of_type_Pgu = new pgu(paramExecutorService, this, paramawbw);
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
+    this.jdField_a_of_type_Pgu = new pgu(paramExecutorService, this, paramawgf);
   }
   
   public static ReadInJoyUserInfo a(long paramLong, pgr parampgr)
@@ -129,7 +129,7 @@ public class ReadInJoyUserInfoModule
   
   public static String a()
   {
-    return alpo.a(2131713456);
+    return alud.a(2131713468);
   }
   
   public static String a(long paramLong)
@@ -395,7 +395,7 @@ public class ReadInJoyUserInfoModule
       AppRuntime localAppRuntime = ors.a();
       long l = 0L;
       if ((localAppRuntime instanceof QQAppInterface)) {
-        if (!((aloz)((QQAppInterface)localAppRuntime).getManager(51)).b(str)) {
+        if (!((alto)((QQAppInterface)localAppRuntime).getManager(51)).b(str)) {
           break label136;
         }
       }

@@ -1,20 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
+import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 
 public class awsg
-  implements Animation.AnimationListener
 {
-  public awsg(VipProfileSimpleView paramVipProfileSimpleView, Animation paramAnimation) {}
+  public HiBoomTextView a;
+  public ProfileCardScrollImageView a;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public awsg(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
 }
 
 

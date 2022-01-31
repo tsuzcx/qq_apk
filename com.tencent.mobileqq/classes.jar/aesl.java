@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aesl
-  implements azzg
+  implements URLDrawable.URLDrawableListener
 {
-  aesl(aesi paramaesi) {}
+  aesl(aesk paramaesk) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    azzm localazzm = new azzm(3000, 360, 0);
-    localazzm.a = true;
-    this.a.a.f.a(new azzf[] { localazzm });
+    aesk.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693764, 1).a();
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    aesk.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693764, 1).a();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    aesk.d(this.a);
+    aesk.a(this.a, aesk.a(this.a));
   }
 }
 

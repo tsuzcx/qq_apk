@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class acwf
-  implements bhum
+public abstract class acwf
+  extends ClickableSpan
 {
-  public acwf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public acwf(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!bdee.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
       return;
     }
-    this.a.a.a();
-    this.a.d(true);
   }
 }
 

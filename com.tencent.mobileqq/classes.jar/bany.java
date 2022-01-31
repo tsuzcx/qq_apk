@@ -1,45 +1,35 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bany
-  implements baux
+public class bany
 {
-  bany(banw parambanw) {}
+  public int a;
+  public String a;
+  private JSONObject a;
   
-  public Bitmap getBitmap(URL paramURL)
+  public bany(int paramInt, String paramString)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
+        localJSONException.printStackTrace();
       }
     }
-    return null;
   }
 }
 

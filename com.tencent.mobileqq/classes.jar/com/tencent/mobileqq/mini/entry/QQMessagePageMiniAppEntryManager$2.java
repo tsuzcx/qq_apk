@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import amnf;
+import amru;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$2
@@ -11,14 +11,14 @@ class QQMessagePageMiniAppEntryManager$2
   public void run()
   {
     if (this.val$app == null) {}
-    amnf localamnf;
+    amru localamru;
     do
     {
       return;
-      localamnf = (amnf)this.val$app.a(148);
-    } while (localamnf == null);
-    localamnf.a();
-    localamnf.c();
+      localamru = (amru)this.val$app.a(148);
+    } while (localamru == null);
+    localamru.a();
+    localamru.c();
   }
 }
 

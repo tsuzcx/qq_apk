@@ -1,13 +1,15 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aujz
+class aujz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
+  aujz(aujr paramaujr) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -39,7 +39,7 @@ public class pdd
     if (otf.c(b()))
     {
       paramMap = a();
-      if (bjxj.w()) {
+      if (bkbq.w()) {
         break label36;
       }
       QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");

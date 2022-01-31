@@ -2,15 +2,15 @@ package com.tencent.open.agent;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bdcd;
-import bdfq;
-import beym;
-import beyn;
+import bdgm;
+import bdjz;
+import bfcv;
+import bfcw;
 
 public class BindGroupActivity$4$1
   implements Runnable
 {
-  public BindGroupActivity$4$1(beym parambeym) {}
+  public BindGroupActivity$4$1(bfcv parambfcv) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class BindGroupActivity$4$1
     do
     {
       return;
-      this.a.a.a = bdcd.a(this.a.a, 230);
-      this.a.a.a.setMessage(this.a.a.getActivity().getResources().getString(2131721023));
-      beyn localbeyn = new beyn(this);
-      this.a.a.a.setPositiveButton(2131691088, localbeyn);
+      this.a.a.a = bdgm.a(this.a.a, 230);
+      this.a.a.a.setMessage(this.a.a.getActivity().getResources().getString(2131721035));
+      bfcw localbfcw = new bfcw(this);
+      this.a.a.a.setPositiveButton(2131691089, localbfcw);
     } while (this.a.a.a.isShowing());
     this.a.a.a.show();
   }

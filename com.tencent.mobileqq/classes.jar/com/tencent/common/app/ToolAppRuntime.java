@@ -1,9 +1,9 @@
 package com.tencent.common.app;
 
-import biij;
-import bith;
-import biuh;
-import bivf;
+import bimq;
+import bixo;
+import biyo;
+import bizm;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -47,17 +47,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = biij.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bimq.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = bivf.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bizm.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = biuh.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = biyo.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -70,7 +70,7 @@ public class ToolAppRuntime
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = bith.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bixo.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))

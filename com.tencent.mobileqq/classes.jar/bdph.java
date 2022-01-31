@@ -1,22 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdph
-  implements EIPCResultCallback
+public class bdph
 {
-  public bdph(bdpe parambdpe) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static SharedPreferences a(String paramString1, String paramString2, String paramString3)
   {
-    if (paramEIPCResult.code != 0)
+    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString2)))
     {
-      this.a.a(2, "", "");
-      return;
+      paramString2 = " getSP, 获取配置需要UIN, uin[" + paramString2 + "], spName[" + paramString3 + "]";
+      QLog.w(paramString1, 1, paramString2, new Throwable("打印调用栈"));
+      throw new IllegalArgumentException(paramString1 + paramString2);
     }
-    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
-    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(paramString3 + paramString2, 4);
+      if ((localObject == null) && (AudioHelper.d())) {
+        QLog.w(paramString1, 1, "getSP, sp为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+      }
+      return localObject;
+    }
+    if (AudioHelper.d()) {
+      QLog.w(paramString1, 1, "getSP, BaseApplicationImpl为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+    }
+    return null;
   }
 }
 

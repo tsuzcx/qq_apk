@@ -1,7 +1,12 @@
-public class bkpu
+class bkpu
+  implements axpb
 {
-  public int a = 0;
-  public int b = 0;
+  bkpu(bkpl parambkpl) {}
+  
+  public void a()
+  {
+    bksp.a().e();
+  }
 }
 
 

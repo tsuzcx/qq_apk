@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqsv;
-import aqsx;
+import aqxe;
+import aqxg;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileUploader$3
   implements Runnable
 {
-  public FileUploader$3(aqsv paramaqsv) {}
+  public FileUploader$3(aqxe paramaqxe) {}
   
   public void run()
   {
-    if (aqsv.a(this.this$0)) {
+    if (aqxe.a(this.this$0)) {
       return;
     }
-    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + aqsv.b(this.this$0) + "] resend");
-    if (aqsv.a(this.this$0) != null) {
-      aqsv.a(this.this$0).i();
+    QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + aqxe.b(this.this$0) + "] resend");
+    if (aqxe.a(this.this$0) != null) {
+      aqxe.a(this.this$0).i();
     }
-    aqsv.a(this.this$0, 0L);
-    aqsv.a(this.this$0, 0L);
+    aqxe.a(this.this$0, 0L);
+    aqxe.a(this.this$0, 0L);
   }
 }
 

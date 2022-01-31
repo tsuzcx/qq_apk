@@ -1,7 +1,26 @@
-public class ajpc
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+
+class ajpc
+  implements aepr
 {
-  public boolean a;
-  public boolean b;
+  ajpc(ajpb paramajpb) {}
+  
+  public void a(AudioPlayer paramAudioPlayer)
+  {
+    if (ajpb.a(this.a))
+    {
+      ajpb.a(this.a, false);
+      ajpb.a(this.a);
+    }
+  }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-final class auva
-  implements DialogInterface.OnClickListener
+public class auva
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

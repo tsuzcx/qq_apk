@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acem
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public acem(BaseChatPie paramBaseChatPie) {}
+  public acem(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.b(this.a.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
-    agci.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8004079", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 

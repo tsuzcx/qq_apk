@@ -1,19 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.app.Activity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import mqq.os.MqqHandler;
 
-public class afwx
-  implements Animator.AnimatorListener
+class afwx
+  implements aufy<EmoticonPackage>
 {
-  public afwx(SixCombolEffectView paramSixCombolEffectView) {}
+  afwx(afwu paramafwu, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(EmoticonPackage paramEmoticonPackage)
+  {
+    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1000) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 10004) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1001) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1002) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1003) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1004) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1005) && (this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1006))
+    {
+      paramEmoticonPackage = this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (paramEmoticonPackage != null) {
+        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
+      }
+      return;
+    }
+    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Afwu.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afwu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
+  }
 }
 
 

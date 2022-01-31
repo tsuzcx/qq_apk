@@ -1,49 +1,6 @@
-import android.support.annotation.NonNull;
-
-public class vld
+public abstract interface vld
 {
-  public String a;
-  public String b;
-  
-  public vld(@NonNull String paramString)
-  {
-    this.a = paramString;
-    xmh.a(paramString);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (vld)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.b == null) {}
-    for (String str = "";; str = this.b) {
-      return str + this.a;
-    }
-  }
+  public abstract void a(vgp paramvgp, bety parambety);
 }
 
 

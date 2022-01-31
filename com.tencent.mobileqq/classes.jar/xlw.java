@@ -1,18 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.os.Message;
 
-class xlw
-  implements View.OnClickListener
+public class xlw
 {
-  xlw(xlv paramxlv, TroopStoryItemInfo paramTroopStoryItemInfo) {}
-  
-  public void onClick(View paramView)
+  public static String a(int paramInt)
   {
-    paramView = ((uro)urr.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((ukd)urr.a().b(3)).a(paramView);
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 1: 
+      return "TRUE";
     }
+    return "FALSE";
+  }
+  
+  public static String a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return "OTHERS[" + paramMessage.what + "] - " + paramMessage.arg1;
+    case 1: 
+      return "ACTION_VISIBILITY - " + paramMessage.arg1;
+    case 2: 
+      return "ACTION_KEEP_SHOWING - " + a(paramMessage.arg1);
+    case 3: 
+      return "ACTION_PLAY_ANIMATION";
+    case 4: 
+      return "ACTION_STOP_ANIMATION";
+    case 5: 
+      return "ACTION_SET_PROGRESS";
+    case 7: 
+      return "ACTION_UI_EVENT_CLICK - " + b(paramMessage.arg1);
+    case 8: 
+      return "ACTION_UI_EVENT_LONG_CLICK - " + b(paramMessage.arg1);
+    case 9: 
+      return "ACTION_UI_EVENT_TOUCH - " + b(paramMessage.arg1);
+    case 10: 
+      return "ACTION_UI_VISIBILITY_CHANGED - " + paramMessage.arg1;
+    }
+    return "ACTION_SET_STUBMODE";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 0: 
+      return "UNREGISTER";
+    }
+    return "REGISTER";
   }
 }
 

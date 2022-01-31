@@ -9,9 +9,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ssw
-  implements yvn<CertifiedAccountRead.StGetFollowFeedsRsp>
+  implements zac<CertifiedAccountRead.StGetFollowFeedsRsp>
 {
-  public ssw(FolderFollowTabFragment paramFolderFollowTabFragment, xzz paramxzz) {}
+  public ssw(FolderFollowTabFragment paramFolderFollowTabFragment, yei paramyei) {}
   
   public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
   {
@@ -29,12 +29,12 @@ public class ssw
       FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
     }
     paramString = paramStGetFollowFeedsRsp.feeds.get();
-    xzz localxzz = this.jdField_a_of_type_Xzz;
+    yei localyei = this.jdField_a_of_type_Yei;
     COMM.StCommonExt localStCommonExt = paramStGetFollowFeedsRsp.extInfo;
     if (paramStGetFollowFeedsRsp.isFinish.get() == 1) {}
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      localxzz.b(paramString, localStCommonExt, paramBoolean);
+      localyei.b(paramString, localStCommonExt, paramBoolean);
       return;
     }
   }

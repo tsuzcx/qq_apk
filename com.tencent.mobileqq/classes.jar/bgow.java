@@ -1,93 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnVideoPreparedListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.1;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.2;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 
 public class bgow
-  implements VideoPlayerProxy.OnVideoPreparedListener
 {
-  public bgow(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void onVideoPrepared(VideoPlayerProxy paramVideoPlayerProxy)
+  public static bgrb a(Context paramContext, int paramInt)
   {
-    boolean bool = true;
-    if (!this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "waiting");
-    }
-    for (;;)
-    {
-      MiniAppVideoPlayer.b(this.a, false);
-      MiniAppVideoPlayer.b(this.a, false);
-      this.a.jdField_a_of_type_Boolean = true;
-      if (!MiniAppVideoPlayer.a(this.a)) {
-        break;
-      }
-      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
-        MiniAppVideoPlayer.a(this.a).pause();
-      }
-      ThreadManager.c().post(new MiniAppVideoPlayer.7.1(this));
-      MiniAppVideoPlayer.c(this.a, false);
-      return;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Bghn.a("onVideoWaiting", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
-    MiniAppVideoPlayer.a(this.a).start();
-    this.a.postDelayed(new MiniAppVideoPlayer.7.2(this), 200L);
-    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
-    {
-      MiniAppVideoPlayer.a(this.a, "play");
-      MiniAppVideoPlayer.e(this.a);
-      ThreadManager.c().post(new MiniAppVideoPlayer.7.3(this));
-      paramVideoPlayerProxy = new StringBuilder().append("onVideoPrepared: ").append(MiniAppVideoPlayer.a(this.a).getDuration()).append(" ").append(MiniAppVideoPlayer.a(this.a).getCurrentPostion()).append(" ");
-      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-        break label464;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        Log.i("MiniAppVideoPlayer", bool);
-        MiniAppVideoPlayer.a(this.a, 200L);
-        return;
-        try
-        {
-          paramVideoPlayerProxy = new JSONObject();
-          paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-          paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-          this.a.jdField_a_of_type_Bghn.a("onVideoPlay", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-          QMLog.d("MiniAppVideoPlayer", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + paramVideoPlayerProxy.toString());
-        }
-        catch (JSONException paramVideoPlayerProxy)
-        {
-          paramVideoPlayerProxy.printStackTrace();
-        }
-      }
-      break;
-      label464:
-      bool = false;
-    }
+    return a(paramContext, paramInt, null, null, 2131694328, 2131694352, null, null);
+  }
+  
+  public static bgrb a(Context paramContext, int paramInt, String paramString1, CharSequence paramCharSequence, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    paramContext = new bgrb(paramContext, 2131755761);
+    paramContext.setContentView(2131559341);
+    paramContext.a(paramString1);
+    paramContext.a(paramCharSequence);
+    paramContext.a(paramString2, paramOnClickListener2);
+    paramContext.b(paramString3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public static bgrb a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    paramContext = new bgrb(paramContext, 2131755761);
+    paramContext.setContentView(2131559341);
+    paramContext.a(paramString1);
+    paramContext.a(paramString2);
+    paramContext.a(paramInt2, paramOnClickListener2);
+    paramContext.b(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public static bgrb a(Context paramContext, int paramInt, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    return a(paramContext, paramInt, paramString1, paramString2, 2131694328, 2131694352, paramOnClickListener1, paramOnClickListener2);
   }
 }
 

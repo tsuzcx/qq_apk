@@ -1,62 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class atju
-  extends BroadcastReceiver
+public class atju
+  implements IMiniMsgUnreadCallback
 {
-  atju(atjn paramatjn) {}
+  public atju(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void destroy() {}
+  
+  public void hide() {}
+  
+  public void hideUnread()
   {
-    paramContext = paramIntent.getAction();
-    paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
-    }
-    int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
+    try
     {
-      i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label246;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadHide", true);
+      this.a.a("UnRead", localJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
+  }
+  
+  public boolean show(int paramInt)
+  {
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    try
+    {
+      paramBundle = new JSONObject();
+      this.a.a("backFromMiniAIO", paramBundle);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadC", paramInt);
+      localJSONObject.put("unReadHide", paramBoolean);
+      this.a.a("updateUnreadCount", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
       }
-      if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) && (this.a.jdField_a_of_type_Atjl.jdField_h_of_type_Boolean))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a.setAlign(this.a.jdField_a_of_type_Atjl.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.a.jdField_a_of_type_Atjl.g, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.g());
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.a.jdField_a_of_type_Atjl.jdField_h_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.g());
-        this.a.jdField_a_of_type_Atjl.jdField_h_of_type_Boolean = false;
-      }
-      this.a.a(false);
-      this.a.jdField_a_of_type_Boolean = false;
-      atjn.a(this.a, false);
-    }
-    label246:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    if (i == 0)
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a(true);
-      atjn.a(this.a, false);
       return;
     }
-    if (this.a.b)
-    {
-      atjn.a(this.a, true);
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Atjl.f = true;
-    atjn.a(this.a, false);
+    catch (Exception localException) {}
   }
 }
 

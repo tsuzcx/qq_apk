@@ -18,7 +18,7 @@ public class ce
     for (;;)
     {
       return null;
-      paramVarArgs = (allz)this.a.app.a(8);
+      paramVarArgs = (alqo)this.a.app.a(8);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {

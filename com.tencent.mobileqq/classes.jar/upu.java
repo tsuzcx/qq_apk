@@ -1,15 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public abstract interface upu
+class upu
+  implements awkh
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  upu(upt paramupt) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
   
-  public abstract void a(MessageMicro paramMessageMicro);
+  public void a(awki paramawki) {}
   
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void b(awki paramawki)
+  {
+    if (paramawki.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = paramawki.jdField_b_of_type_JavaLangString;
+      this.a.b();
+      upt.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramawki.jdField_b_of_type_Int == baxx.a(940010)) && (this.a.a.getAndIncrement() < 2))
+    {
+      upt.a(this.a);
+      wxe.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
+      return;
+    }
+    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
+    paramawki.extraMsg = "upload";
+    upt.a(this.a, paramawki);
+  }
 }
 
 

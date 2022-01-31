@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aljd;
-import alje;
-import alpo;
+import alns;
+import alnt;
+import alud;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,9 +15,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import bhpy;
-import bhqd;
-import bjao;
+import bhuf;
+import bhuk;
+import bjev;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -28,19 +28,19 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 
 public class ShareImageHandler
-  implements alje, DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bhqd
+  implements alnt, DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bhuk
 {
   private long jdField_a_of_type_Long;
-  private aljd jdField_a_of_type_Aljd;
-  private bhpy jdField_a_of_type_Bhpy;
+  private alns jdField_a_of_type_Alns;
+  private bhuf jdField_a_of_type_Bhuf;
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference<Activity> b;
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpy != null) {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if (this.jdField_a_of_type_Bhuf != null) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
   }
   
@@ -72,10 +72,10 @@ public class ShareImageHandler
                     } while (this.jdField_a_of_type_Boolean);
                     paramMessage = (String)paramMessage.obj;
                   } while ((TextUtils.isEmpty(paramMessage)) || (this.b == null) || (this.b.get() == null));
-                  QQToast.a((Context)this.b.get(), alpo.a(2131714328) + paramMessage, 1).a();
+                  QQToast.a((Context)this.b.get(), alud.a(2131714340) + paramMessage, 1).a();
                   return false;
-                  if (this.jdField_a_of_type_Bhpy != null) {
-                    this.jdField_a_of_type_Bhpy.dismiss();
+                  if (this.jdField_a_of_type_Bhuf != null) {
+                    this.jdField_a_of_type_Bhuf.dismiss();
                   }
                 } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.b.get() == null));
                 localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -93,10 +93,10 @@ public class ShareImageHandler
             {
               localArrayList.add(URLDecoder.decode(paramMessage));
               localBundle.putStringArrayList("images", localArrayList);
-              localBundle.putString("summary", alpo.a(2131714327));
+              localBundle.putString("summary", alud.a(2131714339));
               localBundle.putInt("req_type", 7);
               localBundle.putBoolean("key_need_save_draft", false);
-              bjao.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
+              bjev.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
               return false;
             }
             catch (Exception paramMessage)
@@ -104,8 +104,8 @@ public class ShareImageHandler
               QLog.d("ShareImageHandler", 2, "publishToQzone:" + paramMessage.getMessage());
               return false;
             }
-            if (this.jdField_a_of_type_Bhpy != null) {
-              this.jdField_a_of_type_Bhpy.dismiss();
+            if (this.jdField_a_of_type_Bhuf != null) {
+              this.jdField_a_of_type_Bhuf.dismiss();
             }
           } while (this.jdField_a_of_type_Boolean);
           paramMessage = (String)paramMessage.obj;
@@ -142,11 +142,11 @@ public class ShareImageHandler
         if (paramLong != 1L) {
           break;
         }
-      } while (this.jdField_a_of_type_Aljd == null);
-      this.jdField_a_of_type_Aljd.a(this, 16);
+      } while (this.jdField_a_of_type_Alns == null);
+      this.jdField_a_of_type_Alns.a(this, 16);
       return;
-    } while (this.jdField_a_of_type_Aljd == null);
-    this.jdField_a_of_type_Aljd.a(this, 17);
+    } while (this.jdField_a_of_type_Alns == null);
+    this.jdField_a_of_type_Alns.a(this, 17);
   }
 }
 

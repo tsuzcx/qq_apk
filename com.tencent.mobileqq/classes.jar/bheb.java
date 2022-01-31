@@ -1,72 +1,71 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StSetAuthsReq;
+import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-@bghi(a="RuntimeInitTask")
 public class bheb
-  extends bhhp
+  extends bhdw
 {
-  private bhar jdField_a_of_type_Bhar;
-  private boolean jdField_a_of_type_Boolean;
+  private INTERFACE.StSetAuthsReq a = new INTERFACE.StSetAuthsReq();
   
-  public bheb(Context paramContext, bgqg parambgqg)
+  public bheb(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo)
   {
-    super(paramContext, parambgqg);
-  }
-  
-  public void a()
-  {
-    bgxl.a(202, "", a().getMiniAppInfoForReport());
-    MiniAppInfo localMiniAppInfo = a().getMiniAppInfo();
-    Object localObject2;
-    if (a() != null)
+    this.a.appid.set(paramString);
+    if (paramStUserAuthInfo != null)
     {
-      localObject2 = a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
-      }
-      localObject1 = bheh.class;
-      localObject1 = (bhee)((bgqg)localObject2).getTask((Class)localObject1);
-      if (localObject1 == null) {
-        break label132;
-      }
+      paramString = new ArrayList();
+      paramString.add(paramStUserAuthInfo);
+      this.a.auths.set(paramString);
     }
-    label132:
-    for (Object localObject1 = ((bhee)localObject1).a();; localObject1 = null)
-    {
-      localObject2 = (bhea)a().getTask(bhea.class);
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_Bhar = ((bhea)localObject2).a();
-        this.jdField_a_of_type_Bhar.a((bhdj)localObject1);
-      }
-      if ((this.jdField_a_of_type_Bhar != null) && (localMiniAppInfo != null))
-      {
-        this.jdField_a_of_type_Bhar.a(localMiniAppInfo, null);
-        c();
-        return;
-        label121:
-        localObject1 = bhee.class;
-        break;
-      }
-      e();
-      return;
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return "mini_user_info";
   }
   
-  public void c()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    super.c();
-    bgxl.a(203, "", a().getMiniAppInfoForReport());
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      if (localStQWebRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode);
+        return paramArrayOfByte;
+      }
+      QMLog.d("SetAuthsRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("SetAuthsRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void d()
+  protected byte[] a()
   {
-    bgxl.a(222, "", a().getMiniAppInfoForReport());
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "SetAuths";
   }
 }
 

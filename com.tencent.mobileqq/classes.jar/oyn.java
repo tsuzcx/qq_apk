@@ -15,7 +15,7 @@ class oyn
     this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(oym.a(this.jdField_a_of_type_Oym));
     oym.a(this.jdField_a_of_type_Oym, null);
     if (261 == this.jdField_a_of_type_Int) {
-      bdiv.s(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+      bdne.s(oym.a(this.jdField_a_of_type_Oym), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
     }
   }
 }

@@ -14,7 +14,7 @@ class RMVideoStateMgr$3
     {
       if (this.this$0.d())
       {
-        this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.this$0.jdField_a_of_type_Bnms);
+        this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.this$0.jdField_a_of_type_Bnre);
         this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.f();
         if (QLog.isColorLevel()) {
           QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");

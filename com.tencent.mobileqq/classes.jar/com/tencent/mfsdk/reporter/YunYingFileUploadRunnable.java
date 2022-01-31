@@ -1,7 +1,7 @@
 package com.tencent.mfsdk.reporter;
 
-import abrh;
-import bdcs;
+import abvw;
+import bdhb;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,7 +16,7 @@ public class YunYingFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private abrh jdField_a_of_type_Abrh;
+  private abvw jdField_a_of_type_Abvw;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -32,11 +32,11 @@ public class YunYingFileUploadRunnable
   private String jdField_c_of_type_JavaLangString;
   private int d = -1;
   
-  public YunYingFileUploadRunnable(URL paramURL, String paramString, abrh paramabrh, int paramInt, MqqHandler paramMqqHandler)
+  public YunYingFileUploadRunnable(URL paramURL, String paramString, abvw paramabvw, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Abrh = paramabrh;
+    this.jdField_a_of_type_Abvw = paramabvw;
     this.d = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -111,7 +111,7 @@ public class YunYingFileUploadRunnable
         l = System.currentTimeMillis();
         localObject2 = "out_" + String.valueOf(l) + ".zip";
         localObject1 = (String)localObject1 + "/" + (String)localObject2;
-        bdcs.e(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+        bdhb.e(this.jdField_a_of_type_JavaLangString, (String)localObject1);
         break;
       }
       return false;
@@ -385,7 +385,7 @@ public class YunYingFileUploadRunnable
     //   519: aload 7
     //   521: invokevirtual 299	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   524: invokespecial 302	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   527: invokestatic 307	abrx:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   527: invokestatic 307	abwm:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   530: invokevirtual 309	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:a	(Ljava/lang/String;)Z
     //   533: istore_3
     //   534: iload_3
@@ -571,10 +571,10 @@ public class YunYingFileUploadRunnable
     //   878: iload 4
     //   880: istore_3
     //   881: aload_0
-    //   882: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Abrh	Labrh;
+    //   882: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
     //   885: ifnull -249 -> 636
     //   888: aload_0
-    //   889: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Abrh	Labrh;
+    //   889: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
     //   892: aload_0
     //   893: getfield 35	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:d	I
     //   896: invokeinterface 338 2 0

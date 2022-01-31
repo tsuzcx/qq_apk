@@ -1,20 +1,17 @@
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
 
 public class bcbd
-  extends bcao<bbzy>
+  implements View.OnClickListener
 {
-  public TextWatcher a;
-  public EditText a;
-  public TextView a;
+  public bcbd(ComplexGuidViewPager paramComplexGuidViewPager) {}
   
-  public bcbd(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377721));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365614));
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

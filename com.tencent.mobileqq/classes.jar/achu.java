@@ -1,26 +1,16 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achu
-  implements bhpo
+  implements View.OnClickListener
 {
-  public achu(ChatHistory paramChatHistory) {}
+  public achu(BaseChatPie paramBaseChatPie) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
+    this.a.c.cancel();
   }
 }
 

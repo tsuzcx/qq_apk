@@ -1,15 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
 class wzw
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  wzw(wzu paramwzu) {}
+  wzw(wzv paramwzv, View paramView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
+    wxe.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 

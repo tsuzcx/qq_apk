@@ -1,37 +1,16 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast.ProtectedToast;
+import android.graphics.drawable.Drawable;
 
-public class bepx
-  implements Handler.Callback
+public abstract interface bepx
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  public abstract void a(int paramInt);
   
-  public bepx(QQToast.ProtectedToast paramProtectedToast, Handler paramHandler)
-  {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
+  public abstract void a(Drawable paramDrawable);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.handleMessage(paramMessage);
-      return true;
-    }
-    catch (Throwable paramMessage)
-    {
-      for (;;)
-      {
-        paramMessage.printStackTrace();
-      }
-    }
-  }
+  public abstract void b(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepx
  * JD-Core Version:    0.7.0.1
  */

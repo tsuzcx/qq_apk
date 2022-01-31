@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-final class bcvt
-  extends View.AccessibilityDelegate
+class bcvt
+  implements baej
 {
-  bcvt(bcvv parambcvv) {}
+  bcvt(bcvs parambcvs) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a()
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.a != null) {
+      this.a.a.a.a.a.a();
     }
   }
 }

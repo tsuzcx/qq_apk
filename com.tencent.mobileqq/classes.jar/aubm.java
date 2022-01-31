@@ -1,55 +1,58 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.data.PhoneContact;
-import friendlist.GetOnlineInfoResp;
-import java.util.List;
-import mqq.manager.Manager;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public abstract interface aubm
-  extends Manager
+public class aubm
+  extends Animation
 {
-  public abstract RespondQueryQQBindingStat a();
+  private final float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
   
-  public abstract PhoneContact a(String paramString);
+  public aubm(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract String a(String paramString);
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
+    }
+    for (;;)
+    {
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
+      return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
+    }
+  }
   
-  public abstract void a(int paramInt, List<String> paramList);
-  
-  public abstract void a(aubn paramaubn);
-  
-  public abstract void a(String paramString, GetOnlineInfoResp paramGetOnlineInfoResp);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Object[] a();
-  
-  public abstract PhoneContact b(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b(aubn paramaubn);
-  
-  public abstract PhoneContact c(String paramString);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract List<PhoneContact> d();
-  
-  public abstract void d();
-  
-  public abstract List<List<PhoneContact>> e();
-  
-  public abstract List<PhoneContact> f();
-  
-  public abstract List<PhoneContact> g();
-  
-  public abstract void g();
-  
-  public abstract boolean h();
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  }
 }
 
 

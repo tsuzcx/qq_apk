@@ -1,25 +1,16 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class axkx
-  implements GLGestureListener
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public GameplayEngine a;
+  public axkx(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public int onGetPriority()
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
   {
-    return 1040;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    paramMotionEvent = new azes(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
   }
 }
 

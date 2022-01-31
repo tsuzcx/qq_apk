@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alfh;
+import aljw;
 import android.os.Bundle;
 
 public class ApolloGameUtil$2$1
   implements Runnable
 {
-  public ApolloGameUtil$2$1(alfh paramalfh, Bundle paramBundle) {}
+  public ApolloGameUtil$2$1(aljw paramaljw, Bundle paramBundle) {}
   
   public void run()
   {

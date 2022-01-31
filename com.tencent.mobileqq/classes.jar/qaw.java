@@ -11,15 +11,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class qaw
   extends pxl
 {
-  public qaw(Context paramContext, bcws parambcws, rqj paramrqj)
+  public qaw(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().l().n().h().g();
+    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().n().h().g();
   }
   
   public pxl d()
@@ -36,11 +36,11 @@ public class qaw
     if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
     {
       RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localRelativeLayout1.setPadding(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout2.setBackgroundResource(2130842499);
-      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, aekt.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aekt.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
+      localRelativeLayout2.setBackgroundResource(2130842512);
+      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, aepi.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aepi.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
       localLayoutParams.addRule(11);
       ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
       ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setId(1);
@@ -49,7 +49,7 @@ public class qaw
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(15);
       localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Pxk).getId());
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
       localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       localRelativeLayout1.addView(localRelativeLayout2);

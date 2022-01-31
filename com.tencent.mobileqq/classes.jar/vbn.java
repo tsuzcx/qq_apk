@@ -1,51 +1,60 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
 public class vbn
-  extends unk<vdd>
+  extends vbo
 {
-  private final String a;
-  public List<String> a;
-  
-  public vbn()
+  public vbn(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_share_group_info");
+    super(paramViewGroup, 2131561509);
   }
   
-  public String a()
+  private void c(uyg paramuyg)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    paramuyg.d = false;
+    uyz.a(QQStoryContext.a()).a(paramuyg);
+    uzo localuzo = new uzo();
+    localuzo.jdField_b_of_type_JavaLangString = paramuyg.jdField_a_of_type_JavaLangString;
+    localuzo.c = paramuyg.jdField_a_of_type_Int;
+    localuzo.d = 4;
+    localuzo.jdField_b_of_type_Long = paramuyg.e;
+    urp.a().a(localuzo, null);
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  public void a(uyg paramuyg)
   {
-    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
-    try
-    {
-      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
-      return new vdd(localRspGetShareGroupInfo);
+    super.a(paramuyg);
+    if (!TextUtils.isEmpty(paramuyg.g)) {
+      c(paramuyg.g);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (!TextUtils.isEmpty(paramuyg.j))
     {
-      wsv.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramuyg.c)) {}
+      for (str = alud.a(2131707338);; str = paramuyg.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramuyg.j);
+        if (paramuyg.d) {
+          c(paramuyg);
+        }
+        return;
+      }
     }
-    return null;
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramuyg.c)) {}
+    for (String str = alud.a(2131707337);; str = paramuyg.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
+    }
   }
   
-  protected byte[] a()
+  protected void b(uyg paramuyg)
   {
-    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqGetShareGroupInfo.share_group_id_list.add(str);
-    }
-    return localReqGetShareGroupInfo.toByteArray();
+    this.a.setDisplayState(6);
+    this.a.a(paramuyg);
   }
 }
 

@@ -21,7 +21,7 @@ public class oic
     QLog.d("ReadInJoyDeliverBiuActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
     if (paramInt1 == 0)
     {
-      QQToast.a(this.a, 2, this.a.getString(2131718829), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 2, this.a.getString(2131718841), 0).b(this.a.getTitleBarHeight());
       ReadInJoyDeliverBiuActivity.e(this.a, -1);
       ReadInJoyDeliverBiuActivity.c(this.a);
       this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
@@ -49,9 +49,9 @@ public class oic
     paramLong = NetConnInfoCenter.getServerTimeMillis() - ReadInJoyDeliverBiuActivity.a(this.a);
     if (paramInt == 0)
     {
-      paramString = this.a.getString(2131718829);
+      paramString = this.a.getString(2131718841);
       if (ReadInJoyDeliverBiuActivity.g(this.a)) {
-        paramString = this.a.getString(2131718822);
+        paramString = this.a.getString(2131718834);
       }
       ReadInJoyDeliverBiuActivity.d(this.a, false);
       if (!this.a.getIntent().getBooleanExtra("hideSuccessToast", false)) {
@@ -73,7 +73,7 @@ public class oic
       paramString = new HashMap();
       paramString.put("param_FailCode", paramInt + "");
       paramString.put("param_FromType", ReadInJoyDeliverBiuActivity.o(this.a) + "");
-      azmz.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, paramLong, 0L, paramString, "");
+      azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, paramLong, 0L, paramString, "");
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverBiuActivity", 2, "doStatisticReport-->success:" + bool + ", costTime:" + paramLong + ", retcode:" + paramInt);
       }

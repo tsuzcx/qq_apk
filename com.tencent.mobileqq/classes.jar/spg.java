@@ -3,7 +3,7 @@ import com.tencent.gdtad.api.GdtAd;
 import org.json.JSONObject;
 
 public class spg
-  implements aaip
+  implements aane
 {
   public spg(BridgeModule paramBridgeModule, String paramString) {}
   
@@ -32,9 +32,9 @@ public class spg
     }
   }
   
-  public void a(GdtAd paramGdtAd, aaio paramaaio)
+  public void a(GdtAd paramGdtAd, aand paramaand)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramaaio.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramaand.a());
   }
   
   public void b(GdtAd paramGdtAd) {}

@@ -1,34 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public final class bdax
-  extends BroadcastReceiver
+  extends MqqHandler
 {
-  public bdax(BaseApplicationImpl paramBaseApplicationImpl) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bdax(Looper paramLooper)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    label4:
+    bday localbday;
+    label143:
+    label150:
     do
     {
       do
       {
+        int i;
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
+          if (FaceDecodeTask.b.size() <= 0) {
+            break label150;
+          }
+          i = 0;
+          if (i >= FaceDecodeTask.b.size()) {
+            break label143;
+          }
+          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
+          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+            break;
+          }
+          localbday = (bday)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localbday == null);
+        if (paramMessage.jdField_a_of_type_Boolean)
+        {
+          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+          localbday.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localbday.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        FaceDecodeTask.b.clear();
         return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 35))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
-      }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
+        paramMessage = (FaceDecodeTask)paramMessage.obj;
+      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      localbday = (bday)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbday == null);
+    if (paramMessage.jdField_a_of_type_Boolean)
+    {
+      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+      localbday.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+      return;
+    }
+    localbday.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

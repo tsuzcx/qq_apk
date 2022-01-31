@@ -1,43 +1,20 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCompletionListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.2;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class bgox
-  implements VideoPlayerProxy.OnCompletionListener
 {
-  public bgox(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void onCompletion(VideoPlayerProxy paramVideoPlayerProxy)
+  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.a.c) {
-      ThreadManager.c().post(new MiniAppVideoPlayer.8.1(this));
-    }
-    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "ended");
-    }
-    for (;;)
-    {
-      ThreadManager.c().post(new MiniAppVideoPlayer.8.2(this));
-      return;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_Bghn.a("onVideoEnded", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoEnded = " + paramVideoPlayerProxy.toString());
-      }
-      catch (Exception paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramFloat1, paramFloat2 });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.setDuration(100L);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
+    localAnimatorSet.addListener(new bgoy());
+    localAnimatorSet.start();
   }
 }
 

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import besh;
+import bewq;
 
 public class Workspace$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new besh();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bewq();
   int currentScreen = -1;
   
   private Workspace$SavedState(Parcel paramParcel)

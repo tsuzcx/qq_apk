@@ -1,20 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 class bmjb
-  extends SimpleJob<Object>
+  implements bmzq<Boolean, bmzw>
 {
-  bmjb(bmix parambmix, String paramString)
-  {
-    super(paramString);
-  }
+  bmjb(bmja parambmja) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public Void a(Boolean paramBoolean, bmzw parambmzw)
   {
-    wtb.a("0X80076BC");
-    return null;
+    if (paramBoolean.booleanValue())
+    {
+      wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(parambmzw.b.size(), parambmzw.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      wxe.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + parambmzw.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, alud.a(2131704058) + parambmzw.jdField_a_of_type_Int, 1);
+    }
   }
 }
 

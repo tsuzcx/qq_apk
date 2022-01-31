@@ -1,18 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
 
-class vwa
-  implements DialogInterface.OnDismissListener
+public abstract interface vwa
 {
-  vwa(vvy paramvvy, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public abstract int a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract vwn a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(vwb paramvwb);
+  
+  public abstract void a(vwc paramvwc);
+  
+  public abstract void a(vwd paramvwd);
+  
+  public abstract void a(vwe paramvwe);
+  
+  public abstract void a(vwf paramvwf);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

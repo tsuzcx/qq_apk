@@ -1,12 +1,8 @@
-class apsg
-  extends apnv
+public class apsg
 {
-  apsg(apsf paramapsf) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

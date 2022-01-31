@@ -1,8 +1,11 @@
 public class bhmr
 {
-  public long a;
-  
-  public bhmr(bhmq parambhmq) {}
+  public static void a(int paramInt1, int paramInt2)
+  {
+    bhmx localbhmx = new bhmx();
+    localbhmx.a(paramInt1).a(paramInt2);
+    bhmu.a(localbhmx.toString(), 103);
+  }
 }
 
 

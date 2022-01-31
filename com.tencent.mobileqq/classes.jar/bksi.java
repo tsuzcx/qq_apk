@@ -1,28 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2;
 
 public class bksi
+  implements axpu
 {
-  public String a;
-  public String b = "null";
-  public String c = "null";
+  public bksi(AECameraGLSurfaceView.12.2 param2) {}
   
-  public bksi(@NonNull String paramString)
+  public void a()
   {
-    this.a = paramString;
-  }
-  
-  public bksi(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
+    bljn.b("AECameraGLSurfaceView", "updateWMProps onGetLocation");
+    bkyt.a().a();
   }
 }
 

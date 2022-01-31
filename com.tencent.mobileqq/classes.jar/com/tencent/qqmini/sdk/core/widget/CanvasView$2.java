@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.widget;
 
-import bglb;
+import bgpi;
 import org.json.JSONObject;
 
 class CanvasView$2
@@ -12,7 +12,7 @@ class CanvasView$2
     this.a.optInt("y");
     this.a.optInt("width");
     this.a.optInt("height");
-    CanvasView.a(bglb.a(this.a.optJSONArray("__nativeBuffers__")));
+    CanvasView.a(bgpi.a(this.a.optJSONArray("__nativeBuffers__")));
   }
 }
 

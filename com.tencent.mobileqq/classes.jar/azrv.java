@@ -1,15 +1,27 @@
-import android.widget.TextView;
-import com.tencent.biz.now.NowVideoLayout;
+import android.os.FileObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class azrv
+class azrv
+  extends FileObserver
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-  TextView b;
+  public azrv(String paramString, int paramInt)
+  {
+    super(paramString, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String arg2)
+  {
+    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
+    synchronized (azru.a())
+    {
+      notifyAll();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azrv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,102 +1,89 @@
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aosd
 {
-  private HashMap<String, aose> a = new HashMap();
+  public String a;
+  public boolean a;
+  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
   
-  public static aosd a(aogf paramaogf)
+  public aosd()
+  {
+    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public static aosd a(aoko[] paramArrayOfaoko)
   {
     aosd localaosd = new aosd();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalNavigationConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
-      Object localObject;
-      if (paramaogf.has("emoji"))
+      int j = paramArrayOfaoko.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = paramaogf.optJSONObject("emoji");
-        if (localObject != null)
+        Object localObject = paramArrayOfaoko[i];
+        if (localObject == null)
         {
-          aose localaose = new aose();
-          localaose.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch", 0);
-          localaose.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("iconUrl", "");
-          localaose.b = ((JSONObject)localObject).optString("url", "");
-          localaosd.a.put("emoji", localaose);
+          i += 1;
+        }
+        else
+        {
+          localObject = ((aoko)localObject).jdField_a_of_type_JavaLangString;
+          for (;;)
+          {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject((String)localObject);
+              if (localJSONObject.has("announcementUrl")) {
+                localaosd.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+              }
+              if (localJSONObject.has("autoApprovalUrl")) {
+                localaosd.b = localJSONObject.optString("autoApprovalUrl");
+              }
+              if (!localJSONObject.has("frequencyLimitVisible")) {
+                continue;
+              }
+              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
+                continue;
+              }
+              bool = true;
+              localaosd.jdField_a_of_type_Boolean = bool;
+            }
+            catch (JSONException localJSONException)
+            {
+              boolean bool;
+              localJSONException.printStackTrace();
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
+            break;
+            bool = false;
+            continue;
+            localaosd.jdField_a_of_type_Boolean = false;
+          }
         }
       }
-      if (paramaogf.has("wiki"))
-      {
-        paramaogf = paramaogf.optJSONObject("wiki");
-        if (paramaogf != null)
-        {
-          localObject = new aose();
-          ((aose)localObject).jdField_a_of_type_Int = paramaogf.optInt("switch", 0);
-          ((aose)localObject).jdField_a_of_type_JavaLangString = paramaogf.optString("iconUrl", "");
-          ((aose)localObject).b = paramaogf.optString("url", "");
-          localaosd.a.put("wiki", localObject);
-        }
-      }
     }
-    catch (Exception paramaogf)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VerticalNavigationConfBean", 2, "parse error->" + paramaogf.toString());
+    if (TextUtils.isEmpty(localaosd.jdField_a_of_type_JavaLangString)) {
+      localaosd.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    }
+    if (TextUtils.isEmpty(localaosd.b)) {
+      localaosd.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
     }
     return localaosd;
-    return localaosd;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = (aose)this.a.get(paramString);
-    if (paramString != null) {
-      return paramString.b;
-    }
-    return "";
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramString = (aose)this.a.get(paramString);
-    } while (paramString == null);
-    if (paramString.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = (aose)this.a.get(paramString);
-    if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
-    }
-    return "";
   }
   
   public String toString()
   {
-    if (this.a != null) {}
-    for (String str = this.a.toString();; str = "null") {
-      return String.format("mConfigData:%s ", new Object[] { str });
-    }
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
+    return localStringBuilder.toString();
   }
 }
 

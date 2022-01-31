@@ -1,32 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.13;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class bkio
-  implements DialogInterface.OnClickListener
+class bkio
+  implements BusinessObserver
 {
-  public bkio(QIMCameraCaptureUnit.13 param13) {}
+  bkio(bkil parambkil, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Activity localActivity = this.a.this$0.jdField_a_of_type_Bmcv.a();
-    if (paramInt == 1)
+    paramInt = paramBundle.getInt("extra_result_code");
+    String str = paramBundle.getString("extra_result_err_msg");
+    paramBundle = paramBundle.getString("extra_cmd");
+    if (!paramBoolean)
     {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCameraPermissionFinish(true);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+      bfrz.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
       return;
-      localActivity.finish();
     }
+    bfrz.c("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
   }
 }
 

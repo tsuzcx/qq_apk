@@ -1,50 +1,103 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
 
 public class bayw
-  implements BusinessObserver
+  extends bara
 {
-  public bayw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bayw(bayf parambayf, bayk parambayk)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = "";
-    paramInt = -1;
-    if (paramBoolean) {}
-    for (;;)
+    super(parambayf, parambayk);
+    this.b = ((bayn)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Int;
+  }
+  
+  public void aP_()
+  {
+    f();
+  }
+  
+  void d()
+  {
+    super.d();
+    this.jdField_a_of_type_Bard.a(bayf.a(this.jdField_a_of_type_Bayk));
+    bayr localbayr = this.jdField_a_of_type_Bayk.jdField_a_of_type_Bayr;
+    if (localbayr != null)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        int i = localWebSsoResponseBody.ret.get();
-        paramInt = i;
-        paramBundle = str;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9992) });
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
-      }
-      return;
-      paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9991) });
-      continue;
-      paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9992) });
+      localbayr.jdField_a_of_type_Int = -1;
+      localbayr.jdField_a_of_type_Long = this.jdField_j_of_type_Int;
+      localbayr.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
+      localbayr.jdField_a_of_type_Bayk = this.jdField_a_of_type_Bayk;
     }
+    try
+    {
+      b("notify", "start");
+      notifyAll();
+      b("notify", "end");
+      return;
+    }
+    finally {}
+  }
+  
+  void e()
+  {
+    super.e();
+    bayr localbayr = this.jdField_a_of_type_Bayk.jdField_a_of_type_Bayr;
+    this.jdField_a_of_type_Bard.a(bayf.a(this.jdField_a_of_type_Bayk));
+    if (localbayr != null)
+    {
+      localbayr.jdField_a_of_type_Int = 0;
+      localbayr.jdField_a_of_type_Bayk = this.jdField_a_of_type_Bayk;
+    }
+    try
+    {
+      b("notify", "start");
+      notifyAll();
+      b("notify", "end");
+      return;
+    }
+    finally {}
+  }
+  
+  void f()
+  {
+    String str = this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString;
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = this;
+    localbaub.jdField_a_of_type_JavaLangString = str;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_a_of_type_JavaIoOutputStream = this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaIoOutputStream;
+    localbaub.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.h;
+    localbaub.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
+    localbaub.g = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
+    localbaub.f = this.jdField_a_of_type_Bayk.b;
+    localbaub.jdField_a_of_type_Long = this.b;
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localbaub.jdField_e_of_type_Int = this.jdField_a_of_type_Bayk.f;
+    if (this.jdField_a_of_type_Bayk.d)
+    {
+      localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", "bytes=" + localbaub.jdField_a_of_type_Long + "-");
+      localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
+    }
+    localbaub.jdField_c_of_type_Int = 4;
+    localbaub.jdField_c_of_type_Long = 90000L;
+    b("httpDown", " url:" + str + ",downOffset:" + localbaub.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Baue.a(localbaub);
+  }
+  
+  public void onResp(bavf parambavf)
+  {
+    super.onResp(parambavf);
+    StringBuilder localStringBuilder = new StringBuilder().append(" result:");
+    if (parambavf.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      b("onHttpResp", bool);
+      this.b += parambavf.jdField_c_of_type_Long;
+      if (parambavf.jdField_a_of_type_Int != 0) {
+        break;
+      }
+      e();
+      return;
+    }
+    d();
   }
 }
 

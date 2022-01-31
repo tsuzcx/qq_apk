@@ -200,7 +200,7 @@ public class mww
   
   public static Drawable a(float paramFloat, Context paramContext)
   {
-    int i = aekt.a(paramFloat, paramContext.getResources());
+    int i = aepi.a(paramFloat, paramContext.getResources());
     paramContext = new GradientDrawable();
     paramContext.setShape(1);
     paramContext.setColor(Color.parseColor("#4C000000"));
@@ -292,7 +292,7 @@ public class mww
             do
             {
               return localObject2;
-              Object localObject3 = ((aloz)paramQQAppInterface.getManager(51)).b(paramString);
+              Object localObject3 = ((alto)paramQQAppInterface.getManager(51)).b(paramString);
               localObject1 = localObject2;
               if (localObject3 != null)
               {
@@ -328,7 +328,7 @@ public class mww
   public static String a(String paramString)
   {
     int j = 0;
-    String str = alpo.a(2131716248);
+    String str = alud.a(2131716260);
     String[] arrayOfString = paramString.split(":");
     int k;
     int i;
@@ -344,15 +344,15 @@ public class mww
       {
         paramString = str;
         if (k > 0) {
-          paramString = str + k + alpo.a(2131716246);
+          paramString = str + k + alud.a(2131716258);
         }
         str = paramString;
         if (j > 0) {
-          str = paramString + j + alpo.a(2131716245);
+          str = paramString + j + alud.a(2131716257);
         }
         paramString = str;
         if (i > 0) {
-          paramString = str + i + alpo.a(2131716244);
+          paramString = str + i + alud.a(2131716256);
         }
         return paramString;
         if (arrayOfString.length == 2)
@@ -374,7 +374,7 @@ public class mww
   public static void a()
   {
     jdField_a_of_type_JavaLangBoolean = new Boolean(false);
-    bdiv.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putBoolean("has_show_svip_dialog", false));
+    bdne.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putBoolean("has_show_svip_dialog", false));
   }
   
   public static void a(int paramInt)
@@ -390,7 +390,7 @@ public class mww
     }
     for (;;)
     {
-      bdiv.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putInt(str, 0));
+      bdne.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putInt(str, 0));
       return;
       str = "slide_enable_switch";
       break;
@@ -573,7 +573,7 @@ public class mww
   {
     if (paramContext != null)
     {
-      paramContext = bdiv.a(paramContext);
+      paramContext = bdne.a(paramContext);
       SharedPreferences.Editor localEditor = paramContext.edit();
       localEditor.putBoolean("qav_random_speakeron", false);
       localEditor.commit();
@@ -614,7 +614,7 @@ public class mww
     {
       String str = paramString;
       if (paramInt == 2) {
-        str = paramString.replace(paramView.getResources().getString(2131695840), alpo.a(2131716247));
+        str = paramString.replace(paramView.getResources().getString(2131695842), alud.a(2131716259));
       }
       if (QLog.isColorLevel()) {
         QLog.i("UITools", 2, "SetAccText with avtype:" + str + " avtype:" + paramInt);
@@ -641,7 +641,7 @@ public class mww
     if (QLog.isColorLevel()) {
       QLog.i("UITools", 2, String.format("doScreenShareReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(paramInt) }));
     }
-    azmj.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   public static void a(String paramString1, String paramString2)
@@ -749,7 +749,7 @@ public class mww
   {
     if (jdField_a_of_type_Int == -1)
     {
-      jdField_a_of_type_Int = a("8.3.3");
+      jdField_a_of_type_Int = a("8.3.5");
       if (jdField_a_of_type_Int == 0) {
         jdField_a_of_type_Int = 660;
       }

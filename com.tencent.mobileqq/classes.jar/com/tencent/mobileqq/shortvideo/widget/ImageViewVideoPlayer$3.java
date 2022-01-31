@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
-import azhq;
+import azlz;
 
 class ImageViewVideoPlayer$3
   implements Runnable
@@ -10,7 +10,7 @@ class ImageViewVideoPlayer$3
   public void run()
   {
     if (this.this$0.a != null) {
-      this.this$0.a.ae_();
+      this.this$0.a.ab_();
     }
   }
 }

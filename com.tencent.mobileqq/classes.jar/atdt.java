@@ -1,38 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.intervideo.nowproxy.NowLive;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 class atdt
-  implements nbg
+  extends BroadcastReceiver
 {
-  atdt(atds paramatds) {}
+  atdt(atdh paramatdh) {}
   
-  public void a(Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    paramContext = paramIntent.getAction();
+    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
     {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
+      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
+      NowLive.killPluginProcess();
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-        }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
-        return;
-      }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
+      return;
     }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
+    NowLive.killPluginProcess();
   }
 }
 

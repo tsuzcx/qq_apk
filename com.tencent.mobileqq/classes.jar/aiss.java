@@ -1,47 +1,26 @@
-import Wallet.RedPackGrapInfo;
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class aiss
-  implements IRedPacket.OnGetAvailableListListener
+class aiss
+  implements bjvv
 {
-  public aiss(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  aiss(aisq paramaisq, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  public void a(boolean paramBoolean)
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
+    if (paramBoolean)
     {
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
       {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-        TroopUnAccalimedRedPacketList.a(this.a).setText(alpo.a(2131716179));
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
       }
     }
-    do
-    {
+    else {
       return;
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
-      }
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
   }
 }
 

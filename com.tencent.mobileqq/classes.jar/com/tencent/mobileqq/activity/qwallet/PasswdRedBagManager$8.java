@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aipu;
-import aipw;
+import aiuj;
+import aiul;
 
 public class PasswdRedBagManager$8
   implements Runnable
 {
-  public PasswdRedBagManager$8(aipw paramaipw) {}
+  public PasswdRedBagManager$8(aiul paramaiul) {}
   
   public void run()
   {
-    aipw.a(this.this$0).b();
+    aiul.a(this.this$0).b();
   }
 }
 

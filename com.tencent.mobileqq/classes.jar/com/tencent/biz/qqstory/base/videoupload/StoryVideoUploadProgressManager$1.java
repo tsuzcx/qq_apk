@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import ukp;
+import uoy;
 
 public class StoryVideoUploadProgressManager$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$1(ukp paramukp, String paramString, int paramInt) {}
+  public StoryVideoUploadProgressManager$1(uoy paramuoy, String paramString, int paramInt) {}
   
   public void run()
   {
-    ukp.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    uoy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

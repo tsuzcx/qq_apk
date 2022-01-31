@@ -10,7 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import bhou;
+import bhtb;
 
 public class HighLightMaskView
   extends View
@@ -35,7 +35,7 @@ public class HighLightMaskView
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    if (bhou.e()) {
+    if (bhtb.e()) {
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);

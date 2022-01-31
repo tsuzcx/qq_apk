@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6.3.1;
 
-class aniu
-  implements alkr
+public class aniu
+  implements anjt
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aniu(ArkAppDeviceModule.ObserverMethod.6.3.1 param1) {}
+  
+  public void a(long paramLong)
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.queryAppInfoByAppNameBatch, sso request failed");
-      paramObject = null;
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    for (;;)
-    {
-      paramObject = anit.a(this.jdField_a_of_type_Anit, (String)paramObject);
-      if (this.jdField_a_of_type_Anjb != null) {
-        this.jdField_a_of_type_Anjb.a(paramObject, this.jdField_a_of_type_JavaLangObject);
-      }
-      return;
-    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    anif.a(this.a.a.a.jdField_a_of_type_Anii.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

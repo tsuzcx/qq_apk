@@ -269,7 +269,7 @@ public class oro
   {
     try
     {
-      Object localObject = (String)bjxj.a("readinjoy_srt_click_time_key", "");
+      Object localObject = (String)bkbq.a("readinjoy_srt_click_time_key", "");
       String str1;
       int i;
       if (TextUtils.isEmpty((CharSequence)localObject))
@@ -294,7 +294,7 @@ public class oro
         this.jdField_a_of_type_Int = i;
         ((JSONObject)localObject).put("time", str1);
         ((JSONObject)localObject).put("clickTimes" + this.jdField_b_of_type_JavaLangString, i);
-        bjxj.a("readinjoy_srt_click_time_key", ((JSONObject)localObject).toString());
+        bkbq.a("readinjoy_srt_click_time_key", ((JSONObject)localObject).toString());
         return;
         localObject = new JSONObject((String)localObject);
         break;

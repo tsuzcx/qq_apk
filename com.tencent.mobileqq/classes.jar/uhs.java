@@ -1,30 +1,8 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.RectF;
 
-class uhs
-  implements ThreadExcutor.IThreadListener
+public abstract interface uhs
 {
-  uhs(uhr paramuhr, Runnable paramRunnable) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    uhr.a(this.jdField_a_of_type_Uhr).decrementAndGet();
-    wsv.b(uhr.a(this.jdField_a_of_type_Uhr), "threshold after running current task is " + uhr.a(this.jdField_a_of_type_Uhr).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      wsv.b(uhr.a(this.jdField_a_of_type_Uhr), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
-  }
-  
-  public void onPreRun()
-  {
-    uhr.a(this.jdField_a_of_type_Uhr).incrementAndGet();
-    wsv.a(uhr.a(this.jdField_a_of_type_Uhr), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      wsv.b(uhr.a(this.jdField_a_of_type_Uhr), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
-  }
+  public abstract void a(RectF paramRectF);
 }
 
 

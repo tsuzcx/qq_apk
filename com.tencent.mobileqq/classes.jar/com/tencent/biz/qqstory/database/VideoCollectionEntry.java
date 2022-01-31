@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
-import wsv;
+import awge;
+import awhs;
+import wxe;
 
 public class VideoCollectionEntry
-  extends awbv
+  extends awge
 {
   public String address;
   public int collectionCount;
@@ -16,7 +16,7 @@ public class VideoCollectionEntry
   public String feedId;
   public String groupId;
   public int hasShareToDiscover;
-  @awdj
+  @awhs
   public String key;
   public String label;
   public String nextCookie;
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      wsv.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      wxe.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }

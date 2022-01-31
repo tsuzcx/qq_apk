@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.text.TextUtils;
-import bgkv;
-import bgrb;
+import bgpc;
+import bgvi;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.utils.MD5Utils;
@@ -11,7 +11,7 @@ import java.io.File;
 public class ApkgManager$4
   implements Runnable
 {
-  public ApkgManager$4(bgrb parambgrb, MiniAppInfo paramMiniAppInfo, String paramString) {}
+  public ApkgManager$4(bgvi parambgvi, MiniAppInfo paramMiniAppInfo, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ApkgManager$4
     {
       if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        String str1 = bgrb.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+        String str1 = bgvi.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
         String str2 = MD5Utils.toMD5(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
         Object localObject = new File(str1);
         if (((File)localObject).isDirectory())
@@ -33,7 +33,7 @@ public class ApkgManager$4
             if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)) && (!this.jdField_a_of_type_JavaLangString.contains(localCharSequence)))
             {
               QMLog.d("ApkgManager", "delete pkg : " + localCharSequence);
-              bgkv.a(str1 + localCharSequence, false);
+              bgpc.a(str1 + localCharSequence, false);
             }
             i += 1;
           }

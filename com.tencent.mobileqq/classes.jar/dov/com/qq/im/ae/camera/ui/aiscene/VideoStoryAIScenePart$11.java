@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bkqa;
+import bkuh;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 public class VideoStoryAIScenePart$11
   implements Runnable
 {
-  public VideoStoryAIScenePart$11(bkqa parambkqa, AEFilterManager paramAEFilterManager) {}
+  public VideoStoryAIScenePart$11(bkuh parambkuh, AEFilterManager paramAEFilterManager) {}
   
   public void run()
   {
-    bkqa.a(this.this$0, bkqa.a(this.this$0), this.a);
+    bkuh.a(this.this$0, bkuh.a(this.this$0), this.a);
   }
 }
 

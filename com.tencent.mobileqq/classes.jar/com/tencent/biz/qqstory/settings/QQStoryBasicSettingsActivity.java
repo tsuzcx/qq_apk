@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.settings;
 
-import aekt;
-import alpo;
+import aepi;
+import alud;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -11,16 +11,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdee;
-import beps;
+import bdin;
+import beub;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
-import ugx;
-import uhk;
-import uhl;
-import uhn;
-import vyl;
+import ulg;
+import ult;
+import ulu;
+import ulw;
+import wcu;
 
 public class QQStoryBasicSettingsActivity
   extends IphoneTitleBarActivity
@@ -29,10 +29,10 @@ public class QQStoryBasicSettingsActivity
   public int a;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public beps a;
-  public uhk a;
-  public uhl a;
-  uhn jdField_a_of_type_Uhn = new vyl(this);
+  public beub a;
+  public ult a;
+  public ulu a;
+  ulw jdField_a_of_type_Ulw = new wcu(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public int b = this.jdField_a_of_type_Int;
   
@@ -57,12 +57,12 @@ public class QQStoryBasicSettingsActivity
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561349, null);
-    ((TextView)localView.findViewById(2131377884)).setText(paramString);
-    ((TextView)localView.findViewById(2131368224)).setText("");
+    View localView = View.inflate(this, 2131561367, null);
+    ((TextView)localView.findViewById(2131377938)).setText(paramString);
+    ((TextView)localView.findViewById(2131368235)).setText("");
     paramString = (ImageView)localView.findViewById(2131362823);
     paramString.setVisibility(4);
-    paramString.setBackgroundResource(2130839106);
+    paramString.setBackgroundResource(2130839107);
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -72,13 +72,13 @@ public class QQStoryBasicSettingsActivity
   {
     Object localObject = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    ((LinearLayout)localObject).setBackgroundResource(2130838591);
+    ((LinearLayout)localObject).setBackgroundResource(2130838592);
     ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
     ((LinearLayout)localObject).setOrientation(1);
-    ((LinearLayout)localObject).setPadding(0, aekt.a(20.0F, getResources()), 0, 0);
+    ((LinearLayout)localObject).setPadding(0, aepi.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
     localObject = new TextView(this);
-    ((TextView)localObject).setText(ugx.a + alpo.a(2131711185));
+    ((TextView)localObject).setText(ulg.a + alud.a(2131711197));
     ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131298280), 0, getResources().getDimensionPixelSize(2131298280), getResources().getDimensionPixelSize(2131298277));
     ((TextView)localObject).setTextSize(14.0F);
     ((TextView)localObject).setTextColor(getResources().getColor(2131165515));
@@ -86,20 +86,20 @@ public class QQStoryBasicSettingsActivity
     localObject = a(0, "移动流量和WiFi");
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
     this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject;
-    ((View)localObject).setBackgroundResource(2130839269);
+    ((View)localObject).setBackgroundResource(2130839270);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     localObject = a(1, "仅WiFi");
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839263);
+    ((View)localObject).setBackgroundResource(2130839264);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = a(2, alpo.a(2131711183));
+    localObject = a(2, alud.a(2131711195));
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839260);
+    ((View)localObject).setBackgroundResource(2130839261);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Beps = new beps(this, 2131561218);
+    this.jdField_a_of_type_Beub = new beub(this, 2131561236);
   }
   
   public void a(int paramInt)
@@ -109,18 +109,18 @@ public class QQStoryBasicSettingsActivity
     {
       View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
       ImageView localImageView = (ImageView)localView.findViewById(2131362823);
-      TextView localTextView = (TextView)localView.findViewById(2131377884);
+      TextView localTextView = (TextView)localView.findViewById(2131377938);
       if (i != paramInt)
       {
         localImageView.setVisibility(4);
-        localView.setContentDescription(localTextView.getText() + alpo.a(2131711181));
+        localView.setContentDescription(localTextView.getText() + alud.a(2131711193));
       }
       for (;;)
       {
         i += 1;
         break;
         localImageView.setVisibility(0);
-        localView.setContentDescription(localTextView.getText() + alpo.a(2131711186));
+        localView.setContentDescription(localTextView.getText() + alud.a(2131711198));
       }
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -143,37 +143,37 @@ public class QQStoryBasicSettingsActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Uhl = ((uhl)this.app.getManager(181));
-    this.jdField_a_of_type_Uhk = ((uhk)this.app.a(98));
+    this.jdField_a_of_type_Ulu = ((ulu)this.app.getManager(181));
+    this.jdField_a_of_type_Ult = ((ult)this.app.a(98));
     a();
-    int i = a(this.jdField_a_of_type_Uhl.a());
+    int i = a(this.jdField_a_of_type_Ulu.a());
     this.b = i;
     this.jdField_a_of_type_Int = i;
     a(this.jdField_a_of_type_Int);
-    super.setTitle(ugx.a + alpo.a(2131711190));
-    this.app.addObserver(this.jdField_a_of_type_Uhn);
-    if (!bdee.g(this))
+    super.setTitle(ulg.a + alud.a(2131711202));
+    this.app.addObserver(this.jdField_a_of_type_Ulw);
+    if (!bdin.g(this))
     {
-      QQToast.a(this, 1, 2131692397, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131692398, 0).b(getTitleBarHeight());
       super.startTitleProgress();
       return true;
     }
-    this.jdField_a_of_type_Uhk.d();
+    this.jdField_a_of_type_Ult.d();
     super.startTitleProgress();
     return true;
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Uhn);
+    this.app.removeObserver(this.jdField_a_of_type_Ulw);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    if (!bdee.g(this))
+    if (!bdin.g(this))
     {
-      QQToast.a(this, 1, 2131692397, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131692398, 0).b(getTitleBarHeight());
       return;
     }
     int i = ((Integer)paramView.getTag()).intValue();
@@ -183,14 +183,14 @@ public class QQStoryBasicSettingsActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Beps.b(0, 2131719152, 0);
+      this.jdField_a_of_type_Beub.b(0, 2131719164, 0);
       a(i);
       return;
-      this.jdField_a_of_type_Uhk.d(3);
+      this.jdField_a_of_type_Ult.d(3);
       continue;
-      this.jdField_a_of_type_Uhk.d(1);
+      this.jdField_a_of_type_Ult.d(1);
       continue;
-      this.jdField_a_of_type_Uhk.d(2);
+      this.jdField_a_of_type_Ult.d(2);
     }
   }
 }

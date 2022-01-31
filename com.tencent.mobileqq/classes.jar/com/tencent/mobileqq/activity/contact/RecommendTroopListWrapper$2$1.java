@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact;
 
-import ahad;
-import ahai;
-import ahak;
+import ahes;
+import ahex;
+import ahez;
 
 public class RecommendTroopListWrapper$2$1
   implements Runnable
 {
-  public RecommendTroopListWrapper$2$1(ahak paramahak, String paramString) {}
+  public RecommendTroopListWrapper$2$1(ahez paramahez, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ahak.a.a != null) {
-      this.jdField_a_of_type_Ahak.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ahez.a.a != null) {
+      this.jdField_a_of_type_Ahez.a.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

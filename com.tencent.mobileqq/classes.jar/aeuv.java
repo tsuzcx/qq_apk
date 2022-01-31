@@ -1,9 +1,10 @@
 public class aeuv
 {
-  long a;
-  long b;
-  long c;
-  long d;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

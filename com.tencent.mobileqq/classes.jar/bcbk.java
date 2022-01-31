@@ -1,21 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class bcbk
-  extends BroadcastReceiver
 {
-  public bcbk(HWReciteItem paramHWReciteItem) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      this.a.b();
-      this.a.a.a.a();
-    }
-  }
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

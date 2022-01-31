@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.utils;
 
-import bgrb;
+import bgvi;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class EnvUtils
@@ -10,7 +10,7 @@ public class EnvUtils
     if (paramMiniAppInfo == null) {
       return false;
     }
-    return bgrb.a(paramMiniAppInfo);
+    return bgvi.a(paramMiniAppInfo);
   }
   
   public static boolean isX5Enabled(MiniAppInfo paramMiniAppInfo)

@@ -5,9 +5,9 @@ import android.opengl.EGLContext;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import axqx;
-import axqy;
-import axsh;
+import axvg;
+import axvh;
+import axwq;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(18)
@@ -16,8 +16,8 @@ public class EglHandlerThread
 {
   private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private axqx jdField_a_of_type_Axqx;
-  private axqy jdField_a_of_type_Axqy;
+  private axvg jdField_a_of_type_Axvg;
+  private axvh jdField_a_of_type_Axvh;
   private boolean jdField_a_of_type_Boolean;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
@@ -37,14 +37,14 @@ public class EglHandlerThread
       {
         return;
       } while (!this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Axqy != null)
+      if (this.jdField_a_of_type_Axvh != null)
       {
-        this.jdField_a_of_type_Axqy.a();
-        this.jdField_a_of_type_Axqy = null;
+        this.jdField_a_of_type_Axvh.a();
+        this.jdField_a_of_type_Axvh = null;
       }
-    } while (this.jdField_a_of_type_Axqx == null);
-    this.jdField_a_of_type_Axqx.a();
-    this.jdField_a_of_type_Axqx = null;
+    } while (this.jdField_a_of_type_Axvg == null);
+    this.jdField_a_of_type_Axvg.a();
+    this.jdField_a_of_type_Axvg = null;
   }
   
   public Handler a()
@@ -63,10 +63,10 @@ public class EglHandlerThread
     {
       super.onLooperPrepared();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-      this.jdField_a_of_type_Axqx = new axqx(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-      this.jdField_a_of_type_Axqy = new axqy(this.jdField_a_of_type_Axqx);
-      this.jdField_a_of_type_Axqy.a(64, 64);
-      this.jdField_a_of_type_Axqy.b();
+      this.jdField_a_of_type_Axvg = new axvg(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
+      this.jdField_a_of_type_Axvh = new axvh(this.jdField_a_of_type_Axvg);
+      this.jdField_a_of_type_Axvh.a(64, 64);
+      this.jdField_a_of_type_Axvh.b();
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -74,7 +74,7 @@ public class EglHandlerThread
     {
       this.jdField_a_of_type_Boolean = false;
       QLog.e("EglHandlerThread", 2, localException, new Object[0]);
-      axsh.a(localException);
+      axwq.a(localException);
     }
   }
   

@@ -1,48 +1,60 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class akqo
+public abstract class akqo
+  implements akqs
 {
-  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, akqp paramakqp)
+  protected int[] a;
+  
+  public akqo(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    if (paramAppInterface == null) {
-      return;
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+  }
+  
+  private int[] a(int[] paramArrayOfInt)
+  {
+    if ((GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
+      return paramArrayOfInt;
     }
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.3.3");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
-      ((JSONObject)localObject).put("from", paramString);
-      ((JSONObject)localObject).put("gameId", paramInt);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString = new NewIntent(BaseApplicationImpl.getContext(), akns.class);
-      paramString.putExtra("timeout", 10000L);
-      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
-      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
-      paramString.setObserver(paramakqp);
-      paramAppInterface.startServlet(paramString);
-      return;
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
     }
-    catch (Exception paramAppInterface)
+    for (;;)
     {
-      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

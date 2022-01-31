@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import artu;
+import aryd;
 
 public class QFlutterLauncher$2
   implements Runnable
 {
-  public QFlutterLauncher$2(artu paramartu, String paramString) {}
+  public QFlutterLauncher$2(aryd paramaryd, String paramString) {}
   
   public void run()
   {

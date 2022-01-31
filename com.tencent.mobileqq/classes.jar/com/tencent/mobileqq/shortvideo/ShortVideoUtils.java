@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import aekt;
-import aljq;
+import aepi;
+import alof;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,16 +18,16 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import anwv;
-import ayyw;
-import azhd;
-import azla;
-import azlb;
-import azmj;
-import baul;
-import bayb;
-import bdcs;
-import bhou;
+import aobe;
+import azdf;
+import azlm;
+import azpj;
+import azpk;
+import azqs;
+import bayu;
+import bbck;
+import bdhb;
+import bhtb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -47,11 +47,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import ugx;
-import uku;
+import ulg;
+import upd;
 
 public class ShortVideoUtils
-  implements ayyw
+  implements azdf
 {
   private static int jdField_a_of_type_Int;
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
@@ -79,7 +79,7 @@ public class ShortVideoUtils
     jdField_b_of_type_Int = 1;
     jdField_a_of_type_ArrayOfInt = new int[] { 1, 97, 125 };
     ThreadManager.getSubThreadHandler().post(new ShortVideoUtils.1());
-    jdField_c_of_type_JavaLangString = bayb.a(aljq.aX);
+    jdField_c_of_type_JavaLangString = bbck.a(alof.aX);
   }
   
   public static int a()
@@ -450,7 +450,7 @@ public class ShortVideoUtils
     }
     localObject = localStringBuilder.toString() + ".nomedia";
     if (!new File((String)localObject).exists()) {
-      bdcs.c((String)localObject);
+      bdhb.c((String)localObject);
     }
     return localStringBuilder.toString();
   }
@@ -528,7 +528,7 @@ public class ShortVideoUtils
       if (paramMessageForShortVideo.isSendFromLocal())
       {
         bool2 = bool1;
-        if (bdcs.b(paramString)) {
+        if (bdhb.b(paramString)) {
           bool2 = false;
         }
       }
@@ -538,7 +538,7 @@ public class ShortVideoUtils
         break;
       }
       ((File)localObject).mkdirs();
-      bdcs.c(paramMessageForShortVideo + ".nomedia");
+      bdhb.c(paramMessageForShortVideo + ".nomedia");
       return paramString;
     }
     Object localObject = ((File)localObject).list();
@@ -567,7 +567,7 @@ public class ShortVideoUtils
         if (paramMessageForShortVideo.equals(paramString)) {
           return paramString;
         }
-        bdcs.d(paramMessageForShortVideo, paramString);
+        bdhb.d(paramMessageForShortVideo, paramString);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoUtils", 2, "copy " + paramMessageForShortVideo + " to " + paramString);
         }
@@ -585,11 +585,11 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    Object localObject = azhd.a(paramFile);
-    paramFile = new StringBuilder(aljq.bk);
+    Object localObject = azlm.a(paramFile);
+    paramFile = new StringBuilder(alof.bk);
     paramFile.append((String)localObject);
     paramFile.append(".mp4");
-    localObject = new File(aljq.bk);
+    localObject = new File(alof.bk);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -601,12 +601,12 @@ public class ShortVideoUtils
     if ((paramFile == null) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    String str = azhd.a(paramFile);
-    paramFile = new StringBuilder(aljq.bk);
+    String str = azlm.a(paramFile);
+    paramFile = new StringBuilder(alof.bk);
     paramFile.append(paramString);
     paramFile.append(str);
     paramFile.append(".mp4");
-    paramString = new File(aljq.bk);
+    paramString = new File(alof.bk);
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
@@ -696,20 +696,20 @@ public class ShortVideoUtils
   
   public static void a(AppInterface paramAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord, Context paramContext)
   {
-    azlb localazlb = new azlb();
-    localazlb.b = paramString;
+    azpk localazpk = new azpk();
+    localazpk.b = paramString;
     switch (paramSessionInfo.jdField_a_of_type_Int)
     {
     default: 
       if (paramString == "0X8008E53")
       {
-        localazlb.jdField_c_of_type_JavaLangString = "2";
+        localazpk.jdField_c_of_type_JavaLangString = "2";
         label67:
         if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForShortVideo))) {
           break label257;
         }
         paramString = (MessageForShortVideo)paramMessageRecord;
-        localazlb.jdField_a_of_type_JavaLangString = String.valueOf(paramString.videoFileTime * 1000);
+        localazpk.jdField_a_of_type_JavaLangString = String.valueOf(paramString.videoFileTime * 1000);
         switch (paramString.busiType)
         {
         default: 
@@ -724,25 +724,25 @@ public class ShortVideoUtils
       }
       break;
     }
-    for (localazlb.f = "1";; localazlb.f = "2")
+    for (localazpk.f = "1";; localazpk.f = "2")
     {
-      azla.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.jdField_a_of_type_JavaLangString, localazlb);
+      azpj.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.jdField_a_of_type_JavaLangString, localazpk);
       return;
-      localazlb.d = "1";
+      localazpk.d = "1";
       break;
-      localazlb.d = "2";
+      localazpk.d = "2";
       break;
-      localazlb.d = "3";
+      localazpk.d = "3";
       break;
-      localazlb.jdField_c_of_type_JavaLangString = "1";
+      localazpk.jdField_c_of_type_JavaLangString = "1";
       break label67;
-      localazlb.e = "1";
+      localazpk.e = "1";
       break label124;
-      localazlb.e = "2";
+      localazpk.e = "2";
       break label124;
       label257:
-      localazlb.jdField_a_of_type_JavaLangString = "0";
-      localazlb.e = "3";
+      localazpk.jdField_a_of_type_JavaLangString = "0";
+      localazpk.e = "3";
       break label150;
     }
   }
@@ -765,7 +765,7 @@ public class ShortVideoUtils
     }
     for (String str1 = paramString;; str1 = "")
     {
-      azmj.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009AA6", "0X8009AA6", paramInt1, 0, String.valueOf(paramInt2), String.valueOf(paramInt3), str2, str1);
+      azqs.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009AA6", "0X8009AA6", paramInt1, 0, String.valueOf(paramInt2), String.valueOf(paramInt3), str2, str1);
       return;
       paramInt1 = 1;
       break;
@@ -788,7 +788,7 @@ public class ShortVideoUtils
     } while (!QLog.isColorLevel());
     QLog.e("ShortVideoUtils", 2, "deleteCacheFileByMessage, md5 == null! ");
     return;
-    bdcs.d(a(paramMessageForShortVideo, "mp4"));
+    bdhb.d(a(paramMessageForShortVideo, "mp4"));
   }
   
   public static void a(String paramString, int paramInt)
@@ -808,24 +808,24 @@ public class ShortVideoUtils
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    azlb localazlb = new azlb();
-    localazlb.jdField_a_of_type_JavaLangString = paramString3;
-    localazlb.b = "0X8008E53";
+    azpk localazpk = new azpk();
+    localazpk.jdField_a_of_type_JavaLangString = paramString3;
+    localazpk.b = "0X8008E53";
     switch (paramInt)
     {
     }
     for (;;)
     {
-      localazlb.jdField_c_of_type_JavaLangString = "2";
-      localazlb.e = paramString4;
-      localazlb.f = paramString5;
-      azla.a(paramString1, "dc01178", paramString2, localazlb);
+      localazpk.jdField_c_of_type_JavaLangString = "2";
+      localazpk.e = paramString4;
+      localazpk.f = paramString5;
+      azpj.a(paramString1, "dc01178", paramString2, localazpk);
       return;
-      localazlb.d = "1";
+      localazpk.d = "1";
       continue;
-      localazlb.d = "2";
+      localazpk.d = "2";
       continue;
-      localazlb.d = "3";
+      localazpk.d = "3";
     }
   }
   
@@ -1015,10 +1015,10 @@ public class ShortVideoUtils
       QLog.d("ShortVideoUtils", 2, "moveMoovAtom() result = " + bool1 + ", step = " + paramString + ", cost = " + (l2 - l1) + "ms");
       return bool1;
       String str3 = paramString + ".back";
-      bdcs.c(paramString, str3);
-      if (!bdcs.c(str2, paramString))
+      bdhb.c(paramString, str3);
+      if (!bdhb.c(str2, paramString))
       {
-        bdcs.c(str3, paramString);
+        bdhb.c(str3, paramString);
         paramString = " rename failure";
         bool1 = bool3;
       }
@@ -1050,11 +1050,11 @@ public class ShortVideoUtils
       }
       m = paramInt2;
       j = (int)(BaseChatItemLayout.e + 0.5D);
-      n = baul.a();
+      n = bayu.a();
       if (n < 135) {
         break label361;
       }
-      n = aekt.a(n, BaseApplicationImpl.getApplication().getResources());
+      n = aepi.a(n, BaseApplicationImpl.getApplication().getResources());
       if (n >= j) {
         break label361;
       }
@@ -1065,7 +1065,7 @@ public class ShortVideoUtils
     label361:
     for (;;)
     {
-      n = aekt.a(305.0F, BaseApplicationImpl.getApplication().getResources());
+      n = aepi.a(305.0F, BaseApplicationImpl.getApplication().getResources());
       String str;
       if (j > n)
       {
@@ -1163,7 +1163,7 @@ public class ShortVideoUtils
     {
       try
       {
-        if (!bhou.d()) {
+        if (!bhtb.d()) {
           return arrayOfInt;
         }
         localMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -1303,10 +1303,10 @@ public class ShortVideoUtils
   @TargetApi(14)
   public static long b(String paramString)
   {
-    if (!bdcs.a(paramString)) {
+    if (!bdhb.a(paramString)) {
       return 0L;
     }
-    return uku.a(paramString);
+    return upd.a(paramString);
   }
   
   public static String b()
@@ -1393,8 +1393,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = azhd.a(paramFile);
-    return ugx.e + paramFile + ".mp4";
+    paramFile = azlm.a(paramFile);
+    return ulg.e + paramFile + ".mp4";
   }
   
   public static String b(String paramString)
@@ -1508,7 +1508,7 @@ public class ShortVideoUtils
     }
     for (localStringBuilder1 = localStringBuilder2;; localStringBuilder1 = new StringBuilder(str))
     {
-      localStringBuilder1.append(azhd.a()).append(".mp4");
+      localStringBuilder1.append(azlm.a()).append(".mp4");
       if (!new File(localStringBuilder1.toString()).exists()) {
         return localStringBuilder1.toString();
       }
@@ -1543,12 +1543,12 @@ public class ShortVideoUtils
       {
         return null;
         String str = a(paramMessageForShortVideo, "mp4");
-        if (bdcs.b(str)) {
+        if (bdhb.b(str)) {
           return str;
         }
       } while (!paramMessageForShortVideo.isSendFromLocal());
       paramMessageForShortVideo = paramMessageForShortVideo.videoFileName;
-    } while (!bdcs.b(paramMessageForShortVideo));
+    } while (!bdhb.b(paramMessageForShortVideo));
     return paramMessageForShortVideo;
   }
   
@@ -1557,7 +1557,7 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = azhd.a(paramFile);
+    paramFile = azlm.a(paramFile);
     StringBuilder localStringBuilder = new StringBuilder(jdField_c_of_type_JavaLangString);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
@@ -1606,7 +1606,7 @@ public class ShortVideoUtils
     }
     for (;;)
     {
-      azmj.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
       return;
       if (paramInt == 1) {
         paramInt = 2;
@@ -1654,7 +1654,7 @@ public class ShortVideoUtils
   {
     String str = Build.MODEL.toUpperCase();
     if (str.contains("GN9000L")) {
-      str = aljq.cK;
+      str = alof.cK;
     }
     for (;;)
     {
@@ -1663,13 +1663,13 @@ public class ShortVideoUtils
       }
       return str;
       if ((str.contains("MX4")) || (str.contains("MX6")) || (str.contains("MX5")) || (str.contains("M355")) || (str.contains("M571C"))) {
-        str = aljq.cJ;
+        str = alof.cJ;
       } else if (str.contains("M040")) {
-        str = aljq.cM;
+        str = alof.cM;
       } else if ((str.contains("VIVO X7")) || (str.contains("VIVO X6A")) || (str.contains("VIVO XPLAY6")) || (str.contains("VIVO X5PRO")) || (str.contains("VIVO X9 PLUS")) || (str.contains("VIVO Y51A")) || (str.contains("VIVO X9I")) || (str.contains("VIVO X9")) || (str.contains("VIVO X6D"))) {
-        str = aljq.cL;
+        str = alof.cL;
       } else {
-        str = aljq.bk;
+        str = alof.bk;
       }
     }
   }
@@ -1706,7 +1706,7 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = azhd.a(paramFile);
+    paramFile = azlm.a(paramFile);
     StringBuilder localStringBuilder = new StringBuilder(jdField_c_of_type_JavaLangString);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
@@ -2151,7 +2151,7 @@ public class ShortVideoUtils
   public static boolean f()
   {
     boolean bool1 = e();
-    boolean bool2 = anwv.a();
+    boolean bool2 = aobe.a();
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUtils", 2, "supportShortVideoMergePhoto dpc:" + jdField_b_of_type_Int + " choiceQC:" + bool2);
     }

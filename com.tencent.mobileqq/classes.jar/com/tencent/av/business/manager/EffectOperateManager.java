@@ -1,6 +1,6 @@
 package com.tencent.av.business.manager;
 
-import amsl;
+import amxa;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
@@ -67,10 +67,10 @@ public class EffectOperateManager
           this.jdField_a_of_type_Int = localJSONObject.getInt("versionCode");
         }
         if (localJSONObject.has("beginTime")) {
-          this.jdField_a_of_type_Long = amsl.a(localJSONObject.getString("beginTime"));
+          this.jdField_a_of_type_Long = amxa.a(localJSONObject.getString("beginTime"));
         }
         if (localJSONObject.has("endTime")) {
-          this.jdField_b_of_type_Long = amsl.a(localJSONObject.getString("endTime"));
+          this.jdField_b_of_type_Long = amxa.a(localJSONObject.getString("endTime"));
         }
         if (localJSONObject.has("wording")) {
           this.jdField_b_of_type_JavaLangString = localJSONObject.getString("wording");

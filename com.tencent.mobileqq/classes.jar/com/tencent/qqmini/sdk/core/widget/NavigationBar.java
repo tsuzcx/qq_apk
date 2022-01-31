@@ -21,8 +21,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgmt;
-import bgnx;
+import bgra;
+import bgse;
 import com.tencent.qqmini.sdk.launcher.model.NavigationBarInfo;
 import com.tencent.qqmini.sdk.launcher.model.WindowInfo;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
@@ -38,8 +38,8 @@ public class NavigationBar
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgmt jdField_a_of_type_Bgmt;
-  private bgnx jdField_a_of_type_Bgnx;
+  private bgra jdField_a_of_type_Bgra;
+  private bgse jdField_a_of_type_Bgse;
   private CapsuleButton jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton;
   private WebViewProgressBar jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar;
   private NavigationBarInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelNavigationBarInfo;
@@ -71,7 +71,7 @@ public class NavigationBar
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = a();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClipChildren(false);
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton = new CapsuleButton(getContext());
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131370580);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131370599);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       localLayoutParams.addRule(11, -1);
       localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
@@ -84,18 +84,18 @@ public class NavigationBar
       addView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370593));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370592));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370584));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370579));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131370583));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370612));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370611));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370603));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370598));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131370602));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar = ((WebViewProgressBar)findViewById(2131370581));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131370582);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840852);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar = ((WebViewProgressBar)findViewById(2131370600));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131370601);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840853);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
@@ -176,7 +176,7 @@ public class NavigationBar
   private void e()
   {
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840924);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840925);
     }
     for (;;)
     {
@@ -184,7 +184,7 @@ public class NavigationBar
         this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.a(this.jdField_b_of_type_Int);
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840923);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840924);
     }
   }
   
@@ -200,16 +200,16 @@ public class NavigationBar
     localRelativeLayout.setPadding(0, DisplayUtil.getStatusBarHeight(getContext()), 0, 0);
     localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject1).setId(2131370578);
+    ((RelativeLayout)localObject1).setId(2131370597);
     Object localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 30.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = DisplayUtil.dip2px(getContext(), 7.0F);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject2 = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject2).setId(2131370593);
+    ((RelativeLayout)localObject2).setId(2131370612);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-2, -1));
     Object localObject3 = new ImageView(getContext());
-    ((ImageView)localObject3).setId(2131370592);
+    ((ImageView)localObject3).setId(2131370611);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 12.0F), DisplayUtil.dip2px(getContext(), 21.5F));
     localLayoutParams.addRule(15, -1);
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 16.0F);
@@ -217,9 +217,9 @@ public class NavigationBar
     ((ImageView)localObject3).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     ((RelativeLayout)localObject2).addView((View)localObject3, localLayoutParams);
     localObject2 = new TextView(getContext());
-    ((TextView)localObject2).setId(2131370579);
+    ((TextView)localObject2).setId(2131370598);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131370593);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131370612);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((TextView)localObject2).setGravity(15);
     ((TextView)localObject2).setMaxEms(5);
@@ -227,7 +227,7 @@ public class NavigationBar
     ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject2 = new TextView(getContext());
-    ((TextView)localObject2).setId(2131370584);
+    ((TextView)localObject2).setId(2131370603);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((RelativeLayout.LayoutParams)localObject3).addRule(14, -1);
@@ -238,24 +238,24 @@ public class NavigationBar
     ((TextView)localObject2).setTextSize(1, 17.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject2 = new ProgressBar(getContext());
-    ((ProgressBar)localObject2).setId(2131370583);
+    ((ProgressBar)localObject2).setId(2131370602);
     localObject3 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 19.0F), DisplayUtil.dip2px(getContext(), 19.0F));
-    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131370584);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131370603);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((RelativeLayout.LayoutParams)localObject3).leftMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131370582);
+    ((View)localObject1).setId(2131370601);
     localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370578);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370597);
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 5.0F);
     ((View)localObject1).setBackgroundColor(0);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new WebViewProgressBar(getContext());
-    ((WebViewProgressBar)localObject1).setId(2131370581);
+    ((WebViewProgressBar)localObject1).setId(2131370600);
     localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 2.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), -2.0F);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370578);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370597);
     ((WebViewProgressBar)localObject1).setBackgroundColor(getContext().getResources().getColor(2131165782));
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     return localRelativeLayout;
@@ -319,9 +319,9 @@ public class NavigationBar
     }
   }
   
-  public NavigationBar a(bgmt parambgmt)
+  public NavigationBar a(bgra parambgra)
   {
-    this.jdField_a_of_type_Bgmt = parambgmt;
+    this.jdField_a_of_type_Bgra = parambgra;
     return this;
   }
   
@@ -400,13 +400,13 @@ public class NavigationBar
   
   public void a(byte paramByte)
   {
-    if (this.jdField_a_of_type_Bgnx == null)
+    if (this.jdField_a_of_type_Bgse == null)
     {
-      this.jdField_a_of_type_Bgnx = new bgnx();
+      this.jdField_a_of_type_Bgse = new bgse();
       if (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar != null)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bgnx);
-        this.jdField_a_of_type_Bgnx.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar);
+        this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bgse);
+        this.jdField_a_of_type_Bgse.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar);
       }
     }
     if ((paramByte == 0) && (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar != null)) {
@@ -415,7 +415,7 @@ public class NavigationBar
     if ((paramByte == 2) && (this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar != null)) {
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar.setVisibility(8);
     }
-    this.jdField_a_of_type_Bgnx.a(paramByte);
+    this.jdField_a_of_type_Bgse.a(paramByte);
   }
   
   public NavigationBar b(String paramString)
@@ -457,8 +457,8 @@ public class NavigationBar
   
   public void onClick(View paramView)
   {
-    if (((paramView.getId() == 2131370592) || (paramView.getId() == 2131370593)) && (this.jdField_a_of_type_Bgmt != null)) {
-      this.jdField_a_of_type_Bgmt.a(this);
+    if (((paramView.getId() == 2131370611) || (paramView.getId() == 2131370612)) && (this.jdField_a_of_type_Bgra != null)) {
+      this.jdField_a_of_type_Bgra.a(this);
     }
   }
   

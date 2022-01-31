@@ -1,28 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class txo
-  implements View.OnClickListener
+  implements uhq
 {
-  public txo(QCircleContentVideo paramQCircleContentVideo) {}
+  public txo(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a() == null) {
-      return;
-    }
-    if (this.a.a().a())
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
     {
-      this.a.b();
-      return;
+      String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get();
+      int i = tzy.a().a();
+      yiw.a().a(new QCircleDoublePraiseAnimationEvent(str, i, QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)));
+      QLog.d("QCircleContentImage", 1, "dispatchEvent id:" + str + " pageType:" + i);
     }
-    if (QCircleContentVideo.a(this.a))
-    {
-      this.a.e();
-      return;
-    }
-    this.a.c();
   }
 }
 

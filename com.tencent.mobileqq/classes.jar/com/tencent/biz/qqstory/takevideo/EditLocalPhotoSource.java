@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import wtr;
+import wya;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new wtr();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new wya();
   public final LocalMediaInfo a;
   public final String a;
   

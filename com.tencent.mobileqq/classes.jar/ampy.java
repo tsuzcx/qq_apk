@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
 
-public class ampy
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ampy
+  implements Parcelable.Creator<SosoInterface.SosoWifi>
 {
-  public ampy(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public SosoInterface.SosoWifi a(Parcel paramParcel)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
+    return new SosoInterface.SosoWifi(paramParcel);
+  }
+  
+  public SosoInterface.SosoWifi[] a(int paramInt)
+  {
+    return new SosoInterface.SosoWifi[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampy
  * JD-Core Version:    0.7.0.1
  */

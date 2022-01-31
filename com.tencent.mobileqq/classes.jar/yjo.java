@@ -1,51 +1,33 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 class yjo
-  extends syt
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
-  yjo(yjk paramyjk) {}
+  yjo(yjn paramyjn, yei paramyei) {}
   
-  protected boolean a(Integer paramInteger)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if ((yjk.a(this.a) == null) || (yjk.a(this.a) == null)) {
-      return false;
-    }
-    switch (paramInteger.intValue())
+    boolean bool = true;
+    List localList;
+    COMM.StCommonExt localStCommonExt;
+    if ((paramBoolean) && (paramStGetMainPageRsp != null))
     {
-    }
-    for (;;)
-    {
-      return super.a(paramInteger);
-      yjk.a(this.a);
-      if ((yjk.a(this.a) != null) && (yjk.a(this.a).a() != null))
-      {
-        yvu.a(yjk.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, yjk.a(this.a).f(), yjk.a(this.a).c() });
-        continue;
-        yjk.b(this.a);
-        if ((yjk.a(this.a) != null) && (yjk.a(this.a).a() != null))
-        {
-          yvu.a(yjk.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, yjk.a(this.a).f(), yjk.a(this.a).c() });
-          continue;
-          yjk.a(this.a, 0);
-          if ((yjk.a(this.a) != null) && (yjk.a(this.a).a() != null))
-          {
-            yvu.a(yjk.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, yjk.a(this.a).f(), yjk.a(this.a).c() });
-            continue;
-            yjk.a(this.a, 1);
-            if ((yjk.a(this.a) != null) && (yjk.a(this.a).a() != null))
-            {
-              yvu.a(yjk.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, yjk.a(this.a).f(), yjk.a(this.a).c() });
-              continue;
-              yjk.c(this.a);
-              if ((yjk.a(this.a) != null) && (yjk.a(this.a).a() != null)) {
-                yvu.a(yjk.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, yjk.a(this.a).f(), yjk.a(this.a).c() });
-              }
-            }
-          }
-        }
+      paramString = this.jdField_a_of_type_Yei;
+      localList = paramStGetMainPageRsp.vecFeed.get();
+      localStCommonExt = paramStGetMainPageRsp.extInfo;
+      if (paramStGetMainPageRsp.isFinish.get() != 1) {
+        break label61;
       }
+    }
+    label61:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramString.b(localList, localStCommonExt, paramBoolean);
+      return;
     }
   }
 }

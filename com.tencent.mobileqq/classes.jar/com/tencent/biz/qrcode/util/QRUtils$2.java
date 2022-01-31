@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.util;
 
-import xxb;
+import ybk;
 
 public final class QRUtils$2
   implements Runnable
@@ -9,7 +9,7 @@ public final class QRUtils$2
   
   public void run()
   {
-    xxb.a(this.a, this.b);
+    ybk.a(this.a, this.b);
   }
 }
 

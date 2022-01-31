@@ -1,64 +1,106 @@
-import java.util.List;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class uga
-  extends ugb<uer>
+public abstract class uga<T>
 {
-  private int a = 200;
+  protected int a;
+  protected View a;
+  protected ReportExtraTypeInfo a;
+  protected ExtraTypeInfo a;
+  protected Object a;
+  protected trw a;
   
-  protected double a()
+  public uga()
   {
-    return 0.3D;
+    this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo = new ReportExtraTypeInfo();
   }
   
-  protected int a()
+  public int a()
   {
-    return this.a;
+    return this.jdField_a_of_type_Int;
   }
   
-  protected long a(uer paramuer1, uer paramuer2)
+  public FeedCloudMeta.StFeed a()
   {
-    if ((paramuer1 != paramuer2) && (paramuer1.b == paramuer2.b)) {
-      return 1L;
+    if ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)) {
+      return (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
     }
-    return Math.abs(paramuer1.b - paramuer2.b);
-  }
-  
-  protected uer a(List<uer> paramList)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < paramList.size())
-    {
-      l += ((uer)paramList.get(i)).b;
-      i += 1;
-    }
-    uer localuer = new uer();
-    localuer.b = (l / paramList.size());
-    return localuer;
+    return null;
   }
   
   public void a(int paramInt)
   {
-    this.a = paramInt;
+    if (tzy.a().c(57))
+    {
+      tzw.a(paramInt, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+      return;
+    }
+    tzs.a(paramInt, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
   }
   
-  protected boolean a(long paramLong)
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
   {
-    int i = b();
-    if (i > 0) {
-      if (paramLong / i >= 1500L) {}
-    }
-    while (paramLong < 200L)
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+  }
+  
+  public void a(FeedCloudMeta.StUser paramStUser, String paramString, QCircleAsyncTextView paramQCircleAsyncTextView)
+  {
+    if ((paramStUser != null) && (!TextUtils.isEmpty(paramStUser.nick.get())) && (!TextUtils.isEmpty(paramString)) && (paramQCircleAsyncTextView != null))
     {
-      return true;
-      return false;
+      paramQCircleAsyncTextView.setText("");
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      localSpannableStringBuilder.append(paramStUser.nick.get()).append("：").append(paramString);
+      paramQCircleAsyncTextView.a(localSpannableStringBuilder, 0, paramStUser.nick.get().length(), new ugb(this, paramStUser));
+      paramQCircleAsyncTextView.c();
+      paramQCircleAsyncTextView.setText(localSpannableStringBuilder);
+      paramQCircleAsyncTextView.setVisibility(0);
+    }
+  }
+  
+  public void a(trw paramtrw)
+  {
+    this.jdField_a_of_type_Trw = paramtrw;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
+    {
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith("qcircle_fakeid_"))) {
+        return true;
+      }
     }
     return false;
   }
   
-  protected boolean a(uer paramuer1, uer paramuer2)
+  protected boolean b()
   {
-    return paramuer1.b == paramuer2.b;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (a())
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidViewView.getContext(), 0, 2131698369, 0).a();
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

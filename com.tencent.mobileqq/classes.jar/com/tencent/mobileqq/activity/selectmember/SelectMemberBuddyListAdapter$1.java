@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajwc;
+import akar;
 
 public class SelectMemberBuddyListAdapter$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1(ajwc paramajwc) {}
+  public SelectMemberBuddyListAdapter$1(akar paramakar) {}
   
   public void run()
   {

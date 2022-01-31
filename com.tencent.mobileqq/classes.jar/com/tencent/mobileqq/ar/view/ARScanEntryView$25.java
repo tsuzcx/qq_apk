@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ARScanEntryView$25
@@ -10,7 +10,7 @@ class ARScanEntryView$25
   
   public void run()
   {
-    QQToast.a(this.this$0.a, alpo.a(2131701116), 1).b(this.this$0.a());
+    QQToast.a(this.this$0.a, alud.a(2131701128), 1).b(this.this$0.a());
   }
 }
 

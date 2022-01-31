@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import befo;
+import bejx;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
 class SwiftWebAccelerator$5$1

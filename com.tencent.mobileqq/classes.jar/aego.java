@@ -1,29 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aego
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public aego(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aego(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity.c(this.a, true);
-      return;
-    }
-    VerifyCodeActivity.d(this.a, false);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aego
  * JD-Core Version:    0.7.0.1
  */

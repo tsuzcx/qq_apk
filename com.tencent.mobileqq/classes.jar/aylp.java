@@ -1,43 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import java.util.Comparator;
 
 class aylp
-  implements View.OnClickListener
+  implements Comparator<FTSEntity>
 {
-  aylp(aylm paramaylm, ayij paramayij) {}
+  aylp(ayln paramayln) {}
   
-  public void onClick(View paramView)
+  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
   {
-    if (this.jdField_a_of_type_Ayij.l == 1)
+    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
+    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
+    long l1;
+    if (paramFTSEntity1 != null)
     {
-      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
-      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = (aloz)aylm.a(this.jdField_a_of_type_Aylm).getManager(51);
-      if ((((aloz)localObject).b(this.jdField_a_of_type_Ayij.b)) || (((aloz)localObject).d(this.jdField_a_of_type_Ayij.b))) {
-        break;
+      l1 = paramFTSEntity1.time;
+      if (paramFTSEntity2 == null) {
+        break label54;
       }
-      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Ayij.b, null, 3020, 3, this.jdField_a_of_type_Ayij.c, null, null, paramView.getContext().getString(2131689628), null);
-      paramView.getContext().startActivity((Intent)localObject);
-      return;
-      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
-      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
     }
-    if (((aloz)localObject).b(this.jdField_a_of_type_Ayij.b))
+    label54:
+    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
     {
-      this.jdField_a_of_type_Ayij.k = 2;
-      aylm.a(this.jdField_a_of_type_Aylm).notifyDataSetChanged();
-      return;
+      return Long.signum(l2 - l1);
+      l1 = 0L;
+      break;
     }
-    this.jdField_a_of_type_Ayij.k = 1;
-    aylm.a(this.jdField_a_of_type_Aylm).notifyDataSetChanged();
   }
 }
 

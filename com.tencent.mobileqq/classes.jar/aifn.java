@@ -1,103 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifn
-  extends aifb
+class aifn
+  extends ambp
 {
-  private bfua a;
+  aifn(aiez paramaiez) {}
   
-  public aifn(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean)
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-    this.c = true;
-  }
-  
-  protected void A()
-  {
-    if (!this.d) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-        if ((ChatActivityUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)) {
-          if (mdj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-          {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698863));
-          }
-        }
-        while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1025))
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          continue;
-          if ((this.jdField_a_of_type_AndroidWidgetTextView.getText() != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getText().length() < 6)) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          } else {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
     }
+    this.a.e();
   }
   
-  public bfua a()
+  public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bfua == null) {
-      this.jdField_a_of_type_Bfua = ((bfua)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165));
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
     }
-    return this.jdField_a_of_type_Bfua;
-  }
-  
-  protected void f()
-  {
-    if (!this.d) {}
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-        } while ((!this.c) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) && (a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006));
-        localObject = ((aubm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((localObject == null) || (bdbt.a(((PhoneContact)localObject).detalStatusFlag, ((PhoneContact)localObject).iTermType) == 0)) {
-          break;
-        }
-        localObject = bdbt.a((PhoneContact)localObject);
-        e(true);
-        this.b.setText((CharSequence)localObject);
-      } while (!AppSetting.c);
-      this.b.setContentDescription((CharSequence)localObject);
-      return;
-    } while (this.b.getVisibility() != 0);
-    e(false);
-  }
-  
-  protected void g()
-  {
-    super.g();
-    if (this.d)
-    {
-      f();
-      A();
-    }
-  }
-  
-  protected void y()
-  {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForStranger";
+    this.a.g();
   }
 }
 

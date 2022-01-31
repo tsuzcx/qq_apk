@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.video;
 
-import aanp;
+import aase;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdcs;
+import bdhb;
 
 class GdtVideoCommonView$6
   implements Runnable
@@ -14,7 +14,7 @@ class GdtVideoCommonView$6
   
   public void run()
   {
-    aanp.a("GdtVideoCommonView", "showTisJob " + GdtVideoCommonView.a(this.this$0));
+    aase.a("GdtVideoCommonView", "showTisJob " + GdtVideoCommonView.a(this.this$0));
     if (GdtVideoCommonView.a(this.this$0)) {
       return;
     }
@@ -25,7 +25,7 @@ class GdtVideoCommonView$6
     GdtVideoCommonView.c(this.this$0).setVisibility(0);
     if (GdtVideoCommonView.b(this.this$0) > 0L)
     {
-      String str = bdcs.a(GdtVideoCommonView.b(this.this$0));
+      String str = bdhb.a(GdtVideoCommonView.b(this.this$0));
       str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689626), new Object[] { str });
       GdtVideoCommonView.b(this.this$0).setText(str);
       GdtVideoCommonView.b(this.this$0).setVisibility(0);

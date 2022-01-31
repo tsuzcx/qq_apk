@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
-import bizm;
-import bizt;
-import yjk;
-import yjq;
+import bjdt;
+import bjea;
+import ynx;
+import yod;
 
 public class SubscribeQRCodeShareHelper$7
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$7(yjk paramyjk) {}
+  public SubscribeQRCodeShareHelper$7(ynx paramynx) {}
   
   public void run()
   {
-    if (yjk.a(this.this$0))
+    if (ynx.a(this.this$0))
     {
-      String str = yjk.a(this.this$0, yjk.a(this.this$0));
-      bizm.a(yjk.a(this.this$0), bizt.a(), str, "写说说", yjq.a(yjk.a(this.this$0)), 0);
+      String str = ynx.a(this.this$0, ynx.a(this.this$0));
+      bjdt.a(ynx.a(this.this$0), bjea.a(), str, "写说说", yod.a(ynx.a(this.this$0)), 0);
     }
   }
 }

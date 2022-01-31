@@ -1,124 +1,56 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.ArkHeaderView;
-import com.tencent.mobileqq.gamecenter.view.GameArkView;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class asjw
 {
-  public static asjl a(MessageRecord paramMessageRecord, Activity paramActivity)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  
+  public String a()
   {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return new ArkHeaderView(paramActivity, null);
-    }
-    if ((paramMessageRecord instanceof MessageForStructing)) {}
-    for (;;)
-    {
-      int n;
-      int i1;
-      try
-      {
-        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
-        if (paramMessageRecord != null) {
-          break label247;
-        }
-        return null;
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
-        return null;
-      }
-      if (n < paramMessageRecord.size())
-      {
-        if (!(paramMessageRecord.get(n) instanceof azqk)) {
-          break label269;
-        }
-        ArrayList localArrayList = ((azqk)paramMessageRecord.get(n)).a;
-        k = i;
-        i = j;
-        i1 = 0;
-        j = k;
-        k = j;
-        m = i;
-        if (i1 >= localArrayList.size()) {
-          break label275;
-        }
-        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
-        {
-          k = 1;
-          if ((k != 0) && (j != 0))
-          {
-            paramMessageRecord = new ImgHeaderView(paramActivity);
-            return paramMessageRecord;
-          }
-        }
-        else
-        {
-          k = i;
-          if (!(localArrayList.get(i1) instanceof azsm)) {
-            continue;
-          }
-          j = 1;
-          k = i;
-          continue;
-        }
-      }
-      else
-      {
-        if (paramMessageRecord.size() != 2) {
-          continue;
-        }
-        paramMessageRecord = new TextHeaderView(paramActivity);
-        return paramMessageRecord;
-        if ((paramMessageRecord instanceof MessageForPubAccount)) {
-          return new ImgHeaderView(paramActivity);
-        }
-        return new MoreMsgHeaderView(paramActivity);
-        label247:
-        n = 0;
-        i = 0;
-        j = 0;
-        continue;
-      }
-      i1 += 1;
-      int i = k;
-      continue;
-      label269:
-      int m = j;
-      int k = i;
-      label275:
-      n += 1;
-      int j = m;
-      i = k;
-    }
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
   }
   
-  public static asjl a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  public void a()
   {
-    if (paramQQGameMsgInfo == null) {
-      return new MoreMsgHeaderView(paramActivity);
-    }
-    if (paramQQGameMsgInfo.msgType == 1) {
-      return new GameArkView(paramActivity, null);
-    }
-    if (paramQQGameMsgInfo.msgType == 2) {
-      return new ImgHeaderView(paramActivity);
-    }
-    if (paramQQGameMsgInfo.msgType == 3) {
-      return new TextHeaderView(paramActivity);
-    }
-    return new MoreMsgHeaderView(paramActivity);
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bdhb.b(this.jdField_c_of_type_JavaLangString));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
 }
 

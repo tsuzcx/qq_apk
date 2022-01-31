@@ -1,14 +1,33 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-final class bcdh
-  implements Comparator
+public class bcdh
+  extends Handler
 {
-  bcdh(Editable paramEditable) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
+  public bcdh(bcdf parambcdf, Looper paramLooper)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
+    {
+      try
+      {
+        switch (paramMessage.what)
+        {
+        case 2: 
+          return;
+        }
+      }
+      finally {}
+      paramMessage = paramMessage.getData();
+      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
+      this.a.a(0);
+    }
   }
 }
 

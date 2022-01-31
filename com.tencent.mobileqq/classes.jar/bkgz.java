@@ -1,8 +1,6 @@
-import cooperation.weiyun.sdk.download.DownloadType;
-
-public abstract interface bkgz
+public class bkgz
 {
-  public abstract void a(bkge parambkge, DownloadType paramDownloadType, bkgw parambkgw);
+  public static final String a = bkgz.class.getName();
 }
 
 

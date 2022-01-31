@@ -44,7 +44,7 @@ public class plb
     }
     JSONObject localJSONObject = new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).a(paramBaseArticleInfo, "Biu了").i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).n(paramBaseArticleInfo).m(paramBaseArticleInfo).o(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).D(paramBaseArticleInfo).C(paramBaseArticleInfo).G(paramBaseArticleInfo).a("ReadInjoy_biu_cell").E(paramBaseArticleInfo).s(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
     if (!opj.a(paramBaseArticleInfo)) {
-      pkv.a(paramBaseArticleInfo, alpo.a(2131701522), localJSONObject);
+      pkv.a(paramBaseArticleInfo, alud.a(2131701534), localJSONObject);
     }
     return localJSONObject;
   }
@@ -64,7 +64,7 @@ public class plb
         localLinearLayout.setOrientation(1);
         localLinearLayout.addView(new ComponentContentGridImage(paramContainer.getContext()));
         localLinearLayout.addView(new ComponentContentUgcImage(paramContainer.getContext()));
-        paramInt1 = aekt.a(12.0F, paramContainer.getContext().getResources());
+        paramInt1 = aepi.a(12.0F, paramContainer.getContext().getResources());
         ((RelativeLayout.LayoutParams)localObject3).setMargins(paramInt1, 0, paramInt1, 0);
         ((prm)localObject1).a((RelativeLayout.LayoutParams)localObject3);
         ((NativeMiddleBodyView)localObject2).a(localLinearLayout, (RelativeLayout.LayoutParams)localObject3);

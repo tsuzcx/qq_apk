@@ -1,16 +1,36 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract interface bmxp
+public class bmxp
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(int paramInt, bmxy parambmxy);
+  public bmxp(FaceViewPager paramFaceViewPager) {}
   
-  public abstract void a(List<bmxy> paramList);
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bmxq)localIterator.next()).e(paramInt);
+    }
+  }
   
-  public abstract void c();
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bmxq)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
+    }
+  }
   
-  public abstract void d();
-  
-  public abstract void e();
+  public void onPageSelected(int paramInt)
+  {
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bmxq)localIterator.next()).c(paramInt);
+    }
+  }
 }
 
 

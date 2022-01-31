@@ -1,14 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bbji
-  implements bepk
+  implements DialogInterface.OnClickListener
 {
-  public bbji(NewTroopContactView paramNewTroopContactView) {}
+  public bbji(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

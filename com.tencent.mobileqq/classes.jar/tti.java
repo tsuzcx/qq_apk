@@ -1,45 +1,15 @@
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import mqq.app.QQPermissionCallback;
 
 class tti
-  extends trr
+  implements QQPermissionCallback
 {
-  tti(ttc paramttc) {}
+  tti(ttg paramttg) {}
   
-  public QCircleInitBean a()
-  {
-    return ttc.a(this.a);
-  }
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
   
-  public QCirclePolymorphicAniView a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (ttc.a(this.a) != null) {
-      return (QCirclePolymorphicAniView)ttc.a(this.a).findViewById(2131373173);
-    }
-    return null;
-  }
-  
-  public tuk a()
-  {
-    if ((ttc.a(this.a) == null) && (ttc.a(this.a) != null))
-    {
-      ViewStub localViewStub = (ViewStub)ttc.a(this.a).findViewById(2131373125);
-      ttc.a(this.a, new tuk(this.a.a()));
-      ttc.a(this.a).a(this.a.a(), localViewStub);
-    }
-    return ttc.a(this.a);
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.a.b("share_action_show_share_sheet", paramObject);
-  }
-  
-  public boolean a()
-  {
-    return false;
+    ttg.b(this.a);
   }
 }
 

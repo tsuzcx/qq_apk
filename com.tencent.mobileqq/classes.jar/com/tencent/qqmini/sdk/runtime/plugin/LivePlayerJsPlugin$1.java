@@ -2,10 +2,10 @@ package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import bghl;
-import bgho;
-import bgkd;
-import bhab;
+import bgls;
+import bglv;
+import bgok;
+import bhei;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.runtime.widget.media.CoverLiveView;
 import com.tencent.qqmini.sdk.utils.DisplayUtil;
@@ -15,21 +15,21 @@ import org.json.JSONObject;
 class LivePlayerJsPlugin$1
   implements Runnable
 {
-  LivePlayerJsPlugin$1(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, JSONObject paramJSONObject1, bgkd parambgkd, JSONObject paramJSONObject2) {}
+  LivePlayerJsPlugin$1(LivePlayerJsPlugin paramLivePlayerJsPlugin, int paramInt, JSONObject paramJSONObject1, bgok parambgok, JSONObject paramJSONObject2) {}
   
   public void run()
   {
-    Object localObject2 = bhab.a(LivePlayerJsPlugin.access$000(this.this$0)).a(this.val$livePlayerId);
+    Object localObject2 = bhei.a(LivePlayerJsPlugin.access$000(this.this$0)).a(this.val$livePlayerId);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new CoverLiveView(LivePlayerJsPlugin.access$100(this.this$0));
       ((CoverLiveView)localObject1).setAtyRef(new WeakReference(LivePlayerJsPlugin.access$200(this.this$0).a()));
       ((CoverLiveView)localObject1).setData(this.val$jsonObject.optString("data"));
-      ((CoverLiveView)localObject1).setBaseRuntime((bghl)LivePlayerJsPlugin.access$300(this.this$0));
+      ((CoverLiveView)localObject1).setBaseRuntime((bgls)LivePlayerJsPlugin.access$300(this.this$0));
       ((CoverLiveView)localObject1).setPageWebviewId(LivePlayerJsPlugin.access$400(this.this$0));
       ((CoverLiveView)localObject1).setLivePlayerId(this.val$livePlayerId);
-      bhab.a(LivePlayerJsPlugin.access$500(this.this$0)).a(0, this.val$livePlayerId, (CoverView)localObject1, false);
+      bhei.a(LivePlayerJsPlugin.access$500(this.this$0)).a(0, this.val$livePlayerId, (CoverView)localObject1, false);
     }
     if ((localObject1 instanceof CoverLiveView))
     {

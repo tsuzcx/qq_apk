@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -126,14 +126,14 @@ public class ReadInJoyPatchAdView
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131559889, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367948));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371608));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376616));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131559888, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367959));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371627));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376670));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362010));
     this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362154));
     this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362050));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371610));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371629));
   }
   
   private void f()
@@ -201,7 +201,7 @@ public class ReadInJoyPatchAdView
         URL localURL = new URL(paramAdvertisementInfo.mAdCorporateLogo);
         orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramrjk, getContext(), false);
         orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(aekt.a(2.0F, getContext().getResources()));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(aepi.a(2.0F, getContext().getResources()));
         try
         {
           paramInt = oeh.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));

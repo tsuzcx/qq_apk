@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import alzf;
+import amdu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ChatHistoryTroopMemberFragment$26
@@ -10,7 +10,7 @@ class ChatHistoryTroopMemberFragment$26
   
   public void run()
   {
-    ((alzf)this.this$0.b.a(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
+    ((amdu)this.this$0.b.a(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
   }
 }
 

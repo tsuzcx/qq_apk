@@ -1,38 +1,26 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.Future;
-
-public class biws
-  implements PluginManagerUpdater
+public abstract interface biws
 {
-  private asun jdField_a_of_type_Asun;
-  private File jdField_a_of_type_JavaIoFile;
+  public abstract void a();
   
-  public biws(asun paramasun, File paramFile)
-  {
-    this.jdField_a_of_type_Asun = paramasun;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
+  public abstract void a(String paramString);
   
-  public File getLatest()
-  {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
+  public abstract void b();
   
-  public Future isAvailable(File paramFile)
-  {
-    return this.jdField_a_of_type_Asun.isAvailable(paramFile);
-  }
+  public abstract void c();
   
-  public Future update()
-  {
-    return this.jdField_a_of_type_Asun.update();
-  }
+  public abstract void d();
   
-  public boolean wasUpdating()
-  {
-    return false;
-  }
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

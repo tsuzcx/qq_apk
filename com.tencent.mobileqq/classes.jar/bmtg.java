@@ -1,11 +1,4 @@
-import android.graphics.Bitmap;
-
-public class bmtg
-{
-  public int a;
-  public Bitmap a;
-  public int b;
-}
+public class bmtg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

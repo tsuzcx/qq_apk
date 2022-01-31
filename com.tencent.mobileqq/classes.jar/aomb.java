@@ -1,80 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aomb
-  extends aofy<blus>
+  extends aolx
 {
   public int a()
   {
-    return 304;
+    return 159;
   }
   
-  @NonNull
-  public blus a(int paramInt)
+  public aolr a(String paramString)
   {
-    return new blus();
-  }
-  
-  @Nullable
-  public blus a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
-    }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onParsed, content:" + paramArrayOfaogf);
-    }
-    return new blup().a(paramArrayOfaogf, blri.a.getAbsolutePath(), "temp_sticker_zip", new aomc(this));
-  }
-  
-  public Class<blus> a()
-  {
-    return blus.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onReqFailed");
-    }
-  }
-  
-  public void a(blus paramblus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!blri.a()) {
-      return 0;
-    }
-    return bdiv.D(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!blri.a())
+    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
     {
-      QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
-      aogj.a().a(304, 0);
-      return 0;
+      aomp localaomp = (aomp)aolc.a(paramString, aomp.class);
+      return new aolv(paramString, localaomp);
     }
-    return super.b(paramInt);
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
   }
   
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
+  public boolean a()
   {
     return true;
   }

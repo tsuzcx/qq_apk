@@ -1,46 +1,33 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.util.FaceInfo;
 
 public class alsa
-  extends AccountObserver
+  implements alpg
 {
-  public alsa(MessageHandler paramMessageHandler, String paramString) {}
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
-        return;
-      }
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
       {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
-        }
-        i += 1;
+        paramObject = null;
+        a(paramBoolean, paramObject);
       }
     }
-    if (paramBoolean) {}
-    for (paramHashMap = "0";; paramHashMap = "1")
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
     {
-      bfdq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+      b(paramBoolean, paramObject);
       return;
     }
   }

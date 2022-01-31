@@ -154,7 +154,7 @@ public class rlt
     while (localIterator.hasNext()) {
       ((rma)localIterator.next()).b();
     }
-    if (bdee.h(BaseApplicationImpl.getContext()))
+    if (bdin.h(BaseApplicationImpl.getContext()))
     {
       this.jdField_b_of_type_Long = (Aladdin.getConfig(230).getIntegerFromString("reset_time_threshold_wifi", 3600) * 1000L);
       return;

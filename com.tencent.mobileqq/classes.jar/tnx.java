@@ -30,8 +30,8 @@ public class tnx
   extends PopupWindow
   implements View.OnClickListener, Animation.AnimationListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131721473, 2130850146 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2131721472, 2130850145 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131721486, 2130850219 };
+  private static final int[] jdField_b_of_type_ArrayOfInt = { 2131721485, 2130850218 };
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private View jdField_a_of_type_AndroidViewView;
@@ -67,7 +67,7 @@ public class tnx
   
   private static View a(Activity paramActivity, List<toa> paramList)
   {
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559863, null);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559862, null);
     a(paramActivity, localView, paramList);
     return localView;
   }
@@ -87,7 +87,7 @@ public class tnx
       throw new IllegalArgumentException("parameter items can not be null or zero-length array.");
     }
     int i = b(paramActivity, localList.size());
-    int j = bdkf.a(145.0F);
+    int j = bdoo.a(145.0F);
     paramActivity = new tnx(paramActivity, a(paramActivity, localList), j, i, true);
     paramActivity.setAnimationStyle(2131755029);
     paramActivity.setBackgroundDrawable(new ColorDrawable(0));
@@ -153,7 +153,7 @@ public class tnx
       {
         this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165451));
-        this.jdField_a_of_type_AndroidViewView.setContentDescription(alpo.a(2131708718));
+        this.jdField_a_of_type_AndroidViewView.setContentDescription(alud.a(2131708730));
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(new tny(this));
       }
       if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 14)) {
@@ -165,16 +165,16 @@ public class tnx
   
   private static void a(Context paramContext, View paramView, List<toa> paramList)
   {
-    paramView = (LinearLayout)paramView.findViewById(2131369677);
+    paramView = (LinearLayout)paramView.findViewById(2131369696);
     paramView.removeAllViews();
     paramList = paramList.iterator();
     if (paramList.hasNext())
     {
       toa localtoa = (toa)paramList.next();
-      View localView = LayoutInflater.from(paramContext).inflate(2131559862, null);
-      ImageView localImageView1 = (ImageView)localView.findViewById(2131380246);
-      ImageView localImageView2 = (ImageView)localView.findViewById(2131368801);
-      TextView localTextView = (TextView)localView.findViewById(2131378797);
+      View localView = LayoutInflater.from(paramContext).inflate(2131559861, null);
+      ImageView localImageView1 = (ImageView)localView.findViewById(2131380304);
+      ImageView localImageView2 = (ImageView)localView.findViewById(2131368816);
+      TextView localTextView = (TextView)localView.findViewById(2131378852);
       localImageView2.setBackgroundResource(localtoa.jdField_b_of_type_Int);
       localTextView.setText(localtoa.jdField_a_of_type_JavaLangString);
       if (localtoa.jdField_a_of_type_Boolean) {
@@ -270,7 +270,7 @@ public class tnx
   {
     int i = paramInt - 2;
     if (i > 0) {}
-    for (paramInt = i * aekt.a(52.0F, paramContext.getResources()) + aekt.a(62.0F, paramContext.getResources()) * 2;; paramInt = aekt.a(62.0F, paramContext.getResources()) * paramInt) {
+    for (paramInt = i * aepi.a(52.0F, paramContext.getResources()) + aepi.a(62.0F, paramContext.getResources()) * 2;; paramInt = aepi.a(62.0F, paramContext.getResources()) * paramInt) {
       return paramInt + a(paramContext, 2131298646);
     }
   }
@@ -309,7 +309,7 @@ public class tnx
       } while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded())));
       if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
       {
-        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772320);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772321);
         this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
       }
       getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);

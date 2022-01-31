@@ -33,8 +33,8 @@ public class qqb
         if (k <= 0) {
           break label161;
         }
-        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839355);
-        localDrawable.setBounds(0, 0, bdkf.b(16.0F), bdkf.b(16.0F));
+        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839356);
+        localDrawable.setBounds(0, 0, bdoo.b(16.0F), bdoo.b(16.0F));
         arrayOfDrawable[2] = localDrawable;
       }
     }

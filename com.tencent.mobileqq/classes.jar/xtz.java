@@ -1,41 +1,19 @@
-public class xtz
+class xtz
 {
-  int jdField_a_of_type_Int = 0;
-  short jdField_a_of_type_Short = 0;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
+  public int a;
+  public byte[] a;
+  public int b;
   
-  public xtz() {}
-  
-  public xtz(int paramInt, short paramShort, byte[] paramArrayOfByte)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte.length + 4;
-  }
-  
-  public long a()
-  {
-    return xxb.a(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public String a()
-  {
-    return new String(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public String toString()
-  {
-    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xtz
  * JD-Core Version:    0.7.0.1
  */

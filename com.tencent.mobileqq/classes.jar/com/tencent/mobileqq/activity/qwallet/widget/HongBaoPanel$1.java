@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import aemp;
+import aere;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class HongBaoPanel$1
-  implements aemp
+  implements aere
 {
   HongBaoPanel$1(HongBaoPanel paramHongBaoPanel) {}
   

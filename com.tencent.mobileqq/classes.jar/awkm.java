@@ -1,9 +1,22 @@
+import com.tencent.mobileqq.pic.CompressInfo;
+
 public class awkm
+  extends awkl
 {
-  public static String a = "%s更新了个性标签";
-  public static String b = alpo.a(2131702829);
-  public static String c = "https://ti.qq.com/specialtag/index.html?_wv=536884193&_wwv=5";
-  public static String d = "?personality_label_blur=1";
+  awkm(CompressInfo paramCompressInfo)
+  {
+    super(paramCompressInfo);
+  }
+  
+  protected int a(CompressInfo paramCompressInfo)
+  {
+    return 2;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
 }
 
 

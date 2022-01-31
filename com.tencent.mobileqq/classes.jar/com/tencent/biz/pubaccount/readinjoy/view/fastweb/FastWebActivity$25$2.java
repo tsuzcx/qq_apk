@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import android.os.Build.VERSION;
-import aobk;
+import aoft;
 import ryq;
 import ryr;
 
@@ -14,7 +14,7 @@ public class FastWebActivity$25$2
   {
     if ((Build.VERSION.SDK_INT > 26) && (FastWebActivity.a(this.a.a) == null))
     {
-      aobk.a(this.a.a, new ryr(this));
+      aoft.a(this.a.a, new ryr(this));
       return;
     }
     this.a.a.finish();

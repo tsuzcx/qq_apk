@@ -1,20 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
 public class bnif
-  extends Handler
 {
-  public bnif(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public Bitmap a;
   
-  public void handleMessage(Message paramMessage)
+  protected void finalize()
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    super.finalize();
+    if ((this.a != null) && (!this.a.isRecycled()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Frames", 2, "recycle bitmap");
+      }
+      this.a.recycle();
+    }
   }
 }
 

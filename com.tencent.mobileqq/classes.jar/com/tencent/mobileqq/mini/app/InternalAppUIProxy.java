@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import alpo;
+import alud;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,9 +64,9 @@ public class InternalAppUIProxy
   {
     this.mActivity = paramBaseActivity;
     boolean bool = super.doOnCreate(paramBaseActivity, paramBundle);
-    this.mLoadingLayout = this.mActivity.findViewById(2131369762);
+    this.mLoadingLayout = this.mActivity.findViewById(2131369781);
     this.mLoadingLayout.setVisibility(8);
-    this.mRootView = this.mActivity.findViewById(2131370475);
+    this.mRootView = this.mActivity.findViewById(2131370494);
     return bool;
   }
   
@@ -79,7 +79,7 @@ public class InternalAppUIProxy
   
   protected int getLayoutResourceId()
   {
-    return 2131559306;
+    return 2131559305;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -127,7 +127,7 @@ public class InternalAppUIProxy
     if (paramBundle != null) {}
     for (paramBundle = (MiniAppConfig)paramBundle.getParcelable("CONFIG"); paramBundle == null; paramBundle = null)
     {
-      Toast.makeText(paramBaseActivity, alpo.a(2131706184), 1).show();
+      Toast.makeText(paramBaseActivity, alud.a(2131706196), 1).show();
       paramBaseActivity.finish();
       return;
     }
@@ -135,7 +135,7 @@ public class InternalAppUIProxy
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(paramBaseActivity, 9.0F) + ImmersiveUtils.getStatusBarHeight(paramBaseActivity));
     this.mLoadingLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364766);
+    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364767);
     if ((paramBundle.isInternalApp()) && (paramBundle.config.appMode.closeTopRightCapsule)) {
       ((ViewGroup)localObject).setVisibility(8);
     }
@@ -150,9 +150,9 @@ public class InternalAppUIProxy
       AppLoaderFactory.getAppLoaderManager().loadApkgByConfig(paramBundle);
       return;
       ((ViewGroup)localObject).setVisibility(0);
-      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363541);
+      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363543);
       if (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) {
-        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840978, 40, 30));
+        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840979, 40, 30));
       }
       ((ImageView)localObject).setOnClickListener(new InternalAppUIProxy.1(this, paramBaseActivity));
     }

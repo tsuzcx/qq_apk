@@ -1,96 +1,25 @@
-import android.graphics.Point;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.ae.album.logic.AEPhotoListLogicDefault.8.1;
+import mqq.util.WeakReference;
 
 public class bkrp
-  implements bkrn
+  implements upk
 {
-  public float a(Point paramPoint, int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    return paramInt1 - paramPoint.x;
-  }
-  
-  public int a(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
-  }
-  
-  public void a(int paramInt, yub paramyub)
-  {
-    paramyub.a(paramInt);
-  }
-  
-  public void a(Point paramPoint1, int paramInt, Point paramPoint2)
-  {
-    paramPoint2.set(paramPoint1.x - paramInt, paramPoint1.y);
-  }
-  
-  public void a(bkpe parambkpe, int paramInt, Point paramPoint)
-  {
-    paramPoint.set(paramPoint.x + parambkpe.a(paramInt), paramPoint.y);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt2 = paramPoint.x;
-    int i = paramPoint.x;
-    return (paramInt2 - paramInt1 < paramInt3 + paramInt4) && (i + paramInt1 > -paramInt4);
-  }
-  
-  public boolean a(bkrd parambkrd)
-  {
-    boolean bool = false;
-    View localView1 = parambkrd.a();
-    View localView2 = parambkrd.b();
-    int i = -parambkrd.c();
-    int j = parambkrd.getWidth();
-    int k = parambkrd.c();
-    if ((parambkrd.getDecoratedLeft(localView1) > i) && (parambkrd.getPosition(localView1) > 0))
+    if (paramInt == 0)
     {
-      i = 1;
-      if ((parambkrd.getDecoratedRight(localView2) >= j + k) || (parambkrd.getPosition(localView2) >= parambkrd.getItemCount() - 1)) {
-        break label102;
-      }
+      QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+      ThreadManager.postImmediately(new AEPhotoListLogicDefault.8.1(this), null, true);
+      return;
     }
-    label102:
-    for (j = 1;; j = 0)
-    {
-      if ((i != 0) || (j != 0)) {
-        bool = true;
-      }
-      return bool;
-      i = 0;
-      break;
-    }
-  }
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public int c(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
+    paramString1 = Message.obtain();
+    paramString1.what = 2;
+    paramString1.obj = Integer.valueOf(paramInt);
+    ((bkqs)this.jdField_a_of_type_Bkrk.a.get()).a.sendMessage(paramString1);
   }
 }
 

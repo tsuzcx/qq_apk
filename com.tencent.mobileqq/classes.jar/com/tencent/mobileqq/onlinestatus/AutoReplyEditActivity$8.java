@@ -4,8 +4,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import awab;
-import azgq;
+import awek;
+import azkz;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class AutoReplyEditActivity$8
@@ -19,9 +19,9 @@ public class AutoReplyEditActivity$8
     ViewGroup.LayoutParams localLayoutParams = AutoReplyEditActivity.a(this.this$0).getLayoutParams();
     AutoReplyEditActivity.a(this.this$0).setImageResource(2130837526);
     AutoReplyEditActivity.a(this.this$0).setContentDescription(this.this$0.getActivity().getString(2131690365));
-    AutoReplyEditActivity.a(this.this$0).setOnClickListener(new awab(this));
+    AutoReplyEditActivity.a(this.this$0).setOnClickListener(new awek(this));
     AutoReplyEditActivity.a(this.this$0).setVisibility(0);
-    localLayoutParams.height = (azgq.b / 3 + azgq.a(50.0F));
+    localLayoutParams.height = (azkz.b / 3 + azkz.a(50.0F));
     AutoReplyEditActivity.a(this.this$0).setMinimumHeight(localLayoutParams.height);
     AutoReplyEditActivity.a(this.this$0).setLayoutParams(localLayoutParams);
     AutoReplyEditActivity.b(this.this$0);

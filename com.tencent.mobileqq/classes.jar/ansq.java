@@ -1,94 +1,107 @@
-import android.animation.TypeEvaluator;
-import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-@TargetApi(11)
-public class ansq
-  implements TypeEvaluator<ansn>
+class ansq
+  extends Handler
 {
-  public ansn a(float paramFloat, ansn paramansn1, ansn paramansn2)
+  ansq(ansn paramansn, Looper paramLooper)
   {
-    long l = System.currentTimeMillis();
-    float f1;
-    float f2;
-    antr localantr;
-    ansn localansn;
-    if (paramansn2.jdField_a_of_type_Antr.jdField_a_of_type_Int == 2)
-    {
-      f1 = 1.0F - paramFloat;
-      f2 = f1 * f1 * f1 * paramansn1.jdField_a_of_type_Antr.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramansn2.jdField_a_of_type_Antr.e + 3.0F * f1 * paramFloat * paramFloat * paramansn2.jdField_a_of_type_Antr.g + paramFloat * paramFloat * paramFloat * paramansn2.jdField_a_of_type_Antr.jdField_a_of_type_Float;
-      float f3 = paramansn1.jdField_a_of_type_Antr.b;
-      float f4 = paramansn2.jdField_a_of_type_Antr.f;
-      f1 = f1 * 3.0F * paramFloat * paramFloat * paramansn2.jdField_a_of_type_Antr.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramansn2.jdField_a_of_type_Antr.b;
-      localantr = antr.b(f2, f1);
-      localansn = new ansn();
-      localantr.d = (paramansn1.jdField_a_of_type_Antr.d + (paramansn2.jdField_a_of_type_Antr.d - paramansn1.jdField_a_of_type_Antr.d) * paramFloat);
-      localansn.jdField_a_of_type_Antr = localantr;
-      localansn.jdField_a_of_type_Anso = paramansn2.jdField_a_of_type_Anso;
-      localansn.jdField_a_of_type_AndroidGraphicsBitmap = paramansn2.jdField_a_of_type_AndroidGraphicsBitmap;
-      localansn.jdField_a_of_type_JavaLangString = paramansn2.jdField_a_of_type_JavaLangString;
-      localansn.jdField_b_of_type_JavaLangString = paramansn2.jdField_b_of_type_JavaLangString;
-      localansn.jdField_a_of_type_JavaLangBoolean = paramansn2.jdField_a_of_type_JavaLangBoolean;
-      localansn.jdField_a_of_type_Boolean = paramansn2.jdField_a_of_type_Boolean;
-      localansn.jdField_a_of_type_AndroidGraphicsRect = paramansn2.jdField_a_of_type_AndroidGraphicsRect;
-      if (paramansn1.jdField_b_of_type_Boolean) {
-        if (paramFloat < 1.0D) {
-          break label758;
-        }
-      }
-    }
-    label758:
-    for (int i = 100;; i = (int)((paramFloat + 0.005D) * 100.0D))
-    {
-      localansn.jdField_a_of_type_Int = i;
-      if ((localansn.jdField_a_of_type_Int - paramansn2.jdField_a_of_type_Int >= 5) || (paramansn2.jdField_a_of_type_Int == 0))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1001) {
+      for (;;)
       {
-        if ((paramansn2.jdField_b_of_type_Int == 0) || (paramansn2.c == 0))
+        try
         {
-          paramansn2.jdField_b_of_type_Int = ((int)paramansn1.jdField_a_of_type_Antr.jdField_a_of_type_Float);
-          paramansn2.c = ((int)paramansn1.jdField_a_of_type_Antr.b);
-        }
-        double d1 = Math.abs(f1 - paramansn2.c);
-        double d2 = Math.abs(f2 - paramansn2.jdField_b_of_type_Int);
-        double d3 = Math.pow(d1, 2.0D);
-        d2 = Math.sqrt(Math.pow(d2, 2.0D) + d3);
-        if ((d2 != 0.0D) && (d1 != 0.0D))
-        {
-          localantr.c = ((float)Math.toDegrees(Math.asin(d1 / d2)));
-          if (!paramansn2.jdField_a_of_type_Boolean) {
-            localantr.c = (-localantr.c);
+          paramMessage = (ArrayList)paramMessage.obj;
+          if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+            continue;
+          }
+          Iterator localIterator = paramMessage.iterator();
+          if (!localIterator.hasNext()) {
+            continue;
+          }
+          str1 = (String)localIterator.next();
+          str2 = (String)this.a.b.get(str1);
+          paramMessage = BitmapFactory.decodeFile(str2);
+          if (paramMessage == null) {
+            continue;
+          }
+          if (ansn.a(this.a) != 1) {
+            continue;
+          }
+          localObject1 = QQAppInterface.a(paramMessage, bdhj.a(paramMessage.getWidth()), 50, 50);
+          paramMessage = (Message)localObject1;
+          if (bibv.a())
+          {
+            paramMessage = new Paint();
+            paramMessage.setAntiAlias(true);
+            paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+            localObject2 = new Canvas((Bitmap)localObject1);
+            ((Canvas)localObject2).drawRoundRect(new RectF(0.0F, 0.0F, ((Canvas)localObject2).getWidth(), ((Canvas)localObject2).getHeight()), 10.0F, 10.0F, paramMessage);
+            paramMessage = (Message)localObject1;
           }
         }
-        if (Math.abs(localantr.c) > 90.0F)
+        catch (OutOfMemoryError paramMessage)
         {
+          String str1;
+          String str2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
+          return;
+          Object localObject1 = this.a.a(paramMessage);
+          paramMessage = (Message)localObject1;
+          if (!bibv.a()) {
+            continue;
+          }
+          paramMessage = new Paint();
+          paramMessage.setAntiAlias(true);
+          paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+          Object localObject2 = new Canvas((Bitmap)localObject1);
+          ((Canvas)localObject2).drawCircle(((Canvas)localObject2).getWidth() / 2, ((Canvas)localObject2).getHeight() / 2, ((Canvas)localObject2).getWidth() / 2, paramMessage);
+          paramMessage = (Message)localObject1;
+          continue;
+        }
+        catch (Exception paramMessage)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
+        }
+        if (paramMessage != null)
+        {
+          localObject1 = Message.obtain();
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putParcelable("bmp", paramMessage);
+          ((Bundle)localObject2).putString("uin", str1);
+          ((Bundle)localObject2).putString("path", str2);
+          ((Message)localObject1).obj = localObject2;
+          ((Message)localObject1).what = 1002;
+          this.a.a.sendMessage((Message)localObject1);
           if (QLog.isColorLevel()) {
-            QLog.i("BubbleInterActiveAnim", 2, "too large rotate " + localantr.c + ", reset to 0!");
+            QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
           }
-          localantr.c = 0.0F;
         }
-        if (QLog.isColorLevel())
-        {
-          QLog.i("BubbleInterActiveAnim", 2, "rotate: " + localantr.c + " yDistance: " + d1 + ", distance: " + d2 + ", t: " + paramFloat);
-          QLog.i("BubbleInterActiveAnim", 2, "evaluate_path_and_rotate, cost=" + (System.currentTimeMillis() - l));
-        }
-        paramansn2.jdField_a_of_type_Int = localansn.jdField_a_of_type_Int;
       }
-      if (paramFloat == 1.0F) {
-        localantr.c = 360.0F;
-      }
-      paramansn2.jdField_b_of_type_Int = ((int)f2);
-      paramansn2.c = ((int)f1);
-      return localansn;
-      if (paramansn2.jdField_a_of_type_Antr.jdField_a_of_type_Int == 1)
-      {
-        f1 = paramansn1.jdField_a_of_type_Antr.jdField_a_of_type_Float;
-        f2 = (paramansn2.jdField_a_of_type_Antr.jdField_a_of_type_Float - paramansn1.jdField_a_of_type_Antr.jdField_a_of_type_Float) * paramFloat + f1;
-        f1 = paramansn1.jdField_a_of_type_Antr.b + (paramansn2.jdField_a_of_type_Antr.b - paramansn1.jdField_a_of_type_Antr.b) * paramFloat;
-        break;
-      }
-      f2 = paramansn2.jdField_a_of_type_Antr.jdField_a_of_type_Float;
-      f1 = paramansn2.jdField_a_of_type_Antr.b;
-      break;
     }
   }
 }

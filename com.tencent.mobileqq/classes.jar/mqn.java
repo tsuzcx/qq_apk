@@ -41,7 +41,7 @@ class mqn
           }
           if (paramMessage.obj != null)
           {
-            mqm.a(localmqm, (axqz)paramMessage.obj);
+            mqm.a(localmqm, (axvi)paramMessage.obj);
             return;
           }
           throw new RuntimeException("MSG_START_RECORDING bundle == null");

@@ -1,14 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class acds
-  implements aevt
+  implements View.OnClickListener
 {
-  public acds(BaseChatPie paramBaseChatPie) {}
+  public acds(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a(Bitmap paramBitmap, aevb paramaevb, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.ar();
+    azqs.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
+    this.a.b();
   }
 }
 

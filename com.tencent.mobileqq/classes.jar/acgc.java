@@ -1,18 +1,17 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
-public final class acgc
-  implements DialogInterface.OnClickListener
+public class acgc
+  implements DialogInterface.OnDismissListener
 {
-  public acgc(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
+  public acgc(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
+    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
+      AuthDevActivity.a(this.a, null);
+    }
   }
 }
 

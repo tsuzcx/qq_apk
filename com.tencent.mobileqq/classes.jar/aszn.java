@@ -1,17 +1,72 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
 
-class aszn
-  implements CustomizedLoading
+public class aszn
 {
-  aszn(asyy paramasyy) {}
+  private static aszn jdField_a_of_type_Aszn = new aszn();
+  private PluginProcessKiller jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller;
+  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
+  public static aszn a()
   {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
+    return jdField_a_of_type_Aszn;
+  }
+  
+  private void a(String paramString, DynamicPluginManager paramDynamicPluginManager, PluginProcessKiller paramPluginProcessKiller)
+  {
+    int j = 1;
+    int i;
+    if ((paramString != null) && (paramString.equals("Now")))
+    {
+      i = 1;
+      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("Now"))) {
+        break label55;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label61;
+      }
+      return;
+      i = 0;
+      break;
+      label55:
+      j = 0;
+    }
+    label61:
+    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager != null)
+      {
+        PluginProcessKiller localPluginProcessKiller = (PluginProcessKiller)this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.getManagerImpl();
+        if (localPluginProcessKiller != null) {
+          localPluginProcessKiller.onKillPluginProcess();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller != null) {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller.onKillPluginProcess();
+      }
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller = paramPluginProcessKiller;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString, PluginProcessKiller paramPluginProcessKiller)
+  {
+    a(paramString, null, paramPluginProcessKiller);
+  }
+  
+  public void a(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  {
+    a(paramString, paramDynamicPluginManager, null);
   }
 }
 

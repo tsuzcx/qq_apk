@@ -1,34 +1,29 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class xym
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends Handler
 {
-  public xym(SubScribeSwipeRefreshLayout paramSubScribeSwipeRefreshLayout) {}
+  public xym(QRCardActivity paramQRCardActivity) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramMessage.what)
     {
     }
-    int i;
-    int j;
     do
     {
       do
       {
-        return true;
-        i = (int)(paramMotionEvent.getX() + 0.5F);
-        j = (int)(paramMotionEvent.getY() + 0.5F);
-      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
-      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
-    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
-    return false;
+        return;
+      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
   }
 }
 

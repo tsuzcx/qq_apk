@@ -20,7 +20,7 @@ public class lfp
     if (this.b) {
       this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mwk.d();
     }
-    azmj.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 

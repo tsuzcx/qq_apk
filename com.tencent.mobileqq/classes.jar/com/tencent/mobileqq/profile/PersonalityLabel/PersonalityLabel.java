@@ -3,9 +3,9 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awks;
-import awkt;
-import bden;
+import awpb;
+import awpc;
+import bdiw;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +21,7 @@ import tencent.im.oidb.cmd0x8f0.cmd0x8f0.RspBody;
 public class PersonalityLabel
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabel> CREATOR = new awks();
+  public static final Parcelable.Creator<PersonalityLabel> CREATOR = new awpb();
   public static int CURRENT_VERSION = 2;
   public static final String TAG = "PersonalityLabel";
   public int isCloseByUser;
@@ -104,7 +104,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "before unmarsh:" + this.personalityLabelInfos.toString());
       }
-      Collections.sort(this.personalityLabelInfos, new awkt(this));
+      Collections.sort(this.personalityLabelInfos, new awpc(this));
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "after unmarsh:" + this.personalityLabelInfos.toString());
       }
@@ -120,7 +120,7 @@ public class PersonalityLabel
     do
     {
       return paramArrayOfByte;
-      localPersonalityLabel = (PersonalityLabel)bden.a(paramArrayOfByte, CREATOR);
+      localPersonalityLabel = (PersonalityLabel)bdiw.a(paramArrayOfByte, CREATOR);
       paramArrayOfByte = localPersonalityLabel;
     } while (!QLog.isColorLevel());
     if ("convertFromBytes:" + localPersonalityLabel == null) {}
@@ -255,7 +255,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 4, "convertToBytes:" + paramPersonalityLabel.toString());
       }
-      return bden.a(paramPersonalityLabel);
+      return bdiw.a(paramPersonalityLabel);
     }
     return null;
   }

@@ -1,68 +1,67 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class azvl
-  extends azqj
+  implements View.OnClickListener
 {
-  public int k;
+  public azvl(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
   
-  public azvl()
+  public void onClick(View paramView)
   {
-    this.a = "type";
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "type";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.k = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.k);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "type");
-    paramXmlSerializer.text(this.k + "");
-    paramXmlSerializer.endTag(null, "type");
-  }
-  
-  public boolean a(azsa paramazsa)
-  {
-    if (paramazsa == null) {
-      return false;
-    }
+    int k;
+    int m;
     try
     {
-      this.k = Integer.valueOf(ayvy.a(azqu.a(paramazsa), false)).intValue();
-      return true;
+      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362578);
+      if (localViewGroup == null) {
+        return;
+      }
     }
-    catch (Exception paramazsa)
+    catch (Exception localException)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("StructMsgItemType", 2, paramazsa, new Object[0]);
-        }
+        arrayOfInt1 = null;
       }
+      int[] arrayOfInt2 = new int[2];
+      arrayOfInt1.getLocationOnScreen(arrayOfInt2);
+      int i = arrayOfInt2[1];
+      int j = arrayOfInt1.getHeight();
+      int[] arrayOfInt1 = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt1);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = arrayOfInt1[0];
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = arrayOfInt1[1];
+      k = aepi.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
+      m = paramView.getHeight();
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
+        break label257;
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846647));
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
+    for (;;)
+    {
+      ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      paramView.alpha = 0.5F;
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new azvm(this));
+      return;
+      label257:
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846646));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
     }
   }
 }

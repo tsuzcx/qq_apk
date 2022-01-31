@@ -1,20 +1,9 @@
-import android.app.Activity;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-class bdgy
-  implements View.OnClickListener
+public abstract interface bdgy
 {
-  bdgy(bdgv parambdgv, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (ResultRecord)paramView.getTag();
-    this.jdField_a_of_type_Bdgv.hideSoftInputFromWindow();
-    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a, paramView.b, 0.86F, this.jdField_a_of_type_Bdgv.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
-  }
+  public abstract View a(Context paramContext, Object paramObject);
 }
 
 

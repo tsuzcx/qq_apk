@@ -193,7 +193,7 @@ public class c
             i1 = 0;
             break label565;
             label694:
-            if (((localCharacterStyle instanceof bain)) || ((localCharacterStyle instanceof axye))) {
+            if (((localCharacterStyle instanceof bamw)) || ((localCharacterStyle instanceof aycn))) {
               a(localCharacterStyle);
             } else if ((localCharacterStyle instanceof RelativeSizeSpan)) {
               a((RelativeSizeSpan)localCharacterStyle, fj.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
@@ -268,9 +268,9 @@ public class c
     Object localObject;
     int i1;
     int n;
-    if ((paramCharacterStyle instanceof bain))
+    if ((paramCharacterStyle instanceof bamw))
     {
-      localObject = ((bain)paramCharacterStyle).a().getBounds();
+      localObject = ((bamw)paramCharacterStyle).a().getBounds();
       i1 = ((Rect)localObject).width();
       n = ((Rect)localObject).height();
     }
@@ -285,11 +285,11 @@ public class c
       ((r)localObject).jdField_a_of_type_Int = 2;
       this.jdField_c_of_type_JavaUtilList.add(localObject);
       return true;
-      if ((paramCharacterStyle instanceof axye))
+      if ((paramCharacterStyle instanceof aycn))
       {
-        localObject = (axye)paramCharacterStyle;
-        i1 = ((axye)localObject).a();
-        n = ((axye)localObject).b();
+        localObject = (aycn)paramCharacterStyle;
+        i1 = ((aycn)localObject).a();
+        n = ((aycn)localObject).b();
       }
       else
       {
@@ -558,15 +558,15 @@ public class c
       localObject = a(i3, i1);
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, i5, i4 + i6 - i1, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
-      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bain))
+      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bamw))
       {
-        ((bain)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((bamw)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof axye))
+      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aycn))
       {
-        localObject = (axye)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((axye)localObject).jdField_a_of_type_Boolean = false;
-        ((axye)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (aycn)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((aycn)localObject).jdField_a_of_type_Boolean = false;
+        ((aycn)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }

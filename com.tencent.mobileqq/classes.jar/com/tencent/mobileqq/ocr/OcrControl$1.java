@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.ocr;
 
-import amxh;
-import avss;
-import avsu;
-import avsv;
+import anbq;
+import avxb;
+import avxd;
+import avxe;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class OcrControl$1
   implements Runnable
 {
-  public OcrControl$1(avss paramavss, String paramString1, boolean paramBoolean, String paramString2) {}
+  public OcrControl$1(avxb paramavxb, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    if (avsv.a(this.jdField_a_of_type_JavaLangString))
+    if (avxe.a(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = avsv.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
-      if ((this.jdField_a_of_type_Boolean) && (avsv.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
+      localObject = avxe.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
+      if ((this.jdField_a_of_type_Boolean) && (avxe.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
       {
-        localamxh = new amxh();
-        localamxh.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localamxh.jdField_a_of_type_Int = 0;
-        localamxh.b = this.jdField_a_of_type_JavaLangString;
+        localanbq = new anbq();
+        localanbq.jdField_a_of_type_JavaLangString = ((String)localObject);
+        localanbq.jdField_a_of_type_Int = 0;
+        localanbq.b = this.jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
           QLog.d("Q.ocr.control", 2, "upload pic size:" + new File((String)localObject).length() / 1024L + "KB");
         }
-        this.this$0.a(localamxh, this.b);
+        this.this$0.a(localanbq, this.b);
       }
     }
-    while (avss.a(this.this$0) == null)
+    while (avxb.a(this.this$0) == null)
     {
-      amxh localamxh;
+      anbq localanbq;
       return;
-      Object localObject = new amxh();
-      ((amxh)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((amxh)localObject).jdField_a_of_type_Int = 0;
-      ((amxh)localObject).b = this.jdField_a_of_type_JavaLangString;
+      Object localObject = new anbq();
+      ((anbq)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((anbq)localObject).jdField_a_of_type_Int = 0;
+      ((anbq)localObject).b = this.jdField_a_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "upload pic size:" + new File(this.jdField_a_of_type_JavaLangString).length() / 1024L + "KB");
       }
-      this.this$0.a((amxh)localObject, this.b);
+      this.this$0.a((anbq)localObject, this.b);
       return;
     }
-    avss.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
+    avxb.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
   }
 }
 

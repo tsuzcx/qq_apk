@@ -1,19 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.animation.Animator;
+import android.view.View;
 
-public class xyc
-  implements xzd
+public final class xyc
 {
-  public xyc(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
-  
-  public void a()
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
-      return;
+    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+  }
+  
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  {
+    xxx localxxx = xxx.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    if (paramInt3 != paramView.getLayerType()) {
+      localxxx.addListener(new xxz(paramView, paramInt3));
     }
-    yvu.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    return localxxx;
   }
 }
 

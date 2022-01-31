@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afzx;
+import agem;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
@@ -27,7 +27,7 @@ class TroopGiftMsgItemBuilder$3$1
       }
     }
     this.a.this$0.b.remove(this.a.b);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131373085).equals(this.a.jdField_a_of_type_JavaLangString))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131373111).equals(this.a.jdField_a_of_type_JavaLangString))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);

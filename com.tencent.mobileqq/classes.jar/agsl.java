@@ -1,28 +1,19 @@
-public class agsl
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class agsl
+  extends altm
 {
-  public double a;
-  public double b;
+  agsl(agse paramagse) {}
   
-  public agsl(double paramDouble1, double paramDouble2)
+  protected void onAddFriend(String paramString)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public agsl(agsl paramagsl)
-  {
-    a(paramagsl);
-  }
-  
-  public void a(agsl paramagsl)
-  {
-    this.a = paramagsl.a;
-    this.b = paramagsl.b;
-  }
-  
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
+    }
+    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      agse.a(this.a);
+    }
   }
 }
 

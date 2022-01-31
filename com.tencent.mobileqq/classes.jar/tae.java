@@ -25,12 +25,12 @@ import mqq.os.MqqHandler;
 public class tae
 {
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static bevy jdField_a_of_type_Bevy = new taf();
+  private static bfah jdField_a_of_type_Bfah = new taf();
   private static String jdField_a_of_type_JavaLangString;
   
   public static void a()
   {
-    WXShareHelper.a().a(jdField_a_of_type_Bevy);
+    WXShareHelper.a().a(jdField_a_of_type_Bfah);
   }
   
   public static void a(Activity paramActivity)
@@ -85,7 +85,7 @@ public class tae
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(jdField_a_of_type_JavaLangString);
     localBundle.putStringArrayList("images", localArrayList);
-    bjao.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
+    bjev.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
   }
   
   public static void a(String paramString)
@@ -97,7 +97,7 @@ public class tae
   {
     jdField_a_of_type_JavaLangString = null;
     jdField_a_of_type_AndroidGraphicsBitmap = null;
-    WXShareHelper.a().b(jdField_a_of_type_Bevy);
+    WXShareHelper.a().b(jdField_a_of_type_Bfah);
   }
   
   public static void b(Activity paramActivity)
@@ -112,7 +112,7 @@ public class tae
     }
     int i;
     if (!WXShareHelper.a().a()) {
-      i = 2131721478;
+      i = 2131721491;
     }
     for (;;)
     {
@@ -121,7 +121,7 @@ public class tae
         QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
         return;
         if (!WXShareHelper.a().b()) {
-          i = 2131721479;
+          i = 2131721492;
         }
       }
       else
@@ -145,7 +145,7 @@ public class tae
     }
     int i;
     if (!WXShareHelper.a().a()) {
-      i = 2131721478;
+      i = 2131721491;
     }
     for (;;)
     {
@@ -154,7 +154,7 @@ public class tae
         QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
         return;
         if (!WXShareHelper.a().b()) {
-          i = 2131721479;
+          i = 2131721492;
         }
       }
       else
@@ -168,12 +168,12 @@ public class tae
   
   private static void d()
   {
-    String str = aljq.aW + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
-    if (bdcs.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
+    String str = alof.aW + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
+    if (bdhb.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
     {
       QLog.d("ShareImageUtils", 1, "save to sdcard success");
-      bdda.a(BaseApplicationImpl.getContext(), str);
-      str = BaseApplicationImpl.getContext().getString(2131695349) + " " + str;
+      bdhj.a(BaseApplicationImpl.getContext(), str);
+      str = BaseApplicationImpl.getContext().getString(2131695351) + " " + str;
       ThreadManager.getUIHandler().post(new ShareImageUtils.3(str));
       return;
     }

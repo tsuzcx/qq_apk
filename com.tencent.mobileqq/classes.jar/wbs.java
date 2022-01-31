@@ -1,13 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wbs
-  implements DialogInterface.OnClickListener
+class wbs
+  implements DialogInterface.OnDismissListener
 {
-  public wbs(StoryPickerFragment paramStoryPickerFragment) {}
+  wbs(wbq paramwbq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (wbq.a(this.a) != null) {
+      wbq.a(this.a).c(false);
+    }
+  }
 }
 
 

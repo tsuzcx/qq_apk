@@ -1,9 +1,20 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class avnz
-  extends avnx
+class avnz
+  implements DialogInterface.OnClickListener
 {
-  public PublishVideoEntry a;
+  avnz(avnx paramavnx, bdjz parambdjz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Avnx.a.a.c();
+    paramInt = ((Integer)auwq.a(this.jdField_a_of_type_Avnx.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    azqs.b(this.jdField_a_of_type_Avnx.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, auwz.a(this.jdField_a_of_type_Avnx.a.a.j), paramInt + "", "", "");
+  }
 }
 
 

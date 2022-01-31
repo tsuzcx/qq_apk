@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import java.io.File;
+import java.io.IOException;
 
 public class abzp
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abzp(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public abzp(TestAppFragment paramTestAppFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
+    if (paramBoolean)
+    {
+      new File(this.a.a).mkdirs();
+      paramCompoundButton = new File(this.a.a, this.a.b);
+      try
+      {
+        paramCompoundButton.createNewFile();
+        return;
+      }
+      catch (IOException paramCompoundButton)
+      {
+        paramCompoundButton.printStackTrace();
+        return;
+      }
+    }
+    new File(this.a.a, this.a.b).delete();
   }
 }
 

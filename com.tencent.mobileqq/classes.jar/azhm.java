@@ -1,14 +1,21 @@
-public abstract interface azhm
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
+
+public class azhm
 {
-  public abstract azhn a(int paramInt1, int paramInt2);
+  public Handler a;
+  public azhn a;
   
-  public abstract void a();
+  public azhm(Handler paramHandler, azhn paramazhn)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Azhn = paramazhn;
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public void a(RuntimeException paramRuntimeException)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
+  }
 }
 
 

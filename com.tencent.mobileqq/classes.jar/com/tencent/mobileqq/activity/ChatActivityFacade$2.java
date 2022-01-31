@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import acex;
-import acfd;
-import ayxm;
+import acjm;
+import acjs;
+import azbv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -19,16 +19,16 @@ public final class ChatActivityFacade$2
   public void run()
   {
     int i = 1;
-    acex.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    acjm.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     long l;
     NewIntent localNewIntent;
-    if ((acex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (acex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)))
+    if ((acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)))
     {
-      l = acex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      l = acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       if (QLog.isColorLevel()) {
         QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded    last publish time:" + l);
       }
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ayxm.class);
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), azbv.class);
       localNewIntent.putExtra("selfuin", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     }
     try
@@ -43,20 +43,20 @@ public final class ChatActivityFacade$2
         localNewIntent.putExtra("src", i);
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
         {
-          acfd localacfd2 = (acfd)acex.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          acfd localacfd1 = localacfd2;
-          if (localacfd2 == null)
+          acjs localacjs2 = (acjs)acjm.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          acjs localacjs1 = localacjs2;
+          if (localacjs2 == null)
           {
-            localacfd1 = new acfd();
-            acex.a().put(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localacfd1);
+            localacjs1 = new acjs();
+            acjm.a().put(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localacjs1);
           }
-          localacfd1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localacfd1.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-          localacfd1.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(localacfd1);
+          localacjs1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          localacjs1.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          localacjs1.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(localacjs1);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
         }
-        acex.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_feeds_time");
+        acjm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_feeds_time");
         return;
       }
     }

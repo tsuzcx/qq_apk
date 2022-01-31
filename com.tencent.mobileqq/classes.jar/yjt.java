@@ -1,25 +1,49 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
 
-class yjt
-  implements bevy
+public class yjt
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
-  yjt(yjq paramyjq) {}
+  public yjt(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if ((yjq.a(this.a) == null) || (!yjq.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    SubscribePersonalDetailFragment.a(this.a, paramBoolean);
+    if (paramBoolean)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a.a, 1, alpo.a(2131715027), 0).a();
+      if (paramStGetMainPageRsp != null)
+      {
+        wxe.c("SubscribePersonalDetail", "sendRequest GetMainPage success");
+        SubscribePersonalDetailFragment.a(this.a, paramStGetMainPageRsp);
+        if ((this.a.a != null) && (SubscribePersonalDetailFragment.a(this.a).user != null)) {
+          this.a.a.poster.set(SubscribePersonalDetailFragment.a(this.a).user.get());
+        }
+        ybo.a(paramStGetMainPageRsp);
+        SubscribePersonalDetailFragment.a(this.a, paramString);
+        SubscribePersonalDetailFragment.a(this.a);
+        SubscribePersonalDetailFragment.a(this.a).notifyLoadingComplete(true);
+        if (paramStGetMainPageRsp.user.type.get() == 0) {
+          zaj.b(paramStGetMainPageRsp.user.id.get(), "auth_person", "user_exp", 0, 0, new String[0]);
+        }
+      }
+      zaj.a("subscribe_personal_detail_page_request", zaj.a(0L, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
       return;
     }
-    QQToast.a(this.a.a, 2, alpo.a(2131715029), 0).a();
+    wxe.c("SubscribePersonalDetail", "sendRequest GetMainPage error");
+    paramStGetMainPageRsp = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      paramStGetMainPageRsp = alud.a(2131715038);
+    }
+    if (this.a.getActivity() != null) {
+      QQToast.a(this.a.getActivity(), paramStGetMainPageRsp, 0).a();
+    }
+    zaj.a("subscribe_personal_detail_page_request", zaj.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
   }
 }
 

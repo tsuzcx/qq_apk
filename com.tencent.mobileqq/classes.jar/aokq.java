@@ -1,80 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
-public class aokq
-  extends aofy<aokp>
+final class aokq
 {
-  public static aokp a()
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  private final String c;
+  
+  public aokq(int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    return (aokp)aogj.a().a(426);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
+    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
   }
   
-  public static boolean e()
+  public boolean equals(Object paramObject)
   {
-    aokp localaokp = a();
-    if (localaokp != null) {}
-    for (boolean bool = localaokp.c();; bool = false)
+    if (!(paramObject instanceof aokq)) {}
+    do
     {
-      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
-      return bool;
-    }
-  }
-  
-  public int a()
-  {
-    return 426;
-  }
-  
-  @NonNull
-  public aokp a(int paramInt)
-  {
-    return new aokp();
-  }
-  
-  @Nullable
-  public aokp a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      new aokp();
-      return aokp.a(paramArrayOfaogf);
-    }
-    return null;
-  }
-  
-  public Class<aokp> a()
-  {
-    return aokp.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aokp paramaokp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramaokp.toString());
-    }
-  }
-  
-  public boolean a()
-  {
+      return false;
+      paramObject = (aokq)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
     return true;
   }
   
-  public int b()
+  public int hashCode()
   {
-    return 0;
+    return this.c.hashCode();
   }
   
-  public boolean b()
+  public String toString()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
   }
 }
 

@@ -1,65 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aors
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
+  public boolean a = true;
   
-  public static aors a()
-  {
-    return (aors)aogj.a().a(460);
-  }
-  
-  public static aors a(aogf paramaogf)
+  public static aors a(String paramString)
   {
     aors localaors = new aors();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
+    if (TextUtils.isEmpty(paramString))
     {
-      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
-      int i = paramaogf.optInt("robotswitch", 0);
-      paramaogf = paramaogf.optString("c2cwarning", "");
-      localaors.a(i);
-      localaors.a(paramaogf);
+      if (QLog.isColorLevel()) {
+        QLog.d("SubAccountConfigBean", 0, "parse content is empty");
+      }
       return localaors;
     }
-    catch (JSONException paramaogf)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramaogf.toString());
+      try
+      {
+        if (new JSONObject(paramString).optInt("isSideAccountGroupMsgEnabled", 0) != 0) {
+          break label109;
+        }
+        bool = true;
+        localaors.a = bool;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("SubAccountConfigBean", 0, "parse configValue=" + localaors.a);
+        return localaors;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SubAccountConfigBean", 0, "parse e:", paramString);
+      return localaors;
+      label109:
+      boolean bool = false;
     }
-    return localaors;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

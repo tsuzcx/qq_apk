@@ -1,8 +1,24 @@
-public abstract interface ahzi
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+
+public class ahzi
+  extends aqru
 {
-  public abstract void a();
+  public ahzi(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public abstract void b();
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

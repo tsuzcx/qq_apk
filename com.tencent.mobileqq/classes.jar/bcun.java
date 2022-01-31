@@ -1,47 +1,52 @@
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import org.json.JSONObject;
+
 public class bcun
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
+  public bcun(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
   
-  public bcun() {}
-  
-  public bcun(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(bcun parambcun)
-  {
-    if (parambcun != null)
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Int = parambcun.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = parambcun.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public Object clone()
-  {
-    return new bcun(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof bcun))
-    {
-      paramObject = (bcun)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (bdal.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-          bool1 = true;
-        }
+      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
+      paramMotionEvent.setDuration(100L);
+      paramMotionEvent.setAnimationListener(new bcuo(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
+      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
+      Object localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setShape(1);
+      ((GradientDrawable)localObject).setCornerRadius(bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
+      ((GradientDrawable)localObject).setAlpha(192);
+      paramMotionEvent.setImageDrawable((Drawable)localObject);
+      localObject = new RelativeLayout.LayoutParams(bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
+      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
+      ((ScaleAnimation)localObject).setDuration(150L);
+      ((ScaleAnimation)localObject).setAnimationListener(new bcup(this, paramMotionEvent));
+      paramMotionEvent.startAnimation((Animation)localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
       }
     }
-    return bool1;
+    return true;
   }
 }
 

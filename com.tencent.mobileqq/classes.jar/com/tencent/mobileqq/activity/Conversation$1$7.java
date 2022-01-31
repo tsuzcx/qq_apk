@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
+import acrh;
 import com.tencent.mobileqq.app.QQAppInterface;
-import uuq;
-import uur;
+import uyz;
+import uza;
 
 public class Conversation$1$7
   implements Runnable
 {
-  public Conversation$1$7(acms paramacms) {}
+  public Conversation$1$7(acrh paramacrh) {}
   
   public void run()
   {
-    if (((uur)this.a.a.a.getManager(252)).a)
+    if (((uza)this.a.a.a.getManager(252)).a)
     {
-      ((uuq)this.a.a.a.getManager(251)).a();
+      ((uyz)this.a.a.a.getManager(251)).a();
       this.a.a.a(new Conversation.1.7.1(this));
     }
   }

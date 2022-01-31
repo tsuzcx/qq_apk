@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import arrk;
+import arvt;
 
 public class SendBottomBar$7$1
   implements Runnable
 {
-  public SendBottomBar$7$1(arrk paramarrk) {}
+  public SendBottomBar$7$1(arvt paramarvt) {}
   
   public void run()
   {

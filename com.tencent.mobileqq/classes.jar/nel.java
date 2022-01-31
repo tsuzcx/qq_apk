@@ -2,7 +2,7 @@ import android.os.Bundle;
 import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nel
-  implements ymm
+  implements yrb
 {
   public nel(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   

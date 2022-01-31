@@ -1,11 +1,22 @@
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import android.os.Bundle;
 
-public class bhnc
-  implements LowLightResource
+class bhnc
+  extends nac
 {
-  public String getLowLightDir()
+  protected bhoa a;
+  protected byte[] a;
+  
+  public bhnc(byte[] paramArrayOfByte, bhoa parambhoa)
   {
-    return aljq.aX;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Bhoa = parambhoa;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Bhoa != null) {
+      this.jdField_a_of_type_Bhoa.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    }
   }
 }
 

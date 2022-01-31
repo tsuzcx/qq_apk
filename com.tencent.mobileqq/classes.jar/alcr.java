@@ -1,82 +1,68 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.channel.KSAppChannel;
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class alcr
-  extends KSAppChannel
+  extends bdul
+  implements akrd
 {
-  public static String a;
-  public AVContext.StartParam a;
+  private int jdField_a_of_type_Int = 3;
+  private alby jdField_a_of_type_Alby;
+  private WeakReference<alcc> jdField_a_of_type_JavaLangRefWeakReference;
   
-  static
+  public alcr(alcc paramalcc, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "SSOChannel";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalcc);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public long getTinyId()
+  public void a(alby paramalby)
   {
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
-      return l;
+    this.jdField_a_of_type_Alby = paramalby;
+  }
+  
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    ThreadManager.post(new CmShowViewListener.2(this, paramBoolean, paramObject), 5, null, true);
+  }
+  
+  public void onNotifyLongTouch(String paramString)
+  {
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyLongTouch name", paramString });
+    if (this.jdField_a_of_type_Alby != null) {
+      this.jdField_a_of_type_Alby.a(paramString);
     }
-    return 0L;
   }
   
-  public boolean loginWithParam(AVContext.StartParam paramStartParam)
+  public void onNotifyStatusChanged(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
-    return true;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
     {
-      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
-      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof alcd))
-      {
-        bggq.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((alcd)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((alcd)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new alcs(this, paramArrayOfByte, paramCsCmdCallback));
-        return true;
+      alcd localalcd = ((alcc)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      if (localalcd != null) {
+        localalcd.a(albi.a(paramInt), null, paramString);
       }
-      return false;
     }
-    catch (NumberFormatException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyStatusChanged clickPart:", Integer.valueOf(paramInt), " apolloId:" + paramString });
+    if (this.jdField_a_of_type_Alby != null) {
+      this.jdField_a_of_type_Alby.a(paramInt, paramString);
     }
-    return false;
   }
   
-  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramString.equals("VideoCCSvc.opensdk")) {
-      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
     }
-    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramArrayOfByte.length >= 0) {
-      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
-    }
-    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
-    return false;
+    ThreadManager.post(new CmShowViewListener.1(this, paramInt1, paramInt2), 8, null, true);
   }
 }
 

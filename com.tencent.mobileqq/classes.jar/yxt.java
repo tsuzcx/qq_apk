@@ -1,17 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import android.os.SystemClock;
+import android.support.v4.util.SimpleArrayMap;
+import com.tencent.biz.videostory.EventControlUtils.1;
+import com.tencent.biz.videostory.EventControlUtils.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.Timer;
 
-class yxt
-  implements View.OnClickListener
+public class yxt
 {
-  yxt(yxs paramyxs, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  private static SimpleArrayMap<String, Long> a = new SimpleArrayMap();
+  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
   
-  public void onClick(View paramView)
+  public static void a(String paramString, long paramLong, yxu paramyxu)
   {
-    if (yxs.a(this.jdField_a_of_type_Yxs) != null) {
-      yxs.a(this.jdField_a_of_type_Yxs).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    try
+    {
+      Object localObject = (Long)a.get(paramString);
+      long l = SystemClock.elapsedRealtime();
+      QLog.i("EventControlUtils", 2, "currentTime" + l);
+      if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
+      {
+        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
+        return;
+      }
+      a.put(paramString, Long.valueOf(l));
+      localObject = (Timer)b.get(paramString);
+      if (localObject != null) {
+        ((Timer)localObject).cancel();
+      }
+      localObject = new Timer();
+      ((Timer)localObject).schedule(new EventControlUtils.1(paramyxu), paramLong);
+      b.put(paramString, localObject);
+      return;
     }
+    catch (Exception paramString) {}
+  }
+  
+  public static void b(String paramString, long paramLong, yxu paramyxu)
+  {
+    if (b == null) {
+      b = new SimpleArrayMap();
+    }
+    try
+    {
+      Timer localTimer = (Timer)b.get(paramString);
+      if (localTimer != null) {
+        localTimer.cancel();
+      }
+      localTimer = new Timer();
+      localTimer.schedule(new EventControlUtils.2(paramyxu), paramLong);
+      b.put(paramString, localTimer);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alta;
+import alxp;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 class NearbyActivity$2
@@ -11,7 +11,7 @@ class NearbyActivity$2
   public void run()
   {
     this.this$0.a.c();
-    ((alta)this.this$0.a.a(3)).b(this.this$0.a.getCurrentAccountUin());
+    ((alxp)this.this$0.a.a(3)).b(this.this$0.a.getCurrentAccountUin());
   }
 }
 

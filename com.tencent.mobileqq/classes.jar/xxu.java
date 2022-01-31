@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class xxu
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public xxu(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public xxu(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FollowedRecommendBannerView.a(this.a);
+    RotateCircleImageView.b(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

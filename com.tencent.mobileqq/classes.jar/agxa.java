@@ -1,13 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
-
 public class agxa
-  extends RecyclerView.ViewHolder
 {
-  public agxa(ZhituPanelView paramZhituPanelView, View paramView)
+  public double a;
+  public double b;
+  
+  public agxa(double paramDouble1, double paramDouble2)
   {
-    super(paramView);
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public agxa(agxa paramagxa)
+  {
+    a(paramagxa);
+  }
+  
+  public void a(agxa paramagxa)
+  {
+    this.a = paramagxa.a;
+    this.b = paramagxa.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afbc;
-import afbd;
-import arsi;
+import affr;
+import affs;
+import arwr;
 import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qq.effect.QEffectView;
@@ -10,13 +10,13 @@ import com.tencent.qq.effect.QEffectView;
 public class QEffectBgProvider$1$1
   implements Runnable
 {
-  public QEffectBgProvider$1$1(afbd paramafbd, arsi paramarsi) {}
+  public QEffectBgProvider$1$1(affs paramaffs, arwr paramarwr) {}
   
   public void run()
   {
-    QLog.i("QEffectBgProvider", 1, "set qeffect for 3D background effectId:" + this.jdField_a_of_type_Afbd.jdField_a_of_type_Int);
-    afbc.a(this.jdField_a_of_type_Afbd.jdField_a_of_type_Afbc, System.currentTimeMillis());
-    afbc.a(this.jdField_a_of_type_Afbd.jdField_a_of_type_Afbc).setSrc(QEffectLottieImageView.a(this.jdField_a_of_type_Arsi.a, -1));
+    QLog.i("QEffectBgProvider", 1, "set qeffect for 3D background effectId:" + this.jdField_a_of_type_Affs.jdField_a_of_type_Int);
+    affr.a(this.jdField_a_of_type_Affs.jdField_a_of_type_Affr, System.currentTimeMillis());
+    affr.a(this.jdField_a_of_type_Affs.jdField_a_of_type_Affr).setSrc(QEffectLottieImageView.a(this.jdField_a_of_type_Arwr.a, -1));
   }
 }
 

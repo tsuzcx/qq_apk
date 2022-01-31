@@ -1,26 +1,31 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public final class aspg
-  extends bdvu
+class aspg
+  extends Handler
 {
-  public aspg(String paramString) {}
-  
-  public void onDone(bdvv parambdvv)
+  aspg(aspf paramaspf, Looper paramLooper)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (parambdvv.a == 0)
-    {
-      parambdvv = new File(this.a + ".tmp");
-      if (parambdvv.exists()) {
-        parambdvv.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)aspf.a(this.a).get();
+    if (localQQAppInterface == null) {
       return;
     }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
+    this.a.a(paramMessage, null);
+    this.a.b();
   }
 }
 

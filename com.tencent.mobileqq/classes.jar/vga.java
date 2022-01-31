@@ -1,152 +1,59 @@
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.1;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.2;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.3;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.4;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.5;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vga
-  implements vfz
+  extends urt
 {
-  private List<vfy> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  Executor jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor();
-  private vgb jdField_a_of_type_Vgb;
-  public volatile boolean a;
+  public static final String a;
+  public uxs a;
+  public String b;
   
-  private void a(@NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
+  static
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      return;
-    }
-    a(new JobExecutor.1(this, (vfy)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.homepage_batch_feeds_720");
   }
   
-  private void a(@NonNull vfy paramvfy, @NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
+  public String a()
   {
-    paramvfy.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
-    paramvfy.a(paramConcurrentHashMap);
-    if (!paramvfy.a())
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
+    try
     {
-      if (this.jdField_a_of_type_Vgb != null) {
-        this.jdField_a_of_type_Vgb.b();
-      }
-      a();
-      return;
+      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new vgb(localRspStoryFeedIdList);
     }
-    if (paramvfy.jdField_a_of_type_Boolean)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramvfy.a();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.2(this, paramvfy));
-  }
-  
-  public vga a(@NonNull vfy paramvfy)
-  {
-    paramvfy.jdField_a_of_type_Vfz = this;
-    this.jdField_a_of_type_JavaUtilList.add(paramvfy);
-    return this;
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.jdField_a_of_type_Vgb = null;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      paramRunnable.run();
-      return;
-    }
-    ThreadManager.getUIHandler().post(paramRunnable);
-  }
-  
-  public void a(@NonNull vgb paramvgb)
-  {
-    this.jdField_a_of_type_Vgb = paramvgb;
-    a(new ConcurrentHashMap());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Vgb != null) {
-        this.jdField_a_of_type_Vgb.c();
-      }
-      a();
-      return;
-    }
-    vfy localvfy = (vfy)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (paramBoolean)
-    {
-      if (localvfy.b)
+      for (;;)
       {
-        if (Looper.myLooper() == Looper.getMainLooper())
-        {
-          localvfy.a(localvfy.b());
-          return;
-        }
-        ThreadManager.getUIHandler().post(new JobExecutor.3(this, localvfy));
-        return;
+        paramArrayOfByte.printStackTrace();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, localvfy));
-      return;
     }
-    if (this.jdField_a_of_type_Vgb != null) {
-      this.jdField_a_of_type_Vgb.b();
-    }
-    localvfy.a(paramBoolean);
-    a();
   }
   
-  public void b(boolean paramBoolean)
+  protected byte[] a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
+    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (this.jdField_a_of_type_Uxs != null)
     {
-      if (this.jdField_a_of_type_Vgb != null) {
-        this.jdField_a_of_type_Vgb.c();
-      }
-      a();
+      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Uxs.c);
+      localReqStoryFeedIdList.gps.setHasFlag(true);
+      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Uxs.a);
+      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Uxs.b);
     }
-    vfy localvfy;
-    do
-    {
-      return;
-      if (!paramBoolean) {
-        break label108;
-      }
-      localvfy = (vfy)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        break;
-      }
-      if (this.jdField_a_of_type_Vgb != null) {
-        this.jdField_a_of_type_Vgb.a();
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-    a();
-    return;
-    ThreadManager.getUIHandler().post(new JobExecutor.5(this, localvfy));
-    return;
-    label108:
-    if (this.jdField_a_of_type_Vgb != null) {
-      this.jdField_a_of_type_Vgb.b();
-    }
-    a();
+    localReqStoryFeedIdList.client_version.set(6);
+    return localReqStoryFeedIdList.toByteArray();
   }
 }
 

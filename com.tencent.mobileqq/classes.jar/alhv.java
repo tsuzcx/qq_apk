@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-
-public class alhv
-  implements DialogInterface.OnClickListener
+class alhv
 {
-  public alhv(ApolloPanel paramApolloPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.n();
-  }
+  private static final alht a = new alht(null);
 }
 
 

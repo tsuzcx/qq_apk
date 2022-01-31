@@ -1,14 +1,14 @@
 package dov.com.qq.im.ae.play;
 
-import bldr;
-import bldu;
+import blhy;
+import blib;
 
 public final class FaceChangeUtils$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Bldu.a(bldr.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Blib.a(blhy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
   }
 }
 

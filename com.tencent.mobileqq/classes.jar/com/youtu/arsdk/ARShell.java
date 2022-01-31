@@ -1,7 +1,7 @@
 package com.youtu.arsdk;
 
-import amsn;
-import amsy;
+import amxc;
+import amxn;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
@@ -29,7 +29,7 @@ public class ARShell
   
   public static String getLicense()
   {
-    return amsy.b();
+    return amxn.b();
   }
   
   public static native int getMarkerCount();
@@ -57,7 +57,7 @@ public class ARShell
         if (bool3) {
           return bool1;
         }
-        if (!amsn.a())
+        if (!amxc.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ARShell", 2, "native so is not exist!");
@@ -71,7 +71,7 @@ public class ARShell
           loadARFeatureSoSuccess = true;
           try
           {
-            int i = amsn.a("libARFeature");
+            int i = amxc.a("libARFeature");
             if (i != 0) {
               break label219;
             }
@@ -134,7 +134,7 @@ public class ARShell
     //   48: monitorexit
     //   49: iload_1
     //   50: ireturn
-    //   51: invokestatic 114	amvq:a	()Lamvu;
+    //   51: invokestatic 114	anaf:a	()Lanah;
     //   54: astore_3
     //   55: aload_3
     //   56: ifnonnull +14 -> 70
@@ -144,7 +144,7 @@ public class ARShell
     //   66: istore_1
     //   67: goto -21 -> 46
     //   70: aload_3
-    //   71: invokestatic 117	amvq:a	(Lamvu;)Z
+    //   71: invokestatic 117	anaf:a	(Lanah;)Z
     //   74: ifeq +162 -> 236
     //   77: aload_3
     //   78: invokeinterface 122 1 0
@@ -171,7 +171,7 @@ public class ARShell
     //   140: astore 5
     //   142: aload_3
     //   143: aload 5
-    //   145: invokestatic 145	amvq:a	(Lamvu;Ljava/lang/String;)I
+    //   145: invokestatic 145	anaf:a	(Lanah;Ljava/lang/String;)I
     //   148: istore_0
     //   149: iload_0
     //   150: ifeq -30 -> 120
@@ -227,7 +227,7 @@ public class ARShell
     //   148	27	0	i	int
     //   1	243	1	bool1	boolean
     //   41	2	2	bool2	boolean
-    //   54	89	3	localamvu	amvu
+    //   54	89	3	localanah	anah
     //   205	17	3	localThrowable	Throwable
     //   247	5	3	localObject1	Object
     //   83	48	4	localObject2	Object
@@ -271,10 +271,10 @@ public class ARShell
     //   17: ldc 153
     //   19: invokestatic 63	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   22: ldc 155
-    //   24: invokestatic 158	amsy:a	(Ljava/lang/String;)Z
+    //   24: invokestatic 158	amxn:a	(Ljava/lang/String;)Z
     //   27: ifeq +11 -> 38
     //   30: ldc 160
-    //   32: invokestatic 158	amsy:a	(Ljava/lang/String;)Z
+    //   32: invokestatic 158	amxn:a	(Ljava/lang/String;)Z
     //   35: ifne +26 -> 61
     //   38: iload_3
     //   39: istore_2
@@ -306,10 +306,10 @@ public class ARShell
     //   94: iconst_1
     //   95: putstatic 83	com/youtu/arsdk/ARShell:soLoaded	Z
     //   98: ldc 160
-    //   100: invokestatic 163	amsy:a	(Ljava/lang/String;)I
+    //   100: invokestatic 163	amxn:a	(Ljava/lang/String;)I
     //   103: istore_0
     //   104: ldc 155
-    //   106: invokestatic 163	amsy:a	(Ljava/lang/String;)I
+    //   106: invokestatic 163	amxn:a	(Ljava/lang/String;)I
     //   109: istore_1
     //   110: iload 4
     //   112: istore_2

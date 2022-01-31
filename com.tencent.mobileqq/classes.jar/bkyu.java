@@ -1,20 +1,35 @@
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkyu
-  implements blap
+class bkyu
+  extends ampn
 {
-  bkyu(bkyt parambkyt) {}
-  
-  public void a(int paramInt, String paramString)
+  bkyu(bkyt parambkyt, String paramString, boolean paramBoolean)
   {
-    if (paramInt == 0) {
-      bkyt.a(this.a, paramString);
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+      {
+        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
+        bkyt.a(this.a, paramSosoLbsInfo.a);
+        double d1 = localSosoLocation.a;
+        double d2 = localSosoLocation.b;
+        bljn.b(bkyt.a(), "LbsManagerService.startLocation: success");
+        bkyt.a(this.a, d1, d2);
+        return;
+      }
+      bljn.b(bkyt.a(), "LbsManagerService.startLocation: location is null");
+      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
+      return;
     }
-    ((bkxt)bkyt.a(this.a).get(paramInt)).c = paramString;
-    ((bkxt)bkyt.a(this.a).get(paramInt)).a = 13;
-    bkyt.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
+    bljn.b(bkyt.a(), "LbsManagerService.startLocation: failed");
+    bkyt.a(this.a, 0);
   }
 }
 

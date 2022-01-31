@@ -1,11 +1,11 @@
-class wrp
-  implements xoi<wnn>
+public class wrp
+  extends uli
 {
-  wrp(wrh paramwrh) {}
+  public int a;
   
-  public wnn a()
+  public wrp(int paramInt)
   {
-    return new wnn(new wrq(this));
+    this.a = paramInt;
   }
 }
 

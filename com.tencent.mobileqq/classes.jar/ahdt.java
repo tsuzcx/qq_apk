@@ -1,21 +1,8 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahdt
-  implements ahfu
+public abstract interface ahdt
 {
-  public ahdt(SearchContactsFragment paramSearchContactsFragment) {}
-  
-  public Activity a()
-  {
-    return this.a.a();
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.a;
-  }
+  public abstract void a(ChatMessage paramChatMessage);
 }
 
 

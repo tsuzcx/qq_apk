@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aijl;
+import aioa;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjqf;
-import bjrl;
+import bjum;
+import bjvs;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new aijl();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new aioa();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -147,7 +147,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!bjqf.a().b()) {}
+    if (!bjum.a().b()) {}
     do
     {
       return false;
@@ -160,13 +160,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!bjqf.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!bjum.a().b())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (bjrl.a().a(this.path))
+      if (bjvs.a().a(this.path))
       {
         this.panoramaPhotoType = 2;
         return;

@@ -1,46 +1,10 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import java.util.List;
-
-public class xdu
-  extends xdr<xdl>
-  implements View.OnClickListener
+public abstract interface xdu
 {
-  public xdu(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract void a(int paramInt);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Xdi == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new xdv(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xdl)this.jdField_a_of_type_Xdi).a(), ((xdl)this.jdField_a_of_type_Xdi).a(), this);; paramView = (xdv)paramView)
-    {
-      paramView.a((xdl)this.jdField_a_of_type_Xdi, paramInt, getCount());
-      return paramView;
-    }
-  }
+  public abstract void a(xdo paramxdo);
   
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131377387)).intValue();
-    xdm localxdm = (xdm)((xdl)this.jdField_a_of_type_Xdi).a.get(i);
-    paramView = (ImageView)paramView;
-    Boolean localBoolean = (Boolean)paramView.getTag(2131377365);
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
-    {
-      localxdm.a = paramView.getDrawable();
-      this.jdField_a_of_type_Xdk.a(localxdm);
-      return;
-    }
-    wsv.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
-  }
+  public abstract boolean a(xdr paramxdr);
 }
 
 

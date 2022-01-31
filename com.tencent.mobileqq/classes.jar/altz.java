@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class altz
-  implements Comparator<PhoneContact>
+public class altz
+  extends MqqHandler
 {
-  altz(alty paramalty) {}
+  private WeakReference<Handler.Callback> a;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  private altz(Looper paramLooper, Handler.Callback paramCallback)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
 }
 

@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public class bnew
-  implements DialogInterface.OnClickListener
+class bnew
 {
-  public bnew(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  bnew(bnev parambnev) {}
 }
 
 

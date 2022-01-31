@@ -1,26 +1,41 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import android.opengl.Matrix;
 
-class axuc
-  implements army
+public class axuc
 {
-  axuc(axub paramaxub, Context paramContext, AIOFileVideoData paramAIOFileVideoData, ailt paramailt) {}
+  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   
-  public void a()
+  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData != null) && (this.jdField_a_of_type_Ailt != null))
+    float f1 = paramInt3 / paramInt4;
+    float f2 = paramInt1 / paramInt2;
+    if (f1 < f2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.g = true;
-      this.jdField_a_of_type_Ailt.b();
-      this.jdField_a_of_type_Ailt.f();
+      f2 = paramInt4 * f2 / paramInt3;
+      f1 = 1.0F;
+    }
+    for (;;)
+    {
+      float[] arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
+      return arrayOfFloat;
+      if (f1 > f2)
+      {
+        f1 = paramInt3 / (f2 * paramInt4);
+        f2 = 1.0F;
+      }
+      else
+      {
+        f1 = 1.0F;
+        f2 = 1.0F;
+      }
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axuc
  * JD-Core Version:    0.7.0.1
  */

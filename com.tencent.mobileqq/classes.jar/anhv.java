@@ -1,34 +1,32 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
-class anhv
-  implements AdapterView.OnItemClickListener
+public class anhv
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  anhv(anhr paramanhr) {}
+  public anhv(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramAdapterView = anhr.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(false);
-    }
-    anhr.a(this.a).setSelection(paramInt);
-    paramAdapterView = anhr.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(true);
-    }
-    anhr.a(this.a, paramInt);
-    anhr.a(this.a, true);
-    if ((anhr.a(this.a) != null) && (anhr.a(this.a).size() > 0) && (anhr.a(this.a).size() > anhr.a(this.a)))
+    if (paramBoolean)
     {
-      paramAdapterView = (anis)anhr.a(this.a).get(anhr.a(this.a));
-      if (paramAdapterView != null) {
-        anjv.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
-      }
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      paramBundle.putExtra("filePath", this.b);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
+    }
+    ((anfy)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Anfl).b(false);
   }
 }
 

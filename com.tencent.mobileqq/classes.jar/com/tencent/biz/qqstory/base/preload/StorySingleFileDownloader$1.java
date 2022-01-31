@@ -3,33 +3,33 @@ package com.tencent.biz.qqstory.base.preload;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import uir;
-import uja;
-import ujq;
-import ujr;
-import wsv;
+import una;
+import unj;
+import unz;
+import uoa;
+import wxe;
 
 public class StorySingleFileDownloader$1
   implements Runnable
 {
-  public StorySingleFileDownloader$1(ujq paramujq) {}
+  public StorySingleFileDownloader$1(unz paramunz) {}
   
   public void run()
   {
-    Iterator localIterator = ujq.a(this.this$0).values().iterator();
+    Iterator localIterator = unz.a(this.this$0).values().iterator();
     while (localIterator.hasNext())
     {
-      uja localuja = (uja)localIterator.next();
-      ujq.a(this.this$0).a(localuja);
-      Object localObject = localuja.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-      if ((localObject != null) && ((localObject instanceof ujr)))
+      unj localunj = (unj)localIterator.next();
+      unz.a(this.this$0).a(localunj);
+      Object localObject = localunj.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+      if ((localObject != null) && ((localObject instanceof uoa)))
       {
-        ujq.a(this.this$0, localuja.b, localuja.jdField_a_of_type_Int, (ujr)localObject);
-        wsv.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localuja.jdField_a_of_type_JavaLangString });
+        unz.a(this.this$0, localunj.b, localunj.jdField_a_of_type_Int, (uoa)localObject);
+        wxe.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localunj.jdField_a_of_type_JavaLangString });
       }
     }
-    ujq.a(this.this$0).clear();
-    wsv.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
+    unz.a(this.this$0).clear();
+    wxe.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
   }
 }
 

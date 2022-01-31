@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class owi
-  extends axhi
+  extends axlr
 {
   public owi(KandianMergeManager paramKandianMergeManager) {}
   

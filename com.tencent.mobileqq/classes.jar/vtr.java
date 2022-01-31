@@ -1,97 +1,19 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.net.Uri;
-import java.nio.ByteBuffer;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class vtr
+  extends uli
 {
-  private MediaExtractor a;
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public vtr()
+  public vtr(String paramString, boolean paramBoolean, File paramFile)
   {
-    a();
-  }
-  
-  public final int a()
-  {
-    return this.a.getTrackCount();
-  }
-  
-  public int a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return this.a.readSampleData(paramByteBuffer, paramInt);
-  }
-  
-  public long a()
-  {
-    return this.a.getSampleTime();
-  }
-  
-  @TargetApi(16)
-  public MediaFormat a(int paramInt)
-  {
-    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
-    if (localMediaFormat.getString("mime").startsWith("video/")) {
-      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
-    }
-    return localMediaFormat;
-  }
-  
-  @TargetApi(16)
-  protected void a()
-  {
-    if (this.a != null) {
-      this.a.release();
-    }
-    this.a = new MediaExtractor();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.selectTrack(paramInt);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    this.a.seekTo(paramLong, paramInt);
-  }
-  
-  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
-  {
-    this.a.setDataSource(paramContext, paramUri, paramMap);
-  }
-  
-  public boolean a()
-  {
-    return this.a.advance();
-  }
-  
-  public int b()
-  {
-    return this.a.getSampleTrackIndex();
-  }
-  
-  public long b()
-  {
-    return this.a.getCachedDuration();
-  }
-  
-  public void b()
-  {
-    this.a.release();
-  }
-  
-  public boolean b()
-  {
-    return this.a.hasCacheReachedEndOfStream();
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

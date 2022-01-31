@@ -1,18 +1,17 @@
-import android.app.Activity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
 
 public class atnr
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public atnr(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  public atnr(FloatIconLayout paramFloatIconLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    azmj.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setRotation(f);
   }
 }
 

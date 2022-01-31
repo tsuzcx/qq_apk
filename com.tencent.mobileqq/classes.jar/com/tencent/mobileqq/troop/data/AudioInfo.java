@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbkt;
-import bdcq;
+import bbpc;
+import bdgz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AudioInfo
-  extends bbkt
+  extends bbpc
   implements Serializable, Cloneable
 {
   public static final String AUDIO_DURATION = "duration";
@@ -125,18 +125,18 @@ public class AudioInfo
     if (this.duration < 0) {
       return null;
     }
-    View localView = LayoutInflater.from(paramContext).inflate(2131559775, null);
+    View localView = LayoutInflater.from(paramContext).inflate(2131559774, null);
     RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362885);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(localRelativeLayout.getLayoutParams());
     int i = (int)((this.mMaxLayoutLength - this.mMinLayoutLength) / 60000.0F * this.duration + this.mMinLayoutLength);
     if (this.duration < 60000) {}
-    for (localLayoutParams.width = ((int)bdcq.a(paramContext, i));; localLayoutParams.width = ((int)bdcq.a(paramContext, this.mMaxLayoutLength)))
+    for (localLayoutParams.width = ((int)bdgz.a(paramContext, i));; localLayoutParams.width = ((int)bdgz.a(paramContext, this.mMaxLayoutLength)))
     {
-      localLayoutParams.height = ((int)bdcq.a(paramContext, 41.0F));
-      localLayoutParams.topMargin = ((int)bdcq.a(paramContext, 12.0F));
-      localLayoutParams.leftMargin = ((int)bdcq.a(paramContext, 3.0F));
+      localLayoutParams.height = ((int)bdgz.a(paramContext, 41.0F));
+      localLayoutParams.topMargin = ((int)bdgz.a(paramContext, 12.0F));
+      localLayoutParams.leftMargin = ((int)bdgz.a(paramContext, 3.0F));
       localRelativeLayout.setLayoutParams(localLayoutParams);
-      i = (int)bdcq.a(paramContext, 5.0F);
+      i = (int)bdgz.a(paramContext, 5.0F);
       localRelativeLayout.setPadding(i, i, i, i);
       localView.findViewById(2131362888).setOnClickListener(paramOnClickListener);
       this.mAudioIcon = ((ImageView)localView.findViewById(2131362887));

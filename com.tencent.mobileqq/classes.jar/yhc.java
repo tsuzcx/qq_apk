@@ -1,14 +1,40 @@
-final class yhc
-  implements bhqf
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
+
+public class yhc
+  implements AdapterView.OnItemClickListener
 {
-  yhc(yhf paramyhf, bhpy parambhpy) {}
+  public yhc(EmoView paramEmoView, int paramInt) {}
   
-  public void onDismiss()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Yhf != null) {
-      this.jdField_a_of_type_Yhf.a(false);
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
+    {
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
     }
-    this.jdField_a_of_type_Bhpy.dismiss();
+    do
+    {
+      do
+      {
+        return;
+        paramInt = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      } while (paramInt >= 107);
+      paramAdapterView = yhp.b[yhg.b[paramInt]];
+      bool1 = bool2;
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
+      }
+    } while (bool1);
+    EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
   }
 }
 

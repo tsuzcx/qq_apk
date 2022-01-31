@@ -1,20 +1,33 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class avpc
-  extends avpd
+class avpc
+  implements aoim
 {
-  public avpc(String paramString, avpl paramavpl)
+  avpc(avop paramavop) {}
+  
+  public int a()
   {
-    super(paramString, paramavpl);
+    return 1;
   }
   
-  public void a()
+  public int a(int paramInt)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839107);
-    this.jdField_a_of_type_Int = -1;
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return alud.a(2131707659);
+    }
+    return alud.a(2131707760);
   }
 }
 

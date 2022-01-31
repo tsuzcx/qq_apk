@@ -1,56 +1,85 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder.1;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class auqs
-  implements Handler.Callback, axxb, bcxx
+class auqs
+  implements auqq
 {
-  NearbyAppInterface a;
-  public List<bcxy> a;
-  List<String> b;
-  List<String> c;
+  private IBinder a;
   
-  protected void a(String paramString, Bitmap paramBitmap)
+  auqs(IBinder paramIBinder)
   {
-    ausq.a("NearbyIconDecoder", "notifyGetIcon", new Object[] { paramString, paramBitmap });
-    this.a.runOnUiThread(new NearbyIconDecoder.1(this, paramString, paramBitmap));
+    this.a = paramIBinder;
   }
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt)
+  public IBinder asBinder()
   {
-    ausq.a("NearbyIconDecoder", "onDecodeBitmap", new Object[] { paramString1, paramString2, paramBitmap, Integer.valueOf(paramInt) });
-    if (paramString1 == null) {}
-    while (paramBitmap == null) {
+    return this.a;
+  }
+  
+  /* Error */
+  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
+  {
+    // Byte code:
+    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 28
+    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 42	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	auqs:a	Landroid/os/IBinder;
+    //   29: iconst_2
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	auqs
+    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
+    //   3	51	2	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(1, localParcel, null, 1);
       return;
     }
-    a(paramString1, paramBitmap);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    finally
     {
-    default: 
-      return false;
-    }
-    ausq.a("NearbyIconDecoder", "MSG_GET_ICON_URL", new Object[] { Integer.valueOf(this.b.size()), Integer.valueOf(this.c.size()) });
-    paramMessage = new ArrayList(this.b.size());
-    synchronized (this.b)
-    {
-      paramMessage.addAll(this.b);
-      this.b.clear();
-    }
-    synchronized (this.c)
-    {
-      this.c.addAll(paramMessage);
-      this.a.a().a(paramMessage);
-      return false;
-      paramMessage = finally;
-      throw paramMessage;
+      localParcel.recycle();
     }
   }
 }

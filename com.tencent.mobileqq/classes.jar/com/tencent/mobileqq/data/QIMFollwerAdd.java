@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class QIMFollwerAdd
-  extends awbv
+  extends awge
 {
   public long careSCount;
   public long fansCount;
@@ -15,7 +15,7 @@ public class QIMFollwerAdd
   public String smartRemark = "";
   public String source = "";
   public long totalNum;
-  @awdj
+  @awhs
   public long uin;
   public long upTime;
 }

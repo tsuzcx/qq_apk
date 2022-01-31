@@ -1,27 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bezq
-  extends Handler
+final class bezq
+  implements DialogInterface.OnClickListener
 {
-  public bezq(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  bezq(int paramInt, Activity paramActivity, bezx parambezx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    paramInt = 2;
+    if (this.jdField_a_of_type_Int == 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
+      bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+      bezm.a("0X80094F5");
+      paramInt = 1;
     }
-    this.a.jdField_a_of_type_Bezr.notifyDataSetChanged();
+    for (;;)
+    {
+      bezm.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
+      this.jdField_a_of_type_Bezx.a(1);
+      paramDialogInterface.dismiss();
+      return;
+      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
+      {
+        bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+        bezm.a("0X80094F4");
+        paramInt = 1;
+      }
+      else if (this.jdField_a_of_type_Int == 3)
+      {
+        bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
+        bezm.a("0X80094F6");
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Int == 4)
+        {
+          bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
+          bezm.a("0X80094F4");
+        }
+        paramInt = 1;
+      }
+    }
   }
 }
 

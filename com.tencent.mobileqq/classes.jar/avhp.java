@@ -1,28 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class avhp
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  avhp(avgk paramavgk, String paramString) {}
+  avhp(avhf paramavhf) {}
   
-  public void onClick(View paramView)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Avgk.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Avgk.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avgk.a.j)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localIntent.putExtra("url", paramView);
-      azmj.b(this.jdField_a_of_type_Avgk.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Avgk.a.startActivity(localIntent);
-      this.jdField_a_of_type_Avgk.a.l = true;
-      return;
-    }
+    return true;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

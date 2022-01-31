@@ -1,16 +1,16 @@
 package cooperation.qzone.plugin;
 
-import bjki;
-import bjkj;
+import bjop;
+import bjoq;
 
 public class QZoneConnectProcessor$1
   implements Runnable
 {
-  public QZoneConnectProcessor$1(bjki parambjki, bjkj parambjkj) {}
+  public QZoneConnectProcessor$1(bjop parambjop, bjoq parambjoq) {}
   
   public void run()
   {
-    bjki.a(this.this$0, this.a);
+    bjop.a(this.this$0, this.a);
   }
 }
 

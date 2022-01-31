@@ -1,14 +1,14 @@
-import com.tencent.smtt.sdk.ValueCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bhaq
-  implements ValueCallback
+  implements View.OnClickListener
 {
-  bhaq(bhap parambhap, String paramString) {}
+  bhaq(bhao parambhao) {}
   
-  public void onReceiveValue(Object paramObject)
+  public void onClick(View paramView)
   {
-    bhap.a(this.jdField_a_of_type_Bhap).add(this.jdField_a_of_type_JavaLangString);
+    bhao.a(this.a);
   }
 }
 

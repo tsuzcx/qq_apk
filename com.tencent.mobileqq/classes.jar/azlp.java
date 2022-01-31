@@ -1,52 +1,31 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class azlp
+class azlp
+  extends BroadcastReceiver
 {
-  public char a;
-  public int a;
-  public List<azlp> a;
-  public int b;
+  azlp(azlo paramazlo) {}
   
-  public azlp(int paramInt, char paramChar)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Char = paramChar;
-    this.b = 1;
-  }
-  
-  public azlp a(char paramChar)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramIntent.getAction() == null) {}
+    do
     {
-      azlp localazlp = (azlp)localIterator.next();
-      if (localazlp.jdField_a_of_type_Char == paramChar) {
-        return localazlp;
+      do
+      {
+        return;
+        paramContext = this.a.jdField_a_of_type_JavaLangString;
+        this.a.c();
+      } while ((this.a.jdField_a_of_type_Azlq == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
+      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
+      {
+        this.a.b();
+        this.a.jdField_a_of_type_Azlq.a(0, this.a.jdField_a_of_type_JavaLangString);
+        return;
       }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void a(azlp paramazlp)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramazlp);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
-    localStringBuilder.append("cnt: ").append(this.b);
-    return localStringBuilder.toString();
+    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
+    this.a.jdField_a_of_type_Azlq.a(1, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

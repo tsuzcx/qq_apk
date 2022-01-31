@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
 public class aukm
-  implements alkr
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
+  public aukm(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
     }
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
-      }
-      break;
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    Map localMap = (Map)paramObject[0];
-    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
+    this.a.getActivity().finish();
   }
 }
 

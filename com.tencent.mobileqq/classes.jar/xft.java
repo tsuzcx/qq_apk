@@ -1,24 +1,36 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class xft
-  implements xfs
+class xft
+  implements View.OnTouchListener
 {
-  public xft(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void a()
-  {
-    this.a.a.c(true);
-  }
+  xft(xfr paramxfr) {}
   
-  public void a(xgc paramxgc)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b(paramxgc);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

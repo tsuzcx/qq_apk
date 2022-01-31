@@ -1,9 +1,33 @@
-class ajft
-  implements bhvv
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+
+public class ajft
+  implements Animation.AnimationListener
 {
-  ajft(ajfr paramajfr) {}
+  public ajft(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void a() {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
+    }
+    if (AnonymousEntranceView.b(this.a) != null)
+    {
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

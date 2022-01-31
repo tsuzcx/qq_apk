@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aljq;
-import alpo;
+import alof;
+import alud;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayvw;
-import azqu;
-import bjxj;
+import azaf;
+import azvd;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.DailyFloatingWindowData;
@@ -40,7 +40,7 @@ public class KandianDailyManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = alpo.a(2131706294);
+    jdField_a_of_type_JavaLangString = alud.a(2131706306);
   }
   
   public KandianDailyManager(QQAppInterface paramQQAppInterface)
@@ -57,9 +57,9 @@ public class KandianDailyManager
   
   private MessageRecord a(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4)
   {
-    MessageForStructing localMessageForStructing = (MessageForStructing)ayvw.a(-2011);
+    MessageForStructing localMessageForStructing = (MessageForStructing)azaf.a(-2011);
     localMessageForStructing.msgtype = -2011;
-    localMessageForStructing.structingMsg = azqu.a();
+    localMessageForStructing.structingMsg = azvd.a();
     localMessageForStructing.structingMsg.mMsgServiceID = 142;
     localMessageForStructing.structingMsg.mMsgBrief = paramString2;
     localMessageForStructing.structingMsg.mOrangeWord = paramString1;
@@ -69,8 +69,8 @@ public class KandianDailyManager
       paramString1.put("puinName", paramString3);
       localMessageForStructing.structingMsg.mExtraData = paramString1.toString();
       localMessageForStructing.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      localMessageForStructing.frienduin = aljq.aS;
-      localMessageForStructing.senderuin = aljq.aS;
+      localMessageForStructing.frienduin = alof.aS;
+      localMessageForStructing.senderuin = alof.aS;
       localMessageForStructing.istroop = 1008;
       localMessageForStructing.issend = 0;
       localMessageForStructing.isread = true;
@@ -92,7 +92,7 @@ public class KandianDailyManager
   
   public static String a()
   {
-    MessageRecord localMessageRecord = ((QQAppInterface)ors.a()).a().b(aljq.aS, 1008);
+    MessageRecord localMessageRecord = ((QQAppInterface)ors.a()).a().b(alof.aS, 1008);
     if ((localMessageRecord instanceof MessageForStructing)) {
       return a((MessageForStructing)localMessageRecord);
     }
@@ -153,8 +153,8 @@ public class KandianDailyManager
   public static void a(Context paramContext, boolean paramBoolean, Bundle paramBundle, int paramInt)
   {
     Object localObject1 = (QQAppInterface)ors.a();
-    ors.a(aljq.aS, (QQAppInterface)ors.a());
-    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(((QQAppInterface)localObject1).a().b(aljq.aS, 1008), "kandian_daily_red_pnt");
+    ors.a(alof.aS, (QQAppInterface)ors.a());
+    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(((QQAppInterface)localObject1).a().b(alof.aS, 1008), "kandian_daily_red_pnt");
     localObject1 = paramBundle;
     if (localKandianRedDotInfo != null)
     {
@@ -228,12 +228,12 @@ public class KandianDailyManager
   
   public KandianRedDotInfo a()
   {
-    return KandianRedDotInfo.createRedDotFromMessageRecord(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.aS, 1008), "kandian_daily_red_pnt");
+    return KandianRedDotInfo.createRedDotFromMessageRecord(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.aS, 1008), "kandian_daily_red_pnt");
   }
   
   public MessageRecord a()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.aS, 1008);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.aS, 1008);
     if (ors.a(localMessageRecord)) {
       return localMessageRecord;
     }
@@ -254,7 +254,7 @@ public class KandianDailyManager
     for (paramArticleInfo = paramArticleInfo.msgBoxBriefPreFix;; paramArticleInfo = null)
     {
       paramArticleInfo = a("", str, a(), NetConnInfoCenter.getServerTime(), paramArticleInfo);
-      ors.a(aljq.aS, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ors.a(alof.aS, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArticleInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
       return;
     }
@@ -265,7 +265,7 @@ public class KandianDailyManager
     if (paramMessageRecord == null) {
       return;
     }
-    paramMessageRecord.frienduin = aljq.aS;
+    paramMessageRecord.frienduin = alof.aS;
     b(paramMessageRecord);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(paramMessageRecord, "kandian_daily_red_pnt");
     QLog.d("KandianDailyManager", 1, "receive lock screen msg : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianRedDotInfo);
@@ -302,15 +302,15 @@ public class KandianDailyManager
           String str = ((JSONObject)localObject2).optString("refreshMode", "");
           localObject2 = ((JSONObject)localObject2).optString("channelID", "");
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            bjxj.l((String)localObject1);
+            bkbq.l((String)localObject1);
           }
           if (!TextUtils.isEmpty(str)) {
-            bjxj.a("readinjoy_daily_mode_refresh_mode", str);
+            bkbq.a("readinjoy_daily_mode_refresh_mode", str);
           }
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
             QLog.d("KandianDailyManager", 1, "channelId: " + (String)localObject2);
-            bjxj.a("readinjoy_daily_mode_channel_id", Integer.valueOf((String)localObject2));
+            bkbq.a("readinjoy_daily_mode_channel_id", Integer.valueOf((String)localObject2));
           }
         }
       }

@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfgk
-  implements DialogInterface.OnClickListener
+  extends bfrs
 {
-  public bfgk(DownloadManagerV2.19 param19) {}
+  public bfgk(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfjy.r, false);
-    bfgm.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    if (this.a.getActivity() == null)
+    {
+      QLog.e("OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, paramAuthorizeResponse, paramInt));
   }
 }
 

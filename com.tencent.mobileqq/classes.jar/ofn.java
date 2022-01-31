@@ -93,32 +93,32 @@ public class ofn
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131562493, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379381));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368003));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368002));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368115));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368116));
-    this.jdField_d_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368117));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131562511, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379439));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368014));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368013));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368126));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368127));
+    this.jdField_d_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368128));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361982));
-    this.jdField_e_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367246));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367243));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379368));
+    this.jdField_e_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367256));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367253));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379426));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361982));
-    this.jdField_f_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367241));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367244));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367250));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367242));
+    this.jdField_f_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367251));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367254));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367260));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367252));
     this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362050));
     this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362047));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369369));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375786));
-    this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369334));
-    this.jdField_d_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375747));
-    this.jdField_e_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367248));
-    this.jdField_f_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367252));
-    this.jdField_g_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367247));
-    this.jdField_h_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367251));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369387));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375837));
+    this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369352));
+    this.jdField_d_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375798));
+    this.jdField_e_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367258));
+    this.jdField_f_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367262));
+    this.jdField_g_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367257));
+    this.jdField_h_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367261));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -201,13 +201,13 @@ public class ofn
     paramJSONObject = new ofr();
     paramJSONObject.jdField_a_of_type_Float = (m / 100.0F);
     paramJSONObject.jdField_a_of_type_Int = i1;
-    paramJSONObject.jdField_b_of_type_Int = aekt.a(i3 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramJSONObject.jdField_c_of_type_Int = aekt.a(i4 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramJSONObject.jdField_b_of_type_Int = aepi.a(i3 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramJSONObject.jdField_c_of_type_Int = aepi.a(i4 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
     localObject = new ofr();
     ((ofr)localObject).jdField_a_of_type_Float = (n / 100.0F);
     ((ofr)localObject).jdField_a_of_type_Int = i2;
-    ((ofr)localObject).jdField_b_of_type_Int = aekt.a(i5 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((ofr)localObject).jdField_c_of_type_Int = aekt.a(i6 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ofr)localObject).jdField_b_of_type_Int = aepi.a(i5 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ofr)localObject).jdField_c_of_type_Int = aepi.a(i6 / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_a_of_type_Ofr = paramJSONObject;
     this.jdField_b_of_type_Ofr = ((ofr)localObject);
   }
@@ -247,9 +247,9 @@ public class ofn
     {
       a(localLayoutParams2, 1.0F, m, n, i1, i2, i3, f1);
       a(localLayoutParams1, 1.0F, this.jdField_c_of_type_Int);
-      a(this.jdField_b_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 1.7F, aekt.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      a(this.jdField_c_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 2.0F, aekt.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      a(this.jdField_d_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 2.0F, aekt.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      a(this.jdField_b_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 1.7F, aepi.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      a(this.jdField_c_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 2.0F, aepi.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      a(this.jdField_d_of_type_AndroidWidgetTextView, 1.0F, 0.2F, 2.0F, aepi.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       return;
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
@@ -261,12 +261,12 @@ public class ofn
   
   private void c()
   {
-    this.jdField_c_of_type_Int = aekt.a(84.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_e_of_type_Int = aekt.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_f_of_type_Int = aekt.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_d_of_type_Int = aekt.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_Int = aekt.a(52.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_b_of_type_Int = aekt.a(135.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_c_of_type_Int = aepi.a(84.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_e_of_type_Int = aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_f_of_type_Int = aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_d_of_type_Int = aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_Int = aepi.a(52.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_b_of_type_Int = aepi.a(135.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   private void d()
@@ -283,10 +283,10 @@ public class ofn
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = aekt.a(128.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_b_of_type_Int = aekt.a(128.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = aepi.a(128.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_b_of_type_Int = aepi.a(128.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#40A0FF"));
-    int m = aekt.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_f_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setCorner(m, m, m, m);
   }
   
@@ -311,12 +311,12 @@ public class ofn
     {
       return;
       Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = aekt.a(28.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = aekt.a(28.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = aepi.a(28.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = aepi.a(28.0F, this.jdField_a_of_type_AndroidViewView.getResources());
       ((URLDrawable.URLDrawableOptions)localObject1).mMemoryCacheKeySuffix = "brand_user_icon";
       Object localObject3 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdCorporateLogo, (URLDrawable.URLDrawableOptions)localObject1);
-      ((URLDrawable)localObject3).setTag(bcuq.b(((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight, aekt.a(25.0F, this.jdField_a_of_type_AndroidViewView.getResources())));
-      ((URLDrawable)localObject3).setDecodeHandler(bcuq.i);
+      ((URLDrawable)localObject3).setTag(bcyz.b(((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight, aepi.a(25.0F, this.jdField_a_of_type_AndroidViewView.getResources())));
+      ((URLDrawable)localObject3).setDecodeHandler(bcyz.i);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable((Drawable)localObject3);
       this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mSubscribeName);
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mArticleSubscriptText);
@@ -491,10 +491,10 @@ public class ofn
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.isShowBrandAnimate) && (this.jdField_a_of_type_Ofr != null) && (this.jdField_b_of_type_Ofr != null))
     {
       this.jdField_g_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight();
-      this.jdField_h_of_type_Int = (this.jdField_a_of_type_Int + this.jdField_g_of_type_Int + aekt.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_h_of_type_Int = (this.jdField_a_of_type_Int + this.jdField_g_of_type_Int + aepi.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       this.i = 0;
-      this.j = (this.jdField_a_of_type_Int + this.jdField_g_of_type_Int + this.jdField_b_of_type_Int + aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.k = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.j = (this.jdField_a_of_type_Int + this.jdField_g_of_type_Int + this.jdField_b_of_type_Int + aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.k = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       f();
     }
   }

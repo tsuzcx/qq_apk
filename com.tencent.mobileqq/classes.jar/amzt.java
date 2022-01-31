@@ -1,14 +1,90 @@
-public class amzt
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+
+public abstract class amzt
+  extends Binder
+  implements amzs
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public amzt()
   {
-    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+  }
+  
+  public static amzs a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amzs))) {
+      return (amzs)localIInterface;
+    }
+    return new amzu(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    ArConfigInfo localArConfigInfo;
+    ArEffectConfig localArEffectConfig;
+    if (paramParcel1.readInt() != 0)
+    {
+      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
+      if (paramParcel1.readInt() == 0) {
+        break label219;
+      }
+      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
+      label178:
+      if (paramParcel1.readInt() == 0) {
+        break label225;
+      }
+    }
+    label219:
+    label225:
+    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(localArConfigInfo, localArEffectConfig, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+      localArConfigInfo = null;
+      break;
+      localArEffectConfig = null;
+      break label178;
+    }
   }
 }
 

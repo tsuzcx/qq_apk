@@ -4,19 +4,19 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import aouu;
+import aozd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQOperateManager$1
   implements Runnable
 {
-  public QQOperateManager$1(aouu paramaouu, int paramInt) {}
+  public QQOperateManager$1(aozd paramaozd, int paramInt) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(aouu.a())) {
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(aouu.a() + "QQOperationVoIPRequestCount", this.a).commit();
+    if (!TextUtils.isEmpty(aozd.a())) {
+      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(aozd.a() + "QQOperationVoIPRequestCount", this.a).commit();
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("QQOperateVoIP", 4, "onDestroy.......");

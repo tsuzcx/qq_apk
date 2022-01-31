@@ -1,36 +1,38 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bcyp
-  extends alnl
+public class bcyp
 {
-  bcyp(bcyo parambcyo) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  public bcyp(bcyj parambcyj) {}
+  
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Alnl != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Alnl);
-    }
-    if (paramBoolean)
-    {
-      paramFaceInfo = this.a.b();
-      if (paramFaceInfo != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
-        return;
-      }
-      this.a.a();
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("app_version", this.c);
+    localJSONObject.put("net_type", this.d);
+    localJSONObject.put("carrier_type", this.e);
+    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
+    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
+    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
+    localJSONObject.put("cpu_type", this.f);
+    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
+    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
+    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
+    return localJSONObject;
   }
 }
 

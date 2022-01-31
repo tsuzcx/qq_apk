@@ -9,13 +9,13 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xqh;
+import xuq;
 
 public class RingView
   extends View
 {
   protected RectF a;
-  protected List<xqh> a;
+  protected List<xuq> a;
   
   public RingView(Context paramContext)
   {
@@ -36,16 +36,16 @@ public class RingView
     }
   }
   
-  public void a(xqh paramxqh)
+  public void a(xuq paramxuq)
   {
     
-    if (paramxqh == null) {
+    if (paramxuq == null) {
       throw new NullPointerException("drawInfo should not be NULL");
     }
     if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()) {
-      paramxqh.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      paramxuq.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramxqh);
+    this.jdField_a_of_type_JavaUtilList.add(paramxuq);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -55,9 +55,9 @@ public class RingView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      xqh localxqh = (xqh)localIterator.next();
-      localxqh.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
-      localxqh.a(paramCanvas);
+      xuq localxuq = (xuq)localIterator.next();
+      localxuq.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      localxuq.a(paramCanvas);
     }
     paramCanvas.restore();
   }
@@ -80,7 +80,7 @@ public class RingView
     this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt2 + paramInt1);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((xqh)localIterator.next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      ((xuq)localIterator.next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
     }
   }
 }

@@ -1,33 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public final class azno
-  implements Parcelable.Creator<UEC.UECItem>
+public class azno
+  extends WebViewPlugin
 {
-  public UEC.UECItem a(Parcel paramParcel)
+  private boolean a;
+  
+  public azno()
   {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
+    this.mPluginNameSpace = "splashADPlugin";
   }
   
-  public UEC.UECItem[] a(int paramInt)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    return new UEC.UECItem[paramInt];
+    if (paramLong == 8589934598L)
+    {
+      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
+      if (this.a) {
+        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    if (this.mRuntime.a().getIntent() != null) {
+      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azno
  * JD-Core Version:    0.7.0.1
  */

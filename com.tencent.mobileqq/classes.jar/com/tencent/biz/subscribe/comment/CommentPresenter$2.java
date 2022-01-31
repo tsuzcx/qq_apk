@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.TextView;
-import ybx;
-import ycg;
-import yda;
+import ygg;
+import ygp;
+import yhj;
 
 public class CommentPresenter$2
   implements Runnable
 {
-  public CommentPresenter$2(ybx paramybx) {}
+  public CommentPresenter$2(ygg paramygg) {}
   
   public void run()
   {
-    if (ybx.a(this.this$0) != null) {
-      ybx.a(this.this$0).a(ybx.a(this.this$0));
+    if (ygg.a(this.this$0) != null) {
+      ygg.a(this.this$0).a(ygg.a(this.this$0));
     }
-    if (ybx.a(this.this$0) != null)
+    if (ygg.a(this.this$0) != null)
     {
-      if (ybx.a(this.this$0) > 0)
+      if (ygg.a(this.this$0) > 0)
       {
-        ybx.a(this.this$0).setText(yda.a(ybx.a(this.this$0)));
-        ybx.a(this.this$0).setVisibility(0);
+        ygg.a(this.this$0).setText(yhj.a(ygg.a(this.this$0)));
+        ygg.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    ybx.a(this.this$0).setText("");
-    ybx.a(this.this$0).setVisibility(8);
+    ygg.a(this.this$0).setText("");
+    ygg.a(this.this$0).setVisibility(8);
   }
 }
 

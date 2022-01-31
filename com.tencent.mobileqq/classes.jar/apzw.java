@@ -1,38 +1,15 @@
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
-public class apzw
-  implements aqed
+class apzw
+  implements aufy<Emoticon>
 {
-  public apzw(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  apzw(apzv paramapzv, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
   
-  public void a()
+  public void a(Emoticon paramEmoticon)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
-    }
-    this.a.b = "";
-    ExtendFriendProfileEditFragment.b(this.a, 0);
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
-      ((ExtendFriendEditFragment)localFragment).a = null;
-    }
-    ExtendFriendProfileEditFragment.a(this.a, null);
-    ExtendFriendProfileEditFragment.c(this.a);
-    if (ExtendFriendProfileEditFragment.b(this.a))
-    {
-      ExtendFriendProfileEditFragment.a(this.a, true);
-      ExtendFriendProfileEditFragment.b(this.a);
-    }
-    do
-    {
-      return;
-      ExtendFriendProfileEditFragment.a(this.a, false);
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString())));
-    ExtendFriendProfileEditFragment.a(this.a);
+    afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Apzv.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apzv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
   }
 }
 

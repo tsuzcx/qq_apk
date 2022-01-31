@@ -1,109 +1,176 @@
-import android.media.SoundPool;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import android.view.LayoutInflater;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil.2;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.mobileqq.location.window.LocationFloatWindowManager.5;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Timer;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.UiSettings;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.manager.Manager;
 
 public class atus
+  implements Manager
 {
-  public SoundPool a;
-  protected HashMap<String, Integer> a;
+  atun jdField_a_of_type_Atun;
+  private atuy jdField_a_of_type_Atuy;
+  private final atva jdField_a_of_type_Atva;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FloatMapWidget jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget;
+  public boolean a;
   
-  public void a()
+  public atus(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Atuy = new atuy(paramQQAppInterface);
+    this.jdField_a_of_type_Atva = new atva(paramQQAppInterface);
+    this.jdField_a_of_type_Atun = new atun(paramQQAppInterface);
+  }
+  
+  public static atus a(QQAppInterface paramQQAppInterface)
+  {
+    return (atus)paramQQAppInterface.getManager(143);
+  }
+  
+  private void a()
+  {
+    UiSettings localUiSettings = this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.getMap().getUiSettings();
+    localUiSettings.setScaleViewEnabled(false);
+    localUiSettings.setLogoScale(0.2F);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.onResume();
+  }
+  
+  private void a(atpq paramatpq)
+  {
+    Object localObject = TencentLocationManager.getInstance(BaseApplicationImpl.context).getLastKnownLocation();
+    if (localObject != null) {}
+    for (localObject = new LatLng(((TencentLocation)localObject).getLatitude(), ((TencentLocation)localObject).getLongitude());; localObject = null)
     {
-      bdaz.a(BaseApplicationImpl.getContext(), false);
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
+      localObject = CameraPosition.fromLatLngZoom((LatLng)localObject, 15.0F);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = ((FloatMapWidget)LayoutInflater.from(BaseApplicationImpl.context).inflate(2131559214, null).findViewById(2131369824));
+      this.jdField_a_of_type_Atun.a(paramatpq, (CameraPosition)localObject, this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget, null);
+      return;
     }
   }
   
-  public void a(String paramString)
+  private void a(BaseActivity paramBaseActivity, atpq paramatpq)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localInteger != null)
-      {
-        bdaz.a(BaseApplicationImpl.getContext(), false);
-        this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      }
-    }
+    atuh localatuh = new atuh();
+    localatuh.a(paramBaseActivity.getString(2131720157));
+    localatuh.b(paramBaseActivity.getString(2131690885));
+    localatuh.c(paramBaseActivity.getString(2131691294));
+    localatuh.a(new atuv(this, paramBaseActivity, paramatpq));
+    localatuh.b(new atuw(this));
+    localatuh.c(new atux(this, localatuh));
+    localatuh.a();
   }
   
-  public boolean a(String paramString)
+  private boolean b(BaseActivity paramBaseActivity, atpq paramatpq)
   {
-    if ((TextUtils.isEmpty(paramString)) || ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))) {}
-    int i;
-    do
+    FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(3).setCanMove(true).setFloatingCenterX(300).setFloatingCenterY(-680).build();
+    FloatingScreenManager localFloatingScreenManager = FloatingScreenManager.getInstance();
+    int i = localFloatingScreenManager.enterLocationFloatingScreen(BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget, localFloatingScreenParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "createFloatWindow: invoked. ", " result: ", Integer.valueOf(i) });
+    }
+    if (i == 1)
     {
-      File localFile;
-      do
-      {
-        return false;
-        localFile = new File(paramString);
-      } while (!localFile.exists());
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      }
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(null);
-      }
-      i = this.jdField_a_of_type_AndroidMediaSoundPool.load(localFile.getAbsolutePath(), 1);
-      if (i != 0) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SoundPoolUtil", 2, "load failure filepath=" + paramString);
-    return false;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
+      atqr.a(paramBaseActivity);
+      return false;
+    }
+    localFloatingScreenManager.setWindowClickListener(1, new atut(this, paramBaseActivity, paramatpq));
     return true;
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2)
+  @NonNull
+  public atuy a()
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    return this.jdField_a_of_type_Atuy;
+  }
+  
+  @NonNull
+  public atva a()
+  {
+    return this.jdField_a_of_type_Atva;
+  }
+  
+  @UiThread
+  public void a(int paramInt)
+  {
+    LocationFloatWindowManager.5 local5 = new LocationFloatWindowManager.5(this, paramInt);
+    ThreadManager.getUIHandlerV2().post(local5);
+  }
+  
+  public boolean a(BaseActivity paramBaseActivity, atpq paramatpq)
+  {
+    if (!AppNetConnInfo.isNetSupport()) {
+      QQToast.a(BaseApplicationImpl.context, 2131694768, 0).a();
+    }
     do
     {
-      do
+      return false;
+      a(paramatpq);
+      a();
+    } while (!b(paramBaseActivity, paramatpq));
+    a().a(paramatpq);
+    atpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(paramatpq.a(), paramatpq.a());
+    atuf.d();
+    int i = atuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramatpq);
+    if (i != 0) {
+      azqs.b(null, "CliOper", "", "", "0X800A974", "0X800A974", i, 0, "0", "0", "0", "");
+    }
+    return true;
+  }
+  
+  public void b(int paramInt)
+  {
+    try
+    {
+      FloatingScreenManager.getInstance().quitFloatingScreen(1);
+      a().a();
+      if (this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget != null)
       {
-        return false;
-        bdaz.a(BaseApplicationImpl.getContext(), true);
-        if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-          this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, paramInt2, 0);
+        this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.onPause();
+        this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.onStop();
+        if ((this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.getMap() != null) && (!this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.getMap().isDestroyed())) {
+          this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.onDestroy();
         }
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-          break;
-        }
-      } while (!a(paramString));
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new atut(this, paramInt1, paramString));
+        this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = null;
       }
-      do
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          return true;
-          paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          ThreadManager.getTimer().schedule(new SoundPoolUtil.2(this, paramInt1, paramString), 200L);
-        }
-        paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-      } while (this.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) != 0);
-    } while (!QLog.isColorLevel());
-    QLog.d("SoundPoolUtil", 2, "play failure filepath=" + paramString);
-    return false;
+        QLog.e("LocationFloatWindowManager", 1, "quitFloat: failed. ", localException);
+      }
+    }
+    this.jdField_a_of_type_Atun.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "quitFloat: invoked. ", " fromType: ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Atuy.b();
+    this.jdField_a_of_type_Atva.a();
+    this.jdField_a_of_type_Atun.a();
+    a(2);
   }
 }
 

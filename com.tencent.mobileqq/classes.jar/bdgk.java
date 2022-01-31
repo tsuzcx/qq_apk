@@ -1,12 +1,4 @@
-import android.widget.TextView;
-
-class bdgk
-{
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private bdgk(bdge parambdge) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgk

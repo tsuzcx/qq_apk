@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import aluw;
+import alzl;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -39,9 +39,9 @@ public class PubAccountMoreInfoActivity
   private void c()
   {
     super.setContentView(2131558405);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376000));
-    setTitle(getResources().getString(2131695725));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373310);
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376053));
+    setTitle(getResources().getString(2131695727));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373362);
     if (ThemeUtil.isInNightMode(this.app)) {
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -78,9 +78,9 @@ public class PubAccountMoreInfoActivity
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
     }
-    localObject = (aluw)this.app.getManager(56);
+    localObject = (alzl)this.app.getManager(56);
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((aluw)localObject).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
       b();
@@ -103,7 +103,7 @@ public class PubAccountMoreInfoActivity
     this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), nrz.class);
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.3,3,4515");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.5,3,4555");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {
       localGetPublicAccountDetailInfoRequest.seqno.set(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);

@@ -1,21 +1,10 @@
-public class xmg
+import java.util.ArrayList;
+
+public abstract interface xmg
 {
-  public static String a(int[] paramArrayOfInt)
-  {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramArrayOfInt[0]);
-    int i = 1;
-    while (i < paramArrayOfInt.length)
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract boolean a(ArrayList<String> paramArrayList, xmh paramxmh);
 }
 
 

@@ -1,19 +1,19 @@
-import android.content.Intent;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class acyp
   implements View.OnClickListener
 {
-  public acyp(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public acyp(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(paramView);
-    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    if (!this.a.getActivity().isFinishing()) {
+      ForwardTroopListFragment.a(this.a).dismiss();
+    }
   }
 }
 

@@ -1,44 +1,39 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class armr
-  implements armn
+class armr
+  implements bhuw
 {
-  armr(armq paramarmq) {}
+  armr(armo paramarmo) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
-    armo.a(this.a.a.this$0);
-    arng.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!armo.a(this.a))
     {
-      this.a.a.this$0.b = false;
+      bool = true;
+      armo.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Arhx != null) {
+        this.a.jdField_a_of_type_Arhx.a(armo.a(this.a));
+      }
+      if (!armo.a(this.a)) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_Arog.a(false);
+      this.a.jdField_a_of_type_Arog.b(false);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Arog.e(armo.a(this.a));
       return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Arog.a(true);
+      this.a.b();
     }
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
-    armo.a(this.a.a.this$0);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

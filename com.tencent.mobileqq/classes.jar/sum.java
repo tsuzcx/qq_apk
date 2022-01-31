@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class sum
-  extends alvc
+  extends alzr
 {
   sum(suk paramsuk) {}
   

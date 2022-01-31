@@ -1,18 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
 
-class apqs
-  implements ValueAnimator.AnimatorUpdateListener
+public class apqs
+  implements algq
 {
-  apqs(apqq paramapqq) {}
+  public apqs(MessengerService.IncomingHandler.30 param30) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(long paramLong, String paramString)
   {
-    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (apqq.a(this.a).getParent() != null) {
-      apqq.a(this.a).getParent().requestLayout();
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
   }
 }

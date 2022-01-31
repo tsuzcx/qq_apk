@@ -1,87 +1,16 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bbmv
+class bbmv
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public bbmk a;
-  public String a;
-  public ArrayList<ResultRecord> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  bbmv(bbms parambbms) {}
   
-  public bbmv()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    b();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bbmk = new bbmk();
-    this.jdField_a_of_type_Bbmk.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Bbmk.a = new byte[0];
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("classify", 0);
-      this.jdField_b_of_type_Int = paramString.optInt("verifyType", 2);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("classificationInfo", "");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("introduction", "");
-      this.e = paramString.optString("location", "");
-      this.jdField_c_of_type_Int = paramString.optInt("group_type", -1);
-      if (paramString.optInt("isJumpAio") == 1) {}
-      for (;;)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        this.jdField_d_of_type_Int = paramString.optInt("create_source", 0);
-        return;
-        bool = false;
-      }
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.e = "";
-    this.jdField_a_of_type_Bbmk = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
   }
 }
 

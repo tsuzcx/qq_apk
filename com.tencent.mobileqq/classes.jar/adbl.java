@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-public class adbl
-  extends avqu
+class adbl
+  implements bhuk
 {
-  public adbl(Leba paramLeba) {}
+  adbl(adbk paramadbk, adbx paramadbx, bhuf parambhuf) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
+    switch (paramInt)
     {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
     }
-    if (paramBoolean1)
+    for (;;)
     {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Adbk.a.b(this.jdField_a_of_type_Adbx);
     }
   }
 }

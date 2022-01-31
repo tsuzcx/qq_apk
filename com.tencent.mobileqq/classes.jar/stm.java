@@ -15,11 +15,11 @@ public class stm
       QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
     }
     this.a.app.getApplication();
-    int i = bdee.a(MobileQQ.getContext());
+    int i = bdin.a(MobileQQ.getContext());
     paramString = new HashMap();
     paramString.put("network", "" + i);
     paramString.put("status_code", "" + paramInt);
-    azmz.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
+    azri.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
   
   public void progress(int paramInt) {}

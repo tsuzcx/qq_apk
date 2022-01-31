@@ -1,19 +1,11 @@
-import java.util.Comparator;
+import java.text.SimpleDateFormat;
 
-class azpv
-  implements Comparator
+final class azpv
+  extends ThreadLocal<SimpleDateFormat>
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  protected SimpleDateFormat a()
   {
-    paramObject1 = (azps)paramObject1;
-    paramObject2 = (azps)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
-    }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
+    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   }
 }
 

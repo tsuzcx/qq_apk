@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.gif;
 
-import bkxi;
+import blbp;
 
 public class AEVideoStoryGIFTplViewModel$1
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$1(bkxi parambkxi) {}
+  public AEVideoStoryGIFTplViewModel$1(blbp paramblbp) {}
   
   public void run()
   {
-    bkxi.a(this.this$0);
+    blbp.a(this.this$0);
   }
 }
 

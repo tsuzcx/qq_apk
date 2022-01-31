@@ -1,41 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
-
-class arcf
-  implements TbsReaderView.ReaderCallback
+public class arcf
+  implements Cloneable
 {
-  arcf(arca paramarca, arcg paramarcg) {}
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a = new byte[16];
+  public long b;
+  public short b;
+  public boolean b;
+  public long c = -1L;
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  public arcf a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalTbsViewManager<FileAssistant>", 1, "recv actionType[" + paramInteger + "]");
-    }
-    if (paramInteger.intValue() == 5012)
+    try
     {
-      int i = ((Integer)paramObject1).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "err Code[" + i + "]");
-      }
-      if (i != 0) {
-        break label129;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
-      }
-      if (this.jdField_a_of_type_Arcg != null) {
-        this.jdField_a_of_type_Arcg.b(true);
-      }
+      arcf localarcf = (arcf)super.clone();
+      return localarcf;
     }
-    label129:
-    do
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
-      }
-    } while (this.jdField_a_of_type_Arcg == null);
-    this.jdField_a_of_type_Arcg.b(false);
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
   }
 }
 

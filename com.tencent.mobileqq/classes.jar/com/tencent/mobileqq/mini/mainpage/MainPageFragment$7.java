@@ -29,12 +29,12 @@ class MainPageFragment$7
     {
       paramView.edit().remove("persistent").apply();
       QLog.e("MainPageFragment", 1, "close persistent debug version");
-      Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694408), 1).show();
+      Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694410), 1).show();
       return false;
     }
     paramView.edit().putBoolean("persistent", true).apply();
     QLog.e("MainPageFragment", 1, "open persistent debug version");
-    Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694411), 1).show();
+    Toast.makeText(this.this$0.getActivity(), this.this$0.getResources().getString(2131694413), 1).show();
     return false;
   }
 }

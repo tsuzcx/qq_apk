@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afkz;
-import afla;
-import aflb;
-import aflc;
+import afpo;
+import afpp;
+import afpq;
+import afpr;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
-import bdda;
+import bdhj;
 import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -35,12 +35,12 @@ public class HeartCombolEffectView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private aflc jdField_a_of_type_Aflc;
+  private afpr jdField_a_of_type_Afpr;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private String jdField_a_of_type_JavaLangString = "chat_item_for_qqbixin_strong";
-  private ArrayList<aflc> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<afpr> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -69,25 +69,25 @@ public class HeartCombolEffectView
   }
   
   @TargetApi(11)
-  private aflc a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, int paramInt6)
+  private afpr a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, int paramInt6)
   {
-    aflc localaflc = new aflc(this);
-    localaflc.jdField_a_of_type_Boolean = false;
-    localaflc.jdField_a_of_type_Int = paramInt1;
-    localaflc.jdField_b_of_type_Int = paramInt2;
-    localaflc.c = paramInt3;
-    localaflc.d = paramInt4;
-    localaflc.e = paramInt5;
-    localaflc.jdField_a_of_type_Float = paramFloat;
-    localaflc.h = paramInt6;
-    localaflc.jdField_b_of_type_Boolean = false;
-    localaflc.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new DecelerateInterpolator());
-    localaflc.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new DecelerateInterpolator());
-    localaflc.jdField_b_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateInterpolator());
-    localaflc.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { localaflc.jdField_a_of_type_Float, 0.0F });
-    localaflc.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1100 - localaflc.h);
-    localaflc.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aflb(this, localaflc));
-    return localaflc;
+    afpr localafpr = new afpr(this);
+    localafpr.jdField_a_of_type_Boolean = false;
+    localafpr.jdField_a_of_type_Int = paramInt1;
+    localafpr.jdField_b_of_type_Int = paramInt2;
+    localafpr.c = paramInt3;
+    localafpr.d = paramInt4;
+    localafpr.e = paramInt5;
+    localafpr.jdField_a_of_type_Float = paramFloat;
+    localafpr.h = paramInt6;
+    localafpr.jdField_b_of_type_Boolean = false;
+    localafpr.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new DecelerateInterpolator());
+    localafpr.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new DecelerateInterpolator());
+    localafpr.jdField_b_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateInterpolator());
+    localafpr.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { localafpr.jdField_a_of_type_Float, 0.0F });
+    localafpr.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1100 - localafpr.h);
+    localafpr.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new afpq(this, localafpr));
+    return localafpr;
   }
   
   public Bitmap a(Bitmap paramBitmap)
@@ -114,9 +114,9 @@ public class HeartCombolEffectView
   
   void a(Context paramContext)
   {
-    setOnTouchListener(new afkz(this));
+    setOnTouchListener(new afpo(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(getResources(), 2130838941);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(getResources(), 2130838942);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
       this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
@@ -134,8 +134,8 @@ public class HeartCombolEffectView
     this.jdField_a_of_type_JavaUtilArrayList.add(a(0, (int)(i * 1.2F), (int)(j * 0.56F), (int)(-i * 0.1D), (int)(j * 0.6F), 0.55F, 500));
     this.jdField_a_of_type_JavaUtilArrayList.add(a(620, (int)(i * 1.2F), (int)(j * 0.63F), (int)(-i * 0.04D), (int)(j * 0.75F), 1.3F, 500));
     this.jdField_a_of_type_JavaUtilArrayList.add(a(410, (int)(i * 1.2F), (int)(j * 0.71F), (int)(-i * 0.06D), (int)(j * 0.89F), 0.88F, 500));
-    this.jdField_a_of_type_Aflc = ((aflc)this.jdField_a_of_type_JavaUtilArrayList.get(1));
-    this.jdField_a_of_type_Aflc.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new afla(this));
+    this.jdField_a_of_type_Afpr = ((afpr)this.jdField_a_of_type_JavaUtilArrayList.get(1));
+    this.jdField_a_of_type_Afpr.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new afpp(this));
     this.jdField_a_of_type_Int = i;
     this.jdField_b_of_type_Int = j;
   }
@@ -162,13 +162,13 @@ public class HeartCombolEffectView
       paramMessage = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (paramMessage.hasNext())
       {
-        aflc localaflc = (aflc)paramMessage.next();
-        localaflc.jdField_a_of_type_Boolean = false;
-        localaflc.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-        localaflc.jdField_b_of_type_AndroidWidgetScroller.abortAnimation();
-        localaflc.f = localaflc.jdField_b_of_type_Int;
-        localaflc.g = localaflc.c;
-        localaflc.jdField_b_of_type_Float = localaflc.jdField_a_of_type_Float;
+        afpr localafpr = (afpr)paramMessage.next();
+        localafpr.jdField_a_of_type_Boolean = false;
+        localafpr.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+        localafpr.jdField_b_of_type_AndroidWidgetScroller.abortAnimation();
+        localafpr.f = localafpr.jdField_b_of_type_Int;
+        localafpr.g = localafpr.c;
+        localafpr.jdField_b_of_type_Float = localafpr.jdField_a_of_type_Float;
       }
       if (this.jdField_a_of_type_Boolean) {
         this.c = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
@@ -181,7 +181,7 @@ public class HeartCombolEffectView
       int i = 0;
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        paramMessage = (aflc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        paramMessage = (afpr)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         if (l1 - l2 >= paramMessage.jdField_a_of_type_Int) {
           if (!paramMessage.jdField_a_of_type_Boolean)
           {
@@ -212,9 +212,9 @@ public class HeartCombolEffectView
         }
       }
       i = this.jdField_a_of_type_Int;
-      int j = this.jdField_a_of_type_Aflc.d;
-      float f = ((Float)this.jdField_a_of_type_Aflc.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).floatValue();
-      if ((!this.jdField_a_of_type_Aflc.jdField_a_of_type_Boolean) || ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aflc.f > this.jdField_a_of_type_Aflc.d)) || ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aflc.f < i - j)) || ((this.jdField_a_of_type_Aflc.jdField_b_of_type_Boolean) && (f > 0.001D)))
+      int j = this.jdField_a_of_type_Afpr.d;
+      float f = ((Float)this.jdField_a_of_type_Afpr.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).floatValue();
+      if ((!this.jdField_a_of_type_Afpr.jdField_a_of_type_Boolean) || ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Afpr.f > this.jdField_a_of_type_Afpr.d)) || ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Afpr.f < i - j)) || ((this.jdField_a_of_type_Afpr.jdField_b_of_type_Boolean) && (f > 0.001D)))
       {
         postInvalidate();
         paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
@@ -243,14 +243,14 @@ public class HeartCombolEffectView
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          aflc localaflc = (aflc)localIterator.next();
-          if (localaflc.jdField_a_of_type_Boolean)
+          afpr localafpr = (afpr)localIterator.next();
+          if (localafpr.jdField_a_of_type_Boolean)
           {
             this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-            this.d = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * localaflc.jdField_b_of_type_Float / 2.0F));
-            this.e = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localaflc.jdField_b_of_type_Float / 2.0F));
-            this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localaflc.f, localaflc.g);
-            this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localaflc.jdField_b_of_type_Float, localaflc.jdField_b_of_type_Float);
+            this.d = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * localafpr.jdField_b_of_type_Float / 2.0F));
+            this.e = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localafpr.jdField_b_of_type_Float / 2.0F));
+            this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localafpr.f, localafpr.g);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localafpr.jdField_b_of_type_Float, localafpr.jdField_b_of_type_Float);
             if (this.jdField_b_of_type_Boolean) {
               paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
             } else {

@@ -1,35 +1,46 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import java.util.ArrayList;
 
 public class bbjk
-  implements View.OnFocusChangeListener
+  implements Animation.AnimationListener
 {
-  public bbjk(NewTroopContactView paramNewTroopContactView) {}
+  public bbjk(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
+    boolean bool = false;
+    paramAnimation = this.a;
+    paramAnimation.jdField_q_of_type_Int -= 1;
+    if (this.a.jdField_q_of_type_Int == 0)
     {
-      paramView = this.a.a();
-      if (paramView != null)
+      this.a.jdField_q_of_type_Boolean = false;
+      int i = 0;
+      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
       {
-        paramView.d(true);
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
+        if (paramAnimation != null) {
+          paramAnimation.clearAnimation();
         }
-        localFragmentTransaction.add(2131375671, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+        i += 1;
       }
+      this.a.c.clearAnimation();
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
+      paramAnimation = this.a.jdField_a_of_type_Bbiu;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
+        bool = true;
+      }
+      paramAnimation.a(bool, true);
+      this.a.jdField_a_of_type_Bbiu.a(this.a.jdField_a_of_type_JavaUtilArrayList);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.view.MotionEvent;
 
-public class bcqw
-  implements azzg
+public abstract interface bcqw
 {
-  public bcqw(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void a()
-  {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
-    {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
-    }
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

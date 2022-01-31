@@ -1,6 +1,24 @@
-public abstract interface ajrg
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajrg
+  implements azht
 {
-  public abstract void a();
+  public ajrg(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
+    }
+    ajrw.a(paramBoolean1);
+    if (paramBoolean1)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.g();
+  }
 }
 
 

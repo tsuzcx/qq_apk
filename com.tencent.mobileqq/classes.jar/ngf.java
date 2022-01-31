@@ -63,7 +63,7 @@ public class ngf
       localObject = localAbsListView.getChildAt(i - k);
       if (localObject != null)
       {
-        localObject = ((View)localObject).findViewById(2131377082);
+        localObject = ((View)localObject).findViewById(2131377136);
         if ((localObject instanceof NowVideoView))
         {
           localObject = (NowVideoView)localObject;
@@ -150,7 +150,7 @@ public class ngf
   
   public boolean a(Context paramContext, NowVideoView paramNowVideoView)
   {
-    return bdee.h(paramContext);
+    return bdin.h(paramContext);
   }
   
   public void b()

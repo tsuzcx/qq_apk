@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
-import bhro;
+import bhvv;
 import com.tencent.qphone.base.util.QLog;
 
 class Leba$36$5
@@ -18,8 +18,8 @@ class Leba$36$5
         if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0) != null) {
           Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0).setVisibility(0);
         }
-        bhro.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0), this.jdField_a_of_type_Int, this.b, 0);
-        bhro.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0.a(), Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0), this.jdField_a_of_type_Int, Leba.d(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0));
+        bhvv.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0), this.jdField_a_of_type_Int, this.b, 0);
+        bhvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0.a(), Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0), this.jdField_a_of_type_Int, Leba.d(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0));
         if (Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0) != null) {
           Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$36.this$0).setVisibility(8);
         }

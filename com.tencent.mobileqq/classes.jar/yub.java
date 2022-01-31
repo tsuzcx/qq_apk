@@ -1,129 +1,80 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.SmoothScroller;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class yub
+public abstract class yub
+  extends nac
 {
-  private RecyclerView.LayoutManager a;
-  
-  public yub(@NonNull RecyclerView.LayoutManager paramLayoutManager)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = paramLayoutManager;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    Object localObject = new oidb_0x6d8.RspBody();
+    try
+    {
+      ((oidb_0x6d8.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      localObject.toString();
+      if (((oidb_0x6d8.RspBody)localObject).file_preview_rsp.has()) {
+        break label106;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileProtocol", 2, "no file_preview rsp.");
+      }
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte = paramBundle;
+    }
+    a(false, paramInt, null, null, 0, 0, null, null, null, null, paramArrayOfByte);
+    return;
+    label106:
+    paramArrayOfByte = (oidb_0x6d8.GetFilePreviewRspBody)((oidb_0x6d8.RspBody)localObject).file_preview_rsp.get();
+    if (!paramArrayOfByte.bytes_download_url.has())
+    {
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    int i = paramArrayOfByte.int32_ret_code.get();
+    localObject = paramArrayOfByte.str_ret_msg.get();
+    String str1 = paramArrayOfByte.str_client_wording.get();
+    int j = paramArrayOfByte.int32_server_ip.get();
+    int k = paramArrayOfByte.int32_server_port.get();
+    String str2 = paramArrayOfByte.str_download_dns.get();
+    ByteStringMicro localByteStringMicro1 = paramArrayOfByte.bytes_download_url.get();
+    ByteStringMicro localByteStringMicro2 = paramArrayOfByte.bytes_reserved_field.get();
+    String str3 = paramArrayOfByte.str_cookie_val.get();
+    if (paramBundle == null) {}
+    for (paramArrayOfByte = new Bundle();; paramArrayOfByte = paramBundle)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramArrayOfByte.putString("strHttpsDomain", str2);
+          paramArrayOfByte.putInt("httpsPort", 443);
+        }
+        a(true, i, (String)localObject, str1, j, k, str2, localByteStringMicro1, str3, localByteStringMicro2, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      break;
+    }
   }
   
-  public int a()
-  {
-    return this.a.getChildCount();
-  }
-  
-  public int a(View paramView)
-  {
-    return this.a.getPosition(paramView);
-  }
-  
-  public View a(int paramInt)
-  {
-    return this.a.getChildAt(paramInt);
-  }
-  
-  public View a(int paramInt, RecyclerView.Recycler paramRecycler)
-  {
-    paramRecycler = paramRecycler.getViewForPosition(paramInt);
-    this.a.addView(paramRecycler);
-    this.a.measureChildWithMargins(paramRecycler, 0, 0);
-    return paramRecycler;
-  }
-  
-  public void a()
-  {
-    this.a.requestLayout();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.offsetChildrenHorizontal(paramInt);
-  }
-  
-  public void a(RecyclerView.Recycler paramRecycler)
-  {
-    this.a.detachAndScrapAttachedViews(paramRecycler);
-  }
-  
-  public void a(RecyclerView.SmoothScroller paramSmoothScroller)
-  {
-    this.a.startSmoothScroll(paramSmoothScroller);
-  }
-  
-  public void a(View paramView)
-  {
-    this.a.attachView(paramView);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
-  }
-  
-  public void a(View paramView, RecyclerView.Recycler paramRecycler)
-  {
-    this.a.detachAndScrapView(paramView, paramRecycler);
-  }
-  
-  public int b()
-  {
-    return this.a.getItemCount();
-  }
-  
-  public int b(View paramView)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = this.a.getDecoratedMeasuredWidth(paramView);
-    int j = localMarginLayoutParams.leftMargin;
-    return localMarginLayoutParams.rightMargin + (i + j);
-  }
-  
-  public void b()
-  {
-    this.a.removeAllViews();
-  }
-  
-  public void b(RecyclerView.Recycler paramRecycler)
-  {
-    this.a.removeAndRecycleAllViews(paramRecycler);
-  }
-  
-  public void b(View paramView)
-  {
-    this.a.detachView(paramView);
-  }
-  
-  public void b(View paramView, RecyclerView.Recycler paramRecycler)
-  {
-    paramRecycler.recycleView(paramView);
-  }
-  
-  public int c()
-  {
-    return this.a.getWidth();
-  }
-  
-  public int c(View paramView)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = this.a.getDecoratedMeasuredHeight(paramView);
-    int j = localMarginLayoutParams.topMargin;
-    return localMarginLayoutParams.bottomMargin + (i + j);
-  }
-  
-  public int d()
-  {
-    return this.a.getHeight();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle);
 }
 
 

@@ -1,6 +1,8 @@
 public abstract interface atxr
 {
-  public abstract void a(int paramInt);
+  public abstract void a(afvu paramafvu);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

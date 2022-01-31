@@ -75,7 +75,7 @@ public class ComponentContentUgcSource
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560136, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560135, this, true);
   }
   
   public void a()
@@ -90,9 +90,9 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379182));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379240));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379183));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379241));
   }
   
   public void a(Object paramObject)

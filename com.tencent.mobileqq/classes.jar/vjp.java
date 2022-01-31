@@ -1,26 +1,20 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.HashMap;
 
 class vjp
-  implements View.OnClickListener
+  extends viq
 {
-  vjp(vjl paramvjl) {}
-  
-  public void onClick(View paramView)
+  vjp(vji paramvji, String paramString1, String paramString2, boolean paramBoolean, vkm paramvkm)
   {
-    paramView = vjl.a(this.a).a();
-    if (!bdee.g(paramView))
-    {
-      QQToast.a(paramView, 1, 2131694764, 0).a();
-      return;
-    }
-    wsv.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { vjl.a(this.a) });
-    vjl.a(this.a).setVisibility(0);
-    vjl.a(this.a).removeCallbacks(vjl.a(this.a));
-    vjl.a(this.a).postDelayed(vjl.a(this.a), 500L);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vkm.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Vkm.a, this.jdField_a_of_type_Vkm.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 

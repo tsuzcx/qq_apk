@@ -1,32 +1,75 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class arcv
-  implements bapx
+public class arcv
+  implements aywd
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  private arcv(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public arcv() {}
+  
+  public arcv(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+    this.jdField_a_of_type_Int = 2131562611;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  public void onResp(baqw parambaqw)
+  public View a()
   {
-    if ((parambaqw.c == 200) || (parambaqw.c == 206)) {}
-    for (String str = new String(parambaqw.a);; str = null)
-    {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(parambaqw.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + parambaqw.c + ", rsp=" + str);
-      return;
-    }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367921));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377938));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(bamz.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365129));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378010).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
+  }
 }
 
 

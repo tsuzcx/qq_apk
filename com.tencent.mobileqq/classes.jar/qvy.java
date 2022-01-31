@@ -3,7 +3,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class qvy
-  extends akee
+  extends akit
 {
   public View a;
   public CheckBox a;

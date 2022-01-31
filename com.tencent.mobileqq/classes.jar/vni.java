@@ -1,41 +1,35 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.widget.AbsListView;
 
 public class vni
-  implements View.OnTouchListener
+  implements bhtv
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  
+  public vni(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = ((TextView)paramView).getText();
-    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-    paramView = (TextView)paramView;
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramView.getTotalPaddingLeft();
-      int n = paramView.getTotalPaddingTop();
-      int i1 = paramView.getScrollX();
-      int i2 = paramView.getScrollY();
-      paramMotionEvent = paramView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length != 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramView);
-        }
-        return true;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
       }
     }
-    return false;
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+    vnk.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 

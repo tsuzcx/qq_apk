@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import bjmn;
-import bjmp;
+import bjqu;
+import bjqw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,7 +48,7 @@ public final class QzoneDeviceTagJsPlugin$1
           localObject7 = localObject3;
           localObject6 = localObject2;
           localObject3 = localObject5;
-          bjmn.a().a().c((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
+          bjqu.a().a().c((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
           return;
         }
         catch (JSONException localJSONException2)

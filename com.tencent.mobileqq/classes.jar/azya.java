@@ -1,44 +1,7 @@
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-
-public final class azya
-  implements azyd
+class azya
+  implements bcii
 {
-  private final File a;
-  
-  public azya(String paramString)
-  {
-    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
-  }
-  
-  public boolean a()
-  {
-    return this.a.exists();
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
-    }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return alza.a(16).submit(new azyc(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return alza.a(16).submit(new azyb(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
-  }
+  azya(azxz paramazxz, String paramString1, String paramString2, azyb paramazyb) {}
 }
 
 

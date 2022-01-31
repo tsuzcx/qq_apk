@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class bjhy
-  implements DialogInterface.OnClickListener
+final class bjhy
+  implements bjig
 {
-  public bjhy(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Collection<bjhz> a()
   {
-    paramDialogInterface.dismiss();
-    this.a.isFlowWarningVisible = false;
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
+    synchronized ()
+    {
+      if (bjhx.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
+      }
+      Object localObject1 = new ArrayList(bjhx.a().values());
+    }
   }
 }
 

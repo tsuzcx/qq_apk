@@ -1,160 +1,83 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
-import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView;
-import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoPayFailLayoutView;
-import java.util.List;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.11.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class bdxq
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bdxm jdField_a_of_type_Bdxm;
-  private bdxt jdField_a_of_type_Bdxt;
-  private bdxv jdField_a_of_type_Bdxv;
-  private bdyc jdField_a_of_type_Bdyc;
-  private bdye jdField_a_of_type_Bdye;
-  private RegisterLiangHaoChoiceLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
-  private RegisterLiangHaoPayFailLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
-  private String jdField_a_of_type_JavaLangString;
-  private bdye b;
+  public bdxq(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, bdyb parambdyb) {}
   
-  public bdxq(Context paramContext, bdxm parambdxm)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bdxm = parambdxm;
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterByNicknameAndPwdActivity)) {
-      return ((RegisterByNicknameAndPwdActivity)this.jdField_a_of_type_AndroidContentContext).a();
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterPersonalInfoActivity)) {
-      return ((RegisterPersonalInfoActivity)this.jdField_a_of_type_AndroidContentContext).a();
-    }
-    return false;
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_a_of_type_Bdxv == null) || (this.jdField_a_of_type_Bdxv.a == null)) {
-      return;
-    }
-    a().a(this.jdField_a_of_type_Bdxv);
-    int i = this.jdField_a_of_type_Bdxv.a.size();
-    if (i > 4)
-    {
-      this.jdField_a_of_type_Bdxv.a = this.jdField_a_of_type_Bdxv.a.subList(4, i);
-      return;
-    }
-    this.jdField_a_of_type_Bdxv.a.clear();
-  }
-  
-  public RegisterLiangHaoChoiceLayoutView a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView = new RegisterLiangHaoChoiceLayoutView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView.setLiangHaoHelper(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
-  }
-  
-  public RegisterLiangHaoPayFailLayoutView a(bdxu parambdxu)
-  {
-    if (parambdxu == null) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView = new RegisterLiangHaoPayFailLayoutView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setUin(parambdxu.a);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setLiangHaoHelper(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Bdxv != null) && (this.jdField_a_of_type_Bdxv.a != null) && (this.jdField_a_of_type_Bdxv.a.size() >= 4))
-    {
-      c();
-      return;
-    }
-    if (this.b == null) {
-      this.b = new bdxs(this);
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    new bdyd(str, i, this.b).a();
-  }
-  
-  public void a(bdxx parambdxx)
-  {
-    if ((this.jdField_a_of_type_Bdxm == null) || (!a())) {
-      return;
-    }
-    this.jdField_a_of_type_Bdxm.c();
-    LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bdxm.a(), parambdxx);
-  }
-  
-  public void a(String paramString, bdxt parambdxt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bdxt = parambdxt;
-    if (this.jdField_a_of_type_Bdye == null) {
-      this.jdField_a_of_type_Bdye = new bdxr(this);
-    }
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    new bdyd(paramString, i, this.jdField_a_of_type_Bdye).a();
-  }
-  
-  public void a(String paramString, bdyc parambdyc)
-  {
-    this.jdField_a_of_type_Bdyc = parambdyc;
-    new bdyb(paramString, parambdyc).a();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bdxm == null) || (!a())) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Bdxv != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bdxv.b)))
-    {
-      str = this.jdField_a_of_type_Bdxv.b;
-      if (str.indexOf("?") >= 0) {
-        break label146;
+    Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.e.get(this.jdField_a_of_type_JavaLangString);
+    paramView = (SeekBar)((FrameLayout)localObject2).findViewById(2131376325);
+    Object localObject1 = (TextView)((FrameLayout)localObject2).findViewById(2131373613);
+    TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131373612);
+    ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131373611);
+    ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131373610);
+    TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131373609);
+    localObject2 = new HealthBusinessPlugin.11.1(this, paramView, (TextView)localObject1, localTextView1, localImageView1, localImageView2, localTextView2);
+    int i;
+    if (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f) {
+      if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+      {
+        i = 2130848136;
+        localImageView1.setImageResource(i);
+        localImageView1.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f = true;
+        paramView.setVisibility(0);
+        ((TextView)localObject1).setVisibility(0);
+        localTextView1.setVisibility(0);
+        localImageView2.setVisibility(4);
+        localTextView2.setVisibility(4);
+        if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 3000L);
+        }
       }
     }
-    label146:
-    for (String str = str + "?phone=" + this.jdField_a_of_type_JavaLangString;; str = str + "&phone=" + this.jdField_a_of_type_JavaLangString)
+    do
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      localIntent.putExtras(this.jdField_a_of_type_Bdxm.a());
-      localIntent.putExtra("lh_reg_from", 1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
-      str = "https://haoma.qq.com/m/clientReg/index.html";
+      i = 2130848685;
       break;
+      if (!((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying()) {
+        break label348;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).pause();
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = true;
+      localImageView1.setImageResource(2130848685);
+      localImageView1.setVisibility(0);
+    } while (!QLog.isColorLevel());
+    QLog.d("HealthBusinessPlugin", 2, "play onclick in video ");
+    return;
+    label348:
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = false;
+    paramView = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 3000L);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+    while (paramView.hasNext())
+    {
+      localObject1 = (String)paramView.next();
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
     }
-  }
-  
-  public void b(bdxx parambdxx)
-  {
-    if (this.jdField_a_of_type_Bdxm == null) {
-      return;
-    }
-    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bdxm.a(), parambdxx);
+    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).start();
+    this.jdField_a_of_type_Bdyb.a.setImageResource(2130848136);
+    this.jdField_a_of_type_Bdyb.a.setVisibility(0);
   }
 }
 

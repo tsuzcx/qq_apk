@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
-import aqsc;
-import bbpe;
+import aqwl;
+import bbtn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
@@ -142,30 +142,30 @@ public class AIOFilePicData
     }
   }
   
-  public void a(bbpe parambbpe)
+  public void a(bbtn parambbtn)
   {
-    if (parambbpe == null) {
+    if (parambbtn == null) {
       return;
     }
     String str;
-    if (parambbpe.jdField_d_of_type_JavaLangString != null)
+    if (parambbtn.jdField_d_of_type_JavaLangString != null)
     {
-      str = parambbpe.jdField_d_of_type_JavaLangString;
+      str = parambbtn.jdField_d_of_type_JavaLangString;
       this.jdField_b_of_type_JavaLangString = str;
-      if (parambbpe.jdField_c_of_type_JavaLangString == null) {
+      if (parambbtn.jdField_c_of_type_JavaLangString == null) {
         break label108;
       }
-      str = parambbpe.jdField_c_of_type_JavaLangString;
+      str = parambbtn.jdField_c_of_type_JavaLangString;
       label34:
       this.jdField_c_of_type_JavaLangString = str;
-      if (parambbpe.jdField_a_of_type_JavaLangString == null) {
+      if (parambbtn.jdField_a_of_type_JavaLangString == null) {
         break label114;
       }
-      str = parambbpe.jdField_a_of_type_JavaLangString;
+      str = parambbtn.jdField_a_of_type_JavaLangString;
       label51:
       this.jdField_d_of_type_JavaLangString = str;
-      this.g = parambbpe.g;
-      if (parambbpe.jdField_b_of_type_Int != 12) {
+      this.g = parambbtn.g;
+      if (parambbtn.jdField_b_of_type_Int != 12) {
         break label120;
       }
     }
@@ -175,8 +175,8 @@ public class AIOFilePicData
     for (boolean bool = true;; bool = false)
     {
       this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = parambbpe.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = parambbpe.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Long = parambbtn.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = parambbtn.jdField_c_of_type_Long;
       this.jdField_e_of_type_Boolean = false;
       return;
       str = "I:N";

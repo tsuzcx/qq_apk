@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.view.View;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
 public class bciw
-  implements aqte
+  implements bhuk
 {
-  public bciw(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  public bciw(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhuf parambhuf) {}
   
-  public void a() {}
-  
-  public void b()
+  public void OnClick(View paramView, int paramInt)
   {
-    aqsz.a(new aret(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
+    switch (this.jdField_a_of_type_Bhuf.a(paramInt).c)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+      continue;
+      bcpx.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      bcpx.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 

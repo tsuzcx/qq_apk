@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import bfhg;
-import bfju;
-import bfkb;
-import bfki;
+import bflp;
+import bfod;
+import bfok;
+import bfor;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DownloadApi$5
   implements Runnable
 {
-  public DownloadApi$5(List paramList, bfki parambfki) {}
+  public DownloadApi$5(List paramList, bfor parambfor) {}
   
   public void run()
   {
-    bfhg.a(bfju.a, "getQueryDownloadAction enter");
-    bfkb.a().a();
+    bflp.a(bfod.a, "getQueryDownloadAction enter");
+    bfok.a().a();
     for (;;)
     {
       int i;
@@ -27,27 +27,27 @@ public final class DownloadApi$5
         if (i < j)
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bfkb.a().a(localDownloadInfo))
+          if (bfok.a().a(localDownloadInfo))
           {
-            bfhg.a(bfju.a, "refreshDownloadInfo true " + localDownloadInfo);
+            bflp.a(bfod.a, "refreshDownloadInfo true " + localDownloadInfo);
             localArrayList.add(localDownloadInfo);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_Bfki != null) {
-            this.jdField_a_of_type_Bfki.a(localArrayList);
+          if (this.jdField_a_of_type_Bfor != null) {
+            this.jdField_a_of_type_Bfor.a(localArrayList);
           }
           return;
         }
       }
       catch (Exception localException)
       {
-        bfhg.c(bfju.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_Bfki == null) {
+        bflp.c(bfod.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_Bfor == null) {
           continue;
         }
-        this.jdField_a_of_type_Bfki.a(-1, localException.getMessage());
+        this.jdField_a_of_type_Bfor.a(-1, localException.getMessage());
         return;
       }
       i += 1;

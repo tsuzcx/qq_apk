@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.adapter;
 
-import akfo;
-import aljq;
-import almt;
-import aloz;
-import alvf;
+import akkd;
+import alof;
+import alri;
+import alto;
+import alzu;
 import android.text.TextUtils;
-import avpz;
-import avqn;
-import baaz;
-import bdbt;
+import avui;
+import avuw;
+import bafi;
+import bdgc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,7 +33,7 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public class NewFriendMoreSysMsgAdapter$5
   implements Runnable
 {
-  public NewFriendMoreSysMsgAdapter$5(akfo paramakfo, boolean paramBoolean) {}
+  public NewFriendMoreSysMsgAdapter$5(akkd paramakkd, boolean paramBoolean) {}
   
   public void run()
   {
@@ -43,8 +43,8 @@ public class NewFriendMoreSysMsgAdapter$5
     synchronized (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
       this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      l = baaz.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(aljq.M, 0, l);
+      l = bafi.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(alof.M, 0, l);
       localArrayList = new ArrayList(localList.size());
       if ((localList == null) || (localList.size() <= 0)) {
         break label447;
@@ -60,7 +60,7 @@ public class NewFriendMoreSysMsgAdapter$5
         if (localMessageForSystemMsg.structMsg == null) {
           localMessageForSystemMsg.parse();
         }
-        if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!akfo.a(this.this$0).b(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))) {}
+        if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!akkd.a(this.this$0).b(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))) {}
       }
       else
       {
@@ -76,12 +76,12 @@ public class NewFriendMoreSysMsgAdapter$5
       l = localMessageForSystemMsg.structMsg.msg.uint64_discuss_uin.get();
       if (l != 0L)
       {
-        ??? = bdbt.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l));
+        ??? = bdgc.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l));
         if (TextUtils.isEmpty((CharSequence)???))
         {
-          localObject3 = (almt)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
+          localObject3 = (alri)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
           if (localObject3 != null) {
-            ((almt)localObject3).a(l);
+            ((alri)localObject3).a(l);
           }
         }
       }
@@ -105,24 +105,24 @@ public class NewFriendMoreSysMsgAdapter$5
       if (QLog.isColorLevel()) {
         QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "NewFriendMoreSysMsgAdapter source_flag: %d  discussUin: %d mDiscussName: %s msg_source: %s", new Object[] { Integer.valueOf(localMessageForSystemMsg.structMsg.msg.uint32_source_flag.get()), Long.valueOf(l), ???, str }));
       }
-      localArrayList.add(new avpz(localMessageForSystemMsg));
+      localArrayList.add(new avui(localMessageForSystemMsg));
       break;
       localObject3 = ???;
     }
     label447:
-    ??? = akfo.a(this.this$0).a(true);
+    ??? = akkd.a(this.this$0).a(true);
     if (((ArrayList)???).size() > 0) {
       localArrayList.addAll((Collection)???);
     }
-    ??? = akfo.a(this.this$0).c();
+    ??? = akkd.a(this.this$0).c();
     if ((??? != null) && (!((ArrayList)???).isEmpty()))
     {
       ??? = ((ArrayList)((ArrayList)???).clone()).iterator();
       while (((Iterator)???).hasNext()) {
-        localArrayList.add(new avqn((PhoneContactAdd)((Iterator)???).next()));
+        localArrayList.add(new avuw((PhoneContactAdd)((Iterator)???).next()));
       }
     }
-    Collections.sort(localArrayList, akfo.a(this.this$0));
+    Collections.sort(localArrayList, akkd.a(this.this$0));
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new NewFriendMoreSysMsgAdapter.5.1(this, localArrayList));
   }
 }

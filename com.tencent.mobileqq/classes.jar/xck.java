@@ -1,170 +1,74 @@
-import android.util.SparseBooleanArray;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.math.BigDecimal;
 
 public class xck
-  implements wzz<wzo>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int b;
+  public float a;
+  private float b;
+  private float c;
   
-  private xck(DoodleLayout paramDoodleLayout) {}
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, System.currentTimeMillis() + 500L);
-    if (paramBoolean3) {
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) + 500L);
-    }
-    Object localObject = new AlphaAnimation(1.0F, 0.0F);
-    ((AlphaAnimation)localObject).setDuration(500L);
-    ((AlphaAnimation)localObject).setFillAfter(true);
-    ((AlphaAnimation)localObject).setAnimationListener(new xcl(this));
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean3) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new xcm(this));
-    if (paramBoolean2) {
-      localObject = localAlphaAnimation;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.startAnimation((Animation)localObject);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimationEndTime(DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Xcf != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Xcf.b((Animation)localObject);
-      }
-      return;
-    }
-  }
-  
-  public boolean a(wzo paramwzo, MotionEvent paramMotionEvent)
-  {
-    xkl localxkl = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.a();
-    if (localxkl != null) {}
-    int i;
-    int j;
-    switch (localxkl.jdField_a_of_type_Int)
-    {
-    default: 
-      i = Math.round(paramMotionEvent.getY());
-      j = Math.round(paramMotionEvent.getX());
-      switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((i == 1) && (paramBoolean)) {
+      switch (j)
       {
       }
-      break;
     }
-    label516:
-    do
+    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
     {
       do
       {
-        do
-        {
-          return false;
-          i = localxkl.jdField_b_of_type_Int;
-          if (i != xdg.jdField_a_of_type_Int) {
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_AndroidUtilSparseBooleanArray.put(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Int, true);
-          }
-          for (;;)
-          {
-            localObject = (xdg)paramwzo.a(101);
-            if (localObject != null) {
-              ((xdg)localObject).a(i);
-            }
-            if (paramwzo.b()) {
-              break;
-            }
-            paramwzo.e();
-            break;
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_AndroidUtilSparseBooleanArray.put(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Int, false);
-          }
-          if (paramwzo.c()) {
-            break;
-          }
-          paramwzo.d();
-          break;
-          Object localObject = null;
-          if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext() instanceof QQStoryBaseActivity)) {
-            localObject = ((QQStoryBaseActivity)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext()).a;
-          }
-          paramwzo.a((AppInterface)localObject, 2, localxkl.jdField_b_of_type_Int);
-          break;
-          this.jdField_a_of_type_Int = Math.round(paramMotionEvent.getX());
-          this.jdField_b_of_type_Int = Math.round(paramMotionEvent.getY());
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          return false;
-        } while (((Math.abs(j - this.jdField_a_of_type_Int) < 3) && (Math.abs(i - this.jdField_b_of_type_Int) < 3)) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 5));
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(5);
-        if (DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) > System.currentTimeMillis()) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(5, Boolean.valueOf(false));
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Personality", 2, "LineLayer draw move hide");
-          return false;
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(5, Boolean.valueOf(true));
-          a(true, false, true);
-        }
-        if (paramwzo.a.a() > 0) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setUndoViewEnable(true);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int != 5) {
-          break label516;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.d(2);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(2);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-        a(true, true, true);
-      } while (!QLog.isColorLevel());
-      QLog.d("Personality", 2, "LineLayer draw up show");
-      return false;
-    } while ((Math.abs(j - this.jdField_a_of_type_Int) >= 3) || (Math.abs(i - this.jdField_b_of_type_Int) >= 3));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 6)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(2, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(2);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-      if (paramwzo.a.a() > 0) {}
-      for (bool = true;; bool = false)
-      {
-        a(bool, true, false);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Personality", 2, "LineLayer tap up show");
         return false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(6);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.d(6);
-    wtb.b("0X80080E5", wtb.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-    if (paramwzo.a.a() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, false, true);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Personality", 2, "LineLayer tap up hide");
+        this.c = this.a;
+        return false;
+        if (paramMotionEvent.getY() >= this.a)
+        {
+          this.c = this.a;
+          return false;
+        }
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+      } while (i == 0);
+      azhg.a().b(i);
+      this.c = paramMotionEvent.getY();
       return false;
     }
+    wxe.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
+    float f4;
+    float f2;
+    float f3;
+    if (i == 2)
+    {
+      f4 = paramMotionEvent.getX(0);
+      f2 = paramMotionEvent.getY(0);
+      f3 = paramMotionEvent.getX(1);
+    }
+    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
+      switch (j)
+      {
+      case 6: 
+      case 3: 
+      case 4: 
+      default: 
+        return false;
+      case 2: 
+        f1 = xcp.a(f4, f2, f3, f1);
+        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+        if (i != 0)
+        {
+          wxe.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
+          azhg.a().b(i);
+          this.b = f1;
+        }
+        return true;
+        f4 = paramMotionEvent.getX(1);
+        f2 = paramMotionEvent.getY(1);
+        f3 = paramMotionEvent.getX(2);
+      }
+    }
+    this.b = xcp.a(f4, f2, f3, f1);
+    return false;
   }
 }
 

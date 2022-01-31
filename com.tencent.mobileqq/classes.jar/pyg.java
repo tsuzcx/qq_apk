@@ -12,15 +12,15 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class pyg
   extends pxx
 {
-  public pyg(Context paramContext, bcws parambcws, rqj paramrqj)
+  public pyg(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    super(paramContext, parambcws, paramrqj);
+    super(paramContext, parambdbb, paramrqj);
   }
   
   public pxl a()
   {
     this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).f().g().q().l().n().j();
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).f().g().q().l().n().j();
   }
   
   public pxl d()
@@ -46,14 +46,14 @@ public class pyg
       LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       localLinearLayout3.setOrientation(1);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(0.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(0.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localLinearLayout3.setLayoutParams(localLayoutParams);
       localLinearLayout3.addView((View)this.jdField_a_of_type_Pxk);
       if ((this.jdField_a_of_type_Pxk instanceof ComponentContentBigImageVideo)) {
         localLinearLayout3.setOnClickListener(new pyh(this));
       }
       localLinearLayout2.setOnTouchListener(new pyi(this, localLinearLayout3));
-      opi.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842639));
+      opi.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842652));
       localLinearLayout2.addView(localLinearLayout3);
       localLinearLayout2.setDuplicateParentStateEnabled(true);
       localLinearLayout2.setOnTouchListener(new pyj(this, localLinearLayout2));

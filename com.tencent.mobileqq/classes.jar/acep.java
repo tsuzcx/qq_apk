@@ -1,66 +1,21 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acep
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private acep(BaseChatPie paramBaseChatPie) {}
+  public acep(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt == 4)
+    arwq.a(this.a.app).a(paramBoolean, this.a.app);
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "IME_ACTION_SEND");
-      }
-      this.a.as();
-      return true;
+      azqs.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
+      return;
     }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramKeyEvent.getKeyCode() == 66)
-    {
-      if (paramKeyEvent.getAction() == 1)
-      {
-        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, " sendOnEnterEnabled = " + this.a.m);
-        }
-        if ((this.a.m) && (paramView.length() > 0)) {
-          this.a.c();
-        }
-      }
-      if (this.a.m) {
-        return true;
-      }
-    }
-    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095));
-      }
-      if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373095) != null))
-      {
-        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373095, null);
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-        this.a.b(2);
-        azmj.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 1, "", "", "", "");
-        return true;
-      }
-    }
-    return false;
+    azqs.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
   }
 }
 

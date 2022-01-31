@@ -1,16 +1,8 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.nio.channels.SelectionKey;
 
-public abstract interface bgqh<T>
+public abstract interface bgqh
 {
-  public abstract T a(Context paramContext, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a(Bundle paramBundle);
-  
-  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
+  public abstract boolean handle(SelectionKey paramSelectionKey);
 }
 
 

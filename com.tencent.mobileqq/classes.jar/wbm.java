@@ -1,17 +1,36 @@
-public class wbm
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+
+public final class wbm
+  extends QQUIEventReceiver<wax, vcp>
 {
-  public String a;
-  public String b;
-  
-  public wbm(String paramString1, String paramString2)
+  public wbm(@NonNull wax paramwax)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super(paramwax);
   }
   
-  public String toString()
+  public void a(@NonNull wax paramwax, @NonNull vcp paramvcp)
   {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramwax.a != null))
+    {
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
+      {
+        uxd localuxd = (uxd)paramvcp.next();
+        if (TextUtils.equals(paramwax.a.b, localuxd.a)) {
+          paramwax.i();
+        }
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcp.class;
   }
 }
 

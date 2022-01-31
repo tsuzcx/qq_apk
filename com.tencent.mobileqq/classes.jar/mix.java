@@ -19,7 +19,7 @@ public class mix
     this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
     QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 1, "kickOutUsers begin, mGAudioRoomId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b + "]");
     this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    azmj.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
     paramDialogInterface.dismiss();
   }
 }

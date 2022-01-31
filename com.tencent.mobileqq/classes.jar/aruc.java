@@ -1,23 +1,92 @@
-public abstract interface aruc
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.1;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.2;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.3;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.4;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+
+public class aruc
+  implements ITMAssistantDownloadClientListener
 {
-  public static final Integer a = Integer.valueOf(0);
-  public static final Integer b = Integer.valueOf(1);
-  public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  public static final Integer e = Integer.valueOf(4);
-  public static final Integer f = Integer.valueOf(5);
-  public static final Integer g = Integer.valueOf(6);
-  public static final Integer h = Integer.valueOf(8);
-  public static final Integer i = Integer.valueOf(9);
-  public static final Integer j = Integer.valueOf(10);
-  public static final Integer k = Integer.valueOf(11);
-  public static final Integer l = Integer.valueOf(12);
-  public static final Integer m = Integer.valueOf(13);
-  public static final Integer n = Integer.valueOf(14);
+  aruc(arub paramarub) {}
+  
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  {
+    arub.b(this.a);
+    if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
+      QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+    }
+  }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    int i = 0;
+    int j = 0;
+    Object localObject2 = null;
+    QLog.i(arub.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    String str = "";
+    Object localObject1;
+    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
+    {
+      try
+      {
+        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        i = 0;
+        paramTMAssistantDownloadClient = str;
+      }
+      catch (Exception paramTMAssistantDownloadClient)
+      {
+        do
+        {
+          for (;;)
+          {
+            paramTMAssistantDownloadClient.printStackTrace();
+            paramTMAssistantDownloadClient = artu.a(22);
+            localObject1 = null;
+            j = 22;
+            i = 1;
+            continue;
+            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+          }
+        } while ((arub.a(this.a) == null) || (arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
+        QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+        return;
+      }
+      if (localObject1 == null) {
+        localObject1 = localObject2;
+      }
+    }
+    for (;;)
+    {
+      arub.b(this.a);
+      if (i != 0)
+      {
+        if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
+          QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        }
+        return;
+      }
+      localObject1 = null;
+      paramTMAssistantDownloadClient = "";
+      j = 0;
+    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.e(arub.a, 1, "[UniformDL] ABSdkdownload service invalid ");
+    arub.b(this.a);
+    if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
+      QLog.e(arub.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aruc
  * JD-Core Version:    0.7.0.1
  */

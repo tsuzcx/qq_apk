@@ -1,88 +1,81 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator.1;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 
 public class ayby
+  implements TextWatcher
 {
-  public QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public ayby(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
+  public ayby(RichStatusEditText paramRichStatusEditText) {}
   
-  public MessageForScribble a(MessageForScribble paramMessageForScribble)
+  public void afterTextChanged(Editable paramEditable)
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)ayvw.a(paramMessageForScribble);
-    if (localMessageForScribble == null) {
-      QLog.e("CreateResendScribbleMsg", 2, "null msg");
-    }
-    if (localMessageForScribble != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
     {
-      localMessageForScribble.offSet = paramMessageForScribble.offSet;
-      localMessageForScribble.gifId = paramMessageForScribble.gifId;
-      localMessageForScribble.localFildPath = paramMessageForScribble.localFildPath;
-      localMessageForScribble.combineFileMd5 = paramMessageForScribble.combineFileMd5;
-      localMessageForScribble.isread = true;
-      localMessageForScribble.fileUploadStatus = 0;
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
     }
-    return localMessageForScribble;
   }
   
-  public MessageForScribble a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)ayvw.a(-7001);
-    ayvw.a(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
-    localMessageForScribble.msgtype = -7001;
-    localMessageForScribble.offSet = paramInt1;
-    localMessageForScribble.gifId = paramInt3;
-    localMessageForScribble.localFildPath = paramString1;
-    localMessageForScribble.combineFileMd5 = paramString2;
-    localMessageForScribble.selfuin = this.a.getCurrentAccountUin();
-    localMessageForScribble.senderuin = localMessageForScribble.selfuin;
-    localMessageForScribble.issend = 1;
-    localMessageForScribble.fileUploadStatus = 0;
-    return localMessageForScribble;
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt3;
+      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
+    if (paramCharSequence != null)
+    {
+      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
+      if (paramInt3 != paramInt1)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
+        this.jdField_a_of_type_JavaLangString = "";
+      }
+    }
+    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
   }
   
-  public boolean a(MessageForScribble paramMessageForScribble)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
-    return true;
-  }
-  
-  public boolean a(MessageForScribble paramMessageForScribble, aweh paramaweh)
-  {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Boolean = false;
-    localbaub.jdField_b_of_type_Int = 262153;
-    localbaub.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbaub.c = paramMessageForScribble.frienduin;
-    localbaub.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbaub.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbaub.jdField_a_of_type_Aweh = paramaweh;
-    localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    this.a.a().a(localbaub);
-    return true;
-  }
-  
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, awfy paramawfy)
-  {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 262153;
-    localbaub.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbaub.c = paramMessageForScribble.frienduin;
-    localbaub.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbaub.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbaub.jdField_a_of_type_Awfy = paramawfy;
-    localbaub.i = paramString;
-    localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localbaub);
-    return true;
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      benx localbenx = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
+      if ((localbenx != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localbenx)))
+      {
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Boolean = true;
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
+    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
   }
 }
 

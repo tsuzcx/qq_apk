@@ -1,17 +1,20 @@
-import android.support.v4.util.ArraySet;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
+import java.util.concurrent.Future;
 
 class ateh
-  implements anrf
+  implements CustomizedTicket
 {
-  ateh(ateg paramateg, String paramString) {}
+  ateh(ateg paramateg) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (ateg.a(this.jdField_a_of_type_Ateg) != null) {
-      ateg.a(this.jdField_a_of_type_Ateg).remove(Integer.valueOf(paramInt1));
-    }
-    anrt.a().a(paramInt1);
-    this.jdField_a_of_type_Ateg.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
+    return this.a.a(paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
+  {
+    return this.a.a(paramString1, paramString2);
   }
 }
 

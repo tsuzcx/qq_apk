@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azmj;
-import badt;
+import azqs;
+import baic;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -72,7 +72,7 @@ public class QQBrowserDelegationActivity
       default: 
         localIntent.setClass(this, QQBrowserActivity.class);
         str = localIntent.getStringExtra("url");
-        if (!badt.b(str)) {
+        if (!baic.b(str)) {
           break label244;
         }
         paramBundle = null;
@@ -84,10 +84,10 @@ public class QQBrowserDelegationActivity
       }
       for (;;)
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!badt.a(this, str, badt.a(this.app, paramBundle, i)))) {
+        if ((TextUtils.isEmpty(paramBundle)) || (!baic.a(this, str, baic.a(this.app, paramBundle, i)))) {
           break label244;
         }
-        azmj.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        azqs.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
         localIntent.setClass(this, QQH5BrowserActivity.class);
@@ -100,7 +100,7 @@ public class QQBrowserDelegationActivity
         }
       }
       paramBundle = localIntent;
-      if (!badt.a(str)) {
+      if (!baic.a(str)) {
         break label309;
       }
       if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {

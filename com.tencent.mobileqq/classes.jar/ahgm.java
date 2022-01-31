@@ -1,28 +1,96 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahgm
-  implements bhqd
+  implements ruy
 {
-  public ahgm(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment, bhpy parambhpy) {}
+  public ahgm(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
+    SearchProtocol.WordItem localWordItem;
+    if (paramString != null)
     {
+      Iterator localIterator = this.a.b.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localWordItem = (SearchProtocol.WordItem)localIterator.next();
+      } while (!paramString.equals(localWordItem.word));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity())) {
-        yzg.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).uin + "", null, AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).getCurrentAccountUin(), 20010, null);
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), 2131694766, 0).a();
+      if ((localWordItem != null) && (localWordItem.type == 2))
+      {
+        paramString = new Intent(this.a, QQBrowserActivity.class);
+        paramString.putExtra("hide_operation_bar", true);
+        paramString.putExtra("url", localWordItem.jumpUrl);
+        paramString.putExtra("articalChannelId", 14);
+        this.a.startActivity(paramString);
+        if (localWordItem != null)
+        {
+          paramString = "";
+          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
+            break label333;
+          }
+          paramString = "kan";
+        }
       }
+      for (;;)
+      {
+        if (localWordItem.type != 2) {
+          break label352;
+        }
+        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
+        return;
+        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          if (!TextUtils.isEmpty(paramString.trim()))
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+        }
+        for (;;)
+        {
+          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
+            break label331;
+          }
+          this.a.a(paramString);
+          break;
+          if (this.a.f == ClassificationSearchActivity.d)
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+          else
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+          }
+        }
+        label331:
+        break;
+        label333:
+        if (this.a.f == ClassificationSearchActivity.d) {
+          paramString = "quan";
+        }
+      }
+      label352:
+      nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
+      return;
+      localWordItem = null;
     }
   }
 }

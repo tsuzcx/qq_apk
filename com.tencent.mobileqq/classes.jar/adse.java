@@ -1,61 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-class adse
-  extends baua
+public class adse
+  implements View.OnTouchListener
 {
-  adse(adsd paramadsd) {}
+  public adse(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMessage.what;
-    paramMessage = (baoj)paramMessage.obj;
-    if (paramMessage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "file is null");
-      }
-    }
-    do
+    switch (paramMotionEvent.getAction())
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
-      } while (this.a.jdField_d_of_type_Boolean);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        if (paramMessage.d == 1005)
-        {
-          this.a.jdField_c_of_type_Boolean = true;
-          return;
-        }
-        if (paramMessage.d == 1003)
-        {
-          this.a.a();
-          return;
-        }
-        adsd.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
-        return;
-      }
-      if (paramMessage.d == 1003)
-      {
-        if (this.a.jdField_a_of_type_Bdfq != null) {
-          this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
-        }
-        this.a.a();
-        return;
-      }
-      if (paramMessage.d == 1005)
-      {
-        this.a.a();
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Bdfq == null);
-    this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+    }
+    for (;;)
+    {
+      return false;
+      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      mww.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      mww.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
+    }
   }
 }
 

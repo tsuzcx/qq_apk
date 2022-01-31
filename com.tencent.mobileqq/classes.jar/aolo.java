@@ -5,82 +5,54 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aolo
-  extends aofy<aolp>
+  extends aokh<aoln>
 {
+  public static void b()
+  {
+    aoln localaoln = (aoln)aoks.a().a(430);
+    aoln.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaoln);
+  }
+  
   public int a()
   {
-    return 568;
+    return 430;
   }
   
   @NonNull
-  public aolp a(int paramInt)
+  public aoln a(int paramInt)
   {
-    return new aolp();
+    return new aoln();
   }
   
   @Nullable
-  public aolp a(aogf[] paramArrayOfaogf)
+  public aoln a(aoko[] paramArrayOfaoko)
   {
-    aolp localaolp = new aolp();
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfaogf.length);
-    }
-    if (paramArrayOfaogf.length > 0)
-    {
-      paramArrayOfaogf = paramArrayOfaogf[0];
-      localaolp.jdField_a_of_type_Int = paramArrayOfaogf.jdField_a_of_type_Int;
-      localaolp.jdField_a_of_type_JavaLangString = paramArrayOfaogf.jdField_a_of_type_JavaLangString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed taskId = " + localaolp.jdField_a_of_type_Int + " | content = " + localaolp.jdField_a_of_type_JavaLangString);
-    }
-    return localaolp;
+    return aoln.a(paramArrayOfaoko);
   }
   
-  public Class<aolp> a()
+  public Class<aoln> a()
   {
-    return aolp.class;
+    return aoln.class;
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onReqFailed, code = " + paramInt);
-    }
+    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
   }
   
-  public void a(aolp paramaolp)
+  public void a(aoln paramaoln)
   {
-    if ((paramaolp != null) && (paramaolp.jdField_a_of_type_JavaLangString != null)) {
-      try
-      {
-        String str = paramaolp.jdField_a_of_type_JavaLangString;
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("QAssistantConfigProcessor", 2, "onUpdate content = " + paramaolp.jdField_a_of_type_JavaLangString);
-        }
-        awux.a(localQQAppInterface, str);
-        paramaolp = (awuz)localQQAppInterface.getManager(352);
-        if (paramaolp != null) {
-          paramaolp.a();
-        }
-        return;
-      }
-      catch (Exception paramaolp)
-      {
-        paramaolp.printStackTrace();
-        QLog.e("QAssistantConfigProcessor", 2, "onUpdate has exception", paramaolp);
-        return;
-      }
-    }
-    QLog.e("QAssistantConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
+    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
+    aoln.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaoln);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
   
   public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "migrateOldVersion");
-    }
     return 0;
   }
   

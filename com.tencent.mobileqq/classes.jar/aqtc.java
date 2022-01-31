@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-class aqtc
-  implements DialogInterface.OnClickListener
+public abstract interface aqtc
 {
-  aqtc(aqsz paramaqsz, aqte paramaqte) {}
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aqte.a();
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtc
  * JD-Core Version:    0.7.0.1
  */

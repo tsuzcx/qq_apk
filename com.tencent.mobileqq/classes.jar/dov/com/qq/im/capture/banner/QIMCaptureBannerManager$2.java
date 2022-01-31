@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.banner;
 
-import blmy;
+import blrk;
 import com.tencent.common.app.AppInterface;
 import java.io.File;
 
@@ -9,7 +9,7 @@ public class QIMCaptureBannerManager$2
 {
   public void run()
   {
-    File localFile = new File(blmy.a, this.this$0.a().getCurrentAccountUin() + "banner_config");
+    File localFile = new File(blrk.a, this.this$0.a().getCurrentAccountUin() + "banner_config");
     if (localFile.exists()) {
       localFile.delete();
     }

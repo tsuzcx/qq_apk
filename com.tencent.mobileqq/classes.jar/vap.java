@@ -1,53 +1,35 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vap
-  extends unf
+public final class vap
+  extends QQUIEventReceiver<vai, uws>
 {
-  public HashSet<String> a;
-  public List<wme> a;
-  
-  public vap(ErrorMessage paramErrorMessage)
+  public vap(@NonNull vai paramvai)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    super(paramvai);
   }
   
-  public vap(qqstory_service.RspStoryFeed paramRspStoryFeed)
+  public void a(@NonNull vai paramvai, @NonNull uws paramuws)
   {
-    super(paramRspStoryFeed.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    paramRspStoryFeed = paramRspStoryFeed.feed_list.get().iterator();
-    while (paramRspStoryFeed.hasNext())
+    wxe.a(this.TAG, "onEvent, %s", String.valueOf(paramuws));
+    uyg localuyg = paramvai.a.a(3, "");
+    if ((localuyg != null) && (paramuws.jdField_b_of_type_JavaLangString.equals(localuyg.jdField_e_of_type_JavaLangString)))
     {
-      qqstory_struct.StoryFeed localStoryFeed = (qqstory_struct.StoryFeed)paramRspStoryFeed.next();
-      int i = localStoryFeed.type.get();
-      wme localwme = wme.a(i);
-      if (localwme == null)
-      {
-        wsv.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "目前没有这个类型的Feed=" + i);
-      }
-      else if (localwme.a(localStoryFeed))
-      {
-        if (localwme.a() != null) {
-          this.jdField_a_of_type_JavaUtilHashSet.add(localwme.a().feedId);
-        }
-        if ((!(localwme instanceof wmd)) || (!vyw.a((ShareGroupFeedItem)((wmd)localwme).a()))) {
-          this.jdField_a_of_type_JavaUtilList.add(localwme);
-        }
-      }
+      wxe.b(this.TAG, "onEvent, guideInfoNode read");
+      paramvai = new uzo();
+      paramvai.jdField_b_of_type_JavaLangString = localuyg.jdField_a_of_type_JavaLangString;
+      paramvai.c = localuyg.jdField_a_of_type_Int;
+      paramvai.d = 5;
+      paramvai.jdField_b_of_type_Long = localuyg.jdField_e_of_type_Long;
+      urp.a().a(paramvai, null);
+      return;
     }
+    paramvai.a.a(paramuws.jdField_a_of_type_JavaLangString, paramuws.jdField_a_of_type_Long);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uws.class;
   }
 }
 

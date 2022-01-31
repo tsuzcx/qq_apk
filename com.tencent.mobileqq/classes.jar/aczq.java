@@ -1,22 +1,157 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.data.Emoticon;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczq
-  implements View.OnClickListener
+  extends ameq
 {
-  public aczq(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aczq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, String paramString2, int paramInt)
   {
-    H5MagicPlayerActivity.a(this.a);
-    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
-    {
-      azmj.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, String.format("onTroopRankTitleUpdate, troopUin: %s, memberUin: %s, titleId: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
     }
-    azmj.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    if ((this.a.jdField_a_of_type_Awqt == null) || (!this.a.jdField_a_of_type_Awqt.jdField_b_of_type_Boolean) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard == null) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramString1.equals(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString)) || (!paramString2.equals(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)));
+      this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.titleId = paramInt;
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.f(this.a.jdField_a_of_type_Awqt);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "onGetGolbalTroopLevel isSuccess = " + paramBoolean + ", uin = " + paramLong + ", level = " + paramInt);
+    }
+    if (this.a.jdField_a_of_type_Awqt == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((TroopInfo.isQidianPrivateTroop(this.a.app, this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString)) || (!paramBoolean) || (paramLong != Long.parseLong(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)));
+      this.a.jdField_a_of_type_Awqt.jdField_b_of_type_Int = paramInt;
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView == null) || (this.a.jdField_a_of_type_Awqt == null) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Awqt, true, new String[] { "map_key_troop_mem_charm_level" });
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if (this.a.isFinishing())
+      {
+        QLog.d("FriendProfileCardActivity", 1, "onGetTroopMemberCard return because is finished!");
+        return;
+      }
+      if ((this.a.jdField_a_of_type_Bhuf != null) && (this.a.jdField_a_of_type_Bhuf.isShowing())) {
+        this.a.jdField_a_of_type_Bhuf.dismiss();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        l = ((Long)paramObject[0]).longValue();
+        ((Integer)paramObject[1]).intValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (l != Long.parseLong(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString))
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("FriendProfileCardActivity", 2, "onGetTroopMemberCard: troopUin != mTroopUin, " + l + "!=" + this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      long l;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("FriendProfileCardActivity", 2, "onGetTroopMemberCard:" + paramObject.toString());
+        return;
+        if (paramObject == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FriendProfileCardActivity", 2, "onGetTroopMemberCard: cardInfo==null");
+          }
+        }
+        else
+        {
+          l = paramObject.memberUin;
+          if (l != Long.parseLong(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard.uin))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FriendProfileCardActivity", 2, "onGetTroopMemberCard: memberUin != mMemberUin, " + l + "!=" + this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+            }
+          }
+          else if ((this.a.jdField_a_of_type_Awqt == null) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendProfileCardActivity", 2, "onGetTroopMemberCard: cardInfo == null || cardInfo.card == null || cardInfo.allinone == null");
+            }
+          }
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FriendProfileCardActivity", 2, "updateParams: uint32_result:" + paramObject.result + " memberRole:" + paramObject.memberRole);
+            }
+            this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard = paramObject;
+            this.a.jdField_a_of_type_Awqt.c = true;
+            if ((paramObject.result == 260) && (paramObject.memberRole == 0))
+            {
+              QQToast.a(this.a, 1, alud.a(2131705297), 0).a();
+              this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard = paramObject;
+              if (!TroopInfo.isQidianPrivateTroop(this.a.app, this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString))
+              {
+                this.a.jdField_a_of_type_Awqt.jdField_b_of_type_Boolean = false;
+                this.a.a(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard, false);
+                return;
+              }
+              this.a.jdField_a_of_type_Awqt.c = false;
+              this.a.c.setVisibility(8);
+              return;
+            }
+            this.a.g();
+            if (paramObject.titleId == 0)
+            {
+              Object localObject = (TroopManager)this.a.app.getManager(52);
+              if (localObject != null)
+              {
+                localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+                if (localObject != null)
+                {
+                  paramObject.titleId = ((TroopMemberInfo)localObject).level;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("FriendProfileCardActivity", 2, "onGetTroopMemberCard: server realLevel==0, useLocal=" + paramObject.titleId);
+                  }
+                }
+              }
+            }
+            this.a.a(this.a.jdField_a_of_type_Awqt, true);
+          }
+        }
+      }
+    }
   }
 }
 

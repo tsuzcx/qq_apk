@@ -1,6 +1,19 @@
-public abstract interface bjjl
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.feed.CertifiedFakeFeed;
+
+public final class bjjl
+  implements Parcelable.Creator<CertifiedFakeFeed>
 {
-  public abstract void a();
+  public CertifiedFakeFeed a(Parcel paramParcel)
+  {
+    return new CertifiedFakeFeed(paramParcel);
+  }
+  
+  public CertifiedFakeFeed[] a(int paramInt)
+  {
+    return new CertifiedFakeFeed[paramInt];
+  }
 }
 
 

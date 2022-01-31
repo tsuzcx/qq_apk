@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewParent;
-import asle;
-import aslf;
+import aspn;
+import aspo;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -36,9 +36,9 @@ public class LockPatternView
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private aslf jdField_a_of_type_Aslf;
+  private aspo jdField_a_of_type_Aspo;
   private LockPatternView.DisplayMode jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = LockPatternView.DisplayMode.Correct;
-  private ArrayList<asle> jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
+  private ArrayList<aspn> jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[][] jdField_a_of_type_Array2dOfBoolean = (boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 });
   private float jdField_b_of_type_Float = -1.0F;
@@ -256,32 +256,32 @@ public class LockPatternView
     return Math.min(i2, paramInt2);
   }
   
-  private asle a(float paramFloat1, float paramFloat2)
+  private aspn a(float paramFloat1, float paramFloat2)
   {
     Object localObject1 = null;
     Object localObject2 = null;
     int i2 = -1;
-    asle localasle = b(paramFloat1, paramFloat2);
+    aspn localaspn = b(paramFloat1, paramFloat2);
     int i3;
     int i1;
-    if (localasle != null)
+    if (localaspn != null)
     {
       ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       localObject1 = localObject2;
       if (!localArrayList.isEmpty())
       {
-        localObject1 = (asle)localArrayList.get(localArrayList.size() - 1);
-        int i6 = localasle.jdField_a_of_type_Int - ((asle)localObject1).jdField_a_of_type_Int;
-        int i5 = localasle.jdField_b_of_type_Int - ((asle)localObject1).jdField_b_of_type_Int;
-        int i4 = ((asle)localObject1).jdField_a_of_type_Int;
-        i3 = ((asle)localObject1).jdField_b_of_type_Int;
+        localObject1 = (aspn)localArrayList.get(localArrayList.size() - 1);
+        int i6 = localaspn.jdField_a_of_type_Int - ((aspn)localObject1).jdField_a_of_type_Int;
+        int i5 = localaspn.jdField_b_of_type_Int - ((aspn)localObject1).jdField_b_of_type_Int;
+        int i4 = ((aspn)localObject1).jdField_a_of_type_Int;
+        i3 = ((aspn)localObject1).jdField_b_of_type_Int;
         i1 = i4;
         if (Math.abs(i6) == 2)
         {
           i1 = i4;
           if (Math.abs(i5) != 1)
           {
-            i4 = ((asle)localObject1).jdField_a_of_type_Int;
+            i4 = ((aspn)localObject1).jdField_a_of_type_Int;
             if (i6 <= 0) {
               break label252;
             }
@@ -292,7 +292,7 @@ public class LockPatternView
         if ((Math.abs(i5) != 2) || (Math.abs(i6) == 1)) {
           break label257;
         }
-        i3 = ((asle)localObject1).jdField_b_of_type_Int;
+        i3 = ((aspn)localObject1).jdField_b_of_type_Int;
         if (i5 > 0) {
           i2 = 1;
         }
@@ -301,15 +301,15 @@ public class LockPatternView
     label257:
     for (i2 = i3 + i2;; i2 = i3)
     {
-      localObject1 = asle.a(i1, i2);
+      localObject1 = aspn.a(i1, i2);
       if ((this.jdField_e_of_type_Boolean) && (localObject1 != null) && (this.jdField_a_of_type_Array2dOfBoolean[localObject1.jdField_a_of_type_Int][localObject1.jdField_b_of_type_Int] == 0)) {
-        b((asle)localObject1);
+        b((aspn)localObject1);
       }
-      b(localasle);
+      b(localaspn);
       if (this.jdField_c_of_type_Boolean) {
         performHapticFeedback(1, 3);
       }
-      localObject1 = localasle;
+      localObject1 = localaspn;
       return localObject1;
       label252:
       i1 = -1;
@@ -413,9 +413,9 @@ public class LockPatternView
         }
         f3 = paramMotionEvent.getHistoricalY(i1);
         int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        asle localasle = a(f4, f3);
+        aspn localaspn = a(f4, f3);
         int i4 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        if ((localasle != null) && (i4 == 1))
+        if ((localaspn != null) && (i4 == 1))
         {
           this.jdField_d_of_type_Boolean = true;
           b();
@@ -431,9 +431,9 @@ public class LockPatternView
           }
           ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
           float f9 = this.jdField_e_of_type_Float * this.jdField_c_of_type_Float * 0.5F;
-          Object localObject = (asle)localArrayList.get(i4 - 1);
-          f2 = a(((asle)localObject).jdField_b_of_type_Int);
-          f1 = b(((asle)localObject).jdField_a_of_type_Int);
+          Object localObject = (aspn)localArrayList.get(i4 - 1);
+          f2 = a(((aspn)localObject).jdField_b_of_type_Int);
+          f1 = b(((aspn)localObject).jdField_a_of_type_Int);
           localObject = this.jdField_a_of_type_AndroidGraphicsRect;
           if (f2 >= f4) {
             break label550;
@@ -459,16 +459,16 @@ public class LockPatternView
             f6 = f5;
           }
           ((Rect)localObject).union((int)(f3 - f9), (int)(f4 - f9), (int)(f2 + f9), (int)(f6 + f9));
-          if (localasle != null)
+          if (localaspn != null)
           {
-            f2 = a(localasle.jdField_b_of_type_Int);
-            f1 = b(localasle.jdField_a_of_type_Int);
+            f2 = a(localaspn.jdField_b_of_type_Int);
+            f1 = b(localaspn.jdField_a_of_type_Int);
             if (i4 < 2) {
               break label595;
             }
-            localasle = (asle)localArrayList.get(i4 - 1 - (i4 - i3));
-            f6 = a(localasle.jdField_b_of_type_Int);
-            f5 = b(localasle.jdField_a_of_type_Int);
+            localaspn = (aspn)localArrayList.get(i4 - 1 - (i4 - i3));
+            f6 = a(localaspn.jdField_b_of_type_Int);
+            f5 = b(localaspn.jdField_a_of_type_Int);
             f3 = f2;
             f4 = f6;
             if (f2 < f6)
@@ -535,17 +535,17 @@ public class LockPatternView
     }
   }
   
-  private void a(asle paramasle)
+  private void a(aspn paramaspn)
   {
-    if (this.jdField_a_of_type_Aslf != null) {
-      this.jdField_a_of_type_Aslf.b(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.b(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    if (paramasle != null)
+    if (paramaspn != null)
     {
-      a(String.format("%d", new Object[] { Integer.valueOf(paramasle.a() * 3 + paramasle.b() + 1) }));
+      a(String.format("%d", new Object[] { Integer.valueOf(paramaspn.a() * 3 + paramaspn.b() + 1) }));
       return;
     }
-    a(2131694137);
+    a(2131694139);
   }
   
   private void a(String paramString)
@@ -578,7 +578,7 @@ public class LockPatternView
     return -1;
   }
   
-  private asle b(float paramFloat1, float paramFloat2)
+  private aspn b(float paramFloat1, float paramFloat2)
   {
     int i1 = a(paramFloat2);
     if (i1 < 0) {}
@@ -588,13 +588,13 @@ public class LockPatternView
       return null;
       i2 = b(paramFloat1);
     } while ((i2 < 0) || (this.jdField_a_of_type_Array2dOfBoolean[i1][i2] != 0));
-    return asle.a(i1, i2);
+    return aspn.a(i1, i2);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aslf != null) {
-      this.jdField_a_of_type_Aslf.a();
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.a();
     }
   }
   
@@ -608,19 +608,19 @@ public class LockPatternView
     }
   }
   
-  private void b(asle paramasle)
+  private void b(aspn paramaspn)
   {
-    this.jdField_a_of_type_Array2dOfBoolean[paramasle.a()][paramasle.b()] = 1;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramasle);
-    a(paramasle);
+    this.jdField_a_of_type_Array2dOfBoolean[paramaspn.a()][paramaspn.b()] = 1;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaspn);
+    a(paramaspn);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Aslf != null) {
-      this.jdField_a_of_type_Aslf.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131694139);
+    a(2131694141);
   }
   
   private void c(MotionEvent paramMotionEvent)
@@ -655,10 +655,10 @@ public class LockPatternView
   
   private void d()
   {
-    if (this.jdField_a_of_type_Aslf != null) {
-      this.jdField_a_of_type_Aslf.b();
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.b();
     }
-    a(2131694138);
+    a(2131694140);
   }
   
   private void e()
@@ -724,7 +724,7 @@ public class LockPatternView
       i1 = 0;
       while (i1 < i3)
       {
-        localObject = (asle)localArrayList.get(i1);
+        localObject = (aspn)localArrayList.get(i1);
         arrayOfBoolean[localObject.a()][localObject.b()] = 1;
         i1 += 1;
       }
@@ -734,12 +734,12 @@ public class LockPatternView
         if (i1 != 0)
         {
           f1 = i2 % 700 / 700.0F;
-          localObject = (asle)localArrayList.get(i3 - 1);
-          f2 = a(((asle)localObject).jdField_b_of_type_Int);
-          f3 = b(((asle)localObject).jdField_a_of_type_Int);
-          localObject = (asle)localArrayList.get(i3);
-          f4 = a(((asle)localObject).jdField_b_of_type_Int);
-          float f5 = b(((asle)localObject).jdField_a_of_type_Int);
+          localObject = (aspn)localArrayList.get(i3 - 1);
+          f2 = a(((aspn)localObject).jdField_b_of_type_Int);
+          f3 = b(((aspn)localObject).jdField_a_of_type_Int);
+          localObject = (aspn)localArrayList.get(i3);
+          f4 = a(((aspn)localObject).jdField_b_of_type_Int);
+          float f5 = b(((aspn)localObject).jdField_a_of_type_Int);
           this.jdField_a_of_type_Float = (f2 + (f4 - f2) * f1);
           this.jdField_b_of_type_Float = ((f5 - f3) * f1 + f3);
         }
@@ -801,15 +801,15 @@ public class LockPatternView
       }
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
     }
-    asle localasle;
+    aspn localaspn;
     for (;;)
     {
       i2 = 0;
       i1 = 0;
       if (i1 < i4)
       {
-        localasle = (asle)localArrayList.get(i1);
-        if (arrayOfBoolean[localasle.jdField_a_of_type_Int][localasle.jdField_b_of_type_Int] != 0) {
+        localaspn = (aspn)localArrayList.get(i1);
+        if (arrayOfBoolean[localaspn.jdField_a_of_type_Int][localaspn.jdField_b_of_type_Int] != 0) {
           break;
         }
       }
@@ -823,8 +823,8 @@ public class LockPatternView
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
     }
     int i2 = 1;
-    float f1 = a(localasle.jdField_b_of_type_Int);
-    float f2 = b(localasle.jdField_a_of_type_Int);
+    float f1 = a(localaspn.jdField_b_of_type_Int);
+    float f2 = b(localaspn.jdField_a_of_type_Int);
     if (i1 == 0) {
       ((Path)localObject).moveTo(f1, f2);
     }
@@ -902,7 +902,7 @@ public class LockPatternView
         throw new IllegalStateException("you must have a pattern to animate if you want to set the display mode to animate");
       }
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      paramDisplayMode = (asle)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      paramDisplayMode = (aspn)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       this.jdField_a_of_type_Float = a(paramDisplayMode.b());
       this.jdField_b_of_type_Float = b(paramDisplayMode.a());
       f();
@@ -920,12 +920,12 @@ public class LockPatternView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnPatternListener(aslf paramaslf)
+  public void setOnPatternListener(aspo paramaspo)
   {
-    this.jdField_a_of_type_Aslf = paramaslf;
+    this.jdField_a_of_type_Aspo = paramaspo;
   }
   
-  public void setPattern(LockPatternView.DisplayMode paramDisplayMode, List<asle> paramList)
+  public void setPattern(LockPatternView.DisplayMode paramDisplayMode, List<aspn> paramList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
@@ -933,8 +933,8 @@ public class LockPatternView
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      asle localasle = (asle)paramList.next();
-      this.jdField_a_of_type_Array2dOfBoolean[localasle.a()][localasle.b()] = 1;
+      aspn localaspn = (aspn)paramList.next();
+      this.jdField_a_of_type_Array2dOfBoolean[localaspn.a()][localaspn.b()] = 1;
     }
     setDisplayMode(paramDisplayMode);
   }

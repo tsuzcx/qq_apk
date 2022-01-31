@@ -1,56 +1,51 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class upf
-  extends uoe
+class upf
+  extends blts
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private long jdField_a_of_type_Long;
   
-  public upf(uok paramuok, ShareGroupItem paramShareGroupItem)
+  upf(upd paramupd, PublishVideoEntry paramPublishVideoEntry, upj paramupj, String paramString) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
   {
-    super(paramuok);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+    this.jdField_a_of_type_Upj.a(-3);
+    this.jdField_a_of_type_Upj.a("task canceled");
+    upd.a(this.jdField_a_of_type_Upd, "needAndStartDownloadMusic");
   }
   
-  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      super.a(paramView, paramCommentEntry, paramInt);
-    }
-    paramView = QQStoryContext.a().b();
-    bhpy localbhpy = bhpy.a(this.jdField_a_of_type_Uok.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localbhpy.c(alpo.a(2131714315));
-        localbhpy.a(alpo.a(2131714309), 3);
-      }
+    wxe.c(upd.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    wxe.c(upd.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Upj.a(paramInt);
+      this.jdField_a_of_type_Upj.a("unknown error the music download failed");
     }
     for (;;)
     {
-      localbhpy.d(alpo.a(2131714291));
-      localbhpy.a(new uoh(this, localbhpy, paramCommentEntry, paramInt));
-      localbhpy.show();
+      zaj.a("edit_music_download", zaj.a(this.jdField_a_of_type_Upj.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, xrg.a(paramString)));
+      upd.a(this.jdField_a_of_type_Upd, "needAndStartDownloadMusic");
       return;
-      localbhpy.c(alpo.a(2131714292));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
-      {
-        localbhpy.c(alpo.a(2131714303));
-        localbhpy.a(alpo.a(2131714312), 3);
-        localbhpy.c(alpo.a(2131714319));
-      }
-      else
-      {
-        localbhpy.c(alpo.a(2131714302));
-        localbhpy.c(alpo.a(2131714310));
-      }
+      this.jdField_a_of_type_Upj.a(0);
+      this.jdField_a_of_type_Upj.a("music downloadSuccess");
+      continue;
+      this.jdField_a_of_type_Upj.a(-2);
+      this.jdField_a_of_type_Upj.a("none network");
     }
   }
 }

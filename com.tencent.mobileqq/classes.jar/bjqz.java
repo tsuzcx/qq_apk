@@ -1,25 +1,39 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import NS_MOBILE_FEEDS.mobile_online_report_item;
+import NS_MOBILE_FEEDS.mobile_online_report_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bjqz
+  extends QzoneExternalRequest
 {
-  public static void a(Context paramContext, FollowUpdateEvent paramFollowUpdateEvent)
+  public JceStruct a;
+  
+  public bjqz(long paramLong, ArrayList<mobile_online_report_item> paramArrayList)
   {
-    if (paramFollowUpdateEvent != null) {
-      a(paramContext, paramFollowUpdateEvent.useId, paramFollowUpdateEvent.followStatus);
-    }
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    mobile_online_report_req localmobile_online_report_req = new mobile_online_report_req();
+    localmobile_online_report_req.appid = 8001;
+    localmobile_online_report_req.type_id = 0;
+    localmobile_online_report_req.uin = paramLong;
+    localmobile_online_report_req.vecOnlineItem = paramArrayList;
+    this.a = localmobile_online_report_req;
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public String getCmdString()
   {
-    if ((paramContext == null) || (paramString == null)) {
-      return;
-    }
-    Intent localIntent = new Intent("action.qzone_public_account_follow");
-    localIntent.putExtra("followed", paramInt);
-    localIntent.putExtra("uin", paramString);
-    paramContext.sendBroadcast(localIntent, "com.tencent.qzone.permission.notify");
+    return "QzoneNewService.reportOnlineTime";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "reportOnlineTime";
   }
 }
 

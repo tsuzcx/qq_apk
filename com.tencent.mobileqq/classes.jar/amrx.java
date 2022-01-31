@@ -1,8 +1,14 @@
-public abstract interface amrx
+public abstract class amrx
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  public abstract int a();
   
-  public abstract void a(float[] paramArrayOfFloat);
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(boolean paramBoolean, Object paramObject);
+  
+  public abstract void b(Object paramObject);
+  
+  public abstract void b(boolean paramBoolean, Object paramObject);
 }
 
 

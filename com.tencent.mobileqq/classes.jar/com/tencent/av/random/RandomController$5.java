@@ -2,7 +2,7 @@ package com.tencent.av.random;
 
 import android.content.Context;
 import android.os.Handler;
-import azmj;
+import azqs;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -19,7 +19,7 @@ public class RandomController$5
     if (!this.this$0.c)
     {
       Context localContext = RandomController.a(this.this$0).getApp().getApplicationContext();
-      PopupDialog.b(localContext, 230, localContext.getString(2131696201), localContext.getString(2131696202), 0, 2131696088, new lvd(this), null);
+      PopupDialog.b(localContext, 230, localContext.getString(2131696203), localContext.getString(2131696204), 0, 2131696090, new lvd(this), null);
       this.this$0.c = true;
     }
   }
@@ -31,7 +31,7 @@ public class RandomController$5
     }
     RandomController.a(this.this$0).b();
     a();
-    azmj.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
     RandomController.a(this.this$0).a().removeCallbacks(RandomController.a(this.this$0));
     RandomController.a(this.this$0, false);
   }

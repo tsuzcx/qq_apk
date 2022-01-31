@@ -1,17 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.text.InputFilter.LengthFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bmih
-  implements DialogInterface.OnDismissListener
+class bmih
+  extends InputFilter.LengthFilter
 {
-  public bmih(EditVideoGuide paramEditVideoGuide) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  bmih(bmig parambmig, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_Bmix.a(14);
+    super(paramInt1);
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3)) <= 0)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        wxj.a("textEdit", "overLimit", bmhu.b(this.jdField_a_of_type_Bmig.a), 0, new String[0]);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (bmhu.a(this.jdField_a_of_type_Bmig.a) != null) {
+        QQToast.a(this.jdField_a_of_type_Bmig.getContext(), alud.a(2131714821) + bmhu.a(this.jdField_a_of_type_Bmig.a).c + alud.a(2131714807), 0).a();
+      }
+    }
+    for (;;)
+    {
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

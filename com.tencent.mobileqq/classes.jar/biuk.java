@@ -1,38 +1,17 @@
-import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class biuk
+final class biuk
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null)
-    {
-      biui.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    biui.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
-  }
+  biuk(Dialog paramDialog) {}
   
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  public void onClick(View paramView)
   {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(biui.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
   }
 }
 

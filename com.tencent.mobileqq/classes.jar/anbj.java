@@ -1,18 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-
-public final class anbj
-  implements Parcelable.Creator<ArWebInfo>
+public class anbj
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
+  public int a = 3000;
   
-  public ArWebInfo[] a(int paramInt)
+  public String toString()
   {
-    return new ArWebInfo[paramInt];
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
   }
 }
 

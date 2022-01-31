@@ -150,8 +150,8 @@ public class FormMutiItem
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131366743);
-      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131366745);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131366753);
+      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131366755);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
       setCustomHeight(getResources().getDimensionPixelSize(2131298119));

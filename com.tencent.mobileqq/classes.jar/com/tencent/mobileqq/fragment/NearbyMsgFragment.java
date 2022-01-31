@@ -18,9 +18,9 @@ public class NearbyMsgFragment
 {
   public NearbyActivity a;
   
-  public void aU_()
+  public void aR_()
   {
-    super.aU_();
+    super.aR_();
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onPageSelected， startMsgBoxListActivity");
@@ -62,7 +62,7 @@ public class NearbyMsgFragment
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561044, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561062, paramViewGroup, false);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(false);

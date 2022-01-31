@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adet;
-import asxx;
-import asxy;
+import adji;
+import atcg;
+import atch;
 
 public class NearbyActivity$3
   implements Runnable
@@ -12,7 +12,7 @@ public class NearbyActivity$3
   public void run()
   {
     if (this.this$0.b != null) {
-      asxx.a.a(this.this$0.a, new adet(this));
+      atcg.a.a(this.this$0.a, new adji(this));
     }
   }
 }

@@ -1,60 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.List;
 
 public class adwj
-  extends bdvu
+  implements AdapterView.OnItemClickListener
 {
-  public adwj(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public adwj(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onCancel(bdvv parambdvv)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambdvv);
+    paramAdapterView = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramAdapterView);
     }
-    super.onCancel(parambdvv);
-  }
-  
-  public void onDone(bdvv parambdvv)
-  {
-    super.onDone(parambdvv);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambdvv);
-    }
-    if (parambdvv.b()) {}
-    do
-    {
-      return;
-      if (parambdvv.a() == -1)
-      {
-        parambdvv = new Message();
-        parambdvv.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambdvv);
-        return;
-      }
-      parambdvv = this.a.jdField_a_of_type_Fx.a(this.a.e);
-    } while (parambdvv == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambdvv;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bdvv parambdvv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambdvv);
-    }
-    return super.onStart(parambdvv);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
 class atqa
-  implements View.OnClickListener
+  implements TencentDirectionListener
 {
-  atqa(atpy paramatpy) {}
+  atqa(atpw paramatpw) {}
   
-  public void onClick(View paramView)
+  public void onDirectionChanged(double paramDouble, int paramInt)
   {
-    this.a.b();
+    if (atpw.a(this.a) != null)
+    {
+      atpw.a(this.a, 180.0D + paramDouble);
+      atpw.a(this.a, false);
+    }
   }
 }
 

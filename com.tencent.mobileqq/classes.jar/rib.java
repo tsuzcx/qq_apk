@@ -31,12 +31,12 @@ public class rib
     }
     try
     {
-      boolean bool = bjxj.w(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      boolean bool = bkbq.w(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (!bool) {
-        bjxj.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
+        bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
       }
       if (bool) {}
-      for (int i = ((Integer)bjxj.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
+      for (int i = ((Integer)bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
       {
         int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
         int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);

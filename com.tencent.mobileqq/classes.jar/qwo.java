@@ -11,7 +11,7 @@ public class qwo
   @Nullable
   public qro a(int paramInt, @NotNull RecyclerView paramRecyclerView)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bcwh.a(SelectVideoFragment.a(this.a), 8.0F));
+    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bdaq.a(SelectVideoFragment.a(this.a), 8.0F));
   }
 }
 

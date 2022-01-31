@@ -1,33 +1,67 @@
+import com.tencent.ark.open.ArkView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class amor
 {
-  public int a;
-  public int b;
-  public int c;
+  private List<ArkView> a = new ArrayList();
   
-  public amor(amoq paramamoq, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onDestroy();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
+    }
+    this.a.clear();
   }
   
-  public boolean a()
+  public void a(ArkView paramArkView)
   {
-    return this.c == 1;
+    this.a.add(paramArkView);
   }
   
-  public boolean b()
+  public void b()
   {
-    return this.c == 2;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onPause();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
+    }
   }
   
-  public boolean c()
+  public void c()
   {
-    return this.c == 3;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onResume();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amor
  * JD-Core Version:    0.7.0.1
  */

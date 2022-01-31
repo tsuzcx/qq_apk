@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import bdcs;
+import bdhb;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,7 +16,7 @@ public final class ProteusCDNUtils$1
     File localFile = new File(this.a);
     if (localFile.exists())
     {
-      bdcs.d(this.a);
+      bdhb.d(this.a);
       QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + this.b + ", delete old compressFile, path = " + this.a);
     }
     boolean bool = HttpDownloadUtil.a(null, this.c, localFile);

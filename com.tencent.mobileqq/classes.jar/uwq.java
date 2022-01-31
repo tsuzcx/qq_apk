@@ -1,15 +1,34 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class uwq
-  extends avqs
+class uwq
+  implements urr<vgj, vhu>
 {
-  uwq(uwn paramuwn) {}
+  uwq(uwo paramuwo) {}
   
-  protected void a(Object paramObject)
+  public void a(@NonNull vgj paramvgj, @Nullable vhu paramvhu, @NonNull ErrorMessage paramErrorMessage)
   {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    wsv.b(uwn.b(), "freshRedPoint, showStoryNode");
+    wxe.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvhu != null))
+    {
+      wxe.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramvhu.b));
+      this.a.jdField_a_of_type_JavaLangObject = new uwr(paramvhu.b, paramvhu.a);
+      wxe.c("WeatherDataProvider", "update local weather data.");
+      paramvgj = (uvt)uwa.a(10);
+      paramvgj.b("edit_video_weather_filter_data", Integer.valueOf(paramvhu.b));
+      paramvgj.b("edit_video_weather_desc", paramvhu.a);
+      uwo.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramvgj.b("edit_video_weather_expiry_time", Long.valueOf(uwo.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      wxe.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramvgj });
+      this.a.a(false, null);
+    }
   }
 }
 

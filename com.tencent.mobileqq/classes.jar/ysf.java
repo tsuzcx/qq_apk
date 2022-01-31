@@ -1,38 +1,23 @@
-import android.app.Activity;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysf
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class ysf
+  extends ysw
 {
-  public ysf(PluginJumpManager paramPluginJumpManager, ysg paramysg, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, ysh paramysh, String paramString4) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  ysf(ysb paramysb, ysj paramysj, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Ysg.b);
-    int i;
-    if (paramPluginManagerClient != null) {
-      if (paramPluginManagerClient.mState == 4)
-      {
-        i = 1;
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Ysg.b, this.jdField_a_of_type_Ysg.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Ysh.b, this.jdField_a_of_type_Ysh.a);
-      }
-    }
-    for (;;)
+    super(paramysb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Ysh.b, null, null);
-      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Ysg.b);
-      i = 0;
-      continue;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Ysh.b, null, null);
-      i = 0;
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
     }
   }
 }

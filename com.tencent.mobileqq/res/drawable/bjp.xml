@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/e7n" />
-    <item android:drawable="@drawable/e7o" />
-</selector>
+    <item android:duration="40" android:drawable="@drawable/bu7" />
+    <item android:duration="40" android:drawable="@drawable/bu8" />
+    <item android:duration="40" android:drawable="@drawable/bu9" />
+    <item android:duration="40" android:drawable="@drawable/bu_" />
+    <item android:duration="40" android:drawable="@drawable/bua" />
+    <item android:duration="40" android:drawable="@drawable/bub" />
+    <item android:duration="40" android:drawable="@drawable/buc" />
+    <item android:duration="40" android:drawable="@drawable/bud" />
+    <item android:duration="40" android:drawable="@drawable/bue" />
+    <item android:duration="40" android:drawable="@drawable/buf" />
+    <item android:duration="40" android:drawable="@drawable/bug" />
+    <item android:duration="40" android:drawable="@drawable/buh" />
+    <item android:duration="40" android:drawable="@drawable/bui" />
+</animation-list>

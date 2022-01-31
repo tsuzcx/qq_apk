@@ -1,26 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.Conversation.50.1;
+import com.tencent.util.Pair;
 
 public class acsp
   implements DialogInterface.OnClickListener
 {
-  public acsp(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public acsp(Conversation.50.1 param1, bacu parambacu, Pair paramPair) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
-    {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-    }
+    this.jdField_a_of_type_Bacu.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

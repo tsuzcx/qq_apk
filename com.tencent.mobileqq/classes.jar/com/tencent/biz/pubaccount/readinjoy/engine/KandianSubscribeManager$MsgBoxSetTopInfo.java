@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajeu;
-import aljq;
-import amjk;
+import ajjj;
+import alof;
+import amnz;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
@@ -47,7 +47,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
       Object localObject3;
       try
       {
-        Object localObject2 = ajeu.a().a;
+        Object localObject2 = ajjj.a().a;
         if (localObject2 == null) {
           return localPair;
         }
@@ -62,7 +62,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
             ((Iterator)localObject2).remove();
             break label334;
           }
-          if (!aljq.aR.equals(((RecentBaseData)localObject3).a())) {
+          if (!alof.aR.equals(((RecentBaseData)localObject3).a())) {
             break label331;
           }
           i = 1;
@@ -79,7 +79,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
         {
           localObject2 = (RecentBaseData)((List)localObject1).get(i);
           localObject3 = (RecentUserBaseData)localObject2;
-          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), aljq.aR))
+          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), alof.aR))
           {
             if (i < j)
             {
@@ -145,7 +145,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
     if (!a()) {}
     Pair localPair;
     QQAppInterface localQQAppInterface;
-    amjk localamjk;
+    amnz localamnz;
     RecentUser localRecentUser;
     do
     {
@@ -157,15 +157,15 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
           localPair = a(this.setTopPosition);
         } while ((((Integer)localPair.first).intValue() < 0) || (((Long)localPair.second).longValue() < 0L));
         localQQAppInterface = (QQAppInterface)ors.a();
-        localObject = localQQAppInterface.a().b(aljq.aR, 1008);
+        localObject = localQQAppInterface.a().b(alof.aR, 1008);
       } while ((localObject == null) || (((MessageRecord)localObject).isread));
-      localamjk = localQQAppInterface.a().a();
-      localRecentUser = localamjk.b(aljq.aR, 1008);
+      localamnz = localQQAppInterface.a().a();
+      localRecentUser = localamnz.b(alof.aR, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = ((Long)localPair.second).longValue();
     ((MessageRecord)localObject).time = ((Long)localPair.second).longValue();
-    localQQAppInterface.a().a(aljq.aR, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
-    localamjk.a(localRecentUser);
+    localQQAppInterface.a().a(alof.aR, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
+    localamnz.a(localRecentUser);
     Object localObject = localQQAppInterface.getHandler(Conversation.class);
     if (localObject != null) {
       ((MqqHandler)localObject).sendEmptyMessage(1009);

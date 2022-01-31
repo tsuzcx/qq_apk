@@ -1,6 +1,6 @@
 public abstract interface asxf
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(xmp paramxmp);
 }
 
 

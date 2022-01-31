@@ -1,57 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class awhm
-  extends aofy<awhn>
-{
-  public int a()
-  {
-    return 495;
-  }
-  
-  @NonNull
-  public awhn a(int paramInt)
-  {
-    return new awhn();
-  }
-  
-  @Nullable
-  public awhn a(aogf[] paramArrayOfaogf)
-  {
-    awhn localawhn = new awhn();
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
-      awhn.a(localawhn, paramArrayOfaogf[0].a);
-    }
-    return localawhn;
-  }
-  
-  public Class<awhn> a()
-  {
-    return awhn.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(awhn paramawhn) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-}
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface awhm {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awhm
  * JD-Core Version:    0.7.0.1
  */

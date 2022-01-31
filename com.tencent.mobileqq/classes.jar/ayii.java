@@ -1,157 +1,118 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.MeasureListView;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
 
 public class ayii
-  extends aykt
+  extends aygv<View>
 {
-  public long a;
-  String a;
-  public List<ayjl> a;
-  public boolean a;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  public List<String> b;
-  public boolean b;
-  String c;
-  public boolean c;
-  public String d;
-  public String e;
-  private String f;
+  protected aklb a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  protected View a;
+  protected ImageView a;
+  public RelativeLayout a;
+  protected TextView a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected MeasureListView a;
+  protected int b;
+  private TextView b;
+  private TextView c;
+  private TextView d;
+  private TextView e;
   
-  public ayii() {}
-  
-  public ayii(String paramString1, long paramLong1, String paramString2, List<ayjl> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  public ayii(int paramInt)
   {
-    this.f = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "GroupBaseNetSearchModel ,moreUrl = " + paramString3);
-    }
-    this.jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.e = paramString6;
-    this.d = paramString5;
+    super(paramInt);
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public int a()
+  private void d()
   {
-    return 1;
+    if (this.jdField_a_of_type_Aklb != null) {
+      this.jdField_a_of_type_Aklb.a();
+    }
   }
   
-  public String a()
+  public View a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559663, null);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView = ((MeasureListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367673));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setDivider(null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376263));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365090));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365091));
+    paramViewGroup = new AbsListView.LayoutParams(-1, bdaq.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(paramViewGroup);
+    paramViewGroup = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562590, null);
+    this.c = ((TextView)paramViewGroup.findViewById(2131363431));
+    this.d = ((TextView)paramViewGroup.findViewById(2131363432));
+    this.e = ((TextView)paramViewGroup.findViewById(2131363433));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.addHeaderView(this.jdField_b_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.addFooterView(paramViewGroup);
+    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849646);
+    if (bool) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841974);
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ayjl> a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getResultList." + this.jdField_a_of_type_JavaUtilList);
-    }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction. searchKey=" + this.f + " groupName=" + this.jdField_a_of_type_JavaLangString + " groupMask=" + this.jdField_a_of_type_Long);
-    }
-    if (this.jdField_a_of_type_Long == 1002L) {
-      ayqy.a(this.jdField_a_of_type_JavaUtilList, this.f);
-    }
-    if (this.jdField_a_of_type_Long == 1701L)
+    this.jdField_a_of_type_Aklb = new aklb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setOnTouchListener(new ayij(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ayik(this, paramContext, paramQQAppInterface));
+    paramContext = ((amch)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(299)).a();
+    if (!paramContext.isEmpty())
     {
-      localObject = ayrd.b("pages/search-results/search-results?mode=search&q=" + this.f);
-      localObject = ayrd.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + (String)localObject);
-      localObject = "mqqapi://microapp/open?url=" + (String)localObject;
-      MiniAppLauncher.startMiniApp(paramView.getContext(), (String)localObject, 2005, null);
-    }
-    do
-    {
-      return;
-      ActiveEntitySearchActivity.jdField_b_of_type_Boolean = true;
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_b_of_type_JavaLangString);
-      if (localObject != null)
+      paramQQAppInterface = new StringBuilder("");
+      int i = 0;
+      if (i < paramContext.size())
       {
-        ((bddb)localObject).c();
-        return;
+        if (i != paramContext.size() - 1) {
+          paramQQAppInterface.append((String)paramContext.get(i)).append("::");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          paramQQAppInterface.append((String)paramContext.get(i));
+        }
       }
-    } while ((!this.jdField_b_of_type_JavaLangString.startsWith("http://")) && (!this.jdField_b_of_type_JavaLangString.startsWith("https://")));
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject = this.jdField_b_of_type_JavaLangString + "&keyword=" + URLEncoder.encode(this.f) + "&gpstype=1&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "onMoreAction,moreUrl = " + this.jdField_b_of_type_JavaLangString + ",dstUrl = " + asms.a((String)localObject));
-      paramView = paramView.getContext();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      paramView.startActivity(localIntent);
-      return;
+      aysc.a(null, new ReportModelDC02528().module("all_result").action("exp_search_his").ver2(aysc.a(this.jdField_b_of_type_Int)).ver4(paramQQAppInterface.toString()).ver7("{experiment_id:" + aysc.b + "}"));
     }
-    catch (XorCipherException localXorCipherException)
-    {
-      for (;;)
-      {
-        localXorCipherException.printStackTrace();
-      }
-    }
-    ActiveEntitySearchActivity.a(paramView.getContext(), this.f, this.jdField_a_of_type_JavaLangString, new long[] { this.jdField_a_of_type_Long });
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public int b()
+  public void a()
   {
-    return (int)this.jdField_a_of_type_Long;
+    super.a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setAdapter(this.jdField_a_of_type_Aklb);
+    d();
   }
   
-  public String b()
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupBaseNetSearchModel", 2, "getKeyword." + this.f);
+    super.b();
+    if (this.jdField_a_of_type_Aklb != null) {
+      this.jdField_a_of_type_Aklb = null;
     }
-    return this.f;
   }
   
-  public String c()
+  public void c()
   {
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      return alpo.a(2131705720);
-    }
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      return "";
-    }
-    return this.jdField_b_of_type_JavaLangString;
+    d();
   }
 }
 

@@ -1,27 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class axno
-  implements Animator.AnimatorListener
+class axno
+  implements ServiceConnection
 {
-  public axno(ProviderContainerView paramProviderContainerView) {}
+  axno(axnn paramaxnn) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.c.setVisibility(0);
+    axnm.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Axnj.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
+    {
+      this.a.b.send(paramComponentName);
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      axnm.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).a();
-    }
+    this.a.b = null;
   }
 }
 

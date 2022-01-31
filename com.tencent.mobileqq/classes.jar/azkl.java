@@ -1,18 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordCallback;
-
 public class azkl
-  implements IRecordCallback
 {
-  public azkl(RecordTracer paramRecordTracer) {}
-  
-  public void onRecordEvent(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      bjmy.a().a(paramString);
-    }
-  }
+  public int[] a = new int[5];
 }
 
 

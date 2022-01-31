@@ -9,8 +9,8 @@ class ssg
   
   public void onClick(View paramView)
   {
-    xxk.a(this.jdField_a_of_type_Ssf.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    yvu.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    ybt.a(this.jdField_a_of_type_Ssf.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    zaj.b("auth_follow", "clk_head", 0, 0, new String[0]);
   }
 }
 

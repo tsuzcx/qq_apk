@@ -1,7 +1,7 @@
 import android.content.DialogInterface;
 
 final class oit
-  extends bdco
+  extends bdgx
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

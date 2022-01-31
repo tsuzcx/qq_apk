@@ -1,17 +1,15 @@
-import android.graphics.Matrix;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class ahtl
+  implements View.OnClickListener
 {
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  public float b = 0.0F;
+  public ahtl(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public ahtl()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
+    adpm.a(this.a.a, null);
   }
 }
 

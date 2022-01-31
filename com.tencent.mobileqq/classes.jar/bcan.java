@@ -1,118 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.ViewGroup;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcan
+  extends BroadcastReceiver
 {
-  private SparseArray<bcal> a;
+  public bcan(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  @NonNull
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bcal localbcal = a(paramInt);
-    if (localbcal != null) {
-      return localbcal.a(paramViewGroup);
-    }
-    return null;
-  }
-  
-  public bcal a(int paramInt)
-  {
-    return (bcal)this.a.get(paramInt);
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < this.a.size())
+    if (this.a.a != null)
     {
-      ((bcal)this.a.valueAt(i)).a();
-      i += 1;
-    }
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bcao)paramViewHolder;
-    if (paramViewHolder.a != null)
-    {
-      bcal localbcal = a(paramViewHolder.a.b());
-      if (localbcal != null) {
-        localbcal.a(paramViewHolder);
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
-    }
-  }
-  
-  public void a(@NonNull RecyclerView.ViewHolder paramViewHolder, bbzp parambbzp, int paramInt)
-  {
-    bcal localbcal = a(parambbzp.b());
-    if (localbcal != null)
-    {
-      ((bcao)paramViewHolder).a = parambbzp;
-      localbcal.a(paramViewHolder, parambbzp, paramInt);
-    }
-  }
-  
-  public void a(SparseArray<bcal> paramSparseArray)
-  {
-    this.a = paramSparseArray;
-  }
-  
-  public void a(bbzp parambbzp)
-  {
-    bcal localbcal = a(parambbzp.b());
-    if (localbcal != null) {
-      localbcal.b(parambbzp);
-    }
-  }
-  
-  public void a(bbzz parambbzz)
-  {
-    bcal localbcal = a(parambbzz.b());
-    if ((localbcal != null) && ((localbcal instanceof bcbe))) {
-      ((bcbe)localbcal).a(parambbzz);
-    }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bcao)paramViewHolder;
-    if (paramViewHolder.a != null)
-    {
-      bcal localbcal = a(paramViewHolder.a.b());
-      if (localbcal != null) {
-        localbcal.b(paramViewHolder);
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
       }
+      this.a.a.b(102);
     }
-  }
-  
-  public void b(bbzp parambbzp)
-  {
-    bcal localbcal = a(parambbzp.b());
-    if (localbcal != null) {
-      localbcal.c(parambbzp);
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
     }
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bcao)paramViewHolder;
-    if (paramViewHolder.a != null)
-    {
-      bcal localbcal = a(paramViewHolder.a.b());
-      if (localbcal != null) {
-        localbcal.c(paramViewHolder);
-      }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
     }
-  }
-  
-  public void c(bbzp parambbzp)
-  {
-    bcal localbcal = a(parambbzp.b());
-    if (localbcal != null) {
-      localbcal.d(parambbzp);
-    }
+    this.a.a.b(102);
   }
 }
 

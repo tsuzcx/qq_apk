@@ -1,15 +1,29 @@
-class vfu
-  extends vep
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class vfu
+  extends uro
 {
-  vfu(vez paramvez, String paramString)
-  {
-    super(paramString);
-  }
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public boolean b()
+  public vfu() {}
+  
+  public vfu(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
-    return true;
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
+    {
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
+    }
   }
 }
 

@@ -1,51 +1,27 @@
 package com.tencent.mobileqq.ar.view;
 
-import aekt;
-import alpo;
-import amnr;
-import amnx;
-import amob;
-import amou;
-import ampd;
-import amqa;
-import amqf;
-import amqu;
-import amqx;
-import amrz;
-import amsa;
-import amta;
-import amtf;
-import amwl;
-import amwm;
+import aepi;
+import alud;
+import amsg;
+import amsm;
+import amsq;
+import amtj;
+import amts;
+import amup;
+import amuu;
+import amvj;
+import amvm;
+import amwo;
+import amwp;
 import amxp;
-import amxt;
-import amxx;
-import amyj;
-import amyl;
-import amyp;
-import amzf;
-import anbk;
-import anbl;
-import anbo;
-import anbr;
-import anbs;
-import anbt;
-import anbv;
-import anbw;
-import ancj;
-import anck;
-import ancl;
-import ancn;
-import anco;
-import ancp;
-import ancq;
-import ancr;
+import amxu;
+import anau;
+import anav;
+import anby;
+import ancc;
+import ancg;
 import ancs;
-import anct;
 import ancu;
-import ancv;
-import ancw;
-import ancx;
 import ancy;
 import ando;
 import android.app.Activity;
@@ -82,19 +58,43 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import annt;
-import annu;
-import avwn;
-import avwz;
-import avxl;
-import avxo;
-import avxp;
-import azgq;
-import azmj;
-import azmz;
-import bdcd;
-import bdfq;
-import bdje;
+import anft;
+import anfu;
+import anfx;
+import anga;
+import angb;
+import angc;
+import ange;
+import angf;
+import angs;
+import angt;
+import angu;
+import angw;
+import angx;
+import angy;
+import angz;
+import anha;
+import anhb;
+import anhc;
+import anhd;
+import anhe;
+import anhf;
+import anhg;
+import anhh;
+import anhx;
+import ansc;
+import ansd;
+import awaw;
+import awbi;
+import awbu;
+import awbx;
+import awby;
+import azkz;
+import azqs;
+import azri;
+import bdgm;
+import bdjz;
+import bdnn;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -128,11 +128,11 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.TimeZone;
 import mqq.os.MqqHandler;
-import yym;
+import zdb;
 
 public class ARScanEntryView
   extends ScanEntryProviderView
-  implements amxp, anbl, Handler.Callback, View.OnClickListener, avxo
+  implements anby, Handler.Callback, View.OnClickListener, anfu, awbx
 {
   private boolean A;
   private boolean B = true;
@@ -148,29 +148,29 @@ public class ARScanEntryView
   private boolean L;
   public int a;
   long jdField_a_of_type_Long = -1L;
-  private amob jdField_a_of_type_Amob;
-  amou jdField_a_of_type_Amou;
-  private amqf jdField_a_of_type_Amqf;
-  private amrz jdField_a_of_type_Amrz;
-  amtf jdField_a_of_type_Amtf;
-  private anbo jdField_a_of_type_Anbo;
-  private anbs jdField_a_of_type_Anbs = new ancx(this);
-  private anbt jdField_a_of_type_Anbt = new ancy(this);
+  private amsq jdField_a_of_type_Amsq;
+  amtj jdField_a_of_type_Amtj;
+  private amuu jdField_a_of_type_Amuu;
+  private amwo jdField_a_of_type_Amwo;
+  amxu jdField_a_of_type_Amxu;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new anck(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ancl(this);
+  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new angt(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new angu(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public FrameLayout a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public LinearLayout a;
   public RelativeLayout a;
   public TextView a;
-  private annt jdField_a_of_type_Annt = new ancw(this);
-  private avwn jdField_a_of_type_Avwn;
-  private avxl jdField_a_of_type_Avxl;
-  private bdfq jdField_a_of_type_Bdfq;
+  private anfx jdField_a_of_type_Anfx;
+  private angb jdField_a_of_type_Angb = new anhg(this);
+  private angc jdField_a_of_type_Angc = new anhh(this);
+  private ansc jdField_a_of_type_Ansc = new anhf(this);
+  private awaw jdField_a_of_type_Awaw;
+  private awbu jdField_a_of_type_Awbu;
+  private bdjz jdField_a_of_type_Bdjz;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   public ObjectSurfaceView a;
   public ScanningSurfaceView a;
@@ -224,9 +224,9 @@ public class ARScanEntryView
   private volatile boolean y = true;
   private boolean z;
   
-  public ARScanEntryView(Context paramContext, ando paramando)
+  public ARScanEntryView(Context paramContext, anhx paramanhx)
   {
-    super(paramContext, paramando);
+    super(paramContext, paramanhx);
     this.jdField_a_of_type_Int = -1;
   }
   
@@ -235,24 +235,24 @@ public class ARScanEntryView
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, String.format("checkArDependenceReady time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_c_of_type_Long) }));
     }
-    boolean bool1 = amnr.a().a();
-    boolean bool2 = amnr.a().b();
+    boolean bool1 = amsg.a().a();
+    boolean bool2 = amsg.a().b();
     QLog.i("AREngine_ARScanEntryView", 1, "checkArDependenceReady. isAREnable = " + bool1 + ", isSupportAr = " + bool2 + ", mIsArSoReady = " + false + ", mIsVideoPluginReady = " + false);
-    anbr localanbr = this.jdField_a_of_type_Ando.a();
+    anga localanga = this.jdField_a_of_type_Anhx.a();
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if ((bool1) && (bool2) && (localanbr.a(2)) && (localanbr.a(8)) && (!this.r))
+    if ((bool1) && (bool2) && (localanga.a(2)) && (localanga.a(8)) && (!this.r))
     {
-      if ((this.jdField_a_of_type_Anbo != null) && (this.jdField_a_of_type_Anbo.b()))
+      if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
       {
-        if (!this.jdField_a_of_type_Anbo.c()) {
+        if (!this.jdField_a_of_type_Anfx.c()) {
           q();
         }
-        if ((this.m) && (this.jdField_a_of_type_Anbo.c()) && (this.jdField_a_of_type_Anbo.b()) && (this.jdField_a_of_type_Anbo.b() == 1)) {
-          this.jdField_a_of_type_Anbo.g();
+        if ((this.m) && (this.jdField_a_of_type_Anfx.c()) && (this.jdField_a_of_type_Anfx.b()) && (this.jdField_a_of_type_Anfx.b() == 1)) {
+          this.jdField_a_of_type_Anfx.g();
         }
       }
-      if (this.jdField_a_of_type_Ando.a() != null) {
-        if (this.jdField_a_of_type_Ando.a().isEnableVideoRecord != 1L) {
+      if (this.jdField_a_of_type_Anhx.a() != null) {
+        if (this.jdField_a_of_type_Anhx.a().isEnableVideoRecord != 1L) {
           break label333;
         }
       }
@@ -260,7 +260,7 @@ public class ARScanEntryView
     label333:
     for (bool1 = true;; bool1 = false)
     {
-      amqa.a().a(bool1);
+      amup.a().a(bool1);
       QLog.d("AREngine_ARScanEntryView", 1, String.format("checkARVideoRecordEnable enable=%s", new Object[] { Boolean.valueOf(bool1) }));
       if ((!this.H) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(321)))
       {
@@ -307,9 +307,9 @@ public class ARScanEntryView
       this.jdField_a_of_type_JavaLangRunnable = new ARScanEntryView.38(this);
     }
     long l1 = l2;
-    if (this.jdField_a_of_type_Ando.a() != null)
+    if (this.jdField_a_of_type_Anhx.a() != null)
     {
-      l1 = this.jdField_a_of_type_Ando.a().mARNoResultCheckTime;
+      l1 = this.jdField_a_of_type_Anhx.a().mARNoResultCheckTime;
       if (l1 > 0L) {
         break label126;
       }
@@ -345,12 +345,12 @@ public class ARScanEntryView
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, "doAfterAREngineReady = ");
     }
-    if (this.jdField_a_of_type_Amou != null) {
-      this.jdField_a_of_type_Amou.a(this.jdField_a_of_type_Anbo);
+    if (this.jdField_a_of_type_Amtj != null) {
+      this.jdField_a_of_type_Amtj.a(this.jdField_a_of_type_Anfx);
     }
-    avxp localavxp = this.jdField_a_of_type_Ando.a();
-    if (localavxp != null) {
-      localavxp.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    awby localawby = this.jdField_a_of_type_Anhx.a();
+    if (localawby != null) {
+      localawby.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
     this.z = true;
   }
@@ -376,8 +376,8 @@ public class ARScanEntryView
   private void I()
   {
     QLog.i("AREngine_ARScanEntryView", 1, "checkReadyToStartARSession = " + this.m);
-    if ((this.jdField_a_of_type_Anbo != null) && (this.jdField_a_of_type_Anbo.c()) && (this.m)) {
-      this.jdField_a_of_type_Anbo.a();
+    if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.c()) && (this.m)) {
+      this.jdField_a_of_type_Anfx.a();
     }
   }
   
@@ -385,16 +385,16 @@ public class ARScanEntryView
   
   private void K()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "checkIfNeedAutoFocus isCameraPrviewing=" + anbk.a().b() + ";mIsResumed=" + this.m);
-    if ((anbk.a().b()) && (this.m)) {
-      anbk.a().a(anbw.jdField_a_of_type_Int, anbw.jdField_b_of_type_Int);
+    QLog.d("AREngine_ARScanEntryView", 1, "checkIfNeedAutoFocus isCameraPrviewing=" + anft.a().b() + ";mIsResumed=" + this.m);
+    if ((anft.a().b()) && (this.m)) {
+      anft.a().a(angf.jdField_a_of_type_Int, angf.jdField_b_of_type_Int);
     }
   }
   
   private void L()
   {
     QLog.i("AREngine_ARScanEntryView", 1, "stopAutoFoucus ");
-    anbk.a().a();
+    anft.a().a();
   }
   
   private TouchWebView a()
@@ -418,8 +418,8 @@ public class ARScanEntryView
         this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getUiSettings().setScrollGesturesEnabled(false);
       }
       TencentMap localTencentMap = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap();
-      localTencentMap.setOnCameraChangeListener(new ancs(this));
-      localTencentMap.setOnMapLoadedCallback(new anct(this));
+      localTencentMap.setOnCameraChangeListener(new anhb(this));
+      localTencentMap.setOnMapLoadedCallback(new anhc(this));
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.setEnabled(true);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.setClickable(true);
     }
@@ -448,15 +448,15 @@ public class ARScanEntryView
     return null;
   }
   
-  private void a(amwm paramamwm, ArLBSActivity paramArLBSActivity)
+  private void a(anav paramanav, ArLBSActivity paramArLBSActivity)
   {
-    if (this.jdField_a_of_type_Amob == null)
+    if (this.jdField_a_of_type_Amsq == null)
     {
-      this.jdField_a_of_type_Amob = new amob((Activity)this.jdField_a_of_type_AndroidContentContext, a(), this);
-      this.jdField_a_of_type_Amob.setOnDismissListener(new ancr(this));
+      this.jdField_a_of_type_Amsq = new amsq((Activity)this.jdField_a_of_type_AndroidContentContext, a(), this);
+      this.jdField_a_of_type_Amsq.setOnDismissListener(new anha(this));
     }
-    this.jdField_a_of_type_Amob.a();
-    this.jdField_a_of_type_Amob.a(paramamwm, paramArLBSActivity);
+    this.jdField_a_of_type_Amsq.a();
+    this.jdField_a_of_type_Amsq.a(paramanav, paramArLBSActivity);
   }
   
   private void a(ARCommonConfigInfo paramARCommonConfigInfo, long paramLong)
@@ -504,7 +504,7 @@ public class ARScanEntryView
     return paramString.toString();
   }
   
-  private void b(amwl paramamwl, ArLBSActivity paramArLBSActivity)
+  private void b(anau paramanau, ArLBSActivity paramArLBSActivity)
   {
     if (paramArLBSActivity == null) {
       new ArLBSActivity();
@@ -512,30 +512,30 @@ public class ARScanEntryView
     do
     {
       return;
-      if (paramamwl.jdField_a_of_type_Int == 0)
+      if (paramanau.jdField_a_of_type_Int == 0)
       {
-        if (paramamwl.jdField_a_of_type_Amwm == null)
+        if (paramanau.jdField_a_of_type_Anav == null)
         {
           QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramArLBSActivity.f, 1).a();
           return;
         }
-        this.jdField_a_of_type_Anbo.h();
+        this.jdField_a_of_type_Anfx.h();
         g(false);
-        a(paramamwl.jdField_a_of_type_Amwm, paramArLBSActivity);
+        a(paramanau.jdField_a_of_type_Anav, paramArLBSActivity);
         return;
       }
-      if (paramamwl.jdField_a_of_type_Int == 2)
+      if (paramanau.jdField_a_of_type_Int == 2)
       {
-        this.jdField_a_of_type_Anbo.g();
+        this.jdField_a_of_type_Anfx.g();
         g(false);
-        if (this.jdField_a_of_type_Bdfq == null) {
-          this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidContentContext, 230, paramArLBSActivity.g, paramArLBSActivity.h, alpo.a(2131701118), alpo.a(2131701110), new anco(this), new ancp(this));
+        if (this.jdField_a_of_type_Bdjz == null) {
+          this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230, paramArLBSActivity.g, paramArLBSActivity.h, alud.a(2131701130), alud.a(2131701122), new angx(this), new angy(this));
         }
-        this.jdField_a_of_type_Bdfq.setOnDismissListener(new ancq(this));
-        this.jdField_a_of_type_Bdfq.show();
+        this.jdField_a_of_type_Bdjz.setOnDismissListener(new angz(this));
+        this.jdField_a_of_type_Bdjz.show();
         return;
       }
-    } while (paramamwl.jdField_a_of_type_Int != -1);
+    } while (paramanau.jdField_a_of_type_Int != -1);
   }
   
   private void b(ARCommonConfigInfo paramARCommonConfigInfo)
@@ -566,7 +566,7 @@ public class ARScanEntryView
     if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("NoLimitParams", true)) {
       a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo, this.jdField_a_of_type_AndroidOsBundle.getLong("recognitionMask", 0L));
     }
-    paramARCommonConfigInfo = this.jdField_a_of_type_Ando.a();
+    paramARCommonConfigInfo = this.jdField_a_of_type_Anhx.a();
     ThreadManager.postImmediately(new ARScanEntryView.7(this, this.jdField_b_of_type_Long, paramARCommonConfigInfo), null, false);
   }
   
@@ -589,8 +589,8 @@ public class ARScanEntryView
   
   private boolean e()
   {
-    if (this.jdField_a_of_type_Ando.a() != null) {
-      return this.jdField_a_of_type_Ando.a().b();
+    if (this.jdField_a_of_type_Anhx.a() != null) {
+      return this.jdField_a_of_type_Anhx.a().b();
     }
     return true;
   }
@@ -601,7 +601,7 @@ public class ARScanEntryView
     // Byte code:
     //   0: aload_0
     //   1: getfield 350	com/tencent/mobileqq/ar/view/ARScanEntryView:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   4: invokestatic 772	annu:a	(Lmqq/app/AppRuntime;)Landroid/content/SharedPreferences;
+    //   4: invokestatic 772	ansd:a	(Lmqq/app/AppRuntime;)Landroid/content/SharedPreferences;
     //   7: astore 4
     //   9: aload 4
     //   11: ldc_w 774
@@ -615,7 +615,7 @@ public class ARScanEntryView
     //   29: getfield 350	com/tencent/mobileqq/ar/view/ARScanEntryView:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   32: iconst_2
     //   33: invokevirtual 785	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
-    //   36: checkcast 787	anns
+    //   36: checkcast 787	ansb
     //   39: astore 5
     //   41: aload 4
     //   43: ldc_w 789
@@ -630,7 +630,7 @@ public class ARScanEntryView
     //   64: invokevirtual 793	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   67: invokestatic 797	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   70: lload_2
-    //   71: invokevirtual 800	anns:a	(JJ)V
+    //   71: invokevirtual 800	ansb:a	(JJ)V
     //   74: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   77: ifeq +29 -> 106
     //   80: ldc 159
@@ -665,7 +665,7 @@ public class ARScanEntryView
     //   7	35	4	localSharedPreferences	SharedPreferences
     //   108	3	4	localException	Exception
     //   126	1	4	localNumberFormatException	java.lang.NumberFormatException
-    //   39	20	5	localanns	anns
+    //   39	20	5	localansb	ansb
     // Exception table:
     //   from	to	target	type
     //   28	41	108	java/lang/Exception
@@ -685,22 +685,22 @@ public class ARScanEntryView
       return;
     }
     this.J = paramBoolean;
-    if (this.jdField_a_of_type_Ando.a() != null)
+    if (this.jdField_a_of_type_Anhx.a() != null)
     {
-      this.jdField_a_of_type_Ando.a().a(paramBoolean, 0.0F, 1.0F);
+      this.jdField_a_of_type_Anhx.a().a(paramBoolean, 0.0F, 1.0F);
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARScanEntryView", 2, String.format("setHaveEdge do real call flag=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
       }
     }
     this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.9(this, paramBoolean));
-    this.jdField_a_of_type_Ando.b(paramBoolean);
+    this.jdField_a_of_type_Anhx.b(paramBoolean);
     f(paramBoolean);
   }
   
   private boolean g()
   {
     boolean bool2 = false;
-    String str1 = annu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).getString("key_click_reddot_date", null);
+    String str1 = ansd.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).getString("key_click_reddot_date", null);
     String str2 = a(NetConnInfoCenter.getServerTimeMillis());
     boolean bool1 = bool2;
     if (str1 != null)
@@ -728,18 +728,18 @@ public class ARScanEntryView
   
   private void i(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Amrz == null) || (this.jdField_a_of_type_Amrz.a == null)) {}
+    if ((this.jdField_a_of_type_Amwo == null) || (this.jdField_a_of_type_Amwo.a == null)) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) {
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
       }
       if (this.I)
       {
         this.I = false;
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        localLayoutParams.bottomMargin = aekt.a(170.0F, getResources());
+        localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
         localLayoutParams.addRule(13, 0);
       }
     } while (!paramBoolean);
@@ -749,39 +749,39 @@ public class ARScanEntryView
   private void n()
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375981));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377903));
-    ancj.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377905));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377907));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376034));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377957));
+    angs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377959));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377961));
     Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("Title");
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.jdField_e_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     }
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidWidgetTextView.setContentDescription(alpo.a(2131701112));
+    this.jdField_f_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131701124));
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362757));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380115));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364824));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380173));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364825));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setContentDescription(alpo.a(2131701114));
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView = ((ScanIconAnimateView)findViewById(2131364828));
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.setPopUpListener(new ancv(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366367));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setContentDescription(alud.a(2131701126));
+    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView = ((ScanIconAnimateView)findViewById(2131364829));
+    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.setPopUpListener(new anhe(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366369));
     localObject = (ViewStub)findViewById(2131362754);
     if (localObject != null)
     {
       ((ViewStub)localObject).inflate();
-      this.jdField_a_of_type_Amqf = new amqf(findViewById(2131362780));
+      this.jdField_a_of_type_Amuu = new amuu(findViewById(2131362780));
     }
     this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362750));
-    if (this.jdField_a_of_type_Amou == null)
+    if (this.jdField_a_of_type_Amtj == null)
     {
-      this.jdField_a_of_type_Amou = new amou();
+      this.jdField_a_of_type_Amtj = new amtj();
       localObject = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
-      this.jdField_a_of_type_Amou.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (ScanTorchActivity)localObject, this.jdField_c_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_Amou.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = this;
+      this.jdField_a_of_type_Amtj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (ScanTorchActivity)localObject, this.jdField_c_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_a_of_type_Amtj.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = this;
     }
     if (this.D) {
       G();
@@ -794,22 +794,22 @@ public class ARScanEntryView
   private void o()
   {
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    amqa.a().a(localActivity);
-    amqa.a().a(localActivity);
-    amqa.a().a(this.jdField_a_of_type_Amqf);
+    amup.a().a(localActivity);
+    amup.a().a(localActivity);
+    amup.a().a(this.jdField_a_of_type_Amuu);
   }
   
   private void p()
   {
-    if (!anbo.f())
+    if (!anfx.f())
     {
       QLog.d("AREngine_ARScanEntryView", 1, "ARScanEntryView onCreate error happen");
       return;
     }
-    anbo localanbo = anbo.a();
-    this.jdField_a_of_type_Anbo = localanbo;
-    this.jdField_a_of_type_Anbc = localanbo;
-    this.jdField_a_of_type_Anbo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    anfx localanfx = anfx.a();
+    this.jdField_a_of_type_Anfx = localanfx;
+    this.jdField_a_of_type_Anfl = localanfx;
+    this.jdField_a_of_type_Anfx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
   }
   
   private void q()
@@ -818,17 +818,17 @@ public class ARScanEntryView
       return;
     }
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ARScanStarFaceConfigInfo localARScanStarFaceConfigInfo = amnx.a(localActivity).a();
+    ARScanStarFaceConfigInfo localARScanStarFaceConfigInfo = amsm.a(localActivity).a();
     for (;;)
     {
       try
       {
-        if ((this.jdField_a_of_type_Anbo != null) && (this.jdField_a_of_type_Anbo.b()))
+        if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
         {
           long l = System.currentTimeMillis();
-          k = this.jdField_a_of_type_Anbo.a(false, this.B, this.D, false, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo, null, localARScanStarFaceConfigInfo, this, localActivity, this.jdField_a_of_type_Amou, this.jdField_a_of_type_Ando.a());
-          amzf.a().a(System.currentTimeMillis() - l, k);
-          if ((k != 0) || (!this.jdField_a_of_type_Anbo.c())) {
+          k = this.jdField_a_of_type_Anfx.a(false, this.B, this.D, false, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo, null, localARScanStarFaceConfigInfo, this, localActivity, this.jdField_a_of_type_Amtj, this.jdField_a_of_type_Anhx.a());
+          ando.a().a(System.currentTimeMillis() - l, k);
+          if ((k != 0) || (!this.jdField_a_of_type_Anfx.c())) {
             continue;
           }
           I();
@@ -848,10 +848,10 @@ public class ARScanEntryView
   
   private void r()
   {
-    if (this.jdField_a_of_type_Avxl != null)
+    if (this.jdField_a_of_type_Awbu != null)
     {
-      this.jdField_a_of_type_Avxl.a(null);
-      this.jdField_a_of_type_Avxl = null;
+      this.jdField_a_of_type_Awbu.a(null);
+      this.jdField_a_of_type_Awbu = null;
     }
   }
   
@@ -868,20 +868,20 @@ public class ARScanEntryView
       if (localViewStub != null)
       {
         localViewStub.inflate();
-        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView = ((ScanningSurfaceView)super.findViewById(2131376101));
+        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView = ((ScanningSurfaceView)super.findViewById(2131376155));
         this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.setVisibility(8);
-        this.jdField_a_of_type_Amtf = new amtf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Avwn);
-        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.jdField_a_of_type_Amtf = this.jdField_a_of_type_Amtf;
-        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView = ((ObjectSurfaceView)super.findViewById(2131371309));
+        this.jdField_a_of_type_Amxu = new amxu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awaw);
+        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.jdField_a_of_type_Amxu = this.jdField_a_of_type_Amxu;
+        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView = ((ObjectSurfaceView)super.findViewById(2131371328));
         this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.setVisibility(8);
-        this.jdField_a_of_type_Amtf = new amtf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Avwn);
-        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.jdField_a_of_type_Amtf = this.jdField_a_of_type_Amtf;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131380223));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377646));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377647));
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377648));
+        this.jdField_a_of_type_Amxu = new amxu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awaw);
+        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.jdField_a_of_type_Amxu = this.jdField_a_of_type_Amxu;
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131380281));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377700));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377701));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377702));
         this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131378176));
+        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131378230));
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setClickable(true);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
         w();
@@ -914,7 +914,7 @@ public class ARScanEntryView
       }
       this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, localLayoutParams);
-      amzf.a().a(System.currentTimeMillis() - l);
+      ando.a().a(System.currentTimeMillis() - l);
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARScanEntryView", 2, String.format("lazyInitWebView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
       }
@@ -936,11 +936,11 @@ public class ARScanEntryView
       }
       while (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
       {
-        int k = aekt.a(15.0F, getResources());
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2131167138);
+        int k = aepi.a(15.0F, getResources());
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2131167140);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, k, k, 0);
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        localLayoutParams.bottomMargin = aekt.a(170.0F, getResources());
+        localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
         if (this.I)
         {
           this.I = false;
@@ -964,11 +964,11 @@ public class ARScanEntryView
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845170);
-    int k = aekt.a(15.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845242);
+    int k = aepi.a(15.0F, getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.bottomMargin = aekt.a(170.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, k, k, aekt.a(7.0F, getResources()));
+    localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, k, k, aepi.a(7.0F, getResources()));
     if (this.I)
     {
       this.I = false;
@@ -999,7 +999,7 @@ public class ARScanEntryView
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Amrz != null) && (this.jdField_a_of_type_Amrz.a != null)) {
+    if ((this.jdField_a_of_type_Amwo != null) && (this.jdField_a_of_type_Amwo.a != null)) {
       return;
     }
     QLog.d("AREngine_ARScanEntryView", 1, "mArTarget == null || mArTarget.arResourceInfo == null");
@@ -1018,7 +1018,7 @@ public class ARScanEntryView
     QLog.d("AREngine_ARScanEntryView", 1, "handleARStartFail");
     this.n = true;
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      e_(alpo.a(2131701113));
+      d_(alud.a(2131701125));
     }
   }
   
@@ -1027,12 +1027,12 @@ public class ARScanEntryView
     return getResources().getDimensionPixelSize(2131298914);
   }
   
-  public ampd a()
+  public amts a()
   {
-    return this.jdField_a_of_type_Ando.a().a();
+    return this.jdField_a_of_type_Anhx.a().a();
   }
   
-  public avxl a(boolean paramBoolean)
+  public awbu a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, "getPromotionGuide create = " + paramBoolean);
@@ -1040,12 +1040,12 @@ public class ARScanEntryView
     if (!this.m) {
       return null;
     }
-    if ((this.jdField_a_of_type_Avxl == null) && (paramBoolean))
+    if ((this.jdField_a_of_type_Awbu == null) && (paramBoolean))
     {
-      this.jdField_a_of_type_Avxl = new avxl((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Avxl.a(this);
+      this.jdField_a_of_type_Awbu = new awbu((Activity)this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Awbu.a(this);
     }
-    return this.jdField_a_of_type_Avxl;
+    return this.jdField_a_of_type_Awbu;
   }
   
   public String a(String paramString)
@@ -1067,8 +1067,8 @@ public class ARScanEntryView
     if ((this.m) && (this.E) && (this.C))
     {
       QLog.d("AREngine_ARScanEntryView", 2, "start for next Time");
-      this.jdField_a_of_type_Amou.e();
-      this.jdField_a_of_type_Amou.a(null);
+      this.jdField_a_of_type_Amtj.e();
+      this.jdField_a_of_type_Amtj.a(null);
     }
   }
   
@@ -1125,16 +1125,16 @@ public class ARScanEntryView
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(311);
   }
   
-  public void a(int paramInt1, amrz paramamrz, int paramInt2)
+  public void a(int paramInt1, amwo paramamwo, int paramInt2)
   {
-    if ((paramamrz == null) || (paramamrz.a == null))
+    if ((paramamwo == null) || (paramamwo.a == null))
     {
       QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, arTarget == null || arTarget.arResourceInfo == null");
       return;
     }
     QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, remainCount " + paramInt2);
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, new Object[] { "onARAnimationStateChanged, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int), ", newState=", paramInt1 + ", target=" + paramamrz });
+      QLog.d("AREngine_ARScanEntryView", 2, new Object[] { "onARAnimationStateChanged, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int), ", newState=", paramInt1 + ", target=" + paramamwo });
     }
     label220:
     int k;
@@ -1149,16 +1149,16 @@ public class ARScanEntryView
         this.jdField_a_of_type_Int = paramInt1;
         return;
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Amrz = paramamrz;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.21(this, paramamrz));
+        this.jdField_a_of_type_Amwo = paramamwo;
+        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.21(this, paramamwo));
         for (paramInt2 = 100;; paramInt2 = 100)
         {
           try
           {
-            switch (paramamrz.a.jdField_d_of_type_Int)
+            switch (paramamwo.a.jdField_d_of_type_Int)
             {
             case 0: 
-              azmj.b(null, "CliOper", "", "", "0X80081DF", "0X80081DF", 0, 0, paramamrz.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
+              azqs.b(null, "CliOper", "", "", "0X80081DF", "0X80081DF", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
             }
           }
           catch (Exception localException1)
@@ -1167,40 +1167,40 @@ public class ARScanEntryView
             {
               QLog.d("AREngine_ARScanEntryView", 1, "0X80081DF ReportController  error " + localException1.getMessage());
             }
-            this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CC", "0X80069CC", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamrz.a.jdField_b_of_type_JavaLangString, "2");
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CC", "0X80069CC", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "2");
           }
-          if ((paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean)) {
+          if ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean)) {
             break;
           }
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.22(this, paramamrz));
+          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.22(this, paramamwo));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
           return;
-          if (paramamrz.a.j())
+          if (paramamwo.a.j())
           {
             paramInt2 = 3;
             break label1349;
           }
-          if (!paramamrz.a.d()) {
+          if (!paramamwo.a.d()) {
             break label1349;
           }
           paramInt2 = 0;
           break label1349;
-          if (paramamrz.a.j())
+          if (paramamwo.a.j())
           {
             paramInt2 = 1;
             break label1355;
           }
-          if (!paramamrz.a.i()) {
+          if (!paramamwo.a.i()) {
             break label1355;
           }
           paramInt2 = 5;
           break label1355;
-          if (paramamrz.a.d())
+          if (paramamwo.a.d())
           {
             paramInt2 = 2;
             break label1361;
           }
-          bool = paramamrz.a.j();
+          bool = paramamwo.a.j();
           if (bool)
           {
             paramInt2 = 4;
@@ -1212,13 +1212,13 @@ public class ARScanEntryView
         }
       }
     case 1: 
-      this.jdField_a_of_type_Amrz = paramamrz;
-      if (!paramamrz.a.d()) {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008144", "0X8008144", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamrz.a.jdField_b_of_type_JavaLangString, "2");
+      this.jdField_a_of_type_Amwo = paramamwo;
+      if (!paramamwo.a.d()) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008144", "0X8008144", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "2");
       }
-      if ((paramamrz.a.jdField_d_of_type_Int != 0) && (paramamrz.a.jdField_d_of_type_Int != 5))
+      if ((paramamwo.a.jdField_d_of_type_Int != 0) && (paramamwo.a.jdField_d_of_type_Int != 5))
       {
-        m = amsa.a(paramamrz);
+        m = amwp.a(paramamwo);
         k = m;
         if (m == 0) {
           k = 2147483647;
@@ -1231,11 +1231,11 @@ public class ARScanEntryView
         {
           try
           {
-            switch (paramamrz.a.jdField_d_of_type_Int)
+            switch (paramamwo.a.jdField_d_of_type_Int)
             {
             case 0: 
               label700:
-              azmj.b(null, "CliOper", "", "", "0X80081E1", "0X80081E1", 0, 0, paramamrz.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
+              azqs.b(null, "CliOper", "", "", "0X80081E1", "0X80081E1", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
             }
           }
           catch (Exception localException2)
@@ -1247,39 +1247,39 @@ public class ARScanEntryView
               bool = false;
             }
           }
-          if ((paramamrz.a.jdField_a_of_type_Int != 0) && ((paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (TextUtils.isEmpty(paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))) {
+          if ((paramamwo.a.jdField_a_of_type_Int != 0) && ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))) {
             break label999;
           }
           bool = true;
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.23(this, paramamrz, paramInt2, bool));
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CF", "0X80069CF", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamrz.a.jdField_b_of_type_JavaLangString, "");
+          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.23(this, paramamwo, paramInt2, bool));
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CF", "0X80069CF", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "");
           break;
-          if (paramamrz.a.j())
+          if (paramamwo.a.j())
           {
             k = 3;
             break label1377;
           }
-          if (!paramamrz.a.d()) {
+          if (!paramamwo.a.d()) {
             break label1377;
           }
           k = 0;
           break label1377;
-          if (paramamrz.a.j())
+          if (paramamwo.a.j())
           {
             k = 1;
             break label1383;
           }
-          if (!paramamrz.a.i()) {
+          if (!paramamwo.a.i()) {
             break label1383;
           }
           k = 5;
           break label1383;
-          if (paramamrz.a.d())
+          if (paramamwo.a.d())
           {
             k = 2;
             break label1389;
           }
-          bool = paramamrz.a.j();
+          bool = paramamwo.a.j();
           if (bool)
           {
             k = 4;
@@ -1300,10 +1300,10 @@ public class ARScanEntryView
     {
       try
       {
-        switch (paramamrz.a.jdField_d_of_type_Int)
+        switch (paramamwo.a.jdField_d_of_type_Int)
         {
         case 0: 
-          azmj.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamrz.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
+          azqs.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
         }
       }
       catch (Exception localException3)
@@ -1312,34 +1312,34 @@ public class ARScanEntryView
         continue;
       }
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Amrz = null;
+      this.jdField_a_of_type_Amwo = null;
       this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.24(this));
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D0", "0X80069D0", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamrz.a.jdField_b_of_type_JavaLangString, "");
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D0", "0X80069D0", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "");
       break;
-      if (paramamrz.a.j())
+      if (paramamwo.a.j())
       {
         paramInt2 = 3;
       }
-      else if (paramamrz.a.d())
+      else if (paramamwo.a.d())
       {
         paramInt2 = 0;
         break label1404;
-        if (paramamrz.a.j())
+        if (paramamwo.a.j())
         {
           paramInt2 = 1;
           break label1410;
         }
-        if (!paramamrz.a.i()) {
+        if (!paramamwo.a.i()) {
           break label1410;
         }
         paramInt2 = 5;
         break label1410;
-        if (paramamrz.a.d())
+        if (paramamwo.a.d())
         {
           paramInt2 = 2;
           break label1416;
         }
-        bool = paramamrz.a.j();
+        bool = paramamwo.a.j();
         if (bool)
         {
           paramInt2 = 4;
@@ -1351,7 +1351,7 @@ public class ARScanEntryView
         paramInt2 = 100;
         continue;
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Amrz = null;
+        this.jdField_a_of_type_Amwo = null;
         this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.25(this));
         break;
         k = 1;
@@ -1403,19 +1403,19 @@ public class ARScanEntryView
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
   }
   
-  public void a(long paramLong, int paramInt, amqx paramamqx, amyj paramamyj)
+  public void a(long paramLong, int paramInt, amvm paramamvm, ancs paramancs)
   {
     E();
-    if ((paramLong == 128L) && ((paramamyj instanceof amyl)))
+    if ((paramLong == 128L) && ((paramancs instanceof ancu)))
     {
-      paramamyj = (amyl)paramamyj;
+      paramancs = (ancu)paramancs;
       if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 1, " externalRenderResult info is isValidData=" + paramamyj.jdField_a_of_type_Boolean + "isNeedShowViewFinder " + paramamyj.jdField_b_of_type_Boolean);
+        QLog.d("AREngine_ARScanEntryView", 1, " externalRenderResult info is isValidData=" + paramancs.jdField_a_of_type_Boolean + "isNeedShowViewFinder " + paramancs.jdField_b_of_type_Boolean);
       }
-      if (!paramamyj.jdField_a_of_type_Boolean)
+      if (!paramancs.jdField_a_of_type_Boolean)
       {
         this.y = false;
-        h(paramamyj.jdField_b_of_type_Boolean);
+        h(paramancs.jdField_b_of_type_Boolean);
         this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.12(this));
       }
     }
@@ -1434,49 +1434,49 @@ public class ARScanEntryView
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder().append("MIG object RectF(协议原始的数据) ");
-              if (paramamyj.jdField_a_of_type_Amyp == null) {
+              if (paramancs.jdField_a_of_type_Ancy == null) {
                 break;
               }
-              paramamqx = paramamyj.jdField_a_of_type_Amyp.jdField_a_of_type_AndroidGraphicsRectF.toString();
-              QLog.d("AREngine_MIGObjectClassifyResult", 1, paramamqx);
+              paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_AndroidGraphicsRectF.toString();
+              QLog.d("AREngine_MIGObjectClassifyResult", 1, paramamvm);
             }
             h(false);
-          } while (paramamyj.jdField_a_of_type_Amyp == null);
-          Object localObject = new amta();
-          ((amta)localObject).jdField_a_of_type_Float = 99.0F;
-          ((amta)localObject).jdField_c_of_type_JavaLangString = (alpo.a(2131701111) + (int)(paramamyj.jdField_a_of_type_Amyp.jdField_a_of_type_Double * 100.0D) + "%");
+          } while (paramancs.jdField_a_of_type_Ancy == null);
+          Object localObject = new amxp();
+          ((amxp)localObject).jdField_a_of_type_Float = 99.0F;
+          ((amxp)localObject).jdField_c_of_type_JavaLangString = (alud.a(2131701123) + (int)(paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_Double * 100.0D) + "%");
           if (QLog.isColorLevel()) {
-            QLog.d("AREngine_MIGObjectClassifyResult", 1, " scantorch activitity result ok " + paramamyj.jdField_a_of_type_Amyp.jdField_a_of_type_Double);
+            QLog.d("AREngine_MIGObjectClassifyResult", 1, " scantorch activitity result ok " + paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_Double);
           }
-          ((amta)localObject).jdField_a_of_type_Int = 10;
-          ((amta)localObject).jdField_a_of_type_AndroidGraphicsRectF = amta.a(paramamyj.jdField_a_of_type_Amyp.jdField_a_of_type_AndroidGraphicsRectF);
+          ((amxp)localObject).jdField_a_of_type_Int = 10;
+          ((amxp)localObject).jdField_a_of_type_AndroidGraphicsRectF = amxp.a(paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_AndroidGraphicsRectF);
           if (QLog.isColorLevel()) {
-            QLog.d("AREngine_MIGObjectClassifyResult", 1, "MIG mapMigObjectRect2Screen(协议转化后的数据) object RectF " + ((amta)localObject).jdField_a_of_type_AndroidGraphicsRectF);
+            QLog.d("AREngine_MIGObjectClassifyResult", 1, "MIG mapMigObjectRect2Screen(协议转化后的数据) object RectF " + ((amxp)localObject).jdField_a_of_type_AndroidGraphicsRectF);
           }
-          ((amta)localObject).jdField_a_of_type_ArrayOfFloat = null;
-          ((amta)localObject).h = null;
-          ((amta)localObject).jdField_c_of_type_Boolean = paramamyj.jdField_a_of_type_Amyp.jdField_b_of_type_Boolean;
-          ((amta)localObject).jdField_d_of_type_Boolean = false;
-          ((amta)localObject).jdField_a_of_type_Boolean = true;
-          ((amta)localObject).jdField_b_of_type_Boolean = true;
-          ((amta)localObject).jdField_e_of_type_Boolean = false;
-          ((amta)localObject).jdField_a_of_type_JavaLangString = paramamyj.jdField_a_of_type_Amyp.jdField_a_of_type_JavaLangString;
-          if (TextUtils.isEmpty(paramamyj.jdField_a_of_type_Amyp.jdField_b_of_type_JavaLangString))
+          ((amxp)localObject).jdField_a_of_type_ArrayOfFloat = null;
+          ((amxp)localObject).h = null;
+          ((amxp)localObject).jdField_c_of_type_Boolean = paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_Boolean;
+          ((amxp)localObject).jdField_d_of_type_Boolean = false;
+          ((amxp)localObject).jdField_a_of_type_Boolean = true;
+          ((amxp)localObject).jdField_b_of_type_Boolean = true;
+          ((amxp)localObject).jdField_e_of_type_Boolean = false;
+          ((amxp)localObject).jdField_a_of_type_JavaLangString = paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_JavaLangString;
+          if (TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_JavaLangString))
           {
-            paramamqx = " ";
-            ((amta)localObject).jdField_d_of_type_JavaLangString = paramamqx;
-            if (!TextUtils.isEmpty(paramamyj.jdField_a_of_type_Amyp.jdField_c_of_type_JavaLangString)) {
+            paramamvm = " ";
+            ((amxp)localObject).jdField_d_of_type_JavaLangString = paramamvm;
+            if (!TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString)) {
               break label634;
             }
-            paramamqx = " ";
-            ((amta)localObject).jdField_e_of_type_JavaLangString = paramamqx;
-            ((amta)localObject).jdField_b_of_type_JavaLangString = null;
-            ((amta)localObject).f = null;
-            ((amta)localObject).g = paramamyj.jdField_a_of_type_Amyp.jdField_d_of_type_JavaLangString;
+            paramamvm = " ";
+            ((amxp)localObject).jdField_e_of_type_JavaLangString = paramamvm;
+            ((amxp)localObject).jdField_b_of_type_JavaLangString = null;
+            ((amxp)localObject).f = null;
+            ((amxp)localObject).g = paramancs.jdField_a_of_type_Ancy.jdField_d_of_type_JavaLangString;
             if (QLog.isColorLevel())
             {
-              QLog.d("AREngine_ARScanEntryView", 1, " label name is " + ((amta)localObject).jdField_a_of_type_JavaLangString + "isAutoJump " + ((amta)localObject).jdField_c_of_type_Boolean);
-              if (TextUtils.isEmpty(paramamyj.jdField_a_of_type_Amyp.jdField_c_of_type_JavaLangString)) {
+              QLog.d("AREngine_ARScanEntryView", 1, " label name is " + ((amxp)localObject).jdField_a_of_type_JavaLangString + "isAutoJump " + ((amxp)localObject).jdField_c_of_type_Boolean);
+              if (TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString)) {
                 QLog.d("AREngine_ARScanEntryView", 1, " profileContent    null  ");
               }
             }
@@ -1487,39 +1487,39 @@ public class ARScanEntryView
           }
           for (;;)
           {
-            paramamqx = new ArrayList();
-            paramamqx.add(localObject);
-            this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.setFaceData(paramamqx);
+            paramamvm = new ArrayList();
+            paramamvm.add(localObject);
+            this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.setFaceData(paramamvm);
             return;
-            paramamqx = "error happen";
+            paramamvm = "error happen";
             break;
-            paramamqx = paramamyj.jdField_a_of_type_Amyp.jdField_b_of_type_JavaLangString;
+            paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_JavaLangString;
             break label432;
-            paramamqx = paramamyj.jdField_a_of_type_Amyp.jdField_c_of_type_JavaLangString;
+            paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString;
             break label458;
             QLog.d("AREngine_ARScanEntryView", 1, " scanningSurfaceView not ready ");
           }
           if (paramLong != 4L) {
             break;
           }
-          if ((this.jdField_a_of_type_Amtf != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Avwn != null))
+          if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw != null))
           {
-            int k = this.jdField_a_of_type_Amtf.jdField_a_of_type_Avwn.a();
+            int k = this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw.a();
             if ((k != 3) && (k != 2) && (k != 0)) {
               j();
             }
           }
-          if ((QLog.isColorLevel()) && (amxt.jdField_a_of_type_Boolean)) {
-            QLog.d("AREngine_ARScanEntryView", 2, "onARTrackComplete, recogType = " + paramLong + ",trackMode = " + paramInt + ",trackResult = " + paramamqx + ",localRecogResult = " + paramamyj + ",isPause = " + this.h);
+          if ((QLog.isColorLevel()) && (ancc.jdField_a_of_type_Boolean)) {
+            QLog.d("AREngine_ARScanEntryView", 2, "onARTrackComplete, recogType = " + paramLong + ",trackMode = " + paramInt + ",trackResult = " + paramamvm + ",localRecogResult = " + paramancs + ",isPause = " + this.h);
           }
-        } while ((this.h) || (paramLong != 4L) || (!(paramamyj instanceof amxx)));
-        paramamqx = (amxx)paramamyj;
-      } while (paramamqx == null);
-      paramamyj = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      if ((paramamqx.jdField_a_of_type_JavaUtilArrayList != null) && (paramamqx.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {}
+        } while ((this.h) || (paramLong != 4L) || (!(paramancs instanceof ancg)));
+        paramamvm = (ancg)paramancs;
+      } while (paramamvm == null);
+      paramancs = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      if ((paramamvm.jdField_a_of_type_JavaUtilArrayList != null) && (paramamvm.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {}
       for (;;)
       {
-        if (!paramamqx.jdField_a_of_type_Boolean) {
+        if (!paramamvm.jdField_a_of_type_Boolean) {
           break label994;
         }
         this.jdField_g_of_type_Boolean = false;
@@ -1533,7 +1533,7 @@ public class ARScanEntryView
         return;
         j();
         break;
-        if ((this.jdField_a_of_type_Amtf != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Bdfq.isShowing()) && (!paramamyj.isFinishing())) {
+        if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.isShowing()) && (!paramancs.isFinishing())) {
           this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.14(this));
         }
       }
@@ -1551,14 +1551,14 @@ public class ARScanEntryView
     if (this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.getVisibility() != 0) {
       this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.post(new ARScanEntryView.18(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.setFaceData(paramamqx.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.setFaceData(paramamvm.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void a(long paramLong, amrz paramamrz)
+  public void a(long paramLong, amwo paramamwo)
   {
     E();
     j();
-    if ((paramamrz == null) || (paramamrz.a == null)) {
+    if ((paramamwo == null) || (paramamwo.a == null)) {
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete empty value");
       }
@@ -1569,7 +1569,7 @@ public class ARScanEntryView
       if (!this.G) {}
       try
       {
-        localObject = this.jdField_a_of_type_Anbo.a();
+        localObject = this.jdField_a_of_type_Anfx.a();
         if (localObject != null)
         {
           ((ArrayList)localObject).size();
@@ -1584,10 +1584,10 @@ public class ARScanEntryView
         break label68;
       }
       this.G = true;
-      if (!paramamrz.a.f()) {
-        if ((paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
+      if (!paramamwo.a.f()) {
+        if ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
         {
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.8(this, paramamrz));
+          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.8(this, paramamwo));
           if (!this.jdField_c_of_type_Boolean)
           {
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(306);
@@ -1595,18 +1595,18 @@ public class ARScanEntryView
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
           }
           if (QLog.isColorLevel()) {
-            QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete start jump :" + paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
+            QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete start jump :" + paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
           }
         }
-        else if ((paramamrz.a.jdField_d_of_type_Int == 6) && (paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
+        else if ((paramamwo.a.jdField_d_of_type_Int == 6) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
         {
-          azmj.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, paramamrz.a.jdField_b_of_type_JavaLangString, "1", "0", "");
-          paramamrz = paramamrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
+          azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, "1", "0", "");
+          paramamwo = paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
           localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-          if (a(paramamrz))
+          if (a(paramamwo))
           {
             localIntent = new Intent("android.intent.action.VIEW");
-            localIntent.setData(Uri.parse(paramamrz));
+            localIntent.setData(Uri.parse(paramamwo));
             localIntent.addFlags(268435456);
             localIntent.addCategory("android.intent.category.DEFAULT");
             localIntent.setPackage(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getPackageName());
@@ -1618,7 +1618,7 @@ public class ARScanEntryView
             return;
             localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
             localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-            localIntent.putExtra("url", paramamrz);
+            localIntent.putExtra("url", paramamwo);
             localIntent.putExtra("finish_animation_up_down", true);
             ((Activity)localObject).startActivity(localIntent);
           }
@@ -1627,7 +1627,7 @@ public class ARScanEntryView
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean, amrz paramamrz)
+  public void a(long paramLong, boolean paramBoolean, amwo paramamwo)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, "onAREnableModelRender, isEnable = " + paramBoolean);
@@ -1640,10 +1640,10 @@ public class ARScanEntryView
     {
       try
       {
-        switch (paramamrz.a.jdField_d_of_type_Int)
+        switch (paramamwo.a.jdField_d_of_type_Int)
         {
         case 0: 
-          azmj.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamrz.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
+          azqs.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
         }
       }
       catch (Exception localException)
@@ -1654,7 +1654,7 @@ public class ARScanEntryView
         this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.19(this));
         return;
       }
-      if ((!this.jdField_a_of_type_JavaUtilHashMap.containsValue(Integer.valueOf(0))) || (!paramamrz.a.d()))
+      if ((!this.jdField_a_of_type_JavaUtilHashMap.containsValue(Integer.valueOf(0))) || (!paramamwo.a.d()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AREngine_ARScanEntryView", 2, "onARStateChanged, AR_RECOG_STATE_LOST in");
@@ -1664,32 +1664,32 @@ public class ARScanEntryView
       else
       {
         return;
-        if (paramamrz.a.j())
+        if (paramamwo.a.j())
         {
           k = 3;
           break label433;
         }
-        if (!paramamrz.a.d()) {
+        if (!paramamwo.a.d()) {
           break label433;
         }
         k = 0;
         break label433;
-        if (paramamrz.a.j())
+        if (paramamwo.a.j())
         {
           k = 1;
           break label439;
         }
-        if (!paramamrz.a.i()) {
+        if (!paramamwo.a.i()) {
           break label439;
         }
         k = 5;
         break label439;
-        if (paramamrz.a.d())
+        if (paramamwo.a.d())
         {
           k = 2;
           break label445;
         }
-        paramBoolean = paramamrz.a.j();
+        paramBoolean = paramamwo.a.j();
         if (paramBoolean)
         {
           k = 4;
@@ -1701,8 +1701,8 @@ public class ARScanEntryView
         k = 100;
         continue;
       }
-      if ((paramamrz.a.jdField_a_of_type_Int == 1) && (paramamrz.a.e == 0)) {}
-      for (k = 1; (k == 0) || (paramamrz.a.d()); k = 0)
+      if ((paramamwo.a.jdField_a_of_type_Int == 1) && (paramamwo.a.e == 0)) {}
+      for (k = 1; (k == 0) || (paramamwo.a.d()); k = 0)
       {
         g(false);
         this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.20(this));
@@ -1723,22 +1723,22 @@ public class ARScanEntryView
     }
   }
   
-  public void a(ampd paramampd)
+  public void a(amts paramamts)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, "loadTransferDoorGuide ");
     }
-    avxl localavxl = a(true);
-    if (localavxl == null) {
+    awbu localawbu = a(true);
+    if (localawbu == null) {
       return;
     }
-    localavxl.a(paramampd);
+    localawbu.a(paramamts);
   }
   
-  public void a(amwl paramamwl, ArLBSActivity paramArLBSActivity)
+  public void a(anau paramanau, ArLBSActivity paramArLBSActivity)
   {
-    QLog.d("AREngine_ARScanEntryView", 2, "onLBSLocationComplete. retCode = " + paramamwl.jdField_a_of_type_Int + ", LBSActivity = " + paramArLBSActivity);
-    ThreadManager.getUIHandler().post(new ARScanEntryView.30(this, paramamwl, paramArLBSActivity));
+    QLog.d("AREngine_ARScanEntryView", 2, "onLBSLocationComplete. retCode = " + paramanau.jdField_a_of_type_Int + ", LBSActivity = " + paramArLBSActivity);
+    ThreadManager.getUIHandler().post(new ARScanEntryView.30(this, paramanau, paramArLBSActivity));
   }
   
   public void a(Bundle paramBundle)
@@ -1751,16 +1751,16 @@ public class ARScanEntryView
     this.B = this.jdField_a_of_type_AndroidOsBundle.getBoolean("enableARCloud", true);
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560818, this, false);
+      paramBundle = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560836, this, false);
       addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
       n();
       o();
       this.jdField_b_of_type_AndroidViewView = paramBundle;
     }
-    this.jdField_a_of_type_Avwn = new avwn(this.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.jdField_b_of_type_AndroidViewView, new ancn(this));
+    this.jdField_a_of_type_Awaw = new awaw(this.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.jdField_b_of_type_AndroidViewView, new angw(this));
     this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
     p();
-    anbk.a().a(this);
+    anft.a().a(this);
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
     }
@@ -1780,54 +1780,53 @@ public class ARScanEntryView
     }
   }
   
-  public void a(ArVideoResourceInfo paramArVideoResourceInfo, amqu paramamqu)
+  public void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.26(this, paramamqu, paramArVideoResourceInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.26(this, paramamvj, paramArVideoResourceInfo));
   }
   
-  public void a(String paramString, ampd paramampd, boolean paramBoolean)
+  public void a(String paramString, amts paramamts, boolean paramBoolean)
   {
     QLog.d("AREngine_ARScanEntryView", 1, "tryToEnterTransferMode[" + paramString + "], mIsTransferDoorMode[" + this.E + "], ready[" + paramBoolean + "]");
     this.E = true;
     this.D = true;
-    if (paramampd != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(paramampd.jdField_b_of_type_JavaLangString);
+    if (paramamts != null) {
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(paramamts.jdField_b_of_type_JavaLangString);
     }
     G();
-    if ((this.jdField_a_of_type_Amou.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Amou.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((anbo)this.jdField_a_of_type_Amou.jdField_a_of_type_JavaLangRefWeakReference.get()).q();
+    if ((this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((anfx)this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference.get()).q();
     }
-    if ((!paramBoolean) || (paramampd == null)) {
+    if ((!paramBoolean) || (paramamts == null)) {
       return;
     }
     this.F = true;
     d(false);
     b(1);
-    azmj.b(null, "dc00898", "", "", "0X80098C7", "0X80098C7", 0, 0, "1", "", "", "");
-    paramString = paramampd.a();
-    this.jdField_a_of_type_Amou.a(2);
-    this.jdField_a_of_type_Amou.c();
-    this.jdField_a_of_type_Amou.e();
-    this.jdField_a_of_type_Amou.a(paramString);
+    paramString = paramamts.a();
+    this.jdField_a_of_type_Amtj.a(2);
+    this.jdField_a_of_type_Amtj.c();
+    this.jdField_a_of_type_Amtj.e();
+    this.jdField_a_of_type_Amtj.a(paramString);
     E();
     j();
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.jdField_a_of_type_Avwn != null)
+    if (this.jdField_a_of_type_Awaw != null)
     {
-      QLog.w("AREngine_ARScanEntryView", 1, "showTipsWithProgress, from[" + paramString1 + "], tips[" + paramString2 + "], progress[" + paramInt + "], isVisible[" + this.jdField_a_of_type_Avwn.a() + "]");
-      this.jdField_a_of_type_Avwn.a(paramString2, paramInt);
+      QLog.w("AREngine_ARScanEntryView", 1, "showTipsWithProgress, from[" + paramString1 + "], tips[" + paramString2 + "], progress[" + paramInt + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]");
+      this.jdField_a_of_type_Awaw.a(paramString2, paramInt);
     }
   }
   
-  public void a(String paramString1, String paramString2, avwz paramavwz)
+  public void a(String paramString1, String paramString2, awbi paramawbi)
   {
-    if (this.jdField_a_of_type_Avwn != null)
+    if (this.jdField_a_of_type_Awaw != null)
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString1 + "], isVisible[" + this.jdField_a_of_type_Avwn.a() + "]", new Throwable("打印调用栈"));
-      this.jdField_a_of_type_Avwn.a(paramString1, paramString2, paramavwz);
+      QLog.d("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString1 + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]", new Throwable("打印调用栈"));
+      this.jdField_a_of_type_Awaw.a(paramString1, paramString2, paramawbi);
     }
   }
   
@@ -1838,21 +1837,21 @@ public class ARScanEntryView
       QLog.w("AREngine_ARScanEntryView", 1, "showLoadProgress, 已经在穿越门里面了, from[" + paramString + "]");
       return;
     }
-    this.jdField_a_of_type_Ando.a();
+    this.jdField_a_of_type_Anhx.a();
     int i2 = (this.jdField_d_of_type_Int + this.jdField_c_of_type_Int) / 2;
     QLog.d("AREngine_ARScanEntryView", 1, "showLoadProgress mCurrentAsyncProgress:=" + this.jdField_d_of_type_Int + ",mCurrentSyncProgress:=" + this.jdField_c_of_type_Int);
     int k;
     label142:
     int m;
-    if ((this.jdField_a_of_type_Amqf != null) && (this.jdField_a_of_type_Amqf.a()))
+    if ((this.jdField_a_of_type_Amuu != null) && (this.jdField_a_of_type_Amuu.a()))
     {
       k = 1;
-      avxp localavxp = this.jdField_a_of_type_Ando.a();
-      if ((localavxp == null) || (!this.D)) {
+      awby localawby = this.jdField_a_of_type_Anhx.a();
+      if ((localawby == null) || (!this.D)) {
         break label274;
       }
-      paramBoolean = localavxp.c();
-      m = localavxp.a();
+      paramBoolean = localawby.c();
+      m = localawby.a();
     }
     for (;;)
     {
@@ -1870,11 +1869,11 @@ public class ARScanEntryView
           break;
         }
         this.x = true;
-        azmj.b(null, "dc00898", "", "", "0X80085B6", "0X80085B6", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X80085B6", "0X80085B6", 0, 0, "", "", "", "");
         return;
         k = 0;
         break label142;
-        a(paramString, alpo.a(2131701119), i1);
+        a(paramString, alud.a(2131701131), i1);
       }
       label274:
       m = 0;
@@ -1906,7 +1905,7 @@ public class ARScanEntryView
   {
     boolean bool1 = false;
     boolean bool2 = false;
-    if (bdje.a(paramString)) {}
+    if (bdnn.a(paramString)) {}
     do
     {
       return bool2;
@@ -1936,7 +1935,7 @@ public class ARScanEntryView
     if (a(false) == null) {
       return;
     }
-    this.jdField_a_of_type_Avxl.a(paramInt);
+    this.jdField_a_of_type_Awbu.a(paramInt);
   }
   
   public void b(int paramInt1, int paramInt2) {}
@@ -1950,7 +1949,7 @@ public class ARScanEntryView
   
   public boolean b()
   {
-    return (this.C) && (this.m) && (this.jdField_a_of_type_Anbo.b() == 2);
+    return (this.C) && (this.m) && (this.jdField_a_of_type_Anfx.b() == 2);
   }
   
   public void c()
@@ -1984,16 +1983,16 @@ public class ARScanEntryView
     this.o = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_Amtf != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Bdfq.isShowing())) {
-      this.jdField_a_of_type_Amtf.jdField_a_of_type_Bdfq.dismiss();
+    if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.dismiss();
     }
-    if ((this.jdField_a_of_type_Amtf != null) && (this.jdField_a_of_type_Amtf.jdField_a_of_type_Avwn != null)) {
-      this.jdField_a_of_type_Amtf.jdField_a_of_type_Avwn.a();
+    if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw != null)) {
+      this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw.a();
     }
-    if (this.jdField_a_of_type_Amou != null) {
-      this.jdField_a_of_type_Amou.b();
+    if (this.jdField_a_of_type_Amtj != null) {
+      this.jdField_a_of_type_Amtj.b();
     }
-    amqa.a().a();
+    amup.a().a();
   }
   
   public void c(boolean paramBoolean)
@@ -2009,10 +2008,10 @@ public class ARScanEntryView
     QLog.d("AREngine_ARScanEntryView", 1, "onPause ");
     g(false);
     L();
-    if (this.jdField_a_of_type_Amou != null) {
-      this.jdField_a_of_type_Amou.g();
+    if (this.jdField_a_of_type_Amtj != null) {
+      this.jdField_a_of_type_Amtj.g();
     }
-    amqa.a().e();
+    amup.a().e();
     this.h = true;
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.onPause();
@@ -2020,11 +2019,11 @@ public class ARScanEntryView
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
     }
-    if (this.jdField_a_of_type_Amob != null) {
-      this.jdField_a_of_type_Amob.dismiss();
+    if (this.jdField_a_of_type_Amsq != null) {
+      this.jdField_a_of_type_Amsq.dismiss();
     }
-    if (this.jdField_a_of_type_Bdfq != null) {
-      this.jdField_a_of_type_Bdfq.dismiss();
+    if (this.jdField_a_of_type_Bdjz != null) {
+      this.jdField_a_of_type_Bdjz.dismiss();
     }
     super.d();
   }
@@ -2037,7 +2036,16 @@ public class ARScanEntryView
     if (a(true) == null) {
       return;
     }
-    this.jdField_a_of_type_Avxl.a(paramBoolean);
+    this.jdField_a_of_type_Awbu.a(paramBoolean);
+  }
+  
+  public void d_(String paramString)
+  {
+    if (this.jdField_a_of_type_Awaw != null)
+    {
+      QLog.w("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]", new Throwable("打印调用栈"));
+      this.jdField_a_of_type_Awaw.a(paramString);
+    }
   }
   
   public void e()
@@ -2046,22 +2054,22 @@ public class ARScanEntryView
     if (this.A) {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("dc00898", "", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8008614", "0X8008614", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_Ando.a().f();
-    if ((this.jdField_a_of_type_Anbo != null) && (this.jdField_a_of_type_Anbo.b()))
+    this.jdField_a_of_type_Anhx.a().f();
+    if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
     {
-      this.jdField_a_of_type_Anbo.i();
-      this.jdField_a_of_type_Anbo.j();
+      this.jdField_a_of_type_Anfx.i();
+      this.jdField_a_of_type_Anfx.j();
     }
-    this.jdField_a_of_type_Anbo = null;
-    anbo.r();
-    anbk.a().b(this);
-    if (this.jdField_a_of_type_Amou != null)
+    this.jdField_a_of_type_Anfx = null;
+    anfx.r();
+    anft.a().b(this);
+    if (this.jdField_a_of_type_Amtj != null)
     {
-      this.jdField_a_of_type_Amou.h();
-      this.jdField_a_of_type_Amou = null;
+      this.jdField_a_of_type_Amtj.h();
+      this.jdField_a_of_type_Amtj = null;
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Annt);
-    amqa.a().f();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ansc);
+    amup.a().f();
     removeAllViews();
     this.jdField_b_of_type_AndroidViewView = null;
     if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ScanTorchActivity))) {
@@ -2114,13 +2122,13 @@ public class ARScanEntryView
       break;
     }
     label101:
-    localObject = this.jdField_a_of_type_Ando.a();
-    avxp localavxp = this.jdField_a_of_type_Ando.a();
-    if ((this.D) && (localavxp != null)) {}
-    for (bool = localavxp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);; bool = true)
+    localObject = this.jdField_a_of_type_Anhx.a();
+    awby localawby = this.jdField_a_of_type_Anhx.a();
+    if ((this.D) && (localawby != null)) {}
+    for (bool = localawby.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);; bool = true)
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 2222, " + ((anbr)localObject).a() + ";" + bool);
-      if ((((anbr)localObject).a()) && (bool))
+      QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 2222, " + ((anga)localObject).a() + ";" + bool);
+      if ((((anga)localObject).a()) && (bool))
       {
         if ((!this.t) && (!this.u) && (!paramBoolean)) {
           break;
@@ -2133,17 +2141,17 @@ public class ARScanEntryView
       }
       int k;
       if (this.D) {
-        if ((localavxp != null) && (!localavxp.a()) && (!((anbr)localObject).b())) {
+        if ((localawby != null) && (!localawby.a()) && (!((anga)localObject).b())) {
           k = 1;
         }
       }
       for (;;)
       {
-        QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 333, " + ((anbr)localObject).b());
+        QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 333, " + ((anga)localObject).b());
         if (k == 0) {
           break label406;
         }
-        a("AR组件加载失败", alpo.a(2131701117), new ancu(this, (anbr)localObject, localavxp));
+        a("AR组件加载失败", alud.a(2131701129), new anhd(this, (anga)localObject, localawby));
         this.v = true;
         this.t = true;
         C();
@@ -2151,11 +2159,11 @@ public class ARScanEntryView
           break;
         }
         this.w = true;
-        azmj.b(null, "dc00898", "", "", "0X80085B5", "0X80085B5", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X80085B5", "0X80085B5", 0, 0, "", "", "", "");
         return;
         k = 0;
         continue;
-        if (!((anbr)localObject).b()) {
+        if (!((anga)localObject).b()) {
           k = 1;
         } else {
           k = 0;
@@ -2168,18 +2176,9 @@ public class ARScanEntryView
     }
   }
   
-  public void e_(String paramString)
-  {
-    if (this.jdField_a_of_type_Avwn != null)
-    {
-      QLog.w("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString + "], isVisible[" + this.jdField_a_of_type_Avwn.a() + "]", new Throwable("打印调用栈"));
-      this.jdField_a_of_type_Avwn.a(paramString);
-    }
-  }
-  
   public void f()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewShow. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anbo.b());
+    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewShow. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anfx.b());
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     super.f();
     K();
@@ -2188,7 +2187,7 @@ public class ARScanEntryView
     {
       J();
       g(true);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Annt);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ansc);
       if (f())
       {
         this.A = true;
@@ -2197,10 +2196,10 @@ public class ARScanEntryView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Amou != null) {
-        this.jdField_a_of_type_Amou.b();
+      if (this.jdField_a_of_type_Amtj != null) {
+        this.jdField_a_of_type_Amtj.b();
       }
-      amqa.a().a();
+      amup.a().a();
       return;
       g(false);
     }
@@ -2208,22 +2207,22 @@ public class ARScanEntryView
   
   public void g()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewClose. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anbo.b());
+    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewClose. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anfx.b());
     super.g();
     L();
-    this.jdField_a_of_type_Ando.a().f();
+    this.jdField_a_of_type_Anhx.a().f();
     g(false);
     E();
     j();
     this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.d();
     this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
     Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Annt);
-    if (this.jdField_a_of_type_Amou != null) {
-      this.jdField_a_of_type_Amou.g();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ansc);
+    if (this.jdField_a_of_type_Amtj != null) {
+      this.jdField_a_of_type_Amtj.g();
     }
-    amqa.a().e();
-    this.jdField_a_of_type_Ando.b(true);
+    amup.a().e();
+    this.jdField_a_of_type_Anhx.b(true);
     this.L = false;
   }
   
@@ -2238,8 +2237,8 @@ public class ARScanEntryView
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(313);
     }
-    if (this.jdField_a_of_type_Anbo != null) {
-      this.jdField_a_of_type_Anbo.p();
+    if (this.jdField_a_of_type_Anfx != null) {
+      this.jdField_a_of_type_Anfx.p();
     }
   }
   
@@ -2269,7 +2268,7 @@ public class ARScanEntryView
                   paramMessage = new RelativeLayout.LayoutParams(-1, -1);
                   this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView = new ScanSuccessView(this.jdField_a_of_type_AndroidContentContext);
                   this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setBackgroundColor(2130706432);
-                  this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setScale(azgq.jdField_a_of_type_Int);
+                  this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setScale(azkz.jdField_a_of_type_Int);
                   this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView, paramMessage);
                   this.jdField_a_of_type_AndroidOsHandler.removeMessages(352);
                 } while (!e());
@@ -2332,13 +2331,13 @@ public class ARScanEntryView
       a();
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      amqa.a().b(6);
+      amup.a().b(6);
     }
     for (;;)
     {
       if (this.i)
       {
-        yym.b();
+        zdb.b();
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
       }
       return;
@@ -2346,20 +2345,20 @@ public class ARScanEntryView
       localHashMap.put("ar_model", Build.MODEL);
       localHashMap.put("ar_type", "3");
       localHashMap.put("ar_reason", "1");
-      azmz.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
+      azri.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
     }
   }
   
   public void j()
   {
-    if (this.jdField_a_of_type_Avwn != null)
+    if (this.jdField_a_of_type_Awaw != null)
     {
       Throwable localThrowable = null;
-      if (this.jdField_a_of_type_Avwn.a()) {
+      if (this.jdField_a_of_type_Awaw.a()) {
         localThrowable = new Throwable("打印调用栈");
       }
       QLog.w("AREngine_ARScanEntryView", 1, "hideTips", localThrowable);
-      this.jdField_a_of_type_Avwn.a();
+      this.jdField_a_of_type_Awaw.a();
     }
   }
   
@@ -2384,25 +2383,25 @@ public class ARScanEntryView
     {
     default: 
       return;
-    case 2131377905: 
+    case 2131377959: 
       ((ScanTorchActivity)localObject1).a(false);
       return;
-    case 2131378176: 
+    case 2131378230: 
       if (QLog.isColorLevel()) {
         QLog.i("AREngine_ARScanEntryView", 2, "onClick R.id.touch_view");
       }
-      if ((this.jdField_a_of_type_Amrz != null) && (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
+      if ((this.jdField_a_of_type_Amwo != null) && (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
       {
-        if (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) {
+        if (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) {
           break label503;
         }
-        azmj.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString, "0", "1", "");
-        if (this.jdField_a_of_type_Amrz.a.c()) {
-          azmj.b(null, "CliOper", "", "", "0X80098D0", "0X80098D0", 0, 0, this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString, "1", "0", "");
+        azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "0", "1", "");
+        if (this.jdField_a_of_type_Amwo.a.c()) {
+          azqs.b(null, "CliOper", "", "", "0X80098D1", "0X80098D1", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "1", "0", "");
         }
-        paramView = this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
+        paramView = this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
         ((ScanTorchActivity)localObject1).setResult(11);
-        amqa.a().b(3);
+        amup.a().b(3);
         if (!a(paramView)) {
           break label459;
         }
@@ -2416,14 +2415,14 @@ public class ARScanEntryView
       }
       for (;;)
       {
-        if ((this.jdField_a_of_type_Amrz != null) && (!this.jdField_a_of_type_Amrz.a.d())) {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString, "2");
+        if ((this.jdField_a_of_type_Amwo != null) && (!this.jdField_a_of_type_Amwo.a.d())) {
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "2");
         }
         y();
-        if ((this.jdField_a_of_type_Amrz == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString))) {
+        if ((this.jdField_a_of_type_Amwo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString))) {
           break;
         }
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D1", "0X80069D1", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString, "");
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D1", "0X80069D1", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "");
         return;
         localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_sacan");
@@ -2431,15 +2430,15 @@ public class ARScanEntryView
         ((ScanTorchActivity)localObject1).startActivity((Intent)localObject2);
         break label312;
         label503:
-        azmj.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amrz.a.jdField_b_of_type_JavaLangString, "0", "0", "");
+        azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "0", "0", "");
         this.o = true;
         g(false);
         v();
         w();
-        if (this.jdField_a_of_type_Anbo != null)
+        if (this.jdField_a_of_type_Anfx != null)
         {
-          this.jdField_a_of_type_Anbo.a(1L);
-          this.jdField_a_of_type_Anbo.l();
+          this.jdField_a_of_type_Anfx.a(1L);
+          this.jdField_a_of_type_Anfx.l();
         }
         i();
       }
@@ -2448,7 +2447,7 @@ public class ARScanEntryView
       QLog.d("AREngine_ARScanEntryView", 2, "find button clicked what2scanUrl = " + this.jdField_c_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("dc00898", "", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8008615", "0X8008615", 0, 0, "", "", "", "");
-    paramView = annu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    paramView = ansd.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
@@ -2492,7 +2491,7 @@ public class ARScanEntryView
   {
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
     paramRect = (ViewGroup.MarginLayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
-    paramRect.setMargins(paramRect.leftMargin, this.jdField_a_of_type_AndroidGraphicsRect.bottom + aekt.a(30.0F, getResources()), paramRect.rightMargin, paramRect.bottomMargin);
+    paramRect.setMargins(paramRect.leftMargin, this.jdField_a_of_type_AndroidGraphicsRect.bottom + aepi.a(30.0F, getResources()), paramRect.rightMargin, paramRect.bottomMargin);
   }
 }
 

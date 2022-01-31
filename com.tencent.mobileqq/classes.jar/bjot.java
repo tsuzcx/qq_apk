@@ -1,8 +1,14 @@
-public abstract class bjot
+public abstract interface bjot
 {
-  public static bjot a = new bjou();
+  public abstract void a(bjos parambjos);
   
-  public abstract int a(String paramString, int paramInt);
+  public abstract void b(bjos parambjos);
+  
+  public abstract void c(bjos parambjos);
+  
+  public abstract void d(bjos parambjos);
+  
+  public abstract void e(bjos parambjos);
 }
 
 

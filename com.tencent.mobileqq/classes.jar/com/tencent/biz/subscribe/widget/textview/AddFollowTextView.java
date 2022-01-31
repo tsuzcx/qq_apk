@@ -24,20 +24,20 @@ public class AddFollowTextView
   
   protected void a()
   {
-    setBackgroundResource(2130838721);
+    setBackgroundResource(2130838722);
     setGravity(17);
     setOnClickListener(this);
   }
   
   protected void b()
   {
-    setBackgroundResource(2130838723);
+    setBackgroundResource(2130838724);
     postDelayed(new AddFollowTextView.1(this), 2000L);
   }
   
   protected void c()
   {
-    setBackgroundResource(2130838721);
+    setBackgroundResource(2130838722);
     setVisibility(0);
   }
 }

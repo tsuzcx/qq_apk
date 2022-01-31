@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.util.ArrayList;
 
-public class bcha
+public abstract interface bcha
 {
-  public RollangleImageView a;
-  public String a;
+  public abstract void a(ArrayList<bcgz> paramArrayList);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,14 +27,14 @@ public class ReadInJoyDraftboxActivity
     }
     qzi.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     setContentView(2131558451);
-    setTitle(alpo.a(2131713271));
-    this.leftView.setText(alpo.a(2131713260));
+    setTitle(alud.a(2131713283));
+    this.leftView.setText(alud.a(2131713272));
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new TopEdgeGestureLayout(this));
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment = new ReadInJoyDraftboxFragment();
-    localFragmentTransaction.add(2131366780, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
+    localFragmentTransaction.add(2131366790, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.commit();
   }

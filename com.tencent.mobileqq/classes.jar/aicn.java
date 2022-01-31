@@ -1,15 +1,20 @@
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicn
+public class aicn
   implements View.OnClickListener
 {
-  aicn(aicl paramaicl) {}
+  public aicn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    if (this.a.jdField_d_of_type_Int == 11) {
+      azqs.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    }
+    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
   }
 }
 

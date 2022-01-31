@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bdkf;
+import bdoo;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -104,8 +104,8 @@ public class ReadInJoyAdGestureView
     if (BaseApplicationImpl.getContext() == null) {
       return;
     }
-    int n = bdkf.a();
-    int i1 = bdkf.b();
+    int n = bdoo.a();
+    int i1 = bdoo.b();
     if ((i1 == 0) || (n == 0)) {
       QLog.e("ReadInJoyAdGestureView", 2, "initStartPostionXY get Screen width and high error screenHigh:" + i1 + " screenWidth:" + n);
     }
@@ -118,7 +118,7 @@ public class ReadInJoyAdGestureView
     for (;;)
     {
       this.jdField_g_of_type_Float = (f2 * paramFloat1 + n / 2);
-      this.jdField_h_of_type_Float = (f1 * paramFloat2 + i1 / 2 - aekt.a(58.0F, BaseApplicationImpl.getContext().getResources()));
+      this.jdField_h_of_type_Float = (f1 * paramFloat2 + i1 / 2 - aepi.a(58.0F, BaseApplicationImpl.getContext().getResources()));
       return;
       f1 = n / 0.5625F;
     }
@@ -310,7 +310,7 @@ public class ReadInJoyAdGestureView
       {
       case 1: 
         if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(aekt.a(9.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(aepi.a(9.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
         }
         if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_AndroidGraphicsPaint == null)) {
           return;
@@ -364,8 +364,8 @@ public class ReadInJoyAdGestureView
     this.jdField_a_of_type_Int = paramobe.jdField_a_of_type_Int;
     this.jdField_c_of_type_Float = ((float)paramobe.jdField_c_of_type_Double);
     this.jdField_d_of_type_Float = ((float)paramobe.d);
-    this.jdField_e_of_type_Float = aekt.a((float)paramobe.jdField_b_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    this.jdField_f_of_type_Float = aekt.a((float)paramobe.jdField_a_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    this.jdField_e_of_type_Float = aepi.a((float)paramobe.jdField_b_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    this.jdField_f_of_type_Float = aepi.a((float)paramobe.jdField_a_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
     a(this.jdField_c_of_type_Float, this.jdField_d_of_type_Float);
     this.i = a(this.jdField_g_of_type_Float + this.jdField_e_of_type_Float / 2.0F, this.jdField_h_of_type_Float + this.jdField_f_of_type_Float / 2.0F)[0];
     this.j = a(this.jdField_g_of_type_Float + this.jdField_e_of_type_Float / 2.0F, this.jdField_h_of_type_Float + this.jdField_f_of_type_Float / 2.0F)[1];

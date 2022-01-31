@@ -1,48 +1,37 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class apfo
+  extends MSFServlet
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public apfo() {}
-  
-  public apfo(long paramLong, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
+    }
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
   }
   
-  public apfo(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", url").append(this.c);
-    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",picUin:").append(this.d);
-    return localStringBuilder.toString();
+    if ((paramIntent instanceof QzoneCommonIntent))
+    {
+      bjdo localbjdo = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localbjdo.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localbjdo.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

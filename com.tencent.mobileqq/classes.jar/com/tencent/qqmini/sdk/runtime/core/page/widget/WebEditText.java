@@ -14,7 +14,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bhcq;
+import bhgx;
 import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
 import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
@@ -28,7 +28,7 @@ public class WebEditText
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
   private int jdField_a_of_type_Int;
-  private bhcq jdField_a_of_type_Bhcq;
+  private bhgx jdField_a_of_type_Bhgx;
   private String jdField_a_of_type_JavaLangString = "normal";
   private WeakReference<PageWebview> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
@@ -43,7 +43,7 @@ public class WebEditText
   private int e;
   private int f;
   
-  public WebEditText(Context paramContext, bhcq parambhcq)
+  public WebEditText(Context paramContext, bhgx parambhgx)
   {
     super(paramContext);
     super.setBackgroundDrawable(null);
@@ -54,7 +54,7 @@ public class WebEditText
       super.setLineSpacing(0.0F, 1.0F);
     }
     super.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_Bhcq = parambhcq;
+    this.jdField_a_of_type_Bhgx = parambhgx;
   }
   
   public int a()
@@ -254,7 +254,7 @@ public class WebEditText
   
   public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_Bhcq != null) && (this.jdField_a_of_type_Bhcq.a(this.e)))
+    if ((this.jdField_a_of_type_Bhgx != null) && (this.jdField_a_of_type_Bhgx.a(this.e)))
     {
       super.requestFocus();
       QMLog.d("WebEditText", "showSoftInput for inputId=" + this.e);
@@ -267,9 +267,9 @@ public class WebEditText
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Bhcq != null) && (this.jdField_a_of_type_Bhcq.a()))
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Bhgx != null) && (this.jdField_a_of_type_Bhgx.a()))
     {
-      this.jdField_a_of_type_Bhcq.a(true);
+      this.jdField_a_of_type_Bhgx.a(true);
       return true;
     }
     return super.onKeyPreIme(paramInt, paramKeyEvent);

@@ -3,19 +3,19 @@ package com.tencent.mobileqq.copyprompt;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import aowl;
+import apau;
 
 public class LiteCopyPromptHelper$4
   implements Runnable
 {
-  public LiteCopyPromptHelper$4(aowl paramaowl) {}
+  public LiteCopyPromptHelper$4(apau paramapau) {}
   
   public void run()
   {
-    if ((aowl.a(this.this$0) != null) && (aowl.a(this.this$0).getParent() != null))
+    if ((apau.a(this.this$0) != null) && (apau.a(this.this$0).getParent() != null))
     {
-      ((RelativeLayout)aowl.a(this.this$0).findViewById(2131364137)).removeView(aowl.a(this.this$0));
-      aowl.a(this.this$0, null);
+      ((RelativeLayout)apau.a(this.this$0).findViewById(2131364139)).removeView(apau.a(this.this$0));
+      apau.a(this.this$0, null);
     }
   }
 }

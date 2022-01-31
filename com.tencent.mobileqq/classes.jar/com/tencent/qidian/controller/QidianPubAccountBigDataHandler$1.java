@@ -1,15 +1,15 @@
 package com.tencent.qidian.controller;
 
-import bfvk;
+import bfzr;
 
 public class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bfvk parambfvk) {}
+  public QidianPubAccountBigDataHandler$1(bfzr parambfzr) {}
   
   public void run()
   {
-    bfvk.a(this.this$0);
+    bfzr.a(this.this$0);
   }
 }
 

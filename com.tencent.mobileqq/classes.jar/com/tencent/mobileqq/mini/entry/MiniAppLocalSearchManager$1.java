@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awbv;
-import awbw;
-import awbx;
+import awge;
+import awgf;
+import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ class MiniAppLocalSearchManager$1
         localObject2 = MiniAppLocalSearchEntity.class.getSimpleName();
         Object localObject3 = this.val$miniAppInfo.appId;
         String str = this.val$miniAppInfo.appId;
-        localObject2 = ((awbw)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
+        localObject2 = ((awgf)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
         if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
           break;
         }
@@ -38,12 +38,12 @@ class MiniAppLocalSearchManager$1
         {
           localObject3 = (MiniAppLocalSearchEntity)((Iterator)localObject2).next();
           ((MiniAppLocalSearchEntity)localObject3).showMask = 1;
-          MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject3);
+          MiniAppLocalSearchManager.access$100(this.this$0, (awgf)localObject1, (awge)localObject3);
         }
       }
     }
     Object localObject2 = new MiniAppLocalSearchEntity(this.val$miniAppInfo.appId, this.val$miniAppInfo.name, this.val$miniAppInfo.iconUrl, this.val$miniAppInfo.desc, 1);
-    MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject2);
+    MiniAppLocalSearchManager.access$100(this.this$0, (awgf)localObject1, (awge)localObject2);
   }
 }
 

@@ -1,30 +1,82 @@
-import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class anpk
 {
-  public static float a(double paramDouble)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+  private int b;
+  private int c;
+  
+  private anpk(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
+    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
+    if (localFrameLayout == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new anpl(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    paramArkAppView = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
+    this.c = paramArkAppView.heightPixels;
+    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
   }
   
-  public static float a(float paramFloat1, float paramFloat2)
+  private int a()
   {
-    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
   }
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  private void a()
   {
-    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
+    int i = a();
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = k - i;
+      if (j <= k / 4) {
+        break label104;
+      }
+      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+      k = localRect.bottom + arrayOfInt[1];
+      j = this.c - j;
+      if (j < k)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label104:
+      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+    }
   }
   
-  public static float a(Vector3 paramVector31, Vector3 paramVector32)
+  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
+    new anpk(paramActivity, paramArkAppView);
   }
 }
 

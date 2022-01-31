@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import azmz;
+import azri;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ public class VideoCallStateMonitor$1
   
   public void run()
   {
-    azmz.a(BaseApplication.getContext()).a(lfe.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
+    azri.a(BaseApplication.getContext()).a(lfe.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
   }
 }
 

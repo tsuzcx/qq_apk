@@ -1,76 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 class aswt
-  implements Handler.Callback
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  aswt(asws paramasws) {}
+  aswt(aswm paramaswm) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
     }
-    do
-    {
-      return false;
-      Object localObject = asws.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aswu)((Iterator)localObject).next()).a(paramMessage.arg1);
-      }
-      localObject = asws.a(this.a).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        aswu localaswu = (aswu)((Iterator)localObject).next();
-        if (paramMessage.arg1 == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaswu.a(bool, (Throwable)paramMessage.obj);
-          break;
-        }
-      }
-      localObject = new Intent(aswm.a(asws.a(this.a).c));
-      if (paramMessage.arg1 == 0)
-      {
-        if (aswm.a(asws.a(this.a).c)) {}
-        for (int i = 9;; i = 8)
-        {
-          ((Intent)localObject).putExtra("key_state", i);
-          asws.a(this.a).sendBroadcast((Intent)localObject);
-          if (aswz.a.get(asws.a(this.a)) == null) {
-            break;
-          }
-          aswy.b(String.valueOf(((aswz)aswz.a.get(asws.a(this.a))).f));
-          return false;
-        }
-      }
-      if (aswm.a(asws.a(this.a).c)) {
-        aswy.a("2691708");
-      }
-      for (;;)
-      {
-        aswh.a((Throwable)paramMessage.obj);
-        ((Intent)localObject).putExtra("key_state", 7);
-        asws.a(this.a).sendBroadcast((Intent)localObject);
-        return false;
-        if (aswm.b(asws.a(this.a).c)) {
-          aswy.a("2597726");
-        } else if (aswz.a.get(asws.a(this.a)) != null) {
-          aswy.b(String.valueOf(((aswz)aswz.a.get(asws.a(this.a))).e));
-        }
-      }
-      paramMessage = new Intent(aswm.a(asws.a(this.a).c));
-      paramMessage.putExtra("key_state", 6);
-      asws.a(this.a).sendBroadcast(paramMessage);
-    } while (aswz.a.get(asws.a(this.a)) == null);
-    aswy.b(String.valueOf(((aswz)aswz.a.get(asws.a(this.a))).d));
-    return false;
   }
 }
 

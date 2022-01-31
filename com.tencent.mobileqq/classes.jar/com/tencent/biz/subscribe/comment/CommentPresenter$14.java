@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tribe.async.dispatch.Dispatcher;
-import uht;
-import ybt;
-import ybx;
+import umc;
+import ygc;
+import ygg;
 
 public class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(ybx paramybx) {}
+  public CommentPresenter$14(ygg paramygg) {}
   
   public void run()
   {
-    uht.a().dispatch(new ybt(1, new Object[0]));
+    umc.a().dispatch(new ygc(1, new Object[0]));
   }
 }
 

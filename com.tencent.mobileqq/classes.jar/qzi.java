@@ -50,7 +50,7 @@ public class qzi
   public static String h = "1";
   public static String i = "2";
   public static String j = "3";
-  private static final String k = "QQ/8.3.3 Android/0.17 Android/" + Build.VERSION.RELEASE;
+  private static final String k = "QQ/8.3.5 Android/0.17 Android/" + Build.VERSION.RELEASE;
   private ViolaBaseView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView;
   private volatile HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private long b;
@@ -86,7 +86,7 @@ public class qzi
   
   private String a(String paramString1, String paramString2)
   {
-    return bhoo.a(paramString1, paramString2);
+    return bhsv.a(paramString1, paramString2);
   }
   
   private String a(String paramString1, String paramString2, String paramString3)
@@ -96,8 +96,8 @@ public class qzi
       return null;
     }
     localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getAccount()).createEntityManager();
-    paramString1 = (CouponH5Data)((awbw)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
-    ((awbw)localObject).a();
+    paramString1 = (CouponH5Data)((awgf)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    ((awgf)localObject).a();
     if (paramString1 != null) {}
     for (paramString1 = paramString1.mData;; paramString1 = null) {
       return paramString1;
@@ -163,16 +163,16 @@ public class qzi
       return;
     }
     localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getAccount()).createEntityManager();
-    CouponH5Data localCouponH5Data = (CouponH5Data)((awbw)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    CouponH5Data localCouponH5Data = (CouponH5Data)((awgf)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
     if (localCouponH5Data == null) {
-      ((awbw)localObject).a(new CouponH5Data(paramString1, paramString2, paramString3, paramString4));
+      ((awgf)localObject).a(new CouponH5Data(paramString1, paramString2, paramString3, paramString4));
     }
     for (;;)
     {
-      ((awbw)localObject).a();
+      ((awgf)localObject).a();
       return;
       localCouponH5Data.mData = paramString4;
-      ((awbw)localObject).a(localCouponH5Data);
+      ((awgf)localObject).a(localCouponH5Data);
     }
   }
   
@@ -300,7 +300,7 @@ public class qzi
     //   248: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: aload 6
     //   253: invokevirtual 171	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   256: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   256: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   259: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: ldc_w 347
     //   265: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -309,12 +309,12 @@ public class qzi
     //   273: ldc_w 347
     //   276: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: aload 5
-    //   281: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   281: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   284: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: ldc_w 347
     //   290: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: aload_1
-    //   294: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   294: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   297: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   303: invokespecial 352	java/io/File:<init>	(Ljava/lang/String;)V
@@ -661,7 +661,7 @@ public class qzi
     //   248: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: aload 9
     //   253: invokevirtual 171	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   256: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   256: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   259: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   265: invokespecial 352	java/io/File:<init>	(Ljava/lang/String;)V
@@ -688,7 +688,7 @@ public class qzi
     //   306: dup
     //   307: aload_1
     //   308: aload_3
-    //   309: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   309: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   312: invokespecial 411	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   315: astore 8
     //   317: aload 8
@@ -711,7 +711,7 @@ public class qzi
     //   344: dup
     //   345: aload 8
     //   347: aload 4
-    //   349: invokestatic 351	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   349: invokestatic 351	bdhe:b	(Ljava/lang/String;)Ljava/lang/String;
     //   352: invokespecial 411	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   355: astore 4
     //   357: aload_3
@@ -903,7 +903,7 @@ public class qzi
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramString.getBytes("UTF-8"));
-      paramString = bdcv.a(localMessageDigest.digest());
+      paramString = bdhe.a(localMessageDigest.digest());
       localMessageDigest.reset();
       return paramString;
     }
@@ -920,7 +920,7 @@ public class qzi
   
   private String b(String paramString1, String paramString2)
   {
-    return bhoo.b(paramString1, paramString2);
+    return bhsv.b(paramString1, paramString2);
   }
   
   private void b(String paramString1, String paramString2)
@@ -1085,7 +1085,7 @@ public class qzi
     //   119: dup
     //   120: aload_3
     //   121: iconst_0
-    //   122: invokestatic 590	bdbi:decode	(Ljava/lang/String;I)[B
+    //   122: invokestatic 590	bdfr:decode	(Ljava/lang/String;I)[B
     //   125: invokespecial 375	java/lang/String:<init>	([B)V
     //   128: astore_3
     //   129: aload_3
@@ -1331,7 +1331,7 @@ public class qzi
     //   686: invokestatic 710	java/lang/Long:toString	(J)Ljava/lang/String;
     //   689: invokevirtual 712	java/lang/String:getBytes	()[B
     //   692: iconst_0
-    //   693: invokestatic 716	bdbi:encode	([BI)[B
+    //   693: invokestatic 716	bdfr:encode	([BI)[B
     //   696: invokespecial 375	java/lang/String:<init>	([B)V
     //   699: invokevirtual 250	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   702: pop
@@ -1355,7 +1355,7 @@ public class qzi
     //   745: invokevirtual 463	java/lang/Long:longValue	()J
     //   748: invokestatic 710	java/lang/Long:toString	(J)Ljava/lang/String;
     //   751: iconst_1
-    //   752: invokestatic 725	bdbt:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   752: invokestatic 725	bdgc:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   755: astore 12
     //   757: aload 11
     //   759: ldc_w 718
@@ -1447,7 +1447,7 @@ public class qzi
     //   953: invokestatic 710	java/lang/Long:toString	(J)Ljava/lang/String;
     //   956: invokevirtual 712	java/lang/String:getBytes	()[B
     //   959: iconst_0
-    //   960: invokestatic 716	bdbi:encode	([BI)[B
+    //   960: invokestatic 716	bdfr:encode	([BI)[B
     //   963: invokespecial 375	java/lang/String:<init>	([B)V
     //   966: invokevirtual 250	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   969: pop
@@ -1470,7 +1470,7 @@ public class qzi
     //   1008: invokevirtual 463	java/lang/Long:longValue	()J
     //   1011: invokestatic 710	java/lang/Long:toString	(J)Ljava/lang/String;
     //   1014: iconst_1
-    //   1015: invokestatic 725	bdbt:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   1015: invokestatic 725	bdgc:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
     //   1018: astore_3
     //   1019: aload 8
     //   1021: ldc_w 752
@@ -1916,7 +1916,7 @@ public class qzi
     if (localQQAppInterface == null) {
       return false;
     }
-    if ((b()) && (bjxj.y(localQQAppInterface))) {}
+    if ((b()) && (bkbq.y(localQQAppInterface))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

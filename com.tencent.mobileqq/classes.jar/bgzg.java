@@ -1,62 +1,101 @@
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bgzg
-  extends bgzp
 {
-  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
+  private static MiniAppInfo a;
+  private static MiniAppInfo b;
   
-  public bgzg(String paramString1, String paramString2)
+  public static void a()
   {
-    this.a.appid.set(paramString1);
-    this.a.groupid.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_misc";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    QMLog.d("JsApiUpdateManager", "handleUpdateApp() called");
+    if ((a != null) && (b != null) && (a.launchParam != null) && (b.launchParam != null))
+    {
+      b.forceReroad = 3;
+      b.launchParam.scene = a.launchParam.scene;
+      Bundle localBundle = new Bundle();
+      localBundle.putParcelable("key_app_info", b);
+      bgtu.a().a("cmd_update_app_for_mini_game", localBundle, null);
+      return;
     }
-    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
+    QMLog.e("JsApiUpdateManager", "handleUpdateApp olderMiniAppInfo = " + a + " newerMiniAppInfo = " + b);
+  }
+  
+  public static void a(bgxn parambgxn, boolean paramBoolean)
+  {
     try
     {
-      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStTrans4RoomidRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
-        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
-        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
-        return paramArrayOfByte;
+      QMLog.d("JsApiUpdateManager", "handleUpdateCheckResult() called with: gameJsPluginEngine = [" + parambgxn + "], hasUpdate = [" + paramBoolean + "]");
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("hasUpdate", paramBoolean);
+      if (parambgxn != null) {
+        parambgxn.getJsRuntime(1).evaluateSubscribeJs("onUpdateCheckResult", localJSONObject.toString());
       }
-      QMLog.d("GetTransRoomIdRequest", "onResponse fail.rsp = null");
-      return null;
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (JSONException parambgxn)
     {
-      QMLog.d("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
+      QMLog.e("JsApiUpdateManager", "handleNativeRequest", parambgxn);
     }
-    return null;
   }
   
-  public byte[] a()
+  public static void a(MiniAppInfo paramMiniAppInfo, bgxn parambgxn)
   {
-    return this.a.toByteArray();
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      a = paramMiniAppInfo;
+      QMLog.d("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgxn + "]");
+      if (paramMiniAppInfo.verType != 3)
+      {
+        QMLog.w("JsApiUpdateManager", "checkForUpdate skip check for not online version");
+        a(parambgxn, false);
+        return;
+      }
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramMiniAppInfo.appId, "", "", new bgzh(paramMiniAppInfo, parambgxn));
+      return;
+    }
+    QMLog.e("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgxn + "]");
   }
   
-  protected String b()
+  private static void b(bgxn parambgxn, MiniAppInfo paramMiniAppInfo)
   {
-    return "Trans4Roomid";
+    if (paramMiniAppInfo != null)
+    {
+      QMLog.d("JsApiUpdateManager", "handleUpdateDownload() called with: gameJsPluginEngine = [" + parambgxn + "], miniAppConfig = [" + paramMiniAppInfo + "]");
+      bgyk.a(paramMiniAppInfo, new bgzi(parambgxn));
+    }
+  }
+  
+  private static void c(bgxn parambgxn, boolean paramBoolean)
+  {
+    try
+    {
+      QMLog.d("JsApiUpdateManager", "handleUpdateDownloadResult() called with: gameJsPluginEngine = [" + parambgxn + "], success = [" + paramBoolean + "]");
+      JSONObject localJSONObject = new JSONObject();
+      if (paramBoolean) {}
+      for (String str = "success";; str = "failed")
+      {
+        localJSONObject.put("updateResult", str);
+        if (parambgxn == null) {
+          break;
+        }
+        parambgxn.getJsRuntime(1).evaluateSubscribeJs("onUpdateDownloadResult", localJSONObject.toString());
+        return;
+      }
+      return;
+    }
+    catch (JSONException parambgxn)
+    {
+      QMLog.e("JsApiUpdateManager", "handleUpdateDownloadResult", parambgxn);
+    }
   }
 }
 

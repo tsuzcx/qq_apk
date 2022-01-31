@@ -1,58 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
 
-public class acxb
-  implements bhqd
+class acxb
 {
-  public acxb(FriendProfileImageActivity paramFriendProfileImageActivity, acxi paramacxi, boolean paramBoolean, bhpy parambhpy) {}
+  acwz jdField_a_of_type_Acwz;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      bcyw.a(this.jdField_a_of_type_Acxi.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
-        break;
-      }
-      bcyw.a(this.jdField_a_of_type_Acxi.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
-        break;
-      }
-      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Acxi.c, this.jdField_a_of_type_Acxi.d);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
-        break;
-      }
-      bcyw.b(this.jdField_a_of_type_Acxi.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
-        break;
-      }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Acxi);
-      }
-    }
-  }
+  acxb(acxa paramacxa) {}
 }
 
 

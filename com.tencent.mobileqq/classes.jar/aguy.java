@@ -1,44 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aguy
   implements View.OnClickListener
 {
-  aguy(agux paramagux, int paramInt) {}
+  aguy(agti paramagti) {}
   
   public void onClick(View paramView)
   {
-    agux.a(this.jdField_a_of_type_Agux, 2);
-    agux.a(this.jdField_a_of_type_Agux).a();
-    azmj.b(agux.a(this.jdField_a_of_type_Agux), "P_CliOper", "Safe_AntiFraud", agux.a(this.jdField_a_of_type_Agux).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    paramView = (Bundle)bdat.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
-    if (paramView != null) {}
-    for (paramView = paramView.getString("BannerURL");; paramView = null)
-    {
-      Object localObject = paramView;
-      if (TextUtils.isEmpty(paramView)) {
-        localObject = "https://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
-      }
-      if (this.jdField_a_of_type_Int == 1) {}
-      for (paramView = ((String)localObject).replace("$SUBAPP$", "notice");; paramView = ((String)localObject).replace("$SUBAPP$", "tips"))
-      {
-        paramView = paramView.replace("$SYSTEM$", "android").replace("$EVILUIN$", agux.a(this.jdField_a_of_type_Agux).a).replace("$USERUIN$", agux.a(this.jdField_a_of_type_Agux).getAccount());
-        localObject = BaseActivity.sTopActivity;
-        Intent localIntent = new Intent((Context)localObject, QQBrowserDelegationActivity.class);
-        localIntent.putExtra("injectrecommend", true);
-        localIntent.putExtra("url", paramView);
-        ((Context)localObject).startActivity(localIntent);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mQidianClickListener ... mQidianKefu = " + this.a.ap);
     }
+    this.a.A(2131695780);
+    this.a.jdField_a_of_type_Nrc.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.k, this.a.l, this.a.m, new aguz(this));
   }
 }
 

@@ -1,6 +1,22 @@
-public abstract interface aiyi
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+
+public class aiyi
+  implements aivb
 {
-  public abstract void a(boolean paramBoolean);
+  public aiyi(QzoneHbFragment paramQzoneHbFragment) {}
+  
+  public void a() {}
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
+  }
 }
 
 

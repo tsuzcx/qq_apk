@@ -3,12 +3,12 @@ package com.tencent.qqmini.proxyimpl;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import bgjd;
-import bgje;
+import bgnk;
+import bgnl;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class MiniAppProxyImpl$7
-  implements bgje
+  implements bgnl
 {
   MiniAppProxyImpl$7(MiniAppProxyImpl paramMiniAppProxyImpl) {}
   
@@ -17,7 +17,7 @@ class MiniAppProxyImpl$7
     if (paramInt1 != 9527) {
       return false;
     }
-    bgjd.a().b(this);
+    bgnk.a().b(this);
     QMLog.d("MiniAppProxyImpl", "set isMiniMsgTabShow false");
     MiniAppProxyImpl.access$802(this.this$0, false);
     if (paramInt2 != -1)

@@ -1,16 +1,24 @@
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
 
-class bbin
-  implements bhqd
+public class bbin
+  implements Animation.AnimationListener
 {
-  bbin(bbij parambbij) {}
+  public bbin(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    bbij.a(this.a);
-    if (paramInt == 0) {
-      bbij.a(this.a, "");
+    if (this.a.b == null) {
+      return;
     }
+    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
   }
 }
 

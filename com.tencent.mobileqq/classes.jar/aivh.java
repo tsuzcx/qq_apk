@@ -1,493 +1,971 @@
+import Wallet.AuthCodeReq;
+import Wallet.AuthCodeRsp;
+import Wallet.DownloadChooseReq;
+import Wallet.DownloadChooseRsp;
+import Wallet.DownloadReportReq;
+import Wallet.FocusMpIdReq;
+import Wallet.FocusMpIdRsp;
+import Wallet.GetBroadCastHbIdiomReq;
+import Wallet.GetBroadCastHbIdiomRsp;
+import Wallet.GetGroupRedPackListReq;
+import Wallet.GetGroupRedPackListRsp;
+import Wallet.GetMiniAppReq;
+import Wallet.GetMiniAppRsp;
+import Wallet.GetRandomHbIdiomReq;
+import Wallet.GetRandomHbIdiomRsp;
+import Wallet.GetSkinListReq;
+import Wallet.GetSkinListRsp;
+import Wallet.IdiomRedPackMatchReq;
+import Wallet.IdiomRedPackMatchRsp;
+import Wallet.IsUinFocusMpIdReq;
+import Wallet.IsUinFocusMpIdRsp;
+import Wallet.JudgeDownloadReq;
+import Wallet.JudgeDownloadRsp;
+import Wallet.RedInfoSyncReq;
+import Wallet.RedInfoSyncRsp;
+import Wallet.ReportHBGameReq;
+import Wallet.ReportHBGameRsp;
+import Wallet.ReqWalletConfig;
+import Wallet.ResInfo;
+import Wallet.RspWalletConfig;
+import Wallet.SetSelectedSkinReq;
+import Wallet.SetSelectedSkinRsp;
+import Wallet.SongRedPackMatchReq;
+import Wallet.SongRedPackMatchRsp;
+import Wallet.VoiceRedPackMatchReq;
+import Wallet.VoiceRedPackMatchRsp;
+import Wallet.WalletSkinReq;
+import Wallet.WalletSkinRsp;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.1;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.2;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.3;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.4;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
-import tencent.im.oidb.cmd0x858.oidb_0x858.GoldMsgTipsElem;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
 
 public class aivh
+  extends MSFServlet
 {
-  public static int a;
-  public static aivf a;
-  public static Object a;
-  public static ArrayList<aivi> a;
-  public static ArrayList<aivg> b = new ArrayList();
-  public static ArrayList<aivg> c = new ArrayList(128);
-  
-  static
+  public static void a(JceStruct paramJceStruct, int paramInt, BusinessObserver paramBusinessObserver)
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    a(paramJceStruct, paramBusinessObserver, paramInt, 0, null);
   }
   
-  public static aivg a(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  private static void a(JceStruct paramJceStruct, int paramInt1, BusinessObserver paramBusinessObserver, int paramInt2, AppRuntime paramAppRuntime)
   {
-    aivg localaivg = null;
-    ??? = localaivg;
-    if (a(paramInt))
-    {
-      ??? = localaivg;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (paramMessageRecord != null) {
-          break label32;
-        }
-        ??? = localaivg;
-      }
+    AppRuntime localAppRuntime = paramAppRuntime;
+    if (paramAppRuntime == null) {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     }
-    for (;;)
-    {
-      return ???;
-      label32:
-      if (QLog.isColorLevel()) {
-        QLog.i("NotifyMsgManager", 2, "queryGoldMsgRecord btype:" + paramInt + " bid:" + paramString + " dbstate:" + jdField_a_of_type_Int);
-      }
-      if (jdField_a_of_type_Int == 2)
-      {
-        localaivg = a(c, paramInt, paramString);
-        if (localaivg != null) {
-          a(paramMessageRecord, localaivg, paramInt, paramString, true);
-        }
-        ??? = localaivg;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("NotifyMsgManager", 2, "queryGoldMsgRecord check in cache:" + localaivg);
-        return localaivg;
-      }
-      if (paramInt != 2) {}
-      synchronized (jdField_a_of_type_JavaUtilArrayList)
-      {
-        if (!a(paramInt, paramString, paramMessageRecord)) {
-          jdField_a_of_type_JavaUtilArrayList.add(new aivi(paramInt, paramString, paramMessageRecord));
-        }
-        ??? = localaivg;
-        if (jdField_a_of_type_Int != 0) {
-          continue;
-        }
-        b();
-        return null;
-      }
-    }
+    paramAppRuntime = new NewIntent(localAppRuntime.getApplication(), aivh.class);
+    paramAppRuntime.putExtra("req", paramJceStruct);
+    paramAppRuntime.putExtra("cmd_type", paramInt1);
+    paramAppRuntime.putExtra("callback_thread_type", paramInt2);
+    paramAppRuntime.setObserver(paramBusinessObserver);
+    localAppRuntime.startServlet(paramAppRuntime);
   }
   
-  public static aivg a(aivg paramaivg1, aivg paramaivg2)
+  public static void a(JceStruct paramJceStruct, BusinessObserver paramBusinessObserver)
   {
-    if ((paramaivg1 == null) || (paramaivg2 == null)) {}
-    while ((paramaivg1.b != paramaivg2.b) || (paramaivg1.jdField_a_of_type_JavaLangString == null) || (!paramaivg1.jdField_a_of_type_JavaLangString.equals(paramaivg2.jdField_a_of_type_JavaLangString))) {
-      return paramaivg2;
-    }
-    int i;
-    if (paramaivg1.b == 1)
-    {
-      i = paramaivg2.a("state", 0);
-      int j = paramaivg1.a("state", 0);
-      if (i == 2) {
-        break label92;
-      }
-      i = j;
-    }
-    label92:
-    for (;;)
-    {
-      paramaivg2.a("state", i);
-      return paramaivg2;
-      paramaivg2.jdField_a_of_type_OrgJsonJSONObject = paramaivg1.jdField_a_of_type_OrgJsonJSONObject;
-      return paramaivg2;
-    }
+    a(paramJceStruct, paramBusinessObserver, 0, 0, null);
   }
   
-  public static aivg a(ArrayList<aivg> paramArrayList, int paramInt, String paramString)
+  public static void a(JceStruct paramJceStruct, BusinessObserver paramBusinessObserver, int paramInt)
   {
-    Object localObject;
-    if (paramArrayList == null)
-    {
-      localObject = null;
-      return localObject;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayList.size()) {
-        break label75;
-      }
-      aivg localaivg = (aivg)paramArrayList.get(i);
-      if ((localaivg != null) && (localaivg.b == paramInt) && (localaivg.jdField_a_of_type_JavaLangString != null))
-      {
-        localObject = localaivg;
-        if (localaivg.jdField_a_of_type_JavaLangString.equals(paramString)) {
-          break;
-        }
-      }
-      i += 1;
-    }
-    label75:
-    return null;
+    a(paramJceStruct, paramBusinessObserver, 0, paramInt, null);
   }
   
-  public static ArrayList<aivg> a(int paramInt)
+  public static void a(JceStruct paramJceStruct, BusinessObserver paramBusinessObserver, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    if (!a(paramInt)) {}
-    label68:
-    do
-    {
-      return null;
-      if (jdField_a_of_type_Int == 2)
-      {
-        ArrayList localArrayList = a(c, paramInt);
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("queryRecordsInMemory size:");
-          if (localArrayList == null) {
-            break label68;
-          }
-        }
-        for (paramInt = localArrayList.size();; paramInt = 0)
-        {
-          QLog.i("NotifyMsgManager", 2, paramInt);
-          return localArrayList;
-        }
-      }
-    } while (jdField_a_of_type_Int != 0);
-    b();
-    return null;
-  }
-  
-  protected static ArrayList<aivg> a(ArrayList<aivg> paramArrayList, int paramInt)
-  {
-    if (paramArrayList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      aivg localaivg = (aivg)paramArrayList.get(i);
-      if ((localaivg != null) && (localaivg.b == paramInt)) {
-        localArrayList.add(localaivg);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Int == 0) {
-      b();
-    }
-  }
-  
-  public static void a(int paramInt, TroopTips0x857.GoldMsgTipsElem paramGoldMsgTipsElem, oidb_0x858.GoldMsgTipsElem paramGoldMsgTipsElem1)
-  {
-    if ((paramInt == 3000) && (paramGoldMsgTipsElem1 != null)) {
-      if (!paramGoldMsgTipsElem1.type.has()) {
-        break label310;
-      }
-    }
-    label300:
-    label310:
-    for (paramInt = paramGoldMsgTipsElem1.type.get();; paramInt = 0)
-    {
-      if (paramGoldMsgTipsElem1.billno.has()) {}
-      for (paramGoldMsgTipsElem = paramGoldMsgTipsElem1.billno.get();; paramGoldMsgTipsElem = null)
-      {
-        int i = paramInt;
-        Object localObject = paramGoldMsgTipsElem;
-        if (paramGoldMsgTipsElem1.action.has())
-        {
-          i = paramGoldMsgTipsElem1.action.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("NotifyMsgManager", 2, "onReceiveAAPaySysNotify type:" + paramInt + " billno:" + paramGoldMsgTipsElem + " action:" + i);
-          }
-          if (paramInt != 3)
-          {
-            label123:
-            do
-            {
-              return;
-            } while (((paramInt != 1) && (paramInt != 0)) || (paramGoldMsgTipsElem == null));
-            if (!paramGoldMsgTipsElem.type.has()) {
-              break label300;
-            }
-          }
-        }
-        for (paramInt = paramGoldMsgTipsElem.type.get();; paramInt = 0)
-        {
-          if (paramGoldMsgTipsElem.billno.has()) {}
-          for (paramGoldMsgTipsElem1 = paramGoldMsgTipsElem.billno.get();; paramGoldMsgTipsElem1 = null)
-          {
-            i = paramInt;
-            localObject = paramGoldMsgTipsElem1;
-            if (paramGoldMsgTipsElem.action.has())
-            {
-              i = paramGoldMsgTipsElem.action.get();
-              paramGoldMsgTipsElem = paramGoldMsgTipsElem1;
-              break;
-              paramGoldMsgTipsElem1 = ajaf.a();
-              if (paramGoldMsgTipsElem1 == null) {
-                break label123;
-              }
-              localObject = new aivg(0, paramGoldMsgTipsElem1.getLongAccountUin(), 1, paramGoldMsgTipsElem, 0L, null);
-              ((aivg)localObject).a("state", i);
-              a(paramGoldMsgTipsElem1.getLongAccountUin(), (aivg)localObject);
-              localObject = new Bundle();
-              ((Bundle)localObject).putInt("btype", 1);
-              ((Bundle)localObject).putString("bid", paramGoldMsgTipsElem);
-              paramGoldMsgTipsElem1.notifyObservers(aivj.class, 1, true, (Bundle)localObject);
-              return;
-            }
-            int j = 0;
-            paramGoldMsgTipsElem = (TroopTips0x857.GoldMsgTipsElem)localObject;
-            paramInt = i;
-            i = j;
-            break;
-          }
-        }
-      }
-    }
-  }
-  
-  protected static void a(long paramLong, aivg paramaivg)
-  {
-    if ((paramaivg == null) || (!a(paramaivg.b)) || (TextUtils.isEmpty(paramaivg.jdField_a_of_type_JavaLangString))) {}
-    Object localObject;
-    do
-    {
-      for (;;)
-      {
-        return;
-        localObject = a(c, paramaivg.b, paramaivg.jdField_a_of_type_JavaLangString);
-        if (localObject != null) {
-          break;
-        }
-        if (jdField_a_of_type_Int == 2)
-        {
-          c.add(paramaivg);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(paramaivg);
-          a((ArrayList)localObject, true);
-          return;
-        }
-        localObject = a(b, paramaivg.b, paramaivg.jdField_a_of_type_JavaLangString);
-        if (localObject == null) {
-          b.add(paramaivg);
-        }
-        while (jdField_a_of_type_Int == 0)
-        {
-          b();
-          return;
-          a(paramaivg, (aivg)localObject);
-        }
-      }
-    } while (paramaivg.b == 2);
-    a(paramaivg, (aivg)localObject);
-    paramaivg = new ArrayList();
-    paramaivg.add(localObject);
-    a(paramaivg, false);
-  }
-  
-  public static void a(aivi paramaivi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NotifyMsgManager", 2, "notifyUI start");
-    }
-    QQAppInterface localQQAppInterface;
-    if ((paramaivi != null) && (paramaivi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null))
-    {
-      localQQAppInterface = ajaf.a();
-      if (localQQAppInterface != null) {
-        break label34;
-      }
-    }
-    label34:
-    do
-    {
-      return;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("btype", paramaivi.jdField_a_of_type_Int);
-      localBundle.putString("bid", paramaivi.jdField_a_of_type_JavaLangString);
-      localQQAppInterface.notifyObservers(aivj.class, 1, true, localBundle);
-    } while (!QLog.isColorLevel());
-    QLog.i("NotifyMsgManager", 2, "notifyUI btype:" + paramaivi.jdField_a_of_type_Int + " bid:" + paramaivi.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (((paramInt != 1) && (paramInt != 3000)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = ajaf.a();
-    } while (localQQAppInterface == null);
-    paramString2 = new aivg(0, localQQAppInterface.getLongAccountUin(), 2, paramString2, 0L, null);
-    paramString2.a("groupUin", paramString1);
-    paramString2.a("groupType", paramInt);
-    a(localQQAppInterface.getLongAccountUin(), paramString2);
-  }
-  
-  public static void a(ArrayList<aivg> paramArrayList, boolean paramBoolean)
-  {
-    ThreadManager.post(new NotifyMsgManager.4(paramBoolean, paramArrayList), 5, null, false);
-  }
-  
-  public static void a(List<aivi> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        aivi localaivi = (aivi)paramList.next();
-        if ((localaivi != null) && (a(localaivi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, localaivi.jdField_a_of_type_Int, localaivi.jdField_a_of_type_JavaLangString, false))) {
-          localArrayList.add(localaivi);
-        }
-      }
-    } while (localArrayList.size() <= 0);
-    ThreadManager.post(new NotifyMsgManager.2(localArrayList), 5, null, false);
-  }
-  
-  protected static boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2);
-  }
-  
-  protected static boolean a(int paramInt, String paramString, MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        aivi localaivi = (aivi)jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localaivi != null) && (localaivi.jdField_a_of_type_Int == paramInt) && (localaivi.jdField_a_of_type_JavaLangString != null) && (localaivi.jdField_a_of_type_JavaLangString.equals(paramString)) && (localaivi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == paramMessageRecord)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord, aivg paramaivg, int paramInt, String paramString, boolean paramBoolean)
-  {
-    aivg localaivg;
-    int i;
-    if ((paramMessageRecord != null) && (paramString != null)) {
-      if (paramInt == 1)
-      {
-        localaivg = paramaivg;
-        if (paramaivg == null) {
-          localaivg = a(c, paramInt, paramString);
-        }
-        if (localaivg == null) {
-          break label241;
-        }
-        i = localaivg.a("state", -1);
-        paramaivg = paramMessageRecord.getExtInfoFromExtStr("qqpay_state");
-        if (TextUtils.isEmpty(paramaivg)) {}
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramInt = Integer.valueOf(paramaivg).intValue();
-        if ((i == -1) || (i == paramInt)) {
-          break label241;
-        }
-        paramMessageRecord.saveExtInfoToExtStr("qqpay_state", String.valueOf(i));
-        bool = true;
-        if ((bool) && (paramBoolean)) {
-          ThreadManager.post(new NotifyMsgManager.3(paramMessageRecord), 5, null, false);
-        }
-        return bool;
-      }
-      catch (Exception paramaivg)
-      {
-        if (QLog.isColorLevel()) {
-          paramaivg.printStackTrace();
-        }
-      }
-      paramInt = -1;
-      continue;
-      if (paramInt == 2)
-      {
-        localaivg = paramaivg;
-        if (paramaivg == null) {
-          localaivg = a(c, paramInt, paramString);
-        }
-        if ((localaivg != null) && ((paramMessageRecord instanceof MessageForQQWalletMsg)))
-        {
-          paramaivg = (MessageForQQWalletMsg)paramMessageRecord;
-          if ((paramaivg.mQQWalletRedPacketMsg != null) && (paramaivg.mQQWalletRedPacketMsg.isOpened))
-          {
-            paramaivg.mQQWalletRedPacketMsg.isOpened = true;
-            paramaivg.msgData = paramaivg.getBytes();
-            paramString = ajaf.a();
-            if (paramString != null) {
-              paramString.a().a(paramaivg.frienduin, paramaivg.istroop, paramaivg.uniseq, paramaivg.msgData);
-            }
-          }
-        }
-      }
-      label241:
-      boolean bool = false;
-    }
-  }
-  
-  protected static void b()
-  {
-    jdField_a_of_type_Int = 1;
-    ThreadManager.post(new NotifyMsgManager.1(), 10, null, false);
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_Int = 0;
-    c.clear();
-    jdField_a_of_type_JavaUtilArrayList.clear();
-    b.clear();
-    if (jdField_a_of_type_Aivf != null) {}
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
     try
     {
-      jdField_a_of_type_Aivf.close();
-      jdField_a_of_type_Aivf = null;
+      if ((paramJceStruct instanceof DownloadReportReq))
+      {
+        a(paramJceStruct, 2, paramBusinessObserver, paramInt2, paramAppRuntime);
+        if (!QLog.isColorLevel()) {
+          break label1240;
+        }
+        paramAppRuntime = (DownloadReportReq)paramJceStruct;
+        paramBusinessObserver = new StringBuilder().append("send DownloadReportReq|").append(paramAppRuntime.iType).append("|").append(paramAppRuntime.sSpeed).append("|");
+        paramJceStruct = localObject1;
+        if (paramAppRuntime.vecResInfo != null)
+        {
+          paramJceStruct = localObject1;
+          if (paramAppRuntime.vecResInfo.size() > 0) {
+            paramJceStruct = ((ResInfo)paramAppRuntime.vecResInfo.get(0)).sResId;
+          }
+        }
+        QLog.d("QWalletCommonServlet", 2, paramJceStruct);
+        return;
+      }
+      if (!(paramJceStruct instanceof JudgeDownloadReq)) {
+        break label278;
+      }
+      a(paramJceStruct, 1, paramBusinessObserver, paramInt2, paramAppRuntime);
+      if (!QLog.isColorLevel()) {
+        break label1240;
+      }
+      paramAppRuntime = (JudgeDownloadReq)paramJceStruct;
+      paramBusinessObserver = new StringBuilder().append("send JudgeDownloadReq|").append(paramAppRuntime.iType).append("|");
+      paramJceStruct = localObject2;
+      if (paramAppRuntime.vecResInfo != null)
+      {
+        paramJceStruct = localObject2;
+        if (paramAppRuntime.vecResInfo.size() > 0) {
+          paramJceStruct = ((ResInfo)paramAppRuntime.vecResInfo.get(0)).sResId;
+        }
+      }
+      QLog.d("QWalletCommonServlet", 2, paramJceStruct);
       return;
     }
-    catch (Exception localException)
+    catch (Throwable paramJceStruct)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      if (!QLog.isColorLevel()) {
+        break label1240;
       }
     }
+    QLog.e("QWalletCommonServlet", 2, "sendRequest|" + paramJceStruct.toString());
+    return;
+    label278:
+    if ((paramJceStruct instanceof DownloadChooseReq))
+    {
+      a(paramJceStruct, 3, paramBusinessObserver, paramInt2, paramAppRuntime);
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = (DownloadChooseReq)paramJceStruct;
+        paramBusinessObserver = new StringBuilder().append("send DownloadChooseReq|");
+        paramJceStruct = localObject3;
+        if (paramAppRuntime.vecResInfo != null)
+        {
+          paramJceStruct = localObject3;
+          if (paramAppRuntime.vecResInfo.size() > 0) {
+            paramJceStruct = ((ResInfo)paramAppRuntime.vecResInfo.get(0)).sResId;
+          }
+        }
+        QLog.d("QWalletCommonServlet", 2, paramJceStruct);
+      }
+    }
+    else if ((paramJceStruct instanceof WalletSkinReq))
+    {
+      a(paramJceStruct, 6, paramBusinessObserver, paramInt2, paramAppRuntime);
+      if (QLog.isColorLevel())
+      {
+        paramJceStruct = (WalletSkinReq)paramJceStruct;
+        QLog.d("QWalletCommonServlet", 2, "send WalletSkinReq|" + paramJceStruct);
+      }
+    }
+    else if ((paramJceStruct instanceof ReqWalletConfig))
+    {
+      if (paramInt1 != 1) {
+        break label1241;
+      }
+    }
+    label1240:
+    label1241:
+    for (paramInt1 = 17;; paramInt1 = 10)
+    {
+      a(paramJceStruct, paramInt1, paramBusinessObserver, paramInt2, paramAppRuntime);
+      if (QLog.isColorLevel())
+      {
+        paramJceStruct = (ReqWalletConfig)paramJceStruct;
+        QLog.d("QWalletCommonServlet", 2, "send ReqWalletConfig|" + paramJceStruct);
+        return;
+        if ((paramJceStruct instanceof VoiceRedPackMatchReq))
+        {
+          a(paramJceStruct, 13, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel()) {
+            QLog.d("QWalletCommonServlet", 2, "send VoiceRedPackMatchReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof GetSkinListReq))
+        {
+          a(paramJceStruct, 14, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (GetSkinListReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send GetSkinListReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof SetSelectedSkinReq))
+        {
+          a(paramJceStruct, 15, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (SetSelectedSkinReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send SetSelectedSkinReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof GetGroupRedPackListReq))
+        {
+          a(paramJceStruct, 18, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (GetGroupRedPackListReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send GetGroupRedPackListReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof RedInfoSyncReq))
+        {
+          a(paramJceStruct, 19, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (RedInfoSyncReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send RedInfoSyncReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof ReportHBGameReq))
+        {
+          a(paramJceStruct, 20, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (ReportHBGameReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send ReportHBGameReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof SongRedPackMatchReq))
+        {
+          a(paramJceStruct, 21, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (SongRedPackMatchReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send SongRedPackMatchReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof AuthCodeReq))
+        {
+          a(paramJceStruct, 22, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (AuthCodeReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof GetMiniAppReq))
+        {
+          a(paramJceStruct, 23, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (GetMiniAppReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof IsUinFocusMpIdReq))
+        {
+          a(paramJceStruct, 24, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (IsUinFocusMpIdReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send UinFocusMp|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof FocusMpIdReq))
+        {
+          a(paramJceStruct, 25, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (FocusMpIdReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof IdiomRedPackMatchReq))
+        {
+          a(paramJceStruct, 26, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (IdiomRedPackMatchReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof GetRandomHbIdiomReq))
+        {
+          a(paramJceStruct, 27, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (GetRandomHbIdiomReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+        else if ((paramJceStruct instanceof GetBroadCastHbIdiomReq))
+        {
+          a(paramJceStruct, 28, paramBusinessObserver, paramInt2, paramAppRuntime);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (GetBroadCastHbIdiomReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send AuthCodeReq|" + paramJceStruct);
+          }
+        }
+      }
+      return;
+    }
+  }
+  
+  public static void a(JceStruct paramJceStruct, BusinessObserver paramBusinessObserver, AppRuntime paramAppRuntime)
+  {
+    a(paramJceStruct, paramBusinessObserver, 0, 0, paramAppRuntime);
+  }
+  
+  public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
+  {
+    int i = paramIntent.getIntExtra("callback_thread_type", 0);
+    if (i == 0) {
+      super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
+      paramIntent = ((NewIntent)paramIntent).getObserver();
+    } while (paramIntent == null);
+    ThreadManager.post(new QWalletCommonServlet.1(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if ((paramFromServiceMsg == null) || (paramIntent == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QWalletCommonServlet", 2, "onReceive request or response is null");
+      }
+      return;
+    }
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if ("QQPayFrequencySvc.judgeDownload".equals(localObject)) {
+      if (!paramFromServiceMsg.isSuccess()) {
+        break label2130;
+      }
+    }
+    label2050:
+    label2055:
+    label2060:
+    label2065:
+    label2070:
+    label2075:
+    label2080:
+    label2085:
+    label2090:
+    label2095:
+    label2100:
+    label2105:
+    label2110:
+    label2115:
+    label2120:
+    label2125:
+    label2130:
+    for (localObject = (JudgeDownloadRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new JudgeDownloadRsp());; localObject = null)
+    {
+      Bundle localBundle = new Bundle();
+      if (localObject != null) {
+        localBundle.putSerializable("rsp", (Serializable)localObject);
+      }
+      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      if ("QQPayFrequencySvc.downloadChoose".equals(localObject)) {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label2125;
+        }
+      }
+      for (localObject = (DownloadChooseRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new DownloadChooseRsp());; localObject = null)
+      {
+        localBundle = new Bundle();
+        if (localObject != null) {
+          localBundle.putSerializable("rsp", (Serializable)localObject);
+        }
+        localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+        notifyObserver(paramIntent, 3, paramFromServiceMsg.isSuccess(), localBundle, null);
+        return;
+        if ("QQWalletPayReportSvc.getWalletSkin".equals(localObject)) {
+          if (!paramFromServiceMsg.isSuccess()) {
+            break label2120;
+          }
+        }
+        for (localObject = (WalletSkinRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new WalletSkinRsp());; localObject = null)
+        {
+          localBundle = new Bundle();
+          if (localObject != null) {
+            localBundle.putSerializable("rsp", (Serializable)localObject);
+          }
+          localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+          notifyObserver(paramIntent, 6, paramFromServiceMsg.isSuccess(), localBundle, null);
+          return;
+          if ("WalletConfigSvr.getConfig".equals(localObject)) {
+            if (!paramFromServiceMsg.isSuccess()) {
+              break label2115;
+            }
+          }
+          for (localObject = (RspWalletConfig)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new RspWalletConfig());; localObject = null)
+          {
+            localBundle = new Bundle();
+            if (localObject != null) {
+              localBundle.putSerializable("rsp", (Serializable)localObject);
+            }
+            localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+            notifyObserver(paramIntent, 10, paramFromServiceMsg.isSuccess(), localBundle, null);
+            return;
+            if ("WalletConfigSvr.setUserSession".equals(localObject)) {
+              if (!paramFromServiceMsg.isSuccess()) {
+                break label2110;
+              }
+            }
+            for (localObject = (RspWalletConfig)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new RspWalletConfig());; localObject = null)
+            {
+              localBundle = new Bundle();
+              if (localObject != null) {
+                localBundle.putSerializable("rsp", (Serializable)localObject);
+              }
+              localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+              notifyObserver(paramIntent, 17, paramFromServiceMsg.isSuccess(), localBundle, null);
+              return;
+              if ((localObject != null) && (((String)localObject).startsWith("QQwalletVoicePack.macthVoice")))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QWalletCommonServlet", 2, "voice redpacket msg grap back...");
+                }
+                if (!paramFromServiceMsg.isSuccess()) {
+                  break label2105;
+                }
+              }
+              for (localObject = (VoiceRedPackMatchRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new VoiceRedPackMatchRsp());; localObject = null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QWalletCommonServlet", 2, "CMD_VOICE_RED_PACKET isSuccess:" + paramFromServiceMsg.isSuccess());
+                }
+                if ((localObject != null) && (QLog.isColorLevel())) {
+                  QLog.d("QWalletCommonServlet", 2, "rsp.status = " + ((VoiceRedPackMatchRsp)localObject).status);
+                }
+                localBundle = new Bundle();
+                if (localObject != null) {
+                  localBundle.putSerializable("rsp", (Serializable)localObject);
+                }
+                localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                localBundle.putInt("msfRetCode", paramFromServiceMsg.getResultCode());
+                notifyObserver(paramIntent, 13, paramFromServiceMsg.isSuccess(), localBundle, null);
+                return;
+                if ("VAC_RedEnvelopeSkinSvc.GetSkinList".equals(localObject))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("QWalletCommonServlet", 2, "GetSkinListRsp isSuccess:" + paramFromServiceMsg.isSuccess());
+                  }
+                  if (!paramFromServiceMsg.isSuccess()) {
+                    break label2100;
+                  }
+                }
+                for (localObject = (GetSkinListRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GetSkinListRsp());; localObject = null)
+                {
+                  localBundle = new Bundle();
+                  if (localObject != null)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("QWalletCommonServlet", 2, "GetSkinListRsp = " + localObject);
+                    }
+                    localBundle.putSerializable("rsp", (Serializable)localObject);
+                  }
+                  localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                  notifyObserver(paramIntent, 14, paramFromServiceMsg.isSuccess(), localBundle, null);
+                  return;
+                  if ("VAC_RedEnvelopeSkinSvc.SetSelectedSkin".equals(localObject))
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("QWalletCommonServlet", 2, "SetSelectedSkinRsp isSuccess:" + paramFromServiceMsg.isSuccess());
+                    }
+                    if (!paramFromServiceMsg.isSuccess()) {
+                      break label2095;
+                    }
+                  }
+                  for (localObject = (SetSelectedSkinRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new SetSelectedSkinRsp());; localObject = null)
+                  {
+                    localBundle = new Bundle();
+                    if (localObject != null)
+                    {
+                      if (QLog.isColorLevel()) {
+                        QLog.d("QWalletCommonServlet", 2, "SetSelectedSkinRsp = " + localObject);
+                      }
+                      localBundle.putSerializable("rsp", (Serializable)localObject);
+                    }
+                    localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                    notifyObserver(paramIntent, 15, paramFromServiceMsg.isSuccess(), localBundle, null);
+                    return;
+                    if ("GroupRedPackListSvc.getGroupRedPackList".equals(localObject))
+                    {
+                      if (QLog.isColorLevel()) {
+                        QLog.d("QWalletCommonServlet", 2, "GetGroupRedPackListRsp isSuccess:" + paramFromServiceMsg.isSuccess());
+                      }
+                      if (!paramFromServiceMsg.isSuccess()) {
+                        break label2090;
+                      }
+                    }
+                    for (localObject = (GetGroupRedPackListRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GetGroupRedPackListRsp());; localObject = null)
+                    {
+                      localBundle = new Bundle();
+                      if (localObject != null)
+                      {
+                        if (QLog.isColorLevel()) {
+                          QLog.d("QWalletCommonServlet", 2, "GetGroupRedPackListRsp = " + localObject);
+                        }
+                        localBundle.putSerializable("rsp", (Serializable)localObject);
+                      }
+                      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                      notifyObserver(paramIntent, 18, paramFromServiceMsg.isSuccess(), localBundle, null);
+                      return;
+                      if ("WalletConfigSvr.syncRedInfo".equals(localObject)) {
+                        if (!paramFromServiceMsg.isSuccess()) {
+                          break label2085;
+                        }
+                      }
+                      for (localObject = (RedInfoSyncRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new RedInfoSyncRsp());; localObject = null)
+                      {
+                        localBundle = new Bundle();
+                        if (localObject != null) {
+                          localBundle.putSerializable("rsp", (Serializable)localObject);
+                        }
+                        localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                        notifyObserver(paramIntent, 19, paramFromServiceMsg.isSuccess(), localBundle, null);
+                        return;
+                        if ("GroupRedPackListSvc.reportHBGame".equals(localObject))
+                        {
+                          if (!paramFromServiceMsg.isSuccess()) {
+                            break;
+                          }
+                          paramIntent = (ReportHBGameRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportHBGameRsp());
+                          if (!QLog.isColorLevel()) {
+                            break;
+                          }
+                          QLog.d("QWalletCommonServlet", 2, "ReportHBGameRsp result = " + paramIntent.result);
+                          return;
+                        }
+                        if ((localObject != null) && (((String)localObject).startsWith("QQwalletVoicePack.macthSong")))
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d("QWalletCommonServlet", 2, "song redpacket msg grap back...");
+                          }
+                          if (!paramFromServiceMsg.isSuccess()) {
+                            break label2080;
+                          }
+                        }
+                        for (localObject = (SongRedPackMatchRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new SongRedPackMatchRsp());; localObject = null)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d("QWalletCommonServlet", 2, "CMD_SONG_RED_PACKET isSuccess:" + paramFromServiceMsg.isSuccess());
+                          }
+                          if ((localObject != null) && (QLog.isColorLevel())) {
+                            QLog.d("QWalletCommonServlet", 2, "rsp.status = " + ((SongRedPackMatchRsp)localObject).status);
+                          }
+                          localBundle = new Bundle();
+                          if (localObject != null) {
+                            localBundle.putSerializable("rsp", (Serializable)localObject);
+                          }
+                          localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                          notifyObserver(paramIntent, 21, paramFromServiceMsg.isSuccess(), localBundle, null);
+                          return;
+                          if ("VacThirdCodeSvc.fetchCodes".equals(localObject)) {
+                            if (!paramFromServiceMsg.isSuccess()) {
+                              break label2075;
+                            }
+                          }
+                          for (localObject = (AuthCodeRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AuthCodeRsp());; localObject = null)
+                          {
+                            localBundle = new Bundle();
+                            if (localObject != null) {
+                              localBundle.putSerializable("rsp", (Serializable)localObject);
+                            }
+                            localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                            notifyObserver(paramIntent, 22, paramFromServiceMsg.isSuccess(), localBundle, null);
+                            return;
+                            if ("MiniAppSvc.get_mini_app".equals(localObject)) {
+                              if (!paramFromServiceMsg.isSuccess()) {
+                                break label2070;
+                              }
+                            }
+                            for (localObject = (GetMiniAppRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GetMiniAppRsp());; localObject = null)
+                            {
+                              localBundle = new Bundle();
+                              if (localObject != null) {
+                                localBundle.putSerializable("rsp", (Serializable)localObject);
+                              }
+                              localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                              notifyObserver(paramIntent, 23, paramFromServiceMsg.isSuccess(), localBundle, null);
+                              return;
+                              if ("MiniAppSvc.is_uin_focus_mpid".equals(localObject)) {
+                                if (!paramFromServiceMsg.isSuccess()) {
+                                  break label2065;
+                                }
+                              }
+                              for (localObject = (IsUinFocusMpIdRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new IsUinFocusMpIdRsp());; localObject = null)
+                              {
+                                localBundle = new Bundle();
+                                if (localObject != null) {
+                                  localBundle.putSerializable("rsp", (Serializable)localObject);
+                                }
+                                localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                                notifyObserver(paramIntent, 24, paramFromServiceMsg.isSuccess(), localBundle, null);
+                                return;
+                                if ("MiniAppSvc.focus_mpid".equals(localObject)) {
+                                  if (!paramFromServiceMsg.isSuccess()) {
+                                    break label2060;
+                                  }
+                                }
+                                for (localObject = (FocusMpIdRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new FocusMpIdRsp());; localObject = null)
+                                {
+                                  localBundle = new Bundle();
+                                  if (localObject != null) {
+                                    localBundle.putSerializable("rsp", (Serializable)localObject);
+                                  }
+                                  localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                                  notifyObserver(paramIntent, 25, paramFromServiceMsg.isSuccess(), localBundle, null);
+                                  return;
+                                  if ("QQwalletVoicePack.macthIdiom".equals(localObject)) {
+                                    if (!paramFromServiceMsg.isSuccess()) {
+                                      break label2055;
+                                    }
+                                  }
+                                  for (localObject = (IdiomRedPackMatchRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new IdiomRedPackMatchRsp());; localObject = null)
+                                  {
+                                    localBundle = new Bundle();
+                                    if (localObject != null) {
+                                      localBundle.putSerializable("rsp", (Serializable)localObject);
+                                    }
+                                    localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                                    notifyObserver(paramIntent, 26, paramFromServiceMsg.isSuccess(), localBundle, null);
+                                    return;
+                                    if ("QQwalletVoicePack.GetRandomHbIdiom".equals(localObject)) {
+                                      if (!paramFromServiceMsg.isSuccess()) {
+                                        break label2050;
+                                      }
+                                    }
+                                    for (localObject = (GetRandomHbIdiomRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GetRandomHbIdiomRsp());; localObject = null)
+                                    {
+                                      localBundle = new Bundle();
+                                      if (localObject != null) {
+                                        localBundle.putSerializable("rsp", (Serializable)localObject);
+                                      }
+                                      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                                      notifyObserver(paramIntent, 27, paramFromServiceMsg.isSuccess(), localBundle, null);
+                                      return;
+                                      if (!"QQwalletVoicePack.GetBroadCastHbIdiom".equals(localObject)) {
+                                        break;
+                                      }
+                                      if (paramFromServiceMsg.isSuccess()) {}
+                                      for (localObject = (GetBroadCastHbIdiomRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GetBroadCastHbIdiomRsp());; localObject = null)
+                                      {
+                                        localBundle = new Bundle();
+                                        if (localObject != null) {
+                                          localBundle.putSerializable("rsp", (Serializable)localObject);
+                                        }
+                                        localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+                                        notifyObserver(paramIntent, 28, paramFromServiceMsg.isSuccess(), localBundle, null);
+                                        return;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    switch (paramIntent.getExtras().getInt("cmd_type"))
+    {
+    case 4: 
+    case 5: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 11: 
+    case 12: 
+    case 16: 
+    default: 
+      return;
+    case 1: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (JudgeDownloadReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQPayFrequencySvc.judgeDownload");
+        paramPacket.setFuncName("judgeDownload");
+        paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 2: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (DownloadReportReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQPayFrequencySvc.downloadReport");
+        paramPacket.setFuncName("downloadReport");
+        paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 3: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (DownloadChooseReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQPayFrequencySvc.downloadChoose");
+        paramPacket.setFuncName("downloadChoose");
+        paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 6: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (WalletSkinReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQWalletPayReportSvc.getWalletSkin");
+        paramPacket.setFuncName("getWalletSkin");
+        paramPacket.setServantName("Wallet.WalletSkinServer.WalletSkinObj");
+        paramPacket.setTimeout(15000L);
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 10: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (ReqWalletConfig)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("WalletConfigSvr.getConfig");
+        paramPacket.setFuncName("getConfig");
+        paramPacket.setServantName("Wallet.MobileWalletConfigServer.MobileWalletConfigObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 17: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (ReqWalletConfig)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("WalletConfigSvr.setUserSession");
+        paramPacket.setFuncName("setUserSession");
+        paramPacket.setServantName("Wallet.MobileWalletConfigServer.MobileWalletConfigObj");
+        return;
+      }
+      catch (Throwable paramIntent)
+      {
+        return;
+      }
+    case 13: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletCommonServlet", 2, "build voice redpacket sso package...");
+      }
+      try
+      {
+        paramPacket.addRequestPacket("req", (VoiceRedPackMatchReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQwalletVoicePack.macthVoice");
+        paramPacket.setFuncName("macthVoice");
+        paramPacket.setServantName("Wallet.VoiceMatchServer.VoiceMatchObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 14: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (GetSkinListReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("VAC_RedEnvelopeSkinSvc.GetSkinList");
+        paramPacket.setFuncName("GetSkinList");
+        paramPacket.setServantName("Wallet.RedEnvelopeSkinServer.RedEnvelopeSkinObj");
+        paramPacket.setTimeout(15000L);
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 15: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (SetSelectedSkinReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("VAC_RedEnvelopeSkinSvc.SetSelectedSkin");
+        paramPacket.setFuncName("SetSelectedSkin");
+        paramPacket.setServantName("Wallet.RedEnvelopeSkinServer.RedEnvelopeSkinObj");
+        paramPacket.setTimeout(15000L);
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 18: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (GetGroupRedPackListReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("GroupRedPackListSvc.getGroupRedPackList");
+        paramPacket.setFuncName("getGroupRedPackList");
+        paramPacket.setServantName("Wallet.GroupRedPackListServer.GroupRedPackListObj");
+        paramPacket.setTimeout(5000L);
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 19: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (RedInfoSyncReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("WalletConfigSvr.syncRedInfo");
+        paramPacket.setFuncName("syncRedInfo");
+        paramPacket.setServantName("Wallet.MobileWalletConfigServer.MobileWalletConfigObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 20: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (ReportHBGameReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("GroupRedPackListSvc.reportHBGame");
+        paramPacket.setFuncName("reportHBGame");
+        paramPacket.setServantName("Wallet.WalletHBGameServer.WalletHBGameObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 22: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (AuthCodeReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("VacThirdCodeSvc.fetchCodes");
+        paramPacket.setFuncName("fetchCodes");
+        paramPacket.setServantName("VAC.AuthCodeCoroServer.AuthCodeCoroObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 23: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (GetMiniAppReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("MiniAppSvc.get_mini_app");
+        paramPacket.setFuncName("get_mini_app");
+        paramPacket.setServantName("Wallet.MiniAppServer.MiniAppObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 21: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (SongRedPackMatchReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQwalletVoicePack.macthSong");
+        paramPacket.setFuncName("macthSong");
+        paramPacket.setServantName("Wallet.VoiceMatchServer.VoiceMatchObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 24: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (IsUinFocusMpIdReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("MiniAppSvc.is_uin_focus_mpid");
+        paramPacket.setFuncName("is_uin_focus_mpid");
+        paramPacket.setServantName("Wallet.MiniAppServer.MiniAppObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 25: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (FocusMpIdReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("MiniAppSvc.focus_mpid");
+        paramPacket.setFuncName("focus_mpid");
+        paramPacket.setServantName("Wallet.MiniAppServer.MiniAppObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 26: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (IdiomRedPackMatchReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQwalletVoicePack.macthIdiom");
+        paramPacket.setFuncName("macthIdiom");
+        paramPacket.setServantName("Wallet.VoiceMatchServer.VoiceMatchObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    case 27: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (GetRandomHbIdiomReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("QQwalletVoicePack.GetRandomHbIdiom");
+        paramPacket.setFuncName("GetRandomHbIdiom");
+        paramPacket.setServantName("Wallet.VoiceMatchServer.VoiceMatchObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
+    }
+    try
+    {
+      paramPacket.addRequestPacket("req", (GetBroadCastHbIdiomReq)paramIntent.getSerializableExtra("req"));
+      paramPacket.setSSOCommand("QQwalletVoicePack.GetBroadCastHbIdiom");
+      paramPacket.setFuncName("GetBroadCastHbIdiom");
+      paramPacket.setServantName("Wallet.VoiceMatchServer.VoiceMatchObj");
+      return;
+    }
+    catch (OutOfMemoryError paramIntent) {}
   }
 }
 

@@ -1,72 +1,84 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aolx
-  extends aofy<blus>
+  extends aokh<aolr>
 {
+  public static aolr b(int paramInt)
+  {
+    aolr localaolr = (aolr)aoks.a().a(paramInt);
+    if (localaolr != null) {
+      return localaolr;
+    }
+    return new aolr();
+  }
+  
   public int a()
   {
-    return 306;
+    return 0;
   }
   
   @NonNull
-  public blus a(int paramInt)
+  public aolr a(int paramInt)
   {
-    return new blus();
+    return new aolr();
+  }
+  
+  public aolr a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    return new aolr(paramString);
   }
   
   @Nullable
-  public blus a(aogf[] paramArrayOfaogf)
+  public aolr a(aoko[] paramArrayOfaoko)
   {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
-    }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onParsed, content:" + paramArrayOfaogf);
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
     }
-    return new blup().a(paramArrayOfaogf, len.e(), "temp_filter_zip", new aoly(this));
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfaoko)) {
+        return a(paramArrayOfaoko);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
+    }
+    return null;
   }
   
-  public Class<blus> a()
+  public Class<aolr> a()
   {
-    return blus.class;
+    return aolr.class;
+  }
+  
+  public void a()
+  {
+    super.a();
   }
   
   public void a(int paramInt)
   {
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
+  }
+  
+  public void a(aolr paramaolr)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onReqFailed");
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
     }
   }
   
-  public void a(blus paramblus)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onUpdate");
-    }
+    return false;
   }
   
   public int b()
   {
-    if (!new File(bngf.a + "filter_config_new.xml").exists()) {
-      return 0;
-    }
-    return bncp.a(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!new File(bngf.a + "filter_config_new.xml").exists())
-    {
-      QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
-      aogj.a().a(306, 0);
-      return 0;
-    }
-    return super.b(paramInt);
+    return 0;
   }
   
   public boolean b()

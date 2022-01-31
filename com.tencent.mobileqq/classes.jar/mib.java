@@ -15,10 +15,10 @@ public class mib
   
   public void b()
   {
-    azmj.b(null, "CliOper", "", "", "0X800592D", "0X800592D", 0, 0, "", "", "", "");
+    azqs.b(null, "CliOper", "", "", "0X800592D", "0X800592D", 0, 0, "", "", "", "");
     if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().a() != -1) && (((lqq)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a == 1))
     {
-      azmj.b(null, "CliOper", "", "", "0X800594D", "0X800594D", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800594D", "0X800594D", 0, 0, "", "", "", "");
       lid locallid = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a();
       if (locallid != null)
       {
@@ -41,7 +41,7 @@ public class mib
       if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f != 90) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f != 270)) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().a() == -1) || (((lqq)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a != 2)) {
         break;
       }
-      azmj.b(null, "CliOper", "", "", "0X800594E", "0X800594E", 0, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800594E", "0X800594E", 0, 0, "", "", "", "");
       break;
       label385:
       this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.e, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.jdField_b_of_type_Long, 101);

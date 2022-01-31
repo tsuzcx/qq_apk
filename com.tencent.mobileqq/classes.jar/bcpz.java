@@ -1,55 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopUtils.4;
 
 public class bcpz
-  extends bcqa
+  implements DialogInterface.OnClickListener
 {
-  public bcpz(bcpx parambcpx, int paramInt)
-  {
-    super(parambcpx, paramInt);
-  }
+  public bcpz(TroopUtils.4 param4) {}
   
-  public void a()
-  {
-    if (a(this.jdField_a_of_type_Bcpx.a)) {
-      return;
-    }
-    e();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
-    {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
-    }
-    for (;;)
-    {
-      bcpy.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,152 +1,116 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.gamecenter.activities.SingleTaskQQBrowser;
+import com.tencent.qphone.base.util.QLog;
 
 public class beih
-  implements bcwt
+  extends behq
 {
-  public agmb a;
-  Handler jdField_a_of_type_AndroidOsHandler = new beii(this, Looper.getMainLooper());
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public bcws a;
-  beig jdField_a_of_type_Beig;
-  public String a;
-  yxy jdField_a_of_type_Yxy = (yxy)yxy.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
+  final behr b;
   
-  public beih(String paramString)
+  public beih(behr parambehr)
   {
-    if (this.jdField_a_of_type_Yxy == null) {
-      this.jdField_a_of_type_Yxy = new yxy("2584", "Werewolves.apk");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = parambehr;
   }
   
-  public beig a()
+  private boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Beig;
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_Beig != null) {
-      return this.jdField_a_of_type_Beig.a(paramString);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Yxy.jdField_a_of_type_Boolean)
+    boolean bool2 = false;
+    paramString = Uri.parse(paramString);
+    boolean bool1 = bool2;
+    if (paramString != null)
     {
-      this.jdField_a_of_type_Yxy.a(false);
-      return;
-    }
-    if (this.jdField_a_of_type_Beig == null) {
-      this.jdField_a_of_type_Beig = new beig(this, this.jdField_a_of_type_Yxy.jdField_a_of_type_JavaLangClassLoader);
-    }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.arg1 = 0;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(agmb paramagmb)
-  {
-    if (this.jdField_a_of_type_Agmb != paramagmb) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Beig != null) {
-        this.jdField_a_of_type_Beig.b();
-      }
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      bool1 = bool2;
+      if (paramString.isHierarchical())
       {
-        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-        this.jdField_a_of_type_AndroidViewViewGroup = null;
+        paramString = paramString.getQueryParameter("_wwv");
+        bool1 = bool2;
+        if (paramString == null) {}
       }
-      if (this.jdField_a_of_type_Bcws != null) {
-        this.jdField_a_of_type_Bcws.d();
+    }
+    try
+    {
+      long l = Long.parseLong(paramString.trim());
+      bool1 = bool2;
+      if (0L != (0x800 & l)) {
+        bool1 = true;
       }
-    } while (this.jdField_a_of_type_Yxy == null);
-    this.jdField_a_of_type_Yxy.jdField_a_of_type_Yxx = null;
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    this.jdField_a_of_type_Beig.a(paramViewGroup, this.jdField_a_of_type_Yxy.jdField_a_of_type_Yxx);
-  }
-  
-  public void a(BaseActivity paramBaseActivity, agmb paramagmb)
-  {
-    this.jdField_a_of_type_Agmb = paramagmb;
-    this.jdField_a_of_type_Yxy.a(paramBaseActivity);
-    if (this.jdField_a_of_type_Beig != null)
+    }
+    catch (NumberFormatException paramString)
     {
-      this.jdField_a_of_type_Beig.a();
-      this.jdField_a_of_type_Beig.a(this.jdField_a_of_type_Yxy.jdField_a_of_type_Yxx);
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQBrowser", 4, "sorry, i can not get rules from QQBrowser url, maybe have more than one '_wv' in the url");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bcws = new bcws((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Bcws.a(this);
-      return;
-      this.jdField_a_of_type_Beig = new beig(this, this.jdField_a_of_type_Yxy.jdField_a_of_type_JavaLangClassLoader);
-    }
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Beig == null) {
-      return;
-    }
-    this.jdField_a_of_type_Beig.a(paramString, paramArrayOfByte);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Yxy.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Beig != null) {
-      this.jdField_a_of_type_Beig.a();
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-    }
-    this.jdField_a_of_type_Agmb = null;
-    if (this.jdField_a_of_type_Bcws != null) {
-      this.jdField_a_of_type_Bcws.d();
-    }
-    if (this.jdField_a_of_type_Yxy != null) {
-      this.jdField_a_of_type_Yxy.c();
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Beig == null) {}
-    while ((this.jdField_a_of_type_Beig != null) && (this.jdField_a_of_type_Beig.a())) {
-      return true;
-    }
+    return bool1;
     return false;
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public boolean a(Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_Beig != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
-      this.jdField_a_of_type_Beig.a(paramString, paramBitmap);
+    Activity localActivity = this.b.a();
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (syb.c(str)) && (!(localActivity instanceof PublicAccountBrowser)) && (!(localActivity instanceof ReadInJoyArticleDetailActivity)) && (!(localActivity instanceof PublicAccountAdvertisementActivity)))
+    {
+      paramIntent = new Intent(paramIntent);
+      paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
+      localActivity.startActivity(paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserNavigator", 1, "shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
+      }
     }
+    do
+    {
+      do
+      {
+        return false;
+        if ((!syb.e(str)) || ((localActivity instanceof PublicAccountBrowser)) || ((localActivity instanceof ReadInJoyArticleDetailActivity)) || ((localActivity instanceof PublicAccountAdvertisementActivity))) {
+          break;
+        }
+        paramIntent = new Intent(paramIntent);
+        paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
+        localActivity.startActivity(paramIntent);
+      } while (!QLog.isColorLevel());
+      QLog.d("SwiftBrowserNavigator", 1, "shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
+      return false;
+      if ((TextUtils.isEmpty(str)) || (!syb.f(str)) || ((localActivity instanceof PublicAccountBrowser)) || ((localActivity instanceof ReadInJoyArticleDetailActivity)) || ((localActivity instanceof PublicAccountAdvertisementActivity))) {
+        break;
+      }
+      paramIntent = new Intent(paramIntent);
+      paramIntent.setComponent(new ComponentName(localActivity, PublicAccountBrowser.class));
+      localActivity.startActivity(paramIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d("SwiftBrowserNavigator", 1, "KanDian URL shouldNavigate to  PublicAccountBrowser, url: " + ndq.b(str, new String[0]));
+    return false;
+    if ((!TextUtils.isEmpty(str)) && (localActivity.getClass() != SingleTaskQQBrowser.class) && (a(str)))
+    {
+      if (myl.a().j(str))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserNavigator", 1, "WebViewSwitchAio canSwitchAIO  url " + str);
+        }
+        paramIntent = new Intent(paramIntent);
+        paramIntent.setComponent(new ComponentName(localActivity, SingleTaskQQBrowser.class));
+        paramIntent.setFlags(402653184);
+        localActivity.startActivity(paramIntent);
+        return false;
+      }
+      QLog.e("SwiftBrowserNavigator", 1, "WebViewSwitchAio want to switchToAIO, but don't have command right. url : " + str);
+    }
+    return true;
+  }
+  
+  public boolean b(Intent paramIntent)
+  {
+    return true;
   }
 }
 

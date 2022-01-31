@@ -1,6 +1,15 @@
-public abstract interface aswa
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aswa
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  aswa(asvy paramasvy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.k();
+  }
 }
 
 

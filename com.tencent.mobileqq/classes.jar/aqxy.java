@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-
-public final class aqxy
-  implements Parcelable.Creator<WeiYunFileInfo>
+public abstract interface aqxy
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  public abstract int a();
   
-  public WeiYunFileInfo[] a(int paramInt)
-  {
-    return new WeiYunFileInfo[paramInt];
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(aqxg paramaqxg);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

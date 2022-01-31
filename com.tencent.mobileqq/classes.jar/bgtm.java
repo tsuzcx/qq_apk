@@ -1,97 +1,76 @@
-import android.os.Handler;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.minigame.GameRuntime.3.1;
-import com.tencent.qqmini.sdk.utils.GameWnsUtils;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import java.util.Arrays;
+import org.json.JSONObject;
 
 public class bgtm
-  implements ITTEngine.IListener
 {
-  bgtm(bgtj parambgtj) {}
+  public final int a;
+  public final long a;
+  public final String a;
   
-  public void onExit()
+  public bgtm(String paramString, int paramInt, long paramLong)
   {
-    bgtj.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onFirstRender()
+  public static bgtm a(JSONObject paramJSONObject)
   {
-    QMLog.i("GameRuntime", "onFirstRender. " + bgtj.a(this.a));
-    if (bgtj.a(this.a) != null) {
-      bgtj.a(this.a).b();
-    }
-    this.a.a(bghw.a(2032, Integer.valueOf(bgtj.b(this.a))));
-    bgtj.a(this.a, System.currentTimeMillis());
-    String str = bgtj.a(this.a);
-    if (bgtj.a(this.a))
+    if (paramJSONObject == null) {}
+    String str;
+    long l;
+    do
     {
-      bgtj.a(this.a, false);
-      QMLog.i("GameRuntime", "game[" + bgtj.a(this.a).appId + "][" + bgtj.a(this.a).name + "] 冷启动，首帧出现!");
-      bgyd.a(bgtj.a(this.a), 1022, "1");
-    }
-    for (;;)
-    {
-      long l1 = bgtj.b(this.a);
-      long l2 = bgtj.c(this.a);
-      bgyd.a(bgtj.a(this.a), 1042, null, str, null, 0, "1", l1 - l2, null);
-      bghk.a(bgtj.b(this.a));
-      bgtj.a(this.a).post(new GameRuntime.3.1(this));
-      return;
-      QMLog.i("GameRuntime", "game[" + bgtj.a(this.a).appId + "][" + bgtj.a(this.a).name + "] 热启动,二次启动游戏!");
-      bgyd.a(bgtj.a(this.a), 1023, "1");
-      bguz.a(bgtj.a(this.a), bgtj.a(this.a));
+      do
+      {
+        return null;
+        str = paramJSONObject.optString("text");
+      } while (TextUtils.isEmpty(str));
+      l = paramJSONObject.optLong("time", -1L);
+    } while (l < 0L);
+    paramJSONObject = paramJSONObject.optString("color");
+    if (TextUtils.isEmpty(paramJSONObject)) {}
+    for (int i = -1;; i = ColorUtils.parseColor(paramJSONObject)) {
+      return new bgtm(str, i, l);
     }
   }
   
-  public void onGameLaunched(int paramInt, long paramLong)
+  public boolean equals(Object paramObject)
   {
-    Object localObject = this.a;
-    int i;
-    MiniAppInfo localMiniAppInfo;
-    if (paramInt >= 0)
-    {
-      i = 0;
-      bgtj.a((bgtj)localObject, i);
-      bgtj.b(this.a, System.currentTimeMillis());
-      QMLog.i("[minigame][timecost] ", "step[launchGame] launchResult: " + paramInt + ", timeCost: " + paramLong + ", " + bgtj.a(this.a));
-      bgyd.a(bgtj.a(this.a), 1040, null, bgtj.a(this.a), null, 0, "1", paramLong, null);
-      AppRuntimeLoaderManager.g().notifyRuntimeEvent(63, new Object[] { Integer.valueOf(paramInt) });
-      AppRuntimeLoaderManager.g().notifyRuntimeEvent(2051, new Object[0]);
-      bgxl.a("2load_end", String.valueOf(bgtj.b(this.a)), null, bgtj.a(this.a));
-      if (bgtj.b(this.a) < 0) {
-        break label234;
-      }
-      localMiniAppInfo = bgtj.a(this.a);
-      if (!bgtj.a(this.a)) {
-        break label227;
-      }
+    boolean bool2 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    label227:
-    for (localObject = "1";; localObject = "0")
+    do
     {
-      bgyd.b(localMiniAppInfo, 1008, (String)localObject);
-      bgyd.a(bgtj.a(this.a), 1008, "1");
-      return;
-      i = paramInt;
-      break;
-    }
-    label234:
-    bgyg.a(bgtj.a(this.a), "1", null, "show_fail", "load_pkg_fail");
-    bgxl.a("2launch_fail", "load_pkg_fail", null, bgtj.a(this.a));
-    bgxq.a(bgtj.a(this.a), 512);
-    bgiv.a(bgtj.a(this.a), bgte.a().a(), bgtj.a(this.a), GameWnsUtils.getGameLaunchFailContent());
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (paramObject == null);
+          bool1 = bool2;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (bgtm)paramObject;
+        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_a_of_type_JavaLangString == null) && (paramObject.jdField_a_of_type_JavaLangString == null)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_JavaLangString == null);
+      bool1 = bool2;
+    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    return true;
   }
   
-  public void onInitFinish()
+  public int hashCode()
   {
-    QMLog.i("GameRuntime", "onInitFinish");
-    long l = System.currentTimeMillis() - bgtj.a(this.a);
-    bgyd.a(bgtj.a(this.a), 1039, null, String.valueOf(bgtj.a(this.a)), null, 0, "1", l, null);
-    QMLog.e("[minigame][timecost] ", "step[create surfaceView] cost time: " + l + "(from create SurfaceView)");
-    this.a.f();
-    bgtj.a(this.a, 0);
+    return Arrays.hashCode(new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) });
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.secspy;
 
 import android.os.Handler;
-import ayto;
-import aytp;
-import bcua;
+import ayxx;
+import ayxy;
+import bcyj;
 
 public class SecSpyFileManager$3
   implements Runnable
 {
-  public SecSpyFileManager$3(ayto paramayto, aytp paramaytp, long paramLong) {}
+  public SecSpyFileManager$3(ayxx paramayxx, ayxy paramayxy, long paramLong) {}
   
   public void run()
   {
-    if (aytp.a(this.jdField_a_of_type_Aytp)) {
+    if (ayxy.a(this.jdField_a_of_type_Ayxy)) {
       return;
     }
-    float f = aytp.a(this.jdField_a_of_type_Aytp) / aytp.b(this.jdField_a_of_type_Aytp);
+    float f = ayxy.a(this.jdField_a_of_type_Ayxy) / ayxy.b(this.jdField_a_of_type_Ayxy);
     this.this$0.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
     this.this$0.a.a().postDelayed(this, 20000L);
   }

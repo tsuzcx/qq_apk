@@ -1,45 +1,11 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-
-public final class wzd
-  extends wzy
+class wzd
+  implements xgf
 {
-  public wzd(DoodleView paramDoodleView)
+  wzd(wzb paramwzb) {}
+  
+  public void a(xiq paramxiq)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "EmptyLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    wsv.b("EmptyLayer", "EmptyLayer handle touch event.");
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.a.a(6);
   }
 }
 

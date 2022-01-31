@@ -1,23 +1,17 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
 class xey
-  implements TextView.OnEditorActionListener
+  implements uxw
 {
-  xey(xex paramxex) {}
+  xey(xet paramxet, xfg paramxfg) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    if (paramInt == 6)
+    wxe.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramuxs != null))
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+      this.jdField_a_of_type_Xet.a(paramuxs.b, paramuxs.a, this.jdField_a_of_type_Xfg);
+      return;
     }
-    return false;
+    wxe.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

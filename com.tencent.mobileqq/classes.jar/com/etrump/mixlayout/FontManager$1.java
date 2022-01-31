@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bdkd;
+import bdom;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import fx;
@@ -14,7 +14,7 @@ public class FontManager$1
   
   public void run()
   {
-    switch (bdkd.a(bdkd.a(), "libFounderColorFont_818.so"))
+    switch (bdom.a(bdom.a(), "libFounderColorFont_818.so"))
     {
     default: 
       return;
@@ -23,7 +23,7 @@ public class FontManager$1
       return;
     }
     g.a().b.set(true);
-    bdkd.a(this.this$0.a);
+    bdom.a(this.this$0.a);
     fx.a(this.this$0);
   }
 }

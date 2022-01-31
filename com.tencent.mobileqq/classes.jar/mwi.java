@@ -34,7 +34,7 @@ public class mwi
   {
     if (AudioHelper.d())
     {
-      paramString = paramString + alpo.a(2131715108) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      paramString = paramString + alud.a(2131715120) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
       QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
       throw new ClassCastException(paramString);
     }

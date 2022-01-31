@@ -1,185 +1,83 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
-public class aldw
-  implements aldp
+final class aldw
+  implements aled
 {
-  public static int a;
-  private static int jdField_b_of_type_Int = 3;
-  private static int c = 10000;
-  private long jdField_a_of_type_Long;
-  private aldb jdField_a_of_type_Aldb;
-  private List<TraceData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = System.currentTimeMillis() - 540000L;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int d;
-  private int e;
+  aldw(aknx paramaknx, int[] paramArrayOfInt, AppInterface paramAppInterface, aled paramaled, boolean paramBoolean, int paramInt) {}
   
-  static
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    jdField_a_of_type_Int = 30000;
-  }
-  
-  private void a(TraceData paramTraceData)
-  {
-    if ((paramTraceData == null) || (paramTraceData.result == null)) {}
-    do
+    if (paramBoolean)
     {
-      return;
-      l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_b_of_type_Long < 1000L)
+      File localFile;
+      if ((Build.VERSION.SDK_INT < 24) && (BaseApplicationImpl.sProcessId == 1))
       {
-        paramTraceData.result.c = this.d;
-        paramTraceData.result.d = this.e;
+        localFile = new File(aldv.a(1, paramInt1), "dress.zip");
+        if (!localFile.exists()) {}
+      }
+      try
+      {
+        paramArrayOfInt = aliu.f;
+        if (paramInt1 == 0) {
+          paramArrayOfInt = aliu.c + "/def/dress/";
+        }
+        new File(paramArrayOfInt).mkdirs();
+        ndr.a(localFile, paramArrayOfInt);
+        paramArrayOfInt = aldv.a(paramInt1);
+        if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+        {
+          int j = paramArrayOfInt.length;
+          int i = 0;
+          while (i < j)
+          {
+            int k = paramArrayOfInt[i];
+            aldv.a(this.jdField_a_of_type_Aknx, 2, k);
+            i += 1;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role succ  id: " + paramInt1 + ", uin: " + paramString);
+        }
+      }
+      catch (Exception paramArrayOfInt)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage(), paramArrayOfInt);
+          }
+        }
+      }
+      catch (OutOfMemoryError paramArrayOfInt)
+      {
+        do
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage());
+            }
+          }
+        } while (this.jdField_a_of_type_Aled == null);
+        this.jdField_a_of_type_Aled.onDownLoadFinish(true, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
         return;
       }
-    } while ((l1 - this.jdField_b_of_type_Long <= 600000L) && ((!paramTraceData.isSampleFocus) || (l1 - this.jdField_b_of_type_Long <= 300000L)));
-    this.jdField_b_of_type_Long = l1;
-    long l1 = System.currentTimeMillis();
-    this.d = aldk.b();
-    this.e = aldk.a();
-    long l2 = System.currentTimeMillis();
-    QLog.i("TraceReport", 1, "samplingCpuAndMemory cpu:" + this.e + ",memory:" + this.d + ",isSampleFocus:" + paramTraceData.isSampleFocus + ",cost:" + (l2 - l1));
-    paramTraceData.result.c = this.d;
-    paramTraceData.result.d = this.e;
-  }
-  
-  private void c(List<TraceData> paramList)
-  {
-    aldq localaldq = this.jdField_a_of_type_Aldb.a();
-    if (localaldq != null) {
-      localaldq.b(paramList);
-    }
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_Aldb.a();
-    if (localObject != null)
-    {
-      localObject = ((aldq)localObject).a();
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, new Object[] { "onReportStrategyChange reportInterval:", Integer.valueOf(paramInt1), ",reportNum:", Integer.valueOf(paramInt2), ", isFailReport:", Boolean.valueOf(paramBoolean) });
-    }
-    if (paramInt1 > 0) {
-      jdField_a_of_type_Int = paramInt1 * 1000;
-    }
-    if (paramInt2 > 0) {
-      jdField_b_of_type_Int = paramInt2;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(aldb paramaldb)
-  {
-    this.jdField_a_of_type_Aldb = paramaldb;
-    paramaldb = this.jdField_a_of_type_Aldb.a();
-    if (paramaldb != null) {
-      paramaldb.a(this);
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(List<TraceData> paramList)
-  {
-    aldo localaldo = this.jdField_a_of_type_Aldb.a();
-    if (localaldo != null)
-    {
-      localaldo.a(paramList);
-      localaldo.b(paramList);
-    }
-  }
-  
-  public boolean a(TraceData paramTraceData)
-  {
-    long l1 = System.currentTimeMillis();
-    a(paramTraceData);
-    this.jdField_a_of_type_JavaUtilList.add(paramTraceData);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      boolean bool2 = bdee.g(null);
-      long l2 = l1 - this.jdField_a_of_type_Long;
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      if ((paramTraceData.result != null) && (paramTraceData.result.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean))
-      {
-        bool1 = true;
-        if (((i < jdField_b_of_type_Int) || (l2 <= c)) && (((l2 <= jdField_a_of_type_Int) && (!bool1)) || (!bool2))) {
-          break label254;
-        }
-        a(this.jdField_a_of_type_JavaUtilList);
-        c(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_JavaUtilList.clear();
-        long l3 = System.currentTimeMillis();
-        this.jdField_a_of_type_Long = l3;
-        if (QLog.isColorLevel()) {
-          QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(i), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool1) });
-        }
-      }
-      for (boolean bool1 = false;; bool1 = true)
-      {
-        if ((!bool2) && (QLog.isColorLevel())) {
-          QLog.d("TraceReport", 2, "handleAddTraceReporting not network and save");
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        label254:
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(paramTraceData);
-        b(localArrayList);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, "handleAddTraceReporting not active and save");
-    }
-    b(this.jdField_a_of_type_JavaUtilList);
-    return false;
-  }
-  
-  public void b()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    boolean bool = bdee.g(null);
-    if ((i <= 0) || (!bool) || (!this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TraceReport", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(i), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        aldv.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.jdField_a_of_type_Aled, -1, this.jdField_a_of_type_ArrayOfInt, -1, -1, this.jdField_a_of_type_Boolean);
       }
     }
     do
     {
       return;
-      a(this.jdField_a_of_type_JavaUtilList);
-      c(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.jdField_a_of_type_Aled != null) {
+        this.jdField_a_of_type_Aled.onDownLoadFinish(false, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+      }
     } while (!QLog.isColorLevel());
-    QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(i) });
-  }
-  
-  public void b(List<TraceData> paramList)
-  {
-    aldq localaldq = this.jdField_a_of_type_Aldb.a();
-    if (localaldq != null) {
-      localaldq.a(paramList);
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    b(this.jdField_a_of_type_JavaUtilList);
+    QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role fail id: " + this.jdField_a_of_type_Int + ", uin:" + paramString);
   }
 }
 

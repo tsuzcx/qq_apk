@@ -1,51 +1,40 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-public class bjcr
+public final class bjcr
 {
-  public final int a;
-  public final long a;
-  public String a;
-  public final int b;
-  public final long b;
-  public final int c;
-  public final long c;
-  public final int d;
-  public final long d;
-  public final long e;
-  public final long f;
+  private static final bjcr jdField_a_of_type_Bjcr = new bjcr();
+  private static volatile bjcu jdField_a_of_type_Bjcu = new bjct(null);
+  private static volatile boolean jdField_a_of_type_Boolean = true;
+  private Throwable jdField_a_of_type_JavaLangThrowable;
   
-  private bjcr(ByteBuffer paramByteBuffer, int paramInt)
+  public static bjcr a()
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
+    if (!jdField_a_of_type_Boolean) {
+      return jdField_a_of_type_Bjcr;
     }
-    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
-    {
-      this.jdField_a_of_type_JavaLangString = null;
+    return new bjcr();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangThrowable = null;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      throw new NullPointerException("closer == null");
+    }
+    if ((this == jdField_a_of_type_Bjcr) || (!jdField_a_of_type_Boolean)) {
       return;
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getLong();
     }
+    this.jdField_a_of_type_JavaLangThrowable = new Throwable("Explicit termination method '" + paramString + "' not called");
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaLangThrowable == null) || (!jdField_a_of_type_Boolean)) {
+      return;
+    }
+    jdField_a_of_type_Bjcu.a("A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.", this.jdField_a_of_type_JavaLangThrowable);
   }
 }
 

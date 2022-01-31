@@ -1,16 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atnx
-  implements View.OnClickListener
+class atnx
+  implements bhuk
 {
-  public atnx(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  atnx(atnw paramatnw, bhuf parambhuf, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_Bhuf.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Atnw.b(false);
+      return;
+      atmr.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Atnw.a().e, this.jdField_a_of_type_Atnw.a().b);
+      continue;
+      this.jdField_a_of_type_Atnw.g();
+      continue;
+      this.jdField_a_of_type_Atnw.g();
+    }
   }
 }
 

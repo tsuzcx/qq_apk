@@ -1,47 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class amsr
-  implements amzd
+  implements View.OnClickListener
 {
-  amsr(amsq paramamsq, String paramString, amzd paramamzd) {}
+  amsr(amsq paramamsq) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Amzd != null) {
-      this.jdField_a_of_type_Amzd.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Amzd != null) {
-      this.jdField_a_of_type_Amzd.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, amze paramamze)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramamze.d + ", filename = " + paramamze.c + ", url = " + paramamze.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!amsq.a(this.jdField_a_of_type_Amsq, paramamze.c, paramamze.b))
-      {
-        amsq.a(this.jdField_a_of_type_Amsq, paramamze.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    while (this.jdField_a_of_type_Amzd == null)
-    {
-      return;
-      if ((!paramamze.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Amsq.a(paramamze.d, paramamze.c, paramamze.b) != 0)) {}
-    }
-    this.jdField_a_of_type_Amzd.a(paramBoolean, paramamze);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Amzd != null) {
-      this.jdField_a_of_type_Amzd.b();
-    }
+    this.a.b();
   }
 }
 

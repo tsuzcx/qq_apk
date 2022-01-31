@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.EditTextViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bldn
-  implements DialogInterface.OnDismissListener
+class bldn
+  implements View.OnClickListener
 {
-  public bldn(EditTextViewer paramEditTextViewer) {}
+  bldn(bldk parambldk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(View paramView)
+  {
+    bliu.a().Q();
+    bldk.a(this.a, true);
+  }
 }
 
 

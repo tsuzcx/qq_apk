@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.limitchat;
 
-import apwv;
+import aqbe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
@@ -11,9 +11,9 @@ public final class LimitChatUtil$2
   
   public void run()
   {
-    apwv localapwv = (apwv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
-    if (localapwv != null) {
-      localapwv.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    aqbe localaqbe = (aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+    if (localaqbe != null) {
+      localaqbe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }

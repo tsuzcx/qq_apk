@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aaos;
-import aaot;
+import aath;
+import aati;
 import com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton;
 
 class GameActivity$27$1
@@ -12,7 +12,7 @@ class GameActivity$27$1
   public void run()
   {
     GameActivity.access$4500(this.this$1.this$0);
-    aaos.a().a(this.this$1.this$0, new aaot());
+    aath.a().a(this.this$1.this$0, new aati());
     MiniGameAdBannerPopup.checkShouldShow(this.this$1.this$0, this.this$1.this$0.mGameAppConfig);
     if ((GameActivity.access$4600(this.this$1.this$0) != null) && (GameActivity.access$4600(this.this$1.this$0).getCapsuleButton() != null))
     {

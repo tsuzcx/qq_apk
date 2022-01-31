@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-
-public final class anbh
-  implements Parcelable.Creator<ArModelResource>
+public class anbh
 {
-  public ArModelResource a(Parcel paramParcel)
-  {
-    return new ArModelResource(paramParcel);
-  }
+  public String a;
+  public byte[] a;
+  public String b;
   
-  public ArModelResource[] a(int paramInt)
+  public anbh(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    return new ArModelResource[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 

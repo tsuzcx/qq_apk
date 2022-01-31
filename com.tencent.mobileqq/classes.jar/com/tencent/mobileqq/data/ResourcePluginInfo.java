@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awbw;
-import awdg;
-import awdj;
+import awge;
+import awgf;
+import awhp;
+import awhs;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends awbv
+  extends awge
 {
-  @awdg
+  @awhp
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @awdj
+  @awhs
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,40 +39,40 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(awbw paramawbw, String paramString)
+  public static ResourcePluginInfo find(awgf paramawgf, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramawbw != null)
+    if (paramawgf != null)
     {
       localObject1 = localObject2;
       if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramawbw.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
+        localObject1 = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
       }
     }
     return localObject1;
   }
   
-  public static List<ResourcePluginInfo> getAll(awbw paramawbw, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(awgf paramawgf, int paramInt, boolean paramBoolean)
   {
     List localList = null;
-    if (paramawbw != null)
+    if (paramawgf != null)
     {
       if (paramBoolean) {
-        localList = paramawbw.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        localList = paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
     }
     else {
       return localList;
     }
-    return paramawbw.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  public static void persistOrReplace(awbw paramawbw, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(awgf paramawgf, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramawbw != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramawgf != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramawbw.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
       if (localResourcePluginInfo != null)
       {
         localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
@@ -96,23 +96,23 @@ public class ResourcePluginInfo
         localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
         localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
         localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramawbw.a(localResourcePluginInfo);
+        paramawgf.a(localResourcePluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramawbw.a(paramResourcePluginInfo);
+    paramawgf.a(paramResourcePluginInfo);
   }
   
-  public static void remove(awbw paramawbw, String paramString)
+  public static void remove(awgf paramawgf, String paramString)
   {
-    if ((paramawbw != null) && (paramString != null))
+    if ((paramawgf != null) && (paramString != null))
     {
-      paramString = find(paramawbw, paramString);
+      paramString = find(paramawgf, paramString);
       if (paramString != null) {
-        paramawbw.b(paramString);
+        paramawgf.b(paramString);
       }
     }
   }

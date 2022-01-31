@@ -51,7 +51,7 @@ public class ssp
   private static ssp jdField_a_of_type_Ssp = new ssp();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private final alsi jdField_a_of_type_Alsi = new ssq(this);
+  private final alwx jdField_a_of_type_Alwx = new ssq(this);
   private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -79,7 +79,7 @@ public class ssp
   
   public static int a()
   {
-    return 2130840176;
+    return 2130840177;
   }
   
   private static int a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -104,9 +104,9 @@ public class ssp
       label94:
       return i;
     }
-    Object localObject3 = (aluw)paramQQAppInterface.getManager(56);
+    Object localObject3 = (alzl)paramQQAppInterface.getManager(56);
     if (localObject3 != null) {
-      if ((!ajfw.a(paramQQAppInterface)) || (Thread.currentThread() != ThreadManager.getRecentThreadLooper().getThread())) {}
+      if ((!ajkl.a(paramQQAppInterface)) || (Thread.currentThread() != ThreadManager.getRecentThreadLooper().getThread())) {}
     }
     label460:
     label1123:
@@ -116,11 +116,11 @@ public class ssp
       int k;
       try
       {
-        Object localObject1 = ((aluw)localObject3).a(paramString, true);
+        Object localObject1 = ((alzl)localObject3).a(paramString, true);
         if (localObject1 != null) {
           break label1123;
         }
-        localAccountDetail = ((aluw)localObject3).b(paramString);
+        localAccountDetail = ((alzl)localObject3).b(paramString);
         localObject3 = localObject1;
         localObject1 = localAccountDetail;
         if ((localObject3 == null) && (localObject1 == null)) {
@@ -180,10 +180,10 @@ public class ssp
       }
       catch (Throwable localThrowable)
       {
-        localObject2 = ((aluw)localObject3).c(paramString);
+        localObject2 = ((alzl)localObject3).c(paramString);
         continue;
       }
-      Object localObject2 = ((aluw)localObject3).c(paramString);
+      Object localObject2 = ((alzl)localObject3).c(paramString);
       continue;
       long l = ((AccountDetail)localObject2).accountFlag2;
       continue;
@@ -220,14 +220,14 @@ public class ssp
           }
           if (paramQQAppInterface != null)
           {
-            localObject2 = ((aloz)paramQQAppInterface.getManager(51)).b(paramString);
+            localObject2 = ((alto)paramQQAppInterface.getManager(51)).b(paramString);
             if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
             {
               QLog.d("ServiceAccountFolderManager", 1, " getPublicAccountFolderType error, is UIN_TYPE_PUBLIC_ACCOUNT, but is friend relation  puin = " + paramString);
               localObject2 = new HashMap();
               ((HashMap)localObject2).put("self_uin", paramQQAppInterface.getCurrentAccountUin());
               ((HashMap)localObject2).put("inValid_uin", paramString);
-              azmz.a(BaseApplicationImpl.getContext()).a(paramString, "ServiceAccountFolderManager_InValid_puin", false, 1L, 0L, (HashMap)localObject2, null);
+              azri.a(BaseApplicationImpl.getContext()).a(paramString, "ServiceAccountFolderManager_InValid_puin", false, 1L, 0L, (HashMap)localObject2, null);
               return 0;
             }
           }
@@ -244,7 +244,7 @@ public class ssp
               ((HashMap)localObject3).put("inValid_uin", paramString);
               ((HashMap)localObject3).put("inValid_msg_troop", String.valueOf(((MessageRecord)localObject2).istroop));
               ((HashMap)localObject3).put("inValid_msg_content", ((MessageRecord)localObject2).toString());
-              azmz.a(BaseApplicationImpl.getContext()).a(paramString, "ServiceAccountFolderManager_InValid_Msg", false, 1L, 0L, (HashMap)localObject3, null);
+              azri.a(BaseApplicationImpl.getContext()).a(paramString, "ServiceAccountFolderManager_InValid_Msg", false, 1L, 0L, (HashMap)localObject3, null);
               return 0;
             }
             if (nmh.a((MessageRecord)localObject2)) {
@@ -432,12 +432,12 @@ public class ssp
     if (localQQAppInterface == null) {}
     do
     {
-      aluw localaluw;
+      alzl localalzl;
       do
       {
         return;
-        localaluw = (aluw)localQQAppInterface.getManager(56);
-      } while ((localaluw != null) && (localaluw.c(paramString) == null) && (localaluw.b(paramString) == null));
+        localalzl = (alzl)localQQAppInterface.getManager(56);
+      } while ((localalzl != null) && (localalzl.c(paramString) == null) && (localalzl.b(paramString) == null));
       if (syb.a(localQQAppInterface, paramString) != -7) {
         break;
       }
@@ -609,7 +609,7 @@ public class ssp
       if (paramssj != null) {
         break label110;
       }
-      paramssj = azqu.a(localMessageForStructing.msgData);
+      paramssj = azvd.a(localMessageForStructing.msgData);
     }
     label110:
     for (;;)
@@ -631,7 +631,7 @@ public class ssp
     {
       f(paramQQAppInterface);
       this.jdField_a_of_type_Boolean = true;
-      return new baig(this.jdField_a_of_type_JavaLangCharSequence, 3, 16);
+      return new bamp(this.jdField_a_of_type_JavaLangCharSequence, 3, 16);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ServiceAccountFolderManager", 2, "getFolderMsgBrief->mFolderMsgBrief:" + this.jdField_a_of_type_JavaLangCharSequence);
@@ -647,7 +647,7 @@ public class ssp
     localMessage.fileType = -1;
     paramQQAppInterface.a().a(localMessage);
     paramMessageRecord = new MsgSummary();
-    bdec.a(paramQQAppInterface.getApplication(), paramQQAppInterface, localMessage, localMessage.istroop, paramMessageRecord, localMessage.nickName, false, paramBoolean);
+    bdil.a(paramQQAppInterface.getApplication(), paramQQAppInterface, localMessage, localMessage.istroop, paramMessageRecord, localMessage.nickName, false, paramBoolean);
     return paramMessageRecord.a(paramQQAppInterface.getApplication());
   }
   
@@ -874,7 +874,7 @@ public class ssp
       this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getAccount();
       this.jdField_a_of_type_Boolean = false;
       b(paramQQAppInterface);
-      paramQQAppInterface.addObserver(this.jdField_a_of_type_Alsi, true);
+      paramQQAppInterface.addObserver(this.jdField_a_of_type_Alwx, true);
       if (QLog.isColorLevel()) {
         QLog.d("ServiceAccountFolderManager", 2, "initManager->cuin:" + this.jdField_a_of_type_JavaLangString);
       }
@@ -959,10 +959,10 @@ public class ssp
         {
           localssj = (ssj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
           localssj.jdField_a_of_type_JavaLangString = paramString;
-          localObject2 = (aluw)paramQQAppInterface.getManager(56);
+          localObject2 = (alzl)paramQQAppInterface.getManager(56);
           if (localObject2 != null)
           {
-            PublicAccountInfo localPublicAccountInfo = ((aluw)localObject2).c(paramString);
+            PublicAccountInfo localPublicAccountInfo = ((alzl)localObject2).c(paramString);
             if (localPublicAccountInfo != null)
             {
               localssj.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
@@ -996,7 +996,7 @@ public class ssp
             }
             localssj.jdField_e_of_type_Int = 4;
             localssj.jdField_a_of_type_Long = ((DraftSummaryInfo)localObject2).getTime();
-            localssj.jdField_b_of_type_JavaLangString = ajgs.a().a(localssj.jdField_a_of_type_JavaLangString, ((DraftSummaryInfo)localObject2).getTime());
+            localssj.jdField_b_of_type_JavaLangString = ajlh.a().a(localssj.jdField_a_of_type_JavaLangString, ((DraftSummaryInfo)localObject2).getTime());
             localssj.jdField_a_of_type_JavaLangCharSequence = ((DraftSummaryInfo)localObject2).getSummary();
             i = 0;
             localssj.jdField_d_of_type_JavaLangString = a(paramQQAppInterface, localssj.jdField_a_of_type_JavaLangString);
@@ -1017,7 +1017,7 @@ public class ssp
               break label987;
             }
             localssj.jdField_a_of_type_Long = localssj.jdField_b_of_type_Long;
-            localssj.jdField_b_of_type_JavaLangString = ajgs.a().a(paramString, localssj.jdField_a_of_type_Long);
+            localssj.jdField_b_of_type_JavaLangString = ajlh.a().a(paramString, localssj.jdField_a_of_type_Long);
             localssj.jdField_a_of_type_JavaLangCharSequence = "";
             i = 0;
             if (QLog.isColorLevel()) {
@@ -1049,7 +1049,7 @@ public class ssp
           this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localssj);
           continue;
         }
-        Object localObject2 = ((aluw)localObject2).b(paramString);
+        Object localObject2 = ((alzl)localObject2).b(paramString);
         if (localObject2 == null) {
           continue;
         }
@@ -1076,7 +1076,7 @@ public class ssp
         continue;
         localssj.jdField_e_of_type_Int = 0;
         localssj.jdField_a_of_type_Long = localssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time;
-        localssj.jdField_b_of_type_JavaLangString = ajgs.a().a(paramString, localssj.jdField_a_of_type_Long);
+        localssj.jdField_b_of_type_JavaLangString = ajlh.a().a(paramString, localssj.jdField_a_of_type_Long);
         localssj.jdField_a_of_type_JavaLangCharSequence = a(paramQQAppInterface, localssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, false);
         i = 0;
         continue;
@@ -1085,7 +1085,7 @@ public class ssp
         {
           localssj.jdField_e_of_type_Int = 0;
           localssj.jdField_a_of_type_Long = localssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time;
-          localssj.jdField_b_of_type_JavaLangString = ajgs.a().a(paramString, localssj.jdField_a_of_type_Long);
+          localssj.jdField_b_of_type_JavaLangString = ajlh.a().a(paramString, localssj.jdField_a_of_type_Long);
           localssj.jdField_a_of_type_JavaLangCharSequence = a(paramQQAppInterface, localssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, false);
           i = 0;
         }
@@ -1145,7 +1145,7 @@ public class ssp
         {
           paramssj = paramQQAppInterface.a().a().b(paramssj.jdField_a_of_type_JavaLangString, 1008);
           if (paramssj != null) {
-            ajgm.a(paramQQAppInterface, paramssj, -1);
+            ajlb.a(paramQQAppInterface, paramssj, -1);
           }
           if (paramBoolean)
           {
@@ -1156,7 +1156,7 @@ public class ssp
         }
       }
       suv.a().a(str, paramQQAppInterface);
-      ajgm.b(paramQQAppInterface, str, syb.b(paramQQAppInterface, str));
+      ajlb.b(paramQQAppInterface, str, syb.b(paramQQAppInterface, str));
       paramQQAppInterface.a().c(str, 1008);
     }
   }
@@ -1309,7 +1309,7 @@ public class ssp
       }
       paramssj.jdField_b_of_type_Int = 0;
       paramssj = paramssj.jdField_a_of_type_JavaLangString;
-      ajgm.b(paramQQAppInterface, paramssj, 1008);
+      ajlb.b(paramQQAppInterface, paramssj, 1008);
       paramQQAppInterface.a().c(paramssj, 1008);
       paramQQAppInterface.a().a(paramssj, 1008, true);
       a(paramQQAppInterface, paramssj);
@@ -1417,7 +1417,7 @@ public class ssp
       long l2;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        ajgm.a(this.jdField_a_of_type_JavaUtilList);
+        ajlb.a(this.jdField_a_of_type_JavaUtilList);
         Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ssr);
         int i = 0;
         l3 = 0L;
@@ -1487,7 +1487,7 @@ public class ssp
         }
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          this.jdField_a_of_type_JavaLangCharSequence = new baig((CharSequence)localObject3, 3, 16).a((String)localObject2 + "：", true, new int[0]);
+          this.jdField_a_of_type_JavaLangCharSequence = new bamp((CharSequence)localObject3, 3, 16).a((String)localObject2 + "：", true, new int[0]);
           if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
             break label787;
           }
@@ -1503,7 +1503,7 @@ public class ssp
           return;
         }
         if (!TextUtils.isEmpty(str2)) {
-          this.jdField_a_of_type_JavaLangCharSequence = new baig((CharSequence)localObject3, 3, 16).a(str2 + "：", true, new int[0]);
+          this.jdField_a_of_type_JavaLangCharSequence = new bamp((CharSequence)localObject3, 3, 16).a(str2 + "：", true, new int[0]);
         }
       }
       this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject3);
@@ -1557,8 +1557,8 @@ public class ssp
   
   public void i(QQAppInterface paramQQAppInterface)
   {
-    amjk localamjk = paramQQAppInterface.a().a();
-    RecentUser localRecentUser = localamjk.b(aljq.aB, 7230);
+    amnz localamnz = paramQQAppInterface.a().a();
+    RecentUser localRecentUser = localamnz.b(alof.aB, 7230);
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
@@ -1568,14 +1568,14 @@ public class ssp
           if (QLog.isColorLevel()) {
             QLog.d("ServiceAccountFolderManager", 2, "updateServiceAccountFolderInMsgTab->删除folder节点");
           }
-          localamjk.b(localRecentUser);
+          localamnz.b(localRecentUser);
         }
         return;
       }
       ??? = localRecentUser;
       if (localRecentUser == null)
       {
-        localRecentUser = new RecentUser(aljq.aB, 7230);
+        localRecentUser = new RecentUser(alof.aB, 7230);
         localRecentUser.displayName = a(paramQQAppInterface);
         ??? = localRecentUser;
         if (QLog.isColorLevel())
@@ -1587,7 +1587,7 @@ public class ssp
       long l1 = a(paramQQAppInterface);
       long l2 = b(paramQQAppInterface);
       ((RecentUser)???).lastmsgtime = Math.max(l1, l2);
-      localamjk.a((RecentUser)???);
+      localamnz.a((RecentUser)???);
       if (QLog.isColorLevel()) {
         QLog.d("ServiceAccountFolderManager", 2, "updateServiceAccountFolderInMsgTab->更新folder节点:tempFolderDisplayTime:" + l1 + ", tempFolderOperationTime:" + l2 + ", ru.lastmsgtime:" + ((RecentUser)???).lastmsgtime);
       }

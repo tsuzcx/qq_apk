@@ -10,17 +10,17 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bczj;
-import beqw;
-import beqx;
+import bdds;
+import bevf;
+import bevg;
 
 public class ShaderAnimLayout
   extends RelativeLayout
 {
   public float a;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new beqx(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new beqw(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bevg(this);
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new bevf(this);
   public boolean a;
   private boolean b;
   
@@ -111,7 +111,7 @@ public class ShaderAnimLayout
     {
       for (;;)
       {
-        bczj.a(this, 1, null);
+        bdds.a(this, 1, null);
       }
     }
   }

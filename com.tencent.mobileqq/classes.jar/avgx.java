@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 class avgx
-  implements DialogInterface.OnClickListener
+  implements vyl
 {
-  avgx(avgk paramavgk) {}
+  avgx(avgv paramavgv, avgl paramavgl, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    ausq.a(this.a.a, 1032);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
-    }
+    return this.jdField_a_of_type_Avgl.a(this.jdField_a_of_type_Avgv, 0, paramInt1, this.jdField_a_of_type_Avgv.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

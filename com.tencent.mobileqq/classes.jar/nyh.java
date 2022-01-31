@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nyh
-  implements bhqd
+  implements bhuk
 {
   public nyh(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt) {}
   
@@ -17,11 +17,11 @@ public class nyh
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bhpy.dismiss();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bhuf.dismiss();
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        arys.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+        asdb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.moveTaskToBack(true);
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.finish();

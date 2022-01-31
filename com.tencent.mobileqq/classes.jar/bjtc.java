@@ -1,28 +1,17 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 
-final class bjtc
-  implements DialogInterface.OnClickListener
+public class bjtc
 {
-  bjtc(Context paramContext) {}
+  public static Context a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static Context a()
   {
-    try
-    {
-      if (bizf.a().indexOf("GM") < 0) {
-        bjta.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
-    }
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = paramContext;
   }
 }
 

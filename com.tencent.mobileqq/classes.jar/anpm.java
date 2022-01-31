@@ -1,40 +1,18 @@
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
 public class anpm
+  implements beix
 {
-  public static String a = "";
-  public static String b = "";
-  public static String c = "";
+  public anpm(ArkBrowserFragment paramArkBrowserFragment) {}
   
-  static
+  public void a(String paramString)
   {
-    int i = 0;
-    try
-    {
-      boolean bool = "mounted".equals(Environment.getExternalStorageState());
-      i = bool;
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
     }
-    catch (Throwable localThrowable)
-    {
-      label28:
-      File localFile;
-      break label28;
-    }
-    if (i != 0) {}
-    for (localFile = new File(aljq.aX);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
-    {
-      b = new File(localFile, "AR_MAP").getAbsolutePath();
-      a = new File(localFile, "res_precover").getAbsolutePath();
-      c = new File(b, "preload_map").getAbsolutePath();
-      return;
-    }
-  }
-  
-  public static String a()
-  {
-    return b;
   }
 }
 

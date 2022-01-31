@@ -1,114 +1,57 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public abstract class vgo
+public class vgo
+  extends urt
 {
-  private static Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-  public bepp a;
-  public String a;
-  public WeakReference<Activity> a;
-  public List<int[]> a;
-  private vgn jdField_a_of_type_Vgn;
-  public boolean a;
-  public boolean b = true;
+  public static final String a = uqn.a("StorySvc.translate_share_parameters_to_token");
+  public String b;
+  public int c;
+  public String c;
   
-  public vgo(Activity paramActivity)
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    return a;
   }
   
-  public static boolean a()
+  public uro a(byte[] paramArrayOfByte)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - jdField_a_of_type_JavaLangLong.longValue();
-    if ((l2 > 0L) && (l2 < 800L))
+    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("isFastDoubleClick", 2, "time:" + l1 + ", mLastClickTIme:" + jdField_a_of_type_JavaLangLong + ", timeDiff:" + l2);
-      }
-      return true;
+      localRspTranslateToken.mergeFrom(paramArrayOfByte);
+      return new vgp(localRspTranslateToken);
     }
-    jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
-    return false;
-  }
-  
-  public Activity a()
-  {
-    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  protected abstract void a();
-  
-  protected void a(int paramInt)
-  {
-    if (a()) {
-      return;
-    }
-    b();
-    this.jdField_a_of_type_Vgn.a(b(paramInt));
-  }
-  
-  public void a(vgn paramvgn)
-  {
-    this.jdField_a_of_type_Vgn = paramvgn;
-  }
-  
-  public abstract int b(int paramInt);
-  
-  public void b()
-  {
-    if (!this.b) {}
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      Activity localActivity;
-      do
+      for (;;)
       {
-        return;
-        if (this.jdField_a_of_type_Bepp != null) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
         }
-        localActivity = a();
-      } while (localActivity == null);
-      int i = localActivity.getResources().getDimensionPixelSize(2131298914);
-      this.jdField_a_of_type_Bepp = new bepp(localActivity);
-      this.jdField_a_of_type_Bepp.a(alpo.a(2131714354));
-      this.jdField_a_of_type_Bepp.b(i);
-    } while (this.jdField_a_of_type_Bepp.isShowing());
-    this.jdField_a_of_type_Bepp.show();
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+      }
     }
   }
   
-  public void d()
+  protected byte[] a()
   {
-    a();
-    if (this.jdField_a_of_type_Vgn != null) {
-      this.jdField_a_of_type_Vgn.a();
+    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
+    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
     }
+    return localReqTranslateToken.toByteArray();
   }
   
-  protected void e()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Vgn != null) {
-      this.jdField_a_of_type_Vgn.b();
-    }
-  }
-  
-  protected void f()
-  {
-    if (this.jdField_a_of_type_Vgn != null) {
-      this.jdField_a_of_type_Vgn.c();
-    }
+    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

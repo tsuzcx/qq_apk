@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -26,7 +26,7 @@ class AIOLongShotHelper$1
       label41:
       if (!this.b)
       {
-        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, alpo.a(2131700477), 0).a();
+        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, alud.a(2131700489), 0).a();
         AIOLongShotHelper.a("0X800A50D");
       }
     }

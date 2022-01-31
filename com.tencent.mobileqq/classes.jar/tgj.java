@@ -132,7 +132,7 @@ public class tgj
     else {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131691285));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131691286));
   }
   
   public View b()

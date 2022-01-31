@@ -1,60 +1,87 @@
-import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.OpenJsBridge.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
+import java.util.List;
 
 public class bfjn
+  extends atgt
 {
-  protected static bfjn a;
-  protected Context a;
-  protected bfjm a;
-  protected final HashMap<String, bfjk> a;
+  public HashMap<String, atgv> b = new HashMap();
   
-  protected bfjn(Context paramContext)
+  public HashMap<String, atgv> a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Bfjm = new bfjo(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    return this.b;
   }
   
-  public static bfjn a(Context paramContext)
+  public void a(atgv paramatgv, String paramString)
   {
-    if (jdField_a_of_type_Bfjn != null) {
-      return jdField_a_of_type_Bfjn;
-    }
-    try
-    {
-      if (jdField_a_of_type_Bfjn == null) {
-        jdField_a_of_type_Bfjn = new bfjn(paramContext);
-      }
-      paramContext = jdField_a_of_type_Bfjn;
-      return paramContext;
-    }
-    finally {}
+    this.b.put(paramString, paramatgv);
   }
   
-  public bfjk a(Class<? extends bfjg> paramClass, long paramLong, String paramString)
+  public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    if (paramString == null)
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        throw new RuntimeException("call initiate(Context context) before this");
-      }
+      this.b.clear();
+      return;
     }
-    if (paramString == null) {
-      throw new RuntimeException("invalid table name");
-    }
-    Object localObject = bfjk.a(paramLong, paramString);
-    localObject = (bfjk)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    if (localObject == null)
-    {
-      paramClass = new bfjk(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      paramClass.a(this.jdField_a_of_type_Bfjm);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
-    }
+    this.b.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, atgu paramatgu)
+  {
+    long l1 = System.currentTimeMillis();
+    int j = paramList.size();
+    int i = 0;
     for (;;)
     {
-      return paramClass;
-      paramClass = (Class<? extends bfjg>)localObject;
+      if (i < j) {
+        try
+        {
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
+            }
+          }
+        }
+      }
     }
+    long l2 = System.currentTimeMillis();
+    bflp.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
+    paramString1 = (atgv)this.b.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramatgu);
+    }
+    while (!(paramatgu instanceof bfjo)) {
+      return;
+    }
+    ((bfjo)paramatgu).b(paramString2);
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    if (paramString == null) {}
+    Uri localUri;
+    do
+    {
+      return false;
+      localUri = Uri.parse(paramString);
+    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
+    bflp.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
+    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
+    return true;
   }
 }
 

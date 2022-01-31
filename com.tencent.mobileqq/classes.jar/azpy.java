@@ -1,60 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class azpy
-  extends Handler
 {
-  private azpx jdField_a_of_type_Azpx;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean;
+  public char a;
+  public int a;
+  public List<azpy> a;
+  public int b;
   
-  public azpy(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, azpx paramazpx)
+  public azpy(int paramInt, char paramChar)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_Azpx = paramazpx;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Char = paramChar;
+    this.b = 1;
+  }
+  
+  public azpy a(char paramChar)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      azpy localazpy = (azpy)localIterator.next();
+      if (localazpy.jdField_a_of_type_Char == paramChar) {
+        return localazpy;
+      }
+    }
+    return null;
   }
   
   public void a()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    sendMessageDelayed(localMessage, 200L);
+    this.b += 1;
   }
   
-  public void b()
+  public void a(azpy paramazpy)
   {
-    removeMessages(1);
+    this.jdField_a_of_type_JavaUtilList.add(paramazpy);
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
-      {
-        if (this.jdField_a_of_type_Boolean == true)
-        {
-          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
-          SuspendThreadManager.a(1);
-          b();
-          this.jdField_a_of_type_Azpx.a();
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a();
-        return;
-      }
-    } while (SuspendThreadManager.a().isEmpty());
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
+    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
+    localStringBuilder.append("cnt: ").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

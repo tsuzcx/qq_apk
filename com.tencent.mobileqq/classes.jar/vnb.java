@@ -1,53 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
-class vnb
-  implements uni<vao, vap>
+public class vnb
+  extends GestureDetector.SimpleOnGestureListener
 {
-  vnb(vna paramvna, JobContext paramJobContext, weh paramweh) {}
+  public vnb(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(@NonNull vao paramvao, @Nullable vap paramvap, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      wsv.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
-      return;
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
     }
-    if ((paramErrorMessage.isFail()) || (paramvap == null))
-    {
-      wsv.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      vna.a(this.jdField_a_of_type_Vna, paramErrorMessage);
-      return;
-    }
-    paramvao = (wkp)urr.a(11);
-    if (paramvap.a.size() < 1)
-    {
-      wsv.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramvao.a(vmu.a(this.jdField_a_of_type_Vna.a));
-      paramvao = new ErrorMessage(2222, "no feed data back.");
-      vna.b(this.jdField_a_of_type_Vna, paramvao);
-      return;
-    }
-    paramvap = (wjz)paramvap.a.get(0);
-    if ((paramvap instanceof wmg))
-    {
-      paramErrorMessage = (wmg)paramvap;
-      this.jdField_a_of_type_Weh.a = paramvap.a();
-      this.jdField_a_of_type_Weh.a(paramvao.a(vmu.a(this.jdField_a_of_type_Vna.a), paramErrorMessage.a(), true), true);
-      ((wkv)urr.a(12)).a(2, this.jdField_a_of_type_Weh.a.feedId, this.jdField_a_of_type_Weh.a().mVideoSeq, this.jdField_a_of_type_Weh.a(), this.jdField_a_of_type_Weh.a().mVideoNextCookie, this.jdField_a_of_type_Weh.a().mIsVideoEnd, this.jdField_a_of_type_Weh.a().mVideoPullType, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Weh.a = ((CommentLikeFeedItem)paramvao.a(vmu.a(this.jdField_a_of_type_Vna.a).a));
-      vna.a(this.jdField_a_of_type_Vna, this.jdField_a_of_type_Weh);
-      return;
-      this.jdField_a_of_type_Weh.a = paramvap.a();
-    }
+    return false;
   }
 }
 

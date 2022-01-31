@@ -1,24 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
-class ader
-  implements DialogInterface.OnClickListener
+public class ader
+  implements TextWatcher
 {
-  ader(adeq paramadeq) {}
+  public ader(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (bdee.d(BaseApplication.getContext())) {
-      asbl.a(this.a.a.a);
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    new azmo(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166977));
+    }
+    for (;;)
+    {
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

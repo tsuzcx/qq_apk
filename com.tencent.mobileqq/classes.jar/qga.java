@@ -43,7 +43,7 @@ public class qga
       i = 1;
       localorz1 = new orz();
       localorz2 = localorz1.a("content_type", Integer.valueOf(i));
-      if (!bdee.h(BaseApplicationImpl.getContext())) {
+      if (!bdin.h(BaseApplicationImpl.getContext())) {
         break label149;
       }
     }
@@ -75,35 +75,35 @@ public class qga
     localValueAnimator.start();
   }
   
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aeov paramaeov)
+  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aetk paramaetk)
   {
     if (paramView == null) {}
     for (int i = 1;; i = 0)
     {
-      paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramaeov);
+      paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramaetk);
       if (i != 0)
       {
-        paramView.setTag(2131369558, "RIJRedPacketStruttingMsgItemBuilder");
-        paramaeov = (qge)paramView.getTag();
+        paramView.setTag(2131369576, "RIJRedPacketStruttingMsgItemBuilder");
+        paramaetk = (qge)paramView.getTag();
         PressEffectImageView localPressEffectImageView = new PressEffectImageView(this.a);
-        localPressEffectImageView.setId(2131375193);
-        localPressEffectImageView.setImageResource(2130848868);
-        localPressEffectImageView.setPivotX(xee.b(this.a, 10.0F));
+        localPressEffectImageView.setId(2131375244);
+        localPressEffectImageView.setImageResource(2130848941);
+        localPressEffectImageView.setPivotX(xin.b(this.a, 10.0F));
         localPressEffectImageView.setPivotY(0.0F);
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(xee.b(this.a, 20.0F), xee.b(this.a, 23.5F));
-        localLayoutParams.addRule(7, 2131364171);
-        localLayoutParams.addRule(6, 2131364171);
-        localLayoutParams.rightMargin = xee.b(this.a, 20.0F);
-        localLayoutParams.topMargin = xee.b(this.a, 17.0F);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(xin.b(this.a, 20.0F), xin.b(this.a, 23.5F));
+        localLayoutParams.addRule(7, 2131364173);
+        localLayoutParams.addRule(6, 2131364173);
+        localLayoutParams.rightMargin = xin.b(this.a, 20.0F);
+        localLayoutParams.topMargin = xin.b(this.a, 17.0F);
         ((ViewGroup)paramView).addView(localPressEffectImageView, localLayoutParams);
-        paramaeov.a = localPressEffectImageView;
+        paramaetk.a = localPressEffectImageView;
         d(localPressEffectImageView);
       }
       paramViewGroup = (AbsListView)paramViewGroup;
       paramChatMessage = new qgb(this, paramViewGroup, paramChatMessage);
-      if (paramViewGroup.getTag(2131369560) == null)
+      if (paramViewGroup.getTag(2131369578) == null)
       {
-        paramViewGroup.setTag(2131369560, paramChatMessage);
+        paramViewGroup.setTag(2131369578, paramChatMessage);
         paramViewGroup.addOnScrollListener(paramChatMessage);
       }
       return paramView;

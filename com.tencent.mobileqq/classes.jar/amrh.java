@@ -1,210 +1,139 @@
-import android.content.Context;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARNativeBridge.ActionCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.GeneralAR3DRenderable.1;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class amrh
-  implements amqs, ARNativeBridge.ActionCallback
+  extends alwx
 {
-  private volatile int jdField_a_of_type_Int = 1;
-  private amof jdField_a_of_type_Amof;
-  private amqu jdField_a_of_type_Amqu;
-  private amri jdField_a_of_type_Amri;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-  public boolean a;
-  private int b;
-  private volatile int c = 1;
-  private int d;
-  private int e;
+  private int a;
   
-  public amrh(amqu paramamqu, amri paramamri)
+  public amrh(amrg paramamrg, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Amqu = paramamqu;
-    this.jdField_a_of_type_Amri = paramamri;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_Amqu.a();
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)this.jdField_a_of_type_Amqu.a(paramamri.jdField_a_of_type_Int));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_GeneralAR3DRenderable", 2, "setState, mCurState=" + this.jdField_a_of_type_Int + ", new State=" + paramInt + ", arTarget=");
-    }
     this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Amrg.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      return;
+    }
+    alxa localalxa = (alxa)this.jdField_a_of_type_Amrg.app.getManager(92);
+    if (!paramBoolean)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 11: 
-    default: 
-      return;
-    case 2: 
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeCreateEngine(this.jdField_b_of_type_Int, this.jdField_a_of_type_Amri.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getAssets(), this.jdField_a_of_type_Amri.c, this.d, this.e);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
-      a(7);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.jdField_b_of_type_Int, this.d, this.e);
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.jdField_b_of_type_Int);
-      this.c = 0;
-      a(11);
-      return;
-    case 9: 
-      this.jdField_a_of_type_Amqu.a(new GeneralAR3DRenderable.1(this));
-      return;
-    case 8: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.jdField_b_of_type_Int);
+      localalxa.a(8, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Amof != null)
+    localalxa.a(9, null);
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Amrg.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      return;
+    }
+    alxa localalxa = (alxa)this.jdField_a_of_type_Amrg.app.getManager(92);
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_Amof.b();
-      this.jdField_a_of_type_Amof.c();
-    }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.d = paramInt1;
-    this.e = paramInt2;
-  }
-  
-  public void a(amra paramamra)
-  {
-    a((float[])paramamra.a("TARGET_SIZE"), (float[])paramamra.a("POSE"), (float[])paramamra.a("CAMERA_MATRIX"), (float[])paramamra.a("CAMERA_POSITION"));
-  }
-  
-  public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4)
-  {
-    if ((this.jdField_a_of_type_Amri != null) && (this.jdField_a_of_type_Amri.jdField_b_of_type_Int == 1))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.jdField_b_of_type_Int, paramArrayOfFloat3, paramArrayOfFloat4);
+      localalxa.a(7, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.jdField_b_of_type_Int, paramArrayOfFloat2, paramArrayOfFloat4);
+    localalxa.a(6, null);
   }
   
-  public int b()
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Amri != null) {
-      return this.jdField_a_of_type_Amri.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Amri != null) {
-      return this.jdField_a_of_type_Amri.jdField_b_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_Amri.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
+    paramObject = (Bundle)paramObject;
+    String str1 = paramObject.getString("PEER_UIN");
+    long l = paramObject.getLong("BEGTIME");
+    boolean bool1 = paramObject.getBoolean("NO_MSG");
+    int j = paramObject.getInt("SVR_CODE");
+    String str2 = paramObject.getString("SVR_MSG");
+    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
+    int i = paramObject.getInt("MSG_COUNT");
+    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_GeneralAR3DRenderable", 2, "init");
+      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + j + ",msgCount:" + i + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
     }
-  }
-  
-  public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_GeneralAR3DRenderable", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
-    }
-    if (this.jdField_a_of_type_Amqu == null) {
+    if (bool3) {
       return;
     }
-    switch (paramInt1)
+    if ((paramBoolean) && (bool2) && (i > 0) && (i <= 8))
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Amqu.b(3, 0);
+      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, i, str1, bool2));
       return;
     }
-    this.jdField_a_of_type_Amqu.b(2, 0);
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_GeneralAR3DRenderable", 2, "start");
-    }
-    if (1 == this.jdField_a_of_type_Int)
+    paramObject = (alxa)this.jdField_a_of_type_Amrg.app.getManager(92);
+    i = 1;
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_Amof = new amof(this.jdField_a_of_type_Amri.d, "");
-      a(2);
-    }
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 9) && (this.jdField_b_of_type_Int != 0);
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      int i = this.c + 1;
-      this.c = i;
-      if (i >= 2) {
-        a(9);
+      if (bool1) {
+        i = 2;
       }
-    }
-  }
-  
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_GeneralAR3DRenderable", 2, "onDestroy, " + this);
-    }
-    if (this.jdField_a_of_type_Int == 9)
-    {
+      if (j == 51) {
+        i = 3;
+      }
+      paramObject.b(false);
       if (QLog.isColorLevel()) {
-        QLog.d("AREngine_GeneralAR3DRenderable", 2, "onDestroy, queueEvent, " + this);
+        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
       }
-      if ((this.jdField_a_of_type_Amqu != null) && (this.jdField_a_of_type_Boolean == true))
-      {
-        this.jdField_a_of_type_Amqu.b(1, 0);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      if (this.jdField_a_of_type_Amqu != null)
-      {
-        this.jdField_a_of_type_Amqu.a(this.jdField_a_of_type_Amri.jdField_a_of_type_JavaLangString);
-        QLog.d("AREngine_GeneralAR3DRenderable", 2, "onDestroy, remove hsRender here, " + this);
-      }
-      if (this.jdField_a_of_type_Int == 9) {
-        a(10);
+      if (!bool2) {
+        break label354;
       }
     }
+    label354:
+    for (j = 1;; j = 0)
+    {
+      paramObject.a(i, j, Long.valueOf(l));
+      return;
+      j = 0;
+      i = j;
+      if (!bool2)
+      {
+        i = j;
+        if (!paramObject.a(l)) {
+          i = 4;
+        }
+      }
+      paramObject.b(true);
+      break;
+    }
+  }
+  
+  protected void d(boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject == null) {}
+    Object localObject1;
+    do
+    {
+      return;
+      localObject2 = (HashMap)paramObject;
+      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
+      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
+      }
+      localObject1 = this.jdField_a_of_type_Amrg.app.getHandler(aigp.class);
+      if (!paramBoolean)
+      {
+        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
+        ((Message)localObject2).obj = paramObject;
+        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+        return;
+      }
+    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
+    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
+    ((Message)localObject2).obj = paramObject;
+    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrh
  * JD-Core Version:    0.7.0.1
  */

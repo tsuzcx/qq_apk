@@ -1,12 +1,14 @@
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class beli
-  implements Interpolator
+public abstract interface beli
+  extends begg
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(1.0D - Math.pow(1.0F - paramFloat, 4.0D));
-  }
+  public abstract View a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 

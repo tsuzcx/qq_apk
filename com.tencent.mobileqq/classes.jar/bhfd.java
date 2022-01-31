@@ -1,20 +1,18 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
 
 class bhfd
-  implements bgje
+  implements ValueCallback
 {
-  bhfd(bhex parambhex) {}
+  bhfd(bhfc parambhfc) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onReceiveValue(Object paramObject)
   {
-    if (paramInt1 == 2019)
-    {
-      this.a.a.a(paramInt1, paramInt2, paramIntent);
-      bgjd.a().b(this);
-      return true;
+    if ((!TextUtils.isEmpty(bhfc.a(this.a))) && (bhfc.a(this.a).contains("QLogic.js"))) {
+      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
     }
-    return false;
+    this.a.a.a(bhfb.a);
   }
 }
 

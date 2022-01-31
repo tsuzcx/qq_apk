@@ -1,48 +1,24 @@
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
 
-class xou
-  extends xos
+public class xou
 {
-  xou(xot paramxot, xpb paramxpb) {}
+  public static final int[] a;
+  public static final int[] b;
+  public int a;
+  public Drawable a;
+  public int b;
   
-  public void onFailure(String paramString)
+  static
   {
-    this.jdField_a_of_type_Xpb.onFailure(paramString);
+    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130846329, 2130846327, 2130846330, 2130846328, 2130846333, 2130846332, 2130846336, 2130846331, 2130846334 };
   }
   
-  public void onFinish(boolean paramBoolean)
+  public xou(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    xot localxot;
-    if (this.jdField_a_of_type_Xot.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localxot = this.jdField_a_of_type_Xot;
-      if (!paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 1;; i = 0)
-    {
-      localxot.jdField_a_of_type_Int = i;
-      xot.jdField_a_of_type_Xot = null;
-      this.jdField_a_of_type_Xpb.onFinish(paramBoolean);
-      return;
-    }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xpb.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xpb.onSuccess(paramString);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

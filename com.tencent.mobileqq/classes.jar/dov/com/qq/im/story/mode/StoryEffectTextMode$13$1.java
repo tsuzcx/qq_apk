@@ -1,20 +1,20 @@
 package dov.com.qq.im.story.mode;
 
-import bmdi;
-import bmdm;
+import bmhu;
+import bmhy;
 
 public class StoryEffectTextMode$13$1
   implements Runnable
 {
-  public StoryEffectTextMode$13$1(bmdm parambmdm) {}
+  public StoryEffectTextMode$13$1(bmhy parambmhy) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Bmdi.c) {}
+    if (this.a.jdField_a_of_type_Bmhu.c) {}
     while (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    bmdi.b(this.a.jdField_a_of_type_Bmdi, this.a.jdField_a_of_type_Uqf);
+    bmhu.b(this.a.jdField_a_of_type_Bmhu, this.a.jdField_a_of_type_Uuo);
   }
 }
 

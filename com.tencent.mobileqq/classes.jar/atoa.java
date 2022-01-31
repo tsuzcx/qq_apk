@@ -1,123 +1,34 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.lbssearch.object.result.SearchResultObject;
-import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
-import com.tencent.lbssearch.object.result.SuggestionResultObject;
-import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
-public class atoa
-  implements HttpResponseListener<BaseObject>
+class atoa
+  implements Animator.AnimatorListener
 {
-  atoa(atnz paramatnz) {}
+  atoa(atnw paramatnw, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void a(int paramInt, BaseObject paramBaseObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    atnz.a(this.a, false);
-    Object localObject2;
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
-    {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null))
-      {
-        atnz.a(this.a);
-        localObject1 = paramBaseObject.result.pois.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (Poi)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(atnz.a(this.a).app.c(), (Poi)localObject2);
-          atnz.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.result.poi_count < 20) {
-          break label235;
-        }
-        bool1 = true;
-        atnz.b((atnz)localObject1, bool1);
-      }
-    }
-    label235:
-    label368:
-    do
-    {
-      do
-      {
-        do
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + atnz.a(this.a).size() + ", mHashMore = " + atnz.a(this.a));
-          }
-          if (atnz.a(this.a) != null) {
-            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
-          }
-          return;
-          bool1 = false;
-          break;
-          if (!(paramBaseObject instanceof SuggestionResultObject)) {
-            break label368;
-          }
-          paramBaseObject = (SuggestionResultObject)paramBaseObject;
-        } while (paramBaseObject.data == null);
-        atnz.a(this.a);
-        localObject1 = paramBaseObject.data.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (SuggestionResultObject.SuggestionData)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(atnz.a(this.a).app.c(), (SuggestionResultObject.SuggestionData)localObject2);
-          atnz.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.count >= 20) {}
-        for (;;)
-        {
-          atnz.b((atnz)localObject1, bool1);
-          break;
-          bool1 = false;
-        }
-      } while (!(paramBaseObject instanceof SearchResultObject));
-      paramBaseObject = (SearchResultObject)paramBaseObject;
-    } while (paramBaseObject.data == null);
-    atnz.a(this.a);
-    Object localObject1 = paramBaseObject.data.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SearchResultObject.SearchResultData)((Iterator)localObject1).next();
-      localObject2 = LocationRoom.Venue.a(atnz.a(this.a).app.c(), (SearchResultObject.SearchResultData)localObject2);
-      atnz.a(this.a).add(localObject2);
-    }
-    localObject1 = this.a;
-    if (paramBaseObject.count >= 20) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      atnz.b((atnz)localObject1, bool1);
-      break;
-    }
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    atnz.a(this.a, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + atnz.a(this.a).size() + ", mHashMore = " + atnz.a(this.a));
-    }
-    if (atnz.a(this.a) != null) {
-      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
-    }
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Atnw.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

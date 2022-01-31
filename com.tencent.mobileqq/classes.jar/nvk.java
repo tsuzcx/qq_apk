@@ -77,7 +77,7 @@ public class nvk
           {
             EcshopWebview localEcshopWebview = EcshopWebview.a(paramContext);
             localObject = localEcshopWebview;
-            if (bdje.a(paramString)) {
+            if (bdnn.a(paramString)) {
               continue;
             }
             this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localEcshopWebview);
@@ -107,7 +107,7 @@ public class nvk
   {
     try
     {
-      bdzt.b(-1);
+      beec.b(-1);
       if (a()) {
         b(paramString, paramBoolean);
       }
@@ -121,7 +121,7 @@ public class nvk
   
   public boolean a(String paramString)
   {
-    return (!bdje.a(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
+    return (!bdnn.a(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
   }
 }
 

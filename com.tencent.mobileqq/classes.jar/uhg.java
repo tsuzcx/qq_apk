@@ -1,6 +1,23 @@
-public abstract interface uhg<T>
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+
+class uhg
+  extends LinearLayoutManager
 {
-  public abstract T a();
+  uhg(uhf paramuhf, Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
+  }
 }
 
 

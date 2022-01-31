@@ -1,54 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.1;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.2;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.40.3;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
 
 public class ancw
-  extends annt
 {
-  public ancw(ARScanEntryView paramARScanEntryView) {}
+  public int a;
+  public RectF a;
+  public String a;
+  ancv[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong)
+  public ancw()
   {
-    SharedPreferences localSharedPreferences = annu.a(this.a.a);
-    long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onGetARRedDotInfo redSwitch = " + paramInt + ",actID = " + paramLong + ",isSuccess = " + paramBoolean + ",savedActID = " + l);
-    }
-    localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
-    if (!this.a.m)
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_c_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    int i = 0;
+    while ((this.jdField_a_of_type_ArrayOfAncv != null) && (i < this.jdField_a_of_type_ArrayOfAncv.length))
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "onGetARRedDotInfo,not deal redhot message when pause");
-      return;
+      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAncv[i].toString()).append("}\n");
+      i += 1;
     }
-    paramBoolean = localSharedPreferences.getBoolean("key_show_reddot", false);
-    if (paramInt == 1) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt == 0) {
-        break label274;
-      }
-      if ((paramLong > l) || ((paramBoolean) && (paramLong == l)))
-      {
-        ARScanEntryView.a(this.a).post(new ARScanEntryView.40.1(this));
-        localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
-        ARScanEntryView.g(this.a, true);
-      }
-      if (paramLong >= l) {
-        break;
-      }
-      ARScanEntryView.g(this.a, false);
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.40.2(this));
-      localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
-      return;
-    }
-    label274:
-    ARScanEntryView.g(this.a, false);
-    ARScanEntryView.a(this.a).post(new ARScanEntryView.40.3(this));
+    return localStringBuilder.toString();
   }
 }
 

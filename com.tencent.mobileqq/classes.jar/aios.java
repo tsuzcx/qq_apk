@@ -1,16 +1,22 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-class aios
-  implements View.OnClickListener
+public class aios
+  implements bhuw
 {
-  aios(aior paramaior) {}
+  public aios(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    if (QzonePhotoPreviewActivity.a(this.a))
+    {
+      this.a.getActivity().finish();
+      bdfa.anim(this.a.getActivity(), true, false);
+      return;
+    }
+    this.a.a();
   }
 }
 

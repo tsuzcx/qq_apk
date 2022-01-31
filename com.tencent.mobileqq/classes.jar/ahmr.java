@@ -1,105 +1,50 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class ahmr
+  extends ahln
   implements View.OnClickListener
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  static
+  public ahmr(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
   {
-    jdField_a_of_type_JavaLangString = ahmr.class.getSimpleName();
+    super(paramContext, paramQQAppInterface, paramakln, paramavun);
   }
   
-  public ahmr(BaseActivity paramBaseActivity, int paramInt, View paramView)
+  public View a(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    paramBaseActivity = paramView.findViewById(2131376196);
-    IphoneTitleBarActivity.setLayerType(paramBaseActivity);
-    paramView = paramBaseActivity.findViewById(2131363520);
-    if (paramView != null) {
-      paramView.setVisibility(8);
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBaseActivity.findViewById(2131365849));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBaseActivity.findViewById(2131378930));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(aydn.b());
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
+    ahms localahms;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahms)))
     {
-      return;
-      paramQQAppInterface = paramQQAppInterface.c();
-    } while ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.equals(SearchConfigManager.curUin)));
-    SearchConfigManager.isConfigLoaded = false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      swe.a().a();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561335, null);
+      localahms = new ahms();
+      localahms.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367516));
+      paramView.setOnClickListener(this);
+      paramView.setTag(localahms);
+    }
+    for (;;)
+    {
+      String str = ((avuv)this.jdField_a_of_type_Avun).b;
+      localahms.jdField_f_of_type_JavaLangString = str;
+      localahms.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Akln.a(1, str));
+      amgf.a += 1;
+      return paramView;
+      localahms = (ahms)paramView.getTag();
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = 2;
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
     }
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onClick() time stamp = " + (l - this.jdField_a_of_type_Long));
-      }
-    } while (Math.abs(l - this.jdField_a_of_type_Long) < 1500L);
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = l;
-      FrameHelperActivity.c(false);
-      paramView = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramView == null) {
-        break;
-      }
-      aynt.a(null, i, 0, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(paramView, null, this.jdField_a_of_type_Int, i);
-      return;
-      if (this.jdField_a_of_type_Int == 1) {
-        i = 1;
-      } else {
-        i = 1;
-      }
-    }
+    amgf.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    azqs.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
   }
 }
 

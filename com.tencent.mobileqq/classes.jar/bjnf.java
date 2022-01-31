@@ -1,22 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class bjnf
-  implements View.OnClickListener
+class bjnf
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public bjnf(QZoneShareActivity paramQZoneShareActivity) {}
+  bjnf(bjne parambjne) {}
   
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (!this.a.d)
-    {
-      this.a.f();
-      return;
+    float f = paramScaleGestureDetector.getScaleFactor();
+    bjne.a(this.a, 1.0F - f + bjne.b(this.a));
+    if (bjne.a(this.a) == 0) {
+      bjne.a(this.a, Math.max(bjne.c(this.a), Math.min(1.5F, bjne.b(this.a))));
     }
-    this.a.h();
-    this.a.a();
+    for (;;)
+    {
+      bjne.b(this.a, bjne.b(this.a) / bjne.d(this.a));
+      if (bjne.a(this.a) != null) {
+        bjne.a(this.a).a(bjne.b(this.a));
+      }
+      return true;
+      bjne.a(this.a, Math.max(bjne.c(this.a), Math.min(1.0F, bjne.b(this.a))));
+    }
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

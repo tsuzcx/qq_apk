@@ -1,46 +1,96 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afeg
-  extends aelt
+class afeg
+  extends bcip
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public TextView b;
-  public String b;
-  
-  public void a(afeg paramafeg, anho paramanho)
+  afeg(afee paramafee, QQAppInterface paramQQAppInterface)
   {
-    Object localObject2 = paramanho.getArkAppNameAndPath();
-    String str = localObject2[0];
-    Object localObject1 = localObject2[1];
-    localObject2 = localObject2[2];
-    paramanho.clickTail(null, paramafeg, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
-    if (localObject1 != null)
+    super(paramQQAppInterface);
+  }
+  
+  protected void a(long paramLong)
+  {
+    if ((paramLong == Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!afee.a(this.a).N))
     {
-      ArkAppCacheMgr.getAppIcon(str, new afeh(this, paramafeg));
-      paramanho = ArkAppCacheMgr.getApplicationDesc(str);
-      if (paramanho != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramafeg.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramafeg.jdField_a_of_type_AndroidWidgetTextView.setText(paramanho);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated.");
       }
+      TroopInfo localTroopInfo = ((TroopManager)afee.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if (localTroopInfo == null) {
+        break label133;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. getTroopAIOShortCutBar.");
+      }
+      afee.a(this.a).a(Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)localTroopInfo.dwGroupClassExt);
     }
-    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+    label133:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new afei(this, str, paramafeg));
+    QLog.e("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. TroopInfo is null!");
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    if ((paramLong == Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!afee.a(this.a).N))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.");
+      }
+      if (afee.a(this.a) != null) {
+        break label59;
+      }
+    }
+    label58:
+    label59:
+    do
+    {
+      bcin localbcin;
+      List localList;
+      do
+      {
+        do
+        {
+          break label58;
+          do
+          {
+            return;
+          } while (afee.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+          localbcin = afee.a(this.a).a(Long.valueOf(Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+          if (localbcin == null) {
+            break;
+          }
+          this.a.a(localbcin);
+        } while (localbcin.a().size() <= 0);
+        localList = localbcin.a();
+      } while (System.currentTimeMillis() <= localbcin.b());
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.getTroopShortcutBarAppIdsRedPoint.");
+      }
+      afee.a(this.a).a(Long.valueOf(paramLong), localList);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo. info is null. Will not update UI and redpoint.");
+  }
+  
+  protected void c(long paramLong, boolean paramBoolean)
+  {
+    if ((paramLong == Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!afee.a(this.a).N))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetTroopAppidsRedPoint.");
+      }
+      bcin localbcin = afee.a(this.a).a(Long.valueOf(Long.parseLong(afee.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+      this.a.a(localbcin);
+    }
   }
 }
 

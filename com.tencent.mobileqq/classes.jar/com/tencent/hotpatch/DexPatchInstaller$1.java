@@ -1,8 +1,8 @@
 package com.tencent.hotpatch;
 
-import aarg;
-import aarp;
-import aarq;
+import aavv;
+import aawe;
+import aawf;
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
@@ -10,17 +10,17 @@ import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 public final class DexPatchInstaller$1
   implements Runnable
 {
-  public DexPatchInstaller$1(aarp paramaarp, Context paramContext) {}
+  public DexPatchInstaller$1(aawe paramaawe, Context paramContext) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_Aarp.b();
+    String str = this.jdField_a_of_type_Aawe.b();
     int i = PatchSharedPreUtil.getCountFailStartupPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str);
     if (i <= 5) {
       PatchSharedPreUtil.updateCountFailStartupPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str, i + 1);
     }
-    aarq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aarp);
-    if ((501 == aarg.a) || (502 == aarg.a))
+    aawf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aawe);
+    if ((501 == aavv.a) || (502 == aavv.a))
     {
       i = PatchSharedPreUtil.getCountFailInstallPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str);
       PatchSharedPreUtil.updateCountFailInstallPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str, i + 1);

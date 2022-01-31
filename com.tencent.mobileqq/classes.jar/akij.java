@@ -1,8 +1,8 @@
+import com.tencent.mobileqq.data.PhoneContact;
+
 public abstract interface akij
 {
-  public abstract Object a();
-  
-  public abstract void invalidateSelf();
+  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
 }
 
 

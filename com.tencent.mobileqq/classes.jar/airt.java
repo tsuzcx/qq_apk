@@ -1,23 +1,37 @@
-import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class airt
-  implements View.OnClickListener
+  extends aiqq
 {
-  public airt(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
-  
-  public void onClick(View paramView)
+  protected airt(AlbumListFragment paramAlbumListFragment)
   {
-    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
+    super(paramAlbumListFragment);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.filter.setSupportWebp(true);
+  }
+  
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    int i;
+    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
+      i = 1;
+    }
+    for (;;)
     {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
+      azqs.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
+      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+      if (paramQQAlbumInfo._id.equals("qzone_album")) {
+        i = 2;
+      } else {
+        i = 3;
+      }
     }
   }
 }

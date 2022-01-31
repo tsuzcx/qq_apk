@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bjjt;
+import bjoa;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 

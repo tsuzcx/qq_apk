@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class tvc
-  implements DialogInterface.OnClickListener
+  implements ufg
 {
-  tvc(tuw paramtuw) {}
+  tvc(tuz paramtuz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 1) {
+      tuz.a(this.a, 56);
+    }
+    while (paramInt <= 1) {
+      return;
+    }
+    tuz.a(this.a, 57);
+  }
 }
 
 

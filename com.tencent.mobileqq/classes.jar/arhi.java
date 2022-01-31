@@ -1,43 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class arhi
-  extends arhm
+final class arhi
+  extends nac
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean d;
+  arhi(arhj paramarhj) {}
   
-  public arhi(Context paramContext, FileManagerEntity paramFileManagerEntity)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    this.d = false;
-  }
-  
-  public Intent a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return null;
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
     }
-    ForwardFileInfo localForwardFileInfo = arvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localForwardFileInfo.b(10009);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileinfo", localForwardFileInfo);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    localIntent.putExtra("_from_aio_", this.d);
-    return localIntent;
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    do
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
+        }
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
+      }
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

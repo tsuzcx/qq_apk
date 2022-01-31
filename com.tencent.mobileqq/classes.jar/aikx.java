@@ -1,21 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-final class aikx
-  implements DialogInterface.OnClickListener
+public class aikx
+  implements Animator.AnimatorListener
 {
-  aikx(Activity paramActivity, String paramString1, String paramString2) {}
+  public aikx(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    aikt.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.a.e = AvatarPendantActivity.c;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.a;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.d;
   }
 }
 

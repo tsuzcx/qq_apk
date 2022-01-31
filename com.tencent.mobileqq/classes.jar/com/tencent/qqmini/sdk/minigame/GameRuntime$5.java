@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.minigame;
 
 import android.os.Process;
-import bgtj;
+import bgxq;
 
 public class GameRuntime$5
   implements Runnable
 {
-  public GameRuntime$5(bgtj parambgtj) {}
+  public GameRuntime$5(bgxq parambgxq) {}
   
   public void run()
   {

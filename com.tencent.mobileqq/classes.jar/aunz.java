@@ -1,7 +1,32 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+
 public class aunz
+  extends RecyclerView.OnScrollListener
 {
-  public static final long[] a = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 12L };
-  public static final long[] b = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 12L, 16L, 17L, 19L, 20L, 21L };
+  public aunz(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (MultiCardRecommendFragment.a(this.a) != null)
+    {
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label38;
+      }
+      MultiCardRecommendFragment.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {
+        MultiCardRecommendFragment.d(this.a);
+      }
+      return;
+      label38:
+      MultiCardRecommendFragment.b(this.a);
+      MultiCardRecommendFragment.c(this.a);
+    }
+  }
 }
 
 

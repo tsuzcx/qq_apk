@@ -1,10 +1,24 @@
-import android.widget.EditText;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bkvb
+class bkvb
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  bkvb(bkuy parambkuy) {}
   
-  public abstract void a(int paramInt, String paramString, EditText paramEditText);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

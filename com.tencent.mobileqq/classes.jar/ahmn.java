@@ -1,123 +1,69 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ThemeImageView;
 
 public class ahmn
+  extends ahln
+  implements View.OnClickListener
 {
-  public ArrayList<ahms> a;
-  private boolean a;
-  public int[] a;
-  public String[] a;
-  
-  public ahmn(boolean paramBoolean)
+  public ahmn(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if ((paramBoolean) && (!azwu.a())) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    super(paramContext, paramQQAppInterface, paramakln, paramavun);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    View localView;
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahmo)))
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a();
-      return;
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((ahms)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
-    }
-    return 1;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(0, 2131364732, alpo.a(2131702944)));
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(6, 2131364729, alpo.a(2131702930)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(1, 2131364728, alpo.a(2131702901)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(2, 2131364733, alpo.a(2131702943)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(3, 2131364726, alpo.a(2131702927)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(4, 2131364730, alpo.a(2131702923)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ahms(5, 2131364731, swy.a()));
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    this.jdField_a_of_type_ArrayOfInt = new int[j];
-    int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = ((ahms)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((ahms)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.jdField_a_of_type_Boolean + " tabSize:" + j);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!azwu.a()))
-    {
-      paramBoolean = true;
-      if (paramBoolean == this.jdField_a_of_type_Boolean) {
-        break label200;
+      paramView = new ahmo();
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561120, null);
+      localObject = new Rect();
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914) - bdoo.a(80.0F));
+      paramView.a = ((Button)localView.findViewById(2131367385));
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        paramView.a.setBackgroundResource(2130839130);
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (!paramBoolean) {
-        break label146;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(0, new ahms(0, 2131364732, alpo.a(2131702898)));
+      localObject = (ThemeImageView)localView.findViewById(2131367382);
+      ((ThemeImageView)localObject).setSupportMaskView(true);
+      ((ThemeImageView)localObject).setMaskShape(bibv.b);
+      localView.setTag(paramView);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
+      localObject = paramView;
     }
-    int j;
     for (;;)
     {
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-      this.jdField_a_of_type_ArrayOfInt = new int[j];
-      int i = 0;
-      while (i < j)
-      {
-        ahms localahms = (ahms)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localahms.c == 5) {
-          localahms.f = swy.a();
-        }
-        this.jdField_a_of_type_ArrayOfInt[i] = localahms.d;
-        this.jdField_a_of_type_ArrayOfJavaLangString[i] = localahms.f;
-        i += 1;
-      }
-      paramBoolean = false;
-      break;
-      label146:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      ((ahmo)localObject).a.setOnClickListener(this);
+      return localView;
+      localObject = (ahmo)paramView.getTag();
+      localView = paramView;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean + " tabSize:" + j);
-    }
-    return true;
-    label200:
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    return false;
   }
   
-  public int b(int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
+    if (bdin.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      if (((ahms)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
-        return i;
+      paramView = (ahuf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
+      if (paramView != null) {
+        paramView.b(true);
       }
-      i += 1;
+      return;
     }
-    return -1;
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692398), 0).a();
   }
 }
 

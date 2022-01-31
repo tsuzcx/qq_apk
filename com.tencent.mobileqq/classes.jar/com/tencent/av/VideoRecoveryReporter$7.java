@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import azmz;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public final class VideoRecoveryReporter$7
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    azmz.a(BaseApplication.getContext()).a("", "av_node_report_retry", this.a, 0L, 0L, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "av_node_report_retry", this.a, 0L, 0L, localHashMap, "");
   }
 }
 

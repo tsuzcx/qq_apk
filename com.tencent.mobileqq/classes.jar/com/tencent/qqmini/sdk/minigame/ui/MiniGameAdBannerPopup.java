@@ -17,12 +17,12 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bglq;
-import bgnf;
-import bgvt;
-import bgvu;
-import bgvv;
-import bgvw;
+import bgpx;
+import bgrm;
+import bhaa;
+import bhab;
+import bhac;
+import bhad;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
@@ -43,11 +43,11 @@ import java.util.concurrent.TimeUnit;
 
 public class MiniGameAdBannerPopup
 {
-  private static int jdField_a_of_type_Int = bglq.a("qqminiapp", "banner_ad_popup_show_delay_seconds_after_game_launch", 0);
-  private static String jdField_a_of_type_JavaLangString = bglq.a("qqminiapp", "banner_ad_popup_appid_white_list", "");
-  private static String b = bglq.a("qqminiapp", "banner_ad_popup_appid_black_list", "");
-  private static String c = bglq.a("qqminiapp", "banner_ad_popup_refer_white_list", "");
-  private static String d = bglq.a("qqminiapp", "banner_ad_popup_refer_black_list", "");
+  private static int jdField_a_of_type_Int = bgpx.a("qqminiapp", "banner_ad_popup_show_delay_seconds_after_game_launch", 0);
+  private static String jdField_a_of_type_JavaLangString = bgpx.a("qqminiapp", "banner_ad_popup_appid_white_list", "");
+  private static String b = bgpx.a("qqminiapp", "banner_ad_popup_appid_black_list", "");
+  private static String c = bgpx.a("qqminiapp", "banner_ad_popup_refer_white_list", "");
+  private static String d = bgpx.a("qqminiapp", "banner_ad_popup_refer_black_list", "");
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
@@ -407,10 +407,10 @@ public class MiniGameAdBannerPopup
       } while (!(paramContext instanceof Activity));
       localObject1 = (Activity)paramContext;
     } while ((((Activity)localObject1).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject1).isDestroyed())));
-    Object localObject2 = LayoutInflater.from(paramContext).inflate(2131559338, null);
-    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131370569);
-    TextView localTextView = (TextView)((View)localObject2).findViewById(2131370571);
-    Object localObject1 = (LinearLayout)((View)localObject2).findViewById(2131370558);
+    Object localObject2 = LayoutInflater.from(paramContext).inflate(2131559337, null);
+    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131370588);
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131370590);
+    Object localObject1 = (LinearLayout)((View)localObject2).findViewById(2131370577);
     Dialog localDialog = new Dialog(paramContext);
     localDialog.setCancelable(false);
     if (localDialog.getWindow() != null)
@@ -419,8 +419,8 @@ public class MiniGameAdBannerPopup
       localDialog.getWindow().setBackgroundDrawableResource(17170445);
     }
     localDialog.setContentView((View)localObject2, new ViewGroup.LayoutParams(-1, -1));
-    localDialog.setOnShowListener(new bgvu(paramAdItem, paramString1));
-    localImageView.setOnClickListener(new bgvv(localDialog, paramAdItem, paramString1));
+    localDialog.setOnShowListener(new bhab(paramAdItem, paramString1));
+    localImageView.setOnClickListener(new bhac(localDialog, paramAdItem, paramString1));
     if (!TextUtils.isEmpty(paramString2)) {
       localTextView.setText(paramString2);
     }
@@ -430,7 +430,7 @@ public class MiniGameAdBannerPopup
     paramString2.setClickable(true);
     localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     paramString2.setImageDrawable(((MiniAppProxy)localObject2).getDrawable(paramContext, paramString3, 0, 0, null));
-    paramString2.setOnClickListener(new bgvw(localDialog, paramContext, paramString4, (MiniAppProxy)localObject2, paramAdItem, paramString1));
+    paramString2.setOnClickListener(new bhad(localDialog, paramContext, paramString4, (MiniAppProxy)localObject2, paramAdItem, paramString1));
     paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
     paramContext.gravity = 1;
     ((LinearLayout)localObject1).addView(paramString2, paramContext);
@@ -450,8 +450,8 @@ public class MiniGameAdBannerPopup
     {
       return;
       localWeakReference = new WeakReference(paramContext);
-    } while (((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new bgvt(localWeakReference, paramString, paramInt)));
-    bgnf.a(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中请求广告弹窗", 1);
+    } while (((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new bhaa(localWeakReference, paramString, paramInt)));
+    bgrm.a(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中请求广告弹窗", 1);
     b(paramContext, paramString, paramInt, false, null);
   }
 }

@@ -1,14 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class xzy
-  implements yad
+public class xzy
+  implements DialogInterface.OnClickListener
 {
-  xzy(xzx paramxzx) {}
+  public xzy(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d(paramStFeed);
+    QRLoginMgrActivity.a(this.a, true, 0L);
+    azqs.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
   }
 }
 

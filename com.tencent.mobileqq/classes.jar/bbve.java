@@ -1,16 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Set;
 
 class bbve
-  implements CompoundButton.OnCheckedChangeListener
+  extends bbwi
 {
-  bbve(bbvd parambbvd, bbvh parambbvh) {}
+  bbve(bbvc parambbvc) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(Set<Long> paramSet)
   {
-    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bbvh.a).troopuin.equals(bbvd.a(this.jdField_a_of_type_Bbvd)))) {
-      this.jdField_a_of_type_Bbvh.b = Boolean.valueOf(paramBoolean);
+    this.a.b = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bbvc.c(this.a))))) {
+      this.a.b = 2;
+    }
+    bbvl.c("TroopFileTransferMgr", bbvl.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.a > 0)
+    {
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bcmp.a(bbvc.b(this.a), bbvc.d(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
   }
 }

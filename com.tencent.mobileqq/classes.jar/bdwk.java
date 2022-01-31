@@ -1,98 +1,82 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class bdwk
+public class bdwk<E>
 {
-  public static int a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
+  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
+  
+  public List<E> a(String paramString)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramInt = localSharedPreferences.getInt(paramQQAppInterface, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramInt);
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
     }
-    return paramInt;
+    finally {}
   }
   
-  public static long a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
+  public void a(String paramString, E paramE)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramLong = localSharedPreferences.getLong(paramQQAppInterface, paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramLong);
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
+      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
+      if (localCopyOnWriteArrayList2 == null)
+      {
+        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
+        this.a.put(paramString, localCopyOnWriteArrayList1);
+      }
+      localCopyOnWriteArrayList1.add(paramE);
+      return;
     }
-    return paramLong;
+    finally {}
   }
   
-  public static String a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramString1 = localSharedPreferences.getString(paramQQAppInterface, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramString1);
+    try
+    {
+      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
+      if (paramString != null)
+      {
+        if (paramBoolean)
+        {
+          Iterator localIterator = paramString.iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject1 = localIterator.next();
+            Object localObject2 = ((WeakReference)localObject1).get();
+            if ((localObject2 == null) || (localObject2 == paramObject)) {
+              paramString.remove(localObject1);
+            }
+          }
+        }
+        paramString.remove(paramObject);
+      }
     }
-    return paramString1;
+    finally {}
   }
   
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
+  public List<E> b(String paramString)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putInt(paramQQAppInterface, paramInt).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
     }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putLong(paramQQAppInterface, paramLong).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putString(paramQQAppInterface, paramString2).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramString2);
-    }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramBoolean = localSharedPreferences.getBoolean(paramQQAppInterface, paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramBoolean);
-    }
-    return paramBoolean;
-  }
-  
-  public static boolean b(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramBoolean = localSharedPreferences.edit().putBoolean(paramQQAppInterface, paramBoolean).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramBoolean);
-    }
-    return paramBoolean;
+    finally {}
   }
 }
 

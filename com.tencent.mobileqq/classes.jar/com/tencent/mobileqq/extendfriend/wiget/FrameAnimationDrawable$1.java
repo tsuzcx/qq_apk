@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aqee;
+import aqin;
 
 public class FrameAnimationDrawable$1
   implements Runnable
 {
-  public FrameAnimationDrawable$1(aqee paramaqee) {}
+  public FrameAnimationDrawable$1(aqin paramaqin) {}
   
   public void run()
   {

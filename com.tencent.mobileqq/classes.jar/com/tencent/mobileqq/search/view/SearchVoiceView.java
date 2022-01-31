@@ -20,8 +20,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import aytl;
-import aytm;
+import ayxu;
+import ayxv;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -47,8 +47,8 @@ public class SearchVoiceView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new aytl(this));
-  private aytm jdField_a_of_type_Aytm;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ayxu(this));
+  private ayxv jdField_a_of_type_Ayxv;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
@@ -349,9 +349,9 @@ public class SearchVoiceView
     }
   }
   
-  public void setOnStateEndListener(aytm paramaytm)
+  public void setOnStateEndListener(ayxv paramayxv)
   {
-    this.jdField_a_of_type_Aytm = paramaytm;
+    this.jdField_a_of_type_Ayxv = paramayxv;
   }
 }
 

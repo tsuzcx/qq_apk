@@ -1,19 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class aghs
-  implements biya
+public abstract interface aghs
 {
-  aghs(aghr paramaghr) {}
-  
-  public void a(int paramInt, String... paramVarArgs)
-  {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
-    {
-      QLog.i(aghr.a, 2, "error get pskey...");
-      return;
-    }
-    aghr.a(this.a, paramVarArgs[0]);
-  }
+  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
 }
 
 

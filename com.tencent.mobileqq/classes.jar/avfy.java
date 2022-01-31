@@ -1,29 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class avfy
-  implements anpq
+final class avfy
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public avfy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
-    }
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    this.a.runOnUiThread(new NearbyPeopleProfileActivity.17.1(this, paramString, paramBoolean1));
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
   }
 }
 

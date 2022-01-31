@@ -31,7 +31,7 @@ public class set
   implements View.OnClickListener, rxg
 {
   protected static int a;
-  protected amar a;
+  protected amfg a;
   protected BroadcastReceiver a;
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -46,7 +46,7 @@ public class set
   
   public set(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Amar = new seu(this);
+    this.jdField_a_of_type_Amfg = new seu(this);
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = "search_word_prefix_search_change_times";
     this.jdField_b_of_type_JavaLangString = "search_word_prefix_refresh_times";
@@ -54,8 +54,8 @@ public class set
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378932));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378931));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378990));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378989));
     paramViewGroup = Aladdin.getConfig(182);
     int i;
     if ((paramViewGroup != null) && (this.jdField_a_of_type_AndroidContentContext != null))
@@ -69,7 +69,7 @@ public class set
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramViewGroup));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(i);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(i);
-      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_Amar);
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_Amfg);
       b(false, -1, -1);
       paramViewGroup = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
       paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup);
@@ -100,11 +100,11 @@ public class set
     {
       AbstractGifImage.resumeAll();
       return;
-      if (!TextUtils.isEmpty(aomq.a().jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(aoqz.a().jdField_a_of_type_JavaLangString))
       {
         a(false, -1, -1);
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        new amap(localQQAppInterface).a(localQQAppInterface, 10);
+        new amfe(localQQAppInterface).a(localQQAppInterface, 10);
       }
     }
   }
@@ -120,8 +120,8 @@ public class set
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719591);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719591);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719603);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719603);
       this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = null;
     }
     Object localObject1;
@@ -130,14 +130,14 @@ public class set
       return;
       if (HotWordSearchEntryDataModel.a(10, false))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719591);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719591);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719603);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719603);
         this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = null;
         return;
       }
       int i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.size();
       this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = ((HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_Int % i));
-      localObject1 = ayra.a("kFTSReadInJoySearchPlaceholderPrefix");
+      localObject1 = ayvj.a("kFTSReadInJoySearchPlaceholderPrefix");
       if (!paramBoolean) {
         break;
       }
@@ -152,16 +152,16 @@ public class set
       localObjectAnimator.start();
       ((ObjectAnimator)localObject2).addListener(new sev(this, (String)localObject1));
       jdField_a_of_type_Int += 1;
-      aynt.a(null, new ReportModelDC02528().module("hot_list").action("exp_default_word").ver2(aynt.a(25)).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title));
+      aysc.a(null, new ReportModelDC02528().module("hot_list").action("exp_default_word").ver2(aysc.a(25)).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title));
       localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      new amap((QQAppInterface)localObject1).a((QQAppInterface)localObject1, "exp_default_word", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title, aynt.a(25), null);
+      new amfe((QQAppInterface)localObject1).a((QQAppInterface)localObject1, "exp_default_word", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title, aysc.a(25), null);
     } while ((paramInt1 == -1) || (paramInt2 == -1));
     Object localObject2 = new ReportModelDC02528().module("hot_list").action("feeds_hotword_wording");
     if (paramInt1 == 0)
     {
       localObject1 = "1";
       label420:
-      aynt.a(null, ((ReportModelDC02528)localObject2).ver1((String)localObject1).obj3(paramInt2 + ""));
+      aysc.a(null, ((ReportModelDC02528)localObject2).ver1((String)localObject1).obj3(paramInt2 + ""));
       localObject2 = ors.a();
     }
     for (;;)
@@ -199,7 +199,7 @@ public class set
   public void b(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!TextUtils.isEmpty(aomq.a().jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(aoqz.a().jdField_a_of_type_JavaLangString))
     {
       this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = new HotWordSearchEntryDataModel(localQQAppInterface, 1, 10, false);
       ThreadManager.post(new ReadInJoyTabTopSearchHeaderController.4(this, paramBoolean, paramInt1, paramInt2, localQQAppInterface), 5, null, true);
@@ -211,7 +211,7 @@ public class set
   public void c()
   {
     this.jdField_b_of_type_Boolean = false;
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.jdField_a_of_type_Amar);
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.jdField_a_of_type_Amfg);
     this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     this.jdField_a_of_type_Boolean = true;
   }
@@ -232,8 +232,8 @@ public class set
       if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem == null) {}
       for (paramView = "";; paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title)
       {
-        aynt.a(localQQAppInterface, localReportModelDC02528.ver1(paramView).ver7("{experiment_id:" + aynt.jdField_b_of_type_JavaLangString + "}"));
-        aynt.a(null, 0, 25, "0X8009D15", 0, 0, null, null);
+        aysc.a(localQQAppInterface, localReportModelDC02528.ver1(paramView).ver7("{experiment_id:" + aysc.jdField_b_of_type_JavaLangString + "}"));
+        aysc.a(null, 0, 25, "0X8009D15", 0, 0, null, null);
         return;
       }
     }

@@ -1,10 +1,12 @@
-public class avqi
-  extends avqe
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avqi
+  implements DialogInterface.OnClickListener
 {
-  public boolean a()
-  {
-    return true;
-  }
+  avqi(avqc paramavqc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

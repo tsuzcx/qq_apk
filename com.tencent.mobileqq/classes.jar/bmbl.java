@@ -1,27 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
 public class bmbl
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bmbl(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmbl(QIMSlidingTabView paramQIMSlidingTabView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
-    }
-    this.a.j();
-    athi.b();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
-    }
+    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnz;
+import agso;
 import com.tencent.qphone.base.util.QLog;
 
 public class MultiForwardChatPie$4
   implements Runnable
 {
-  public MultiForwardChatPie$4(agnz paramagnz) {}
+  public MultiForwardChatPie$4(agso paramagso) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.a, 2, "mRunOnShow 800 hasDestory=" + this.this$0.N);
     }
-    if ((agnz.a(this.this$0)) || (this.this$0.N))
+    if ((agso.a(this.this$0)) || (this.this$0.N))
     {
       QLog.i(this.this$0.a, 1, "onShowFirst return|3 hasDestory:" + this.this$0.N);
       return;
     }
-    agnz.a(this.this$0);
+    agso.a(this.this$0);
   }
 }
 

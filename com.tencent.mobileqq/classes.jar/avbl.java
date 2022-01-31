@@ -1,54 +1,33 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.qphone.base.util.QLog;
 
-public class avbl
-  extends GestureDetector.SimpleOnGestureListener
+class avbl
+  extends avbn
 {
-  private avbl(StuffContainerView paramStuffContainerView) {}
+  avbl(avbj paramavbj) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public Message a(Message paramMessage)
   {
-    if (this.a.a == null) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (paramMessage == null) {
+      return null;
     }
-    float f2;
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-      if (Math.abs(f1) <= Math.abs(f2)) {
-        break label143;
-      }
-      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
-      {
-        if (f1 >= 0.0F) {
-          break label128;
-        }
-        this.a.a.g();
-      }
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label128:
-      this.a.a.j();
-      continue;
-      label143:
-      if (f2 > 0.0F) {
-        this.a.a.h();
-      } else {
-        this.a.a.i();
-      }
-    }
+    return this.a.b(paramMessage);
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
-    return false;
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 

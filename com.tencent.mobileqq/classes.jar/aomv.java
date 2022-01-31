@@ -1,92 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.ArrayList;
 
 public class aomv
-  extends aofy<aomw>
 {
-  public int a()
-  {
-    return 252;
-  }
-  
-  @NonNull
-  public aomw a(int paramInt)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = bdiv.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new aomw(bdiv.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
-  }
-  
-  @Nullable
-  public aomw a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      return null;
-    }
-    paramArrayOfaogf = paramArrayOfaogf[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaogf);
-    }
-    try
-    {
-      paramArrayOfaogf = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaogf.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfaogf.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
-      {
-        paramArrayOfaogf = new aomw(paramArrayOfaogf.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaogf.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfaogf;
-      }
-    }
-    catch (Exception paramArrayOfaogf)
-    {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaogf);
-    }
-    return null;
-  }
-  
-  public Class<aomw> a()
-  {
-    return aomw.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
-    }
-  }
-  
-  public void a(aomw paramaomw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return bdiv.an(localQQAppInterface.getApp(), localQQAppInterface.c());
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public String b;
+  public ArrayList<anmw> b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -1,17 +1,16 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface atcn
+class atcn
+  implements BusinessObserver
 {
-  String a();
+  atcn(atch paramatch) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vck
-  extends vaq<qqstory_service.ReqGetPromoteTaskList>
+  extends vcb
 {
-  public static final String b = ume.a("StorySvc.get_promote_tasklist");
+  public int a;
+  public String a;
+  public List<VideoCollectionItem> a;
+  public String b;
+  public boolean e = true;
   
-  public vck(String paramString)
+  public vck(String paramString, ErrorMessage paramErrorMessage)
   {
-    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
-    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    return new vcl(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    wsv.a("GetPromoteTaskRequest", "encode: %s", this);
-    return super.a();
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public String toString()
   {
-    return xnh.a(this.a);
+    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

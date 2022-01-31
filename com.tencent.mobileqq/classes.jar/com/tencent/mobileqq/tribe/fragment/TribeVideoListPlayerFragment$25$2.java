@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.view.View;
-import bazb;
+import bbdk;
 
 public class TribeVideoListPlayerFragment$25$2
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$25$2(bazb parambazb) {}
+  public TribeVideoListPlayerFragment$25$2(bbdk parambbdk) {}
   
   public void run()
   {

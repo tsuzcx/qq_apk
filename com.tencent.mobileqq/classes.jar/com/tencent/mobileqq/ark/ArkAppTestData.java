@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class ArkAppTestData
-  extends awbv
+  extends awge
 {
   public long date;
-  @awdj
+  @awhs
   public String name;
   public String value;
 }

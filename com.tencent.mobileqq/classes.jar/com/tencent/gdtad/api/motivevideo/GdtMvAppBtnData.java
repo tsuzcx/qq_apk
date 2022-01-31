@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aanp;
+import aase;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class GdtMvAppBtnData
         paramJSONObject = null;
       }
     }
-    aanp.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
+    aase.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
     localException1.printStackTrace();
     return paramJSONObject;
   }

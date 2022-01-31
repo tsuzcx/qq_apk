@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class nyg
-  implements bhqf
+  implements bhum
 {
   public nyg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   

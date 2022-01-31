@@ -1,42 +1,35 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLike;
+import feedcloud.FeedCloudWrite.StDoCommentRsp;
+import java.util.Map;
 
 class tuo
-  implements AbsListView.OnScrollListener
+  implements zac<FeedCloudWrite.StDoCommentRsp>
 {
-  boolean jdField_a_of_type_Boolean = false;
+  tuo(tuk paramtuk, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed) {}
   
-  tuo(tuk paramtuk) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoCommentRsp == null))
     {
-      this.jdField_a_of_type_Boolean = true;
+      QLog.e(tuk.a(), 1, "addFeedComment error:" + paramLong + "  errorMsg:" + paramString);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!tuk.a(this.jdField_a_of_type_Tuk)) && (!tuk.b(this.jdField_a_of_type_Tuk)))
-    {
-      QLog.i(tuk.a(), 1, "onLastItemVisible");
-      tuk.a(this.jdField_a_of_type_Tuk, this.jdField_a_of_type_Tuk.a().a(tuk.a(this.jdField_a_of_type_Tuk)));
-      if (tuk.b(this.jdField_a_of_type_Tuk) != null)
-      {
-        this.jdField_a_of_type_Tuk.a().a(tuk.a(this.jdField_a_of_type_Tuk), true);
-        tuk.a(this.jdField_a_of_type_Tuk, true);
-      }
-    }
-    if (paramInt == 0)
-    {
-      abqw.a().a("qcircle_comment_page", false);
-      return;
-    }
-    abqw.a().a("qcircle_comment_page");
+    QLog.d(tuk.a(), 1, "addFeedComment Success");
+    String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get();
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.set(paramStDoCommentRsp.comment.id.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.createTime.set(paramStDoCommentRsp.comment.createTime.get());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.set(paramStDoCommentRsp.comment.likeInfo.get());
+    paramStDoCommentRsp.comment.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    tuk.a(this.jdField_a_of_type_Tuk).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) + 1));
+    yiw.a().a(new QCircleCommentUpdateEvent(1, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())));
+    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, str, Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
   }
 }
 

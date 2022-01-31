@@ -1,67 +1,89 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
+import com.tencent.maxvideo.common.MessageStruct;
+import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 
-public class bnhq
-  implements ViewPager.OnPageChangeListener
+public abstract class bnhq
 {
-  public int a;
+  public abstract void a();
   
-  public bnhq(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public void a(bnql parambnql, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct) {}
+  
+  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if ((paramObject instanceof AudioCapture)) {
+      switch (paramInt)
+      {
       }
     }
-    Object localObject;
+    label304:
+    label332:
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
-      }
-      bnaw.a("", "0X8007804", "", "", "", "");
-      this.jdField_a_of_type_Int = paramInt;
-      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
-      if (localView != null)
+      do
       {
-        localObject = (Runnable)localView.getTag();
-        if (localObject != null)
+        do
         {
-          localView.removeCallbacks((Runnable)localObject);
-          localView.setTag(null);
+          do
+          {
+            return;
+            localRMVideoStateMgr.c();
+            return;
+          } while (!(paramObject instanceof azhu));
+          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
+          if (localRMVideoStateMgr == null) {
+            break label392;
+          }
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 2: 
+            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
+              break label332;
+            }
+            if (!(paramVarArgs[0] instanceof azhj)) {
+              break label304;
+            }
+            paramObject = (azhj)paramVarArgs[0];
+            try
+            {
+              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
+              QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
+              return;
+            }
+            catch (NullPointerException paramObject)
+            {
+              paramObject.printStackTrace();
+            }
+          }
+        } while (localRMVideoStateMgr == null);
+        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
         }
-        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
-      }
-      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
-      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
-      if (localView != null)
-      {
-        localView.removeCallbacks((Runnable)localView.getTag());
-        localView.clearAnimation();
-      }
-    } while (localObject == null);
-    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
-    ((View)localObject).clearAnimation();
+      } while (localRMVideoStateMgr.a == null);
+      localRMVideoStateMgr.a.h();
+      return;
+      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
+      return;
+      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
+    } while (localRMVideoStateMgr == null);
+    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
+    return;
+    label392:
+    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
   }
+  
+  public void e() {}
 }
 
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.hotpic;
 
-import alpo;
+import alud;
 import android.app.Dialog;
-import aspz;
-import asqa;
-import asqh;
-import bdcd;
-import bdfq;
+import asui;
+import asuj;
+import asuq;
+import bdgm;
+import bdjz;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotPicPageView$4$2
   implements Runnable
 {
-  public HotPicPageView$4$2(aspz paramaspz) {}
+  public HotPicPageView$4$2(asui paramasui) {}
   
   public void run()
   {
-    bdfq localbdfq = bdcd.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, alpo.a(2131705983), new asqa(this), null);
+    bdjz localbdjz = bdgm.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, alud.a(2131705995), new asuj(this), null);
     try
     {
-      localbdfq.show();
+      localbdjz.show();
       return;
     }
     catch (Exception localException)
@@ -27,8 +27,8 @@ public class HotPicPageView$4$2
       if (QLog.isColorLevel()) {
         QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
       }
-      if (this.a.jdField_a_of_type_Asqh.a == 1) {
-        this.a.jdField_a_of_type_Asqh.a(0);
+      if (this.a.jdField_a_of_type_Asuq.a == 1) {
+        this.a.jdField_a_of_type_Asuq.a(0);
       }
       this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
     }

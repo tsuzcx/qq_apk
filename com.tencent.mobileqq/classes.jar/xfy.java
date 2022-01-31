@@ -1,30 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
+@TargetApi(11)
 public class xfy
 {
-  public static xgc a(Context paramContext, String paramString)
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, xgb paramxgb)
   {
-    paramContext = xgc.a(paramContext);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        xgc localxgc = (xgc)paramContext.next();
-        if (TextUtils.equals(paramString, localxgc.a)) {
-          return localxgc;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return !TextUtils.isEmpty(bczr.a(paramContext, "qqstory_savedMusicList"));
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new xfz(paramxgb));
+    localValueAnimator.addListener(new xga(paramxgb, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
   }
 }
 

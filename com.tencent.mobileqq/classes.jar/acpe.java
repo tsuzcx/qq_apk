@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public class acpe
-  implements DialogInterface.OnClickListener
+class acpe
+  implements MessageQueue.IdleHandler
 {
-  public acpe(DialogActivity paramDialogActivity) {}
+  acpe(acpd paramacpd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean queueIdle()
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
   }
 }
 

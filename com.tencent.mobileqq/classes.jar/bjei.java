@@ -1,34 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class bjei
-  implements VipResourcesListener
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<ImageView> b;
+  public bjei(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public bjei(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    this.b = new WeakReference(paramImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onFailed() {}
-  
-  public void onLoaded(Drawable paramDrawable)
-  {
-    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramDrawable != null) && (localHandler != null)) {
-      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
-    }
+    this.a.a = true;
+    this.a.d();
+    this.a.a();
   }
 }
 

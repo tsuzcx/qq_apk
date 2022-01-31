@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajli;
-import ajnh;
-import ajob;
-import ajod;
-import ajow;
-import ajrt;
-import ajru;
-import ajrv;
+import ajpx;
 import ajrw;
-import ajrx;
-import ajry;
-import ajrz;
-import ajsi;
-import ajsn;
-import alpo;
+import ajsq;
+import ajss;
+import ajtl;
+import ajwi;
+import ajwj;
+import ajwk;
+import ajwl;
+import ajwm;
+import ajwn;
+import ajwo;
+import ajwx;
+import ajxc;
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.EGL14;
@@ -27,24 +27,24 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import azce;
-import azdt;
-import azei;
-import azel;
-import azeu;
-import azfq;
-import azfr;
-import azfs;
-import azft;
-import azge;
-import azgf;
-import azgo;
-import azgp;
-import azgy;
-import azgz;
-import azha;
-import azhb;
-import bkkj;
+import azgn;
+import azic;
+import azir;
+import aziu;
+import azjd;
+import azjz;
+import azka;
+import azkb;
+import azkc;
+import azkn;
+import azko;
+import azkx;
+import azky;
+import azlh;
+import azli;
+import azlj;
+import azlk;
+import bkoq;
 import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.common.app.AppInterface;
@@ -79,22 +79,22 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class CameraFilterGLView
   extends GLSurfaceView
-  implements ajod, GLSurfaceView.Renderer
+  implements ajss, GLSurfaceView.Renderer
 {
-  private static final azfr jdField_a_of_type_Azfr = new azfr();
-  private static azge jdField_a_of_type_Azge;
+  private static final azka jdField_a_of_type_Azka = new azka();
+  private static azkn jdField_a_of_type_Azkn;
   private int jdField_a_of_type_Int = 240;
-  private ajru jdField_a_of_type_Ajru;
-  private ajrv jdField_a_of_type_Ajrv = new ajrv(null);
-  private ajrw jdField_a_of_type_Ajrw = new ajrw(null);
-  private ajrx jdField_a_of_type_Ajrx = new ajrx(this, null);
-  private ajry jdField_a_of_type_Ajry = new ajry(null);
-  public ajrz a;
+  private ajwj jdField_a_of_type_Ajwj;
+  private ajwk jdField_a_of_type_Ajwk = new ajwk(null);
+  private ajwl jdField_a_of_type_Ajwl = new ajwl(null);
+  private ajwm jdField_a_of_type_Ajwm = new ajwm(this, null);
+  private ajwn jdField_a_of_type_Ajwn = new ajwn(null);
+  public ajwo a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  public azdt a;
-  public azei a;
-  private azgo jdField_a_of_type_Azgo = new azgo();
-  private azha jdField_a_of_type_Azha = new ajrt(this);
+  public azic a;
+  public azir a;
+  private azkx jdField_a_of_type_Azkx = new azkx();
+  private azlj jdField_a_of_type_Azlj = new ajwi(this);
   public AppInterface a;
   public FramePerformanceMonitor a;
   private PreviewContext jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext;
@@ -122,7 +122,7 @@ public class CameraFilterGLView
   
   static
   {
-    bkkj.a();
+    bkoq.a();
     VideoPrefsUtil.init(VideoEnvironment.a(), ShortVideoUtils.a());
     VideoPrefsUtil.setMaterialMute(false);
     GraphicRenderMgr.loadSo();
@@ -136,9 +136,9 @@ public class CameraFilterGLView
   public CameraFilterGLView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Azei = new azei();
-    this.jdField_a_of_type_Ajrz = new ajrz();
-    this.jdField_a_of_type_Azdt = new azdt();
+    this.jdField_a_of_type_Azir = new azir();
+    this.jdField_a_of_type_Ajwo = new ajwo();
+    this.jdField_a_of_type_Azic = new azic();
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
     h();
   }
@@ -146,8 +146,8 @@ public class CameraFilterGLView
   private Handler a()
   {
     Handler localHandler1 = null;
-    if (jdField_a_of_type_Azge != null) {
-      localHandler1 = jdField_a_of_type_Azge.a();
+    if (jdField_a_of_type_Azkn != null) {
+      localHandler1 = jdField_a_of_type_Azkn.a();
     }
     Handler localHandler2 = localHandler1;
     if (localHandler1 == null) {
@@ -156,56 +156,56 @@ public class CameraFilterGLView
     return localHandler2;
   }
   
-  private azgp a(int paramInt)
+  private azky a(int paramInt)
   {
     return a(paramInt, null);
   }
   
-  private azgp a(int paramInt, AVIOStruct paramAVIOStruct)
+  private azky a(int paramInt, AVIOStruct paramAVIOStruct)
   {
-    azgp localazgp = this.jdField_a_of_type_Azgo.a();
-    if (localazgp == null)
+    azky localazky = this.jdField_a_of_type_Azkx.a();
+    if (localazky == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[writeSharedMemtoFileDegree]memoryCache=null");
       }
       return null;
     }
-    if (localazgp.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 4))
+    if (localazky.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 4))
     {
-      PtvFilterUtils.a(paramInt, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 4, localazgp.a, paramAVIOStruct);
-      return localazgp;
+      PtvFilterUtils.a(paramInt, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 4, localazky.a, paramAVIOStruct);
+      return localazky;
     }
-    localazgp.a();
+    localazky.a();
     return null;
   }
   
   private String a(int paramInt)
   {
     if (paramInt == PTFaceAttr.PTExpression.MOUTH_OPEN.value) {
-      return alpo.a(2131701687);
+      return alud.a(2131701699);
     }
     if (paramInt == PTFaceAttr.PTExpression.EYEBROWS_RAISE.value) {
-      return alpo.a(2131701693);
+      return alud.a(2131701705);
     }
     if (paramInt == PTFaceAttr.PTExpression.BLINK.value) {
-      return alpo.a(2131701692);
+      return alud.a(2131701704);
     }
     if (paramInt == PTFaceAttr.PTExpression.HEAD_SHAKE.value) {
-      return alpo.a(2131701686);
+      return alud.a(2131701698);
     }
     if (paramInt == PTFaceAttr.PTExpression.KISS.value) {
-      return alpo.a(2131701691);
+      return alud.a(2131701703);
     }
     if (paramInt == PTFaceAttr.PTExpression.HEAD_NOD.value) {
-      return alpo.a(2131701689);
+      return alud.a(2131701701);
     }
     return null;
   }
   
   public static void a()
   {
-    jdField_a_of_type_Azge = null;
+    jdField_a_of_type_Azkn = null;
   }
   
   private void a(int paramInt)
@@ -214,40 +214,40 @@ public class CameraFilterGLView
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, null);
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    azgp localazgp = a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
-    if (localazgp != null)
+    azky localazky = a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+    if (localazky != null)
     {
-      ajob.a();
-      this.jdField_a_of_type_Azgo.a(new CameraFilterGLView.3(this, localazgp));
+      ajsq.a();
+      this.jdField_a_of_type_Azkx.a(new CameraFilterGLView.3(this, localazky));
       return;
     }
-    ajob.a(1);
+    ajsq.a(1);
     QLog.e("PtvFilterUtils", 2, "Capture picture failed, cacheSuccess == null.");
   }
   
-  private void a(azgp paramazgp, int paramInt1, boolean paramBoolean, AVIOStruct paramAVIOStruct, int paramInt2, azdt paramazdt)
+  private void a(azky paramazky, int paramInt1, boolean paramBoolean, AVIOStruct paramAVIOStruct, int paramInt2, azic paramazic)
   {
-    CameraFilterGLView.SharedMemWriteFile localSharedMemWriteFile = azfr.a(paramazgp);
+    CameraFilterGLView.SharedMemWriteFile localSharedMemWriteFile = azka.a(paramazky);
     localSharedMemWriteFile.jdField_a_of_type_Int = this.jdField_c_of_type_Int;
     localSharedMemWriteFile.jdField_b_of_type_Int = this.jdField_d_of_type_Int;
     localSharedMemWriteFile.jdField_c_of_type_Int = paramInt1;
     localSharedMemWriteFile.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = paramAVIOStruct;
-    localSharedMemWriteFile.jdField_a_of_type_Azgp = paramazgp;
+    localSharedMemWriteFile.jdField_a_of_type_Azky = paramazky;
     localSharedMemWriteFile.jdField_a_of_type_Boolean = paramBoolean;
-    localSharedMemWriteFile.jdField_b_of_type_Boolean = this.jdField_a_of_type_Ajrz.jdField_a_of_type_Boolean;
-    localSharedMemWriteFile.jdField_a_of_type_Azgo = this.jdField_a_of_type_Azgo;
-    localSharedMemWriteFile.jdField_a_of_type_Ajru = this.jdField_a_of_type_Ajru;
+    localSharedMemWriteFile.jdField_b_of_type_Boolean = this.jdField_a_of_type_Ajwo.jdField_a_of_type_Boolean;
+    localSharedMemWriteFile.jdField_a_of_type_Azkx = this.jdField_a_of_type_Azkx;
+    localSharedMemWriteFile.jdField_a_of_type_Ajwj = this.jdField_a_of_type_Ajwj;
     localSharedMemWriteFile.jdField_d_of_type_Int = paramInt2;
     localSharedMemWriteFile.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference;
-    localSharedMemWriteFile.jdField_a_of_type_Azdt = paramazdt;
-    this.jdField_a_of_type_Azgo.a(localSharedMemWriteFile);
+    localSharedMemWriteFile.jdField_a_of_type_Azic = paramazic;
+    this.jdField_a_of_type_Azkx.a(localSharedMemWriteFile);
   }
   
-  private void a(azgy paramazgy)
+  private void a(azlh paramazlh)
   {
-    paramazgy = (AVIOStruct)paramazgy.jdField_a_of_type_Azgz.jdField_a_of_type_JavaLangObject;
+    paramazlh = (AVIOStruct)paramazlh.jdField_a_of_type_Azli.jdField_a_of_type_JavaLangObject;
     if (QLog.isColorLevel()) {
-      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[printSourceDataTimeStamp=" + paramazgy.vFrameTime + "ms]");
+      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[printSourceDataTimeStamp=" + paramazlh.vFrameTime + "ms]");
     }
   }
   
@@ -263,8 +263,8 @@ public class CameraFilterGLView
     Handler localHandler = a();
     Message localMessage = Message.obtain(localHandler);
     localMessage.what = -16716523;
-    jdField_a_of_type_Azge.a.a(EGL14.eglGetCurrentContext());
-    jdField_a_of_type_Azge.a.a = this.jdField_a_of_type_Azei.a();
+    jdField_a_of_type_Azkn.a.a(EGL14.eglGetCurrentContext());
+    jdField_a_of_type_Azkn.a.a = this.jdField_a_of_type_Azir.a();
     if (localHandler != null)
     {
       localHandler.sendMessage(localMessage);
@@ -285,37 +285,37 @@ public class CameraFilterGLView
     super.setRenderer(this);
     super.setRenderMode(0);
     super.getHolder().setFormat(1);
-    this.jdField_a_of_type_Ajru = null;
+    this.jdField_a_of_type_Ajwj = null;
     this.jdField_a_of_type_AndroidOsHandler = null;
     i();
     b();
-    jdField_a_of_type_Azfr.a();
-    ajob.a(this);
+    jdField_a_of_type_Azka.a();
+    ajsq.a(this);
   }
   
   private void i()
   {
     this.jdField_e_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajrv.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajry.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajry.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajrw.a();
+    this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwk.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwn.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwn.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwl.a();
     GestureFilterManager.sGestureType = "";
     GestureFilterManager.sGestureTips = "";
   }
   
   private void j()
   {
-    if (jdField_a_of_type_Azge != null) {
-      jdField_a_of_type_Azge.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext);
+    if (jdField_a_of_type_Azkn != null) {
+      jdField_a_of_type_Azkn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext);
     }
   }
   
@@ -340,13 +340,13 @@ public class CameraFilterGLView
   @TargetApi(17)
   private void l()
   {
-    this.jdField_a_of_type_Azei.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-    jdField_a_of_type_Azfr.a.a(EGL14.eglGetCurrentContext(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    this.jdField_a_of_type_Azir.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    jdField_a_of_type_Azka.a.a(EGL14.eglGetCurrentContext(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
     Message localMessage = Message.obtain();
     localMessage.what = 57379;
-    jdField_a_of_type_Azfr.a(localMessage);
+    jdField_a_of_type_Azka.a(localMessage);
     k();
-    this.jdField_a_of_type_Azei.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    this.jdField_a_of_type_Azir.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
   }
   
   private void m()
@@ -354,17 +354,17 @@ public class CameraFilterGLView
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_b_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Azei.e();
+    this.jdField_a_of_type_Azir.e();
     super.requestRender();
   }
   
   private void n()
   {
     Handler localHandler = null;
-    if (jdField_a_of_type_Azge != null)
+    if (jdField_a_of_type_Azkn != null)
     {
-      localHandler = jdField_a_of_type_Azge.a();
-      jdField_a_of_type_Azge.a.a();
+      localHandler = jdField_a_of_type_Azkn.a();
+      jdField_a_of_type_Azkn.a.a();
     }
     if (localHandler != null)
     {
@@ -376,8 +376,8 @@ public class CameraFilterGLView
   
   private void o()
   {
-    if (jdField_a_of_type_Azge != null) {
-      jdField_a_of_type_Azge.b();
+    if (jdField_a_of_type_Azkn != null) {
+      jdField_a_of_type_Azkn.b();
     }
   }
   
@@ -390,7 +390,7 @@ public class CameraFilterGLView
   
   public void a(boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_Ajry.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 0)) {
+    if ((!this.jdField_a_of_type_Ajwn.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 0)) {
       return;
     }
     queueEvent(new CameraFilterGLView.4(this));
@@ -398,53 +398,53 @@ public class CameraFilterGLView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Azgo.a();
+    return this.jdField_a_of_type_Azkx.a();
   }
   
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PtvFilterUtils", 2, "createInputSurface inputSurface=" + jdField_a_of_type_Azge + "  preViewContext=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext);
+      QLog.d("PtvFilterUtils", 2, "createInputSurface inputSurface=" + jdField_a_of_type_Azkn + "  preViewContext=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext);
     }
-    if (jdField_a_of_type_Azge == null)
+    if (jdField_a_of_type_Azkn == null)
     {
-      jdField_a_of_type_Azge = new azge();
-      jdField_a_of_type_Azge.a();
+      jdField_a_of_type_Azkn = new azkn();
+      jdField_a_of_type_Azkn.a();
     }
   }
   
   public void c()
   {
-    if ((jdField_a_of_type_Azge != null) && (jdField_a_of_type_Azge.a.a != null)) {
-      jdField_a_of_type_Azge.a.a.b();
+    if ((jdField_a_of_type_Azkn != null) && (jdField_a_of_type_Azkn.a.a != null)) {
+      jdField_a_of_type_Azkn.a.a.b();
     }
-    if (jdField_a_of_type_Azfr != null) {
-      jdField_a_of_type_Azfr.b();
+    if (jdField_a_of_type_Azka != null) {
+      jdField_a_of_type_Azka.b();
     }
-    if (this.jdField_a_of_type_Azgo != null)
+    if (this.jdField_a_of_type_Azkx != null)
     {
-      this.jdField_a_of_type_Azgo.c();
-      this.jdField_a_of_type_Azgo.a();
+      this.jdField_a_of_type_Azkx.c();
+      this.jdField_a_of_type_Azkx.a();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Azei != null) {
-      this.jdField_a_of_type_Azei.g = true;
+    if (this.jdField_a_of_type_Azir != null) {
+      this.jdField_a_of_type_Azir.g = true;
     }
   }
   
   public void e()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CameraFilterGLView", 2, "sendOffScreenGLSurfaceEGLFinish:mHasSendSurfaceFinishMsg=" + this.jdField_a_of_type_Ajrx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      QLog.d("CameraFilterGLView", 2, "sendOffScreenGLSurfaceEGLFinish:mHasSendSurfaceFinishMsg=" + this.jdField_a_of_type_Ajwm.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
     }
-    if (!this.jdField_a_of_type_Ajrx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) {
+    if (!this.jdField_a_of_type_Ajwm.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) {
       n();
     }
     if (QLog.isColorLevel()) {
-      QLog.d("CameraFilterGLView", 2, "sendOffScreenGLSurfaceEGLFinish:mHasSendSurfaceFinishMsg2=" + this.jdField_a_of_type_Ajrx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      QLog.d("CameraFilterGLView", 2, "sendOffScreenGLSurfaceEGLFinish:mHasSendSurfaceFinishMsg2=" + this.jdField_a_of_type_Ajwm.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
     }
   }
   
@@ -455,15 +455,15 @@ public class CameraFilterGLView
   
   public void g()
   {
-    jdField_a_of_type_Azfr.c();
+    jdField_a_of_type_Azka.c();
   }
   
   @TargetApi(17)
   public void onDrawFrame(GL10 paramGL10)
   {
     if (this.jdField_b_of_type_Boolean) {
-      if (this.jdField_a_of_type_Azei != null) {
-        if (jdField_a_of_type_Azge.a.a == null) {
+      if (this.jdField_a_of_type_Azir != null) {
+        if (jdField_a_of_type_Azkn.a.a == null) {
           break label1446;
         }
       }
@@ -472,14 +472,14 @@ public class CameraFilterGLView
     label1052:
     label1058:
     label1446:
-    for (paramGL10 = jdField_a_of_type_Azge.a.a.c();; paramGL10 = null)
+    for (paramGL10 = jdField_a_of_type_Azkn.a.a.c();; paramGL10 = null)
     {
       if (paramGL10 != null) {
         paramGL10.f();
       }
       int m = 90;
-      if (this.jdField_a_of_type_Ajru != null) {
-        m = this.jdField_a_of_type_Ajru.c();
+      if (this.jdField_a_of_type_Ajwj != null) {
+        m = this.jdField_a_of_type_Ajwj.c();
       }
       if ((m == 90) || (m != this.jdField_e_of_type_Int)) {}
       this.jdField_e_of_type_Int = m;
@@ -492,140 +492,140 @@ public class CameraFilterGLView
       {
         a(paramGL10);
         long l1 = PtvFilterUtils.a();
-        localObject1 = azel.a();
-        if ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2)) {
+        localObject1 = aziu.a();
+        if ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2)) {
           break label1052;
         }
         bool1 = true;
-        if ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2)) {
+        if ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2)) {
           break label1058;
         }
         bool2 = true;
-        ((azel)localObject1).a(bool1, bool2);
-        azel.a().a();
+        ((aziu)localObject1).a(bool1, bool2);
+        aziu.a().a();
         if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
           break label1064;
         }
-        m = this.jdField_a_of_type_Azei.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramGL10.jdField_a_of_type_Int, true, paramGL10.jdField_a_of_type_Azgz.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor, false);
+        m = this.jdField_a_of_type_Azir.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramGL10.jdField_a_of_type_Int, true, paramGL10.jdField_a_of_type_Azli.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor, false);
         GLES20.glBindFramebuffer(36160, 0);
         GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, m, null, null);
         l1 = (PtvFilterUtils.a() - l1) / 1000L;
-        azel.a().b();
+        aziu.a().b();
         if (QLog.isColorLevel()) {
           QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[showPreview=" + l1 / 1000.0D + "ms]");
         }
-        if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Ajru != null))
+        if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Ajwj != null))
         {
-          this.jdField_a_of_type_Ajru.Q();
+          this.jdField_a_of_type_Ajwj.Q();
           this.jdField_e_of_type_Boolean = true;
         }
-        if ((this.jdField_a_of_type_Ajrv.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajru != null) && (this.jdField_a_of_type_Azei.jdField_d_of_type_Boolean))
+        if ((this.jdField_a_of_type_Ajwk.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajwj != null) && (this.jdField_a_of_type_Azir.jdField_d_of_type_Boolean))
         {
-          if (!this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean) {
             break label1100;
           }
-          if ((!this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 2)))
+          if ((!this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 2)))
           {
-            this.jdField_a_of_type_Ajru.a(true, 0);
+            this.jdField_a_of_type_Ajwj.a(true, 0);
             this.jdField_f_of_type_Boolean = false;
-            this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = true;
             if (QLog.isColorLevel()) {
               QLog.d("PtvFilterUtils", 2, "GestureTest test call mFaceDetectedCtrl.mHaveNotifyDetectedFace 1 = true;");
             }
-            this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = false;
-            if (!this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean)
+            this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int = 0;
+            this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = false;
+            if (!this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean)
             {
-              this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
-              this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
+              this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
             }
           }
         }
         label477:
-        if ((this.jdField_a_of_type_Ajry.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajru != null) && (this.jdField_a_of_type_Azei.jdField_e_of_type_Boolean))
+        if ((this.jdField_a_of_type_Ajwn.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajwj != null) && (this.jdField_a_of_type_Azir.jdField_e_of_type_Boolean))
         {
-          if (!this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean) {
             break label1221;
           }
-          if ((!this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 2)))
+          if ((!this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 2)))
           {
-            this.jdField_a_of_type_Ajru.a(true, 1);
+            this.jdField_a_of_type_Ajwj.a(true, 1);
             this.jdField_f_of_type_Boolean = false;
-            this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = true;
             if (QLog.isColorLevel()) {
               QLog.d("PtvFilterUtils", 2, "GestureTest test call mFaceDetectedCtrl.mHaveNotifyDetectedFace2 = true;");
             }
-            this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = false;
-            this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = true;
-            this.jdField_a_of_type_Ajry.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
+            this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int = 0;
+            this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = false;
+            this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Ajwn.jdField_a_of_type_Int = 0;
+            this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
           }
         }
         label625:
-        if (this.jdField_a_of_type_Ajru != null) {
-          this.jdField_a_of_type_Ajru.d(this.jdField_a_of_type_Azei.b());
+        if (this.jdField_a_of_type_Ajwj != null) {
+          this.jdField_a_of_type_Ajwj.d(this.jdField_a_of_type_Azir.b());
         }
         long l2 = SystemClock.elapsedRealtime();
-        if (!paramGL10.jdField_a_of_type_Azgz.jdField_a_of_type_Boolean) {
+        if (!paramGL10.jdField_a_of_type_Azli.jdField_a_of_type_Boolean) {
           break label1391;
         }
-        localObject1 = (AVIOStruct)paramGL10.jdField_a_of_type_Azgz.jdField_a_of_type_JavaLangObject;
+        localObject1 = (AVIOStruct)paramGL10.jdField_a_of_type_Azli.jdField_a_of_type_JavaLangObject;
         ((AVIOStruct)localObject1).vFrameTime = l2;
-        ajsi.a("handleMessage:requestRender  renderTime=" + l2);
+        ajwx.a("handleMessage:requestRender  renderTime=" + l2);
         if (((AVIOStruct)localObject1).pFrameIndex == 0)
         {
-          this.jdField_a_of_type_Ajrz.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_Ajrz.jdField_a_of_type_Int = 0;
-          if (this.jdField_a_of_type_Ajru != null)
+          this.jdField_a_of_type_Ajwo.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_Ajwo.jdField_a_of_type_Int = 0;
+          if (this.jdField_a_of_type_Ajwj != null)
           {
-            localObject2 = this.jdField_a_of_type_Ajrz;
-            ajrz localajrz = this.jdField_a_of_type_Ajrz;
-            ((ajrz)localObject2).jdField_a_of_type_Int = ajrz.a(this.jdField_a_of_type_Ajru.c());
+            localObject2 = this.jdField_a_of_type_Ajwo;
+            ajwo localajwo = this.jdField_a_of_type_Ajwo;
+            ((ajwo)localObject2).jdField_a_of_type_Int = ajwo.a(this.jdField_a_of_type_Ajwj.c());
           }
-          this.jdField_a_of_type_Azdt.a();
+          this.jdField_a_of_type_Azic.a();
         }
-        ((AVIOStruct)localObject1).pFrameIndex = this.jdField_a_of_type_Azdt.a();
+        ((AVIOStruct)localObject1).pFrameIndex = this.jdField_a_of_type_Azic.a();
         if (this.jdField_c_of_type_Boolean) {
           break label1365;
         }
         l2 = PtvFilterUtils.a();
-        if (!jdField_a_of_type_Azfr.a()) {
+        if (!jdField_a_of_type_Azka.a()) {
           break label1290;
         }
-        localObject2 = new azfs();
-        ((azfs)localObject2).jdField_a_of_type_Int = this.jdField_c_of_type_Int;
-        ((azfs)localObject2).jdField_b_of_type_Int = this.jdField_d_of_type_Int;
-        ((azfs)localObject2).jdField_c_of_type_Int = m;
-        ((azfs)localObject2).jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = ((AVIOStruct)localObject1);
-        ((azfs)localObject2).jdField_d_of_type_Int = this.jdField_a_of_type_Ajrz.jdField_a_of_type_Int;
-        ((azfs)localObject2).jdField_a_of_type_Azgo = this.jdField_a_of_type_Azgo;
-        ((azfs)localObject2).jdField_e_of_type_Int = 4;
-        ((azfs)localObject2).jdField_a_of_type_Boolean = this.jdField_a_of_type_Ajrz.jdField_a_of_type_Boolean;
-        ((azfs)localObject2).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference;
-        ((azfs)localObject2).jdField_a_of_type_Azdt = this.jdField_a_of_type_Azdt;
+        localObject2 = new azkb();
+        ((azkb)localObject2).jdField_a_of_type_Int = this.jdField_c_of_type_Int;
+        ((azkb)localObject2).jdField_b_of_type_Int = this.jdField_d_of_type_Int;
+        ((azkb)localObject2).jdField_c_of_type_Int = m;
+        ((azkb)localObject2).jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = ((AVIOStruct)localObject1);
+        ((azkb)localObject2).jdField_d_of_type_Int = this.jdField_a_of_type_Ajwo.jdField_a_of_type_Int;
+        ((azkb)localObject2).jdField_a_of_type_Azkx = this.jdField_a_of_type_Azkx;
+        ((azkb)localObject2).jdField_e_of_type_Int = 4;
+        ((azkb)localObject2).jdField_a_of_type_Boolean = this.jdField_a_of_type_Ajwo.jdField_a_of_type_Boolean;
+        ((azkb)localObject2).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference;
+        ((azkb)localObject2).jdField_a_of_type_Azic = this.jdField_a_of_type_Azic;
         localObject1 = Message.obtain();
         ((Message)localObject1).what = 57380;
         ((Message)localObject1).obj = localObject2;
-        jdField_a_of_type_Azfr.a((Message)localObject1);
+        jdField_a_of_type_Azka.a((Message)localObject1);
         paramGL10.c();
         label938:
         l2 = (PtvFilterUtils.a() - l2) / 1000L;
         if (QLog.isColorLevel()) {
           QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[recordToFile=" + l2 / 1000.0D + "ms]");
         }
-        azeu.c(l2 + (0L + l1));
+        azjd.c(l2 + (0L + l1));
       }
       for (;;)
       {
         localObject1 = null;
         paramGL10 = (GL10)localObject1;
-        if (jdField_a_of_type_Azge != null)
+        if (jdField_a_of_type_Azkn != null)
         {
           paramGL10 = (GL10)localObject1;
-          if (jdField_a_of_type_Azge.a.a != null) {
-            paramGL10 = jdField_a_of_type_Azge.a.a.c();
+          if (jdField_a_of_type_Azkn.a.a != null) {
+            paramGL10 = jdField_a_of_type_Azkn.a.a.c();
           }
         }
         if (paramGL10 != null) {
@@ -637,51 +637,51 @@ public class CameraFilterGLView
         bool2 = false;
         break label153;
         label1064:
-        m = this.jdField_a_of_type_Azei.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramGL10.jdField_a_of_type_Int, true, paramGL10.jdField_a_of_type_Azgz.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor, true);
+        m = this.jdField_a_of_type_Azir.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramGL10.jdField_a_of_type_Int, true, paramGL10.jdField_a_of_type_Azli.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor, true);
         break label241;
         label1100:
-        localObject1 = this.jdField_a_of_type_Ajrv;
-        ((ajrv)localObject1).jdField_a_of_type_Int += 1;
-        if ((this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int < 4) || ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2)) || (this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean)) {
+        localObject1 = this.jdField_a_of_type_Ajwk;
+        ((ajwk)localObject1).jdField_a_of_type_Int += 1;
+        if ((this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int < 4) || ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2)) || (this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean)) {
           break label477;
         }
-        this.jdField_a_of_type_Ajru.a(false, 0);
+        this.jdField_a_of_type_Ajwj.a(false, 0);
         this.jdField_f_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
         break label477;
         label1221:
-        if ((this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2)) || (this.jdField_f_of_type_Boolean)) {
+        if ((this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2)) || (this.jdField_f_of_type_Boolean)) {
           break label625;
         }
-        this.jdField_a_of_type_Ajru.a(false, 1);
-        this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwj.a(false, 1);
+        this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
         break label625;
         localObject2 = a(m, (AVIOStruct)localObject1);
         paramGL10.c();
         if (localObject2 == null) {
           break label938;
         }
-        if (this.jdField_a_of_type_Ajrz.jdField_a_of_type_Int == 180)
+        if (this.jdField_a_of_type_Ajwo.jdField_a_of_type_Int == 180)
         {
-          a((azgp)localObject2, 0, false, (AVIOStruct)localObject1, 0, this.jdField_a_of_type_Azdt);
+          a((azky)localObject2, 0, false, (AVIOStruct)localObject1, 0, this.jdField_a_of_type_Azic);
           break label938;
         }
-        a((azgp)localObject2, 180, true, (AVIOStruct)localObject1, this.jdField_a_of_type_Ajrz.jdField_a_of_type_Int, this.jdField_a_of_type_Azdt);
+        a((azky)localObject2, 180, true, (AVIOStruct)localObject1, this.jdField_a_of_type_Ajwo.jdField_a_of_type_Int, this.jdField_a_of_type_Azic);
         break label938;
         label1365:
         paramGL10.c();
-        RMVideoStateMgr.a().a(3553, m, null, null, SystemClock.elapsedRealtimeNanos(), this.jdField_a_of_type_Azdt);
+        RMVideoStateMgr.a().a(3553, m, null, null, SystemClock.elapsedRealtimeNanos(), this.jdField_a_of_type_Azic);
         continue;
         label1391:
         if ((this.j) && (this.jdField_a_of_type_JavaLangString != null))
         {
-          ajnh.a("capture");
+          ajrw.a("capture");
           a(m);
-          ajnh.a("frame captured;");
+          ajrw.a("frame captured;");
         }
         paramGL10.c();
       }
@@ -700,7 +700,7 @@ public class CameraFilterGLView
       this.g = false;
     }
     i();
-    this.jdField_a_of_type_Azei.d();
+    this.jdField_a_of_type_Azir.d();
   }
   
   public void onResume()
@@ -708,25 +708,25 @@ public class CameraFilterGLView
     super.onResume();
     j();
     this.g = true;
-    ajob.a(this);
+    ajsq.a(this);
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_Azei != null) {
-      this.jdField_a_of_type_Azei.c(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    if (this.jdField_a_of_type_Azir != null) {
+      this.jdField_a_of_type_Azir.c(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
     }
-    if ((!this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Ajru != null))
+    if ((!this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Ajwj != null))
     {
-      this.jdField_a_of_type_Ajru.P();
+      this.jdField_a_of_type_Ajwj.P();
       this.jdField_d_of_type_Boolean = true;
     }
-    if ((!this.jdField_a_of_type_Ajrx.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Azei != null))
+    if ((!this.jdField_a_of_type_Ajwm.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Azir != null))
     {
       b();
-      this.jdField_a_of_type_Ajrx.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Ajwm.jdField_a_of_type_Boolean = true;
     }
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 33984);
   }
@@ -750,14 +750,14 @@ public class CameraFilterGLView
   
   public void setEnableBeauty(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Azei.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Azir.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setFilterListener(ajru paramajru)
+  public void setFilterListener(ajwj paramajwj)
   {
-    this.jdField_a_of_type_Ajru = paramajru;
-    if ((paramajru instanceof Handler.Callback)) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler((Handler.Callback)this.jdField_a_of_type_Ajru);
+    this.jdField_a_of_type_Ajwj = paramajwj;
+    if ((paramajwj instanceof Handler.Callback)) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler((Handler.Callback)this.jdField_a_of_type_Ajwj);
     }
   }
   
@@ -766,10 +766,10 @@ public class CameraFilterGLView
     if (QLog.isColorLevel()) {
       QLog.d("faceuu", 2, "setNeedWrite isRecord" + paramBoolean);
     }
-    this.jdField_a_of_type_Ajrz.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Ajwo.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setPreviewSize(int paramInt1, int paramInt2, ajow arg3)
+  public void setPreviewSize(int paramInt1, int paramInt2, ajtl arg3)
   {
     this.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
     this.jdField_d_of_type_Int = ???.jdField_d_of_type_Int;
@@ -802,16 +802,16 @@ public class CameraFilterGLView
   @TargetApi(17)
   public void setSurfaceCreated()
   {
-    this.jdField_a_of_type_Ajrx.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajrx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+    this.jdField_a_of_type_Ajwm.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajwm.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Boolean = RMVideoStateMgr.a().b(5);
-    this.jdField_a_of_type_Azei.c();
-    this.jdField_a_of_type_Azei.b();
-    this.jdField_a_of_type_Azgo.b();
-    this.jdField_a_of_type_Ajrx.jdField_a_of_type_Boolean = b();
-    this.jdField_a_of_type_Azei.a().a(this.jdField_a_of_type_Azha);
-    this.jdField_a_of_type_Azei.g();
+    this.jdField_a_of_type_Azir.c();
+    this.jdField_a_of_type_Azir.b();
+    this.jdField_a_of_type_Azkx.b();
+    this.jdField_a_of_type_Ajwm.jdField_a_of_type_Boolean = b();
+    this.jdField_a_of_type_Azir.a().a(this.jdField_a_of_type_Azlj);
+    this.jdField_a_of_type_Azir.g();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.h) {
@@ -824,12 +824,12 @@ public class CameraFilterGLView
   
   public void setSurfaceDestroyed()
   {
-    jdField_a_of_type_Azfr.a.a(null, -1, -1);
+    jdField_a_of_type_Azka.a.a(null, -1, -1);
     Message localMessage = Message.obtain();
     localMessage.what = 57381;
-    jdField_a_of_type_Azfr.a(localMessage);
+    jdField_a_of_type_Azka.a(localMessage);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Azgo.d();
+    this.jdField_a_of_type_Azkx.d();
     e();
     i();
     this.jdField_b_of_type_Boolean = false;
@@ -856,25 +856,25 @@ public class CameraFilterGLView
   
   public void setVideoFilter(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 0)
+    if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 0)
     {
       this.jdField_f_of_type_Boolean = false;
-      this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_Ajrw.c = paramString1;
-    this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ajrw.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Ajrw.b = paramString3;
+    this.jdField_a_of_type_Ajwl.c = paramString1;
+    this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Ajwl.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Ajwl.b = paramString3;
     GestureFilterManager.sGestureType = paramString2;
     GestureFilterManager.sGestureTips = paramString3;
     this.k = true;
-    paramString2 = azce.a() + GestureFilterManager.sGestureType + ".png";
+    paramString2 = azgn.a() + GestureFilterManager.sGestureType + ".png";
     if (QLog.isColorLevel()) {
-      QLog.d("CameraFilterGLView", 2, "mCurrentCategory:=" + this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int + ",mCurrentgestureType:=" + this.jdField_a_of_type_Ajrw.jdField_a_of_type_JavaLangString + ",mGestureWording=" + this.jdField_a_of_type_Ajrw.b + ":path =" + paramString2 + ";frameTime is" + PtvTemplateManager.h);
+      QLog.d("CameraFilterGLView", 2, "mCurrentCategory:=" + this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int + ",mCurrentgestureType:=" + this.jdField_a_of_type_Ajwl.jdField_a_of_type_JavaLangString + ",mGestureWording=" + this.jdField_a_of_type_Ajwl.b + ":path =" + paramString2 + ";frameTime is" + PtvTemplateManager.h);
     }
     setVideoFilter(paramString1, true, false);
     this.k = false;
@@ -882,25 +882,25 @@ public class CameraFilterGLView
   
   public void setVideoFilter(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (((!this.k) || (paramString == null)) && ((paramString == null) || (!paramString.equalsIgnoreCase(this.jdField_a_of_type_Ajrw.c))))
+    if (((!this.k) || (paramString == null)) && ((paramString == null) || (!paramString.equalsIgnoreCase(this.jdField_a_of_type_Ajwl.c))))
     {
-      if (((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 2)) && (this.jdField_a_of_type_Ajru != null))
+      if (((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 2)) && (this.jdField_a_of_type_Ajwj != null))
       {
-        this.jdField_a_of_type_Ajru.a(true, 1);
+        this.jdField_a_of_type_Ajwj.a(true, 1);
         this.jdField_f_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajrv.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajrv.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_Ajrv.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajry.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Ajry.jdField_c_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwk.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwk.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Ajwk.jdField_c_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwn.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Ajwn.jdField_c_of_type_Boolean = false;
       }
-      this.jdField_a_of_type_Ajrw.a();
+      this.jdField_a_of_type_Ajwl.a();
       GestureFilterManager.sGestureType = "";
       GestureFilterManager.sGestureTips = "";
     }
     int m = PTFaceAttr.PTExpression.UNKNOW.value;
     long l = SystemClock.elapsedRealtime();
-    azfq.a(1);
+    azjz.a(1);
     Object localObject2 = new File(paramString, "paramsback" + ".json");
     boolean bool2 = ((File)localObject2).exists();
     boolean[] arrayOfBoolean = new boolean[1];
@@ -911,7 +911,7 @@ public class CameraFilterGLView
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder().append("parseVideoMaterial back? : ");
-        if (ajli.jdField_a_of_type_Int == 2)
+        if (ajpx.jdField_a_of_type_Int == 2)
         {
           paramBoolean2 = true;
           QLog.d("CameraFilterGLView", 2, paramBoolean2);
@@ -919,17 +919,17 @@ public class CameraFilterGLView
       }
       else
       {
-        if (ajli.jdField_a_of_type_Int != 2) {
+        if (ajpx.jdField_a_of_type_Int != 2) {
           break label406;
         }
         paramBoolean2 = true;
         label270:
-        localObject1 = ajsn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(paramString, arrayOfBoolean, paramBoolean2);
+        localObject1 = ajxc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(paramString, arrayOfBoolean, paramBoolean2);
         if ((localObject1 == null) || ("".equals(localObject1))) {
           break label411;
         }
         label302:
-        if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 0) {
           break label465;
         }
         localObject1 = QQTemplateParser.parseVideoMaterial(paramString, (String)localObject1);
@@ -964,7 +964,7 @@ public class CameraFilterGLView
         label465:
         localObject2 = QQTemplateParser.parseVideoMaterial(paramString, (String)localObject1);
         ((VideoMaterial)localObject2).mHasGestureFilter = true;
-        if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 1) {
+        if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 1) {
           ((VideoMaterial)localObject2).isNeedDecodeFaceFilter = false;
         }
         localObject1 = localObject2;
@@ -987,7 +987,7 @@ public class CameraFilterGLView
         if ((localList != null) && (localList.size() > 0)) {
           paramString.addAll(localList);
         }
-        localObject2 = new AESticker((VideoMaterial)localObject1, this.jdField_a_of_type_Azei.a());
+        localObject2 = new AESticker((VideoMaterial)localObject1, this.jdField_a_of_type_Azir.a());
         if (VideoMaterialUtil.isActionTriggerType(m)) {
           break label1153;
         }
@@ -1002,22 +1002,22 @@ public class CameraFilterGLView
       if (QLog.isColorLevel()) {
         QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[setVideoFilter_parser=" + l / 1000.0D + "ms]");
       }
-      if ((this.jdField_a_of_type_Ajru != null) && (paramString != null))
+      if ((this.jdField_a_of_type_Ajwj != null) && (paramString != null))
       {
-        if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 0) {
           break label912;
         }
-        localObject2 = this.jdField_a_of_type_Ajru;
+        localObject2 = this.jdField_a_of_type_Ajwj;
         bool1 = paramString.mEnableFaceDetect;
-        if (this.jdField_a_of_type_Azei != null) {
+        if (this.jdField_a_of_type_Azir != null) {
           break label896;
         }
         paramBoolean2 = false;
         label751:
-        ((ajru)localObject2).a(bool1, paramBoolean2, 0);
-        if (this.jdField_a_of_type_Azei != null)
+        ((ajwj)localObject2).a(bool1, paramBoolean2, 0);
+        if (this.jdField_a_of_type_Azir != null)
         {
-          if (this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean) {
+          if (this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean) {
             break label907;
           }
           paramBoolean2 = true;
@@ -1027,11 +1027,11 @@ public class CameraFilterGLView
       }
       label786:
       int n = arrayOfBoolean[0];
-      if ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 2))
+      if ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 2))
       {
         paramBoolean2 = true;
         label816:
-        if ((this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2)) {
+        if ((this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2)) {
           break label1147;
         }
       }
@@ -1052,49 +1052,49 @@ public class CameraFilterGLView
         }
         VideoMemoryManager.getInstance().loadAllImages((VideoMaterial)localObject1);
         break;
-        paramBoolean2 = this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean;
+        paramBoolean2 = this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean;
         break label751;
         paramBoolean2 = false;
         break label781;
-        if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int == 1)
+        if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int == 1)
         {
-          localObject2 = this.jdField_a_of_type_Ajru;
-          if (this.jdField_a_of_type_Azei == null) {}
-          for (paramBoolean2 = false;; paramBoolean2 = this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean)
+          localObject2 = this.jdField_a_of_type_Ajwj;
+          if (this.jdField_a_of_type_Azir == null) {}
+          for (paramBoolean2 = false;; paramBoolean2 = this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean)
           {
-            ((ajru)localObject2).a(true, paramBoolean2, 1);
+            ((ajwj)localObject2).a(true, paramBoolean2, 1);
             this.jdField_f_of_type_Boolean = false;
             break;
           }
         }
-        if (this.jdField_a_of_type_Ajrw.jdField_a_of_type_Int != 2) {
+        if (this.jdField_a_of_type_Ajwl.jdField_a_of_type_Int != 2) {
           break label786;
         }
-        if ((this.jdField_a_of_type_Azei != null) && (this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean == true))
+        if ((this.jdField_a_of_type_Azir != null) && (this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean == true))
         {
-          localObject2 = this.jdField_a_of_type_Ajru;
-          if (this.jdField_a_of_type_Azei == null) {}
-          for (paramBoolean2 = false;; paramBoolean2 = this.jdField_a_of_type_Azei.jdField_f_of_type_Boolean)
+          localObject2 = this.jdField_a_of_type_Ajwj;
+          if (this.jdField_a_of_type_Azir == null) {}
+          for (paramBoolean2 = false;; paramBoolean2 = this.jdField_a_of_type_Azir.jdField_f_of_type_Boolean)
           {
-            ((ajru)localObject2).a(true, paramBoolean2, 1);
+            ((ajwj)localObject2).a(true, paramBoolean2, 1);
             break;
           }
         }
-        if ((this.jdField_a_of_type_Azei != null) && (this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean))
+        if ((this.jdField_a_of_type_Azir != null) && (this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean))
         {
-          this.jdField_a_of_type_Ajru.a(true, false, 1);
+          this.jdField_a_of_type_Ajwj.a(true, false, 1);
           break label786;
         }
-        localObject2 = this.jdField_a_of_type_Ajru;
+        localObject2 = this.jdField_a_of_type_Ajwj;
         bool1 = paramString.mEnableFaceDetect;
-        if (this.jdField_a_of_type_Azei == null)
+        if (this.jdField_a_of_type_Azir == null)
         {
           paramBoolean2 = false;
-          ((ajru)localObject2).a(bool1, paramBoolean2, 0);
-          if (this.jdField_a_of_type_Azei == null) {
+          ((ajwj)localObject2).a(bool1, paramBoolean2, 0);
+          if (this.jdField_a_of_type_Azir == null) {
             break label786;
           }
-          if (this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean) {
+          if (this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean) {
             break label1137;
           }
         }
@@ -1102,7 +1102,7 @@ public class CameraFilterGLView
         {
           this.jdField_f_of_type_Boolean = paramBoolean2;
           break;
-          paramBoolean2 = this.jdField_a_of_type_Azei.jdField_b_of_type_Boolean;
+          paramBoolean2 = this.jdField_a_of_type_Azir.jdField_b_of_type_Boolean;
           break label1088;
         }
         paramBoolean2 = false;
@@ -1126,7 +1126,7 @@ public class CameraFilterGLView
       QLog.d("face", 2, "surfaceDestroyed");
     }
     setSurfaceDestroyed();
-    azeu.b();
+    azjd.b();
     super.surfaceDestroyed(paramSurfaceHolder);
   }
 }

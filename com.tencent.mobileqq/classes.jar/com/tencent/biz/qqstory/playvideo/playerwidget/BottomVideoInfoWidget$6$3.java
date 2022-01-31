@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
-import vvc;
-import vvh;
+import vzl;
+import vzq;
 
 public class BottomVideoInfoWidget$6$3
   implements Runnable
 {
-  public BottomVideoInfoWidget$6$3(vvh paramvvh) {}
+  public BottomVideoInfoWidget$6$3(vzq paramvzq) {}
   
   public void run()
   {

@@ -1,30 +1,25 @@
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bkxs
-  extends BaseFilter
+  implements Animation.AnimationListener
 {
-  public bkxs()
+  public bkxs(AEMaterialPanel paramAEMaterialPanel) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform int isAlpha;\nvoid main() \n{\n  highp vec4 color = texture2D(inputImageTexture,textureCoordinate);\n  if(isAlpha == 1) {\n    gl_FragColor = vec4(1.0-color.a,1.0-color.a,1.0-color.a,1.0);\n  } else {\n    gl_FragColor = color;\n  }\n}");
-    addParam(new UniformParam.IntParam("isAlpha", 0));
+    if (AEMaterialPanel.a(this.a) != null)
+    {
+      AEMaterialPanel.a(this.a).setAlpha(1.0F);
+      AEMaterialPanel.a(this.a).setVisibility(8);
+    }
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    setPositions(new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 });
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(Frame paramFrame1, Frame paramFrame2)
-  {
-    a(-1.0F, 0.0F, 1.0F, -1.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 1));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
-    a(-1.0F, 1.0F, 1.0F, 0.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 0));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,19 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.view.View;
 
-public class agxs
-  extends BroadcastReceiver
+public abstract interface agxs
 {
-  public agxs(BlessActivity paramBlessActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      BlessActivity.a(this.a, true);
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

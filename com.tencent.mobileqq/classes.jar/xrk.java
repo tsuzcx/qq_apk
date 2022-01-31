@@ -1,16 +1,13 @@
-import android.view.View;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public abstract interface xrk
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface xrk
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  String a();
 }
 
 

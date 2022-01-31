@@ -1,16 +1,15 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class yfh
-  implements yfu<Object>
+  implements View.OnClickListener
 {
-  public yfh(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, yvn paramyvn) {}
+  public yfh(CommentBottomBar paramCommentBottomBar) {}
   
-  public void a(Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      this.jdField_a_of_type_Yvn.a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
-    }
+    this.a.b();
   }
 }
 

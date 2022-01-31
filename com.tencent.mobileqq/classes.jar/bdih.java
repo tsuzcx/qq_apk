@@ -1,378 +1,568 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.manager.Manager;
+import android.database.Cursor;
+import com.tencent.mobileqq.app.SQLiteDatabase;
 
 public class bdih
-  implements Manager
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  Lock jdField_a_of_type_JavaUtilConcurrentLocksLock;
-  boolean jdField_a_of_type_Boolean = false;
-  public ConcurrentHashMap<String, Integer> b;
-  boolean b;
-  public ConcurrentHashMap<String, Boolean> c;
-  boolean c;
-  
-  public bdih(QQAppInterface paramQQAppInterface)
+  public static StringBuilder a(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, int paramInt2, SQLiteDatabase paramSQLiteDatabase, String paramString3)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (bdih)paramQQAppInterface.getManager(31);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.b("message.ring.care", 0);
+    Object localObject = null;
+    int i = 0;
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if (paramInt1 <= 0) {
+      bool1 = false;
     }
-    return 0;
-  }
-  
-  public static int a(String paramString)
-  {
-    if (paramString.contains("message.group.policy.")) {
-      return 1;
+    long l = paramLong2;
+    if (paramLong2 < 0L) {
+      l = 9223372036854775807L;
     }
-    if (paramString.contains("message.group.ring")) {
-      return 2;
+    String str;
+    if (paramString3 != null)
+    {
+      str = paramString3;
+      if (paramString3.length() != 0) {}
     }
-    if (paramString.contains("message.group.vibrate")) {
-      return 3;
+    else
+    {
+      str = "";
     }
-    if (paramString.contains("message.ring.switch")) {
-      return 4;
+    if ((bool1) && (bool2))
+    {
+      paramString3 = new StringBuilder("select ");
+      paramString3.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString3.append(" , time as _index from ( select * from ");
+      paramString3.append(paramString2);
+      paramString3.append(" where time<");
+      paramString3.append(l);
+      paramString3.append(str);
+      paramString3.append(") order by time desc, _id desc");
+      paramSQLiteDatabase = paramSQLiteDatabase.a(paramString3.toString(), null);
+      if (paramSQLiteDatabase == null)
+      {
+        paramInt1 = i;
+        if (paramInt1 < paramInt2) {
+          break label233;
+        }
+        paramString3.append(" limit ");
+        paramString3.append(paramInt2);
+        paramString1 = new StringBuilder("select * from ( ");
+        paramString1.append(paramString3);
+        paramString1.append(") order by time desc, _id desc");
+      }
     }
-    if (paramString.contains("message.vibrate.switch")) {
-      return 5;
-    }
-    if (paramString.contains("sync.c2c_message")) {
-      return 6;
-    }
-    if (paramString.contains("message.ring.care")) {
-      return 7;
-    }
-    return -1;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (paramInt == 1) {
-      paramString = "message.group.policy." + paramString;
-    }
+    label233:
     do
     {
-      return paramString;
-      if (paramInt == 2) {
-        return "message.group.ring";
+      return paramString1;
+      paramInt1 = paramSQLiteDatabase.getCount();
+      paramSQLiteDatabase.close();
+      break;
+      paramSQLiteDatabase = new StringBuilder("select * from ( ");
+      paramSQLiteDatabase.append("select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id<=( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where time<( select time from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by time asc limit 1) order by time desc limit 1) ");
+      paramSQLiteDatabase.append(str);
+      paramSQLiteDatabase.append("order by _id desc limit ");
+      paramSQLiteDatabase.append(paramInt2 - paramInt1);
+      paramSQLiteDatabase.append(") ");
+      paramSQLiteDatabase.append("union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , time as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" where time<");
+      paramSQLiteDatabase.append(l);
+      paramSQLiteDatabase.append(str);
+      paramSQLiteDatabase.append(") order by _index desc, _id desc)");
+      return paramSQLiteDatabase;
+      if (bool2)
+      {
+        paramString2 = new StringBuilder("select * from ( select ");
+        paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+        paramString2.append(" , -1 as _index from ");
+        paramString2.append(paramString1);
+        paramString2.append(" where _id<");
+        paramString2.append(paramLong1);
+        paramString2.append(str);
+        paramString2.append(" order by _id desc limit ");
+        paramString2.append(paramInt2);
+        paramString2.append(") order by _id desc");
+        return paramString2;
       }
-      if (paramInt == 3) {
-        return "message.group.vibrate";
-      }
-      if (paramInt == 4) {
-        return "message.ring.switch";
-      }
-      if (paramInt == 5) {
-        return "message.vibrate.switch";
-      }
-      if (paramInt == 6) {
-        return "sync.c2c_message";
-      }
-    } while (paramInt != 7);
-    return "message.ring.care";
+      paramString1 = localObject;
+    } while (!bool1);
+    paramString1 = new StringBuilder("select * from ( select ");
+    paramString1.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+    paramString1.append(" , isValid, time as _index from ");
+    paramString1.append(paramString2);
+    paramString1.append(" where time<");
+    paramString1.append(l);
+    paramString1.append(str);
+    paramString1.append(") order by time desc, _id desc");
+    paramString1.append(" limit ");
+    paramString1.append(paramInt2);
+    return paramString1;
   }
   
-  private void a()
+  public static StringBuilder a(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, String paramString3, int paramInt2, SQLiteDatabase paramSQLiteDatabase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "uploadNewValue...");
+    Object localObject = null;
+    int i = 0;
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if (paramInt1 <= 0) {
+      bool1 = false;
     }
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning())) {
-      if (QLog.isColorLevel())
+    String str;
+    if (paramString3 != null)
+    {
+      str = paramString3;
+      if (paramString3.length() != 0) {}
+    }
+    else
+    {
+      str = "";
+    }
+    if ((bool1) && (bool2))
+    {
+      paramString3 = new StringBuilder("select ");
+      paramString3.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString3.append(" , shmsgseq as _index from ( select * from ");
+      paramString3.append(paramString2);
+      paramString3.append(" where shmsgseq<=");
+      paramString3.append(paramLong2);
+      paramString3.append(str);
+      paramString3.append(") order by shmsgseq desc , _id desc");
+      paramSQLiteDatabase = paramSQLiteDatabase.a(paramString3.toString(), null);
+      if (paramSQLiteDatabase == null)
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("uploadNewValue return directly, app.isRunning=");
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          break label75;
+        paramInt1 = i;
+        if (paramInt1 < paramInt2) {
+          break label224;
         }
-        localObject = "null";
-        QLog.d("RoamSetting", 2, localObject);
+        paramString3.append(" limit ");
+        paramString3.append(paramInt2);
+        paramString1 = new StringBuilder("select * from ( ");
+        paramString1.append(paramString3);
+        paramString1.append(") ");
+        paramString1.append(" order by shmsgseq desc , _id desc");
       }
     }
-    label75:
-    label205:
+    label224:
+    do
+    {
+      return paramString1;
+      paramInt1 = paramSQLiteDatabase.getCount();
+      paramSQLiteDatabase.close();
+      break;
+      paramString3 = new StringBuilder("select * from ( select ");
+      paramString3.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramString3.append(" , -1 as _index from ( select * from ");
+      paramString3.append(paramString1);
+      paramString3.append(" where _id<=( select _id from ");
+      paramString3.append(paramString1);
+      paramString3.append(" where shmsgseq<( select shmsgseq from ");
+      paramString3.append(paramString2);
+      paramString3.append(" order by shmsgseq asc limit 1) and shmsgseq>0 order by shmsgseq desc , _id desc limit 1) ");
+      paramString3.append(str);
+      paramString3.append(" order by _id desc limit ");
+      paramString3.append(paramInt2 - paramInt1);
+      paramString3.append(") union select ");
+      paramString3.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString3.append(" , shmsgseq as _index from ( select * from ");
+      paramString3.append(paramString2);
+      paramString3.append(" where shmsgseq<=");
+      paramString3.append(paramLong2);
+      paramString3.append(str);
+      paramString3.append(") order by _index asc, _id asc)");
+      return paramString3;
+      if (bool2)
+      {
+        paramString2 = new StringBuilder("select * from ( select ");
+        paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+        paramString2.append(" , -1 as _index from ");
+        paramString2.append(paramString1);
+        paramString2.append(" where _id<");
+        paramString2.append(paramLong1);
+        paramString2.append(str);
+        paramString2.append(" order by _id desc limit ");
+        paramString2.append(paramInt2);
+        paramString2.append(") ");
+        paramString2.append(" order by _id asc");
+        return paramString2;
+      }
+      paramString1 = localObject;
+    } while (!bool1);
+    paramString1 = new StringBuilder("select * from ( select ");
+    paramString1.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+    paramString1.append(" , shmsgseq as _index from ");
+    paramString1.append(paramString2);
+    paramString1.append(" where shmsgseq<=");
+    paramString1.append(paramLong2);
+    paramString1.append(str);
+    paramString1.append(" order by shmsgseq desc , _id desc limit ");
+    paramString1.append(paramInt2);
+    paramString1.append(") ");
+    paramString1.append(" order by shmsgseq asc , _id asc");
+    return paramString1;
+  }
+  
+  public static StringBuilder a(String paramString1, String paramString2, SQLiteDatabase paramSQLiteDatabase)
+  {
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if ((bool1) && (bool2))
+    {
+      paramSQLiteDatabase = new StringBuilder("select * from ( select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id<=( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where shmsgseq<( select shmsgseq from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by shmsgseq asc limit 1) and shmsgseq>0 order by shmsgseq desc , _id desc limit 1)) union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , shmsgseq as _index from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by _index asc, _id asc)");
+      return paramSQLiteDatabase;
+    }
+    if (bool2)
+    {
+      paramString2 = new StringBuilder("select * from ( select ");
+      paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramString2.append(" , -1 as _index from ");
+      paramString2.append(paramString1);
+      paramString2.append(" order by _id asc)");
+      return paramString2;
+    }
+    if (bool1)
+    {
+      paramString1 = new StringBuilder("select * from ( select ");
+      paramString1.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString1.append(" , shmsgseq as _index from ");
+      paramString1.append(paramString2);
+      paramString1.append(" order by shmsgseq asc , _id asc)");
+      return paramString1;
+    }
+    return null;
+  }
+  
+  public static StringBuilder a(String paramString1, String paramString2, SQLiteDatabase paramSQLiteDatabase, String paramString3)
+  {
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if ((bool1) && (bool2))
+    {
+      paramSQLiteDatabase = new StringBuilder("select * from ( select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id<=( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where shmsgseq<( select shmsgseq from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by shmsgseq asc limit 1)  and shmsgseq>0 order by shmsgseq desc , _id desc limit 1)) union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , shmsgseq as _index from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by _index asc, _id asc)");
+      paramSQLiteDatabase.append(paramString3);
+      return paramSQLiteDatabase;
+    }
+    if (bool2)
+    {
+      paramString2 = new StringBuilder("select ");
+      paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramString2.append(" , -1 as _index from ");
+      paramString2.append(paramString1);
+      paramString2.append(paramString3);
+      paramString2.append(" order by _id asc");
+      return paramString2;
+    }
+    if (bool1)
+    {
+      paramString1 = new StringBuilder("select ");
+      paramString1.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString1.append(" , shmsgseq as _index from ");
+      paramString1.append(paramString2);
+      paramString1.append(paramString3);
+      paramString1.append(" order by shmsgseq asc");
+      return paramString1;
+    }
+    return null;
+  }
+  
+  public static StringBuilder a(String paramString1, String paramString2, SQLiteDatabase paramSQLiteDatabase, String paramString3, String paramString4)
+  {
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if ((bool1) && (bool2))
+    {
+      paramSQLiteDatabase = new StringBuilder("select * from ( select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id <= ( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where time < ( select time from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by time asc limit 1 ) order by time desc limit 1 ) ) union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , time as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by time asc )  order by _index ) ");
+      if ((paramString3 != null) && (paramString3.length() > 0))
+      {
+        paramSQLiteDatabase.append(" where ");
+        paramSQLiteDatabase.append(paramString3);
+      }
+      paramString1 = paramSQLiteDatabase;
+      if (paramString4 != null)
+      {
+        paramString1 = paramSQLiteDatabase;
+        if (paramString4.length() > 0)
+        {
+          paramSQLiteDatabase.append(" order by ");
+          paramSQLiteDatabase.append(paramString4);
+          paramString1 = paramSQLiteDatabase;
+        }
+      }
+    }
     do
     {
       do
       {
-        return;
-        localObject = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning());
-        break;
-        if (this.jdField_b_of_type_Boolean)
+        do
         {
-          if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_a_of_type_Long + 45000L >= System.currentTimeMillis())) {
-            break label205;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RoamSetting", 2, "uploadNewValue state_allLoading=" + this.jdField_b_of_type_Boolean + " more than 45s, forced to stop");
-          }
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_b_of_type_Boolean = false;
-        }
-        b();
-        localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-      } while (localObject == null);
-      ((FriendListHandler)localObject).a(a().a(), this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("RoamSetting", 2, "uploadNewValue but return, state_allLoading=" + this.jdField_b_of_type_Boolean + ", time_allLoading less than 60s, waitting...");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface = (bdih)paramQQAppInterface.getManager(31);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a("message.ring.care", Integer.valueOf(paramInt));
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoamSetting", 2, "copyNewValue2Uploading, change state_newValue=false, mapUploading:" + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.toString());
-      }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    if (paramString == null) {
-      return 1;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    return ((Integer)a(localArrayList, paramInt).get(paramString)).intValue();
-  }
-  
-  alxj a()
-  {
-    return (alxj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(40);
-  }
-  
-  public Map<String, Integer> a(List<String> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return new HashMap();
-    }
-    Map localMap = bdbx.a().a(paramList, paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
-    {
-      try
-      {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          StringBuilder localStringBuilder = new StringBuilder(40);
-          localStringBuilder.append("message.group.policy.");
-          localStringBuilder.append(str);
-          str = localStringBuilder.toString();
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+          do
           {
-            localMap.put(str, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).intValue()));
-            continue;
-          }
+            return paramString1;
+            if (!bool2) {
+              break;
+            }
+            paramString2 = new StringBuilder("select t.");
+            paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+            paramString2.append(" , -1 as _index from ");
+            paramString2.append(paramString1);
+            paramString2.append(" t");
+            if ((paramString3 != null) && (paramString3.length() > 0))
+            {
+              paramString2.append(" where ");
+              paramString2.append(paramString3);
+            }
+            paramString2.append(" order by _id asc");
+            paramString1 = paramString2;
+          } while (paramString4 == null);
+          paramString1 = paramString2;
+        } while (paramString4.length() <= 0);
+        paramString2.append(",");
+        paramString2.append(paramString4);
+        return paramString2;
+        if (!bool1) {
+          break;
         }
-      }
-      catch (OutOfMemoryError paramList)
-      {
-        String str;
-        if (QLog.isColorLevel()) {
-          QLog.e("RoamSetting", 2, "getTroopMsgFilterList OutOfMemoryError");
+        paramSQLiteDatabase = new StringBuilder("select t.");
+        paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+        paramSQLiteDatabase.append(" , time as _index from ");
+        paramSQLiteDatabase.append(paramString2);
+        paramSQLiteDatabase.append(" t");
+        if ((paramString3 != null) && (paramString3.length() > 0))
+        {
+          paramSQLiteDatabase.append(" where ");
+          paramSQLiteDatabase.append(paramString3);
         }
-        return localMap;
-        if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-          continue;
-        }
-        localMap.put(str, Integer.valueOf(((Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).intValue()));
-        continue;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
+        paramString1 = paramSQLiteDatabase;
+      } while (paramString4 == null);
+      paramString1 = paramSQLiteDatabase;
+    } while (paramString4.length() <= 0);
+    paramSQLiteDatabase.append(",");
+    paramSQLiteDatabase.append(paramString4);
+    return paramSQLiteDatabase;
+    return null;
   }
   
-  public void a(int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, FriendListHandler paramFriendListHandler)
+  public static StringBuilder a(String paramString1, String paramString2, SQLiteDatabase paramSQLiteDatabase, String paramString3, String paramString4, String paramString5)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "loadRoamSettingsByPage,localRevision=" + paramInt1 + " offset=" + paramLong + " respRevision=" + paramInt2 + " needTroopSettings=" + paramBoolean + " thread=" + Thread.currentThread().getName());
-    }
-    if (paramFriendListHandler == null) {
-      paramFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-    }
-    for (;;)
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if ((bool1) && (bool2))
     {
-      paramFriendListHandler.a(paramInt1, paramLong, paramInt2, paramBoolean);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
-  }
-  
-  public void a(String paramString, Integer paramInteger)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramInteger);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoamSetting", 2, "state_newValue=" + this.jdField_c_of_type_Boolean + " setRoamSettingNewValue, path=" + paramString + " value=" + paramInteger + " uploadingCount=" + this.jdField_a_of_type_Int);
+      paramSQLiteDatabase = new StringBuilder("select * from ( select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id <= ( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where time < ( select time from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by time asc limit 1 ) order by time desc limit 1 ) ) union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , time as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by time asc )  order by _index ) ");
+      if ((paramString3 != null) && (paramString3.length() > 0)) {
+        paramSQLiteDatabase.append(paramString3);
       }
-      a();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public void a(boolean paramBoolean, FriendListHandler paramFriendListHandler)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning())) {
-      if (QLog.isColorLevel())
+      if ((paramString4 != null) && (paramString4.length() > 0))
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("loadAllRoamSetting return directly, app.isRunning=");
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          break label64;
+        paramSQLiteDatabase.append(" where ");
+        paramSQLiteDatabase.append(paramString4);
+      }
+      paramString1 = paramSQLiteDatabase;
+      if (paramString5 != null)
+      {
+        paramString1 = paramSQLiteDatabase;
+        if (paramString5.length() > 0)
+        {
+          paramSQLiteDatabase.append(" order by ");
+          paramSQLiteDatabase.append(paramString5);
+          paramString1 = paramSQLiteDatabase;
         }
-        paramFriendListHandler = "null";
-        QLog.d("RoamSetting", 2, paramFriendListHandler);
       }
     }
-    label64:
     do
     {
-      return;
-      paramFriendListHandler = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning());
-      break;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label121;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("RoamSetting", 2, "loadAllRoamSettings but return, state_allUpdating=" + this.jdField_b_of_type_Boolean);
-    return;
-    label121:
-    this.jdField_b_of_type_Boolean = true;
-    int i = a().a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "loadAllRoamSettings, localRevision=" + i + " needTroopSettings=" + paramBoolean + " thread=" + Thread.currentThread().getName());
-    }
-    a(i, 0L, -1, paramBoolean, paramFriendListHandler);
+      do
+      {
+        do
+        {
+          do
+          {
+            return paramString1;
+            if (!bool2) {
+              break;
+            }
+            paramString2 = new StringBuilder("select ");
+            paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+            paramString2.append(" , 1 as isValid, -1 as _index from ");
+            paramString2.append(paramString1);
+            if ((paramString3 != null) && (paramString3.length() > 0)) {
+              paramString2.append(paramString3);
+            }
+            if ((paramString4 != null) && (paramString4.length() > 0))
+            {
+              paramString2.append(" where ");
+              paramString2.append(paramString4);
+            }
+            paramString2.append(" order by _id asc");
+            paramString1 = paramString2;
+          } while (paramString5 == null);
+          paramString1 = paramString2;
+        } while (paramString5.length() <= 0);
+        paramString2.append(",");
+        paramString2.append(paramString5);
+        return paramString2;
+        if (!bool1) {
+          break;
+        }
+        paramSQLiteDatabase = new StringBuilder("select ");
+        paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+        paramSQLiteDatabase.append(" , time as _index from ");
+        paramSQLiteDatabase.append(paramString2);
+        if ((paramString3 != null) && (paramString3.length() > 0)) {
+          paramSQLiteDatabase.append(paramString3);
+        }
+        if ((paramString4 != null) && (paramString4.length() > 0))
+        {
+          paramSQLiteDatabase.append(" where ");
+          paramSQLiteDatabase.append(paramString4);
+        }
+        paramSQLiteDatabase.append(" order by time asc");
+        paramString1 = paramSQLiteDatabase;
+      } while (paramString5 == null);
+      paramString1 = paramSQLiteDatabase;
+    } while (paramString5.length() <= 0);
+    paramSQLiteDatabase.append(",");
+    paramSQLiteDatabase.append(paramString5);
+    return paramSQLiteDatabase;
+    return null;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public static boolean a(String paramString, SQLiteDatabase paramSQLiteDatabase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "onGetAllSettingsFinish isSucc=" + paramBoolean1 + " next=" + paramBoolean2);
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    if ((paramBoolean2) && (this.jdField_c_of_type_Boolean)) {
-      a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int < 3;
-  }
-  
-  public int b(String paramString, int paramInt)
-  {
+    boolean bool4 = false;
+    boolean bool3 = false;
     if (paramString == null) {
-      return paramInt;
+      return false;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    if ("Sqlite_master".equalsIgnoreCase(paramString)) {
+      return true;
+    }
+    boolean bool2 = bool4;
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      paramString = paramSQLiteDatabase.a("select count(*) as c from Sqlite_master  where type ='table' and name =? ", new String[] { paramString.trim() });
+      boolean bool1 = bool3;
+      bool2 = bool4;
+      if (paramString.moveToNext())
       {
-        paramInt = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
-        return paramInt;
+        bool1 = bool3;
+        bool2 = bool4;
+        if (paramString.getInt(0) > 0) {
+          bool1 = true;
+        }
       }
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-      {
-        paramInt = ((Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
-        return paramInt;
-      }
-      return a().a(paramString, paramInt);
+      bool2 = bool1;
+      paramString.close();
+      return bool1;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
+    catch (Exception paramString) {}
+    return bool2;
   }
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public static StringBuilder b(String paramString1, String paramString2, SQLiteDatabase paramSQLiteDatabase, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "onUploadRomingSettingsFinish isSuccess=" + paramBoolean1 + " reload=" + paramBoolean2);
+    boolean bool1 = a(paramString2, paramSQLiteDatabase);
+    boolean bool2 = a(paramString1, paramSQLiteDatabase);
+    if ((bool1) && (bool2))
+    {
+      paramSQLiteDatabase = new StringBuilder("select * from ( select * from ( select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramSQLiteDatabase.append(" , -1 as _index from ( select * from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where _id<=( select _id from ");
+      paramSQLiteDatabase.append(paramString1);
+      paramSQLiteDatabase.append(" where shmsgseq<( select shmsgseq from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by shmsgseq asc limit 1)  and shmsgseq>0 order by shmsgseq desc , _id desc limit 1)) union select ");
+      paramSQLiteDatabase.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramSQLiteDatabase.append(" , shmsgseq as _index from ");
+      paramSQLiteDatabase.append(paramString2);
+      paramSQLiteDatabase.append(" order by _index asc, _id asc)");
+      paramSQLiteDatabase.append(paramString3);
+      paramSQLiteDatabase.append(" )");
+      return paramSQLiteDatabase;
     }
-    c();
-    if ((paramBoolean1) && (paramBoolean2)) {
-      a(true, null);
+    if (bool2)
+    {
+      paramString2 = new StringBuilder("select * from ( select * from ( select ");
+      paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, msg, NULL as msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, 0 as versionCode, NULL as longMsgIndex, NULL as longMsgId, NULL as longMsgCount, 1 as isValid, NULL as msgUid, NULL as vipBubbleID, 0 as uniseq, 0 as sendFailCode, NULL as extStr, 0 as extInt, 0 as extLong");
+      paramString2.append(" , -1 as _index from ");
+      paramString2.append(paramString1);
+      paramString2.append(" order by _id asc)");
+      paramString2.append(paramString3);
+      paramString2.append(" )");
+      return paramString2;
     }
+    if (bool1)
+    {
+      paramString1 = new StringBuilder("select * from ( select ");
+      paramString1.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString1.append(" , shmsgseq as _index from ");
+      paramString1.append(paramString2);
+      paramString1.append(paramString3);
+      paramString1.append(" )");
+      return paramString1;
+    }
+    return null;
   }
-  
-  public void onDestroy() {}
 }
 
 

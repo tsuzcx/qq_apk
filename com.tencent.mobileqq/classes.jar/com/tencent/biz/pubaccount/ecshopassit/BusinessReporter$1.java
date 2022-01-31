@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.ecshopassit;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import ntv;
-import yyp;
+import zde;
 
 public final class BusinessReporter$1
   implements Runnable
@@ -18,7 +18,7 @@ public final class BusinessReporter$1
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "JD_REPORT" });
       WebViewPlugin localWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("JD_REPORT");
       if (localWebViewPlugin != null) {
-        ((yyp)localWebViewPlugin).b(this.jdField_a_of_type_JavaLangString);
+        ((zde)localWebViewPlugin).b(this.jdField_a_of_type_JavaLangString);
       }
     }
   }

@@ -4,8 +4,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import tvm;
-import xod;
+import tvw;
 
 class QCirclePersonalBaseBottomFragment$2
   implements Runnable
@@ -17,7 +16,7 @@ class QCirclePersonalBaseBottomFragment$2
     if (this.a != null)
     {
       ViewGroup.LayoutParams localLayoutParams = this.this$0.a.a().getLayoutParams();
-      localLayoutParams.height = (ImmersiveUtils.b() - this.a.getHeight() - xod.a(this.this$0.getActivity(), 98.0F));
+      localLayoutParams.height = (ImmersiveUtils.b() - this.a.getHeight() - ImmersiveUtils.a(98.0F));
       this.this$0.a.a().setLayoutParams(localLayoutParams);
     }
   }

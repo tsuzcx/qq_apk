@@ -1,56 +1,49 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.2;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class aeyo
-  implements afal
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private aeyq jdField_a_of_type_Aeyq;
-  private alxa jdField_a_of_type_Alxa = new aeyp(this);
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public aeyo(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  aeyo(BaseChatPie paramBaseChatPie)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      if (localObject != null) {}
-      try
+      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bdnn.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
+        this.a.setSendEnable(true);
+      }
+      if (VoiceTextEditPanel.a(this.a) != null) {
+        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
+      }
+      VoiceTextEditPanel.a(this.a).setText(2131719782);
+      if (this.a.a())
       {
-        ((Runnable)localObject).run();
+        azqs.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
         return;
       }
-      catch (Exception localException)
-      {
-        QLog.e("AIOIconChangeByTimeHelper", 1, localException, new Object[0]);
-      }
-      this.jdField_a_of_type_Aeyq = new aeyq(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, null);
-      aeyq.a(this.jdField_a_of_type_Aeyq);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.addObserver(this.jdField_a_of_type_Alxa);
-      localObject = new AIOIconChangeByTimeHelper.1(this);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.removeObserver(this.jdField_a_of_type_Alxa);
-      localObject = new AIOIconChangeByTimeHelper.2(this);
+      azqs.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
+      return;
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 6, 11 };
+    if (VoiceTextEditPanel.a(this.a) != null) {
+      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
+    }
+    VoiceTextEditPanel.a(this.a).setText(2131719780);
+    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bdnn.a(VoiceTextEditPanel.a(this.a)))) {
+      this.a.setSendEnable(false);
+    }
+    if (this.a.a())
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
+      return;
+    }
+    azqs.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import urr;
-import usd;
+import uwa;
+import uwm;
 
 class QQStoryBaseFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class QQStoryBaseFragment$1
   
   public void run()
   {
-    ((usd)urr.a(2)).c();
+    ((uwm)uwa.a(2)).c();
   }
 }
 

@@ -1,95 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.HttpURLConnection;
 
 public class aprk
 {
-  public static long a;
-  public int a;
+  public final int a;
+  public final File a;
+  public final String a;
+  public HttpURLConnection a;
   public boolean a;
-  public long b;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  static
+  public aprk(String paramString, File paramFile, int paramInt)
   {
-    jdField_a_of_type_Long = 86400000L;
-  }
-  
-  public static aprk a(String paramString, boolean paramBoolean)
-  {
-    Object localObject = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    paramString = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4).getString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramString, null);
-    if (paramString != null) {}
-    do
-    {
-      try
-      {
-        paramString = new aprk().a(new JSONObject(paramString));
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("EmoticonRecDressup", 1, "getEmotionRecommend failed", paramString);
-      }
-      paramString = localObject;
-    } while (!paramBoolean);
-    paramString = new aprk();
-    paramString.jdField_a_of_type_Boolean = true;
-    return paramString;
-  }
-  
-  private aprk a(JSONObject paramJSONObject)
-  {
-    this.b = paramJSONObject.optLong("0");
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("1");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("2");
-    return this;
-  }
-  
-  public static void a(long paramLong)
-  {
-    jdField_a_of_type_Long = 1000L * paramLong;
-    QLog.i("EmoticonRecDressup", 1, "EmotionPanelViewPagerAdapter.RECOMMEND_EXPIRED_TIME update to " + jdField_a_of_type_Long);
-  }
-  
-  public void a(int paramInt)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    long l1 = localSharedPreferences.getLong("createTime", 0L);
-    long l2 = System.currentTimeMillis();
-    if (l2 - l1 > 2592000000L)
-    {
-      localEditor.clear();
-      localEditor.putLong("createTime", l2);
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.jdField_a_of_type_JavaLangString))) {
+      this.jdField_b_of_type_Boolean = true;
     }
-    this.b = l2;
-    localEditor.putString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramInt, toString());
-    localEditor.commit();
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String toString()
+  public String a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("0", this.b);
-      localJSONObject.put("1", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("2", this.jdField_a_of_type_Int);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("EmoticonRecDressup", 1, "toString failed", localJSONException);
-      }
-    }
+    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
+    this.h = null;
+    this.i = null;
+    this.g = null;
+    this.k = null;
+    this.j = null;
+    this.d = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

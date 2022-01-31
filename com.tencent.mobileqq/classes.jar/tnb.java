@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 class tnb
-  implements bhqd
+  implements bhuk
 {
   tnb(tna paramtna, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
@@ -12,7 +12,7 @@ class tnb
   {
     if (!ndk.a(tna.a(this.jdField_a_of_type_Tna)))
     {
-      bfhq.a().a(2131721476);
+      bflz.a().a(2131721489);
       return;
     }
     tna.a(this.jdField_a_of_type_Tna).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);

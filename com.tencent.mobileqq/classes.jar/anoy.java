@@ -1,81 +1,80 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class anoy
-  extends anpa
+  implements alpg
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  boolean jdField_a_of_type_Boolean = false;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  private float[] d = new float[3];
-  private float[] e = new float[3];
-  private float[] f = new float[16];
+  public anoy(ArkMessageServerLogic.1 param1) {}
   
-  public anoy(Context paramContext, int paramInt, SensorManager paramSensorManager, anos paramanos)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super(paramContext, paramInt, paramSensorManager, paramanos);
-    paramContext = paramSensorManager.getDefaultSensor(1);
-    if (paramContext != null)
+    if ((paramBoolean) && (paramObject != null))
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(1));
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (this.jdField_a_of_type_Anos == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Anos.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Anos.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Anos.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Anos.updateSensor(paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
-      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
-      this.d[1] = (-(float)Math.atan2(f2, f3));
-      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
-      if (this.jdField_a_of_type_Boolean) {
-        this.d = anot.a(this.d, this.e);
+      localObject1 = new ArkAppPanelList.RespBody();
+      try
+      {
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        {
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
+          }
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
+            {
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new anoi((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
+              }
+            }
+          }
+        }
       }
-      System.arraycopy(this.d, 0, this.e, 0, 3);
-      this.jdField_a_of_type_Boolean = true;
-      anou.a(anou.a(this.d), this.f);
-      if (this.jdField_a_of_type_Int != 1) {
-        super.a(this.f);
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
+        }
       }
     }
-    else
+    label234:
+    while (this.a.a == null)
     {
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
       return;
     }
-    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
+    this.a.a.b(null);
   }
 }
 

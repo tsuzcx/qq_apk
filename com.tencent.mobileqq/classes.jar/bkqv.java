@@ -1,31 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 class bkqv
-  implements Animation.AnimationListener
+  extends avvd
 {
-  bkqv(bkqr parambkqr) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((bkqr.a(this.a) != null) && (!bkqr.a(this.a)))
-    {
-      bkqr.a(this.a).setAlpha(1.0F);
-      bkqr.a(this.a).setVisibility(4);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      aiqy.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
     }
-    if (bkqr.b(this.a) != null)
-    {
-      bkqr.c(this.a).a(327683, new Object[0]);
-      bkqr.d(this.a).a(196612, new Object[0]);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bkqr.a(this.a).a().a(true, 150);
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(bkqs.a);
   }
 }
 

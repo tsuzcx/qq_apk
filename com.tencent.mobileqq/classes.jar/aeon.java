@@ -1,34 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import java.io.File;
+import java.util.Comparator;
 
-public class aeon
-  implements Animator.AnimatorListener
+class aeon
+  implements Comparator<File>
 {
-  public aeon(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  aeon(aeom paramaeom) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(0.0F);
-      this.a.b.setTranslationX(this.a.f);
-      return;
+    long l = aeom.a(this.a, paramFile1) - aeom.a(this.a, paramFile2);
+    if (l > 0L) {
+      return 1;
     }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f);
-    this.a.b.setTranslationX(0.0F);
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean equals(Object paramObject)
   {
-    onAnimationCancel(paramAnimator);
-    IntimateTitleSwitchView.f(this.a);
+    return true;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

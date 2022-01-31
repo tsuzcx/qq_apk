@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tribe.async.async.JobSegment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class absx
-  extends atzz<JobSegment>
+  implements Comparator<MessageRecord>
 {
-  absx(absw paramabsw, JobSegment paramJobSegment)
-  {
-    super(paramJobSegment);
-  }
+  absx(absu paramabsu) {}
   
-  public void a(JobSegment paramJobSegment, boolean paramBoolean, atzw paramatzw)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramBoolean)
-    {
-      absw.a(this.a, paramatzw);
-      return;
-    }
-    absw.a(this.a, new AppInfoError(5, "appInfo error"));
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

@@ -1,42 +1,35 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class alub
-  extends ContentObserver
+  extends BroadcastReceiver
 {
-  WeakReference<PhoneContactManagerImp> a;
+  public alub(GuardManager paramGuardManager) {}
   
-  public alub(Handler paramHandler)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramHandler);
-  }
-  
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+      QLog.d("GuardManager", 2, paramContext);
     }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.g = true;
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
       }
+      anov.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
       return;
     }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    anov.a();
   }
 }
 

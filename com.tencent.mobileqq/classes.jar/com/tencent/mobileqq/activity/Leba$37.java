@@ -17,7 +17,7 @@ class Leba$37
     //   8: invokevirtual 29	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   11: bipush 36
     //   13: invokevirtual 35	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   16: checkcast 37	axho
+    //   16: checkcast 37	axlx
     //   19: astore 5
     //   21: new 39	java/util/ArrayList
     //   24: dup
@@ -25,7 +25,7 @@ class Leba$37
     //   28: astore 6
     //   30: aload 5
     //   32: ldc 42
-    //   34: invokevirtual 46	axho:a	(Ljava/lang/String;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
+    //   34: invokevirtual 46	axlx:a	(Ljava/lang/String;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
     //   37: astore 7
     //   39: aload 7
     //   41: ifnonnull +4 -> 45
@@ -33,7 +33,7 @@ class Leba$37
     //   45: aload 5
     //   47: aconst_null
     //   48: iconst_1
-    //   49: invokevirtual 49	axho:a	(Laxhr;Z)I
+    //   49: invokevirtual 49	axlx:a	(Laxma;Z)I
     //   52: istore_1
     //   53: aload 7
     //   55: getfield 55	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:iNewFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;

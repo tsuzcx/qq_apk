@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-public class bcfn
-  implements View.OnClickListener
+public abstract class bcfn<VH extends RecyclerView.ViewHolder, D extends bcdy>
+  extends bceu<VH, D>
 {
-  public bcfn(BulkSendMessageFragment paramBulkSendMessageFragment) {}
-  
-  public void onClick(View paramView)
+  public bcfn(XMediaEditor paramXMediaEditor)
   {
-    BulkSendMessageFragment.a(this.a);
+    super(paramXMediaEditor);
   }
+  
+  public abstract void a(D paramD);
 }
 
 

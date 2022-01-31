@@ -1,10 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
-public final class ajzl
-  implements DialogInterface.OnClickListener
+public class ajzl
+  implements bbok
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ajzl(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  
+  public ArrayList<ResultRecord> a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
+  }
+  
+  public void a()
+  {
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    {
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Bboi.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Bboi.c();
+        }
+      }
+    }
+  }
+  
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
+  }
 }
 
 

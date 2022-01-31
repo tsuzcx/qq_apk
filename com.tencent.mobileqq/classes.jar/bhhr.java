@@ -1,43 +1,8 @@
-import java.util.Iterator;
-import java.util.List;
-
-public class bhhr
+public abstract interface bhhr
 {
-  bhhn jdField_a_of_type_Bhhn;
-  List<bhhn> jdField_a_of_type_JavaUtilList;
+  public abstract String a(String paramString1, String paramString2, int paramInt);
   
-  bhhr(bhhn parambhhn, List<bhhn> paramList)
-  {
-    this.jdField_a_of_type_Bhhn = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      } while (((bhhn)localIterator.next()).d());
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_Bhhn.g();
-      }
-      return;
-    }
-  }
-  
-  public boolean a(bhhn parambhhn)
-  {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(parambhhn));
-  }
+  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
 }
 
 

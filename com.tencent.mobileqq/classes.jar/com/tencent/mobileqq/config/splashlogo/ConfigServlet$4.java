@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aofs;
-import aova;
-import aovm;
+import aokb;
+import aozj;
+import aozv;
 
 public class ConfigServlet$4
   implements Runnable
 {
-  public ConfigServlet$4(aova paramaova, String paramString) {}
+  public ConfigServlet$4(aozj paramaozj, String paramString) {}
   
   public void run()
   {
-    aofs.a.c(this.a);
+    aokb.a.c(this.a);
   }
 }
 

@@ -1,34 +1,78 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class blwm
-  extends AnimatorListenerAdapter
 {
-  public blwm(QIMCircleProgress paramQIMCircleProgress) {}
+  public int a;
+  public ArrayList<blwn> a;
+  public ArrayList<blwn> b = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public blwm()
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static blwm a(String paramString)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
+    if (TextUtils.isEmpty(paramString)) {
+      return new blwm();
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
+    localblwm = new blwm();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localblwm.jdField_a_of_type_Int = paramString.getInt("levelLimit");
+      paramString = paramString.getJSONArray("levelCfg");
+      int j = 0;
+      int i = 0;
+      while (j < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(j);
+        int i1 = localJSONObject.getInt("level");
+        int k = 0;
+        while (k < blwl.a.length)
+        {
+          JSONArray localJSONArray = localJSONObject.optJSONArray(blwl.a[k]);
+          int n = i;
+          if (localJSONArray != null)
+          {
+            int m = 0;
+            for (;;)
+            {
+              n = i;
+              if (m >= localJSONArray.length()) {
+                break;
+              }
+              String str = localJSONArray.getString(m);
+              blwn localblwn = new blwn();
+              localblwn.jdField_a_of_type_JavaLangString = str;
+              localblwn.c = k;
+              localblwn.b = i1;
+              n = i;
+              if (localblwm.jdField_a_of_type_Int >= i1)
+              {
+                localblwn.jdField_a_of_type_Int = i;
+                localblwm.jdField_a_of_type_JavaUtilArrayList.add(localblwn);
+                n = i + 1;
+              }
+              localblwm.b.add(localblwn);
+              m += 1;
+              i = n;
+            }
+          }
+          k += 1;
+          i = n;
+        }
+        j += 1;
+      }
+      return localblwm;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

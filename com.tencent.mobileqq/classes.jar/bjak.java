@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import cooperation.qqreader.js.JsCallParams;
 
-public final class bjak
-  implements DialogInterface.OnClickListener
+class bjak
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
+  
+  bjak(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
+  }
+  
+  void a()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bjak parambjak)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambjak.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
   }
 }
 

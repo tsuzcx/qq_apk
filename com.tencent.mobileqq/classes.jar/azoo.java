@@ -1,20 +1,27 @@
-import android.util.Pair;
-import java.util.HashSet;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
-class azoo
+public class azoo
+  implements Comparator<File>
 {
-  public String a;
-  public HashSet<Pair<Long, Long>> a;
-  public String b;
+  public azoo(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  private azoo(azon paramazon)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoo
  * JD-Core Version:    0.7.0.1
  */

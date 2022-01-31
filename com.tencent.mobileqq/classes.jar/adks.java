@@ -1,24 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adks
-  extends akee
+  extends BroadcastReceiver
 {
-  public adkq a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public adks(NotificationActivity paramNotificationActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
+      this.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adks
  * JD-Core Version:    0.7.0.1
  */

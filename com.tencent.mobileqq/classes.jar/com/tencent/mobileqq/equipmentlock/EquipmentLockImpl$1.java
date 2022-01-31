@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import apwu;
+import aqbd;
 import com.tencent.qphone.base.util.QLog;
 
 public class EquipmentLockImpl$1
   implements Runnable
 {
-  public EquipmentLockImpl$1(apwu paramapwu) {}
+  public EquipmentLockImpl$1(aqbd paramaqbd) {}
   
   public void run()
   {

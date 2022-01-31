@@ -10,8 +10,8 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bcwh;
-import bdda;
+import bdaq;
+import bdhj;
 
 public class SectorProgressView
   extends View
@@ -51,20 +51,20 @@ public class SectorProgressView
   private void c()
   {
     if (jdField_b_of_type_Int == 0) {
-      jdField_b_of_type_Int = bcwh.a(getContext(), 26.0F);
+      jdField_b_of_type_Int = bdaq.a(getContext(), 26.0F);
     }
     if (jdField_c_of_type_Int == 0) {
-      jdField_c_of_type_Int = bcwh.a(getContext(), 3.0F);
+      jdField_c_of_type_Int = bdaq.a(getContext(), 3.0F);
     }
     if (d == 0) {
-      d = bcwh.a(getContext(), 18.0F);
+      d = bdaq.a(getContext(), 18.0F);
     }
     if (e == 0) {
-      e = bcwh.a(getContext(), 8.0F);
+      e = bdaq.a(getContext(), 8.0F);
     }
     if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(getResources(), 2130846870);
+      jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(getResources(), 2130846943);
       jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
   }

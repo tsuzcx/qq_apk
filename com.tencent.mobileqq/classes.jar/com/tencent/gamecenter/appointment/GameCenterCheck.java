@@ -1,13 +1,13 @@
 package com.tencent.gamecenter.appointment;
 
-import aacp;
-import aacr;
-import aact;
+import aahe;
+import aahg;
+import aahi;
 import android.text.TextUtils;
-import aywz;
-import bfnq;
-import bfnt;
-import bkeu;
+import azbi;
+import bfrz;
+import bfsc;
+import bkjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,26 +32,26 @@ public class GameCenterCheck
   
   public static void b()
   {
-    String str1 = aact.a("APPOINTMENT_CHECKLIST");
-    String str2 = aact.a("APPOINTMENT_LIST");
-    String str3 = aact.a("DELAY_LIST");
+    String str1 = aahi.a("APPOINTMENT_CHECKLIST");
+    String str2 = aahi.a("APPOINTMENT_LIST");
+    String str3 = aahi.a("DELAY_LIST");
     if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)))
     {
       if (QLog.isColorLevel()) {
-        bfnq.c("GameCenterCheck", "checkGameCenter no task");
+        bfrz.c("GameCenterCheck", "checkGameCenter no task");
       }
-      aacp.b();
+      aahe.b();
       return;
     }
     if (QLog.isColorLevel()) {
-      bfnq.c("GameCenterCheck", "checkGameCenter checkList=" + str1);
+      bfrz.c("GameCenterCheck", "checkGameCenter checkList=" + str1);
     }
     ThreadManager.excute(new GameCenterCheck.1(str3, str2), 192, null, false);
   }
   
   public static void c()
   {
-    Object localObject = aact.a("APPOINTMENT_RES_LIST");
+    Object localObject = aahi.a("APPOINTMENT_RES_LIST");
     if (QLog.isColorLevel()) {
       QLog.d("GameCenterCheck", 2, "checkGameRes resList =" + (String)localObject);
     }
@@ -65,7 +65,7 @@ public class GameCenterCheck
       {
         if (i < localObject.length)
         {
-          String str = aact.a("APPID_PKGNAME_" + localObject[i]);
+          String str = aahi.a("APPID_PKGNAME_" + localObject[i]);
           try
           {
             localJSONObject.put(str, localObject[i]);
@@ -81,25 +81,25 @@ public class GameCenterCheck
           }
         }
       }
-      GameHelper.getGameVersionUpdateInfo(BaseApplicationImpl.getContext(), "qq", localArrayList, new aacr(localJSONObject));
+      GameHelper.getGameVersionUpdateInfo(BaseApplicationImpl.getContext(), "qq", localArrayList, new aahg(localJSONObject));
     }
   }
   
   public int a()
   {
     if (QLog.isColorLevel()) {
-      bfnq.c("GameCenterCheck", "yuyue:GameCenterCheck start");
+      bfrz.c("GameCenterCheck", "yuyue:GameCenterCheck start");
     }
-    aact.a();
-    if ((!aact.b) && (!aact.a))
+    aahi.a();
+    if ((!aahi.b) && (!aahi.a))
     {
       if (QLog.isColorLevel()) {
-        bfnq.c("GameCenterCheck", "yuyue:!GameCenterUtils.isAppointDownload && !GameCenterUtils.isDelayDownload");
+        bfrz.c("GameCenterCheck", "yuyue:!GameCenterUtils.isAppointDownload && !GameCenterUtils.isDelayDownload");
       }
       return super.a();
     }
-    Long localLong3 = Long.valueOf(aact.a("APPOINTMENT_LASTGET_TIME"));
-    Long localLong2 = Long.valueOf(aact.a("APPOINTMENT_LOAD_GAP"));
+    Long localLong3 = Long.valueOf(aahi.a("APPOINTMENT_LASTGET_TIME"));
+    Long localLong2 = Long.valueOf(aahi.a("APPOINTMENT_LOAD_GAP"));
     Long localLong1 = localLong2;
     if (0L == localLong2.longValue()) {
       localLong1 = Long.valueOf(30L);
@@ -107,25 +107,25 @@ public class GameCenterCheck
     if (NetConnInfoCenter.getServerTime() - localLong3.longValue() < localLong1.longValue())
     {
       if (QLog.isColorLevel()) {
-        bfnq.c("GameCenterCheck", "yuyue:no getAppointment list ,loadGap=" + localLong1 + ", lastTime:" + localLong3);
+        bfrz.c("GameCenterCheck", "yuyue:no getAppointment list ,loadGap=" + localLong1 + ", lastTime:" + localLong3);
       }
       b();
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty(aact.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(aact.a("APPOINTMENT_CHECKLIST"))) || (!TextUtils.isEmpty(aact.a("DELAY_LIST")))) {
-        aacp.a();
+      if ((!TextUtils.isEmpty(aahi.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(aahi.a("APPOINTMENT_CHECKLIST"))) || (!TextUtils.isEmpty(aahi.a("DELAY_LIST")))) {
+        aahe.a();
       }
-      bfnt.a();
-      bkeu.a().a(false, -1L);
+      bfsc.a();
+      bkjb.a().a(false, -1L);
       return super.a();
       if (QLog.isColorLevel()) {
-        bfnq.c("GameCenterCheck", "yuyue: getPreDownloadList loadGap=" + localLong1 + ",isAppointDownload=" + aact.b);
+        bfrz.c("GameCenterCheck", "yuyue: getPreDownloadList loadGap=" + localLong1 + ",isAppointDownload=" + aahi.b);
       }
-      if (aact.b) {
-        ((aywz)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
+      if (aahi.b) {
+        ((azbi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
       }
-      aact.a("APPOINTMENT_LASTGET_TIME", NetConnInfoCenter.getServerTime());
+      aahi.a("APPOINTMENT_LASTGET_TIME", NetConnInfoCenter.getServerTime());
     }
   }
   

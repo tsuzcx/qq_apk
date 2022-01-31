@@ -1,16 +1,41 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebd
-  implements View.OnClickListener
+  extends avvk
 {
-  public aebd(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aebd(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    this.a.b.dismiss();
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    {
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+      return;
+    }
+    String str2 = this.a.getResources().getString(2131699624);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
+      }
+      str1 = paramTranslateResult.e;
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, 1, str1, 0).a();
+      return;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131699603);
+      }
+    }
   }
 }
 

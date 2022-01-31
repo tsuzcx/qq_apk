@@ -1,112 +1,45 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1;
 
 public class avmk
-  extends avmz
+  implements View.OnClickListener
 {
-  public avmk(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public avmk(NearbyProfileDisplayTribePanel.13.1 param1) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      NearbyMomentFragment.a(this.a).a().remove(paramString);
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      NearbyMomentFragment.b(this.a, paramString.c);
-    }
-    if (NearbyMomentFragment.a(this.a).a().size() == 0) {
-      this.a.a(1);
-    }
-    NearbyMomentFragment.a(this.a).remove(paramString);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    avnx localavnx = NearbyMomentFragment.a(this.a, paramString);
-    if (localavnx != null)
-    {
-      if (localavnx.g > 0) {
-        localavnx.g -= 1;
-      }
-      if ((localavnx.jdField_a_of_type_JavaUtilList != null) && (localavnx.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = localavnx.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramString = (avnv)localIterator.next();
-        } while (paramString.a != paramLong);
-      }
-    }
-    for (;;)
-    {
-      if (paramString != null) {
-        localavnx.jdField_a_of_type_JavaUtilList.remove(paramString);
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+    if (TextUtils.isEmpty(avmf.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl)) {
       return;
-      paramString = null;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
+    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a, QQBrowserActivity.class);
+    Object localObject = new StringBuilder().append(avmf.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl).append("&gender=");
+    int i;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
     {
-      paramString.g += 1;
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      if (!paramString.jdField_a_of_type_Boolean)
-      {
-        paramString.jdField_a_of_type_Boolean = true;
-        paramString.f += 1;
+      i = 0;
+      paramView.putExtra("url", i);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.startActivity(paramView);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.app;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.e != 2) {
+        break label202;
       }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
     }
-  }
-  
-  public void c(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString instanceof avoa))
+    label202:
+    for (paramView = "1";; paramView = "2")
     {
-      paramString = (avoa)paramString;
-      paramString.e += 1;
-    }
-    for (;;)
-    {
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      azqs.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, paramView, "", "", "");
       return;
-      if ((paramString instanceof avnu))
-      {
-        paramString = (avnu)paramString;
-        paramString.e += 1;
-      }
-    }
-  }
-  
-  public void c(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Boolean))
-    {
-      paramString.jdField_a_of_type_Boolean = false;
-      if (paramString.f > 0) {
-        paramString.f -= 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
+      break;
     }
   }
 }

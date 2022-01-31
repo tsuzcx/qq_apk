@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface asrd
-{
-  public abstract void onClick(View paramView);
-}
+class asrd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

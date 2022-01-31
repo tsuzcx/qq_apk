@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class UserEntry
-  extends awbv
+  extends awge
 {
   public long dbCacheTime = -1L;
   public int fansCount;
@@ -26,7 +26,7 @@ public class UserEntry
   public int shareGroupCount;
   public int sourceTagType = -2147483648;
   public String symbolUrl;
-  @awdj
+  @awhs
   public String unionId;
   public int videoCount;
   public String wsSchema;

@@ -1,73 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class yur
-  extends aofy<yuq>
+final class yur
+  implements bfah
 {
-  public int a()
-  {
-    return 463;
-  }
+  yur(String paramString) {}
   
-  public Class<yuq> a()
+  public void a(BaseResp paramBaseResp)
   {
-    return yuq.class;
-  }
-  
-  @NonNull
-  public yuq a(int paramInt)
-  {
-    return new yuq();
-  }
-  
-  @Nullable
-  public yuq a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
-    {
-      yuq localyuq = yuq.a(paramArrayOfaogf[0].a);
-      a(localyuq);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      return localyuq;
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
     }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(yuq paramyuq)
-  {
-    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
-    if (paramyuq != null)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramyuq.toString());
-      yuh.a().a("subscribe_entrance_enable", paramyuq.a());
-      yuh.a().a("is_open_sharing", paramyuq.b());
-      yuh.a().a("subscribe_account_title", paramyuq.c());
-      yuh.a().a("newfollowlist", paramyuq.d());
-      yuh.a().a("subscribe_publish_entrance_enable", paramyuq.e());
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      ybk.a(2, 2131720050);
+    }
   }
 }
 

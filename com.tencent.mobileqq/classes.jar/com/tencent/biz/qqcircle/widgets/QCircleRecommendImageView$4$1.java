@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import uci;
+import ufd;
 
 public class QCircleRecommendImageView$4$1
   implements Runnable
 {
-  public QCircleRecommendImageView$4$1(uci paramuci) {}
+  public QCircleRecommendImageView$4$1(ufd paramufd) {}
   
   public void run()
   {

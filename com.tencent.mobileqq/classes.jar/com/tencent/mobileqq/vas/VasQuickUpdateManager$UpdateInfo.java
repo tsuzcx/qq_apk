@@ -153,7 +153,7 @@ public class VasQuickUpdateManager$UpdateInfo
     //   296: aload 8
     //   298: astore 4
     //   300: aload 5
-    //   302: invokestatic 178	bnkb:a	(Ljava/lang/String;)V
+    //   302: invokestatic 178	bnon:a	(Ljava/lang/String;)V
     //   305: aload 8
     //   307: astore 4
     //   309: new 110	java/lang/StringBuilder

@@ -1,15 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-class bdgs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class bdgs
+  implements DialogInterface.OnClickListener
 {
-  bdgs(bdgl parambdgl) {}
+  bdgs(Activity paramActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }

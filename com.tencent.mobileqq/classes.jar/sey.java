@@ -90,7 +90,7 @@ public class sey
     do
     {
       return null;
-      paramsfg = bdbq.a(paramsfg.a());
+      paramsfg = bdfz.a(paramsfg.a());
     } while ((paramsfg == null) || (!paramsfg.a()));
     return paramsfg.a();
   }
@@ -118,7 +118,7 @@ public class sey
       return;
       try
       {
-        bdbq.a(paramsfg.a(), paramsfc);
+        bdfz.a(paramsfg.a(), paramsfc);
       }
       finally {}
     }

@@ -1,45 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class whi
-  extends wkj<wle>
+class whi
+  implements whl
 {
-  public whi(@Nullable wkn paramwkn)
+  whi(whh paramwhh, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  
+  public void a()
   {
-    super(paramwkn);
+    wxe.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    whh.a(this.jdField_a_of_type_Whh, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
   
-  protected JobSegment<wkm, wle> a()
+  public void b()
   {
-    return new wkz();
-  }
-  
-  protected JobSegment<Integer, wkm> a(wkl paramwkl)
-  {
-    return new whj(paramwkl);
-  }
-  
-  protected wle a()
-  {
-    wkp localwkp = (wkp)urr.a(11);
-    List localList = localwkp.c();
-    wle localwle = new wle(new ErrorMessage());
-    localwle.jdField_b_of_type_JavaUtilList = localwkp.b(localList);
-    localwle.jdField_b_of_type_Boolean = true;
-    localwle.a = localwle.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localwle;
-  }
-  
-  protected wle a(ErrorMessage paramErrorMessage)
-  {
-    return new wle(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((wkp)urr.a(11)).c(paramList, paramBoolean);
+    wxe.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    whh.a(this.jdField_a_of_type_Whh).finish();
+    whh.a(this.jdField_a_of_type_Whh).overridePendingTransition(0, 0);
   }
 }
 

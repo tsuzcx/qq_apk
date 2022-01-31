@@ -1,9 +1,20 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+
 public class bnlq
+  implements Animation.AnimationListener
 {
-  public static bnlr a(String paramString)
+  public bnlq(BeautyBar paramBeautyBar) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new bnlr(paramString);
+    bnfi.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

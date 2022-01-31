@@ -1,39 +1,15 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
 
 public class aebq
-  implements View.OnClickListener
+  implements bhwx
 {
-  public aebq(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  public aebq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    paramView = (alzf)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.a(20);
-    String str;
-    if (paramView != null)
-    {
-      paramView.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label145;
-      }
-    }
-    label145:
-    for (paramView = "0";; paramView = "1")
-    {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, paramView, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      return;
-    }
+    return true;
   }
 }
 

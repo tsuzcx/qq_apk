@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class swn
 {
-  public static azvm a(MessageRecord paramMessageRecord)
+  public static azzv a(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof MessageForStructing))
     {
@@ -21,7 +21,7 @@ public class swn
     return null;
   }
   
-  public static azvm a(AbsStructMsg paramAbsStructMsg)
+  public static azzv a(AbsStructMsg paramAbsStructMsg)
   {
     if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
     {
@@ -39,14 +39,14 @@ public class swn
               if (!paramAbsStructMsg.hasNext()) {
                 break;
               }
-              localObject1 = (azqj)paramAbsStructMsg.next();
-            } while (!(localObject1 instanceof azua));
-            localObject1 = ((azua)localObject1).a.iterator();
+              localObject1 = (azus)paramAbsStructMsg.next();
+            } while (!(localObject1 instanceof azyj));
+            localObject1 = ((azyj)localObject1).a.iterator();
           }
-          localObject2 = (azqj)((Iterator)localObject1).next();
-        } while (!(localObject2 instanceof azvm));
-        localObject2 = (azvm)localObject2;
-      } while (!((azvm)localObject2).a());
+          localObject2 = (azus)((Iterator)localObject1).next();
+        } while (!(localObject2 instanceof azzv));
+        localObject2 = (azzv)localObject2;
+      } while (!((azzv)localObject2).a());
       return localObject2;
     }
     return null;
@@ -57,7 +57,7 @@ public class swn
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return oqu.k + bdbi.encodeToString(paramString.getBytes(), 2);
+    return oqu.k + bdfr.encodeToString(paramString.getBytes(), 2);
   }
   
   public static void a(StructMsgForGeneralShare paramStructMsgForGeneralShare)
@@ -69,25 +69,25 @@ public class swn
       Iterator localIterator = paramStructMsgForGeneralShare.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject1 = (azqj)localIterator.next();
-        if ((localObject1 instanceof azua))
+        Object localObject1 = (azus)localIterator.next();
+        if ((localObject1 instanceof azyj))
         {
-          localObject1 = ((azua)localObject1).a.iterator();
+          localObject1 = ((azyj)localObject1).a.iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            Object localObject2 = (azqj)((Iterator)localObject1).next();
-            if ((localObject2 instanceof azvm))
+            Object localObject2 = (azus)((Iterator)localObject1).next();
+            if ((localObject2 instanceof azzv))
             {
-              localObject2 = (azvm)localObject2;
-              if (((azvm)localObject2).a())
+              localObject2 = (azzv)localObject2;
+              if (((azzv)localObject2).a())
               {
-                ((azvm)localObject2).W = null;
-                ((azvm)localObject2).T = null;
-                ((azvm)localObject2).k = 0;
+                ((azzv)localObject2).W = null;
+                ((azzv)localObject2).T = null;
+                ((azzv)localObject2).k = 0;
                 if (QLog.isColorLevel()) {
                   QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: summary = null");
                 }
-                azmj.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, ((azvm)localObject2).U, "" + ((azvm)localObject2).r, "" + ((azvm)localObject2).a.msgId, "");
+                azqs.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, ((azzv)localObject2).U, "" + ((azzv)localObject2).r, "" + ((azzv)localObject2).a.msgId, "");
               }
             }
             else if ((localObject2 instanceof StructMsgItemTitle))
@@ -131,16 +131,16 @@ public class swn
         bool1 = false;
         if (paramAbsStructMsg.hasNext())
         {
-          Object localObject = (azqj)paramAbsStructMsg.next();
-          if (!(localObject instanceof azua)) {
+          Object localObject = (azus)paramAbsStructMsg.next();
+          if (!(localObject instanceof azyj)) {
             break label110;
           }
-          localObject = ((azua)localObject).a.iterator();
+          localObject = ((azyj)localObject).a.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            azqj localazqj = (azqj)((Iterator)localObject).next();
-            if ((localazqj instanceof azvm)) {
-              if (((azvm)localazqj).a()) {
+            azus localazus = (azus)((Iterator)localObject).next();
+            if ((localazus instanceof azzv)) {
+              if (((azzv)localazus).a()) {
                 bool1 = true;
               }
             }

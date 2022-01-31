@@ -1,37 +1,16 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
 
 class bhhg
-  implements bhha
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  bhhg(bhhf parambhhf, bhha parambhha, boolean paramBoolean) {}
+  bhhg(bhhd parambhhd) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    if (this.jdField_a_of_type_Bhha != null)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label90;
-      }
-      if (paramBitmap != null)
-      {
-        int i = paramBitmap.getWidth();
-        int j = paramBitmap.getHeight();
-        Object localObject = new Matrix();
-        ((Matrix)localObject).setScale(0.5F, 0.5F);
-        localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, false);
-        this.jdField_a_of_type_Bhha.a((Bitmap)localObject);
-        bhhf.a(this.jdField_a_of_type_Bhhf, paramBitmap);
-      }
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Bhha.a(paramBitmap);
-    return;
-    label90:
-    this.jdField_a_of_type_Bhha.a(paramBitmap);
   }
 }
 

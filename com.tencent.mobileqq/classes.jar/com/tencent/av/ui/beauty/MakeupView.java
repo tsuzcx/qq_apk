@@ -53,11 +53,11 @@ public class MakeupView
   public MakeupView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559603, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377842));
+    inflate(paramContext, 2131559602, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377896));
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363171));
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setBeautySeekActionListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131367793));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131367803));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
     b();
   }
@@ -227,7 +227,7 @@ public class MakeupView
       }
     } while (this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView == null);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setVisibility(0);
-    String str = getContext().getResources().getString(2131695876);
+    String str = getContext().getResources().getString(2131695878);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0);
   }
   
@@ -284,11 +284,11 @@ public class MakeupView
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     Object localObject1 = new mkj();
     ((mkj)localObject1).jdField_a_of_type_JavaLangString = "0";
-    ((mkj)localObject1).b = String.valueOf(2130841837);
+    ((mkj)localObject1).b = String.valueOf(2130841850);
     ((mkj)localObject1).jdField_c_of_type_Boolean = false;
     ((mkj)localObject1).jdField_d_of_type_Boolean = true;
-    ((mkj)localObject1).jdField_c_of_type_JavaLangString = getContext().getString(2131695865);
-    ((mkj)localObject1).jdField_d_of_type_JavaLangString = getContext().getString(2131695866);
+    ((mkj)localObject1).jdField_c_of_type_JavaLangString = getContext().getString(2131695867);
+    ((mkj)localObject1).jdField_d_of_type_JavaLangString = getContext().getString(2131695868);
     this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
     if (this.jdField_a_of_type_Lkj != null)
     {

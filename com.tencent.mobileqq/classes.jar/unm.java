@@ -1,26 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class unm
-  extends SimpleJob<Void>
+public abstract interface unm
 {
-  public unm(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = ((urk)urr.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<unj> paramList, boolean paramBoolean);
+  
+  public abstract void a(unn paramunn);
 }
 
 

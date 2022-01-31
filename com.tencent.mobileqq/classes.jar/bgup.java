@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bgup
-  implements DialogInterface.OnClickListener
+public abstract interface bgup
 {
-  bgup(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public abstract void a(int paramInt, String paramString, bgun parambgun);
 }
 
 

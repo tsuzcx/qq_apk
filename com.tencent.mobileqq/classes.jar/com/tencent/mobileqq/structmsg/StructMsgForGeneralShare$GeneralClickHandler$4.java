@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import azmj;
-import azrg;
+import azqs;
+import azvp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$4
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$4(azrg paramazrg, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$4(azvp paramazvp, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    azmj.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
+    azqs.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
   }
 }
 

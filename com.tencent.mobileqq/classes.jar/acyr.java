@@ -1,18 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class acyr
-  implements CompoundButton.OnCheckedChangeListener
+  extends alwx
 {
-  public acyr(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public acyr(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a()
   {
-    bajd.a(paramBoolean);
-    if (paramBoolean) {
-      bajd.a(new acys(this.a.jdField_a_of_type_Adto, this.a.jdField_a_of_type_AndroidViewView));
-    }
+    this.a.a();
   }
 }
 

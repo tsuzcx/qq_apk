@@ -1,14 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class axus
-  implements DialogInterface.OnClickListener
+public abstract interface axus
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(axtu paramaxtu, axvi paramaxvi, axvu paramaxvu, axvn paramaxvn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axus
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,31 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class uos
-  extends vdz
+  extends SimpleJob<Object>
 {
-  uos(uor paramuor) {}
-  
-  public void a()
+  uos(uom paramuom, String paramString)
   {
-    super.a();
-    uoq.a(this.a.a, null);
+    super(paramString);
   }
   
-  public void a(int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.a(paramInt);
-    wta.a("home_page", "suc_share", 1, paramInt, new String[] { wta.b(this.a.a.a) + "", wta.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    wta.a("home_page", "share_chanel", 1, paramInt, new String[] { wta.b(this.a.a.a) + "", wta.a(this.a.a.a) + "", this.a.a.a.feedId });
+    paramVarArgs = ((uvx)uwa.a(5)).a();
+    paramJobContext = new ArrayList(paramVarArgs.size());
+    paramVarArgs = paramVarArgs.iterator();
+    while (paramVarArgs.hasNext()) {
+      paramJobContext.add(new uqf((StoryVideoItem)paramVarArgs.next()));
+    }
+    this.a.a(paramJobContext);
+    wxe.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    return null;
   }
 }
 

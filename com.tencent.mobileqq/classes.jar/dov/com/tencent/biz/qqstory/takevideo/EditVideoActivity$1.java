@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmew;
-import bnlx;
+import bmji;
+import bnqj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 
 class EditVideoActivity$1
@@ -11,8 +11,8 @@ class EditVideoActivity$1
   
   public void run()
   {
-    bnlx.a(QQStoryContext.a().a(), this.this$0);
-    bmew.a(QQStoryContext.a().a(), this.this$0);
+    bnqj.a(QQStoryContext.a().a(), this.this$0);
+    bmji.a(QQStoryContext.a().a(), this.this$0);
   }
 }
 

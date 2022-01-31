@@ -18,7 +18,7 @@ public class nwz
       String str2 = (String)paramString.get(str1);
       QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
       if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
-        bjxj.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+        bkbq.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
       }
     }
     return true;
@@ -27,7 +27,7 @@ public class nwz
   public void onWipeConfig(int paramInt)
   {
     QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bjxj.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
+    bkbq.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
 }
 

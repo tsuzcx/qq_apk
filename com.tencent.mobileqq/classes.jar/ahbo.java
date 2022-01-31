@@ -1,32 +1,38 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
+import mqq.observer.BusinessObserver;
 
 public class ahbo
-  implements akfm
+  implements BusinessObserver
 {
-  public ahbo(AddContactsView paramAddContactsView) {}
+  private Handler a;
   
-  public void a()
+  ahbo(Handler paramHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
-    }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+    this.a = paramHandler;
   }
   
-  public void b()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
     if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
+      QLog.d("ZhituObserver", 2, ahbf.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
     }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
+    String str2 = ahbf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituObserver", 2, ahbf.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+      }
+    }
+    while (this.a == null) {
+      return;
+    }
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
   }
 }
 

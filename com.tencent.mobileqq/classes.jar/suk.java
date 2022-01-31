@@ -32,7 +32,7 @@ import mqq.os.MqqHandler;
 public class suk
 {
   public int a;
-  private alvc jdField_a_of_type_Alvc = new sum(this);
+  private alzr jdField_a_of_type_Alzr = new sum(this);
   public View a;
   ViewStub jdField_a_of_type_AndroidViewViewStub = null;
   ImageButton jdField_a_of_type_AndroidWidgetImageButton = null;
@@ -203,7 +203,7 @@ public class suk
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Stx);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alvc);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alzr);
     }
   }
   
@@ -211,7 +211,7 @@ public class suk
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alvc);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alzr);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Stx);
     }
   }
@@ -238,7 +238,7 @@ public class suk
     if (this.jdField_a_of_type_AndroidViewViewStub == null) {
       if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376142));
+        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376196));
         if (this.jdField_a_of_type_AndroidViewViewStub != null)
         {
           this.jdField_a_of_type_AndroidViewViewStub.setOnInflateListener(new sun(this));
@@ -250,7 +250,7 @@ public class suk
     }
     for (;;)
     {
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
       return;
       e();
       a(this.d);
@@ -264,7 +264,7 @@ public class suk
     do
     {
       return;
-      localView = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131369501);
+      localView = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131369519);
     } while (localView == null);
     localView.setPadding(0, 0, 0, paramInt);
   }
@@ -301,7 +301,7 @@ public class suk
     if (localActivity == null) {
       return false;
     }
-    View localView = localActivity.findViewById(2131365740);
+    View localView = localActivity.findViewById(2131365742);
     WindowManager localWindowManager = (WindowManager)localActivity.getSystemService("window");
     int i = localWindowManager.getDefaultDisplay().getWidth();
     int j = localWindowManager.getDefaultDisplay().getHeight();
@@ -328,17 +328,17 @@ public class suk
       i = ((Resources)localObject1).getColor(i);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(new suo(this));
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377190);
+      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377244);
       if (localObject2 != null)
       {
         if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
           break label263;
         }
-        i = 2131167078;
+        i = 2131167080;
         label93:
         ((ImageView)localObject2).setBackgroundResource(i);
       }
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377884);
+      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377938);
       if (!bool) {
         break label270;
       }
@@ -347,7 +347,7 @@ public class suk
       ((TextView)localObject2).setTextColor(i);
       if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null)
       {
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376137));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376191));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((Resources)localObject1).getDimension(2131297837));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Sud);
         if (Build.VERSION.SDK_INT >= 9) {
@@ -356,7 +356,7 @@ public class suk
       }
       if (this.jdField_a_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364325));
+        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364327));
         localObject1 = this.jdField_a_of_type_AndroidWidgetImageButton;
         if (bool) {
           break label281;
@@ -366,14 +366,14 @@ public class suk
     label263:
     label270:
     label281:
-    for (int i = 2130842813;; i = 2130842815)
+    for (int i = 2130842826;; i = 2130842828)
     {
       ((ImageButton)localObject1).setImageResource(i);
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new sup(this));
       return;
       i = 2131166005;
       break;
-      i = 2131166272;
+      i = 2131166274;
       break label93;
       i = ((Resources)localObject1).getColor(2131166003);
       break label126;
@@ -391,8 +391,8 @@ public class suk
     {
       return;
     }
-    int i = bcwh.a((Context)localObject, 100.0F);
-    Object localObject = (ImageView)((Activity)localObject).findViewById(2131372420);
+    int i = bdaq.a((Context)localObject, 100.0F);
+    Object localObject = (ImageView)((Activity)localObject).findViewById(2131372440);
     this.b = ((ImageView)localObject).getHeight();
     this.c = ((ImageView)localObject).getWidth();
     ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(i, i));

@@ -1,64 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.Map;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bcip
-  extends ypw
+public class bcip
+  implements alpg
 {
-  bcip(bcil parambcil) {}
+  protected QQAppInterface a;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle)
+  public bcip(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = this.a;
-    ((bcil)localObject).jdField_a_of_type_Int -= 1;
-    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
-      bbrc.a("TroopFileManager", bbrc.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
-    }
-    do
+    this.a = paramQQAppInterface;
+  }
+  
+  protected void a(long paramLong) {}
+  
+  protected void a(long paramLong, boolean paramBoolean) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt) {}
+  
+  protected void b(long paramLong, boolean paramBoolean) {}
+  
+  protected void c(long paramLong, boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
     {
+    default: 
       return;
-      localObject = paramBundle.getString("fileId");
-      paramBundle = (bbnr)this.a.c.get(localObject);
-    } while (paramBundle == null);
-    int i = paramTransFileRspBody.int32_ret_code.get();
-    bbrc.c("TroopFileManager", bbrc.jdField_a_of_type_Int, "onTransFileResult: fileId:" + (String)localObject + " isSuccess:" + paramBoolean + " errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
-    {
-      paramInt = 501;
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        this.a.a(paramBundle, paramInt);
-        return;
-        paramInt = 504;
-        continue;
-        paramInt = 103;
-        continue;
-        paramInt = 101;
-        continue;
-        paramInt = 503;
-        continue;
-        paramInt = 502;
-      }
+    case 2: 
+      b(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 1: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
+      return;
+    case 5: 
+      c(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
     }
-    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
-    paramBundle.b = paramTransFileRspBody;
-    paramBundle.jdField_a_of_type_Int = 102;
-    paramBundle.c = 0;
-    this.a.c.remove(localObject);
-    this.a.c.put(paramTransFileRspBody, paramBundle);
-    this.a.d(paramBundle);
-    paramTransFileRspBody = (bcir)this.a.d.get(paramBundle.f);
-    if (paramTransFileRspBody != null) {
-      paramTransFileRspBody.a = null;
-    }
-    this.a.a(paramBundle, 505);
+    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
   }
 }
 

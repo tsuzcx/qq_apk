@@ -1,106 +1,192 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.13.1;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.mobileqq.vas.PendantInfo.AnimationLruCache;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 
 public class bdtj
-  implements View.OnTouchListener
+  extends bhsl
 {
-  public bdtj(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bdtj(PendantInfo paramPendantInfo, Looper paramLooper, Handler.Callback paramCallback)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramLooper, paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    long l;
+    Object localObject;
+    if (paramMessage.what == 16)
     {
-    default: 
-    case 0: 
-    case 2: 
-      for (;;)
+      l = paramMessage.getData().getLong("targetId");
+      if (PendantInfo.g == l)
       {
-        return false;
-        this.a.a.x = ((int)paramMotionEvent.getRawX());
-        this.a.a.y = ((int)paramMotionEvent.getRawY());
-        if (QLog.isColorLevel())
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+        while (paramMessage.hasNext())
         {
-          QLog.d("HealthBusinessPlugin", 2, "down clicked");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "move clicked");
+          localObject = (Drawable)paramMessage.next();
+          if (localObject != null) {
+            ((Drawable)localObject).invalidateSelf();
           }
         }
       }
+      paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
+      if (paramMessage != null) {
+        paramMessage.invalidateSelf();
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "up clicked");
-    }
-    this.a.b.x = ((int)paramMotionEvent.getRawX());
-    this.a.b.y = ((int)paramMotionEvent.getRawY());
-    if ((Math.abs(this.a.a.y - this.a.b.y) < 8) && (Math.abs(this.a.a.x - this.a.b.x) < 8))
+    Bitmap localBitmap;
+    for (;;)
     {
-      paramView = new Rect();
-      paramMotionEvent = this.a.e.keySet().iterator();
-      while (paramMotionEvent.hasNext())
+      return;
+      if (paramMessage.what != 17) {
+        break label527;
+      }
+      this.a.b = true;
+      this.a.q = this.a.a(this.a.q);
+      if (!(paramMessage.obj instanceof Bitmap)) {
+        break label489;
+      }
+      localObject = (Bitmap)paramMessage.obj;
+      if ((localObject != null) && (this.a.b() != localObject))
       {
-        Object localObject = (String)paramMotionEvent.next();
-        FrameLayout localFrameLayout = (FrameLayout)this.a.e.get(localObject);
-        SeekBar localSeekBar = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetSeekBar;
-        TextView localTextView1 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetTextView;
-        TextView localTextView2 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetTextView;
-        ImageView localImageView1 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetImageView;
-        ImageView localImageView2 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetImageView;
-        TextView localTextView3 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetTextView;
-        ImageView localImageView3 = ((bdts)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetImageView;
-        localFrameLayout.getGlobalVisibleRect(paramView);
-        if ((paramView.contains(this.a.a.x, this.a.a.y)) && (paramView.contains(this.a.b.x, this.a.b.y)))
+        localBitmap = this.a.a();
+        if (localBitmap != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
+          if ((!localBitmap.isMutable()) || (Build.VERSION.SDK_INT <= 11)) {
+            break label435;
           }
-          if (localSeekBar.getVisibility() == 4)
+          this.a.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+        }
+        label217:
+        this.a.a((Bitmap)localObject);
+      }
+      l = paramMessage.getData().getLong("targetId");
+      try
+      {
+        if (PendantInfo.g != l) {
+          break label451;
+        }
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+        while (paramMessage.hasNext())
+        {
+          localObject = (Drawable)paramMessage.next();
+          if (localObject != null) {
+            ((Drawable)localObject).invalidateSelf();
+          }
+        }
+        if (2 != this.a.o) {}
+      }
+      catch (Exception paramMessage)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PendantInfo", 2, "handleMessage, exception:" + paramMessage.getMessage());
+        }
+      }
+    }
+    label329:
+    if (this.a.c)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PendantInfo", 2, "cancel decode pendant in market:" + this.a.jdField_a_of_type_Long);
+      }
+      this.a.c = false;
+      l = PendantInfo.g;
+      this.a.q = 0;
+      this.a.r = 3;
+    }
+    for (;;)
+    {
+      if (this.a.r == 0)
+      {
+        this.a.jdField_a_of_type_Bdtk = null;
+        return;
+        label435:
+        localBitmap.recycle();
+        this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        break label217;
+        label451:
+        paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
+        if (paramMessage == null) {
+          break label329;
+        }
+        paramMessage.invalidateSelf();
+        break label329;
+      }
+      this.a.b(l);
+      return;
+      label489:
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PendantInfo", 2, "wrong type , msg.obj = " + paramMessage.obj.getClass());
+      return;
+      label527:
+      if (paramMessage.what == 18)
+      {
+        if ((!this.a.jdField_a_of_type_Boolean) && (this.a.o == 2) && (this.a.r > 0))
+        {
+          this.a.b(paramMessage.getData().getLong("targetId"));
+          return;
+        }
+        if ((this.a.jdField_a_of_type_Boolean) || (this.a.o != 1)) {
+          break;
+        }
+        this.a.d();
+        return;
+      }
+      if (paramMessage.what == 19)
+      {
+        l = paramMessage.getData().getLong("targetId");
+        if (PendantInfo.g == l)
+        {
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+          while (paramMessage.hasNext())
           {
-            localSeekBar.setVisibility(0);
-            localTextView1.setVisibility(0);
-            localTextView2.setVisibility(0);
-            localImageView3.setVisibility(0);
-            if (((TVK_IMediaPlayer)this.a.d.get(localObject)).isPlaying()) {}
-            for (int i = 2130848063;; i = 2130848612)
-            {
-              localImageView1.setImageResource(i);
-              localImageView1.setVisibility(0);
-              this.a.jdField_f_of_type_Boolean = true;
-              localImageView2.setVisibility(4);
-              localTextView3.setVisibility(4);
-              this.a.c.removeCallbacksAndMessages(null);
-              localObject = new HealthBusinessPlugin.13.1(this, localSeekBar, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-              this.a.c.postDelayed((Runnable)localObject, 3000L);
-              break;
+            localObject = (Drawable)paramMessage.next();
+            if (localObject != null) {
+              this.a.a((Drawable)localObject, true, 0L);
             }
           }
-          localSeekBar.setVisibility(4);
-          localTextView1.setVisibility(4);
-          localTextView2.setVisibility(4);
-          localImageView3.setVisibility(4);
-          localImageView1.setVisibility(4);
-          this.a.jdField_f_of_type_Boolean = false;
-          localImageView2.setVisibility(0);
-          localTextView3.setVisibility(0);
+          break;
         }
+        paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
+        if (paramMessage == null) {
+          break;
+        }
+        this.a.a(paramMessage, false, 0L);
+        return;
       }
+      if (paramMessage.what != 20) {
+        break;
+      }
+      l = paramMessage.getData().getLong("targetId");
+      if (PendantInfo.g == l)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+        while (paramMessage.hasNext())
+        {
+          localObject = (Drawable)paramMessage.next();
+          if ((localObject != null) && ((localObject instanceof aevp))) {
+            this.a.a((aevp)localObject, l);
+          }
+        }
+        break;
+      }
+      paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
+      if ((paramMessage == null) || (!(paramMessage instanceof aevp))) {
+        break;
+      }
+      this.a.a((aevp)paramMessage, l);
+      return;
     }
-    return false;
   }
 }
 

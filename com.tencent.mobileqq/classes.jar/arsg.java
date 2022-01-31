@@ -1,12 +1,8 @@
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 public abstract interface arsg
-  extends View.OnTouchListener
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public abstract void b(View paramView, int paramInt1, int paramInt2);
+  public abstract void onClick(View paramView);
 }
 
 

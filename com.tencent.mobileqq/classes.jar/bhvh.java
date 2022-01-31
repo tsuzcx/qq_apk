@@ -1,8 +1,31 @@
-import android.view.View;
+import com.tencent.widget.AuthorizationItem;
 
-public abstract interface bhvh
+public final class bhvh
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public final int a;
+  public final String a;
+  public final String b;
+  
+  public bhvh(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bhvh a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
+    }
+    return AuthorizationItem.c;
+  }
 }
 
 

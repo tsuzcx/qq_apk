@@ -2,7 +2,7 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azkj;
+import azos;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,11 +13,11 @@ public final class ProcessInfoUtil$1
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = azkj.a();
+    SharedPreferences localSharedPreferences = azos.a();
     int i;
     if (localSharedPreferences != null)
     {
-      i = azkj.a(BaseApplicationImpl.getContext(), this.a);
+      i = azos.a(BaseApplicationImpl.getContext(), this.a);
       if (i != -1) {
         break label27;
       }

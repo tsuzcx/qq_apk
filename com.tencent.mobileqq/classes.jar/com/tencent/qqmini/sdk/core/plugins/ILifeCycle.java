@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
+import bglv;
 
 public abstract interface ILifeCycle
 {
-  public abstract void onCreate(bgho parambgho);
+  public abstract void onCreate(bglv parambglv);
   
   public abstract void onDestroy();
   

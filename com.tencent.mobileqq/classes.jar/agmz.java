@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
-class agmz
-  extends amab
+public class agmz
+  extends agmy
 {
-  agmz(agmy paramagmy) {}
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  protected void d(boolean paramBoolean, String paramString)
+  public agmz(String paramString)
   {
-    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
-      this.a.b.a(true);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
-    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

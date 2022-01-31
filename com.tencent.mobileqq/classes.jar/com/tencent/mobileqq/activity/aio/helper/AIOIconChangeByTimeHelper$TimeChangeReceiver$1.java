@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aeyq;
+import afdf;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
 public class AIOIconChangeByTimeHelper$TimeChangeReceiver$1
   implements Runnable
 {
-  public AIOIconChangeByTimeHelper$TimeChangeReceiver$1(aeyq paramaeyq, BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  public AIOIconChangeByTimeHelper$TimeChangeReceiver$1(afdf paramafdf, BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
   public void run()
   {

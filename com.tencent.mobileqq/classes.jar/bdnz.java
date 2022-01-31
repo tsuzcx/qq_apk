@@ -1,49 +1,16 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
 
 class bdnz
-  implements AudioManager.OnAudioFocusChangeListener
+  extends ThreadPoolExecutor
 {
-  bdnz(bdnx parambdnx) {}
+  private static int a;
   
-  public void onAudioFocusChange(int paramInt)
+  public bdnz(int paramInt, long paramLong)
   {
-    if (paramInt == -2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
-      }
-      synchronized (this.a.a)
-      {
-        if (this.a.a.a == 4) {
-          this.a.a();
-        }
-        return;
-      }
-    }
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
-      {
-        this.a.c();
-        this.a.b = false;
-      }
-    }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
-      {
-        this.a.a.a = 6;
-        return;
-      }
-    }
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new bdoa(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
 }
 

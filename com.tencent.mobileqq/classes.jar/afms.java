@@ -1,18 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class afms
-  extends afpq
+public class afms
+  extends aeqi
 {
-  afms(aflj paramaflj)
-  {
-    super(paramaflj, null);
-  }
-  
-  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agbf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public FlashPicItemBuilder.FlashPicAIOThumbView a;
+  public BubbleImageView a;
+  public boolean a;
+  public boolean b;
 }
 
 

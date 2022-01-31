@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class aiqj
-  extends bdvu
+public abstract interface aiqj
 {
-  aiqj(aiqi paramaiqi) {}
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public void onDone(bdvv parambdvv)
-  {
-    super.onDone(parambdvv);
-    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambdvv));
-  }
+  public abstract void b(long paramLong);
 }
 
 

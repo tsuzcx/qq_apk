@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class adhs
-  implements DialogInterface.OnKeyListener
+  extends avvc
 {
-  public adhs(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public adhs(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
-    }
-    return false;
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

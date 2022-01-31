@@ -1,8 +1,11 @@
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+
 public class apyq
+  extends aptf
 {
-  public long a;
-  public String a;
-  public String b;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.dating;
 
-import abol;
-import abor;
-import abot;
-import ajee;
-import ajgm;
-import aljq;
-import alqy;
+import abta;
+import abtg;
+import abti;
+import ajit;
+import ajlb;
+import alof;
+import alvn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,30 +22,30 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apds;
-import apdy;
-import apdz;
-import apea;
-import apeb;
-import apec;
-import aped;
-import apef;
-import apeq;
-import auqc;
-import aurt;
-import aush;
-import ausq;
-import auza;
-import avpu;
-import azmj;
-import azmo;
-import bdal;
-import bddb;
-import bdds;
-import bdiv;
-import bdje;
-import bhow;
-import bhqd;
+import apib;
+import apih;
+import apii;
+import apij;
+import apik;
+import apil;
+import apim;
+import apio;
+import apiz;
+import auul;
+import auwc;
+import auwq;
+import auwz;
+import avdj;
+import avud;
+import azqs;
+import azqx;
+import bdeu;
+import bdhk;
+import bdib;
+import bdne;
+import bdnn;
+import bhtd;
+import bhuk;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -93,13 +93,13 @@ import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
 public class MsgBoxListActivity
   extends BaseMsgBoxActivity
-  implements View.OnClickListener, bhqd
+  implements View.OnClickListener, bhuk
 {
-  alqy jdField_a_of_type_Alqy = new apdy(this);
+  alvn jdField_a_of_type_Alvn = new apih(this);
   Handler jdField_a_of_type_AndroidOsHandler = null;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  protected apef a;
-  public avpu a;
+  protected apio a;
+  public avud a;
   RecentBaseData jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData;
   public CarrierHelper.EntranceConfig a;
   private CarrierHelper jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper;
@@ -114,13 +114,13 @@ public class MsgBoxListActivity
   
   public MsgBoxListActivity()
   {
-    this.jdField_a_of_type_Apef = new apeb(this);
+    this.jdField_a_of_type_Apio = new apik(this);
   }
   
   public static int a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
     long l = System.currentTimeMillis();
-    int m = ((Integer)aush.a(paramQQAppInterface.getCurrentAccountUin(), "key_nearby_msg_box_say_hello_msg_type", Integer.valueOf(0))).intValue();
+    int m = ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "key_nearby_msg_box_say_hello_msg_type", Integer.valueOf(0))).intValue();
     Object localObject1 = paramQQAppInterface.a(1001).a(paramString, 1001);
     if (QLog.isColorLevel())
     {
@@ -165,7 +165,7 @@ public class MsgBoxListActivity
             continue;
           }
         }
-        if ((!paramString.senderuin.equals(aljq.aj)) && (!paramString.senderuin.equals(aljq.ak))) {
+        if ((!paramString.senderuin.equals(alof.aj)) && (!paramString.senderuin.equals(alof.ak))) {
           break label805;
         }
       }
@@ -322,7 +322,7 @@ public class MsgBoxListActivity
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Int != 1010) && (this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig != null) && (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.iconUrl)) && (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.wording)) && (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.jumpUrl)))
+    if ((this.jdField_a_of_type_Int != 1010) && (this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig != null) && (!bdnn.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.iconUrl)) && (!bdnn.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.wording)) && (!bdnn.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.jumpUrl)))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.iconUrl, (URLDrawable.URLDrawableOptions)localObject);
@@ -420,20 +420,20 @@ public class MsgBoxListActivity
       paramString = paramView.nearbyLiveTipMsg;
       if (paramString != null)
       {
-        bddb localbddb = bdds.a(this.app, this, paramString.jumpingUrl);
-        if (localbddb != null)
+        bdhk localbdhk = bdib.a(this.app, this, paramString.jumpingUrl);
+        if (localbdhk != null)
         {
-          localbddb.c();
-          if (abot.h(((RecentItemNearbyLiveTipData)paramRecentBaseData).c()))
+          localbdhk.c();
+          if (abti.h(((RecentItemNearbyLiveTipData)paramRecentBaseData).c()))
           {
             this.app.a().c(((RecentItemNearbyLiveTipData)paramRecentBaseData).mData.senderuin, paramRecentBaseData.a());
-            if (abot.h(paramString.senderuin))
+            if (abti.h(paramString.senderuin))
             {
               if (paramView.b() >= 1) {
                 break label231;
               }
               paramView = "0";
-              azmj.b(null, "dc00899", "grp_lbs", "", "msg_box", "assist_click", 0, 0, "", "", "", paramView);
+              azqs.b(null, "dc00899", "grp_lbs", "", "msg_box", "assist_click", 0, 0, "", "", "", paramView);
             }
           }
           this.app.a().c(paramRecentBaseData.a(), paramRecentBaseData.a());
@@ -441,12 +441,12 @@ public class MsgBoxListActivity
         }
         else
         {
-          ThreadManagerV2.excute(new MsgBoxListActivity.7(this, paramString, (auqc)this.app.getManager(106)), 32, null, false);
+          ThreadManagerV2.excute(new MsgBoxListActivity.7(this, paramString, (auul)this.app.getManager(106)), 32, null, false);
         }
       }
       else
       {
-        azmj.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "click_live_message", 0, 0, "", "", "", "");
+        azqs.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "click_live_message", 0, 0, "", "", "", "");
       }
     }
     label231:
@@ -458,33 +458,33 @@ public class MsgBoxListActivity
       if (!(paramRecentBaseData instanceof RecentInteractAndFollowItem)) {
         break label598;
       }
-      ajgm.b(this.app, paramRecentBaseData.a(), this.jdField_a_of_type_Int);
+      ajlb.b(this.app, paramRecentBaseData.a(), this.jdField_a_of_type_Int);
       this.app.a().c(paramRecentBaseData.a(), this.jdField_a_of_type_Int);
-      if (abot.f(paramRecentBaseData.a()))
+      if (abti.f(paramRecentBaseData.a()))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
         paramView.putExtra("url", "https://nearby.qq.com/greeting/notification.html?_bid=2623&_wv=1027");
         startActivityForResult(paramView, 1);
         paramView = ((RecentMsgBoxItem)paramRecentBaseData).mFromFlag + "";
-        new azmo(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_update").a(new String[] { "", "", paramView }).a();
+        new azqx(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_update").a(new String[] { "", "", paramView }).a();
         return;
       }
-      if (abot.g(paramRecentBaseData.a()))
+      if (abti.g(paramRecentBaseData.a()))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
         paramView.putExtra("url", "https://nearby.qq.com/greeting/topic.html?_bid=2623&_wv=1027 ");
         startActivityForResult(paramView, 2);
-        new azmo(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_focus").a();
+        new azqx(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_focus").a();
         return;
       }
-    } while (!abot.e(paramRecentBaseData.a()));
+    } while (!abti.e(paramRecentBaseData.a()));
     paramView = new Intent(this, QQBrowserActivity.class);
     paramView.putExtra("url", "https://nearby.qq.com/nearby-index/my_msg.html ");
     startActivityForResult(paramView, 3);
     if (this.jdField_d_of_type_Boolean) {}
     for (paramView = "1";; paramView = "0")
     {
-      new azmo(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_notice").a(new String[] { "", "", paramView }).a();
+      new azqx(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_notice").a(new String[] { "", "", paramView }).a();
       return;
     }
     label598:
@@ -497,12 +497,12 @@ public class MsgBoxListActivity
         if (QLog.isColorLevel()) {
           QLog.i("MsgBoxListActivity", 2, "messageForDarenAssistant.jumpUrl=" + paramView);
         }
-        paramView = bdds.a(this.app, this, paramView);
+        paramView = bdib.a(this.app, this, paramView);
         if (paramView != null) {
           paramView.c();
         }
       }
-      new azmo(this.app).a("dc00899").b("grp_lbs").c("vip_tips").d("clk").a();
+      new azqx(this.app).a("dc00899").b("grp_lbs").c("vip_tips").d("clk").a();
       return;
     }
     if ((paramRecentBaseData instanceof RecentYanZhiItem))
@@ -521,15 +521,15 @@ public class MsgBoxListActivity
     super.a(paramRecentBaseData, paramString);
     if (paramRecentBaseData != null)
     {
-      bdiv.b(this.app.getApp(), this.app.getCurrentAccountUin(), paramRecentBaseData.a(), 1);
+      bdne.b(this.app.getApp(), this.app.getCurrentAccountUin(), paramRecentBaseData.a(), 1);
       paramString = "0";
       if ((paramRecentBaseData instanceof RecentMsgBoxItem)) {
         paramString = ((RecentMsgBoxItem)paramRecentBaseData).mFromFlag + "";
       }
-      if (!abot.f(paramRecentBaseData.a())) {
+      if (!abti.f(paramRecentBaseData.a())) {
         break label144;
       }
-      azmj.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_update", 0, 0, "", "", paramString, "");
+      azqs.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_update", 0, 0, "", "", paramString, "");
     }
     for (;;)
     {
@@ -540,8 +540,8 @@ public class MsgBoxListActivity
       }
       return;
       label144:
-      if (abot.g(paramRecentBaseData.a())) {
-        azmj.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_focus", 0, 0, "", "", "", "");
+      if (abti.g(paramRecentBaseData.a())) {
+        azqs.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_focus", 0, 0, "", "", "", "");
       }
     }
   }
@@ -549,7 +549,7 @@ public class MsgBoxListActivity
   public void a(RecentItemNearbyLiveTipData paramRecentItemNearbyLiveTipData, List<nearby_now_anchor.AnchorStatus> paramList)
   {
     long l1 = Long.parseLong(paramRecentItemNearbyLiveTipData.nearbyLiveTipMsg.senderuin);
-    long l2 = aljq.l;
+    long l2 = alof.l;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -562,14 +562,14 @@ public class MsgBoxListActivity
         ((MessageForNearbyLiveTip)localObject).prewrite();
         this.app.a().a(((MessageForNearbyLiveTip)localObject).senderuin, ((MessageForNearbyLiveTip)localObject).istroop, ((MessageForNearbyLiveTip)localObject).uniseq, ((MessageForNearbyLiveTip)localObject).msgData);
         paramRecentItemNearbyLiveTipData.a(this.app, BaseApplication.getContext());
-        this.jdField_a_of_type_Ajee.a(((MessageForNearbyLiveTip)localObject).senderuin, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ajit.a(((MessageForNearbyLiveTip)localObject).senderuin, this.jdField_a_of_type_Int);
       }
     }
   }
   
   public void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2)
   {
-    if (bdal.a(paramString1, getString(ajff.a[6])))
+    if (bdeu.a(paramString1, getString(ajju.a[6])))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData = paramRecentBaseData;
       this.jdField_d_of_type_JavaLangString = paramString2;
@@ -582,10 +582,10 @@ public class MsgBoxListActivity
     do
     {
       return;
-      new azmo(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("unfollow").e(((RecentItemNearbyLiveTipData)paramRecentBaseData).c()).a();
+      new azqx(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("unfollow").e(((RecentItemNearbyLiveTipData)paramRecentBaseData).c()).a();
       if (!ndk.a(getApplicationContext()))
       {
-        QQToast.a(getApplicationContext(), 1, 2131694764, 0).a();
+        QQToast.a(getApplicationContext(), 1, 2131694766, 0).a();
         return;
       }
       paramString1 = (RecentItemNearbyLiveTipData)paramRecentBaseData;
@@ -600,19 +600,19 @@ public class MsgBoxListActivity
       for (;;)
       {
         l = Long.valueOf(paramString1).longValue();
-        if (l <= aljq.l) {
+        if (l <= alof.l) {
           break label283;
         }
-        l -= aljq.l;
-        this.jdField_a_of_type_Ajee.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_d_of_type_JavaLangString);
+        l -= alof.l;
+        this.jdField_a_of_type_Ajit.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_d_of_type_JavaLangString);
         if (this.jdField_d_of_type_Boolean)
         {
-          if (this.jdField_a_of_type_Ajee.getCount() != 0) {
+          if (this.jdField_a_of_type_Ajit.getCount() != 0) {
             break;
           }
           this.jdField_c_of_type_AndroidViewView.setVisibility(0);
         }
-        new auza(this.app).a(l, 0L, 0, 16, false, new apea(this));
+        new avdj(this.app).a(l, 0L, 0, 16, false, new apij(this));
         return;
         paramString1 = paramString1.nearbyLiveTipMsg.senderuin;
       }
@@ -650,7 +650,7 @@ public class MsgBoxListActivity
           {
             try
             {
-              Long localLong = Long.valueOf(Long.valueOf(Long.parseLong(((RecentItemNearbyLiveTipData)localObject).nearbyLiveTipMsg.senderuin)).longValue() - aljq.l);
+              Long localLong = Long.valueOf(Long.valueOf(Long.parseLong(((RecentItemNearbyLiveTipData)localObject).nearbyLiveTipMsg.senderuin)).longValue() - alof.l);
               if (!localArrayList1.contains(localLong)) {
                 localArrayList1.add(localLong);
               }
@@ -664,7 +664,7 @@ public class MsgBoxListActivity
         }
       }
     } while (localArrayList1.size() == 0);
-    aped.a(this.app, localArrayList1, null, new apdz(this, localArrayList2));
+    apim.a(this.app, localArrayList1, null, new apii(this, localArrayList2));
   }
   
   protected void b(List<MessageRecord> paramList)
@@ -707,19 +707,19 @@ public class MsgBoxListActivity
               continue;
             }
           }
-          if (abot.d(localMessageRecord.senderuin))
+          if (abti.d(localMessageRecord.senderuin))
           {
             localArrayList3.add(localMessageRecord);
             ((Iterator)localObject).remove();
           }
-          if ((localMessageRecord.senderuin.equals(aljq.aj)) || (localMessageRecord.senderuin.equals(aljq.ak)))
+          if ((localMessageRecord.senderuin.equals(alof.aj)) || (localMessageRecord.senderuin.equals(alof.ak)))
           {
             this.jdField_c_of_type_Boolean = true;
             this.jdField_c_of_type_JavaLangString = localMessageRecord.senderuin;
             localArrayList3.add(localMessageRecord);
             ((Iterator)localObject).remove();
           }
-          else if (apds.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+          else if (apib.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
           {
             if (localArrayList1 != null) {
               break label468;
@@ -735,7 +735,7 @@ public class MsgBoxListActivity
       ((Iterator)localObject).remove();
       localArrayList1.add(localMessageRecord);
       break;
-      if (!apds.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop)) {
+      if (!apib.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop)) {
         break;
       }
       if (localArrayList2 == null) {
@@ -791,13 +791,13 @@ public class MsgBoxListActivity
       localObject = "" + i;
       if (!this.g)
       {
-        localObject = getString(2131720570) + "(" + i + ")";
+        localObject = getString(2131720582) + "(" + i + ")";
         if (i > 99) {
-          localObject = getString(2131720570) + "(99+)";
+          localObject = getString(2131720582) + "(99+)";
         }
       }
       if (i < 0) {
-        localObject = getString(2131720570);
+        localObject = getString(2131720582);
       }
       if ((this.g) && (i <= 0)) {
         localTextView.setVisibility(4);
@@ -815,7 +815,7 @@ public class MsgBoxListActivity
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 2) || (paramInt1 == 1) || (paramInt1 == 3)) {
-      aped.a(this.app, 2, this.jdField_a_of_type_Apef);
+      apim.a(this.app, 2, this.jdField_a_of_type_Apio);
     }
   }
   
@@ -826,7 +826,7 @@ public class MsgBoxListActivity
     if (this.g)
     {
       if (getTitleBarView() != null) {
-        getTitleBarView().setBackgroundDrawable(getResources().getDrawable(2130849464));
+        getTitleBarView().setBackgroundDrawable(getResources().getDrawable(2130849537));
       }
       if (this.centerView != null) {
         this.centerView.setTextColor(-1);
@@ -834,44 +834,44 @@ public class MsgBoxListActivity
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_Avpu = new avpu(this);
-    this.jdField_e_of_type_JavaLangString = apeq.a(this.app);
+    this.jdField_a_of_type_Avud = new avud(this);
+    this.jdField_e_of_type_JavaLangString = apiz.a(this.app);
     if (this.jdField_a_of_type_Int == 1010)
     {
-      setTitle(2131699145);
+      setTitle(2131699157);
       this.b.setVisibility(8);
     }
     for (;;)
     {
       if (this.jdField_d_of_type_Boolean) {
-        setTitle(2131694685);
+        setTitle(2131694687);
       }
       this.b.setOnClickListener(this);
-      this.app.addObserver(this.jdField_a_of_type_Alqy, true);
-      aped.a(this.app, 1, this.jdField_a_of_type_Apef);
+      this.app.addObserver(this.jdField_a_of_type_Alvn, true);
+      apim.a(this.app, 1, this.jdField_a_of_type_Apio);
       if ((this.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_Int != 10002)) {
         break;
       }
       return true;
       if ((this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002))
       {
-        setTitle(2131693373);
+        setTitle(2131693375);
         this.b.setVisibility(8);
         QQAppInterface localQQAppInterface = this.app;
         if (this.jdField_a_of_type_Int == 1001) {}
         for (paramBundle = "0";; paramBundle = "1")
         {
-          azmj.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_msg_list", 0, 0, paramBundle, "", "", "");
+          azqs.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_msg_list", 0, 0, paramBundle, "", "", "");
           break;
         }
       }
       if (this.jdField_a_of_type_Int == 1009)
       {
-        setTitle(2131719295);
+        setTitle(2131719307);
         this.b.setVisibility(8);
       }
     }
-    azmj.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "otherType", 0, 0, this.jdField_a_of_type_Int + "", "", "", "");
+    azqs.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "otherType", 0, 0, this.jdField_a_of_type_Int + "", "", "", "");
     return true;
   }
   
@@ -881,14 +881,14 @@ public class MsgBoxListActivity
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    removeObserver(this.jdField_a_of_type_Alqy);
+    removeObserver(this.jdField_a_of_type_Alvn);
     if (this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper != null) {
       ThreadManager.post(new MsgBoxListActivity.3(this), 5, null, false);
     }
-    if (this.jdField_a_of_type_Avpu != null) {
-      this.jdField_a_of_type_Avpu.a();
+    if (this.jdField_a_of_type_Avud != null) {
+      this.jdField_a_of_type_Avud.a();
     }
-    aurt.c(1);
+    auwc.c(1);
   }
   
   public void doOnPause()
@@ -919,8 +919,8 @@ public class MsgBoxListActivity
       this.h = true;
       if (this.jdField_a_of_type_AndroidOsHandler == null)
       {
-        apec localapec = new apec(this.app.getAccount());
-        this.jdField_a_of_type_AndroidOsHandler = new bhow(ThreadManager.getFileThreadLooper(), localapec);
+        apil localapil = new apil(this.app.getAccount());
+        this.jdField_a_of_type_AndroidOsHandler = new bhtd(ThreadManager.getFileThreadLooper(), localapil);
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
     }
@@ -928,7 +928,7 @@ public class MsgBoxListActivity
   
   public void finish()
   {
-    if (((this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002)) && (!this.jdField_a_of_type_JavaLangString.equals(aljq.I)))
+    if (((this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002)) && (!this.jdField_a_of_type_JavaLangString.equals(alof.I)))
     {
       this.app.getPreferences().edit().putLong("sp_key_nearby_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
       this.app.getPreferences().edit().putInt("sp_key_sayhello_box_unread_count", 0).commit();
@@ -972,11 +972,11 @@ public class MsgBoxListActivity
       if (this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig == null)
       {
         if (QLog.isColorLevel()) {
-          ausq.a("ENTER_NEARBY", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+          auwz.a("ENTER_NEARBY", new Object[] { Long.valueOf(System.currentTimeMillis()) });
         }
         if (this.jdField_a_of_type_Int == 1010)
         {
-          aurt.b(1);
+          auwc.b(1);
           if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
             break label346;
           }
@@ -987,12 +987,12 @@ public class MsgBoxListActivity
         if (this.jdField_a_of_type_Int != 1010) {
           break label362;
         }
-        azmj.b(this.app, "CliOper", "", "", "0X8005101", "0X8005101", 0, 0, "", "", paramView, "");
+        azqs.b(this.app, "CliOper", "", "", "0X8005101", "0X8005101", 0, 0, "", "", paramView, "");
         return;
         if ((this.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_Int != 10002)) {
           break;
         }
-        if (!aush.f(this.app.getAccount()))
+        if (!auwq.f(this.app.getAccount()))
         {
           paramView = new Intent(this, NearbyActivity.class);
           paramView.putExtra("FROM_WHERE", 1003);
@@ -1011,7 +1011,7 @@ public class MsgBoxListActivity
           paramView.setAction("android.intent.action.VIEW");
           paramView.setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig.jumpUrl));
           startActivity(paramView);
-          aurt.b(1);
+          auwc.b(1);
           break label71;
         }
         paramView = new Intent(this, QQBrowserActivity.class);
@@ -1020,7 +1020,7 @@ public class MsgBoxListActivity
         break label71;
       }
     } while (this.jdField_a_of_type_Int != 1001);
-    azmj.b(this.app, "CliOper", "", "", "0X8005100", "0X8005100", 0, 0, "", "", paramView, "");
+    azqs.b(this.app, "CliOper", "", "", "0X8005100", "0X8005100", 0, 0, "", "", paramView, "");
   }
   
   public void update(Observable paramObservable, Object paramObject)

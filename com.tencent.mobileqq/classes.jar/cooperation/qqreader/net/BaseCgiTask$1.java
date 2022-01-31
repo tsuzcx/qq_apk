@@ -1,16 +1,16 @@
 package cooperation.qqreader.net;
 
-import biwg;
-import biwi;
+import bjan;
+import bjap;
 
 class BaseCgiTask$1
   implements Runnable
 {
-  BaseCgiTask$1(BaseCgiTask paramBaseCgiTask, biwg parambiwg, biwi parambiwi) {}
+  BaseCgiTask$1(BaseCgiTask paramBaseCgiTask, bjan parambjan, bjap parambjap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Biwg.a(this.jdField_a_of_type_Biwi);
+    this.jdField_a_of_type_Bjan.a(this.jdField_a_of_type_Bjap);
   }
 }
 

@@ -1,21 +1,18 @@
 class aruv
-  implements aruy
+  implements arrh
 {
-  aruv(arum paramarum) {}
+  aruv(arut paramarut) {}
   
   public void a()
   {
-    this.a.a.setProgressBarVisibility(0);
+    this.a.c();
   }
   
-  public void b()
-  {
-    this.a.a.setProgressBarVisibility(8);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aruv
  * JD-Core Version:    0.7.0.1
  */

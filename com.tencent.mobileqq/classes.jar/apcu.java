@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.graphics.Canvas;
 
-class apcu
-  implements View.OnClickListener
+public abstract interface apcu
 {
-  apcu(apct paramapct, WindowManager paramWindowManager) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Apct.a.a);
-  }
+  public abstract void a(Canvas paramCanvas, apbz paramapbz, long paramLong);
 }
 
 

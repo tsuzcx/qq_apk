@@ -1,19 +1,21 @@
-import com.tencent.common.app.AppInterface;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class bkwv
-  extends bkvo
+  implements CompoundButton.OnCheckedChangeListener
 {
-  bkwv(bkwu parambkwu, AppInterface paramAppInterface) {}
+  bkwv(bkwr parambkwr) {}
   
-  public void a(boolean paramBoolean, bkxm parambkxm)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean)
+    paramCompoundButton = bkwr.c(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      bkwu.a(this.jdField_a_of_type_Bkwu).a(parambkxm);
+      paramCompoundButton.setVisibility(i);
       return;
     }
-    bkwu.a(this.jdField_a_of_type_Bkwu).a(new bkxm());
   }
 }
 

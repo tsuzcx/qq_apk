@@ -1,66 +1,28 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import cooperation.photoplus.PhotoPlusModule.1;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public class bilz
-  extends QIPCModule
+class bilz
+  extends ampt
 {
-  private static bilz a;
-  
-  private bilz()
+  bilz(bily parambily, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    super("PhotoPlusModule");
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static bilz a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (a == null) {}
-    try
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      if (a == null) {
-        a = new bilz();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
-    }
-    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(paramBundle)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
+      String str = paramSosoLbsInfo.a.d;
+      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
+      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
+      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
-    do
-    {
-      return null;
-      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
-      if ("action_get_sticker_templates".equals(paramString))
-      {
-        paramBundle.b(true);
-        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
-        return null;
-      }
-      if ("action_exit_sticker".equals(paramString))
-      {
-        paramBundle.b(false);
-        return null;
-      }
-    } while (!"action_jump_to_shortvideo".equals(paramString));
-    paramBundle.c(true);
-    return null;
   }
 }
 

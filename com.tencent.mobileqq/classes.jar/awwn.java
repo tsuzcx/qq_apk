@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.data.QCallRecent;
-import java.util.List;
+import com.tencent.image.URLImageView;
 
-public abstract interface awwn
+class awwn
 {
-  public abstract void a(List<QCallRecent> paramList);
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  
+  awwn(awwm paramawwm) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import ahmt;
+import ahri;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedHashMap;
 
@@ -17,9 +17,9 @@ class AlphabetFriendAdapter$1$3
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0.jdField_a_of_type_ArrayOfInt = ((int[])this.jdField_a_of_type_ArrayOfJavaLangObject[1]);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0.jdField_a_of_type_ArrayOfJavaLangString = ((String[])this.jdField_a_of_type_ArrayOfJavaLangObject[2]);
-    ahmt.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0);
+    ahri.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0.b();
-    ahmt.c(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0);
+    ahri.c(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterAlphabetFriendAdapter$1.this$0);
   }
 }
 

@@ -1,91 +1,115 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterResp;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.PlayerState;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
 
-class auyc
-  extends nab
+public class auyc
+  extends bemo
 {
-  auyc(auya paramauya, auxz paramauxz, Comments.Comment paramComment) {}
+  public auyc(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    paramBundle = "";
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null) || (this.a.isFinishing())) {}
+    do
     {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      for (;;)
-      {
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 2, "err_msg:   " + localRspBody.err_msg.get());
-          }
-          if (!localRspBody.busi_buf.has())
-          {
-            QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-            this.jdField_a_of_type_Auxz.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
-            return;
-          }
-          localAddCommentNoFilterResp = new NowNearbyVideoCommentProto.AddCommentNoFilterResp();
-          localAddCommentNoFilterResp.mergeFrom(localRspBody.busi_buf.get().toByteArray());
-          if (!localAddCommentNoFilterResp.wording.has()) {
-            continue;
-          }
-          paramArrayOfByte = localAddCommentNoFilterResp.wording.get().toStringUtf8();
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          NowNearbyVideoCommentProto.AddCommentNoFilterResp localAddCommentNoFilterResp;
-          paramArrayOfByte = paramBundle;
-          continue;
-          paramArrayOfByte = "";
-          continue;
-        }
-        try
-        {
-          QLog.d("CommentsDataSource", 1, "id: " + localAddCommentNoFilterResp.comment_id.get() + ",ret:" + localAddCommentNoFilterResp.result.get() + ", tip=" + paramArrayOfByte);
-          if (localAddCommentNoFilterResp.result.get() == 0L) {
-            continue;
-          }
-          QLog.i("CommentsDataSource", 1, "error code :" + localAddCommentNoFilterResp.result.get());
-          this.jdField_a_of_type_Auxz.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)localAddCommentNoFilterResp.result.get(), paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle) {}
-      }
-      QLog.i("CommentsDataSource", 1, "merge publish resp data error");
-      this.jdField_a_of_type_Auxz.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, paramArrayOfByte);
       return;
-      if (localAddCommentNoFilterResp.comment_id.get() > 0L)
+      if (paramInt == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = localAddCommentNoFilterResp.comment_id.get();
-        this.jdField_a_of_type_Auxz.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-        auya.a(this.jdField_a_of_type_Auya).add(Long.valueOf(localAddCommentNoFilterResp.comment_id.get()));
-        paramBundle = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramBundle != null) {
-          ((avms)paramBundle.getManager(263)).e(auya.a(this.jdField_a_of_type_Auya).a);
-        }
+        this.a.jdField_d_of_type_Boolean = false;
+        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
+        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setComplete(new auyd(this));
+        this.a.a("load_page", "suc_cnt");
+        return;
       }
-    }
-    else
+    } while (paramInt == 4);
+    if (this.a.jdField_d_of_type_Int > 3)
     {
-      QLog.i("CommentsDataSource", 1, "publishComment failed");
-      this.jdField_a_of_type_Auxz.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.a.setText(alud.a(2131705489));
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+      this.a.jdField_d_of_type_Boolean = false;
       return;
     }
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Bemq.a();
+    GameRoomInviteActivity localGameRoomInviteActivity = this.a;
+    localGameRoomInviteActivity.jdField_d_of_type_Int += 1;
+  }
+  
+  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  {
+    Object localObject;
+    switch (paramMsgBody.uint32_msg_type.get())
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("GameRoomInviteActivity", 2, "the 0xdd push type is wrong:" + paramMsgBody.uint32_msg_type.get());
+      }
+    case 1: 
+      do
+      {
+        return;
+        localObject = this.a;
+        int i;
+        if ((!paramMsgBody.uint64_invite_leader.has()) || (paramMsgBody.uint64_invite_leader.get() == this.a.app.getLongAccountUin()))
+        {
+          bool = true;
+          ((GameRoomInviteActivity)localObject).jdField_a_of_type_Boolean = bool;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          i = 0;
+          if (i >= paramMsgBody.rpt_msg_player_state.size()) {
+            continue;
+          }
+          localObject = new auyv(this.a);
+          submsgtype0xdd.MsgBody.PlayerState localPlayerState = (submsgtype0xdd.MsgBody.PlayerState)paramMsgBody.rpt_msg_player_state.get(i);
+          ((auyv)localObject).jdField_a_of_type_JavaLangString = (localPlayerState.uint64_uin.get() + "");
+          if (localPlayerState.uint32_state.get() != 1) {
+            break label250;
+          }
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          ((auyv)localObject).jdField_a_of_type_Boolean = bool;
+          this.a.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+          break label135;
+          bool = false;
+          break;
+        }
+      } while (this.a.jdField_d_of_type_Boolean);
+      this.a.jdField_a_of_type_Auyw.notifyDataSetChanged();
+      this.a.a();
+      return;
+    case 2: 
+      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
+      localObject = paramMsgBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), (String)localObject, paramMsgBody.bytes_name.get().toStringUtf8());
+      auwq.a(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(ayzl.a()));
+      return;
+    case 3: 
+      label135:
+      label250:
+      QQToast.a(this.a, alud.a(2131705514), 0).a();
+      this.a.finish();
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      bdne.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      return;
+    }
+    this.a.a(null, alud.a(2131705491), true);
   }
 }
 

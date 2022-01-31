@@ -1,57 +1,99 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
-import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class apxh
-  implements bapx
+class apxh
+  implements apvh
 {
-  public apxh(ExtendFriendResourceDownloader.4 param4) {}
+  apxh(apxg paramapxg) {}
   
-  public void onResp(baqw parambaqw)
+  public boolean a(View paramView, apuf paramapuf)
   {
-    int i = 0;
-    apxb localapxb = (apxb)parambaqw.jdField_a_of_type_Baqv.a();
-    if (localapxb != null)
-    {
-      if (parambaqw.jdField_a_of_type_Int == 0) {
-        break label147;
-      }
-      QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + localapxb.b);
+    if ((paramapuf == null) || (paramView == null)) {
+      return false;
     }
-    for (;;)
+    if (TextUtils.isEmpty(paramapuf.i))
     {
-      if ((i != 0) && (apxd.a(this.a.this$0, localapxb)))
-      {
-        ((apwv)apxd.a(this.a.this$0).a(127)).notifyUI(8, true, Boolean.valueOf(true));
-        QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
+      Object localObject1 = apxg.a(this.a, paramapuf);
+      int i = apxg.a(this.a, paramapuf);
+      if ((((String)localObject1).equals("needUpload")) || (((String)localObject1).equals("needDel"))) {
+        return true;
       }
-      apxd.a(this.a.this$0, localapxb);
-      return;
-      label147:
-      if (!localapxb.c.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
+      Object localObject2;
+      if (((String)localObject1).equals("failed"))
       {
-        QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed: " + localapxb.b + "md5 is not match. ：" + SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c) + " infomd5:" + localapxb.c);
-        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener resFile success. file: " + localapxb.jdField_a_of_type_JavaLangString + localapxb.b);
-        }
-        String str = aqbo.c();
-        boolean bool = apxd.b(this.a.this$0, parambaqw.jdField_a_of_type_Baqv.c, str);
-        i = bool;
-        if (!bool)
+        paramView = ((apon)this.a.a.getManager(149)).a().iterator();
+        while (paramView.hasNext())
         {
-          QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  unzip file failed.");
-          i = bool;
+          localObject1 = (CustomEmotionData)paramView.next();
+          if (((CustomEmotionData)localObject1).emoId == i)
+          {
+            QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject1).emoId) });
+            localObject2 = (alsb)this.a.a.a(72);
+            if ((((CustomEmotionData)localObject1).emoOriginalPath != null) && (!apom.a(((CustomEmotionData)localObject1).emoOriginalPath)))
+            {
+              ((alsb)localObject2).notifyUI(2, true, Integer.valueOf(1));
+            }
+            else
+            {
+              ((CustomEmotionData)localObject1).RomaingType = "needUpload";
+              apxg.a(this.a, paramapuf, "needUpload");
+              ((alsb)localObject2).notifyUI(2, true, null);
+              com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+              ThreadManager.excute(new FavEmoSingleSend((CustomEmotionData)localObject1, true), 64, null, false);
+            }
+          }
+        }
+        return true;
+      }
+      localObject1 = (URLImageView)paramView.findViewById(2131365668);
+      paramView = (URLImageView)paramView.findViewById(2131365669);
+      if ((((URLImageView)localObject1).getDrawable() instanceof URLDrawable))
+      {
+        localObject2 = (URLDrawable)((URLImageView)localObject1).getDrawable();
+        if ((((URLDrawable)localObject2).getStatus() == 3) || (((URLDrawable)localObject2).getStatus() == 2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramapuf.toString());
+          }
+          ((URLImageView)localObject1).setVisibility(8);
+          paramView.setVisibility(0);
+          ((URLDrawable)localObject2).restartDownload();
+          if (!(paramView.getDrawable() instanceof Animatable))
+          {
+            paramapuf = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839225);
+            paramView.setImageDrawable((Drawable)paramapuf);
+            paramapuf.start();
+          }
+          for (;;)
+          {
+            return true;
+            ((Animatable)paramView.getDrawable()).start();
+          }
+        }
+        if (((URLDrawable)localObject2).getStatus() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramapuf.toString());
+          }
+          return true;
         }
       }
     }
+    return false;
   }
-  
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,21 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class adzf
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnKeyListener
 {
-  public adzf(TroopInfoActivity paramTroopInfoActivity) {}
+  public adzf(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    TroopInfoActivity.b(this.a);
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

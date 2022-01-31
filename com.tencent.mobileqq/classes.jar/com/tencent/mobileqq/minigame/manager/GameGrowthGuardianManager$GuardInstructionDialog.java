@@ -5,8 +5,8 @@ import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import bdcd;
-import bdfq;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -100,18 +100,18 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     if ((getContext() == null) || (getGuardInstruction() == null)) {
       return;
     }
-    bdfq localbdfq = bdcd.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
+    bdjz localbdjz = bdgm.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
     if (getPositiveDialogAction() != null) {
-      localbdfq.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
+      localbdjz.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
     }
     if (getNegativeDialogAction() != null) {
-      localbdfq.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
+      localbdjz.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
     }
     GameGrowthGuardianManager.GuardInstructionDialog.2 local2 = new GameGrowthGuardianManager.GuardInstructionDialog.2(this);
-    localbdfq.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
-    localbdfq.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
-    localbdfq.setCancelable(false);
-    localbdfq.show();
+    localbdjz.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
+    localbdjz.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
+    localbdjz.setCancelable(false);
+    localbdjz.show();
   }
   
   public Context getContext()

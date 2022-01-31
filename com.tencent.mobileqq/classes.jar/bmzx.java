@@ -1,11 +1,25 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.graphics.Bitmap;
+import android.media.MediaCodec;
+import android.media.MediaExtractor;
+import java.util.ArrayList;
 
-public abstract interface bmzx
+public class bmzx
 {
-  public abstract void a(int paramInt, @Nonnull List<xjv> paramList, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, @Nonnull List<xjv> paramList, boolean paramBoolean);
+  public int a;
+  public long a;
+  public MediaCodec a;
+  public MediaExtractor a;
+  public bmzu a;
+  public bmzy a;
+  public ArrayList<String> a = new ArrayList();
+  public boolean a;
+  public long[] a;
+  public int b;
+  public long b;
+  public ArrayList<Bitmap> b = new ArrayList();
+  public long[] b;
+  public int c;
+  public int d;
 }
 
 

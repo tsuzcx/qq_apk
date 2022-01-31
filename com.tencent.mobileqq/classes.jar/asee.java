@@ -1,31 +1,54 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class asee
-  implements View.OnClickListener
+class asee
+  extends alrl
 {
-  public asee(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  asee(aseb paramaseb) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1)
-    {
-      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get()))
+    if (!paramBoolean)
     {
-      QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
-      return;
+      this.a.x();
+      switch (paramInt)
+      {
+      default: 
+        paramString1 = alud.a(2131705217);
+        aseb.c(this.a, null);
+        aseb.a(this.a, false);
+        QQToast.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+      }
     }
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new asef(this));
+    while ((aseb.c(this.a) == null) || (Long.parseLong(aseb.c(this.a)) != paramLong2)) {
+      for (;;)
+      {
+        return;
+        paramString1 = alud.a(2131705224);
+        continue;
+        paramString1 = alud.a(2131705223);
+      }
+    }
+    if (aseb.a(this.a))
+    {
+      aseb.c(this.a, paramString1);
+      aseb.a(this.a, aseb.c(this.a), true);
+    }
+    aseb.a(this.a, false);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    }
+    if ((aseb.c(this.a) != null) && (aseb.c(this.a).equals(paramString))) {
+      aseb.a(this.a, aseb.c(this.a), false);
+    }
   }
 }
 

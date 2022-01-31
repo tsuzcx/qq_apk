@@ -1,15 +1,19 @@
-import android.widget.ImageView;
+import android.os.Message;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
 
-class akec
+public class akec
+  extends MqqHandler
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public String a;
-  public ImageView b;
-  public TextView b;
+  public akec(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
+  }
 }
 
 

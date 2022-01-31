@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import wuh;
+import wyq;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new wuh();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new wyq();
   public final float a;
   public final int a;
   public final long a;

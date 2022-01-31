@@ -2,7 +2,7 @@ import android.text.Editable;
 import android.widget.EditText;
 
 public final class nyp
-  implements aubp<char[]>
+  implements aufy<char[]>
 {
   public nyp(EditText paramEditText) {}
   

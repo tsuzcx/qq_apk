@@ -1,81 +1,39 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class beyw
-  implements bcgo
+  implements AdapterView.OnItemClickListener
 {
-  public beyw(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public beyw(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
+    paramView = paramView.getTag();
+    if (!(paramView instanceof bdmy)) {
+      return;
     }
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null) {
-          try
-          {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
-              {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
-                }
-                if (this.a.jdField_a_of_type_Zcp == null)
-                {
-                  this.a.jdField_a_of_type_Zcp = new zcp(this.a);
-                  this.a.jdField_a_of_type_Zcp.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690532));
-                  this.a.jdField_a_of_type_Zcp.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690531, new Object[] { this.a.e }), this.a);
-                  this.a.jdField_a_of_type_Zcp.a(this.a);
-                }
-                if (!this.a.jdField_a_of_type_Zcp.isShowing()) {
-                  this.a.jdField_a_of_type_Zcp.show();
-                }
-                azmj.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
-              }
-            }
-          }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131721016));
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131721016);
-    switch (paramInt)
-    {
+    paramView = ((bdmy)paramView).a;
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onItemClick(paramView, this.a);
+    }
+    ShareActionSheetV2 localShareActionSheetV2 = this.a;
+    if (paramAdapterView == this.a.a) {
+      paramInt = 0;
     }
     for (;;)
     {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721019);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721018);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721014);
+      ShareActionSheetV2.a(localShareActionSheetV2, paramView, paramInt);
+      return;
+      if (paramAdapterView == this.a.b) {
+        paramInt = 1;
+      } else if (paramAdapterView == this.a.c) {
+        paramInt = 2;
+      } else {
+        paramInt = -1;
+      }
     }
   }
 }

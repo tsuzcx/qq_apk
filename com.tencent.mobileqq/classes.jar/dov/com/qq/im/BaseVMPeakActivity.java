@@ -2,47 +2,47 @@ package dov.com.qq.im;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import blyx;
-import blyy;
-import blzb;
-import bmad;
-import bmal;
-import bmam;
+import bmdj;
+import bmdk;
+import bmdn;
+import bmep;
+import bmex;
+import bmey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseVMPeakActivity
   extends PeakActivity
-  implements blzb, bmam
+  implements bmdn, bmey
 {
-  private bmad jdField_a_of_type_Bmad = new bmad(this);
-  private bmal jdField_a_of_type_Bmal;
+  private bmep jdField_a_of_type_Bmep = new bmep(this);
+  private bmex jdField_a_of_type_Bmex;
   
-  public blyx a()
+  public bmdj a()
   {
-    return this.jdField_a_of_type_Bmad;
+    return this.jdField_a_of_type_Bmep;
   }
   
   @NonNull
-  public bmal a()
+  public bmex a()
   {
     if (BaseApplicationImpl.getApplication() == null) {
       throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
     }
-    if (this.jdField_a_of_type_Bmal == null) {
-      this.jdField_a_of_type_Bmal = new bmal();
+    if (this.jdField_a_of_type_Bmex == null) {
+      this.jdField_a_of_type_Bmex = new bmex();
     }
-    return this.jdField_a_of_type_Bmal;
+    return this.jdField_a_of_type_Bmex;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bmad = new bmad(this);
+    this.jdField_a_of_type_Bmep = new bmep(this);
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.a);
+      this.jdField_a_of_type_Bmep.a(bmdk.a);
       return;
     }
     catch (Throwable paramBundle)
@@ -56,9 +56,9 @@ public class BaseVMPeakActivity
     super.onDestroy();
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.f);
-      if ((this.jdField_a_of_type_Bmal != null) && (!isChangingConfigurations())) {
-        this.jdField_a_of_type_Bmal.a();
+      this.jdField_a_of_type_Bmep.a(bmdk.f);
+      if ((this.jdField_a_of_type_Bmex != null) && (!isChangingConfigurations())) {
+        this.jdField_a_of_type_Bmex.a();
       }
       return;
     }
@@ -76,7 +76,7 @@ public class BaseVMPeakActivity
     super.onPause();
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.d);
+      this.jdField_a_of_type_Bmep.a(bmdk.d);
       return;
     }
     catch (Throwable localThrowable)
@@ -90,7 +90,7 @@ public class BaseVMPeakActivity
     super.onResume();
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.c);
+      this.jdField_a_of_type_Bmep.a(bmdk.c);
       return;
     }
     catch (Throwable localThrowable)
@@ -104,7 +104,7 @@ public class BaseVMPeakActivity
     super.onStart();
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.b);
+      this.jdField_a_of_type_Bmep.a(bmdk.b);
       return;
     }
     catch (Throwable localThrowable)
@@ -118,7 +118,7 @@ public class BaseVMPeakActivity
     super.onStop();
     try
     {
-      this.jdField_a_of_type_Bmad.a(blyy.e);
+      this.jdField_a_of_type_Bmep.a(bmdk.e);
       return;
     }
     catch (Throwable localThrowable)

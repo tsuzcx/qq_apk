@@ -1,26 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.widget.ProgressPieView;
-
-public class bhvx
-  extends Handler
+public abstract interface bhvx
 {
-  long jdField_a_of_type_Long;
+  public abstract void F();
   
-  public bhvx(ProgressPieView paramProgressPieView) {}
+  public abstract void G();
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-      sendEmptyMessageDelayed(0, 1L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
-  }
+  public abstract void H();
+  
+  public abstract void a(float paramFloat);
 }
 
 

@@ -1,8 +1,20 @@
-import android.view.KeyEvent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-public abstract interface apuv
+public class apuv
+  implements aufz<String, Integer>
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  public apuv(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
+  
+  public Integer a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
+    }
+    return Integer.valueOf(i);
+  }
 }
 
 

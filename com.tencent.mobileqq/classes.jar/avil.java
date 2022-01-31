@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class avil
-  implements DialogInterface.OnClickListener
 {
-  avil(avhw paramavhw) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.d(true);
-    azmj.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
-  }
+  private avil(avhf paramavhf) {}
 }
 
 

@@ -1,45 +1,38 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aosk
 {
-  private String jdField_a_of_type_JavaLangString = alpo.a(2131715218);
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String b = "";
+  public int a;
+  public int b;
   
-  public static aosk a(aogf[] paramArrayOfaogf)
+  public static aosk a(String paramString)
   {
-    int i = 0;
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+    if (paramString == null) {}
+    do
+    {
       return null;
-    }
-    aosk localaosk = new aosk();
-    try
-    {
-      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
-      JSONArray localJSONArray = paramArrayOfaogf.getJSONArray("suffix");
-      while (i < localJSONArray.length())
+      try
       {
-        localaosk.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
-        i += 1;
+        aosk localaosk = new aosk();
+        paramString = new JSONObject(paramString);
+        localaosk.a = paramString.optInt("switch", 0);
+        localaosk.b = paramString.optInt("stoppreload", 0);
+        QLog.d("ConfBean", 2, "confBean = " + localaosk.a);
+        return localaosk;
       }
-      localaosk.jdField_a_of_type_JavaLangString = paramArrayOfaogf.getString("title");
-      localaosk.b = paramArrayOfaogf.getString("desc");
-      return localaosk;
-    }
-    catch (JSONException paramArrayOfaogf)
-    {
-      paramArrayOfaogf.printStackTrace();
-    }
-    return localaosk;
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public List<String> a()
+  public String toString()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("result:").append(this.a);
+    localStringBuilder.append(" stoppreload:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

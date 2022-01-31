@@ -1,36 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Map;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bjvr
 {
-  private static Map<Integer, Long> a(long paramLong)
+  static volatile String a = null;
+  
+  private static Object a(Object paramObject)
   {
-    Map localMap = bjse.a(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
-    if (!localMap.containsKey(Integer.valueOf(0))) {
-      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
+    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return paramObject;
+      try
+      {
+        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+        if (localObject1 == null) {
+          continue;
+        }
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Object localObject2 = null;
+        }
+      }
     }
-    return localMap;
   }
   
-  public static Map<Integer, Long> a(Long paramLong)
+  public static String a()
   {
-    return a(paramLong.longValue());
-  }
-  
-  public static void a(Integer paramInteger, Long paramLong)
-  {
-    Map localMap = a(paramLong);
-    localMap.put(paramInteger, Long.valueOf(System.currentTimeMillis() / 1000L));
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizeH5Service", 2, "updateCTime: " + paramInteger + "timestamp: " + System.currentTimeMillis() / 1000L);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        b();
+      }
+      if (("N/A".equals(a)) || ("00:00:00:00:00:00".equals(a)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(a))) {
+        return null;
+      }
     }
-    a(localMap, paramLong);
+    finally {}
+    return a;
   }
   
-  public static void a(Map<Integer, Long> paramMap, Long paramLong)
+  public static String b()
   {
-    LocalMultiProcConfig.putString("CTIME_MAP" + paramLong, bjse.a(paramMap));
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = a("N/A");
+        if (localObject1 != "N/A")
+        {
+          String str = ((WifiInfo)localObject1).getBSSID();
+          localObject1 = str;
+          if (str == null) {
+            localObject1 = "N/A";
+          }
+          a = (String)localObject1;
+          return localObject1;
+        }
+      }
+      finally {}
+      Object localObject3 = null;
+    }
   }
 }
 

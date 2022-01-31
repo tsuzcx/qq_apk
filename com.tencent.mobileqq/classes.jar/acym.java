@@ -1,17 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class acym
-  implements View.OnClickListener
+  implements acyh
 {
-  public acym(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public acym(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
+    ForwardTroopListFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
   }
 }
 

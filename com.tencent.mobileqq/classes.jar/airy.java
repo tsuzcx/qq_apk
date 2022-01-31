@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class airy
-  implements DialogInterface.OnClickListener
+class airy
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public airy(SendHbActivity paramSendHbActivity) {}
+  airy(airx paramairx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a.finish();
+    if (bnfr.a(this.a.mActivity, paramLocalMediaInfo))
+    {
+      airx.a(this.a, paramLocalMediaInfo);
+      zaj.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
+      return;
+    }
+    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
   }
 }
 

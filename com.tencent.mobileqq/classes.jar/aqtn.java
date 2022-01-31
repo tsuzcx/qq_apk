@@ -1,10 +1,7 @@
-public abstract interface aqtn
+class aqtn
 {
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
+  public long a;
+  public String a;
 }
 
 

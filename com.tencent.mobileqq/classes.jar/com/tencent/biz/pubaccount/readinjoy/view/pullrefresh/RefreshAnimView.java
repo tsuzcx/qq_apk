@@ -24,10 +24,10 @@ public class RefreshAnimView
   public RefreshAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131562511, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369853));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375541));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView = ((RefreshEyeView)findViewById(2131375535));
+    inflate(paramContext, 2131562529, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369872));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375592));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView = ((RefreshEyeView)findViewById(2131375586));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView.b();
     ThreadManager.excute(new RefreshAnimView.1(this, paramContext), 64, null, true);
   }

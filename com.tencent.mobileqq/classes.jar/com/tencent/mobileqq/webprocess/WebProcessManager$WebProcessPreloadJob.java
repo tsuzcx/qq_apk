@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import bdzz;
+import beei;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -8,32 +8,32 @@ class WebProcessManager$WebProcessPreloadJob
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  WeakReference<bdzz> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<beei> jdField_a_of_type_JavaLangRefWeakReference;
   
-  WebProcessManager$WebProcessPreloadJob(int paramInt, bdzz parambdzz)
+  WebProcessManager$WebProcessPreloadJob(int paramInt, beei parambeei)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambdzz);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambeei);
   }
   
   public void run()
   {
-    bdzz localbdzz = (bdzz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    beei localbeei = (beei)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (!WebProcessManager.c())
     {
       WebProcessManager.b(true);
       WebProcessManager.a(false);
       WebProcessManager.b(this.jdField_a_of_type_Int);
-      if (localbdzz != null) {
-        localbdzz.a(true);
+      if (localbeei != null) {
+        localbeei.a(true);
       }
     }
     for (;;)
     {
       WebProcessManager.a().set(false);
       return;
-      if (localbdzz != null) {
-        localbdzz.a(false);
+      if (localbeei != null) {
+        localbeei.a(false);
       }
     }
   }

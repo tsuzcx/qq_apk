@@ -1,19 +1,30 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vrl
-  extends DataSetObserver
+  extends QQUIEventReceiver<vrd, vdl>
 {
-  private vrl(XViewPager paramXViewPager) {}
-  
-  public void onChanged()
+  public vrl(@NonNull vrd paramvrd)
   {
-    this.a.b();
+    super(paramvrd);
   }
   
-  public void onInvalidated()
+  public void a(@NonNull vrd paramvrd, @NonNull vdl paramvdl)
   {
-    this.a.b();
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(this.TAG, "receive user info event. %s.", paramvdl.toString());
+      paramvrd = paramvrd.a();
+      if (paramvrd != null) {
+        paramvrd.a();
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 

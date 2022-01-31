@@ -1,16 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.text.TextUtils;
 
 public class azqy
-  implements View.OnTouchListener
 {
-  public azqy(StructMsgForGeneralShare paramStructMsgForGeneralShare, aeov paramaeov) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Aeov.onTouch(paramView, paramMotionEvent);
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    paramString1 = new Exception(paramString1);
+    if (paramString2 == null)
+    {
+      azpo.a(paramString1);
+      return;
+    }
+    azpo.a(paramString1, paramString2);
   }
 }
 

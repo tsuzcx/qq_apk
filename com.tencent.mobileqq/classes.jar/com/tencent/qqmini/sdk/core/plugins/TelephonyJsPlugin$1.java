@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
-import bgki;
+import bgok;
+import bgop;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class TelephonyJsPlugin$1
   implements AsyncResult
 {
-  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, bgkd parambgkd) {}
+  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -18,10 +18,10 @@ class TelephonyJsPlugin$1
     {
       paramJSONObject.remove("countryCode");
       paramJSONObject.remove("purePhoneNumber");
-      this.val$req.a(bgki.a(this.val$req.a, paramJSONObject));
+      this.val$req.a(bgop.a(this.val$req.a, paramJSONObject));
       return;
     }
-    this.val$req.a(bgki.b(this.val$req.a, null).toString());
+    this.val$req.a(bgop.b(this.val$req.a, null).toString());
   }
 }
 

@@ -1,10 +1,23 @@
-public abstract interface aiyd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class aiyd
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aiyd(LingHbFragment paramLingHbFragment) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
+    {
+      this.a.addUploadData(paramView, "");
+      return;
+    }
+  }
 }
 
 

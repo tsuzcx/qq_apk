@@ -1,4 +1,4 @@
-public class bhpu {}
+public abstract interface bhpu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

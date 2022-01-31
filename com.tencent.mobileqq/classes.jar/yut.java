@@ -1,65 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class yut
-  extends aofy<yus>
+  extends nbq
 {
-  public int a()
+  public boolean a;
+  
+  public yut(Context paramContext, String paramString)
   {
-    return 406;
+    super(paramContext, paramString);
   }
   
-  public Class<yus> a()
+  public String a()
   {
-    return yus.class;
+    return "key_for_troop_config_for_all_cfg";
   }
   
-  @NonNull
-  public yus a(int paramInt)
+  public void a(String paramString)
   {
-    return new yus();
-  }
-  
-  @Nullable
-  public yus a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
-      return yus.a(paramArrayOfaogf[0].a);
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    return null;
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
   }
   
-  public void a()
+  public String b()
   {
-    super.a();
-    bkum.a().a(false);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(yus paramyus)
-  {
-    bkum.a().a(true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "key_for_troop_config_for_all_cfg_version";
   }
 }
 

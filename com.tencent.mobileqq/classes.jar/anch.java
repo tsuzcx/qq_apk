@@ -1,7 +1,14 @@
-public class anch
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
+
+public final class anch
+  implements AVGestureWrapper.AVUploadReport
 {
-  public static int a = azgq.a;
-  public static int b = azgq.b;
+  public void avGestureUploadReport(String paramString1, String paramString2)
+  {
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+  }
 }
 
 

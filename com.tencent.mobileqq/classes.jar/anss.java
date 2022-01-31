@@ -1,45 +1,18 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class anss
-  extends QQLruCache<Integer, ansf>
+public final class anss
+  implements Parcelable.Creator<POIInfo>
 {
-  public anss(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
+  public POIInfo a(Parcel paramParcel)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    return new POIInfo(paramParcel);
   }
   
-  public void a()
+  public POIInfo[] a(int paramInt)
   {
-    Map localMap = snapshot();
-    if (localMap != null)
-    {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((ansf)localIterator.next()).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, ansf paramansf1, ansf paramansf2)
-  {
-    super.entryRemoved(paramBoolean, paramInteger, paramansf1, paramansf2);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
-    }
-    paramansf1.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return get(Integer.valueOf(paramInt)) != null;
+    return new POIInfo[paramInt];
   }
 }
 

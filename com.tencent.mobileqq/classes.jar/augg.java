@@ -1,27 +1,6 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-
-public class augg
-  implements auhi
+public abstract interface augg
 {
-  public augg(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void a()
-  {
-    MultiAIOFragment.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    MultiAIOFragment.a(this.a).setScrollState(2);
-    MultiAIOFragment.a(this.a).fling(-paramInt);
-  }
-  
-  public boolean a()
-  {
-    return MultiAIOFragment.a(this.a).a();
-  }
+  public abstract void a();
 }
 
 

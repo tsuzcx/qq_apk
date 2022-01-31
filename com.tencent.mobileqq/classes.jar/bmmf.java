@@ -1,14 +1,13 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class bmmf
-  extends bmmu
+public abstract interface bmmf
 {
-  public bmmf(bmme parambmme, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
-  {
-    super(parambmme, paramArrayOfString, paramBitmap, paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
+  
+  public abstract void onClick(View paramView);
 }
 
 

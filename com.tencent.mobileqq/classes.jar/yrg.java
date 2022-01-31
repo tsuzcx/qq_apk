@@ -1,32 +1,36 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class yrg
-  extends bcjt
+class yrg
+  implements ysj
 {
-  public yrg(TroopGiftPanel paramTroopGiftPanel) {}
+  yrg(yrd paramyrd, String paramString) {}
   
-  public void a(int paramInt)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, alpo.a(2131715806), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, alpo.a(2131715773), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-    TroopGiftPanel.a(true);
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_Yrd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_Yrd.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
+    }
   }
 }
 

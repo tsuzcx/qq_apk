@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
 
-public class blcm
-  implements View.OnClickListener
+class blcm
+  implements bmeo<String>
 {
-  public blcm(AETemplateInfoFragment paramAETemplateInfoFragment) {}
+  blcm(blcj paramblcj, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable String paramString)
   {
-    bkwq.a(this.a.getActivity(), 1024, bkwm.z.a(), null);
-    AETemplateInfoFragment.a(this.a);
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (!paramString.equals("")) {}
+    }
+    else
+    {
+      str = alud.a(2131700347);
+    }
+    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
+    if (str.indexOf('\n') > 0) {}
+    for (int i = blcj.a(this.jdField_a_of_type_Blcj) * 3 / 10;; i = blcj.a(this.jdField_a_of_type_Blcj) * 11 / 50)
+    {
+      paramString.height = i;
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(bdaq.c(blcj.a(this.jdField_a_of_type_Blcj), 23.0F));
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bdaq.a(blcj.a(this.jdField_a_of_type_Blcj), 2.0F));
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
+      return;
+    }
   }
 }
 

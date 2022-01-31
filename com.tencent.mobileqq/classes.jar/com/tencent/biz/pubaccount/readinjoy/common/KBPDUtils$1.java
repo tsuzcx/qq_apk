@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.Context;
 import android.text.TextUtils;
-import aowf;
+import apao;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -26,7 +26,7 @@ public final class KBPDUtils$1
     }
     try
     {
-      if (aowf.a("com.tencent.reading", (Context)localObject))
+      if (apao.a("com.tencent.reading", (Context)localObject))
       {
         QLog.i("KBPreDownloadUtils", 1, "won't download since app is already installed.");
         return;

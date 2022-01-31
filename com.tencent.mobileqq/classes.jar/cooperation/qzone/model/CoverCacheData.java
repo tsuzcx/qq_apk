@@ -7,7 +7,7 @@ import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjgj;
+import bjkq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class CoverCacheData
   implements Parcelable
 {
-  public static final Parcelable.Creator<CoverCacheData> CREATOR = new bjgj();
+  public static final Parcelable.Creator<CoverCacheData> CREATOR = new bjkq();
   public int a;
   public long a;
   public CoverCacheData.GameCoverInfo a;

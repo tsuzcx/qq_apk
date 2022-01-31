@@ -1,254 +1,85 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import android.view.View.OnClickListener;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.widget.PatchedButton;
-import dov.com.qq.im.ptv.AIOBusinessOperation.1;
-import dov.com.qq.im.ptv.AIOBusinessOperation.2;
-import dov.com.qq.im.ptv.AIOBusinessOperation.4;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
-public class bmar
+public final class bmar
 {
-  private static String jdField_a_of_type_JavaLangString = "1000";
-  private static HashMap<String, Drawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final bmat jdField_a_of_type_Bmat;
   
-  public static void a(int paramInt, View paramView, PatchedButton paramPatchedButton, boolean paramBoolean, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public bmar(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
-    }
-    while (bool1)
-    {
-      paramView.setVisibility(8);
-      paramPatchedButton.setVisibility(0);
-      return;
-      bool1 = paramBoolean;
-      continue;
-      bool1 = bool2;
-      if (paramSourceMsgInfo == null) {
-        bool1 = false;
-      }
-    }
-    paramPatchedButton.setVisibility(8);
-    paramView.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Bmat = new bmat(paramView);
   }
   
-  public static void a(Resources paramResources, String paramString)
+  public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener)
   {
-    if (paramResources == null) {}
-    label172:
-    label174:
-    label177:
-    for (;;)
-    {
-      return;
-      paramResources = paramResources.getDrawable(2130849294);
-      if ((paramResources instanceof BitmapDrawable)) {
-        paramResources = ((BitmapDrawable)paramResources).getBitmap();
-      }
-      for (;;)
-      {
-        if (paramResources == null) {
-          break label177;
-        }
-        int j = paramResources.getWidth();
-        int k = paramResources.getHeight();
-        int i = paramResources.getPixel(j / 2, k / 2);
-        j = paramResources.getPixel(j / 3, k / 3);
-        k = j >> 24 & 0xFF;
-        if (k > 110) {
-          a(paramString, j);
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label172;
-          }
-          QLog.i("AIOBusinessOperation", 2, "extractCurrentThemeColor centerAlpha:" + (i >> 24 & 0xFF) + " thirdAlpha:" + k + " theme:" + paramString);
-          return;
-          if (!(paramResources instanceof SkinnableBitmapDrawable)) {
-            break label174;
-          }
-          paramResources = ((SkinnableBitmapDrawable)paramResources).getBitmap();
-          break;
-          a(paramString, i);
-        }
-        break;
-        paramResources = null;
-      }
-    }
-  }
-  
-  public static void a(ViewGroup paramViewGroup, boolean paramBoolean)
-  {
-    ThreadManager.post(new AIOBusinessOperation.1((ImageView)paramViewGroup.findViewById(2131379577), paramBoolean), 5, null, false);
-  }
-  
-  public static void a(PatchedButton paramPatchedButton, AIOLongCaptureCtrl paramAIOLongCaptureCtrl)
-  {
-    if (AppSetting.c)
-    {
-      paramPatchedButton.setOnTouchListener(null);
-      paramPatchedButton.setOnClickListener(new bmas(paramAIOLongCaptureCtrl));
+    if (paramView == null) {
       return;
     }
-    paramPatchedButton.setOnClickListener(null);
-    paramPatchedButton.setOnTouchListener(paramAIOLongCaptureCtrl);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
+    paramView = new bmas(paramView, paramOnClickListener);
+    localValueAnimator.setDuration(paramLong);
+    localValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    localValueAnimator.addUpdateListener(paramView);
+    localValueAnimator.addListener(paramView);
+    localValueAnimator.start();
   }
   
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, View paramView, PatchedButton paramPatchedButton)
+  public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener, float... paramVarArgs)
   {
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        paramView.setVisibility(8);
-        paramPatchedButton.setVisibility(0);
-      }
-      for (;;)
-      {
-        paramPatchedButton.setEnabled(paramBoolean2);
-        return;
-        paramPatchedButton.setVisibility(8);
-        paramView.setVisibility(0);
-      }
-    }
-    paramView.setVisibility(8);
-    paramPatchedButton.setVisibility(0);
-    paramPatchedButton.setEnabled(paramBoolean2);
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("theme_light_filter_cfg", 4).edit();
-    localEditor.putInt(paramString, paramInt);
-    return localEditor.commit();
-  }
-  
-  public static boolean a(boolean paramBoolean, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramBoolean) || (paramSourceMsgInfo != null)) {}
-    while ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
-      return false;
-    }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
-    {
-      paramSourceMsgInfo = (HotChatManager)paramQQAppInterface.getManager(60);
-      if ((paramSourceMsgInfo == null) || (!paramSourceMsgInfo.b(paramSessionInfo.jdField_a_of_type_JavaLangString))) {}
-      for (paramBoolean = true;; paramBoolean = false) {
-        return paramBoolean;
-      }
-    }
-    return true;
-  }
-  
-  private static int b(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("theme_light_filter_cfg", 4).getInt(paramString, 0);
-  }
-  
-  private static Bitmap b(Bitmap paramBitmap, int paramInt)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      int i = 0;
-      while (i < paramBitmap.getWidth())
-      {
-        int j = 0;
-        while (j < paramBitmap.getHeight())
-        {
-          localBitmap.setPixel(i, j, paramBitmap.getPixel(i, j) & 0xFF000000 | 0xFFFFFF & paramInt);
-          j += 1;
-        }
-        i += 1;
-      }
-      return localBitmap;
-    }
-    catch (OutOfMemoryError paramBitmap) {}
-    return null;
-  }
-  
-  public static void b(PatchedButton paramPatchedButton, AIOLongCaptureCtrl paramAIOLongCaptureCtrl)
-  {
-    ThreadManager.getUIHandler().postDelayed(new AIOBusinessOperation.4(paramPatchedButton, paramAIOLongCaptureCtrl), 200L);
-  }
-  
-  private static void c(ImageView paramImageView, String paramString)
-  {
-    ThreadManager.post(new AIOBusinessOperation.2(paramString, paramImageView), 5, null, false);
-  }
-  
-  private static void d(ImageView paramImageView, String paramString)
-  {
-    int j = b(paramString);
-    if (j == 0) {
-      a(paramImageView.getResources(), paramString);
-    }
-    Object localObject = paramImageView.getResources().getDrawable(2130843980);
-    int i;
-    if ((localObject instanceof BitmapDrawable))
-    {
-      localObject = ((BitmapDrawable)localObject).getBitmap();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        localObject = b((Bitmap)localObject, j);
-        if (localObject == null) {
-          break label135;
-        }
-        if (i == 0) {
-          break label121;
-        }
-      }
-      label121:
-      for (localObject = new SkinnableBitmapDrawable((Bitmap)localObject);; localObject = new BitmapDrawable((Bitmap)localObject))
-      {
-        paramImageView.setImageDrawable((Drawable)localObject);
-        jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
-        return;
-        if (!(localObject instanceof SkinnableBitmapDrawable)) {
-          break label145;
-        }
-        localObject = ((SkinnableBitmapDrawable)localObject).getBitmap();
-        i = 1;
-        break;
-      }
-      label135:
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, null);
+    if (paramView == null) {
       return;
-      label145:
-      i = 0;
-      localObject = null;
     }
+    paramVarArgs = ValueAnimator.ofFloat(paramVarArgs);
+    paramView = new bmas(paramView, paramOnClickListener);
+    paramVarArgs.setDuration(paramLong);
+    paramVarArgs.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    paramVarArgs.addUpdateListener(paramView);
+    paramVarArgs.addListener(paramView);
+    paramVarArgs.start();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bmat);
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bmat);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    int i = this.jdField_a_of_type_AndroidViewView.getPaddingLeft();
+    int j = this.jdField_a_of_type_AndroidViewView.getRight() - this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_AndroidViewView.getPaddingRight();
+    int m = this.jdField_a_of_type_AndroidViewView.getPaddingTop();
+    int n = this.jdField_a_of_type_AndroidViewView.getBottom();
+    int i1 = this.jdField_a_of_type_AndroidViewView.getTop();
+    int i2 = this.jdField_a_of_type_AndroidViewView.getPaddingBottom();
+    int k = (i + j) / 2;
+    m = (m + (n - i1 - i2)) / 2;
+    paramCanvas.scale(this.jdField_a_of_type_Bmat.a, this.jdField_a_of_type_Bmat.a, k, m);
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "draw, left=" + i + ",right=" + j + ",centerX=" + k + ",centerY=" + m + ",scale=" + this.jdField_a_of_type_Bmat.a);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bmat.a != 1.0F;
   }
 }
 

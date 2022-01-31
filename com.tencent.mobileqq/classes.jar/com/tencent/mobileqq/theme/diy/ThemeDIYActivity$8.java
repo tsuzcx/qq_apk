@@ -2,7 +2,7 @@ package com.tencent.mobileqq.theme.diy;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import azmj;
+import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ThemeDIYActivity$8
@@ -12,7 +12,7 @@ class ThemeDIYActivity$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azmj.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "1", "", "", "");
+    azqs.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "1", "", "", "");
     this.this$0.saveOperate(true);
   }
 }

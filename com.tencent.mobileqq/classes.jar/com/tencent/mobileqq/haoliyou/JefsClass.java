@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.haoliyou;
 
-import alun;
+import alzc;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,19 +15,19 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import anrt;
-import asls;
-import aslt;
-import aslu;
-import aslv;
-import aslw;
-import asmb;
-import asmc;
-import asmd;
-import asme;
-import asmf;
-import asmy;
-import azmj;
+import anwc;
+import asqb;
+import asqc;
+import asqd;
+import asqe;
+import asqf;
+import asqk;
+import asql;
+import asqm;
+import asqn;
+import asqo;
+import asrh;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -44,7 +44,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JefsClass
-  extends asls
+  extends asqb
 {
   private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new ArraySet();
@@ -52,9 +52,9 @@ public class JefsClass
   private static final Set<String> c;
   private int jdField_a_of_type_Int;
   private final SparseArrayCompat<Runnable> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private asme jdField_a_of_type_Asme;
-  private asmf jdField_a_of_type_Asmf;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new aslt(this);
+  private asqn jdField_a_of_type_Asqn;
+  private asqo jdField_a_of_type_Asqo;
+  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new asqc(this);
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -160,11 +160,11 @@ public class JefsClass
     return localArrayMap;
   }
   
-  public static asme a(JSONObject paramJSONObject)
+  public static asqn a(JSONObject paramJSONObject)
   {
-    asme localasme = new asme();
+    asqn localasqn = new asqn();
     if (paramJSONObject == null) {
-      return localasme;
+      return localasqn;
     }
     label200:
     for (;;)
@@ -183,7 +183,7 @@ public class JefsClass
             if (str == null) {
               break label200;
             }
-            localasme.jdField_a_of_type_JavaUtilSet.add(str);
+            localasqn.jdField_a_of_type_JavaUtilSet.add(str);
             break label200;
           }
         }
@@ -202,11 +202,11 @@ public class JefsClass
           localObject1 = ((JSONObject)localObject2).optString("package");
           str = ((JSONObject)localObject2).optString("schema");
           localObject2 = ((JSONObject)localObject2).optString("action");
-          asmd localasmd = new asmd();
-          localasmd.a = ((String)localObject1);
-          localasmd.b = str.toLowerCase();
-          localasmd.c = ((String)localObject2).toLowerCase();
-          localasme.jdField_a_of_type_JavaUtilList.add(localasmd);
+          asqm localasqm = new asqm();
+          localasqm.a = ((String)localObject1);
+          localasqm.b = str.toLowerCase();
+          localasqm.c = ((String)localObject2).toLowerCase();
+          localasqn.jdField_a_of_type_JavaUtilList.add(localasqm);
         }
         i += 1;
         continue;
@@ -215,7 +215,7 @@ public class JefsClass
       catch (Throwable paramJSONObject)
       {
         QLog.d("TeleScreen|JefsClass", 1, paramJSONObject, new Object[0]);
-        return localasme;
+        return localasqn;
       }
     }
   }
@@ -314,12 +314,12 @@ public class JefsClass
       }
       b(paramInt1, 0);
       a(localRunnable);
-      anrt.a().a(paramInt2, 2);
+      anwc.a().a(paramInt2, 2);
       return;
     }
   }
   
-  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, asmc paramasmc)
+  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, asql paramasql)
   {
     QLog.i("TeleScreen|JefsClass", 1, "intercept: ");
     if (((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue())
@@ -333,7 +333,7 @@ public class JefsClass
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "src " + str3 + ", ref " + str1);
     }
-    if (!alun.a())
+    if (!alzc.a())
     {
       a(paramCancelableRunnable);
       return;
@@ -417,7 +417,7 @@ public class JefsClass
         }
       }
     }
-    paramasmc.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
+    paramasql.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
   }
   
   /* Error */
@@ -473,18 +473,18 @@ public class JefsClass
     //   79: aload 8
     //   81: aload 12
     //   83: invokevirtual 530	com/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable:a	(Ljava/lang/String;)V
-    //   86: invokestatic 535	aogj:a	()Laogj;
+    //   86: invokestatic 535	aoks:a	()Laoks;
     //   89: sipush 416
-    //   92: invokevirtual 537	aogj:a	(I)Ljava/lang/Object;
-    //   95: checkcast 539	anrv
+    //   92: invokevirtual 537	aoks:a	(I)Ljava/lang/Object;
+    //   95: checkcast 539	anwe
     //   98: astore 11
     //   100: aload 11
-    //   102: getfield 541	anrv:jdField_a_of_type_Boolean	Z
+    //   102: getfield 541	anwe:jdField_a_of_type_Boolean	Z
     //   105: ifeq +183 -> 288
     //   108: aload 11
     //   110: aload 12
     //   112: aload 5
-    //   114: invokevirtual 544	anrv:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   114: invokevirtual 544	anwe:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   117: ifne +171 -> 288
     //   120: aload 7
     //   122: invokestatic 547	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/util/List;)Z
@@ -828,8 +828,8 @@ public class JefsClass
     }
     for (;;)
     {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      asmy.a(paramContext, paramString1, paramString3, paramString4, paramString2, new aslv(this, paramRunnable, new WeakReference(paramContext), paramString1));
+      azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      asrh.a(paramContext, paramString1, paramString3, paramString4, paramString2, new asqe(this, paramRunnable, new WeakReference(paramContext), paramString1));
       return;
       label103:
       localQQAppInterface = null;
@@ -862,8 +862,8 @@ public class JefsClass
     }
     for (;;)
     {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      asmy.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new aslw(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
+      azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      asrh.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new asqf(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
       return;
       label111:
       localQQAppInterface = null;
@@ -928,8 +928,8 @@ public class JefsClass
           }
           try
           {
-            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Asmf);
-            anrt.a().a(paramInt2, -1);
+            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Asqo);
+            anwc.a().a(paramInt2, -1);
             return;
           }
           catch (Throwable localThrowable)
@@ -949,7 +949,7 @@ public class JefsClass
     return jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass;
   }
   
-  public asmb a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
+  public asqk a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "checkAndDoAsyn() called with: context = [" + paramContext + "], intent = [" + paramIntent + "], url = [" + paramString + "], todo = [" + paramWeakOuterRefRunnable + "]");
@@ -957,11 +957,11 @@ public class JefsClass
     int i = paramIntent.getIntExtra("key_callback_id", 0);
     paramWeakOuterRefRunnable.b(i);
     paramWeakOuterRefRunnable = new JefsClass.CancelableRunnable(paramWeakOuterRefRunnable);
-    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new aslu(this, paramContext, paramIntent, paramString, i));
+    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new asqd(this, paramContext, paramIntent, paramString, i));
     return paramWeakOuterRefRunnable.a();
   }
   
-  public asmb a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
+  public asqk a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
   {
     return a(paramContext, paramIntent, paramString, new WeakOuterRefRunnable(paramRunnable, true));
   }
@@ -991,7 +991,7 @@ public class JefsClass
     try
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Asme = a(paramJSONObject);
+      this.jdField_a_of_type_Asqn = a(paramJSONObject);
       return;
     }
     finally

@@ -1,9 +1,6 @@
-import android.util.Pair;
-import java.util.List;
-
 public abstract interface bhke
 {
-  public abstract void a(List<Pair<Integer, Byte>> paramList);
+  public abstract void onStartPreview(boolean paramBoolean);
 }
 
 

@@ -1,38 +1,10 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
 
-class bfgn
-  implements ITMAssistantExchangeURLListenner
+public class bfgn
 {
-  bfgn(bfgm parambfgm) {}
-  
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
-  {
-    bfhg.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bfgm.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bfgm.a(this.a))
-    {
-      bfgm.a(this.a).notify();
-      return;
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 

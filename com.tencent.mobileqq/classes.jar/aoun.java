@@ -1,73 +1,68 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoun
-  extends aofy<String>
+  extends aouf<aoum>
 {
   public int a()
   {
-    return 462;
-  }
-  
-  public Class<String> a()
-  {
-    return String.class;
+    return 95;
   }
   
   @NonNull
-  public String a(int paramInt)
+  public aoum a()
   {
-    return "";
+    return new aoum();
   }
   
-  @Nullable
-  public String a(aogf[] paramArrayOfaogf)
+  @NonNull
+  public aoum a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
-      paramArrayOfaogf = null;
-    }
-    String str;
-    do
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    int j = paramArrayOfaoko.length;
+    int i = 0;
+    for (;;)
     {
-      return paramArrayOfaogf;
-      str = paramArrayOfaogf[0].a;
-      paramArrayOfaogf = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+      if (i < j)
+      {
+        String str = paramArrayOfaoko[i].a;
+        if (QLog.isColorLevel()) {
+          QLog.i("PushOpenNotify", 2, "config :" + str);
+        }
+        if (!TextUtils.isEmpty(str))
+        {
+          ammy.a(localQQAppInterface, str, false);
+          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
+        }
+      }
+      else
+      {
+        return new aoum();
+      }
+      i += 1;
     }
   }
   
-  public void a(String paramString)
+  public Class<aoum> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
-    }
+    return aoum.class;
   }
   
-  public int b()
+  @NonNull
+  public aoum b()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
+    return new aoum();
   }
   
   public boolean c()
   {
-    return true;
+    return false;
   }
 }
 

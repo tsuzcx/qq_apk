@@ -1,6 +1,15 @@
-public abstract interface ytc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ytc
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  ytc(ytb paramytb) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.deleteObserver(this.a);
+  }
 }
 
 

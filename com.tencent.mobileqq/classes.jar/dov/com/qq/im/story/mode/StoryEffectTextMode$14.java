@@ -1,18 +1,18 @@
 package dov.com.qq.im.story.mode;
 
-import alpo;
+import alud;
 import android.view.View;
-import bmdi;
+import bmhu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class StoryEffectTextMode$14
   implements Runnable
 {
-  public StoryEffectTextMode$14(bmdi parambmdi) {}
+  public StoryEffectTextMode$14(bmhu parambmhu) {}
   
   public void run()
   {
-    QQToast.a(bmdi.a(this.this$0).getContext(), alpo.a(2131714806), 0).a();
+    QQToast.a(bmhu.a(this.this$0).getContext(), alud.a(2131714818), 0).a();
   }
 }
 

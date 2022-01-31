@@ -1,157 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aipo
-  extends Handler
+final class aipo
+  implements DialogInterface.OnClickListener
 {
-  private long jdField_a_of_type_Long = 1000L;
-  public CopyOnWriteArrayList<aipp> a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  aipo(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
   
-  public aipo()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public aipo(Looper paramLooper)
-  {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    b();
-    c();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
-    f();
-  }
-  
-  public void a(aipp paramaipp)
-  {
-    long l = SystemClock.elapsedRealtime();
-    if (aipp.a(paramaipp) > l)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaipp);
-      a(aipp.a(paramaipp) - l);
+    default: 
+      return;
+    case 0: 
+      aipi.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
       return;
     }
-    paramaipp.b();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
-      g();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aipp)localIterator.next()).a();
-    }
-  }
-  
-  public void b(aipp paramaipp)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramaipp);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
-      g();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aipp)localIterator.next()).b();
-    }
-  }
-  
-  public void d()
-  {
-    removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
-      sendMessage(obtainMessage(1));
-    }
-  }
-  
-  public void f()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = this.jdField_b_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
-        {
-          a();
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
-      }
-      finally {}
-      sendMessage(obtainMessage(1));
-    }
-  }
-  
-  public void g()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    removeMessages(1);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    for (;;)
-    {
-      try
-      {
-        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
-        if (l <= 0L)
-        {
-          a();
-          return;
-        }
-        if (l < this.jdField_a_of_type_Long)
-        {
-          sendMessageDelayed(obtainMessage(1), l);
-          continue;
-        }
-        l = SystemClock.elapsedRealtime();
-      }
-      finally {}
-      b();
-      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
-      sendMessageDelayed(obtainMessage(1), l);
-    }
-  }
-  
-  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return super.sendMessageAtTime(paramMessage, paramLong);
-    }
-    return false;
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
   }
 }
 

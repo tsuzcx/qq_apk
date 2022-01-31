@@ -1,31 +1,40 @@
-import java.util.List;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdbp
-  extends bdbo
+  implements bdbn
 {
-  public String b;
-  public List<Integer> b;
-  public String c;
-  public List<Integer> c;
-  public String d;
-  public List<Integer> d;
+  public String a;
   
-  public bdbo a()
+  bdbp(bdbm parambdbm, bdbk parambdbk)
   {
-    bdbo localbdbo = new bdbo();
-    localbdbo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbdbo.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-    localbdbo.jdField_a_of_type_Int = 1;
-    return localbdbo;
+    if ((parambdbk != null) && (parambdbk.a != null)) {
+      this.jdField_a_of_type_JavaLangString = parambdbk.a.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public bdbo b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    bdbo localbdbo = new bdbo();
-    localbdbo.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localbdbo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
-    localbdbo.jdField_a_of_type_Int = 2;
-    return localbdbo;
+    int i;
+    if (GroupIconHelper.a(paramString)) {
+      i = 1001;
+    }
+    for (String str = GroupIconHelper.b(paramString);; str = paramString)
+    {
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Bdbm.a(paramBoolean1, i, str, this.jdField_a_of_type_Bdbm.a);
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + i);
+        }
+        return;
+        this.jdField_a_of_type_Bdbm.a(paramBoolean1, i, str, null);
+      }
+      i = 101;
+    }
   }
 }
 

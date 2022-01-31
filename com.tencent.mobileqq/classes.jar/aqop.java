@@ -1,34 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-class aqop
-  implements aqpk
+public class aqop
+  implements aqov
 {
-  aqop(aqoo paramaqoo, String paramString) {}
+  public aqop(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void a(boolean paramBoolean)
+  public View.OnClickListener a(TextView paramTextView)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_JavaLangString + " start upload Discfile success");
-      }
-      aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqot.a(this.jdField_a_of_type_JavaLangString, aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon));
-    }
-    for (;;)
-    {
-      aqnw.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_Aqnw).a().a(aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_Long, false), true);
-    }
+    this.a.a = paramTextView;
+    return new aqoq(this);
+  }
+  
+  public boolean a()
+  {
+    return this.a.c;
+  }
+  
+  public boolean b()
+  {
+    return this.a.b;
+  }
+  
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqop
  * JD-Core Version:    0.7.0.1
  */

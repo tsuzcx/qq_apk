@@ -1,39 +1,33 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class wls
-  extends uhw<wli, wel>
+  extends JobSegment<Integer, wov>
 {
-  wls(wli paramwli)
+  private wou a;
+  
+  public wls(@NonNull wou paramwou)
   {
-    super(paramwli);
+    this.a = paramwou;
   }
   
-  public void a(@NonNull wli paramwli, @NonNull wel paramwel)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    Object localObject = paramwli.a(paramwel.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramwel.jdField_a_of_type_Boolean))
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((wov)localObject).a.size() > 0) || (((wov)localObject).b))
     {
-      wsv.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramwel.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramwel.jdField_a_of_type_Boolean) });
+      wxe.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
       return;
     }
-    if (!(localObject instanceof wjz))
-    {
-      wsv.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (wjz)localObject;
-    ((CommentLikeFeedItem)((wjz)localObject).a).mLikeCount = paramwel.b;
-    ((wjz)localObject).b(paramwel.jdField_a_of_type_JavaUtilList, true);
-    wli.a(paramwli).b(paramwel.jdField_a_of_type_JavaLangString);
+    localObject = new vfr();
+    ((vfr)localObject).a = this.a.a();
+    ((vfr)localObject).b = QQStoryContext.a().b();
+    urp.a().a((urt)localObject, new wlt(this, paramJobContext, paramInteger));
   }
-  
-  public Class acceptEventClass()
-  {
-    return wel.class;
-  }
-  
-  public void b(@NonNull wli paramwli, @NonNull wel paramwel) {}
 }
 
 

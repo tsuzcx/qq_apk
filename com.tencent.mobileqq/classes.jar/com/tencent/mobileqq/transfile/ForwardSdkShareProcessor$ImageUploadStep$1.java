@@ -2,14 +2,14 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import arzy;
-import awga;
-import baoo;
-import baou;
-import baub;
-import bdcs;
-import bfdq;
-import bfhl;
+import aseh;
+import awkj;
+import basx;
+import batd;
+import bayk;
+import bdhb;
+import bfhz;
+import bflu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,22 +35,22 @@ import org.json.JSONObject;
 public class ForwardSdkShareProcessor$ImageUploadStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$ImageUploadStep$1(baou parambaou) {}
+  public ForwardSdkShareProcessor$ImageUploadStep$1(batd parambatd) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|run|retry=" + baou.a(this.a));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|run|retry=" + batd.a(this.a));
     }
     if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       this.a.f();
       return;
     }
-    String str3 = this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str3 = this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
     int i;
     byte b;
-    if ((!TextUtils.isEmpty(baoo.b(this.a.jdField_b_of_type_Baoo))) && (TextUtils.isEmpty(baoo.a(this.a.jdField_b_of_type_Baoo))))
+    if ((!TextUtils.isEmpty(basx.b(this.a.jdField_b_of_type_Basx))) && (TextUtils.isEmpty(basx.a(this.a.jdField_b_of_type_Basx))))
     {
       i = 1;
       if (i == 0) {
@@ -68,13 +68,13 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
     {
       if (i != 0)
       {
-        str2 = baoo.b(this.a.jdField_b_of_type_Baoo);
+        str2 = basx.b(this.a.jdField_b_of_type_Basx);
         localObject1 = new CompressInfo(str2, 0);
         ((CompressInfo)localObject1).f = 0;
-        arzy.a("compress_local_image");
-        arzy.a("compress_local_image", str3, awga.b((CompressInfo)localObject1));
+        aseh.a("compress_local_image");
+        aseh.a("compress_local_image", str3, awkj.b((CompressInfo)localObject1));
         if (!TextUtils.isEmpty(((CompressInfo)localObject1).e)) {
-          baoo.e(this.a.jdField_b_of_type_Baoo, ((CompressInfo)localObject1).e);
+          basx.e(this.a.jdField_b_of_type_Basx, ((CompressInfo)localObject1).e);
         }
         if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
@@ -86,24 +86,24 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
           continue;
         }
         l2 = System.currentTimeMillis();
-        localObject1 = new File(baoo.b(this.a.jdField_b_of_type_Baoo));
+        localObject1 = new File(basx.b(this.a.jdField_b_of_type_Basx));
         if (((File)localObject1).exists())
         {
           l1 = ((File)localObject1).length();
-          localObject1 = bdcs.c(baoo.b(this.a.jdField_b_of_type_Baoo));
+          localObject1 = bdhb.c(basx.b(this.a.jdField_b_of_type_Basx));
           if ((l1 <= 0L) || (TextUtils.isEmpty((CharSequence)localObject1))) {
             break label2148;
           }
           localObject1 = String.format("https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { localObject1, Long.valueOf(l1) });
-          arzy.a("query_image");
-          localObject1 = ndd.a(ndk.a((String)localObject1, 1007), str3, baoo.f(this.a.jdField_b_of_type_Baoo));
+          aseh.a("query_image");
+          localObject1 = ndd.a(ndk.a((String)localObject1, 1007), str3, basx.f(this.a.jdField_b_of_type_Basx));
           localObject4 = new HashMap();
           if (localObject1 != null) {
             break label1287;
           }
           ((HashMap)localObject4).put("param_ret_code", "-1");
           ((HashMap)localObject4).put("param_need_upload", "0");
-          arzy.a("query_image", str3, (HashMap)localObject4, false);
+          aseh.a("query_image", str3, (HashMap)localObject4, false);
         }
       }
     }
@@ -133,26 +133,26 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
           i = 0;
           ((Bundle)localObject3).putString("intext_2", i);
           ((Bundle)localObject3).putString("intext_5", "" + l1);
-          bfdq.a().a((Bundle)localObject3, "", str3, false);
+          bfhz.a().a((Bundle)localObject3, "", str3, false);
           bool2 = false;
           i = 0;
           if (TextUtils.isEmpty((CharSequence)((Pair)localObject1).second)) {
             break label1391;
           }
           bool1 = true;
-          baoo.c(this.a.jdField_b_of_type_Baoo, (String)((Pair)localObject1).second);
-          baoo.b(this.a.jdField_b_of_type_Baoo).set(true);
+          basx.c(this.a.jdField_b_of_type_Basx, (String)((Pair)localObject1).second);
+          basx.b(this.a.jdField_b_of_type_Basx).set(true);
           l1 = System.currentTimeMillis() - l2;
           if (QLog.isColorLevel())
           {
-            localObject1 = "ImageUploadStep|uploadImage|suc=" + bool1 + ",cost=" + l1 + ",localImgUrl=" + baoo.b(this.a.jdField_b_of_type_Baoo) + ",targetUrl=" + baoo.e(this.a.jdField_b_of_type_Baoo);
+            localObject1 = "ImageUploadStep|uploadImage|suc=" + bool1 + ",cost=" + l1 + ",localImgUrl=" + basx.b(this.a.jdField_b_of_type_Basx) + ",targetUrl=" + basx.e(this.a.jdField_b_of_type_Basx);
             if ((bool1) && (l1 <= 5000L)) {
               break label1913;
             }
             QLog.e("Q.share.ForwardSdkShareProcessor", 2, (String)localObject1);
           }
           if (!bool1) {
-            QLog.e("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|uploadImage|ret=" + i + ",retry=" + baou.a(this.a));
+            QLog.e("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|uploadImage|ret=" + i + ",retry=" + batd.a(this.a));
           }
           localObject1 = new Bundle();
           ((Bundle)localObject1).putString("report_type", "102");
@@ -168,10 +168,10 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
           ((Bundle)localObject1).putString("intext_5", "" + l1);
           if (!bool1)
           {
-            ((Bundle)localObject1).putString("stringext_2", baoo.b(this.a.jdField_b_of_type_Baoo));
-            ((Bundle)localObject1).putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
+            ((Bundle)localObject1).putString("stringext_2", basx.b(this.a.jdField_b_of_type_Basx));
+            ((Bundle)localObject1).putString("stringext_1", basx.e(this.a.jdField_b_of_type_Basx));
           }
-          bfdq.a().a((Bundle)localObject1, "", str3, false);
+          bfhz.a().a((Bundle)localObject1, "", str3, false);
           if (!bool1) {
             break label1974;
           }
@@ -183,19 +183,19 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
             for (;;)
             {
               localObject1 = new File(str2).toURL().toString();
-              arzy.a("reuse_image_for_aio");
-              bfhl.a(true, (String)localObject1, baoo.b(this.a.jdField_b_of_type_Baoo), baoo.a(this.a.jdField_b_of_type_Baoo));
-              arzy.a("reuse_image_for_aio", str3, true);
+              aseh.a("reuse_image_for_aio");
+              bflu.a(true, (String)localObject1, basx.b(this.a.jdField_b_of_type_Basx), basx.a(this.a.jdField_b_of_type_Basx));
+              aseh.a("reuse_image_for_aio", str3, true);
               b = 1;
-              localObject1 = this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+              localObject1 = this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.c, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
               if ((localObject1 != null) && ((localObject1 instanceof MessageForStructing)) && ((((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
               {
                 localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-                ((AbsShareMsg)localObject1).updateCover(baoo.a(this.a.jdField_b_of_type_Baoo));
+                ((AbsShareMsg)localObject1).updateCover(basx.a(this.a.jdField_b_of_type_Basx));
                 ((AbsShareMsg)localObject1).shareData.imageUrlStatus = b;
-                this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
+                this.a.jdField_b_of_type_Basx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.c, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.a.jdField_b_of_type_Basx.jdField_a_of_type_Bayk.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
               }
-              baoo.a(this.a.jdField_b_of_type_Baoo).set(true);
+              basx.a(this.a.jdField_b_of_type_Basx).set(true);
               this.a.b();
               return;
               l1 = 0L;
@@ -214,7 +214,7 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
               label1370:
               for (bool1 = true;; bool1 = false)
               {
-                arzy.a("query_image", str3, (HashMap)localObject4, bool1);
+                aseh.a("query_image", str3, (HashMap)localObject4, bool1);
                 break;
                 localObject3 = "1";
                 break label1321;
@@ -236,23 +236,23 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
                 localHashMap1.put("Cookie", "p_uin=" + str3 + ";p_skey=" + (String)localObject1);
               }
               HashMap localHashMap2 = new HashMap();
-              localHashMap2.put("share_image", baoo.b(this.a.jdField_b_of_type_Baoo));
+              localHashMap2.put("share_image", basx.b(this.a.jdField_b_of_type_Basx));
               localObject1 = new Bundle();
               ((Bundle)localObject1).putString("report_type", "102");
               ((Bundle)localObject1).putString("act_type", "51");
               ((Bundle)localObject1).putString("intext_3", "0");
-              ((Bundle)localObject1).putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
-              bfdq.a().a((Bundle)localObject1, "", str3, false);
+              ((Bundle)localObject1).putString("stringext_1", basx.e(this.a.jdField_b_of_type_Basx));
+              bfhz.a().a((Bundle)localObject1, "", str3, false);
               localObject4 = new HashMap();
               ((HashMap)localObject4).put("param_is_ip_direct", "1");
-              arzy.a("upload_local_thumb_image");
-              localObject3 = ndd.a(ndk.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str3, baoo.f(this.a.jdField_b_of_type_Baoo), null, localHashMap2, localHashMap1, false);
+              aseh.a("upload_local_thumb_image");
+              localObject3 = ndd.a(ndk.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str3, basx.f(this.a.jdField_b_of_type_Basx), null, localHashMap2, localHashMap1, false);
               localObject1 = localObject3;
               if (localObject3 == null)
               {
-                arzy.a("upload_local_thumb_image", str3, (HashMap)localObject4, false);
-                arzy.a("upload_local_thumb_image");
-                localObject1 = ndd.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str3, baoo.f(this.a.jdField_b_of_type_Baoo), null, localHashMap2, localHashMap1, true);
+                aseh.a("upload_local_thumb_image", str3, (HashMap)localObject4, false);
+                aseh.a("upload_local_thumb_image");
+                localObject1 = ndd.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str3, basx.f(this.a.jdField_b_of_type_Basx), null, localHashMap2, localHashMap1, true);
                 ((HashMap)localObject4).put("param_is_ip_direct", "0");
               }
               if (localObject1 == null) {
@@ -274,11 +274,11 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
                     break label2130;
                   }
                   localObject1 = ((JSONObject)localObject1).getJSONObject("result");
-                  baoo.c(this.a.jdField_b_of_type_Baoo, ((JSONObject)localObject1).getString("url"));
-                  baoo.b(this.a.jdField_b_of_type_Baoo).set(true);
+                  basx.c(this.a.jdField_b_of_type_Basx, ((JSONObject)localObject1).getString("url"));
+                  basx.b(this.a.jdField_b_of_type_Basx).set(true);
                   bool1 = true;
                   ((HashMap)localObject4).put("param_ret_code", Integer.toString(i));
-                  arzy.a("upload_local_thumb_image", str3, bool1);
+                  aseh.a("upload_local_thumb_image", str3, bool1);
                 }
                 catch (JSONException localJSONException2)
                 {
@@ -316,23 +316,23 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
             continue;
           }
           label1974:
-          if ((i == 100000) && (baoo.c(this.a.jdField_b_of_type_Baoo) < 2))
+          if ((i == 100000) && (basx.c(this.a.jdField_b_of_type_Basx) < 2))
           {
-            baoo.d(this.a.jdField_b_of_type_Baoo);
-            baoo.d(this.a.jdField_b_of_type_Baoo, null);
-            baoo.a(this.a.jdField_b_of_type_Baoo, true);
-            baoo.a(this.a.jdField_b_of_type_Baoo);
+            basx.d(this.a.jdField_b_of_type_Basx);
+            basx.d(this.a.jdField_b_of_type_Basx, null);
+            basx.a(this.a.jdField_b_of_type_Basx, true);
+            basx.a(this.a.jdField_b_of_type_Basx);
             return;
           }
-          if (baou.b(this.a) < 2)
+          if (batd.b(this.a) < 2)
           {
             ThreadManager.post(this, 8, null, true);
             return;
           }
-          this.a.jdField_b_of_type_Baoo.b(9402, "upload share thumbnail fail");
+          this.a.jdField_b_of_type_Basx.b(9402, "upload share thumbnail fail");
           this.a.c();
           return;
-          QLog.d("Q.share.ForwardSdkShareProcessor", 1, "skip ImageUploadStep change remote url : " + baoo.a(this.a.jdField_b_of_type_Baoo));
+          QLog.d("Q.share.ForwardSdkShareProcessor", 1, "skip ImageUploadStep change remote url : " + basx.a(this.a.jdField_b_of_type_Basx));
           continue;
           label2130:
           bool1 = false;

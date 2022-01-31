@@ -1,27 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-class arva
-  implements DialogInterface.OnClickListener
+public class arva
+  implements arrh
 {
-  arva(aruz paramaruz, int paramInt, Bundle paramBundle) {}
+  public arva(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_Aruz.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      paramDialogInterface = this.jdField_a_of_type_Aruz.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Aruz.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+    QfileEditBottomBar.a(this.a).a().a(QfileEditBottomBar.a(this.a));
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    if (this.jdField_a_of_type_Aruz.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      this.jdField_a_of_type_Aruz.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_Aruz.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    arbs.b();
+    QfileEditBottomBar.a(this.a).h();
+    QfileEditBottomBar.a(this.a).f(false);
+    QfileEditBottomBar.a(this.a).b();
   }
+  
+  public void b() {}
 }
 
 

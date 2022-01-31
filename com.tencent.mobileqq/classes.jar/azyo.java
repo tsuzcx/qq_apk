@@ -1,28 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class azyo
-  implements DialogInterface.OnClickListener
+class azyo
 {
-  azyo(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azyk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    azyk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    azyk.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    azyk.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-  }
+  public View a;
+  public ViewGroup a;
+  public View b;
+  public ViewGroup b;
+  public View c;
+  public View d;
 }
 
 

@@ -1,49 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class vbb
-  extends unk<vbd>
+class vbb
+  extends ulw
 {
-  public List<String> a = new ArrayList();
+  vbb(vaw paramvaw) {}
   
-  public String a()
+  public void a()
   {
-    return "StorySvc.homepage_batch_feeds_label";
-  }
-  
-  public unf a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
-    {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new vbd(localRspStoryFeedTagInfo);
+    wxe.b(vaw.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      wxe.e(vaw.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+    uyz localuyz = (uyz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
+    if (localuyz.a()) {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_Vai.a("exp_story", 3);
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    do
     {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      do
+      {
+        return;
+        if (!localuyz.b()) {
+          break;
+        }
+      } while (!this.a.a());
+      this.a.jdField_a_of_type_Vai.a("exp_story", 2);
+      return;
+      if (!this.a.jdField_a_of_type_Vbg.a()) {
+        break;
+      }
+    } while (!this.a.a());
+    this.a.jdField_a_of_type_Vai.a("exp_story", 5);
+    return;
+    if (localuyz.c())
+    {
+      this.a.h();
+      localuyz.a();
+      this.a.jdField_a_of_type_Vai.a("exp_hide", 0);
+      return;
     }
-    return localReqStoryFeedTagInfo.toByteArray();
+    this.a.jdField_a_of_type_Vai.a("exp_hide", 0);
   }
 }
 

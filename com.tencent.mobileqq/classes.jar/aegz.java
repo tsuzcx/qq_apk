@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aegz
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public aegz(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aegz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.l();
-    this.a.a(awmr.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), "2", "1");
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.c(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

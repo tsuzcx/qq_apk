@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ocr;
 
-import alpo;
-import avsg;
-import avva;
+import alud;
+import avwp;
+import avzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OCRResultFragmentNew$7$3
   implements Runnable
 {
-  public OCRResultFragmentNew$7$3(avsg paramavsg) {}
+  public OCRResultFragmentNew$7$3(avwp paramavwp) {}
   
   public void run()
   {
     OCRResultFragmentNew.a(this.a.a, false);
     OCRResultFragmentNew.a(this.a.a).dismiss();
     OCRResultFragmentNew.a(this.a.a).a(0);
-    QQToast.a(OCRResultFragmentNew.a(this.a.a), 1, alpo.a(2131708201), 0).a();
+    QQToast.a(OCRResultFragmentNew.a(this.a.a), 1, alud.a(2131708213), 0).a();
   }
 }
 

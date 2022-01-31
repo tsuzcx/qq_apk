@@ -1,30 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-
 public class bbaz
-  implements Animation.AnimationListener
+  extends bbbi
 {
-  public bbaz(AbsPublishActivity paramAbsPublishActivity, Animation paramAnimation) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" uuid:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" storageSource:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" isSelfSend:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" busiType:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" downType:").append(this.d);
+    return localStringBuilder.toString();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

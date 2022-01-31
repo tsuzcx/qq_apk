@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.widget.share;
 
-import beul;
-import beum;
+import beyu;
+import beyv;
 
 public class ShareActionSheetFactory
 {
   public static ShareActionSheet create(ShareActionSheetV2.Param paramParam)
   {
-    return new beum(new beul(new ShareActionSheetV2(paramParam)));
+    return new beyv(new beyu(new ShareActionSheetV2(paramParam)));
   }
 }
 

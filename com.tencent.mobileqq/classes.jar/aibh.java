@@ -1,17 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 class aibh
-  extends amks
+  implements arpm
 {
-  aibh(aiak paramaiak) {}
+  aibh(aibg paramaibg) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      azqs.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
     }
   }
 }

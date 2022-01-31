@@ -1,18 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
 public class akbs
-  implements anoi
+  extends nac
 {
-  public akbs(SessionClearFragment paramSessionClearFragment) {}
+  akbs(akbr paramakbr) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 

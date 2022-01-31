@@ -1,32 +1,17 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.confess.ConfessPlugin.5;
-import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aoet
-  implements bevy
+class aoet
+  implements DialogInterface.OnClickListener
 {
-  public aoet(ConfessPlugin.5.1 param1) {}
+  aoet(aoes paramaoes) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
+    if (aoes.a(this.a).isShowing()) {
+      aoes.a(this.a).dismiss();
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      ConfessPlugin.a(this.a.a.this$0, false);
-      ConfessPlugin.a(this.a.a.this$0, 1, 2131720019);
-      return;
-    case 0: 
-      ConfessPlugin.a(this.a.a.this$0, true);
-      ConfessPlugin.a(this.a.a.this$0, 2, 2131720038);
-      return;
-    }
-    ConfessPlugin.a(this.a.a.this$0, false);
+    aofm.a(aoes.a(this.a), true);
   }
 }
 

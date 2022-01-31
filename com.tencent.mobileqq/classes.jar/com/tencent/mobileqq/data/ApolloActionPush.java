@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloActionPush
-  extends awbv
+  extends awge
 {
   public int mActionId;
   public int mActionType;
   public int mAioType;
   public String mContent;
-  @awdj
+  @awhs
   public long mId;
   public long mRcvUin;
   public long mSendUin;

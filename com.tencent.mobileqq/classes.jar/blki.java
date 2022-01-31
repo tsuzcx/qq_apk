@@ -1,12 +1,20 @@
-public abstract interface blki
+import com.tencent.tavcut.bean.CropConfig;
+
+public class blki
 {
-  public abstract int a();
+  public int a;
+  public CropConfig a;
+  public String a;
+  public int b;
   
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract int d();
+  public blki(String paramString, int paramInt1, int paramInt2, CropConfig paramCropConfig)
+  {
+    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
+  }
 }
 
 

@@ -1,30 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class adpw
-  extends Handler
+  implements aofp
 {
-  public adpw(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public adpw(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onColorNoteAnimFinish()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 101: 
-      this.a.c();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131721199);
-      }
-      this.a.a(paramMessage, 1);
-      return;
-    }
-    this.a.c();
-    this.a.finish();
+    QQBrowserActivity.a(this.a);
   }
 }
 

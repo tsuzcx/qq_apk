@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
-import adky;
-import aeiz;
-import aejh;
-import aeji;
-import aejj;
-import aejk;
-import aejm;
-import aejn;
-import aejo;
-import aejp;
-import aejw;
-import aejx;
-import aekd;
-import aekt;
-import alpo;
+import adpn;
+import aeno;
+import aenw;
+import aenx;
+import aeny;
+import aenz;
+import aeob;
+import aeoc;
+import aeod;
+import aeoe;
+import aeol;
+import aeom;
+import aeos;
+import aepi;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,9 +39,9 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqci;
-import bdee;
-import bdje;
+import aqgr;
+import bdin;
+import bdnn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -57,13 +57,13 @@ import mqq.app.AppRuntime;
 
 public class ReminderListFragment
   extends PublicBaseFragment
-  implements aqci<RecyclerView>
+  implements aqgr<RecyclerView>
 {
   private static final String jdField_a_of_type_JavaLangString = ReminderListFragment.class.getSimpleName();
   private int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
-  private aejo jdField_a_of_type_Aejo;
-  private aejx jdField_a_of_type_Aejx;
+  private aeod jdField_a_of_type_Aeod;
+  private aeom jdField_a_of_type_Aeom;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -83,17 +83,17 @@ public class ReminderListFragment
   private View a(Context paramContext)
   {
     FrameLayout localFrameLayout = new FrameLayout(paramContext);
-    localFrameLayout.setOnClickListener(new aeji(this));
+    localFrameLayout.setOnClickListener(new aenx(this));
     localFrameLayout.setBackgroundColor(Color.parseColor("#1A000000"));
     Button localButton = new Button(paramContext);
-    localButton.setText(alpo.a(2131713763));
+    localButton.setText(alud.a(2131713775));
     localButton.setTextColor(Color.parseColor("#000000"));
     localButton.setTextSize(1, 16.0F);
-    localButton.setBackgroundDrawable(paramContext.getResources().getDrawable(2130844272));
-    localButton.setOnClickListener(new aejj(this));
+    localButton.setBackgroundDrawable(paramContext.getResources().getDrawable(2130844344));
+    localButton.setOnClickListener(new aeny(this));
     localFrameLayout.addView(localButton);
     paramContext = (FrameLayout.LayoutParams)localButton.getLayoutParams();
-    paramContext.width = aekt.a(80.0F, getResources());
+    paramContext.width = aepi.a(80.0F, getResources());
     paramContext.height = -2;
     paramContext.gravity = 53;
     return localFrameLayout;
@@ -101,22 +101,22 @@ public class ReminderListFragment
   
   private View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560775, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131363980));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131365760));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368659));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560793, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131363982));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131365762));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368670));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131689607));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368613));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new aejh(this));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131372476));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368624));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new aenw(this));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131372496));
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView.setOnRefreshListener(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131375492);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131375543);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), 1, false));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aejp(this, null));
-    this.jdField_a_of_type_Aejo = new aejo(this, null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aejo);
-    this.jdField_a_of_type_Aejo.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aeoe(this, null));
+    this.jdField_a_of_type_Aeod = new aeod(this, null);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aeod);
+    this.jdField_a_of_type_Aeod.notifyDataSetChanged();
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(getActivity()), -1, -1);
     }
@@ -156,11 +156,11 @@ public class ReminderListFragment
     }
     if (!this.d)
     {
-      b(alpo.a(2131713764));
+      b(alud.a(2131713776));
       this.jdField_a_of_type_AndroidOsHandler.post(new ReminderListFragment.8(this));
       return;
     }
-    aejw.a(paramInt, 10, new aejn(this, paramInt));
+    aeol.a(paramInt, 10, new aeoc(this, paramInt));
   }
   
   private void a(AcsMsg paramAcsMsg)
@@ -170,16 +170,16 @@ public class ReminderListFragment
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "---deleMsg--- acsMsg is null");
       }
-      b(alpo.a(2131713756));
+      b(alud.a(2131713768));
       return;
     }
     String str = paramAcsMsg.msg_id;
-    aejw.a(str, new aejk(this, paramAcsMsg, str));
+    aeol.a(str, new aenz(this, paramAcsMsg, str));
   }
   
   public static void a(Activity paramActivity)
   {
-    adky.a(paramActivity, new Intent(paramActivity, ReminderListFragment.class), PublicFragmentActivity.class, ReminderListFragment.class, 2000);
+    adpn.a(paramActivity, new Intent(paramActivity, ReminderListFragment.class), PublicFragmentActivity.class, ReminderListFragment.class, 2000);
   }
   
   public static void a(Context paramContext, String paramString)
@@ -189,39 +189,39 @@ public class ReminderListFragment
     if (!(paramContext instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
-    adky.a(paramContext, localIntent, PublicFragmentActivity.class, ReminderListFragment.class);
+    adpn.a(paramContext, localIntent, PublicFragmentActivity.class, ReminderListFragment.class);
   }
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_Aejx.a(paramString, new aejm(this));
+    this.jdField_a_of_type_Aeom.a(paramString, new aeob(this));
   }
   
-  private void a(ArrayList<AcsMsg> paramArrayList, ArrayList<aekd> paramArrayList1, boolean paramBoolean)
+  private void a(ArrayList<AcsMsg> paramArrayList, ArrayList<aeos> paramArrayList1, boolean paramBoolean)
   {
     paramArrayList = paramArrayList.iterator();
     if (paramArrayList.hasNext())
     {
       AcsMsg localAcsMsg = (AcsMsg)paramArrayList.next();
-      aekd localaekd = new aekd();
-      localaekd.jdField_a_of_type_WalletAcsMsg = localAcsMsg;
+      aeos localaeos = new aeos();
+      localaeos.jdField_a_of_type_WalletAcsMsg = localAcsMsg;
       if (localAcsMsg.notice_time * 1000L >= this.jdField_a_of_type_Long)
       {
-        localaekd.jdField_a_of_type_Int = 0;
+        localaeos.jdField_a_of_type_Int = 0;
         if (!this.jdField_a_of_type_Boolean)
         {
-          localaekd.jdField_a_of_type_JavaLangString = alpo.a(2131713762);
+          localaeos.jdField_a_of_type_JavaLangString = alud.a(2131713774);
           this.jdField_a_of_type_Boolean = true;
         }
       }
       for (;;)
       {
-        paramArrayList1.add(localaekd);
+        paramArrayList1.add(localaeos);
         break;
-        localaekd.jdField_a_of_type_Int = 1;
+        localaeos.jdField_a_of_type_Int = 1;
         if (!this.jdField_b_of_type_Boolean)
         {
-          localaekd.jdField_a_of_type_JavaLangString = alpo.a(2131713767);
+          localaeos.jdField_a_of_type_JavaLangString = alud.a(2131713779);
           this.jdField_b_of_type_Boolean = true;
         }
       }
@@ -237,7 +237,7 @@ public class ReminderListFragment
     if (localIntent != null)
     {
       bool1 = bool2;
-      if (!bdje.a(localIntent.getStringExtra("notice_time"))) {
+      if (!bdnn.a(localIntent.getStringExtra("notice_time"))) {
         bool1 = true;
       }
       this.c = bool1;
@@ -261,9 +261,9 @@ public class ReminderListFragment
   
   private void c()
   {
-    if (!bdee.g(getActivity()))
+    if (!bdin.g(getActivity()))
     {
-      b(alpo.a(2131713759));
+      b(alud.a(2131713771));
       if (this.jdField_b_of_type_Int == 0) {
         b();
       }
@@ -274,7 +274,7 @@ public class ReminderListFragment
       String str = getActivity().getIntent().getStringExtra("notice_time");
       try
       {
-        a(aeiz.a(Long.parseLong(str) * 1000L, "yyyyMMdd"));
+        a(aeno.a(Long.parseLong(str) * 1000L, "yyyyMMdd"));
         return;
       }
       catch (Exception localException)
@@ -295,8 +295,8 @@ public class ReminderListFragment
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = a();
-    this.jdField_a_of_type_Aejx = new aejx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    aejw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Aeom = new aeom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    aeol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     c();
   }
   
@@ -342,7 +342,7 @@ public class ReminderListFragment
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    aejw.a();
+    aeol.a();
   }
 }
 

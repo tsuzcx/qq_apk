@@ -1,23 +1,16 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.widget.QQToast;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
 class bfcg
-  extends QIPCModule
+  implements DialogInterface.OnClickListener
 {
-  bfcg(bfcf parambfcf, String paramString)
-  {
-    super(paramString);
-  }
+  bfcg(bfcf parambfcf) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
-      QQToast.a(BaseApplicationImpl.context, alpo.a(2131711568), 1).a();
-    }
-    return null;
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 

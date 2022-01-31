@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajqp;
-import ajqr;
+import ajve;
+import ajvg;
 import java.lang.ref.WeakReference;
 
 public class SubtitleDataManager$1
   implements Runnable
 {
-  public SubtitleDataManager$1(ajqp paramajqp) {}
+  public SubtitleDataManager$1(ajve paramajve) {}
   
   public void run()
   {
     if (this.this$0.a != null) {
-      ((ajqr)this.this$0.a.get()).a();
+      ((ajvg)this.this$0.a.get()).a();
     }
   }
 }

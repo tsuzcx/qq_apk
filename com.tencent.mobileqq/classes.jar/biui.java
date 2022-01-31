@@ -1,30 +1,36 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class biui
 {
-  public static long a(Context paramContext, String paramString)
+  private static void b(String paramString)
   {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (paramString2 == null) {
-      return;
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558919);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365237);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
     }
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
+    localTextView = (TextView)localDialog.findViewById(2131365233);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365222);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131690648);
+      localTextView.setOnClickListener(new biuk(localDialog));
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365228);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131691603);
+      localTextView.setOnClickListener(new biul(localDialog, paramString));
+    }
+    localDialog.show();
   }
 }
 

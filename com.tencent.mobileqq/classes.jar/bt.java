@@ -18,7 +18,7 @@ public class bt
   {
     LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
     ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
-    this.a.a.setPadding(aekt.a(24.0F, this.a.app.getApplication().getResources()), aekt.a(10.0F, this.a.app.getApplication().getResources()), aekt.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    this.a.a.setPadding(aepi.a(24.0F, this.a.app.getApplication().getResources()), aepi.a(10.0F, this.a.app.getApplication().getResources()), aepi.a(24.0F, this.a.app.getApplication().getResources()), 0);
     LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
   

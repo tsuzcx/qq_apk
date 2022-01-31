@@ -16,18 +16,18 @@ import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.msg.im_msg_body.Text;
 
 class tab
-  implements awfy
+  implements awkh
 {
-  tab(taa paramtaa, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, alsi paramalsi, boolean paramBoolean) {}
+  tab(taa paramtaa, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, alwx paramalwx, boolean paramBoolean) {}
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
   {
     return null;
   }
   
-  public void a(awfz paramawfz) {}
+  public void a(awki paramawki) {}
   
-  public void b(awfz paramawfz)
+  public void b(awki paramawki)
   {
     MessageForStructing localMessageForStructing;
     Object localObject1;
@@ -37,7 +37,7 @@ class tab
     {
       try
       {
-        if (paramawfz.jdField_a_of_type_Int != 0) {
+        if (paramawki.jdField_a_of_type_Int != 0) {
           break label541;
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
@@ -46,13 +46,13 @@ class tab
           if (localMessageForStructing.richText != null) {
             break label306;
           }
-          localObject1 = ayvu.a(localMessageForStructing);
+          localObject1 = azad.a(localMessageForStructing);
           if (localObject1 == null) {
             break label283;
           }
           localObject2 = ((im_msg_body.RichText)localObject1).elems.get();
           if (QLog.isColorLevel()) {
-            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramawfz.c);
+            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramawki.c);
           }
           localObject2 = ((List)localObject2).iterator();
           if (!((Iterator)localObject2).hasNext()) {
@@ -61,7 +61,7 @@ class tab
           localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
           if (((im_msg_body.Elem)localObject3).rich_msg.has())
           {
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramawfz.c.getBytes()));
+            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramawki.c.getBytes()));
             ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
             continue;
           }
@@ -71,10 +71,10 @@ class tab
           return;
         }
       }
-      catch (Exception paramawfz)
+      catch (Exception paramawki)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramawfz);
+          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramawki);
         }
         this.jdField_a_of_type_Taa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
       }
@@ -92,12 +92,12 @@ class tab
     for (;;)
     {
       label283:
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Alsi, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Alwx, this.jdField_a_of_type_Boolean);
       return;
       label306:
       localObject1 = localMessageForStructing.richText.elems.get();
       if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramawfz.c);
+        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramawki.c);
       }
       if ((localObject1 != null) && (taa.b(localMessageForStructing.structingMsg)))
       {
@@ -107,7 +107,7 @@ class tab
           localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
           if (((im_msg_body.Elem)localObject2).rich_msg.has())
           {
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramawfz.c.getBytes()));
+            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramawki.c.getBytes()));
             ((im_msg_body.Elem)localObject2).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
             ((im_msg_body.Elem)localObject2).rich_msg.uint32_service_id.set(localMessageForStructing.structingMsg.mMsgServiceID);
           }
@@ -125,7 +125,7 @@ class tab
     }
     label541:
     if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramawfz.b + ",result.errStr=" + paramawfz.jdField_a_of_type_JavaLangString);
+      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramawki.b + ",result.errStr=" + paramawki.jdField_a_of_type_JavaLangString);
     }
     this.jdField_a_of_type_Taa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }

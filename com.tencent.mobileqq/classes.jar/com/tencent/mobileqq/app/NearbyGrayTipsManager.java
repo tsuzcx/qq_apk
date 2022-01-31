@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import abor;
-import aljq;
-import alsz;
+import abtg;
+import alof;
+import alxo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import ayvy;
+import azah;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -2748,7 +2748,7 @@ public class NearbyGrayTipsManager
           if (i < 0) {
             break label165;
           }
-          if (!ayvy.a(((ChatMessage)paramList.get(i)).msgtype))
+          if (!azah.a(((ChatMessage)paramList.get(i)).msgtype))
           {
             k = j + 1;
             j = k;
@@ -3066,15 +3066,15 @@ public class NearbyGrayTipsManager
         ??? = (Integer)((Iterator)localObject4).next();
         if (((Integer)???).intValue() == 1)
         {
-          ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(aljq.H, 1001);
-          localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10002).a(aljq.H, 10002);
+          ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(alof.H, 1001);
+          localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10002).a(alof.H, 10002);
           ((List)localObject1).addAll((Collection)???);
           ((List)localObject1).addAll((Collection)localObject6);
         }
       }
       if (((Integer)???).intValue() == 2)
       {
-        localList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1010).a(aljq.ab, 1010));
+        localList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1010).a(alof.ab, 1010));
         continue;
         label447:
         paramLong = (paramLong - localObject3.sceneTwo.timeRange * 60 * 1000) / 1000L;
@@ -3094,7 +3094,7 @@ public class NearbyGrayTipsManager
             localList.remove(paramInt1);
           }
         }
-        Collections.sort(localList, new alsz(this));
+        Collections.sort(localList, new alxo(this));
         localObject4 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(20);
         paramInt1 = 0;
         Object localObject2 = localList.iterator();

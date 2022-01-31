@@ -1,6 +1,19 @@
-public abstract interface axsk
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class axsk
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  axsk(axsj paramaxsj) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
+  }
 }
 
 

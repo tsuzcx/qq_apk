@@ -1,6 +1,18 @@
-public abstract interface azhs
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.qphone.base.util.QLog;
+
+class azhs
+  implements Camera.AutoFocusCallback
 {
-  public abstract void f(boolean paramBoolean);
+  azhs(azhr paramazhr) {}
+  
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
+    }
+  }
 }
 
 

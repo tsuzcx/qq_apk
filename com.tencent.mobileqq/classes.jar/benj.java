@@ -1,14 +1,16 @@
-public abstract interface benj
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.BounceScrollView;
+
+public class benj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a();
+  public benj(BounceScrollView paramBounceScrollView) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+  }
 }
 
 

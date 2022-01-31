@@ -1,37 +1,68 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.1;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 
-public class yiu
-  implements yjw
+public abstract class yiu
+  extends yhy
 {
-  public yiu(VideoPlayerView paramVideoPlayerView) {}
+  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private BaseWidgetView jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public yiu(Bundle paramBundle)
+  {
+    super(paramBundle);
+  }
+  
+  public BaseWidgetView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
+  }
+  
+  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy);
   
   public void a(boolean paramBoolean)
   {
-    VideoPlayerView.f(this.a, paramBoolean);
-    if (VideoPlayerView.j(this.a)) {
-      this.a.a().post(new VideoPlayerView.19.1(this));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (getParentAdapter() != null) {
+      getParentAdapter().notifyDataSetChanged();
     }
-    do
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 1;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)
     {
-      do
-      {
-        return;
-        if (VideoPlayerView.c(this.a))
-        {
-          this.a.a().post(new VideoPlayerView.19.2(this));
-          return;
-        }
-      } while (!VideoPlayerView.i(this.a));
-      if (VideoPlayerView.a(this.a) != null) {
-        VideoPlayerView.a(this.a).a(true);
-      }
-      this.a.f();
-    } while (VideoPlayerView.a(this.a) == null);
-    VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
+      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
+      paramViewGroup = new yhx(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+      paramViewGroup.setIsRecyclable(false);
+      getParentRecyclerView().getRecycledViewPool().setMaxRecycledViews(getGlobalViewType(paramInt), 0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewGroup;
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
   }
 }
 

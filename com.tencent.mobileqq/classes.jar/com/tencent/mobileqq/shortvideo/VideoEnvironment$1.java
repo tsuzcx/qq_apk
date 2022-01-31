@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azab;
-import azac;
+import azek;
+import azel;
 import com.tencent.video.decode.ShortVideoSoLoad;
 import java.io.File;
 
@@ -19,7 +19,7 @@ final class VideoEnvironment$1
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }
-    String str2 = azab.a();
+    String str2 = azek.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int i = VideoEnvironment.a().length;
     int j;
@@ -42,8 +42,8 @@ final class VideoEnvironment$1
           localObject2 = arrayOfFile[k].getName();
           if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.a((String)localObject2)))
           {
-            localObject3 = azab.a((String)localObject2);
-            m = ((azac)localObject3).a();
+            localObject3 = azek.a((String)localObject2);
+            m = ((azel)localObject3).a();
             if (m == 0) {
               break label306;
             }
@@ -55,7 +55,7 @@ final class VideoEnvironment$1
           }
         }
         label306:
-        localObject3 = ((azac)localObject3).b();
+        localObject3 = ((azel)localObject3).b();
       }
     }
     label506:

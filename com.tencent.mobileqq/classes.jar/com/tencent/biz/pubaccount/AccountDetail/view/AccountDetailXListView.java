@@ -10,8 +10,8 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcwh;
-import bhpo;
+import bdaq;
+import bhtv;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
@@ -20,7 +20,7 @@ import njy;
 
 public class AccountDetailXListView
   extends XListView
-  implements bhpo, Runnable
+  implements bhtv, Runnable
 {
   protected float a;
   protected int a;
@@ -87,9 +87,9 @@ public class AccountDetailXListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559842, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372477));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372478));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559841, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372497));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372498));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
     setFooterDividersEnabled(false);
   }
@@ -211,7 +211,7 @@ public class AccountDetailXListView
       if (i == 2)
       {
         this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_d_of_type_Int));
-        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < bcwh.a(super.getContext(), 10.0F))
+        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < bdaq.a(super.getContext(), 10.0F))
         {
           this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
           this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float);

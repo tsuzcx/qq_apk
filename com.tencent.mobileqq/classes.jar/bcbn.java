@@ -1,156 +1,144 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.DecimalFormat;
+import java.util.Iterator;
+import java.util.List;
 
 public class bcbn
-  extends bcbo
+  extends BaseAdapter
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130843385, 2130843384, 2130843383 };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { alpo.a(2131713622), alpo.a(2131713621), alpo.a(2131713623) };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "http://p.qpic.cn/qqconadmin/0/7af9600e477b4f868fbaa01c879ab2bc/0", "http://p.qpic.cn/qqconadmin/0/a5c9695d3d0c4958b20b505cccf02c55/0", "http://p.qpic.cn/qqconadmin/0/a9fbe3f96d294504811d5c4dc802d02b/0" };
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#.##");
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView d;
-  private TextView e;
-  private TextView f;
+  public static int c = 1;
+  public static int d = 2;
+  int jdField_a_of_type_Int = 1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ReciteDisplayView jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView;
+  List<ParagraphInfo> jdField_a_of_type_JavaUtilList;
+  protected int b;
+  int e = c;
+  int f = -2;
+  int g = -1;
   
-  protected bcbn(View paramView)
+  public bcbn(ReciteDisplayView paramReciteDisplayView, Context paramContext, List<ParagraphInfo> paramList, int paramInt1, int paramInt2)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378900));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369596);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378718));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378914));
-    this.d = ((TextView)paramView.findViewById(2131378654));
-    this.e = ((TextView)paramView.findViewById(2131378899));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368689));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368884));
-    this.f = ((TextView)paramView.findViewById(2131378898));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365663));
-    paramView.setLayerType(1, null);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.e.setVisibility(0);
-    ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = paramReciteDisplayView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = mww.b(paramContext);
+    int i = paramList.size() - 1;
+    while (i > 0)
+    {
+      paramReciteDisplayView = (ParagraphInfo)paramList.get(i);
+      paramReciteDisplayView.paragraphPos = i;
+      if ((TextUtils.isEmpty(paramReciteDisplayView.content_html)) && (TextUtils.isEmpty(paramReciteDisplayView.content_pinyin))) {
+        paramList.remove(i);
+      }
+      i -= 1;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramInt2;
   }
   
   public void a()
   {
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    localAnimationDrawable.stop();
-    localAnimationDrawable.selectDrawable(0);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(i)).setWordColor(3);
+      i += 1;
+    }
+    this.e = c;
+    notifyDataSetChanged();
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bcbm parambcbm)
+  public void a(WordInfo paramWordInfo)
   {
-    parambcbm = (bbzr)parambcbm.a;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131369596: 
+    if ((paramWordInfo == null) || (paramWordInfo.paragraphPos < 0) || (paramWordInfo.wordPos < 0) || (this.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReciteDetect.ReciteDisplayView", 1, "recite result = " + paramWordInfo.text);
+    }
+    if (paramWordInfo.paragraphPos > this.f) {
+      this.f = paramWordInfo.paragraphPos;
+    }
+    for (this.g = paramWordInfo.wordPos;; this.g = paramWordInfo.wordPos) {
       do
       {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.a = paramWordInfo;
+        notifyDataSetChanged();
         return;
-        if (parambcbm.jdField_a_of_type_Boolean)
-        {
-          paramHWReciteItem.b();
-          a();
-          return;
-        }
-      } while (TextUtils.isEmpty(parambcbm.jdField_d_of_type_JavaLangString));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReciteResultSubViewHolder", 2, new Object[] { "onItemViewClick, play audio, filePath = ", parambcbm.jdField_d_of_type_JavaLangString });
-      }
-      paramHWReciteItem.e(parambcbm);
-      b();
-      bdaj.a("Grp_edu", "Grp_recite", "Finish_Recite_Play_Clk", 0, 0, new String[] { parambcbm.jdField_f_of_type_JavaLangString });
-      return;
+      } while ((paramWordInfo.paragraphPos != this.f) || (paramWordInfo.wordPos <= this.g));
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramHWReciteItem.b(parambcbm);
   }
   
-  public void a(HWReciteItem paramHWReciteItem, bcbm parambcbm, bbzr parambbzr, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    Object localObject = parambbzr.jdField_b_of_type_JavaLangString;
-    String str = ReciteFragment.a((String)localObject);
-    if (str.length() > 8) {
-      localObject = "《" + str.substring(0, 8) + "…";
-    }
-    localObject = new StringBuilder(alpo.a(2131713625)).append((String)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(parambbzr.jdField_d_of_type_Int));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(parambbzr.jdField_e_of_type_Int));
-    this.e.setText(String.format("%s\"", new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(parambbzr.jdField_a_of_type_Long) }));
-    paramInt = parambbzr.jdField_f_of_type_Int - 1;
-    if ((paramInt > -1) && (paramInt < jdField_a_of_type_ArrayOfInt.length))
+    int j;
+    if (this.e == c)
     {
-      this.d.setText(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      this.f.setText(bbxf.jdField_a_of_type_ArrayOfJavaLangString[paramInt].replace("\n", ""));
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bcwh.a(BaseApplicationImpl.getContext(), 120.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bcwh.a(BaseApplicationImpl.getContext(), 120.0F);
-      localObject = URLDrawable.getDrawable(jdField_b_of_type_ArrayOfJavaLangString[paramInt], (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      j = this.jdField_a_of_type_JavaUtilList.size();
+      return j;
     }
-    if ((!TextUtils.isEmpty(parambbzr.jdField_d_of_type_JavaLangString)) && (new File(parambbzr.jdField_d_of_type_JavaLangString).exists()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.e.setVisibility(0);
-      if (!parambbzr.jdField_a_of_type_Boolean) {
-        break label417;
-      }
-      b();
-      label315:
-      if (parambbzr.g != 2) {
-        break label424;
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
     for (;;)
     {
-      paramHWReciteItem.b(this.jdField_b_of_type_AndroidViewView, parambcbm);
-      paramHWReciteItem.b(this.jdField_b_of_type_AndroidWidgetImageView, parambcbm);
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.e.setVisibility(8);
-      if ((TextUtils.isEmpty(parambbzr.jdField_e_of_type_JavaLangString)) || (parambbzr.jdField_b_of_type_Int != 0)) {
+      j = i;
+      if (!localIterator.hasNext()) {
         break;
       }
-      paramHWReciteItem.d(parambbzr);
-      if (parambbzr.jdField_b_of_type_Int != 2) {
+      j = i;
+      if (((ParagraphInfo)localIterator.next()).paragraphPos > this.f) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.e.setVisibility(0);
-      break;
-      label417:
-      a();
-      break label315;
-      label424:
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      i += 1;
     }
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramView = new bcbm();
+      paramView.a = new PinyinTextView(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+      paramViewGroup = paramView.a;
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bcbm)paramViewGroup.getTag();
+    ParagraphInfo localParagraphInfo = (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.e == d)
+    {
+      if (paramInt == getCount() - 1)
+      {
+        paramView.a.setWordInfos(localParagraphInfo, this.g, true);
+        return paramViewGroup;
+      }
+      paramView.a.setWordInfos(localParagraphInfo, this.g, false);
+      return paramViewGroup;
+    }
+    paramView.a.setWordInfos(localParagraphInfo, this.g, false);
+    return paramViewGroup;
   }
 }
 

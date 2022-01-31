@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acms;
-import awvm;
+import acrh;
+import awzv;
 
 public class Conversation$1$2
   implements Runnable
 {
-  public Conversation$1$2(acms paramacms, String paramString) {}
+  public Conversation$1$2(acrh paramacrh, String paramString) {}
   
   public void run()
   {
-    awvm.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acms.a.a);
+    awzv.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acrh.a.a);
   }
 }
 

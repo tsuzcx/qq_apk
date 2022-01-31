@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-
-public class ajuz
-  implements View.OnClickListener
+class ajuz
+  implements ajvc
 {
-  public ajuz(PhoneContactTabView paramPhoneContactTabView) {}
+  ajuz(ajuy paramajuy) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    PhoneContactTabView.a(this.a);
+    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
+      return false;
+    }
+    return ajuy.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
   }
 }
 

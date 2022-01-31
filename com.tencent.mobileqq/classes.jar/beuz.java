@@ -1,111 +1,14 @@
-import java.io.UnsupportedEncodingException;
+import android.view.View;
 
-public class beuz
+public abstract interface beuz
 {
-  static
-  {
-    if (!beuz.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
   
-  public static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    try
-    {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      throw new AssertionError(paramArrayOfByte);
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bevb localbevb = new bevb(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbevb.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localbevb.jdField_a_of_type_Int == localbevb.jdField_a_of_type_ArrayOfByte.length) {
-      return localbevb.jdField_a_of_type_ArrayOfByte;
-    }
-    paramArrayOfByte = new byte[localbevb.jdField_a_of_type_Int];
-    System.arraycopy(localbevb.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbevb.jdField_a_of_type_Int);
-    return paramArrayOfByte;
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
-  {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bevc localbevc = new bevc(paramInt3, null);
-    int i = paramInt2 / 3 * 4;
-    int j;
-    if (localbevc.jdField_a_of_type_Boolean)
-    {
-      paramInt3 = i;
-      if (paramInt2 % 3 > 0) {
-        paramInt3 = i + 4;
-      }
-      i = paramInt3;
-      if (localbevc.b)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
-        {
-          j = (paramInt2 - 1) / 57;
-          if (!localbevc.c) {
-            break label186;
-          }
-        }
-      }
-    }
-    label186:
-    for (i = 2;; i = 1)
-    {
-      i = paramInt3 + i * (j + 1);
-      localbevc.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localbevc.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localbevc.jdField_a_of_type_Int == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
-      {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
-      }
-    }
-    label192:
-    return localbevc.jdField_a_of_type_ArrayOfByte;
-  }
+  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
 }
 
 

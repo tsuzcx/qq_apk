@@ -1,33 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agqs
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   agqs(agqq paramagqq) {}
   
-  public void onClick(View paramView)
-  {
-    aekt.n = true;
-    int i;
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      aepf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
-import avcw;
-import avdh;
+import avhf;
+import avhq;
 
 public class PlayOperationViewModel$20$1
   implements Runnable
 {
-  public PlayOperationViewModel$20$1(avdh paramavdh) {}
+  public PlayOperationViewModel$20$1(avhq paramavhq) {}
   
   public void run()
   {
-    avcw.a(this.a.a);
+    avhf.a(this.a.a);
   }
 }
 

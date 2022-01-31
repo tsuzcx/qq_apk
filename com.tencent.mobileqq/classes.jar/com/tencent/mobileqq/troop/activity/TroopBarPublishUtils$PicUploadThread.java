@@ -8,8 +8,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import awgi;
-import bcht;
+import awkr;
+import bcmc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
@@ -23,7 +23,7 @@ import java.util.Map;
 import mqq.manager.TicketManager;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
-import xmn;
+import xqw;
 
 public class TroopBarPublishUtils$PicUploadThread
   implements Runnable
@@ -97,16 +97,16 @@ public class TroopBarPublishUtils$PicUploadThread
       if (localIterator.hasNext())
       {
         str3 = (String)localIterator.next();
-        if ((!awgi.a(str3)) && (TroopBarPublishUtils.a()) && (TroopBarPublishUtils.jdField_a_of_type_Boolean)) {}
+        if ((!awkr.a(str3)) && (TroopBarPublishUtils.a()) && (TroopBarPublishUtils.jdField_a_of_type_Boolean)) {}
         for (i = 1;; i = 0)
         {
-          localObject1 = (TroopBarPublishActivity.Pic_list)bcht.a.get(str3);
+          localObject1 = (TroopBarPublishActivity.Pic_list)bcmc.a.get(str3);
           if (localObject1 != null)
           {
             if (((TroopBarPublishActivity.Pic_list)localObject1).canReuse) {
               break;
             }
-            bcht.a.remove(str3);
+            bcmc.a.remove(str3);
           }
           if ((!localBaseActivity.isFinishing()) && (!this.jdField_a_of_type_Boolean)) {
             break label291;
@@ -133,7 +133,7 @@ public class TroopBarPublishUtils$PicUploadThread
           if (localObject2 != null)
           {
             localObject1 = ((String)localObject1).substring(0, ((String)localObject1).lastIndexOf(".")) + "_tribe_water_" + ((String)localObject1).substring(((String)localObject1).lastIndexOf("."));
-            xmn.a((Bitmap)localObject2, Bitmap.CompressFormat.PNG, 100, (String)localObject1);
+            xqw.a((Bitmap)localObject2, Bitmap.CompressFormat.PNG, 100, (String)localObject1);
           }
         }
       }
@@ -147,7 +147,7 @@ public class TroopBarPublishUtils$PicUploadThread
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "PicUploadThread type: " + this.b + " ,mUrl: " + this.jdField_a_of_type_JavaLangString);
       }
-      localObject2 = bcht.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject1, str1, str2, (Map)localObject2);
+      localObject2 = bcmc.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject1, str1, str2, (Map)localObject2);
       if (i != 0) {
         new File((String)localObject1).delete();
       }
@@ -158,7 +158,7 @@ public class TroopBarPublishUtils$PicUploadThread
         for (boolean bool = true;; bool = false)
         {
           ((TroopBarPublishActivity.Pic_list)localObject1).canReuse = bool;
-          bcht.a.put(str3, localObject1);
+          bcmc.a.put(str3, localObject1);
           break;
           i = 0;
           break label445;

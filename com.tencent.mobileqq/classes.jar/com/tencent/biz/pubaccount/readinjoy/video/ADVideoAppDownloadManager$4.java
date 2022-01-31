@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import bfgi;
+import bfkr;
 import qyj;
 
 class ADVideoAppDownloadManager$4
@@ -13,7 +13,7 @@ class ADVideoAppDownloadManager$4
   {
     this.a.c = ADVideoAppDownloadManager.a(this.this$0, this.a.b, 1);
     if (!TextUtils.isEmpty(this.a.c)) {
-      bfgi.a().a(this.a.c);
+      bfkr.a().a(this.a.c);
     }
   }
 }

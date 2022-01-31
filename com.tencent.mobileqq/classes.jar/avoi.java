@@ -1,9 +1,12 @@
-public class avoi
+class avoi
+  implements bhum
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  avoi(avnl paramavnl) {}
+  
+  public void onDismiss()
+  {
+    avnl.a(this.a, this.a.h, false);
+  }
 }
 
 

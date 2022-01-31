@@ -1,30 +1,53 @@
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import java.lang.reflect.Field;
+
 public class bmcc
+  extends Scroller
 {
-  public static final int a = bnoa.a(8.0F);
-  public static final int b = bnoa.a(15.0F);
-  public static final int c = bnoa.a(23.0F);
-  public float a;
-  public long a;
-  public boolean a;
-  public float b;
-  public long b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public int d = 0;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public boolean e;
-  public float f;
-  public int f = 0;
-  public boolean f;
-  public float g;
-  public boolean g;
-  public float h;
-  public boolean h;
-  public boolean i;
+  private int a = 750;
+  
+  public bmcc(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public bmcc(Context paramContext, Interpolator paramInterpolator)
+  {
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    try
+    {
+      Field localField = ViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(paramViewPager, this);
+      return;
+    }
+    catch (Exception paramViewPager)
+    {
+      paramViewPager.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
 }
 
 

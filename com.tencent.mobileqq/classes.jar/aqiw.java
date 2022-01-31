@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
 public class aqiw
-  extends aqnl
+  extends AnimatorListenerAdapter
 {
-  public aqiw(VerifyPwdView paramVerifyPwdView) {}
+  public aqiw(MatchingView paramMatchingView) {}
   
-  protected void a(int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    armz.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
+    if (MatchingView.a(this.a)) {
+      MatchingView.a(this.a).start();
     }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    armz.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
   }
 }
 

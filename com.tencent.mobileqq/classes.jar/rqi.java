@@ -24,15 +24,15 @@ import java.util.List;
 
 public class rqi
   extends rqj
-  implements bcwt
+  implements bdbc
 {
-  private bcws a;
+  private bdbb a;
   
-  public rqi(Activity paramActivity, LayoutInflater paramLayoutInflater, int paramInt, ListView paramListView, bcws parambcws, SparseArray<pdc> paramSparseArray)
+  public rqi(Activity paramActivity, LayoutInflater paramLayoutInflater, int paramInt, ListView paramListView, bdbb parambdbb, SparseArray<pdc> paramSparseArray)
   {
     super(paramActivity, paramLayoutInflater, paramInt, paramListView, paramSparseArray);
-    this.jdField_a_of_type_Bcws = parambcws;
-    this.jdField_a_of_type_Bcws.a(this);
+    this.jdField_a_of_type_Bdbb = parambdbb;
+    this.jdField_a_of_type_Bdbb.a(this);
   }
   
   public int a(int paramInt)
@@ -45,9 +45,9 @@ public class rqi
     return this.jdField_a_of_type_AndroidAppActivity;
   }
   
-  public bcws a()
+  public bdbb a()
   {
-    return this.jdField_a_of_type_Bcws;
+    return this.jdField_a_of_type_Bdbb;
   }
   
   public BaseArticleInfo a(int paramInt)
@@ -108,7 +108,7 @@ public class rqi
       return;
       owy.a().a(this.c, 20, 9223372036854775807L, true);
     } while (this.c != 0);
-    syb.a(paramBaseArticleInfo, paramBaseArticleInfo.getApp().getResources().getString(2131695737), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+    syb.a(paramBaseArticleInfo, paramBaseArticleInfo.getApp().getResources().getString(2131695739), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
   }
   
   public void a(int paramInt, ArrayList<BaseArticleInfo> paramArrayList, ArrayList<DislikeInfo> paramArrayList1)
@@ -166,7 +166,7 @@ public class rqi
       return;
       owy.a().a(this.c, 20, 9223372036854775807L, true);
     } while (this.c != 0);
-    syb.a(paramArrayList, paramArrayList.getApp().getResources().getString(2131695737), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+    syb.a(paramArrayList, paramArrayList.getApp().getResources().getString(2131695739), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
   }
   
   public void a(rjk paramrjk, BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2)
@@ -254,7 +254,7 @@ public class rqi
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_Bcws.a())
+    if (!this.jdField_a_of_type_Bdbb.a())
     {
       paramInt2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildCount();
       paramInt1 = 0;
@@ -262,9 +262,9 @@ public class rqi
       {
         if (paramInt1 < paramInt2)
         {
-          Object localObject = (pgd)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379913);
-          rvg localrvg = (rvg)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379918);
-          piz localpiz = (piz)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379915);
+          Object localObject = (pgd)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379971);
+          rvg localrvg = (rvg)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379976);
+          piz localpiz = (piz)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(paramInt1).getTag(2131379973);
           if ((localObject != null) && (localrvg != null) && (localpiz != null)) {
             localpiz.a(localrvg, (pgd)localObject, Long.valueOf(paramString).longValue(), paramBitmap);
           }

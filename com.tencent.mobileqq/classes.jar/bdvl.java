@@ -1,52 +1,30 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
-public class bdvl
-  implements TVK_IMediaPlayer.OnControllerClickListener
+class bdvl
+  implements URLDrawableDownListener
 {
-  public bdvl(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  bdvl(bdvk parambdvk, String paramString, URLImageView paramURLImageView) {}
   
-  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
-    }
-    this.a.setResult(0);
-    this.a.finish();
+    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
   }
   
-  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
-    }
-    if (this.a.getRequestedOrientation() == 0)
-    {
-      this.a.setRequestedOrientation(1);
-      return;
-    }
-    this.a.setResult(0);
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
-  
-  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
-    }
-    this.a.setRequestedOrientation(0);
-  }
-  
-  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

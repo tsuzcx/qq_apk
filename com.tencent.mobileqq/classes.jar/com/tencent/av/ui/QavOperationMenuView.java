@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aekt;
+import aepi;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,10 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azmj;
-import bcuq;
-import bdje;
-import bdkf;
+import azqs;
+import bcyz;
+import bdnn;
+import bdoo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.av.ui.beauty.BeautySeekView;
@@ -91,19 +91,19 @@ public class QavOperationMenuView
       if ((paramView instanceof TextView))
       {
         localTextView = (TextView)paramView;
-        j = mwi.a(paramView, 2131375656);
-        k = mwi.a(paramView, 2131364482);
+        j = mwi.a(paramView, 2131375707);
+        k = mwi.a(paramView, 2131364484);
         String str = parammtb.b();
-        paramView = mwi.a(paramView, 2131375682);
+        paramView = mwi.a(paramView, 2131375733);
         if (TextUtils.isEmpty(str)) {
           break label168;
         }
-        localTextView.setTag(2131375656, Integer.valueOf(0));
+        localTextView.setTag(2131375707, Integer.valueOf(0));
         if (str != paramView)
         {
-          localTextView.setTag(2131375682, str);
+          localTextView.setTag(2131375733, str);
           paramView = a(localTextView, str);
-          paramView.setBounds(0, 0, aekt.a(28.0F, localTextView.getResources()), aekt.a(28.0F, localTextView.getResources()));
+          paramView.setBounds(0, 0, aepi.a(28.0F, localTextView.getResources()), aepi.a(28.0F, localTextView.getResources()));
           localTextView.setCompoundDrawables(null, paramView, null, null);
         }
       }
@@ -112,21 +112,21 @@ public class QavOperationMenuView
     label248:
     for (;;)
     {
-      if (!bdje.a(parammtb.a())) {
+      if (!bdnn.a(parammtb.a())) {
         localTextView.setText(parammtb.a());
       }
       return;
       i = 8;
       break;
-      localTextView.setTag(2131375682, null);
+      localTextView.setTag(2131375733, null);
       if (parammtb.b()) {}
       for (i = 2131165888;; i = 2131165887)
       {
         if ((parammtb.b() == j) && (i == k)) {
           break label248;
         }
-        localTextView.setTag(2131375656, Integer.valueOf(parammtb.b()));
-        localTextView.setTag(2131364482, Integer.valueOf(i));
+        localTextView.setTag(2131375707, Integer.valueOf(parammtb.b()));
+        localTextView.setTag(2131364484, Integer.valueOf(i));
         AudioHelper.a(getResources(), localTextView, parammtb.b(), i, i);
         break;
       }
@@ -136,17 +136,17 @@ public class QavOperationMenuView
   private void b()
   {
     setGravity(80);
-    LayoutInflater.from(getContext()).inflate(2131559615, this, true);
-    setBackgroundResource(2130841822);
+    LayoutInflater.from(getContext()).inflate(2131559614, this, true);
+    setBackgroundResource(2130841835);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363152));
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363171));
-    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(getContext().getString(2131695871), "BEAUTY_SKIN", 50, 0);
+    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(getContext().getString(2131695873), "BEAUTY_SKIN", 50, 0);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setBeautySeekActionListener(new mkl(this));
     ImageView localImageView = (ImageView)findViewById(2131363168);
     if (AEFilterSupport.a())
     {
-      Drawable localDrawable = getResources().getDrawable(2130841578);
-      mwj localmwj = mwj.a(getResources(), 2130841578, 2131165877);
+      Drawable localDrawable = getResources().getDrawable(2130841591);
+      mwj localmwj = mwj.a(getResources(), 2130841591, 2131165877);
       localmwj.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
       localImageView.setImageDrawable(localmwj);
       localImageView.setBackgroundDrawable(null);
@@ -155,7 +155,7 @@ public class QavOperationMenuView
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371433));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371452));
       if (AudioHelper.a(0) == 1)
       {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(536870656);
@@ -168,15 +168,15 @@ public class QavOperationMenuView
   
   public Drawable a(TextView paramTextView, String paramString)
   {
-    int i = aekt.a(28.0F, paramTextView.getResources());
+    int i = aepi.a(28.0F, paramTextView.getResources());
     paramTextView = URLDrawable.URLDrawableOptions.obtain();
     paramTextView.mRequestWidth = i;
     paramTextView.mRequestHeight = i;
     paramTextView.mFailedDrawable = null;
     paramTextView.mLoadingDrawable = null;
     paramTextView = URLDrawable.getDrawable(paramString, paramTextView);
-    paramTextView.setTag(bcuq.a(i, i));
-    paramTextView.setDecodeHandler(bcuq.a);
+    paramTextView.setTag(bcyz.a(i, i));
+    paramTextView.setDecodeHandler(bcyz.a);
     if (paramTextView.getStatus() == 1) {
       return paramTextView;
     }
@@ -196,7 +196,7 @@ public class QavOperationMenuView
       return parammtb;
     }
     View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-    mtb localmtb = (mtb)localView.getTag(2131371440);
+    mtb localmtb = (mtb)localView.getTag(2131371459);
     if ((localmtb != null) && (localmtb.a() == parammtb.a())) {
       return localView;
     }
@@ -216,16 +216,16 @@ public class QavOperationMenuView
     localButton.setLayoutParams(localLayoutParams);
     localButton.setSingleLine();
     AudioHelper.a(getResources(), localButton, parammtb.b(), 2131165887, 2131165887);
-    if (!bdje.a(parammtb.a())) {
+    if (!bdnn.a(parammtb.a())) {
       localButton.setText(parammtb.a());
     }
     localButton.setBackgroundDrawable(null);
     localButton.setId(parammtb.a());
     localButton.setOnClickListener(this);
-    localButton.setTag(2131371440, parammtb);
-    localButton.setTextSize(bdkf.e(aekt.a(12.0F, getResources())));
-    localButton.setCompoundDrawablePadding(aekt.a(8.0F, getResources()));
-    parammtb.a = ((int)Math.max(mww.a(localButton), aekt.a(28.0F, getResources())));
+    localButton.setTag(2131371459, parammtb);
+    localButton.setTextSize(bdoo.e(aepi.a(12.0F, getResources())));
+    localButton.setCompoundDrawablePadding(aepi.a(8.0F, getResources()));
+    parammtb.a = ((int)Math.max(mww.a(localButton), aepi.a(28.0F, getResources())));
     return localButton;
   }
   
@@ -320,7 +320,7 @@ public class QavOperationMenuView
         m += 1;
       }
     }
-    if (localView.getId() == 2131695810)
+    if (localView.getId() == 2131695812)
     {
       this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localView, 2);
       if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null)
@@ -330,7 +330,7 @@ public class QavOperationMenuView
         this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(0, k, m, 0).a();
       }
     }
-    if (localView.getId() == 2131695808)
+    if (localView.getId() == 2131695810)
     {
       this.b = lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localView, 6);
       if (this.b != null)
@@ -340,7 +340,7 @@ public class QavOperationMenuView
         this.b.a(0, k, m, 0).a();
       }
     }
-    if (localView.getId() == 2131695813)
+    if (localView.getId() == 2131695815)
     {
       this.d = lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localView, 9);
       if (this.d != null)
@@ -404,7 +404,7 @@ public class QavOperationMenuView
         m += 1;
         break label682;
         label748:
-        azmj.b(null, "CliOper", "", "", "0X800A342", "0X800A342", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A342", "0X800A342", 0, 0, "", "", "", "");
         break;
         n = 0;
         break label711;
@@ -459,7 +459,7 @@ public class QavOperationMenuView
     {
       do
       {
-        while (i == 2131695810)
+        while (i == 2131695812)
         {
           if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null)
           {
@@ -471,14 +471,14 @@ public class QavOperationMenuView
             this.jdField_a_of_type_Mkk.a(this, paramView);
           }
         }
-        if (i != 2131695808) {
+        if (i != 2131695810) {
           break;
         }
       } while (this.b == null);
       lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b, 6);
       this.b = null;
       return;
-    } while ((i != 2131695813) || (this.d == null));
+    } while ((i != 2131695815) || (this.d == null));
     lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.d, 9);
     this.d = null;
   }

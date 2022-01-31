@@ -10,7 +10,7 @@ public final class QavCameraUsage$1
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getString(2131695884), 0).a();
+    QQToast.a(this.a, this.a.getString(2131695886), 0).a();
   }
 }
 

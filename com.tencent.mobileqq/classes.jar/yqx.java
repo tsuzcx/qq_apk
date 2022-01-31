@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class yqx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public yqx(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public yqx(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
-    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
-    this.b = paramEmptyPackagePage.jump_wording.get();
-    this.c = paramEmptyPackagePage.jump_url.get();
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

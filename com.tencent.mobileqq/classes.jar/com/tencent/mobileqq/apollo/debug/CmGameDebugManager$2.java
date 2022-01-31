@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import akoe;
-import akof;
+import akst;
+import aksu;
 import java.lang.ref.WeakReference;
 
 public class CmGameDebugManager$2
   implements Runnable
 {
-  public CmGameDebugManager$2(akoe paramakoe) {}
+  public CmGameDebugManager$2(akst paramakst) {}
   
   public void run()
   {
-    if ((akoe.a(this.this$0) != null) && (akoe.a(this.this$0).get() != null)) {
-      ((akof)akoe.a(this.this$0).get()).a(0);
+    if ((akst.a(this.this$0) != null) && (akst.a(this.this$0).get() != null)) {
+      ((aksu)akst.a(this.this$0).get()).a(0);
     }
   }
 }

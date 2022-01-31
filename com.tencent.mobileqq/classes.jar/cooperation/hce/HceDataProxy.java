@@ -1,6 +1,6 @@
 package cooperation.hce;
 
-import amkv;
+import ampk;
 
 public class HceDataProxy
 {
@@ -11,7 +11,7 @@ public class HceDataProxy
     if (paramGetLocationListener == null) {
       return;
     }
-    amkv.a(new HceDataProxy.1(paramString, paramGetLocationListener));
+    ampk.a(new HceDataProxy.1(paramString, paramGetLocationListener));
   }
 }
 

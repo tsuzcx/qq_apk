@@ -1,64 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver.1;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import java.lang.ref.WeakReference;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-public final class aeyq
-  extends BroadcastReceiver
+public class aeyq
+  implements TextView.OnEditorActionListener
 {
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  private Calendar jdField_a_of_type_JavaUtilCalendar;
+  public aeyq(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  private aeyq(BaseChatPie paramBaseChatPie)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-  }
-  
-  private void a()
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localBaseChatPie != null)
+    boolean bool = false;
+    if (paramInt == 4)
     {
-      if (this.jdField_a_of_type_JavaUtilCalendar == null) {
-        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-      }
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = this.jdField_a_of_type_JavaUtilCalendar.get(11);
-      if ((i < 19) && (i >= 7)) {
-        break label81;
-      }
+      azqs.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
+      VoiceTextEditPanel.a(this.a);
+      bool = true;
     }
-    label81:
-    for (boolean bool = true; Looper.getMainLooper() == Looper.myLooper(); bool = false)
-    {
-      localBaseChatPie.a.b(bool);
-      return;
-    }
-    localBaseChatPie.a().post(new AIOIconChangeByTimeHelper.TimeChangeReceiver.1(this, localBaseChatPie, bool));
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
-      a();
-    }
-    do
-    {
-      return;
-      if ("android.intent.action.TIME_SET".equals(paramContext))
-      {
-        a();
-        return;
-      }
-    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
-    a();
+    return bool;
   }
 }
 

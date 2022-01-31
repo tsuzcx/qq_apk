@@ -1,16 +1,27 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
 
 class afdr
-  extends aelt
+  implements bhuk
 {
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  afdr(afdq paramafdq, boolean paramBoolean, bhuf parambhuf) {}
   
-  afdr(afdq paramafdq) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (afdq.a(this.jdField_a_of_type_Afdq) != null) {
+        afdq.a(this.jdField_a_of_type_Afdq, afdq.a(this.jdField_a_of_type_Afdq));
+      }
+      afdq.a(this.jdField_a_of_type_Afdq, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      continue;
+      afdq.a(this.jdField_a_of_type_Afdq, "0X800A7F6", this.jdField_a_of_type_Boolean);
+    }
+  }
 }
 
 

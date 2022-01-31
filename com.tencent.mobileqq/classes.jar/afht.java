@@ -1,15 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
 
-class afht
-  implements bevo
+public class afht
+  extends afiv
 {
-  afht(afhq paramafhq, MessageForFile paramMessageForFile, Context paramContext) {}
-  
-  public void a(int paramInt)
-  {
-    arni.a(this.jdField_a_of_type_Afhq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
+  public ApolloMessageProgressView a;
 }
 
 

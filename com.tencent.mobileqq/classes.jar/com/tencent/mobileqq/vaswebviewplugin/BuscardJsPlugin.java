@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,8 +16,8 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import becq;
-import bhow;
+import begz;
+import bhtd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
@@ -54,7 +54,7 @@ public class BuscardJsPlugin
   public static final int MSG_UNINIT = 4;
   public static final String NAME_SPACE = "nfc";
   private static final String TAG = "BuscardJsPlugin";
-  private Handler mHandler = new bhow(this);
+  private Handler mHandler = new bhtd(this);
   private Messenger mMessenger = new Messenger(this.mHandler);
   private Messenger mService;
   ResultReceiver resultReceiver = new BuscardJsPlugin.1(this, this.mHandler);
@@ -199,7 +199,7 @@ public class BuscardJsPlugin
                 }
                 localObject = new JSONObject();
                 ((JSONObject)localObject).put("retcode", -8);
-                ((JSONObject)localObject).put("retmsg", alpo.a(2131701609));
+                ((JSONObject)localObject).put("retmsg", alud.a(2131701621));
                 callJs(paramBundle, new String[] { ((JSONObject)localObject).toString() });
                 return;
               }

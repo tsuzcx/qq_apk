@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
 
 class agpj
-  implements bcgo
+  implements View.OnClickListener
 {
-  agpj(agot paramagot) {}
+  agpj(agpi paramagpi) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
-      return;
-    }
-    paramJSONObject = (bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
+    aggj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
   }
 }
 

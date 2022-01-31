@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import akji;
-import awbw;
+import aknx;
+import awgf;
 import com.tencent.mobileqq.DrawerPushItem;
 import java.util.List;
 
 public class ApolloManager$16
   implements Runnable
 {
-  public ApolloManager$16(akji paramakji, DrawerPushItem paramDrawerPushItem) {}
+  public ApolloManager$16(aknx paramaknx, DrawerPushItem paramDrawerPushItem) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    synchronized (akji.a(this.this$0))
+    synchronized (aknx.a(this.this$0))
     {
-      if ((akji.a(this.this$0) != null) && (this.a != null) && (akji.a(this.this$0).contains(this.a))) {
-        akji.a(this.this$0).remove(this.a);
+      if ((aknx.a(this.this$0) != null) && (this.a != null) && (aknx.a(this.this$0).contains(this.a))) {
+        aknx.a(this.this$0).remove(this.a);
       }
-      if (akji.a(this.this$0) != null)
+      if (aknx.a(this.this$0) != null)
       {
-        akji.a(this.this$0).b(this.a);
-        akji.a(this.this$0).a();
+        aknx.a(this.this$0).b(this.a);
+        aknx.a(this.this$0).a();
       }
       return;
     }

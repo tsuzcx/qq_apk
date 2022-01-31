@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjxj;
+import bkbq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.net.MalformedURLException;
@@ -58,7 +58,7 @@ public class ComponentTopicItemMulti
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559980, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559979, this, true);
   }
   
   public void a() {}
@@ -70,9 +70,9 @@ public class ComponentTopicItemMulti
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364879));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377884));
-    this.b = ((TextView)findViewById(2131365102));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364881));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
+    this.b = ((TextView)findViewById(2131365104));
   }
   
   public void a(Object paramObject)
@@ -87,7 +87,7 @@ public class ComponentTopicItemMulti
       paramObject = new URL(this.jdField_a_of_type_Qno.d);
       orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Qno.c + this.jdField_a_of_type_Qno.a);
-      paramObject = String.format(getResources().getString(2131719050), new Object[] { bjxj.a(this.jdField_a_of_type_Qno.jdField_b_of_type_Int) });
+      paramObject = String.format(getResources().getString(2131719062), new Object[] { bkbq.a(this.jdField_a_of_type_Qno.jdField_b_of_type_Int) });
       this.b.setText(paramObject);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_Qno.jdField_b_of_type_JavaLangString))
       {

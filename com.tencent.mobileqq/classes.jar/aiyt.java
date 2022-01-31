@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
 public class aiyt
-  implements View.OnLongClickListener
+  implements AnimationView.MyAnimationListener
 {
-  public aiyt(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public aiyt(ThemeHbFragment paramThemeHbFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
+  
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).show();
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
     }
-    return true;
   }
 }
 

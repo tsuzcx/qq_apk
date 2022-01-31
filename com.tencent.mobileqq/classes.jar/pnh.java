@@ -107,8 +107,8 @@ public class pnh
     localObject = ((psd)localObject).a();
     pnt localpnt = new pnt(this);
     pny localpny = new pny(this, true);
-    if ((rpw)paramContainer.getTag(2131375271) == null) {
-      paramContainer.setTag(2131375271, new pnu(this, (View)localObject, localpny, localNativeVideoView));
+    if ((rpw)paramContainer.getTag(2131375322) == null) {
+      paramContainer.setTag(2131375322, new pnu(this, (View)localObject, localpny, localNativeVideoView));
     }
     localNativeVideoView.setOnCheckShownListener(localpnt);
     if (localObject != null) {
@@ -131,7 +131,7 @@ public class pnh
       this.jdField_a_of_type_Syq = new syq((Activity)paramViewBase.getNativeView().getContext(), localQQAppInterface, null, new pnz(this, parampgd.a(), new WeakReference((Activity)paramViewBase.getNativeView().getContext())));
       paramViewBase.getNativeView().addOnAttachStateChangeListener(new pnl(this));
     }
-    this.jdField_a_of_type_Syq.a.setActionSheetTitle(alpo.a(2131713962));
+    this.jdField_a_of_type_Syq.a.setActionSheetTitle(alud.a(2131713974));
     this.jdField_a_of_type_Syq.a(new List[] { a() });
   }
   
@@ -173,7 +173,7 @@ public class pnh
             localpjo.p(paramBaseArticleInfo);
           }
           if ((paramInt == 34) || (paramInt == 85)) {
-            localpjo.c(paramBaseArticleInfo, alpo.a(2131708357));
+            localpjo.c(paramBaseArticleInfo, alud.a(2131708369));
           }
           localpjo.h(paramBaseArticleInfo);
           if (a(paramInt)) {

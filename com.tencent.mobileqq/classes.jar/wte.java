@@ -1,22 +1,15 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wte
-  implements View.OnSystemUiVisibilityChangeListener
+class wte
+  implements DialogInterface.OnClickListener
 {
-  public wte(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  wte(wtd paramwtd) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    this.a.a.a(false, true, 12, null);
+    wxj.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

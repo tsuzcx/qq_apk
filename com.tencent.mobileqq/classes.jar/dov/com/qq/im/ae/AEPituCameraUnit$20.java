@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae;
 
-import bkle;
-import bkvr;
-import blbm;
+import bkpl;
+import bkzy;
+import blft;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class AEPituCameraUnit$20
   implements Runnable
 {
-  public AEPituCameraUnit$20(bkle parambkle, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$20(bkpl parambkpl, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if ((bkle.a(this.this$0) != null) && (bkle.a(this.this$0).a(131072) != null)) {
-      bkle.a(this.this$0).a(131072).a(115, this.a);
+    if ((bkpl.a(this.this$0) != null) && (bkpl.a(this.this$0).a(131072) != null)) {
+      bkpl.a(this.this$0).a(131072).a(115, this.a);
     }
   }
 }

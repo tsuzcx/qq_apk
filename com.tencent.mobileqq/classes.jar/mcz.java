@@ -12,8 +12,8 @@ class mcz
   mcz(LinearLayout paramLinearLayout)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372858));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131372576));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372884));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131372602));
   }
   
   Resources a()

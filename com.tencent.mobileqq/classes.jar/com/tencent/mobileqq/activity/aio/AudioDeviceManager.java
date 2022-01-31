@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aekz;
-import aelf;
+import aepo;
+import aepu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +19,10 @@ import mqq.util.WeakReference;
 
 public class AudioDeviceManager
   extends BroadcastReceiver
-  implements aelf, Manager
+  implements aepu, Manager
 {
   private AudioSenorManager jdField_a_of_type_ComTencentMobileqqActivityAioAudioSenorManager;
-  private List<aekz> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<aepo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -69,11 +69,11 @@ public class AudioDeviceManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      aekz localaekz = (aekz)localIterator.next();
-      if ((localaekz.a() & paramInt) == paramInt)
+      aepo localaepo = (aepo)localIterator.next();
+      if ((localaepo.a() & paramInt) == paramInt)
       {
-        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localaekz.getClass());
-        localaekz.a(paramInt, paramBoolean);
+        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localaepo.getClass());
+        localaepo.a(paramInt, paramBoolean);
       }
     }
   }
@@ -131,19 +131,19 @@ public class AudioDeviceManager
     }
   }
   
-  public void a(aekz paramaekz)
+  public void a(aepo paramaepo)
   {
-    if (paramaekz == null)
+    if (paramaepo == null)
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramaekz))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramaepo))
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is contains");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramaekz);
+    this.jdField_a_of_type_JavaUtilList.add(paramaepo);
   }
   
   public void b()
@@ -153,16 +153,16 @@ public class AudioDeviceManager
     }
   }
   
-  public void b(aekz paramaekz)
+  public void b(aepo paramaepo)
   {
-    if (paramaekz == null)
+    if (paramaepo == null)
     {
       QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramaekz))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramaepo))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramaekz);
+      this.jdField_a_of_type_JavaUtilList.remove(paramaepo);
       return;
     }
     QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is not contains");

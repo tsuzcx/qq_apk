@@ -1,25 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import java.util.Comparator;
 
 public class aecc
-  implements View.OnClickListener
+  implements Comparator<RecentBaseData>
 {
-  public aecc(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aecc(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    this.a.jdField_d_of_type_Boolean = true;
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368615));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(alpo.a(2131716020));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aecd(this));
-    TroopMemberListActivity.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (((paramRecentBaseData1 instanceof RecentTroopAssistantItem)) && ((paramRecentBaseData2 instanceof RecentTroopAssistantItem)))
+    {
+      paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
+      paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
+      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
+      boolean bool1 = localTroopManager.b(paramRecentBaseData1.a());
+      boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());
+      if ((bool1) && (!bool2)) {
+        return -1;
+      }
+      if ((!bool1) && (bool2)) {
+        return 1;
+      }
+      long l2;
+      long l1;
+      if ((!bool1) && (!bool2))
+      {
+        l2 = Math.max(paramRecentBaseData1.a(), paramRecentBaseData1.b());
+        l1 = Math.max(paramRecentBaseData2.a(), paramRecentBaseData2.b());
+        if (l2 <= l1) {
+          break label173;
+        }
+        l1 = 3L;
+      }
+      for (;;)
+      {
+        l1 = (int)(l1 | 0) - (int)(0x2 | 0);
+        if (l1 != 0L) {
+          break label195;
+        }
+        return 0;
+        l2 = paramRecentBaseData1.mDisplayTime;
+        l1 = paramRecentBaseData2.mDisplayTime;
+        break;
+        label173:
+        if (l2 < l1) {
+          l1 = 1L;
+        } else {
+          l1 = 2L;
+        }
+      }
+      label195:
+      if (l1 < 0L) {
+        return 1;
+      }
+      return -1;
     }
+    return 0;
   }
 }
 

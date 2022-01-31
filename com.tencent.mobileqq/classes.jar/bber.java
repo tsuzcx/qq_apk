@@ -1,27 +1,39 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bber
-  implements ulb
+class bber
+  implements awkh
 {
-  public bber(TroopBarPublishActivity.14 param14) {}
+  bber(bbeq parambbeq) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (paramInt != 0)
+    return null;
+  }
+  
+  public void a(awki paramawki) {}
+  
+  public void b(awki paramawki)
+  {
+    if (paramawki.jdField_b_of_type_Int == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.this$0.a(null, this.a.a);
+      this.a.a.c = paramawki.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramawki.c;
+      bbeq.a(this.a);
+      bbeq.a(this.a, new ErrorMessage());
       return;
     }
-    this.a.this$0.jdField_a_of_type_Bayk.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.this$0.jdField_a_of_type_Bayk.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.this$0.jdField_a_of_type_Bayk.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.this$0.a(paramString2, this.a.a);
+    if ((paramawki.jdField_b_of_type_Int == baxx.a(940010)) && (bbeq.a(this.a).getAndIncrement() < 2))
+    {
+      bbeq.b(this.a);
+      wxe.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
+    }
+    bbeq.c(this.a);
+    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
+    bbeq.a(this.a, paramawki);
   }
 }
 

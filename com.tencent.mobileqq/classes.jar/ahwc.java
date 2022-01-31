@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahwc
-  implements DialogInterface.OnClickListener
+  extends amcd
 {
-  public ahwc(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, acje paramacje) {}
+  public ahwc(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Acje.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
+    }
+    apoo localapoo = (apoo)EmoticonGroupStoreFragment.a(this.a).getManager(103);
+    if (localapoo != null) {
+      localapoo.b();
+    }
   }
 }
 

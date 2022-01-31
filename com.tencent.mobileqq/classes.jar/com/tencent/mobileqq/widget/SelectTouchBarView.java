@@ -9,8 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
-import bdcb;
+import bdaq;
+import bdgk;
 
 public class SelectTouchBarView
   extends RelativeLayout
@@ -35,10 +35,10 @@ public class SelectTouchBarView
   
   private void a(RelativeLayout paramRelativeLayout)
   {
-    int i = (int)bdcb.a(true);
+    int i = (int)bdgk.a(true);
     int j = View.MeasureSpec.makeMeasureSpec(0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.measure(j, j);
-    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - bcwh.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
+    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - bdaq.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
     i = j;
     if (j < 0) {
       i = 0;

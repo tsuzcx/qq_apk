@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import ailh;
+import aipw;
 
 class TroopAvatarWallEditActivity$16
   implements Runnable

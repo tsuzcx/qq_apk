@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aajb;
+import aanq;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 
 class AdProxyImpl$SDKBoxAdView$1$1
-  implements aajb
+  implements aanq
 {
   AdProxyImpl$SDKBoxAdView$1$1(AdProxyImpl.SDKBoxAdView.1 param1) {}
   

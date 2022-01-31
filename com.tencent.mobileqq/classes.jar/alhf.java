@@ -1,25 +1,12 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
-
-public class alhf
-  implements Animation.AnimationListener
+public abstract interface alhf
 {
-  public alhf(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_Alhg.a = null;
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(int paramInt, String[] paramArrayOfString);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String[] paramArrayOfString);
 }
 
 

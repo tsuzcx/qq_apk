@@ -1,48 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
 
-public class ackj
-  implements bhqd
+public final class ackj
+  implements DialogInterface.OnClickListener
 {
-  public ackj(ChatSettingActivity paramChatSettingActivity, String paramString, bhpy parambhpy) {}
+  public ackj(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      if (bdee.d(BaseApplication.getContext()))
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null)
-        {
-          paramView.removeMessages(16711681);
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
-        if (bdal.b(this.jdField_a_of_type_JavaLangString)) {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
-      }
-      else
-      {
-        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691542, 1);
-        continue;
-        if (bdal.b(this.jdField_a_of_type_JavaLangString)) {
-          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
-      }
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    azqs.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

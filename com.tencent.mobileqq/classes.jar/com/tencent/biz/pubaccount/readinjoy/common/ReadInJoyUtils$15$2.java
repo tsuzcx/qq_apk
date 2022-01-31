@@ -15,7 +15,7 @@ public class ReadInJoyUtils$15$2
   {
     if (ors.g() >= 2)
     {
-      QQToast.a(this.this$0.a, 0, this.this$0.a.getString(2131718857), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.this$0.a, 0, this.this$0.a.getString(2131718869), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298914));
       return;
     }
     ors.a(this.this$0.a);

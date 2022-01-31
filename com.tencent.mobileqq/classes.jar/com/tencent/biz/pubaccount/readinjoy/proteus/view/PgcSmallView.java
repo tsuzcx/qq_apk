@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
@@ -62,14 +62,14 @@ public class PgcSmallView
     }
     for (;;)
     {
-      int i = aekt.a(12.0F, paramContext.getResources());
+      int i = aepi.a(12.0F, paramContext.getResources());
       localLayoutParams.setMargins(i, 0, i, 0);
       return localLayoutParams;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, aekt.a(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, aepi.a(67.0F, paramContext.getResources()));
       continue;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, aekt.a(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, aepi.a(67.0F, paramContext.getResources()));
       continue;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, aekt.a(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, aepi.a(67.0F, paramContext.getResources()));
     }
   }
   
@@ -115,11 +115,11 @@ public class PgcSmallView
         if ((paramObject == null) || (!((Boolean)paramObject.first).booleanValue())) {
           break label205;
         }
-        int i = aekt.a(50.0F, getContext().getResources());
+        int i = aepi.a(50.0F, getContext().getResources());
         paramObject = new RelativeLayout.LayoutParams(i, i);
-        paramObject.setMargins(0, 0, aekt.a(12.0F, getContext().getResources()), 0);
+        paramObject.setMargins(0, 0, aepi.a(12.0F, getContext().getResources()), 0);
         paramObject.addRule(15);
-        i = aekt.a(12.0F, getContext().getResources());
+        i = aepi.a(12.0F, getContext().getResources());
         paramObject.setMargins(i, 0, i, 0);
         paramObject.addRule(11);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(paramObject);
@@ -184,16 +184,16 @@ public class PgcSmallView
     {
       paramContext.addRule(11);
       return paramContext;
-      int i = aekt.a(67.0F, paramContext.getResources());
-      paramContext = new RelativeLayout.LayoutParams(aekt.a(96.0F, paramContext.getResources()), i);
+      int i = aepi.a(67.0F, paramContext.getResources());
+      paramContext = new RelativeLayout.LayoutParams(aepi.a(96.0F, paramContext.getResources()), i);
       continue;
-      i = aekt.a(67.0F, paramContext.getResources());
-      paramContext = new RelativeLayout.LayoutParams(aekt.a(96.0F, paramContext.getResources()), i);
+      i = aepi.a(67.0F, paramContext.getResources());
+      paramContext = new RelativeLayout.LayoutParams(aepi.a(96.0F, paramContext.getResources()), i);
       continue;
-      i = aekt.a(67.0F, paramContext.getResources());
+      i = aepi.a(67.0F, paramContext.getResources());
       paramContext = new RelativeLayout.LayoutParams(i, i);
       continue;
-      i = aekt.a(67.0F, paramContext.getResources());
+      i = aepi.a(67.0F, paramContext.getResources());
       paramContext = new RelativeLayout.LayoutParams(i, i);
     }
   }
@@ -207,15 +207,15 @@ public class PgcSmallView
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextSize(0, Utils.dp2px(16.0D));
       return;
-      setBackgroundResource(2130842490);
+      setBackgroundResource(2130842503);
       continue;
-      setBackgroundResource(2130842490);
+      setBackgroundResource(2130842503);
       continue;
-      setBackgroundResource(2130842490);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845421);
+      setBackgroundResource(2130842503);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845493);
       continue;
-      setBackgroundResource(2130842490);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845421);
+      setBackgroundResource(2130842503);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845493);
     }
   }
   
@@ -276,10 +276,10 @@ public class PgcSmallView
     case 83: 
     case 86: 
     case 132: 
-      localLayoutParams.setMargins(aekt.a(12.0F, paramContext.getResources()), 0, aekt.a(12.0F, paramContext.getResources()), 0);
+      localLayoutParams.setMargins(aepi.a(12.0F, paramContext.getResources()), 0, aepi.a(12.0F, paramContext.getResources()), 0);
       return localLayoutParams;
     }
-    localLayoutParams.setMargins(aekt.a(12.0F, paramContext.getResources()), 0, aekt.a(12.0F, paramContext.getResources()), 0);
+    localLayoutParams.setMargins(aepi.a(12.0F, paramContext.getResources()), 0, aepi.a(12.0F, paramContext.getResources()), 0);
     return localLayoutParams;
   }
 }

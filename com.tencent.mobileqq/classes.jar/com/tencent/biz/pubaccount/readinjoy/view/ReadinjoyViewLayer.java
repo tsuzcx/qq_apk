@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import azgq;
+import azkz;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class ReadinjoyViewLayer
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label240;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(azgq.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(azkz.jdField_a_of_type_Int * 0.1F))) {
         break label248;
       }
     }

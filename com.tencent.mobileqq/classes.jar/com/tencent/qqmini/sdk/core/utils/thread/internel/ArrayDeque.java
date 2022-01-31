@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.utils.thread.internel;
 
-import bgmi;
-import bgmj;
-import bgmk;
+import bgqp;
+import bgqq;
+import bgqr;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayDeque<E>
   extends AbstractCollection<E>
-  implements bgmk<E>, Serializable, Cloneable
+  implements bgqr<E>, Serializable, Cloneable
 {
   private static final long serialVersionUID = 2340985798034038923L;
   private transient int jdField_a_of_type_Int;
@@ -274,7 +274,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> descendingIterator()
   {
-    return new bgmj(this, null);
+    return new bgqq(this, null);
   }
   
   public E element()
@@ -307,7 +307,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> iterator()
   {
-    return new bgmi(this, null);
+    return new bgqp(this, null);
   }
   
   public boolean offer(E paramE)

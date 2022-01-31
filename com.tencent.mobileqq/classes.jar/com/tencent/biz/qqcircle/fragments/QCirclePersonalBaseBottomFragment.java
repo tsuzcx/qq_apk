@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
-import com.tencent.biz.qqcircle.component.ComponentPageView;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
 import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -23,42 +24,48 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import trl;
-import tvg;
-import tvm;
-import twh;
-import tzf;
-import ydp;
+import trq;
+import tvv;
+import tvw;
+import twy;
+import ubq;
+import yhy;
 
 public abstract class QCirclePersonalBaseBottomFragment
   extends ComponentBaseFragment
 {
   private FeedCloudMeta.StUser a;
-  protected trl a;
-  protected tvm a;
-  protected tzf a;
+  protected trq a;
+  protected tvw a;
+  protected ubq a;
   protected String b;
   
-  private List<ydp> b()
+  private List<yhy> b()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Trl = new trl(new Bundle());
-    this.jdField_a_of_type_Trl.a(a());
-    if (((a() instanceof QCirclePersonalDetailFragment)) && (((QCirclePersonalDetailFragment)a()).a() != null) && (((QCirclePersonalDetailFragment)a()).a().a() != null) && (((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(1) != null))
+    this.jdField_a_of_type_Trq = new trq(new Bundle());
+    this.jdField_a_of_type_Trq.a(a());
+    if (((a() instanceof QCirclePersonalDetailFragment)) && (((QCirclePersonalDetailFragment)a()).a() != null) && (((QCirclePersonalDetailFragment)a()).a().a() != null) && (((QCirclePersonalDetailFragment)a()).a().a().a() != null))
     {
-      View localView = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(1);
-      if ((localView instanceof QCirclePersonalBottomView)) {
-        this.jdField_a_of_type_Trl.a(((QCirclePersonalBottomView)localView).a());
+      int j = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        View localView = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(i);
+        if ((localView instanceof QCirclePersonalBottomView)) {
+          this.jdField_a_of_type_Trq.setInteractor(((QCirclePersonalBottomView)localView).a());
+        }
+        i += 1;
       }
     }
-    this.jdField_a_of_type_Trl.a(new twh(this));
-    localArrayList.add(this.jdField_a_of_type_Trl);
+    this.jdField_a_of_type_Trq.setOnLoadDataDelegate(new twy(this));
+    localArrayList.add(this.jdField_a_of_type_Trq);
     return localArrayList;
   }
   
   public int a()
   {
-    return 2131560554;
+    return 2131560567;
   }
   
   public ComponentBaseFragment a()
@@ -69,12 +76,12 @@ public abstract class QCirclePersonalBaseBottomFragment
     return null;
   }
   
-  public List<tvg> a()
+  public List<tvv> a()
   {
     c();
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Tvm = new tvm(2131364908, b(), 3, 1);
-    localArrayList.add(this.jdField_a_of_type_Tvm);
+    this.jdField_a_of_type_Tvw = new tvw(2131364910, b(), 3, 1);
+    localArrayList.add(this.jdField_a_of_type_Tvw);
     return localArrayList;
   }
   
@@ -82,8 +89,8 @@ public abstract class QCirclePersonalBaseBottomFragment
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Trl != null) {
-      this.jdField_a_of_type_Trl.b(paramInt);
+    if (this.jdField_a_of_type_Trq != null) {
+      this.jdField_a_of_type_Trq.b(paramInt);
     }
   }
   
@@ -98,7 +105,7 @@ public abstract class QCirclePersonalBaseBottomFragment
     }
     d();
     a();
-    this.jdField_a_of_type_Trl.Q_();
+    this.jdField_a_of_type_Trq.a();
   }
   
   public boolean a()
@@ -124,16 +131,16 @@ public abstract class QCirclePersonalBaseBottomFragment
   
   protected void d()
   {
-    this.jdField_a_of_type_Tvm.a().a().setNestedScrollingEnabled(true);
-    this.jdField_a_of_type_Tvm.a().setEnableRefresh(false);
-    this.jdField_a_of_type_Tvm.a().setEnableLoadMore(true);
-    this.jdField_a_of_type_Tvm.a().setParentFragment(this);
+    this.jdField_a_of_type_Tvw.a().a().setNestedScrollingEnabled(true);
+    this.jdField_a_of_type_Tvw.a().setEnableRefresh(false);
+    this.jdField_a_of_type_Tvw.a().setEnableLoadMore(true);
+    this.jdField_a_of_type_Tvw.a().setParentFragment(this);
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Trl != null) {
-      this.jdField_a_of_type_Trl.b();
+    if (this.jdField_a_of_type_Trq != null) {
+      this.jdField_a_of_type_Trq.b();
     }
   }
   
@@ -141,10 +148,18 @@ public abstract class QCirclePersonalBaseBottomFragment
   {
     try
     {
-      if (((a() instanceof QCirclePersonalDetailFragment)) && (((QCirclePersonalDetailFragment)a()).a() != null) && (((QCirclePersonalDetailFragment)a()).a().a() != null) && (((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(0) != null))
+      if (((a() instanceof QCirclePersonalDetailFragment)) && (((QCirclePersonalDetailFragment)a()).a() != null) && (((QCirclePersonalDetailFragment)a()).a().a() != null) && (((QCirclePersonalDetailFragment)a()).a().a().a() != null))
       {
-        View localView = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(0);
-        ThreadManager.getUIHandler().post(new QCirclePersonalBaseBottomFragment.2(this, localView));
+        int j = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = ((QCirclePersonalDetailFragment)a()).a().a().a().getChildAt(i);
+          if ((localView instanceof QCirclePersonInfoAndStatusWidget)) {
+            ThreadManager.getUIHandler().post(new QCirclePersonalBaseBottomFragment.2(this, localView));
+          }
+          i += 1;
+        }
       }
       return;
     }

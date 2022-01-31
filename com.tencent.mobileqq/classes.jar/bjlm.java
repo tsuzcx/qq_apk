@@ -1,6 +1,19 @@
-public abstract interface bjlm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiInterestInfo;
+
+public final class bjlm
+  implements Parcelable.Creator<WeishiInterestInfo>
 {
-  public abstract void onQzonePluginClientReady(bjjt parambjjt);
+  public WeishiInterestInfo a(Parcel paramParcel)
+  {
+    return new WeishiInterestInfo(paramParcel);
+  }
+  
+  public WeishiInterestInfo[] a(int paramInt)
+  {
+    return new WeishiInterestInfo[paramInt];
+  }
 }
 
 

@@ -1,16 +1,10 @@
-import java.util.List;
-
-public class udy
+public abstract interface udy
 {
-  public int a;
-  public String a;
-  public List<uea> a;
-  public boolean a;
-  public int b = 500;
-  public String b;
-  public List<udz> b;
-  public int c = 100;
-  public int d = 15;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

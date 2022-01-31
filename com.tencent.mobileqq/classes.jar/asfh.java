@@ -1,35 +1,23 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.widget.FilterRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class asfh
-  extends aelt
+  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FilterRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView c;
-  private ImageView d;
-  private int e;
+  public asfh(CommonTabFragment paramCommonTabFragment) {}
   
-  private void a(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout = ((FilterRelativeLayout)paramView.findViewById(2131366972));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366966));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366970));
-    this.c = ((ImageView)paramView.findViewById(2131366971));
-    this.d = ((ImageView)paramView.findViewById(2131366967));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366973));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366974));
-  }
-  
-  private void a(MessageForFuDai paramMessageForFuDai)
-  {
-    this.e = paramMessageForFuDai.themeId;
+    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
+    do
+    {
+      return;
+      paramView = this.a.a.mWebview.getPluginEngine();
+    } while (paramView == null);
+    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
   }
 }
 

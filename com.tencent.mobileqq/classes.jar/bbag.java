@@ -1,11 +1,24 @@
-import android.content.DialogInterface;
+import java.util.Comparator;
 
-final class bbag
-  extends bdco
+class bbag
+  implements Comparator
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    paramDialogInterface.dismiss();
+    paramObject1 = (bbad)paramObject1;
+    paramObject2 = (bbad)paramObject2;
+    if (paramObject1.c > paramObject2.c) {}
+    do
+    {
+      return -1;
+      if (paramObject1.c < paramObject2.c) {
+        return 1;
+      }
+    } while (paramObject1.d > paramObject2.d);
+    if (paramObject1.d < paramObject2.d) {
+      return 1;
+    }
+    return 0;
   }
 }
 

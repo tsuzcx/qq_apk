@@ -1,7 +1,7 @@
 package cooperation.weiyun.upload;
 
-import bkhp;
-import bkhr;
+import bklw;
+import bkly;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -26,9 +26,9 @@ public class WyUploadJob
     return this.jdField_a_of_type_Int;
   }
   
-  bkhp a(UploadRequest paramUploadRequest)
+  bklw a(UploadRequest paramUploadRequest)
   {
-    return new bkhr(paramUploadRequest, this);
+    return new bkly(paramUploadRequest, this);
   }
   
   UploadResponse a(int paramInt)

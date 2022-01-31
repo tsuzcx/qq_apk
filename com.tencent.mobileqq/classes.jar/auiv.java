@@ -1,23 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.List;
 
 public class auiv
-  extends AnimatorListenerAdapter
+  extends aujd<MessageRecord>
 {
-  public auiv(MultiCardFragment paramMultiCardFragment) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public auiv(MessageRecord paramMessageRecord)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
+    super(paramMessageRecord);
+    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected int a()
   {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    return 0;
   }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    return null;
+  }
+  
+  public void a() {}
 }
 
 

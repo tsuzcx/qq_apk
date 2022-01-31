@@ -1,85 +1,44 @@
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xdb1.oidb_0xdb1.SchoolInfo;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class apzq
-  extends apxc
+  implements View.OnTouchListener
 {
-  public apzq(ExtendFriendFragment paramExtendFriendFragment) {}
+  public apzq(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
   
-  protected void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    atwl.a(ExtendFriendFragment.a(this.a), ExtendFriendFragment.a(this.a).app);
-    Intent localIntent = new Intent("match_chat_notify_update");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    int i = ExtendFriendFragment.a(this.a).c();
-    String str1 = ExtendFriendFragment.a(this.a).f();
-    String str2 = ExtendFriendFragment.a(this.a).g();
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendFragment", 2, "onUpdateCampusCertificateStatus,isSuccess + " + paramBoolean + ",scene + " + paramInt + ",verifyStatus + " + i + ",serverSuggestSchoolName + " + str1);
-    }
-    if ((paramBoolean) && (paramInt == 1))
+    if (paramMotionEvent.getAction() == 1)
     {
-      if (((i == 0) || (i == 3)) && (!aqcq.a(ExtendFriendFragment.a(this.a))) && (TextUtils.isEmpty(str2)))
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (this.jdField_a_of_type_Int == 1)
       {
-        aqcq.a(ExtendFriendFragment.a(this.a), str1);
-        aqcq.a(ExtendFriendFragment.a(this.a));
-      }
-      Object localObject = ExtendFriendFragment.a(this.a).a();
-      str2 = ExtendFriendFragment.a(this.a).g();
-      if ((!TextUtils.isEmpty(str2)) && (localObject != null) && (!ExtendFriendFragment.a(this.a).isFinishing()))
-      {
-        if (!((oidb_0xdb1.SchoolInfo)localObject).str_school_name.has()) {
-          break label307;
-        }
-        str1 = ((oidb_0xdb1.SchoolInfo)localObject).str_school_name.get();
-        apwv localapwv = (apwv)ExtendFriendFragment.a(this.a).a(127);
-        localObject = aqcq.a((oidb_0xdb1.SchoolInfo)localObject);
-        aqcq.a(ExtendFriendFragment.a(this.a), localapwv, str1, (EditExtendFriendInfo.SchoolInfo)localObject);
-      }
-      if (TextUtils.isEmpty(str2)) {
-        break label314;
-      }
-      paramInt = 1;
-      label276:
-      if (paramInt == 0) {
-        break label319;
+        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
       }
     }
-    label307:
-    label314:
-    label319:
-    for (paramInt = 1;; paramInt = 2)
+    while (paramMotionEvent.getAction() != 0)
     {
-      azmj.b(null, "dc00898", "", "", "0X800ADD7", "0X800ADD7", paramInt, 0, "", "", "", "");
-      return;
-      str1 = "";
-      break;
-      paramInt = 0;
-      break label276;
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
+      return false;
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendFragment", 2, "onUpdateExtendFriendCampusSchoolInfo isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      QQToast.a(ExtendFriendFragment.a(this.a), 2, 2131699253, 0).b(ExtendFriendFragment.a(this.a).getTitleBarHeight());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    return false;
   }
 }
 

@@ -1,39 +1,27 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.FaceImageViewer;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
 
-public class blcz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class blcz
+  extends RecyclerView.ViewHolder
 {
-  public blcz(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, NodeItem paramNodeItem) {}
+  AEGIFTextColorSelectionView a;
   
-  public void onGlobalLayout()
+  public blcz(@NonNull View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131363846));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setColor(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(Boolean.valueOf(paramBoolean));
   }
 }
 

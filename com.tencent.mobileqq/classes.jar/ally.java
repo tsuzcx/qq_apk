@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-
-public abstract class ally<T extends CustomEmotionBase>
-  extends alko
+public abstract interface ally
 {
-  protected ally(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public abstract void a();
-  
-  protected abstract void a(Object paramObject, boolean paramBoolean);
+  public abstract void a(boolean paramBoolean, akyn paramakyn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ally
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -14,17 +14,17 @@ final class ApolloGameUtil$20
     switch (this.a)
     {
     default: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131700738), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, alud.a(2131700750), 0).a();
     case 1: 
       return;
     case 0: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, alpo.a(2131700714), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, alud.a(2131700726), 0).a();
       return;
     case 2: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131700726), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, alud.a(2131700738), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2, alpo.a(2131700730), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 2, alud.a(2131700742), 0).a();
   }
 }
 

@@ -1,17 +1,14 @@
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+
 public class azgw
 {
   public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
+  public int b = 0;
+  
+  public azgw(SVHwEncoder.HwEncode paramHwEncode)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 

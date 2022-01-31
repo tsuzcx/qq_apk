@@ -1,10 +1,12 @@
-public class aorz
+import java.util.Comparator;
+
+final class aorz
+  implements Comparator<bapp>
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public int a(bapp parambapp1, bapp parambapp2)
+  {
+    return parambapp1.c - parambapp2.c;
+  }
 }
 
 

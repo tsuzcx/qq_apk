@@ -14,9 +14,9 @@ class sap
   public sap(sal paramsal, View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378985));
-    this.b = paramView.findViewById(2131365360);
-    this.c = paramView.findViewById(2131376859);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+    this.b = paramView.findViewById(2131365362);
+    this.c = paramView.findViewById(2131376913);
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)

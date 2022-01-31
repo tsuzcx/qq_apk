@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class ajvt
-  implements View.OnClickListener
+public abstract interface ajvt
 {
-  public ajvt(SelectMemberActivity paramSelectMemberActivity) {}
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 

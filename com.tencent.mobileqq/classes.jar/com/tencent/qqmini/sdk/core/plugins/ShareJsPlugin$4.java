@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgkd;
+import bgok;
 
 class ShareJsPlugin$4
   implements Runnable
 {
-  ShareJsPlugin$4(ShareJsPlugin paramShareJsPlugin, bgkd parambgkd) {}
+  ShareJsPlugin$4(ShareJsPlugin paramShareJsPlugin, bgok parambgok) {}
   
   /* Error */
   public void run()
@@ -17,15 +17,15 @@ class ShareJsPlugin$4
     //   3: istore 9
     //   5: aload_0
     //   6: getfield 14	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:this$0	Lcom/tencent/qqmini/sdk/core/plugins/ShareJsPlugin;
-    //   9: getfield 29	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin:mMiniAppContext	Lbgho;
+    //   9: getfield 29	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin:mMiniAppContext	Lbglv;
     //   12: invokeinterface 35 1 0
-    //   17: invokestatic 40	bgob:a	(Landroid/content/Context;)Lbgob;
+    //   17: invokestatic 40	bgsi:a	(Landroid/content/Context;)Lbgsi;
     //   20: astore 10
     //   22: new 42	org/json/JSONObject
     //   25: dup
     //   26: aload_0
-    //   27: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   30: getfield 48	bgkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   27: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   30: getfield 48	bgok:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   33: invokespecial 51	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   36: astore 11
     //   38: aload 11
@@ -44,8 +44,8 @@ class ShareJsPlugin$4
     //   85: dup
     //   86: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   89: aload_0
-    //   90: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   93: getfield 70	bgkd:a	Ljava/lang/String;
+    //   90: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   93: getfield 70	bgok:a	Ljava/lang/String;
     //   96: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: ldc 76
     //   101: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -62,7 +62,7 @@ class ShareJsPlugin$4
     //   125: aload 11
     //   127: ldc 97
     //   129: invokevirtual 100	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   132: invokevirtual 103	bgob:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
+    //   132: invokevirtual 103	bgsi:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
     //   135: iload_1
     //   136: iconst_1
     //   137: iadd
@@ -76,8 +76,8 @@ class ShareJsPlugin$4
     //   151: invokevirtual 111	org/json/JSONArray:isNull	(I)Z
     //   154: ifeq -39 -> 115
     //   157: aload_0
-    //   158: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   161: invokevirtual 113	bgkd:b	()Ljava/lang/String;
+    //   158: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   161: invokevirtual 113	bgok:b	()Ljava/lang/String;
     //   164: pop
     //   165: return
     //   166: astore 10
@@ -86,8 +86,8 @@ class ShareJsPlugin$4
     //   173: dup
     //   174: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   177: aload_0
-    //   178: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   181: getfield 70	bgkd:a	Ljava/lang/String;
+    //   178: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   181: getfield 70	bgok:a	Ljava/lang/String;
     //   184: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: ldc 115
     //   189: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -97,50 +97,50 @@ class ShareJsPlugin$4
     //   200: return
     //   201: aload 10
     //   203: ldc 120
-    //   205: invokevirtual 123	bgob:a	(Ljava/lang/CharSequence;)V
+    //   205: invokevirtual 123	bgsi:a	(Ljava/lang/CharSequence;)V
     //   208: aload 10
-    //   210: invokevirtual 126	bgob:show	()V
+    //   210: invokevirtual 126	bgsi:show	()V
     //   213: aload 10
     //   215: iconst_1
-    //   216: invokevirtual 129	bgob:a	(Z)V
+    //   216: invokevirtual 129	bgsi:a	(Z)V
     //   219: aload 10
     //   221: new 131	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$1
     //   224: dup
     //   225: aload_0
     //   226: invokespecial 134	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$1:<init>	(Lcom/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4;)V
-    //   229: invokevirtual 137	bgob:a	(Lbgoi;)V
+    //   229: invokevirtual 137	bgsi:a	(Lbgsp;)V
     //   232: aload 10
     //   234: new 139	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$2
     //   237: dup
     //   238: aload_0
     //   239: invokespecial 140	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$2:<init>	(Lcom/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4;)V
-    //   242: invokevirtual 144	bgob:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
+    //   242: invokevirtual 144	bgsi:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   245: aload 10
     //   247: new 146	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$3
     //   250: dup
     //   251: aload_0
     //   252: aload 10
-    //   254: invokespecial 149	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$3:<init>	(Lcom/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4;Lbgob;)V
-    //   257: invokevirtual 152	bgob:a	(Lbgog;)V
+    //   254: invokespecial 149	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4$3:<init>	(Lcom/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4;Lbgsi;)V
+    //   257: invokevirtual 152	bgsi:a	(Lbgsn;)V
     //   260: return
     //   261: new 154	java/util/HashMap
     //   264: dup
     //   265: invokespecial 155	java/util/HashMap:<init>	()V
     //   268: astore 10
     //   270: aload_0
-    //   271: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   274: getfield 48	bgkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   271: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   274: getfield 48	bgok:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   277: ifnull +37 -> 314
     //   280: ldc 157
     //   282: aload_0
-    //   283: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   286: getfield 48	bgkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   283: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   286: getfield 48	bgok:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   289: invokevirtual 163	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   292: ifne +22 -> 314
     //   295: ldc 165
     //   297: aload_0
-    //   298: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   301: getfield 48	bgkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   298: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   301: getfield 48	bgok:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   304: invokevirtual 163	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   307: istore 6
     //   309: iload 6
@@ -153,16 +153,16 @@ class ShareJsPlugin$4
     //   325: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   328: pop
     //   329: aload_0
-    //   330: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   333: invokevirtual 113	bgkd:b	()Ljava/lang/String;
+    //   330: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   333: invokevirtual 113	bgok:b	()Ljava/lang/String;
     //   336: pop
     //   337: ldc 65
     //   339: new 67	java/lang/StringBuilder
     //   342: dup
     //   343: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   346: aload_0
-    //   347: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   350: getfield 70	bgkd:a	Ljava/lang/String;
+    //   347: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   350: getfield 70	bgok:a	Ljava/lang/String;
     //   353: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: ldc 176
     //   358: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -175,8 +175,8 @@ class ShareJsPlugin$4
     //   375: dup
     //   376: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   379: aload_0
-    //   380: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   383: getfield 70	bgkd:a	Ljava/lang/String;
+    //   380: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   383: getfield 70	bgok:a	Ljava/lang/String;
     //   386: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: ldc 115
     //   391: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -187,8 +187,8 @@ class ShareJsPlugin$4
     //   405: new 42	org/json/JSONObject
     //   408: dup
     //   409: aload_0
-    //   410: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   413: getfield 48	bgkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   410: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   413: getfield 48	bgok:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   416: invokespecial 51	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   419: ldc 53
     //   421: invokevirtual 180	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
@@ -204,16 +204,16 @@ class ShareJsPlugin$4
     //   445: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   448: pop
     //   449: aload_0
-    //   450: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   453: invokevirtual 113	bgkd:b	()Ljava/lang/String;
+    //   450: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   453: invokevirtual 113	bgok:b	()Ljava/lang/String;
     //   456: pop
     //   457: ldc 65
     //   459: new 67	java/lang/StringBuilder
     //   462: dup
     //   463: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   466: aload_0
-    //   467: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   470: getfield 70	bgkd:a	Ljava/lang/String;
+    //   467: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   470: getfield 70	bgok:a	Ljava/lang/String;
     //   473: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: ldc 184
     //   478: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -229,8 +229,8 @@ class ShareJsPlugin$4
     //   502: aload 10
     //   504: invokestatic 118	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   507: aload_0
-    //   508: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   511: invokevirtual 113	bgkd:b	()Ljava/lang/String;
+    //   508: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   511: invokevirtual 113	bgok:b	()Ljava/lang/String;
     //   514: pop
     //   515: return
     //   516: astore 10
@@ -239,8 +239,8 @@ class ShareJsPlugin$4
     //   523: dup
     //   524: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   527: aload_0
-    //   528: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   531: getfield 70	bgkd:a	Ljava/lang/String;
+    //   528: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   531: getfield 70	bgok:a	Ljava/lang/String;
     //   534: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   537: ldc 115
     //   539: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -346,8 +346,8 @@ class ShareJsPlugin$4
     //   741: iload 9
     //   743: aload 10
     //   745: aload_0
-    //   746: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgkd;
-    //   749: getfield 229	bgkd:jdField_b_of_type_Int	I
+    //   746: getfield 16	com/tencent/qqmini/sdk/core/plugins/ShareJsPlugin$4:val$req	Lbgok;
+    //   749: getfield 229	bgok:jdField_b_of_type_Int	I
     //   752: invokeinterface 235 7 0
     //   757: return
     //   758: iconst_0
@@ -404,7 +404,7 @@ class ShareJsPlugin$4
     //   737	82	7	bool2	boolean
     //   739	88	8	bool3	boolean
     //   3	775	9	bool4	boolean
-    //   20	96	10	localbgob	bgob
+    //   20	96	10	localbgsi	bgsi
     //   166	87	10	localJSONException1	org.json.JSONException
     //   268	1	10	localHashMap	java.util.HashMap
     //   368	30	10	localJSONException2	org.json.JSONException

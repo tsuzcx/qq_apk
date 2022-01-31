@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aqhb
-  extends bada
+final class aqhb
+  implements DialogInterface.OnCancelListener
 {
-  public aqhb(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    azqs.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 2, 0, "", "", "", "");
   }
 }
 

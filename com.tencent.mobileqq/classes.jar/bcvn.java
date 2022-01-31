@@ -1,45 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
-
-final class bcvn
-  implements DownloadParams.DecodeHandler
+class bcvn
+  implements badp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bcvn(bcvm parambcvm) {}
+  
+  public void a()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    do
-    {
-      do
-      {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 3);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
-        }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = bdda.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(bcuq.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
   }
 }
 

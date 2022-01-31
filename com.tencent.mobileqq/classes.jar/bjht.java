@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bjht
-  implements DialogInterface.OnCancelListener
+public abstract interface bjht
 {
-  public bjht(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.getPlayMode();
-  }
+  public abstract void clearCache();
+  
+  public abstract void forceRefresh();
+  
+  public abstract void onSwitchOutofQzone();
+  
+  public abstract void resetReportFlag();
+  
+  public abstract void setQzoneSwitchlistener(aiet paramaiet);
+  
+  public abstract void setRightButtonType(int paramInt);
+  
+  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
+  
+  public abstract void setTitleView(ViewGroup paramViewGroup);
+  
+  public abstract void updatePublishBox(Intent paramIntent);
 }
 
 

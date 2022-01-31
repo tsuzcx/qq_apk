@@ -1,47 +1,37 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.util.WeakReference;
 
-public class twa
-  extends trr
+class twa
+  implements twi
 {
-  public twa(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  twa(tvz paramtvz, twc paramtwc, int paramInt) {}
   
-  public int a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.jdField_a_of_type_Trv != null) {
-      return this.a.jdField_a_of_type_Trv.b();
+    paramString = new twb(this.jdField_a_of_type_Twc.a, paramBoolean, paramString);
+    tvz.a(this.jdField_a_of_type_Tvz).put(this.jdField_a_of_type_Twc.a, paramString);
+    if (paramBoolean)
+    {
+      tvz.a(this.jdField_a_of_type_Tvz).incrementAndGet();
+      if ((tvz.a(this.jdField_a_of_type_Tvz).get() + tvz.b(this.jdField_a_of_type_Tvz).get() == this.jdField_a_of_type_Int) && (tvz.a(this.jdField_a_of_type_Tvz) != null))
+      {
+        paramString = (twd)tvz.a(this.jdField_a_of_type_Tvz).get();
+        if (paramString != null) {
+          if (tvz.b(this.jdField_a_of_type_Tvz).get() != 0) {
+            break label153;
+          }
+        }
+      }
     }
-    return 0;
-  }
-  
-  public QCirclePolymorphicAniView a()
-  {
-    return this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView;
-  }
-  
-  public String a()
-  {
-    if (this.a.jdField_a_of_type_Trv != null) {
-      return this.a.jdField_a_of_type_Trv.b();
+    label153:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.a(paramBoolean, tvz.a(this.jdField_a_of_type_Tvz));
+      return;
+      tvz.b(this.jdField_a_of_type_Tvz).incrementAndGet();
+      break;
     }
-    return "";
-  }
-  
-  public tuk a()
-  {
-    return this.a.jdField_a_of_type_Tuk;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_Tsv != null) {
-      this.a.jdField_a_of_type_Tsv.a("share_action_show_share_sheet", paramObject);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a.jdField_a_of_type_Trv != null) && ((this.a.jdField_a_of_type_Trv.a() == 3) || (this.a.jdField_a_of_type_Trv.a() == 2)) && ((this.a.jdField_a_of_type_Trv.b() == 4) || (this.a.jdField_a_of_type_Trv.b() == 2));
   }
 }
 

@@ -1,33 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acba
-  implements bhqd
+  implements DialogInterface.OnDismissListener
 {
-  public acba(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, bhpy parambhpy) {}
+  public acba(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
     }
-    this.jdField_a_of_type_Bhpy.cancel();
-    switch (i)
-    {
-    default: 
-      return;
-    case 0: 
-      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
-      return;
-    case 2: 
-      AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
-      return;
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
     }
-    AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
   }
 }
 

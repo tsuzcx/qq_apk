@@ -1,77 +1,48 @@
-import Wallet.SkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import java.util.Collections;
+import Wallet.BroadCastInfo;
+import Wallet.GetBroadCastHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
 
-public class aiup
+class aiup
+  implements BusinessObserver
 {
-  public static boolean a;
-  public static int c = 0;
-  public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
-  public String a;
-  public int b;
-  public String b = "";
+  aiup(aiuo paramaiuo) {}
   
-  public aiup(SkinInfo paramSkinInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
-  }
-  
-  public aiup(String paramString)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<aiup> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramInt == 28)
     {
-      aiup localaiup = (aiup)paramList.next();
-      if (c == localaiup.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localaiup.jdField_a_of_type_WalletSkinInfo.skin_id;
+      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        break label21;
       }
     }
-    return -1;
-  }
-  
-  public static void a(List<aiup> paramList)
-  {
-    Collections.sort(paramList, new aiuq());
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    for (;;)
     {
-      return true;
-      if (!(paramObject instanceof aiup)) {
-        break;
+      return;
+      label21:
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_Aiul.a = false;
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
+          if ((this.a.jdField_a_of_type_Aiul.a(str) != null) && (localBroadCastInfo != null)) {
+            if (localBroadCastInfo.isFinished == 1) {
+              this.a.jdField_a_of_type_Aiul.a(str);
+            } else {
+              this.a.jdField_a_of_type_Aiul.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
+            }
+          }
+        }
       }
-    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((aiup)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
-    return false;
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("");
-    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
-    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
-    return localStringBuffer.toString();
+    }
   }
 }
 

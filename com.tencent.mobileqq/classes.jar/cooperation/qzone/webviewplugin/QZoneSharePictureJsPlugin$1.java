@@ -1,22 +1,22 @@
 package cooperation.qzone.webviewplugin;
 
-import bjpl;
-import bjsx;
+import bjts;
+import bjxe;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class QZoneSharePictureJsPlugin$1
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$1(bjsx parambjsx, String[] paramArrayOfString) {}
+  public QZoneSharePictureJsPlugin$1(bjxe parambjxe, String[] paramArrayOfString) {}
   
   public void run()
   {
-    if (bjpl.a().a(bjpl.a, true))
+    if (bjts.a().a(bjts.a, true))
     {
-      bjsx.a(this.this$0, this.this$0.a.mRuntime, this.a);
+      bjxe.a(this.this$0, this.this$0.a.mRuntime, this.a);
       return;
     }
-    bjsx.a(this.this$0, this.a);
+    bjxe.a(this.this$0, this.a);
   }
 }
 

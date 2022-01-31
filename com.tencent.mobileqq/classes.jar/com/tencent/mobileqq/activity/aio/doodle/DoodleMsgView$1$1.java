@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aevj;
-import aevk;
+import aezy;
+import aezz;
 import mqq.util.WeakReference;
 
 public class DoodleMsgView$1$1
   implements Runnable
 {
-  public DoodleMsgView$1$1(aevj paramaevj) {}
+  public DoodleMsgView$1$1(aezy paramaezy) {}
   
   public void run()
   {
     if (DoodleMsgView.a(this.a.a) != null)
     {
-      aevk localaevk = (aevk)DoodleMsgView.a(this.a.a).get();
-      if (localaevk != null) {
-        localaevk.g();
+      aezz localaezz = (aezz)DoodleMsgView.a(this.a.a).get();
+      if (localaezz != null) {
+        localaezz.g();
       }
     }
   }

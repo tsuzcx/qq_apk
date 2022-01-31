@@ -64,7 +64,7 @@ public class sut
     Object localObject1 = new sut(paramQQAppInterface);
     localObject3 = paramQQAppInterface.a();
     if (localObject3 != null) {}
-    for (int i = ((abol)localObject3).a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop);; i = 0)
+    for (int i = ((abta)localObject3).a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop);; i = 0)
     {
       long l;
       if (paramTroopBarData.mLastMsgTime > paramTroopBarData.mLastDraftTime)
@@ -137,56 +137,56 @@ public class sut
               suu localsuu;
               if (paramTroopBarData.hasNext())
               {
-                localObject3 = (azqj)paramTroopBarData.next();
+                localObject3 = (azus)paramTroopBarData.next();
                 localsuu = new suu();
                 localsuu.jdField_a_of_type_Int = 1;
-                localsuu.c = ((azqj)localObject3).g;
+                localsuu.c = ((azus)localObject3).g;
                 localsuu.g = paramContext.mTagName;
-                if (!(localObject3 instanceof azqk)) {
+                if (!(localObject3 instanceof azut)) {
                   break label809;
                 }
-                paramQQAppInterface = ((azqk)localObject3).a.iterator();
+                paramQQAppInterface = ((azut)localObject3).a.iterator();
                 for (;;)
                 {
                   if (!paramQQAppInterface.hasNext()) {
                     break label726;
                   }
-                  Object localObject4 = (azqj)paramQQAppInterface.next();
-                  if ((localObject4 instanceof azsm))
+                  Object localObject4 = (azus)paramQQAppInterface.next();
+                  if ((localObject4 instanceof azwv))
                   {
-                    localsuu.jdField_a_of_type_JavaLangString = ((azsm)localObject4).S;
+                    localsuu.jdField_a_of_type_JavaLangString = ((azwv)localObject4).S;
                   }
                   else if ((localObject4 instanceof StructMsgItemTitle))
                   {
                     localsuu.b = ((StructMsgItemTitle)localObject4).b();
                   }
-                  else if ((localObject4 instanceof azvm))
+                  else if ((localObject4 instanceof azzv))
                   {
-                    localsuu.jdField_a_of_type_JavaLangString = ((azvm)localObject4).S;
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzv)localObject4).S;
                   }
-                  else if ((localObject4 instanceof azus))
+                  else if ((localObject4 instanceof azzb))
                   {
-                    localsuu.jdField_a_of_type_JavaLangString = ((azus)localObject4).S;
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzb)localObject4).S;
                   }
-                  else if ((localObject4 instanceof azux))
+                  else if ((localObject4 instanceof azzg))
                   {
-                    localsuu.jdField_a_of_type_JavaLangString = ((azux)localObject4).S;
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzg)localObject4).S;
                   }
-                  else if ((localObject4 instanceof azrm))
+                  else if ((localObject4 instanceof azvv))
                   {
-                    localObject4 = ((azrm)localObject4).jdField_a_of_type_JavaUtilList.iterator();
+                    localObject4 = ((azvv)localObject4).jdField_a_of_type_JavaUtilList.iterator();
                     if (((Iterator)localObject4).hasNext())
                     {
-                      azqj localazqj = (azqj)((Iterator)localObject4).next();
-                      if (!(localazqj instanceof StructMsgItemTitle)) {
+                      azus localazus = (azus)((Iterator)localObject4).next();
+                      if (!(localazus instanceof StructMsgItemTitle)) {
                         break;
                       }
-                      localsuu.b = ((StructMsgItemTitle)localazqj).b();
+                      localsuu.b = ((StructMsgItemTitle)localazus).b();
                     }
                   }
                 }
                 label726:
-                if (!TextUtils.isEmpty(((azqj)localObject3).b)) {
+                if (!TextUtils.isEmpty(((azus)localObject3).b)) {
                   break label800;
                 }
                 paramQQAppInterface = paramContext.mMsgUrl;
@@ -195,13 +195,13 @@ public class sut
               }
               for (;;)
               {
-                if ((((azqk)localObject3).a.size() == 1) && (((azqj)((azqk)localObject3).a.get(0) instanceof azso))) {
+                if ((((azut)localObject3).a.size() == 1) && (((azus)((azut)localObject3).a.get(0) instanceof azwx))) {
                   break label816;
                 }
                 ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(localsuu);
                 break label443;
                 break;
-                paramQQAppInterface = ((azqj)localObject3).b;
+                paramQQAppInterface = ((azus)localObject3).b;
                 break label742;
                 localsuu.jdField_a_of_type_Int = 0;
               }
@@ -219,7 +219,7 @@ public class sut
           paramTroopBarData.jdField_a_of_type_Int = 2;
           paramTroopBarData.c = paramQQAppInterface.a().b(paramContext, (MessageRecord)localObject2, false);
           paramTroopBarData.f = ((MessageForPic)localObject2).path;
-          paramTroopBarData.jdField_a_of_type_JavaNetURL = baul.a((MessageForPic)localObject2, 65537, null);
+          paramTroopBarData.jdField_a_of_type_JavaNetURL = bayu.a((MessageForPic)localObject2, 65537, null);
           ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(paramTroopBarData);
         }
       }
@@ -275,7 +275,7 @@ public class sut
       suv.a().a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localMessage.frienduin);
       localObject = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     } while (localObject == null);
-    ((abol)localObject).a(localMessage.frienduin, localMessage.istroop, true);
+    ((abta)localObject).a(localMessage.frienduin, localMessage.istroop, true);
   }
   
   public boolean equals(Object paramObject)

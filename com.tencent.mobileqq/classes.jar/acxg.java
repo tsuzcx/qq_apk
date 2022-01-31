@@ -1,58 +1,49 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
-public abstract class acxg
+public class acxg
+  implements adwr
 {
-  protected acxh a;
-  protected acxi a;
-  public QQAppInterface a;
-  protected int b = -1;
-  public String b;
+  public acxg(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public acxg(QQAppInterface paramQQAppInterface)
+  public void a(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardFriendListActivity.a(this.a) != null) {
+        ForwardFriendListActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardFriendListActivity.a(this.a).setVisibility(0);
+    }
   }
   
-  public abstract int a();
-  
-  public acxi a()
+  public void a(ResultRecord paramResultRecord)
   {
-    return this.jdField_a_of_type_Acxi;
+    if (paramResultRecord != null) {
+      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
   }
   
-  public abstract acxi a(int paramInt);
-  
-  public Drawable a()
+  public void a(boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public void a(acxh paramacxh)
-  {
-    this.jdField_a_of_type_Acxh = paramacxh;
-  }
-  
-  public abstract void a(acxi paramacxi);
-  
-  public abstract void a(BaseActivity paramBaseActivity);
-  
-  public abstract void a(BaseActivity paramBaseActivity, acxi paramacxi);
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public abstract void b(BaseActivity paramBaseActivity);
-  
-  public void c(acxi paramacxi)
-  {
-    if ((paramacxi == this.jdField_a_of_type_Acxi) && (this.jdField_a_of_type_Acxh != null)) {
-      this.jdField_a_of_type_Acxh.a(paramacxi);
+    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
+    {
+      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131375722, ForwardFriendListActivity.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }

@@ -1,74 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class aohf
-  extends aofy<aohe>
+  implements TextWatcher
 {
-  public static void b()
+  public aohf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    aohe localaohe = (aohe)aogj.a().a(430);
-    aohe.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaohe);
+    this.a.a = true;
   }
   
-  public int a()
-  {
-    return 430;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  @NonNull
-  public aohe a(int paramInt)
-  {
-    return new aohe();
-  }
-  
-  @Nullable
-  public aohe a(aogf[] paramArrayOfaogf)
-  {
-    return aohe.a(paramArrayOfaogf);
-  }
-  
-  public Class<aohe> a()
-  {
-    return aohe.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aohe paramaohe)
-  {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    aohe.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaohe);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohf
  * JD-Core Version:    0.7.0.1
  */

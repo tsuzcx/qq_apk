@@ -1,37 +1,52 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class vqp
-  extends JobSegment<String, String>
+  extends vpa<TroopAssistantHomeFeedPlayInfo>
 {
-  private vqp(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  protected void a(JobContext paramJobContext, String paramString)
+  public vqp(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    this.a.jdField_a_of_type_Vrr.a(null);
-    this.a.jdField_a_of_type_Vrr.a(null);
-    this.a.jdField_a_of_type_Vrr.a(null);
-    this.a.jdField_a_of_type_Vrr.a(null);
-    this.a.jdField_a_of_type_Vrr.a(null);
-    if (VideoViewVideoHolder.f(this.a) == 0)
-    {
-      wsv.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
-      notifyResult(paramString);
-      return;
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (woy)uwa.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
     }
-    if (VideoViewVideoHolder.f(this.a) < 7)
-    {
-      wsv.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
-      VideoViewVideoHolder.a(this.a, 0);
-      notifyResult(paramString);
-      return;
-    }
-    wsv.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
-    this.a.jdField_a_of_type_Vrr.a();
-    VideoViewVideoHolder.a(this.a, 0);
-    notifyResult(paramString);
   }
+  
+  public woq a(String paramString)
+  {
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      woq localwoq = (woq)localIterator.next();
+      if (localwoq.a.equals(paramString)) {
+        return localwoq;
+      }
+    }
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramvps.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new vgf();
+    ((vgf)localObject).a = this.a.a();
+    wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vgf)localObject).a);
+    urp.a().a((urt)localObject, new vqq(this, paramvps));
+  }
+  
+  public void b() {}
 }
 
 

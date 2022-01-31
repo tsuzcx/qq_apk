@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
 public class adzm
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public adzm(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public adzm(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    }
+    this.a.f();
   }
 }
 

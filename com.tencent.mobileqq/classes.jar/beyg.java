@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.view.View;
 
-public class beyg
-  implements DialogInterface.OnCancelListener
+class beyg
+  implements bexx
 {
-  public beyg(AuthorityControlFragment paramAuthorityControlFragment) {}
+  beyg(beyf parambeyf) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
-    }
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    atfs.a().a(2);
   }
 }
 

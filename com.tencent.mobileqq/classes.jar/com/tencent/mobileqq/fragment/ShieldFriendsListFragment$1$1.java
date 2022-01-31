@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import asdc;
+import ashl;
 import java.util.ArrayList;
 
 class ShieldFriendsListFragment$1$1

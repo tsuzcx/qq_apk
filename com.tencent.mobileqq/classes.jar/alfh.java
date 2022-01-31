@@ -1,24 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.File;
 
-public final class alfh
-  implements BusinessObserver
+class alfh
+  implements aleg
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  alfh(alfe paramalfe, File paramFile, String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
     }
     if (paramBoolean)
     {
-      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
-      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 0, alud.a(2131700868));
+        return;
+      }
+      this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, alud.a(2131700897));
+      return;
     }
+    this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, alud.a(2131700879));
   }
 }
 

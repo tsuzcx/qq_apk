@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import ayhe;
-import aypy;
-import ayql;
-import bdli;
+import ayln;
+import ayuh;
+import ayuu;
+import bdpr;
 import java.util.List;
 
 public class FTSMessageSearchEngine$1
   implements Runnable
 {
-  public FTSMessageSearchEngine$1(ayhe paramayhe, ayql paramayql, aypy paramaypy) {}
+  public FTSMessageSearchEngine$1(ayln paramayln, ayuu paramayuu, ayuh paramayuh) {}
   
   public void run()
   {
-    if (bdli.g(ayhe.a(this.this$0)) == 1) {}
-    for (List localList = this.this$0.b(this.jdField_a_of_type_Ayql, false);; localList = this.this$0.a(this.jdField_a_of_type_Ayql, false))
+    if (bdpr.g(ayln.a(this.this$0)) == 1) {}
+    for (List localList = this.this$0.b(this.jdField_a_of_type_Ayuu, false);; localList = this.this$0.a(this.jdField_a_of_type_Ayuu, false))
     {
-      if (this.jdField_a_of_type_Aypy != null) {
-        this.jdField_a_of_type_Aypy.a(localList, 1);
+      if (this.jdField_a_of_type_Ayuh != null) {
+        this.jdField_a_of_type_Ayuh.a(localList, 1);
       }
       return;
     }

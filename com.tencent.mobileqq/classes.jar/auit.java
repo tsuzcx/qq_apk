@@ -1,23 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class auit
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public auit(MultiCardFragment paramMultiCardFragment) {}
+  public auit(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.b(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.b(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

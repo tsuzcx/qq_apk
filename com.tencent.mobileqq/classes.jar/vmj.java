@@ -1,55 +1,77 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class vmj
-  extends vli
+public final class vmj
 {
-  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
-  private vld jdField_a_of_type_Vld;
-  
-  public vmj(VidListPlayInfo paramVidListPlayInfo)
+  public static void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
-    this.jdField_a_of_type_Vld = new vld("vidList");
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
+    paramContext.startActivity(localIntent);
   }
   
-  public List<vlk> a(List<vld> paramList)
+  public static void a(Context paramContext, String paramString)
   {
-    return null;
-  }
-  
-  public vlg a()
-  {
-    return new vlg(this.jdField_a_of_type_Vld, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, vlj paramvlj)
-  {
-    ArrayList localArrayList = new ArrayList();
-    vle localvle = new vle(this.jdField_a_of_type_Vld);
-    localArrayList.add(localvle);
-    localvle.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    if (a(paramContext, paramString))
     {
-      if (paramInt < i) {}
-      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
+      b(paramContext, paramString);
+      return;
+    }
+    a(paramContext);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    boolean bool = false;
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = null;
+    try
+    {
+      paramString = localPackageManager.getPackageInfo(paramString, 0);
+      paramContext = paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      for (;;)
       {
-        localvle.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
-        paramInt += 1;
-        break;
+        paramString.printStackTrace();
       }
     }
-    paramvlj.b(new ErrorMessage(), localArrayList, true);
+    if (paramContext != null) {
+      bool = true;
+    }
+    return bool;
   }
   
-  public void b() {}
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return false;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
+    paramContext.startActivity(localIntent);
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, xof paramxof)
+  {
+    if (paramxof == null) {
+      return false;
+    }
+    return a(paramContext, String.valueOf(paramxof.jdField_a_of_type_Long), String.valueOf(paramxof.jdField_a_of_type_Int));
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+    if (paramString != null) {
+      paramContext.startActivity(paramString);
+    }
+  }
 }
 
 

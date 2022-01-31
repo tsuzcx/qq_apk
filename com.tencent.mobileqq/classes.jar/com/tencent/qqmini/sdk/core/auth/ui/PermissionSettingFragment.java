@@ -19,8 +19,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import bgmu;
-import bhib;
+import bgrb;
+import bhmi;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.core.auth.PermissionManager;
@@ -97,7 +97,7 @@ public class PermissionSettingFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString1);
     localIntent.putExtra("key_name", paramString2);
-    bhib.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class);
+    bhmi.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class);
   }
   
   public static void launchForResult(Activity paramActivity, String paramString1, String paramString2, int paramInt)
@@ -106,7 +106,7 @@ public class PermissionSettingFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString1);
     localIntent.putExtra("key_name", paramString2);
-    bhib.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class, paramInt);
+    bhmi.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class, paramInt);
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -117,10 +117,10 @@ public class PermissionSettingFragment
       if ((!paramBoolean) && (!hasCancel))
       {
         hasCancel = true;
-        bgmu localbgmu = new bgmu(getActivity(), 2131755761);
-        localbgmu.setContentView(2131559342);
-        localbgmu.a("权限设置").a("关闭授权后可能会影响使用小程序的部分功能，请确认").b("关闭授权", Color.parseColor("#5B6B92"), new PermissionSettingFragment.3(this, str, paramBoolean)).a("取消", Color.parseColor("#000000"), new PermissionSettingFragment.2(this, paramCompoundButton));
-        localbgmu.show();
+        bgrb localbgrb = new bgrb(getActivity(), 2131755761);
+        localbgrb.setContentView(2131559341);
+        localbgrb.a("权限设置").a("关闭授权后可能会影响使用小程序的部分功能，请确认").b("关闭授权", Color.parseColor("#5B6B92"), new PermissionSettingFragment.3(this, str, paramBoolean)).a("取消", Color.parseColor("#000000"), new PermissionSettingFragment.2(this, paramCompoundButton));
+        localbgrb.show();
       }
     }
     else {
@@ -132,7 +132,7 @@ public class PermissionSettingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368613) {
+    if (paramView.getId() == 2131368624) {
       getActivity().finish();
     }
   }
@@ -145,7 +145,7 @@ public class PermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559357, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559356, null);
     if (DisplayUtil.isImmersiveSupported) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
@@ -170,14 +170,14 @@ public class PermissionSettingFragment
       getActivity().finish();
       return;
     }
-    this.leftBtnView = ((TextView)paramView.findViewById(2131368613));
-    this.titleView = ((TextView)paramView.findViewById(2131368659));
+    this.leftBtnView = ((TextView)paramView.findViewById(2131368624));
+    this.titleView = ((TextView)paramView.findViewById(2131368670));
     this.leftBtnView.setText("返回");
     this.titleView.setText("设置");
     this.leftBtnView.setOnClickListener(this);
-    this.mPermissionListView = ((ListView)paramView.findViewById(2131371695));
-    this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131371696));
-    this.miniAppNameDesc = ((TextView)paramView.findViewById(2131370619));
+    this.mPermissionListView = ((ListView)paramView.findViewById(2131371715));
+    this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131371716));
+    this.miniAppNameDesc = ((TextView)paramView.findViewById(2131370638));
     this.authState = MiniAppEnv.g().getAuthSate(this.appId);
     if (this.authState == null)
     {

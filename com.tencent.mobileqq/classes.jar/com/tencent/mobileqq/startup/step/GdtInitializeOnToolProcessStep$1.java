@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aama;
+import aaqp;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GdtInitializeOnToolProcessStep$1
@@ -13,7 +13,7 @@ class GdtInitializeOnToolProcessStep$1
     try
     {
       long l = System.currentTimeMillis();
-      aama.a().a(BaseApplicationImpl.getContext());
+      aaqp.a().a(BaseApplicationImpl.getContext());
       GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", "ipc register durationMillis:" + (System.currentTimeMillis() - l), null);
       return;
     }

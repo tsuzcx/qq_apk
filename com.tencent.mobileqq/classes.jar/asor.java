@@ -1,29 +1,23 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class asor
-  extends asot
+  implements ajal
 {
-  public String a = "";
+  public asor(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public asor(String paramString1, String paramString2, String paramString3)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    super("plugin", paramString1, paramString2);
-    this.a = paramString3;
-  }
-  
-  @Deprecated
-  public void a()
-  {
-    super.a();
-  }
-  
-  @Deprecated
-  public void b()
-  {
-    super.b();
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asor
  * JD-Core Version:    0.7.0.1
  */

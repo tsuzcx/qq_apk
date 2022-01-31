@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aljq;
+import alof;
 import android.text.TextUtils;
-import aqsc;
-import arni;
-import awbv;
-import awdg;
-import bdal;
-import bdcs;
+import aqwl;
+import arrr;
+import awge;
+import awhp;
+import bdeu;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -50,28 +50,28 @@ public class DataLineMsgRecord
   public static final int MSG_TYPE_DATALINE_TEXT = -1000;
   public static final int MSG_TYPE_DATALINE_VIDEO = -2009;
   public static final int PC_DEV_TYPE = 0;
-  @awdg
+  @awhp
   public boolean bIsApkFile;
-  @awdg
+  @awhp
   public boolean bIsMoloImage;
-  @awdg
+  @awhp
   public boolean bIsResendOrRecvFile = false;
-  @awdg
+  @awhp
   public boolean bIsSended;
-  @awdg
+  @awhp
   public boolean bIsTransfering;
-  @awdg
+  @awhp
   public boolean bNoInsertFm;
   public int busId;
-  @awdg
+  @awhp
   public int dataline_type;
-  @awdg
+  @awhp
   public long entityID;
-  @awdg
+  @awhp
   public int fileFrom;
-  @awdg
+  @awhp
   public long fileMsgStatus;
-  @awdg
+  @awhp
   public String fileUuid;
   public String filename;
   public long filesize;
@@ -79,48 +79,48 @@ public class DataLineMsgRecord
   public int groupId;
   public int groupIndex;
   public int groupSize;
-  @awdg
+  @awhp
   public boolean isReportPause = false;
   public boolean issuc;
   public byte[] md5;
-  @awdg
+  @awhp
   public int nAppStatus;
-  @awdg
+  @awhp
   public int nOpType;
-  @awdg
+  @awhp
   public long nServerIp;
-  @awdg
+  @awhp
   public long nServerPort;
-  @awdg
+  @awhp
   public long nWeiyunSessionId = 0L;
-  @awdg
+  @awhp
   public int nWeiyunSrcType;
   public String path;
   public float progress;
   public String serverPath;
   public long sessionid;
-  @awdg
+  @awhp
   public String strMoloIconUrl;
-  @awdg
+  @awhp
   public String strMoloKey;
-  @awdg
+  @awhp
   public String strMoloSource;
-  @awdg
+  @awhp
   public String strMoloSrcIconUrl;
-  @awdg
+  @awhp
   public String strWeiyunDir;
-  @awdg
+  @awhp
   public String strWeiyunId;
-  @awdg
+  @awhp
   public String strWeiyunMd5;
-  @awdg
+  @awhp
   public String strWeiyunSha;
   public String thumbPath;
-  @awdg
+  @awhp
   public long uOwnerUin;
-  @awdg
+  @awhp
   public byte[] vTokenKey;
-  @awdg
+  @awhp
   public byte[] vUrlNotify;
   
   public DataLineMsgRecord()
@@ -130,7 +130,7 @@ public class DataLineMsgRecord
   
   public DataLineMsgRecord(int paramInt)
   {
-    this.selfuin = String.valueOf(aljq.z);
+    this.selfuin = String.valueOf(alof.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -480,9 +480,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = bdal.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = bdeu.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = bdal.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = bdeu.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -500,7 +500,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = bdal.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = bdeu.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -588,7 +588,7 @@ public class DataLineMsgRecord
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (bdcs.b(this.path))
+    if (bdhb.b(this.path))
     {
       bool1 = bool2;
       if (this.strMoloKey == null) {
@@ -617,7 +617,7 @@ public class DataLineMsgRecord
     prewrite();
   }
   
-  public Class<? extends awbv> getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return DataLineMsgRecord.class;
   }
@@ -655,7 +655,7 @@ public class DataLineMsgRecord
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = arni.a().longValue();
+      localFileManagerEntity.nSessionId = arrr.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {
@@ -688,7 +688,7 @@ public class DataLineMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgRecord
  * JD-Core Version:    0.7.0.1
  */

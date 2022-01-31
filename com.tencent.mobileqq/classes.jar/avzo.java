@@ -1,19 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class avzo
-  implements Animation.AnimationListener
+public abstract interface avzo
 {
-  avzo(avzg paramavzg, int paramInt) {}
+  public abstract void a(awac paramawac);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    avzg.a(this.jdField_a_of_type_Avzg, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(awac paramawac1, awac paramawac2);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bdkf;
+import bdoo;
 import qhj;
 import rgx;
 
@@ -11,7 +11,7 @@ public class VideoFeedsRedPacketShareController$2
   
   public void run()
   {
-    rgx.a(this.this$0).showAsDropDown(rgx.a(this.this$0), -bdkf.a(6.0F), -bdkf.a(10.0F));
+    rgx.a(this.this$0).showAsDropDown(rgx.a(this.this$0), -bdoo.a(6.0F), -bdoo.a(10.0F));
   }
 }
 

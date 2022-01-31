@@ -1,6 +1,12 @@
+import android.os.Bundle;
+
 public abstract interface bdvc
 {
-  public abstract void a(bdvb parambdvb);
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

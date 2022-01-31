@@ -1,12 +1,74 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.InnerAppReportDc4239.1;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.utils.WnsUtil;
 
 public class bgxk
 {
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
+  private static volatile bgxk a;
+  public BaseLibInfo a;
+  public EngineVersion a;
+  
+  public bgxk()
   {
-    bgya.a().a().post(new InnerAppReportDc4239.1(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4));
+    a();
+    b();
+  }
+  
+  public static bgxk a()
+  {
+    if (jdField_a_of_type_Bgxk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgxk == null) {
+        jdField_a_of_type_Bgxk = new bgxk();
+      }
+      return jdField_a_of_type_Bgxk;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo = new BaseLibInfo();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibUrl = "assets://mini";
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibVersion = WnsUtil.getGameEngineVersion("1.14.0.00225");
+    QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo start");
+    long l = System.currentTimeMillis();
+    QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
+    if (new boolean[] { false }[0] != 0) {}
+    for (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = ("{'file_length':" + new long[] { 0L }[0] + "}");; this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = "{'file_length':-1}")
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibKey = null;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType = 2;
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = new EngineVersion(WnsUtil.getGameEngineVersion("1.14.0.00225"));
+  }
+  
+  private boolean c()
+  {
+    String str = AppLoaderFactory.g().getMiniAppEnv().getContext().getPackageName();
+    QMLog.i("LocalGameEngine", "[MiniEng]isQQSpeedPackage " + str);
+    return (!TextUtils.isEmpty(str)) && (str.toLowerCase().startsWith("com.tencent.qqspeed"));
+  }
+  
+  public boolean a()
+  {
+    return c();
+  }
+  
+  public boolean b()
+  {
+    return c();
   }
 }
 

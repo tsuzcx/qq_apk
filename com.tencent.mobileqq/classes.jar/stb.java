@@ -27,7 +27,7 @@ public class stb
   private void b(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
     paramStaticLayout = new std(this.jdField_a_of_type_AndroidContentContext, paramList);
-    ElasticHorScrView localElasticHorScrView = (ElasticHorScrView)paramView.findViewById(2131376157);
+    ElasticHorScrView localElasticHorScrView = (ElasticHorScrView)paramView.findViewById(2131376211);
     LinearLayout localLinearLayout = (LinearLayout)localElasticHorScrView.getChildAt(0);
     localLinearLayout.removeAllViews();
     paramInt = 0;
@@ -44,8 +44,8 @@ public class stb
         if (paramInt != paramList.size() - 1) {
           break label235;
         }
-        localLayoutParams.rightMargin = (this.h * 2 - bcwh.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
-        localTextView = (TextView)localView.findViewById(2131375510);
+        localLayoutParams.rightMargin = (this.h * 2 - bdaq.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
+        localTextView = (TextView)localView.findViewById(2131375561);
         switch (((ShareActionSheetBuilder.ActionSheetItem)paramList.get(paramInt)).action)
         {
         default: 
@@ -58,13 +58,13 @@ public class stb
         localView.setOnClickListener(new stc(this, paramInt));
         paramInt += 1;
         break;
-        localLayoutParams.leftMargin = (this.h * 2 - bcwh.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
+        localLayoutParams.leftMargin = (this.h * 2 - bdaq.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
         break label91;
         label235:
         localLayoutParams.rightMargin = 0;
         break label125;
         localTextView.setVisibility(0);
-        localTextView.setText(Aladdin.getConfig(273).getString("share_icon_tip_content", localTextView.getResources().getString(2131718990)));
+        localTextView.setText(Aladdin.getConfig(273).getString("share_icon_tip_content", localTextView.getResources().getString(2131719002)));
       }
     }
     paramView.post(new RIJShareActionSheetBuilder.2(this, localElasticHorScrView, localLinearLayout));
@@ -73,9 +73,9 @@ public class stb
   public int a()
   {
     if (this.c) {
-      return 2131562510;
+      return 2131562528;
     }
-    return 2131558865;
+    return 2131558864;
   }
   
   public View a()
@@ -83,10 +83,10 @@ public class stb
     View localView = super.a();
     if (this.c)
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131375515);
-      TextView localTextView2 = (TextView)localView.findViewById(2131375512);
-      localTextView1.setText(Aladdin.getConfig(273).getString("share_tip_title", localTextView1.getResources().getString(2131718991)));
-      localTextView2.setText(Aladdin.getConfig(273).getString("share_tip_desc", localTextView2.getResources().getString(2131718989)));
+      TextView localTextView1 = (TextView)localView.findViewById(2131375566);
+      TextView localTextView2 = (TextView)localView.findViewById(2131375563);
+      localTextView1.setText(Aladdin.getConfig(273).getString("share_tip_title", localTextView1.getResources().getString(2131719003)));
+      localTextView2.setText(Aladdin.getConfig(273).getString("share_tip_desc", localTextView2.getResources().getString(2131719001)));
     }
     return localView;
   }
@@ -95,7 +95,7 @@ public class stb
   {
     if (this.c)
     {
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367298));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367308));
       b(paramView, paramList, paramStaticLayout, paramInt);
       return;
     }

@@ -1,14 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-class asyz
-  implements aszq
+public final class asyz
+  implements PluginManagerUpdater
 {
-  asyz(asyy paramasyy, atav paramatav) {}
+  private final File a;
   
-  public void a(int paramInt, String paramString)
+  public asyz(String paramString)
   {
-    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
-    this.jdField_a_of_type_Atav.a(paramInt, paramString);
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return amdp.a(16).submit(new aszb(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return amdp.a(16).submit(new asza(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

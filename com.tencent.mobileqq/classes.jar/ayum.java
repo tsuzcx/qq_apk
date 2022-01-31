@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
-public final class ayum
-  implements Parcelable.Creator<FriendGroupListInfo>
+public class ayum
+  implements ayuh
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
+  public ayum(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  
+  public void a(List paramList) {}
+  
+  public void a(List paramList, int paramInt)
   {
-    return new FriendGroupListInfo(paramParcel);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    ayvm.a();
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
   
-  public FriendGroupListInfo[] a(int paramInt)
+  public void a(List paramList, ayuv paramayuv)
   {
-    return new FriendGroupListInfo[paramInt];
+    a(paramList, paramayuv.a);
   }
 }
 

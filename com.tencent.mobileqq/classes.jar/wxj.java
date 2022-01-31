@@ -1,508 +1,635 @@
-import android.os.Message;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wxj
-  extends wwc
-  implements View.OnClickListener, bhqp, wxo, xjs
 {
-  private int jdField_a_of_type_Int;
-  private SparseArray<xjp> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awbw jdField_a_of_type_Awbw = QQStoryContext.a().a().createEntityManager();
-  private QQStoryPullToRefreshListView jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView;
-  private List<xjv> jdField_a_of_type_JavaUtilList;
-  private wxn jdField_a_of_type_Wxn;
-  private xjt jdField_a_of_type_Xjt;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View e;
-  private View f;
+  public static final String a;
+  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private static final List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "time_openshoot", "time_waitshoot", "clk_mode", "start_shoot", "time_shoot", "time_openedit", "time_edit", "clk_function", "time_composite" });
+  public static ConcurrentHashMap<Class, Integer> a;
   
-  public wxj(@NonNull wwe paramwwe)
+  static
   {
-    super(paramwwe);
+    jdField_a_of_type_JavaLangString = uqn.a(2131700064);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(EditVideoActivity.class, Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMainActivity.class, Integer.valueOf(3));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(StoryDetailActivity.class, Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMemoriesActivity.class, Integer.valueOf(5));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(StoryMessageListActivity.class, Integer.valueOf(6));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryShareGroupProfileActivity.class, Integer.valueOf(11));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(TroopStoryMainActivity.class, Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryWatcherListActivity.class, Integer.valueOf(13));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(LocalVideoSelectActivity.class, Integer.valueOf(17));
   }
   
-  private wxm a()
+  public static int a(int paramInt)
   {
-    wxm localwxm = new wxm();
-    wtx localwtx = (wtx)a(wtx.class);
-    if (localwtx != null) {
-      localwtx.a(localwxm);
-    }
-    return localwxm;
-  }
-  
-  @Nonnull
-  private xjp a(int paramInt)
-  {
-    Object localObject2 = (xjp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    switch (paramInt)
     {
-      localObject1 = new xjp(this, this.jdField_a_of_type_Awbw);
-      ((xjp)localObject1).a();
-      if (this.jdField_a_of_type_Wxn != null)
-      {
-        localObject2 = new xjv(new xjw(this.jdField_a_of_type_Wxn.jdField_a_of_type_Long, this.jdField_a_of_type_Wxn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wxn.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Wxn.jdField_a_of_type_Int), this.jdField_a_of_type_Wxn.jdField_b_of_type_Int, this.jdField_a_of_type_Wxn.c);
-        ((xjp)localObject1).a().add(localObject2);
-        ((xjp)localObject1).a((xjv)localObject2);
+    case 5: 
+    default: 
+      return 6;
+    case 1: 
+      return 1;
+    case 2: 
+      return 3;
+    case 3: 
+      return 5;
+    case 4: 
+      return 4;
+    }
+    return 2;
+  }
+  
+  public static int a(FeedItem paramFeedItem)
+  {
+    int i = 3;
+    if (paramFeedItem == null) {
+      return 0;
+    }
+    switch (paramFeedItem.type)
+    {
+    case 4: 
+    default: 
+      return 1;
+    case 1: 
+      paramFeedItem = (QQUserUIItem)paramFeedItem.getOwner();
+      if (TextUtils.equals(QQStoryContext.a().b(), paramFeedItem.uid)) {
+        return 4;
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+      if (paramFeedItem.getRelationType() == 0) {
+        return 1;
+      }
+      if (paramFeedItem.getRelationType() == 2) {
+        return 3;
+      }
+      if (paramFeedItem.isSubscribe()) {
+        return 2;
+      }
+      return 4;
+    case 2: 
+      paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
+      if (paramFeedItem.getRelationType() == 2) {
+        return i;
+      }
+      if (paramFeedItem.isPublic()) {}
+      for (i = 6;; i = 5) {
+        break;
+      }
+    case 3: 
+      return 7;
+    case 5: 
+      return 9;
+    case 6: 
+      return 10;
     }
-    return localObject1;
+    return 11;
   }
   
-  private void a(List<xjv> paramList)
+  public static int a(Class<? extends QQStoryBaseActivity> paramClass, int paramInt)
   {
-    paramList = paramList.listIterator();
-    while (paramList.hasNext()) {
-      if (((xjv)paramList.next()).a.jdField_a_of_type_Int == 1) {
-        paramList.remove();
+    paramClass = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramClass);
+    if (paramClass == null) {
+      return paramInt;
+    }
+    return paramClass.intValue();
+  }
+  
+  public static int a(@Nullable String paramString, VideoListFeedItem paramVideoListFeedItem)
+  {
+    uyg localuyg = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      localuyg = uyz.a(QQStoryContext.a()).a(paramString);
+    }
+    if (localuyg != null)
+    {
+      if (localuyg.a == 12) {
+        return 12;
+      }
+      if (localuyg.a == 13) {
+        return 13;
+      }
+    }
+    return a(paramVideoListFeedItem);
+  }
+  
+  @Deprecated
+  public static int a(uxe paramuxe)
+  {
+    if (paramuxe == null) {
+      return 4;
+    }
+    switch (paramuxe.getRelationType())
+    {
+    default: 
+      return 4;
+    case 0: 
+      return 1;
+    case 1: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 10: 
+      return "1";
+    case 11: 
+      return "3";
+    case 210: 
+      return "2";
+    case 211: 
+      return "4";
+    case 220: 
+      return "2";
+    case 221: 
+      return "4";
+    case 23: 
+      return "2";
+    case 12: 
+      return "5";
+    case 222: 
+      return "6";
+    }
+    return "5";
+  }
+  
+  @NonNull
+  public static String a(int paramInt, String... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
+      return "";
+    }
+    return paramVarArgs[paramInt];
+  }
+  
+  public static String a(Context paramContext)
+  {
+    int i = 4;
+    int j = bdin.a(paramContext);
+    if (j == 1) {}
+    for (;;)
+    {
+      return "" + i;
+      if (j == 2) {
+        i = 1;
+      } else if (j == 3) {
+        i = 2;
+      } else if (j == 4) {
+        i = 3;
+      } else {
+        i = 5;
       }
     }
   }
   
-  private void a(@Nullable xjv paramxjv, boolean paramBoolean)
+  public static String a(StoryVideoItem paramStoryVideoItem)
   {
-    if (paramBoolean)
-    {
-      this.f.setVisibility(8);
-      this.e.setVisibility(8);
-      return;
+    if (paramStoryVideoItem == null) {
+      return "";
     }
-    if (paramxjv == null)
-    {
-      this.f.setVisibility(8);
-      this.e.setVisibility(0);
-      return;
+    if (paramStoryVideoItem.getPollLayout() == null) {
+      return "5";
     }
-    this.e.setVisibility(8);
-    this.f.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramxjv.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void b(int paramInt)
-  {
-    xjv localxjv = a(paramInt).a();
-    if (localxjv == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131704099));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localxjv.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377381));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368613));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368621));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365759);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375693);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131369774);
-      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131367654);
-      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131364273);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364272));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365094));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_Xjt = new xjt(a());
-      g();
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_Xjt);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new wxk(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnScrollListener(new wxl(this));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.b.setHeaderBgColor(0);
-  }
-  
-  private void i()
-  {
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  private void j()
-  {
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  private void k()
-  {
-    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-  }
-  
-  private void l()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  private void m()
-  {
-    Object localObject = a(this.jdField_a_of_type_Int).a();
-    xjv localxjv = this.jdField_a_of_type_Xjt.a();
+    boolean bool = paramStoryVideoItem.isMine();
     int i;
-    if ((localObject == null) && (localxjv != null))
+    if (paramStoryVideoItem.mPollResult != -1) {
+      i = 1;
+    }
+    while (bool) {
+      if (i != 0)
+      {
+        return "2";
+        i = 0;
+      }
+      else
+      {
+        return "1";
+      }
+    }
+    if (i != 0) {
+      return "4";
+    }
+    return "3";
+  }
+  
+  public static String a(String paramString)
+  {
+    return (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public static void a(int paramInt, long paramLong)
+  {
+    paramLong = SystemClock.uptimeMillis() - paramLong;
+    if (paramLong > 86400000L) {
+      return;
+    }
+    a("home_page", "time_stay_new", paramInt, (int)paramLong, new String[0]);
+  }
+  
+  public static void a(int paramInt, long paramLong, String paramString)
+  {
+    paramLong = SystemClock.uptimeMillis() - paramLong;
+    if (paramLong > 86400000L) {
+      return;
+    }
+    a("home_page", "time_stay_new", paramInt, (int)paramLong, new String[] { paramString });
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    int i;
+    if ((paramActivity instanceof QIMCameraCaptureActivity))
+    {
+      i = b(paramActivity.getIntent().getIntExtra("edit_video_type", 10002));
+      if ((i == 10002) || (i == 10000)) {
+        a("video_shoot_new", paramString1, i, 0, new String[] { paramString2, paramString3 });
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!(paramActivity instanceof EditVideoActivity)) && (!(paramActivity instanceof EditPicActivity)));
+      i = paramActivity.getIntent().getIntExtra("capture_operation_in", -1);
+    } while ((i != 10002) && (i != 10000));
+    a("video_edit_new", paramString1, i, 0, new String[] { paramString2, paramString3 });
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForStructing paramMessageForStructing, String paramString)
+  {
+    if (paramMessageForStructing == null) {}
+    do
+    {
+      do
+      {
+        AbsStructMsg localAbsStructMsg;
+        do
+        {
+          return;
+          localAbsStructMsg = paramMessageForStructing.structingMsg;
+        } while ((localAbsStructMsg == null) || (TextUtils.isEmpty(localAbsStructMsg.mMsg_A_ActionData)));
+        paramContext = bdib.a(paramQQAppInterface, paramContext, localAbsStructMsg.mMsg_A_ActionData);
+      } while (paramContext == null);
+      paramQQAppInterface = paramContext.b("usertype");
+      paramContext = paramContext.b("unionid");
+    } while ((TextUtils.isEmpty(paramQQAppInterface)) || (TextUtils.isEmpty(paramContext)));
+    try
+    {
+      i = Integer.parseInt(paramQQAppInterface);
+      a("share_uin_obj", paramString, bcpx.b(paramMessageForStructing.istroop), i, new String[] { paramContext });
+      return;
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      for (;;)
+      {
+        int i = 0;
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, String... paramVarArgs)
+  {
+    if ((paramInt1 == 10002) || (paramInt1 == 10000) || (paramInt1 == 10001) || (!paramBoolean) || (paramInt1 == blat.p.a()) || (paramInt1 == blat.e.a()))
+    {
+      a("video_shoot_new", paramString, paramInt1, paramInt2, paramVarArgs);
+      if (jdField_a_of_type_JavaUtilList.contains(paramString))
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("op_type", "video_shoot_new");
+        localHashMap.put("op_name", String.valueOf(paramString));
+        localHashMap.put("op_result", String.valueOf(paramInt2));
+        localHashMap.put("op_r1", a(0, paramVarArgs));
+        localHashMap.put("op_r2", a(1, paramVarArgs));
+        localHashMap.put("op_r3", a(2, paramVarArgs));
+        localHashMap.put("op_r4", a(3, paramVarArgs));
+        paramString = "video_shoot_new_" + paramString;
+        azri.a(BaseApplication.getContext()).a(null, paramString, true, 0L, 0L, localHashMap, null);
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    a(paramString, paramInt1, paramInt2, true, paramVarArgs);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    try
+    {
+      if (wxe.a()) {
+        wxe.b("StoryReportor", "[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
+      }
+      label80:
+      azqs.b(null, "dc00899", jdField_a_of_type_JavaLangString, "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label80;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Intent paramIntent, String... paramVarArgs)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    int i;
+    if (paramIntent != null)
+    {
+      EditVideoParams localEditVideoParams = (EditVideoParams)paramIntent.getParcelableExtra(EditVideoParams.class.getName());
+      if (localEditVideoParams != null) {
+        i = localEditVideoParams.a("extra_ablum_type", -1);
+      }
+    }
+    for (;;)
+    {
+      i = a(i);
+      paramIntent = new String[paramVarArgs.length + 1];
+      paramIntent[0] = (i + "");
+      System.arraycopy(paramVarArgs, 0, paramIntent, 1, paramVarArgs.length);
+      a(paramString1, paramString2, 0, 0, paramIntent);
+      return;
+      i = paramIntent.getIntExtra("extra_ablum_type", -1);
+      continue;
+      i = -1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    try
+    {
+      if (wxe.a()) {
+        wxe.b("StoryReportor", "[department]%s;[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
+      }
+      label86:
+      azqs.b(null, "dc00899", paramString1, "", paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label86;
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean, long paramLong, String... paramVarArgs)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramVarArgs != null)
+    {
+      int i = 0;
+      while (i < paramVarArgs.length)
+      {
+        localHashMap.put("op_r" + (i + 1), paramVarArgs[i]);
+        i += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.StoryReportor", 2, new Object[] { "780, reportToBeacon, ", paramString, ", isSuc:", Boolean.valueOf(paramBoolean), " duration:", Long.valueOf(paramLong), " eventValue:", localHashMap.toString() });
+    }
+    azri.a(BaseApplication.getContext()).a(null, paramString, paramBoolean, paramLong, 0L, localHashMap, null);
+  }
+  
+  public static void a(String paramString, String... paramVarArgs)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("op_r1", a(0, paramVarArgs));
+    localHashMap.put("op_r2", a(1, paramVarArgs));
+    a(localHashMap, "reportALUMB", paramString);
+    azri.a(BaseApplication.getContext()).a(null, paramString, true, 0L, 0L, localHashMap, null);
+  }
+  
+  private static void a(Map<String, String> paramMap, String paramString1, String paramString2)
+  {
+    Iterator localIterator = paramMap.entrySet().iterator();
+    for (paramMap = "事件Code : " + paramString2 + "   上报内容 ----------  \n"; localIterator.hasNext(); paramMap = paramMap + "\n")
+    {
+      paramString2 = (Map.Entry)localIterator.next();
+      paramMap = paramMap + (String)paramString2.getKey();
+      paramMap = paramMap + "   :   ";
+      paramMap = paramMap + (String)paramString2.getValue();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramMap);
+    }
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 10003: 
+    case 10004: 
+    case 10006: 
+    case 10007: 
+    case 10008: 
+    case 10009: 
+    case 10010: 
+    case 10011: 
+    case 10015: 
+    case 10016: 
+    default: 
+      return 0;
+    case 10012: 
+      return 2;
+    case 10013: 
+    case 10017: 
+      return 3;
+    case 10001: 
+      return 4;
+    case 10000: 
+      return 5;
+    }
+    return 1;
+  }
+  
+  public static int b(FeedItem paramFeedItem)
+  {
+    if (paramFeedItem == null) {
+      return 0;
+    }
+    int i;
+    switch (paramFeedItem.type)
+    {
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+    case 3: 
+    case 5: 
+      if (paramFeedItem.getOwner().isMe()) {}
+      for (i = 1;; i = 2) {
+        return i;
+      }
+    }
+    paramFeedItem = (ShareGroupItem)paramFeedItem.getOwner();
+    if (paramFeedItem.isOwner())
     {
       i = 1;
-      if (this.jdField_b_of_type_Int != 1) {
-        break label121;
+      if (i != 1) {
+        break label110;
       }
+      i = 3;
     }
-    label121:
-    for (localObject = "1";; localObject = "2")
+    for (;;)
     {
-      wta.a("video_edit", "suc_tag", 0, i, new String[] { localObject });
-      a(this.jdField_a_of_type_Int).a(localxjv);
-      this.jdField_a_of_type_Wwe.a(0);
-      return;
-      if ((localObject != null) && (localxjv != null) && (!((xjv)localObject).equals(localxjv)))
+      return i;
+      if (paramFeedItem.isSubscribe())
       {
         i = 2;
         break;
       }
-      if ((localObject != null) && (localxjv == null))
-      {
-        i = 3;
-        break;
-      }
-      i = 4;
+      i = 3;
       break;
+      label110:
+      if (i == 2) {
+        i = 4;
+      } else if (i == 3) {
+        i = 5;
+      } else {
+        i = 0;
+      }
     }
   }
   
-  public xjv a(int paramInt)
+  public static String b(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_Wwe.d()))
+    switch (paramInt)
     {
-      wsv.e("Q.qqstory.detail.EditVideoTag", "videoIndex is illegal, videoCount:%s, videoIndex=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Wwe.d()), Integer.valueOf(paramInt) });
-      return null;
+    case 3: 
+    case 7: 
+    case 8: 
+    default: 
+      return "";
+    case 1: 
+      return "1";
+    case 2: 
+      return "2";
+    case 5: 
+      return "3";
+    case 4: 
+      return "4";
+    case 6: 
+      return "6";
+    case 9: 
+      return "9";
     }
-    return a(paramInt).a();
+    return "0";
   }
   
-  public void a()
+  public static void b(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362124));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377349));
-    String str1 = this.jdField_a_of_type_Wwe.a.a("video_tag_info");
-    if (str1 != null) {}
+    if (paramInt1 == 1) {
+      a("video_edit_new", paramString, 0, paramInt2, paramVarArgs);
+    }
+    if ((paramInt1 == 10000) || (paramInt1 == 10001)) {
+      a("video_edit_new", paramString, paramInt1, paramInt2, paramVarArgs);
+    }
+    if (jdField_a_of_type_JavaUtilList.contains(paramString))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("op_type", "video_edit_new");
+      localHashMap.put("op_name", String.valueOf(paramString));
+      localHashMap.put("op_result", String.valueOf(paramInt2));
+      localHashMap.put("op_r1", a(0, paramVarArgs));
+      localHashMap.put("op_r2", a(1, paramVarArgs));
+      localHashMap.put("op_r3", a(2, paramVarArgs));
+      localHashMap.put("op_r4", a(3, paramVarArgs));
+      paramString = "video_edit_new_" + paramString;
+      azri.a(BaseApplication.getContext()).a(null, paramString, true, 0L, 0L, localHashMap, null);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
     try
     {
-      this.jdField_a_of_type_Wxn = ((wxn)JsonORM.a(new JSONObject(str1), wxn.class));
-      b(this.jdField_a_of_type_Int);
-      a(wxo.class, this);
-      this.jdField_b_of_type_Int = ((Integer)((urk)urr.a(10)).b("qqstory_i_am_vip", Integer.valueOf(0))).intValue();
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        str1 = "1";
-        wta.a("video_edit", "exp_tag", 0, 0, new String[] { str1 });
-        this.jdField_a_of_type_JavaUtilList = xjp.a(this.jdField_a_of_type_Awbw);
-        a(this.jdField_a_of_type_JavaUtilList);
-        return;
+      if (wxe.a()) {
+        wxe.b("StoryReportor", "Dev[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
       }
+      label80:
+      azqs.b(null, "dc00899", "grp_story_engineer", "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      return;
     }
-    catch (JsonORM.JsonParseException localJsonParseException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        wsv.b("Q.qqstory.detail.EditVideoTag", "JsonORM.parseFrom JsonParseException", localJsonParseException);
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        wsv.b("Q.qqstory.detail.EditVideoTag", "JsonORM.parseFrom JSONException", localJSONException);
-        continue;
-        String str2 = "2";
-      }
+      break label80;
     }
   }
   
-  public void a(int paramInt)
+  public static void c(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    xjp localxjp = (xjp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localxjp == null) {
-      throw new IllegalStateException("get presenter with videoIndex=" + paramInt + " null? why?");
-    }
-    localxjp.a().remove(localxjp.a());
-    localxjp.a(null);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    wsv.b("Q.qqstory.detail.EditVideoTag", "editVideoStateChanged [" + paramInt1 + " ---> " + paramInt2 + "]");
-    switch (paramInt2)
+    try
     {
-    default: 
-      c(8);
-      return;
-    case 28: 
-      f();
-      paramObject = a(this.jdField_a_of_type_Int);
-      wxm localwxm = a();
-      if ((paramObject.a() != null) && (!paramObject.a().isEmpty()))
-      {
-        l();
-        if (!paramObject.a(localwxm)) {
-          if (paramObject.a() != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.smoothScrollToPosition(paramObject.a().indexOf(paramObject.a()));
-          }
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Xjt.a(paramObject.a());
-          this.jdField_a_of_type_Xjt.a(paramObject.a());
-          this.jdField_a_of_type_Xjt.notifyDataSetChanged();
-          a(paramObject.a(), false);
-          c(0);
-          return;
-          this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.smoothScrollToPosition(0);
-          continue;
-          paramObject.a(localwxm);
-        }
+      if (wxe.a()) {
+        wxe.b("StoryReportor", "Dev[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
       }
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        paramObject.a(this.jdField_a_of_type_JavaUtilList);
-        l();
-      }
-      for (;;)
-      {
-        paramObject.a(localwxm);
-        break;
-        k();
-      }
-    }
-    b(this.jdField_a_of_type_Int);
-    c(8);
-  }
-  
-  public void a(int paramInt, @Nonnull List<xjv> paramList, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView;
-    if (paramInt == 0) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((QQStoryPullToRefreshListView)localObject).a(paramBoolean);
-      if (paramInt != 0) {
-        break label104;
-      }
-      if (!paramList.isEmpty()) {
-        break;
-      }
-      i();
+      label80:
+      azqs.b(null, "dc00899", "PGC_story", "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
       return;
     }
-    l();
-    xjv localxjv = this.jdField_a_of_type_Xjt.a();
-    localObject = localxjv;
-    if (!paramList.contains(localxjv)) {
-      localObject = null;
-    }
-    a((xjv)localObject, false);
-    this.jdField_a_of_type_Xjt.a((xjv)localObject);
-    this.jdField_a_of_type_Xjt.a(paramList);
-    this.jdField_a_of_type_Xjt.notifyDataSetChanged();
-    return;
-    label104:
-    if (paramList.isEmpty())
+    catch (Exception localException)
     {
-      j();
-      a(null, true);
-      return;
-    }
-    l();
-  }
-  
-  public void a(int paramInt, @NonNull xgs paramxgs)
-  {
-    wsv.a("Q.qqstory.detail.EditVideoTag", "editVideoPrePublish, fragmentIndex=%s", Integer.valueOf(paramInt));
-    xjv localxjv = a(paramInt).a();
-    if (localxjv == null)
-    {
-      wsv.a("Q.qqstory.detail.EditVideoTag", "fragmentIndex=%s has no tag.", Integer.valueOf(paramInt));
-      return;
-    }
-    wsv.a("Q.qqstory.detail.EditVideoTag", "fragmentIndex=%s has tag, tag=", Integer.valueOf(paramInt), localxjv.toString());
-    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
-    localTagInfoBase.tag_id.set(localxjv.a.jdField_a_of_type_Long);
-    localTagInfoBase.tag_type.set(localxjv.a.jdField_a_of_type_Int);
-    localTagInfoBase.tag_name.set(localxjv.a.jdField_a_of_type_JavaLangString);
-    localTagInfoBase.tag_desc.set(localxjv.a.jdField_b_of_type_JavaLangString);
-    paramxgs.a.tagInfoBytes = localTagInfoBase.toByteArray();
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
-      {
-        this.jdField_a_of_type_Xjt.a(null);
-        this.jdField_a_of_type_Wwe.a(0);
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Wwe.a();
-      b(this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void b(int paramInt, @Nonnull List<xjv> paramList, boolean paramBoolean)
-  {
-    Object localObject = null;
-    xjv localxjv;
-    if (paramInt == 0)
-    {
-      if (paramList.isEmpty())
-      {
-        i();
-        return;
-      }
-      l();
-      localxjv = this.jdField_a_of_type_Xjt.a();
-      if (paramList.contains(localxjv)) {
-        break label102;
-      }
-    }
-    for (;;)
-    {
-      a((xjv)localObject, false);
-      this.jdField_a_of_type_Xjt.a((xjv)localObject);
-      this.jdField_a_of_type_Xjt.a(paramList);
-      this.jdField_a_of_type_Xjt.notifyDataSetChanged();
-      return;
-      if (paramList.isEmpty())
-      {
-        j();
-        a(null, true);
-        return;
-      }
-      l();
-      return;
-      label102:
-      localObject = localxjv;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131368613: 
-      this.jdField_a_of_type_Xjt.a(null);
-      this.jdField_a_of_type_Wwe.a(0);
-      return;
-    case 2131368621: 
-      m();
-      return;
-    case 2131375693: 
-      k();
-      paramView = a();
-      a(this.jdField_a_of_type_Int).a(paramView);
-      return;
-    }
-    this.jdField_a_of_type_Xjt.a(null);
-    this.jdField_a_of_type_Xjt.notifyDataSetChanged();
-    a(null, false);
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = a(this.jdField_a_of_type_Int).a();
-    if ((paramInt >= 0) && (paramInt < paramAdapterView.size()))
-    {
-      paramAdapterView = (xjv)paramAdapterView.get(paramInt);
-      this.jdField_a_of_type_Xjt.a(paramAdapterView);
-      this.jdField_a_of_type_Xjt.notifyDataSetChanged();
-      a(paramAdapterView, false);
-      if (this.jdField_b_of_type_Int != 1) {
-        break label90;
-      }
-    }
-    label90:
-    for (paramAdapterView = "1";; paramAdapterView = "2")
-    {
-      wta.a("video_edit", "clk_tag", 0, 0, new String[] { paramAdapterView });
-      return;
+      break label80;
     }
   }
 }

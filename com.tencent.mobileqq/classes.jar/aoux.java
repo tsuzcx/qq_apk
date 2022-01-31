@@ -1,10 +1,12 @@
-import java.util.ArrayList;
-
 public class aoux
 {
-  public int a;
-  public ArrayList<String> a = new ArrayList();
-  public int b;
+  public boolean a;
+  public boolean b;
+  
+  public String toString()
+  {
+    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
+  }
 }
 
 

@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import java.util.ArrayList;
+import java.util.concurrent.ThreadFactory;
 
-class yke
-  implements View.OnClickListener
+public final class yke
+  implements ThreadFactory
 {
-  yke(ykd paramykd, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_Int < ykd.a(this.jdField_a_of_type_Ykd).size())
-    {
-      ykd.b(this.jdField_a_of_type_Ykd).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_Ykd.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Ykd.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_Ykd.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_Ykd.a).a(ykd.c(this.jdField_a_of_type_Ykd).size());
-      }
-    }
+    paramRunnable = new Thread(paramRunnable);
+    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
+    return paramRunnable;
   }
 }
 

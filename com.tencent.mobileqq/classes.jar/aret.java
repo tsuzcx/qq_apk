@@ -1,126 +1,108 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aret
-  implements arek
+class aret
+  extends aqtp
 {
-  private bbpe jdField_a_of_type_Bbpe;
-  private UUID jdField_a_of_type_JavaUtilUUID;
+  aret(ares paramares, ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
   
-  public aret(bbpe parambbpe)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bbpe = parambbpe;
-    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Bbpe.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID == null) {
-      throw new NullPointerException("TroopFileStatusInfo Id null");
-    }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Bbpe.c;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Bbpe.e;
-  }
-  
-  public void a(long paramLong)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    if (this.jdField_a_of_type_Ares.a())
     {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    localItem.ProgressValue = paramLong;
-    localTroopFileTransferManager.a(localItem, 8);
-  }
-  
-  public void a(aqtd paramaqtd)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
+      QLog.e("C2CFileDownloader<FileAssistant>", 1, "=_= vk [CS Replay]id[" + String.valueOf(ares.a(this.jdField_a_of_type_Ares).nSessionId) + "] but isStoped");
       return;
     }
-    localTroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.e, this.jdField_a_of_type_Bbpe.g, this.jdField_a_of_type_Bbpe.c, this.jdField_a_of_type_Bbpe.h, new areu(this, paramaqtd));
-  }
-  
-  public void a(String paramString)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    this.jdField_a_of_type_Ares.a.d();
+    if (!paramBoolean)
     {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    boolean bool = bbns.b(localItem.Status);
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
-    }
-    if ((bool) || (this.jdField_a_of_type_Bbpe.jdField_b_of_type_Int == 7))
-    {
-      localItem.LocalFile = paramString;
-      localTroopFileTransferManager.a(localItem, 11);
+      this.jdField_a_of_type_Ares.a.b(paramLong1);
+      this.jdField_a_of_type_Ares.a(null, 0);
       return;
     }
-    localTroopFileTransferManager.a(localItem, 6);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    if (!bdin.d(BaseApplication.getContext()))
     {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bbpe.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    if (paramBoolean)
-    {
-      localTroopFileTransferManager.a(localItem, 12);
+      ares.a(this.jdField_a_of_type_Ares).a();
+      this.jdField_a_of_type_Ares.a(null, 0);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
-    }
-    if ((bbns.b(localItem.Status)) || (this.jdField_a_of_type_Bbpe.jdField_b_of_type_Int == 7))
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.fileSize = ares.a(this.jdField_a_of_type_Ares).fileSize;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.isSupportHttps = false;
+    paramInt = paramShort;
+    if (arbp.b(ares.a(this.jdField_a_of_type_Ares)))
     {
-      localTroopFileTransferManager.a(localItem, 10);
-      return;
+      paramInt = paramShort;
+      if (paramBundle != null)
+      {
+        paramString6 = paramBundle.getString("strHttpsDomain");
+        short s = paramBundle.getShort("httpsPort", (short)0);
+        paramInt = paramShort;
+        if (!TextUtils.isEmpty(paramString6))
+        {
+          paramShort = s;
+          if (s == 0) {
+            paramShort = 443;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.isSupportHttps = true;
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.sslCName = paramString6;
+          paramInt = paramShort;
+        }
+      }
     }
-    localTroopFileTransferManager.a(localItem, 3);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bbpe.jdField_b_of_type_Int == 12;
-  }
-  
-  public String b()
-  {
-    return armo.a().c() + bhma.a(this.jdField_a_of_type_Bbpe.e);
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_Bbpe.g;
+    if ((TextUtils.isEmpty(paramString3)) || (paramByteStringMicro == null))
+    {
+      if ((paramLong1 == -6101L) || (paramLong1 == -7003L)) {
+        ares.a(this.jdField_a_of_type_Ares).status = 16;
+      }
+      if (paramLong1 == 0L)
+      {
+        this.jdField_a_of_type_Ares.a.a.b = 9048L;
+        this.jdField_a_of_type_Ares.a.a.a = 2L;
+        this.jdField_a_of_type_Ares.a.a(5);
+        this.jdField_a_of_type_Ares.a.a(false);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Ares.a(null, (int)paramLong1);
+        return;
+        this.jdField_a_of_type_Ares.a.c(paramLong1);
+      }
+    }
+    if ((paramString1 != null) && (paramString1.length() > 0))
+    {
+      QLog.e("C2CFileDownloader<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(ares.a(this.jdField_a_of_type_Ares).nSessionId) + "] will show taost, retCode[" + String.valueOf(paramLong1) + "], retMsg:" + paramString1);
+      ares.a(this.jdField_a_of_type_Ares).a().a(ares.a(this.jdField_a_of_type_Ares).uniseq, ares.a(this.jdField_a_of_type_Ares).nSessionId, ares.a(this.jdField_a_of_type_Ares).peerUin, ares.a(this.jdField_a_of_type_Ares).peerType, 4, null, (int)paramLong1, paramString1);
+    }
+    paramString1 = paramList;
+    if (paramList == null) {
+      paramString1 = new ArrayList();
+    }
+    QLog.i("C2CFileDownloader<FileAssistant>", 1, "get lstUrl size:" + paramString1.size());
+    paramByteStringMicro = new ArrayList();
+    paramString1 = paramString1.iterator();
+    while (paramString1.hasNext()) {
+      paramByteStringMicro.add(new ExcitingTransferHostInfo((String)paramString1.next(), paramInt));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])paramByteStringMicro.toArray(new ExcitingTransferHostInfo[paramByteStringMicro.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strCookie = ("Cookie:t=0;v=" + AppSetting.a() + ";" + paramString2 + ";\r\n");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.serverPath = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strTempFilePath = this.jdField_a_of_type_Ares.b();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strFileName = paramString5;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strSaveFileDir = ares.a(this.jdField_a_of_type_Ares).b();
+    ares.a(this.jdField_a_of_type_Ares).status = 2;
+    this.jdField_a_of_type_Ares.a.e();
+    ares.a(this.jdField_a_of_type_Ares);
   }
 }
 

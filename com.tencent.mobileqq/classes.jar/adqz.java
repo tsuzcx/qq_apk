@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
 
 public class adqz
-  implements DialogInterface.OnClickListener
+  extends aeqi
 {
-  public adqz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a(this.a.c);
-  }
+  public ImageView a;
+  public BreathAnimationLayout a;
+  public StringBuilder a;
+  public TextView c;
 }
 
 

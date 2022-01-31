@@ -1,14 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+
 public class ajol
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public ajol(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public ajol(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
   }
 }
 

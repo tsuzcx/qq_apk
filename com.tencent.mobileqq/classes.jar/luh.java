@@ -32,7 +32,7 @@ public class luh
       return;
       e = true;
       if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = bdcb.c();
+        jdField_a_of_type_JavaLangString = bdgk.c();
       }
       paramContext = lri.a();
       f = false;

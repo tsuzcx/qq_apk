@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import aneq;
-import anev;
-import bfob;
-import bkel;
-import bkem;
+import aniz;
+import anje;
+import bfsk;
+import bkis;
+import bkit;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
@@ -16,18 +16,18 @@ import org.json.JSONObject;
 public class ArkAppDownloadModule$3$1
   implements Runnable
 {
-  public ArkAppDownloadModule$3$1(anev paramanev, WadlResult paramWadlResult) {}
+  public ArkAppDownloadModule$3$1(anje paramanje, WadlResult paramWadlResult) {}
   
   public void run()
   {
     int i;
     ark.VariantWrapper localVariantWrapper1;
-    if ((aneq.a(this.jdField_a_of_type_Anev.a) != null) && (aneq.a(this.jdField_a_of_type_Anev.a).size() > 0))
+    if ((aniz.a(this.jdField_a_of_type_Anje.a) != null) && (aniz.a(this.jdField_a_of_type_Anje.a).size() > 0))
     {
       i = 0;
-      if (i < aneq.a(this.jdField_a_of_type_Anev.a).size())
+      if (i < aniz.a(this.jdField_a_of_type_Anje.a).size())
       {
-        localVariantWrapper1 = this.jdField_a_of_type_Anev.a.b(((Long)aneq.a(this.jdField_a_of_type_Anev.a).get(i)).longValue());
+        localVariantWrapper1 = this.jdField_a_of_type_Anje.a.b(((Long)aniz.a(this.jdField_a_of_type_Anje.a).get(i)).longValue());
         if ((localVariantWrapper1 != null) && (this.jdField_a_of_type_CooperationWadlIpcWadlResult != null)) {
           break label101;
         }
@@ -39,14 +39,14 @@ public class ArkAppDownloadModule$3$1
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
     localVariantWrapper2.SetNull();
     ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-    int j = bfob.a(this.jdField_a_of_type_CooperationWadlIpcWadlResult.b);
+    int j = bfsk.a(this.jdField_a_of_type_CooperationWadlIpcWadlResult.b);
     String str;
     if (-2 == j)
     {
-      j = bfob.b(this.jdField_a_of_type_CooperationWadlIpcWadlResult.c);
-      str = aneq.a(this.jdField_a_of_type_Anev.a, j);
+      j = bfsk.b(this.jdField_a_of_type_CooperationWadlIpcWadlResult.c);
+      str = aniz.a(this.jdField_a_of_type_Anje.a, j);
       if (!TextUtils.isEmpty(str)) {
-        aneq.a(this.jdField_a_of_type_Anev.a, str);
+        aniz.a(this.jdField_a_of_type_Anje.a, str);
       }
       QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.download error code:", Integer.valueOf(j) });
       switch (j)
@@ -55,7 +55,7 @@ public class ArkAppDownloadModule$3$1
     }
     for (;;)
     {
-      JSONObject localJSONObject = aneq.a(this.jdField_a_of_type_Anev.a, this.jdField_a_of_type_CooperationWadlIpcWadlResult, "DownloadInit");
+      JSONObject localJSONObject = aniz.a(this.jdField_a_of_type_Anje.a, this.jdField_a_of_type_CooperationWadlIpcWadlResult, "DownloadInit");
       str = "";
       if (localJSONObject != null) {
         str = localJSONObject.toString();
@@ -69,10 +69,10 @@ public class ArkAppDownloadModule$3$1
       break;
       if (this.jdField_a_of_type_CooperationWadlIpcWadlResult.a != null)
       {
-        bkel.a().c(this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.d, this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.a);
+        bkis.a().c(this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.d, this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.a);
         continue;
         if (2 == j) {
-          aneq.a(this.jdField_a_of_type_Anev.a, true);
+          aniz.a(this.jdField_a_of_type_Anje.a, true);
         }
       }
     }

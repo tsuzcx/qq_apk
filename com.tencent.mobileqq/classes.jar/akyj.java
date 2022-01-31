@@ -1,13 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
-public class akyj
-  implements DialogInterface.OnClickListener
+class akyj
+  implements alkp
 {
-  public akyj(ApolloGameActivity paramApolloGameActivity) {}
+  akyj(akyg paramakyg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    alko.b(akyg.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!akyg.c(this.a)))
+      {
+        akyg.a(this.a, true);
+        akyg.c(this.a);
+      }
+    }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
+  }
 }
 
 

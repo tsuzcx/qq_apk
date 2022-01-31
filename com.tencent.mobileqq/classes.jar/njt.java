@@ -63,7 +63,7 @@ public class njt
       return paramView;
       paramView = new LinearLayout(paramContext);
       paramView.setOrientation(1);
-      paramView.setPadding(0, aekt.a(20.0F, paramViewGroup.getResources()), 0, 0);
+      paramView.setPadding(0, aepi.a(20.0F, paramViewGroup.getResources()), 0, 0);
     }
     label162:
     if (QLog.isDevelopLevel()) {
@@ -85,9 +85,9 @@ public class njt
     paramLinearLayout.setOnClickListener(null);
     Context localContext = paramLinearLayout.getContext();
     Object localObject1 = localContext.getResources();
-    int m = aekt.a(2.0F, (Resources)localObject1);
+    int m = aepi.a(2.0F, (Resources)localObject1);
     int n = (((Resources)localObject1).getDisplayMetrics().widthPixels - m) / 2;
-    int i1 = aekt.a(125.0F, (Resources)localObject1);
+    int i1 = aepi.a(125.0F, (Resources)localObject1);
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -135,7 +135,7 @@ public class njt
         localRelativeLayout.addView((View)localObject1);
         localObject1 = new TextView(localContext);
         localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-        ((RelativeLayout.LayoutParams)localObject3).setMargins(aekt.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+        ((RelativeLayout.LayoutParams)localObject3).setMargins(aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
         ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
         ((TextView)localObject1).setGravity(17);
         ((TextView)localObject1).setText(((npo)localObject2).a);

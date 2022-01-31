@@ -1,11 +1,14 @@
-public class bcpl
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+class bcpl
+  implements bcpo
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  bcpl(bcpg parambcpg, String paramString) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -87,8 +87,8 @@ public class AccountDetailBannerViewWrapper
       QLog.d("AccountDetailBannerViewWrapper", 2, "buildView!");
     }
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aekt.a(160.0F, localResources);
-    int j = aekt.a(20.0F, localResources);
+    int i = aepi.a(160.0F, localResources);
+    int j = aepi.a(20.0F, localResources);
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, i + j));
     localRelativeLayout.setPadding(0, j, 0, 0);
@@ -107,7 +107,7 @@ public class AccountDetailBannerViewWrapper
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, aekt.a(10.0F, localResources));
+    localLayoutParams.setMargins(0, 0, 0, aepi.a(10.0F, localResources));
     ((AccountDetailBannerIndicator)localObject).setLayoutParams(localLayoutParams);
     localRelativeLayout.addView((View)localObject);
     localAccountDetailBannerViewPager.setIndicator((AccountDetailBannerIndicator)localObject);

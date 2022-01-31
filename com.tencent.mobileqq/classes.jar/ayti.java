@@ -1,15 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.Comparator;
 
-class ayti
-  implements View.OnTouchListener
+final class ayti
+  implements Comparator<aynq>
 {
-  ayti(ayth paramayth) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(aynq paramaynq1, aynq paramaynq2)
   {
-    return true;
+    int j = Long.signum(paramaynq2.b() - paramaynq1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramaynq2.a() - paramaynq1.a());
+    }
+    j = i;
+    if (i == 0) {
+      j = aytg.a(paramaynq1, paramaynq2);
+    }
+    return j;
   }
 }
 

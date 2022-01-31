@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aloz;
-import avhw;
+import alto;
+import avmf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
 public class NearbyProfileDisplayTribePanel$13
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$13(avhw paramavhw) {}
+  public NearbyProfileDisplayTribePanel$13(avmf paramavmf) {}
   
   public void run()
   {
-    Object localObject = (aloz)this.this$0.a.app.getManager(51);
+    Object localObject = (alto)this.this$0.a.app.getManager(51);
     if (localObject == null) {}
-    for (localObject = null;; localObject = ((aloz)localObject).b(this.this$0.a.getCurrentAccountUin()))
+    for (localObject = null;; localObject = ((alto)localObject).b(this.this$0.a.getCurrentAccountUin()))
     {
       this.this$0.a.runOnUiThread(new NearbyProfileDisplayTribePanel.13.1(this, (Card)localObject));
       return;

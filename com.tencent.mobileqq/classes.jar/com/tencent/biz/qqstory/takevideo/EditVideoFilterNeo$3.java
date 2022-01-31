@@ -3,14 +3,14 @@ package com.tencent.biz.qqstory.takevideo;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import uqm;
-import wvj;
-import wwe;
+import uuv;
+import wzs;
+import xan;
 
 public class EditVideoFilterNeo$3
   implements Runnable
 {
-  public EditVideoFilterNeo$3(wvj paramwvj, uqm paramuqm) {}
+  public EditVideoFilterNeo$3(wzs paramwzs, uuv paramuuv) {}
   
   public void run()
   {

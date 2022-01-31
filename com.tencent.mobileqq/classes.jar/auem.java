@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
-
-public class auem
-  extends aueu<MessageRecord>
+class auem
+  extends auei<auek>
 {
-  public auem(MessageRecord paramMessageRecord)
+  public auem(auek paramauek)
   {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
+    super(paramauek);
   }
   
-  protected int a()
+  public void a(auek paramauek, boolean paramBoolean, auef paramauef)
   {
-    return 0;
+    if (paramauek == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      aued localaued = paramauek.a(paramauef.f);
+      if (localaued != null)
+      {
+        auek.a(paramauek).a(paramauef, localaued);
+        return;
+      }
+    }
+    auek.a(paramauek, paramauef.jdField_a_of_type_JavaLangString, paramauef.jdField_a_of_type_Int, 1002);
   }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    return null;
-  }
-  
-  public void a() {}
 }
 
 

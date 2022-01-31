@@ -70,7 +70,7 @@ public class pos
     boolean bool = true;
     QLog.d("OnBiuClickListener", 1, "click biu");
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b())) {
-      QQToast.a(BaseApplicationImpl.sApplication, 0, 2131718965, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 0, 2131718977, 0).a();
     }
     while ((!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)) {
       return;

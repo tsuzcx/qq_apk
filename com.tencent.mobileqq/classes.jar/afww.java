@@ -1,15 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class afww
-  implements ValueAnimator.AnimatorUpdateListener
+class afww
+  extends awkf
 {
-  public afww(SixCombolEffectView paramSixCombolEffectView, afxk paramafxk) {}
+  afww(afwu paramafwu, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, awjm paramawjm)
   {
-    this.jdField_a_of_type_Afxk.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    }
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
   }
 }
 

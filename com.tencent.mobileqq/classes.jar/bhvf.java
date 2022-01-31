@@ -1,17 +1,36 @@
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
-public class bhvf
-  implements View.OnClickListener
+final class bhvf
+  extends ClickableSpan
 {
-  public bhvf(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
+  private WeakReference<Context> a;
   
-  public void onClick(View paramView)
+  private bhvf(Context paramContext)
   {
-    if (PinnedFooterExpandableListView.a(this.b) != null) {
-      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    paramView = (Context)this.a.get();
+    if (paramView != null)
+    {
+      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://support.qq.com/product/36028");
+      paramView.startActivity(localIntent);
     }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

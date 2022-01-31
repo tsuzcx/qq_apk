@@ -1,15 +1,8 @@
-public class azdv
+public abstract interface azdv
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public abstract void a(int paramInt);
   
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
-  }
+  public abstract void b(int paramInt);
 }
 
 

@@ -6,27 +6,26 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.widget.StatusView;
 import java.util.ArrayList;
 import java.util.Iterator;
-import tvm;
-import ydp;
-import yds;
-import ydw;
-import ydx;
-import ydy;
-import ydz;
-import yea;
-import yed;
-import yee;
+import org.jetbrains.annotations.NotNull;
+import tvw;
+import yhy;
+import yib;
+import yif;
+import yig;
+import yih;
+import yip;
+import yiq;
 
 public class ComponentPageView
   extends FrameLayout
@@ -34,12 +33,10 @@ public class ComponentPageView
   private static final String jdField_a_of_type_JavaLangString = ComponentPageView.class.getSimpleName();
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
   private RecyclerView.LayoutManager jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-  protected SubScribeSwipeRefreshLayout a;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   protected NestScrollRecyclerView a;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  public yds a;
-  private boolean jdField_a_of_type_Boolean;
+  public yib a;
   
   public ComponentPageView(Context paramContext)
   {
@@ -54,7 +51,13 @@ public class ComponentPageView
   public ComponentPageView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
+    a();
+  }
+  
+  @NotNull
+  private yib b()
+  {
+    return new yib(this);
   }
   
   protected int a()
@@ -66,11 +69,6 @@ public class ComponentPageView
   {
     if (this.jdField_a_of_type_AndroidSupportV4AppFragment == null) {}
     return this.jdField_a_of_type_AndroidSupportV4AppFragment;
-  }
-  
-  public SubScribeSwipeRefreshLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout;
   }
   
   public ExtraTypeInfo a()
@@ -91,135 +89,72 @@ public class ComponentPageView
     return this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
   }
   
-  public yds a()
+  protected StatusView a(View paramView)
   {
-    return this.jdField_a_of_type_Yds;
+    paramView = new StatusView(getContext());
+    paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    paramView.setVisibility(8);
+    return paramView;
   }
   
-  protected void a(View paramView)
+  public yib a()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)paramView.findViewById(2131364666));
+    return this.jdField_a_of_type_Yib;
   }
   
-  protected void a(FrameLayout paramFrameLayout)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364070));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_Yds = new yds(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Yds);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addItemDecoration(new yea(this, this.jdField_a_of_type_Yds));
-    setLayoutManagerType(1, 1);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addOnScrollListener(new ydy(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout = ((SubScribeSwipeRefreshLayout)findViewById(2131376915));
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout != null)
-    {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setEnabled(false);
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setOnRefreshListener(new ydz(this));
-    }
-    a(paramFrameLayout);
-  }
-  
-  public void a(ArrayList<ydp> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      a((ydp)paramArrayList.next());
-    }
-  }
-  
-  public void a(ydp paramydp)
-  {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.a(paramydp);
-    }
-  }
-  
-  public void a(ydx paramydx)
-  {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.a(paramydx);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Yds != null) {
-      return this.jdField_a_of_type_Yds.a();
-    }
-    return false;
-  }
-  
-  protected void b()
+  protected void a()
   {
     LayoutInflater.from(getContext()).inflate(a(), this);
     a(this);
   }
   
-  public void b(ydp paramydp)
+  protected void a(FrameLayout paramFrameLayout)
   {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.b(paramydp);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364072));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setHasFixedSize(true);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
+    this.jdField_a_of_type_Yib = b();
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Yib);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addItemDecoration(new yih(this, this.jdField_a_of_type_Yib));
+    setLayoutManagerType(1, 1);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setItemAnimator(null);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = a(paramFrameLayout);
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
+    addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView, new ViewGroup.LayoutParams(-1, -1));
+  }
+  
+  public void a(ArrayList<yhy> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      a((yhy)paramArrayList.next());
     }
   }
   
-  public boolean b()
+  public void a(yhy paramyhy)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager)) {
-      if ((((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() >= this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 1) && (this.jdField_a_of_type_Yds != null)) {
-        this.jdField_a_of_type_Yds.c();
-      }
-    }
-    label187:
-    label195:
-    for (;;)
-    {
-      return;
-      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager))
-      {
-        StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-        int i = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
-        if (i == 1)
-        {
-          arrayOfInt = new int[1];
-          localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
-          if ((arrayOfInt[0] < localStaggeredGridLayoutManager.getItemCount() - 3) || (this.jdField_a_of_type_Yds == null)) {
-            break;
-          }
-          this.jdField_a_of_type_Yds.c();
-          return;
-        }
-        int[] arrayOfInt = new int[i];
-        localStaggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(arrayOfInt);
-        if (arrayOfInt[1] >= arrayOfInt[0])
-        {
-          i = arrayOfInt[1];
-          if (localStaggeredGridLayoutManager.getItemCount() - 1 - 10 >= 0) {
-            break label187;
-          }
-        }
-        for (int j = 0;; j = localStaggeredGridLayoutManager.getItemCount() - 1)
-        {
-          if ((i < j) || (this.jdField_a_of_type_Yds == null)) {
-            break label195;
-          }
-          this.jdField_a_of_type_Yds.c();
-          return;
-          i = arrayOfInt[0];
-          break;
-        }
-      }
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.a(paramyhy);
     }
   }
   
-  public void d()
+  public void a(yig paramyig)
+  {
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.a(paramyig);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Yib != null) {
+      return this.jdField_a_of_type_Yib.a();
+    }
+    return false;
+  }
+  
+  public void b()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView != null)
     {
@@ -228,8 +163,8 @@ public class ComponentPageView
       }
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.d();
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.c();
     }
     if ((a() != null) && (a().a() != null)) {
       a().a().setImageDrawable(null);
@@ -237,10 +172,25 @@ public class ComponentPageView
     this.jdField_a_of_type_AndroidSupportV4AppFragment = null;
   }
   
-  public void e()
+  public void b(yhy paramyhy)
   {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.e();
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.b(paramyhy);
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Yib != null) {
+      return this.jdField_a_of_type_Yib.d();
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.d();
     }
   }
   
@@ -256,13 +206,15 @@ public class ComponentPageView
   
   public void setEnableLoadMore(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.d(paramBoolean);
+    }
   }
   
   public void setEnableRefresh(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setEnabled(paramBoolean);
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.b(paramBoolean);
     }
   }
   
@@ -279,15 +231,16 @@ public class ComponentPageView
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
+      this.jdField_a_of_type_Yib.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yed(getContext(), 1, false);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yip(getContext(), 1, false);
       continue;
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new GridLayoutManager(getContext(), paramInt2);
-      ((GridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Yds.a());
+      ((GridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Yib.a());
       continue;
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setHasFixedSize(false);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yee(paramInt2, 1);
-      ((yee)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yiq(paramInt2, 1);
+      ((yiq)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
     }
   }
   
@@ -296,30 +249,30 @@ public class ComponentPageView
     this.jdField_a_of_type_AndroidSupportV4AppFragment = paramFragment;
   }
   
-  public void setPartWrapper(tvm paramtvm)
+  public void setPartWrapper(tvw paramtvw)
   {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.a(paramtvm);
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.a(paramtvw);
     }
   }
   
   public void setRefreshing(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout != null)
+    if (this.jdField_a_of_type_Yib != null)
     {
-      if ((paramBoolean) && (!this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.isRefreshing())) {
-        this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setRefreshing(true);
+      if ((paramBoolean) && (!this.jdField_a_of_type_Yib.c())) {
+        this.jdField_a_of_type_Yib.c(true);
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.isRefreshing())) {
-        this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setRefreshing(false);
+      if ((!paramBoolean) && (this.jdField_a_of_type_Yib.c())) {
+        this.jdField_a_of_type_Yib.c(false);
       }
     }
   }
   
-  public void setShareData(String paramString, ydw paramydw)
+  public void setShareData(String paramString, yif paramyif)
   {
-    if (this.jdField_a_of_type_Yds != null) {
-      this.jdField_a_of_type_Yds.a(paramString, paramydw);
+    if (this.jdField_a_of_type_Yib != null) {
+      this.jdField_a_of_type_Yib.a(paramString, paramyif);
     }
   }
 }

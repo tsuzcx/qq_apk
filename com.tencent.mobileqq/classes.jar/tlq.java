@@ -144,7 +144,7 @@ public class tlq
     paramString2 = tlv.b(paramString2);
     tlo.d("WeishiScehmeUtil", "openWeishi: scheme = " + paramString2);
     jdField_a_of_type_Boolean = true;
-    xoo.a(paramContext, paramString1, paramString2);
+    xsx.a(paramContext, paramString1, paramString2);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)

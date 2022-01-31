@@ -7,7 +7,7 @@ import com.dataline.activities.LiteMutiPicViewerActivity.2.5;
 import com.dataline.activities.LiteMutiPicViewerActivity.2.6;
 
 public class cl
-  extends almg
+  extends alqv
 {
   public cl(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
   

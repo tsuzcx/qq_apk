@@ -1,17 +1,27 @@
-public class bmkc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
+
+class bmkc
+  implements View.OnClickListener
 {
-  @xnb(a="tag_type")
-  public int a;
-  @xnb(a="tag_id")
-  public long a;
-  @xnb(a="tag_name")
-  public String a;
-  @xnb(a="join_count")
-  public int b;
-  @xnb(a="tag_desc")
-  public String b;
-  @xnb(a="wording")
-  public String c;
+  bmkc(bmkb parambmkb) {}
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
+    }
+    paramView = ((blua)blqr.a().c(8)).a();
+    if ((MusicProviderView.a) && (paramView != null) && (paramView.mItemId != bmkb.a(this.a).mItemId) && (paramView.mType == 5))
+    {
+      this.a.c();
+      return;
+    }
+    bmkb.a(this.a);
+  }
 }
 
 

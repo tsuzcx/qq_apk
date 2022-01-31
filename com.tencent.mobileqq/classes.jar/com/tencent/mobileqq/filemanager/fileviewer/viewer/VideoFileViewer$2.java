@@ -3,24 +3,24 @@ package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import arke;
+import aron;
 
 public class VideoFileViewer$2
   implements Runnable
 {
-  public VideoFileViewer$2(arke paramarke) {}
+  public VideoFileViewer$2(aron paramaron) {}
   
   public void run()
   {
-    if (arke.a(this.this$0).getVisibility() == 0)
+    if (aron.a(this.this$0).getVisibility() == 0)
     {
-      Animation localAnimation = arke.a(this.this$0).getAnimation();
+      Animation localAnimation = aron.a(this.this$0).getAnimation();
       if (localAnimation != null) {
         localAnimation.cancel();
       }
-      arke.a(this.this$0).clearAnimation();
+      aron.a(this.this$0).clearAnimation();
     }
-    arke.a(this.this$0).setVisibility(8);
+    aron.a(this.this$0).setVisibility(8);
   }
 }
 

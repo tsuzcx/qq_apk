@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
@@ -13,23 +13,23 @@ public class MiscJsPlugin
 {
   private static final String TAG = "MiscJsPlugin";
   
-  public void saveAppToDesktop(bgkd parambgkd)
+  public void saveAppToDesktop(bgok parambgok)
   {
     try
     {
       if (this.mMiniAppInfo.appMode.isLimitedAccess)
       {
         QMLog.e("MiscJsPlugin", "app is limited access");
-        parambgkd.b();
+        parambgok.b();
         return;
       }
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).addShortcut(this.mMiniAppContext.a(), this.mMiniAppInfo, new MiscJsPlugin.1(this, parambgkd));
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).addShortcut(this.mMiniAppContext.a(), this.mMiniAppInfo, new MiscJsPlugin.1(this, parambgok));
       return;
     }
     catch (Exception localException)
     {
       QMLog.e("MiscJsPlugin", localException.getMessage(), localException);
-      parambgkd.b();
+      parambgok.b();
     }
   }
 }

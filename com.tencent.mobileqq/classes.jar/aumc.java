@@ -1,35 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
-class aumc
-  extends awfw
+public class aumc
+  extends GestureDetector.SimpleOnGestureListener
 {
-  aumc(ault paramault, String paramString, aulo paramaulo) {}
+  public aumc(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public void a(int paramInt, awfd paramawfd)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
+    if (MultiAIOViewPager.a(this.a) != null) {
+      this.a.performClick();
     }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramawfd != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramawfd.a != null)
-      {
-        i = paramawfd.a.a;
-        str1 = paramawfd.a.b;
-      }
-    }
-    ault.a(this.jdField_a_of_type_Ault, this.jdField_a_of_type_Aulo, paramInt, i, str1);
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    ault.a(this.jdField_a_of_type_Ault, this.jdField_a_of_type_Aulo, paramInt);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

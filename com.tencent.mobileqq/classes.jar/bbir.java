@@ -1,33 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class bbir
-  implements View.OnTouchListener
+public class bbir
+  extends ContentObserver
 {
-  bbir(bbiq parambbiq) {}
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bbir(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
-      this.a.c.setAlpha(0.5F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((i == 3) || (i == 1))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-        this.a.c.setAlpha(1.0F);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
   }
 }
 

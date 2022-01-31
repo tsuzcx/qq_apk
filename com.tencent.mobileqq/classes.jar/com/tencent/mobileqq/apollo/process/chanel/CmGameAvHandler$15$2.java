@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aksp;
+import akxe;
 
 public class CmGameAvHandler$15$2
   implements Runnable
 {
-  public CmGameAvHandler$15$2(aksp paramaksp) {}
+  public CmGameAvHandler$15$2(akxe paramakxe) {}
   
   public void run() {}
 }

@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
-import ymb;
+import yqq;
 
 class TribeVideoPlugin$TimeCountTask
   extends TimerTask

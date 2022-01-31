@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-class alio
-  implements DialogInterface.OnClickListener
+public abstract interface alio
 {
-  alio(alin paramalin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract int a(Bundle paramBundle);
 }
 
 

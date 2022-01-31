@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -13,7 +13,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bdcb;
+import bdgk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.ArrayList;
@@ -81,8 +81,8 @@ public class ComponentTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559979, this, true);
-    this.c = ((TextView)findViewById(2131364668));
+    LayoutInflater.from(paramContext).inflate(2131559978, this, true);
+    this.c = ((TextView)findViewById(2131364669));
   }
   
   public void a(Object paramObject)
@@ -135,10 +135,10 @@ public class ComponentTitle
     }
     for (;;)
     {
-      if ((bdcb.k() >= 1080L) && (this.c != null) && ((this.c.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+      if ((bdgk.k() >= 1080L) && (this.c != null) && ((this.c.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
       {
-        localLayoutParams.topMargin = Math.max(localLayoutParams.topMargin - aekt.a(4.5F, getResources()), 0);
-        localLayoutParams.bottomMargin = Math.max(localLayoutParams.bottomMargin - aekt.a(6.0F, getResources()), 0);
+        localLayoutParams.topMargin = Math.max(localLayoutParams.topMargin - aepi.a(4.5F, getResources()), 0);
+        localLayoutParams.bottomMargin = Math.max(localLayoutParams.bottomMargin - aepi.a(6.0F, getResources()), 0);
       }
       this.c.setLayoutParams(localLayoutParams);
       return;
@@ -151,12 +151,12 @@ public class ComponentTitle
         this.c.setEllipsize(TextUtils.TruncateAt.END);
         localObject = (FrameLayout.LayoutParams)this.c.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).leftMargin = 0;
-        ((FrameLayout.LayoutParams)localObject).topMargin = aekt.a(4.0F, getResources());
-        ((FrameLayout.LayoutParams)localObject).rightMargin = aekt.a(10.0F, getResources());
-        ((FrameLayout.LayoutParams)localObject).bottomMargin = aekt.a(0.0F, getResources());
+        ((FrameLayout.LayoutParams)localObject).topMargin = aepi.a(4.0F, getResources());
+        ((FrameLayout.LayoutParams)localObject).rightMargin = aepi.a(10.0F, getResources());
+        ((FrameLayout.LayoutParams)localObject).bottomMargin = aepi.a(0.0F, getResources());
         this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.c.setGravity(51);
-        this.c.setPadding(0, aekt.a(2.0F, getResources()), 0, aekt.a(2.0F, getResources()));
+        this.c.setPadding(0, aepi.a(2.0F, getResources()), 0, aepi.a(2.0F, getResources()));
       }
       else if (this.a.j())
       {
@@ -166,35 +166,35 @@ public class ComponentTitle
         int k = this.c.getPaddingRight();
         if (this.a.a())
         {
-          localLayoutParams.topMargin = aekt.a(0.0F, getResources());
-          localLayoutParams.bottomMargin = aekt.a(0.0F, getResources());
-          localLayoutParams.leftMargin = aekt.a(11.0F, getResources());
-          localLayoutParams.rightMargin = aekt.a(11.0F, getResources());
-          int m = aekt.a(10.0F, getResources());
+          localLayoutParams.topMargin = aepi.a(0.0F, getResources());
+          localLayoutParams.bottomMargin = aepi.a(0.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(11.0F, getResources());
+          localLayoutParams.rightMargin = aepi.a(11.0F, getResources());
+          int m = aepi.a(10.0F, getResources());
           this.c.setPadding(j, i, k, m);
         }
         else
         {
-          localLayoutParams.topMargin = aekt.a(18.0F, getResources());
-          localLayoutParams.bottomMargin = aekt.a(0.0F, getResources());
-          localLayoutParams.leftMargin = aekt.a(11.0F, getResources());
-          localLayoutParams.rightMargin = aekt.a(11.0F, getResources());
+          localLayoutParams.topMargin = aepi.a(18.0F, getResources());
+          localLayoutParams.bottomMargin = aepi.a(0.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(11.0F, getResources());
+          localLayoutParams.rightMargin = aepi.a(11.0F, getResources());
           this.c.setPadding(j, i, k, 0);
         }
       }
       else if ((this.a.b()) || (this.a.c()))
       {
-        localLayoutParams.topMargin = aekt.a(0.0F, getResources());
-        localLayoutParams.bottomMargin = aekt.a(0.0F, getResources());
-        localLayoutParams.leftMargin = aekt.a(12.0F, getResources());
-        localLayoutParams.rightMargin = aekt.a(20.0F, getResources());
+        localLayoutParams.topMargin = aepi.a(0.0F, getResources());
+        localLayoutParams.bottomMargin = aepi.a(0.0F, getResources());
+        localLayoutParams.leftMargin = aepi.a(12.0F, getResources());
+        localLayoutParams.rightMargin = aepi.a(20.0F, getResources());
       }
       else if (this.a.d())
       {
-        localLayoutParams.topMargin = aekt.a(0.0F, getResources());
-        localLayoutParams.bottomMargin = aekt.a(0.0F, getResources());
-        localLayoutParams.leftMargin = aekt.a(12.0F, getResources());
-        localLayoutParams.rightMargin = aekt.a(20.0F, getResources());
+        localLayoutParams.topMargin = aepi.a(0.0F, getResources());
+        localLayoutParams.bottomMargin = aepi.a(0.0F, getResources());
+        localLayoutParams.leftMargin = aepi.a(12.0F, getResources());
+        localLayoutParams.rightMargin = aepi.a(20.0F, getResources());
       }
       else
       {
@@ -205,29 +205,29 @@ public class ComponentTitle
         }
         else
         {
-          localLayoutParams.topMargin = aekt.a(13.0F, getResources());
-          localLayoutParams.bottomMargin = aekt.a(17.0F, getResources());
-          localLayoutParams.leftMargin = aekt.a(12.0F, getResources());
-          localLayoutParams.rightMargin = aekt.a(12.0F, getResources());
+          localLayoutParams.topMargin = aepi.a(13.0F, getResources());
+          localLayoutParams.bottomMargin = aepi.a(17.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(12.0F, getResources());
+          localLayoutParams.rightMargin = aepi.a(12.0F, getResources());
           continue;
         }
         if (this.a.f())
         {
-          this.c.setMinimumHeight(aekt.a(40.0F, getResources()));
+          this.c.setMinimumHeight(aepi.a(40.0F, getResources()));
         }
         else if (this.a.a())
         {
-          localLayoutParams.topMargin = aekt.a(13.0F, getResources());
-          localLayoutParams.bottomMargin = aekt.a(0.0F, getResources());
-          localLayoutParams.leftMargin = aekt.a(11.0F, getResources());
-          localLayoutParams.rightMargin = aekt.a(11.0F, getResources());
+          localLayoutParams.topMargin = aepi.a(13.0F, getResources());
+          localLayoutParams.bottomMargin = aepi.a(0.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(11.0F, getResources());
+          localLayoutParams.rightMargin = aepi.a(11.0F, getResources());
         }
         else
         {
-          localLayoutParams.topMargin = aekt.a(13.0F, getResources());
-          localLayoutParams.bottomMargin = aekt.a(11.0F, getResources());
-          localLayoutParams.leftMargin = aekt.a(11.0F, getResources());
-          localLayoutParams.rightMargin = aekt.a(11.0F, getResources());
+          localLayoutParams.topMargin = aepi.a(13.0F, getResources());
+          localLayoutParams.bottomMargin = aepi.a(11.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(11.0F, getResources());
+          localLayoutParams.rightMargin = aepi.a(11.0F, getResources());
         }
       }
     }
@@ -248,7 +248,7 @@ public class ComponentTitle
     }
     return;
     label68:
-    this.c.setTextColor(getContext().getResources().getColor(2131166378));
+    this.c.setTextColor(getContext().getResources().getColor(2131166380));
   }
 }
 

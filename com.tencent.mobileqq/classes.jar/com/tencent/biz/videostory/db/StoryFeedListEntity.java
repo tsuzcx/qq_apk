@@ -1,14 +1,14 @@
 package com.tencent.biz.videostory.db;
 
 import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class StoryFeedListEntity
-  extends awbv
+  extends awge
 {
   public byte[] storyFeedList;
-  @awdj
+  @awhs
   public String uin;
   
   public void updateStoryFeedListEntity(String paramString, CLIENT.StGetStoryFeedListRsp paramStGetStoryFeedListRsp)

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class amdn
-  extends alox
+public final class amdn
+  extends MqqHandler
 {
-  private amdn(GetGeneralSettings paramGetGeneralSettings) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public amdn(Looper paramLooper)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    super(paramLooper);
+  }
+  
+  public void removeCallbacksAndMessages(Object paramObject)
+  {
+    if (paramObject == null)
     {
-      this.a.a.a = 3;
-      this.a.a(7);
+      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
       return;
     }
-    this.a.a(6);
+    super.removeCallbacksAndMessages(paramObject);
   }
 }
 

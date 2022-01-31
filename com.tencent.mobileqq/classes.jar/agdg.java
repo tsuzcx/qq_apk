@@ -1,15 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class agdg
-  implements DialogInterface.OnClickListener
+public class agdg
+  extends fu
 {
-  agdg(Activity paramActivity) {}
+  agdg(agda paramagda) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    this.a.finish();
+    if ((!paramBoolean) && (paramChatMessage != null))
+    {
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.c();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      return;
+    }
   }
 }
 

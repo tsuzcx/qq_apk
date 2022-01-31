@@ -1,55 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.RelativeLayout;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class betv
-  implements Animator.AnimatorListener
+public class betv
+  implements TencentMap.OnCameraChangeListener
 {
-  betv(bets parambets, int paramInt) {}
+  public betv(QQMapView paramQQMapView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onCameraChange(CameraPosition paramCameraPosition)
   {
-    if (this.jdField_a_of_type_Bets.a != null)
+    if ((this.a.jdField_a_of_type_Betx != null) && (!this.a.jdField_a_of_type_Boolean))
     {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label41;
-      }
-      this.jdField_a_of_type_Bets.a.setAlpha(1.0F);
-    }
-    for (;;)
-    {
-      bets.b(this.jdField_a_of_type_Bets, this.jdField_a_of_type_Int);
-      return;
-      label41:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Bets.a.setAlpha(0.0F);
-      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Betx.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    bets.b(this.jdField_a_of_type_Bets, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      bets.a(this.jdField_a_of_type_Bets, false);
-      this.jdField_a_of_type_Bets.a(false, new View[] { bets.a(this.jdField_a_of_type_Bets) });
-    }
-    bets.a(this.jdField_a_of_type_Bets);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bets.b(this.jdField_a_of_type_Bets, 2);
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      bets.a(this.jdField_a_of_type_Bets, true);
-      if (bets.a(this.jdField_a_of_type_Bets) == 1) {
-        this.jdField_a_of_type_Bets.a(true, new View[] { bets.a(this.jdField_a_of_type_Bets) });
-      }
+    if (this.a.jdField_a_of_type_Boolean) {
+      QQMapView.a(this.a, paramCameraPosition);
     }
   }
 }

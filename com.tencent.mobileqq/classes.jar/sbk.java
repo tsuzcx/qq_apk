@@ -13,7 +13,7 @@ public class sbk
   
   public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new sbl(LayoutInflater.from(paramContext).inflate(2131560026, null), paramBaseData);
+    return new sbl(LayoutInflater.from(paramContext).inflate(2131560025, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

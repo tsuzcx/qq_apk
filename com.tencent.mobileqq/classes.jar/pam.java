@@ -1,13 +1,13 @@
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class pam
-  implements bhvu
+  implements biab
 {
   public pam(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public void a(bhvt parambhvt)
+  public void a(biaa parambiaa)
   {
-    switch (parambhvt.a)
+    switch (parambiaa.a)
     {
     }
   }

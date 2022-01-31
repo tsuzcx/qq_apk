@@ -1,22 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class xfx
-  implements uqr<uqm>
+class xfx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public xfx(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  private xfx(xfr paramxfr) {}
   
-  public void a(boolean paramBoolean, uqm paramuqm)
+  public void onGlobalLayout()
   {
-    wsv.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramuqm != null))
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
     {
-      wsv.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramuqm);
-      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramuqm));
+      this.a.dismiss();
       return;
     }
-    wsv.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    this.a.jdField_a_of_type_Xfv.a(this.a.a());
   }
 }
 

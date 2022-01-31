@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.log;
 
-import akom;
+import aktb;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,15 +8,15 @@ import android.view.View;
 public class CmGameDebugLogView$1
   implements Runnable
 {
-  public CmGameDebugLogView$1(akom paramakom) {}
+  public CmGameDebugLogView$1(aktb paramaktb) {}
   
   public void run()
   {
-    Object localObject = akom.a(this.this$0).getLayoutManager();
+    Object localObject = aktb.a(this.this$0).getLayoutManager();
     if ((localObject instanceof LinearLayoutManager)) {}
     for (localObject = (LinearLayoutManager)localObject;; localObject = null)
     {
-      View localView = akom.a(this.this$0).getChildAt(akom.a(this.this$0).getChildCount() - 1);
+      View localView = aktb.a(this.this$0).getChildAt(aktb.a(this.this$0).getChildCount() - 1);
       if ((localView != null) && (localView.getId() != 2131362625) && (localObject != null)) {
         ((LinearLayoutManager)localObject).setStackFromEnd(true);
       }

@@ -1,42 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class assy
-  extends avqt
+public class assy
 {
-  assy(Activity paramActivity, String paramString, Runnable paramRunnable) {}
+  private static AtomicInteger a;
+  public int a;
+  public FontBubble a;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  static
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699364), 0).a();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
-    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   }
   
-  public void a(oidb_0x87a.RspBody paramRspBody)
+  public assy(FontBubble paramFontBubble)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
-    {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
-      return;
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble = paramFontBubble;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("FontBubbleManager", 1, "setFontBubble: " + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId + "," + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId);
     }
+    ((amca)paramQQAppInterface.a(13)).a(this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId, this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId, this.jdField_a_of_type_Int);
   }
 }
 

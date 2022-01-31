@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -83,7 +83,7 @@ public class UserOperationModule$4
     }
     catch (Exception localException)
     {
-      aekt.a("UserOperationModule", "report exception!", localException);
+      aepi.a("UserOperationModule", "report exception!", localException);
       return;
     }
     ((oidb_cmd0xde0.GestureEvent)localObject3).ges_scroll_distance.set((float)((qho)localObject4).jdField_b_of_type_Long);

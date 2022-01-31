@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
-class bagi
-  implements DialogInterface.OnDismissListener
+public class bagi
 {
-  bagi(bagh parambagh) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a = null;
-  }
+  public int a;
+  public TimDocSSOMsg.UinRightInfo a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

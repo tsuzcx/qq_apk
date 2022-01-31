@@ -1,28 +1,32 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoTopRsp;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 class tud
-  implements yvn<FeedCloudWrite.StDoTopRsp>
+  implements bhuk
 {
-  tud(ttv paramttv, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
+  tud(tuc paramtuc, bhuf parambhuf) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null)) {
-      QLog.e(ttv.a(), 1, "stickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+    if (!yxv.a("showEnterAuthActionSheetClick")) {
+      switch (paramInt)
+      {
+      }
     }
-    if (paramLong == 0L)
+    for (;;)
     {
-      QLog.d(ttv.a(), 1, "sticky Success");
-      ttv.a(this.jdField_a_of_type_Ttv, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (tuc.a(this.jdField_a_of_type_Tuc) != null)
+      {
+        tqs.a(this.jdField_a_of_type_Tuc.a(), tqr.a(tuc.a(this.jdField_a_of_type_Tuc).a.urlInfo.get(), "authSchoolUrl"));
+        continue;
+        if (tuc.a(this.jdField_a_of_type_Tuc) != null) {
+          tqs.a(this.jdField_a_of_type_Tuc.a(), tqr.a(tuc.a(this.jdField_a_of_type_Tuc).a.urlInfo.get(), "authCampanyUrl"));
+        }
+      }
     }
-    yej.a().a(new QCircleCommentUpdateEvent(6, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Ttv.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get())));
-    uht.a().dispatch(this.jdField_a_of_type_Ttv.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Ttv.hashCode()) }));
   }
 }
 

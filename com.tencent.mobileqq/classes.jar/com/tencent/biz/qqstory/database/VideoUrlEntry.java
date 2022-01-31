@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
+import awge;
 
 public class VideoUrlEntry
-  extends awbv
+  extends awge
 {
   public String vid;
   public String videoUrl;

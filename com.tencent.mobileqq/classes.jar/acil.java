@@ -1,59 +1,49 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.open.adapter.OpenAppClient;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class acil
-  implements View.OnClickListener
+public class acil
+  extends alqh
 {
-  acil(acid paramacid, int paramInt, adaf paramadaf, String paramString) {}
+  public acil(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_Adaf.a.istroop == 1001) || (this.jdField_a_of_type_Adaf.a.istroop == 10002)))
+    if (this.a.A()) {}
+    do
     {
-      paramView = bdlr.a(this.jdField_a_of_type_JavaLangString);
-      paramView = bdds.a(this.jdField_a_of_type_Acid.a.app, this.jdField_a_of_type_Acid.a, paramView);
-      if (paramView != null) {
-        paramView.c();
-      }
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
       return;
+    } while (this.a.jdField_a_of_type_Ahai == null);
+    this.a.jdField_a_of_type_Ahai.a(paramArrayList);
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Aeqo != null)) {
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
     }
-    if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Acid.a, this.jdField_a_of_type_Acid.a.app, this.jdField_a_of_type_Adaf.a.action, this.jdField_a_of_type_Adaf.a.shareAppID, this.jdField_a_of_type_Adaf.a.msgtype);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == -3005)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Acid.a, this.jdField_a_of_type_Acid.a.app, this.jdField_a_of_type_Adaf.a.action, this.jdField_a_of_type_Adaf.a.shareAppID, this.jdField_a_of_type_Adaf.a.msgtype);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == -3001)
-    {
-      paramView = new Bundle();
-      paramView.putString("schemaurl", this.jdField_a_of_type_JavaLangString);
-      String str = this.jdField_a_of_type_Acid.a.app.getCurrentAccountUin();
-      paramView.putString("uin", str);
-      paramView.putString("vkey", ((TicketManager)this.jdField_a_of_type_Acid.a.app.getManager(2)).getSkey(str));
-      OpenAppClient.a(this.jdField_a_of_type_Acid.a, paramView);
-      return;
-    }
-    if (afsf.a(this.jdField_a_of_type_Adaf.a))
-    {
-      AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_Adaf.a, this.jdField_a_of_type_Acid.a.a, zen.a(paramView));
-      return;
-    }
-    if ((this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003)) {
-      this.jdField_a_of_type_Adaf.a.isInMixedMsg = true;
-    }
-    afsf.a(this.jdField_a_of_type_Acid.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_Adaf.a, this.jdField_a_of_type_Acid.a.a, false, true, true, null);
   }
 }
 

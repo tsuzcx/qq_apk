@@ -1,10 +1,8 @@
-public class aswh
+import com.tencent.mobileqq.hotpic.HotPicData;
+
+public abstract interface aswh
 {
-  public static void a(Throwable paramThrowable)
-  {
-    aswy.a("2490056");
-    azlf.a(paramThrowable);
-  }
+  public abstract void a(HotPicData paramHotPicData);
 }
 
 

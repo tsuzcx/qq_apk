@@ -1,16 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
+import java.util.List;
 
-public class avrr
-  implements View.OnClickListener
+public abstract interface avrr
 {
-  public avrr(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.doOnBackPressed();
-  }
+  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rto
-  implements bhyj
+  implements bicq
 {
   public rto(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   

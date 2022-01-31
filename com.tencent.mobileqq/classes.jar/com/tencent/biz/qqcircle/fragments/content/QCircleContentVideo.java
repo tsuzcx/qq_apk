@@ -13,15 +13,18 @@ import com.tencent.biz.qqcircle.widgets.BaseVideoView;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StVideo;
 import tql;
-import txo;
-import tyk;
-import tyy;
-import vrr;
+import tym;
+import tzw;
+import ubj;
+import vwa;
+import vxe;
 
 public class QCircleContentVideo
   extends BaseVideoView
@@ -36,9 +39,9 @@ public class QCircleContentVideo
     super(paramContext);
   }
   
-  private void j()
+  private void k()
   {
-    setOnClickListener(new txo(this));
+    setOnClickListener(new tym(this));
   }
   
   public int a()
@@ -46,10 +49,27 @@ public class QCircleContentVideo
     return 0;
   }
   
+  public long a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return 0L;
+  }
+  
   public SeekBar a()
   {
     if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
       return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.jdField_a_of_type_AndroidWidgetSeekBar;
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
+    if ((localStFeed != null) && (localStFeed.type.get() == 3)) {
+      return localStFeed.video.playUrl.get();
     }
     return null;
   }
@@ -63,7 +83,7 @@ public class QCircleContentVideo
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         str = paramInt2 + ":" + paramInt1;
       }
-      tyk.a(2, 4, 2, this.jdField_a_of_type_Int + 1, paramLong1, paramLong2, true, str, localStFeed, tyk.a(localStFeed));
+      tzw.a(2, 7, 2, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, str, localStFeed, tzw.a(localStFeed));
     }
   }
   
@@ -71,13 +91,13 @@ public class QCircleContentVideo
   {
     FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
     if (localStFeed != null) {
-      tyk.a(2, 5, 2, this.jdField_a_of_type_Int + 1, paramLong1, paramLong2, true, "", localStFeed, tyk.a(localStFeed));
+      tzw.a(2, 5, 2, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, tzw.a(localStFeed));
     }
   }
   
   public void a(Context paramContext, View paramView)
   {
-    j();
+    k();
   }
   
   public void a(Object paramObject) {}
@@ -87,15 +107,15 @@ public class QCircleContentVideo
     this.jdField_a_of_type_Int = paramInt;
     paramObject = (FeedCloudMeta.StFeed)paramObject;
     URLDrawable.URLDrawableOptions localURLDrawableOptions = tql.b(a());
-    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130849999);
+    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850072);
     tql.a(paramObject.cover.picUrl.get(), a(), localURLDrawableOptions, false);
   }
   
-  public void a(vrr paramvrr)
+  public void a(vwa paramvwa)
   {
-    super.a(paramvrr);
+    super.a(paramvwa);
     if ((this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) && (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.f != null)) {
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.f.setText(tyy.a((int)paramvrr.b()));
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.f.setText(ubj.a((int)paramvwa.b()));
     }
     c();
     a().postDelayed(new QCircleContentVideo.2(this), 100L);
@@ -113,11 +133,11 @@ public class QCircleContentVideo
   {
     FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
     if (localStFeed != null) {
-      tyk.a(2, 6, 2, this.jdField_a_of_type_Int + 1, paramLong1, paramLong2, true, "", localStFeed, tyk.a(localStFeed));
+      tzw.a(2, 6, 2, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, tzw.a(localStFeed));
     }
   }
   
-  public void b(vrr paramvrr)
+  public void b(vwa paramvwa)
   {
     this.d = true;
     e();
@@ -142,6 +162,14 @@ public class QCircleContentVideo
     this.d = false;
   }
   
+  public void f()
+  {
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
+    if (localStFeed != null) {
+      tzw.a(2, 4, 2, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, tzw.a(localStFeed));
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
@@ -162,7 +190,7 @@ public class QCircleContentVideo
     if ((this.c) && (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null))
     {
       if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e != null) {
-        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e.setText(tyy.a(paramInt) + " | ");
+        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e.setText(ubj.a(paramInt) + " | ");
       }
       if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
         this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);

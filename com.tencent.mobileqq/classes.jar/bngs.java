@@ -1,1235 +1,729 @@
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.SystemProperties;
-import android.provider.Settings.Global;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bngs
+  extends AsyncTask<Void, Void, Void>
 {
-  public static int a;
-  public static final ArrayList<String> a;
-  public static boolean a;
-  private static String[] a;
-  public static int b;
-  public static boolean b;
-  private static String[] b;
-  public static int c;
-  public static boolean c;
-  public static int d;
-  public static boolean d;
-  public static int e;
-  public static boolean e;
-  public static final int f;
-  public static boolean f;
-  public static int g;
+  double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<PeakActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private boolean jdField_b_of_type_Boolean;
   
-  static
+  public bngs(PeakActivity paramPeakActivity, AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add("SHARP_FS8010".toLowerCase());
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "HUAWEI", "OPPO", "VIVO", "XIAOMI" };
-    jdField_f_of_type_Int = bdkf.a(66.0F);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPeakActivity);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
   }
   
-  public static int a()
+  private int a(int paramInt)
   {
-    return g;
-  }
-  
-  public static int a(Activity paramActivity)
-  {
-    int j = a(paramActivity);
-    paramActivity = paramActivity.getWindow().getDecorView();
-    int i;
-    if (paramActivity == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP decorView=null ");
-      }
-      i = j;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      paramInt = 0;
     }
-    for (;;)
-    {
-      return i;
-      try
-      {
-        paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (paramActivity == null)
-        {
-          if (!QLog.isColorLevel()) {
-            return j;
-          }
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP getRootWindowInsets inserts=null ");
-          return j;
-        }
-        paramActivity = paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP getDisplayCutout cutOut=" + paramActivity);
-        }
-        if (paramActivity != null)
-        {
-          int k = ((Integer)paramActivity.getClass().getMethod("getSafeInsetTop", new Class[0]).invoke(paramActivity, new Object[0])).intValue();
-          i = k;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP top:" + k);
-          return k;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP Exception");
-        }
-      }
-    }
-    return j;
-    return j;
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
-    }
-    return i;
-  }
-  
-  private static int a(String paramString, int paramInt)
-  {
-    try
-    {
-      Object localObject = Class.forName("android.os.SystemProperties");
-      i = paramInt;
-      if (localObject != null)
-      {
-        localObject = ((Class)localObject).getMethod("getInt", new Class[] { String.class, Integer.TYPE });
-        i = paramInt;
-        if (localObject != null)
-        {
-          paramString = ((Method)localObject).invoke(null, new Object[] { paramString, Integer.valueOf(paramInt) });
-          i = paramInt;
-          if ((paramString instanceof Integer)) {
-            i = ((Integer)paramString).intValue();
-          }
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        int i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("LiuHaiUtils", 2, "getSystemPropertyForXiaomi() Exception=" + paramString.getMessage());
-    }
-    return i;
     return paramInt;
   }
   
-  public static void a()
+  private String a(Context paramContext)
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-    jdField_c_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "resetAllLiuHaiStatus!");
+    if (paramContext != null) {
+      return paramContext.getSharedPreferences("mini_launch_ae_tag", 0).getString("mini_launch_ae_app_id", "");
     }
+    return "";
   }
   
-  public static void a(Activity paramActivity)
+  private String a(PublishVideoEntry paramPublishVideoEntry, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + jdField_c_of_type_Boolean + " sHasNotch:" + jdField_a_of_type_Boolean + " sEnableNotchOK:" + jdField_b_of_type_Boolean + " sNotchHeight:" + jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return null;
     }
-    if (!jdField_c_of_type_Boolean)
-    {
-      jdField_b_of_type_Int = mww.b(BaseApplicationImpl.getApplication());
-      jdField_c_of_type_Int = mww.a(BaseApplicationImpl.getApplication());
-      jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      jdField_a_of_type_Boolean = d(paramActivity);
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Int = b(paramActivity);
-      }
-      jdField_c_of_type_Boolean = true;
-      jdField_b_of_type_Boolean = false;
-      if (jdField_a_of_type_Boolean)
-      {
-        jdField_b_of_type_Boolean = k(paramActivity);
-        if (jdField_a_of_type_Int <= 0) {
-          jdField_b_of_type_Boolean = false;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty[after] manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + jdField_c_of_type_Boolean + " sHasNotch:" + jdField_a_of_type_Boolean + " sEnableNotchOK:" + jdField_b_of_type_Boolean + " sNotchHeight:" + jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER, localThrowable);
-        }
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    return jdField_a_of_type_JavaUtilArrayList.contains(str);
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    paramActivity = paramActivity.getWindow().getDecorView();
-    if (paramActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP decorView=null");
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return false;
-        try
-        {
-          paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-          if (paramActivity != null) {
-            break label90;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP getRootWindowInsets inserts=null");
-            return false;
-          }
-        }
-        catch (Exception paramActivity) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP Exception");
-    return false;
-    label90:
-    if (paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]) != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP getDisplayCutout  exists:" + bool);
-      }
-      return bool;
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    do
+    Object localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    for (;;)
     {
       try
       {
-        paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
-        bool1 = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
-        boolean bool2 = bool1;
-        bool2 = bool1;
-      }
-      catch (Exception paramContext)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("LiuHaiUtils", 1, "vivoHasNotchInScreen ret=" + bool1);
-            bool2 = bool1;
-          }
-          return bool2;
+        str = dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.a(paramPublishVideoEntry.mLocalRawVideoDir);
+        File localFile = new File(str);
+        localFile.getParentFile().mkdirs();
+        localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2130845598);
+        if ((TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) || (!paramBoolean)) {
+          break label422;
         }
-        catch (Exception paramContext)
+        i = 1;
+        if (i != 0)
         {
-          boolean bool1;
+          paramPublishVideoEntry = BitmapFactory.decodeFile(paramPublishVideoEntry.doodlePath);
+          localObject2 = Bitmap.createScaledBitmap(paramPublishVideoEntry, paramInt1, paramInt2, true);
+          if (paramPublishVideoEntry != localObject2) {
+            paramPublishVideoEntry.recycle();
+          }
+          localBitmap = Bitmap.createBitmap(((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), Bitmap.Config.ARGB_8888);
+          Canvas localCanvas = new Canvas(localBitmap);
+          localCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, null);
+          if (paramInt1 == 576) {
+            break label428;
+          }
+          f = paramInt1 / 576.0F;
+          paramPublishVideoEntry = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)(((Bitmap)localObject1).getWidth() * f), (int)(f * ((Bitmap)localObject1).getHeight()), true);
+          localCanvas.drawBitmap(paramPublishVideoEntry, 20.0F, ((Bitmap)localObject2).getHeight() - 20 - paramPublishVideoEntry.getHeight(), null);
+          paramPublishVideoEntry.recycle();
+          paramPublishVideoEntry = localBitmap;
+          if (xqw.a(paramPublishVideoEntry, Bitmap.CompressFormat.PNG, 100, localFile.getAbsolutePath())) {
+            continue;
+          }
+          xqw.a(paramPublishVideoEntry);
+          if (((Bitmap)localObject1).isRecycled()) {
+            break label420;
+          }
+          xqw.a((Bitmap)localObject1);
+          break label420;
+        }
+        localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+        localObject2 = new Canvas(localBitmap);
+        if (paramInt1 == 576) {
           continue;
         }
-        paramContext = paramContext;
-        bool1 = false;
+        float f = paramInt1 / 576.0F;
+        paramPublishVideoEntry = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)(((Bitmap)localObject1).getWidth() * f), (int)(f * ((Bitmap)localObject1).getHeight()), true);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("LiuHaiUtils", 1, "vivoHasNotchInScreen Exception", paramContext);
-    return bool1;
+      catch (OutOfMemoryError paramPublishVideoEntry)
+      {
+        String str;
+        Object localObject2;
+        Bitmap localBitmap;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("SaveVideoActivity", 2, paramPublishVideoEntry, new Object[0]);
+        return null;
+        paramPublishVideoEntry = (PublishVideoEntry)localObject1;
+        continue;
+        xqw.a(paramPublishVideoEntry);
+        if (((Bitmap)localObject1).isRecycled()) {
+          continue;
+        }
+        xqw.a((Bitmap)localObject1);
+        return str;
+      }
+      catch (Exception paramPublishVideoEntry)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("SaveVideoActivity", 2, paramPublishVideoEntry, new Object[0]);
+        continue;
+      }
+      ((Canvas)localObject2).drawBitmap(paramPublishVideoEntry, 20.0F, paramInt2 - 20 - paramPublishVideoEntry.getHeight(), null);
+      paramPublishVideoEntry.recycle();
+      paramPublishVideoEntry = localBitmap;
+      continue;
+      label420:
+      return null;
+      label422:
+      int i = 0;
+      continue;
+      label428:
+      paramPublishVideoEntry = (PublishVideoEntry)localObject1;
+    }
   }
   
-  public static boolean a(View paramView1, View paramView2, int paramInt)
+  private void a()
   {
-    if (paramView2 != null)
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {}
+    PeakActivity localPeakActivity;
+    Object localObject2;
+    do
     {
-      if (!b())
+      do
       {
-        if (paramView1 != null) {
-          paramView1.setVisibility(8);
-        }
-        paramView2.setVisibility(8);
-        return false;
-      }
-      ViewGroup.LayoutParams localLayoutParams;
-      if (paramView1 != null)
+        do
+        {
+          return;
+        } while (a());
+        localPeakActivity = (PeakActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject1 = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        localObject2 = localPeakActivity.getIntent();
+      } while (localObject2 == null);
+      this.jdField_a_of_type_JavaLangString = ((Intent)localObject2).getStringExtra("fakeId");
+      localObject2 = SaveVideoActivity.a((AppInterface)localObject1, this.jdField_a_of_type_JavaLangString);
+      if (localObject2 == null)
       {
-        localLayoutParams = paramView1.getLayoutParams();
-        localLayoutParams.height = jdField_a_of_type_Int;
-        paramView1.setLayoutParams(localLayoutParams);
-        if (paramView1.getVisibility() != 0) {
-          paramView1.setVisibility(0);
-        }
+        localPeakActivity.setResult(1, localPeakActivity.getIntent());
+        localPeakActivity.finish();
+        return;
       }
-      int j = bdkf.a();
-      int i = bdkf.b();
-      int k = (int)(j / 9.0F * 16.0F);
-      j = i - k - jdField_a_of_type_Int;
+    } while (a());
+    Object localObject1 = ((PublishVideoEntry)localObject2).mLocalRawVideoDir;
+    Object localObject3 = new File(((PublishVideoEntry)localObject2).mLocalRawVideoDir);
+    if (((File)localObject3).isFile()) {
+      localObject1 = ((File)localObject3).getParent();
+    }
+    localObject1 = dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.a(new File((String)localObject1));
+    if (localObject1 != null)
+    {
+      localObject3 = new File((String)localObject1).getParent();
+      if (localObject3 != null) {
+        xrg.a((String)localObject3);
+      }
+    }
+    new upd().a((PublishVideoEntry)localObject2, (String)localObject1, false, true, new bngt(this, localPeakActivity, (String)localObject1, null, (PublishVideoEntry)localObject2));
+  }
+  
+  private void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    while (new File(this.jdField_b_of_type_JavaLangString).exists()) {
+      return;
+    }
+  }
+  
+  private void a(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((PeakActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isFinishing()))
+    {
+      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      SaveVideoActivity.a((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get(), paramPublishVideoEntry);
+      localActivity.setResult(a(paramInt), localActivity.getIntent());
+      localActivity.finish();
+      if (a(paramInt) == -1) {
+        a(this.jdField_a_of_type_Int);
+      }
+    }
+  }
+  
+  private void a(PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
+  {
+    this.jdField_b_of_type_JavaLangString = com.tencent.mobileqq.shortvideo.ShortVideoUtils.c();
+    if (SaveVideoActivity.a() == null) {
+      SaveVideoActivity.a(xtc.a(paramPeakActivity.getApplicationContext()));
+    }
+    if (SaveVideoActivity.a().a()) {
       if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " version:" + Build.VERSION.SDK_INT + " remainedPixel:" + j + " srcHeight:" + i + " sNotchHeight:" + jdField_a_of_type_Int + " BOTTOM_HEIGHT_LH: " + jdField_f_of_type_Int + " surfaceMaxHeight:" + k);
+        QLog.d("SaveVideoActivity", 2, "generate files mFFmpeg is running!");
       }
-      if (j > jdField_f_of_type_Int)
+    }
+    do
+    {
+      return;
+      try
       {
-        i = j - paramInt;
-        j = (int)(jdField_f_of_type_Int * 1.2F);
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " limitMaxBottom:" + j + " remainedPixel:" + i + " sForceCenter_16_9:" + true);
-        }
-        paramInt = i;
-        if (i > j)
+        if (blat.e(paramPeakActivity.getIntent()))
         {
-          paramInt = (i - jdField_f_of_type_Int) / 2;
-          jdField_d_of_type_Int = paramInt;
-          if (paramView1 != null)
-          {
-            localLayoutParams = paramView1.getLayoutParams();
-            localLayoutParams.height = (jdField_a_of_type_Int + paramInt);
-            paramView1.setLayoutParams(localLayoutParams);
-          }
-          paramInt += jdField_f_of_type_Int;
+          this.jdField_b_of_type_JavaLangString = MiniAppFileManager.getInstance().getTmpPathFromOut(paramString1, a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+          paramPeakActivity = MiniAppFileManager.getInstance().getTmpPathFromOut(paramPublishVideoEntry.thumbPath, a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+          paramPublishVideoEntry.miniThumbPath = paramPeakActivity;
+          bdhb.d(paramPublishVideoEntry.thumbPath, paramPeakActivity);
         }
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = paramInt;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = paramInt;
-        if (paramView2.getVisibility() != 0) {
-          paramView2.setVisibility(0);
-        }
-        return true;
+        paramPeakActivity = new bngv(this, paramPublishVideoEntry, paramString1, this.jdField_b_of_type_JavaLangString);
+        SaveVideoActivity.a().a(this.jdField_b_of_type_JavaLangString);
+        SaveVideoActivity.a().a(paramString2, paramString1, this.jdField_b_of_type_JavaLangString, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, paramPeakActivity);
+        return;
       }
-      paramInt = Math.abs(j - jdField_f_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " sIsIrregularScreen:" + jdField_d_of_type_Boolean + " remainedPixel:" + j + " diffPixels: " + paramInt);
-      }
-      if (paramInt < 5)
-      {
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = j;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = j;
-        if (paramView2.getVisibility() != 0)
-        {
-          paramView2.setVisibility(0);
-          return true;
-        }
-      }
-      else
-      {
-        if (jdField_d_of_type_Boolean)
-        {
-          paramView2.setVisibility(8);
-          return false;
-        }
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = jdField_f_of_type_Int;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = jdField_f_of_type_Int;
-        if (paramView2.getVisibility() != 0) {
-          paramView2.setVisibility(0);
-        }
+      catch (Exception paramPeakActivity) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SaveVideoActivity", 2, "generate files save alum:" + paramPeakActivity);
+  }
+  
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null)) {
+        a(0, SaveVideoActivity.a((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString));
       }
       return true;
     }
     return false;
   }
   
-  public static boolean a(WindowManager.LayoutParams paramLayoutParams)
-  {
-    int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotch apiVersion: " + i);
-    }
-    if (i > 27) {
-      return c(paramLayoutParams);
-    }
-    return b(paramLayoutParams);
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    localDisplay.getMetrics(localDisplayMetrics);
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      paramContext = new DisplayMetrics();
-      localDisplay.getRealMetrics(paramContext);
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "getRealDisplay manufacturer:" + Build.MANUFACTURER + " version:" + Build.VERSION.SDK_INT + " width:" + paramContext.widthPixels + " height:" + paramContext.heightPixels);
-      }
-      return new int[] { paramContext.widthPixels, paramContext.heightPixels };
-    }
-    boolean bool = bhzc.a(paramContext);
-    if (bool) {}
-    for (int i = bhzc.a(paramContext);; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "getRealDisplay[none] manufacturer:" + Build.MANUFACTURER + " width:" + localDisplayMetrics.widthPixels + " height:" + localDisplayMetrics.heightPixels + " mNavigationBarHeight:" + i + " hasNavBar:" + bool);
-      }
-      return new int[] { localDisplayMetrics.widthPixels, i + localDisplayMetrics.heightPixels };
-    }
-  }
-  
-  public static int b(Activity paramActivity)
-  {
-    int k = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight apiVersion: " + k);
-    }
-    int j = a(paramActivity);
-    int i = j;
-    if (j <= 0)
-    {
-      if (k > 27) {
-        i = a(paramActivity);
-      }
-    }
-    else {
-      return i;
-    }
-    return b(paramActivity);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int j = 0;
-    Object localObject = "" + Build.MANUFACTURER;
-    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
-      localObject = b(paramContext);
-    }
-    for (;;)
-    {
-      if (localObject != null) {}
-      for (int i = localObject[0];; i = 0)
-      {
-        if (localObject != null) {
-          j = localObject[1];
-        }
-        int k = a(paramContext);
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "getNotchInScreenHeight manufacturer:" + Build.MANUFACTURER + " height:" + j + " width:" + i + " status:" + k);
-        }
-        return Math.max(j, k);
-        if (((String)localObject).equalsIgnoreCase("OPPO"))
-        {
-          localObject = c(paramContext);
-          break;
-        }
-        if (((String)localObject).equalsIgnoreCase("VIVO"))
-        {
-          localObject = null;
-          break;
-        }
-        if (!((String)localObject).equalsIgnoreCase("XIAOMI")) {
-          break label196;
-        }
-        localObject = d(paramContext);
-        break;
-      }
-      label196:
-      localObject = null;
-    }
-  }
-  
-  public static void b(Activity paramActivity)
-  {
-    paramActivity.getWindow().clearFlags(1024);
-    paramActivity.getWindow().addFlags(2048);
-    paramActivity.getWindow().addFlags(256);
-    paramActivity.getWindow().clearFlags(512);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramActivity = paramActivity.getWindow().getDecorView();
-      paramActivity.setSystemUiVisibility(paramActivity.getSystemUiVisibility() & 0xFFFFFFFB);
-    }
-  }
-  
-  public static boolean b()
-  {
-    return (jdField_a_of_type_Boolean) && (jdField_b_of_type_Boolean) && (jdField_a_of_type_Int > 0);
-  }
-  
-  public static boolean b(Activity paramActivity)
-  {
-    int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreenByVersion version: " + i + " " + str);
-    }
-    boolean bool = false;
-    if (i > 27) {
-      bool = a(paramActivity);
-    }
-    while (i < 26) {
-      return bool;
-    }
-    return b(paramActivity);
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
-      return c(paramContext);
-    }
-    if (str.equalsIgnoreCase("OPPO")) {
-      return d(paramContext);
-    }
-    if (str.equalsIgnoreCase("VIVO")) {
-      return a(paramContext);
-    }
-    if (str.equalsIgnoreCase("XIAOMI")) {
-      return e(paramContext);
-    }
-    return false;
-  }
-  
-  private static boolean b(WindowManager.LayoutParams paramLayoutParams)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiUtils", 2, "color note androidO notch screen compat");
-    }
-    return true;
-  }
-  
   /* Error */
-  private static int[] b(Context paramContext)
-  {
-    // Byte code:
-    //   0: iconst_2
-    //   1: newarray int
-    //   3: astore_1
-    //   4: aload_1
-    //   5: dup
-    //   6: iconst_0
-    //   7: iconst_0
-    //   8: iastore
-    //   9: dup
-    //   10: iconst_1
-    //   11: iconst_0
-    //   12: iastore
-    //   13: pop
-    //   14: aload_0
-    //   15: invokevirtual 281	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   18: ldc_w 482
-    //   21: invokevirtual 288	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ldc_w 484
-    //   29: iconst_0
-    //   30: anewarray 109	java/lang/Class
-    //   33: invokevirtual 113	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   36: aload_0
-    //   37: iconst_0
-    //   38: anewarray 4	java/lang/Object
-    //   41: invokevirtual 119	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 486	[I
-    //   47: checkcast 486	[I
-    //   50: astore_0
-    //   51: aload_0
-    //   52: astore_1
-    //   53: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   56: ifeq +31 -> 87
-    //   59: ldc 95
-    //   61: iconst_1
-    //   62: new 125	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 488
-    //   72: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_0
-    //   76: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 101	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: aload_0
-    //   86: astore_1
-    //   87: aload_1
-    //   88: areturn
-    //   89: astore_0
-    //   90: aload_1
-    //   91: astore_0
-    //   92: aload_0
-    //   93: astore_1
-    //   94: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   97: ifeq -10 -> 87
-    //   100: ldc 95
-    //   102: iconst_1
-    //   103: ldc_w 490
-    //   106: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   109: aload_0
-    //   110: areturn
-    //   111: astore_0
-    //   112: aload_1
-    //   113: astore_0
-    //   114: aload_0
-    //   115: astore_1
-    //   116: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   119: ifeq -32 -> 87
-    //   122: ldc 95
-    //   124: iconst_1
-    //   125: ldc_w 492
-    //   128: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload_0
-    //   132: areturn
-    //   133: astore_0
-    //   134: aload_1
-    //   135: astore_0
-    //   136: aload_0
-    //   137: astore_1
-    //   138: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   141: ifeq -54 -> 87
-    //   144: ldc 95
-    //   146: iconst_1
-    //   147: ldc_w 494
-    //   150: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   153: aload_0
-    //   154: areturn
-    //   155: astore_1
-    //   156: goto -20 -> 136
-    //   159: astore_1
-    //   160: goto -46 -> 114
-    //   163: astore_1
-    //   164: goto -72 -> 92
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	167	0	paramContext	Context
-    //   3	135	1	localObject	Object
-    //   155	1	1	localException	Exception
-    //   159	1	1	localNoSuchMethodException	java.lang.NoSuchMethodException
-    //   163	1	1	localClassNotFoundException	java.lang.ClassNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   14	51	89	java/lang/ClassNotFoundException
-    //   14	51	111	java/lang/NoSuchMethodException
-    //   14	51	133	java/lang/Exception
-    //   53	85	155	java/lang/Exception
-    //   53	85	159	java/lang/NoSuchMethodException
-    //   53	85	163	java/lang/ClassNotFoundException
-  }
-  
-  public static void c(Activity paramActivity)
-  {
-    paramActivity.getWindow().clearFlags(2048);
-    paramActivity.getWindow().addFlags(1024);
-    paramActivity.getWindow().addFlags(256);
-    paramActivity.getWindow().addFlags(512);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramActivity = paramActivity.getWindow().getDecorView();
-      paramActivity.setSystemUiVisibility(paramActivity.getSystemUiVisibility() | 0x4);
-    }
-  }
-  
-  public static boolean c()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean c(Activity paramActivity)
-  {
-    int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotch apiVersion: " + i);
-    }
-    if (i > 27) {
-      return j(paramActivity);
-    }
-    return i(paramActivity);
-  }
-  
-  /* Error */
-  private static boolean c(Context paramContext)
+  private void b()
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 281	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   4: ldc_w 482
-    //   7: invokevirtual 288	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: ldc_w 501
-    //   15: iconst_0
-    //   16: anewarray 109	java/lang/Class
-    //   19: invokevirtual 113	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   22: aload_0
-    //   23: iconst_0
-    //   24: anewarray 4	java/lang/Object
-    //   27: invokevirtual 119	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 292	java/lang/Boolean
-    //   33: invokevirtual 295	java/lang/Boolean:booleanValue	()Z
-    //   36: istore_1
-    //   37: iload_1
-    //   38: istore_2
-    //   39: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   42: ifeq +31 -> 73
-    //   45: ldc 95
-    //   47: iconst_1
-    //   48: new 125	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 503
-    //   58: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: iload_1
-    //   62: invokevirtual 226	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokestatic 101	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   71: iload_1
-    //   72: istore_2
-    //   73: iload_2
-    //   74: ireturn
-    //   75: astore_0
-    //   76: iconst_0
-    //   77: istore_1
-    //   78: iload_1
-    //   79: istore_2
-    //   80: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq -10 -> 73
-    //   86: ldc 95
-    //   88: iconst_1
-    //   89: ldc_w 505
-    //   92: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: iload_1
-    //   96: ireturn
-    //   97: astore_0
-    //   98: iconst_0
-    //   99: istore_1
-    //   100: iload_1
-    //   101: istore_2
-    //   102: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq -32 -> 73
-    //   108: ldc 95
-    //   110: iconst_1
-    //   111: ldc_w 507
-    //   114: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   117: iload_1
-    //   118: ireturn
-    //   119: astore_0
-    //   120: iconst_0
-    //   121: istore_1
-    //   122: iload_1
-    //   123: istore_2
-    //   124: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   127: ifeq -54 -> 73
-    //   130: ldc 95
-    //   132: iconst_1
-    //   133: ldc_w 509
-    //   136: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: iload_1
-    //   140: ireturn
-    //   141: astore_0
-    //   142: goto -20 -> 122
-    //   145: astore_0
-    //   146: goto -46 -> 100
-    //   149: astore_0
-    //   150: goto -72 -> 78
+    //   1: getfield 36	bngs:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   4: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   7: ifnull +13 -> 20
+    //   10: aload_0
+    //   11: getfield 38	bngs:jdField_b_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   14: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   17: ifnonnull +4 -> 21
+    //   20: return
+    //   21: aload_0
+    //   22: invokespecial 193	bngs:a	()Z
+    //   25: ifne -5 -> 20
+    //   28: aload_0
+    //   29: getfield 36	bngs:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   32: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   35: checkcast 195	com/tencent/mobileqq/activity/aio/photo/PeakActivity
+    //   38: astore 13
+    //   40: aload_0
+    //   41: getfield 38	bngs:jdField_b_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   44: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   47: checkcast 197	com/tencent/common/app/AppInterface
+    //   50: astore 12
+    //   52: aload 13
+    //   54: invokevirtual 201	com/tencent/mobileqq/activity/aio/photo/PeakActivity:getIntent	()Landroid/content/Intent;
+    //   57: astore 11
+    //   59: aload 11
+    //   61: ifnull -41 -> 20
+    //   64: aload_0
+    //   65: aload 11
+    //   67: ldc 203
+    //   69: invokevirtual 208	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   72: putfield 210	bngs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   75: aload 12
+    //   77: aload_0
+    //   78: getfield 210	bngs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   81: invokestatic 215	dov/com/tencent/mobileqq/activity/richmedia/SaveVideoActivity:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;)Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
+    //   84: astore 14
+    //   86: aload 14
+    //   88: ifnonnull +20 -> 108
+    //   91: aload 13
+    //   93: iconst_1
+    //   94: aload 13
+    //   96: invokevirtual 201	com/tencent/mobileqq/activity/aio/photo/PeakActivity:getIntent	()Landroid/content/Intent;
+    //   99: invokevirtual 219	com/tencent/mobileqq/activity/aio/photo/PeakActivity:setResult	(ILandroid/content/Intent;)V
+    //   102: aload 13
+    //   104: invokevirtual 222	com/tencent/mobileqq/activity/aio/photo/PeakActivity:finish	()V
+    //   107: return
+    //   108: aload 11
+    //   110: ldc_w 370
+    //   113: iconst_m1
+    //   114: invokevirtual 374	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   117: bipush 22
+    //   119: if_icmpne +63 -> 182
+    //   122: iconst_1
+    //   123: istore_1
+    //   124: aconst_null
+    //   125: astore 11
+    //   127: aload_0
+    //   128: getfield 376	bngs:jdField_b_of_type_Boolean	Z
+    //   131: ifeq +62 -> 193
+    //   134: aload 14
+    //   136: getfield 340	com/tencent/biz/qqstory/database/PublishVideoEntry:videoWidth	I
+    //   139: istore_2
+    //   140: aload 14
+    //   142: getfield 343	com/tencent/biz/qqstory/database/PublishVideoEntry:videoHeight	I
+    //   145: istore_3
+    //   146: iload_1
+    //   147: ifne +40 -> 187
+    //   150: iconst_1
+    //   151: istore 4
+    //   153: aload_0
+    //   154: aload 14
+    //   156: iload_2
+    //   157: iload_3
+    //   158: iload 4
+    //   160: invokespecial 378	bngs:a	(Lcom/tencent/biz/qqstory/database/PublishVideoEntry;IIZ)Ljava/lang/String;
+    //   163: astore 12
+    //   165: aload 12
+    //   167: astore 11
+    //   169: aload 12
+    //   171: ifnonnull +22 -> 193
+    //   174: aload_0
+    //   175: iconst_1
+    //   176: aload 14
+    //   178: invokespecial 273	bngs:a	(ILcom/tencent/biz/qqstory/database/PublishVideoEntry;)V
+    //   181: return
+    //   182: iconst_0
+    //   183: istore_1
+    //   184: goto -60 -> 124
+    //   187: iconst_0
+    //   188: istore 4
+    //   190: goto -37 -> 153
+    //   193: aload_0
+    //   194: invokespecial 193	bngs:a	()Z
+    //   197: ifne -177 -> 20
+    //   200: invokestatic 383	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	()Ldov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;
+    //   203: astore 12
+    //   205: invokestatic 388	bnri:a	()Lbnri;
+    //   208: invokevirtual 391	bnri:a	()Lcom/tencent/maxvideo/mediadevice/AVCodec;
+    //   211: invokevirtual 396	com/tencent/maxvideo/mediadevice/AVCodec:recordSubmit	()I
+    //   214: pop
+    //   215: ldc 183
+    //   217: ldc_w 398
+    //   220: invokestatic 403	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   223: aload_0
+    //   224: invokespecial 193	bngs:a	()Z
+    //   227: ifne -207 -> 20
+    //   230: invokestatic 407	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   233: ifeq +176 -> 409
+    //   236: lconst_0
+    //   237: lstore 7
+    //   239: aload 12
+    //   241: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   244: astore 15
+    //   246: aload 15
+    //   248: monitorenter
+    //   249: aload 12
+    //   251: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   254: invokevirtual 44	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   257: istore 4
+    //   259: lload 7
+    //   261: lstore 5
+    //   263: iload 4
+    //   265: ifne +85 -> 350
+    //   268: lload 7
+    //   270: lstore 5
+    //   272: ldc 183
+    //   274: ldc_w 410
+    //   277: invokestatic 403	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   280: lload 7
+    //   282: lstore 5
+    //   284: invokestatic 416	android/os/SystemClock:elapsedRealtime	()J
+    //   287: lstore 9
+    //   289: lload 7
+    //   291: lstore 5
+    //   293: aload 12
+    //   295: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   298: ldc2_w 417
+    //   301: invokevirtual 422	java/lang/Object:wait	(J)V
+    //   304: lload 7
+    //   306: lstore 5
+    //   308: invokestatic 416	android/os/SystemClock:elapsedRealtime	()J
+    //   311: lload 9
+    //   313: lsub
+    //   314: lstore 7
+    //   316: lload 7
+    //   318: lstore 5
+    //   320: ldc 183
+    //   322: new 348	java/lang/StringBuilder
+    //   325: dup
+    //   326: invokespecial 349	java/lang/StringBuilder:<init>	()V
+    //   329: ldc_w 424
+    //   332: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: lload 7
+    //   337: invokevirtual 427	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   340: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 403	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   346: lload 7
+    //   348: lstore 5
+    //   350: aload 15
+    //   352: monitorexit
+    //   353: ldc 183
+    //   355: ldc_w 429
+    //   358: invokestatic 403	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   361: lload 5
+    //   363: ldc2_w 430
+    //   366: lcmp
+    //   367: ifge +42 -> 409
+    //   370: bipush 20
+    //   372: lload 5
+    //   374: l2i
+    //   375: isub
+    //   376: istore_2
+    //   377: iload_2
+    //   378: istore_1
+    //   379: iload_2
+    //   380: bipush 10
+    //   382: if_icmpge +6 -> 388
+    //   385: bipush 10
+    //   387: istore_1
+    //   388: ldc 183
+    //   390: ldc_w 433
+    //   393: iload_1
+    //   394: invokestatic 439	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   397: invokestatic 442	wxe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   400: iload_1
+    //   401: i2l
+    //   402: lstore 5
+    //   404: lload 5
+    //   406: invokestatic 447	java/lang/Thread:sleep	(J)V
+    //   409: aload_0
+    //   410: invokespecial 193	bngs:a	()Z
+    //   413: ifne -393 -> 20
+    //   416: aload 14
+    //   418: getfield 450	com/tencent/biz/qqstory/database/PublishVideoEntry:saveMode	I
+    //   421: ifeq +11 -> 432
+    //   424: aload 14
+    //   426: getfield 450	com/tencent/biz/qqstory/database/PublishVideoEntry:saveMode	I
+    //   429: putstatic 455	azib:J	I
+    //   432: aload 14
+    //   434: getfield 458	com/tencent/biz/qqstory/database/PublishVideoEntry:backgroundMusicPath	Ljava/lang/String;
+    //   437: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   440: ifne +347 -> 787
+    //   443: aload 14
+    //   445: getfield 458	com/tencent/biz/qqstory/database/PublishVideoEntry:backgroundMusicPath	Ljava/lang/String;
+    //   448: invokestatic 459	bdhb:a	(Ljava/lang/String;)Z
+    //   451: ifeq +336 -> 787
+    //   454: iconst_1
+    //   455: istore_1
+    //   456: new 85	java/io/File
+    //   459: dup
+    //   460: aload 14
+    //   462: getfield 78	com/tencent/biz/qqstory/database/PublishVideoEntry:mLocalRawVideoDir	Ljava/lang/String;
+    //   465: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
+    //   468: astore 15
+    //   470: aload 15
+    //   472: invokestatic 231	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/io/File;)Ljava/lang/String;
+    //   475: astore 12
+    //   477: aload 12
+    //   479: ifnull +28 -> 507
+    //   482: new 85	java/io/File
+    //   485: dup
+    //   486: aload 12
+    //   488: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
+    //   491: invokevirtual 228	java/io/File:getParent	()Ljava/lang/String;
+    //   494: astore 16
+    //   496: aload 16
+    //   498: ifnull +9 -> 507
+    //   501: aload 16
+    //   503: invokestatic 236	xrg:a	(Ljava/lang/String;)Z
+    //   506: pop
+    //   507: invokestatic 464	java/lang/System:currentTimeMillis	()J
+    //   510: lstore 5
+    //   512: new 466	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread
+    //   515: dup
+    //   516: aconst_null
+    //   517: aconst_null
+    //   518: aload 14
+    //   520: getfield 78	com/tencent/biz/qqstory/database/PublishVideoEntry:mLocalRawVideoDir	Ljava/lang/String;
+    //   523: aload 12
+    //   525: aconst_null
+    //   526: invokespecial 469	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:<init>	(Landroid/content/Context;Landroid/os/Handler;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   529: astore 16
+    //   531: aload 16
+    //   533: iconst_0
+    //   534: invokevirtual 471	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:a	(Z)V
+    //   537: aload 16
+    //   539: iconst_0
+    //   540: invokevirtual 473	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:b	(Z)V
+    //   543: aload 16
+    //   545: aload 14
+    //   547: getfield 476	com/tencent/biz/qqstory/database/PublishVideoEntry:isMuteRecordVoice	Z
+    //   550: invokevirtual 478	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:c	(Z)V
+    //   553: aload 14
+    //   555: getfield 482	com/tencent/biz/qqstory/database/PublishVideoEntry:mMosaicMask	[B
+    //   558: ifnull +18 -> 576
+    //   561: aload 16
+    //   563: aload 14
+    //   565: getfield 482	com/tencent/biz/qqstory/database/PublishVideoEntry:mMosaicMask	[B
+    //   568: aload 14
+    //   570: getfield 485	com/tencent/biz/qqstory/database/PublishVideoEntry:mMosaicSize	I
+    //   573: invokevirtual 488	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:a	([BI)V
+    //   576: aload 16
+    //   578: invokevirtual 491	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:run	()V
+    //   581: aload 16
+    //   583: getfield 492	dov/com/tencent/mobileqq/shortvideo/mediadevice/EncodeThread:jdField_a_of_type_Int	I
+    //   586: istore_2
+    //   587: aload_0
+    //   588: invokestatic 464	java/lang/System:currentTimeMillis	()J
+    //   591: lload 5
+    //   593: lsub
+    //   594: l2d
+    //   595: ldc2_w 493
+    //   598: ddiv
+    //   599: putfield 496	bngs:jdField_a_of_type_Double	D
+    //   602: invokestatic 181	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   605: ifeq +49 -> 654
+    //   608: ldc 183
+    //   610: iconst_2
+    //   611: new 348	java/lang/StringBuilder
+    //   614: dup
+    //   615: invokespecial 349	java/lang/StringBuilder:<init>	()V
+    //   618: ldc_w 498
+    //   621: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   624: invokestatic 464	java/lang/System:currentTimeMillis	()J
+    //   627: lload 5
+    //   629: lsub
+    //   630: l2d
+    //   631: ldc2_w 493
+    //   634: ddiv
+    //   635: invokevirtual 501	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   638: ldc_w 503
+    //   641: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   644: iload_2
+    //   645: invokevirtual 506	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   648: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   651: invokestatic 303	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   654: aload_0
+    //   655: invokespecial 193	bngs:a	()Z
+    //   658: ifne -638 -> 20
+    //   661: iload_2
+    //   662: ifeq +130 -> 792
+    //   665: aload 13
+    //   667: invokevirtual 201	com/tencent/mobileqq/activity/aio/photo/PeakActivity:getIntent	()Landroid/content/Intent;
+    //   670: ldc_w 508
+    //   673: iload_2
+    //   674: invokevirtual 512	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   677: pop
+    //   678: aload_0
+    //   679: iconst_1
+    //   680: aload 14
+    //   682: invokespecial 273	bngs:a	(ILcom/tencent/biz/qqstory/database/PublishVideoEntry;)V
+    //   685: return
+    //   686: astore 15
+    //   688: ldc 183
+    //   690: ldc_w 514
+    //   693: aload 15
+    //   695: invokestatic 517	wxe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   698: invokestatic 407	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   701: ifeq -478 -> 223
+    //   704: aload 12
+    //   706: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   709: astore 15
+    //   711: aload 15
+    //   713: monitorenter
+    //   714: aload 12
+    //   716: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   719: iconst_1
+    //   720: invokevirtual 520	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   723: aload 12
+    //   725: getfield 408	dov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   728: invokevirtual 523	java/lang/Object:notifyAll	()V
+    //   731: aload 15
+    //   733: monitorexit
+    //   734: goto -511 -> 223
+    //   737: astore 11
+    //   739: aload 15
+    //   741: monitorexit
+    //   742: aload 11
+    //   744: athrow
+    //   745: astore 12
+    //   747: ldc 183
+    //   749: new 348	java/lang/StringBuilder
+    //   752: dup
+    //   753: invokespecial 349	java/lang/StringBuilder:<init>	()V
+    //   756: ldc_w 525
+    //   759: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   762: aload 12
+    //   764: invokevirtual 528	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   767: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   770: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   773: invokestatic 403	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   776: goto -426 -> 350
+    //   779: astore 11
+    //   781: aload 15
+    //   783: monitorexit
+    //   784: aload 11
+    //   786: athrow
+    //   787: iconst_0
+    //   788: istore_1
+    //   789: goto -333 -> 456
+    //   792: iload_1
+    //   793: ifeq +74 -> 867
+    //   796: aload 15
+    //   798: invokestatic 530	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils:b	(Ljava/io/File;)Ljava/lang/String;
+    //   801: astore 15
+    //   803: aload 12
+    //   805: invokestatic 533	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils:b	(Ljava/lang/String;)J
+    //   808: lstore 5
+    //   810: iconst_1
+    //   811: aload 13
+    //   813: aload 12
+    //   815: aload 14
+    //   817: getfield 458	com/tencent/biz/qqstory/database/PublishVideoEntry:backgroundMusicPath	Ljava/lang/String;
+    //   820: aload 14
+    //   822: getfield 536	com/tencent/biz/qqstory/database/PublishVideoEntry:backgroundMusicOffset	I
+    //   825: lload 5
+    //   827: l2i
+    //   828: aload 15
+    //   830: new 538	bngu
+    //   833: dup
+    //   834: aload_0
+    //   835: aload 12
+    //   837: aload 13
+    //   839: aload 15
+    //   841: aload 11
+    //   843: aload 14
+    //   845: invokespecial 541	bngu:<init>	(Lbngs;Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/PeakActivity;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/database/PublishVideoEntry;)V
+    //   848: invokestatic 546	xtl:a	(ZLandroid/content/Context;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Lxtb;)V
+    //   851: return
+    //   852: astore 11
+    //   854: aload 11
+    //   856: invokevirtual 549	java/lang/Exception:printStackTrace	()V
+    //   859: aload_0
+    //   860: iconst_1
+    //   861: aload 14
+    //   863: invokespecial 273	bngs:a	(ILcom/tencent/biz/qqstory/database/PublishVideoEntry;)V
+    //   866: return
+    //   867: aload_0
+    //   868: aload 13
+    //   870: aload 12
+    //   872: aload 11
+    //   874: aload 14
+    //   876: invokespecial 276	bngs:a	(Lcom/tencent/mobileqq/activity/aio/photo/PeakActivity;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/database/PublishVideoEntry;)V
+    //   879: return
+    //   880: astore 12
+    //   882: goto -473 -> 409
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	paramContext	Context
-    //   36	104	1	bool1	boolean
-    //   38	86	2	bool2	boolean
+    //   0	885	0	this	bngs
+    //   123	670	1	i	int
+    //   139	535	2	j	int
+    //   145	13	3	k	int
+    //   151	113	4	bool	boolean
+    //   261	565	5	l1	long
+    //   237	110	7	l2	long
+    //   287	25	9	l3	long
+    //   57	111	11	localObject1	Object
+    //   737	6	11	localObject2	Object
+    //   779	63	11	str	String
+    //   852	21	11	localException	Exception
+    //   50	674	12	localObject3	Object
+    //   745	126	12	localInterruptedException1	java.lang.InterruptedException
+    //   880	1	12	localInterruptedException2	java.lang.InterruptedException
+    //   38	831	13	localPeakActivity	PeakActivity
+    //   84	791	14	localPublishVideoEntry	PublishVideoEntry
+    //   244	227	15	localObject4	Object
+    //   686	8	15	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   494	88	16	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   0	37	75	java/lang/ClassNotFoundException
-    //   0	37	97	java/lang/NoSuchMethodException
-    //   0	37	119	java/lang/Exception
-    //   39	71	141	java/lang/Exception
-    //   39	71	145	java/lang/NoSuchMethodException
-    //   39	71	149	java/lang/ClassNotFoundException
+    //   205	223	686	java/lang/UnsatisfiedLinkError
+    //   714	734	737	finally
+    //   739	742	737	finally
+    //   272	280	745	java/lang/InterruptedException
+    //   284	289	745	java/lang/InterruptedException
+    //   293	304	745	java/lang/InterruptedException
+    //   308	316	745	java/lang/InterruptedException
+    //   320	346	745	java/lang/InterruptedException
+    //   249	259	779	finally
+    //   272	280	779	finally
+    //   284	289	779	finally
+    //   293	304	779	finally
+    //   308	316	779	finally
+    //   320	346	779	finally
+    //   350	353	779	finally
+    //   747	776	779	finally
+    //   781	784	779	finally
+    //   796	851	852	java/lang/Exception
+    //   404	409	880	java/lang/InterruptedException
   }
   
-  private static boolean c(WindowManager.LayoutParams paramLayoutParams)
+  protected Void a(Void... paramVarArgs)
   {
-    try
-    {
-      Field localField = paramLayoutParams.getClass().getField("layoutInDisplayCutoutMode");
-      localField.setAccessible(true);
-      localField.setInt(paramLayoutParams, 1);
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP true");
-      }
-      return true;
-    }
-    catch (Exception paramLayoutParams)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
-      }
-    }
-    return false;
-  }
-  
-  private static int[] c(Context paramContext)
-  {
-    try
-    {
-      paramContext = "" + SystemProperties.get("ro.oppo.screen.heteromorphism");
-      if (TextUtils.isEmpty(paramContext))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty empty");
-        }
-        return null;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty exp ", paramContext);
-          }
-          paramContext = null;
-          continue;
-          paramContext = paramContext.split(":");
-          if (QLog.isColorLevel()) {
-            QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values=" + paramContext);
-          }
-          if (paramContext.length >= 2)
-          {
-            String[] arrayOfString = paramContext[0].split(",");
-            if (QLog.isColorLevel()) {
-              QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[0] size=" + arrayOfString);
-            }
-            if (arrayOfString.length >= 2) {
-              try
-              {
-                int i = Integer.valueOf(arrayOfString[0]).intValue();
-                int j = Integer.valueOf(arrayOfString[1]).intValue();
-                if (QLog.isColorLevel()) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[0] left=" + i + " top=" + j);
-                }
-                arrayOfString = paramContext[1].split(",");
-                if (QLog.isColorLevel()) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[1] size=" + arrayOfString);
-                }
-                int k;
-                int m;
-                if ((arrayOfString.length >= 2) && (QLog.isColorLevel())) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize values[0]=" + paramContext[0], localNumberFormatException1);
-                }
-              }
-              catch (NumberFormatException localNumberFormatException1)
-              {
-                try
-                {
-                  k = Integer.valueOf(arrayOfString[0]).intValue();
-                  m = Integer.valueOf(arrayOfString[1]).intValue();
-                  if (QLog.isColorLevel()) {
-                    QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[1] right=" + k + " bottom=" + m);
-                  }
-                  return new int[] { k - i, m - j };
-                }
-                catch (NumberFormatException localNumberFormatException2) {}
-                localNumberFormatException1 = localNumberFormatException1;
-              }
-            }
-          }
-        }
-        return null;
-      } while (!QLog.isColorLevel());
-      QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize values[1]=" + paramContext[1], localNumberFormatException2);
-    }
-    return null;
-  }
-  
-  public static void d(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("LiuHaiUtils", 1, "initLiuHaiBarHeight manufacturer:" + Build.MANUFACTURER + " mHasInitHasNotch:" + jdField_e_of_type_Boolean + " mHasNotch:" + jdField_f_of_type_Boolean + " mNotchHeight:" + g);
-    }
-    if (!jdField_e_of_type_Boolean) {
-      jdField_f_of_type_Boolean = false;
-    }
-    try
-    {
-      jdField_f_of_type_Boolean = d(paramActivity);
-      if (jdField_f_of_type_Boolean) {
-        g = b(paramActivity);
-      }
-      jdField_e_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiBarHeight[after] manufacturer:" + Build.MANUFACTURER + " mHasInitHasNotch:" + jdField_e_of_type_Boolean + " mHasNotch:" + jdField_f_of_type_Boolean + " mNotchHeight:" + g);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER, localThrowable);
-        }
-      }
-    }
-  }
-  
-  public static boolean d()
-  {
-    String str = Build.MODEL.toUpperCase();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!Build.MANUFACTURER.equalsIgnoreCase("huawei")) || ((!str.contains("RLI-AN00")) && (!str.contains("RLI-N29")) && (!str.contains("TAH-AN00")) && (!str.contains("TAH-N29")) && (!str.contains("unknownRLl")) && (!str.contains("HWTAH")))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean d(Activity paramActivity)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    jdField_d_of_type_Boolean = false;
-    int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreen version: " + i + " " + str);
-    }
-    if (i < 26) {}
-    do
-    {
-      return bool2;
-      bool2 = bool1;
-      if (i > 27) {
-        bool2 = a(paramActivity);
-      }
-      bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (i >= 26) {
-          bool1 = b(paramActivity);
-        }
-      }
-      if (g())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "hasNotchInScreen manufacturer = " + Build.MANUFACTURER + " ,brand = " + Build.BRAND + " ,model = " + Build.MODEL);
-        }
-        return true;
-      }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("LiuHaiUtils", 1, "hasNotchInScreen haveNotch: " + bool1);
-    return bool1;
-  }
-  
-  private static boolean d(Context paramContext)
-  {
-    if (Build.MODEL.equals("PAAM00")) {
-      return true;
-    }
-    boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "oppoHasNotchInScreen exits:" + bool);
-    }
-    return bool;
-  }
-  
-  private static int[] d(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    int i = paramContext.getResources().getIdentifier("notch_width", "dimen", "android");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize [notch_width]resourceId: " + i);
-    }
-    if (i > 0) {
-      arrayOfInt[0] = paramContext.getResources().getDimensionPixelSize(i);
-    }
-    i = paramContext.getResources().getIdentifier("notch_height", "dimen", "android");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize [notch_height]resourceId: " + i);
-    }
-    if (i > 0) {
-      arrayOfInt[1] = paramContext.getResources().getDimensionPixelSize(i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize width: " + arrayOfInt[0] + " height:" + arrayOfInt[1]);
-    }
-    return arrayOfInt;
-  }
-  
-  public static boolean e()
-  {
-    String str = Build.MODEL.toUpperCase();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!Build.MANUFACTURER.equalsIgnoreCase("samsung")) || (!str.contains("SM-F9000"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean e(Activity paramActivity)
-  {
-    try
-    {
-      paramActivity = paramActivity.getWindow();
-      Window.class.getMethod("addExtraFlags", new Class[] { Integer.TYPE }).invoke(paramActivity, new Object[] { Integer.valueOf(768) });
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableXiaoMiNotch true");
-      }
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableXiaoMiNotch Exception", paramActivity);
-      }
-    }
-    return false;
-  }
-  
-  @TargetApi(17)
-  private static boolean e(Context paramContext)
-  {
-    try
-    {
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        i = Settings.Global.getInt(paramContext.getContentResolver(), "force_black", 0);
-        if (i == 1)
-        {
-          if (!QLog.isColorLevel()) {
-            break label130;
-          }
-          QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen closed: " + i);
-          return false;
-        }
-        i = a("ro.miui.notch", 0);
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen isNotch: " + i);
-        }
-        if (i != 1) {
-          break label130;
-        }
-        return true;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      int i;
-      while (QLog.isColorLevel())
-      {
-        QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen crash: ", paramContext);
-        return false;
-        i = 0;
-      }
-    }
-    label130:
-    return false;
-  }
-  
-  public static boolean f()
-  {
-    return (jdField_f_of_type_Boolean) && (g > 0);
-  }
-  
-  private static boolean f(Activity paramActivity)
-  {
-    try
-    {
-      paramActivity = paramActivity.getWindow().getDecorView();
-      paramActivity.setSystemUiVisibility(0x80 | paramActivity.getSystemUiVisibility());
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableMeizuNotch true");
-      }
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableMeizuNotch Exception", paramActivity);
-      }
-    }
-    return false;
-  }
-  
-  private static boolean g()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
+    if (this.jdField_a_of_type_Boolean) {
+      a();
     }
     for (;;)
     {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (str.equalsIgnoreCase(arrayOfString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+      return null;
+      b();
     }
-  }
-  
-  private static boolean g(Activity paramActivity)
-  {
-    return j(paramActivity);
-  }
-  
-  private static boolean h(Activity paramActivity)
-  {
-    boolean bool = true;
-    if ((paramActivity == null) || (paramActivity.getWindow() == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableHuaWeiNotch invalid param");
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      return bool;
-      Object localObject = paramActivity.getWindow().getAttributes();
-      try
-      {
-        paramActivity = Class.forName("com.huawei.android.view.LayoutParamsEx");
-        localObject = paramActivity.getConstructor(new Class[] { WindowManager.LayoutParams.class }).newInstance(new Object[] { localObject });
-        paramActivity.getMethod("addHwFlags", new Class[] { Integer.TYPE }).invoke(localObject, new Object[] { Integer.valueOf(65536) });
-        if (QLog.isColorLevel())
-        {
-          QLog.i("LiuHaiUtils", 1, "enableHuaWeiNotch true");
-          return true;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "enableHuaWeiNotch Exception", paramActivity);
-        }
-      }
-    }
-    return false;
-  }
-  
-  private static boolean i(Activity paramActivity)
-  {
-    boolean bool = true;
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
-      bool = h(paramActivity);
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (!str.equalsIgnoreCase("OPPO")) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO OPPO=true");
-      return true;
-      if (!str.equalsIgnoreCase("VIVO")) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO VIVO=true");
-    return true;
-    if (str.equalsIgnoreCase("XIAOMI")) {
-      return e(paramActivity);
-    }
-    if (str.equalsIgnoreCase("SAMSUNG")) {
-      return g(paramActivity);
-    }
-    if (str.equalsIgnoreCase("Meizu")) {
-      return f(paramActivity);
-    }
-    return false;
-  }
-  
-  private static boolean j(Activity paramActivity)
-  {
-    WindowManager.LayoutParams localLayoutParams = paramActivity.getWindow().getAttributes();
-    try
-    {
-      Field localField = localLayoutParams.getClass().getField("layoutInDisplayCutoutMode");
-      localField.setAccessible(true);
-      localField.setInt(localLayoutParams, 1);
-      paramActivity.getWindow().setAttributes(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP true");
-      }
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
-      }
-    }
-    return false;
-  }
-  
-  private static boolean k(Activity paramActivity)
-  {
-    int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotchInScreen apiVersion: " + i);
-    }
-    return true;
   }
 }
 

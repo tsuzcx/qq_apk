@@ -1,199 +1,173 @@
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.ark.ArkViewModelBase.ErrorInfo;
-import com.tencent.ark.ark;
-import com.tencent.ark.open.ArkAppInfo.TimeRecord;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.rich.ArkNodeContainer.1;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aynz
-  extends ArkViewModel
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  extends aynq
 {
-  private ayny a;
-  public ArkAppInfo.TimeRecord a;
+  public MiniAppLocalSearchEntity a;
+  protected String a;
+  public int[] a;
   
-  public aynz(aynu paramaynu) {}
-  
-  private void b(String paramString)
+  public aynz(QQAppInterface paramQQAppInterface, int paramInt, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity, String paramString)
   {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_a_of_type_ArrayOfInt = new int[3];
+    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity = paramMiniAppLocalSearchEntity;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  protected long a(String paramString)
   {
-    destroy();
-    this.jdField_a_of_type_Ayny = null;
+    return 0L;
   }
   
-  public void a(String paramString)
+  public CharSequence a()
   {
-    try
-    {
-      new JSONObject(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ArkNodeContainer", 2, String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
-    }
+    return ayvm.b(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName, this.jdField_a_of_type_JavaLangString, 10, true);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public String a()
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
-    }
-    boolean bool1;
-    label72:
-    String str1;
-    String str2;
-    String str3;
-    if (paramInt != 0)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    if ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(310) != null)
     {
-      bool1 = true;
-      if (paramInt != -2) {
-        break label152;
+      if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask != 0) {
+        break label314;
       }
-      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
-      b(str1);
-      b(str2);
-      b(str3);
-      if (paramString2 != null) {
-        break label158;
-      }
-      paramString2 = "";
+      MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1005);
     }
-    label152:
-    label158:
     for (;;)
     {
-      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
-      return;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label72;
-    }
-  }
-  
-  public boolean a(ayny paramayny, String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_Ayny = paramayny;
-    if (this.jdField_a_of_type_Ayny == null) {
-      return false;
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      a(paramString);
-    }
-    return super.init(this.jdField_a_of_type_Ayny.b(), this.jdField_a_of_type_Ayny.d(), this.jdField_a_of_type_Ayny.c(), paramString, anjs.a(), paramFloat);
-  }
-  
-  public void initLibrary()
-  {
-    ark.MediaSetStub(ankm.a);
-  }
-  
-  public void onFirstDrawEnd()
-  {
-    super.onFirstDrawEnd();
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (paramAppPathInfo != null) {}
-    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
-    {
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
-      a(paramAppPathInfo, paramInt, paramString);
-      return;
-    }
-  }
-  
-  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
-  {
-    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
-    {
-      this.mInit = false;
-      this.mLoadFailed = true;
-      paramAppInfo = this.mViewImpl;
-      if (paramAppInfo != null) {
-        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
+      QQAppInterface localQQAppInterface;
+      JSONObject localJSONObject;
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (ayif.b.containsKey(this))
+        {
+          paramView = (ayig)ayif.b.get(this);
+          localJSONObject = new JSONObject();
+        }
       }
-      return true;
+      try
+      {
+        localJSONObject.put("project", aysc.a());
+        localJSONObject.put("event_src", "client");
+        localJSONObject.put("obj_lct", paramView.jdField_a_of_type_Int);
+        localJSONObject.put("get_src", "native");
+        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(aysc.a(UniteSearchActivity.d));
+        if (c())
+        {
+          paramView = "1";
+          aysc.a(null, localReportModelDC02528.ver3(paramView).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
+          ayvm.b(localQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, e(), e());
+          if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+            break label379;
+          }
+          aysc.a(null, 0, this.b, "0X8009D31", 3, 0, null, null);
+          return;
+          label314:
+          MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1027);
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e(h, 2, "e = " + localJSONException);
+          continue;
+          paramView = "0";
+        }
+        label379:
+        if ((this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName.equals(this.jdField_a_of_type_JavaLangString)))
+        {
+          aysc.a(null, 0, this.b, "0X8009D33", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
+          return;
+        }
+        aysc.a(null, 0, this.b, "0X8009D45", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
+      }
     }
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
-    Object localObject2 = this.jdField_a_of_type_Ayny.a();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkNodeContainer.1(this, (String)localObject1));
-      return true;
-    }
-    localObject2 = this.mViewImpl;
-    if (localObject2 != null) {
-      ((ArkViewImplement)localObject2).onLoading();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
-    }
-    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new ayoa(this));
+  }
+  
+  public boolean a()
+  {
     return false;
   }
   
-  public void onLoadReport(int paramInt)
+  public String b()
   {
-    if (this.mAppInfo != null) {
-      anjv.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
   }
   
-  public void onRunAppFailed()
+  public int c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
-    }
-    Object localObject = this.mViewImpl;
-    if (localObject != null)
-    {
-      if (this.jdField_a_of_type_Ayny == null) {
-        break label90;
-      }
-      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131719583);
-    }
-    label90:
-    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_Ayny.b() });; this.mErrorInfo.msg = "")
-    {
-      this.mErrorInfo.canRetry = false;
-      super.onRunAppFailed();
-      return;
-    }
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.desc;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask & 0x1) != 0;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public String d()
+  {
+    return null;
+  }
+  
+  public int e()
+  {
+    return 6;
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+  }
+  
+  public String g()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.iconUrl;
+  }
+  
+  public String h()
+  {
+    return "https://qzonestyle.gtimg.cn/aoi/sola/20190108152813_orkMRcBegl.png";
   }
 }
 

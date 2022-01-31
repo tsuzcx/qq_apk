@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-
-public class ahdq
-  implements View.OnClickListener
+public abstract interface ahdq
 {
-  public ahdq(SearchContactsActivity paramSearchContactsActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

@@ -36,7 +36,7 @@ public class oye
     if (paramMessageRecord == null) {
       return null;
     }
-    MessageRecord localMessageRecord = ayvw.a(-1000);
+    MessageRecord localMessageRecord = azaf.a(-1000);
     MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
     localMessageRecord.msgtype = -1000;
     a(localMessageRecord, paramString, paramLong);
@@ -47,8 +47,8 @@ public class oye
   {
     paramMessageRecord.issend = 1;
     paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = aljq.aQ;
-    paramMessageRecord.senderuin = aljq.aQ;
+    paramMessageRecord.frienduin = alof.aQ;
+    paramMessageRecord.senderuin = alof.aQ;
     paramMessageRecord.istroop = 1008;
     paramMessageRecord.msg = paramString;
     paramMessageRecord.time = paramLong;
@@ -60,7 +60,7 @@ public class oye
     if (paramMessageRecord == null) {
       return false;
     }
-    return TextUtils.equals(paramMessageRecord.frienduin, aljq.aQ);
+    return TextUtils.equals(paramMessageRecord.frienduin, alof.aQ);
   }
   
   public WeishiRedDotInfo a()
@@ -68,9 +68,9 @@ public class oye
     if ((this.a == null) || (this.a.a() == null) || (this.a.a() == null)) {
       return null;
     }
-    if (this.a.a().a().a(aljq.aQ, 1008) > 0)
+    if (this.a.a().a().a(alof.aQ, 1008) > 0)
     {
-      MessageRecord localMessageRecord = this.a.a().b(aljq.aQ, 1008);
+      MessageRecord localMessageRecord = this.a.a().b(alof.aQ, 1008);
       if ((localMessageRecord instanceof MessageForStructing)) {
         return new WeishiRedDotInfo((MessageForStructing)localMessageRecord);
       }
@@ -83,7 +83,7 @@ public class oye
     if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
       return null;
     }
-    MessageRecord localMessageRecord = this.a.a().b(aljq.aQ, 1008);
+    MessageRecord localMessageRecord = this.a.a().b(alof.aQ, 1008);
     if ((localMessageRecord instanceof MessageForStructing)) {
       return (MessageForStructing)localMessageRecord;
     }
@@ -95,7 +95,7 @@ public class oye
     if (this.a == null) {
       return null;
     }
-    MessageRecord localMessageRecord = ayvw.a(-1000);
+    MessageRecord localMessageRecord = azaf.a(-1000);
     localMessageRecord.selfuin = this.a.getCurrentAccountUin();
     a(localMessageRecord, paramString, paramLong);
     return localMessageRecord;
@@ -120,7 +120,7 @@ public class oye
     if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
       return null;
     }
-    Object localObject = this.a.a().b(aljq.aQ, 1008);
+    Object localObject = this.a.a().b(alof.aQ, 1008);
     if ((localObject instanceof MessageForStructing))
     {
       localObject = (MessageForStructing)localObject;
@@ -163,7 +163,7 @@ public class oye
         localObject = this.a.a();
       } while (localObject == null);
       localObject = ((QQMessageFacade)localObject).a();
-    } while ((localObject == null) || (((abol)localObject).a(aljq.aQ, 1008) <= 0));
+    } while ((localObject == null) || (((abta)localObject).a(alof.aQ, 1008) <= 0));
     ThreadManager.post(new WeishiManager.1(this, paramActivity), 8, null, false);
   }
   

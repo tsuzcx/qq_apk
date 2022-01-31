@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
 class vou
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  vou(vot paramvot) {}
+  vou(vot paramvot, vos paramvos) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Vot.jdField_a_of_type_Vos.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Vot.jdField_a_of_type_Vos.a).a(vot.a(this.jdField_a_of_type_Vot));
+    }
+    wxj.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", vot.a(this.jdField_a_of_type_Vot) });
+  }
 }
 
 

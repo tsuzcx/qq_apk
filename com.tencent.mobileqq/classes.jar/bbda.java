@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bbda
-  implements bhqq
+  implements DialogInterface.OnDismissListener
 {
-  public bbda(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public bbda(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TroopAvatarWallEditActivity.a(this.a);
-    return true;
+    TribeVideoListPlayerFragment.a(this.a);
   }
 }
 

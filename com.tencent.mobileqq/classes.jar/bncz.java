@@ -1,15 +1,14 @@
-public class bncz
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bncz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  bncz(bncx parambncx) {}
   
-  public String toString()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    this.a.invalidateSelf();
   }
 }
 

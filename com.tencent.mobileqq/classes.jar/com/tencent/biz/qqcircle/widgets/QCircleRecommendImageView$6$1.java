@@ -1,13 +1,13 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
-import ucj;
+import ufe;
 
 public class QCircleRecommendImageView$6$1
   implements Runnable
 {
-  public QCircleRecommendImageView$6$1(ucj paramucj) {}
+  public QCircleRecommendImageView$6$1(ufe paramufe) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QCircleRecommendImageView$6$1
     for (boolean bool = true;; bool = false)
     {
       QCircleRecommendImageView.a(localQCircleRecommendImageView, bool);
-      QQToast.a(this.a.a.getContext(), alpo.a(2131694770), 0).a();
+      QQToast.a(this.a.a.getContext(), alud.a(2131694772), 0).a();
       return;
     }
   }

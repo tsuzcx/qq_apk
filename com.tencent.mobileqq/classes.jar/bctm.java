@@ -1,6 +1,16 @@
-public abstract interface bctm
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+
+public class bctm
+  implements baez
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public bctm(TroopSignVideoView paramTroopSignVideoView) {}
+  
+  public void a()
+  {
+    if (TroopSignVideoView.a(this.a) != null) {
+      TroopSignVideoView.a(this.a).a();
+    }
+  }
 }
 
 

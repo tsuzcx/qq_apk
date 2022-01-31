@@ -1,17 +1,17 @@
-import java.util.Random;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class anpf
+class anpf
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public static Random a = new Random();
+  anpf(anpd paramanpd, Context paramContext) {}
   
-  public static final float a(float paramFloat)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return anph.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return anpg.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    if (paramBitmap != null) {
+      anpd.a(this.jdField_a_of_type_Anpd, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
+    }
   }
 }
 

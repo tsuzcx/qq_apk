@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajfx;
+import ajkm;
 
 public class RecentPubAccHelper$1
   implements Runnable
 {
-  public RecentPubAccHelper$1(ajfx paramajfx) {}
+  public RecentPubAccHelper$1(ajkm paramajkm) {}
   
   public void run()
   {

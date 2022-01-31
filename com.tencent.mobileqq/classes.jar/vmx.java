@@ -1,48 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class vmx
-  extends uhw<vmu, uow>
+  extends wrj
 {
-  public vmx(vmu paramvmu)
-  {
-    super(paramvmu);
-  }
+  public vmx(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(@NonNull vmu paramvmu, @NonNull uow paramuow)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    if ((paramuow.jdField_a_of_type_Int == 2) || (!paramuow.jdField_a_of_type_JavaLangString.equals(vmu.a(paramvmu))) || (vmu.a(paramvmu) == null) || (vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
-      wsv.b(this.TAG, "ignore this feed info change event. %s.", paramuow.toString());
-    }
-    vnd localvnd;
-    do
+    if ((paramObject instanceof QQUserUIItem))
     {
-      return;
-      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
-      localvnd = paramvmu.a();
-      switch (paramuow.b)
-      {
-      default: 
-        return;
-      }
-      if (paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      vmu.a(paramvmu).a(paramuow.c);
-    } while (localvnd == null);
-    localvnd.a(vmu.a(paramvmu), paramuow.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      paramView = (QQUserUIItem)paramObject;
+      uqn.a(this.a.a, 10, paramView.uid);
+    }
   }
-  
-  public Class acceptEventClass()
-  {
-    return uow.class;
-  }
-  
-  public void b(@NonNull vmu paramvmu, @NonNull uow paramuow) {}
 }
 
 

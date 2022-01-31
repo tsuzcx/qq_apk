@@ -5,6 +5,6 @@
         <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/ihm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r16" />
         <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray3" android:layout_gravity="center_vertical" android:id="@id/bu0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/r1e" />
     </LinearLayout>
-    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray3" android:layout_gravity="center" android:id="@id/kls" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="已隐藏" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray3" android:layout_gravity="center" android:id="@id/kmt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="已隐藏" />
     <ImageView android:layout_gravity="center" style="@style/nc" />
 </LinearLayout>

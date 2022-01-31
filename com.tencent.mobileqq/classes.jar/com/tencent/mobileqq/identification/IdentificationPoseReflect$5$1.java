@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
-import asti;
-import astk;
-import astn;
+import asxr;
+import asxt;
+import asxw;
 import java.util.HashMap;
 
 public class IdentificationPoseReflect$5$1
   implements Runnable
 {
-  public IdentificationPoseReflect$5$1(astk paramastk, HashMap paramHashMap) {}
+  public IdentificationPoseReflect$5$1(asxt paramasxt, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Astk.a.a.a(this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Asxt.a.a.a(this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

@@ -1,10 +1,18 @@
-import java.util.List;
-
-public abstract interface apvz
+public abstract class apvz
 {
-  public abstract void a(List<apvv> paramList, apvv paramapvv);
+  public int b;
   
-  public abstract void c();
+  public apvz(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a() {}
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 

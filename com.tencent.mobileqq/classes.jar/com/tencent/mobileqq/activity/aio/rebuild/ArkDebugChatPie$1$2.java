@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agis;
-import alpo;
+import agnh;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ArkDebugChatPie$1$2
@@ -11,7 +11,7 @@ class ArkDebugChatPie$1$2
   
   public void run()
   {
-    QQToast.a(this.a.this$0.a, alpo.a(2131701029), 0).a();
+    QQToast.a(this.a.this$0.a, alud.a(2131701041), 0).a();
   }
 }
 

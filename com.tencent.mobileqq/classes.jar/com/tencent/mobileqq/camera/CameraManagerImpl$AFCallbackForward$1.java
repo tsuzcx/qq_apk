@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import anwb;
-import anwk;
+import aoak;
+import aoat;
 
 public class CameraManagerImpl$AFCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$AFCallbackForward$1(anwk paramanwk, boolean paramBoolean) {}
+  public CameraManagerImpl$AFCallbackForward$1(aoat paramaoat, boolean paramBoolean) {}
   
   public void run()
   {
-    anwk.a(this.this$0).a(this.a, anwk.a(this.this$0));
+    aoat.a(this.this$0).a(this.a, aoat.a(this.this$0));
   }
 }
 

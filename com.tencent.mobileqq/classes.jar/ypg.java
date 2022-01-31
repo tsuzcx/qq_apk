@@ -1,134 +1,91 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.List;
-import java.util.UUID;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-final class ypg
-  implements bcgo
+public class ypg
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  ypg(List paramList, String paramString, FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, int paramInt, ypq paramypq) {}
+  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public ypg(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    for (;;)
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+    this.b = ((TextView)paramView.findViewById(2131378918));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363647));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
+  {
+    String str;
+    if (paramStQQGroup != null)
     {
-      arjn localarjn;
-      UUID localUUID;
-      try
-      {
-        Object localObject;
-        if (!paramJSONObject.isNull("dirs"))
-        {
-          paramBundle = paramJSONObject.getJSONArray("dirs");
-          paramInt = 0;
-          if (paramInt < paramBundle.length())
-          {
-            localObject = new arjn();
-            ((arjn)localObject).jdField_a_of_type_Boolean = true;
-            ((arjn)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
-        {
-          JSONArray localJSONArray = paramJSONObject.getJSONArray("files");
-          paramInt = 0;
-          if (paramInt < localJSONArray.length())
-          {
-            localarjn = new arjn();
-            paramJSONObject = localJSONArray.getJSONObject(paramInt);
-            localarjn.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-            localarjn.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-            if (this.jdField_a_of_type_JavaLangString.equals("/"))
-            {
-              paramJSONObject = "/" + localarjn.jdField_a_of_type_JavaLangString;
-              localUUID = UUID.nameUUIDFromBytes((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath + this.jdField_a_of_type_JavaLangString + localarjn.jdField_a_of_type_JavaLangString).getBytes());
-              localObject = bbra.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath);
-              if (localObject == null) {
-                break label690;
-              }
-              paramBundle = (Bundle)localObject;
-              if (((String)localObject).length() == 0) {
-                break label690;
-              }
-              paramBundle = UUID.nameUUIDFromBytes((paramBundle + this.jdField_a_of_type_JavaLangString + localarjn.jdField_a_of_type_JavaLangString).getBytes());
-              localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
-              bbpe localbbpe = ((TroopFileTransferManager)localObject).a(localUUID);
-              if (localbbpe != null)
-              {
-                paramBundle = arni.a(localbbpe);
-                paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-                paramBundle.zipInnerPath = paramJSONObject;
-                paramBundle.isZipInnerFile = true;
-                paramBundle.zipType = this.jdField_a_of_type_Int;
-                paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-                paramJSONObject = paramBundle;
-                paramJSONObject.isZipInnerFile = true;
-                localarjn.b = paramJSONObject.nSessionId;
-                this.jdField_a_of_type_JavaUtilList.add(localarjn);
-                paramInt += 1;
-              }
-            }
-            else
-            {
-              paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localarjn.jdField_a_of_type_JavaLangString;
-              continue;
-            }
-            paramBundle = ((TroopFileTransferManager)localObject).a(paramBundle);
-            if (paramBundle == null) {
-              break label531;
-            }
-            paramBundle = arni.a(paramBundle);
-            paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            paramBundle.zipInnerPath = paramJSONObject;
-            paramBundle.isZipInnerFile = true;
-            paramBundle.zipType = this.jdField_a_of_type_Int;
-            paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            paramJSONObject = paramBundle;
-            continue;
-          }
-        }
-        paramBundle = new FileManagerEntity();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
+      this.b.setText(paramStQQGroup.memberNum.get() + alud.a(2131713766));
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      if (paramStQQGroup.joinState.get() != 1) {
+        break label143;
       }
-      catch (JSONException paramJSONObject)
+      str = alud.a(2131713762);
+      localButton.setText(str);
+      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
       {
-        paramJSONObject.printStackTrace();
-        if (this.jdField_a_of_type_Ypq != null) {
-          this.jdField_a_of_type_Ypq.a(this.jdField_a_of_type_JavaUtilList);
+        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
+        if (paramStQQGroup.joinState.get() != 1) {
+          break label152;
         }
-        return;
       }
-      label531:
-      paramBundle.fileName = localarjn.jdField_a_of_type_JavaLangString;
-      paramBundle.fileSize = localarjn.jdField_a_of_type_Long;
-      paramBundle.nSessionId = arni.a().longValue();
-      paramBundle.strTroopFilePath = localUUID.toString();
-      paramBundle.strTroopFileID = localUUID.toString();
-      paramBundle.zipInnerPath = paramJSONObject;
-      paramBundle.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-      paramBundle.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      paramBundle.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-      paramBundle.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-      paramBundle.cloudType = 4;
-      paramBundle.isZipInnerFile = true;
-      paramBundle.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-      paramBundle.zipType = this.jdField_a_of_type_Int;
-      paramBundle.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBundle);
-      paramJSONObject = paramBundle;
-      continue;
-      label690:
-      paramBundle = "0";
     }
+    label143:
+    label152:
+    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
+    {
+      zaj.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
+      return;
+      str = alud.a(2131713761);
+      break;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
+    {
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() == 1)
+      {
+        localObject = aepi.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
+        ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
+        ((Intent)localObject).putExtra("uintype", 1);
+        ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
+        paramView.getContext().startActivity((Intent)localObject);
+      }
+    }
+    else {
+      return;
+    }
+    Object localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
+    ((Bundle)localObject).putInt("t_s_f", 1001);
+    bcpx.a(paramView.getContext(), (Bundle)localObject, 2);
   }
 }
 

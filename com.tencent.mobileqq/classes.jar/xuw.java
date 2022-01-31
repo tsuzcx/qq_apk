@@ -1,37 +1,16 @@
-import android.os.CountDownTimer;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xuw
-  extends CountDownTimer
+class xuw
+  implements View.OnClickListener
 {
-  public xuw(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
-  {
-    super(paramLong1, paramLong2);
-  }
+  xuw(xus paramxus) {}
   
-  public void onFinish()
+  public void onClick(View paramView)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
-    {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+    wxj.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.a.dismiss();
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class ajbd
+class ajbd
+  implements alqc
 {
-  public long a;
-  public MessageRecord a;
-  public String a;
-  public byte[] a;
+  ajbd(ajaz paramajaz, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, alpy paramalpy) {}
   
-  public ajbd(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Alpy.d(this);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+    }
   }
 }
 

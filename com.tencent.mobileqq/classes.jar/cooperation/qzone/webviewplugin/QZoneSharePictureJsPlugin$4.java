@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import bjsx;
+import bjxe;
 
 public class QZoneSharePictureJsPlugin$4
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$4(bjsx parambjsx, String[] paramArrayOfString) {}
+  public QZoneSharePictureJsPlugin$4(bjxe parambjxe, String[] paramArrayOfString) {}
   
   public void run()
   {
-    bjsx.c(this.this$0, this.a[0]);
+    bjxe.c(this.this$0, this.a[0]);
   }
 }
 

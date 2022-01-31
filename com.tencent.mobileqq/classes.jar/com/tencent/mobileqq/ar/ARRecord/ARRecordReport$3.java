@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import ampv;
-import azmz;
+import amuk;
+import azri;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARRecordReport$3
   implements Runnable
 {
-  public ARRecordReport$3(ampv paramampv, int paramInt, long paramLong) {}
+  public ARRecordReport$3(amuk paramamuk, int paramInt, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    azmz.a(BaseApplication.getContext()).a("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
+    azri.a(BaseApplication.getContext()).a("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
   }
 }
 

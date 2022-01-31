@@ -42,7 +42,7 @@ public class pei
     do
     {
       return 0L;
-      localObject = bjxj.a((AppRuntime)localObject, true, true);
+      localObject = bkbq.a((AppRuntime)localObject, true, true);
     } while (localObject == null);
     return ((SharedPreferences)localObject).getLong("event_simple_p_info_f_num2", 0L);
   }
@@ -52,7 +52,7 @@ public class pei
     if (paramString == null) {
       return "";
     }
-    return bhma.a(paramString);
+    return bhqh.a(paramString);
   }
   
   private String a(List<String> paramList)
@@ -109,11 +109,11 @@ public class pei
     do
     {
       return;
-      localObject = bjxj.a((AppRuntime)localObject, true, true);
+      localObject = bkbq.a((AppRuntime)localObject, true, true);
     } while (localObject == null);
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putLong("event_simple_p_info_f_num2", paramInt);
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
   
   private void a(String paramString, List<String> paramList, HashMap<String, String> paramHashMap)
@@ -215,7 +215,7 @@ public class pei
     if (paramInt < this.h.size())
     {
       HashMap localHashMap = (HashMap)this.h.get(paramInt);
-      azmz.a(null).a(this.jdField_a_of_type_JavaLangString, "event_simple_p_info", false, 1000L, 1000L, localHashMap, null);
+      azri.a(null).a(this.jdField_a_of_type_JavaLangString, "event_simple_p_info", false, 1000L, 1000L, localHashMap, null);
     }
   }
   
@@ -249,7 +249,7 @@ public class pei
     for (;;)
     {
       return;
-      localObject1 = ((amjk)localObject1).a(false);
+      localObject1 = ((amnz)localObject1).a(false);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
@@ -258,8 +258,8 @@ public class pei
           Object localObject2 = (RecentUser)((Iterator)localObject1).next();
           if (localObject2 != null)
           {
-            localObject2 = ajeu.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
-            localObject2 = ajeu.a().a((String)localObject2);
+            localObject2 = ajjj.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
+            localObject2 = ajjj.a().a((String)localObject2);
             if ((localObject2 != null) && ((((RecentBaseData)localObject2).mMenuFlag & 0xF0) == 32)) {
               if (((RecentBaseData)localObject2).a() == 1) {
                 this.e.add(((RecentBaseData)localObject2).a());
@@ -309,18 +309,18 @@ public class pei
   
   private void h()
   {
-    Object localObject1 = (almv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+    Object localObject1 = (alrk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
     if (localObject1 == null) {}
     for (;;)
     {
       return;
-      localObject1 = (List)((almv)localObject1).a().clone();
+      localObject1 = (List)((alrk)localObject1).a().clone();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          Object localObject2 = (awbv)((Iterator)localObject1).next();
+          Object localObject2 = (awge)((Iterator)localObject1).next();
           if (localObject2 != null)
           {
             localObject2 = (DiscussionInfo)localObject2;
@@ -335,10 +335,10 @@ public class pei
   
   private void i()
   {
-    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localaloz != null)
+    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (localalto != null)
     {
-      localObject1 = localaloz.c();
+      localObject1 = localalto.c();
       if ((localObject1 != null) && (((List)localObject1).size() != 0)) {}
     }
     else
@@ -349,11 +349,11 @@ public class pei
     int i = 0;
     while (((Iterator)localObject1).hasNext())
     {
-      Object localObject2 = (awbv)((Iterator)localObject1).next();
+      Object localObject2 = (awge)((Iterator)localObject1).next();
       if (localObject2 != null)
       {
         localObject2 = (Groups)localObject2;
-        ArrayList localArrayList = localaloz.a(String.valueOf(((Groups)localObject2).group_id));
+        ArrayList localArrayList = localalto.a(String.valueOf(((Groups)localObject2).group_id));
         if ((localArrayList != null) && (localArrayList.size() > 0))
         {
           Object localObject3 = new ArrayList(localArrayList);
@@ -362,12 +362,12 @@ public class pei
           localObject3 = ((List)localObject3).iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            awbv localawbv = (awbv)((Iterator)localObject3).next();
-            if (localawbv != null)
+            awge localawge = (awge)((Iterator)localObject3).next();
+            if (localawge != null)
             {
-              Friends localFriends = (Friends)localawbv;
-              localArrayList.add(((Friends)localawbv).uin);
-              if (localaloz.a(localFriends.uin) != null) {
+              Friends localFriends = (Friends)localawge;
+              localArrayList.add(((Friends)localawge).uin);
+              if (localalto.a(localFriends.uin) != null) {
                 this.jdField_a_of_type_JavaUtilArrayList.add(localFriends.uin);
               }
             }

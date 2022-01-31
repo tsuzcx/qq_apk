@@ -1,61 +1,49 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class uyt
-  extends unk<uyu>
+  extends JobSegment<List<vlp>, List<vlp>>
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  private final vlo a;
   
-  static
+  public uyt()
   {
-    jdField_a_of_type_JavaLangString = ume.a("StoryGroupSvc.convert_group_id");
+    this(new uyu());
   }
   
-  public String a()
+  public uyt(vlo paramvlo)
   {
-    return jdField_a_of_type_JavaLangString;
+    this.a = paramvlo;
   }
   
-  public unf a(byte[] paramArrayOfByte)
+  protected void a(JobContext paramJobContext, List<vlp> paramList)
   {
-    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
-    try
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
-      return new uyu(localRspConvertGroupId);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wsv.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
-    localReqConvertGroupId.convert_from.set(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
-        localGroupId.group_uin.set(Long.valueOf(str).longValue());
-        localReqConvertGroupId.group_req_list.add(localGroupId);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
       }
+      notifyResult(paramList);
+      return;
     }
-    return localReqConvertGroupId.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+    }
+    paramJobContext = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      paramJobContext.add(((vlp)localIterator.next()).b);
+    }
+    paramJobContext = new vlj(paramJobContext);
+    if (this.a != null) {
+      paramJobContext.a = this.a;
+    }
+    paramJobContext.a(new uyv(this, paramList));
+    paramJobContext.b();
   }
 }
 

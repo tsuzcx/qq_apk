@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public class nfi
   extends WebViewPlugin
 {
-  public alkr a;
-  bdfq jdField_a_of_type_Bdfq;
+  public alpg a;
+  bdjz jdField_a_of_type_Bdjz;
   String jdField_a_of_type_JavaLangString = null;
-  ymk jdField_a_of_type_Ymk = null;
-  bdfq b = null;
+  yqz jdField_a_of_type_Yqz = null;
+  bdjz b = null;
   
   public nfi()
   {
-    this.jdField_a_of_type_Alkr = new nfj(this);
+    this.jdField_a_of_type_Alpg = new nfj(this);
     this.mPluginNameSpace = "lebaPlugin";
   }
   
@@ -28,11 +28,11 @@ public class nfi
     do
     {
       return;
-      if (this.jdField_a_of_type_Bdfq == null) {
-        this.jdField_a_of_type_Bdfq = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, paramInt, paramLong, paramString1, paramString2);
+      if (this.jdField_a_of_type_Bdjz == null) {
+        this.jdField_a_of_type_Bdjz = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, paramInt, paramLong, paramString1, paramString2);
       }
-    } while (this.jdField_a_of_type_Bdfq.isShowing());
-    this.jdField_a_of_type_Bdfq.show();
+    } while (this.jdField_a_of_type_Bdjz.isShowing());
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -59,7 +59,7 @@ public class nfi
           paramString2.putString("msg", paramJsBridgeListener);
           paramString2.putString("callback", paramString1);
           paramString2.putInt("dialogType", 1);
-          this.jdField_a_of_type_Ymk.a(18, paramString2, this.jdField_a_of_type_Alkr);
+          this.jdField_a_of_type_Yqz.a(18, paramString2, this.jdField_a_of_type_Alpg);
         }
       }
       catch (JSONException paramJsBridgeListener)
@@ -81,7 +81,7 @@ public class nfi
           paramString1.putInt("reqCode", 10002);
           paramString1.putLong("uiResId", l);
           paramString1.putString("callback", paramJsBridgeListener);
-          this.jdField_a_of_type_Ymk.a(18, paramString1, this.jdField_a_of_type_Alkr);
+          this.jdField_a_of_type_Yqz.a(18, paramString1, this.jdField_a_of_type_Alpg);
         }
         catch (JSONException paramJsBridgeListener)
         {
@@ -94,7 +94,7 @@ public class nfi
           if (!TextUtils.isEmpty(paramJsBridgeListener))
           {
             if (this.mRuntime.a() != null) {}
-            ayrd.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
+            ayvm.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
           }
         }
         catch (JSONException paramJsBridgeListener)
@@ -108,17 +108,17 @@ public class nfi
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Ymk = ymk.a();
-    this.jdField_a_of_type_Ymk.a();
+    this.jdField_a_of_type_Yqz = yqz.a();
+    this.jdField_a_of_type_Yqz.a();
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Ymk != null) {
-      this.jdField_a_of_type_Ymk.b();
+    if (this.jdField_a_of_type_Yqz != null) {
+      this.jdField_a_of_type_Yqz.b();
     }
-    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
-      this.jdField_a_of_type_Bdfq.dismiss();
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.dismiss();
     }
     super.onDestroy();
   }

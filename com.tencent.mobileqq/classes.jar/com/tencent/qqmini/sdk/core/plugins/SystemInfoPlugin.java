@@ -9,12 +9,12 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bgho;
-import bgie;
-import bgjw;
-import bgkd;
-import bgki;
-import bglo;
+import bglv;
+import bgml;
+import bgod;
+import bgok;
+import bgop;
+import bgpv;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
@@ -33,7 +33,7 @@ public class SystemInfoPlugin
   public static final String TAG = "SystemInfoPlugin";
   private MiniAppProxy mMiniAppProxy;
   
-  public String handleGetSystemInfo(bgkd parambgkd)
+  public String handleGetSystemInfo(bgok parambgok)
   {
     int n = 1;
     int m = 0;
@@ -42,7 +42,7 @@ public class SystemInfoPlugin
     if ((this.mContext == null) || (localObject3 == null))
     {
       QMLog.e("SystemInfoPlugin", "getSystemInfo error,context is NULL");
-      localObject1 = parambgkd.b();
+      localObject1 = parambgok.b();
       return localObject1;
     }
     label84:
@@ -72,8 +72,8 @@ public class SystemInfoPlugin
       i2 = (int)(Math.round(DisplayUtil.getStatusBarHeight(this.mContext)) / d);
       i3 = (int)(DisplayUtil.dip2px(this.mContext, 44.0F) / d + 0.5D);
       k = (int)(DisplayUtil.dip2px(this.mContext, 54.0F) / d + 0.5D);
-      localObject1 = bgie.a(this.mMiniAppContext).a();
-      if (bglo.a((String)localObject1)) {
+      localObject1 = bgml.a(this.mMiniAppContext).a();
+      if (bgpv.a((String)localObject1)) {
         break label679;
       }
       label252:
@@ -121,18 +121,18 @@ public class SystemInfoPlugin
             ((JSONObject)localObject1).put("fontSizeSetting", 16);
             ((JSONObject)localObject1).put("SDKVersion", this.mMiniAppContext.a());
             ((JSONObject)localObject1).put("AppPlatform", this.mMiniAppProxy.getAppName());
-            localObject3 = bgki.a(parambgkd.a, (JSONObject)localObject1).toString();
+            localObject3 = bgop.a(parambgok.a, (JSONObject)localObject1).toString();
             localObject1 = localObject3;
-            if (!"getSystemInfo".equals(parambgkd.a)) {
+            if (!"getSystemInfo".equals(parambgok.a)) {
               break;
             }
-            parambgkd.a((String)localObject3);
+            parambgok.a((String)localObject3);
             return localObject3;
           }
           catch (Exception localException)
           {
             QMLog.e("SystemInfoPlugin", "getSystemInfo exception: " + new Throwable(localException));
-            return parambgkd.b();
+            return parambgok.b();
           }
         }
         Object localObject2 = this.mContext.getResources().getDisplayMetrics();

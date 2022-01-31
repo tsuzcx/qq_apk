@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bgiy;
-import bgkd;
+import bgnf;
+import bgok;
 import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class StorageJsPlugin$2
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, bgkd parambgkd) {}
+  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, bgok parambgok) {}
   
   public String run()
   {

@@ -241,7 +241,7 @@ public class mbw
   
   public static void a(ViewGroup paramViewGroup)
   {
-    RedPacketGameSmallScreenView localRedPacketGameSmallScreenView = (RedPacketGameSmallScreenView)paramViewGroup.findViewById(2131372813);
+    RedPacketGameSmallScreenView localRedPacketGameSmallScreenView = (RedPacketGameSmallScreenView)paramViewGroup.findViewById(2131372839);
     if (localRedPacketGameSmallScreenView != null)
     {
       localRedPacketGameSmallScreenView.a();
@@ -283,7 +283,7 @@ public class mbw
   
   public RedPacketGameSmallScreenView a(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    RedPacketGameSmallScreenView localRedPacketGameSmallScreenView = (RedPacketGameSmallScreenView)paramViewGroup.findViewById(2131372813);
+    RedPacketGameSmallScreenView localRedPacketGameSmallScreenView = (RedPacketGameSmallScreenView)paramViewGroup.findViewById(2131372839);
     if (localRedPacketGameSmallScreenView == null)
     {
       localRedPacketGameSmallScreenView = new RedPacketGameSmallScreenView(paramViewGroup.getContext());
@@ -322,9 +322,9 @@ public class mbw
     Object localObject;
     if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService != null) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131375460);
+      localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131375511);
       if (localObject != null) {
-        ((View)localObject).findViewById(2131375464).clearAnimation();
+        ((View)localObject).findViewById(2131375515).clearAnimation();
       }
     }
     if (this.jdField_a_of_type_JavaUtilTimer != null)
@@ -400,7 +400,7 @@ public class mbw
     if ((localObject != null) && (QLog.isColorLevel())) {
       QLog.d("SmallScreenVideoController", 2, "onCreateUI SessionType = " + ((lid)localObject).jdField_d_of_type_Int);
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = mww.a(this.jdField_a_of_type_AndroidContentContext, 2130841599);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = mww.a(this.jdField_a_of_type_AndroidContentContext, 2130841612);
     if (this.jdField_a_of_type_ComTencentAvCameraCameraUtils == null)
     {
       this.jdField_a_of_type_ComTencentAvCameraCameraUtils = CameraUtils.a(this.jdField_a_of_type_AndroidContentContext);
@@ -425,11 +425,11 @@ public class mbw
       }
       if ((localObject != null) && (((lid)localObject).jdField_g_of_type_Int != 4) && (this.jdField_c_of_type_Int == 1) && (!this.jdField_a_of_type_Boolean))
       {
-        int i = bdyi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), 6, true, null);
+        int i = becr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), 6, true, null);
         if (i > 0)
         {
-          int j = bdyi.a();
-          localObject = bdyi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, i, j, null);
+          int j = becr.a();
+          localObject = becr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, i, j, null);
           if (localObject != null)
           {
             localObject = new File((String)localObject);

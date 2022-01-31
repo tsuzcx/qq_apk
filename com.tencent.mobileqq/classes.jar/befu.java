@@ -1,7 +1,14 @@
-public class befu
+import android.view.animation.Transformation;
+
+class befu
+  implements bdoh<Integer>
 {
-  public static String a;
-  public static boolean a;
+  befu(beft parambeft) {}
+  
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  {
+    this.a.b(paramInteger.intValue());
+  }
 }
 
 

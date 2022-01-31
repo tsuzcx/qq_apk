@@ -21,9 +21,9 @@ class psm
       this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
       this.a.b.set(0.0F, 0.0F, getWidth() * psl.a(this.a) / 100.0F, getHeight());
       this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(psl.a(this.a)));
-      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, aekt.a(2.0F, getResources()), aekt.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, aepi.a(2.0F, getResources()), aepi.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
       this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(psl.b(this.a)));
-      paramCanvas.drawRoundRect(this.a.b, aekt.a(2.0F, getResources()), aekt.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(this.a.b, aepi.a(2.0F, getResources()), aepi.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
     }
     super.draw(paramCanvas);
   }

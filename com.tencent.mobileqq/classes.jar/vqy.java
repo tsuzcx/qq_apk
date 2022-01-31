@@ -1,19 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface vqy
+class vqy
+  implements Animation.AnimationListener
 {
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
+  vqy(vqu paramvqu) {}
   
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
   
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr, int paramInt, Object paramObject);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr, boolean paramBoolean);
-  
-  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr);
-  
-  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, vrr paramvrr);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

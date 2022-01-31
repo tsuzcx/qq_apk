@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
 public class atrd
-  extends amky
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public atrd(LocationDialogUtil.5 param5) {}
   
-  public atrd(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
-    }
+    this.a.a.finish();
   }
 }
 

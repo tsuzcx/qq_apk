@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class atmo
-  implements DialogInterface.OnClickListener
+class atmo
+  implements EIPCResultCallback
 {
-  atmo(BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  atmo(atmm paramatmm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    atln.a(paramDialogInterface).a.a(3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    atlh localatlh = new atlh(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    atln.a(paramDialogInterface).a(localatlh, false);
-    azmj.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(atmm.a(this.a))) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(atmm.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,20 @@
-public abstract interface aekp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+
+public class aekp
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  public aekp(UpgradeActivity paramUpgradeActivity) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
+  }
 }
 
 

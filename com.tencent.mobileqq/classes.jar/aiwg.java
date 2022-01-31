@@ -1,35 +1,15 @@
-public abstract class aiwg
-  extends bdvu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+
+public class aiwg
+  implements DialogInterface.OnClickListener
 {
-  private bdvu a;
+  public aiwg(RedPacketPopFragment paramRedPacketPopFragment) {}
   
-  public aiwg(bdvu parambdvu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = parambdvu;
-  }
-  
-  public void onDoneFile(bdvv parambdvv)
-  {
-    super.onDoneFile(parambdvv);
-    if (this.a != null) {
-      this.a.onDoneFile(parambdvv);
-    }
-  }
-  
-  public void onProgress(bdvv parambdvv)
-  {
-    super.onProgress(parambdvv);
-    if (this.a != null) {
-      this.a.onProgress(parambdvv);
-    }
-  }
-  
-  public boolean onStart(bdvv parambdvv)
-  {
-    if (this.a != null) {
-      this.a.onStart(parambdvv);
-    }
-    return super.onStart(parambdvv);
+    paramDialogInterface.dismiss();
   }
 }
 

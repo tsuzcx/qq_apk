@@ -1,15 +1,37 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ahdb
+public class ahdb
+  implements akcn
 {
-  public int a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
+  public ahdb(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  ahdb(ahcz paramahcz) {}
+  public void a(int paramInt)
+  {
+    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
+      return;
+    }
+  }
+  
+  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      return;
+    }
+  }
 }
 
 

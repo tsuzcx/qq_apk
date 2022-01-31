@@ -1,20 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-import dov.com.qq.im.aeeditor.view.ClipConstant.Anchor;
-import dov.com.qq.im.aeeditor.view.EditorClipView;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import java.lang.ref.WeakReference;
 
 public class blhm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements VideoShelfEngine.Callback
 {
-  public blhm(AEEditorImageClipFragment paramAEEditorImageClipFragment, EditorClipView paramEditorClipView) {}
+  private WeakReference<AEVideoShelfPreviewFragment> a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public blhm(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.b(ClipConstant.Anchor.BOTTOM.v);
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.a(0.0F, -(i - AEEditorImageClipFragment.c(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment)));
-    AEEditorImageClipFragment.e(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment, i);
+    this.a = new WeakReference(paramAEVideoShelfPreviewFragment);
+  }
+  
+  public void onCancelCompleted()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.e((AEVideoShelfPreviewFragment)this.a.get());
+    }
+  }
+  
+  public void onCompleted()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AEVideoShelfPreviewFragment)this.a.get()).onCompletion();
+    }
+  }
+  
+  public void onError(int paramInt1, int paramInt2, String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.a((AEVideoShelfPreviewFragment)this.a.get(), paramInt1, paramInt2, paramString);
+    }
+  }
+  
+  public void onProgress(int paramInt)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.b((AEVideoShelfPreviewFragment)this.a.get(), paramInt);
+    }
+  }
+  
+  public void onStartGenerate()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.d((AEVideoShelfPreviewFragment)this.a.get());
+    }
   }
 }
 

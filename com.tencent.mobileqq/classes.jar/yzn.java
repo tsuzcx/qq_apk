@@ -1,40 +1,21 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class yzn
-  implements aoec
+class yzn
+  implements Animation.AnimationListener
 {
-  public yzn(NewerGuidePlugin paramNewerGuidePlugin, bhpy parambhpy) {}
+  yzn(yzj paramyzj) {}
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
-    }
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
-      this.jdField_a_of_type_Bhpy.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
-    }
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    if (yzj.b(this.a) != null) {
+      yzj.b(this.a).setVisibility(0);
+    }
   }
 }
 

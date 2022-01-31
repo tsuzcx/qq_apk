@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae;
 
-import alpo;
+import alud;
 import android.app.Activity;
-import bkle;
+import bkpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPituCameraUnit$13
   implements Runnable
 {
-  public AEPituCameraUnit$13(bkle parambkle, int paramInt) {}
+  public AEPituCameraUnit$13(bkpl parambkpl, int paramInt) {}
   
   public void run()
   {
@@ -22,17 +22,17 @@ public class AEPituCameraUnit$13
       do
       {
         return;
-        QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131689786), 1).a();
+        QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131689786), 1).a();
         localActivity = this.this$0.a();
       } while ((localActivity == null) || (localActivity.isFinishing()));
       localActivity.finish();
       return;
     case 102: 
-      QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131689787), 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131689787), 0).a();
       this.this$0.q();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131689785), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131689785), 0).a();
   }
 }
 

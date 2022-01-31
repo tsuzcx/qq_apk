@@ -1,28 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class amik
-  implements View.OnClickListener
+public final class amik
+  implements bauf
 {
-  amik(amij paramamij) {}
-  
-  public void onClick(View paramView)
+  public void a(bave parambave, bavf parambavf)
   {
-    if (amij.a != null) {
-      amij.a(this.a).startActivity(amij.a);
-    }
-    azmj.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
-    azmj.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
-    paramView = PreferenceManager.getDefaultSharedPreferences(amij.a(this.a));
-    int i = paramView.getInt("push_msg_notify_open", 0);
-    paramView = paramView.edit();
-    paramView.putInt("push_msg_notify_open", i + 1);
-    paramView.commit();
-    this.a.dismiss();
+    if ((parambave == null) || (parambavf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambavf);
   }
 }
 

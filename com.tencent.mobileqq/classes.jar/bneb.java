@@ -1,8 +1,27 @@
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+
 public class bneb
+  extends Property<PickerContainer, Float>
 {
-  public static boolean a(int paramInt)
+  public bneb(PickerContainer paramPickerContainer, Class paramClass, String paramString)
   {
-    return paramInt == 180;
+    super(paramClass, paramString);
+  }
+  
+  public Float a(PickerContainer paramPickerContainer)
+  {
+    if (paramPickerContainer != null) {
+      return PickerContainer.a(paramPickerContainer);
+    }
+    return Float.valueOf(1.0F);
+  }
+  
+  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  {
+    if (paramPickerContainer != null) {
+      PickerContainer.a(paramPickerContainer, paramFloat);
+    }
   }
 }
 

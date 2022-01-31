@@ -1,23 +1,15 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-public class vnx
-  extends vnz
+class vnx
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  private ElasticImageView a;
+  vnx(vnu paramvnu) {}
   
-  public vnx(@NonNull ViewGroup paramViewGroup)
+  public void onAudioFocusChange(int paramInt)
   {
-    super(paramViewGroup);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364341));
-    this.a.setOnClickListener(new vny(this));
-    return this.a;
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (vnu.a(this.a))) {
+      this.a.a();
+    }
   }
 }
 

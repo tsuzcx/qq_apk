@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bizm;
-import bjlh;
+import bjdt;
+import bjpo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
@@ -83,7 +83,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718301);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718313);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -98,7 +98,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718301);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718313);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -117,8 +117,8 @@ public class QZoneLiveVideoDownloadActivity
     {
       paramPluginManagerClient = this.jdField_a_of_type_JavaLangString + "&stayin=1";
       QLog.d("QZoneLiveVideoDownloadActivity", 1, "watch mode, jump to H5, " + paramPluginManagerClient);
-      bizm.a(this, paramPluginManagerClient, -1, null, null);
-      if (bjlh.b()) {
+      bjdt.a(this, paramPluginManagerClient, -1, null, null);
+      if (bjpo.b()) {
         c();
       }
       a();

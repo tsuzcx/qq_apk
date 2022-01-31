@@ -1,8 +1,13 @@
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+
 public abstract interface bmvc
 {
-  public abstract void a(bmvb parambmvb);
+  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
   
-  public abstract void a(bmvb parambmvb, int paramInt);
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
 }
 
 

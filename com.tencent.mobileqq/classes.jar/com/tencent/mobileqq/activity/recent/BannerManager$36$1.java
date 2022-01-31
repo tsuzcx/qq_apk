@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajbm;
-import ajcs;
+import ajgb;
+import ajhh;
 
 public class BannerManager$36$1
   implements Runnable
 {
-  public BannerManager$36$1(ajcs paramajcs) {}
+  public BannerManager$36$1(ajhh paramajhh) {}
   
   public void run()
   {
-    ajbm.a(this.a.a, true);
+    ajgb.a(this.a.a, true);
   }
 }
 

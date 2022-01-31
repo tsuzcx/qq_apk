@@ -1,34 +1,82 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-
-class bhbj
-  extends WebViewClient
+public class bhbj
 {
-  bhbj(bhbi parambhbi) {}
+  volatile int jdField_a_of_type_Int = 0;
+  private bhbk jdField_a_of_type_Bhbk = new bhbk();
+  volatile int b = 0;
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public bhbj(Class<? extends bhbk> paramClass, int paramInt)
   {
-    super.onPageFinished(paramWebView, paramString);
-    this.a.setCurrState(bhbi.a(this.a));
-    this.a.d();
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    QMLog.i("TAG_CHROMIUM", "shouldInterceptRequest: " + paramWebResourceRequest.getUrl());
-    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null))
+    for (;;)
     {
-      String str = paramWebResourceRequest.getUrl().toString();
-      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("https://appservice.qq.com/")) || (str.startsWith("wxfile://")))) {
-        return bhbi.a(this.a, paramWebView, paramWebResourceRequest.getUrl().toString());
+      int i;
+      synchronized (this.jdField_a_of_type_Bhbk)
+      {
+        this.b = paramInt;
+        this.jdField_a_of_type_Bhbk.a = true;
+        i = 0;
+        if (i >= paramInt) {}
+      }
+      try
+      {
+        bhbk localbhbk2 = (bhbk)paramClass.newInstance();
+        localbhbk2.a = true;
+        localbhbk2.a(this.jdField_a_of_type_Bhbk.a(), false);
+        this.jdField_a_of_type_Bhbk.a(localbhbk2, false);
+        this.jdField_a_of_type_Int += 1;
+        label102:
+        i += 1;
+        continue;
+        return;
+        paramClass = finally;
+        throw paramClass;
+      }
+      catch (Throwable localThrowable)
+      {
+        break label102;
       }
     }
-    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
+  }
+  
+  public bhbk a(Class<? extends bhbk> paramClass)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    bhbk localbhbk;
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      localbhbk = this.jdField_a_of_type_Bhbk;
+      localObject1 = localObject2;
+      try
+      {
+        if (this.jdField_a_of_type_Int <= 0) {
+          break label101;
+        }
+        localObject1 = this.jdField_a_of_type_Bhbk.a();
+        if (localObject1 == null) {
+          throw new RuntimeException("WTF");
+        }
+      }
+      finally {}
+      if (!((bhbk)localObject1).a) {
+        throw new RuntimeException("WTF");
+      }
+      this.jdField_a_of_type_Bhbk.a(bhbk.a((bhbk)localObject1), false);
+      ((bhbk)localObject1).a = false;
+      this.jdField_a_of_type_Int -= 1;
+    }
+    label101:
+    if (localObject1 == null) {
+      try
+      {
+        paramClass = (bhbk)paramClass.newInstance();
+        return paramClass;
+      }
+      catch (Throwable paramClass)
+      {
+        return localObject1;
+      }
+    }
+    return localObject1;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.nearby.redtouch;
 
-import avod;
+import avsm;
 
 public class LocalRedTouchManager$1
   implements Runnable
 {
-  public LocalRedTouchManager$1(avod paramavod) {}
+  public LocalRedTouchManager$1(avsm paramavsm) {}
   
   public void run()
   {
-    avod.a(this.this$0);
+    avsm.a(this.this$0);
   }
 }
 

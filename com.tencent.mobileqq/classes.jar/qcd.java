@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 
 public class qcd
-  implements bhqp
+  implements bhuw
 {
   public qcd(ComponentContentGridImage paramComponentContentGridImage) {}
   

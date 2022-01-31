@@ -1,18 +1,35 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.widget.ListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.FastScroller;
 
-class bhtr
-  implements PopupWindow.OnDismissListener
+public class bhtr
+  extends AdapterView<ListAdapter>.bhuv
 {
-  bhtr(bhtq parambhtq) {}
-  
-  public void onDismiss()
+  public bhtr(AbsListView paramAbsListView)
   {
-    this.a.a(1.0F);
+    super(paramAbsListView);
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
+    }
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhtr
  * JD-Core Version:    0.7.0.1
  */

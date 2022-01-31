@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-
-public class avre
-  implements bhqd
+class avre
+  implements avrq
 {
-  public avre(OCRPerformFragment paramOCRPerformFragment) {}
+  avre(avrb paramavrb, avrg paramavrg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 0)
-    {
-      avrh.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
-      avrh.a("0X800AAE9", 0);
-    }
-    if (paramInt == 1)
-    {
-      aybw.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
-      avrh.a("0X800AAEA", 0);
-    }
-    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
-      OCRPerformFragment.a(this.a).dismiss();
+    this.jdField_a_of_type_Avrb.c(paramString);
+    if (this.jdField_a_of_type_Avrg != null) {
+      this.jdField_a_of_type_Avrg.a(paramBoolean, paramString);
     }
   }
 }

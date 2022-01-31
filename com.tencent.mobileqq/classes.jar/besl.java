@@ -1,9 +1,14 @@
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
-public abstract interface besl
+public class besl
+  implements bdvu
 {
-  public abstract void a(SimpleMonthView paramSimpleMonthView, CalendarDay paramCalendarDay, Object paramObject);
+  public besl(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
+  
+  public void load(bdtv parambdtv)
+  {
+    this.a.setETTextColorFromClothes(parambdtv);
+  }
 }
 
 

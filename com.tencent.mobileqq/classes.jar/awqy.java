@@ -1,24 +1,33 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-public class awqy
-  implements View.OnTouchListener
+class awqy
+  implements AdapterView.OnItemClickListener
 {
-  public awqy(ProfileHeaderView paramProfileHeaderView) {}
+  awqy(awqw paramawqw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMotionEvent.getAction())
+    if (awqw.a(this.a).isShowing()) {
+      awqw.a(this.a).dismiss();
+    }
+    paramInt = -1;
+    switch ((int)paramLong)
     {
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.5F);
+      if (awqw.a(this.a) != null) {
+        awqw.a(this.a).a(paramInt, awqw.a(this.a));
+      }
+      return;
+      awqw.a(this.a);
+      paramInt = 0;
       continue;
-      paramView.setAlpha(1.0F);
+      awqw.b(this.a);
+      paramInt = 2;
     }
   }
 }

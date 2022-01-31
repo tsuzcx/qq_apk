@@ -5,7 +5,7 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
-import bdkf;
+import bdoo;
 import com.tencent.qphone.base.util.QLog;
 import lyl;
 import lym;
@@ -38,7 +38,7 @@ public class ScreenShareFloatingRelativeLayout
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364350);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364352);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -46,8 +46,8 @@ public class ScreenShareFloatingRelativeLayout
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_a_of_type_Int == 0) || (this.b == 0))
     {
-      this.jdField_a_of_type_Int = bdkf.a();
-      this.b = bdkf.b();
+      this.jdField_a_of_type_Int = bdoo.a();
+      this.b = bdoo.b();
       setCurPosition(this.jdField_a_of_type_AndroidGraphicsPoint);
     }
   }

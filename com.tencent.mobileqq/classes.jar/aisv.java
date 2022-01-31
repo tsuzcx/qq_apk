@@ -1,15 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
 class aisv
-  extends RecyclerView.ViewHolder
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  aisw jdField_a_of_type_Aisw;
+  aisv(aisu paramaisu, Intent paramIntent, ArrayList paramArrayList) {}
   
-  aisv(aisu paramaisu, View paramView)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_Aisw = ((aisw)paramView);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Aisu.mActivity).cancleProgressDailog();
+    if (bnfr.a(this.jdField_a_of_type_Aisu.mActivity, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Aisu.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 

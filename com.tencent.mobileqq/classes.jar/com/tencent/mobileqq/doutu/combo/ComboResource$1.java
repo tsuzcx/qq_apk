@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import apfp;
+import apjy;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ComboResource$1
@@ -8,7 +8,7 @@ public final class ComboResource$1
 {
   public void run()
   {
-    apfp.a(BaseApplicationImpl.getApplication().getBaseContext());
+    apjy.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 

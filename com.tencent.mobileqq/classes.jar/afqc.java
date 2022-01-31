@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afqc
-  implements DialogInterface.OnClickListener
+  extends afuf
 {
-  afqc(afqa paramafqa, MessageForText paramMessageForText) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afqc(afpy paramafpy)
   {
-    acex.a(this.jdField_a_of_type_Afqa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-    acex.b(this.jdField_a_of_type_Afqa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afqa.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afqa.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
-    this.jdField_a_of_type_Afqa.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    super(paramafpy, null);
+  }
+  
+  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afyl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

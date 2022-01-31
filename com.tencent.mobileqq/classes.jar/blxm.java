@@ -1,14 +1,19 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 
-public abstract interface blxm
+public final class blxm
+  implements Parcelable.Creator<DynamicTextItem.TextMap>
 {
-  public abstract void a();
+  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  {
+    return new DynamicTextItem.TextMap(paramParcel);
+  }
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(List<Long> paramList);
+  public DynamicTextItem.TextMap[] a(int paramInt)
+  {
+    return new DynamicTextItem.TextMap[paramInt];
+  }
 }
 
 

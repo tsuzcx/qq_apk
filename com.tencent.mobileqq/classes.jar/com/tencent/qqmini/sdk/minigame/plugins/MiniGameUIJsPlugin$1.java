@@ -6,16 +6,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bgho;
-import bgkd;
-import bgnf;
-import bgnw;
+import bglv;
+import bgok;
+import bgrm;
+import bgsd;
 import com.tencent.qqmini.sdk.log.QMLog;
 
 class MiniGameUIJsPlugin$1
   implements Runnable
 {
-  MiniGameUIJsPlugin$1(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, bgkd parambgkd) {}
+  MiniGameUIJsPlugin$1(MiniGameUIJsPlugin paramMiniGameUIJsPlugin, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, bgok parambgok) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ class MiniGameUIJsPlugin$1
     }
     if ("loading".equals(this.val$icon))
     {
-      MiniGameUIJsPlugin.access$102(this.this$0, new bgnw((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
+      MiniGameUIJsPlugin.access$102(this.this$0, new bgsd((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
       MiniGameUIJsPlugin.access$100(this.this$0).a(0, this.val$icon, this.val$imagePath, this.val$title, this.val$duration, this.val$mask);
       this.val$req.a();
       return;
@@ -36,7 +36,7 @@ class MiniGameUIJsPlugin$1
     {
       try
       {
-        MiniGameUIJsPlugin.access$202(this.this$0, new bgnf((Context)localObject));
+        MiniGameUIJsPlugin.access$202(this.this$0, new bgrm((Context)localObject));
         if (TextUtils.isEmpty(this.val$imagePath)) {
           break label212;
         }
@@ -55,7 +55,7 @@ class MiniGameUIJsPlugin$1
       if ("none".equals(this.val$icon)) {
         MiniGameUIJsPlugin.access$200(this.this$0).b(-1);
       } else {
-        MiniGameUIJsPlugin.access$200(this.this$0).a(bgnw.a(this.val$icon));
+        MiniGameUIJsPlugin.access$200(this.this$0).a(bgsd.a(this.val$icon));
       }
     }
   }

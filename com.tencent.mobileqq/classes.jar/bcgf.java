@@ -1,14 +1,8 @@
+import java.util.List;
+
 public abstract interface bcgf
 {
-  public abstract String getFriendUin();
-  
-  public abstract int getLimitType();
-  
-  public abstract long getSenderUin();
-  
-  public abstract long getShmsgseq();
-  
-  public abstract boolean isReaded();
+  public abstract void a(List<bcgk> paramList);
 }
 
 

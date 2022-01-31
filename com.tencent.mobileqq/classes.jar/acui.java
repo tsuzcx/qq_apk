@@ -1,28 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.2;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class acui
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public acui(FriendProfileCardActivity.12.2 param2) {}
+  public acui(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (bdee.g(this.a.jdField_a_of_type_Acuh.a))
+    if ((paramMotionEvent != null) && (this.a.a != null))
     {
-      this.a.jdField_a_of_type_Alkv.c(this.a.jdField_a_of_type_JavaLangString);
-      if (this.a.jdField_a_of_type_Acuh.a.jdField_a_of_type_Acxw != null) {
-        this.a.jdField_a_of_type_Acuh.a.jdField_a_of_type_Acxw.b();
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
       }
-      return;
     }
-    this.a.jdField_a_of_type_Alkv.h();
-    this.a.jdField_a_of_type_Alkv.a(this.a.jdField_a_of_type_Acuh.a.jdField_a_of_type_Awmk.a.jdField_a_of_type_JavaLangString, "");
-    this.a.jdField_a_of_type_Acuh.a.a(alpo.a(2131705300), 0);
-    this.a.jdField_a_of_type_Acuh.a.A();
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 

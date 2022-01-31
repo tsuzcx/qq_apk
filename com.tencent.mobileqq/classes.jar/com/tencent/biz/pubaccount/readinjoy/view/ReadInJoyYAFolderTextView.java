@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
@@ -18,8 +18,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import baig;
-import bain;
+import bamp;
+import bamw;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -44,7 +44,7 @@ public class ReadInJoyYAFolderTextView
   private Vector<ClickableSpan> jdField_a_of_type_JavaUtilVector = new Vector();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = alpo.a(2131713434);
+  private String jdField_b_of_type_JavaLangString = alud.a(2131713446);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   public boolean c;
@@ -70,7 +70,7 @@ public class ReadInJoyYAFolderTextView
   
   private SpannableStringBuilder a(SpannableStringBuilder paramSpannableStringBuilder)
   {
-    Object localObject = (bain[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bain.class);
+    Object localObject = (bamw[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bamw.class);
     int i = paramSpannableStringBuilder.length();
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -88,7 +88,7 @@ public class ReadInJoyYAFolderTextView
     paramInt = paramDynamicLayout.getLineEnd(paramInt - 1);
     paramDynamicLayout = paramDynamicLayout.getText();
     String str1 = paramDynamicLayout.subSequence(i, paramInt).toString();
-    String str2 = alpo.a(2131713120);
+    String str2 = alud.a(2131713132);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if ((str1.equals(str2.substring(1))) || (str1.equals(str2.substring(2))) || (str1.equals(str2.substring(3))))
     {
@@ -561,7 +561,7 @@ public class ReadInJoyYAFolderTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     Object localObject = paramCharSequence;
-    if ((paramCharSequence instanceof baig)) {
+    if ((paramCharSequence instanceof bamp)) {
       localObject = new SpannableStringBuilder(paramCharSequence);
     }
     super.setText((CharSequence)localObject, paramBufferType);

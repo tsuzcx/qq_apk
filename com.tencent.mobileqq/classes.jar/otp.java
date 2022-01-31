@@ -9,18 +9,18 @@ public class otp
 {
   public static float a()
   {
-    return ((Float)bjxj.a("seriestype_feeds_covered_light", Float.valueOf(0.8F))).floatValue();
+    return ((Float)bkbq.a("seriestype_feeds_covered_light", Float.valueOf(0.8F))).floatValue();
   }
   
   public static final int a()
   {
-    return ((Integer)bjxj.a("seriestype_feeds_press", Integer.valueOf(0))).intValue();
+    return ((Integer)bkbq.a("seriestype_feeds_press", Integer.valueOf(0))).intValue();
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    float f = ((Float)bjxj.a("small_video_max_width_height_ratio", Float.valueOf(0.75F))).floatValue();
-    int i = ((Integer)bjxj.a("small_video_max_duration", Integer.valueOf(60))).intValue();
+    float f = ((Float)bkbq.a("small_video_max_width_height_ratio", Float.valueOf(0.75F))).floatValue();
+    int i = ((Integer)bkbq.a("small_video_max_duration", Integer.valueOf(60))).intValue();
     if ((paramInt1 / paramInt2 <= f) && (paramInt3 <= i)) {
       return 1;
     }
@@ -29,12 +29,12 @@ public class otp
   
   public static String a()
   {
-    return (String)bjxj.a("seriestype_top_bar_title", "推荐视频");
+    return (String)bkbq.a("seriestype_top_bar_title", "推荐视频");
   }
   
   public static boolean a()
   {
-    boolean bool = ((Boolean)bjxj.a("viola_enable", Boolean.valueOf(false))).booleanValue();
+    boolean bool = ((Boolean)bkbq.a("viola_enable", Boolean.valueOf(false))).booleanValue();
     if (QLog.isColorLevel()) {
       QLog.d("MultiVideoConfigHandler", 2, "isViolaEnable: " + bool);
     }
@@ -44,26 +44,26 @@ public class otp
   public static final boolean a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt + "seriestype_video_from=" + (String)bjxj.a("seriestype_video_from", "null") + "seriestype_video_type=" + bjxj.a("seriestype_video_type", Integer.valueOf(-1)));
+      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt + "seriestype_video_from=" + (String)bkbq.a("seriestype_video_from", "null") + "seriestype_video_type=" + bkbq.a("seriestype_video_type", Integer.valueOf(-1)));
     }
-    return bjxj.b(paramInt, "\\|", "seriestype_video_from");
+    return bkbq.b(paramInt, "\\|", "seriestype_video_from");
   }
   
   public static final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt1 + ", videoWidth=" + paramInt2 + ", videoHeight=" + paramInt3 + ", duration=" + paramInt4 + "seriestype_video_from=" + (String)bjxj.a("seriestype_video_from", "null") + "seriestype_video_type=" + bjxj.a("seriestype_video_type", Integer.valueOf(-1)) + "small_video_max_width_height_ratio=" + bjxj.a("small_video_max_width_height_ratio", Float.valueOf(0.0F)) + "small_video_max_duration=" + bjxj.a("small_video_max_duration", Integer.valueOf(0)));
+      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt1 + ", videoWidth=" + paramInt2 + ", videoHeight=" + paramInt3 + ", duration=" + paramInt4 + "seriestype_video_from=" + (String)bkbq.a("seriestype_video_from", "null") + "seriestype_video_type=" + bkbq.a("seriestype_video_type", Integer.valueOf(-1)) + "small_video_max_width_height_ratio=" + bkbq.a("small_video_max_width_height_ratio", Float.valueOf(0.0F)) + "small_video_max_duration=" + bkbq.a("small_video_max_duration", Integer.valueOf(0)));
     }
     if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0)) {
       return false;
     }
-    int i = ((Integer)bjxj.a("seriestype_video_type", Integer.valueOf(0))).intValue();
-    return (bjxj.b(paramInt1, "\\|", "seriestype_video_from")) && ((i == 2) || (i == a(paramInt2, paramInt3, paramInt4)));
+    int i = ((Integer)bkbq.a("seriestype_video_type", Integer.valueOf(0))).intValue();
+    return (bkbq.b(paramInt1, "\\|", "seriestype_video_from")) && ((i == 2) || (i == a(paramInt2, paramInt3, paramInt4)));
   }
   
   public static final int b()
   {
-    return ((Integer)bjxj.a("seriestype_feeds_covered_time", Integer.valueOf(3))).intValue();
+    return ((Integer)bkbq.a("seriestype_feeds_covered_time", Integer.valueOf(3))).intValue();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -219,15 +219,15 @@ public class otp
             boolean bool1 = bool2;
           }
         }
-        bjxj.a("seriestype_top_bar_title", str);
-        bjxj.a("seriestype_video_from", paramString);
-        bjxj.a("seriestype_feeds_press", Integer.valueOf(paramInt2));
-        bjxj.a("seriestype_feeds_covered_time", Integer.valueOf(i));
-        bjxj.a("seriestype_video_type", Integer.valueOf(j));
-        bjxj.a("small_video_max_width_height_ratio", Float.valueOf(f2));
-        bjxj.a("small_video_max_duration", Integer.valueOf(paramInt1));
-        bjxj.a("seriestype_feeds_covered_light", Float.valueOf(f1));
-        bjxj.a("viola_enable", Boolean.valueOf(bool1));
+        bkbq.a("seriestype_top_bar_title", str);
+        bkbq.a("seriestype_video_from", paramString);
+        bkbq.a("seriestype_feeds_press", Integer.valueOf(paramInt2));
+        bkbq.a("seriestype_feeds_covered_time", Integer.valueOf(i));
+        bkbq.a("seriestype_video_type", Integer.valueOf(j));
+        bkbq.a("small_video_max_width_height_ratio", Float.valueOf(f2));
+        bkbq.a("small_video_max_duration", Integer.valueOf(paramInt1));
+        bkbq.a("seriestype_feeds_covered_light", Float.valueOf(f1));
+        bkbq.a("viola_enable", Boolean.valueOf(bool1));
         return true;
       }
     }
@@ -236,15 +236,15 @@ public class otp
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bjxj.a("seriestype_feeds_press", Integer.valueOf(0));
-    bjxj.a("seriestype_feeds_covered_time", Integer.valueOf(3));
-    bjxj.a("seriestype_video_from", "");
-    bjxj.a("seriestype_video_type", Integer.valueOf(0));
-    bjxj.a("small_video_max_width_height_ratio", Double.valueOf(0.75D));
-    bjxj.a("small_video_max_duration", Integer.valueOf(60));
-    bjxj.a("seriestype_feeds_covered_light", Float.valueOf(0.8F));
-    bjxj.a("seriestype_top_bar_title", "推荐视频");
-    bjxj.a("viola_enable", Boolean.valueOf(false));
+    bkbq.a("seriestype_feeds_press", Integer.valueOf(0));
+    bkbq.a("seriestype_feeds_covered_time", Integer.valueOf(3));
+    bkbq.a("seriestype_video_from", "");
+    bkbq.a("seriestype_video_type", Integer.valueOf(0));
+    bkbq.a("small_video_max_width_height_ratio", Double.valueOf(0.75D));
+    bkbq.a("small_video_max_duration", Integer.valueOf(60));
+    bkbq.a("seriestype_feeds_covered_light", Float.valueOf(0.8F));
+    bkbq.a("seriestype_top_bar_title", "推荐视频");
+    bkbq.a("viola_enable", Boolean.valueOf(false));
   }
 }
 

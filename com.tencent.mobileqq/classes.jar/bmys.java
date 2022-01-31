@@ -1,26 +1,52 @@
-import android.util.Property;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class bmys
-  extends Property<bmyp, Integer>
+public class bmys
+  extends bmyl
 {
-  bmys(bmyp parambmyp, Class paramClass, String paramString)
+  public final int c;
+  
+  public bmys(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramClass, paramString);
+    super(paramInt3, paramString, paramInt1);
+    this.c = paramInt2;
   }
   
-  public Integer a(bmyp parambmyp)
+  @NonNull
+  public bmym a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (parambmyp != null) {
-      return Integer.valueOf(bmyp.a(parambmyp));
-    }
-    return Integer.valueOf(0);
+    return new bmyt(this, paramContext, paramViewGroup);
   }
   
-  public void a(bmyp parambmyp, Integer paramInteger)
+  @NonNull
+  public Class<? extends bmym> a()
   {
-    if (parambmyp != null) {
-      bmyp.a(parambmyp, paramInteger.intValue());
+    return bmyt.class;
+  }
+  
+  public String toString()
+  {
+    switch (this.a)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return "";
+    case 0: 
+      return "normal";
+    case 3: 
+      return "slow";
+    case 2: 
+      return "fast";
+    case 9: 
+      return "very slow";
+    case 8: 
+      return "little fast";
     }
+    return "rewind";
   }
 }
 

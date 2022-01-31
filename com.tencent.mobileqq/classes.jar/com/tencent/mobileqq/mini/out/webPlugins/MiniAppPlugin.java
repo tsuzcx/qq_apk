@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import aphy;
-import apic;
-import apmy;
-import becq;
+import apmh;
+import apml;
+import aprh;
+import begz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -38,7 +38,7 @@ public class MiniAppPlugin
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "http://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private aphy remoteRespObserver = new MiniAppPlugin.3(this);
+  private apmh remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -246,7 +246,7 @@ public class MiniAppPlugin
       paramJsBridgeListener.putString("miniapp_appid", paramString1);
       paramJsBridgeListener.putString("miniapp_type", paramString2);
       paramJsBridgeListener.putString("miniapp_via", paramString3);
-      sendRemoteReq(apic.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
+      sendRemoteReq(apml.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       return true;
       if (paramString3.equals("canOpenApp")) {
         try
@@ -367,30 +367,30 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    apmy.a().a(this.remoteRespObserver);
+    aprh.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    apmy.a().b(this.remoteRespObserver);
+    aprh.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!apmy.a().a())
+    if (!aprh.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), alpo.a(2131707212), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), alud.a(2131707224), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      apmy.a().b(paramBundle);
+      aprh.a().b(paramBundle);
       return;
     }
-    apmy.a().a(paramBundle);
+    aprh.a().a(paramBundle);
   }
 }
 

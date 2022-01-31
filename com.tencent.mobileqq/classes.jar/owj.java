@@ -44,7 +44,7 @@ public class owj
         }
         paramBoolean = true;
         paramBundle = BaseActivity.sTopActivity;
-        if (!bjxj.e(KandianMergeManager.a(this.a)))
+        if (!bkbq.e(KandianMergeManager.a(this.a)))
         {
           if (!(paramBundle instanceof ReadInJoySettingActivity)) {
             break label195;

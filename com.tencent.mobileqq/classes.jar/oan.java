@@ -34,21 +34,21 @@ public class oan
       this.a.finish();
       return;
       paramInt = 0;
-      paramString2 = alpo.a(2131713494);
+      paramString2 = alud.a(2131713506);
       continue;
-      paramString2 = alpo.a(2131713499);
+      paramString2 = alud.a(2131713511);
       paramString1 = "";
       paramInt = 2;
       continue;
-      paramString2 = alpo.a(2131713429);
+      paramString2 = alud.a(2131713441);
       paramString1 = "";
       paramInt = 2;
       continue;
-      paramString2 = alpo.a(2131713224);
+      paramString2 = alud.a(2131713236);
       paramString1 = "";
       paramInt = 3;
       continue;
-      paramString2 = alpo.a(2131713191);
+      paramString2 = alud.a(2131713203);
       paramString1 = "";
       paramInt = 3;
     }

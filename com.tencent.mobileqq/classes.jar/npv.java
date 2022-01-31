@@ -2,7 +2,7 @@ import android.widget.ImageView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class npv
-  implements bhsu
+  implements bhxb
 {
   public npv(PublicAccountBrowser paramPublicAccountBrowser) {}
   

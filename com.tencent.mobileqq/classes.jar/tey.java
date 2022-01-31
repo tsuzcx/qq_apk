@@ -2,7 +2,7 @@ import android.content.DialogInterface;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
 final class tey
-  extends bdco
+  extends bdgx
 {
   tey(WSDownloadParams paramWSDownloadParams) {}
   

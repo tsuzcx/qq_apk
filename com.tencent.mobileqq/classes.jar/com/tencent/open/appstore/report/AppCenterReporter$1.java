@@ -1,7 +1,7 @@
 package com.tencent.open.appstore.report;
 
-import bfgx;
-import bfhg;
+import bflg;
+import bflp;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.DownloadStartLog;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ public final class AppCenterReporter$1
   
   public void run()
   {
-    bfhg.b("AppCenterReporter", "[reportDownloadStart]");
-    bfgx.a(3004, bfgx.a(this.a) + "|" + bfgx.b(this.a));
-    bfgx.d(this.a);
+    bflp.b("AppCenterReporter", "[reportDownloadStart]");
+    bflg.a(3004, bflg.a(this.a) + "|" + bflg.b(this.a));
+    bflg.d(this.a);
     DownloadStartLog localDownloadStartLog = new DownloadStartLog();
     localDownloadStartLog.packageName = this.a.e;
     localDownloadStartLog.versionCode = this.a.b;

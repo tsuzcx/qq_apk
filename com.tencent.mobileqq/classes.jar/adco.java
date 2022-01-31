@@ -1,54 +1,38 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class adco
-  implements CompoundButton.OnCheckedChangeListener
+  implements bhuk
 {
-  public adco(LikeSettingActivity paramLikeSettingActivity) {}
+  public adco(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bhuf parambhuf) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
     {
-      ((ausd)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
-    }
-    do
-    {
+    default: 
       return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.e(true, paramBoolean);
-        return;
-      }
-      if (paramCompoundButton == this.a.b.a())
-      {
-        localQQAppInterface = this.a.app;
-        if (paramBoolean) {}
-        for (paramCompoundButton = "1";; paramCompoundButton = "0")
-        {
-          azmj.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
-          this.a.jdField_a_of_type_Alkv.h(paramBoolean);
-          return;
-        }
-      }
-    } while (paramCompoundButton != this.a.d.a());
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
-    {
-      azmj.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
-      this.a.jdField_a_of_type_Alkv.f(paramBoolean);
-      if (paramBoolean) {
-        break;
-      }
-      this.a.b.setVisibility(8);
+    case 0: 
+      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
+      return;
+    case 1: 
+      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
+      return;
+    case 2: 
+      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
+      return;
+    case 3: 
+      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
       return;
     }
-    this.a.b.setVisibility(0);
+    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,48 +1,69 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.List;
 
 public class waf
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uys>
+  extends umf<wad, vej>
 {
-  public waf(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public waf(wad paramwad)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwad);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uys paramuys)
+  public void a(@NonNull wad paramwad, @NonNull vej paramvej)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramuys.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramuys.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if (wad.a(paramwad) != 1) {}
+    label149:
+    label209:
+    label218:
+    for (;;)
     {
-      paramuys = paramuys.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramuys.hasNext())
+      return;
+      int i = 0;
+      StoryVideoItem localStoryVideoItem;
+      if (i < paramvej.a.size())
       {
-        wbm localwbm = (wbm)paramuys.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localwbm.a))
+        localStoryVideoItem = (StoryVideoItem)paramvej.a.get(i);
+        if (!localStoryVideoItem.mVid.equals(wad.a(paramwad))) {}
+      }
+      for (paramvej = localStoryVideoItem;; paramvej = null)
+      {
+        if ((paramvej == null) || (paramvej.mErrorCode != 0)) {
+          break label218;
+        }
+        localStoryVideoItem = wad.a(paramwad).a();
+        i = localStoryVideoItem.comparedLevel;
+        int j = wad.a(paramwad).a.jdField_a_of_type_Int;
+        String str = wad.a(paramwad).a.jdField_a_of_type_JavaLangString;
+        wad.a(paramwad, wad.a(paramwad), str, false, i, j);
+        paramwad = ((uwm)uwa.a(2)).b(paramvej.mOwnerUid);
+        if ((paramwad != null) && (paramwad.isVip))
         {
-          paramQQStoryShareGroupProfileActivity.b = localwbm.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
+          i = 1;
+          if (i == 0) {
+            break label209;
           }
         }
+        for (paramwad = "2";; paramwad = "1")
+        {
+          wxj.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramwad, paramvej.mVid, paramvej.mOwnerUid, localStoryVideoItem.mVid });
+          return;
+          i += 1;
+          break;
+          i = 0;
+          break label149;
+        }
       }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
-      return;
     }
   }
   
   public Class acceptEventClass()
   {
-    return uys.class;
+    return vej.class;
   }
+  
+  public void b(@NonNull wad paramwad, @NonNull vej paramvej) {}
 }
 
 

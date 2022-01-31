@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class aemw
-  implements aemo
+  implements Comparator<MessageRecord>
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public aemw(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public aemw(QQAppInterface paramQQAppInterface)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
     }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo == null) {
-      return;
+    if (l1 > 0L) {
+      return -1;
     }
-    ThreadManager.post(new CustomizeStrategyFactory.ThemeAnimStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agij paramagij)
-  {
-    if ((paramRedPacketInfo != null) && ((paramagij instanceof agio))) {
-      paramRedPacketInfo.animInfo = ((agio)paramagij).a;
+    if (l1 < 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 

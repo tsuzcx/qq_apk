@@ -1,28 +1,104 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bjvb
-  extends BroadcastReceiver
+public class bjvb
 {
-  bjvb(bjva parambjva) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static boolean a(Activity paramActivity)
   {
-    try
+    return a(paramActivity, new bjvc(paramActivity), 0);
+  }
+  
+  public static boolean a(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramActivity == null) {}
+    do
     {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
+      return false;
+      if ((paramActivity instanceof BasePluginActivity)) {
+        return a((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+      if ((paramActivity instanceof QzonePluginProxyActivity)) {
+        return a((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+      if ((paramActivity instanceof BaseActivity)) {
+        return a((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+    } while (!(paramActivity instanceof Activity));
+    return b(paramActivity);
+  }
+  
+  public static boolean a(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramBasePluginActivity == null) {
+      return false;
     }
-    catch (Exception paramContext)
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBasePluginActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBasePluginActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
     {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
+      paramBasePluginActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
     }
+    return true;
+  }
+  
+  private static boolean a(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramQzonePluginProxyActivity == null) {}
+    do
+    {
+      return false;
+      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
+        break;
+      }
+      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.a();
+    } while (paramQzonePluginProxyActivity == null);
+    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+    return false;
+    return true;
+  }
+  
+  private static boolean a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramBaseActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBaseActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
+    }
+    return true;
+  }
+  
+  private static Activity b(Activity paramActivity)
+  {
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
+    }
+    do
+    {
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
+  }
+  
+  private static boolean b(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      bdgm.b(b(paramActivity));
+      return false;
+    }
+    return true;
   }
 }
 

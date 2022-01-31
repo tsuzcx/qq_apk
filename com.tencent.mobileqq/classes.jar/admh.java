@@ -1,12 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class admh
-  extends admk
+  implements DialogInterface.OnKeyListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
+  public admh(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+      this.a.finish();
+    }
+    return false;
+  }
 }
 
 

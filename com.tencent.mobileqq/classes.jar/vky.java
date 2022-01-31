@@ -1,80 +1,105 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class vky
-  implements vkm
+public final class vky
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  
-  public vky(boolean paramBoolean)
+  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public List<String> a()
-  {
-    wsv.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, ArrayList<vpk> paramArrayList, vld paramvld)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      wsv.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
-      return;
+    Object localObject = paramMap.get(paramK);
+    if ((localObject != null) || (paramMap.containsKey(paramK))) {
+      paramT = localObject;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    return paramT;
+  }
+  
+  public static String a(String paramString)
+  {
+    return alof.bo + baqn.c(paramString);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str1 = null;
+    int i = 1;
+    String[] arrayOfString = paramString.split("&");
+    int k = arrayOfString.length;
+    int j = 0;
+    paramString = str1;
+    if (j < k)
     {
-      vpk localvpk = (vpk)paramArrayList.next();
-      if ((!localvpk.a()) && (!TextUtils.isEmpty(localvpk.a))) {
-        localArrayList.add(localvpk.a);
+      str1 = arrayOfString[j];
+      String str2 = str1.split("=")[0];
+      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
+      {
+        if (i != 0) {
+          i = 0;
+        }
+        for (;;)
+        {
+          localStringBuilder.append(str1);
+          j += 1;
+          break;
+          localStringBuilder.append('&');
+        }
+      }
+      str1 = paramString;
+      if (QLog.isColorLevel())
+      {
+        if (paramString != null) {
+          break label216;
+        }
+        paramString = new StringBuilder();
+      }
+      for (;;)
+      {
+        paramString.append(str2);
+        str1 = paramString;
+        paramString = str1;
+        break;
+        label216:
+        paramString.append('|');
       }
     }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_a_of_type_Int = paramInt;
-    int i;
-    if ((paramvld instanceof vlr))
+    if ((paramString != null) && (QLog.isColorLevel())) {
+      QLog.d("ShareUtil", 2, "remove params:" + paramString);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      paramArrayList = (vlr)paramvld;
-      if (paramArrayList.a != null)
+      return paramString;
+      arrayOfString = paramString.split("\\?");
+    } while (arrayOfString.length != 2);
+    paramString = arrayOfString[0];
+    String[] arrayOfString = arrayOfString[1].split("&");
+    StringBuilder localStringBuilder = new StringBuilder("?");
+    int i = 0;
+    if (i < arrayOfString.length)
+    {
+      Object localObject = arrayOfString[i].split("=");
+      if (localObject.length != 2) {}
+      for (;;)
       {
-        i = paramArrayList.a.jdField_a_of_type_Int;
-        this.b = i;
-        label129:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        if (paramvld != null) {
-          break label186;
+        i += 1;
+        break;
+        localObject = localObject[0];
+        if ("s".equals(localObject)) {
+          arrayOfString[i] = ((String)localObject + "=" + "140");
+        }
+        localStringBuilder.append(arrayOfString[i]);
+        if (i + 1 < arrayOfString.length) {
+          localStringBuilder.append("&");
         }
       }
     }
-    label186:
-    for (paramArrayList = "";; paramArrayList = paramvld.toString())
-    {
-      wsv.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-      return;
-      i = -1;
-      break;
-      this.b = -1;
-      break label129;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b == 12;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 13;
+    return paramString + localStringBuilder.toString();
   }
 }
 

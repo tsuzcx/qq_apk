@@ -1,25 +1,36 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.lang.ref.WeakReference;
-
 public class alop
-  implements Handler.Callback
+  implements alpg
 {
-  private WeakReference<FrameHelperActivity> a;
+  protected void a() {}
   
-  public alop(FrameHelperActivity paramFrameHelperActivity)
-  {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
+  protected void a(Object paramObject) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity != null) {
-      localFrameHelperActivity.a(paramMessage);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      b(paramBoolean, paramObject);
+      return;
     }
-    return false;
+    a(paramBoolean);
   }
 }
 

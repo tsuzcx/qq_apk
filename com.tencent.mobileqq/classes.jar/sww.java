@@ -152,7 +152,7 @@ public class sww
       this.jdField_a_of_type_JavaUtilHashMap.put("netType", this.h);
       this.jdField_a_of_type_JavaUtilHashMap.put("plateform", this.g);
       this.jdField_a_of_type_JavaUtilHashMap.put("pixDensity", this.i);
-      paramDownloadParams = bavf.a().a(this.jdField_c_of_type_JavaLangString, 1009);
+      paramDownloadParams = bazo.a().a(this.jdField_c_of_type_JavaLangString, 1009);
       if (paramDownloadParams != null)
       {
         paramDownloadParams = TextUtils.join(",", paramDownloadParams);
@@ -186,7 +186,7 @@ public class sww
           ((StringBuilder)localObject1).append("reportTag:").append(paramDownloadParams).append(", success:").append(this.jdField_a_of_type_Boolean).append(", time:").append(this.jdField_b_of_type_Long).append(", size:").append(this.jdField_c_of_type_Long).append(", url:").append(this.jdField_b_of_type_JavaLangString).append(", exInfo:").append(this.jdField_a_of_type_JavaUtilHashMap.toString());
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject1).toString());
         }
-        azmz.a(BaseApplication.getContext()).a(null, paramDownloadParams, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "", true);
+        azri.a(BaseApplication.getContext()).a(null, paramDownloadParams, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "", true);
         return;
         j = 1;
         break;
@@ -232,10 +232,10 @@ public class sww
   
   public void a(DownloadParams paramDownloadParams, Map<String, String> paramMap)
   {
-    long l = baqx.a().a();
+    long l = bavg.a().a();
     this.h = "None";
-    if ((l > 0L) && (l < aljq.c.length)) {
-      this.h = aljq.c[((int)l)];
+    if ((l > 0L) && (l < alof.c.length)) {
+      this.h = alof.c[((int)l)];
     }
     this.g = ("ANDROID.MOBILE-" + Build.MODEL + ".SDK-" + Build.VERSION.SDK);
     DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDisplayMetrics();

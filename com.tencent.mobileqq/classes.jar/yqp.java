@@ -1,18 +1,31 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import com.tencent.biz.tribe.TribeVideoPlugin.TVKSDKInstallRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class yqp
-  extends RadioButton
+  implements TVK_SDKMgr.InstallListener
 {
-  public yqp(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
+  public yqp(TribeVideoPlugin.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
+  
+  public void onInstallProgress(float paramFloat)
   {
-    super(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
   }
   
-  public boolean performClick()
+  public void onInstalledFailed(int paramInt)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin success");
+    }
   }
 }
 

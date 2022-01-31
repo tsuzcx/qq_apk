@@ -1,17 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acku
-  implements View.OnClickListener
+public final class acku
+  implements DialogInterface.OnClickListener
 {
-  public acku(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public acku(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    bdjn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
 import android.text.TextUtils;
-import auqc;
-import auzx;
-import avcw;
-import azmo;
+import auul;
+import aveg;
+import avhf;
+import azqx;
 
 public class PlayOperationViewModel$24
   implements Runnable
 {
-  public PlayOperationViewModel$24(avcw paramavcw, auqc paramauqc) {}
+  public PlayOperationViewModel$24(avhf paramavhf, auul paramauul) {}
   
   public void run()
   {
-    azmo localazmo = new azmo(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_click").e(auzx.d);
+    azqx localazqx = new azqx(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_click").e(aveg.d);
     int i = this.a.b();
-    String str2 = auzx.a;
-    if (TextUtils.equals(auzx.a, "2")) {}
-    for (String str1 = auzx.c;; str1 = "")
+    String str2 = aveg.a;
+    if (TextUtils.equals(aveg.a, "2")) {}
+    for (String str1 = aveg.c;; str1 = "")
     {
-      localazmo.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localazqx.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

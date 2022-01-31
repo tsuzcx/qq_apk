@@ -1,44 +1,32 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
-public class afwd
-  extends aelt
+class afwd
+  implements bhuk
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public VideoProgressView a;
-  public CropBubbleVideoView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  afwd(afwa paramafwa, MessageForMixedMsg paramMessageForMixedMsg, bhuf parambhuf) {}
   
-  public afwd(afvt paramafvt) {}
-  
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    switch (paramInt)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
-      if (l > 0L)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      long l;
+      do
       {
-        MessageForShortVideo localMessageForShortVideo = bdan.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          afvt.a(this.jdField_a_of_type_Afvt, localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      afvt.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Afwa.c < 500L);
+      this.jdField_a_of_type_Afwa.c = l;
+      paramView = (aufc)this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
+      this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      paramView.a(this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
     }
   }
 }

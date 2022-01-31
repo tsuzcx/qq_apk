@@ -1,42 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aida
-  implements View.OnClickListener
+public class aida
+  implements View.OnTouchListener
 {
-  aida(aicw paramaicw) {}
+  public aida(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(aicw.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_Aicu;
-    if (this.a.jdField_a_of_type_Aicu == null) {
-      return;
-    }
-    switch (i)
+    if (paramMotionEvent.getAction() == 4)
     {
-    default: 
-      return;
-    case 2131364910: 
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((aicu)localObject).a.msg);
-      return;
+      this.a.a.dismiss();
+      return true;
     }
-    paramView = new Bundle();
-    paramView.putInt("forward_type", -1);
-    paramView.putString("forward_text", ((aicu)localObject).a.msg);
-    localObject = new Intent();
-    ((Intent)localObject).putExtras(paramView);
-    arum.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+    return false;
   }
 }
 

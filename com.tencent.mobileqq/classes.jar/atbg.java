@@ -1,16 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class atbg
-  implements EIPCResultCallback
+abstract interface atbg
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 1, new Object[] { Integer.valueOf(paramEIPCResult.code) });
-    }
-  }
+  public abstract void a(int paramInt, Object... paramVarArgs);
 }
 
 

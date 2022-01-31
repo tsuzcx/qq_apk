@@ -1,9 +1,9 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import awmk;
-import bizm;
-import bizt;
+import awqt;
+import bjdt;
+import bjea;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -19,10 +19,10 @@ class QidianProfileCardActivity$25
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = this.this$0.app.getCurrentNickname();
     }
-    localObject2 = bizt.a();
-    ((bizt)localObject2).a = this.this$0.app.getCurrentAccountUin();
-    ((bizt)localObject2).b = ((String)localObject1);
-    bizm.a(this.this$0, (bizt)localObject2, this.this$0.jdField_a_of_type_Awmk.a.a, this.this$0.jdField_a_of_type_Awmk.a.g, -1, 5, this.this$0.jdField_a_of_type_Asor, this.a, false);
+    localObject2 = bjea.a();
+    ((bjea)localObject2).a = this.this$0.app.getCurrentAccountUin();
+    ((bjea)localObject2).b = ((String)localObject1);
+    bjdt.a(this.this$0, (bjea)localObject2, this.this$0.jdField_a_of_type_Awqt.a.a, this.this$0.jdField_a_of_type_Awqt.a.g, -1, 5, this.this$0.jdField_a_of_type_Asta, this.a, false);
     QidianProfileCardActivity.b(this.this$0, false);
   }
 }

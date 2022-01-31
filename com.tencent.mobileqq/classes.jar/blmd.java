@@ -1,23 +1,15 @@
-class blmd
-  implements blrw
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+
+public class blmd
+  implements View.OnClickListener
 {
-  blmd(blly paramblly) {}
+  public blmd(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
   
-  public void b()
+  public void onClick(View paramView)
   {
-    blly.a(this.a).d();
-    blly.a(this.a).a();
-    blly.a(this.a).a(blly.a(this.a));
-  }
-  
-  public void ba_()
-  {
-    blly.a(this.a).d();
-  }
-  
-  public void c()
-  {
-    blly.a(this.a).d();
+    AEEditorMvClipMenu.a(this.a);
   }
 }
 

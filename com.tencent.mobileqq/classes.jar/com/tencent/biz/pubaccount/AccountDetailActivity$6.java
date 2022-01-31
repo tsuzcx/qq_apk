@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import bdel;
+import bdiu;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +20,7 @@ class AccountDetailActivity$6
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams == null) {}
     for (boolean bool = true;; bool = false)
     {
-      bdel.a("pubAcc_follow_confirm", null, this.this$0.d);
+      bdiu.a("pubAcc_follow_confirm", null, this.this$0.d);
       AccountDetailActivity.a(this.this$0, new AccountDetailActivity.6.1(this, bool));
       return;
     }

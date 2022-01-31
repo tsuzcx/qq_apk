@@ -1,33 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aopt
-  implements aooy
+public class aopt
 {
-  aopt(aopq paramaopq) {}
+  private int a;
   
-  public void a(Context paramContext)
+  public static aopt a(String paramString)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
+    if (paramString == null) {}
+    do
     {
-      localIntent.setAction(aopq.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
+      return null;
+      try
       {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", aopq.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
+        aopt localaopt = new aopt();
+        localaopt.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
+        return localaopt;
       }
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 

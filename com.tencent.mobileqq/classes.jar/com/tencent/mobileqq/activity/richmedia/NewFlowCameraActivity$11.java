@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alpo;
+import alud;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class NewFlowCameraActivity$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131707815), 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131707827), 1).a();
     this.this$0.finish();
   }
 }

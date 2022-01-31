@@ -1,16 +1,19 @@
-class biqk
-  implements azjq
+import java.io.File;
+import java.util.Comparator;
+
+public final class biqk
+  implements Comparator<File>
 {
-  biqk(biqi parambiqi) {}
-  
-  public void a()
+  public int a(File paramFile1, File paramFile2)
   {
-    biqi.b(this.a);
-  }
-  
-  public void b()
-  {
-    biqi.a(this.a, 1);
+    long l = paramFile1.length() - paramFile2.length();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

@@ -1,29 +1,77 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Context;
+import android.graphics.Paint;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
 
 class afho
-  implements bhqd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  afho(afhh paramafhh, MessageForFile paramMessageForFile, bhpy parambhpy, BaseChatItemLayout paramBaseChatItemLayout, afhp paramafhp) {}
+  afho(afhn paramafhn, TextView paramTextView, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  private String a(String paramString)
   {
-    paramView = this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null)
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
     {
-      if (paramView.status == 16)
-      {
-        armz.a(2131692939);
-        this.jdField_a_of_type_Bhpy.cancel();
-        return;
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
       }
-      arni.a(this.jdField_a_of_type_Afhh.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
     }
-    this.jdField_a_of_type_Afhh.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afhp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
-    this.jdField_a_of_type_Bhpy.cancel();
+    return new String(paramString);
+  }
+  
+  public boolean onPreDraw()
+  {
+    int j = 0;
+    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    String str2 = a(this.jdField_a_of_type_Afhn.a.getString(2131697652) + ">");
+    String str3 = a(this.jdField_a_of_type_JavaLangString);
+    String str1 = "  " + str2;
+    Object localObject = str3 + str1;
+    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
+    label329:
+    for (;;)
+    {
+      k = ((String)localObject).length();
+      int i = j;
+      if (k > str2.length()) {
+        i = k - str2.length();
+      }
+      localObject = new SpannableString((CharSequence)localObject);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return true;
+      String str4 = "..." + str1;
+      int m = str3.length();
+      i = 0;
+      for (;;)
+      {
+        if (i >= m) {
+          break label329;
+        }
+        str1 = str3.substring(0, m - i) + str4;
+        localObject = str1;
+        if (localTextPaint.measureText(str1 + "      ") < k) {
+          break;
+        }
+        i += 1;
+        localObject = str1;
+      }
+    }
   }
 }
 

@@ -1,13 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtp
-  implements DialogInterface.OnClickListener
+  extends alzr
 {
-  public ahtp(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  public ahtp(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (PublicAccountFragment.a(this.a))
+      {
+        if (this.a.a != null) {
+          this.a.a.a(this.a.b(), true, null);
+        }
+        PublicAccountFragment.a(this.a, false);
+      }
+      this.a.i();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
 }
 
 

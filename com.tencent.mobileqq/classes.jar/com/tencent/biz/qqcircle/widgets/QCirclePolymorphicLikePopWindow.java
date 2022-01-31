@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alpo;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
-import azgq;
+import azkz;
 import com.app.hubert.guide.util.ScreenUtils;
+import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
 import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
 import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
 import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
@@ -42,17 +43,18 @@ import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
 import qqcircle.QQCircleFeedBase.StLikeBusiData;
 import qqcircle.QQCircleFeedBase.StPolyLike;
 import tra;
-import tvt;
-import tyg;
-import tyk;
-import tym;
-import ubq;
-import ubt;
-import ubv;
-import ubw;
-import ubx;
-import xxl;
-import yej;
+import twe;
+import twi;
+import tzs;
+import tzw;
+import tzy;
+import uej;
+import uem;
+import ueo;
+import uep;
+import ueq;
+import ybu;
+import yiw;
 
 public class QCirclePolymorphicLikePopWindow
   extends PopupWindow
@@ -68,12 +70,13 @@ public class QCirclePolymorphicLikePopWindow
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   private List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList;
-  private ubq jdField_a_of_type_Ubq;
+  private uej jdField_a_of_type_Uej;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference<View> jdField_b_of_type_JavaLangRefWeakReference;
-  private HashMap<String, ubx> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, ueq> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   private volatile boolean jdField_b_of_type_Boolean = true;
   private WeakReference<QCirclePolymorphicAniView> jdField_c_of_type_JavaLangRefWeakReference;
+  private HashMap<Integer, twi> jdField_c_of_type_JavaUtilHashMap = new HashMap();
   private volatile boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private WeakReference<View> jdField_d_of_type_JavaLangRefWeakReference;
@@ -83,13 +86,13 @@ public class QCirclePolymorphicLikePopWindow
   static
   {
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("2", Integer.valueOf(2130843602));
-    jdField_a_of_type_JavaUtilHashMap.put("3", Integer.valueOf(2130843606));
-    jdField_a_of_type_JavaUtilHashMap.put("4", Integer.valueOf(2130843605));
-    jdField_a_of_type_JavaUtilHashMap.put("6", Integer.valueOf(2130843604));
-    jdField_a_of_type_JavaUtilHashMap.put("7", Integer.valueOf(2130843601));
-    jdField_a_of_type_Int = azgq.a(88.0F);
-    jdField_b_of_type_Int = azgq.a(48.0F);
+    jdField_a_of_type_JavaUtilHashMap.put("2", Integer.valueOf(2130843651));
+    jdField_a_of_type_JavaUtilHashMap.put("3", Integer.valueOf(2130843657));
+    jdField_a_of_type_JavaUtilHashMap.put("4", Integer.valueOf(2130843656));
+    jdField_a_of_type_JavaUtilHashMap.put("6", Integer.valueOf(2130843655));
+    jdField_a_of_type_JavaUtilHashMap.put("7", Integer.valueOf(2130843650));
+    jdField_a_of_type_Int = azkz.a(88.0F);
+    jdField_b_of_type_Int = azkz.a(48.0F);
     jdField_c_of_type_Int = 6;
   }
   
@@ -99,10 +102,10 @@ public class QCirclePolymorphicLikePopWindow
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     paramActivity = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramActivity != null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560563, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560578, null);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373175));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373171));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373210));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373206));
     setContentView(this.jdField_a_of_type_AndroidViewView);
     setOutsideTouchable(true);
     setFocusable(true);
@@ -125,41 +128,43 @@ public class QCirclePolymorphicLikePopWindow
   
   private void a(QQCircleFeedBase.StPolyLike paramStPolyLike, int paramInt)
   {
-    Object localObject2 = (ubx)this.jdField_b_of_type_JavaUtilHashMap.get(paramStPolyLike.polyLikeID.get());
+    Object localObject2 = (ueq)this.jdField_b_of_type_JavaUtilHashMap.get(paramStPolyLike.polyLikeID.get());
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new ubx((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      localObject1 = new ueq((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       this.jdField_b_of_type_JavaUtilHashMap.put(paramStPolyLike.polyLikeID.get(), localObject1);
     }
-    ((ubx)localObject1).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, paramStPolyLike, paramInt);
+    ((ueq)localObject1).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, paramStPolyLike, paramInt);
     localObject2 = new LinearLayout.LayoutParams(-1, -1);
     ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(ubx.a((ubx)localObject1), (ViewGroup.LayoutParams)localObject2);
-    a((ubx)localObject1, paramStPolyLike);
-    localObject2 = ((ubx)localObject1).a();
-    ubx.a((ubx)localObject1).setOnClickListener(new ubt(this, paramStPolyLike, (AnimationView)localObject2, (ubx)localObject1));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(ueq.a((ueq)localObject1), (ViewGroup.LayoutParams)localObject2);
+    a((ueq)localObject1, paramStPolyLike);
+    localObject2 = ((ueq)localObject1).a();
+    ueq.a((ueq)localObject1).setOnClickListener(new uem(this, paramStPolyLike, (AnimationView)localObject2, (ueq)localObject1));
   }
   
-  private void a(ubx paramubx, QQCircleFeedBase.StPolyLike paramStPolyLike)
+  private void a(ueq paramueq, QQCircleFeedBase.StPolyLike paramStPolyLike)
   {
-    if (tvt.a().a(paramStPolyLike.polySource.get()))
+    if (twe.a().a(paramStPolyLike.polySource.get()))
     {
-      paramStPolyLike = tvt.a().a(paramStPolyLike.polySource.get());
-      a(paramubx.a(), paramStPolyLike);
+      paramStPolyLike = twe.a().a(paramStPolyLike.polySource.get());
+      a(paramueq.a(), paramStPolyLike);
     }
     do
     {
       return;
-      tvt.a().a(paramStPolyLike.polySource.get(), new ubw(this, paramubx));
+      uep localuep = new uep(this, paramueq);
+      this.jdField_c_of_type_JavaUtilHashMap.put(Integer.valueOf(paramueq.hashCode()), localuep);
+      twe.a().a(paramStPolyLike.polySource.get(), localuep);
       try
       {
-        paramubx.a().setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramStPolyLike.polyLikeID.get())).intValue()));
+        paramueq.a().setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramStPolyLike.polyLikeID.get())).intValue()));
         return;
       }
-      catch (Exception paramubx) {}
+      catch (Exception paramueq) {}
     } while (!QLog.isColorLevel());
-    QLog.e("Q.profilecard.FrdProfileCard", 2, "makeOrRefreshPresent fail!", paramubx);
+    QLog.e("Q.profilecard.FrdProfileCard", 2, "makeOrRefreshPresent fail!", paramueq);
   }
   
   private void b()
@@ -173,7 +178,7 @@ public class QCirclePolymorphicLikePopWindow
     for (int i = jdField_c_of_type_Int;; i = this.jdField_a_of_type_JavaUtilList.size())
     {
       this.e = i;
-      this.jdField_d_of_type_Int = (jdField_b_of_type_Int * this.e + azgq.a(32.0F));
+      this.jdField_d_of_type_Int = (jdField_b_of_type_Int * this.e + azkz.a(32.0F));
       setWidth(this.jdField_d_of_type_Int);
       setHeight(jdField_a_of_type_Int);
       return;
@@ -195,15 +200,15 @@ public class QCirclePolymorphicLikePopWindow
         ((View)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getLocationInWindow(arrayOfInt);
         setAnimationStyle(2131755873);
         int i;
-        if (arrayOfInt[1] > jdField_a_of_type_Int + azgq.a(60.0F) + ScreenUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext()))
+        if (arrayOfInt[1] > jdField_a_of_type_Int + azkz.a(60.0F) + ScreenUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext()))
         {
           setAnimationStyle(2131755873);
           i = arrayOfInt[1] - jdField_a_of_type_Int;
           if (!this.jdField_a_of_type_Boolean) {
             break label224;
           }
-          i -= azgq.a(5.0F);
-          showAtLocation((View)this.jdField_b_of_type_JavaLangRefWeakReference.get(), 0, (azgq.jdField_a_of_type_Int - this.jdField_d_of_type_Int) / 2, i);
+          i -= azkz.a(5.0F);
+          showAtLocation((View)this.jdField_b_of_type_JavaLangRefWeakReference.get(), 0, (azkz.jdField_a_of_type_Int - this.jdField_d_of_type_Int) / 2, i);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
           i = j;
           if (i < this.e)
@@ -220,7 +225,7 @@ public class QCirclePolymorphicLikePopWindow
           i = ((View)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getHeight() + i;
           continue;
         }
-        if (xxl.a())
+        if (ybu.a())
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           return;
@@ -254,7 +259,7 @@ public class QCirclePolymorphicLikePopWindow
     int j = 36;
     int i = 2;
     if (!ndk.a(this.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.jdField_a_of_type_AndroidViewView.getContext(), alpo.a(2131694770), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidViewView.getContext(), alud.a(2131694772), 0).a();
     }
     while (!this.jdField_b_of_type_Boolean) {
       return;
@@ -274,21 +279,21 @@ public class QCirclePolymorphicLikePopWindow
           this.jdField_c_of_type_Boolean = true;
           i = 0;
           this.jdField_b_of_type_Boolean = false;
-          QLog.d("QCirclePraise", 4, "start zan id :" + paramStPolyLike.polyLikeID.get());
+          QLog.d("QCirclePraise_", 4, "start zan id :" + paramStPolyLike.polyLikeID.get());
           FeedCloudMeta.StLike localStLike = tra.a(paramStFeed.likeInfo);
           localStDoLikeReqDoPolyLikeBusiReqData = new QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData();
           localStDoLikeReqDoPolyLikeBusiReqData.curPolyLikeInfo.set(localStLikeBusiData.curPolyLikeInfo);
           if (i == 0)
           {
             localStDoLikeReqDoPolyLikeBusiReqData.polyLikeInfo.set(new QQCircleFeedBase.StPolyLike());
-            VSNetworkHelper.a().a(new QCircleDoLikeRequest(paramStFeed, i, localStLike, localStDoLikeReqDoPolyLikeBusiReqData), new ubv(this, paramStFeed, i, localStPolyLike, paramStPolyLike));
+            VSNetworkHelper.a().a(new QCircleDoLikeRequest(paramStFeed, i, localStLike, localStDoLikeReqDoPolyLikeBusiReqData), new ueo(this, paramStFeed, i, localStPolyLike, paramStPolyLike));
             if (i != 0) {
               continue;
             }
-            if (!tym.a().c(57)) {
+            if (!tzy.a().c(57)) {
               continue;
             }
-            tyk.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+            tzw.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
           }
         }
         else
@@ -301,35 +306,37 @@ public class QCirclePolymorphicLikePopWindow
         }
         localStDoLikeReqDoPolyLikeBusiReqData.polyLikeInfo.set(paramStPolyLike);
         continue;
-        tyg.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+        tzs.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
         return;
         if (i == 1)
         {
-          if (tym.a().c(57))
+          if (tzy.a().c(57))
           {
             if (this.jdField_d_of_type_Boolean)
             {
               i = j;
-              tyk.a(i, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+              tzw.a(i, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+              yiw.a().a(new QCircleFuelAnimationEvent());
             }
           }
           else
           {
             if (!this.jdField_d_of_type_Boolean) {
-              break label418;
+              break label433;
             }
             i = 36;
-            tyg.a(i, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+            tzs.a(i, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+            continue;
           }
         }
         else
         {
-          if (tym.a().c(57))
+          if (tzy.a().c(57))
           {
-            tyk.a(40, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+            tzw.a(40, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
             return;
           }
-          tyg.a(40, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+          tzs.a(40, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
           return;
         }
       }
@@ -339,14 +346,14 @@ public class QCirclePolymorphicLikePopWindow
       }
       i = 38;
       continue;
-      label418:
+      label433:
       i = 38;
     }
   }
   
-  public void a(ubq paramubq)
+  public void a(uej paramuej)
   {
-    this.jdField_a_of_type_Ubq = paramubq;
+    this.jdField_a_of_type_Uej = paramuej;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2)
@@ -363,14 +370,14 @@ public class QCirclePolymorphicLikePopWindow
       if (paramInt != 0) {
         break;
       }
-      yej.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, new QQCircleFeedBase.StPolyLike(), paramInt, i));
+      yiw.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, new QQCircleFeedBase.StPolyLike(), paramInt, i));
       return;
       i = j;
       if (paramInt == 0) {
         i = j - 1;
       }
     }
-    yej.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, paramStPolyLike2, paramInt, i));
+    yiw.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, paramStPolyLike2, paramInt, i));
   }
   
   public void dismiss()
@@ -380,9 +387,9 @@ public class QCirclePolymorphicLikePopWindow
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ubx)this.jdField_b_of_type_JavaUtilHashMap.get(localObject);
-      if ((localObject != null) && (((ubx)localObject).a() != null) && ((((ubx)localObject).a().getDrawable() instanceof QQAnimationDrawable))) {
-        ((QQAnimationDrawable)((ubx)localObject).a().getDrawable()).stop();
+      localObject = (ueq)this.jdField_b_of_type_JavaUtilHashMap.get(localObject);
+      if ((localObject != null) && (((ueq)localObject).a() != null) && ((((ueq)localObject).a().getDrawable() instanceof QQAnimationDrawable))) {
+        ((QQAnimationDrawable)((ueq)localObject).a().getDrawable()).stop();
       }
     }
   }

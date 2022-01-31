@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaju;
-import aajw;
-import aanp;
+import aaoj;
+import aaol;
+import aase;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$3
   implements Runnable
 {
-  public GdtArkPreDownloadTask$3(aaju paramaaju, int paramInt1, int paramInt2) {}
+  public GdtArkPreDownloadTask$3(aaoj paramaaoj, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     boolean bool;
-    if ((aaju.a(this.this$0) != null) && (aaju.a(this.this$0).get() != null))
+    if ((aaoj.a(this.this$0) != null) && (aaoj.a(this.this$0).get() != null))
     {
       bool = true;
-      aanp.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(aaju.a(this.this$0)), Boolean.valueOf(aaju.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
-      if (!aaju.b(this.this$0)) {
+      aase.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(aaoj.a(this.this$0)), Boolean.valueOf(aaoj.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
+      if (!aaoj.b(this.this$0)) {
         break label108;
       }
     }
@@ -27,9 +27,9 @@ public class GdtArkPreDownloadTask$3
       return;
       bool = false;
       break;
-      aaju.a(this.this$0, true);
-    } while ((aaju.a(this.this$0) == null) || (aaju.a(this.this$0).get() == null));
-    ((aajw)aaju.a(this.this$0).get()).a(aaju.a(this.this$0), this.a, this.b);
+      aaoj.a(this.this$0, true);
+    } while ((aaoj.a(this.this$0) == null) || (aaoj.a(this.this$0).get() == null));
+    ((aaol)aaoj.a(this.this$0).get()).a(aaoj.a(this.this$0), this.a, this.b);
   }
 }
 

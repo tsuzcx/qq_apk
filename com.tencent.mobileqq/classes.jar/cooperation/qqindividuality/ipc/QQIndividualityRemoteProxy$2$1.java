@@ -1,22 +1,22 @@
 package cooperation.qqindividuality.ipc;
 
-import bitt;
-import bitu;
-import bitv;
+import biya;
+import biyb;
+import biyc;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QQIndividualityRemoteProxy$2$1
   extends Thread
 {
-  public QQIndividualityRemoteProxy$2$1(bitu parambitu) {}
+  public QQIndividualityRemoteProxy$2$1(biyb parambiyb) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bitv localbitv = (bitv)this.a.a.a.poll();
-      if (localbitv != null) {
-        this.a.a.a(localbitv);
+      biyc localbiyc = (biyc)this.a.a.a.poll();
+      if (localbiyc != null) {
+        this.a.a.a(localbiyc);
       }
     }
   }

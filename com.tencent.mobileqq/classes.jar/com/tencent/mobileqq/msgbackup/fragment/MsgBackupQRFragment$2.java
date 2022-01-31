@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.os.Message;
-import aubu;
-import aucf;
-import bdee;
+import augd;
+import augo;
+import bdin;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -15,7 +15,7 @@ class MsgBackupQRFragment$2
   public void run()
   {
     boolean bool;
-    if (bdee.a(this.this$0.getActivity()) == 1)
+    if (bdin.a(this.this$0.getActivity()) == 1)
     {
       bool = true;
       if (bool != MsgBackupQRFragment.a(this.this$0))
@@ -33,7 +33,7 @@ class MsgBackupQRFragment$2
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupQRFragment", 2, "mMigrateQrNetStateRunnable startServerProxy is not called! current wifi is connected so called it");
         }
-        aucf.a().a(false);
+        augo.a().a(false);
         label112:
         Message localMessage = this.this$0.a.obtainMessage(10013);
         this.this$0.a.sendMessage(localMessage);
@@ -50,7 +50,7 @@ class MsgBackupQRFragment$2
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "mMigrateQrNetStateRunnable startServerProxy is called!");
       }
-      aucf.a().a().a(false);
+      augo.a().a().a(false);
       break label112;
       label195:
       MsgBackupQRFragment.a(this.this$0, false, false);

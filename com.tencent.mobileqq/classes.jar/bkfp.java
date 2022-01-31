@@ -1,36 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bkfp
-  extends RemoteCommand
+  extends bkfr
 {
-  private static bkfq jdField_a_of_type_Bkfq;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  
-  public bkfp()
+  public bkfp(String paramString, View paramView)
   {
-    super("weiyun.notify_state");
+    super(paramString, paramView);
   }
   
-  public void a(bkfq parambkfq)
+  private int b(String paramString)
   {
-    jdField_a_of_type_Bkfq = parambkfq;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    paramOnInvokeFinishLinstener = new Bundle();
-    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
-    {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
-      if (jdField_a_of_type_Bkfq != null) {
-        jdField_a_of_type_Bkfq.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
     }
-    return paramOnInvokeFinishLinstener;
+    if ("center".equals(paramString)) {
+      return 13;
+    }
+    if ("center_horizontal".equals(paramString)) {
+      return 14;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 15;
+    }
+    return 9;
+  }
+  
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
+  {
+    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.a instanceof RelativeLayout)) {}
+  }
+  
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    super.a(paramString1, paramString2, paramLayoutParams);
+    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
+    if ("gravity".equals(paramString1)) {
+      paramLayoutParams.addRule(b(paramString2));
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"relative".equals(paramString1));
+        paramString1 = paramString2.split(" ");
+      } while ((paramString1 == null) || (paramString1.length != 2));
+      if ("bottom".equals(paramString1[1]))
+      {
+        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
+        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
+        return;
+      }
+    } while (!"right".equals(paramString1[1]));
+    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
   }
 }
 

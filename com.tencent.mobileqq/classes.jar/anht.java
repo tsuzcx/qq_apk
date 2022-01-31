@@ -1,21 +1,53 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
-class anht
-  implements affd
+public class anht
+  implements View.OnClickListener
 {
-  anht(anhr paramanhr) {}
+  public anht(QRScanEntryView paramQRScanEntryView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    boolean bool = ((afds)anhr.a(this.a).get(anhr.a(this.a))).checkShare();
-    if (bool != anhr.a(this.a))
+    boolean bool2 = false;
+    if (QRScanEntryView.a(this.a))
     {
-      anhr.a(this.a, bool);
-      anhr.a(this.a, anhr.a(this.a));
+      paramView = anft.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (paramView.a(bool1))
+        {
+          paramView = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label118;
+          }
+          bool1 = true;
+          QRScanEntryView.a(paramView, bool1);
+          paramView = (anfy)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          paramView.a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
     }
+    label118:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
+    }
+    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
-  
-  public void b() {}
 }
 
 

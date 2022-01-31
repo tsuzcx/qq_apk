@@ -1,11 +1,8 @@
-import android.graphics.Bitmap;
-
-public class ansz
+public abstract interface ansz
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject);
 }
 
 

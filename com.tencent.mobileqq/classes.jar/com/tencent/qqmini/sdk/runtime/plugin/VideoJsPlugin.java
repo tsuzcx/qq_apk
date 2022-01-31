@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bgho;
-import bgkd;
-import bgkk;
+import bglv;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.VideoJsProxy;
 import com.tencent.qqmini.sdk.core.proxy.VideoJsProxy.Bridge;
@@ -19,20 +19,20 @@ public class VideoJsPlugin
   public static final String API_CHOOSE_VIDEO = "chooseVideo";
   public static final String API_SAVE_VIDEO_TO_ALBUM = "saveVideoToPhotosAlbum";
   public static final String TAG = "TabBarJsPlugin";
-  private ConcurrentHashMap<Integer, bgkd> bridgeMap;
+  private ConcurrentHashMap<Integer, bgok> bridgeMap;
   private VideoJsProxy mImpl;
   
-  public void chooseVideo(bgkd parambgkd)
+  public void chooseVideo(bgok parambgok)
   {
     try
     {
-      this.mImpl.chooseVideo(this.mMiniAppContext.a(), parambgkd.jdField_a_of_type_JavaLangString, parambgkd.jdField_b_of_type_JavaLangString, parambgkd.jdField_b_of_type_Int);
+      this.mImpl.chooseVideo(this.mMiniAppContext.a(), parambgok.jdField_a_of_type_JavaLangString, parambgok.jdField_b_of_type_JavaLangString, parambgok.jdField_b_of_type_Int);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("TabBarJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error,", localThrowable);
-      parambgkd.b();
+      QMLog.e("TabBarJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error,", localThrowable);
+      parambgok.b();
     }
   }
   
@@ -40,12 +40,12 @@ public class VideoJsPlugin
   {
     ToastMessage localToastMessage = ToastMessage.a();
     localToastMessage.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.HIDE;
-    bgkk.a(new VideoJsPlugin.3(this, localToastMessage));
+    bgor.a(new VideoJsPlugin.3(this, localToastMessage));
   }
   
-  public void onCreate(bgho parambgho)
+  public void onCreate(bglv parambglv)
   {
-    super.onCreate(parambgho);
+    super.onCreate(parambglv);
     this.mImpl.setResponseListener(this);
     this.bridgeMap = new ConcurrentHashMap();
     this.mImpl.create();
@@ -62,13 +62,13 @@ public class VideoJsPlugin
     super.onDestroy();
   }
   
-  public boolean onInterceptJsEvent(bgkd parambgkd)
+  public boolean onInterceptJsEvent(bgok parambgok)
   {
-    QMLog.d("TabBarJsPlugin", "onInterceptJsEvent event=" + parambgkd.jdField_a_of_type_JavaLangString + ",jsonParams=" + parambgkd.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgkd.jdField_b_of_type_Int + ",webview=" + parambgkd.jdField_a_of_type_Bghn);
+    QMLog.d("TabBarJsPlugin", "onInterceptJsEvent event=" + parambgok.jdField_a_of_type_JavaLangString + ",jsonParams=" + parambgok.jdField_b_of_type_JavaLangString + ",callbackId=" + parambgok.jdField_b_of_type_Int + ",webview=" + parambgok.jdField_a_of_type_Bglu);
     if (this.bridgeMap != null) {
-      this.bridgeMap.put(Integer.valueOf(parambgkd.jdField_b_of_type_Int), parambgkd);
+      this.bridgeMap.put(Integer.valueOf(parambgok.jdField_b_of_type_Int), parambgok);
     }
-    return super.onInterceptJsEvent(parambgkd);
+    return super.onInterceptJsEvent(parambgok);
   }
   
   public void onPause()
@@ -85,7 +85,7 @@ public class VideoJsPlugin
   {
     if (this.bridgeMap != null)
     {
-      paramString = (bgkd)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString = (bgok)this.bridgeMap.get(Integer.valueOf(paramInt));
       if (paramString != null) {
         paramString.b(paramJSONObject);
       }
@@ -96,7 +96,7 @@ public class VideoJsPlugin
   {
     if (this.bridgeMap != null)
     {
-      paramString1 = (bgkd)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString1 = (bgok)this.bridgeMap.get(Integer.valueOf(paramInt));
       if (paramString1 != null) {
         paramString1.a(paramString2);
       }
@@ -107,30 +107,30 @@ public class VideoJsPlugin
   {
     if (this.bridgeMap != null)
     {
-      paramString = (bgkd)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString = (bgok)this.bridgeMap.get(Integer.valueOf(paramInt));
       if (paramString != null) {
         paramString.a(paramJSONObject);
       }
     }
   }
   
-  public void saveVideoToPhotosAlbum(bgkd parambgkd)
+  public void saveVideoToPhotosAlbum(bgok parambgok)
   {
     try
     {
-      this.mImpl.saveVideoToPhotosAlbum(this.mMiniAppContext.a(), parambgkd.jdField_a_of_type_JavaLangString, parambgkd.jdField_b_of_type_JavaLangString, parambgkd.jdField_b_of_type_Int);
+      this.mImpl.saveVideoToPhotosAlbum(this.mMiniAppContext.a(), parambgok.jdField_a_of_type_JavaLangString, parambgok.jdField_b_of_type_JavaLangString, parambgok.jdField_b_of_type_Int);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("TabBarJsPlugin", parambgkd.jdField_a_of_type_JavaLangString + " error,", localThrowable);
-      parambgkd.b();
+      QMLog.e("TabBarJsPlugin", parambgok.jdField_a_of_type_JavaLangString + " error,", localThrowable);
+      parambgok.b();
     }
   }
   
-  public void sendNativeViewEvent(bgkd parambgkd, int paramInt)
+  public void sendNativeViewEvent(bgok parambgok, int paramInt)
   {
-    super.sendNativeViewEvent(parambgkd, paramInt);
+    super.sendNativeViewEvent(parambgok, paramInt);
   }
   
   public void sendSubscribeEvent(String paramString1, String paramString2)
@@ -149,7 +149,7 @@ public class VideoJsPlugin
     localToastMessage.jdField_b_of_type_Int = -1;
     localToastMessage.jdField_a_of_type_Boolean = false;
     localToastMessage.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.SHOW;
-    bgkk.a(new VideoJsPlugin.1(this, localToastMessage));
+    bgor.a(new VideoJsPlugin.1(this, localToastMessage));
   }
   
   public void updateLoading(String paramString)
@@ -157,7 +157,7 @@ public class VideoJsPlugin
     ToastMessage localToastMessage = ToastMessage.a();
     localToastMessage.jdField_a_of_type_ComTencentQqminiSdkRuntimeUtilToastMessage$Action = ToastMessage.Action.UPDATE;
     localToastMessage.c = paramString;
-    bgkk.a(new VideoJsPlugin.2(this, localToastMessage));
+    bgor.a(new VideoJsPlugin.2(this, localToastMessage));
   }
 }
 

@@ -17,7 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdda;
+import bdhj;
 
 public class ProgressViewYellow
   extends View
@@ -142,7 +142,7 @@ public class ProgressViewYellow
       this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
       if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT < 18))
       {
-        localBitmap = bdda.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
+        localBitmap = bdhj.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
         paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }

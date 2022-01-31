@@ -1,13 +1,46 @@
-public abstract interface wlr
-  extends wkn<wle>
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
+
+public class wlr
+  extends wos<wpn>
 {
-  public abstract void a(String paramString);
+  public wlr(@Nullable wow paramwow)
+  {
+    super(paramwow);
+  }
   
-  public abstract void a(wmg paramwmg);
+  protected JobSegment<wov, wpn> a()
+  {
+    return new wpi();
+  }
   
-  public abstract void b(String paramString);
+  protected JobSegment<Integer, wov> a(wou paramwou)
+  {
+    return new wls(paramwou);
+  }
   
-  public abstract void f();
+  protected wpn a()
+  {
+    woy localwoy = (woy)uwa.a(11);
+    List localList = localwoy.c();
+    wpn localwpn = new wpn(new ErrorMessage());
+    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
+    localwpn.jdField_b_of_type_Boolean = true;
+    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwpn;
+  }
+  
+  protected wpn a(ErrorMessage paramErrorMessage)
+  {
+    return new wpn(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((woy)uwa.a(11)).c(paramList, paramBoolean);
+  }
 }
 
 

@@ -1,53 +1,82 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class avrp
-  implements View.OnTouchListener
+final class avrp
+  implements avdq
 {
-  public avrp(OCRResultActivity paramOCRResultActivity) {}
+  avrp(avrt paramavrt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
+    bool3 = true;
+    boolean bool2 = true;
+    int j = 0;
+    int k = 0;
+    i = 0;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    for (;;)
     {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
+      try
       {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if ((localObject.length != 0) && (j == 1))
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.busi_buf.has())
         {
-          localObject[0].onClick(paramView);
-          azmj.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (paramArrayOfByte.ret.has())
+          {
+            paramInt = paramArrayOfByte.ret.get();
+            if (paramInt == 0) {
+              i = k;
+            }
+          }
         }
       }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        return true;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = false;
+        paramInt = j;
       }
-      if ((j == 1) && (!paramView.isFocused())) {
-        azmj.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      try
+      {
+        j = paramArrayOfByte.total.get();
+        paramInt = j;
+        bool1 = bool2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          i = j;
+          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
+          bool1 = bool2;
+          paramInt = j;
+        }
+        if (this.a != null) {
+          this.a.a(bool1, paramInt);
+        }
+        return;
       }
-      return paramView.onTouchEvent(paramMotionEvent);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramInt = i;
+          bool1 = bool3;
+        }
+      }
+      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
+      bool1 = false;
+      paramInt = i;
+      continue;
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

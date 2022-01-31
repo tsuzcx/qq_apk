@@ -1,15 +1,15 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import bihe;
-import bjog;
-import bjoh;
-import bjol;
-import bjom;
-import bjon;
-import bjoo;
-import bjov;
-import bjow;
+import bill;
+import bjsn;
+import bjso;
+import bjss;
+import bjst;
+import bjsu;
+import bjsv;
+import bjtc;
+import bjtd;
 import cooperation.qzone.statistic.access.concept.Collector;
 import cooperation.qzone.statistic.access.concept.Key;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -28,17 +28,17 @@ public class WnsCollector
   public WnsCollector()
   {
     this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    bjoo localbjoo = new bjoo(bihe.d(), bihe.c(), true);
-    bjom localbjom = new bjom(bihe.a());
-    bjog localbjog = new bjog();
-    localbjog.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    bjon localbjon = new bjon("https://wspeed.qq.com/w.cgi");
-    localbjon.a(true);
-    localbjon.a().a(true);
-    a(localbjoo);
-    a(localbjom);
-    a(localbjog);
-    a(localbjon);
+    bjsv localbjsv = new bjsv(bill.d(), bill.c(), true);
+    bjst localbjst = new bjst(bill.a());
+    bjsn localbjsn = new bjsn();
+    localbjsn.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
+    bjsu localbjsu = new bjsu("https://wspeed.qq.com/w.cgi");
+    localbjsu.a(true);
+    localbjsu.a().a(true);
+    a(localbjsv);
+    a(localbjst);
+    a(localbjsn);
+    a(localbjsu);
   }
   
   public static WnsCollector a()
@@ -66,7 +66,7 @@ public class WnsCollector
   
   public void a(Context paramContext)
   {
-    bjov.a(paramContext);
+    bjtc.a(paramContext);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)

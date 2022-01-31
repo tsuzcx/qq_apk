@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nke
-  implements bhqd
+  implements bhuk
 {
   public nke(AccountDetailActivity paramAccountDetailActivity) {}
   

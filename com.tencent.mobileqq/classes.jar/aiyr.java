@@ -1,28 +1,37 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyr
-  implements OnCompositionLoadedListener
+  implements aivb
 {
-  public aiyr(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public aiyr(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a()
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      aiqz.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
+      }
+    } while (!(paramObject instanceof Drawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
+    }
+    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

@@ -1,22 +1,13 @@
-import android.support.annotation.Nullable;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class bkui
-  implements bmac<Boolean>
+  implements bkuq
 {
-  bkui(bkuc parambkuc) {}
+  bkui(bkuh parambkuh) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(int paramInt, AEFilterManager paramAEFilterManager)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bkuc localbkuc = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bkuc.a(localbkuc, bool);
-      return;
-    }
+    this.a.a(paramInt, paramAEFilterManager);
   }
 }
 

@@ -1,36 +1,27 @@
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
-public abstract interface avbz
+public class avbz
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract int a();
+  public avbz(StoryPlayController paramStoryPlayController, ImageView paramImageView, avgh paramavgh) {}
   
-  public abstract long a();
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract View a();
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public abstract void a();
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(avca paramavca);
-  
-  public abstract void a(avcb paramavcb);
-  
-  public abstract void a(avcc paramavcc);
-  
-  public abstract void a(avcd paramavcd);
-  
-  public abstract void a(avce paramavce);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (this.jdField_a_of_type_Avgh != null) {
+      this.jdField_a_of_type_Avgh.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    }
+  }
 }
 
 

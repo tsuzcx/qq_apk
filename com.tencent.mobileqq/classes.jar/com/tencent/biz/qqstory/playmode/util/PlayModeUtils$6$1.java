@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import vcs;
-import vhn;
-import vhu;
+import vhb;
+import vlw;
+import vmd;
 
 public class PlayModeUtils$6$1
   implements Runnable
 {
-  public PlayModeUtils$6$1(vhn paramvhn, vcs paramvcs, ErrorMessage paramErrorMessage) {}
+  public PlayModeUtils$6$1(vlw paramvlw, vhb paramvhb, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Vcs != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()))
+    if ((this.jdField_a_of_type_Vhb != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()))
     {
-      this.this$0.a.a(this.jdField_a_of_type_Vcs.b);
+      this.this$0.a.a(this.jdField_a_of_type_Vhb.b);
       return;
     }
     this.this$0.a.a(-1);

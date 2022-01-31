@@ -1,43 +1,15 @@
-class aiai
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+
+public class aiai
+  implements DialogInterface.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  public aiai(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acnt paramacnt) {}
   
-  private aiai(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (aiai)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0) {
-      return i + j * 31;
-    }
+    this.jdField_a_of_type_Acnt.a(false);
   }
 }
 

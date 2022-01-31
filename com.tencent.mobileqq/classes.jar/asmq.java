@@ -1,73 +1,66 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class asmq
-  implements afal
+  extends RecyclerView.OnScrollListener
 {
-  private final BaseChatPie a;
-  public boolean a;
+  public asmq(QQGamePubAccountFragment paramQQGamePubAccountFragment, LinearLayoutManager paramLinearLayoutManager) {}
   
-  public asmq(BaseChatPie paramBaseChatPie)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public static asmq a(BaseChatPie paramBaseChatPie)
-  {
-    return (asmq)paramBaseChatPie.a(6);
-  }
-  
-  private void b(XEditTextEx paramXEditTextEx)
-  {
-    try
-    {
-      paramXEditTextEx.setTextMenuListener(null);
-      return;
-    }
-    catch (Throwable paramXEditTextEx) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {}
     do
     {
-      return;
-      if (paramInt == 11)
+      do
       {
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
         return;
+      } while (paramInt != 0);
+      if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition() < 1) || ((QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment) != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a.getCurrentItem() < QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).size())))
+      {
+        paramInt = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+        QQGamePubAccountFragment.d(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).put(Long.valueOf(((MessageRecord)QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).get(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a.getCurrentItem())).uniseq), Integer.valueOf(paramInt));
       }
-    } while (paramInt != 4);
-    bhpd.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      if (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment))
+      {
+        aahi.a(akwd.a(), "769", "205029", "", "76902", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a(), "", "20" });
+        this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.b(true);
+      }
+      paramInt = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      while (paramInt <= i)
+      {
+        paramRecyclerView = QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt));
+        if (((paramRecyclerView instanceof askm)) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a(paramInt) != null) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a(paramInt).type != 3)) {
+          ((askm)paramRecyclerView).a.g();
+        }
+        paramInt += 1;
+      }
+      paramInt = asnm.a(QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
+      QLog.d("wenTest", 1, "distance = " + paramInt);
+    } while ((paramInt >= 500) || (paramInt < 0) || (!this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.isAdded()) || (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment) == null));
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a(false);
   }
   
-  public void a(XEditTextEx paramXEditTextEx)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    asmr localasmr = new asmr(this);
-    try
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    QLog.d("QQGamePubAccountFragment", 1, "onScrolled y=" + paramInt2 + "the last:" + QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getItemCount() + "," + this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastCompletelyVisibleItemPosition());
+    if ((paramInt2 > 0) && (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastCompletelyVisibleItemPosition() == QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getItemCount() - 1))
     {
-      paramXEditTextEx.setTextMenuListener(localasmr);
+      QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, true);
       return;
     }
-    catch (Throwable paramXEditTextEx)
-    {
-      paramXEditTextEx.printStackTrace();
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11, 4 };
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt >= 30) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, false);
   }
 }
 

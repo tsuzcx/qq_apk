@@ -1,32 +1,45 @@
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
 
 public class awnu
-  extends bdvu
+  extends bazx
 {
-  public awnu(VipProfileCardPreviewActivity.4 param4) {}
+  baub jdField_a_of_type_Baub;
+  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   
-  public void onDone(bdvv parambdvv)
+  public awnu(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, baub parambaub)
+  {
+    super(paramQQAppInterface, paramPrecoverResource.md5);
+    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
+    this.jdField_a_of_type_Baub = parambaub;
+  }
+  
+  protected void realCancel()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(parambdvv.jdField_a_of_type_Int) }));
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
+    }
+    awnq localawnq = (awnq)this.app.getManager(179);
+    if ((localawnq != null) && (localawnq.a() != null)) {
+      localawnq.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
     }
   }
   
-  public void onProgress(bdvv parambdvv)
+  protected void realStart()
   {
-    int i = (int)parambdvv.jdField_a_of_type_Float;
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
+    }
+    awnq localawnq = (awnq)this.app.getManager(179);
+    if ((localawnq != null) && (localawnq.a() != null)) {
+      localawnq.a().a(this);
     }
   }
   
-  public boolean onStart(bdvv parambdvv)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-    }
-    return true;
+    return "[DownloadTask] req=" + this.jdField_a_of_type_Baub + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   }
 }
 

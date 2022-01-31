@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bfao
-  implements View.OnClickListener
+final class bfao
+  implements DialogInterface.OnClickListener
 {
-  public bfao(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  bfao(String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
-    }
+    azqs.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Cancel", this.jdField_a_of_type_Int, this.b, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

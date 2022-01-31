@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class actr
-  implements View.OnClickListener
+public class actr
+  implements DialogInterface.OnCancelListener
 {
-  actr(actp paramactp) {}
+  public actr(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    actp.a(this.a).a(paramView);
+    this.a.finish();
   }
 }
 

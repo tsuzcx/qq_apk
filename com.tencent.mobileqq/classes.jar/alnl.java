@@ -1,40 +1,27 @@
-import com.tencent.mobileqq.util.FaceInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1.1.1;
 
 public class alnl
-  implements alkr
+  implements Animation.AnimationListener
 {
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  public alnl(ApolloSlaveViewBinder.1 param1) {}
   
-  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (paramObject == null)
-      {
-        paramObject = null;
-        a(paramBoolean, paramObject);
-      }
-    }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        return;
-        paramObject = (FaceInfo)paramObject;
-      }
-    }
-    if (paramObject == null) {}
-    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
-    {
-      b(paramBoolean, paramObject);
-      return;
-    }
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloSlaveViewBinder.1.1.1(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnl
  * JD-Core Version:    0.7.0.1
  */

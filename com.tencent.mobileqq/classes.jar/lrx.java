@@ -2,39 +2,39 @@ import com.tencent.mobileqq.utils.SecUtil;
 import java.io.IOException;
 
 class lrx
-  implements bapx
+  implements baug
 {
-  public void onResp(baqw parambaqw)
+  public void onResp(bavf parambavf)
   {
-    Object localObject = (lry)parambaqw.jdField_a_of_type_Baqv.a();
+    Object localObject = (lry)parambavf.jdField_a_of_type_Bave.a();
     lek.c("EffectBeautyTools", "download file call back. file = " + ((lry)localObject).a);
-    if (parambaqw.jdField_a_of_type_Int != 0)
+    if (parambavf.jdField_a_of_type_Int != 0)
     {
-      lek.c("EffectBeautyTools", "download file faild. errcode = " + parambaqw.b);
+      lek.c("EffectBeautyTools", "download file faild. errcode = " + parambavf.b);
       return;
     }
-    if (!((lry)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
+    if (!((lry)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
     {
       lek.c("EffectBeautyTools", "download file faild : md5 is not match.");
-      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
       return;
     }
     lek.c("EffectBeautyTools", "download file successed.");
     try
     {
       localObject = len.h();
-      bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
-      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+      bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
       return;
     }
-    catch (IOException parambaqw)
+    catch (IOException parambavf)
     {
-      parambaqw.printStackTrace();
+      parambavf.printStackTrace();
       lek.c("EffectBeautyTools", "unzip file faild.");
     }
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

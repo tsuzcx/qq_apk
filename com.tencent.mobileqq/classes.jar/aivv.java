@@ -1,36 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
+import com.tencent.mobileqq.widget.AnimationView;
 
-class aivv
-  implements aivw
+public class aivv
+  extends bewx
 {
-  aivv(aivu paramaivu) {}
+  public aivv(RedPacketKSongFragment.10.1 param1) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    int i = 1;
-    aivu localaivu = this.a;
-    localaivu.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
+    if (!this.a.a.a.c())
     {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Aivx != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Aivx;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
+      if (paramBoolean) {
+        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
       }
     }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
+    else {
       return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
     }
+    this.a.a.a.g();
   }
 }
 

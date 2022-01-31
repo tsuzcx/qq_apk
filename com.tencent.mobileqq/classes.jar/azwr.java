@@ -1,31 +1,23 @@
-import java.util.Iterator;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/studymode/ModeSwitchManager$simpleUIObserver$1", "Lcom/tencent/mobileqq/simpleui/SimpleUIObserver;", "onReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onSwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azwr
-  extends azia
+class azwr
+  implements View.OnTouchListener
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    this.a.a(false);
-    if (azwu.b())
-    {
-      this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-      return;
-    }
-    Iterator localIterator = ((Iterable)azwl.a(this.a)).iterator();
-    while (localIterator.hasNext()) {
-      ((azwm)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-    }
-  }
+  azwr(azwp paramazwp) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = ((Iterable)azwl.a(this.a)).iterator();
-    while (localIterator.hasNext()) {
-      ((azwm)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
+    if (this.a.a != null)
+    {
+      aetk localaetk = (aetk)this.a.a.get();
+      if (localaetk != null) {
+        return localaetk.onTouch(paramView, paramMotionEvent);
+      }
     }
+    return false;
   }
 }
 

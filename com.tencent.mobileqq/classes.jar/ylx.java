@@ -1,25 +1,21 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class ylx
-  implements TVK_IMediaPlayer.OnErrorListener
+final class ylx
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public ylx(TribeVideoPlugin paramTribeVideoPlugin, yme paramyme) {}
+  ylx(Window paramWindow) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    QLog.e("TribeVideoPlugin", 2, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " what = " + paramInt2 + " position = " + paramInt3 + " extra = " + paramString);
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
     {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(7, yme.a(this.jdField_a_of_type_Yme));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = yme.a(this.jdField_a_of_type_Yme);
-      paramTVK_IMediaPlayer.what = 7;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
-    return false;
   }
 }
 

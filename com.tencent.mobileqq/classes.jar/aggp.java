@@ -1,10 +1,49 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aggp
+public abstract class aggp
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  public int a;
+  public Context a;
+  protected BaseChatPie a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  public int b;
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public aggp(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
+  {
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
+  }
 }
 
 

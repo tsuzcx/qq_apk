@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-class apol
-  implements aubp<Emoticon>
+public class apol
 {
-  apol(apoj paramapoj, int paramInt, String paramString) {}
+  public static int a = 300;
+  public static int b = 300;
   
-  public void a(Emoticon paramEmoticon)
+  public static String a(String paramString)
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
-    {
-      this.jdField_a_of_type_Apoj.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Apoj.a(paramEmoticon);
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+    return alof.bi + amqy.a(paramString);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 

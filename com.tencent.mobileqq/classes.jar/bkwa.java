@@ -1,48 +1,13 @@
-import java.io.File;
-
-public class bkwa
-  extends bkvu
+class bkwa
+  implements yyi
 {
-  public String o;
-  public String p;
+  bkwa(bkvx parambkvx, Runnable paramRunnable) {}
   
-  public String a()
+  public void a()
   {
-    File localFile = new File(this.p);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    return this.p + File.separator + this.f;
-  }
-  
-  public String b()
-  {
-    File localFile = new File(this.p);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.p + File.separator;
-  }
-  
-  public String c()
-  {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator + this.f;
-  }
-  
-  public boolean d()
-  {
-    Object localObject = new File(a());
-    if (!((File)localObject).exists()) {}
-    do
-    {
-      return false;
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length <= 0));
-    return true;
   }
 }
 

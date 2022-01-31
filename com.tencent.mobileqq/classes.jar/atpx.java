@@ -1,38 +1,38 @@
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import java.util.List;
 
-public class atpx
-  implements TencentMap.OnMapLoadedCallback
+class atpx
+  extends ameq
 {
-  public atpx(FloatMapWidget paramFloatMapWidget) {}
+  atpx(atpw paramatpw) {}
   
-  public void onMapLoaded()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = FloatMapWidget.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((atlf)localObject).a() });
-    }
-    if (((atlf)localObject).a() != null)
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
     {
-      localObject = FloatMapWidget.b(this.a).a();
       if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
       }
-      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
-        break label136;
-      }
-      this.a.a(false, null);
+      atso.a(this.a.app, 1, paramString);
     }
-    for (;;)
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    super.b(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
     {
-      FloatMapWidget.a(this.a, true);
-      FloatMapWidget.a(this.a);
-      return;
-      label136:
-      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        QQToast.a(localBaseActivity, 2131693355, 1).a();
+      }
+      atso.a(this.a.app, 1, paramString);
     }
   }
 }

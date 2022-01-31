@@ -1,38 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 
-class asml
-  implements DialogInterface.OnClickListener
+public class asml
+  implements View.OnClickListener
 {
-  asml(asmj paramasmj, Uri paramUri, String paramString, InputStream paramInputStream, long paramLong) {}
+  public asml(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    if (QQGamePubAccountFragment.a(this.a) != null)
     {
-      asmj.a(this.jdField_a_of_type_Asmj, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Asmj.b = false;
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("UriParserPathHelper", 1, "system share.copy file error", paramDialogInterface);
-      if (asmj.jdField_a_of_type_JavaLangString != null) {}
-    }
-    for (paramDialogInterface = this.jdField_a_of_type_Asmj.jdField_a_of_type_AndroidContentContext.getString(2131720024);; paramDialogInterface = asmj.jdField_a_of_type_JavaLangString)
-    {
-      asmj.a(this.jdField_a_of_type_Asmj, paramDialogInterface);
-      if (asmj.a(this.jdField_a_of_type_Asmj) == null) {
-        break;
+      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
+      QQGamePubAccountFragment.a(this.a).setVisibility(8);
+      if (this.a.a != null) {
+        this.a.a.setCurrentItem(0);
       }
-      asmj.a(this.jdField_a_of_type_Asmj).a(this.jdField_a_of_type_AndroidNetUri);
-      asmj.a(this.jdField_a_of_type_Asmj, null);
-      return;
     }
+    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
+    aahi.a(akwd.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
   }
 }
 

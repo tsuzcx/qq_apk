@@ -1,19 +1,8 @@
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-
-public class xvo
-  implements azjq
+public abstract interface xvo
 {
-  public xvo(QRLoginMgrActivity paramQRLoginMgrActivity, xwv paramxwv) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Xwv);
-  }
-  
-  public void b()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Xwv);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

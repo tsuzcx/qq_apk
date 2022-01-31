@@ -1,36 +1,10 @@
-import android.database.DataSetObserver;
-import android.widget.BaseAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public abstract class bhyb
-  extends BaseAdapter
-  implements bhyi
+public abstract interface bhyb
 {
-  private final bhyd a = new bhyd(this);
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.a.notifyChanged();
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    this.a.notifyInvalidated();
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.registerObserver(paramDataSetObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.unregisterObserver(paramDataSetObserver);
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

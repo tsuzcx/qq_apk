@@ -3,7 +3,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class ncf
-  extends bavo
+  extends bazx
 {
   public BidDownloader a;
   

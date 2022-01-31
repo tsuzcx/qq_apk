@@ -1,8 +1,17 @@
-import java.util.List;
-
-public abstract interface arkx<M>
+class arkx
+  implements arip
 {
-  public abstract void a(List<M> paramList, int paramInt, arld paramarld);
+  arkx(arkq paramarkq) {}
+  
+  public void a()
+  {
+    this.a.a(false, arqo.a(this.a.a.a()), this.a.c(), new arky(this));
+  }
+  
+  public void b()
+  {
+    this.a.v();
+  }
 }
 
 

@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class acvj
-  implements bhqf
+public class acvj
+  implements View.OnClickListener
 {
-  acvj(acvg paramacvg) {}
+  public acvj(EditActivity paramEditActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    azmj.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
+    this.a.finish();
   }
 }
 

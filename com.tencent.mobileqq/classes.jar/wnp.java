@@ -1,6 +1,13 @@
-public abstract interface wnp
+class wnp
+  extends xwf
 {
-  public abstract void a(wmu paramwmu);
+  wnp(wno paramwno) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.b();
+    return true;
+  }
 }
 
 

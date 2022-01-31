@@ -1,51 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgRsp;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDownloadRspItem;
+import cooperation.weiyun.sdk.download.DownloadType;
+import java.util.Iterator;
+import java.util.List;
 
 class bkjh
-  implements blno
+  implements bkkj<WeiyunPB.DiskFileBatchDownloadMsgRsp>
 {
-  bkjh(bkjf parambkjf) {}
+  bkjh(bkjg parambkjg, bkkl parambkkl, bkld parambkld, DownloadType paramDownloadType) {}
   
-  public void a(blob paramblob) {}
-  
-  public void a(blob paramblob, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(int paramInt, String paramString, WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
-    }
-    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
-      paramBundle = (EffectsCameraCaptureView)this.a.a;
-    }
-    try
-    {
-      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
-      if (paramBundle != null)
-      {
-        paramblob = bkjf.a(this.a, paramblob);
-        paramBundle.setWatermarkPath(paramblob);
-        if (QLog.isColorLevel()) {
-          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + paramblob);
-        }
-      }
-      return;
-    }
-    catch (Throwable paramblob)
-    {
-      QLog.e("QIMEmojiRedPacketCameraCapture", 2, paramblob.getStackTrace());
-    }
+    this.jdField_a_of_type_Bkld.a(this.jdField_a_of_type_Bkkl, false, paramInt, paramString);
   }
   
-  public void a(bloe parambloe, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(blol paramblol, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bncq parambncq)
+  public void a(WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
+    Object localObject;
+    if ((paramDiskFileBatchDownloadMsgRsp != null) && (paramDiskFileBatchDownloadMsgRsp.file_list != null))
+    {
+      localObject = paramDiskFileBatchDownloadMsgRsp.file_list.get().iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        paramDiskFileBatchDownloadMsgRsp = (WeiyunPB.DiskFileDownloadRspItem)((Iterator)localObject).next();
+      } while ((paramDiskFileBatchDownloadMsgRsp == null) || (!TextUtils.equals(paramDiskFileBatchDownloadMsgRsp.file_id.get(), this.jdField_a_of_type_Bkkl.jdField_a_of_type_JavaLangString)));
+    }
+    for (;;)
+    {
+      if (paramDiskFileBatchDownloadMsgRsp == null)
+      {
+        this.jdField_a_of_type_Bkld.a(this.jdField_a_of_type_Bkkl, false, 1828004, alud.a(2131715466));
+        return;
+      }
+      localObject = paramDiskFileBatchDownloadMsgRsp.cookie_name.get();
+      String str = paramDiskFileBatchDownloadMsgRsp.cookie_value.get();
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str))) {}
+      for (localObject = "";; localObject = (String)localObject + '=' + str)
+      {
+        this.jdField_a_of_type_Bkkl.a(paramDiskFileBatchDownloadMsgRsp.server_name.get(), paramDiskFileBatchDownloadMsgRsp.server_port.get(), (String)localObject, paramDiskFileBatchDownloadMsgRsp.download_url.get(), paramDiskFileBatchDownloadMsgRsp.video_url.get(), "0");
+        if (this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadType == DownloadType.FILE_ORDINARY) {
+          this.jdField_a_of_type_Bkkl.jdField_a_of_type_Bkkn.c = bkko.a(this.jdField_a_of_type_Bkkl.jdField_a_of_type_Bkkn.c);
+        }
+        this.jdField_a_of_type_Bkld.a(this.jdField_a_of_type_Bkkl, true, 0, null);
+        return;
+      }
+      paramDiskFileBatchDownloadMsgRsp = null;
     }
   }
 }

@@ -1,17 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adrr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adrr(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

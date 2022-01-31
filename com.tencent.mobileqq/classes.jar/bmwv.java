@@ -1,38 +1,66 @@
-import android.app.Activity;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import java.util.List;
 
 public class bmwv
+  extends bmwj<bmwc>
+  implements View.OnClickListener
 {
-  public final double a;
-  public final float a;
-  public final int a;
-  public final String a;
-  public final WeakReference<Activity> a;
-  public final boolean a;
-  public final double b;
-  public final int b;
-  public final String b;
-  public final boolean b;
-  public final int c;
-  
-  public bmwv(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
+  public bmwv(Context paramContext, FaceListPage paramFaceListPage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramContext, paramFaceListPage);
   }
   
-  public String toString()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
+    if (this.jdField_a_of_type_Bmvv == null) {
+      return paramView;
+    }
+    if (paramView == null) {}
+    for (paramView = new bmww(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((bmwc)this.jdField_a_of_type_Bmvv).a(), ((bmwc)this.jdField_a_of_type_Bmvv).a(), this);; paramView = (bmww)paramView)
+    {
+      paramView.a((bmwc)this.jdField_a_of_type_Bmvv, paramInt, getCount(), a());
+      return paramView;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject1 = (ImageView)paramView.findViewById(2131369820);
+    int i = ((Integer)((ImageView)localObject1).getTag(2131377441)).intValue();
+    paramView = (bmwd)((bmwc)this.jdField_a_of_type_Bmvv).jdField_a_of_type_JavaUtilList.get(i);
+    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131377419);
+    if ((localObject2 != null) && (((Boolean)localObject2).booleanValue()))
+    {
+      paramView.a = ((ImageView)localObject1).getDrawable();
+      localObject2 = paramView.a;
+      int j;
+      int k;
+      if (localObject2 != null)
+      {
+        ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
+        i = ((Drawable)localObject2).getIntrinsicWidth();
+        j = ((ImageView)localObject1).getWidth();
+        k = ((ImageView)localObject1).getPaddingLeft();
+        if (j <= i) {
+          break label195;
+        }
+      }
+      label195:
+      for (float f = (((j - i) / 2 - k) * 2 + i) / i;; f = (i - (k + (i - j) / 2) * 2) / i)
+      {
+        f = (float)(f * ((bmwc)this.jdField_a_of_type_Bmvv).jdField_a_of_type_Double);
+        localObject1 = blzk.a();
+        this.jdField_a_of_type_Blsr.a(paramView, ((blzl)localObject1).a, ((blzl)localObject1).b, f);
+        return;
+      }
+    }
+    wxe.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
   }
 }
 

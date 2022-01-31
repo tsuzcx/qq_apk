@@ -1,65 +1,42 @@
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import java.util.List;
 
-public class xex
-  implements IEventReceiver
+class xex
+  implements LocationListener
 {
-  public View.OnClickListener a;
-  public final View a;
-  public ImageButton a;
-  public TextView a;
-  public XEditTextEx a;
-  public String a;
-  public xfa a;
+  xex(xet paramxet) {}
   
-  public xex(View paramView)
+  public void onLocationChanged(Location paramLocation)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a(paramView);
+    if (paramLocation != null)
+    {
+      wxe.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        wxe.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
+      return;
+    }
+    wxe.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  private void a(View paramView)
+  public void onProviderDisabled(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363042));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364662));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365599));
-    paramView = new SpannableString(alpo.a(2131711180));
-    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new xez(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new xey(this));
+    wxe.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
   }
   
-  public int a()
+  public void onProviderEnabled(String paramString)
   {
-    return this.jdField_a_of_type_AndroidViewView.getVisibility();
+    wxe.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
   }
   
-  public void a(int paramInt)
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public boolean isValidate()
-  {
-    return true;
+    wxe.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.ark.ark.VariantWrapper;
 
-class anih
-  implements anip
+public abstract interface anih
 {
-  anih(anid paramanid, anin paramanin, anip paramanip, String paramString) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Anip.a(true);
-      return;
-    }
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString }));
-    anid.a(this.jdField_a_of_type_Anid, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin, new anii(this));
-  }
+  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
 }
 
 

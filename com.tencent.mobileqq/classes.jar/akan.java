@@ -1,34 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class akan
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public akan(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public akan(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      QQToast.a(BaseApplication.getContext(), 1, 2131694766, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_Bepp == null) {
-        this.a.jdField_a_of_type_Bepp = new bepp(this.a, this.a.getTitleBarHeight());
-      }
-      this.a.jdField_a_of_type_Bepp.c(2131699848);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bepp.isShowing()));
-    this.a.jdField_a_of_type_Bepp.show();
+    paramDialogInterface.dismiss();
+    ((amdu)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
+    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
   }
 }
 

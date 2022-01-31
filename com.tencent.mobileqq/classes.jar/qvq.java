@@ -45,7 +45,7 @@ public class qvq
         if (!localqvx.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
           break label244;
         }
-        paramView.setContentDescription(localqvx.d.getText().toString() + alpo.a(2131714122));
+        paramView.setContentDescription(localqvx.d.getText().toString() + alud.a(2131714134));
       }
       label169:
       this.a.notifyDataSetChanged();
@@ -66,7 +66,7 @@ public class qvq
       this.a.a.remove(localObject);
       break label116;
       label244:
-      paramView.setContentDescription(localqvx.d.getText().toString() + alpo.a(2131714132));
+      paramView.setContentDescription(localqvx.d.getText().toString() + alud.a(2131714144));
       break label169;
       label284:
       this.a.a();

@@ -1,17 +1,15 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
 public class addj
-  implements View.OnCreateContextMenuListener
+  implements View.OnClickListener
 {
-  public addj(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public addj(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void onClick(View paramView)
   {
-    paramContextMenu.clear();
+    this.a.finish();
   }
 }
 

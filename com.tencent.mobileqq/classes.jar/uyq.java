@@ -1,14 +1,18 @@
-import java.util.List;
+import com.tribe.async.reactive.StreamFunction;
 
-public class uyq
-  extends ugz
+class uyq
+  extends StreamFunction<uyg, uyg>
 {
-  public List<String> a;
-  public List<vbu> b;
+  int jdField_a_of_type_Int = 0;
   
-  public String toString()
+  uyq(uyl paramuyl) {}
+  
+  protected void a(uyg paramuyg)
   {
-    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    wxe.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramuyg.a);
+    notifyResult(paramuyg);
   }
 }
 

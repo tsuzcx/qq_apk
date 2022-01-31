@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import advd;
-import bcxb;
+import adzs;
+import bdbk;
 
 public class SubAccountBindActivity$5$1
   implements Runnable
 {
-  public SubAccountBindActivity$5$1(advd paramadvd, String paramString, int paramInt) {}
+  public SubAccountBindActivity$5$1(adzs paramadzs, String paramString, int paramInt) {}
   
   public void run()
   {
-    bcxb localbcxb = bcxb.a(this.jdField_a_of_type_Advd.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Advd.a.runOnUiThread(new SubAccountBindActivity.5.1.1(this, localbcxb));
+    bdbk localbdbk = bdbk.a(this.jdField_a_of_type_Adzs.a.app, 1, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Adzs.a.runOnUiThread(new SubAccountBindActivity.5.1.1(this, localbdbk));
   }
 }
 

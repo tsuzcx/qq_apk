@@ -3,7 +3,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 
 public class qor
-  implements batz
+  implements bayi
 {
   public qor(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   

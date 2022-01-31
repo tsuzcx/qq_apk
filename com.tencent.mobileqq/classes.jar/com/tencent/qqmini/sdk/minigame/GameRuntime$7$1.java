@@ -1,23 +1,23 @@
 package com.tencent.qqmini.sdk.minigame;
 
 import android.graphics.Bitmap;
-import bgib;
-import bgkx;
-import bgtj;
-import bgtn;
+import bgmi;
+import bgpe;
+import bgxq;
+import bgxu;
 
 public class GameRuntime$7$1
   implements Runnable
 {
-  public GameRuntime$7$1(bgtn parambgtn, Bitmap paramBitmap) {}
+  public GameRuntime$7$1(bgxu parambgxu, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bgtn.jdField_a_of_type_Bgib != null) {
-      this.jdField_a_of_type_Bgtn.jdField_a_of_type_Bgib.onGetScreenshot(bgkx.a(bgtj.a(this.jdField_a_of_type_Bgtn.jdField_a_of_type_Bgtj), this.jdField_a_of_type_AndroidGraphicsBitmap));
+    if (this.jdField_a_of_type_Bgxu.jdField_a_of_type_Bgmi != null) {
+      this.jdField_a_of_type_Bgxu.jdField_a_of_type_Bgmi.onGetScreenshot(bgpe.a(bgxq.a(this.jdField_a_of_type_Bgxu.jdField_a_of_type_Bgxq), this.jdField_a_of_type_AndroidGraphicsBitmap));
     }
-    bgtj.a(this.jdField_a_of_type_Bgtn.jdField_a_of_type_Bgtj).isGettingScreenShot = false;
-    this.jdField_a_of_type_Bgtn.jdField_a_of_type_Bgtj.h();
+    bgxq.a(this.jdField_a_of_type_Bgxu.jdField_a_of_type_Bgxq).isGettingScreenShot = false;
+    this.jdField_a_of_type_Bgxu.jdField_a_of_type_Bgxq.h();
   }
 }
 

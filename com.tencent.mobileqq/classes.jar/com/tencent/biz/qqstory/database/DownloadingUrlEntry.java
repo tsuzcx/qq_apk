@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class DownloadingUrlEntry
-  extends awbv
+  extends awge
 {
   public int bIsDownloadCompleted = 0;
   public int compressLevel;
   public int fileType;
-  @awdj
+  @awhs
   public String key;
   public long updatedMs;
   public String url;

@@ -1,16 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONObject;
 
 public class abzt
-  implements CompoundButton.OnCheckedChangeListener
+  extends abzv
 {
-  public abzt(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
+  public abzt(TestAppFragment paramTestAppFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
+    super.onSuccess(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new abzu(this));
   }
 }
 

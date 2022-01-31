@@ -1,35 +1,24 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class bajp
+  extends baje
 {
-  public int a;
-  public String a;
-  private JSONObject a;
-  
-  public bajp(int paramInt, String paramString)
+  public bajp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bajk parambajk)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface, paramChatMessage, parambajk);
   }
   
-  public String a()
+  protected String a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    return this.a.msg;
+  }
+  
+  protected void a(bajf parambajf) {}
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

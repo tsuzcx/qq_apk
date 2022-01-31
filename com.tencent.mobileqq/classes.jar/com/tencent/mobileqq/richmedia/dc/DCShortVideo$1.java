@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import aild;
-import alpo;
+import aips;
+import alud;
 import android.os.Environment;
-import arof;
-import axot;
-import axoy;
-import azav;
+import arso;
+import axtc;
+import axth;
+import azfe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -18,23 +18,23 @@ import java.util.Locale;
 public class DCShortVideo$1
   implements Runnable
 {
-  public DCShortVideo$1(axot paramaxot, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, boolean paramBoolean1, int paramInt3, String paramString4, boolean paramBoolean2) {}
+  public DCShortVideo$1(axtc paramaxtc, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, boolean paramBoolean1, int paramInt3, String paramString4, boolean paramBoolean2) {}
   
   public void run()
   {
-    axoy localaxoy = new axoy();
+    axth localaxth = new axth();
     Object localObject3 = new File(this.jdField_a_of_type_JavaLangString);
     if (!((File)localObject3).exists()) {}
     for (;;)
     {
       return;
-      localaxoy.jdField_a_of_type_Long = ((File)localObject3).length();
-      if (localaxoy.jdField_a_of_type_Long <= 0L) {
+      localaxth.jdField_a_of_type_Long = ((File)localObject3).length();
+      if (localaxth.jdField_a_of_type_Long <= 0L) {
         continue;
       }
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, localaxoy);
-      localaxoy.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      localaxoy.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, localaxth);
+      localaxth.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      localaxth.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
       try
       {
         Object localObject2 = this.jdField_a_of_type_JavaLangString;
@@ -52,8 +52,8 @@ public class DCShortVideo$1
         if (i != -1) {
           localObject2 = ((String)localObject1).substring(0, i);
         }
-        localaxoy.jdField_a_of_type_JavaLangString = ((String)localObject2).replace("/", "//");
-        localObject2 = arof.c(this.jdField_a_of_type_JavaLangString);
+        localaxth.jdField_a_of_type_JavaLangString = ((String)localObject2).replace("/", "//");
+        localObject2 = arso.c(this.jdField_a_of_type_JavaLangString);
         localObject1 = localObject2;
         if (localObject2 != null) {
           localObject1 = ((String)localObject2).toLowerCase(Locale.US);
@@ -76,74 +76,74 @@ public class DCShortVideo$1
         if (((String)localObject1).contains("/tencent/")) {
           if (((String)localObject1).contains("/mobileqq/shortvideo/"))
           {
-            localaxoy.j = 1002;
-            localaxoy.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+            localaxth.j = 1002;
+            localaxth.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
             if (this.jdField_a_of_type_Boolean)
             {
               if (this.jdField_c_of_type_Int != 0) {
                 break label927;
               }
-              localaxoy.jdField_a_of_type_Int = 0;
+              localaxth.jdField_a_of_type_Int = 0;
             }
           }
         }
         for (;;)
         {
-          localaxoy.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-          localaxoy.k = ((int)((System.currentTimeMillis() - new File(this.jdField_a_of_type_JavaLangString).lastModified()) / 60000L));
-          if (localaxoy.k == 0) {
-            localaxoy.k = 1;
+          localaxth.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+          localaxth.k = ((int)((System.currentTimeMillis() - new File(this.jdField_a_of_type_JavaLangString).lastModified()) / 60000L));
+          if (localaxth.k == 0) {
+            localaxth.k = 1;
           }
-          localaxoy.m = VideoEnvironment.jdField_a_of_type_Int;
-          localaxoy.l = (VideoEnvironment.jdField_a_of_type_Azav.jdField_a_of_type_Int + 2000);
+          localaxth.m = VideoEnvironment.jdField_a_of_type_Int;
+          localaxth.l = (VideoEnvironment.jdField_a_of_type_Azfe.jdField_a_of_type_Int + 2000);
           if (QLog.isDevelopLevel()) {
-            QLog.d("DCShortVideo", 4, "[reportSend]url=" + localaxoy.jdField_a_of_type_JavaLangString + ",shortVideoType=" + localaxoy.f + ",shortVideoSourceType = " + localaxoy.j + ",uinType = " + localaxoy.jdField_b_of_type_Int + ",groupMemCount = " + localaxoy.jdField_c_of_type_Int + ",isForward = " + localaxoy.jdField_a_of_type_Boolean + ",isExsit = " + localaxoy.jdField_b_of_type_Boolean + ",age = " + localaxoy.d + ",gender = " + localaxoy.e + ",userType = " + localaxoy.l + ",reprotHour = " + localaxoy.g + ",fileInterval = " + localaxoy.k + ",netType = " + localaxoy.h + ",forwardSourceGroupMemCount = " + localaxoy.i + ",forwardSourceUinType = " + localaxoy.jdField_a_of_type_Int + ",duration = " + localaxoy.jdField_b_of_type_Long + ",fileSize = " + localaxoy.jdField_a_of_type_Long + ",md5 = " + localaxoy.jdField_b_of_type_JavaLangString + ", status=" + localaxoy.m);
+            QLog.d("DCShortVideo", 4, "[reportSend]url=" + localaxth.jdField_a_of_type_JavaLangString + ",shortVideoType=" + localaxth.f + ",shortVideoSourceType = " + localaxth.j + ",uinType = " + localaxth.jdField_b_of_type_Int + ",groupMemCount = " + localaxth.jdField_c_of_type_Int + ",isForward = " + localaxth.jdField_a_of_type_Boolean + ",isExsit = " + localaxth.jdField_b_of_type_Boolean + ",age = " + localaxth.d + ",gender = " + localaxth.e + ",userType = " + localaxth.l + ",reprotHour = " + localaxth.g + ",fileInterval = " + localaxth.k + ",netType = " + localaxth.h + ",forwardSourceGroupMemCount = " + localaxth.i + ",forwardSourceUinType = " + localaxth.jdField_a_of_type_Int + ",duration = " + localaxth.jdField_b_of_type_Long + ",fileSize = " + localaxth.jdField_a_of_type_Long + ",md5 = " + localaxth.jdField_b_of_type_JavaLangString + ", status=" + localaxth.m);
           }
-          localObject1 = new DataReport.ReportTask("ShortVideo.Send", localaxoy.a("ShortVideo.Send"));
+          localObject1 = new DataReport.ReportTask("ShortVideo.Send", localaxth.a("ShortVideo.Send"));
           DataReport.a().a((DataReport.ReportTask)localObject1);
           return;
           if (((String)localObject1).contains("/qq_collection/"))
           {
-            localaxoy.j = 1001;
+            localaxth.j = 1001;
             break;
           }
           if (((String)localObject1).contains("/qqfile_recv/"))
           {
-            localaxoy.j = 1003;
+            localaxth.j = 1003;
             break;
           }
           if ((((String)localObject1).contains("/weixin/")) || (((String)localObject1).contains("/wechat/")) || (((String)localObject1).contains("/micromsg/")))
           {
-            localaxoy.j = 1004;
+            localaxth.j = 1004;
             break;
           }
-          if (aild.a((String)localObject1))
+          if (aips.a((String)localObject1))
           {
-            localaxoy.j = 1005;
+            localaxth.j = 1005;
             break;
           }
-          localaxoy.j = 1006;
+          localaxth.j = 1006;
           break;
           if (((String)localObject1).equalsIgnoreCase(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + File.separator))
           {
-            localaxoy.j = 1002;
+            localaxth.j = 1002;
             break;
           }
-          if ((((String)localObject2).contains("camera")) || (((String)localObject2).equals("dcim")) || (((String)localObject2).equals("100MEDIA")) || (((String)localObject2).equals("100ANDRO")) || (((String)localObject2).contains(alpo.a(2131703254))) || (((String)localObject2).contains(alpo.a(2131703253))) || (((String)localObject2).contains(alpo.a(2131703255))))
+          if ((((String)localObject2).contains("camera")) || (((String)localObject2).equals("dcim")) || (((String)localObject2).equals("100MEDIA")) || (((String)localObject2).equals("100ANDRO")) || (((String)localObject2).contains(alud.a(2131703266))) || (((String)localObject2).contains(alud.a(2131703265))) || (((String)localObject2).contains(alud.a(2131703267))))
           {
-            localaxoy.j = 1007;
+            localaxth.j = 1007;
             break;
           }
-          if (aild.a((String)localObject1))
+          if (aips.a((String)localObject1))
           {
-            localaxoy.j = 1005;
+            localaxth.j = 1005;
             break;
           }
-          localaxoy.j = 1006;
+          localaxth.j = 1006;
           break;
           if (this.jdField_c_of_type_Int == 3000)
           {
-            localaxoy.jdField_a_of_type_Int = 3000;
+            localaxth.jdField_a_of_type_Int = 3000;
           }
           else
           {
@@ -152,11 +152,11 @@ public class DCShortVideo$1
               switch (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.d))
               {
               default: 
-                localaxoy.jdField_a_of_type_Int = 1;
+                localaxth.jdField_a_of_type_Int = 1;
               }
               for (;;)
               {
-                localaxoy.i = 0;
+                localaxth.i = 0;
                 localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
                 if (localObject1 == null) {
                   break;
@@ -165,18 +165,18 @@ public class DCShortVideo$1
                 if (localObject1 == null) {
                   break;
                 }
-                localaxoy.i = ((TroopInfo)localObject1).wMemberNum;
+                localaxth.i = ((TroopInfo)localObject1).wMemberNum;
                 break;
-                localaxoy.jdField_a_of_type_Int = 1;
+                localaxth.jdField_a_of_type_Int = 1;
                 continue;
-                localaxoy.jdField_a_of_type_Int = 3;
+                localaxth.jdField_a_of_type_Int = 3;
                 continue;
-                localaxoy.jdField_a_of_type_Int = 4;
+                localaxth.jdField_a_of_type_Int = 4;
                 continue;
-                localaxoy.jdField_a_of_type_Int = 2;
+                localaxth.jdField_a_of_type_Int = 2;
               }
             }
-            localaxoy.jdField_a_of_type_Int = 9999;
+            localaxth.jdField_a_of_type_Int = 9999;
           }
         }
         return;

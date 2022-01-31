@@ -1,8 +1,15 @@
-public abstract interface bmrw
+import java.io.File;
+import java.io.FilenameFilter;
+
+class bmrw
+  implements FilenameFilter
 {
-  public abstract void b(int paramInt);
+  bmrw(bmru parambmru) {}
   
-  public abstract void h();
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+  }
 }
 
 

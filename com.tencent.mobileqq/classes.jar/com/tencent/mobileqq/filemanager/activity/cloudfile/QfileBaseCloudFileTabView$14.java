@@ -7,7 +7,7 @@ class QfileBaseCloudFileTabView$14
   
   public void run()
   {
-    this.this$0.aB_();
+    this.this$0.ay_();
   }
 }
 

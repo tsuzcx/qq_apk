@@ -35,9 +35,9 @@ public class taa
     if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl)) {
       return paramAbsStructMsg.mMsgUrl;
     }
-    if (agej.b(paramAbsStructMsg.mMsgActionData))
+    if (agiy.b(paramAbsStructMsg.mMsgActionData))
     {
-      paramAbsStructMsg = agej.b(paramAbsStructMsg.mMsgActionData);
+      paramAbsStructMsg = agiy.b(paramAbsStructMsg.mMsgActionData);
       if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2)) {
         return paramAbsStructMsg[1];
       }
@@ -88,24 +88,24 @@ public class taa
     return jdField_a_of_type_Taa;
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, awfy paramawfy)
+  private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, awkh paramawkh)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ShareStructLongMessageManager", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
     }
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Boolean = true;
-    localbaub.jdField_b_of_type_Int = 131078;
-    localbaub.h = 1;
-    localbaub.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-    localbaub.jdField_b_of_type_JavaLangString = paramString1;
-    localbaub.c = paramString2;
-    localbaub.d = paramString3;
-    localbaub.jdField_a_of_type_Int = paramInt1;
-    localbaub.jdField_a_of_type_Long = paramLong;
-    localbaub.e = paramInt2;
-    localbaub.jdField_a_of_type_Awfy = paramawfy;
-    paramQQAppInterface.a().a(localbaub);
+    bayk localbayk = new bayk();
+    localbayk.jdField_a_of_type_Boolean = true;
+    localbayk.jdField_b_of_type_Int = 131078;
+    localbayk.h = 1;
+    localbayk.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    localbayk.jdField_b_of_type_JavaLangString = paramString1;
+    localbayk.c = paramString2;
+    localbayk.d = paramString3;
+    localbayk.jdField_a_of_type_Int = paramInt1;
+    localbayk.jdField_a_of_type_Long = paramLong;
+    localbayk.e = paramInt2;
+    localbayk.jdField_a_of_type_Awkh = paramawkh;
+    paramQQAppInterface.a().a(localbayk);
     return true;
   }
   
@@ -168,10 +168,10 @@ public class taa
         try
         {
           Uri localUri = Uri.parse(str);
-          if (bdre.a().a(localUri.getHost())) {
+          if (bdvn.a().a(localUri.getHost())) {
             return true;
           }
-          bool = bihe.c(localUri.getHost());
+          bool = bill.c(localUri.getHost());
           if (bool) {
             return true;
           }
@@ -217,9 +217,9 @@ public class taa
   
   public static boolean b(AbsStructMsg paramAbsStructMsg)
   {
-    if (agej.b(paramAbsStructMsg.mMsgActionData))
+    if (agiy.b(paramAbsStructMsg.mMsgActionData))
     {
-      paramAbsStructMsg = agej.b(paramAbsStructMsg.mMsgActionData);
+      paramAbsStructMsg = agiy.b(paramAbsStructMsg.mMsgActionData);
       if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2))
       {
         paramAbsStructMsg = paramAbsStructMsg[1];
@@ -255,7 +255,7 @@ public class taa
     ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
   
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, alsi paramalsi, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, alwx paramalwx, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage saveMessage end and pack ShareStructLongMessage start currenttime:" + System.currentTimeMillis());
@@ -281,13 +281,13 @@ public class taa
         }
         paramMessageRecord.extraflag = 32768;
         paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-        paramalsi = paramMessageRecord.frienduin;
+        paramalwx = paramMessageRecord.frienduin;
         int i = paramMessageRecord.istroop;
         long l = paramMessageRecord.uniseq;
-        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramalsi, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+        ((MessageHandler)paramQQAppInterface.a(0)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramalwx, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
         return;
       }
-      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new tab(this, paramMessageRecord, paramQQAppInterface, paramalsi, paramBoolean));
+      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new tab(this, paramMessageRecord, paramQQAppInterface, paramalwx, paramBoolean));
       if (!paramBoolean) {
         break;
       }

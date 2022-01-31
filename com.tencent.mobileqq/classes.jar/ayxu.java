@@ -1,92 +1,186 @@
-import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.search.view.SearchVoiceView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class ayxu
-  extends MSFServlet
+  implements Handler.Callback
 {
-  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
-  {
-    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
-    localtMobileQbossFeedBackInfo.uiUin = paramLong;
-    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
-    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
-    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
-    localtMobileQbossFeedBackInfo.sQua = paramString3;
-    localtMobileQbossFeedBackInfo.sUserID = paramString2;
-    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
-    return localtMobileQbossFeedBackInfo;
-  }
+  public ayxu(SearchVoiceView paramSearchVoiceView) {}
   
-  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
-    paramString2 = new ArrayList(1);
-    paramString2.add(paramString1);
-    return paramString2;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    int i = 3;
+    if (paramMessage == null) {
+      return false;
+    }
+    switch (paramMessage.what)
     {
-      paramIntent = new Bundle();
-      paramIntent.putString("msg", "servlet result code is " + i);
-      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
-      if (i != 1000) {
-        break label152;
+    }
+    for (;;)
+    {
+      return true;
+      SearchVoiceView.a(this.a, 0);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
       }
-      paramFromServiceMsg = bjmg.a(paramFromServiceMsg.getWupBuffer());
-      if (paramFromServiceMsg == null) {
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e -= SearchVoiceView.e(this.a) * 3;
+      if (this.a.e < SearchVoiceView.f(this.a) * 9 / 10) {
+        this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
+      }
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(0, 30L);
+      continue;
+      SearchVoiceView.a(this.a, 1);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      if (this.a.e < SearchVoiceView.g(this.a))
+      {
+        this.a.e += SearchVoiceView.e(this.a);
+        label438:
+        if (this.a.e >= SearchVoiceView.f(this.a) / 10) {
+          break label567;
+        }
+        this.a.e = (SearchVoiceView.f(this.a) / 10);
+      }
+      for (;;)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(1, 30L);
         break;
+        if (this.a.e <= SearchVoiceView.g(this.a)) {
+          break label438;
+        }
+        this.a.e -= SearchVoiceView.e(this.a) * 6;
+        break label438;
+        label567:
+        if (this.a.e > SearchVoiceView.f(this.a) * 9 / 10) {
+          this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
+        }
       }
-      paramIntent.putInt("ret", 0);
-      paramIntent.putSerializable("data", paramFromServiceMsg);
-      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
-      notifyObserver(null, 1008, true, paramIntent, avqu.class);
-      return;
+      SearchVoiceView.a(this.a, 2);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e += SearchVoiceView.e(this.a) * 4;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SearchVoiceView", 2, " handle state = " + SearchVoiceView.h(this.a) + " frontOffsetY = " + this.a.e + " height = " + SearchVoiceView.f(this.a));
+      }
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (this.a.e >= SearchVoiceView.f(this.a)) {}
+      long l2;
+      long l1;
+      for (;;)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        int j = 15;
+        if (SearchVoiceView.a(this.a) != 0L)
+        {
+          l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+          l1 = l2;
+          if (l2 > 30L) {
+            l1 = 0L;
+          }
+          j = (int)l1;
+        }
+        SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, j);
+        break;
+        SearchVoiceView.a(this.a, 0L);
+        i = 2;
+      }
+      SearchVoiceView.a(this.a, 3);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      i = 30;
+      if (SearchVoiceView.a(this.a) != 0L)
+      {
+        l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+        l1 = l2;
+        if (l2 > 30L) {
+          l1 = 0L;
+        }
+        i = (int)l1;
+      }
+      SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(3, i);
+      continue;
+      SearchVoiceView.a(this.a, 4);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 2.0F);
+      SearchVoiceView.d(this.a, SearchVoiceView.g(this.a) - SearchVoiceView.h(this.a) / 2.0F + 2.0F);
+      SearchVoiceView.e(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.i(this.a));
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.f(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.j(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (SearchVoiceView.g(this.a) <= 0.0F)
+      {
+        SearchVoiceView.d(this.a, 0.0F);
+        SearchVoiceView.d(this.a, 0);
+      }
+      for (i = 5;; i = 4)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        SearchVoiceView.a(this.a).removeMessages(3);
+        SearchVoiceView.a(this.a).removeMessages(4);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, 15L);
+        break;
+        SearchVoiceView.d(this.a, (int)(255.0F * (1.0F - SearchVoiceView.g(this.a) / 360.0F)));
+      }
+      SearchVoiceView.a(this.a, 5);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      SearchVoiceView.a(this.a).removeMessages(4);
+      if (SearchVoiceView.a(this.a) != null) {
+        SearchVoiceView.a(this.a).a();
+      }
     }
-    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
-    if (QLog.isColorLevel()) {
-      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
-    }
-    paramIntent.putInt("ret", -2);
-    notifyObserver(null, 1008, false, paramIntent, avqu.class);
-    return;
-    label152:
-    if (QLog.isColorLevel()) {
-      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
-    }
-    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
-    paramIntent.putInt("ret", -3);
-    notifyObserver(null, 1008, false, paramIntent, avqu.class);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
-    int i = paramIntent.getIntExtra("iOperType", 0);
-    Object localObject2 = paramIntent.getStringExtra("sUserID");
-    long l = paramIntent.getLongExtra("uin", 0L);
-    paramIntent = paramIntent.getStringExtra("qua");
-    QLog.d("QbossReportServlet", 2, "qboss onSend");
-    localObject2 = new bjmg(a((String)localObject1, i, (String)localObject2, l, paramIntent));
-    localObject1 = ((bjmg)localObject2).encode();
-    paramIntent = (Intent)localObject1;
-    if (localObject1 == null)
-    {
-      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((bjmg)localObject2).uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + ((bjmg)localObject2).uniKey());
-    paramPacket.putSendData(paramIntent);
   }
 }
 

@@ -1,35 +1,15 @@
-import com.tencent.biz.qqcircle.comment.ItemReplyView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class tts
-  implements uad
+class tts
+  implements Observer<ubz<FeedCloudMeta.StTagInfo>>
 {
-  public tts(ItemReplyView paramItemReplyView) {}
+  tts(ttr paramttr) {}
   
-  public void a(boolean paramBoolean)
+  public void a(@Nullable ubz<FeedCloudMeta.StTagInfo> paramubz)
   {
-    FeedCloudMeta.StComment localStComment;
-    FeedCloudMeta.StReply localStReply;
-    yde localyde;
-    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
-    if (ItemReplyView.a(this.a) != null)
-    {
-      localStComment = ItemReplyView.a(this.a);
-      localStReply = ItemReplyView.a(this.a);
-      localyde = ItemReplyView.a(this.a);
-      localQCircleCommentPraiseLayout = ItemReplyView.a(this.a);
-      if (!paramBoolean) {
-        break label83;
-      }
-    }
-    label83:
-    for (int i = 14;; i = 15)
-    {
-      localyde.a(localQCircleCommentPraiseLayout, i, ItemReplyView.a(this.a), new Object[] { localStComment, localStReply });
-      return;
-    }
+    ttr.a(this.a, paramubz);
   }
 }
 

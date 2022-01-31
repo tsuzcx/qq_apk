@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
 public class adtn
-  implements View.OnClickListener
+  extends Handler
 {
-  public adtn(SigCommentListActivity paramSigCommentListActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(true, true);
-  }
+  public adtn(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

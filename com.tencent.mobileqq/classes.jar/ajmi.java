@@ -1,50 +1,62 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.MessageQueue.IdleHandler;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmi
-  implements MessageQueue.IdleHandler
+  extends ajlr
 {
-  public ajmi(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
-  
-  public boolean queueIdle()
+  public ajmi(Context paramContext)
   {
-    if (azcw.d(azcw.b))
+    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131697855), new Object[] { alud.a(2131716112) });
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
       }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
     }
-    View localView = BaseActivity2.$(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366495);
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.F();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
-    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-    }
-    for (;;)
+    catch (JSONException paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
       }
-      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
-      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      return false;
-      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      } else {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }

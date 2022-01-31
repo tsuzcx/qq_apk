@@ -1,101 +1,25 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-class amvl
-  implements ITransactionCallback
+public abstract class amvl
 {
-  amvl(amvj paramamvj, amxi paramamxi, long paramLong) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public amvl(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    String str = "";
-    for (;;)
-    {
-      synchronized (amvj.a(this.jdField_a_of_type_Amvj))
-      {
-        if (amvj.a(this.jdField_a_of_type_Amvj) != null)
-        {
-          int i = 0;
-          if (i < amvj.a(this.jdField_a_of_type_Amvj).size())
-          {
-            if (((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a.equals(this.jdField_a_of_type_Amxi.a))
-            {
-              paramArrayOfByte = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amvm;
-              str = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a;
-              amvj.a(this.jdField_a_of_type_Amvj).remove(i);
-              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
-              if (paramArrayOfByte != null) {
-                paramArrayOfByte.a(paramInt, str, null);
-              }
-              return;
-            }
-            i += 1;
-          }
-        }
-      }
-      paramArrayOfByte = null;
-    }
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    Object localObject2 = null;
-    String str2 = "";
-    Object localObject3 = amvj.a(this.jdField_a_of_type_Amvj);
-    String str1 = str2;
-    Object localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        if (amvj.a(this.jdField_a_of_type_Amvj) != null)
-        {
-          i = 0;
-          str1 = str2;
-          localObject1 = localObject2;
-          if (i < amvj.a(this.jdField_a_of_type_Amvj).size())
-          {
-            if (!((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a.equals(this.jdField_a_of_type_Amxi.a)) {
-              continue;
-            }
-            localObject1 = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amvm;
-            str1 = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a;
-            amvj.a(this.jdField_a_of_type_Amvj).remove(i);
-          }
-        }
-        paramArrayOfByte = amvj.a(this.jdField_a_of_type_Amvj, paramArrayOfByte, this.jdField_a_of_type_Amxi);
-        if (paramArrayOfByte == null)
-        {
-          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
-          i = 9058;
-          if (localObject1 != null) {
-            ((amvm)localObject1).a(i, str1, paramArrayOfByte);
-          }
-          return;
-          i += 1;
-          continue;
-        }
-        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
-      }
-      finally {}
-      int i = 0;
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Amxi.a);
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Amxi.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
-    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
   }
 }
 

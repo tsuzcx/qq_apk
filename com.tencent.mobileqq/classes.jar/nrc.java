@@ -105,7 +105,7 @@ public class nrc
   
   public static int a(String paramString, AppInterface paramAppInterface)
   {
-    paramString = ((aluw)paramAppInterface.getManager(56)).b(paramString + "");
+    paramString = ((alzl)paramAppInterface.getManager(56)).b(paramString + "");
     if ((paramString != null) && (paramString.extendType == 2)) {
       return 1;
     }
@@ -124,7 +124,7 @@ public class nrc
       localSendMenuEventRequest.key.set(paramString);
       localSendMenuEventRequest.msg_id.set(0L);
       localSendMenuEventRequest.s_type.set(1);
-      localSendMenuEventRequest.versionInfo.set("8.3.3,3,4515");
+      localSendMenuEventRequest.versionInfo.set("8.3.5,3,4555");
       localSendMenuEventRequest.menu_type.set(b(str));
       if (paramBoolean) {
         localSendMenuEventRequest.is_new_menu.set(paramBoolean);
@@ -238,23 +238,23 @@ public class nrc
     localIntent.putExtra("fromAio", true);
     localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weather");
     paramContext.startActivity(localIntent);
-    akce.a().a(paramQQAppInterface, 4);
+    akgt.a().a(paramQQAppInterface, 4);
   }
   
   private void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     if (AudioHelper.b(0))
     {
-      bdcd.a(paramContext, 230, paramContext.getString(2131698758), paramContext.getString(2131698759), new nrp(this), null).show();
+      bdgm.a(paramContext, 230, paramContext.getString(2131698770), paramContext.getString(2131698771), new nrp(this), null).show();
       return;
     }
     if (AudioHelper.a(0))
     {
-      bdcd.a(paramContext, 230, paramContext.getString(2131698758), paramContext.getString(2131698760), new nrq(this), null).show();
+      bdgm.a(paramContext, 230, paramContext.getString(2131698770), paramContext.getString(2131698772), new nrq(this), null).show();
       return;
     }
     paramQQAppInterface.a().b();
-    aepf.a(paramQQAppInterface, (BaseActivity)paramContext, 1, 0);
+    aetu.a(paramQQAppInterface, (BaseActivity)paramContext, 1, 0);
     ((BaseActivity)paramContext).setCanLock(false);
     if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null) {}
     try
@@ -283,10 +283,10 @@ public class nrc
       if (localObject != null)
       {
         localObject = ((ChatFragment)localObject).a();
-        if ((localObject instanceof agot))
+        if ((localObject instanceof agti))
         {
-          localObject = (agot)localObject;
-          ((agot)localObject).y += 1;
+          localObject = (agti)localObject;
+          ((agti)localObject).y += 1;
         }
       }
     }
@@ -381,8 +381,8 @@ public class nrc
       if (((FragmentActivity)localObject).getChatFragment() != null)
       {
         localObject = ((FragmentActivity)localObject).getChatFragment().a();
-        if ((localObject instanceof agot)) {
-          ((agot)localObject).a.b();
+        if ((localObject instanceof agti)) {
+          ((agti)localObject).a.b();
         }
       }
     }
@@ -425,21 +425,21 @@ public class nrc
     Object localObject = Uri.parse(paramString2);
     paramString2 = ((Uri)localObject).getScheme();
     localObject = ((Uri)localObject).getHost();
-    if ((!TextUtils.isEmpty(paramString2)) && (bfij.a(paramString2)))
+    if ((!TextUtils.isEmpty(paramString2)) && (bfms.a(paramString2)))
     {
-      ayup localayup = new ayup();
+      ayyy localayyy = new ayyy();
       int i;
       Bundle localBundle;
       int j;
-      if (ayup.a((String)localObject) == 0)
+      if (ayyy.a((String)localObject) == 0)
       {
         i = 0;
-        localBundle = ayup.a((String)localObject);
+        localBundle = ayyy.a((String)localObject);
         j = localBundle.getInt("a_launch_mode", 268435456);
         if (i == 0) {
           break label136;
         }
-        localayup.a(paramQQAppInterface, paramContext, String.valueOf(l), (String)localObject, paramString2, j);
+        localayyy.a(paramQQAppInterface, paramContext, String.valueOf(l), (String)localObject, paramString2, j);
       }
       for (;;)
       {
@@ -450,7 +450,7 @@ public class nrc
         i = 1;
         break;
         label136:
-        bool = bfij.a(paramContext, paramString2, localBundle, j);
+        bool = bfms.a(paramContext, paramString2, localBundle, j);
       }
     }
     a(paramQQAppInterface, paramContext, paramString1, paramButtonInfo);
@@ -465,7 +465,7 @@ public class nrc
     float f1 = paramMqqHandler.getFloat("search_lbs_logitude", 0.0F);
     float f2 = paramMqqHandler.getFloat("search_lbs_latitude", 0.0F);
     ((PublicAccountHandler)paramQQAppInterface.a(11)).a(0, (int)(f2 * 1000000.0F), (int)(f1 * 1000000.0F), 0);
-    akce.a().a(paramQQAppInterface, 3);
+    akgt.a().a(paramQQAppInterface, 3);
   }
   
   private void a(mobileqq_mp.SendMenuEventRequest paramSendMenuEventRequest)
@@ -478,10 +478,10 @@ public class nrc
     localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
     Object localObject = new PROTOCAL.StQWebReq();
     ((PROTOCAL.StQWebReq)localObject).Seq.set(-1L);
-    ((PROTOCAL.StQWebReq)localObject).qua.set(bizf.a());
-    ((PROTOCAL.StQWebReq)localObject).deviceInfo.set(bize.a().c());
+    ((PROTOCAL.StQWebReq)localObject).qua.set(bjdm.a());
+    ((PROTOCAL.StQWebReq)localObject).deviceInfo.set(bjdl.a().c());
     ((PROTOCAL.StQWebReq)localObject).busiBuff.set(ByteStringMicro.copyFrom(paramSendMenuEventRequest.toByteArray()));
-    String str2 = yfz.a();
+    String str2 = ykm.a();
     if (!TextUtils.isEmpty(str2)) {
       ((PROTOCAL.StQWebReq)localObject).traceid.set(str2);
     }
@@ -506,7 +506,7 @@ public class nrc
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     boolean bool = true;
-    paramQQAppInterface = (aluw)paramQQAppInterface.getManager(56);
+    paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
     PublicAccountInfo localPublicAccountInfo = paramQQAppInterface.b(paramString.toString());
     if (localPublicAccountInfo == null)
     {
@@ -549,21 +549,21 @@ public class nrc
   private void b(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     paramQQAppInterface.a().b();
-    Uri localUri = bcwf.a();
+    Uri localUri = bdao.a();
     if (localUri != null)
     {
-      bhpy localbhpy = bhpy.a((BaseActivity)paramContext);
+      bhuf localbhuf = bhuf.a((BaseActivity)paramContext);
       String[] arrayOfString = paramContext.getResources().getStringArray(2130968665);
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
-        localbhpy.c(arrayOfString[i]);
+        localbhuf.c(arrayOfString[i]);
         i += 1;
       }
-      localbhpy.c(2131690648);
-      localbhpy.a(new nrf(this, paramQQAppInterface, paramContext, localUri, paramSessionInfo, localbhpy));
-      localbhpy.show();
+      localbhuf.c(2131690648);
+      localbhuf.a(new nrf(this, paramQQAppInterface, paramContext, localUri, paramSessionInfo, localbhuf));
+      localbhuf.show();
     }
     for (;;)
     {
@@ -578,8 +578,8 @@ public class nrc
         paramContext.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
         this.jdField_a_of_type_Int = 2;
         return;
-        aepf.a(paramQQAppInterface, (Activity)paramContext, paramSessionInfo, null, null);
-        paramQQAppInterface = (alzf)paramQQAppInterface.a(20);
+        aetu.a(paramQQAppInterface, (Activity)paramContext, paramSessionInfo, null, null);
+        paramQQAppInterface = (amdu)paramQQAppInterface.a(20);
         if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
           paramQQAppInterface.e(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
         }
@@ -599,8 +599,8 @@ public class nrc
       return;
     }
     long l = NetConnInfoCenter.getServerTime();
-    amjk localamjk = paramQQAppInterface.a().a();
-    RecentUser localRecentUser = localamjk.a(paramString, 1008);
+    amnz localamnz = paramQQAppInterface.a().a();
+    RecentUser localRecentUser = localamnz.a(paramString, 1008);
     if (localRecentUser.lastmsgtime < l)
     {
       localRecentUser.lastmsgtime = l;
@@ -608,7 +608,7 @@ public class nrc
         QLog.d("PublicAccountManager", 2, "addPublicAccountToRu->pUin:" + paramString + ", currentTime:" + l);
       }
     }
-    localamjk.a(localRecentUser);
+    localamnz.a(localRecentUser);
     ThreadManager.executeOnSubThread(new PublicAccountManager.15(paramQQAppInterface, paramString));
   }
   
@@ -775,7 +775,7 @@ public class nrc
       {
         paramAppInterface.startServlet(paramContext);
         if (TextUtils.equals("2290230341", String.valueOf(paramLong3))) {
-          ((bjer)paramAppInterface.getManager(293)).a();
+          ((bjiy)paramAppInterface.getManager(293)).a();
         }
       }
       return paramContext;
@@ -827,10 +827,10 @@ public class nrc
       localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_read.GetAccountMenu");
       localObject1 = new PROTOCAL.StQWebReq();
       ((PROTOCAL.StQWebReq)localObject1).Seq.set(-1L);
-      ((PROTOCAL.StQWebReq)localObject1).qua.set(bizf.a());
-      ((PROTOCAL.StQWebReq)localObject1).deviceInfo.set(bize.a().c());
+      ((PROTOCAL.StQWebReq)localObject1).qua.set(bjdm.a());
+      ((PROTOCAL.StQWebReq)localObject1).deviceInfo.set(bjdl.a().c());
       ((PROTOCAL.StQWebReq)localObject1).busiBuff.set(ByteStringMicro.copyFrom(((mobileqq_mp.GetPublicAccountMenuRequest)localObject2).toByteArray()));
-      String str = yfz.a();
+      String str = ykm.a();
       if (!TextUtils.isEmpty(str)) {
         ((PROTOCAL.StQWebReq)localObject1).traceid.set(str);
       }
@@ -963,10 +963,10 @@ public class nrc
       localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
       paramString2 = new PROTOCAL.StQWebReq();
       paramString2.Seq.set(-1L);
-      paramString2.qua.set(bizf.a());
-      paramString2.deviceInfo.set(bize.a().c());
+      paramString2.qua.set(bjdm.a());
+      paramString2.deviceInfo.set(bjdl.a().c());
       paramString2.busiBuff.set(ByteStringMicro.copyFrom(((mobileqq_mp.SendMenuEventRequest)localObject).toByteArray()));
-      String str = yfz.a();
+      String str = ykm.a();
       if (!TextUtils.isEmpty(str)) {
         paramString2.traceid.set(str);
       }
@@ -1026,10 +1026,10 @@ public class nrc
         paramString3.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
         paramString2 = new PROTOCAL.StQWebReq();
         paramString2.Seq.set(-1L);
-        paramString2.qua.set(bizf.a());
-        paramString2.deviceInfo.set(bize.a().c());
+        paramString2.qua.set(bjdm.a());
+        paramString2.deviceInfo.set(bjdl.a().c());
         paramString2.busiBuff.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
-        paramString4 = yfz.a();
+        paramString4 = ykm.a();
         if (!TextUtils.isEmpty(paramString4)) {
           paramString2.traceid.set(paramString4);
         }
@@ -1078,7 +1078,7 @@ public class nrc
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountManager", 2, "reportRecentList recentList= " + (String)localObject);
       }
-      azmj.b(null, "dc01160", "Pb_account_lifeservice", "", "0X800661D", "0X800661D", 0, 0, "", "", (String)localObject, "");
+      azqs.b(null, "dc01160", "Pb_account_lifeservice", "", "0X800661D", "0X800661D", 0, 0, "", "", (String)localObject, "");
       this.jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
       paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
     } while (paramQQAppInterface == null);
@@ -1129,16 +1129,16 @@ public class nrc
       } while (paramGetPublicAccountMenuResponse.toByteArray() == null);
       localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
       localPublicAccountMenuEntity1 = new PublicAccountMenuEntity(paramString, paramGetPublicAccountMenuResponse, l);
-      if (((awbw)localObject).a(PublicAccountMenuEntity.class, paramString) == null) {
+      if (((awgf)localObject).a(PublicAccountMenuEntity.class, paramString) == null) {
         break label391;
       }
-      PublicAccountMenuEntity localPublicAccountMenuEntity2 = (PublicAccountMenuEntity)((awbw)localObject).a(PublicAccountMenuEntity.class, paramString);
+      PublicAccountMenuEntity localPublicAccountMenuEntity2 = (PublicAccountMenuEntity)((awgf)localObject).a(PublicAccountMenuEntity.class, paramString);
       if (localPublicAccountMenuEntity2 == null) {
         break label381;
       }
       localPublicAccountMenuEntity2.clone(localPublicAccountMenuEntity1);
-      ((awbw)localObject).a(localPublicAccountMenuEntity2);
-      ((awbw)localObject).a();
+      ((awgf)localObject).a(localPublicAccountMenuEntity2);
+      ((awgf)localObject).a();
       localObject = paramGetPublicAccountMenuResponse.button_info.get();
       long l = localPublicAccountMenuEntity1.savedDateTime;
       this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
@@ -1152,19 +1152,19 @@ public class nrc
     if (i == 1) {}
     for (paramGetPublicAccountMenuResponse = "icon";; paramGetPublicAccountMenuResponse = "text")
     {
-      azmj.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC2", "0X8005EC2", 0, 0, paramString, paramGetPublicAccountMenuResponse, "", "");
+      azqs.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC2", "0X8005EC2", 0, 0, paramString, paramGetPublicAccountMenuResponse, "", "");
       if ((((List)localObject).size() <= 0) || (((List)localObject).get(0) == null) || (!((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.has()) || (((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get() == null)) {
         break;
       }
-      azmj.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC3", "0X8005EC3", 0, 0, paramString, String.valueOf(((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get().size()), "", "");
+      azqs.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC3", "0X8005EC3", 0, 0, paramString, String.valueOf(((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get().size()), "", "");
       return;
       i = 0;
       break label43;
       label381:
-      ((awbw)localObject).a(localPublicAccountMenuEntity1);
+      ((awgf)localObject).a(localPublicAccountMenuEntity1);
       break label137;
       label391:
-      ((awbw)localObject).a(localPublicAccountMenuEntity1);
+      ((awgf)localObject).a(localPublicAccountMenuEntity1);
       break label137;
       label401:
       i = 0;
@@ -1246,7 +1246,7 @@ public class nrc
           if (!localButtonInfo.url.has()) {
             break label568;
           }
-          paramString1 = azqj.a(localButtonInfo.url.get());
+          paramString1 = azus.a(localButtonInfo.url.get());
         }
         StringBuilder localStringBuilder = ((StringBuilder)localObject).append("MENUID=").append(String.valueOf(paramInt1)).append(";LEVELID=").append(String.valueOf(paramInt2)).append(";NAME=");
         if (!localButtonInfo.name.has()) {
@@ -1276,9 +1276,9 @@ public class nrc
           if (paramString1 != null)
           {
             paramString1 = paramString1.a();
-            if ((paramString1 instanceof agot))
+            if ((paramString1 instanceof agti))
             {
-              paramString1 = (agot)paramString1;
+              paramString1 = (agti)paramString1;
               paramString1.w += 1;
             }
           }
@@ -1348,7 +1348,7 @@ public class nrc
         paramBusinessObserver = "";
         break label733;
       }
-      paramSessionInfo = bdds.a(paramQQAppInterface, paramContext, paramString1);
+      paramSessionInfo = bdib.a(paramQQAppInterface, paramContext, paramString1);
       if (paramSessionInfo == null)
       {
         if (localButtonInfo.actionInfo.appid.has())
@@ -1465,7 +1465,7 @@ public class nrc
     {
       return false;
       this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    } while ((bdcb.e()) || (bdcs.a() <= 1.048576E+008F));
+    } while ((bdgk.e()) || (bdhb.a() <= 1.048576E+008F));
     paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.e();

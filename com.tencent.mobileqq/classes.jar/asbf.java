@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
 public class asbf
-  implements View.OnClickListener
+  implements arzh
 {
-  public asbf(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
+  public asbf(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.onBackEvent();
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
   }
 }
 

@@ -10,9 +10,9 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import blht;
-import blhu;
-import blhv;
+import blmc;
+import blmd;
+import blme;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.player.IPlayer.PlayerStatus;
@@ -27,7 +27,7 @@ public class AEEditorMvClipMenu
   private float jdField_a_of_type_Float = 1.0F;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private blhv jdField_a_of_type_Blhv;
+  private blme jdField_a_of_type_Blme;
   private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
   private IPlayer.PlayerStatus jdField_a_of_type_ComTencentTavPlayerIPlayer$PlayerStatus;
   private TimelineView jdField_a_of_type_ComTencentTavcutTimelineTimelineView;
@@ -56,22 +56,22 @@ public class AEEditorMvClipMenu
   
   private void a(CMTime paramCMTime)
   {
-    if (this.jdField_a_of_type_Blhv != null) {
-      this.jdField_a_of_type_Blhv.a(paramCMTime);
+    if (this.jdField_a_of_type_Blme != null) {
+      this.jdField_a_of_type_Blme.a(paramCMTime);
     }
   }
   
   private void a(CMTimeRange paramCMTimeRange)
   {
-    if (this.jdField_a_of_type_Blhv != null) {
-      this.jdField_a_of_type_Blhv.a(paramCMTimeRange);
+    if (this.jdField_a_of_type_Blme != null) {
+      this.jdField_a_of_type_Blme.a(paramCMTimeRange);
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blhv != null) {
-      this.jdField_a_of_type_Blhv.a(paramBoolean);
+    if (this.jdField_a_of_type_Blme != null) {
+      this.jdField_a_of_type_Blme.a(paramBoolean);
     }
   }
   
@@ -88,12 +88,12 @@ public class AEEditorMvClipMenu
   private void c()
   {
     inflate(getContext(), 2131558541, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370910));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370911));
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView = new TimelineView(getContext(), null, 2130837673, 2130837648, 2130837647, 2130837660, 2130837661, 2130837689, 2130837690);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370929));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370930));
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView = new TimelineView(getContext(), null, 2130837674, 2130837648, 2130837647, 2130837661, 2130837662, 2130837690, 2130837691);
     this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderFrameColor(getResources().getColor(2131165231));
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setIndicatorRes(2130837688);
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setDurationBgRes(2130837691);
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setIndicatorRes(2130837689);
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setDurationBgRes(2130837692);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView);
@@ -106,12 +106,12 @@ public class AEEditorMvClipMenu
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderChangeListener(new blht(this));
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderChangeListener(new blmc(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new blhu(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new blmd(this));
   }
   
   private void g()
@@ -178,9 +178,9 @@ public class AEEditorMvClipMenu
     }
   }
   
-  public void setMvClipMenuListener(blhv paramblhv)
+  public void setMvClipMenuListener(blme paramblme)
   {
-    this.jdField_a_of_type_Blhv = paramblhv;
+    this.jdField_a_of_type_Blme = paramblme;
   }
   
   public void setPlayPosition(CMTime paramCMTime)

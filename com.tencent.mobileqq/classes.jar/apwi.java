@@ -1,45 +1,14 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class apwi
-  implements View.OnTouchListener
+class apwi
 {
-  public apwi(SearchEmoticonFragment paramSearchEmoticonFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (SearchEmoticonFragment.a(this.a).d == 1)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, SearchEmoticonFragment.a(this.a).e, false, false);
-        azmj.b(null, "dc00898", "", "", "0X8009EAF", "0X8009EAF", 0, 0, "", "", "", "");
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (SearchEmoticonFragment.a(this.a).d == 2)
-      {
-        MiniAppLauncher.launchMiniAppById(SearchEmoticonFragment.a(this.a), SearchEmoticonFragment.a(this.a).g, null, null, null, null, 1005);
-        azmj.b(null, "dc00898", "", "", "0X8009EB1", "0X8009EB1", 0, 0, "", "", "", "");
-        continue;
-        if (paramMotionEvent.getAction() == 0)
-        {
-          this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-          azmj.b(null, "dc00898", "", "", "0X8009EAE", "0X8009EAE", 0, 0, "", "", "", "");
-        }
-      }
-    }
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
 }
 
 

@@ -31,9 +31,9 @@ public class spw
       try
       {
         localJSONObject.put("platform", "Android");
-        localJSONObject.put("osVersion", bdcb.e());
-        localJSONObject.put("appName", bdcb.c());
-        localJSONObject.put("appVersion", "8.3.3.4515");
+        localJSONObject.put("osVersion", bdgk.e());
+        localJSONObject.put("appName", bdgk.c());
+        localJSONObject.put("appVersion", "8.3.5.4555");
         DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
         i = (int)(FlexConvertUtils.getScreenHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
         int k = (int)(FlexConvertUtils.getScreenWidth(BaseApplication.getContext()) / localDisplayMetrics.density);
@@ -48,14 +48,14 @@ public class spw
         localJSONObject.put("isDebug", 0);
         localJSONObject.put("navBarHeight", DisplayUtil.getNavigationBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
         localJSONObject.put("deviceBrand", Build.BRAND);
-        localJSONObject.put("appVersionId", "8.3.3");
-        bngs.a(BaseActivity.sTopActivity);
-        if (!bngs.b()) {
+        localJSONObject.put("appVersionId", "8.3.5");
+        bnle.a(BaseActivity.sTopActivity);
+        if (!bnle.b()) {
           continue;
         }
         i = 1;
         localJSONObject.put("isLiuHai", i);
-        if (bdvr.a() != 1) {
+        if (beaa.a() != 1) {
           continue;
         }
         i = j;
@@ -179,7 +179,7 @@ public class spw
     SharedPreferences localSharedPreferences;
     if (!TextUtils.isEmpty(paramString))
     {
-      localSharedPreferences = bjxj.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      localSharedPreferences = bkbq.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {
         QLog.d(a, 1, "failed to getItem");
       }

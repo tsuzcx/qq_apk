@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import aklc;
+import akpr;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.ArrayList;
 
 public class ApolloStoreStabilityReportManager$2
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$2(aklc paramaklc) {}
+  public ApolloStoreStabilityReportManager$2(akpr paramakpr) {}
   
   public void run()
   {
-    aklc.a(this.this$0, false);
-    if (aklc.a(this.this$0).size() > 0) {
-      ThreadManagerV2.excute(aklc.a(this.this$0), 128, null, true);
+    akpr.a(this.this$0, false);
+    if (akpr.a(this.this$0).size() > 0) {
+      ThreadManagerV2.excute(akpr.a(this.this$0), 128, null, true);
     }
   }
 }

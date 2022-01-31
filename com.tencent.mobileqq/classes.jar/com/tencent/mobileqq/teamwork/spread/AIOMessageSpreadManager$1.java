@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.text.TextUtils;
-import baet;
-import baeu;
-import baev;
-import baez;
-import bafb;
-import bafg;
-import bafh;
+import bajc;
+import bajd;
+import baje;
+import baji;
+import bajk;
+import bajp;
+import bajq;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForText;
@@ -17,14 +17,14 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOMessageSpreadManager$1
   implements Runnable
 {
-  public AIOMessageSpreadManager$1(baet parambaet, ChatMessage paramChatMessage) {}
+  public AIOMessageSpreadManager$1(bajc parambajc, ChatMessage paramChatMessage) {}
   
   public void run()
   {
     if (QLog.isDebugVersion()) {
       QLog.i("AIOMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!baet.a(this.this$0, this.a)) {
+    if (!bajc.a(this.this$0, this.a)) {
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "config return false!");
       }
@@ -35,27 +35,27 @@ public class AIOMessageSpreadManager$1
       return;
       if ((this.a instanceof MessageForText))
       {
-        baet.a(this.this$0, new bafg(baet.a(this.this$0), this.a, baet.a(this.this$0)));
+        bajc.a(this.this$0, new bajp(bajc.a(this.this$0), this.a, bajc.a(this.this$0)));
         if (QLog.isDebugVersion()) {
           QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
         }
       }
       for (;;)
       {
-        if (baet.a(this.this$0).a()) {
+        if (bajc.a(this.this$0).a()) {
           break label294;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + baet.a(this.this$0).a() + "] is not support!");
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + bajc.a(this.this$0).a() + "] is not support!");
         return;
         if ((this.a instanceof MessageForFile))
         {
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
           }
-          baet.a(this.this$0, new baez(baet.a(this.this$0), this.a, baet.a(this.this$0)));
+          bajc.a(this.this$0, new baji(bajc.a(this.this$0), this.a, bajc.a(this.this$0)));
         }
         else
         {
@@ -65,18 +65,18 @@ public class AIOMessageSpreadManager$1
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
           }
-          baet.a(this.this$0, new bafh(baet.a(this.this$0), this.a, baet.a(this.this$0)));
+          bajc.a(this.this$0, new bajq(bajc.a(this.this$0), this.a, bajc.a(this.this$0)));
         }
       }
     } while (!QLog.isDebugVersion());
     QLog.i("AIOMessageSpreadManager", 1, "message is unknown");
     return;
     label294:
-    String str = baet.a(this.this$0).a();
+    String str = bajc.a(this.this$0).a();
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "recv new File name is :" + str);
     }
-    Object localObject2 = baet.a(this.this$0).a(baet.a(this.this$0));
+    Object localObject2 = bajc.a(this.this$0).a(bajc.a(this.this$0));
     Object localObject1;
     if (QLog.isDebugVersion())
     {
@@ -108,32 +108,32 @@ public class AIOMessageSpreadManager$1
         if (QLog.isColorLevel()) {
           QLog.i("AIOMessageSpreadManager", 1, "keyWord[" + (String)localObject1 + "] find!");
         }
-        localObject2 = baet.a(this.this$0).a(baet.a(this.this$0));
-        str = baet.a(this.this$0).b(baet.a(this.this$0));
+        localObject2 = bajc.a(this.this$0).a(bajc.a(this.this$0));
+        str = bajc.a(this.this$0).b(bajc.a(this.this$0));
         if ((TextUtils.isEmpty((CharSequence)localObject2)) && (QLog.isColorLevel())) {
           QLog.i("AIOMessageSpreadManager", 1, "tips is null! return, tips[" + (String)localObject2 + "], link[" + str + "]");
         }
         localObject2 = (String)localObject2 + "。" + str;
-        if (((baet.a(this.this$0) instanceof baez)) || ((baet.a(this.this$0) instanceof bafh)))
+        if (((bajc.a(this.this$0) instanceof baji)) || ((bajc.a(this.this$0) instanceof bajq)))
         {
-          baet.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
+          bajc.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
           return;
           i += 1;
           break label455;
         }
-        if (!(baet.a(this.this$0) instanceof bafg)) {
+        if (!(bajc.a(this.this$0) instanceof bajp)) {
           break;
         }
-        baet.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", baet.a(this.this$0).a((String)localObject1));
+        bajc.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", bajc.a(this.this$0).a((String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
       }
-      if ((baet.a(this.this$0) instanceof bafg)) {
+      if ((bajc.a(this.this$0) instanceof bajp)) {
         break;
       }
-      baet.a(this.this$0).a(new baeu(this, str));
+      bajc.a(this.this$0).a(new bajd(this, str));
       return;
       localObject1 = "";
     }

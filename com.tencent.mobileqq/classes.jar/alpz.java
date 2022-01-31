@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
-final class alpz
-  implements DialogInterface.OnClickListener
+class alpz
+  implements Comparator<BaseAddress>
 {
-  alpz(QQAppInterface paramQQAppInterface) {}
+  alpz(alpy paramalpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    paramDialogInterface.dismiss();
-    azmj.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    }
+    return i;
   }
 }
 

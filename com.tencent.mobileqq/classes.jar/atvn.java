@@ -1,349 +1,449 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_808;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_808_web;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_common;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_common_web;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.ReqBody;
+import tencent.im.oidb.cmd0x59f.oidb_0x59f.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+
 public class atvn
-  implements atvm
+  extends alpd
 {
-  /* Error */
-  public void a(java.lang.String paramString)
+  public atvn(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore 5
-    //   5: aconst_null
-    //   6: astore 6
-    //   8: aload_1
-    //   9: ifnonnull +4 -> 13
-    //   12: return
-    //   13: new 17	com/tencent/mobileqq/data/QQEntityManagerFactory
-    //   16: dup
-    //   17: aload_1
-    //   18: invokespecial 19	com/tencent/mobileqq/data/QQEntityManagerFactory:<init>	(Ljava/lang/String;)V
-    //   21: astore 8
-    //   23: aload 8
-    //   25: aload_1
-    //   26: invokevirtual 25	awbx:build	(Ljava/lang/String;)Lalxk;
-    //   29: invokevirtual 30	alxk:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   32: astore 9
-    //   34: aload 9
-    //   36: ldc 32
-    //   38: aconst_null
-    //   39: invokevirtual 37	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   42: astore_3
-    //   43: aload_3
-    //   44: ifnull +165 -> 209
-    //   47: aload_3
-    //   48: invokeinterface 43 1 0
-    //   53: ifeq +156 -> 209
-    //   56: aload 9
-    //   58: aload_3
-    //   59: iconst_0
-    //   60: invokeinterface 47 2 0
-    //   65: invokestatic 52	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   74: pop
-    //   75: goto -28 -> 47
-    //   78: astore_2
-    //   79: aconst_null
-    //   80: astore_2
-    //   81: aconst_null
-    //   82: astore 4
-    //   84: aload_3
-    //   85: ifnull +9 -> 94
-    //   88: aload_3
-    //   89: invokeinterface 61 1 0
-    //   94: aload 4
-    //   96: ifnull +10 -> 106
-    //   99: aload 4
-    //   101: invokeinterface 61 1 0
-    //   106: aload_2
-    //   107: ifnull +9 -> 116
-    //   110: aload_2
-    //   111: invokeinterface 61 1 0
-    //   116: new 63	awdh
-    //   119: dup
-    //   120: aload_1
-    //   121: invokespecial 64	awdh:<init>	(Ljava/lang/String;)V
-    //   124: aload_1
-    //   125: invokevirtual 25	awbx:build	(Ljava/lang/String;)Lalxk;
-    //   128: invokevirtual 30	alxk:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   131: astore 4
-    //   133: aload 6
-    //   135: astore_1
-    //   136: aload 5
-    //   138: astore_2
-    //   139: aload 4
-    //   141: ldc 32
-    //   143: aconst_null
-    //   144: invokevirtual 37	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   147: astore_3
-    //   148: aload_3
-    //   149: ifnull +426 -> 575
-    //   152: aload_3
-    //   153: astore_1
-    //   154: aload_3
-    //   155: astore_2
-    //   156: aload_3
-    //   157: invokeinterface 43 1 0
-    //   162: ifeq +413 -> 575
-    //   165: aload_3
-    //   166: astore_1
-    //   167: aload_3
-    //   168: astore_2
-    //   169: aload 4
-    //   171: aload_3
-    //   172: iconst_0
-    //   173: invokeinterface 47 2 0
-    //   178: invokestatic 52	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   181: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   184: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   187: pop
-    //   188: goto -36 -> 152
-    //   191: astore_3
-    //   192: aload_1
-    //   193: astore_2
-    //   194: aload_3
-    //   195: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   198: aload_1
-    //   199: ifnull -187 -> 12
-    //   202: aload_1
-    //   203: invokeinterface 61 1 0
-    //   208: return
-    //   209: aload 9
-    //   211: ldc 69
-    //   213: aconst_null
-    //   214: invokevirtual 37	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   217: astore 4
-    //   219: aload 4
-    //   221: ifnull +36 -> 257
-    //   224: aload 4
-    //   226: invokeinterface 43 1 0
-    //   231: ifeq +26 -> 257
-    //   234: aload 9
-    //   236: aload 4
-    //   238: iconst_0
-    //   239: invokeinterface 47 2 0
-    //   244: invokestatic 52	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   247: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   250: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   253: pop
-    //   254: goto -30 -> 224
-    //   257: aload 9
-    //   259: ldc 71
-    //   261: aconst_null
-    //   262: invokevirtual 37	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   265: astore 7
-    //   267: aload 7
-    //   269: astore_2
-    //   270: aload_2
-    //   271: ifnull +34 -> 305
-    //   274: aload_2
-    //   275: invokeinterface 43 1 0
-    //   280: ifeq +25 -> 305
-    //   283: aload 9
-    //   285: aload_2
-    //   286: iconst_0
-    //   287: invokeinterface 47 2 0
-    //   292: invokestatic 52	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   295: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   298: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   301: pop
-    //   302: goto -28 -> 274
-    //   305: aload 9
-    //   307: new 73	com/tencent/mobileqq/data/RecentUser
-    //   310: dup
-    //   311: invokespecial 74	com/tencent/mobileqq/data/RecentUser:<init>	()V
-    //   314: invokevirtual 78	com/tencent/mobileqq/data/RecentUser:getTableName	()Ljava/lang/String;
-    //   317: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   320: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   323: pop
-    //   324: aload 9
-    //   326: new 80	com/tencent/mobileqq/data/QCallRecent
-    //   329: dup
-    //   330: invokespecial 81	com/tencent/mobileqq/data/QCallRecent:<init>	()V
-    //   333: invokevirtual 82	com/tencent/mobileqq/data/QCallRecent:getTableName	()Ljava/lang/String;
-    //   336: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   339: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   342: pop
-    //   343: aload 9
-    //   345: new 84	com/tencent/mobileqq/data/TroopAssistantData
-    //   348: dup
-    //   349: invokespecial 85	com/tencent/mobileqq/data/TroopAssistantData:<init>	()V
-    //   352: invokevirtual 86	com/tencent/mobileqq/data/TroopAssistantData:getTableName	()Ljava/lang/String;
-    //   355: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   358: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   361: pop
-    //   362: aload 9
-    //   364: new 88	com/tencent/mobileqq/data/PubAccountAssistantData
-    //   367: dup
-    //   368: invokespecial 89	com/tencent/mobileqq/data/PubAccountAssistantData:<init>	()V
-    //   371: invokevirtual 90	com/tencent/mobileqq/data/PubAccountAssistantData:getTableName	()Ljava/lang/String;
-    //   374: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   377: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   380: pop
-    //   381: aload 9
-    //   383: new 92	com/tencent/biz/pubaccount/troopbarassit/TroopBarData
-    //   386: dup
-    //   387: invokespecial 93	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:<init>	()V
-    //   390: invokevirtual 94	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:getTableName	()Ljava/lang/String;
-    //   393: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   396: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   399: pop
-    //   400: aload 9
-    //   402: new 96	com/tencent/mobileqq/data/NeedHandleUserData
-    //   405: dup
-    //   406: invokespecial 97	com/tencent/mobileqq/data/NeedHandleUserData:<init>	()V
-    //   409: invokevirtual 98	com/tencent/mobileqq/data/NeedHandleUserData:getTableName	()Ljava/lang/String;
-    //   412: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   415: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   418: pop
-    //   419: aload 9
-    //   421: new 100	com/tencent/mobileqq/data/ConversationInfo
-    //   424: dup
-    //   425: invokespecial 101	com/tencent/mobileqq/data/ConversationInfo:<init>	()V
-    //   428: invokevirtual 102	com/tencent/mobileqq/data/ConversationInfo:getTableName	()Ljava/lang/String;
-    //   431: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   434: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   437: pop
-    //   438: aload 9
-    //   440: new 104	com/tencent/mobileqq/data/RecommendContact
-    //   443: dup
-    //   444: invokespecial 105	com/tencent/mobileqq/data/RecommendContact:<init>	()V
-    //   447: invokevirtual 106	com/tencent/mobileqq/data/RecommendContact:getTableName	()Ljava/lang/String;
-    //   450: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   453: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   456: pop
-    //   457: aload 9
-    //   459: new 108	com/tencent/mobileqq/data/SubAccountInfo
-    //   462: dup
-    //   463: invokespecial 109	com/tencent/mobileqq/data/SubAccountInfo:<init>	()V
-    //   466: invokevirtual 110	com/tencent/mobileqq/data/SubAccountInfo:getTableName	()Ljava/lang/String;
-    //   469: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   472: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   475: pop
-    //   476: aload 9
-    //   478: new 112	com/tencent/mobileqq/data/SubAccountMessage
-    //   481: dup
-    //   482: invokespecial 113	com/tencent/mobileqq/data/SubAccountMessage:<init>	()V
-    //   485: invokevirtual 114	com/tencent/mobileqq/data/SubAccountMessage:getTableName	()Ljava/lang/String;
-    //   488: invokestatic 55	awcw:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   491: invokevirtual 58	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
-    //   494: pop
-    //   495: aload 8
-    //   497: invokevirtual 115	awbx:close	()V
-    //   500: aload_3
-    //   501: ifnull +9 -> 510
-    //   504: aload_3
-    //   505: invokeinterface 61 1 0
-    //   510: aload 4
-    //   512: ifnull +10 -> 522
-    //   515: aload 4
-    //   517: invokeinterface 61 1 0
-    //   522: aload_2
-    //   523: ifnull -407 -> 116
-    //   526: aload_2
-    //   527: invokeinterface 61 1 0
-    //   532: goto -416 -> 116
-    //   535: astore_1
-    //   536: aconst_null
-    //   537: astore 4
-    //   539: aconst_null
-    //   540: astore_3
-    //   541: aload_3
-    //   542: ifnull +9 -> 551
-    //   545: aload_3
-    //   546: invokeinterface 61 1 0
-    //   551: aload 4
-    //   553: ifnull +10 -> 563
-    //   556: aload 4
-    //   558: invokeinterface 61 1 0
-    //   563: aload_2
-    //   564: ifnull +9 -> 573
-    //   567: aload_2
-    //   568: invokeinterface 61 1 0
-    //   573: aload_1
-    //   574: athrow
-    //   575: aload_3
-    //   576: ifnull -564 -> 12
-    //   579: aload_3
-    //   580: invokeinterface 61 1 0
-    //   585: return
-    //   586: astore_1
-    //   587: aload_2
-    //   588: ifnull +9 -> 597
-    //   591: aload_2
-    //   592: invokeinterface 61 1 0
-    //   597: aload_1
-    //   598: athrow
-    //   599: astore_1
-    //   600: aconst_null
-    //   601: astore 4
-    //   603: goto -62 -> 541
-    //   606: astore_1
-    //   607: goto -66 -> 541
-    //   610: astore_1
-    //   611: goto -70 -> 541
-    //   614: astore_2
-    //   615: aconst_null
-    //   616: astore_2
-    //   617: aconst_null
-    //   618: astore 4
-    //   620: aconst_null
-    //   621: astore_3
-    //   622: goto -538 -> 84
-    //   625: astore_2
-    //   626: aconst_null
-    //   627: astore_2
-    //   628: goto -544 -> 84
-    //   631: astore 7
-    //   633: goto -549 -> 84
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	636	0	this	atvn
-    //   0	636	1	paramString	java.lang.String
-    //   1	1	2	localObject1	Object
-    //   78	1	2	localException1	java.lang.Exception
-    //   80	512	2	localObject2	Object
-    //   614	1	2	localException2	java.lang.Exception
-    //   616	1	2	localObject3	Object
-    //   625	1	2	localException3	java.lang.Exception
-    //   627	1	2	localObject4	Object
-    //   42	130	3	localCursor1	android.database.Cursor
-    //   191	314	3	localException4	java.lang.Exception
-    //   540	82	3	localObject5	Object
-    //   82	537	4	localObject6	Object
-    //   3	134	5	localObject7	Object
-    //   6	128	6	localObject8	Object
-    //   265	3	7	localCursor2	android.database.Cursor
-    //   631	1	7	localException5	java.lang.Exception
-    //   21	475	8	localQQEntityManagerFactory	com.tencent.mobileqq.data.QQEntityManagerFactory
-    //   32	445	9	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
-    // Exception table:
-    //   from	to	target	type
-    //   47	75	78	java/lang/Exception
-    //   209	219	78	java/lang/Exception
-    //   139	148	191	java/lang/Exception
-    //   156	165	191	java/lang/Exception
-    //   169	188	191	java/lang/Exception
-    //   34	43	535	finally
-    //   139	148	586	finally
-    //   156	165	586	finally
-    //   169	188	586	finally
-    //   194	198	586	finally
-    //   47	75	599	finally
-    //   209	219	599	finally
-    //   224	254	606	finally
-    //   257	267	606	finally
-    //   274	302	610	finally
-    //   305	500	610	finally
-    //   34	43	614	java/lang/Exception
-    //   224	254	625	java/lang/Exception
-    //   257	267	625	java/lang/Exception
-    //   274	302	631	java/lang/Exception
-    //   305	500	631	java/lang/Exception
+    super(paramQQAppInterface);
   }
   
-  public void onDestroy() {}
+  /* Error */
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 6
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aload_2
+    //   7: invokevirtual 19	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   10: ifeq +332 -> 342
+    //   13: new 21	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   16: dup
+    //   17: invokespecial 24	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   20: astore_1
+    //   21: aload_1
+    //   22: aload_3
+    //   23: checkcast 26	[B
+    //   26: checkcast 26	[B
+    //   29: invokevirtual 30	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   32: pop
+    //   33: aload_1
+    //   34: getfield 34	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   37: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   40: ifeq +226 -> 266
+    //   43: aload_1
+    //   44: getfield 34	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   47: invokevirtual 43	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   50: ifne +216 -> 266
+    //   53: new 45	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody
+    //   56: dup
+    //   57: invokespecial 46	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:<init>	()V
+    //   60: astore_3
+    //   61: aload_3
+    //   62: aload_1
+    //   63: getfield 50	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   66: invokevirtual 55	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   69: invokevirtual 61	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   72: invokevirtual 62	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   75: pop
+    //   76: aload_3
+    //   77: getfield 65	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_is_first_login	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   80: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   83: ifeq +214 -> 297
+    //   86: aload_3
+    //   87: getfield 65	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_is_first_login	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   90: invokevirtual 43	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   93: iconst_1
+    //   94: if_icmpne +203 -> 297
+    //   97: iconst_4
+    //   98: anewarray 67	java/lang/Object
+    //   101: astore_1
+    //   102: aload_3
+    //   103: getfield 71	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_reg_mobile	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   106: invokevirtual 74	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   109: ifeq +141 -> 250
+    //   112: aload_3
+    //   113: getfield 71	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_reg_mobile	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   116: invokevirtual 77	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   119: astore_2
+    //   120: aload_1
+    //   121: iconst_0
+    //   122: aload_2
+    //   123: aastore
+    //   124: aload_3
+    //   125: getfield 81	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:msg_contact_bind_info	Ltencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo;
+    //   128: invokevirtual 84	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo:has	()Z
+    //   131: ifeq +124 -> 255
+    //   134: aload_3
+    //   135: getfield 81	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:msg_contact_bind_info	Ltencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo;
+    //   138: invokevirtual 87	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   141: checkcast 83	tencent/im/oidb/cmd0x59f/oidb_0x59f$BindContactInfo
+    //   144: astore_2
+    //   145: aload_1
+    //   146: iconst_1
+    //   147: aload_2
+    //   148: aastore
+    //   149: aload_3
+    //   150: getfield 90	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_gray_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   153: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   156: ifeq +104 -> 260
+    //   159: aload_3
+    //   160: getfield 90	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:uint32_gray_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   163: invokevirtual 43	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   166: istore 4
+    //   168: aload_1
+    //   169: iconst_2
+    //   170: iload 4
+    //   172: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   175: aastore
+    //   176: aload 7
+    //   178: astore_2
+    //   179: aload_3
+    //   180: getfield 99	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_guide_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   183: invokevirtual 74	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   186: ifeq +11 -> 197
+    //   189: aload_3
+    //   190: getfield 99	tencent/im/oidb/cmd0x59f/oidb_0x59f$RspBody:str_guide_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   193: invokevirtual 77	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   196: astore_2
+    //   197: aload_1
+    //   198: iconst_3
+    //   199: aload_2
+    //   200: aastore
+    //   201: iconst_1
+    //   202: istore 5
+    //   204: aload_1
+    //   205: astore_2
+    //   206: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   209: ifeq +29 -> 238
+    //   212: ldc 106
+    //   214: iconst_2
+    //   215: new 108	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   222: ldc 111
+    //   224: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: iload 5
+    //   229: invokevirtual 118	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   232: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   235: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   238: aload_0
+    //   239: sipush 558
+    //   242: iload 5
+    //   244: aload_2
+    //   245: iconst_1
+    //   246: invokevirtual 129	atvn:notifyUI	(IZLjava/lang/Object;Z)V
+    //   249: return
+    //   250: aconst_null
+    //   251: astore_2
+    //   252: goto -132 -> 120
+    //   255: aconst_null
+    //   256: astore_2
+    //   257: goto -112 -> 145
+    //   260: iconst_0
+    //   261: istore 4
+    //   263: goto -95 -> 168
+    //   266: ldc 106
+    //   268: iconst_1
+    //   269: new 108	java/lang/StringBuilder
+    //   272: dup
+    //   273: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   276: ldc 131
+    //   278: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: aload_1
+    //   282: getfield 34	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   285: invokevirtual 43	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   288: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   294: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   297: aconst_null
+    //   298: astore_2
+    //   299: iconst_0
+    //   300: istore 5
+    //   302: goto -96 -> 206
+    //   305: astore_3
+    //   306: aconst_null
+    //   307: astore_1
+    //   308: aload_1
+    //   309: astore_2
+    //   310: iload 6
+    //   312: istore 5
+    //   314: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   317: ifeq -111 -> 206
+    //   320: ldc 106
+    //   322: iconst_2
+    //   323: ldc 139
+    //   325: aload_3
+    //   326: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   329: aload_1
+    //   330: astore_2
+    //   331: iload 6
+    //   333: istore 5
+    //   335: goto -129 -> 206
+    //   338: astore_3
+    //   339: goto -31 -> 308
+    //   342: aconst_null
+    //   343: astore_2
+    //   344: iload 6
+    //   346: istore 5
+    //   348: goto -142 -> 206
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	351	0	this	atvn
+    //   0	351	1	paramToServiceMsg	ToServiceMsg
+    //   0	351	2	paramFromServiceMsg	FromServiceMsg
+    //   0	351	3	paramObject	Object
+    //   166	96	4	i	int
+    //   202	145	5	bool1	boolean
+    //   1	344	6	bool2	boolean
+    //   4	173	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   13	102	305	java/lang/Throwable
+    //   266	297	305	java/lang/Throwable
+    //   102	120	338	java/lang/Throwable
+    //   124	145	338	java/lang/Throwable
+    //   149	168	338	java/lang/Throwable
+    //   168	176	338	java/lang/Throwable
+    //   179	197	338	java/lang/Throwable
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ToServiceMsg localToServiceMsg = makeOIDBPkg("OidbSvc.0x59f", 1439, 1, new oidb_0x59f.ReqBody().toByteArray());
+    localToServiceMsg.extraData.putBoolean("isFirst", paramBoolean);
+    sendPbReq(localToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginWelcomeHandler", 2, "requestGuide [" + paramBoolean + "]");
+    }
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0)) {
+          continue;
+        }
+        oidb_0x59f.RspBody localRspBody = new oidb_0x59f.RspBody();
+        localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+        paramObject = new atvw();
+        int i;
+        if (localRspBody.uint32_addrlist_entrance_flag.has()) {
+          if (localRspBody.uint32_addrlist_entrance_flag.get() != 0)
+          {
+            bool1 = true;
+            paramObject.jdField_b_of_type_Boolean = bool1;
+            if (!localRspBody.msg_guidelines808.has()) {
+              continue;
+            }
+            paramToServiceMsg = (oidb_0x59f.Guidelines_808)localRspBody.msg_guidelines808.get();
+            if (paramToServiceMsg != null)
+            {
+              if (!paramToServiceMsg.uint32_welcomepage_flag.has()) {
+                continue;
+              }
+              if (paramToServiceMsg.uint32_welcomepage_flag.get() == 0) {
+                continue;
+              }
+              bool1 = true;
+              paramObject.jdField_a_of_type_Boolean = bool1;
+              if (!paramToServiceMsg.msg_guidelines_web.has()) {
+                continue;
+              }
+              paramToServiceMsg = (oidb_0x59f.Guidelines_808_web)paramToServiceMsg.msg_guidelines_web.get();
+              if (paramToServiceMsg != null)
+              {
+                if (!paramToServiceMsg.str_web_url.has()) {
+                  continue;
+                }
+                paramFromServiceMsg = paramToServiceMsg.str_web_url.get();
+                if (!TextUtils.isEmpty(paramFromServiceMsg)) {
+                  paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+                }
+                if (!paramToServiceMsg.uint32_friends_recomm_flag.has()) {
+                  continue;
+                }
+                i = paramToServiceMsg.uint32_friends_recomm_flag.get();
+                paramObject.jdField_a_of_type_Int = i;
+                if (!paramToServiceMsg.uint32_groups_recomm_flag.has()) {
+                  continue;
+                }
+                i = paramToServiceMsg.uint32_groups_recomm_flag.get();
+                paramObject.jdField_b_of_type_Int = i;
+              }
+            }
+            paramToServiceMsg = new Object[3];
+            paramToServiceMsg[0] = paramObject;
+          }
+        }
+        try
+        {
+          localatvv = new atvv();
+          if (localRspBody.msg_guidelines813.has())
+          {
+            paramFromServiceMsg = (oidb_0x59f.Guidelines_common)localRspBody.msg_guidelines813.get();
+            if (paramFromServiceMsg != null)
+            {
+              if (!paramFromServiceMsg.msg_guidelines_web.has()) {
+                continue;
+              }
+              paramFromServiceMsg = (oidb_0x59f.Guidelines_common_web)paramFromServiceMsg.msg_guidelines_web.get();
+              if (paramFromServiceMsg != null)
+              {
+                if (!paramFromServiceMsg.str_web_url.has()) {
+                  continue;
+                }
+                paramObject = paramFromServiceMsg.str_web_url.get();
+                localatvv.jdField_a_of_type_JavaLangString = paramObject;
+                if ((!paramFromServiceMsg.uint32_groups_recomm_flag.has()) || (paramFromServiceMsg.uint32_groups_recomm_flag.get() != 1)) {
+                  continue;
+                }
+                localatvv.jdField_a_of_type_Int = 1;
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("LoginWelcomeManager", 2, String.format("813 guide :type %s, url %s", new Object[] { Integer.valueOf(localatvv.jdField_a_of_type_Int), localatvv.jdField_a_of_type_JavaLangString }));
+            }
+            paramToServiceMsg[1] = localatvv;
+            if ((!localRspBody.uint32_need_not_req_nexttime.has()) || (localRspBody.uint32_need_not_req_nexttime.get() != 1)) {
+              continue;
+            }
+            paramToServiceMsg[2] = Boolean.FALSE;
+            bool1 = true;
+            paramFromServiceMsg = paramToServiceMsg;
+            if (QLog.isColorLevel()) {
+              QLog.d("LoginWelcomeManager", 2, "handleRequestGuide, result " + bool1);
+            }
+            notifyUI(559, bool1, paramFromServiceMsg, true);
+            return;
+            bool1 = false;
+            continue;
+            bool1 = false;
+            continue;
+            paramToServiceMsg = null;
+            continue;
+            bool1 = false;
+            continue;
+            bool1 = false;
+            continue;
+            paramToServiceMsg = null;
+            continue;
+            paramFromServiceMsg = "";
+            continue;
+            i = 0;
+            continue;
+            i = 0;
+            continue;
+          }
+          else
+          {
+            paramFromServiceMsg = null;
+            continue;
+          }
+          paramFromServiceMsg = null;
+          continue;
+          paramObject = null;
+          continue;
+          if ((!paramFromServiceMsg.uint32_set_gender.has()) || (paramFromServiceMsg.uint32_set_gender.get() != 1)) {
+            continue;
+          }
+          localatvv.jdField_a_of_type_Int = 2;
+          continue;
+          paramFromServiceMsg = paramToServiceMsg;
+        }
+        catch (Throwable paramObject) {}
+      }
+      catch (Throwable paramObject)
+      {
+        atvv localatvv;
+        paramToServiceMsg = null;
+        continue;
+      }
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LoginWelcomeManager", 2, "handleRequestGuide failed", paramObject);
+        paramFromServiceMsg = paramToServiceMsg;
+        bool1 = bool2;
+        continue;
+        if ((paramFromServiceMsg.uint32_set_birthday.has()) && (paramFromServiceMsg.uint32_set_birthday.get() == 1))
+        {
+          localatvv.jdField_a_of_type_Int = 3;
+        }
+        else if ((paramFromServiceMsg.uint32_set_head.has()) && (paramFromServiceMsg.uint32_set_head.get() == 1))
+        {
+          localatvv.jdField_a_of_type_Int = 4;
+        }
+        else if ((paramFromServiceMsg.uint32_set_school.has()) && (paramFromServiceMsg.uint32_set_school.get() == 1))
+        {
+          localatvv.jdField_a_of_type_Int = 5;
+        }
+        else if ((paramFromServiceMsg.uint32_set_region.has()) && (paramFromServiceMsg.uint32_set_region.get() == 1))
+        {
+          localatvv.jdField_a_of_type_Int = 6;
+        }
+        else if ((paramFromServiceMsg.uint32_set_company.has()) && (paramFromServiceMsg.uint32_set_company.get() == 1))
+        {
+          localatvv.jdField_a_of_type_Int = 7;
+        }
+        else
+        {
+          localatvv.jdField_a_of_type_Int = 0;
+          continue;
+          paramToServiceMsg[2] = Boolean.TRUE;
+          continue;
+          QLog.e("LoginWelcomeManager", 1, "handleRequestGuide sso failed: " + paramToServiceMsg.uint32_result.get());
+          paramFromServiceMsg = null;
+          bool1 = false;
+          continue;
+          paramFromServiceMsg = null;
+          bool1 = bool2;
+        }
+      }
+    }
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return LoginWelcomeManager.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramToServiceMsg.getServiceCmd().equals("OidbSvc.0x59f"))
+    {
+      if (paramToServiceMsg.extraData.getBoolean("isFirst")) {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
 }
 
 

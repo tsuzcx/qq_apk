@@ -1,19 +1,39 @@
-final class aogk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+
+public final class aogk
+  implements Parcelable.Creator<DanmuItemBean>
 {
-  public final int a;
-  public final long a;
-  public final Object a;
-  
-  aogk(long paramLong, int paramInt, Object paramObject)
+  public DanmuItemBean a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    boolean bool = true;
+    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
+    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readLong();
+    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
+      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+      return localDanmuItemBean;
+      bool = false;
+    }
+  }
+  
+  public DanmuItemBean[] a(int paramInt)
+  {
+    return new DanmuItemBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogk
  * JD-Core Version:    0.7.0.1
  */

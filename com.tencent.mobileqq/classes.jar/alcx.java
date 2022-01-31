@@ -1,74 +1,62 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class alcx
-  implements bapx
+@TargetApi(11)
+public class alcx
+  extends EditText
+  implements ActionMode.Callback
 {
-  alcx(alcw paramalcw, String paramString, alcu paramalcu) {}
-  
-  public void onResp(baqw parambaqw)
+  public alcx(Context paramContext)
   {
-    baps localbaps = (baps)parambaqw.jdField_a_of_type_Baqv;
-    if (this.jdField_a_of_type_Alcw.jdField_a_of_type_Baps == localbaps) {
-      this.jdField_a_of_type_Alcw.jdField_a_of_type_Baps = null;
+    super(paramContext);
+    super.setLongClickable(false);
+    super.setTextIsSelectable(false);
+    super.setImeOptions(268435456);
+    if (Build.VERSION.SDK_INT >= 11) {
+      super.setCustomSelectionActionModeCallback(this);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaps.jdField_a_of_type_JavaLangString, Integer.valueOf(parambaqw.jdField_a_of_type_Int), Integer.valueOf(parambaqw.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (parambaqw.jdField_a_of_type_Int == 0)
-    {
-      parambaqw = new File(localbaps.c);
-      if (!parambaqw.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          parambaqw = parambaqw.getParent();
-          bdcs.a(localbaps.c, parambaqw, false);
-          alcv.a(this.jdField_a_of_type_Alcu.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy != null)
-          {
-            this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy.a(100);
-            this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Alcw.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception parambaqw)
-        {
-          parambaqw.printStackTrace();
-        }
-        int i = 0;
-      }
-    } while (this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy == null);
-    this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy.a(2, "");
   }
   
-  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  public void a(int paramInt)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
+    try
     {
-      if (this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy != null) {
-        this.jdField_a_of_type_Alcw.jdField_a_of_type_Alcy.a(i);
-      }
+      super.setSelection(paramInt);
       return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
     }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
+    }
+  }
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public boolean onTextContextMenuItem(int paramInt)
+  {
+    return true;
   }
 }
 

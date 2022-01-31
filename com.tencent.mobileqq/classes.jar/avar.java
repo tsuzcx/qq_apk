@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
 public class avar
-  implements View.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public avar(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public avar(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ShortVideoCommentsView.a(this.a);
+    if (paramInt == 1) {
+      bhsj.b(ChooseInterestTagActivity.a(this.a));
+    }
   }
 }
 

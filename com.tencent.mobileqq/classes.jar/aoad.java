@@ -1,50 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import android.annotation.TargetApi;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
-public class aoad
-  implements aoah
+@TargetApi(11)
+final class aoad
 {
-  public String a()
+  static void a(View paramView, float paramFloat)
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692446);
+    paramView.setPivotX(paramFloat);
   }
   
-  public void a(View paramView, int paramInt)
+  static void b(View paramView, float paramFloat)
   {
-    boolean bool2 = true;
-    Context localContext = paramView.getContext();
-    boolean bool1;
-    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
-    {
-      bool1 = true;
-      if (!(localContext instanceof BaseActivity)) {
-        break label121;
-      }
-      if (((BaseActivity)localContext).isInMultiWindow()) {
-        break label116;
-      }
-      bool1 = bool2;
-    }
-    label116:
-    label121:
-    for (;;)
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      biqv.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
-      birh.b(paramView, 6, 0);
-      birl.a(paramView.getCurrentAccountUin());
-      azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-    }
+    paramView.setPivotY(paramFloat);
+  }
+  
+  static void c(View paramView, float paramFloat)
+  {
+    paramView.setAlpha(paramFloat);
+  }
+  
+  static void d(View paramView, float paramFloat)
+  {
+    paramView.setScaleX(paramFloat);
+  }
+  
+  static void e(View paramView, float paramFloat)
+  {
+    paramView.setScaleY(paramFloat);
+  }
+  
+  static void f(View paramView, float paramFloat)
+  {
+    paramView.setTranslationY(paramFloat);
+  }
+  
+  static void g(View paramView, float paramFloat)
+  {
+    paramView.setX(paramFloat);
   }
 }
 

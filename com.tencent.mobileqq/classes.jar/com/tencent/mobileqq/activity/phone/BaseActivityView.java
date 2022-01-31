@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aigo;
-import aigp;
-import aigq;
-import aigr;
-import aigs;
-import aigt;
-import alpo;
+import aild;
+import aile;
+import ailf;
+import ailg;
+import ailh;
+import aili;
+import alud;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -19,9 +19,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdcd;
-import bdfq;
-import bepp;
+import bdgm;
+import bdjz;
+import bety;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,12 +33,12 @@ public class BaseActivityView
   extends FrameLayout
 {
   public int a;
-  private aigt jdField_a_of_type_Aigt;
+  private aili jdField_a_of_type_Aili;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   protected View a;
   protected ImageView a;
   public TextView a;
-  public bepp a;
+  public bety a;
   private PhoneInnerFrame jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame;
   public BaseActivity a;
   public PhoneContactManagerImp a;
@@ -64,15 +64,15 @@ public class BaseActivityView
     return this.jdField_a_of_type_AndroidViewView.getHeight();
   }
   
-  private void a(aigs paramaigs)
+  private void a(ailh paramailh)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = paramaigs.a();
-    this.d = paramaigs.d();
-    this.jdField_a_of_type_AndroidViewView = paramaigs.a();
-    this.jdField_b_of_type_AndroidViewView = paramaigs.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = paramaigs.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = paramaigs.b();
-    this.jdField_b_of_type_AndroidWidgetTextView = paramaigs.c();
+    this.jdField_c_of_type_AndroidWidgetTextView = paramailh.a();
+    this.d = paramailh.d();
+    this.jdField_a_of_type_AndroidViewView = paramailh.a();
+    this.jdField_b_of_type_AndroidViewView = paramailh.b();
+    this.jdField_a_of_type_AndroidWidgetImageView = paramailh.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = paramailh.b();
+    this.jdField_b_of_type_AndroidWidgetTextView = paramailh.c();
   }
   
   protected View a(int paramInt)
@@ -91,12 +91,12 @@ public class BaseActivityView
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690648);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(alpo.a(2131701305));
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131701317));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     for (;;)
     {
-      this.d.setOnClickListener(new aigo(this));
+      this.d.setOnClickListener(new aild(this));
       this.jdField_a_of_type_Boolean = false;
       return;
       if (this.jdField_a_of_type_Int != 1) {
@@ -104,7 +104,7 @@ public class BaseActivityView
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840182);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840183);
         }
         else if (this.jdField_a_of_type_Int == 5)
         {
@@ -137,18 +137,18 @@ public class BaseActivityView
     if (!a())
     {
       b(paramInt);
-      this.jdField_a_of_type_Aigt.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Aili.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Aigt;
+    Object localObject = this.jdField_a_of_type_Aili;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localObject = ((aigt)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Aigt.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((aili)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Aili.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -179,7 +179,7 @@ public class BaseActivityView
   
   protected void a(Intent paramIntent, PhoneInnerFrame paramPhoneInnerFrame)
   {
-    this.jdField_a_of_type_Aigt = new aigt(this);
+    this.jdField_a_of_type_Aili = new aili(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame = paramPhoneInnerFrame;
     paramIntent = paramPhoneInnerFrame.b();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramIntent.a();
@@ -190,7 +190,7 @@ public class BaseActivityView
   protected void a(String paramString1, String paramString2)
   {
     if (!a()) {
-      bdcd.a(getContext(), 231, paramString1, paramString2, new aigp(this), null).show();
+      bdgm.a(getContext(), 231, paramString1, paramString2, new aile(this), null).show();
     }
   }
   
@@ -208,16 +208,16 @@ public class BaseActivityView
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if ((!a()) && (this.jdField_a_of_type_Bepp == null))
+    if ((!a()) && (this.jdField_a_of_type_Bety == null))
     {
-      this.jdField_a_of_type_Bepp = new bepp(getContext(), a());
-      this.jdField_a_of_type_Bepp.setOnDismissListener(new aigq(this));
+      this.jdField_a_of_type_Bety = new bety(getContext(), a());
+      this.jdField_a_of_type_Bety.setOnDismissListener(new ailf(this));
       if (paramBoolean) {
-        this.jdField_a_of_type_Bepp.setOnKeyListener(new aigr(this));
+        this.jdField_a_of_type_Bety.setOnKeyListener(new ailg(this));
       }
-      this.jdField_a_of_type_Bepp.c(paramInt);
-      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.c(paramInt);
+      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
@@ -246,11 +246,11 @@ public class BaseActivityView
   
   public void g()
   {
-    this.jdField_a_of_type_Aigt.removeMessages(1);
-    if (this.jdField_a_of_type_Bepp != null)
+    this.jdField_a_of_type_Aili.removeMessages(1);
+    if (this.jdField_a_of_type_Bety != null)
     {
-      this.jdField_a_of_type_Bepp.cancel();
-      this.jdField_a_of_type_Bepp = null;
+      this.jdField_a_of_type_Bety.cancel();
+      this.jdField_a_of_type_Bety = null;
     }
   }
   
@@ -258,12 +258,12 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839228);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839229);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      this.jdField_a_of_type_Aigt.removeMessages(3);
-      this.jdField_a_of_type_Aigt.sendEmptyMessageDelayed(3, 120000L);
+      this.jdField_a_of_type_Aili.removeMessages(3);
+      this.jdField_a_of_type_Aili.sendEmptyMessageDelayed(3, 120000L);
     }
   }
   
@@ -271,7 +271,7 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      this.jdField_a_of_type_Aigt.removeMessages(3);
+      this.jdField_a_of_type_Aili.removeMessages(3);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

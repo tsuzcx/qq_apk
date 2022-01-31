@@ -2,21 +2,21 @@ package com.tencent.qqmini.sdk.core.widget.actionsheet;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bgob;
-import bgod;
+import bgsi;
+import bgsk;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(bgob parambgob) {}
+  public ActionSheet$3(bgsi parambgsi) {}
   
   public void run()
   {
-    bgob.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bgob.a(this.this$0).getHeight()));
-    bgob.a(this.this$0).setDuration(200L);
-    bgob.a(this.this$0).setFillAfter(true);
-    bgob.a(this.this$0).startAnimation(bgob.a(this.this$0));
-    bgob.a(this.this$0).setAnimationListener(new bgod(this));
+    bgsi.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bgsi.a(this.this$0).getHeight()));
+    bgsi.a(this.this$0).setDuration(200L);
+    bgsi.a(this.this$0).setFillAfter(true);
+    bgsi.a(this.this$0).startAnimation(bgsi.a(this.this$0));
+    bgsi.a(this.this$0).setAnimationListener(new bgsk(this));
   }
 }
 

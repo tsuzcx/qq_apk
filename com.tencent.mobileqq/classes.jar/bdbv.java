@@ -1,6 +1,12 @@
-public abstract interface bdbv
+class bdbv
+  extends alrl
 {
-  public abstract void a(String paramString);
+  private bdbv(bdbu parambdbu) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+  }
 }
 
 

@@ -1,47 +1,51 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.StructMsgObserver.1;
-import com.tencent.mobileqq.activity.StructMsgObserver.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aduw
-  implements Observer
+  extends awhw
 {
-  public void update(Observable paramObservable, Object paramObject)
+  public aduw(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (!aeif.a) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
     {
-      do
+      if (paramBoolean2)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!aeif.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
-          return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = aeif.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+        RegisterQQNumberActivity.a(this.a, true);
+        RegisterQQNumberActivity.b(this.a);
+        return;
+      }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
+      {
+        RegisterQQNumberActivity.a(this.a);
+        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
+        localIntent.putExtra("phonenum", this.a.a);
+        localIntent.putExtra("key", this.a.b);
+        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_binduin", paramString);
+        this.a.startActivity(localIntent);
+        this.a.finish();
+        return;
+      }
+      RegisterQQNumberActivity.b(this.a);
+      return;
+    }
+    RegisterQQNumberActivity.b(this.a);
   }
 }
 

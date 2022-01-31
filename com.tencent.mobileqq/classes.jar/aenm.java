@@ -1,25 +1,19 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-class aenm
+public class aenm
+  implements aenf
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<aenl> b;
+  public aenm(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public aenm(aenj paramaenj, View paramView, aenl paramaenl)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramaenl);
-  }
-  
-  public aenl a()
-  {
-    return (aenl)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 

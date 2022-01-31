@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.2.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
 public class avgq
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  avgq(avgk paramavgk) {}
+  avgq(avgo paramavgo) {}
   
-  public void onClick(View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    paramView = bhpy.a(this.a.a);
-    paramView.a(2131718435, 1);
-    paramView.c(2131690648);
-    paramView.a(new avgr(this, paramView));
-    paramView.show();
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
+    }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

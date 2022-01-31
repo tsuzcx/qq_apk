@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.database;
 
-import awbv;
-import awdj;
+import awge;
+import awhs;
 
 public class FeedEntry
-  extends awbv
+  extends awge
 {
   public String date;
   public byte[] extraInfo;
-  @awdj
+  @awhs
   public String feedId;
   public int feedSourceTagType;
   public String ownerId;

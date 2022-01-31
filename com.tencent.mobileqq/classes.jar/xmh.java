@@ -1,99 +1,33 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class xmh
 {
-  public static <T> T a(T paramT)
+  TroopInfo a;
+  public boolean a;
+  
+  public xmh(boolean paramBoolean, TroopInfo paramTroopInfo)
   {
-    if (paramT == null) {
-      wsv.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
   }
   
-  public static String a(int paramInt)
+  public static ArrayList<xmh> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    for (;;)
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    int i = 0;
+    while (i < paramArrayList.size())
     {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
+      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
+      xmh localxmh = new xmh(false, localTroopInfo);
+      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
+        localxmh.jdField_a_of_type_Boolean = true;
       }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
+      localArrayList.add(localxmh);
+      i += 1;
     }
+    return localArrayList;
   }
-  
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
-  {
-    if (paramT == null)
-    {
-      paramT = xny.a("StoryAssertUtils Exception!");
-      azlf.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      wsv.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    wsv.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      wsv.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      wsv.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    wsv.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
 }
 
 

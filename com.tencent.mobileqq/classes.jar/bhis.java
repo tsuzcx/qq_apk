@@ -1,53 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.reflect.Method;
 
 public class bhis
-  implements bhjs, IRuntimeInterface
 {
-  private static volatile bhis a;
+  private static final int[] a = { 35, 36 };
+  private static final int[] b = { 26, 27 };
   
-  private bhis()
+  private static boolean a()
   {
-    QSecFramework.a(4L, new bhit(this));
+    return "Meizu".equalsIgnoreCase(Build.MANUFACTURER);
   }
   
-  public static bhis a()
+  public static boolean a(int paramInt)
   {
-    if (a == null) {}
+    return a(paramInt, AppLoaderFactory.g().getContext());
+  }
+  
+  public static boolean a(int paramInt, Context paramContext)
+  {
+    if ((!a()) || (Build.VERSION.SDK_INT < 17)) {}
+    do
+    {
+      return false;
+      paramContext = paramContext.getSystemService("appops");
+    } while ((paramContext == null) || (!paramContext.getClass().getSimpleName().equals("AppOpsManager")));
     try
     {
-      if (a == null) {
-        a = new bhis();
+      Method localMethod = paramContext.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
+      int i = b[paramInt];
+      if (Build.VERSION.SDK_INT < 19) {
+        i = a[paramInt];
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, bhjt parambhjt)
-  {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (parambhjt != null)
-      {
-        mzy.a(localQQAppInterface, new bhiv(paramArrayOfByte, parambhjt), paramArrayOfByte, paramString);
-        return;
+      ApplicationInfo localApplicationInfo = AppLoaderFactory.g().getContext().getApplicationInfo();
+      paramInt = ((Integer)localMethod.invoke(paramContext, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
+      QMLog.d("AudioHelper", "isForbidByRubbishMeizu(), result = " + paramInt);
+      if (paramInt != 0) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
       }
-      mzy.a(localQQAppInterface, new bhiu(this), paramArrayOfByte, paramString);
-      return;
+      return false;
     }
-    catch (Throwable paramString)
+    catch (Exception paramContext)
     {
-      paramString.printStackTrace();
+      QMLog.e("AudioHelper", paramContext.toString());
     }
-  }
-  
-  public String getInterfaceName()
-  {
-    return "CSP";
   }
 }
 

@@ -1,83 +1,34 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
-public abstract class bhxd
-  extends bhxa
+public class bhxd
+  extends AnimatorListenerAdapter
 {
-  protected final int a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
-  protected final int[] e;
+  public bhxd(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public bhxd(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramInt1, paramInt2);
-    this.e = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramArrayOfInt2;
-    this.c = paramArrayOfInt3;
-    this.d = paramArrayOfInt4;
-  }
-  
-  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
-  {
-    Object localObject2 = null;
-    paramObject = null;
-    Object localObject1 = paramObject;
-    if (parambhxc != null)
+    int i = 1;
+    super.onAnimationEnd(paramAnimator);
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      localObject1 = paramObject;
-      if (parambhxc.jdField_a_of_type_Int >= 0)
+      if (albi.a(FitSystemWindowsRelativeLayout.a(this.a)).d == 1) {
+        i = 0;
+      }
+      if (i != 0)
       {
-        if (parambhxc.b >= 0) {
-          break label35;
+        alaz.a(FitSystemWindowsRelativeLayout.a(this.a), "vas_poke", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("placeholder.sprite", 2, "show sprite (normal) in fullscreen.");
         }
-        localObject1 = paramObject;
       }
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+      this.a.removeView(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
     }
-    label35:
-    int i;
-    int j;
-    int k;
-    do
-    {
-      return localObject1;
-      paramObject = localObject2;
-      if ((parambhxc.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-        paramObject = (SimpleTextView)parambhxc.jdField_a_of_type_AndroidViewView;
-      }
-      i = this.c[parambhxc.b];
-      j = this.d[parambhxc.b];
-      k = this.b[parambhxc.b];
-      localObject1 = paramObject;
-    } while (paramObject == null);
-    paramObject.setVisibility(0);
-    paramObject.setText(paramObject.getContext().getResources().getString(i));
-    paramObject.setBackgroundResource(j);
-    paramObject.setId(k);
-    paramObject.setTag("tag_swip_icon_menu_item");
-    paramObject.setTag(-2, Integer.valueOf(i));
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    paramObject.setContentDescription(paramObject.getResources().getString(i));
-    paramObject.setOnClickListener(paramOnClickListener);
-    parambhxc.c = this.e[parambhxc.jdField_a_of_type_Int];
-    parambhxc.d = this.jdField_a_of_type_Int;
-    return paramObject;
-  }
-  
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
   }
 }
 

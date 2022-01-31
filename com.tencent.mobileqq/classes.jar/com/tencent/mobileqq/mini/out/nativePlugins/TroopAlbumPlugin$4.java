@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bjmn;
-import bjmp;
+import bjqu;
+import bjqw;
 
 class TroopAlbumPlugin$4
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ class TroopAlbumPlugin$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    bjmn.a().a().d(this.val$jsonString);
+    bjqu.a().a().d(this.val$jsonString);
   }
 }
 

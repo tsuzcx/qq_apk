@@ -1,77 +1,108 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import cooperation.weiyun.AlbumBackupProxyActivity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqku
-  implements bhvu
+  extends akis
 {
-  public aqku(FileAssistantActivity paramFileAssistantActivity) {}
+  private List<aqkw> a;
   
-  public void a(bhvt parambhvt)
+  public aqku(BaseActivity paramBaseActivity, XListView paramXListView)
   {
-    switch (parambhvt.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambhvt = new Intent(this.a.getApplicationContext(), LiteActivity.class);
-      if (this.a.j) {
-        arng.a("0X8005534");
-      }
-      for (;;)
-      {
-        try
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("category", 12);
-          parambhvt.putExtra("bundle", localBundle);
-          parambhvt.putExtra("from", "FileAssistant");
-          this.a.startActivityForResult(parambhvt, 101);
-          return;
-        }
-        catch (Exception parambhvt)
-        {
-          parambhvt.printStackTrace();
-          return;
-        }
-        arng.a("0X800681A");
-      }
-    case 1: 
-      if (this.a.j) {
-        arng.a("0X8005535");
-      }
-      for (;;)
-      {
-        FileAssistantActivity.b(this.a);
-        return;
-        arng.a("0X800681B");
-      }
-    case 2: 
-      if (this.a.j) {
-        arng.a("0X8005536");
-      }
-      for (;;)
-      {
-        AlbumBackupProxyActivity.a(this.a, this.a.app.getCurrentAccountUin(), "source_qfile_assistant", 10001);
-        FileAssistantActivity.a(this.a, this.a.c, "100160.100162");
-        return;
-        arng.a("0X800681C");
-      }
-    case 3: 
-      arng.a("0X800A15F");
-      parambhvt = new Bundle();
-      parambhvt.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
-      parambhvt.putString("tdsourcetag", "s_qq_myfile_menu_create");
-      TeamWorkDocEditBrowserActivity.a(this.a, parambhvt, false);
-      return;
+    super(paramBaseActivity, paramBaseActivity.app, paramXListView, 1, true);
+    paramXListView.setAdapter(this);
+  }
+  
+  public aqkx a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.size() > paramInt)) {
+      return (aqkx)this.a.get(paramInt);
     }
-    arng.a("0X8005532");
-    arni.a(this.a.app, this.a, "_is_from_qfile_shortcut", this.a.getString(2131692504), 2130843882);
-    armz.b(2131692548);
+    return null;
+  }
+  
+  public void a(aqkx paramaqkx)
+  {
+    if (getCount() == 0) {
+      this.a = new ArrayList();
+    }
+    this.a.add(0, paramaqkx);
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<aqkw> paramList)
+  {
+    this.a = new ArrayList(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    long l3 = System.currentTimeMillis();
+    View localView;
+    aqkx localaqkx;
+    long l1;
+    String str;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559099, null);
+      paramViewGroup = new aqkv();
+      paramViewGroup.c = ((ImageView)localView.findViewById(2131366914));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366937));
+      localView.setTag(paramViewGroup);
+      long l2 = System.currentTimeMillis();
+      localaqkx = a(paramInt);
+      l1 = l2;
+      if (localaqkx != null)
+      {
+        paramViewGroup.jdField_a_of_type_JavaLangString = localaqkx.e;
+        paramViewGroup.c.setImageBitmap(a(1, localaqkx.e));
+        l1 = System.currentTimeMillis() - l2;
+        str = localaqkx.jdField_a_of_type_JavaLangString;
+        if (str != null) {
+          break label213;
+        }
+        paramView = localaqkx.e;
+      }
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, paramInt + ": totalTime = " + (System.currentTimeMillis() - l3) + ", faceBitmap = " + l1);
+      }
+      return localView;
+      paramViewGroup = (aqkv)paramView.getTag();
+      localView = paramView;
+      break;
+      label213:
+      paramView = str;
+      if (TextUtils.isEmpty(str.trim())) {
+        paramView = localaqkx.e;
+      }
+    }
   }
 }
 

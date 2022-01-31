@@ -1,31 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
-public class agry
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class agry
+  implements bhtv
 {
-  private agry(TroopChatPie paramTroopChatPie) {}
+  agry(agrn paramagrn) {}
   
-  public void onGlobalLayout()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Akjh != null) && (this.a.jdField_a_of_type_Akjh.a() != 0) && (this.a.jdField_a_of_type_Akjh.a()))
     {
-      if (!this.a.ab)
-      {
-        this.a.ab = true;
-        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
-      }
-      return;
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.a.jdField_a_of_type_Akjh.b();
+      agrn.a(this.a, this.a.jdField_a_of_type_Akjh.a(), 10);
     }
   }
 }

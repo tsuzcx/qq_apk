@@ -46,7 +46,7 @@ public class owd
         }
         localJSONObject.put("imei", str);
         localJSONObject.put("platform", "Android");
-        localJSONObject.put("qqVersionID", "8.3.3");
+        localJSONObject.put("qqVersionID", "8.3.5");
         localObject = (QQAppInterface)ors.a();
         str = ((QQAppInterface)localObject).getAccount();
         localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str);
@@ -56,7 +56,7 @@ public class owd
         }
         str = "";
         localJSONObject.put("token", str);
-        localJSONObject.put("cookieString", bjxj.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, ""));
+        localJSONObject.put("cookieString", bkbq.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, ""));
       }
       catch (JSONException localJSONException)
       {
@@ -129,7 +129,7 @@ public class owd
     localHashMap.put("CONTEXT", BaseApplicationImpl.getApplication());
     localBundle = new Bundle();
     localBundle.putInt("insert_index", paramInt2);
-    new bcgp(JSONUtils.a(localJSONObject, paramovj.c), "POST", new owe(this, paramInt1, paramovj), 1000, localBundle).a(localHashMap);
+    new bcky(JSONUtils.a(localJSONObject, paramovj.c), "POST", new owe(this, paramInt1, paramovj), 1000, localBundle).a(localHashMap);
   }
   
   private void a(int paramInt, JSONObject paramJSONObject, Bundle paramBundle, ovj paramovj)
@@ -170,7 +170,7 @@ public class owd
       }
       localObject = ((JSONObject)localObject).optString("cookieString");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bjxj.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, localObject);
+        bkbq.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, localObject);
       }
       if (paramJSONObject.length() == 0)
       {

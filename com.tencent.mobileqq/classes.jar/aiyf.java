@@ -1,22 +1,28 @@
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.qphone.base.util.QLog;
 
-class aiyf
-  implements aizi
+public class aiyf
+  implements View.OnFocusChangeListener
 {
-  aiyf(aiye paramaiye, aiyh paramaiyh) {}
+  public aiyf(LingHbFragment paramLingHbFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
-    }
     if (paramBoolean) {
-      aiye.a(this.jdField_a_of_type_Aiye, aiye.a(this.jdField_a_of_type_Aiye), this.jdField_a_of_type_Aiyh, true);
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
     }
-    while (this.jdField_a_of_type_Aiyh == null) {
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
       return;
+      LingHbFragment.a(this.a).a();
     }
-    this.jdField_a_of_type_Aiyh.a(false);
   }
 }
 

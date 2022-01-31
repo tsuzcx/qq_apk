@@ -1,43 +1,43 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.comic.ui.QQComicTabBarView;
 
-public abstract class binw
-  extends Binder
-  implements binv
+public class binw
+  extends Handler
 {
-  public static binv a(IBinder paramIBinder)
+  public binw(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof binv))) {
-      return (binv)localIInterface;
-    }
-    return new binx(paramIBinder);
+    super(paramLooper);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt1)
+    switch (paramMessage.what)
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
+      return;
+    case 0: 
+      this.a.b = 0.0F;
+      QQComicTabBarView.a(this.a);
+      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+      return;
+    case 1: 
+      if (this.a.b < 1.0F)
+      {
+        paramMessage = this.a;
+        paramMessage.b += 0.05F;
+        QQComicTabBarView.b(this.a);
+        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+        return;
+      }
+      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
+      return;
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      return true;
-    }
+    this.a.b = 1.0F;
+    this.a.a(this.a.i, this.a.h);
+    this.a.i = this.a.h;
+    QQComicTabBarView.c(this.a);
   }
 }
 

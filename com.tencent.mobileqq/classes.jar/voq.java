@@ -1,26 +1,35 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
 public class voq
+  implements View.OnTouchListener
 {
-  protected voq(voy paramvoy) {}
+  float jdField_a_of_type_Float = -1.0F;
+  float b = -1.0F;
   
-  public static voq a(voy paramvoy)
+  public voq(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramvoy.a().mReportData.from == 86) {
-      return new vot(paramvoy);
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      return false;
     }
-    return new voq(paramvoy);
+    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+      wxj.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+    }
+    this.jdField_a_of_type_Float = -1.0F;
+    this.b = -1.0F;
+    return false;
   }
-  
-  public void a(vow paramvow) {}
-  
-  public void a(vow paramvow, int paramInt1, int paramInt2, vpk paramvpk) {}
-  
-  public void a(vow paramvow, View paramView) {}
-  
-  public void a(vow paramvow, boolean paramBoolean) {}
 }
 
 

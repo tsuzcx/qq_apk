@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -19,20 +19,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcwh;
-import bdcd;
-import bdfq;
-import bexi;
-import bexj;
-import bexk;
-import bexl;
-import bexm;
-import bexn;
-import bfhm;
-import bfjq;
-import bfmn;
-import bhpy;
-import bhql;
+import bdaq;
+import bdgm;
+import bdjz;
+import bfbr;
+import bfbs;
+import bfbt;
+import bfbu;
+import bfbv;
+import bfbw;
+import bflv;
+import bfnz;
+import bfqw;
+import bhuf;
+import bhus;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.BounceScrollView;
@@ -58,9 +58,9 @@ public class AuthorityAccountView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   protected TextView a;
-  public bdfq a;
-  private bexn jdField_a_of_type_Bexn;
-  private bhpy jdField_a_of_type_Bhpy;
+  public bdjz a;
+  private bfbw jdField_a_of_type_Bfbw;
+  private bhuf jdField_a_of_type_Bhuf;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
   protected ArrayList<String> a;
@@ -92,7 +92,7 @@ public class AuthorityAccountView
   
   private int a()
   {
-    float f1 = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+    float f1 = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
     float f2 = (int)(2.0D * this.c / 3.0D / f1) - 2;
     f1 = f1 / 2.0F + f2 * f1;
     if (QLog.isColorLevel()) {
@@ -108,7 +108,7 @@ public class AuthorityAccountView
     this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("accountList", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) {
-      bfjq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
+      bfnz.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
     }
     DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
     this.jdField_b_of_type_Float = localDisplayMetrics.widthPixels;
@@ -120,17 +120,17 @@ public class AuthorityAccountView
   {
     Object localObject = new LinearLayout.LayoutParams(-1, -2);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559527, null);
-    ((LinearLayout.LayoutParams)localObject).topMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 37.0F);
-    ((LinearLayout.LayoutParams)localObject).bottomMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 37.0F);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559526, null);
+    ((LinearLayout.LayoutParams)localObject).topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 37.0F);
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 37.0F);
     addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361855));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361829));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361841));
-    int i = aekt.a(10.0F, getResources());
-    aekt.a(this.jdField_a_of_type_AndroidWidgetTextView, i, i, i, i);
+    int i = aepi.a(10.0F, getResources());
+    aepi.a(this.jdField_a_of_type_AndroidWidgetTextView, i, i, i, i);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559528, null);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559527, null);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131362902));
     if ((this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity)) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext);
@@ -141,14 +141,14 @@ public class AuthorityAccountView
       i = a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMaxHeight(i);
       this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131361826));
-      this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(getContext(), null));
-      this.jdField_a_of_type_Bhpy.a(this.jdField_b_of_type_AndroidViewView, null);
-      localObject = this.jdField_a_of_type_Bhpy.a();
+      this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(getContext(), null));
+      this.jdField_a_of_type_Bhuf.a(this.jdField_b_of_type_AndroidViewView, null);
+      localObject = this.jdField_a_of_type_Bhuf.a();
       if ((localObject instanceof DispatchActionMoveScrollView)) {
         ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
       }
-      localObject = this.jdField_a_of_type_Bhpy.a();
-      ((RelativeLayout)localObject).addOnLayoutChangeListener(new bexi(this, (RelativeLayout)localObject));
+      localObject = this.jdField_a_of_type_Bhuf.a();
+      ((RelativeLayout)localObject).addOnLayoutChangeListener(new bfbr(this, (RelativeLayout)localObject));
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
@@ -168,7 +168,7 @@ public class AuthorityAccountView
   private void g()
   {
     ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362899);
-    localImageView.getViewTreeObserver().addOnGlobalLayoutListener(new bexj(this, localImageView));
+    localImageView.getViewTreeObserver().addOnGlobalLayoutListener(new bfbs(this, localImageView));
   }
   
   public void a()
@@ -192,7 +192,7 @@ public class AuthorityAccountView
       {
         ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362899);
         TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362900);
-        localObject = bfhm.a((String)localObject, 12, true);
+        localObject = bflv.a((String)localObject, 12, true);
         localTextView.setText((CharSequence)localObject);
         a(paramString, localImageView);
         localStringBuilder.append(",dealStr=").append((String)localObject);
@@ -209,29 +209,29 @@ public class AuthorityAccountView
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing())) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
   }
   
   public void b(String paramString)
   {
     QLog.i("AuthorityAccountView", 1, "show delete account = " + paramString);
-    this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    this.jdField_a_of_type_Bdfq.setContentView(2131558920);
-    this.jdField_a_of_type_Bdfq.setTitle(getResources().getString(2131698890));
-    this.jdField_a_of_type_Bdfq.setMessageTextSize(18.0F);
-    this.jdField_a_of_type_Bdfq.setMessage(paramString + "?");
-    paramString = new bexm(this, paramString);
-    this.jdField_a_of_type_Bdfq.setNegativeButton(2131690864, paramString);
-    this.jdField_a_of_type_Bdfq.setPositiveButton(2131690865, paramString);
-    this.jdField_a_of_type_Bdfq.show();
+    this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230);
+    this.jdField_a_of_type_Bdjz.setContentView(2131558919);
+    this.jdField_a_of_type_Bdjz.setTitle(getResources().getString(2131698902));
+    this.jdField_a_of_type_Bdjz.setMessageTextSize(18.0F);
+    this.jdField_a_of_type_Bdjz.setMessage(paramString + "?");
+    paramString = new bfbv(this, paramString);
+    this.jdField_a_of_type_Bdjz.setNegativeButton(2131690865, paramString);
+    this.jdField_a_of_type_Bdjz.setPositiveButton(2131690866, paramString);
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   public void c()
   {
-    bfmn.a().a();
-    this.jdField_a_of_type_JavaUtilArrayList = bfjq.a();
+    bfqw.a().a();
+    this.jdField_a_of_type_JavaUtilArrayList = bfnz.a();
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
       StringBuilder localStringBuilder = new StringBuilder("-->initOrUpdateAccountList:");
@@ -253,7 +253,7 @@ public class AuthorityAccountView
     if (QLog.isColorLevel()) {
       QLog.d("AuthorityAccountView", 2, "-->deleteAccount--account to delete is " + paramString);
     }
-    bfjq.b(paramString);
+    bfnz.b(paramString);
     if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
     do
     {
@@ -312,8 +312,8 @@ public class AuthorityAccountView
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559526, null);
-        localRelativeLayout.setBackgroundResource(2130841546);
+        RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559525, null);
+        localRelativeLayout.setBackgroundResource(2130841559);
         String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         ((TextView)localRelativeLayout.findViewById(2131361880)).setText(str);
         TextView localTextView = (TextView)localRelativeLayout.findViewById(2131361865);
@@ -327,15 +327,15 @@ public class AuthorityAccountView
         }
         localTextView.setText((CharSequence)localObject1);
         localObject1 = (ImageView)localRelativeLayout.findViewById(2131361857);
-        ((ImageView)localRelativeLayout.findViewById(2131368532)).setVisibility(8);
-        localObject2 = (ImageView)localRelativeLayout.findViewById(2131368474);
+        ((ImageView)localRelativeLayout.findViewById(2131368543)).setVisibility(8);
+        localObject2 = (ImageView)localRelativeLayout.findViewById(2131368485);
         ((ImageView)localObject2).setVisibility(0);
-        ((ImageView)localObject2).setImageResource(2130844897);
+        ((ImageView)localObject2).setImageResource(2130844969);
         ((ImageView)localObject2).setTag(str);
-        ((ImageView)localObject2).setOnClickListener(new bexk(this));
+        ((ImageView)localObject2).setOnClickListener(new bfbt(this));
         a(str, (ImageView)localObject1);
-        localRelativeLayout.setOnClickListener(new bexl(this, str));
-        localObject1 = new LinearLayout.LayoutParams(-1, bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F));
+        localRelativeLayout.setOnClickListener(new bfbu(this, str));
+        localObject1 = new LinearLayout.LayoutParams(-1, bdaq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F));
         ((LinearLayout.LayoutParams)localObject1).width = -1;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject1);
         i += 1;
@@ -350,22 +350,22 @@ public class AuthorityAccountView
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Bexn != null) {
-      this.jdField_a_of_type_Bexn.a();
+    if (this.jdField_a_of_type_Bfbw != null) {
+      this.jdField_a_of_type_Bfbw.a();
     }
     if (!this.jdField_a_of_type_Boolean)
     {
       d();
       this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Bhpy.show();
+    this.jdField_a_of_type_Bhuf.show();
   }
   
   public void setAppInfo(String paramString, Bitmap paramBitmap)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = bfhm.a(paramString, 12, true);
+      paramString = bflv.a(paramString, 12, true);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
     }
     if (paramBitmap != null)
@@ -382,11 +382,11 @@ public class AuthorityAccountView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361827);
-      str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695026);
+      str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695028);
       if (!"web".equals(paramString)) {
         break label91;
       }
-      str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695027);
+      str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695029);
     }
     for (;;)
     {
@@ -395,14 +395,14 @@ public class AuthorityAccountView
       return;
       label91:
       if ("android".equals(paramString)) {
-        str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695026);
+        str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695028);
       }
     }
   }
   
-  public void setChangeAccountListener(bexn parambexn)
+  public void setChangeAccountListener(bfbw parambfbw)
   {
-    this.jdField_a_of_type_Bexn = parambexn;
+    this.jdField_a_of_type_Bfbw = parambfbw;
   }
 }
 

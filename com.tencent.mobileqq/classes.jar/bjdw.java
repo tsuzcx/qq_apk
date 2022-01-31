@@ -1,12 +1,11 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
 
 final class bjdw
-  implements FilenameFilter
+  extends bdgx
 {
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return !paramString.endsWith("OldVersion.version");
+    paramDialogInterface.dismiss();
   }
 }
 

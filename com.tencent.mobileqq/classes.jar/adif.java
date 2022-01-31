@@ -1,28 +1,8 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class adif
-  extends ased
+public abstract interface adif
 {
-  public adif(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public abstract void a();
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onBandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramString, paramBoolean2);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
-  }
+  public abstract void b();
 }
 
 

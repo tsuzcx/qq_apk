@@ -1,21 +1,9 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.annotation.NonNull;
 
-class bmdn
-  implements Animator.AnimatorListener
+public abstract interface bmdn
 {
-  bmdn(bmdi parambmdi) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bmdi.b(this.a, this.a.d);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  @NonNull
+  public abstract bmdj a();
 }
 
 

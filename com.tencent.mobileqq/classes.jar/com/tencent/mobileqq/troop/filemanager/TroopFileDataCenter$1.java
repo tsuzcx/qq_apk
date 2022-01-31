@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bbqm;
+import bbuv;
 
 public class TroopFileDataCenter$1
   implements Runnable
 {
   public void run()
   {
-    bbqm.a(this.this$0);
+    bbuv.a(this.this$0);
   }
 }
 

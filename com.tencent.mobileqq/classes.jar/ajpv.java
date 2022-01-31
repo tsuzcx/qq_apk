@@ -1,126 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.media.ExifInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
-class ajpv
+public class ajpv
+  implements ajwh
 {
-  public float a;
-  public int a;
-  public ajpu a;
-  private ajpw a;
-  public Bitmap a;
-  public boolean a;
+  public ajpv(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public ajpv(String paramString, ajpw paramajpw, Typeface paramTypeface)
+  public void a_(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Ajpw = paramajpw;
-    this.jdField_a_of_type_Ajpu = new ajpu(paramString, this.jdField_a_of_type_Ajpw.c, this.jdField_a_of_type_Ajpw.b, this.jdField_a_of_type_Ajpw.e, this.jdField_a_of_type_Ajpw.f, 0.0F, (this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float - this.jdField_a_of_type_Ajpw.b) / 2.0F, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
+    bdhj.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
+    if (QLog.isColorLevel()) {}
+    try
     {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
+      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
+      ((Field)localObject).setAccessible(true);
+      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
+      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
+      if (paramString != null)
       {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
+        return;
       }
-      return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if (this.jdField_a_of_type_Int != -1)
+    catch (Exception localException)
     {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ajqa.a(this.jdField_a_of_type_Ajpu.c, this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Ajpu.jdField_a_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Ajpu.a(paramString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = -1;
-      return;
-      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Ajpu.c + "-" + this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.jdField_a_of_type_Ajpu.jdField_a_of_type_Float = paramFloat1;
-      paramFloat1 = this.jdField_a_of_type_Ajpu.b;
-      ajpu localajpu = this.jdField_a_of_type_Ajpu;
-      localajpu.b += paramFloat2;
-      this.jdField_a_of_type_Ajpu.a(paramCanvas);
-      this.jdField_a_of_type_Ajpu.b = paramFloat1;
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    ajqa.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ajpu.c, this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Ajpu.jdField_a_of_type_JavaLangString))
+      for (;;)
       {
-        this.jdField_a_of_type_Ajpu.a(paramString);
-        b(paramString);
+        localException.printStackTrace();
       }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
     }
   }
 }

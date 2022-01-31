@@ -1,67 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-
 class uut
-  extends uhn
+  implements uxw
 {
-  uut(uur paramuur) {}
+  uut(uus paramuus) {}
   
-  public void a(byte paramByte)
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    uur.c(this.a, true);
-    uur localuur;
-    if (paramByte != -1)
+    wxe.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramuxs != null))
     {
-      if (paramByte == 0) {
-        uur.b(this.a);
-      }
-      localuur = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
-    }
-    for (;;)
-    {
-      localuur.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
+      wxe.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramuxs.b), Integer.valueOf(paramuxs.a));
+      this.a.a(paramuxs.b, paramuxs.a);
       return;
-      label88:
-      bool = false;
     }
-  }
-  
-  public void b()
-  {
-    urk localurk = (urk)urr.a(10);
-    this.a.b = ((Boolean)localurk.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    uur.a(this.a);
-    uur.a(this.a, true);
-    uur.a(this.a, true);
-    uur.b(this.a);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (!uur.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        uur.a(this.a);
-        uur.a(this.a, true);
-      }
-      uur.b(this.a, true);
-      uur.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
-    }
+    wxe.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

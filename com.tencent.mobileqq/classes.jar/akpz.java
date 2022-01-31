@@ -1,19 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.game.WebGameFakeView;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
 
-public class akpz
-  implements View.OnClickListener
+class akpz
+  implements alkp
 {
-  public akpz(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
+  akpz(akpy paramakpy) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    akpc.a().a(null);
-    if (akpc.a().a() <= 1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    QLog.d("sava_ChatPieApolloViewController", 1, "sava_native_log preLoadApolloEngine onSoLoadComplete ret:" + paramInt);
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine onSoLoadComplete");
+      }
+      if (akpy.a(this.a))
+      {
+        QLog.i("sava_ChatPieApolloViewController", 1, "onSoLoadComplete but AIO destroy!");
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
+        akpy.a(this.a);
+      }
     }
+    alko.b(this.a.jdField_a_of_type_Alkp);
   }
 }
 

@@ -1,12 +1,28 @@
-public abstract interface bdlq
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bdlq
+  implements View.OnClickListener
 {
-  public abstract void a(bdlo parambdlo1, bdlo parambdlo2);
+  bdlq(bdll parambdll, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(bdlo parambdlo1, bdlo parambdlo2, int paramInt);
-  
-  public abstract void b(bdlo parambdlo1, bdlo parambdlo2);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdll, 0);
+      this.jdField_a_of_type_Bdll.a();
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bdll.isShowing()) {
+        this.jdField_a_of_type_Bdll.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 

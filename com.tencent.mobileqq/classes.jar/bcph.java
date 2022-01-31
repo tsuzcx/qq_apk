@@ -1,14 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bcph
-  implements bhxz
+class bcph
+  extends nac
 {
-  public bcph(WheelPickerLayout paramWheelPickerLayout) {}
+  bcph(bcpg parambcpg, bcpo parambcpo) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bcpo.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
   }
 }
 

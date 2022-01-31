@@ -1,29 +1,24 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
 import android.view.View;
-import android.view.View.OnDragListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-@TargetApi(11)
 class avky
-  implements View.OnDragListener
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  avky(avkt paramavkt) {}
   
-  public avky(avkg paramavkg, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
+    paramView = autz.a(this.a.a, this.a.a.app.getAccount(), 2);
+    if (paramView != null)
     {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+      paramView.f = "13";
+      paramView.g = avkt.a(this.a).uin;
+      avtq localavtq = new avtq(this.a.a);
+      localavtq.a(paramView);
+      localavtq.show();
     }
   }
 }

@@ -1,25 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class ahft
-  implements nar
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ahft(GroupSearchRecommendView paramGroupSearchRecommendView) {}
+  public ahft(AddContactsActivity paramAddContactsActivity) {}
   
-  public void a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
+    if ((paramInt == 2131377369) && (AddContactsActivity.a(this.a).isChecked()))
+    {
+      AddContactsActivity.a(this.a);
+      azqs.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      AddContactsActivity.a(this.a).setSelected(true);
+      AddContactsActivity.b(this.a).setSelected(false);
+      AddContactsActivity.c(this.a).setSelected(false);
+      AddContactsActivity.a(this.a).setVisibility(8);
     }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    do
+    {
       return;
-    }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
+      if ((paramInt == 2131377371) && (AddContactsActivity.b(this.a).isChecked()))
+      {
+        AddContactsActivity.b(this.a);
+        azqs.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+        azqs.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
+        AddContactsActivity.b(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.c(this.a).setSelected(false);
+        paramRadioGroup = AddContactsActivity.a(this.a);
+        if (AddContactsActivity.a(this.a)) {}
+        for (paramInt = 0;; paramInt = 8)
+        {
+          paramRadioGroup.setVisibility(paramInt);
+          return;
+        }
+      }
+    } while ((paramInt != 2131377370) || (!AddContactsActivity.c(this.a).isChecked()));
+    AddContactsActivity.c(this.a);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+    AddContactsActivity.c(this.a).setSelected(true);
+    AddContactsActivity.a(this.a).setSelected(false);
+    AddContactsActivity.b(this.a).setSelected(false);
+    AddContactsActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,32 +1,129 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Map;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.view.accessibility.AccessibilityEvent;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.qqmini.sdk.core.widget.QQProgressDialog.1;
 
-final class bgrk
-  implements View.OnClickListener
+public class bgrk
+  extends Dialog
 {
-  bgrk(View.OnClickListener paramOnClickListener, long paramLong, View paramView, float[] paramArrayOfFloat, String paramString) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bgrl jdField_a_of_type_Bgrl;
+  String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 48;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private int c = -2;
   
-  public void onClick(View paramView)
+  public bgrk(Context paramContext)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this(paramContext, 0);
+  }
+  
+  public bgrk(Context paramContext, int paramInt)
+  {
+    this(paramContext, paramInt, 2131559359, 48);
+  }
+  
+  public bgrk(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramContext, 2131755762);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363330));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370782));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377933));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377934));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable());
+  }
+  
+  /* Error */
+  public void dismiss()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 110	android/app/Dialog:dismiss	()V
+    //   4: return
+    //   5: astore_1
+    //   6: aload_1
+    //   7: athrow
+    //   8: astore_1
+    //   9: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	10	0	this	bgrk
+    //   5	2	1	localObject	java.lang.Object
+    //   8	1	1	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	5	finally
+    //   0	4	8	java/lang/Exception
+  }
+  
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
     }
-    long l = 0L;
-    paramView = (Long)bgri.a().get(Long.valueOf(this.jdField_a_of_type_Long));
-    if (paramView != null) {
-      l = System.currentTimeMillis() - paramView.longValue();
+    return true;
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
+    if (this.jdField_a_of_type_Bgrl != null) {
+      this.jdField_a_of_type_Bgrl.a();
     }
-    int j = this.jdField_a_of_type_AndroidViewView.getWidth() / 5;
-    int k = this.jdField_a_of_type_AndroidViewView.getHeight() / 2;
-    if (this.jdField_a_of_type_ArrayOfFloat[1] > k) {}
-    for (int i = (int)this.jdField_a_of_type_ArrayOfFloat[0] / j + 6;; i = (int)this.jdField_a_of_type_ArrayOfFloat[0] / j + 1)
-    {
-      QMLog.d("BannerAdViolationManage", "box = " + j + "," + k + " size = " + this.jdField_a_of_type_AndroidViewView.getWidth() + "," + this.jdField_a_of_type_AndroidViewView.getHeight() + " x,y = " + this.jdField_a_of_type_ArrayOfFloat[0] + "," + this.jdField_a_of_type_ArrayOfFloat[1] + " area = " + i);
-      bgri.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, i, l);
-      return;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = this.c;
+    localLayoutParams.gravity = this.jdField_b_of_type_Int;
+    localLayoutParams.y += this.jdField_a_of_type_Int;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
+  }
+  
+  protected void onStart()
+  {
+    this.jdField_b_of_type_AndroidWidgetImageView.postDelayed(new QQProgressDialog.1(this), 50L);
+    super.onStart();
+  }
+  
+  protected void onStop()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
     }
+    super.onStop();
   }
 }
 

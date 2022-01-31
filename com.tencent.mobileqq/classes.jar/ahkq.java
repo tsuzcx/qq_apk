@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
-
-public class ahkq
-  implements ahko
+class ahkq
+  implements ahkr<T>
 {
-  public ahkq(TroopActivity paramTroopActivity) {}
+  ahkq(ahkp paramahkp, int paramInt) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public int a()
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
-      return;
-    }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ahkz paramahkz, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ahkp.a(paramahkz, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 

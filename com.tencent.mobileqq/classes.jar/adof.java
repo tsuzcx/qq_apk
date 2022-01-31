@@ -1,56 +1,75 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.widget.FixedBounceScrollView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import java.util.List;
 
 public class adof
-  extends Handler
+  extends amcm
 {
-  public adof(QQSettingMe paramQQSettingMe, Looper paramLooper)
+  public adof(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    super(paramLooper);
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bdeu.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, false);
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    int k = 0;
+    if (this.a.a == null) {
       return;
-    case 0: 
-      paramMessage = new Rect();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.offsetDescendantRectToMyCoords((View)localObject, paramMessage);
-      localObject = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getDrawingRect((Rect)localObject);
-      boolean bool = ((Rect)localObject).contains(paramMessage);
-      if (!bool) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.scrollTo(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getScrollX(), paramMessage.top);
-      }
-      if (bool) {}
-      for (long l = 0L;; l = 50L)
-      {
-        sendEmptyMessageDelayed(1, l);
-        return;
-      }
     }
-    paramMessage = new Rect();
-    Object localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-    ((View)localObject).getHitRect(paramMessage);
-    localObject = ((View)localObject).findViewById(2131368568);
-    paramMessage.offset(((View)localObject).getLeft() + aekt.a(34.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), ((View)localObject).getTop() - aekt.a(18.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    localObject = (FrameLayout.LayoutParams)QQSettingMe.b(this.a).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject).leftMargin = paramMessage.left;
-    ((FrameLayout.LayoutParams)localObject).topMargin = paramMessage.top;
-    QQSettingMe.b(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    QQSettingMe.b(this.a).setPadding(aekt.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aekt.a(4.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aekt.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aekt.a(8.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    QQSettingMe.b(this.a).setVisibility(0);
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bdeu.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, true);
+      return;
+    }
   }
 }
 

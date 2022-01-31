@@ -1,29 +1,16 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import com.tencent.biz.qqcircle.comment.ItemReplyView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class tui
-  implements uad
+  implements ucd
 {
-  public tui(QCircleCommentItemView paramQCircleCommentItemView) {}
+  public tui(ItemReplyView paramItemReplyView, FeedCloudMeta.StReply paramStReply) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    yde localyde;
-    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
-    if (QCircleCommentItemView.a(this.a) != null)
-    {
-      localyde = QCircleCommentItemView.a(this.a);
-      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
-      if (!paramBoolean) {
-        break label58;
-      }
-    }
-    label58:
-    for (int i = 14;; i = 15)
-    {
-      localyde.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
-      return;
-    }
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
   }
 }
 

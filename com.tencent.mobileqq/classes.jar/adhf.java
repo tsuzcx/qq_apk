@@ -1,45 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adhf
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adhf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adhf(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131692398), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
       return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new adhg(this, paramView));
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131694648), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
   }
 }
 

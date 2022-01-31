@@ -1,33 +1,34 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.lang.ref.WeakReference;
 
 public class vrq
-  implements Animation.AnimationListener
+  implements wiz
 {
-  public vrq(ExploreAnimalView paramExploreAnimalView) {}
+  private WeakReference<vrp> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public vrq(vrp paramvrp)
   {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365402);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365403);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362823);
-    this.a.a(paramAnimation, 100L);
-    this.a.a(localImageView1, 240L);
-    this.a.a(localImageView2, 360L);
+    this.a = new WeakReference(paramvrp);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString, int paramInt)
+  {
+    wxe.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    vrp localvrp = (vrp)this.a.get();
+    if ((localvrp == null) || (paramInt == 1002) || (paramInt == 1003)) {}
+    do
+    {
+      return;
+      uqn.a(vrp.a(localvrp), 12, paramString);
+    } while ((localvrp.a == null) || (localvrp.a.a == null));
+    paramInt = wxj.a(localvrp.a.a);
+    if (localvrp.a.a.getOwner().isMe()) {}
+    for (paramString = "1";; paramString = "2")
+    {
+      wxj.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, wxj.a(4444), "", localvrp.a.a.feedId });
+      return;
+    }
+  }
 }
 
 

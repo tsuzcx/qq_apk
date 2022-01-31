@@ -1,39 +1,63 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
-class avjt
-  extends baua
+public class avjt
+  extends avjs
 {
-  avjt(avjc paramavjc) {}
+  protected View a;
   
-  public void handleMessage(Message paramMessage)
+  protected int a()
   {
-    baoj localbaoj = (baoj)paramMessage.obj;
-    switch (paramMessage.what)
+    return 2131561048;
+  }
+  
+  protected LabelContainer a(View paramView, int paramInt1, avau paramavau, int paramInt2)
+  {
+    paramavau = (ImageView)paramView.findViewById(2131379226);
+    if (paramInt1 == 7) {
+      paramavau.setVisibility(8);
+    }
+    for (;;)
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
       {
-        do
-        {
-          return;
-        } while (localbaoj.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + baqs.a);
-        }
-      } while (avjc.a(this.a) == null);
-      avjc.a(this.a).a = baqs.a;
-      avjc.d(this.a);
-      return;
+        paramavau = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+        paramavau.topMargin = xin.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+        paramView.setLayoutParams(paramavau);
+      }
+      paramInt1 = xin.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramInt2 = xin.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramView = (LabelContainer)paramView.findViewById(2131369120);
+      paramView.setSpace(paramInt1, paramInt2);
+      return paramView;
+      paramavau.setImageResource(b[paramInt1]);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+  }
+  
+  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
+  {
+    super.a(paramContext, paramLinearLayout);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public boolean a(avau[] paramArrayOfavau)
+  {
+    if (super.a(paramArrayOfavau))
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    this.a.a.a();
-    this.a.a.b(alpo.a(2131707679));
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

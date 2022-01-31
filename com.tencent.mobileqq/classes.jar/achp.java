@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achp
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public achp(ChatHistory paramChatHistory) {}
+  public achp(BaseChatPie paramBaseChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new bepp(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691583);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
-    }
+    this.a.b.dismiss();
   }
 }
 

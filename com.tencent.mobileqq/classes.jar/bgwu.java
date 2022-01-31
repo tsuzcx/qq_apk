@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class bgwu
-  implements DialogInterface.OnClickListener
+  extends bgwp
 {
-  bgwu(bgws parambgws) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bgwu(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    bgws.a(this.a);
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+  }
+  
+  protected bgwo a()
+  {
+    return new bgwo(2131694350, new bgwv(this));
   }
 }
 

@@ -1,36 +1,19 @@
-import android.os.Handler;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class avpg
-  implements URLDrawable.DownloadListener
+class avpg
+  implements TextWatcher
 {
-  avpg(avpf paramavpf) {}
+  avpg(avop paramavop) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.2(this));
+    auwz.a(this.a.a, 30);
   }
   
-  public void onFileDownloadStarted()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.1(this));
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

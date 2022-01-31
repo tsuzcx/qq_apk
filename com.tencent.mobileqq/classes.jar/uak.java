@@ -1,14 +1,19 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class uak
-  implements tzq
+class uak
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public uak(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, String paramString) {}
+  uak(uaj paramuaj) {}
   
-  public void a()
+  public boolean onPreDraw()
   {
-    tyg.a(this.jdField_a_of_type_JavaLangString, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
-    tqs.a(this.jdField_a_of_type_JavaLangString);
+    uaj.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    uaj.a(this.a);
+    QLog.d("QCircleTransitionAnimHelper", 4, "initImageEnterAnimation");
+    return true;
   }
 }
 

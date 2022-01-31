@@ -1,21 +1,19 @@
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoViewFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class awwq
+  implements View.OnClickListener
 {
-  static {}
+  public awwq(VipProfileWZRYView paramVipProfileWZRYView, awqt paramawqt) {}
   
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  public void onClick(View paramView)
   {
-    return VideoViewFactory.createBaseVideoView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
-  
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
-  {
-    return VideoViewFactory.createCropBubbleView(paramContext, paramLong, paramVideoPlayParam, paramBoolean);
+    paramView = bdtg.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, ndd.a(), String.valueOf(this.jdField_a_of_type_Awqt.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Awqt.a.lCurrentStyleId));
   }
 }
 

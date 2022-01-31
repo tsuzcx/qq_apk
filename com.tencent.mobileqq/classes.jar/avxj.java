@@ -1,31 +1,20 @@
-import android.animation.ObjectAnimator;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class avxj
-  implements OnCompositionLoadedListener
+  implements avzl
 {
-  public avxj(PromotionEntry.UpdateOperateBtnStatusRunnable paramUpdateOperateBtnStatusRunnable, String paramString) {}
+  public avxj(TranslateFragment paramTranslateFragment, avvs paramavvs) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a(int paramInt, avzm paramavzm)
   {
-    if (paramLottieComposition == null) {}
-    do
+    if ((paramavzm != null) && (!TextUtils.isEmpty(paramavzm.b)))
     {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new avxk(this));
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(true);
-      paramLottieComposition = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
-    } while ((paramLottieComposition == null) || (paramLottieComposition.getVisibility() != 0) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator == null) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator.isRunning()));
-    paramLottieComposition.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+      if (!this.jdField_a_of_type_Avvs.c.equalsIgnoreCase(paramavzm.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Avvs.b, paramavzm.b);
+      }
+      avvq.a("0X800AD31", avvq.a(paramavzm.b));
+    }
   }
 }
 

@@ -1,148 +1,22 @@
-import PersonalState.UserProfile;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richstatus.StatusManager.3.1;
-import com.tencent.mobileqq.richstatus.StatusManager.3.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-public class axzw
-  extends axzy
+class axzw
+  implements ariq
 {
-  axzw(axzt paramaxzt) {}
+  axzw(axzv paramaxzv, String paramString) {}
   
-  @TargetApi(9)
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    ThreadManager.getSubThreadHandler().post(new StatusManager.3.1(this, paramBoolean, paramBundle));
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
-    }
-    label83:
-    axxl localaxxl;
-    if (paramBoolean1)
+    if ((this.jdField_a_of_type_Axzv.jdField_a_of_type_JavaUtilArrayList != null) && (paramList != null) && (!paramList.isEmpty()))
     {
-      axzt.c(this.a, 0L);
-      axzt.a(this.a, paramBoolean2);
-      if (axzt.b(this.a) == null) {
-        return;
+      this.jdField_a_of_type_Axzv.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.jdField_a_of_type_Axzv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Axzv.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()) {
+        this.jdField_a_of_type_Axzv.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.refresh();
       }
-      Iterator localIterator = axzt.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localaxxl = (axxl)localIterator.next();
-      if (!paramBoolean1) {
-        break label162;
-      }
-    }
-    label162:
-    for (int i = 100;; i = -1)
-    {
-      localaxxl.a(i, paramBoolean2);
-      break label83;
-      axzt.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
-      paramBoolean2 = axzt.b(this.a).getBoolean("k_sync_ss", false);
-      break;
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
-    }
-    if (paramBoolean1) {
-      axzt.a(this.a, paramArrayOfByte);
-    }
-    for (;;)
-    {
-      if (paramBoolean1) {
-        if (paramBoolean2)
-        {
-          if (axzt.a(this.a) != null)
-          {
-            axzt.a(this.a, paramArrayList);
-            return;
-            if (!paramBoolean2) {
-              continue;
-            }
-            axzt.a(this.a, null);
-            continue;
-          }
-          if (axzt.b(this.a) == null) {
-            axzt.b(this.a, new ArrayList());
-          }
-          paramArrayOfByte = this.a.a(axzt.b(this.a), paramArrayList, paramInt);
-        }
-      }
-    }
-    for (;;)
-    {
-      label165:
-      if ((axzt.a(this.a) != null) && (axzt.a(this.a).length > 0)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (axzt.c(this.a) == null) {
-          break label264;
-        }
-        paramArrayList = axzt.c(this.a).iterator();
-        while (paramArrayList.hasNext()) {
-          ((axxk)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
-        }
-        break;
-        paramArrayOfByte = this.a.a(paramArrayList);
-        break label165;
-      }
-      label264:
-      break;
-      paramArrayOfByte = paramArrayList;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    ThreadManager.getSubThreadHandler().post(new StatusManager.3.2(this, paramBoolean));
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
-    }
-    label74:
-    axxl localaxxl;
-    if (paramBoolean1)
-    {
-      axzt.a(this.a, paramBoolean2);
-      if (axzt.b(this.a) == null) {
-        return;
-      }
-      Iterator localIterator = axzt.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localaxxl = (axxl)localIterator.next();
-      if (!paramBoolean1) {
-        break label134;
-      }
-    }
-    label134:
-    for (int i = 100;; i = -1)
-    {
-      localaxxl.b(i, paramBoolean2);
-      break label74;
-      paramBoolean2 = axzt.b(this.a).getBoolean("k_sync_ss", false);
-      break;
     }
   }
 }

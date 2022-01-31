@@ -1,30 +1,10 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView.Renderer;
-import android.view.ViewGroup;
-
-public abstract class bkak
-  implements GLSurfaceView.Renderer
+public abstract interface bkak
 {
-  public Context a;
-  protected ViewGroup a;
-  
-  public bkak(Context paramContext, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bkak
  * JD-Core Version:    0.7.0.1
  */

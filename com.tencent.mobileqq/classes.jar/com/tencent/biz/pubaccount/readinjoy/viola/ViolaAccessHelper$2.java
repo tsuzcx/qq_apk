@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
 import android.text.TextUtils;
-import bdcs;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.viola.utils.ViolaUtils;
 import java.io.File;
@@ -20,7 +20,7 @@ public final class ViolaAccessHelper$2
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject1 != null)
     {
-      localObject1 = bdcs.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ((AppRuntime)localObject1).getAccount());
+      localObject1 = bdhb.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ((AppRuntime)localObject1).getAccount());
       if ((localObject1 instanceof String)) {
         localObject1 = (String)localObject1;
       }

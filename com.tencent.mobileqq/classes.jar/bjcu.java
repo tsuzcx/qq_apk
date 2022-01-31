@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.UndealCount.QZoneCountUserInfo;
-
-public final class bjcu
-  implements Parcelable.Creator<QZoneCountUserInfo>
+public abstract interface bjcu
 {
-  public QZoneCountUserInfo a(Parcel paramParcel)
-  {
-    return new QZoneCountUserInfo(paramParcel);
-  }
-  
-  public QZoneCountUserInfo[] a(int paramInt)
-  {
-    return new QZoneCountUserInfo[paramInt];
-  }
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 

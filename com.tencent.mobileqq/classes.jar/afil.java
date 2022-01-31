@@ -1,33 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
-import com.tencent.qphone.base.util.QLog;
-
-public class afil
-  implements Animation.AnimationListener
+public abstract interface afil
 {
-  public afil(GivingHeartItemBuilder.10 param10) {}
+  public abstract boolean a(afii paramafii);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
-    }
-  }
+  public abstract boolean a(afii paramafii, String paramString1, String paramString2);
 }
 
 

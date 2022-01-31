@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqx;
+import agvm;
 import mqq.os.MqqHandler;
 import nav;
 import nba;
@@ -8,7 +8,7 @@ import nba;
 public class TroopChatPie$12$2
   implements Runnable
 {
-  public TroopChatPie$12$2(agqx paramagqx) {}
+  public TroopChatPie$12$2(agvm paramagvm) {}
   
   public void run()
   {

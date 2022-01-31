@@ -1,24 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.search.rich.ArkAppView;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-class ayoc
-  implements View.OnClickListener
+public class ayoc
+  extends ayod
 {
-  ayoc(ayob paramayob) {}
+  public static final String a;
+  public int a;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = null;
-    if (ayob.a(this.a) != null) {
-      paramView = ayob.a(this.a).mViewImpl.getViewModel();
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + ayoc.class.getSimpleName();
+  }
+  
+  public ayoc(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public ayoc(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
     }
-    if (paramView == null) {
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = ayvm.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = ayvm.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = ayvm.a(paramString.optString("secondLineText"));
+      this.c = ayvm.a(paramString.optJSONArray("thirdLineText"));
       return;
     }
-    paramView.reinitArkContainer();
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

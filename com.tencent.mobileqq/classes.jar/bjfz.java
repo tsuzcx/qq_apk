@@ -1,38 +1,19 @@
-import NS_USER_ACTION_REPORT.ActionInfo;
-import NS_USER_ACTION_REPORT.ItemInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-class bjfz
+public final class bjfz
+  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<ActionInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String b;
+  public bjfz(Context paramContext, int paramInt, String paramString, Intent paramIntent) {}
   
-  public ItemInfo a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ItemInfo localItemInfo = new ItemInfo();
-    localItemInfo.item_id = this.jdField_a_of_type_JavaLangString;
-    localItemInfo.action_infos = this.jdField_a_of_type_JavaUtilArrayList;
-    localItemInfo.busi_info = this.b;
-    return localItemInfo;
-  }
-  
-  public bjfz a(ActionInfo paramActionInfo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramActionInfo);
-    return this;
-  }
-  
-  public bjfz a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bjfz b(String paramString)
-  {
-    this.b = paramString;
-    return this;
+    if (!bjdt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      bjdt.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidContentContext);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

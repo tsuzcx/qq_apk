@@ -1,18 +1,15 @@
-import android.support.annotation.NonNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
 
 class bltn
-  implements blsz
+  extends AnimatorListenerAdapter
 {
   bltn(bltl parambltl) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bcjk.b(paramString);
-    }
-    return str;
+    this.a.a.a().setVisibility(8);
   }
 }
 

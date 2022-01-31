@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import abot;
+import abti;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class MsgProxyUtils$3
@@ -10,7 +10,7 @@ public final class MsgProxyUtils$3
   
   public void run()
   {
-    abot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    abti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

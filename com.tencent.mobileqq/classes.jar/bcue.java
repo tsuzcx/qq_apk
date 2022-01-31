@@ -1,14 +1,15 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
 
-class bcue
-  implements FilenameFilter
+public class bcue
+  implements View.OnClickListener
 {
-  bcue(bcua parambcua, String paramString) {}
+  public bcue(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, bcty parambcty) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(View paramView)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment), this.jdField_a_of_type_Bcty.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment));
   }
 }
 

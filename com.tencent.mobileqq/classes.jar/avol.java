@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-abstract interface avol
+class avol
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  avol(avnl paramavnl, bdjz parambdjz) {}
   
-  public abstract void a(List<RedTouchItem> paramList);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_Avnl.a.g();
+  }
 }
 
 

@@ -1,77 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.ptv.LightVideoSoDownloadFragment;
-import dov.com.qq.im.ptv.PtvCameraCaptureActivity;
-import dov.com.qq.im.ptv.PtvSoDownloadActivity;
+import android.os.Handler;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public class bmck
+class bmck
+  implements upk
 {
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle, int paramInt)
+  bmck(bmcj parambmcj) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (paramQQAppInterface.c()) {
-      QQToast.a(paramActivity, 0, 2131720119, 0).a();
-    }
-    while (a(paramActivity, paramQQAppInterface)) {
+    this.a.a.b();
+    if (paramInt == 0)
+    {
+      this.a.a.a.sendEmptyMessage(3);
       return;
     }
-    betl.a(BaseApplicationImpl.getContext(), 51);
-    boolean bool = a(paramQQAppInterface);
-    paramQQAppInterface = paramBundle;
-    if (paramBundle == null) {
-      paramQQAppInterface = new Bundle();
-    }
-    paramBundle = bmba.class.getName();
-    if (bool)
-    {
-      PtvCameraCaptureActivity.a(paramActivity, paramBundle, paramQQAppInterface, paramInt);
-      return;
-    }
-    paramQQAppInterface.putInt("flow_camera_show_mode_style", 0);
-    paramQQAppInterface.putBoolean("flow_camera_show_panel", false);
-    paramQQAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    paramQQAppInterface = PtvSoDownloadActivity.a(paramActivity, paramBundle, paramQQAppInterface);
-    paramQQAppInterface.putExtra("PTV_pendingIntentRequest", paramInt);
-    PublicTransFragmentActivity.b(paramActivity, paramQQAppInterface, LightVideoSoDownloadFragment.class, paramInt);
-  }
-  
-  private static boolean a()
-  {
-    if ((Build.MODEL.equals("ASUS_Z00ADB")) && (Build.VERSION.SDK_INT == 21)) {}
-    while ((Build.MANUFACTURER.equalsIgnoreCase("Meizu")) && (Build.MODEL.equalsIgnoreCase("M040")) && (Build.VERSION.SDK_INT == 19)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    boolean bool3 = VideoEnvironment.c(paramQQAppInterface);
-    boolean bool4 = axld.a();
-    boolean bool2 = a();
-    if ((!bool3) || (!bool4) || (!bool2))
-    {
-      wsv.b("CaptureUtils", "checkApiVersionDialog false");
-      bdcd.a(paramContext, 230).setMessage(alpo.a(2131709110)).setPositiveButton(2131694951, new bmcl()).show();
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    return (ShortVideoUtils.a(paramAppInterface)) && (azgk.a(BaseApplicationImpl.getContext()) == 1);
+    this.a.a.a.sendEmptyMessage(5);
   }
 }
 

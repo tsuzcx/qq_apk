@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import bcdc;
+import bchl;
 import com.tencent.qphone.base.util.QLog;
 
 public class AtPanelTouchController
@@ -18,7 +18,7 @@ public class AtPanelTouchController
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 1;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bcdc jdField_a_of_type_Bcdc;
+  private bchl jdField_a_of_type_Bchl;
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -110,7 +110,7 @@ public class AtPanelTouchController
     int j;
     for (float f = 0.0F;; f = 20.0F)
     {
-      i = aekt.a(f, getContext().getResources());
+      i = aepi.a(f, getContext().getResources());
       j = (int)(getScrollY() + paramFloat);
       if (j >= i) {
         break;
@@ -119,8 +119,8 @@ public class AtPanelTouchController
     }
     if (j >= i)
     {
-      if (this.jdField_a_of_type_Bcdc != null) {
-        this.jdField_a_of_type_Bcdc.c();
+      if (this.jdField_a_of_type_Bchl != null) {
+        this.jdField_a_of_type_Bchl.c();
       }
       return i - getScrollY();
     }
@@ -164,8 +164,8 @@ public class AtPanelTouchController
         return;
       } while (!this.e);
       this.e = false;
-    } while (this.jdField_a_of_type_Bcdc == null);
-    this.jdField_a_of_type_Bcdc.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Bchl == null);
+    this.jdField_a_of_type_Bchl.a(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -198,9 +198,9 @@ public class AtPanelTouchController
         if (Math.abs(f2) > 5.0F) {
           this.d = true;
         }
-        if (this.jdField_a_of_type_Bcdc != null)
+        if (this.jdField_a_of_type_Bchl != null)
         {
-          paramMotionEvent = this.jdField_a_of_type_Bcdc;
+          paramMotionEvent = this.jdField_a_of_type_Bchl;
           if (getScrollY() > 0) {
             bool = true;
           }
@@ -228,7 +228,7 @@ public class AtPanelTouchController
         break;
       }
       label303:
-      if (this.jdField_a_of_type_Bcdc != null)
+      if (this.jdField_a_of_type_Bchl != null)
       {
         this.e = true;
         a(-this.jdField_b_of_type_Int);
@@ -241,9 +241,9 @@ public class AtPanelTouchController
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAtPanelTouchListener(bcdc parambcdc)
+  public void setAtPanelTouchListener(bchl parambchl)
   {
-    this.jdField_a_of_type_Bcdc = parambcdc;
+    this.jdField_a_of_type_Bchl = parambchl;
   }
   
   public void setControlLitTongue(boolean paramBoolean)

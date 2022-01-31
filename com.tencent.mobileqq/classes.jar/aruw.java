@@ -1,27 +1,18 @@
-import android.os.AsyncTask;
-
 class aruw
-  extends da
+  implements bezx
 {
-  aruw(arum paramarum) {}
+  aruw(arut paramarut) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void a(int paramInt)
   {
-    try
-    {
-      cx.a(this.a.a, paramAsyncTask, paramInt, new arux(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
+    if (paramInt == 2) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aruw
  * JD-Core Version:    0.7.0.1
  */

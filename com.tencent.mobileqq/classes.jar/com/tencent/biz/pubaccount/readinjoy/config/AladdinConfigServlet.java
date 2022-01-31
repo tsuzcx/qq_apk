@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import azmz;
-import bdcb;
-import bdlr;
-import bjxj;
+import azri;
+import bdgk;
+import bdqa;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.CPU;
@@ -55,22 +55,22 @@ public class AladdinConfigServlet
     oidb_cmd0xbf8.DeviceInfo localDeviceInfo = new oidb_cmd0xbf8.DeviceInfo();
     localDeviceInfo.os.set(new oidb_cmd0xbf8.OS());
     localDeviceInfo.os.type.set(2);
-    localDeviceInfo.os.version.set(bdcb.e());
-    localDeviceInfo.os.sdk.set(String.valueOf(bdcb.a()));
+    localDeviceInfo.os.version.set(bdgk.e());
+    localDeviceInfo.os.sdk.set(String.valueOf(bdgk.a()));
     localDeviceInfo.os.kernel.set(System.getProperty("os.version"));
     localDeviceInfo.cpu.set(new oidb_cmd0xbf8.CPU());
-    localDeviceInfo.cpu.model.set(bdcb.g());
-    localDeviceInfo.cpu.cores.set(bdcb.b());
-    localDeviceInfo.cpu.frequency.set((int)bdcb.a());
+    localDeviceInfo.cpu.model.set(bdgk.g());
+    localDeviceInfo.cpu.cores.set(bdgk.b());
+    localDeviceInfo.cpu.frequency.set((int)bdgk.a());
     localDeviceInfo.memory.set(new oidb_cmd0xbf8.Memory());
-    localDeviceInfo.memory.total.set(bdcb.d());
+    localDeviceInfo.memory.total.set(bdgk.d());
     localDeviceInfo.storage.set(new oidb_cmd0xbf8.Storage());
-    localDeviceInfo.storage.builtin.set(bdcb.a()[0]);
-    localDeviceInfo.storage.external.set(bdcb.b()[0]);
+    localDeviceInfo.storage.builtin.set(bdgk.a()[0]);
+    localDeviceInfo.storage.external.set(bdgk.b()[0]);
     localDeviceInfo.screen.set(new oidb_cmd0xbf8.Screen());
-    localDeviceInfo.screen.dpi.set(bdcb.d());
-    localDeviceInfo.screen.width.set((int)bdcb.i());
-    localDeviceInfo.screen.height.set((int)bdcb.j());
+    localDeviceInfo.screen.dpi.set(bdgk.d());
+    localDeviceInfo.screen.width.set((int)bdgk.i());
+    localDeviceInfo.screen.height.set((int)bdgk.j());
     localDeviceInfo.camera.set(new oidb_cmd0xbf8.Camera());
     return localDeviceInfo;
   }
@@ -100,7 +100,7 @@ public class AladdinConfigServlet
   {
     oidb_cmd0xbf8.ReqBody localReqBody = new oidb_cmd0xbf8.ReqBody();
     oidb_cmd0xbf8.ReqBodyType1 localReqBodyType1 = new oidb_cmd0xbf8.ReqBodyType1();
-    localReqBodyType1.app_version.set("8.3.3");
+    localReqBodyType1.app_version.set("8.3.5");
     localReqBodyType1.device_info.set(a());
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -190,7 +190,7 @@ public class AladdinConfigServlet
     }
     long l = paramIntent.getLongExtra("key_packet_receive_timestamp", 0L) - paramIntent.getLongExtra("key_packet_send_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l));
-    paramList = azmz.a(ors.a().getApplication());
+    paramList = azri.a(ors.a().getApplication());
     paramIntent = ors.a();
     if (paramInt == 0) {}
     for (;;)
@@ -210,7 +210,7 @@ public class AladdinConfigServlet
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    boolean bool = ((Boolean)bjxj.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
+    boolean bool = ((Boolean)bkbq.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
     QLog.i("AladdinConfigServlet", 1, "[maybeGetAllConfigs] shouldRequest=" + bool);
     if (bool) {
       osv.b();
@@ -258,7 +258,7 @@ public class AladdinConfigServlet
   {
     int i = paramArrayOfByte.length - 4;
     byte[] arrayOfByte = new byte[i];
-    bdlr.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
+    bdqa.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
     return arrayOfByte;
   }
   
@@ -266,8 +266,8 @@ public class AladdinConfigServlet
   {
     long l = paramArrayOfByte.length;
     byte[] arrayOfByte = new byte[(int)l + 4];
-    bdlr.a(arrayOfByte, 0, 4L + l);
-    bdlr.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
+    bdqa.a(arrayOfByte, 0, 4L + l);
+    bdqa.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
     return arrayOfByte;
   }
   

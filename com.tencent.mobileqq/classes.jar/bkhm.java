@@ -1,6 +1,16 @@
-abstract interface bkhm
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bkhm
+  implements View.OnTouchListener
 {
-  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
+  bkhm(bkhk parambkhk) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

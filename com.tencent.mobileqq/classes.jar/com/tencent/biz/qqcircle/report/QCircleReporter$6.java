@@ -1,16 +1,17 @@
 package com.tencent.biz.qqcircle.report;
 
-import typ;
+import java.util.List;
+import qqcircle.QQCircleReport.SingleDcData;
+import uab;
 
 public class QCircleReporter$6
   implements Runnable
 {
-  public QCircleReporter$6(typ paramtyp) {}
+  public QCircleReporter$6(uab paramuab, QQCircleReport.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
-    typ.d(this.this$0);
-    typ.e(this.this$0);
+    uab.a(this.this$0).add(this.a);
   }
 }
 

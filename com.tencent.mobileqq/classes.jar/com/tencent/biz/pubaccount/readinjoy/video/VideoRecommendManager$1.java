@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bjxj;
+import bkbq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import ors;
@@ -14,10 +14,10 @@ public class VideoRecommendManager$1
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
-    rkb.a(this.this$0, bjxj.D(localQQAppInterface));
-    rkb.b(this.this$0, bjxj.E(localQQAppInterface));
-    rkb.a(this.this$0, bjxj.a(localQQAppInterface));
-    rkb.c(this.this$0, bjxj.F(localQQAppInterface));
+    rkb.a(this.this$0, bkbq.D(localQQAppInterface));
+    rkb.b(this.this$0, bkbq.E(localQQAppInterface));
+    rkb.a(this.this$0, bkbq.a(localQQAppInterface));
+    rkb.c(this.this$0, bkbq.F(localQQAppInterface));
     if ((rkb.a(this.this$0) < 0.0F) || (rkb.a(this.this$0) > 1.0D)) {
       rkb.a(this.this$0, 0.8F);
     }

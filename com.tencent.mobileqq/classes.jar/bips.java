@@ -1,19 +1,10 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bips
-  implements DialogInterface.OnClickListener
+public final class bips
+  implements DialogInterface.OnDismissListener
 {
-  public bips(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(4));
-    this.a.finish();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

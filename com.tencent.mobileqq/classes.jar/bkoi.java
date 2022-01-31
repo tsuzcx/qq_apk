@@ -1,496 +1,169 @@
 import android.app.Activity;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.hardware.Camera;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraManager.1;
-import dov.com.qq.im.ae.camera.core.AECameraManager.10;
-import dov.com.qq.im.ae.camera.core.AECameraManager.11;
-import dov.com.qq.im.ae.camera.core.AECameraManager.12;
-import dov.com.qq.im.ae.camera.core.AECameraManager.2;
-import dov.com.qq.im.ae.camera.core.AECameraManager.3;
-import dov.com.qq.im.ae.camera.core.AECameraManager.4;
-import dov.com.qq.im.ae.camera.core.AECameraManager.5;
-import dov.com.qq.im.ae.camera.core.AECameraManager.6;
-import dov.com.qq.im.ae.camera.core.AECameraManager.7;
-import dov.com.qq.im.ae.camera.core.AECameraManager.8;
-import dov.com.qq.im.ae.camera.core.AECameraManager.9;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class bkoi
-  implements SurfaceTexture.OnFrameAvailableListener, azbr, azde, azdm
 {
-  private static final azdf jdField_a_of_type_Azdf = CameraCaptureView.jdField_a_of_type_Azdf;
-  public int a;
-  private ajng jdField_a_of_type_Ajng;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private View jdField_a_of_type_AndroidViewView;
-  private axlg jdField_a_of_type_Axlg;
-  private axlh jdField_a_of_type_Axlh;
-  private azdd jdField_a_of_type_Azdd = new azdd(this.jdField_b_of_type_AndroidOsHandler, this);
-  private bkny jdField_a_of_type_Bkny;
-  private bkol jdField_a_of_type_Bkol;
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
-  protected boolean a;
-  public int b;
-  private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
-  private boolean jdField_b_of_type_Boolean;
-  protected int c;
-  private boolean c;
-  protected int d;
-  private boolean d;
-  public int e;
-  private boolean e;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private volatile boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
-  private int j;
-  private int k;
-  private int l = 1;
+  public static String a;
   
-  private bkoi()
+  static
   {
-    this.jdField_a_of_type_Int = 1080;
-    this.jdField_b_of_type_Int = 1920;
-    if ((this.l == 1) && (!anwv.d())) {
-      this.l = 2;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AECameraManagerHandlerThread");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    jdField_a_of_type_Azdf.a(this.jdField_a_of_type_Azdd);
-    jdField_a_of_type_Azdf.e(true);
-    this.jdField_a_of_type_Ajng = new ajng();
+    jdField_a_of_type_JavaLangString = "ShortVideoProcessUtil";
   }
   
-  public static bkoi a()
+  private static Bundle a(Intent paramIntent)
   {
-    return bkom.a;
-  }
-  
-  private void a(azda paramazda)
-  {
-    this.jdField_c_of_type_Int = paramazda.jdField_b_of_type_Int;
-    this.jdField_d_of_type_Int = paramazda.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Bkol != null) {
-      this.jdField_a_of_type_Bkol.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-    }
-  }
-  
-  private void b(Activity paramActivity, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dynamic_text", paramIntent.getStringExtra("dynamic_text"));
+    String str = paramIntent.getStringExtra("widgetinfo");
+    paramIntent = paramIntent.getStringExtra("key_camera_material_name");
+    if (!TextUtils.isEmpty(str))
     {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = new View(paramActivity);
+      localBundle.putString("widgetinfo", str);
+      if (!TextUtils.isEmpty(paramIntent)) {
+        localBundle.putString("key_camera_material_name", paramIntent);
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.7F);
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getBundele templateId:" + str + ", name:" + paramIntent);
+    }
+    return localBundle;
+  }
+  
+  public static void a(Activity paramActivity, Intent paramIntent, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, bmhg parambmhg, bkoj parambkoj)
+  {
+    a(paramActivity, paramIntent, paramVideoCaptureResult, parambmhg, parambkoj, null, "", 1, null, false, "", false);
+  }
+  
+  public static void a(Activity paramActivity, Intent paramIntent, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, bmhg parambmhg, bkoj parambkoj, ajpz paramajpz, String paramString1, int paramInt, ArrayList<String> paramArrayList, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+  {
+    if ((paramActivity == null) || (paramIntent == null) || (parambmhg == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVideofromEditVideoActivity params are wrong");
       }
-      paramActivity.addContentView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
     }
     do
     {
-      try
-      {
-        this.jdField_h_of_type_Int = Settings.System.getInt(paramActivity.getContentResolver(), "screen_brightness_mode");
-        Settings.System.putInt(paramActivity.getContentResolver(), "screen_brightness_mode", 0);
-        this.jdField_i_of_type_Int = Settings.System.getInt(paramActivity.getContentResolver(), "screen_brightness");
-        Settings.System.putInt(paramActivity.getContentResolver(), "screen_brightness", 255);
-        this.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      catch (Exception paramActivity)
-      {
-        do
-        {
-          this.jdField_h_of_type_Int = 1;
-          this.jdField_i_of_type_Int = 100;
-        } while (!QLog.isColorLevel());
-        QLog.e("AECameraManager", 2, "turn FrontFlash Error ", paramActivity);
-        paramActivity.printStackTrace();
-        return;
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        Settings.System.putInt(paramActivity.getContentResolver(), "screen_brightness", this.jdField_i_of_type_Int);
-        Settings.System.putInt(paramActivity.getContentResolver(), "screen_brightness_mode", this.jdField_h_of_type_Int);
-        this.jdField_d_of_type_Boolean = false;
-      }
-    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getParent() == null));
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  private void b(bkny parambkny)
-  {
-    this.jdField_a_of_type_Bkny = parambkny;
-  }
-  
-  private void h()
-  {
-    blbo.a().a("AECameraManager", "realStartPreview---surfaceWidth=" + this.jdField_a_of_type_Int + ", surfaceHeight=" + this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Bkny.i(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bkny.j(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Azdf.a(new azda(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int), new azda(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), 0, 30, true);
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Azdf.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, null, this, true);
-      this.jdField_h_of_type_Boolean = true;
-      this.jdField_f_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_g_of_type_Int = this.jdField_b_of_type_Int;
-      if (this.jdField_a_of_type_Bkol != null) {
-        this.jdField_a_of_type_Bkol.i();
-      }
-      blfg.b("AECameraManager", "### realStartPreview");
-      blbo.a().a("startCameraPreview-end");
-      return;
-      jdField_a_of_type_Azdf.a(new azda(this.jdField_a_of_type_Bkny.b(), this.jdField_a_of_type_Bkny.c()), new azda(this.jdField_a_of_type_Bkny.d(), this.jdField_a_of_type_Bkny.e()), 0, 30, false);
-    }
-  }
-  
-  public int a()
-  {
-    return this.l;
-  }
-  
-  public Handler a()
-  {
-    if (jdField_a_of_type_Azdf == null) {
-      return null;
-    }
-    return jdField_a_of_type_Azdf.a();
-  }
-  
-  public void a()
-  {
-    blbo.a().a("openCamera-begin");
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.1(this));
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.8(this, paramFloat1, paramFloat2));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.10(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Ajng != null) {
-      this.jdField_a_of_type_Ajng.a(paramInt2, paramInt1, b(), c());
-    }
-  }
-  
-  public void a(Activity paramActivity, boolean paramBoolean)
-  {
-    if (this.l == 1)
-    {
-      b(paramActivity, paramBoolean);
-      return;
-    }
-    jdField_a_of_type_Azdf.c(paramBoolean);
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, this.jdField_a_of_type_AndroidOsHandler);
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-  }
-  
-  public void a(axlg paramaxlg)
-  {
-    this.jdField_a_of_type_Axlg = paramaxlg;
-  }
-  
-  public void a(axlh paramaxlh)
-  {
-    this.jdField_a_of_type_Axlh = paramaxlh;
-  }
-  
-  public void a(bkny parambkny)
-  {
-    this.jdField_a_of_type_Axlg = new axlg();
-    b(parambkny);
-    this.l = parambkny.g();
-    if ((this.l == 1) && (!anwv.d())) {
-      this.l = 2;
-    }
-  }
-  
-  public void a(bkol parambkol)
-  {
-    blfg.b("AECameraManager", "### setCameraManagerListener--- listener=" + parambkol);
-    this.jdField_a_of_type_Bkol = parambkol;
-  }
-  
-  public void a(AudioCapture paramAudioCapture)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = paramAudioCapture;
-  }
-  
-  public void a(File paramFile, int paramInt, boolean paramBoolean, ajrs paramajrs)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.7(this, paramFile, paramajrs, paramInt, paramBoolean));
-  }
-  
-  public void a(Exception paramException)
-  {
-    if (paramException != null)
-    {
-      blfg.a("AECameraManager", "onCameraException---" + paramException.getMessage(), paramException);
-      return;
-    }
-    blfg.d("AECameraManager", "onCameraException---");
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    blbo.a().a("AECameraManager", "【CameraProxy notify】eventId=" + paramInt + ", args=" + Arrays.toString(paramVarArgs));
-    switch (paramInt)
-    {
-    }
-    do
-    {
+      PublishParam localPublishParam;
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!(paramVarArgs[0] instanceof azda)) {
-                  break;
-                }
-                a((azda)paramVarArgs[0]);
-              } while (this.jdField_a_of_type_Bkol == null);
-              this.jdField_a_of_type_Bkol.a(true, "");
-              blfg.b("AECameraManager", "【Camera Open Success】EVENT_SET_CAMERA_PARAM");
-              return;
-            } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bkol == null));
-            this.jdField_a_of_type_Bkol.a(false, (String)paramVarArgs[0]);
-            blfg.d("AECameraManager", "【Camera Open Error】EVENT_SET_CAMERA_PARAM:" + paramVarArgs[0]);
-            return;
-          } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bkol == null));
-          this.jdField_a_of_type_Bkol.a(false, (String)paramVarArgs[0]);
-          blfg.d("AECameraManager", "【Camera Open Error】EVENT_CREATE_CAMERA:" + paramVarArgs[0]);
-          return;
-        } while ((!(paramVarArgs[0] instanceof Integer)) || (this.jdField_a_of_type_Bkol == null));
-        this.jdField_a_of_type_Bkol.a(false, "[Camera2]openCamera2 error:" + paramVarArgs[0]);
-        blfg.d("AECameraManager", "【Camera2 Open Error】EVENT_CAMERA2_ERROR:" + paramVarArgs[0]);
         return;
-        if (!(paramVarArgs[0] instanceof azda)) {
-          break;
-        }
-        a((azda)paramVarArgs[0]);
-        if (this.jdField_a_of_type_Bkol != null)
-        {
-          this.jdField_a_of_type_Bkol.a(true, "");
-          blfg.b("AECameraManager", "【Camera2 Open Success】EVENT_CAMERA2_PARAMS");
-        }
-      } while ((paramVarArgs.length < 2) || (!(paramVarArgs[1] instanceof azda)));
-      paramObject = (azda)paramVarArgs[1];
-      this.j = paramObject.jdField_a_of_type_Int;
-      this.k = paramObject.jdField_b_of_type_Int;
-      return;
-    } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bkol == null));
-    this.jdField_a_of_type_Bkol.a(false, "[Camera2]setCamera2 Params error:" + paramVarArgs[0]);
-    blfg.d("AECameraManager", "【Camera2 Open Error】setCamera2 Params error::" + paramVarArgs[0]);
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    if (paramRuntimeException != null)
-    {
-      blfg.a("AECameraManager", "onDispatchThreadException---" + paramRuntimeException.getMessage(), paramRuntimeException);
-      return;
-    }
-    blfg.d("AECameraManager", "onDispatchThreadException---");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.2(this, paramBoolean));
-  }
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if (!this.jdField_i_of_type_Boolean)
-    {
-      this.jdField_i_of_type_Boolean = true;
-      blbo.a().a("onCameraPreviewFrameData");
-    }
-    azcx.a().a(true, paramArrayOfByte);
-    if (this.jdField_e_of_type_Boolean)
-    {
-      int i1 = this.jdField_c_of_type_Int;
-      int i2 = this.jdField_d_of_type_Int;
-      int n = i2;
-      int m = i1;
-      if (this.j > 0)
+        paramActivity.getIntent().putExtra("forward_source_from_shoot_quick", true);
+        localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+      } while ((localPublishParam == null) || (localPublishParam.jdField_j_of_type_Int != 1));
+      Object localObject = localPublishParam.jdField_c_of_type_JavaLangString;
+      paramActivity.getIntent().putExtra("ab_test_send_btn_click_time", SystemClock.uptimeMillis());
+      if (QLog.isColorLevel())
       {
-        n = i2;
-        m = i1;
-        if (this.k > 0)
-        {
-          m = this.k;
-          n = this.j;
-        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "hwEncodeVideo videoMergeThumbPath =" + (String)localObject);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "publishParam =" + localPublishParam.toString());
       }
-      this.jdField_a_of_type_Axlg.a(paramArrayOfByte, m, n, this.jdField_a_of_type_Axlh);
-    }
+      PtvFilterUtils.a(new File(localPublishParam.jdField_j_of_type_JavaLangString).getParent(), localPublishParam.jdField_b_of_type_JavaLangString);
+      Bundle localBundle = a(paramIntent);
+      localObject = (SessionInfo)paramIntent.getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      boolean bool = paramIntent.getBooleanExtra("gotoAIO", false);
+      a(paramActivity, (SessionInfo)localObject, localPublishParam, paramVideoCaptureResult, localBundle, parambkoj, paramajpz, paramString1, paramInt, paramArrayList, paramBoolean1, paramString2, paramBoolean2);
+      if ((localObject != null) && (bool))
+      {
+        paramIntent = aepi.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
+        paramIntent.putExtra("uin", ((SessionInfo)localObject).jdField_a_of_type_JavaLangString);
+        paramIntent.putExtra("uintype", ((SessionInfo)localObject).jdField_a_of_type_Int);
+        paramIntent.putExtra("troop_uin", ((SessionInfo)localObject).jdField_b_of_type_JavaLangString);
+        paramActivity.startActivity(paramIntent);
+        return;
+      }
+    } while (!paramIntent.getBooleanExtra("short_video_multi_share", false));
+    bnld.a(paramActivity, paramIntent.getBooleanExtra("quick_shoot_jump_story", true), parambmhg);
   }
   
-  public boolean a()
+  public static void a(Activity paramActivity, SessionInfo paramSessionInfo, PublishParam paramPublishParam, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, Bundle paramBundle, bkoj parambkoj)
   {
-    return (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean);
+    a(paramActivity, paramSessionInfo, paramPublishParam, paramVideoCaptureResult, paramBundle, parambkoj, null, "", 1, null, false, "", false);
   }
   
-  public int b()
+  public static void a(Activity paramActivity, SessionInfo paramSessionInfo, PublishParam paramPublishParam, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, Bundle paramBundle, bkoj parambkoj, ajpz paramajpz, String paramString1, int paramInt, ArrayList<String> paramArrayList, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    blbo.a().a("startCameraPreview-begin");
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.5(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    AECameraManager.3 local3 = new AECameraManager.3(this, paramBoolean);
-    if (this.jdField_a_of_type_AndroidOsHandler.getLooper().getThread().getId() != Thread.currentThread().getId())
+    bnfp localbnfp = new bnfp();
+    localbnfp.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    localbnfp.jdField_a_of_type_JavaLangString = new File(paramPublishParam.jdField_j_of_type_JavaLangString).getParent();
+    localbnfp.jdField_b_of_type_JavaLangString = paramPublishParam.jdField_k_of_type_JavaLangString;
+    int i;
+    boolean bool;
+    if (paramPublishParam.f <= 5)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(local3);
+      i = paramPublishParam.f;
+      localbnfp.jdField_a_of_type_Int = i;
+      localbnfp.jdField_c_of_type_JavaLangString = paramPublishParam.jdField_j_of_type_JavaLangString;
+      localbnfp.f = paramPublishParam.jdField_c_of_type_JavaLangString;
+      localbnfp.jdField_c_of_type_Int = 0;
+      localbnfp.jdField_d_of_type_Int = 0;
+      localbnfp.jdField_j_of_type_JavaLangString = paramPublishParam.jdField_b_of_type_JavaLangString;
+      localbnfp.jdField_j_of_type_Int = paramPublishParam.o;
+      localbnfp.jdField_k_of_type_Int = paramPublishParam.p;
+      if (paramPublishParam.jdField_i_of_type_Int != 1) {
+        break label362;
+      }
+      bool = true;
+      label132:
+      localbnfp.jdField_c_of_type_Boolean = bool;
+      localbnfp.jdField_l_of_type_Int = paramPublishParam.f;
+      localbnfp.jdField_a_of_type_Ajpz = paramajpz;
+      localbnfp.g = paramString1;
+      localbnfp.jdField_e_of_type_Int = paramInt;
+      localbnfp.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+      localbnfp.jdField_a_of_type_Boolean = paramBoolean1;
+      localbnfp.jdField_i_of_type_JavaLangString = paramString2;
+      localbnfp.jdField_b_of_type_Boolean = paramBoolean2;
+      if (paramVideoCaptureResult != null) {
+        break label368;
+      }
+      axwq.a(new RuntimeException("videoCaptureResult == null"));
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "videoCaptureResult == null");
+      localbnfp.h = 0;
+      label228:
+      localbnfp.jdField_i_of_type_Int = ((int)paramPublishParam.jdField_a_of_type_Long);
+      localbnfp.jdField_k_of_type_JavaLangString = paramBundle.getString("dynamic_text");
+      localbnfp.jdField_l_of_type_JavaLangString = paramBundle.getString("widgetinfo");
+      localbnfp.m = paramBundle.getString("key_camera_material_name");
+      paramVideoCaptureResult = "";
+      paramInt = 0;
+      paramActivity = "";
+      if (paramSessionInfo != null)
+      {
+        paramVideoCaptureResult = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        paramInt = paramSessionInfo.jdField_a_of_type_Int;
+        paramActivity = paramSessionInfo.jdField_b_of_type_JavaLangString;
+      }
+      localbnfp.jdField_d_of_type_JavaLangString = paramVideoCaptureResult;
+      localbnfp.jdField_b_of_type_Int = paramInt;
+      localbnfp.jdField_e_of_type_JavaLangString = paramActivity;
+      if (paramPublishParam.jdField_e_of_type_Int != 1) {
+        break label380;
+      }
+    }
+    label362:
+    label368:
+    label380:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      new bnfo(localbnfp, false, paramBoolean1, parambkoj).execute(new Void[0]);
       return;
-    }
-    local3.run();
-  }
-  
-  public boolean b()
-  {
-    return this.l == 1;
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.6(this));
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.12(this, paramInt));
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.4(this, paramBoolean));
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.9(this));
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean d()
-  {
-    return jdField_a_of_type_Azdf.jdField_b_of_type_Boolean;
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Axlg != null) {
-      this.jdField_a_of_type_Axlg.a();
-    }
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AECameraManager.11(this));
-  }
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.jdField_a_of_type_Bkol != null) {
-      this.jdField_a_of_type_Bkol.a(paramSurfaceTexture);
+      i = 0;
+      break;
+      bool = false;
+      break label132;
+      localbnfp.h = paramVideoCaptureResult.videoFrameCount;
+      break label228;
     }
   }
 }

@@ -4,7 +4,7 @@ import com.tencent.widget.AdapterView;
 import java.util.List;
 
 public class npp
-  implements bhqp
+  implements bhuw
 {
   public npp(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
   

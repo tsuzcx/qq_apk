@@ -1,22 +1,11 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public class yeq
-  extends anxq
+class yeq
+  implements yls
 {
-  public yeq(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  yeq(yep paramyep) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    aobd.a(BaseApplicationImpl.getContext(), 2, true);
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    this.a.jdField_a_of_type_Yen.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 

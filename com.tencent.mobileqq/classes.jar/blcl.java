@@ -1,59 +1,30 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
 
-public class blcl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class blcl
+  implements bmeo<blcd>
 {
-  public blcl(AETemplateInfoFragment paramAETemplateInfoFragment) {}
+  blcl(blcj paramblcj, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
   
-  public void onGlobalLayout()
+  public void a(@Nullable blcd paramblcd)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    if (paramblcd != null)
     {
-      AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      if (AETemplateInfoFragment.a(this.a) != null) {
-        break label50;
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(paramblcd.a);
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramblcd.b);
+      if (paramblcd.a.equals("#ccffffff"))
+      {
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
       }
     }
-    label50:
-    float f1;
-    float f2;
-    do
+    else
     {
-      do
-      {
-        return;
-        AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        break;
-      } while ((AETemplateInfoFragment.a(this.a).getVideoHeight() == 0) || (AETemplateInfoFragment.a(this.a).getVideoWidth() == 0));
-      f1 = AETemplateInfoFragment.a(this.a).getVideoWidth() / AETemplateInfoFragment.a(this.a).getVideoHeight();
-      i = AETemplateInfoFragment.a(this.a).getWidth();
-      int j = AETemplateInfoFragment.a(this.a).getHeight();
-      f2 = i / j;
-      if (QLog.isDebugVersion()) {
-        QLog.d("AETemplateInfoFragment", 2, new Object[] { "adjust player size---origin w:h=", Integer.valueOf(i), ":", Integer.valueOf(j), " availableRatio(w/h)=", Float.valueOf(f2), " video aspectRation(w/h)=" + f1 });
-      }
-      if (f1 < f2)
-      {
-        double d = AETemplateInfoFragment.a(this.a).getHeight();
-        i = (int)(f1 * d);
-        localObject = AETemplateInfoFragment.a(this.a).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = i;
-        AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        return;
-      }
-    } while (f1 <= f2);
-    int i = (int)(AETemplateInfoFragment.a(this.a).getWidth() / f1);
-    Object localObject = (ViewGroup.MarginLayoutParams)AETemplateInfoFragment.a(this.a).getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).height = i;
-    AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+    }
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
   }
 }
 

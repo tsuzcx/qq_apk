@@ -1,32 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
 
 class apjv
-  implements Handler.Callback
 {
-  apjv(apju paramapju) {}
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      QQToast.a(apju.a(this.a), 2131692912, 0).b(2131298914);
-      return true;
-    }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
-    }
-    QQToast.a(apju.a(this.a), 1, 2131689688, 0).b(2131298914);
-    return true;
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 

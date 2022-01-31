@@ -11,7 +11,7 @@ import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import avpe;
+import avtn;
 import com.tencent.mobileqq.R.styleable;
 
 public class GradientAnimTextView
@@ -57,7 +57,7 @@ public class GradientAnimTextView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avpe(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avtn(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
     if (this.jdField_a_of_type_AndroidGraphicsMatrix != null)

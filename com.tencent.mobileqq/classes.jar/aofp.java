@@ -1,15 +1,10 @@
-public class aofp
+public abstract interface aofp
 {
-  public int a;
-  public String a = "";
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public abstract void onColorNoteAnimFinish();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofp
  * JD-Core Version:    0.7.0.1
  */

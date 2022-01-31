@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 public class bbwi
-  implements bhqg
+  implements Observer
 {
-  public bbwi(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public void as_()
+  private final void a(Object paramObject)
   {
-    this.a.a.a();
-    this.a.i();
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a((Set)paramObject[0]);
+  }
+  
+  protected void a(Set<Long> paramSet) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 

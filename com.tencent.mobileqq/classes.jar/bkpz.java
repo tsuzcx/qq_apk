@@ -1,18 +1,21 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
+
 public class bkpz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public bkpz(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
   
-  public bkpz()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = alpo.a(2131716207);
-    this.jdField_b_of_type_JavaLangString = alpo.a(2131716209);
-    this.jdField_a_of_type_Double = 0.8D;
+    if ((paramValueAnimator.getAnimatedValue() instanceof Integer))
+    {
+      if (AEAlbumLinearLayout.a(this.a) != null) {
+        AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a));
+      }
+      this.a.scrollTo(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
   }
 }
 

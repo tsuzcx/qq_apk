@@ -1,17 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aeyr
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public aeyr(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public aeyr(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    AIOLongShotHelper.a(this.a).performClick();
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    {
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bdnn.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
+      }
+      this.a.setSendEnable(false);
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      label55:
+      this.a.setSendEnable(true);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

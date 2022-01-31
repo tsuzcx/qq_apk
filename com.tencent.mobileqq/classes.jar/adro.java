@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adro
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public adro(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adro(QQMapActivity paramQQMapActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.u();
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
   }
 }
 

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Window;
-import bixf;
+import bjbm;
 
 public class ActivityWrapper
 {
@@ -14,7 +14,7 @@ public class ActivityWrapper
   
   public ActivityWrapper(Context paramContext)
   {
-    this.a = bixf.a(paramContext);
+    this.a = bjbm.a(paramContext);
   }
   
   public void finish()

@@ -1,47 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import java.io.File;
+import java.io.FileFilter;
 
-public class anbx
-  implements TVK_SDKMgr.OnLogListener
+final class anbx
+  implements FileFilter
 {
-  public int d(String paramString1, String paramString2)
+  public boolean accept(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
+    return false;
   }
 }
 

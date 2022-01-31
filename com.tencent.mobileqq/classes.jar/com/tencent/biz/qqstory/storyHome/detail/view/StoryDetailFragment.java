@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhqp;
-import bhqq;
+import bhuw;
+import bhux;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.CommentEntry;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
@@ -35,44 +35,44 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import ume;
-import upm;
-import urf;
-import urr;
-import usv;
-import wdd;
-import wdj;
-import weh;
-import wew;
-import wfl;
-import wfm;
-import wfn;
-import wgf;
-import wgg;
-import wgk;
-import wgn;
-import wgr;
-import wgs;
-import wgw;
-import wgy;
+import uqn;
+import utv;
+import uvo;
+import uwa;
+import uxe;
+import whm;
+import whs;
+import wiq;
+import wjf;
+import wju;
+import wjv;
+import wjw;
+import wko;
 import wkp;
-import wsv;
-import wta;
-import xod;
+import wkt;
+import wkw;
+import wla;
+import wlb;
+import wlf;
+import wlh;
+import woy;
+import wxe;
+import wxj;
+import xsm;
 
 public class StoryDetailFragment
   extends Fragment
-  implements View.OnTouchListener, bhqp, bhqq, wdd
+  implements View.OnTouchListener, bhuw, bhux, whm
 {
   private int jdField_a_of_type_Int;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public StoryDetailListView a;
   private String jdField_a_of_type_JavaLangString;
-  private weh jdField_a_of_type_Weh;
-  public wew a;
-  private wfn jdField_a_of_type_Wfn;
-  public wkp a;
+  private wiq jdField_a_of_type_Wiq;
+  public wjf a;
+  private wjw jdField_a_of_type_Wjw;
+  public woy a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -96,7 +96,7 @@ public class StoryDetailFragment
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if (ume.a())
+    if (uqn.a())
     {
       localIntent = new Intent(getActivity(), SplashActivity.class);
       localIntent.putExtra("fragment_id", 1);
@@ -118,55 +118,55 @@ public class StoryDetailFragment
   
   public String a(String paramString)
   {
-    paramString = xod.a(paramString);
-    return paramString[1] + alpo.a(2131714786) + paramString[2] + alpo.a(2131714785);
+    paramString = xsm.a(paramString);
+    return paramString[1] + alud.a(2131714798) + paramString[2] + alud.a(2131714797);
   }
   
   public void a()
   {
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Wkp.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wfn.a(false);
+    this.jdField_a_of_type_Woy.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Wjw.a(false);
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setSelectionFromBottom(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b() + paramInt, 0);
-    wsv.b("Q.qqstory.detail.StoryDetailFragment", "scoll to the comment. position is %d.", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b() + paramInt));
+    wxe.b("Q.qqstory.detail.StoryDetailFragment", "scoll to the comment. position is %d.", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b() + paramInt));
   }
   
-  public void a(weh paramweh, boolean paramBoolean)
+  public void a(wiq paramwiq, boolean paramBoolean)
   {
-    wsv.b("Q.qqstory.detail.StoryDetailFragment", "update feed all info. %s.", paramweh.toString());
-    this.jdField_a_of_type_Weh = paramweh;
+    wxe.b("Q.qqstory.detail.StoryDetailFragment", "update feed all info. %s.", paramwiq.toString());
+    this.jdField_a_of_type_Wiq = paramwiq;
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     if (getActivity() != null) {
-      getActivity().setTitle(a(paramweh.a.date));
+      getActivity().setTitle(a(paramwiq.a.date));
     }
-    if (this.jdField_a_of_type_Wew == null) {
-      this.jdField_a_of_type_Wew = new wew(getActivity(), getView(), paramweh, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wfn);
+    if (this.jdField_a_of_type_Wjf == null) {
+      this.jdField_a_of_type_Wjf = new wjf(getActivity(), getView(), paramwiq, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wjw);
     }
-    Object localObject = (wgw)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("GeneralFeedProfileSegment");
-    ((wgw)localObject).a(paramweh);
-    ((wgw)localObject).a(this.jdField_b_of_type_JavaLangString);
-    ((wgw)localObject).e_(true);
-    localObject = (wgy)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("ShareGroupFeedProfileSegment");
-    ((wgy)localObject).a(paramweh);
-    ((wgy)localObject).a(this.jdField_b_of_type_JavaLangString);
-    ((wgy)localObject).e_(true);
-    localObject = (wgf)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("BannerProfileSegment");
-    ((wgf)localObject).a(paramweh);
-    ((wgf)localObject).e_(true);
-    ((wgn)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailInteractSegment")).a(paramweh, this.jdField_a_of_type_Int, this.d);
-    ((wgk)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailDoubleTabSegment")).a(paramweh, paramBoolean);
-    ((wgr)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailLikeListSegment")).a(paramweh, paramBoolean);
-    ((wgg)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramweh, paramBoolean);
-    ((wgs)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailTagListSegment")).a(paramweh);
+    Object localObject = (wlf)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("GeneralFeedProfileSegment");
+    ((wlf)localObject).a(paramwiq);
+    ((wlf)localObject).a(this.jdField_b_of_type_JavaLangString);
+    ((wlf)localObject).e_(true);
+    localObject = (wlh)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("ShareGroupFeedProfileSegment");
+    ((wlh)localObject).a(paramwiq);
+    ((wlh)localObject).a(this.jdField_b_of_type_JavaLangString);
+    ((wlh)localObject).e_(true);
+    localObject = (wko)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("BannerProfileSegment");
+    ((wko)localObject).a(paramwiq);
+    ((wko)localObject).e_(true);
+    ((wkw)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailInteractSegment")).a(paramwiq, this.jdField_a_of_type_Int, this.d);
+    ((wkt)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailDoubleTabSegment")).a(paramwiq, paramBoolean);
+    ((wla)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailLikeListSegment")).a(paramwiq, paramBoolean);
+    ((wkp)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramwiq, paramBoolean);
+    ((wlb)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailTagListSegment")).a(paramwiq);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.p();
-    localObject = paramweh.a(paramBoolean);
+    localObject = paramwiq.a(paramBoolean);
     int i;
     if ((this.jdField_b_of_type_Int != -1) && (localObject != null)) {
       i = 0;
@@ -185,7 +185,7 @@ public class StoryDetailFragment
         {
           this.jdField_a_of_type_Boolean = false;
           getView().postDelayed(new StoryDetailFragment.2(this), 100);
-          wta.a("home_page", "auto_reply", wta.a(paramweh.a), 0, new String[0]);
+          wxj.a("home_page", "auto_reply", wxj.a(paramwiq.a), 0, new String[0]);
         }
         return;
       }
@@ -207,46 +207,46 @@ public class StoryDetailFragment
   
   public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Wew == null) {
+    if (this.jdField_a_of_type_Wjf == null) {
       return false;
     }
     if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b()) {
       return false;
     }
     paramInt -= this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b();
-    paramView = ((wgg)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramInt);
+    paramView = ((wkp)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramInt);
     if (paramView == null)
     {
-      wsv.e("Q.qqstory.detail.StoryDetailFragment", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+      wxe.e("Q.qqstory.detail.StoryDetailFragment", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
       return false;
     }
-    if ((this.jdField_a_of_type_Weh != null) && (this.jdField_a_of_type_Weh.a != null)) {
-      if (!this.jdField_a_of_type_Weh.a.getOwner().isMe()) {
+    if ((this.jdField_a_of_type_Wiq != null) && (this.jdField_a_of_type_Wiq.a != null)) {
+      if (!this.jdField_a_of_type_Wiq.a.getOwner().isMe()) {
         break label160;
       }
     }
     label160:
     for (paramAdapterView = "2";; paramAdapterView = "1")
     {
-      wta.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, wta.a(this.jdField_a_of_type_Int) });
+      wxj.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, wxj.a(this.jdField_a_of_type_Int) });
       if (paramView.type != 1) {
         break;
       }
-      this.jdField_a_of_type_Wfn.T_();
+      this.jdField_a_of_type_Wjw.Q_();
       return true;
     }
-    this.jdField_a_of_type_Wew.b(paramView, paramInt, this.jdField_a_of_type_Wfn.a());
+    this.jdField_a_of_type_Wjf.b(paramView, paramInt, this.jdField_a_of_type_Wjw.a());
     return true;
   }
   
-  public boolean a(weh paramweh, boolean paramBoolean)
+  public boolean a(wiq paramwiq, boolean paramBoolean)
   {
-    return (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a()) || (paramweh == null) || (paramweh.a(paramBoolean)) || (paramweh.a(paramBoolean) != null);
+    return (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a()) || (paramwiq == null) || (paramwiq.a(paramBoolean)) || (paramwiq.a(paramBoolean) != null);
   }
   
   public void b()
   {
-    wsv.c("Q.qqstory.detail.StoryDetailFragment", "show empty page.");
+    wxe.c("Q.qqstory.detail.StoryDetailFragment", "show empty page.");
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setVisibility(0);
@@ -254,18 +254,18 @@ public class StoryDetailFragment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.p();
   }
   
-  public void b(weh paramweh, boolean paramBoolean)
+  public void b(wiq paramwiq, boolean paramBoolean)
   {
-    ((wgk)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailDoubleTabSegment")).a(paramweh, paramBoolean);
-    ((wgr)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailLikeListSegment")).a(paramweh, paramBoolean);
-    ((wgg)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramweh, paramBoolean);
-    paramBoolean = a(paramweh, paramBoolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setOnLoadMoreListener("StoryDetailFragment", new wfm(this));
-    paramweh = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView;
+    ((wkt)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailDoubleTabSegment")).a(paramwiq, paramBoolean);
+    ((wla)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailLikeListSegment")).a(paramwiq, paramBoolean);
+    ((wkp)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramwiq, paramBoolean);
+    paramBoolean = a(paramwiq, paramBoolean);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setOnLoadMoreListener("StoryDetailFragment", new wjv(this));
+    paramwiq = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView;
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      paramweh.setLoadMoreComplete("StoryDetailFragment", true, paramBoolean);
+      paramwiq.setLoadMoreComplete("StoryDetailFragment", true, paramBoolean);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.p();
       return;
     }
@@ -278,33 +278,33 @@ public class StoryDetailFragment
   
   public void d()
   {
-    this.jdField_a_of_type_Wfn.T_();
+    this.jdField_a_of_type_Wjw.Q_();
   }
   
   public void e()
   {
     int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setSelectionFromBottom(i, 0);
-    wsv.b("Q.qqstory.detail.StoryDetailFragment", "scoll to last comment. position is %d.", Integer.valueOf(i));
+    wxe.b("Q.qqstory.detail.StoryDetailFragment", "scoll to last comment. position is %d.", Integer.valueOf(i));
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Wkp.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Woy.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a(getActivity());
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.j();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setRequestDataListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setOnTouchListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setOnLoadMoreListener("StoryDetailFragment", new wfl(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setOnLoadMoreListener("StoryDetailFragment", new wju(this));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setLoadMoreComplete("StoryDetailFragment", true, false);
-    this.jdField_a_of_type_Wfn = new wfn(this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d);
-    this.jdField_a_of_type_Wfn.e();
+    this.jdField_a_of_type_Wjw = new wjw(this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d);
+    this.jdField_a_of_type_Wjw.e();
     if (this.c != 0) {
-      this.jdField_a_of_type_Wfn.c(2);
+      this.jdField_a_of_type_Wjw.c(2);
     }
-    this.jdField_a_of_type_Wfn.a(true);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setCallback(this.jdField_a_of_type_Wfn);
+    this.jdField_a_of_type_Wjw.a(true);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.setCallback(this.jdField_a_of_type_Wjw);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -337,14 +337,14 @@ public class StoryDetailFragment
         break;
         if (this.d == 106)
         {
-          localObject1 = (urf)urr.a(18);
-          if ((((urf)localObject1).jdField_a_of_type_Boolean) && (((urf)localObject1).jdField_a_of_type_JavaUtilMap != null))
+          localObject1 = (uvo)uwa.a(18);
+          if ((((uvo)localObject1).jdField_a_of_type_Boolean) && (((uvo)localObject1).jdField_a_of_type_JavaUtilMap != null))
           {
-            Iterator localIterator = ((urf)localObject1).jdField_a_of_type_JavaUtilMap.keySet().iterator();
+            Iterator localIterator = ((uvo)localObject1).jdField_a_of_type_JavaUtilMap.keySet().iterator();
             while (localIterator.hasNext())
             {
               Object localObject2 = (String)localIterator.next();
-              localObject2 = (QQStoryBaseActivity)((WeakReference)((urf)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject2)).get();
+              localObject2 = (QQStoryBaseActivity)((WeakReference)((uvo)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject2)).get();
               if ((localObject2 != null) && (getActivity() != localObject2) && (!((QQStoryBaseActivity)localObject2).isFinishing())) {
                 ((QQStoryBaseActivity)localObject2).finish();
               }
@@ -357,9 +357,9 @@ public class StoryDetailFragment
           a(str, false);
         }
       }
-      if (this.jdField_a_of_type_Wew != null)
+      if (this.jdField_a_of_type_Wjf != null)
       {
-        wdj.a(this.jdField_a_of_type_Wew.a, paramIntent);
+        whs.a(this.jdField_a_of_type_Wjf.a, paramIntent);
         ThreadManager.getUIHandler().postDelayed(new StoryDetailFragment.4(this), 100L);
       }
     }
@@ -379,22 +379,22 @@ public class StoryDetailFragment
     this.jdField_b_of_type_Int = paramBundle.getInt("focus_comment_id", -1);
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("focus_video_id");
     this.c = paramBundle.getInt("focus_tab");
-    this.jdField_a_of_type_Wkp = ((wkp)urr.a(11));
+    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131561407, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131364735));
+    paramViewGroup = paramLayoutInflater.inflate(2131561425, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131364736));
     if (QQStoryContext.a())
     {
-      ((InputLinearLayout)paramViewGroup.findViewById(2131375609)).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166397));
-      ((LinearLayout)paramViewGroup.findViewById(2131363406)).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166396));
-      ((XEditTextEx)paramViewGroup.findViewById(2131365835)).setHintTextColor(paramLayoutInflater.getContext().getResources().getColor(2131166398));
-      paramViewGroup.findViewById(2131365353).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166397));
+      ((InputLinearLayout)paramViewGroup.findViewById(2131375660)).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166399));
+      ((LinearLayout)paramViewGroup.findViewById(2131363406)).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166398));
+      ((XEditTextEx)paramViewGroup.findViewById(2131365837)).setHintTextColor(paramLayoutInflater.getContext().getResources().getColor(2131166400));
+      paramViewGroup.findViewById(2131365355).setBackgroundColor(paramLayoutInflater.getContext().getResources().getColor(2131166399));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369774));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView = ((StoryDetailListView)paramViewGroup.findViewById(2131365151));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369793));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView = ((StoryDetailListView)paramViewGroup.findViewById(2131365153));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.jdField_b_of_type_Int = 0;
     return paramViewGroup;
@@ -408,39 +408,39 @@ public class StoryDetailFragment
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.l();
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView = null;
     }
-    if (this.jdField_a_of_type_Wfn != null)
+    if (this.jdField_a_of_type_Wjw != null)
     {
-      this.jdField_a_of_type_Wfn.g();
-      this.jdField_a_of_type_Wfn = null;
+      this.jdField_a_of_type_Wjw.g();
+      this.jdField_a_of_type_Wjw = null;
     }
-    if (this.jdField_a_of_type_Wew != null) {
-      this.jdField_a_of_type_Wew.e();
+    if (this.jdField_a_of_type_Wjf != null) {
+      this.jdField_a_of_type_Wjf.e();
     }
-    if (this.jdField_a_of_type_Wkp != null) {
-      this.jdField_a_of_type_Wkp.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Woy != null) {
+      this.jdField_a_of_type_Woy.jdField_a_of_type_JavaUtilMap.remove("2_" + this.jdField_a_of_type_JavaLangString);
     }
-    wta.a("home_page-comment_suc-d1", null);
+    wxj.a("home_page-comment_suc-d1", null);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Wew == null) {}
+    if (this.jdField_a_of_type_Wjf == null) {}
     while (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b()) {
       return;
     }
     paramInt -= this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.b();
-    paramAdapterView = ((wgg)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramInt);
+    paramAdapterView = ((wkp)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.a("DetailCommentSegment")).a(paramInt);
     if (paramAdapterView == null)
     {
-      wsv.e("Q.qqstory.detail.StoryDetailFragment", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+      wxe.e("Q.qqstory.detail.StoryDetailFragment", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
       return;
     }
     if (paramAdapterView.type == 1)
     {
-      this.jdField_a_of_type_Wfn.T_();
+      this.jdField_a_of_type_Wjw.Q_();
       return;
     }
-    this.jdField_a_of_type_Wew.a(paramAdapterView, paramInt, this.jdField_a_of_type_Wfn.a());
+    this.jdField_a_of_type_Wjf.a(paramAdapterView, paramInt, this.jdField_a_of_type_Wjw.a());
   }
   
   public void onPause()
@@ -456,24 +456,24 @@ public class StoryDetailFragment
     if ((this.d == 106) || (this.d == 108)) {
       str = String.valueOf(this.d);
     }
-    wta.a("home_page-comment_suc-d1", str);
-    this.jdField_a_of_type_Wfn.h();
+    wxj.a("home_page-comment_suc-d1", str);
+    this.jdField_a_of_type_Wjw.h();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailListView.o();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Wew != null) && (this.jdField_a_of_type_Wew.a()))
+    if ((this.jdField_a_of_type_Wjf != null) && (this.jdField_a_of_type_Wjf.a()))
     {
       int i;
       if (paramMotionEvent.getAction() == 1)
       {
-        this.jdField_a_of_type_Wew.c();
-        if (this.jdField_a_of_type_Weh != null)
+        this.jdField_a_of_type_Wjf.c();
+        if (this.jdField_a_of_type_Wiq != null)
         {
-          paramMotionEvent = upm.a().jdField_a_of_type_JavaLangString;
-          i = wta.a(this.jdField_a_of_type_Weh.a);
-          if (!this.jdField_a_of_type_Weh.a.getOwner().isMe()) {
+          paramMotionEvent = utv.a().jdField_a_of_type_JavaLangString;
+          i = wxj.a(this.jdField_a_of_type_Wiq.a);
+          if (!this.jdField_a_of_type_Wiq.a.getOwner().isMe()) {
             break label136;
           }
         }
@@ -481,7 +481,7 @@ public class StoryDetailFragment
       label136:
       for (paramView = "1";; paramView = "2")
       {
-        wta.a("home_page", "cancel_reply", i, 0, new String[] { paramView, wta.a(this.jdField_a_of_type_Int), paramMotionEvent, this.jdField_a_of_type_JavaLangString });
+        wxj.a("home_page", "cancel_reply", i, 0, new String[] { paramView, wxj.a(this.jdField_a_of_type_Int), paramMotionEvent, this.jdField_a_of_type_JavaLangString });
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.detail.StoryDetailFragment", 2, "touch list while keyboard is showing, so hide the keyboard");
         }

@@ -1,27 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class airk
-  implements MediaPlayer.OnPreparedListener
+class airk
+  implements View.OnClickListener
 {
-  public airk(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
+  airk(airj paramairj) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
-    }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
-    bdaz.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
-    }
-    paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
   }
 }
 

@@ -1,15 +1,18 @@
-import android.app.Dialog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 class avhg
-  implements avpp
+  implements View.OnTouchListener
 {
-  avhg(avgk paramavgk) {}
+  avhg(avhf paramavhf) {}
   
-  public void a(Dialog paramDialog, View paramView, avpo paramavpo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    avpq.a(this.a.a, paramavpo, "data_card");
-    paramDialog.dismiss();
+    this.a.c();
+    avhf.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

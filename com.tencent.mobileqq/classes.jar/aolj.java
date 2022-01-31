@@ -3,50 +3,54 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aolj
-  extends aofy<aoli>
+  extends aokh<aolk>
 {
   public int a()
   {
-    return 442;
+    return 537;
   }
   
   @NonNull
-  public aoli a(int paramInt)
+  public aolk a(int paramInt)
   {
-    return new aoli();
+    return new aolk();
   }
   
   @Nullable
-  public aoli a(aogf[] paramArrayOfaogf)
-  {
-    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
-    {
-      aoli localaoli = aoli.a(paramArrayOfaogf[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
-      }
-      return localaoli;
-    }
-    return null;
-  }
-  
-  public Class<aoli> a()
-  {
-    return aoli.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoli paramaoli)
+  public aolk a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramaoli.toString());
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
+      }
+      return aolk.a(paramArrayOfaoko);
+    }
+    return new aolk();
+  }
+  
+  public Class a()
+  {
+    return aolk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
     }
   }
   
-  public boolean a()
+  public void a(aolk paramaolk)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
+    }
+    azun.a().a(paramaolk);
   }
   
   public int b()

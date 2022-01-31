@@ -1,59 +1,29 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class adob
-  implements bakb
+  implements awqz
 {
-  public adob(QQSettingMe paramQQSettingMe) {}
+  public adob(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, String paramString)
   {
-    this.a.n();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.n();
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        azqs.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+      }
     }
-    do
-    {
-      do
+    while (paramInt != 2) {
+      for (;;)
       {
         return;
-        if (i == 2)
-        {
-          this.a.n();
-          return;
-        }
-      } while (i != 3);
-      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
+        paramInt = 2;
       }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.f(this.a)) {}
-    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845573);; localDrawable = this.a.a.getResources().getDrawable(2130845574))
-    {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
-      }
-      ((Animatable)localDrawable).start();
-      break;
     }
+    azqs.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

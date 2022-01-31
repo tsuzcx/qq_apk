@@ -1,20 +1,47 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class avgf
-  implements View.OnClickListener
+class avgf
+  implements TVK_SDKMgr.OnLogListener
 {
-  public avgf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void onClick(View paramView)
+  public int d(String paramString1, String paramString2)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

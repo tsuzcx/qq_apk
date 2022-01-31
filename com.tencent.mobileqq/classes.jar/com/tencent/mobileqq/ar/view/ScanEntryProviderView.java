@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.view;
 
-import anbc;
-import ando;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import bdar;
+import anfl;
+import anhx;
+import bdfa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
@@ -17,9 +17,9 @@ import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 public abstract class ScanEntryProviderView
   extends FrameLayout
 {
-  public anbc a;
-  public ando a;
   public Context a;
+  public anfl a;
+  public anhx a;
   public AppInterface a;
   private boolean a;
   protected View b;
@@ -27,12 +27,12 @@ public abstract class ScanEntryProviderView
   protected boolean l;
   public boolean m;
   
-  public ScanEntryProviderView(Context paramContext, ando paramando)
+  public ScanEntryProviderView(Context paramContext, anhx paramanhx)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ando = paramando;
+    this.jdField_a_of_type_Anhx = paramanhx;
   }
   
   public abstract void a(Bundle paramBundle);
@@ -43,8 +43,8 @@ public abstract class ScanEntryProviderView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Anbc != null) {
-      this.jdField_a_of_type_Anbc.g();
+    if (this.jdField_a_of_type_Anfl != null) {
+      this.jdField_a_of_type_Anfl.g();
     }
   }
   
@@ -57,15 +57,15 @@ public abstract class ScanEntryProviderView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Anbc != null) {
-      this.jdField_a_of_type_Anbc.h();
+    if (this.jdField_a_of_type_Anfl != null) {
+      this.jdField_a_of_type_Anfl.h();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Anbc != null) {
-      this.jdField_a_of_type_Anbc.j();
+    if (this.jdField_a_of_type_Anfl != null) {
+      this.jdField_a_of_type_Anfl.j();
     }
   }
   
@@ -73,8 +73,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = true;
     this.l = false;
-    if (this.jdField_a_of_type_Anbc != null) {
-      this.jdField_a_of_type_Anbc.g();
+    if (this.jdField_a_of_type_Anfl != null) {
+      this.jdField_a_of_type_Anfl.g();
     }
   }
   
@@ -83,8 +83,8 @@ public abstract class ScanEntryProviderView
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Ando != null) {
-        this.jdField_a_of_type_Ando.a(paramBoolean);
+      if (this.jdField_a_of_type_Anhx != null) {
+        this.jdField_a_of_type_Anhx.a(paramBoolean);
       }
     }
   }
@@ -93,8 +93,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = false;
     this.l = true;
-    if (this.jdField_a_of_type_Anbc != null) {
-      this.jdField_a_of_type_Anbc.h();
+    if (this.jdField_a_of_type_Anfl != null) {
+      this.jdField_a_of_type_Anfl.h();
     }
   }
   
@@ -114,7 +114,7 @@ public abstract class ScanEntryProviderView
     localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
     localIntent.putExtra("PhotoConst.MULTI_PREVIEW_IN_SINGLE_MODE", true);
     localScanTorchActivity.startActivity(localIntent);
-    bdar.anim(localScanTorchActivity, false, true);
+    bdfa.anim(localScanTorchActivity, false, true);
   }
   
   public void setAppInterface(AppInterface paramAppInterface)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import alpo;
+import alud;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ScanEntryProviderContainerView$5
@@ -10,7 +10,7 @@ class ScanEntryProviderContainerView$5
   
   public void run()
   {
-    QQToast localQQToast = QQToast.a(this.this$0.a, alpo.a(2131713888), 1);
+    QQToast localQQToast = QQToast.a(this.this$0.a, alud.a(2131713900), 1);
     localQQToast.a();
     localQQToast.a();
   }

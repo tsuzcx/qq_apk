@@ -1,237 +1,54 @@
-import android.os.Bundle;
-import android.os.Looper;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.BaseBusinessHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.FileInputStream;
 
-public abstract class alkj
-  extends altl
+final class alkj
+  implements aled
 {
-  public static final int BG_OBSERVERS = 2;
-  public static final int DEFAULT_OBSERVER = 0;
-  public static final String SEQ_KEY = alkj.class.getName();
-  public static final int UI_OBSERVERS = 1;
-  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
-  private static int notReportedCallNum;
-  private static int reportThreshold = -1;
-  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
-  protected Set<String> allowCmdSet;
-  private Map<Long, alkr> bgObserverMap = new HashMap();
-  private long seq;
-  private Map<Long, alkr> uiObserverMap = new HashMap();
+  alkj(String paramString, String[] paramArrayOfString, alkh paramalkh) {}
   
-  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, alkr paramalkr, MqqHandler paramMqqHandler)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    paramObject = new BaseBusinessHandler.1(this, paramalkr, paramInt, paramMqqHandler, paramBoolean1, paramObject);
-    if (paramBoolean2)
-    {
-      paramMqqHandler.postAtFrontOfQueue(paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-    paramMqqHandler.post(paramObject);
-  }
-  
-  protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, alkr paramalkr, boolean paramBoolean)
-  {
-    if ((paramalkr == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
+    if (paramBoolean)
     {
-      ???.put(Long.valueOf(this.seq), paramalkr);
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      paramalkr = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramToServiceMsg.putLong(paramalkr, l);
-      return;
-      ??? = this.uiObserverMap;
-    }
-  }
-  
-  public ToServiceMsg createToServiceMsg(String paramString)
-  {
-    return new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), paramString);
-  }
-  
-  public ToServiceMsg createToServiceMsg(String paramString, alkr paramalkr)
-  {
-    return createToServiceMsg(paramString, paramalkr, false);
-  }
-  
-  ToServiceMsg createToServiceMsg(String arg1, alkr paramalkr, boolean paramBoolean)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg(???);
-    if ((paramalkr == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
-    {
-      ???.put(Long.valueOf(this.seq), paramalkr);
-      paramalkr = localToServiceMsg.extraData;
-      String str = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramalkr.putLong(str, l);
-      return localToServiceMsg;
-      ??? = this.uiObserverMap;
-    }
-  }
-  
-  public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte) {}
-    return null;
-  }
-  
-  public abstract String getCurrentAccountUin();
-  
-  public abstract List<alkr> getObservers(int paramInt);
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    return false;
-  }
-  
-  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    notifyUI(paramInt, paramBoolean, paramObject, false);
-  }
-  
-  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
-  {
-    List localList = getObservers(0);
-    Iterator localIterator;
-    Object localObject;
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
         {
-          localObject = (alkr)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
+          paramString = alki.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (alki.a(this.jdField_a_of_type_JavaLangString))
           {
-            long l = System.currentTimeMillis();
-            ((alkr)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
-            l = System.currentTimeMillis() - l;
-            if ((l > 100L) && (QLog.isColorLevel()))
-            {
-              localObject = new Exception("run too long!");
-              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
-            }
+            paramArrayOfInt = alki.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Alkh.a(0, paramString, paramArrayOfInt);
           }
-        }
-      }
-      finally {}
-    }
-    localList = getObservers(1);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (alkr)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alkr)localObject, uiHandler);
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
+            return;
+            this.jdField_a_of_type_Alkh.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
           }
+          this.jdField_a_of_type_Alkh.a(-1, null, null);
         }
-      }
-      finally {}
-    }
-    localList = getObservers(2);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
+        catch (Exception paramString)
         {
-          localObject = (alkr)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alkr)localObject, bgHandler);
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    long l;
-    MqqHandler localMqqHandler;
-    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
-    {
-      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      synchronized (this.uiObserverMap)
-      {
-        paramToServiceMsg = (alkr)this.uiObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = uiHandler;
-        if (paramToServiceMsg != null) {}
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.bgObserverMap)
-      {
-        paramToServiceMsg = (alkr)this.bgObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = bgHandler;
-        if (paramToServiceMsg != null)
-        {
-          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
           return;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
         }
       }
-      notifyUI(paramInt, paramBoolean, paramObject);
-      return;
     }
-  }
-  
-  protected abstract Class<? extends alkr> observerClass();
-  
-  public void onDestroy() {}
-  
-  public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
-  
-  protected alsi removeMessageObserver(ToServiceMsg paramToServiceMsg)
-  {
-    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
-      return null;
-    }
-    synchronized (this.uiObserverMap)
+    else
     {
-      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      if (alsi.class.isInstance((alkr)this.uiObserverMap.get(Long.valueOf(l))))
-      {
-        paramToServiceMsg = (alsi)this.uiObserverMap.remove(Long.valueOf(l));
-        return paramToServiceMsg;
-      }
+      this.jdField_a_of_type_Alkh.a(-1, null, null);
     }
-    return null;
   }
-  
-  public abstract void send(ToServiceMsg paramToServiceMsg);
-  
-  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alkj
  * JD-Core Version:    0.7.0.1
  */

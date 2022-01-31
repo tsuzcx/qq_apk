@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class ahfz
-  implements View.OnClickListener
+  implements ahje
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  public ahfz(AddContactsActivity paramAddContactsActivity) {}
   
-  protected ahfz(ahfw paramahfw) {}
-  
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (ahfw.a(this.jdField_a_of_type_Ahfw) != null) {
-      ahfw.a(this.jdField_a_of_type_Ahfw).a(this.jdField_a_of_type_JavaLangString);
+    AddContactsActivity.a(this.a, paramBoolean);
+    ImageView localImageView = AddContactsActivity.a(this.a);
+    if (AddContactsActivity.a(this.a)) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
     }
   }
 }

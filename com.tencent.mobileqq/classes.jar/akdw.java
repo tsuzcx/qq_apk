@@ -1,19 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class akdw
-  extends akda
+  implements bezx
 {
-  public View a;
-  public TextView a;
-  public boolean a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public TextView d;
+  public akdw(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 

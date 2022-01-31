@@ -1,8 +1,33 @@
-import feedcloud.FeedCloudMeta.StUser;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
-public abstract interface ubg
+public class ubg
+  implements Animator.AnimatorListener
 {
-  public abstract void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser);
+  public ubg(QCircleSlidBottomView paramQCircleSlidBottomView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.getContext() != null) {
+      tra.a((Activity)this.a.getContext());
+    }
+    if (QCircleSlidBottomView.a(this.a) != null) {
+      QCircleSlidBottomView.a(this.a).a();
+    }
+    this.a.setVisibility(8);
+    QCircleSlidBottomView.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QCircleSlidBottomView.a(this.a, true);
+  }
 }
 
 

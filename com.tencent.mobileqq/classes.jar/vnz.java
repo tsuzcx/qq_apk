@@ -1,100 +1,17 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
-public abstract class vnz
-  extends voz
+class vnz
+  implements MessageQueue.IdleHandler
 {
-  public int a;
-  @NonNull
-  public final View a;
-  protected String a;
-  public List<vpk> a;
-  public vld a;
-  protected voa a;
-  protected boolean a;
-  private final String b = "Q.qqstory.playernew." + getClass().getSimpleName();
+  vnz(vnu paramvnu) {}
   
-  public vnz(@NonNull View paramView)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this));
-    if ((paramView instanceof ViewGroup))
-    {
-      this.jdField_a_of_type_AndroidViewView = a((ViewGroup)paramView);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public vnz(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getVisibility();
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public vnz a(Class<? extends vnz> paramClass)
-  {
-    if (this.jdField_a_of_type_Voa != null) {
-      return this.jdField_a_of_type_Voa.b(paramClass);
-    }
-    return null;
-  }
-  
-  public voa a()
-  {
-    return this.jdField_a_of_type_Voa;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-  }
-  
-  public void a(int paramInt, vle paramvle, @NonNull ArrayList<vpk> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this) + "[" + paramInt + "]");
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Vld = paramvle.jdField_a_of_type_Vld;
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      vpk localvpk = (vpk)localIterator.next();
-      if ((paramvle.jdField_a_of_type_Vld instanceof vlr)) {
-        localvpk.a = ((vlr)paramvle.jdField_a_of_type_Vld).a;
-      } else {
-        localvpk.a = null;
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  void a(voa paramvoa)
-  {
-    this.jdField_a_of_type_Voa = paramvoa;
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    wsv.a(this.jdField_a_of_type_JavaLangString, "onUnBind, position=%d, data.size=%d, groupId=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), this.jdField_a_of_type_Vld.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = false;
+    wxe.b("Q.qqstory.playernew.StoryPlayerImpl", "initSdk");
+    TVK_SDKMgr.initSdk(vnu.a(this.a).a().getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    return false;
   }
 }
 

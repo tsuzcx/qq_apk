@@ -1,22 +1,30 @@
-import android.hardware.Camera.Size;
-import java.util.Comparator;
+import java.util.List;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
 
-class avso
-  implements Comparator<Camera.Size>
+public class avso
 {
-  avso(avsm paramavsm) {}
+  public static String a;
+  public static List<oidb_0x8dd.NearbyPeople> a;
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  static
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
-    }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
+    jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public static String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static List<oidb_0x8dd.NearbyPeople> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
+  }
+  
+  public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
+  {
+    jdField_a_of_type_JavaUtilList = paramList;
+    jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

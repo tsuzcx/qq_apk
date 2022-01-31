@@ -2,7 +2,7 @@ package com.tencent.qqmini.nativePlugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgkd;
+import bgok;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import org.json.JSONException;
@@ -20,28 +20,28 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
     this.mClientQIPCModule = WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule.getInstance();
   }
   
-  protected void cancel(String paramString, bgkd parambgkd)
+  protected void cancel(String paramString, bgok parambgok)
   {
-    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgkd);
+    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgok);
     this.mClientQIPCModule.unregisterModule(paramString);
-    parambgkd = new Bundle();
-    parambgkd.putString("downloadId", paramString);
-    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Cancel", parambgkd, null);
+    parambgok = new Bundle();
+    parambgok.putString("downloadId", paramString);
+    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Cancel", parambgok, null);
   }
   
-  protected void doDownloadWeiyun(JSONObject paramJSONObject, String paramString, bgkd parambgkd)
+  protected void doDownloadWeiyun(JSONObject paramJSONObject, String paramString, bgok parambgok)
   {
-    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgkd);
+    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgok);
     try
     {
       this.mClientQIPCModule.registerModule(paramString);
-      parambgkd = new Bundle();
-      parambgkd.putString("downloadId", paramString);
-      parambgkd.putString("process", WEIYUN_PROCESS_NAME);
-      parambgkd.putString("file_id", (String)paramJSONObject.get("file_id"));
-      parambgkd.putString("filename", (String)paramJSONObject.get("filename"));
-      parambgkd.putString("pdir_key", (String)paramJSONObject.get("pdir_key"));
-      QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Download", parambgkd, null);
+      parambgok = new Bundle();
+      parambgok.putString("downloadId", paramString);
+      parambgok.putString("process", WEIYUN_PROCESS_NAME);
+      parambgok.putString("file_id", (String)paramJSONObject.get("file_id"));
+      parambgok.putString("filename", (String)paramJSONObject.get("filename"));
+      parambgok.putString("pdir_key", (String)paramJSONObject.get("pdir_key"));
+      QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Download", parambgok, null);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -85,12 +85,12 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
     return false;
   }
   
-  protected void pause(String paramString, bgkd parambgkd)
+  protected void pause(String paramString, bgok parambgok)
   {
-    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgkd);
-    parambgkd = new Bundle();
-    parambgkd.putString("downloadId", paramString);
-    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Pause", parambgkd, null);
+    this.mClientQIPCModule.setWeiyunDownloadFileJsContext(parambgok);
+    parambgok = new Bundle();
+    parambgok.putString("downloadId", paramString);
+    QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Pause", parambgok, null);
   }
 }
 

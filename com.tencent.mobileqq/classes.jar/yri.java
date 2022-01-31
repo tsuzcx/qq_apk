@@ -1,43 +1,31 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import com.tencent.biz.troop.TroopMemberApiService;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class yri
-  extends bcjt
+  extends WtloginListener
 {
-  public yri(TroopGiftPanel paramTroopGiftPanel, int paramInt, yqu paramyqu) {}
+  public yri(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
   
-  public void a(int paramInt)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    azmj.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Yqu.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
   
-  public void a(int paramInt, String paramString)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (paramInt2 == 0)
+    {
+      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
+      return;
     }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = alpo.a(2131715787);
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298914)).show();
-    azmj.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Yqu.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = alpo.a(2131715799);
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298914)).show();
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
 }
 

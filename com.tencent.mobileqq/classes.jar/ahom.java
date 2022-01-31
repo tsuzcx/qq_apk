@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahom
-  extends almg
+  implements View.OnClickListener
 {
-  public ahom(DeviceFragment paramDeviceFragment) {}
+  public ahom(NotificationView paramNotificationView) {}
   
-  protected void b()
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
-      return;
+    paramView = (ahok)paramView.getTag();
+    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    {
+      this.a.a(paramView);
+      if (paramView.jdField_a_of_type_Int == 82) {
+        azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
     }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
   }
 }
 

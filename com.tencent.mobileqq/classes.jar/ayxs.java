@@ -1,29 +1,53 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ayxs
-  extends MSFServlet
+  implements aywc
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  private TextView a;
+  protected List<aywd> a;
+  protected View b;
+  protected TextView c;
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public ayxs() {}
+  
+  public ayxs(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramIntent == null) {
-      return;
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131370721));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new ayxt(this.b.findViewById(2131368443)));
+    this.jdField_a_of_type_JavaUtilList.add(new ayxt(this.b.findViewById(2131368449)));
+    this.jdField_a_of_type_JavaUtilList.add(new ayxt(this.b.findViewById(2131368455)));
+    if ((paramInt == 2131559501) || (paramInt == 2131562592))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new ayxt(this.b.findViewById(2131368461)));
+      this.jdField_a_of_type_JavaUtilList.add(new ayxt(this.b.findViewById(2131368462)));
     }
-    long l = paramIntent.getLongExtra("timestamp", 0L);
-    byte[] arrayOfByte = new bjae(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
-    paramPacket.putSendData(paramIntent);
-    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
+  }
+  
+  public View a()
+  {
+    return this.b;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<aywd> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.c;
   }
 }
 

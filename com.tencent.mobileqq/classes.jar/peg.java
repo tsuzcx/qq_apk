@@ -45,27 +45,27 @@ public class peg
     do
     {
       return;
-      localObject = bjxj.a((AppRuntime)localObject, true, true);
+      localObject = bkbq.a((AppRuntime)localObject, true, true);
     } while (localObject == null);
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
-    bjxj.a((SharedPreferences.Editor)localObject, true);
+    bkbq.a((SharedPreferences.Editor)localObject, true);
   }
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null) {
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
     paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
-    bjxj.a(paramAppRuntime, true);
+    bkbq.a(paramAppRuntime, true);
   }
   
   public static boolean a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = bjxj.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null) {
       return false;
     }

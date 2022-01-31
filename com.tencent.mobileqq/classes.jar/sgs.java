@@ -14,7 +14,7 @@ public class sgs
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
     }
-    azmj.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
+    azqs.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
     ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
   }
 }

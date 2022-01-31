@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import android.animation.TypeEvaluator;
 
-public class xyb
-  implements View.OnClickListener
+final class xyb
+  implements TypeEvaluator<xya>
 {
-  public xyb(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
+  private xya a;
   
-  public void onClick(View paramView)
+  public xya a(float paramFloat, xya paramxya1, xya paramxya2)
   {
-    paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
-    MiniAppLauncher.startMiniApp(this.a.getContext(), paramView, 2016, null, null);
-    bizm.a();
-    yvu.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
+    float f1 = paramxya1.a + (paramxya2.a - paramxya1.a) * paramFloat;
+    float f2 = paramxya1.b + (paramxya2.b - paramxya1.b) * paramFloat;
+    paramFloat = paramxya1.c + (paramxya2.c - paramxya1.c) * paramFloat;
+    if (this.a == null) {
+      this.a = new xya(f1, f2, paramFloat);
+    }
+    for (;;)
+    {
+      return this.a;
+      this.a.a = f1;
+      this.a.b = f2;
+      this.a.c = paramFloat;
+    }
   }
 }
 

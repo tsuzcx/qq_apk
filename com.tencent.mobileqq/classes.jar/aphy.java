@@ -1,24 +1,44 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import mqq.manager.Manager;
 
-public abstract class aphy
+public class aphy
+  implements Manager
 {
-  private static int seed;
-  public int key;
+  public static long a;
+  public static long b;
+  public static long c;
+  protected awgf a;
   
-  public aphy()
+  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
-    int i = seed;
-    seed = i + 1;
-    this.key = i;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (!auwz.c())
+    {
+      auwq.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
+      auwq.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
+      auwq.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
+      return;
+    }
+    jdField_a_of_type_Long = paramLong1;
+    b = paramLong2;
+    c = paramLong3;
   }
   
-  public abstract void onBindedToClient();
-  
-  public abstract void onDisconnectWithService();
-  
-  public abstract void onPushMsg(Bundle paramBundle);
-  
-  public abstract void onResponse(Bundle paramBundle);
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Awgf != null) {}
+    try
+    {
+      this.jdField_a_of_type_Awgf.a();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
 }
 
 

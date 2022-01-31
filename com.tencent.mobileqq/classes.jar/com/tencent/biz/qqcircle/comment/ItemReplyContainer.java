@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.comment;
 
-import alpo;
+import alud;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StReply;
 import java.util.List;
-import yde;
+import yhn;
 
 public class ItemReplyContainer
   extends LinearLayout
@@ -24,9 +24,8 @@ public class ItemReplyContainer
   private int jdField_a_of_type_Int;
   private QCircleReplyActionView jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView;
   private FeedCloudMeta.StComment jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
-  private yde jdField_a_of_type_Yde;
+  private yhn jdField_a_of_type_Yhn;
   private int b;
-  private int c;
   
   public ItemReplyContainer(Context paramContext)
   {
@@ -47,9 +46,22 @@ public class ItemReplyContainer
   
   private void a() {}
   
+  private void a(FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudMeta.StReply> paramList, int paramInt)
+  {
+    paramList = (FeedCloudMeta.StReply)paramList.get(paramInt);
+    ItemReplyView localItemReplyView = new ItemReplyView(getContext());
+    localItemReplyView.setPosition(paramInt);
+    localItemReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
+    localItemReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
+    localItemReplyView.setClickable(true);
+    localItemReplyView.setFocusable(true);
+    localItemReplyView.setData(paramStComment, paramList, paramStFeed);
+    addView(localItemReplyView);
+  }
+  
   private void b() {}
   
-  protected void a(FeedCloudMeta.StComment paramStComment, int paramInt, FeedCloudMeta.StFeed paramStFeed)
+  protected void a(FeedCloudMeta.StComment paramStComment, int paramInt1, FeedCloudMeta.StFeed paramStFeed, int paramInt2, boolean paramBoolean)
   {
     if ((paramStFeed == null) || (paramStComment == null) || (paramStComment.vecReply.size() == 0))
     {
@@ -58,34 +70,25 @@ public class ItemReplyContainer
     }
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
     List localList = paramStComment.vecReply.get();
-    int j = localList.size();
-    if (j > 0) {
-      if (paramInt <= 0) {
-        break label446;
-      }
-    }
-    label290:
-    label446:
-    for (paramInt = Math.min(j, paramInt);; paramInt = j)
+    int i = localList.size();
+    if (i > 0)
     {
-      this.c = paramInt;
+      int j = i - paramInt2;
+      i = j;
+      if (paramInt1 > 0) {
+        i = Math.min(j, paramInt1);
+      }
+      i += paramInt2;
+      this.b = i;
       setVisibility(0);
       removeAllViews();
-      int i = 0;
-      while (i < paramInt)
+      paramInt1 = 0;
+      while (paramInt1 < i - paramInt2)
       {
-        FeedCloudMeta.StReply localStReply = (FeedCloudMeta.StReply)localList.get(i);
-        ItemReplyView localItemReplyView = new ItemReplyView(getContext());
-        localItemReplyView.setPosition(i);
-        localItemReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
-        localItemReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-        localItemReplyView.setClickable(true);
-        localItemReplyView.setFocusable(true);
-        localItemReplyView.setData(paramStComment, localStReply, paramStFeed);
-        addView(localItemReplyView);
-        i += 1;
+        a(paramStComment, paramStFeed, localList, paramInt1);
+        paramInt1 += 1;
       }
-      if (paramInt <= j)
+      if (i <= localList.size())
       {
         if (this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView == null)
         {
@@ -94,44 +97,41 @@ public class ItemReplyContainer
           this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setOnClickListener(this);
           this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setOnClickListener(this);
         }
-        if (paramInt <= this.b) {
-          break label331;
-        }
-        if (paramInt != j) {
-          break label290;
+        if (i != localList.size()) {
+          break label301;
         }
         this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setVisibility(0);
-      }
-      for (;;)
-      {
-        addView(this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView);
-        setVisibility(0);
-        return;
-        this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setText(alpo.a(2131713778));
-        this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setVisibility(0);
+        if ((i - paramInt2 > 3) && (!paramBoolean)) {
+          break label279;
+        }
         this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setVisibility(8);
-        continue;
-        label331:
-        if (j > paramInt)
+      }
+      while (paramInt2 > 0)
+      {
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
         {
-          paramInt = j - paramInt;
-          if (paramInt > 0)
-          {
-            this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setText(alpo.a(2131713776) + paramInt + alpo.a(2131713777));
-            this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setVisibility(0);
-            this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setVisibility(8);
-          }
+          a(paramStComment, paramStFeed, localList, localList.size() - paramInt2 + paramInt1);
+          paramInt1 += 1;
         }
-        else
+        label279:
+        this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setVisibility(0);
+        addView(this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView);
+        continue;
+        label301:
+        if (i < localList.size())
         {
-          this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setVisibility(8);
+          paramInt1 = localList.size();
+          this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setText(alud.a(2131713788) + (paramInt1 - i) + alud.a(2131713789));
+          this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.a().setVisibility(0);
           this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView.b().setVisibility(8);
+          addView(this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyActionView);
         }
       }
-      setVisibility(8);
+      setVisibility(0);
       return;
     }
+    setVisibility(8);
   }
   
   public void onClick(View paramView)
@@ -144,13 +144,13 @@ public class ItemReplyContainer
       do
       {
         return;
-      } while (this.jdField_a_of_type_Yde == null);
-      this.jdField_a_of_type_Yde.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+      } while (this.jdField_a_of_type_Yhn == null);
+      this.jdField_a_of_type_Yhn.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
       return;
-    } while (this.jdField_a_of_type_Yde == null);
+    } while (this.jdField_a_of_type_Yhn == null);
     FeedCloudMeta.StComment localStComment = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
-    int i = getHeight() / this.c;
-    this.jdField_a_of_type_Yde.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+    int i = getHeight() / this.b;
+    this.jdField_a_of_type_Yhn.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
   }
   
   public boolean onLongClick(View paramView)
@@ -158,14 +158,9 @@ public class ItemReplyContainer
     return false;
   }
   
-  public void setDisplayNum(int paramInt)
+  public void setOnCommentElementClickListener(yhn paramyhn)
   {
-    this.b = paramInt;
-  }
-  
-  public void setOnCommentElementClickListener(yde paramyde)
-  {
-    this.jdField_a_of_type_Yde = paramyde;
+    this.jdField_a_of_type_Yhn = paramyhn;
   }
   
   public void setPosition(int paramInt)

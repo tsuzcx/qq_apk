@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-
-public class apco
-  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
+public abstract interface apco
 {
-  public apcg a;
+  public abstract void a(String paramString1, String paramString2);
   
-  protected apco(DataReportSettingFragment paramDataReportSettingFragment) {}
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Apcg != null)
-    {
-      this.jdField_a_of_type_Apcg.a = paramBoolean;
-      apde.a().e();
-    }
-  }
+  public abstract void b(String paramString1, String paramString2);
   
-  public boolean onLongClick(View paramView)
-  {
-    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, alpo.a(2131703154), new apcp(this), new apcq(this)).show();
-    return true;
-  }
+  public abstract void c(String paramString1, String paramString2);
+  
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 

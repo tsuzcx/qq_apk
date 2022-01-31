@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
-import bdcd;
+import bdgm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -28,7 +28,7 @@ class BaseJsPluginEngine$1
     boolean bool = StorageUtil.getPreference().getBoolean(str + "_" + this.this$0.getAppInfo().appId, false);
     if ((BaseJsPluginEngine.access$100(this.this$0)) && (!bool) && ("android.permission.WRITE_EXTERNAL_STORAGE".equals(this.val$permissionName)))
     {
-      bdcd.b(this.val$act);
+      bdgm.b(this.val$act);
       StorageUtil.getPreference().edit().putBoolean(str + "_" + this.this$0.getAppInfo().appId, true).commit();
       return;
     }

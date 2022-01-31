@@ -92,7 +92,7 @@ public class ovs
     ors.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
   }
   
-  public biac a(ViewGroup paramViewGroup, int paramInt)
+  public biej a(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.jdField_a_of_type_Ovq.a(paramInt))
     {
@@ -140,11 +140,11 @@ public class ovs
     a(paramView);
   }
   
-  public void a(biac parambiac, int paramInt)
+  public void a(biej parambiej, int paramInt)
   {
     BaseArticleInfo localBaseArticleInfo = a(paramInt);
-    int i = parambiac.getItemViewType();
-    parambiac = (ProteusItemView)parambiac.itemView;
+    int i = parambiej.getItemViewType();
+    parambiej = (ProteusItemView)parambiej.itemView;
     if (localBaseArticleInfo != null)
     {
       if (!this.jdField_a_of_type_Ovq.a(i)) {
@@ -153,19 +153,19 @@ public class ovs
       if (i != ovd.jdField_b_of_type_Int) {
         break label124;
       }
-      parambiac.setVisibility(8);
+      parambiej.setVisibility(8);
     }
     for (;;)
     {
       a(Long.valueOf(localBaseArticleInfo.mArticleID), localBaseArticleInfo);
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localBaseArticleInfo, ", proteusItemView = ", parambiac, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localBaseArticleInfo, ", proteusItemView = ", parambiej, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
       return;
       label124:
-      this.jdField_a_of_type_Ovq.a(parambiac, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
+      this.jdField_a_of_type_Ovq.a(parambiej, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
       continue;
       label143:
       if (ovr.a(i)) {
-        ovr.a(parambiac, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
+        ovr.a(parambiej, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
       } else {
         QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
       }

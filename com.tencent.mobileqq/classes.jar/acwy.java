@@ -1,23 +1,23 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class acwy
-  implements bhqr
+  extends agda
 {
-  public acwy(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public acwy(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (paramView == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_Acxg.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(aeqi paramaeqi, ChatMessage paramChatMessage) {}
+  
+  public void b(View paramView) {}
 }
 
 

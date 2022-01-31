@@ -23,14 +23,14 @@ public class rry
   private ImageView a(ListView paramListView)
   {
     if ((paramListView != null) && (paramListView.getOverScrollFooterView() != null)) {
-      return (ImageView)paramListView.getOverScrollFooterView().findViewById(2131368838);
+      return (ImageView)paramListView.getOverScrollFooterView().findViewById(2131368853);
     }
     return null;
   }
   
   public static String a(Context paramContext)
   {
-    return (String)bjxj.a("kandian_daily_wrapper_default_text", paramContext.getResources().getString(2131718804));
+    return (String)bkbq.a("kandian_daily_wrapper_default_text", paramContext.getResources().getString(2131718816));
   }
   
   public static void a(int paramInt)
@@ -38,7 +38,7 @@ public class rry
     orz localorz = ors.a();
     localorz.b("jump_src", otf.b());
     localorz.b("entrance", "" + paramInt);
-    localorz.b("cmd", bjxj.g());
+    localorz.b("cmd", bkbq.g());
     nrt.a(null, "", "0X8009883", "0X8009883", 0, 0, "", "", "", localorz.a(), false);
   }
   
@@ -60,7 +60,7 @@ public class rry
       localKandianMergeManager.a(localowo);
     }
     paramActivity.finish();
-    paramActivity.overridePendingTransition(2130771990, 2130772333);
+    paramActivity.overridePendingTransition(2130771990, 2130772334);
     localBundle.putString("folder_status", opt.a());
     localBundle.putBoolean("force_refresh", true);
     if (paramBundle != null) {

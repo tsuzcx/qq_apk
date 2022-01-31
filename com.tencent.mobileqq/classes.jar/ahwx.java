@@ -1,17 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ahwx
-  implements DialogInterface.OnClickListener
+class ahwx
+  extends AsyncTask<Void, Void, ArrayList<String>>
 {
-  public ahwx(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  ahwx(ahww paramahww, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected ArrayList<String> a(Void... paramVarArgs)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    return this.jdField_a_of_type_Ahww.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  protected void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, "");
+      ahww.a(this.jdField_a_of_type_Ahww);
+      return;
+    }
+    int i = paramArrayList.size();
+    azqs.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
+    ahww.a(this.jdField_a_of_type_Ahww).clear();
+    ahww.a(this.jdField_a_of_type_Ahww).addAll(paramArrayList);
+    this.jdField_a_of_type_Ahww.a(paramArrayList);
   }
 }
 

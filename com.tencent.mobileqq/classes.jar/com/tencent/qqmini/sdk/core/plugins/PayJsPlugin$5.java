@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import bgkd;
+import bgok;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class PayJsPlugin$5
   implements AsyncResult
 {
-  PayJsPlugin$5(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
+  PayJsPlugin$5(PayJsPlugin paramPayJsPlugin, bgok parambgok) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

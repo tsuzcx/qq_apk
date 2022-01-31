@@ -1,22 +1,42 @@
+import android.text.Layout;
+import android.text.SpannedString;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class bbdy
-  implements bhqd
+  implements View.OnTouchListener
 {
-  bbdy(bbdx parambbdx, bhpy parambhpy) {}
+  bbdy(bbdw parambbdw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    int i = paramMotionEvent.getAction();
+    TextView localTextView = (TextView)paramView;
+    CharSequence localCharSequence = localTextView.getText();
+    if (((localCharSequence instanceof SpannedString)) && (i == 1))
     {
+      i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      int k = localTextView.getTotalPaddingLeft();
+      int m = localTextView.getTotalPaddingTop();
+      int n = localTextView.getScrollX();
+      int i1 = localTextView.getScrollY();
+      paramMotionEvent = localTextView.getLayout();
+      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
+      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
+      if (paramMotionEvent.length != 0) {
+        paramMotionEvent[0].onClick(localTextView);
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Bhpy.dismiss();
-      return;
-      this.jdField_a_of_type_Bbdx.a.a(this.jdField_a_of_type_Bbdx.a.a);
+      return true;
     }
+    paramView.performClick();
+    return true;
   }
 }
 

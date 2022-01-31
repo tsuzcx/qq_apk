@@ -4,7 +4,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class mbb
-  extends amab
+  extends ameq
 {
   String jdField_a_of_type_JavaLangString;
   

@@ -1,22 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class ahsk
-  implements DialogInterface.OnClickListener
+  implements ahud
 {
-  ahsk(ahsh paramahsh) {}
+  ahsk(ahsi paramahsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      ahsh.c(this.a);
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    ahsh.a(this.a);
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

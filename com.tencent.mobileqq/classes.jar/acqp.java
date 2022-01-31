@@ -1,29 +1,14 @@
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acqp
-  extends alnn
+  implements aufz<Void, bdwv>
 {
-  public acqp(EditActivity paramEditActivity) {}
+  public acqp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public bdwv a(Void paramVoid)
   {
-    EditActivity.a(this.a);
-    if (paramBoolean)
-    {
-      paramObject = (CustomEmotionData)paramObject;
-      if (paramObject != null)
-      {
-        ((apkf)this.a.app.getManager(103)).c(paramObject);
-        EditActivity.b(this.a);
-      }
-    }
-    while (!(paramObject instanceof String)) {
-      return;
-    }
-    QQToast.a(this.a, 1, (String)paramObject, 1).a();
+    return bdww.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 

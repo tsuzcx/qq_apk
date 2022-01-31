@@ -1,24 +1,12 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class atqw
-  implements bdlq
+  implements DialogInterface.OnClickListener
 {
-  public void a(bdlo parambdlo1, bdlo parambdlo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    atqu.a().sendEmptyMessage(10000001);
-  }
-  
-  public void a(String paramString) {}
-  
-  public boolean a(bdlo parambdlo1, bdlo parambdlo2, int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(bdlo parambdlo1, bdlo parambdlo2)
-  {
-    atqu.a = false;
-    atqu.a().sendEmptyMessage(10000001);
+    azqs.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
   }
 }
 

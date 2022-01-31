@@ -1,27 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.39.1;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aegg
-  implements DialogInterface.OnClickListener
+  extends alrl
 {
-  public aegg(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
+  public aegg(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      amlp.a().b(false);
-      paramDialogInterface.dismiss();
-      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
-      return;
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      azqs.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Aegv != null) {
+        this.a.jdField_a_of_type_Aegv.a();
+      }
+      if (this.a.h)
+      {
+        this.a.b(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Aegx != null) {
+          this.a.jdField_a_of_type_Aegx.notifyDataSetChanged();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      return;
+      QQToast.a(this.a, 1, this.a.getString(2131693829), 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.runOnUiThread(new TroopMemberListActivity.39.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

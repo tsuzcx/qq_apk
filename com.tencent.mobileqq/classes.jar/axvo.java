@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaFormat;
 
-class axvo
-  implements DialogInterface.OnClickListener
+public abstract interface axvo
 {
-  axvo(axvm paramaxvm) {}
+  public abstract void a(MediaFormat paramMediaFormat);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.back();
-  }
+  public abstract void a(axvl paramaxvl);
+  
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axvo
  * JD-Core Version:    0.7.0.1
  */

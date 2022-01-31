@@ -22,8 +22,8 @@ public class tns
     tlo.d("comment", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
     if ((paramViewHolder instanceof tnj))
     {
-      paramViewHolder = new ybt(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
-      uht.a().dispatch(paramViewHolder);
+      paramViewHolder = new ygc(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
+      umc.a().dispatch(paramViewHolder);
     }
   }
   

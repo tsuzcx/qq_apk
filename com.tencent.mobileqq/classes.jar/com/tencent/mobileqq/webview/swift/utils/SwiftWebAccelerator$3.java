@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import beep;
-import befo;
-import befq;
+import beiy;
+import bejx;
+import bejz;
 import com.tencent.qphone.base.util.QLog;
 
 public class SwiftWebAccelerator$3
   implements Runnable
 {
-  public SwiftWebAccelerator$3(befo parambefo, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$3(bejx parambejx, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
-    befq.b();
-    beep.X = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + beep.X + "ms.");
+    bejz.b();
+    beiy.X = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + beiy.X + "ms.");
     this.this$0.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }

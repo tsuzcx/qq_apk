@@ -1,15 +1,27 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
-public abstract interface bdsx
+public class bdsx
+  extends bdta
 {
-  public abstract void a();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 20;
   
-  public abstract void a(Rect paramRect);
+  public bdsx()
+  {
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 100;
+  }
   
-  public abstract void a(Drawable paramDrawable);
-  
-  public abstract boolean a();
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.a)) {
+      return "";
+    }
+    return this.a;
+  }
 }
 
 

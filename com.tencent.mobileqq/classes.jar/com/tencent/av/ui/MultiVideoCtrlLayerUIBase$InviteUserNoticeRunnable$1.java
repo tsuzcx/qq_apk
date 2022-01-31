@@ -11,7 +11,7 @@ class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable$1
   public void run()
   {
     if (this.a.jdField_a_of_type_Int == 1) {}
-    for (String str = String.format(BaseApplication.getContext().getString(2131695966), new Object[] { this.a.jdField_a_of_type_JavaLangString });; str = String.format(BaseApplication.getContext().getString(2131695967), new Object[] { this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int + "" }))
+    for (String str = String.format(BaseApplication.getContext().getString(2131695968), new Object[] { this.a.jdField_a_of_type_JavaLangString });; str = String.format(BaseApplication.getContext().getString(2131695969), new Object[] { this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int + "" }))
     {
       mdd.a(this.a.this$0.a, 3010, str);
       return;

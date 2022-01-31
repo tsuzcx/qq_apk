@@ -1,12 +1,12 @@
 package cooperation.qappcenter.remote;
 
-import bioc;
+import bisj;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RemoteServiceProxy$2
   extends Thread
 {
-  public RemoteServiceProxy$2(bioc parambioc) {}
+  public RemoteServiceProxy$2(bisj parambisj) {}
   
   public void run()
   {

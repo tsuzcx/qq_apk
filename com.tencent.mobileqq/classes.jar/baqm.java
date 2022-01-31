@@ -1,134 +1,87 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
+import android.graphics.BitmapFactory.Options;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.transfile.FileDownloadFailedException;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.OutputStream;
+import java.io.IOException;
 import java.net.URL;
-import mqq.app.AccountNotMatchException;
 
 public class baqm
-  extends bapk
+  extends barz
 {
-  private float jdField_a_of_type_Float = 2.0F;
-  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  
   public baqm(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    try
-    {
-      this.jdField_a_of_type_Float = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
-      return;
-    }
-    catch (Exception paramBaseApplicationImpl) {}
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Object localObject1 = paramDownloadParams.url;
-    String str = "http://" + ((URL)localObject1).getAuthority() + "/" + ((URL)localObject1).getFile();
-    try
-    {
-      localObject1 = (MessageForText)paramDownloadParams.tag;
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        for (;;)
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(((MessageForText)localObject1).selfuin);
-          if ((localObject1 != null) && (localQQAppInterface != null)) {
-            break;
-          }
-          throw new FileDownloadFailedException(9366, 0L, "textMsg=" + localObject1 + " app=" + localQQAppInterface, false, false);
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-        }
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        Object localObject2;
-        for (;;)
-        {
-          localbatw = null;
-        }
-        batw localbatw = localbatw.a();
-        baub localbaub = new baub();
-        localbaub.jdField_b_of_type_Int = 131076;
-        localbaub.jdField_a_of_type_Long = localObject2.uniseq;
-        localbaub.jdField_b_of_type_JavaLangString = localObject2.selfuin;
-        localbaub.c = localObject2.frienduin;
-        localbaub.e = str;
-        localbaub.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
-        paramOutputStream = new baue();
-        paramOutputStream.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-        paramOutputStream.jdField_a_of_type_Int = ((int)paramDownloadParams.downloaded);
-        localbaub.jdField_a_of_type_JavaLangObject = paramOutputStream;
-        paramOutputStream = localbatw.a(localbaub);
-        if (paramOutputStream.jdField_a_of_type_Int == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0)
-          {
-            if (paramOutputStream.jdField_a_of_type_Long != 9037L) {
-              break;
-            }
-            paramURLDrawableHandler.doCancel();
-          }
-          return null;
-        }
-        throw new FileDownloadFailedException((int)paramOutputStream.jdField_a_of_type_Long, 0L, paramOutputStream.jdField_a_of_type_JavaLangString, false, false);
-      }
-    }
+    super("AIOPhotoImageDownloader", paramBaseApplicationImpl);
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramDownloadParams = null;
-    paramURLDrawableHandler = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
-    if (paramURLDrawableHandler == null) {
-      paramFile = paramDownloadParams;
-    }
-    do
+    try
     {
-      do
+      paramURLDrawableHandler.publishProgress(9900);
+      paramURLDrawableHandler = paramDownloadParams.urlStr;
+      boolean bool = "aiothumb".equals(paramDownloadParams.url.getProtocol());
+      if (QLog.isColorLevel()) {
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile START,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
+      }
+      if ((GifDrawable.isGifFile(paramFile)) && (!bool))
       {
-        return paramFile;
-        int i = paramURLDrawableHandler.getWidth();
-        int j = paramURLDrawableHandler.getHeight();
-        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        paramDownloadParams.setDensity(160);
-        paramFile = new Canvas(paramDownloadParams);
-        Paint localPaint = new Paint(1);
-        localPaint.setColor(-16777216);
-        Rect localRect = new Rect(0, 0, i, j);
-        RectF localRectF = new RectF(localRect);
-        float f = 11.0F * this.jdField_a_of_type_Float;
-        paramFile.drawRoundRect(localRectF, f, f, localPaint);
-        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        paramFile.drawBitmap(paramURLDrawableHandler, localRect, localRect, localPaint);
+        if (!QLog.isColorLevel()) {
+          break label332;
+        }
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,GIF image,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
+        return null;
+      }
+      paramDownloadParams = new BitmapFactory.Options();
+      paramDownloadParams.inPreferredConfig = bayu.a;
+      paramDownloadParams.inDensity = 160;
+      paramDownloadParams.inTargetDensity = 160;
+      paramDownloadParams.inScreenDensity = 160;
+      if (bool) {
+        try
+        {
+          paramDownloadParams.inJustDecodeBounds = false;
+          paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+          if (paramDownloadParams != null) {
+            return new bazi(paramFile.getAbsolutePath()).a(paramDownloadParams);
+          }
+          paramFile.delete();
+          throw new IOException("step:decode error, not valid pic");
+        }
+        catch (OutOfMemoryError paramFile)
+        {
+          throw paramFile;
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break label332;
+      }
+    }
+    catch (Exception paramURLDrawableHandler)
+    {
+      paramDownloadParams = a(paramURLDrawableHandler);
+      if (paramDownloadParams != null)
+      {
         paramFile = paramDownloadParams;
-      } while (paramURLDrawableHandler == null);
-      paramFile = paramDownloadParams;
-    } while (paramURLDrawableHandler.isRecycled());
-    paramURLDrawableHandler.recycle();
-    return paramDownloadParams;
+        if (paramDownloadParams.length() != 0) {}
+      }
+      else
+      {
+        paramFile = paramURLDrawableHandler.toString();
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AIOPhotoImageDownloader", 2, paramFile);
+        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile FAIL,exceptionmsg:" + paramFile);
+      }
+      throw paramURLDrawableHandler;
+    }
+    a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,is not Thumb,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
+    label332:
+    return null;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import ayzp;
+import azdy;
 
 class ArtFilterBridgeActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    ayzp.a(this.this$0.app);
+    azdy.a(this.this$0.app);
   }
 }
 

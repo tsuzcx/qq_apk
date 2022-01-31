@@ -9,11 +9,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import anxn;
-import bdee;
-import beey;
-import befb;
-import besa;
+import aobw;
+import bdin;
+import bejh;
+import bejk;
+import bewj;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
@@ -21,10 +21,11 @@ import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
+import tqg;
 import tra;
-import twg;
-import yjq;
-import yvu;
+import twx;
+import yod;
+import zaj;
 
 public class QCircleHybirdFragment
   extends WebViewFragment
@@ -32,19 +33,19 @@ public class QCircleHybirdFragment
   private static final String jdField_a_of_type_JavaLangString = QCircleHybirdFragment.class.getSimpleName();
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected anxn a;
+  protected aobw a;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private CommentBottomBar jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private twg jdField_a_of_type_Twg;
-  private yjq jdField_a_of_type_Yjq;
+  private twx jdField_a_of_type_Twx;
+  private yod jdField_a_of_type_Yod;
   
   private void i()
   {
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = new StatusView(getActivity());
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
-    this.jdField_a_of_type_Beey.c.addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView);
+    this.jdField_a_of_type_Bejh.c.addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView);
   }
   
   private void j()
@@ -53,7 +54,7 @@ public class QCircleHybirdFragment
     {
       long l = a().getLongExtra("PERF_OPEN_PAGE_TIME", 0L);
       if (l != 0L) {
-        yvu.a("subscribe_open_h5_page_time", yvu.a(0L, System.currentTimeMillis() - l));
+        zaj.a("subscribe_open_h5_page_time", zaj.a(0L, System.currentTimeMillis() - l));
       }
       this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)a().getSerializableExtra("key_subscribe_intent_extra_type_info"));
     }
@@ -82,22 +83,22 @@ public class QCircleHybirdFragment
     getWebView().setHorizontalScrollBarEnabled(false);
     getWebView().getSettings().setDefaultTextEncodingName("utf-8");
     getWebView().getSettings().setUserAgentString(getWebView().getSettings().getUserAgentString() + " QQ_APP_Subscribe");
-    if (bdee.g(getActivity())) {
+    if (bdin.g(getActivity())) {
       getWebView().getSettings().setCacheMode(2);
     }
-    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.jdField_a_of_type_Besa != null)) {
-      this.jdField_a_of_type_Beey.jdField_a_of_type_Besa.a(false);
+    if ((this.jdField_a_of_type_Bejh != null) && (this.jdField_a_of_type_Bejh.jdField_a_of_type_Bewj != null)) {
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bewj.a(false);
     }
-    if (!this.jdField_a_of_type_Befb.m) {
+    if (!this.jdField_a_of_type_Bejk.m) {
       tra.a(getActivity());
     }
     if (getActivity() != null)
     {
-      this.jdField_a_of_type_Twg = new twg(this);
+      this.jdField_a_of_type_Twx = new twx(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_update_web_user_follow_state");
       paramBundle.addAction("action_update_web_tag_follow_state");
-      getActivity().registerReceiver(this.jdField_a_of_type_Twg, paramBundle);
+      getActivity().registerReceiver(this.jdField_a_of_type_Twx, paramBundle);
     }
     i();
     return i;
@@ -161,14 +162,15 @@ public class QCircleHybirdFragment
     if (a() != null) {
       a().sendBroadcast(paramString);
     }
+    a(tqg.a());
   }
   
   public int c(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D = false;
-    this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.f = true;
-    this.jdField_a_of_type_Beey.b = tra.b(false);
-    this.jdField_a_of_type_Yjq = new yjq(a());
+    this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D = false;
+    this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.f = true;
+    this.jdField_a_of_type_Bejh.b = tra.b(false);
+    this.jdField_a_of_type_Yod = new yod(a());
     j();
     return super.c(paramBundle);
   }
@@ -188,7 +190,7 @@ public class QCircleHybirdFragment
     }
     for (;;)
     {
-      yvu.a(this.e, str, "clk_return", 0, 0, new String[] { "", "" });
+      zaj.a(this.e, str, "clk_return", 0, 0, new String[] { "", "" });
       super.f();
       return;
       str = "auth_image";
@@ -208,30 +210,30 @@ public class QCircleHybirdFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     }
-    if (this.jdField_a_of_type_Anxn != null) {
-      this.jdField_a_of_type_Anxn.c();
+    if (this.jdField_a_of_type_Aobw != null) {
+      this.jdField_a_of_type_Aobw.c();
     }
-    if (this.jdField_a_of_type_Yjq != null) {
-      this.jdField_a_of_type_Yjq.b();
+    if (this.jdField_a_of_type_Yod != null) {
+      this.jdField_a_of_type_Yod.b();
     }
-    if ((getActivity() != null) && (this.jdField_a_of_type_Twg != null)) {
-      getActivity().unregisterReceiver(this.jdField_a_of_type_Twg);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Twx != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Twx);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Anxn != null) {
-      this.jdField_a_of_type_Anxn.b();
+    if (this.jdField_a_of_type_Aobw != null) {
+      this.jdField_a_of_type_Aobw.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Anxn != null) {
-      this.jdField_a_of_type_Anxn.a();
+    if (this.jdField_a_of_type_Aobw != null) {
+      this.jdField_a_of_type_Aobw.a();
     }
   }
 }

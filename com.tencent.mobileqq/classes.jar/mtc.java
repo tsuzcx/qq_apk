@@ -5,33 +5,35 @@ public final class mtc
   public static mtd a(Resources paramResources, int paramInt)
   {
     Object localObject1 = (int[][])null;
+    int[] arrayOfInt1;
     switch (paramInt)
     {
+    case 2131559606: 
     case 2131559607: 
-    case 2131559608: 
-    case 2131559610: 
+    case 2131559609: 
     default: 
       return null;
-    case 2131559606: 
-      localObject1 = new int[][] { { 2131695807, 2130841838 }, { 2131695819, 2130841852 }, { 2131695810, 2130841840 }, { 2131695815, 2130841667 }, { 2131695813, 2130841665 }, { 2131695812, 2130841842 }, { 2131695808, 2130841923 }, { 2131695811, 2130841841 }, { 2131695817, 2130841849 } };
+    case 2131559605: 
+      localObject1 = new int[] { 2131695809, 2130841851 };
+      localObject2 = new int[] { 2131695812, 2130841853 };
+      arrayOfInt1 = new int[] { 2131695814, 2130841855 };
+      localObject1 = new int[][] { localObject1, { 2131695821, 2130841865 }, localObject2, { 2131695817, 2130841680 }, { 2131695815, 2130841678 }, arrayOfInt1, { 2131695810, 2130841936 }, { 2131695813, 2130841854 }, { 2131695819, 2130841862 } };
     }
-    int[] arrayOfInt1;
     while (localObject1 == null)
     {
       return null;
-      localObject1 = new int[] { 2131695818, 2130841851 };
-      localObject2 = new int[] { 2131695807, 2130841838 };
-      arrayOfInt1 = new int[] { 2131695819, 2130841852 };
-      int[] arrayOfInt2 = { 2131695815, 2130841667 };
-      int[] arrayOfInt3 = { 2131695811, 2130841841 };
-      int[] arrayOfInt4 = { 2131695809, 2130841839 };
-      localObject1 = new int[][] { localObject1, localObject2, arrayOfInt1, { 2131695810, 2130841840 }, arrayOfInt2, arrayOfInt3, arrayOfInt4 };
+      localObject1 = new int[][] { { 2131695820, 2130841864 }, { 2131695809, 2130841851 }, { 2131695821, 2130841865 }, { 2131695812, 2130841853 }, { 2131695817, 2130841680 }, { 2131695813, 2130841854 }, { 2131695811, 2130841852 } };
       continue;
-      localObject1 = new int[] { 2131695807, 2130841838 };
-      localObject2 = new int[] { 2131695811, 2130841841 };
-      localObject1 = new int[][] { { 2131695818, 2130841851 }, localObject1, { 2131695819, 2130841852 }, { 2131695810, 2130841840 }, { 2131695815, 2130841667 }, { 2131695813, 2130841665 }, { 2131695808, 2130841923 }, localObject2, { 2131695809, 2130841839 } };
+      localObject1 = new int[] { 2131695820, 2130841864 };
+      localObject2 = new int[] { 2131695809, 2130841851 };
+      arrayOfInt1 = new int[] { 2131695821, 2130841865 };
+      int[] arrayOfInt2 = { 2131695812, 2130841853 };
+      int[] arrayOfInt3 = { 2131695817, 2130841680 };
+      int[] arrayOfInt4 = { 2131695810, 2130841936 };
+      int[] arrayOfInt5 = { 2131695811, 2130841852 };
+      localObject1 = new int[][] { localObject1, localObject2, arrayOfInt1, arrayOfInt2, arrayOfInt3, { 2131695815, 2130841678 }, arrayOfInt4, { 2131695813, 2130841854 }, arrayOfInt5 };
       continue;
-      localObject1 = new int[][] { { 2131695807, 2130841838 }, { 2131695815, 2130841667 }, { 2131695813, 2130841665 } };
+      localObject1 = new int[][] { { 2131695809, 2130841851 }, { 2131695817, 2130841680 }, { 2131695815, 2130841678 } };
     }
     Object localObject2 = new mtd();
     int j = localObject1.length;

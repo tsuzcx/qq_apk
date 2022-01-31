@@ -1,25 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnInfoListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
 import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgsv
-  implements DialogInterface.OnClickListener
+public class bgsv
+  implements VideoPlayerProxy.OnInfoListener
 {
-  bgsv(bgsu parambgsu) {}
+  public bgsv(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onInfo(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    this.a.a("off_click");
-    paramDialogInterface.dismiss();
-    try
+    QMLog.i("MiniAppVideoPlayer", "onInfo: " + paramInt1 + " " + paramInt1);
+    switch (paramInt1)
     {
-      Process.killProcess(Process.myPid());
-      return;
     }
-    catch (Throwable paramDialogInterface)
+    for (;;)
     {
-      QMLog.e("GameGrowthGuardianManager", "getNegativeDialogAction", paramDialogInterface);
+      return false;
+      QMLog.d("MiniAppVideoPlayer", "video player PLAYER_INFO_START_BUFFERING--------------");
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bglu.a("onVideoLoadStart", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadStart = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+      continue;
+      QMLog.d("MiniAppVideoPlayer", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bglu.a("onVideoLoadedData", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadedData = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
     }
   }
 }

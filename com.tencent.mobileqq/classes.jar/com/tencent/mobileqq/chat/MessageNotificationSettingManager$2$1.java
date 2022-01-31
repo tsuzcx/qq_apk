@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
-import anxb;
-import anxc;
-import anxe;
+import aobk;
+import aobl;
+import aobn;
 
 public class MessageNotificationSettingManager$2$1
   implements Runnable
 {
-  public MessageNotificationSettingManager$2$1(anxc paramanxc) {}
+  public MessageNotificationSettingManager$2$1(aobl paramaobl) {}
   
   public void run()
   {
-    if (anxb.a(this.a.jdField_a_of_type_Anxb) != null) {
-      anxb.a(this.a.jdField_a_of_type_Anxb).a(this.a.jdField_a_of_type_Int);
+    if (aobk.a(this.a.jdField_a_of_type_Aobk) != null) {
+      aobk.a(this.a.jdField_a_of_type_Aobk).a(this.a.jdField_a_of_type_Int);
     }
   }
 }

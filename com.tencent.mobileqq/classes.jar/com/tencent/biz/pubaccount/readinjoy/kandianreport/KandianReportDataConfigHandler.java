@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bjxj;
+import bkbq;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
@@ -31,7 +31,7 @@ public class KandianReportDataConfigHandler
         if (TextUtils.equals(str2, "1")) {}
         for (paramInt2 = 1;; paramInt2 = 0)
         {
-          bjxj.a("kandianreport_ON", Integer.valueOf(paramInt2));
+          bkbq.a("kandianreport_ON", Integer.valueOf(paramInt2));
           Aladdin.getConfig(paramInt1).update(paramString);
           break;
         }
@@ -43,7 +43,7 @@ public class KandianReportDataConfigHandler
   public void onWipeConfig(int paramInt)
   {
     QLog.d("kandianreport.KandianReportDataConfigHandler", 2, "wipeConfig: " + paramInt);
-    bjxj.a("kandianreport_ON", Integer.valueOf(-1));
+    bkbq.a("kandianreport_ON", Integer.valueOf(-1));
   }
 }
 

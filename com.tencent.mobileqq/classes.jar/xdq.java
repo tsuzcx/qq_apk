@@ -1,8 +1,30 @@
-public abstract interface xdq
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+
+class xdq
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  xdq(xdo paramxdo) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
 }
 
 

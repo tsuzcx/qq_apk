@@ -1,51 +1,107 @@
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aocv
-  extends MSFServlet
+  implements aocw
 {
-  public String[] getPreferSSOCommands()
+  private void a(Context paramContext, JSONObject paramJSONObject)
   {
-    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent != null)
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if ((getAppRuntime() instanceof QQAppInterface)) {
-        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      }
+      localJSONObject.put("jumpto", "com.qqcomic.activity.reader.VipComicPortraitReadingActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      localJSONObject.put("from", Integer.parseInt("1041001"));
+      label59:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label59;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private void b(Context paramContext, ColorNote paramColorNote)
   {
-    if (paramIntent != null)
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    localIntent.putExtra("subType", paramColorNote.mSubType);
+    localIntent.putExtra("fragmentStyle", 1);
+    localIntent.putExtra("tabBarStyle", 1);
+    localIntent.putExtra("titleBarStyle", 1);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
+  }
+  
+  private void b(Context paramContext, JSONObject paramJSONObject)
+  {
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
+      localJSONObject.put("jumpto", "com.qqcomic.activity.media.VipComicMediaPlayActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      label46:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label46;
+    }
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    try
+    {
+      localObject = paramColorNote.getReserve();
+      if (localObject == null)
       {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+        QLog.e("BoodoLauncher", 2, "color note reserve is null");
+        return;
       }
+      localObject = new JSONObject(new String((byte[])localObject));
+    }
+    catch (JSONException localJSONException)
+    {
+      int i;
+      JSONObject localJSONObject;
+      for (;;)
+      {
+        Object localObject;
+        QLog.e("BoodoLauncher", 1, localJSONException, new Object[0]);
+        localJSONObject = null;
+      }
+      if (i != 1) {
+        break label92;
+      }
+      a(paramContext, localJSONObject);
+      return;
+      label92:
+      if (i != 3) {
+        return;
+      }
+      b(paramContext, localJSONObject);
+    }
+    i = ((JSONObject)localObject).optInt("colorNoteType", 0);
+    if (i == 2)
+    {
+      b(paramContext, paramColorNote);
+      return;
     }
   }
 }

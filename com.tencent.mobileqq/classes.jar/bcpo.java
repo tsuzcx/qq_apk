@@ -1,15 +1,8 @@
-import android.content.Context;
-import android.view.View;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bcpo
-  extends ahgk
+public abstract interface bcpo
 {
-  public bcpp a;
-  
-  public bcpo(Context paramContext, View paramView)
-  {
-    super(paramContext, paramView);
-  }
+  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
 }
 
 

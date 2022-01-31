@@ -1,159 +1,200 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
 
-public class apui
-  extends apru
+public abstract class apui
 {
-  protected int f = (this.d - (int)(18.0F * this.jdField_a_of_type_Float) * 8) / 7;
+  int jdField_a_of_type_Int;
+  apuf jdField_a_of_type_Apuf;
+  apuh jdField_a_of_type_Apuh;
+  public String a;
+  List<apuf> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  apuf jdField_b_of_type_Apuf;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  apuf jdField_c_of_type_Apuf;
+  boolean jdField_c_of_type_Boolean;
+  int jdField_d_of_type_Int;
+  apuf jdField_d_of_type_Apuf;
+  boolean jdField_d_of_type_Boolean;
+  apuf jdField_e_of_type_Apuf;
+  boolean jdField_e_of_type_Boolean;
+  apuf jdField_f_of_type_Apuf;
+  boolean jdField_f_of_type_Boolean;
   
-  public apui(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, appt paramappt, int paramInt4)
+  public apui()
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramappt, paramInt4);
-    this.b = true;
+    this.jdField_a_of_type_JavaLangString = "init";
   }
   
-  public View a(apow paramapow, int paramInt, View paramView, ViewGroup paramViewGroup)
+  public int a()
   {
-    paramViewGroup = (apuj)paramapow;
-    this.a = paramViewGroup;
-    int i = getItemViewType(paramInt);
-    if (i == 0)
-    {
-      if (paramView != null) {
-        break label751;
-      }
-      paramapow = apsr.a().a(7);
-      paramView = new AbsListView.LayoutParams(-1, -2);
-      if (paramapow == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
-        }
-        paramapow = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561686, null);
-        paramapow.setLayoutParams(paramView);
-        paramapow.setPadding(0, (int)(10.0F * this.jdField_a_of_type_Float), 0, 0);
-        a(7, paramapow);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramapow.findViewById(2131364879));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramapow.findViewById(2131364970));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramapow.findViewById(2131364968));
-        paramapow.setTag(paramViewGroup);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    int j = 1;
+    int i = 0;
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonLinearLayout", 2, "getRealIndex, position:" + paramInt + ",pageTotalNum:" + this.jdField_d_of_type_Int + ",page:" + this.jdField_c_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramInt + 1) % this.jdField_d_of_type_Int == 0) {
+        paramInt = -1;
       }
     }
-    for (;;)
+    int m;
+    label237:
+    label242:
+    do
     {
-      a(paramViewGroup);
-      paramView = paramapow;
-      return paramView;
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
-      }
-      break;
-      Object localObject;
-      if (paramView == null)
+      do
       {
-        paramView = apsr.a().a(2);
-        if (paramView == null)
+        return paramInt;
+        return paramInt + this.jdField_c_of_type_Int * (this.jdField_d_of_type_Int - 1);
+        if (this.jdField_e_of_type_Boolean)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
+          if ((paramInt == 0) && (this.jdField_c_of_type_Int == 0)) {
+            return -5;
           }
-          paramView = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-          paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-          paramView.setOrientation(0);
-          paramView.setPadding(0, (int)(this.jdField_a_of_type_Float * 18.0F), 0, 0);
-          i = 0;
-          for (;;)
-          {
-            paramapow = paramView;
-            if (i >= this.jdField_a_of_type_Int) {
-              break;
-            }
-            paramapow = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-            localObject = new LinearLayout.LayoutParams(this.f, this.f);
-            ((LinearLayout.LayoutParams)localObject).leftMargin = ((int)(this.jdField_a_of_type_Float * 18.0F));
-            paramapow.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramapow.setVisibility(8);
-            paramapow.setScaleType(ImageView.ScaleType.FIT_XY);
-            paramapow.setAdjustViewBounds(false);
-            paramView.addView(paramapow);
-            i += 1;
+          if (this.jdField_f_of_type_Boolean) {
+            i = 1;
+          }
+          if ((paramInt == 1) && (this.jdField_c_of_type_Int == 0) && (this.jdField_f_of_type_Boolean)) {
+            return -6;
+          }
+          if (this.jdField_c_of_type_Int == 0) {
+            return paramInt - 1 - i;
+          }
+          return this.jdField_d_of_type_Int - 1 + (this.jdField_c_of_type_Int - 1) * this.jdField_d_of_type_Int + paramInt - i;
+        }
+        m = this.jdField_a_of_type_JavaUtilList.size();
+        if (this.jdField_d_of_type_Boolean)
+        {
+          i = 1;
+          if (!this.jdField_c_of_type_Boolean) {
+            break label237;
           }
         }
-        paramapow = paramView;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
-          paramapow = paramView;
-        }
-        ((EmoticonPanelLinearLayout)paramapow).setCallBack(this.jdField_a_of_type_Appt);
-        a(2, paramapow);
-        paramView = (ViewGroup)paramapow;
-        paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[this.jdField_a_of_type_Int];
-        i = 0;
-        while (i < this.jdField_a_of_type_Int)
-        {
-          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i] = ((URLImageView)paramView.getChildAt(i));
-          i += 1;
-        }
-        paramapow.setTag(paramViewGroup);
-      }
-      for (;;)
-      {
-        i = 0;
-        paramView = paramapow;
-        if (i >= this.jdField_a_of_type_Int) {
-          break;
-        }
-        int j = this.jdField_a_of_type_Int * paramInt + i;
-        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
-        {
-          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(null);
-          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setVisibility(8);
-        }
-        label744:
         for (;;)
         {
-          i += 1;
-          break;
-          localObject = paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i];
-          paramView = (apsj)this.jdField_a_of_type_JavaUtilList.get(j);
-          if ((paramView instanceof appw)) {}
-          for (paramView = (appw)paramView;; paramView = null)
-          {
-            if (paramView == null) {
-              break label744;
-            }
-            paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(paramView);
-            paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setOnClickListener(this);
-            ((URLImageView)localObject).setImageDrawable(paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float));
-            ((URLImageView)localObject).setVisibility(0);
-            break;
+          if (this.jdField_c_of_type_Int + paramInt != 0) {
+            break label270;
           }
+          if (!this.jdField_d_of_type_Boolean) {
+            break label242;
+          }
+          return -4;
+          i = 0;
+          break;
+          j = 0;
         }
-        paramapow = paramView;
+        paramInt = k;
+      } while (this.jdField_a_of_type_JavaUtilList.size() != 0);
+      paramInt = k;
+    } while (!this.jdField_c_of_type_Boolean);
+    return -2;
+    label270:
+    if (this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt == i + (m - 1) + j)
+    {
+      if (this.jdField_c_of_type_Boolean) {
+        return -2;
       }
-      label751:
-      paramapow = paramView;
+      return this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    if (this.jdField_d_of_type_Boolean) {
+      return this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt - 1;
+    }
+    return paramInt + this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
+  }
+  
+  public apuf a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    if (paramInt == -1) {
+      return this.jdField_a_of_type_Apuf;
+    }
+    if (paramInt == -2) {
+      return this.jdField_c_of_type_Apuf;
+    }
+    if (paramInt == -3) {
+      return this.jdField_b_of_type_Apuf;
+    }
+    if (paramInt == -4) {
+      return this.jdField_d_of_type_Apuf;
+    }
+    if (paramInt == -5) {
+      return this.jdField_e_of_type_Apuf;
+    }
+    if (paramInt == -6) {
+      return this.jdField_f_of_type_Apuf;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (apuf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apuh != null) {
+      this.jdField_a_of_type_Apuh.a();
     }
   }
   
-  public apow a()
+  public void a(int paramInt)
   {
-    return new apuj();
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = (paramInt2 * paramInt1);
+    this.jdField_a_of_type_Apuh.a(paramInt1, paramInt2);
+  }
+  
+  public abstract void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup);
+  
+  public void a(apuf paramapuf)
+  {
+    this.jdField_a_of_type_Apuf = paramapuf;
+  }
+  
+  public void a(apuh paramapuh)
+  {
+    this.jdField_a_of_type_Apuh = paramapuh;
+  }
+  
+  public void a(List<apuf> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
 }
 

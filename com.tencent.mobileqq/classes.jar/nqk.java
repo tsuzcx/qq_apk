@@ -20,10 +20,10 @@ public class nqk
     default: 
       onClick(paramView);
       return;
-    case 2131368644: 
-      if (!this.a.jdField_a_of_type_Beey.a.a)
+    case 2131368655: 
+      if (!this.a.jdField_a_of_type_Bejh.a.a)
       {
-        paramView = this.a.jdField_a_of_type_Bebk.c.getText().toString();
+        paramView = this.a.jdField_a_of_type_Beft.c.getText().toString();
         this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
         return;
       }
@@ -36,9 +36,9 @@ public class nqk
       onClick(paramView);
       return;
     }
-    if (!this.a.jdField_a_of_type_Beey.a.a)
+    if (!this.a.jdField_a_of_type_Bejh.a.a)
     {
-      paramView = this.a.jdField_a_of_type_Bebk.a.getText().toString();
+      paramView = this.a.jdField_a_of_type_Beft.a.getText().toString();
       if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
       {
         this.a.f();

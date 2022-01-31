@@ -1,17 +1,18 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-class akgl
+public class akgl
+  implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public akgl(SessionClearFragment paramSessionClearFragment) {}
   
-  akgl(akge paramakge) {}
+  public void onClick(View paramView)
+  {
+    paramView = alud.a(2131714238);
+    paramView = bdgm.a(SessionClearFragment.a(this.a), 230, alud.a(2131714240), paramView, 2131694806, 2131721503, new akgm(this), new akgn(this));
+    SessionClearFragment.a(this.a, paramView);
+  }
 }
 
 

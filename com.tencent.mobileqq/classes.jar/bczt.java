@@ -1,35 +1,37 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bczt
+final class bczt
+  implements DownloadParams.DecodeHandler
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "PART_ROUND_CORNER_DECODER");
+    }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
     Object localObject;
-    while (i < paramArrayList.size())
+    do
     {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
-    }
-    Arrays.sort(arrayOfObject, new bczu());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
-    }
-    return paramArrayList;
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bdhj.e(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczt
  * JD-Core Version:    0.7.0.1
  */

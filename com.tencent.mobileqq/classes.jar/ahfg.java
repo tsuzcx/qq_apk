@@ -1,14 +1,6 @@
-class ahfg
-  extends alox
+public abstract interface ahfg
 {
-  ahfg(ahfc paramahfc) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (ahfc.a(this.a) != null)) {
-      ahfc.a(this.a).a(String.valueOf(paramObject));
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

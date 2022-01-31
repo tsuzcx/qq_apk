@@ -1,33 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class azrf
-  implements View.OnClickListener
 {
-  public azrf(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
-  
-  public void onClick(View paramView)
+  private static String a(azrg paramazrg)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692457), 1).a();
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    return paramazrg.a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString1, String paramString2)
+  {
+    azrg localazrg = new azrg();
+    localazrg.jdField_a_of_type_Long = paramLong9;
+    localazrg.b = paramLong1;
+    localazrg.c = paramLong2;
+    localazrg.jdField_d_of_type_Long = paramLong3;
+    localazrg.e = paramLong4;
+    localazrg.jdField_f_of_type_Long = paramLong5;
+    localazrg.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+    localazrg.g = paramLong6;
+    localazrg.m = paramLong7;
+    localazrg.h = paramLong8;
+    localazrg.jdField_d_of_type_JavaLangString = paramString1;
+    localazrg.jdField_f_of_type_JavaLangString = paramString2;
+    paramString1 = a(localazrg);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreReportController", 1, "getReportingDetail=" + paramString1);
     }
+    azqs.b(paramQQAppInterface, "dc02653", paramString1, 1);
   }
 }
 

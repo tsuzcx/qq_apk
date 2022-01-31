@@ -1,19 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bkrr
-  implements View.OnTouchListener
+public class bkrr
+  implements Animator.AnimatorListener
 {
-  bkrr(bkrq parambkrq) {}
+  public bkrr(AECropperImageView paramAECropperImageView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((bkrq.a(this.a) != null) && (bkrq.a(this.a) != null)) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bkrq.a(this.a), bkrq.a(this.a));
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
     }
-    return true;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
+    }
   }
 }
 

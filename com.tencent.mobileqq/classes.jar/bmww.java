@@ -1,156 +1,158 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class bmww
-  extends bmxd<bmwn, bmwn>
+class bmww
+  extends LinearLayout
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<bmjh> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
+  private final int d = 5;
   
-  public bmww()
+  public bmww(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = true;
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    paramInt1 = bmyg.b(getContext(), 6.0F);
+    this.c = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
+    a();
   }
   
-  public bmww(String paramString, bmjh parambmjh, int paramInt)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmjh);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  private void a(bmwn parambmwn, boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
-    for (File localFile = new File(paramString);; localFile = null)
+    setOrientation(0);
+    setGravity(17);
+    int j = bmyg.b(getContext(), 12.0F);
+    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
+    int i = 0;
+    if (i < this.b)
     {
-      Object localObject2;
-      int i;
-      if ((paramBoolean) && (localFile != null) && (localFile.exists()) && (localFile.isFile()) && (localFile.length() > 0L))
+      View localView = LayoutInflater.from(getContext()).inflate(2131559040, null);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.c);
+      if (i == 0) {
+        localLayoutParams.setMargins(0, j, j / 2, 0);
+      }
+      for (;;)
       {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-        Object localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.jdField_b_of_type_JavaLangString, ".jpg");
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject2 = new File((String)localObject1);
-          if (localFile.renameTo((File)localObject2))
-          {
-            wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir success : %s", new Object[] { ((File)localObject2).getPath() });
-            parambmwn.jdField_a_of_type_JavaLangString = ((String)localObject1);
-            parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
-            i = 1;
-          }
+        localView.setLayoutParams(localLayoutParams);
+        ((ImageView)localView.findViewById(2131369820)).setPadding(k, k, k, k);
+        addView(localView);
+        i += 1;
+        break;
+        if (this.b - 1 == i) {
+          localLayoutParams.setMargins(j / 2, j, 0, 0);
+        } else {
+          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
         }
       }
-      while (i != 0)
-      {
-        wsv.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb success ...");
-        super.notifyResult(parambmwn);
-        return;
-        if (this.jdField_a_of_type_JavaLangString == null)
-        {
-          wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy failed : use the origin instead : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
-          parambmwn.jdField_a_of_type_JavaLangString = paramString;
-          parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
-          i = 1;
-        }
-        else
-        {
-          wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir failed : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
-          i = 0;
-          continue;
-          parambmwn.jdField_a_of_type_JavaLangString = paramString;
-          parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
-          i = 1;
-          continue;
-          i = 0;
-        }
-      }
-      wsv.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb failed ...");
-      super.notifyError(new ErrorMessage(-1, "GenerateThumbTask error"));
-      return;
     }
   }
   
-  protected void a(JobContext paramJobContext, bmwn parambmwn)
+  private void a(int paramInt)
   {
-    wsv.a("Q.qqstory.publish.edit.GenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    bmwv localbmwv = parambmwn.jdField_a_of_type_Bmwv;
-    int i = localbmwv.c;
-    if (parambmwn.jdField_a_of_type_Int == 1) {
-      i = 0;
-    }
-    if (this.jdField_b_of_type_Boolean)
+    int i = 0;
+    int j;
+    for (;;)
     {
-      paramJobContext = new bmwx(localbmwv.jdField_a_of_type_Int, localbmwv.jdField_b_of_type_Int, localbmwv.jdField_a_of_type_JavaLangString, localbmwv.jdField_a_of_type_Float, localbmwv.jdField_a_of_type_Boolean, i, localbmwv.jdField_a_of_type_Double, localbmwv.jdField_b_of_type_Double, localbmwv.jdField_b_of_type_JavaLangString, parambmwn.jdField_a_of_type_Int, localbmwv.jdField_b_of_type_Boolean);
-      if (paramJobContext.a(new Void[0]).intValue() == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(parambmwn, bool, paramJobContext.jdField_a_of_type_JavaLangString);
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(bmwc parambmwc, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    int i = paramInt1 * this.b;
+    label31:
+    URLImageView localURLImageView;
+    ProgressBar localProgressBar;
+    String str;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramInt1 = parambmwc.b();
+      a(paramInt1 - i);
+      paramInt2 = i;
+      if (paramInt2 >= paramInt1) {
         return;
       }
+      localObject1 = getChildAt(paramInt2 - i);
+      localObject2 = ((View)localObject1).findViewById(2131369831);
+      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131369820);
+      localObject3 = (TextView)((View)localObject1).findViewById(2131369832);
+      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131369830);
+      str = parambmwc.b(paramInt2);
+      localObject1 = parambmwc.a(paramInt2);
+      if (localObject1 != null) {
+        break label146;
+      }
+      wxe.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { parambmwc.toString() });
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (bmjh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while (paramJobContext != null)
+    for (;;)
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
-      {
-        try
-        {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = bmxg.a(parambmwn.jdField_a_of_type_Int, parambmwn.jdField_b_of_type_JavaLangString, ".jpg");
-          }
-          i = new bmwx(localBitmap, str1, localbmwv.jdField_a_of_type_Int, localbmwv.jdField_b_of_type_Int, i, localbmwv.jdField_a_of_type_Float, localbmwv.jdField_a_of_type_Double, localbmwv.jdField_b_of_type_Double, parambmwn.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label327;
-          }
-          parambmwn.jdField_a_of_type_JavaLangString = str1;
-          parambmwn.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(parambmwn);
-          return;
-        }
-        finally
-        {
-          paramJobContext.a(localBitmap);
-        }
-        paramJobContext = null;
-        continue;
-        label327:
-        wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, alpo.a(2131705631) + this.jdField_a_of_type_Int));
+      paramInt2 += 1;
+      break label31;
+      paramInt1 = this.b + i;
+      break;
+      label146:
+      ((TextView)localObject3).setText(str);
+      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localURLImageView.setTag(2131377441, Integer.valueOf(paramInt2));
+      if (paramBoolean) {
+        break label193;
       }
-      else
-      {
-        wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, alpo.a(2131705633) + this.jdField_a_of_type_Int));
-        return;
-      }
+      localProgressBar.setVisibility(4);
+      localURLImageView.setImageDrawable(null);
     }
-    wsv.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, alpo.a(2131705630) + this.jdField_a_of_type_Int));
+    label193:
+    localURLImageView.setTag(2131377450, localObject1);
+    localURLImageView.setTag(2131377419, Boolean.valueOf(false));
+    localProgressBar.setVisibility(0);
+    Object localObject2 = new bmwx((String)localObject1, localURLImageView, localProgressBar);
+    localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
+    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = bayu.a;
+    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bayu.a;
+    ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
+    Object localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
+    if (((URLDrawable)localObject1).getStatus() == 1) {
+      ((bmwx)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localURLImageView.setImageDrawable((Drawable)localObject1);
+      break;
+      localObject1 = null;
+    }
   }
 }
 

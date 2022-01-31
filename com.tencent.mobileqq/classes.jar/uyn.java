@@ -1,6 +1,19 @@
-public abstract interface uyn
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+
+class uyn
+  implements urr<vab, vac>
 {
-  public abstract void a(uym paramuym);
+  uyn(uyl paramuyl) {}
+  
+  public void a(@NonNull vab paramvab, @Nullable vac paramvac, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramvac + " ,errorMsg = " + paramErrorMessage);
+    }
+  }
 }
 
 

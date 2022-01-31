@@ -6,8 +6,8 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import typ;
-import tyt;
+import uab;
+import uaf;
 
 public final class QCircleVideoReporter$1
   implements Runnable
@@ -23,11 +23,11 @@ public final class QCircleVideoReporter$1
       QLog.w("QCircleVideoReporter", 1, "feed is null");
       return;
     }
-    localSingleDcData.report_data.addAll(tyt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed));
+    localSingleDcData.report_data.addAll(uaf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed));
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
       localSingleDcData.report_data.addAll(this.jdField_a_of_type_JavaUtilList);
     }
-    typ.a().a(localSingleDcData);
+    uab.a().a(localSingleDcData);
   }
 }
 

@@ -1,7 +1,4 @@
-public abstract interface biat
-{
-  public abstract boolean a(float paramFloat1, float paramFloat2);
-}
+public class biat {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

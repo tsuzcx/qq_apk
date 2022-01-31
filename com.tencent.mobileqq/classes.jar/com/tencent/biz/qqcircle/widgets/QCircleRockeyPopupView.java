@@ -21,7 +21,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcwh;
+import bdaq;
 import com.tencent.biz.qqcircle.events.QCirclePushAnimationEvent;
 import com.tencent.biz.qqcircle.events.QCirclePushAnimationStateEvent;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -31,23 +31,23 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import tvo;
-import tvq;
-import tvr;
-import ucs;
-import uct;
-import ucu;
-import ucv;
-import yej;
-import yel;
-import ygq;
+import tvz;
+import twb;
+import twc;
+import ufo;
+import ufp;
+import ufq;
+import ufr;
+import yiw;
+import yiy;
+import yld;
 
 public class QCircleRockeyPopupView
   extends FrameLayout
-  implements yel
+  implements yiy
 {
-  private static Map<String, tvq> jdField_a_of_type_JavaUtilMap;
-  private static tvo jdField_a_of_type_Tvo = new tvo();
+  private static Map<String, twb> jdField_a_of_type_JavaUtilMap;
+  private static tvz jdField_a_of_type_Tvz = new tvz();
   private static boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
@@ -59,10 +59,10 @@ public class QCircleRockeyPopupView
   
   static
   {
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/rockey1.zip"));
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/rockey2.zip"));
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/rockey3.zip"));
-    jdField_a_of_type_Tvo.a(new tvr("https://down.qq.com/video_story/qcircle/animation/rockey_single_click.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/rockey1.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/rockey2.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/rockey3.zip"));
+    jdField_a_of_type_Tvz.a(new twc("https://down.qq.com/video_story/qcircle/animation/rockey_single_click.zip"));
   }
   
   public QCircleRockeyPopupView(Context paramContext)
@@ -86,11 +86,11 @@ public class QCircleRockeyPopupView
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setGravity(1);
     localLinearLayout.setOrientation(0);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bcwh.a(getContext(), 115.0F), -2);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bdaq.a(getContext(), 115.0F), -2);
     localLayoutParams.gravity = 1;
-    localLayoutParams.topMargin = bcwh.a(getContext(), 50.0F);
+    localLayoutParams.topMargin = bdaq.a(getContext(), 50.0F);
     localLinearLayout.setLayoutParams(localLayoutParams);
-    LayoutInflater.from(getContext()).inflate(2131560564, localLinearLayout);
+    LayoutInflater.from(getContext()).inflate(2131560579, localLinearLayout);
     return localLinearLayout;
   }
   
@@ -104,7 +104,7 @@ public class QCircleRockeyPopupView
   private void a(int paramInt)
   {
     if ((paramInt >= this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      yej.a().a(new QCirclePushAnimationStateEvent(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int));
+      yiw.a().a(new QCirclePushAnimationStateEvent(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int));
     }
   }
   
@@ -122,7 +122,7 @@ public class QCircleRockeyPopupView
       if ((jdField_a_of_type_JavaUtilMap != null) && (jdField_a_of_type_JavaUtilMap.containsKey(localObject1))) {}
       try
       {
-        localObject1 = (tvq)jdField_a_of_type_JavaUtilMap.get(localObject1);
+        localObject1 = (twb)jdField_a_of_type_JavaUtilMap.get(localObject1);
         if (localObject1 == null)
         {
           return;
@@ -136,16 +136,16 @@ public class QCircleRockeyPopupView
         }
         else
         {
-          Object localObject2 = ygq.a(((tvq)localObject1).b);
+          Object localObject2 = yld.a(((twb)localObject1).b);
           localObject1 = new QQAnimationDrawable();
           ((QQAnimationDrawable)localObject1).a((String[])localObject2);
           localObject2 = new ImageView(getContext());
-          ((ImageView)localObject2).setLayoutParams(new FrameLayout.LayoutParams(bcwh.a(getContext(), 115.0F), bcwh.a(getContext(), 210.0F)));
+          ((ImageView)localObject2).setLayoutParams(new FrameLayout.LayoutParams(bdaq.a(getContext(), 115.0F), bdaq.a(getContext(), 210.0F)));
           ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
           ((QQAnimationDrawable)localObject1).a(true);
           ((QQAnimationDrawable)localObject1).a(1000L);
           QLog.i("QQAnimationDrawable", 1, "hashCode" + localObject1.hashCode() + " count" + paramInt1);
-          ((QQAnimationDrawable)localObject1).a(new ucs(this, paramInt1, Double.valueOf(((QQAnimationDrawable)localObject1).a() * 0.6D).intValue(), paramInt2));
+          ((QQAnimationDrawable)localObject1).a(new ufo(this, paramInt1, Double.valueOf(((QQAnimationDrawable)localObject1).a() * 0.6D).intValue(), paramInt2));
           ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
           addView((View)localObject2);
           ((QQAnimationDrawable)localObject1).start();
@@ -156,6 +156,8 @@ public class QCircleRockeyPopupView
       catch (Exception localException)
       {
         localException.printStackTrace();
+        QLog.d("QCircleRecommend_", 1, "startRockeyAnimation error" + localException.getMessage());
+        a(paramInt1);
       }
     }
   }
@@ -165,26 +167,26 @@ public class QCircleRockeyPopupView
     LinearLayout localLinearLayout = a();
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
     Object localObject = new AlphaAnimation(0.0F, 1.0F);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, 0.0F, 0, -bcwh.a(getContext(), 15.0F));
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, 0.0F, 0, -bdaq.a(getContext(), 15.0F));
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(localTranslateAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setDuration(300L);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new uct(this, localLinearLayout));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ufp(this, localLinearLayout));
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
     localObject = new AlphaAnimation(1.0F, 0.0F);
-    localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, 0.0F, 0, bcwh.a(getContext(), 15.0F));
+    localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, 0.0F, 0, bdaq.a(getContext(), 15.0F));
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject);
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.addAnimation(localTranslateAnimation);
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setDuration(200L);
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setStartOffset(500L);
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setInterpolator(new AccelerateInterpolator());
-    this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ucu(this, localLinearLayout));
+    this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ufq(this, localLinearLayout));
     this.c = new AnimationSet(true);
     this.c.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
     this.c.addAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimationSet);
     this.c.setFillAfter(true);
-    localObject = (TextView)localLinearLayout.findViewById(2131378903);
+    localObject = (TextView)localLinearLayout.findViewById(2131378960);
     if (localObject != null) {
       ((TextView)localObject).setText(String.valueOf(paramInt1));
     }
@@ -194,21 +196,14 @@ public class QCircleRockeyPopupView
     localLinearLayout.postDelayed(new QCircleRockeyPopupView.5(this, localLinearLayout), 1500L);
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePushAnimationEvent.class);
-    return localArrayList;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt1);
-    QLog.i("QCircleRecommend", 1, "setCount " + paramInt1);
+    QLog.i("QCircleRecommend_", 1, "setCount " + paramInt1);
     if (!jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_Tvo.a(new ucv(this, paramInt1, paramInt2));
-      jdField_a_of_type_Tvo.a();
+      jdField_a_of_type_Tvz.a(new ufr(this, paramInt1, paramInt2));
+      jdField_a_of_type_Tvz.a();
       return;
     }
     try
@@ -218,34 +213,41 @@ public class QCircleRockeyPopupView
     }
     catch (Exception localException)
     {
-      QLog.i("QCircleRecommend", 1, "playError " + localException.getMessage());
+      QLog.i("QCircleRecommend_", 1, "playError " + localException.getMessage());
       localException.printStackTrace();
     }
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCirclePushAnimationEvent.class);
+    return localArrayList;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    yiw.a().a(this);
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    yiw.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof QCirclePushAnimationEvent))
     {
       paramSimpleBaseEvent = (QCirclePushAnimationEvent)paramSimpleBaseEvent;
       if ((paramSimpleBaseEvent.mTargetFeedId.equals(this.jdField_a_of_type_JavaLangString)) && (paramSimpleBaseEvent.mPageType == this.jdField_a_of_type_Int))
       {
-        QLog.d("QCircleRecommend", 1, "onReceiveEvent QCirclePushAnimationEvent id:" + paramSimpleBaseEvent.mTargetFeedId + "pageType:" + this.jdField_a_of_type_Int);
+        QLog.d("QCircleRecommend_", 1, "onReceiveEvent QCirclePushAnimationEvent id:" + paramSimpleBaseEvent.mTargetFeedId + "pageType:" + this.jdField_a_of_type_Int);
         a(paramSimpleBaseEvent.mRecommendTimes, paramSimpleBaseEvent.mClickType);
       }
     }
-  }
-  
-  protected void onAttachedToWindow()
-  {
-    super.onAttachedToWindow();
-    yej.a().a(this);
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    yej.a().b(this);
   }
   
   public void setFeedId(String paramString)

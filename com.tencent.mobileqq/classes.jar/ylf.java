@@ -1,47 +1,12 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import java.io.File;
+import java.util.Comparator;
 
-public class ylf
-  extends ClickableSpan
+final class ylf
+  implements Comparator<File>
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  private ylg jdField_a_of_type_Ylg;
-  
-  public ylf(String paramString, int paramInt, ylg paramylg)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ylg = paramylg;
-  }
-  
-  public ylf(String paramString, ColorStateList paramColorStateList, ylg paramylg)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Ylg = paramylg;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ylg != null)) {
-      this.jdField_a_of_type_Ylg.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 

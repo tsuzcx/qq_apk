@@ -20,7 +20,7 @@ class mju
     {
       return false;
       int i = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
-      if (paramView.getId() == 2131372834)
+      if (paramView.getId() == 2131372860)
       {
         mjs.a(this.a, 0);
         if (((mjs.a(this.a).a().v != 2) && (mjs.a(this.a).a().v != 3)) || (mjs.b(this.a) == 2) || (mjs.b(this.a) == 3) || (bool) || (!mww.b())) {
@@ -31,7 +31,7 @@ class mju
         if ((mjs.a(this.a).a().w <= i) && (i < mjs.a(this.a).a().x)) {
           break label590;
         }
-        paramView = bdcd.a(mjs.a(this.a), 0, null, alpo.a(2131709291), alpo.a(2131709289), alpo.a(2131709288), paramView, paramView);
+        paramView = bdgm.a(mjs.a(this.a), 0, null, alud.a(2131709303), alud.a(2131709301), alud.a(2131709300), paramView, paramView);
         if (paramView != null)
         {
           paramView.show();
@@ -40,9 +40,9 @@ class mju
       }
       for (;;)
       {
-        azmj.b(null, "CliOper", "", "", "0X800A564", "0X800A564", 0, 0, "", "", "", "");
+        azqs.b(null, "CliOper", "", "", "0X800A564", "0X800A564", 0, 0, "", "", "", "");
         return false;
-        if (paramView.getId() == 2131372837)
+        if (paramView.getId() == 2131372863)
         {
           mjs.a(this.a, 1);
           break;
@@ -50,7 +50,7 @@ class mju
         QLog.i("QavDoubleVideoSharpnessMangaer", 1, "hdModeFreeUse. curMinute = " + i + ", startTime = " + mjs.a(this.a).a().w + ", endTime = " + mjs.a(this.a).a().x + ", tips = " + mjs.a(this.a).a().n);
         if ((bool) || ((mjs.a(this.a).a().w <= i) && (i < mjs.a(this.a).a().x)))
         {
-          if (paramView.getId() == 2131372844)
+          if (paramView.getId() == 2131372870)
           {
             mjs.a(this.a, 2);
             break;
@@ -59,7 +59,7 @@ class mju
           break;
         }
         mjs.a(this.a, true);
-        if (paramView.getId() == 2131372844) {
+        if (paramView.getId() == 2131372870) {
           mjs.b(this.a, 2);
         }
         for (;;)
@@ -67,12 +67,12 @@ class mju
           paramView = new mjv(this);
           if ((mjs.a(this.a).a().w > i) || (i >= mjs.a(this.a).a().x))
           {
-            paramView = bdcd.a(mjs.a(this.a), 0, alpo.a(2131709285), null, alpo.a(2131709286), alpo.a(2131709287), paramView, paramView);
+            paramView = bdgm.a(mjs.a(this.a), 0, alud.a(2131709297), null, alud.a(2131709298), alud.a(2131709299), paramView, paramView);
             if (paramView != null) {
               paramView.show();
             }
           }
-          azmj.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
+          azqs.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
           return false;
           mjs.b(this.a, 3);
         }
@@ -83,7 +83,7 @@ class mju
       }
       label616:
       mjs.a(this.a);
-      azmj.b(null, "CliOper", "", "", "0X800A344", "0X800A344", mjs.b(this.a) + 1, 0, "", "", "", "");
+      azqs.b(null, "CliOper", "", "", "0X800A344", "0X800A344", mjs.b(this.a) + 1, 0, "", "", "", "");
     }
   }
 }

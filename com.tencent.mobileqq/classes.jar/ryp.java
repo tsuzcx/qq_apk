@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 public class ryp
-  implements bhpo
+  implements bhtv
 {
   public ryp(FastWebActivity paramFastWebActivity) {}
   
@@ -67,7 +67,7 @@ public class ryp
       int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
       FastWebActivity.e(this.a);
       FastWebActivity.a(this.a, i);
-      abqw.a().a(str2, false);
+      abvl.a().a(str2, false);
       label101:
       boolean bool2 = FastWebActivity.b(this.a, FastWebActivity.a(this.a).getFirstVisiblePosition());
       sdn.a(paramAbsListView, paramInt, FastWebActivity.a(this.a).innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
@@ -98,7 +98,7 @@ public class ryp
       break;
       label341:
       AbstractGifImage.pauseAll();
-      abqw.a().a(str2);
+      abvl.a().a(str2);
       break label101;
       label355:
       FastWebActivity.a(this.a).b();

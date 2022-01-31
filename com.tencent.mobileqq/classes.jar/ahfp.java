@@ -1,74 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahfp
+class ahfp
+  extends ampn
 {
-  public static ahfp a()
+  ahfp(ahfo paramahfo, String paramString)
   {
-    return ahfs.a();
+    super(paramString);
   }
   
-  private ArrayList<ahfr> b(String paramString)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString, 0).getAll();
-    paramString = new ArrayList();
-    localObject = ((Map)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      paramString.add(new ahfr(this, (String)localEntry.getKey(), (Long)localEntry.getValue()));
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
     }
-    Collections.sort(paramString);
-    return paramString;
-  }
-  
-  ArrayList<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = b(paramString).iterator();
-    while (paramString.hasNext()) {
-      localArrayList.add(((ahfr)paramString.next()).a());
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
     }
-    return localArrayList;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString2.trim()))) {
-      return;
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString1, 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    if (localSharedPreferences.getLong(paramString2, -1L) == -1L)
-    {
-      paramString1 = b(paramString1);
-      if ((paramString1 != null) && (paramString1.size() >= 3))
-      {
-        int i = 2;
-        while (i < paramString1.size())
-        {
-          localEditor.remove(((ahfr)paramString1.get(i)).a());
-          i += 1;
-        }
-      }
-    }
-    localEditor.putLong(paramString2, System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  void b(String paramString1, String paramString2)
-  {
-    paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString1, 0).edit();
-    paramString1.remove(paramString2);
-    paramString1.apply();
+    this.a.a.a.a.a(false);
   }
 }
 

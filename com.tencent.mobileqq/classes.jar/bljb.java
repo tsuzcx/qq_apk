@@ -1,27 +1,32 @@
-import android.graphics.Bitmap;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.session.callback.FrameExtractCallback;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class bljb
-  implements FrameExtractCallback
 {
-  public bljb(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, String paramString1, String paramString2, String paramString3) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<Integer, String> a;
+  public List<String> a;
+  public int b;
+  public long b;
+  public String b;
+  public HashMap<Integer, Float> b;
+  public String c;
+  public HashMap<Integer, Integer> c;
+  public String d = "";
+  public String e = "";
   
-  public void onFrameExtracted(Bitmap paramBitmap)
+  public bljb()
   {
-    bdcs.a(paramBitmap, this.jdField_a_of_type_JavaLangString);
-    blfy.a().a(this.b, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), this.c, this.jdField_a_of_type_JavaLangString, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).getMediaModel());
-    this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.b();
-    if (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.getActivity() == null)
-    {
-      bllk.a(BaseApplicationImpl.getContext(), this.c, this.jdField_a_of_type_JavaLangString, this.b, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment));
-      return;
-    }
-    bllk.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.getActivity(), this.c, this.jdField_a_of_type_JavaLangString, this.b, AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment), AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.getActivity().finish();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_c_of_type_JavaLangString = "none";
+    this.jdField_b_of_type_Long = -1L;
   }
 }
 

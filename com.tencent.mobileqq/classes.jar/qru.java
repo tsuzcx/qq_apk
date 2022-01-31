@@ -8,7 +8,7 @@ public class qru
 {
   private int jdField_a_of_type_Int = -1;
   private String jdField_a_of_type_JavaLangString;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = alza.a(64);
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = amdp.a(64);
   private qrw jdField_a_of_type_Qrw;
   private qry jdField_a_of_type_Qry;
   private qsa jdField_a_of_type_Qsa = new qsb();

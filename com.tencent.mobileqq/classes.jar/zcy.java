@@ -1,77 +1,113 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
-import java.util.List;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
-public abstract class zcy<T>
-  extends BaseAdapter
+public final class zcy
+  extends ProxyWebViewClientExtension
 {
-  protected Context a;
-  public TabLayout a;
-  protected List<T> a;
+  private ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  private final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
-  public zcy(Context paramContext, List<T> paramList)
+  public zcy(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
   }
   
-  protected abstract int a();
-  
-  public void a(TabLayout paramTabLayout)
+  private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
-  }
-  
-  protected abstract void a(zcz paramzcz, T paramT, int paramInt);
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+    if (localWebViewPluginEngine != null)
+    {
+      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
     }
-    return 0;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
   }
   
-  public Object getItem(int paramInt)
+  public void computeScroll(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  {
+    bejc localbejc = (bejc)this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a.a(16);
+    if (localbejc != null) {
+      return localbejc.a(paramString, paramBundle);
     }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    return paramInt;
+    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
+      a(paramObject1, paramObject2, paramObject3, paramObject4);
+    }
+    return null;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    Object localObject1 = null;
-    if (paramInt < getCount() - 1)
-    {
-      Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
-      paramView = (View)localObject2;
-      if (localObject2 == null)
-      {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
-        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
-      }
-      localObject2 = new zcz(paramView, null);
-      paramView.setTranslationX(0.0F);
-      paramViewGroup = localObject1;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramViewGroup = this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-      a((zcz)localObject2, paramViewGroup, paramInt);
-      return paramView;
-    }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560066, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+  }
+  
+  public void onPrefetchResourceHit(boolean paramBoolean)
+  {
+    QLog.i("WebLog_WebViewBase", 1, "now prefetchResource is hit: " + paramBoolean);
+  }
+  
+  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
+  {
+    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public void onUrlChange(String paramString1, String paramString2)
+  {
+    SwiftBrowserCookieMonster.d();
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a(paramString1, paramString2);
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 

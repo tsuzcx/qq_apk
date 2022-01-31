@@ -1,15 +1,9 @@
-import android.view.View;
+import android.widget.TextView;
 
-class acvd
-  implements bhrf
+public class acvd
+  extends akit
 {
-  acvd(acvc paramacvc, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Acvc.a = false;
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public TextView a;
 }
 
 

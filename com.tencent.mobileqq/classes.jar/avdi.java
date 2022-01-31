@@ -1,56 +1,6 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-
-class avdi
-  implements bhqd
+public abstract interface avdi
 {
-  avdi(avcw paramavcw, BaseActivity paramBaseActivity, bhpy parambhpy) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Bhpy != null) {
-          this.jdField_a_of_type_Bhpy.dismiss();
-        }
-        return;
-        if (!avcw.e(this.jdField_a_of_type_Avcw)) {
-          break;
-        }
-        avcw.a(this.jdField_a_of_type_Avcw, bdcd.a(this.jdField_a_of_type_Avcw.jdField_a_of_type_AndroidViewView.getContext(), 230, alpo.a(2131708619), null, alpo.a(2131708627), alpo.a(2131708622), new avdj(this), new avdl(this)));
-        avcw.a(this.jdField_a_of_type_Avcw).show();
-        azmj.b(this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
-    } while ((this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_Avcw.b == null) || (this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-    String str = String.valueOf(this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long);
-    if ((TextUtils.isEmpty(str)) || ("0".equals(str)))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, alpo.a(2131708618), 0).a();
-      return;
-    }
-    paramView = "";
-    if (this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_j_of_type_Int == 4) {
-      if (this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaUtilArrayList.get(0) == null) {}
-    }
-    for (paramView = ((auyi)this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).a;; paramView = this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c)
-    {
-      paramView = new bcyx().b(this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c).d(paramView).a(this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_j_of_type_JavaLangString).a();
-      bcyw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0L, str, null, 20006, "", paramView);
-      azmj.b(this.jdField_a_of_type_Avcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "comment", "report_comment", 0, 0, "", "", "", "");
-      break;
-    }
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
 }
 
 

@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class acmx
-  implements DialogInterface.OnDismissListener
+class acmx
+  implements View.OnClickListener
 {
-  public acmx(Conversation paramConversation) {}
+  acmx(acms paramacms, apxv paramapxv) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
+    if ((paramView != null) && ((paramView instanceof ImageView)))
+    {
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = apvx.o.replace("[epId]", this.jdField_a_of_type_Apxv.a.epId).replace("[eId]", this.jdField_a_of_type_Apxv.a.eId);
+      if (this.jdField_a_of_type_Acms.a.a == null) {
+        this.jdField_a_of_type_Acms.a.a = new acnd(this.jdField_a_of_type_Acms.a);
+      }
+      this.jdField_a_of_type_Acms.a.a.a(1, localView, paramView, str);
     }
   }
 }

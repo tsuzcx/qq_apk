@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
-public final class acgp
-  implements DialogInterface.OnCancelListener
+public class acgp
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public acgp(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, 0);
-    }
-  }
+  public acgp(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

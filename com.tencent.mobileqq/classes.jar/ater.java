@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import java.util.concurrent.Callable;
 
 public class ater
-  implements spj
+  implements Callable<aszg>
 {
-  public ater(UiApiPlugin paramUiApiPlugin) {}
+  public ater(ODLoadingActivity paramODLoadingActivity, String paramString) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public aszg a()
   {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return aszp.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
   }
 }
 

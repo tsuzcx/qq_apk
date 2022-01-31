@@ -6,9 +6,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
-import bjpf;
-import bjpg;
-import bjph;
+import bjtm;
+import bjtn;
+import bjto;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,13 +16,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  static ThreadLocal<Integer> InitalPriority = new bjpg();
+  static ThreadLocal<Integer> InitalPriority = new bjtn();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal<Boolean> isRegulated = new bjph();
+  public static ThreadLocal<Boolean> isRegulated = new bjto();
   static AtomicInteger regulalteCount = new AtomicInteger(0);
   static Runnable regultorPriority = new BaseHandler.4();
   static Runnable resetPriority = new BaseHandler.5();
@@ -34,7 +34,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new bjpf(this));
+      paramLooper.setMessageLogging(new bjtm(this));
     }
   }
   

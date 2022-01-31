@@ -1,14 +1,6 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-final class xmr
-  extends ThreadLocal<DateFormat>
+public abstract interface xmr
 {
-  protected DateFormat a()
-  {
-    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-  }
+  public abstract void a();
 }
 
 

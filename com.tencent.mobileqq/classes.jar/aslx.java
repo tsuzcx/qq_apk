@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 class aslx
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aslx(aslw paramaslw) {}
+  aslx(aslw paramaslw, FeedsItemData paramFeedsItemData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/"))
+    {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aslw.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_Aslw.itemView.getContext(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+    this.jdField_a_of_type_Aslw.itemView.getContext().startActivity(paramView);
   }
 }
 

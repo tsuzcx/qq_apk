@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avli
-  extends aupr
+class avli
+  implements DialogInterface.OnClickListener
 {
-  public avli(NearbyProfileFragment paramNearbyProfileFragment, long paramLong) {}
+  avli(avkt paramavkt) {}
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L))
-    {
-      NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).tinyId = paramLong2;
-      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a;
-      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.j)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.jdField_a_of_type_Long = paramLong2;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a(paramLong2);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

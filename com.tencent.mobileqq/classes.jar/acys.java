@@ -1,27 +1,81 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class acys
-  extends bakk
+  extends ameq
 {
-  WeakReference<adto> a;
-  WeakReference<View> b;
+  public acys(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  acys(adto paramadto, View paramView)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.a = new WeakReference(paramadto);
-    this.b = new WeakReference(paramView);
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.a();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
   }
   
-  public boolean a(int paramInt)
+  protected void a(String paramString1, String paramString2)
   {
-    adto localadto = (adto)this.a.get();
-    View localView = (View)this.b.get();
-    if ((localadto != null) && (localView != null)) {
-      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localadto, localView));
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    return super.a(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-
-public final class amuj
-  implements Parcelable.Creator<ARCommonConfigInfo>
+public class amuj
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo(paramParcel);
-  }
+  public long a;
+  public boolean a;
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public amuj(long paramLong, boolean paramBoolean)
   {
-    return new ARCommonConfigInfo[paramInt];
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,30 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Date;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 
-class asmx
+public class asmx
 {
-  static asmx jdField_a_of_type_Asmx = new asmx(false, new Date(0L), new Date(0L));
-  final Date jdField_a_of_type_JavaUtilDate;
-  final boolean jdField_a_of_type_Boolean;
-  final Date b;
-  
-  asmx(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilDate = paramDate1;
-    this.b = paramDate2;
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.fromRoleId;
+    }
+    return localTinyInfo.toRoleId;
   }
   
-  private boolean b()
+  public static String b(MessageRecord paramMessageRecord)
   {
-    long l = NetConnInfoCenter.getServerTime() * 1000L;
-    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
-  }
-  
-  boolean a()
-  {
-    return (b()) && (this.jdField_a_of_type_Boolean);
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.toRoleId;
+    }
+    return localTinyInfo.fromRoleId;
   }
 }
 

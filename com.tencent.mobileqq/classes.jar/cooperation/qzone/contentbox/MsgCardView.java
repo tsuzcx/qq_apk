@@ -1,8 +1,8 @@
 package cooperation.qzone.contentbox;
 
-import alpo;
-import amkc;
-import amkl;
+import alud;
+import amor;
+import ampa;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azmj;
-import bdkf;
-import bjex;
+import azqs;
+import bdoo;
+import bjje;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 import com.tencent.qphone.base.util.QLog;
@@ -30,20 +30,20 @@ import java.util.Map;
 public class MsgCardView
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = bdkf.b(35.0F);
-  private static final int jdField_b_of_type_Int = bdkf.b(12.0F);
-  private static final int jdField_c_of_type_Int = bdkf.b(12.0F);
-  private static final int jdField_d_of_type_Int = bdkf.b(10.0F);
-  private static final int e = bdkf.b(18.0F);
-  private static final int f = bdkf.b(230.0F);
-  private static final int g = bdkf.b(8.0F);
+  private static final int jdField_a_of_type_Int = bdoo.b(35.0F);
+  private static final int jdField_b_of_type_Int = bdoo.b(12.0F);
+  private static final int jdField_c_of_type_Int = bdoo.b(12.0F);
+  private static final int jdField_d_of_type_Int = bdoo.b(10.0F);
+  private static final int e = bdoo.b(18.0F);
+  private static final int f = bdoo.b(230.0F);
+  private static final int g = bdoo.b(8.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjex jdField_a_of_type_Bjex;
+  private bjje jdField_a_of_type_Bjje;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public QQDailyArkView a;
   private MsgPhotoView jdField_a_of_type_CooperationQzoneContentboxMsgPhotoView;
@@ -59,19 +59,19 @@ public class MsgCardView
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562177, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377921));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377974));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377923));
-    this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout = ((RoundCornerLinearLayout)findViewById(2131370769));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562195, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377975));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378028));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377977));
+    this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout = ((RoundCornerLinearLayout)findViewById(2131370788));
     this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.setRadius(g);
-    this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout = ((RoundCornerLinearLayout)findViewById(2131370787));
+    this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout = ((RoundCornerLinearLayout)findViewById(2131370806));
     this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.setRadius(g);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370788));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370777));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370776));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370809));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131370770));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370807));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370796));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370795));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370828));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131370789));
     this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView = ((QQDailyArkView)findViewById(2131362810));
   }
   
@@ -85,7 +85,7 @@ public class MsgCardView
     long l = System.currentTimeMillis() - paramLong;
     if (l < 3600000L)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707323));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707335));
       return;
     }
     l /= 3600000L;
@@ -196,16 +196,16 @@ public class MsgCardView
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-11580352);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(-15263977);
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130847928);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847928);
+        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130848001);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130848001);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-5723992);
-        this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130847903);
-        this.jdField_a_of_type_AndroidViewViewGroup.setPadding(bdkf.a(5.0F), 0, bdkf.a(5.0F), 0);
+        this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130847976);
+        this.jdField_a_of_type_AndroidViewViewGroup.setPadding(bdoo.a(5.0F), 0, bdoo.a(5.0F), 0);
         this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.removeAllViews();
         if (paramBoolean2)
         {
           localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-          ((TextView)localObject).setPadding(bdkf.a(12.0F), 0, 0, 0);
+          ((TextView)localObject).setPadding(bdoo.a(12.0F), 0, 0, 0);
           ((TextView)localObject).setGravity(16);
           ((TextView)localObject).setTextSize(17.0F);
           if (!paramBoolean1) {
@@ -214,7 +214,7 @@ public class MsgCardView
           i = -198683;
           ((TextView)localObject).setTextColor(i);
           ((TextView)localObject).setText(paramMQMsg.title);
-          this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(-1, bdkf.a(51.0F)));
+          this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(-1, bdoo.a(51.0F)));
           localObject = new View(this.jdField_a_of_type_AndroidContentContext);
           if (!paramBoolean1) {
             break label858;
@@ -231,7 +231,7 @@ public class MsgCardView
         }
         paramBoolean2 = true;
         ((MsgPhotoView)localObject).setData(paramBoolean2, paramMQMsg, paramBoolean1);
-        this.jdField_a_of_type_CooperationQzoneContentboxMsgPhotoView.setMsgOnClickListener(this.jdField_a_of_type_Bjex);
+        this.jdField_a_of_type_CooperationQzoneContentboxMsgPhotoView.setMsgOnClickListener(this.jdField_a_of_type_Bjje);
         this.jdField_a_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.addView(this.jdField_a_of_type_CooperationQzoneContentboxMsgPhotoView);
         this.h = paramInt;
         if ((paramMQMsg.bottomCell == null) || (paramMQMsg.bottomCell.userAvatar == null) || (paramMQMsg.bottomCell.userAvatar.size() <= 0)) {
@@ -240,19 +240,19 @@ public class MsgCardView
         this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.removeAllViews();
         localObject = new MsgMoreView(this.jdField_a_of_type_AndroidContentContext);
         ((MsgMoreView)localObject).setData(paramMQMsg, paramBoolean1);
-        ((MsgMoreView)localObject).setMsgOnClickListener(this.jdField_a_of_type_Bjex);
+        ((MsgMoreView)localObject).setMsgOnClickListener(this.jdField_a_of_type_Bjje);
         this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.setVisibility(0);
         this.jdField_b_of_type_CooperationQzoneWidgetRoundCornerLinearLayout.addView((View)localObject);
       }
       for (;;)
       {
-        if ((!amkl.a(paramMQMsg.expand)) || (!amkl.a(paramMQMsg.pushTime))) {
+        if ((!ampa.a(paramMQMsg.expand)) || (!ampa.a(paramMQMsg.pushTime))) {
           break label882;
         }
         this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView.setDarkMode(paramBoolean1);
         paramMQMsg = paramMQMsg.expand;
-        localObject = amkl.a((String)paramMQMsg.get("metaData"));
+        localObject = ampa.a((String)paramMQMsg.get("metaData"));
         if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView.a()) {
           break;
         }
@@ -260,7 +260,7 @@ public class MsgCardView
         if (QLog.isColorLevel()) {
           QLog.d("MsgCardView", 1, "QQDailyArkView exposed");
         }
-        azmj.b(null, "dc00898", "", "", "0X800AC01", "0X800AC01", 0, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800AC01", "0X800AC01", 0, 0, "", "", "", "");
         this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView.setExpReported(true);
         if (!(this.jdField_a_of_type_AndroidContentContext instanceof QZoneMsgActivity)) {
           break;
@@ -276,10 +276,10 @@ public class MsgCardView
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5196865);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(-1);
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130847927);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847927);
+        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130848000);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130848000);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16578534);
-        this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130847902);
+        this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130847975);
         break label194;
         i = -16578534;
         break label277;
@@ -292,9 +292,9 @@ public class MsgCardView
     }
   }
   
-  public void setMsgOnClickListener(bjex parambjex)
+  public void setMsgOnClickListener(bjje parambjje)
   {
-    this.jdField_a_of_type_Bjex = parambjex;
+    this.jdField_a_of_type_Bjje = parambjje;
   }
 }
 

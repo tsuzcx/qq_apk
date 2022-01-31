@@ -1,16 +1,28 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class uee
-  implements nbt
+  extends ClickableSpan
 {
-  public uee(StoryAlbumResourceDownloader.3 param3) {}
+  public uee(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget, int paramInt) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onClick(@NonNull View paramView)
   {
-    ueb.a(this.a.this$0);
-    ueb.a(this.a.this$0, false);
-    ueb.a(this.a.this$0, false);
-    wsv.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    QLog.d("QCirclePersonInfoAndStatusWidget", 1, "addClickReport click location" + this.jdField_a_of_type_Int);
+    tzv.a(QCirclePersonInfoAndStatusWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget).id.get(), 11, 6L, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.getResources().getColor(2131165307));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

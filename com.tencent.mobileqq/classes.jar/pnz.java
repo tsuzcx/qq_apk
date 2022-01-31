@@ -68,19 +68,19 @@ class pnz
         localJSONObject.put("shareCallBack", "");
         localJSONObject.put("title", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString);
         localJSONObject.put("back", true);
-        localJSONObject.put("sourceName", alpo.a(2131703091));
+        localJSONObject.put("sourceName", alud.a(2131703103));
         localJSONObject.put("WXShareFromQQKandian", 1);
         localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
         localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
         localJSONObject.put("src_action", "plugin");
         localJSONObject.put("src_webActionUrl", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
         localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
-        localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131719031));
-        localJSONObject.put("menu_title", alpo.a(2131713962));
+        localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131719043));
+        localJSONObject.put("menu_title", alud.a(2131713974));
         localJSONObject.put("share_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getShareUrl());
         localJSONObject.put("keepShareUrl", 1);
         localJSONObject.put("image_url", localObject1);
-        localJSONObject.put("weibo_title", alpo.a(2131713408));
+        localJSONObject.put("weibo_title", alud.a(2131713420));
         localJSONObject.put("uin", "");
         localJSONObject.put("puin", 0);
         if (pnh.a(this.jdField_a_of_type_Pnh) == null) {

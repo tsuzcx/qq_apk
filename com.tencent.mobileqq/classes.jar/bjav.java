@@ -1,54 +1,42 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
+import mqq.app.AppRuntime;
 
 public class bjav
-  extends TopGestureLayout.TopGestureDetector
 {
-  public bjav(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
+  private static bjav jdField_a_of_type_Bjav;
+  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(2));
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static SharedPreferences a()
   {
-    super(paramQZoneTopGestureLayout, paramContext);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static bjav a()
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
-    }
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
+    if (jdField_a_of_type_Bjav == null) {}
+    try
     {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
-      {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
+      if (jdField_a_of_type_Bjav == null) {
+        jdField_a_of_type_Bjav = new bjav();
       }
+      return jdField_a_of_type_Bjav;
     }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
-    {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
-    }
-    return false;
+    finally {}
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a()
   {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
+    bjbl.e("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
+    if (jdField_a_of_type_Boolean) {
+      return;
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
+    localBusinessTask.a(new bjaw(this), true);
+    localBusinessTask.a();
   }
 }
 

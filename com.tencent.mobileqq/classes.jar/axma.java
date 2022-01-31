@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface axma
 {
-  public abstract boolean a();
+  public abstract void a(List<String> paramList, int paramInt);
 }
 
 

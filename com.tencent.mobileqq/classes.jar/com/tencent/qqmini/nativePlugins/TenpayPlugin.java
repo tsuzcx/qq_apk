@@ -1,11 +1,11 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alpo;
+import alud;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
@@ -20,24 +20,24 @@ public class TenpayPlugin
   public static final String TAG = "TenpayPlugin";
   private TenpayPlugin.TenpayRecevicer payRecevicer;
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TenpayPlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("TenpayPlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
   
-  public void openTenpayView(bgkd parambgkd)
+  public void openTenpayView(bgok parambgok)
   {
-    JSONObject localJSONObject = getParam(parambgkd);
-    this.payRecevicer = new TenpayPlugin.TenpayRecevicer(this, parambgkd, new Handler(Looper.getMainLooper()));
+    JSONObject localJSONObject = getParam(parambgok);
+    this.payRecevicer = new TenpayPlugin.TenpayRecevicer(this, parambgok, new Handler(Looper.getMainLooper()));
     QLog.e("TenpayPlugin", 1, "param: " + localJSONObject.toString());
     try
     {
@@ -46,14 +46,14 @@ public class TenpayPlugin
       localBundle.putString("callbackSn", "0");
       localBundle.putInt("payparmas_paytype", 1);
       if (!PayBridgeActivity.a(this.mMiniAppContext.a(), 5, localBundle, this.payRecevicer)) {
-        parambgkd.a(alpo.a(2131715227));
+        parambgok.a(alud.a(2131715239));
       }
       return;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      parambgkd.a(alpo.a(2131715226));
+      parambgok.a(alud.a(2131715238));
     }
   }
 }

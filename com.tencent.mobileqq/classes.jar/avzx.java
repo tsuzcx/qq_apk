@@ -1,27 +1,10 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-
-public class avzx
-  implements View.OnClickListener
+public abstract interface avzx
 {
-  public avzx(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public abstract void a(avzw paramavzw);
   
-  public void onClick(View paramView)
-  {
-    awak.a(AutoReplyEditActivity.a(this.a), true);
-    paramView = new Intent();
-    paramView.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      paramView.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
-    }
-    this.a.getActivity().setResult(325, paramView);
-    this.a.getActivity().finish();
-  }
+  public abstract boolean a(avzw paramavzw);
+  
+  public abstract boolean b(avzw paramavzw);
 }
 
 

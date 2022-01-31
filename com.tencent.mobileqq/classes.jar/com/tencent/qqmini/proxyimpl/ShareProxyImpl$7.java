@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aljq;
+import alof;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.model.InnerShareData;
@@ -16,7 +16,7 @@ class ShareProxyImpl$7
   
   public void onPostRun()
   {
-    String str = aljq.bd + this.val$fileName;
+    String str = alof.bd + this.val$fileName;
     if (new File(str).exists())
     {
       ShareProxyImpl.access$100(this.this$0, this.val$shareData.a, this.val$shareData.summary, this.val$miniAppInfo.name, str, this.val$shareData.shareTarget);

@@ -1,42 +1,15 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
 public class bbya
-  implements INetInfoHandler
+  implements bcqu
 {
-  public bbya(ReciteRecordLayout paramReciteRecordLayout) {}
+  public bbya(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
   
-  public void onNetMobile2None()
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    this.a.b.cancel();
-    this.a.b.start();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    paramView.setVisibility(8);
   }
 }
 

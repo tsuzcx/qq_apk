@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahuq;
-import alpo;
+import ahzf;
+import alud;
 
 class ChatHistoryC2CDateFragment$3$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class ChatHistoryC2CDateFragment$3$1$1
   
   public void run()
   {
-    this.a.a.a.c(alpo.a(2131702010));
+    this.a.a.a.c(alud.a(2131702022));
   }
 }
 

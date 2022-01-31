@@ -1,25 +1,8 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-class yyv
-  implements View.OnClickListener
+public abstract interface yyv
 {
-  yyv(yyu paramyyu, String paramString, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Yyu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

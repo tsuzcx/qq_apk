@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
-import aeig;
-import aeih;
-import aeii;
-import aeij;
-import aeik;
-import aeil;
-import aeim;
-import aeiv;
-import aeiz;
-import aeju;
-import aejv;
-import aejw;
-import aejx;
-import aekt;
-import aljq;
-import allb;
-import alpo;
-import ambk;
-import ambl;
-import ambo;
+import aemv;
+import aemw;
+import aemx;
+import aemy;
+import aemz;
+import aena;
+import aenb;
+import aenk;
+import aeno;
+import aeoj;
+import aeok;
+import aeol;
+import aeom;
+import aepi;
+import alof;
+import alpq;
+import alud;
+import amfz;
+import amga;
+import amgd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -41,11 +41,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azmj;
-import bdje;
-import bdkf;
-import bhpy;
-import bhql;
+import azqs;
+import bdnn;
+import bdoo;
+import bhuf;
+import bhus;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
@@ -73,20 +73,20 @@ import java.util.Observer;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MemorialDayNotify;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneMemorialDayInfo;
-import xod;
+import xsm;
 
 public class ActivateFriendActivity
   extends IphoneTitleBarActivity
   implements ViewPager.OnPageChangeListener, View.OnClickListener, Observer
 {
-  private static final int jdField_a_of_type_Int = bdkf.b(16.0F);
+  private static final int jdField_a_of_type_Int = bdoo.b(16.0F);
   private long jdField_a_of_type_Long;
-  private aeju jdField_a_of_type_Aeju;
-  private aejx jdField_a_of_type_Aejx;
-  private allb jdField_a_of_type_Allb = new aeil(this);
-  private ambl jdField_a_of_type_Ambl;
-  private ambo jdField_a_of_type_Ambo = new aeim(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aeij(this));
+  private aeoj jdField_a_of_type_Aeoj;
+  private aeom jdField_a_of_type_Aeom;
+  private alpq jdField_a_of_type_Alpq = new aena(this);
+  private amga jdField_a_of_type_Amga;
+  private amgd jdField_a_of_type_Amgd = new aenb(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aemy(this));
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -137,7 +137,7 @@ public class ActivateFriendActivity
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.show");
       }
-      azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.show", 0, 0, "", "", paramAcsMsg.busi_id, paramAcsMsg.msg_id);
+      azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.show", 0, 0, "", "", paramAcsMsg.busi_id, paramAcsMsg.msg_id);
     }
     for (;;)
     {
@@ -148,7 +148,7 @@ public class ActivateFriendActivity
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.none");
       }
-      azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.none", 0, 0, "", "", "", "");
+      azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.none", 0, 0, "", "", "", "");
     }
   }
   
@@ -196,19 +196,19 @@ public class ActivateFriendActivity
     Object localObject4;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ambl.e();
+      this.jdField_a_of_type_Amga.e();
       localObject1 = null;
       if (getIntent().getExtras() != null) {
         localObject1 = getIntent().getExtras().getString("leftViewText");
       }
-      if ((localObject1 == null) || (!((String)localObject1).contains(getString(2131720570)))) {
+      if ((localObject1 == null) || (!((String)localObject1).contains(getString(2131720582)))) {
         break label215;
       }
       i = 1;
       if (i != 0) {
         this.app.a().addObserver(this);
       }
-      localObject1 = this.app.a().b(aljq.ad, 9002);
+      localObject1 = this.app.a().b(alof.ad, 9002);
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "current message count = " + ((List)localObject1).size());
       }
@@ -230,7 +230,7 @@ public class ActivateFriendActivity
     for (;;)
     {
       break label168;
-      this.jdField_a_of_type_Aeju.a();
+      this.jdField_a_of_type_Aeoj.a();
       break;
       label215:
       i = 0;
@@ -258,13 +258,13 @@ public class ActivateFriendActivity
         }
       }
       if (((List)localObject2).size() > 0) {
-        ambk.a(this.app, (ArrayList)localObject2);
+        amfz.a(this.app, (ArrayList)localObject2);
       }
-      this.app.a().c(aljq.ad, 9002);
+      this.app.a().c(alof.ad, 9002);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.c();
       }
-      Collections.sort((List)localObject1, new aeih(this));
+      Collections.sort((List)localObject1, new aemw(this));
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "entrance type : " + getIntent().getIntExtra("af_key_from", 0));
       }
@@ -285,7 +285,7 @@ public class ActivateFriendActivity
       }
       for (;;)
       {
-        azmj.b(this.app, "CliOper", "", "", "0X8004E05", "0X8004E05", i, 0, getIntent().getIntExtra("af_key_from", 1) + "", "", "", "");
+        azqs.b(this.app, "CliOper", "", "", "0X8004E05", "0X8004E05", i, 0, getIntent().getIntExtra("af_key_from", 1) + "", "", "", "");
         localObject2 = new ArrayList();
         if (k <= 0) {
           break;
@@ -296,10 +296,10 @@ public class ActivateFriendActivity
           localObject3 = (MessageRecord)((Iterator)localObject1).next();
           if ((localObject3 instanceof MessageForActivateFriends))
           {
-            localObject4 = new aejv();
-            ((aejv)localObject4).jdField_a_of_type_Long = ((MessageRecord)localObject3).time;
-            ((aejv)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject3);
-            ((aejv)localObject4).jdField_a_of_type_WalletAcsMsg = null;
+            localObject4 = new aeok();
+            ((aeok)localObject4).jdField_a_of_type_Long = ((MessageRecord)localObject3).time;
+            ((aeok)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject3);
+            ((aeok)localObject4).jdField_a_of_type_WalletAcsMsg = null;
             ((ArrayList)localObject2).add(localObject4);
           }
         }
@@ -311,7 +311,7 @@ public class ActivateFriendActivity
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        localObject1 = this.jdField_a_of_type_Aejx.a();
+        localObject1 = this.jdField_a_of_type_Aeom.a();
         if ((QLog.isColorLevel()) && (localObject1 != null) && (!((List)localObject1).isEmpty()))
         {
           QLog.i("ActivateFriends.MainActivity", 2, "get today's list size: " + ((List)localObject1).size());
@@ -319,7 +319,7 @@ public class ActivateFriendActivity
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (AcsMsg)((Iterator)localObject3).next();
-            QLog.i("ActivateFriends.MainActivity", 2, "acsMsg notice time: " + aeiz.a(((AcsMsg)localObject4).notice_time * 1000L, "yyyy-MM-dd HH:mm:ss"));
+            QLog.i("ActivateFriends.MainActivity", 2, "acsMsg notice time: " + aeno.a(((AcsMsg)localObject4).notice_time * 1000L, "yyyy-MM-dd HH:mm:ss"));
           }
         }
         if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
@@ -328,10 +328,10 @@ public class ActivateFriendActivity
           while (((Iterator)localObject1).hasNext())
           {
             localObject3 = (AcsMsg)((Iterator)localObject1).next();
-            localObject4 = new aejv();
-            ((aejv)localObject4).jdField_a_of_type_Long = ((AcsMsg)localObject3).notice_time;
-            ((aejv)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-            ((aejv)localObject4).jdField_a_of_type_WalletAcsMsg = ((AcsMsg)localObject3);
+            localObject4 = new aeok();
+            ((aeok)localObject4).jdField_a_of_type_Long = ((AcsMsg)localObject3).notice_time;
+            ((aeok)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+            ((aeok)localObject4).jdField_a_of_type_WalletAcsMsg = ((AcsMsg)localObject3);
             ((ArrayList)localObject2).add(localObject4);
           }
         }
@@ -339,7 +339,7 @@ public class ActivateFriendActivity
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "after order list : " + localObject2);
       }
-      Collections.sort((List)localObject2, new aeii(this));
+      Collections.sort((List)localObject2, new aemx(this));
       localObject1 = new SparseBooleanArray(3);
       int j;
       int m;
@@ -353,10 +353,10 @@ public class ActivateFriendActivity
         if (!((Iterator)localObject2).hasNext()) {
           break label1655;
         }
-        localObject3 = (aejv)((Iterator)localObject2).next();
-        if (((aejv)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+        localObject3 = (aeok)((Iterator)localObject2).next();
+        if (((aeok)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
         {
-          localObject3 = ((aejv)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          localObject3 = ((aeok)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
           localObject4 = ((MessageForActivateFriends)localObject3).getMsgBody();
           l1 = ((MessageRecord)localObject3).time * 1000L;
           m = ((SubMsgType0x76.MsgBody)localObject4).uint32_msg_type.get();
@@ -377,7 +377,7 @@ public class ActivateFriendActivity
         break;
         if ((m == 2) && (!((SparseBooleanArray)localObject1).get(2, false)))
         {
-          localObject3 = aeiv.a(((SubMsgType0x76.MsgBody)localObject4).msg_birthday_notify, this.app);
+          localObject3 = aenk.a(((SubMsgType0x76.MsgBody)localObject4).msg_birthday_notify, this.app);
           a(this.app, l1, (String)localObject3);
           ((SparseBooleanArray)localObject1).put(2, true);
           if (j == 0) {
@@ -419,9 +419,9 @@ public class ActivateFriendActivity
         }
         LpReportInfo_pf00064.allReport(220, 2, 2);
         break label1185;
-        if ((((aejv)localObject3).jdField_a_of_type_WalletAcsMsg != null) && (aeiz.a(((aejv)localObject3).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L)) && (this.jdField_a_of_type_Long > ((aejv)localObject3).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L))
+        if ((((aeok)localObject3).jdField_a_of_type_WalletAcsMsg != null) && (aeno.a(((aeok)localObject3).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L)) && (this.jdField_a_of_type_Long > ((aeok)localObject3).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L))
         {
-          a(((aejv)localObject3).jdField_a_of_type_WalletAcsMsg);
+          a(((aeok)localObject3).jdField_a_of_type_WalletAcsMsg);
           i = j;
           j = 1;
           continue;
@@ -441,7 +441,7 @@ public class ActivateFriendActivity
             if (QLog.isColorLevel()) {
               QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.visit");
             }
-            azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
+            azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
             if (getIntent() != null)
             {
               i = getIntent().getIntExtra("af_key_from", 0);
@@ -462,7 +462,7 @@ public class ActivateFriendActivity
               if (QLog.isColorLevel()) {
                 QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.list.click");
               }
-              azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.list.click", 0, 0, "", "", "", "");
+              azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.list.click", 0, 0, "", "", "", "");
             }
           }
         }
@@ -478,25 +478,25 @@ public class ActivateFriendActivity
   
   private void c()
   {
-    super.setContentView(2131560774);
+    super.setContentView(2131560792);
     super.setTitle(2131689607);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131368627));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131368638));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840101);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840102);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372742));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372768));
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager = ((ReminderViewPager)findViewById(2131361943));
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter = new ActivatePageAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager);
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setPageMargin(jdField_a_of_type_Int);
     this.jdField_b_of_type_Int = getIntent().getIntExtra("af_key_from", 1);
-    this.jdField_a_of_type_Ambl = ((ambl)this.app.getManager(85));
-    this.jdField_a_of_type_Aeju = ((aeju)this.app.getManager(321));
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Ambl.a(true);
+    this.jdField_a_of_type_Amga = ((amga)this.app.getManager(85));
+    this.jdField_a_of_type_Aeoj = ((aeoj)this.app.getManager(321));
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Amga.a(true);
     if (AppSetting.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131719870));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131719882));
     }
     RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
@@ -504,13 +504,13 @@ public class ActivateFriendActivity
     {
       QLog.d("ActivateFriends.MainActivity", 2, "mViewPager height: " + localLayoutParams1.height);
       QLog.d("ActivateFriends.MainActivity", 2, "mPageIndicator topMargin: " + localLayoutParams2.topMargin);
-      QLog.d("ActivateFriends.MainActivity", 2, "screen height: " + xod.c(this));
+      QLog.d("ActivateFriends.MainActivity", 2, "screen height: " + xsm.c(this));
     }
     int i;
     if (localLayoutParams1 != null)
     {
-      this.e = ((int)(0.785D * xod.c(this)));
-      i = bdkf.b(550.0F);
+      this.e = ((int)(0.785D * xsm.c(this)));
+      i = bdoo.b(550.0F);
       if (this.e >= i) {
         break label416;
       }
@@ -522,7 +522,7 @@ public class ActivateFriendActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setLayoutParams(localLayoutParams1);
       if (localLayoutParams2 != null)
       {
-        localLayoutParams2.topMargin = ((int)(0.8050000000000001D * xod.c(this)));
+        localLayoutParams2.topMargin = ((int)(0.8050000000000001D * xsm.c(this)));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams2);
       }
       return;
@@ -535,8 +535,8 @@ public class ActivateFriendActivity
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      a(this.app, System.currentTimeMillis(), aeiv.a(null, this.app));
-      this.jdField_a_of_type_Ambl.c();
+      a(this.app, System.currentTimeMillis(), aenk.a(null, this.app));
+      this.jdField_a_of_type_Amga.c();
       a();
       return;
     }
@@ -544,9 +544,9 @@ public class ActivateFriendActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a(false);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a.findViewById(2131365751);
-    SpannableString localSpannableString = new SpannableString(alpo.a(2131700140));
-    localSpannableString.setSpan(new aeig(this), 0, 2, 33);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a.findViewById(2131365753);
+    SpannableString localSpannableString = new SpannableString(alud.a(2131700152));
+    localSpannableString.setSpan(new aemv(this), 0, 2, 33);
     localTextView.setText(localSpannableString);
     localTextView.setMovementMethod(LinkMovementMethod.getInstance());
   }
@@ -562,15 +562,15 @@ public class ActivateFriendActivity
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bdkf.b(7.0F), bdkf.b(7.0F));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bdoo.b(7.0F), bdoo.b(7.0F));
       i = 0;
       while (i < this.d)
       {
         ImageView localImageView = new ImageView(this);
         localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        localImageView.setImageDrawable(getResources().getDrawable(2130837908));
+        localImageView.setImageDrawable(getResources().getDrawable(2130837909));
         if (i != 0) {
-          localLayoutParams.leftMargin = aekt.a(5.0F, getResources());
+          localLayoutParams.leftMargin = aepi.a(5.0F, getResources());
         }
         localImageView.setLayoutParams(localLayoutParams);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
@@ -622,13 +622,13 @@ public class ActivateFriendActivity
     if (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       if (i == paramInt) {
-        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837909);
+        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837910);
       }
       for (;;)
       {
         i += 1;
         break;
-        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837908);
+        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837909);
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter != null) {
@@ -638,11 +638,11 @@ public class ActivateFriendActivity
   
   public void b()
   {
-    bhpy localbhpy = (bhpy)bhql.a(this, null);
-    localbhpy.a(getString(2131689605), this.jdField_a_of_type_Boolean);
-    localbhpy.a(new aeik(this, localbhpy));
-    localbhpy.c(2131690648);
-    localbhpy.show();
+    bhuf localbhuf = (bhuf)bhus.a(this, null);
+    localbhuf.a(getString(2131689605), this.jdField_a_of_type_Boolean);
+    localbhuf.a(new aemz(this, localbhuf));
+    localbhuf.c(2131690648);
+    localbhuf.show();
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -661,11 +661,11 @@ public class ActivateFriendActivity
         paramInt2 = paramIntent.getIntExtra("key_gift_id", -1);
         if ((arrayOfLong != null) && (arrayOfLong.length > 0) && (i != -1))
         {
-          this.jdField_a_of_type_Ambl.a(arrayOfLong, i);
+          this.jdField_a_of_type_Amga.a(arrayOfLong, i);
           if ((i == 2) && (localObject1 != null) && (localObject1.length > 0) && (localObject2 != null) && (((String)localObject2).length() != 0) && (paramInt2 != -1))
           {
-            this.jdField_a_of_type_Ambl.a(i, arrayOfLong, (long[])localObject1, (String)localObject2, paramInt2);
-            azmj.b(this.app, "dc00898", "", "", "0X8007AD1", "0X8007AD1", arrayOfLong.length, 0, "", "", "", "");
+            this.jdField_a_of_type_Amga.a(i, arrayOfLong, (long[])localObject1, (String)localObject2, paramInt2);
+            azqs.b(this.app, "dc00898", "", "", "0X8007AD1", "0X8007AD1", arrayOfLong.length, 0, "", "", "", "");
             if (QLog.isColorLevel())
             {
               localStringBuilder.append("uinArray_stampList:");
@@ -719,7 +719,7 @@ public class ActivateFriendActivity
         if (QLog.isColorLevel()) {
           QLog.d("ActivateFriends.MainActivity", 2, "从全部列表中返回-----" + paramIntent);
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter == null) || (bdje.a(paramIntent))) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter == null) || (bdnn.a(paramIntent))) {
           continue;
         }
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a();
@@ -777,26 +777,26 @@ public class ActivateFriendActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_Aejx = new aejx(this.app);
-    aejw.a(this.app);
+    this.jdField_a_of_type_Aeom = new aeom(this.app);
+    aeol.a(this.app);
     c();
-    addObserver(this.jdField_a_of_type_Allb);
-    this.app.registObserver(this.jdField_a_of_type_Ambo);
+    addObserver(this.jdField_a_of_type_Alpq);
+    this.app.registObserver(this.jdField_a_of_type_Amgd);
     this.jdField_c_of_type_Boolean = false;
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Allb);
-    this.app.unRegistObserver(this.jdField_a_of_type_Ambo);
+    removeObserver(this.jdField_a_of_type_Alpq);
+    this.app.unRegistObserver(this.jdField_a_of_type_Amgd);
     this.app.a().deleteObserver(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a();
     View localView = getCurrentFocus();
     if (localView != null) {
       localView.clearFocus();
     }
-    aejw.a();
+    aeol.a();
     this.jdField_c_of_type_Boolean = false;
     super.doOnDestroy();
   }
@@ -835,7 +835,7 @@ public class ActivateFriendActivity
     if (QLog.isColorLevel()) {
       QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.set");
     }
-    azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.set", 0, 0, "", "", "", "");
+    azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.set", 0, 0, "", "", "", "");
     b();
   }
   
@@ -846,7 +846,7 @@ public class ActivateFriendActivity
   public void onPageSelected(int paramInt)
   {
     this.jdField_c_of_type_Int = paramInt;
-    azmj.b(this.app, "dc00898", "", "", "0X8007AEB", "0X8007AEB", 0, 0, "", "", "", "");
+    azqs.b(this.app, "dc00898", "", "", "0X8007AEB", "0X8007AEB", 0, 0, "", "", "", "");
     LpReportInfo_pf00064.allReport(220, 3);
     a(paramInt);
     Object localObject = a();
@@ -867,7 +867,7 @@ public class ActivateFriendActivity
           if (QLog.isColorLevel()) {
             QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.visit");
           }
-          azmj.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
+          azqs.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
         }
       }
       return;

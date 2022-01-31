@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class nfj
-  implements alkr
+  implements alpg
 {
   nfj(nfi paramnfi) {}
   

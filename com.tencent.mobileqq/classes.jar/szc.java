@@ -48,10 +48,10 @@ public class szc
   implements syu
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private becq jdField_a_of_type_Becq;
-  begy jdField_a_of_type_Begy = null;
-  behk jdField_a_of_type_Behk = null;
-  bepp jdField_a_of_type_Bepp;
+  private begz jdField_a_of_type_Begz;
+  belh jdField_a_of_type_Belh = null;
+  belt jdField_a_of_type_Belt = null;
+  bety jdField_a_of_type_Bety;
   public CustomWebView a;
   public String a;
   private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -60,25 +60,25 @@ public class szc
   private pih jdField_a_of_type_Pih;
   private syq jdField_a_of_type_Syq;
   private szk jdField_a_of_type_Szk;
-  public ymk a;
+  public yqz a;
   private String jdField_b_of_type_JavaLangString;
   private List<szh> jdField_b_of_type_JavaUtilList;
   private String c;
   
-  public szc(pih parampih, ymk paramymk)
+  public szc(pih parampih, yqz paramyqz)
   {
     this.jdField_a_of_type_Pih = parampih;
-    this.jdField_a_of_type_Becq = parampih.mRuntime;
-    this.jdField_a_of_type_Ymk = paramymk;
+    this.jdField_a_of_type_Begz = parampih.mRuntime;
+    this.jdField_a_of_type_Yqz = paramyqz;
     this.jdField_a_of_type_AndroidAppActivity = a();
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = this.jdField_a_of_type_Becq.a();
-    parampih = this.jdField_a_of_type_Becq.a(this.jdField_a_of_type_Becq.a());
-    if ((parampih != null) && ((parampih instanceof behk))) {
-      this.jdField_a_of_type_Behk = ((behk)parampih);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = this.jdField_a_of_type_Begz.a();
+    parampih = this.jdField_a_of_type_Begz.a(this.jdField_a_of_type_Begz.a());
+    if ((parampih != null) && ((parampih instanceof belt))) {
+      this.jdField_a_of_type_Belt = ((belt)parampih);
     }
-    parampih = this.jdField_a_of_type_Becq.a(this.jdField_a_of_type_Becq.a());
-    if ((parampih != null) && ((parampih instanceof begy))) {
-      this.jdField_a_of_type_Begy = ((begy)parampih);
+    parampih = this.jdField_a_of_type_Begz.a(this.jdField_a_of_type_Begz.a());
+    if ((parampih != null) && ((parampih instanceof belh))) {
+      this.jdField_a_of_type_Belh = ((belh)parampih);
     }
     this.jdField_a_of_type_JavaUtilHashMap.put("kandian", Integer.valueOf(1));
     this.jdField_a_of_type_JavaUtilHashMap.put("qq_friend", Integer.valueOf(2));
@@ -291,10 +291,10 @@ public class szc
         break label152;
       }
       localObject = null;
-      if (!bacb.a((String)localObject)) {
+      if (!bagk.a((String)localObject)) {
         break label163;
       }
-      bacb.a(0, 3);
+      bagk.a(0, 3);
     }
     for (;;)
     {
@@ -322,20 +322,20 @@ public class szc
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bepp == null) {
-      this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
     }
-    if (!this.jdField_a_of_type_Bepp.isShowing())
+    if (!this.jdField_a_of_type_Bety.isShowing())
     {
-      this.jdField_a_of_type_Bepp.c(2131694217);
-      this.jdField_a_of_type_Bepp.show();
+      this.jdField_a_of_type_Bety.c(2131694219);
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
-      this.jdField_a_of_type_Bepp.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
@@ -344,9 +344,9 @@ public class szc
     String str1 = this.jdField_a_of_type_Szk.a;
     String str2 = this.jdField_a_of_type_Szk.jdField_b_of_type_JavaLangString;
     String str3 = this.jdField_a_of_type_Szk.d;
-    String str4 = this.jdField_a_of_type_Becq.a().e;
+    String str4 = this.jdField_a_of_type_Begz.a().e;
     String str5 = this.jdField_a_of_type_Szk.f;
-    biqt.a(0, str1, this.jdField_a_of_type_Szk.c, str5, str2, str3, null, null, false, -1L).a("lCategory", 8L).c(str4).a(this.jdField_a_of_type_Becq.a(), str4);
+    biva.a(0, str1, this.jdField_a_of_type_Szk.c, str5, str2, str3, null, null, false, -1L).a("lCategory", 8L).c(str4).a(this.jdField_a_of_type_Begz.a(), str4);
   }
   
   private void e()
@@ -360,11 +360,11 @@ public class szc
     try
     {
       localObject1 = URLEncoder.encode(this.jdField_a_of_type_Szk.c, "UTF-8");
-      str2 = this.jdField_a_of_type_Becq.a().e;
+      str2 = this.jdField_a_of_type_Begz.a().e;
       if (i != 0)
       {
         String str3 = String.valueOf(NetConnInfoCenter.getServerTime());
-        String str1 = bfhi.b((String)localObject1 + 200 + str3 + "jubao@article@123");
+        String str1 = bflr.b((String)localObject1 + 200 + str3 + "jubao@article@123");
         localObject3 = str1;
         if (str1 != null)
         {
@@ -373,7 +373,7 @@ public class szc
             localObject3 = str1.toLowerCase();
           }
         }
-        str1 = this.jdField_a_of_type_Becq.a().i;
+        str1 = this.jdField_a_of_type_Begz.a().i;
         localObject1 = "https://post.mp.qq.com/jubao/index?qq=" + str2 + "&mp_uin=" + str1 + "&scene=200&sub_appname=article_webview&timestamp=" + str3 + "&sign=" + (String)localObject3 + "&article_url=" + (String)localObject1 + "&_wv=3";
         localObject3 = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
         ((Intent)localObject3).putExtra("url", (String)localObject1);
@@ -401,7 +401,7 @@ public class szc
   
   Activity a()
   {
-    for (Activity localActivity = this.jdField_a_of_type_Becq.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.jdField_a_of_type_Begz.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
@@ -415,8 +415,8 @@ public class szc
   
   public void a(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_Becq.a().getSettings().setTextZoom(beei.a[paramInt]);
-    this.jdField_a_of_type_Ymk.a(paramInt);
+    this.jdField_a_of_type_Begz.a().getSettings().setTextZoom(beir.a[paramInt]);
+    this.jdField_a_of_type_Yqz.a(paramInt);
   }
   
   public void a(Intent paramIntent, byte paramByte, int paramInt)
@@ -443,7 +443,7 @@ public class szc
   public void a(String paramString)
   {
     if (this.jdField_a_of_type_Syq == null) {
-      this.jdField_a_of_type_Syq = new syq(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Becq.a(), null, new szi(this));
+      this.jdField_a_of_type_Syq = new syq(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Begz.a(), null, new szi(this));
     }
     this.jdField_a_of_type_Syq.a.setActionSheetTitle("biu出去让更多好友看到");
     this.jdField_a_of_type_Syq.a.setCancelListener(new szd(this));
@@ -535,14 +535,14 @@ public class szc
     {
       do
       {
-        paramString2 = this.jdField_a_of_type_Becq.a();
+        paramString2 = this.jdField_a_of_type_Begz.a();
         if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("WebShareHelper", 2, "shareMsgToSina empty title or share_url");
           }
           c();
-          QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
           return;
         }
         Object localObject = BaseApplicationImpl.getContext().getPackageManager();
@@ -582,7 +582,7 @@ public class szc
             }
             catch (Exception paramString1)
             {
-              QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+              QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
               paramString1.printStackTrace();
               c();
             }
@@ -615,21 +615,21 @@ public class szc
     paramString1.putStringArrayList("image_url", paramJSONObject);
     paramString1.putLong("req_share_id", 0L);
     paramString1.putInt("iUrlInfoFrm", 1);
-    paramString1.putLong("share_begin_time", beei.b);
-    if (this.jdField_a_of_type_Behk != null)
+    paramString1.putLong("share_begin_time", beir.b);
+    if (this.jdField_a_of_type_Belt != null)
     {
-      paramString1.putString("struct_url", this.jdField_a_of_type_Behk.b());
+      paramString1.putString("struct_url", this.jdField_a_of_type_Belt.b());
       paramString1.putBoolean("from_web", true);
     }
-    if (this.jdField_a_of_type_Begy != null) {
-      i = this.jdField_a_of_type_Begy.a(this.jdField_a_of_type_Pih, (byte)2, true);
+    if (this.jdField_a_of_type_Belh != null) {
+      i = this.jdField_a_of_type_Belh.a(this.jdField_a_of_type_Pih, (byte)2, true);
     }
-    bjao.a(this.jdField_a_of_type_Becq.a(), this.jdField_a_of_type_AndroidAppActivity, paramString1, null, i);
+    bjev.a(this.jdField_a_of_type_Begz.a(), this.jdField_a_of_type_AndroidAppActivity, paramString1, null, i);
   }
   
   public void a(JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    this.jdField_a_of_type_Becq.a();
+    this.jdField_a_of_type_Begz.a();
     Intent localIntent = new Intent();
     paramString5 = paramJSONObject.optString("toUin");
     int i = paramJSONObject.optInt("uinType", 0);
@@ -671,7 +671,7 @@ public class szc
       localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
       localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
       localIntent.putExtra("image_url_remote", paramString4);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696873, new Object[] { paramString5 }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696875, new Object[] { paramString5 }));
       localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
       if (paramJSONObject.has("contentAction")) {
         localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
@@ -701,19 +701,19 @@ public class szc
       {
         paramInt = paramJSONObject.getInt("serviceID");
         if ((paramInt == 116) || (paramInt == 123)) {
-          localIntent.putExtra("compatible_text", aoep.a);
+          localIntent.putExtra("compatible_text", aoiy.a);
         }
       }
       long l = paramJSONObject.optLong("appid", 0L);
       if (l <= 0L) {
         break;
       }
-      paramJSONObject = this.jdField_a_of_type_Becq.a();
+      paramJSONObject = this.jdField_a_of_type_Begz.a();
       if (paramJSONObject != null)
       {
         b();
         localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        zbj.a(paramJSONObject, this.jdField_a_of_type_AndroidAppActivity, paramJSONObject.getAccount(), l, 3000L, new sze(this, localIntent));
+        zfy.a(paramJSONObject, this.jdField_a_of_type_AndroidAppActivity, paramJSONObject.getAccount(), l, 3000L, new sze(this, localIntent));
       }
       return;
       localIntent.putExtra("isWebCompShare", true);
@@ -728,7 +728,7 @@ public class szc
     {
       if (!TextUtils.isEmpty(paramString1))
       {
-        paramString2 = this.jdField_a_of_type_Becq.a().getEntityManagerFactory(this.jdField_a_of_type_Becq.a().getAccount()).createEntityManager();
+        paramString2 = this.jdField_a_of_type_Begz.a().getEntityManagerFactory(this.jdField_a_of_type_Begz.a().getAccount()).createEntityManager();
         paramString5 = (AccountDetail)paramString2.a(AccountDetail.class, paramString1);
         paramString2.a();
         paramString4 = paramJSONObject.optString("src_action", "");
@@ -759,9 +759,9 @@ public class szc
         }
         for (;;)
         {
-          if (paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getString(2131700022)))
+          if (paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getString(2131700034)))
           {
-            boolean bool = paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getString(2131700022));
+            boolean bool = paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getString(2131700034));
             if (bool)
             {
               paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
@@ -785,7 +785,7 @@ public class szc
           }
           for (;;)
           {
-            localIntent.putExtra("stuctmsg_bytes", azqu.a(localIntent.getExtras()).getBytes());
+            localIntent.putExtra("stuctmsg_bytes", azvd.a(localIntent.getExtras()).getBytes());
             this.jdField_a_of_type_Pih.startActivityForResult(localIntent, (byte)1);
             return;
             if (paramJSONObject.has("sourceName")) {
@@ -866,7 +866,7 @@ public class szc
             }
             else
             {
-              localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidAppActivity.getString(2131696889));
+              localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidAppActivity.getString(2131696891));
             }
           }
           paramString2 = paramString3;
@@ -877,18 +877,18 @@ public class szc
   
   void a(JSONObject paramJSONObject, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Becq.a();
+    this.jdField_a_of_type_Begz.a();
     int i = -1;
     if (!WXShareHelper.a().a()) {
-      i = 2131721478;
+      i = 2131721491;
     }
     while (i != -1)
     {
-      xxb.a(0, i);
+      ybk.a(0, i);
       c();
       return;
       if (!WXShareHelper.a().b()) {
-        i = 2131721479;
+        i = 2131721492;
       }
     }
     if (paramJSONObject.optInt("WXShareToMiniProgram") == 1) {}
@@ -912,14 +912,14 @@ public class szc
   
   void b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramString2 = this.jdField_a_of_type_Becq.a();
+    paramString2 = this.jdField_a_of_type_Begz.a();
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebShareHelper", 2, "shareMsgToSina empty title or share_url");
       }
       c();
-      QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
     }
     do
     {
@@ -947,7 +947,7 @@ public class szc
       {
         for (;;)
         {
-          QQToast.a(BaseApplication.getContext(), 0, 2131720019, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+          QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
           paramString1.printStackTrace();
           c();
         }

@@ -1,18 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-import eipc.EIPCResult;
+import Wallet.PfaFriendRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-class aiwq
-  implements aziw
+final class aiwq
+  extends Handler
 {
-  aiwq(aiwk paramaiwk, int paramInt) {}
-  
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  aiwq(Looper paramLooper)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoInfo);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_Aiwk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
+      }
+    }
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
+      }
+    }
+    for (;;)
+    {
+      aiwp.a(bool1, (PfaFriendRsp)localObject1, bool2);
+      return;
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
+    }
   }
 }
 

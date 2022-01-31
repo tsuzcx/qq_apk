@@ -1,34 +1,69 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
+import java.util.ArrayList;
 
-public class yir
-  extends AnimatorListenerAdapter
+public abstract class yir
+  extends yhy
 {
-  public yir(VideoPlayerView paramVideoPlayerView, WeakReference paramWeakReference, int paramInt1, boolean paramBoolean, int paramInt2) {}
+  private ComponentRvInnerView a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public yir(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, false);
-    }
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) == null) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      return;
-    }
-    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+    super(paramBundle);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public abstract int a();
+  
+  public abstract yis a(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(ComponentRvInnerView paramComponentRvInnerView);
+  
+  protected boolean a()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(0);
+    return false;
+  }
+  
+  public int getItemCount()
+  {
+    if ((!a()) || (getDataList().size() > 0)) {
+      return 1;
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).put(this.jdField_a_of_type_JavaLangRefWeakReference, Integer.valueOf(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getVisibility()));
+    return 0;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder.itemView instanceof ComponentRvInnerView)) {
+      this.a.setData(getDataList());
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    this.a = new ComponentRvInnerView(paramViewGroup.getContext(), this);
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup = new yhx(this, this.a);
+    paramViewGroup.setIsRecyclable(false);
+    a(this.a);
+    return paramViewGroup;
+  }
+  
+  public void setDatas(ArrayList paramArrayList)
+  {
+    getDataList().clear();
+    getDataList().addAll(paramArrayList);
+    if (this.a != null) {
+      this.a.setData(paramArrayList);
     }
   }
 }

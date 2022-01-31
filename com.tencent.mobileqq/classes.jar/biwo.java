@@ -1,42 +1,106 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
 
 public class biwo
 {
-  private static biwo jdField_a_of_type_Biwo;
-  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(2));
-  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean = true;
+  private int b = 3;
   
-  public static SharedPreferences a()
+  static
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
-  }
-  
-  public static biwo a()
-  {
-    if (jdField_a_of_type_Biwo == null) {}
-    try
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    int i = 0;
+    for (;;)
     {
-      if (jdField_a_of_type_Biwo == null) {
-        jdField_a_of_type_Biwo = new biwo();
+      if (i < arrayOfStackTraceElement.length)
+      {
+        if (biwo.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
+          jdField_a_of_type_Int = i;
+        }
       }
-      return jdField_a_of_type_Biwo;
+      else {
+        return;
+      }
+      i += 1;
     }
-    finally {}
   }
   
-  public void a()
+  private StringBuilder a(int paramInt)
   {
-    bixe.e("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
-    if (jdField_a_of_type_Boolean) {
-      return;
+    return new StringBuilder();
+  }
+  
+  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
+  {
+    switch (paramInt1)
+    {
     }
-    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
-    localBusinessTask.a(new biwp(this), true);
-    localBusinessTask.a();
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      try
+      {
+        localStringBuilder = a(paramInt3);
+        if (paramString2 != null) {
+          localStringBuilder.append(paramString2);
+        }
+        paramString2 = paramString1;
+        if (paramString1 == null) {
+          paramString2 = this.jdField_a_of_type_JavaLangString;
+        }
+        switch (paramInt2)
+        {
+        default: 
+          return;
+        }
+      }
+      finally {}
+      if (!QLog.isDevelopLevel())
+      {
+        continue;
+        if (!QLog.isColorLevel())
+        {
+          continue;
+          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
+        }
+      }
+    }
+  }
+  
+  public biwo a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public biwo a(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 6, paramString2, this.b);
+    return this;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public biwo b(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 4, paramString2, this.b);
+    return this;
+  }
+  
+  public biwo c(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 3, paramString2, this.b);
+    return this;
   }
 }
 

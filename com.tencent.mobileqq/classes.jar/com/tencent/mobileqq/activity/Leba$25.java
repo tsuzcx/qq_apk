@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import auqc;
-import azmo;
+import auul;
+import azqx;
 
 class Leba$25
   implements Runnable
 {
-  Leba$25(Leba paramLeba, auqc paramauqc) {}
+  Leba$25(Leba paramLeba, auul paramauul) {}
   
   public void run()
   {
     int i = this.a.b();
-    new azmo(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("clk").a(new String[] { "", String.valueOf(i), "", "" }).a();
+    new azqx(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("clk").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
 }
 

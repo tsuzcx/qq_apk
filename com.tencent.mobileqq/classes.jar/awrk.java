@@ -1,27 +1,49 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class awrk
-  implements bdjy<Float>
+  extends VasWebviewJsPlugin
 {
-  public awrk(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
-  
-  public void a(bdjs<Float> parambdjs, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public awrk()
   {
-    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
-    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
-    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
-    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    this.mPluginNameSpace = "usersummary";
   }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("usersummary"))) {
+      return false;
+    }
+    if ((this.mRuntime.a() instanceof FriendProfileCardActivity))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle FriendProfileCardActivity");
+      }
+      paramJsBridgeListener = (FriendProfileCardActivity)this.mRuntime.a();
+      paramJsBridgeListener.a(paramJsBridgeListener.a.a, false);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle none");
+      }
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
+    }
+    if (paramInt != -1) {}
+  }
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

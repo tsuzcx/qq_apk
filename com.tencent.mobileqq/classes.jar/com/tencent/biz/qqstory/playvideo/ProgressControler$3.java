@@ -3,17 +3,17 @@ package com.tencent.biz.qqstory.playvideo;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import vix;
+import vng;
 
 public class ProgressControler$3
   extends TimerTask
 {
-  public ProgressControler$3(vix paramvix) {}
+  public ProgressControler$3(vng paramvng) {}
   
   public void run()
   {
-    vix localvix = this.this$0;
-    localvix.c += 50L;
+    vng localvng = this.this$0;
+    localvng.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;

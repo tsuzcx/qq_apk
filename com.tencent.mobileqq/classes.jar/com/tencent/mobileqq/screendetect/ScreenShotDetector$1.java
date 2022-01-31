@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.screendetect;
 
 import android.content.Context;
-import aybw;
+import aygf;
 import java.lang.ref.WeakReference;
 
 class ScreenShotDetector$1
@@ -11,7 +11,7 @@ class ScreenShotDetector$1
   
   public void run()
   {
-    aybw.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+    aygf.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
   }
 }
 

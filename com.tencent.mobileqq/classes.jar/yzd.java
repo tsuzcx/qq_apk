@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class yzd
-  extends amky
+public class yzd
 {
-  yzd(yzc paramyzc, String paramString)
+  private String a = "";
+  
+  public static yzd a(String paramString)
   {
-    super(paramString);
+    yzd localyzd = new yzd();
+    localyzd.a = paramString;
+    return localyzd;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
-    }
-    yzb.a(this.a.jdField_a_of_type_Yzb, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    return this.a;
   }
 }
 

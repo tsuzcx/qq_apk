@@ -1,80 +1,48 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public final class aijl
-  implements Parcelable.Creator<LocalMediaInfo>
+public class aijl
+  implements aijo
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo._id = paramParcel.readLong();
-    localLocalMediaInfo.path = paramParcel.readString();
-    localLocalMediaInfo.fileSize = paramParcel.readLong();
-    localLocalMediaInfo.addedDate = paramParcel.readLong();
-    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
-    localLocalMediaInfo.orientation = paramParcel.readInt();
-    localLocalMediaInfo.rotation = paramParcel.readInt();
-    localLocalMediaInfo.mDuration = paramParcel.readLong();
-    if (paramParcel.readByte() == 1)
-    {
-      bool1 = true;
-      localLocalMediaInfo.mChecked = bool1;
-      localLocalMediaInfo.selectStatus = paramParcel.readInt();
-      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
-      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
-      localLocalMediaInfo.thumbnailPath = paramParcel.readString();
-      localLocalMediaInfo.index = paramParcel.readInt();
-      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
-      localLocalMediaInfo.mMimeType = paramParcel.readString();
-      localLocalMediaInfo.mMediaType = paramParcel.readInt();
-      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
-      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
-      if (paramParcel.readByte() != 1) {
-        break label339;
-      }
-      bool1 = true;
-      label202:
-      localLocalMediaInfo.isSystemMeidaStore = bool1;
-      if (paramParcel.readByte() != 1) {
-        break label344;
-      }
-      bool1 = true;
-      label218:
-      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
-      localLocalMediaInfo.longitude = paramParcel.readInt();
-      localLocalMediaInfo.latitude = paramParcel.readInt();
-      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
-      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
-      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
-      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
-      if (paramParcel.readByte() != 1) {
-        break label349;
-      }
-    }
-    label339:
-    label344:
-    label349:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localLocalMediaInfo.isVideoReady = bool1;
-      localLocalMediaInfo.missionID = paramParcel.readString();
-      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
-      localLocalMediaInfo.aiTextLabel = paramParcel.readArrayList(String.class.getClassLoader());
-      return localLocalMediaInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label202;
-      bool1 = false;
-      break label218;
-    }
-  }
+  public aijl(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void a(RecentBaseData paramRecentBaseData)
   {
-    return new LocalMediaInfo[0];
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.a().equals("0"))
+    {
+      MiniMsgTabFragment.a(this.a).findViewById(2131378103).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.a(), paramRecentBaseData.a(), paramRecentBaseData.b(), false, MiniMsgTabFragment.b(this.a));
+    aiiu.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new aijm(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.a();
+    if (abti.d(i)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.b(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
+      }
+    }
   }
 }
 

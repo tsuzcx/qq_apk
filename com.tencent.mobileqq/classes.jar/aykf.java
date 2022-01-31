@@ -1,74 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
 
 public class aykf
-  extends ayju
+  implements View.OnClickListener
 {
-  public static final String a;
-  public List<aykq> a;
-  public String b;
-  public boolean b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public aykf(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = ayke.class.getSimpleName();
-  }
-  
-  public aykf(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  private List<aykq> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
+    FragmentActivity localFragmentActivity;
+    Object localObject;
+    if (paramView.getTag() != null)
     {
-      int i = 0;
-      while (i < paramJSONArray.length())
+      localFragmentActivity = this.a.getActivity();
+      localObject = (Integer)paramView.getTag(2131379972);
+      localObject = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131379971);
+      switch (((AssociateSearchWordsFragment.AssociateItem)localObject).jdField_a_of_type_Int)
       {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        localObject = new aykq(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
-        if (((aykq)localObject).a()) {
-          localArrayList.add(localObject);
-        }
-        i += 1;
       }
     }
-    return localArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.f = false;
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
-      this.l = paramString.optString("jumpUrl");
-      this.m = paramString.optString("subItemLeftIconUrl");
-      paramString = paramString.optJSONArray("itemList");
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList = a(paramString);
-      }
       return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      if ((localFragmentActivity instanceof ayki))
+      {
+        Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
+        localObject = ((AssociateSearchWordsFragment.AssociateItem)localObject).e;
+        paramView = (View)localObject;
+        if (!((String)localObject).startsWith("http")) {
+          paramView = "http://" + (String)localObject;
+        }
+        localIntent.putExtra("url", paramView);
+        localFragmentActivity.startActivity(localIntent);
+        localFragmentActivity.finish();
+        return;
+        if ((localFragmentActivity instanceof ayki)) {
+          paramView = (ayki)localFragmentActivity;
+        }
+        while (paramView != null)
+        {
+          paramView.a(((AssociateSearchWordsFragment.AssociateItem)localObject).jdField_a_of_type_JavaLangString, ((AssociateSearchWordsFragment.AssociateItem)localObject).d);
+          return;
+          if (AssociateSearchWordsFragment.a(this.a) != null) {
+            paramView = AssociateSearchWordsFragment.a(this.a);
+          } else {
+            paramView = null;
+          }
+        }
+      }
     }
   }
 }

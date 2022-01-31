@@ -1,75 +1,74 @@
 import android.text.TextUtils;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnDownloadListener;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
 
-class ugj
-  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
+public class ugj
+  extends uga
 {
-  WeakReference<ugc> a;
+  private QCircleExpandableTextView a;
+  private QCircleExpandableTextView b;
   
-  public ugj(ugc paramugc)
+  public void a(ViewStub paramViewStub)
   {
-    this.a = new WeakReference(paramugc);
+    if (paramViewStub != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView = ((QCircleExpandableTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373165));
+      this.b = ((QCircleExpandableTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373167));
+    }
   }
   
-  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
+  public void a(Object paramObject, int paramInt)
   {
-    int i = -1;
-    if ((this.a.get() == null) || (ugc.a((ugc)this.a.get()) != 2)) {
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
-    }
-    while (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ((paramString2.contains("\"callBackType\":\"4\"")) && (ugc.b((ugc)this.a.get()) != -1))
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    FeedCloudMeta.StRecomForward localStRecomForward;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((paramObject instanceof FeedCloudMeta.StFeed)))
     {
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
-      if (bdee.d(BaseApplication.getContext())) {
-        break label209;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
+      paramObject = (FeedCloudMeta.StFeed)paramObject;
+      ((QCircleAsyncTextView)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.b()).c();
+      if (!paramObject.isRecomFd.get()) {
+        break label248;
       }
-      ugc.a((ugc)this.a.get());
+      localStRecomForward = paramObject.recomForward;
+      if (!TextUtils.isEmpty(localStRecomForward.title.get())) {
+        break label132;
+      }
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setVisibility(8);
+    }
+    while (paramObject.content.get().isEmpty())
+    {
+      this.b.setVisibility(8);
+      return;
+      label132:
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setText(localStRecomForward.title.get());
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setVisibility(0);
+    }
+    if (this.b.b() != null) {
+      a((FeedCloudMeta.StUser)paramObject.poster.get(), paramObject.content.get(), (QCircleAsyncTextView)this.b.b());
+    }
+    this.b.setText(paramObject.poster.nick.get().trim() + ":" + paramObject.content.get(), false);
+    return;
+    label248:
+    if (TextUtils.isEmpty(paramObject.content.get())) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setVisibility(8);
     }
     for (;;)
     {
-      ugc.a((ugc)this.a.get(), i);
-      ((ugc)this.a.get()).a();
+      this.b.setVisibility(8);
       return;
-      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (ugc.b((ugc)this.a.get()) == 0)) {
-        break;
-      }
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
-      ugc.a((ugc)this.a.get(), 0);
-      ((ugc)this.a.get()).a();
-      return;
-      label209:
-      i = -2;
-    }
-  }
-  
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
-  {
-    if ((this.a.get() == null) || (ugc.a((ugc)this.a.get()) != 2)) {
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
-    }
-    while (paramInt != 5) {
-      return;
-    }
-    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
-    {
-      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-      if ((paramString.model != 122) || (paramString.what != 204)) {}
-    }
-    for (paramInt = -1;; paramInt = -2)
-    {
-      wsv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-      ugc.a((ugc)this.a.get());
-      ugc.a((ugc)this.a.get(), paramInt);
-      ((ugc)this.a.get()).a();
-      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setText(paramObject.content.get(), false);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.setVisibility(0);
     }
   }
 }

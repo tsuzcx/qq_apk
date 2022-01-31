@@ -1,43 +1,57 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.image.ApngDrawable;
 
 public class bdxh
-  implements DownloadParams.DecodeHandler
+  implements bdxe
 {
-  private int a;
-  private int b;
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   
-  public bdxh(int paramInt1, int paramInt2)
+  public bdxh(Drawable paramDrawable)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private void a(boolean paramBoolean)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
+    {
+      if (paramBoolean) {
+        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
+      }
     }
-    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
-    return paramDownloadParams;
+    else {
+      return;
+    }
+    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
   }
   
-  public String toString()
+  public void a()
   {
-    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(true);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+    }
+  }
+  
+  public void a(bdxf parambdxf)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new bdxi(this, parambdxf);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+    }
   }
 }
 

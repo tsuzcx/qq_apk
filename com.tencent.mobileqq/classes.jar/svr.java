@@ -13,14 +13,14 @@ class svr
   
   public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (!bdee.g(svl.a(this.a.a)))
+    if (!bdin.g(svl.a(this.a.a)))
     {
-      QQToast.a(svl.a(this.a.a), 1, svl.a(this.a.a).getString(2131718724), 0).a();
+      QQToast.a(svl.a(this.a.a), 1, svl.a(this.a.a).getString(2131718736), 0).a();
       return false;
     }
     paramView = ors.a();
     owy.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
-    QQToast.a(svl.a(this.a.a), -1, svl.a(this.a.a).getString(2131700042), 0).b(svl.a(this.a.a).getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(svl.a(this.a.a), -1, svl.a(this.a.a).getString(2131700054), 0).b(svl.a(this.a.a).getResources().getDimensionPixelSize(2131298914));
     svl.a(this.a.a).dismiss();
     if (svl.a(this.a.a) != null) {
       svl.a(this.a.a).a(svl.a(this.a.a), svl.e(this.a.a), svl.a(this.a.a), paramArrayList);

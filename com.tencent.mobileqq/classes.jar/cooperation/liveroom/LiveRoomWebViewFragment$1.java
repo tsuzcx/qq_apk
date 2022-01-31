@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import beav;
-import behm;
+import befe;
+import belv;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements behm
+  implements belv
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, beav parambeav) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, befe parambefe) {}
   
   public long getDetect302Time()
   {

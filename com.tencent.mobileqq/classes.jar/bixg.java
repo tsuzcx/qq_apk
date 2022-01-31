@@ -1,128 +1,86 @@
-import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.FadeIconImageView;
 
-public final class bixg
+public class bixg
+  extends Dialog
 {
-  private static Map<String, String> a = new HashMap();
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
   
-  static
+  public bixg(Context paramContext)
   {
-    a.put("qqreaderMan", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderWoman", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderPublish", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderBookShelfIndex", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_index.html");
-    a.put("qqreaderBookShelfBookList", "https://cdn.vip.qq.com/club/client/read/6/rel/man.html");
-    a.put("qqreaderBookShelfFm", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_fm.html");
-    a.put("qqreaderBookShelfFollow", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_follow.html");
-    a.put("qqreaderBookShelfDelete", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_delete.html");
-    a.put("qqreaderTribe", "https://cdn.vip.qq.com/club/client/read/6/rel/tribe.html");
-    a.put("qqreaderSearchResult", "https://cdn.vip.qq.com/club/client/read/6/rel/new_search.html");
-    a.put("qqreaderAccount", "https://cdn.vip.qq.com/club/client/read/6/rel/mine_index.html");
-    a.put("qqreaderAppdown", "https://cdn.vip.qq.com/club/client/read/6/rel/appdown.html");
-    a.put("qqreaderInteract", "https://cdn.vip.qq.com/club/client/read/6/rel/interact.html");
-    a.put("qqreaderComment", "https://cdn.vip.qq.com/club/client/read/6/rel/comment.html");
-    a.put("qqreaderReadover", "https://cdn.vip.qq.com/club/client/read/6/rel/readover.html");
-    a.put("qqreaderBookFont", "https://cdn.vip.qq.com/club/client/read/6/rel/bookFont.html");
-    a.put("qqreaderBookDetails", "https://cdn.vip.qq.com/club/client/read/6/rel/bookDetails.html");
-    a.put("qqreaderOffShelf", "https://cdn.vip.qq.com/club/client/read/6/rel/book_offShelf.html");
-    a.put("qqreaderBookOutDetail", "https://cdn.vip.qq.com/club/client/read/6/rel/book_outDetail.html");
-    a.put("qqreaderQQMoreState", "https://cdn.vip.qq.com/club/client/read/6/rel/userstate.html");
-  }
-  
-  public static String a(String paramString)
-  {
-    return a(paramString, true);
-  }
-  
-  public static String a(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramBoolean)
+    super(paramContext, 2131755804);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560632, null);
+    setContentView(paramContext);
+    Object localObject = getWindow();
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    ((Window)localObject).setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
+    localObject = (TextView)paramContext.findViewById(2131368624);
+    if (localObject != null)
     {
-      localObject = d(paramString);
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/index.html";
-      }
-      localObject = new StringBuilder().append(paramString);
-      if (!paramString.contains("?")) {
-        break label170;
-      }
+      ((TextView)localObject).setVisibility(0);
+      ((TextView)localObject).setText(2131690623);
     }
-    label170:
-    for (paramString = "&";; paramString = "?")
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368670));
+    try
     {
-      paramString = paramString;
-      localObject = paramString + "_bid=2036&refer=qqreader";
-      paramString = (String)localObject;
-      if (!((String)localObject).contains("&ChannelID=")) {
-        paramString = (String)localObject + "&ChannelID=" + bixj.a();
-      }
-      localObject = paramString;
-      if (QRDebugEnvUrlUtils.isDebugEnv()) {
-        localObject = QRDebugEnvUrlUtils.getTestUrl(paramString);
-      }
-      bixe.e("ReaderUrlHelper", "getUrlWithBid = " + (String)localObject);
-      return localObject;
-      paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/" + paramString;
-      break;
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    String str;
-    if (paramString == null) {
-      str = a("index.html", false);
-    }
-    do
-    {
-      do
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        return str;
-        str = paramString;
-      } while (paramString.toLowerCase().startsWith("http://"));
-      str = paramString;
-    } while (paramString.toLowerCase().startsWith("file://"));
-    return c(paramString);
-  }
-  
-  public static String c(String paramString)
-  {
-    if ((paramString != null) && (!paramString.equals(""))) {
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692447);
+      }
+      label140:
+      paramContext = (FadeIconImageView)paramContext.findViewById(2131368638);
+      if (paramContext != null)
       {
-        String str = paramString;
-        if (QRDebugEnvUrlUtils.isDebugEnv()) {
-          str = QRDebugEnvUrlUtils.getTestUrl(paramString);
-        }
-        return str;
+        paramContext.setVisibility(0);
+        paramContext.setImageResource(2130840089);
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "enter into QfavLoadingDialog");
+      }
+      return;
     }
-    for (paramString = a(paramString, false);; paramString = a("index.html", false)) {
-      return paramString;
+    catch (Exception localException)
+    {
+      break label140;
     }
   }
   
-  private static String d(String paramString)
+  public void dismiss()
   {
-    String str2 = null;
-    String str1;
-    if ((bivt.a != null) && (bivt.a.size() > 0)) {
-      str1 = (String)bivt.a.get(paramString);
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
     }
-    for (;;)
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839227));
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
-      bixe.d("ReaderUrlHelper", "getUrl = " + str1);
-      return str1;
-      if (bivt.a != null) {
-        str2 = (String)bivt.a.get(paramString);
-      }
-      str1 = str2;
-      if (str2 == null) {
-        str1 = (String)a.get(paramString);
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
     }
   }
 }

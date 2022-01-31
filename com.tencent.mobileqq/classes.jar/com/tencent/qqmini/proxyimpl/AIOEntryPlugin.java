@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgkd;
-import bgkk;
+import bgok;
+import bgor;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,21 +11,21 @@ public class AIOEntryPlugin
 {
   private static final String TAG = "AIOEntryPlugin";
   
-  public void hideMiniAIOEntrance(bgkd parambgkd)
+  public void hideMiniAIOEntrance(bgok parambgok)
   {
-    bgkk.a(new AIOEntryPlugin.2(this, parambgkd));
+    bgor.a(new AIOEntryPlugin.2(this, parambgok));
   }
   
-  public void showMiniAIOEntrance(bgkd parambgkd)
+  public void showMiniAIOEntrance(bgok parambgok)
   {
     try
     {
-      bgkk.a(new AIOEntryPlugin.1(this, new JSONObject(parambgkd.b), parambgkd));
+      bgor.a(new AIOEntryPlugin.1(this, new JSONObject(parambgok.b), parambgok));
       return;
     }
-    catch (JSONException parambgkd)
+    catch (JSONException parambgok)
     {
-      parambgkd.printStackTrace();
+      parambgok.printStackTrace();
     }
   }
 }

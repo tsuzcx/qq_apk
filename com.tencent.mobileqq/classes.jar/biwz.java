@@ -1,39 +1,22 @@
-import android.support.annotation.NonNull;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class biwz
-  extends biwj
+  extends aobz
 {
-  public biwz(ReaderHomePageActivity paramReaderHomePageActivity) {}
+  public biwz(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void a(@NonNull biwi parambiwi)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    parambiwi = parambiwi.a();
-    if (parambiwi == null) {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
+    if (this.a.v)
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        int i = parambiwi.getJSONObject("data").getInt("identity");
-        parambiwi = this.a;
-        if (i == 2)
-        {
-          bool = true;
-          bixc.e(parambiwi, bool);
-          bixe.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
-          return;
-        }
-      }
-      catch (Exception parambiwi)
-      {
-        bixe.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambiwi);
-        return;
-      }
-      boolean bool = false;
-    }
+    azqs.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
   }
 }
 

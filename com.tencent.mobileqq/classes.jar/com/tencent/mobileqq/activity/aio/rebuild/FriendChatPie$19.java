@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agld;
-import ahgp;
+import agps;
+import ahle;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$19
   implements Runnable
 {
-  public FriendChatPie$19(agld paramagld) {}
+  public FriendChatPie$19(agps paramagps) {}
   
   public void run()
   {
-    if (ahgp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+    if (ahle.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
     {
-      agld.b(this.this$0, true);
-      ahgp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      agps.b(this.this$0, true);
+      ahle.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
       return;
     }
-    agld.b(this.this$0, false);
+    agps.b(this.this$0, false);
   }
 }
 

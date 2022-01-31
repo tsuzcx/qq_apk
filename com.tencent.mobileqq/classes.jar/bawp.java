@@ -1,12 +1,19 @@
-public class bawp
-  extends bawz
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+
+class bawp
+  implements alrb
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
+  bawp(bawo parambawo) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
+      this.a.a(str);
+    }
+  }
 }
 
 

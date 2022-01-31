@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wca
-  implements View.OnClickListener
+public abstract interface wca
 {
-  wca(wbz paramwbz) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
-    }
-  }
+  public abstract void b();
 }
 
 

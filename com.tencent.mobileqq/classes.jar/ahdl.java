@@ -1,38 +1,13 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
 public class ahdl
-  implements axxi
+  implements DialogInterface.OnClickListener
 {
-  public ahdl(SearchBaseFragment paramSearchBaseFragment) {}
+  public ahdl(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
-      {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof ahdo)))
-          {
-            paramBitmap = (ahdo)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

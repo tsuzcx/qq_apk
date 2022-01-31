@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.widget.ImageView;
-import bbcb;
+import bbgk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 
 public class PublicCommentWindow$1
   implements Runnable
 {
-  public PublicCommentWindow$1(bbcb parambbcb) {}
+  public PublicCommentWindow$1(bbgk parambbgk) {}
   
   public void run()
   {
@@ -16,8 +16,8 @@ public class PublicCommentWindow$1
     if ((this.this$0.isShowing()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847356);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131696719));
+      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847429);
+      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131696721));
     }
   }
 }

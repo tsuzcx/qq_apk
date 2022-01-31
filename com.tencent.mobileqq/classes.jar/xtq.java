@@ -1,34 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
 final class xtq
-  extends AnimatorListenerAdapter
+  extends xtb
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  xtq(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  xtq(View paramView, int paramInt)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    if ((this.jdField_a_of_type_Xtb instanceof upi)) {
+      ((upi)this.jdField_a_of_type_Xtb).a(941005);
+    }
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
   }
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onStart()
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 

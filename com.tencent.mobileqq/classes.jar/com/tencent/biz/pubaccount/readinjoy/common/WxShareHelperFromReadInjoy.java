@@ -39,7 +39,7 @@ import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
 import osn;
-import xxb;
+import ybk;
 
 public class WxShareHelperFromReadInjoy
   extends BroadcastReceiver
@@ -175,7 +175,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      xxb.a(1, 2131696944);
+      ybk.a(1, 2131696946);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();

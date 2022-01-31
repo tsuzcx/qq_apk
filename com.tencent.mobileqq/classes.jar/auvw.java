@@ -1,23 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-
 public class auvw
-  implements bhqd
 {
-  public auvw(NearbyGuideActivity paramNearbyGuideActivity, bhpy parambhpy) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void OnClick(View paramView, int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Bhpy.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

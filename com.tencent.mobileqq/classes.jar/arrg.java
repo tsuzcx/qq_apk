@@ -1,26 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class arrg
-  implements View.OnClickListener
+final class arrg
+  implements DialogInterface.OnClickListener
 {
-  public arrg(SendBottomBar paramSendBottomBar) {}
+  arrg(arrh paramarrh) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str1 = alpo.a(2131714171) + aqxj.b() + alpo.a(2131714177);
-    paramView = null;
-    String str2 = alpo.a(2131714189);
-    if (SendBottomBar.a(this.a).g() != -1)
-    {
-      str1 = alpo.a(2131714195);
-      paramView = alpo.a(2131714191);
-      str2 = alpo.a(2131714188);
-    }
-    this.a.a = bdcd.a(SendBottomBar.a(this.a), 230, paramView, str1, alpo.a(2131714187), str2, new arrh(this), new arri(this));
-    this.a.a.show();
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 

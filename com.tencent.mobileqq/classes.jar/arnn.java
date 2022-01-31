@@ -1,16 +1,18 @@
-final class arnn
-  implements bdvt
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+
+public class arnn
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  arnn(army paramarmy) {}
+  arnn(arnb paramarnb) {}
   
-  public void callback(int paramInt)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.a.a();
-      return;
-    }
-    this.a.b();
+    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this, paramInt));
+    return false;
   }
 }
 

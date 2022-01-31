@@ -1,30 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bdfo
+final class bdfo
+  implements MediaPlayer.OnCompletionListener
 {
-  public float a;
-  public SessionInfo a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e = "";
-  
-  public bdfo(Bundle paramBundle)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
-    this.b = paramBundle.getString("appView");
-    this.c = paramBundle.getString("appMinVersion");
-    this.d = paramBundle.getString("metaData");
-    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    paramBundle = paramBundle.getString("troopUin");
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
-    }
+    paramMediaPlayer.release();
+    bdfi.a = null;
   }
 }
 

@@ -1,21 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class blcn
-  implements bldv
+class blcn
+  implements View.OnClickListener
 {
-  public blcn(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
+  blcn(blcj paramblcj) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+    blcj.a(this.a).a();
   }
 }
 

@@ -1,17 +1,23 @@
-public class anot
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+
+class anot
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  anot(anos paramanos) {}
+  
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
+    if (paramBitmap != null)
     {
-      int i = 0;
-      while (i < paramArrayOfFloat1.length)
-      {
-        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
-        i += 1;
-      }
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
+      return;
     }
-    return paramArrayOfFloat1;
+    this.a.a.a.setVisibility(8);
   }
 }
 

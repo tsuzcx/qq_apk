@@ -1,30 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import java.util.ArrayList;
+import android.widget.TextView;
+import java.util.Map;
 
-public class yms
-  extends alqf
+class yms
+  implements ynq
 {
-  public yms(TroopMemberApiService paramTroopMemberApiService) {}
+  yms(ymq paramymq, afkf paramafkf) {}
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(102, localBundle);
+    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
+    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
+    {
+      this.jdField_a_of_type_Afkf.a.setText((CharSequence)ymq.c(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b)));
+      return;
+    }
+    ymq.b(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), Long.valueOf(paramLong2));
+    ymq.c(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), paramString);
+    this.jdField_a_of_type_Afkf.a.setText(paramString);
   }
 }
 

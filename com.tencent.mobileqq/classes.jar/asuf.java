@@ -1,27 +1,16 @@
-import android.text.TextUtils;
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class asuf
+public class asuf
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
-  public boolean a;
-  public boolean b = true;
+  public asuf(HotPicPageView paramHotPicPageView) {}
   
-  private void a(String paramString)
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.optBoolean("input_status_gray_switch", false);
-      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
-    }
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
   }
 }
 

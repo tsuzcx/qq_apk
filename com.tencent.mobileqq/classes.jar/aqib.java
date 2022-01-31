@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
-public class aqib
-  implements View.OnClickListener
+public abstract interface aqib
 {
-  public aqib(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
   
-  public void onClick(View paramView)
-  {
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
 }
 
 

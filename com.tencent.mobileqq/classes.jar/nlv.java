@@ -29,7 +29,7 @@ public class nlv
       if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
         String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = baul.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = bayu.a(str);
         this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
         this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
         if (QLog.isColorLevel()) {

@@ -1,15 +1,43 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public abstract interface bmna
+class bmna
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bmna(bmmx parambmmx) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void onClick(View paramView)
+  {
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bmzh.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Bmzh.jdField_a_of_type_JavaLangString;
+      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        bmnj localbmnj = this.a.jdField_a_of_type_Bmnj;
+        if (this.a.jdField_a_of_type_Bmnj.a())
+        {
+          paramView = "2";
+          localbmnj.a("use_custom_tag", 0, 0, new String[] { paramView });
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bmnj.a(0);
+      return;
+      paramView = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
+  }
 }
 
 

@@ -1,102 +1,90 @@
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aood
+  extends aokh<aooe>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
-  
-  public aood()
+  public static boolean e()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
-  }
-  
-  public static aood a(String paramString)
-  {
-    if (paramString == null) {}
-    for (;;)
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
     {
-      return null;
-      try
-      {
-        aood localaood = new aood();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("wvShouldReportPerf"))
-        {
-          if (paramString.optInt("wvShouldReportPerf") == 1)
-          {
-            bool = true;
-            localaood.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          if (paramString.has("wvShouldReportJsapiCall"))
-          {
-            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
-              break label212;
-            }
-            bool = true;
-            label70:
-            localaood.jdField_b_of_type_Boolean = bool;
-          }
-          if (paramString.has("wvShouldReportOpenapiCall")) {
-            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
-              break label217;
-            }
-          }
-        }
-        label212:
-        label217:
-        for (boolean bool = true;; bool = false)
-        {
-          localaood.jdField_c_of_type_Boolean = bool;
-          if (paramString.has("wvPerformanceRate")) {
-            localaood.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
-          }
-          if (paramString.has("wvJsapiCallRate")) {
-            localaood.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
-          }
-          if (paramString.has("wvSchemeRate")) {
-            localaood.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
-          }
-          if (paramString.has("recogniseText")) {
-            localaood.d = paramString.optString("recogniseText");
-          }
-          QLog.d("ConfBean", 2, "confBean = " + localaood.toString());
-          return localaood;
-          bool = false;
-          break;
-          bool = false;
-          break label70;
-        }
-        if (!QLog.isColorLevel()) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
       }
-      catch (Exception paramString) {}
+      return false;
     }
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    aooe localaooe = (aooe)aoks.a().a(552);
+    if ((localaooe != null) && (!TextUtils.isEmpty(localaooe.a))) {
+      alvw.a = "1".equals(localaooe.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(alvw.a) });
+    }
+    if (!alvw.a()) {
+      return true;
+    }
+    return alvw.a;
   }
   
-  public String toString()
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" recogniseText:").append(this.d);
-    return localStringBuilder.toString();
+    return 552;
+  }
+  
+  @NonNull
+  public aooe a(int paramInt)
+  {
+    return new aooe();
+  }
+  
+  @Nullable
+  public aooe a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      aooe localaooe = aooe.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaooe;
+    }
+    return new aooe();
+  }
+  
+  public Class<aooe> a()
+  {
+    return aooe.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aooe paramaooe)
+  {
+    if ((paramaooe != null) && (!TextUtils.isEmpty(paramaooe.a))) {
+      alvw.a = "1".equals(paramaooe.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + alvw.a);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

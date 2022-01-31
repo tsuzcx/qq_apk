@@ -1,39 +1,7 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class arwa
+  implements alpg
 {
-  private static arwa jdField_a_of_type_Arwa;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public static arwa a()
-  {
-    if (jdField_a_of_type_Arwa == null) {
-      jdField_a_of_type_Arwa = new arwa();
-    }
-    return jdField_a_of_type_Arwa;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (jdField_a_of_type_Arwa == null) {
-      paramString = null;
-    }
-    String str;
-    do
-    {
-      return paramString;
-      str = (String)jdField_a_of_type_Arwa.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramString = str;
-    } while (!jdField_a_of_type_Arwa.jdField_a_of_type_JavaUtilMap.isEmpty());
-    jdField_a_of_type_Arwa = null;
-    return str;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

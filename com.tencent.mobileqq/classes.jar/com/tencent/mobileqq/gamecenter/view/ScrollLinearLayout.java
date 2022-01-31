@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aekt;
+import aepi;
 import android.content.Context;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.ViewCompat;
@@ -15,7 +15,7 @@ public class ScrollLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = aekt.a(80.0F, getResources());
+  private int jdField_a_of_type_Int = aepi.a(80.0F, getResources());
   private View jdField_a_of_type_AndroidViewView;
   private OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
   private View b;
@@ -49,8 +49,8 @@ public class ScrollLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369644);
-    this.b = findViewById(2131366279);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369661);
+    this.b = findViewById(2131366281);
     this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
   }
   

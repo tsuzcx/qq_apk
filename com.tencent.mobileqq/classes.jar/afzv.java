@@ -1,7 +1,7 @@
-class afzv
-  implements algd
+public class afzv
+  extends aepm
 {
-  afzv(afzs paramafzs, bbpe parambbpe, bboe parambboe) {}
+  public ayex a;
 }
 
 

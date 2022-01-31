@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import aebt;
-import aecg;
+import aegi;
+import aegv;
 import java.util.List;
 
 public class TroopMemberListActivity$40$5
   implements Runnable
 {
-  public TroopMemberListActivity$40$5(aebt paramaebt, List paramList) {}
+  public TroopMemberListActivity$40$5(aegi paramaegi, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aebt.a.isFinishing()) {}
-    while (this.jdField_a_of_type_Aebt.a.a == null) {
+    if (this.jdField_a_of_type_Aegi.a.isFinishing()) {}
+    while (this.jdField_a_of_type_Aegi.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Aebt.a.a.c = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Aebt.a.a.a();
+    this.jdField_a_of_type_Aegi.a.a.c = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Aegi.a.a.a();
   }
 }
 

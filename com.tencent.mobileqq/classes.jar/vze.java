@@ -1,36 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class vze
-  extends SimpleObserver<Bitmap>
+final class vze
+  implements URLDrawable.URLDrawableListener
 {
-  vze(vzd paramvzd) {}
+  vze(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.onNext(paramBitmap);
-    vzb.b(vzd.a(this.a), "onNext, oldResult=%s, newResult=%s", vzd.a(this.a), paramBitmap);
-    vzd.a(this.a, paramBitmap);
-    vzd.a(this.a, true);
+    wxe.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-    vzb.a(vzd.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onError(@NonNull Error paramError)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super.onError(paramError);
-    vzb.c(vzd.a(this.a), "onError, oldError=%s, newError=%s", vzd.a(this.a), paramError);
-    vzd.a(this.a, paramError);
-    vzd.a(this.a, SystemClock.uptimeMillis());
-    vzd.a(this.a, false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

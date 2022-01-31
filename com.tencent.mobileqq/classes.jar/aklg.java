@@ -1,23 +1,10 @@
-public class aklg
+public abstract interface aklg
 {
-  public int a;
-  public float[] a;
-  public int[] a;
-  public float[] b;
-  public int[] b;
-  
-  public aklg()
-  {
-    this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    this.jdField_b_of_type_ArrayOfFloat = new float[4];
-    this.jdField_a_of_type_ArrayOfInt = new int[4];
-    this.jdField_b_of_type_ArrayOfInt = new int[4];
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklg
  * JD-Core Version:    0.7.0.1
  */

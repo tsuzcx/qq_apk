@@ -1,6 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class blga
+  implements DialogInterface.OnClickListener
 {
-  static final blfy a = new blfy(null);
+  blga(blfz paramblfz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

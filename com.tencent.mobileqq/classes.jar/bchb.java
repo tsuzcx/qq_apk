@@ -1,40 +1,59 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class bchb
-  extends AsyncTask<Boolean, Void, Bitmap>
 {
-  private WeakReference<RollangleImageView> a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private long b;
   
-  public bchb(RollangleImageView paramRollangleImageView)
+  public bchb(QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramRollangleImageView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
   }
   
-  protected Bitmap a(Boolean... paramVarArgs)
+  private boolean a(TroopInfo paramTroopInfo)
   {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null) {
-      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
-    }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null)
+    if (paramTroopInfo == null) {}
+    long l;
+    do
     {
-      if (paramBitmap != null) {
-        localRollangleImageView.setImageBitmap(paramBitmap);
-      }
+      do
+      {
+        return true;
+        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
+          return false;
+        }
+        l = System.currentTimeMillis();
+        if (paramTroopInfo.wMemberNum > 500) {
+          break;
+        }
+      } while (l - this.b < 180000L);
+      return false;
+    } while (l - this.b < 1800000L);
+    return false;
+  }
+  
+  public void a(String paramString)
+  {
+    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
+    amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((localamdu != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localamdu.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
+      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
+      this.b = System.currentTimeMillis();
     }
-    else {
-      return;
-    }
-    localRollangleImageView.setImageResource(arni.b(localRollangleImageView.a));
+  }
+  
+  public boolean a(String paramString)
+  {
+    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
   }
 }
 

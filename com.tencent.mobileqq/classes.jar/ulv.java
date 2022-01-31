@@ -1,9 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface ulv
+class ulv
+  extends SimpleJob<Object>
 {
-  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
+  ulv(ulu paramulu, String paramString, boolean paramBoolean)
+  {
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Ulu.b(this.jdField_a_of_type_Boolean);
+    return null;
+  }
 }
 
 

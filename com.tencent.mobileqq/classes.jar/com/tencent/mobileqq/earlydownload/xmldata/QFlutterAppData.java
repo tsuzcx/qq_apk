@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aphq;
+import aplz;
 
 public class QFlutterAppData
   extends XmlData
 {
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String assetResMD5 = "";
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String libAppSoMD5 = "";
-  @aphq(a=true, b=true)
+  @aplz(a=true, b=true)
   public String libSkinSoMD5 = "";
   
   public String getSharedPreferencesName()

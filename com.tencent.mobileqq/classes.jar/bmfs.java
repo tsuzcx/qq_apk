@@ -1,44 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
 
-class bmfs
-  implements Handler.Callback
+public class bmfs
+  extends AnimatorListenerAdapter
 {
-  bmfs(bmfp parambmfp) {}
+  public bmfs(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (bmfp.a(this.a)) {
-        return false;
-      }
-      bmfp.a(this.a, new blqc());
-      paramMessage = Message.obtain();
-      paramMessage.what = 111;
-      bmfp.b(this.a).sendMessageDelayed(paramMessage, 1000L);
-      continue;
-      paramMessage = this.a.a();
-      if ((paramMessage != null) && (paramMessage.exists()))
-      {
-        bmfp.a(this.a).a(paramMessage);
-        bmfp.a(this.a).a(this.a.a());
-        bmfp.a(this.a).a();
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("EditRecognitionPart", 2, "handleMessage: invoked. info: Failed to get audioFile. audioFile = " + paramMessage);
-        }
-        bfhq.a().a(2131698607);
-      }
-    }
+    this.a.b.setTranslationY(0.0F);
+    this.a.j();
+    atlr.b();
   }
 }
 

@@ -1,20 +1,15 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 final class alup
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  alup(DialogInterface.OnClickListener paramOnClickListener) {}
+  alup(Activity paramActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    alun.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

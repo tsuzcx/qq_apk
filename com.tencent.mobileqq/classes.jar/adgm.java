@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-
-public class adgm
-  implements DialogInterface.OnClickListener
+public abstract interface adgm
 {
-  public adgm(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
-  }
+  public abstract void a();
 }
 
 

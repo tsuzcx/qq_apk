@@ -1,59 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
 public class bcui
+  extends bcuj
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
-  
-  public bcui(QQAppInterface paramQQAppInterface)
+  public bcui(bcug parambcug, int paramInt)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bcuj(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(parambcug, paramInt);
   }
   
-  public String a(int paramInt, JSONObject paramJSONObject)
+  public void a()
   {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
-      }
-      localJSONObject2.put("data", localJSONObject1);
+    if (a(this.jdField_a_of_type_Bcug.a)) {
+      return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
-        }
-      }
-    }
-    return localJSONObject2.toString();
+    e();
   }
   
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  public void b()
   {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bcuh.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
+    if (this.jdField_a_of_type_Boolean) {
+      c();
+    }
+  }
+  
+  public void c()
+  {
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 0);
+    if (this.b != null)
+    {
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.b);
+    }
+    for (;;)
+    {
+      bcuh.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
     }
   }
 }

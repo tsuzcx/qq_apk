@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import anwi;
-import anwr;
+import aoar;
+import aoba;
 
 public class CameraManagerImpl$ShutterCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$ShutterCallbackForward$1(anwr paramanwr) {}
+  public CameraManagerImpl$ShutterCallbackForward$1(aoba paramaoba) {}
   
   public void run()
   {
-    anwr.a(this.this$0).a(anwr.a(this.this$0));
+    aoba.a(this.this$0).a(aoba.a(this.this$0));
   }
 }
 

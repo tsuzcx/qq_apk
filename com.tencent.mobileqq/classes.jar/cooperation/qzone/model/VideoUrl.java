@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjha;
+import bjlh;
 
 public class VideoUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoUrl> CREATOR = new bjha();
+  public static final Parcelable.Creator<VideoUrl> CREATOR = new bjlh();
   public int a;
   public String a;
   public int b;

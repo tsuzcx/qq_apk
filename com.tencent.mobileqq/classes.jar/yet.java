@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class yet
-  extends anxq
+class yet
+  implements ymf
 {
-  public yet(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  yet(yes paramyes) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.a.getActivity() != null)
+    if (paramBoolean)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.setDatas((ArrayList)paramVarArgs[0]);
+      }
+      return;
     }
+    QLog.d(yes.a, 4, "get drafts failed");
   }
 }
 

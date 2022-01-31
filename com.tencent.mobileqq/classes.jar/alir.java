@@ -1,18 +1,19 @@
-import android.view.View;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class alir
+  implements akon
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public alir(ApolloConfigDataReport.1 param1) {}
   
-  public alir(View paramView, int paramInt1, String paramString, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 200)) {
+      aliq.b();
+    }
   }
 }
 

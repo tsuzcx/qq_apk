@@ -1,24 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class ainl
-  implements yvz
+  extends awhw
 {
-  ainl(aink paramaink, LocalMediaInfo paramLocalMediaInfo) {}
+  ainl(aink paramaink) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  protected void c(boolean paramBoolean)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aink.a.mActivity).cancleProgressDailog();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
-    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aink.a.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-    aini.a(this.jdField_a_of_type_Aink.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+    }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
+    }
+    this.a.a.a.a(1, alud.a(2131714252));
   }
 }
 

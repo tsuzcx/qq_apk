@@ -1,15 +1,13 @@
-import android.animation.ValueAnimator;
-
-public class xbt
-  implements xbs
+class xbt
+  implements xwi
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  xbt(xbs paramxbs) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public void a()
+  {
+    xbv localxbv = xbs.a(this.a);
+    xbs.a(this.a, xbs.a(this.a)).a(localxbv);
+  }
 }
 
 

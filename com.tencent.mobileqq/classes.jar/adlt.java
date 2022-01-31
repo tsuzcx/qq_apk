@@ -1,40 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlt
-  implements EIPCResultCallback
+  implements Handler.Callback
 {
-  public adlt(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
+  public adlt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public boolean handleMessage(Message paramMessage)
   {
-    QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF error_code:" + paramEIPCResult.code);
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-    }
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          bool = false;
+          return bool;
+        }
       }
-      return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      continue;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      if (paramEIPCResult.data != null) {
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
-      }
-      QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF success conf :" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
-      continue;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      break label163;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      break label163;
+      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+      label163:
+      bool = true;
     }
   }
 }

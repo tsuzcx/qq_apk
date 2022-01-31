@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import alpo;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -81,7 +81,7 @@ public class VideoInfo$InterruptedWeishiAd
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      str = alpo.a(2131716665);
+      str = alud.a(2131716677);
       break;
     }
   }

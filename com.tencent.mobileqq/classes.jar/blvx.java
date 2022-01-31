@@ -1,48 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
-public class blvx
-  implements blpj
+class blvx
+  implements axpu
 {
-  public blvx(MusicProviderView paramMusicProviderView) {}
+  blvx(blvw paramblvw, boolean paramBoolean) {}
   
   public void a()
   {
-    this.a.jdField_a_of_type_Bhow.sendEmptyMessage(2);
+    this.jdField_a_of_type_Blvw.a = new blvy(this, "NewStoryTakeVideoActivity");
+    SosoInterface.a(this.jdField_a_of_type_Blvw.a);
   }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Blwi);
-    }
-    if (this.a.jdField_a_of_type_Blwi != null)
-    {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Blwi.a(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Blwi.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

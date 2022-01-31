@@ -1,51 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 
 public class ayiu
-  implements ayjk
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  public final List<ayjl> a;
+  public ayiu(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public ayiu(List<ayjl> paramList, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return aydn.a("fts_native_function_maxnum", 3);
-  }
-  
-  public String a()
-  {
-    return aydn.a();
-  }
-  
-  public List<ayjl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    aynt.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.finish();
   }
 }
 

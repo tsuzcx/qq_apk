@@ -1,17 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.5.1;
 
-class blre
-  implements blrf
+public class blre
+  implements DialogInterface.OnClickListener
 {
-  blre(blrc paramblrc) {}
+  blre(blra paramblra) {}
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bmrn parambmrn)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambmrn.toString());
-    }
+    ThreadManager.excute(new QIMPtvTemplateAdapter.5.1(this), 128, null, true);
+    bmaz.a(this.a.a).a();
+    bngw.a("shortvideo_download_effects", null);
   }
 }
 

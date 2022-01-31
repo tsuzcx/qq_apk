@@ -37,7 +37,7 @@ public class ngi
       if (paramString != null)
       {
         paramString.setVisibility(0);
-        paramString.setImageResource(2130842821);
+        paramString.setImageResource(2130842834);
         paramString.clearAnimation();
         this.a.jdField_a_of_type_AndroidOsHandler.post(new NowVideoView.2.1(this, paramString));
       }
@@ -51,7 +51,7 @@ public class ngi
         if (paramString != null)
         {
           paramString.clearAnimation();
-          paramString.setImageResource(2130842823);
+          paramString.setImageResource(2130842836);
           paramString.setVisibility(0);
         }
       }
@@ -60,7 +60,7 @@ public class ngi
         if ((paramString != null) && (!bool))
         {
           paramString.clearAnimation();
-          paramString.setImageResource(2130842823);
+          paramString.setImageResource(2130842836);
           paramString.setVisibility(0);
         }
       }
@@ -81,11 +81,11 @@ public class ngi
         {
           paramString.clearAnimation();
           paramString.setVisibility(0);
-          paramString.setImageResource(2130842819);
+          paramString.setImageResource(2130842832);
         }
-        if (!bdee.g(this.a.getContext()))
+        if (!bdin.g(this.a.getContext()))
         {
-          QQToast.a(this.a.getContext(), 1, 2131694767, 0).b(NowVideoView.g);
+          QQToast.a(this.a.getContext(), 1, 2131694769, 0).b(NowVideoView.g);
           return;
         }
         if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)

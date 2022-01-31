@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import vmq;
+import vqz;
 
 public class CommentFloatDialog$OnCommentHelperCallback$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentHelperCallback$1(vmq paramvmq) {}
+  public CommentFloatDialog$OnCommentHelperCallback$1(vqz paramvqz) {}
   
   public void run()
   {
-    this.a.V_();
+    this.a.S_();
   }
 }
 

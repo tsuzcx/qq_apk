@@ -1,21 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 
 public class ahdv
-  implements ahfy
+  implements aiem
 {
-  public ahdv(SearchContactsFragment paramSearchContactsFragment) {}
+  public ahdv(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
   
-  public void a(String paramString)
+  public void a(MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
-      this.a.d = false;
-      this.a.a(paramString, false);
-    }
+    this.a.a.a(paramMotionEvent);
   }
 }
 

@@ -75,8 +75,8 @@ public class lse
     }
     this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager = ((AVRedPacketManager)paramVideoAppInterface.a(6));
     this.jdField_a_of_type_Lrq = paramVideoAppInterface.a();
-    bhmu.a();
-    bkkj.a();
+    bhrb.a();
+    bkoq.a();
     this.jdField_a_of_type_Lsq.a = paramlks;
     this.jdField_e_of_type_Int = -1;
     a();
@@ -188,7 +188,7 @@ public class lse
   {
     try
     {
-      arof.a(RendererUtils.saveTexture(paramInt1, paramInt2, paramInt3), paramString);
+      arso.a(RendererUtils.saveTexture(paramInt1, paramInt2, paramInt3), paramString);
       return;
     }
     catch (Throwable paramString)
@@ -410,7 +410,7 @@ public class lse
     for (;;)
     {
       d();
-      bhmu.a();
+      bhrb.a();
       if (this.jdField_a_of_type_Lrj == null) {
         break;
       }

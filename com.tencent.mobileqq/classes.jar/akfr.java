@@ -1,17 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class akfr
-  implements View.OnClickListener
+public class akfr
+  implements Animation.AnimationListener
 {
-  akfr(akfo paramakfo, QQAppInterface paramQQAppInterface) {}
+  public akfr(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    akfo.a(this.jdField_a_of_type_Akfo);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

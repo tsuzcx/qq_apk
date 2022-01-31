@@ -3,7 +3,7 @@ import android.view.Window;
 import com.tencent.av.ui.VideoInviteActivity;
 
 public class mna
-  extends bhpy
+  extends bhuf
 {
   public mna(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {

@@ -4,21 +4,21 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Message;
-import bdbq;
-import belp;
-import belq;
-import bkkd;
+import bdfz;
+import bepy;
+import bepz;
+import bkok;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class GifAnimationDrawable$Decoder
   implements Runnable
 {
-  private final belp a;
+  private final bepy a;
   
-  public GifAnimationDrawable$Decoder(GifAnimationDrawable paramGifAnimationDrawable, belp parambelp)
+  public GifAnimationDrawable$Decoder(GifAnimationDrawable paramGifAnimationDrawable, bepy parambepy)
   {
-    this.a = parambelp;
+    this.a = parambepy;
   }
   
   @TargetApi(12)
@@ -27,7 +27,7 @@ public class GifAnimationDrawable$Decoder
     if (QLog.isColorLevel()) {
       QLog.d(GifAnimationDrawable.a(this.this$0), 2, "decodeBitmap() called with: path = [" + paramString + "]");
     }
-    return new BitmapDrawable(bkkd.a(paramString, 320, 320, true));
+    return new BitmapDrawable(bkok.a(paramString, 320, 320, true));
   }
   
   public void run()
@@ -40,7 +40,7 @@ public class GifAnimationDrawable$Decoder
         QLog.d(GifAnimationDrawable.a(this.this$0), 2, "Decoder index:" + this.a.jdField_a_of_type_Int);
       }
       Object localObject = "android.resource://main_tab_animation_" + (String)GifAnimationDrawable.a(this.this$0).get(this.a.jdField_a_of_type_Int);
-      Bitmap localBitmap = bdbq.a((String)localObject);
+      Bitmap localBitmap = bdfz.a((String)localObject);
       if (localBitmap != null)
       {
         if (QLog.isColorLevel()) {
@@ -59,7 +59,7 @@ public class GifAnimationDrawable$Decoder
         if (QLog.isColorLevel()) {
           QLog.d(GifAnimationDrawable.a(this.this$0), 2, "Decoder decodeBitmap index:" + this.a.jdField_a_of_type_Int + " cost:" + (l2 - l1) + " delay:" + GifAnimationDrawable.a(this.this$0));
         }
-        bdbq.a((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap());
+        bdfz.a((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap());
       }
     }
   }

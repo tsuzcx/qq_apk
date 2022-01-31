@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/e7a" />
-    <item android:drawable="@drawable/trans" />
-</selector>
+    <item android:top="20.0dip" android:bottom="20.0dip">
+        <shape android:shape="rectangle">
+            <size android:height="10.0dip" android:width="10.0dip" />
+            <solid android:color="#ffffffff" />
+            <stroke android:width="1.0dip" android:color="@color/bu" />
+            <corners android:radius="10.0dip" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import alpo;
+import alud;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import uht;
+import umc;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -61,7 +61,7 @@ public abstract class QQStoryBaseFragment
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + alpo.a(2131711182));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + alud.a(2131711194));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      uht.a().registerSubscriber((String)localObject2, localSubscriber);
+      umc.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      uht.a().unRegisterSubscriber(localSubscriber);
+      umc.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }

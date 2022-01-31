@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.app.Activity;
-import bjdh;
+import bjho;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
 
@@ -16,8 +16,8 @@ class QZoneMsgFragment$1
     try
     {
       QzonePluginProxyActivity.a(this.a);
-      bjdh.b(this.a, this.this$0.a);
-      bjdh.a(this.a, this.this$0.a);
+      bjho.b(this.a, this.this$0.a);
+      bjho.a(this.a, this.this$0.a);
       return;
     }
     catch (Throwable localThrowable)

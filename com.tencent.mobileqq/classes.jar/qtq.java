@@ -17,7 +17,7 @@ public class qtq
       this.a.jdField_a_of_type_Qtv.a(EditColumnFragment.a(this.a), this.a.a());
       return;
     }
-    QQToast.a(this.a.getActivity(), 0, 2131718765, 0).a();
+    QQToast.a(this.a.getActivity(), 0, 2131718777, 0).a();
   }
 }
 

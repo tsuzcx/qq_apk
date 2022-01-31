@@ -1,42 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
-public class afxf
-  extends AnimatorListenerAdapter
+class afxf
+  implements bhuk
 {
-  public afxf(SixCombolEffectView paramSixCombolEffectView) {}
+  afxf(afxe paramafxe, MessageForPokeEmo paramMessageForPokeEmo, bhuf parambhuf) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      long l;
       do
       {
         return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Afxe.c < 500L);
+      this.jdField_a_of_type_Afxe.c = l;
+      acjm.b(this.jdField_a_of_type_Afxe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afxe.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afxe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
   }
 }
 

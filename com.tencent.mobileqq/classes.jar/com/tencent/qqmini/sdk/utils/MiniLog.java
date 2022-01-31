@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.utils;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bgkv;
-import bgte;
+import bgpc;
+import bgxl;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.BufferedWriter;
@@ -56,7 +56,7 @@ public class MiniLog
   
   public static String getMiniLogFolderPath(String paramString)
   {
-    String str = bgte.a().a();
+    String str = bgxl.a().a();
     return MiniSDKConst.getMiniCacheFilePath() + MD5Utils.toMD5(paramString) + "/" + str + "/miniprogramLog/";
   }
   
@@ -142,7 +142,7 @@ public class MiniLog
     {
       try
       {
-        if (bgkv.a(str + "log" + localObject2).length() <= MAX_MINI_LOG_SIZE) {
+        if (bgpc.a(str + "log" + localObject2).length() <= MAX_MINI_LOG_SIZE) {
           break label572;
         }
         localObject3 = localObject2;
@@ -261,7 +261,7 @@ public class MiniLog
         if (localFile.exists()) {
           continue;
         }
-        bgkv.a(str);
+        bgpc.a(str);
         localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
       }
       catch (Throwable localThrowable)

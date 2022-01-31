@@ -1,23 +1,32 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class alog
-  extends awae
+  implements alpg
 {
-  public alog(FrameHelperActivity paramFrameHelperActivity) {}
+  protected void a() {}
   
-  public void a(int paramInt)
+  protected void a(int paramInt) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      a(((Integer)paramObject).intValue());
+      return;
     }
-    FrameHelperActivity localFrameHelperActivity = this.a;
-    if (paramInt > 0) {
-      i = 1;
-    }
-    FrameHelperActivity.a(localFrameHelperActivity, i);
-    this.a.v();
+    a();
   }
 }
 

@@ -1,19 +1,21 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
-final class bevf
-  implements ambj
+public class bevf
+  extends Animation
 {
-  bevf(QQAppInterface paramQQAppInterface, ambi paramambi) {}
+  public bevf(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  public void a(int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ambi);
+    if (this.a.jdField_a_of_type_Boolean == true) {}
+    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
+    {
+      this.a.invalidate();
+      return;
     }
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 

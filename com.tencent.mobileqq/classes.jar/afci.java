@@ -1,144 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.Display;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 
-public class afci
+class afci
+  implements View.OnLayoutChangeListener
 {
-  private afcm jdField_a_of_type_Afcm = new afcj(this);
-  private afcn jdField_a_of_type_Afcn;
-  public Context a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public String a;
-  public String b;
-  private String c;
+  afci(afcg paramafcg, View paramView) {}
   
-  public afci(Context paramContext, String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    paramContext = new RelativeLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    paramContext = aojh.a();
-    this.jdField_a_of_type_JavaLangString = paramContext.F;
-    this.b = paramContext.G;
-  }
-  
-  private int a(String paramString, float paramFloat, int paramInt)
-  {
-    int j = 0;
-    Paint localPaint;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localPaint = new Paint();
-      localPaint.setTextSize(TypedValue.applyDimension(2, paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
-    }
-    for (int i = (int)localPaint.measureText(paramString, 0, paramString.length());; i = 0)
-    {
-      paramString = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-      if (paramString != null) {
-        j = paramString.getDefaultDisplay().getWidth();
-      }
-      return j - paramInt - i;
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("intimate_relationship", 2, "jumph5Url strUrl Empty");
+    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
       return;
     }
-    if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://")))
+    paramView = new int[2];
+    paramInt1 = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("selfSet_leftViewText", alpo.a(2131706920));
-      paramContext.startActivity(localIntent);
+      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
+      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
+    }
+    if (afcg.a(this.jdField_a_of_type_Afcg) != null)
+    {
+      paramInt2 = afcg.a(this.jdField_a_of_type_Afcg).getRight();
+      label81:
+      if (afcg.a(this.jdField_a_of_type_Afcg) == null) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramInt3 = afcg.a(this.jdField_a_of_type_Afcg).getHeight();; paramInt3 = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
+      }
+      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
+        break;
+      }
+      afcg.a(this.jdField_a_of_type_Afcg).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
       return;
-    }
-    QLog.e("intimate_relationship", 2, "jumph5Url strUrl unRecognized " + paramString);
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_Afcm = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(afcn paramafcn)
-  {
-    this.jdField_a_of_type_Afcn = paramafcn;
-  }
-  
-  public void a(Context paramContext, ArrayList<IntimateInfo.MemoryDayInfo> paramArrayList)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      ArrayList localArrayList = new ArrayList();
-      Object localObject;
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          IntimateInfo.MemoryDayInfo localMemoryDayInfo = (IntimateInfo.MemoryDayInfo)paramArrayList.next();
-          if ((localMemoryDayInfo != null) && (localMemoryDayInfo.date != 0L))
-          {
-            Date localDate = new Date(localMemoryDayInfo.date);
-            if ((((Date)localObject).getDay() == localDate.getDay()) && (((Date)localObject).getMonth() == localDate.getMonth()) && (((Date)localObject).getYear() == localDate.getYear())) {
-              localArrayList.add(localMemoryDayInfo);
-            }
-          }
-        }
-      }
-      if ((localArrayList != null) && (localArrayList.size() > 0)) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      while (i < localArrayList.size())
-      {
-        paramArrayList = (IntimateInfo.MemoryDayInfo)localArrayList.get(i);
-        localObject = new afck(this, paramContext);
-        if (localObject != null)
-        {
-          ((afck)localObject).a(paramArrayList);
-          ((afck)localObject).a(this.jdField_a_of_type_Afcm);
-          if (((afck)localObject).a() != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((afck)localObject).a());
-          }
-        }
-        i += 1;
-        continue;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      }
+      paramInt2 = 0;
+      break label81;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import afsb;
-import akce;
+import afwq;
+import akgt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import ssp;
 
@@ -12,8 +12,8 @@ public final class PublicAccountEventReport$1
   
   public void run()
   {
-    if (afsb.a(ssp.a().a())) {
-      akce.a().a(this.a, 1);
+    if (afwq.a(ssp.a().a())) {
+      akgt.a().a(this.a, 1);
     }
   }
 }

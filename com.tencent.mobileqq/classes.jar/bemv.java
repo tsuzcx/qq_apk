@@ -1,21 +1,18 @@
 import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bemv
-  extends URLDrawableDownListener.Adapter
+class bemv
+  implements View.OnClickListener
 {
-  public bemv(NewStyleDropdownView paramNewStyleDropdownView) {}
+  bemv(bemu parambemu, String paramString) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
     }
+    this.jdField_a_of_type_Bemu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
   }
 }
 

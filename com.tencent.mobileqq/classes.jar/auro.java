@@ -1,18 +1,23 @@
-public class auro
+import com.tencent.mobileqq.music.SongInfo;
+
+class auro
+  extends auqr
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  auro(aurm paramaurm) {}
   
-  public String toString()
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ret=").append(this.jdField_a_of_type_Int).append(",uin=").append(this.jdField_a_of_type_Long).append(",succFreeLikeCnt=").append(this.b).append(",succPayLikeCnt=").append(this.c).append(",todayLikeCnt=").append(this.d).append(",totalPayStockCnt=").append(this.e).append(",errMsg=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    if (aurm.a(this.a) != null) {
+      aurm.a(this.a, aurm.a(this.a).a());
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    aurm.a(this.a, paramInt);
+    if (paramInt == 2) {
+      aurm.a(this.a, aurm.a(this.a).c());
+    }
   }
 }
 

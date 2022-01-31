@@ -1,11 +1,14 @@
-public class aewh
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+
+class aewh
+  implements OnCompositionLoadedListener
 {
-  public int a;
-  public byte[] a;
+  aewh(aewe paramaewe) {}
   
-  aewh(aewg paramaewg)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_Int = 0;
+    aewe.a(this.a, paramLottieComposition);
   }
 }
 

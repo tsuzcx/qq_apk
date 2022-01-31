@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ahwq
-  implements View.OnClickListener
+class ahwq
+  implements DialogInterface.OnClickListener
 {
-  public ahwq(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  ahwq(ahwo paramahwo) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    do
-    {
-      return;
-    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
-    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+    if (paramInt == 1) {
+      bdun.a(ahwo.a(this.a), ahwo.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ahwo.a(this.a).getApp().getString(2131720522), "");
+    }
   }
 }
 

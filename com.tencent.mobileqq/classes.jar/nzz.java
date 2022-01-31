@@ -3,14 +3,14 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzz
-  implements bhqd
+  implements bhuk
 {
   public nzz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131371968)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
+    ((TextView)this.a.findViewById(2131371988)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
     ors.a(Integer.toString(paramInt));
     nrt.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
     ReadInJoySettingActivity.c(this.a).cancel();

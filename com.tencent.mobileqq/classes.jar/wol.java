@@ -1,33 +1,26 @@
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+
 public class wol
-  extends woj
+  extends uln<wop>
 {
-  public Object a;
-  public String a;
+  private Stream<whz> a;
   
-  public wol(Object paramObject)
+  public void a(wop paramwop)
   {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a = Stream.of(paramwop).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new won(null));
+    this.a.subscribe(new wom(this));
   }
   
-  public Object a()
+  public void c()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    wxe.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
+    {
+      this.a.cancel();
+      this.a = null;
+    }
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    d();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

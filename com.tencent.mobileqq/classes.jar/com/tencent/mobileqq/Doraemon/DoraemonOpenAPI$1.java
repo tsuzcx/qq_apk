@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import absu;
+import abxj;
 
 public final class DoraemonOpenAPI$1
   implements Runnable
 {
   public void run()
   {
-    absu localabsu = absu.a();
-    localabsu.a();
-    localabsu.b();
+    abxj localabxj = abxj.a();
+    localabxj.a();
+    localabxj.b();
   }
 }
 

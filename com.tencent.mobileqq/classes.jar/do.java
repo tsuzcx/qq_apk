@@ -27,13 +27,13 @@ class do
       return;
     case 0: 
     case 3: 
-      localObject = (allz)dm.a(this.a).a(8);
+      localObject = (alqo)dm.a(this.a).a(8);
       if ((paramView.strMoloKey != null) && (!paramView.isReportPause))
       {
         paramView.isReportPause = true;
         dl.m(dm.a(this.a));
       }
-      ((allz)localObject).a(paramView.groupId, paramView.sessionid, false);
+      ((alqo)localObject).a(paramView.groupId, paramView.sessionid, false);
       if (paramView.isSendFromLocal())
       {
         localDLFileInfo.jdField_a_of_type_Int = 1;
@@ -43,14 +43,14 @@ class do
     case 1: 
     case 2: 
     case 4: 
-      if (bdee.d(dm.a(this.a)))
+      if (bdin.d(dm.a(this.a)))
       {
-        if ((arni.a()) && (localDLFileInfo.b > 3145728L))
+        if ((arrr.a()) && (localDLFileInfo.b > 3145728L))
         {
           if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
           for (;;)
           {
-            arni.a(bool, dm.a(this.a), new dp(this, paramView, (dq)localObject));
+            arrr.a(bool, dm.a(this.a), new dp(this, paramView, (dq)localObject));
             return;
             bool = false;
           }
@@ -71,7 +71,7 @@ class do
         dm.b(this.a, (dq)localObject, paramView);
         return;
       }
-      armz.a(2131694829);
+      arri.a(2131694831);
       return;
     case 5: 
       dm.a(this.a, paramView);

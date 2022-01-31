@@ -4,7 +4,7 @@ import android.view.animation.Animation;
 import com.tencent.qphone.base.util.QLog;
 
 class rnu
-  extends bhnr
+  extends bhry
 {
   rnu(rnr paramrnr, AlphaAnimation paramAlphaAnimation) {}
   

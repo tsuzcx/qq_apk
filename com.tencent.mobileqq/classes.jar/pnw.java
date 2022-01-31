@@ -17,7 +17,7 @@ class pnw
     rqj localrqj = this.jdField_a_of_type_Pgd.a();
     pnx localpnx = new pnx(this);
     localrqj.b(localpnx);
-    paramView.setTag(2131375272, localpnx);
+    paramView.setTag(2131375323, localpnx);
     paramView = new IntentFilter();
     paramView.addAction("android.media.VOLUME_CHANGED_ACTION");
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramView);
@@ -27,7 +27,7 @@ class pnw
   {
     this.jdField_a_of_type_Pny.a(false);
     rqj localrqj = this.jdField_a_of_type_Pgd.a();
-    paramView = (rpx)paramView.getTag(2131375272);
+    paramView = (rpx)paramView.getTag(2131375323);
     if (paramView != null) {
       localrqj.c(paramView);
     }

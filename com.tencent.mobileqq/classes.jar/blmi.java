@@ -1,26 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
 public class blmi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public blmi(CaptureModeAdapter paramCaptureModeAdapter) {}
+  public blmi(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public void onClick(View paramView)
-  {
-    Integer localInteger = (Integer)paramView.getTag();
-    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
-    do
-    {
-      return;
-      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
-      CaptureModeAdapter.a(this.a, localInteger.intValue());
-    } while (CaptureModeAdapter.a(this.a) == null);
-    CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

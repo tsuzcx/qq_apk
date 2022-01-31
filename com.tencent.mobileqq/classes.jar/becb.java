@@ -1,46 +1,17 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-
-public class becb
-  implements View.OnLayoutChangeListener
+class becb
+  implements becn
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  becb(bebz parambebz) {}
   
-  public becb(WebViewFragment paramWebViewFragment) {}
+  public void a(int paramInt, String paramString) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(bece parambece)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
-    paramView.getWindowVisibleDisplayFrame(this.b);
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
+    if (parambece.a)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a == null) {
-        break label100;
-      }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getPluginEngine();
-      if (paramView != null)
-      {
-        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
-        if (paramInt1 >= -100) {
-          break label105;
-        }
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934614L, null);
-      }
+      bebz.a(this.a, parambece);
+      bebz.a(this.a);
     }
-    label100:
-    label105:
-    while (paramInt1 <= 100)
-    {
-      return;
-      paramView = null;
-      break;
-    }
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934613L, null);
   }
 }
 

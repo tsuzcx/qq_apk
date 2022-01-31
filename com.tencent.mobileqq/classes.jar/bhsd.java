@@ -1,6 +1,19 @@
-public abstract interface bhsd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.util.BinderWarpper;
+
+public final class bhsd
+  implements Parcelable.Creator<BinderWarpper>
 {
-  public abstract void a();
+  public BinderWarpper a(Parcel paramParcel)
+  {
+    return new BinderWarpper(paramParcel.readStrongBinder());
+  }
+  
+  public BinderWarpper[] a(int paramInt)
+  {
+    return new BinderWarpper[paramInt];
+  }
 }
 
 

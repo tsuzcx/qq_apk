@@ -18,7 +18,7 @@ public class qel
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(aekt.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
+    paramTextPaint.setTextSize(aepi.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

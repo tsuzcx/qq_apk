@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import acqw;
+import acvl;
 import android.content.Intent;
 import com.tencent.mobileqq.data.TroopMemberCard;
 
 public class EditInfoActivity$10$2
   implements Runnable
 {
-  public EditInfoActivity$10$2(acqw paramacqw, TroopMemberCard paramTroopMemberCard) {}
+  public EditInfoActivity$10$2(acvl paramacvl, TroopMemberCard paramTroopMemberCard) {}
   
   public void run()
   {
@@ -15,9 +15,9 @@ public class EditInfoActivity$10$2
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.colorCard);
-      localIntent.putExtra("edit_action", this.jdField_a_of_type_Acqw.a.g);
-      this.jdField_a_of_type_Acqw.a.setResult(-1, localIntent);
-      EditInfoActivity.d(this.jdField_a_of_type_Acqw.a);
+      localIntent.putExtra("edit_action", this.jdField_a_of_type_Acvl.a.g);
+      this.jdField_a_of_type_Acvl.a.setResult(-1, localIntent);
+      EditInfoActivity.d(this.jdField_a_of_type_Acvl.a);
     }
   }
 }

@@ -1,38 +1,17 @@
-import android.os.Message;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.AccessibilityDelegate;
 
 final class bdac
-  implements View.OnTouchListener
+  extends View.AccessibilityDelegate
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bdac(bdae parambdae) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        bdaa.b(false);
-        bdaa.a = f1;
-        bdaa.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = bdaf.a;
-        paramMotionEvent.obj = paramView;
-        bdaa.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((bdaa.a()) || ((Math.abs(bdaa.a - f1) <= 20.0F) && (Math.abs(bdaa.b - f2) <= 20.0F)));
-      bdaa.b(true);
-      bdaa.a().removeMessages(bdaf.a);
-      return false;
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
     }
-    bdaa.a().removeMessages(bdaf.a);
-    return false;
   }
 }
 

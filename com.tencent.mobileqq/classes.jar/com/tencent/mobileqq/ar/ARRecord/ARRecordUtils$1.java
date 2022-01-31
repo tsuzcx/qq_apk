@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import alpo;
-import ampx;
-import amqa;
-import bdcd;
-import bdfq;
+import alud;
+import amum;
+import amup;
+import bdgm;
+import bdjz;
 
 public final class ARRecordUtils$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class ARRecordUtils$1
   {
     try
     {
-      bdcd.a(amqa.a().a(), 230, this.a, this.b, "", alpo.a(2131701107), new ampx(this), null).show();
+      bdgm.a(amup.a().a(), 230, this.a, this.b, "", alud.a(2131701119), new amum(this), null).show();
       return;
     }
     catch (Exception localException)

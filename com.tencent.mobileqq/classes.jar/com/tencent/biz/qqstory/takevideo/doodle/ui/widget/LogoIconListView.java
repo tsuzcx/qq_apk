@@ -6,15 +6,15 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import com.tencent.widget.HorizontalListView;
-import wzc;
-import xdi;
-import xdx;
-import xed;
+import xdl;
+import xhr;
+import xig;
+import xim;
 
 @TargetApi(14)
 public class LogoIconListView
   extends HorizontalListView
-  implements xed
+  implements xim
 {
   private int a;
   
@@ -28,13 +28,13 @@ public class LogoIconListView
   
   public void b(int paramInt)
   {
-    xdx localxdx = (xdx)super.getAdapter();
-    if ((paramInt < 0) || (paramInt >= localxdx.getCount())) {
+    xig localxig = (xig)super.getAdapter();
+    if ((paramInt < 0) || (paramInt >= localxig.getCount())) {
       return;
     }
-    Object localObject = (xdi)localxdx.getItem(paramInt);
+    Object localObject = (xhr)localxig.getItem(paramInt);
     int i;
-    if ((localObject != null) && ("LocationFacePackage".equals(((xdi)localObject).a())))
+    if ((localObject != null) && ("LocationFacePackage".equals(((xhr)localObject).a())))
     {
       if (DoodleLayout.a)
       {
@@ -44,13 +44,13 @@ public class LogoIconListView
     }
     else
     {
-      localxdx.a(paramInt);
-      i = localxdx.a();
+      localxig.a(paramInt);
+      i = localxig.a();
       if ((this.a >= super.getFirstVisiblePosition()) && (this.a <= super.getLastVisiblePosition())) {
-        wzc.a(super.getChild(this.a), 0.5F);
+        xdl.a(super.getChild(this.a), 0.5F);
       }
       if ((paramInt >= super.getFirstVisiblePosition()) && (paramInt <= super.getLastVisiblePosition())) {
-        wzc.a(super.getChild(paramInt), 1.0F);
+        xdl.a(super.getChild(paramInt), 1.0F);
       }
       if (paramInt > super.getFirstVisiblePosition()) {
         break label179;

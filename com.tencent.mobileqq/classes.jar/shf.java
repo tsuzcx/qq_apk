@@ -19,7 +19,7 @@ public class shf
     if (!TextUtils.isEmpty(paramString4)) {}
     for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
     {
-      paramString4.setBounds(0, 0, xee.b(BaseApplicationImpl.getContext(), 17.0F), xee.b(BaseApplicationImpl.getContext(), 17.0F));
+      paramString4.setBounds(0, 0, xin.b(BaseApplicationImpl.getContext(), 17.0F), xin.b(BaseApplicationImpl.getContext(), 17.0F));
       localObject = new SpannableStringBuilder();
       SpannableString localSpannableString = new SpannableString(paramString1);
       localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
@@ -27,7 +27,7 @@ public class shf
       ((SpannableStringBuilder)localObject).append(localSpannableString);
       paramString1 = " " + paramString3;
       paramString3 = new SpannableString(paramString1);
-      paramString3.setSpan(new xsn(paramString4), 0, 1, 17);
+      paramString3.setSpan(new xww(paramString4), 0, 1, 17);
       paramString3.setSpan(new shg(-12084769, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
       ((SpannableStringBuilder)localObject).append(paramString3);
       return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());

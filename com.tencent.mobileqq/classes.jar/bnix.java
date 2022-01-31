@@ -1,12 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
 public class bnix
 {
-  public ImageView a;
-  public TextView a;
-  public ShareActionSheetBuilder.ActionSheetItem a;
+  public int a;
+  
+  private bnix(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 

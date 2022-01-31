@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bbqt;
+import bbvc;
 
 public class TroopFileTransferMgr$5
   implements Runnable
 {
-  public TroopFileTransferMgr$5(bbqt parambbqt) {}
+  public TroopFileTransferMgr$5(bbvc parambbvc) {}
   
   public void run()
   {
-    bbqt.a(this.this$0);
+    bbvc.a(this.this$0);
   }
 }
 

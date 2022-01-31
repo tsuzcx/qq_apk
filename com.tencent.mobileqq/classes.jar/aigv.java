@@ -1,24 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class aigv
-  implements DialogInterface.OnClickListener
+class aigv
+  implements View.OnTouchListener
 {
-  public aigv(BindNumberActivity paramBindNumberActivity) {}
+  aigv(aigp paramaigp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
-    }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

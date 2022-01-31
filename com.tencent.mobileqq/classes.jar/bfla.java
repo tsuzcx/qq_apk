@@ -1,60 +1,68 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2;
-import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfla
-  implements ITMAssistantCallBackListener
+  implements bfor
 {
-  protected bfla(bfko parambfko) {}
+  public bfla(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
   
-  public void onDownloadTaskProgressChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, long paramLong1, long paramLong2)
+  public void a(int paramInt, String paramString)
   {
-    bfko.a(this.a, true);
-    bfhg.b("MyAppApi", "onDownloadTaskProgressChanged  receiveDataLen:" + paramLong1 + ",totalDataLen:" + paramLong2);
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    bfkb localbfkb = bfkb.a();
-    DownloadInfo localDownloadInfo2 = localbfkb.a(paramTMAssistantCallYYBParamStruct.SNGAppId);
-    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
-    if (localDownloadInfo2 == null)
+    bflp.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bflp.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      localDownloadInfo1 = this.a.a(paramTMAssistantCallYYBParamStruct, null);
-      localbfkb.e(localDownloadInfo1);
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
+          }
+          for (;;)
+          {
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
     }
-    localDownloadInfo1.f = i;
-    localDownloadInfo1.a(2);
-    localbfkb.a(2, localDownloadInfo1);
-    bfgi.a().a(paramTMAssistantCallYYBParamStruct, i);
-    bfhg.a("MyAppApi", "onDownloadTaskProgressChanged info state=" + localDownloadInfo1.a() + " progress=" + localDownloadInfo1.f);
-  }
-  
-  public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
-  {
-    this.a.b = true;
-    bfko.a(this.a, true);
-    bfhg.b("MyAppApi", "onDownloadTaskStateChanged");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.1(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
-  }
-  
-  public void onQQDownloaderInvalid()
-  {
-    bfhg.b("MyAppApi", alpo.a(2131707425));
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.2(this));
-  }
-  
-  public void onServiceFree()
-  {
-    bfhg.b("MyAppApi", "OnServiceFree");
-    try
-    {
-      ((TMAssistantCallYYB_V2)this.a.a).releaseIPCConnected();
-      return;
-    }
-    catch (Exception localException) {}
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bflp.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.graphics.Color;
+import android.widget.TextView;
 
-final class yhv
-  implements View.OnClickListener
+public class yhv
 {
-  yhv(yhz paramyhz, String paramString, bhpy parambhpy) {}
-  
-  public void onClick(View paramView)
+  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Yhz.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bhpy.dismiss();
+    paramContext = new TextView(paramContext);
+    paramContext.setTextSize(1, paramFloat);
+    paramContext.setTextColor(Color.parseColor(paramString1));
+    paramContext.setText(paramString2);
+    return paramContext;
   }
 }
 

@@ -1,67 +1,33 @@
 import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicFragment;
-import cooperation.qqreader.ui.ReaderCommentPageFragment;
-import cooperation.qqreader.ui.ReaderContentPageFragment;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
-import cooperation.qzone.QzoneTranslucentBrowserFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class becj
+  implements bebu
 {
-  public static WebViewFragment a(bebt parambebt, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
+  public becj(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  
+  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    paramIntent.putExtra("url", paramWebViewTabBarData.url);
-    int i = paramIntent.getIntExtra("fragmentStyle", 0);
-    if (i == 2) {
-      return QzoneTranslucentBrowserFragment.a(paramIntent);
-    }
-    if (i == 1) {
-      return QQComicFragment.a(paramIntent);
-    }
-    if (i == 3)
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      if (paramWebViewTabBarData.url.contains("signatureEdit=1")) {
-        return SignatureEditFragment.a(paramIntent);
+      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
+      if (paramArrayOfByte == null) {
+        break label89;
       }
-      paramIntent.removeExtra("isTransparentTitle");
-      if (parambebt != null) {
-        return parambebt.a(paramIntent);
-      }
-      return WebViewFragment.b(paramIntent);
     }
-    if (i == 4)
+    label89:
+    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
     {
-      i = paramIntent.getIntExtra("item_type", 1);
-      if ((i == 1) && (TextUtils.isDigitsOnly(paramWebViewTabBarData.tag)))
-      {
-        paramIntent.putExtra("key_tab_id", Integer.valueOf(paramWebViewTabBarData.tag));
-        bixe.d("WebViewFragmentBuilder", "tab_id =" + paramWebViewTabBarData.tag);
-        return ReaderHomeTabFragment.a(paramIntent);
-      }
-      if (i == 4) {
-        return ReaderCommentPageFragment.a(paramIntent);
-      }
-      return ReaderContentPageFragment.a(paramIntent);
+      QLog.i("LiangHaoBuyFragment", 4, str);
+      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
+      return;
     }
-    paramWebViewTabBarData = Uri.parse(paramWebViewTabBarData.url);
-    if ((paramWebViewTabBarData.isHierarchical()) && ("4".equals(paramWebViewTabBarData.getQueryParameter("_webviewtype"))))
-    {
-      paramIntent.putExtra("fragmentStyle", 1);
-      paramIntent.putExtra("tabBarStyle", 1);
-      paramIntent.putExtra("titleBarStyle", 1);
-      paramIntent.putExtra("hide_operation_bar", true);
-      paramIntent.putExtra("hide_more_button", true);
-      paramIntent.putExtra("isScreenOrientationPortrait", true);
-      return QQComicFragment.a(paramIntent);
-    }
-    if (parambebt != null) {
-      return parambebt.a(paramIntent);
-    }
-    return WebViewFragment.b(paramIntent);
   }
 }
 

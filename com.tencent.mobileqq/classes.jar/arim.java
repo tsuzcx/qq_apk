@@ -1,118 +1,63 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arim
-  extends arik
-  implements View.OnClickListener, argd
+  implements aocf
 {
-  protected long a;
-  protected boolean a;
+  private FileManagerEntity a;
   
-  public arim(arfz paramarfz, Activity paramActivity)
+  public arim(FileManagerEntity paramFileManagerEntity)
   {
-    super(paramarfz, paramActivity);
+    this.a = paramFileManagerEntity;
   }
   
-  public void a()
+  private String a()
   {
-    super.a();
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692940);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, false, this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    if ((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.jdField_a_of_type_Arfz.c()))
+    String str = "";
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_peerType", this.a.peerType);
+        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
+        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
+        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
+        str = localJSONObject.toString();
       }
+      return str;
     }
-    if ((this.jdField_a_of_type_Arfz.a(this)) && (QLog.isColorLevel())) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "requestWhitelist 本地信息为空!!!!");
-    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  public void a(String paramString1, String paramString2)
+  public ColorNote getColorNote()
   {
+    if (this.a == null)
+    {
+      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    aocl localaocl = new aocl();
+    localaocl.a(17039360);
+    String str = arsx.b(1, this.a.nSessionId + "");
     if (QLog.isColorLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "clickPlay url = " + paramString1 + ", cookie = " + paramString2);
+      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
     }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, VipVideoPlayActivity.class);
-      localIntent.putExtra("vtype", 2);
-      localIntent.putExtra("video_url", paramString1);
-      localIntent.putExtra("video_url_cookies", "FTN5K=" + paramString2);
-      localIntent.putExtra("screenOrientation", "portrait");
-      localIntent.putExtra("report_bus_type", "bus_type_troop_file_cloud_play");
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 100);
+    localaocl.a(str);
+    localaocl.b(this.a.fileName);
+    localaocl.c(arso.a(this.a.fileSize));
+    int i = arrr.a(arrr.a(this.a.fileName));
+    localaocl.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaocl.a(str.getBytes());
     }
-    this.jdField_a_of_type_Arfz.a(3);
-  }
-  
-  public void aH_()
-  {
-    if (bdee.h(BaseApplicationImpl.getContext())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692941));
-    }
-    while (this.jdField_a_of_type_Arfz.i())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692943));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(true);
-  }
-  
-  public void aI_()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
-    }
-    this.jdField_a_of_type_Arfz.a(4);
-  }
-  
-  public void c() {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PreviewVideoSimpleFilePresenter", 2, "click online preview video too fast");
-    return;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Arfz.c())
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708799), 0).b(this.jdField_a_of_type_Arfz.l());
-      return;
-    }
-    this.jdField_a_of_type_Arfz.a(this);
+    return localaocl.a();
   }
 }
 

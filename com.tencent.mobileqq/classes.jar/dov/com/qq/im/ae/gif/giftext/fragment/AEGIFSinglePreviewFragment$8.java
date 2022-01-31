@@ -2,26 +2,26 @@ package dov.com.qq.im.ae.gif.giftext.fragment;
 
 import android.app.Dialog;
 import android.view.View;
-import bkzd;
+import bldk;
 
 public class AEGIFSinglePreviewFragment$8
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$8(bkzd parambkzd) {}
+  public AEGIFSinglePreviewFragment$8(bldk parambldk) {}
   
   public void run()
   {
-    if (bkzd.a(this.this$0) == null)
+    if (bldk.a(this.this$0) == null)
     {
-      bkzd.a(this.this$0, new Dialog(bkzd.a(this.this$0), 2131755801));
-      bkzd.a(this.this$0).setCancelable(false);
-      bkzd.a(this.this$0).setCanceledOnTouchOutside(false);
-      bkzd.a(this.this$0).setContentView(2131559164);
+      bldk.a(this.this$0, new Dialog(bldk.a(this.this$0), 2131755801));
+      bldk.a(this.this$0).setCancelable(false);
+      bldk.a(this.this$0).setCanceledOnTouchOutside(false);
+      bldk.a(this.this$0).setContentView(2131559163);
     }
-    if (bkzd.a(this.this$0) != null) {
-      bkzd.a(this.this$0).setVisibility(0);
+    if (bldk.a(this.this$0) != null) {
+      bldk.a(this.this$0).setVisibility(0);
     }
-    bkzd.a(this.this$0).show();
+    bldk.a(this.this$0).show();
   }
 }
 

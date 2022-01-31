@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import mqq.app.QQPermissionCallback;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 
-public class aetk
-  implements QQPermissionCallback
-{
-  public aetk(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-}
+public abstract interface aetk
+  extends View.OnLongClickListener, View.OnTouchListener
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

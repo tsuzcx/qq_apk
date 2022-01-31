@@ -1,28 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-
-public class aree
-  implements aoah
+public abstract interface aree
 {
-  public String a()
-  {
-    return alpo.a(2131699774);
-  }
+  public abstract long a(bavf parambavf, areb paramareb);
   
-  public void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    while (paramInt != 17039360) {
-      return;
-    }
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
-    localIntent.putExtra("from", "FileAssistant");
-    paramView.startActivity(localIntent);
-    azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(areb paramareb);
+  
+  public abstract void a(boolean paramBoolean, areb paramareb);
+  
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong, areb paramareb);
+  
+  public abstract void b(areb paramareb);
 }
 
 

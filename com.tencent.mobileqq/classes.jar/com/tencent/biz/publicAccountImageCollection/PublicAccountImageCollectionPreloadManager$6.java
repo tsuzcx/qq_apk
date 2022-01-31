@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import aljq;
+import alof;
 import android.support.v4.util.MQLruCache;
 import java.io.File;
 
@@ -15,7 +15,7 @@ class PublicAccountImageCollectionPreloadManager$6
       this.this$0.a.releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(aljq.cN);
+    Object localObject1 = new File(alof.cN);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();

@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
 
-class avdu
-  implements View.OnClickListener
+public class avdu
+  implements aved
 {
-  avdu(avcw paramavcw) {}
+  avdu(avds paramavds) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.d(paramView);
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (auul)this.a.a.getManager(106)), 16, null, false);
+    }
   }
 }
 

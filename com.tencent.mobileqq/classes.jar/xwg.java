@@ -1,90 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class xwg
-  implements Handler.Callback
+  implements bhzf
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String jdField_a_of_type_JavaLangString;
-  private xwi jdField_a_of_type_Xwi;
+  private CopyOnWriteArraySet<bhzf> a = new CopyOnWriteArraySet();
   
-  public xwg(Context paramContext)
+  public xwg(bhzf parambhzf)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    b();
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-    {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xwh(this);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    if (parambhzf != null) {
+      this.a.add(parambhzf);
     }
   }
   
-  private void c()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).a(paramInt, paramView, paramListView);
     }
   }
   
-  public void a()
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    c();
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Iterator localIterator = this.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Xwi = null;
-  }
-  
-  public void a(String paramString, long paramLong, xwi paramxwi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
-    }
-    this.jdField_a_of_type_Xwi = paramxwi;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramxwi = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
-    paramxwi.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
-    paramxwi.putExtra("from", paramString);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramxwi);
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(108);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_Xwi != null) {
-        this.jdField_a_of_type_Xwi.a();
+      bhzf localbhzf = (bhzf)localIterator.next();
+      if ((bool) || (localbhzf.a(paramInt, paramView, paramListView))) {}
+      for (bool = true;; bool = false) {
+        break;
       }
+    }
+    return bool;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).c(paramInt, paramView, paramListView);
     }
   }
 }

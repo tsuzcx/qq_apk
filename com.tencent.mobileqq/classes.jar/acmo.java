@@ -1,29 +1,26 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acmo
-  extends awdn
+  implements Animation.AnimationListener
 {
-  public acmo(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public acmo(ChatHistory paramChatHistory, View paramView, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean1)
-    {
-      int i = ContactSyncJumpActivity.a(this.a).d();
-      if ((i == 1) || (i == 5))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlParams;
 
-class bkij
-  extends Handler
+public final class bkij
+  implements Parcelable.Creator<WadlParams>
 {
-  public bkij(Looper paramLooper)
+  public WadlParams a(Parcel paramParcel)
   {
-    super(paramLooper);
+    WadlParams localWadlParams = new WadlParams("");
+    localWadlParams.a(paramParcel);
+    return localWadlParams;
   }
   
-  public void handleMessage(Message paramMessage)
+  public WadlParams[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3000: 
-      bkif.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
-    }
-    bkif.a(null);
-    bkif.a(SystemClock.uptimeMillis());
+    return new WadlParams[paramInt];
   }
 }
 

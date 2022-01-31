@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import blcc;
+import blgj;
 
 public class AEPlayShowPart$4
   implements Runnable
 {
-  public AEPlayShowPart$4(blcc paramblcc, String paramString1, String paramString2) {}
+  public AEPlayShowPart$4(blgj paramblgj, String paramString1, String paramString2) {}
   
   public void run()
   {
-    blcc.a(this.this$0, this.a, this.b);
+    blgj.a(this.this$0, this.a, this.b);
   }
 }
 

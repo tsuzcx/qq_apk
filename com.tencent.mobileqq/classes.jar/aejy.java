@@ -1,27 +1,13 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class aejy
-  implements Comparator<File>
+public class aejy
+  implements DialogInterface.OnClickListener
 {
-  aejy(aejx paramaejx) {}
+  public aejy(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = aejx.a(this.a, paramFile1) - aejx.a(this.a, paramFile2);
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,35 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class biyt
-  implements Parcelable.Creator<LbsDataV2.GeoInfo>
+class biyt
+  implements FilenameFilter
 {
-  public LbsDataV2.GeoInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
-    if (paramParcel != null)
-    {
-      localGeoInfo.address = paramParcel.readString();
-      localGeoInfo.iDistrictCode = paramParcel.readInt();
-      localGeoInfo.iRange = paramParcel.readInt();
-      localGeoInfo.strCountry = paramParcel.readString();
-      localGeoInfo.strProvince = paramParcel.readString();
-      localGeoInfo.strCity = paramParcel.readString();
-      localGeoInfo.strDistrict = paramParcel.readString();
-      localGeoInfo.strTown = paramParcel.readString();
-      localGeoInfo.strVillage = paramParcel.readString();
-      localGeoInfo.strRoad = paramParcel.readString();
-      localGeoInfo.strDefaultName = paramParcel.readString();
-      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-    }
-    return localGeoInfo;
-  }
+  biyt(biys parambiys) {}
   
-  public LbsDataV2.GeoInfo[] a(int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    return null;
+    return (paramFile != null) && (paramFile.isDirectory()) && (biys.a(this.a).matcher(paramString).matches());
   }
 }
 

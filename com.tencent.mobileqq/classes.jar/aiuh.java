@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiuh
-  implements View.OnClickListener
+class aiuh
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public aiuh(WordChainHbFragment.1 param1, TextView paramTextView, aiul paramaiul) {}
+  private aiuh(aiuf paramaiuf) {}
   
-  public void onClick(View paramView)
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Aiul);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    }
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
   }
 }
 

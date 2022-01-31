@@ -1,22 +1,42 @@
-import android.content.Context;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class asgj
-  implements ViewSwitcher.ViewFactory
+public class asgj
+  implements bhuk
 {
-  asgj(asgi paramasgi) {}
+  public asgj(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public View makeView()
+  public void OnClick(View paramView, int paramInt)
   {
-    CornerImageView localCornerImageView = new CornerImageView(asgi.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(aekt.a(30.0F, asgi.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Bhuf != null) {
+        this.a.jdField_a_of_type_Bhuf.dismiss();
+      }
+      this.a.o();
+      return;
+      this.a.p();
+      continue;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
+      }
+      if ((bdin.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+      {
+        asfu.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+      }
+      else
+      {
+        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131694766), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
+      }
+    }
   }
 }
 

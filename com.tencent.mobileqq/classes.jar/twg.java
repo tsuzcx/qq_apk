@@ -1,72 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.qqcircle.fragments.QCircleHybirdFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.qqcircle.download.QCircleResourceDownloadManager.3;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class twg
-  extends BroadcastReceiver
+  implements tvy
 {
-  private WeakReference<QCircleHybirdFragment> a;
+  public twg(QCircleResourceDownloadManager.3 param3) {}
   
-  public twg(QCircleHybirdFragment paramQCircleHybirdFragment)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    this.a = new WeakReference(paramQCircleHybirdFragment);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = (QCircleHybirdFragment)this.a.get();
-    Object localObject;
-    if ((paramContext != null) && (paramIntent != null))
+    if ((!paramBoolean2) || (paramBoolean3))
     {
-      localObject = paramIntent.getAction();
-      if (!TextUtils.equals((CharSequence)localObject, "action_update_web_user_follow_state")) {
-        break label96;
-      }
-    }
-    for (;;)
-    {
-      try
+      if (twe.a(this.a.this$0).contains(this.a.a))
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("uin", paramIntent.getStringExtra("uin"));
-        ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
-        if (paramContext.getWebView() != null) {
-          paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleFollowState", (JSONObject)localObject, null));
-        }
+        QLog.i(twe.a, 1, "getFile ..., file is downloading");
         return;
       }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      label96:
-      if (TextUtils.equals((CharSequence)localObject, "action_update_web_tag_follow_state")) {
-        try
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("tagId", paramIntent.getStringExtra("tagId"));
-          ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
-          if (paramContext.getWebView() != null)
-          {
-            paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleTagFollowState", (JSONObject)localObject, null));
-            return;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          QLog.e(QCircleHybirdFragment.d(), 1, "update tag follow state error.", paramContext);
-        }
-      }
+      QLog.i(twe.a, 1, "getFile ..., start download");
+      twe.b(this.a.this$0, this.a.a, paramString);
+      return;
     }
+    paramString = this.a.this$0.a(this.a.a);
+    QLog.i(twe.a, 1, "getFile success, the file is exist path:" + paramString);
+    twe.a(this.a.this$0, this.a.a, true, paramString);
   }
 }
 

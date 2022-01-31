@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgnk;
+import bgrr;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener;
 
 class OskReliableVideoPlayerImpl$4
   implements IMediaPlayer.OnBufferingUpdateListener
 {
-  OskReliableVideoPlayerImpl$4(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgnk parambgnk) {}
+  OskReliableVideoPlayerImpl$4(OskReliableVideoPlayerImpl paramOskReliableVideoPlayerImpl, bgrr parambgrr) {}
   
   public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
   {

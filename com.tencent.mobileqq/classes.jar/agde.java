@@ -1,25 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForText;
 
-public class agde
-  implements VideoDrawable.OnPlayRepeatListener
+class agde
+  implements DialogInterface.OnClickListener
 {
-  public AIOGalleryAdapter a;
+  agde(agda paramagda, MessageForText paramMessageForText) {}
   
-  public agde(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+    acjm.a(this.jdField_a_of_type_Agda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agda.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agda.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
 }
 

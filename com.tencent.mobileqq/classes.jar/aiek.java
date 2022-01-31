@@ -1,20 +1,35 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnClickListener;
+import android.view.View;
 
 class aiek
-  extends GestureDetector.SimpleOnGestureListener
+  extends aruk
 {
-  aiek(aiej paramaiej) {}
+  aiek(aiei paramaiei) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if (aiej.a(this.a) != null)
+    if ((aiei.a(this.a)) && (aiei.a(this.a) != null))
     {
-      aiej.a(this.a).onClick(aiej.a(this.a));
-      return true;
+      if (paramView.getId() != 2131365545) {
+        break label43;
+      }
+      aiei.a(this.a).a(1);
     }
-    return false;
+    label43:
+    do
+    {
+      return;
+      if (paramView.getId() == 2131365550)
+      {
+        aiei.a(this.a).a(3);
+        return;
+      }
+      if (paramView.getId() == 2131365546)
+      {
+        aiei.a(this.a).a(2);
+        return;
+      }
+    } while (paramView.getId() != 2131365544);
+    aiei.a(this.a).a(4);
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bgho;
-import bgid;
+import bglv;
+import bgmk;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 import com.tencent.qqmini.sdk.utils.ColorUtils;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
@@ -11,7 +11,7 @@ import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 class AppBrandPage$13
   implements Runnable
 {
-  AppBrandPage$13(AppBrandPage paramAppBrandPage, String paramString1, String paramString2, String paramString3, long paramLong, bgid parambgid) {}
+  AppBrandPage$13(AppBrandPage paramAppBrandPage, String paramString1, String paramString2, String paramString3, long paramLong, bgmk parambgmk) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ class AppBrandPage$13
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bgid.a();
+      this.jdField_a_of_type_Bgmk.a();
       return;
       str = "white";
       break;

@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bcwh;
+import bdaq;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import wby;
-import wcb;
-import wce;
-import wiu;
+import wgh;
+import wgk;
+import wgn;
+import wnd;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public wby a;
-  public wce a;
+  public wgh a;
+  public wgn a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bcwh.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Wby = new wby(getContext());
-    super.setAdapter(this.jdField_a_of_type_Wby);
-    super.setOnItemClickListener(this.jdField_a_of_type_Wby);
-    super.setOnScrollStateChangedListener(new wcb(this));
+    this.b = bdaq.a(paramContext, 105.0F);
+    this.jdField_a_of_type_Wgh = new wgh(getContext());
+    super.setAdapter(this.jdField_a_of_type_Wgh);
+    super.setOnItemClickListener(this.jdField_a_of_type_Wgh);
+    super.setOnScrollStateChangedListener(new wgk(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Wby;
+    return this.jdField_a_of_type_Wgh;
   }
   
-  public void setData(List<wiu> paramList, String paramString)
+  public void setData(List<wnd> paramList, String paramString)
   {
-    this.jdField_a_of_type_Wby.a(paramList, paramString);
+    this.jdField_a_of_type_Wgh.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(wce paramwce)
+  public void setOnHorizontalScrollListener(wgn paramwgn)
   {
-    this.jdField_a_of_type_Wce = paramwce;
+    this.jdField_a_of_type_Wgn = paramwgn;
   }
 }
 

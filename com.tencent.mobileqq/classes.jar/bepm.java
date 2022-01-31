@@ -1,29 +1,8 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.MotionEvent;
 
-public class bepm
-  implements TencentMap.OnCameraChangeListener
+public abstract interface bepm
 {
-  public bepm(QQMapView paramQQMapView) {}
-  
-  public void onCameraChange(CameraPosition paramCameraPosition)
-  {
-    if ((this.a.jdField_a_of_type_Bepo != null) && (!this.a.jdField_a_of_type_Boolean))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bepo.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
-    }
-  }
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QQMapView.a(this.a, paramCameraPosition);
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

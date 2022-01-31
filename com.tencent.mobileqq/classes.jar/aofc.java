@@ -1,32 +1,24 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aofc
-  implements Comparator<Rect>
+public class aofc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aofc(aofb paramaofb) {}
+  public aofc(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onGlobalLayout()
   {
-    if (this.a.g.contains(paramRect1)) {}
-    do
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
+      ColorNoteSmallScreenRelativeLayout.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

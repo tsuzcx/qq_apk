@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-class ahje
-  implements axxi
+public abstract interface ahje
 {
-  ahje(ahjd paramahjd) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

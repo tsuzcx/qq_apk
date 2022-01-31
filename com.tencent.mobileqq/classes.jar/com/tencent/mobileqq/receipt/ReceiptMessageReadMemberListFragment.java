@@ -14,9 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import axgw;
-import axgx;
-import bcws;
+import axlf;
+import axlg;
+import bdbb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ReceiptMessageReadMemberListFragment
   extends Fragment
 {
   private View jdField_a_of_type_AndroidViewView;
-  private bcws jdField_a_of_type_Bcws;
+  private bdbb jdField_a_of_type_Bdbb;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   @Nonnull
@@ -61,7 +61,7 @@ public class ReceiptMessageReadMemberListFragment
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Bcws.d();
+    this.jdField_a_of_type_Bdbb.d();
     super.onDestroy();
   }
   
@@ -73,18 +73,18 @@ public class ReceiptMessageReadMemberListFragment
     paramBundle = paramBundle.getString("ReceiptMessageReadMemberListFragment.EXTRA_KEY_EMPTY_TEXT");
     if (((paramView == null) || (paramView.isEmpty())) && (!TextUtils.isEmpty(paramBundle)))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365759);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365763)).setText(paramBundle);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365761);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365765)).setText(paramBundle);
       ((View)localObject).setVisibility(0);
     }
-    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370129);
-    this.jdField_a_of_type_Bcws = new bcws(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new axgx(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bcws, paramBundle, null);
-    ((axgx)localObject).a(paramView);
+    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370148);
+    this.jdField_a_of_type_Bdbb = new bdbb(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = new axlg(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bdbb, paramBundle, null);
+    ((axlg)localObject).a(paramView);
     paramBundle.setAdapter((RecyclerView.Adapter)localObject);
     paramBundle.setLayoutManager(new LinearLayoutManager(BaseApplicationImpl.getContext()));
     int i = (int)(getResources().getDisplayMetrics().density * 64.0F);
-    paramBundle.addItemDecoration(new axgw(getResources().getDrawable(2130838140), i, 0, null));
+    paramBundle.addItemDecoration(new axlf(getResources().getDrawable(2130838141), i, 0, null));
   }
 }
 

@@ -9,7 +9,7 @@ import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.List;
 
 public class tby
-  extends bhzz<stSimpleMetaFeed, biac<stSimpleMetaFeed>>
+  extends bieg<stSimpleMetaFeed, biej<stSimpleMetaFeed>>
 {
   public static int b;
   public int a;
@@ -29,10 +29,10 @@ public class tby
   {
     super(paramContext);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
-    this.d = azgq.e(paramContext);
-    this.e = azgq.a(3.0F);
-    this.f = azgq.a(18.0F);
-    this.g = azgq.a(14.0F);
+    this.d = azkz.e(paramContext);
+    this.e = azkz.a(3.0F);
+    this.f = azkz.a(18.0F);
+    this.g = azkz.a(14.0F);
   }
   
   public int a(int paramInt)
@@ -48,7 +48,7 @@ public class tby
     return 1;
   }
   
-  public biac<stSimpleMetaFeed> a(ViewGroup paramViewGroup, int paramInt)
+  public biej<stSimpleMetaFeed> a(ViewGroup paramViewGroup, int paramInt)
   {
     return tfv.a(paramInt, paramViewGroup, this);
   }
@@ -101,18 +101,18 @@ public class tby
     }
   }
   
-  public void a(biac<stSimpleMetaFeed> parambiac)
+  public void a(biej<stSimpleMetaFeed> parambiej)
   {
     if (this.jdField_a_of_type_Tbz != null) {
-      this.jdField_a_of_type_Tbz.a(parambiac);
+      this.jdField_a_of_type_Tbz.a(parambiej);
     }
   }
   
-  public void a(biac<stSimpleMetaFeed> parambiac, int paramInt)
+  public void a(biej<stSimpleMetaFeed> parambiej, int paramInt)
   {
     stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)a(paramInt);
     if (localstSimpleMetaFeed != null) {
-      parambiac.a(localstSimpleMetaFeed);
+      parambiej.a(localstSimpleMetaFeed);
     }
   }
   

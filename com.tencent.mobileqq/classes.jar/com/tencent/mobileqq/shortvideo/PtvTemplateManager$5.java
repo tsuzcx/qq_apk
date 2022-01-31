@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayyk;
-import baps;
-import bapv;
-import baqx;
-import bdee;
+import azct;
+import baub;
+import baue;
+import bavg;
+import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -33,13 +33,13 @@ public class PtvTemplateManager$5
       } while (!QLog.isColorLevel());
       QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
       return;
-      baps localbaps = new baps();
-      localbaps.jdField_a_of_type_Bapx = new ayyk(this);
-      localbaps.jdField_a_of_type_JavaLangString = this.a.resurl;
-      localbaps.jdField_a_of_type_Int = 0;
-      localbaps.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.a.name).getPath();
-      localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbaps);
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Baug = new azct(this);
+      localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
+      localbaub.jdField_a_of_type_Int = 0;
+      localbaub.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.a.name).getPath();
+      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+      localQQAppInterface.getNetEngine(0).a(localbaub);
     } while (!QLog.isColorLevel());
     QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.resurl);
   }

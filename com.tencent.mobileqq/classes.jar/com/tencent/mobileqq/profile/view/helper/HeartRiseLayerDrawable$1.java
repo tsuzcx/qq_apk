@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import awsl;
-import awsm;
+import awwu;
+import awwv;
 
 public class HeartRiseLayerDrawable$1
   implements Runnable
 {
-  public HeartRiseLayerDrawable$1(awsl paramawsl, int paramInt1, int paramInt2, int paramInt3) {}
+  public HeartRiseLayerDrawable$1(awwu paramawwu, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    ((awsm)this.this$0.getDrawable(this.a)).a(this.b, this.c);
+    ((awwv)this.this$0.getDrawable(this.a)).a(this.b, this.c);
   }
 }
 

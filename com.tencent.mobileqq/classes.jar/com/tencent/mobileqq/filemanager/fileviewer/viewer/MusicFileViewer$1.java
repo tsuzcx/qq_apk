@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
 import android.widget.TextView;
-import arjw;
-import arni;
+import arof;
+import arrr;
 
 public class MusicFileViewer$1
   implements Runnable
 {
-  public MusicFileViewer$1(arjw paramarjw, String paramString) {}
+  public MusicFileViewer$1(arof paramarof, String paramString) {}
   
   public void run()
   {
-    arjw.a(this.this$0).setText(arni.a(this.a, false, arjw.a(this.this$0).getMeasuredWidth(), arjw.a(this.this$0).getPaint(), 2));
+    arof.a(this.this$0).setText(arrr.a(this.a, false, arof.a(this.this$0).getMeasuredWidth(), arof.a(this.this$0).getPaint(), 2));
   }
 }
 

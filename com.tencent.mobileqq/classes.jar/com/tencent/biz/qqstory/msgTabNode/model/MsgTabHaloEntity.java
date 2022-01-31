@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import awbv;
-import awdj;
-import utx;
+import awge;
+import awhs;
+import uyg;
 
 public class MsgTabHaloEntity
-  extends awbv
+  extends awge
 {
   public String headUrl;
   public String jumpUrl;
@@ -17,9 +17,9 @@ public class MsgTabHaloEntity
   public long recommendId;
   public long reqTimeStamp;
   public String title;
-  @awdj
+  @awhs
   public long uid;
-  @awdj
+  @awhs
   public String unionId;
   public String videoCover;
   public String videoInfoList;
@@ -29,9 +29,9 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(utx paramutx)
+  public static String[] getSelectionArgs(uyg paramuyg)
   {
-    return new String[] { String.valueOf(paramutx.b) };
+    return new String[] { String.valueOf(paramuyg.b) };
   }
   
   public String toString()

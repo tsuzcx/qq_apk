@@ -1,43 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 class bkep
-  implements EIPClientConnectListener
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  bkep(bken parambken, long paramLong) {}
+  bkep(bkel parambkel) {}
   
-  public void connectFailed()
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    bken.a(this.jdField_a_of_type_Bken, false);
-    bken.b(this.jdField_a_of_type_Bken, false);
-    synchronized (bken.a(this.jdField_a_of_type_Bken))
-    {
-      bken.a(this.jdField_a_of_type_Bken).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bken.a(this.jdField_a_of_type_Bken));
-      }
-      return;
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bkel.a(this.a) != null) {
+      bkel.a(this.a).a("onActionScale", new float[] { f });
     }
+    return true;
   }
   
-  public void connectSuccess(EIPCConnection arg1)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      bken.a(this.jdField_a_of_type_Bken, ???.procName);
-    }
-    bken.a(this.jdField_a_of_type_Bken, true);
-    bken.b(this.jdField_a_of_type_Bken, false);
-    synchronized (bken.a(this.jdField_a_of_type_Bken))
-    {
-      bken.a(this.jdField_a_of_type_Bken).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bken.a(this.jdField_a_of_type_Bken) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+    return true;
   }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

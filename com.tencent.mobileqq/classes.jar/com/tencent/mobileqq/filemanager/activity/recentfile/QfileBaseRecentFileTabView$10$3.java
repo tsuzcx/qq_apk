@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import aqly;
+import aqqh;
 
 public class QfileBaseRecentFileTabView$10$3
   implements Runnable
 {
-  public QfileBaseRecentFileTabView$10$3(aqly paramaqly) {}
+  public QfileBaseRecentFileTabView$10$3(aqqh paramaqqh) {}
   
   public void run()
   {

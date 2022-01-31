@@ -1,33 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
-class asvk
-  extends BroadcastReceiver
+public class asvk
+  implements View.OnClickListener
 {
-  asvk(asvi paramasvi) {}
+  public asvk(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("GroupVideoManager|Communicate", 2, "get message from plugin: " + paramIntent.getExtras());
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      asvi.a(this.a, paramIntent, asvi.a(this.a));
-      return;
-    case 2: 
-      asvi.a(this.a, paramIntent, asvi.b(this.a));
-      return;
-    case 3: 
-      asvi.a(this.a, paramIntent);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {
       return;
     }
-    asvi.a(this.a);
+    if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
+      HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
+    }
+    QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
   }
 }
 

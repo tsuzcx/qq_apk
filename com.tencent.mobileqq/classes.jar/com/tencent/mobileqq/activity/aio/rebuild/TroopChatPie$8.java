@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agwf;
+import ahau;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ class TroopChatPie$8
     try
     {
       Thread.sleep(700L);
-      if ((!this.this$0.aj) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_Agwf == null) || (!this.this$0.jdField_a_of_type_Agwf.a())))
+      if ((!this.this$0.aj) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_Ahau == null) || (!this.this$0.jdField_a_of_type_Ahau.a())))
       {
         this.this$0.aj = true;
         TroopChatPie.a(this.this$0).post(new TroopChatPie.8.1(this));

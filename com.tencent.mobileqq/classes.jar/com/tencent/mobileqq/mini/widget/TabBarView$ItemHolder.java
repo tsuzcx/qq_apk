@@ -31,12 +31,12 @@ public class TabBarView$ItemHolder
   public static ItemHolder getItemHolder(View paramView, TabBarInfo.ButtonInfo paramButtonInfo, TabBarInfo paramTabBarInfo)
   {
     ItemHolder localItemHolder = new ItemHolder();
-    localItemHolder.txt = ((TextView)paramView.findViewById(2131377552));
-    localItemHolder.icon = ((ImageView)paramView.findViewById(2131367808));
-    localItemHolder.topBorder = paramView.findViewById(2131378083);
+    localItemHolder.txt = ((TextView)paramView.findViewById(2131377606));
+    localItemHolder.icon = ((ImageView)paramView.findViewById(2131367819));
+    localItemHolder.topBorder = paramView.findViewById(2131378137);
     localItemHolder.bottomBorder = paramView.findViewById(2131363367);
     localItemHolder.bottomSelectedBorder = paramView.findViewById(2131363372);
-    localItemHolder.redDot = paramView.findViewById(2131375497);
+    localItemHolder.redDot = paramView.findViewById(2131375548);
     localItemHolder.badge = ((TextView)paramView.findViewById(2131363051));
     localItemHolder.badge.setEllipsize(TextUtils.TruncateAt.END);
     localItemHolder.badge.setMaxEms(3);

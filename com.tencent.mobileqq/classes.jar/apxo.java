@@ -1,9 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public abstract interface apxo
+class apxo
+  implements View.OnClickListener
 {
-  public abstract Drawable a(String paramString1, String paramString2, ImageView paramImageView);
+  apxo(apxn paramapxn, IPSiteModel.Goods paramGoods) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(apxn.a(this.jdField_a_of_type_Apxn), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(apxn.a(this.jdField_a_of_type_Apxn), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(apxn.a(this.jdField_a_of_type_Apxn), "IP", "aio_productclk", "", 0, 0, 0, apxn.b(this.jdField_a_of_type_Apxn), apxn.c(this.jdField_a_of_type_Apxn), "", "", "", "", "", 0, 0, 0, 0);
+  }
 }
 
 

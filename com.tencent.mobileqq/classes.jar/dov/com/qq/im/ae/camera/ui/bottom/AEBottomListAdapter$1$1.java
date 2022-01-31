@@ -1,14 +1,14 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bkqk;
-import bkql;
+import bkur;
+import bkus;
 import java.util.List;
 import ndd;
 
 public class AEBottomListAdapter$1$1
   implements Runnable
 {
-  public AEBottomListAdapter$1$1(bkql parambkql) {}
+  public AEBottomListAdapter$1$1(bkus parambkus) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class AEBottomListAdapter$1$1
     if (i != 0) {
       this.a.a.notifyDataSetChanged();
     }
-    if ((i == 1) && (bkqk.a(this.a.a).size() > 1)) {
+    if ((i == 1) && (bkur.a(this.a.a).size() > 1)) {
       this.a.a.b();
     }
   }

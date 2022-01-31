@@ -1,37 +1,25 @@
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class ascw
-  extends Handler
+class ascw
+  implements DialogInterface.OnClickListener
 {
-  public ascw(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
+  ascw(ascq paramascq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.getActivity();
-      if ((paramMessage != null) && (!paramMessage.isFinishing()))
-      {
-        this.a.jdField_a_of_type_Bepp.a(this.a.getString(2131690861));
-        this.a.jdField_a_of_type_Bepp.d(2130849053);
-        this.a.jdField_a_of_type_Bepp.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()));
-    this.a.jdField_a_of_type_Bepp.cancel();
-    this.a.jdField_a_of_type_Bepp.a(this.a.getString(2131690863));
-    this.a.jdField_a_of_type_Bepp.c(true);
-    this.a.jdField_a_of_type_Bepp.a(false);
-    this.a.jdField_a_of_type_Bepp.b(true);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

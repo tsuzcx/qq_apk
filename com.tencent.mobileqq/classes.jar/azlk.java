@@ -1,99 +1,180 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.opengl.GLES20;
+import com.tencent.maxvideo.common.AVIOStruct;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class azlk
 {
-  private static String a(QQAppInterface paramQQAppInterface, azow paramazow, int paramInt)
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  private azlh[] jdField_a_of_type_ArrayOfAzlh = new azlh[3];
+  
+  private boolean c()
   {
-    if (paramazow == null) {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+  }
+  
+  public azlh a()
+  {
+    if (!c()) {
       return null;
     }
-    return paramazow.a(paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, azov paramazov)
-  {
-    a("dc03309", paramQQAppInterface, paramazov);
-  }
-  
-  private static void a(String paramString, QQAppInterface paramQQAppInterface, azow paramazow)
-  {
-    if (paramazow == null)
-    {
-      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
-      if (QLog.isColorLevel()) {}
-    }
-    do
-    {
-      return;
-      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + "  report item is null");
-      return;
-      if ((!TextUtils.isEmpty(paramazow.i)) && (!TextUtils.isEmpty(paramazow.k)) && (!TextUtils.isEmpty(paramazow.j))) {
-        break;
+    int i = 0;
+    azlh localazlh;
+    if (i < this.jdField_a_of_type_ArrayOfAzlh.length) {
+      if (this.jdField_a_of_type_ArrayOfAzlh[i].b() == 0)
+      {
+        localazlh = this.jdField_a_of_type_ArrayOfAzlh[i];
+        localazlh.d();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + " item.sopType must not empty");
-    return;
-    paramazow.b = NetConnInfoCenter.getServerTime();
-    if (!QLog.isColorLevel()) {}
-    Object localObject;
+    }
     for (;;)
     {
-      localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null)
-      {
-        localObject = paramQQAppInterface;
-        if (BaseApplicationImpl.sProcessId == 1)
-        {
-          AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-          localObject = paramQQAppInterface;
-          if (localAppRuntime != null)
-          {
-            localObject = paramQQAppInterface;
-            if ((localAppRuntime instanceof QQAppInterface)) {
-              localObject = (QQAppInterface)localAppRuntime;
-            }
-          }
-        }
-      }
-      if (localObject != null) {
-        break;
-      }
-      paramQQAppInterface = a((QQAppInterface)localObject, paramazow, 1);
-      localObject = new Intent();
-      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      ((Intent)localObject).putExtra("reporting_tag", paramString);
-      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
-      ((Intent)localObject).putExtra("reporting_count", paramazow.c);
-      ((Intent)localObject).putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
-      return;
-      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + ", content = " + paramazow.toString());
+      return localazlh;
+      i += 1;
+      break;
+      localazlh = null;
     }
-    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, paramazow, 1));
   }
   
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  public void a()
   {
-    if (!TextUtils.isEmpty(paramString2))
+    int i = 0;
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    while (i < this.jdField_a_of_type_ArrayOfAzlh.length)
     {
-      String str = paramString2;
-      if (paramString2.contains("${count_unknown}")) {
-        str = paramString2.replace("${count_unknown}", "1");
+      this.jdField_a_of_type_ArrayOfAzlh[i] = new azlh(this.jdField_a_of_type_ArrayOfInt[i]);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
+  }
+  
+  public void a(azlj paramazlj)
+  {
+    if (c())
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfAzlh.length)
+      {
+        this.jdField_a_of_type_ArrayOfAzlh[i].a(paramazlj);
+        i += 1;
       }
-      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), ayxz.class);
-      paramString2.putExtra("sendType", 2);
-      paramString2.putExtra("tag", paramString1);
-      paramString2.putExtra("content", str);
-      paramString2.setWithouLogin(true);
-      paramQQAppInterface.startServlet(paramString2);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (!c()) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfAzlh.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfAzlh[i].a() == 3) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public azlh b()
+  {
+    if (!c()) {
+      return null;
+    }
+    int i = 0;
+    azlh localazlh;
+    if (i < this.jdField_a_of_type_ArrayOfAzlh.length)
+    {
+      if (this.jdField_a_of_type_ArrayOfAzlh[i].c() == 0) {}
+      while (this.jdField_a_of_type_ArrayOfAzlh[i].a() != 0)
+      {
+        i += 1;
+        break;
+      }
+      localazlh = this.jdField_a_of_type_ArrayOfAzlh[i];
+      localazlh.d();
+    }
+    for (;;)
+    {
+      return localazlh;
+      localazlh = null;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0) == 1)
+    {
+      GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfAzlh.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfAzlh[i] != null)
+        {
+          this.jdField_a_of_type_ArrayOfAzlh[i].b();
+          this.jdField_a_of_type_ArrayOfAzlh[i] = null;
+        }
+        this.jdField_a_of_type_ArrayOfInt[i] = 0;
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    int i = 0;
+    if (!c()) {
+      return false;
+    }
+    while (i < this.jdField_a_of_type_ArrayOfAzlh.length)
+    {
+      this.jdField_a_of_type_ArrayOfAzlh[i].c();
+      i += 1;
+    }
+    return true;
+  }
+  
+  public azlh c()
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (!c()) {}
+    int i;
+    label18:
+    do
+    {
+      return localObject2;
+      i = 0;
+      localObject2 = localObject1;
+    } while (i >= this.jdField_a_of_type_ArrayOfAzlh.length);
+    azlh localazlh;
+    if (this.jdField_a_of_type_ArrayOfAzlh[i].a() == 2)
+    {
+      localazlh = this.jdField_a_of_type_ArrayOfAzlh[i];
+      if (localObject1 == null) {
+        localObject1 = localazlh;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label18;
+      AVIOStruct localAVIOStruct = (AVIOStruct)localObject1.a.a;
+      localObject2 = (AVIOStruct)localazlh.a.a;
+      long l = localAVIOStruct.vFrameTime;
+      if (((AVIOStruct)localObject2).vFrameTime > l)
+      {
+        localObject2 = localObject1;
+        if (localAVIOStruct.pFrameIndex == 0) {
+          break;
+        }
+        localObject1.c();
+        localObject1 = localazlh;
+        continue;
+      }
+      localazlh.c();
     }
   }
 }

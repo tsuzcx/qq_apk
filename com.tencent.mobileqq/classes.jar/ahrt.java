@@ -1,76 +1,27 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class ahrt
-  extends BaseAdapter
+class ahrt
+  extends bibk
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<ahrv> jdField_a_of_type_JavaUtilList;
-  
-  public ahrt(Context paramContext)
+  ahrt(ahrs paramahrs, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void a(List<ahrv> paramList)
+  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
+    if ((parambibj instanceof SimpleTextView)) {
+      parambibj.setTag(paramObject);
     }
-    return 0;
+    return parambibj;
   }
   
-  public Object getItem(int paramInt)
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new ahrw(this, null);
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561692, null, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368094));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368093));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379084));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379085));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      ahrv localahrv = (ahrv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localahrv.jdField_a_of_type_AndroidGraphicsBitmap);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localahrv.b);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localahrv.jdField_a_of_type_Int + alpo.a(2131704980));
-      if (!localahrv.jdField_a_of_type_Boolean) {
-        break;
-      }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839026));
-      return paramView;
-      paramViewGroup = (ahrw)paramView.getTag();
-    }
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839028));
-    return paramView;
+    this.a.a(paramInt, paramArrayOfbibj, paramObject);
   }
 }
 

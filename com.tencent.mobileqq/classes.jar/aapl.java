@@ -1,13 +1,31 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
-class aapl
-  extends AdHttp.Params
+public class aapl
+  implements aaqi
 {
-  public int a = -2147483648;
+  public aapl(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public boolean isSuccess()
+  public Activity a()
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    return this.a.getActivity();
+  }
+  
+  public void a()
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
+    }
   }
 }
 

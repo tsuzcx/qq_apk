@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvz;
-import anbk;
+import anai;
+import anft;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraProxy$3
   implements Runnable
 {
-  public CameraProxy$3(anbk paramanbk) {}
+  public CameraProxy$3(anft paramanft) {}
   
   public void run()
   {
-    if ((anbk.a(this.this$0) != 3) || (anbk.a(this.this$0) == null))
+    if ((anft.a(this.this$0) != 3) || (anft.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + anbk.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + anft.a(this.this$0));
       return;
     }
-    if (anbk.a(this.this$0)) {
-      anbk.a(this.this$0).a();
+    if (anft.a(this.this$0)) {
+      anft.a(this.this$0).a();
     }
-    anbk.a(this.this$0, false);
-    anbk.a(this.this$0).a();
-    if (anbk.a(this.this$0) != 3)
+    anft.a(this.this$0, false);
+    anft.a(this.this$0).a();
+    if (anft.a(this.this$0) != 3)
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + anbk.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + anft.a(this.this$0));
       return;
     }
-    anbk.a(this.this$0, 0);
-    anbk.a(this.this$0, null);
-    anbk.e(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + anbk.a(this.this$0));
+    anft.a(this.this$0, 0);
+    anft.a(this.this$0, null);
+    anft.e(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + anft.a(this.this$0));
   }
 }
 

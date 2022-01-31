@@ -5,23 +5,23 @@ import android.view.View;
 import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import utx;
-import vju;
-import wta;
+import uyg;
+import vod;
+import wxj;
 
 class StoryHaloManager$2$1
   implements Runnable
 {
-  StoryHaloManager$2$1(StoryHaloManager.2 param2, utx paramutx) {}
+  StoryHaloManager$2$1(StoryHaloManager.2 param2, uyg paramuyg) {}
   
   public void run()
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Utx.a, 1, this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a(), "", ""), 111);
-    vju.a((Activity)this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_AndroidViewView.getContext(), localOpenPlayerBuilder.a(), null);
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Uyg.a, 1, this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a(), "", ""), 111);
+    vod.a((Activity)this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_AndroidViewView.getContext(), localOpenPlayerBuilder.a(), null);
     if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.haloState == -1) {}
     for (int i = 1;; i = 0)
     {
-      wta.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a() });
+      wxj.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a() });
       return;
     }
   }

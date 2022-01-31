@@ -1,187 +1,59 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceScanNativeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.ArrayList;
 
 public class apgw
-  extends apgu
+  extends BaseAdapter
 {
-  private int a;
-  private boolean d;
+  public apgw(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public apgw(QQAppInterface paramQQAppInterface)
+  public apgp a(int paramInt)
   {
-    super("qq.android.ar.face.so_v8.2.0_32", paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "FaceScanNativeSoDownloadHandler construct,STR_RES_NAME = qq.android.ar.face.so_v8.2.0_32,AppSetting.IS_CPU_64_BIT = false");
-    }
+    return (apgp)this.a.a.get(paramInt);
   }
   
-  public int a()
+  public int getCount()
   {
-    return 10061;
+    return this.a.a.size();
   }
   
-  public Class<? extends XmlData> a()
+  public long getItemId(int paramInt)
   {
-    return FaceScanNativeSoData.class;
+    return paramInt;
   }
   
-  public String a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return null;
-  }
-  
-  public void a()
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("face_scan_sp", 4).edit().putInt("face_scan_native_so_version", b()).apply();
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    amtb.a(1, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      amtb.a(1, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString);
-    }
-    int i = amte.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
-    }
-    if (i != 0)
+    apgp localapgp;
+    if (paramView == null)
     {
-      g();
-      a();
-      amtb.a(1, false);
+      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131559469, paramViewGroup, false);
+      paramViewGroup = new apha(this.a);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131368574));
+      paramViewGroup.jdField_a_of_type_Apgx = new apgx(this.a);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(paramViewGroup.jdField_a_of_type_Apgx);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(paramViewGroup.jdField_a_of_type_Apgx);
+      paramView.setTag(paramViewGroup);
+      localapgp = a(paramInt);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(localapgp.jdField_a_of_type_Boolean);
+      if (!(localapgp instanceof aphq)) {
+        break label179;
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localapgp.jdField_a_of_type_JavaLangString + " - " + ((aphq)localapgp).b);
     }
     for (;;)
     {
-      super.a(paramString);
-      return;
-      amtb.a(1, true);
-      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "so", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "so");
-      azmz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
+      paramViewGroup.jdField_a_of_type_Apgx.a = localapgp;
+      return paramView;
+      paramViewGroup = (apha)paramView.getTag();
+      break;
+      label179:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localapgp.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download restart userClick" + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    boolean bool = arof.a(new File(amte.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
-  }
-  
-  public boolean e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
-    }
-    if (!this.d)
-    {
-      if (!amtb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceScanNativeSoDownloadHandler", 2, "pre download config disable ");
-        }
-        return false;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource later " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return super.e();
-    }
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    apgi.a(a(), new String[0]);
   }
 }
 

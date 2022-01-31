@@ -1,44 +1,16 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+
 public class bnmq
+  implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  public bnmq(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
   
-  public long a(float paramFloat)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
-    }
-    return paramLong * 1000L;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
+    return this.a.a(paramView, paramMotionEvent);
   }
 }
 

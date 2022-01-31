@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
-
-public class atmu
-  implements DialogInterface.OnClickListener
+public abstract interface atmu
 {
-  public atmu(LocationDialogUtil.5 param5) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public abstract void b();
 }
 
 

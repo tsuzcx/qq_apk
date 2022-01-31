@@ -1,8 +1,35 @@
-import android.view.View;
-
-public abstract interface bgoh
+public class bgoh
 {
-  public abstract void a(View paramView, int paramInt, String paramString);
+  private bgof a = new bgof(null);
+  
+  public bgof a()
+  {
+    return this.a;
+  }
+  
+  public bgoh a(int paramInt)
+  {
+    this.a.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bgoh a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bgoh b(int paramInt)
+  {
+    this.a.b = paramInt;
+    return this;
+  }
+  
+  public bgoh c(int paramInt)
+  {
+    this.a.c = paramInt;
+    return this;
+  }
 }
 
 

@@ -12,7 +12,7 @@ public abstract class sgm
   protected SlideActiveAnimController a;
   protected sgn a;
   protected sgo a;
-  public yst a;
+  public yxi a;
   
   static
   {

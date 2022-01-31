@@ -1,26 +1,11 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-
-public class yka
-  implements ImageLoader.ImageLoadListener
+public abstract class yka<T>
 {
-  public yka(CommodityItemView paramCommodityItemView) {}
+  public long a;
+  public boolean a = true;
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
+  public abstract void a();
   
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
-    }
-  }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
+  public abstract void a(ykg<T> paramykg);
 }
 
 

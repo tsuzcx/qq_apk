@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import ayyu;
-import ayzo;
+import azdd;
+import azdx;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import zsn;
+import zxc;
 
 public class DevLittleVideoItemBuilder$5
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$5(zsn paramzsn, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$5(zxc paramzxc, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    ayzo localayzo = ayyu.a(0, 4);
-    localayzo.a(ayyu.a(this.a, localayzo));
-    ayyu.a(localayzo, this.this$0.a);
+    azdx localazdx = azdd.a(0, 4);
+    localazdx.a(azdd.a(this.a, localazdx));
+    azdd.a(localazdx, this.this$0.a);
   }
 }
 

@@ -1,30 +1,84 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aosc
+  extends aokh<aosb>
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
-  
-  private static aosc b(String paramString)
+  @NonNull
+  public static aosb a()
   {
-    aosc localaosc = new aosc();
-    try
-    {
-      localaosc.c = new JSONObject(paramString).optInt("action", b);
-      return localaosc;
+    aosb localaosb2 = (aosb)aoks.a().a(550);
+    aosb localaosb1 = localaosb2;
+    if (localaosb2 == null) {
+      localaosb1 = new aosb();
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localaosb1.toString());
     }
-    return localaosc;
+    return localaosb1;
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.c == a;
+    return 550;
+  }
+  
+  @NonNull
+  public aosb a(int paramInt)
+  {
+    return new aosb();
+  }
+  
+  @Nullable
+  public aosb a(aoko[] paramArrayOfaoko)
+  {
+    return aosb.a(paramArrayOfaoko);
+  }
+  
+  public Class a()
+  {
+    return aosb.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aosb paramaosb)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(347))
+      {
+        ((auou)((QQAppInterface)localObject).getManager(347)).a = paramaosb;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramaosb.toString());
+        }
+      }
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

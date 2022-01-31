@@ -1,11 +1,11 @@
 package com.tencent.qqmini.nativePlugins;
 
-import aljq;
+import alof;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgho;
-import bgkd;
+import bglv;
+import bgok;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.log.QMLog;
@@ -19,38 +19,38 @@ public class TimTeamPlugin
   public static final String PLUGIN_NAME = "tim_space";
   public static final String TAG = "TimTeamPlugin";
   
-  private JSONObject getParam(bgkd parambgkd)
+  private JSONObject getParam(bgok parambgok)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      JSONObject localJSONObject = new JSONObject(parambgok.b);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TimTeamPlugin", "Failed to parse jsonParams=" + parambgkd.b);
+      QMLog.e("TimTeamPlugin", "Failed to parse jsonParams=" + parambgok.b);
     }
     return null;
   }
   
-  public void timSpace(bgkd parambgkd)
+  public void timSpace(bgok parambgok)
   {
     try
     {
-      parambgkd = new JSONObject(getParam(parambgkd).getString("data")).getString("action");
+      parambgok = new JSONObject(getParam(parambgok).getString("data")).getString("action");
       if (QMLog.isColorLevel()) {
-        QMLog.d("TimTeamPlugin", "onInvoke|" + parambgkd);
+        QMLog.d("TimTeamPlugin", "onInvoke|" + parambgok);
       }
-      if (TextUtils.equals(parambgkd, "showCoopSpaceProfile"))
+      if (TextUtils.equals(parambgok, "showCoopSpaceProfile"))
       {
-        parambgkd = this.mMiniAppContext.a();
-        Intent localIntent = new Intent(parambgkd, AccountDetailActivity.class);
-        localIntent.putExtra("uin", aljq.aV);
-        parambgkd.startActivity(localIntent);
+        parambgok = this.mMiniAppContext.a();
+        Intent localIntent = new Intent(parambgok, AccountDetailActivity.class);
+        localIntent.putExtra("uin", alof.aV);
+        parambgok.startActivity(localIntent);
       }
       return;
     }
-    catch (Exception parambgkd)
+    catch (Exception parambgok)
     {
       while (!QMLog.isColorLevel()) {}
       QMLog.w("TimTeamPlugin", "decode param error");

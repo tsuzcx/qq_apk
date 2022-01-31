@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class sxo
-  implements ymm
+  implements yrb
 {
   sxo(sxe paramsxe, boolean paramBoolean, String paramString1, String paramString2) {}
   
@@ -33,7 +33,7 @@ class sxo
         if (!this.jdField_a_of_type_Boolean) {
           continue;
         }
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
         paramBundle = str2;
         localJSONObject.put("localId", paramBundle);
       }
@@ -48,7 +48,7 @@ class sxo
         this.jdField_a_of_type_Sxe.c(this.b);
       }
       return;
-      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
       paramBundle = str2;
       continue;
       str1 = str2;
@@ -58,18 +58,18 @@ class sxo
       paramBundle = paramBundle.getString("pic_local_path");
       sxe.b.put(str1, paramBundle);
       localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", alpo.a(2131709151) + str1);
+      localJSONObject.put("msg", alud.a(2131709163) + str1);
       if (QLog.isColorLevel()) {
         QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
         paramBundle = str1;
       }
       else
       {
-        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
         paramBundle = str1;
       }
     }

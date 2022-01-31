@@ -1,55 +1,35 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
-public class ayld
-  extends ayle
+class ayld
+  extends nnn
 {
-  String a = null;
-  
-  ayjk a(ahea paramahea, List<ayjl> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  ayld(aylc paramaylc, WebViewPluginEngine paramWebViewPluginEngine)
   {
-    ayil localayil;
-    if (paramList != null)
-    {
-      localayil = (ayil)paramList.get(0);
-      if ((localayil != null) && (localayil.a() != null))
-      {
-        String str = localayil.a().hotword.get();
-        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localayil.a(), str, String.valueOf(localayil.a().hotword_type.get()), "");
-      }
-      if ((localayil == null) || (localayil.a() == null)) {
-        break label166;
-      }
-    }
-    for (;;)
-    {
-      if ((localayil != null) && (localayil.a() != null)) {
-        nrt.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localayil.a().account_id.get()));
-      }
-      ayrc.a(110);
-      this.a = paramString2;
-      return new ayik(paramahea, paramList, paramString1, paramString2);
-      label166:
-      if (paramList.size() > 1) {
-        localayil = (ayil)paramList.get(1);
-      } else {
-        localayil = null;
-      }
-    }
+    super(paramWebViewPluginEngine);
   }
   
-  ayjl a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return new ayil(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
+    this.a.onPageFinished(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  ayjl a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    return new ayil(paramrecord, paramString, paramCharSequence);
+    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
+    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
+      return true;
+    }
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

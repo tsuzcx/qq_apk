@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class tfd
-  implements yel<WSPicMonitorEvent>
+  implements yiy<WSPicMonitorEvent>
 {
   private static tfd jdField_a_of_type_Tfd;
   private static boolean jdField_c_of_type_Boolean;
@@ -73,7 +73,7 @@ public class tfd
     if (jdField_c_of_type_Boolean)
     {
       tlo.b("WSFallKeyPicMonitor", "sendStartEvent");
-      yej.a().a(new WSPicMonitorEvent(paramInt, 1, ""));
+      yiw.a().a(new WSPicMonitorEvent(paramInt, 1, ""));
     }
   }
   
@@ -82,7 +82,7 @@ public class tfd
     if (jdField_c_of_type_Boolean)
     {
       tlo.b("WSFallKeyPicMonitor", "sendStartEvent");
-      yej.a().a(new WSPicMonitorEvent(paramInt, 1, paramT));
+      yiw.a().a(new WSPicMonitorEvent(paramInt, 1, paramT));
     }
   }
   
@@ -97,10 +97,10 @@ public class tfd
     tlo.b("WSFallKeyPicMonitor", "recommendReportForDlOpenWeiShi failure : feed == null");
   }
   
-  public static void a(yel paramyel)
+  public static void a(yiy paramyiy)
   {
     tlo.b("WSFallKeyPicMonitor", "registerReceiver");
-    yej.a().a(paramyel);
+    yiw.a().a(paramyiy);
   }
   
   public static void b(int paramInt)
@@ -108,7 +108,7 @@ public class tfd
     if (jdField_c_of_type_Boolean)
     {
       tlo.b("WSFallKeyPicMonitor", "sendFinishEvent");
-      yej.a().a(new WSPicMonitorEvent(paramInt, -1, ""));
+      yiw.a().a(new WSPicMonitorEvent(paramInt, -1, ""));
     }
   }
   
@@ -117,14 +117,14 @@ public class tfd
     if (jdField_c_of_type_Boolean)
     {
       tlo.b("WSFallKeyPicMonitor", "sendFinishEvent");
-      yej.a().a(new WSPicMonitorEvent(paramInt, -1, paramT));
+      yiw.a().a(new WSPicMonitorEvent(paramInt, -1, paramT));
     }
   }
   
-  public static void b(yel paramyel)
+  public static void b(yiy paramyiy)
   {
     tlo.b("WSFallKeyPicMonitor", "unRegisterReceiver");
-    yej.a().b(paramyel);
+    yiw.a().b(paramyiy);
   }
   
   private void c()
@@ -157,13 +157,6 @@ public class tfd
     a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_c_of_type_Int, this.d);
   }
   
-  public ArrayList<Class<WSPicMonitorEvent>> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(WSPicMonitorEvent.class);
-    return localArrayList;
-  }
-  
   public void a()
   {
     tlo.b("WSFallKeyPicMonitor", "immediatelyPreload");
@@ -176,7 +169,7 @@ public class tfd
   
   public void a(Activity paramActivity, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if (xoo.a(paramActivity)) {
+    if (xsx.a(paramActivity)) {
       return;
     }
     tlo.b("WSFallKeyPicMonitor", "init , linkType = " + paramInt + "; feed = " + paramstSimpleMetaFeed);
@@ -199,7 +192,7 @@ public class tfd
   
   public void a(Context paramContext)
   {
-    if (xoo.a(paramContext)) {
+    if (xsx.a(paramContext)) {
       tlo.d("WSFallKeyPicMonitor", "本地已经安装微视app");
     }
     while (jdField_c_of_type_Boolean) {
@@ -209,7 +202,22 @@ public class tfd
     a(this);
   }
   
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public void b()
+  {
+    if (jdField_c_of_type_Boolean) {
+      c();
+    }
+    jdField_a_of_type_Tfd = null;
+  }
+  
+  public ArrayList<Class<WSPicMonitorEvent>> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(WSPicMonitorEvent.class);
+    return localArrayList;
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     tlo.b("WSFallKeyPicMonitor", "onReceiveEvent");
     int i;
@@ -273,14 +281,6 @@ public class tfd
       i = 0;
       break;
     }
-  }
-  
-  public void b()
-  {
-    if (jdField_c_of_type_Boolean) {
-      c();
-    }
-    jdField_a_of_type_Tfd = null;
   }
 }
 

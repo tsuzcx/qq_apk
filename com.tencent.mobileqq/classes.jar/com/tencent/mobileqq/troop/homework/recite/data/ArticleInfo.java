@@ -2,10 +2,10 @@ package com.tencent.mobileqq.troop.homework.recite.data;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcyj;
-import bcyk;
-import bcyl;
-import bdaj;
+import bdcs;
+import bdct;
+import bdcu;
+import bdes;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -22,22 +22,22 @@ public class ArticleInfo
   public static final int TYPE_GUSHI = 2;
   public static final int TYPE_SANWEN = 1;
   private static final String a = ArticleInfo.class.getSimpleName();
-  @bcyk(a="author")
+  @bdct(a="author")
   public String author;
-  @bcyk(a="grade")
+  @bdct(a="grade")
   public int grade;
-  @bcyk(a="kid")
+  @bdct(a="kid")
   public String kid;
-  @bcyk(a="level")
+  @bdct(a="level")
   public int level;
-  @bcyk(a="paragraphs")
-  @bcyl(a=ParagraphInfo.class)
+  @bdct(a="paragraphs")
+  @bdcu(a=ParagraphInfo.class)
   public List<ParagraphInfo> paragraphs;
-  @bcyk(a="title")
+  @bdct(a="title")
   public String title;
-  @bcyk(a="type")
+  @bdct(a="type")
   public int type;
-  @bcyk(a="version")
+  @bdct(a="version")
   public String version;
   
   public static ArticleInfo onHandleGetArticleDetail(Bundle paramBundle, JSONObject paramJSONObject)
@@ -72,7 +72,7 @@ public class ArticleInfo
         if (((JSONArray)localObject1).length() <= 0) {
           break label397;
         }
-        localObject1 = (ArticleInfo)bcyj.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
+        localObject1 = (ArticleInfo)bdcs.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
         str = "0";
         i = 1;
         localObject2 = localObject1;
@@ -102,7 +102,7 @@ public class ArticleInfo
           if (i != 0)
           {
             i = 1;
-            bdaj.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
+            bdes.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
           }
         }
         else

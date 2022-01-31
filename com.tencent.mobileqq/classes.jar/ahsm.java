@@ -1,24 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 class ahsm
-  implements DialogInterface.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  ahsm(ahsh paramahsh, ArrayList paramArrayList, int paramInt) {}
+  ahsm(ahsi paramahsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    ahsh.a(this.jdField_a_of_type_Ahsh, true);
-    ahsh.a(this.jdField_a_of_type_Ahsh).a(1);
-    ahsh.a(this.jdField_a_of_type_Ahsh, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (bdee.d(BaseApplicationImpl.getContext()))
-    {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      ahsh.a(this.jdField_a_of_type_Ahsh).b(paramInt);
+    if (paramInt == 1) {
+      ahsi.a(this.a, ahsi.a(this.a).getCurrentItem());
     }
-    ahsh.a(this.jdField_a_of_type_Ahsh, this.jdField_a_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + ahsi.b(this.a) + "  mPageChangedByIndicator:" + ahsi.a(this.a));
+    }
+    if (ahsi.a(this.a)) {
+      ahsi.b(this.a, false);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    ahsi.a(this.a, paramInt);
+    if (!ahsi.a(this.a)) {
+      azqs.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + ahsi.b(this.a) + " mPageChangedByIndicator:" + ahsi.a(this.a));
+    }
+    ahsi.a(this.a, false);
   }
 }
 

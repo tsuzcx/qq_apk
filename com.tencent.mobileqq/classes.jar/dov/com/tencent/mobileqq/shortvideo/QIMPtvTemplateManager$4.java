@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import baps;
-import bapv;
-import baqx;
-import bdcs;
-import bdee;
-import bllv;
-import bnkz;
-import bnla;
+import baub;
+import baue;
+import bavg;
+import bdhb;
+import bdin;
+import blqh;
+import bnpl;
+import bnpm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import java.io.File;
 public class QIMPtvTemplateManager$4
   implements Runnable
 {
-  public QIMPtvTemplateManager$4(bnkz parambnkz, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public QIMPtvTemplateManager$4(bnpl parambnpl, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class QIMPtvTemplateManager$4
     {
       return;
       this.a.usable = false;
-      int i = (int)(bdcs.a() / 1024.0F / 1024.0F);
+      int i = (int)(bdhb.a() / 1024.0F / 1024.0F);
       int j = (int)(this.a.sizeFree * 1024.0D);
       if (QLog.isColorLevel()) {
         QLog.d("QIMPtvTemplateManager", 2, "preDownloadTemplates getAvailableInnernalMemorySize: " + i + " mSizeFree: " + j);
@@ -40,18 +40,18 @@ public class QIMPtvTemplateManager$4
       }
       else
       {
-        baps localbaps = new baps();
-        localbaps.jdField_a_of_type_Bapx = new bnla(this);
-        localbaps.jdField_a_of_type_JavaLangString = this.a.resurl;
-        localbaps.jdField_a_of_type_Int = 0;
-        localbaps.jdField_c_of_type_JavaLangString = new File(bnkz.a(), this.a.name).getPath();
-        localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
+        baub localbaub = new baub();
+        localbaub.jdField_a_of_type_Baug = new bnpm(this);
+        localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
+        localbaub.jdField_a_of_type_Int = 0;
+        localbaub.jdField_c_of_type_JavaLangString = new File(bnpl.a(), this.a.name).getPath();
+        localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
         try
         {
-          AppInterface localAppInterface = bllv.a();
+          AppInterface localAppInterface = blqh.a();
           if (localAppInterface != null)
           {
-            ((PeakAppInterface)localAppInterface).getNetEngine(0).a(localbaps);
+            ((PeakAppInterface)localAppInterface).getNetEngine(0).a(localbaub);
             if (QLog.isColorLevel())
             {
               QLog.i("QIMPtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + this.a.resurl);

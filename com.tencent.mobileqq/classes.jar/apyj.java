@@ -1,75 +1,49 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class apyj
-  extends RecyclerView.ViewHolder
+class apyj
+  extends VasQuickUpdateManager.CallBacker
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private apyl jdField_a_of_type_Apyl;
-  private ViewGroup b;
+  apyj(apyf paramapyf) {}
   
-  public apyj(View paramView, Activity paramActivity)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131375981));
-    this.b = ((ViewGroup)paramView.findViewById(2131364770));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377625));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131370447));
-    int i = aekt.a(4.0F, paramActivity.getResources());
-    paramView = new azqp(-1, i * 3, i * 3, i);
-    this.b.setBackgroundDrawable(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_Apyl = new apyl(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Apyl);
-    paramView = new aqep(paramActivity, 0, false);
-    paramView.setAutoMeasureEnabled(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    bkcj localbkcj = new bkcj();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbkcj.b = (str + "_" + l);
-    localbkcj.jdField_a_of_type_Int = 1;
-    localbkcj.jdField_e_of_type_JavaLangString = "tianshu.78";
-    localbkcj.jdField_f_of_type_JavaLangString = "tianshu.78";
-    localbkcj.g = Integer.toString(paramInt3);
-    localbkcj.h = "";
-    localbkcj.jdField_a_of_type_Long = l;
-    localbkcj.d = paramInt1;
-    localbkcj.k = Integer.toString(paramInt2);
-    localbkcj.jdField_e_of_type_Int = 1;
-    localbkcj.jdField_f_of_type_Int = 1;
-    bkci.a().a(localbkcj);
-  }
-  
-  public void a(MiniAppRecommInfo paramMiniAppRecommInfo, int paramInt)
-  {
-    if (paramMiniAppRecommInfo == null) {
+    if ((1003L != paramLong) || (!"emotionRecommendEffect".equals(paramString1))) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setPadding(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), paramInt, this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniAppRecommInfo.headDesc);
-    this.jdField_a_of_type_Apyl.a(paramMiniAppRecommInfo.appInfoList);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((VasQuickUpdateManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendEmotionAdapter", 2, "emoticon Effect callBacker errorCode:" + paramInt1 + ", httpCode:" + paramInt2 + ", apngSoLoaded:" + bdua.a().isLoaded());
+    }
+    paramString1 = this.a.jdField_a_of_type_JavaLangObject;
+    if (paramInt1 == 0) {}
+    try
+    {
+      if ((this.a.b != null) && (this.a.b.size() > 0))
+      {
+        paramString2 = VasQuickUpdateManager.getFileFromLocal(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1003L, "emotionRecommendEffect", null, false, null);
+        if (paramString2 != null)
+        {
+          paramInt1 = 0;
+          while ((paramInt1 < this.a.b.size()) && (paramInt1 < 2))
+          {
+            paramString3 = (apyk)this.a.b.get(paramInt1);
+            paramString3.a = paramString2;
+            this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102, paramString3));
+            paramInt1 += 1;
+          }
+          this.a.b.clear();
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 

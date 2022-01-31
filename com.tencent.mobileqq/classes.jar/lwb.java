@@ -28,7 +28,7 @@ import tencent.im.oidb.cmd0xa75.oidb_0xa75.ReqBody;
 import tencent.im.oidb.cmd0xa75.oidb_0xa75.RspBody;
 
 public class lwb
-  extends alko
+  extends alpd
 {
   public VideoAppInterface a;
   lip jdField_a_of_type_Lip = new lwc(this);
@@ -268,7 +268,7 @@ public class lwb
     return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends alkr> observerClass()
+  protected Class<? extends alpg> observerClass()
   {
     return null;
   }

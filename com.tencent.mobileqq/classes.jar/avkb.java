@@ -1,37 +1,33 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class avkb
-  implements bhqd
+public class avkb
+  implements Animation.AnimationListener
 {
-  avkb(avka paramavka, View paramView, PicInfo paramPicInfo, bhpy parambhpy) {}
+  public avkb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Avka.jdField_a_of_type_Int == 0) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
+    NearbyPeopleProfileActivity.a(this.a).a();
+    NearbyPeopleProfileActivity.a(this.a, null);
+    NearbyPeopleProfileActivity.a(this.a, null);
+    if (NearbyPeopleProfileActivity.a(this.a) == null)
     {
+      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
+      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
+      NearbyPeopleProfileActivity.a(this.a).a();
+      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.e();
-      return;
-      this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
-      avjc.a(this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc);
-      avjc.b(this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc);
-      continue;
-      paramView = zen.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avka.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc.jdField_a_of_type_JavaUtilArrayList);
-      continue;
-      avjc.a(this.jdField_a_of_type_Avka.jdField_a_of_type_Avjc, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
-    }
+    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

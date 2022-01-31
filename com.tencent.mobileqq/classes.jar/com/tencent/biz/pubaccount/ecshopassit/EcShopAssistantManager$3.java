@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import awbw;
-import awbx;
+import awgf;
+import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import ntw;
 
@@ -12,11 +12,11 @@ public class EcShopAssistantManager$3
   
   public void run()
   {
-    awbw localawbw = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (ntw.a(this.this$0, localawbw, this.a)) {
+    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (ntw.a(this.this$0, localawgf, this.a)) {
       ntw.a(this.this$0, this.a);
     }
-    localawbw.a();
+    localawgf.a();
   }
 }
 

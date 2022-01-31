@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class avjw
-  implements aoec
+public class avjw
+  extends auxl
 {
-  avjw(avjc paramavjc, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
+  public avjw(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public void a()
+  protected void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing()))
-    {
-      avjc.a(this.jdField_a_of_type_Avjc, this.jdField_a_of_type_Avjc.c, false);
-      this.jdField_a_of_type_Bhpy.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Avjc.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
-      return;
-      this.jdField_a_of_type_Avjc.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Avjc.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Avjc.g = paramInt2;
+    ((auul)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean) {
+      this.a.getActivity().finish();
     }
   }
 }

@@ -1,6 +1,15 @@
-public abstract interface aewj<T>
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class aewj
+  implements View.OnClickListener
 {
-  public abstract T a(aewg paramaewg);
+  aewj(aewi paramaewi) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

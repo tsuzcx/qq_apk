@@ -1,7 +1,7 @@
 import com.dataline.activities.PrinterActivity;
 
 public class cp
-  extends almg
+  extends alqv
 {
   public cp(PrinterActivity paramPrinterActivity) {}
   

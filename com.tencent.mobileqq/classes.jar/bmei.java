@@ -1,17 +1,8 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
-public abstract interface bmei
-  extends bmiw
+abstract interface bmei<K, V>
 {
-  public abstract Bitmap a();
-  
-  public abstract bmur a();
-  
-  public abstract void a(bmmf parambmmf, float paramFloat1, float paramFloat2);
-  
-  public abstract void a_(int paramInt, bmwn parambmwn);
-  
-  public abstract void b();
+  public abstract void a(@NonNull bmef<K, V> parambmef);
 }
 
 

@@ -23,6 +23,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import common.config.service.QzoneConfig;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StRecomForward;
 import feedcloud.FeedCloudMeta.StRecomInfo;
@@ -142,7 +143,7 @@ public class tqc
     return null;
   }
   
-  private udu a(RecyclerView.ViewHolder paramViewHolder)
+  private ugu a(RecyclerView.ViewHolder paramViewHolder)
   {
     if ((paramViewHolder != null) && ((paramViewHolder.itemView instanceof QCircleFeedWidget)) && (((QCircleFeedWidget)paramViewHolder.itemView).a() != null)) {
       return ((QCircleFeedWidget)paramViewHolder.itemView).a();
@@ -160,7 +161,7 @@ public class tqc
         if (((QCircleFeedCleanPlayView)localView).d())
         {
           ((QCircleFeedCleanPlayView)localView).b();
-          tyg.a(8, 5, a(paramString));
+          tzs.a(8, 5, a(paramString));
         }
         QLog.d("QCircleFeedPlayerHelper", 4, new Object[] { "clean player", paramString });
         ((QCircleFeedCleanPlayView)localView).a();
@@ -177,7 +178,7 @@ public class tqc
       }
     }
     label19:
-    for (int i = 2130843568;; i = 2130843569)
+    for (int i = 2130843585;; i = 2130843586)
     {
       paramImageView.setImageResource(i);
       return;
@@ -196,7 +197,7 @@ public class tqc
         if (((QCircleFeedCleanPlayView)localView).d())
         {
           ((QCircleFeedCleanPlayView)localView).b();
-          tyg.a(8, 5, a(paramString));
+          tzs.a(8, 5, a(paramString));
         }
         ((QCircleFeedCleanPlayView)localView).a();
         a(a(localViewHolder), true);
@@ -204,24 +205,26 @@ public class tqc
     }
   }
   
-  private void a(udu paramudu, String paramString1, String paramString2)
+  private void a(ugu paramugu, String paramString1, String paramString2)
   {
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
       if (!ndk.a(BaseApplicationImpl.context))
       {
-        bfhq.a().a(alpo.a(2131715032));
+        bflz.a().a(alud.a(2131715044));
         QLog.d("QCircleFeedPlayerHelper", 4, "network not available");
+      }
+      while (!a(paramString2)) {
         return;
       }
       String str2 = a(paramString1, "vid");
-      FrameLayout localFrameLayout = paramudu.jdField_a_of_type_AndroidWidgetFrameLayout;
-      FeedCloudMeta.StFeed localStFeed = paramudu.a();
+      FrameLayout localFrameLayout = paramugu.jdField_a_of_type_AndroidWidgetFrameLayout;
+      FeedCloudMeta.StFeed localStFeed = paramugu.a();
       if ((!TextUtils.isEmpty(paramString1)) && (localFrameLayout != null) && (localStFeed != null))
       {
         a(localFrameLayout, paramString2, a(paramString2));
-        QCircleFeedCleanPlayView localQCircleFeedCleanPlayView = new QCircleFeedCleanPlayView(this.jdField_a_of_type_AndroidContentContext, paramudu.a());
-        localQCircleFeedCleanPlayView.setVideoCover(paramudu.jdField_a_of_type_ComTencentImageURLImageView);
+        QCircleFeedCleanPlayView localQCircleFeedCleanPlayView = new QCircleFeedCleanPlayView(this.jdField_a_of_type_AndroidContentContext, paramugu.a());
+        localQCircleFeedCleanPlayView.setVideoCover(paramugu.jdField_a_of_type_ComTencentImageURLImageView);
         localQCircleFeedCleanPlayView.setLoopBack(true);
         localQCircleFeedCleanPlayView.setOutPutMute(jdField_a_of_type_Boolean);
         localQCircleFeedCleanPlayView.setData(localStFeed);
@@ -232,10 +235,10 @@ public class tqc
         localQCircleFeedCleanPlayView.setVideoPath(str1, "", paramString1, localStFeed.video.fileSize.get(), localStFeed.video.duration.get(), 0);
         localQCircleFeedCleanPlayView.setOnProgressListener(new tqd(this, paramString1));
         localQCircleFeedCleanPlayView.setOnPreparedListener(new tqe(this, paramString1, localQCircleFeedCleanPlayView, paramString2));
-        localQCircleFeedCleanPlayView.setDarkFrameCheckListener(new tqf(this, paramudu));
+        localQCircleFeedCleanPlayView.setDarkFrameCheckListener(new tqf(this, paramugu));
         localFrameLayout.addView(localQCircleFeedCleanPlayView, 0, new FrameLayout.LayoutParams(-1, -1));
         this.jdField_a_of_type_JavaLangString = paramString2;
-        a(paramudu.b);
+        a(paramugu.b);
         i();
         QLog.d("QCircleFeedPlayerHelper", 4, "playInner mCurrentPlayerUrl: " + this.jdField_a_of_type_JavaLangString);
         return;
@@ -246,29 +249,29 @@ public class tqc
     QLog.d("QCircleFeedPlayerHelper", 4, "url is empty");
   }
   
-  private void a(udu paramudu, boolean paramBoolean)
+  private void a(ugu paramugu, boolean paramBoolean)
   {
-    if (paramudu != null)
+    if (paramugu != null)
     {
       if (!paramBoolean) {
-        break label56;
+        break label52;
       }
-      if (ndk.a(BaseApplicationImpl.context) == 1) {
-        break label44;
+      if (QzoneConfig.isQQCircleAutoPlay()) {
+        break label40;
       }
-      paramudu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramugu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      paramudu.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      paramudu.b.setVisibility(8);
+      paramugu.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramugu.b.setVisibility(8);
       return;
-      label44:
-      paramudu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      label40:
+      paramugu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    label56:
-    paramudu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramudu.b.setVisibility(0);
+    label52:
+    paramugu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramugu.b.setVisibility(0);
   }
   
   private void a(boolean paramBoolean)
@@ -298,7 +301,7 @@ public class tqc
   
   private boolean a(View paramView)
   {
-    if (ndk.a(BaseApplicationImpl.context) != 1)
+    if (!QzoneConfig.isQQCircleAutoPlay())
     {
       QLog.d("QCircleFeedPlayerHelper", 4, "not wifi autoPlay return");
       return true;
@@ -318,19 +321,19 @@ public class tqc
             if (!((QCircleFeedCleanPlayView)localObject).d())
             {
               if (!this.jdField_a_of_type_JavaLangString.equals(a(localStFeed))) {
-                break label156;
+                break label152;
               }
               ((QCircleFeedCleanPlayView)localObject).setIsAutoPlay(true);
               ((QCircleFeedCleanPlayView)localObject).c();
               ((QCircleFeedCleanPlayView)localObject).setOutPutMute(jdField_a_of_type_Boolean);
               a(((QCircleFeedWidget)paramView).a(), false);
-              tyg.a(8, 4, a(localStFeed.id.get()));
+              tzs.a(8, 4, a(localStFeed.id.get()));
             }
           }
           for (;;)
           {
             return true;
-            label156:
+            label152:
             a(((QCircleFeedWidget)paramView).a(), localStFeed.video.playUrl.get(), a(localStFeed));
             continue;
             a(((QCircleFeedWidget)paramView).a(), localStFeed.video.playUrl.get(), a(localStFeed));
@@ -339,6 +342,23 @@ public class tqc
       }
     }
     return false;
+  }
+  
+  private boolean a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("qcircle_fakeid_")))
+    {
+      int i = tqg.a(paramString).intValue();
+      if ((i == 2) || (i == 5))
+      {
+        QLog.d("QCircleFeedPlayerHelper", 1, "FAKE FEED IS READY");
+        return true;
+      }
+      QLog.d("QCircleFeedPlayerHelper", 1, "FAKE FEED NOT READY");
+      return false;
+    }
+    QLog.d("QCircleFeedPlayerHelper", 1, "NOT FAKE FEED CAN PLAY");
+    return true;
   }
   
   private boolean b(View paramView)
@@ -353,8 +373,8 @@ public class tqc
       if (localRect.bottom <= 0) {
         break label141;
       }
-      if (localRect.bottom > azgq.jdField_b_of_type_Int) {
-        localRect.bottom = azgq.jdField_b_of_type_Int;
+      if (localRect.bottom > azkz.jdField_b_of_type_Int) {
+        localRect.bottom = azkz.jdField_b_of_type_Int;
       }
     }
     label141:
@@ -379,7 +399,7 @@ public class tqc
       if (localQCircleFeedCleanPlayView.d())
       {
         localQCircleFeedCleanPlayView.b();
-        tyg.a(8, 5, a(this.jdField_a_of_type_JavaLangString));
+        tzs.a(8, 5, a(this.jdField_a_of_type_JavaLangString));
       }
       a(a(a(this.jdField_a_of_type_JavaLangString)), true);
     }
@@ -396,15 +416,15 @@ public class tqc
   {
     try
     {
-      yee localyee;
+      yiq localyiq;
       Object localObject;
       int i;
       int j;
-      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof yee)))
+      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof yiq)))
       {
-        localyee = (yee)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-        localObject = localyee.findFirstVisibleItemPositions(null);
-        int[] arrayOfInt = localyee.findLastVisibleItemPositions(null);
+        localyiq = (yiq)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+        localObject = localyiq.findFirstVisibleItemPositions(null);
+        int[] arrayOfInt = localyiq.findLastVisibleItemPositions(null);
         i = localObject[0];
         j = arrayOfInt[0];
         QLog.d("QCircleFeedPlayerHelper", 4, i + "  " + j);
@@ -416,7 +436,7 @@ public class tqc
       {
         if (i <= j)
         {
-          localObject = localyee.findViewByPosition(i);
+          localObject = localyiq.findViewByPosition(i);
           if ((localObject != null) && (a((View)localObject))) {
             this.g = i;
           }
@@ -582,15 +602,15 @@ public class tqc
           break label189;
         }
         i = 9;
-        tyg.a((String)localObject, 8, i, paramInt, paramStFeed, null);
+        tzs.a((String)localObject, 8, i, paramInt, paramStFeed, null);
         localArrayList = new ArrayList();
-        localArrayList.add(tym.a("ext2", paramStFeed.recomInfo.recomReason.get()));
-        if (!tym.a().c(1)) {
+        localArrayList.add(tzy.a("ext2", paramStFeed.recomInfo.recomReason.get()));
+        if (!tzy.a().c(1)) {
           break label196;
         }
         localObject = "1";
         label126:
-        localArrayList.add(tym.a("ext4", (String)localObject));
+        localArrayList.add(tzy.a("ext4", (String)localObject));
         localObject = paramStFeed.poster.id.get();
         if (!jdField_a_of_type_Boolean) {
           break label204;
@@ -603,7 +623,7 @@ public class tqc
     label204:
     for (int i = 9;; i = 8)
     {
-      tyg.a((String)localObject, 8, i, paramInt, paramStFeed, localArrayList);
+      tzs.a((String)localObject, 8, i, paramInt, paramStFeed, localArrayList);
       a(paramImageView);
       return;
       bool = false;
@@ -615,13 +635,20 @@ public class tqc
     }
   }
   
-  public void a(udu paramudu, FeedCloudMeta.StFeed paramStFeed)
+  public void a(String paramString, long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(ugu paramugu, FeedCloudMeta.StFeed paramStFeed)
   {
     if (paramStFeed != null)
     {
       String str = paramStFeed.video.playUrl.get();
       if (!TextUtils.isEmpty(str)) {
-        a(paramudu, str, a(paramStFeed));
+        a(paramugu, str, a(paramStFeed));
       }
     }
   }
@@ -630,7 +657,7 @@ public class tqc
   {
     if (this.d == -1) {}
     RecyclerView.ViewHolder localViewHolder;
-    Object localObject;
+    View localView;
     do
     {
       do
@@ -639,13 +666,26 @@ public class tqc
         localViewHolder = a(this.jdField_a_of_type_JavaLangString);
         localObject = a(localViewHolder);
       } while ((localObject == null) || (!(((FrameLayout)localObject).getChildAt(0) instanceof QCircleFeedCleanPlayView)) || (!b(((FrameLayout)localObject).getChildAt(0))));
-      localObject = ((FrameLayout)localObject).getChildAt(0);
-    } while ((((QCircleFeedCleanPlayView)localObject).d()) || (a(localViewHolder) == null));
-    ((QCircleFeedCleanPlayView)localObject).c();
-    ((QCircleFeedCleanPlayView)localObject).setOutPutMute(jdField_a_of_type_Boolean);
-    a(a(localViewHolder).b);
-    tyg.a(8, 4, a(this.jdField_a_of_type_JavaLangString));
-    QLog.d("QCircleFeedPlayerHelper", 4, "onResume play video position:" + localViewHolder.getAdapterPosition());
+      localView = ((FrameLayout)localObject).getChildAt(0);
+    } while ((((QCircleFeedCleanPlayView)localView).d()) || (a(localViewHolder) == null));
+    Object localObject = a(localViewHolder);
+    if ((localObject != null) && (((FeedCloudMeta.StFeed)localObject).type.get() == 3))
+    {
+      localObject = ((FeedCloudMeta.StFeed)localObject).video.playUrl.get();
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {}
+    }
+    for (localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);; localObject = null)
+    {
+      if (localObject != null) {
+        ((QCircleFeedCleanPlayView)localView).a(((Long)localObject).longValue());
+      }
+      ((QCircleFeedCleanPlayView)localView).c();
+      ((QCircleFeedCleanPlayView)localView).setOutPutMute(jdField_a_of_type_Boolean);
+      a(a(localViewHolder).b);
+      tzs.a(8, 4, a(this.jdField_a_of_type_JavaLangString));
+      QLog.d("QCircleFeedPlayerHelper", 4, "onResume play video position:" + localViewHolder.getAdapterPosition());
+      return;
+    }
   }
   
   public void b(RecyclerView.ViewHolder paramViewHolder)
@@ -676,7 +716,7 @@ public class tqc
       if (((localObject instanceof QCircleFeedCleanPlayView)) && (((QCircleFeedCleanPlayView)localObject).d()))
       {
         ((QCircleFeedCleanPlayView)localObject).b();
-        tyg.a(8, 5, a(this.jdField_a_of_type_JavaLangString));
+        tzs.a(8, 5, a(this.jdField_a_of_type_JavaLangString));
         QLog.d("QCircleFeedPlayerHelper", 4, "onResume play video position:" + localViewHolder.getAdapterPosition());
       }
     }

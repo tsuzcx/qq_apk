@@ -3,20 +3,20 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import beds;
-import bhpy;
+import beib;
+import bhuf;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import java.io.File;
 import ndi;
 import ndq;
-import xwb;
+import yak;
 
 public class SwiftBrowserLongClickHandler$4
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$4(beds parambeds, String paramString) {}
+  public SwiftBrowserLongClickHandler$4(beib parambeib, String paramString) {}
   
   public void run()
   {
@@ -61,7 +61,7 @@ public class SwiftBrowserLongClickHandler$4
         this.this$0.c((String)???);
         return;
       }
-      int i = xwb.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
+      int i = yak.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
       if (i <= 0) {
         continue;
       }
@@ -69,7 +69,7 @@ public class SwiftBrowserLongClickHandler$4
       {
         this.this$0.jdField_c_of_type_JavaLangString = this.this$0.jdField_b_of_type_JavaLangString;
         this.this$0.jdField_c_of_type_Int = i;
-        if (!this.this$0.jdField_a_of_type_Bhpy.isShowing()) {
+        if (!this.this$0.jdField_a_of_type_Bhuf.isShowing()) {
           continue;
         }
         this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SwiftBrowserLongClickHandler.4.3(this, i));

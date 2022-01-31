@@ -35,14 +35,14 @@ public class qgh
     paramViewGroup = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20200313/09d27592d8034af2a494db92ca9e8e25.png", paramViewGroup);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    ((TextView)a(2131370018)).setText(paramString1);
-    ((TextView)a(2131377143)).setText(paramString2);
+    ((TextView)a(2131370037)).setText(paramString1);
+    ((TextView)a(2131377197)).setText(paramString2);
     a(paramInt1, paramInt2, paramString3);
   }
   
   View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562501, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562519, paramViewGroup, false);
   }
   
   protected void c()
@@ -54,7 +54,7 @@ public class qgh
   {
     super.onClick(paramView);
     if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(BaseApplicationImpl.getContext(), 0, BaseApplicationImpl.getContext().getString(2131716185), 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 0, BaseApplicationImpl.getContext().getString(2131716197), 0).a();
     }
     for (;;)
     {

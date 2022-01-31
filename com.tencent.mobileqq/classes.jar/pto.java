@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pto
-  implements bhqp
+  implements bhuw
 {
   public pto(NativeShareView paramNativeShareView) {}
   
@@ -25,7 +25,7 @@ public class pto
     if (NativeShareView.a(this.a) != null) {
       NativeShareView.a(this.a).run();
     }
-    int i = ((aybv)paramAdapterView).a.action;
+    int i = ((ayge)paramAdapterView).a.action;
     paramInt = 0;
     switch (i)
     {

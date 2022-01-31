@@ -8,7 +8,7 @@ import java.io.File;
 class lpe
 {
   int jdField_a_of_type_Int = 0;
-  baps jdField_a_of_type_Baps;
+  baub jdField_a_of_type_Baub;
   loy jdField_a_of_type_Loy = null;
   boolean jdField_a_of_type_Boolean = false;
   int b = 0;
@@ -35,7 +35,7 @@ class lpe
       }
       else
       {
-        if (this.jdField_a_of_type_Baps != null)
+        if (this.jdField_a_of_type_Baub != null)
         {
           Object localObject = BaseApplicationImpl.sApplication.getRuntime();
           if ((localObject instanceof AppInterface))
@@ -43,13 +43,13 @@ class lpe
             localObject = ((AppInterface)localObject).getNetEngine(0);
             if (localObject != null)
             {
-              QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Baps.a() }));
-              ((bapv)localObject).b(this.jdField_a_of_type_Baps);
+              QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Baub.a() }));
+              ((baue)localObject).b(this.jdField_a_of_type_Baub);
             }
           }
         }
         this.jdField_a_of_type_Loy = paramloy;
-        this.jdField_a_of_type_Baps = null;
+        this.jdField_a_of_type_Baub = null;
         this.jdField_a_of_type_Int = 0;
         this.b = 0;
         if (!lpg.a(this.jdField_a_of_type_Loy)) {
@@ -93,21 +93,21 @@ class lpe
       lpd.a(100);
       return false;
     }
-    baps localbaps = new baps();
-    localbaps.jdField_a_of_type_Bapx = new lpf(this, str1, paramloy, paramInt);
-    localbaps.a(str1);
-    localbaps.jdField_a_of_type_JavaLangString = str2;
-    localbaps.jdField_a_of_type_Int = 0;
-    localbaps.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-    localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = new lpf(this, str1, paramloy, paramInt);
+    localbaub.a(str1);
+    localbaub.jdField_a_of_type_JavaLangString = str2;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_c_of_type_JavaLangString = new File(str3).getPath();
+    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
     paramloy = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramloy instanceof QQAppInterface))
     {
       paramloy = ((QQAppInterface)paramloy).getNetEngine(0);
       if (paramloy != null)
       {
-        this.jdField_a_of_type_Baps = localbaps;
-        paramloy.a(this.jdField_a_of_type_Baps);
+        this.jdField_a_of_type_Baub = localbaub;
+        paramloy.a(this.jdField_a_of_type_Baub);
       }
     }
     for (boolean bool1 = true;; bool1 = false)

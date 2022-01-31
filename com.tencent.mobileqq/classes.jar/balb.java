@@ -1,23 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class balb
-  extends alox
+  implements View.OnClickListener
 {
-  balb(baky parambaky) {}
+  balb(bala parambala) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
-    {
-      Iterator localIterator = baky.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((balj)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
-      }
+    if (bala.a(this.a).isShowing()) {
+      bala.a(this.a).dismiss();
     }
   }
 }

@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adtz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adtz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adtz(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_SHOW_BADGE");
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

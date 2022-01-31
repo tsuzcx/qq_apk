@@ -1,35 +1,26 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
 public class bhgv
-  implements InvocationHandler
 {
-  public bhgv(bhgr parambhgr) {}
+  public int a;
+  public int b;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public int a()
   {
-    QMLog.e("TXLivePlayerJSAdapter", "InnerAudioVolumeEvaluationListenerImpl invoke:" + paramMethod.getName());
-    if (Object.class.equals(paramMethod.getDeclaringClass())) {
-      try
-      {
-        paramObject = paramMethod.invoke(this, paramArrayOfObject);
-        return paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        paramObject.printStackTrace();
-        return null;
-      }
-    }
-    if (("onAudioVolumeEvaluationNotify".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Integer)))
-    {
-      int i = ((Integer)paramArrayOfObject[0]).intValue();
-      if (bhgr.a(this.a) != null) {
-        bhgr.a(this.a).a(i);
-      }
-    }
-    return null;
+    return this.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

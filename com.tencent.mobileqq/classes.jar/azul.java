@@ -1,15 +1,21 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class azul
-  extends aelt
+public class azul
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  private static HashMap<String, azuk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public static HashMap<String, azuk> a()
+  {
+    return jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public static List<String> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
+  }
 }
 
 

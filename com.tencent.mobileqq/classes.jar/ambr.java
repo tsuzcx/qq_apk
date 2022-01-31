@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class ambr
-  extends allb
+  extends Handler
 {
-  ambr(ambq paramambq) {}
-  
-  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
+  ambr(ambq paramambq, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    ambq.a(this.a, ambq.a(this.a, paramInt));
-    if ((ambq.a(this.a)) && (ambq.a(this.a) != null)) {
-      this.a.b(ambq.a(this.a).c());
+    do
+    {
+      return;
+      this.a.b();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(ambq.a(this.a)), " ,devStatus:", Integer.valueOf(ambq.b(this.a)), " ,clientType:", Long.valueOf(ambq.a(this.a)), " ,appid:", Long.valueOf(ambq.b(this.a)) });
+      }
+      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(ambq.b(this.a)) });
+    } while (ambq.b(this.a) != 0);
+    if (!this.a.a.hasMessages(101)) {
+      this.a.a.sendEmptyMessageDelayed(101, 3000L);
     }
+    bddb.a(false);
   }
 }
 

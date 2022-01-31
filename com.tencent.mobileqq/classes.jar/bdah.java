@@ -1,95 +1,110 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
 public class bdah
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new bdai(ThreadManager.getSubThreadLooper());
-  private static bhod<Integer> jdField_a_of_type_Bhod = new bhod(40);
-  
-  public static void a(boolean paramBoolean)
+  static
   {
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    if (!bdah.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localHandler.sendEmptyMessage(i);
+      jdField_a_of_type_Boolean = bool;
       return;
     }
   }
   
-  private static Thread[] a()
+  public static String a(byte[] paramArrayOfByte, int paramInt)
   {
     try
     {
-      ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup();
-      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-      localThreadGroup.enumerate(arrayOfThread);
-      return arrayOfThread;
+      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
+      return paramArrayOfByte;
     }
-    catch (Exception localException)
+    catch (UnsupportedEncodingException paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadPriorityManager", 2, "", localException);
-      }
+      throw new AssertionError(paramArrayOfByte);
     }
-    return new Thread[0];
   }
   
-  private static void c()
+  public static byte[] a(String paramString, int paramInt)
   {
-    jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 30000L);
-    if (jdField_a_of_type_Bhod.a() > 0) {}
-    for (;;)
+    return a(paramString.getBytes(), paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bdaj localbdaj = new bdaj(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localbdaj.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+      throw new IllegalArgumentException("bad base-64");
+    }
+    if (localbdaj.jdField_a_of_type_Int == localbdaj.jdField_a_of_type_ArrayOfByte.length) {
+      return localbdaj.jdField_a_of_type_ArrayOfByte;
+    }
+    paramArrayOfByte = new byte[localbdaj.jdField_a_of_type_Int];
+    System.arraycopy(localbdaj.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbdaj.jdField_a_of_type_Int);
+    return paramArrayOfByte;
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
+  {
+    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bdak localbdak = new bdak(paramInt3, null);
+    int i = paramInt2 / 3 * 4;
+    int j;
+    if (localbdak.jdField_a_of_type_Boolean)
     {
-      return;
-      Thread[] arrayOfThread = a();
-      if (arrayOfThread.length < 2)
-      {
-        jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        return;
+      paramInt3 = i;
+      if (paramInt2 % 3 > 0) {
+        paramInt3 = i + 4;
       }
-      Thread localThread1 = Looper.getMainLooper().getThread();
-      Thread localThread2 = ThreadManager.getSubThread();
-      int j = arrayOfThread.length;
-      int i = 0;
-      while (i < j)
+      i = paramInt3;
+      if (localbdak.b)
       {
-        Thread localThread3 = arrayOfThread[i];
-        if ((localThread3 != null) && (localThread1 != null) && (localThread2 != null) && (localThread3.getId() != localThread2.getId()) && (localThread3.getId() != localThread1.getId()) && (localThread3.isAlive()))
+        i = paramInt3;
+        if (paramInt2 > 0)
         {
-          jdField_a_of_type_Bhod.a(localThread3.getId(), Integer.valueOf(localThread3.getPriority()));
-          localThread3.setPriority(jdField_a_of_type_Int);
+          j = (paramInt2 - 1) / 57;
+          if (!localbdak.c) {
+            break label186;
+          }
         }
-        i += 1;
       }
     }
-  }
-  
-  private static void d()
-  {
-    if (jdField_a_of_type_Bhod.a() <= 0) {
-      return;
-    }
-    Thread[] arrayOfThread = a();
-    int j = arrayOfThread.length;
-    int i = 0;
-    while (i < j)
+    label186:
+    for (i = 2;; i = 1)
     {
-      Thread localThread = arrayOfThread[i];
-      if ((localThread != null) && (localThread.isAlive()))
-      {
-        int k = ((Integer)jdField_a_of_type_Bhod.a(localThread.getId(), Integer.valueOf(0))).intValue();
-        if (k != 0) {
-          localThread.setPriority(k);
-        }
+      i = paramInt3 + i * (j + 1);
+      localbdak.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localbdak.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localbdak.jdField_a_of_type_Int == i)) {
+        break label192;
       }
-      i += 1;
+      throw new AssertionError();
+      paramInt3 = i;
+      switch (paramInt2 % 3)
+      {
+      case 0: 
+      default: 
+        paramInt3 = i;
+        break;
+      case 1: 
+        paramInt3 = i + 2;
+        break;
+      case 2: 
+        paramInt3 = i + 3;
+        break;
+      }
     }
-    jdField_a_of_type_Bhod.a();
+    label192:
+    return localbdak.jdField_a_of_type_ArrayOfByte;
   }
 }
 

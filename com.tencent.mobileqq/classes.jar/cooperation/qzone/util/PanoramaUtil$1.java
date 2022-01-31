@@ -2,15 +2,15 @@ package cooperation.qzone.util;
 
 import android.content.Context;
 import android.text.TextUtils;
-import azly;
-import bjqf;
+import azqh;
+import bjum;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.Properties;
 
 public class PanoramaUtil$1
   implements Runnable
 {
-  public PanoramaUtil$1(bjqf parambjqf, String paramString1, String paramString2, int paramInt) {}
+  public PanoramaUtil$1(bjum parambjum, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class PanoramaUtil$1
       localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
       Context localContext = BaseApplication.getContext();
       if (localContext != null) {
-        azly.a(localContext).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
+        azqh.a(localContext).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
       }
     }
   }

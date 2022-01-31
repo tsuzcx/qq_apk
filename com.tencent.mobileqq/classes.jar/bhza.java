@@ -1,58 +1,23 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
 public class bhza
+  extends ReplacementSpan
 {
-  private int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+  private int a;
   
-  private bhza(Activity paramActivity)
+  public bhza(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new bhzb(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
+    this.a = paramInt;
   }
   
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
   
-  private void a()
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    int i = a();
-    int j;
-    int k;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label66;
-      }
-    }
-    label66:
-    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k + ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity));; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
-    {
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    new bhza(paramActivity);
+    return this.a;
   }
 }
 

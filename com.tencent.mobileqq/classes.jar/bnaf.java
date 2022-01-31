@@ -1,19 +1,10 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.List;
 
-public class bnaf
-  implements AdapterView.OnItemSelectedListener
+public abstract interface bnaf
 {
-  public bnaf(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a(long paramLong);
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public abstract void a(List<Long> paramList);
 }
 
 

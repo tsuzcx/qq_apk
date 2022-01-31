@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amsx;
+import amxm;
 
 public class ArResourceManager$1
   implements Runnable
 {
-  public ArResourceManager$1(amsx paramamsx) {}
+  public ArResourceManager$1(amxm paramamxm) {}
   
   public void run()
   {

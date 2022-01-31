@@ -1,49 +1,78 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import java.util.ArrayList;
 
-public class bcjo
+class bcjo
+  implements aiqc
 {
-  public int a;
-  public bcjp a;
-  public bcjq a;
-  public bcjr a;
-  public bcjs a;
-  public String a;
-  public ArrayList<alzx> a;
-  public int b = -1;
+  bcjo(bcjl parambcjl) {}
   
-  public bcjo(String paramString, bcjp parambcjp)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcjp = parambcjp;
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  public bcjo(String paramString, bcjq parambcjq)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcjq = parambcjq;
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  public bcjo(String paramString, bcjr parambcjr)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcjr = parambcjr;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public bcjo(String paramString, bcjs parambcjs)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcjs = parambcjs;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public bcjo(String paramString, ArrayList<alzx> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Int = 3;
+    if ((bcjl.a(this.a) == null) || (bcjl.a(this.a) == null) || (bcjl.a(this.a) == null)) {
+      return;
+    }
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    Intent localIntent = new Intent();
+    localIntent.setClass(bcjl.a(this.a), TroopAvatarWallEditActivity.class);
+    localBundle.putInt("index", 0);
+    localBundle.putString("troop_uin", bcjl.a(this.a).troopUin);
+    localBundle.putLong("troop_flag_ext", bcjl.a(this.a).dwGroupFlagExt);
+    localBundle.putBoolean("isUseClassAvatar", bcjl.a(this.a).isUseClassAvatar);
+    boolean bool = localBundle.getBoolean("IS_EDIT");
+    int i;
+    if (!localBundle.getBoolean("IS_COVER"))
+    {
+      i = 1;
+      if (i == 0) {
+        break label232;
+      }
+      paramBundle = (ArrayList)bcjl.a(this.a);
+      label165:
+      if (!bool) {
+        break label246;
+      }
+      localBundle.putInt("vistor_type", 1);
+      label177:
+      localBundle.putParcelableArrayList("PHOTO_LIST", paramBundle);
+      if (i == 0) {
+        break label264;
+      }
+      if (!bool) {
+        break label257;
+      }
+      i = 260;
+    }
+    for (;;)
+    {
+      localIntent.putExtras(localBundle);
+      localIntent.addFlags(603979776);
+      bcjl.a(this.a).startActivityForResult(localIntent, i);
+      return;
+      i = 0;
+      break;
+      label232:
+      paramBundle = (ArrayList)bcjl.b(this.a);
+      break label165;
+      label246:
+      localBundle.putInt("vistor_type", 2);
+      break label177;
+      label257:
+      i = 261;
+      continue;
+      label264:
+      if (bool) {
+        i = 258;
+      } else {
+        i = 259;
+      }
+    }
   }
 }
 

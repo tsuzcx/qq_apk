@@ -98,7 +98,12 @@ public class StageEffectView
     jdField_b_of_type_Float = (float)Math.cos(-0.3141592653589793D);
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 17500, 2500, 15000, 5000, 12500, 7500, 10000 };
     jdField_a_of_type_ArrayOfDouble = new double[] { 0.0D, 0.6981317007977318D, 2.094395102393195D, 2.879793265790644D, 3.141592653589793D, 3.403392041388943D, 4.188790204786391D, 5.585053606381854D };
-    jdField_a_of_type_Array2dOfInt = new int[][] { new int[0], { 0 }, { 1, 0 }, { 1, 0, 2 }, { 3, 1, 0, 2 }, { 3, 1, 0, 2, 4 }, { 5, 3, 1, 0, 2, 4 }, { 5, 3, 1, 0, 2, 4, 6 }, { 5, 3, 1, 0, 2, 4, 6, 7 } };
+    int[] arrayOfInt1 = new int[0];
+    int[] arrayOfInt2 = { 0 };
+    int[] arrayOfInt3 = { 1, 0, 2 };
+    int[] arrayOfInt4 = { 3, 1, 0, 2 };
+    int[] arrayOfInt5 = { 5, 3, 1, 0, 2, 4, 6 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { arrayOfInt1, arrayOfInt2, { 1, 0 }, arrayOfInt3, arrayOfInt4, { 3, 1, 0, 2, 4 }, { 5, 3, 1, 0, 2, 4 }, arrayOfInt5, { 5, 3, 1, 0, 2, 4, 6, 7 } };
     if (Build.VERSION.SDK_INT >= 11) {}
     for (;;)
     {

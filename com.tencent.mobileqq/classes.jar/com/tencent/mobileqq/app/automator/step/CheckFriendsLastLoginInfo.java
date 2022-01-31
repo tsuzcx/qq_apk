@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alox;
-import amcx;
+import altm;
+import amhm;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
 {
-  private alox a;
+  private altm a;
   
   public int a()
   {
     if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1)).e())
     {
-      if (this.jdField_a_of_type_Alox == null)
+      if (this.jdField_a_of_type_Altm == null)
       {
-        this.jdField_a_of_type_Alox = new amcx(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Alox);
+        this.jdField_a_of_type_Altm = new amhm(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Altm);
       }
       return 2;
     }
@@ -28,10 +28,10 @@ public class CheckFriendsLastLoginInfo
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alox != null)
+    if (this.jdField_a_of_type_Altm != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alox);
-      this.jdField_a_of_type_Alox = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Altm);
+      this.jdField_a_of_type_Altm = null;
     }
   }
 }

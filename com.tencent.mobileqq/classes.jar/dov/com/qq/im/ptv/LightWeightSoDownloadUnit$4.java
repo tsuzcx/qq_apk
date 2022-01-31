@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bdfq;
-import bmcg;
-import bmch;
-import bmci;
-import bmcv;
+import bdjz;
+import bmgs;
+import bmgt;
+import bmgu;
+import bmhh;
 
 public class LightWeightSoDownloadUnit$4
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$4(bmcg parambmcg, String paramString) {}
+  public LightWeightSoDownloadUnit$4(bmgs parambmgs, String paramString) {}
   
   public void run()
   {
-    bmch localbmch = new bmch(this);
-    bmci localbmci = new bmci(this);
-    bdfq.showPermissionSettingDialog(bmcg.a(this.this$0).a(), null, this.a, localbmch, localbmch, localbmci);
+    bmgt localbmgt = new bmgt(this);
+    bmgu localbmgu = new bmgu(this);
+    bdjz.showPermissionSettingDialog(bmgs.a(this.this$0).a(), null, this.a, localbmgt, localbmgt, localbmgu);
   }
 }
 

@@ -1,27 +1,98 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import java.util.List;
 
 public class bbcd
-  extends amle
 {
-  public bbcd(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static bbcf a(bbax parambbax)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if ((parambbax != null) && (parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null) && (parambbax.jdField_a_of_type_Bbce != null) && (parambbax.jdField_a_of_type_JavaUtilList.size() != 0))
+    {
+      if ("c2c_pic_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbal();
+      }
+      if ("grp_pic_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbap();
+      }
+      if ("grp_ptt_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbar();
+      }
+      if ("c2c_pic_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbak();
+      }
+      if ("grp_pic_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbao();
+      }
+      if ("c2c_ptt_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bban();
+      }
+      if ("c2c_ptt_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbam();
+      }
+      if ("grp_ptt_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbaq();
+      }
+      if ("short_video_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbch();
+      }
+      if ("short_video_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbcj();
+      }
+      if ("multi_msg_dw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbas();
+      }
+      if ("multi_msg_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbat();
+      }
+      if (("nearby_people_pic_up".equals(parambbax.jdField_a_of_type_JavaLangString)) || ("friend_avatar_up".equals(parambbax.jdField_a_of_type_JavaLangString))) {
+        return new bbau();
+      }
+      if ("short_video_fw".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbci();
+      }
+      if ("bdh_common_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbai();
+      }
+      if ("pa_long_message".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbav();
+      }
+      if ("art_filter_up".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbah();
+      }
+      if ("share_pic_to_wx".equals(parambbax.jdField_a_of_type_JavaLangString)) {
+        return new bbcg();
+      }
+    }
+    return null;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static void a(bbax parambbax)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    bbcf localbbcf = a(parambbax);
+    if (localbbcf != null) {
+      localbbcf.a(parambbax);
     }
-    if (paramSosoLbsInfo != null)
+  }
+  
+  public static void a(bbax parambbax, bbbm parambbbm)
+  {
+    if ((parambbax != null) && (parambbax.jdField_a_of_type_Bbce != null))
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
+      parambbax.jdField_a_of_type_Bavq = null;
+      parambbax.jdField_a_of_type_Bbce.a(parambbax, parambbbm);
+      parambbax.jdField_a_of_type_Bbce = null;
+      parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = null;
     }
-    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
+  }
+  
+  public static void b(bbax parambbax)
+  {
+    if ((parambbax != null) && (parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.b(parambbax.jdField_a_of_type_Bavq);
+      parambbax.jdField_a_of_type_Bbce = null;
+      parambbax.jdField_a_of_type_Bavq = null;
+      parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = null;
+    }
   }
 }
 

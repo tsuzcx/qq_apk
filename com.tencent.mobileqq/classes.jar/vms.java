@@ -1,30 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
 
 class vms
-  extends uoj
+  extends PagerAdapter
 {
-  vms(vmq paramvmq) {}
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public vms(List<View> paramList)
   {
-    wsv.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!vml.b(this.a.a)) {
-      vml.a(this.a.a).p();
-    }
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    uqo localuqo = (uqo)urr.a(17);
-    localuqo.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localuqo.a(paramCommentEntry);
-    return true;
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

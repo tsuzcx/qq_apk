@@ -1,13 +1,37 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aehp
-  implements berl
+  extends bcmj
 {
-  public aehp(VisitorsActivity paramVisitorsActivity) {}
+  public aehp(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a(paramInt2);
+    if ((paramBoolean) && (paramBundle != null)) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        new structmsg.StructMsg().mergeFrom(paramBundle);
+        TroopRequestActivity.a(this.a, 1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
+        }
+        this.a.i();
+        QQToast.a(this.a, this.a.getString(2131697811), 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+    }
+    this.a.i();
+    QQToast.a(this.a, this.a.getString(2131697811), 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,18 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import org.json.JSONObject;
 
-public class bffo
+class bffo
   implements DialogInterface.OnClickListener
 {
-  public bffo(DownloadJSApi.2 param2) {}
+  bffo(bffm parambffm, preAuth.PreAuthResponse paramPreAuthResponse, JSONObject paramJSONObject) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfjy.r, false);
-    bffn.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
     paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bffm.a.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

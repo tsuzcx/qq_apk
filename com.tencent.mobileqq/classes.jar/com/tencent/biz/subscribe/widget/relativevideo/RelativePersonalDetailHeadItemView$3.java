@@ -3,7 +3,7 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import wsv;
+import wxe;
 
 class RelativePersonalDetailHeadItemView$3
   implements Runnable
@@ -16,28 +16,28 @@ class RelativePersonalDetailHeadItemView$3
     {
       RelativePersonalDetailHeadItemView.a(this.this$0).setVisibility(8);
       RelativePersonalDetailHeadItemView.b(this.this$0).setVisibility(8);
-      wsv.c("RelativePersonalDetailH", "updateUploadBoxStatus  PublishBoxStatusEvent  GONE");
+      wxe.c("RelativePersonalDetailH", "updateUploadBoxStatus  PublishBoxStatusEvent  GONE");
       return;
     }
     RelativePersonalDetailHeadItemView.a(this.this$0).setVisibility(0);
     RelativePersonalDetailHeadItemView.b(this.this$0).setVisibility(0);
-    wsv.c("RelativePersonalDetailH", "updateUploadBoxStatus  PublishBoxStatusEvent  VISIBLE  taskCount = " + this.a.taskCount + "  hasRunningTask:" + this.a.hasRunningTask + "  hasOfflineWaitingTask:" + this.a.hasOfflineWaitingTask);
+    wxe.c("RelativePersonalDetailH", "updateUploadBoxStatus  PublishBoxStatusEvent  VISIBLE  taskCount = " + this.a.taskCount + "  hasRunningTask:" + this.a.hasRunningTask + "  hasOfflineWaitingTask:" + this.a.hasOfflineWaitingTask);
     if (this.a.hasRunningTask)
     {
       RelativePersonalDetailHeadItemView.a(this.this$0);
-      RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130849732);
+      RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130849805);
       RelativePersonalDetailHeadItemView.b(this.this$0).setText(String.valueOf(this.a.taskCount));
       return;
     }
     if (this.a.hasOfflineWaitingTask)
     {
       RelativePersonalDetailHeadItemView.b(this.this$0);
-      RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848090);
+      RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848163);
       RelativePersonalDetailHeadItemView.b(this.this$0).setText("");
       return;
     }
     RelativePersonalDetailHeadItemView.b(this.this$0);
-    RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848089);
+    RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848162);
     RelativePersonalDetailHeadItemView.b(this.this$0).setText("");
   }
 }

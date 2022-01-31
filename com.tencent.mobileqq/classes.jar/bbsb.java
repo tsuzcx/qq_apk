@@ -1,109 +1,98 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-
-class bbsb
-  extends ypt
+public class bbsb
 {
-  bbsb(bbsa parambbsa) {}
-  
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public static int a(String paramString)
   {
-    this.a.g = ayvc.a();
-    if (paramBundle.getLong("troopUin") != this.a.jdField_b_of_type_Long) {}
-    boolean bool;
+    int i = -1;
+    if (paramString.equals("SCANNING")) {
+      i = 0;
+    }
     do
     {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("itemKey");
-      } while ((str == null) || (!UUID.fromString(str).equals(this.a.a())) || (this.a.jdField_b_of_type_Boolean));
-      i = paramBundle.getInt("thumbNail");
-      bool = paramBundle.getBoolean("isPreview", false);
-    } while ((i != 0) || (bool));
-    if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-    {
-      bbrc.a("TroopFileDownloadWorker", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:false  errCode:" + paramInt);
-      this.a.jdField_a_of_type_Bbqo.c = 1;
-      this.a.jdField_a_of_type_Bbqo.d = paramInt;
-      this.a.a(true, bclj.b, bclj.A, 103);
-      return;
-    }
-    int i = paramDownloadFileRspBody.int32_ret_code.get();
-    bbrc.c("TroopFileDownloadWorker", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
-    if (i < 0) {
-      switch (i)
-      {
-      case -134: 
-      default: 
-        if ((i != -134) && (i != -133) && (i != -132))
-        {
-          this.a.jdField_a_of_type_Bbqo.c = 1;
-          this.a.jdField_a_of_type_Bbqo.d = i;
-          this.a.c = true;
-          this.a.a(true, bclj.c, i, 1);
-          return;
-        }
-        break;
-      case -107: 
-      case -102: 
-        this.a.jdField_a_of_type_Bbqo.c = 1;
-        this.a.jdField_a_of_type_Bbqo.d = i;
-        this.a.c = true;
-        this.a.a(true, bclj.c, i, 101);
-        return;
-      case -302: 
-      case -301: 
-      case -103: 
-        bbqm.b(this.a.jdField_b_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 301);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
-          new VFSFile(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.deleteThumbnailFile(this.a.jdField_b_of_type_Long, 128);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.deleteThumbnailFile(this.a.jdField_b_of_type_Long, 640);
-        this.a.jdField_a_of_type_Bbqo.c = 1;
-        this.a.jdField_a_of_type_Bbqo.d = i;
-        this.a.c = true;
-        this.a.a(true, bclj.c, i);
-        return;
+      return i;
+      if (paramString.equals("UPLOADING")) {
+        return 1;
       }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = bdcv.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = bdcv.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
+      if (paramString.equals("UPLOAD_SUSPEND")) {
+        return 2;
+      }
+      if (paramString.equals("UPLOAD_INTERRUPT")) {
+        return 3;
+      }
+      if (paramString.equals("FORWARDING")) {
+        return 4;
+      }
+      if (paramString.equals("FORWARD_FAILED")) {
+        return 5;
+      }
+      if (paramString.equals("UPLOADED")) {
+        return 6;
+      }
+      if (paramString.equals("NOT_DOWNLOAD")) {
+        return 7;
+      }
+      if (paramString.equals("DOWNLOADING")) {
+        return 8;
+      }
+      if (paramString.equals("DOWNLOAD_SUSPEND")) {
+        return 9;
+      }
+      if (paramString.equals("DOWNLOAD_INTERRUPT")) {
+        return 10;
+      }
+      if (paramString.equals("DOWNLOADED")) {
+        return 11;
+      }
+      if (paramString.equals("DELETED")) {
+        return 12;
+      }
+    } while (!paramString.equals("OTHER_UPLOADING"));
+    return 13;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      bbrc.a("TroopFileDownloadWorker", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult DownloadIp is null");
-      bcli.a("gfile", "ipnull", "", "", "", "");
+    default: 
+      return "";
+    case 0: 
+      return "SCANNING";
+    case 1: 
+      return "UPLOADING";
+    case 2: 
+      return "UPLOAD_SUSPEND";
+    case 3: 
+      return "UPLOAD_INTERRUPT";
+    case 4: 
+      return "FORWARDING";
+    case 5: 
+      return "FORWARD_FAILED";
+    case 6: 
+      return "UPLOADED";
+    case 7: 
+      return "NOT_DOWNLOAD";
+    case 8: 
+      return "DOWNLOADING";
+    case 9: 
+      return "DOWNLOAD_SUSPEND";
+    case 10: 
+      return "DOWNLOAD_INTERRUPT";
+    case 11: 
+      return "DOWNLOADED";
+    case 12: 
+      return "DELETED";
     }
-    if ((i == -133) || (i == -132)) {
-      bbqm.a(this.a.jdField_b_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status, 309);
-    }
-    while (i != -134)
-    {
-      bbrc.c("TroopFileDownloadWorker", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult DownloadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " DownloadDNS:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + " NameForSave:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave + " DownloadUrl:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + " cookieValue:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
-      this.a.g();
-      return;
-    }
-    this.a.jdField_a_of_type_Bbqo.c = 1;
-    this.a.jdField_a_of_type_Bbqo.d = i;
-    this.a.c = true;
-    this.a.a(true, bclj.c, i, 302);
+    return "OTHER_UPLOADING";
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
   }
 }
 

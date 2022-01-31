@@ -1,43 +1,31 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
-
 public class awqq
-  implements ViewPager.OnPageChangeListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public awqq(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public boolean a()
   {
-    if (paramInt == 1)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
+      bool1 = bool2;
+      if (this.b.trim().length() > 0) {
+        bool1 = false;
       }
     }
+    return bool1;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

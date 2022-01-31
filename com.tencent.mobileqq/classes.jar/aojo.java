@@ -1,58 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class aojo
+class aojo
+  implements Comparator<aojp>
 {
-  public int a;
-  public boolean a;
+  aojo(aojk paramaojk, boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public aojo()
+  public int a(aojp paramaojp1, aojp paramaojp2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public static aojo a(aogf paramaogf)
-  {
-    boolean bool = true;
-    aojo localaojo = new aojo();
-    if (paramaogf != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    int i = -1;
+    if (paramaojp1.jdField_a_of_type_Int > paramaojp2.jdField_a_of_type_Int) {}
+    do
     {
-      try
-      {
-        paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
-        if (paramaogf.optInt("isTroopCardOpen", 1) != 1) {
-          continue;
-        }
-        localaojo.jdField_a_of_type_Boolean = bool;
-        localaojo.jdField_a_of_type_Int = paramaogf.optInt("prepareCount", 3);
+      return 1;
+      if (paramaojp1.jdField_a_of_type_Int < paramaojp2.jdField_a_of_type_Int) {
+        return -1;
       }
-      catch (Exception paramaogf)
+      if ((paramaojp1.jdField_a_of_type_Boolean) && (!paramaojp2.jdField_a_of_type_Boolean))
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          return i;
+          i = 1;
         }
-        QLog.d("GroupIntimateRelationshipBean", 2, "parse error->" + paramaogf.toString());
       }
-      return localaojo;
-      bool = false;
+      if ((paramaojp1.jdField_a_of_type_Boolean) || (!paramaojp2.jdField_a_of_type_Boolean)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return -1;
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaojp1.jdField_a_of_type_Float - paramaojp2.jdField_a_of_type_Float) > 3.0F)) {
+      return Float.compare(paramaojp1.jdField_a_of_type_Float, paramaojp2.jdField_a_of_type_Float);
     }
-    return localaojo;
-  }
-  
-  public String toString()
-  {
-    return "isTroopCardOpen:" + this.jdField_a_of_type_Boolean + " prepareCount:" + this.jdField_a_of_type_Int;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojo
  * JD-Core Version:    0.7.0.1
  */

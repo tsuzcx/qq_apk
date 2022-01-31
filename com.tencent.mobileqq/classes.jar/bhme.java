@@ -1,124 +1,40 @@
-import android.util.Pair;
-import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.Toast;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.ui.MainPageFragment;
+import com.tencent.qqmini.sdk.utils.GameWnsUtils;
 
-public abstract class bhme
+public class bhme
+  implements View.OnLongClickListener
 {
-  private static int a(ByteBuffer paramByteBuffer)
+  public bhme(MainPageFragment paramMainPageFragment) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    a(paramByteBuffer);
-    int j = paramByteBuffer.capacity();
-    if (j < 22) {}
-    for (;;)
+    if ((paramView.getId() == 2131370631) && (GameWnsUtils.enablePersistentDebugVersion()) && (MainPageFragment.a(this.a) != null))
     {
-      return -1;
-      int k = Math.min(j - 22, 65535);
-      int i = 0;
-      while (i < k)
+      paramView = MiniAppEnv.g().getContext().getApplicationContext().getSharedPreferences("persistent_debug_version_" + this.a.a(), 4);
+      if (paramView.getBoolean("persistent", false))
       {
-        int m = j - 22 - i;
-        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
-          return m;
-        }
-        i += 1;
+        paramView.edit().remove("persistent").apply();
+        QMLog.e("MainPageFragment", "close persistent debug version");
+        Toast.makeText(this.a.getActivity(), this.a.getResources().getString(2131694335), 1).show();
       }
     }
-  }
-  
-  private static int a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
-  }
-  
-  public static long a(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 16);
-  }
-  
-  private static long a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
-  }
-  
-  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
-  {
-    Object localObject;
-    if (paramRandomAccessFile.length() < 22L) {
-      localObject = null;
-    }
-    Pair localPair;
-    do
-    {
-      return localObject;
-      localPair = a(paramRandomAccessFile, 0);
-      localObject = localPair;
-    } while (localPair != null);
-    return a(paramRandomAccessFile, 65535);
-  }
-  
-  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
-    }
-    long l = paramRandomAccessFile.length();
-    if (l < 22L) {}
-    ByteBuffer localByteBuffer;
-    do
-    {
-      return null;
-      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
-      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-      l -= localByteBuffer.capacity();
-      paramRandomAccessFile.seek(l);
-      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
-      paramInt = a(localByteBuffer);
-    } while (paramInt == -1);
-    localByteBuffer.position(paramInt);
-    paramRandomAccessFile = localByteBuffer.slice();
-    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
-    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer)
-  {
-    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
-      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
-    }
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
-  {
-    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
-      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
-    }
-    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
-  }
-  
-  static void a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer);
-    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
-  }
-  
-  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
-  {
-    paramLong -= 20L;
-    if (paramLong < 0L) {}
-    do
+    else
     {
       return false;
-      paramRandomAccessFile.seek(paramLong);
-    } while (paramRandomAccessFile.readInt() != 1347094023);
-    return true;
-  }
-  
-  public static long b(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 12);
+    }
+    paramView.edit().putBoolean("persistent", true).apply();
+    QMLog.e("MainPageFragment", "open persistent debug version");
+    Toast.makeText(this.a.getActivity(), this.a.getResources().getString(2131694339), 1).show();
+    return false;
   }
 }
 

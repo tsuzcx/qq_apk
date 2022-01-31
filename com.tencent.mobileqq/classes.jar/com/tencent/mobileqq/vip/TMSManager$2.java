@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vip;
 
-import bdwm;
-import bdwo;
+import beav;
+import beax;
 import com.tencent.qphone.base.util.QLog;
 
 public class TMSManager$2
   implements Runnable
 {
-  public TMSManager$2(bdwm parambdwm) {}
+  public TMSManager$2(beav parambeav) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("KC.TMSManager", 2, "no file and requestDownloadDepends");
     }
-    bdwm.a().a();
+    beav.a().a();
   }
 }
 

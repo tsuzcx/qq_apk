@@ -1,18 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-
-public class bfly
-  implements View.OnClickListener
+public abstract interface bfly
 {
-  public bfly(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    bfgx.b(bfgz.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
-    ApkFileDownloadFragment.a(this.a).finish();
-  }
+  public abstract void a(String paramString, byte[] paramArrayOfByte);
 }
 
 

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.intervideo.groupvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import aowf;
-import azmj;
+import apao;
+import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVPluginReportInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -30,10 +30,10 @@ public class IVPluginDataReporter
   private int mOpResult;
   private String mOpType = "";
   private int mPlatform = 2;
-  private String mQQVersion = "8.3.3";
+  private String mQQVersion = "8.3.5";
   private String mRoomType;
   private String mRoomid;
-  private String mSdkversion = String.valueOf(aowf.a(BaseApplicationImpl.getContext()));
+  private String mSdkversion = String.valueOf(apao.a(BaseApplicationImpl.getContext()));
   private String mSource;
   private String mSysVersion = Build.VERSION.RELEASE;
   private String mTimeLong;
@@ -106,7 +106,7 @@ public class IVPluginDataReporter
       QLog.e("IVPluginDataReporter", 1, "has null str ,stop report");
       return;
     }
-    azmj.b(null, "dc03445", this.mDepartment, this.mToUin, this.mOpType, this.mOpName, this.mOpIn, 1, this.mOpResult, this.d1, this.d2, this.d3, this.d4 + "|" + this.mTimeLong + "|" + this.mRoomid + "|" + this.mRoomType + "|" + this.mSource + "|" + this.networktype + "|" + this.mPlatform + "|" + this.mMacVersion + "|" + this.mSysVersion + "|" + this.mFrameVersion + "|" + this.mSdkversion + "|" + this.mQQVersion + "|" + str + "|" + this.mLastOpName);
+    azqs.b(null, "dc03445", this.mDepartment, this.mToUin, this.mOpType, this.mOpName, this.mOpIn, 1, this.mOpResult, this.d1, this.d2, this.d3, this.d4 + "|" + this.mTimeLong + "|" + this.mRoomid + "|" + this.mRoomType + "|" + this.mSource + "|" + this.networktype + "|" + this.mPlatform + "|" + this.mMacVersion + "|" + this.mSysVersion + "|" + this.mFrameVersion + "|" + this.mSdkversion + "|" + this.mQQVersion + "|" + str + "|" + this.mLastOpName);
   }
   
   public IVPluginDataReporter toUin(String paramString)

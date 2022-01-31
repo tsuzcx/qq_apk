@@ -1,74 +1,33 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.GamePartyPlugin;
 
-public abstract class zdf
+public class zdf
+  extends apmh
 {
-  public HashMap<String, Integer> a = new HashMap();
+  public zdf(GamePartyPlugin paramGamePartyPlugin) {}
   
-  public static long a(long paramLong)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    Object localObject = new ByteArrayOutputStream(8);
-    DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-    try
+    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
     {
-      localDataOutputStream.writeLong(paramLong);
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      localObject[0] = 0;
-      localObject[1] = 0;
-      paramLong = new DataInputStream(new ByteArrayInputStream((byte[])localObject)).readLong();
-      return paramLong;
+      String str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response").getString("result");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
+        this.a.callJs(str, new String[] { paramBundle });
+      }
     }
-    catch (IOException localIOException) {}
-    return 0L;
   }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return null;
-  }
-  
-  public final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte) {}
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
-  
-  public byte[] a(ToServiceMsg paramToServiceMsg)
-  {
-    return null;
-  }
-  
-  public abstract String[] a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdf
  * JD-Core Version:    0.7.0.1
  */

@@ -122,7 +122,7 @@ public class nwc
     ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).setNotifyEndRefresh(new nwd(this));
     ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(new nwf(this));
     p();
-    this.jdField_a_of_type_Rkp = new rkp((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131379755), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131377224), this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Rkp = new rkp((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131379813), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131377278), this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_Rjg.a(this.jdField_a_of_type_Rkp);
     oxb.a().a(this.jdField_a_of_type_Oxe);
     owy.a().b();

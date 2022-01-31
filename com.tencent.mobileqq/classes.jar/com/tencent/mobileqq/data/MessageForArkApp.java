@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import afds;
-import afdt;
-import afdx;
-import afeg;
-import alpo;
-import alyh;
+import afih;
+import afii;
+import afim;
+import afiv;
+import alud;
+import amcw;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,21 +19,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import anho;
-import anjp;
-import anjs;
-import anjv;
-import ankh;
-import ankl;
-import ankt;
-import aoip;
-import apaa;
-import apab;
-import apac;
-import ayvj;
-import azmj;
-import azmz;
-import bfei;
+import anlx;
+import anny;
+import anob;
+import anoe;
+import anoq;
+import anou;
+import anpc;
+import aomy;
+import apej;
+import apek;
+import apel;
+import ayzs;
+import azqs;
+import azri;
+import bfir;
 import com.tencent.ark.ArkViewImplement.ArkViewInterface;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.ArkViewModelBase.ErrorInfo;
@@ -68,7 +68,7 @@ import syb;
 
 public class MessageForArkApp
   extends ChatMessage
-  implements anho
+  implements anlx
 {
   private static final String REPORT_KEY_APP_NAME = "AppName";
   private static final String REPORT_KEY_APP_VIEW = "AppView";
@@ -82,7 +82,7 @@ public class MessageForArkApp
   private static final String TAG = "MessageForArkApp";
   private static final String T_REPORT_TAIL_DOWNLOAD_THIRD_APP = "0X800A86E";
   private static final String T_REPORT_TAIL_OPEN_THIRD_APP = "0X800A86D";
-  public afds arkContainer;
+  public afih arkContainer;
   public ArkAppMessage ark_app_message;
   public String compatibleMsg;
   public boolean isMultiItemMsg;
@@ -102,7 +102,7 @@ public class MessageForArkApp
     paramString2.putString("packageName", paramString1);
     paramString2.putString("appId", paramLong + "");
     ArkAppCenter.a(paramString2);
-    bfei.b(paramActivity, paramString2);
+    bfir.b(paramActivity, paramString2);
     return true;
   }
   
@@ -127,7 +127,7 @@ public class MessageForArkApp
         }
         try
         {
-          paramString3 = (alyh)paramQQAppInterface.a(23);
+          paramString3 = (amcw)paramQQAppInterface.a(23);
           paramString2.putExtra("report_open_type", "arkmsg_source");
           paramString2.putExtra("report_url", "");
           paramString2.putExtra("report_from", "1");
@@ -173,13 +173,13 @@ public class MessageForArkApp
     ArkAppCenter.a(localIntent);
     syb.a(this.ark_app_message.containStructMsg, localIntent, paramString1);
     paramContext.startActivity(localIntent);
-    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
     return true;
   }
   
   public static int dp2px(float paramFloat)
   {
-    return dp2px(paramFloat, anjs.a());
+    return dp2px(paramFloat, anob.a());
   }
   
   public static int dp2px(float paramFloat1, float paramFloat2)
@@ -259,10 +259,10 @@ public class MessageForArkApp
       if ((paramChatMessage instanceof MessageForArkApp))
       {
         Object localObject1 = (MessageForArkApp)paramChatMessage;
-        if (aoip.a().a(((MessageForArkApp)localObject1).ark_app_message.appName, ((MessageForArkApp)localObject1).ark_app_message.appView))
+        if (aomy.a().a(((MessageForArkApp)localObject1).ark_app_message.appName, ((MessageForArkApp)localObject1).ark_app_message.appView))
         {
           localObject1 = new JSONObject(((MessageForArkApp)localObject1).ark_app_message.toAppXml());
-          Object localObject2 = aoip.a().a((JSONObject)localObject1);
+          Object localObject2 = aomy.a().a((JSONObject)localObject1);
           localObject1 = (String)((Map)localObject2).get("kArkMsgReplyTag");
           localObject2 = (String)((Map)localObject2).get("kArkMsgReplyTitle");
           localStringBuilder.append((String)localObject1).append((String)localObject2);
@@ -340,7 +340,7 @@ public class MessageForArkApp
           break label578;
         }
         if (Math.random() < 0.01D) {
-          azmz.a(BaseApplicationImpl.getContext()).a("", "ArkViewForwardAllow", true, 0L, 0L, (HashMap)localObject, "");
+          azri.a(BaseApplicationImpl.getContext()).a("", "ArkViewForwardAllow", true, 0L, 0L, (HashMap)localObject, "");
         }
         label333:
         if ((!paramBoolean) || (!bool2)) {
@@ -373,7 +373,7 @@ public class MessageForArkApp
           ArkAppCenter.c("MessageForArkApp", String.format("ArkSafe.canForward forward is not allowed and appName=%s,retCode=%d", new Object[] { localArkAppMessage.appName, Integer.valueOf(localMessageForArkApp.arkContainer.getErrorInfo().retCode) }));
           return false;
         }
-        paramMessageRecord = (Boolean)anjp.a(0, localArkAppMessage.appName, localMessageForArkApp, Boolean.valueOf(true));
+        paramMessageRecord = (Boolean)anny.a(0, localArkAppMessage.appName, localMessageForArkApp, Boolean.valueOf(true));
         if ((paramMessageRecord != null) && (!paramMessageRecord.booleanValue()))
         {
           ArkAppCenter.c("MessageForArkApp", "ArkSafe.canForward CheckResult is failed and is not allowed");
@@ -387,7 +387,7 @@ public class MessageForArkApp
         break label265;
         paramMessageRecord = localArkAppMessage.appView;
         break label289;
-        azmz.a(BaseApplicationImpl.getContext()).a("", "ArkViewForwardForbidden", true, 0L, 0L, (HashMap)localObject, "");
+        azri.a(BaseApplicationImpl.getContext()).a("", "ArkViewForwardForbidden", true, 0L, 0L, (HashMap)localObject, "");
         break label333;
       }
     }
@@ -447,7 +447,7 @@ public class MessageForArkApp
   public static MessageForArkApp.Size limitToSizeRange(float paramFloat, int paramInt1, int paramInt2)
   {
     int k = 30;
-    int j = (int)(anjs.a / paramFloat);
+    int j = (int)(anob.a / paramFloat);
     int i = 390;
     if (paramInt1 < 30) {
       paramInt1 = 30;
@@ -488,7 +488,7 @@ public class MessageForArkApp
       if (l == 0L)
       {
         paramContext = "";
-        azmj.b(null, "dc00898", "", "", "0X800A86D", "0X800A86D", 0, 0, paramContext, "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A86D", "0X800A86D", 0, 0, paramContext, "", "", "");
         paramContext = "run";
       }
     }
@@ -508,7 +508,7 @@ public class MessageForArkApp
         label220:
         for (paramContext = "";; paramContext = String.valueOf(l))
         {
-          azmj.b(null, "dc00898", "", "", "0X800A86E", "0X800A86E", 0, 0, paramContext, "", "", "");
+          azqs.b(null, "dc00898", "", "", "0X800A86E", "0X800A86E", 0, 0, paramContext, "", "", "");
           paramContext = "setup";
           break;
         }
@@ -529,35 +529,35 @@ public class MessageForArkApp
     return paramInt / paramFloat;
   }
   
-  public void attachArkView(ankh paramankh, ankl paramankl, int paramInt)
+  public void attachArkView(anoq paramanoq, anou paramanou, int paramInt)
   {
-    paramankl.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844422);
+    paramanou.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844494);
     if (this.arkContainer == null)
     {
-      this.arkContainer = new afds();
-      this.arkContainer.a(paramankh);
-      anjv.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "ShowView", this.ark_app_message.appName, null, anjv.f, 0, this.ark_app_message.from);
+      this.arkContainer = new afih();
+      this.arkContainer.a(paramanoq);
+      anoe.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "ShowView", this.ark_app_message.appName, null, anoe.f, 0, this.ark_app_message.from);
       if (!TextUtils.isEmpty(this.ark_app_message.appId)) {
-        anjv.a(null, "ShowSdkArkView", this.ark_app_message.appName, null, anjv.f, 0, this.ark_app_message.from);
+        anoe.a(null, "ShowSdkArkView", this.ark_app_message.appName, null, anoe.f, 0, this.ark_app_message.from);
       }
     }
     ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
     localConfig.fromString(this.ark_app_message.config);
-    this.arkContainer.a(paramankh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.arkContainer.a(paramanoq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     Object localObject1 = this.arkContainer;
-    ((afds)localObject1).a(this.ark_app_message.appName, this.ark_app_message.appView, this.ark_app_message.appMinVersion, this.ark_app_message.metaList, anjs.a(), this, paramankh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    ((afih)localObject1).a(this.ark_app_message.appName, this.ark_app_message.appView, this.ark_app_message.appMinVersion, this.ark_app_message.metaList, anob.a(), this, paramanoq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     Object localObject2;
     ArkAppView localArkAppView;
     if (!this.isMultiItemMsg)
     {
-      ((afds)localObject1).setFixSize(anjs.a, anjs.a);
-      ((afds)localObject1).setMaxSize(anjs.a, anjs.a);
-      ((afds)localObject1).setMinSize(anjs.a * 7 / 10, anjs.a);
-      QLog.d("MessageForArkApp", 1, new Object[] { "ArkFold.MessageForArkApp.attachArkView ArkAppCenterUtil.sChatBubbleMaxWidth=", Integer.valueOf(anjs.a), ",app=", this.ark_app_message.appName });
-      anjs.a("MessageForArkApp.attachArkView", paramankh.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new apaa(this, paramankl, (afds)localObject1, paramankh, paramInt);
-      localObject2 = paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-      localArkAppView = paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+      ((afih)localObject1).setFixSize(anob.a, anob.a);
+      ((afih)localObject1).setMaxSize(anob.a, anob.a);
+      ((afih)localObject1).setMinSize(anob.a * 7 / 10, anob.a);
+      QLog.d("MessageForArkApp", 1, new Object[] { "ArkFold.MessageForArkApp.attachArkView ArkAppCenterUtil.sChatBubbleMaxWidth=", Integer.valueOf(anob.a), ",app=", this.ark_app_message.appName });
+      anob.a("MessageForArkApp.attachArkView", paramanoq.jdField_a_of_type_AndroidContentContext);
+      localObject1 = new apej(this, paramanou, (afih)localObject1, paramanoq, paramInt);
+      localObject2 = paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+      localArkAppView = paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
       ((ArkViewImplement.ArkViewInterface)localObject2).setClipRadius(16.0F);
       if (!isRectangleBorder(localConfig)) {
         break label570;
@@ -566,17 +566,17 @@ public class MessageForArkApp
     }
     for (;;)
     {
-      localArkAppView.a(this.arkContainer, paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
-      ((ArkViewImplement.ArkViewInterface)localObject2).setOnTouchListener(paramankh.jdField_a_of_type_Aeov);
-      ((ArkViewImplement.ArkViewInterface)localObject2).setOnLongClickListener(paramankh.jdField_a_of_type_Aeov);
+      localArkAppView.a(this.arkContainer, paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
+      ((ArkViewImplement.ArkViewInterface)localObject2).setOnTouchListener(paramanoq.jdField_a_of_type_Aetk);
+      ((ArkViewImplement.ArkViewInterface)localObject2).setOnLongClickListener(paramanoq.jdField_a_of_type_Aetk);
       ((ArkViewImplement.ArkViewInterface)localObject2).setLoadCallback((ArkViewImplement.LoadCallback)localObject1);
-      if (paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null)
+      if (paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null)
       {
-        paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnTouchListener(paramankh.jdField_a_of_type_Aeov);
-        paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnLongClickListener(paramankh.jdField_a_of_type_Aeov);
+        paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnTouchListener(paramanoq.jdField_a_of_type_Aetk);
+        paramanou.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnLongClickListener(paramanoq.jdField_a_of_type_Aetk);
       }
-      paramankl.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramankl.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      paramanou.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramanou.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       return;
       int k;
       int m;
@@ -584,7 +584,7 @@ public class MessageForArkApp
       int j;
       if (isSetSizeByConfig(localConfig))
       {
-        localObject2 = limitToSizeRange(anjs.a(), localConfig.width.intValue(), localConfig.height.intValue());
+        localObject2 = limitToSizeRange(anob.a(), localConfig.width.intValue(), localConfig.height.intValue());
         this.arkContainer.setFixSize(((MessageForArkApp.Size)localObject2).width, ((MessageForArkApp.Size)localObject2).height);
         k = ((MessageForArkApp.Size)localObject2).height;
         m = ((MessageForArkApp.Size)localObject2).width;
@@ -596,11 +596,11 @@ public class MessageForArkApp
         this.arkContainer.setMinSize(j, i);
         this.arkContainer.setMaxSize(m, k);
         break;
-        ((afds)localObject1).setFixSize(anjs.a, anjs.a);
-        k = anjs.a;
-        m = anjs.a;
-        j = anjs.a;
-        i = anjs.a;
+        ((afih)localObject1).setFixSize(anob.a, anob.a);
+        k = anob.a;
+        m = anob.a;
+        j = anob.a;
+        i = anob.a;
       }
       label570:
       ((ArkViewImplement.ArkViewInterface)localObject2).setBorderType(1);
@@ -649,37 +649,37 @@ public class MessageForArkApp
     }
   }
   
-  public void clickTail(ankl paramankl, afeg paramafeg, Context paramContext)
+  public void clickTail(anou paramanou, afiv paramafiv, Context paramContext)
   {
     QQAppInterface localQQAppInterface;
     if (this.ark_app_message != null)
     {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (paramankl != null)
+      if (paramanou != null)
       {
         if (TextUtils.isEmpty(this.ark_app_message.appId)) {
           break label109;
         }
-        paramankl.b.setBackgroundResource(2130842246);
-        paramankl.b.setOnClickListener(new apab(this, localQQAppInterface, paramContext));
+        paramanou.b.setBackgroundResource(2130842259);
+        paramanou.b.setOnClickListener(new apek(this, localQQAppInterface, paramContext));
       }
-      if (paramafeg != null)
+      if (paramafiv != null)
       {
         if (TextUtils.isEmpty(this.ark_app_message.appId)) {
           break label122;
         }
-        paramafeg.a.setBackgroundResource(2130842246);
+        paramafiv.a.setBackgroundResource(2130842259);
       }
     }
     for (;;)
     {
-      paramafeg.a.setOnClickListener(new apac(this, localQQAppInterface, paramContext));
+      paramafiv.a.setOnClickListener(new apel(this, localQQAppInterface, paramContext));
       return;
       label109:
-      paramankl.b.setBackgroundResource(2130842245);
+      paramanou.b.setBackgroundResource(2130842258);
       break;
       label122:
-      paramafeg.a.setBackgroundResource(2130842245);
+      paramafiv.a.setBackgroundResource(2130842258);
     }
   }
   
@@ -770,15 +770,15 @@ public class MessageForArkApp
     }
   }
   
-  public anho extendArkCardByOpen(afdt paramafdt, String paramString1, String paramString2)
+  public anlx extendArkCardByOpen(afii paramafii, String paramString1, String paramString2)
   {
-    if ((this.arkContainer != paramafdt) || (getMsgArkAppCount() >= ankt.a)) {
+    if ((this.arkContainer != paramafii) || (getMsgArkAppCount() >= anpc.a)) {
       return null;
     }
     MessageForArkApp localMessageForArkApp = new MessageForArkApp();
     localMessageForArkApp.compatibleMsg = this.compatibleMsg;
     localMessageForArkApp.ark_app_message = new ArkAppMessage();
-    localMessageForArkApp.ark_app_message.appName = paramafdt.getAppName();
+    localMessageForArkApp.ark_app_message.appName = paramafii.getAppName();
     localMessageForArkApp.ark_app_message.appView = paramString1;
     localMessageForArkApp.ark_app_message.metaList = paramString2;
     localMessageForArkApp.issend = this.issend;
@@ -909,7 +909,7 @@ public class MessageForArkApp
   public int getProcessState()
   {
     int i = 0;
-    String str = getExtInfoFromExtStr(ayvj.v);
+    String str = getExtInfoFromExtStr(ayzs.v);
     if (!TextUtils.isEmpty(str)) {}
     try
     {
@@ -928,7 +928,7 @@ public class MessageForArkApp
     if (this.ark_app_message != null) {
       return this.ark_app_message.getSummery();
     }
-    return alpo.a(2131706966);
+    return alud.a(2131706978);
   }
   
   public String getTitle()
@@ -972,7 +972,7 @@ public class MessageForArkApp
     do
     {
       return;
-      azmj.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, localArkReportData.type, ForwardUtils.b(this.istroop), localArkReportData.title, "");
+      azqs.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, localArkReportData.type, ForwardUtils.b(this.istroop), localArkReportData.title, "");
     } while (!QLog.isColorLevel());
     QLog.d("MessageForArkApp", 2, new Object[] { "ARK曝光=0X800A62F, type=", localArkReportData.type, ", uinType=", ForwardUtils.b(this.istroop), ", title=", localArkReportData.title });
   }
@@ -986,7 +986,7 @@ public class MessageForArkApp
     do
     {
       return;
-      azmj.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, localArkReportData.type, ForwardUtils.b(this.istroop), localArkReportData.title, "");
+      azqs.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, localArkReportData.type, ForwardUtils.b(this.istroop), localArkReportData.title, "");
       if (QLog.isColorLevel()) {
         QLog.d("MessageForArkApp", 2, new Object[] { "ARK点击=0X800A630, type=", localArkReportData.type, ", uinType=", ForwardUtils.b(this.istroop), ", title=", localArkReportData.title });
       }
@@ -1000,13 +1000,13 @@ public class MessageForArkApp
           break label238;
         }
         str2 = "";
-        azmj.b(null, "dc00899", str1, "", "music_tab", "clk_musicark_share", 0, 0, str2, "", "", "");
+        azqs.b(null, "dc00899", str1, "", "music_tab", "clk_musicark_share", 0, 0, str2, "", "", "");
       }
     } while ((localArkReportData.type != "1") || (!"101492711".equals(getNewsAppid())));
     if (this.istroop == 0) {}
     for (String str1 = "c2c_AIO";; str1 = "Grp_AIO")
     {
-      azmj.b(null, "dc00899", str1, "", "video_tab", "clk_videoark_share", 0, 0, this.frienduin, this.ark_app_message.appId, "", "");
+      azqs.b(null, "dc00899", str1, "", "video_tab", "clk_videoark_share", 0, 0, this.frienduin, this.ark_app_message.appId, "", "");
       return;
       str1 = "Grp_AIO";
       break;
@@ -1076,7 +1076,7 @@ public class MessageForArkApp
   
   public void updateProcessStateAndExtraFlag(int paramInt)
   {
-    saveExtInfoToExtStr(ayvj.v, String.valueOf(paramInt));
+    saveExtInfoToExtStr(ayzs.v, String.valueOf(paramInt));
     if (paramInt == 1001) {
       this.extraflag = 32772;
     }
@@ -1096,7 +1096,7 @@ public class MessageForArkApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkApp
  * JD-Core Version:    0.7.0.1
  */
